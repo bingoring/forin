@@ -1,0 +1,173 @@
+theme: er-arrest
+changes:
+- kind: sentence
+  situation: 응급코드 호출·역할 배정
+  index: 2
+  fields:
+  - words
+  why: '쉬운 단어 태그 제거: w-time'
+- kind: sentence
+  situation: 응급코드 호출·역할 배정
+  index: 3
+  fields:
+  - words
+  why: '쉬운 단어 태그 제거: w-name'
+- kind: sentence
+  situation: 흉부압박 기본 수행
+  index: 1
+  fields:
+  - words
+  why: '쉬운 단어 태그 제거: w-minute'
+- kind: sentence
+  situation: BVM 환기 협조
+  index: 0
+  fields:
+  - words
+  why: '쉬운 단어 태그 제거: w-head'
+- kind: sentence
+  situation: BVM 환기 협조
+  index: 4
+  fields:
+  - words
+  why: '쉬운 단어 태그 제거: w-head'
+- kind: sentence
+  situation: 제세동 패드 부착 안전
+  index: 2
+  fields:
+  - words
+  why: '쉬운 단어 태그 제거: w-bed, w-patient'
+- kind: sentence
+  situation: 무수축/PEA 대응
+  index: 2
+  fields:
+  - words
+  why: '쉬운 단어 태그 제거: w-minute'
+- kind: sentence
+  situation: 무수축/PEA 대응
+  index: 4
+  fields:
+  - words
+  why: '쉬운 단어 태그 제거: w-minute'
+- kind: sentence
+  situation: 가역적 원인(H's&T's) 점검
+  index: 4
+  fields:
+  - words
+  why: '쉬운 단어 태그 제거: w-family'
+- kind: sentence
+  situation: 소생 중 SBAR 리더 보고
+  index: 0
+  fields:
+  - words
+  why: '쉬운 단어 태그 제거: w-minute'
+- kind: sentence
+  situation: 소생 중 SBAR 리더 보고
+  index: 1
+  fields:
+  - words
+  why: '쉬운 단어 태그 제거: w-minute'
+- kind: sentence
+  situation: 저체온 심정지 연장 소생
+  index: 3
+  fields:
+  - words
+  why: '쉬운 단어 태그 제거: w-body'
+- kind: sentence
+  situation: 소생 중단·사망 고지
+  index: 1
+  fields:
+  - words
+  why: '쉬운 단어 태그 제거: w-time'
+- kind: sentence
+  situation: 소생 중단·사망 고지
+  index: 2
+  fields:
+  - words
+  why: '쉬운 단어 태그 제거: w-time'
+- kind: word-remove
+  id: w-time
+  why: 시간 — 공통 쉬운 단어 목록 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-name
+  why: 이름 — 공통 쉬운 단어 목록 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-patient
+  why: 환자 — 공통 쉬운 단어 목록 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-family
+  why: 가족 — 공통 쉬운 단어 목록 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-head
+  why: 머리 — 공통 쉬운 단어 목록(tilt the head의 동작은 w-tilt가 가르친다) — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-body
+  why: 몸 — 공통 쉬운 단어 목록 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-minute
+  why: 분 — 공통 쉬운 단어 목록 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-bed
+  why: 병상 — 간호사가 이미 아는 말 — 어느 문장도 태그하지 않게 됐다
+- kind: word
+  id: w-vital
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 두 문장 모두 명사 'vitals'(full set of vitals · Get vitals again) — 형용사 vital/활력징후의가 아니라 명사로
+- kind: word
+  id: w-continue
+  fields:
+  - ko
+  why: ko 계속하다가 w-keep(계속하다)과 겹쳤다
+- kind: word
+  id: w-bag
+  fields:
+  - ko
+  why: 문장 셋이 명사(squeeze the bag · the bagging) — 동사 뜻만으로는 모자랐다
+- kind: word
+  id: w-flush
+  fields:
+  - ko
+  why: '''Flush the IO line''(타동사)에도 쓰인다 — 잘 흐르다만으로는 모자랐다'
+- kind: sentence
+  situation: 흉부압박 기본 수행
+  index: 0
+  fields:
+  - ko
+  why: ko 오타 '세고' → '세게'
+- kind: sentence
+  situation: 흉부압박 기본 수행
+  index: 3
+  fields:
+  - ko
+  why: ko 오타 '세고' → '세게'
+- kind: sentence
+  situation: 가족 입회 소생 지원
+  index: 3
+  fields:
+  - ko
+  why: '''알아요''가 엉뚱한 절에 붙었다 — I know this is frightening의 뜻대로'
+- kind: word
+  id: w-confirm
+  fields:
+  - ko
+  why: w-check(확인하다)와 ko가 겹쳐 듣고 뜻 고르기에서 정답이 둘 — 확정하다로 가른다
+- kind: word
+  id: w-bleed
+  fields:
+  - en
+  - ipa
+  - ko
+  - example
+  why: 태그된 세 문장 모두 명사 bleeding(history of bleeding · Control the bleeding) — 동사 bleed가 아니라 명사로
+- kind: word
+  id: w-switch
+  fields:
+  - ko
+  why: switching to an IO(전환)에도 쓰인다 — 교대하다만으로는 모자랐다
+- kind: word
+  id: w-secure
+  fields:
+  - ko
+  why: 헤드워드는 원형 secure인데 ko가 과거분사형(확보된)이었다

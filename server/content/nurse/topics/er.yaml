@@ -10357,6 +10357,39 @@
       chunks: ["Has this fluttering", "happened", "once today", "or several times", "?"]
       words: [w-flutter, w-happen]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-scare
+    cue: 'Patient: "I was terrified — I honestly thought I was going to die."'
+    scale:
+    - uneasy
+    - scary
+    - terrifying
+    answerAt: 2
+    why: '''죽는 줄 알았다''면 terrifying 쪽이에요. ''it kind of scares me''처럼 말끝을 흐리면 scary나 uneasy 쪽이고요. 환자가 쓴 말의 세기를 그대로 받아 주면 공감이 정확해져요.'
+    example: I know a racing heart can feel terrifying.
+    exKo: 심장이 빨리 뛰면 정말 무섭게 느껴질 수 있다는 거 알아요.
+  - kind: swap
+    words:
+    - w-episode
+    - w-last
+    who: 환자에게 · 지속 시간 문진
+    icon: me
+    before:
+    - 'How long does each '
+    - paroxysm
+    - ' usually last?'
+    options:
+    - episode
+    - paroxysm
+    - attack
+    answer: episode
+    notes:
+      episode: 환자도 알아듣고 의료진도 쓰는 말. 증상이 한 번 왔다 가는 것을 가리킨다.
+      paroxysm: '''발작성''을 뜻하는 의학 용어라 환자에게는 어렵다.'
+      attack: 틀린 말은 아니지만 heart attack(심근경색)을 떠올리게 해 불안을 키울 수 있다.
+    why: 증상이 한 차례 왔다 가는 것을 물을 때는 episode가 가장 무난해요.
 
 - theme: er-arrhythmia
   title: 활력·리듬 확인 설명
@@ -10389,7 +10422,7 @@
     - en: "Try to relax your arm for me while I count your pulse."
       ko: "제가 맥박을 세는 동안 팔에 힘을 빼고 편하게 계세요."
       chunks: ["Try to relax", "your arm", "for me", "while I count", "your pulse", "."]
-      words: [w-relax, w-arm, w-count, w-pulse]
+      words: [w-relax, w-count, w-pulse]
       goal: 2
     - en: "These wires connect to the monitor so we can watch your rhythm on the screen."
       ko: "이 전선들은 모니터에 연결돼서 화면에서 리듬을 볼 수 있게 해줘요."
@@ -10404,8 +10437,45 @@
     - en: "I'll count your pulse for a full minute to be accurate."
       ko: "정확하게 재려고 1분 동안 맥박을 셀게요."
       chunks: ["I'll count", "your pulse", "for a full minute", "to be accurate", "."]
-      words: [w-count, w-pulse, w-minute]
+      words: [w-count, w-pulse]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-count
+    - w-pulse
+    - w-relax
+    - w-monitor
+    pairs:
+    - - count
+      - your pulse
+    - - relax
+      - your arm
+    - - put you on
+      - a heart monitor
+    decoys:
+    - a shock
+    why: count는 수를 세는 말이라 pulse와, relax는 근육의 힘을 빼는 말이라 arm과 짝이에요. 'put someone on a monitor'는 모니터를 연결한다는 굳은 표현이에요.
+  - kind: context
+    words:
+    - w-sticker
+    - w-monitor
+    - w-rhythm
+    scenes:
+    - who: 환자에게
+      icon: me
+      en: These stickers just read your heart's rhythm — they don't hurt.
+      ok: true
+    - who: 동료에게
+      icon: monitor
+      en: Leads are on, and she's on the monitor in sinus.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: I'm applying electrodes for continuous telemetry.
+      ok: false
+      fix: I'm putting some stickers on so we can watch your heart.
+    why: electrode·telemetry는 의료진끼리의 말이에요. 환자에게는 stickers처럼 쉬운 말로, 무엇을 하는지 알려 줘요.
 
 - theme: er-arrhythmia
   title: 12유도 심전도 준비
@@ -10428,7 +10498,7 @@
     - en: "I'll place ten small stickers on your chest, arms, and legs."
       ko: "가슴, 팔, 다리에 작은 스티커 열 개를 붙일게요."
       chunks: ["I'll place", "ten small stickers", "on your chest, arms,", "and legs", "."]
-      words: [w-place, w-sticker, w-chest, w-arm, w-leg]
+      words: [w-place, w-sticker, w-chest]
       goal: 1
     - en: "Please hold as still as you can for about ten seconds."
       ko: "약 10초 동안 최대한 가만히 계셔 주세요."
@@ -10443,7 +10513,7 @@
     - en: "You can leave your shirt on — I'll just untuck it a little."
       ko: "셔츠는 입고 계셔도 돼요 — 제가 살짝만 걷을게요."
       chunks: ["You can leave", "your shirt on", "— I'll just untuck it", "a little", "."]
-      words: [w-shirt]
+      words: []
       goal: 1
     - en: "Try not to talk or move while the machine is recording."
       ko: "기계가 기록하는 동안 말하거나 움직이지 않도록 해주세요."
@@ -10455,6 +10525,39 @@
       chunks: ["It only", "takes", "about ten seconds,", "then you're done", "."]
       words: [w-second]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-still
+    - w-move
+    pairs:
+    - - hold
+      - as still as you can
+    - - try not to
+      - talk or move
+    decoys:
+    - your shirt off
+    why: '''hold still''은 ''가만히 있다''의 굳은 표현이에요. ''Try not to ~''는 명령보다 부드럽게 협조를 구하는 말이에요.'
+  - kind: swap
+    words:
+    - w-place
+    - w-sticker
+    who: 환자에게 · 12유도 전극 부착
+    icon: me
+    before:
+    - 'I''ll place ten small '
+    - electrodes
+    - ' on your chest, arms, and legs.'
+    options:
+    - stickers
+    - electrodes
+    - leads
+    answer: stickers
+    notes:
+      stickers: 환자가 바로 알아듣는 쉬운 말. 무엇이 몸에 붙는지 그려진다.
+      electrodes: 정확한 말이지만 의료진 용어라 환자에게는 딱딱하다.
+      leads: 의료진끼리 쓰는 말(전극·전선, 또는 심전도의 유도)이라 환자에게는 낯설다.
+    why: 환자에게 설명할 때는 같은 전극도 stickers라고 불러요.
 
 - theme: er-arrhythmia
   title: 카페인·자극제 관련 심계항진
@@ -10492,7 +10595,7 @@
     - en: "Energy drinks and coffee both count as caffeine."
       ko: "에너지 드링크와 커피도 다 카페인에 들어가요."
       chunks: ["Energy drinks", "and coffee both", "count as caffeine", "."]
-      words: [w-coffee, w-caffeine]
+      words: [w-caffeine]
       goal: 1
     - en: "Let's cut back and see if the fluttering calms down."
       ko: "좀 줄여보고 두근거림이 가라앉는지 봐요."
@@ -10504,6 +10607,39 @@
       chunks: ["Once the stimulant", "clears your system,", "your heart rate", "should settle back down", "."]
       words: [w-stimulant, w-heart, w-settle]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-caffeine
+    cue: 'Patient: "Just one small coffee in the morning, that''s it."'
+    scale:
+    - light
+    - moderate
+    - heavy
+    answerAt: 0
+    why: 아침 커피 한 잔이면 light 쪽이에요. 다만 차트에는 light·heavy 같은 형용사보다 잔 수·캔 수를 그대로 적어요.
+    example: She reports heavy caffeine use — four energy drinks a day.
+    exKo: 하루 에너지 드링크 네 캔으로 카페인을 많이 섭취한다고 해요.
+  - kind: context
+    words:
+    - w-supplement
+    - w-medicine
+    - w-pill
+    scenes:
+    - who: 환자에게
+      icon: me
+      en: Are you taking any supplements, cold medicine, or diet pills?
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Denies OTC decongestants, diet pills, or supplements.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Are you on any OTC sympathomimetics?
+      ok: false
+      fix: Are you taking any cold medicine or diet pills?
+    why: sympathomimetic(교감신경 흥분제)이나 OTC는 의료진 말이에요. 환자에게는 감기약·다이어트 약처럼 구체적인 이름으로 물어야 답할 수 있어요.
 
 - theme: er-arrhythmia
   title: 양성 조기박동 안심 교육
@@ -10553,6 +10689,41 @@
       chunks: ["Getting good sleep", "and managing stress", "can reduce", "these extra beats", "."]
       words: [w-stress, w-beat]
       goal: 1
+  nuance:
+  - kind: slider
+    words:
+    - w-harmless
+    - w-dangerous
+    cue: 'Doctor: "Occasional isolated PVCs, normal echo, no fainting or chest pain."'
+    scale:
+    - harmless
+    - concerning
+    - dangerous
+    answerAt: 0
+    why: 구조적으로 정상인 심장에서 가끔 나오는 단발성 조기박동은 대개 harmless예요. 그래도 실신·흉통이 생기면 다시 오라고 기준을 함께 알려 줘요.
+    example: These extra beats are usually harmless.
+    exKo: 이런 추가 박동은 대개 무해해요.
+  - kind: swap
+    words:
+    - w-beat
+    - w-common
+    - w-harmless
+    who: 환자에게 · 조기박동 설명
+    icon: me
+    before:
+    - 'These '
+    - premature ventricular contractions
+    - ' are common and usually harmless.'
+    options:
+    - extra beats
+    - premature ventricular contractions
+    - skipped heartbeats
+    answer: extra beats
+    notes:
+      extra beats: 쉬운 말이면서 실제로 일어나는 일(박동이 하나 더 일찍 나온다)과 맞다.
+      premature ventricular contractions: 정확한 병명이지만 환자에게는 어렵고 무겁게 들린다.
+      skipped heartbeats: 환자가 흔히 쓰는 말이지만 심장이 멈춘다는 느낌을 준다. 실제로는 빠진 게 아니라 일찍 한 번 뛴 뒤 잠깐 쉬는 것이다.
+    why: 조기박동은 환자에게 extra beats라고 설명하면 쉽고, 사실과도 맞아요.
 
 - theme: er-arrhythmia
   title: 신규 심방세동 빠른 심실반응
@@ -10590,7 +10761,7 @@
     - en: "Have you ever had a stroke or a blood clot before?"
       ko: "예전에 뇌졸중이나 혈전이 있었던 적이 있나요?"
       chunks: ["Have you ever had", "a stroke", "or a blood clot", "before", "?"]
-      words: [w-stroke, w-clot, w-before]
+      words: [w-stroke, w-clot]
       goal: 2
     - en: "Are you currently taking a blood thinner like warfarin?"
       ko: "와파린 같은 혈액 희석제를 지금 드시고 있나요?"
@@ -10602,6 +10773,41 @@
       chunks: ["This irregular rhythm", "raises your risk", "of forming clots,", "so we need to check closely", "."]
       words: [w-irregular, w-rhythm, w-clot, w-check]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-thinner
+    - w-breath
+    - w-heart
+    - w-monitor
+    pairs:
+    - - blood
+      - thinner
+    - - short of
+      - breath
+    - - put you on
+      - the heart monitor
+    decoys:
+    - irregular
+    why: blood thinner는 항응고제를 환자들이 부르는 말, short of breath는 '숨이 찬', put you on the heart monitor는 모니터를 연결한다는 굳은 표현이에요.
+  - kind: context
+    words:
+    - w-thinner
+    scenes:
+    - who: 환자에게
+      icon: me
+      en: Are you currently taking a blood thinner like warfarin?
+      ok: true
+    - who: 의료진 인계
+      icon: monitor
+      en: Is she anticoagulated? When was her last dose?
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Are you currently anticoagulated?
+      ok: false
+      fix: Are you taking a blood thinner, like warfarin or Eliquis?
+    why: anticoagulated는 의료진 말이에요. 환자들은 blood thinner라고 부르고, 약 이름을 예로 들어 주면 더 잘 답해요.
 
 - theme: er-arrhythmia
   title: 발작성 SVT 미주신경자극 설명
@@ -10651,6 +10857,40 @@
       chunks: ["We're watching", "your monitor", "the whole time", "this is happening", "."]
       words: [w-monitor, w-happen]
       goal: 1
+  nuance:
+  - kind: slider
+    words:
+    - w-fast
+    cue: 'Patient: "It just started pounding out of nowhere — over 180, I think."'
+    scale:
+    - a bit fast
+    - fast
+    - racing
+    answerAt: 2
+    why: 갑자기 180 넘게 쿵쾅거리면 환자 말로 racing이에요. 차트와 보고에는 형용사보다 숫자(HR 180s)로 적어요.
+    example: Her heart rate is fast, around 190.
+    exKo: 심박수가 빨라요, 190 정도예요.
+  - kind: swap
+    words:
+    - w-beardown
+    - w-strain
+    - w-hold
+    who: 환자에게 · Valsalva 안내
+    icon: me
+    before:
+    - 'I want you to '
+    - perform a Valsalva maneuver
+    - ' like you''re straining, and hold it.'
+    options:
+    - bear down
+    - perform a Valsalva maneuver
+    - push hard
+    answer: bear down
+    notes:
+      bear down: 환자가 바로 따라 할 수 있는 동작 지시다.
+      perform a Valsalva maneuver: 시술 이름만으로는 환자가 무엇을 하라는지 모른다.
+      push hard: 어디에 어떻게 힘을 주라는지 모호하다.
+    why: Valsalva는 이름보다 동작으로 — '변 볼 때처럼 아래로 힘주세요'라고 안내해요.
 
 - theme: er-arrhythmia
   title: 서맥·현기증 감별
@@ -10700,6 +10940,38 @@
       chunks: ["Let's check your pulse", "now", "while you're lying down", "and again standing up", "."]
       words: [w-check, w-pulse]
       goal: 1
+  nuance:
+  - kind: slider
+    words:
+    - w-passout
+    - w-lightheaded
+    cue: 'Patient: "Everything went gray and I had to grab the wall, but I never went down."'
+    scale:
+    - lightheaded
+    - nearly passed out
+    - passed out
+    answerAt: 1
+    why: 쓰러지거나 의식을 잃지 않았으면 passed out(실신)이 아니라 실신할 뻔한 것이에요. 차트에는 near-syncope 또는 presyncope로 적어요.
+    example: She nearly passed out when she stood up.
+    exKo: 일어서다가 거의 기절할 뻔했어요.
+  - kind: context
+    words:
+    - w-passout
+    scenes:
+    - who: 환자에게
+      icon: me
+      en: Have you actually passed out or just felt close to it?
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Pt reports one syncopal episode at home today.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Have you had any syncopal episodes?
+      ok: false
+      fix: Have you actually passed out or blacked out?
+    why: syncope는 의료진 말이에요. 환자에게는 pass out·black out처럼 일상어로 물어요.
 
 - theme: er-arrhythmia
   title: 갑상선기능항진 의심
@@ -10727,12 +10999,12 @@
     - en: "Do you feel hot, sweaty, or shaky more than usual?"
       ko: "평소보다 덥거나 땀이 나거나 손이 떨리시나요?"
       chunks: ["Do you feel", "hot, sweaty,", "or shaky", "more than usual", "?"]
-      words: [w-feel, w-hot, w-sweaty, w-shaky]
+      words: [w-feel, w-sweaty, w-shaky]
       goal: 1
     - en: "Have you ever had a thyroid problem or taken thyroid pills?"
       ko: "갑상선 문제가 있었거나 갑상선 약을 드신 적이 있나요?"
       chunks: ["Have you ever had", "a thyroid problem", "or taken", "thyroid pills", "?"]
-      words: [w-thyroid, w-problem, w-pill]
+      words: [w-thyroid, w-pill]
       goal: 1
     - en: "A fast heart rate can sometimes be your thyroid working overtime."
       ko: "빠른 심박수는 가끔 갑상선이 과하게 일하고 있다는 신호일 수 있어요."
@@ -10742,13 +11014,50 @@
     - en: "Shaky hands and a racing heart together often point to your thyroid."
       ko: "손 떨림과 빠른 심장 박동이 함께 있으면 갑상선을 가리킬 때가 많아요."
       chunks: ["Shaky hands", "and a racing heart", "together often point", "to your thyroid", "."]
-      words: [w-shaky, w-heart, w-together, w-point, w-thyroid]
+      words: [w-shaky, w-heart, w-point, w-thyroid]
       goal: 2
     - en: "We'll draw blood to check your thyroid levels along with your heart rhythm."
       ko: "심장 리듬과 함께 갑상선 수치도 확인하려고 채혈할게요."
       chunks: ["We'll draw blood", "to check your thyroid levels", "along with", "your heart rhythm", "."]
       words: [w-draw, w-check, w-thyroid, w-level, w-heart, w-rhythm]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-weight
+    - w-lose
+    - w-draw
+    - w-thyroid
+    pairs:
+    - - weight
+      - loss
+    - - draw
+      - blood
+    - - thyroid
+      - gland
+    decoys:
+    - sweat
+    why: weight loss는 '체중 감소', draw blood는 '채혈하다', thyroid gland는 '갑상선(샘)'으로 한 덩어리예요.
+  - kind: swap
+    words:
+    - w-sweaty
+    - w-shaky
+    who: 환자에게 · 증상 문진
+    icon: me
+    before:
+    - 'Do you feel hot, '
+    - diaphoretic
+    - ', or shaky more than usual?'
+    options:
+    - sweaty
+    - diaphoretic
+    - damp
+    answer: sweaty
+    notes:
+      sweaty: 환자에게 쉬운 말. 땀이 나는지 바로 알아듣는다.
+      diaphoretic: 차트·보고에 쓰는 임상어라 환자는 못 알아듣는다.
+      damp: 옷이나 물건이 축축하다는 말에 가까워, 몸의 증상을 묻기엔 어색하다.
+    why: 같은 발한도 환자에게는 sweaty, 의료진 보고에는 diaphoretic이에요.
 
 - theme: er-arrhythmia
   title: 증상 축소 환자 위험신호
@@ -10771,7 +11080,7 @@
     - en: "I hear you, but I need to ask a few important questions."
       ko: "말씀 잘 들었어요, 그래도 중요한 질문 몇 가지를 여쭤봐야 해요."
       chunks: ["I hear you,", "but I need", "to ask", "a few important questions", "."]
-      words: [w-hear, w-important, w-question]
+      words: [w-hear, w-important]
       goal: 1
     - en: "Did you have any chest pain or come close to fainting?"
       ko: "가슴 통증이 있었거나 실신할 뻔했던 적이 있나요?"
@@ -10798,6 +11107,39 @@
       chunks: ["Let's check", "this carefully", "so we don't miss", "anything serious", "."]
       words: [w-check, w-careful]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-minor
+    cue: 'Patient: "It was a small thing — just a funny feeling for a second. I almost didn''t come in."'
+    scale:
+    - nothing
+    - minor
+    - serious
+    answerAt: 1
+    why: '''small thing''이면 minor 쪽. 환자가 nothing이라고 해도 그대로 받지 말고 — 짧은 이상한 느낌도 실신 전조나 부정맥일 수 있어 흉통·실신 여부를 꼭 다시 물어요.'
+    example: Even if it felt minor, it's worth checking.
+    exKo: 사소하게 느껴졌더라도 확인해 볼 가치가 있어요.
+  - kind: swap
+    words:
+    - w-hear
+    - w-important
+    who: 환자에게 · '별거 아니에요' 하는 환자
+    icon: me
+    before:
+    - ''
+    - I understand it's nothing
+    - ', but I need to ask a few important questions.'
+    options:
+    - I hear you
+    - I understand it's nothing
+    - That's probably true
+    answer: I hear you
+    notes:
+      I hear you: 환자의 말을 받아 주되, 별거 아니라는 데 동의하지는 않는다.
+      I understand it's nothing: 별거 아니라는 데 동의해 버려 뒤의 질문이 가벼워진다.
+      That's probably true: 위험신호를 확인하기도 전에 안심시키는 말이 된다.
+    why: 증상을 줄여 말하는 환자에게는 먼저 말을 받아 주고, 동의하지 않은 채 위험신호 질문으로 넘어가요.
 
 - theme: er-arrhythmia
   title: 심계항진+공황 감별
@@ -10825,12 +11167,12 @@
     - en: "Have you had episodes like this before, and what helped?"
       ko: "예전에도 이런 적이 있었나요, 그때는 뭐가 도움이 됐나요?"
       chunks: ["Have you had", "episodes", "like this before,", "and what helped", "?"]
-      words: [w-episode, w-before, w-help]
+      words: [w-episode, w-help]
       goal: 1
     - en: "Let's slow your breathing together while we check your heart."
       ko: "심장을 확인하는 동안 같이 호흡을 천천히 해봐요."
       chunks: ["Let's slow your breathing", "together", "while we check", "your heart", "."]
-      words: [w-slow, w-breathe, w-together, w-check, w-heart]
+      words: [w-slow, w-breathe, w-check, w-heart]
       goal: 2
     - en: "Panic can make your heart race, but so can an abnormal rhythm — we'll sort out which."
       ko: "공황도 심장을 빠르게 뛰게 할 수 있지만, 부정맥도 그럴 수 있어요 — 어느 쪽인지 저희가 가려낼게요."
@@ -10847,6 +11189,39 @@
       chunks: ["Your heart rhythm looks steady", "right now,", "which is", "reassuring", "."]
       words: [w-heart, w-rhythm]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-panic
+    cue: 'Patient: "My heart''s pounding and I can''t breathe — am I having a heart attack?"'
+    scale:
+    - nervous
+    - anxious
+    - panicked
+    answerAt: 2
+    why: 숨을 못 쉬겠고 심장마비인 줄 안다면 panicked 쪽이에요. 그래도 공황이라고 단정하지 않고 리듬부터 확인해요 — 부정맥도 똑같이 보일 수 있어요.
+    example: She felt panicked and couldn't catch her breath.
+    exKo: 공황 상태였고 숨을 제대로 못 쉬었어요.
+  - kind: swap
+    words:
+    - w-breathe
+    - w-slow
+    who: 환자에게 · 호흡 유도
+    icon: me
+    before:
+    - ''
+    - Calm down
+    - ' — breathe in slowly with me for a count of four.'
+    options:
+    - Let's do this together
+    - Calm down
+    - Relax, it's nothing
+    answer: Let's do this together
+    notes:
+      Let's do this together: 간호사가 함께 한다는 게 들려 환자가 따라오기 쉽다.
+      Calm down: 명령처럼 들려, 겁먹은 환자를 오히려 더 불안하게 할 수 있다.
+      Relax, it's nothing: 부정맥인지 확인하기도 전에 별일 아니라고 단정해 버린다.
+    why: 공황처럼 보이는 환자에게도 '진정하세요'보다 '같이 해 봐요'가 효과적이고, 원인은 확인 전까지 열어 둬요.
 
 - theme: er-arrhythmia
   title: 항부정맥제 복약 순응도
@@ -10896,6 +11271,42 @@
       chunks: ["Let's talk", "about ways", "to make taking", "this medication easier for you", "."]
       words: [w-take, w-medication]
       goal: 1
+  nuance:
+  - kind: slider
+    words:
+    - w-skip
+    - w-stop
+    - w-dose
+    cue: 'Patient: "I stopped my heart pills a while back because they made me tired."'
+    scale:
+    - missed a dose
+    - skipped doses
+    - stopped taking it
+    answerAt: 2
+    why: 한두 번 놓친 것과 스스로 끊은 것은 다른 일이에요. 끊었다면 언제부터인지, 왜 끊었는지를 함께 물어 차트에 적어요.
+    example: He stopped taking it about two weeks ago.
+    exKo: 2주쯤 전에 약을 끊었대요.
+  - kind: swap
+    words:
+    - w-stop
+    - w-take
+    - w-medication
+    who: 환자에게 · 자가 중단 이유
+    icon: me
+    before:
+    - ''
+    - Why were you noncompliant with
+    - ' your medication?'
+    options:
+    - What made you stop taking
+    - Why were you noncompliant with
+    - Why did you refuse
+    answer: What made you stop taking
+    notes:
+      What made you stop taking: 탓하지 않고 이유를 묻는 열린 질문이다.
+      Why were you noncompliant with: 차트 용어를 환자에게 그대로 써 비난처럼 들린다. 요즘은 차트에서도 nonadherent를 더 많이 쓴다.
+      Why did you refuse: 거부했다고 단정해 환자를 방어하게 만든다.
+    why: 복약 중단은 이유(부작용·비용·오해)를 알아야 도울 수 있어요. 비난 없이 열린 질문으로 물어요.
 
 - theme: er-arrhythmia
   title: 언어장벽 리듬 확인
@@ -10945,6 +11356,44 @@
       chunks: ["The monitor", "will keep watching", "your heart", "while we wait", "."]
       words: [w-monitor, w-keep, w-heart]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-point
+    - w-hurt
+    - w-pain
+    - w-chest
+    pairs:
+    - - point to
+      - where it hurts
+    - - chest
+      - pain
+    - - 'yes'
+      - or no
+    decoys:
+    - breathe
+    why: 짧은 덩어리로 물으면 말이 서툰 환자도 알아들어요 — point to(가리키다), chest pain(흉통), yes or no(예/아니오).
+  - kind: swap
+    words:
+    - w-call
+    - w-interpreter
+    - w-help
+    who: 환자에게 · 통역 요청
+    icon: me
+    before:
+    - 'I''m calling '
+    - your son
+    - ' to help us.'
+    options:
+    - an interpreter
+    - your son
+    - a translator
+    answer: an interpreter
+    notes:
+      an interpreter: 자격 있는 의료 통역사. 대부분의 미국 병원은 연방 규정에 따라 언어장벽 환자에게 전문 통역을 무료로 제공해야 한다.
+      your son: 가족 통역은 누락·오역 위험이 있어 피한다 — 특히 미성년 자녀는 쓰지 않는다.
+      a translator: translator는 글을 번역하는 사람이다. 말을 옮기는 사람은 interpreter.
+    why: 언어장벽 환자에게는 가족이 아니라 전문 의료 통역사를 불러요.
 
 - theme: er-arrhythmia
   title: 페이스메이커 오작동 의심
@@ -10967,7 +11416,7 @@
     - en: "Do you have your pacemaker ID card with you?"
       ko: "페이스메이커 신분증 카드를 가지고 계신가요?"
       chunks: ["Do you have", "your pacemaker", "ID card", "with you", "?"]
-      words: [w-pacemaker, w-card]
+      words: [w-pacemaker]
       goal: 1
     - en: "When was your device last checked?"
       ko: "장치를 마지막으로 점검받으신 게 언제였나요?"
@@ -10987,13 +11436,47 @@
     - en: "We'll check the device's settings to see if it's working properly."
       ko: "장치 설정이 제대로 작동하고 있는지 확인할게요."
       chunks: ["We'll check", "the device's settings", "to see", "if it's working properly", "."]
-      words: [w-check, w-device, w-work]
+      words: [w-check, w-device]
       goal: 2
     - en: "If the pacemaker isn't pacing correctly, your heart rate can drop suddenly."
       ko: "페이스메이커가 제대로 페이싱하지 않으면 심박수가 갑자기 떨어질 수 있어요."
       chunks: ["If the pacemaker isn't pacing correctly,", "your heart rate", "can drop", "suddenly", "."]
       words: [w-pacemaker, w-pace, w-heart, w-drop]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-twitch
+    - w-hiccup
+    cue: 'Patient: "My belly keeps jumping a little, like hiccups, over and over."'
+    scale:
+    - twitching
+    - spasm
+    - convulsion
+    answerAt: 0
+    why: 딸꾹질처럼 톡톡 튀는 건 twitching이에요. 페이스메이커 리드가 움직여 횡격막을 자극할 때 이런 증상이 생길 수 있어서 꼭 물어요. convulsion은 전신 경련(발작)이에요.
+    example: Hiccup-like twitching can mean the lead has moved.
+    exKo: 딸꾹질 같은 경련은 리드가 움직였다는 뜻일 수 있어요.
+  - kind: context
+    words:
+    - w-device
+    - w-last
+    - w-check
+    scenes:
+    - who: 환자에게
+      icon: me
+      en: When was your device last checked?
+      ok: true
+    - who: 동료에게
+      icon: monitor
+      en: Last interrogation was six months ago, per the patient.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: When was your last device interrogation?
+      ok: false
+      fix: When was your pacemaker last checked?
+    why: interrogation은 장치 점검을 뜻하는 의료진 용어인데, 환자에게는 '심문'으로 들려요. 환자에게는 checked라고 해요.
 
 - theme: er-arrhythmia
   title: 임신 중 심계항진
@@ -11026,10 +11509,10 @@
     - en: "We'll monitor your heart and keep both of you safe."
       ko: "심장을 모니터하면서 두 분 다 안전하게 지켜드릴게요."
       chunks: ["We'll monitor", "your heart", "and keep both of you", "safe", "."]
-      words: [w-monitor, w-heart, w-keep, w-both, w-safe]
+      words: [w-monitor, w-heart, w-keep, w-safe]
       goal: 2
     - en: "Your heart naturally beats a little quicker during pregnancy."
-      ko: "임신 중에는 혈액량이 늘어나서 심장이 자연스럽게 조금 더 빨리 뛰어요."
+      ko: "임신 중에는 심장이 자연스럽게 조금 더 빨리 뛰어요."
       chunks: ["Your heart", "naturally beats", "a little quicker", "during pregnancy", "."]
       words: [w-heart, w-beat, w-pregnancy]
       goal: 1
@@ -11041,8 +11524,43 @@
     - en: "Let's keep monitoring both of you closely for the next while."
       ko: "당분간 두 분 다 계속 가까이서 모니터할게요."
       chunks: ["Let's keep monitoring", "both of you", "closely", "for the next while", "."]
-      words: [w-keep, w-monitor, w-both]
+      words: [w-keep, w-monitor]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-normal
+    - w-pregnancy
+    cue: '28 weeks: resting heart rate about 15 beats above her usual, no chest pain, no fainting.'
+    scale:
+    - normal
+    - concerning
+    - dangerous
+    answerAt: 0
+    why: 임신 중에는 안정 시 심박수가 평소보다 분당 10~20회쯤 느는 게 흔해요. 흉통·실신·호흡곤란이 함께 있으면 이야기가 달라지니 그건 꼭 물어요.
+    example: Some racing is normal in pregnancy.
+    exKo: 임신 중에는 어느 정도 빨리 뛰는 게 정상이에요.
+  - kind: swap
+    words:
+    - w-keep
+    - w-safe
+    - w-monitor
+    who: 산모에게 · 아기 걱정
+    icon: baby
+    before:
+    - 'We''ll monitor your heart and keep '
+    - the fetus
+    - ' safe.'
+    options:
+    - both of you
+    - the fetus
+    - your pregnancy
+    answer: both of you
+    notes:
+      both of you: 산모와 아기를 함께 챙긴다는 게 들린다.
+      the fetus: 의료진 용어라 산모에게는 차갑게 들린다. 산모에게는 보통 the baby라고 한다.
+      your pregnancy: 틀린 말은 아니지만 산모 자신이 빠진 말이 된다.
+    why: 아기를 걱정하는 산모에게는 두 사람을 함께 지킨다는 말이 안심이 돼요.
 
 - theme: er-arrhythmia
   title: 불안정 SVT 심율동전환 준비
@@ -11092,6 +11610,41 @@
       chunks: ["As soon as", "your rhythm resets,", "your blood pressure", "should come back up", "."]
       words: [w-rhythm, w-reset, w-bp]
       goal: 1
+  nuance:
+  - kind: slider
+    words:
+    - w-sleepy
+    - w-sedate
+    cue: 'Nurse: "You''ll be asleep for this — most people don''t remember the shock at all."'
+    scale:
+    - relaxed
+    - sleepy
+    - asleep
+    answerAt: 2
+    why: 심율동전환 전 진정은 충격을 기억하지 못하게 하는 게 목표라 환자에게는 'you'll be asleep'이라고 쉽게 말해요. sleepy는 약이 막 들어갈 때의 느낌이고요. 다만 혈압이 낮으면 진정제를 줄여 쓰기도 하니 '아프지 않다'고 약속하지는 말아요.
+    example: You'll feel sleepy first, then you'll be asleep.
+    exKo: 먼저 졸리다가, 곧 잠드실 거예요.
+  - kind: swap
+    words:
+    - w-reset
+    - w-rhythm
+    - w-low
+    who: 환자에게 · 심율동전환 설명
+    icon: me
+    before:
+    - 'Your blood pressure is low and we need to '
+    - perform synchronized cardioversion
+    - .
+    options:
+    - reset your rhythm
+    - perform synchronized cardioversion
+    - restart your heart
+    answer: reset your rhythm
+    notes:
+      reset your rhythm: 무엇을 하는지 쉽게 들리고 사실과도 맞다.
+      perform synchronized cardioversion: 정확한 시술 이름이지만 어지러워하는 환자는 알아듣지 못한다.
+      restart your heart: 심장이 멈춘 것처럼 들려 공포를 키운다 — 심장은 뛰고 있다.
+    why: 불안정한 환자에게는 짧고 쉬운 말로 — 리듬을 '다시 맞춘다'고 해요.
 
 - theme: er-arrhythmia
   title: 심실빈맥(VT) 긴급 대응
@@ -11119,7 +11672,7 @@
     - en: "Stay with me — are you still with us?"
       ko: "저와 함께 계세요 — 아직 저희와 함께 계신 거죠?"
       chunks: ["Stay with me", "— are you", "still", "with us", "?"]
-      words: [w-stay, w-still]
+      words: [w-stay]
       goal: 1
     - en: "We're placing pads on your chest as a precaution."
       ko: "예방 차원에서 가슴에 패드를 붙이고 있어요."
@@ -11141,6 +11694,44 @@
       chunks: ["These pads", "let us act", "immediately", "if we need to", "."]
       words: [w-pad]
       goal: 1
+  nuance:
+  - kind: pair
+    words:
+    - w-crashcart
+    - w-precaution
+    - w-stay
+    pairs:
+    - - crash
+      - cart
+    - - as a
+      - precaution
+    - - stay
+      - with me
+    decoys:
+    - the rhythm
+    why: crash cart는 '응급 카트', as a precaution은 '대비 차원에서', stay with me는 의식이 흐려지는 환자를 붙잡는 말로 굳은 표현이에요.
+  - kind: swap
+    words:
+    - w-pad
+    - w-precaution
+    - w-place
+    - w-chest
+    who: 환자에게 · 패드 부착
+    icon: me
+    before:
+    - 'We''re placing pads on your chest '
+    - because you're about to arrest
+    - .
+    options:
+    - as a precaution
+    - because you're about to arrest
+    - to shock you right now
+    answer: as a precaution
+    notes:
+      as a precaution: 사실대로, 대비 차원임을 알려 겁을 덜어 준다.
+      because you're about to arrest: 추측을 단정해 공포를 키운다. 환자는 arrest를 '체포'로 알아듣기도 한다.
+      to shock you right now: 사실이 아니다 — 지금은 필요할 때를 대비해 붙이는 것이다.
+    why: 맥박이 있는 VT 환자에게 패드를 붙일 때는 '혹시 몰라 대비하는 것'이라고 말해요.
 
 - theme: er-arrhythmia
   title: WPW+심방세동 위험
@@ -11173,7 +11764,7 @@
     - en: "Have you had this fast, irregular rhythm before?"
       ko: "이렇게 빠르고 불규칙한 리듬이 예전에도 있었나요?"
       chunks: ["Have you had", "this fast, irregular rhythm", "before", "?"]
-      words: [w-fast, w-irregular, w-rhythm, w-before]
+      words: [w-fast, w-irregular, w-rhythm]
       goal: 1
     - en: "Your extra electrical pathway means some common medicines aren't safe to use."
       ko: "추가 전기 통로가 있으면 흔히 쓰는 약 일부는 안전하지 않아요."
@@ -11190,6 +11781,39 @@
       chunks: ["This information helps us", "choose", "the safest treatment", "for your heart", "."]
       words: [w-help, w-heart]
       goal: 1
+  nuance:
+  - kind: slider
+    words:
+    - w-dangerous
+    - w-avoid
+    cue: 'Doctor: "No diltiazem — in pre-excited AF it can push her into VF."'
+    scale:
+    - safe
+    - risky
+    - dangerous
+    answerAt: 2
+    why: WPW 동반 심방세동에 AV 결절 차단제(diltiazem·adenosine·beta blocker 등)를 쓰면 자극이 부전도로로 더 많이 내려가 심실 반응이 극도로 빨라지고 심실세동이 올 수 있어요. 그래서 이 약들은 dangerous — 피해야 해요.
+    example: Some common heart medicines could be dangerous for you.
+    exKo: 흔히 쓰는 심장약 일부가 당신에게는 위험할 수 있어요.
+  - kind: context
+    words:
+    - w-flag
+    - w-team
+    scenes:
+    - who: 동료에게
+      icon: monitor
+      en: Heads up — bed 4 has WPW, so no AV nodal blockers.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: I'm making sure everyone on the team knows about your WPW right away.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: I'm flagging you to the team as a contraindication risk.
+      ok: false
+      fix: I'm letting the whole team know about your WPW so we choose the safest medicine.
+    why: contraindication(금기)은 의료진끼리의 말이에요. 환자에게는 무엇을 왜 알리는지 쉬운 말로 — 환자 자신을 '위험 요소'처럼 부르지 않게요.
 
 - theme: er-arrhythmia
   title: 완전방실차단 서맥성 실신
@@ -11217,12 +11841,12 @@
     - en: "We'll place pads that give gentle electrical pulses."
       ko: "부드러운 전기 자극을 주는 패드를 붙일 거예요."
       chunks: ["We'll place pads", "that give", "gentle electrical pulses", "."]
-      words: [w-place, w-pad, w-gentle, w-electrical, w-pulse]
+      words: [w-place, w-pad, w-gentle, w-electrical]
       goal: 2
     - en: "Squeeze my hand if you can hear me."
       ko: "제 말이 들리면 제 손을 꽉 쥐어 보세요."
       chunks: ["Squeeze my hand", "if you can", "hear me", "."]
-      words: [w-squeeze, w-hand, w-hear]
+      words: [w-squeeze, w-hear]
       goal: 2
     - en: "Your heart rate has dropped very low, so we're acting quickly."
       ko: "심박수가 아주 낮게 떨어져서, 저희가 빠르게 움직이고 있어요."
@@ -11232,13 +11856,48 @@
     - en: "The pacing pads will send small pulses to keep your heart beating steadily."
       ko: "페이싱 패드가 작은 자극을 보내서 심장이 꾸준히 뛰도록 도와줄 거예요."
       chunks: ["The pacing pads", "will send small pulses", "to keep your heart", "beating steadily", "."]
-      words: [w-pace, w-pad, w-pulse, w-keep, w-heart, w-beat]
+      words: [w-pace, w-pad, w-keep, w-heart, w-beat]
       goal: 2
     - en: "Stay as still as you can while we get everything ready."
       ko: "저희가 준비하는 동안 최대한 가만히 계세요."
       chunks: ["Stay as still", "as you can", "while we get", "everything ready", "."]
       words: [w-stay, w-still]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-slow
+    - w-low
+    cue: 'Monitor: heart rate 32 — she passed out at home and looks pale.'
+    scale:
+    - a little slow
+    - slow
+    - dangerously slow
+    answerAt: 2
+    why: 실신까지 한 30대 심박이면 dangerously slow예요. 환자에게도 '너무 느려서 바로 조치한다'고 분명히 말하고, 보고에는 숫자로 전해요.
+    example: Her heart rate is dangerously slow, in the low 30s.
+    exKo: 심박수가 30대 초반으로 위험할 정도로 느려요.
+  - kind: swap
+    words:
+    - w-gentle
+    - w-electrical
+    - w-pad
+    who: 환자에게 · 경피 페이싱
+    icon: me
+    before:
+    - 'We''ll place pads that give '
+    - painless
+    - ' electrical pulses.'
+    options:
+    - gentle
+    - painless
+    - strong
+    answer: gentle
+    notes:
+      gentle: 제세동 충격과 다르다는 걸 알리되, 아프지 않다고 약속하지는 않는다.
+      painless: 사실이 아니다 — 경피 페이싱은 가슴 근육이 수축해 아플 수 있어 진통·진정을 함께 준비한다.
+      strong: 틀린 말은 아니지만 불안만 키운다.
+    why: 경피 페이싱은 불편할 수 있어요. 아프지 않다고 약속하지 말고, 통증을 조절해 주겠다고 함께 말해요.
 
 - theme: er-arrhythmia
   title: Torsades·QT연장
@@ -11288,6 +11947,44 @@
       chunks: ["This medicine helps", "keep", "your heartbeat", "steady and safe", "."]
       words: [w-medicine, w-help, w-keep, w-safe]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-draw
+    - w-magnesium
+    - w-potassium
+    - w-level
+    - w-electrical
+    pairs:
+    - - draw up
+      - magnesium
+    - - potassium and magnesium
+      - levels
+    - - electrical
+      - timing
+    decoys:
+    - the stickers
+    why: draw up은 주사기에 약을 '재어 준비하다', levels는 피검사 '수치', electrical timing은 QT처럼 심장의 '전기적 타이밍'을 쉽게 푼 말이에요.
+  - kind: context
+    words:
+    - w-magnesium
+    - w-draw
+    - w-protect
+    scenes:
+    - who: 동료에게
+      icon: monitor
+      en: Drawing up two grams of mag now.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: I'm drawing up magnesium to protect your heart rhythm.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: I'm drawing up two grams of mag sulfate for your prolonged QT.
+      ok: false
+      fix: I'm getting some magnesium ready to protect your heart rhythm.
+    why: 약어(mag)와 용량·경로는 의료진끼리 주고받는 말이에요. 환자에게는 무엇을 왜 주는지로 말해요.
 
 - theme: er-arrhythmia
   title: 부정맥 급속 악화 SBAR
@@ -11310,7 +12007,7 @@
     - en: "Situation: bed 2 just converted to a wide-complex tachycardia."
       ko: "상황: 2번 침상 환자가 방금 광범위 QRS 빈맥으로 전환됐습니다."
       chunks: ["Situation: bed 2", "just converted", "to a wide-complex", "tachycardia", "."]
-      words: [w-situation, w-bed, w-convert, w-tachycardia]
+      words: [w-situation, w-convert, w-tachycardia]
       goal: 1
     - en: "Her BP dropped to 78 over 40 and she's diaphoretic."
       ko: "혈압이 78/40으로 떨어졌고 식은땀을 흘리고 있습니다."
@@ -11337,6 +12034,44 @@
       chunks: ["I'll stay", "on the line", "while you notify", "the physician", "."]
       words: [w-stay]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-tachycardia
+    - w-prepare
+    - w-cardioversion
+    - w-stay
+    - w-convert
+    pairs:
+    - - just converted
+      - to a wide-complex tachycardia
+    - - prepare for
+      - cardioversion
+    - - stay on
+      - the line
+    decoys:
+    - bedside
+    why: converted to a wide-complex tachycardia는 '넓은 QRS 빈맥으로 바뀌었다', prepare for cardioversion은 '심율동전환 준비', stay on the line은 '전화를 끊지 않고 있다'로 SBAR에서 굳은 표현이에요.
+  - kind: swap
+    words:
+    - w-diaphoretic
+    - w-drop
+    who: 의사에게 · SBAR 보고
+    icon: monitor
+    before:
+    - 'Her BP dropped to 78 over 40 and she''s '
+    - all sweaty
+    - .
+    options:
+    - diaphoretic
+    - all sweaty
+    - a little damp
+    answer: diaphoretic
+    notes:
+      diaphoretic: 보고에 맞는 임상어 — 쇼크 징후로 바로 읽힌다.
+      all sweaty: 환자에게는 좋은 말이지만 보고에서는 가볍게 들린다.
+      a little damp: 식은땀이라는 쇼크 징후를 축소해 전한다.
+    why: 같은 식은땀도 의사에게 보고할 때는 diaphoretic으로 정확히 전해요.
 
 - theme: er-arrhythmia
   title: ICD 반복 쇼크(전기폭풍)
@@ -11386,6 +12121,41 @@
       chunks: ["You're safe now,", "and we're staying", "right here", "with you", "."]
       words: [w-safe, w-stay]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-frighten
+    cue: 'Patient: "It''s already gone off four times — please make it stop!"'
+    scale:
+    - unsettling
+    - frightening
+    - terrifying
+    answerAt: 2
+    why: 연달아 네 번이나 쇼크를 받았다면 terrifying 쪽이에요. 먼저 그 공포를 알아주는 말로 시작해요.
+    example: I know that was frightening — we're here now.
+    exKo: 무서우셨죠 — 이제 저희가 여기 있어요.
+  - kind: reel
+    words:
+    - w-shock
+    word: shock
+    scenes:
+    - who: 환자 → 간호사
+      en: It keeps shocking me — make it stop!
+      ko: 자꾸 충격이 와요 — 멈춰 주세요!
+      tone: 공포
+    - who: 차트 기록
+      en: Pt reports four ICD shocks in the past hour.
+      ko: 지난 1시간 동안 ICD 쇼크 4회 보고.
+      tone: 건조
+    - who: 심장내과 콜
+      en: He's had repeated shocks — possible electrical storm.
+      ko: 반복 쇼크 — 전기폭풍 의심입니다.
+      tone: 급함
+    - who: 환자에게는…
+      en: The magnet will pause the shocks while we figure this out.
+      ko: 원인을 찾는 동안 자석이 충격을 멈춰 줄 거예요.
+      tone: 안심
+      swap: true
 
 - theme: er-arrest
   title: 무반응 환자 초기 인지
@@ -11430,6 +12200,39 @@
       chunks: ["This is", "a cardiac arrest", "— call the code", "now", "."]
       words: [w-arrest, w-call, w-code]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-respond
+    cue: 'Colleague: "He groans when I rub his sternum, but his eyes stay closed when I call him."'
+    scale:
+    - alert
+    - responds to voice
+    - responds to pain
+    - unresponsive
+    answerAt: 2
+    why: AVPU 순서예요. 불러도 눈을 안 뜨는데 흉골을 문지르면 신음한다면 responds to pain(통증에만 반응) 단계예요. 아무 자극에도 반응이 없으면 unresponsive이고, 그때 바로 호흡과 맥박을 봐요.
+    example: He only responds to pain.
+    exKo: 통증 자극에만 반응해요.
+  - kind: context
+    words:
+    - w-code
+    - w-call
+    scenes:
+    - who: 동료에게
+      icon: speech
+      en: No pulse — call a code now!
+      ok: true
+    - who: 병원 방송 요청
+      icon: siren
+      en: Code Blue, ER hallway bed three.
+      ok: true
+    - who: 옆에 있던 보호자에게
+      icon: me
+      en: We're calling a code on him.
+      ok: false
+      fix: His heart has stopped. Our team is starting CPR right now.
+    why: code는 병원 안에서 쓰는 호출 이름이라 의료진끼리는 가장 빠른 말이에요. 보호자는 뜻을 모를 수 있으니, 무슨 일이 일어났고 무엇을 하는지를 쉬운 말로 알려요.
 
 - theme: er-arrest
   localeBound: [escalation]
@@ -11463,18 +12266,53 @@
     - en: "Someone grab the crash cart and record the time."
       ko: "누군가 응급 카트를 챙기고 시간을 기록해 주세요."
       chunks: ["Someone grab", "the crash cart", "and record", "the time", "."]
-      words: [w-grab, w-crashcart, w-record, w-time]
+      words: [w-grab, w-crashcart, w-record]
       goal: 2
     - en: "Call out your name and your role to the team."
       ko: "이름과 역할을 팀에 소리 내어 말해 주세요."
       chunks: ["Call out", "your name", "and your role", "to the team", "."]
-      words: [w-call, w-name, w-role, w-team]
+      words: [w-call, w-role, w-team]
       goal: 2
     - en: "We need someone on the monitor and someone on the airway."
       ko: "모니터를 맡을 사람과 기도를 맡을 사람이 필요해요."
       chunks: ["We need someone", "on the monitor", "and someone", "on the airway", "."]
       words: [w-need, w-monitor, w-airway]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-crashcart
+    - w-team
+    pairs:
+    - - crash
+      - cart
+    - - team
+      - leader
+    - - bag-valve
+      - mask
+    decoys:
+    - pillow
+    why: 코드에서 자주 듣는 복합명사예요. crash cart는 제세동기와 코드 약물이 실린 카트, team leader는 지시를 내리는 사람, bag-valve mask(BVM)는 손으로 짜서 환기하는 장비예요.
+  - kind: swap
+    words:
+    - w-start
+    - w-compression
+    who: 코드 리더 · 역할 배정
+    icon: speech
+    before:
+    - ''
+    - Someone
+    - ', start compressions now.'
+    options:
+    - You in the blue scrubs
+    - Someone
+    - Anybody who's free
+    answer: You in the blue scrubs
+    notes:
+      You in the blue scrubs: 한 사람을 콕 집어 맡긴다. 그 사람이 'Starting compressions'라고 되받으면 폐쇄 루프가 닫힌다.
+      Someone: 모두가 '누가 하겠지' 하고 서로 미루기 쉽다.
+      Anybody who's free: 여러 명이 동시에 달려들거나 아무도 안 움직일 수 있다.
+    why: 코드의 팀 소통은 지시를 특정한 사람에게 주고, 받은 사람이 되받아 말하는 폐쇄 루프(closed-loop)가 기본이에요. 카트 가져오기 같은 잔일은 'Someone'으로도 되지만, 압박처럼 끊기면 안 되는 역할은 사람을 집어 맡겨요. 이름을 모르면 옷 색이나 위치로 집어요.
 
 - theme: er-arrest
   title: 흉부압박 기본 수행
@@ -11495,14 +12333,14 @@
   persona: { name: Megan Foster, ageRange: 20s, sub: "25y / Female", mood: anxious, personality: 열정적이나 긴장, speakingStyle: 확인을 자주 구함 }
   sentences:
     - en: "Push hard and fast in the center of the chest."
-      ko: "가슴 중앙을 세고 빠르게 눌러 주세요."
+      ko: "가슴 중앙을 세게 빠르게 눌러 주세요."
       chunks: ["Push hard", "and fast", "in the center", "of the chest", "."]
       words: [w-push, w-fast, w-chest]
       goal: 1
     - en: "Aim for at least two inches deep, a hundred a minute."
       ko: "최소 2인치 깊이로, 분당 100회를 목표로 하세요."
       chunks: ["Aim for at least", "two inches deep", ", a hundred", "a minute", "."]
-      words: [w-aim, w-inch, w-deep, w-minute]
+      words: [w-aim, w-inch, w-deep]
       goal: 1
     - en: "Let's switch compressors after this cycle to stay strong."
       ko: "이번 주기가 끝나면 압박자를 교대해서 힘을 유지해요."
@@ -11510,7 +12348,7 @@
       words: [w-switch, w-compressor, w-cycle, w-stay]
       goal: 2
     - en: "You're pushing hard and fast — keep going like that."
-      ko: "세고 빠르게 누르고 계세요 — 그대로 계속하세요."
+      ko: "세게 빠르게 누르고 계세요 — 그대로 계속하세요."
       chunks: ["You're pushing hard", "and fast", "— keep going", "like that", "."]
       words: [w-push, w-fast, w-keep]
       goal: 1
@@ -11519,6 +12357,40 @@
       chunks: ["Push at least", "two inches deep", "every time", "."]
       words: [w-push, w-inch, w-deep]
       goal: 1
+  nuance:
+  - kind: slider
+    words:
+    - w-deep
+    - w-inch
+    cue: 'Feedback monitor: "Depth 1.4 inches."'
+    scale:
+    - too shallow
+    - adequate
+    - too deep
+    answerAt: 0
+    why: 성인 흉부압박 깊이는 최소 2인치(약 5 cm), 2.4인치(약 6 cm)를 넘지 않게 해요. 1.4인치는 너무 얕아서 'Push deeper'라고 코칭해요.
+    example: Your compressions are too shallow — push deeper.
+    exKo: 압박이 너무 얕아요 — 더 깊게 누르세요.
+  - kind: context
+    words:
+    - w-push
+    - w-fast
+    - w-aim
+    scenes:
+    - who: 압박자에게
+      icon: speech
+      en: Push faster — aim for 100 to 120.
+      ok: true
+    - who: 리더에게 보고
+      icon: monitor
+      en: Compression rate is about 90, below target.
+      ok: true
+    - who: 한창 압박 중인 동료에게
+      icon: speech
+      en: Excuse me, would you mind possibly speeding up a little?
+      ok: false
+      fix: Faster — aim for 100 to 120.
+    why: 압박 중 코칭은 짧고 분명해야 해요. 시끄러운 코드에서 길게 돌려 말하면 지시로 들리지 않아요. 무례한 게 아니라, 모두가 그렇게 말하는 자리예요.
 
 - theme: er-arrest
   title: BVM 환기 협조
@@ -11541,7 +12413,7 @@
     - en: "Tilt the head back and lift the chin to open the airway."
       ko: "머리를 뒤로 젖히고 턱을 들어서 기도를 열어 주세요."
       chunks: ["Tilt the head back", "and lift the chin", "to open", "the airway", "."]
-      words: [w-tilt, w-head, w-lift, w-chin, w-airway]
+      words: [w-tilt, w-lift, w-chin, w-airway]
       goal: 1
     - en: "Use a two-handed seal — I'll squeeze the bag."
       ko: "양손으로 밀착시켜 주세요 — 제가 백을 짜 볼게요."
@@ -11561,8 +12433,40 @@
     - en: "Tilt the head again if the seal is leaking."
       ko: "밀착이 새면 머리를 다시 젖혀 주세요."
       chunks: ["Tilt the head", "again", "if the seal", "is leaking", "."]
-      words: [w-tilt, w-head, w-seal]
+      words: [w-tilt, w-seal]
       goal: 1
+  nuance:
+  - kind: slider
+    words:
+    - w-seal
+    cue: 'Colleague: "I can hear air hissing out around the mask."'
+    scale:
+    - leaking
+    - partial seal
+    - tight seal
+    answerAt: 0
+    why: 마스크 가장자리로 바람 새는 소리가 나면 밀착이 새는(leaking) 거예요. 두 손으로 EC 잡기를 하고 머리를 다시 젖혀 밀착을 다시 잡아요.
+    example: The seal is leaking — let's go two-handed.
+    exKo: 밀착이 새요 — 두 손으로 잡아요.
+  - kind: context
+    words:
+    - w-chest
+    - w-rise
+    scenes:
+    - who: 환기 담당에게
+      icon: speech
+      en: Is the chest rising with each breath?
+      ok: true
+    - who: 리더에게 보고
+      icon: monitor
+      en: Good bilateral chest rise with bagging.
+      ok: true
+    - who: 보호자에게
+      icon: me
+      en: Good bilateral chest rise with BVM.
+      ok: false
+      fix: We're breathing for him with this bag, and the air is going in well.
+    why: bilateral·BVM은 의료진끼리의 줄임말이에요. 보호자에게는 무엇을 하고 있고 잘 되고 있는지를 쉬운 말로 전해요.
 
 - theme: er-arrest
   title: 제세동 패드 부착 안전
@@ -11595,7 +12499,7 @@
     - en: "Make sure no one is touching the bed or the patient."
       ko: "아무도 침대나 환자를 만지고 있지 않은지 확인하세요."
       chunks: ["Make sure", "no one is touching", "the bed", "or the patient", "."]
-      words: [w-touch, w-bed, w-patient]
+      words: [w-touch]
       goal: 2
     - en: "Check that the pads are sticking to the skin."
       ko: "패드가 피부에 잘 붙어 있는지 확인하세요."
@@ -11607,6 +12511,39 @@
       chunks: ["Everybody clear", "before you deliver", "the shock", "."]
       words: [w-clear, w-deliver, w-shock]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-touch
+    cue: 'Tech, right before the shock: "My knee is just resting against the stretcher."'
+    scale:
+    - touching the stretcher
+    - a step away
+    - fully clear
+    answerAt: 0
+    why: 무릎만 기대고 있어도 들것에 닿아 있는 거예요. 방전 전에는 누구의 손이나 몸도 환자와 들것에 닿아 있지 않아야 해요.
+    example: Step back — you're still touching the stretcher.
+    exKo: 물러나세요 — 아직 들것에 닿아 있어요.
+  - kind: swap
+    words:
+    - w-clear
+    - w-shock
+    who: 제세동 담당 · 방전 직전
+    icon: siren
+    before:
+    - ''
+    - Okay, shocking now
+    - '!'
+    options:
+    - I'm clear, you're clear, everybody clear
+    - Okay, shocking now
+    - Here we go
+    answer: I'm clear, you're clear, everybody clear
+    notes:
+      I'm clear, you're clear, everybody clear: 자기·동료·모두를 차례로 눈으로 확인하며 외친다. 누가 아직 닿아 있으면 멈출 틈이 생긴다.
+      Okay, shocking now: 방전한다는 것은 알리지만 모두 떨어졌는지는 확인하지 않는다.
+      Here we go: 무엇을 하는지도, 안전 확인도 담기지 않는다.
+    why: 클리어 콜아웃은 말만 하는 게 아니라 주위를 한 번 훑어보며 하는 안전 확인이에요. 병원마다 문구는 조금 달라도, 모두 떨어졌음을 확인했다는 게 분명히 들려야 해요.
 
 - theme: er-arrest
   title: 제세동 가능 리듬(VF/pVT) 판단
@@ -11651,6 +12588,40 @@
       chunks: ["Resume compressions", "the moment", "the shock is delivered", "."]
       words: [w-resume, w-compression, w-shock, w-deliver]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-charge
+    - w-resume
+    - w-rhythm
+    pairs:
+    - - charge
+      - to 200 joules
+    - - resume
+      - compressions
+    - - analyze
+      - the rhythm
+    decoys:
+    - the pulse
+    why: charge는 에너지 값(200 J)과, resume은 멈췄던 압박과, analyze는 리듬과 함께 써요. 방전 뒤에는 리듬을 다시 보지 않고 곧바로 압박을 재개해요.
+  - kind: context
+    words:
+    - w-vfib
+    scenes:
+    - who: 팀에게
+      icon: speech
+      en: That's V-fib — charging to 200!
+      ok: true
+    - who: 코드 기록
+      icon: board
+      en: 'Rhythm: ventricular fibrillation. Defibrillated at 200 J.'
+      ok: true
+    - who: 입회한 보호자에게
+      icon: me
+      en: He's in V-fib, so we're shocking him.
+      ok: false
+      fix: His heart is quivering instead of pumping, so we're using the defibrillator to try to restore a normal beat.
+    why: V-fib은 팀끼리의 줄임말이에요. 보호자에게는 심장이 떨리기만 하고 피를 뿜지 못해서 전기충격을 준다고 풀어서 말해요.
 
 - theme: er-arrest
   title: 무수축/PEA 대응
@@ -11683,7 +12654,7 @@
     - en: "Continue high-quality CPR and reassess in two minutes."
       ko: "양질의 CPR을 계속하고 2분 후에 재평가하세요."
       chunks: ["Continue high-quality CPR", "and reassess", "in two minutes", "."]
-      words: [w-continue, w-cpr, w-reassess, w-minute]
+      words: [w-continue, w-cpr, w-reassess]
       goal: 2
     - en: "There's no pulse even though the monitor shows a rhythm."
       ko: "모니터에는 리듬이 보이지만 맥박은 없어요."
@@ -11693,8 +12664,42 @@
     - en: "Keep giving epinephrine every three to five minutes."
       ko: "3~5분마다 에피네프린을 계속 주세요."
       chunks: ["Keep giving epinephrine", "every three to five", "minutes", "."]
-      words: [w-keep, w-give, w-epinephrine, w-minute]
+      words: [w-keep, w-give, w-epinephrine]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-epinephrine
+    - w-rhythm
+    pairs:
+    - - epinephrine
+      - every 3 to 5 minutes
+    - - rhythm check
+      - every 2 minutes
+    decoys:
+    - every 30 seconds
+    why: ACLS의 시간 기준이에요. 에피네프린 1 mg은 3~5분마다, 리듬 확인은 2분 압박 주기마다 해요. 그래서 에피는 보통 리듬 확인 한두 번에 한 번꼴로 들어가요.
+  - kind: swap
+    words:
+    - w-shockable
+    - w-keep
+    - w-compression
+    who: 리더 · 무수축 리듬에서
+    icon: monitor
+    before:
+    - 'This rhythm isn''t shockable — '
+    - charge the defibrillator
+    - .
+    options:
+    - keep compressions going
+    - charge the defibrillator
+    - give amiodarone
+    answer: keep compressions going
+    notes:
+      keep compressions going: 무수축·PEA에서는 압박을 끊지 않고 에피네프린을 준다.
+      charge the defibrillator: 제세동 가능한 리듬이 아니면 충격은 도움이 안 되고 압박만 끊긴다.
+      give amiodarone: 아미오다론은 VF·무맥성 VT에 쓰는 약이다.
+    why: shockable이 아니라고 말했다면 다음 말은 압박을 이어 가는 것이어야 해요. 말의 앞뒤가 맞아야 팀이 헷갈리지 않아요.
 
 - theme: er-arrest
   title: 가역적 원인(H's&T's) 점검
@@ -11737,8 +12742,43 @@
     - en: "Ask the family about any history of blood clots."
       ko: "가족에게 혈전 병력이 있는지 물어보세요."
       chunks: ["Ask", "the family", "about any history", "of blood clots", "."]
-      words: [w-family, w-history, w-clot]
+      words: [w-history, w-clot]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-tension
+    - w-pneumo
+    - w-potassium
+    pairs:
+    - - tension
+      - pneumothorax
+    - - cardiac
+      - tamponade
+    - - low
+      - potassium
+    decoys:
+    - rash
+    why: H's&T's를 훑을 때 자주 입에 올리는 짝이에요. tension pneumothorax(긴장성 기흉)와 cardiac tamponade(심장눌림증)는 T's, low potassium(저칼륨)은 H's의 칼륨 이상이에요. 굳어진 짝이라 통째로 외워요.
+  - kind: context
+    words:
+    - w-pneumo
+    - w-tension
+    scenes:
+    - who: 팀에게
+      icon: speech
+      en: Could this be a tension pneumo?
+      ok: true
+    - who: 리더에게 보고
+      icon: stetho
+      en: No breath sounds on the right — possible tension pneumo.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Tension pneumo, stuck a needle in, looks better.
+      ok: false
+      fix: Suspected right tension pneumothorax; needle decompression performed.
+    why: 팀끼리는 pneumo처럼 줄여 말해도 되지만, 차트에는 정식 용어(pneumothorax)와 무엇을 했는지를 적어요. stuck a needle in 같은 구어는 기록에 맞지 않아요.
 
 - theme: er-arrest
   title: 정맥로/골내로 확보 소통
@@ -11783,6 +12823,42 @@
       chunks: ["Flush the IO line", "before giving", "any medication", "."]
       words: [w-flush, w-io, w-medication]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-iv
+    - w-io
+    - w-attempt
+    - w-fail
+    cue: 'Code in progress: two IV attempts have failed and meds are waiting.'
+    scale:
+    - another IV attempt
+    - IO
+    - central line
+    answerAt: 1
+    why: 심정지에서는 정맥로를 먼저 시도하고, 빨리 안 잡히면 골내로(IO)로 넘어가요. IO는 대개 금방 넣을 수 있어 약이 늦어지지 않아요. 중심정맥관은 시간이 걸리고 압박을 방해할 수 있어 코드 중 첫 선택이 아니에요.
+    example: Two failed attempts — let's go IO.
+    exKo: 두 번 실패했어요 — 골내로로 가요.
+  - kind: context
+    words:
+    - w-io
+    - w-tibia
+    - w-access
+    scenes:
+    - who: 리더에게
+      icon: speech
+      en: IO is in the right tibia — access secured.
+      ok: true
+    - who: 기록자에게
+      icon: board
+      en: Right tibial IO placed at 14:02.
+      ok: true
+    - who: 보호자에게
+      icon: me
+      en: We secured IO access in his tibia.
+      ok: false
+      fix: We put a small needle into his shin bone so we can give him medicine.
+    why: IO·tibia·access는 의료진끼리의 말이에요. 보호자에게는 무엇을 어디에, 왜 했는지를 쉬운 말로 알려요.
 
 - theme: er-arrest
   title: ROSC 후 초기 안정화
@@ -11827,6 +12903,38 @@
       chunks: ["Get vitals again", "and prepare him", "for transfer", "to the ICU", "."]
       words: [w-vital, w-prepare, w-icu]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-systolic
+    cue: 'Ten minutes after ROSC: BP 84/50.'
+    scale:
+    - below target
+    - at target
+    - above target
+    answerAt: 0
+    why: ROSC 후에는 수축기혈압 90 미만, 평균동맥압 65 미만을 피하는 것이 목표예요. 84면 목표보다 낮아서 수액이나 승압제를 준비해요.
+    example: Systolic is 84 — that's below our target of 90.
+    exKo: 수축기 84예요 — 목표 90보다 낮아요.
+  - kind: swap
+    words:
+    - w-rosc
+    who: 보호자에게 · ROSC 직후
+    icon: me
+    before:
+    - 'Good news for now — '
+    - we have ROSC
+    - .
+    options:
+    - his heart has started beating again
+    - we have ROSC
+    - he's out of the woods
+    answer: his heart has started beating again
+    notes:
+      his heart has started beating again: 무슨 일이 일어났는지 쉬운 말로 전한다. for now와 함께 아직 위중하다는 여지도 남긴다.
+      we have ROSC: 팀끼리 외치는 약어라 보호자는 뜻을 모른다.
+      he's out of the woods: 고비를 넘겼다는 뜻이라 사실보다 크게 약속한다. ROSC 직후는 여전히 위중하다.
+    why: ROSC는 팀에 알리는 말이에요. 보호자에게는 쉬운 말로, 그러나 지나친 희망을 주지 않게 전해요.
 
 - theme: er-arrest
   title: 소생 중 SBAR 리더 보고
@@ -11849,12 +12957,12 @@
     - en: "Down about eight minutes, three rounds of CPR so far."
       ko: "다운타임 약 8분, 지금까지 CPR 세 라운드예요."
       chunks: ["Down about eight minutes", ", three rounds", "of CPR", "so far", "."]
-      words: [w-down, w-minute, w-round, w-cpr]
+      words: [w-down, w-round, w-cpr]
       goal: 1
     - en: "Two shocks delivered, epi given twice, last dose four minutes ago."
       ko: "충격 두 번, 에피 두 번, 마지막 투여는 4분 전이에요."
       chunks: ["Two shocks delivered", ", epi given twice", ", last dose", "four minutes ago", "."]
-      words: [w-shock, w-deliver, w-epi, w-give, w-dose, w-minute, w-ago]
+      words: [w-shock, w-deliver, w-epi, w-give, w-dose, w-ago]
       goal: 1
     - en: "Current rhythm is still V-fib, no ROSC yet."
       ko: "현재 리듬은 여전히 심실세동이고, 아직 자발순환은 없어요."
@@ -11871,6 +12979,38 @@
       chunks: ["Let the leader know", "the current rhythm", "and time", "down", "."]
       words: [w-current, w-rhythm, w-down]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-rosc
+    cue: 'Recorder: "We felt a pulse for about ten seconds, then it was gone again."'
+    scale:
+    - no ROSC
+    - transient ROSC
+    - sustained ROSC
+    answerAt: 1
+    why: 맥박이 잠깐 돌아왔다가 곧 없어졌다면 transient ROSC(일시적 자발순환)예요. 리더에게 보고할 때 이 차이가 중요해요 — 반복해서 잃는다면 원인을 다시 찾아야 해요.
+    example: We had transient ROSC, but he lost his pulse again.
+    exKo: 잠깐 자발순환이 있었지만 다시 맥박을 잃었어요.
+  - kind: context
+    words:
+    - w-epi
+    - w-dose
+    scenes:
+    - who: 리더에게 보고
+      icon: speech
+      en: Epi times two, last dose four minutes ago.
+      ok: true
+    - who: 코드 기록지
+      icon: board
+      en: Epinephrine 1 mg IV at 14:02 and 14:06.
+      ok: true
+    - who: 입회한 보호자에게
+      icon: me
+      en: Epi times two, last dose four minutes ago.
+      ok: false
+      fix: We've given him two doses of a medicine that helps his heart.
+    why: epi times two는 리더가 다음 투약 시점을 정하려고 듣는 짧은 보고예요. 보호자에게는 같은 사실을 쉬운 말로 풀어요.
 
 - theme: er-arrest
   title: 가족 입회 소생 지원
@@ -11906,7 +13046,7 @@
       words: [w-stand, w-hear, w-voice]
       goal: 2
     - en: "I know this is frightening, but the team is working hard."
-      ko: "무서우시겠지만, 팀이 열심히 하고 있다는 거 알아요."
+      ko: "무서우시다는 거 알아요, 하지만 팀이 최선을 다하고 있어요."
       chunks: ["I know this is frightening", ", but the team", "is working", "hard", "."]
       words: [w-frighten, w-team]
       goal: 1
@@ -11915,6 +13055,39 @@
       chunks: ["I'll keep explaining", "everything", "as it happens", "."]
       words: [w-keep, w-explain, w-happen]
       goal: 1
+  nuance:
+  - kind: slider
+    words:
+    - w-frighten
+    cue: 'Daughter, shaking and crying: "Is he going to die? I can''t watch this."'
+    scale:
+    - worried
+    - frightened
+    - terrified
+    answerAt: 2
+    why: 몸을 떨며 '못 보겠다'고 할 정도면 terrified(극도로 무서운) 쪽이에요. 감정을 정확히 짚어 말해 주면("I can see how scared you are") 가족이 자기 마음을 인정받았다고 느껴요.
+    example: I can see you're terrified. I'm right here with you.
+    exKo: 정말 무서우신 거 알아요. 제가 바로 곁에 있어요.
+  - kind: swap
+    words:
+    - w-explain
+    - w-happen
+    who: 입회 보호자에게 · 진행 설명
+    icon: me
+    before:
+    - 'Right now the team is '
+    - performing compressions and ventilating him
+    - .
+    options:
+    - pushing on his chest to keep blood moving to his brain
+    - performing compressions and ventilating him
+    - trying to bring him back from the dead
+    answer: pushing on his chest to keep blood moving to his brain
+    notes:
+      pushing on his chest to keep blood moving to his brain: 무엇을, 왜 하는지를 쉬운 말로 전한다.
+      performing compressions and ventilating him: 틀린 말은 아니지만 의료진 말투라 가족에게 그림이 그려지지 않는다.
+      trying to bring him back from the dead: 이미 죽었다는 뜻으로 들려 가족을 더 겁먹게 한다.
+    why: 입회한 가족에게는 눈앞의 장면을 쉬운 말로 풀어 줘요. 겁주는 말도, 어려운 말도 피해요.
 
 - theme: er-arrest
   title: 목격자 CPR 이력 인수
@@ -11959,6 +13132,43 @@
       chunks: ["Tell me exactly", "how many shocks", "were given", "in the field", "."]
       words: [w-shock, w-give, w-field]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-witness
+    - w-arrest
+    - w-shock
+    - w-down
+    pairs:
+    - - witnessed
+      - arrest
+    - - AED
+      - shock
+    - - down
+      - time
+    decoys:
+    - heart
+    why: EMS 인계에서 먼저 묻는 세 가지예요. witnessed arrest(목격된 심정지), AED shock(현장에서 AED로 준 전기충격), down time(쓰러진 뒤 흐른 시간). 셋 다 예후와 이어져서 리더가 먼저 물어요.
+  - kind: context
+    words:
+    - w-field
+    - w-shock
+    - w-give
+    scenes:
+    - who: EMS에게
+      icon: speech
+      en: How many shocks were given in the field?
+      ok: true
+    - who: 리더에게
+      icon: speech
+      en: Per EMS, three shocks and two epi in the field.
+      ok: true
+    - who: 따라온 보호자에게
+      icon: me
+      en: How many shocks were given in the field?
+      ok: false
+      fix: Before the ambulance came, did anyone use a machine that shocks the heart?
+    why: in the field는 '병원 도착 전 현장'을 뜻하는 EMS·의료진 말이에요. 보호자에게는 '구급차가 오기 전'처럼 풀어서 물어요.
 
 - theme: er-arrest
   title: 압박 질 피드백 대응
@@ -12003,6 +13213,39 @@
       chunks: ["Let the chest recoil", "fully", "before you push", "again", "."]
       words: [w-chest, w-recoil, w-push]
       goal: 1
+  nuance:
+  - kind: slider
+    words:
+    - w-ventilate
+    - w-bag
+    cue: 'Recorder: "The bagger is squeezing about 30 times a minute through the tube."'
+    scale:
+    - too slow
+    - on target
+    - too fast
+    answerAt: 2
+    why: 고급기도(기관내관)가 있으면 6초에 한 번, 분당 10회로 환기해요. 30회면 과환기라 흉강 내압이 올라 심장으로 돌아오는 피가 줄어요.
+    example: You're bagging too fast — one breath every six seconds.
+    exKo: 너무 빨리 짜고 있어요 — 6초에 한 번이요.
+  - kind: context
+    words:
+    - w-recoil
+    - w-chest
+    scenes:
+    - who: 압박자에게
+      icon: speech
+      en: You're leaning — let the chest come all the way up.
+      ok: true
+    - who: 코드 후 디브리핑
+      icon: board
+      en: Incomplete chest recoil, likely from leaning.
+      ok: true
+    - who: 한창 압박 중인 압박자에게
+      icon: speech
+      en: Incomplete chest recoil has been noted in your technique.
+      ok: false
+      fix: You're leaning — let it come all the way up.
+    why: 압박 중에는 무엇을 바꿀지를 짧게, 행동으로 말해요. 보고서 같은 문장은 코드가 끝난 뒤 디브리핑에서 써요.
 
 - theme: er-arrest
   title: 저체온 심정지 연장 소생
@@ -12040,13 +13283,47 @@
     - en: "His body is very cold, so we'll keep going."
       ko: "몸이 아주 차가워서 계속 소생을 이어갈게요."
       chunks: ["His body is", "very cold", ", so we'll", "keep going", "."]
-      words: [w-body, w-cold, w-keep]
+      words: [w-cold, w-keep]
       goal: 1
     - en: "We won't call time of death until he's warm."
       ko: "따뜻해지기 전에는 사망 시각을 선언하지 않을게요."
       chunks: ["We won't call", "time of death", "until he's", "warm", "."]
       words: [w-call, w-warm]
       goal: 1
+  nuance:
+  - kind: slider
+    words:
+    - w-core
+    - w-temperature
+    - w-cold
+    cue: 'Esophageal probe: core temperature 27°C (80.6°F).'
+    scale:
+    - mild hypothermia
+    - moderate hypothermia
+    - severe hypothermia
+    answerAt: 2
+    why: 흔히 쓰는 구분은 32~35°C mild, 28~32°C moderate, 28°C 미만 severe예요. 27°C면 severe라 심정지가 올 수 있고, 재가온하며 오래 소생을 이어 가요.
+    example: Core temp is 27 — this is severe hypothermia.
+    exKo: 심부 체온 27도예요 — 중증 저체온이에요.
+  - kind: context
+    words:
+    - w-dead
+    - w-warm
+    scenes:
+    - who: 팀에게
+      icon: speech
+      en: He's not dead until he's warm and dead.
+      ok: true
+    - who: 리더에게 보고
+      icon: monitor
+      en: Core temp is 27 — we keep going until he's rewarmed.
+      ok: true
+    - who: 보호자에게
+      icon: me
+      en: He's not dead until he's warm and dead.
+      ok: false
+      fix: His body is very cold, and the cold can protect his brain, so we're going to keep going while we warm him up.
+    why: '''warm and dead''는 팀이 소생을 멈추지 말자고 쓰는 격언이에요. 보호자에게는 dead라는 말만 크게 들리니, 왜 계속하는지를 쉬운 말로 설명해요.'
 
 - theme: er-arrest
   title: 고칼륨혈증 심정지 표적치료
@@ -12091,6 +13368,44 @@
       chunks: ["Calcium protects the heart", "while insulin", "shifts", "the potassium", "."]
       words: [w-calcium, w-protect, w-heart, w-insulin, w-shift, w-potassium]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-calcium
+    - w-insulin
+    - w-dextrose
+    - w-protect
+    - w-shift
+    pairs:
+    - - calcium
+      - protects the heart
+    - - insulin
+      - shifts potassium into the cells
+    - - dextrose
+      - prevents low blood sugar
+    decoys:
+    - removes potassium from the body
+    why: 칼슘은 심근막을 안정시켜 심장을 보호하지만 칼륨 수치를 낮추지는 않아요. 인슐린은 칼륨을 세포 안으로 옮기고, 포도당은 인슐린 때문에 혈당이 떨어지는 것을 막아요. 칼륨을 몸 밖으로 빼는 것은 투석 같은 다른 치료예요.
+  - kind: swap
+    words:
+    - w-likely
+    - w-hyperkalemia
+    who: 리더에게 · 원인 제시
+    icon: speech
+    before:
+    - 'Missed dialysis makes hyperkalemia '
+    - definitely the cause
+    - .
+    options:
+    - very likely
+    - definitely the cause
+    - kind of possible
+    answer: very likely
+    notes:
+      very likely: 검사 전이라 가능성으로 말하되, 강하게 의심된다는 것이 분명하다.
+      definitely the cause: 칼륨 수치가 나오기 전에 단정한다. 다른 원인을 찾는 눈이 닫힌다.
+      kind of possible: 너무 약하게 들려 팀이 칼슘을 서두르지 않을 수 있다.
+    why: 원인을 제시할 때는 확실성의 정도를 정확히 말해요. 병력만으로 강하게 의심되면 very likely로 분명히, 그러나 단정은 하지 않아요.
 
 - theme: er-arrest
   title: 임산부 심정지 자궁 좌측 전위
@@ -12135,6 +13450,40 @@
       chunks: ["Call OB now", "— she may need", "a perimortem", "C-section", "."]
       words: [w-call, w-ob, w-perimortem, w-csection]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-uterus
+    - w-displace
+    cue: 'Pregnant patient in arrest: the top of the uterus is at the level of the belly button.'
+    scale:
+    - under 20 weeks
+    - about 20 weeks
+    - near term
+    answerAt: 1
+    why: 자궁저가 배꼽 높이면 대략 임신 20주예요. 이 정도부터 누운 자세에서 자궁이 대정맥을 눌러 심장으로 돌아오는 피가 줄기 때문에, 압박하는 동안 손으로 자궁을 왼쪽으로 밀어 줘요.
+    example: Fundus is at the umbilicus — displace the uterus to the left.
+    exKo: 자궁저가 배꼽 높이예요 — 자궁을 왼쪽으로 밀어 주세요.
+  - kind: swap
+    words:
+    - w-perimortem
+    - w-csection
+    who: 남편에게 · 준비 설명
+    icon: me
+    before:
+    - 'We may need to do '
+    - a perimortem C-section
+    - ' to help both her and the baby.'
+    options:
+    - an emergency C-section right here
+    - a perimortem C-section
+    - a quick little operation
+    answer: an emergency C-section right here
+    notes:
+      an emergency C-section right here: 무엇을, 어디서 하는지 쉬운 말로 전한다.
+      a perimortem C-section: 의료진 용어라 뜻이 전해지지 않고, 'mortem'이 죽음을 떠올리게 한다.
+      a quick little operation: 큰 수술을 가볍게 들리게 해 사실을 가린다.
+    why: perimortem C-section은 팀끼리 쓰는 말이에요(요즘은 resuscitative hysterotomy라고도 해요). 아기를 꺼내면 산모 소생에도 도움이 되기 때문에 '둘 다를 위해서'라는 말이 사실이에요.
 
 - theme: er-arrest
   title: 아나필락시스성 심정지
@@ -12179,6 +13528,40 @@
       chunks: ["Run fluids wide open", "and watch", "his airway", "swell", "."]
       words: [w-run, w-fluid, w-wideopen, w-airway, w-swelling]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-epinephrine
+    - w-iv
+    - w-muscle
+    pairs:
+    - - IM epinephrine in the thigh
+      - first-line for anaphylaxis with a pulse
+    - - IV epinephrine 1 mg push
+      - anaphylactic arrest
+    decoys:
+    - mild hives only
+    why: 맥박이 있는 아나필락시스의 첫 치료는 허벅지 바깥쪽 근육주사예요. 맥박이 있는 환자에게 1 mg을 정맥으로 한 번에 밀면 위험해요. 심정지가 오면 ACLS대로 정맥(또는 골내)으로 1 mg씩 줘요. 가벼운 두드러기만 있을 때는 에피네프린이 첫 선택이 아니에요.
+  - kind: context
+    words:
+    - w-difficult
+    - w-airway
+    - w-swelling
+    scenes:
+    - who: 팀에게
+      icon: speech
+      en: Prepare for a difficult airway with all that swelling.
+      ok: true
+    - who: 마취과 호출
+      icon: bell
+      en: Anaphylactic arrest with airway swelling — we need you for a difficult airway.
+      ok: true
+    - who: 보호자에게
+      icon: me
+      en: Expect a difficult airway — he's very swollen.
+      ok: false
+      fix: His throat is very swollen, so putting in a breathing tube may be hard. The experts are here to do it.
+    why: difficult airway는 삽관이 어려울 거라는 의료진끼리의 경고예요. 보호자에게는 무엇이 어렵고 누가 하고 있는지를 쉬운 말로 알려요.
 
 - theme: er-arrest
   title: ROSC 후 재정지 반복
@@ -12223,6 +13606,42 @@
       chunks: ["We need to find", "why he keeps", "re-arresting", "."]
       words: [w-need, w-find]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-find
+    - w-fix
+    - w-restart
+    - w-lose
+    pairs:
+    - - find and fix
+      - the cause
+    - - restart
+      - compressions
+    - - lose
+      - a pulse
+    decoys:
+    - the cath lab
+    why: 재정지가 반복될 때 오가는 짝이에요. 원인은 find and fix, 압박은 restart, 맥박은 lose로 말해요. 같은 말이 되풀이되면 H's&T's를 다시 훑으라는 신호예요.
+  - kind: context
+    words:
+    - w-lose
+    - w-pulse
+    scenes:
+    - who: 팀에게
+      icon: speech
+      en: He's lost his pulse again — restart compressions!
+      ok: true
+    - who: 리더에게 보고
+      icon: monitor
+      en: Third re-arrest in twenty minutes, each after a few minutes of ROSC.
+      ok: true
+    - who: 보호자에게
+      icon: me
+      en: He keeps re-arresting after ROSC.
+      ok: false
+      fix: His heart started again, but it has stopped a few more times. We're working to find out why.
+    why: re-arrest·ROSC는 팀끼리의 말이에요. 보호자에게는 무슨 일이 되풀이되고 있고 팀이 무엇을 하는지를 쉬운 말로 전해요.
 
 - theme: er-arrest
   title: 소생 중단·사망 고지
@@ -12250,12 +13669,12 @@
     - en: "The team agrees it's time to focus on his comfort."
       ko: "팀은 이제 편안함에 집중할 때라는 데 동의해요."
       chunks: ["The team agrees", "it's time", "to focus on", "his comfort", "."]
-      words: [w-team, w-time, w-focus, w-comfort]
+      words: [w-team, w-focus, w-comfort]
       goal: 2
     - en: "I'm so sorry — take all the time you need with him."
       ko: "정말 죄송해요 — 필요한 만큼 시간을 가지세요."
       chunks: ["I'm so sorry", "— take all the time", "you need", "with him", "."]
-      words: [w-sorry, w-time, w-need]
+      words: [w-sorry, w-need]
       goal: 2
     - en: "I know this is very hard to hear."
       ko: "정말 듣기 힘드시다는 거 알아요."
@@ -12267,6 +13686,39 @@
       chunks: ["We'll stop", "compressions", "and focus on", "his comfort now", "."]
       words: [w-stop, w-compression, w-focus, w-comfort]
       goal: 1
+  nuance:
+  - kind: slider
+    words:
+    - w-resuscitate
+    - w-wish
+    cue: 'Daughter: "He never wanted CPR or a breathing tube, but he''d want everything else."'
+    scale:
+    - full code
+    - DNR/DNI
+    - comfort care only
+    answerAt: 1
+    why: CPR과 삽관만 원하지 않고 다른 치료는 원한다면 DNR/DNI예요. DNR은 '아무 치료도 안 한다'가 아니에요. comfort care는 치료 목표 자체를 편안함으로 바꾸는 것이라 한 단계 더 나아간 것이에요.
+    example: He's DNR/DNI, but we'll keep treating everything else.
+    exKo: 소생술·삽관 거부지만 나머지 치료는 계속해요.
+  - kind: swap
+    words:
+    - w-sorry
+    who: 가족에게 · 사망 고지
+    icon: me
+    before:
+    - 'I''m so sorry — your father '
+    - passed away
+    - .
+    options:
+    - died
+    - passed away
+    - is no longer with us
+    answer: died
+    notes:
+      died: 분명한 말이라 가족이 되묻지 않는다. 한 번은 이렇게 말해 준다.
+      passed away: 부드럽지만 이것만 쓰면 아직 살아 있는지 헷갈려 되묻는 가족이 있다.
+      is no longer with us: 돌려 말해서 사망 사실이 흐려진다.
+    why: 미국 응급실의 사망 고지 교육(GRIEV_ING 등)은 'died'를 한 번은 분명히 말하라고 가르쳐요. 그 앞뒤로 위로의 말과 부드러운 표현을 곁들여도 괜찮아요.
 
 - theme: er-arrest
   title: 외상성 심정지 특수 대응
@@ -12311,6 +13763,44 @@
       chunks: ["Decompress both sides", "of the chest", "before you", "keep pushing", "."]
       words: [w-decompress, w-side, w-chest, w-keep, w-push]
       goal: 1
+  nuance:
+  - kind: pair
+    words:
+    - w-decompress
+    - w-side
+    - w-control
+    - w-bleed
+    - w-massive
+    - w-transfusion
+    pairs:
+    - - decompress
+      - both sides of the chest
+    - - control
+      - the bleeding
+    - - activate
+      - the massive transfusion protocol
+    decoys:
+    - the pupils
+    why: 외상성 심정지에서는 원인을 동시에 잡아요. 흉강은 양쪽을 decompress, 출혈은 control, 수혈은 massive transfusion 프로토콜을 activate해요.
+  - kind: context
+    words:
+    - w-traumatic
+    - w-arrest
+    scenes:
+    - who: 외상팀에게
+      icon: speech
+      en: Traumatic arrest — decompress both sides now.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Traumatic cardiac arrest; bilateral chest decompression performed.
+      ok: true
+    - who: 보호자에게
+      icon: me
+      en: It's a traumatic arrest, so we're decompressing both sides.
+      ok: false
+      fix: His injuries have stopped his heart. We're letting trapped air out of his chest and replacing the blood he lost.
+    why: traumatic arrest·decompress는 외상팀의 말이에요. 보호자에게는 다친 것 때문에 심장이 멈췄고, 팀이 무엇을 하고 있는지를 쉬운 말로 알려요.
 
 - theme: er-shock
   title: 저혈압 초기 활력 인지
