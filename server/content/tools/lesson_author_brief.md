@@ -186,17 +186,33 @@ nuance:
       - {who: 야간 의사 콜, icon: monitor, en: "He is deteriorating — SpO2 down to 86.", ok: true}
     why: "의료진끼리는 정확한 임상어가 좋지만, 가족에게는 차갑게 들려요."
   - kind: swap                         # 한 단어 바꾸기
-    words: [w-died]
-    who: "보호자에게 · 임종 소식"
+    words: [w-hypotensive]
+    who: "환자에게 · 바이탈 설명"
     icon: me
-    before: ["Your mom ", "died", " last night."]   # 앞 · 바꿀 말 · 뒤 (스페이스까지 그대로)
-    options: [passed away, expired, is gone]
-    answer: passed away
-    notes: {passed away: "가족 앞에서 표준인 완곡 표현.", expired: "차트·행정 용어. 사람에게는 차갑다.", is gone: "너무 모호해 오해의 여지."}
-    why: "died는 사실이지만 직설이라 가족에겐 충격이 커요."
+    before: ["Your blood pressure is ", "hypotensive", " right now."]   # 앞 · 바꿀 말 · 뒤 (스페이스까지 그대로)
+    options: [a little low, hypotensive, dropping dangerously]
+    answer: a little low
+    notes: {a little low: "환자에게 쉬운 말. 겁주지 않으면서 사실을 말한다.", hypotensive: "의료진끼리의 말. 환자는 못 알아듣는다.", dropping dangerously: "사실보다 무겁게 들려 불안을 키운다."}
+    why: "같은 수치라도 환자에게는 쉬운 말로, 의료진끼리는 임상어로 말해요."
 ```
 
-- **`why`와 `notes`는 사실이어야 합니다.** 미국 병원에서 실제로 그렇게 쓰이는지 확신이 없는 뉘앙스는
+- **사망 고지는 완곡어로 바꾸는 문제로 만들지 마세요.** 미국 응급실의 사망 고지 교육(GRIEV_ING 등)은
+  **"died"를 한 번은 분명히 말하라**고 가르칩니다 — `passed away`·`we lost him`만 쓰면 가족이 아직 살아
+  있는지 되묻습니다. 이 주제의 swap은 거꾸로 `expired`·`we lost him` → `has died`여야 맞습니다.
+  (이 지시서의 예전 예시가 `died → passed away`였는데, 틀린 예시였습니다.)
+- **짝(pair)은 정답이 하나로만 맞아야 합니다.** 왼쪽 말을 다른 오른쪽 말과 이어도 맞는 영어가 되면
+  안 됩니다(`dull pain`·`sharp pain`이 둘 다 되는 식). 오답(`decoys`)도 어느 왼쪽 말에도 붙지 않아야
+  합니다. 구동사로 유일한 짝을 만들기 어려운 상황은 `slider`로 바꾸세요.
+- **오답은 정답과 품사가 같게.** 품사가 달라서 헷갈리는 짝(`breathe`/`breath`, `lose`/`loose`)은
+  `decoyChips`에 넣으면 좋습니다.
+- **같은 뜻(`ko`)을 가진 은행 단어를 서로의 오답으로 쓰지 마세요**(`drowsy`/`sleepy`). 듣고 뜻 고르기에서
+  두 답이 다 맞게 됩니다.
+- **`cue`에는 정답의 파생형·약어도 넣지 마세요**(`injury`의 단서에 "injure", `heart rate`에 "HR").
+  검사기는 글자 그대로의 정답만 확실히 잡고, 어형은 경고(W13)로만 알려 줍니다.
+- **목록 안의 `on`·`off`·`no`·`yes`도 따옴표로 감싸세요**(`decoyChips: ["on", "in"]`). 따옴표가 없으면
+  불리언이 되어 앱에 적재되지 않습니다(V11).
+- **`tag`는 주제 안에서 10개 안팎의 정해진 집합**으로 쓰세요. 단어마다 새 이름을 만들지 마세요.
+- `why`와 `notes`는 사실이어야 합니다. 미국 병원에서 실제로 그렇게 쓰이는지 확신이 없는 뉘앙스는
   쓰지 마세요. 그럴듯하지만 틀린 해설은 틀린 오답보다 나쁩니다 — 학습자가 그대로 믿습니다.
 - `icon`은 위 단어 아이콘과 같은 목록에서.
 - `context`의 세 장면은 **같은 뜻**이어야 합니다. 뜻이 달라서 어색한 것이 아니라, 듣는 사람·자리에

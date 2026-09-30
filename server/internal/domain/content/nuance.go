@@ -208,6 +208,22 @@ func ValidateNuance(scenario string, used map[string]bool, items []Nuance, requi
 			if len(n.Decoys) == 0 {
 				bad(i, "V14", "pair has no decoys")
 			}
+			lefts, rights := map[string]bool{}, map[string]bool{}
+			for _, p := range n.Pairs {
+				if len(p) != 2 {
+					continue
+				}
+				l, r := normText(p[0]), normText(p[1])
+				if lefts[l] || rights[r] {
+					bad(i, "V14", "pair: %q or %q appears twice on one side — the match must be unique", p[0], p[1])
+				}
+				lefts[l], rights[r] = true, true
+			}
+			for _, d := range n.Decoys {
+				if rights[normText(d)] {
+					bad(i, "V14", "pair decoy %q is also a right-hand answer", d)
+				}
+			}
 		case NuanceReel:
 			if len(n.Scenes) < 4 {
 				bad(i, "V14", "reel has %d scenes, want ≥4", len(n.Scenes))
@@ -229,8 +245,13 @@ func ValidateNuance(scenario string, used map[string]bool, items []Nuance, requi
 				bad(i, "V14", "context has %d scenes that do not fit, want exactly 1", wrong)
 			}
 		case NuanceSwap:
-			if len(n.Before) != 3 {
+			switch {
+			case len(n.Before) != 3:
 				bad(i, "V14", "swap before has %d parts, want 3", len(n.Before))
+			case strings.TrimSpace(n.Before[1]) == "":
+				bad(i, "V14", "swap: the word to swap (before[1]) is empty")
+			case normText(n.Before[1]) == normText(n.Answer):
+				bad(i, "V14", "swap: the word to swap is already the answer")
 			}
 			found := false
 			for _, o := range n.Options {
@@ -245,6 +266,15 @@ func ValidateNuance(scenario string, used map[string]bool, items []Nuance, requi
 				bad(i, "V14", "swap answer %q is not one of the options", n.Answer)
 			}
 		}
+	}
+	reels := 0
+	for _, n := range items {
+		if n.Kind == NuanceReel {
+			reels++
+		}
+	}
+	if reels > 1 {
+		errs = append(errs, fmt.Errorf("scenario %s: V14 %d reels — a situation has at most one", scenario, reels))
 	}
 	if required {
 		if steps[1] == 0 {

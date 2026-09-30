@@ -873,6 +873,33 @@ def assembles_to(chunks: list[str], en: str) -> bool:
 # ---------------------------------------------------------------------------
 
 V45_WORD_FIELDS = ("exKo", "cue", "tag", "distractorsEn", "distractorsKo", "chips", "decoyChips")
+# NbIcon 이 그리는 이름 — mobile/src/components/nb/NbIcon.tsx 와 같다(지시서의 목록과도).
+NB_ICONS = set("""baby bandage bell board bulb calendar chartup check chevronDown chevronLeft chevronRight
+chevronUp coffee compass cross gear handshake2 home hospital lab lock magnify me mic monitor pencil pill
+plane pushpin scalpel shield siren speaker speech star stetho trophy""".split())
+MAX_FRAGS_PER_WORD, MAX_FRAGS = 4, 6
+
+
+def _not_str(value, path: str) -> list[tuple[str, str]]:
+    """문자열이어야 할 자리에 문자열이 아닌 값(따옴표 없는 on·off·no·yes → 불리언, 숫자)."""
+    out = []
+    if isinstance(value, list):
+        for i, v in enumerate(value):
+            out += _not_str(v, f"{path}[{i}]")
+    elif value is not None and not isinstance(value, str):
+        out.append(("V11", f"{path}={value!r} is {type(value).__name__}, not a string "
+                           f"(YAML reads bare off/on/no/yes as booleans — quote it)"))
+    return out
+
+
+def _stems(text) -> set[str]:
+    return {stem(t) for t in tokenize(str(text)) if len(t) >= 3}
+
+
+def _same_word(a, b) -> bool:
+    """철자는 달라도 같은 낱말의 어형인가 — keep/kept, begin/began, injury/injure."""
+    ta, tb = tokenize(str(a)), tokenize(str(b))
+    return len(ta) == len(tb) and len(ta) > 0 and [stem(x) for x in ta] == [stem(x) for x in tb]
 NUANCE_STEP = {"slider": 1, "pair": 1, "reel": 2, "context": 2, "swap": 2}
 
 
@@ -890,8 +917,13 @@ def is_v45_word(w: dict) -> bool:
 
 
 def check_word_v45(w: dict) -> list[tuple[str, str]]:
-    """V12·V13. (규칙, 설명) 목록을 돌려준다."""
+    """V11(값 타입)·V12·V13. (규칙, 설명) 목록을 돌려준다."""
     out: list[tuple[str, str]] = []
+    for k in V45_WORD_FIELDS:
+        vals = w.get(k)
+        if k == "chips" and isinstance(vals, list):
+            vals = [f for word in vals if isinstance(word, list) for f in word]
+        out += [(r, f"word {w.get('id')!r}: {d}") for r, d in _not_str(vals, k)]
     wid, en, ko = w.get("id"), str(w.get("en") or ""), str(w.get("ko") or "")
     for k in ("exKo", "cue", "tag"):
         if not str(w.get(k) or "").strip():
@@ -923,6 +955,15 @@ def check_word_v45(w: dict) -> list[tuple[str, str]]:
             out.append(("V13", f"word {wid!r}: decoy chip {d!r} is one of the answer's own fragments"))
     if en and en.lower() in str(w.get("cue") or "").lower():
         out.append(("V13", f"word {wid!r}: cue gives the answer {en!r} away"))
+    elif en and _stems(en) & _stems(w.get("cue") or ""):
+        out.append(("W13", f"word {wid!r}: cue may give a form of the answer {en!r} away — read it"))
+    for o in w.get("distractorsEn") or []:
+        if _norm(o) != _norm(en) and _same_word(o, en):
+            out.append(("W13", f"word {wid!r}: distractor {o!r} may be only another form of {en!r} — read it"))
+    if isinstance(chips, list) and all(isinstance(x, list) for x in chips):
+        if any(len(word) > MAX_FRAGS_PER_WORD for word in chips) or sum(len(x) for x in chips) > MAX_FRAGS:
+            out.append(("V12", f"word {wid!r}: too many fragments {chips!r} "
+                               f"(≤{MAX_FRAGS_PER_WORD} per word, ≤{MAX_FRAGS} in all)"))
     return out
 
 
@@ -936,6 +977,17 @@ def check_nuance(items: list, used: set[str], required: bool) -> list[tuple[str,
             out.append(("V14", f"nuance[{i}]: unknown kind {kind!r} (allowed: {sorted(NUANCE_STEP)})"))
             continue
         steps[NUANCE_STEP[kind]] += 1
+        for k in ("why", "cue", "example", "exKo", "word", "who", "icon", "answer", "scale", "decoys", "before", "options"):
+            out += [(r, f"nuance[{i}] ({kind}): {d}") for r, d in _not_str(n.get(k), k)]
+        for p in n.get("pairs") or []:
+            out += [(r, f"nuance[{i}] ({kind}): {d}") for r, d in _not_str(p, "pairs")]
+        for j, sc in enumerate(n.get("scenes") or []):
+            for k in ("who", "icon", "en", "ko", "tone", "fix"):
+                out += [(r, f"nuance[{i}] ({kind}): {d}") for r, d in _not_str(sc.get(k), f"scenes[{j}].{k}")]
+            if sc.get("icon") and sc.get("icon") not in NB_ICONS:
+                out.append(("V14", f"nuance[{i}] ({kind}): scene icon {sc.get('icon')!r} is not an NbIcon name"))
+        if n.get("icon") and n.get("icon") not in NB_ICONS:
+            out.append(("V14", f"nuance[{i}] ({kind}): icon {n.get('icon')!r} is not an NbIcon name"))
         words = n.get("words") or []
         if not words:
             out.append(("V15", f"nuance[{i}] ({kind}): names no words"))
@@ -958,6 +1010,13 @@ def check_nuance(items: list, used: set[str], required: bool) -> list[tuple[str,
                     out.append(("V14", f"nuance[{i}] pair: {p!r} is not [left, right]"))
             if not n.get("decoys"):
                 out.append(("V14", f"nuance[{i}] pair: no decoys"))
+            lefts = [str(p[0]) for p in pairs if isinstance(p, list) and len(p) == 2]
+            rights = [str(p[1]) for p in pairs if isinstance(p, list) and len(p) == 2]
+            if len(set(map(_norm, lefts))) != len(lefts) or len(set(map(_norm, rights))) != len(rights):
+                out.append(("V14", f"nuance[{i}] pair: a word appears twice on one side — the match must be unique"))
+            for d in n.get("decoys") or []:
+                if _norm(d) in set(map(_norm, rights)):
+                    out.append(("V14", f"nuance[{i}] pair: decoy {d!r} is also a right-hand answer"))
         elif kind == "reel":
             if len(n.get("scenes") or []) < 4:
                 out.append(("V14", f"nuance[{i}] reel: {len(n.get('scenes') or [])} scene(s), want >= 4"))
@@ -974,12 +1033,19 @@ def check_nuance(items: list, used: set[str], required: bool) -> list[tuple[str,
         elif kind == "swap":
             if len(n.get("before") or []) != 3:
                 out.append(("V14", f"nuance[{i}] swap: before has {len(n.get('before') or [])} part(s), want 3"))
+            elif not str((n.get("before") or ["", ""])[1]).strip():
+                out.append(("V14", f"nuance[{i}] swap: the word to swap (before[1]) is empty"))
+            elif _norm(n.get("before")[1]) == _norm(n.get("answer") or ""):
+                out.append(("V14", f"nuance[{i}] swap: the word to swap is already the answer"))
             options, notes = n.get("options") or [], n.get("notes") or {}
             if n.get("answer") not in options:
                 out.append(("V14", f"nuance[{i}] swap: answer {n.get('answer')!r} is not an option"))
             for o in options:
                 if not str(notes.get(o) or "").strip():
                     out.append(("V14", f"nuance[{i}] swap: option {o!r} has no note"))
+    reels = sum(1 for n in items or [] if n.get("kind") == "reel")
+    if reels > 1:
+        out.append(("V14", f"{reels} reels — a situation has at most one"))
     if required:
         if steps[1] == 0:
             out.append(("V14", "no STEP 1 nuance (slider|pair) — a v45 situation needs at least one"))
@@ -1055,6 +1121,7 @@ def verify_dept(
     used_words_by_theme: dict[str, set[str]] = collections.defaultdict(set)
     themes_seen: set[str] = set()
     v45_themes: set[str] = set()
+    v45_warnings: list[Violation] = []
 
     # V10 — 은행 안의 id 중복. 서버(gencontent)가 적재할 때 오류로 막는 조건이라,
     # 여기서 통과시키면 파일을 합치는 순간에야 드러난다. raw_banks가 없으면(옛
@@ -1084,7 +1151,9 @@ def verify_dept(
             v45_themes.add(theme)
             for w in words:
                 for rule, detail in check_word_v45(w):
-                    violations.append(Violation(dept, theme, "-", rule, detail))
+                    # W13 은 경고다. 어간 규칙은 공격적이라(tube/tub, unit/unity) 같은 낱말인지
+                    # 기계가 확정할 수 없고, worse/worst 처럼 뜻이 다른 좋은 오답도 같이 걸린다.
+                    (v45_warnings if rule.startswith("W") else violations).append(Violation(dept, theme, "-", rule, detail))
 
     n_seeds = n_with_sentences = 0
 
@@ -1217,6 +1286,7 @@ def verify_dept(
                 Violation(dept, theme, "-", "V7", f"{len(unused)}/{len(bank)} bank word(s) unused: {unused}")
             )
 
+    warnings += v45_warnings
     coverage = {"seeds": n_seeds, "with_sentences": n_with_sentences, "themes": sorted(themes_seen)}
     return violations, warnings, coverage
 
@@ -1753,6 +1823,25 @@ def run_selftest() -> int:
     cases.append(("V14 (context with two scenes that do not fit)", v45_lex(), v45_seed(two_wrong), "V14", False))
     stray = [{**good_nuance[0], "words": ["w-nowhere"]}, good_nuance[1]]
     cases.append(("V15 (nuance on a word the sentences do not use)", v45_lex(), v45_seed(stray), "V15", False))
+    # 파일럿 3주제가 짚은 구멍들 (2026-09-30)
+    cases.append(("V11 (bare on inside decoyChips reads as a boolean)",
+                  v45_lex(lambda ws: ws[0].update(decoyChips=[True])), v45_seed(good_nuance), "V11", False))
+    cases.append(("V12 (too many fragments)",
+                  v45_lex(lambda ws: ws[0].update(chips=[list(ws[0]["en"][:5]), [ws[0]["en"][5:]]])), v45_seed(good_nuance), "V12", False))
+    swap_empty = [good_nuance[0], {"kind": "swap", "words": ["w-name"], "before": ["", "", " b"], "options": ["x", "y"],
+                                   "answer": "x", "notes": {"x": "1", "y": "2"}, "why": "w"}]
+    cases.append(("V14 (swap with nothing to swap)", v45_lex(), v45_seed(swap_empty), "V14", False))
+    swap_same = [good_nuance[0], {**swap_empty[1], "before": ["a ", "x", " b"]}]
+    cases.append(("V14 (swap target is already the answer)", v45_lex(), v45_seed(swap_same), "V14", False))
+    reel = {"kind": "reel", "words": ["w-name"], "word": "name", "scenes": [{"who": str(k), "en": str(k)} for k in range(4)]}
+    cases.append(("V14 (two reels)", v45_lex(), v45_seed(good_nuance + [reel, reel]), "V14", False))
+    pair_decoy = [{"kind": "pair", "words": ["w-name"], "pairs": [["a", "b"], ["c", "d"]], "decoys": ["b"], "why": "w"}, good_nuance[1]]
+    cases.append(("V14 (a pair decoy is also a right answer)", v45_lex(), v45_seed(pair_decoy), "V14", False))
+    bad_icon = [good_nuance[0], {**good_nuance[1], "scenes": [{**good_nuance[1]["scenes"][0], "icon": "round"}] + good_nuance[1]["scenes"][1:]}]
+    cases.append(("V14 (a scene icon NbIcon does not draw)", v45_lex(), v45_seed(bad_icon), "V14", False))
+    cases.append(("W13 (a distractor that is only a past tense — warning)",
+                  v45_lex(lambda ws: ws[1].update(distractorsEn=["checked", "chuck"])), v45_seed(good_nuance), "W13", True))
+
     # v44 은행에 뉘앙스가 없는 것은 정상이다 — 보강 전의 ER·ICU·OR.
     cases.append(("v44 bank, no nuance (no violations expected)", _LEX_BASE, v45_seed(None), "", False))
 

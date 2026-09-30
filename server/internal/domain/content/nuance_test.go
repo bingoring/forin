@@ -147,6 +147,10 @@ func TestValidateNuance_shapes(t *testing.T) {
 		"swap answer not option":   {4, func(n *Nuance) { n.Answer = "q" }},
 		"swap note missing":        {4, func(n *Nuance) { delete(n.Notes, "z") }},
 		"swap before of 2":         {4, func(n *Nuance) { n.Before = n.Before[:2] }},
+		"swap nothing to swap":     {4, func(n *Nuance) { n.Before[1] = " " }},
+		"swap target is answer":    {4, func(n *Nuance) { n.Before[1] = "x" }},
+		"pair decoy is an answer":  {1, func(n *Nuance) { n.Decoys = []string{"b"} }},
+		"pair left twice":          {1, func(n *Nuance) { n.Pairs[1][0] = "a" }},
 	} {
 		items := okNuance()
 		c.mut(&items[c.i])
@@ -206,5 +210,12 @@ func TestValidateBundleLessons_v45(t *testing.T) {
 	}
 	if errs := ValidateBundleLessons(v44); len(errs) != 0 {
 		t.Fatalf("v44 bundle: %v", errs)
+	}
+}
+
+func TestValidateNuance_atMostOneReel(t *testing.T) {
+	items := append(okNuance(), okNuance()[2])
+	if errs := ValidateNuance("s", used, items, true); !hasErr(errs, "reels") {
+		t.Fatalf("two reels: %v", errs)
 	}
 }
