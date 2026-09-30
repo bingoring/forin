@@ -48,6 +48,13 @@ describe('isRight', () => {
     expect(isRight({ kind: 'word', word: w, type: 'fill' }, ['route', 'en'])).toBe(false);
     expect(isRight({ kind: 'word', word: w, type: 'fill' }, ['en', 'zz'])).toBe(false);
   });
+  // ER content review: a decoy can spell the answer another way (heav+ily for heavi+ly).
+  // The learner built the right word, so it is right.
+  it('fill: the right word built from other fragments is still right', () => {
+    const h = { ...v45('w-h', 'heavily', [['heavi', 'ly']]), decoyChips: ['heav', 'ily'] };
+    expect(isRight({ kind: 'word', word: h, type: 'fill' }, ['heav', 'ily'])).toBe(true);
+    expect(isRight({ kind: 'word', word: h, type: 'fill' }, ['heav', 'ly'])).toBe(false);
+  });
   it('pick / listen', () => {
     expect(isRight({ kind: 'word', word: w, type: 'pick' }, 'en route')).toBe(true);
     expect(isRight({ kind: 'word', word: w, type: 'pick' }, 'en routex')).toBe(false);

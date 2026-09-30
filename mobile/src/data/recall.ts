@@ -102,7 +102,8 @@ export function isRight(card: RecallCard, answer: RecallAnswer | null): boolean 
   if (card.kind === 'word') {
     const w = card.word;
     switch (card.type) {
-      case 'fill': return Array.isArray(answer) && answer.join('|') === (w.chips ?? []).flat().join('|');
+      // By the spelling, not the fragments: a decoy may spell the answer another way.
+      case 'fill': return Array.isArray(answer) && answer.join('') === (w.chips ?? []).flat().join('');
       case 'pick': return answer === w.en;
       case 'listen': return answer === w.ko;
     }
