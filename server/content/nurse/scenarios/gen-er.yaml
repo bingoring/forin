@@ -48449,7 +48449,6 @@
         - '?'
       words:
         - w-hit
-        - w-head
       goal: 1
     - en: Did you lose consciousness at all?
       ko: 잠깐이라도 의식을 잃으셨나요?
@@ -48482,7 +48481,6 @@
         - you fell
         - '?'
       words:
-        - w-tell
         - w-fall
       goal: 1
     - en: Were you awake the whole time after you fell?
@@ -48510,6 +48508,40 @@
         - w-miss
         - w-happen
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-lose
+        - w-consciousness
+      why: 잠깐 캄캄해졌다가 바닥에 있었다면 짧은 의식소실이에요. 멍하기만 했는지, 잠깐 잃었는지, 오래 잃었는지는 두부외상 사정에서 꼭 가려 적는 항목이에요.
+      cue: 'Patient: "Everything went dark for a second, and then I was on the floor."'
+      scale:
+        - felt dazed
+        - blacked out briefly
+        - was out for several minutes
+      answerAt: 1
+      example: She blacked out briefly after the fall.
+      exKo: 넘어진 뒤 잠깐 의식을 잃었대요.
+    - kind: context
+      words:
+        - w-lose
+        - w-consciousness
+        - w-fall
+      why: LOC(loss of consciousness)는 차트와 의료진끼리 쓰는 약어예요. 환자에게는 black out, lose consciousness처럼 풀어서 물어야 정확한 답이 나와요.
+      scenes:
+        - who: 차트 기록
+          icon: board
+          en: Pt reports brief LOC after fall.
+          ok: true
+        - who: 의사에게 보고
+          icon: speech
+          en: He says he lost consciousness for a few seconds after the fall.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: Any LOC after you fell?
+          ok: false
+          fix: Did you black out or lose consciousness after you fell?
 - id: SCN-ER-00419
   profession: ""
   eventId: EVT-ER-00125
@@ -48580,19 +48612,16 @@
       words:
         - w-open
         - w-eye
-        - w-look
       goal: 1
     - en: Tell me where you are and what day it is.
-      ko: 여기가 어디고 오늘이 며칠인지 말씀해 주세요.
+      ko: 여기가 어디고 오늘이 무슨 요일인지 말씀해 주세요.
       chunks:
         - Tell me
         - where you are
         - and what day
         - it is
         - .
-      words:
-        - w-tell
-        - w-day
+      words: []
       goal: 1
     - en: I'm going to recheck this in a few minutes.
       ko: 몇 분 뒤에 이걸 다시 확인할게요.
@@ -48604,7 +48633,6 @@
         - .
       words:
         - w-recheck
-        - w-minute
       goal: 2
     - en: Squeeze my hand as tight as you can.
       ko: 제 손을 최대한 세게 잡아 보세요.
@@ -48615,7 +48643,6 @@
         - .
       words:
         - w-squeeze
-        - w-hand
       goal: 1
     - en: Your score has stayed the same since your last check.
       ko: 지난번 확인 이후로 점수는 그대로예요.
@@ -48637,10 +48664,7 @@
         - these same questions
         - again soon
         - .
-      words:
-        - w-ask
-        - w-question
-        - w-again
+      words: []
       goal: 1
     - en: I ask the same questions again because it shows me if you're changing.
       ko: 같은 질문을 반복하는 건 변화가 있는지 알 수 있어서예요.
@@ -48651,12 +48675,44 @@
         - if you're changing
         - .
       words:
-        - w-ask
-        - w-question
-        - w-again
         - w-show
         - w-change
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-open
+        - w-eye
+        - w-score
+      why: 이름을 불러야 눈을 뜨면 to voice(E3)예요. 먼저 떠 있으면 spontaneously(E4), 눌러야 뜨면 to pressure(E2, 예전 표기로는 to pain) — GCS 눈 뜨기 항목의 단계예요.
+      cue: You say her name, and she opens her eyes.
+      scale:
+        - to pressure
+        - to voice
+        - spontaneously
+      answerAt: 1
+      example: She opens her eyes to voice—that's E3.
+      exKo: 부르면 눈을 떠요 — E3이에요.
+    - kind: swap
+      words:
+        - w-recheck
+        - w-check
+      why: 같은 재사정이라도 환자에게는 쉬운 말로 예고해요. 같은 질문을 되풀이하는 이유도 함께 말해 주면 환자가 덜 당황해요.
+      who: 환자에게 · 재사정 예고
+      icon: me
+      before:
+        - 'I''m going to '
+        - reassess your GCS
+        - ' in a few minutes.'
+      options:
+        - check on you again
+        - reassess your GCS
+        - re-examine your neuro status
+      answer: check on you again
+      notes:
+        check on you again: 환자에게 쉬운 말. 곧 다시 와서 살펴본다는 것이 그대로 전해진다.
+        re-examine your neuro status: 틀린 말은 아니지만 딱딱하고, 무슨 문제가 있나 싶어 불안하게 들릴 수 있다.
+        reassess your GCS: 의료진끼리의 말. 환자는 GCS가 무엇인지 모른다.
 - id: SCN-ER-00420
   profession: ""
   eventId: EVT-ER-00125
@@ -48727,7 +48783,6 @@
       words:
         - w-light
         - w-eye
-        - w-look
       goal: 1
     - en: This checks how your pupils respond.
       ko: 이건 동공이 어떻게 반응하는지 보는 거예요.
@@ -48787,6 +48842,43 @@
         - w-pupil
         - w-serious
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-still
+        - w-same
+        - w-size
+      why: 펜라이트를 비추는 동안 움직이지 말라는 hold still, 앞을 보라는 look straight ahead, 양쪽 동공을 견줄 때는 the same size예요.
+      pairs:
+        - - hold
+          - still
+        - - look straight
+          - ahead
+        - - same
+          - size
+      decoys:
+        - loudly
+    - kind: context
+      words:
+        - w-pupil
+        - w-same
+        - w-size
+        - w-respond
+      why: PERRL(pupils equal, round, reactive to light)은 차트용 약어예요. 환자에게는 크기가 같고 빛에 정상적으로 반응한다고 풀어서 말해요.
+      scenes:
+        - who: 차트 기록
+          icon: board
+          en: PERRL, 3 mm bilaterally.
+          ok: true
+        - who: 동료 간호사에게
+          icon: speech
+          en: Pupils are equal, round, and reactive, 3 millimeters.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: Your pupils are PERRL, 3 mm.
+          ok: false
+          fix: Your pupils are the same size and react normally to the light.
 - id: SCN-ER-00421
   profession: ""
   eventId: EVT-ER-00125
@@ -48878,7 +48970,6 @@
         - painful
         - .
       words:
-        - w-tell
         - w-spot
         - w-painful
       goal: 1
@@ -48919,6 +49010,42 @@
         - w-stay
         - w-firm
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-pressure
+        - w-slow
+        - w-painful
+      why: 지혈할 때는 apply pressure, 출혈이 줄어들 때는 slow down, 유난히 아픈 곳은 especially painful이에요.
+      pairs:
+        - - apply
+          - pressure
+        - - slow
+          - down
+        - - especially
+          - painful
+      decoys:
+        - scalp
+    - kind: swap
+      words:
+        - w-bump
+        - w-feel
+      why: 같은 부기라도 환자에게는 bump라고 하고, 차트에는 scalp hematoma로 적어요.
+      who: 환자에게 · 두피 촉진
+      icon: me
+      before:
+        - 'I can feel a '
+        - hematoma
+        - ' here.'
+      options:
+        - bump
+        - hematoma
+        - mass
+      answer: bump
+      notes:
+        bump: 환자가 쓰는 쉬운 말. 겁주지 않으면서 사실 그대로다.
+        hematoma: 의료진의 말(혈종). 차트에는 맞지만 환자는 알아듣기 어렵다.
+        mass: '''덩어리·종괴''로 들려 종양을 떠올리게 해 불안을 키운다.'
 - id: SCN-ER-00422
   profession: ""
   eventId: EVT-ER-00125
@@ -49011,7 +49138,6 @@
         - w-watch
         - w-sign
         - w-pressure
-        - w-head
       goal: 1
     - en: Has the vomiting happened more than once?
       ko: 구토가 한 번 넘게 있었나요?
@@ -49047,6 +49173,38 @@
       words:
         - w-worse
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-nausea
+        - w-vomit
+      why: 속이 약간 불편한 정도면 queasy, 토할 것 같으면 nauseous, 실제로 게우면 vomiting이에요. 두부외상 뒤 반복 구토는 CT를 고려하는 위험 징후라서 오심만 있는지, 실제로 토했는지를 가려 적어요.
+      cue: 'Patient: "My stomach feels a little unsettled, but I haven''t thrown up."'
+      scale:
+        - queasy
+        - nauseous
+        - vomiting
+      answerAt: 0
+      example: He's a little queasy but hasn't vomited.
+      exKo: 속이 조금 울렁거리지만 토하지는 않았어요.
+    - kind: context
+      words:
+        - w-vomit
+      why: emesis는 차트와 의료진끼리의 말이에요. 환자에게는 throw up이나 vomit처럼 일상어로 말해요.
+      scenes:
+        - who: 차트 기록
+          icon: board
+          en: Emesis x2 in past hour.
+          ok: true
+        - who: 의사에게 보고
+          icon: speech
+          en: He's vomited twice in the last hour.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: You've had two episodes of emesis this hour.
+          ok: false
+          fix: You've thrown up twice in the last hour.
 - id: SCN-ER-00423
   profession: ""
   eventId: EVT-ER-00125
@@ -49180,6 +49338,40 @@
         - w-seizure
         - w-return
       goal: 1
+  nuance:
+    - kind: slider
+      words:
+        - w-drowsy
+        - w-wake
+      why: 부르면 바로 깨고 말도 평소 같으면 a bit drowsy 쪽이에요. 깨우기 힘들어지거나 깨지 않으면 바로 응급실로 와야 하는 위험 신호예요.
+      cue: 'Wife: "He''s sleepy, but he wakes right up when I call his name and talks normally."'
+      scale:
+        - a bit drowsy
+        - hard to wake
+        - won't wake up
+      answerAt: 0
+      example: He's a bit drowsy but easy to wake.
+      exKo: 조금 졸려하지만 쉽게 깨요.
+    - kind: swap
+      words:
+        - w-headache
+        - w-worse
+      why: 귀가 교육의 경고 증상은 '와도 된다'가 아니라 '바로 오라'로 분명히 말해요.
+      who: 환자에게 · 재내원 기준 설명
+      icon: me
+      before:
+        - 'If the headache gets much worse, '
+        - follow up with your PCP
+        - .
+      options:
+        - come back right away
+        - follow up with your PCP
+        - return if you'd like
+      answer: come back right away
+      notes:
+        come back right away: 점점 심해지는 두통은 재내원 기준이다. 지체하지 말라는 뜻이 분명하다.
+        follow up with your PCP: 외래 추적은 급하지 않은 증상용이다. 악화되는 두통에는 너무 느리다.
+        return if you'd like: 선택처럼 들려 환자가 미룰 수 있다.
 - id: SCN-ER-00424
   profession: ""
   eventId: EVT-ER-00125
@@ -49261,8 +49453,8 @@
       words:
         - w-bump
         - w-bleed
-        - w-slow
         - w-brain
+        - w-slowly
       goal: 1
     - en: We recommend a CT scan to be safe.
       ko: 안전하게 CT 스캔을 권해 드려요.
@@ -49313,6 +49505,42 @@
         - w-symptom
         - w-bleed
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-scan
+        - w-bleed
+        - w-slowly
+        - w-safe
+      why: CT 검사는 a CT scan, 조금씩 새는 출혈은 bleed slowly, '만일을 위해'는 to be safe예요.
+      pairs:
+        - - CT
+          - scan
+        - - bleed
+          - slowly
+        - - to be
+          - safe
+      decoys:
+        - pill
+    - kind: context
+      words:
+        - w-bloodthinner
+        - w-take
+      why: anticoagulated는 의료진끼리의 말이에요. 환자는 항응고제를 blood thinner라고 부르니 그 말로 물어야 빠뜨리지 않아요.
+      scenes:
+        - who: 차트 기록
+          icon: board
+          en: Pt on anticoagulation (apixaban).
+          ok: true
+        - who: 의사에게 보고
+          icon: speech
+          en: She's anticoagulated on apixaban.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: Are you anticoagulated?
+          ok: false
+          fix: Are you taking any blood thinners?
 - id: SCN-ER-00425
   profession: ""
   eventId: EVT-ER-00125
@@ -49392,7 +49620,6 @@
       words:
         - w-confusion
         - w-worse
-        - w-day
       goal: 2
     - en: A slow brain bleed can show up like this.
       ko: 서서히 진행되는 뇌출혈이 이렇게 나타날 수 있어요.
@@ -49403,7 +49630,6 @@
         - like this
         - .
       words:
-        - w-slow
         - w-brain
         - w-bleed
       goal: 2
@@ -49425,6 +49651,7 @@
         - .
       words:
         - w-change
+        - w-notice
       goal: 1
     - en: We'll get a CT scan to check for bleeding in his brain.
       ko: 뇌 안 출혈을 확인하려고 CT 스캔을 할게요.
@@ -49440,6 +49667,41 @@
         - w-bleed
         - w-brain
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-confusion
+        - w-change
+        - w-notice
+      why: 가족을 알아보더라도 느려지고 대화를 놓친다면 평소보다 혼란스러운 상태예요. 고령자는 가벼운 낙상 뒤 며칠~몇 주에 걸쳐 경막하 출혈이 서서히 드러날 수 있어서, 가족이 느끼는 이런 변화를 나이 탓으로 넘기지 않아요.
+      cue: 'Daughter: "He still knows who we are, but he''s slower and keeps losing track of the conversation."'
+      scale:
+        - his usual self
+        - more confused than usual
+        - unresponsive
+      answerAt: 1
+      example: He's more confused than usual since the fall.
+      exKo: 넘어진 뒤로 평소보다 더 혼란스러워하세요.
+    - kind: context
+      words:
+        - w-bleed
+        - w-brain
+        - w-confusion
+      why: SDH, subdural hematoma는 의료진끼리의 말이에요. 가족에게는 뇌 주변에 천천히 피가 고였을 수 있다고 풀어서 말해요.
+      scenes:
+        - who: 차트 기록
+          icon: board
+          en: Increased confusion since fall 1 wk ago; r/o SDH.
+          ok: true
+        - who: 의사에게 보고
+          icon: speech
+          en: I'm worried about a subdural—he's more confused since the fall.
+          ok: true
+        - who: 보호자에게
+          icon: me
+          en: We need to rule out a subdural hematoma.
+          ok: false
+          fix: We're worried there may be slow bleeding around his brain, so we'll check with a CT scan.
 - id: SCN-ER-00426
   profession: ""
   eventId: EVT-ER-00126
@@ -49543,7 +49805,6 @@
         - matches what we see
         - .
       words:
-        - w-know
         - w-story
         - w-match
       goal: 1
@@ -49556,7 +49817,6 @@
         - than usual
         - .
       words:
-        - w-tell
         - w-sleepy
       goal: 2
     - en: Call us right away if he throws up or won't wake easily.
@@ -49570,6 +49830,40 @@
       words:
         - w-wake
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-sleepy
+        - w-sleepiness
+        - w-wake
+      why: 쉽게 깨고 잘 논다면 a little sleepy 쪽이에요. 평소와 다르게 계속 처지거나 깨우기 힘들면 바로 다시 와야 하는 신호예요.
+      cue: 'Mother: "He napped after the fall, but he woke up easily and has been playing since."'
+      scale:
+        - a little sleepy
+        - unusually sleepy
+        - hard to wake
+      answerAt: 0
+      example: He's a little sleepy, but he wakes up easily.
+      exKo: 조금 졸려하지만 쉽게 깨요.
+    - kind: swap
+      words:
+        - w-fall
+      why: 학대 감별이 필요해도 경위는 판단 없이 열린 질문으로 들어요. 이야기가 상처와 맞는지는 의료진이 기록하고 판단할 일이에요.
+      who: 부모에게 · 수상 경위 청취
+      icon: me
+      before:
+        - ""
+        - Prove to me
+        - ' exactly how he fell.'
+      options:
+        - Walk me through
+        - Justify
+        - Prove to me
+      answer: Walk me through
+      notes:
+        Justify: 해명을 요구하는 말이라 부모를 몰아세운다.
+        Prove to me: 의심을 드러내 부모가 방어적이 되고 오히려 정보가 줄어든다.
+        Walk me through: 처음부터 차근차근 말해 달라는 열린 요청이다. 판단 없이 경위를 듣는다.
 - id: SCN-ER-00427
   profession: ""
   eventId: EVT-ER-00126
@@ -49649,7 +49943,6 @@
         - we watch you
         - .
       words:
-        - w-tell
         - w-alcohol
         - w-injury
         - w-watch
@@ -49674,7 +49967,6 @@
         - '?'
       words:
         - w-hit
-        - w-head
         - w-tonight
       goal: 1
     - en: Alcohol can hide the signs we need to watch for.
@@ -49701,6 +49993,41 @@
       words:
         - w-check
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-drink
+        - w-recheck
+      why: 술이 확실히 깬 상태는 clearly sober, 술 몇 잔은 a few drinks, 다시 살펴보려고 남아 달라고 할 때는 so we can recheck you예요.
+      pairs:
+        - - clearly
+          - sober
+        - - a few
+          - drinks
+        - - so we can
+          - recheck you
+      decoys:
+        - alcohol
+    - kind: swap
+      words:
+        - w-drink
+        - w-watch
+      why: 관찰에 협조를 얻으려면 환자를 판정하는 말보다 환자가 한 말을 받아 주는 편이 나아요. 취기가 손상 징후를 가릴 수 있다는 이유를 함께 말해요.
+      who: 환자에게 · 관찰 설득
+      icon: me
+      before:
+        - 'You seem '
+        - drunk
+        - ', so we need to watch you for a while.'
+      options:
+        - like you've had a few drinks
+        - drunk
+        - intoxicated
+      answer: like you've had a few drinks
+      notes:
+        drunk: 낙인처럼 들려 환자가 방어적이 되고 관찰을 거부하기 쉽다.
+        intoxicated: 차트·의료진의 말. 환자에게는 딱딱하고 판정처럼 들린다.
+        like you've had a few drinks: 환자가 한 말을 받아 사실만 말한다. 판정하는 느낌이 덜하다.
 - id: SCN-ER-00428
   profession: ""
   eventId: EVT-ER-00126
@@ -49835,6 +50162,63 @@
         - w-ear
         - w-bruise
       goal: 1
+  nuance:
+    - kind: pair
+      words:
+        - w-nose
+        - w-fracture
+        - w-skull
+        - w-fluid
+        - w-leak
+      why: 코를 풀지 말라고 할 때는 blow your nose, 두개저 골절은 a fracture at the base of your skull, 새어 나오는 뇌척수액은 spinal fluid leaking이에요.
+      pairs:
+        - - blow your
+          - nose
+        - - a fracture at the base of
+          - your skull
+        - - spinal fluid
+          - leaking
+      decoys:
+        - ears
+    - kind: context
+      words:
+        - w-bruise
+        - w-eye
+      why: periorbital ecchymosis는 차트용 용어, raccoon eyes는 의료진끼리의 말이에요. 환자에게는 눈 주위에 멍이 있다고 쉽게 말해요.
+      scenes:
+        - who: 차트 기록
+          icon: board
+          en: Bilateral periorbital ecchymosis noted.
+          ok: true
+        - who: 의사에게 보고
+          icon: speech
+          en: She has raccoon eyes—bruising around both eyes.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: You have bilateral periorbital ecchymosis.
+          ok: false
+          fix: I see bruising around both of your eyes.
+    - kind: swap
+      words:
+        - w-fluid
+        - w-leak
+      why: 같은 뇌척수액이라도 환자에게는 spinal fluid, 차트와 의료진끼리는 CSF라고 해요.
+      who: 환자에게 · 맑은 콧물 설명
+      icon: me
+      before:
+        - 'That clear fluid could be '
+        - CSF
+        - ' leaking.'
+      options:
+        - spinal fluid
+        - CSF
+        - cerebrospinal fluid
+      answer: spinal fluid
+      notes:
+        CSF: 의료진끼리의 약어. 환자는 알아듣지 못한다.
+        cerebrospinal fluid: 정확하지만 길고 어려워서 설명 없이 쓰면 환자가 놓친다.
+        spinal fluid: 환자에게 쉬운 말. 뇌와 척수를 감싼 액체라는 것이 전해진다.
 - id: SCN-ER-00429
   profession: ""
   eventId: EVT-ER-00126
@@ -49947,7 +50331,7 @@
         - .
       words:
         - w-improve
-        - w-week
+        - w-slowly
       goal: 2
     - en: Rest and light activity both help your brain recover.
       ko: 휴식과 가벼운 활동 둘 다 뇌 회복에 도움이 돼요.
@@ -49962,6 +50346,40 @@
         - w-brain
         - w-recover
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-headache
+      why: 일을 해낼 수 있을 정도의 둔한 통증이면 mild 쪽이에요. 뇌진탕 뒤 두통은 몇 주씩 남기도 하지만, 점점 심해지거나 새로운 증상이 붙으면 다시 평가해야 해요.
+      cue: 'Patient: "It''s a dull ache most afternoons, but I can still get my work done."'
+      scale:
+        - mild
+        - moderate
+        - severe
+      answerAt: 0
+      example: She has mild headaches most afternoons.
+      exKo: 오후마다 가벼운 두통이 있어요.
+    - kind: swap
+      words:
+        - w-linger
+        - w-symptom
+        - w-concussion
+      why: 뇌진탕 뒤 증상이 남는 것은 흔하고 대부분 서서히 나아져요. 사실대로 말하되 겁주지 않는 말을 골라요.
+      who: 환자에게 · 경과 설명
+      icon: me
+      before:
+        - 'These symptoms can '
+        - last forever
+        - ' after a concussion.'
+      options:
+        - linger
+        - last forever
+        - persist indefinitely
+      answer: linger
+      notes:
+        last forever: 사실이 아니다. 대부분은 몇 주에서 몇 달 사이에 나아진다.
+        linger: 한동안 남을 수 있다는 뜻 — 사실이면서 겁주지 않는다.
+        persist indefinitely: 끝없이 간다는 뜻이라 사실보다 무겁고 환자를 불안하게 한다.
 - id: SCN-ER-00430
   profession: ""
   eventId: EVT-ER-00126
@@ -50089,6 +50507,40 @@
         - w-harder
         - w-wake
       goal: 1
+  nuance:
+    - kind: slider
+      words:
+        - w-harder
+        - w-wake
+      why: 손톱을 눌러야 눈을 뜨면 AVPU의 P(responds to pain)예요. 한 시간 전에 부르면 깼다면 의식이 떨어지고 있는 것이라 바로 보고해요.
+      cue: He opens his eyes only when you press on his nail bed.
+      scale:
+        - alert
+        - responds to voice
+        - responds to pain
+        - unresponsive
+      answerAt: 2
+      example: He now responds only to pain.
+      exKo: 이제는 통증 자극에만 반응해요.
+    - kind: context
+      words:
+        - w-harder
+        - w-wake
+      why: somnolent, arouse는 차트와 의료진끼리의 말이에요. 보호자에게는 깨우기 힘들어졌다고 쉽게 말하고, 무엇을 하고 있는지도 함께 알려요.
+      scenes:
+        - who: 차트 기록
+          icon: board
+          en: Pt increasingly somnolent, difficult to arouse.
+          ok: true
+        - who: 의사에게 보고
+          icon: speech
+          en: He's much harder to arouse than he was an hour ago.
+          ok: true
+        - who: 보호자에게
+          icon: me
+          en: He's become increasingly somnolent.
+          ok: false
+          fix: He's getting harder to wake up, so I'm calling the doctor now.
 - id: SCN-ER-00431
   profession: ""
   eventId: EVT-ER-00126
@@ -50189,6 +50641,7 @@
         - .
       words:
         - w-hurt
+        - w-point
       goal: 1
     - en: Nod yes or shake your head no.
       ko: 맞으면 고개를 끄덕이고 아니면 저어 주세요.
@@ -50198,7 +50651,8 @@
         - your head no
         - .
       words:
-        - w-head
+        - w-nod
+        - w-shakehead
       goal: 1
     - en: The interpreter will help us understand each other.
       ko: 통역사가 서로 이해하도록 도와줄 거예요.
@@ -50209,9 +50663,44 @@
         - .
       words:
         - w-interpreter
-        - w-help
         - w-understand
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-shakehead
+        - w-point
+        - w-hurt
+        - w-interpreter
+      why: '''아니오''를 몸짓으로 할 때는 shake your head no, 아픈 곳을 짚어 달라고 할 때는 point to where it hurts, 자격 있는 의료 통역사는 a medical interpreter예요.'
+      pairs:
+        - - shake your head
+          - "no"
+        - - point to
+          - where it hurts
+        - - medical
+          - interpreter
+      decoys:
+        - blood thinner
+    - kind: swap
+      words:
+        - w-interpreter
+      why: 의식소실·항응고제처럼 치료 결정에 쓰이는 정보는 자격 있는 의료 통역으로 확인해요.
+      who: 영어가 서툰 환자에게 · 통역 확보
+      icon: me
+      before:
+        - 'I''ll get '
+        - your son to interpret
+        - ' for you.'
+      options:
+        - a medical interpreter
+        - your son to interpret
+        - a translation app
+      answer: a medical interpreter
+      notes:
+        a medical interpreter: 미국 병원은 영어가 서툰 환자에게 자격 있는 통역을 제공해야 한다(연방 민권법 제6편·ACA 1557조).
+        a translation app: 의료 내용은 오역 위험이 커서 자격 있는 통역을 대신하지 못한다.
+        your son to interpret: 가족 통역은 오역·누락이 생기기 쉽고 환자가 꺼리는 내용이 빠질 수 있다. 환자가 원하는 성인 가족은 예외지만 미성년 자녀는 응급 외에는 쓰지 않는다.
 - id: SCN-ER-00432
   profession: ""
   eventId: EVT-ER-00126
@@ -50341,6 +50830,39 @@
         - w-pressure
         - w-brain
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-headache
+        - w-worse
+      why: 머리가 터질 것 같다면 excruciating 쪽이에요. 멀쩡하다가 갑자기 이렇게 심해지면 명료기 뒤 악화일 수 있어 바로 보고해요.
+      cue: 'Patient: "I felt fine a minute ago—now it feels like my head is exploding."'
+      scale:
+        - aching
+        - pounding
+        - excruciating
+      answerAt: 2
+      example: He says the headache is suddenly excruciating.
+      exKo: 두통이 갑자기 극심해졌다고 해요.
+    - kind: context
+      words:
+        - w-neurosurgery
+        - w-immediately
+      why: crashing, STAT, paged는 의료진끼리의 긴급어예요. 환자에게는 겁주는 말 대신 지금 무엇을 하고 있는지 쉬운 말로 알려요.
+      scenes:
+        - who: 차트 기록
+          icon: board
+          en: Acute neuro decline after lucid interval; neurosurgery paged STAT.
+          ok: true
+        - who: 동료 간호사에게
+          icon: speech
+          en: He's crashing neurologically—neurosurgery's been paged STAT.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: You're crashing neurologically, so neurosurgery's been paged STAT.
+          ok: false
+          fix: Your headache is suddenly much worse, so we're calling the brain surgeons right now.
 - id: SCN-ER-00433
   profession: ""
   eventId: EVT-ER-00126
@@ -50401,7 +50923,7 @@
   theme: er-head-trauma
   sentences:
     - en: One pupil is blown—this is an emergency.
-      ko: 한쪽 동공이 커졌어요—응급 상황이에요.
+      ko: 한쪽 동공이 산대됐어요—응급 상황이에요.
       chunks:
         - One pupil
         - is blown—this
@@ -50470,6 +50992,43 @@
       words:
         - w-neurosurgery
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-neurosurgery
+        - w-decompression
+        - w-reduce
+        - w-pressure
+        - w-emergency
+      why: 신경외과와 바로 통화하는 것은 get neurosurgery on the phone, 응급 감압은 emergency decompression, 뇌압을 낮추는 것은 reduce pressure예요.
+      pairs:
+        - - get neurosurgery
+          - on the phone
+        - - emergency
+          - decompression
+        - - reduce
+          - pressure
+      decoys:
+        - pupil
+    - kind: context
+      words:
+        - w-pupil
+        - w-emergency
+      why: blown pupil은 의료진끼리 쓰는 말이에요. 가족에게는 동공이 커지고 빛에 반응하지 않는다고 풀어서, 응급 상황이며 조치 중이라는 것을 함께 말해요.
+      scenes:
+        - who: 차트 기록
+          icon: board
+          en: R pupil fixed and dilated, 7 mm, nonreactive.
+          ok: true
+        - who: 의사에게 보고
+          icon: speech
+          en: Right pupil is blown—7 millimeters and nonreactive.
+          ok: true
+        - who: 보호자에게
+          icon: me
+          en: His right pupil is blown and nonreactive.
+          ok: false
+          fix: One of his pupils has become very large and isn't reacting to light—this is an emergency, and we're acting now.
 - id: SCN-ER-00434
   profession: ""
   eventId: EVT-ER-00126
@@ -50597,6 +51156,40 @@
         - w-sedation
         - w-pressure
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-airway
+        - w-protect
+      why: GCS 13~15는 경증, 9~12는 중등도, 8 이하는 중증 외상성 뇌손상이에요. 8 이하면 스스로 기도를 지키기 어려워 삽관을 준비해요.
+      cue: 'Handoff: "GCS is 6 after the crash."'
+      scale:
+        - mild TBI
+        - moderate TBI
+        - severe TBI
+      answerAt: 2
+      example: A GCS of 6 means a severe TBI.
+      exKo: GCS 6이면 중증 외상성 뇌손상이에요.
+    - kind: context
+      words:
+        - w-intubation
+        - w-airway
+        - w-protect
+      why: intubate, GCS는 의료진끼리의 말이에요. 가족에게는 스스로 숨길을 지킬 만큼 깨어 있지 않아 숨관을 넣는다고 풀어서 말해요.
+      scenes:
+        - who: 차트 기록
+          icon: board
+          en: Intubated for airway protection, GCS 6.
+          ok: true
+        - who: 호흡치료사에게
+          icon: speech
+          en: GCS is 6—we're intubating for airway protection.
+          ok: true
+        - who: 보호자에게
+          icon: me
+          en: We're intubating him for airway protection because his GCS is 6.
+          ok: false
+          fix: He isn't awake enough to protect his airway, so we're placing a breathing tube to help him breathe.
 - id: SCN-ER-00435
   profession: ""
   eventId: EVT-ER-00126
@@ -50680,7 +51273,6 @@
         - .
       words:
         - w-keep
-        - w-head
         - w-still
       goal: 1
     - en: Neurosurgery is on the way for you.
@@ -50726,6 +51318,44 @@
       words:
         - w-object
       goal: 1
+  nuance:
+    - kind: pair
+      words:
+        - w-still
+        - w-leave
+        - w-place
+        - w-neurosurgery
+      why: 신경외과가 오는 중은 on the way, 최대한 가만히는 as still as possible, 박힌 물체를 그대로 두는 것은 leaving it in place예요.
+      pairs:
+        - - on the
+          - way
+        - - as still as
+          - possible
+        - - leaving it
+          - in place
+      decoys:
+        - touch
+    - kind: swap
+      words:
+        - w-leave
+        - w-place
+        - w-remove
+      why: 관통 물체는 움직이지 않게 고정하고 그대로 둬요. 환자에게도 왜 빼지 않는지 함께 알려요.
+      who: 환자에게 · 박힌 물체 설명
+      icon: me
+      before:
+        - 'We''re going to '
+        - pull it out
+        - ' for now.'
+      options:
+        - leave it in place
+        - pull it out
+        - take it out carefully
+      answer: leave it in place
+      notes:
+        leave it in place: 박힌 물체는 고정만 하고 제거는 수술실에서 한다. 빼면 출혈이 커질 수 있다.
+        pull it out: 응급실에서 빼면 물체가 막고 있던 출혈이 커질 수 있다.
+        take it out carefully: 조심해서 빼도 위험은 같다. 제거는 수술실에서 신경외과가 한다.
 - id: SCN-ER-00436
   profession: ""
   eventId: EVT-ER-00126
@@ -50795,10 +51425,9 @@
         - .
       words:
         - w-drop
-        - w-minute
       goal: 1
     - en: Right pupil is now sluggish and dilated.
-      ko: 우측 동공이 지금 둔하고 확대되어 있습니다.
+      ko: 우측 동공이 지금 반응이 느리고 산대되어 있습니다.
       chunks:
         - Right pupil
         - is now
@@ -50810,7 +51439,7 @@
         - w-dilate
       goal: 1
     - en: He's on apixaban; reversal is being considered.
-      ko: 아픽사반을 복용 중이고, 길항제 투여를 고려 중입니다.
+      ko: 아픽사반을 복용 중이고, 항응고 역전을 고려 중입니다.
       chunks:
         - He's on apixaban;
         - reversal
@@ -50852,6 +51481,39 @@
         - w-neurosurgery
         - w-scan
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-sluggish
+        - w-reactive
+        - w-pupil
+      why: 빛에 오므라들긴 하지만 느리고 조금만이면 sluggish예요. 빠르게 오므라들면 brisk, 전혀 변하지 않으면 nonreactive — 인계에서 이 차이가 추세를 보여 줘요.
+      cue: The pupil constricts to light, but slowly and only a little.
+      scale:
+        - brisk
+        - sluggish
+        - nonreactive
+      answerAt: 1
+      example: Right pupil is sluggish; left is brisk.
+      exKo: 우측 동공은 반응이 느리고, 좌측은 빨라요.
+    - kind: context
+      words:
+        - w-drop
+      why: GCS 숫자는 인계와 차트에서 쓰는 말이에요. 가족에게는 숫자 대신 덜 깨어 있게 되었다는 변화와 지금의 조치를 말해요.
+      scenes:
+        - who: 차트 기록
+          icon: board
+          en: GCS 14 → 10 over 30 min.
+          ok: true
+        - who: 의사에게 SBAR
+          icon: speech
+          en: GCS dropped from 14 to 10 over the last 30 minutes.
+          ok: true
+        - who: 보호자에게
+          icon: me
+          en: His GCS dropped from 14 to 10 over 30 minutes.
+          ok: false
+          fix: He's become less alert over the last half hour, and the doctors are with him now.
 - id: SCN-ER-00437
   profession: ""
   eventId: EVT-ER-00126
@@ -50945,6 +51607,7 @@
       words:
         - w-brain
         - w-pressure
+        - w-watch
       goal: 2
     - en: The seizure has lasted almost two minutes now.
       ko: 발작이 거의 2분째 계속되고 있어요.
@@ -50956,7 +51619,6 @@
         - .
       words:
         - w-seizure
-        - w-minute
       goal: 1
     - en: His GCS is dropping while he's still seizing.
       ko: 발작이 계속되는 동안 GCS가 떨어지고 있어요.
@@ -50981,6 +51643,42 @@
         - w-seizure
         - w-airway
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-seizure
+        - w-medication
+        - w-stop
+      why: 발작이 이어진 시간은 lasted almost two minutes, 동시에는 at the same time, 발작을 멈추는 약은 medication to stop the seizure예요. 5분 넘게 이어지면 뇌전증지속상태로 보니 시작 시각을 꼭 적어 둬요.
+      pairs:
+        - - lasted almost
+          - two minutes
+        - - at the same
+          - time
+        - - medication to
+          - stop the seizure
+      decoys:
+        - airway
+    - kind: context
+      words:
+        - w-seizure
+        - w-medication
+        - w-stop
+      why: push a benzo는 의료진끼리의 줄임말이에요. 가족에게는 발작을 멈추는 약을 드렸다고 쉽게 말해요.
+      scenes:
+        - who: 차트 기록
+          icon: board
+          en: Generalized seizure; IV benzodiazepine given.
+          ok: true
+        - who: 동료 간호사에게
+          icon: speech
+          en: He's still seizing—we just pushed a benzo.
+          ok: true
+        - who: 보호자에게
+          icon: me
+          en: He's seizing, so we just pushed a benzo.
+          ok: false
+          fix: He's having a seizure, and we've given him medicine to stop it.
 - id: SCN-ER-00438
   profession: ""
   eventId: EVT-ER-00126
