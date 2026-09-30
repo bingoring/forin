@@ -720,3 +720,5 @@ keyPhrases는 사람이 저작·임상 검토한 문장이라 보강·정리 패
 | 부서 · 상황 | keyPhrase | 문제 | 제안 |
 |---|---|---|---|
 | ER · 임산부 심정지 | "Keep compressions high on the sternum and continuous." | AHA가 2015년에 임산부 압박 위치를 "약간 위쪽"으로 하라는 권고를 삭제했다 — 손 위치는 바꾸지 않고 자궁 좌측 전위(LUD)로 대신한다 | "Keep compressions continuous — manual uterine displacement to the left." 류로 교체 |
+| ER · 만성 상처(당뇨족) 감염 | "How is your blood sugar been controlled lately?" | 문법 오류(is + been) | "How has your blood sugar been controlled lately?" |
+| ER · 항생제 IV 중 반응 | "…stopping the antibiotic and flushing your line." | 약이 든 튜빙을 식염수로 밀면 남은 약이 환자에게 들어간다 — 표준은 중단 → 약 튜빙 분리 → 새 튜빙·생리식염수로 정맥로 유지 | "…stopping the antibiotic and switching your line to plain saline." |
