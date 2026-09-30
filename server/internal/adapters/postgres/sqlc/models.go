@@ -178,6 +178,18 @@ type InviteCode struct {
 	RevokedAt pgtype.Timestamptz `json:"revoked_at"`
 }
 
+type LessonStepClear struct {
+	UserID     string             `json:"user_id"`
+	ScenarioID string             `json:"scenario_id"`
+	Step       string             `json:"step"`
+	ClearedAt  pgtype.Timestamptz `json:"cleared_at"`
+}
+
+type Lexicon struct {
+	Theme string `json:"theme"`
+	Words []byte `json:"words"`
+}
+
 type LoungePost struct {
 	ID         string             `json:"id"`
 	AuthorID   string             `json:"author_id"`
@@ -289,6 +301,7 @@ type Scenario struct {
 	Acuity     string `json:"acuity"`
 	Theme      string `json:"theme"`
 	CollabWith string `json:"collab_with"`
+	Sentences  []byte `json:"sentences"`
 }
 
 type ScenarioAttempt struct {

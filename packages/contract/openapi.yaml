@@ -20,6 +20,51 @@ components:
       - RelationPeer
       - RelationMentor
       - RelationMentee
+    github_com_bingoring_forin_server_internal_domain_content.Briefing:
+      properties:
+        accent:
+          type: string
+        brief:
+          description: SITUATION paragraph
+          type: string
+        chart:
+          $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_content.ScenarioChart'
+        dept:
+          description: '"ER · TRAUMA BAY #4"'
+          type: string
+        deptColor:
+          description: '"#DC2626"'
+          type: string
+        difficulty:
+          description: 1..3
+          type: integer
+        reqs:
+          description: met computed client-side vs /me
+          items:
+            $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_content.Req'
+          type: array
+          uniqueItems: false
+        rewards:
+          items:
+            $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_content.Reward'
+          type: array
+          uniqueItems: false
+        riskyPhrases:
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        skills:
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        timeLabel:
+          description: '"약 5분"'
+          type: string
+        tone:
+          type: string
+      type: object
     github_com_bingoring_forin_server_internal_domain_content.DeptSituation:
       properties:
         lv:
@@ -44,6 +89,141 @@ components:
         urgent:
           description: high difficulty
           type: boolean
+      type: object
+    github_com_bingoring_forin_server_internal_domain_content.Persona:
+      properties:
+        ageRange:
+          description: e.g. "60s"
+          type: string
+        gender:
+          description: |-
+            Gender is optional and exists for VOICE selection, not display: "male" |
+            "female". Most authored personas leave it empty (30 of 300 hint at it only
+            inside the display `sub` string), so speech falls back to role — filling
+            this in is what makes an individual character sound right.
+          type: string
+        hair:
+          description: portrait hair color, e.g. "#9A6B3F"
+          type: string
+        hairStyle:
+          description: portrait hair style, e.g. "bob"
+          type: string
+        mood:
+          description: 'matches expression: pain, worried, panic...'
+          type: string
+        name:
+          type: string
+        personality:
+          type: string
+        role:
+          description: patient, doctor, surgeon, parent...
+          type: string
+        speakingStyle:
+          type: string
+        sub:
+          description: display, e.g. "67y / Female"
+          type: string
+      type: object
+    github_com_bingoring_forin_server_internal_domain_content.QuizVital:
+      properties:
+        label:
+          type: string
+        unit:
+          type: string
+        value:
+          type: string
+        warn:
+          type: boolean
+      type: object
+    github_com_bingoring_forin_server_internal_domain_content.Req:
+      properties:
+        label:
+          type: string
+        metric:
+          description: e.g. "level", "emergencyResponse"
+          type: string
+        threshold:
+          type: integer
+      type: object
+    github_com_bingoring_forin_server_internal_domain_content.Reward:
+      properties:
+        icon:
+          type: string
+        label:
+          type: string
+        value:
+          type: string
+      type: object
+    github_com_bingoring_forin_server_internal_domain_content.ScenarioChart:
+      description: |-
+        Dialogue quick-reference (QUICK INFO dock: 차트/약물/활력) and risky-choice
+        tagging (hint mode marks these key phrases as reputation-risky).
+      properties:
+        allergies:
+          type: string
+        meds:
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        notes:
+          type: string
+        vitals:
+          items:
+            $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_content.QuizVital'
+          type: array
+          uniqueItems: false
+      type: object
+    github_com_bingoring_forin_server_internal_domain_content.Sentence:
+      properties:
+        chunks:
+          description: |-
+            Chunks, joined per JoinChunks' spacing rule, must reproduce En exactly
+            (checked A4) — that agreement is what makes the STEP 2 chunk-assembly
+            exercise solvable at all.
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        en:
+          type: string
+        goal:
+          description: |-
+            Goal is the 1-based index into the seed's own `goals` this sentence advances
+            toward (checked A3: 1..len(seed.Goals)). STEP 3's guided pass walks a
+            situation's sentences in this order.
+          type: integer
+        ko:
+          type: string
+        words:
+          description: |-
+            Words are bank word ids this sentence actually uses (checked A1: every id
+            must exist in the situation's theme bank; A2: the bank itself must have no
+            duplicate ids). This is the reference STEP 1 is derived from.
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+      type: object
+    github_com_bingoring_forin_server_internal_domain_content.Word:
+      properties:
+        en:
+          type: string
+        example:
+          type: string
+        icon:
+          type: string
+        id:
+          description: |-
+            ID is unique WITHIN its Lexicon (one theme's word bank), not globally — the
+            bank is authored and read as one unit (build-spec-index.md §2), so a global
+            namespace would only make two independently-authored banks collide by
+            accident for no benefit.
+          type: string
+        ipa:
+          type: string
+        ko:
+          type: string
       type: object
     github_com_bingoring_forin_server_internal_domain_conversation.Choice:
       properties:
@@ -224,6 +404,44 @@ components:
         track:
           $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_learning.TrackGroup'
       type: object
+    github_com_bingoring_forin_server_internal_domain_learning.LessonStep:
+      properties:
+        count:
+          description: |-
+            Count is how many items the step holds — words, sentences, or the dialogue's
+            goals. It follows the content; nothing here assumes 8 or 5 (build-spec §2-2).
+          type: integer
+        kind:
+          $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_learning.LessonStepKind'
+        state:
+          $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_learning.LessonStepState'
+      type: object
+    github_com_bingoring_forin_server_internal_domain_learning.LessonStepKind:
+      enum:
+      - words
+      - sentences
+      - guided
+      - free
+      type: string
+      x-enum-varnames:
+      - StepWords
+      - StepSentences
+      - StepGuided
+      - StepFree
+    github_com_bingoring_forin_server_internal_domain_learning.LessonStepState:
+      enum:
+      - done
+      - now
+      - lock
+      - skip
+      - empty
+      type: string
+      x-enum-varnames:
+      - StepDone
+      - StepNow
+      - StepLock
+      - StepSkip
+      - StepEmpty
     github_com_bingoring_forin_server_internal_domain_learning.Milestone:
       properties:
         name:
@@ -1019,6 +1237,45 @@ components:
         progress:
           $ref: '#/components/schemas/internal_adapters_http.homeProgress'
         scenarioId:
+          type: string
+        title:
+          type: string
+      type: object
+    internal_adapters_http.lessonResp:
+      properties:
+        level:
+          type: string
+        sentences:
+          items:
+            $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_content.Sentence'
+          type: array
+          uniqueItems: false
+        situation:
+          $ref: '#/components/schemas/internal_adapters_http.lessonSituation'
+        steps:
+          items:
+            $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_learning.LessonStep'
+          type: array
+          uniqueItems: false
+        words:
+          description: Words are the bank words the sentences use, in first-use order
+            (STEP 1).
+          items:
+            $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_content.Word'
+          type: array
+          uniqueItems: false
+      type: object
+    internal_adapters_http.lessonSituation:
+      properties:
+        briefing:
+          $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_content.Briefing'
+        id:
+          type: string
+        persona:
+          $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_content.Persona'
+        tagline:
+          type: string
+        theme:
           type: string
         title:
           type: string
@@ -2083,6 +2340,54 @@ paths:
       security:
       - Bearer: []
       summary: 정거장 상세 — 그 주제의 스텝 목록 (지연 로드)
+      tags:
+      - progress
+  /me/lesson/{scenarioId}:
+    get:
+      parameters:
+      - description: 시나리오 id
+        in: path
+        name: scenarioId
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/internal_adapters_http.lessonResp'
+          description: OK
+      security:
+      - Bearer: []
+      summary: 상황 학습 4단계 — 단어·문장·가이드 대화·자유 대화의 상태와 콘텐츠
+      tags:
+      - progress
+  /me/lesson/{scenarioId}/steps/{step}:
+    post:
+      parameters:
+      - description: 시나리오 id
+        in: path
+        name: scenarioId
+        required: true
+        schema:
+          type: string
+      - description: words | sentences
+        in: path
+        name: step
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/internal_adapters_http.lessonResp'
+          description: OK
+      security:
+      - Bearer: []
+      summary: 상황 학습 단계 완료 기록 — words·sentences 만. 대화 두 회차는 대화를 끝내야 기록된다
       tags:
       - progress
   /me/missions:

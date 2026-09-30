@@ -82,6 +82,7 @@ func main() {
 	colleagueRepo := postgres.NewColleagueRepo(pool)
 	loungeRepo := postgres.NewLoungeRepo(pool)
 	slangRepo := postgres.NewSlangRepo(pool)
+	lessonRepo := postgres.NewLessonRepo(pool)
 	handoffRepo := postgres.NewHandoffRepo(pool)
 
 	// Home flavour (mentor notes, field phrases). A missing content dir is not
@@ -186,7 +187,7 @@ func main() {
 		Log:           logger, Tokens: tokens, AuthSvc: authSvc, Users: users, Content: contentRepo,
 		Progress: progressRepo, Review: progressRepo, Journeys: journeys, Convo: convoEngine, Pron: pronSvc, Speech: speechSvc, Synth: speech,
 		PronunciationEnabled: speech.Configured(),
-		Colleague:            colleagueRepo, Lounge: loungeRepo, HomePools: homePools, Ward: wardSvc, Slang: slangDeck, SlangRepo: slangRepo, Night: nightRadio, Handoff: handoffSvc, PG: pool, Redis: rdb,
+		Colleague:            colleagueRepo, Lounge: loungeRepo, HomePools: homePools, Ward: wardSvc, Slang: slangDeck, SlangRepo: slangRepo, Lessons: lessonRepo, Night: nightRadio, Handoff: handoffSvc, PG: pool, Redis: rdb,
 	})
 
 	srv := &http.Server{

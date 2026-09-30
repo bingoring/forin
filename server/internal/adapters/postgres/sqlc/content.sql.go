@@ -36,6 +36,15 @@ func (q *Queries) DeleteInteriors(ctx context.Context) error {
 	return err
 }
 
+const deleteLexicons = `-- name: DeleteLexicons :exec
+DELETE FROM lexicons
+`
+
+func (q *Queries) DeleteLexicons(ctx context.Context) error {
+	_, err := q.db.Exec(ctx, deleteLexicons)
+	return err
+}
+
 const deletePhrases = `-- name: DeletePhrases :exec
 DELETE FROM phrases
 `
@@ -120,6 +129,17 @@ func (q *Queries) GetInterior(ctx context.Context, id string) (Interior, error) 
 	return i, err
 }
 
+const getLexicon = `-- name: GetLexicon :one
+SELECT words FROM lexicons WHERE theme = $1
+`
+
+func (q *Queries) GetLexicon(ctx context.Context, theme string) ([]byte, error) {
+	row := q.db.QueryRow(ctx, getLexicon, theme)
+	var words []byte
+	err := row.Scan(&words)
+	return words, err
+}
+
 const getQuiz = `-- name: GetQuiz :one
 SELECT id, profession, type, title, content FROM quizzes WHERE id = $1
 `
@@ -138,7 +158,7 @@ func (q *Queries) GetQuiz(ctx context.Context, id string) (Quiz, error) {
 }
 
 const getScenario = `-- name: GetScenario :one
-SELECT id, profession, event_id, title, tagline, persona, goals, guardrails, key_phrases, steps, briefing, acuity
+SELECT id, profession, event_id, title, tagline, persona, goals, guardrails, key_phrases, steps, briefing, acuity, theme, sentences
 FROM scenarios WHERE id = $1
 `
 
@@ -155,6 +175,8 @@ type GetScenarioRow struct {
 	Steps      []byte `json:"steps"`
 	Briefing   []byte `json:"briefing"`
 	Acuity     string `json:"acuity"`
+	Theme      string `json:"theme"`
+	Sentences  []byte `json:"sentences"`
 }
 
 func (q *Queries) GetScenario(ctx context.Context, id string) (GetScenarioRow, error) {
@@ -173,6 +195,8 @@ func (q *Queries) GetScenario(ctx context.Context, id string) (GetScenarioRow, e
 		&i.Steps,
 		&i.Briefing,
 		&i.Acuity,
+		&i.Theme,
+		&i.Sentences,
 	)
 	return i, err
 }
@@ -294,6 +318,20 @@ func (q *Queries) InsertInterior(ctx context.Context, arg InsertInteriorParams) 
 	return err
 }
 
+const insertLexicon = `-- name: InsertLexicon :exec
+INSERT INTO lexicons (theme, words) VALUES ($1, $2)
+`
+
+type InsertLexiconParams struct {
+	Theme string `json:"theme"`
+	Words []byte `json:"words"`
+}
+
+func (q *Queries) InsertLexicon(ctx context.Context, arg InsertLexiconParams) error {
+	_, err := q.db.Exec(ctx, insertLexicon, arg.Theme, arg.Words)
+	return err
+}
+
 const insertPhrase = `-- name: InsertPhrase :exec
 INSERT INTO phrases (id, profession, ko, en, note, tag) VALUES ($1, $2, $3, $4, $5, $6)
 `
@@ -343,8 +381,8 @@ func (q *Queries) InsertQuiz(ctx context.Context, arg InsertQuizParams) error {
 }
 
 const insertScenario = `-- name: InsertScenario :exec
-INSERT INTO scenarios (id, profession, event_id, title, tagline, persona, goals, guardrails, key_phrases, steps, briefing, acuity, theme, collab_with)
-VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14)
+INSERT INTO scenarios (id, profession, event_id, title, tagline, persona, goals, guardrails, key_phrases, steps, briefing, acuity, theme, collab_with, sentences)
+VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15)
 `
 
 type InsertScenarioParams struct {
@@ -362,6 +400,7 @@ type InsertScenarioParams struct {
 	Acuity     string `json:"acuity"`
 	Theme      string `json:"theme"`
 	CollabWith string `json:"collab_with"`
+	Sentences  []byte `json:"sentences"`
 }
 
 func (q *Queries) InsertScenario(ctx context.Context, arg InsertScenarioParams) error {
@@ -380,6 +419,7 @@ func (q *Queries) InsertScenario(ctx context.Context, arg InsertScenarioParams) 
 		arg.Acuity,
 		arg.Theme,
 		arg.CollabWith,
+		arg.Sentences,
 	)
 	return err
 }

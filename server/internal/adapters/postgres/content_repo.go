@@ -41,7 +41,7 @@ func (r *ContentRepo) Seed(ctx context.Context, b *content.Bundle) error {
 	q := r.q.WithTx(tx)
 
 	for _, del := range []func(context.Context) error{
-		q.DeletePhrases, q.DeleteQuizzes, q.DeleteScenarios, q.DeleteEvents, q.DeleteInteriors, q.DeleteDepartments,
+		q.DeletePhrases, q.DeleteQuizzes, q.DeleteLexicons, q.DeleteScenarios, q.DeleteEvents, q.DeleteInteriors, q.DeleteDepartments,
 	} {
 		if err := del(ctx); err != nil {
 			return err
@@ -75,7 +75,12 @@ func (r *ContentRepo) Seed(ctx context.Context, b *content.Bundle) error {
 			ID: s.ID, Profession: s.Profession, EventID: s.EventID, Title: s.Title, Tagline: s.Tagline,
 			Persona: jsonb(s.Persona), Goals: jsonb(s.Goals), Guardrails: jsonb(s.Guardrails),
 			KeyPhrases: jsonb(s.KeyPhrases), Steps: jsonb(s.Steps), Briefing: jsonb(s.Briefing),
-			Acuity: s.Acuity, Theme: s.Theme, CollabWith: s.CollabWith}); err != nil {
+			Acuity: s.Acuity, Theme: s.Theme, CollabWith: s.CollabWith, Sentences: jsonbList(s.Sentences)}); err != nil {
+			return err
+		}
+	}
+	for _, l := range b.Lexicons {
+		if err := q.InsertLexicon(ctx, sqlc.InsertLexiconParams{Theme: l.Theme, Words: jsonbList(l.Words)}); err != nil {
 			return err
 		}
 	}
@@ -165,8 +170,9 @@ func (r *ContentRepo) GetScenario(ctx context.Context, id string) (*content.Scen
 	if err != nil {
 		return nil, err
 	}
-	out := &content.Scenario{ID: s.ID, Profession: s.Profession, EventID: s.EventID, Title: s.Title, Tagline: s.Tagline, Acuity: s.Acuity}
+	out := &content.Scenario{ID: s.ID, Profession: s.Profession, EventID: s.EventID, Title: s.Title, Tagline: s.Tagline, Acuity: s.Acuity, Theme: s.Theme}
 	unjson(s.Persona, &out.Persona)
+	unjson(s.Sentences, &out.Sentences)
 	unjson(s.Goals, &out.Goals)
 	unjson(s.Guardrails, &out.Guardrails)
 	unjson(s.KeyPhrases, &out.KeyPhrases)
@@ -862,6 +868,16 @@ func eventsFromModels(rows []sqlc.Event) []content.Event {
 func jsonb(v any) []byte {
 	b, _ := json.Marshal(v)
 	return b
+}
+
+// jsonbList encodes a list column so an empty list is stored as `[]`, not `null`:
+// the column default is '[]', and a scenario with no sentences yet should read the
+// same whether it was seeded before or after it got some.
+func jsonbList[T any](xs []T) []byte {
+	if xs == nil {
+		xs = []T{}
+	}
+	return jsonb(xs)
 }
 
 func unjson(b []byte, dst any) {

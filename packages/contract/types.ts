@@ -1629,6 +1629,86 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/me/lesson/{scenarioId}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** 상황 학습 4단계 — 단어·문장·가이드 대화·자유 대화의 상태와 콘텐츠 */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    /** @description 시나리오 id */
+                    scenarioId: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["internal_adapters_http.lessonResp"];
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/me/lesson/{scenarioId}/steps/{step}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** 상황 학습 단계 완료 기록 — words·sentences 만. 대화 두 회차는 대화를 끝내야 기록된다 */
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    /** @description 시나리오 id */
+                    scenarioId: string;
+                    /** @description words | sentences */
+                    step: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["internal_adapters_http.lessonResp"];
+                    };
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/me/missions": {
         parameters: {
             query?: never;
@@ -2729,6 +2809,26 @@ export interface components {
         };
         /** @enum {string} */
         "github_com_bingoring_forin_server_internal_domain_colleague.Relation": "peer" | "mentor" | "mentee";
+        "github_com_bingoring_forin_server_internal_domain_content.Briefing": {
+            accent?: string;
+            /** @description SITUATION paragraph */
+            brief?: string;
+            chart?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_content.ScenarioChart"];
+            /** @description "ER · TRAUMA BAY #4" */
+            dept?: string;
+            /** @description "#DC2626" */
+            deptColor?: string;
+            /** @description 1..3 */
+            difficulty?: number;
+            /** @description met computed client-side vs /me */
+            reqs?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_content.Req"][];
+            rewards?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_content.Reward"][];
+            riskyPhrases?: string[];
+            skills?: string[];
+            /** @description "약 5분" */
+            timeLabel?: string;
+            tone?: string;
+        };
         "github_com_bingoring_forin_server_internal_domain_content.DeptSituation": {
             lv?: string;
             min?: number;
@@ -2745,6 +2845,93 @@ export interface components {
             tagCode?: string;
             /** @description high difficulty */
             urgent?: boolean;
+        };
+        "github_com_bingoring_forin_server_internal_domain_content.Persona": {
+            /** @description e.g. "60s" */
+            ageRange?: string;
+            /**
+             * @description Gender is optional and exists for VOICE selection, not display: "male" |
+             *     "female". Most authored personas leave it empty (30 of 300 hint at it only
+             *     inside the display `sub` string), so speech falls back to role — filling
+             *     this in is what makes an individual character sound right.
+             */
+            gender?: string;
+            /** @description portrait hair color, e.g. "#9A6B3F" */
+            hair?: string;
+            /** @description portrait hair style, e.g. "bob" */
+            hairStyle?: string;
+            /** @description matches expression: pain, worried, panic... */
+            mood?: string;
+            name?: string;
+            personality?: string;
+            /** @description patient, doctor, surgeon, parent... */
+            role?: string;
+            speakingStyle?: string;
+            /** @description display, e.g. "67y / Female" */
+            sub?: string;
+        };
+        "github_com_bingoring_forin_server_internal_domain_content.QuizVital": {
+            label?: string;
+            unit?: string;
+            value?: string;
+            warn?: boolean;
+        };
+        "github_com_bingoring_forin_server_internal_domain_content.Req": {
+            label?: string;
+            /** @description e.g. "level", "emergencyResponse" */
+            metric?: string;
+            threshold?: number;
+        };
+        "github_com_bingoring_forin_server_internal_domain_content.Reward": {
+            icon?: string;
+            label?: string;
+            value?: string;
+        };
+        /**
+         * @description Dialogue quick-reference (QUICK INFO dock: 차트/약물/활력) and risky-choice
+         *     tagging (hint mode marks these key phrases as reputation-risky).
+         */
+        "github_com_bingoring_forin_server_internal_domain_content.ScenarioChart": {
+            allergies?: string;
+            meds?: string[];
+            notes?: string;
+            vitals?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_content.QuizVital"][];
+        };
+        "github_com_bingoring_forin_server_internal_domain_content.Sentence": {
+            /**
+             * @description Chunks, joined per JoinChunks' spacing rule, must reproduce En exactly
+             *     (checked A4) — that agreement is what makes the STEP 2 chunk-assembly
+             *     exercise solvable at all.
+             */
+            chunks?: string[];
+            en?: string;
+            /**
+             * @description Goal is the 1-based index into the seed's own `goals` this sentence advances
+             *     toward (checked A3: 1..len(seed.Goals)). STEP 3's guided pass walks a
+             *     situation's sentences in this order.
+             */
+            goal?: number;
+            ko?: string;
+            /**
+             * @description Words are bank word ids this sentence actually uses (checked A1: every id
+             *     must exist in the situation's theme bank; A2: the bank itself must have no
+             *     duplicate ids). This is the reference STEP 1 is derived from.
+             */
+            words?: string[];
+        };
+        "github_com_bingoring_forin_server_internal_domain_content.Word": {
+            en?: string;
+            example?: string;
+            icon?: string;
+            /**
+             * @description ID is unique WITHIN its Lexicon (one theme's word bank), not globally — the
+             *     bank is authored and read as one unit (build-spec-index.md §2), so a global
+             *     namespace would only make two independently-authored banks collide by
+             *     accident for no benefit.
+             */
+            id?: string;
+            ipa?: string;
+            ko?: string;
         };
         "github_com_bingoring_forin_server_internal_domain_conversation.Choice": {
             /**
@@ -2861,6 +3048,19 @@ export interface components {
             inferred?: boolean;
             track?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_learning.TrackGroup"];
         };
+        "github_com_bingoring_forin_server_internal_domain_learning.LessonStep": {
+            /**
+             * @description Count is how many items the step holds — words, sentences, or the dialogue's
+             *     goals. It follows the content; nothing here assumes 8 or 5 (build-spec §2-2).
+             */
+            count?: number;
+            kind?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_learning.LessonStepKind"];
+            state?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_learning.LessonStepState"];
+        };
+        /** @enum {string} */
+        "github_com_bingoring_forin_server_internal_domain_learning.LessonStepKind": "words" | "sentences" | "guided" | "free";
+        /** @enum {string} */
+        "github_com_bingoring_forin_server_internal_domain_learning.LessonStepState": "done" | "now" | "lock" | "skip" | "empty";
         "github_com_bingoring_forin_server_internal_domain_learning.Milestone": {
             name?: string;
             /** @description passed | open | closed */
@@ -3325,6 +3525,22 @@ export interface components {
             kind?: string;
             progress?: components["schemas"]["internal_adapters_http.homeProgress"];
             scenarioId?: string;
+            title?: string;
+        };
+        "internal_adapters_http.lessonResp": {
+            level?: string;
+            sentences?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_content.Sentence"][];
+            situation?: components["schemas"]["internal_adapters_http.lessonSituation"];
+            steps?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_learning.LessonStep"][];
+            /** @description Words are the bank words the sentences use, in first-use order (STEP 1). */
+            words?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_content.Word"][];
+        };
+        "internal_adapters_http.lessonSituation": {
+            briefing?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_content.Briefing"];
+            id?: string;
+            persona?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_content.Persona"];
+            tagline?: string;
+            theme?: string;
             title?: string;
         };
         "internal_adapters_http.loginResp": {

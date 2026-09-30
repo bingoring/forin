@@ -196,3 +196,33 @@ func TestValidateSentences_doesNotTruncateTwelveSentences(t *testing.T) {
 		t.Fatalf("sentence slice has %d entries, want 12", len(sentences))
 	}
 }
+
+// ---- WordsUsed (STEP 1 is derived from the sentences, not from the bank) ----
+
+func TestWordsUsed_firstUseOrderDedupedAndOnlyUsed(t *testing.T) {
+	bank := []Word{{ID: "w-a", En: "a"}, {ID: "w-b", En: "b"}, {ID: "w-c", En: "c"}, {ID: "w-unused", En: "unused"}}
+	sents := []Sentence{
+		{Words: []string{"w-c", "w-a"}},
+		{Words: []string{"w-a", "w-b"}},
+	}
+	var got []string
+	for _, w := range WordsUsed(sents, bank) {
+		got = append(got, w.ID)
+	}
+	want := []string{"w-c", "w-a", "w-b"}
+	if len(got) != len(want) {
+		t.Fatalf("got %v, want %v", got, want)
+	}
+	for i := range want {
+		if got[i] != want[i] {
+			t.Fatalf("got %v, want %v", got, want)
+		}
+	}
+}
+
+func TestWordsUsed_unknownIDIsDroppedNotBlank(t *testing.T) {
+	got := WordsUsed([]Sentence{{Words: []string{"w-gone"}}}, []Word{{ID: "w-a"}})
+	if len(got) != 0 {
+		t.Fatalf("got %v, want none", got)
+	}
+}

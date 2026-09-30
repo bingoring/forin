@@ -53,6 +53,7 @@ type Deps struct {
 	SlangRepo            ports.SlangRepo     // slang collection persistence (optional)
 	Night                *night.Stories      // 오늘 밤의 이야기 content (optional)
 	Handoff              *handoff.Service    // 환자 인수인계 노트 (optional)
+	Lessons              ports.LessonRepo    // 상황 학습 4단계 — 단어 은행 + STEP 1·2 완료 (optional)
 	PG                   *pgxpool.Pool
 	Redis                *redis.Client
 }
@@ -167,6 +168,13 @@ func NewRouter(d Deps) http.Handler {
 		mux.Handle("GET /ward", auth(http.HandlerFunc(wh.get)))
 		mux.Handle("POST /ward/heartbeat", auth(http.HandlerFunc(wh.heartbeat)))
 		mux.Handle("POST /ward/leave", auth(http.HandlerFunc(wh.leave)))
+	}
+
+	// 상황 학습 4단계 (authenticated). Nil when the lesson store is not wired.
+	if d.Lessons != nil {
+		lh := &lessonHandler{content: d.Content, profiles: d.Users, passes: d.Progress, lessons: d.Lessons}
+		mux.Handle("GET /me/lesson/{scenarioId}", auth(http.HandlerFunc(lh.get)))
+		mux.Handle("POST /me/lesson/{scenarioId}/steps/{step}", auth(http.HandlerFunc(lh.clearStep)))
 	}
 
 	// 은어 도감 (authenticated). Nil when the content deck or its store is not wired.

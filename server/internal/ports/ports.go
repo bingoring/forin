@@ -477,6 +477,19 @@ type ContentReader interface {
 	SearchSituations(ctx context.Context, userID, q string, limit int) ([]content.DeptSituation, error)
 }
 
+// LessonRepo backs the four-step situation lesson (v44): the theme word banks STEP 1
+// is derived from, and the record of which of STEP 1/2 a learner has finished. STEP
+// 3/4 are dialogue passes and are read from ProgressRepo, not here.
+type LessonRepo interface {
+	// Lexicon returns one theme's word bank; a theme with no bank yet is (nil, nil).
+	Lexicon(ctx context.Context, theme string) ([]content.Word, error)
+	// StepClears returns the recorded steps ("words", "sentences") finished for one
+	// situation.
+	StepClears(ctx context.Context, userID, scenarioID string) (map[string]bool, error)
+	// ClearStep records a step as finished; finishing it again is a no-op.
+	ClearStep(ctx context.Context, userID, scenarioID, step string) error
+}
+
 // ContentSeeder ingests a validated content bundle (file-source or, later, a CMS).
 type ContentSeeder interface {
 	Seed(ctx context.Context, b *content.Bundle) error

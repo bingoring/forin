@@ -138,3 +138,28 @@ func ValidateBundleLessons(b *Bundle) []error {
 	}
 	return errs
 }
+
+// WordsUsed is STEP 1's word list: the bank words this situation's sentences use, in
+// the order the sentences first use them, each once (build-spec §2-1). A bank word no
+// sentence uses is left out — that is the point of deriving the list backwards. An id
+// missing from the bank is dropped rather than shown as a blank card; loading already
+// rejects such content (ValidateBundleLessons), so this only guards a stale DB.
+func WordsUsed(sentences []Sentence, bank []Word) []Word {
+	byID := make(map[string]Word, len(bank))
+	for _, w := range bank {
+		byID[w.ID] = w
+	}
+	seen := map[string]bool{}
+	var out []Word
+	for _, s := range sentences {
+		for _, id := range s.Words {
+			w, ok := byID[id]
+			if !ok || seen[id] {
+				continue
+			}
+			seen[id] = true
+			out = append(out, w)
+		}
+	}
+	return out
+}
