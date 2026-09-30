@@ -59,7 +59,7 @@ func (q *Queries) AddBonusXP(ctx context.Context, arg AddBonusXPParams) (int, er
 }
 
 const clearedPassGuides = `-- name: ClearedPassGuides :many
-SELECT DISTINCT scenario_id, CASE WHEN guide = 'choices' THEN 'choices' ELSE 'free' END AS guide
+SELECT DISTINCT scenario_id, guide
   FROM scenario_attempts
  WHERE user_id = $1 AND state = 'cleared'
 `
@@ -77,6 +77,12 @@ type ClearedPassGuidesRow struct {
 // three replies on screen is not a clear made alone.
 //
 // The pre-feature default is ” and those runs had no help, so they read as unaided.
+//
+// The raw value comes back rather than a CASE that buckets it here. The bucketing rule
+// has to accept two spellings now (`guided`, and `choices` from before 2026-09-30), and
+// a rule written in two places is a rule that drifts: this CASE said `= 'choices'` while
+// the Go beside it said the same thing, and renaming the constant alone would have left
+// both bucketing a guided clear as a FREE clear. One caller decides — learning.IsGuided.
 func (q *Queries) ClearedPassGuides(ctx context.Context, userID string) ([]ClearedPassGuidesRow, error) {
 	rows, err := q.db.Query(ctx, clearedPassGuides, userID)
 	if err != nil {

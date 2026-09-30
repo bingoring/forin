@@ -66,7 +66,7 @@ func (e *Engine) Guidance(s learning.ScenarioID, p learning.Progress) learning.G
 	if e.guide.Passes(ref.Kind) == 1 || clearedGuided {
 		return learning.GuideFree
 	}
-	return learning.GuideChoices
+	return learning.GuideGuided
 }
 
 // Next is what to do after finishing a scenario. Not cleared → that scenario again

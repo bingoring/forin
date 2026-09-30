@@ -27,7 +27,9 @@ type ProgressRepo interface {
 	// returns new progress. state is 'cleared' (passed → counts as 완료) or
 	// 'attempted' (engaged but below pass). grade is the 0..100 AI score, or <0 for
 	// a direct/legacy attempt with no grade (stored NULL).
-	// `guide` is the help this run had (curriculum.GuideLevel: "choices" | "free").
+	// `guide` is the help this run had (curriculum.GuideLevel: "guided" | "free").
+	// Rows written before 2026-09-30 say "choices" for the same rung — learning.IsGuided
+	// reads both.
 	// Without it a clear made with three replies on screen counts the same as one made
 	// alone, which deletes the second rung of the ladder.
 	RecordAttempt(ctx context.Context, userID, scenarioID string, score int, state string, grade int, guide string) (*progress.Progress, error)
@@ -409,7 +411,8 @@ type SpeechSynthesizer interface {
 type ConversationSession struct {
 	ID, UserID, ScenarioID string
 	// Guide is which rung of the ladder opened this session (curriculum.GuideLevel:
-	// "choices" | "free"). "" is a session from before the column existed, read as
+	// "guided" | "free", and "choices" on sessions from before 2026-09-30). "" is a
+	// session from before the column existed, read as
 	// "free". The server needs it because the guided pass is answered from an authored
 	// tree when the scenario has one, and a model called on a turn the tree owns would
 	// walk the conversation off the script.

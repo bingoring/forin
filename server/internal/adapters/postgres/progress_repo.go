@@ -11,6 +11,7 @@ import (
 	"github.com/jackc/pgx/v5/pgxpool"
 
 	"github.com/bingoring/forin/server/internal/adapters/postgres/sqlc"
+	"github.com/bingoring/forin/server/internal/domain/learning"
 	"github.com/bingoring/forin/server/internal/domain/progress"
 	"github.com/bingoring/forin/server/internal/domain/reputation"
 	"github.com/bingoring/forin/server/internal/economy"
@@ -636,7 +637,9 @@ func (r *ProgressRepo) ClearedByGuide(ctx context.Context, userID string) (guide
 	}
 	guided, free = map[string]bool{}, map[string]bool{}
 	for _, row := range rows {
-		if row.Guide == "choices" {
+		// The stored value has two spellings — `guided`, and `choices` from before
+		// 2026-09-30. learning.IsGuided owns that rule so it is not written twice.
+		if learning.IsGuided(row.Guide) {
 			guided[row.ScenarioID] = true
 		} else {
 			free[row.ScenarioID] = true

@@ -83,9 +83,14 @@ situations:
 
 - `icon`은 아래 목록에 **있는 것만**. 맞는 게 없으면 `board`입니다.
 
-      baby bandage bell board bulb calendar chartup check coffee compass cross gear
-      home hospital lab lock magnify me mic monitor pencil pill plane pushpin round
-      scalpel shield siren speaker speech star stetho trophy
+      baby bandage bell board bulb calendar chartup check coffee compass
+      cross gear handshake2 home hospital lab lock magnify me mic monitor
+      pencil pill plane pushpin scalpel shield siren speaker speech star
+      stetho trophy
+
+  이 목록은 `mobile/src/components/nb/NbIcon.tsx` 의 이름을 그대로 옮긴 것입니다.
+  손으로 적었다가 `round` 라는 없는 이름이 들어갔고, 그대로 525건에 퍼졌습니다.
+  화면에서는 빈 자리로 그려집니다. 목록에 없는 이름을 쓰지 마세요.
 
 - `ipa`는 미국식 발음기호. `example`은 그 단어가 쓰인 짧은 한 문장.
 - **은행에 있으나 어느 문장에도 안 쓰인 단어는 두지 마세요.** 필요해서 만든 것만 남깁니다.

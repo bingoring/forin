@@ -148,8 +148,19 @@ test('nothing to offer draws nothing at all', () => {
 const SRC = readFileSync(join(__dirname, '..', 'app', 'dialogue', '[id].tsx'), 'utf8');
 
 test('the rung the learner TAPPED decides it, with the server as fallback', () => {
-  expect(SRC).toMatch(/const guided = \(guideParam \?\? scenario\?\.guide\) === 'choices';/);
+  expect(SRC).toMatch(/const guided = isGuidedRung\(guideParam \?\? scenario\?\.guide\);/);
   expect(SRC).toMatch(/guide: guideParam \} = useLocalSearchParams/);
+});
+
+// 2026-09-30에 이 회차의 이름이 `choices` 에서 `guided` 로 바뀌었다. 판정을 화면에서
+// 직접 하면 옛 이름이 박힌 딥링크가 조용히 자유 회차로 떨어진다 — 터지지 않고 그냥
+// 보기가 사라지므로 눈으로 못 찾는다. 그래서 판정은 data/guideRung 한 곳에만 둔다.
+test('회차 판정을 화면에서 직접 하지 않는다 — 옛 이름이 조용히 떨어진다', () => {
+  expect(SRC).not.toMatch(/=== 'choices'/);
+  expect(SRC).not.toMatch(/=== 'guided'/);
+  expect(SRC).toMatch(/import \{ GUIDED, isGuidedRung \} from '@\/data\/guideRung'/);
+  // 보낼 때는 새 이름만 쓴다.
+  expect(SRC).not.toMatch(/'choices' : 'free'/);
 });
 
 test('the speak area opens once an intent is picked, or on the free path', () => {

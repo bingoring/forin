@@ -58,7 +58,7 @@ const DETAIL: StationDetail = {
   station: { themeKey: 't1', name: '투약 확인', done: 1, total: 3, track: 'core' },
   steps: [
     step({ kind: 'dlg', state: 'done', scenarioId: 'SCN-ER-00001', name: '문진' }),
-    step({ kind: 'dlg', state: 'now', scenarioId: 'SCN-ER-00002', name: '투약', guide: 'choices' }),
+    step({ kind: 'dlg', state: 'now', scenarioId: 'SCN-ER-00002', name: '투약', guide: 'guided' }),
     step({ kind: 'quiz', state: 'lock', scenarioId: 'QZ-ER-00001', name: '퀴즈' }),
     step({ kind: 'boss', state: 'lock', scenarioId: undefined, name: '구간 시험' }),
   ],
@@ -103,7 +103,7 @@ test('pressing the now step routes to /scenario with its guide carried through',
   const tree = await mount();
   const presses = stationPresses(tree.root);
   await act(async () => { presses[1].props.onPress(); }); // index 1 = 'now', SCN-ER-00002, guide choices
-  expect(mockPushed).toEqual(['/scenario/SCN-ER-00002?guide=choices']);
+  expect(mockPushed).toEqual(['/scenario/SCN-ER-00002?guide=guided']);
 });
 
 test('a QZ- scenarioId routes to /quiz instead of /scenario', async () => {

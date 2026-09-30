@@ -46,7 +46,7 @@ func TestEngine_Locate(t *testing.T) {
 func TestEngine_Guidance(t *testing.T) {
 	e := fixtureEngine()
 	// dlg, never cleared → guided (choices).
-	if g := e.Guidance("SCN-C1", prog()); g != learning.GuideChoices {
+	if g := e.Guidance("SCN-C1", prog()); g != learning.GuideGuided {
 		t.Errorf("fresh dlg should be choices, got %q", g)
 	}
 	// dlg with guided pass cleared → free.
@@ -129,7 +129,7 @@ func TestEngine_StepsExpandsEachDialogueIntoTwoRuns(t *testing.T) {
 	if len(rows) != 4 { // SCN-C1 ×2, SCN-C2 ×2
 		t.Fatalf("want 4 rows (2 dialogues × 2 runs), got %d", len(rows))
 	}
-	if rows[0].Pass != 1 || rows[0].Passes != 2 || rows[0].Guide != learning.GuideChoices {
+	if rows[0].Pass != 1 || rows[0].Passes != 2 || rows[0].Guide != learning.GuideGuided {
 		t.Errorf("first run should be the guided rung: %+v", rows[0])
 	}
 	if rows[1].Pass != 2 || rows[1].Guide != learning.GuideFree {

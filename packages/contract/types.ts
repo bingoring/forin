@@ -2854,7 +2854,7 @@ export interface components {
          * @description Guide/Pass/Passes describe the rung. Absent on steps with a single run.
          * @enum {string}
          */
-        "github_com_bingoring_forin_server_internal_domain_learning.GuideLevel": "choices" | "free";
+        "github_com_bingoring_forin_server_internal_domain_learning.GuideLevel": "guided" | "free";
         "github_com_bingoring_forin_server_internal_domain_learning.JourneyView": {
             freeRoam?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_learning.FreeRoamEntry"][];
             goalDept?: string;

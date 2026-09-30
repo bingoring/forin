@@ -96,7 +96,9 @@ export interface ScenarioDetail {
   /** How much help THIS run gets: "choices" the first time through a conversation,
    *  "free" the second. Sent with the scenario so the screen knows what to draw before
    *  the conversation starts. */
-  guide?: 'choices' | 'free';
+  // 사다리의 회차. 서버는 'guided' | 'free' 를 보내고, 2026-09-30 이전에 저장된
+  // 세션은 'choices' 를 보낸다(같은 회차다). 판정은 data/guideRung 이 한다.
+  guide?: string;
   briefing?: ScenarioBriefing; steps?: ScenarioStep[];
 }
 
@@ -1126,7 +1128,7 @@ export const api = {
    *  guided rung a scenario with an authored conversation is answered from that file
    *  instead of from a model, and it cannot know which rung this is otherwise. Omitted
    *  means the free pass, which is the safe default — the value only ever adds help. */
-  async startConversation(scenarioId: string, resumeSessionId?: string, guide?: 'choices' | 'free'): Promise<string> {
+  async startConversation(scenarioId: string, resumeSessionId?: string, guide?: string): Promise<string> {
     const body: Record<string, string> = {};
     if (resumeSessionId) body.resumeSessionId = resumeSessionId;
     if (guide) body.guide = guide;

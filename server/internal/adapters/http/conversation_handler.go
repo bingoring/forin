@@ -105,7 +105,8 @@ func (h *conversationHandler) start(w http.ResponseWriter, r *http.Request) {
 	// a new one. Default stays "fresh session" so existing callers are unchanged.
 	var req struct {
 		ResumeSessionID string `json:"resumeSessionId"`
-		// Which rung of the ladder the learner tapped: "choices" for the guided pass,
+		// Which rung of the ladder the learner tapped: "guided" for the guided pass
+		// ("choices" from clients older than 2026-09-30 means the same rung),
 		// "free" (or absent) for doing it alone. Absent is read as free — the value only
 		// ever ADDS scaffolding, so an old client loses help rather than gaining it.
 		Guide string `json:"guide"`

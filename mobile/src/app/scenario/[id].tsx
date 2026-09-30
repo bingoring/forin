@@ -32,7 +32,7 @@ const EXPRESSIONS = new Set<Expression>(['neutral', 'happy', 'worried', 'pain', 
 
 export default function ScenarioBriefingRoute() {
   const t = useT();
-  const { id, guide } = useLocalSearchParams<{ id: string; guide?: 'choices' | 'free' }>();
+  const { id, guide } = useLocalSearchParams<{ id: string; guide?: string }>();
   const router = useRouter();
   const [scenario, setScenario] = useState<ScenarioDetail | null>(null);
   const [state, setState] = useState<'loading' | 'error' | 'ok'>('loading');

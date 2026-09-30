@@ -22,12 +22,35 @@ type (
 type GuideLevel string
 
 const (
-	// GuideChoices offers candidate replies per NPC turn (the guided pass).
-	GuideChoices GuideLevel = "choices"
+	// GuideGuided is the guided pass. v44 turns it from "three replies to pick from"
+	// into "one Korean target sentence you produce yourself", so the old name
+	// (`choices`) stopped describing what the rung does — nothing is chosen any more.
+	GuideGuided GuideLevel = "guided"
 	// GuideFree is an empty box with a hint within reach (the free pass, and every
 	// boss/quiz, and anything outside a course).
 	GuideFree GuideLevel = "free"
+
+	// legacyGuideChoices is what the guided rung was called before 2026-09-30, and it
+	// is what every `scenario_attempts.guide` row written before that date holds.
+	// Reads accept it (see IsGuided); nothing writes it any more.
+	//
+	// It can go once no stored row carries it — that is a data question, not a code
+	// one, so check the column before deleting this.
+	legacyGuideChoices = "choices"
 )
+
+// IsGuided reports whether a STORED `guide` value means the guided pass.
+//
+// This exists because the rename is not only a constant. Two places used to compare
+// the stored string to "choices" directly — the ClearedPassGuides query and the repo
+// that buckets its rows — and the moment the server started writing "guided" those
+// comparisons would have bucketed a guided clear as a FREE clear. The learner's free
+// pass would be born complete: marked done without ever having been done alone.
+//
+// So the rule lives here, once, and both callers ask it.
+func IsGuided(stored string) bool {
+	return stored == string(GuideGuided) || stored == legacyGuideChoices
+}
 
 // ClearedPasses splits a clear into the two rungs of a dialogue: cleared WITH help
 // vs alone. The zero value means "no split known", and a plain clear then reads as

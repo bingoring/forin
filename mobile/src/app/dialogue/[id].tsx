@@ -7,6 +7,7 @@
 // QUICK INFO dock (차트/약물/활력 → chart panel), NPC-line 번역 toggle, ▼ next cue,
 // and hint-mode choices with a red risky (평판 위험) variant, plus 🎤 mic dictation (record → Azure STT → draft).
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { GUIDED, isGuidedRung } from '@/data/guideRung';
 import { ActivityIndicator, Alert, Animated, Keyboard, KeyboardAvoidingView, Platform, Pressable, ScrollView, Text, TextInput, useWindowDimensions, View, type ViewStyle } from 'react-native';
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import {
@@ -62,7 +63,7 @@ function openingLineOf(s: ScenarioDetail | null): string {
 
 export default function DialogueRoute() {
   const t = useT();
-  const { id, guide: guideParam } = useLocalSearchParams<{ id: string; guide?: 'choices' | 'free' }>();
+  const { id, guide: guideParam } = useLocalSearchParams<{ id: string; guide?: string }>();
   const router = useRouter();
 
   const [scenario, setScenario] = useState<ScenarioDetail | null>(null);
@@ -115,7 +116,7 @@ export default function DialogueRoute() {
   // tapped. Tapping "1/2 보기 중에서" and getting the unguided run is the app ignoring a
   // decision it had just asked for. The server's answer is still the fallback, for entry
   // points that have no rung at all: the board, a paged call, the home card.
-  const guided = (guideParam ?? scenario?.guide) === 'choices';
+  const guided = isGuidedRung(guideParam ?? scenario?.guide);
   const [choices, setChoices] = useState<ReplyChoice[]>([]);
   const [choicesBusy, setChoicesBusy] = useState(false);
   // The intent the learner picked this turn (native language). Picking one reveals the
@@ -316,7 +317,7 @@ export default function DialogueRoute() {
           setState('ready');
           return; // the session is opened by the learner's choice below
         }
-        const sid = await api.startConversation(id, undefined, guided ? 'choices' : 'free');
+        const sid = await api.startConversation(id, undefined, guided ? GUIDED : 'free');
         if (!alive) return;
         sessionRef.current = sid;
         setState('ready');
@@ -467,7 +468,7 @@ export default function DialogueRoute() {
     const prev = resumable;
     setResumable(null);
     try {
-      sessionRef.current = await api.startConversation(id, prev.sessionId, guided ? 'choices' : 'free');
+      sessionRef.current = await api.startConversation(id, prev.sessionId, guided ? GUIDED : 'free');
     } catch {
       setState('error');
       return;
@@ -500,7 +501,7 @@ export default function DialogueRoute() {
   const startFresh = async () => {
     setResumable(null);
     try {
-      sessionRef.current = await api.startConversation(id, undefined, guided ? 'choices' : 'free');
+      sessionRef.current = await api.startConversation(id, undefined, guided ? GUIDED : 'free');
     } catch {
       setState('error');
     }
