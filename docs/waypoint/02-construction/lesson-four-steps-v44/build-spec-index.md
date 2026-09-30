@@ -711,3 +711,12 @@ unbearable↔unbelievable, mention↔mentor, again↔against). 약한 것은 `fa
       - {kind: word-add, id: w-intensity, why: "쉬운 w-bad 대신 가르칠 말 — 문장 3에 이미 있다"}
       - {kind: word-remove, id: w-home, why: "너무 쉬움 — 어느 문장도 태그하지 않게 됐다"}
       - {kind: sentence, situation: "통증 척도 초기 사정", index: 2, fields: [words], why: "w-home 태그를 빼고 w-intensity 태그"}
+
+#### 사용자 결정 대기 — keyPhrase 사실 오류 (결정 11 범위 밖)
+
+keyPhrases는 사람이 저작·임상 검토한 문장이라 보강·정리 패스에서 바꾸지 않는다(V4). 그런데 Fable 검토가 그중 사실이
+틀린 것을 찾았다. 시드의 keyPhrases를 고치는 것은 이 패스의 권한 밖이라 목록으로 두고 사용자에게 올린다.
+
+| 부서 · 상황 | keyPhrase | 문제 | 제안 |
+|---|---|---|---|
+| ER · 임산부 심정지 | "Keep compressions high on the sternum and continuous." | AHA가 2015년에 임산부 압박 위치를 "약간 위쪽"으로 하라는 권고를 삭제했다 — 손 위치는 바꾸지 않고 자궁 좌측 전위(LUD)로 대신한다 | "Keep compressions continuous — manual uterine displacement to the left." 류로 교체 |
