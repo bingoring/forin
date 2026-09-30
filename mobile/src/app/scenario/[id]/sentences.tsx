@@ -76,11 +76,20 @@ export default function LessonSentencesRoute() {
     pathname: '/pronunciation/[sentenceKey]',
     params: { sentenceKey: text.slice(0, 40), referenceText: text, origin: 'lesson', scenarioId: id },
   });
+  // Only on success — see words.tsx: a silent failure would leave STEP 2 undone.
+  const [saveFailed, setSaveFailed] = useState(false);
   const finish = async () => {
     if (finishing.current) return;
     finishing.current = true;
-    await api.clearLessonStep(id, 'sentences').catch(() => {});
-    router.replace(`/dialogue/${id}?guide=guided`);
+    setSaveFailed(false);
+    try {
+      await api.clearLessonStep(id, 'sentences');
+      router.replace(`/dialogue/${id}?guide=guided`);
+    } catch {
+      setSaveFailed(true);
+    } finally {
+      finishing.current = false;
+    }
   };
 
   const repeatText = card?.kind === 'sentence' ? card.sentence.en : null;
@@ -139,6 +148,7 @@ export default function LessonSentencesRoute() {
           <View style={{ position: 'absolute', left: 20, right: 20, bottom: 30 }}>
             {done ? (
               <View testID="sent-to-step3">
+                {saveFailed && <Text testID="lesson-save-failed" style={[nbText.hand(14, nb.red), { textAlign: 'center', marginBottom: 8 }]}>{t('lesson.saveFailed')}</Text>}
                 <NbButton variant="ink" size="lg" full icon="speech" iconColor={nb.paper} onPress={finish}>{t('sent.toStep3')}</NbButton>
               </View>
             ) : card?.kind === 'reel' ? (

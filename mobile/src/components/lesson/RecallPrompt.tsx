@@ -59,7 +59,7 @@ export function RecallPrompt({ card, pool, answer, onAnswer, result }: {
             const ok = locked && o === correct;
             const bad = locked && on && !ok;
             return (
-              <Pressable key={o} testID={`recall-opt-${i}`} disabled={locked} onPress={() => onAnswer(o)} style={{
+              <Pressable key={`${i}-${o}`} testID={`recall-opt-${i}`} disabled={locked} onPress={() => onAnswer(o)} style={{
                 flex: row ? 1 : undefined, paddingVertical: row ? 9 : 10, paddingHorizontal: row ? 4 : 12,
                 borderWidth: 1.6, borderColor: optionBorder(on, ok, bad), backgroundColor: optionFill(ok, bad),
                 flexDirection: 'row', alignItems: 'center', justifyContent: row ? 'center' : 'flex-start', gap: 8,

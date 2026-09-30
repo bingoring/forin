@@ -77,11 +77,21 @@ export default function LessonWordsRoute() {
     setResult(null);
   };
 
+  // Only on success: a failed save would otherwise drop the missed words (STEP 2 would
+  // lose its review sentences) and leave STEP 1 undone on the hub, with nothing said.
+  const [saveFailed, setSaveFailed] = useState(false);
   const finish = async () => {
     if (finishing.current) return;
     finishing.current = true;
-    await api.clearLessonStep(id, 'words', [...missed.current]).catch(() => {});
-    router.replace(`/scenario/${id}/sentences`);
+    setSaveFailed(false);
+    try {
+      await api.clearLessonStep(id, 'words', [...missed.current]);
+      router.replace(`/scenario/${id}/sentences`);
+    } catch {
+      setSaveFailed(true);
+    } finally {
+      finishing.current = false;
+    }
   };
 
   const right = outcomes.filter((o) => o === 'right').length;
@@ -189,6 +199,7 @@ export default function LessonWordsRoute() {
           <View style={{ position: 'absolute', left: 20, right: 20, bottom: 30 }}>
             {done ? (
               <View testID="recall-to-step2">
+                {saveFailed && <Text testID="lesson-save-failed" style={[nbText.hand(14, nb.red), { textAlign: 'center', marginBottom: 8 }]}>{t('lesson.saveFailed')}</Text>}
                 <NbButton variant="ink" size="lg" full icon="speech" iconColor={nb.paper} onPress={finish}>{t('recall.toStep2')}</NbButton>
               </View>
             ) : !result ? (

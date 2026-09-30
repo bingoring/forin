@@ -85,3 +85,33 @@ describe('order — goal 순서', () => {
     expect(new Set(goals).size).toBe(goals.length);
   });
 });
+
+// Branch review (2026-09-30) regressions.
+describe('review fixes', () => {
+  it('places the blank at its chunk, not at an earlier copy of the same text', () => {
+    const s = S('ok ok ok?', ['ok ok', 'ok', '?'], [], 1);
+    const b = blankOf(s, [s], [])!;
+    expect(b.answer).toBe('ok');
+    expect(b.at).toBe(6);
+  });
+  it('never offers the same option twice', () => {
+    const a = S('A one.', ['A', 'one', '.'], [], 1);
+    const b = S('B shared.', ['B', 'shared', '.'], [], 2);
+    const c = S('C shared.', ['C', 'shared', '.'], [], 3);
+    const opts = blankOf(a, [a, b, c], [])!.options;
+    expect(new Set(opts).size).toBe(opts.length);
+    const twins = [a, { ...b, ko: 'same' }, { ...c, ko: 'same' }];
+    const lo = listenOptions(a, twins);
+    expect(new Set(lo).size).toBe(lo.length);
+  });
+  it('gives a one-piece sentence a listen card, never a dead-end blank', () => {
+    const one = S('Hello there?', ['Hello there', '?'], [], 1);
+    const deck = buildDrillDeck([sentences[0], sentences[1], one], []);
+    const card = deck.find((c) => c.kind === 'sentence' && c.sentence === one)!;
+    expect(card.kind === 'sentence' && card.type).toBe('listen');
+  });
+  it('matches a taught word on a word boundary — "IV" is not in "give"', () => {
+    const s = S('I will give the IV now.', ['I will give', 'the IV', 'now', '.'], ['w-iv'], 1);
+    expect(blankOf(s, [s], [{ id: 'w-iv', en: 'IV', ko: '정맥주사' }])!.answer).toBe('the IV');
+  });
+});

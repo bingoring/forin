@@ -67,7 +67,8 @@ export function optionsFor(w: LessonWord, type: 'pick' | 'listen', pool: LessonW
     const others = stableShuffle(pool.filter((p) => p.id !== w.id), w.id)
       .map((p) => (type === 'pick' ? p.en : p.ko))
       .filter((o) => o !== answer && !wrong.includes(o));
-    wrong = [...wrong, ...others].slice(0, 2);
+    // Two lesson words can share a gloss — never offer the same option twice.
+    wrong = [...new Set([...wrong, ...others])].slice(0, 2);
   }
   return stableShuffle([answer, ...wrong.slice(0, 2)], `${w.id}|${type}`);
 }

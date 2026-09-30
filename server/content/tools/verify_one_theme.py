@@ -67,6 +67,9 @@ def main(dept: str, path: str) -> int:
         changes = {}
         if os.path.exists(chg_path):
             t, lst = v.load_changes(io.open(chg_path, encoding='utf-8').read())
+            if t and t != theme:
+                print(f'  [X] 변경 목록의 theme({t!r})이 이 파일의 theme({theme!r})과 다르다')
+                return 2
             changes = {theme: lst}
             print(f'  변경 목록 {len(lst)}건: {os.path.basename(chg_path)}')
         viol += v.check_backfill(dept, {theme: base_bank}, base_seeds, {theme: doc['words']}, merged, changes)

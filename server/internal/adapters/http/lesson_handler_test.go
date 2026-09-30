@@ -2,6 +2,7 @@ package http
 
 import (
 	"context"
+	"errors"
 	"net/http"
 	"net/http/httptest"
 	"reflect"
@@ -26,10 +27,13 @@ func (f fakeLessonProfiles) GetProfile(context.Context, string) (*user.Profile, 
 	return &user.Profile{TargetLevel: f.level}, nil
 }
 
-type fakeLessonPasses struct{ guided, free map[string]bool }
+type fakeLessonPasses struct {
+	guided, free map[string]bool
+	err          error
+}
 
 func (f fakeLessonPasses) ClearedByGuide(context.Context, string) (map[string]bool, map[string]bool, error) {
-	return f.guided, f.free, nil
+	return f.guided, f.free, f.err
 }
 
 type fakeLessonRepo struct {
@@ -295,5 +299,14 @@ func TestLesson_carriesNuance(t *testing.T) {
 	empty, _, _ := h.build(context.Background(), "u1", "SCN-EMPTY")
 	if empty.Nuance == nil {
 		t.Fatal("no nuance must encode as [], not null")
+	}
+}
+
+// Branch review: a failed read of the dialogue clears must not draw STEP 3/4 as undone.
+func TestLesson_passReadErrorIsAnError(t *testing.T) {
+	h, _ := lessonFixture("A2")
+	h.passes = fakeLessonPasses{err: errors.New("db down")}
+	if _, _, err := h.build(context.Background(), "u1", "SCN-ER-1"); err == nil {
+		t.Fatal("want an error, not a lesson with the dialogue rungs reset")
 	}
 }

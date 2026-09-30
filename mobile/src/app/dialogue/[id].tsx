@@ -131,6 +131,10 @@ export default function DialogueRoute() {
   const lessonRef = useRef({ ready: !guided, count: 0 });
   useEffect(() => {
     if (!guided) return;
+    // `guided` can turn true after mount (inferred from the scenario, no ?guide=): close
+    // the gate again until the sentences are known.
+    lessonRef.current = { ready: false, count: 0 };
+    setLessonReady(false);
     let alive = true;
     const done = (n: LessonSentence[]) => {
       if (!alive) return;

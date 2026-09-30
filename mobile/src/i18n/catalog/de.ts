@@ -286,6 +286,7 @@ export const de: Record<string, string> = {
   'guided.hintMore': 'Mehr Hinweise',
   'guided.listen': 'Anhören',
   'guided.inputLabel': 'Auf Englisch sagen oder schreiben',
+  'lesson.saveFailed': 'Speichern fehlgeschlagen. Nochmal tippen.',
   'journey.milestone.open': 'Bereit',
   'journey.milestone.closed': 'Noch nicht',
   // ── journey (Gruppennamen — Abteilung Kern/Vertiefung) ─────────────

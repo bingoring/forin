@@ -191,7 +191,7 @@ export function SentPrompt({ card, all, words, answer, onAnswer, result, reelAt,
           <NbIcon name="speaker" size={42} />
         </Pressable>
         {opts.map((o, i) => (
-          <Option key={o} testID={`sent-opt-${i}`} label={o} on={answer === o} ok={locked && o === s.ko} bad={locked && answer === o && o !== s.ko}
+          <Option key={`${i}-${o}`} testID={`sent-opt-${i}`} label={o} on={answer === o} ok={locked && o === s.ko} bad={locked && answer === o && o !== s.ko}
             disabled={locked} onPress={() => onAnswer(o)} />
         ))}
       </View>
@@ -211,7 +211,7 @@ export function SentPrompt({ card, all, words, answer, onAnswer, result, reelAt,
   // blank
   const b = blankOf(s, all, words);
   const chosen = typeof answer === 'string' ? answer : null;
-  const [pre, post] = b ? [s.en.slice(0, s.en.indexOf(b.answer)), s.en.slice(s.en.indexOf(b.answer) + b.answer.length)] : [s.en, ''];
+  const [pre, post] = b ? [s.en.slice(0, b.at), s.en.slice(b.at + b.answer.length)] : [s.en, ''];
   return (
     <View style={{ marginTop: 8 }}>
       <Text style={[nbText.body(17), { fontFamily: nbFonts.bodyBold, lineHeight: 30 }]}>
@@ -222,7 +222,7 @@ export function SentPrompt({ card, all, words, answer, onAnswer, result, reelAt,
       <Text style={[nbText.hand(14.5, nb.soft), { marginTop: 6 }]}>{s.ko}</Text>
       <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginTop: 6 }}>
         {(b?.options ?? []).map((o, i) => (
-          <View key={o} style={{ width: '48%' }}>
+          <View key={`${i}-${o}`} style={{ width: '48%' }}>
             <Option testID={`sent-opt-${i}`} label={o} mono on={chosen === o} ok={locked && o === b!.answer} bad={locked && chosen === o && o !== b!.answer}
               disabled={locked} onPress={() => onAnswer(o)} />
           </View>

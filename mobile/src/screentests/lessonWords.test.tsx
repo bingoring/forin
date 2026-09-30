@@ -12,6 +12,7 @@ jest.mock('expo-speech', () => ({ speak: (text: string) => { mockSpoken.push(tex
 const mockSpoken: string[] = [];
 
 const mockCalls: string[] = [];
+let mockFailSave = false;
 const v45 = (id: string, en: string, ko: string, chips: string[][]) => ({
   id, en, ko, ipa: `/${en}/`, icon: 'pill', example: `Say ${en}.`, exKo: '예문', cue: `${ko} 단서`, tag: '분류',
   distractorsEn: [`${en}x`, `${en}y`], distractorsKo: [`${ko}1`, `${ko}2`], chips, decoyChips: ['zz'],
@@ -43,6 +44,7 @@ jest.mock('@/api/client', () => ({
     lesson: async () => mockLesson(),
     confusedWord: async (s: string, w: string) => { mockCalls.push(`confused ${s} ${w}`); return { created: true }; },
     clearLessonStep: async (s: string, k: string, missed?: string[]) => {
+      if (mockFailSave) { mockFailSave = false; throw new Error('offline'); }
       mockCalls.push(`clear ${s} ${k} ${JSON.stringify([...(missed ?? [])].sort())}`); return mockLesson();
     },
   },
@@ -176,4 +178,26 @@ test('the last card records STEP 1 with the missed words and goes on to STEP 2',
     'clear SCN-ER-00002 words ["w-0","w-1"]',
     'replace /scenario/SCN-ER-00002/sentences',
   ]);
+});
+
+// Branch review: a failed save must not drop the missed words and move on silently.
+test('a failed STEP 1 save stays on the page, says so, and retries', async () => {
+  const tree = await mount();
+  await walkWords(tree);
+  await pressID(tree.root, 'recall-scale-0');
+  await pressID(tree.root, 'recall-check');
+  await pressID(tree.root, 'recall-known');
+  const rightOf = (label: string) => tree.root.findAll((n) => typeof n.type !== 'string' && String(n.props?.testID ?? '').startsWith('recall-right-') && texts(n).includes(label))[0];
+  await pressID(tree.root, 'recall-left-0');
+  await press(rightOf('medication'));
+  await pressID(tree.root, 'recall-left-1');
+  await press(rightOf('the drip'));
+  await pressID(tree.root, 'recall-check');
+  await pressID(tree.root, 'recall-known');
+  mockFailSave = true;
+  await pressID(tree.root, 'recall-to-step2');
+  expect(mockCalls.some((c) => c.startsWith('replace'))).toBe(false);
+  expect(byID(tree.root, 'lesson-save-failed')).toHaveLength(1);
+  await pressID(tree.root, 'recall-to-step2');
+  expect(mockCalls.slice(-2)).toEqual(['clear SCN-ER-00002 words ["w-0","w-1"]', 'replace /scenario/SCN-ER-00002/sentences']);
 });

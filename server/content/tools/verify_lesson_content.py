@@ -1954,13 +1954,18 @@ def run_selftest() -> int:
 # ---------------------------------------------------------------------------
 
 def git_show(ref: str, path: pathlib.Path) -> str:
-    """`git show ref:path`. 그 ref에 파일이 없으면 빈 문자열(비교할 v44 내용이 없다)."""
+    """`git show ref:path`. 그 ref에 파일이 없으면 멈춘다 — 빈 기준선은 V16을 전부 통과시킨다."""
     import subprocess
     root = pathlib.Path(subprocess.run(["git", "rev-parse", "--show-toplevel"], cwd=TOOLS_DIR,
                                        capture_output=True, text=True, check=True).stdout.strip())
     rel = path.resolve().relative_to(root)
     r = subprocess.run(["git", "show", f"{ref}:{rel}"], cwd=root, capture_output=True, text=True)
-    return r.stdout if r.returncode == 0 else ""
+    if r.returncode != 0:
+        # Fail closed: an empty baseline would make V16 pass everything, silently — the
+        # exact thing --baseline exists to stop. A department with nothing at that ref has
+        # no v44 content to protect; run without --baseline for it.
+        sys.exit(f"--baseline {ref}: {rel} is not in that ref ({r.stderr.strip()}) — V16 cannot compare")
+    return r.stdout
 
 
 def main() -> None:

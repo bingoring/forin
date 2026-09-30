@@ -286,6 +286,7 @@ export const ja: Record<string, string> = {
   'guided.hintMore': 'ヒントをもっと',
   'guided.listen': '聞く',
   'guided.inputLabel': '英語で話すか書いてみよう',
+  'lesson.saveFailed': '保存できませんでした。もう一度押してください。',
   'journey.milestone.open': '受験可能',
   'journey.milestone.closed': '合格前',
   // ── journey（束の名前 — 部署コア/深化）───────────────────────────

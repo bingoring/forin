@@ -289,6 +289,7 @@ export const en: Record<string, string> = {
   'guided.hintMore': 'More hints',
   'guided.listen': 'Listen',
   'guided.inputLabel': 'Say it or write it in English',
+  'lesson.saveFailed': 'Could not save. Tap again.',
   'journey.milestone.open': 'Ready',
   'journey.milestone.closed': 'Not yet',
   // ── journey (bundle names — dept core/depth) ──────────────────────

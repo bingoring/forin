@@ -71,8 +71,15 @@ func (h *lessonHandler) build(ctx context.Context, uid, scenarioID string) (less
 	if err != nil || s == nil {
 		return lessonResp{}, false, err
 	}
+	// A read that failed is an error, not "no profile": falling back to the default level
+	// or to "nothing cleared" would draw the wrong steps as if they were true. (No profile
+	// yet is (nil, nil) and does fall back.)
 	level := user.DefaultLevel
-	if p, err := h.profiles.GetProfile(ctx, uid); err == nil && p != nil {
+	p, err := h.profiles.GetProfile(ctx, uid)
+	if err != nil {
+		return lessonResp{}, false, err
+	}
+	if p != nil {
 		level = user.NormalizeLevel(p.TargetLevel)
 	}
 
@@ -113,10 +120,11 @@ func (h *lessonHandler) build(ctx context.Context, uid, scenarioID string) (less
 	if nuance == nil {
 		nuance = []content.Nuance{}
 	}
-	var passes learning.ClearedPasses
-	if guided, free, err := h.passes.ClearedByGuide(ctx, uid); err == nil {
-		passes = learning.ClearedPasses{GuidedCleared: scenarioSet(guided), FreeCleared: scenarioSet(free)}
+	guided, free, err := h.passes.ClearedByGuide(ctx, uid)
+	if err != nil {
+		return lessonResp{}, false, err
 	}
+	passes := learning.ClearedPasses{GuidedCleared: scenarioSet(guided), FreeCleared: scenarioSet(free)}
 	done := learning.DialogueDone(learning.ScenarioID(s.ID), passes)
 	for k := range recorded {
 		done[learning.LessonStepKind(k)] = true
