@@ -305,7 +305,15 @@ v45가 STEP 1을 회상형으로 바꾸고 뉘앙스를 더했다. 남은 26개 
 - 수정: `ValidateBundleLessons` — V12~V15를 Go 쪽에도(적재 때 막는다). 단, v45 필드가 **없는** 은행은
   v44 콘텐츠로 보고 통과시킨다(보강 전의 ER·ICU·OR). 있으면 전부 검사한다
 - 수정: `cmd/gencontent` 시드 → 시나리오로 `nuance` 실어 나르기, 마이그레이션(`scenarios.nuance jsonb`)
-- [ ] 1~5. 실패 테스트 → 구현 → 통과 → 변이(이음 규칙에 스페이스 넣기) → 커밋
+- [x] 1~5. 실패 테스트 → 구현 → 통과 → 변이(이음 규칙에 스페이스 넣기) → 커밋
+
+**A' 완료(2026-09-30).** `content.Word` v45 필드 7개, `content.Nuance`(종류 5, 허용 집합 `NuanceKinds`),
+`JoinChips`, `ValidateWordV45`(V12·V13), `ValidateNuance`(V14·V15), `ValidateLexiconV45`. 적재(`ValidateBundleLessons`)와
+생성(`gencontent`) 둘 다 같은 검사를 한다. **v45 필드가 하나라도 있는 은행은 모든 단어에 전부 있어야 하고**,
+그 은행의 상황은 뉘앙스 최솟값을 채워야 한다 — v45 필드가 없는 은행(보강 전 ER·ICU·OR)은 그대로 통과한다.
+마이그레이션 000041(`scenarios.nuance`). 슬라이더 정답 키를 `answerAt`으로 정했다(swap의 문자열 `answer`와 한
+구조체에 담기 위해). 변이 2건 확인, **생성기를 실제 콘텐츠에 돌린 출력이 바이트 단위로 같다**(ER·ICU·OR·WARD),
+실제 번들 적재 통과.
 
 ### B'. 저작 지시서와 검사기
 - 수정: `lesson_author_brief.md` — 새 필드와 뉘앙스, **보강 모드**(기존 YAML을 받아 새 필드만 쓴다)

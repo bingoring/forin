@@ -530,7 +530,7 @@ situations:
         words: [w-pain]      # 이 문항이 붙는 단어 — 이 상황 문장이 쓰는 단어여야 한다(V15)
         cue: "Patient: \"It's… bearable, but it won't go away.\""
         scale: [discomfort, pain, agony]   # 약함 → 강함, 3개 이상
-        answer: 0
+        answerAt: 0          # 정답의 위치. swap의 answer(문자열)와 키가 겹치지 않게 따로 둔다
         why: "…"             # 해설(한국어)
         example: "…"
         exKo: "…"
@@ -578,7 +578,7 @@ situations:
 |---|---|---|
 | V12 | 단어의 v45 필드가 모두 있다(`exKo · cue · tag` 비지 않음, `distractorsEn` 2 · `distractorsKo` 2, `decoyChips` 1개 이상). `chips`를 이음 규칙으로 이으면 `en`과 같다 | 오류 |
 | V13 | 오답이 정답과 같지 않다(대소문자·공백 정규화 후), 오답끼리 같지 않다, `decoyChips`는 정답 조각에 없다, `cue`에 정답 영어가 들어 있지 않다 | 오류 |
-| V14 | 상황마다 뉘앙스 최솟값(STEP 1 ≥1, STEP 2 ≥1), `kind`가 허용 집합, 모양이 맞다(slider: scale ≥3·answer 범위 안 / pair: ≥2쌍·decoys ≥1 / reel: scenes ≥4 / context: 정확히 3장·ok=false 정확히 1장이고 그 장에 fix / swap: answer ∈ options·notes가 모든 선택지를 덮음·before 3조각) | 오류 |
+| V14 | 상황마다 뉘앙스 최솟값(STEP 1 ≥1, STEP 2 ≥1), `kind`가 허용 집합, 모양이 맞다(slider: scale ≥3·answerAt 범위 안 / pair: ≥2쌍·decoys ≥1 / reel: scenes ≥4 / context: 정확히 3장·ok=false 정확히 1장이고 그 장에 fix / swap: answer ∈ options·notes가 모든 선택지를 덮음·before 3조각) | 오류 |
 | V15 | 뉘앙스의 `words`가 비어 있지 않고, 전부 이 상황 문장이 쓰는 단어 id다 | 오류 |
 | V16 | (보강 패스) 기존 `en · ko · chunks · words · goal`과 단어의 `id · en · ko · ipa · icon · example`이 보강 전과 같다 | 오류 |
 
