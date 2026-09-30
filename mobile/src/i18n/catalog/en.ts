@@ -284,6 +284,10 @@ export const en: Record<string, string> = {
   'sent.passed': '{n} sentences, on your tongue',
   'sent.toStep3': 'STEP 3 · Guided talk',
   'sent.fix': 'Say it like this',
+  'guided.sayThis': 'Try saying this',
+  'guided.stepTag': 'STEP 3 · Guided',
+  'guided.hintMore': 'More hints',
+  'guided.listen': 'Listen',
   'journey.milestone.open': 'Ready',
   'journey.milestone.closed': 'Not yet',
   // ── journey (bundle names — dept core/depth) ──────────────────────

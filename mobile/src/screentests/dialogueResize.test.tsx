@@ -73,6 +73,9 @@ jest.mock('expo-router', () => {
 
 jest.mock('@/api/client', () => ({
   api: {
+    // No STEP 2 sentences: the guided pass keeps its reply choices (v44 J), which is
+    // the band these tests measure.
+    lesson: async () => ({ sentences: [] }),
     scenario: async () => ({
       id: 'SCN-ER-00002', title: '첫 인사', tagline: 'Good morning.', guide: 'choices',
       persona: { name: '김민준', role: 'patient', mood: 'worried', hair: 'short' },

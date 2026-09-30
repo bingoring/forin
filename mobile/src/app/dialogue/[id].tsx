@@ -23,7 +23,7 @@ import Svg, { Path } from 'react-native-svg';
 import { NbIcon } from '@/components/nb/NbIcon';
 import { NbButton, NbGrabber, NbMemo, NbPaper, NbTag, nbText } from '@/components/nb/NbUI';
 import { RULE_COLOR, RULE_H, nb, nbFonts } from '@/theme/nb';
-import { api, type ReplyChoice, type ScenarioDetail } from '@/api/client';
+import { api, type LessonSentence, type ReplyChoice, type ScenarioDetail } from '@/api/client';
 import { PixelIcon } from '@/components/PixelIcon';
 import { FIcon } from '@/components/FIcon';
 import { MissionCluster } from '@/components/dialogue/MissionCluster';
@@ -31,6 +31,8 @@ import { ResizeHandle } from '@/components/ResizeHandle';
 import { DOCK_H, clampChoices, clampSplit, portraitLayout } from '@/data/dialogueSplit';
 import { setDialogueLayout, useDialogueLayout } from '@/lib/dialogueLayout';
 import { ReplyChoices } from '@/components/dialogue/ReplyChoices';
+import { GuidedTarget } from '@/components/lesson/GuidedTarget';
+import { targetFor } from '@/data/guidedTarget';
 import { Typewriter } from '@/components/dialogue/Typewriter';
 import { Collapsible, DisclosureChevron } from '@/components/Collapsible';
 import { BottomSheet } from '@/components/BottomSheet';
@@ -117,6 +119,30 @@ export default function DialogueRoute() {
   // decision it had just asked for. The server's answer is still the fallback, for entry
   // points that have no rung at all: the board, a paged call, the home card.
   const guided = isGuidedRung(guideParam ?? scenario?.guide);
+  // STEP 3 (lesson-four-steps-v44 J): the guided pass asks for the situation's STEP 2
+  // sentences, one per turn, instead of offering three replies. A situation with no
+  // sentences yet (content not written) keeps the reply choices.
+  const [lessonSentences, setLessonSentences] = useState<LessonSentence[]>([]);
+  // Whether the sentences have arrived — the choices must not be fetched before we know
+  // there are none, or the guided pass pays for three replies it then never shows. A ref
+  // as well as state: loadChoices runs inside the session-start closure, which would
+  // otherwise read the value from the render that started it.
+  const [lessonReady, setLessonReady] = useState(!guided);
+  const lessonRef = useRef({ ready: !guided, count: 0 });
+  useEffect(() => {
+    if (!guided) return;
+    let alive = true;
+    const done = (n: LessonSentence[]) => {
+      if (!alive) return;
+      lessonRef.current = { ready: true, count: n.length };
+      setLessonSentences(n);
+      setLessonReady(true);
+    };
+    api.lesson(id).then((l) => done(l.sentences ?? [])).catch(() => done([]));
+    return () => { alive = false; };
+  }, [guided, id]);
+  // The learner's turn k asks for target k (goal order). null = no sentences → choices.
+  const target = guided ? targetFor(lessonSentences, transcript.filter((l) => l.role === 'user').length) : null;
   const [choices, setChoices] = useState<ReplyChoice[]>([]);
   const [choicesBusy, setChoicesBusy] = useState(false);
   // The intent the learner picked this turn (native language). Picking one reveals the
@@ -285,7 +311,8 @@ export default function DialogueRoute() {
 
   const loadChoices = useCallback(async () => {
     const sid = sessionRef.current;
-    if (!guided || wroteOwn || !sid) return;
+    // With STEP 2 sentences the guided pass asks for those instead — no choices to fetch.
+    if (!guided || wroteOwn || !sid || !lessonRef.current.ready || lessonRef.current.count > 0) return;
     setChoicesBusy(true);
     try {
       const turn = await api.replyChoices(sid);
@@ -294,6 +321,10 @@ export default function DialogueRoute() {
       setChoicesBusy(false);
     }
   }, [guided, wroteOwn]);
+  // The sentences arrived after the session opened: now we know whether to fetch choices.
+  useEffect(() => {
+    if (lessonReady && guided) void loadChoices();
+  }, [lessonReady, guided, loadChoices]);
 
 
   useEffect(() => {
@@ -520,6 +551,7 @@ export default function DialogueRoute() {
     if (hintOn) { setHintOn(false); return; }
     setHintOn(true);
     if (selectedChoice) { setHintText(selectedChoice.text); return; }
+    if (target) { setHintText(target.en); return; }
     const sid = sessionRef.current;
     if (!sid) return;
     setHintBusy(true);
@@ -1005,7 +1037,11 @@ export default function DialogueRoute() {
             target language with the mic (guided-turn redesign). The card no longer hands
             over the words — it hands over the goal, and producing the sentence is the
             practice. Shown until one is picked; picking reveals the speak area below. */}
-        {guided && !wroteOwn && !hintOn && !selectedChoice && (choicesBusy || choices.length > 0) && (
+        {/* STEP 3 guided target (v44 J) — replaces the choices when the situation has
+            STEP 2 sentences. Keyed on the sentence so its hints reset each turn. */}
+        {target && !hintOn && <GuidedTarget key={`${target.en}|${transcript.length}`} sentence={target} />}
+
+        {guided && !target && !wroteOwn && !hintOn && !selectedChoice && (choicesBusy || choices.length > 0) && (
           <View style={{ marginTop: 12 }}>
             {/* Drag this edge DOWN to give the conversation more room. */}
             <ResizeHandle
@@ -1039,7 +1075,7 @@ export default function DialogueRoute() {
             free / no-choices / no-mic path. The learner speaks the target language; the
             transcript fills the box, and Send carries the picked intent so the immediate
             correction can judge the line against it. */}
-        {(!hintOn && (selectedChoice || wroteOwn || !guided || (!choicesBusy && choices.length === 0))) && (
+        {(!hintOn && (selectedChoice || wroteOwn || !guided || !!target || (!choicesBusy && choices.length === 0))) && (
           <View style={{ marginTop: 14 }}>
             {selectedChoice ? (
               // The picked intent, held above the mic as the thing to say. The × puts the
@@ -1083,7 +1119,7 @@ export default function DialogueRoute() {
                   placeholder={rec === 'recording' ? t('dialogue.tapMicAgain') : t('dialogue.inputPlaceholder')}
                   placeholderTextColor={nb.placeholder}
                   style={{ flex: 1, fontFamily: nbFonts.hand, fontSize: 16, color: nb.ink, paddingVertical: 4 }}
-                  onSubmitEditing={() => { void send(); }}
+                  onSubmitEditing={() => { void send(target ? { text: draft, intent: target.ko } : undefined); }}
                   returnKeyType="send"
                   multiline
                   // With `multiline`, RN defaults to keeping focus on return, so
@@ -1102,7 +1138,7 @@ export default function DialogueRoute() {
             {/* Send carries the picked intent (if any) so the immediate correction judges
                 the spoken line against what the learner meant to convey. Enabled only once
                 there is a line — they have to SAY it (or type it) first. */}
-            <NbButton variant="ink" full icon={pending ? undefined : 'pencil'} iconColor={nb.paper} disabled={pending || !draft.trim()} onPress={() => { void send(selectedChoice ? { text: draft, intent: selectedChoice.intent } : undefined); }}>
+            <NbButton variant="ink" full icon={pending ? undefined : 'pencil'} iconColor={nb.paper} disabled={pending || !draft.trim()} onPress={() => { void send(selectedChoice ? { text: draft, intent: selectedChoice.intent } : target ? { text: draft, intent: target.ko } : undefined); }}>
               {pending ? t('dialogue.sending') : t('dialogue.send')}
             </NbButton>
           </View>

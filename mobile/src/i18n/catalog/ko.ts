@@ -299,6 +299,10 @@ export const ko: Record<string, string> = {
   'sent.passed': '문장 {n}개, 입에 붙었어요',
   'sent.toStep3': 'STEP 3 · 가이드 대화로',
   'sent.fix': '이렇게 고쳐요',
+  'guided.sayThis': '이렇게 말해보세요',
+  'guided.stepTag': 'STEP 3 · 가이드',
+  'guided.hintMore': '힌트 더',
+  'guided.listen': '듣기',
   'journey.milestone.open': '응시 가능',
   'journey.milestone.closed': '통과전',
   // ── journey (묶음 이름 — 부서 코어/심화) ────────────────────────────

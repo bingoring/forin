@@ -166,7 +166,8 @@ test('회차 판정을 화면에서 직접 하지 않는다 — 옛 이름이 �
 test('the speak area opens once an intent is picked, or on the free path', () => {
   // The mic-driven input replaces the option list the moment a goal is chosen; it also
   // stands in for the whole box on the free / no-mic / empty path.
-  expect(SRC).toMatch(/selectedChoice \|\| wroteOwn \|\| !guided \|\| \(!choicesBusy && choices\.length === 0\)/);
+  // v44 J: a STEP 3 target (the situation's STEP 2 sentence) also opens it.
+  expect(SRC).toMatch(/selectedChoice \|\| wroteOwn \|\| !guided \|\| !!target \|\| \(!choicesBusy && choices\.length === 0\)/);
 });
 
 test('send carries the picked intent so the correction can judge against it', () => {
@@ -190,7 +191,8 @@ test('the suggestions are answers to the line that was just said', () => {
 });
 
 test('asking for the box is remembered', () => {
-  expect(SRC).toMatch(/if \(!guided \|\| wroteOwn \|\| !sid\) return;/);
+  // v44 J: with STEP 2 sentences there are no choices to fetch either.
+  expect(SRC).toMatch(/if \(!guided \|\| wroteOwn \|\| !sid \|\| !lessonRef\.current\.ready \|\| lessonRef\.current\.count > 0\) return;/);
 });
 
 // ── the hint ──────────────────────────────────────────────────────────────

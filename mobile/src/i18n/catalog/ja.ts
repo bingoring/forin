@@ -281,6 +281,10 @@ export const ja: Record<string, string> = {
   'sent.passed': '文{n}個、口になじみました',
   'sent.toStep3': 'STEP 3 · ガイド会話へ',
   'sent.fix': 'こう直す',
+  'guided.sayThis': 'こう言ってみよう',
+  'guided.stepTag': 'STEP 3 · ガイド',
+  'guided.hintMore': 'ヒントをもっと',
+  'guided.listen': '聞く',
   'journey.milestone.open': '受験可能',
   'journey.milestone.closed': '合格前',
   // ── journey（束の名前 — 部署コア/深化）───────────────────────────

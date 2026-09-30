@@ -281,6 +281,10 @@ export const de: Record<string, string> = {
   'sent.passed': '{n} Sätze sitzen',
   'sent.toStep3': 'STEP 3 · Geführtes Gespräch',
   'sent.fix': 'So besser',
+  'guided.sayThis': 'Sag das so',
+  'guided.stepTag': 'STEP 3 · Geführt',
+  'guided.hintMore': 'Mehr Hinweise',
+  'guided.listen': 'Anhören',
   'journey.milestone.open': 'Bereit',
   'journey.milestone.closed': 'Noch nicht',
   // ── journey (Gruppennamen — Abteilung Kern/Vertiefung) ─────────────
