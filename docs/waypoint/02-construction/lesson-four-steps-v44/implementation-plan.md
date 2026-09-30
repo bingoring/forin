@@ -210,16 +210,23 @@
 
 **게이지 분모와 CTA 문구는 남은 단계 기준이다** — 건너뛴 단계를 세지 않는다.
 
-- [ ] 1. 실패 테스트 — 레벨 b는 분모가 3, 레벨 c는 2. `그래도 할래요`를 누르면 그 단계가
-      열린다. **탭바가 있는 화면이므로 CTA가 `bottom ≥ 84`다**
-- [ ] 2~5. 실패 확인 → 구현 → 통과 확인 → 커밋
+- [x] 1. 실패 테스트 — 레벨 b는 분모가 3, 레벨 c는 2. `그래도 할래요`를 누르면 그 단계가
+      열린다. ~~탭바가 있는 화면이므로 CTA가 `bottom ≥ 84`다~~ → **CTA `bottom: 30`** (결정 4)
+- [x] 2~5. 실패 확인 → 구현 → 통과 확인 → 커밋
+
+**구현하며 바꾼 것(2026-09-30).** 파일은 `(tabs)/journey/lesson/[scenarioId].tsx`가 아니라
+`app/scenario/[id]/index.tsx`다(브리핑을 그 자리에서 대체, 결정 4). H·I의 파일도
+`app/scenario/[id]/words.tsx`·`sentences.tsx`로 옮긴다 — 지금은 자리만 잡은 스텁이다.
+옵트인·게이지·CTA 규칙은 `data/lessonSteps`. 브리핑 테스트는 `screentests/lessonHub`로 다시 썼다.
+변이 3건(분모에 건너뜀 포함, 옵트인 무시, 개수 8 고정) 확인. 시뮬레이터에서 ER(B1, 대화 클리어)과
+DERM(콘텐츠 없음) 상황을 열어 확인했다.
 
 ---
 
 ## H. STEP 1 단어
 
 **파일**
-- 생성: `mobile/src/app/(tabs)/journey/lesson/[scenarioId]/words.tsx` + 테스트
+- 생성: `mobile/src/app/scenario/[id]/words.tsx` + 테스트 (결정 4로 경로 이동)
 
 진행 칩(**단어 수만큼**, 8 고정이 아니다) → 플래시카드(아이콘 원 + 표제어 + 발음기호 +
 형광펜 뜻 + 예문 + 듣기·따라하기) → `헷갈려요` / `알아요`.
@@ -238,7 +245,7 @@
 - 생성: `mobile/src/components/lesson/SentBlank.tsx` (빈칸)
 - 생성: `mobile/src/components/lesson/SentOrder.tsx` (순서 배열)
 - 생성: `mobile/src/components/lesson/SentListen.tsx` (듣고 고르기)
-- 생성: `mobile/src/app/(tabs)/journey/lesson/[scenarioId]/sentences.tsx` + 테스트
+- 생성: `mobile/src/app/scenario/[id]/sentences.tsx` + 테스트 (결정 4로 경로 이동)
 
 - [ ] 1. 유형별 실패 테스트 — **청크를 순서대로 붙이면 `en`이 된다**, 오답 조각이 섞여 있다,
       빈칸의 정답이 하나다, 순서 배열의 정답이 `goal` 순서다
