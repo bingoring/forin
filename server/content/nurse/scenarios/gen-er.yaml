@@ -73745,7 +73745,6 @@
         - .
       words:
         - w-prick
-        - w-finger
         - w-blood
         - w-sample
       goal: 2
@@ -73760,6 +73759,43 @@
         - w-feel
         - w-symptom
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-prick
+        - w-blood
+        - w-sample
+      why: 손끝을 바늘로 살짝 찌르는 것은 prick your finger, 끼니를 거른 것은 skip a meal, 검사용 피는 a blood sample이에요.
+      pairs:
+        - - prick
+          - your finger
+        - - skip
+          - a meal
+        - - a blood
+          - sample
+      decoys:
+        - dizzy
+    - kind: swap
+      words:
+        - w-check
+        - w-blood
+        - w-sugar
+      why: 손끝 혈당을 잴 때 환자에게는 blood sugar라고 해요. 당뇨 환자들도 'my sugar'라고 말해요.
+      who: 환자에게 · 손끝 혈당 측정
+      icon: me
+      before:
+        - 'I''m going to check your '
+        - serum glucose
+        - ' now.'
+      options:
+        - blood sugar
+        - blood glucose level
+        - serum glucose
+      answer: blood sugar
+      notes:
+        blood glucose level: 틀린 말은 아니지만 딱딱하다. 차트·의료진끼리에 더 어울린다.
+        blood sugar: 환자가 스스로 쓰는 쉬운 말. 무엇을 재는지 바로 알아듣는다.
+        serum glucose: 정맥혈을 검사실에서 잰 수치의 이름. 손끝 검사(capillary blood glucose)와는 대상부터 다르다.
 - id: SCN-ER-00586
   profession: ""
   eventId: EVT-ER-00138
@@ -73842,7 +73878,6 @@
       words:
         - w-insulin
         - w-take
-        - w-today
       goal: 1
     - en: Let's have you take some juice or glucose tablets now.
       ko: 지금 주스나 포도당 알약을 좀 드시게 할게요.
@@ -73868,7 +73903,6 @@
       words:
         - w-recheck
         - w-sugar
-        - w-minute
       goal: 2
     - en: You might feel better once your sugar comes back up.
       ko: 혈당이 다시 오르면 나아지실 거예요.
@@ -73895,6 +73929,40 @@
         - w-feel
         - w-normal
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-shaky
+        - w-sugar
+      why: 스스로 먹고 마실 수 있을 만큼 또렷하면 mild 쪽이에요. ADA는 70 미만을 1단계, 54 미만을 2단계, 남의 도움이 필요한 경우를 3단계(중증)로 나누고, 스스로 처치할 수 있으면 mild라 불러요.
+      cue: Meter reads 64 mg/dL. Patient is shaky but alert, talking, and able to drink on her own.
+      scale:
+        - mild
+        - moderate
+        - severe
+      answerAt: 0
+      example: It's a mild low, and she can drink juice on her own.
+      exKo: 경증 저혈당이라 스스로 주스를 마실 수 있어요.
+    - kind: context
+      words:
+        - w-juice
+        - w-recheck
+        - w-sugar
+      why: 당 15 g을 먹이고 15분 뒤 다시 재는 '15-15 규칙'은 같아요. 환자에게는 무엇을 마시고 언제 다시 재는지 쉬운 말로, 차트와 동료에게는 수치와 약어로 짧게 말해요.
+      scenes:
+        - who: 차트 기록
+          icon: board
+          en: BG 64, alert. 4 oz juice PO, recheck in 15 min.
+          ok: true
+        - who: 동료에게
+          icon: monitor
+          en: She's 64 and alert — I gave her juice, rechecking in fifteen.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: Administer 15 grams of oral carbohydrate; BG recheck in 15 minutes.
+          ok: false
+          fix: Let's have you drink some juice now, and we'll recheck your sugar in fifteen minutes.
 - id: SCN-ER-00587
   profession: ""
   eventId: EVT-ER-00138
@@ -73997,7 +74065,6 @@
         - this way
         - '?'
       words:
-        - w-day
         - w-feel
       goal: 2
     - en: Do you have a history of diabetes in your family?
@@ -74011,7 +74078,6 @@
       words:
         - w-history
         - w-diabetes
-        - w-family
       goal: 2
     - en: We'll check your blood sugar and look for ketones too.
       ko: 혈당도 확인하고 케톤도 함께 볼게요.
@@ -74027,6 +74093,39 @@
         - w-sugar
         - w-ketone
       goal: 1
+  nuance:
+    - kind: slider
+      words:
+        - w-thirsty
+      why: 물을 계속 마셔도 입이 바싹 마르면 parched 쪽이에요. 고혈당으로 소변이 많아지면 물이 빠져나가 갈증이 안 가셔요. 차트에는 polydipsia(다갈)라고 적어요.
+      cue: 'Patient: "I drink water all day and my mouth still feels completely dry."'
+      scale:
+        - a bit thirsty
+        - really thirsty
+        - parched
+      answerAt: 2
+      example: He says his mouth feels parched no matter how much he drinks.
+      exKo: 아무리 마셔도 입이 바싹 마른다고 해요.
+    - kind: swap
+      words:
+        - w-often
+        - w-urinate
+      why: void는 기록할 때의 말이에요. 환자에게는 urinating이 무난하고, 환자가 먼저 pee라고 하면 그 말을 따라 써도 괜찮아요.
+      who: 환자에게 · 다뇨 문진
+      icon: me
+      before:
+        - 'How often have you been '
+        - voiding
+        - '?'
+      options:
+        - urinating
+        - peeing
+        - voiding
+      answer: urinating
+      notes:
+        peeing: 환자들이 흔히 쓰는 편한 말이라 틀리지 않지만, 처음 보는 성인 환자에게는 조금 가볍게 들릴 수 있다.
+        urinating: 환자에게 무난한 표준어. 격식도 지나치지 않고 뜻도 분명하다.
+        voiding: 차트·의료진끼리의 말(voiding q1h). 환자는 무슨 뜻인지 잘 모른다.
 - id: SCN-ER-00588
   profession: ""
   eventId: EVT-ER-00138
@@ -74113,7 +74212,7 @@
         - w-rotate
       goal: 1
     - en: Have you missed any doses recently?
-      ko: 최근에 용량을 거르신 적 있으세요?
+      ko: 최근에 주사를 빠뜨리신 적 있으세요?
       chunks:
         - Have you missed
         - any doses
@@ -74131,7 +74230,6 @@
         - inject
         - '?'
       words:
-        - w-body
         - w-inject
       goal: 1
     - en: Let me walk you through the steps one more time.
@@ -74159,6 +74257,42 @@
         - w-prevent
         - w-skin
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-step
+        - w-skin
+        - w-inject
+      why: 차근차근은 step by step, 한 자리에만 놓으면 생기는 딱딱한 혹 같은 것은 skin problems, 주사는 inject into 부위로 말해요.
+      pairs:
+        - - step by
+          - step
+        - - skin
+          - problems
+        - - inject into
+          - your belly
+      decoys:
+        - rotate
+    - kind: swap
+      words:
+        - w-miss
+        - w-dose
+      why: 순응도를 물을 때는 missed처럼 중립적인 말을 써요. 탓하는 말을 들으면 환자가 빠뜨린 것을 숨기기 쉬워요.
+      who: 환자에게 · 인슐린 순응도 문진
+      icon: me
+      before:
+        - 'Have you '
+        - been noncompliant with
+        - ' any doses recently?'
+      options:
+        - missed
+        - been noncompliant with
+        - failed to take
+      answer: missed
+      notes:
+        been noncompliant with: 환자를 탓하는 차트 말. 미국당뇨병학회는 noncompliant 같은 말을 피하라고 권한다.
+        failed to take: '''실패했다''로 들려 환자가 방어적이 된다.'
+        missed: 탓하지 않는 중립적인 말. 환자가 솔직하게 대답하기 쉽다.
 - id: SCN-ER-00589
   profession: ""
   eventId: EVT-ER-00138
@@ -74293,6 +74427,45 @@
         - w-wound
         - w-heal
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-clean
+        - w-dress
+        - w-wound
+        - w-slow
+        - w-heal
+        - w-control
+      why: 상처는 clean and dress(씻고 덮고), 고혈당은 healing을 slow(더디게) 하고, 혈당은 controlled 상태로 유지해요.
+      pairs:
+        - - clean and dress
+          - the wound
+        - - slow
+          - healing
+        - - keep your sugar
+          - controlled
+      decoys:
+        - warmth
+    - kind: context
+      words:
+        - w-redness
+        - w-drainage
+        - w-sore
+      why: erythema(발적)·purulent exudate(화농성 삼출물)·ulcer(궤양)는 차트와 의료진의 말이에요. 환자에게는 redness·drainage·sore처럼 쉬운 말로 같은 것을 물어요.
+      scenes:
+        - who: 차트 기록
+          icon: board
+          en: Plantar ulcer L foot, 2 cm, surrounding erythema, purulent drainage.
+          ok: true
+        - who: 동료에게
+          icon: monitor
+          en: Left foot ulcer with redness and some pus — can you take a look?
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: Is there any erythema or purulent exudate around the ulcer?
+          ok: false
+          fix: Is there any redness, warmth, or drainage around the sore?
 - id: SCN-ER-00590
   profession: ""
   eventId: EVT-ER-00138
@@ -74353,7 +74526,7 @@
   theme: er-diabetic
   sentences:
     - en: Have you missed any insulin doses recently?
-      ko: 최근에 인슐린 용량을 거르신 적 있으세요?
+      ko: 최근에 인슐린 주사를 빠뜨리신 적 있으세요?
       chunks:
         - Have you missed
         - any insulin doses
@@ -74426,6 +74599,42 @@
         - w-ready
         - w-treatment
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-breath
+        - w-smell
+        - w-fruity
+        - w-gas
+        - w-fluid
+      why: DKA 환자의 숨에서는 케톤(아세톤) 때문에 과일·단 냄새가 나요. 산증의 정도는 blood gas로 보고, 치료는 IV fluids와 인슐린으로 시작해요.
+      pairs:
+        - - does your breath smell
+          - fruity
+        - - a blood
+          - gas
+        - - IV
+          - fluids
+      decoys:
+        - tired
+    - kind: context
+      words:
+        - w-breathe
+      why: Kussmaul 호흡(깊고 빠른 호흡)은 의료진의 말이에요. 환자에게는 스스로 느끼는 대로 답할 수 있게 faster·deeper처럼 풀어서 물어요.
+      scenes:
+        - who: 차트 기록
+          icon: board
+          en: Kussmaul respirations, fruity breath odor.
+          ok: true
+        - who: 동료에게
+          icon: monitor
+          en: Bed 4 is breathing deep and fast — looks like Kussmaul, probably DKA.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: Are you having Kussmaul respirations?
+          ok: false
+          fix: Are you breathing faster or deeper than usual?
 - id: SCN-ER-00591
   profession: ""
   eventId: EVT-ER-00138
@@ -74529,7 +74738,6 @@
         - .
       words:
         - w-sugar
-        - w-minute
       goal: 1
     - en: Did he take his insulin without eating?
       ko: 식사 없이 인슐린을 맞으셨나요?
@@ -74553,6 +74761,41 @@
       words:
         - w-condition
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-respond
+      why: AVPU 척도예요. 부르면 눈을 뜨지만 곧 다시 처지면 V(목소리에 반응)예요. 의식이 흐린 저혈당 환자에게는 사레들릴 위험 때문에 입으로 당을 주지 않고, 정맥 포도당이나 글루카곤을 써요.
+      cue: 'Family: "He opens his eyes when I call his name, but then he drifts right off again."'
+      scale:
+        - alert
+        - responds to voice
+        - responds to pain
+        - unresponsive
+      answerAt: 1
+      example: He responds to voice, but he isn't fully alert.
+      exKo: 부르면 반응하지만 완전히 또렷하지는 않아요.
+    - kind: swap
+      words:
+        - w-give
+        - w-sugar
+        - w-vein
+      why: 가족에게는 약 이름보다 무엇을 하는지가 중요해요. 정맥으로 당을 넣는다고 쉬운 말로 알려요.
+      who: 가족에게 · 정맥 포도당 투여
+      icon: me
+      before:
+        - 'We''re giving '
+        - D50
+        - ' directly into his vein right now.'
+      options:
+        - sugar
+        - D50
+        - 50 percent dextrose
+      answer: sugar
+      notes:
+        50 percent dextrose: 정확한 약 이름이지만 가족에게는 다시 설명이 필요하다.
+        D50: 의료진끼리 쓰는 약어. 가족에게는 암호처럼 들린다.
+        sugar: 가족이 바로 알아듣는 말. 무엇을, 왜 주는지 전해진다.
 - id: SCN-ER-00592
   profession: ""
   eventId: EVT-ER-00138
@@ -74647,7 +74890,6 @@
         - .
       words:
         - w-answer
-        - w-question
       goal: 1
     - en: Your body needs insulin, which we'll teach you to use.
       ko: 몸에는 인슐린이 필요하고, 사용법을 알려드릴게요.
@@ -74658,7 +74900,6 @@
         - to use
         - .
       words:
-        - w-body
         - w-insulin
         - w-teach
         - w-use
@@ -74689,6 +74930,41 @@
         - w-basic
         - w-step
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-overwhelmed
+        - w-feel
+      why: '''한꺼번에 너무 많다''고 하면 overwhelmed 쪽이에요. 환자가 느끼는 감정에 이름을 붙여 돌려주면(It''s okay to feel overwhelmed) 이해받는다고 느끼고, 그다음 교육을 받아들이기 쉬워져요.'
+      cue: 'Patient: "I can''t take any of this in. It''s all just too much at once."'
+      scale:
+        - a bit nervous
+        - worried
+        - overwhelmed
+      answerAt: 2
+      example: It's okay to feel overwhelmed right now.
+      exKo: 지금 벅차게 느끼시는 건 괜찮아요.
+    - kind: swap
+      words:
+        - w-normal
+        - w-scared
+        - w-diagnosis
+      why: 진단 직후의 두려움은 고치려 하지 말고 먼저 인정해요. '그럴 수 있다'는 말이 교육의 첫걸음이에요.
+      who: 환자에게 · 진단 직후 정서 지지
+      icon: me
+      before:
+        - 'It''s '
+        - silly
+        - ' to feel scared right after a new diagnosis.'
+      options:
+        - normal
+        - silly
+        - unnecessary
+      answer: normal
+      notes:
+        normal: 감정을 있는 그대로 인정한다. 환자가 혼자가 아니라고 느낀다.
+        silly: 감정을 깎아내린다. 환자가 속마음을 더 말하지 않게 된다.
+        unnecessary: 걱정할 것 없다고 단정해 거짓 안심을 준다. 1형 당뇨는 평생 관리가 필요한 병이다.
 - id: SCN-ER-00593
   profession: ""
   eventId: EVT-ER-00138
@@ -74820,6 +75096,39 @@
         - w-heart
         - w-kidney
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-drowsy
+      why: 말하다가 잠들지만 건드리면 깨면 drowsy 쪽이에요. HHS는 혈당과 삼투압이 오를수록 의식이 더 떨어지므로, 의식 변화를 계속 비교해 봐요.
+      cue: 'Family: "She keeps nodding off in the middle of a sentence, but she wakes up if I touch her arm."'
+      scale:
+        - alert
+        - drowsy
+        - unresponsive
+      answerAt: 1
+      example: She's drowsy but wakes up when I touch her.
+      exKo: 졸려하지만 건드리면 깨요.
+    - kind: context
+      words:
+        - w-sugar
+        - w-high
+        - w-dehydration
+      why: hyperosmolar hyperglycemic state·volume depletion은 의료진의 말이에요. 가족에게는 혈당이 아주 높고 탈수가 심하다는 것, 그래서 혼란스러워한다는 것을 쉬운 말로 이어서 말해요.
+      scenes:
+        - who: 동료에게
+          icon: monitor
+          en: Glucose is over 600 and she's really dry — looks like HHS.
+          ok: true
+        - who: 차트 기록
+          icon: board
+          en: Severe hyperglycemia, dehydration, AMS. HHS suspected.
+          ok: true
+        - who: 가족에게
+          icon: me
+          en: She's in a hyperosmolar hyperglycemic state with profound volume depletion.
+          ok: false
+          fix: Her sugar is extremely high and she's very dehydrated, and that's making her confused.
 - id: SCN-ER-00594
   profession: ""
   eventId: EVT-ER-00138
@@ -74958,6 +75267,46 @@
         - w-pump
         - w-fix
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-kinked
+        - w-tubing
+        - w-basal
+        - w-rate
+        - w-red
+        - w-site
+      why: 접혀서 인슐린이 안 흐르는 관은 kinked tubing, 펌프가 하루 종일 깔아 주는 양은 basal rate, 주입 부위가 붉어졌으면 a red site예요.
+      pairs:
+        - - kinked
+          - tubing
+        - - basal
+          - rate
+        - - a red
+          - site
+      decoys:
+        - thirsty
+    - kind: context
+      words:
+        - w-switch
+        - w-injection
+        - w-pump
+        - w-fix
+      why: CSII(지속 피하 인슐린 주입)·subcutaneous는 의료진의 말이에요. 펌프는 속효성 인슐린만 쓰기 때문에 멈추면 몇 시간 만에 DKA로 갈 수 있어서 바로 주사로 바꿔요. 환자에게는 쉬운 말로, 언제까지인지도 함께 말해요.
+      scenes:
+        - who: 동료에게
+          icon: monitor
+          en: Pump's not delivering — probably an occlusion. Can we get an order for subQ insulin?
+          ok: true
+        - who: 차트 기록
+          icon: board
+          en: Insulin pump malfunction; transitioned to SQ insulin per order.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: Your CSII has failed, so we're transitioning you to subcutaneous insulin.
+          ok: false
+          fix: Your pump isn't working right, so we'll switch you to insulin shots until it's fixed.
 - id: SCN-ER-00595
   profession: ""
   eventId: EVT-ER-00139
@@ -75088,6 +75437,43 @@
         - w-insulin
         - w-steroid
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-rise
+        - w-steroid
+        - w-sugar
+      why: '''~의 상승''은 a rise in, 약을 복용 중인 상태는 on (the steroid), 약을 먹는 목적은 for로 말해요. 한국어로는 조사 하나 차이지만 영어는 전치사가 정해져 있어요.'
+      pairs:
+        - - a rise
+          - in sugar
+        - - while you're
+          - on the steroid
+        - - taking it
+          - for your lungs
+      decoys:
+        - at your lungs
+    - kind: swap
+      words:
+        - w-raise
+        - w-steroid
+        - w-sugar
+      why: 스테로이드가 혈당을 올리는 것이니 목적어를 받는 raise예요. 혈당이 주어면 rise를 써요(Your sugar may rise).
+      who: 환자에게 · 스테로이드와 혈당 설명
+      icon: me
+      before:
+        - 'Steroids can temporarily '
+        - rise
+        - ' your blood sugar.'
+      options:
+        - raise
+        - rise
+        - arise
+      answer: raise
+      notes:
+        arise: '''생기다·일어나다''라는 뜻이라 여기에 맞지 않는다.'
+        raise: 무엇을 '올리다' — 목적어(your blood sugar)를 받는 타동사.
+        rise: 스스로 '오르다' — 목적어를 받지 않는다(Your sugar may rise).
 - id: SCN-ER-00596
   profession: ""
   eventId: EVT-ER-00139
@@ -75224,6 +75610,42 @@
         - w-insulin
         - w-eat
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-flu
+        - w-sick
+      why: 혈당이 들쭉날쭉한 것은 all over the place(환자가 흔히 쓰는 굳은 표현), 독감에 걸리는 것은 come down with the flu, 아플 때 혈당·인슐린을 어떻게 할지 정해 둔 것은 a sick-day plan이에요.
+      pairs:
+        - - all over
+          - the place
+        - - come down with
+          - the flu
+        - - a sick-day
+          - plan
+      decoys:
+        - often
+    - kind: context
+      words:
+        - w-illness
+        - w-sugar
+        - w-control
+        - w-sick
+      why: intercurrent illness(동반 질환)·glycemic lability(혈당 변동)는 차트의 말이에요. 환자에게는 아프면 혈당이 흔들린다는 것을 쉬운 말로 알려요.
+      scenes:
+        - who: 차트 기록
+          icon: board
+          en: Intercurrent influenza with labile BG; sick-day plan reviewed.
+          ok: true
+        - who: 동료에게
+          icon: monitor
+          en: He's got the flu and his sugars are all over the place.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: Intercurrent illness is causing significant glycemic lability.
+          ok: false
+          fix: Being sick with the flu can make your sugars harder to control.
 - id: SCN-ER-00597
   profession: ""
   eventId: EVT-ER-00139
@@ -75295,7 +75717,6 @@
         - w-diabetes
         - w-medicine
         - w-take
-        - w-time
       goal: 1
     - en: How many times has this happened this month?
       ko: 이번 달에 몇 번이나 이런 일이 있었어요?
@@ -75304,9 +75725,7 @@
         - has this happened
         - this month
         - '?'
-      words:
-        - w-time
-        - w-month
+      words: []
       goal: 1
     - en: Have these low sugars caused you to fall or nearly fall?
       ko: 이런 저혈당 때문에 넘어지거나 넘어질 뻔하셨어요?
@@ -75360,6 +75779,39 @@
         - w-plan
         - w-safe
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-faint
+      why: 쓰러질 것 같았지만 의식을 잃지 않았다면 faint(실신할 듯한) 쪽이에요. 실제로 의식을 잃었다면 unconscious(passed out)예요. 차트에서는 near-syncope와 syncope로 갈라 적어요.
+      cue: 'Patient: "Everything went gray and I had to grab the counter, but I didn''t black out."'
+      scale:
+        - lightheaded
+        - faint
+        - unconscious
+      answerAt: 1
+      example: I felt faint and had to sit down.
+      exKo: 쓰러질 것 같아서 앉아야 했어요.
+    - kind: context
+      words:
+        - w-low
+        - w-sugar
+        - w-fall
+      why: recurrent hypoglycemic episodes는 의료진의 말이에요. 환자에게는 몇 번, 무슨 일이 있었는지 쉬운 말로 되짚어 줘요.
+      scenes:
+        - who: 차트 기록
+          icon: board
+          en: Recurrent hypoglycemia x3 this month with near-fall.
+          ok: true
+        - who: 동료에게
+          icon: monitor
+          en: That's her third low this month and she almost fell — can pharmacy review her meds?
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: You've had recurrent hypoglycemic episodes with a near-fall.
+          ok: false
+          fix: Your sugar has gone low three times this month, and you almost fell.
 - id: SCN-ER-00598
   profession: ""
   eventId: EVT-ER-00139
@@ -75427,7 +75879,6 @@
         - are you
         - '?'
       words:
-        - w-week
         - w-pregnant
       goal: 1
     - en: Have you had gestational diabetes before?
@@ -75455,7 +75906,6 @@
         - w-sugar
         - w-target
         - w-protect
-        - w-baby
       goal: 1
     - en: Keeping your sugar in range protects you both.
       ko: 혈당을 범위 안에 유지하면 두 분 모두에게 좋아요.
@@ -75479,7 +75929,6 @@
         - .
       words:
         - w-monitor
-        - w-baby
         - w-manage
         - w-sugar
       goal: 2
@@ -75492,9 +75941,42 @@
         - .
       words:
         - w-check
-        - w-baby
         - w-heartbeat
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-range
+        - w-target
+      why: 임신 중 혈당 목표는 더 빡빡해요 — 공복 95 mg/dL 미만, 식후 1시간 140 미만, 식후 2시간 120 미만(ADA·ACOG). 공복 92면 목표 범위 안이에요.
+      cue: Fasting sugar 92 mg/dL — she's 30 weeks with gestational diabetes.
+      scale:
+        - in range
+        - a little high
+        - very high
+      answerAt: 0
+      example: Her fasting sugar is in range this morning.
+      exKo: 오늘 아침 공복 혈당은 목표 범위 안이에요.
+    - kind: swap
+      words:
+        - w-monitor
+        - w-manage
+      why: 미국 병원에서 간호사는 산모와 이야기할 때 태아를 보통 the baby라고 불러요. fetus·fetal은 기록할 때의 말이에요.
+      who: 산모에게 · 태아 감시 설명
+      icon: me
+      before:
+        - 'We''ll also monitor '
+        - fetal well-being
+        - ' while we manage your sugar.'
+      options:
+        - the baby
+        - fetal well-being
+        - the fetus
+      answer: the baby
+      notes:
+        fetal well-being: 차트·의료진끼리의 말. 산모에게는 딱딱하고 멀게 들린다.
+        the baby: 산모에게 가장 자연스러운 말. 산모가 걱정하는 대상을 그대로 부른다.
+        the fetus: 정확하지만 산모에게는 차갑게 들린다.
 - id: SCN-ER-00599
   profession: ""
   eventId: EVT-ER-00139
@@ -75590,7 +76072,6 @@
         - about the insulin
         - '?'
       words:
-        - w-question
         - w-insulin
       goal: 1
     - en: Can you show me back so I know you understand?
@@ -75628,6 +76109,45 @@
       words:
         - w-understand
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-draw
+        - w-dose
+        - w-step
+        - w-interpreter
+      why: 바이알에서 주사기로 약을 뽑는 것은 draw up the dose, 차근차근은 step by step, 자격을 갖춘 의료 통역사는 a qualified interpreter예요 — 미국 연방 규정이 쓰는 말이 qualified예요.
+      pairs:
+        - - draw up
+          - the dose
+        - - step by
+          - step
+        - - a qualified
+          - interpreter
+      decoys:
+        - understand
+    - kind: swap
+      words:
+        - w-bring
+        - w-interpreter
+        - w-explain
+        - w-clearly
+      why: 인슐린 교육처럼 안전이 걸린 설명에는 자격 있는 통역을 써요. 영어가 서툰 환자에게 미국 병원은 무료 통역을 제공해야 해요.
+      who: 환자에게 · 통역 연결
+      icon: me
+      before:
+        - 'I''ll bring '
+        - your son to translate
+        - ' so we can explain clearly.'
+      options:
+        - an interpreter
+        - your son to translate
+        - a bilingual coworker
+      answer: an interpreter
+      notes:
+        a bilingual coworker: 말을 할 줄 아는 것과 의료 통역은 다르다. 통역 자격이 확인된 직원이 아니면 맡기지 않는다.
+        an interpreter: 병원이 무료로 제공하는 자격 있는 의료 통역. 미국 연방 규정(Section 1557)이 병원에 요구한다.
+        your son to translate: 가족 통역은 누락·오역이 잦다. 성인 가족은 무료 통역을 안내받은 환자가 원할 때만, 미성년 자녀는 급박한 위험 상황에서 통역을 바로 구할 수 없을 때만 된다.
 - id: SCN-ER-00600
   profession: ""
   eventId: EVT-ER-00139
@@ -75764,6 +76284,41 @@
         - w-monitor
         - w-tell
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-weak
+        - w-muscle
+      why: 들 수는 있지만 오래 버티지 못하면 weak 쪽이에요. 저칼륨이 심해지면 마비까지 갈 수 있어서 근력 변화를 계속 확인해요.
+      cue: 'Patient: "I can lift my arms, but they feel heavy and I can''t hold them up for long."'
+      scale:
+        - slightly weak
+        - weak
+        - paralyzed
+      answerAt: 1
+      example: My legs feel weak, and I'm cramping.
+      exKo: 다리에 힘이 없고 쥐가 나요.
+    - kind: context
+      words:
+        - w-potassium
+        - w-low
+        - w-hold
+        - w-insulin
+      why: 인슐린은 칼륨을 세포 안으로 밀어 넣어 혈중 칼륨을 더 떨어뜨려요. 그래서 DKA에서 칼륨이 3.3 mEq/L 미만이면 인슐린을 미루고 칼륨부터 채워요(ADA). 환자에게는 K·repletion 대신 쉬운 말로 순서를 알려요.
+      scenes:
+        - who: 동료에게
+          icon: monitor
+          en: K is 3.1 — we need to hold the insulin drip and start potassium first.
+          ok: true
+        - who: 차트 기록
+          icon: board
+          en: K 3.1; insulin held per protocol, KCl infusing, continuous cardiac monitoring.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: Your K is 3.1, so we're holding the drip pending repletion.
+          ok: false
+          fix: Your potassium is low, so we'll give you potassium first and hold off on more insulin.
 - id: SCN-ER-00601
   profession: ""
   eventId: EVT-ER-00139
@@ -75845,7 +76400,6 @@
         - '?'
       words:
         - w-sleepy
-        - w-hour
       goal: 1
     - en: We're checking his neurological status closely right now.
       ko: 지금 신경학적 상태를 자세히 확인하고 있어요.
@@ -75896,6 +76450,38 @@
         - w-respond
         - w-safe
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-sleepy
+      why: 흔들어야 겨우 눈을 뜨면 hard to wake 쪽이에요. 소아 DKA 치료 중 새 두통과 함께 의식이 떨어지면 뇌부종의 경고 신호라 바로 의사에게 알려요.
+      cue: 'Parent: "He was chatting an hour ago. Now he only opens his eyes if I shake him."'
+      scale:
+        - alert
+        - sleepy
+        - hard to wake
+        - unresponsive
+      answerAt: 2
+      example: He's getting hard to wake, and his headache is worse.
+      exKo: 아이가 점점 깨우기 힘들어지고 두통도 심해졌어요.
+    - kind: context
+      words:
+        - w-act
+      why: cerebral edema·secondary to는 의료진의 말이에요. 보호자에게는 '뇌가 붓는 것'처럼 풀어서, 지금 무엇을 하고 있는지를 함께 말해요.
+      scenes:
+        - who: 동료에게
+          icon: monitor
+          en: New headache and he's harder to wake — I'm worried about cerebral edema. Can you get the doctor now?
+          ok: true
+        - who: 차트 기록
+          icon: board
+          en: New HA and decreased LOC during DKA treatment; MD notified at bedside.
+          ok: true
+        - who: 보호자에게
+          icon: me
+          en: We suspect cerebral edema secondary to DKA treatment.
+          ok: false
+          fix: We're worried there may be some swelling in his brain, so we're acting right away.
 - id: SCN-ER-00602
   profession: ""
   eventId: EVT-ER-00139
@@ -75965,8 +76551,6 @@
         - '?'
       words:
         - w-responsive
-        - w-last
-        - w-hour
       goal: 1
     - en: Is she opening her eyes or responding to your voice?
       ko: 눈을 뜨거나 목소리에 반응하시나요?
@@ -76006,7 +76590,6 @@
       words:
         - w-give
         - w-fluid
-        - w-bring
         - w-blood
         - w-pressure
       goal: 2
@@ -76034,6 +76617,44 @@
         - w-monitor
         - w-trauma
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-respond
+        - w-voice
+        - w-eye
+      why: 말에는 반응이 없고 통증 자극에만 반응하면 AVPU의 P예요. 이 정도면 스스로 기도를 지키지 못할 수 있어서 가까이서 계속 봐요.
+      cue: 'Family: "She doesn''t open her eyes when I talk to her, but she groans and pulls away when the nurse presses on her shoulder."'
+      scale:
+        - alert
+        - responds to voice
+        - responds to pain
+        - unresponsive
+      answerAt: 2
+      example: She only responds to pain right now.
+      exKo: 지금은 통증 자극에만 반응해요.
+    - kind: swap
+      words:
+        - w-low
+        - w-pressure
+        - w-give
+        - w-fluid
+      why: 가족에게는 수치의 이름보다 무엇이 문제이고 무엇을 하는지를 쉬운 말로 이어서 말해요.
+      who: 가족에게 · 저혈압과 수액 설명
+      icon: me
+      before:
+        - 'She '
+        - is hypotensive
+        - ', so we''re giving fluids quickly.'
+      options:
+        - has low blood pressure
+        - is hypotensive
+        - is in shock
+      answer: has low blood pressure
+      notes:
+        has low blood pressure: 가족이 바로 알아듣는 말. 왜 수액을 빨리 넣는지가 이어진다.
+        is hypotensive: 의료진끼리의 말. 가족은 무슨 뜻인지 모른다.
+        is in shock: 일반인에게는 '정신적 충격'으로도 들려 뜻이 흐려지고, 설명 없이 들으면 겁부터 난다.
 - id: SCN-ER-00603
   profession: ""
   eventId: EVT-ER-00139
@@ -76171,6 +76792,43 @@
       words:
         - w-drowsy
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-wake
+        - w-cause
+        - w-dose
+        - w-sugar
+      why: 깨어나는 것은 wake up(구동사), 다른 원인은 other causes, 한 번 더 주는 당은 another dose of sugar예요. awake는 '깨어 있는' 상태를 말하는 형용사라 짝이 없어요.
+      pairs:
+        - - wake
+          - up
+        - - other
+          - causes
+        - - another dose
+          - of sugar
+      decoys:
+        - awake
+    - kind: context
+      words:
+        - w-sugar
+        - w-awake
+        - w-cause
+      why: BG·AMS(의식 변화)·workup은 의료진의 말이에요. 가족에게는 무엇이 나아졌고 무엇이 아직인지, 그래서 무엇을 하는지를 쉬운 말로 말해요.
+      scenes:
+        - who: 동료에게
+          icon: monitor
+          en: His sugar's 140 now but he's still not waking up — can we look for other causes?
+          ok: true
+        - who: 차트 기록
+          icon: board
+          en: BG corrected to 142; persistent AMS, further workup initiated.
+          ok: true
+        - who: 가족에게
+          icon: me
+          en: His BG is corrected, but his AMS persists, so we're expanding the workup.
+          ok: false
+          fix: His sugar is back up, but he's still not fully awake, so we're looking for other causes.
 - id: SCN-ER-00604
   profession: ""
   eventId: EVT-ER-00139
@@ -76317,12 +76975,49 @@
         - can act fast
         - .
       words:
-        - w-give
         - w-report
         - w-surgical
         - w-team
         - w-act
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-spread
+        - w-leg
+        - w-start
+        - w-antibiotic
+        - w-report
+      why: 감염이 위로 번지는 것은 spreading up your leg, 항생제는 start, 협진 팀에 하는 SBAR 보고는 a full report예요.
+      pairs:
+        - - spreading up
+          - your leg
+        - - start
+          - antibiotics
+        - - a full
+          - report
+      decoys:
+        - fever
+    - kind: context
+      words:
+        - w-infection
+        - w-serious
+        - w-surgical
+      why: necrotizing soft tissue infection·septic physiology는 의료진의 말이에요. 환자에게는 얼마나 심각한지와 누가 오는지를 쉬운 말로 알려요.
+      scenes:
+        - who: 외과에 전화(SBAR)
+          icon: speech
+          en: This is the ER nurse for bed 3 — diabetic with a black, swollen foot, temp 39.2, BP 88/50. I'm worried about sepsis and need surgery to see him now.
+          ok: true
+        - who: 차트 기록
+          icon: board
+          en: Necrotic L foot, febrile 39.2, hypotensive. Surgery consulted.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: You have a necrotizing soft tissue infection with septic physiology.
+          ok: false
+          fix: Your foot infection is very serious and it's affecting your whole body, so the surgical team is coming to see you.
 - id: SCN-ER-00605
   profession: ""
   eventId: EVT-ER-00139
@@ -76393,7 +77088,6 @@
       words:
         - w-breathe
         - w-compare
-        - w-hour
       goal: 1
     - en: Have you felt more short of breath tonight?
       ko: 오늘 밤 숨이 더 차셨어요?
@@ -76407,7 +77101,7 @@
         - w-breath
       goal: 1
     - en: Your labs still show a wide gap, so I'm updating the doctor.
-      ko: 검사 수치에 여전히 큰 차이가 있어서 의사에게 알리고 있어요.
+      ko: 검사 수치에서 anion gap이 아직 커서 의사에게 알리고 있어요.
       chunks:
         - Your labs still
         - show a wide gap,
@@ -76419,7 +77113,6 @@
         - w-show
         - w-gap
         - w-update
-        - w-doctor
       goal: 1
     - en: I'll report your pH and anion gap trend clearly.
       ko: pH와 anion gap 추이를 명확히 보고할게요.
@@ -76444,8 +77137,6 @@
         - now
         - .
       words:
-        - w-give
-        - w-doctor
         - w-update
       goal: 2
     - en: I'll hand this off clearly so nothing gets missed.
@@ -76457,10 +77148,43 @@
         - missed
         - .
       words:
-        - w-hand
         - w-clearly
         - w-miss
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-breath
+        - w-gap
+      why: 숨이 찬 것은 short of breath(굳은 표현), 음이온차가 커진 것은 a wide gap, 인계하는 것은 hand off예요.
+      pairs:
+        - - short of
+          - breath
+        - - a wide
+          - gap
+        - - hand this
+          - "off"
+      decoys:
+        - clearly
+    - kind: context
+      words:
+        - w-gap
+        - w-update
+      why: anion gap·WOB(호흡 일)는 의료진의 말이에요. 음이온차가 다시 벌어지면 케톤산증이 나빠진다는 뜻이라, 환자에게는 무엇이 나빠졌고 무엇을 하는지 쉬운 말로 말해요.
+      scenes:
+        - who: 당직의에게 전화
+          icon: speech
+          en: This is the nurse for bed 12, DKA. His gap went from 18 to 24 and he's breathing harder. I'm worried — can you come see him?
+          ok: true
+        - who: 차트 기록
+          icon: board
+          en: AG 18 → 24, increased WOB. On-call MD notified.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: Your anion gap is widening and your WOB is up.
+          ok: false
+          fix: Your blood tests show the acid is building up again, and you're working harder to breathe, so I'm updating the doctor.
 - id: SCN-ER-00606
   profession: ""
   eventId: EVT-ER-00139
