@@ -123,10 +123,10 @@ func ValidateSentences(theme string, bank Lexicon, goalCount int, sentences []Se
 func ValidateBundleLessons(b *Bundle) []error {
 	var errs []error
 	for _, bank := range b.Lexicons {
-		errs = append(errs, ValidateLexicon(bank)...)
+		errs = append(errs, ValidateLexiconV45(bank)...)
 	}
 	for _, s := range b.Scenarios {
-		if len(s.Sentences) == 0 {
+		if len(s.Sentences) == 0 && len(s.Nuance) == 0 {
 			continue
 		}
 		bank, ok := FindLexiconTheme(b.Lexicons, s.Theme)
@@ -135,8 +135,35 @@ func ValidateBundleLessons(b *Bundle) []error {
 			continue
 		}
 		errs = append(errs, ValidateSentences(s.Theme, bank, len(s.Goals), s.Sentences)...)
+		errs = append(errs, ValidateNuance(s.ID, UsedWordIDs(s.Sentences), s.Nuance, IsV45Bank(bank) && len(s.Sentences) > 0)...)
 	}
 	return errs
+}
+
+// ValidateLexiconV45 is ValidateLexicon plus, for a v45 bank (any word carrying v45
+// fields), V12/V13 on every word — a bank half-way through its backfill is broken.
+func ValidateLexiconV45(bank Lexicon) []error {
+	errs := ValidateLexicon(bank)
+	if !IsV45Bank(bank) {
+		return errs
+	}
+	for _, w := range bank.Words {
+		for _, e := range ValidateWordV45(w) {
+			errs = append(errs, fmt.Errorf("lexicon %q: %w", bank.Theme, e))
+		}
+	}
+	return errs
+}
+
+// UsedWordIDs is the set of bank word ids a situation's sentences reference.
+func UsedWordIDs(sentences []Sentence) map[string]bool {
+	used := map[string]bool{}
+	for _, s := range sentences {
+		for _, id := range s.Words {
+			used[id] = true
+		}
+	}
+	return used
 }
 
 // WordsUsed is STEP 1's word list: the bank words this situation's sentences use, in

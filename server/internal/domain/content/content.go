@@ -227,6 +227,10 @@ type Scenario struct {
 	// on every scenario until content lands department by department (build-spec
 	// §6 결정 2) — a scenario with none simply has no STEP 1/2 content yet.
 	Sentences []Sentence `yaml:"sentences,omitempty" json:"sentences,omitempty"`
+	// Nuance (v45, build-spec §11-3) are this situation's nuance items — STEP 1's
+	// scale and collocation cards, STEP 2's reel, context and swap drills. Authored
+	// per situation (결정 7); empty until a department's content has the v45 pass.
+	Nuance []Nuance `yaml:"nuance,omitempty" json:"nuance,omitempty"`
 }
 
 // ---- lesson four steps (v44): words + sentences ----
@@ -252,6 +256,18 @@ type Word struct {
 	Ko      string `yaml:"ko" json:"ko"`
 	Icon    string `yaml:"icon" json:"icon,omitempty"`
 	Example string `yaml:"example" json:"example,omitempty"`
+
+	// ── v45 (build-spec §11-2): the material for STEP 1's recall prompts. All three
+	// prompt types are authored for every word — which one a learner meets is chosen
+	// at runtime (결정 8), because a word recurs across ~21 situations. A bank either
+	// has none of these (v44 content) or all of them on every word (IsV45Word).
+	ExKo          string     `yaml:"exKo,omitempty" json:"exKo,omitempty"`                   // the example, in Korean
+	Cue           string     `yaml:"cue,omitempty" json:"cue,omitempty"`                     // front-of-card context clue (Korean), never the answer
+	Tag           string     `yaml:"tag,omitempty" json:"tag,omitempty"`                     // short category label
+	DistractorsEn []string   `yaml:"distractorsEn,omitempty" json:"distractorsEn,omitempty"` // 2 look-alike English options
+	DistractorsKo []string   `yaml:"distractorsKo,omitempty" json:"distractorsKo,omitempty"` // 2 Korean meanings for listen-and-pick
+	Chips         [][]string `yaml:"chips,omitempty" json:"chips,omitempty"`                 // words → fragments; JoinChips(Chips) == En
+	DecoyChips    []string   `yaml:"decoyChips,omitempty" json:"decoyChips,omitempty"`       // wrong fragments mixed into the pool
 }
 
 // Lexicon is one theme's word bank. content/nurse/lexicon/<dept>.yaml holds a list

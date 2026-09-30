@@ -40,6 +40,9 @@ type Seed struct {
 	// generateSeedScenarios). Empty on every current seed; content lands
 	// department by department (build-spec-index.md §6 결정 2).
 	Sentences []content.Sentence `yaml:"sentences"`
+	// Nuance (v45, build-spec §11-3) are this situation's nuance items, carried
+	// verbatim like Sentences.
+	Nuance []content.Nuance `yaml:"nuance"`
 }
 
 // SeedPersona is the patient/colleague character for one situation. Authored per
@@ -94,7 +97,7 @@ func loadSeeds(dir, code string) ([]Seed, error) {
 // prevent from shipping unnoticed.
 func generateSeedScenarios(deptIdx int, d Dept, seeds []Seed, lexicon []content.Lexicon) ([]content.Scenario, []content.Event, error) {
 	for _, bank := range lexicon {
-		if errs := content.ValidateLexicon(bank); len(errs) > 0 {
+		if errs := content.ValidateLexiconV45(bank); len(errs) > 0 {
 			return nil, nil, fmt.Errorf("dept %s lexicon: %w", d.Code, errors.Join(errs...))
 		}
 	}
@@ -106,9 +109,13 @@ func generateSeedScenarios(deptIdx int, d Dept, seeds []Seed, lexicon []content.
 			if !found {
 				bank = content.Lexicon{Theme: s.Theme}
 			}
-			if errs := content.ValidateSentences(s.Theme, bank, len(s.Goals), s.Sentences); len(errs) > 0 {
+			errs := content.ValidateSentences(s.Theme, bank, len(s.Goals), s.Sentences)
+			errs = append(errs, content.ValidateNuance(s.Title, content.UsedWordIDs(s.Sentences), s.Nuance, content.IsV45Bank(bank))...)
+			if len(errs) > 0 {
 				return nil, nil, fmt.Errorf("dept %s seed %q: %w", d.Code, s.Title, errors.Join(errs...))
 			}
+		} else if len(s.Nuance) > 0 {
+			return nil, nil, fmt.Errorf("dept %s seed %q: has nuance but no sentences to anchor it", d.Code, s.Title)
 		}
 		diff := clampDiff(s.Difficulty)
 		mins := 4 + diff*2
@@ -133,6 +140,7 @@ func generateSeedScenarios(deptIdx int, d Dept, seeds []Seed, lexicon []content.
 			Theme:      s.Theme,
 			CollabWith: s.CollabWith,
 			Sentences:  s.Sentences,
+			Nuance:     s.Nuance,
 			Briefing: &content.Briefing{
 				Dept: d.Label + " · " + s.Room, DeptColor: d.Color, Brief: s.Brief, Difficulty: diff,
 				TimeLabel: fmt.Sprintf("약 %d분", mins), Skills: s.Skills,

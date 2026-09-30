@@ -2961,7 +2961,24 @@ export interface components {
             words?: string[];
         };
         "github_com_bingoring_forin_server_internal_domain_content.Word": {
+            /** @description words → fragments; JoinChips(Chips) == En */
+            chips?: string[][];
+            /** @description front-of-card context clue (Korean), never the answer */
+            cue?: string;
+            /** @description wrong fragments mixed into the pool */
+            decoyChips?: string[];
+            /** @description 2 look-alike English options */
+            distractorsEn?: string[];
+            /** @description 2 Korean meanings for listen-and-pick */
+            distractorsKo?: string[];
             en?: string;
+            /**
+             * @description ── v45 (build-spec §11-2): the material for STEP 1's recall prompts. All three
+             *     prompt types are authored for every word — which one a learner meets is chosen
+             *     at runtime (결정 8), because a word recurs across ~21 situations. A bank either
+             *     has none of these (v44 content) or all of them on every word (IsV45Word).
+             */
+            exKo?: string;
             example?: string;
             icon?: string;
             /**
@@ -2973,6 +2990,8 @@ export interface components {
             id?: string;
             ipa?: string;
             ko?: string;
+            /** @description short category label */
+            tag?: string;
         };
         "github_com_bingoring_forin_server_internal_domain_conversation.Choice": {
             /**

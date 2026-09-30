@@ -75,7 +75,7 @@ func (r *ContentRepo) Seed(ctx context.Context, b *content.Bundle) error {
 			ID: s.ID, Profession: s.Profession, EventID: s.EventID, Title: s.Title, Tagline: s.Tagline,
 			Persona: jsonb(s.Persona), Goals: jsonb(s.Goals), Guardrails: jsonb(s.Guardrails),
 			KeyPhrases: jsonb(s.KeyPhrases), Steps: jsonb(s.Steps), Briefing: jsonb(s.Briefing),
-			Acuity: s.Acuity, Theme: s.Theme, CollabWith: s.CollabWith, Sentences: jsonbList(s.Sentences)}); err != nil {
+			Acuity: s.Acuity, Theme: s.Theme, CollabWith: s.CollabWith, Sentences: jsonbList(s.Sentences), Nuance: jsonbList(s.Nuance)}); err != nil {
 			return err
 		}
 	}
@@ -173,6 +173,7 @@ func (r *ContentRepo) GetScenario(ctx context.Context, id string) (*content.Scen
 	out := &content.Scenario{ID: s.ID, Profession: s.Profession, EventID: s.EventID, Title: s.Title, Tagline: s.Tagline, Acuity: s.Acuity, Theme: s.Theme}
 	unjson(s.Persona, &out.Persona)
 	unjson(s.Sentences, &out.Sentences)
+	unjson(s.Nuance, &out.Nuance)
 	unjson(s.Goals, &out.Goals)
 	unjson(s.Guardrails, &out.Guardrails)
 	unjson(s.KeyPhrases, &out.KeyPhrases)

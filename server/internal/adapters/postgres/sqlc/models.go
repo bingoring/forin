@@ -302,6 +302,7 @@ type Scenario struct {
 	Theme      string `json:"theme"`
 	CollabWith string `json:"collab_with"`
 	Sentences  []byte `json:"sentences"`
+	Nuance     []byte `json:"nuance"`
 }
 
 type ScenarioAttempt struct {
