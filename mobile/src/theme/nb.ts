@@ -31,6 +31,10 @@ export const nb = {
    *  tell `red` and `yarn` apart, but a component reading the wrong token would still be
    *  a silent colour bug — hence its own name rather than reusing `red`. */
   yarn: '#D3574B',
+  /** Amber and purple pens — the words and guided-dialogue steps of a lesson
+   *  (StepTrack, v44). The other two steps reuse `blue` and `red`. */
+  amber: '#C77E2E',
+  purple: '#7A5C9E',
 
   /** The notebook itself: cream stock with ruled lines. */
   cream: '#F1EBDD',

@@ -50,6 +50,13 @@ type LoginResp = paths['/auth/social']['post']['responses'][200]['content']['app
 type TokenPair = paths['/auth/refresh']['post']['responses'][200]['content']['application/json'];
 type MeResp = paths['/me']['get']['responses'][200]['content']['application/json'];
 type Manifest = paths['/content/manifest']['get']['responses'][200]['content']['application/json'];
+/** GET /me/lesson/{scenarioId} — one situation as its four steps (v44). */
+export type LessonResp = paths['/me/lesson/{scenarioId}']['get']['responses'][200]['content']['application/json'];
+type LessonStepWire = NonNullable<LessonResp['steps']>[number];
+export type LessonStepKind = NonNullable<LessonStepWire['kind']>;
+export type LessonStepState = NonNullable<LessonStepWire['state']>;
+/** A step as the screens draw it. `empty` = content not written yet, never opt-in-able. */
+export interface LessonStepView { kind: LessonStepKind; state: LessonStepState; count?: number }
 
 // --- scenario + conversation types (GET /scenarios/{id} is untyped in the
 // contract, so we mirror the server content.Scenario json tags here). ---

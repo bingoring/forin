@@ -196,6 +196,12 @@ export const de: Record<string, string> = {
   'journey.resumeLabel': 'Laufend',
   // ── journey (Meilenstein-Flagge — Streckenende, task-19) ───────────
   'journey.milestone.passed': 'Bestanden ✓',
+  'lesson.step.words': 'Wörter',
+  'lesson.step.sentences': 'Sätze',
+  'lesson.step.guided': 'Geführt',
+  'lesson.step.free': 'Frei',
+  'lesson.step.empty': 'Bald verfügbar',
+  'lesson.step.skip': 'Übersprungen',
   'journey.milestone.open': 'Bereit',
   'journey.milestone.closed': 'Noch nicht',
   // ── journey (Gruppennamen — Abteilung Kern/Vertiefung) ─────────────

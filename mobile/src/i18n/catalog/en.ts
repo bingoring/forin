@@ -199,6 +199,12 @@ export const en: Record<string, string> = {
   'journey.resumeLabel': 'In progress',
   // ── journey (milestone flag — track end, task-19) ──────────────────
   'journey.milestone.passed': 'Passed ✓',
+  'lesson.step.words': 'Words',
+  'lesson.step.sentences': 'Sentences',
+  'lesson.step.guided': 'Guided talk',
+  'lesson.step.free': 'Free talk',
+  'lesson.step.empty': 'Coming soon',
+  'lesson.step.skip': 'Skipped',
   'journey.milestone.open': 'Ready',
   'journey.milestone.closed': 'Not yet',
   // ── journey (bundle names — dept core/depth) ──────────────────────

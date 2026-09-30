@@ -196,6 +196,12 @@ export const ja: Record<string, string> = {
   'journey.resumeLabel': '進行中',
   // ── journey（マイルストーン旗 — トラックの終点、task-19）──────────
   'journey.milestone.passed': '合格 ✓',
+  'lesson.step.words': '単語',
+  'lesson.step.sentences': '文',
+  'lesson.step.guided': 'ガイド会話',
+  'lesson.step.free': '自由会話',
+  'lesson.step.empty': '準備中',
+  'lesson.step.skip': 'スキップ',
   'journey.milestone.open': '受験可能',
   'journey.milestone.closed': '合格前',
   // ── journey（束の名前 — 部署コア/深化）───────────────────────────

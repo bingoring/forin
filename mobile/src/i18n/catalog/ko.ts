@@ -214,6 +214,12 @@ export const ko: Record<string, string> = {
   'journey.resumeLabel': '진행중',
   // ── journey (마일스톤 깃발 — 트랙 끝, task-19) ──────────────────────
   'journey.milestone.passed': '통과 ✓',
+  'lesson.step.words': '단어',
+  'lesson.step.sentences': '문장',
+  'lesson.step.guided': '가이드 대화',
+  'lesson.step.free': '자유 대화',
+  'lesson.step.empty': '준비 중',
+  'lesson.step.skip': '건너뜀',
   'journey.milestone.open': '응시 가능',
   'journey.milestone.closed': '통과전',
   // ── journey (묶음 이름 — 부서 코어/심화) ────────────────────────────
