@@ -50375,7 +50375,7 @@
     - en: "You're doing the right thing by bringing her in."
       ko: "이렇게 데려오신 게 잘하신 거예요."
       chunks: ["You're", "doing the right thing", "by bringing her", "in", "."]
-      words: [w-right, w-thing, w-bring]
+      words: [w-right, w-bring]
       goal: 2
     - en: "Has she seemed more tired than usual?"
       ko: "평소보다 더 처져 보이던가요?"
@@ -50392,6 +50392,44 @@
       chunks: ["I'm going to", "take her temperature", "now", "."]
       words: [w-take, w-temperature]
       goal: 1
+  nuance:
+  - kind: pair
+    words:
+    - w-high
+    - w-wet
+    - w-diaper
+    - w-tired
+    - w-usual
+    pairs:
+    - - how high has
+      - it been
+    - - wet
+      - diapers
+    - - more tired than
+      - usual
+    decoys:
+    - fever
+    why: 열이 몇 도까지 올랐는지는 how high has it been, 소변으로 젖은 기저귀는 wet diapers, 평소와 견줄 때는 more tired than usual이에요.
+  - kind: swap
+    words:
+    - w-tired
+    - w-usual
+    who: 부모에게 · 활동성 사정
+    icon: me
+    before:
+    - 'Has she seemed more '
+    - lethargic
+    - ' than usual?'
+    options:
+    - tired
+    - lethargic
+    - fatigued
+    answer: tired
+    notes:
+      tired: 부모가 쓰는 쉬운 말. 평소 모습과 견줘 답하기 쉽다.
+      lethargic: 의료진에게는 '깨우기 힘들 만큼 처짐'이라는 위험 소견을 뜻하는 임상어. 부모는 다른 뜻으로 알고 답할 수 있다.
+      fatigued: 문서체라 대화에서는 딱딱하게 들린다.
+    why: 소아에서 lethargic은 무게 있는 임상 소견이에요. 부모에게는 tired처럼 쉬운 말로 묻고, 들은 모습을 보고 의료진이 판단해요.
 
 - theme: er-peds
   title: 체중 기반 투약 설명
@@ -50434,8 +50472,41 @@
     - en: "I know it's scary to watch, but this keeps him safe."
       ko: "지켜보시기 무서우실 텐데, 이게 아이를 안전하게 지켜줘요."
       chunks: ["I know", "it's scary to watch", ", but this", "keeps him safe", "."]
-      words: [w-know, w-scary, w-watch, w-safe]
+      words: [w-scary, w-watch, w-safe]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-safe
+    - w-measure
+    cue: 'Nurse, after checking the mg/kg dose against his weight with a second nurse:'
+    scale:
+    - probably okay
+    - safe
+    - completely risk-free
+    answerAt: 1
+    why: 계산과 이중 확인을 거친 용량은 safe라고 말할 수 있어요. 하지만 risk-free(위험이 전혀 없다)는 어떤 약에도 약속할 수 없는 말이라 쓰지 않아요.
+    example: This amount is safe and carefully measured for him.
+    exKo: 이 양은 안전하고 이 아이에 맞춰 신중하게 측정된 거예요.
+  - kind: context
+    words:
+    - w-weight
+    - w-dose
+    scenes:
+    - who: 차트 기록
+      icon: board
+      en: Wt 18.2 kg; acetaminophen 15 mg/kg = 273 mg PO.
+      ok: true
+    - who: 동료 간호사와 이중 확인
+      icon: speech
+      en: Weight is 18.2 kilos, so at 15 per kilo the dose is 273 milligrams.
+      ok: true
+    - who: 부모에게
+      icon: me
+      en: Dose is 15 mg/kg, so 273 mg per wt.
+      ok: false
+      fix: We give 15 milligrams for every kilo he weighs, so his dose is 273 milligrams.
+    why: mg/kg·wt 같은 차트 약어는 의료진끼리의 말이에요. 부모에게는 '체중 1 kg마다 몇 mg'처럼 풀어 말해야 계산 원리가 전해지고 안심이 돼요.
 
 - theme: er-peds
   title: 예방접종력 확인
@@ -50485,6 +50556,43 @@
       chunks: ["I'll note", "today's visit", "and we can", "schedule the rest", "."]
       words: [w-note, w-schedule]
       goal: 1
+  nuance:
+  - kind: pair
+    words:
+    - w-vaccine
+    - w-card
+    - w-catchup
+    - w-guess
+    pairs:
+    - - vaccine
+      - card
+    - - catch
+      - up
+    - - so we don't
+      - guess
+    decoys:
+    - down
+    why: 종이 접종 기록은 vaccine card, 밀린 접종을 채우는 건 catch up, 기억에 기대지 않고 기록을 보겠다는 건 so we don't guess예요.
+  - kind: swap
+    words:
+    - w-missing
+    - w-catchup
+    who: 부모에게 · 누락 접종 설명
+    icon: me
+    before:
+    - 'It''s okay if some are missing — '
+    - she'll have to start over
+    - .
+    options:
+    - we can catch up
+    - she'll have to start over
+    - you should have kept up
+    answer: we can catch up
+    notes:
+      we can catch up: 사실 그대로의 말. CDC 따라잡기 일정대로 빠진 것만 채우고, 부모를 탓하지 않는다.
+      she'll have to start over: 사실과 다르다. CDC는 접종 간격이 길어졌어도 시리즈를 처음부터 다시 시작하지 않는다고 한다.
+      you should have kept up: 탓하는 말이라 부모가 방어적이 되고 기록을 떠올리기 어려워진다.
+    why: 밀린 접종은 처음부터가 아니라 이어서 맞히면 돼요. 비난 없이 사실을 말해야 부모가 기록을 함께 찾아요.
 
 - theme: er-peds
   title: 연령별 정상 활력
@@ -50534,6 +50642,42 @@
       chunks: ["Can I count", "your heartbeats", "with my stethoscope", "?"]
       words: [w-count, w-heartbeat]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-normal
+    - w-age
+    - w-heart
+    - w-rate
+    cue: 'Toddler, awake and playing in mom''s lap: heart rate 120.'
+    scale:
+    - normal for his age
+    - borderline
+    - dangerously fast
+    answerAt: 0
+    why: 깨어 노는 걸음마기 아이의 심박수 120은 정상 범위 안이에요. 어른 기준으로 보면 빠르지만, 아이는 나이별 기준표로 판단해요.
+    example: For his age, a faster heart rate is completely normal.
+    exKo: 이 나이에는 심박수가 빠른 게 완전히 정상이에요.
+  - kind: context
+    words:
+    - w-heart
+    - w-rate
+    - w-normal
+    scenes:
+    - who: 차트 기록
+      icon: board
+      en: HR 128, WNL for age.
+      ok: true
+    - who: 의사에게 보고
+      icon: speech
+      en: Heart rate's 128 — within normal limits for his age.
+      ok: true
+    - who: 부모에게
+      icon: me
+      en: HR's 128, WNL for age.
+      ok: false
+      fix: His heart rate is 128, which is completely normal for a boy his age.
+    why: HR·WNL(within normal limits)은 차트와 의료진끼리의 약어예요. 불안한 부모에게는 풀어서 '이 나이에 정상'이라고 말해야 안심이 돼요.
 
 - theme: er-peds
   title: 놀이·눈높이 접근
@@ -50559,7 +50703,7 @@
       words: [w-buddy, w-help, w-teddy, w-first]
       goal: 1
     - en: "I'm going to be really gentle, I promise."
-      ko: "정말 부드럽게 할게, 약속해."
+      ko: "정말 살살 할게, 약속해."
       chunks: ["I'm going to be", "really gentle", ", I promise", "."]
       words: [w-gentle, w-promise]
       goal: 2
@@ -50583,6 +50727,43 @@
       chunks: ["You can pick", "the sticker", "you want after", ", okay", "?"]
       words: [w-pick, w-sticker]
       goal: 1
+  nuance:
+  - kind: pair
+    words:
+    - w-show
+    - w-muscle
+    - w-pick
+    - w-sticker
+    - w-calm
+    pairs:
+    - - show me your
+      - muscles
+    - - pick
+      - a sticker
+    - - stay
+      - calm
+    decoys:
+    - pretend
+    why: 근육 자랑은 show me your muscles, 스티커를 고르는 건 pick a sticker, 보호자에게 침착하게 있어 달라는 건 stay calm이에요.
+  - kind: swap
+    words:
+    - w-gentle
+    who: 겁먹은 아이에게 · 처치 전
+    icon: me
+    before:
+    - 'I''m going to be really gentle — '
+    - it won't hurt at all
+    - .
+    options:
+    - I'll tell you before I touch you
+    - it won't hurt at all
+    - stop crying now
+    answer: I'll tell you before I touch you
+    notes:
+      I'll tell you before I touch you: 무엇을 할지 미리 알려 주면 아이가 예측할 수 있어 덜 놀란다.
+      it won't hurt at all: 아프면 약속이 깨져 다음 처치부터 아이가 간호사를 믿지 않는다.
+      stop crying now: 우는 것을 막으면 겁이 더 커진다. 울어도 괜찮다고 해 주는 편이 낫다.
+    why: 아이에게 '하나도 안 아파'라는 약속은 하지 않아요. 살살 하겠다는 말에, 만지기 전에 먼저 알려 주겠다는 정직한 말을 더해요.
 
 - theme: er-peds
   title: 열성 경련 목격 부모
@@ -50605,7 +50786,7 @@
     - en: "What you saw was terrifying, but he's stable now."
       ko: "보신 건 정말 무서우셨겠지만, 지금은 안정됐어요."
       chunks: ["What you saw", "was terrifying", ", but he's stable", "now", "."]
-      words: [w-see, w-terrifying, w-stable]
+      words: [w-terrifying, w-stable]
       goal: 1
     - en: "Febrile seizures are common and usually not harmful."
       ko: "열성 경련은 흔하고 대개 해롭지 않아요."
@@ -50615,7 +50796,7 @@
     - en: "Let me explain what to watch for and what to do next time."
       ko: "다음에 뭘 살피고 어떻게 해야 할지 설명해 드릴게요."
       chunks: ["Let me explain", "what to watch for", "and what to do", "next time", "."]
-      words: [w-explain, w-watch, w-time]
+      words: [w-explain, w-watch]
       goal: 2
     - en: "It's scary to witness, but you did everything right."
       ko: "목격하시기엔 무서웠겠지만, 다 잘 하셨어요."
@@ -50627,11 +50808,45 @@
       chunks: ["Most children", "outgrow febrile seizures", "by school age", "."]
       words: [w-child, w-outgrow, w-seizure, w-age]
       goal: 2
-    - en: "If a seizure lasts more than five minutes, call us right away."
-      ko: "경련이 5분 넘게 지속되면 바로 저희에게 연락하세요."
-      chunks: ["If a seizure lasts", "more than five minutes", ", call us", "right away", "."]
-      words: [w-seizure, w-last, w-minute, w-right]
+    - en: "If a seizure lasts more than five minutes, call 911 right away."
+      ko: "경련이 5분 넘게 지속되면 바로 911에 전화하세요."
+      chunks: ["If a seizure lasts", "more than five minutes", ", call 911", "right away", "."]
+      words: [w-seizure, w-last]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-terrifying
+    - w-scary
+    cue: 'Parent: "He was shaking and his eyes rolled back — I thought he was dying!"'
+    scale:
+    - upsetting
+    - scary
+    - terrifying
+    answerAt: 2
+    why: 죽는 줄 알았다는 공포에는 terrifying이 맞아요. 감정의 세기를 알맞게 받아 주면 부모가 이해받았다고 느끼고 설명을 들을 준비가 돼요.
+    example: What you saw was terrifying, but he's stable now.
+    exKo: 보신 건 정말 무서우셨겠지만, 지금은 안정됐어요.
+  - kind: swap
+    words:
+    - w-seizure
+    - w-last
+    who: 부모에게 · 귀가 교육
+    icon: me
+    before:
+    - 'If a seizure lasts more than five minutes, '
+    - wait for it to stop
+    - .
+    options:
+    - call 911
+    - wait for it to stop
+    - put something in his mouth
+    answer: call 911
+    notes:
+      call 911: 5분 넘게 이어지는 경련은 응급이라 집에서는 구급차를 부르도록 가르친다.
+      wait for it to stop: 5분이 넘으면 저절로 멈추기를 기다리지 않는다.
+      put something in his mouth: 혀를 깨물까 봐 넣는 것은 흔한 오해다. 질식·치아 손상 위험이 있어 절대 넣지 않는다.
+    why: 경련 중에는 옆으로 눕히고 시간을 재요. 5분이 넘으면 911을 부르고, 입에는 아무것도 넣지 않아요.
 
 - theme: er-peds
   title: 세기관지염 호흡곤란
@@ -50664,7 +50879,7 @@
     - en: "I'll show you the signs to watch at home."
       ko: "집에서 살펴야 할 징후를 보여드릴게요."
       chunks: ["I'll show you", "the signs", "to watch", "at home", "."]
-      words: [w-show, w-sign, w-watch, w-home]
+      words: [w-show, w-sign, w-watch]
       goal: 2
     - en: "Her chest is pulling in a little with every breath."
       ko: "숨을 쉴 때마다 가슴이 살짝 함몰되고 있어요."
@@ -50679,8 +50894,44 @@
     - en: "I'll teach you what harder breathing looks like before you go home."
       ko: "퇴원 전에 호흡이 힘들어지는 모습이 어떤지 알려드릴게요."
       chunks: ["I'll teach you", "what harder breathing", "looks like", "before you go home", "."]
-      words: [w-teach, w-hard, w-breathe, w-home]
+      words: [w-teach, w-hard, w-breathe]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-clear
+    - w-nose
+    - w-oxygen
+    - w-chest
+    pairs:
+    - - clear her
+      - nose
+    - - give her
+      - oxygen
+    - - her chest is
+      - pulling in
+    decoys:
+    - temperature
+    why: 막힌 코를 흡인하는 건 clear her nose, 산소를 주는 건 give her oxygen, 숨쉴 때 가슴이 쏙 들어가는 함몰호흡을 부모에게 쉽게 말할 때는 her chest is pulling in이에요.
+  - kind: context
+    words:
+    - w-chest
+    - w-breathe
+    scenes:
+    - who: 차트 기록
+      icon: board
+      en: Mild subcostal retractions, RR 58.
+      ok: true
+    - who: 의사에게 보고
+      icon: speech
+      en: She has mild subcostal retractions, resp rate 58.
+      ok: true
+    - who: 부모에게
+      icon: me
+      en: She has mild subcostal retractions.
+      ok: false
+      fix: Her chest is pulling in a little with every breath — that tells us she's working hard.
+    why: retractions(함몰호흡)는 의료진의 말이에요. 부모에게는 '숨쉴 때 가슴이 쏙 들어간다'처럼 눈에 보이는 말로 해야 집에서도 알아볼 수 있어요.
 
 - theme: er-peds
   title: 탈수 유아 평가
@@ -50723,13 +50974,48 @@
     - en: "Try small amounts every few minutes instead of a lot at once."
       ko: "한 번에 많이보다 조금씩 자주 마시게 해보세요."
       chunks: ["Try small amounts", "every few minutes", "instead of a lot", "at once", "."]
-      words: [w-amount, w-minute]
+      words: [w-amount]
       goal: 2
     - en: "I'll show you how to check for dry lips and sunken eyes at home."
       ko: "집에서 입술 마름과 눈 꺼짐을 확인하는 법을 알려드릴게요."
       chunks: ["I'll show you", "how to check", "for dry lips", "and sunken eyes", "at home", "."]
-      words: [w-show, w-check, w-dry, w-eye, w-home]
+      words: [w-show, w-check, w-dry, w-eye]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-try
+    - w-sip
+    - w-fluid
+    cue: 'Nurse, starting oral rehydration right after the baby vomited:'
+    scale:
+    - a teaspoon at a time
+    - half a cup
+    - a whole bottle
+    answerAt: 0
+    why: 토한 직후의 경구 재수화는 한 티스푼(약 5 mL)씩 몇 분마다 주는 것부터 시작해요. 한꺼번에 많이 먹이면 다시 토하기 쉬워요.
+    example: Let's try small sips of fluid frequently.
+    exKo: 수분을 조금씩 자주 마시게 해볼게요.
+  - kind: swap
+    words:
+    - w-wet
+    - w-diaper
+    who: 부모에게 · 탈수 징후 교육
+    icon: me
+    before:
+    - 'Watch for '
+    - decreased urine output
+    - ' and no tears when she cries.'
+    options:
+    - fewer wet diapers
+    - decreased urine output
+    - oliguria
+    answer: fewer wet diapers
+    notes:
+      fewer wet diapers: 부모가 집에서 바로 셀 수 있는 말.
+      decreased urine output: 의료진끼리의 말. 부모에게는 무엇을 세라는 건지 막연하다.
+      oliguria: 의학 용어라 부모는 알아듣지 못한다.
+    why: 같은 징후라도 부모에게는 기저귀처럼 눈으로 셀 수 있는 말로 가르쳐요. 그래야 집에서 실제로 살필 수 있어요.
 
 - theme: er-peds
   title: 소아 골절 통증 관리
@@ -50755,14 +51041,14 @@
       words: [w-point, w-face, w-hurt]
       goal: 1
     - en: "I'm going to be very gentle and get you medicine soon."
-      ko: "아주 부드럽게 할 거고 곧 약도 줄게."
+      ko: "아주 살살 할 거고 곧 약도 줄게."
       chunks: ["I'm going to be", "very gentle", "and get you", "medicine soon", "."]
       words: [w-gentle, w-medicine, w-soon]
       goal: 2
     - en: "You're being so brave — squeeze mom's hand if it hurts."
       ko: "정말 용감하네 — 아프면 엄마 손을 꽉 잡아."
       chunks: ["You're being", "so brave", "— squeeze mom's hand", "if it hurts", "."]
-      words: [w-brave, w-squeeze, w-hand, w-hurt]
+      words: [w-brave, w-squeeze, w-hurt]
       goal: 2
     - en: "This is just a quick pinch, then it's all done."
       ko: "이건 따끔하고 금방 끝나."
@@ -50779,6 +51065,42 @@
       chunks: ["We'll splint the arm", "and give", "pain medicine", "before the X-ray", "."]
       words: [w-splint, w-medicine, w-xray]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-point
+    - w-face
+    - w-hurt
+    cue: Child points to the face just before the crying one — frowning, no tears.
+    scale:
+    - hurts little bit
+    - hurts even more
+    - hurts whole lot
+    - hurts worst
+    answerAt: 2
+    why: Wong-Baker FACES 척도의 문구를 따른 거예요(중간 한 단계는 뺐어요). 우는 얼굴(hurts worst, 10) 바로 앞이 hurts whole lot(8)이에요. 아이의 말과 짚은 얼굴이 맞는지 함께 봐요.
+    example: Can you point to the face that shows how much it hurts?
+    exKo: 얼마나 아픈지 보여주는 얼굴을 짚어볼래?
+  - kind: swap
+    words:
+    - w-quick
+    - w-pinch
+    who: 아이에게 · 주사 직전
+    icon: me
+    before:
+    - 'This is just a '
+    - shot with a big needle
+    - ', then it''s all done.'
+    options:
+    - quick pinch
+    - shot with a big needle
+    - little bee sting
+    answer: quick pinch
+    notes:
+      quick pinch: 정직하면서도 겁을 키우지 않는 말. 짧게 끝난다는 것도 알려 준다.
+      shot with a big needle: needle·shot은 아이에게 무서운 그림을 떠올리게 해 소아 처치 때 피하는 말이다.
+      little bee sting: 쏘여서 아팠던 기억을 떠올리게 하는 비유라 피하는 편이 낫다.
+    why: 아이에게는 거짓 없이, 하지만 무서운 단어는 피해서 짧고 구체적으로 말해요.
 
 - theme: er-peds
   title: 이물질 흡인·삼킴
@@ -50806,17 +51128,17 @@
     - en: "Is he able to breathe and talk normally right now?"
       ko: "지금 숨쉬고 말하는 게 정상적으로 되나요?"
       chunks: ["Is he able", "to breathe and talk", "normally", "right now", "?"]
-      words: [w-breathe, w-talk, w-right]
+      words: [w-breathe, w-talk]
       goal: 1
     - en: "You did the right thing bringing him in immediately."
       ko: "바로 데려오신 게 잘하신 거예요."
       chunks: ["You did", "the right thing", "bringing him in", "immediately", "."]
-      words: [w-right, w-thing, w-bring]
+      words: [w-right, w-bring]
       goal: 2
     - en: "Can you describe the coin or toy he had in his hand?"
       ko: "손에 들고 있던 동전이나 장난감을 설명해 주시겠어요?"
       chunks: ["Can you describe", "the coin or toy", "he had", "in his hand", "?"]
-      words: [w-describe, w-coin, w-toy, w-hand]
+      words: [w-describe, w-coin, w-toy]
       goal: 1
     - en: "Is he drooling or having any trouble swallowing his own saliva?"
       ko: "침을 흘리거나 자기 침을 삼키는 데 어려움이 있나요?"
@@ -50826,8 +51148,42 @@
     - en: "We'll get an X-ray to see exactly where it is."
       ko: "정확히 어디 있는지 엑스레이로 확인할게요."
       chunks: ["We'll get", "an X-ray", "to see exactly", "where it is", "."]
-      words: [w-xray, w-see]
+      words: [w-xray]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-breathe
+    - w-talk
+    cue: 'Toddler right after choking on a coin: coughing hard, crying loudly, pink.'
+    scale:
+    - coughing forcefully
+    - weak cough
+    - can't cough or cry
+    answerAt: 0
+    why: 세게 기침하고 울 수 있으면 공기가 드나드는 부분 폐쇄라 기침을 막지 않고 곁에서 지켜봐요. 기침도 울음도 안 나오면 완전 폐쇄라 바로 복부 밀어내기(1세 이상)나 등 두드리기·가슴 압박(영아)을 해요.
+    example: He's coughing forcefully, so we'll let him keep coughing.
+    exKo: 세게 기침하고 있으니 계속 기침하게 둘게요.
+  - kind: context
+    words:
+    - w-swallow
+    - w-coin
+    - w-xray
+    scenes:
+    - who: 차트 기록
+      icon: board
+      en: Coin ingestion approx. 1400; drooling; CXR ordered.
+      ok: true
+    - who: 의사에게 보고
+      icon: speech
+      en: He swallowed a coin around two and he's drooling — the X-ray's ordered.
+      ok: true
+    - who: 부모에게
+      icon: me
+      en: Coin ingestion, drooling, CXR ordered.
+      ok: false
+      fix: We'll get an X-ray to see exactly where the coin is.
+    why: ingestion·CXR은 차트의 말이에요. 부모에게는 '삼킨 동전이 어디 있는지 엑스레이로 본다'처럼 풀어서 말해요.
 
 - theme: er-peds
   title: 학대 의심 정황
@@ -50865,18 +51221,54 @@
     - en: "Can you walk me through what happened just before the fall?"
       ko: "넘어지기 직전에 무슨 일이 있었는지 차근차근 말씀해 주시겠어요?"
       chunks: ["Can you walk me", "through what happened", "just before", "the fall", "?"]
-      words: [w-walk, w-happen, w-fall]
+      words: [w-happen, w-fall]
       goal: 1
     - en: "This is part of our routine exam for every child who comes in."
       ko: "이건 오는 모든 아이에게 하는 일상적인 진찰의 일부예요."
       chunks: ["This is part", "of our routine exam", "for every child", "who comes in", "."]
-      words: [w-routine, w-exam, w-child, w-come]
+      words: [w-routine, w-exam, w-child]
       goal: 1
     - en: "My job right now is to keep him safe, nothing more."
       ko: "지금 제 역할은 오직 아이를 안전하게 지키는 것뿐이에요."
       chunks: ["My job right now", "is to keep him", "safe", ", nothing more", "."]
-      words: [w-job, w-right, w-safe]
+      words: [w-job, w-safe]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-routine
+    - w-exam
+    - w-safe
+    pairs:
+    - - walk me
+      - through it
+    - - routine
+      - exam
+    - - keep him
+      - safe
+    decoys:
+    - fall
+    why: 경위를 순서대로 말해 달라는 건 walk me through it, 모든 아이에게 하는 진찰은 routine exam, 아이를 지키는 건 keep him safe예요.
+  - kind: swap
+    words:
+    - w-understand
+    - w-happen
+    who: 보호자에게 · 손상 경위 청취
+    icon: me
+    before:
+    - ''
+    - Your story doesn't match his injuries
+    - .
+    options:
+    - Help me understand exactly how it happened
+    - Your story doesn't match his injuries
+    - Tell me who did this to him
+    answer: Help me understand exactly how it happened
+    notes:
+      Help me understand exactly how it happened: 비대립적인 열린 질문. 보호자가 방어하지 않고 경위를 말하게 한다.
+      Your story doesn't match his injuries: 추궁으로 들려 보호자가 입을 닫는다. 불일치는 따지지 않고 들은 그대로 기록한다.
+      Tell me who did this to him: 가해자를 전제한 질문이라 대화가 끊기고 이후 조사에도 방해가 된다.
+    why: 학대가 의심돼도 간호사의 몫은 판단이 아니라 사정과 기록이에요. 보호자의 말을 들은 그대로 적고, 판단은 신고 뒤 전문 기관이 해요.
 
 - theme: er-peds
   title: 자폐·감각 예민 아동
@@ -50924,8 +51316,44 @@
     - en: "Please let me know if anything I'm doing is too much for him."
       ko: "제가 하는 것 중에 아이에게 너무 과하다 싶으면 알려주세요."
       chunks: ["Please let me know", "if anything I'm doing", "is too much", "for him", "."]
-      words: [w-know]
+      words: []
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-dim
+    - w-light
+    - w-slow
+    - w-pace
+    pairs:
+    - - dim the
+      - lights
+    - - move
+      - slowly
+    - - go at his
+      - pace
+    decoys:
+    - loud
+    why: 조명을 낮추는 건 dim the lights, 천천히 움직이는 건 move slowly, 아이 속도에 맞추는 건 go at his pace예요.
+  - kind: swap
+    words:
+    - w-pace
+    who: 부모에게 · 처치 계획
+    icon: me
+    before:
+    - ''
+    - We'll do it the same way we do for every kid
+    - .
+    options:
+    - We'll go at his pace
+    - We'll do it the same way we do for every kid
+    - We'll just hold him still and get it done
+    answer: We'll go at his pace
+    notes:
+      We'll go at his pace: 아이가 준비될 시간을 주고, 부모의 조언대로 순서를 맞춘다.
+      We'll do it the same way we do for every kid: 감각이 예민한 아이에게는 개별 맞춤이 핵심이라 모든 아이와 같은 방식은 맞지 않는다.
+      We'll just hold him still and get it done: 억지로 붙잡으면 감각 과부하가 커져 멜트다운이 심해지고 다음 처치도 어려워진다.
+    why: 감각이 예민한 아이는 부모가 가장 잘 알아요. 속도와 순서를 아이에게 맞추는 것이 결국 더 안전하고 빨라요.
 
 - theme: er-peds
   title: 청소년 비밀보장 경계
@@ -50953,7 +51381,7 @@
     - en: "The only thing I'd share is if your safety was at risk."
       ko: "내가 얘기할 유일한 경우는 네 안전이 위험할 때뿐이야."
       chunks: ["The only thing", "I'd share", "is if your safety", "was at risk", "."]
-      words: [w-thing, w-share, w-safety, w-risk]
+      words: [w-share, w-safety, w-risk]
       goal: 1
     - en: "You can be honest with me — no judgment here."
       ko: "나한테는 솔직해도 돼 — 여기서는 아무도 판단하지 않아."
@@ -50973,8 +51401,43 @@
     - en: "If you ever feel unsafe at home, please tell me."
       ko: "집에서 불안하다고 느껴지면 언제든 나한테 말해줘."
       chunks: ["If you ever feel", "unsafe", "at home", ", please tell me", "."]
-      words: [w-home, w-tell]
+      words: [w-tell]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-stepout
+    - w-risk
+    pairs:
+    - - sexually
+      - active
+    - - step
+      - out
+    - - at
+      - risk
+    decoys:
+    - alcohol
+    why: 성관계 여부는 sexually active, 부모가 잠시 나가 있는 건 step out, 위험에 처한 건 at risk예요.
+  - kind: swap
+    words:
+    - w-private
+    - w-tell
+    who: 청소년에게 · 비밀보장 설명
+    icon: me
+    before:
+    - ''
+    - Everything you tell me stays between us
+    - .
+    options:
+    - Most of what you tell me stays private
+    - Everything you tell me stays between us
+    - I have to tell your parents everything
+    answer: Most of what you tell me stays private
+    notes:
+      Most of what you tell me stays private: 지킬 수 있는 약속. 이어서 안전이 위험할 때는 예외라는 것을 분명히 말한다.
+      Everything you tell me stays between us: 지킬 수 없는 약속이다. 안전이 위험하면 알려야 해서 나중에 신뢰가 깨진다.
+      I have to tell your parents everything: 대부분의 경우 사실이 아니고, 청소년이 솔직하게 말하지 않게 만든다.
+    why: 청소년 문진은 비밀보장과 그 예외를 처음에 함께 말해요. 무조건 비밀을 약속하면 안 돼요.
 
 - theme: er-peds
   title: 신생아 이상 징후
@@ -51002,7 +51465,7 @@
     - en: "The yellow color is something we'll check right away."
       ko: "노란빛은 지금 바로 확인해 볼게요."
       chunks: ["The yellow color", "is something", "we'll check", "right away", "."]
-      words: [w-yellow, w-color, w-check, w-right]
+      words: [w-yellow, w-color, w-check]
       goal: 1
     - en: "You were right to bring her in — newborns need quick attention."
       ko: "데려오신 게 맞아요 — 신생아는 빠른 대응이 필요해요."
@@ -51014,16 +51477,50 @@
       chunks: ["Has she had", "fewer wet diapers", "than usual", "today", "?"]
       words: [w-diaper, w-usual]
       goal: 1
-    - en: "We'll test her blood to see how high the yellow level is."
+    - en: "We'll test her blood to see how high her jaundice level is."
       ko: "혈액 검사로 황달 수치가 얼마나 높은지 확인할게요."
-      chunks: ["We'll test her blood", "to see", "how high", "the yellow level is", "."]
-      words: [w-test, w-blood, w-see, w-high, w-yellow]
+      chunks: ["We'll test her blood", "to see", "how high", "her jaundice level is", "."]
+      words: [w-test, w-blood, w-high, w-jaundice]
       goal: 1
     - en: "Newborns can get sick quickly, so we move fast to check her."
       ko: "신생아는 빠르게 나빠질 수 있어서 저희도 신속히 확인해요."
       chunks: ["Newborns can get sick", "quickly", ", so we move", "fast to check her", "."]
       words: [w-newborn, w-sick, w-fast, w-check]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-sleepy
+    - w-feed
+    cue: 'Parent: "She''s so hard to wake up, and she falls back asleep as soon as she starts to feed."'
+    scale:
+    - a little drowsy
+    - sleepy
+    - lethargic
+    answerAt: 2
+    why: 깨우기 힘들고 먹다가도 바로 잠드는 신생아는 단순히 sleepy가 아니라 lethargic이에요. 위험 신호로 보고 바로 알려요.
+    example: She's lethargic and not feeding well.
+    exKo: 아기가 처지고 잘 먹지 않아요.
+  - kind: context
+    words:
+    - w-jaundice
+    - w-test
+    - w-blood
+    scenes:
+    - who: 차트 기록
+      icon: board
+      en: Jaundice to chest; TSB sent.
+      ok: true
+    - who: 의사에게 보고
+      icon: speech
+      en: She's jaundiced down to her chest — the bili's been sent.
+      ok: true
+    - who: 부모에게
+      icon: me
+      en: TSB's been sent to check her bili.
+      ok: false
+      fix: We sent a blood test to see how high her jaundice level is.
+    why: TSB·bili는 빌리루빈 검사를 부르는 의료진의 말이에요. 부모에게는 '황달 수치를 보는 피검사'처럼 풀어서 말해요.
 
 - theme: er-peds
   title: 소아 아나필락시스
@@ -51049,14 +51546,14 @@
       words: [w-epinephrine, w-fast]
       goal: 1
     - en: "Stay with me; we're on top of his airway."
-      ko: "저와 함께 계세요; 기도는 저희가 확실히 챙기고 있어요."
+      ko: "저한테 집중해 주세요 — 기도는 저희가 확실히 챙기고 있어요."
       chunks: ["Stay with me;", "we're", "on top", "of his airway", "."]
       words: [w-airway]
       goal: 1
     - en: "You got him here in time — that matters."
       ko: "제때 데려오셨어요 — 그게 중요해요."
       chunks: ["You got", "him here", "in time", "— that matters", "."]
-      words: [w-time]
+      words: []
       goal: 2
     - en: "His throat is swelling, so we need to act immediately."
       ko: "목이 붓고 있어서 바로 조치해야 해요."
@@ -51071,8 +51568,44 @@
     - en: "We know peanuts caused this, so we'll keep him away from them."
       ko: "땅콩 때문인 걸 알고 있어서, 앞으로 멀리하게 할게요."
       chunks: ["We know", "peanuts caused this", ", so we'll keep him", "away from them", "."]
-      words: [w-know, w-peanut, w-cause, w-away]
+      words: [w-peanut, w-cause, w-away]
       goal: 1
+  nuance:
+  - kind: pair
+    words:
+    - w-act
+    - w-throat
+    - w-swell
+    - w-peanut
+    pairs:
+    - - act
+      - immediately
+    - - throat
+      - swelling
+    - - peanut
+      - allergy
+    decoys:
+    - airway
+    why: 지체 없이 조치하는 건 act immediately, 목 안이 붓는 건 throat swelling, 땅콩 알레르기는 peanut allergy예요.
+  - kind: swap
+    words:
+    - w-epinephrine
+    who: 부모에게 · 응급 약 설명
+    icon: me
+    before:
+    - 'We''re giving him '
+    - Benadryl
+    - ' right now — it works fast.'
+    options:
+    - epinephrine
+    - Benadryl
+    - an inhaler
+    answer: epinephrine
+    notes:
+      epinephrine: 아나필락시스의 첫 약. 허벅지 근육에 바로 놓는다.
+      Benadryl: 두드러기·가려움에는 쓰지만 기도 부종과 저혈압을 되돌리지 못해 에피네프린을 대신하지 않는다.
+      an inhaler: 쌕쌕거림은 덜어 주어도 전신 반응은 막지 못한다.
+    why: 목이 붓고 쌕쌕거리는 아나필락시스에는 에피네프린이 먼저예요. 항히스타민제나 흡입기는 그 뒤의 보조일 뿐이에요.
 
 - theme: er-peds
   title: 소아 패혈증 초기
@@ -51105,12 +51638,12 @@
     - en: "We're calling the team so nothing is missed."
       ko: "놓치는 게 없도록 팀을 부르고 있어요."
       chunks: ["We're calling", "the team", "so nothing is missed", "."]
-      words: [w-call, w-team, w-missing]
+      words: [w-call, w-team]
       goal: 2
     - en: "Is she harder to wake up than she was an hour ago?"
       ko: "한 시간 전보다 깨우기가 더 힘든가요?"
       chunks: ["Is she harder", "to wake up", "than she was", "an hour ago", "?"]
-      words: [w-hard, w-wake, w-hour]
+      words: [w-hard, w-wake]
       goal: 1
     - en: "Her skin feels cool and looks a little blotchy."
       ko: "피부가 서늘하고 얼룩덜룩해 보여요."
@@ -51122,6 +51655,45 @@
       chunks: ["We're moving fast", "because early treatment", "saves lives", "."]
       words: [w-fast, w-early, w-treatment]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-early
+    - w-treatment
+    - w-call
+    - w-team
+    - w-hard
+    - w-wake
+    pairs:
+    - - early treatment
+      - saves lives
+    - - call
+      - the team
+    - - harder to
+      - wake up
+    decoys:
+    - skin
+    why: 빨리 시작하는 치료가 생명을 구한다는 건 early treatment saves lives, 팀을 부르는 건 call the team, 깨우기가 더 힘든 건 harder to wake up이에요.
+  - kind: context
+    words:
+    - w-skin
+    - w-cool
+    - w-blotchy
+    scenes:
+    - who: 차트 기록
+      icon: board
+      en: Extremities cool and mottled; cap refill 4 sec.
+      ok: true
+    - who: 의사에게 보고
+      icon: speech
+      en: Her hands and feet are cool and mottled, cap refill four seconds.
+      ok: true
+    - who: 부모에게
+      icon: me
+      en: She's mottled with delayed cap refill.
+      ok: false
+      fix: Her skin feels cool and looks a little blotchy — that tells us she needs help fast.
+    why: mottled·cap refill은 의료진 사이의 소견 용어예요. 부모에게는 '서늘하고 얼룩덜룩하다'처럼 보이는 그대로 말해요.
 
 - theme: er-peds
   title: 소아 심정지 코드
@@ -51149,7 +51721,7 @@
     - en: "You can stay right here where she can hear your voice."
       ko: "아이가 목소리를 들을 수 있게 바로 여기 계셔도 돼요."
       chunks: ["You can stay", "right here", "where she can hear", "your voice", "."]
-      words: [w-right, w-hear, w-voice]
+      words: [w-hear, w-voice]
       goal: 2
     - en: "I'll keep telling you what's happening every step."
       ko: "매 단계마다 무슨 일이 있는지 계속 말씀드릴게요."
@@ -51164,13 +51736,51 @@
     - en: "It's okay to hold her hand while we work."
       ko: "저희가 처치하는 동안 아이 손을 잡고 계셔도 돼요."
       chunks: ["It's okay", "to hold", "her hand", "while we work", "."]
-      words: [w-hold, w-hand, w-work]
+      words: [w-hold, w-work]
       goal: 2
     - en: "Every second counts, and our whole team is focused on her."
       ko: "1초가 소중해서, 저희 팀 전체가 아이에게 집중하고 있어요."
       chunks: ["Every second counts", ", and our whole team", "is focused", "on her", "."]
       words: [w-second, w-team, w-focus]
       goal: 1
+  nuance:
+  - kind: pair
+    words:
+    - w-chest
+    - w-compression
+    - w-second
+    - w-team
+    - w-work
+    pairs:
+    - - chest
+      - compressions
+    - - every second
+      - counts
+    - - our whole team is working
+      - on her
+    decoys:
+    - her hand
+    why: 가슴을 누르는 소생술은 chest compressions, 한순간도 아깝다는 건 every second counts, 모두가 아이 처치에 매달려 있다는 건 working on her예요.
+  - kind: swap
+    words:
+    - w-hear
+    - w-voice
+    who: 부모에게 · 소생술 중 입회
+    icon: me
+    before:
+    - ''
+    - You need to leave the room now
+    - .
+    options:
+    - You can stay right here where she can hear your voice
+    - You need to leave the room now
+    - You shouldn't watch this
+    answer: You can stay right here where she can hear your voice
+    notes:
+      You can stay right here where she can hear your voice: 원하는 가족은 곁에 있게 하고, 옆에서 설명해 줄 직원을 붙인다.
+      You need to leave the room now: 안전 문제가 없는데도 부모를 내보내는 것은 지금의 권고와 맞지 않는다.
+      You shouldn't watch this: 보호자의 선택을 간호사가 대신 정해 버린다.
+    why: 미국 응급간호협회(ENA)와 미국심장협회(AHA)는 소생술 중 가족이 원하면 곁에 있게 하도록 권해요. 이때 설명을 맡을 직원이 함께 있어요.
 
 - theme: er-peds
   title: 영아 SIDS 소생 실패
@@ -51198,7 +51808,7 @@
     - en: "Take all the time you need to be with her."
       ko: "아이 곁에 있고 싶으신 만큼 충분히 시간을 가지세요."
       chunks: ["Take all", "the time you need", "to be", "with her", "."]
-      words: [w-time]
+      words: [w-alltime]
       goal: 2
     - en: "You are not alone; we're here with you."
       ko: "혼자가 아니에요; 저희가 곁에 있어요."
@@ -51220,6 +51830,42 @@
       chunks: ["You can hold her", "for as long", "as you'd", "like", "."]
       words: [w-hold]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-sorry
+    - w-prevent
+    - w-alltime
+    pairs:
+    - - I'm so
+      - sorry
+    - - nothing you could have
+      - prevented
+    - - take all the time
+      - you need
+    decoys:
+    - chaplain
+    why: 사망을 알리며 건네는 첫마디는 I'm so sorry, 부모의 죄책감을 덜 때는 nothing you could have prevented, 서두르지 않게 할 때는 take all the time you need예요.
+  - kind: swap
+    words:
+    - w-sorry
+    - w-survive
+    who: 부모에게 · 사망 고지
+    icon: me
+    before:
+    - 'I''m so sorry — she '
+    - passed
+    - .
+    options:
+    - died
+    - passed
+    - went to a better place
+    answer: died
+    notes:
+      died: 분명한 말. 사망 고지 교육(GRIEV_ING)은 dead나 died라는 말을 분명히 하라고 가르친다.
+      passed: 흔한 완곡어지만, 충격 속의 가족은 아이가 아직 살아 있는지 되물을 수 있다.
+      went to a better place: 가족의 믿음을 모른 채 종교적 위로를 얹는 말이라 고지에 쓰지 않는다.
+    why: 사망을 알릴 때는 완곡어 대신 died나 didn't survive처럼 분명한 말을 써요. 그다음 곁에 머물며 가족의 반응을 받아 줘요.
 
 - theme: er-peds
   title: 학대 의심 신고 결정
@@ -51245,9 +51891,9 @@
       words: [w-law, w-report, w-injury, w-accusation]
       goal: 1
     - en: "My focus is your child's safety, and I want to work with you."
-      ko: "제 초점은 아이의 안전이고, 부모님과 함께 일하고 싶어요."
+      ko: "제 초점은 아이의 안전이고, 부모님과 함께 풀어 가고 싶어요."
       chunks: ["My focus is", "your child's safety", ", and I want", "to work with you", "."]
-      words: [w-focus, w-child, w-safety, w-work]
+      words: [w-focus, w-child, w-safety]
       goal: 2
     - en: "A specialist will help us figure this out together."
       ko: "전문가가 저희와 함께 이 상황을 파악하는 걸 도와줄 거예요."
@@ -51269,6 +51915,43 @@
       chunks: ["Nothing you say", "here changes", "how much we care", "about your child", "."]
       words: [w-care, w-child]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-accusation
+    - w-specialist
+    - w-follow
+    - w-process
+    pairs:
+    - - it's not an
+      - accusation
+    - - a specialist will
+      - help us
+    - - I have to follow
+      - the process
+    decoys:
+    - your fault
+    why: 신고가 비난이 아님을 밝히는 건 it's not an accusation, 함께 풀 전문가는 a specialist will help us, 정해진 절차는 I have to follow the process예요.
+  - kind: swap
+    words:
+    - w-law
+    - w-report
+    who: 보호자에게 · 신고 고지
+    icon: me
+    before:
+    - ''
+    - I'm reporting you
+    - ' because of these injuries.'
+    options:
+    - By law, I have to make a report
+    - I'm reporting you
+    - I have to accuse someone
+    answer: By law, I have to make a report
+    notes:
+      By law, I have to make a report: 신고가 법적 의무라는 사실을 밝히고, 사람을 지목하지 않는다.
+      I'm reporting you: 보호자를 가해자로 지목하는 말로 들려 대립이 커진다.
+      I have to accuse someone: 간호사의 역할이 아니다. 신고는 합리적 의심만으로 하고, 조사와 판단은 아동보호기관이 한다.
+    why: 미국의 모든 주에서 간호사는 아동 학대 의무 신고자예요. 증거가 아니라 합리적 의심으로 신고하고, 조사와 판단은 아동보호기관의 몫이에요.
 
 - theme: er-peds
   title: 소아 DKA
@@ -51291,12 +51974,12 @@
     - en: "Her body is low on insulin, and we're correcting it carefully."
       ko: "아이 몸에 인슐린이 부족해서, 저희가 신중하게 바로잡고 있어요."
       chunks: ["Her body is low", "on insulin", ", and we're correcting", "it carefully", "."]
-      words: [w-body, w-low, w-insulin, w-correct]
+      words: [w-low, w-insulin, w-correct]
       goal: 1
     - en: "This is a lot to take in — I'll walk you through each step."
       ko: "받아들이기 힘드시겠지만 — 단계마다 차근차근 설명해 드릴게요."
       chunks: ["This is a lot", "to take in", "— I'll walk you", "through each step", "."]
-      words: [w-take, w-walk, w-step]
+      words: [w-walk, w-step]
       goal: 2
     - en: "She's in the right place and we're helping her now."
       ko: "제대로 된 곳에 오셨고 지금 저희가 돕고 있어요."
@@ -51306,18 +51989,53 @@
     - en: "We're giving fluids and insulin through an IV to bring her sugar down safely."
       ko: "정맥주사로 수액과 인슐린을 줘서 혈당을 안전하게 낮추고 있어요."
       chunks: ["We're giving fluids", "and insulin", "through an IV", "to bring her sugar down", "safely", "."]
-      words: [w-fluid, w-insulin, w-iv, w-bring, w-sugar]
+      words: [w-fluid, w-insulin, w-iv, w-sugar]
       goal: 1
     - en: "Diabetes means her body needs help managing sugar every day."
       ko: "당뇨병은 매일 혈당 관리에 몸이 도움을 필요로 한다는 뜻이에요."
       chunks: ["Diabetes means", "her body needs help", "managing sugar", "every day", "."]
-      words: [w-diabetes, w-body, w-help, w-manage, w-sugar]
+      words: [w-diabetes, w-help, w-manage, w-sugar]
       goal: 2
     - en: "We'll check her levels often until she's stable and steady."
       ko: "안정되고 일정해질 때까지 수치를 자주 확인할게요."
       chunks: ["We'll check her levels", "often", "until she's stable", "and steady", "."]
       words: [w-check, w-level, w-stable, w-steady]
       goal: 1
+  nuance:
+  - kind: pair
+    words:
+    - w-low
+    - w-insulin
+    - w-sugar
+    pairs:
+    - - low on
+      - insulin
+    - - a lot to
+      - take in
+    - - bring her sugar
+      - down
+    decoys:
+    - steady
+    why: 인슐린이 모자란 건 low on insulin, 받아들이기 벅찬 소식은 a lot to take in, 혈당을 내리는 건 bring her sugar down이에요.
+  - kind: swap
+    words:
+    - w-sugar
+    who: 부모에게 · 치료 속도 설명
+    icon: me
+    before:
+    - 'We''re bringing her sugar down '
+    - as fast as we can
+    - .
+    options:
+    - slowly and safely
+    - as fast as we can
+    - all at once
+    answer: slowly and safely
+    notes:
+      slowly and safely: 사실 그대로의 말. 소아 DKA 지침은 혈당을 몇 시간에 걸쳐 서서히 내리게 한다.
+      as fast as we can: 부모를 안심시키려는 말이지만 사실과 다르다. 급하게 내리지 않는다.
+      all at once: 한 번에 떨어뜨리는 치료는 없다. 부모가 치료를 잘못 이해하게 된다.
+    why: 소아 DKA에서 '천천히'는 늦장이 아니라 지침이에요. 뇌부종 같은 합병증을 줄이려고 인슐린을 볼루스 없이 정주하며 혈당을 서서히 내려요.
 
 - theme: er-peds
   title: 중증 천식 지속상태
@@ -51353,7 +52071,7 @@
       words: [w-watch, w-second]
       goal: 2
     - en: "His oxygen level is dropping, so we're adding more support now."
-      ko: "산소 수치가 떨어지고 있어서 지금 지원을 더하고 있어요."
+      ko: "산소 수치가 떨어지고 있어서 지금 호흡 보조를 더 올리고 있어요."
       chunks: ["His oxygen level is", "dropping", ", so we're adding", "more support now", "."]
       words: [w-oxygen, w-level, w-drop, w-support]
       goal: 1
@@ -51367,6 +52085,38 @@
       chunks: ["You're doing great", "staying calm", "— it really", "helps him", "."]
       words: [w-calm, w-help]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-breathe
+    cue: 'Child between breaths: "Can''t… talk…"'
+    scale:
+    - talks in full sentences
+    - talks in short phrases
+    - only a word or two
+    answerAt: 2
+    why: 한 번에 한두 단어밖에 못 하면 중증 천식 발작의 신호예요. 문장으로 말하면 가벼운 쪽, 구로 끊기면 중등도로 봐요.
+    example: He can only say a word or two at a time.
+    exKo: 한 번에 한두 단어밖에 말을 못 해요.
+  - kind: context
+    words:
+    - w-machine
+    - w-breathe
+    scenes:
+    - who: 차트 기록
+      icon: board
+      en: Worsening WOB despite continuous albuterol; prep for intubation.
+      ok: true
+    - who: 의사에게 보고
+      icon: speech
+      en: His work of breathing is worse on continuous albuterol — should we set up to intubate?
+      ok: true
+    - who: 부모에게
+      icon: me
+      en: We may need to intubate him.
+      ok: false
+      fix: If breathing gets any harder, we'll help him with a breathing machine.
+    why: intubate(기관 삽관)는 의료진의 말이에요. 부모에게는 '숨 쉬는 걸 도와줄 기계'처럼 풀어서 말하고, 왜 필요한지 함께 설명해요.
 
 - theme: er-geriatric
   title: 노인 낙상 후 문진
