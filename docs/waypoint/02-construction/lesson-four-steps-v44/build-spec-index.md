@@ -724,3 +724,4 @@ keyPhrases는 사람이 저작·임상 검토한 문장이라 보강·정리 패
 | ER · 항생제 IV 중 반응 | "…stopping the antibiotic and flushing your line." | 약이 든 튜빙을 식염수로 밀면 남은 약이 환자에게 들어간다 — 표준은 중단 → 약 튜빙 분리 → 새 튜빙·생리식염수로 정맥로 유지 | "…stopping the antibiotic and switching your line to plain saline." |
 | ER · 흥분성 섬망(상황 제목) | 상황 제목의 "흥분성 섬망(excited delirium)" | ACEP가 2023년 10월 이 용어를 공식 철회했다(권장: "hyperactive delirium with severe agitation"). 대사에는 쓰지 않았고 제목만 남았다 — 제목은 커리큘럼 입력값이라 이번 패스 범위 밖 | 제목을 "과활동성 섬망·심한 초조"류로 교체 |
 | ER · 고위험 감염 이송 인계 | 수막구균혈증에 "airborne and contact precautions" | CDC 기준은 비말(droplet) 격리다(치료 시작 후 24시간까지). airborne 은 결핵·홍역·수두 | "…on droplet precautions." 류로 교체 |
+| ER · 노인 학대·방임 의심 | "You're safe to talk with me — nothing leaves this room without your say." | 미국 간호사는 대부분의 주에서 노인 학대 의무 신고자이고, 차트·팀·사회복지에도 공유되므로 지킬 수 없는 약속이다. 선별 교육은 비밀 보장을 약속하지 말라고 가르친다 | "You're safe to talk with me — and I'll tell you before I share anything with anyone." |
