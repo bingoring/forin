@@ -7676,7 +7676,7 @@
     - en: "Can you state your full name for me?"
       ko: "성함을 정확히 말씀해 주시겠어요?"
       chunks: ["Can you state", "your full name", "for me", "?"]
-      words: [w-name]
+      words: [w-state]
       goal: 1
     - en: "And your date of birth, please?"
       ko: "그리고 생년월일도 말씀해 주시겠어요?"
@@ -7691,18 +7691,53 @@
     - en: "I always confirm two identifiers for every patient."
       ko: "저는 모든 환자에게 항상 두 가지 신원 확인 항목을 확인해요."
       chunks: ["I always confirm", "two identifiers", "for every patient", "."]
-      words: [w-confirm, w-identifier, w-patient]
+      words: [w-confirm, w-identifier]
       goal: 1
     - en: "This helps prevent us from mixing up two patients."
       ko: "이렇게 하면 두 환자를 혼동하는 걸 막을 수 있어요."
       chunks: ["This helps prevent", "us from", "mixing up", "two patients", "."]
-      words: [w-prevent, w-patient]
+      words: [w-prevent]
       goal: 2
     - en: "If your name or date of birth doesn't match, I'll stop and ask again."
       ko: "이름이나 생년월일이 일치하지 않으면 멈추고 다시 확인할게요."
       chunks: ["If your name", "or date of birth", "doesn't match", ",", "I'll stop", "and ask again", "."]
-      words: [w-name, w-dob, w-match]
+      words: [w-dob, w-match]
       goal: 1
+  nuance:
+  - kind: pair
+    words:
+    - w-dob
+    - w-check
+    - w-wristband
+    - w-identifier
+    pairs:
+    - - date of
+      - birth
+    - - check this
+      - against your wristband
+    - - two
+      - identifiers
+    decoys:
+    - of name
+    why: '''A를 B와 대조하다''는 check A against B. 생년월일은 date of birth(DOB)로 굳은 말이에요.'
+  - kind: context
+    words:
+    - w-dob
+    scenes:
+    - who: 환자에게
+      icon: me
+      en: Can you state your full name and date of birth for me?
+      ok: true
+    - who: 동료 간호사에게
+      icon: speech
+      en: What's the name and DOB on your chart?
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Name and DOB.
+      ok: false
+      fix: Can you tell me your full name and date of birth, please?
+    why: 의료진끼리는 짧게 줄여 말해도 되지만, 환자에게 명사만 던지면 취조처럼 들려요. 'Can you … for me?'로 물으면 같은 확인도 부드러워요.
 
 - theme: core-safety-er
   title: 낙상 위험 초기 사정
@@ -7735,7 +7770,7 @@
     - en: "Do you use a cane or walker at home?"
       ko: "집에서 지팡이나 보행기를 사용하세요?"
       chunks: ["Do you use", "a cane", "or walker", "at home", "?"]
-      words: [w-cane, w-walker, w-home]
+      words: [w-cane, w-walker]
       goal: 1
     - en: "I'll also check if any medicine you take can raise your fall risk."
       ko: "복용 중인 약이 낙상 위험을 높이는지도 확인할게요."
@@ -7752,6 +7787,42 @@
       chunks: ["Let's talk", "about your risk", "before you get up", "on your own", "."]
       words: [w-risk]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-cane
+    - w-risk
+    - w-dizzy
+    - w-fall
+    pairs:
+    - - use a
+      - cane
+    - - fall
+      - risk
+    - - make you
+      - dizzy
+    decoys:
+    - on walk
+    why: '''지팡이를 쓰다''는 use a cane, ''어지럽게 하다''는 make you dizzy. fall risk는 차트에 그대로 쓰는 말이에요.'
+  - kind: swap
+    words:
+    - w-fall
+    who: 환자에게 · 낙상 병력 묻기
+    icon: me
+    before:
+    - 'Have you '
+    - experienced a fall event
+    - ' in the past year?'
+    options:
+    - had any falls
+    - experienced a fall event
+    - fallen down hard
+    answer: had any falls
+    notes:
+      had any falls: 환자에게 쉬운 말. 가벼운 낙상까지 떠올리게 해요.
+      experienced a fall event: 보고서 말투라 환자에게는 딱딱하게 들려요.
+      fallen down hard: 심하게 넘어진 것만 묻는 것처럼 들려 가벼운 낙상을 빠뜨리게 해요.
+    why: 낙상 병력은 작은 낙상까지 다 말하도록 넓고 쉬운 말로 물어요.
 
 - theme: core-safety-er
   title: 침상 안전 설정
@@ -7811,6 +7882,40 @@
       chunks: ["Let's check", "the bed height", "together before", "I go", "."]
       words: [w-check, w-bed]
       goal: 1
+  nuance:
+  - kind: pair
+    words:
+    - w-bed
+    - w-call_button
+    - w-call
+    pairs:
+    - - keep the bed
+      - low
+    - - press
+      - the call button
+    - - call me
+      - first
+    decoys:
+    - on your own
+    why: '''낮게 유지하다''는 keep the bed low, 호출벨은 press the call button. ''call me first''는 ''먼저 부르세요''라는 낙상 예방의 핵심 한마디예요.'
+  - kind: context
+    words:
+    - w-call
+    scenes:
+    - who: 환자에게
+      icon: me
+      en: Please don't get up on your own — call me first, okay?
+      ok: true
+    - who: 인계받는 동료에게
+      icon: speech
+      en: He's a fall risk — he needs to call before getting up.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: You are not allowed to get out of bed.
+      ok: false
+      fix: Please don't get up on your own — press the call button and I'll help you.
+    why: '''not allowed''는 금지 명령처럼 들려요. 이유와 대안(부르면 도와준다)을 같이 말하면 협조를 얻기 쉬워요.'
 
 - theme: core-safety-er
   title: 알레르기 밴드 확인
@@ -7860,6 +7965,41 @@
       chunks: ["Let's add that", "to your allergy band", "and your chart", "together", "."]
       words: [w-allergy, w-band]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-allergic
+    - w-penicillin
+    - w-alert
+    - w-team
+    pairs:
+    - - allergic
+      - to penicillin
+    - - this red band
+      - alerts everyone
+    - - add it to
+      - your chart
+    decoys:
+    - of penicillin
+    why: '''~에 알레르기가 있다''는 allergic to. 한국어 ''~에 대한''을 옮겨 of로 쓰기 쉬운데 to만 맞아요.'
+  - kind: context
+    words:
+    - w-allergy
+    scenes:
+    - who: 환자에게
+      icon: me
+      en: Any other allergies we should add — medicines, foods, latex?
+      ok: true
+    - who: 약사에게 전화
+      icon: speech
+      en: Can you confirm any other drug allergies in her record?
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Any other hypersensitivity reactions to report?
+      ok: false
+      fix: Are you allergic to anything else — medicines, foods, or latex?
+    why: hypersensitivity reaction은 정확한 임상어지만 환자는 무엇을 묻는지 알기 어려워요. 약·음식·라텍스처럼 예를 들어 물으면 빠뜨린 알레르기를 떠올리기 쉬워요.
 
 - theme: core-safety-er
   title: 이송 전 안전 확인
@@ -7909,6 +8049,43 @@
       chunks: ["Once we arrive,", "stay lying down", "until the team says", "it's safe to sit up", "."]
       words: [w-lying, w-team, w-safe]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-lying
+    - w-oxygen
+    - w-tank
+    - w-fall
+    - w-risk
+    pairs:
+    - - stay
+      - lying down
+    - - a full
+      - oxygen tank
+    - - fall risk
+      - precautions
+    decoys:
+    - laying down
+    why: '''누워 있다''는 lie의 -ing인 lying down. laying은 ''무엇을 내려놓다(lay)''의 -ing라 여기서는 틀려요.'
+  - kind: context
+    words:
+    - w-secure
+    - w-oxygen
+    scenes:
+    - who: 이송 요원에게
+      icon: speech
+      en: IV's secured, O2 tank's full — she's ready to go.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: IV site secure, O2 via NC, pt transported supine.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: IV secured, O2 full, transport ready.
+      ok: false
+      fix: Your IV is taped down well and your oxygen tank is full, so we're ready to go.
+    why: 의료진끼리는 체크리스트처럼 짧게 말해도 되지만, 환자에게는 무엇을 확인했는지 풀어서 말해야 안심해요.
 
 - theme: core-safety-er
   title: 고위험 낙상 환자 관리
@@ -7936,7 +8113,7 @@
     - en: "Press this button and I'll come right away."
       ko: "이 버튼을 누르시면 바로 갈게요."
       chunks: ["Press this button", "and I'll come", "right away", "."]
-      words: [w-button]
+      words: [w-right_away]
       goal: 2
     - en: "For now, stay in bed so you don't fall."
       ko: "지금은 넘어지지 않도록 침대에 계세요."
@@ -7958,6 +8135,38 @@
       chunks: ["Let me remind you again:", "please stay in bed", "and call", "before you stand", "."]
       words: [w-remind, w-stay, w-bed, w-call]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-unsteady
+    cue: '관찰: 천천히 걷고, 가끔 벽을 짚지만 혼자 설 수는 있다'
+    scale:
+    - steady
+    - a bit unsteady
+    - very unsteady
+    answerAt: 1
+    why: 가끔 벽을 짚는 정도면 a bit unsteady. very unsteady는 부축 없이는 서 있기 힘든 정도예요.
+    example: You're a bit unsteady, so let me help you move.
+    exKo: 조금 불안정하시니 제가 옮기는 걸 도와드릴게요.
+  - kind: context
+    words:
+    - w-remind
+    - w-stay
+    scenes:
+    - who: 섬망 환자에게
+      icon: me
+      en: Let me remind you — please stay in bed and call me before you stand.
+      ok: true
+    - who: 보호자에게
+      icon: me
+      en: He may forget, so please remind him to stay in bed.
+      ok: true
+    - who: 섬망 환자에게
+      icon: me
+      en: I already told you three times — stay in bed!
+      ok: false
+      fix: 'Let me remind you again: please stay in bed and call before you stand.'
+    why: 섬망 환자는 들은 것을 잊는 것이 증상이에요. 나무라는 말투는 불안과 초조를 키우니, 처음처럼 차분히 다시 알려 줘요.
 
 - theme: core-safety-er
   title: 투약 오류 예방
@@ -7990,7 +8199,7 @@
     - en: "Right patient, right dose — read it back to me."
       ko: "정확한 환자, 정확한 용량이에요, 저한테 다시 읽어주세요."
       chunks: ["Right patient,", "right dose", "—", "read it back", "to me", "."]
-      words: [w-patient, w-dose]
+      words: [w-dose]
       goal: 1
     - en: "These two medicine names look alike, so let's say them out loud together."
       ko: "이 두 약 이름이 비슷해서 같이 소리 내어 말해요."
@@ -8000,13 +8209,47 @@
     - en: "If the concentration doesn't match the order, we stop right away."
       ko: "농도가 처방과 일치하지 않으면 바로 멈춰요."
       chunks: ["If the concentration", "doesn't match", "the order,", "we stop right away", "."]
-      words: [w-concentration, w-match, w-order, w-stop]
+      words: [w-concentration, w-match, w-order, w-stop, w-right_away]
       goal: 2
     - en: "Let's check it again together before we give a single dose."
       ko: "용량을 주기 전에 같이 한 번 더 확인해요."
       chunks: ["Let's check it again", "together before", "we give", "a single dose", "."]
       words: [w-check, w-dose]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-dose
+    pairs:
+    - - read it
+      - back to me
+    - - right patient
+      - right dose
+    - - look-alike
+      - sound-alike
+    decoys:
+    - sound-like
+    why: '''복창해 달라''는 read it back. 이름이 비슷한 약은 look-alike, sound-alike(LASA) 약이라고 불러요.'
+  - kind: swap
+    words:
+    - w-verify
+    - w-concentration
+    who: 동료 간호사에게 · 고위험 약 이중 확인
+    icon: speech
+    before:
+    - 'Can you '
+    - glance at
+    - ' the concentration with me?'
+    options:
+    - verify
+    - glance at
+    - sign off on
+    answer: verify
+    notes:
+      verify: 직접 대조해 확인해 달라는 뜻 — 이중 확인이 바로 이것.
+      glance at: '''한번 흘끗 봐 달라''는 뜻이라 이중 확인이 형식이 돼요.'
+      sign off on: 확인 없이 서명만 해 달라는 부탁처럼 들려요.
+    why: 고위험 약의 이중 확인은 두 사람이 각자 대조해야 의미가 있어요(independent double check).
 
 - theme: core-safety-er
   title: 신원 불명 환자 등록
@@ -8044,7 +8287,7 @@
     - en: "Until we know his name, every sample and chart uses this same temporary ID."
       ko: "이름을 알기 전까지는 모든 검체와 차트에 같은 임시 번호를 써요."
       chunks: ["Until we know his name,", "every sample and chart", "uses this same", "temporary ID", "."]
-      words: [w-name, w-sample, w-temporary, w-id]
+      words: [w-sample, w-temporary, w-id]
       goal: 2
     - en: "Let's confirm the team knows he's registered as trauma alpha."
       ko: "팀이 트라우마 알파로 등록된 걸 알고 있는지 확인해요."
@@ -8054,8 +8297,45 @@
     - en: "Once we identify him, we'll update his real name everywhere at once."
       ko: "신원이 확인되면 모든 곳에 실명을 한 번에 갱신할게요."
       chunks: ["Once we identify him,", "we'll update", "his real name", "everywhere at once", "."]
-      words: [w-identify, w-update, w-name]
+      words: [w-identify, w-update]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-register
+    - w-unknown
+    - w-temporary
+    - w-band
+    - w-identify
+    pairs:
+    - - register him as
+      - unknown male
+    - - put the temporary band
+      - 'on'
+    - - once we
+      - identify him
+    decoys:
+    - as unknown
+    why: '''~로 등록하다''는 register him as. 밴드를 ''채우다''는 put the band on — on이 뒤로 떨어져요.'
+  - kind: context
+    words:
+    - w-unknown
+    - w-trauma
+    scenes:
+    - who: 등록 담당자에게
+      icon: board
+      en: Register him as unknown male, trauma alpha.
+      ok: true
+    - who: 외상팀 동료에게
+      icon: speech
+      en: Trauma alpha is still unidentified — use the temporary ID on everything.
+      ok: true
+    - who: 가족을 찾는 방문객에게
+      icon: me
+      en: We have an unknown male, trauma alpha.
+      ok: false
+      fix: A man was brought in without any identification. Can you tell me about the person you're looking for?
+    why: '''trauma alpha'' 같은 임시 이름은 팀 안에서 검체·기록을 맞추려고 쓰는 말이라, 병원 밖 사람에게는 뜻이 통하지 않아요.'
 
 - theme: core-safety-er
   title: 검체 라벨 오류 방지
@@ -8083,7 +8363,7 @@
     - en: "Read me the name and the order together."
       ko: "이름과 오더를 같이 읽어주세요."
       chunks: ["Read me", "the name and", "the order together", "."]
-      words: [w-name, w-order]
+      words: [w-order]
       goal: 1
     - en: "We label at the bedside, never at the desk."
       ko: "라벨은 침상 옆에서 붙이고, 데스크에서는 절대 안 해요."
@@ -8093,7 +8373,7 @@
     - en: "With two patients in the room, it's easy to grab the wrong tube."
       ko: "한 병실에 환자가 둘이면 다른 튜브를 잘못 집기 쉬워요."
       chunks: ["With two patients", "in the room,", "it's easy to grab", "the wrong tube", "."]
-      words: [w-patient, w-room, w-tube]
+      words: [w-tube]
       goal: 1
     - en: "Always check the bed number before you label the tube."
       ko: "튜브에 라벨을 붙이기 전에 항상 침상 번호를 확인해요."
@@ -8105,6 +8385,43 @@
       chunks: ["Never carry labels", "to the desk", "and label them", "there instead", "."]
       words: [w-label, w-desk]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-tube
+    - w-label
+    - w-bedside
+    - w-bed
+    pairs:
+    - - grab
+      - the wrong tube
+    - - label at
+      - the bedside
+    - - bed four
+      - not bed six
+    decoys:
+    - to the tube
+    why: '''잘못 집다''는 grab the wrong tube. ''침상 옆에서''는 at the bedside로 굳은 말이에요.'
+  - kind: swap
+    words:
+    - w-label
+    - w-bedside
+    who: 신규 간호사에게 · 라벨 원칙
+    icon: speech
+    before:
+    - 'We label '
+    - in batches
+    - ', never at the desk.'
+    options:
+    - at the bedside
+    - in batches
+    - later
+    answer: at the bedside
+    notes:
+      at the bedside: 환자 앞에서 신원을 확인하며 바로 붙인다 — 라벨 오류를 막는 원칙.
+      in batches: 여러 환자 튜브를 몰아서 붙이면 서로 바뀌기 쉬워요.
+      later: 채혈과 라벨 사이가 벌어질수록 누구 것인지 헷갈려요.
+    why: 검체 라벨은 채혈한 그 자리, 환자 앞에서 붙이는 것이 원칙이에요.
 
 - theme: core-safety-er
   title: 낙상 발생 후 대응
@@ -8132,7 +8449,7 @@
     - en: "Did you hit your head at all?"
       ko: "머리를 부딪히셨어요?"
       chunks: ["Did you hit", "your head", "at all", "?"]
-      words: [w-hit, w-head]
+      words: [w-hit]
       goal: 1
     - en: "I'm going to check you before we move you up."
       ko: "옮기기 전에 먼저 확인해 볼게요."
@@ -8154,6 +8471,42 @@
       chunks: ["You're okay", "for now", "—", "let's talk about", "how to prevent this", "from happening again", "."]
       words: [w-prevent]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-hit
+    - w-stay
+    - w-injury
+    pairs:
+    - - hit
+      - your head
+    - - stay
+      - still
+    - - check for
+      - any injury
+    decoys:
+    - your fall
+    why: '''머리를 부딪히다''는 hit your head — 부딪친 곳이 바로 목적어로 와요. ''stay still''은 ''움직이지 마세요''.'
+  - kind: swap
+    words:
+    - w-report
+    - w-fall
+    who: 관리자에게 · 낙상 보고
+    icon: speech
+    before:
+    - 'I''ll '
+    - mention
+    - ' this fall and update the care plan.'
+    options:
+    - report
+    - keep quiet about
+    - mention
+    answer: report
+    notes:
+      report: 정식 보고 — 다치지 않은 낙상도 보통 보고 대상이에요.
+      keep quiet about: 숨기는 것 — 보고하지 않으면 재발 방지도 못 해요.
+      mention: 지나가듯 말하는 느낌이라 정식 보고가 되지 않아요.
+    why: 낙상은 정식으로 보고해야 원인을 찾고 재발을 막을 수 있어요.
 
 - theme: core-safety-er
   title: 억제대 사용 안전
@@ -8181,7 +8534,7 @@
     - en: "We check his circulation and skin every hour."
       ko: "매시간 혈액 순환과 피부를 확인해요."
       chunks: ["We check", "his circulation and skin", "every hour", "."]
-      words: [w-check, w-circulation, w-skin, w-hour]
+      words: [w-check, w-circulation, w-skin]
       goal: 2
     - en: "We'll remove them as soon as it's safe."
       ko: "안전해지는 대로 바로 풀어드릴게요."
@@ -8203,6 +8556,42 @@
       chunks: ["As soon as he's calmer,", "we'll remove", "the restraint and check", "his skin again", "."]
       words: [w-remove, w-restraint, w-check, w-skin]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-pull
+    - w-circulation
+    - w-remove
+    - w-safe
+    pairs:
+    - - keep him from
+      - pulling his lines
+    - - check his
+      - circulation
+    - - as soon as
+      - it's safe
+    decoys:
+    - to pull
+    why: '''~하지 못하게 하다''는 keep him from + -ing. to를 쓰면 틀려요.'
+  - kind: context
+    words:
+    - w-restraint
+    - w-temporary
+    scenes:
+    - who: 차트 기록
+      icon: board
+      en: Soft wrist restraints in place; skin and circulation checked.
+      ok: true
+    - who: 동료에게
+      icon: speech
+      en: He's in soft restraints for now — he keeps pulling at his IV.
+      ok: true
+    - who: 가족에게
+      icon: me
+      en: We've tied him down so he stops pulling his lines.
+      ok: false
+      fix: This is temporary, only to keep him from pulling his lines.
+    why: '''tied him down''은 묶어 버렸다는 느낌이라 가족에게 충격을 줘요. 잠시 쓰는 것이고 무엇을 막으려는지를 먼저 말해요.'
 
 - theme: core-safety-er
   title: 감염 격리 설명
@@ -8235,12 +8624,12 @@
     - en: "Wash your hands well when you go in and out."
       ko: "들어가고 나올 때 손을 잘 씻어 주세요."
       chunks: ["Wash your hands", "well", "when you go", "in and out", "."]
-      words: [w-wash, w-hand]
+      words: [w-wash]
       goal: 2
     - en: "Isolation helps stop infection from spreading to other patients."
       ko: "격리는 감염이 다른 환자에게 퍼지는 걸 막아줘요."
       chunks: ["Isolation helps", "stop infection", "from spreading", "to other patients", "."]
-      words: [w-isolation, w-stop, w-infection, w-patient]
+      words: [w-isolation, w-stop, w-infection]
       goal: 1
     - en: "A gown and gloves protect you from picking up any infection."
       ko: "가운과 장갑이 감염되지 않도록 보호해줘요."
@@ -8250,8 +8639,42 @@
     - en: "Always wash your hands again right after you leave the room."
       ko: "병실을 나온 직후에는 항상 다시 손을 씻어 주세요."
       chunks: ["Always wash", "your hands again", "right after you leave", "the room", "."]
-      words: [w-wash, w-hand, w-room]
+      words: [w-wash]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-protect
+    - w-infection
+    pairs:
+    - - hand
+      - hygiene
+    - - protect others
+      - from infection
+    - - contact
+      - precautions
+    decoys:
+    - gowning
+    why: 손 위생은 hand hygiene, 접촉 주의는 contact precautions — 미국 병원 격리실 표지에 쓰이는 말이에요. protect A from B는 'B로부터 A를 보호하다'.
+  - kind: context
+    words:
+    - w-isolation
+    - w-infection
+    scenes:
+    - who: 가족에게
+      icon: me
+      en: He's in isolation to protect others from infection.
+      ok: true
+    - who: 동료에게
+      icon: speech
+      en: Bed 5 is on contact precautions — gown and gloves.
+      ok: true
+    - who: 가족에게
+      icon: me
+      en: He's contagious, so keep your distance.
+      ok: false
+      fix: He's in isolation to protect others from infection. I'll show you what to wear before you go in.
+    why: '''contagious, keep your distance''는 가족을 멀리하라는 말로 들려 상처가 돼요. 격리의 목적과 함께 들어가는 방법을 알려 주면 받아들이기 쉬워요.'
 
 - theme: core-safety-er
   title: 자살 위험 환경 안전
@@ -8274,12 +8697,12 @@
     - en: "I'm keeping the room safe for you right now."
       ko: "지금 방을 안전하게 만들고 있어요."
       chunks: ["I'm keeping", "the room safe", "for you", "right now", "."]
-      words: [w-room, w-safe]
+      words: [w-safe]
       goal: 1
     - en: "Someone will stay with you at all times."
       ko: "항상 누군가가 곁에 있을 거예요."
       chunks: ["Someone will stay", "with you", "at all times", "."]
-      words: [w-stay]
+      words: [w-stay, w-at_all_times]
       goal: 1
     - en: "You're not in trouble — we just want to help."
       ko: "곤란한 상황이 아니에요, 저희는 그냥 돕고 싶을 뿐이에요."
@@ -8289,7 +8712,7 @@
     - en: "I'm going to remove anything in the room that could hurt you."
       ko: "다치게 할 수 있는 물건은 방에서 모두 치울게요."
       chunks: ["I'm going to remove", "anything in the room", "that could hurt", "you", "."]
-      words: [w-remove, w-room, w-hurt]
+      words: [w-remove, w-hurt]
       goal: 1
     - en: "I'll check on you often, and someone will always be close by."
       ko: "자주 확인할게요, 그리고 항상 가까이에 누군가 있을 거예요."
@@ -8301,6 +8724,41 @@
       chunks: ["We just want", "to keep you safe", "—", "you can always ask", "me for help", "."]
       words: [w-safe, w-help]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-at_all_times
+    - w-stay
+    - w-trouble
+    - w-safe
+    pairs:
+    - - at all
+      - times
+    - - not in
+      - trouble
+    - - keep you
+      - safe
+    decoys:
+    - at once
+    why: '''항상''은 at all times, ''혼나는 게 아니다''는 not in trouble, ''안전하게 지키다''는 keep you safe.'
+  - kind: context
+    words:
+    - w-remove
+    scenes:
+    - who: 환자에게
+      icon: me
+      en: I'm going to take out anything in the room that could hurt you — it's to keep you safe.
+      ok: true
+    - who: 동료에게
+      icon: speech
+      en: Let's sweep the room — remove cords, belts, and anything sharp.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Give me your belt and shoelaces. Now.
+      ok: false
+      fix: I'm going to remove anything in the room that could hurt you — we just want to keep you safe.
+    why: 위험물을 치우는 것은 맞지만, 설명 없는 명령은 처벌처럼 느껴져요. '안전하게 지키려는 것'이라고 이유를 말하면 협조를 얻기 쉬워요.
 
 - theme: core-safety-er
   title: 오환자 시술 방지
@@ -8328,7 +8786,7 @@
     - en: "We're doing a right chest tube — everyone agree?"
       ko: "오른쪽 흉관 삽입을 할 거예요, 모두 동의하세요?"
       chunks: ["We're doing", "a right chest tube", "—", "everyone agree", "?"]
-      words: [w-tube, w-agree]
+      words: [w-agree]
       goal: 1
     - en: "Consent is signed and the site is marked."
       ko: "동의서는 서명됐고 부위는 표시됐어요."
@@ -8338,18 +8796,51 @@
     - en: "Before we start the procedure, let's confirm the patient's name together."
       ko: "시술을 시작하기 전에 환자분 성함을 같이 확인해요."
       chunks: ["Before we start", "the procedure,", "let's confirm", "the patient's name together", "."]
-      words: [w-procedure, w-confirm, w-name]
+      words: [w-procedure, w-confirm]
       goal: 1
-    - en: "If anything doesn't match, we stop the time-out right there."
-      ko: "뭔가 일치하지 않으면 그 자리에서 타임아웃을 멈춰요."
-      chunks: ["If anything doesn't match,", "we stop", "the time-out", "right there", "."]
-      words: [w-match, w-stop, w-timeout]
+    - en: "If anything doesn't match, we stop right there."
+      ko: "뭔가 일치하지 않으면 그 자리에서 멈춰요."
+      chunks: ["If anything doesn't match,", "we stop", "right there", "."]
+      words: [w-match, w-stop]
       goal: 2
     - en: "Everyone on the team must agree before we begin the procedure."
       ko: "시술을 시작하기 전에 팀 전체가 동의해야 해요."
       chunks: ["Everyone on the team", "must agree", "before we begin", "the procedure", "."]
       words: [w-team, w-agree, w-procedure]
       goal: 1
+  nuance:
+  - kind: slider
+    words:
+    - w-stop
+    - w-match
+    cue: '타임아웃 중: 동의서에는 left, 피부 표시는 right'
+    scale:
+    - hold on
+    - let's pause
+    - stop
+    answerAt: 2
+    why: 부위가 서로 다르면 시술 전에 반드시 멈춰야 하는 상황이라, 가장 분명한 말로 멈춰요. 타임아웃에서는 팀 누구나 멈추자고 말할 수 있어요.
+    example: If anything doesn't match, we stop right there.
+    exKo: 뭔가 일치하지 않으면 그 자리에서 멈춰요.
+  - kind: context
+    words:
+    - w-timeout
+    - w-agree
+    scenes:
+    - who: 시술팀 전체에
+      icon: siren
+      en: 'Time-out: right chest tube, John Reyes — everyone agree?'
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Time-out performed; all team members in agreement.
+      ok: true
+    - who: 시술팀 전체에
+      icon: siren
+      en: We're good, right? Let's just go.
+      ok: false
+      fix: 'Before we start: right chest tube for John Reyes — does everyone agree?'
+    why: 타임아웃은 환자·부위·시술을 소리 내어 말하고 모두의 대답을 받는 절차예요. 'We're good, right?'는 넘어가자는 말이라, 이상을 느낀 사람이 말을 꺼내기 어렵게 해요.
 
 - theme: core-safety-er
   localeBound: [escalation]
@@ -8400,6 +8891,40 @@
       chunks: ["I'll give the team", "a clear report:", "vitals, symptoms,", "and what changed", "."]
       words: [w-team, w-report]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-rapid_response
+    - w-confused
+    cue: 호흡수 30, 혈압 86/50, 새로 생긴 혼란 — 의사에게 전화한다
+    scale:
+    - Can you take a look when you're free?
+    - Can you come see her soon?
+    - I need eyes on her now.
+    answerAt: 2
+    why: 새로 생긴 혼란에 호흡수·혈압까지 나빠졌다면 바로 와 달라고 해야 해요. 'when you're free'는 급하지 않다는 신호로 들려요.
+    example: I need eyes on her now — this is a rapid response.
+    exKo: 지금 바로 봐주셔야 해요, 신속대응이에요.
+  - kind: swap
+    words:
+    - w-vital
+    - w-report
+    who: 신속대응팀에게 · 첫 보고
+    icon: siren
+    before:
+    - 'Her '
+    - vitals are kind of off
+    - ' — heart rate 130, BP 86 over 50.'
+    options:
+    - vital signs are getting worse
+    - vitals are kind of off
+    - pressure's fine for now
+    answer: vital signs are getting worse
+    notes:
+      vital signs are getting worse: 변화의 방향을 분명히 말하고 바로 수치를 붙여요.
+      vitals are kind of off: 막연해서 얼마나 급한지 전달되지 않아요.
+      pressure's fine for now: 86/50은 괜찮은 혈압이 아니에요 — 말과 수치가 어긋나요.
+    why: 급변 보고는 '나빠지고 있다'는 판단과 수치를 함께 말해요.
 
 - theme: core-safety-er
   title: 다환자 혼동 위기
@@ -8422,17 +8947,17 @@
     - en: "Two patients have similar names — let's double-check bands."
       ko: "두 환자 이름이 비슷해요, 밴드를 다시 확인해요."
       chunks: ["Two patients have", "similar names", "—", "let's double-check", "bands", "."]
-      words: [w-patient, w-similar, w-check, w-band]
+      words: [w-similar, w-check, w-band]
       goal: 1
     - en: "Confirm the medical record number, not just the name."
       ko: "이름만이 아니라 의무기록번호를 확인해 주세요."
       chunks: ["Confirm", "the medical record number,", "not just", "the name", "."]
-      words: [w-confirm, w-mrn, w-name]
+      words: [w-confirm, w-mrn]
       goal: 1
     - en: "Let's slow down for ten seconds and get this right."
       ko: "10초만 천천히 해서 정확히 확인해요."
       chunks: ["Let's slow down", "for ten seconds", "and get", "this right", "."]
-      words: [w-slow, w-second]
+      words: [w-slow]
       goal: 2
     - en: "It's crowded right now, so let's re-verify who's who before we act."
       ko: "지금 혼잡하니까 행동하기 전에 누가 누군지 다시 확인해요."
@@ -8442,13 +8967,48 @@
     - en: "Always confirm the record number, never rely on the name alone."
       ko: "이름만 믿지 말고 항상 기록번호를 확인해요."
       chunks: ["Always confirm", "the record number,", "never rely on", "the name alone", "."]
-      words: [w-confirm, w-record, w-name]
+      words: [w-confirm, w-record]
       goal: 1
     - en: "When two names look alike, double-check the wristband every single time."
       ko: "이름이 비슷할 때는 매번 손목밴드를 다시 확인해요."
       chunks: ["When two names", "look alike,", "double-check the wristband", "every single time", "."]
       words: [w-check, w-wristband]
       goal: 1
+  nuance:
+  - kind: pair
+    words:
+    - w-similar
+    - w-slow
+    - w-mrn
+    pairs:
+    - - two similar
+      - names
+    - - slow down for
+      - ten seconds
+    - - medical record
+      - number
+    decoys:
+    - of wristband
+    why: '''잠깐 속도를 늦추다''는 slow down for + 시간. MRN은 medical record number의 줄임말이에요.'
+  - kind: context
+    words:
+    - w-confirm
+    - w-mrn
+    scenes:
+    - who: 동료에게
+      icon: speech
+      en: Two Lopezes in pod B — confirm the MRN, not just the name.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: 'Name alert: similar names in adjacent beds; MRN verified before each draw.'
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Confirm your MRN.
+      ok: false
+      fix: Can you tell me your full name and date of birth? I'll check them against your wristband.
+    why: MRN은 의료진이 차트와 밴드에서 대조하는 번호예요. 환자는 자기 번호를 모르니, 환자에게는 이름과 생년월일을 묻고 번호는 밴드에서 확인해요.
 
 - theme: core-safety-er
   title: 낙상 후 두부외상
@@ -8471,7 +9031,7 @@
     - en: "Because you take a blood thinner, we need a head scan fast."
       ko: "항응고제를 복용하고 계셔서 빨리 머리 스캔이 필요해요."
       chunks: ["Because you take", "a blood thinner,", "we need", "a head scan fast", "."]
-      words: [w-blood_thinner, w-head, w-scan]
+      words: [w-blood_thinner, w-scan]
       goal: 1
     - en: "Tell me if your headache gets worse or you feel sleepy."
       ko: "두통이 심해지거나 졸리면 말씀해 주세요."
@@ -8491,13 +9051,48 @@
     - en: "We'll watch you closely and repeat the head scan if anything changes."
       ko: "계속 지켜보고 변화가 있으면 머리 스캔을 다시 할게요."
       chunks: ["We'll watch you closely", "and repeat", "the head scan", "if anything changes", "."]
-      words: [w-watch, w-head, w-scan]
+      words: [w-watch, w-scan]
       goal: 2
     - en: "Let me know right away if you feel any numbness or your headache changes."
       ko: "저림이 느껴지거나 두통이 변하면 바로 말씀해 주세요."
       chunks: ["Let me know", "right away", "if you feel any numbness", "or your headache changes", "."]
-      words: [w-numbness, w-headache]
+      words: [w-numbness, w-headache, w-right_away]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-blood_thinner
+    - w-trouble
+    - w-sleepy
+    pairs:
+    - - take a
+      - blood thinner
+    - - trouble
+      - seeing
+    - - feel
+      - sleepy
+    decoys:
+    - of seeing
+    why: '''~하기 어렵다''는 trouble + -ing(trouble seeing) — of를 넣지 않아요. 약은 take a blood thinner처럼 take를 써요.'
+  - kind: swap
+    words:
+    - w-blood_thinner
+    who: 환자에게 · 스캔 이유 설명
+    icon: me
+    before:
+    - 'Because you take '
+    - an anticoagulant
+    - ', we need a head scan fast.'
+    options:
+    - a blood thinner
+    - an anticoagulant
+    - some pills
+    answer: a blood thinner
+    notes:
+      a blood thinner: 환자·가족이 바로 알아듣는 쉬운 말.
+      an anticoagulant: 의료진끼리 쓰는 말이라 환자는 무슨 약인지 모를 수 있어요.
+      some pills: 너무 막연해서 왜 서둘러야 하는지 전달되지 않아요.
+    why: 환자에게는 blood thinner, 의료진끼리는 anticoagulant — 같은 약도 듣는 사람에 따라 말을 바꿔요.
 
 - theme: core-safety-er
   title: 투약 위해사건 대응
@@ -8520,22 +9115,22 @@
     - en: "The patient got double the ordered dose."
       ko: "환자분이 처방된 용량의 두 배를 받았어요."
       chunks: ["The patient got", "double the ordered", "dose", "."]
-      words: [w-patient, w-double, w-order, w-dose]
+      words: [w-double, w-order, w-dose]
       goal: 1
     - en: "We're monitoring her vitals and notifying the doctor."
       ko: "활력징후를 관찰하고 의사에게 알리고 있어요."
       chunks: ["We're monitoring", "her vitals and", "notifying the doctor", "."]
-      words: [w-monitor_v, w-vitals, w-notify, w-doctor]
+      words: [w-monitor_v, w-vitals, w-notify]
       goal: 1
     - en: "I'll complete an incident report right away."
       ko: "바로 사건 보고서를 작성할게요."
       chunks: ["I'll complete", "an incident report", "right away", "."]
-      words: [w-complete, w-incident, w-report]
+      words: [w-complete, w-incident, w-report, w-right_away]
       goal: 2
     - en: "First, we make sure the patient is safe and stable."
       ko: "먼저 환자분이 안전하고 안정적인지 확인해요."
       chunks: ["First,", "we make sure", "the patient is safe", "and stable", "."]
-      words: [w-patient, w-safe, w-stable]
+      words: [w-safe, w-stable]
       goal: 1
     - en: "I'm reporting exactly what happened, even though it's hard."
       ko: "힘들어도 있었던 일을 그대로 보고할게요."
@@ -8547,6 +9142,44 @@
       chunks: ["We'll document this", "honestly so", "the team can learn", "from it", "."]
       words: [w-document, w-team]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-complete
+    - w-incident
+    - w-notify
+    - w-safe
+    - w-stable
+    pairs:
+    - - complete an
+      - incident report
+    - - notify
+      - the doctor
+    - - safe and
+      - stable
+    decoys:
+    - an incident
+    why: 보고서는 complete(끝까지 작성하다)와 함께 써요. 'safe and stable'은 환자 상태를 한 번에 요약하는 굳은 말이에요.
+  - kind: swap
+    words:
+    - w-document
+    - w-team
+    who: 관리자에게 · 사건 경위
+    icon: speech
+    before:
+    - 'We''ll document this '
+    - vaguely
+    - ' so the team can learn from it.'
+    options:
+    - honestly
+    - vaguely
+    - later when it's quiet
+    answer: honestly
+    notes:
+      honestly: 있었던 그대로 — 사건 기록의 원칙.
+      vaguely: 흐리게 적으면 원인을 찾을 수 없어요.
+      later when it's quiet: 기억이 흐려지기 전에 바로 기록해야 해요.
+    why: 투약 사건은 사실대로, 바로 기록하고 보고해야 같은 오류를 막을 수 있어요. 개인을 탓하기보다 체계에서 배우자는 것이 just culture예요.
 
 - theme: core-safety-er
   title: 화재·대피 안전
@@ -8569,33 +9202,67 @@
     - en: "Ambulatory patients out this exit first."
       ko: "거동 가능한 환자부터 이 출구로 나가세요."
       chunks: ["Ambulatory patients", "out this exit", "first", "."]
-      words: [w-ambulatory, w-patient, w-exit]
+      words: [w-ambulatory, w-exit]
       goal: 1
     - en: "The intubated patient needs a team to move the bed."
       ko: "삽관된 환자는 침대를 옮길 팀이 필요해요."
       chunks: ["The intubated patient", "needs a team", "to move", "the bed", "."]
-      words: [w-intubated, w-patient, w-team, w-move, w-bed]
+      words: [w-intubated, w-team, w-move, w-bed]
       goal: 2
     - en: "Close doors behind us and account for everyone."
       ko: "뒤로 문을 닫고 모든 인원을 확인하세요."
       chunks: ["Close doors", "behind us and", "account for everyone", "."]
-      words: [w-door, w-account]
+      words: [w-account]
       goal: 2
     - en: "Patients who can walk go out first, then we move the rest by bed."
       ko: "걸을 수 있는 환자가 먼저 나가고, 나머지는 침대로 옮겨요."
       chunks: ["Patients who can walk", "go out first,", "then we move", "the rest by bed", "."]
-      words: [w-patient, w-walk, w-move, w-bed]
+      words: [w-move, w-bed]
       goal: 1
     - en: "Two of us will carry the intubated patient on the bed together."
       ko: "저희 둘이서 삽관된 환자를 침대째로 같이 옮길게요."
       chunks: ["Two of us", "will carry", "the intubated patient", "on the bed together", "."]
-      words: [w-intubated, w-patient, w-bed]
+      words: [w-intubated, w-bed]
       goal: 2
     - en: "Once everyone is out, close the doors and check the count together."
       ko: "모두 나가면 문을 닫고 같이 인원을 확인해요."
       chunks: ["Once everyone is out,", "close the doors", "and check", "the count together", "."]
-      words: [w-door, w-check]
+      words: [w-check]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-account
+    - w-intubated
+    - w-exit
+    pairs:
+    - - account
+      - for everyone
+    - - the intubated patient
+      - needs a team
+    - - out this
+      - exit
+    decoys:
+    - of everyone
+    why: '''인원을 빠짐없이 확인하다''는 account for everyone — for가 꼭 붙어요.'
+  - kind: context
+    words:
+    - w-ambulatory
+    scenes:
+    - who: 팀 전체에
+      icon: siren
+      en: Ambulatory patients out this exit first.
+      ok: true
+    - who: 대피 기록
+      icon: board
+      en: Ambulatory pts evacuated first via east exit.
+      ok: true
+    - who: 대기 중인 환자들에게
+      icon: me
+      en: Ambulatory patients, proceed to the exit.
+      ok: false
+      fix: If you can walk, please follow me out this way first.
+    why: ambulatory는 의료진끼리의 말이라 환자는 자기가 해당되는지 모를 수 있어요. 환자에게는 'If you can walk'처럼 쉬운 말로 말해요.
 
 - theme: core-safety-er
   title: 다직역 안전 브리핑
@@ -8645,6 +9312,45 @@
       chunks: ["We share", "the airway plan", "and the fall risk", "together, out loud", "."]
       words: [w-share, w-airway, w-fall, w-risk]
       goal: 1
+  nuance:
+  - kind: pair
+    words:
+    - w-airway
+    - w-aspiration
+    - w-risk
+    - w-anticoagulation
+    pairs:
+    - - difficult
+      - airway
+    - - aspiration
+      - risk
+    - - 'on'
+      - anticoagulation
+    decoys:
+    - anticoagulate
+    why: 기도 확보가 어려우면 difficult airway, 항응고제를 쓰는 중이면 on anticoagulation — 'on + 치료'는 '~ 중'이라는 뜻이에요.
+  - kind: reel
+    words:
+    - w-deteriorate
+    word: deteriorate
+    scenes:
+    - who: 다직역 브리핑
+      en: Everyone clear on their role if she deteriorates?
+      ko: 악화될 경우 각자 역할은 다 명확하세요?
+      tone: 확인
+    - who: 차트 기록
+      en: Pt deteriorated despite fluids; RRT called.
+      ko: 수액에도 상태 악화, 신속대응팀 호출.
+      tone: 건조
+    - who: 야간 인계
+      en: If she deteriorates overnight, call the rapid response team.
+      ko: 밤새 악화되면 신속대응팀을 부르세요.
+      tone: 경고
+    - who: 보호자에게는…
+      en: She's getting worse, and we're acting on it right now.
+      ko: 상태가 나빠지고 있고, 지금 조치하고 있어요.
+      tone: 완곡
+      swap: true
 
 # ######## source: chestpain.yaml ########
 # er-chestpain (22)
@@ -23517,28 +24223,60 @@
     - en: "When did the pain first start today?"
       ko: "오늘 통증이 언제 처음 시작됐나요?"
       chunks: ["When did", "the pain", "first start", "today", "?"]
-      words: [w-pain, w-start, w-today]
+      words: [w-pain, w-start]
       goal: 1
     - en: "Can you show me where it hurts the most?"
       ko: "가장 아픈 곳이 어디인지 보여주시겠어요?"
       chunks: ["Can you", "show me", "where it hurts", "the most", "?"]
-      words: [w-show, w-hurt, w-most]
+      words: [w-hurt]
       goal: 1
     - en: "Does the pain move or spread anywhere else?"
       ko: "통증이 다른 곳으로 옮겨가거나 퍼지나요?"
       chunks: ["Does the pain", "move or spread", "anywhere else", "?"]
-      words: [w-pain, w-move, w-spread, w-else]
+      words: [w-pain, w-move, w-spread]
       goal: 2
     - en: "I need to know exactly when the pain began."
       ko: "통증이 정확히 언제 시작됐는지 알아야 해요."
       chunks: ["I need to know", "exactly when", "the pain", "began", "."]
-      words: [w-need, w-know, w-pain, w-begin]
+      words: [w-need, w-pain, w-begin]
       goal: 1
     - en: "Tell me if the pain spreads to your back or chest."
       ko: "통증이 등이나 가슴으로 퍼지면 말씀해 주세요."
       chunks: ["Tell me", "if the pain spreads", "to your back", "or chest", "."]
       words: [w-tell, w-pain, w-spread, w-back, w-chest]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-pain
+    cue: 'Patient: "It''s not really painful — just uncomfortable, like I ate too much."'
+    scale:
+    - discomfort
+    - pain
+    - agony
+    answerAt: 0
+    why: '''아프다기보다 불편하다''면 discomfort 쪽이에요. 한국어로는 다 ''아프다''지만 영어는 세기에 따라 말이 달라요. 차트에는 환자가 말한 숫자(0~10)를 함께 적어요.'
+    example: Some discomfort after a big meal is common.
+    exKo: 과식 후 약간의 불편감은 흔해요.
+  - kind: context
+    words:
+    - w-spread
+    - w-back
+    scenes:
+    - who: 차트 기록
+      icon: board
+      en: Epigastric pain radiating to the back.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Does your pain radiate anywhere?
+      ok: false
+      fix: Does the pain move or spread anywhere else?
+    - who: 의사에게 보고
+      icon: speech
+      en: She says the pain radiates to her back.
+      ok: true
+    why: radiate는 임상어라 못 알아듣는 환자가 있어요. move·spread처럼 쉬운 동사로 물어야 답이 정확히 돌아와요.
 
 - theme: er-abdominal
   title: 활력·통증척도 사정
@@ -23561,12 +24299,12 @@
     - en: "On a scale of zero to ten, how bad is the pain right now?"
       ko: "0에서 10까지 중에서, 지금 통증이 얼마나 심한가요?"
       chunks: ["On a scale of zero to ten", ", how bad", "is the pain", "right now", "?"]
-      words: [w-scale, w-bad, w-pain]
+      words: [w-scale, w-pain]
       goal: 1
     - en: "When was the last time you ate or drank anything?"
       ko: "마지막으로 뭔가 먹거나 마신 게 언제였나요?"
       chunks: ["When was", "the last time", "you ate or drank", "anything", "?"]
-      words: [w-last, w-time, w-eat, w-drink, w-anything]
+      words: [w-last, w-eat, w-drink]
       goal: 2
     - en: "I'm going to check your blood pressure and temperature."
       ko: "혈압과 체온을 확인할게요."
@@ -23576,13 +24314,47 @@
     - en: "Is the pain any worse than it was an hour ago?"
       ko: "한 시간 전보다 통증이 더 심해졌나요?"
       chunks: ["Is the pain", "any worse", "than it was", "an hour ago", "?"]
-      words: [w-pain, w-bad, w-hour]
+      words: [w-pain]
       goal: 1
     - en: "Have you had anything to eat or drink today?"
       ko: "오늘 뭐라도 먹거나 마신 게 있나요?"
       chunks: ["Have you had anything", "to eat", "or drink", "today", "?"]
-      words: [w-eat, w-drink, w-today, w-anything]
+      words: [w-eat, w-drink]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-scale
+    - w-pain
+    cue: 'Patient: "On that scale? I''d say about a seven."'
+    scale:
+    - mild
+    - moderate
+    - severe
+    answerAt: 2
+    why: 0~10 숫자 척도는 흔히 1~3을 mild, 4~6을 moderate, 7~10을 severe로 묶어요. 7이면 severe 쪽이에요. 기록은 단어보다 숫자 그대로(7/10)가 기본이에요.
+    example: She rates her pain seven out of ten.
+    exKo: 환자는 통증을 10점 중 7점으로 표현해요.
+  - kind: swap
+    words:
+    - w-eat
+    - w-drink
+    who: 환자에게 · 금식 안내
+    icon: me
+    before:
+    - 'Please don''t have '
+    - any oral intake
+    - ' for now.'
+    options:
+    - anything to eat or drink
+    - any oral intake
+    - any PO intake
+    answer: anything to eat or drink
+    notes:
+      anything to eat or drink: 환자가 바로 알아듣는 말. 물도 포함된다는 게 분명하다.
+      any oral intake: 간호 기록의 말(oral intake). 문법은 맞지만 환자에게는 딱딱하고 낯설다.
+      any PO intake: PO는 차트 약어. 환자는 뜻을 모른다.
+    why: NPO는 의료진끼리의 약어예요. 환자에게는 'nothing by mouth'도 통하지만, '먹지도 마시지도 마세요'라고 풀어 말하는 것이 물 한 모금까지 가장 분명하게 전해져요.
 
 - theme: er-abdominal
   title: 우하복부 압통(충수염 의심)
@@ -23605,17 +24377,17 @@
     - en: "Can you point to exactly where it hurts the most?"
       ko: "가장 아픈 곳을 정확히 가리켜 주시겠어요?"
       chunks: ["Can you point", "to exactly where", "it hurts", "the most", "?"]
-      words: [w-point, w-hurt, w-most]
+      words: [w-point, w-hurt]
       goal: 1
     - en: "Does it hurt more when I press or when I let go?"
       ko: "누를 때와 뗄 때 중 언제 더 아픈가요?"
       chunks: ["Does it hurt", "more when I press", "or when I", "let go", "?"]
-      words: [w-hurt, w-press, w-let, w-go]
+      words: [w-hurt, w-press]
       goal: 1
     - en: "When did you last eat or drink anything?"
       ko: "마지막으로 언제 뭔가 먹거나 마셨나요?"
       chunks: ["When did you", "last eat or drink", "anything", "?"]
-      words: [w-last, w-eat, w-drink, w-anything]
+      words: [w-last, w-eat, w-drink]
       goal: 2
     - en: "Tell me if you feel sick or have a fever."
       ko: "메스껍거나 열이 나면 말씀해 주세요."
@@ -23625,8 +24397,41 @@
     - en: "We may need to call the surgeon, so nothing to eat or drink for now."
       ko: "외과 선생님을 부를 수도 있으니, 지금부터 먹지도 마시지도 마세요."
       chunks: ["We may need", "to call the surgeon", ", so nothing", "to eat or drink", "for now", "."]
-      words: [w-need, w-call, w-surgeon, w-eat, w-drink, w-now]
+      words: [w-need, w-call, w-surgeon, w-eat, w-drink]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-sick
+    - w-feel
+    cue: 'Patient: "My stomach feels a little off — kind of unsettled, but I haven''t thrown up."'
+    scale:
+    - queasy
+    - nauseated
+    - vomiting
+    answerAt: 0
+    why: queasy는 속이 살짝 울렁거리는 정도, nauseated는 토할 것 같은 메스꺼움, vomiting은 실제로 토하는 것이에요. 충수염에서는 통증 뒤에 메스꺼움·구토가 따라오는 경우가 많아 순서를 함께 물어요.
+    example: I feel a little queasy, but I'm okay.
+    exKo: 속이 조금 울렁거리지만 괜찮아요.
+  - kind: context
+    words:
+    - w-press
+    - w-hurt
+    scenes:
+    - who: 차트 기록
+      icon: board
+      en: RLQ tenderness with rebound.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Do you have rebound tenderness?
+      ok: false
+      fix: Does it hurt more when I press or when I let go?
+    - who: 외과의에게 보고
+      icon: speech
+      en: He has rebound tenderness in the right lower quadrant.
+      ok: true
+    why: rebound tenderness(반발통)는 진찰 소견의 이름이라 환자에게 묻는 말이 아니에요. 환자에게는 누를 때와 뗄 때 중 언제 더 아픈지를 쉬운 말로 물어요.
 
 - theme: er-abdominal
   title: 소화불량성 복통 감별
@@ -23654,7 +24459,7 @@
     - en: "Does it get better or worse after you eat?"
       ko: "먹고 나면 나아지나요, 아니면 심해지나요?"
       chunks: ["Does it get better", "or worse", "after you", "eat", "?"]
-      words: [w-get, w-good, w-bad, w-eat]
+      words: [w-eat]
       goal: 2
     - en: "Have you had any chest pain, sweating, or shortness of breath?"
       ko: "가슴 통증이나 식은땀, 숨찬 느낌이 있었나요?"
@@ -23664,13 +24469,47 @@
     - en: "Do you feel dizzy or short of breath right now?"
       ko: "지금 어지럽거나 숨이 찬가요?"
       chunks: ["Do you feel", "dizzy or short", "of breath", "right now", "?"]
-      words: [w-feel, w-dizzy, w-breath, w-now]
+      words: [w-feel, w-dizzy, w-breath]
       goal: 1
     - en: "Tell me what you ate before the pain started."
       ko: "통증이 시작되기 전에 뭘 드셨는지 말씀해 주세요."
       chunks: ["Tell me", "what you ate", "before the pain", "started", "."]
       words: [w-tell, w-eat, w-pain, w-start]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-burn
+    - w-sharp
+    pairs:
+    - - burning
+      - like heartburn
+    - - sharp
+      - like a knife
+    - - crushing
+      - like a heavy weight
+    decoys:
+    - like a feather
+    why: 환자는 통증 양상을 비유로 말하곤 해요. burning은 속쓰림처럼 타는 듯, sharp는 칼로 찌르듯, crushing은 무거운 것이 짓누르듯한 느낌이에요. 소화불량처럼 보여도 짓누르는 통증이면 심장 원인을 먼저 배제해요.
+  - kind: swap
+    words:
+    - w-sweat
+    who: 환자에게 · 위험신호 확인
+    icon: me
+    before:
+    - 'Have you been '
+    - diaphoretic
+    - ' with this pain?'
+    options:
+    - sweating a lot
+    - diaphoretic
+    - perspiring profusely
+    answer: sweating a lot
+    notes:
+      sweating a lot: 환자가 바로 알아듣는 말.
+      diaphoretic: 차트·인계에서 쓰는 임상어. 환자는 뜻을 모른다.
+      perspiring profusely: 문법은 맞지만 딱딱한 글말이라 대화에서는 어색하다.
+    why: diaphoretic(발한)은 의료진끼리의 말이에요. 소화불량 같은 복통에 식은땀이 동반되면 심장 원인을 의심하는 신호라, 환자에게는 쉬운 말로 꼭 물어요.
 
 - theme: er-abdominal
   title: 변비성 복통 노인
@@ -23708,13 +24547,50 @@
     - en: "What have you been eating and drinking this week?"
       ko: "이번 주에 뭘 드시고 마셨나요?"
       chunks: ["What have you", "been eating", "and drinking", "this week", "?"]
-      words: [w-eat, w-drink, w-week]
+      words: [w-eat, w-drink]
       goal: 1
     - en: "Does your belly feel swollen or tight?"
       ko: "배가 붓거나 팽팽한 느낌이 있나요?"
       chunks: ["Does your belly", "feel swollen", "or tight", "?"]
       words: [w-belly, w-feel, w-swell, w-tight]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-pass
+    - w-gas
+    - w-bowel
+    - w-eat
+    pairs:
+    - - pass
+      - gas
+    - - move
+      - your bowels
+    - - eat
+      - enough fiber
+    decoys:
+    - a fever
+    why: 방귀는 pass gas, 배변은 move your bowels(또는 have a bowel movement)라고 해요. 둘 다 환자에게 점잖게 쓰는 표준 표현이에요. 식이는 eat enough fiber처럼 물어요.
+  - kind: swap
+    words:
+    - w-bowel
+    - w-movement
+    who: 노인 환자에게 · 배변력
+    icon: me
+    before:
+    - 'When was your last '
+    - BM
+    - '?'
+    options:
+    - bowel movement
+    - BM
+    - defecation
+    answer: bowel movement
+    notes:
+      bowel movement: 환자에게 쓰는 표준 표현.
+      BM: 차트 약어. 의료진끼리는 흔하지만 환자는 못 알아들을 수 있다.
+      defecation: 교과서·검사지의 말이라 대화에서는 딱딱하다.
+    why: BM은 bowel movement의 약어로 의료진끼리 흔히 써요. 환자, 특히 노인에게는 풀어서 말해요.
 
 - theme: er-abdominal
   title: 담석 산통(RUQ)
@@ -23757,8 +24633,43 @@
     - en: "We'll need an ultrasound, so please don't eat anything for now."
       ko: "초음파 검사가 필요하니, 지금은 아무것도 드시지 마세요."
       chunks: ["We'll need", "an ultrasound", ", so please", "don't eat anything", "for now", "."]
-      words: [w-need, w-ultrasound, w-eat, w-anything, w-now]
+      words: [w-need, w-ultrasound, w-eat]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-fatty
+    - w-meal
+    - w-breath
+    pairs:
+    - - fatty
+      - meal
+    - - take a deep
+      - breath
+    - - right upper
+      - quadrant
+    decoys:
+    - temperature
+    why: 담석 산통은 기름진 식사(fatty meal) 뒤에 흔히 시작되고, 오른쪽 윗배(right upper quadrant)를 누른 채 깊이 숨을 들이쉬게(take a deep breath) 하면 아파서 숨을 멈추는 것이 Murphy 징후예요.
+  - kind: context
+    words:
+    - w-press
+    - w-breathe
+    scenes:
+    - who: 차트 기록
+      icon: board
+      en: Positive Murphy's sign.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: You have a positive Murphy's sign.
+      ok: false
+      fix: It hurts when I press here as you breathe in — that's an important sign.
+    - who: 외과의에게 보고
+      icon: speech
+      en: She has a positive Murphy's sign.
+      ok: true
+    why: Murphy's sign은 진찰 이름이에요. 환자에게는 이름 대신 무엇을 할지(숨을 들이쉬는 동안 누른다)를 말해 줘야 협조를 얻어요.
 
 - theme: er-abdominal
   title: 급성 췌장염(음주력)
@@ -23781,7 +24692,7 @@
     - en: "Does the pain go through to your back?"
       ko: "통증이 등까지 관통하듯 뻗치나요?"
       chunks: ["Does the pain", "go through", "to your back", "?"]
-      words: [w-pain, w-go, w-through, w-back]
+      words: [w-pain, w-through, w-back]
       goal: 1
     - en: "How much alcohol have you been drinking recently?"
       ko: "최근에 술을 얼마나 드셨나요?"
@@ -23791,7 +24702,7 @@
     - en: "We'll need to keep you from eating or drinking for now."
       ko: "지금은 먹거나 마시지 못하게 해야 해요."
       chunks: ["We'll need", "to keep you", "from eating or drinking", "for now", "."]
-      words: [w-need, w-keep, w-eat, w-drink, w-now]
+      words: [w-need, w-keep, w-eat, w-drink]
       goal: 2
     - en: "When did this pain start, and had you been drinking before that?"
       ko: "이 통증은 언제 시작됐고, 그 전에 술을 드셨나요?"
@@ -23803,6 +24714,39 @@
       chunks: ["We're starting", "IV fluids", "and medicine", "to control your pain", "."]
       words: [w-fluid, w-medicine, w-control, w-pain]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-alcohol
+    - w-drink
+    cue: 'Patient: "About a six-pack every night, more on weekends."'
+    scale:
+    - light drinking
+    - moderate drinking
+    - heavy drinking
+    answerAt: 2
+    why: 미국 NIAAA 기준으로 남성은 하루 4잔 넘게, 또는 주 14잔 넘게 마시면 heavy drinking이에요. 매일 맥주 여섯 캔이면 분명히 heavy 쪽이에요. 기록은 '하루 몇 잔'처럼 양으로 적어요.
+    example: He reports heavy drinking for the past ten years.
+    exKo: 환자는 지난 10년간 과음을 해 왔다고 해요.
+  - kind: swap
+    words:
+    - w-alcohol
+    who: 환자에게 · 음주력
+    icon: me
+    before:
+    - 'How much '
+    - EtOH
+    - ' do you usually drink in a week?'
+    options:
+    - alcohol
+    - EtOH
+    - booze
+    answer: alcohol
+    notes:
+      alcohol: 중립적이고 누구나 알아듣는 말.
+      EtOH: 에탄올의 차트 약어. 환자는 뜻을 모른다.
+      booze: 친구끼리의 구어라 음주를 가볍게 다루는 듯 들린다.
+    why: 음주력은 중립적인 말로 물어야 솔직한 답이 나와요. EtOH는 차트 약어, booze는 너무 가벼운 구어예요.
 
 - theme: er-abdominal
   title: 게실염 좌하복부
@@ -23845,8 +24789,42 @@
     - en: "The scan will show if the infection has spread."
       ko: "촬영을 하면 감염이 퍼졌는지 알 수 있어요."
       chunks: ["The scan", "will show", "if the infection", "has spread", "."]
-      words: [w-scan, w-show, w-infection, w-spread]
+      words: [w-scan, w-infection, w-spread]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-fever
+    - w-chill
+    cue: 'Patient: "I''ve got the chills under three blankets, and my temp at home was 103."'
+    scale:
+    - a little warm
+    - feverish
+    - burning up
+    answerAt: 2
+    why: burning up은 열이 아주 높다는 환자의 구어예요. 화씨 103도는 섭씨로 약 39.4도예요. 환자가 어떤 말을 쓰든 체온은 숫자로 다시 재서 기록해요.
+    example: My son is burning up — his temp is 104.
+    exKo: 아이가 열이 펄펄 끓어요, 체온이 40도예요.
+  - kind: context
+    words:
+    - w-contrast
+    - w-drink
+    - w-scan
+    scenes:
+    - who: 차트 기록
+      icon: board
+      en: PO contrast given at 1400 for CT abdomen.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: You'll receive PO contrast prior to your CT.
+      ok: false
+      fix: You may need to drink a contrast liquid before the CT scan.
+    - who: 영상의학과 통화
+      icon: speech
+      en: She's finished drinking the oral contrast for her CT.
+      ok: true
+    why: PO(경구)나 prior to는 의료진·서류의 말투예요. 환자에게는 drink·before처럼 쉬운 말로, 무엇을 마시는지까지 설명해요.
 
 - theme: er-abdominal
   title: 소장 폐색(수술력)
@@ -23884,13 +24862,47 @@
     - en: "Tell me how many times you've vomited today."
       ko: "오늘 몇 번이나 토하셨는지 말씀해 주세요."
       chunks: ["Tell me", "how many times", "you've vomited today", "."]
-      words: [w-tell, w-vomit, w-today]
+      words: [w-tell, w-vomit]
       goal: 1
     - en: "Your belly looks swollen and firm right now."
       ko: "지금 배가 붓고 단단해 보여요."
       chunks: ["Your belly looks", "swollen and firm", "right now", "."]
-      words: [w-belly, w-swell, w-firm, w-now]
+      words: [w-belly, w-swell, w-firm]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-vomit
+    cue: 'Patient: "I keep throwing up — even a sip of water comes right back up."'
+    scale:
+    - queasy
+    - throwing up
+    - can't keep anything down
+    answerAt: 2
+    why: 물 한 모금도 못 넘긴다면 can't keep anything down이에요. 장폐색에서 이 정도면 탈수·전해질 이상이 빨리 오니 구토 횟수와 함께 보고해요.
+    example: She can't keep anything down, not even water.
+    exKo: 환자는 물조차 전혀 넘기지 못해요.
+  - kind: swap
+    words:
+    - w-tube
+    - w-place
+    - w-nose
+    who: 환자에게 · NG 튜브 설명
+    icon: me
+    before:
+    - 'We may need to place '
+    - an NGT
+    - ' to relieve the pressure.'
+    options:
+    - a tube through your nose
+    - an NGT
+    - a nasogastric decompression device
+    answer: a tube through your nose
+    notes:
+      a tube through your nose: 무엇을 어디로 넣는지 환자가 바로 그려진다.
+      an NGT: NG 튜브의 약어. 환자는 무엇인지 모른다.
+      a nasogastric decompression device: 정확하지만 길고 어려워 오히려 겁을 준다.
+    why: NGT·nasogastric은 의료진 말이에요. 환자에게는 '코로 넣는 관'이라고 풀어 말하고, 왜 넣는지(압력을 덜기 위해)를 함께 설명해요.
 
 - theme: er-abdominal
   title: 신우신염 동반 복통 여성
@@ -23935,6 +24947,40 @@
       chunks: ["We're sending", "the urine", "for a culture", "as well", "."]
       words: [w-urine, w-send, w-culture]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-urine
+    - w-culture
+    - w-tap
+    - w-back
+    pairs:
+    - - urine
+      - culture
+    - - CVA
+      - tenderness
+    decoys:
+    - pressure
+    why: urine culture는 소변 배양검사예요. CVA tenderness는 늑골척추각 압통으로, 등 아래 옆구리를 주먹으로 가볍게 두드려 아프면 신우신염을 의심하는 소견이에요.
+  - kind: swap
+    words:
+    - w-urinate
+    who: 환자에게 · 배뇨 증상
+    icon: me
+    before:
+    - 'Do you have any burning when you '
+    - void
+    - '?'
+    options:
+    - urinate
+    - void
+    - micturate
+    answer: urinate
+    notes:
+      urinate: 환자에게 통하는 표준어.
+      void: 간호 기록의 말(voided 300 mL). 환자는 뜻을 모를 수 있다.
+      micturate: 교과서 용어라 대화에서는 거의 쓰지 않는다.
+    why: void는 기록에서 흔히 쓰는 말이지만 환자에게는 낯설어요. 환자에게는 urinate나 더 쉬운 pee로 물어요.
 
 - theme: er-abdominal
   title: 임신 가능 여성 복통
@@ -23979,6 +25025,39 @@
       chunks: ["The test result", "will help guide", "your treatment", "safely", "."]
       words: [w-test, w-result, w-help, w-guide, w-treatment, w-safe]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-possible
+    - w-pregnant
+    cue: 'Patient: "My period''s a few days late, but that happens to me sometimes."'
+    scale:
+    - impossible
+    - unlikely
+    - possible
+    answerAt: 2
+    why: 며칠 늦은 생리는 임신을 배제하지 못해요. 그래서 possible 쪽이고, 가임기 여성의 복통에서는 환자의 짐작과 상관없이 임신검사를 해요.
+    example: Pregnancy is possible, so we'll do a test first.
+    exKo: 임신 가능성이 있어서 먼저 검사를 할게요.
+  - kind: context
+    words:
+    - w-menstrual
+    - w-period
+    scenes:
+    - who: 차트 기록
+      icon: board
+      en: LMP approximately 6 weeks ago.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: What was the date of your LMP?
+      ok: false
+      fix: When was your last menstrual period?
+    - who: 의사에게 보고
+      icon: speech
+      en: Her LMP was about six weeks ago.
+      ok: true
+    why: LMP(last menstrual period)는 의료진끼리의 약어예요. 환자에게는 풀어서, 필요하면 더 쉽게 'your last period'라고 물어요.
 
 - theme: er-abdominal
   title: 이소성 임신 감별
@@ -24021,8 +25100,42 @@
     - en: "This needs urgent blood work and an ultrasound right now."
       ko: "지금 바로 긴급 혈액검사와 초음파가 필요해요."
       chunks: ["This needs urgent", "blood work", "and an ultrasound", "right now", "."]
-      words: [w-need, w-urgent, w-blood, w-work, w-ultrasound, w-now]
+      words: [w-need, w-urgent, w-blood, w-work, w-ultrasound]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-spot
+    - w-bleed
+    cue: 'Patient: "Just a few drops of pink on my underwear, nothing on the pad."'
+    scale:
+    - spotting
+    - bleeding
+    - heavy bleeding
+    answerAt: 0
+    why: 속옷에 몇 방울 묻는 정도는 spotting이에요. 패드를 적시면 bleeding이고요. 이소성 임신은 출혈이 적어도 배제되지 않으니, 양이 적다고 안심시키지 말고 그대로 보고해요.
+    example: She reports light spotting since yesterday.
+    exKo: 환자는 어제부터 소량의 출혈이 있다고 해요.
+  - kind: swap
+    words:
+    - w-faint
+    - w-feel
+    who: 환자에게 · 실신 전구 증상
+    icon: me
+    before:
+    - 'Do you feel like you might '
+    - have a syncopal episode
+    - '?'
+    options:
+    - pass out
+    - have a syncopal episode
+    - lose consciousness
+    answer: pass out
+    notes:
+      pass out: 환자들이 가장 흔히 쓰는 쉬운 말.
+      have a syncopal episode: syncope(실신)의 임상 표현. 환자는 알아듣기 어렵다.
+      lose consciousness: 의학적 표현. 환자에게는 무겁게 들린다.
+    why: syncope는 의료진의 말이에요. 환자에게는 faint나 pass out처럼 쉬운 말로 물어야 실신 전 증상을 정확히 들을 수 있어요.
 
 - theme: er-abdominal
   title: 복통+언어장벽
@@ -24045,28 +25158,64 @@
     - en: "I'll get an interpreter so we can understand you better."
       ko: "통역사를 불러서 더 잘 이해할 수 있게 할게요."
       chunks: ["I'll get", "an interpreter", "so we can understand", "you better", "."]
-      words: [w-get, w-interpreter, w-understand, w-good]
+      words: [w-interpreter, w-understand]
       goal: 1
     - en: "Can you point to where it hurts the most?"
       ko: "가장 아픈 곳을 가리켜 주시겠어요?"
       chunks: ["Can you point", "to where", "it hurts", "the most", "?"]
-      words: [w-point, w-hurt, w-most]
+      words: [w-point, w-hurt]
       goal: 1
     - en: "Please nod yes or shake your head no."
       ko: "맞으면 고개를 끄덕이고 아니면 저어 주세요."
       chunks: ["Please nod yes", "or shake your head", "no", "."]
-      words: [w-nod, w-shake, w-head]
+      words: [w-nod, w-shake]
       goal: 2
     - en: "Show me with your hand exactly where it hurts."
       ko: "손으로 정확히 어디가 아픈지 보여주세요."
       chunks: ["Show me", "with your hand", "exactly where", "it hurts", "."]
-      words: [w-show, w-hand, w-hurt]
+      words: [w-hurt]
       goal: 1
     - en: "Tell the interpreter if anything feels new or different."
       ko: "새롭거나 다르게 느껴지는 게 있으면 통역사에게 말씀해 주세요."
       chunks: ["Tell the interpreter", "if anything feels", "new or", "different", "."]
-      words: [w-tell, w-interpreter, w-anything, w-feel, w-new, w-different]
+      words: [w-tell, w-interpreter, w-feel, w-new, w-different]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-nod
+    - w-shake
+    - w-point
+    pairs:
+    - - nod
+      - for yes
+    - - shake your head
+      - for no
+    - - point to
+      - where it hurts
+    decoys:
+    - louder
+    why: 미국에서는 고개를 끄덕이면(nod) '예', 좌우로 저으면(shake your head) '아니요'예요. 다만 문화에 따라 몸짓의 뜻이 다를 수 있어서, 중요한 답은 통역을 통해 다시 확인해요.
+  - kind: context
+    words:
+    - w-interpreter
+    - w-point
+    - w-hurt
+    scenes:
+    - who: 환자에게 (통역 연결)
+      icon: me
+      en: Can you point to where it hurts the most?
+      ok: true
+    - who: 통역사를 보며
+      icon: speech
+      en: Ask him to point to where it hurts the most.
+      ok: false
+      fix: Can you point to where it hurts the most?
+    - who: 인계
+      icon: board
+      en: With the interpreter on the line, he pointed to where it hurts the most — the RLQ.
+      ok: true
+    why: 의료 통역에서는 통역사가 아니라 환자를 보고 1인칭으로 직접 말하는 것이 표준이에요. 'Ask him…'처럼 통역사에게 말하면 환자가 대화에서 밀려나요.
 
 - theme: er-abdominal
   title: 오피오이드 남용 의심 복통
@@ -24111,6 +25260,39 @@
       chunks: ["We're not judging you", ", we just want", "to keep you", "safe", "."]
       words: [w-judge, w-want, w-keep, w-safe]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-pain
+    cue: 'Patient: "My stomach is killing me — I can''t even sit still."'
+    scale:
+    - discomfort
+    - pain
+    - agony
+    answerAt: 2
+    why: is killing me는 통증이 아주 심하다는 흔한 관용어예요. 과장이라고 단정하지 말고, 숫자 척도와 진찰·활력징후로 함께 확인해요.
+    example: He was in agony until the medicine kicked in.
+    exKo: 약효가 돌기 전까지 환자는 극심한 통증에 시달렸어요.
+  - kind: swap
+    words:
+    - w-take
+    - w-medication
+    who: 환자에게 · 약물 사용력
+    icon: me
+    before:
+    - 'Have you '
+    - been abusing
+    - ' any pain pills lately?'
+    options:
+    - been taking
+    - been abusing
+    - been popping
+    answer: been taking
+    notes:
+      been taking: 중립적인 말이라 솔직하게 답하기 쉽다.
+      been abusing: 낙인을 찍는 말이라 비판단적 태도가 깨지고 환자가 입을 닫는다.
+      been popping: 속어라 비꼬는 듯 들린다.
+    why: 미국 NIDA 등은 abuse·abuser 같은 낙인 찍는 표현 대신 중립적인 말을 쓰라고 권해요. 약물력은 '무엇을 얼마나 드셨는지'로 물어요.
 
 - theme: er-abdominal
   title: 노인 비전형 복통
@@ -24155,6 +25337,40 @@
       chunks: ["A small change", "in your vital signs", "matters a lot", "here", "."]
       words: [w-small, w-change, w-vital, w-sign, w-matter]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-mild
+    - w-pain
+    cue: 'Patient: "It''s just a little upset stomach, dear. Nothing serious."'
+    scale:
+    - mild
+    - moderate
+    - severe
+    answerAt: 0
+    why: 환자가 표현한 세기는 mild예요. 하지만 노인은 통증을 줄여 말하는 경우가 많고, 복막염·장허혈 같은 응급에서도 통증이 약하게 나타날 수 있어요. 환자의 말만 믿지 말고 활력징후 변화로 판단해요.
+    example: Her pain is mild, but her heart rate is climbing.
+    exKo: 통증은 가볍다고 하지만 심박수가 오르고 있어요.
+  - kind: context
+    words:
+    - w-recheck
+    - w-vital
+    - w-sign
+    scenes:
+    - who: 차트 기록
+      icon: board
+      en: VS rechecked q15min, HR trending up.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: I'll recheck your VS q15 minutes.
+      ok: false
+      fix: I'll check your blood pressure and pulse again in fifteen minutes.
+    - who: 인계
+      icon: speech
+      en: Please recheck her vital signs every fifteen minutes.
+      ok: true
+    why: VS·q15 같은 약어는 의료진끼리의 말이에요. 환자에게는 무엇을 언제 다시 재는지 쉬운 말로 알려요.
 
 - theme: er-abdominal
   title: 대동맥류 파열(찢는 통증)
@@ -24182,12 +25398,12 @@
     - en: "We're moving fast because this could be very serious."
       ko: "매우 심각할 수 있어서 저희가 빠르게 움직이고 있어요."
       chunks: ["We're moving fast", "because this", "could be", "very serious", "."]
-      words: [w-move, w-fast, w-very, w-serious]
+      words: [w-move, w-very, w-serious]
       goal: 2
     - en: "We're calling the surgeon and preparing blood right now."
       ko: "외과 선생님을 부르고 지금 혈액을 준비하고 있어요."
       chunks: ["We're calling", "the surgeon", "and preparing blood", "right now", "."]
-      words: [w-call, w-surgeon, w-prepare, w-blood, w-now]
+      words: [w-call, w-surgeon, w-prepare, w-blood]
       goal: 2
     - en: "Have you ever noticed a pulsing lump in your belly?"
       ko: "배에서 박동하는 덩어리를 느낀 적이 있나요?"
@@ -24199,6 +25415,44 @@
       chunks: ["Your blood pressure", "is low", ", so we're", "acting quickly", "."]
       words: [w-blood, w-pressure, w-low, w-act, w-quickly]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-prepare
+    - w-blood
+    - w-pulse
+    - w-lump
+    pairs:
+    - - type and
+      - crossmatch
+    - - massive transfusion
+      - protocol
+    - - pulsing
+      - lump
+    decoys:
+    - surgeon
+    why: 수혈할 혈액은 type and crossmatch로 준비하고, 대량 출혈이면 massive transfusion protocol(MTP)을 가동해요. 배에서 뛰는 덩어리(pulsing lump)는 복부 대동맥류를 의심하는 신호예요.
+  - kind: context
+    words:
+    - w-notice
+    - w-pulse
+    - w-lump
+    - w-belly
+    scenes:
+    - who: 차트 기록
+      icon: board
+      en: Pulsatile abdominal mass palpated.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Have you ever noticed a pulsatile abdominal mass?
+      ok: false
+      fix: Have you ever noticed a pulsing lump in your belly?
+    - who: 외과의에게 보고
+      icon: speech
+      en: I can feel a pulsatile mass in his abdomen.
+      ok: true
+    why: pulsatile mass·abdominal은 진찰 소견의 말이에요. 환자에게는 pulsing lump·belly처럼 쉬운 말로 물어야 '배에서 뭔가 뛰는 걸 느낀 적'을 떠올려요.
 
 - theme: er-abdominal
   title: 장간막 허혈
@@ -24221,7 +25475,7 @@
     - en: "Your pain is much worse than what we feel on exam — that concerns us."
       ko: "진찰에서 느끼는 것보다 통증이 훨씬 심해요, 그게 저희를 걱정시켜요."
       chunks: ["Your pain is much worse", "than what we feel", "on exam", "— that concerns us", "."]
-      words: [w-pain, w-much, w-bad, w-feel, w-exam, w-concern]
+      words: [w-pain, w-much, w-feel, w-exam, w-concern]
       goal: 1
     - en: "We're drawing a lactate level right away."
       ko: "지금 바로 젖산 수치를 채혈할게요."
@@ -24243,6 +25497,39 @@
       chunks: ["We're moving quickly", "to find", "the cause", "of this pain", "."]
       words: [w-move, w-quickly, w-find, w-cause, w-pain]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-severe
+    - w-pain
+    cue: 'Patient: "It''s the worst pain I''ve ever had in my life."'
+    scale:
+    - bad
+    - severe
+    - excruciating
+    answerAt: 2
+    why: '''평생 최악''이면 excruciating 쪽이에요. 진찰상 배가 말랑한데 통증이 이렇게 극심하면(pain out of proportion to exam) 장간막 허혈을 먼저 의심해요.'
+    example: He describes the pain as excruciating.
+    exKo: 환자는 통증을 견딜 수 없을 만큼 아프다고 해요.
+  - kind: context
+    words:
+    - w-exam
+    - w-pain
+    scenes:
+    - who: 의사에게 보고
+      icon: speech
+      en: Her pain is out of proportion to the exam.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Severe pain out of proportion to benign abdominal exam.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Your pain is out of proportion to your exam.
+      ok: false
+      fix: Your pain is much worse than what we feel on exam — that concerns us.
+    why: out of proportion to exam은 의료진이 쓰는 정해진 표현이에요. 환자에게는 풀어서, 왜 서두르는지까지 함께 말해요.
 
 - theme: er-abdominal
   title: 천공성 궤양(판자복부)
@@ -24275,7 +25562,7 @@
     - en: "I'm calling the surgeon now with an SBAR report."
       ko: "지금 SBAR 형식으로 외과 선생님께 보고할게요."
       chunks: ["I'm calling", "the surgeon now", "with an SBAR", "report", "."]
-      words: [w-call, w-surgeon, w-now, w-sbar, w-report]
+      words: [w-call, w-surgeon, w-sbar, w-report]
       goal: 2
     - en: "Have you had a fever or felt short of breath with this pain?"
       ko: "이 통증과 함께 열이 나거나 숨이 찬 적이 있나요?"
@@ -24287,6 +25574,45 @@
       chunks: ["The team needs", "to operate", "as soon as", "possible", "."]
       words: [w-team, w-need, w-operate, w-soon, w-possible]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-sbar
+    - w-report
+    pairs:
+    - - S
+      - situation
+    - - B
+      - background
+    - - A
+      - assessment
+    - - R
+      - recommendation
+    decoys:
+    - diagnosis
+    why: 'SBAR는 Situation·Background·Assessment·Recommendation 순서로 보고하는 틀이에요. R에서는 원하는 조치를 분명히 말해요(예: ''I need you to see him now'').'
+  - kind: swap
+    words:
+    - w-rigid
+    - w-belly
+    - w-serious
+    - w-sign
+    who: 환자에게 · 진찰 소견 설명
+    icon: me
+    before:
+    - 'Your belly is '
+    - board-like
+    - ', which is a serious sign.'
+    options:
+    - very hard
+    - board-like
+    - peritonitic
+    answer: very hard
+    notes:
+      very hard: 환자가 바로 알아듣는 쉬운 말.
+      board-like: 차트·보고에서 쓰는 소견 표현(판자 같은 배).
+      peritonitic: 복막염 소견이라는 의료진 말. 환자는 뜻을 모른다.
+    why: board-like abdomen은 외과에 보고할 때의 표현이에요. 환자에게는 '배가 아주 딱딱하다'고 쉽게 말해요.
 
 - theme: er-abdominal
   title: 담관염(Charcot 3징)
@@ -24314,7 +25640,7 @@
     - en: "You have a fever and right-sided pain that we take seriously."
       ko: "열과 오른쪽 통증이 있어서 저희가 심각하게 받아들이고 있어요."
       chunks: ["You have a fever", "and right-sided pain", "that we take", "seriously", "."]
-      words: [w-fever, w-pain, w-take, w-serious]
+      words: [w-fever, w-pain, w-serious]
       goal: 1
     - en: "You may need a procedure called ERCP to drain the bile duct."
       ko: "담관을 배액하기 위해 ERCP라는 시술이 필요할 수도 있어요."
@@ -24331,6 +25657,44 @@
       chunks: ["We'll start", "antibiotics", "right away", "to treat the infection", "."]
       words: [w-start, w-antibiotic, w-away, w-treat, w-infection]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-fever
+    - w-yellow
+    - w-eye
+    - w-rib
+    pairs:
+    - - fever
+      - '"I feel hot and shaky."'
+    - - jaundice
+      - '"My eyes look yellow."'
+    - - RUQ pain
+      - '"It hurts under my right ribs."'
+    decoys:
+    - '"My ankles are swollen."'
+    why: Charcot 삼징은 발열(fever)·황달(jaundice)·우상복부 통증(RUQ pain)이에요. 환자는 이렇게 쉬운 말로 호소하니, 셋이 함께 들리면 급성 담관염을 의심해요.
+  - kind: swap
+    words:
+    - w-procedure
+    - w-ercp
+    - w-drain
+    who: 환자에게 · 시술 설명
+    icon: me
+    before:
+    - 'You may need '
+    - an ERCP
+    - ' to drain the bile duct.'
+    options:
+    - a procedure called ERCP
+    - an ERCP
+    - endoscopic retrograde cholangiopancreatography
+    answer: a procedure called ERCP
+    notes:
+      a procedure called ERCP: 무엇인지(시술)부터 알려 주고 이름을 붙인다.
+      an ERCP: 약어만 말하면 환자는 검사인지 수술인지 모른다.
+      endoscopic retrograde cholangiopancreatography: 정확한 이름이지만 너무 길고 어려워 오히려 불안을 키운다.
+    why: 약어만 말해도, 풀네임을 다 말해도 환자에게는 전해지지 않아요. '…라는 시술'처럼 무엇인지 먼저 말해요.
 
 - theme: er-abdominal
   title: 급성 복증 급속악화
@@ -24358,7 +25722,7 @@
     - en: "Stay with me — I'm calling for the team right now."
       ko: "곁에 있어 주세요, 지금 바로 팀을 부를게요."
       chunks: ["Stay with me", "— I'm calling", "for the team", "right now", "."]
-      words: [w-stay, w-call, w-team, w-now]
+      words: [w-stay, w-call, w-team]
       goal: 2
     - en: "We're starting fluids and oxygen immediately."
       ko: "즉시 수액과 산소를 시작할게요."
@@ -24368,13 +25732,47 @@
     - en: "Tell me right away if you feel any worse."
       ko: "조금이라도 더 안 좋아지면 바로 말씀해 주세요."
       chunks: ["Tell me", "right away", "if you feel", "any worse", "."]
-      words: [w-tell, w-away, w-feel, w-bad]
+      words: [w-tell, w-away, w-feel]
       goal: 1
     - en: "The team is starting fluids to bring your pressure back up."
       ko: "팀이 혈압을 다시 끌어올리기 위해 수액을 시작하고 있어요."
       chunks: ["The team is starting fluids", "to bring", "your pressure", "back up", "."]
       words: [w-team, w-fluid, w-bring, w-pressure, w-back]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-immediately
+    - w-away
+    cue: 'Nurse to team: "BP is 70 over 40 and she''s barely responsive — I need fluids ___."'
+    scale:
+    - soon
+    - right away
+    - STAT
+    answerAt: 2
+    why: STAT은 라틴어 statim(즉시)에서 온 말로, 의료진 사이에서 가장 급한 요청을 뜻해요. 환자·가족에게는 right away나 immediately를 써요.
+    example: I need a lactate STAT.
+    exKo: 젖산 수치 지금 당장 부탁해요.
+  - kind: context
+    words:
+    - w-blood
+    - w-pressure
+    - w-drop
+    scenes:
+    - who: 의사 호출
+      icon: speech
+      en: BP is 78 over 40 and dropping — I need you at the bedside now.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: BP 78/40, down from 110/70.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Your BP is 78 over 40 and dropping.
+      ok: false
+      fix: Your blood pressure has dropped, so we're acting quickly.
+    why: 의료진끼리는 정확한 수치가 핵심이지만, 환자에게 숫자만 던지면 불안만 커져요. 환자에게는 무슨 일이 일어나고 있고 무엇을 하고 있는지를 말해요.
 
 - theme: er-abdominal
   title: 다발외상 동반 복강내출혈
@@ -24397,17 +25795,17 @@
     - en: "We're doing a quick ultrasound of your belly called a FAST exam."
       ko: "배에 빠른 초음파, 즉 FAST 검사를 할게요."
       chunks: ["We're doing", "a quick ultrasound", "of your belly", "called a FAST exam", "."]
-      words: [w-ultrasound, w-belly, w-call, w-fast, w-exam, w-quick]
+      words: [w-ultrasound, w-belly, w-call, w-exam, w-quick]
       goal: 1
     - en: "Tell me where you hurt the most from the crash."
       ko: "사고로 어디가 가장 아픈지 말씀해 주세요."
       chunks: ["Tell me", "where you hurt", "the most", "from the crash", "."]
-      words: [w-tell, w-hurt, w-most, w-crash]
+      words: [w-tell, w-hurt, w-crash]
       goal: 1
     - en: "We're getting blood ready in case you need a transfusion."
       ko: "수혈이 필요할 경우를 대비해 혈액을 준비하고 있어요."
       chunks: ["We're getting blood ready", "in case", "you need", "a transfusion", "."]
-      words: [w-get, w-blood, w-ready, w-need, w-transfusion]
+      words: [w-blood, w-ready, w-need, w-transfusion]
       goal: 2
     - en: "Your blood pressure and pulse tell us how serious this is."
       ko: "혈압과 맥박을 보면 얼마나 심각한지 알 수 있어요."
@@ -24417,8 +25815,41 @@
     - en: "The trauma team is here to help you right now."
       ko: "외상팀이 지금 바로 도와드리러 왔어요."
       chunks: ["The trauma team", "is here", "to help you", "right now", "."]
-      words: [w-trauma, w-team, w-help, w-now]
+      words: [w-trauma, w-team, w-help]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-serious
+    cue: 'Trauma lead: "Pressure''s 70 systolic and the FAST is positive — he''s going to the OR now."'
+    scale:
+    - minor
+    - serious
+    - life-threatening
+    answerAt: 2
+    why: 저혈압에 FAST 양성이면 복강 안에서 피가 나고 있다는 뜻이라 life-threatening이에요. 이때는 수혈과 수술이 동시에 준비돼요.
+    example: This is a life-threatening bleed.
+    exKo: 생명을 위협하는 출혈이에요.
+  - kind: swap
+    words:
+    - w-crash
+    - w-hurt
+    who: 환자에게 · 손상 부위 확인
+    icon: me
+    before:
+    - 'Tell me where you hurt the most from the '
+    - MVC
+    - .
+    options:
+    - crash
+    - MVC
+    - collision event
+    answer: crash
+    notes:
+      crash: 환자가 쓰는 말 그대로라 바로 통한다.
+      MVC: motor vehicle collision의 차트 약어. 환자는 모른다.
+      collision event: 보고서 말투라 대화에서는 어색하다.
+    why: MVC는 외상 기록·인계의 약어예요. 환자에게는 crash나 accident처럼 쉬운 말을 써요.
 
 - theme: er-gi-bleed
   title: 상부 vs 하부 출혈 문진
@@ -30517,7 +31948,7 @@
     - en: "It helps me care for you to know how much you usually drink."
       ko: "얼마나 드시는지 알아야 잘 돌봐드릴 수 있어요."
       chunks: ["It helps me care for you", "to know", "how much", "you usually drink", "."]
-      words: [w-help, w-care, w-know, w-usually, w-drink]
+      words: [w-help, w-care, w-usually, w-drink]
       goal: 1
     - en: "When was your last drink? That tells us what to watch for."
       ko: "마지막으로 언제 드셨어요? 그게 뭘 지켜봐야 할지 알려줘요."
@@ -30532,7 +31963,7 @@
     - en: "Can you tell me how many drinks you usually have in a day?"
       ko: "하루에 보통 몇 잔 드시는지 말해주실 수 있어요?"
       chunks: ["Can you tell me", "how many drinks", "you usually have", "in a day", "?"]
-      words: [w-tell, w-drink, w-usually, w-have, w-day]
+      words: [w-tell, w-drink, w-usually]
       goal: 1
     - en: "I ask everyone these questions, so please don't feel singled out."
       ko: "모든 분께 여쭤보는 질문이니 혼자 지목됐다고 느끼지 않으셔도 돼요."
@@ -30542,8 +31973,61 @@
     - en: "How many days has it been since your last drink?"
       ko: "마지막으로 드신 지 며칠이나 됐어요?"
       chunks: ["How many days", "has it been", "since your", "last drink", "?"]
-      words: [w-day, w-last, w-drink]
+      words: [w-last, w-drink]
       goal: 1
+  nuance:
+  - kind: slider
+    words:
+    - w-drink
+    - w-usually
+    cue: 'Patient: "Maybe two beers on the weekend, that''s about it."'
+    scale:
+    - light
+    - moderate
+    - heavy
+    answerAt: 0
+    why: 주말에 맥주 두어 잔이면 light 쪽이에요. 다만 차트에는 light·heavy 같은 형용사보다 환자가 말한 잔 수와 빈도를 그대로 적어요.
+    example: He reports heavy drinking, about ten beers a day.
+    exKo: 하루 맥주 열 캔 정도로 과음한다고 해요.
+  - kind: context
+    words:
+    - w-drink
+    - w-usually
+    scenes:
+    - who: 환자에게
+      icon: me
+      en: How many drinks do you usually have in a day?
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Pt reports EtOH 6-8 beers/day, last drink 0800.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: What's your daily EtOH intake?
+      ok: false
+      fix: How much do you usually drink in a day?
+    why: EtOH(에탄올)는 차트와 의료진끼리 쓰는 약어예요. 환자에게는 '보통 하루에 얼마나 드세요?'처럼 풀어서 물어요.
+  - kind: swap
+    words:
+    - w-judge
+    - w-safe
+    who: 환자에게 · 음주 문진을 여는 말
+    icon: me
+    before:
+    - 'I''m not here to '
+    - lecture you about drinking
+    - ' — this is just about keeping you safe.'
+    options:
+    - judge
+    - lecture you about drinking
+    - get you in trouble
+    answer: judge
+    notes:
+      judge: 짧고 분명하게 '비난하려는 게 아니다'를 전한다.
+      lecture you about drinking: 훈계를 먼저 떠올리게 해서, 부정하는 말인데도 방어하게 만든다.
+      get you in trouble: 법적 문제를 먼저 꺼내 오히려 불안을 키운다.
+    why: 음주 문진은 비판단적으로 여는 게 핵심이에요. 'not here to judge'는 미국 응급실에서 흔히 쓰는 여는 말이에요.
 
 - theme: er-alcohol-withdrawal
   title: 금단 초기 증상 사정
@@ -30576,7 +32060,7 @@
     - en: "When did you have your last drink?"
       ko: "마지막으로 언제 드셨어요?"
       chunks: ["When did you", "have your", "last drink", "?"]
-      words: [w-have, w-last, w-drink]
+      words: [w-last, w-drink]
       goal: 1
     - en: "Your hands are shaking and you're sweating a lot right now."
       ko: "지금 손도 떨리고 땀도 많이 나고 계세요."
@@ -30593,6 +32077,38 @@
       chunks: ["I'll check on you", "often", "and mark your score", "on the checklist", "."]
       words: [w-check, w-checklist]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-sweat
+    cue: 'Patient: "My shirt is soaked through — I can''t stop sweating."'
+    scale:
+    - moist
+    - sweaty
+    - drenched
+    answerAt: 2
+    why: 옷이 흠뻑 젖을 정도면 drenched예요. CIWA의 발한 항목도 '손바닥이 촉촉한 정도'부터 '흠뻑 젖는 땀(drenching sweats)'까지 단계로 매겨요.
+    example: He's drenched in sweat and tremulous.
+    exKo: 땀에 흠뻑 젖었고 떨고 있어요.
+  - kind: context
+    words:
+    - w-ciwa
+    - w-checklist
+    scenes:
+    - who: 환자에게
+      icon: me
+      en: We'll use a checklist called CIWA to track how you're doing.
+      ok: true
+    - who: 의료진 인계
+      icon: monitor
+      en: CIWA is 14, next reassessment due at 1500.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Your CIWA-Ar is 14, so you meet criteria for symptom-triggered dosing.
+      ok: false
+      fix: Your withdrawal score is up a bit, so I'll give you some medicine to help.
+    why: 척도 이름·기준·투약 방식은 의료진끼리의 말이에요. 환자에게는 '체크리스트', '점수가 올라서 약을 드릴게요'처럼 풀어 말해요.
 
 - theme: er-alcohol-withdrawal
   title: CIWA 척도 설명
@@ -30620,7 +32136,7 @@
     - en: "Each time I ask about shaking, sweating, and how you feel."
       ko: "매번 떨림·발한·기분을 여쭤봐요."
       chunks: ["Each time", "I ask about", "shaking, sweating", ", and how you feel", "."]
-      words: [w-each, w-time, w-ask, w-shake, w-sweat, w-feel]
+      words: [w-each, w-ask, w-shake, w-sweat, w-feel]
       goal: 1
     - en: "Your honest answers help us give you the right amount of medicine."
       ko: "솔직히 답해주시면 딱 맞는 양의 약을 드릴 수 있어요."
@@ -30640,8 +32156,45 @@
     - en: "That helps me give you the right amount of medicine each time."
       ko: "그래야 매번 딱 맞는 양의 약을 드릴 수 있어요."
       chunks: ["That helps me", "give you the right amount", "of medicine", "each time", "."]
-      words: [w-help, w-give, w-right, w-amount, w-medicine, w-each, w-time]
+      words: [w-help, w-give, w-right, w-amount, w-medicine, w-each]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-catch
+    - w-honest
+    - w-answer
+    - w-each
+    pairs:
+    - - catch
+      - any worsening early
+    - - honest
+      - answers
+    - - each
+      - time I check
+    decoys:
+    - on you often
+    why: catch는 나빠지는 걸 '잡아낸다'는 뜻이라 worsening과, honest는 answers와 묶여 '솔직한 대답', each는 time과 묶여 '매번'이에요.
+  - kind: swap
+    words:
+    - w-check
+    - w-often
+    who: 환자에게 · 반복 사정 설명
+    icon: me
+    before:
+    - 'I''ll come back to '
+    - reassess you
+    - ' every hour.'
+    options:
+    - check on you
+    - reassess you
+    - evaluate you
+    answer: check on you
+    notes:
+      check on you: 환자에게 부담 없는 일상어. 들여다보러 온다는 느낌.
+      reassess you: 의료진끼리의 말. 환자에게는 딱딱하게 들린다.
+      evaluate you: 틀린 말은 아니지만 시험받는 느낌을 준다.
+    why: 같은 재사정도 환자에게는 check on you처럼 가볍게, 인계에서는 reassess로 말해요.
 
 - theme: er-alcohol-withdrawal
   title: 티아민 투여 설명
@@ -30674,16 +32227,16 @@
     - en: "It's common and important for people who drink regularly."
       ko: "정기적으로 술을 드시는 분께는 흔하고 중요한 일이에요."
       chunks: ["It's common", "and important", "for people", "who drink regularly", "."]
-      words: [w-common, w-important, w-people, w-drink]
+      words: [w-common, w-important, w-drink]
       goal: 1
     - en: "Thiamine helps protect your brain from lasting damage."
       ko: "티아민은 뇌가 오래 손상되지 않도록 지켜줘요."
       chunks: ["Thiamine helps protect", "your brain", "from lasting damage", "."]
-      words: [w-thiamine, w-help, w-protect, w-brain]
+      words: [w-thiamine, w-help, w-protect, w-brain, w-lasting]
       goal: 1
-    - en: "We always give thiamine before we give any sugar or fluids."
-      ko: "당분이나 수액보다 항상 티아민을 먼저 드려요."
-      chunks: ["We always give thiamine", "before we give", "any sugar", "or fluids", "."]
+    - en: "We always give thiamine before any glucose or sugary fluids."
+      ko: "포도당이나 당이 든 수액보다 항상 티아민을 먼저 드려요."
+      chunks: ["We always give", "thiamine", "before any glucose", "or sugary fluids", "."]
       words: [w-give, w-thiamine, w-sugar]
       goal: 2
     - en: "Low thiamine can cause a serious brain problem if it's missed."
@@ -30691,6 +32244,46 @@
       chunks: ["Low thiamine", "can cause", "a serious brain problem", "if it's missed", "."]
       words: [w-thiamine, w-serious, w-brain, w-problem]
       goal: 1
+  nuance:
+  - kind: pair
+    words:
+    - w-prevent
+    - w-protect
+    - w-common
+    - w-problem
+    - w-brain
+    pairs:
+    - - prevent
+      - a serious problem
+    - - protect
+      - your brain and nerves
+    - - common
+      - for people who drink
+    decoys:
+    - the alcohol
+    why: prevent는 일이 '생기지 않게 막는' 것이라 problem과, protect는 이미 있는 것을 '지키는' 것이라 뇌·신경과 짝이에요.
+  - kind: swap
+    words:
+    - w-vitamin
+    - w-thiamine
+    - w-protect
+    - w-brain
+    who: 환자에게 · 티아민 설명
+    icon: me
+    before:
+    - 'This is '
+    - IV thiamine for Wernicke's prophylaxis
+    - .
+    options:
+    - a vitamin that protects your brain
+    - IV thiamine for Wernicke's prophylaxis
+    - a drug to stop you drinking
+    answer: a vitamin that protects your brain
+    notes:
+      a vitamin that protects your brain: 무엇을 왜 주는지 한 번에 들리는 쉬운 말.
+      IV thiamine for Wernicke's prophylaxis: 의료진끼리의 말. 병명과 '예방 투여'는 환자가 못 알아듣는다.
+      a drug to stop you drinking: 사실이 아니다 — 티아민은 음주를 막는 약이 아니고, 비난처럼 들린다.
+    why: 같은 약도 환자에게는 이름보다 '무엇을 지켜 주는지'로 설명해요.
 
 - theme: er-alcohol-withdrawal
   title: 만취 관찰 환자
@@ -30713,7 +32306,7 @@
     - en: "I'm going to keep the head of your bed up to protect your breathing."
       ko: "침대 머리쪽을 올려서 숨쉬는 걸 지켜드릴게요."
       chunks: ["I'm going to keep", "the head", "of your bed", "up", "to protect your breathing", "."]
-      words: [w-keep, w-head, w-bed, w-protect, w-breathe]
+      words: [w-keep, w-bed, w-protect, w-breathe]
       goal: 1
     - en: "Please stay in bed — I don't want you to fall."
       ko: "침대에 계셔주세요 — 넘어지실까 봐 그래요."
@@ -30723,7 +32316,7 @@
     - en: "I'll be checking on you often to make sure you're okay."
       ko: "괜찮으신지 자주 와서 확인할게요."
       chunks: ["I'll be checking on you", "often", "to make sure", "you're okay", "."]
-      words: [w-check, w-often, w-make, w-sure]
+      words: [w-check, w-often, w-sure]
       goal: 2
     - en: "I'm watching your breathing and airway closely right now."
       ko: "지금 숨쉬는 것과 기도를 자세히 지켜보고 있어요."
@@ -30740,6 +32333,40 @@
       chunks: ["I'll keep checking", "every fifteen minutes", "until you're", "more awake", "."]
       words: [w-keep, w-check]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-check
+    - w-watch
+    cue: 'Nurse: "He opens his eyes when I say his name, then drifts off again."'
+    scale:
+    - alert
+    - drowsy
+    - unresponsive
+    answerAt: 1
+    why: 부르면 눈을 떴다가 다시 잠들면 drowsy예요. 불러도 흔들어도 반응이 없으면 unresponsive — 그때는 기도부터 봐요.
+    example: He's drowsy but wakes up to voice.
+    exKo: 졸려 하지만 부르면 깨요.
+  - kind: context
+    words:
+    - w-fall
+    - w-stay
+    - w-bed
+    scenes:
+    - who: 환자에게
+      icon: me
+      en: Please stay in bed — I don't want you to fall.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: High fall risk; bed alarm on, bed in lowest position.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: You are a high fall risk. Remain in bed.
+      ok: false
+      fix: Please don't get up on your own — call me and I'll help you.
+    why: fall risk는 차트와 의료진끼리의 말이고, 명령조 remain은 딱딱하게 들려요. 환자에게는 걱정하는 이유와 함께 부탁해요.
 
 - theme: er-alcohol-withdrawal
   title: 중등도 금단
@@ -30767,12 +32394,12 @@
     - en: "We adjust the dose based on how you're doing each time I check."
       ko: "매번 확인할 때 상태에 맞춰 용량을 조절해요."
       chunks: ["We adjust the dose", "based on", "how you're doing", "each time I check", "."]
-      words: [w-adjust, w-dose, w-each, w-time, w-check]
+      words: [w-adjust, w-dose, w-each, w-check]
       goal: 2
     - en: "Tell me if you see or feel things that aren't there."
       ko: "실제로 없는 걸 보이거나 느끼시면 말씀해주세요."
       chunks: ["Tell me", "if you see", "or feel things", "that aren't there", "."]
-      words: [w-tell, w-see, w-feel]
+      words: [w-tell, w-feel]
       goal: 2
     - en: "A high score means we need more medication right now."
       ko: "점수가 높으면 지금 약이 더 필요하다는 뜻이에요."
@@ -30782,13 +32409,47 @@
     - en: "I'm watching closely to see if your symptoms get worse."
       ko: "증상이 더 심해지는지 자세히 지켜보고 있어요."
       chunks: ["I'm watching closely", "to see", "if your symptoms", "get worse", "."]
-      words: [w-watch, w-see]
+      words: [w-watch]
       goal: 2
     - en: "This medicine will calm your body and help the shaking."
       ko: "이 약이 몸을 진정시키고 떨림을 도와줄 거예요."
       chunks: ["This medicine", "will calm your body", "and help", "the shaking", "."]
       words: [w-medicine, w-calm, w-help, w-shake]
       goal: 1
+  nuance:
+  - kind: pair
+    words:
+    - w-adjust
+    - w-dose
+    - w-calm
+    - w-shake
+    pairs:
+    - - adjust
+      - the dose
+    - - calm
+      - the shaking
+    decoys:
+    - honest answers
+    why: adjust는 양을 '조절하는' 동사라 dose와, calm은 '가라앉히는' 동사라 떨림(shaking)과 짝이에요.
+  - kind: context
+    words:
+    - w-dose
+    - w-adjust
+    scenes:
+    - who: 환자에게
+      icon: me
+      en: We adjust the dose based on how you're doing each time I check.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Symptom-triggered benzo dosing per CIWA protocol.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: You're on symptom-triggered dosing per the CIWA protocol.
+      ok: false
+      fix: Each time I check, we give you medicine based on your score.
+    why: symptom-triggered dosing은 의료진 용어예요. 환자에게는 '확인할 때마다 점수에 맞춰 약을 드려요'처럼 풀어 말해요.
 
 - theme: er-alcohol-withdrawal
   title: 금단 발작
@@ -30838,6 +32499,41 @@
       chunks: ["You're safe now", "— the seizure", "has stopped", "."]
       words: [w-safe, w-seizure]
       goal: 1
+  nuance:
+  - kind: pair
+    words:
+    - w-seizure
+    - w-rail
+    pairs:
+    - - seizure
+      - precautions
+    - - padded
+      - side rails
+    - - loss of
+      - consciousness
+    decoys:
+    - a checklist
+    why: seizure precautions는 발작 대비 조치를 묶어 부르는 말이고, padded side rails는 부딪혀 다치지 않게 난간에 패드를 댄 것이에요.
+  - kind: swap
+    words:
+    - w-seizure
+    - w-safe
+    who: 환자에게 · 발작 직후
+    icon: me
+    before:
+    - 'You had '
+    - a generalized tonic-clonic seizure
+    - ' — you''re safe now.'
+    options:
+    - a seizure
+    - a generalized tonic-clonic seizure
+    - a breakdown
+    answer: a seizure
+    notes:
+      a seizure: 환자도 아는 말. 정확하면서 쉽다.
+      a generalized tonic-clonic seizure: 기록·보고용 의료진 말. 환자에게는 길고 낯설다.
+      a breakdown: 정신적으로 무너졌다는 말로 들려 뜻이 달라진다.
+    why: 발작 직후 환자에게는 짧고 분명한 말로 무슨 일이 있었는지 알려요.
 
 - theme: er-alcohol-withdrawal
   title: 알코올성 환각증
@@ -30860,7 +32556,7 @@
     - en: "I know they look real to you, but I don't see spiders — you're safe."
       ko: "그게 진짜처럼 보이는 건 알지만 저는 거미가 안 보여요 — 안전해요."
       chunks: ["I know", "they look real to you", ", but I don't see spiders", "— you're safe", "."]
-      words: [w-know, w-look, w-real, w-see, w-spider, w-safe]
+      words: [w-look, w-real, w-spider, w-safe]
       goal: 1
     - en: "This can happen with withdrawal, and medication will help."
       ko: "금단 때문에 그럴 수 있고, 약이 도와줄 거예요."
@@ -30870,12 +32566,12 @@
     - en: "Focus on my voice — you're in the hospital and I'm right here."
       ko: "제 목소리에 집중하세요 — 여긴 병원이고 제가 바로 옆에 있어요."
       chunks: ["Focus on my voice", "— you're in the hospital", "and I'm", "right here", "."]
-      words: [w-focus, w-voice, w-hospital, w-right]
+      words: [w-focus, w-voice, w-hospital]
       goal: 2
     - en: "Can you tell me exactly what you're seeing right now?"
       ko: "지금 정확히 뭐가 보이는지 말씀해주실래요?"
       chunks: ["Can you tell me", "exactly what", "you're seeing", "right now", "?"]
-      words: [w-tell, w-see, w-right]
+      words: [w-tell]
       goal: 1
     - en: "You're safe here in the hospital with me."
       ko: "여기 병원에서 저와 함께 안전하게 계세요."
@@ -30887,6 +32583,43 @@
       chunks: ["This medication should help", "calm the hallucinations", "soon", "."]
       words: [w-medication, w-help, w-calm]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-focus
+    - w-voice
+    - w-look
+    - w-real
+    - w-calm
+    pairs:
+    - - focus
+      - on my voice
+    - - look
+      - real to you
+    - - calm
+      - the hallucinations
+    decoys:
+    - the dose
+    why: focus는 on과 함께 '~에 집중하다', look은 형용사를 받아 '~처럼 보이다', calm은 목적어를 받아 '가라앉히다'예요.
+  - kind: context
+    words:
+    - w-real
+    - w-spider
+    scenes:
+    - who: 환자에게
+      icon: me
+      en: I know they look real to you, but I don't see spiders — you're safe.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Pt reports visual hallucinations (spiders on wall); oriented x3.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: There are no spiders. You're hallucinating.
+      ok: false
+      fix: I know they look real to you, but I don't see them — you're safe.
+    why: 환각을 딱 잘라 부정하거나 'hallucinating'이라고 이름 붙이면 환자는 무시당했다고 느껴요. 환자가 겪는 것은 인정하고, 나에게는 안 보인다는 사실만 말해요.
 
 - theme: er-alcohol-withdrawal
   title: 베르니케 의심
@@ -30914,12 +32647,12 @@
     - en: "We're giving high-dose thiamine right away to prevent lasting damage."
       ko: "지속 손상을 막으려고 고용량 티아민을 바로 드리고 있어요."
       chunks: ["We're giving high-dose thiamine", "right away", "to prevent", "lasting damage", "."]
-      words: [w-give, w-thiamine, w-right, w-prevent, w-damage]
+      words: [w-give, w-thiamine, w-prevent, w-damage, w-lasting]
       goal: 2
     - en: "How long has he been confused, and has he been eating?"
       ko: "언제부터 혼란스러웠고, 식사는 하셨어요?"
       chunks: ["How long", "has he been confused", ", and has he", "been eating", "?"]
-      words: [w-long, w-confused, w-eat]
+      words: [w-long, w-confused]
       goal: 1
     - en: "He seems unsteady when he tries to walk."
       ko: "걸으려 하면 불안정해 보여요."
@@ -30934,8 +32667,46 @@
     - en: "We're treating this as an emergency and giving thiamine right now."
       ko: "응급 상황으로 보고 지금 바로 티아민을 드리고 있어요."
       chunks: ["We're treating this", "as an emergency", "and giving thiamine", "right now", "."]
-      words: [w-give, w-thiamine, w-right]
+      words: [w-give, w-thiamine]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-thiamine
+    - w-deficiency
+    - w-eye
+    - w-movement
+    - w-give
+    pairs:
+    - - thiamine
+      - deficiency
+    - - eye
+      - movements
+    - - give
+      - high-dose thiamine
+    decoys:
+    - the fall
+    why: thiamine deficiency는 '티아민 결핍', eye movements는 '안구 운동', give high-dose thiamine은 '고용량 티아민을 주다'로 굳어진 짝이에요.
+  - kind: swap
+    words:
+    - w-unsteady
+    - w-walk
+    who: 보호자에게 · 걸음걸이 설명
+    icon: me
+    before:
+    - 'He seems '
+    - ataxic
+    - ' when he tries to walk.'
+    options:
+    - unsteady
+    - ataxic
+    - drunk
+    answer: unsteady
+    notes:
+      unsteady: 보호자가 바로 알아듣는 쉬운 말.
+      ataxic: 의료진끼리의 말. 보호자는 뜻을 모른다.
+      drunk: 술 탓으로 단정하는 말이라 비난처럼 들리고, 티아민 결핍이라는 원인도 가린다.
+    why: 보호자에게는 실조(ataxia) 대신 unsteady처럼 눈에 보이는 모습으로 말해요.
 
 - theme: er-alcohol-withdrawal
   title: 만성 음주 전해질 이상
@@ -30985,6 +32756,46 @@
       chunks: ["Your heart rhythm", "looks steady", "now that we've", "corrected your levels", "."]
       words: [w-heart, w-rhythm, w-look, w-correct, w-level]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-replace
+    - w-low
+    - w-heart
+    - w-rhythm
+    - w-heavy
+    - w-drink
+    pairs:
+    - - replace
+      - what's low
+    - - heart
+      - rhythm
+    - - heavy
+      - drinking
+    decoys:
+    - the fall
+    why: replace는 모자란 것을 '채워 넣는다'는 뜻이라 what's low와, heart rhythm은 '심장 리듬', heavy drinking은 '과음'으로 굳은 짝이에요.
+  - kind: context
+    words:
+    - w-flutter
+    - w-heart
+    - w-magnesium
+    - w-potassium
+    scenes:
+    - who: 환자에게
+      icon: me
+      en: Low magnesium and potassium can make your heart feel like it's fluttering.
+      ok: true
+    - who: 의사에게 보고
+      icon: monitor
+      en: K 2.9, Mg 1.1 — frequent PVCs on the monitor.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Your hypokalemia and hypomagnesemia are causing ectopy.
+      ok: false
+      fix: Your potassium and magnesium are low, and that can make your heart flutter.
+    why: hypokalemia·ectopy 같은 말은 의료진끼리의 말이에요. 환자에게는 '칼륨·마그네슘이 낮아서 심장이 두근거릴 수 있어요'처럼 풀어 말해요.
 
 - theme: er-alcohol-withdrawal
   title: 금단+외상
@@ -31012,12 +32823,12 @@
     - en: "I want to check your head and body carefully to be safe."
       ko: "안전을 위해 머리와 몸을 꼼꼼히 확인하고 싶어요."
       chunks: ["I want to check", "your head and body", "carefully", "to be safe", "."]
-      words: [w-check, w-head, w-body, w-safe]
+      words: [w-check, w-safe]
       goal: 1
     - en: "Did you hit your head, and do you remember the fall clearly?"
       ko: "머리를 부딪히셨어요, 넘어진 게 또렷이 기억나세요?"
       chunks: ["Did you hit", "your head", ", and do you remember", "the fall clearly", "?"]
-      words: [w-hit, w-head, w-remember, w-fall]
+      words: [w-hit, w-remember, w-fall]
       goal: 1
     - en: "Sometimes a fall causes an injury you don't notice right away."
       ko: "넘어지면 바로 눈치채지 못하는 부상이 생기기도 해요."
@@ -31027,13 +32838,48 @@
     - en: "I'm checking your body carefully for any bruises or injuries."
       ko: "멍이나 부상이 있는지 몸을 꼼꼼히 확인하고 있어요."
       chunks: ["I'm checking", "your body carefully", "for any bruises", "or injuries", "."]
-      words: [w-check, w-body, w-injury]
+      words: [w-check, w-injury]
       goal: 1
     - en: "We'll manage the withdrawal while we look for any hidden injury."
       ko: "금단을 관리하면서 숨은 부상이 있는지 살펴볼게요."
       chunks: ["We'll manage", "the withdrawal", "while we look", "for any hidden injury", "."]
-      words: [w-manage, w-withdrawal, w-look, w-injury]
+      words: [w-manage, w-withdrawal, w-injury]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-remember
+    - w-fall
+    cue: 'Patient: "I think I tripped… honestly it''s kind of fuzzy."'
+    scale:
+    - not at all
+    - vaguely
+    - clearly
+    answerAt: 1
+    why: '''흐릿하다(fuzzy)''면 vaguely예요. 넘어진 순간이 흐릿하거나 비어 있으면 의식 소실이나 머리 손상을 의심하고 보고해요.'
+    example: He only vaguely remembers the fall.
+    exKo: 넘어진 걸 어렴풋이만 기억해요.
+  - kind: swap
+    words:
+    - w-injury
+    - w-fall
+    - w-cause
+    who: 환자에게 · 숨은 부상 설명
+    icon: me
+    before:
+    - 'A fall while shaking can cause '
+    - occult injuries
+    - ' you might not feel yet.'
+    options:
+    - injuries
+    - occult injuries
+    - serious trauma
+    answer: injuries
+    notes:
+      injuries: 쉬운 말로 사실만 전한다.
+      occult injuries: 의료진끼리의 말. occult(숨은)는 환자에게 낯설다.
+      serious trauma: 아직 확인되지 않은 것을 무겁게 말해 불안을 키운다.
+    why: 숨은 부상을 의료진끼리는 occult injury라고 하지만, 환자에게는 그냥 injuries로 말해요.
 
 - theme: er-alcohol-withdrawal
   title: 반복 재원 환자
@@ -31056,33 +32902,67 @@
     - en: "I'm glad you came in — let's take care of you properly today."
       ko: "와주셔서 다행이에요 — 오늘 제대로 돌봐드릴게요."
       chunks: ["I'm glad", "you came in", "— let's take care", "of you properly today", "."]
-      words: [w-glad, w-come, w-take, w-care, w-today]
+      words: [w-glad, w-care]
       goal: 1
     - en: "When you're ready, I can connect you with people who can help."
       ko: "준비되시면 도와줄 수 있는 분들과 연결해드릴 수 있어요."
       chunks: ["When you're ready", ", I can connect you", "with people", "who can help", "."]
-      words: [w-ready, w-connect, w-people, w-help]
+      words: [w-ready, w-connect, w-help]
       goal: 2
     - en: "No pressure — but that door is always open when you want it."
       ko: "부담 갖지 마세요 — 원하실 때 그 문은 항상 열려 있어요."
       chunks: ["No pressure", "— but that door", "is always open", "when you want it", "."]
-      words: [w-pressure, w-door, w-open, w-always, w-want]
+      words: [w-pressure, w-door, w-open, w-always]
       goal: 2
     - en: "I know you've been here before, but I still want to take good care of you."
       ko: "전에도 오셨던 거 알아요, 그래도 잘 돌봐드리고 싶어요."
       chunks: ["I know you've been", "here before", ", but I still want", "to take good care", "of you", "."]
-      words: [w-know, w-want, w-take, w-care]
+      words: [w-care]
       goal: 1
     - en: "There are people in the community who can help when you're ready."
       ko: "준비되시면 지역사회에 도와줄 사람들이 있어요."
       chunks: ["There are people", "in the community", "who can help", "when you're ready", "."]
-      words: [w-people, w-help, w-ready]
+      words: [w-help, w-ready]
       goal: 2
     - en: "That door stays open — you can come back anytime you want."
       ko: "그 문은 열려 있어요 — 원하실 때 언제든 다시 오시면 돼요."
       chunks: ["That door stays open", "— you can come back", "anytime", "you want", "."]
-      words: [w-door, w-open, w-come, w-want]
+      words: [w-door, w-open]
       goal: 1
+  nuance:
+  - kind: slider
+    words:
+    - w-ready
+    cue: 'Patient: "I''m not quitting. I just need something for the shakes."'
+    scale:
+    - not ready
+    - thinking about it
+    - ready to start
+    answerAt: 0
+    why: 당장 끊을 생각이 없다고 하면 not ready 쪽이에요. 이때는 설득하기보다 'When you're ready…'처럼 문을 열어 두는 말이 신뢰를 지켜요.
+    example: When you're ready, I can connect you with people who can help.
+    exKo: 준비되시면 도와줄 수 있는 분들과 연결해 드릴 수 있어요.
+  - kind: swap
+    words:
+    - w-ready
+    - w-connect
+    - w-help
+    who: 환자에게 · 자원 연계 제안
+    icon: me
+    before:
+    - 'When you''re '
+    - finally willing to quit
+    - ', I can connect you with people who can help.'
+    options:
+    - ready
+    - finally willing to quit
+    - sober enough
+    answer: ready
+    notes:
+      ready: 결정을 환자에게 맡기는 말. 재촉도 비난도 없다.
+      finally willing to quit: finally가 '그동안 안 끊었다'는 비난으로 들린다.
+      sober enough: 지금 취해 있다는 판단처럼 들려 방어하게 만든다.
+    why: 반복해서 오는 환자일수록 재촉하지 않는 말 하나가 다음 방문의 신뢰를 지켜요.
 
 - theme: er-alcohol-withdrawal
   title: 알코올성 간질환 동반
@@ -31132,6 +33012,46 @@
       chunks: ["We'll treat the withdrawal", "carefully", "and support your liver", "at the same time", "."]
       words: [w-withdrawal, w-careful, w-support, w-liver]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-raise
+    - w-risk
+    - w-support
+    - w-liver
+    - w-yellow
+    - w-skin
+    pairs:
+    - - raise
+      - your bleeding risk
+    - - support
+      - your liver
+    - - yellow
+      - skin
+    decoys:
+    - the withdrawal
+    why: raise는 위험을 '높이다'라 risk와, support는 힘든 기관을 '돕다'라 liver와, yellow skin은 황달을 쉽게 말하는 짝이에요.
+  - kind: context
+    words:
+    - w-yellow
+    - w-skin
+    - w-liver
+    - w-swell
+    scenes:
+    - who: 환자에게
+      icon: me
+      en: Your skin looks yellow because your liver isn't working well.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Jaundiced, scleral icterus, abdomen distended with ascites.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: You're jaundiced with ascites from your cirrhosis.
+      ok: false
+      fix: Your skin looks yellow and your belly is swollen because your liver is struggling.
+    why: jaundice·ascites·cirrhosis는 의료진 말이에요. 환자에게는 '피부가 노랗고 배가 부은 건 간이 힘들어서예요'처럼 풀어 말해요.
 
 - theme: er-alcohol-withdrawal
   title: 금단+정신질환
@@ -31159,12 +33079,12 @@
     - en: "Are you having any thoughts of hurting yourself right now?"
       ko: "지금 자신을 다치게 하고 싶은 생각이 있으세요?"
       chunks: ["Are you having", "any thoughts", "of hurting yourself", "right now", "?"]
-      words: [w-have, w-thought, w-hurt, w-right]
+      words: [w-thought, w-hurt]
       goal: 2
     - en: "A psychiatry team will help us make a safe plan for you."
       ko: "정신과 팀이 안전한 계획을 세우도록 도와줄 거예요."
       chunks: ["A psychiatry team", "will help us", "make a safe plan", "for you", "."]
-      words: [w-psychiatry, w-team, w-help, w-make, w-safe, w-plan]
+      words: [w-psychiatry, w-team, w-help, w-safe, w-plan]
       goal: 2
     - en: "We're treating your withdrawal and your mental health at the same time."
       ko: "금단과 정신 건강을 동시에 치료하고 있어요."
@@ -31174,13 +33094,52 @@
     - en: "I want to make sure you're safe before we make any plan."
       ko: "계획을 세우기 전에 안전하신지부터 확인하고 싶어요."
       chunks: ["I want to make sure", "you're safe", "before we make", "any plan", "."]
-      words: [w-want, w-make, w-sure, w-safe, w-plan]
+      words: [w-sure, w-safe, w-plan]
       goal: 2
     - en: "The psychiatry team will work with us on your care."
       ko: "정신과 팀이 저희와 함께 치료를 도와줄 거예요."
       chunks: ["The psychiatry team", "will work", "with us", "on your care", "."]
       words: [w-psychiatry, w-team, w-care]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-mental
+    - w-health
+    - w-psychiatry
+    - w-team
+    - w-thought
+    - w-hurt
+    pairs:
+    - - mental
+      - health
+    - - psychiatry
+      - team
+    - - thoughts of
+      - hurting yourself
+    decoys:
+    - the dose
+    why: mental health는 '정신 건강', psychiatry team은 '정신과 협진 팀', thoughts of hurting yourself는 자해 생각을 묻는 선별 질문의 표현이에요.
+  - kind: swap
+    words:
+    - w-thought
+    - w-hurt
+    who: 환자에게 · 자해 위험 선별
+    icon: me
+    before:
+    - 'Are you having any '
+    - dark thoughts
+    - ' right now?'
+    options:
+    - thoughts of hurting yourself
+    - dark thoughts
+    - silly ideas
+    answer: thoughts of hurting yourself
+    notes:
+      thoughts of hurting yourself: 무엇을 묻는지 분명하다. 자해·자살은 돌려 말하지 않고 직접 묻는다.
+      dark thoughts: 무엇을 묻는지 흐려서 환자가 '아니요'로 넘기기 쉽다.
+      silly ideas: 환자의 생각을 하찮게 만들어 털어놓지 못하게 한다.
+    why: 자해 위험 선별은 돌려 말하지 않고 직접 물어요. 직접 묻는다고 위험이 커지지 않는다는 것이 선별 교육의 기본이에요.
 
 - theme: er-alcohol-withdrawal
   title: 음주 부인 환자
@@ -31203,33 +33162,66 @@
     - en: "Your tremor and sweating can happen when the body misses alcohol."
       ko: "몸이 알코올을 찾을 때 떨림과 땀이 날 수 있어요."
       chunks: ["Your tremor", "and sweating", "can happen", "when the body misses alcohol", "."]
-      words: [w-tremor, w-sweat, w-happen, w-body, w-miss, w-alcohol]
+      words: [w-tremor, w-sweat, w-happen, w-miss, w-alcohol]
       goal: 1
     - en: "Whatever the amount, we just want to keep you comfortable and safe."
       ko: "양이 어떻든, 편안하고 안전하게 해드리고 싶을 뿐이에요."
       chunks: ["Whatever the amount", ", we just want", "to keep you", "comfortable and safe", "."]
-      words: [w-whatever, w-amount, w-want, w-keep, w-comfortable, w-safe]
+      words: [w-whatever, w-amount, w-keep, w-comfortable, w-safe]
       goal: 2
     - en: "Have you noticed feeling like this in the mornings before?"
       ko: "예전에도 아침마다 이런 느낌을 알아채신 적 있어요?"
       chunks: ["Have you noticed", "feeling like this", "in the mornings", "before", "?"]
-      words: [w-have, w-notice, w-feel, w-before]
+      words: [w-notice, w-feel, w-before]
       goal: 1
-    - en: "These signs often show up before someone even admits to drinking."
-      ko: "이런 징후는 술 마신다고 인정하기 전부터 자주 나타나요."
-      chunks: ["These signs often", "show up", "before someone", "even admits to drinking", "."]
-      words: [w-sign, w-often, w-before, w-drink]
+    - en: "These signs can show up even when someone feels they don't drink much."
+      ko: "술을 많이 안 드신다고 느끼셔도 이런 징후는 나타날 수 있어요."
+      chunks: ["These signs", "can show up", "even when", "someone feels", "they don't drink much", "."]
+      words: [w-sign, w-drink]
       goal: 1
     - en: "Whatever you tell me is fine — I just want to keep you safe."
       ko: "뭐라고 말씀하셔도 괜찮아요 — 그냥 안전하게 해드리고 싶어요."
       chunks: ["Whatever you tell me", "is fine", "— I just want", "to keep you safe", "."]
-      words: [w-whatever, w-tell, w-want, w-keep, w-safe]
+      words: [w-whatever, w-tell, w-keep, w-safe]
       goal: 2
     - en: "A tremor like this can be an early sign your body misses alcohol."
       ko: "이런 떨림은 몸이 알코올을 찾는 초기 징후일 수 있어요."
       chunks: ["A tremor like this", "can be an early sign", "your body misses", "alcohol", "."]
-      words: [w-tremor, w-early, w-sign, w-body, w-miss, w-alcohol]
+      words: [w-tremor, w-early, w-sign, w-miss, w-alcohol]
       goal: 1
+  nuance:
+  - kind: slider
+    words:
+    - w-tremor
+    cue: 'Nurse: "With his arms out I can barely see it, but I can feel it fingertip to fingertip."'
+    scale:
+    - mild
+    - moderate
+    - severe
+    answerAt: 0
+    why: 팔을 뻗어도 거의 안 보이고 손끝을 맞대야 느껴지면 mild예요. CIWA의 떨림 항목도 '보이지 않고 느껴지기만 함'부터 '팔을 뻗지 않아도 심함'까지 단계로 매겨요.
+    example: He has a mild tremor with his arms extended.
+    exKo: 팔을 뻗으면 약한 떨림이 있어요.
+  - kind: context
+    words:
+    - w-whatever
+    - w-drink
+    - w-amount
+    scenes:
+    - who: 차트 기록
+      icon: board
+      en: Pt denies EtOH use; tremulous and diaphoretic on exam.
+      ok: true
+    - who: 동료에게
+      icon: monitor
+      en: He says he doesn't drink, but he's tremulous and sweaty — let's start CIWA.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: You're in denial about your drinking.
+      ok: false
+      fix: I hear you — whatever the amount, my job is just to keep you comfortable and safe.
+    why: 차트의 denies는 '환자가 아니라고 말함'을 적는 중립적인 기록어예요. 환자에게 in denial이라고 하면 비난으로 들려요 — 양을 따지지 말고 안전을 말해요.
 
 - theme: er-alcohol-withdrawal
   title: 진전섬망
@@ -31279,6 +33271,40 @@
       chunks: ["We need", "one-to-one safety", "and possibly", "an ICU bed", "."]
       words: [w-need, w-safety, w-icu, w-bed]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-agitate
+    cue: 'Nurse: "He''s pulling at his IV, swinging at staff, and I can''t redirect him."'
+    scale:
+    - restless
+    - agitated
+    - combative
+    answerAt: 2
+    why: 치료진을 때리려 하고 말로 돌려세울 수 없으면 combative예요. restless는 안절부절못하는 정도, agitated는 흥분해서 가만있지 못하는 정도예요.
+    example: He's combative and pulling at his lines.
+    exKo: 치료진에게 저항하며 라인을 잡아당기고 있어요.
+  - kind: swap
+    words:
+    - w-agitate
+    - w-hypertensive
+    - w-tachycardic
+    who: 의사에게 · SBAR 보고
+    icon: monitor
+    before:
+    - 'He''s '
+    - freaking out
+    - ' — hypertensive and tachycardic.'
+    options:
+    - severely agitated
+    - freaking out
+    - a little upset
+    answer: severely agitated
+    notes:
+      severely agitated: 보고에 맞는 임상어. 정도까지 정확히 전한다.
+      freaking out: 구어라 정도가 흐리게 전해진다.
+      a little upset: 실제보다 가볍게 들려 위급도를 놓치게 한다.
+    why: 의료진에게 보고할 때는 구어 대신 정도가 담긴 임상어로 말해요.
 
 - theme: er-alcohol-withdrawal
   title: 불응성 금단 발작 중첩
@@ -31321,13 +33347,49 @@
     - en: "Get the airway cart and have oxygen and suction ready."
       ko: "기도 카트를 가져오고 산소와 흡인을 준비하세요."
       chunks: ["Get the airway cart", "and have", "oxygen and suction", "ready", "."]
-      words: [w-airway, w-have, w-oxygen, w-suction, w-ready]
+      words: [w-airway, w-oxygen, w-suction, w-ready]
       goal: 2
     - en: "If the seizure doesn't break soon, we need to prepare to intubate."
       ko: "발작이 곧 멈추지 않으면 삽관을 준비해야 해요."
       chunks: ["If the seizure", "doesn't break soon", ", we need", "to prepare to intubate", "."]
       words: [w-seizure, w-break, w-need, w-prepare, w-intubate]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-status
+    - w-protect
+    - w-airway
+    - w-escalate
+    pairs:
+    - - status
+      - epilepticus
+    - - protect
+      - the airway
+    - - escalate
+      - care
+    decoys:
+    - honest answers
+    why: status epilepticus는 '발작 지속 상태'(줄여서 status), protect the airway는 '기도 보호', escalate care는 '치료 단계를 높이다'로 쓰여요.
+  - kind: context
+    words:
+    - w-status
+    - w-seizure
+    scenes:
+    - who: 팀에게
+      icon: siren
+      en: He's in status — give another dose of benzodiazepine now.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Seizure activity >5 min; lorazepam IV x2; airway maintained.
+      ok: true
+    - who: 보호자에게
+      icon: me
+      en: He's in status, so we're escalating.
+      ok: false
+      fix: His seizure isn't stopping on its own, so we're giving stronger medicine and protecting his breathing.
+    why: '''in status''는 의료진끼리 줄여 부르는 말이에요. 보호자에게는 ''발작이 저절로 멈추지 않아서''처럼 풀어 말해요.'
 
 - theme: er-alcohol-withdrawal
   title: 베르니케-코르사코프 진행
@@ -31355,7 +33417,7 @@
     - en: "We're giving urgent high-dose thiamine, though some damage may be lasting."
       ko: "긴급히 고용량 티아민을 드리고 있지만, 일부 손상은 계속될 수 있어요."
       chunks: ["We're giving", "urgent high-dose thiamine", ", though some damage", "may be lasting", "."]
-      words: [w-give, w-urgent, w-thiamine, w-damage, w-last]
+      words: [w-give, w-urgent, w-thiamine, w-damage, w-lasting]
       goal: 2
     - en: "How long has his memory been like this?"
       ko: "언제부터 이렇게 기억이 안 좋으셨어요?"
@@ -31377,6 +33439,45 @@
       chunks: ["He's making up stories", "to fill in", "the memory", "loss", "."]
       words: [w-story, w-memory, w-loss]
       goal: 1
+  nuance:
+  - kind: pair
+    words:
+    - w-memory
+    - w-loss
+    - w-story
+    - w-urgent
+    - w-thiamine
+    pairs:
+    - - memory
+      - loss
+    - - made-up
+      - stories
+    - - urgent
+      - high-dose thiamine
+    decoys:
+    - the airway
+    why: memory loss는 '기억 상실', made-up stories는 작화를 쉽게 부르는 말, urgent high-dose thiamine은 '긴급 고용량 티아민'이에요.
+  - kind: swap
+    words:
+    - w-story
+    - w-memory
+    - w-loss
+    who: 보호자에게 · 작화증 설명
+    icon: me
+    before:
+    - 'He''s '
+    - confabulating
+    - ' to fill in the memory loss.'
+    options:
+    - making up stories
+    - confabulating
+    - lying
+    answer: making up stories
+    notes:
+      making up stories: 보호자가 바로 알아듣는 말.
+      confabulating: 의료진 용어. 보호자는 뜻을 모른다.
+      lying: 틀린 말이다 — 작화는 일부러 속이는 것이 아니라 본인도 사실이라 믿는다.
+    why: 작화증은 거짓말이 아니라 빈 기억을 메우는 증상이에요. 보호자에게는 making up stories로 풀되, 일부러 그러는 게 아니라고 덧붙여요.
 
 - theme: er-alcohol-withdrawal
   title: 금단+패혈증 감별
@@ -31404,7 +33505,7 @@
     - en: "We're looking for a source and drawing blood cultures."
       ko: "원인을 찾으려고 혈액 배양검사를 채취하고 있어요."
       chunks: ["We're looking", "for a source", "and drawing", "blood cultures", "."]
-      words: [w-look, w-source, w-draw, w-blood, w-culture]
+      words: [w-source, w-draw, w-blood, w-culture]
       goal: 2
     - en: "Have you had a cough, burning urine, or any pain anywhere?"
       ko: "기침이나 소변 볼 때 화끈거림, 혹은 어디든 통증이 있으세요?"
@@ -31419,13 +33520,52 @@
     - en: "We're drawing blood cultures to look for the source of infection."
       ko: "감염 원인을 찾으려고 혈액 배양검사를 채취하고 있어요."
       chunks: ["We're drawing blood cultures", "to look", "for the source", "of infection", "."]
-      words: [w-draw, w-blood, w-culture, w-look, w-source, w-infection]
+      words: [w-draw, w-blood, w-culture, w-source, w-infection]
       goal: 2
     - en: "Tell me if you feel any pain when you cough or urinate."
       ko: "기침하거나 소변볼 때 통증이 있으면 말씀해주세요."
       chunks: ["Tell me", "if you feel any pain", "when you cough", "or urinate", "."]
       words: [w-tell, w-feel, w-pain, w-cough]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-draw
+    - w-blood
+    - w-culture
+    - w-source
+    - w-infection
+    - w-burn
+    - w-urine
+    pairs:
+    - - draw
+      - blood cultures
+    - - source
+      - of infection
+    - - burning
+      - on urination
+    decoys:
+    - the dose
+    why: draw는 피를 '뽑다'라 blood cultures와, source of infection은 '감염원', burning on urination은 소변 볼 때 화끈거림(배뇨통)을 말해요.
+  - kind: context
+    words:
+    - w-fever
+    - w-infection
+    scenes:
+    - who: 환자에게
+      icon: me
+      en: A fever with the shakes could mean an infection, not just withdrawal.
+      ok: true
+    - who: 의사에게 보고
+      icon: monitor
+      en: Febrile to 39.1 and tachycardic — can't rule out sepsis; cultures drawn.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: You may be septic, so we're pan-culturing you.
+      ok: false
+      fix: We're checking for an infection, so I'm taking some blood samples.
+    why: septic·pan-culture는 의료진 말이에요. 환자에게는 '감염이 있는지 보려고 피를 뽑아요'처럼 풀어 말해요.
 
 - theme: er-alcohol-withdrawal
   title: DT 심혈관 위기
@@ -31475,6 +33615,41 @@
       chunks: ["Keep continuous monitoring going", "and call", "the physician", "now", "."]
       words: [w-keep, w-monitor, w-call, w-physician]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-spike
+    cue: 'Monitor: HR 110 → 165 in two minutes.'
+    scale:
+    - creep up
+    - rise
+    - spike
+    answerAt: 2
+    why: 몇 분 새 확 치솟으면 spike, 서서히 조금씩 오르면 creep up이에요. 보고할 때 속도까지 전해 줘요.
+    example: His heart rate spiked to 160.
+    exKo: 심박수가 160까지 치솟았어요.
+  - kind: swap
+    words:
+    - w-spike
+    - w-heart
+    - w-rate
+    - w-pressure
+    who: 의사에게 · 급변 보고
+    icon: monitor
+    before:
+    - 'His heart rate and pressure are '
+    - kind of high
+    - ' again.'
+    options:
+    - spiking
+    - kind of high
+    - a bit off
+    answer: spiking
+    notes:
+      spiking: 급하게 치솟는다는 속도까지 전한다.
+      kind of high: 실제보다 가볍게 들려 위급도를 놓치게 한다.
+      a bit off: 무엇이 어떻게 달라졌는지 전하지 못한다.
+    why: 급변 보고에는 '얼마나 빨리' 변했는지 담긴 동사를 써요.
 
 - theme: er-alcohol-withdrawal
   title: 중증 금단 야간 급변 인계
@@ -31497,12 +33672,12 @@
     - en: "Severe withdrawal, CIWA climbed from twelve to twenty-two overnight."
       ko: "중증 금단이고, CIWA가 밤새 12에서 22로 올랐어요."
       chunks: ["Severe withdrawal", ", CIWA climbed", "from twelve", "to twenty-two overnight", "."]
-      words: [w-severe, w-withdrawal, w-ciwa, w-climb, w-twelve, w-twentytwo, w-overnight]
+      words: [w-severe, w-withdrawal, w-ciwa, w-climb, w-overnight]
       goal: 1
     - en: "He's had three benzo doses with minimal response."
       ko: "벤조를 세 번 투여했는데 반응이 최소한이에요."
       chunks: ["He's had", "three benzo doses", "with minimal response", "."]
-      words: [w-three, w-benzo, w-dose, w-minimal, w-response]
+      words: [w-benzo, w-dose, w-minimal, w-response]
       goal: 2
     - en: "He's now hallucinating and tremulous — I need him reassessed now."
       ko: "지금 환각을 보고 떨고 있어요 — 재평가가 필요해요."
@@ -31517,13 +33692,71 @@
     - en: "He's had three doses of benzo with only a minimal response."
       ko: "벤조를 세 번 투여했는데 반응이 최소한에 그쳤어요."
       chunks: ["He's had", "three doses", "of benzo", "with only a minimal response", "."]
-      words: [w-three, w-dose, w-benzo, w-minimal, w-response]
+      words: [w-dose, w-benzo, w-minimal, w-response]
       goal: 2
     - en: "He needs to be reassessed now because he's hallucinating and tremulous."
       ko: "지금 환각을 보고 떨고 있어서 재평가가 필요해요."
       chunks: ["He needs to be reassessed", "now", "because he's", "hallucinating and tremulous", "."]
       words: [w-need, w-reassess, w-hallucinate, w-tremulous]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-minimal
+    - w-response
+    cue: 'Nurse: "Three doses in, and his CIWA only went from 22 to 20."'
+    scale:
+    - no response
+    - minimal response
+    - good response
+    answerAt: 1
+    why: 세 번 투여에 점수가 조금만 내려갔으면 minimal response예요. 전혀 변화가 없으면 no response예요.
+    example: He's had three benzo doses with minimal response.
+    exKo: 벤조를 세 번 투여했는데 반응이 거의 없어요.
+  - kind: context
+    words:
+    - w-benzo
+    - w-dose
+    - w-response
+    scenes:
+    - who: 동료 인계
+      icon: monitor
+      en: He's had three benzo doses with minimal response.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Lorazepam 2 mg IV x3 since 0200; CIWA 12 to 22.
+      ok: true
+    - who: 보호자에게
+      icon: me
+      en: He's had three benzos with minimal response.
+      ok: false
+      fix: We've given him medicine three times, but it hasn't helped enough yet.
+    why: benzo는 의료진끼리의 줄임말이에요. 보호자에게는 '약을 세 번 드렸는데 아직 충분히 듣지 않았어요'처럼 풀어 말해요.
+  - kind: reel
+    words:
+    - w-climb
+    - w-ciwa
+    - w-overnight
+    word: climb
+    scenes:
+    - who: 야간 간호사 → 의사
+      en: CIWA climbed from twelve to twenty-two overnight.
+      ko: CIWA가 밤새 12에서 22로 올랐어요.
+      tone: 급함
+    - who: 차트 기록
+      en: CIWA 12 to 22 overnight, climbing trend.
+      ko: 밤새 CIWA 12→22, 상승 추세.
+      tone: 건조
+    - who: 간호사끼리
+      en: If his score keeps climbing, call me right away.
+      ko: 점수가 계속 오르면 바로 불러 줘요.
+      tone: 경고
+    - who: 보호자에게는…
+      en: His withdrawal got worse overnight, and we're treating it.
+      ko: 밤새 금단 증상이 심해졌고, 치료하고 있어요.
+      tone: 완곡
+      swap: true
 
 - theme: er-fever-infection
   title: 발열 시작·양상 문진
