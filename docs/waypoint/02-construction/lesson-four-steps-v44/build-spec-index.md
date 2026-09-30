@@ -5,6 +5,9 @@
     inputs: inputs/design-handoff_v44/07_NOTEBOOK_REDESIGN.md
             inputs/design-handoff_v44/reference/forin-notebook-lesson.jsx
             inputs/design-handoff_v44/reference/forin-notebook-dialogue.jsx
+            inputs/design-handoff_v45/07_NOTEBOOK_REDESIGN.md          (§11 — v45 반영)
+            inputs/design-handoff_v45/reference/forin-notebook-lesson-words-live.jsx
+            inputs/design-handoff_v45/reference/forin-notebook-lesson-nuance.jsx
 
 핸드오프 v44는 **커리큘럼 상황 한 건을 배우는 방식**을 다시 짠다. 지금은 상황에 들어가면
 곧바로 대화가 시작되는데, v44는 그 앞에 단어와 문장을 놓아 네 단계로 만든다.
@@ -439,3 +442,164 @@ ER은 환자가 말을 하고, ICU는 환자가 말을 못 한다. 그 둘은 �
 **26개 부서 · 17,850개 상황.** 도구는 부서 무관하므로(`split_theme_inputs.py` →
 저작 → `merge_dept_lessons.py`) 같은 흐름을 반복하면 된다. 부서당 서브에이전트 토큰
 600만~700만, 반나절.
+
+## 11. v45 반영 (2026-09-30) — 회상형 단어장과 뉘앙스
+
+v45가 v44 위에 두 가지를 얹었다. **STEP 1이 "보고 외우기"에서 "떠올리기"로 바뀌고**, STEP 1 끝과
+STEP 2에 **뉘앙스 문항**(비슷한 말의 온도 차이)이 들어간다. v44를 끝내고 넘어가지 않고 지금
+반영하는 이유는 콘텐츠다 — 26개 부서가 아직 생산 전이라, 스키마를 지금 넓히면 한 번만 돌린다.
+
+v45의 나머지(여정 바인더 서가를 건물 5개 탭으로 나누는 것)는 이 스테이지가 아니다. STATUS에
+따로 둔다.
+
+### 11-1. 무엇이 바뀌는가
+
+| | v44 | v45 |
+|---|---|---|
+| STEP 1 한 장 | 단어를 보여 주고 `헷갈려요/알아요` | **뜻과 단서를 보고 영어를 떠올려 답한다** → 같은 장 아래 해설(정답·IPA·예문·GOOD/RETRY) → `아직 헷갈려요/외웠어요` |
+| STEP 1 문제 | 없음 | 세 유형 교대: **조각 맞추기** · **영어 고르기**(3지) · **듣고 뜻 고르기**(한국어 3지) |
+| STEP 1 끝 | 끝 | **뉘앙스 카드**(저울 · 콜로케이션 짝)가 이어진다 |
+| STEP 1 완료 | 허브로 | 맞힘/틀림 집계 + "틀린 단어는 STEP 2 문장에 다시 나와요" |
+| STEP 2 | 유형 4종 | 4종 + **워밍업 문장 릴** + **같은 뜻 다른 장면** + **한 단어 바꾸기** |
+
+### 결정 5 — v44 STEP 1 플래시카드는 회상형으로 교체한다 (2026-09-30, 사용자 결정)
+
+H(커밋 `1894cb7`)의 화면은 같은 경로(`/scenario/[id]/words`)에서 회상형으로 바뀐다. 버리는 것이
+아니라 옮긴다 — 진행 칩 줄, 듣기·따라하기, `confusedWord` API(→ `아직 헷갈려요`), 마지막 장의
+STEP 1 기록은 그대로 간다. 교체하는 동안에도 그 경로는 계속 산다.
+
+### 결정 6 — 스키마를 넓히고 전량 저작한다. ER·ICU·OR은 보강 패스 (2026-09-30, 사용자 결정)
+
+오답을 같은 은행의 다른 단어로 채우면 새 콘텐츠 없이도 되지만, 오답이 쉬워진다. 레퍼런스의
+`restless driver`·`retained driver`처럼 **정답과 헷갈릴 만한 오답**이 회상 학습의 핵심이라 저작한다.
+
+- 남은 26개 부서는 처음부터 v45 스키마로 만든다.
+- ER·ICU·OR(문장 12,516개, 이미 검사를 통과한 것)은 **새 필드만 덧붙이는 보강 패스**를 돈다.
+  보강은 기존 `en · ko · chunks · words · goal`을 한 글자도 바꾸지 않는다 — 검사기가 지킨다(V16).
+
+### 결정 7 — 뉘앙스 문항은 상황 단위로 만든다 (2026-09-30, 사용자 결정)
+
+주제 단위로 공유하면 저작량이 약 1/20이지만, 상황마다 그 장면에 맞춘 문항을 둔다. 비용이 크므로
+§11-6의 파일럿 수치를 먼저 잰다.
+
+### 결정 8 — 문제 유형은 저작하지 않는다. 런타임이 돌린다
+
+레퍼런스는 단어마다 `type`(fill/pick/listen)을 박아 두었다. 그러나 단어는 주제 은행에 있고 한 단어가
+상황 약 21건에 나온다 — `type`을 저작하면 그 단어는 **어느 상황에서나 늘 같은 유형**이다. 그래서
+**세 유형의 재료를 모두 저작하고**, 유형은 앱이 그 상황의 단어 순서로 돌린다(i mod 3). 조각 재료가
+모자란 단어(아래 V12의 조각이 1개뿐인 경우)는 조각 맞추기를 건너뛰고 다음 유형으로 간다.
+
+### 11-2. 단어 은행에 더하는 필드 (1차 · 주제 단위)
+
+```yaml
+- id: w-hypotensive
+  en: hypotensive
+  ipa: /ˌhaɪpəˈtɛnsɪv/
+  ko: 저혈압의
+  icon: monitor
+  example: "Patient is hypotensive, BP 88 over 54."
+  # ── v45 ──
+  exKo: "저혈압, 혈압 88/54."          # 예문 번역
+  cue: "혈압이 낮은 상태 — BP 88/54"    # 앞면 맥락 단서(한국어). 정답 영어를 쓰지 않는다
+  tag: 바이탈                           # 짧은 분류 라벨
+  distractorsEn: [hypertensive, hypoxic]   # 영어 고르기 오답 2 — 헷갈릴 만한 것
+  distractorsKo: [고혈압의, 저산소의]       # 듣고 뜻 고르기 오답 2
+  chips: [[hypo, tens, ive]]            # 조각 맞추기 정답. 낱말마다 조각 목록
+  decoyChips: [hyper, ion]              # 섞을 오답 조각 1개 이상
+```
+
+**조각 이음 규칙 — 여기서 정한다.** `chips`는 **낱말의 목록이고, 낱말은 조각의 목록**이다. 이으면
+낱말 안의 조각은 붙이고 낱말 사이에는 스페이스 하나를 넣는다.
+
+    [[hypo, tens, ive]]          → hypotensive
+    [[en], [route]]              → en route
+    [[mech, a, nism], [of], [in, ju, ry]]   → mechanism of injury
+
+`content.JoinChunks`(문장 청크 규칙)를 쓰지 않는다 — 그것은 조각 사이에 스페이스를 넣어
+`hypo tens ive`를 만든다. 이 규칙은 Go(`content.JoinChips`)와 검사기가 같은 것을 구현한다.
+학습자는 조각을 순서대로 누르기만 하고, 스페이스는 앱이 정답의 낱말 경계대로 넣는다.
+
+### 11-3. 상황에 더하는 필드 (2차 · 상황 단위)
+
+```yaml
+situations:
+  - title: …
+    sentences: [ … ]         # v44 그대로
+    nuance:                  # v45
+      - kind: slider         # STEP 1 끝
+        words: [w-pain]      # 이 문항이 붙는 단어 — 이 상황 문장이 쓰는 단어여야 한다(V15)
+        cue: "Patient: \"It's… bearable, but it won't go away.\""
+        scale: [discomfort, pain, agony]   # 약함 → 강함, 3개 이상
+        answer: 0
+        why: "…"             # 해설(한국어)
+        example: "…"
+        exKo: "…"
+      - kind: pair           # STEP 1 끝
+        words: [w-administer]
+        pairs: [[administer, medication], [titrate, the drip]]   # 2쌍 이상
+        decoys: [the patient]                                     # 1개 이상
+        why: "…"
+      - kind: reel           # STEP 2 워밍업
+        words: [w-deteriorate]
+        word: deteriorate
+        scenes:              # 4장 이상
+          - { who: "구급대원 → 간호사", en: "…", ko: "…", tone: 급함 }
+          - { who: "보호자에게는…", en: "…", ko: "…", tone: 완곡, swap: true }
+      - kind: context        # STEP 2 문항
+        words: [w-deteriorate]
+        scenes:              # 정확히 3장, 어색한 것 정확히 1장
+          - { who: 차트 기록, icon: board, en: "…", ok: true }
+          - { who: 보호자에게, icon: me, en: "…", ok: false, fix: "…" }
+          - { who: 야간 의사 콜, icon: monitor, en: "…", ok: true }
+        why: "…"
+      - kind: swap           # STEP 2 문항
+        words: [w-died]
+        who: "보호자에게 · 임종 소식"
+        icon: me
+        before: ["Your mom ", "died", " last night."]   # 앞 · 바꿀 말 · 뒤
+        options: [passed away, expired, is gone]
+        answer: passed away
+        notes: { passed away: "…", expired: "…", is gone: "…" }   # 모든 선택지에
+        why: "…"
+```
+
+`kind`의 허용 집합은 코드 쪽(`content.NuanceKinds`)이다. **개수는 최솟값이다**(§2-2와 같은 원칙):
+상황마다 STEP 1 뉘앙스(`slider|pair`) 1개 이상, STEP 2 뉘앙스(`context|swap`) 1개 이상. 모든 상황에
+"died → passed away" 같은 장면이 있지는 않으므로 종류를 고정하지 않는다. `reel`은 0~1개로 두고,
+파일럿에서 매 상황에 둘 만한지 본다.
+
+**연결은 여기서도 데이터다.** 뉘앙스 문항은 `words`로 자기가 붙는 단어 id를 들고, 그 id는 이 상황
+문장이 쓰는 단어여야 한다(V15). "틀린 단어는 STEP 2에 다시 나와요"는 이 참조와 문장의 `words`를
+따라가서 만든다.
+
+### 11-4. 검사기에 더하는 규칙 (V12~V16)
+
+| | 규칙 | 등급 |
+|---|---|---|
+| V12 | 단어의 v45 필드가 모두 있다(`exKo · cue · tag` 비지 않음, `distractorsEn` 2 · `distractorsKo` 2, `decoyChips` 1개 이상). `chips`를 이음 규칙으로 이으면 `en`과 같다 | 오류 |
+| V13 | 오답이 정답과 같지 않다(대소문자·공백 정규화 후), 오답끼리 같지 않다, `decoyChips`는 정답 조각에 없다, `cue`에 정답 영어가 들어 있지 않다 | 오류 |
+| V14 | 상황마다 뉘앙스 최솟값(STEP 1 ≥1, STEP 2 ≥1), `kind`가 허용 집합, 모양이 맞다(slider: scale ≥3·answer 범위 안 / pair: ≥2쌍·decoys ≥1 / reel: scenes ≥4 / context: 정확히 3장·ok=false 정확히 1장이고 그 장에 fix / swap: answer ∈ options·notes가 모든 선택지를 덮음·before 3조각) | 오류 |
+| V15 | 뉘앙스의 `words`가 비어 있지 않고, 전부 이 상황 문장이 쓰는 단어 id다 | 오류 |
+| V16 | (보강 패스) 기존 `en · ko · chunks · words · goal`과 단어의 `id · en · ko · ipa · icon · example`이 보강 전과 같다 | 오류 |
+
+"다른 은행 단어의 `en`을 오답으로 써도 되는가"는 **된다**로 둔다 — 같은 주제에서 실제로 헷갈리는
+말이 가장 좋은 오답이다.
+
+### 11-5. API와 화면에 미치는 것 (E·H·I 보정)
+
+- `GET /me/lesson`의 `words[]`가 새 필드를 싣고, `nuance[]`가 더해진다(`kind`별로 STEP 1·2에 나눠 쓴다).
+- `steps[words].count`는 **단어 수만** 센다(허브 메타 "단어 12"). 뉘앙스 카드는 따로 센다.
+- **틀린 단어를 STEP 2로 넘긴다.** `POST …/steps/words`가 본문 `{ missed: [wordId] }`를 받아
+  `lesson_step_clears.detail`(jsonb, CHECK 없음)에 둔다. `GET`은 그 단어를 쓰는 문장에 `review: true`를
+  붙이고, STEP 2는 그 문장을 먼저 낸다. 앱 안에서 넘기지 않는 이유: 앱을 껐다 켜면 사라진다.
+- H'(회상형 단어장)가 H를 대체한다. I는 유형 4종에 워밍업 릴·같은 뜻 다른 장면·한 단어 바꾸기를 더한다.
+
+### 11-6. 비용 관문 — 파일럿을 먼저 잰다
+
+v44는 부서당 서브에이전트 토큰 600만~700만이었다. v45는 단어마다 필드 7개, 상황마다 뉘앙스 2~5개가
+더해진다. **ER에서 주제 3개를 보강 패스로 돌려 주제당 토큰과 시간을 재고, 그 수치를 이 절에 적는다.**
+
+- **멈추는 조건:** 파일럿으로 추정한 부서당 비용이 v44의 2배(1,400만)를 넘으면, 나머지를 돌리기 전에
+  사용자에게 수치를 들고 간다(상황 단위 뉘앙스를 유지할지 다시 정한다).
+- 품질도 같이 본다: 오답 30개·뉘앙스 20개를 사람이 읽는다 — 오답이 정답과 헷갈릴 만한가, 뉘앙스
+  해설이 사실인가.
