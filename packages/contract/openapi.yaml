@@ -90,6 +90,104 @@ components:
           description: high difficulty
           type: boolean
       type: object
+    github_com_bingoring_forin_server_internal_domain_content.Nuance:
+      properties:
+        answer:
+          type: string
+        answerAt:
+          type: integer
+        before:
+          description: before · the word to swap · after
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        cue:
+          description: slider
+          type: string
+        decoys:
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        exKo:
+          type: string
+        example:
+          type: string
+        icon:
+          type: string
+        kind:
+          type: string
+        notes:
+          additionalProperties:
+            type: string
+          description: one per option
+          type: object
+        options:
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        pairs:
+          description: pair
+          items:
+            items:
+              type: string
+            type: array
+          type: array
+          uniqueItems: false
+        scale:
+          description: weak → strong, ≥3
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        scenes:
+          items:
+            $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_content.NuanceScene'
+          type: array
+          uniqueItems: false
+        who:
+          description: swap
+          type: string
+        why:
+          description: the explanation (Korean)
+          type: string
+        word:
+          description: reel · context
+          type: string
+        words:
+          description: |-
+            Words are the bank word ids this item is about. They must be words this
+            situation's sentences use (V15) — the same "the link is data" rule as sentences,
+            and what lets a word missed in STEP 1 come back in STEP 2.
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+      type: object
+    github_com_bingoring_forin_server_internal_domain_content.NuanceScene:
+      properties:
+        en:
+          type: string
+        fix:
+          description: 'context: the rewrite, on the one that does not'
+          type: string
+        icon:
+          type: string
+        ko:
+          type: string
+        ok:
+          description: 'context: does it fit this scene'
+          type: boolean
+        swap:
+          description: 'reel: the "say it this way instead" card'
+          type: boolean
+        tone:
+          type: string
+        who:
+          type: string
+      type: object
     github_com_bingoring_forin_server_internal_domain_content.Persona:
       properties:
         ageRange:
@@ -171,37 +269,6 @@ components:
         vitals:
           items:
             $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_content.QuizVital'
-          type: array
-          uniqueItems: false
-      type: object
-    github_com_bingoring_forin_server_internal_domain_content.Sentence:
-      properties:
-        chunks:
-          description: |-
-            Chunks, joined per JoinChunks' spacing rule, must reproduce En exactly
-            (checked A4) — that agreement is what makes the STEP 2 chunk-assembly
-            exercise solvable at all.
-          items:
-            type: string
-          type: array
-          uniqueItems: false
-        en:
-          type: string
-        goal:
-          description: |-
-            Goal is the 1-based index into the seed's own `goals` this sentence advances
-            toward (checked A3: 1..len(seed.Goals)). STEP 3's guided pass walks a
-            situation's sentences in this order.
-          type: integer
-        ko:
-          type: string
-        words:
-          description: |-
-            Words are bank word ids this sentence actually uses (checked A1: every id
-            must exist in the situation's theme bank; A2: the bank itself must have no
-            duplicate ids). This is the reference STEP 1 is derived from.
-          items:
-            type: string
           type: array
           uniqueItems: false
       type: object
@@ -1292,9 +1359,17 @@ components:
       properties:
         level:
           type: string
+        nuance:
+          description: |-
+            Nuance are the situation's nuance items (v45); the client splits them by kind
+            into STEP 1 (slider, pair) and STEP 2 (reel, context, swap).
+          items:
+            $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_content.Nuance'
+          type: array
+          uniqueItems: false
         sentences:
           items:
-            $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_content.Sentence'
+            $ref: '#/components/schemas/internal_adapters_http.lessonSentence'
           type: array
           uniqueItems: false
         situation:
@@ -1309,6 +1384,42 @@ components:
             (STEP 1).
           items:
             $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_content.Word'
+          type: array
+          uniqueItems: false
+      type: object
+    internal_adapters_http.lessonSentence:
+      properties:
+        chunks:
+          description: |-
+            Chunks, joined per JoinChunks' spacing rule, must reproduce En exactly
+            (checked A4) — that agreement is what makes the STEP 2 chunk-assembly
+            exercise solvable at all.
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        en:
+          type: string
+        goal:
+          description: |-
+            Goal is the 1-based index into the seed's own `goals` this sentence advances
+            toward (checked A3: 1..len(seed.Goals)). STEP 3's guided pass walks a
+            situation's sentences in this order.
+          type: integer
+        ko:
+          type: string
+        review:
+          description: |-
+            Review marks a sentence that uses a word missed in the last STEP 1 run — STEP 2
+            brings these first ("틀린 단어는 STEP 2 문장에 다시 나와요").
+          type: boolean
+        words:
+          description: |-
+            Words are bank word ids this sentence actually uses (checked A1: every id
+            must exist in the situation's theme bank; A2: the bank itself must have no
+            duplicate ids). This is the reference STEP 1 is derived from.
+          items:
+            type: string
           type: array
           uniqueItems: false
       type: object
@@ -1641,6 +1752,16 @@ components:
             the list's count line reads "N문장 중 M개 표시", and reporting an unfiltered
             total there said "3 of 128" for a filter that matched 3.
           type: integer
+      type: object
+    internal_adapters_http.stepBody:
+      properties:
+        missed:
+          description: Missed are the word ids answered wrong in STEP 1. Ignored for
+            other steps.
+          items:
+            type: string
+          type: array
+          uniqueItems: false
       type: object
     internal_adapters_http.sttReq:
       properties:
@@ -2425,6 +2546,14 @@ paths:
         required: true
         schema:
           type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/internal_adapters_http.stepBody'
+              description: STEP 1 에서 틀린 단어 id (words 만)
+              summary: body
+        description: STEP 1 에서 틀린 단어 id (words 만)
       responses:
         "200":
           content:

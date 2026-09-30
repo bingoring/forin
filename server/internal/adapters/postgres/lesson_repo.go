@@ -9,6 +9,7 @@ import (
 
 	"github.com/bingoring/forin/server/internal/adapters/postgres/sqlc"
 	"github.com/bingoring/forin/server/internal/domain/content"
+	"github.com/bingoring/forin/server/internal/ports"
 )
 
 // LessonRepo implements ports.LessonRepo.
@@ -31,20 +32,24 @@ func (r *LessonRepo) Lexicon(ctx context.Context, theme string) ([]content.Word,
 	return words, nil
 }
 
-func (r *LessonRepo) StepClears(ctx context.Context, userID, scenarioID string) (map[string]bool, error) {
-	steps, err := r.q.ListLessonStepClears(ctx, sqlc.ListLessonStepClearsParams{UserID: userID, ScenarioID: scenarioID})
+func (r *LessonRepo) StepClears(ctx context.Context, userID, scenarioID string) (map[string]ports.LessonStepClear, error) {
+	rows, err := r.q.ListLessonStepClears(ctx, sqlc.ListLessonStepClearsParams{UserID: userID, ScenarioID: scenarioID})
 	if err != nil {
 		return nil, err
 	}
-	out := make(map[string]bool, len(steps))
-	for _, s := range steps {
-		out[s] = true
+	out := make(map[string]ports.LessonStepClear, len(rows))
+	for _, row := range rows {
+		var c ports.LessonStepClear
+		unjson(row.Detail, &c)
+		out[row.Step] = c
 	}
 	return out, nil
 }
 
-func (r *LessonRepo) ClearStep(ctx context.Context, userID, scenarioID, step string) error {
-	return r.q.UpsertLessonStepClear(ctx, sqlc.UpsertLessonStepClearParams{UserID: userID, ScenarioID: scenarioID, Step: step})
+func (r *LessonRepo) ClearStep(ctx context.Context, userID, scenarioID, step string, missed []string) error {
+	return r.q.UpsertLessonStepClear(ctx, sqlc.UpsertLessonStepClearParams{
+		UserID: userID, ScenarioID: scenarioID, Step: step, Detail: jsonb(ports.LessonStepClear{Missed: missed}),
+	})
 }
 
 func (r *LessonRepo) HasWordCard(ctx context.Context, userID, en string) (bool, error) {

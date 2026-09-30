@@ -44,8 +44,25 @@ type lessonResp struct {
 	Level     string                `json:"level"`
 	Steps     []learning.LessonStep `json:"steps"`
 	// Words are the bank words the sentences use, in first-use order (STEP 1).
-	Words     []content.Word     `json:"words"`
-	Sentences []content.Sentence `json:"sentences"`
+	Words     []content.Word   `json:"words"`
+	Sentences []lessonSentence `json:"sentences"`
+	// Nuance are the situation's nuance items (v45); the client splits them by kind
+	// into STEP 1 (slider, pair) and STEP 2 (reel, context, swap).
+	Nuance []content.Nuance `json:"nuance"`
+}
+
+// lessonSentence is a STEP 2 sentence as this learner meets it.
+type lessonSentence struct {
+	content.Sentence
+	// Review marks a sentence that uses a word missed in the last STEP 1 run — STEP 2
+	// brings these first ("틀린 단어는 STEP 2 문장에 다시 나와요").
+	Review bool `json:"review,omitempty"`
+}
+
+// stepBody is the optional body of POST …/steps/{step}.
+type stepBody struct {
+	// Missed are the word ids answered wrong in STEP 1. Ignored for other steps.
+	Missed []string `json:"missed"`
 }
 
 // build assembles the lesson; ok=false means no such scenario.
@@ -78,6 +95,24 @@ func (h *lessonHandler) build(ctx context.Context, uid, scenarioID string) (less
 	if err != nil {
 		return lessonResp{}, false, err
 	}
+	missed := map[string]bool{}
+	for _, id := range recorded[string(learning.StepWords)].Missed {
+		missed[id] = true
+	}
+	view := make([]lessonSentence, len(sentences))
+	for i, sn := range sentences {
+		view[i] = lessonSentence{Sentence: sn}
+		for _, id := range sn.Words {
+			if missed[id] {
+				view[i].Review = true
+				break
+			}
+		}
+	}
+	nuance := s.Nuance
+	if nuance == nil {
+		nuance = []content.Nuance{}
+	}
 	var passes learning.ClearedPasses
 	if guided, free, err := h.passes.ClearedByGuide(ctx, uid); err == nil {
 		passes = learning.ClearedPasses{GuidedCleared: scenarioSet(guided), FreeCleared: scenarioSet(free)}
@@ -97,7 +132,8 @@ func (h *lessonHandler) build(ctx context.Context, uid, scenarioID string) (less
 			Level: level, Words: len(words), Sentences: len(sentences), Goals: len(s.Goals), Done: done,
 		}),
 		Words:     words,
-		Sentences: sentences,
+		Sentences: view,
+		Nuance:    nuance,
 	}, true, nil
 }
 
@@ -125,6 +161,7 @@ func (h *lessonHandler) get(w http.ResponseWriter, r *http.Request) {
 // @Security Bearer
 // @Param scenarioId path string true "시나리오 id"
 // @Param step path string true "words | sentences"
+// @Param body body stepBody false "STEP 1 에서 틀린 단어 id (words 만)"
 // @Success 200 {object} lessonResp
 // @Router /me/lesson/{scenarioId}/steps/{step} [post]
 func (h *lessonHandler) clearStep(w http.ResponseWriter, r *http.Request) {
@@ -152,7 +189,25 @@ func (h *lessonHandler) clearStep(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 	}
-	if err := h.lessons.ClearStep(r.Context(), uid, id, step); err != nil {
+	// Only this lesson's own words are kept: the body comes from a client, and a stray id
+	// would mark nothing and sit in the record forever.
+	var body stepBody
+	if r.ContentLength != 0 {
+		_ = httpx.DecodeJSON(r, &body)
+	}
+	var missed []string
+	if step == string(learning.StepWords) {
+		taught := map[string]bool{}
+		for _, wd := range lesson.Words {
+			taught[wd.ID] = true
+		}
+		for _, id := range body.Missed {
+			if taught[id] {
+				missed = append(missed, id)
+			}
+		}
+	}
+	if err := h.lessons.ClearStep(r.Context(), uid, id, step, missed); err != nil {
 		httpx.Error(w, http.StatusInternalServerError, "record failed")
 		return
 	}

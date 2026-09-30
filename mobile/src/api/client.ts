@@ -57,8 +57,29 @@ export type LessonStepKind = NonNullable<LessonStepWire['kind']>;
 export type LessonStepState = NonNullable<LessonStepWire['state']>;
 /** A step as the screens draw it. `empty` = content not written yet, never opt-in-able. */
 export interface LessonStepView { kind: LessonStepKind; state: LessonStepState; count?: number }
-export interface LessonWord { id: string; en: string; ipa?: string; ko: string; icon?: string; example?: string }
-export interface LessonSentence { en: string; ko: string; chunks: string[]; words: string[]; goal: number }
+export interface LessonWord {
+  id: string; en: string; ipa?: string; ko: string; icon?: string; example?: string;
+  // v45 recall material (build-spec §11-2). Absent on v44 content (not yet backfilled).
+  exKo?: string; cue?: string; tag?: string;
+  distractorsEn?: string[]; distractorsKo?: string[];
+  /** Words → fragments. Fragments inside a word join with nothing; words with one space. */
+  chips?: string[][]; decoyChips?: string[];
+}
+export interface LessonSentence {
+  en: string; ko: string; chunks: string[]; words: string[]; goal: number;
+  /** Uses a word missed in the last STEP 1 run — STEP 2 shows these first. */
+  review?: boolean;
+}
+export interface LessonNuanceScene { who: string; icon?: string; en: string; ko?: string; tone?: string; swap?: boolean; ok?: boolean; fix?: string }
+/** A nuance item (v45, §11-3). Which fields apply depends on `kind`. */
+export interface LessonNuance {
+  kind: 'slider' | 'pair' | 'reel' | 'context' | 'swap';
+  words: string[]; why?: string;
+  cue?: string; scale?: string[]; answerAt?: number; example?: string; exKo?: string;
+  pairs?: string[][]; decoys?: string[];
+  word?: string; scenes?: LessonNuanceScene[];
+  who?: string; icon?: string; before?: string[]; options?: string[]; answer?: string; notes?: Record<string, string>;
+}
 /** LessonResp with the situation's persona/briefing typed the way ScenarioDetail types them. */
 export interface LessonDetail {
   situation: { id: string; title: string; tagline?: string; theme?: string; persona?: ScenarioPersona; briefing?: ScenarioBriefing };
@@ -66,6 +87,7 @@ export interface LessonDetail {
   steps: LessonStepView[];
   words: LessonWord[];
   sentences: LessonSentence[];
+  nuance: LessonNuance[];
 }
 
 // --- scenario + conversation types (GET /scenarios/{id} is untyped in the
@@ -832,8 +854,8 @@ export const api = {
   },
 
   /** Records STEP 1 or 2 as finished; returns the lesson as it now stands. */
-  async clearLessonStep(scenarioId: string, step: 'words' | 'sentences'): Promise<LessonDetail> {
-    const { data } = await http.post(`/me/lesson/${scenarioId}/steps/${step}`);
+  async clearLessonStep(scenarioId: string, step: 'words' | 'sentences', missed?: string[]): Promise<LessonDetail> {
+    const { data } = await http.post(`/me/lesson/${scenarioId}/steps/${step}`, missed ? { missed } : undefined);
     return data as LessonDetail;
   },
 

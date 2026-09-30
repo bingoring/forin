@@ -477,6 +477,13 @@ type ContentReader interface {
 	SearchSituations(ctx context.Context, userID, q string, limit int) ([]content.DeptSituation, error)
 }
 
+// LessonStepClear is what a finished STEP 1/2 run left behind (v45).
+type LessonStepClear struct {
+	// Missed are the word ids answered wrong in STEP 1 — STEP 2 brings their
+	// sentences back first ("틀린 단어는 STEP 2 문장에 다시 나와요").
+	Missed []string `json:"missed,omitempty"`
+}
+
 // LessonRepo backs the four-step situation lesson (v44): the theme word banks STEP 1
 // is derived from, and the record of which of STEP 1/2 a learner has finished. STEP
 // 3/4 are dialogue passes and are read from ProgressRepo, not here.
@@ -484,10 +491,11 @@ type LessonRepo interface {
 	// Lexicon returns one theme's word bank; a theme with no bank yet is (nil, nil).
 	Lexicon(ctx context.Context, theme string) ([]content.Word, error)
 	// StepClears returns the recorded steps ("words", "sentences") finished for one
-	// situation.
-	StepClears(ctx context.Context, userID, scenarioID string) (map[string]bool, error)
-	// ClearStep records a step as finished; finishing it again is a no-op.
-	ClearStep(ctx context.Context, userID, scenarioID, step string) error
+	// situation, each with what the run left behind.
+	StepClears(ctx context.Context, userID, scenarioID string) (map[string]LessonStepClear, error)
+	// ClearStep records a step as finished. Finishing it again keeps the first time but
+	// replaces the detail — the latest run's misses are the ones to bring back.
+	ClearStep(ctx context.Context, userID, scenarioID, step string, missed []string) error
 	// HasWordCard reports whether a confused-word card for this headword already exists.
 	HasWordCard(ctx context.Context, userID, en string) (bool, error)
 }

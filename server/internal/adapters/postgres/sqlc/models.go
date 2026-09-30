@@ -183,6 +183,7 @@ type LessonStepClear struct {
 	ScenarioID string             `json:"scenario_id"`
 	Step       string             `json:"step"`
 	ClearedAt  pgtype.Timestamptz `json:"cleared_at"`
+	Detail     []byte             `json:"detail"`
 }
 
 type Lexicon struct {

@@ -13,7 +13,7 @@ func TestLessonStepClearsAreIdempotentAndPerScenario(t *testing.T) {
 	ctx := context.Background()
 
 	for i := 0; i < 2; i++ {
-		if err := repo.ClearStep(ctx, uid, "SCN-ER-00101", "words"); err != nil {
+		if err := repo.ClearStep(ctx, uid, "SCN-ER-00101", "words", []string{"w-scale"}); err != nil {
 			t.Fatalf("ClearStep #%d: %v", i+1, err)
 		}
 	}
@@ -21,8 +21,17 @@ func TestLessonStepClearsAreIdempotentAndPerScenario(t *testing.T) {
 	if err != nil {
 		t.Fatalf("StepClears: %v", err)
 	}
-	if len(got) != 1 || !got["words"] {
+	if _, ok := got["words"]; len(got) != 1 || !ok {
 		t.Fatalf("got %v, want only words", got)
+	}
+	if m := got["words"].Missed; len(m) != 1 || m[0] != "w-scale" {
+		t.Fatalf("missed %v, want [w-scale]", m)
+	}
+	// The latest run's misses replace the first run's.
+	_ = repo.ClearStep(ctx, uid, "SCN-ER-00101", "words", nil)
+	again, _ := repo.StepClears(ctx, uid, "SCN-ER-00101")
+	if len(again["words"].Missed) != 0 {
+		t.Fatalf("missed after a clean rerun: %v", again["words"].Missed)
 	}
 	other, _ := repo.StepClears(ctx, uid, "SCN-ER-00102")
 	if len(other) != 0 {

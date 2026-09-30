@@ -29,7 +29,7 @@ func (q *Queries) HasWordCard(ctx context.Context, arg HasWordCardParams) (bool,
 }
 
 const listLessonStepClears = `-- name: ListLessonStepClears :many
-SELECT step FROM lesson_step_clears WHERE user_id = $1 AND scenario_id = $2
+SELECT step, detail FROM lesson_step_clears WHERE user_id = $1 AND scenario_id = $2
 `
 
 type ListLessonStepClearsParams struct {
@@ -37,19 +37,24 @@ type ListLessonStepClearsParams struct {
 	ScenarioID string `json:"scenario_id"`
 }
 
-func (q *Queries) ListLessonStepClears(ctx context.Context, arg ListLessonStepClearsParams) ([]string, error) {
+type ListLessonStepClearsRow struct {
+	Step   string `json:"step"`
+	Detail []byte `json:"detail"`
+}
+
+func (q *Queries) ListLessonStepClears(ctx context.Context, arg ListLessonStepClearsParams) ([]ListLessonStepClearsRow, error) {
 	rows, err := q.db.Query(ctx, listLessonStepClears, arg.UserID, arg.ScenarioID)
 	if err != nil {
 		return nil, err
 	}
 	defer rows.Close()
-	var items []string
+	var items []ListLessonStepClearsRow
 	for rows.Next() {
-		var step string
-		if err := rows.Scan(&step); err != nil {
+		var i ListLessonStepClearsRow
+		if err := rows.Scan(&i.Step, &i.Detail); err != nil {
 			return nil, err
 		}
-		items = append(items, step)
+		items = append(items, i)
 	}
 	if err := rows.Err(); err != nil {
 		return nil, err
@@ -58,18 +63,25 @@ func (q *Queries) ListLessonStepClears(ctx context.Context, arg ListLessonStepCl
 }
 
 const upsertLessonStepClear = `-- name: UpsertLessonStepClear :exec
-INSERT INTO lesson_step_clears (user_id, scenario_id, step) VALUES ($1, $2, $3)
-ON CONFLICT (user_id, scenario_id, step) DO NOTHING
+INSERT INTO lesson_step_clears (user_id, scenario_id, step, detail) VALUES ($1, $2, $3, $4)
+ON CONFLICT (user_id, scenario_id, step) DO UPDATE SET detail = EXCLUDED.detail
 `
 
 type UpsertLessonStepClearParams struct {
 	UserID     string `json:"user_id"`
 	ScenarioID string `json:"scenario_id"`
 	Step       string `json:"step"`
+	Detail     []byte `json:"detail"`
 }
 
-// Idempotent: finishing a step twice keeps the first time it was finished.
+// Finishing a step again keeps the first time it was finished, but takes the newest
+// detail: the words missed on the latest run are the ones to bring back.
 func (q *Queries) UpsertLessonStepClear(ctx context.Context, arg UpsertLessonStepClearParams) error {
-	_, err := q.db.Exec(ctx, upsertLessonStepClear, arg.UserID, arg.ScenarioID, arg.Step)
+	_, err := q.db.Exec(ctx, upsertLessonStepClear,
+		arg.UserID,
+		arg.ScenarioID,
+		arg.Step,
+		arg.Detail,
+	)
 	return err
 }

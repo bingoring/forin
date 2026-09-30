@@ -4,6 +4,8 @@ import (
 	"context"
 	"net/http"
 	"net/http/httptest"
+	"reflect"
+	"strings"
 	"testing"
 
 	"github.com/bingoring/forin/server/internal/domain/content"
@@ -33,6 +35,7 @@ func (f fakeLessonPasses) ClearedByGuide(context.Context, string) (map[string]bo
 type fakeLessonRepo struct {
 	banks   map[string][]content.Word
 	cleared map[string]bool
+	missed  map[string][]string
 	carded  map[string]bool
 }
 
@@ -50,14 +53,19 @@ func (f *fakeLessonReview) CreateCard(_ context.Context, c ports.NewReviewCard) 
 func (f *fakeLessonRepo) Lexicon(_ context.Context, theme string) ([]content.Word, error) {
 	return f.banks[theme], nil
 }
-func (f *fakeLessonRepo) StepClears(context.Context, string, string) (map[string]bool, error) {
-	return f.cleared, nil
+func (f *fakeLessonRepo) StepClears(context.Context, string, string) (map[string]ports.LessonStepClear, error) {
+	out := map[string]ports.LessonStepClear{}
+	for k := range f.cleared {
+		out[k] = ports.LessonStepClear{Missed: f.missed[k]}
+	}
+	return out, nil
 }
-func (f *fakeLessonRepo) ClearStep(_ context.Context, _, _, step string) error {
+func (f *fakeLessonRepo) ClearStep(_ context.Context, _, _, step string, missed []string) error {
 	if f.cleared == nil {
-		f.cleared = map[string]bool{}
+		f.cleared, f.missed = map[string]bool{}, map[string][]string{}
 	}
 	f.cleared[step] = true
+	f.missed[step] = missed
 	return nil
 }
 
@@ -71,6 +79,7 @@ func lessonFixture(level string) (*lessonHandler, *fakeLessonRepo) {
 			{En: "b c", Words: []string{"w-b", "w-c"}, Goal: 1},
 			{En: "d", Words: []string{"w-d"}, Goal: 2},
 		},
+		Nuance: []content.Nuance{{Kind: content.NuanceSwap, Words: []string{"w-b"}}},
 	}
 	repo := &fakeLessonRepo{banks: map[string][]content.Word{"core-safety-er": {
 		{ID: "w-a", En: "wristband", Ko: "손목 밴드", Example: "Let me check your wristband."}, {ID: "w-b"}, {ID: "w-c"}, {ID: "w-d"}, {ID: "w-unused", En: "unused"},
@@ -236,5 +245,55 @@ func TestLesson_clearStepRefusesAStepWithNoContent(t *testing.T) {
 	h.clearStep(rec, req)
 	if rec.Code != http.StatusConflict || len(repo.cleared) != 0 {
 		t.Fatalf("status %d, cleared %v", rec.Code, repo.cleared)
+	}
+}
+
+func postStep(h *lessonHandler, scenarioID, step, body string) *httptest.ResponseRecorder {
+	req := httptest.NewRequest(http.MethodPost, "/", strings.NewReader(body))
+	req.SetPathValue("scenarioId", scenarioID)
+	req.SetPathValue("step", step)
+	req = req.WithContext(context.WithValue(req.Context(), userIDKey, "u1"))
+	rec := httptest.NewRecorder()
+	h.clearStep(rec, req)
+	return rec
+}
+
+// v45: the words missed in STEP 1 come back first in STEP 2. The client sends them with
+// the STEP 1 clear; ids that are not this lesson's words are dropped, not stored.
+func TestLesson_missedWordsMarkTheirSentencesForReview(t *testing.T) {
+	h, repo := lessonFixture("A2")
+	if rec := postStep(h, "SCN-ER-1", "words", `{"missed":["w-c","w-nope"]}`); rec.Code != http.StatusOK {
+		t.Fatalf("status %d: %s", rec.Code, rec.Body)
+	}
+	if m := repo.missed["words"]; len(m) != 1 || m[0] != "w-c" {
+		t.Fatalf("stored missed %v, want [w-c]", m)
+	}
+	resp, _, _ := h.build(context.Background(), "u1", "SCN-ER-1")
+	var got []bool
+	for _, s := range resp.Sentences {
+		got = append(got, s.Review)
+	}
+	// sentence 0 uses a,b · 1 uses b,c · 2 uses d
+	if want := []bool{false, true, false}; !reflect.DeepEqual(got, want) {
+		t.Fatalf("review %v, want %v", got, want)
+	}
+}
+
+func TestLesson_noBodyStillClears(t *testing.T) {
+	h, repo := lessonFixture("A2")
+	if rec := postStep(h, "SCN-ER-1", "words", ""); rec.Code != http.StatusOK || !repo.cleared["words"] {
+		t.Fatalf("status %d, cleared %v", rec.Code, repo.cleared)
+	}
+}
+
+func TestLesson_carriesNuance(t *testing.T) {
+	h, _ := lessonFixture("A2")
+	resp, _, _ := h.build(context.Background(), "u1", "SCN-ER-1")
+	if len(resp.Nuance) != 1 || resp.Nuance[0].Kind != content.NuanceSwap {
+		t.Fatalf("nuance %+v", resp.Nuance)
+	}
+	empty, _, _ := h.build(context.Background(), "u1", "SCN-EMPTY")
+	if empty.Nuance == nil {
+		t.Fatal("no nuance must encode as [], not null")
 	}
 }
