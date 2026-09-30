@@ -85,8 +85,8 @@ def main(dept: str, srcdir: str, replace: bool = False) -> int:
     incoming, per_seed = {}, {}
     for f in sorted(glob.glob(os.path.join(srcdir, "*.yaml"))):
         d = yaml.safe_load(io.open(f, encoding="utf-8"))
-        if not isinstance(d, dict) or "theme" not in d:
-            continue  # 저작 중 남은 찌꺼기 파일
+        if not isinstance(d, dict) or "theme" not in d or "situations" not in d:
+            continue  # 저작 중 남은 찌꺼기 파일, 또는 같은 폴더의 changes-<주제>.yaml(결정 11)
         incoming[d["theme"]] = d
         for s in d["situations"]:
             per_seed[(d["theme"], s["title"])] = s
