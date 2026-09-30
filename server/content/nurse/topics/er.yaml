@@ -48144,13 +48144,51 @@
     - en: "Have you fallen before in the past year?"
       ko: "지난 1년 동안 넘어지신 적이 있으신가요?"
       chunks: ["Have you fallen", "before", "in the past year", "?"]
-      words: [w-fall, w-year]
+      words: [w-fall]
       goal: 2
     - en: "Are you currently taking any blood thinners or sleep medication?"
       ko: "현재 혈액 희석제나 수면제를 복용하고 계신가요?"
       chunks: ["Are you", "currently taking", "any blood thinners", "or sleep medication", "?"]
       words: [w-thinner, w-medication]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-lose
+    - w-consciousness
+    - w-leg
+    - w-give
+    - w-thinner
+    pairs:
+    - - lose
+      - consciousness
+    - - my legs
+      - gave out
+    - - blood
+      - thinners
+    decoys:
+    - fainted
+    why: 정신을 잃은 것은 lose consciousness, 걸린 게 아니라 다리에 힘이 풀린 것은 legs gave out, 항응고제를 환자에게 쉽게 부를 때는 blood thinners예요.
+  - kind: context
+    words:
+    - w-lose
+    - w-consciousness
+    - w-trip
+    scenes:
+    - who: 차트 기록
+      icon: board
+      en: Pt denies LOC; states she tripped on a rug.
+      ok: true
+    - who: 의사에게 보고
+      icon: speech
+      en: She denies any LOC and says she tripped on a rug.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Any LOC with the fall?
+      ok: false
+      fix: Did you black out or lose consciousness at any point?
+    why: LOC(loss of consciousness)는 차트와 의료진끼리 쓰는 약어예요. 환자에게는 black out, lose consciousness처럼 풀어서 물어야 정확한 답이 나와요.
 
 - theme: er-geriatric
   title: 다약제 복용력 정리
@@ -48200,6 +48238,41 @@
       chunks: ["It's okay", "if you don't remember", "every dose", ", we can call", "the pharmacy", "."]
       words: [w-remember, w-dose, w-pharmacy]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-medication
+    - w-dose
+    cue: 'Patient: "The sleeping pill? Only when I really can''t sleep — maybe twice a month."'
+    scale:
+    - occasionally
+    - most days
+    - every day
+    answerAt: 0
+    why: 한 달에 두어 번, 필요할 때만 먹으면 occasionally 쪽이에요. 차트에는 as needed(PRN)로 적고, 매일 먹는 약과 따로 정리해야 약을 조정할 때 헷갈리지 않아요.
+    example: She takes the sleeping pill only occasionally.
+    exKo: 수면제는 가끔만 드세요.
+  - kind: swap
+    words:
+    - w-counter
+    - w-buy
+    - w-include
+    who: 환자에게 · 비처방약 확인
+    icon: me
+    before:
+    - 'Do you take '
+    - OTC meds
+    - ' for pain or sleep?'
+    options:
+    - anything over the counter
+    - OTC meds
+    - nonprescription agents
+    answer: anything over the counter
+    notes:
+      anything over the counter: 환자도 쓰는 일상어. anything이라 진통제·수면 보조제를 폭넓게 떠올리게 한다.
+      OTC meds: 의료진끼리 흔히 쓰는 약어. 풀어 말하는 편이 노인 환자에게 확실하다.
+      nonprescription agents: 문서·교과서 말투라 대화에서는 딱딱하다.
+    why: 비처방약은 환자가 '약'으로 여기지 않아 빠뜨리기 쉬워요. over the counter처럼 익숙한 말로, anything을 붙여 넓게 물어요.
 
 - theme: er-geriatric
   title: 청력저하 환자 소통
@@ -48222,7 +48295,7 @@
     - en: "I'll face you and speak slowly — let me know if this is clearer."
       ko: "제가 마주 보고 천천히 말씀드릴게요 — 이게 더 잘 들리시면 말씀해 주세요."
       chunks: ["I'll face you", "and speak slowly", "— let me know", "if this is clearer", "."]
-      words: [w-face, w-speak, w-clear]
+      words: [w-face, w-speak, w-clear, w-slowly]
       goal: 1
     - en: "Would it help if I wrote this down for you?"
       ko: "적어서 보여드리면 도움이 될까요?"
@@ -48232,12 +48305,12 @@
     - en: "Just raise your hand if you miss something."
       ko: "놓치신 부분이 있으면 그냥 손을 들어 주세요."
       chunks: ["Just raise your hand", "if you miss", "something", "."]
-      words: [w-raise, w-hand, w-miss]
+      words: [w-raise, w-miss]
       goal: 2
     - en: "Let me sit where you can see my face clearly."
       ko: "제 얼굴이 잘 보이는 자리에 앉을게요."
       chunks: ["Let me sit", "where you can see", "my face", "clearly", "."]
-      words: [w-face, w-clear]
+      words: []
       goal: 1
     - en: "Does that sound clearer, or should I write it down?"
       ko: "이게 더 잘 들리세요, 아니면 적어드릴까요?"
@@ -48249,6 +48322,43 @@
       chunks: ["Let's check", "if your hearing aids", "are in", "and working", "."]
       words: [w-aid]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-aid
+    - w-write
+    - w-raise
+    pairs:
+    - - hearing
+      - aids
+    - - write it
+      - down
+    - - raise your
+      - hand
+    decoys:
+    - loud
+    why: 보청기는 hearing aids, 적어 드릴 때는 write it down, 놓친 말이 있을 때의 신호는 raise your hand예요.
+  - kind: swap
+    words:
+    - w-face
+    - w-speak
+    - w-clear
+    who: 청력이 떨어진 환자에게
+    icon: me
+    before:
+    - 'I''ll '
+    - shout
+    - ' so you can understand me.'
+    options:
+    - face you and speak clearly
+    - shout
+    - talk from the doorway
+    answer: face you and speak clearly
+    notes:
+      face you and speak clearly: 입 모양과 표정이 보이게 마주 보고 또렷하게. 미국 국립노화연구소(NIA)가 권하는 방법이다.
+      shout: 소리치면 말소리가 일그러지고 화난 것처럼 들린다. NIA도 조금 크게는 괜찮지만 소리치지는 말라고 한다.
+      talk from the doorway: 멀리서 말하면 소리가 약해지고 입 모양도 보이지 않는다.
+    why: '''Speak up''이라는 말을 들어도 소리치기보다 마주 보고 또렷하게 말하는 것이 더 잘 전달돼요.'
 
 - theme: er-geriatric
   title: 기저 인지기능 확인
@@ -48303,6 +48413,40 @@
       chunks: ["We really appreciate", "you telling us", "these details", "."]
       words: [w-detail]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-change
+    - w-notice
+    cue: 'Daughter: "She''s been a little off since Tuesday — but she still knows all of us."'
+    scale:
+    - slightly different
+    - confused
+    - completely disoriented
+    answerAt: 0
+    why: 가족을 다 알아보면서 'a little off'라면 slightly different 쪽이에요. 그래도 노인에게는 이런 작은 변화가 섬망의 첫 신호일 수 있어서 언제 시작됐는지 꼭 적어 둬요.
+    example: Her daughter says she's been slightly different since Tuesday.
+    exKo: 따님 말로는 화요일부터 조금 달라지셨대요.
+  - kind: context
+    words:
+    - w-orient
+    - w-usual
+    - w-normally
+    scenes:
+    - who: 차트 기록
+      icon: board
+      en: Per daughter, pt is A&Ox4 at baseline.
+      ok: true
+    - who: 의사에게 보고
+      icon: speech
+      en: Daughter says she's normally oriented times four.
+      ok: true
+    - who: 따님에게
+      icon: me
+      en: Is she usually A&O times four?
+      ok: false
+      fix: Does she usually know the date and where she is?
+    why: A&Ox4는 사람·장소·시간·상황을 아는지를 줄인 의료진의 말이에요. 가족에게는 날짜와 있는 곳을 아는지처럼 풀어서 물어요.
 
 - theme: er-geriatric
   title: 활동·일상수행 청취
@@ -48352,6 +48496,43 @@
       chunks: ["Has getting dressed", "become harder", "lately", "?"]
       words: [w-dress, w-lately]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-bathe
+    - w-dress
+    - w-meal
+    pairs:
+    - - bathe and
+      - dress on your own
+    - - manage your own
+      - meals
+    - - get up from
+      - a chair
+    decoys:
+    - lately
+    why: 혼자 씻고 옷 입기는 bathe and dress on your own, 끼니를 챙기는 것은 manage your own meals, 의자에서 일어나기는 get up from a chair — 모두 일상생활 수행 능력을 묻는 말이에요.
+  - kind: swap
+    words:
+    - w-bathe
+    - w-dress
+    - w-need
+    who: 환자에게 · 일상생활 수행 능력 사정
+    icon: me
+    before:
+    - 'Do you need help with '
+    - your ADLs
+    - '?'
+    options:
+    - things like bathing or dressing
+    - your ADLs
+    - your activities of daily living
+    answer: things like bathing or dressing
+    notes:
+      things like bathing or dressing: 무엇을 묻는지 구체적이라 환자가 바로 답할 수 있다.
+      your ADLs: 의료진 약어. 환자는 무슨 뜻인지 모른다.
+      your activities of daily living: 틀리지 않지만 서류를 읽는 말투라 대화에서는 딱딱하다.
+    why: ADL은 사정 항목의 이름이에요. 환자에게는 씻기·옷 입기처럼 구체적인 일로 물어요.
 
 - theme: er-geriatric
   title: 급성 섬망 감별
@@ -48401,6 +48582,40 @@
       chunks: ["Let's keep", "the room quiet", "and calm", "for you", "."]
       words: [w-calm]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-frighten
+    - w-calm
+    cue: 'Patient, pulling away: "Who are you people? Where am I? Get away from me!"'
+    scale:
+    - uneasy
+    - scared
+    - terrified
+    answerAt: 2
+    why: 누군지도, 어디인지도 모른 채 밀어낸다면 terrified 쪽이에요. 이럴 때는 목소리를 낮추고, 지금 병원이고 안전하다는 것부터 알려 줘요.
+    example: She's terrified and doesn't know where she is.
+    exKo: 어디 계신지 모르셔서 몹시 겁에 질려 계세요.
+  - kind: context
+    words:
+    - w-hospital
+    - w-safe
+    - w-confusion
+    scenes:
+    - who: 동료에게
+      icon: speech
+      en: She's acutely confused — this is new since this morning.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Acute change in mental status, onset this AM; reoriented.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: You have acute delirium.
+      ok: false
+      fix: You're in the hospital, and you're safe with me. We're finding out why you feel confused.
+    why: 혼란에 빠진 환자에게 진단명을 말해도 알아듣지 못하고 더 불안해할 수 있어요. 지금 어디에 있고 안전하다는 것을 알려 주는 재지남(reorientation)이 먼저예요.
 
 - theme: er-geriatric
   title: 비전형 감염 표현
@@ -48450,6 +48665,43 @@
       chunks: ["We'll check", "her urine", "and listen", "to her lungs", "."]
       words: [w-urine, w-lung]
       goal: 2
+  nuance:
+  - kind: swap
+    words:
+    - w-old
+    - w-infection
+    - w-confusion
+    who: 보호자에게 · 비전형 감염 설명
+    icon: me
+    before:
+    - 'In '
+    - the elderly
+    - ', infections can show up as confusion, not fever.'
+    options:
+    - older adults
+    - the elderly
+    - old folks
+    answer: older adults
+    notes:
+      older adults: AP 스타일북과 미국노인의학회(AGS) 학술지가 권하는 중립적인 말.
+      the elderly: 흔히 쓰지만 노인을 한 덩어리로 묶는 말이라 요즘 지침은 피하라고 한다.
+      old folks: 친근한 입말이지만 의료진이 설명할 때 쓰기에는 가볍다.
+    why: 미국 의료 현장과 학술지는 elderly 대신 older adults를 써요. 보호자 앞에서도 이 말이 무난해요.
+  - kind: pair
+    words:
+    - w-run
+    - w-lung
+    - w-confusion
+    pairs:
+    - - run
+      - tests
+    - - listen to
+      - her lungs
+    - - show up as
+      - confusion
+    decoys:
+    - thermometer
+    why: 검사를 돌리는 것은 run tests, 청진은 listen to her lungs, 감염이 혼돈으로 나타나는 것은 show up as confusion이에요.
 
 - theme: er-geriatric
   title: 노인 흉통 비전형
@@ -48504,6 +48756,39 @@
       chunks: ["We'll do", "an EKG", "and some blood tests", "on your heart", "."]
       words: [w-heart]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-pain
+    - w-sharp
+    cue: 'Patient: "It''s not really pain, just a heavy, tired feeling in my chest."'
+    scale:
+    - discomfort
+    - pain
+    - crushing pain
+    answerAt: 0
+    why: '''pain은 아니고 무거운 느낌''이면 discomfort 쪽이에요. 하지만 노인의 심근경색은 이렇게 약하게 오기도 해서 가볍게 넘기지 않고 심전도부터 찍어요.'
+    example: She describes it as discomfort, not pain.
+    exKo: 통증이라기보다 불편감이라고 하세요.
+  - kind: swap
+    words:
+    - w-pain
+    who: 노인 환자에게 · 흉부 증상 문진
+    icon: me
+    before:
+    - 'Are you having any '
+    - angina
+    - ' right now?'
+    options:
+    - chest pain or pressure
+    - angina
+    - cardiac symptoms
+    answer: chest pain or pressure
+    notes:
+      chest pain or pressure: 쉬운 말이고, pressure까지 물어 통증이라 부르지 않는 증상도 잡는다.
+      angina: 의학 용어라 환자가 모르거나 '없다'고 답하기 쉽다.
+      cardiac symptoms: 무엇을 묻는지 막연해 환자가 대답하기 어렵다.
+    why: 노인·여성·당뇨 환자의 심근경색은 흉통 대신 압박감·숨참·피로로 오기도 해요. pain만 묻지 말고 pressure까지 물어요.
 
 - theme: er-geriatric
   title: 다약제 상호작용 부작용
@@ -48553,6 +48838,39 @@
       chunks: ["We may lower", "or stop", "one of these", "medicines", "."]
       words: [w-medicine]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-unsteady
+    cue: He wobbles when he turns around, but he hasn't fallen today.
+    scale:
+    - a little unsteady
+    - very unsteady
+    - unable to stand
+    answerAt: 0
+    why: 돌아설 때 휘청거리지만 넘어지지 않았다면 a little unsteady 쪽이에요. 그래도 새 약 뒤에 생긴 것이면 낙상 위험이라 혼자 걷지 않게 해요.
+    example: He's a little unsteady when he turns around.
+    exKo: 돌아서실 때 조금 휘청거리세요.
+  - kind: context
+    words:
+    - w-interact
+    - w-medicine
+    - w-dizziness
+    scenes:
+    - who: 차트 기록
+      icon: board
+      en: Dizziness likely adverse drug reaction; polypharmacy — med review requested.
+      ok: true
+    - who: 약사에게
+      icon: speech
+      en: I'm worried two of her meds are interacting — can you review her list?
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: You're having an adverse drug interaction from polypharmacy.
+      ok: false
+      fix: Some of your medicines may be interacting and making you dizzy.
+    why: polypharmacy·adverse drug reaction은 의료진끼리의 말이에요. 환자에게는 약끼리 영향을 주고받아 어지러울 수 있다고 쉽게 말해요.
 
 - theme: er-geriatric
   title: 요양시설 이송 정보 부족
@@ -48602,6 +48920,41 @@
       chunks: ["Let's call", "the facility", "to confirm", "her medication list", "."]
       words: [w-facility, w-medication, w-list]
       goal: 1
+  nuance:
+  - kind: pair
+    words:
+    - w-status
+    - w-reach
+    - w-facility
+    pairs:
+    - - doesn't say
+      - much
+    - - mental
+      - status
+    - - reach
+      - the facility
+    decoys:
+    - allergy
+    why: 서류에 쓰인 게 별로 없다는 doesn't say much, 평소 정신 상태는 mental status, 시설과 연락이 닿게 하는 것은 reach the facility예요.
+  - kind: context
+    words:
+    - w-baseline
+    - w-status
+    scenes:
+    - who: 이송 요원에게
+      icon: speech
+      en: Do you know her baseline mental status?
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: 'Baseline per facility RN: A&Ox2, ambulates with walker.'
+      ok: true
+    - who: 따님에게 전화
+      icon: speaker
+      en: What's her baseline — A&O times what?
+      ok: false
+      fix: What is she normally like — does she usually know where she is?
+    why: baseline·A&O는 의료진끼리 통하는 말이에요. 가족에게는 평소 어떤 분인지, 어디 있는지 아시는지처럼 풀어서 물어요.
 
 - theme: er-geriatric
   title: 학대·방임 의심
@@ -48651,6 +49004,44 @@
       chunks: ["I ask", "everyone this", "— do you feel safe", "where you live", "?"]
       words: [w-safe, w-live]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-bruise
+    - w-safe
+    - w-live
+    - w-food
+    pairs:
+    - - bruises on
+      - your arm
+    - - feel safe
+      - where you live
+    - - enough
+      - food
+    decoys:
+    - cared
+    why: 멍은 bruises on 부위, 지내는 곳이 안전한지는 feel safe where you live, 잘 먹는지는 enough food로 물어요.
+  - kind: swap
+    words:
+    - w-bruise
+    - w-notice
+    - w-understand
+    who: 환자에게 · 학대 의심 사정
+    icon: me
+    before:
+    - 'I want to ask about '
+    - who hit you
+    - .
+    options:
+    - some bruises I noticed
+    - who hit you
+    - your abuse
+    answer: some bruises I noticed
+    notes:
+      some bruises I noticed: 본 것을 판단 없이 말해 환자가 스스로 설명할 여지를 준다.
+      who hit you: 답을 미리 정해 두고 묻는 유도 질문이라 환자가 입을 닫을 수 있다.
+      your abuse: 확인되지 않은 것을 단정해 환자를 방어적으로 만든다.
+    why: 학대가 의심될 때는 본 것을 중립적으로 말하고 열린 질문으로 물어요. 환자가 누구를 곤란하게 할까 걱정할수록 더 그래요.
 
 - theme: er-geriatric
   title: 진통제 신중 투여
@@ -48700,6 +49091,40 @@
       chunks: ["Please don't try", "to get up alone", "until we check", "on you", "."]
       words: [w-alone]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-groggy
+    cue: 'After a small dose of hydromorphone: "I feel a bit foggy, but I can talk to you fine."'
+    scale:
+    - a little groggy
+    - very drowsy
+    - hard to wake
+    answerAt: 0
+    why: 또렷하게 대화하면서 멍하다면 a little groggy 쪽이에요. 오피오이드의 진정은 호흡 억제보다 먼저 오기 때문에, 점점 깨우기 힘들어지면 호흡부터 확인해요.
+    example: She's a little groggy but talking normally.
+    exKo: 조금 몽롱하시지만 말씀은 평소처럼 하세요.
+  - kind: context
+    words:
+    - w-start
+    - w-low
+    - w-adjust
+    - w-kidney
+    scenes:
+    - who: 동료에게
+      icon: speech
+      en: Start low, go slow — she's 88 with kidney disease.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Hydromorphone 0.2 mg IV given; reduced dose d/t age and renal function.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Start low, go slow — standard geriatric dosing.
+      ok: false
+      fix: We'll start with a small dose and adjust carefully for your kidneys.
+    why: '''start low, go slow''는 노인 약물 원칙을 줄인 의료진끼리의 말이에요. 환자에게는 적은 양으로 시작해 신장 상태를 보며 조절한다고 풀어 말해요.'
 
 - theme: er-geriatric
   title: 보청기·안경 보조기구
@@ -48722,7 +49147,7 @@
     - en: "Let's see if we can get you some help hearing and seeing better."
       ko: "듣고 보시는 데 도움이 될 만한 걸 함께 찾아볼게요."
       chunks: ["Let's see", "if we can get you", "some help", "hearing and seeing", "better", "."]
-      words: [w-hear, w-see]
+      words: [w-hear]
       goal: 1
     - en: "I'll speak clearly and stay in your view."
       ko: "제가 또렷하게 말하고 시야 안에 있을게요."
@@ -48749,6 +49174,41 @@
       chunks: ["Wearing your glasses", "can make you feel", "much less", "confused here", "."]
       words: [w-glasses, w-less, w-confused]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-aid
+    - w-stay
+    - w-view
+    pairs:
+    - - hearing aid
+      - batteries
+    - - contact
+      - lenses
+    - - stay in
+      - your view
+    decoys:
+    - louder
+    why: 보청기 배터리는 hearing aid batteries, 콘택트렌즈는 contact lenses, 환자 시야 안에 있는 것은 stay in your view예요.
+  - kind: swap
+    words:
+    - w-glasses
+    who: 노인 환자에게 · 안경 챙겨 드리기
+    icon: me
+    before:
+    - ''
+    - Sweetie
+    - ', let''s put your glasses on so you can see me.'
+    options:
+    - Mrs. Park
+    - Sweetie
+    - Grandma
+    answer: Mrs. Park
+    notes:
+      Mrs. Park: 성인 환자는 성과 호칭으로, 또는 본인이 원하는 이름으로 부른다.
+      Sweetie: '''elderspeak'' — 아이를 대하듯 들린다. 치매 환자에게 elderspeak를 쓰면 돌봄 거부가 늘었다는 연구도 있다.'
+      Grandma: 가족이 아닌 사람이 부르면 나이로 낮춰 보는 말로 들린다.
+    why: 노인 환자에게 sweetie·honey 같은 말은 다정하게 들리려 해도 존중이 빠진 말이에요. 이름과 호칭으로 불러요.
 
 - theme: er-geriatric
   localeBound: [law]
@@ -48780,7 +49240,7 @@
       words: [w-matter, w-care]
       goal: 2
     - en: "We'll honor his wishes as best we can."
-      ko: "저희가 할 수 있는 한 그분의 뜻을 존중할게요."
+      ko: "저희가 할 수 있는 한 그분의 뜻을 지켜 드릴게요."
       chunks: ["We'll honor", "his wishes", "as best we can", "."]
       words: [w-honor, w-wish]
       goal: 2
@@ -48797,8 +49257,41 @@
     - en: "We want to respect his wishes and support your family."
       ko: "그분의 뜻을 존중하고 가족분들을 지지해드리고 싶어요."
       chunks: ["We want to respect", "his wishes", "and support", "your family", "."]
-      words: [w-respect, w-wish, w-family]
+      words: [w-respect, w-wish, w-support]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-directive
+    - w-care
+    cue: 'Daughter: "No ICU and no breathing tube — but if he gets pneumonia, yes, give him antibiotics."'
+    scale:
+    - comfort-focused treatment
+    - selective treatment
+    - full treatment
+    answerAt: 1
+    why: 중환자실·기관삽관은 원하지 않지만 항생제는 쓰겠다면 selective treatment에 가까워요. POLST 양식은 치료 범위를 comfort-focused · selective · full treatment 셋으로 나눠요.
+    example: Per the POLST, he wants selective treatment — no intubation.
+    exKo: POLST에 따르면 선택적 치료를 원하세요 — 기관삽관은 하지 않아요.
+  - kind: context
+    words:
+    - w-care
+    - w-directive
+    scenes:
+    - who: 의사에게
+      icon: speech
+      en: Do we have a code status on him? Family mentions a POLST.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: 'Code status: pending — family bringing POLST.'
+      ok: true
+    - who: 따님에게
+      icon: me
+      en: So what's his code status — full code or DNR?
+      ok: false
+      fix: Has he ever talked about what kind of care he'd want if he got very sick?
+    why: code status·DNR은 의료진의 말이에요. 가족에게 불쑥 물으면 결정을 떠넘기는 것처럼 들릴 수 있어, 그분이 어떤 돌봄을 원했는지부터 물어요.
 
 - theme: er-geriatric
   title: 노인 패혈증 급속 진행
@@ -48848,6 +49341,39 @@
       chunks: ["I'll explain", "each step", "as we move quickly", "."]
       words: [w-explain]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-sepsis
+    cue: 'Daughter: "She''s so cold and weak — this came on out of nowhere."'
+    scale:
+    - gradually
+    - quickly
+    - suddenly
+    answerAt: 2
+    why: '''out of nowhere''라면 suddenly 쪽이에요. 노인 패혈증은 몇 시간 만에 급격히 나빠지기도 해서, 언제부터였는지 시각을 물어 적어요.'
+    example: Her symptoms started suddenly this morning.
+    exKo: 오늘 아침 갑자기 증상이 시작됐어요.
+  - kind: context
+    words:
+    - w-temperature
+    - w-pressure
+    - w-treatment
+    scenes:
+    - who: 동료에게
+      icon: speech
+      en: Temp 35.6, BP 84 over 50 — let's start the sepsis bundle now.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Hypothermic, hypotensive; 30 mL/kg crystalloid bolus initiated.
+      ok: true
+    - who: 따님에게
+      icon: me
+      en: She's hypothermic and hypotensive; we're initiating the sepsis bundle.
+      ok: false
+      fix: Her temperature and blood pressure are low, which worries me — we're starting treatment right away.
+    why: hypothermic·hypotensive·sepsis bundle은 의료진끼리의 말이에요. 가족에게는 무엇이 걱정되고 지금 무엇을 하는지 쉬운 말로 말해요.
 
 - theme: er-geriatric
   title: 항응고제 두부외상
@@ -48878,7 +49404,7 @@
       words: [w-scan, w-bleed]
       goal: 2
     - en: "Watch for any drowsiness or confusion — tell me immediately."
-      ko: "졸리거나 혼란스러운 모습이 보이면 바로 말씀해 주세요."
+      ko: "졸리거나 혼란스러운 모습이 보이면 바로 알려 주세요."
       chunks: ["Watch for", "any drowsiness", "or confusion", "— tell me immediately", "."]
       words: [w-drowsy, w-confusion, w-tell, w-immediately]
       goal: 2
@@ -48897,6 +49423,39 @@
       chunks: ["Please tell us", "right away", "if she seems more", "confused", "."]
       words: [w-tell, w-confused]
       goal: 1
+  nuance:
+  - kind: slider
+    words:
+    - w-drowsy
+    cue: 'Daughter: "She keeps nodding off in the middle of a sentence, but she wakes up when I say her name."'
+    scale:
+    - tired
+    - drowsy
+    - unresponsive
+    answerAt: 1
+    why: 말하다가 졸지만 이름을 부르면 깨면 drowsy 쪽이에요. 항응고제를 먹는 환자가 머리를 부딪힌 뒤라면 두개내출혈의 신호일 수 있어 곧바로 알려요.
+    example: She's drowsy but wakes up to her name.
+    exKo: 졸려 하시지만 이름을 부르면 깨세요.
+  - kind: context
+    words:
+    - w-scan
+    - w-bleed
+    - w-thinner
+    scenes:
+    - who: 영상의학과 전화
+      icon: speaker
+      en: I need a stat head CT — 84-year-old on apixaban, fall with head strike.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Head CT ordered to r/o ICH; pt on apixaban.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: We need a stat noncontrast head CT to r/o ICH.
+      ok: false
+      fix: We'll get a scan of your head right away to rule out bleeding.
+    why: stat·r/o·ICH는 의료진끼리의 약어예요. 환자에게는 머리 사진을 바로 찍어 출혈이 없는지 본다고 풀어 말해요.
 
 - theme: er-geriatric
   title: 급성 섬망+공격성
@@ -48929,12 +49488,12 @@
     - en: "Let's lower the noise so you feel calmer."
       ko: "소음을 줄여서 좀 더 편안해지시게 할게요."
       chunks: ["Let's lower", "the noise", "so you feel calmer", "."]
-      words: [w-low, w-noise, w-calm]
+      words: [w-noise, w-calm]
       goal: 2
     - en: "We're checking your blood and body for what's causing this."
       ko: "이걸 일으킨 원인을 찾기 위해 혈액과 몸 상태를 확인하고 있어요."
       chunks: ["We're checking", "your blood and body", "for what's causing", "this", "."]
-      words: [w-cause, w-body]
+      words: [w-cause]
       goal: 1
     - en: "I won't hold you down unless it keeps you safe."
       ko: "안전을 지키기 위해서가 아니면 붙잡지 않을게요."
@@ -48944,8 +49503,42 @@
     - en: "Let's dim the lights and keep things calm around you."
       ko: "조명을 낮추고 주변을 차분하게 유지할게요."
       chunks: ["Let's dim", "the lights", "and keep things", "calm around you", "."]
-      words: [w-calm]
+      words: [w-calm, w-dim]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-confusion
+    - w-calm
+    cue: He's shouting and pulling at his IV, but he isn't swinging at anyone.
+    scale:
+    - restless
+    - agitated
+    - combative
+    answerAt: 1
+    why: 소리치고 줄을 잡아당기지만 사람을 치려 하지 않으면 agitated 쪽이에요. 때리려 들면 combative — 그때는 도움을 부르고 거리를 둬요.
+    example: He's agitated and pulling at his IV.
+    exKo: 흥분해서 수액 줄을 잡아당기고 계세요.
+  - kind: swap
+    words:
+    - w-safe
+    - w-hurt
+    who: 섬망으로 공격적인 환자에게
+    icon: me
+    before:
+    - ''
+    - Calm down
+    - ' — I''m not going to hurt you.'
+    options:
+    - You're safe here
+    - Calm down
+    - Stop fighting me
+    answer: You're safe here
+    notes:
+      You're safe here: 환자가 느끼는 두려움에 먼저 답한다. 섬망 환자는 위협을 받는다고 느껴 공격적이 되곤 한다.
+      Calm down: 명령처럼 들려 흥분한 사람을 오히려 자극하기 쉽다.
+      Stop fighting me: 환자와 맞서는 말이라 긴장을 키운다.
+    why: 흥분한 사람에게 calm down은 효과가 거의 없어요. 안전하다는 말로 두려움을 먼저 가라앉혀요.
 
 - theme: er-geriatric
   title: 말기 환자 목표 재설정
@@ -48968,7 +49561,7 @@
     - en: "Let's talk about what would give him the most comfort."
       ko: "그분께 가장 편안함을 줄 수 있는 방법을 함께 이야기해볼게요."
       chunks: ["Let's talk", "about what would give him", "the most", "comfort", "."]
-      words: [w-give, w-comfort]
+      words: [w-comfort]
       goal: 1
     - en: "There's no wrong choice here — we'll support whatever you decide."
       ko: "여기엔 잘못된 선택이 없어요 — 어떤 결정을 하시든 저희가 지지할게요."
@@ -48993,8 +49586,42 @@
     - en: "Whatever you decide, we'll support your family fully."
       ko: "어떤 결정을 하시든 가족분들을 온전히 지지해드릴게요."
       chunks: ["Whatever you decide", ", we'll support", "your family fully", "."]
-      words: [w-decide, w-support, w-family]
+      words: [w-decide, w-support]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-decide
+    cue: 'Son: "I think… maybe it''s what Dad would have wanted? I don''t know."'
+    scale:
+    - unsure
+    - leaning toward it
+    - certain
+    answerAt: 0
+    why: 말끝을 흐리며 '모르겠다'고 하면 아직 unsure예요. 결정을 재촉하지 말고, 아버지께 무엇이 중요했는지를 더 물어요.
+    example: He's still unsure what to decide.
+    exKo: 아직 어떻게 결정할지 확신이 없으세요.
+  - kind: swap
+    words:
+    - w-comfort
+    - w-care
+    - w-treatment
+    who: 가족에게 · 치료 목표 재설정
+    icon: me
+    before:
+    - 'We''re going to '
+    - withdraw care
+    - ' and focus on his comfort.'
+    options:
+    - stop treatments that aren't helping
+    - withdraw care
+    - give up
+    answer: stop treatments that aren't helping
+    notes:
+      stop treatments that aren't helping: 멈추는 것은 도움이 안 되는 치료이고 돌봄은 계속된다는 것이 분명하다.
+      withdraw care: 돌봄 자체를 거둔다는 말로 들려 가족이 버림받았다고 느낄 수 있다. 완화의료 쪽에서 피하라고 하는 표현이다.
+      give up: 포기한다는 말이라 가족에게 죄책감을 남긴다.
+    why: 완화 쪽으로 방향을 바꿔도 돌봄(care)은 멈추지 않아요. 멈추는 것은 치료(treatment)예요.
 
 - theme: er-geriatric
   title: 다발성 만성질환 급성 악화
@@ -49025,7 +49652,7 @@
       words: [w-breathe, w-first]
       goal: 2
     - en: "Tell me which symptom is bothering you most."
-      ko: "어떤 증상이 가장 힘드신지 말씀해 주세요."
+      ko: "어떤 증상이 가장 힘드신지 알려 주세요."
       chunks: ["Tell me", "which symptom", "is bothering you most", "."]
       words: [w-tell, w-symptom, w-bother]
       goal: 2
@@ -49044,6 +49671,42 @@
       chunks: ["Let's figure out", "together", "which problem", "to treat first", "."]
       words: [w-problem, w-first]
       goal: 1
+  nuance:
+  - kind: pair
+    words:
+    - w-strain
+    - w-swollen
+    - w-leg
+    pairs:
+    - - under
+      - strain
+    - - swollen
+      - legs
+    - - at the same
+      - time
+    decoys:
+    - breathing
+    why: 짐을 지고 있는 상태는 under strain, 부은 다리는 swollen legs, 동시에는 at the same time이에요.
+  - kind: context
+    words:
+    - w-swollen
+    - w-leg
+    - w-heart
+    scenes:
+    - who: 의사에게 보고
+      icon: speech
+      en: She has 3+ pitting edema in both legs — looks like a CHF exacerbation.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: BLE 3+ pitting edema; orthopnea.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: You have 3+ pitting edema from your CHF.
+      ok: false
+      fix: Your legs are swollen because your heart isn't pumping well.
+    why: pitting edema·CHF는 의료진끼리의 말이에요. 환자에게는 다리가 부은 이유를 쉬운 말로 설명해요.
 
 - theme: er-geriatric
   title: 고관절 골절 통증·수술 대기
@@ -49064,7 +49727,7 @@
   persona: { name: Margaret Ellis, ageRange: 80s, sub: "83y / Female", mood: pain, personality: 인내하려 하나 지쳐감, speakingStyle: 통증에 신음하며 호소함 }
   sentences:
     - en: "We'll manage your pain while you wait for surgery."
-      ko: "수술을 기다리시는 동안 통증을 조절해드릴게요."
+      ko: "수술을 기다리시는 동안 통증을 관리해 드릴게요."
       chunks: ["We'll manage", "your pain", "while you wait", "for surgery", "."]
       words: [w-manage, w-pain, w-wait, w-surgery]
       goal: 1
@@ -49086,13 +49749,48 @@
     - en: "Drink some water to help stay hydrated before surgery."
       ko: "수술 전에 물을 좀 드셔서 수분을 유지해 주세요."
       chunks: ["Drink some water", "to help", "stay hydrated", "before surgery", "."]
-      words: [w-hydrate, w-surgery, w-stay]
+      words: [w-hydrate, w-surgery]
       goal: 2
     - en: "Let's keep you moving and oriented while you wait."
       ko: "기다리시는 동안 계속 움직이시고 지남력을 유지하게 도와드릴게요."
       chunks: ["Let's keep you", "moving", "and oriented", "while you wait", "."]
       words: [w-orient, w-wait]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-pain
+    - w-manage
+    cue: 'Patient, gripping the rail: "The pain is unbearable — please don''t move my leg!"'
+    scale:
+    - mild
+    - moderate
+    - severe
+    answerAt: 2
+    why: '''unbearable''에 움직이지 말라고 애원하면 severe 쪽이에요. 노인은 통증을 덜 말하기도 해서 숫자와 함께 표정·몸짓도 봐요.'
+    example: Her pain is severe whenever we move her leg.
+    exKo: 다리를 움직일 때마다 통증이 심하세요.
+  - kind: context
+    words:
+    - w-orient
+    - w-hydrate
+    - w-prevent
+    - w-confusion
+    scenes:
+    - who: 동료에게
+      icon: speech
+      en: Let's get her glasses on and keep the blinds open — delirium prevention.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: 'Delirium precautions: reorientation, hydration, glasses on.'
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: We're implementing delirium precautions for you.
+      ok: false
+      fix: Staying oriented and hydrated helps prevent confusion.
+    why: delirium precautions는 간호 계획의 이름이에요. 환자에게는 무엇을 왜 하는지 쉬운 말로 말해야 함께할 수 있어요.
 
 - theme: er-geriatric
   title: 요양원 이송 임종 임박
@@ -49120,7 +49818,7 @@
     - en: "You can hold her hand and speak to her — she may still hear you."
       ko: "손을 잡고 말을 건네셔도 돼요 — 아직 들리실 수 있어요."
       chunks: ["You can hold", "her hand", "and speak to her", "— she may still", "hear you", "."]
-      words: [w-hold, w-hand, w-speak, w-hear]
+      words: [w-hold, w-speak, w-hear]
       goal: 2
     - en: "Take all the time you need; we're here for all of you."
       ko: "필요한 만큼 시간을 가지세요; 저희가 가족분들 곁에 있어요."
@@ -49130,18 +49828,52 @@
     - en: "We'll keep the room calm and dim the lights for her."
       ko: "방을 차분하게 하고 조명을 낮춰드릴게요."
       chunks: ["We'll keep", "the room calm", "and dim", "the lights", "for her", "."]
-      words: [w-calm]
+      words: [w-calm, w-dim]
       goal: 1
     - en: "It's okay to say goodbye in whatever way feels right to you."
       ko: "어떤 방식으로든 편하게 작별 인사를 하셔도 괜찮아요."
       chunks: ["It's okay", "to say goodbye", "in whatever way", "feels right", "to you", "."]
-      words: [w-say, w-goodbye]
+      words: [w-goodbye]
       goal: 2
     - en: "We'll make sure she stays comfortable and free of pain."
       ko: "통증 없이 편안하게 지내시도록 해드릴게요."
       chunks: ["We'll make sure", "she stays", "comfortable", "and free of pain", "."]
-      words: [w-sure, w-stay, w-comfortable, w-pain]
+      words: [w-sure, w-comfortable, w-pain]
       goal: 1
+  nuance:
+  - kind: pair
+    words:
+    - w-hold
+    - w-pain
+    - w-goodbye
+    pairs:
+    - - hold
+      - her hand
+    - - free of
+      - pain
+    - - say
+      - goodbye
+    decoys:
+    - peaceful
+    why: 손을 잡는 것은 hold her hand, 통증이 없는 것은 free of pain, 작별 인사는 say goodbye예요.
+  - kind: context
+    words:
+    - w-comfortable
+    scenes:
+    - who: 동료에게
+      icon: speech
+      en: She's actively dying — mottling and Cheyne-Stokes breathing.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Pt actively dying; comfort measures only per POLST.
+      ok: true
+    - who: 가족에게
+      icon: me
+      en: She's actively dying, with mottling and Cheyne-Stokes respirations.
+      ok: false
+      fix: She is dying, and her breathing may change — that's expected, and we'll keep her comfortable.
+    why: mottling·Cheyne-Stokes는 의료진끼리의 말이에요. 가족에게도 돌아가시고 있다는 사실은 분명히 말하되, 무엇이 보일지는 쉬운 말로 미리 알려 줘요.
 
 - theme: er-obgyn
   title: 임신 초기 출혈 문진
