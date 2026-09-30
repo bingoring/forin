@@ -338,7 +338,12 @@ Go 생성기도 받아들임을 확인. 지시서에 v45 두 절과 보강 모�
 ### E'. API 보정
 - `words[]` 새 필드, `nuance[]`, `steps[words].count`는 단어 수만
 - `POST …/steps/words` 본문 `{missed}` → `lesson_step_clears.detail` → `GET`이 해당 문장에 `review: true`
-- [ ] 1~5. 실패 테스트(틀린 단어를 쓰는 문장만 review) → 구현 → 계약 재생성 → 커밋
+- [x] 1~5. 실패 테스트(틀린 단어를 쓰는 문장만 review) → 구현 → 계약 재생성 → 커밋
+
+**E' 완료(2026-09-30).** 마이그레이션 000042(`lesson_step_clears.detail`). `POST …/steps/words`가 `{missed}`를 받되
+**이 상황 STEP 1 목록의 단어만** 남긴다(클라이언트가 보낸 엉뚱한 id가 기록에 영원히 남지 않게). 다시 끝내면 처음
+시각은 두고 `missed`는 최신 것으로 바꾼다. `GET`의 문장에 `review`, 응답에 `nuance[]`(없으면 `[]`). 변이 2건 확인,
+실 DB 테스트 통과. 모바일 `LessonDetail` 타입에 v45 필드.
 
 ### H'. 회상형 단어장 (H를 대체)
 - 수정: `mobile/src/app/scenario/[id]/words.tsx` — 같은 경로. 앞면 프롬프트 → 확인 → 같은 장 아래 해설
