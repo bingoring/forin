@@ -55460,7 +55460,6 @@
         - when I touch
         - .
       words:
-        - w-tell
         - w-tender
         - w-touch
       goal: 1
@@ -55492,6 +55491,40 @@
         - w-compare
         - w-side
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-swell
+      why: 차트에는 부기에 mild·moderate·severe로 정도를 붙여 적어요. 부었어도 뼈 윤곽이 그대로 보이는 정도면 mild 쪽이고, 윤곽이 묻히고 피부가 팽팽해질수록 심한 쪽이에요.
+      cue: The wrist is a little puffy, but you can still see the bony landmarks.
+      scale:
+        - mild swelling
+        - moderate swelling
+        - severe swelling
+      answerAt: 0
+      example: There's mild swelling over the wrist, but no deformity.
+      exKo: 손목에 가벼운 부기가 있지만 변형은 없어요.
+    - kind: context
+      words:
+        - w-open
+        - w-cut
+        - w-swell
+        - w-bruise
+      why: edema(부종)·ecchymosis(반상출혈)는 차트와 의료진끼리 쓰는 말이에요. 환자에게는 swelling·bruising이라고 해야 바로 알아듣고 대답해요.
+      scenes:
+        - who: 차트 기록
+          icon: board
+          en: 'R forearm: swelling and ecchymosis, no open wound.'
+          ok: true
+        - who: 동료 간호사에게
+          icon: speech
+          en: No open wound on the forearm, just swelling and bruising.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: Is there any open wound, or just edema and ecchymosis?
+          ok: false
+          fix: Is there any open cut, or just swelling and bruising?
 - id: SCN-ER-00460
   profession: ""
   eventId: EVT-ER-00128
@@ -55598,7 +55631,6 @@
         - from the other side
         - .
       words:
-        - w-tell
         - w-skin
         - w-color
         - w-different
@@ -55616,8 +55648,42 @@
         - w-squeeze
         - w-finger
         - w-hard
-        - w-hand
       goal: 1
+  nuance:
+    - kind: slider
+      words:
+        - w-feel
+        - w-finger
+      why: 저릿저릿한 pins and needles는 tingling이에요. 감각이 아예 없으면 numb예요. 신경이 눌리면 대개 저림(tingling)이 먼저 오고 감각 소실(numb)로 넘어가므로, 어느 쪽인지 가려 적고 바뀌면 보고해요.
+      cue: 'Patient: "My fingers feel kind of asleep — like pins and needles."'
+      scale:
+        - normal sensation
+        - tingling
+        - numb
+      answerAt: 1
+      example: She reports tingling in her fingertips below the injury.
+      exKo: 손상 부위 아래 손끝이 저릿하다고 해요.
+    - kind: context
+      words:
+        - w-pulse
+        - w-check
+        - w-below
+        - w-injury
+      why: CMS(circulation·motor·sensation)와 distal은 의료진끼리 쓰는 말이에요. 환자에게는 무엇을 보는지(pulse, feeling)와 어디를 보는지(below your injury)를 쉬운 말로 풀어 줘요.
+      scenes:
+        - who: 차트 기록
+          icon: board
+          en: L radial pulse 2+, cap refill < 2 sec, CMS intact distal to injury.
+          ok: true
+        - who: 동료 간호사에게
+          icon: speech
+          en: Radial pulse is strong, and cap refill is under two seconds below the injury.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: I'm checking your CMS distal to the injury.
+          ok: false
+          fix: I'm checking the pulse and feeling below your injury.
 - id: SCN-ER-00461
   profession: ""
   eventId: EVT-ER-00128
@@ -55713,7 +55779,6 @@
         - or numb
         - .
       words:
-        - w-tell
         - w-splint
         - w-tight
         - w-numb
@@ -55731,7 +55796,6 @@
         - w-toe
         - w-color
         - w-warmth
-        - w-hour
       goal: 2
     - en: Keep this leg raised and try not to put weight on it at home.
       ko: 집에서도 이 다리를 들어올리고 체중을 싣지 않도록 하세요.
@@ -55746,8 +55810,44 @@
         - w-leg
         - w-raise
         - w-weight
-        - w-home
       goal: 1
+  nuance:
+    - kind: pair
+      words:
+        - w-weight
+        - w-leg
+      why: 체중을 싣는 것은 bear weight, 손발톱을 눌렀다 떼 순환을 보는 것은 capillary refill, 다리를 올려 두는 것은 elevate the leg — 부목 교육과 순환 확인에 그대로 나오는 짝이에요.
+      pairs:
+        - - bear
+          - weight
+        - - capillary
+          - refill
+        - - elevate
+          - the leg
+      decoys:
+        - still
+    - kind: swap
+      words:
+        - w-splint
+        - w-tight
+        - w-numb
+        - w-toe
+      why: 부목이 너무 조이면 저림과 감각 소실이 먼저 나타나요. 환자가 스스로 알아차리고 말할 수 있게 증상을 쉬운 말로 짚어 줘요.
+      who: 환자에게 · 부목 경고 징후
+      icon: me
+      before:
+        - 'Tell me right away if your toes feel '
+        - paresthetic
+        - .
+      options:
+        - tingly or numb
+        - paresthetic
+        - a bit funny
+      answer: tingly or numb
+      notes:
+        a bit funny: 쉽지만 너무 흐려서 저림·감각 소실을 알려야 한다는 뜻이 전해지지 않는다.
+        paresthetic: 의학 용어(이상감각). 차트에는 맞지만 환자는 무슨 뜻인지 모른다.
+        tingly or numb: 환자가 알아듣는 쉬운 말이고, 무엇을 느끼면 알려야 하는지가 분명하다.
 - id: SCN-ER-00462
   profession: ""
   eventId: EVT-ER-00128
@@ -55829,9 +55929,6 @@
         - '?'
       words:
         - w-scale
-        - w-zero
-        - w-ten
-        - w-bad
         - w-pain
       goal: 2
     - en: Is the pain sharp, throbbing, or dull?
@@ -55869,10 +55966,44 @@
         - from
         - .
       words:
-        - w-tell
         - w-high
         - w-fall
       goal: 1
+  nuance:
+    - kind: slider
+      words:
+        - w-pain
+        - w-scale
+      why: 0–10 숫자 척도에서 보통 1–3은 mild, 4–6은 moderate, 7–10은 severe로 묶어 읽어요. 7이면 severe 쪽이라 진통 계획과 재사정 시점을 정하는 근거가 돼요.
+      cue: 'Patient: "It''s about a seven — I can''t really focus on anything else."'
+      scale:
+        - mild
+        - moderate
+        - severe
+      answerAt: 2
+      example: She rates her pain seven out of ten — severe.
+      exKo: 통증을 10점 중 7점으로 말해요 — 심한 통증이에요.
+    - kind: context
+      words:
+        - w-fall
+        - w-high
+        - w-happen
+        - w-injury
+      why: mechanism of injury(MOI)와 FOOSH(fall on outstretched hand)는 의료진끼리 쓰는 말이에요. 환자에게는 어떻게 다쳤는지 쉽게 묻고, 들은 내용을 차트에 기전으로 옮겨 적어요.
+      scenes:
+        - who: 차트 기록
+          icon: board
+          en: 'MOI: fall from ladder, approx. 6 ft, FOOSH.'
+          ok: true
+        - who: 의사에게 보고
+          icon: speech
+          en: He fell about six feet off a ladder and landed on an outstretched hand.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: What was your mechanism of injury?
+          ok: false
+          fix: How did the injury happen exactly?
 - id: SCN-ER-00463
   profession: ""
   eventId: EVT-ER-00128
@@ -55957,9 +56088,6 @@
         - .
       words:
         - w-ice
-        - w-minute
-        - w-time
-        - w-day
       goal: 1
     - en: Come back if the swelling or pain gets much worse.
       ko: 붓기나 통증이 훨씬 심해지면 다시 오세요.
@@ -55970,7 +56098,6 @@
         - gets much worse
         - .
       words:
-        - w-come
         - w-swell
         - w-pain
         - w-worse
@@ -56001,6 +56128,39 @@
         - w-foot
         - w-rest
       goal: 1
+  nuance:
+    - kind: slider
+      words:
+        - w-wrap
+        - w-bandage
+        - w-tight
+      why: 압박붕대는 snug(꼭 맞게)가 목표예요. 손가락 하나가 들어가고 발가락이 분홍빛이고 따뜻하면 알맞고, 저리거나 창백·차가워지면 too tight라 다시 감아야 해요.
+      cue: You can slip one finger under the wrap, and her toes are pink and warm.
+      scale:
+        - too loose
+        - snug
+        - too tight
+      answerAt: 1
+      example: The wrap should feel snug, but not tight.
+      exKo: 붕대는 꼭 맞는 느낌이되 조이면 안 돼요.
+    - kind: context
+      words:
+        - w-ice
+      why: cryotherapy(냉요법)와 TID·QID(하루 세 번·네 번) 같은 약어는 차트에나 쓰는 말이에요. 환자 교육에는 ice, a few times a day처럼 쉬운 말로 풀어요.
+      scenes:
+        - who: 퇴원 지시 기록
+          icon: board
+          en: Cryotherapy 20 min TID–QID; elevate; ACE wrap.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: Use ice for twenty minutes at a time, a few times a day.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: Apply cryotherapy for 20 minutes TID to QID.
+          ok: false
+          fix: Put ice on it for twenty minutes at a time, a few times a day.
 - id: SCN-ER-00464
   profession: ""
   eventId: EVT-ER-00128
@@ -56110,7 +56270,6 @@
         - well
         - .
       words:
-        - w-see
         - w-bone
         - w-need
         - w-clean
@@ -56125,12 +56284,45 @@
         - the skin
         - .
       words:
-        - w-doctor
         - w-look
         - w-bone
         - w-close
         - w-skin
       goal: 1
+  nuance:
+    - kind: slider
+      words:
+        - w-wound
+        - w-clean
+      why: 흙·풀이 깊이 박혀 있으면 grossly contaminated로 적어요. 오염 정도는 세척 범위, 항생제 선택, 파상풍 예방 판단에 모두 들어가서 인계 때 꼭 말해요.
+      cue: Soil and bits of grass are ground deep into the wound.
+      scale:
+        - clean
+        - contaminated
+        - grossly contaminated
+      answerAt: 2
+      example: The wound is grossly contaminated with soil.
+      exKo: 상처가 흙으로 심하게 오염되어 있어요.
+    - kind: context
+      words:
+        - w-tetanus
+        - w-shot
+        - w-last
+      why: Td·Tdap·immunization status는 의료진의 말이에요. 환자에게는 tetanus shot이라고 물어야 기억을 떠올려요. 개방골절처럼 오염된 상처는 마지막 접종이 5년을 넘었으면 추가 접종을 고려해요.
+      scenes:
+        - who: 차트 기록
+          icon: board
+          en: Last Td > 10 yrs ago; Tdap given 1415.
+          ok: true
+        - who: 동료 간호사에게
+          icon: speech
+          en: Her last tetanus shot was over ten years ago, so she got a Tdap.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: What's your Td immunization status?
+          ok: false
+          fix: When was your last tetanus shot?
 - id: SCN-ER-00465
   profession: ""
   eventId: EVT-ER-00129
@@ -56249,7 +56441,7 @@
         - w-pale
       goal: 1
     - en: We'll numb the area and move quickly to fix the bone.
-      ko: 부위를 마취하고 빨리 뼈를 고정할게요.
+      ko: 부위를 마취하고 빨리 뼈를 맞출게요.
       chunks:
         - We'll numb
         - the area
@@ -56258,13 +56450,49 @@
         - the bone
         - .
       words:
-        - w-numb
         - w-area
         - w-move
         - w-quick
         - w-fix
         - w-bone
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-pulse
+        - w-foot
+      why: 맥박은 0(absent)·1+(diminished)·2+(normal)…처럼 세기로 적어요. 반대쪽보다 약하게 잡히면 diminished — 아직 사라진 건 아니지만 곧바로 보고할 변화예요.
+      cue: You can feel the pulse on top of the foot, but it's much fainter than on the other side.
+      scale:
+        - absent
+        - diminished
+        - normal
+        - bounding
+      answerAt: 1
+      example: Dorsalis pedis pulse is diminished on the right.
+      exKo: 오른쪽 족배동맥 맥박이 약해요.
+    - kind: swap
+      words:
+        - w-realign
+        - w-restore
+        - w-flow
+        - w-blood
+      why: 맥박이 없는 골절은 서둘러 정복해야 하지만, 환자에게는 쉬운 말로 무엇을 할지 먼저 알려 줘야 협조를 얻을 수 있어요.
+      who: 환자에게 · 긴급 정복 설명
+      icon: me
+      before:
+        - 'We''re going to '
+        - perform a closed reduction
+        - ' to get the blood flowing again.'
+      options:
+        - straighten the bone
+        - perform a closed reduction
+        - yank it back
+      answer: straighten the bone
+      notes:
+        perform a closed reduction: 의료진의 말(도수 정복). 차트와 동의서에는 맞지만 환자는 알아듣기 어렵다.
+        straighten the bone: 환자가 바로 알아듣는 쉬운 말. 무엇을 왜 하는지가 한 번에 전해진다.
+        yank it back: 거칠게 확 잡아당긴다는 느낌이라 겁을 준다.
 - id: SCN-ER-00466
   profession: ""
   eventId: EVT-ER-00129
@@ -56364,7 +56592,6 @@
         - w-stay
         - w-relax
         - w-tense
-        - w-hard
       goal: 1
     - en: Your shoulder should slide back into place in a moment.
       ko: 곧 어깨가 제자리로 미끄러져 들어갈 거예요.
@@ -56392,6 +56619,42 @@
         - w-remember
         - w-reset
       goal: 1
+  nuance:
+    - kind: slider
+      words:
+        - w-sleepy
+        - w-relax
+      why: 진정은 연속선이에요. 부르거나 가볍게 건드리면 의도적으로 반응하는 정도가 moderate(흔히 conscious sedation)예요. 깨어 있고 평소처럼 대답하면 minimal, 반복·통증 자극에만 반응하면 deep이에요.
+      cue: He's drowsy, but opens his eyes and answers when you say his name.
+      scale:
+        - minimal sedation
+        - moderate sedation
+        - deep sedation
+        - general anesthesia
+      answerAt: 1
+      example: He's under moderate sedation and responds to his name.
+      exKo: 중등도 진정 상태이고 이름을 부르면 반응해요.
+    - kind: context
+      words:
+        - w-reset
+        - w-put
+        - w-back
+        - w-place
+      why: 정형외과에서 reduce는 '제자리로 맞추다'지만 환자에게는 '줄이다'로 들려 헷갈려요. 환자에게는 put it back in place처럼 쉬운 말로 말해요.
+      scenes:
+        - who: 차트 기록
+          icon: board
+          en: R shoulder reduced under procedural sedation; NV intact post-reduction.
+          ok: true
+        - who: 의사에게 보고
+          icon: speech
+          en: The shoulder is reduced, and he's neurovascularly intact.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: We'll reduce your dislocation once you're sedated.
+          ok: false
+          fix: We'll give you medicine to relax, then put your shoulder back in place.
 - id: SCN-ER-00467
   profession: ""
   eventId: EVT-ER-00129
@@ -56466,16 +56729,14 @@
         - w-surgery
       goal: 1
     - en: Do you know where you are and what day it is?
-      ko: 여기가 어딘지, 오늘이 며칠인지 아세요?
+      ko: 여기가 어디인지, 오늘이 무슨 요일인지 아세요?
       chunks:
         - Do you know
         - where you are
         - and what day
         - it is
         - '?'
-      words:
-        - w-know
-        - w-day
+      words: []
       goal: 2
     - en: We'll keep you oriented and comfortable tonight.
       ko: 오늘 밤은 지남력을 유지하고 편안하게 해드릴게요.
@@ -56518,6 +56779,40 @@
         - w-check
         - w-often
       goal: 1
+  nuance:
+    - kind: pair
+      words:
+        - w-hip
+        - w-pain
+      why: 고관절 골절은 hip fracture, 진통제는 pain medication, 침상 안정은 bed rest — 수술을 기다리는 고령 환자에게 설명할 때 그대로 쓰는 짝이에요.
+      pairs:
+        - - hip
+          - fracture
+        - - pain
+          - medication
+        - - bed
+          - rest
+      decoys:
+        - strong
+    - kind: swap
+      words:
+        - w-orient
+      why: 지남력은 '예/아니오'가 아니라 환자가 직접 말하게 물어야 가려져요. 결과는 차트에 A&O×3처럼 적어요.
+      who: 고령 환자에게 · 지남력 확인
+      icon: me
+      before:
+        - ""
+        - Are you oriented times three?
+        - ""
+      options:
+        - Can you tell me where you are right now?
+        - Are you oriented times three?
+        - You know where you are, don't you?
+      answer: Can you tell me where you are right now?
+      notes:
+        Are you oriented times three?: 의료진끼리의 말(A&O×3). 환자는 무엇을 묻는지 모른다.
+        Can you tell me where you are right now?: 열린 질문이라 환자가 스스로 답해야 해서 실제 지남력이 드러난다.
+        You know where you are, don't you?: 답을 유도하는 질문이라 '네'만 해도 넘어가서 섬망을 놓칠 수 있다.
 - id: SCN-ER-00468
   profession: ""
   eventId: EVT-ER-00129
@@ -56640,11 +56935,48 @@
         - .
       words:
         - w-call
-        - w-hand
         - w-surgeon
         - w-arrange
         - w-transfer
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-surgeon
+        - w-ice
+        - w-moist
+      why: 재접합을 맡는 것은 hand surgeon, 절단부를 담은 봉투는 ice water에, 절단부를 감싸는 것은 식염수로 적신 moist gauze예요.
+      pairs:
+        - - hand
+          - surgeon
+        - - ice
+          - water
+        - - moist
+          - gauze
+      decoys:
+        - reattach
+    - kind: swap
+      words:
+        - w-finger
+        - w-directly
+        - w-ice
+        - w-put
+      why: 절단부는 차갑게 보존하되 물에 잠기거나 얼음에 직접 닿지 않게 해요. 보호자가 스스로 하려 할 때 이렇게 정확히 알려 줘요.
+      who: 보호자에게 · 절단부 보존 안내
+      icon: me
+      before:
+        - 'Please put the finger '
+        - straight into a cup of ice water
+        - .
+      options:
+        - in a sealed bag on ice
+        - straight into a cup of ice water
+        - directly on the ice
+      answer: in a sealed bag on ice
+      notes:
+        directly on the ice: 얼음에 바로 닿으면 동상처럼 조직이 상한다.
+        in a sealed bag on ice: 표준 방법. 적신 거즈로 싸서 밀봉 봉투에 넣고, 그 봉투를 얼음물에 둔다.
+        straight into a cup of ice water: 절단부가 물에 직접 잠기면 조직이 불어 재접합이 어려워진다.
 - id: SCN-ER-00469
   profession: ""
   eventId: EVT-ER-00129
@@ -56714,7 +57046,6 @@
         - .
       words:
         - w-take
-        - w-blood
         - w-thinner
         - w-swell
         - w-grow
@@ -56728,7 +57059,6 @@
         - was the last dose
         - '?'
       words:
-        - w-blood
         - w-thinner
         - w-take
         - w-last
@@ -56771,11 +57101,44 @@
         - or swelling gets worse
         - .
       words:
-        - w-tell
         - w-pain
         - w-swell
         - w-worse
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-spread
+        - w-bruise
+      why: 멍·혈종의 가장자리를 펜으로 표시해 두면 번지는 속도가 눈에 보여요. 한 시간 만에 선을 훌쩍 넘었다면 rapidly expanding — 항응고제 환자에서는 바로 보고할 일이에요.
+      cue: An hour ago you marked the bruise's edges with a pen. It's now well past the line on every side.
+      scale:
+        - stable
+        - slowly expanding
+        - rapidly expanding
+      answerAt: 2
+      example: The hematoma is rapidly expanding past the marked border.
+      exKo: 혈종이 표시한 경계를 넘어 빠르게 커지고 있어요.
+    - kind: swap
+      words:
+        - w-thinner
+        - w-take
+      why: 항응고제 복용 여부는 출혈 위험을 가르는 질문이라, 환자가 확실히 알아듣는 blood thinner로 묻고 약 이름과 마지막 복용 시각을 이어서 물어요.
+      who: 환자에게 · 복용약 확인
+      icon: me
+      before:
+        - 'Do you take any '
+        - anticoagulants
+        - '?'
+      options:
+        - blood thinners
+        - anticoagulants
+        - blood pills
+      answer: blood thinners
+      notes:
+        anticoagulants: 의료진의 말. 환자가 자기 약과 연결하지 못할 수 있다.
+        blood pills: 뜻이 흐려 혈압약·철분제로도 들린다.
+        blood thinners: 미국 환자들이 실제로 쓰는 말. 와파린·엘리퀴스 같은 약 이름을 함께 물으면 더 정확하다.
 - id: SCN-ER-00470
   profession: ""
   eventId: EVT-ER-00129
@@ -56861,7 +57224,6 @@
         - for growth
         - .
       words:
-        - w-most
         - w-heal
         - w-followup
         - w-important
@@ -56879,15 +57241,14 @@
         - w-specialist
         - w-check
         - w-align
-        - w-time
       goal: 2
-    - en: It's normal to worry, but the plate often heals on its own.
-      ko: 걱정되는 게 당연하지만, 성장판은 대개 저절로 낫습니다.
+    - en: It's normal to worry, but the plate often heals well.
+      ko: 걱정되는 게 당연하지만, 성장판은 대개 잘 낫습니다.
       chunks:
-        - It's normal to worry,
+        - It's normal
+        - to worry,
         - but the plate
-        - often heals
-        - on its own
+        - often heals well
         - .
       words:
         - w-normal
@@ -56905,11 +57266,45 @@
         - at the follow-up visit
         - .
       words:
-        - w-take
         - w-xray
         - w-followup
         - w-visit
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-heal
+        - w-normal
+      why: 대부분 잘 낫는다는 사실은 usually로 말해요. 보장할 수 없는 예후에 always를 쓰면 안 되고, 그래서 추적 진료가 필요하다고 이어서 말해요.
+      cue: 'Parent: "Will it definitely grow normally?" — Most of these heal well, but not every one.'
+      scale:
+        - rarely
+        - sometimes
+        - usually
+        - always
+      answerAt: 2
+      example: These usually heal well, but we'll follow it closely.
+      exKo: 대개 잘 낫지만 자세히 지켜볼 거예요.
+    - kind: context
+      words:
+        - w-growth
+        - w-plate
+        - w-followup
+      why: Salter-Harris 분류와 physeal(성장판의)은 의료진의 말이에요. 보호자에게는 growth plate라고 풀고, 왜 다시 봐야 하는지를 함께 말해요.
+      scenes:
+        - who: 차트 기록
+          icon: board
+          en: Salter-Harris II fx, distal radius; ortho f/u 1 wk.
+          ok: true
+        - who: 동료 간호사에게
+          icon: speech
+          en: It's a Salter-Harris two through the growth plate — ortho wants follow-up in a week.
+          ok: true
+        - who: 보호자에게
+          icon: me
+          en: Your son has a Salter-Harris II physeal fracture.
+          ok: false
+          fix: The break goes through the growth plate, so a bone specialist will check it again next week.
 - id: SCN-ER-00471
   profession: ""
   eventId: EVT-ER-00129
@@ -57037,10 +57432,44 @@
       words:
         - w-order
         - w-scan
-        - w-see
         - w-bone
         - w-weak
       goal: 1
+  nuance:
+    - kind: slider
+      words:
+        - w-force
+        - w-little
+        - w-break
+      why: 넘어지지도 않았는데 부러졌다면 spontaneous(비외상성), 선 높이 이하에서 넘어져 부러졌다면 low-energy(취약성 골절), 교통사고·추락은 high-energy예요. 앞의 두 경우는 뼈가 약해진 이유(골다공증·전이암 등)를 찾는 검사로 이어져요.
+      cue: He broke his upper arm just rolling over in bed — no fall at all.
+      scale:
+        - spontaneous (no fall at all)
+        - low-energy (fall from standing height or less)
+        - high-energy (car crash, fall from a height)
+      answerAt: 0
+      example: This was a spontaneous fracture, so we're looking for a cause.
+      exKo: 넘어지지도 않고 생긴 골절이라 원인을 찾고 있어요.
+    - kind: context
+      words:
+        - w-cancer
+        - w-history
+        - w-disease
+      why: hx(병력)·CA(암)는 차트 약어예요. 환자에게는 cancer를 그대로 말해 물어야 정확한 답이 나와요.
+      scenes:
+        - who: 차트 기록
+          icon: board
+          en: 'PMH: breast CA, s/p mastectomy 2019.'
+          ok: true
+        - who: 의사에게 보고
+          icon: speech
+          en: She has a history of breast cancer, treated with surgery in 2019.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: Any hx of CA?
+          ok: false
+          fix: Have you ever been treated for cancer?
 - id: SCN-ER-00472
   profession: ""
   eventId: EVT-ER-00129
@@ -57109,7 +57538,6 @@
         - each other
         - .
       words:
-        - w-get
         - w-interpreter
         - w-understand
       goal: 1
@@ -57136,7 +57564,6 @@
         - w-point
         - w-hurt
         - w-show
-        - w-bad
       goal: 1
     - en: Nod if you understand what I'm asking.
       ko: 제가 묻는 것을 이해하시면 고개를 끄덕여 주세요.
@@ -57148,7 +57575,6 @@
       words:
         - w-nod
         - w-understand
-        - w-ask
       goal: 1
     - en: The interpreter will help us check your pain and history.
       ko: 통역사가 통증과 병력을 확인하는 걸 도와줄 거예요.
@@ -57160,11 +57586,43 @@
         - .
       words:
         - w-interpreter
-        - w-help
         - w-check
         - w-pain
         - w-history
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-point
+        - w-pain
+      why: Wong-Baker 얼굴 척도는 0부터 10까지 얼굴 여섯 개로 되어 있고, 가장 오른쪽 우는 얼굴이 10(hurts worst)이에요. 말이 잘 안 통할 때도 가리키게 해서 통증 강도를 잴 수 있어요.
+      cue: On the faces pain chart, she points to the face on the far right, crying hard.
+      scale:
+        - mild
+        - moderate
+        - severe
+      answerAt: 2
+      example: She pointed to the crying face — ten out of ten.
+      exKo: 우는 얼굴을 가리켰어요 — 10점 만점에 10점이에요.
+    - kind: context
+      words:
+        - w-interpreter
+        - w-understand
+      why: 의료 통역을 쓸 때는 통역사가 아니라 환자를 보고 1인칭으로 말해요. 'Tell her…'처럼 통역사에게 말하면 환자가 대화에서 밀려나요.
+      scenes:
+        - who: 차트 기록
+          icon: board
+          en: Pt Indonesian-speaking; video interpreter used, ID 4471.
+          ok: true
+        - who: 동료 간호사에게
+          icon: speech
+          en: She speaks Indonesian, so I'm getting a video interpreter.
+          ok: true
+        - who: 통역을 통해 환자에게
+          icon: mic
+          en: Tell her I need to know if she's allergic to anything.
+          ok: false
+          fix: Are you allergic to any medicines?
 - id: SCN-ER-00473
   profession: ""
   eventId: EVT-ER-00129
@@ -57225,7 +57683,7 @@
   theme: er-ortho-trauma
   sentences:
     - en: Keep the cast dry and elevated to reduce swelling.
-      ko: 붓기를 줄이려면 깁스를 마르고 높게 유지하세요.
+      ko: 붓기를 줄이려면 깁스가 젖지 않게 하고 높이 두세요.
       chunks:
         - Keep the cast
         - dry and elevated
@@ -57248,7 +57706,6 @@
         - or very painful
         - .
       words:
-        - w-come
         - w-finger
         - w-turn
         - w-pale
@@ -57296,6 +57753,42 @@
         - w-gently
         - w-stiff
       goal: 1
+  nuance:
+    - kind: slider
+      words:
+        - w-pale
+        - w-numb
+        - w-painful
+      why: 깁스 아래 손가락이 창백하고 저리며 통증이 계속 심해지면 순환 장애나 구획증후군일 수 있어 바로 다시 와야 해요. 약간의 부기·불편감만이면 거상하며 지켜봐요.
+      cue: 'Patient: "My fingers are pale and numb, and the pain keeps getting worse."'
+      scale:
+        - normal — keep it raised
+        - call the clinic tomorrow
+        - come back to the ER now
+      answerAt: 2
+      example: If your fingers turn pale or numb, come back right away.
+      exKo: 손가락이 창백해지거나 저리면 바로 다시 오세요.
+    - kind: swap
+      words:
+        - w-scratch
+        - w-inside
+        - w-push
+      why: 깁스 안은 들여다볼 수 없어서 상처가 나도 늦게 발견돼요. 가려울 때 할 수 있는 안전한 방법을 함께 알려 줘요.
+      who: 환자에게 · 깁스 속 가려움
+      icon: me
+      before:
+        - 'If it itches, '
+        - slide a hanger inside
+        - .
+      options:
+        - blow cool air in with a hair dryer
+        - slide a hanger inside
+        - pour some lotion in
+      answer: blow cool air in with a hair dryer
+      notes:
+        blow cool air in with a hair dryer: 흔히 권하는 방법. 차가운 바람으로만 쓰게 한다.
+        pour some lotion in: 깁스 속에서 피부가 짓무르고 자극이 생긴다.
+        slide a hanger inside: 피부가 긁혀 상처가 나고, 깁스 속이라 감염돼도 보이지 않는다.
 - id: SCN-ER-00474
   profession: ""
   eventId: EVT-ER-00129
@@ -57371,7 +57864,7 @@
         - w-sign
       goal: 1
     - en: Does it hurt more when I stretch your fingers or toes?
-      ko: 손가락이나 발가락을 늘리면 더 아프세요?
+      ko: 제가 손가락이나 발가락을 쭉 펴면 더 아프세요?
       chunks:
         - Does it hurt more
         - when I stretch
@@ -57424,9 +57917,44 @@
       words:
         - w-muscle
         - w-tight
-        - w-hard
         - w-touch
       goal: 1
+  nuance:
+    - kind: slider
+      words:
+        - w-pain
+        - w-proportion
+        - w-expect
+      why: 진통제를 써도 가라앉지 않고 손상에 비해 지나치게 심하면 pain out of proportion이에요. 수동 신전 때 통증과 함께 구획증후군의 이른 징후라 바로 보고해요. 맥박 소실은 늦은 징후라 그것을 기다리면 안 돼요.
+      cue: Closed tibia fracture. Two doses of IV opioid, and he still rates it ten and cries out when you move his toes.
+      scale:
+        - expected for the injury
+        - more than expected
+        - out of proportion
+      answerAt: 2
+      example: His pain is out of proportion to the injury.
+      exKo: 손상에 비해 통증이 지나치게 심해요.
+    - kind: context
+      words:
+        - w-pressure
+        - w-relieve
+        - w-surgery
+        - w-soon
+      why: fasciotomy(근막절개술)와 emergent는 의료진의 말이에요. 환자에게는 무엇을(surgery) 왜 하는지(relieve the pressure) 쉬운 말로 말해요.
+      scenes:
+        - who: 정형외과 콜
+          icon: speech
+          en: I'm concerned about compartment syndrome — pain with passive stretch, and the calf is tense.
+          ok: true
+        - who: 차트 기록
+          icon: board
+          en: Pain w/ passive stretch, compartments tense; ortho notified 2140.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: You need an emergent fasciotomy.
+          ok: false
+          fix: We need surgery soon to relieve the pressure in your leg.
 - id: SCN-ER-00475
   profession: ""
   eventId: EVT-ER-00129
@@ -57496,7 +58024,6 @@
         - and slow bleeding
         - .
       words:
-        - w-place
         - w-binder
         - w-stabilize
         - w-pelvis
@@ -57559,6 +58086,42 @@
         - w-keep
         - w-pressure
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-drop
+        - w-pressure
+        - w-blood
+      why: 미국 의료진은 경계선의 낮은 혈압을 soft라고도 해요. 수치가 계속 내려가는 추세면 dropping — 골반 골절에서는 숨은 출혈을 의심해 바로 알려요.
+      cue: BP 132/80, then 104/70, now 86/50 over twenty minutes, and the heart rate keeps climbing.
+      scale:
+        - stable
+        - soft
+        - dropping
+      answerAt: 2
+      example: Her pressure is dropping — 86 over 50.
+      exKo: 혈압이 떨어지고 있어요 — 86/50이에요.
+    - kind: swap
+      words:
+        - w-binder
+        - w-stabilize
+        - w-pelvis
+      why: 바인더는 골반을 둘러 조여 벌어진 골반을 모아 출혈을 줄여요. 환자에게는 binder라고 하고 무엇을 위해 조이는지를 붙여 말해요.
+      who: 환자에게 · 골반 바인더 설명
+      icon: me
+      before:
+        - 'We''re placing a '
+        - pelvic circumferential compression device
+        - ' to hold your pelvis together and slow the bleeding.'
+      options:
+        - binder
+        - pelvic circumferential compression device
+        - belt
+      answer: binder
+      notes:
+        belt: 쉽지만 옷 벨트처럼 가볍게 들려, 왜 세게 조이는지가 전해지지 않는다.
+        binder: 쉽고 정확한 말. 뒤에 붙는 설명(골반을 모아 출혈을 줄인다)과 함께 전해진다.
+        pelvic circumferential compression device: 정식 명칭이지만 길고 딱딱해 환자는 알아듣기 어렵다.
 - id: SCN-ER-00476
   profession: ""
   eventId: EVT-ER-00129
@@ -57628,7 +58191,6 @@
         - .
       words:
         - w-shortness
-        - w-breath
         - w-fracture
         - w-concern
       goal: 1
@@ -57669,11 +58231,9 @@
         - of breath
         - .
       words:
-        - w-tell
         - w-feel
         - w-confuse
         - w-short
-        - w-breath
       goal: 1
     - en: We're watching your oxygen closely after this kind of break.
       ko: 이런 골절 후에는 산소 수치를 자세히 지켜봐요.
@@ -57689,6 +58249,41 @@
         - w-closely
         - w-break
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-rash
+        - w-fracture
+      why: 지방색전의 세 징후는 호흡곤란·의식 변화·petechial rash(점상출혈)예요. SpO2는 room air(산소 없이)인지 함께 말하고, 대개 long-bone fracture 뒤 24~72시간에 나타나요.
+      pairs:
+        - - petechial
+          - rash
+        - - room
+          - air
+        - - long-bone
+          - fracture
+      decoys:
+        - mask
+    - kind: context
+      words:
+        - w-shortness
+        - w-short
+        - w-confuse
+      why: dyspnea(호흡곤란)는 차트와 의료진의 말이에요. 환자에게는 short of breath로 물어야 바로 알아듣고 대답해요.
+      scenes:
+        - who: 차트 기록
+          icon: board
+          en: New-onset dyspnea, SpO2 88% RA, petechiae across chest.
+          ok: true
+        - who: 의사에게 보고
+          icon: speech
+          en: He's newly short of breath, satting 88 on room air, with petechiae across his chest.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: Are you experiencing any dyspnea?
+          ok: false
+          fix: Are you feeling more short of breath?
 - id: SCN-ER-00477
   profession: ""
   eventId: EVT-ER-00129
@@ -57807,7 +58402,7 @@
         - w-careful
       goal: 1
     - en: We're giving you blood quickly because you're losing a lot.
-      ko: 많이 잃고 계셔서 빠르게 수혈을 드리고 있어요.
+      ko: 피를 많이 잃고 계셔서 빠르게 수혈하고 있어요.
       chunks:
         - We're giving you blood
         - quickly
@@ -57820,6 +58415,43 @@
         - w-quick
         - w-lose
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-long
+        - w-bone
+        - w-hide
+        - w-loss
+      why: 닫힌 대퇴골 골절 하나로 허벅지 안에 1~1.5 L까지 고일 수 있어요. 양쪽이면 그 두 배라, 겉으로 피가 안 보여도 출혈성 쇼크가 올 수 있어요.
+      cue: A single closed femur fracture — how much blood can pool in the thigh?
+      scale:
+        - about 100 mL
+        - about 500 mL
+        - up to 1.5 L
+      answerAt: 2
+      example: A femur fracture can hide up to a liter and a half of blood.
+      exKo: 대퇴골 골절은 피를 1.5리터까지 숨길 수 있어요.
+    - kind: swap
+      words:
+        - w-transfusion
+        - w-blood
+        - w-give
+      why: MTP는 팀끼리 쓰는 말이에요. 환자에게는 피를 넣어 드린다고 쉽게 말하고, 곁에서 무엇을 하는지 알려 안심시켜요.
+      who: 환자에게 · 수혈 설명
+      icon: me
+      before:
+        - 'You''ve lost a lot of blood, so we''re '
+        - activating the massive transfusion protocol
+        - .
+      options:
+        - giving you blood
+        - activating the massive transfusion protocol
+        - topping you up
+      answer: giving you blood
+      notes:
+        activating the massive transfusion protocol: 팀에게 하는 말(MTP 발동). 환자에게는 뜻도 안 통하고 겁만 준다.
+        giving you blood: 환자가 바로 알아듣는 쉬운 말. 무엇을 왜 하는지가 전해진다.
+        topping you up: 기름 채우듯 가볍게 들려 상황의 무게를 흐린다.
 - id: SCN-ER-00478
   profession: ""
   eventId: EVT-ER-00130
@@ -57932,8 +58564,6 @@
         - .
       words:
         - w-wound
-        - w-clean
-        - w-dress
         - w-splint
         - w-transport
       goal: 1
@@ -57950,6 +58580,43 @@
         - w-pain
         - w-control
       goal: 1
+  nuance:
+    - kind: slider
+      words:
+        - w-open
+        - w-tibia
+        - w-fracture
+        - w-wound
+      why: Gustilo 분류는 상처 길이와 연부조직 손상으로 나눠요. 1 cm 미만이면 I, 1~10 cm이면서 광범위한 손상이 없으면 II, 10 cm를 넘거나 오염·손상이 심하면 III이에요. 인계 때 상처 크기를 cm로 말하는 이유예요.
+      cue: Open tibia fracture, five-centimeter wound, moderate contamination, no extensive soft-tissue damage.
+      scale:
+        - Gustilo type I
+        - Gustilo type II
+        - Gustilo type III
+      answerAt: 1
+      example: It's a Gustilo type II open tibia fracture.
+      exKo: Gustilo 2형 개방성 경골 골절이에요.
+    - kind: context
+      words:
+        - w-distal
+        - w-pulse
+        - w-intact
+        - w-sensation
+      why: distal·neurovascular status는 인계와 차트의 말이에요. 환자에게는 발의 맥박과 감각이 괜찮다고 쉬운 말로 알려 줘요.
+      scenes:
+        - who: 정형외과에 인계
+          icon: speech
+          en: Distal pulses are intact, sensation is normal, and cap refill is under two seconds.
+          ok: true
+        - who: 차트 기록
+          icon: board
+          en: DP/PT 2+, sensation intact, CR < 2 sec.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: Your distal neurovascular status is intact.
+          ok: false
+          fix: The pulse and feeling in your foot are normal.
 - id: SCN-ER-00479
   profession: ""
   eventId: EVT-ER-00130
@@ -58022,7 +58689,6 @@
         - w-stop
         - w-bleed
         - w-note
-        - w-time
       goal: 1
     - en: We won't loosen it until it's safe to do so.
       ko: 안전해질 때까지는 느슨하게 하지 않을 거예요.
@@ -58045,7 +58711,6 @@
         - changes
         - .
       words:
-        - w-tell
         - w-pain
         - w-numbness
         - w-change
@@ -58060,7 +58725,6 @@
         - .
       words:
         - w-write
-        - w-time
         - w-put
         - w-tourniquet
       goal: 1
@@ -58079,6 +58743,42 @@
         - w-watch
         - w-leg
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-tourniquet
+        - w-stop
+        - w-bleed
+      why: 지혈대는 출혈이 멎고 원위부 맥박이 잡히지 않을 때까지 조여요. 맥박이 남아 있으면 더 조여요 — 덜 조이면 정맥만 막혀 오히려 출혈이 늘 수 있어요.
+      cue: The bleeding has stopped, and you can no longer feel a pulse below the tourniquet.
+      scale:
+        - still bleeding
+        - bleeding slowed, distal pulse still present
+        - bleeding stopped, no distal pulse
+      answerAt: 2
+      example: The tourniquet is tight enough — no distal pulse.
+      exKo: 지혈대가 충분히 조여졌어요 — 원위부 맥박이 없어요.
+    - kind: swap
+      words:
+        - w-tourniquet
+        - w-loosen
+        - w-safe
+      why: 지혈대는 한번 채우면 출혈이 확실히 잡힐 때까지 그대로 두고, 채운 시각을 기록해 인계해요. 주기적으로 푸는 것은 예전 관행이에요.
+      who: 환자에게 · 지혈대 설명
+      icon: me
+      before:
+        - 'We''ll '
+        - loosen it every fifteen minutes
+        - .
+      options:
+        - leave it on until the surgeon controls the bleeding
+        - loosen it every fifteen minutes
+        - take it off once the bleeding slows
+      answer: leave it on until the surgeon controls the bleeding
+      notes:
+        leave it on until the surgeon controls the bleeding: 현재 기준. 채운 시각을 적고, 수술 등으로 출혈이 잡힐 때까지 그대로 둔다.
+        loosen it every fifteen minutes: 예전 관행. 풀 때마다 다시 피가 나 실혈이 늘어난다.
+        take it off once the bleeding slows: 출혈이 줄어 보여도 풀면 다시 출혈할 수 있다. 푸는 것은 의료진이 판단한다.
 - id: SCN-ER-00480
   profession: ""
   eventId: EVT-ER-00130
