@@ -113440,7 +113440,6 @@
         - is there
         - '?'
       words:
-        - w-week
         - w-bleeding
       goal: 1
     - en: Are you having any pain or cramping with it?
@@ -113465,7 +113464,6 @@
         - .
       words:
         - w-check
-        - w-baby
       goal: 2
     - en: Can you tell me when the bleeding started?
       ko: 출혈이 언제 시작됐는지 말씀해 주시겠어요?
@@ -113514,6 +113512,40 @@
         - w-calm
         - w-care
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-bleeding
+        - w-spot
+        - w-heavy
+      why: 패드가 필요 없을 만큼 몇 방울 묻어나는 정도면 spotting이에요. 양은 느낌보다 '패드를 몇 시간에 몇 장 적셨는지'로 물어야 정확하게 적을 수 있어요.
+      cue: 'Patient: "Just a few drops on my underwear — I haven''t needed a pad."'
+      scale:
+        - spotting
+        - light bleeding
+        - heavy bleeding
+      answerAt: 0
+      example: She reports some spotting since this morning, no clots.
+      exKo: 오늘 아침부터 소량의 출혈이 비쳤고 핏덩이는 없었대요.
+    - kind: context
+      words:
+        - w-bleeding
+        - w-period
+      why: gestational age(임신 주수)는 의료진의 말이에요. 환자에게는 'How many weeks along are you?'가 자연스럽고 바로 답이 나와요.
+      scenes:
+        - who: 차트 기록
+          icon: board
+          en: 8 wks by LMP, vaginal bleeding since 0600.
+          ok: true
+        - who: 의사에게 보고
+          icon: speech
+          en: She's about eight weeks by her last period, bleeding since six this morning.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: What's your gestational age?
+          ok: false
+          fix: How many weeks along are you?
 - id: SCN-ER-00815
   profession: ""
   eventId: EVT-ER-00155
@@ -113583,7 +113615,6 @@
         - '?'
       words:
         - w-first
-        - w-day
         - w-last
         - w-period
       goal: 1
@@ -113648,6 +113679,41 @@
         - w-worry
         - w-exact
       goal: 1
+  nuance:
+    - kind: slider
+      words:
+        - w-estimate
+        - w-exact
+        - w-remember
+      why: '''3월 초쯤''이면 rough estimate예요. 생리가 불규칙한 환자에게 날짜를 다그치지 말고 대략이라도 받아 두면 돼요 — 주수는 검사와 초음파로 다시 확인해요.'
+      cue: 'Patient: "It was sometime in early March, I think."'
+      scale:
+        - no idea
+        - a rough estimate
+        - the exact date
+      answerAt: 1
+      example: She gave a rough estimate of early March.
+      exKo: 3월 초쯤이라고 대략 말씀하셨어요.
+    - kind: context
+      words:
+        - w-first
+        - w-last
+        - w-period
+      why: LMP(last menstrual period)는 의료진끼리 쓰는 약어예요. 환자에게는 풀어서 묻고, 주수는 마지막 생리의 '첫날'부터 세기 때문에 first day를 꼭 넣어요.
+      scenes:
+        - who: 차트 기록
+          icon: board
+          en: LMP approx. early March, cycles irregular.
+          ok: true
+        - who: 의사에게 보고
+          icon: speech
+          en: Her LMP was sometime in early March — she says her cycles are irregular.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: When was your LMP?
+          ok: false
+          fix: When was the first day of your last period?
 - id: SCN-ER-00816
   profession: ""
   eventId: EVT-ER-00156
@@ -113768,6 +113834,41 @@
         - w-fever
         - w-start
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-point
+        - w-hurt
+        - w-pain
+      why: 아픈 곳을 짚게 할 때는 point to where it hurts, 통증이 왔다 갔다 하면 come and go, 늘 있으면 there all the time이에요.
+      pairs:
+        - - point to
+          - where it hurts
+        - - come and
+          - go
+        - - all the
+          - time
+      decoys:
+        - sharp
+    - kind: context
+      words:
+        - w-crampy
+        - w-pain
+      why: LLQ(좌하복부)는 차트와 보고에 쓰는 말이에요. 환자에게는 '왼쪽 아래'처럼 몸을 기준으로 풀어서 물어요.
+      scenes:
+        - who: 차트 기록
+          icon: board
+          en: Pt reports intermittent crampy LLQ pain, T 38.4.
+          ok: true
+        - who: 의사에게 보고
+          icon: speech
+          en: She has crampy left lower quadrant pain that comes and goes, and a temp of 38.4.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: Is the pain in your LLQ?
+          ok: false
+          fix: Is the pain low on your left side?
 - id: SCN-ER-00817
   profession: ""
   eventId: EVT-ER-00156
@@ -113844,7 +113945,7 @@
         - w-need
       goal: 1
     - en: The blood test tells us more precise information.
-      ko: 혈액 검사는 더 정확한 정보를 알려줘요.
+      ko: 혈액 검사는 더 정밀한 정보를 알려줘요.
       chunks:
         - The blood test
         - tells us
@@ -113892,6 +113993,43 @@
         - w-test
         - w-positive
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-urine
+        - w-blood
+        - w-test
+        - w-positive
+      why: 소변은 sample로 받고, 피는 draw한다(채혈)고 해요. 결과가 양성이면 the test is positive — 사람이 아니라 검사가 positive예요.
+      pairs:
+        - - a urine
+          - sample
+        - - draw
+          - blood
+        - - the test is
+          - positive
+      decoys:
+        - pregnant
+    - kind: swap
+      words:
+        - w-test
+        - w-positive
+      why: 임신 결과가 반가운지는 환자가 정해요. 그래서 결과는 positive·negative로 전하고, 느낌은 환자에게 먼저 물어요.
+      who: 환자에게 · 결과 안내
+      icon: me
+      before:
+        - 'If the test is '
+        - good news
+        - ', we''ll talk through what happens next together.'
+      options:
+        - positive
+        - good news
+        - bad news
+      answer: positive
+      notes:
+        bad news: 임신을 기다려 온 환자에게는 거꾸로 상처가 된다.
+        good news: 임신을 원하지 않는 환자에게는 간호사가 판단을 얹은 말로 들린다.
+        positive: 결과만 중립적으로 말한다. 환자가 어떻게 받아들일지 미리 정하지 않는다.
 - id: SCN-ER-00818
   profession: ""
   eventId: EVT-ER-00156
@@ -113996,7 +114134,6 @@
         - '?'
       words:
         - w-pregnant
-        - w-baby
         - w-delivery
       goal: 1
     - en: Were there any complications, like high blood pressure or diabetes?
@@ -114023,8 +114160,43 @@
         - .
       words:
         - w-care
-        - w-baby
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-record
+        - w-pressure
+        - w-blood
+        - w-diabetes
+      why: 산전 기록은 bring your records, 고혈압은 high blood pressure, 임신성 당뇨는 gestational diabetes예요. 임신 합병증 이력을 물을 때 자주 쓰는 짝이에요.
+      pairs:
+        - - bring your
+          - records
+        - - high blood
+          - pressure
+        - - gestational
+          - diabetes
+      decoys:
+        - delivery
+    - kind: context
+      words:
+        - w-pregnancy
+        - w-delivery
+      why: G(gravida)·P(para)는 임신·출산 횟수를 줄인 의료진의 표기예요. 환자에게는 임신 횟수와 출산 횟수를 따로 풀어서 확인해요.
+      scenes:
+        - who: 차트 기록
+          icon: board
+          en: G3P2, preeclampsia with last pregnancy.
+          ok: true
+        - who: 의사에게 보고
+          icon: speech
+          en: She's G3 P2 and had preeclampsia with her last pregnancy.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: So you're G3 P2?
+          ok: false
+          fix: So this is your third pregnancy, and you've had two deliveries?
 - id: SCN-ER-00819
   profession: ""
   eventId: EVT-ER-00156
@@ -114123,7 +114295,6 @@
       words:
         - w-pain
         - w-dizzy
-        - w-bad
       goal: 2
     - en: We need an ultrasound now to see where the pregnancy is.
       ko: 지금 초음파로 임신 위치를 확인해야 해요.
@@ -114159,8 +114330,40 @@
         - .
       words:
         - w-pain
-        - w-bad
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-dizzy
+      why: 눈앞이 잿빛이 되고 벽을 짚어야 했다면 실신 직전이에요. 한쪽 아랫배 통증과 함께라면 자궁외임신의 복강 내 출혈을 의심할 신호라 바로 보고해요.
+      cue: 'Patient: "When I stood up, everything went gray and I had to grab the wall."'
+      scale:
+        - slightly dizzy
+        - very dizzy
+        - about to pass out
+      answerAt: 2
+      example: She felt like she was about to pass out when she stood up.
+      exKo: 일어섰을 때 쓰러질 것 같았대요.
+    - kind: context
+      words:
+        - w-rule
+        - w-tubal
+        - w-pregnancy
+      why: ectopic은 의료진끼리 쓰는 말이라 환자는 무슨 뜻인지 모를 수 있어요. 환자에게는 tubal pregnancy처럼 알아듣기 쉬운 말로, 왜 서두르는지 함께 말해요.
+      scenes:
+        - who: 차트 기록
+          icon: board
+          en: R/O ectopic pregnancy; pelvic US ordered.
+          ok: true
+        - who: 의사에게 보고
+          icon: speech
+          en: We need to rule out an ectopic — she has one-sided pain and she's dizzy.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: We're ruling out an ectopic.
+          ok: false
+          fix: We're checking right away to make sure this isn't a tubal pregnancy.
 - id: SCN-ER-00820
   profession: ""
   eventId: EVT-ER-00156
@@ -114296,6 +114499,38 @@
       words:
         - w-stay
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-blood
+      why: 한 시간에 패드 두 장을 흠뻑 적셨다면 heavy bleeding이에요. 이런 출혈이 이어지면 바로 의사에게 알려야 해서, 양은 늘 패드 수와 시간으로 물어요.
+      cue: 'Patient: "I''ve soaked through two pads in the last hour."'
+      scale:
+        - spotting
+        - moderate bleeding
+        - heavy bleeding
+      answerAt: 2
+      example: She's having heavy bleeding — two pads soaked in the last hour.
+      exKo: 출혈이 많아요 — 지난 한 시간 동안 패드 두 장이 흠뻑 젖었어요.
+    - kind: swap
+      words:
+        - w-miscarriage
+      why: 차트의 SAB(spontaneous abortion)와 달리 환자에게는 miscarriage라고 말해요. 같은 일을 가리켜도 듣는 사람의 상처가 달라요.
+      who: 환자에게 · 진단 전달
+      icon: me
+      before:
+        - 'Based on what I''m seeing, I believe you''re having '
+        - a spontaneous abortion
+        - .
+      options:
+        - a miscarriage
+        - a spontaneous abortion
+        - a failed pregnancy
+      answer: a miscarriage
+      notes:
+        a failed pregnancy: '''실패했다''는 말이 환자 탓처럼 들려 죄책감을 키운다.'
+        a miscarriage: 환자와 가족이 아는 말. 뜻이 분명하면서 탓하는 느낌이 없다.
+        a spontaneous abortion: 의학 용어지만 환자는 abortion을 인공 임신중절로 알아듣고 상처받을 수 있다.
 - id: SCN-ER-00821
   profession: ""
   eventId: EVT-ER-00156
@@ -114356,7 +114591,7 @@
   theme: er-obgyn
   sentences:
     - en: How long have you been unable to keep fluids down?
-      ko: 물조차 삼키지 못하신 지 얼마나 되셨나요?
+      ko: 물조차 넘기지 못하고 토하신 지 얼마나 되셨나요?
       chunks:
         - How long
         - have you been
@@ -114390,7 +114625,6 @@
       words:
         - w-check
         - w-electrolyte
-        - w-baby
         - w-safe
       goal: 2
     - en: Are you vomiting more than a few times every day?
@@ -114405,7 +114639,7 @@
         - w-vomit
       goal: 1
     - en: When was the last time you were able to keep food or water down?
-      ko: 마지막으로 음식이나 물을 삼킬 수 있었던 게 언제였나요?
+      ko: 마지막으로 음식이나 물을 토하지 않고 넘길 수 있었던 게 언제였나요?
       chunks:
         - When was the last time
         - you were able
@@ -114427,6 +114661,39 @@
         - w-iv
         - w-fluid
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-vomit
+        - w-fluid
+      why: 물 한 모금도 못 넘긴다면 가장 심한 쪽이에요. 임신오조에서는 이때 탈수와 전해질 이상을 의심하고 정맥 수액을 준비해요.
+      cue: 'Patient: "I can''t even keep sips of water down."'
+      scale:
+        - a little nauseous
+        - vomiting now and then
+        - can't keep anything down
+      answerAt: 2
+      example: She can't keep anything down, not even water.
+      exKo: 물조차 아무것도 넘기지 못하세요.
+    - kind: context
+      words:
+        - w-iv
+        - w-fluid
+      why: LR(젖산 링거액)이나 bolus는 의료진끼리의 말이에요. 환자에게는 무엇을 왜 넣는지 쉬운 말로 알려 줘요.
+      scenes:
+        - who: 차트 기록
+          icon: board
+          en: Hyperemesis; 1 L LR bolus started via PIV.
+          ok: true
+        - who: 의사에게 보고
+          icon: speech
+          en: She's got hyperemesis — we started a liter of LR.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: We're starting a liter of LR.
+          ok: false
+          fix: We're starting fluids through your IV to replace what you've lost.
 - id: SCN-ER-00822
   profession: ""
   eventId: EVT-ER-00156
@@ -114569,6 +114836,43 @@
       words:
         - w-fault
       goal: 1
+  nuance:
+    - kind: pair
+      words:
+        - w-control
+        - w-pace
+        - w-report
+      why: 통제감을 돌려주는 말들이에요. 결정은 you're in control, 속도는 go at your pace, 신고는 report this to the police — 신고도 할지 말지 묻는 선택지로 내놓아요.
+      pairs:
+        - - you're in
+          - control
+        - - go at
+          - your pace
+        - - report this
+          - to the police
+      decoys:
+        - your fault
+    - kind: swap
+      words:
+        - w-exam
+        - w-evidence
+        - w-choice
+      why: 성폭력 피해자 검사는 동의가 필요하고, 환자는 검사 전체나 일부를 거절할 수 있어요. 그래서 '해야 한다'가 아니라 '고를 수 있다'로 말해요.
+      who: 피해자에게 · 검사 안내
+      icon: me
+      before:
+        - 'You '
+        - need to
+        - ' have an exam so we can collect evidence.'
+      options:
+        - can choose whether to
+        - need to
+        - have to
+      answer: can choose whether to
+      notes:
+        can choose whether to: 검사와 증거 채취는 환자가 정한다는 것을 분명히 한다.
+        have to: need to보다 더 강한 강요로 들린다.
+        need to: 해야만 하는 일처럼 들려 환자의 결정권을 빼앗는다.
 - id: SCN-ER-00823
   profession: ""
   eventId: EVT-ER-00156
@@ -114640,7 +114944,6 @@
         - w-belly
         - w-pain
         - w-pregnancy
-        - w-baby
       goal: 1
     - en: Does it hurt more when I press here and let go?
       ko: 여기를 눌렀다가 뗄 때 더 아프신가요?
@@ -114689,7 +114992,6 @@
       words:
         - w-ultrasound
         - w-safe
-        - w-baby
       goal: 2
     - en: Appendicitis can happen during pregnancy too, so we take it seriously.
       ko: 충수염은 임신 중에도 생길 수 있어서, 저희는 이를 중요하게 다뤄요.
@@ -114705,6 +115007,42 @@
         - w-pregnancy
         - w-serious
       goal: 1
+  nuance:
+    - kind: pair
+      words:
+        - w-ultrasound
+        - w-serious
+        - w-figure
+        - w-cause
+      why: 초음파는 do an ultrasound, 가볍게 넘기지 않는다는 말은 take it seriously, 원인을 알아낸다는 말은 figure out the cause예요. 초음파는 방사선이 없어 임신부 영상검사에서 먼저 써요.
+      pairs:
+        - - do an
+          - ultrasound
+        - - take it
+          - seriously
+        - - figure out
+          - the cause
+      decoys:
+        - radiation
+    - kind: context
+      words:
+        - w-press
+        - w-hurt
+      why: rebound tenderness(반발압통)는 진찰 소견의 이름이라 환자가 스스로 답할 수 없어요. 환자에게는 눌렀다 뗄 때 더 아픈지를 직접 물어요.
+      scenes:
+        - who: 차트 기록
+          icon: board
+          en: RLQ tenderness with rebound; IUP 24 wks.
+          ok: true
+        - who: 의사에게 보고
+          icon: speech
+          en: She's 24 weeks with right lower quadrant tenderness and rebound.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: Do you have rebound tenderness?
+          ok: false
+          fix: Does it hurt more when I press here and let go?
 - id: SCN-ER-00824
   profession: ""
   eventId: EVT-ER-00156
@@ -114812,7 +115150,6 @@
         - .
       words:
         - w-ask
-        - w-family
         - w-interpret
       goal: 1
     - en: Can you tell me about your pregnancies through the interpreter?
@@ -114838,6 +115175,41 @@
       words:
         - w-understand
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-interpreter
+        - w-understand
+      why: 서두르지 말라는 take your time, 한 번에 하나씩 묻는 one question at a time, 통역을 거쳐 말한다는 speak through the interpreter예요.
+      pairs:
+        - - take your
+          - time
+        - - one question
+          - at a time
+        - - speak through
+          - the interpreter
+      decoys:
+        - slowly
+    - kind: swap
+      words:
+        - w-interpret
+        - w-interpreter
+      why: 미국 병원은 영어가 서툰 환자에게 자격 있는 의료 통역사를 쓰는 것이 원칙이에요. 가족의 호의는 고맙게 받되 통역은 맡기지 않아요.
+      who: 남편이 '제가 통역할게요'라고 할 때
+      icon: speech
+      before:
+        - 'Thank you, but I''ll '
+        - let you interpret
+        - ' so nothing gets missed.'
+      options:
+        - get a medical interpreter
+        - let you interpret
+        - use my phone's translator
+      answer: get a medical interpreter
+      notes:
+        get a medical interpreter: 의료 통역사는 용어를 정확히 옮기고 비밀을 지킨다. 전화·화상 통역도 된다.
+        let you interpret: 가족은 말을 빠뜨리거나 바꿔 전할 수 있고, 환자가 가족 앞에서 말하기 어려운 것도 있다.
+        use my phone's translator: 기계 번역은 의료 대화에서 정확성을 믿을 수 없다.
 - id: SCN-ER-00825
   profession: ""
   eventId: EVT-ER-00156
@@ -114898,7 +115270,7 @@
   theme: er-obgyn
   sentences:
     - en: How far apart are the tightenings coming?
-      ko: 수축이 얼마나 자주 오시나요?
+      ko: 수축이 얼마나 자주 오나요?
       chunks:
         - How far apart
         - are the tightenings
@@ -114931,7 +115303,6 @@
         - .
       words:
         - w-monitor
-        - w-baby
       goal: 2
     - en: Are the tightenings coming regularly, or do they come and go?
       ko: 수축이 규칙적으로 오나요, 아니면 왔다갔다 하나요?
@@ -114968,9 +115339,44 @@
         - w-monitor
         - w-belly
         - w-contraction
-        - w-baby
         - w-heartbeat
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-apart
+        - w-tightening
+        - w-fluid
+      why: 수축 간격은 how far apart, 불규칙하게 왔다 갔다 하면 come and go, 물이 왈칵 쏟아진 느낌은 a gush of fluid예요.
+      pairs:
+        - - how far
+          - apart
+        - - come and
+          - go
+        - - a gush of
+          - fluid
+      decoys:
+        - often
+    - kind: context
+      words:
+        - w-fluid
+        - w-color
+        - w-odor
+      why: rupture of membranes(ROM, 양막파열)는 의료진의 말이에요. 환자는 'my water broke'라고 하니 그 말로 물어야 정확한 답이 나와요.
+      scenes:
+        - who: 차트 기록
+          icon: board
+          en: Pt reports gush of clear fluid at 1400; ?ROM.
+          ok: true
+        - who: 의사에게 보고
+          icon: speech
+          en: She felt a gush of clear fluid around two — possible rupture of membranes.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: Did your membranes rupture?
+          ok: false
+          fix: Did you feel a gush of fluid, like your water broke?
 - id: SCN-ER-00826
   profession: ""
   eventId: EVT-ER-00156
@@ -115103,6 +115509,41 @@
         - w-test
         - w-cause
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-confidential
+        - w-embarrass
+        - w-test
+      why: 비밀 보장은 everything you share stays confidential, 부끄러워할 것 없다는 말은 nothing to be embarrassed about, 면봉 검사는 do a swab test예요.
+      pairs:
+        - - everything you share
+          - stays confidential
+        - - nothing to be
+          - embarrassed about
+        - - do a swab
+          - test
+      decoys:
+        - judge
+    - kind: swap
+      words:
+        - w-partner
+      why: 성병력은 성별·관계를 가정하지 않고 partners로 물어요. 미국 CDC의 성 건강 문진 틀(5 P's)도 Partners부터 시작해요.
+      who: 환자에게 · 성병력 문진
+      icon: me
+      before:
+        - 'Have you had any new '
+        - boyfriends
+        - ' recently?'
+      options:
+        - sexual partners
+        - boyfriends
+        - hookups
+      answer: sexual partners
+      notes:
+        boyfriends: 상대의 성별과 관계를 미리 정해 버려, 해당하지 않는 환자는 답하기 어렵다.
+        hookups: 속어라 가볍고 판단하는 말로 들릴 수 있다.
+        sexual partners: 성별이나 관계를 가정하지 않는 표준 문진어다.
 - id: SCN-ER-00827
   profession: ""
   eventId: EVT-ER-00156
@@ -115231,6 +115672,41 @@
       words:
         - w-decide
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-act
+        - w-effective
+        - w-decide
+      why: 빠를수록 좋다는 the sooner, the better, 응급피임은 emergency contraception, 정답이 없다는 no right or wrong answer예요. 응급피임은 일찍 쓸수록 효과가 좋아요.
+      pairs:
+        - - the sooner
+          - the better
+        - - emergency
+          - contraception
+        - - right or
+          - wrong
+      decoys:
+        - later
+    - kind: swap
+      words:
+        - w-judgmentfree
+      why: 응급피임 상담은 판단하지 않는 자리예요. 같은 정보를 묻더라도 'why'로 캐묻지 않고 무엇을 썼는지 사실을 물어요.
+      who: 환자에게 · 피임 여부 확인
+      icon: me
+      before:
+        - 'Can I ask '
+        - why you didn't use protection
+        - '?'
+      options:
+        - what kind of protection you used, if any
+        - why you didn't use protection
+        - how you could be so careless
+      answer: what kind of protection you used, if any
+      notes:
+        how you could be so careless: 대놓고 나무라는 말이라 상담이 끊긴다.
+        what kind of protection you used, if any: 사실만 묻는다. if any로 쓰지 않았어도 편하게 답할 수 있다.
+        why you didn't use protection: 이유를 캐물어 환자가 변명해야 하는 자리에 선다.
 - id: SCN-ER-00828
   profession: ""
   eventId: EVT-ER-00156
@@ -115299,11 +115775,10 @@
         - safe
         - .
       words:
-        - w-baby
         - w-safe
       goal: 2
     - en: Stay with me — the whole team is right here.
-      ko: 곁에 있어 주세요 — 팀 전체가 여기 있어요.
+      ko: 정신 놓지 마세요 — 팀 전체가 바로 여기 있어요.
       chunks:
         - Stay with me
         - — the whole
@@ -115360,6 +115835,41 @@
         - w-operating
         - w-protect
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-step
+        - w-safe
+        - w-team
+      why: 처음부터 끝까지 알려 주겠다는 every step of the way, 지켜 주겠다는 keep you safe, 모두가 곁에 있다는 the whole team이에요.
+      pairs:
+        - - every step of
+          - the way
+        - - keep you
+          - safe
+        - - the whole
+          - team
+      decoys:
+        - quickly
+    - kind: context
+      words:
+        - w-placenta
+        - w-bleeding
+      why: placental abruption(태반조기박리)은 진단명이에요. 겁에 질린 환자에게는 몸에서 무슨 일이 일어나는지를 쉬운 말로 풀어 줘요.
+      scenes:
+        - who: 차트 기록
+          icon: board
+          en: Suspected placental abruption; rigid uterus, heavy vaginal bleeding.
+          ok: true
+        - who: 의사에게 보고
+          icon: speech
+          en: I'm worried about an abruption — her uterus is rigid and she's bleeding heavily.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: You have a placental abruption.
+          ok: false
+          fix: Your placenta may be separating early, and that's causing this bleeding.
 - id: SCN-ER-00829
   profession: ""
   eventId: EVT-ER-00157
@@ -115470,8 +115980,6 @@
       words:
         - w-notice
         - w-swell
-        - w-hand
-        - w-face
       goal: 1
     - en: Are you seeing spots, or having trouble seeing clearly?
       ko: 눈앞에 반점이 보이거나, 시야가 흐릿하신가요?
@@ -115481,8 +115989,7 @@
         - ', or having trouble'
         - seeing clearly
         - '?'
-      words:
-        - w-spot
+      words: []
       goal: 1
     - en: We're giving you medication now to help prevent a seizure.
       ko: 경련을 예방하기 위해 지금 약을 드릴게요.
@@ -115497,6 +116004,39 @@
         - w-prevent
         - w-seizure
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-headache
+      why: 진통제로도 가라앉지 않는 심한 두통은 자간전증의 중증 징후예요. 시야 변화와 함께라면 더욱, 바로 의사에게 보고해요.
+      cue: 'Patient: "My head is pounding, and the Tylenol didn''t touch it."'
+      scale:
+        - mild headache
+        - bad headache
+        - severe headache
+      answerAt: 2
+      example: She has a severe headache that didn't respond to Tylenol.
+      exKo: 타이레놀에도 반응하지 않는 심한 두통이 있어요.
+    - kind: context
+      words:
+        - w-seizure
+        - w-pressure
+        - w-headache
+      why: eclampsia(자간증)는 진단명이라 환자는 무엇이 위험한지 알 수 없어요. 환자에게는 혈압이 높고 경련을 막으려 한다고, 알아듣는 말로 알려 줘요.
+      scenes:
+        - who: 차트 기록
+          icon: board
+          en: BP 168/112, HA, visual changes; seizure precautions.
+          ok: true
+        - who: 의사에게 보고
+          icon: speech
+          en: Her pressure is 168 over 112 with a headache and visual changes — I'm worried about eclampsia.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: You're at risk for eclampsia.
+          ok: false
+          fix: Your blood pressure is high, and we're working to prevent a seizure.
 - id: SCN-ER-00830
   profession: ""
   eventId: EVT-ER-00157
@@ -115566,7 +116106,6 @@
         - .
       words:
         - w-great
-        - w-delivery
       goal: 1
     - en: Listen to me and breathe; we'll do this together.
       ko: 제 말을 듣고 숨을 쉬세요; 함께 해낼 거예요.
@@ -115591,7 +116130,6 @@
       words:
         - w-ready
         - w-care
-        - w-baby
         - w-arrive
       goal: 2
     - en: The head is already showing, so I need you to stop pushing for a moment.
@@ -115603,7 +116141,6 @@
         - for a moment
         - .
       words:
-        - w-head
         - w-stop
         - w-push
       goal: 1
@@ -115630,9 +116167,45 @@
       words:
         - w-warmer
         - w-ready
-        - w-baby
         - w-born
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-push
+        - w-warmer
+        - w-great
+      why: 한 번 더 힘주라는 give me one more push, 신생아 보온기는 radiant warmer, 잘하고 있다는 you're doing great예요.
+      pairs:
+        - - give me one more
+          - push
+        - - radiant
+          - warmer
+        - - you're doing
+          - great
+      decoys:
+        - ready
+    - kind: swap
+      words:
+        - w-push
+        - w-breathe
+        - w-stop
+      why: 머리가 보이는 순간에는 힘주기를 멈추고 숨 쉬게 해서, 아기가 천천히 조절되며 나오게 해요.
+      who: 산모에게 · 머리가 보일 때
+      icon: me
+      before:
+        - 'The head is showing — '
+        - push as hard as you can
+        - ' for me.'
+      options:
+        - stop pushing and breathe
+        - push as hard as you can
+        - hold your breath
+      answer: stop pushing and breathe
+      notes:
+        hold your breath: 숨을 참으면 오히려 힘이 들어간다.
+        push as hard as you can: 이때 세게 힘주면 머리가 갑자기 빠져나와 회음부가 크게 찢어질 수 있다.
+        stop pushing and breathe: 머리가 보이면 힘주기를 멈추고 짧게 숨 쉬게 해 머리가 천천히 나오게 한다.
 - id: SCN-ER-00831
   profession: ""
   eventId: EVT-ER-00157
@@ -115707,7 +116280,7 @@
         - w-stabilize
       goal: 1
     - en: Stay with me — keep your eyes on me.
-      ko: 곁에 있어 주세요 — 저를 계속 봐 주세요.
+      ko: 정신 놓지 마세요 — 저를 계속 봐 주세요.
       chunks:
         - Stay with
         - me
@@ -115768,6 +116341,40 @@
         - w-stop
         - w-bleeding
       goal: 2
+  nuance:
+    - kind: slider
+      words:
+        - w-drop
+        - w-pressure
+      why: 15분 만에 74/40, 맥박 136이면 crashing이에요. 의료진끼리 경계선으로 낮은 혈압은 soft, 내려가는 중이면 dropping, 급격히 무너지면 crashing이라고 해요.
+      cue: 'Monitor: BP 118/76 → 92/58 → 74/40 over 15 minutes, HR 136.'
+      scale:
+        - soft
+        - dropping
+        - crashing
+      answerAt: 2
+      example: Her pressure's crashing — let the OR know now.
+      exKo: 혈압이 급격히 무너지고 있어요 — 지금 수술실에 알리세요.
+    - kind: context
+      words:
+        - w-drop
+        - w-pressure
+        - w-stabilize
+      why: crashing은 의료진끼리 급박함을 나누는 말이에요. 환자에게 그대로 하면 공포만 커지니, 무슨 일인지와 무엇을 하고 있는지를 함께 말해요.
+      scenes:
+        - who: 차트 기록
+          icon: board
+          en: BP 74/40, HR 136; 2 units PRBC via rapid infuser.
+          ok: true
+        - who: 의사에게 보고
+          icon: speech
+          en: Her pressure's 74 over 40 and she's tachy at 136 — we're hanging blood.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: You're crashing.
+          ok: false
+          fix: Your pressure is dropping and we're acting fast to stabilize you.
 - id: SCN-ER-00832
   profession: ""
   eventId: EVT-ER-00157
@@ -115843,7 +116450,7 @@
         - w-bleeding
       goal: 1
     - en: Stay with me — we're on top of this.
-      ko: 곁에 있어 주세요 — 저희가 잘 대응하고 있어요.
+      ko: 정신 놓지 마세요 — 저희가 잘 대응하고 있어요.
       chunks:
         - Stay with
         - me
@@ -115903,6 +116510,42 @@
         - w-blood
         - w-fluid
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-massage
+        - w-uterus
+        - w-stop
+        - w-bleeding
+      why: 자궁 마사지는 massage your uterus, 출혈을 멈춘다는 stop the bleeding, 잘 대처하고 있다는 we're on top of this예요.
+      pairs:
+        - - massage
+          - your uterus
+        - - stop
+          - the bleeding
+        - - on top
+          - of this
+      decoys:
+        - boggy
+    - kind: context
+      words:
+        - w-uterus
+        - w-contract
+      why: boggy(물렁한)는 자궁 수축이 약하다는 진찰 소견을 적는 말이에요. 환자에게는 soft처럼 쉬운 말과 함께 무엇을 할지 알려 줘요.
+      scenes:
+        - who: 차트 기록
+          icon: board
+          en: Fundus boggy, 2 cm above umbilicus; fundal massage initiated.
+          ok: true
+        - who: 의사에게 보고
+          icon: speech
+          en: Her fundus is boggy and she's still bleeding — we've started massage.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: Your uterus is boggy.
+          ok: false
+          fix: Your uterus feels soft, so we need to help it contract.
 - id: SCN-ER-00833
   profession: ""
   eventId: EVT-ER-00157
@@ -115972,6 +116615,7 @@
         - .
       words:
         - w-heartbeat
+        - w-deeply
       goal: 1
     - en: This isn't your fault, and you didn't do anything wrong.
       ko: 이건 당신의 잘못이 아니고, 당신은 아무것도 잘못하지 않으셨어요.
@@ -116008,7 +116652,7 @@
         - w-heartbeat
       goal: 1
     - en: Your baby has died, and I am so very sorry.
-      ko: 아기가 세상을 떠났어요, 진심으로 애도를 표합니다.
+      ko: 아기가 사망했어요. 정말 안타깝습니다.
       chunks:
         - Your baby
         - has died
@@ -116016,7 +116660,6 @@
         - so very sorry
         - .
       words:
-        - w-baby
         - w-die
       goal: 1
     - en: There was nothing you could have done to cause this.
@@ -116042,6 +116685,41 @@
         - w-need
         - w-step
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-deeply
+        - w-fault
+        - w-need
+      why: 깊은 위로는 I'm so deeply sorry, 탓이 아니라는 말은 this isn't your fault, 서두르지 않게 하는 말은 take all the time you need예요.
+      pairs:
+        - - I'm so deeply
+          - sorry
+        - - this isn't
+          - your fault
+        - - take all the time
+          - you need
+      decoys:
+        - passed
+    - kind: swap
+      words:
+        - w-die
+      why: 미국 응급실의 사망 고지 교육(GRIEV_ING 등)은 died라는 말을 한 번은 분명히 하라고 가르쳐요. 완곡어만 쓰면 부모가 상황을 받아들이기 더 어려워요.
+      who: 부모에게 · 태아 사망 고지
+      icon: me
+      before:
+        - 'I''m so sorry — your baby '
+        - has passed
+        - .
+      options:
+        - has died
+        - has passed
+        - is gone
+      answer: has died
+      notes:
+        has died: 뜻이 하나로만 들린다. 부모가 '아직 살아 있나'를 되묻지 않게 한다.
+        has passed: 완곡어라 충격 속의 부모는 뜻을 놓치거나 되물을 수 있다.
+        is gone: 어디로 옮겨졌다는 말로도 들려 뜻이 흐리다.
 - id: SCN-ER-00834
   profession: ""
   eventId: EVT-ER-00157
@@ -116175,10 +116853,45 @@
         - .
       words:
         - w-fluid
-        - w-support
         - w-blood
         - w-pressure
       goal: 2
+  nuance:
+    - kind: pair
+      words:
+        - w-antibiotic
+        - w-discharge
+      why: 몸이 떨리는 오한은 shaking chills, 악취 나는 분비물은 foul-smelling discharge, 넓은 범위를 덮는 항생제는 broad-spectrum antibiotics예요. 패혈성 유산에서는 원인균을 모르는 채로 넓게 덮어 빨리 시작해요.
+      pairs:
+        - - shaking
+          - chills
+        - - foul-smelling
+          - discharge
+        - - broad-spectrum
+          - antibiotics
+      decoys:
+        - fever
+    - kind: context
+      words:
+        - w-infection
+        - w-symptom
+        - w-treat
+        - w-point
+      why: septic은 의료진끼리 쓰는 짧은 말이에요. 환자에게는 감염이 의심되고 서둘러 치료해야 한다는 뜻을 풀어서 말해요.
+      scenes:
+        - who: 차트 기록
+          icon: board
+          en: Post-miscarriage, T 38.9, HR 124, foul discharge; sepsis bundle initiated.
+          ok: true
+        - who: 의사에게 보고
+          icon: speech
+          en: She's febrile to 38.9 and tachy at 124 after a miscarriage — I'm worried she's septic.
+          ok: true
+        - who: 환자에게
+          icon: me
+          en: You're septic.
+          ok: false
+          fix: Your symptoms point to an infection we need to treat urgently.
 - id: SCN-ER-00835
   profession: ""
   eventId: EVT-ER-00157
