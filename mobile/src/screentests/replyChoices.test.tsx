@@ -224,6 +224,12 @@ test('the chosen rung survives from the step row to the conversation screen', ()
   const theme = readFileSync(join(__dirname, '..', 'app', '(tabs)', 'journey', 'theme', '[themeKey].tsx'), 'utf8');
   expect(theme).toMatch(/router\.push\(step\.guide \? `\/scenario\/\$\{scn\}\?guide=\$\{step\.guide\}`/);
 
-  const briefing = readFileSync(join(__dirname, '..', 'app', 'scenario', '[id].tsx'), 'utf8');
-  expect(briefing).toMatch(/guide \? `\/dialogue\/\$\{id\}\?guide=\$\{guide\}`/);
+  // v44 G (lesson-four-steps-v44 결정 4): the pipe now ends at the 상황 허브, which took
+  // the briefing's route. The hub is where the rung is chosen — each dialogue step sends
+  // its own (`stepHref`, locked in data/lessonSteps.test + screentests/lessonHub.test) —
+  // so what must hold here is that the hub does NOT read a rung off the URL and forward
+  // it: a stale `?guide=choices` link would otherwise open a pass the hub shows as locked.
+  const hub = readFileSync(join(__dirname, '..', 'app', 'scenario', '[id]', 'index.tsx'), 'utf8');
+  expect(hub).toMatch(/router\.push\(stepHref\(id, k\)\)/);
+  expect(hub).not.toMatch(/useLocalSearchParams<\{[^}]*guide/);
 });

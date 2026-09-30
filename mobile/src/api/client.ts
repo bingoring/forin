@@ -57,6 +57,16 @@ export type LessonStepKind = NonNullable<LessonStepWire['kind']>;
 export type LessonStepState = NonNullable<LessonStepWire['state']>;
 /** A step as the screens draw it. `empty` = content not written yet, never opt-in-able. */
 export interface LessonStepView { kind: LessonStepKind; state: LessonStepState; count?: number }
+export interface LessonWord { id: string; en: string; ipa?: string; ko: string; icon?: string; example?: string }
+export interface LessonSentence { en: string; ko: string; chunks: string[]; words: string[]; goal: number }
+/** LessonResp with the situation's persona/briefing typed the way ScenarioDetail types them. */
+export interface LessonDetail {
+  situation: { id: string; title: string; tagline?: string; theme?: string; persona?: ScenarioPersona; briefing?: ScenarioBriefing };
+  level: string;
+  steps: LessonStepView[];
+  words: LessonWord[];
+  sentences: LessonSentence[];
+}
 
 // --- scenario + conversation types (GET /scenarios/{id} is untyped in the
 // contract, so we mirror the server content.Scenario json tags here). ---
@@ -807,6 +817,18 @@ export const api = {
     } catch {
       return { choices: [] };
     }
+  },
+
+  /** One situation as its four steps (v44): state per step + the words and sentences. */
+  async lesson(scenarioId: string): Promise<LessonDetail> {
+    const { data } = await http.get(`/me/lesson/${scenarioId}`);
+    return data as LessonDetail;
+  },
+
+  /** Records STEP 1 or 2 as finished; returns the lesson as it now stands. */
+  async clearLessonStep(scenarioId: string, step: 'words' | 'sentences'): Promise<LessonDetail> {
+    const { data } = await http.post(`/me/lesson/${scenarioId}/steps/${step}`);
+    return data as LessonDetail;
   },
 
   async scenario(id: string): Promise<ScenarioDetail> {
