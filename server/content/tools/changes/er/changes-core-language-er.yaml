@@ -1,0 +1,206 @@
+theme: core-language-er
+changes:
+- kind: word-remove
+  id: w-hand
+  why: 너무 쉬운 말 — 어느 문장도 태그하지 않게 됐다(문장은 그대로)
+- kind: word-remove
+  id: w-home
+  why: 너무 쉬운 말 — 어느 문장도 태그하지 않게 됐다(문장은 그대로)
+- kind: word-remove
+  id: w-mom
+  why: 너무 쉬운 말 — 어느 문장도 태그하지 않게 됐다(문장은 그대로)
+- kind: word-remove
+  id: w-time
+  why: 너무 쉬운 말 — 어느 문장도 태그하지 않게 됐다(문장은 그대로)
+- kind: word
+  id: w-listen
+  fields:
+  - ko
+  why: w-hear와 ko(듣다)가 같아 듣고 뜻 고르기에서 정답이 둘 — read와 대비되는 귀로 듣기로 가른다
+- kind: word
+  id: w-speak
+  fields:
+  - ko
+  why: w-say와 ko(말하다)가 같다 — 문장 대부분(5건 중 3건)이 언어를 말하는 뜻(speak English/dialect/Somali)이라 그쪽으로 가른다
+- kind: word
+  id: w-check
+  fields:
+  - ko
+  why: w-confirm과 ko(확인하다)가 같다 — check if he truly understands는 살펴보다로 가른다
+- kind: word
+  id: w-exam
+  fields:
+  - ko
+  why: w-test와 ko(검사)가 같다 — female nurse for this exam은 신체 진찰이다
+- kind: sentence
+  situation: 가족 통역 한계 설명
+  index: 2
+  fields:
+  - words
+  why: 쉬운 w-mom 태그를 뺐다
+- kind: sentence
+  situation: 방언·소수언어 대응
+  index: 2
+  fields:
+  - words
+  why: 쉬운 w-time 태그를 뺐다
+- kind: sentence
+  situation: 문해력 저하 환자
+  index: 4
+  fields:
+  - words
+  why: 쉬운 w-time 태그를 뺐다
+- kind: sentence
+  situation: 응급 중 통역 지연
+  index: 1
+  fields:
+  - words
+  why: 쉬운 w-hand 태그를 뺐다
+- kind: sentence
+  situation: 응급 중 통역 지연
+  index: 4
+  fields:
+  - words
+  why: 쉬운 w-hand 태그를 뺐다
+- kind: sentence
+  situation: 나쁜 소식 통역 전달
+  index: 2
+  fields:
+  - words
+  why: 쉬운 w-time 태그를 뺐다
+- kind: sentence
+  situation: 동의능력 언어 복합
+  index: 3
+  fields:
+  - en
+  - chunks
+  why: '''Please explain it again''은 상대에게 설명하라는 말이라 ko(제가 다시 설명해 드릴 테니)와 어긋난다 — Let me로'
+- kind: sentence
+  situation: 이송 중 언어 인계
+  index: 4
+  fields:
+  - words
+  why: 쉬운 w-time 태그를 뺐다
+- kind: sentence
+  situation: 퇴원 교육 언어 장벽
+  index: 0
+  fields:
+  - words
+  why: 쉬운 w-home 태그를 뺐다
+- kind: word
+  id: w-tense
+  fields:
+  - ko
+  why: 헤드워드 tense는 형용사(긴장한)인데 두 문장 다 동사 tensing(몸이 굳다) — ko를 동사로(오답도 동사로)
+- kind: word
+  id: w-speak
+  fields:
+  - example
+  why: ko를 (언어를) 말하다로 갈랐는데 example이 언어 뜻이 아니었다 — 언어를 말하는 문장으로
+- kind: word
+  id: w-listen
+  fields:
+  - ko
+  why: 귀로 듣다는 hear와 갈리지 않는다 — 귀 기울여 듣다로
+- kind: word
+  id: w-read
+  fields:
+  - example
+  why: if you like to read는 '독서를 즐기면'이라 ko와 어긋난다 — 문장과 함께 if you'd like로
+- kind: sentence
+  situation: 통역 서비스 요청 안내
+  index: 1
+  fields:
+  - words
+  why: 쉬운 w-minute 태그를 뺐다
+- kind: sentence
+  situation: 문화적 금기 배려
+  index: 3
+  fields:
+  - words
+  why: 쉬운 w-nurse 태그를 뺐다
+- kind: sentence
+  situation: 문화적 금기 배려
+  index: 1
+  fields:
+  - words
+  why: w-nurse를 빼 V3가 모자라 이미 있는 possible을 w-possible로 태그
+- kind: sentence
+  situation: 청각장애 수어 통역
+  index: 1
+  fields:
+  - words
+  why: 쉬운 w-see 태그를 뺐다
+- kind: sentence
+  situation: 통증 표현 문화차
+  index: 2
+  fields:
+  - words
+  why: 쉬운 w-see 태그를 뺐다
+- kind: sentence
+  situation: 통증 표현 문화차
+  index: 4
+  fields:
+  - words
+  why: w-see를 빼 V3가 모자라 이미 있는 noticed를 w-notice로 태그
+- kind: sentence
+  situation: 응급 중 통역 지연
+  index: 2
+  fields:
+  - words
+  why: 쉬운 w-come 태그를 뺐다
+- kind: sentence
+  situation: 응급 중 통역 지연
+  index: 1
+  fields:
+  - words
+  why: 쉬운 w-bad 태그를 뺐다
+- kind: sentence
+  situation: 문화적 금기 배려
+  index: 0
+  fields:
+  - ko
+  - words
+  why: w-exam ko(진찰)에 맞춰 검사→진찰, 쉬운 w-nurse 태그를 뺐다
+- kind: sentence
+  situation: 문화적 금기 배려
+  index: 4
+  fields:
+  - ko
+  why: w-exam ko(진찰)에 맞춰 검사→진찰
+- kind: sentence
+  situation: 동의능력 언어 복합
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  why: 통역사는 동의를 확인하는 주체가 아니라 전달자 — 간호사가 통역사와 함께 확인한다로
+- kind: sentence
+  situation: 언어 선호 확인
+  index: 5
+  fields:
+  - en
+  - chunks
+  why: if you like to read는 '독서를 즐기면'이라 ko(원하시면)와 어긋난다
+- kind: word-add
+  id: w-possible
+  why: 쉬운 w-nurse를 빼 문화적 금기 배려가 7개 — 문장 1에 이미 있는 possible
+- kind: word-add
+  id: w-notice
+  why: 쉬운 w-see를 빼 통증 표현 문화차가 7개 — 문장 4에 이미 있는 noticed
+- kind: word-remove
+  id: w-minute
+  why: 공통 쉬운 단어 목록 — 어느 문장도 태그하지 않게 됐다(문장은 그대로)
+- kind: word-remove
+  id: w-nurse
+  why: 공통 쉬운 단어 목록 — 어느 문장도 태그하지 않게 됐다(문장은 그대로)
+- kind: word-remove
+  id: w-see
+  why: 공통 쉬운 단어 목록 — 어느 문장도 태그하지 않게 됐다(문장은 그대로)
+- kind: word-remove
+  id: w-come
+  why: 공통 쉬운 단어 목록 — 어느 문장도 태그하지 않게 됐다(문장은 그대로)
+- kind: word-remove
+  id: w-bad
+  why: 공통 쉬운 단어 목록 — 어느 문장도 태그하지 않게 됐다(문장은 그대로)

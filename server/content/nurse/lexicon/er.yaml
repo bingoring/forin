@@ -1,7 +1,7 @@
 # 커리큘럼 v3 / lesson-four-steps-v44 — ER 부서 단어 은행.
 # 주제 1건당 은행 1건. STEP 1은 이 은행을 직접 읽지 않고, 상황의
 # sentences 가 참조한 id 를 거슬러 올라가 만들어진다.
-# 35 themes · 6657 words.
+# 35 themes · 6643 words.
 
 - theme: core-family-er
   words:
@@ -1924,696 +1924,1417 @@
       ko: "상황"
       icon: "speech"
       example: "Situation: room four with chest pain."
+      exKo: "상황: 4호실, 흉통 환자입니다."
+      cue: "SBAR의 첫 글자 — 지금 무슨 일인지 한 줄로 먼저"
+      tag: "SBAR 구조"
+      distractorsEn: ["saturation", "sedation"]
+      distractorsKo: ["배경", "평가"]
+      chips: [["sit", "u", "ation"]]
+      decoyChips: ["sat", "ition"]
     - id: w-background
       en: "background"
       ipa: "/ˈbækɡraʊnd/"
       ko: "배경"
       icon: "board"
       example: "Background: no cardiac history."
+      exKo: "배경: 심장 병력은 없습니다."
+      cue: "SBAR의 둘째 — 병력·입원 경위처럼 알고 들어야 할 사정"
+      tag: "SBAR 구조"
+      distractorsEn: ["baseline", "backboard"]
+      distractorsKo: ["상황", "권고"]
+      chips: [["back", "ground"]]
+      decoyChips: ["bake", "grand"]
     - id: w-assessment
       en: "assessment"
       ipa: "/əˈsɛsmənt/"
       ko: "평가"
       icon: "magnify"
       example: "Assessment: he's alert and stable."
+      exKo: "평가: 의식 명료, 안정적입니다."
+      cue: "SBAR의 셋째 — 내가 보기에 환자가 지금 어떤 상태인지"
+      tag: "SBAR 구조"
+      distractorsEn: ["assignment", "adjustment"]
+      distractorsKo: ["진단", "권고"]
+      chips: [["as", "sess", "ment"]]
+      decoyChips: ["sign", "ise"]
     - id: w-recommendation
       en: "recommendation"
       ipa: "/ˌrɛkəmɛnˈdeɪʃən/"
       ko: "권고"
       icon: "speech"
       example: "My recommendation is to keep him on the monitor."
-    - id: w-room
-      en: "room"
-      ipa: "/ruːm/"
-      ko: "병실"
-      icon: "hospital"
-      example: "He's in room four."
+      exKo: "제 권고는 계속 모니터로 관찰하는 것입니다."
+      cue: "SBAR의 마지막 — 인수자에게 무엇을 해 달라고 제안하는지"
+      tag: "SBAR 구조"
+      distractorsEn: ["reconciliation", "representation"]
+      distractorsKo: ["평가", "요청"]
+      chips: [["re", "com", "mend", "ation"]]
+      decoyChips: ["con", "mand"]
     - id: w-chest
       en: "chest"
       ipa: "/tʃɛst/"
       ko: "가슴"
       icon: "cross"
       example: "He has chest pain."
+      exKo: "흉통이 있어요."
+      cue: "흉통 환자 — 통증이 있는 몸통 앞쪽 부위"
+      tag: "증상·진단"
+      distractorsEn: ["breast", "back"]
+      distractorsKo: ["복부", "목"]
+      chips: [["chest"]]
+      decoyChips: ["chess"]
     - id: w-pain
       en: "pain"
       ipa: "/peɪn/"
       ko: "통증"
       icon: "bulb"
       example: "Her pain is controlled."
+      exKo: "통증은 조절되고 있어요."
+      cue: "환자가 0~10 척도로 매기는 것"
+      tag: "증상·진단"
+      distractorsEn: ["strain", "spasm"]
+      distractorsKo: ["부기", "저림"]
+      chips: [["pain"]]
+      decoyChips: ["pane"]
     - id: w-noon
       en: "noon"
       ipa: "/nuːn/"
       ko: "정오"
       icon: "calendar"
-      example: "It started since noon."
+      example: "Her pain started at noon."
+      exKo: "통증은 정오에 시작됐어요."
+      cue: "낮 12시 — 증상이 시작된 시각을 말할 때"
+      tag: "시간·일정"
+      distractorsEn: ["midnight", "afternoon"]
+      distractorsKo: ["자정", "오후"]
+      chips: [["noon"]]
+      decoyChips: ["moon"]
     - id: w-history
       en: "history"
       ipa: "/ˈhɪstəri/"
       ko: "병력"
       icon: "board"
       example: "No cardiac history."
+      exKo: "심장 병력은 없어요."
+      cue: "과거에 앓았거나 앓고 있는 질환 — '고혈압 ___'"
+      tag: "증상·진단"
+      distractorsEn: ["histology", "record"]
+      distractorsKo: ["예후", "증상"]
+      chips: [["his", "tory"]]
+      decoyChips: ["hys", "tery"]
     - id: w-pressure
       en: "pressure"
       ipa: "/ˈprɛʃər/"
       ko: "혈압"
       icon: "monitor"
       example: "Her pressure is trending down."
+      exKo: "혈압이 계속 떨어지고 있어요."
+      cue: "140/90처럼 두 수로 말하는 수치 — 인계에서는 blood 없이 한 낱말로"
+      tag: "바이탈"
+      distractorsEn: ["pulse", "perfusion"]
+      distractorsKo: ["맥박", "체온"]
+      chips: [["pres", "sure"]]
+      decoyChips: ["pre", "sher"]
+    - id: w-borderline
+      en: "borderline"
+      ipa: "/ˈbɔrdərˌlaɪn/"
+      ko: "경계선의"
+      icon: "monitor"
+      example: "Her pressure is borderline and trending down."
+      exKo: "혈압이 경계선이고 계속 떨어지고 있어요."
+      cue: "수치가 정상과 비정상 사이 기준 언저리에 걸쳐 있을 때"
+      tag: "환자 상태"
+      distractorsEn: ["baseline", "bottom line"]
+      distractorsKo: ["위험한", "정상인"]
+      chips: [["bor", "der", "line"]]
+      decoyChips: ["base", "dor"]
     - id: w-cardiac
       en: "cardiac"
       ipa: "/ˈkɑːrdiæk/"
       ko: "심장의"
       icon: "stetho"
       example: "No cardiac history."
+      exKo: "심장 병력은 없어요."
+      cue: "심장과 관련된 — '___ history', '___ arrest'"
+      tag: "증상·진단"
+      distractorsEn: ["coronary", "cerebral"]
+      distractorsKo: ["뇌의", "폐의"]
+      chips: [["card", "i", "ac"]]
+      decoyChips: ["cord", "ic"]
     - id: w-alert
       en: "alert"
       ipa: "/əˈlɜːrt/"
       ko: "의식이 명료한"
       icon: "bulb"
       example: "He's alert right now."
+      exKo: "지금은 의식이 명료해요."
+      cue: "깨어 있고 묻는 말에 또렷이 답한다 — 의식 수준"
+      tag: "환자 상태"
+      distractorsEn: ["lethargic", "altered"]
+      distractorsKo: ["기면 상태의", "혼돈된"]
+      chips: [["a", "lert"]]
+      decoyChips: ["e", "lart"]
     - id: w-vitals
       en: "vitals"
       ipa: "/ˈvaɪtəlz/"
       ko: "활력징후"
       icon: "monitor"
       example: "Her vitals are stable."
+      exKo: "활력징후는 안정적이에요."
+      cue: "혈압·맥박·호흡·체온을 한데 부르는 말"
+      tag: "바이탈"
+      distractorsEn: ["values", "labs"]
+      distractorsKo: ["검사 결과", "투약 기록"]
+      chips: [["vi", "tals"]]
+      decoyChips: ["vit", "tles"]
     - id: w-stable
       en: "stable"
       ipa: "/ˈsteɪbəl/"
       ko: "안정적인"
       icon: "shield"
       example: "His vitals are stable."
+      exKo: "활력징후는 안정적이에요."
+      cue: "수치가 흔들리지 않고 그대로일 때"
+      tag: "환자 상태"
+      distractorsEn: ["unstable", "labile"]
+      distractorsKo: ["불안정한", "위중한"]
+      chips: [["sta", "ble"]]
+      decoyChips: ["un", "bel"]
     - id: w-monitor
       en: "monitor"
       ipa: "/ˈmɒnɪtər/"
       ko: "모니터"
       icon: "monitor"
       example: "Keep him on the monitor."
+      exKo: "계속 모니터를 달아 두세요."
+      cue: "심전도·산소포화도를 쉬지 않고 보여 주는 화면"
+      tag: "바이탈"
+      distractorsEn: ["pump", "ventilator"]
+      distractorsKo: ["인공호흡기", "수액 펌프"]
+      chips: [["mon", "i", "tor"]]
+      decoyChips: ["man", "ter"]
     - id: w-repeat
       en: "repeat"
       ipa: "/rɪˈpiːt/"
       ko: "다시 말하다"
       icon: "speaker"
       example: "Let me repeat that."
+      exKo: "다시 말씀드릴게요."
+      cue: "인수자가 수치를 못 들었다고 할 때 — 한 번 더"
+      tag: "확인·소통"
+      distractorsEn: ["replay", "recheck"]
+      distractorsKo: ["재확인하다", "받아 적다"]
+      chips: [["re", "peat"]]
+      decoyChips: ["pit"]
     - id: w-call
       en: "call"
       ipa: "/kɔːl/"
       ko: "호출하다"
       icon: "mic"
       example: "Call me if anything changes."
+      exKo: "뭔가 바뀌면 저를 불러 주세요."
+      cue: "상태가 바뀌면 의사나 나에게 연락해 달라고 할 때"
+      tag: "확인·소통"
+      distractorsEn: ["cancel", "cover"]
+      distractorsKo: ["기록하다", "대기하다"]
+      chips: [["call"]]
+      decoyChips: ["cal"]
     - id: w-score
       en: "score"
       ipa: "/skɔːr/"
       ko: "점수"
       icon: "chartup"
       example: "Watch his pain score."
+      exKo: "통증 점수를 지켜봐 주세요."
+      cue: "통증 척도로 매긴 숫자 — 0~10 중 몇"
+      tag: "바이탈"
+      distractorsEn: ["scale", "scope"]
+      distractorsKo: ["척도", "부위"]
+      chips: [["score"]]
+      decoyChips: ["core"]
     - id: w-complaint
       en: "complaint"
       ipa: "/kəmˈpleɪnt/"
       ko: "주호소"
       icon: "speech"
       example: "Chief complaint is abdominal pain."
+      exKo: "주호소는 복통이에요."
+      cue: "'chief ___' — 환자가 병원에 온 가장 큰 이유"
+      tag: "증상·진단"
+      distractorsEn: ["compliance", "complication"]
+      distractorsKo: ["합병증", "병력"]
+      chips: [["com", "plaint"]]
+      decoyChips: ["plain", "pli"]
     - id: w-abdominal
       en: "abdominal"
       ipa: "/æbˈdɒmɪnəl/"
       ko: "복부의"
       icon: "cross"
       example: "She has abdominal pain."
-    - id: w-morning
-      en: "morning"
-      ipa: "/ˈmɔːrnɪŋ/"
-      ko: "아침"
-      icon: "calendar"
-      example: "It started this morning."
-    - id: w-minute
-      en: "minute"
-      ipa: "/ˈmɪnɪt/"
-      ko: "분"
-      icon: "calendar"
-      example: "Her vitals were checked thirty minutes ago."
+      exKo: "복통이 있어요."
+      cue: "배 쪽의 — '___ pain'"
+      tag: "증상·진단"
+      distractorsEn: ["abnormal", "adrenal"]
+      distractorsKo: ["흉부의", "골반의"]
+      chips: [["ab", "dom", "in", "al"]]
+      decoyChips: ["dam", "nal"]
     - id: w-result
       en: "result"
       ipa: "/rɪˈzʌlt/"
       ko: "결과"
       icon: "chartup"
       example: "We're waiting on the results."
+      exKo: "결과를 기다리는 중이에요."
+      cue: "CT·피검사를 해 놓고 아직 안 나온 것"
+      tag: "검사·투약"
+      distractorsEn: ["report", "response"]
+      distractorsKo: ["검체", "처방"]
+      chips: [["re", "sult"]]
+      decoyChips: ["salt"]
     - id: w-wait
       en: "wait"
       ipa: "/weɪt/"
       ko: "기다리다"
       icon: "calendar"
       example: "We're still waiting on the CT."
+      exKo: "아직 CT를 기다리고 있어요."
+      cue: "결과가 나올 때까지 — 'still ___ing on the CT'"
+      tag: "시간·일정"
+      distractorsEn: ["watch", "want"]
+      distractorsKo: ["주시하다", "확인하다"]
+      chips: [["wait"]]
+      decoyChips: ["wate"]
     - id: w-antibiotic
       en: "antibiotic"
       ipa: "/ˌæntibaɪˈɒtɪk/"
       ko: "항생제"
       icon: "pill"
       example: "His antibiotic dose is due at four."
+      exKo: "항생제 투여는 4시 예정이에요."
+      cue: "폐렴·감염에 정맥으로 주는 약"
+      tag: "검사·투약"
+      distractorsEn: ["antibody", "antiemetic"]
+      distractorsKo: ["해열제", "진통제"]
+      chips: [["anti", "bio", "tic"]]
+      decoyChips: ["anty", "bod"]
     - id: w-dose
       en: "dose"
       ipa: "/doʊs/"
       ko: "용량"
       icon: "pill"
       example: "Her next dose is due soon."
+      exKo: "다음 투여가 곧이에요."
+      cue: "약을 한 번에 주는 양 — '다음 ___가 4시'"
+      tag: "검사·투약"
+      distractorsEn: ["route", "rate"]
+      distractorsKo: ["경로", "속도"]
+      chips: [["dose"]]
+      decoyChips: ["doze"]
     - id: w-due
       en: "due"
       ipa: "/duː/"
       ko: "예정된"
       icon: "calendar"
       example: "His dose is due at four."
+      exKo: "다음 투여는 4시 예정이에요."
+      cue: "약·검사가 정해진 시각이 됐을 때 — '4시에 ___'"
+      tag: "시간·일정"
+      distractorsEn: ["done", "late"]
+      distractorsKo: ["완료된", "지연된"]
+      chips: [["due"]]
+      decoyChips: ["dew"]
     - id: w-urine
       en: "urine"
       ipa: "/ˈjʊərɪn/"
       ko: "소변"
       icon: "lab"
       example: "The urine sample needs to go to the lab."
+      exKo: "소변 검체는 검사실로 보내야 해요."
+      cue: "검체 종류 — 컵에 받아 가는 것"
+      tag: "검사·투약"
+      distractorsEn: ["serum", "sputum"]
+      distractorsKo: ["혈액", "객담"]
+      chips: [["ur", "ine"]]
+      decoyChips: ["ure", "ane"]
     - id: w-sample
       en: "sample"
       ipa: "/ˈsæmpəl/"
       ko: "검체"
       icon: "lab"
       example: "The sample is ready."
+      exKo: "검체가 준비됐어요."
+      cue: "검사실로 보낼 혈액·소변 같은 것"
+      tag: "검사·투약"
+      distractorsEn: ["swab", "slide"]
+      distractorsKo: ["결과", "처방"]
+      chips: [["sam", "ple"]]
+      decoyChips: ["sim", "pel"]
     - id: w-lab
       en: "lab"
       ipa: "/læb/"
       ko: "검사실"
       icon: "lab"
       example: "Send it to the lab."
+      exKo: "검사실로 보내 주세요."
+      cue: "검체를 보내 분석하는 부서"
+      tag: "검사·투약"
+      distractorsEn: ["ward", "pharmacy"]
+      distractorsKo: ["약제부", "병동"]
+      chips: [["lab"]]
+      decoyChips: ["lap"]
     - id: w-recheck
       en: "recheck"
       ipa: "/riːˈtʃɛk/"
       ko: "재확인하다"
       icon: "check"
       example: "Please recheck her blood pressure."
-    - id: w-hour
-      en: "hour"
-      ipa: "/aʊər/"
-      ko: "시간"
-      icon: "calendar"
-      example: "Recheck it in an hour."
+      exKo: "혈압을 다시 확인해 주세요."
+      cue: "한 번 잰 수치를 조금 뒤 한 번 더"
+      tag: "확인·소통"
+      distractorsEn: ["recharge", "restart"]
+      distractorsKo: ["기록하다", "보고하다"]
+      chips: [["re", "check"]]
+      decoyChips: ["chek"]
     - id: w-bed
       en: "bed"
       ipa: "/bɛd/"
       ko: "병상"
       icon: "hospital"
       example: "He's in bed two."
+      exKo: "2번 병상에 계세요."
+      cue: "환자가 누워 있는 자리 — 'in ___ two', 'the other three ___s'"
+      tag: "우선순위·배치"
+      distractorsEn: ["chair", "stretcher"]
+      distractorsKo: ["구역", "대기실"]
+      chips: [["bed"]]
+      decoyChips: ["bad"]
     - id: w-correct
       en: "correct"
       ipa: "/kəˈrɛkt/"
       ko: "맞는"
       icon: "check"
       example: "That's correct."
+      exKo: "맞아요."
+      cue: "상대가 말한 이름·병상이 맞는지 끝에 붙여 확인"
+      tag: "확인·소통"
+      distractorsEn: ["complete", "current"]
+      distractorsKo: ["완료된", "현재의"]
+      chips: [["cor", "rect"]]
+      decoyChips: ["col", "lect"]
     - id: w-diagnosis
       en: "diagnosis"
       ipa: "/ˌdaɪəɡˈnoʊsɪs/"
       ko: "진단"
       icon: "magnify"
       example: "Working diagnosis is dehydration."
+      exKo: "현재 진단은 탈수예요."
+      cue: "의사가 붙인 병명 — 'working ___'"
+      tag: "증상·진단"
+      distractorsEn: ["prognosis", "dialysis"]
+      distractorsKo: ["예후", "증상"]
+      chips: [["dia", "gno", "sis"]]
+      decoyChips: ["pro", "gnos"]
     - id: w-chart
       en: "chart"
       ipa: "/tʃɑːrt/"
       ko: "차트"
       icon: "board"
       example: "It matches the chart."
+      exKo: "차트와 일치해요."
+      cue: "환자 정보가 적힌 기록 — 대조해 볼 곳"
+      tag: "확인·소통"
+      distractorsEn: ["card", "cart"]
+      distractorsKo: ["목록", "손목밴드"]
+      chips: [["chart"]]
+      decoyChips: ["cart"]
     - id: w-match
       en: "match"
       ipa: "/mætʃ/"
       ko: "일치하다"
       icon: "check"
       example: "Her diagnosis and bed number both match the chart."
+      exKo: "진단명과 병상 번호 모두 차트와 일치해요."
+      cue: "밴드의 정보와 차트 내용이 똑같을 때"
+      tag: "확인·소통"
+      distractorsEn: ["catch", "mark"]
+      distractorsKo: ["누락되다", "수정하다"]
+      chips: [["match"]]
+      decoyChips: ["mach"]
     - id: w-band
       en: "band"
       ipa: "/bænd/"
       ko: "밴드"
       icon: "bandage"
       example: "Read the name band back to me."
+      exKo: "이름 밴드를 다시 읽어 주세요."
+      cue: "환자 손목에 찬 이름표 — 'name ___'"
+      tag: "확인·소통"
+      distractorsEn: ["tag", "badge"]
+      distractorsKo: ["붕대", "사원증"]
+      chips: [["band"]]
+      decoyChips: ["bend"]
     - id: w-watch
       en: "watch"
       ipa: "/wɒtʃ/"
       ko: "주시하다"
       icon: "magnify"
       example: "Watch bed three closely."
+      exKo: "3번 병상을 가장 주의 깊게 봐 주세요."
+      cue: "악화할 수 있는 환자를 눈여겨볼 때 — '___ closely'"
+      tag: "우선순위·배치"
+      distractorsEn: ["wait", "walk"]
+      distractorsKo: ["기다리다", "치우다"]
+      chips: [["watch"]]
+      decoyChips: ["wach"]
     - id: w-trend
       en: "trend"
       ipa: "/trɛnd/"
       ko: "추세"
       icon: "chartup"
       example: "Her pressure is trending down."
-    - id: w-afternoon
-      en: "afternoon"
-      ipa: "/ˌæftərˈnuːn/"
-      ko: "오후"
-      icon: "calendar"
-      example: "It's been trending down all afternoon."
-    - id: w-doctor
-      en: "doctor"
-      ipa: "/ˈdɒktər/"
-      ko: "의사"
-      icon: "stetho"
-      example: "Call the doctor early."
+      exKo: "혈압이 떨어지는 추세예요."
+      cue: "수치가 한 방향으로 계속 움직이는 흐름 — '___ing down'"
+      tag: "바이탈"
+      distractorsEn: ["trace", "tremor"]
+      distractorsKo: ["변동", "기준치"]
+      chips: [["trend"]]
+      decoyChips: ["tred"]
     - id: w-discharge
       en: "discharge"
       ipa: "/ˈdɪstʃɑːrdʒ/"
       ko: "퇴원"
       icon: "home"
       example: "She's just waiting for discharge."
+      exKo: "퇴원만 기다리고 있어요."
+      cue: "진료가 끝나 병원을 나가는 것 — 집이나 다른 거처로"
+      tag: "전원·퇴원"
+      distractorsEn: ["admission", "disclosure"]
+      distractorsKo: ["입원", "전원"]
+      chips: [["dis", "charge"]]
+      decoyChips: ["change", "dys"]
     - id: w-attention
       en: "attention"
       ipa: "/əˈtɛnʃən/"
       ko: "주의"
       icon: "bulb"
       example: "Bed three needs the most attention."
+      exKo: "3번 병상에 가장 주의가 필요해요."
+      cue: "가장 신경 써서 봐야 할 환자를 짚을 때 — 'needs the most ___'"
+      tag: "우선순위·배치"
+      distractorsEn: ["intention", "retention"]
+      distractorsKo: ["휴식", "설명"]
+      chips: [["at", "ten", "tion"]]
+      decoyChips: ["in", "tension"]
     - id: w-allergy
       en: "allergy"
       ipa: "/ˈælərdʒi/"
       ko: "알레르기"
       icon: "shield"
       example: "Any allergies I should know?"
+      exKo: "제가 알아야 할 알레르기가 있나요?"
+      cue: "투약 전 꼭 묻는 것 — 페니실린에 두드러기가 났던 일"
+      tag: "검사·투약"
+      distractorsEn: ["allergen", "analgesic"]
+      distractorsKo: ["부작용", "금식"]
+      chips: [["al", "ler", "gy"]]
+      decoyChips: ["el", "gie"]
     - id: w-mention
       en: "mention"
       ipa: "/ˈmɛnʃən/"
       ko: "언급하다"
       icon: "speech"
       example: "You didn't mention her allergies."
+      exKo: "알레르기는 말씀 안 하셨어요."
+      cue: "인계에서 빠뜨린 걸 짚을 때 — '그 얘기는 안 하셨는데'"
+      tag: "확인·소통"
+      distractorsEn: ["notice", "measure"]
+      distractorsKo: ["확인하다", "기록하다"]
+      chips: [["men", "tion"]]
+      decoyChips: ["mon", "sion"]
     - id: w-medicine
       en: "medicine"
       ipa: "/ˈmɛdəsɪn/"
       ko: "약"
       icon: "pill"
       example: "Was the pain medicine given?"
+      exKo: "진통제는 투여됐나요?"
+      cue: "'pain ___' — 진통제를 이루는 뒷말"
+      tag: "검사·투약"
+      distractorsEn: ["medic", "medium"]
+      distractorsKo: ["주사", "수액"]
+      chips: [["medi", "cine"]]
+      decoyChips: ["meda", "sin"]
     - id: w-order
       en: "order"
       ipa: "/ˈɔːrdər/"
       ko: "처방하다"
       icon: "pencil"
       example: "Was it given, or just ordered?"
+      exKo: "투여된 건가요, 처방만 된 건가요?"
+      cue: "의사가 약·검사를 지시해 두는 것 — 투여 전 단계"
+      tag: "검사·투약"
+      distractorsEn: ["record", "refer"]
+      distractorsKo: ["투여하다", "보류하다"]
+      chips: [["or", "der"]]
+      decoyChips: ["ar", "ter"]
     - id: w-give
       en: "give"
       ipa: "/ɡɪv/"
       ko: "투여하다"
       icon: "pill"
       example: "Was the medicine actually given?"
+      exKo: "약은 실제로 투여됐나요?"
+      cue: "처방만 된 게 아니라 환자에게 실제로 들어갔는지"
+      tag: "검사·투약"
+      distractorsEn: ["get", "keep"]
+      distractorsKo: ["처방하다", "중단하다"]
+      chips: [["give"]]
+      decoyChips: ["gave"]
     - id: w-confirm
       en: "confirm"
       ipa: "/kənˈfɜːrm/"
       ko: "확인하다"
       icon: "check"
       example: "Let me confirm the last vitals time."
-    - id: w-time
-      en: "time"
-      ipa: "/taɪm/"
-      ko: "시각"
-      icon: "calendar"
-      example: "Confirm the last vitals time."
+      exKo: "마지막 활력징후 시각을 확인할게요."
+      cue: "애매한 정보가 확실히 맞는지 짚고 넘어갈 때"
+      tag: "확인·소통"
+      distractorsEn: ["conform", "confine"]
+      distractorsKo: ["언급하다", "보류하다"]
+      chips: [["con", "firm"]]
+      decoyChips: ["form", "fine"]
     - id: w-speak
       en: "speak"
       ipa: "/spiːk/"
       ko: "말하다"
       icon: "speech"
       example: "He speaks Vietnamese."
+      exKo: "베트남어를 쓰세요."
+      cue: "환자가 쓰는 언어를 전할 때 — 'He ___s Vietnamese'"
+      tag: "가족·문화"
+      distractorsEn: ["spell", "read"]
+      distractorsKo: ["통역하다", "읽다"]
+      chips: [["speak"]]
+      decoyChips: ["spik"]
     - id: w-interpreter
       en: "interpreter"
       ipa: "/ɪnˈtɜːrprɪtər/"
       ko: "통역사"
       icon: "speaker"
       example: "He needs a phone interpreter."
+      exKo: "전화 통역이 필요해요."
+      cue: "영어가 안 되는 환자와 말할 때 연결하는 사람"
+      tag: "가족·문화"
+      distractorsEn: ["interrupter", "intercom"]
+      distractorsKo: ["번역가", "사회복지사"]
+      chips: [["inter", "pret", "er"]]
+      decoyChips: ["rupt", "prit"]
     - id: w-phone
       en: "phone"
       ipa: "/foʊn/"
       ko: "전화"
       icon: "mic"
       example: "He needs a phone interpreter."
-    - id: w-family
-      en: "family"
-      ipa: "/ˈfæməli/"
-      ko: "가족"
-      icon: "home"
-      example: "The family prefers a female nurse."
+      exKo: "전화 통역이 필요해요."
+      cue: "통역을 전화선으로 연결하는 방식 — '___ interpreter'"
+      tag: "가족·문화"
+      distractorsEn: ["pager", "video"]
+      distractorsKo: ["영상", "호출기"]
+      chips: [["phone"]]
+      decoyChips: ["fone"]
     - id: w-prefer
       en: "prefer"
       ipa: "/prɪˈfɜːr/"
       ko: "선호하다"
       icon: "star"
       example: "The family prefers a female nurse."
+      exKo: "가족은 여성 간호사를 원해요."
+      cue: "강요는 아니지만 이쪽이 좋다고 할 때"
+      tag: "가족·문화"
+      distractorsEn: ["refer", "require"]
+      distractorsKo: ["요구하다", "거절하다"]
+      chips: [["pre", "fer"]]
+      decoyChips: ["re", "far"]
     - id: w-female
       en: "female"
       ipa: "/ˈfiːmeɪl/"
       ko: "여성"
       icon: "me"
       example: "The family prefers a female nurse."
-    - id: w-nurse
-      en: "nurse"
-      ipa: "/nɜːrs/"
-      ko: "간호사"
-      icon: "me"
-      example: "They prefer a female nurse."
+      exKo: "여성 간호사를 원해요."
+      cue: "성별을 지정해 돌봄을 요청할 때"
+      tag: "가족·문화"
+      distractorsEn: ["male", "familiar"]
+      distractorsKo: ["남성", "보호자"]
+      chips: [["fe", "male"]]
+      decoyChips: ["fa", "mail"]
     - id: w-understand
       en: "understand"
       ipa: "/ˌʌndərˈstænd/"
       ko: "이해하다"
       icon: "bulb"
       example: "Confirm understanding through the interpreter."
+      exKo: "통역사를 통해 이해했는지 확인하세요."
+      cue: "설명을 제대로 알아들었는지 — 통역을 거쳐 확인"
+      tag: "가족·문화"
+      distractorsEn: ["undertake", "understate"]
+      distractorsKo: ["동의하다", "기억하다"]
+      chips: [["under", "stand"]]
+      decoyChips: ["take", "stant"]
     - id: w-hold
       en: "hold"
       ipa: "/hoʊld/"
       ko: "보류"
       icon: "lock"
       example: "He's under a seventy-two-hour hold."
+      exKo: "72시간 보류 상태예요."
+      cue: "법으로 정한 시간 동안 퇴원할 수 없게 붙잡아 두는 조치"
+      tag: "안전·감시"
+      distractorsEn: ["restraint", "halt"]
+      distractorsKo: ["억제대", "격리"]
+      chips: [["hold"]]
+      decoyChips: ["hole"]
     - id: w-leave
       en: "leave"
       ipa: "/liːv/"
       ko: "떠나다"
       icon: "lock"
       example: "He cannot leave."
+      exKo: "나가실 수 없어요."
+      cue: "보류 중인 환자가 병원 밖으로 가려 할 때"
+      tag: "안전·감시"
+      distractorsEn: ["live", "lift"]
+      distractorsKo: ["도착하다", "돌아오다"]
+      chips: [["leave"]]
+      decoyChips: ["live"]
     - id: w-observation
       en: "observation"
       ipa: "/ˌɒbzərˈveɪʃən/"
       ko: "관찰"
       icon: "magnify"
       example: "He requires one-to-one observation."
+      exKo: "1대1 관찰이 필요해요."
+      cue: "'one-to-one ___' — 한 사람이 늘 곁에서 지켜봄"
+      tag: "안전·감시"
+      distractorsEn: ["obstruction", "conversation"]
+      distractorsKo: ["격리", "면담"]
+      chips: [["ob", "ser", "va", "tion"]]
+      decoyChips: ["ab", "sir"]
     - id: w-sharp
       en: "sharp"
       ipa: "/ʃɑːrp/"
       ko: "날카로운 물건"
       icon: "scalpel"
       example: "All sharps have been removed."
+      exKo: "날카로운 물건은 모두 치웠어요."
+      cue: "자해 위험이 있는 병실에서 치우는 바늘·칼 같은 것"
+      tag: "안전·감시"
+      distractorsEn: ["shard", "sheet"]
+      distractorsKo: ["침대 시트", "약품"]
+      chips: [["sharp"]]
+      decoyChips: ["shap"]
     - id: w-cord
       en: "cord"
       ipa: "/kɔːrd/"
       ko: "줄"
       icon: "gear"
       example: "All cords have been removed."
+      exKo: "줄은 모두 치웠어요."
+      cue: "목에 감길 위험이 있어 병실에서 치우는 전선·끈"
+      tag: "안전·감시"
+      distractorsEn: ["code", "curtain"]
+      distractorsKo: ["커튼", "바늘"]
+      chips: [["cord"]]
+      decoyChips: ["chord"]
     - id: w-remove
       en: "remove"
       ipa: "/rɪˈmuːv/"
       ko: "치우다"
       icon: "shield"
       example: "Sharps have been removed from the room."
+      exKo: "병실에서 날카로운 물건을 치웠어요."
+      cue: "위험한 물건을 병실 밖으로 빼낼 때"
+      tag: "안전·감시"
+      distractorsEn: ["renew", "revoke"]
+      distractorsKo: ["점검하다", "보관하다"]
+      chips: [["re", "move"]]
+      decoyChips: ["ri", "mov"]
     - id: w-daughter
       en: "daughter"
       ipa: "/ˈdɔːtər/"
       ko: "딸"
       icon: "me"
       example: "The daughter knows the diagnosis."
-    - id: w-know
-      en: "know"
-      ipa: "/noʊ/"
-      ko: "알다"
-      icon: "bulb"
-      example: "The daughter knows the diagnosis."
+      exKo: "따님은 진단을 알고 있어요."
+      cue: "환자의 자녀 중 여성 — 가족 중 누가 아는지 전할 때"
+      tag: "가족·문화"
+      distractorsEn: ["sister", "niece"]
+      distractorsKo: ["며느리", "조카"]
+      chips: [["daugh", "ter"]]
+      decoyChips: ["dough"]
     - id: w-prognosis
       en: "prognosis"
       ipa: "/prɒɡˈnoʊsɪs/"
       ko: "예후"
       icon: "magnify"
       example: "She knows the diagnosis but not the prognosis."
+      exKo: "진단은 알지만 예후는 몰라요."
+      cue: "앞으로 병이 어떻게 될지 — 나쁜 소식일 수 있는 것"
+      tag: "증상·진단"
+      distractorsEn: ["diagnosis", "progress"]
+      distractorsKo: ["진단", "경과"]
+      chips: [["pro", "gno", "sis"]]
+      decoyChips: ["dia", "gress"]
     - id: w-wife
       en: "wife"
       ipa: "/waɪf/"
       ko: "아내"
       icon: "me"
       example: "The doctor still needs to speak with the wife."
+      exKo: "의사가 아직 아내분과 이야기해야 해요."
+      cue: "환자의 배우자 — 여성"
+      tag: "가족·문화"
+      distractorsEn: ["widow", "sister"]
+      distractorsKo: ["남편", "딸"]
+      chips: [["wife"]]
+      decoyChips: ["wive"]
     - id: w-son
       en: "son"
       ipa: "/sʌn/"
       ko: "아들"
       icon: "me"
       example: "The son had a lot of anger earlier."
+      exKo: "아드님이 아까 화가 많이 나셨어요."
+      cue: "환자의 자녀 중 남성"
+      tag: "가족·문화"
+      distractorsEn: ["nephew", "grandson"]
+      distractorsKo: ["남편", "조카"]
+      chips: [["son"]]
+      decoyChips: ["sun"]
     - id: w-anger
       en: "anger"
       ipa: "/ˈæŋɡər/"
       ko: "분노"
       icon: "bulb"
       example: "The son had a lot of anger earlier."
+      exKo: "아드님이 아까 화가 많이 나셨어요."
+      cue: "가족이 큰소리로 따졌던 감정 — 다음 근무자도 알아야 할 것"
+      tag: "가족·문화"
+      distractorsEn: ["anguish", "anxiety"]
+      distractorsKo: ["슬픔", "불안"]
+      chips: [["an", "ger"]]
+      decoyChips: ["ang", "gre"]
     - id: w-gentle
       en: "gentle"
       ipa: "/ˈdʒɛntəl/"
       ko: "부드러운"
       icon: "star"
       example: "Be gentle with him."
+      exKo: "그분께 부드럽게 대해 주세요."
+      cue: "감정이 격해진 가족을 대할 때의 태도"
+      tag: "가족·문화"
+      distractorsEn: ["genuine", "general"]
+      distractorsKo: ["단호한", "솔직한"]
+      chips: [["gen", "tle"]]
+      decoyChips: ["gent", "al"]
     - id: w-transfer
       en: "transfer"
       ipa: "/ˈtrænsfɜːr/"
       ko: "전원"
       icon: "plane"
       example: "This is a transfer for stroke care."
+      exKo: "뇌졸중 상급 치료를 위한 전원입니다."
+      cue: "다른 병원으로 환자를 보내는 것"
+      tag: "전원·퇴원"
+      distractorsEn: ["transplant", "transition"]
+      distractorsKo: ["퇴원", "입원"]
+      chips: [["trans", "fer"]]
+      decoyChips: ["fur", "tran"]
     - id: w-level
       en: "level"
       ipa: "/ˈlɛvəl/"
       ko: "수준"
       icon: "chartup"
       example: "She needs a higher level of care."
+      exKo: "더 높은 단계의 치료가 필요해요."
+      cue: "'higher ___ of care' — 단계, 또는 산소 수치"
+      tag: "전원·퇴원"
+      distractorsEn: ["label", "lever"]
+      distractorsKo: ["기준", "속도"]
+      chips: [["lev", "el"]]
+      decoyChips: ["lab", "al"]
     - id: w-stroke
       en: "stroke"
       ipa: "/stroʊk/"
       ko: "뇌졸중"
       icon: "cross"
       example: "This is a transfer for stroke care."
+      exKo: "뇌졸중 치료를 위한 전원입니다."
+      cue: "tPA 시간 창이 중요한 뇌혈관 질환"
+      tag: "증상·진단"
+      distractorsEn: ["seizure", "strain"]
+      distractorsKo: ["뇌전증 발작", "심근경색"]
+      chips: [["stroke"]]
+      decoyChips: ["strike"]
     - id: w-care
       en: "care"
       ipa: "/kɛr/"
       ko: "치료"
       icon: "shield"
       example: "She needs a higher level of care."
+      exKo: "더 높은 단계의 치료가 필요해요."
+      cue: "'higher level of ___' — 큰 병원이 더 줄 수 있는 것"
+      tag: "전원·퇴원"
+      distractorsEn: ["cure", "core"]
+      distractorsKo: ["검사", "관찰"]
+      chips: [["care"]]
+      decoyChips: ["cure"]
     - id: w-onset
       en: "onset"
       ipa: "/ˈɒnsɛt/"
       ko: "발생"
       icon: "calendar"
       example: "Symptom onset was two hours ago."
+      exKo: "증상은 2시간 전에 시작됐어요."
+      cue: "증상이 처음 시작된 시점 — 뇌졸중에서 특히 중요"
+      tag: "증상·진단"
+      distractorsEn: ["offset", "outset"]
+      distractorsKo: ["종료", "악화"]
+      chips: [["on", "set"]]
+      decoyChips: ["off", "out"]
     - id: w-symptom
       en: "symptom"
       ipa: "/ˈsɪmptəm/"
       ko: "증상"
       icon: "bulb"
       example: "Symptom onset was two hours ago."
+      exKo: "증상은 2시간 전에 시작됐어요."
+      cue: "환자가 느끼고 드러내는 이상 — 마비, 어눌한 말"
+      tag: "증상·진단"
+      distractorsEn: ["syndrome", "system"]
+      distractorsKo: ["진단", "병력"]
+      chips: [["symp", "tom"]]
+      decoyChips: ["sim", "tum"]
     - id: w-record
       en: "record"
       ipa: "/ˈrɛkərd/"
       ko: "기록"
       icon: "board"
       example: "Her records are traveling with her."
+      exKo: "기록은 환자와 함께 가요."
+      cue: "전원할 때 환자와 같이 보내는 서류"
+      tag: "전원·퇴원"
+      distractorsEn: ["recall", "receipt"]
+      distractorsKo: ["영상 자료", "동의서"]
+      chips: [["re", "cord"]]
+      decoyChips: ["ri", "card"]
     - id: w-imaging
       en: "imaging"
       ipa: "/ˈɪmɪdʒɪŋ/"
       ko: "영상 자료"
       icon: "lab"
       example: "Her imaging is traveling with her."
+      exKo: "영상 자료는 환자와 함께 가요."
+      cue: "CT·MRI 사진 파일을 통틀어"
+      tag: "전원·퇴원"
+      distractorsEn: ["imagery", "staging"]
+      distractorsKo: ["검사 결과", "기록"]
+      chips: [["im", "ag", "ing"]]
+      decoyChips: ["em", "age"]
     - id: w-travel
       en: "travel"
       ipa: "/ˈtrævəl/"
       ko: "함께 이동하다"
       icon: "plane"
       example: "Her records are traveling with the patient."
-    - id: w-patient
-      en: "patient"
-      ipa: "/ˈpeɪʃənt/"
-      ko: "환자"
-      icon: "me"
-      example: "This is the patient in bed two."
+      exKo: "기록은 환자와 함께 이동해요."
+      cue: "서류나 간호사가 환자와 같이 옮겨 갈 때 — '___ing with the patient'"
+      tag: "전원·퇴원"
+      distractorsEn: ["trail", "trace"]
+      distractorsKo: ["보관하다", "기다리다"]
+      chips: [["tra", "vel"]]
+      decoyChips: ["tri", "val"]
     - id: w-drip
       en: "drip"
       ipa: "/drɪp/"
       ko: "지속 정맥주사"
       icon: "lab"
       example: "She's on a norepinephrine drip."
+      exKo: "노르에피네프린 지속 주입 중이에요."
+      cue: "승압제처럼 끊지 않고 계속 들어가는 정맥 주입"
+      tag: "검사·투약"
+      distractorsEn: ["bolus", "drop"]
+      distractorsKo: ["일시 주입", "경구약"]
+      chips: [["drip"]]
+      decoyChips: ["drap"]
     - id: w-titrate
       en: "titrate"
       ipa: "/ˈtaɪtreɪt/"
       ko: "용량을 조절하다"
       icon: "gear"
       example: "We're titrating the drip up."
+      exKo: "지속 주입 용량을 올리고 있어요."
+      cue: "혈압에 맞춰 약 속도를 조금씩 올리거나 내림"
+      tag: "검사·투약"
+      distractorsEn: ["tolerate", "hydrate"]
+      distractorsKo: ["중단하다", "희석하다"]
+      chips: [["ti", "trate"]]
+      decoyChips: ["tri", "tate"]
     - id: w-icu
       en: "ICU"
       ipa: "/ˌaɪ siː ˈjuː/"
       ko: "중환자실"
       icon: "hospital"
       example: "She needs an ICU bed."
+      exKo: "중환자실 병상이 필요해요."
+      cue: "승압제·삽관 환자가 올라가는 집중 치료 병동"
+      tag: "전원·퇴원"
+      distractorsEn: ["NICU", "PACU"]
+      distractorsKo: ["회복실", "응급실"]
+      chips: [["ICU"]]
+      decoyChips: ["ICD"]
     - id: w-close
       en: "close"
       ipa: "/kloʊs/"
-      ko: "가까운"
+      ko: "면밀한"
       icon: "lock"
       example: "She needs close monitoring."
+      exKo: "면밀한 모니터링이 필요해요."
+      cue: "'___ monitoring' — 눈을 떼지 않고 자세히"
+      tag: "우선순위·배치"
+      distractorsEn: ["clear", "loose"]
+      distractorsKo: ["간헐적인", "느슨한"]
+      chips: [["close"]]
+      decoyChips: ["clothe"]
     - id: w-norepinephrine
       en: "norepinephrine"
       ipa: "/ˌnɔːrˌɛpɪˈnɛfrɪn/"
       ko: "노르에피네프린"
       icon: "pill"
       example: "He's on a norepinephrine drip."
+      exKo: "노르에피네프린 지속 주입 중이에요."
+      cue: "혈압을 올리는 1차 승압제 — 흔히 '레보페드'"
+      tag: "검사·투약"
+      distractorsEn: ["epinephrine", "phenylephrine"]
+      distractorsKo: ["에피네프린", "도파민"]
+      chips: [["nor", "epi", "neph", "rine"]]
+      decoyChips: ["phen", "ephe"]
     - id: w-intubate
       en: "intubate"
       ipa: "/ˈɪntjubeɪt/"
       ko: "삽관하다"
       icon: "scalpel"
       example: "He's intubated right now."
+      exKo: "지금 삽관된 상태예요."
+      cue: "기도에 튜브를 넣어 인공호흡기를 단 상태로 만듦"
+      tag: "소생·처치"
+      distractorsEn: ["incubate", "extubate"]
+      distractorsKo: ["발관하다", "제세동하다"]
+      chips: [["in", "tu", "bate"]]
+      decoyChips: ["ex", "cu"]
     - id: w-shock
       en: "shock"
       ipa: "/ʃɒk/"
       ko: "제세동"
       icon: "siren"
       example: "He needed two shocks."
+      exKo: "제세동을 두 번 했어요."
+      cue: "심정지 때 패드로 전기를 주는 것 — 몇 번 했는지 센다"
+      tag: "소생·처치"
+      distractorsEn: ["compression", "shot"]
+      distractorsKo: ["흉부압박", "주사"]
+      chips: [["shock"]]
+      decoyChips: ["shok"]
     - id: w-down
       en: "down"
       ipa: "/daʊn/"
       ko: "정지"
       icon: "chartup"
       example: "Down time was about eight minutes."
+      exKo: "정지 시간은 약 8분이었어요."
+      cue: "'___ time' — 심정지부터 순환이 돌아올 때까지"
+      tag: "소생·처치"
+      distractorsEn: ["done", "dawn"]
+      distractorsKo: ["대기", "이송"]
+      chips: [["down"]]
+      decoyChips: ["dawn"]
     - id: w-forget
       en: "forget"
       ipa: "/fərˈɡɛt/"
       ko: "잊다"
       icon: "bulb"
       example: "Forget what I just said."
+      exKo: "방금 한 말은 잊으세요."
+      cue: "상황이 바뀌어 앞서 한 인계를 무를 때"
+      tag: "확인·소통"
+      distractorsEn: ["forgive", "forge"]
+      distractorsKo: ["기억하다", "반복하다"]
+      chips: [["for", "get"]]
+      decoyChips: ["give", "fore"]
     - id: w-status
       en: "status"
       ipa: "/ˈsteɪtəs/"
       ko: "상태"
       icon: "board"
       example: "His status has changed."
+      exKo: "상태가 바뀌었어요."
+      cue: "환자의 전반적인 지금 형편 — 급변했을 때"
+      tag: "환자 상태"
+      distractorsEn: ["statute", "stature"]
+      distractorsKo: ["원인", "계획"]
+      chips: [["sta", "tus"]]
+      decoyChips: ["stat", "ure"]
     - id: w-change
       en: "change"
       ipa: "/tʃeɪndʒ/"
       ko: "변화"
       icon: "gear"
       example: "Call me if anything changes."
+      exKo: "뭔가 변화가 있으면 연락 주세요."
+      cue: "상태가 달라지는 것 — 있으면 바로 연락"
+      tag: "환자 상태"
+      distractorsEn: ["chance", "charge"]
+      distractorsKo: ["기록", "요청"]
+      chips: [["change"]]
+      decoyChips: ["charge"]
     - id: w-drop
       en: "drop"
       ipa: "/drɒp/"
       ko: "떨어지다"
       icon: "chartup"
       example: "His oxygen just dropped."
+      exKo: "산소포화도가 방금 떨어졌어요."
+      cue: "수치가 갑자기 아래로 — 85%까지"
+      tag: "바이탈"
+      distractorsEn: ["drip", "droop"]
+      distractorsKo: ["오르다", "유지되다"]
+      chips: [["drop"]]
+      decoyChips: ["drip"]
     - id: w-percent
       en: "percent"
       ipa: "/pərˈsɛnt/"
       ko: "퍼센트"
       icon: "chartup"
       example: "His oxygen dropped to eighty-five percent."
+      exKo: "85퍼센트로 떨어졌어요."
+      cue: "산소포화도 85 뒤에 붙는 단위"
+      tag: "바이탈"
+      distractorsEn: ["percentile", "perfusion"]
+      distractorsKo: ["밀리미터", "리터"]
+      chips: [["per", "cent"]]
+      decoyChips: ["pre", "sent"]
     - id: w-oxygen
       en: "oxygen"
       ipa: "/ˈɒksɪdʒən/"
       ko: "산소"
       icon: "lab"
       example: "His oxygen just dropped."
+      exKo: "산소포화도가 방금 떨어졌어요."
+      cue: "산소포화도로 재고, 콧줄로 2리터 주는 것"
+      tag: "바이탈"
+      distractorsEn: ["oxide", "nitrogen"]
+      distractorsKo: ["이산화탄소", "질소"]
+      chips: [["oxy", "gen"]]
+      decoyChips: ["oxi", "gin"]
     - id: w-reassess
       en: "reassess"
       ipa: "/ˌriːəˈsɛs/"
       ko: "재사정하다"
       icon: "magnify"
       example: "Let's go reassess him together."
+      exKo: "같이 가서 다시 사정해요."
+      cue: "급변 뒤 환자를 처음부터 다시 살펴볼 때"
+      tag: "확인·소통"
+      distractorsEn: ["reassure", "reassign"]
+      distractorsKo: ["안심시키다", "재배정하다"]
+      chips: [["re", "as", "sess"]]
+      decoyChips: ["sure", "sign"]
     - id: w-medication
       en: "medication"
       ipa: "/ˌmɛdɪˈkeɪʃən/"
-      ko: "투약 목록"
+      ko: "투약"
       icon: "pill"
       example: "We didn't get her medication list."
+      exKo: "투약 목록을 받지 못했어요."
+      cue: "'___ list' — 환자가 먹고 있는 약을 적은 목록"
+      tag: "검사·투약"
+      distractorsEn: ["meditation", "mediation"]
+      distractorsKo: ["알레르기", "검사"]
+      chips: [["medi", "ca", "tion"]]
+      decoyChips: ["ta", "sion"]
     - id: w-list
       en: "list"
       ipa: "/lɪst/"
       ko: "목록"
       icon: "board"
       example: "We didn't get her medication list."
+      exKo: "투약 목록을 받지 못했어요."
+      cue: "약 이름을 줄줄이 적어 놓은 것"
+      tag: "확인·소통"
+      distractorsEn: ["log", "lift"]
+      distractorsKo: ["기록", "처방"]
+      chips: [["list"]]
+      decoyChips: ["lest"]
     - id: w-scratch
       en: "scratch"
       ipa: "/skrætʃ/"
       ko: "처음부터"
       icon: "pencil"
       example: "I'll reassess from scratch."
+      exKo: "안전을 위해 처음부터 다시 사정할게요."
+      cue: "'from ___' — 받은 정보를 믿지 않고 맨 처음부터"
+      tag: "확인·소통"
+      distractorsEn: ["scrap", "sketch"]
+      distractorsKo: ["대충", "나중에"]
+      chips: [["scratch"]]
+      decoyChips: ["scrach"]
     - id: w-safe
       en: "safe"
       ipa: "/seɪf/"
       ko: "안전한"
       icon: "shield"
       example: "I'll reassess from scratch to be safe."
+      exKo: "안전을 위해 처음부터 다시 사정할게요."
+      cue: "'to be ___' — 위험을 줄이려고 굳이 한 번 더"
+      tag: "안전·감시"
+      distractorsEn: ["sane", "same"]
+      distractorsKo: ["빠른", "정확한"]
+      chips: [["safe"]]
+      decoyChips: ["save"]
     - id: w-nursing
       en: "nursing"
       ipa: "/ˈnɜːrsɪŋ/"
       ko: "간호"
       icon: "stetho"
       example: "From nursing, her pain is controlled."
+      exKo: "간호 측면에서는 통증이 조절되고 있어요."
+      cue: "다직역 회의에서 우리 직역을 대표해 말할 때 — 'From ___'"
+      tag: "확인·소통"
+      distractorsEn: ["nursery", "nurturing"]
+      distractorsKo: ["의료", "사회복지"]
+      chips: [["nurs", "ing"]]
+      decoyChips: ["nurse", "ery"]
     - id: w-mobility
       en: "mobility"
       ipa: "/moʊˈbɪləti/"
       ko: "거동"
       icon: "me"
       example: "Her mobility is poor."
+      exKo: "거동이 좋지 않아요."
+      cue: "혼자 걷고 움직일 수 있는 정도 — 퇴원 계획에 중요"
+      tag: "환자 상태"
+      distractorsEn: ["ability", "morbidity"]
+      distractorsKo: ["통증", "식욕"]
+      chips: [["mo", "bil", "ity"]]
+      decoyChips: ["mor", "bid"]
     - id: w-poor
       en: "poor"
       ipa: "/pʊr/"
       ko: "좋지 않은"
       icon: "bulb"
       example: "Her mobility is poor."
+      exKo: "거동이 좋지 않아요."
+      cue: "기능이 기대보다 한참 모자랄 때 — 거동 평가"
+      tag: "환자 상태"
+      distractorsEn: ["fair", "fine"]
+      distractorsKo: ["양호한", "보통의"]
+      chips: [["poor"]]
+      decoyChips: ["pour"]
     - id: w-social
       en: "social"
       ipa: "/ˈsoʊʃəl/"
       ko: "사회복지의"
       icon: "home"
       example: "Social work is arranging discharge."
+      exKo: "사회복지팀이 안전한 퇴원을 주선하고 있어요."
+      cue: "'___ work' — 주거·보험 문제를 맡는 팀"
+      tag: "전원·퇴원"
+      distractorsEn: ["special", "sociable"]
+      distractorsKo: ["재활의", "영양의"]
+      chips: [["so", "cial"]]
+      decoyChips: ["spe", "tial"]
     - id: w-arrange
       en: "arrange"
       ipa: "/əˈreɪndʒ/"
       ko: "주선하다"
       icon: "gear"
       example: "Social work is arranging a safe discharge."
+      exKo: "사회복지팀이 안전한 퇴원을 주선하고 있어요."
+      cue: "퇴원 뒤 갈 곳·교통편을 알아보고 맞춰 두는 것"
+      tag: "전원·퇴원"
+      distractorsEn: ["assign", "attend"]
+      distractorsKo: ["취소하다", "승인하다"]
+      chips: [["ar", "range"]]
+      decoyChips: ["or", "rang"]
     - id: w-shelter
       en: "shelter"
       ipa: "/ˈʃɛltər/"
       ko: "보호소"
       icon: "home"
       example: "She's discharging to a shelter."
+      exKo: "보호소로 퇴원해요."
+      cue: "집이 없는 환자가 퇴원해 머물 곳"
+      tag: "전원·퇴원"
+      distractorsEn: ["shelf", "shutter"]
+      distractorsKo: ["요양원", "재활병원"]
+      chips: [["shel", "ter"]]
+      decoyChips: ["shal", "tor"]
     - id: w-agree
       en: "agree"
       ipa: "/əˈɡriː/"
       ko: "합의하다"
       icon: "check"
       example: "Let's agree who follows up."
+      exKo: "누가 후속 처리할지 합의해요."
+      cue: "회의 끝에 담당자를 모두가 받아들이게 정할 때"
+      tag: "확인·소통"
+      distractorsEn: ["argue", "arrange"]
+      distractorsKo: ["반대하다", "미루다"]
+      chips: [["a", "gree"]]
+      decoyChips: ["de", "grie"]
     - id: w-follow
       en: "follow"
       ipa: "/ˈfɒloʊ/"
       ko: "후속 처리하다"
       icon: "compass"
       example: "Let's agree who follows up on each item."
+      exKo: "각 항목을 누가 후속 처리할지 합의해요."
+      cue: "'___ up on' — 회의 뒤 맡은 일을 끝까지 챙김"
+      tag: "확인·소통"
+      distractorsEn: ["fall", "flow"]
+      distractorsKo: ["인수하다", "위임하다"]
+      chips: [["fol", "low"]]
+      decoyChips: ["fal", "lo"]
     - id: w-item
       en: "item"
       ipa: "/ˈaɪtəm/"
       ko: "항목"
       icon: "board"
       example: "Let's agree who follows up on each item."
+      exKo: "각 항목을 누가 맡을지 정해요."
+      cue: "회의에서 하나씩 번호 매긴 할 일"
+      tag: "확인·소통"
+      distractorsEn: ["idea", "time"]
+      distractorsKo: ["일정", "담당자"]
+      chips: [["i", "tem"]]
+      decoyChips: ["ti", "me"]
     - id: w-red
       en: "red"
       ipa: "/rɛd/"
       ko: "적색(최중증)"
-      icon: board
+      icon: "board"
       example: "We have three reds."
+      exKo: "적색이 3명이에요."
+      cue: "트리아지 태그 중 즉시 처치가 필요한 색"
+      tag: "재해 분류"
+      distractorsEn: ["yellow", "black"]
+      distractorsKo: ["황색(중등증)", "흑색(사망)"]
+      chips: [["red"]]
+      decoyChips: ["rod"]
     - id: w-yellow
       en: "yellow"
       ipa: "/ˈjɛloʊ/"
       ko: "황색(중등증)"
-      icon: board
+      icon: "board"
       example: "We have five yellows."
+      exKo: "황색이 5명이에요."
+      cue: "트리아지 태그 중 처치를 조금 미뤄도 되는 색"
+      tag: "재해 분류"
+      distractorsEn: ["green", "black"]
+      distractorsKo: ["적색(최중증)", "녹색(경증)"]
+      chips: [["yel", "low"]]
+      decoyChips: ["yal", "lo"]
     - id: w-green
       en: "green"
       ipa: "/ɡriːn/"
       ko: "녹색(경증)"
-      icon: board
+      icon: "board"
       example: "We have eight greens."
+      exKo: "녹색이 8명이에요."
+      cue: "트리아지 태그 중 걸어 다닐 수 있는 경상자의 색"
+      tag: "재해 분류"
+      distractorsEn: ["yellow", "black"]
+      distractorsKo: ["황색(중등증)", "흑색(사망)"]
+      chips: [["green"]]
+      decoyChips: ["grain"]
     - id: w-bay
       en: "bay"
       ipa: "/beɪ/"
       ko: "구역"
       icon: "hospital"
       example: "The reds are in bays one through three."
+      exKo: "적색은 1번부터 3번 구역에 있어요."
+      cue: "ER에서 커튼으로 나눠 번호를 붙인 환자 자리"
+      tag: "우선순위·배치"
+      distractorsEn: ["booth", "bench"]
+      distractorsKo: ["병실", "대기실"]
+      chips: [["bay"]]
+      decoyChips: ["bey"]
     - id: w-critical
       en: "critical"
       ipa: "/ˈkrɪtɪkəl/"
       ko: "위중한"
       icon: "siren"
       example: "Take the most critical first."
+      exKo: "가장 위중한 환자부터요."
+      cue: "당장 처치하지 않으면 생명이 위험한 정도"
+      tag: "재해 분류"
+      distractorsEn: ["clinical", "cortical"]
+      distractorsKo: ["안정적인", "경미한"]
+      chips: [["crit", "i", "cal"]]
+      decoyChips: ["clin", "ic"]
     - id: w-triage
       en: "triage"
       ipa: "/ˈtriːɑːʒ/"
       ko: "중증도 분류"
       icon: "siren"
       example: "Here are the triage tags."
+      exKo: "중증도 분류 태그예요."
+      cue: "대량재해에서 색깔 태그로 치료 순서를 매기는 일"
+      tag: "재해 분류"
+      distractorsEn: ["trauma", "trial"]
+      distractorsKo: ["외상", "이송"]
+      chips: [["tri", "age"]]
+      decoyChips: ["tree", "ache"]
+    - id: w-pending
+      en: "pending"
+      ipa: "/ˈpɛndɪŋ/"
+      ko: "대기 중인"
+      icon: "lab"
+      example: "His troponin is pending."
+      exKo: "트로포닌 결과는 대기 중이에요."
+      cue: "검사를 냈지만 결과가 아직 안 나온 상태"
+      tag: "검사·투약"
+      distractorsEn: ["spending", "impending"]
+      distractorsKo: ["완료된", "취소된"]
+      chips: [["pend", "ing"]]
+      decoyChips: ["pand", "en"]
+    - id: w-elevated
+      en: "elevated"
+      ipa: "/ˈɛləˌveɪtɪd/"
+      ko: "(수치가) 상승한"
+      icon: "chartup"
+      example: "If it's elevated, the doctor wants to be called."
+      exKo: "수치가 높으면 의사에게 연락해 달라고 했어요."
+      cue: "트로포닌 결과가 기준치를 넘어 나왔을 때 — 의사에게 바로 알릴 조건"
+      tag: "검사 결과"
+      distractorsEn: ["elevator", "alleviated"]
+      distractorsKo: ["정상 범위의", "감소한"]
+      chips: [["e", "lev", "at", "ed"]]
+      decoyChips: ["al", "ated"]
+    - id: w-report
+      en: "report"
+      ipa: "/rɪˈpɔrt/"
+      ko: "인계 보고"
+      icon: "speech"
+      example: "I'll give report at the door."
+      exKo: "문 앞에서 인계할게요."
+      cue: "교대·이송 때 다음 간호사에게 넘기는 환자 정보 — 'give ___'"
+      tag: "SBAR 구조"
+      distractorsEn: ["record", "rapport"]
+      distractorsKo: ["처치", "처방"]
+      chips: [["re", "port"]]
+      decoyChips: ["rap", "part"]
 - theme: core-language-er
   words:
     - id: w-interpreter
@@ -2622,654 +3343,1326 @@
       ko: "통역사"
       icon: "mic"
       example: "I'm going to call an interpreter to help us talk."
+      exKo: "환자분과 저희가 대화할 수 있게 통역사를 부를게요."
+      cue: "가족 말고, 전화·영상으로 연결해 말을 옮겨 줄 전문가"
+      tag: "통역"
+      distractorsEn: ["translator", "interrupter"]
+      distractorsKo: ["번역가", "사회복지사"]
+      chips: [["in", "ter", "pret", "er"]]
+      decoyChips: ["inter", "prat"]
     - id: w-call
       en: "call"
       ipa: "/kɔːl/"
       ko: "부르다"
       icon: "bell"
       example: "Please don't worry, I'll call the interpreter right now."
+      exKo: "걱정하지 마세요, 지금 바로 통역사를 부를게요."
+      cue: "통역 서비스에 연결해 사람을 오게 할 때"
+      tag: "소통 동사"
+      distractorsEn: ["cancel", "hold"]
+      distractorsKo: ["끊다", "기다리게 하다"]
+      chips: [["call"]]
+      decoyChips: ["col"]
     - id: w-help
       en: "help"
       ipa: "/hɛlp/"
       ko: "돕다"
       icon: "shield"
       example: "The interpreter is on the phone, ready to help you."
+      exKo: "통역사가 전화에 대기 중이고, 도와드릴 준비가 됐어요."
+      cue: "통역사가 환자와 간호사 사이 대화를 거들어 줄 때"
+      tag: "소통 동사"
+      distractorsEn: ["heal", "harm"]
+      distractorsKo: ["치료하다", "방해하다"]
+      chips: [["help"]]
+      decoyChips: ["halp"]
     - id: w-talk
       en: "talk"
       ipa: "/tɔːk/"
       ko: "이야기하다"
       icon: "speech"
       example: "I'm going to call an interpreter to help us talk."
-    - id: w-minute
-      en: "minute"
-      ipa: "/ˈmɪnɪt/"
-      ko: "분"
-      icon: "calendar"
-      example: "It only takes a minute, and it's free for you."
+      exKo: "통역사를 불러서 저희가 대화할 수 있게 도와드릴게요."
+      cue: "통역을 사이에 두고 서로 말을 주고받을 때"
+      tag: "소통 동사"
+      distractorsEn: ["walk", "tell"]
+      distractorsKo: ["걷다", "묻다"]
+      chips: [["talk"]]
+      decoyChips: ["tolk"]
     - id: w-free
       en: "free"
       ipa: "/friː/"
       ko: "무료의"
       icon: "star"
       example: "It only takes a minute, and it's free for you."
+      exKo: "1분밖에 안 걸리고, 무료예요."
+      cue: "통역 서비스 비용을 환자가 내지 않는다고 안심시킬 때"
+      tag: "안내"
+      distractorsEn: ["paid", "fair"]
+      distractorsKo: ["유료의", "저렴한"]
+      chips: [["free"]]
+      decoyChips: ["fee"]
     - id: w-hear
       en: "hear"
       ipa: "/hɪr/"
       ko: "듣다"
       icon: "speaker"
       example: "You'll hear them through this phone, in your language."
+      exKo: "이 전화기로 그분 목소리를 들으실 거예요, 환자분 언어로요."
+      cue: "스피커폰 너머 통역사 목소리가 귀에 닿을 때"
+      tag: "소통 동사"
+      distractorsEn: ["heed", "heal"]
+      distractorsKo: ["말하다", "보다"]
+      chips: [["hear"]]
+      decoyChips: ["here"]
     - id: w-phone
       en: "phone"
       ipa: "/foʊn/"
       ko: "전화"
       icon: "monitor"
       example: "You'll hear them through this phone, in your language."
+      exKo: "이 전화기로 그분 목소리를 들으실 거예요, 환자분 언어로요."
+      cue: "통역사 목소리가 나오는 기계 — 스피커로 켜 둔다"
+      tag: "통역"
+      distractorsEn: ["tablet", "pager"]
+      distractorsKo: ["태블릿", "호출기"]
+      chips: [["phone"]]
+      decoyChips: ["fone"]
     - id: w-language
       en: "language"
       ipa: "/ˈlæŋɡwɪdʒ/"
       ko: "언어"
       icon: "speech"
       example: "What language would you like us to use?"
+      exKo: "어떤 언어를 사용해 드릴까요?"
+      cue: "영어·스페인어·한국어 중 무엇으로 이야기할지 환자에게 물을 때"
+      tag: "언어 선호"
+      distractorsEn: ["dialect", "message"]
+      distractorsKo: ["방언", "억양"]
+      chips: [["lan", "guage"]]
+      decoyChips: ["gauge", "lang"]
     - id: w-pain
       en: "pain"
       ipa: "/peɪn/"
       ko: "통증"
       icon: "bulb"
       example: "Pain? Point to where."
+      exKo: "통증? 어디인지 가리켜 주세요."
+      cue: "환자가 얼굴을 찡그리며 배를 움켜쥘 때 묻는 증상"
+      tag: "증상 사정"
+      distractorsEn: ["fever", "rash"]
+      distractorsKo: ["발열", "발진"]
+      chips: [["pain"]]
+      decoyChips: ["pane"]
     - id: w-point
       en: "point"
       ipa: "/pɔɪnt/"
       ko: "가리키다"
       icon: "pushpin"
       example: "Pain? Point to where."
+      exKo: "통증? 어디인지 가리켜 주세요."
+      cue: "말이 안 통할 때 아픈 곳을 손끝으로 짚어 보이라고"
+      tag: "몸짓 소통"
+      distractorsEn: ["press", "pinch"]
+      distractorsKo: ["누르다", "문지르다"]
+      chips: [["point"]]
+      decoyChips: ["paint"]
     - id: w-allergy
       en: "allergy"
       ipa: "/ˈælərdʒi/"
       ko: "알레르기"
       icon: "bell"
       example: "Any allergy to medicine? Yes or no?"
+      exKo: "약물 알레르기 있나요? 예 아니오?"
+      cue: "약을 주기 전 두드러기·과민 반응 이력을 물을 때"
+      tag: "증상 사정"
+      distractorsEn: ["asthma", "anemia"]
+      distractorsKo: ["부작용", "천식"]
+      chips: [["al", "ler", "gy"]]
+      decoyChips: ["gie", "ergy"]
     - id: w-medicine
       en: "medicine"
       ipa: "/ˈmɛdɪsɪn/"
       ko: "약"
       icon: "pill"
       example: "Any allergy to medicine? Yes or no?"
+      exKo: "약물 알레르기 있나요? 예 아니오?"
+      cue: "알레르기 질문에서 음식이 아니라 약국·병원에서 받는 이것"
+      tag: "증상 사정"
+      distractorsEn: ["vaccine", "ointment"]
+      distractorsKo: ["백신", "연고"]
+      chips: [["med", "i", "cine"]]
+      decoyChips: ["dical", "cin"]
     - id: w-yes
       en: "yes"
       ipa: "/jɛs/"
       ko: "예"
       icon: "check"
       example: "Any allergy to medicine? Yes or no?"
+      exKo: "약물 알레르기 있나요? 예 아니오?"
+      cue: "고개를 위아래로 끄덕이는 쪽의 대답"
+      tag: "몸짓 소통"
+      distractorsEn: ["yet", "less"]
+      distractorsKo: ["아니오", "아마도"]
+      chips: [["yes"]]
+      decoyChips: ["yas"]
     - id: w-no
       en: "no"
       ipa: "/noʊ/"
       ko: "아니오"
       icon: "board"
       example: "Any allergy to medicine? Yes or no?"
+      exKo: "약물 알레르기 있나요? 예 아니오?"
+      cue: "고개를 좌우로 가로젓는 쪽의 대답"
+      tag: "몸짓 소통"
+      distractorsEn: ["now", "not"]
+      distractorsKo: ["예", "모르겠다"]
+      chips: [["no"]]
+      decoyChips: ["know"]
     - id: w-show
       en: "show"
       ipa: "/ʃoʊ/"
       ko: "보여주다"
       icon: "magnify"
       example: "Show me with your fingers, zero to ten."
+      exKo: "손가락으로 보여주세요, 0에서 10까지요."
+      cue: "말 대신 손가락 개수로 통증 점수를 드러내 보이라고"
+      tag: "몸짓 소통"
+      distractorsEn: ["shove", "share"]
+      distractorsKo: ["숨기다", "세다"]
+      chips: [["show"]]
+      decoyChips: ["shoe"]
     - id: w-finger
       en: "finger"
       ipa: "/ˈfɪŋɡər/"
       ko: "손가락"
       icon: "pushpin"
       example: "Show me with your fingers, zero to ten."
+      exKo: "손가락으로 보여주세요, 0에서 10까지요."
+      cue: "통증 0~10점을 개수로 펼쳐 보이는 손의 일부"
+      tag: "몸짓 소통"
+      distractorsEn: ["thumb", "fist"]
+      distractorsKo: ["주먹", "엄지"]
+      chips: [["fin", "ger"]]
+      decoyChips: ["fing", "gar"]
     - id: w-explain
       en: "explain"
       ipa: "/ɪkˈspleɪn/"
       ko: "설명하다"
       icon: "speech"
       example: "The interpreter will explain the test to you."
+      exKo: "통역사가 환자분께 검사를 설명해 드릴 거예요."
+      cue: "처치 전에 무엇을 왜 하는지 풀어 말해 줄 때"
+      tag: "동의·고지"
+      distractorsEn: ["examine", "explore"]
+      distractorsKo: ["진찰하다", "요약하다"]
+      chips: [["ex", "plain"]]
+      decoyChips: ["plane", "exp"]
     - id: w-test
       en: "test"
       ipa: "/tɛst/"
       ko: "검사"
       icon: "lab"
       example: "The interpreter will explain the test to you."
+      exKo: "통역사가 환자분께 검사를 설명해 드릴 거예요."
+      cue: "피검사·영상처럼 결과를 보려고 하는 것 — 동의 전에 설명한다"
+      tag: "동의·고지"
+      distractorsEn: ["text", "task"]
+      distractorsKo: ["치료", "진단"]
+      chips: [["test"]]
+      decoyChips: ["text"]
     - id: w-tell
       en: "tell"
       ipa: "/tɛl/"
       ko: "말해주다"
       icon: "speech"
       example: "Please tell me back what you understood."
+      exKo: "이해하신 내용을 다시 말씀해 주세요."
+      cue: "되말하기(teach-back) — 이해한 걸 간호사에게 다시 들려 달라고"
+      tag: "이해 확인"
+      distractorsEn: ["teach", "talk"]
+      distractorsKo: ["묻다", "가르치다"]
+      chips: [["tell"]]
+      decoyChips: ["tall"]
     - id: w-agree
       en: "agree"
       ipa: "/əˈɡriː/"
       ko: "동의하다"
       icon: "check"
       example: "Do you agree to have this done? Yes or no?"
+      exKo: "이 처치를 받는 데 동의하시나요? 예 아니오?"
+      cue: "처치를 받겠다고 받아들이는 것 — 통역으로 확인한다"
+      tag: "동의·고지"
+      distractorsEn: ["argue", "degree"]
+      distractorsKo: ["거부하다", "논쟁하다"]
+      chips: [["a", "gree"]]
+      decoyChips: ["grea", "dis"]
     - id: w-step
       en: "step"
       ipa: "/stɛp/"
       ko: "단계"
       icon: "compass"
       example: "The interpreter will explain each step before we start."
+      exKo: "시작하기 전에 통역사가 각 단계를 설명해 드릴 거예요."
+      cue: "처치 과정을 나눈 한 토막 — 하나씩 순서대로"
+      tag: "이해 확인"
+      distractorsEn: ["stop", "stem"]
+      distractorsKo: ["목표", "결과"]
+      chips: [["step"]]
+      decoyChips: ["stap"]
     - id: w-understand
       en: "understand"
       ipa: "/ˌʌndərˈstænd/"
       ko: "이해하다"
       icon: "bulb"
       example: "Please tell me if you don't understand something."
+      exKo: "이해가 안 되는 부분이 있으면 말씀해 주세요."
+      cue: "설명이 머리에 제대로 들어왔는지 — 통역 뒤에 꼭 묻는 것"
+      tag: "이해 확인"
+      distractorsEn: ["undertake", "understate"]
+      distractorsKo: ["기억하다", "동의하다"]
+      chips: [["under", "stand"]]
+      decoyChips: ["stood", "unter"]
     - id: w-thank
       en: "thank"
       ipa: "/θæŋk/"
       ko: "감사하다"
       icon: "star"
       example: "Thank you for wanting to help translate."
+      exKo: "통역을 도와주려는 마음, 감사해요."
+      cue: "가족이 통역을 자처할 때 먼저 그 마음을 인정하며"
+      tag: "환자 배려"
+      distractorsEn: ["think", "thrill"]
+      distractorsKo: ["사과하다", "칭찬하다"]
+      chips: [["thank"]]
+      decoyChips: ["think"]
     - id: w-translate
       en: "translate"
       ipa: "/ˈtrænsleɪt/"
       ko: "통역하다"
       icon: "speech"
       example: "Thank you for wanting to help translate."
+      exKo: "통역을 도와주려는 마음, 감사해요."
+      cue: "가족이 자기가 말을 옮겨 주겠다고 나설 때 하려는 일"
+      tag: "통역"
+      distractorsEn: ["transfer", "transmit"]
+      distractorsKo: ["이송하다", "요약하다"]
+      chips: [["trans", "late"]]
+      decoyChips: ["lation", "tran"]
     - id: w-medical
       en: "medical"
       ipa: "/ˈmɛdɪkəl/"
       ko: "의료의"
       icon: "cross"
       example: "For medical details, we use a trained interpreter."
+      exKo: "의료 세부사항은 훈련된 통역사를 이용해요."
+      cue: "진단·약·처치 같은 병원 이야기 — 가족 통역에 맡기지 않는 부분"
+      tag: "통역"
+      distractorsEn: ["mental", "medicinal"]
+      distractorsKo: ["정신의", "약효가 있는"]
+      chips: [["med", "i", "cal"]]
+      decoyChips: ["dic", "cine"]
     - id: w-detail
       en: "detail"
       ipa: "/ˈdiːteɪl/"
       ko: "세부사항"
       icon: "board"
       example: "For medical details, we use a trained interpreter."
+      exKo: "의료 세부사항은 훈련된 통역사를 이용해요."
+      cue: "진단·용량 같은 작은 내용 하나하나 — 틀리면 안 되는 것"
+      tag: "통역"
+      distractorsEn: ["retail", "delay"]
+      distractorsKo: ["요약", "결론"]
+      chips: [["de", "tail"]]
+      decoyChips: ["tale", "dis"]
     - id: w-trained
       en: "trained"
       ipa: "/treɪnd/"
       ko: "훈련된"
       icon: "trophy"
       example: "For medical details, we use a trained interpreter."
+      exKo: "의료 세부사항은 훈련된 통역사를 이용해요."
+      cue: "의료 통역 교육을 받고 자격을 갖춘 — 가족과 다른 점"
+      tag: "통역"
+      distractorsEn: ["strained", "drained"]
+      distractorsKo: ["자원한", "무급의"]
+      chips: [["train", "ed"]]
+      decoyChips: ["trian", "ing"]
     - id: w-accurate
       en: "accurate"
       ipa: "/ˈækjərɪt/"
       ko: "정확한"
       icon: "check"
       example: "This keeps everything accurate and protects your mom."
+      exKo: "이렇게 하면 정확하게 전달되고 어머니를 보호할 수 있어요."
+      cue: "빠지거나 바뀐 말 없이 그대로 옮겨진 상태"
+      tag: "통역"
+      distractorsEn: ["adequate", "acute"]
+      distractorsKo: ["적절한", "급성의"]
+      chips: [["ac", "cur", "ate"]]
+      decoyChips: ["acc", "rate"]
     - id: w-protect
       en: "protect"
       ipa: "/prəˈtɛkt/"
       ko: "보호하다"
       icon: "shield"
       example: "This keeps everything accurate and protects your mom."
-    - id: w-mom
-      en: "mom"
-      ipa: "/mɑːm/"
-      ko: "엄마"
-      icon: "home"
-      example: "This keeps everything accurate and protects your mom."
+      exKo: "이렇게 하면 정확하게 전달되고 어머니를 보호할 수 있어요."
+      cue: "잘못 전달된 정보로 환자가 해를 입지 않게 막는 것"
+      tag: "환자 배려"
+      distractorsEn: ["project", "prevent"]
+      distractorsKo: ["예방하다", "감시하다"]
+      chips: [["pro", "tect"]]
+      decoyChips: ["tact", "pre"]
     - id: w-read
       en: "read"
       ipa: "/riːd/"
       ko: "읽다"
       icon: "board"
-      example: "We'll prepare written materials if you like to read."
+      example: "We'll prepare written materials if you'd like to read."
+      exKo: "읽는 걸 원하시면 문서 자료를 준비해 드릴게요."
+      cue: "종이에 적힌 안내문을 눈으로 따라갈 때"
+      tag: "소통 동사"
+      distractorsEn: ["write", "lead"]
+      distractorsKo: ["쓰다", "듣다"]
+      chips: [["read"]]
+      decoyChips: ["reed"]
     - id: w-listen
       en: "listen"
       ipa: "/ˈlɪsən/"
-      ko: "듣다"
+      ko: "귀 기울여 듣다"
       icon: "speaker"
       example: "Is it easier to read or to listen for you?"
+      exKo: "읽는 것과 듣는 것 중 어느 쪽이 더 편하세요?"
+      cue: "글 대신 소리로 설명을 받는 쪽 — 문해 수준을 물을 때"
+      tag: "언어 선호"
+      distractorsEn: ["lessen", "glisten"]
+      distractorsKo: ["읽다", "말하다"]
+      chips: [["lis", "ten"]]
+      decoyChips: ["lisen", "sten"]
     - id: w-material
       en: "material"
       ipa: "/məˈtɪriəl/"
       ko: "자료"
       icon: "board"
       example: "We can get materials in your language too."
+      exKo: "환자분 언어로 된 자료도 준비해 드릴 수 있어요."
+      cue: "퇴원 안내문·설명서 같은 종이 — 모국어판도 있다"
+      tag: "언어 선호"
+      distractorsEn: ["maternal", "mineral"]
+      distractorsKo: ["양식", "처방전"]
+      chips: [["ma", "ter", "i", "al"]]
+      decoyChips: ["mat", "rial"]
     - id: w-prefer
       en: "prefer"
       ipa: "/prɪˈfɜːr/"
       ko: "선호하다"
       icon: "star"
       example: "Do you prefer to speak English or your own language?"
+      exKo: "영어와 모국어 중 어느 쪽으로 말씀하시는 게 좋으세요?"
+      cue: "둘 중 어느 쪽이 더 좋은지 환자의 뜻을 물을 때"
+      tag: "언어 선호"
+      distractorsEn: ["refer", "prepare"]
+      distractorsKo: ["의뢰하다", "거절하다"]
+      chips: [["pre", "fer"]]
+      decoyChips: ["pro", "fair"]
     - id: w-speak
       en: "speak"
       ipa: "/spiːk/"
-      ko: "말하다"
+      ko: "(언어를) 말하다"
       icon: "mic"
-      example: "I'm speaking to you, not to the phone."
+      example: "He speaks only Somali and needs a video interpreter."
+      exKo: "이 환자분은 소말리어만 하시고 화상 통역이 필요해요."
+      cue: "어느 나라 말을 할 줄 아는지 — 영어, 소말리어, 방언"
+      tag: "소통 동사"
+      distractorsEn: ["speck", "spell"]
+      distractorsKo: ["통역하다", "듣다"]
+      chips: [["speak"]]
+      decoyChips: ["spoke"]
     - id: w-comfortable
       en: "comfortable"
       ipa: "/ˈkʌmftərbəl/"
       ko: "편안한"
       icon: "star"
       example: "Tell me which language feels most comfortable to you."
+      exKo: "어떤 언어가 가장 편하게 느껴지시는지 말씀해 주세요."
+      cue: "환자가 가장 마음 놓고 쓸 수 있는 언어를 물을 때"
+      tag: "언어 선호"
+      distractorsEn: ["convenient", "compatible"]
+      distractorsKo: ["불편한", "익숙한"]
+      chips: [["com", "fort", "able"]]
+      decoyChips: ["ible", "comp"]
     - id: w-look
       en: "look"
       ipa: "/lʊk/"
       ko: "바라보다"
       icon: "magnify"
       example: "Please look at me, and the interpreter will follow."
+      exKo: "저를 봐 주세요, 통역사가 따라갈 거예요."
+      cue: "통역 중에도 환자 눈이 전화기 말고 간호사 쪽을 향하도록"
+      tag: "소통 동사"
+      distractorsEn: ["lock", "loom"]
+      distractorsKo: ["가리키다", "듣다"]
+      chips: [["look"]]
+      decoyChips: ["luk"]
     - id: w-follow
       en: "follow"
       ipa: "/ˈfɑːloʊ/"
       ko: "따라가다"
       icon: "compass"
       example: "Please look at me, and the interpreter will follow."
+      exKo: "저를 봐 주세요, 통역사가 따라갈 거예요."
+      cue: "간호사가 말하면 통역사가 뒤이어 그대로 옮기는 흐름"
+      tag: "통역"
+      distractorsEn: ["allow", "swallow"]
+      distractorsKo: ["앞서다", "끼어들다"]
+      chips: [["fol", "low"]]
+      decoyChips: ["fal", "lo"]
     - id: w-short
       en: "short"
       ipa: "/ʃɔːrt/"
       ko: "짧은"
-      icon: board
+      icon: "board"
       example: "Tell me in short sentences so nothing is missed."
+      exKo: "짧은 문장으로 말씀해 주세요, 놓치는 게 없도록요."
+      cue: "통역이 빠짐없이 옮길 수 있게 문장 길이를 줄여서"
+      tag: "이해 확인"
+      distractorsEn: ["sharp", "small"]
+      distractorsKo: ["긴", "쉬운"]
+      chips: [["short"]]
+      decoyChips: ["shirt"]
     - id: w-sentence
       en: "sentence"
       ipa: "/ˈsɛntəns/"
       ko: "문장"
       icon: "speech"
       example: "Tell me in short sentences so nothing is missed."
+      exKo: "짧은 문장으로 말씀해 주세요, 놓치는 게 없도록요."
+      cue: "마침표로 끝나는 말 한 덩어리 — 통역을 위해 짧게 끊는 단위"
+      tag: "이해 확인"
+      distractorsEn: ["sequence", "sentiment"]
+      distractorsKo: ["단어", "문단"]
+      chips: [["sen", "tence"]]
+      decoyChips: ["tense", "sence"]
     - id: w-miss
       en: "miss"
       ipa: "/mɪs/"
       ko: "놓치다"
       icon: "magnify"
       example: "Tell me in short sentences so nothing is missed."
+      exKo: "짧은 문장으로 말씀해 주세요, 놓치는 게 없도록요."
+      cue: "통역 중 말 일부가 빠져 전달되지 않는 것"
+      tag: "이해 확인"
+      distractorsEn: ["mess", "mix"]
+      distractorsKo: ["틀리다", "덧붙이다"]
+      chips: [["miss"]]
+      decoyChips: ["mis"]
     - id: w-dialect
       en: "dialect"
       ipa: "/ˈdaɪəlɛkt/"
       ko: "방언"
       icon: "speech"
       example: "I want to make sure we get the right dialect."
+      exKo: "맞는 방언 통역을 꼭 구하고 싶어요."
+      cue: "같은 아랍어라도 지역마다 다른 말 — 통역사를 찾을 때 맞춰야 할 것"
+      tag: "통역"
+      distractorsEn: ["dialogue", "dialysis"]
+      distractorsKo: ["억양", "모국어"]
+      chips: [["di", "a", "lect"]]
+      decoyChips: ["dia", "logue"]
     - id: w-find
       en: "find"
       ipa: "/faɪnd/"
       ko: "찾다"
       icon: "magnify"
       example: "It may take a little longer to find the interpreter."
+      exKo: "통역사를 찾는 데 조금 더 걸릴 수 있어요."
+      cue: "희귀 언어 통역사를 수소문해 구할 때"
+      tag: "통역"
+      distractorsEn: ["bind", "fund"]
+      distractorsKo: ["잃다", "바꾸다"]
+      chips: [["find"]]
+      decoyChips: ["fine"]
     - id: w-wait
       en: "wait"
       ipa: "/weɪt/"
       ko: "기다리다"
       icon: "calendar"
       example: "You're doing fine, and I'll wait with you."
-    - id: w-time
-      en: "time"
-      ipa: "/taɪm/"
-      ko: "시간"
-      icon: "calendar"
-      example: "You're doing fine — take your time."
+      exKo: "잘하고 계세요, 제가 함께 기다릴게요."
+      cue: "통역사가 연결될 때까지 환자 곁에서 시간을 보낼 때"
+      tag: "정서 지지"
+      distractorsEn: ["weigh", "wake"]
+      distractorsKo: ["서두르다", "떠나다"]
+      chips: [["wait"]]
+      decoyChips: ["weight"]
     - id: w-say
       en: "say"
       ipa: "/seɪ/"
       ko: "말하다"
       icon: "speech"
       example: "You said a lot — I want to hear all of it."
+      exKo: "말씀을 많이 하셨는데, 전부 다 듣고 싶어요."
+      cue: "환자는 길게 말했는데 통역은 한 줄일 때 — 환자가 한 말"
+      tag: "소통 동사"
+      distractorsEn: ["sway", "pay"]
+      distractorsKo: ["듣다", "묻다"]
+      chips: [["say"]]
+      decoyChips: ["sai"]
     - id: w-repeat
       en: "repeat"
       ipa: "/rɪˈpiːt/"
       ko: "반복하다"
       icon: "speaker"
       example: "Can the interpreter repeat that in full?"
+      exKo: "통역사가 그걸 전부 다시 말해 줄 수 있나요?"
+      cue: "통역이 너무 짧게 끝났을 때 똑같이 한 번 더 해 달라고"
+      tag: "이해 확인"
+      distractorsEn: ["report", "retreat"]
+      distractorsKo: ["요약하다", "보고하다"]
+      chips: [["re", "peat"]]
+      decoyChips: ["pete", "rep"]
     - id: w-full
       en: "full"
       ipa: "/fʊl/"
       ko: "완전한"
-      icon: board
+      icon: "board"
       example: "Can the interpreter repeat that in full?"
+      exKo: "통역사가 그걸 전부 다시 말해 줄 수 있나요?"
+      cue: "요약하지 말고 빠짐없이 — 통역을 '___로' 해 달라고"
+      tag: "이해 확인"
+      distractorsEn: ["brief", "cool"]
+      distractorsKo: ["간략한", "대략의"]
+      chips: [["full"]]
+      decoyChips: ["fool"]
     - id: w-ask
       en: "ask"
       ipa: "/æsk/"
       ko: "묻다"
       icon: "speech"
       example: "Let me ask again a different way to be sure."
+      exKo: "확실히 하기 위해 다른 방식으로 다시 여쭤볼게요."
+      cue: "답이 이상할 때 질문을 바꿔 한 번 더 할 때"
+      tag: "소통 동사"
+      distractorsEn: ["answer", "add"]
+      distractorsKo: ["대답하다", "설명하다"]
+      chips: [["ask"]]
+      decoyChips: ["axe"]
     - id: w-again
       en: "again"
       ipa: "/əˈɡɛn/"
       ko: "다시"
-      icon: board
+      icon: "board"
       example: "Let me ask again a different way to be sure."
+      exKo: "확실히 하기 위해 다른 방식으로 다시 여쭤볼게요."
+      cue: "같은 질문을 한 번 더 — 확인하려고 되풀이할 때"
+      tag: "이해 확인"
+      distractorsEn: ["against", "ago"]
+      distractorsKo: ["먼저", "나중에"]
+      chips: [["a", "gain"]]
+      decoyChips: ["gainst", "ai"]
     - id: w-sure
       en: "sure"
       ipa: "/ʃʊr/"
       ko: "확실한"
       icon: "check"
       example: "Let me ask again a different way to be sure."
+      exKo: "확실히 하기 위해 다른 방식으로 다시 여쭤볼게요."
+      cue: "오역이 없는지 의심이 다 풀리도록"
+      tag: "이해 확인"
+      distractorsEn: ["secure", "pure"]
+      distractorsKo: ["안전한", "애매한"]
+      chips: [["sure"]]
+      decoyChips: ["shore"]
     - id: w-female
       en: "female"
       ipa: "/ˈfiːmeɪl/"
       ko: "여성의"
       icon: "me"
       example: "Would you prefer a female nurse for this exam?"
-    - id: w-nurse
-      en: "nurse"
-      ipa: "/nɜːrs/"
-      ko: "간호사"
-      icon: "stetho"
-      example: "Would you prefer a female nurse for this exam?"
+      exKo: "이 진찰은 여성 간호사가 하는 걸 원하세요?"
+      cue: "문화·종교상 같은 성별의 의료진을 원하는 여성 환자에게"
+      tag: "환자 배려"
+      distractorsEn: ["male", "family"]
+      distractorsKo: ["남성의", "젊은"]
+      chips: [["fe", "male"]]
+      decoyChips: ["fam", "mail"]
     - id: w-exam
       en: "exam"
       ipa: "/ɪɡˈzæm/"
-      ko: "검사"
+      ko: "진찰"
       icon: "lab"
       example: "Would you prefer a female nurse for this exam?"
+      exKo: "이 진찰은 여성 간호사가 하는 걸 원하세요?"
+      cue: "옷을 벗고 몸을 살펴보는 과정 — 성별 선호를 묻게 되는 때"
+      tag: "환자 배려"
+      distractorsEn: ["example", "scan"]
+      distractorsKo: ["검사 결과", "처치"]
+      chips: [["ex", "am"]]
+      decoyChips: ["exe", "im"]
     - id: w-cover
       en: "cover"
       ipa: "/ˈkʌvər/"
       ko: "덮다"
       icon: "shield"
       example: "I'll keep you covered as much as possible."
+      exKo: "가능한 한 계속 가려 드릴게요."
+      cue: "진찰 중 몸이 드러나지 않게 시트로 가려 줄 때"
+      tag: "환자 배려"
+      distractorsEn: ["hover", "color"]
+      distractorsKo: ["벗기다", "닦다"]
+      chips: [["co", "ver"]]
+      decoyChips: ["cove", "vor"]
+    - id: w-possible
+      en: "possible"
+      ipa: "/ˈpɑːsəbəl/"
+      ko: "가능한"
+      icon: "shield"
+      example: "I'll keep you covered as much as possible."
+      exKo: "가능한 한 계속 가려 드릴게요."
+      cue: "as much as ___ — 최대한"
+      tag: "환자 배려"
+      distractorsEn: ["passable", "plausible"]
+      distractorsKo: ["필요한", "불가능한"]
+      chips: [["pos", "si", "ble"]]
+      decoyChips: ["pas", "bel"]
     - id: w-uncomfortable
       en: "uncomfortable"
       ipa: "/ʌnˈkʌmftərbəl/"
       ko: "불편한"
       icon: "bell"
       example: "Please tell me if anything makes you uncomfortable."
+      exKo: "불편하게 느껴지는 게 있으면 말씀해 주세요."
+      cue: "접촉·노출이 싫을 때 환자가 느끼는 감정 — 언제든 말하게"
+      tag: "환자 배려"
+      distractorsEn: ["unconscious", "unsuitable"]
+      distractorsKo: ["의식이 없는", "부끄러운"]
+      chips: [["un", "com", "fort", "able"]]
+      decoyChips: ["in", "ible"]
     - id: w-walk
       en: "walk"
       ipa: "/wɔːk/"
       ko: "안내하다"
       icon: "compass"
       example: "I'll walk you through it out loud, step by step."
+      exKo: "소리 내어 한 단계씩 설명해 드릴게요."
+      cue: "종이 대신 말로 처음부터 끝까지 차근차근 — '___ you through it'"
+      tag: "이해 확인"
+      distractorsEn: ["work", "wave"]
+      distractorsKo: ["요약하다", "서두르다"]
+      chips: [["walk"]]
+      decoyChips: ["wolk"]
     - id: w-loud
       en: "loud"
       ipa: "/laʊd/"
       ko: "소리 내어"
       icon: "speaker"
       example: "I'll walk you through it out loud, step by step."
+      exKo: "소리 내어 한 단계씩 설명해 드릴게요."
+      cue: "글을 못 읽는 환자에게 목소리로 들리게 — 'out ___'"
+      tag: "이해 확인"
+      distractorsEn: ["proud", "quiet"]
+      distractorsKo: ["조용히", "빠르게"]
+      chips: [["loud"]]
+      decoyChips: ["lowd"]
     - id: w-draw
       en: "draw"
       ipa: "/drɔː/"
       ko: "그리다"
       icon: "pencil"
       example: "Let me draw a simple picture to show you."
+      exKo: "간단한 그림을 그려서 보여드릴게요."
+      cue: "글 대신 펜으로 몸 모양을 종이에 스케치해 보일 때"
+      tag: "이해 확인"
+      distractorsEn: ["drag", "drain"]
+      distractorsKo: ["지우다", "복사하다"]
+      chips: [["draw"]]
+      decoyChips: ["drew"]
     - id: w-picture
       en: "picture"
       ipa: "/ˈpɪktʃər/"
       ko: "그림"
       icon: "pencil"
       example: "Let me draw a simple picture to show you."
+      exKo: "간단한 그림을 그려서 보여드릴게요."
+      cue: "글자 대신 눈으로 보고 이해하게 하는 스케치 한 장"
+      tag: "이해 확인"
+      distractorsEn: ["puncture", "pitcher"]
+      distractorsKo: ["도표", "글자"]
+      chips: [["pic", "ture"]]
+      decoyChips: ["pitch", "tore"]
     - id: w-rush
       en: "rush"
       ipa: "/rʌʃ/"
       ko: "서두름"
       icon: "siren"
       example: "There's no rush — tell me if I go too fast."
+      exKo: "서두르지 않아도 돼요, 제가 너무 빠르면 말씀해 주세요."
+      cue: "천천히 해도 된다고 — 'There's no ___'"
+      tag: "정서 지지"
+      distractorsEn: ["rash", "brush"]
+      distractorsKo: ["여유", "실수"]
+      chips: [["rush"]]
+      decoyChips: ["ruch"]
     - id: w-fast
       en: "fast"
       ipa: "/fæst/"
       ko: "빠른"
       icon: "siren"
       example: "There's no rush — tell me if I go too fast."
+      exKo: "서두르지 않아도 돼요, 제가 너무 빠르면 말씀해 주세요."
+      cue: "설명하는 말 속도를 환자가 따라오지 못할 때"
+      tag: "이해 확인"
+      distractorsEn: ["past", "vast"]
+      distractorsKo: ["느린", "늦은"]
+      chips: [["fast"]]
+      decoyChips: ["fist"]
     - id: w-arrange
       en: "arrange"
       ipa: "/əˈreɪndʒ/"
       ko: "준비하다"
       icon: "compass"
       example: "I'm arranging a sign language interpreter now."
+      exKo: "지금 수어 통역사를 준비하고 있어요."
+      cue: "통역사가 오도록 일정·연결을 미리 잡아 둘 때"
+      tag: "통역"
+      distractorsEn: ["arrive", "range"]
+      distractorsKo: ["도착하다", "취소하다"]
+      chips: [["ar", "range"]]
+      decoyChips: ["rang", "er"]
     - id: w-sign
       en: "sign"
       ipa: "/saɪn/"
       ko: "수어"
       icon: "speech"
       example: "I'm arranging a sign language interpreter now."
+      exKo: "지금 수어 통역사를 준비하고 있어요."
+      cue: "청각장애 환자와 손과 표정으로 나누는 말 — '___ language'"
+      tag: "통역"
+      distractorsEn: ["sing", "sigh"]
+      distractorsKo: ["점자", "입모양"]
+      chips: [["sign"]]
+      decoyChips: ["sine"]
     - id: w-face
       en: "face"
       ipa: "/feɪs/"
       ko: "얼굴을 향하다"
       icon: "me"
       example: "Face me so you can see my expressions."
-    - id: w-see
-      en: "see"
-      ipa: "/siː/"
-      ko: "보다"
-      icon: "magnify"
-      example: "Face me so you can see my expressions."
+      exKo: "제 표정을 보실 수 있게 저를 향해 주세요."
+      cue: "청각장애 환자가 입모양·표정을 볼 수 있게 몸을 돌려 마주하라고"
+      tag: "몸짓 소통"
+      distractorsEn: ["fake", "pace"]
+      distractorsKo: ["등지다", "가리다"]
+      chips: [["face"]]
+      decoyChips: ["fase"]
     - id: w-expression
       en: "expression"
       ipa: "/ɪkˈsprɛʃən/"
       ko: "표정"
       icon: "me"
       example: "Face me so you can see my expressions."
+      exKo: "제 표정을 보실 수 있게 저를 향해 주세요."
+      cue: "말 없이도 얼굴에 드러나는 감정 — 수어 소통에서 중요한 것"
+      tag: "몸짓 소통"
+      distractorsEn: ["expiration", "impression"]
+      distractorsKo: ["몸짓", "자세"]
+      chips: [["ex", "pres", "sion"]]
+      decoyChips: ["pire", "im"]
     - id: w-write
       en: "write"
       ipa: "/raɪt/"
       ko: "쓰다"
       icon: "pencil"
       example: "We can also write things down together."
+      exKo: "함께 글로 써서 소통할 수도 있어요."
+      cue: "통역이 없을 때 종이·화이트보드에 글자로 주고받는 방법"
+      tag: "소통 동사"
+      distractorsEn: ["wipe", "ride"]
+      distractorsKo: ["읽다", "지우다"]
+      chips: [["write"]]
+      decoyChips: ["right"]
     - id: w-together
       en: "together"
       ipa: "/təˈɡɛðər/"
       ko: "함께"
-      icon: board
+      icon: "board"
       example: "We can also write things down together."
+      exKo: "함께 글로 써서 소통할 수도 있어요."
+      cue: "간호사와 환자가 한 종이를 두고 둘이서"
+      tag: "정서 지지"
+      distractorsEn: ["altogether", "forever"]
+      distractorsKo: ["따로", "대신"]
+      chips: [["to", "geth", "er"]]
+      decoyChips: ["gather", "tho"]
     - id: w-strong
       en: "strong"
       ipa: "/strɔːŋ/"
       ko: "강한"
       icon: "trophy"
       example: "You don't need to be strong for me."
+      exKo: "저를 위해 강한 척하지 않으셔도 돼요."
+      cue: "통증을 꾹 참으며 괜찮은 척하는 환자에게 — 안 그래도 된다고"
+      tag: "정서 지지"
+      distractorsEn: ["stern", "stubborn"]
+      distractorsKo: ["고집 센", "엄격한"]
+      chips: [["strong"]]
+      decoyChips: ["strung"]
     - id: w-tense
       en: "tense"
       ipa: "/tɛns/"
-      ko: "긴장한"
+      ko: "(몸이) 긴장하다·굳다"
       icon: "bulb"
       example: "I can see you're tensing — is it worse than you're saying?"
+      exKo: "긴장하시는 게 보이는데, 말씀하신 것보다 더 심한가요?"
+      cue: "아프다고 말은 안 해도 어깨·주먹에 힘이 들어가 굳을 때"
+      tag: "증상 사정"
+      distractorsEn: ["tend", "tremble"]
+      distractorsKo: ["떨다", "움츠리다"]
+      chips: [["tense"]]
+      decoyChips: ["tence"]
+    - id: w-notice
+      en: "notice"
+      ipa: "/ˈnoʊtɪs/"
+      ko: "알아채다"
+      icon: "magnify"
+      example: "I noticed you're tensing, so I think the pain is worse."
+      exKo: "긴장하시는 걸 보니, 통증이 더 심한 것 같아요."
+      cue: "환자가 말하지 않아도 굳은 몸짓을 보고 먼저 눈치챌 때"
+      tag: "증상 사정"
+      distractorsEn: ["notify", "neglect"]
+      distractorsKo: ["알리다", "무시하다"]
+      chips: [["no", "tice"]]
+      decoyChips: ["nor", "tise"]
     - id: w-worse
       en: "worse"
       ipa: "/wɜːrs/"
       ko: "더 나쁜"
       icon: "bulb"
       example: "I can see you're tensing — is it worse than you're saying?"
+      exKo: "긴장하시는 게 보이는데, 말씀하신 것보다 더 심한가요?"
+      cue: "환자가 말한 것보다 실제 통증이 더할 때 — 비교하는 말"
+      tag: "증상 사정"
+      distractorsEn: ["better", "worth"]
+      distractorsKo: ["나아진", "비슷한"]
+      chips: [["worse"]]
+      decoyChips: ["wors"]
     - id: w-chest
       en: "chest"
       ipa: "/tʃɛst/"
       ko: "가슴"
       icon: "cross"
       example: "Chest? Point here. Yes or no?"
+      exKo: "가슴? 여기를 가리켜 주세요. 예 아니오?"
+      cue: "통역 없이 흉통을 확인할 때 손으로 짚어 보이는 부위"
+      tag: "증상 사정"
+      distractorsEn: ["breast", "belly"]
+      distractorsKo: ["배", "등"]
+      chips: [["chest"]]
+      decoyChips: ["chess"]
     - id: w-squeeze
       en: "squeeze"
       ipa: "/skwiːz/"
       ko: "꽉 쥐다"
       icon: "me"
       example: "Squeeze my hand if the pain is very bad."
-    - id: w-hand
-      en: "hand"
-      ipa: "/hænd/"
-      ko: "손"
-      icon: "me"
-      example: "Squeeze my hand if the pain is very bad."
-    - id: w-bad
-      en: "bad"
-      ipa: "/bæd/"
-      ko: "심한"
-      icon: "siren"
-      example: "Squeeze my hand if the pain is very bad."
-    - id: w-come
-      en: "come"
-      ipa: "/kʌm/"
-      ko: "오다"
-      icon: "siren"
-      example: "The interpreter is coming — stay with me."
+      exKo: "통증이 아주 심하면 제 손을 꽉 쥐어 주세요."
+      cue: "말이 안 통할 때 손에 힘을 줘 신호를 보내라고"
+      tag: "몸짓 소통"
+      distractorsEn: ["sneeze", "freeze"]
+      distractorsKo: ["흔들다", "누르다"]
+      chips: [["squeeze"]]
+      decoyChips: ["squeaze"]
     - id: w-stay
       en: "stay"
       ipa: "/steɪ/"
       ko: "머무르다"
       icon: "shield"
       example: "The interpreter is coming — stay with me."
+      exKo: "통역사가 오고 있어요, 저와 함께 계세요."
+      cue: "통역사가 올 때까지 겁먹은 환자가 곁을 떠나지 않도록"
+      tag: "정서 지지"
+      distractorsEn: ["stray", "sway"]
+      distractorsKo: ["떠나다", "쉬다"]
+      chips: [["stay"]]
+      decoyChips: ["stey"]
     - id: w-translation
       en: "translation"
       ipa: "/trænsˈleɪʃən/"
       ko: "번역"
       icon: "speech"
       example: "I'm using a translation app — read this."
+      exKo: "번역 앱을 쓰고 있어요, 이걸 읽어 주세요."
+      cue: "통역사가 오기 전, 휴대폰 앱이 화면에 글로 옮겨 주는 것"
+      tag: "통역"
+      distractorsEn: ["transition", "transfusion"]
+      distractorsKo: ["수혈", "설명"]
+      chips: [["trans", "la", "tion"]]
+      decoyChips: ["fu", "sion"]
     - id: w-app
       en: "app"
       ipa: "/æp/"
       ko: "앱"
       icon: "monitor"
       example: "I'm using a translation app — read this."
+      exKo: "번역 앱을 쓰고 있어요, 이걸 읽어 주세요."
+      cue: "통역사가 없을 때 스마트폰에서 켜는 프로그램"
+      tag: "통역"
+      distractorsEn: ["map", "tap"]
+      distractorsKo: ["웹사이트", "문자"]
+      chips: [["app"]]
+      decoyChips: ["ap"]
     - id: w-nod
       en: "nod"
       ipa: "/nɑːd/"
       ko: "끄덕이다"
       icon: "check"
       example: "Nod yes, shake for no — can you breathe okay?"
+      exKo: "예면 끄덕이고, 아니오면 저으세요, 숨은 괜찮으세요?"
+      cue: "말 없이 '예'라는 뜻으로 고개를 위아래로"
+      tag: "몸짓 소통"
+      distractorsEn: ["nudge", "blink"]
+      distractorsKo: ["깜빡이다", "가로젓다"]
+      chips: [["nod"]]
+      decoyChips: ["node"]
     - id: w-shake
       en: "shake"
       ipa: "/ʃeɪk/"
       ko: "흔들다"
       icon: "board"
       example: "Nod yes, shake for no — can you breathe okay?"
+      exKo: "예면 끄덕이고, 아니오면 저으세요, 숨은 괜찮으세요?"
+      cue: "말 없이 '아니오'라는 뜻으로 고개를 좌우로"
+      tag: "몸짓 소통"
+      distractorsEn: ["shape", "shave"]
+      distractorsKo: ["끄덕이다", "기울이다"]
+      chips: [["shake"]]
+      decoyChips: ["shak"]
     - id: w-breathe
       en: "breathe"
       ipa: "/briːð/"
       ko: "숨쉬다"
       icon: "stetho"
       example: "Nod yes, shake for no — can you breathe okay?"
+      exKo: "예면 끄덕이고, 아니오면 저으세요, 숨은 괜찮으세요?"
+      cue: "호흡곤란이 있는지 예/아니오로 물을 때 — 공기를 들이마시는 동작"
+      tag: "증상 사정"
+      distractorsEn: ["bathe", "bleed"]
+      distractorsKo: ["삼키다", "기침하다"]
+      chips: [["breathe"]]
+      decoyChips: ["breath"]
     - id: w-safe
       en: "safe"
       ipa: "/seɪf/"
       ko: "안전한"
       icon: "shield"
       example: "We are helping you. You are safe."
+      exKo: "저희가 돕고 있어요. 안전하세요."
+      cue: "공포에 질린 환자에게 해를 입을 걱정이 없다고"
+      tag: "정서 지지"
+      distractorsEn: ["stable", "sane"]
+      distractorsKo: ["안정된", "편안한"]
+      chips: [["safe"]]
+      decoyChips: ["save"]
     - id: w-serious
       en: "serious"
       ipa: "/ˈsɪriəs/"
       ko: "심각한"
       icon: "siren"
       example: "The interpreter will help me tell you something serious."
+      exKo: "통역사가 심각한 이야기를 전하는 걸 도와드릴 거예요."
+      cue: "나쁜 소식·자살 위험처럼 가볍게 넘길 수 없는 이야기"
+      tag: "동의·고지"
+      distractorsEn: ["curious", "sincere"]
+      distractorsKo: ["사소한", "복잡한"]
+      chips: [["se", "ri", "ous"]]
+      decoyChips: ["cur", "ies"]
     - id: w-sorry
       en: "sorry"
       ipa: "/ˈsɑːri/"
       ko: "미안한"
       icon: "bulb"
       example: "I'm so sorry — his condition is very grave."
+      exKo: "정말 죄송합니다, 상태가 매우 위중하세요."
+      cue: "나쁜 소식 앞에서 가족의 슬픔에 먼저 공감할 때"
+      tag: "동의·고지"
+      distractorsEn: ["solemn", "silly"]
+      distractorsKo: ["감사한", "다행인"]
+      chips: [["sorry"]]
+      decoyChips: ["sory"]
     - id: w-condition
       en: "condition"
       ipa: "/kənˈdɪʃən/"
       ko: "상태"
       icon: "chartup"
       example: "I'm so sorry — his condition is very grave."
+      exKo: "정말 죄송합니다, 상태가 매우 위중하세요."
+      cue: "환자가 지금 어느 정도로 아픈지 — 가족이 제일 먼저 묻는 것"
+      tag: "동의·고지"
+      distractorsEn: ["contusion", "confusion"]
+      distractorsKo: ["진단", "원인"]
+      chips: [["con", "di", "tion"]]
+      decoyChips: ["fu", "sion"]
     - id: w-grave
       en: "grave"
       ipa: "/ɡreɪv/"
       ko: "위중한"
       icon: "siren"
       example: "I'm so sorry — his condition is very grave."
+      exKo: "정말 죄송합니다, 상태가 매우 위중하세요."
+      cue: "살아날 가능성이 낮을 만큼 상태가 몹시 무거울 때 — 가족에게"
+      tag: "동의·고지"
+      distractorsEn: ["brave", "great"]
+      distractorsKo: ["안정된", "호전된"]
+      chips: [["grave"]]
+      decoyChips: ["grieve"]
     - id: w-need
       en: "need"
       ipa: "/niːd/"
       ko: "필요하다"
       icon: "star"
       example: "Take your time, and ask me anything you need."
+      exKo: "천천히 하시고, 필요한 건 뭐든 물어보세요."
+      cue: "궁금한 것이 생기면 무엇이든 — 가족이 요청할 수 있게"
+      tag: "정서 지지"
+      distractorsEn: ["knead", "feed"]
+      distractorsKo: ["주다", "먹이다"]
+      chips: [["need"]]
+      decoyChips: ["nead"]
     - id: w-check
       en: "check"
       ipa: "/tʃɛk/"
-      ko: "확인하다"
+      ko: "살펴보다"
       icon: "check"
       example: "The interpreter will check if he truly understands."
+      exKo: "통역사가 정말 이해하시는지 살펴볼 거예요."
+      cue: "통역사가 환자가 진짜 알아들었는지 되물어 볼 때"
+      tag: "이해 확인"
+      distractorsEn: ["chart", "choke"]
+      distractorsKo: ["기록하다", "무시하다"]
+      chips: [["check"]]
+      decoyChips: ["cheek"]
     - id: w-consent
       en: "consent"
       ipa: "/kənˈsɛnt/"
       ko: "동의"
       icon: "check"
       example: "If he can't consent, we'll reach his next of kin."
+      exKo: "동의하실 수 없으면, 가장 가까운 가족에게 연락드릴게요."
+      cue: "처치 전 환자가 스스로 이해하고 허락할 수 있는지 — 서명으로 남는 것"
+      tag: "동의·고지"
+      distractorsEn: ["content", "consult"]
+      distractorsKo: ["상담", "거부"]
+      chips: [["con", "sent"]]
+      decoyChips: ["tent", "sult"]
     - id: w-reach
       en: "reach"
       ipa: "/riːtʃ/"
       ko: "연락하다"
       icon: "compass"
       example: "If he can't consent, we'll reach his next of kin."
+      exKo: "동의하실 수 없으면, 가장 가까운 가족에게 연락드릴게요."
+      cue: "환자가 판단할 수 없을 때 가족에게 전화로 닿는 것"
+      tag: "동의·고지"
+      distractorsEn: ["teach", "preach"]
+      distractorsKo: ["방문하다", "설득하다"]
+      chips: [["reach"]]
+      decoyChips: ["reech"]
     - id: w-kin
       en: "kin"
       ipa: "/kɪn/"
       ko: "친족"
       icon: "home"
       example: "If he can't consent, we'll reach his next of kin."
+      exKo: "동의하실 수 없으면, 가장 가까운 가족에게 연락드릴게요."
+      cue: "환자 대신 결정할 가장 가까운 가족 — 'next of ___'"
+      tag: "동의·고지"
+      distractorsEn: ["kind", "skin"]
+      distractorsKo: ["이웃", "대리인"]
+      chips: [["kin"]]
+      decoyChips: ["ken"]
     - id: w-question
       en: "question"
       ipa: "/ˈkwɛstʃən/"
       ko: "질문"
       icon: "speech"
       example: "The interpreter will help me ask some serious questions."
+      exKo: "통역사가 몇 가지 중요한 질문을 하는 걸 도와드릴 거예요."
+      cue: "환자에게 묻는 말 하나하나 — 통역으로 정확히 옮겨야 할 것"
+      tag: "이해 확인"
+      distractorsEn: ["suggestion", "section"]
+      distractorsKo: ["대답", "설명"]
+      chips: [["ques", "tion"]]
+      decoyChips: ["quest", "shun"]
     - id: w-hurt
       en: "hurt"
       ipa: "/hɜːrt/"
       ko: "다치게 하다"
       icon: "bulb"
       example: "Have you thought about hurting yourself?"
+      exKo: "스스로를 다치게 할 생각을 하신 적 있나요?"
+      cue: "자살 위험 사정에서 자해 생각을 직접 물을 때 — '___ yourself'"
+      tag: "정서 지지"
+      distractorsEn: ["hunt", "hurl"]
+      distractorsKo: ["돌보다", "달래다"]
+      chips: [["hurt"]]
+      decoyChips: ["heart"]
     - id: w-alone
       en: "alone"
       ipa: "/əˈloʊn/"
       ko: "혼자인"
       icon: "me"
       example: "You're not alone — we're here to keep you safe."
+      exKo: "혼자가 아니에요, 저희가 안전하게 지켜드릴게요."
+      cue: "절망한 환자에게 곁을 지키는 사람이 있다고 안심시킬 때"
+      tag: "정서 지지"
+      distractorsEn: ["lonely", "along"]
+      distractorsKo: ["외로운", "버려진"]
+      chips: [["a", "lone"]]
+      decoyChips: ["long", "lon"]
     - id: w-concern
       en: "concern"
       ipa: "/kənˈsɜːrn/"
       ko: "걱정"
       icon: "bulb"
       example: "I want to understand your concern, not push you."
+      exKo: "환자분의 걱정을 이해하고 싶은 거예요, 몰아붙이려는 게 아니라."
+      cue: "치료를 거부하는 환자 마음속 불안 — 먼저 들어 주는 것"
+      tag: "정서 지지"
+      distractorsEn: ["consent", "concert"]
+      distractorsKo: ["동의", "불만"]
+      chips: [["con", "cern"]]
+      decoyChips: ["cert", "sent"]
     - id: w-push
       en: "push"
       ipa: "/pʊʃ/"
       ko: "몰아붙이다"
       icon: "gear"
       example: "I want to understand your concern, not push you."
+      exKo: "환자분의 걱정을 이해하고 싶은 거예요, 몰아붙이려는 게 아니라."
+      cue: "거부하는 환자에게 억지로 결정을 강요하지 않겠다고"
+      tag: "정서 지지"
+      distractorsEn: ["pull", "pour"]
+      distractorsKo: ["달래다", "기다리다"]
+      chips: [["push"]]
+      decoyChips: ["posh"]
     - id: w-misunderstanding
       en: "misunderstanding"
       ipa: "/ˌmɪsʌndərˈstændɪŋ/"
       ko: "오해"
       icon: "board"
       example: "There may be a misunderstanding I can clear up."
+      exKo: "제가 풀어드릴 수 있는 오해가 있을 수 있어요."
+      cue: "통역이 어긋나 환자가 잘못 알고 치료를 거부하게 된 원인"
+      tag: "이해 확인"
+      distractorsEn: ["mismatch", "misconduct"]
+      distractorsKo: ["이해", "불신"]
+      chips: [["mis", "under", "stand", "ing"]]
+      decoyChips: ["dis", "stood"]
     - id: w-clear
       en: "clear"
       ipa: "/klɪr/"
       ko: "명확한"
       icon: "check"
       example: "There may be a misunderstanding I can clear up."
+      exKo: "제가 풀어드릴 수 있는 오해가 있을 수 있어요."
+      cue: "흐릿하지 않고 분명하게 — 오해를 풀 때도 'up'과 함께"
+      tag: "이해 확인"
+      distractorsEn: ["clean", "close"]
+      distractorsKo: ["복잡한", "모호한"]
+      chips: [["clear"]]
+      decoyChips: ["cleer"]
     - id: w-right
       en: "right"
       ipa: "/raɪt/"
       ko: "제대로"
       icon: "check"
       example: "The interpreter will make sure I explain it right."
+      exKo: "통역사가 제가 제대로 설명하는지 확인해 줄 거예요."
+      cue: "틀리지 않게 맞도록 — 통역사가 곁에서 봐 주는 것"
+      tag: "이해 확인"
+      distractorsEn: ["tight", "bright"]
+      distractorsKo: ["빠르게", "간단히"]
+      chips: [["right"]]
+      decoyChips: ["write"]
     - id: w-video
       en: "video"
       ipa: "/ˈvɪdioʊ/"
       ko: "화상"
       icon: "monitor"
       example: "He speaks only Somali and needs a video interpreter."
+      exKo: "이 환자분은 소말리어만 하시고 화상 통역이 필요해요."
+      cue: "얼굴을 보며 연결하는 통역 — 전화가 아니라 화면으로"
+      tag: "통역"
+      distractorsEn: ["audio", "radio"]
+      distractorsKo: ["음성", "대면"]
+      chips: [["vi", "de", "o"]]
+      decoyChips: ["vide", "dio"]
     - id: w-decline
       en: "decline"
       ipa: "/dɪˈklaɪn/"
       ko: "거부하다"
       icon: "board"
       example: "He's declined care before due to a misunderstanding."
+      exKo: "오해 때문에 전에 치료를 거부하신 적이 있어요."
+      cue: "환자가 치료를 받지 않겠다고 한 이력 — 인계 때 알린다"
+      tag: "인계"
+      distractorsEn: ["recline", "define"]
+      distractorsKo: ["동의하다", "미루다"]
+      chips: [["de", "cline"]]
+      decoyChips: ["re", "clime"]
     - id: w-care
       en: "care"
       ipa: "/kɛr/"
       ko: "치료"
       icon: "cross"
       example: "He's declined care before due to a misunderstanding."
+      exKo: "오해 때문에 전에 치료를 거부하신 적이 있어요."
+      cue: "병원에서 받는 처치·관리 전반 — 거부 이력으로 인계하는 것"
+      tag: "인계"
+      distractorsEn: ["cure", "core"]
+      distractorsKo: ["진단", "입원"]
+      chips: [["care"]]
+      decoyChips: ["kare"]
     - id: w-confirm
       en: "confirm"
       ipa: "/kənˈfɜːrm/"
       ko: "확인하다"
       icon: "check"
       example: "Always confirm understanding through the interpreter."
-    - id: w-home
-      en: "home"
-      ipa: "/hoʊm/"
-      ko: "집"
-      icon: "home"
-      example: "Can you tell me in your own words how you'll take this medicine at home?"
+      exKo: "항상 통역사를 통해 이해했는지 확인해 주세요."
+      cue: "인수자에게 — 통역으로 이해 여부를 매번 확실히 해 달라고"
+      tag: "인계"
+      distractorsEn: ["conform", "confine"]
+      distractorsKo: ["추측하다", "기록하다"]
+      chips: [["con", "firm"]]
+      decoyChips: ["form", "fine"]
     - id: w-slowly
       en: "slowly"
       ipa: "/ˈsloʊli/"
       ko: "천천히"
-      icon: board
+      icon: "board"
       example: "I'll go through each step slowly with the interpreter."
+      exKo: "통역사와 함께 천천히 한 단계씩 짚어드릴게요."
+      cue: "퇴원 교육을 서두르지 않고 속도를 낮춰"
+      tag: "이해 확인"
+      distractorsEn: ["lowly", "slightly"]
+      distractorsKo: ["빠르게", "간단히"]
+      chips: [["slow", "ly"]]
+      decoyChips: ["sly", "lee"]
     - id: w-wrong
       en: "wrong"
       ipa: "/rɔːŋ/"
       ko: "잘못된"
       icon: "board"
       example: "There are no wrong questions — let's make sure it's clear."
+      exKo: "잘못된 질문은 없어요, 확실히 이해되도록 해봐요."
+      cue: "되묻기를 주저하는 환자에게 — 이상한 질문이란 없다고"
+      tag: "정서 지지"
+      distractorsEn: ["long", "strong"]
+      distractorsKo: ["어려운", "중요한"]
+      chips: [["wrong"]]
+      decoyChips: ["rong"]
 - theme: core-safety-er
   words:
     - id: w-name
