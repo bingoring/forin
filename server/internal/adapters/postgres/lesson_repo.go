@@ -46,3 +46,7 @@ func (r *LessonRepo) StepClears(ctx context.Context, userID, scenarioID string) 
 func (r *LessonRepo) ClearStep(ctx context.Context, userID, scenarioID, step string) error {
 	return r.q.UpsertLessonStepClear(ctx, sqlc.UpsertLessonStepClearParams{UserID: userID, ScenarioID: scenarioID, Step: step})
 }
+
+func (r *LessonRepo) HasWordCard(ctx context.Context, userID, en string) (bool, error) {
+	return r.q.HasWordCard(ctx, sqlc.HasWordCardParams{UserID: userID, Back: en})
+}

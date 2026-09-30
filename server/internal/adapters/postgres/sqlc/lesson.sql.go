@@ -9,6 +9,25 @@ import (
 	"context"
 )
 
+const hasWordCard = `-- name: HasWordCard :one
+SELECT EXISTS (
+    SELECT 1 FROM review_cards WHERE user_id = $1 AND source = 'word' AND back = $2
+)::bool
+`
+
+type HasWordCardParams struct {
+	UserID string `json:"user_id"`
+	Back   string `json:"back"`
+}
+
+// A word the learner found confusing is filed once, however many times they say so.
+func (q *Queries) HasWordCard(ctx context.Context, arg HasWordCardParams) (bool, error) {
+	row := q.db.QueryRow(ctx, hasWordCard, arg.UserID, arg.Back)
+	var column_1 bool
+	err := row.Scan(&column_1)
+	return column_1, err
+}
+
 const listLessonStepClears = `-- name: ListLessonStepClears :many
 SELECT step FROM lesson_step_clears WHERE user_id = $1 AND scenario_id = $2
 `

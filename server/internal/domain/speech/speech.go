@@ -19,6 +19,8 @@ var allowedOrigins = map[string]bool{
 	"review":   true,
 	"drill":    true,
 	"freeform": true,
+	// A STEP 1/2 repeat-after of a lesson word or sentence (lesson four steps, v44).
+	"lesson": true,
 }
 
 // RecordOptions carries the bookkeeping a Record call needs beyond the audio

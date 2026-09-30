@@ -9,6 +9,7 @@ import (
 	"github.com/bingoring/forin/server/internal/domain/content"
 	"github.com/bingoring/forin/server/internal/domain/learning"
 	"github.com/bingoring/forin/server/internal/domain/user"
+	"github.com/bingoring/forin/server/internal/ports"
 )
 
 type fakeLessonScenarios struct{ s map[string]*content.Scenario }
@@ -32,6 +33,18 @@ func (f fakeLessonPasses) ClearedByGuide(context.Context, string) (map[string]bo
 type fakeLessonRepo struct {
 	banks   map[string][]content.Word
 	cleared map[string]bool
+	carded  map[string]bool
+}
+
+func (f *fakeLessonRepo) HasWordCard(_ context.Context, _, en string) (bool, error) {
+	return f.carded[en], nil
+}
+
+type fakeLessonReview struct{ cards []ports.NewReviewCard }
+
+func (f *fakeLessonReview) CreateCard(_ context.Context, c ports.NewReviewCard) (string, error) {
+	f.cards = append(f.cards, c)
+	return "card-1", nil
 }
 
 func (f *fakeLessonRepo) Lexicon(_ context.Context, theme string) ([]content.Word, error) {
@@ -60,13 +73,14 @@ func lessonFixture(level string) (*lessonHandler, *fakeLessonRepo) {
 		},
 	}
 	repo := &fakeLessonRepo{banks: map[string][]content.Word{"core-safety-er": {
-		{ID: "w-a"}, {ID: "w-b"}, {ID: "w-c"}, {ID: "w-d"}, {ID: "w-unused"},
+		{ID: "w-a", En: "wristband", Ko: "손목 밴드", Example: "Let me check your wristband."}, {ID: "w-b"}, {ID: "w-c"}, {ID: "w-d"}, {ID: "w-unused", En: "unused"},
 	}}}
 	return &lessonHandler{
 		content:  fakeLessonScenarios{s: map[string]*content.Scenario{sc.ID: sc, "SCN-EMPTY": {ID: "SCN-EMPTY", Goals: []string{"g"}}}},
 		profiles: fakeLessonProfiles{level: level},
 		passes:   fakeLessonPasses{},
 		lessons:  repo,
+		review:   &fakeLessonReview{},
 	}, repo
 }
 
@@ -161,5 +175,66 @@ func TestLesson_clearStepRejectsDialogueRungs(t *testing.T) {
 		if rec.Code != http.StatusBadRequest || len(repo.cleared) != 0 {
 			t.Fatalf("%s: status %d, cleared %v", step, rec.Code, repo.cleared)
 		}
+	}
+}
+
+func confusedReq(scenarioID, wordID string) *http.Request {
+	req := httptest.NewRequest(http.MethodPost, "/", nil)
+	req.SetPathValue("scenarioId", scenarioID)
+	req.SetPathValue("wordId", wordID)
+	return req.WithContext(context.WithValue(req.Context(), userIDKey, "u1"))
+}
+
+// 헷갈려요 files the word into the existing review notes: meaning on the front, the
+// headword on the back — the suggestion face, since nothing was said wrong.
+func TestLesson_confusedWordFilesAReviewCard(t *testing.T) {
+	h, _ := lessonFixture("A2")
+	rec := httptest.NewRecorder()
+	h.confusedWord(rec, confusedReq("SCN-ER-1", "w-a"))
+	if rec.Code != http.StatusOK {
+		t.Fatalf("status %d: %s", rec.Code, rec.Body)
+	}
+	cards := h.review.(*fakeLessonReview).cards
+	if len(cards) != 1 {
+		t.Fatalf("cards %d, want 1", len(cards))
+	}
+	c := cards[0]
+	if c.Source != "word" || c.Front != "손목 밴드" || c.Back != "wristband" || c.ScenarioID != "SCN-ER-1" || c.UserID != "u1" {
+		t.Fatalf("card %+v", c)
+	}
+}
+
+func TestLesson_confusedWordIsFiledOnce(t *testing.T) {
+	h, repo := lessonFixture("A2")
+	repo.carded = map[string]bool{"wristband": true}
+	rec := httptest.NewRecorder()
+	h.confusedWord(rec, confusedReq("SCN-ER-1", "w-a"))
+	if rec.Code != http.StatusOK || len(h.review.(*fakeLessonReview).cards) != 0 {
+		t.Fatalf("status %d, cards %d — a word already filed must not be filed again", rec.Code, len(h.review.(*fakeLessonReview).cards))
+	}
+}
+
+// Only a word this situation actually teaches can be filed — not any id in the bank.
+func TestLesson_confusedWordMustBeInTheLesson(t *testing.T) {
+	h, _ := lessonFixture("A2")
+	for _, id := range []string{"w-unused", "nope"} {
+		rec := httptest.NewRecorder()
+		h.confusedWord(rec, confusedReq("SCN-ER-1", id))
+		if rec.Code != http.StatusNotFound || len(h.review.(*fakeLessonReview).cards) != 0 {
+			t.Fatalf("%s: status %d", id, rec.Code)
+		}
+	}
+}
+
+func TestLesson_clearStepRefusesAStepWithNoContent(t *testing.T) {
+	h, repo := lessonFixture("A2")
+	req := httptest.NewRequest(http.MethodPost, "/", nil)
+	req.SetPathValue("scenarioId", "SCN-EMPTY")
+	req.SetPathValue("step", "words")
+	req = req.WithContext(context.WithValue(req.Context(), userIDKey, "u1"))
+	rec := httptest.NewRecorder()
+	h.clearStep(rec, req)
+	if rec.Code != http.StatusConflict || len(repo.cleared) != 0 {
+		t.Fatalf("status %d, cleared %v", rec.Code, repo.cleared)
 	}
 }

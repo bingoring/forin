@@ -230,6 +230,9 @@ export const en: Record<string, string> = {
   'lesson.meta.real': 'For real',
   'lesson.meta.goals': '{n} goals',
   'lesson.stub.body': 'This step opens soon',
+  'lesson.words.title': 'STEP 1 · Words',
+  'lesson.words.confused': 'Not sure',
+  'lesson.words.known': 'Got it',
   'journey.milestone.open': 'Ready',
   'journey.milestone.closed': 'Not yet',
   // ── journey (bundle names — dept core/depth) ──────────────────────
@@ -477,6 +480,7 @@ export const en: Record<string, string> = {
   'lab.tomorrow': 'Again tomorrow',
   'lab.faceSaidPrompt': 'You said',
   'lab.faceSuggestPrompt': 'Try saying',
+  'lab.faceWordPrompt': 'A word you mixed up',
   'lab.faceSuggestHint': 'Not a mistake — a phrase worth having for this situation.',
   'lab.inDays': 'in {n} days',
   'lab.inWeeks': 'in about {n} weeks',

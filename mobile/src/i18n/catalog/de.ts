@@ -227,6 +227,9 @@ export const de: Record<string, string> = {
   'lesson.meta.real': 'Ernstfall',
   'lesson.meta.goals': '{n} Ziele',
   'lesson.stub.body': 'Dieser Schritt kommt bald',
+  'lesson.words.title': 'STEP 1 · Wörter',
+  'lesson.words.confused': 'Unsicher',
+  'lesson.words.known': 'Kann ich',
   'journey.milestone.open': 'Bereit',
   'journey.milestone.closed': 'Noch nicht',
   // ── journey (Gruppennamen — Abteilung Kern/Vertiefung) ─────────────
@@ -474,6 +477,7 @@ export const de: Record<string, string> = {
   'lab.tomorrow': 'Morgen wieder',
   'lab.faceSaidPrompt': 'Du hast gesagt',
   'lab.faceSuggestPrompt': 'Sag doch',
+  'lab.faceWordPrompt': 'Ein Wort zum Merken',
   'lab.faceSuggestHint': 'Kein Fehler — eine Wendung für diese Situation.',
   'lab.inDays': 'in {n} Tagen',
   'lab.inWeeks': 'in etwa {n} Wochen',

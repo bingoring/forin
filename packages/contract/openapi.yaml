@@ -970,6 +970,14 @@ components:
           type: array
           uniqueItems: false
       type: object
+    internal_adapters_http.confusedWordResp:
+      properties:
+        cardId:
+          type: string
+        created:
+          description: Created is false when the word was already in the review notes.
+          type: boolean
+      type: object
     internal_adapters_http.correctReq:
       properties:
         context:
@@ -2388,6 +2396,33 @@ paths:
       security:
       - Bearer: []
       summary: 상황 학습 단계 완료 기록 — words·sentences 만. 대화 두 회차는 대화를 끝내야 기록된다
+      tags:
+      - progress
+  /me/lesson/{scenarioId}/words/{wordId}/confused:
+    post:
+      parameters:
+      - description: 시나리오 id
+        in: path
+        name: scenarioId
+        required: true
+        schema:
+          type: string
+      - description: 단어 id (이 상황 STEP 1 목록의)
+        in: path
+        name: wordId
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/internal_adapters_http.confusedWordResp'
+          description: OK
+      security:
+      - Bearer: []
+      summary: 헷갈린 단어를 교정노트에 넣는다 — 이 상황이 가르치는 단어만, 한 단어는 한 번만
       tags:
       - progress
   /me/missions:

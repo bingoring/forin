@@ -6,6 +6,7 @@ import (
 
 	"github.com/bingoring/forin/server/internal/domain/content"
 	"github.com/bingoring/forin/server/internal/domain/learning"
+	"github.com/bingoring/forin/server/internal/domain/progress"
 	"github.com/bingoring/forin/server/internal/domain/user"
 	"github.com/bingoring/forin/server/internal/i18n"
 	"github.com/bingoring/forin/server/internal/platform/httpx"
@@ -23,6 +24,9 @@ type lessonHandler struct {
 		ClearedByGuide(ctx context.Context, userID string) (guided, free map[string]bool, err error)
 	}
 	lessons ports.LessonRepo
+	review  interface {
+		CreateCard(ctx context.Context, c ports.NewReviewCard) (string, error)
+	}
 }
 
 // lessonSituation is what the hub draws above the step tickets.
@@ -131,17 +135,85 @@ func (h *lessonHandler) clearStep(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	id := r.PathValue("scenarioId")
-	if s, err := h.content.GetScenario(r.Context(), id); err != nil || s == nil {
-		if err != nil {
-			httpx.Error(w, http.StatusInternalServerError, "lookup failed")
-		} else {
-			httpx.Error(w, http.StatusNotFound, "scenario not found")
-		}
+	lesson, ok, err := h.build(r.Context(), uid, id)
+	if err != nil {
+		httpx.Error(w, http.StatusInternalServerError, "lookup failed")
 		return
+	}
+	if !ok {
+		httpx.Error(w, http.StatusNotFound, "scenario not found")
+		return
+	}
+	// A step with nothing in it cannot be finished — recording it would draw STEP 1 as
+	// done (done beats empty) on a situation that has no words.
+	for _, st := range lesson.Steps {
+		if string(st.Kind) == step && st.State == learning.StepEmpty {
+			httpx.Error(w, http.StatusConflict, "step has no content")
+			return
+		}
 	}
 	if err := h.lessons.ClearStep(r.Context(), uid, id, step); err != nil {
 		httpx.Error(w, http.StatusInternalServerError, "record failed")
 		return
 	}
 	h.get(w, r)
+}
+
+type confusedWordResp struct {
+	CardID string `json:"cardId,omitempty"`
+	// Created is false when the word was already in the review notes.
+	Created bool `json:"created"`
+}
+
+// @Summary 헷갈린 단어를 교정노트에 넣는다 — 이 상황이 가르치는 단어만, 한 단어는 한 번만
+// @Tags progress
+// @Security Bearer
+// @Param scenarioId path string true "시나리오 id"
+// @Param wordId path string true "단어 id (이 상황 STEP 1 목록의)"
+// @Success 200 {object} confusedWordResp
+// @Router /me/lesson/{scenarioId}/words/{wordId}/confused [post]
+func (h *lessonHandler) confusedWord(w http.ResponseWriter, r *http.Request) {
+	uid, _ := UserID(r.Context())
+	lesson, ok, err := h.build(r.Context(), uid, r.PathValue("scenarioId"))
+	if err != nil {
+		httpx.Error(w, http.StatusInternalServerError, "lookup failed")
+		return
+	}
+	var word *content.Word
+	for i := range lesson.Words {
+		if lesson.Words[i].ID == r.PathValue("wordId") {
+			word = &lesson.Words[i]
+			break
+		}
+	}
+	if !ok || word == nil {
+		httpx.Error(w, http.StatusNotFound, "word not in this lesson")
+		return
+	}
+	if has, err := h.lessons.HasWordCard(r.Context(), uid, word.En); err != nil {
+		httpx.Error(w, http.StatusInternalServerError, "lookup failed")
+		return
+	} else if has {
+		httpx.JSON(w, http.StatusOK, confusedWordResp{})
+		return
+	}
+	sit := lesson.Situation
+	rc := progress.ReviewContext{Title: sit.Title, Situation: sit.Tagline}
+	if sit.Briefing != nil {
+		rc.Dept = sit.Briefing.Dept
+		if sit.Briefing.Brief != "" {
+			rc.Situation = sit.Briefing.Brief
+		}
+	}
+	// The suggestion face (data/reviewCardFace): meaning in front, headword behind,
+	// nothing struck out — the learner did not say it wrong, they did not know it.
+	id, err := h.review.CreateCard(r.Context(), ports.NewReviewCard{
+		UserID: uid, Source: "word", Front: word.Ko, Back: word.En, Note: word.Example,
+		ScenarioID: sit.ID, Context: rc,
+	})
+	if err != nil {
+		httpx.Error(w, http.StatusInternalServerError, "record failed")
+		return
+	}
+	httpx.JSON(w, http.StatusOK, confusedWordResp{CardID: id, Created: true})
 }

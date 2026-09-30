@@ -1709,6 +1709,47 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/me/lesson/{scenarioId}/words/{wordId}/confused": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** 헷갈린 단어를 교정노트에 넣는다 — 이 상황이 가르치는 단어만, 한 단어는 한 번만 */
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    /** @description 시나리오 id */
+                    scenarioId: string;
+                    /** @description 단어 id (이 상황 STEP 1 목록의) */
+                    wordId: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["internal_adapters_http.confusedWordResp"];
+                    };
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/me/missions": {
         parameters: {
             query?: never;
@@ -3366,6 +3407,11 @@ export interface components {
         };
         "internal_adapters_http.choicesResp": {
             choices?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_conversation.Choice"][];
+        };
+        "internal_adapters_http.confusedWordResp": {
+            cardId?: string;
+            /** @description Created is false when the word was already in the review notes. */
+            created?: boolean;
         };
         "internal_adapters_http.correctReq": {
             context?: string;

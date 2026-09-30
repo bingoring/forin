@@ -6,6 +6,7 @@ import { Text } from 'react-native';
 import { StepTrack } from './StepTrack';
 import type { LessonStepView } from '@/api/client';
 import { trackMounts } from '../../testing/mountRegistry';
+import { nb } from '@/theme/nb';
 
 const track = trackMounts();
 
@@ -56,7 +57,14 @@ describe('StepTrack — 준비 중(empty)', () => {
 });
 
 describe('StepTrack — 연결선', () => {
-  const solid = (tree: ReturnType<typeof create>, i: number) => [link(tree, i).props.style].flat().find((s: any) => s?.borderStyle)?.borderStyle === 'solid';
+  // A solid segment is a green bar; a dashed one is a row of dashes (no one-sided
+  // borders — iOS draws neither a clipped nor a one-sided dashed border).
+  const solid = (tree: ReturnType<typeof create>, i: number) => {
+    const l = link(tree, i);
+    const green = [l.props.style].flat().some((s: any) => s?.backgroundColor === nb.green);
+    const dashes = l.findAll((n) => n.props?.testID === 'steptrack-dash').length;
+    return green && dashes === 0;
+  };
 
   it('follows the number of finished steps', () => {
     const tree = mount(S('done', 'done', 'now', 'lock'));

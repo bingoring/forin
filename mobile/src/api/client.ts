@@ -825,6 +825,12 @@ export const api = {
     return data as LessonDetail;
   },
 
+  /** Files a STEP 1 word the learner found confusing into the review notes (once per word). */
+  async confusedWord(scenarioId: string, wordId: string): Promise<{ cardId?: string; created: boolean }> {
+    const { data } = await http.post(`/me/lesson/${scenarioId}/words/${wordId}/confused`);
+    return data as { cardId?: string; created: boolean };
+  },
+
   /** Records STEP 1 or 2 as finished; returns the lesson as it now stands. */
   async clearLessonStep(scenarioId: string, step: 'words' | 'sentences'): Promise<LessonDetail> {
     const { data } = await http.post(`/me/lesson/${scenarioId}/steps/${step}`);

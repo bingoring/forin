@@ -26,3 +26,10 @@ test('an unknown source is shown as a correction', () => {
   expect(faceOf('something-new').strike).toBe(true);
   expect(faceOf('').strike).toBe(true);
 });
+
+test('a confused STEP 1 word is drawn as advice, never as something said wrong', () => {
+  const f = faceOf('word');
+  expect(f.strike).toBe(false);
+  expect(f.correction).toBe(false);
+  expect(f.promptKey).toBe('lab.faceWordPrompt');
+});

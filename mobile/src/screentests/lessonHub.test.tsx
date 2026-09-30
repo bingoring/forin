@@ -52,6 +52,7 @@ function lesson(level: string, states: string[], counts = [12, 6, 4, 4]) {
 jest.mock('@/api/client', () => ({ api: { lesson: async () => mockLesson } }));
 jest.mock('expo-router', () => ({
   Stack: { Screen: () => null },
+  useFocusEffect: (cb: () => void | (() => void)) => require('react').useEffect(cb, []),
   useRouter: () => ({ push: (p: unknown) => { mockNav.push(String(typeof p === 'string' ? p : JSON.stringify(p))); }, replace: () => {}, back: () => {}, canGoBack: () => true }),
   // A caller may still pass the old rung; the hub ignores it.
   useLocalSearchParams: () => ({ id: 'SCN-ER-00002', guide: 'choices' }),

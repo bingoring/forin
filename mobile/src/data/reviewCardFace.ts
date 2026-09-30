@@ -29,6 +29,11 @@ export function faceOf(source: string): CardFace {
   if (source === 'grade') {
     return { strike: false, promptKey: 'lab.faceSuggestPrompt', badgeIcon: 'bulb', correction: false };
   }
+  // 'word' is a STEP 1 word the learner marked 헷갈려요 (v44): front is the meaning, back
+  // the headword. Not said wrong — not known yet.
+  if (source === 'word') {
+    return { strike: false, promptKey: 'lab.faceWordPrompt', badgeIcon: 'bulb', correction: false };
+  }
   // Anything else is treated as a correction, including sources this build has not seen:
   // a card whose origin is unknown is more safely shown as "you said this" than as advice
   // the learner never received.

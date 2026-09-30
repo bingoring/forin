@@ -12,9 +12,9 @@
 // The `?guide=` a caller may still pass is ignored. It used to carry which of the two
 // curriculum rows was tapped into the conversation; the hub is now where the rung is
 // chosen, and each dialogue step sends its own (data/lessonSteps stepHref).
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { ActivityIndicator, Pressable, ScrollView, Text, View } from 'react-native';
-import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
+import { Stack, useFocusEffect, useLocalSearchParams, useRouter } from 'expo-router';
 import { type Expression, type RoleKind } from '@engine';
 import { NbAvatar } from '@/components/nb/NbAvatar';
 import { npcAvatarSpec, type NpcExpression } from '@/data/npcAvatar';
@@ -70,15 +70,18 @@ export default function LessonHubRoute() {
   const [state, setState] = useState<'loading' | 'error' | 'ok'>('loading');
   const [optIn, setOptIn] = useState<ReadonlySet<LessonStepKind>>(new Set());
 
-  useEffect(() => {
-    let alive = true;
-    setState('loading');
-    api
-      .lesson(id)
-      .then((l) => { if (alive) { setLesson(l); setState('ok'); } })
-      .catch(() => { if (alive) setState('error'); });
-    return () => { alive = false; };
-  }, [id]);
+  // On focus, not on mount: coming back from a STEP screen must show that step done. The
+  // spinner is only for the first read — a refresh keeps the page on screen.
+  useFocusEffect(
+    useCallback(() => {
+      let alive = true;
+      api
+        .lesson(id)
+        .then((l) => { if (alive) { setLesson(l); setState('ok'); } })
+        .catch(() => { if (alive) setState((s) => (s === 'ok' ? s : 'error')); });
+      return () => { alive = false; };
+    }, [id]),
+  );
 
   const steps = useMemo(() => applyOptIn(lesson?.steps ?? [], optIn), [lesson, optIn]);
 

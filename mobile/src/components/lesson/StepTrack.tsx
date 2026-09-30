@@ -72,15 +72,28 @@ export function StepTrack({ steps }: { steps: LessonStepView[] }) {
                 {label}
               </Text>
             </View>
-            {i < steps.length - 1 && (
-              <View testID={`steptrack-link-${i}`} style={[
-                { flex: 1, height: 0, marginTop: -18, borderTopWidth: 2 },
-                { borderStyle: solid ? 'solid' : 'dashed', borderColor: solid ? nb.green : faint },
-              ]} />
-            )}
+            {i < steps.length - 1 && <Link index={i} solid={solid} />}
           </View>
         );
       })}
+    </View>
+  );
+}
+
+/**
+ * The line between two circles. Drawn from views rather than a one-sided border: RN
+ * clips a border inside a zero-height box, and iOS will not dash a border that is set
+ * on one side only — both render as no line at all.
+ */
+function Link({ index, solid }: { index: number; solid: boolean }) {
+  return (
+    <View testID={`steptrack-link-${index}`} style={{
+      flex: 1, height: 2, marginTop: -18, overflow: 'hidden', flexDirection: 'row', gap: 3,
+      backgroundColor: solid ? nb.green : 'transparent',
+    }}>
+      {!solid && Array.from({ length: 12 }).map((_, k) => (
+        <View key={k} testID="steptrack-dash" style={{ width: 4, height: 2, backgroundColor: faint }} />
+      ))}
     </View>
   );
 }

@@ -488,6 +488,8 @@ type LessonRepo interface {
 	StepClears(ctx context.Context, userID, scenarioID string) (map[string]bool, error)
 	// ClearStep records a step as finished; finishing it again is a no-op.
 	ClearStep(ctx context.Context, userID, scenarioID, step string) error
+	// HasWordCard reports whether a confused-word card for this headword already exists.
+	HasWordCard(ctx context.Context, userID, en string) (bool, error)
 }
 
 // ContentSeeder ingests a validated content bundle (file-source or, later, a CMS).

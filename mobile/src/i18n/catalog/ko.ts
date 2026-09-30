@@ -245,6 +245,9 @@ export const ko: Record<string, string> = {
   'lesson.meta.real': '실전',
   'lesson.meta.goals': '목표 {n}',
   'lesson.stub.body': '이 단계 화면은 곧 열려요',
+  'lesson.words.title': 'STEP 1 · 단어',
+  'lesson.words.confused': '헷갈려요',
+  'lesson.words.known': '알아요',
   'journey.milestone.open': '응시 가능',
   'journey.milestone.closed': '통과전',
   // ── journey (묶음 이름 — 부서 코어/심화) ────────────────────────────
@@ -501,6 +504,7 @@ export const ko: Record<string, string> = {
   'lab.tomorrow': '내일 다시',
   'lab.faceSaidPrompt': '이렇게 말했어요',
   'lab.faceSuggestPrompt': '이렇게 말해볼까요',
+  'lab.faceWordPrompt': '헷갈렸던 단어',
   'lab.faceSuggestHint': '틀린 말이 아니라, 이 상황에서 쓸 만한 표현이에요.',
   'lab.inDays': '{n}일 후',
   'lab.inWeeks': '약 {n}주 후',

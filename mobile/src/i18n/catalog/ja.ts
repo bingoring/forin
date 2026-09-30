@@ -227,6 +227,9 @@ export const ja: Record<string, string> = {
   'lesson.meta.real': '本番',
   'lesson.meta.goals': '目標 {n}',
   'lesson.stub.body': 'このステップはまもなく公開',
+  'lesson.words.title': 'STEP 1 · 単語',
+  'lesson.words.confused': 'あやふや',
+  'lesson.words.known': 'わかる',
   'journey.milestone.open': '受験可能',
   'journey.milestone.closed': '合格前',
   // ── journey（束の名前 — 部署コア/深化）───────────────────────────
@@ -474,6 +477,7 @@ export const ja: Record<string, string> = {
   'lab.tomorrow': '明日また',
   'lab.faceSaidPrompt': 'こう言いました',
   'lab.faceSuggestPrompt': 'こう言ってみましょう',
+  'lab.faceWordPrompt': '迷った単語',
   'lab.faceSuggestHint': '間違いではなく、この場面で使える表現です。',
   'lab.inDays': '{n}日後',
   'lab.inWeeks': '約{n}週間後',
