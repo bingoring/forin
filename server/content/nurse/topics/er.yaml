@@ -50481,7 +50481,7 @@
     - en: "I'm going to ask you some direct questions now."
       ko: "지금부터 직접적인 질문을 몇 가지 드릴게요."
       chunks: ["I'm going", "to ask you", "some direct questions", "now", "."]
-      words: [w-ask, w-direct, w-question, w-now]
+      words: [w-ask, w-direct, w-question]
       goal: 1
     - en: "Do you have access to anything you could use to hurt yourself?"
       ko: "자해에 쓸 만한 것에 접근할 수 있나요?"
@@ -50493,6 +50493,41 @@
       chunks: ["There's no judgment", "here", ", only concern for you", "."]
       words: [w-judgment, w-here, w-concern]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-plan
+    - w-thought
+    cue: 'Patient: "I''ve thought about it a lot. I know exactly how and when I''d do it."'
+    scale:
+    - wish to be dead
+    - thoughts of suicide
+    - a specific plan
+    answerAt: 2
+    why: 방법과 시기까지 정해 두었다면 a specific plan이에요. 콜롬비아 척도(C-SSRS)도 죽고 싶은 바람 → 자살 생각 → 방법·의도·계획 순으로 한 단계씩 올려 가며 물어요. 계획이 나오면 바로 팀에 알리고 안전 조치를 시작해요.
+    example: She endorses a specific plan and has access to pills at home.
+    exKo: 구체적인 계획이 있고, 집에 약을 구할 수 있대요.
+  - kind: swap
+    words:
+    - w-direct
+    - w-question
+    - w-ask
+    who: 환자에게 · 자살 선별 질문
+    icon: me
+    before:
+    - 'Are you thinking about '
+    - not being around anymore
+    - '?'
+    options:
+    - killing yourself
+    - not being around anymore
+    - doing something silly
+    answer: killing yourself
+    notes:
+      killing yourself: 분명한 말로 묻는다. 환자도 분명하게 답할 수 있다.
+      not being around anymore: 돌려 물으면 환자도 돌려 답해서 위험을 놓치기 쉽다.
+      doing something silly: 환자의 고통을 가볍게 만들어 입을 닫게 한다.
+    why: 자살을 직접 묻는다고 그 생각을 심어 주지 않아요 — 연구로 확인된 사실이에요. 그래서 선별 질문은 돌려 말하지 않고 '자살'을 분명히 넣어 물어요. C-SSRS처럼 '죽었으면 하는 바람'부터 묻는 순서는 괜찮아요 — 어느 단계에서든 '자살'이라는 말 자체를 돌려 말하지 않는 것이 핵심이에요.
 
 - theme: er-psych
   title: 소지품·환경 안전 점검
@@ -50515,7 +50550,7 @@
     - en: "For your safety, I need to hold onto a few items for now."
       ko: "안전을 위해 지금은 몇 가지 물건을 제가 맡아 둘게요."
       chunks: ["For your safety", ", I need", "to hold onto", "a few items for now", "."]
-      words: [w-safety, w-need, w-hold, w-item, w-now]
+      words: [w-safety, w-need, w-hold, w-item]
       goal: 1
     - en: "You'll get everything back when you're discharged."
       ko: "퇴원할 때 전부 돌려받으실 거예요."
@@ -50525,12 +50560,12 @@
     - en: "This is something we do for everyone in this room."
       ko: "이건 이 방에 있는 모두에게 하는 절차예요."
       chunks: ["This is something", "we do", "for everyone", "in this room", "."]
-      words: [w-something, w-everyone, w-room]
+      words: [w-something, w-everyone]
       goal: 2
     - en: "I need to hold your belt and shoelaces until you leave this room."
       ko: "이 방을 나가실 때까지 벨트와 신발끈을 맡아 둘게요."
       chunks: ["I need to hold", "your belt and shoelaces", "until you leave", "this room", "."]
-      words: [w-need, w-hold, w-belt, w-leave, w-room]
+      words: [w-need, w-hold, w-belt, w-leave]
       goal: 1
     - en: "I know this feels intrusive, but it keeps you safe."
       ko: "침해적으로 느껴질 수 있지만, 이건 당신을 안전하게 지켜줘요."
@@ -50540,8 +50575,42 @@
     - en: "This isn't punishment — it's part of keeping this room safe for everyone."
       ko: "이건 처벌이 아니라, 이 방을 모두에게 안전하게 지키기 위한 절차예요."
       chunks: ["This isn't punishment —", "it's part", "of keeping this room safe", "for everyone", "."]
-      words: [w-part, w-room, w-safe, w-everyone]
+      words: [w-part, w-safe, w-everyone]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-intrusive
+    - w-feel
+    cue: 'Patient: "It''s a little awkward, but okay, go ahead."'
+    scale:
+    - a bit awkward
+    - intrusive
+    - humiliating
+    answerAt: 0
+    why: '''조금 어색하지만 괜찮다''면 가장 약한 a bit awkward예요. 환자가 intrusive(사생활 침해)나 humiliating(굴욕)으로 느끼는 것 같으면 잠시 멈추고, 모두에게 하는 절차라는 것과 이유를 다시 설명해요.'
+    example: I know this feels intrusive, but it keeps you safe.
+    exKo: 침해적으로 느껴질 수 있지만, 이건 당신을 안전하게 지켜줘요.
+  - kind: context
+    words:
+    - w-hold
+    - w-item
+    - w-belt
+    scenes:
+    - who: 차트 기록
+      icon: board
+      en: Belongings searched and secured per policy; belt and shoelaces removed.
+      ok: true
+    - who: 동료에게
+      icon: speech
+      en: I bagged his belt and laces — they're at the desk.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: We're confiscating your belt and shoelaces.
+      ok: false
+      fix: For your safety, I need to hold onto your belt and shoelaces for now.
+    why: confiscate(압수하다)는 벌을 주는 말로 들려요. 환자에게는 hold onto(맡아 두다)라고 하고, 안전 때문이라는 것과 나중에 돌려준다는 것을 함께 말해요.
 
 - theme: er-psych
   title: 자발적 정신과 내원 접수
@@ -50564,7 +50633,7 @@
     - en: "It took a lot of courage to come here today."
       ko: "오늘 여기 오기까지 정말 큰 용기가 필요했을 거예요."
       chunks: ["It took", "a lot of courage", "to come here", "today", "."]
-      words: [w-lot, w-courage, w-come, w-here]
+      words: [w-lot, w-courage, w-here]
       goal: 2
     - en: "Can you tell me what's been the hardest part lately?"
       ko: "요즘 가장 힘든 부분이 무엇이었는지 말씀해 주시겠어요?"
@@ -50574,7 +50643,7 @@
     - en: "You're in the right place, and we'll take it one step at a time."
       ko: "여기 잘 오셨어요, 한 단계씩 함께 해나갈게요."
       chunks: ["You're in the right place", ", and we'll take it", "one step", "at a time", "."]
-      words: [w-right, w-place, w-take, w-step, w-time]
+      words: [w-right, w-place, w-take, w-step]
       goal: 2
     - en: "Tell me what's been going on lately."
       ko: "요즘 어떤 일이 있었는지 말씀해 주세요."
@@ -50584,13 +50653,50 @@
     - en: "You made the right call by coming in."
       ko: "여기 온 건 옳은 판단이었어요."
       chunks: ["You made", "the right call", "by coming in", "."]
-      words: [w-right, w-call, w-come]
+      words: [w-right]
       goal: 2
     - en: "We're going to take this step by step together."
       ko: "이 과정을 한 단계씩 함께 해나갈 거예요."
       chunks: ["We're going", "to take this", "step by step", "together", "."]
       words: [w-take, w-step, w-together]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-take
+    - w-step
+    - w-lot
+    - w-courage
+    - w-lately
+    pairs:
+    - - take it one step
+      - at a time
+    - - it took a lot of
+      - courage
+    - - what's been going on
+      - lately
+    decoys:
+    - at once
+    why: one step at a time은 한 번에 하나씩, it took a lot of courage는 스스로 찾아온 결정을 인정하는 말, what's been going on lately는 요즘 사정을 여는 질문이에요.
+  - kind: context
+    words:
+    - w-courage
+    - w-here
+    scenes:
+    - who: 차트 기록
+      icon: board
+      en: Pt self-presented requesting psychiatric evaluation.
+      ok: true
+    - who: 의사에게 보고
+      icon: speech
+      en: She came in on her own asking for a psych eval.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: So you're a voluntary psych eval?
+      ok: false
+      fix: You came in on your own today, and that took courage.
+    why: psych eval·voluntary는 절차를 부르는 의료진의 말이에요. 환자를 절차 이름으로 부르면 사람이 아니라 사례처럼 들려요. 환자에게는 스스로 온 결정을 인정해 줘요.
 
 - theme: er-psych
   title: 공황발작 첫 대응
@@ -50623,23 +50729,58 @@
     - en: "Your heart is working hard, but we're checking everything to be sure."
       ko: "심장이 열심히 뛰고 있지만, 확실히 하기 위해 전부 확인하고 있어요."
       chunks: ["Your heart is working hard", ", but we're checking", "everything", "to be sure", "."]
-      words: [w-heart, w-work, w-hard, w-check, w-everything, w-sure]
+      words: [w-heart, w-work, w-check, w-everything, w-sure]
       goal: 1
     - en: "I need to check your heart rate and oxygen right now."
       ko: "지금 심박수와 산소포화도를 확인해야 해요."
       chunks: ["I need to check", "your heart rate", "and oxygen", "right now", "."]
-      words: [w-need, w-check, w-heart, w-rate, w-oxygen, w-right, w-now]
+      words: [w-need, w-check, w-heart, w-rate, w-oxygen, w-right]
       goal: 1
     - en: "It feels like something terrible is happening, but your body is safe."
       ko: "끔찍한 일이 일어나는 것처럼 느껴지겠지만, 몸은 안전해요."
       chunks: ["It feels", "like something terrible is happening", ", but your body", "is safe", "."]
-      words: [w-feel, w-something, w-terrible, w-body, w-safe]
+      words: [w-feel, w-something, w-terrible, w-safe]
       goal: 1
     - en: "I'm staying right here until this feeling passes."
       ko: "이 느낌이 지나갈 때까지 바로 여기 있을게요."
       chunks: ["I'm staying", "right here", "until this feeling passes", "."]
       words: [w-right, w-here, w-feel, w-pass]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-heart
+    - w-feel
+    cue: 'Patient: "My heart''s pounding, I can''t catch my breath — I think I''m dying!"'
+    scale:
+    - uneasy
+    - anxious
+    - panicking
+    answerAt: 2
+    why: '''죽을 것 같다''며 숨이 차고 심장이 뛰면 panicking이에요. 그래도 공황이라고 단정하지 않고, 심전도와 산소포화도로 심장·호흡 원인을 먼저 확인해요 — 공황과 심장 문제는 증상이 겹쳐요.'
+    example: She's panicking — HR 128, sats 99%, 12-lead ordered.
+    exKo: 공황 상태예요 — 심박수 128, 산소포화도 99%, 12유도 심전도 오더 났어요.
+  - kind: swap
+    words:
+    - w-safe
+    - w-pass
+    - w-feel
+    who: 환자에게 · 공황 중 안심
+    icon: me
+    before:
+    - 'It''s okay. '
+    - Calm down
+    - ' — this feeling will pass.'
+    options:
+    - You're safe
+    - Calm down
+    - Relax, it's nothing
+    answer: You're safe
+    notes:
+      You're safe: 지금 가장 필요한 안전감을 준다.
+      Calm down: 명령처럼 들려서 오히려 불안을 키우기 쉽다.
+      Relax, it's nothing: 환자가 느끼는 고통을 부정하고, 심장 원인을 배제하기 전이라 사실인지도 모른다.
+    why: 공황 중인 환자에게 'calm down'은 흔히 역효과예요. 안전하다고 알리고, 이 느낌이 지나간다고 말하고, 함께 숨 쉬는 쪽이 진정에 도움이 돼요.
 
 - theme: er-psych
   title: 우울 스크리닝(PHQ) 문진
@@ -50662,12 +50803,12 @@
     - en: "Over the last two weeks, how has your sleep been?"
       ko: "지난 2주 동안 잠은 어떠셨어요?"
       chunks: ["Over the last two weeks", ", how", "has your sleep", "been", "?"]
-      words: [w-last, w-week, w-sleep]
+      words: [w-last, w-sleep]
       goal: 1
     - en: "Have you lost interest in things you used to enjoy?"
       ko: "예전에 즐기던 것들에 흥미를 잃으셨나요?"
       chunks: ["Have you lost interest", "in things", "you used", "to enjoy", "?"]
-      words: [w-lose, w-interest, w-thing, w-use, w-enjoy]
+      words: [w-lose, w-interest, w-thing, w-enjoy]
       goal: 1
     - en: "Thank you for being honest with me — that helps a lot."
       ko: "솔직하게 말씀해 주셔서 감사해요 — 큰 도움이 돼요."
@@ -50675,7 +50816,7 @@
       words: [w-honest, w-help, w-lot]
       goal: 2
     - en: "Have you noticed any changes in your appetite?"
-      ko: "식욕에 변화가 있었는지 알아차리셨나요?"
+      ko: "식욕이 달라진 걸 느끼셨나요?"
       chunks: ["Have you noticed", "any changes", "in your appetite", "?"]
       words: [w-notice, w-change, w-appetite]
       goal: 1
@@ -50689,6 +50830,41 @@
       chunks: ["I hear you", ", and we'll work", "through this", "together", "."]
       words: [w-hear, w-work, w-together]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-sleep
+    - w-last
+    cue: 'Patient: "I''ve barely slept — pretty much every night for the last two weeks."'
+    scale:
+    - not at all
+    - several days
+    - more than half the days
+    - nearly every day
+    answerAt: 3
+    why: PHQ-9는 지난 2주 동안 얼마나 자주였는지를 네 칸(0~3점)으로 물어요. '거의 매일 밤'이면 nearly every day예요. 숫자로 되묻기보다 환자 말을 듣고 칸을 고르면 대화가 자연스러워요.
+    example: Trouble sleeping nearly every day over the last two weeks.
+    exKo: 지난 2주 동안 거의 매일 잠들기 어려웠대요.
+  - kind: context
+    words:
+    - w-interest
+    - w-enjoy
+    - w-lose
+    scenes:
+    - who: 차트 기록
+      icon: board
+      en: Pt endorses anhedonia x 2 wks.
+      ok: true
+    - who: 의사에게 보고
+      icon: speech
+      en: She says she hasn't enjoyed anything for about two weeks.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Have you been experiencing anhedonia?
+      ok: false
+      fix: Have you lost interest in things you used to enjoy?
+    why: anhedonia(무쾌감증)는 의료진의 말이에요. 환자에게는 PHQ 문항처럼 '즐기던 일에 흥미를 잃었는지' 쉬운 말로 풀어 물어요.
 
 - theme: er-psych
   title: 자살 시도 직후 소통
@@ -50711,7 +50887,7 @@
     - en: "I'm glad you're here — you don't have to explain anything right now."
       ko: "여기 있어 다행이에요 — 지금 당장 설명하지 않으셔도 돼요."
       chunks: ["I'm glad you're here —", "you don't", "have to explain", "anything right now", "."]
-      words: [w-glad, w-here, w-explain, w-anything, w-right, w-now]
+      words: [w-glad, w-here, w-explain, w-anything, w-right]
       goal: 1
     - en: "You're not being judged. I just want to understand how you're feeling."
       ko: "비난받는 게 아니에요. 지금 어떤 기분인지 이해하고 싶을 뿐이에요."
@@ -50726,7 +50902,7 @@
     - en: "Take all the time you need before we talk."
       ko: "이야기하기 전에 필요한 만큼 시간을 가지세요."
       chunks: ["Take", "all the time", "you need", "before we talk", "."]
-      words: [w-take, w-time, w-need, w-talk]
+      words: [w-take, w-need, w-talk]
       goal: 2
     - en: "No one here is judging you for what happened."
       ko: "무슨 일이 있었든 여기서는 아무도 당신을 비난하지 않아요."
@@ -50736,8 +50912,46 @@
     - en: "We're going to take good care of you from here."
       ko: "이제부터 잘 돌봐드릴게요."
       chunks: ["We're going", "to take good care", "of you", "from here", "."]
-      words: [w-take, w-care, w-good, w-here]
+      words: [w-take, w-care, w-here]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-take
+    - w-need
+    - w-pace
+    - w-care
+    pairs:
+    - - take all the time
+      - you need
+    - - at your
+      - pace
+    - - take good care
+      - of you
+    decoys:
+    - so much
+    why: take all the time you need는 재촉하지 않는다는 말, at your pace는 환자의 속도에 맞춘다는 말, take good care of you는 돌보겠다는 말이에요. 소생 직후에는 설명을 재촉하지 않는 것이 먼저예요.
+  - kind: swap
+    words:
+    - w-explain
+    - w-anything
+    - w-glad
+    who: 환자에게 · 소생 직후
+    icon: me
+    before:
+    - 'I''m glad you''re here — '
+    - you need to tell me why you did it
+    - .
+    options:
+    - you don't have to explain anything right now
+    - you really scared everyone
+    - you need to tell me why you did it
+    answer: you don't have to explain anything right now
+    notes:
+      you don't have to explain anything right now: 설명을 요구하지 않아 수치심을 덜고, 판단하지 않는다는 것을 보여 준다.
+      you really scared everyone: 걱정에서 나온 말이라도 죄책감과 수치심을 키운다.
+      you need to tell me why you did it: 심문처럼 들려 방어하게 만든다. 이유는 신뢰가 생긴 뒤 정신과 평가에서 다룬다.
+    why: 소생 직후에는 '왜'를 캐묻기보다 판단 없이 곁에 있는 것이 먼저예요. 수치심이 크면 이후 평가에서 솔직하게 말하기 어려워져요.
 
 - theme: er-psych
   title: 자해 반복 청소년
@@ -50772,21 +50986,62 @@
       chunks: ["You're not in trouble here;", "we just want", "to help you", "feel better", "."]
       words: [w-trouble, w-here, w-want, w-help, w-feel, w-better]
       goal: 2
-    - en: "I need to ask about your safety before anything else stays private."
-      ko: "다른 건 사적으로 남더라도, 안전에 대해서는 먼저 물어봐야 해요."
-      chunks: ["I need to ask", "about your safety", "before anything else", "stays private", "."]
-      words: [w-need, w-ask, w-safety, w-anything, w-stay]
+    - en: "Before anything else, I need to ask about your safety."
+      ko: "무엇보다 먼저, 안전에 대해 여쭤봐야 해요."
+      chunks: ["Before anything else", ",", "I need to", "ask about", "your safety", "."]
+      words: [w-anything, w-need, w-ask, w-safety]
       goal: 1
     - en: "Your mom wants to help too, and we'll find a way that works for you."
       ko: "어머니도 돕고 싶어 하시고, 당신에게 맞는 방법을 함께 찾을 거예요."
       chunks: ["Your mom wants to help", "too", ", and we'll find", "a way that works for you", "."]
-      words: [w-mom, w-want, w-help, w-find, w-way, w-work]
+      words: [w-want, w-help, w-find, w-way, w-work]
       goal: 2
     - en: "It's okay to want some things kept between just us."
       ko: "어떤 건 우리끼리만 두고 싶어도 괜찮아요."
       chunks: ["It's okay", "to want", "some things kept", "between just us", "."]
       words: [w-okay, w-want, w-thing, w-keep]
       goal: 1
+  nuance:
+  - kind: pair
+    words:
+    - w-thing
+    - w-stay
+    - w-share
+    - w-want
+    - w-help
+    - w-feel
+    - w-better
+    pairs:
+    - - some things stay
+      - between us
+    - - I do have to
+      - share
+    - - we just want
+      - to help you feel better
+    decoys:
+    - in trouble
+    why: some things stay between us는 '어떤 것은' 둘 사이에 남는다는 말이라 전부를 약속하지 않고, I do have to share는 그 예외를 분명히 하는 말이에요. 자해·자살 위험은 비밀로 둘 수 없어서 팀과 보호자에게 알려야 해요.
+  - kind: swap
+    words:
+    - w-stay
+    - w-share
+    - w-safety
+    who: 청소년에게 · 비밀 보장의 범위
+    icon: me
+    before:
+    - 'Some things you tell me can '
+    - never leave this room
+    - ', but if I''m worried about your safety, I have to share that.'
+    options:
+    - stay between us
+    - never leave this room
+    - go straight to your mom
+    answer: stay between us
+    notes:
+      stay between us: 지킬 수 있는 만큼만 약속하고, 바로 뒤에 안전 예외를 붙인다.
+      never leave this room: 지킬 수 없는 절대 약속이다. 자해 위험이 있으면 팀과 보호자에게 알려야 해서, 결국 신뢰가 무너진다.
+      go straight to your mom: 모든 말이 부모에게 간다고 들려 청소년이 입을 닫는다.
+    why: 청소년에게 비밀 보장을 말할 때는 처음부터 예외를 함께 말해요. '아무에게도 말 안 할게'처럼 지킬 수 없는 약속은 하지 않아요 — 자해·타해 위험은 반드시 공유해요.
 
 - theme: er-psych
   title: 홀딩(비자의 억류) 고지
@@ -50809,12 +51064,12 @@
     - en: "This is a temporary hold to keep you safe while we assess."
       ko: "이건 사정하는 동안 안전을 지키기 위한 일시적인 억류예요."
       chunks: ["This is", "a temporary hold", "to keep you safe", "while we assess", "."]
-      words: [w-temporary, w-hold, w-keep, w-safe, w-assess]
+      words: [w-temporary, w-keep, w-safe, w-assess]
       goal: 1
     - en: "You still have rights, and I'll explain each step to you."
       ko: "여전히 권리가 있고, 각 단계를 설명해 드릴게요."
       chunks: ["You still have rights", ", and I'll explain", "each step", "to you", "."]
-      words: [w-still, w-right, w-explain, w-step]
+      words: [w-still, w-explain, w-step]
       goal: 1
     - en: "I know this feels unfair — let me walk you through why."
       ko: "부당하게 느껴진다는 거 알아요 — 왜 그런지 안내해 드릴게요."
@@ -50824,7 +51079,7 @@
     - en: "We have to assess you before we can let you go."
       ko: "보내드리기 전에 먼저 사정을 해야 해요."
       chunks: ["We have to assess you", "before we can", "let you", "go", "."]
-      words: [w-assess, w-go]
+      words: [w-assess]
       goal: 1
     - en: "I know this feels unfair, and I want to explain why it's happening."
       ko: "부당하게 느껴진다는 것 알아요, 왜 이렇게 되는지 설명하고 싶어요."
@@ -50834,8 +51089,47 @@
     - en: "You still have a say in how we do this together."
       ko: "이 과정을 어떻게 할지 여전히 당신의 의견이 반영돼요."
       chunks: ["You still have", "a say", "in how", "we do this together", "."]
-      words: [w-still, w-say, w-together]
+      words: [w-still, w-together]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-walk
+    - w-why
+    - w-explain
+    - w-step
+    - w-keep
+    - w-safe
+    pairs:
+    - - walk you
+      - through why
+    - - explain each
+      - step
+    - - keep you
+      - safe
+    decoys:
+    - rights
+    why: walk you through why는 이유를 차근차근 짚어 준다는 말, explain each step은 단계마다 설명한다는 말, keep you safe는 이 조치의 목적을 밝히는 말이에요.
+  - kind: context
+    words:
+    - w-temporary
+    - w-assess
+    - w-keep
+    scenes:
+    - who: 차트 기록
+      icon: board
+      en: Pt placed on 5150 hold per MD.
+      ok: true
+    - who: 동료 인계
+      icon: speech
+      en: He's on a 5150 — he can't leave until psych sees him.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: You're on a 5150.
+      ok: false
+      fix: This is a temporary hold to keep you safe while we assess.
+    why: 5150은 캘리포니아 법의 조항 번호예요(주마다 이름이 달라요). 의료진끼리는 흔히 쓰지만 환자에게는 뜻이 전해지지 않고 위협적으로 들려요. 환자에게는 일시적인 조치라는 것과 이유를 풀어서 말해요.
 
 - theme: er-psych
   title: 물질 유발 정신증
@@ -50858,7 +51152,7 @@
     - en: "I can see you're scared — you're safe in this room with me."
       ko: "겁먹은 게 보여요 — 이 방에서는 저와 함께 안전해요."
       chunks: ["I can see", "you're scared —", "you're safe", "in this room with me", "."]
-      words: [w-see, w-scared, w-safe, w-room]
+      words: [w-scared, w-safe]
       goal: 1
     - en: "I don't hear what you hear, but I believe it feels real to you."
       ko: "당신이 듣는 걸 저는 못 듣지만, 당신에겐 진짜처럼 느껴진다는 걸 믿어요."
@@ -50868,12 +51162,12 @@
     - en: "Let's keep the door open so you can see everyone around you."
       ko: "주변 사람들이 다 보이도록 문을 열어 둘게요."
       chunks: ["Let's keep", "the door open", "so you can see", "everyone around you", "."]
-      words: [w-keep, w-door, w-open, w-see, w-everyone]
+      words: [w-keep, w-door, w-open, w-everyone]
       goal: 2
     - en: "I believe that this feels very real to you right now."
       ko: "지금 이게 당신에게 아주 진짜처럼 느껴진다는 걸 믿어요."
       chunks: ["I believe", "that this feels", "very real to you", "right now", "."]
-      words: [w-believe, w-feel, w-real, w-right, w-now]
+      words: [w-believe, w-feel, w-real, w-right]
       goal: 1
     - en: "You're safe with me, and no one here wants to hurt you."
       ko: "저와 함께 안전해요, 여기서는 아무도 당신을 해치려 하지 않아요."
@@ -50883,8 +51177,41 @@
     - en: "Tell me what you're seeing or hearing right now."
       ko: "지금 무엇이 보이거나 들리는지 말씀해 주세요."
       chunks: ["Tell me", "what you're seeing", "or hearing", "right now", "."]
-      words: [w-tell, w-see, w-hear, w-right, w-now]
+      words: [w-tell, w-hear, w-right]
       goal: 1
+  nuance:
+  - kind: slider
+    words:
+    - w-scared
+    cue: 'Patient (trembling, eyes on the door): "They''re coming for me — they''re going to kill me!"'
+    scale:
+    - uneasy
+    - scared
+    - terrified
+    answerAt: 2
+    why: '''죽이러 온다''며 떨고 있다면 terrified예요. 이만큼 겁에 질린 환자는 자기를 지키려고 공격할 수도 있어서, 간호사는 거리를 두고 환자와 자신 모두의 출구를 막지 않아요.'
+    example: He's terrified and keeps watching the door.
+    exKo: 겁에 질려서 계속 문만 보고 있어요.
+  - kind: context
+    words:
+    - w-hear
+    - w-believe
+    - w-real
+    scenes:
+    - who: 동료에게
+      icon: speech
+      en: He's hearing voices — seems to be responding to internal stimuli.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Pt appears to be responding to internal stimuli.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Those voices aren't real.
+      ok: false
+      fix: I don't hear what you hear, but I believe it feels real to you.
+    why: 환청을 '가짜'라고 반박하면 환자는 믿어 주지 않는다고 느껴 더 불안해져요. 함께 듣는 척도 하지 않고, 환자가 겪는 경험이 진짜로 느껴진다는 것만 인정해 줘요.
 
 - theme: er-psych
   title: 자살 위험 부정 환자
@@ -50922,10 +51249,10 @@
     - en: "I want to double-check a few things before you go home."
       ko: "집에 가시기 전에 몇 가지만 다시 확인하고 싶어요."
       chunks: ["I want to double-check", "a few things", "before you", "go home", "."]
-      words: [w-want, w-check, w-thing, w-go, w-home]
+      words: [w-want, w-check, w-thing]
       goal: 1
     - en: "It's okay to say more than fine if that's true for you."
-      ko: "괜찮다는 말보다 더 많은 게 사실이라면, 그렇게 말해도 괜찮아요."
+      ko: "괜찮다는 말로 다 담기지 않는다면, 그렇게 말씀하셔도 돼요."
       chunks: ["It's okay", "to say more", "than fine", "if that's true for you", "."]
       words: [w-okay, w-say, w-more, w-fine, w-true]
       goal: 2
@@ -50934,6 +51261,44 @@
       chunks: ["Sometimes it's hard", "to admit", "how much", "you're really struggling", "."]
       words: [w-hard, w-admit, w-much, w-really, w-struggle]
       goal: 1
+  nuance:
+  - kind: pair
+    words:
+    - w-check
+    - w-thing
+    - w-wrong
+    - w-answer
+    - w-really
+    - w-struggle
+    pairs:
+    - - double-check
+      - a few things
+    - - no wrong
+      - answer
+    - - when they're really
+      - struggling
+    decoys:
+    - much
+    why: double-check a few things는 의심이 아니라 확인이라는 말, no wrong answer는 부담을 덜어 주는 말, really struggling은 겉말 뒤의 힘듦을 짚는 말이에요.
+  - kind: context
+    words:
+    - w-fine
+    - w-say
+    scenes:
+    - who: 차트 기록
+      icon: board
+      en: Pt denies SI/HI.
+      ok: true
+    - who: 의사에게 보고
+      icon: speech
+      en: She denies any thoughts of suicide right now.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: So you deny SI?
+      ok: false
+      fix: So you're not having any thoughts of ending your life right now?
+    why: SI(suicidal ideation)는 차트 약어예요. 환자에게는 풀어서, '삶을 끝낸다'처럼 분명한 말로 물어요. deny도 환자를 의심하는 말처럼 들릴 수 있어요.
 
 - theme: er-psych
   title: 정신과 병력+신체 주호소
@@ -50966,7 +51331,7 @@
     - en: "Tell me exactly where it hurts and what it feels like."
       ko: "정확히 어디가 아프고 어떤 느낌인지 말씀해 주세요."
       chunks: ["Tell me exactly", "where it hurts", "and what", "it feels like", "."]
-      words: [w-tell, w-exactly, w-where, w-hurt, w-feel]
+      words: [w-tell, w-exactly, w-where, w-feel]
       goal: 2
     - en: "I'm not going to assume this is only anxiety."
       ko: "이걸 그저 불안 때문이라고 단정하지 않을 거예요."
@@ -50983,6 +51348,45 @@
       chunks: ["Even with", "anxiety", ", real pain deserves", "a real answer", "."]
       words: [w-anxiety, w-real, w-pain, w-deserve, w-answer]
       goal: 1
+  nuance:
+  - kind: pair
+    words:
+    - w-run
+    - w-test
+    - w-chest
+    - w-pain
+    - w-heart
+    pairs:
+    - - run
+      - tests
+    - - chest
+      - pain
+    - - take it
+      - seriously
+    decoys:
+    - answer
+    why: 검사는 run tests(검사를 돌리다), 가슴 통증은 chest pain, take it seriously는 가볍게 넘기지 않는다는 말이에요. 불안 병력이 있어도 흉통은 심장 원인부터 검사로 확인해요.
+  - kind: swap
+    words:
+    - w-anxiety
+    - w-chest
+    - w-pain
+    who: 의사에게 보고 · 흉통
+    icon: speech
+    before:
+    - 'Bed 4 is '
+    - a psych patient
+    - ' with new chest pain and a history of anxiety.'
+    options:
+    - a 45-year-old man
+    - a psych patient
+    - a frequent flyer
+    answer: a 45-year-old man
+    notes:
+      a 45-year-old man: 나이·성별로 시작하는 표준 보고. 정신과 병력은 병력의 하나로 뒤에 붙인다.
+      a psych patient: 진단명이 사람을 대신하면 흉통이 가볍게 들리고, 신체 원인을 놓치기 쉽다.
+      a frequent flyer: 자주 오는 환자를 낮춰 부르는 은어. 편견을 옮기고 위험 신호를 가린다.
+    why: 정신과 병력이 있는 환자의 신체 증상은 '불안 탓'으로 넘겨지기 쉬워요(diagnostic overshadowing). 보고는 사람과 증상으로 시작해요.
 
 - theme: er-psych
   title: 애도·급성 위기 반응
@@ -51005,12 +51409,12 @@
     - en: "I'm so sorry for your loss — take all the time you need."
       ko: "상실에 진심으로 애도를 표해요 — 필요한 만큼 시간을 가지세요."
       chunks: ["I'm so sorry", "for your loss —", "take all", "the time you need", "."]
-      words: [w-sorry, w-loss, w-take, w-time, w-need]
+      words: [w-sorry, w-loss, w-take, w-need]
       goal: 2
     - en: "There's no right way to feel right now."
       ko: "지금 어떤 기분이든 옳고 그른 방식은 없어요."
       chunks: ["There's no right way", "to feel", "right now", "."]
-      words: [w-right, w-way, w-feel, w-now]
+      words: [w-right, w-way, w-feel]
       goal: 1
     - en: "I'm here to sit with you and help however I can."
       ko: "곁에 앉아 제가 할 수 있는 어떤 식으로든 돕고 싶어요."
@@ -51025,13 +51429,48 @@
     - en: "Some people cry, some go quiet, and both are okay."
       ko: "우는 사람도, 조용해지는 사람도 있어요, 둘 다 괜찮아요."
       chunks: ["Some people cry", ", some go quiet", ", and both", "are okay", "."]
-      words: [w-people, w-cry, w-go, w-quiet, w-both, w-okay]
+      words: [w-people, w-cry, w-quiet, w-both, w-okay]
       goal: 2
     - en: "I won't rush you through this."
       ko: "이 과정을 서두르게 하지 않을게요."
       chunks: ["I won't", "rush you", "through this", "."]
       words: [w-rush]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-grief
+    - w-normal
+    cue: 'Wife, an hour after her husband died: "I can''t stop shaking. I keep expecting him to walk in."'
+    scale:
+    - sadness
+    - grief
+    - despair
+    answerAt: 1
+    why: 사별 직후의 떨림, 믿기지 않는 느낌, 그가 들어올 것 같은 느낌은 정상 애도(grief)예요. '살 이유가 없다'처럼 절망(despair)이나 자해 생각이 보이면 그때 안전을 따로 물어요.
+    example: This grief is a normal response to a terrible loss.
+    exKo: 이 슬픔은 끔찍한 상실에 대한 정상적인 반응이에요.
+  - kind: swap
+    words:
+    - w-sorry
+    - w-loss
+    - w-here
+    who: 가족에게 · 사별 직후
+    icon: me
+    before:
+    - 'I''m so sorry for your loss. '
+    - I know exactly how you feel
+    - .
+    options:
+    - I'm here with you
+    - I know exactly how you feel
+    - At least he's not in pain anymore
+    answer: I'm here with you
+    notes:
+      I'm here with you: 고쳐 주려 하지 않고 곁에 있다는 것만 전한다.
+      I know exactly how you feel: 선의라도, 슬픔은 사람마다 달라서 상대의 경험을 가로채는 말로 들릴 수 있다.
+      At least he's not in pain anymore: '''적어도''로 시작하는 위로는 상실을 작게 만든다.'
+    why: 애도 중인 가족에게는 안다고 말하거나 좋은 면을 찾아 주기보다, 곁에 있다는 것과 슬픔이 정상이라는 것을 전해요.
 
 - theme: er-psych
   title: 1:1 관찰(sitter) 배정 설명
@@ -51081,6 +51520,45 @@
       chunks: ["You don't have to talk", "to them", "if you're not", "comfortable", "."]
       words: [w-talk, w-comfortable]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-stay
+    - w-close
+    - w-sure
+    - w-safe
+    - w-next
+    - w-step
+    pairs:
+    - - stay close
+      - by
+    - - make sure
+      - you're safe
+    - - the next
+      - steps
+    decoys:
+    - a punishment
+    why: stay close by는 가까이 머문다, make sure you're safe는 그 목적, the next steps는 앞으로의 과정 — 관찰을 감시가 아니라 돌봄으로 설명하는 말들이에요.
+  - kind: context
+    words:
+    - w-watch
+    - w-someone
+    - w-keep
+    scenes:
+    - who: 차트 기록
+      icon: board
+      en: 1:1 sitter at bedside for suicide precautions.
+      ok: true
+    - who: 동료 인계
+      icon: speech
+      en: She's on a 1:1 — the sitter keeps eyes on her at all times.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: We've assigned a sitter to watch you.
+      ok: false
+      fix: Someone will stay close by to keep you safe tonight.
+    why: sitter·1:1은 직원끼리의 말이고, 환자에게 'watch you'는 감시처럼 들려요. 환자에게는 누가 곁에 있을지와 그 목적(안전)을 말해요.
 
 - theme: er-psych
   title: 자살 안전 계획 수립
@@ -51130,6 +51608,49 @@
       chunks: ["This plan is yours", ", so it needs", "to actually", "work for you", "."]
       words: [w-plan, w-need, w-actually, w-work]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-get
+    - w-hard
+    - w-moment
+    - w-feel
+    - w-dark
+    - w-remove
+    - w-anything
+    - w-use
+    - w-hurt
+    pairs:
+    - - get through
+      - hard moments
+    - - when things
+      - feel dark
+    - - remove anything
+      - you could use to hurt yourself
+    decoys:
+    - be safe
+    why: get through hard moments는 힘든 순간을 버티는 것, when things feel dark는 위기가 오는 때, remove anything you could use는 수단을 치우는 것 — 안전 계획의 세 기둥이에요.
+  - kind: swap
+    words:
+    - w-make
+    - w-plan
+    - w-together
+    who: 환자에게 · 안전 계획
+    icon: me
+    before:
+    - 'Let''s '
+    - have you sign a no-suicide contract
+    - ' for the next time things feel dark.'
+    options:
+    - make a plan together
+    - have you sign a no-suicide contract
+    - have you promise not to hurt yourself
+    answer: make a plan together
+    notes:
+      make a plan together: 위기 때 할 일·연락할 사람·수단 치우기를 함께 적는 안전 계획. 근거가 있는 방법이다.
+      have you sign a no-suicide contract: 자살하지 않겠다는 서약서는 효과 근거가 없어 권고되지 않는다. 환자가 위기를 숨기게 만들 수도 있다.
+      have you promise not to hurt yourself: 구두 약속도 서약서와 같다 — 효과 근거가 없고, 직원에게 거짓 안심을 주며, 환자가 위기를 숨기게 만들 수 있다. 위기 때 무엇을 할지도 빠져 있다.
+    why: '''자살하지 않겠다''는 약속이나 서약은 안전을 보장하지 않아요. 근거가 있는 방법은 대처 방법·연락처·수단 제거를 환자와 함께 적는 안전 계획(safety planning)이에요.'
 
 - theme: er-psych
   title: 급성 정신증 흥분 상태
@@ -51167,18 +51688,59 @@
     - en: "I'm going to stay calm and give you space right now."
       ko: "차분하게 있으면서 지금 당신에게 공간을 드릴게요."
       chunks: ["I'm going", "to stay calm", "and give you", "space right now", "."]
-      words: [w-stay, w-calm, w-give, w-space, w-right, w-now]
+      words: [w-stay, w-calm, w-give, w-space, w-right]
       goal: 2
     - en: "Tell me what would help you feel safer right now."
       ko: "지금 더 안전하게 느끼려면 무엇이 도움이 될지 말씀해 주세요."
       chunks: ["Tell me", "what would help", "you feel", "safer right now", "."]
-      words: [w-tell, w-help, w-feel, w-safe, w-right, w-now]
+      words: [w-tell, w-help, w-feel, w-safe, w-right]
       goal: 1
     - en: "We're going to work together to keep everyone safe."
       ko: "모두의 안전을 지키기 위해 함께 협력할 거예요."
       chunks: ["We're going", "to work together", "to keep", "everyone safe", "."]
       words: [w-work, w-together, w-keep, w-everyone, w-safe]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-keep
+    - w-distance
+    - w-lower
+    - w-noise
+    - w-light
+    - w-feel
+    - w-more
+    - w-ease
+    pairs:
+    - - keep my
+      - distance
+    - - lower the noise and
+      - lights
+    - - feel more at
+      - ease
+    decoys:
+    - safe
+    why: keep my distance는 거리를 두겠다는 말, lower the noise and lights는 자극을 줄이는 말, feel more at ease는 편안해지게 한다는 말이에요. 흥분한 환자에게는 공간을 주고 자극을 줄이는 것이 먼저예요.
+  - kind: context
+    words:
+    - w-give
+    - w-space
+    - w-calm
+    scenes:
+    - who: 팀에게
+      icon: speech
+      en: He's escalating — let's give him space and keep the exit clear.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Pt escalating, pacing; verbal de-escalation in progress.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: You're escalating, so I'm giving you space.
+      ok: false
+      fix: I can see you're really upset — I'm going to give you some space.
+    why: escalating은 팀끼리 상태를 알리는 말이에요. 환자에게 그대로 말하면 꼬리표처럼 들려 더 흥분시킬 수 있어요. 환자에게는 감정을 먼저 알아주고, 무엇을 할지 말해요.
 
 - theme: er-psych
   title: 강박 억제·비자의 투약
@@ -51211,7 +51773,7 @@
     - en: "As soon as it's safe, these restraints come off."
       ko: "안전해지는 대로 이 억제대는 바로 풀어드려요."
       chunks: ["As soon as it's safe", ", these restraints", "come", "off", "."]
-      words: [w-soon, w-safe, w-restraint, w-come, w-off]
+      words: [w-soon, w-safe, w-restraint, w-off]
       goal: 2
     - en: "I know this feels frightening, but it's only until you're safe."
       ko: "무섭게 느껴질 수 있지만, 안전해질 때까지만이에요."
@@ -51221,13 +51783,52 @@
     - en: "We check on you constantly to see if the restraints can come off."
       ko: "억제대를 풀 수 있는지 계속 확인하고 있어요."
       chunks: ["We check on you", "constantly", "to see", "if the restraints can come off", "."]
-      words: [w-check, w-constantly, w-see, w-restraint, w-come, w-off]
+      words: [w-check, w-constantly, w-restraint, w-off]
       goal: 2
     - en: "I'll explain exactly why you need this medication right now."
       ko: "지금 이 약이 왜 필요한지 정확히 설명해 드릴게요."
       chunks: ["I'll explain exactly", "why you need", "this medication", "right now", "."]
-      words: [w-explain, w-exactly, w-why, w-need, w-medication, w-right, w-now]
+      words: [w-explain, w-exactly, w-why, w-need, w-medication, w-right]
       goal: 1
+  nuance:
+  - kind: pair
+    words:
+    - w-restraint
+    - w-off
+    - w-reassess
+    - w-constantly
+    - w-soon
+    - w-safe
+    pairs:
+    - - restraints
+      - come off
+    - - reassess
+      - constantly
+    - - as soon as
+      - it's safe
+    decoys:
+    - never
+    why: 억제대는 come off(풀리다), 재사정은 constantly(끊임없이), as soon as it's safe는 억제의 한계를 밝히는 말이에요. 억제는 덜 제한적인 방법이 통하지 않을 때만, 가능한 한 짧게 써요.
+  - kind: swap
+    words:
+    - w-give
+    - w-medication
+    who: 환자에게 · 비자의 투약
+    icon: me
+    before:
+    - 'I''m going to give you '
+    - a chemical restraint
+    - ' to help you feel calmer.'
+    options:
+    - some medication
+    - a chemical restraint
+    - something to knock you out
+    answer: some medication
+    notes:
+      some medication: 무엇을 주는지 사실대로, 목적과 함께 말한다.
+      a chemical restraint: 규정·차트에 쓰는 분류어. 환자에게는 벌이나 통제로 들린다.
+      something to knock you out: 과장되고 겁을 준다. 목적은 재우는 것이 아니라 진정이다.
+    why: 원하지 않는 투약이라도 무엇을 왜 주는지 환자에게 알려요. 'chemical restraint'는 규정에서 쓰는 분류라 환자와의 대화에는 쓰지 않아요.
 
 - theme: er-psych
   title: 자살 시도 후 거부 환자
@@ -51255,12 +51856,12 @@
     - en: "Right now my job is to keep you safe, even when it's hard."
       ko: "지금 제 역할은 힘들어도 당신을 안전하게 지키는 거예요."
       chunks: ["Right now", "my job is", "to keep you safe", ", even when it's hard", "."]
-      words: [w-right, w-now, w-job, w-keep, w-safe, w-even, w-hard]
+      words: [w-right, w-job, w-keep, w-safe, w-even, w-hard]
       goal: 2
     - en: "Can you tell me what you think will happen if you go home?"
       ko: "집에 가면 어떤 일이 일어날 거라고 생각하시나요?"
       chunks: ["Can you tell me", "what you think", "will happen", "if you go home", "?"]
-      words: [w-tell, w-think, w-happen, w-go, w-home]
+      words: [w-tell, w-think, w-happen]
       goal: 1
     - en: "I need to understand if you can think clearly about this decision."
       ko: "이 결정을 명확하게 생각할 수 있는지 확인해야 해요."
@@ -51270,13 +51871,54 @@
     - en: "I know you want to go home, but it's my job to keep you safe right now."
       ko: "집에 가고 싶으신 거 알지만, 지금은 안전하게 지키는 게 제 역할이에요."
       chunks: ["I know you want", "to go home", ", but it's my job", "to keep you safe right now", "."]
-      words: [w-want, w-go, w-home, w-job, w-keep, w-safe, w-right, w-now]
+      words: [w-want, w-job, w-keep, w-safe, w-right]
       goal: 2
     - en: "Even if this feels unfair, I have to take the risks seriously."
       ko: "부당하게 느껴지더라도, 그 위험은 진지하게 받아들여야 해요."
       chunks: ["Even if this feels unfair", ", I have to take", "the risks", "seriously", "."]
       words: [w-even, w-feel, w-unfair, w-take, w-risk, w-seriously]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-sure
+    - w-understand
+    - w-risk
+    - w-take
+    - w-seriously
+    - w-think
+    - w-clearly
+    - w-decision
+    pairs:
+    - - make sure you
+      - understand the risks
+    - - take the risks
+      - seriously
+    - - think clearly about
+      - this decision
+    decoys:
+    - unfair
+    why: make sure you understand the risks는 위험을 알고 있는지 확인하는 말, take … seriously는 가볍게 넘기지 않는다는 말, think clearly about this decision은 의사결정 능력을 묻는 말이에요.
+  - kind: context
+    words:
+    - w-understand
+    - w-think
+    - w-decision
+    scenes:
+    - who: 의사에게 보고
+      icon: speech
+      en: He's refusing treatment and wants to leave — can we get a capacity assessment?
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Pt requesting to leave AMA; capacity evaluation requested.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: We need to see if you have capacity.
+      ok: false
+      fix: I need to understand if you can think clearly about this decision.
+    why: capacity(의사결정 능력)는 의료진의 말이고, 판정은 의사가 해요. 간호사는 환자에게 무엇을 확인하려는지 쉬운 말로 알리고, 본 것을 의사에게 보고해요.
 
 - theme: er-psych
   title: 정신과 병상 대기(boarding)
@@ -51319,13 +51961,51 @@
     - en: "As soon as a bed opens, you'll be the first to know."
       ko: "병상이 나는 대로 가장 먼저 알려드릴게요."
       chunks: ["As soon as", "a bed opens", ", you'll be", "the first to know", "."]
-      words: [w-soon, w-bed, w-open, w-first, w-know]
+      words: [w-soon, w-bed, w-open, w-first]
       goal: 2
     - en: "We're doing everything possible to get a bed for both of you."
       ko: "두 분 모두를 위한 병상을 구하려고 가능한 모든 걸 하고 있어요."
       chunks: ["We're doing", "everything possible", "to get a bed", "for both of you", "."]
       words: [w-do, w-everything, w-possible, w-get, w-bed, w-both]
       goal: 1
+  nuance:
+  - kind: slider
+    words:
+    - w-exhausting
+    - w-wait
+    cue: 'Mother: "We''ve been here three days. I can''t do this anymore."'
+    scale:
+    - tiring
+    - draining
+    - exhausting
+    answerAt: 2
+    why: 사흘째 기다리며 '더는 못 하겠다'면 exhausting이에요. 지친 마음을 먼저 이름 붙여 인정하고, 그다음에 지금 하고 있는 일을 알려요.
+    example: I know this wait has been exhausting for both of you.
+    exKo: 이 기다림이 두 분 모두에게 지치는 일이었다는 거 알아요.
+  - kind: swap
+    words:
+    - w-bed
+    - w-limited
+    - w-opening
+    - w-shift
+    - w-every
+    - w-check
+    who: 가족에게 · 병상 대기 안내
+    icon: me
+    before:
+    - 'Honestly, '
+    - it won't be much longer
+    - ', but I''m checking for openings every shift.'
+    options:
+    - beds are limited
+    - a bed will definitely open up tonight
+    - it won't be much longer
+    answer: beds are limited
+    notes:
+      beds are limited: 사실대로 말하고, 지금 하고 있는 일을 함께 알린다.
+      a bed will definitely open up tonight: 지킬 수 없는 약속. 병상이 나지 않으면 신뢰가 무너진다.
+      it won't be much longer: 근거 없는 위로라, 기다림이 길어질수록 더 화나게 한다.
+    why: 정신과 병상 대기(boarding)는 며칠이 걸리기도 해요. 시간을 약속하지 말고, 사실과 지금 하고 있는 일을 투명하게 알려요.
 
 - theme: er-psych
   title: 살인 사고·타해 위협
@@ -51375,6 +52055,50 @@
       chunks: ["Your anger makes sense", ", but I still need", "to ask", "who it's aimed at", "."]
       words: [w-anger, w-make, w-sense, w-still, w-need, w-ask, w-aim]
       goal: 1
+  nuance:
+  - kind: pair
+    words:
+    - w-carry
+    - w-lot
+    - w-anger
+    - w-person
+    - w-mind
+    - w-take
+    - w-threat
+    - w-seriously
+    pairs:
+    - - carrying a lot of
+      - anger
+    - - have a person
+      - in mind
+    - - take threats
+      - seriously
+    decoys:
+    - a joke
+    why: carrying a lot of anger는 분노를 비난 없이 되비치는 말, have a person in mind는 대상을 묻는 말, take threats seriously는 위협을 흘려듣지 않는다는 말이에요.
+  - kind: swap
+    words:
+    - w-tell
+    - w-other
+    - w-people
+    - w-team
+    - w-because
+    who: 환자에게 · 타해 위협 뒤
+    icon: me
+    before:
+    - 'Because of what you''ve told me, '
+    - I'll keep this just between us
+    - .
+    options:
+    - I have to tell a few other people on the team
+    - I'll keep this just between us
+    - I'm calling the police right now
+    answer: I have to tell a few other people on the team
+    notes:
+      I have to tell a few other people on the team: 사실대로, 누구에게 알리는지 밝힌다. 구체적인 위협은 팀과 의사에게 반드시 알린다.
+      I'll keep this just between us: 지킬 수 없는 약속. 타해 위험은 비밀로 둘 수 없고, 약속을 깨면 환자의 신뢰도 잃는다.
+      I'm calling the police right now: 간호사가 혼자 정할 일이 아니다. 경찰이나 대상자에게 알릴지는 주법과 기관 절차에 따라 의사·팀이 정한다.
+    why: 타해 위협은 비밀 보장의 예외예요. 간호사의 의무는 팀과 의사에게 바로 알리는 것이고, 제3자 경고(Tarasoff 의무)는 주마다 다른 법에 따라 팀이 판단해요.
 
 - theme: er-psych
   title: 긴장증(catatonia) 의심
@@ -51412,7 +52136,7 @@
     - en: "I'm going to look at your eyes and check how your body responds."
       ko: "눈을 살펴보고 몸이 어떻게 반응하는지 확인할게요."
       chunks: ["I'm going", "to look at your eyes", "and check", "how your body responds", "."]
-      words: [w-look, w-eye, w-check, w-body, w-respond]
+      words: [w-look, w-eye, w-check, w-respond]
       goal: 1
     - en: "I know you may not be able to answer, but I'm still listening."
       ko: "대답을 못하실 수도 있지만, 저는 계속 듣고 있어요."
@@ -51422,8 +52146,50 @@
     - en: "We're checking your body carefully to rule out other causes."
       ko: "다른 원인을 배제하기 위해 몸을 조심스럽게 확인하고 있어요."
       chunks: ["We're checking", "your body carefully", "to rule out", "other causes", "."]
-      words: [w-check, w-body, w-carefully, w-rule, w-other, w-cause]
+      words: [w-check, w-carefully, w-rule, w-other, w-cause]
       goal: 1
+  nuance:
+  - kind: pair
+    words:
+    - w-rule
+    - w-other
+    - w-cause
+    - w-even
+    - w-respond
+    - w-check
+    - w-thing
+    - w-gently
+    pairs:
+    - - rule out
+      - other causes
+    - - even if
+      - you can't respond
+    - - check a few things
+      - gently
+    decoys:
+    - your eyes
+    why: rule out other causes는 신체 원인을 지워 나가는 말, even if you can't respond는 대답이 없어도 설명하겠다는 말, check … gently는 조심스럽게 살핀다는 말이에요.
+  - kind: swap
+    words:
+    - w-look
+    - w-eye
+    - w-explain
+    who: 환자에게 · 무반응 환자 사정
+    icon: me
+    before:
+    - 'Mrs. Park, '
+    - let's check her pupils
+    - .
+    options:
+    - I'm going to look at your eyes now
+    - let's check her pupils
+    - pupils next
+    answer: I'm going to look at your eyes now
+    notes:
+      I'm going to look at your eyes now: 환자에게 직접, 할 일을 미리 알린다.
+      let's check her pupils: 환자 앞에서 3인칭으로 말하면 없는 사람처럼 대하는 셈이다.
+      pupils next: 동료에게 하는 짧은 말. 환자는 무엇을 당할지 모른 채 몸이 만져진다.
+    why: 긴장증 환자는 반응하지 못해도 주변을 알아듣고 나중에 기억하기도 해요. 그래서 대답이 없어도 하는 일마다 환자에게 직접 설명해요.
 
 - theme: er-psych
   title: 이송 중 급속 악화
@@ -51446,7 +52212,7 @@
     - en: "Something's changed — talk to me about what's going on right now."
       ko: "뭔가 달라졌네요 — 지금 무슨 일인지 저에게 말해 주세요."
       chunks: ["Something's changed —", "talk to me", "about what's going on", "right now", "."]
-      words: [w-change, w-talk, w-right, w-now]
+      words: [w-change, w-talk, w-right]
       goal: 1
     - en: "You're not alone in this hallway; I'm staying right here."
       ko: "이 복도에서 혼자가 아니에요; 제가 바로 여기 있을게요."
@@ -51461,7 +52227,7 @@
     - en: "Tell me exactly what changed in the last few minutes."
       ko: "지난 몇 분 동안 정확히 무엇이 달라졌는지 말씀해 주세요."
       chunks: ["Tell me exactly", "what changed", "in the last", "few minutes", "."]
-      words: [w-tell, w-exactly, w-change, w-last, w-minute]
+      words: [w-tell, w-exactly, w-change, w-last]
       goal: 1
     - en: "I'm not leaving you alone until we get you somewhere safer."
       ko: "더 안전한 곳으로 모실 때까지 혼자 두지 않을게요."
@@ -51471,8 +52237,49 @@
     - en: "Let's move quickly and figure out what's going on right now."
       ko: "빠르게 움직여서 지금 무슨 일인지 파악해봐요."
       chunks: ["Let's move quickly", "and figure out", "what's going on", "right now", "."]
-      words: [w-move, w-quickly, w-figure, w-right, w-now]
+      words: [w-move, w-quickly, w-figure, w-right]
       goal: 1
+  nuance:
+  - kind: pair
+    words:
+    - w-figure
+    - w-sort
+    - w-somewhere
+    - w-safe
+    pairs:
+    - - figure out
+      - what's going on
+    - - sort this
+      - out
+    - - somewhere
+      - safer
+    decoys:
+    - up
+    why: figure out은 알아내다, sort this out은 정리해 해결하다, somewhere safer는 더 안전한 곳이에요. 악화된 환자에게는 원인을 알아내는 동안 먼저 자리를 옮겨 안전을 확보해요.
+  - kind: swap
+    words:
+    - w-stay
+    - w-right
+    - w-here
+    - w-alone
+    - w-somewhere
+    - w-safe
+    who: 환자에게 · 복도 대기 중 악화
+    icon: me
+    before:
+    - 'Listen, '
+    - I'll check back on you
+    - ' while we get you somewhere safer.'
+    options:
+    - I'm staying right here with you
+    - you need to stay in this bed
+    - I'll check back on you
+    answer: I'm staying right here with you
+    notes:
+      I'm staying right here with you: 혼자 두지 않겠다고 말하고 실제로 곁을 지킨다.
+      you need to stay in this bed: 지시만 있고 안전감이 없다. 통제하려는 말로 들린다.
+      I'll check back on you: 자해 위험이 다시 보이는 환자를 혼자 두게 된다 — 안전하지 않다.
+    why: 대기 중 자해 위험이 다시 보이면 누군가 계속 곁에 있어야 해요. 도움을 부르는 동안에도 환자를 혼자 두지 않아요.
 
 - theme: er-deescalation
   title: 대기 지연 불만 환자
