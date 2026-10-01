@@ -726,3 +726,4 @@ keyPhrases는 사람이 저작·임상 검토한 문장이라 보강·정리 패
 | ER · 고위험 감염 이송 인계 | 수막구균혈증에 "airborne and contact precautions" | CDC 기준은 비말(droplet) 격리다(치료 시작 후 24시간까지). airborne 은 결핵·홍역·수두 | "…on droplet precautions." 류로 교체 |
 | ER · 노인 학대·방임 의심 | "You're safe to talk with me — nothing leaves this room without your say." | 미국 간호사는 대부분의 주에서 노인 학대 의무 신고자이고, 차트·팀·사회복지에도 공유되므로 지킬 수 없는 약속이다. 선별 교육은 비밀 보장을 약속하지 말라고 가르친다 | "You're safe to talk with me — and I'll tell you before I share anything with anyone." |
 | ER · 개방성 골절 SBAR 인계 | "Tetanus is updated and antibiotics were given at ten past." | 사실 오류는 아니지만 부자연스럽다 — 관용구는 "up to date"(updated는 "오늘 추가 접종"으로 들림), 시각은 시 없이 분만 말하지 않는다 | "Tetanus is up to date, and antibiotics were given at 1410." |
+| ICU · 기도 관리(S3) | "I'll order the chest X-ray" | 미국 간호사는 프로토콜·standing order 없이 영상 검사를 오더하지 않는다 — 업무 범위 오해(저작자 보고, 검토 전) | "I'll ask the team for a chest X-ray." 류 |
