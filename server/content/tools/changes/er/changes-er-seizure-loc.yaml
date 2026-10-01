@@ -1,0 +1,397 @@
+theme: er-seizure-loc
+changes:
+- kind: sentence
+  situation: 경련 목격 문진
+  index: 1
+  fields:
+  - words
+  why: 쉬운 w-body 태그를 뺐다
+- kind: sentence
+  situation: 의식수준 GCS 사정
+  index: 1
+  fields:
+  - words
+  why: 쉬운 w-know 태그를 뺐다
+- kind: sentence
+  situation: 의식수준 GCS 사정
+  index: 3
+  fields:
+  - words
+  why: 쉬운 w-tell 태그를 뺐다
+- kind: sentence
+  situation: 낙상·손상 방지 설명
+  index: 2
+  fields:
+  - words
+  why: get hurt는 다른 뜻(다치다) — w-hurt(아프다) 태그를 뺐다
+- kind: sentence
+  situation: 낙상·손상 방지 설명
+  index: 5
+  fields:
+  - words
+  why: keeps his airway open은 형용사(열린) — w-open(눈을 뜨다) 태그를 뺐다
+- kind: sentence
+  situation: 발작력·복약 청취
+  index: 4
+  fields:
+  - words
+  why: 쉬운 w-know 태그를 뺐다
+- kind: sentence
+  situation: 발작 후 혼돈(postictal)
+  index: 0
+  fields:
+  - words
+  why: 쉬운 w-room 태그를 뺐다
+- kind: sentence
+  situation: 발작 후 혼돈(postictal)
+  index: 1
+  fields:
+  - words
+  why: 쉬운 w-tell·w-name 태그를 뺐다
+- kind: sentence
+  situation: 발작 후 혼돈(postictal)
+  index: 5
+  fields:
+  - words
+  why: 쉬운 w-ask·w-minute 태그를 뺐다
+- kind: sentence
+  situation: 알코올 금단 발작
+  index: 1
+  fields:
+  - words
+  why: 쉬운 w-day 태그를 뺐다
+- kind: sentence
+  situation: 알코올 금단 발작
+  index: 3
+  fields:
+  - words
+  why: 쉬운 w-day 태그를 뺐다
+- kind: sentence
+  situation: 알코올 금단 발작
+  index: 4
+  fields:
+  - words
+  why: 쉬운 w-hand 태그를 뺐다
+- kind: sentence
+  situation: 열성 경련 소아 부모 안심
+  index: 3
+  fields:
+  - words
+  why: 쉬운 w-know 태그를 뺐다
+- kind: sentence
+  situation: 임신부 자간증 발작
+  index: 0
+  fields:
+  - words
+  why: 쉬운 w-week 태그를 뺐다
+- kind: sentence
+  situation: 임신부 자간증 발작
+  index: 1
+  fields:
+  - words
+  why: 쉬운 w-hand 태그를 뺐다
+- kind: sentence
+  situation: 임신부 자간증 발작
+  index: 2
+  fields:
+  - words
+  why: w-pressure를 구 blood pressure로 바꿔 겹치는 w-blood 태그를 뺐다
+- kind: sentence
+  situation: 임신부 자간증 발작
+  index: 5
+  fields:
+  - words
+  why: 쉬운 w-baby 태그를 뺐다
+- kind: sentence
+  situation: 실신 vs 발작 감별
+  index: 2
+  fields:
+  - words
+  why: 쉬운 w-see 태그를 뺐다
+- kind: sentence
+  situation: 저나트륨성 의식저하
+  index: 0
+  fields:
+  - words
+  why: 쉬운 w-day 태그를 뺐다
+- kind: sentence
+  situation: 약물 과량 의식저하
+  index: 5
+  fields:
+  - words
+  why: 쉬운 w-minute 태그를 뺐다
+- kind: sentence
+  situation: 언어장벽 발작 병력
+  index: 5
+  fields:
+  - words
+  why: 쉬운 w-help 태그를 뺐다
+- kind: sentence
+  situation: 지속상태(status epilepticus)
+  index: 3
+  fields:
+  - words
+  why: 쉬운 w-minute 태그를 뺐다
+- kind: sentence
+  situation: 지속상태(status epilepticus)
+  index: 5
+  fields:
+  - words
+  why: 쉬운 w-help 태그를 뺐다
+- kind: sentence
+  situation: 의식저하 기도 위기
+  index: 4
+  fields:
+  - words
+  why: 쉬운 w-help 태그를 뺐다
+- kind: sentence
+  situation: 의식저하 기도 위기
+  index: 5
+  fields:
+  - ko
+  why: tray는 카트가 아니다 — w-tray(트레이)와도 어긋났다
+- kind: sentence
+  situation: 저혈당 혼수 급속교정
+  index: 1
+  fields:
+  - words
+  why: 쉬운 w-tell·w-name 태그를 뺐다
+- kind: sentence
+  situation: 발작 후 급성 결손
+  index: 3
+  fields:
+  - words
+  why: 쉬운 w-hand 태그를 뺐다
+- kind: sentence
+  situation: 발작 후 급성 결손
+  index: 4
+  fields:
+  - words
+  - en
+  - ko
+  - chunks
+  why: 쉬운 w-day 태그를 뺐다. 환자 안전 — Todd 마비는 48시간까지 갈 수 있고 뇌졸중 배제 전 단정하면 안 돼서 조건절과 기간(하루 이틀)을 넣었다
+- kind: sentence
+  situation: 의식저하 SBAR 인계
+  index: 3
+  fields:
+  - words
+  - en
+  - ko
+  - chunks
+  why: 쉬운 w-minute 태그를 뺐다. 스테이션 인계인데 현장에 간 사람의 시점(we arrived)이라 before he arrived로
+- kind: sentence
+  situation: 다약물 중독 혼수
+  index: 1
+  fields:
+  - words
+  why: Monitoring은 동사(관찰하다) — w-monitor(모니터, 명사) 태그를 뺐다
+- kind: sentence
+  situation: 다약물 중독 혼수
+  index: 3
+  fields:
+  - words
+  why: 쉬운 w-know 태그를 뺐다
+- kind: sentence
+  situation: 다약물 중독 혼수
+  index: 5
+  fields:
+  - words
+  why: 쉬운 w-know 태그를 뺐다
+- kind: word-remove
+  id: w-body
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-know
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-room
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-name
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-minute
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-day
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-week
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-hand
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-baby
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-see
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-tell
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-ask
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-help
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word
+  id: w-area
+  fields:
+  - ko
+  why: clear the area는 주변을 치우는 것 — '구역'은 어색하다
+- kind: word
+  id: w-normal
+  fields:
+  - en
+  - ipa
+  why: 형용사 헤드워드에 부사가 묶였다 — 문장은 eating normally, ko도 정상적으로
+- kind: word
+  id: w-find
+  fields:
+  - ko
+  why: 태그 문장 셋 중 둘이 발견하다(found bottles) — '알아내다'는 find out 하나에만 맞아 둘을 아우르게
+- kind: word
+  id: w-drug
+  fields:
+  - ko
+  why: w-medication(약물)과 ko가 같아 정답이 둘 — use drugs는 기호용 약물을 묻는 말
+- kind: word
+  id: w-frighten
+  fields:
+  - ko
+  why: w-scary(무서운)와 ko가 같고 같은 상황에 함께 나와 정답이 둘
+- kind: word
+  id: w-child
+  fields:
+  - en
+  - ipa
+  why: 활용형 헤드워드를 원형으로(children)
+- kind: word
+  id: w-pressure
+  fields:
+  - en
+  - ipa
+  why: pressure 혼자는 혈압이 아니다 — 문장이 blood pressure라 구 단위로. 겹치는 w-blood 태그는 그 문장에서 뺐다
+- kind: word
+  id: w-pass
+  fields:
+  - en
+  - ipa
+  why: 문장은 passed out(기절하다) — 낱말 pass에는 그 뜻이 없어 구동사로
+- kind: word
+  id: w-race
+  fields:
+  - en
+  why: 활용형 헤드워드를 원형으로(racing)
+- kind: word
+  id: w-stand
+  fields:
+  - en
+  why: 활용형 헤드워드를 원형으로(standing)
+- kind: word
+  id: w-electrolyte
+  fields:
+  - en
+  - ipa
+  why: 활용형 헤드워드를 원형으로(복수 electrolytes)
+- kind: word
+  id: w-pupil
+  fields:
+  - en
+  - ipa
+  why: 활용형 헤드워드를 원형으로(복수 pupils)
+- kind: word
+  id: w-bottle
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 활용형 헤드워드를 원형으로(복수 bottles) — 문장 둘 다 pill bottles·빈 약병이라 ko도 약병으로
+- kind: word
+  id: w-suction
+  fields:
+  - en
+  - ipa
+  why: 활용형 헤드워드를 원형으로(suctioning)
+- kind: word
+  id: w-reposition
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 활용형 헤드워드를 원형으로(repositioning) — '재배치하다'는 기도·자세에 어색해 문장 ko(위치를 다시 잡고)와 맞춤
+- kind: word
+  id: w-drop
+  fields:
+  - en
+  - ipa
+  why: 활용형 헤드워드를 원형으로(dropping)
+- kind: word
+  id: w-prepare
+  fields:
+  - en
+  - ipa
+  why: 활용형 헤드워드를 원형으로(preparing)
+- kind: word
+  id: w-bag
+  fields:
+  - en
+  - ipa
+  why: 활용형 헤드워드를 원형으로(bagging) — 동사 bag(백밸브마스크로 환기하다)
+- kind: word
+  id: w-arrive
+  fields:
+  - en
+  - ipa
+  why: 활용형 헤드워드를 원형으로(arrived)
+- kind: word
+  id: w-watch
+  fields:
+  - en
+  - ipa
+  why: 활용형 헤드워드를 원형으로(watching)
+- kind: word
+  id: w-weak
+  fields:
+  - ko
+  why: 발작 뒤 한쪽 팔 힘 빠짐 — '약화'만으로는 무엇이 약해졌는지 흐리다
+- kind: word
+  id: w-receive
+  fields:
+  - en
+  - ipa
+  why: 활용형 헤드워드를 원형으로(received)
+- kind: word
+  id: w-glucose
+  fields:
+  - ko
+  why: w-sugar(혈당)와 ko가 같아 듣고 뜻 고르기에서 정답이 둘 — 문장 둘 다 수치(glucose was 90·recheck his glucose)
+- kind: word
+  id: w-screen
+  fields:
+  - en
+  - ipa
+  why: 활용형 헤드워드를 원형으로(screening)
+- kind: word
+  id: w-toxin
+  fields:
+  - en
+  - ipa
+  why: 활용형 헤드워드를 원형으로(복수 toxins)
+- kind: word
+  id: w-support
+  fields:
+  - en
+  - ipa
+  why: 활용형 헤드워드를 원형으로(supporting)
+- kind: sentence
+  situation: 발작 후 급성 결손
+  index: 5
+  fields:
+  - en
+  - ko
+  - chunks
+  why: 환자 안전 — '빨리 좋아지면 뇌졸중이 아니다'로 들려 TIA·변동 결손을 놓칠 수 있어, 영상이 필요하다는 쪽으로 뒤집었다

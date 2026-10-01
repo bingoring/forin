@@ -21550,7 +21550,7 @@
     - en: "Was his whole body shaking or just one side?"
       ko: "온몸이 떨렸나요, 아니면 한쪽만 떨렸나요?"
       chunks: ["Was his whole body", "shaking", "or just", "one side", "?"]
-      words: [w-body, w-side, w-shake]
+      words: [w-side, w-shake]
       goal: 1
     - en: "How was he right after it stopped?"
       ko: "멈춘 직후에는 어땠나요?"
@@ -21572,6 +21572,39 @@
       chunks: ["Did he recognize", "you", "when he woke up", "?"]
       words: [w-recognize, w-wake]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-last
+    - w-long
+    cue: 'Wife: "It felt like forever, but I checked my phone — about a minute."'
+    scale:
+    - a few seconds
+    - about a minute
+    - more than five minutes
+    answerAt: 1
+    why: 5분을 넘기면 지속상태로 보고 바로 약을 써야 해서 길이가 곧 치료 결정이에요. 겁먹은 목격자는 시간을 실제보다 길게 느끼기 쉬워서, 시계나 휴대폰으로 잰 시간인지 되물어요.
+    example: By the clock, the shaking lasted about a minute.
+    exKo: 시계로 재 보니 떨림은 1분쯤 지속됐어요.
+  - kind: context
+    words:
+    - w-shake
+    - w-side
+    scenes:
+    - who: 차트 기록
+      icon: board
+      en: Witnessed generalized tonic-clonic seizure, approx. 1 min, per wife.
+      ok: true
+    - who: 동료 간호사에게
+      icon: speech
+      en: His wife says his whole body was shaking for about a minute.
+      ok: true
+    - who: 목격한 가족에게
+      icon: me
+      en: Was it a generalized tonic-clonic seizure or a focal seizure?
+      ok: false
+      fix: Was his whole body shaking, or just one side?
+    why: generalized tonic-clonic·focal은 의료진끼리 쓰는 분류예요. 가족은 본 것을 말할 수 있을 뿐이라, 온몸이었는지 한쪽이었는지를 쉬운 말로 물어 분류는 간호사가 해요.
 
 - theme: er-seizure-loc
   title: 의식수준 GCS 사정
@@ -21599,7 +21632,7 @@
     - en: "Do you know where you are right now?"
       ko: "지금 여기가 어딘지 아시겠어요?"
       chunks: ["Do you know", "where", "you are right now", "?"]
-      words: [w-know]
+      words: []
       goal: 2
     - en: "Squeeze my fingers as hard as you can."
       ko: "제 손가락을 최대한 세게 쥐어보세요."
@@ -21609,7 +21642,7 @@
     - en: "Can you tell me today's date?"
       ko: "오늘 날짜를 말씀해 주시겠어요?"
       chunks: ["Can you", "tell me", "today's date", "?"]
-      words: [w-tell, w-date]
+      words: [w-date]
       goal: 1
     - en: "Follow my finger with your eyes."
       ko: "눈으로 제 손가락을 따라가 보세요."
@@ -21621,6 +21654,41 @@
       chunks: ["Does this hurt", "when I press", "here", "?"]
       words: [w-hurt, w-press]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-open
+    - w-eye
+    cue: His eyes open only when you call his name loudly.
+    scale:
+    - no eye opening
+    - to pain
+    - to voice
+    - spontaneously
+    answerAt: 2
+    why: GCS 눈 반응은 1점(없음)·2점(통증에)·3점(소리·말에)·4점(자발적)이에요. 이름을 불러야 뜨면 3점 — 스스로 뜨고 있는지, 말에 뜨는지, 통증을 줘야 뜨는지 순서대로 확인해요.
+    example: Eyes open to voice — that's a three.
+    exKo: 말에 눈을 떠요 — 3점이에요.
+  - kind: swap
+    words:
+    - w-squeeze
+    - w-finger
+    who: 환자에게 · GCS 운동 반응
+    icon: me
+    before:
+    - 'Can you '
+    - demonstrate grip strength
+    - ' for me?'
+    options:
+    - squeeze my fingers
+    - demonstrate grip strength
+    - grab onto me
+    answer: squeeze my fingers
+    notes:
+      squeeze my fingers: 무엇을 하라는지 분명한 쉬운 지시라 명령 수행을 바로 볼 수 있다.
+      demonstrate grip strength: 평가 항목 이름을 그대로 말한 것 — 의식이 흐린 환자는 알아듣기 어렵다.
+      grab onto me: 쉽지만 흐리다. 반사적으로 움켜쥐는 것과 구별이 안 된다.
+    why: 운동 반응은 쉬운 지시로 확인해요. 반사로 쥐는 것과 가르려면 '쥐었다가 놓아 보세요'까지 시켜 봐요.
 
 - theme: er-seizure-loc
   title: 즉시 혈당 확인
@@ -21670,6 +21738,40 @@
       chunks: ["You'll feel better", "once your sugar", "goes up", "."]
       words: [w-feel, w-sugar]
       goal: 1
+  nuance:
+  - kind: slider
+    words:
+    - w-sugar
+    - w-low
+    cue: Fingerstick reads 52 mg/dL. She's shaky and sweaty but talking and following commands.
+    scale:
+    - level 1 (54–69)
+    - level 2 (below 54)
+    - level 3 (needs help to treat)
+    answerAt: 1
+    why: 미국당뇨병학회(ADA) 기준으로 70 미만은 level 1, 54 미만은 level 2, 수치와 상관없이 의식이 흐려 남의 도움으로 치료해야 하면 level 3(중증)이에요. 52인데 말이 통하면 level 2예요.
+    example: Her sugar is 52 — that's clinically significant hypoglycemia.
+    exKo: 혈당 52 — 임상적으로 의미 있는 저혈당이에요.
+  - kind: context
+    words:
+    - w-sugar
+    - w-blood
+    - w-check
+    scenes:
+    - who: 동료 간호사에게
+      icon: speech
+      en: Her fingerstick glucose is 52, and she's symptomatic.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: POC glucose 52 mg/dL, diaphoretic, A&O x4.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Your POC glucose is 52 milligrams per deciliter.
+      ok: false
+      fix: Your blood sugar is low — 52. We're treating it right now.
+    why: POC(point-of-care)·mg/dL은 차트와 의료진의 말이에요. 환자에게는 blood sugar라고 하고, 낮다는 사실과 지금 조치한다는 것을 함께 말해요.
 
 - theme: er-seizure-loc
   title: 낙상·손상 방지 설명
@@ -21702,7 +21804,7 @@
     - en: "Just clear the area so he doesn't get hurt."
       ko: "다치지 않게 주변만 치워 주세요."
       chunks: ["Just clear", "the area", "so he doesn't", "get hurt", "."]
-      words: [w-clear, w-area, w-hurt]
+      words: [w-clear, w-area]
       goal: 2
     - en: "Don't put your fingers in his mouth."
       ko: "입안에 손가락을 넣지 마세요."
@@ -21717,8 +21819,44 @@
     - en: "This position keeps his airway open."
       ko: "이 자세가 기도를 열어 둡니다."
       chunks: ["This position", "keeps his airway", "open", "."]
-      words: [w-position, w-airway, w-open]
+      words: [w-position, w-airway]
       goal: 1
+  nuance:
+  - kind: pair
+    words:
+    - w-turn
+    - w-side
+    - w-clear
+    - w-area
+    pairs:
+    - - turn him
+      - on his side
+    - - clear
+      - the area
+    - - time how long
+      - it lasts
+    decoys:
+    - a spoon
+    why: 경련 중 옆 사람이 할 일은 옆으로 눕히기(turn him on his side), 주변 치우기(clear the area), 시간 재기(time how long it lasts)예요. 입에는 숟가락이든 손가락이든 아무것도 넣지 않아요.
+  - kind: context
+    words:
+    - w-hold
+    - w-mouth
+    scenes:
+    - who: 가족에게
+      icon: me
+      en: Don't put anything in his mouth — he can't swallow his tongue.
+      ok: true
+    - who: 동료 간호사에게
+      icon: speech
+      en: 'Seizure precautions: side-lying, nothing in the mouth, no restraints.'
+      ok: true
+    - who: 가족에게
+      icon: me
+      en: Avoid oral insertion and physical restraint during ictal activity.
+      ok: false
+      fix: Don't hold him down, and don't put anything in his mouth.
+    why: '''혀를 삼킨다''는 것은 속설이에요. 입에 무언가를 넣으면 이가 부러지거나 넣은 사람이 물려요. 억지로 누르면 다칠 수 있어요. 가족에게는 하지 말 일을 짧고 분명하게 말해요.'
 
 - theme: er-seizure-loc
   title: 발작력·복약 청취
@@ -21761,7 +21899,7 @@
     - en: "Do you know why you stopped?"
       ko: "왜 끊었는지 아시나요?"
       chunks: ["Do you know", "why", "you stopped", "?"]
-      words: [w-know, w-stop]
+      words: [w-stop]
       goal: 2
     - en: "Are these seizures getting more frequent?"
       ko: "발작이 점점 더 잦아지고 있나요?"
@@ -21773,6 +21911,40 @@
       chunks: ["Do you feel", "any warning signs", "before", "a seizure", "?"]
       words: [w-feel, w-warning, w-seizure]
       goal: 1
+  nuance:
+  - kind: slider
+    words:
+    - w-frequent
+    - w-seizure
+    cue: 'Patient: "I used to have one every few months — now it''s almost every week."'
+    scale:
+    - rare
+    - occasional
+    - frequent
+    answerAt: 2
+    why: 빈도가 늘었다는 것은 조절이 안 되고 있다는 신호예요. 복약을 거르지 않았는지, 수면 부족·음주·감염 같은 유발요인이 있는지 이어서 물어요.
+    example: His seizures have become more frequent this month.
+    exKo: 이번 달에 발작이 더 잦아졌어요.
+  - kind: swap
+    words:
+    - w-medication
+    - w-take
+    who: 환자에게 · 복약 순응 확인
+    icon: me
+    before:
+    - 'Have you been '
+    - noncompliant with
+    - ' your seizure medicine?'
+    options:
+    - missing doses of
+    - noncompliant with
+    - forgetting about
+    answer: missing doses of
+    notes:
+      missing doses of: 사실을 판단 없이 묻는다. 솔직한 대답이 나오기 쉽다.
+      noncompliant with: 환자를 탓하는 말로 들린다. 미국 의료진도 요즘은 adherence를 더 쓴다.
+      forgetting about: 거른 이유를 '잊어서'로 단정한다. 약값·부작용 때문일 수도 있다.
+    why: 복약을 거른 이유는 다양해요(약이 떨어짐·부작용·비용). 판단 없이 물어야 진짜 이유가 나와요.
 
 - theme: er-seizure-loc
   title: 첫 발작 성인
@@ -21822,6 +21994,44 @@
       chunks: ["This can happen", "without any", "obvious reason", "."]
       words: [w-happen, w-reason]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-brain
+    - w-scan
+    - w-test
+    - w-reason
+    pairs:
+    - - a brain
+      - scan
+    - - blood
+      - tests
+    - - obvious
+      - reason
+    decoys:
+    - happen
+    why: 첫 발작 설명에 그대로 나오는 짝이에요 — a brain scan(뇌 영상), blood tests(혈액검사), obvious reason(뚜렷한 이유).
+  - kind: context
+    words:
+    - w-test
+    - w-find
+    - w-happen
+    - w-cause
+    scenes:
+    - who: 환자에게
+      icon: me
+      en: We'll do some tests to find out why this happened.
+      ok: true
+    - who: 의사에게 보고
+      icon: stetho
+      en: First-time seizure, no obvious trigger — labs and CT pending.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: We need a workup to rule out structural or metabolic etiologies.
+      ok: false
+      fix: We'll check your blood and scan your brain to look for a cause.
+    why: workup·etiology·structural/metabolic은 의료진의 말이에요. 환자에게는 무슨 검사를 왜 하는지를 쉬운 말로 알려요.
 
 - theme: er-seizure-loc
   title: 발작 후 혼돈(postictal)
@@ -21844,12 +22054,12 @@
     - en: "You're in the emergency room; you had a seizure."
       ko: "여기는 응급실이에요. 발작을 하셨어요."
       chunks: ["You're in", "the emergency room;", "you had", "a seizure", "."]
-      words: [w-room, w-seizure]
+      words: [w-seizure]
       goal: 1
     - en: "Can you tell me your name and today's date?"
       ko: "이름과 오늘 날짜를 말씀해 주시겠어요?"
       chunks: ["Can you tell me", "your name", "and today's", "date", "?"]
-      words: [w-tell, w-name, w-date]
+      words: [w-date]
       goal: 1
     - en: "It's okay, this confusion will clear up soon."
       ko: "괜찮아요, 이 혼란은 곧 풀릴 거예요."
@@ -21869,8 +22079,42 @@
     - en: "I'll ask you the same questions again in a few minutes."
       ko: "몇 분 후에 같은 질문을 다시 드릴게요."
       chunks: ["I'll ask you", "the same questions", "again", "in a few minutes", "."]
-      words: [w-ask, w-question, w-minute]
+      words: [w-question]
       goal: 1
+  nuance:
+  - kind: slider
+    words:
+    - w-confuse
+    cue: He can tell you his name, but not where he is, the date, or what happened.
+    scale:
+    - oriented x1
+    - oriented x2
+    - oriented x3
+    - oriented x4
+    answerAt: 0
+    why: 지남력은 사람·장소·시간·상황 네 가지를 봐요(A&O x4). 이름만 말하면 x1이에요. 발작 후 혼돈은 대개 시간이 지나며 풀리므로 몇 분마다 다시 물어 나아지는지 기록해요.
+    example: He's oriented to person only right now.
+    exKo: 지금은 사람에 대한 지남력만 있어요.
+  - kind: context
+    words:
+    - w-seizure
+    - w-hospital
+    - w-safe
+    scenes:
+    - who: 환자에게
+      icon: me
+      en: You had a seizure, and now you're in the hospital. You're safe.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Postictal, oriented x1, reoriented frequently.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: You're postictal and disoriented right now.
+      ok: false
+      fix: You had a seizure, and you're a little confused right now. That's common, and it usually clears up.
+    why: postictal·disoriented는 차트의 말이에요. 혼란스러운 환자에게는 무슨 일이 있었는지, 지금 어디인지를 짧고 쉬운 말로 되풀이해요.
 
 - theme: er-seizure-loc
   title: 항경련제 누락 재발
@@ -21920,6 +22164,40 @@
       chunks: ["We need", "to restart", "your seizure medication", "today", "."]
       words: [w-restart, w-seizure, w-medication]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-stop
+    - w-medication
+    cue: 'Patient: "I just quit all of them at once last week."'
+    scale:
+    - tapered off with the doctor
+    - skipped a few doses
+    - stopped abruptly
+    answerAt: 2
+    why: 항경련제를 갑자기 끊으면 발작이 다시 오기 쉽고 지속상태까지 올 수 있어요. 끊어야 할 때는 의사와 계획을 세워 서서히 줄여요.
+    example: She stopped her seizure medication abruptly a week ago.
+    exKo: 일주일 전에 항경련제를 갑자기 끊었어요.
+  - kind: context
+    words:
+    - w-restart
+    - w-medication
+    - w-seizure
+    scenes:
+    - who: 차트 기록
+      icon: board
+      en: Nonadherent to levetiracetam x1 wk; restart per neuro.
+      ok: true
+    - who: 동료 간호사에게
+      icon: speech
+      en: He stopped his Keppra a week ago, and neuro wants it restarted.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: You've been nonadherent to your AED regimen.
+      ok: false
+      fix: You've been off your seizure medicine for a week, so we're restarting it today.
+    why: AED(antiepileptic drug)·regimen·nonadherent는 의료진의 말이고, 환자에게는 탓하는 말로 들려요. 사실과 오늘 할 일을 쉬운 말로 말해요.
 
 - theme: er-seizure-loc
   title: 알코올 금단 발작
@@ -21947,7 +22225,7 @@
     - en: "How much do you usually drink in a day?"
       ko: "하루에 보통 얼마나 드시나요?"
       chunks: ["How much", "do you usually", "drink", "in a day", "?"]
-      words: [w-drink, w-day]
+      words: [w-drink]
       goal: 1
     - en: "Are you having sweats, tremors, or seeing things?"
       ko: "땀이 나거나, 떨리거나, 헛것이 보이나요?"
@@ -21957,18 +22235,52 @@
     - en: "How many days has it been since you stopped drinking?"
       ko: "술을 끊으신 지 며칠 됐나요?"
       chunks: ["How many days", "has it been", "since you stopped", "drinking", "?"]
-      words: [w-day, w-stop, w-drink]
+      words: [w-stop, w-drink]
       goal: 1
     - en: "Your hands look like they're shaking a lot."
       ko: "손이 많이 떨리고 있는 것 같아요."
       chunks: ["Your hands look", "like they're shaking", "a lot", "."]
-      words: [w-hand, w-shake]
+      words: [w-shake]
       goal: 2
     - en: "We're giving you medication to prevent worse withdrawal."
       ko: "금단 증상이 심해지지 않게 약을 드릴게요."
       chunks: ["We're giving you", "medication", "to prevent", "worse withdrawal", "."]
       words: [w-give, w-medication, w-prevent, w-withdrawal]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-tremor
+    - w-sweat
+    - w-withdrawal
+    cue: Last drink 36 hours ago. Tremor, sweating, fast heart rate — but fully oriented and no hallucinations.
+    scale:
+    - minor withdrawal
+    - alcoholic hallucinosis
+    - delirium tremens
+    answerAt: 0
+    why: 떨림·땀·빈맥만 있고 의식이 맑으면 가벼운 금단이에요. 의식은 맑은데 헛것이 보이면 알코올성 환각증, 혼돈과 자율신경 폭주가 오면 진전섬망(DTs)이에요. DTs는 대개 마지막 음주 48~96시간 뒤에 와서, 지금 가벼워도 계속 사정해요.
+    example: He's in mild withdrawal — tremulous but oriented.
+    exKo: 가벼운 금단 상태예요 — 떨리지만 지남력은 있어요.
+  - kind: swap
+    words:
+    - w-drink
+    who: 환자에게 · 음주량 문진
+    icon: me
+    before:
+    - 'How much '
+    - alcohol do you consume
+    - ' in a typical day?'
+    options:
+    - do you drink
+    - alcohol do you consume
+    - booze do you put away
+    answer: do you drink
+    notes:
+      do you drink: 담담하고 쉬운 질문. 판단 없이 물어야 솔직한 양이 나온다.
+      alcohol do you consume: 뜻은 같지만 설문지처럼 딱딱하다.
+      booze do you put away: 속어라 가볍게 비꼬는 말로 들릴 수 있다.
+    why: 음주량은 판단 없이 담담하게 묻고, 대답이 나오면 무엇을 몇 잔인지 구체적으로 되물어요.
 
 - theme: er-seizure-loc
   title: 열성 경련 소아 부모 안심
@@ -22006,7 +22318,7 @@
     - en: "I know this looked very scary."
       ko: "정말 무섭게 보였을 거예요, 알아요."
       chunks: ["I know", "this looked", "very scary", "."]
-      words: [w-know, w-scary]
+      words: [w-scary]
       goal: 1
     - en: "Most children outgrow febrile seizures completely."
       ko: "대부분의 아이들은 열성 경련을 완전히 벗어나요."
@@ -22018,6 +22330,40 @@
       chunks: ["We're giving medicine", "to bring", "the fever down", "safely", "."]
       words: [w-give, w-medicine, w-fever]
       goal: 1
+  nuance:
+  - kind: slider
+    words:
+    - w-seizure
+    - w-fever
+    cue: Whole-body shaking for about two minutes, first one today, and she was back to herself within the hour.
+    scale:
+    - simple febrile seizure
+    - complex febrile seizure
+    - febrile status epilepticus
+    answerAt: 0
+    why: 단순 열성 경련은 전신성이고 15분 미만이며 24시간 안에 다시 오지 않아요. 15분 이상이거나 한쪽만이거나 24시간 안에 재발하면 complex, 30분 이상 이어지면 febrile status epilepticus예요.
+    example: This looks like a simple febrile seizure.
+    exKo: 단순 열성 경련으로 보여요.
+  - kind: swap
+    words:
+    - w-seizure
+    - w-child
+    who: 부모에게 · 귀가 교육
+    icon: baby
+    before:
+    - 'If she ever has a seizure that lasts more than five minutes, '
+    - call us
+    - .
+    options:
+    - call 911
+    - call us
+    - wait for it to stop
+    answer: call 911
+    notes:
+      call 911: 5분 넘는 경련은 응급이다. 구급차를 부르는 것이 표준 귀가 교육이다.
+      call us: 병원이나 진료실에 전화하면 치료가 늦어진다. 5분 넘는 경련은 911이다.
+      wait for it to stop: 5분이 넘으면 저절로 멎기를 기다리지 않는다.
+    why: 미국 가정 교육의 표준은 '경련이 5분을 넘으면 911'이에요. 병원 번호가 아니라 911이라고 분명히 말해요.
 
 - theme: er-seizure-loc
   title: 임신부 자간증 발작
@@ -22040,17 +22386,17 @@
     - en: "How many weeks pregnant are you?"
       ko: "임신 몇 주차이신가요?"
       chunks: ["How many weeks", "pregnant", "are you", "?"]
-      words: [w-week, w-pregnant]
+      words: [w-pregnant]
       goal: 1
     - en: "Have you had swelling in your face or hands?"
       ko: "얼굴이나 손이 부었나요?"
       chunks: ["Have you had", "swelling", "in your face", "or hands", "?"]
-      words: [w-swell, w-face, w-hand]
+      words: [w-swell, w-face]
       goal: 1
     - en: "We're checking your blood pressure and calling OB."
       ko: "혈압을 확인하고 산부인과에 연락할게요."
       chunks: ["We're checking", "your blood pressure", "and calling", "OB", "."]
-      words: [w-check, w-blood, w-pressure]
+      words: [w-check, w-pressure]
       goal: 2
     - en: "Have you had a bad headache today?"
       ko: "오늘 심한 두통이 있었나요?"
@@ -22065,8 +22411,40 @@
     - en: "We're getting the baby's heart rate on the monitor too."
       ko: "아기 심박수도 모니터로 확인할게요."
       chunks: ["We're getting", "the baby's heart rate", "on the monitor", "too", "."]
-      words: [w-baby, w-monitor]
+      words: [w-monitor]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-pressure
+    cue: 34 weeks pregnant. BP 168/112 on repeat, with headache and seeing spots.
+    scale:
+    - normal (below 140/90)
+    - hypertensive (140/90 or higher)
+    - severe range (160/110 or higher)
+    answerAt: 2
+    why: 임신 중 수축기 160 이상이나 이완기 110 이상은 severe range예요(ACOG). 다시 재서 확인되면 되도록 빨리 항고혈압제를 쓰고, 두통·시야 증상이 함께 있으면 산과에 곧바로 알려요.
+    example: Her blood pressure is in the severe range.
+    exKo: 혈압이 중증 범위예요.
+  - kind: context
+    words:
+    - w-headache
+    - w-vision
+    scenes:
+    - who: 산과 의사에게
+      icon: stetho
+      en: 34 weeks, BP 168/112, headache and visual spots — concern for preeclampsia with severe features.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Are you seeing spots or flashing lights?
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Are you experiencing scotomata or photopsia?
+      ok: false
+      fix: Are you seeing spots or flashing lights?
+    why: scotoma(암점)·photopsia(광시증)는 의료진의 말이에요. 환자에게는 눈앞에 점이나 번쩍이는 빛이 보이는지 쉬운 말로 물어요.
 
 - theme: er-seizure-loc
   title: 실신 vs 발작 감별
@@ -22099,7 +22477,7 @@
     - en: "Did anyone see stiffening or shaking?"
       ko: "몸이 뻣뻣해지거나 떠는 걸 본 사람이 있나요?"
       chunks: ["Did anyone see", "stiffening", "or shaking", "?"]
-      words: [w-see, w-stiffen, w-shake]
+      words: [w-stiffen, w-shake]
       goal: 2
     - en: "Did your heart feel like it was racing beforehand?"
       ko: "그전에 심장이 빨리 뛰는 느낌이 있었나요?"
@@ -22116,6 +22494,39 @@
       chunks: ["Were you confused", "afterward", ", or did you", "wake up clearheaded", "?"]
       words: [w-confused, w-wake]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-recover
+    - w-confused
+    cue: Coworkers say she was back to normal and chatting within a minute.
+    scale:
+    - clearheaded right away
+    - briefly groggy
+    - confused for a long time
+    answerAt: 0
+    why: 실신은 대개 금방 정신이 맑아지고, 발작은 발작 후 혼돈이 몇 분에서 수십 분 이어지는 일이 많아요. 깨어난 뒤의 모습이 감별의 큰 단서예요.
+    example: She woke up clearheaded right away.
+    exKo: 깨어나자마자 정신이 맑았어요.
+  - kind: context
+    words:
+    - w-stiffen
+    - w-shake
+    scenes:
+    - who: 동료 간호사에게
+      icon: speech
+      en: Coworkers saw a few jerks, but she was back to baseline in seconds.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Witnessed LOC approx. 10 sec, brief myoclonic jerks, no postictal confusion.
+      ok: true
+    - who: 목격한 직장 동료에게
+      icon: me
+      en: Did you observe any tonic-clonic activity or postictal confusion?
+      ok: false
+      fix: Did she stiffen or shake, and was she confused afterward?
+    why: tonic-clonic·postictal은 의료진의 말이에요. 실신에서도 잠깐 씰룩거릴 수 있어서, 몸이 굳었는지·떨었는지와 깨어난 뒤의 모습을 쉬운 말로 따로 물어요.
 
 - theme: er-seizure-loc
   title: 저나트륨성 의식저하
@@ -22138,7 +22549,7 @@
     - en: "How much water do you drink each day?"
       ko: "하루에 물을 얼마나 드시나요?"
       chunks: ["How much water", "do you drink", "each day", "?"]
-      words: [w-water, w-drink, w-day]
+      words: [w-water, w-drink]
       goal: 1
     - en: "Any recent vomiting or diarrhea?"
       ko: "최근에 구토나 설사가 있었나요?"
@@ -22165,6 +22576,40 @@
       chunks: ["We'll raise", "your sodium", "slowly and carefully", "."]
       words: [w-raise, w-sodium]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-sodium
+    - w-low
+    cue: Sodium 118 mEq/L. Confused and vomiting.
+    scale:
+    - mild (130–134)
+    - moderate (125–129)
+    - severe (below 125)
+    answerAt: 2
+    why: 125 미만은 중증 저나트륨이고, 혼돈·구토가 있으면 증상이 있는 저나트륨이라 빨리 치료해요. 그래도 교정 속도에는 상한(대개 24시간에 8~10 mEq/L)이 있어요 — 너무 빨리 올리면 삼투성 탈수초가 올 수 있어요.
+    example: Her sodium is severely low at 118.
+    exKo: 나트륨이 118로 심하게 낮아요.
+  - kind: swap
+    words:
+    - w-raise
+    - w-sodium
+    who: 환자에게 · 치료 설명
+    icon: me
+    before:
+    - 'We''ll raise your sodium '
+    - as fast as possible
+    - .
+    options:
+    - slowly and carefully
+    - as fast as possible
+    - over the next few weeks
+    answer: slowly and carefully
+    notes:
+      slowly and carefully: 사실에 맞다. 올리되 속도를 지키며 자주 잰다.
+      as fast as possible: 너무 빨리 올리면 뇌에 손상(삼투성 탈수초)이 올 수 있어 틀린 설명이다.
+      over the next few weeks: 증상이 있는 저나트륨은 몇 시간~며칠 단위로 교정한다. 몇 주는 너무 느리다.
+    why: 저나트륨 교정은 서두르지 않는 것이 안전의 핵심이에요. 환자에게도 천천히, 자주 재면서 올린다고 알려요.
 
 - theme: er-seizure-loc
   title: 약물 과량 의식저하
@@ -22212,8 +22657,41 @@
     - en: "His breathing should improve within a few minutes."
       ko: "몇 분 안에 호흡이 좋아질 거예요."
       chunks: ["His breathing", "should improve", "within a few minutes", "."]
-      words: [w-breathe, w-improve, w-minute]
+      words: [w-breathe, w-improve]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-breathe
+    - w-slow
+    cue: Respiratory rate 6, pinpoint pupils, only moans to a sternal rub.
+    scale:
+    - breathing normally (12–20 a minute)
+    - breathing slowly (under 12)
+    - not breathing
+    answerAt: 1
+    why: 성인 정상 호흡수는 분당 12~20회예요. 12 미만이면 느린 호흡이고, 아편계 과량에서는 6회처럼 느려지다 멎을 수 있어요. 느리면 날록손과 백밸브마스크를 바로 준비하고, 멎으면 환기를 먼저 해요. 의식은 AVPU로 함께 봐요 — 흉골 문지르기에만 신음하면 P예요.
+    example: His breathing is slow — about six a minute.
+    exKo: 호흡이 느려요 — 분당 6회쯤이에요.
+  - kind: context
+    words:
+    - w-naloxone
+    - w-give
+    scenes:
+    - who: 동료 간호사에게
+      icon: speech
+      en: Giving naloxone 0.4 IV — titrating to his breathing.
+      ok: true
+    - who: 가족에게
+      icon: me
+      en: We're giving him a medicine called naloxone that can reverse the drugs. He may wake up suddenly and feel sick.
+      ok: true
+    - who: 가족에게
+      icon: me
+      en: We're pushing Narcan to reverse the opioid toxidrome.
+      ok: false
+      fix: We're giving him a medicine that can reverse the drugs he took.
+    why: push·toxidrome은 의료진의 말이에요. 날록손으로 깨면 갑자기 금단 증상(구토·흥분)이 올 수 있어서, 가족에게 미리 알려 두면 덜 놀라요.
 
 - theme: er-seizure-loc
   title: 언어장벽 발작 병력
@@ -22261,8 +22739,40 @@
     - en: "The interpreter will help us talk about your medicine."
       ko: "통역사가 약에 대해 이야기하는 걸 도와줄 거예요."
       chunks: ["The interpreter", "will help us", "talk about", "your medicine", "."]
-      words: [w-interpreter, w-help, w-medicine]
+      words: [w-interpreter, w-medicine]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-interpreter
+    cue: You need his seizure history and medication list before treatment.
+    scale:
+    - a family member
+    - bilingual staff (not certified)
+    - a qualified medical interpreter
+    answerAt: 2
+    why: 미국 병원은 언어가 다른 환자에게 자격을 갖춘 의료 통역(대면·전화·화상)을 제공해야 해요. 가족 통역은 빠뜨리거나 걸러 전하기 쉽고, 특히 아이에게 통역을 맡기지 않아요. 병력·복약 확인에는 전문 통역을 써요.
+    example: We're using a qualified interpreter for his history.
+    exKo: 병력 청취에 자격 있는 통역사를 쓰고 있어요.
+  - kind: context
+    words:
+    - w-interpreter
+    - w-medicine
+    scenes:
+    - who: 통역을 통해 환자에게
+      icon: speaker
+      en: Do you take any medicine for seizures?
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: History obtained via phone interpreter, ID 4721.
+      ok: true
+    - who: 통역을 통해 환자에게
+      icon: speaker
+      en: Ask him if he takes any medicine for seizures.
+      ok: false
+      fix: Do you take any medicine for seizures?
+    why: 통역을 쓸 때는 통역사가 아니라 환자를 보고 1인칭으로 직접 말해요. 'Ask him…'처럼 통역사에게 말하면 환자가 대화에서 밀려나요. 차트에는 통역사 번호를 남겨요.
 
 - theme: er-seizure-loc
   title: 지속상태(status epilepticus)
@@ -22300,7 +22810,7 @@
     - en: "This has been going on for more than five minutes."
       ko: "5분 넘게 계속되고 있어요."
       chunks: ["This has been", "going on", "for more than", "five minutes", "."]
-      words: [w-minute]
+      words: []
       goal: 1
     - en: "We need to give a medication to stop this seizure."
       ko: "이 발작을 멈출 약을 드려야 해요."
@@ -22310,8 +22820,43 @@
     - en: "We're placing a mask to help him breathe."
       ko: "호흡을 돕기 위해 마스크를 씌우고 있어요."
       chunks: ["We're placing", "a mask", "to help him", "breathe", "."]
-      words: [w-mask, w-help, w-breathe]
+      words: [w-mask, w-breathe]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-prolong
+    - w-seizure
+    cue: Continuous seizing for 7 minutes, no waking up in between.
+    scale:
+    - under 5 minutes
+    - 5 minutes or more
+    - 30 minutes or more
+    answerAt: 1
+    why: 경련성 발작이 5분 이상 이어지거나, 사이에 깨지 않고 반복되면 지속상태로 보고 바로 벤조디아제핀을 줘요(ILAE 기준 5분). 30분을 넘기면 오래 남는 뇌 손상 위험이 커져요.
+    example: This is a prolonged seizure — past five minutes.
+    exKo: 장기화된 발작이에요 — 5분이 넘었어요.
+  - kind: context
+    words:
+    - w-emergency
+    - w-give
+    - w-medication
+    - w-stop
+    scenes:
+    - who: 가족에게
+      icon: me
+      en: This seizure has gone on too long, so it's an emergency. We're giving medicine to stop it.
+      ok: true
+    - who: 팀에게
+      icon: speech
+      en: Seizing over five minutes — lorazepam 4 mg IV now, second dose ready.
+      ok: true
+    - who: 가족에게
+      icon: me
+      en: He's in status, so we're pushing benzos.
+      ok: false
+      fix: This seizure has lasted too long, so we're giving medicine right now to stop it.
+    why: status·push·benzos는 의료진끼리의 줄임말이에요. 가족에게는 왜 응급인지와 지금 무엇을 하는지를 쉬운 말로 알려요.
 
 - theme: er-seizure-loc
   title: 의식저하 기도 위기
@@ -22354,13 +22899,47 @@
     - en: "We're bagging him to help him breathe."
       ko: "호흡을 돕기 위해 백으로 환기하고 있어요."
       chunks: ["We're bagging him", "to help him", "breathe", "."]
-      words: [w-bag, w-help, w-breathe]
+      words: [w-bag, w-breathe]
       goal: 1
     - en: "Get the intubation tray ready right now."
-      ko: "지금 바로 삽관 카트를 준비해 주세요."
+      ko: "지금 바로 삽관 트레이를 준비해 주세요."
       chunks: ["Get the intubation tray", "ready", "right now", "."]
       words: [w-intubation, w-tray]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-suction
+    - w-mask
+    pairs:
+    - - jaw
+      - thrust
+    - - bag-valve
+      - mask
+    - - suction
+      - catheter
+    decoys:
+    - breathing
+    why: 기도 위기에 바로 쓰는 손기술과 도구의 짝이에요 — jaw thrust(하악 견인), bag-valve mask(BVM, 백밸브마스크), suction catheter(흡인 카테터).
+  - kind: context
+    words:
+    - w-oxygen
+    - w-drop
+    scenes:
+    - who: 팀에게
+      icon: speech
+      en: Sats are 84 and dropping — start bagging.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: SpO2 84% on NRB; BVM ventilation initiated.
+      ok: true
+    - who: 곁에 있는 가족에게
+      icon: me
+      en: His sats are tanking, so we need to tube him.
+      ok: false
+      fix: His oxygen level is dropping, so we're helping him breathe and getting ready to put in a breathing tube.
+    why: sats·tanking·tube him은 팀 안에서 쓰는 줄임말과 속어예요. 가족에게는 무엇이 떨어지고 있고 무엇을 하는지를 쉬운 말로 말해요.
 
 - theme: er-seizure-loc
   title: 저혈당 혼수 급속교정
@@ -22388,7 +22967,7 @@
     - en: "Tell me your name once you can hear me."
       ko: "제 말이 들리면 이름을 말해 주세요."
       chunks: ["Tell me", "your name", "once you", "can hear me", "."]
-      words: [w-tell, w-name, w-hear]
+      words: [w-hear]
       goal: 2
     - en: "We'll recheck your sugar to make sure it stays up."
       ko: "혈당이 유지되는지 다시 확인할게요."
@@ -22410,6 +22989,42 @@
       chunks: ["We're watching", "for your sugar", "dropping again", "."]
       words: [w-watch, w-sugar, w-drop]
       goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-dextrose
+    - w-iv
+    - w-recheck
+    pairs:
+    - - IV
+      - dextrose
+    - - recheck
+      - in 15 minutes
+    - - make sure it
+      - stays up
+    decoys:
+    - pinpoint
+    why: 저혈당 교정의 흐름 그대로예요 — IV dextrose(정맥 포도당)를 주고, 15분 뒤 recheck, 혈당이 stays up(유지되는지)을 확인해요.
+  - kind: context
+    words:
+    - w-sugar
+    - w-recheck
+    - w-watch
+    scenes:
+    - who: 동료 간호사에게
+      icon: speech
+      en: Glucose is up to 142 after the D50 — I'll keep rechecking.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Your sugar is back up. We'll keep checking it, because it can drop again.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Your BG has normalized; we'll trend it for recurrent hypoglycemia.
+      ok: false
+      fix: Your sugar is back up. We'll keep checking it, because it can drop again.
+    why: BG·trend·recurrent hypoglycemia는 의료진의 말이에요. 설포닐우레아나 장시간형 인슐린 때문이면 다시 떨어질 수 있어 계속 재는데, 환자에게는 그 이유를 쉬운 말로 알려요.
 
 - theme: er-seizure-loc
   title: 발작 후 급성 결손
@@ -22447,18 +23062,53 @@
     - en: "Can you squeeze my hand with your left hand?"
       ko: "왼손으로 제 손을 쥐어보시겠어요?"
       chunks: ["Can you squeeze", "my hand", "with your", "left hand", "?"]
-      words: [w-squeeze, w-hand, w-left]
+      words: [w-squeeze, w-left]
       goal: 1
-    - en: "This weakness should improve within a day."
-      ko: "이 약화는 하루 안에 나아질 거예요."
-      chunks: ["This weakness", "should improve", "within a day", "."]
-      words: [w-weak, w-improve, w-day]
+    - en: "If this is from the seizure, the weakness usually improves within a day or two."
+      ko: "발작 때문이라면 이 약화는 대개 하루 이틀 안에 나아져요."
+      chunks: ["If this is", "from the seizure", ", the weakness", "usually improves", "within a day or two", "."]
+      words: [w-weak, w-improve]
       goal: 2
-    - en: "A stroke usually doesn't improve this quickly."
-      ko: "뇌졸중은 보통 이렇게 빨리 나아지지 않아요."
-      chunks: ["A stroke", "usually doesn't", "improve this quickly", "."]
+    - en: "Even if it's improving, we still need to rule out a stroke."
+      ko: "좋아지고 있어도 뇌졸중은 꼭 배제해야 해요."
+      chunks: ["Even if", "it's improving", ", we still need", "to rule out", "a stroke", "."]
       words: [w-stroke, w-improve]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-weak
+    - w-arm
+    cue: He can lift his arm off the bed, but can't hold it up against your hand.
+    scale:
+    - 0/5 no movement
+    - 2/5 moves but not against gravity
+    - 3/5 against gravity only
+    - 4/5 against some resistance
+    - 5/5 normal
+    answerAt: 2
+    why: 근력은 0~5점으로 적어요. 중력을 이기고 들지만 손으로 누르는 저항은 못 이기면 3/5예요. 점수로 적어 두면 좋아지는지 나빠지는지 다음 사람이 바로 비교할 수 있어요.
+    example: Left arm strength is three out of five.
+    exKo: 왼팔 근력은 5점 중 3점이에요.
+  - kind: context
+    words:
+    - w-stroke
+    - w-scan
+    scenes:
+    - who: 환자에게
+      icon: me
+      en: We need a scan to make sure this isn't a stroke.
+      ok: true
+    - who: 의사에게 보고
+      icon: stetho
+      en: New left arm weakness after the seizure — we need to rule out a stroke.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: We need neuroimaging to exclude an acute ischemic event.
+      ok: false
+      fix: We need a scan to make sure this isn't a stroke.
+    why: neuroimaging·acute ischemic event는 의료진의 말이에요. 발작 뒤 마비는 Todd 마비일 수 있지만 뇌졸중을 배제하기 전에는 단정하지 않고, 환자에게는 왜 스캔하는지를 쉬운 말로 알려요.
 
 - theme: er-seizure-loc
   title: 의식저하 SBAR 인계
@@ -22493,10 +23143,10 @@
       chunks: ["Last glucose was 90;", "airway is", "currently stable", "."]
       words: [w-glucose, w-airway, w-stable]
       goal: 2
-    - en: "Seizure lasted about six minutes before we arrived."
-      ko: "저희가 도착하기 전 발작이 약 6분간 지속됐습니다."
-      chunks: ["Seizure lasted", "about six minutes", "before we arrived", "."]
-      words: [w-seizure, w-minute, w-arrive]
+    - en: "Seizure lasted about six minutes before he arrived."
+      ko: "도착 전 발작이 약 6분간 지속됐습니다."
+      chunks: ["Seizure lasted", "about six minutes", "before he arrived", "."]
+      words: [w-seizure, w-arrive]
       goal: 1
     - en: "No further seizure activity since arrival."
       ko: "도착 이후 추가 발작 활동은 없습니다."
@@ -22508,6 +23158,40 @@
       chunks: ["Please recheck", "his glucose", "in one hour", "."]
       words: [w-recheck, w-glucose]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-improve
+    - w-arrival
+    cue: GCS was 8 on arrival and is 12 now.
+    scale:
+    - worsening
+    - unchanged
+    - improving
+    answerAt: 2
+    why: 인계에서는 지금 수치 하나보다 추세가 중요해요. 도착 때 값과 지금 값을 함께 말하면(8에서 12) 받는 사람이 나아지는지 나빠지는지 바로 알아요.
+    example: His GCS is improving — eight on arrival, twelve now.
+    exKo: GCS가 좋아지고 있어요 — 도착 때 8, 지금 12예요.
+  - kind: swap
+    words:
+    - w-recheck
+    - w-glucose
+    who: 인계 · 할 일 전달
+    icon: speech
+    before:
+    - 'Please '
+    - check his sugar sometime
+    - ' — he got dextrose an hour ago.'
+    options:
+    - recheck his glucose at 1500
+    - check his sugar sometime
+    - keep an eye on things
+    answer: recheck his glucose at 1500
+    notes:
+      recheck his glucose at 1500: 무엇을 언제 할지 분명하다. 받는 사람이 그대로 할 수 있다.
+      check his sugar sometime: 언제인지가 없다. 빠뜨리기 쉽다.
+      keep an eye on things: 무엇을 볼지조차 없다. 인계로는 쓸모가 없다.
+    why: 인계의 할 일은 무엇을·언제로 구체적으로 넘겨요. 미국 병원은 시각을 24시간제(1500)로 말하는 일이 많아요.
 
 - theme: er-seizure-loc
   title: 다약물 중독 혼수
@@ -22535,7 +23219,7 @@
     - en: "Monitoring your breathing and heart rhythm closely."
       ko: "호흡과 심장 리듬을 면밀히 관찰하고 있어요."
       chunks: ["Monitoring your breathing", "and heart rhythm", "closely", "."]
-      words: [w-monitor, w-breathe, w-heart, w-rhythm]
+      words: [w-breathe, w-heart, w-rhythm]
       goal: 1
     - en: "We're screening for toxins and supporting you."
       ko: "독소를 선별검사하면서 지지 치료를 하고 있어요."
@@ -22545,7 +23229,7 @@
     - en: "We don't know exactly what he took."
       ko: "정확히 무엇을 드셨는지는 몰라요."
       chunks: ["We don't know", "exactly", "what he took", "."]
-      words: [w-know, w-take]
+      words: [w-take]
       goal: 1
     - en: "His heart rhythm looks abnormal on the monitor."
       ko: "모니터상 심장 리듬이 비정상적으로 보여요."
@@ -22555,8 +23239,42 @@
     - en: "We'll keep supporting him until we know more."
       ko: "더 알아낼 때까지 계속 지지 치료를 할게요."
       chunks: ["We'll keep", "supporting him", "until we know", "more", "."]
-      words: [w-support, w-know]
+      words: [w-support]
       goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-rhythm
+    - w-abnormal
+    cue: QRS is 128 ms on the ECG after a suspected tricyclic overdose.
+    scale:
+    - QRS under 100 ms
+    - QRS 100–160 ms
+    - QRS over 160 ms
+    answerAt: 1
+    why: 삼환계 항우울제 과량에서 QRS가 100 ms를 넘으면 경련 위험이, 160 ms를 넘으면 심실성 부정맥 위험이 커진다는 것이 고전적 기준이에요. QRS가 넓어지면 바로 의사에게 알려요(중탄산나트륨 투여를 고려).
+    example: His QRS is widening on the monitor.
+    exKo: 모니터에서 QRS가 넓어지고 있어요.
+  - kind: context
+    words:
+    - w-screen
+    - w-toxin
+    - w-support
+    scenes:
+    - who: 가족에게
+      icon: me
+      en: We're testing his blood and urine for drugs, and supporting his breathing and heart while we find out more.
+      ok: true
+    - who: 동료 간호사에게
+      icon: speech
+      en: Unknown ingestion — tox screen sent, supportive care, poison control called.
+      ok: true
+    - who: 가족에게
+      icon: me
+      en: We sent a tox screen and are providing supportive care for an unknown ingestion.
+      ok: false
+      fix: We're testing his blood and urine for drugs, and supporting his breathing and heart while we find out more.
+    why: tox screen·supportive care·ingestion은 의료진의 말이에요. 소변 약물 선별검사는 모든 약을 잡지 못해서, 가족에게 찾은 약병과 먹었을 만한 약을 계속 묻는 것도 중요해요.
 
 # ===================== er-polytrauma =====================
 - theme: er-polytrauma
