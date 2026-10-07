@@ -31,6 +31,7 @@ import type { BinderRect } from '@/data/journeyBinderFly';
 import { nb, nbFonts } from '@/theme/nb';
 import { type Translate, useT } from '@/i18n';
 import type { JourneyCurriculum } from './JourneyMap';
+import { BuildingTabs, shelfBuildings, useBuildingLabel } from './BuildingTabs';
 import { measureBinderRect } from './measureBinderRect';
 
 const ROW_SIZE = 4;
@@ -295,8 +296,10 @@ function Binder({ entry, index, width, onOpen }: {
 
 // ── 조립 ─────────────────────────────────────────────────────────────────
 
-export function BinderShelf({ goalDept, goalCurricula, entries, inferred, onOpen, onChangeGoal }: {
+export function BinderShelf({ goalDept, goalBuilding, goalCurricula, entries, inferred, onOpen, onChangeGoal }: {
   goalDept: string;
+  /** 목표 부서의 건물 — 서가의 첫 탭(v45 §D). 서버가 준다. */
+  goalBuilding?: string;
   goalCurricula: JourneyCurriculum[];
   entries: FreeRoamEntry[];
   inferred?: boolean;
@@ -308,8 +311,16 @@ export function BinderShelf({ goalDept, goalCurricula, entries, inferred, onOpen
   const t = useT();
   const [shelfWidth, setShelfWidth] = useState(SHELF_WIDTH_FALLBACK);
 
-  const shelfEntries = entries.filter((e) => (e.dept ?? '') !== goalDept);
+  // 건물 간지(v45). 묶음은 서버가 보낸 건물대로(R1) — 목표 부서는 빼고 묶는다(R3).
+  // 첫 탭은 목표 부서의 건물, 그 건물에 다른 부서가 없으면(R4) 맨 앞 탭. 탭 선택은
+  // 기억하지 않는다(R9) — 들어올 때마다 목표의 건물에서 시작한다.
+  const buildings = shelfBuildings(entries, goalDept);
+  const [picked, setPicked] = useState<string | null>(null);
+  const activeKey = picked ?? goalBuilding ?? '';
+  const active = buildings.find((b) => b.building === activeKey) ?? buildings[0];
+  const shelfEntries = active ? active.entries : [];
   const rows = chunk(shelfEntries, ROW_SIZE);
+  const label = useBuildingLabel();
   const binderWidth = Math.max(40, (shelfWidth - ROW_GAP * (ROW_SIZE - 1)) / ROW_SIZE);
 
   return (
@@ -330,6 +341,24 @@ export function BinderShelf({ goalDept, goalCurricula, entries, inferred, onOpen
         <Text style={[nbText.hand(16), { marginTop: 4 }]}>{t('journey.shelfHeading')}</Text>
         <Text style={[nbText.body(10.5, nb.soft), { marginTop: 2 }]}>{t('journey.shelfHint')}</Text>
 
+        {!!active && (
+          <BuildingTabs tabs={buildings} active={active.building} onPick={setPicked} />
+        )}
+        {/* 패널 — 활성 탭과 이어지는 테두리 상자. 머리에 건물 이름과 그 건물 바인더의 합. */}
+        {!!active && (
+          <View
+            testID="binder-shelf-panel"
+            style={{
+              borderWidth: 1.5, borderColor: nb.ink, borderTopWidth: 0, borderBottomLeftRadius: 6, borderBottomRightRadius: 6,
+              paddingHorizontal: 10, paddingTop: 10, paddingBottom: 12, backgroundColor: nb.paper,
+            }}
+          >
+            <View style={{ flexDirection: 'row', alignItems: 'baseline', gap: 8 }}>
+              <Text numberOfLines={1} style={nbText.hand(17)}>{label(active.building)}</Text>
+              <Text numberOfLines={1} style={nbText.body(10.5, nb.soft)}>
+                {t('journey.buildingPanel', { binders: active.entries.length, done: active.passed, total: active.total })}
+              </Text>
+            </View>
         {/* 이 View 자신은 패딩이 없다 — onLayout이 재는 폭이 곧 바인더가 나눠 가질 폭이다. */}
         <View testID="binder-shelf-rows" onLayout={(e) => setShelfWidth(e.nativeEvent.layout.width)}>
           {rows.map((row, ri) => (
@@ -349,6 +378,8 @@ export function BinderShelf({ goalDept, goalCurricula, entries, inferred, onOpen
             </View>
           ))}
         </View>
+          </View>
+        )}
       </View>
     </View>
   );

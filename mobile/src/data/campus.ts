@@ -42,18 +42,18 @@ export const STEP_META: Record<StepKind, { icon: IconName; nbIcon: NbIconName; l
  * lookup has to match them. The subtitle is display text, so it carries a
  * translation key.
  */
-export const BUILDING_STYLE: Record<string, { icon: FIconName; nbIcon: NbIconName; accent: string; subKey: string; nameKey: string }> = {
+export const BUILDING_STYLE: Record<string, { icon: FIconName; nbIcon: NbIconName; accent: string; subKey: string; nameKey: string; shortKey: string }> = {
   // `nbIcon` is the 근무 수첩 line's doodle, beside the pixel line's `icon`. Two names
   // rather than one because they are not the same drawing at two sizes, and a screen
   // belongs to one line or the other (07). The KEYS are the server's building names, which
   // is why this table lives in src/data — src/app and src/components may hold no Korean
   // literals at all (i18n/ceiling), and these are data, not copy. `nameKey` localizes the
   // DISPLAY name while the Korean key stays the lookup id the server sends.
-  '본관': { icon: 'stetho', nbIcon: 'siren', accent: '#D14B3D', subKey: 'building.main.sub', nameKey: 'building.main.name' },
-  '별관 1': { icon: 'baby', nbIcon: 'baby', accent: '#C2487E', subKey: 'building.annex1.sub', nameKey: 'building.annex1.name' },
-  '별관 2': { icon: 'ivbag', nbIcon: 'pill', accent: '#1E8A5B', subKey: 'building.annex2.sub', nameKey: 'building.annex2.name' },
-  '별관 3': { icon: 'magnify', nbIcon: 'monitor', accent: '#0E7490', subKey: 'building.annex3.sub', nameKey: 'building.annex3.name' },
-  '지원동': { icon: 'gear', nbIcon: 'board', accent: '#6E6354', subKey: 'building.support.sub', nameKey: 'building.support.name' },
+  '본관': { icon: 'stetho', nbIcon: 'siren', accent: '#D14B3D', subKey: 'building.main.sub', nameKey: 'building.main.name', shortKey: 'building.main.short' },
+  '별관 1': { icon: 'baby', nbIcon: 'baby', accent: '#C2487E', subKey: 'building.annex1.sub', nameKey: 'building.annex1.name', shortKey: 'building.annex1.short' },
+  '별관 2': { icon: 'ivbag', nbIcon: 'pill', accent: '#1E8A5B', subKey: 'building.annex2.sub', nameKey: 'building.annex2.name', shortKey: 'building.annex2.short' },
+  '별관 3': { icon: 'magnify', nbIcon: 'monitor', accent: '#0E7490', subKey: 'building.annex3.sub', nameKey: 'building.annex3.name', shortKey: 'building.annex3.short' },
+  '지원동': { icon: 'gear', nbIcon: 'board', accent: '#6E6354', subKey: 'building.support.sub', nameKey: 'building.support.name', shortKey: 'building.support.short' },
 };
 
 /** Fallback for a building the server adds before this file learns its colour.

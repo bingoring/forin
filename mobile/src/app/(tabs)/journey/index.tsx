@@ -22,6 +22,7 @@ import { ActivityIndicator, ScrollView, Text, View } from 'react-native';
 import { useFocusEffect, useRouter } from 'expo-router';
 import { api, type JourneyView } from '@/api/client';
 import { BinderShelf } from '@/components/journey/BinderShelf';
+import { shelfBuildings } from '@/components/journey/BuildingTabs';
 import { NbButton, nbText } from '@/components/nb/NbUI';
 import { type BinderRect, setBinderFlyRect } from '@/data/journeyBinderFly';
 import { offerGoalPick } from '@/data/journeyGoalPick';
@@ -113,13 +114,11 @@ export default function JourneyScreen() {
 
   const allDepts = goalDept ? [goalDept, ...freeRoamDepts.filter((d) => d !== goalDept)] : freeRoamDepts;
 
-  // 머리줄의 두 숫자. 바인더 수는 `allDepts`가 이미 센 것과 같은 값이라 따로 세지
-  // 않는다. 통과한 주제 수는 자유 탐방의 `passed`(주제 단위)와 목표 부서에서 끝난
-  // 주제 수를 더한 것이다 — 자유 탐방이 상황 단위 숫자를 주지 않으므로 이 화면은
-  // 우표(상황)가 아니라 주제를 센다. 갖고 있지 않은 숫자를 우표라고 부르지 않는다.
+  // 머리줄의 두 숫자(v45: `바인더 N권 · 건물 M`). 바인더 수는 `allDepts`가 이미 센 것과
+  // 같은 값이라 따로 세지 않는다. 통과한 주제 수는 v45에서 각 건물 패널 머리로 옮겼다.
   const binderCount = allDepts.length;
-  const passedTopics = (view.freeRoam ?? []).reduce((a, e) => a + (e.passed ?? 0), 0)
-    + curricula.filter((c) => (c.total ?? 0) > 0 && (c.done ?? 0) >= (c.total ?? 0)).length;
+  // 건물 수는 서가가 실제로 그리는 탭 수다(v45 R6) — 같은 함수로 세서 둘이 어긋나지 않는다.
+  const buildingCount = shelfBuildings(view.freeRoam ?? [], goalDept).length;
 
   // 목표를 바꾸는 유일한 입구(V2) — `BinderShelf`의 `내 부서` 카드가 이 함수를 부른다.
   // 목록은 이 화면이 만들지 않고(allDepts) 넘기는 방법은 route param이 아니라 모듈
@@ -141,7 +140,7 @@ export default function JourneyScreen() {
         <Text style={nbText.hand(28)}>{t('journey.shelfTitle')}</Text>
         <View style={{ flex: 1 }} />
         <Text testID="journey-shelf-summary" style={nbText.hand(13.5, nb.soft)}>
-          {t('journey.shelfSummary', { binders: binderCount, topics: passedTopics })}
+          {t('journey.shelfSummary', { binders: binderCount, buildings: buildingCount })}
         </Text>
       </View>
 
@@ -163,6 +162,7 @@ export default function JourneyScreen() {
           <ScrollView testID="journey-shelf-scroll" contentContainerStyle={{ paddingBottom: 24 }}>
             <BinderShelf
               goalDept={goalDept}
+              goalBuilding={view.goalBuilding}
               goalCurricula={curricula}
               entries={view.freeRoam ?? []}
               inferred={!!view.inferred}

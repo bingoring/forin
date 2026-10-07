@@ -352,3 +352,80 @@ describe('BinderShelf', () => {
   });
 
 });
+
+// ── 서가 건물 간지 (v45, binder-shelf-buildings-v45 §R·§5) ─────────────────────────
+describe('BinderShelf — 건물 간지', () => {
+  // 서버가 캠퍼스 표 순서로 보낸 항목(본관 → 별관 1 → 별관 3 → 지원동). 목표는 ER(본관).
+  // 서버는 목표를 빼고 보내지만, 섞여 들어와도 서가가 다시 꽂지 않는지 보려고 ER을 넣어 둔다.
+  const BUILT: FreeRoamEntry[] = [
+    entry({ dept: 'ER', building: '본관', passed: 2, total: 6 }),
+    entry({ dept: 'ICU', building: '본관', passed: 1, total: 5 }),
+    entry({ dept: 'GEN', building: '본관', passed: 0, total: 35 }),
+    entry({ dept: 'NICU', building: '별관 1', passed: 2, total: 4 }),
+    entry({ dept: 'PICU', building: '별관 1', passed: 1, total: 4 }),
+    entry({ dept: 'DERM', building: '별관 3', passed: 0, total: 4 }),
+    entry({ dept: 'SIM', building: '지원동', passed: 0, total: 3 }),
+  ];
+  const props = (over: Record<string, unknown> = {}) => ({ ...baseProps(), entries: BUILT, goalBuilding: '본관', ...over });
+  const tabs = (root: ReactTestInstance) => findAllPressables(root).filter((n) => String(n.props?.testID ?? '').startsWith('binder-shelf-tab-'));
+  const tabIds = (root: ReactTestInstance) => tabs(root).map((n) => String(n.props.testID).replace('binder-shelf-tab-', ''));
+  const panelDepts = (root: ReactTestInstance) => shelfCards(root).map((n) => String(n.props.testID).replace('binder-shelf-card-', ''));
+  const press = (root: ReactTestInstance, b: string) => act(() => { tabs(root).find((n) => n.props.testID === `binder-shelf-tab-${b}`)!.props.onPress(); });
+
+  it('탭은 서버가 보낸 순서대로, 항목이 있는 건물만 — 빈 탭을 지어내지 않는다(R1·R4)', () => {
+    const tree = mount(<BinderShelf {...props()} />);
+    expect(tabIds(tree.root)).toEqual(['본관', '별관 1', '별관 3', '지원동']);
+  });
+
+  it('탭 이름은 짧은 건물 이름이다', () => {
+    const tree = mount(<BinderShelf {...props()} />);
+    const shown = texts(tree.root);
+    for (const label of ['본관', '여성소아', '외래진단', '지원동']) expect(shown).toContain(label);
+  });
+
+  it('첫 탭은 목표 부서의 건물이고, 패널은 그 건물 바인더만 — 목표 부서는 다시 꽂지 않는다(R3)', () => {
+    const tree = mount(<BinderShelf {...props()} />);
+    expect(panelDepts(tree.root)).toEqual(['ICU', 'GEN']);
+  });
+
+  it('목표가 외래진단이면 첫 탭이 외래진단이다', () => {
+    const tree = mount(<BinderShelf {...props({ goalDept: 'RAD', goalBuilding: '별관 3' })} />);
+    expect(panelDepts(tree.root)).toEqual(['DERM']);
+  });
+
+  it('탭을 누르면 패널이 그 건물로 바뀌고, 바인더를 연 것으로 치지 않는다', () => {
+    const p = props();
+    const tree = mount(<BinderShelf {...p} />);
+    press(tree.root, '별관 1');
+    expect(panelDepts(tree.root)).toEqual(['NICU', 'PICU']);
+    expect(p.onOpen).not.toHaveBeenCalled();
+  });
+
+  it('목표 부서의 건물에 다른 부서가 없으면 그 탭은 없고 첫 탭에서 시작한다(R4)', () => {
+    const only = BUILT.filter((e) => e.building !== '지원동');
+    const tree = mount(<BinderShelf {...props({ entries: only, goalDept: 'SIM', goalBuilding: '지원동' })} />);
+    expect(tabIds(tree.root)).not.toContain('지원동');
+    expect(panelDepts(tree.root)).toEqual(['ER', 'ICU', 'GEN']); // 목표가 SIM이면 ER은 평범한 본관 바인더다
+  });
+
+  it('서버가 모르는 건물이 와도 탭을 하나 더 만들고 부서를 잃지 않는다(R7)', () => {
+    const extra = [...BUILT, entry({ dept: 'NEW', building: '신관', passed: 0, total: 2 }), entry({ dept: 'X', passed: 0, total: 1 })];
+    const tree = mount(<BinderShelf {...props({ entries: extra })} />);
+    expect(tabIds(tree.root).slice(-2)).toEqual(['신관', '']);
+    press(tree.root, '신관');
+    expect(panelDepts(tree.root)).toEqual(['NEW']);
+    press(tree.root, '');
+    expect(panelDepts(tree.root)).toEqual(['X']);
+  });
+
+  it('탭 진행 숫자는 활성 탭에만, 값은 그 건물 바인더의 합이다(R5)', () => {
+    const tree = mount(<BinderShelf {...props()} />);
+    const nums = () => texts(tree.root).filter((s) => /^\d+\/\d+$/.test(s));
+    expect(nums()).toContain('1/40'); // 본관: ICU 1/5 + GEN 0/35
+    expect(nums()).not.toContain('3/8');
+    press(tree.root, '별관 1');
+    expect(nums()).toContain('3/8'); // NICU 2/4 + PICU 1/4
+    expect(nums()).not.toContain('1/40');
+  });
+
+});
