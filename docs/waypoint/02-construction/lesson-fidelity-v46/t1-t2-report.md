@@ -8,8 +8,9 @@
 |---|---|
 | `38dead1` feat(nb) | T1 — NbUI·nb.ts 공용 값, `nbMotion.tsx`, NbIcon `faceWorried`·`check` |
 | `fad7e4b` feat(lesson) | T2 — `SheetStack.tsx`(낱장 묶음·뜯김 연출), 화면에는 아직 안 붙임 |
+| `ffde156` fix(nb) | 색 전환 첫 프레임 깜빡임, Android paper 버튼 그림자색, 낱장 유형 라벨 nowrap(줄이지 않음) |
 
-테스트: `npx tsc --noEmit` 0건 · `npx jest` 169 스위트 1202개 전부 통과(시작 때 165/1159). 새 동작마다 일부러 깨뜨려 실패를 확인함(구간 이징·opacity 단일 구간·모션 줄이기·하드 그림자·누름 전환·형광펜 55%·뜯김 순서·key 재마운트·뜯는 중 가드·dim 그림자).
+테스트: `npx tsc --noEmit` 0건 · `npx jest` 169 스위트 1204개 전부 통과(시작 때 165/1159). 새 동작마다 일부러 깨뜨려 실패를 확인함(구간 이징·opacity 단일 구간·모션 줄이기·하드 그림자·누름 전환·형광펜 55%·뜯김 순서·key 재마운트·뜯는 중 가드·dim 그림자).
 
 ## T3·T4가 쓸 것 — 이름과 쓰는 법
 
@@ -90,6 +91,8 @@ stack.current?.isTearing()                       // 뜯는 중 입력 막기
 기존 테스트 중 옛 값을 박아 둔 것(`nbUI.test.tsx`의 버튼 그림자·도장 1.4×2·형광펜·칩)은 지우지 않고 새 값으로 고쳤다.
 
 ## 옮기지 못한 것·근사한 것
+
+아래 1~6은 Build Spec §7 편차 로그에 '미승인'으로 올렸다.
 
 1. **모노 700, 도장 윗줄 800.** 앱에 `IBMPlexMono-Bold`·`Pretendard-ExtraBold` 자산이 없어 `monoBold`는 SemiBold(600), 도장은 Bold(700) 그대로다. 디스크에 후보가 있지만 넣지 않았다: IBM Plex Mono Bold는 다른 프로젝트 `node_modules/@ibm/plex`의 woff(v2.1, 글리프 851 — 저장소 SemiBold v2.3은 1033)라 IPA 등에서 글자 빠짐 위험이 있고, Pretendard ExtraBold TTF는 `alternative/` 판이다. 자산 추가는 사용자 결정(감사 step1 §4-14).
 2. **nbText.mono 기본 자간 1은 유지.** 핸드오프는 쓰는 자리마다 자간을 정하고(키트 라벨·QUICK INFO는 1, STEP 라벨·n/N·IPA는 0), 감사가 보지 않은 화면 30여 곳이 기본값을 쓴다. 그래서 기본을 뒤집지 않고 인자로 열었다 — T3·T4·T6·T7은 0을 넘기거나 `monoBold`를 쓴다.
