@@ -71,3 +71,50 @@ func TestGenerateSeedScenarios_halfBackfilledBankFails(t *testing.T) {
 		t.Fatalf("want V12, got %v", err)
 	}
 }
+
+// v46 (lesson-fidelity-v46 §D): the new sentence fields and the order card reach the
+// scenario untouched, and a malformed one fails the run like any other content error.
+func v46WristbandOrder() *content.SentenceOrder {
+	return &content.SentenceOrder{Ko: "신원확인 4문장 순서", Why: "공감이 먼저예요.", Lines: []content.OrderLine{
+		{En: "I know it feels repetitive.", Icon: "faceAngry"}, {En: "It's for your safety.", Icon: "shield"},
+		{En: "Can you tell me your name?", Icon: "board"}, {En: "Thank you.", Icon: "star"}}}
+}
+
+func TestGenerateSeedScenarios_carriesV46Verbatim(t *testing.T) {
+	s := baseSeed()
+	sent := wristbandSentence()
+	sent.Tag, sent.Icon, sent.Why, sent.Decoy = "환자 안심", "bandage", "every time을 끝에 둬요.", "for the doctor"
+	sent.DistractorsKo = []string{"지금 약을 드릴게요", "차트에 기록했어요"}
+	sent.Blank = &content.SentenceBlank{Answer: "wristband", Options: []content.BlankOption{
+		{En: "wristband", Icon: "bandage"}, {En: "chart", Icon: "board"}, {En: "pill", Icon: "pill"}, {En: "monitor", Icon: "monitor"}}}
+	s.Sentences = []content.Sentence{sent}
+	s.Order = v46WristbandOrder()
+	scns, _, err := generateSeedScenarios(0, testDept(), []Seed{s}, wristbandBank())
+	if err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
+	if !reflect.DeepEqual(scns[0].Sentences, s.Sentences) || !reflect.DeepEqual(scns[0].Order, s.Order) {
+		t.Fatalf("v46 fields not carried:\n got  %+v %+v\n want %+v %+v", scns[0].Sentences, scns[0].Order, s.Sentences, s.Order)
+	}
+}
+
+func TestGenerateSeedScenarios_badV46Fails(t *testing.T) {
+	s := baseSeed()
+	sent := wristbandSentence()
+	sent.Decoy = "every time"
+	s.Sentences = []content.Sentence{sent}
+	if _, _, err := generateSeedScenarios(0, testDept(), []Seed{s}, wristbandBank()); err == nil || !strings.Contains(err.Error(), "V18") {
+		t.Fatalf("want V18, got %v", err)
+	}
+	s.Sentences = []content.Sentence{wristbandSentence()}
+	s.Order = v46WristbandOrder()
+	s.Order.Lines = s.Order.Lines[:3]
+	if _, _, err := generateSeedScenarios(0, testDept(), []Seed{s}, wristbandBank()); err == nil || !strings.Contains(err.Error(), "V19") {
+		t.Fatalf("want V19, got %v", err)
+	}
+	s.Sentences = nil
+	s.Order = v46WristbandOrder()
+	if _, _, err := generateSeedScenarios(0, testDept(), []Seed{s}, wristbandBank()); err == nil || !strings.Contains(err.Error(), "order") {
+		t.Fatalf("order without sentences must fail, got %v", err)
+	}
+}

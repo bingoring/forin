@@ -43,6 +43,9 @@ type Seed struct {
 	// Nuance (v45, build-spec §11-3) are this situation's nuance items, carried
 	// verbatim like Sentences.
 	Nuance []content.Nuance `yaml:"nuance"`
+	// Order (v46, lesson-fidelity-v46 결정 8) is this situation's order card, carried
+	// verbatim like Sentences. Optional.
+	Order *content.SentenceOrder `yaml:"order"`
 }
 
 // SeedPersona is the patient/colleague character for one situation. Authored per
@@ -111,11 +114,17 @@ func generateSeedScenarios(deptIdx int, d Dept, seeds []Seed, lexicon []content.
 			}
 			errs := content.ValidateSentences(s.Theme, bank, len(s.Goals), s.Sentences)
 			errs = append(errs, content.ValidateNuance(s.Title, content.UsedWordIDs(s.Sentences), s.Nuance, content.IsV45Bank(bank))...)
+			for j, sn := range s.Sentences {
+				errs = append(errs, content.ValidateSentenceV46(j, sn)...)
+			}
+			errs = append(errs, content.ValidateOrder(s.Title, s.Order)...)
 			if len(errs) > 0 {
 				return nil, nil, fmt.Errorf("dept %s seed %q: %w", d.Code, s.Title, errors.Join(errs...))
 			}
 		} else if len(s.Nuance) > 0 {
 			return nil, nil, fmt.Errorf("dept %s seed %q: has nuance but no sentences to anchor it", d.Code, s.Title)
+		} else if s.Order != nil {
+			return nil, nil, fmt.Errorf("dept %s seed %q: has an order card but no sentences to anchor it", d.Code, s.Title)
 		}
 		diff := clampDiff(s.Difficulty)
 		mins := 4 + diff*2
@@ -141,6 +150,7 @@ func generateSeedScenarios(deptIdx int, d Dept, seeds []Seed, lexicon []content.
 			CollabWith: s.CollabWith,
 			Sentences:  s.Sentences,
 			Nuance:     s.Nuance,
+			Order:      s.Order,
 			Briefing: &content.Briefing{
 				Dept: d.Label + " · " + s.Room, DeptColor: d.Color, Brief: s.Brief, Difficulty: diff,
 				TimeLabel: fmt.Sprintf("약 %d분", mins), Skills: s.Skills,

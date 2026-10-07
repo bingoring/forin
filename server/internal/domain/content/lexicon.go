@@ -126,7 +126,11 @@ func ValidateBundleLessons(b *Bundle) []error {
 		errs = append(errs, ValidateLexiconV45(bank)...)
 	}
 	for _, s := range b.Scenarios {
-		if len(s.Sentences) == 0 && len(s.Nuance) == 0 {
+		if len(s.Sentences) == 0 && len(s.Nuance) == 0 && s.Order == nil {
+			continue
+		}
+		if len(s.Sentences) == 0 && s.Order != nil {
+			errs = append(errs, fmt.Errorf("scenario %s: order: V19 has an order card but no sentences — there is no STEP 2 to hold it", s.ID))
 			continue
 		}
 		bank, ok := FindLexiconTheme(b.Lexicons, s.Theme)
@@ -136,6 +140,12 @@ func ValidateBundleLessons(b *Bundle) []error {
 		}
 		errs = append(errs, ValidateSentences(s.Theme, bank, len(s.Goals), s.Sentences)...)
 		errs = append(errs, ValidateNuance(s.ID, UsedWordIDs(s.Sentences), s.Nuance, IsV45Bank(bank) && len(s.Sentences) > 0)...)
+		for i, sn := range s.Sentences {
+			for _, e := range ValidateSentenceV46(i, sn) {
+				errs = append(errs, fmt.Errorf("scenario %s: %w", s.ID, e))
+			}
+		}
+		errs = append(errs, ValidateOrder(s.ID, s.Order)...)
 	}
 	return errs
 }

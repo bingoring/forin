@@ -31,6 +31,10 @@ type Nuance struct {
 	// and what lets a word missed in STEP 1 come back in STEP 2.
 	Words []string `yaml:"words" json:"words"`
 	Why   string   `yaml:"why,omitempty" json:"why,omitempty"` // the explanation (Korean)
+	// Ko (v46) is the Korean the C5/C6 screens draw: for context, the meaning of Word
+	// (the memo “악화되다”, set together with Word); for swap, the swapped sentence's
+	// meaning (the line under the card — the screen adds "— 라고 전해야 해요").
+	Ko string `yaml:"ko,omitempty" json:"ko,omitempty"`
 
 	// slider
 	Cue      string   `yaml:"cue,omitempty" json:"cue,omitempty"`
@@ -190,6 +194,9 @@ func ValidateNuance(scenario string, used map[string]bool, items []Nuance, requi
 			if !used[id] {
 				bad(i, "V15", "word %q is not used by this situation's sentences", id)
 			}
+		}
+		for _, m := range validateNuanceV46(n) {
+			bad(i, "V14", "%s", m)
 		}
 		switch n.Kind {
 		case NuanceSlider:

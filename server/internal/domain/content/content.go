@@ -231,6 +231,9 @@ type Scenario struct {
 	// scale and collocation cards, STEP 2's reel, context and swap drills. Authored
 	// per situation (결정 7); empty until a department's content has the v45 pass.
 	Nuance []Nuance `yaml:"nuance,omitempty" json:"nuance,omitempty"`
+	// Order (v46, 결정 8) is this situation's order card — optional; without it the
+	// sentence sheet skips the order prompt (§R3).
+	Order *SentenceOrder `yaml:"order,omitempty" json:"order,omitempty"`
 }
 
 // ---- lesson four steps (v44): words + sentences ----
@@ -300,6 +303,55 @@ type Sentence struct {
 	// toward (checked A3: 1..len(seed.Goals)). STEP 3's guided pass walks a
 	// situation's sentences in this order.
 	Goal int `yaml:"goal" json:"goal"`
+
+	// ── v46 (lesson-fidelity-v46 §D): what the handoff's sentence sheet draws. All
+	// optional — a sentence without them falls back per §R3 — but checked when present
+	// (ValidateSentenceV46, V18). Icon names are NbIcon names; the allowed set is the
+	// mobile NbIcon union, kept by mobile's contentIcons test, not checked here.
+	Tag  string `yaml:"tag,omitempty" json:"tag,omitempty"`   // short Korean label, the sheet header's blue tag
+	Icon string `yaml:"icon,omitempty" json:"icon,omitempty"` // NbIcon in the sheet's amber circle
+	Why  string `yaml:"why,omitempty" json:"why,omitempty"`   // the "왜?" note under the answer (Korean)
+	// Decoy is build's one wrong chunk mixed into the pool — close to the sentence's own
+	// chunks, but none of them and nowhere in En.
+	Decoy string `yaml:"decoy,omitempty" json:"decoy,omitempty"`
+	// DistractorsKo are listen's two wrong meanings (Korean), next to Ko as the third.
+	DistractorsKo []string       `yaml:"distractorsKo,omitempty" json:"distractorsKo,omitempty"`
+	Blank         *SentenceBlank `yaml:"blank,omitempty" json:"blank,omitempty"`
+}
+
+// SentenceBlank is the blank prompt's authored 2×2 (handoff SENTS `before`/`answer`/`opts`).
+// Answer is a stretch of the sentence's En — on word boundaries, exactly once — and the
+// screen splits En around it; Options are the four cards, the answer among them.
+type SentenceBlank struct {
+	Answer  string        `yaml:"answer" json:"answer"`
+	Options []BlankOption `yaml:"options" json:"options"`
+}
+
+// BlankOption is one card of the blank 2×2: the English word and its NbIcon.
+type BlankOption struct {
+	En   string `yaml:"en" json:"en"`
+	Icon string `yaml:"icon" json:"icon"`
+}
+
+// SentenceOrder is a situation's order card (결정 8): four short lines in the order the
+// conversation runs, authored per situation because the sentence list is grouped by goal
+// and is not a conversation order. The answer is Lines as written; the screen shuffles.
+type SentenceOrder struct {
+	Tag   string      `yaml:"tag,omitempty" json:"tag,omitempty"`   // header tag (fallback: §R3)
+	Icon  string      `yaml:"icon,omitempty" json:"icon,omitempty"` // amber circle (fallback: §R3)
+	Ko    string      `yaml:"ko" json:"ko"`                         // header line, e.g. "불만 환자 응대 4문장 순서"
+	Why   string      `yaml:"why" json:"why"`                       // the "왜?" note after the answer
+	Lines []OrderLine `yaml:"lines" json:"lines"`                   // exactly 4, in conversation order
+}
+
+// OrderLine is one line of an order card. The handoff draws En and Icon; Ko and Note
+// (a 2–4 character role such as "공감"·"이유") are optional extras for the notes and the
+// "공감 → 이유 → 확인 → 감사" summary.
+type OrderLine struct {
+	En   string `yaml:"en" json:"en"`
+	Icon string `yaml:"icon" json:"icon"`
+	Ko   string `yaml:"ko,omitempty" json:"ko,omitempty"`
+	Note string `yaml:"note,omitempty" json:"note,omitempty"`
 }
 
 // Persona describes the AI's conversation character for realistic role-play.
