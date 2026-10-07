@@ -46,6 +46,9 @@ type Nuance struct {
 	// reel · context
 	Word   string        `yaml:"word,omitempty" json:"word,omitempty"`
 	Scenes []NuanceScene `yaml:"scenes,omitempty" json:"scenes,omitempty"`
+	// Feels are a reel's 감상 칩 (spec §11-8): 3–4 impressions with no right answer.
+	// Whichever the learner picks, Why unfolds and the pick is saved to the notes.
+	Feels []string `yaml:"feels,omitempty" json:"feels,omitempty"`
 
 	// swap
 	Who     string            `yaml:"who,omitempty" json:"who,omitempty"`
@@ -227,6 +230,19 @@ func ValidateNuance(scenario string, used map[string]bool, items []Nuance, requi
 		case NuanceReel:
 			if len(n.Scenes) < 4 {
 				bad(i, "V14", "reel has %d scenes, want ≥4", len(n.Scenes))
+			}
+			if len(n.Feels) < 3 || len(n.Feels) > 4 {
+				bad(i, "V14", "reel has %d feels, want 3–4", len(n.Feels))
+			}
+			seenFeel := map[string]bool{}
+			for _, f := range n.Feels {
+				if strings.TrimSpace(f) == "" || seenFeel[f] {
+					bad(i, "V14", "reel feel %q is blank or repeated", f)
+				}
+				seenFeel[f] = true
+			}
+			if strings.TrimSpace(n.Why) == "" {
+				bad(i, "V14", "reel has no why — the note a feel unfolds")
 			}
 		case NuanceContext:
 			if len(n.Scenes) != 3 {

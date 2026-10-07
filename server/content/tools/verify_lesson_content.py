@@ -1021,6 +1021,14 @@ def check_nuance(items: list, used: set[str], required: bool) -> list[tuple[str,
         elif kind == "reel":
             if len(n.get("scenes") or []) < 4:
                 out.append(("V14", f"nuance[{i}] reel: {len(n.get('scenes') or [])} scene(s), want >= 4"))
+            # 스펙 §11-8 — 감상 칩 3~4개(빈 값·중복 없음)와, 칩을 고르면 펼칠 해설.
+            feels = n.get("feels") or []
+            if not 3 <= len(feels) <= 4:
+                out.append(("V14", f"nuance[{i}] reel: {len(feels)} feel(s), want 3-4"))
+            if any(not str(f).strip() for f in feels) or len(set(feels)) != len(feels):
+                out.append(("V14", f"nuance[{i}] reel: a feel is blank or repeated"))
+            if not str(n.get("why") or "").strip():
+                out.append(("V14", f"nuance[{i}] reel: no why — the note a feel unfolds"))
         elif kind == "context":
             scenes = n.get("scenes") or []
             if len(scenes) != 3:
@@ -1884,8 +1892,13 @@ def run_selftest() -> int:
     cases.append(("V14 (swap with nothing to swap)", v45_lex(), v45_seed(swap_empty), "V14", False))
     swap_same = [good_nuance[0], {**swap_empty[1], "before": ["a ", "x", " b"]}]
     cases.append(("V14 (swap target is already the answer)", v45_lex(), v45_seed(swap_same), "V14", False))
-    reel = {"kind": "reel", "words": ["w-name"], "word": "name", "scenes": [{"who": str(k), "en": str(k)} for k in range(4)]}
+    reel = {"kind": "reel", "words": ["w-name"], "word": "name", "scenes": [{"who": str(k), "en": str(k)} for k in range(4)],
+            "feels": ["a", "b", "c"], "why": "w"}
     cases.append(("V14 (two reels)", v45_lex(), v45_seed(good_nuance + [reel, reel]), "V14", False))
+    cases.append(("one complete reel — no violations", v45_lex(), v45_seed(good_nuance + [reel]), "", False))
+    cases.append(("V14 (reel without feels)", v45_lex(), v45_seed(good_nuance + [{**reel, "feels": []}]), "V14", False))
+    cases.append(("V14 (reel feel repeated)", v45_lex(), v45_seed(good_nuance + [{**reel, "feels": ["a", "a", "b"]}]), "V14", False))
+    cases.append(("V14 (reel without why)", v45_lex(), v45_seed(good_nuance + [{**reel, "why": ""}]), "V14", False))
     pair_decoy = [{"kind": "pair", "words": ["w-name"], "pairs": [["a", "b"], ["c", "d"]], "decoys": ["b"], "why": "w"}, good_nuance[1]]
     cases.append(("V14 (a pair decoy is also a right answer)", v45_lex(), v45_seed(pair_decoy), "V14", False))
     bad_icon = [good_nuance[0], {**good_nuance[1], "scenes": [{**good_nuance[1]["scenes"][0], "icon": "round"}] + good_nuance[1]["scenes"][1:]}]

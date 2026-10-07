@@ -150,7 +150,7 @@ STEP 1은 단어를 보여 주고 외우게 하지 않고, **뜻과 단서를 �
 
 **최솟값(V14):** 상황마다 STEP 1 문항(`slider` 또는 `pair`) 1개 이상, STEP 2 문항(`context`·
 `swap`·`reel` 중) 1개 이상. 종류를 억지로 채우지 마세요 — 그 장면에 자연스러운 것을 고릅니다.
-`reel`은 0~1개.
+`reel`은 0~1개. 릴에는 **감상 칩 `feels` 3~4개와 해설 `why`가 반드시** 있어야 합니다(장면을 다 본 학습자가 정답 없이 하나를 고르고, 고르면 해설이 펼쳐지며 노트에 저장됩니다). 칩은 짧게(띄어쓰기 포함 10자 안팎), 서로 겹치지 않게.
 
 **모든 문항은 `words:`로 자기가 다루는 단어 id를 적습니다(V15).** 그 id는 **이 상황의 문장이
 쓰는 단어**여야 합니다. 앱이 "STEP 1에서 틀린 단어가 STEP 2에 다시 나오게" 할 때 이 연결을 씁니다.
@@ -178,6 +178,8 @@ nuance:
       - {who: "차트 기록", en: "Pt condition deteriorated despite fluids.", ko: "수액에도 상태 악화.", tone: 건조}
       - {who: "야간 인계", en: "If he deteriorates overnight, call RRT.", ko: "밤새 악화되면 신속대응팀 호출.", tone: 경고}
       - {who: "보호자에게는…", en: "He's getting worse, and we're acting on it.", ko: "상태가 나빠지고 있고, 조치 중이에요.", tone: 완곡, swap: true}
+    feels: [딱딱한 임상어, 급하고 무거움, 보호자에겐 안 씀, 차트에 잘 맞음]   # 감상 칩 3~4개 — 정답 없음, 그 단어가 장면들에서 주는 느낌
+    why: "의료진끼리는 정확해서 좋지만, 가족 앞에서는 차갑게 들려요. 보호자에게는 'getting worse'로."   # 칩을 고르면 펼치는 해설(필수, 사실이어야 함)
   - kind: context                      # 같은 뜻 다른 장면 — 셋 중 어색한 하나
     words: [w-deteriorate]
     scenes:                            # 정확히 3장, ok: false 는 정확히 1장이고 거기에 fix
