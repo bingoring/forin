@@ -1,0 +1,427 @@
+theme: er-shock
+changes:
+- kind: sentence
+  situation: 저혈압 초기 활력 인지
+  index: 1
+  fields:
+  - words
+  why: 쉬운 w-hand 태그를 뺐다
+- kind: sentence
+  situation: 기립성 저혈압 문진
+  index: 1
+  fields:
+  - words
+  why: 쉬운 w-today 태그를 뺐다
+- kind: sentence
+  situation: 탈수 관련 저혈압 교육
+  index: 4
+  fields:
+  - ko
+  why: '''드리게요''는 잘못된 활용 — ''드릴게요'''
+- kind: sentence
+  situation: 실신 후 내원 사정
+  index: 1
+  fields:
+  - words
+  why: 쉬운 w-see 태그를 뺐다
+- kind: sentence
+  situation: 실신 후 내원 사정
+  index: 2
+  fields:
+  - words
+  why: 쉬운 w-head 태그를 뺐다
+- kind: sentence
+  situation: 실신 후 내원 사정
+  index: 4
+  fields:
+  - words
+  why: 쉬운 w-head 태그를 뺐다
+- kind: sentence
+  situation: 패혈증성 쇼크 조기 인지
+  index: 1
+  fields:
+  - words
+  why: 쉬운 w-come 태그를 뺐다
+- kind: sentence
+  situation: 심인성 쇼크 감별
+  index: 3
+  fields:
+  - words
+  why: 여기 pressure는 chest pressure(가슴 압박감)라 w-pressure(혈압)와 다른 뜻 — 태그를 뺐다
+- kind: sentence
+  situation: 아나필락시스 분포성 쇼크
+  index: 1
+  fields:
+  - words
+  - ko
+  why: 쉬운 w-eat 태그를 뺐다; '무엇을 드시거나 드셨나요'는 같은 말이 겹쳐 뜻이 흐리다 — eat or take는 먹었거나 복용했거나
+- kind: sentence
+  situation: 수액 반응성 평가
+  index: 0
+  fields:
+  - words
+  why: 쉬운 w-come 태그를 뺐다
+- kind: sentence
+  situation: 언어장벽 쇼크 핵심 확인
+  index: 0
+  fields:
+  - words
+  why: 쉬운 w-yes·w-no 태그를 뺐다
+- kind: sentence
+  situation: 언어장벽 쇼크 핵심 확인
+  index: 1
+  fields:
+  - words
+  why: 쉬운 w-yes·w-no 태그를 뺐다
+- kind: sentence
+  situation: 언어장벽 쇼크 핵심 확인
+  index: 2
+  fields:
+  - words
+  why: 쉬운 w-come 태그를 뺐다
+- kind: sentence
+  situation: 언어장벽 쇼크 핵심 확인
+  index: 3
+  fields:
+  - words
+  - ko
+  why: 쉬운 w-hand·w-yes·w-no 태그를 뺐다; w-squeeze 태그를 더했다; '네 이면' 띄어쓰기 오류와 예/아니오 표기 정리
+- kind: sentence
+  situation: 언어장벽 쇼크 핵심 확인
+  index: 4
+  fields:
+  - words
+  why: w-possible 태그를 더했다
+- kind: sentence
+  situation: 노인 다약제 저혈압
+  index: 0
+  fields:
+  - words
+  why: 쉬운 w-through·w-today 태그를 뺐다
+- kind: sentence
+  situation: 원인 미상 저혈압 계통 접근
+  index: 0
+  fields:
+  - words
+  why: 쉬운 w-begin 태그를 뺐다
+- kind: sentence
+  situation: 패혈증성 쇼크 급속 악화 번들
+  index: 1
+  fields:
+  - words
+  why: 쉬운 w-hour 태그를 뺐다
+- kind: sentence
+  situation: 패혈증성 쇼크 급속 악화 번들
+  index: 4
+  fields:
+  - words
+  why: 쉬운 w-minute 태그를 뺐다
+- kind: sentence
+  situation: 폐색전 폐쇄성 쇼크
+  index: 3
+  fields:
+  - words
+  why: right now의 right는 w-right(오른쪽·맞는)와 다른 뜻 — 태그를 뺐다
+- kind: sentence
+  situation: 심장압전 폐쇄성 쇼크
+  index: 0
+  fields:
+  - words
+  why: 쉬운 w-big 태그를 뺐다
+- kind: sentence
+  situation: 심장압전 폐쇄성 쇼크
+  index: 3
+  fields:
+  - words
+  why: 쉬운 w-big 태그를 뺐다
+- kind: sentence
+  situation: 부신위기 저혈압
+  index: 1
+  fields:
+  - words
+  why: 여기서 cause는 동사(can cause)라 헤드워드(원인, 명사)와 다르다 — 태그를 뺐다
+- kind: word-remove
+  id: w-hand
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-today
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-head
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-see
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-come
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-minute
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-hour
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-yes
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-no
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-eat
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-begin
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다(w-start와 ko 시작하다가 겹치기도 했다)
+- kind: word-remove
+  id: w-big
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-through
+  why: go through를 구 단위로 가르치려 w-go를 구로 바꿨다 — through 낱말 태그는 불필요해져 은행에서 뺐다
+- kind: word
+  id: w-fall
+  fields:
+  - ko
+  - example
+  why: 태그 문장 여섯 중 다섯이 명사(any falls · prevent a fall · from the fall)인데 ko가 동사 '넘어지다'였다 — 예문도 명사로
+- kind: word
+  id: w-quick
+  fields:
+  - ko
+  why: w-fast와 ko(빠른)가 같아 정답이 둘 — quick은 a quick pinch·give fluids quickly처럼 신속한
+- kind: word
+  id: w-throw
+  fields:
+  - en
+  - ipa
+  - example
+  - ko
+  why: ko '토하다'는 throw 낱말이 아니라 구 throw up의 뜻 — 태그 문장이 Throwing up이라 구로 / 듣고 뜻 고르기에서 vomit과 ko가 같아 정답이 둘
+- kind: word
+  id: w-bleed
+  fields:
+  - ko
+  why: 태그 문장 넷이 모두 명사 bleeding(vaginal bleeding · Bleeding inside)인데 ko가 '출혈되다'였다
+- kind: word
+  id: w-draw
+  fields:
+  - ko
+  why: 형제 주제 er-sepsis와 맞춤 — 태그 문장은 모두 draw cultures·labs(채혈)
+- kind: word
+  id: w-concern
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 태그 문장·예문이 형용사 I'm concerned about infection인데 헤드워드가 동사 concern, ko '걱정하다'였다
+- kind: word
+  id: w-culture
+  fields:
+  - ko
+  why: 형제 주제 er-sepsis와 맞춤 — cultures는 검사
+- kind: word
+  id: w-hold
+  fields:
+  - ko
+  why: w-keep과 ko(유지하다)가 겹쳐 듣고 뜻 고르기에서 정답이 둘 — hold는 혈압 수치를 받쳐 주는 쪽 / keep의 '유지'와 겹침
+- kind: word
+  id: w-work
+  fields:
+  - ko
+  why: '''작동하다''는 기계 같다 — so it works quickly(약·라인이 효과를 낸다); 형제 주제 er-sepsis와 맞춤'
+- kind: word
+  id: w-close
+  fields:
+  - en
+  - ipa
+  - ko
+  - example
+  why: 형용사 헤드워드(close, ko '가까이')에 부사가 묶였다 — 태그 문장 둘 모두 watch closely
+- kind: word
+  id: w-go
+  fields:
+  - en
+  - ipa
+  - ko
+  - example
+  why: 공통 쉬운 말 go이지만 유일한 태그 문장이 go through(훑어보다)라 구 단위로 둔다
+- kind: word
+  id: w-water
+  fields:
+  - en
+  - ipa
+  - ko
+  - icon
+  - example
+  why: ko '물'은 Water pills(이뇨제)에 맞지 않았다 — 태그 문장이 하나뿐이고 water pill은 구로 가르칠 값이 있다
+- kind: word
+  id: w-swell
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 태그 문장·예문이 형용사 The swollen leg인데 헤드워드가 동사 swell이었다
+- kind: word
+  id: w-rate
+  fields:
+  - ko
+  why: 속도·수치를 두루 가리키는 '속도(맥박수)'를 heart rate의 뜻으로 좁히고 형제 주제 er-sepsis와 맞춤
+- kind: word
+  id: w-septic
+  fields:
+  - ko
+  why: septic shock은 '패혈성 쇼크' — 형제 주제 er-sepsis의 w-septic과 맞춤
+- kind: word
+  id: w-climb
+  fields:
+  - ko
+  why: 형제 주제 er-sepsis와 맞춤 — lactate is climbing
+- kind: word-add
+  id: w-squeeze
+  why: 언어장벽 문장 3에 이미 있는 말 — 쉬운 w-hand·w-yes·w-no 태그를 빼면 그 문장에 태그가 없어져 새로 세웠다
+- kind: word-add
+  id: w-possible
+  why: 언어장벽 상황의 서로 다른 단어가 7개로 줄어(V3) 문장 4에 이미 있는 as soon as possible의 possible을 세웠다
+- kind: word
+  id: w-norepinephrine
+  fields:
+  - exKo
+  why: keyPhrase 문장 ko 변경에 맞춰 exKo 정렬
+- kind: sentence
+  situation: 패혈증성 쇼크 급속 악화 번들
+  index: 0
+  fields:
+  - ko
+  why: 승압제 개시를 지시하는 말투가 되어 간호사가 의사에게 제안하는 어조로
+- kind: word
+  id: w-consider
+  fields:
+  - exKo
+  why: keyPhrase 문장 ko 변경에 맞춰 exKo 정렬
+- kind: word
+  id: w-pressor
+  fields:
+  - exKo
+  why: keyPhrase 문장 ko 변경에 맞춰 exKo 정렬
+- kind: word
+  id: w-atropine
+  fields:
+  - exKo
+  why: keyPhrase 문장 ko 변경에 맞춰 exKo 정렬
+- kind: sentence
+  situation: 신경성 쇼크 척수손상
+  index: 2
+  fields:
+  - ko
+  why: '''consider a pressor''는 치료를 결정하는 사람의 말 — 의사에게 제안하는 어조로'
+- kind: word
+  id: w-recommend
+  fields:
+  - exKo
+  why: keyPhrase 문장 ko 변경에 맞춰 exKo 정렬
+- kind: word
+  id: w-icu
+  fields:
+  - exKo
+  why: keyPhrase 문장 ko 변경에 맞춰 exKo 정렬
+- kind: word
+  id: w-admission
+  fields:
+  - exKo
+  why: keyPhrase 문장 ko 변경에 맞춰 exKo 정렬
+- kind: word
+  id: w-central
+  fields:
+  - exKo
+  - cue
+  why: keyPhrase 문장 ko 변경에 맞춰 exKo 정렬 / 문장 ko 변경에 맞춰 cue를 중앙 모니터 감시·중심 라인 두 뜻으로
+- kind: word
+  id: w-monitor
+  fields:
+  - exKo
+  why: keyPhrase 문장 ko 변경에 맞춰 exKo 정렬
+- kind: sentence
+  situation: 다장기 악화 SBAR·ICU 이송
+  index: 2
+  fields:
+  - ko
+  why: '''central monitoring''은 중심정맥 감시가 아님(번역 과잉)'
+- kind: sentence
+  situation: 다장기 악화 SBAR·ICU 이송
+  index: 4
+  fields:
+  - ko
+  why: '''central monitoring'' 번역 과잉 정정'
+- kind: word
+  id: w-bedside
+  fields:
+  - exKo
+  why: keyPhrase 문장 ko 변경에 맞춰 exKo 정렬
+- kind: word
+  id: w-echo
+  fields:
+  - exKo
+  why: keyPhrase 문장 ko 변경에 맞춰 exKo 정렬
+- kind: word
+  id: w-look
+  fields:
+  - exKo
+  - cue
+  why: keyPhrase 문장 ko 변경에 맞춰 exKo 정렬 / cue가 ko를 되풀이
+- kind: word
+  id: w-right
+  fields:
+  - exKo
+  why: keyPhrase 문장 ko 변경에 맞춰 exKo 정렬
+- kind: sentence
+  situation: 폐색전 폐쇄성 쇼크
+  index: 1
+  fields:
+  - ko
+  why: 검사 지시로 읽히지 않게
+- kind: word
+  id: w-sign
+  fields:
+  - distractorsEn
+  why: '''a good signal''도 영어로 맞아 정답이 둘 — symptom으로'
+- kind: word
+  id: w-antibiotic
+  fields:
+  - cue
+  why: cue의 1시간 기준은 패혈성 쇼크
+- kind: word
+  id: w-emergent
+  fields:
+  - cue
+  why: emergent endoscopy는 분 단위가 아니라 '지체 없이'
+- kind: word
+  id: w-find
+  fields:
+  - cue
+  why: cue가 ko를 되풀이
+- kind: word
+  id: w-vomit
+  fields:
+  - ko
+  why: 듣고 뜻 고르기에서 throw up과 ko가 같아 정답이 둘
+- kind: word
+  id: w-dark
+  fields:
+  - ko
+  why: black의 '검은'과 겹침
+- kind: word
+  id: w-activate
+  fields:
+  - ko
+  why: start의 시작/개시와 같은 뜻
+- kind: word
+  id: w-crash
+  fields:
+  - ko
+  why: 태그 문장에서 명사로 쓰임
+- kind: word
+  id: w-run
+  fields:
+  - ko
+  why: give의 '투여하다'와 겹침
