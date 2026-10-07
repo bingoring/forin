@@ -49,14 +49,17 @@ function decodeYamlEscapes(v: string): string {
 }
 
 /**
- * Split a content file into its `nuance:` blocks and the rest. Nuance items (v45) carry
- * NbIcon names under the same `icon:` key a reward uses — like the word banks, they are
- * resolved elsewhere, so the reward scan must not read them and a test below keeps them
- * honest instead. A block runs from its `nuance:` line to the next line indented no
- * deeper than that key (list items at the key's own indent still belong to it).
+ * Split a content file into its NbIcon blocks and the rest. Three blocks carry NbIcon names
+ * under the same `icon:` key a reward uses: `nuance:` (v45 scene and swap icons), and since v46
+ * `sentences:` (the sheet's amber-circle icon, the blank 2×2 option icons) and a situation's
+ * `order:` card (its icon and each line's). Like the word banks, they are resolved elsewhere,
+ * so the reward scan must not read them and the tests below keep them honest instead. A block
+ * runs from its key line to the next line indented no deeper than that key (list items at the
+ * key's own indent still belong to it).
  */
-function splitNuance(src: string): { nuance: string; rest: string } {
-  const nuance: string[] = [];
+const NB_BLOCK = /^\s*(nuance|sentences|order):\s*$/;
+function splitNbBlocks(src: string): { nb: string; rest: string } {
+  const nb: string[] = [];
   const rest: string[] = [];
   let depth = -1;
   for (const line of src.split('\n')) {
@@ -65,14 +68,17 @@ function splitNuance(src: string): { nuance: string; rest: string } {
     // and what the merge tool writes — so a `- ` line at that depth is still inside.
     const sameLevelItem = indent === depth && line.trimStart().startsWith('- ');
     if (depth >= 0 && line.trim() !== '' && indent <= depth && !sameLevelItem) depth = -1;
-    if (depth < 0 && /^\s*nuance:\s*$/.test(line)) {
+    if (depth < 0 && NB_BLOCK.test(line)) {
       depth = indent;
       continue;
     }
-    (depth >= 0 ? nuance : rest).push(line);
+    (depth >= 0 ? nb : rest).push(line);
   }
-  return { nuance: nuance.join('\n'), rest: rest.join('\n') };
+  return { nb: nb.join('\n'), rest: rest.join('\n') };
 }
+
+/** NbIcon names in a block of YAML — block (`icon: x`) and flow (`{en: "a", icon: "x"}`) style. */
+const nbIconsIn = (src: string) => [...src.matchAll(/icon:\s*"?([^\s"',}]+)"?/g)].map((m) => m[1]);
 
 /** Every distinct icon value in the content set, with one file that uses it. Both
  *  quoted and bare scalars — the generator writes bare 마크 for most icons and a
@@ -80,7 +86,7 @@ function splitNuance(src: string): { nuance: string; rest: string } {
 function rewardIcons(): Map<string, string> {
   const found = new Map<string, string>();
   for (const f of walk(CONTENT, notRewardContent)) {
-    const src = splitNuance(readFileSync(f, 'utf8')).rest;
+    const src = splitNbBlocks(readFileSync(f, 'utf8')).rest;
     for (const m of src.matchAll(/icon:\s*(?:"([^"]+)"|([^\s"'#][^\s#]*))/g)) {
       const raw = m[1] !== undefined ? decodeYamlEscapes(m[1]) : m[2];
       if (raw && !found.has(raw)) found.set(raw, f);
@@ -152,22 +158,75 @@ test('every word-bank icon is a name NbIcon actually draws', () => {
   expect(unknown).toEqual([]);
 });
 
-// v45 nuance items (scene and swap icons) are NbIcon names too, and live inside the
-// scenario and topic files among the reward icons — same `icon:` key, different set.
-test('every nuance icon is a name NbIcon actually draws', () => {
+// v45 nuance items (scene and swap icons) and v46 sentence/order icons are NbIcon names too,
+// and live inside the scenario and topic files among the reward icons — same `icon:` key,
+// different set.
+test('every nuance, sentence and order-card icon is a name NbIcon actually draws', () => {
   const decl = readFileSync(join(__dirname, '..', 'components', 'nb', 'NbIcon.tsx'), 'utf8');
   const union = decl.slice(decl.indexOf('NbIconName'), decl.indexOf('export function NbIcon'));
   const known = new Set([...union.matchAll(/'([a-zA-Z0-9-]+)'/g)].map((m) => m[1]));
   const used = new Map<string, string>();
   for (const f of walk(CONTENT, (p) => isLexicon(p) || isTools(p))) {
-    const { nuance } = splitNuance(readFileSync(f, 'utf8'));
-    for (const m of nuance.matchAll(/icon:\s*"?([^\s"',}]+)"?/g)) {
-      if (!used.has(m[1])) used.set(m[1], f.split('/').slice(-1)[0]);
+    for (const n of nbIconsIn(splitNbBlocks(readFileSync(f, 'utf8')).nb)) {
+      if (!used.has(n)) used.set(n, f.split('/').slice(-1)[0]);
     }
   }
   expect(used.size).toBeGreaterThan(2); // 뉘앙스를 못 찾으면 통과해 버린다
   const unknown = [...used].filter(([n]) => !known.has(n)).map(([n, f]) => `${n} (first in ${f})`);
   expect(unknown).toEqual([]);
+});
+
+// The splitter itself, on the shapes the merge tool writes (merge_dept_lessons.py). The real
+// content has no v46 icons yet (ER authoring is the next step), so without this the scan above
+// could miss a whole block and still pass.
+test('v46 sentence and order-card icons leave the reward scan and reach the NbIcon scan', () => {
+  const seed = [
+    '- theme: core-safety-er',
+    '  title: 반복 신원확인',
+    '  briefing:',
+    '    rewards:',
+    '      - icon: "⭐"',
+    '  sentences:',
+    '    - en: "I know it feels repetitive."',
+    '      ko: "반복처럼 느껴지시는 거 알아요"',
+    '      goal: 1',
+    '      tag: "공감"',
+    '      icon: "bandage"',
+    '      blank:',
+    '        answer: "repetitive"',
+    '        options:',
+    '          - {en: "repetitive", icon: "compass"}',
+    '          - {en: "quick", icon: "chartup"}',
+    '  nuance:',
+    '  - kind: swap',
+    '    icon: me',
+    '  order:',
+    '    ko: 4문장 순서',
+    '    icon: shield',
+    '    lines:',
+    '    - en: Thank you.',
+    '      icon: star',
+    '  keyPhrases: ["x"]',
+    '- theme: next',
+    '  icon: "🎖"',
+  ].join('\n');
+  const { nb, rest } = splitNbBlocks(seed);
+  expect(nbIconsIn(nb).sort()).toEqual(['bandage', 'chartup', 'compass', 'me', 'shield', 'star']);
+  expect(nbIconsIn(rest).sort()).toEqual(['⭐', '🎖']);
+  expect(rest).toContain('keyPhrases'); // a block ends at the next key of the seed
+});
+
+// The content verifier (server/content/tools/verify_lesson_content.py) reads the same union
+// from NbIcon.tsx, and keeps a hand-written fallback for running outside this repo. A new
+// NbIcon (faceWorried, lesson-fidelity-v46 결정 9) must reach that fallback too.
+test("the verifier's fallback NbIcon list matches the NbIcon union", () => {
+  const decl = readFileSync(join(__dirname, '..', 'components', 'nb', 'NbIcon.tsx'), 'utf8');
+  const union = decl.slice(decl.indexOf('NbIconName'), decl.indexOf('export function NbIcon'));
+  const known = [...new Set([...union.matchAll(/'([a-zA-Z0-9-]+)'/g)].map((m) => m[1]))].sort();
+  const py = readFileSync(join(CONTENT, 'tools', 'verify_lesson_content.py'), 'utf8');
+  const m = /_NB_ICONS_FALLBACK = set\("""([\s\S]*?)"""/.exec(py);
+  expect(m).not.toBeNull();
+  expect(m![1].split(/\s+/).filter(Boolean).sort()).toEqual(known);
 });
 
 // 간지 카드의 주제 아이콘(2026-10-07). 레지스트리 955개 주제 전부에 하나씩 — 빠진 주제는 아이콘

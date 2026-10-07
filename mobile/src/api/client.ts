@@ -69,6 +69,32 @@ export interface LessonSentence {
   en: string; ko: string; chunks: string[]; words: string[]; goal: number;
   /** Uses a word missed in the last STEP 1 run — STEP 2 shows these first. */
   review?: boolean;
+  // v46 (lesson-fidelity-v46 §D) — the sentence sheet. All optional: absent on content not yet
+  // authored, and the screen falls back per §R3. Icons are NbIcon names.
+  /** Header tag (short Korean, ≤10 chars). Fallback: the situation's short name. */
+  tag?: string;
+  /** NbIcon in the amber circle. Fallback: the department's icon. */
+  icon?: string;
+  /** The "왜?" note under the answer. Absent → no note box. */
+  why?: string;
+  /** build: the one wrong chunk mixed into the pool. Absent → a chunk of another sentence. */
+  decoy?: string;
+  /** listen: two wrong Korean meanings, shown with `ko`. Absent → other sentences' ko. */
+  distractorsKo?: string[];
+  /** blank: the authored 2×2. `answer` occurs once in `en` on word boundaries; the screen splits
+   *  `en` around it. Absent → the runtime blank (no icons). */
+  blank?: LessonBlank;
+}
+export interface LessonBlank { answer: string; options: { en: string; icon: string }[] }
+/** A situation's order card (v46, 결정 8): four lines in conversation order — the answer is
+ *  `lines` as written, the screen shuffles. Absent → the sheet skips the order prompt. */
+export interface LessonOrder {
+  tag?: string; icon?: string;
+  /** Header line, e.g. "불만 환자 응대 4문장 순서". */
+  ko: string;
+  why: string;
+  /** Exactly 4. The handoff draws en + icon; ko and note (a role like "공감") are optional. */
+  lines: { en: string; icon: string; ko?: string; note?: string }[];
 }
 export interface LessonNuanceScene { who: string; icon?: string; en: string; ko?: string; tone?: string; swap?: boolean; ok?: boolean; fix?: string }
 /** A nuance item (v45, §11-3). Which fields apply depends on `kind`. */
@@ -81,6 +107,9 @@ export interface LessonNuance {
   /** reel: 감상 칩 3~4개 — 정답 없음(스펙 2-9 §11-8). 옛 콘텐츠에는 없다. */
   feels?: string[];
   who?: string; icon?: string; before?: string[]; options?: string[]; answer?: string; notes?: Record<string, string>;
+  /** v46: context — the Korean of `word` (C5 memo “악화되다”, always with `word`); swap — the
+   *  swapped sentence's meaning (the line under the card; the screen adds "— 라고 전해야 해요"). */
+  ko?: string;
 }
 /** LessonResp with the situation's persona/briefing typed the way ScenarioDetail types them. */
 export interface LessonDetail {
@@ -90,6 +119,8 @@ export interface LessonDetail {
   words: LessonWord[];
   sentences: LessonSentence[];
   nuance: LessonNuance[];
+  /** v46 order card — absent when not authored. */
+  order?: LessonOrder;
 }
 
 // --- scenario + conversation types (GET /scenarios/{id} is untyped in the
