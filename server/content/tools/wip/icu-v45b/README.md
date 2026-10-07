@@ -18,6 +18,10 @@ ER을 먼저 끝내고, 저작이 오래 걸리므로 ICU는 뒤로 미룬다. �
 
 ## 재개 방법
 
+> **2026-10-07 결정 14로 공정이 바뀌었다** — 생산 Sonnet · 검토 Opus · 수정 Sonnet + 부서별 Fable 표본 판정.
+> 지시서는 `server/content/tools/pipeline/`(README에 순서). 아래 "Opus 저작 → Fable 검토 → Opus 수정"은 결정 10 기준이다.
+> 이미 저작된 8주제는 Opus 검토(`pipeline/REVIEW.md`)부터 이어 간다.
+
 지시서(`TASK.md`·`REVIEW.md`·`FIX.md`)는 `/tmp/lesson-icu-v45b/` 경로를 가리킨다. 그대로 쓰려면:
 
     D=/tmp/lesson-icu-v45b; mkdir -p $D && cp -R server/content/tools/wip/icu-v45b/. $D/
