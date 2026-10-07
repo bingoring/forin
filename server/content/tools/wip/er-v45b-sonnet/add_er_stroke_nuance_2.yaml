@@ -1,0 +1,117 @@
+- title: "NIHSS 협조 요청"
+  nuance:
+    - kind: slider
+      words: ["w-ask"]
+      cue: "The patient is frightened and confused, and you need his cooperation for every NIHSS item."
+      scale: ["ask", "tell", "order"]
+      answerAt: 0
+      why: "NIHSS는 환자가 협조해야 점수가 정확해요. ask(부탁)는 협조를 끌어내고, tell(지시)·order(명령)는 불안한 환자를 위축시킬 수 있어요."
+      example: "I'm going to ask you a few questions and tasks."
+      exKo: "몇 가지 질문과 과제를 드릴게요."
+    - kind: context
+      words: ["w-score"]
+      scenes:
+        - {who: 신경과 의사 콜, icon: monitor, en: "NIHSS is 12: right arm drift, aphasia, left gaze preference.", ok: true}
+        - {who: 차트 기록, icon: board, en: "Baseline NIHSS 12 at 09:10.", ok: true}
+        - {who: 환자에게, icon: me, en: "Your NIHSS is 12, with a motor arm score of 3 and an aphasia score of 2.", ok: false, fix: "This score helps us track how your stroke is affecting you and any changes over time."}
+      why: "NIHSS는 의료진끼리는 항목과 점수로 말하지만, 환자에게는 이 점수가 왜 필요한지를 쉬운 말로 풀어야 협조가 나와요."
+- title: "전형 좌중대뇌동맥 폐색"
+  nuance:
+    - kind: slider
+      words: ["w-weak"]
+      cue: "Patient: \"I can lift my right arm a little, but it keeps dropping.\""
+      scale: ["mildly weak", "weak", "no movement at all"]
+      answerAt: 1
+      why: "힘이 조금 빠진 것(mildly weak), 눈에 띄게 약한 것(weak), 전혀 움직이지 못하는 것(no movement at all)을 구분해 기록해요. NIHSS 운동 점수도 이런 정도 차이를 반영해요."
+      example: "Your right side looks weaker than your left."
+      exKo: "오른쪽이 왼쪽보다 약해 보여요."
+    - kind: swap
+      words: ["w-risk", "w-medication", "w-bleed"]
+      who: "환자에게 · 혈전용해제 위험 설명"
+      icon: me
+      before: ["This medication can ", "cause hemorrhage", " in a small number of patients."]
+      options: ["cause bleeding", "cause hemorrhage", "kill you"]
+      answer: "cause bleeding"
+      notes: {"cause bleeding": "환자가 이해하는 쉬운 말이에요. 위험을 숨기지도 부풀리지도 않아요.", "cause hemorrhage": "의료진끼리의 임상어예요. 환자는 무슨 일인지 감을 잡기 어려워요.", "kill you": "위험을 사실보다 극단적으로 말해 겁만 줘요."}
+      why: "위험은 정직하게 말하되, 환자가 알아들을 수 있는 쉬운 말로 말해요."
+- title: "후순환(소뇌) 뇌졸중"
+  nuance:
+    - kind: slider
+      words: ["w-dizziness"]
+      cue: "Patient: \"The room is turning around me, even when I lie perfectly still.\""
+      scale: ["lightheaded", "off balance", "spinning"]
+      answerAt: 2
+      why: "'어지럽다'는 한 가지가 아니에요. 머리가 멍하고 쓰러질 듯한 lightheaded, 몸이 한쪽으로 쏠리는 off balance, 주변이 도는 spinning(현훈)을 구분해야 원인을 좁힐 수 있어요."
+      example: "Does the dizziness get worse when you move your head?"
+      exKo: "머리를 움직이면 어지럼증이 심해지나요?"
+    - kind: pair
+      words: ["w-touch", "w-nose", "w-balance"]
+      pairs: [["touch", "your nose then my finger"], ["turn", "your head side to side"], ["walk", "in a straight line"]]
+      decoys: ["a deep breath"]
+      why: "소뇌 검사는 동사로 지시해요. touch(코-손가락), turn(머리 돌리기), walk(일직선 걷기)가 각각 협응·현훈·균형을 봐요."
+    - kind: context
+      words: ["w-stroke", "w-symptom", "w-dizziness"]
+      scenes:
+        - {who: 의사 콜, icon: monitor, en: "Sudden vertigo with double vision and trouble walking. Concerned for a posterior stroke.", ok: true}
+        - {who: 차트 기록, icon: board, en: "Pt c/o dizziness and double vision x 1 hr, unable to walk without assistance.", ok: true}
+        - {who: 환자에게, icon: me, en: "I'm afraid you're having a cerebellar infarct and may deteriorate rapidly.", ok: false, fix: "These symptoms can still mean a stroke, so we're checking you right away."}
+      why: "의료진끼리는 정확한 임상 표현이 좋지만, 환자에게 최악의 시나리오를 쏟아내면 공포만 커져요. 가능성은 솔직하게, 어조는 침착하게 말해요."
+- title: "기상 시 발견(wake-up)"
+  nuance:
+    - kind: slider
+      words: ["w-normal", "w-wake"]
+      cue: "Wife: \"He got up at 3 a.m. for the bathroom, walked fine, and talked normally.\""
+      scale: ["not normal", "a little off", "completely normal"]
+      answerAt: 2
+      why: "한밤중에 깼을 때 완전히 정상이었다면 그 시각이 새로운 마지막 정상 시각이 돼요. 그때도 'a little off'였다면 잠들기 전 시각이 그대로 기준이에요."
+      example: "Did you wake up at all during the night feeling normal?"
+      exKo: "밤중에 깨어났을 때 정상이라고 느끼셨나요?"
+    - kind: context
+      words: ["w-sleep", "w-normal", "w-wake"]
+      scenes:
+        - {who: 환자에게, icon: me, en: "What time did you go to sleep last night?", ok: true}
+        - {who: 의사 콜, icon: monitor, en: "Last known well 22:30, when he went to sleep. Found with weakness at 06:00.", ok: true}
+        - {who: 환자에게, icon: me, en: "State the timestamp of your last neurologically intact moment.", ok: false, fix: "What time did you last feel completely normal, before you went to sleep?"}
+      why: "자고 일어나 증상을 발견했다면 기준은 깨어난 시각이 아니라 마지막으로 정상이던 시각, 보통 잠들기 전이에요. 환자에게는 쉬운 질문으로 그 시각을 끌어내요."
+    - kind: swap
+      words: ["w-scan", "w-imaging", "w-start"]
+      who: "가족에게 · 발병 시각을 알 수 없을 때"
+      icon: me
+      before: ["We can't tell exactly when it started, so we'll ", "obtain neuroimaging", " to guide treatment."]
+      options: ["do a scan", "obtain neuroimaging", "just guess"]
+      answer: "do a scan"
+      notes: {"do a scan": "가족이 알아듣는 쉬운 말이에요. 영상이 판단의 근거라는 점도 전해요.", "obtain neuroimaging": "의료진끼리의 말이에요. 가족에게는 딱딱하고 낯설어요.", "just guess": "사실이 아니에요. 시각이 불분명할 때는 추측이 아니라 영상을 근거로 판단해요."}
+      why: "발병 시각이 불분명해도 영상을 근거로 치료 여부를 판단할 수 있다는 점을, 가족이 이해하는 말로 전해요."
+- title: "tPA 금기 선별"
+  nuance:
+    - kind: slider
+      words: ["w-recent"]
+      cue: "Patient: \"I had my knee replaced two weeks ago. Does that matter?\""
+      scale: ["a long time ago", "a few months ago", "recently"]
+      answerAt: 2
+      why: "수술한 지 2주는 recently예요. 혈전용해제 판단에서는 수술의 종류와 시기가 중요하므로, 정확히 며칠·몇 주 전인지 묻고 의사에게 그대로 전해요."
+      example: "Have you had any surgery or major bleeding recently?"
+      exKo: "최근에 수술이나 큰 출혈이 있었나요?"
+    - kind: context
+      words: ["w-question", "w-safe", "w-medication"]
+      scenes:
+        - {who: 환자에게, icon: me, en: "These questions help us make sure the medication is safe for you.", ok: true}
+        - {who: 의사 콜, icon: monitor, en: "On apixaban, last dose this morning. No recent surgery, no prior brain bleed.", ok: true}
+        - {who: 환자에게, icon: me, en: "Please confirm the absence of contraindications on this checklist.", ok: false, fix: "I need to ask about bleeding risks, because the clot-busting medicine can make bleeding worse."}
+      why: "의료진끼리는 last dose·prior bleed 같은 압축 표현으로 보고하지만, 환자에게는 왜 묻는지 이유를 붙인 쉬운 질문이어야 정확한 답이 나와요."
+- title: "실어증 환자 소통"
+  nuance:
+    - kind: pair
+      words: ["w-blink", "w-point", "w-ask"]
+      pairs: [["blink", "your eyes twice for yes"], ["point", "to where it hurts"], ["ask", "yes or no questions"]]
+      decoys: ["my name tag"]
+      why: "blink는 눈을, point는 가리킬 곳을, ask는 예/아니오 질문을 목적어로 받아요. 말이 안 나올 때 쓰는 세 가지 통로예요."
+    - kind: swap
+      words: ["w-ask", "w-question", "w-answer"]
+      who: "실어증 환자에게 · 질문 방식 안내"
+      icon: me
+      before: ["I'll ask ", "open-ended", " questions, one at a time."]
+      options: ["yes or no", "open-ended", "long and detailed"]
+      answer: "yes or no"
+      notes: {"yes or no": "말이 안 나와도 눈 깜빡임이나 끄덕임으로 답할 수 있어요.", "open-ended": "말로 풀어서 설명해야 해서 실어증 환자에게는 부담이에요.", "long and detailed": "한 번에 이해하고 답하기 어려워요."}
+      why: "실어증 환자에게는 짧고, 한 번에 하나씩, 몸짓으로 답할 수 있는 질문이 대답하기 쉬워요."

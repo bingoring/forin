@@ -1,0 +1,130 @@
+- title: "심방세동 병력 통합"
+  nuance:
+    - kind: slider
+      words: ["w-irregular", "w-fibrillation"]
+      cue: "Pulse check: every beat comes at a different interval. There is no pattern at all."
+      scale: ["regular", "occasionally skips a beat", "irregularly irregular"]
+      answerAt: 2
+      why: "심방세동의 맥은 'irregularly irregular'(규칙 없이 불규칙)로 표현해요. 가끔 한 박을 건너뛰는 맥(occasionally skips a beat)은 다른 경우예요."
+      example: "An irregular heartbeat can let clots form inside your heart."
+      exKo: "불규칙한 심장박동은 심장 안에 혈전을 만들 수 있어요."
+    - kind: swap
+      words: ["w-miss", "w-clot", "w-heart"]
+      who: "환자에게 · 항응고제를 거르면"
+      icon: me
+      before: ["If you miss doses, a ", "thrombus", " can form in your heart and travel to your brain."]
+      options: ["clot", "thrombus", "problem"]
+      answer: "clot"
+      notes: {"clot": "환자가 아는 쉬운 말이에요. 무엇이 생기고 어디로 가는지 정확히 전해요.", "thrombus": "의료진끼리 쓰는 말이에요. 환자는 낯설어해요.", "problem": "너무 막연해서 약을 왜 먹어야 하는지 전해지지 않아요."}
+      why: "약을 거르면 왜 위험한지를 환자가 이해하는 말로 설명해야 복용을 지켜요."
+- title: "항응고제 복용자"
+  nuance:
+    - kind: slider
+      words: ["w-value"]
+      cue: "INR 2.4 on warfarin for atrial fibrillation (the usual target is 2.0 to 3.0)."
+      scale: ["subtherapeutic", "therapeutic", "supratherapeutic"]
+      answerAt: 1
+      why: "INR 2.4는 심방세동 와파린의 목표 범위(보통 2.0~3.0) 안이라 therapeutic이에요. 다만 혈전용해제는 INR이 1.7을 넘으면 쓰지 않으니, 치료 범위 안이어도 수치를 그대로 의사에게 보고해요."
+      example: "Do you know your most recent INR value?"
+      exKo: "가장 최근 INR 수치를 알고 계신가요?"
+    - kind: swap
+      words: ["w-high", "w-bleed", "w-risk"]
+      who: "환자에게 · 높은 INR 설명"
+      icon: me
+      before: ["A high INR means you ", "are at risk of spontaneous hemorrhage", " right now."]
+      options: ["bleed more easily", "are at risk of spontaneous hemorrhage", "could die"]
+      answer: "bleed more easily"
+      notes: {"bleed more easily": "사실이고 환자가 바로 이해해요. 그래서 조심해야 한다는 이유도 전해져요.", "are at risk of spontaneous hemorrhage": "의료진끼리의 임상어예요. 환자에게는 어렵고 무겁게 들려요.", "could die": "수치만으로 단정하기엔 지나친 말이에요. 겁만 주고 정보는 주지 못해요."}
+      why: "높은 INR의 의미(피가 잘 멎지 않는다)를 사실대로, 쉬운 말로 전해요."
+- title: "언어장벽 뇌졸중"
+  nuance:
+    - kind: pair
+      words: ["w-interpreter", "w-point", "w-nod"]
+      pairs: [["call for", "an interpreter"], ["point", "to the clock"], ["nod", "your head if you understand"]]
+      decoys: ["the weekend"]
+      why: "말이 통하지 않을 때는 동사로 방법을 알려요. 통역은 call for, 시각은 point to the clock, 이해했다는 표시는 nod your head예요."
+    - kind: context
+      words: ["w-interpreter", "w-understand"]
+      scenes:
+        - {who: 환자에게, icon: me, en: "I'm getting an interpreter right now.", ok: true}
+        - {who: 의사 콜, icon: monitor, en: "Patient speaks no English. The interpreter line is connecting.", ok: true}
+        - {who: 환자에게, icon: me, en: "Please remain until linguistic support personnel become available.", ok: false, fix: "An interpreter will be here in a few minutes. Meanwhile, point to the clock for me."}
+      why: "말이 통하지 않는 환자에게는 어려운 문장이 더 큰 장벽이에요. 짧고 쉬운 말에 몸짓을 곁들이고, 가족이 대신 통역하면 누락이 생길 수 있으니 전문 통역사를 연결해요."
+- title: "혈압 급상승 동반"
+  nuance:
+    - kind: slider
+      words: ["w-pressure", "w-high"]
+      cue: "BP 210/118. The upper limit for starting clot-busting medicine is 185/110."
+      scale: ["a little high", "high", "dangerously high"]
+      answerAt: 1
+      why: "혈전용해제는 혈압이 185/110 미만일 때 시작해요(AHA). 210/118은 한계를 넘은 'high'라서 먼저 낮추는 게 우선이에요. 'a little high'는 위험을 줄여 말하고, 'dangerously high'는 이 수치보다 심한 상황(출혈성 뇌졸중 등)에 써요."
+      example: "Your blood pressure needs to come down before treatment."
+      exKo: "치료 전에 혈압을 낮춰야 해요."
+    - kind: context
+      words: ["w-headache", "w-worse"]
+      scenes:
+        - {who: 환자에게, icon: me, en: "Tell me right away if your headache gets worse.", ok: true}
+        - {who: 의사 콜, icon: monitor, en: "His headache is getting worse while we lower his BP. I'm calling you now.", ok: true}
+        - {who: 환자에게, icon: me, en: "Report any exacerbation of cephalalgia.", ok: false, fix: "Please tell me right away if your head starts hurting more."}
+      why: "환자에게는 cephalalgia·exacerbation 같은 용어 대신 쉬운 말로 요청해야 보고가 빨라져요. 혈압을 낮추는 중의 두통 악화는 바로 알려야 하는 신호예요."
+- title: "TIA 증상 소실"
+  nuance:
+    - kind: slider
+      words: ["w-warning"]
+      cue: "Patient: \"It's gone now, so it was nothing, right?\" You explain what a TIA means."
+      scale: ["nothing to worry about", "a warning sign", "a major stroke"]
+      answerAt: 1
+      why: "TIA는 증상이 사라져도 이후 뇌졸중의 경고 신호예요. 'nothing to worry about'은 위험을 줄여 말하고, 'a major stroke'는 아직 일어나지 않은 일을 단정해요."
+      example: "Even though it passed, this was a serious warning sign."
+      exKo: "지나갔더라도 이건 심각한 경고 신호였어요."
+    - kind: context
+      words: ["w-stay", "w-prevent", "w-cause"]
+      scenes:
+        - {who: 환자에게, icon: me, en: "Please stay so we can find the cause.", ok: true}
+        - {who: 의사 콜, icon: monitor, en: "TIA with resolved symptoms. Requesting admission for workup.", ok: true}
+        - {who: 환자에게, icon: me, en: "Discharge is not recommended at this time.", ok: false, fix: "I'd really like you to stay so we can find the cause and prevent a bigger stroke."}
+      why: "퇴원하려는 환자에게는 규정 문구보다 이유를 붙인 부탁이 설득력 있어요. 왜 남아야 하는지를 말해야 환자가 받아들여요."
+- title: "출혈성 뇌졸중 급성 악화"
+  nuance:
+    - kind: slider
+      words: ["w-high", "w-pressure"]
+      cue: "Intracerebral hemorrhage. BP 230/130, severe headache, vomiting."
+      scale: ["a little high", "high", "dangerously high"]
+      answerAt: 2
+      why: "출혈성 뇌졸중에서는 높은 혈압이 출혈을 키울 수 있어요. 'dangerously high'라고 분명히 말하고, 지금 낮추고 있다는 말을 함께 전해요."
+      example: "Your blood pressure is dangerously high; we're treating it now."
+      exKo: "혈압이 위험할 정도로 높아요. 지금 치료하고 있어요."
+    - kind: swap
+      words: ["w-vomit", "w-airway", "w-protect"]
+      who: "환자에게 · 구토 시 기도 보호"
+      icon: me
+      before: ["We'll protect your airway if you keep ", "regurgitating", "."]
+      options: ["vomiting", "regurgitating", "puking"]
+      answer: "vomiting"
+      notes: {"vomiting": "표준어이고 환자도 바로 이해해요.", "regurgitating": "힘을 주지 않고 저절로 올라오는 것을 뜻해서 구토와는 달라요. 부정확해요.", "puking": "속어예요. 위급한 상황에서 환자에게 쓰기엔 가벼워요."}
+      why: "위급한 상황일수록 환자가 알아듣는 표준어로 정확히 말해요."
+    - kind: reel
+      words: ["w-stay"]
+      word: "stay"
+      scenes:
+        - {who: "의식이 흐려지는 환자에게", en: "Stay with me. Can you open your eyes?", ko: "정신 잃지 마세요. 눈을 뜰 수 있나요?", tone: 급함}
+        - {who: "병원을 떠나려는 환자에게", en: "Please stay so we can find the cause.", ko: "원인을 찾을 수 있도록 남아 계셔 주세요.", tone: 설득}
+        - {who: "보호자에게", en: "Please stay with him while we get the scan ready.", ko: "촬영 준비하는 동안 곁에 있어 주세요.", tone: 부탁}
+        - {who: "공황 상태인 보호자에게는…", en: "Look at me. I'm right here, and we're on it.", ko: "저를 봐 주세요. 제가 여기 있고, 지금 처치 중이에요.", tone: 침착, swap: true}
+- title: "대혈관 폐색 혈전제거술 이송"
+  nuance:
+    - kind: slider
+      words: ["w-risk"]
+      cue: "Family: \"Can something go wrong?\" The procedure carries a small chance of bleeding."
+      scale: ["a small risk", "a real risk", "a high risk"]
+      answerAt: 0
+      why: "위험은 정직하게, 부풀리지도 줄이지도 않고 말해요. 시술에 출혈 같은 위험이 있지만 드물다는 뜻으로 'a small risk'라고 하고, 구체적인 비율은 시술 의사가 설명해요."
+      example: "Every minute without treatment means more brain tissue at risk."
+      exKo: "치료 없이 지나가는 매분마다 더 많은 뇌 조직이 위험해져요."
+    - kind: context
+      words: ["w-consent", "w-sign", "w-team"]
+      scenes:
+        - {who: 가족에게, icon: me, en: "I need your consent so we don't lose time.", ok: true}
+        - {who: 의사 콜, icon: monitor, en: "Family is at the bedside and consent is in progress. The team is ready.", ok: true}
+        - {who: 가족에게, icon: me, en: "Execute the informed consent documentation immediately.", ok: false, fix: "Please sign here so we can move quickly."}
+      why: "서두를수록 가족에게는 명령조가 아니라 이유가 담긴 부탁이 필요해요. 시간이 급하다는 건 전하되 압박하는 말투는 피해요."

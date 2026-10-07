@@ -1,0 +1,288 @@
+- id: w-stroke
+  exKo: "위약감이 없어도 이 증상들은 뇌졸중일 수 있어요."
+  cue: "FAST로 찾아내려는 급성 뇌혈관 질환. 혈관이 막히거나 터져서 생긴다"
+  tag: "신경 사정"
+  distractorsEn: ["seizure", "stenosis"]
+  distractorsKo: ["경련", "실신"]
+  chips: [["stroke"]]
+  decoyChips: ["stroll"]
+- id: w-sleep
+  exKo: "어젯밤 몇 시에 주무셨나요?"
+  cue: "자고 일어나 보니 증상이 있을 때, 마지막 정상 시각을 잡는 기준이 되는 행동"
+  tag: "시간·병력"
+  distractorsEn: ["slip", "sweep"]
+  distractorsKo: ["깨다", "눕다"]
+  chips: [["sleep"]]
+  decoyChips: ["sheep"]
+- id: w-wake
+  exKo: "밤중에 깨어났을 때 정상이라고 느끼셨나요?"
+  cue: "한밤중에 의식이 돌아왔을 때 몸 상태를 물어 마지막 정상 시각을 더 늦출 수 있을 때"
+  tag: "시간·병력"
+  distractorsEn: ["weak", "wage"]
+  distractorsKo: ["일어서다", "눕다"]
+  chips: [["wake"]]
+  decoyChips: ["woke"]
+- id: w-weakness
+  exKo: "오늘 아침 정확히 언제 위약감을 알아차리셨나요?"
+  cue: "팔다리에 힘이 빠지는 증상. 아침에 처음 알아챈 시각을 묻는다"
+  tag: "신경 사정"
+  distractorsEn: ["numbness", "dizziness"]
+  distractorsKo: ["무감각", "어지럼증"]
+  chips: [["weak", "ness"]]
+  decoyChips: ["wick", "less"]
+- id: w-imaging
+  exKo: "영상검사로 이게 얼마나 지속됐는지 추정할게요."
+  cue: "CT나 MRI처럼 몸속을 사진으로 찍어 시간창 안인지 가늠하는 검사 분야"
+  tag: "영상·검사"
+  distractorsEn: ["labs", "monitoring"]
+  distractorsKo: ["혈액검사", "심전도"]
+  chips: [["im", "ag", "ing"]]
+  decoyChips: ["in", "age"]
+- id: w-remember
+  exKo: "밤새 화장실 가려고 일어나신 거 기억나세요?"
+  cue: "밤새 화장실에 갔는지처럼 지난 일을 머릿속에서 떠올릴 때"
+  tag: "시간·병력"
+  distractorsEn: ["remind", "remain"]
+  distractorsKo: ["잊다", "알려 주다"]
+  chips: [["re", "mem", "ber"]]
+  decoyChips: ["rem", "bar"]
+- id: w-thinner
+  exKo: "항응고제를 복용하고 계신가요?"
+  cue: "출혈 위험 때문에 복용 여부를 꼭 확인하는, 피를 묽게 해 주는 약을 일상에서 부르는 말"
+  tag: "치료·시술"
+  distractorsEn: ["blood transfusion", "blood sugar"]
+  distractorsKo: ["수혈", "진통제"]
+  chips: [["blood"], ["thin", "ner"]]
+  decoyChips: ["thick", "thing"]
+- id: w-before
+  exKo: "전에 뇌출혈이 있었던 적이 있나요?"
+  cue: "예전에 뇌출혈이 있었는지 물을 때. 지금보다 앞선 시점을 가리키는 말"
+  tag: "시간·병력"
+  distractorsEn: ["beyond", "become"]
+  distractorsKo: ["동안", "직후에"]
+  chips: [["be", "fore"]]
+  decoyChips: ["bee", "for"]
+- id: w-injury
+  exKo: "지난 3개월 안에 뇌졸중이나 머리 손상 병력이 있나요?"
+  cue: "머리를 부딪친 일처럼 몸이 다친 일을 묻는 명사"
+  tag: "출혈·혈전"
+  distractorsEn: ["injection", "infection"]
+  distractorsKo: ["감염", "주사"]
+  chips: [["in", "ju", "ry"]]
+  decoyChips: ["en", "jo"]
+- id: w-safe
+  exKo: "이 질문들은 이 약이 안전한지 확인하는 데 도움이 돼요."
+  cue: "이 약을 써도 환자에게 해가 없다고 확인할 때 쓰는 형용사"
+  tag: "치료·시술"
+  distractorsEn: ["save", "sane"]
+  distractorsKo: ["위험한", "효과적인"]
+  chips: [["safe"]]
+  decoyChips: ["save"]
+- id: w-disorder
+  exKo: "출혈 장애가 있는지 알고 계신가요?"
+  cue: "혈액이 잘 응고되지 않는 질환처럼, 정상 기능이 깨진 상태를 가리키는 명사"
+  tag: "출혈·혈전"
+  distractorsEn: ["disaster", "discharge"]
+  distractorsKo: ["재난", "퇴원"]
+  chips: [["dis", "or", "der"]]
+  decoyChips: ["dos", "odd"]
+- id: w-blink
+  exKo: "예이면 두 번, 아니오면 한 번 눈을 깜빡여 주세요."
+  cue: "말을 못 해도 눈꺼풀로 예·아니오를 답하게 할 때"
+  tag: "소통·지시"
+  distractorsEn: ["wink", "blush"]
+  distractorsKo: ["윙크하다", "눈을 감다"]
+  chips: [["blink"]]
+  decoyChips: ["blank"]
+- id: w-point
+  exKo: "가능하면 아픈 곳을 가리켜 주세요."
+  cue: "말이 안 나올 때 손가락으로 아픈 곳이나 시계를 짚게 할 때"
+  tag: "소통·지시"
+  distractorsEn: ["paint", "pint"]
+  distractorsKo: ["그리다", "두드리다"]
+  chips: [["point"]]
+  decoyChips: ["paint"]
+- id: w-hurt
+  exKo: "가능하면 아픈 곳을 가리켜 주세요."
+  cue: "통증이 있는 곳을 가리키게 하며 어디가 괴로운지 물을 때"
+  tag: "신경 사정"
+  distractorsEn: ["hurry", "hunt"]
+  distractorsKo: ["가렵다", "저리다"]
+  chips: [["hurt"]]
+  decoyChips: ["hurry"]
+- id: w-understand
+  exKo: "제 말을 이해하시면 제 손을 쥐어 주세요."
+  cue: "말은 못 해도 내 말이 전달됐는지 손 쥐기나 끄덕임으로 알려 달라고 할 때"
+  tag: "소통·지시"
+  distractorsEn: ["undertake", "understate"]
+  distractorsKo: ["동의하다", "기억하다"]
+  chips: [["un", "der", "stand"]]
+  decoyChips: ["on", "dare"]
+- id: w-answer
+  exKo: "답이 예이면 더 세게 쥐어 주세요."
+  cue: "예·아니오 질문에 환자가 몸짓으로 돌려주는 대응"
+  tag: "소통·지시"
+  distractorsEn: ["anchor", "anger"]
+  distractorsKo: ["질문", "설명"]
+  chips: [["an", "swer"]]
+  decoyChips: ["on", "sweat"]
+- id: w-fibrillation
+  exKo: "심방세동을 얼마나 오래 앓으셨나요?"
+  cue: "심방이 규칙 없이 떨어 혈액이 고이고 뇌색전의 원인이 되는 심장 리듬 이상"
+  tag: "출혈·혈전"
+  distractorsEn: ["flutter", "palpitation"]
+  distractorsKo: ["조동", "두근거림"]
+  chips: [["fib", "ril", "la", "tion"]]
+  decoyChips: ["fab", "rill"]
+- id: w-heart
+  exKo: "심장 때문에 항응고제를 복용하고 계신가요?"
+  cue: "안에서 혈전이 만들어져 뇌로 날아갈 수 있는, 박동하는 장기"
+  tag: "신체 부위"
+  distractorsEn: ["hear", "earth"]
+  distractorsKo: ["혈관", "폐"]
+  chips: [["heart"]]
+  decoyChips: ["hearth"]
+- id: w-miss
+  exKo: "최근에 복용을 거른 적이 있나요?"
+  cue: "정해진 시각에 먹어야 하는 약을 빼먹었는지 물을 때"
+  tag: "치료·시술"
+  distractorsEn: ["mist", "mess"]
+  distractorsKo: ["과다 복용하다", "줄이다"]
+  chips: [["miss"]]
+  decoyChips: ["mess"]
+- id: w-dose
+  exKo: "최근에 복용을 거른 적이 있나요?"
+  cue: "약을 한 번에 먹는 분량. 마지막으로 먹은 때를 물을 때 그 한 번"
+  tag: "치료·시술"
+  distractorsEn: ["dome", "dozen"]
+  distractorsKo: ["처방전", "약병"]
+  chips: [["dose"]]
+  decoyChips: ["doze"]
+- id: w-irregular
+  exKo: "불규칙한 심장박동은 심장 안에 혈전을 만들 수 있어요."
+  cue: "박동이 일정한 간격 없이 들쭉날쭉할 때 맥박을 묘사하는 형용사"
+  tag: "바이탈·혈당"
+  distractorsEn: ["irritable", "irrelevant"]
+  distractorsKo: ["규칙적인", "느린"]
+  chips: [["ir", "reg", "u", "lar"]]
+  decoyChips: ["in", "ruler"]
+- id: w-value
+  exKo: "가장 최근 INR 수치를 알고 계신가요?"
+  cue: "INR처럼 검사에서 나온 숫자 하나"
+  tag: "영상·검사"
+  distractorsEn: ["valve", "volume"]
+  distractorsKo: ["단위", "정상 범위"]
+  chips: [["val", "ue"]]
+  decoyChips: ["vow", "use"]
+- id: w-level
+  exKo: "와파린은 혈중 농도를 확인하기 위해 정기적인 혈액검사가 필요해요."
+  cue: "와파린 같은 약이 혈액 속에 얼마나 들어 있는지 가늠하는 정도"
+  tag: "영상·검사"
+  distractorsEn: ["lever", "label"]
+  distractorsKo: ["온도", "속도"]
+  chips: [["lev", "el"]]
+  decoyChips: ["leaf", "ell"]
+- id: w-high
+  exKo: "높은 INR은 지금 출혈 위험이 더 크다는 뜻이에요."
+  cue: "INR이나 혈압이 기준보다 위일 때"
+  tag: "바이탈·혈당"
+  distractorsEn: ["heavy", "huge"]
+  distractorsKo: ["무거운", "큰"]
+  chips: [["high"]]
+  decoyChips: ["hint"]
+- id: w-severe
+  exKo: "출혈이 심하면 약효를 되돌려야 할 수도 있어요."
+  cue: "출혈이나 통증이 가볍지 않고 아주 클 때 정도를 말하는 형용사"
+  tag: "인계·감시"
+  distractorsEn: ["several", "serene"]
+  distractorsKo: ["약한", "갑작스러운"]
+  chips: [["se", "vere"]]
+  decoyChips: ["sew", "veer"]
+- id: w-pill
+  exKo: "가능하면 다음에 약병을 가져와 주세요."
+  cue: "물과 함께 삼키는 작고 둥근 약. 약병에 담겨 온다"
+  tag: "치료·시술"
+  distractorsEn: ["pillow", "pull"]
+  distractorsKo: ["주사액", "연고"]
+  chips: [["pill"]]
+  decoyChips: ["pile"]
+- id: w-interpreter
+  exKo: "지금 바로 통역사를 데려올게요."
+  cue: "환자와 언어가 다를 때 병원이 불러 두 언어를 옮겨 주는 사람"
+  tag: "소통·지시"
+  distractorsEn: ["intern", "investigator"]
+  distractorsKo: ["인턴", "구급대원"]
+  chips: [["in", "ter", "pre", "ter"]]
+  decoyChips: ["on", "ten"]
+- id: w-nod
+  exKo: "제 말을 이해하시면 고개를 끄덕여 주세요."
+  cue: "말 대신 머리를 위아래로 움직여 동의나 이해를 표시할 때"
+  tag: "소통·지시"
+  distractorsEn: ["nap", "shake"]
+  distractorsKo: ["고개를 젓다", "손을 흔들다"]
+  chips: [["nod"]]
+  decoyChips: ["node"]
+- id: w-strong
+  exKo: "팔을 가리키고 강한지 약한지 보여 주세요."
+  cue: "근력이 충분해 팔이 처지지 않는 상태를 묘사할 때"
+  tag: "신경 사정"
+  distractorsEn: ["string", "strict"]
+  distractorsKo: ["딱딱한", "빠른"]
+  chips: [["strong"]]
+  decoyChips: ["string"]
+- id: w-treatment
+  exKo: "치료 전에 혈압을 낮춰야 해요."
+  cue: "혈압이 높으면 시작할 수 없는, 약이나 시술로 병을 다루는 과정"
+  tag: "치료·시술"
+  distractorsEn: ["treaty", "tremor"]
+  distractorsKo: ["검사", "예방"]
+  chips: [["treat", "ment"]]
+  decoyChips: ["trait", "mint"]
+- id: w-headache
+  exKo: "두통이 심해지면 말씀해 주세요."
+  cue: "갑자기 몹시 심해지면 출혈을 의심하는, 머리의 통증"
+  tag: "신경 사정"
+  distractorsEn: ["heartache", "backache"]
+  distractorsKo: ["복통", "요통"]
+  chips: [["head", "ache"]]
+  decoyChips: ["heal", "ash"]
+- id: w-vision
+  exKo: "시야에 변화가 있으면 바로 알려 주세요."
+  cue: "한쪽이 가려 보이거나 겹쳐 보이는지 물을 때 눈이 보는 능력"
+  tag: "신경 사정"
+  distractorsEn: ["version", "division"]
+  distractorsKo: ["청력", "후각"]
+  chips: [["vi", "sion"]]
+  decoyChips: ["vo", "tion"]
+- id: w-pass
+  exKo: "지나갔더라도 이건 심각한 경고 신호였어요."
+  cue: "증상이 저절로 사라져 잠깐 겪고 끝났다고 할 때 쓰는 동사"
+  tag: "시간·병력"
+  distractorsEn: ["pause", "pace"]
+  distractorsKo: ["번지다", "반복되다"]
+  chips: [["pass"]]
+  decoyChips: ["past"]
+- id: w-warning
+  exKo: "지나갔더라도 이건 심각한 경고 신호였어요."
+  cue: "곧 더 큰 뇌졸중이 올 수 있음을 미리 알려 주는 신호"
+  tag: "인계·감시"
+  distractorsEn: ["warming", "warrant"]
+  distractorsKo: ["진단", "처방"]
+  chips: [["warn", "ing"]]
+  decoyChips: ["worn", "ring"]
+- id: w-prevent
+  exKo: "본격적인 뇌졸중을 예방하려면 검사가 필요해요."
+  cue: "큰 뇌졸중이 오기 전에 막으려고 검사와 치료를 하는 목적"
+  tag: "치료·시술"
+  distractorsEn: ["present", "prevail"]
+  distractorsKo: ["치료하다", "진단하다"]
+  chips: [["pre", "vent"]]
+  decoyChips: ["pro", "vet"]
+- id: w-stay
+  exKo: "원인을 찾을 수 있도록 남아 계셔 주세요."
+  cue: "퇴원하지 말고 병원에 남아 달라고 하거나, 곁에서 의식을 놓지 말라고 독려할 때"
+  tag: "소통·지시"
+  distractorsEn: ["stray", "steady"]
+  distractorsKo: ["떠나다", "도착하다"]
+  chips: [["stay"]]
+  decoyChips: ["stray"]

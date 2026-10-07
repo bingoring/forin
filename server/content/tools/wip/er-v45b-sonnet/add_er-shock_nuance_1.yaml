@@ -1,0 +1,140 @@
+"저혈압 초기 활력 인지":
+  - kind: slider
+    words: [w-low, w-pressure]
+    cue: "BP 98/62, she feels a little lightheaded. How do you describe the pressure to her?"
+    scale: [normal, a little low, dangerously low]
+    answerAt: 1
+    why: "수축기 98은 경계선 가까운 낮은 값이에요. 환자에게는 사실대로 가볍게 'a little low'라고 말하고, 'dangerously low'는 과해서 불안만 키워요."
+    example: "Your blood pressure is a little low right now."
+    exKo: "지금 혈압이 조금 낮아요."
+  - kind: context
+    words: [w-cool, w-circulation, w-check]
+    scenes:
+      - {who: 차트 기록, icon: board, en: "Extremities cool; cap refill 4 sec.", ok: true}
+      - {who: 의사에게 보고, icon: speech, en: "Her hands are cool and cap refill is delayed — perfusion looks poor.", ok: true}
+      - {who: 환자에게, icon: me, en: "Your peripheral perfusion is compromised, with delayed capillary refill.", ok: false, fix: "Your hands feel cool, so I'm checking how well the blood is flowing to them."}
+    why: "perfusion, capillary refill은 의료진끼리의 말이에요. 환자에게는 '손이 서늘해서 피가 잘 흐르는지 확인한다'처럼 풀어 말해요."
+"기립성 저혈압 문진":
+  - kind: pair
+    words: [w-stand, w-drink, w-fall]
+    pairs: [[stand up, from lying down], [drink, more fluids], [prevent, a fall]]
+    decoys: [the elevator]
+    why: "stand up from lying down은 '누웠다가 일어서다', drink more fluids는 '수분을 더 마시다', prevent a fall은 '낙상을 막다'예요. 일어설 때 혈압이 떨어지는 사람에게 일어서는 법·수분·낙상 예방을 함께 안내해요."
+  - kind: context
+    words: [w-fall, w-dizzy, w-stand]
+    scenes:
+      - {who: 차트 기록, icon: board, en: "Pt dizzy on standing; fall precautions in place.", ok: true}
+      - {who: 의사에게 보고, icon: speech, en: "She gets dizzy every time she stands — I've put her on fall precautions.", ok: true}
+      - {who: 환자에게, icon: me, en: "Your orthostatic hypotension predisposes you to falls.", ok: false, fix: "Your pressure drops when you stand up, so you can get dizzy and fall."}
+    why: "orthostatic hypotension, predispose 같은 말은 의료진끼리의 표현이에요. 환자에게는 '일어서면 혈압이 떨어져 어지럽고 넘어질 수 있다'로 풀어 말해요."
+"대구경 정맥로·수액 설명":
+  - kind: slider
+    words: [w-pinch, w-arm]
+    cue: "Patient: \"Will the needle hurt a lot?\" You're about to place the IV in her arm."
+    scale: [a quick pinch, a sharp sting, a lot of pain]
+    answerAt: 0
+    why: "대부분은 잠깐의 따끔함이에요. 환자에게는 'a quick pinch'처럼 짧고 작게 말해 안심시키되, '전혀 안 아파요'라고 지킬 수 없는 약속은 하지 않아요."
+    example: "You'll feel a quick pinch in your arm."
+    exKo: "팔이 잠깐 따끔할 거예요."
+  - kind: swap
+    words: [w-place, w-iv, w-arm]
+    who: "환자에게 · 정맥로 설명"
+    icon: me
+    before: ["I'm going to ", "cannulate", " a larger IV in your arm so we can give fluids quickly."]
+    options: [put in, insert, cannulate]
+    answer: put in
+    notes:
+      put in: "환자에게 가장 쉽고 자연스러운 말."
+      insert: "틀린 말은 아니지만 시술 설명서처럼 딱딱하다."
+      cannulate: "임상 용어. 환자는 무슨 뜻인지 모른다."
+    why: "시술 이름은 환자 눈높이에 맞춰 'put in'처럼 쉬운 동사로 말해요."
+"탈수 관련 저혈압 교육":
+  - kind: slider
+    words: [w-sip, w-drink, w-slow]
+    cue: "Patient who just stopped vomiting: \"Can I have some water?\" How much do you offer first?"
+    scale: [a sip, a glass, a full bottle]
+    answerAt: 0
+    why: "구토 직후에 한꺼번에 많이 마시면 다시 토하기 쉬워요. 처음에는 한 모금씩 천천히 시작하고, 잘 넘기면 조금씩 늘려요."
+    example: "Let's start with small sips."
+    exKo: "작은 모금부터 시작해 볼게요."
+  - kind: context
+    words: [w-lose, w-fluid, w-vein, w-throw]
+    scenes:
+      - {who: 차트 기록, icon: board, en: "Pt dehydrated d/t vomiting x 2 days.", ok: true}
+      - {who: 의사에게 보고, icon: speech, en: "She's volume-depleted after two days of vomiting.", ok: true}
+      - {who: 환자에게, icon: me, en: "You're volume-depleted from emesis.", ok: false, fix: "You've lost a lot of fluid from throwing up, so we'll give some back through your vein."}
+    why: "volume-depleted, emesis는 의료진끼리의 말이에요. 환자에게는 '토해서 수분을 많이 잃었고 정맥으로 채워 준다'처럼 풀어서 말해요."
+"실신 후 내원 사정":
+  - kind: slider
+    words: [w-faint, w-dizzy]
+    cue: "Patient: \"Everything went dark, and the next thing I knew I was on the floor.\""
+    scale: [lightheaded, dizzy, fainted]
+    answerAt: 2
+    why: "lightheaded·dizzy는 의식이 있는 상태의 증상이고, faint는 순간적으로 의식을 잃는 거예요. '정신 차려 보니 바닥'이면 의식을 잃은 것이니 fainted예요."
+    example: "He fainted at the store and woke up on the floor."
+    exKo: "그는 가게에서 쓰러졌다가 바닥에서 깨어났어요."
+  - kind: swap
+    words: [w-faint]
+    who: "보호자에게 · 상황 설명"
+    icon: me
+    before: ["Your husband ", "had a syncopal episode", " at the store."]
+    options: [fainted, had a syncopal episode, lost consciousness]
+    answer: fainted
+    notes:
+      fainted: "가족에게 가장 쉽고 자연스러운 말."
+      had a syncopal episode: "의료진끼리 쓰는 임상 표현. 가족에게는 낯설다."
+      lost consciousness: "정확하지만 딱딱하고, 실신 말고 다른 원인의 의식 저하에도 쓰는 넓은 말이다."
+    why: "가족에게는 syncope 같은 용어 대신 fainted처럼 일상어로 말해요."
+"저혈량성 쇼크 출혈원 사정":
+  - kind: slider
+    words: [w-black, w-stool]
+    cue: "Patient: \"My stools have been black and sticky, like tar.\""
+    scale: [brown stool, dark stool, black tarry stool]
+    answerAt: 2
+    why: "검고 끈적한 타르 같은 변(melena)은 위나 십이지장 같은 위쪽 소화관 출혈을 의심하게 하는 소견이에요. 'dark'로 얼버무리지 않고 환자가 말한 그대로 black tarry로 기록하고 알려요."
+    example: "Black, sticky stools can mean bleeding higher up in the gut."
+    exKo: "검고 끈적한 변은 소화관 위쪽 출혈일 수 있어요."
+  - kind: context
+    words: [w-ready, w-blood, w-get]
+    scenes:
+      - {who: 차트 기록, icon: board, en: "T&C sent; 2 units crossmatched and ready.", ok: true}
+      - {who: 의사에게 보고, icon: speech, en: "I've got fluids running and blood on standby.", ok: true}
+      - {who: 환자에게, icon: me, en: "Two units of PRBCs are crossmatched and on standby.", ok: false, fix: "We're getting blood ready in case you need it."}
+    why: "T&C, crossmatch, PRBC 같은 혈액은행 용어는 의료진끼리의 말이에요. 환자에게는 '필요할 때를 대비해 혈액을 준비해 둔다'고 풀어요."
+"패혈증성 쇼크 조기 인지":
+  - kind: slider
+    words: [w-concern, w-infection]
+    cue: "Temp 39.1, HR 124, BP 86/50. Patient: \"Is this serious?\" How do you answer?"
+    scale: [not worried, concerned, terrified]
+    answerAt: 1
+    why: "솔직하되 겁주지 않는 온도가 'concerned'예요. 'not worried'는 사실과 어긋나고, 'terrified'는 환자의 불안만 키워요."
+    example: "I'm concerned about infection, so we're acting quickly."
+    exKo: "감염이 걱정돼서 서둘러 조치하고 있어요."
+  - kind: context
+    words: [w-infection, w-concern, w-race]
+    scenes:
+      - {who: 차트 기록, icon: board, en: "Febrile, tachycardic, hypotensive; suspected sepsis, source unknown.", ok: true}
+      - {who: 의사에게 보고, icon: speech, en: "She's febrile and tachycardic with low pressure — I'm concerned for sepsis.", ok: true}
+      - {who: 환자에게, icon: me, en: "You're febrile, tachycardic, and hypotensive, with suspected sepsis.", ok: false, fix: "You have a fever, your heart is racing, and your pressure is low — I'm concerned about infection."}
+    why: "febrile, tachycardic, hypotensive는 의료진끼리 쓰는 임상어예요. 환자에게는 열이 나고 심장이 빨리 뛰고 혈압이 낮다고 쉬운 말로 풀어요."
+"심인성 쇼크 감별":
+  - kind: slider
+    words: [w-chest]
+    cue: "Patient: \"It feels like a heavy weight sitting on my chest.\""
+    scale: [mild ache, pressure, stabbing pain]
+    answerAt: 1
+    why: "무겁게 눌리는 느낌은 'pressure'예요. 심장 원인의 흉통은 흔히 이렇게 압박감·쥐어짜는 느낌으로 표현해요. 날카롭게 찌르는 stabbing pain과는 양상이 달라서, 환자가 쓴 말 그대로 기록해요."
+    example: "Is it a pressure, or more of a sharp pain?"
+    exKo: "누르는 느낌인가요, 아니면 날카롭게 아픈가요?"
+  - kind: swap
+    words: [w-breathe, w-lie]
+    who: "환자에게 · 증상 문진"
+    icon: me
+    before: ["Is it harder to breathe when you ", "recline", " flat?"]
+    options: [lie, recline, sleep]
+    answer: lie
+    notes:
+      lie: "평평하게 눕는다는 일상어. 환자가 바로 알아듣는다."
+      recline: "뒤로 기대어 눕는 느낌이라 'flat'과 어울리지 않는다."
+      sleep: "자는 것 자체를 묻는 말이라, 평평하게 누운 자세를 묻는 질문과 뜻이 달라진다."
+    why: "누우면 숨이 찬지(orthopnea)를 환자에게 물을 때는 'lie flat'처럼 쉬운 말을 써요."

@@ -1,0 +1,88 @@
+- title: "FAST 초기 선별"
+  nuance:
+    - kind: slider
+      words: ["w-numb"]
+      cue: "Patient: \"I can barely feel you touching my cheek. It's dull, like after the dentist.\""
+      scale: ["tingling", "numb", "no feeling at all"]
+      answerAt: 1
+      why: "tingling은 저릿한 느낌, numb는 감각이 둔해진 상태(치과 마취 뒤처럼), no feeling at all은 완전한 소실이에요. 환자가 쓰는 말대로 정도를 구분해 기록하세요."
+      example: "Does one side of your face feel numb?"
+      exKo: "얼굴 한쪽이 무감각하게 느껴지세요?"
+    - kind: pair
+      words: ["w-smile", "w-arm", "w-repeat"]
+      pairs: [["smile", "and show me your teeth"], ["hold", "both arms straight out"], ["repeat", "this simple sentence"]]
+      decoys: ["a long nap"]
+      why: "FAST 지시는 동사가 정해져 있어요. 얼굴은 smile(웃어 보기), 팔은 hold ... out(뻗어서 유지), 말은 repeat(따라 말하기)."
+    - kind: context
+      words: ["w-slurred"]
+      scenes:
+        - {who: 차트 기록, icon: board, en: "Speech slurred, left facial droop noted at triage.", ok: true}
+        - {who: 신경과 의사 콜, icon: monitor, en: "Slurred speech and left arm drift, last known well 08:15.", ok: true}
+        - {who: 환자에게, icon: me, en: "You are presenting with dysarthria and facial palsy.", ok: false, fix: "Your words sound a little slurred, and one side of your face looks droopy."}
+      why: "의료진끼리는 dysarthria·facial palsy 같은 임상 용어가 정확하지만, 환자에게는 눈에 보이고 들리는 대로 쉬운 말로 설명해야 해요."
+- title: "마지막 정상 시각 확정"
+  nuance:
+    - kind: slider
+      words: ["w-exactly"]
+      cue: "Wife: \"I looked at the clock when he went quiet. It was 8:15 on the dot.\""
+      scale: ["roughly", "about", "exactly"]
+      answerAt: 2
+      why: "시계로 확인한 시각은 exactly(정각), '열 시쯤인 것 같아요'는 roughly·about이에요. 마지막 정상 시각은 정확할수록 시간창 판단이 믿을 만해서, 보호자가 확신하는지 어림인지를 구분해 기록해요."
+      example: "Can you tell me exactly what time it was?"
+      exKo: "그게 정확히 몇 시였는지 말씀해 주실 수 있나요?"
+    - kind: context
+      words: ["w-last", "w-normal"]
+      scenes:
+        - {who: 보호자에게, icon: me, en: "When did you last see him completely normal?", ok: true}
+        - {who: 신경과 의사 콜, icon: monitor, en: "Last known well was 08:15, per his wife.", ok: true}
+        - {who: 보호자에게, icon: me, en: "At what hour did his premorbid baseline cease?", ok: false, fix: "What time did you last see him acting completely like himself?"}
+      why: "의료진끼리는 last known well·baseline 같은 압축 표현을 쓰지만, 불안한 보호자에게는 쉬운 질문으로 시각을 끌어내야 정확한 답이 나와요."
+- title: "즉시 혈당·활력 측정"
+  nuance:
+    - kind: pair
+      words: ["w-finger", "w-sugar"]
+      pairs: [["prick", "your finger"], ["bring up", "your sugar"], ["apply", "a cuff to your arm"]]
+      decoys: ["a deep breath"]
+      why: "동사가 짝을 정해요. 채혈은 손끝을 prick(찔러서), 낮은 혈당은 bring up(끌어올리다), 혈압 커프는 apply(대다)."
+    - kind: swap
+      words: ["w-sugar", "w-low"]
+      who: "환자에게 · 혈당이 약간 낮을 때"
+      icon: me
+      before: ["Your blood sugar is ", "hypoglycemic", " right now."]
+      options: ["a little low", "hypoglycemic", "critical"]
+      answer: "a little low"
+      notes: {"a little low": "환자가 알아듣는 쉬운 말이에요. 겁주지 않으면서 사실을 말해요.", "hypoglycemic": "의료진끼리의 임상어예요. 환자는 무슨 뜻인지 모를 수 있어요.", "critical": "수치와 맞지 않게 무겁게 들려 불안만 키워요."}
+      why: "같은 수치라도 환자에게는 쉬운 말로, 의료진끼리는 임상어로 말해요."
+- title: "두부 CT 준비 설명"
+  nuance:
+    - kind: pair
+      words: ["w-remove", "w-jewelry", "w-bleed"]
+      pairs: [["remove", "your metal jewelry"], ["rule out", "bleeding"], ["lie", "flat on the table"]]
+      decoys: ["the weather"]
+      why: "remove는 몸에서 떼어 내는 것이라 jewelry와, rule out은 가능성을 배제하는 것이라 bleeding과, lie는 자세를 취하는 것이라 flat on the table과 짝이에요."
+    - kind: swap
+      words: ["w-bleed", "w-clot", "w-brain"]
+      who: "불안해하는 환자에게 · CT 설명"
+      icon: me
+      before: ["The CT scan checks for ", "intracranial hemorrhage", " or a clot."]
+      options: ["bleeding in the brain", "intracranial hemorrhage", "a brain catastrophe"]
+      answer: "bleeding in the brain"
+      notes: {"bleeding in the brain": "환자가 이해하는 쉬운 말이에요. 무엇을 찾는지 정확히 전해요.", "intracranial hemorrhage": "의료진끼리 쓰는 말이에요. 환자에게는 낯설고 무겁게 들려요.", "a brain catastrophe": "사실보다 과장돼 불안만 키워요."}
+      why: "CT가 출혈과 혈전을 가려낸다는 사실은 그대로 전하되, 환자에게는 쉬운 말로 설명해요."
+- title: "침상 삼킴 선별"
+  nuance:
+    - kind: slider
+      words: ["w-choke", "w-cough"]
+      cue: "After one sip, he coughs hard, his face turns red, and he can't speak for a moment."
+      scale: ["clear his throat", "cough", "choke"]
+      answerAt: 2
+      why: "가볍게 목을 가다듬는 것(clear his throat), 기침(cough), 숨이 막힐 듯한 사레(choke)는 강도가 달라요. 삼킴 선별 중 기침이나 사레가 나오면 바로 중단하고 금식을 유지한 채 보고해요."
+      example: "If you cough or choke, we'll stop right away."
+      exKo: "기침을 하거나 사레들리면 바로 멈출게요."
+    - kind: context
+      words: ["w-stop", "w-drink", "w-dry"]
+      scenes:
+        - {who: 환자에게, icon: me, en: "I know your mouth feels dry, but we test first.", ok: true}
+        - {who: 인계, icon: board, en: "NPO until swallow screen passed.", ok: true}
+        - {who: 환자에게, icon: me, en: "You are not permitted to ingest fluids.", ok: false, fix: "I know you're thirsty, but please wait until we check your swallowing."}
+      why: "금식을 알릴 때 환자에게는 공감과 이유를 함께 줘야 해요. 규정 문구처럼 말하면 차갑게 들리고, 환자는 몰래 마실 수도 있어요."
