@@ -277,8 +277,7 @@ function BinderCard({ c, index, onPress }: { c: JourneyCurriculum; index: number
           {isResume && (
             <View
               testID="theme-card-ring"
-              pointerEvents="none"
-              style={{ position: 'absolute', top: -1, left: -1, right: -1, bottom: -1, borderWidth: 2, borderColor: TAB_AMBER }}
+              style={{ position: 'absolute', top: -1, left: -1, right: -1, bottom: -1, borderWidth: 2, borderColor: TAB_AMBER, pointerEvents: 'none' }}
             />
           )}
           {/* 윗줄: 주제 아이콘 + 주제 이름 + 상태 표시. 상태는 세 가지뿐이다(§4) — 잠금은 없다. */}

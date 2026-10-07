@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "api",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "cd server && set -a && . ./.env && set +a && go run ./cmd/api"],
+      "port": 8080
+    },
+    {
+      "name": "metro",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "cd mobile && npx expo start --port 8081"],
+      "port": 8081
+    }
+  ]
+}
