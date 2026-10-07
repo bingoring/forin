@@ -787,6 +787,24 @@ exKo를 빠뜨림(w-neck·w-numbness), chips를 고치고 decoyChips 찌꺼기�
 **한계.** 현행 파이프라인(Opus 수정본)은 수정 뒤 재판정을 받은 적이 없어, Opus 수정도 비슷한 잔여를 남기는지 모른다. 이번
 비교는 "Sonnet 파이프라인 + 판정"과 "판정 없는 현행"의 비교다.
 
+**ER 마무리(사용자 결정).** 쇼크·뇌졸중은 Sonnet 최종본에 판정 잔여(뇌졸중 12건 · 쇼크 해설 2건)를 손으로 고쳐 정본에
+합쳤다(`d0ab160`). 합격선 미달을 이 보완으로 메운 것이다. **이로써 ER 35주제 보강이 끝났다**(상황 736건 전부 뉘앙스).
+
+### 결정 14 — 생산 Sonnet · 검토 Opus · 수정 Sonnet + 부서별 Fable 표본 판정 (2026-10-07, 사용자 결정)
+
+결정 13의 B안을 채택하고 약점 둘을 보강한다. 결정 10을 대체한다. 주제당 상대 비용 약 50%.
+
+    저작(Sonnet) → 검사기 → 검토(Opus) → 수정(Sonnet) → 검사기 → 합치기
+    부서마다 Fable 표본 판정 1~2주제 — 잔여가 많으면 그 부서는 Fable 전수 검토로 올린다
+
+- 지시서는 `server/content/tools/pipeline/`(TASK · REVIEW · FIX · README)로 정본화했다. 지금까지는 작업 폴더에만 있었다.
+- **검토 보강**: REVIEW.md에 "기계적 전수 확인" 절 — pair 전 조합, chunks 구 경계, 오답 품사, swap 이어 읽기를 스크립트로
+  전부 뽑아 판정한다(Opus 검토가 놓친 것이 전부 이 종류였다).
+- **수정 보강**: FIX.md에 "고친 값 주변을 다시 읽기" 절, 검사기에 **V17**(문장 ko를 고쳤는데 같은 예문을 쓰는 단어의 exKo가
+  옛 번역 그대로). 원래부터 다른 의역인 exKo(정본 ER 715건)는 잡지 않도록 옛 문장 ko와 글자까지 같은 것만 본다. 잔여 수정
+  전 뇌졸중 파일에 돌려 w-neck·w-numbness 두 건을 실제로 잡는 것을 확인했다.
+- 결정 12(ICU·OR·26개 부서 보류)는 그대로다. 재개할 때 이 파이프라인으로 돈다. ICU 8주제 Opus 저작분은 검토부터 이어 간다.
+
 #### 사용자 결정 대기 — keyPhrase 사실 오류 (결정 11 범위 밖)
 
 keyPhrases는 사람이 저작·임상 검토한 문장이라 보강·정리 패스에서 바꾸지 않는다(V4). 그런데 Fable 검토가 그중 사실이
@@ -803,3 +821,5 @@ keyPhrases는 사람이 저작·임상 검토한 문장이라 보강·정리 패
 | ER · 개방성 골절 SBAR 인계 | "Tetanus is updated and antibiotics were given at ten past." | 사실 오류는 아니지만 부자연스럽다 — 관용구는 "up to date"(updated는 "오늘 추가 접종"으로 들림), 시각은 시 없이 분만 말하지 않는다 | "Tetanus is up to date, and antibiotics were given at 1410." |
 | ICU · 기도 관리(S3) | "I'll order the chest X-ray" | 미국 간호사는 프로토콜·standing order 없이 영상 검사를 오더하지 않는다 — 업무 범위 오해(저작자 보고, 검토 전) | "I'll ask the team for a chest X-ray." 류 |
 | ER · 젖산 지속상승 위기 | "The mottling of your skin…"(환자에게) | 사실 오류는 아니나 임상어 mottling을 환자에게 풀이 없이 쓴다 — 같은 상황의 뉘앙스가 "환자에게는 blotchy로"를 가르쳐 서로 어긋난다 | "Your skin looks blotchy — that tells us your circulation is struggling." 류 |
+| ER · 대혈관 폐색 혈전제거술 이송 | "I need your consent so we don't lose time." (+ 같은 상황 "Please sign here so we can move quickly.") | 혈전제거술 설명동의는 시술 의사가 받는다 — 간호사는 서명 입회와 이해 확인. 입력의 goal 2("가족에게 시술을 설명하고 동의를 얻는다")도 같은 오해 | "The doctor needs your consent so we don't lose time." 류, goal은 "의사의 설명·동의를 돕고 서명에 입회한다" |
+| ER · 패혈증성 쇼크 급속 악화 번들 | "Fluids aren't holding — start norepinephrine now." | 동료에게 하는 말인데 간호사가 승압제 개시를 지시하는 것으로 읽힌다 — ko는 "시작해야 해요"(건의)로 고쳤으나 영어는 명령형 | "Fluids aren't holding — we need to start norepinephrine." 류 |
