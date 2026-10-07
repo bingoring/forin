@@ -49,7 +49,6 @@ export const ELEVATOR_BUILDINGS: Record<string, ElevBuilding> = {
       { f: '6F', depts: ['정형외과 병동', '골절·관절 재활'], icon: '🦴', interior: 'INT-ORTHOWARD-00001', entry: { x: 1, y: 15 } },
       { f: '4F', depts: ['중앙 ICU', 'CCU · Neuro · TICU'], icon: '🫀', sdepts: ['ICU'], interior: 'INT-ICU-00001', entry: { x: 7, y: 42 } },
       { f: '3F', depts: ['수술실 OR', '회복실 PACU', '당일수술센터'], icon: '🔪', sdepts: ['OR'], interior: 'INT-OR-00001', entry: { x: 18, y: 1 } },
-      { f: '2F', depts: ['피부과 센터', '피부 병변·광선·레이저'], icon: '🌸', interior: 'INT-DERM-00001', entry: { x: 14, y: 1 } },
       { f: '1F', depts: ['응급의료센터 ER', '메인 로비'], icon: '🚑', sdepts: ['ER'], lobby: true, interior: 'INT-ER-00001', entry: { x: 20, y: 11 } },
       { f: 'P1', depts: ['중앙 약제부 · 원내 약국', 'IV 무균조제실', '마약류 보관고'], icon: '💊', sdepts: ['PHARMA'], interior: 'INT-PHARMA-00001', entry: { x: 16, y: 40 } },
     ],
@@ -84,6 +83,8 @@ export const ELEVATOR_BUILDINGS: Record<string, ElevBuilding> = {
   dx: {
     name: '외래 · 진단 지원동', sub: '별관 3 · OUTPATIENT & DX', accent: '#0E7490', wall: '#E6E9EC', trim: '#C4CBD2',
     floors: [
+      // 피부과는 대부분 외래 진료라 본관 2F에서 외래·진단동 맨 위로 옮겼다(2026-10-07, 서버 campus/floors.go와 같이).
+      { f: '5F', depts: ['피부과 센터', '피부 병변·광선·레이저'], icon: '🌸', interior: 'INT-DERM-00001', entry: { x: 14, y: 1 } },
       { f: '4F', depts: ['내시경실', '심혈관 조영실 Cath', '인터벤션 IR'], icon: '🔭', interior: 'INT-ENDO-00001', entry: { x: 1, y: 8 } },
       { f: '3F', depts: ['외래 주사센터', '인공신장실 Dialysis'], icon: '💉', rooms: [
         { dept: '외래 주사센터', interior: 'INT-INFUSION-00001', entry: { x: 1, y: 6 } },
