@@ -37,6 +37,7 @@ v45 (build-spec-index.md §11 — Go 쪽 content/nuance.go 와 같은 규칙):
     V15 뉘앙스의 words가 비어 있지 않고, 전부 이 상황 문장이 쓰는 단어 id다
     V16 (--baseline) 보강 패스가 v44 필드를 바꾸지 않았다 — 단어의 id·en·ko·ipa·icon·example,
         문장의 en·ko·chunks·words·goal
+    V17 (--baseline) 문장 ko를 고쳤으면 그 문장을 예문으로 쓰는 단어의 exKo도 옛 번역으로 남지 않았다(결정 13)
 
 v45 필드가 하나도 없는 은행은 v44 콘텐츠로 보고 V12~V14의 최솟값을 묻지 않는다(보강 전의
 ER·ICU·OR). 한 단어라도 v45 필드가 있으면 그 은행 전체가 v45다.
@@ -1133,6 +1134,14 @@ def check_backfill(dept: str, base_banks: dict[str, list[dict]], base_seeds: lis
             for k in V44_SENTENCE_KEYS:
                 if b.get(k) != a.get(k) and k not in sf.get((key[1], i), set()):
                     out.append(Violation(dept, key[0], key[1], "V16", f"sentence[{i}] {k} changed"))
+            # V17 — 문장 ko를 고쳤는데 그 문장을 예문으로 쓰는 단어의 exKo가 옛 번역 그대로다.
+            # 결정 13: Sonnet 수정이 두 주제 모두 이렇게 빠뜨렸다(w-neck·w-numbness). 원래부터
+            # 다른 의역인 exKo(정본 ER 715건)는 잡지 않는다 — 옛 문장 ko와 글자까지 같은 것만.
+            if b.get("ko") and b.get("ko") != a.get("ko"):
+                for w in banks.get(key[0], []):
+                    if w.get("example") == a.get("en") and w.get("exKo") == b.get("ko"):
+                        out.append(Violation(dept, key[0], key[1], "V17",
+                                             f"word {w.get('id')!r}: exKo is the old ko of sentence[{i}] — update it with the sentence"))
     return out
 
 
@@ -1932,6 +1941,16 @@ def run_selftest() -> int:
     v16_add = any("added without" in v.detail for v in check_backfill("selftest", base_banks, base_seeds, added_bank, after_ok_seeds))
     v16_add_ok = not check_backfill("selftest", base_banks, base_seeds, added_bank, after_ok_seeds,
                                     {"t1": [{"kind": "word-add", "id": "w-new", "why": "새 단어"}]})
+    # V17 — 문장 ko를 고치고 같은 예문을 쓰는 단어의 exKo를 옛 번역으로 남긴 것.
+    s0 = parse_topics(v45_seed(good_nuance))[0]["sentences"][0]
+    stale_bank = parse_lexicon_raw(v45_lex(lambda ws: ws[0].update(example=s0["en"], exKo=s0["ko"])))
+    fresh_bank = parse_lexicon_raw(v45_lex(lambda ws: ws[0].update(example=s0["en"], exKo="바뀐 번역")))
+    v17_stale = any(v.rule == "V17" for v in check_backfill("selftest", base_banks, base_seeds, stale_bank, touched, listed))
+    v17_fresh = not any(v.rule == "V17" for v in check_backfill("selftest", base_banks, base_seeds, fresh_bank, touched, listed))
+    for name, hit in (("V17 a stale exKo after a sentence ko fix fires", v17_stale),
+                      ("V17 an exKo updated with the sentence passes", v17_fresh)):
+        print(f"[{'PASS' if hit else 'FAIL'}] {name}")
+        ok = ok and hit
     for name, hit in (("V16 listed changes are allowed (결정 11)", v16_listed_ok),
                       ("V16 a change not on the list still fires", v16_unlisted),
                       ("V16 a change without a why fires", v16_no_why),
