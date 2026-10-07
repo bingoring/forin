@@ -67,7 +67,7 @@ Go·파이썬 검사기와 저작·파이프라인 지시서를 갖춘다. **ER 
 
 `go build/vet/test -count=1 ./...` 그린(DB 왕복은 `TEST_DATABASE_URL=…/forin_test`로 따로 실행해 통과) · `verify_lesson_content.py --selftest`
 ALL PASS(v46 사례 41건 추가) · `--dept er --baseline HEAD --changes changes/er` 위반 0 · 모바일 jest 169 스위트 1,204건 그린, `tsc` 통과 ·
-빈 합치기 ER/ICU/OR 바이트 동일. 새 규칙마다 일부러 깨뜨려 실패 확인(Go 6, 파이썬 8, DB 2, 모바일 분리기 1).
+빈 합치기 ER/ICU/OR 바이트 동일. 새 규칙마다 일부러 깨뜨려 실패 확인(Go 5, 파이썬 8, DB 2, 모바일 분리기 1).
 
 ## 다음 단계(ER 저작) 구현자가 알아야 할 것
 
