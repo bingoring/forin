@@ -196,7 +196,8 @@ changes:
   - en
   - ipa
   - example
-  why: ko '토하다'는 throw 낱말이 아니라 구 throw up의 뜻 — 태그 문장이 Throwing up이라 구로
+  - ko
+  why: ko '토하다'는 throw 낱말이 아니라 구 throw up의 뜻 — 태그 문장이 Throwing up이라 구로 / 듣고 뜻 고르기에서 vomit과 ko가 같아 정답이 둘
 - kind: word
   id: w-bleed
   fields:
@@ -223,7 +224,7 @@ changes:
   id: w-hold
   fields:
   - ko
-  why: w-keep과 ko(유지하다)가 겹쳐 듣고 뜻 고르기에서 정답이 둘 — hold는 혈압 수치를 받쳐 주는 쪽
+  why: w-keep과 ko(유지하다)가 겹쳐 듣고 뜻 고르기에서 정답이 둘 — hold는 혈압 수치를 받쳐 주는 쪽 / keep의 '유지'와 겹침
 - kind: word
   id: w-work
   fields:
@@ -282,3 +283,145 @@ changes:
 - kind: word-add
   id: w-possible
   why: 언어장벽 상황의 서로 다른 단어가 7개로 줄어(V3) 문장 4에 이미 있는 as soon as possible의 possible을 세웠다
+- kind: word
+  id: w-norepinephrine
+  fields:
+  - exKo
+  why: keyPhrase 문장 ko 변경에 맞춰 exKo 정렬
+- kind: sentence
+  situation: 패혈증성 쇼크 급속 악화 번들
+  index: 0
+  fields:
+  - ko
+  why: 승압제 개시를 지시하는 말투가 되어 간호사가 의사에게 제안하는 어조로
+- kind: word
+  id: w-consider
+  fields:
+  - exKo
+  why: keyPhrase 문장 ko 변경에 맞춰 exKo 정렬
+- kind: word
+  id: w-pressor
+  fields:
+  - exKo
+  why: keyPhrase 문장 ko 변경에 맞춰 exKo 정렬
+- kind: word
+  id: w-atropine
+  fields:
+  - exKo
+  why: keyPhrase 문장 ko 변경에 맞춰 exKo 정렬
+- kind: sentence
+  situation: 신경성 쇼크 척수손상
+  index: 2
+  fields:
+  - ko
+  why: '''consider a pressor''는 치료를 결정하는 사람의 말 — 의사에게 제안하는 어조로'
+- kind: word
+  id: w-recommend
+  fields:
+  - exKo
+  why: keyPhrase 문장 ko 변경에 맞춰 exKo 정렬
+- kind: word
+  id: w-icu
+  fields:
+  - exKo
+  why: keyPhrase 문장 ko 변경에 맞춰 exKo 정렬
+- kind: word
+  id: w-admission
+  fields:
+  - exKo
+  why: keyPhrase 문장 ko 변경에 맞춰 exKo 정렬
+- kind: word
+  id: w-central
+  fields:
+  - exKo
+  - cue
+  why: keyPhrase 문장 ko 변경에 맞춰 exKo 정렬 / 문장 ko 변경에 맞춰 cue를 중앙 모니터 감시·중심 라인 두 뜻으로
+- kind: word
+  id: w-monitor
+  fields:
+  - exKo
+  why: keyPhrase 문장 ko 변경에 맞춰 exKo 정렬
+- kind: sentence
+  situation: 다장기 악화 SBAR·ICU 이송
+  index: 2
+  fields:
+  - ko
+  why: '''central monitoring''은 중심정맥 감시가 아님(번역 과잉)'
+- kind: sentence
+  situation: 다장기 악화 SBAR·ICU 이송
+  index: 4
+  fields:
+  - ko
+  why: '''central monitoring'' 번역 과잉 정정'
+- kind: word
+  id: w-bedside
+  fields:
+  - exKo
+  why: keyPhrase 문장 ko 변경에 맞춰 exKo 정렬
+- kind: word
+  id: w-echo
+  fields:
+  - exKo
+  why: keyPhrase 문장 ko 변경에 맞춰 exKo 정렬
+- kind: word
+  id: w-look
+  fields:
+  - exKo
+  - cue
+  why: keyPhrase 문장 ko 변경에 맞춰 exKo 정렬 / cue가 ko를 되풀이
+- kind: word
+  id: w-right
+  fields:
+  - exKo
+  why: keyPhrase 문장 ko 변경에 맞춰 exKo 정렬
+- kind: sentence
+  situation: 폐색전 폐쇄성 쇼크
+  index: 1
+  fields:
+  - ko
+  why: 검사 지시로 읽히지 않게
+- kind: word
+  id: w-sign
+  fields:
+  - distractorsEn
+  why: '''a good signal''도 영어로 맞아 정답이 둘 — symptom으로'
+- kind: word
+  id: w-antibiotic
+  fields:
+  - cue
+  why: cue의 1시간 기준은 패혈성 쇼크
+- kind: word
+  id: w-emergent
+  fields:
+  - cue
+  why: emergent endoscopy는 분 단위가 아니라 '지체 없이'
+- kind: word
+  id: w-find
+  fields:
+  - cue
+  why: cue가 ko를 되풀이
+- kind: word
+  id: w-vomit
+  fields:
+  - ko
+  why: 듣고 뜻 고르기에서 throw up과 ko가 같아 정답이 둘
+- kind: word
+  id: w-dark
+  fields:
+  - ko
+  why: black의 '검은'과 겹침
+- kind: word
+  id: w-activate
+  fields:
+  - ko
+  why: start의 시작/개시와 같은 뜻
+- kind: word
+  id: w-crash
+  fields:
+  - ko
+  why: 태그 문장에서 명사로 쓰임
+- kind: word
+  id: w-run
+  fields:
+  - ko
+  why: give의 '투여하다'와 겹침
