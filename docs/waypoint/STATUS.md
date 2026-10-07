@@ -13,6 +13,10 @@
 > 뺌, STEP 2는 아트보드 순서로 화면 분리, 허브 결정 4 유지, 글리프는 아이콘, 대화 무대는 핸드오프 모양+끌어 조절, 노트=이 상황 교정노트,
 > 콘텐츠 새 필드는 화면 먼저+ER 저작, 순서 배열은 따로 저작 등)으로 Build Spec. 진행: T1·T2(공용 부품·애니메이션·낱장 묶음) ‖ T5(스키마).
 > 스펙 [`02-construction/lesson-fidelity-v46/`](02-construction/lesson-fidelity-v46/build-spec-index.md).
+> **T1·T2 완료(2026-10-07):** NbUI 공용 값(버튼 하드 그림자·게이지 2톤·도장 3px double·형광펜 55%·태그 패딩 0·테이프 그림자·줄 27–28,
+> 모든 수첩 화면), `.nb-press` 0.06s, `nbMotion`(참조 `@keyframes`를 테스트가 직접 대조), `faceWorried`, 낱장 묶음 `SheetStack`
+> (뜯김 620ms → 다음 장 rise·stub, 화면에는 아직 안 붙임). 모노 700·도장 800은 글꼴 자산이 없어 보류(사용자 결정 대기). 모바일 169 스위트
+> 그린. 커밋 `38dead1`·`fad7e4b`·`ffde156`. 보고 [`t1-t2-report.md`](02-construction/lesson-fidelity-v46/t1-t2-report.md).
 >
 > 🏁 **서가 건물 간지(v45) — 완료, Build Spec `IMPLEMENTED` (2026-10-07).** 핸드오프 v45가 서가를 건물 인덱스 탭
 > 5개로 나눴다. 먼저 건물 구성이 실제와 맞는지 조사했다 — 미국 대학병원은 본관·여성/소아·암센터·행동건강/재활·외래로
