@@ -337,11 +337,15 @@ export function useNbColorTransition(color: string, timing: { duration: number; 
   const rm = useReduceMotion();
   const [v] = useState(() => new Animated.Value(1));
   const [pair, setPair] = useState<[string, string]>([color, color]);
-  if (pair[1] !== color) setPair([pair[1], color]);
+  if (pair[1] !== color) {
+    // Reset HERE, not in the effect: between this render's commit and its effect the style
+    // would read v = 1 against the new pair and paint the target colour for a frame.
+    v.setValue(0);
+    setPair([pair[1], color]);
+  }
   useEffect(() => {
     if (pair[0] === pair[1]) return;
     if (rm) { v.setValue(1); return; }
-    v.setValue(0);
     const a = Animated.timing(v, { toValue: 1, duration: timing.duration, easing: timing.easing, useNativeDriver: false });
     a.start();
     return () => a.stop();

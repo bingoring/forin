@@ -245,7 +245,7 @@ export function NbPressable({ rot = 0, shadow = null, onPress, disabled, style, 
       >
         {hard && <NbHardShadow s={hard} q={q} h={h} />}
         {lift && Platform.OS !== 'android' && <NbPaperLift q={q} />}
-        <View style={[faceStyle, lift && Platform.OS === 'android' && !down ? { elevation: paperShadow.elevation } : null]}>
+        <View style={[faceStyle, lift && Platform.OS === 'android' && !down ? { elevation: paperShadow.elevation, shadowColor: paperShadow.shadowColor } : null]}>
           {children}
         </View>
       </Animated.View>
@@ -581,6 +581,9 @@ export function NbMemo({ color = nb.blue, textColor, rot = -0.3, style, children
  * light tone, and the dark tone is SVG lines 5pt wide at that pitch. The -45° gradient
  * starts at the box's bottom-right corner, so the dark bands are phased from there — which
  * is why the fill's width is measured.
+ *
+ * `color` must be `#RRGGBB`, as in the prototype: the two tones are that hex with an alpha
+ * byte appended.
  */
 export const GAUGE = { band: 5, period: 10, dark: '66', light: '3d' } as const;
 

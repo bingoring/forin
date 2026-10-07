@@ -282,7 +282,8 @@ export function LessonSheet({ dim, tag, typeLabel, n, total, testID, style, chil
       <Perforation />
       <View testID="sheet-header" style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginTop: 4 }}>
         {!!tag && <NbTag color={nb.blue} rot={-1}>{tag}</NbTag>}
-        <Text numberOfLines={1} style={{ fontFamily: nbFonts.hand, fontSize: 12.5, color: nb.soft, flexShrink: 1 }}>{typeLabel}</Text>
+        {/* `white-space: nowrap` — one line, never shortened (no shrink, no ellipsis). */}
+        <Text numberOfLines={1} style={{ fontFamily: nbFonts.hand, fontSize: 12.5, color: nb.soft, flexShrink: 0 }}>{typeLabel}</Text>
         <View style={{ flex: 1 }} />
         <Text numberOfLines={1} style={[nbText.monoBold(11, nb.soft), { flexShrink: 0 }]}>{`${n} / ${total}`}</Text>
       </View>
