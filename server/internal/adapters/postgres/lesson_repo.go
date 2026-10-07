@@ -55,3 +55,7 @@ func (r *LessonRepo) ClearStep(ctx context.Context, userID, scenarioID, step str
 func (r *LessonRepo) HasWordCard(ctx context.Context, userID, en string) (bool, error) {
 	return r.q.HasWordCard(ctx, sqlc.HasWordCardParams{UserID: userID, Back: en})
 }
+
+func (r *LessonRepo) HasNuanceCard(ctx context.Context, userID, word string) (bool, error) {
+	return r.q.HasNuanceCard(ctx, sqlc.HasNuanceCardParams{UserID: userID, Front: word})
+}

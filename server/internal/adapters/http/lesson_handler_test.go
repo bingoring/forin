@@ -47,6 +47,10 @@ func (f *fakeLessonRepo) HasWordCard(_ context.Context, _, en string) (bool, err
 	return f.carded[en], nil
 }
 
+func (f *fakeLessonRepo) HasNuanceCard(_ context.Context, _, word string) (bool, error) {
+	return f.carded["nuance:"+word], nil
+}
+
 type fakeLessonReview struct{ cards []ports.NewReviewCard }
 
 func (f *fakeLessonReview) CreateCard(_ context.Context, c ports.NewReviewCard) (string, error) {
@@ -83,7 +87,8 @@ func lessonFixture(level string) (*lessonHandler, *fakeLessonRepo) {
 			{En: "b c", Words: []string{"w-b", "w-c"}, Goal: 1},
 			{En: "d", Words: []string{"w-d"}, Goal: 2},
 		},
-		Nuance: []content.Nuance{{Kind: content.NuanceSwap, Words: []string{"w-b"}}},
+		Nuance: []content.Nuance{{Kind: content.NuanceSwap, Words: []string{"w-b"}},
+			{Kind: content.NuanceReel, Words: []string{"w-a"}, Word: "wristband", Feels: []string{"딱딱함", "친절함", "차트용"}, Why: "환자에게는 쉽게."}},
 	}
 	repo := &fakeLessonRepo{banks: map[string][]content.Word{"core-safety-er": {
 		{ID: "w-a", En: "wristband", Ko: "손목 밴드", Example: "Let me check your wristband."}, {ID: "w-b"}, {ID: "w-c"}, {ID: "w-d"}, {ID: "w-unused", En: "unused"},
@@ -293,7 +298,8 @@ func TestLesson_noBodyStillClears(t *testing.T) {
 func TestLesson_carriesNuance(t *testing.T) {
 	h, _ := lessonFixture("A2")
 	resp, _, _ := h.build(context.Background(), "u1", "SCN-ER-1")
-	if len(resp.Nuance) != 1 || resp.Nuance[0].Kind != content.NuanceSwap {
+	// 픽스처: swap 하나와 감상 칩이 달린 릴 하나(§11-8) — 칩까지 그대로 실려 나간다.
+	if len(resp.Nuance) != 2 || resp.Nuance[0].Kind != content.NuanceSwap || len(resp.Nuance[1].Feels) != 3 {
 		t.Fatalf("nuance %+v", resp.Nuance)
 	}
 	empty, _, _ := h.build(context.Background(), "u1", "SCN-EMPTY")
@@ -308,5 +314,60 @@ func TestLesson_passReadErrorIsAnError(t *testing.T) {
 	h.passes = fakeLessonPasses{err: errors.New("db down")}
 	if _, _, err := h.build(context.Background(), "u1", "SCN-ER-1"); err == nil {
 		t.Fatal("want an error, not a lesson with the dialogue rungs reset")
+	}
+}
+
+func feelReq(scenarioID, body string) *http.Request {
+	req := httptest.NewRequest(http.MethodPost, "/", strings.NewReader(body))
+	req.SetPathValue("scenarioId", scenarioID)
+	return req.WithContext(context.WithValue(req.Context(), userIDKey, "u1"))
+}
+
+// 스펙 2-9 §11-8: 문장 릴의 감상 칩은 정답이 없고, 고른 감상은 교정노트에 한 장으로 남는다 —
+// 앞면 릴의 단어, 뒷면 해설, 메모 고른 칩. 제안 면(nuance)이다 — 틀리게 말한 것이 아니다.
+func TestLesson_reelFeelFilesANuanceCard(t *testing.T) {
+	h, _ := lessonFixture("A2")
+	rec := httptest.NewRecorder()
+	h.reelFeel(rec, feelReq("SCN-ER-1", `{"feel":"친절함"}`))
+	if rec.Code != http.StatusOK {
+		t.Fatalf("status %d: %s", rec.Code, rec.Body)
+	}
+	cards := h.review.(*fakeLessonReview).cards
+	if len(cards) != 1 {
+		t.Fatalf("cards %d, want 1", len(cards))
+	}
+	c := cards[0]
+	if c.Source != "nuance" || c.Front != "wristband" || c.Back != "환자에게는 쉽게." || c.Note != "친절함" || c.ScenarioID != "SCN-ER-1" {
+		t.Fatalf("card %+v", c)
+	}
+}
+
+func TestLesson_reelFeelIsFiledOncePerWord(t *testing.T) {
+	h, repo := lessonFixture("A2")
+	repo.carded = map[string]bool{"nuance:wristband": true}
+	rec := httptest.NewRecorder()
+	h.reelFeel(rec, feelReq("SCN-ER-1", `{"feel":"친절함"}`))
+	if rec.Code != http.StatusOK || len(h.review.(*fakeLessonReview).cards) != 0 {
+		t.Fatalf("status %d, cards %d — a word already noted must not be noted again", rec.Code, len(h.review.(*fakeLessonReview).cards))
+	}
+}
+
+// 칩은 그 릴의 feels 안이어야 하고, 릴이 없는 상황에는 감상이 없다.
+func TestLesson_reelFeelMustBeOneOfTheReelsFeels(t *testing.T) {
+	h, _ := lessonFixture("A2")
+	for _, c := range []struct {
+		scn, body string
+		want      int
+	}{
+		{"SCN-ER-1", `{"feel":"지어낸 감상"}`, http.StatusBadRequest},
+		{"SCN-ER-1", `{}`, http.StatusBadRequest},
+		{"SCN-ER-1", `not json`, http.StatusBadRequest},
+		{"SCN-EMPTY", `{"feel":"친절함"}`, http.StatusNotFound},
+	} {
+		rec := httptest.NewRecorder()
+		h.reelFeel(rec, feelReq(c.scn, c.body))
+		if rec.Code != c.want || len(h.review.(*fakeLessonReview).cards) != 0 {
+			t.Fatalf("%s %s: status %d, want %d", c.scn, c.body, rec.Code, c.want)
+		}
 	}
 }

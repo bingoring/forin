@@ -2,6 +2,7 @@ package http
 
 import (
 	"context"
+	"encoding/json"
 	"net/http"
 
 	"github.com/bingoring/forin/server/internal/domain/content"
@@ -272,6 +273,80 @@ func (h *lessonHandler) confusedWord(w http.ResponseWriter, r *http.Request) {
 	// nothing struck out — the learner did not say it wrong, they did not know it.
 	id, err := h.review.CreateCard(r.Context(), ports.NewReviewCard{
 		UserID: uid, Source: "word", Front: word.Ko, Back: word.En, Note: word.Example,
+		ScenarioID: sit.ID, Context: rc,
+	})
+	if err != nil {
+		httpx.Error(w, http.StatusInternalServerError, "record failed")
+		return
+	}
+	httpx.JSON(w, http.StatusOK, confusedWordResp{CardID: id, Created: true})
+}
+
+type reelFeelReq struct {
+	Feel string `json:"feel"`
+}
+
+// @Summary 문장 릴의 감상 하나를 교정노트에 남긴다 — 정답 없음, 칩은 그 릴의 feels 중 하나, 한 단어는 한 번만
+// @Tags progress
+// @Security Bearer
+// @Param scenarioId path string true "시나리오 id"
+// @Param body body reelFeelReq true "고른 감상 칩"
+// @Success 200 {object} confusedWordResp
+// @Router /me/lesson/{scenarioId}/reel/feel [post]
+func (h *lessonHandler) reelFeel(w http.ResponseWriter, r *http.Request) {
+	uid, _ := UserID(r.Context())
+	var req reelFeelReq
+	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+		httpx.Error(w, http.StatusBadRequest, "invalid body")
+		return
+	}
+	lesson, ok, err := h.build(r.Context(), uid, r.PathValue("scenarioId"))
+	if err != nil {
+		httpx.Error(w, http.StatusInternalServerError, "lookup failed")
+		return
+	}
+	var reel *content.Nuance
+	for i := range lesson.Nuance {
+		if lesson.Nuance[i].Kind == content.NuanceReel {
+			reel = &lesson.Nuance[i]
+			break
+		}
+	}
+	if !ok || reel == nil {
+		httpx.Error(w, http.StatusNotFound, "no reel in this lesson")
+		return
+	}
+	// Only a chip the reel offers — there is no right answer, but there is a fixed set.
+	known := false
+	for _, f := range reel.Feels {
+		if f == req.Feel {
+			known = true
+			break
+		}
+	}
+	if !known {
+		httpx.Error(w, http.StatusBadRequest, "not one of this reel's feels")
+		return
+	}
+	if has, err := h.lessons.HasNuanceCard(r.Context(), uid, reel.Word); err != nil {
+		httpx.Error(w, http.StatusInternalServerError, "lookup failed")
+		return
+	} else if has {
+		httpx.JSON(w, http.StatusOK, confusedWordResp{})
+		return
+	}
+	sit := lesson.Situation
+	rc := progress.ReviewContext{Title: sit.Title, Situation: sit.Tagline}
+	if sit.Briefing != nil {
+		rc.Dept = sit.Briefing.Dept
+		if sit.Briefing.Brief != "" {
+			rc.Situation = sit.Briefing.Brief
+		}
+	}
+	// The nuance face (data/reviewCardFace): the word in front, the reel's note behind, the
+	// learner's own 감상 kept as the memo. Nothing was said wrong — nothing is struck out.
+	id, err := h.review.CreateCard(r.Context(), ports.NewReviewCard{
+		UserID: uid, Source: "nuance", Front: reel.Word, Back: reel.Why, Note: req.Feel,
 		ScenarioID: sit.ID, Context: rc,
 	})
 	if err != nil {

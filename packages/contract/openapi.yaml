@@ -114,6 +114,14 @@ components:
           type: string
         example:
           type: string
+        feels:
+          description: |-
+            Feels are a reel's 감상 칩 (spec §11-8): 3–4 impressions with no right answer.
+            Whichever the learner picks, Why unfolds and the pick is saved to the notes.
+          items:
+            type: string
+          type: array
+          uniqueItems: false
         icon:
           type: string
         kind:
@@ -1630,6 +1638,11 @@ components:
           type: array
           uniqueItems: false
       type: object
+    internal_adapters_http.reelFeelReq:
+      properties:
+        feel:
+          type: string
+      type: object
     internal_adapters_http.refreshReq:
       properties:
         refreshToken:
@@ -2542,6 +2555,36 @@ paths:
       security:
       - Bearer: []
       summary: 상황 학습 4단계 — 단어·문장·가이드 대화·자유 대화의 상태와 콘텐츠
+      tags:
+      - progress
+  /me/lesson/{scenarioId}/reel/feel:
+    post:
+      parameters:
+      - description: 시나리오 id
+        in: path
+        name: scenarioId
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/internal_adapters_http.reelFeelReq'
+              description: 고른 감상 칩
+              summary: body
+        description: 고른 감상 칩
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/internal_adapters_http.confusedWordResp'
+          description: OK
+      security:
+      - Bearer: []
+      summary: 문장 릴의 감상 하나를 교정노트에 남긴다 — 정답 없음, 칩은 그 릴의 feels 중 하나, 한 단어는 한 번만
       tags:
       - progress
   /me/lesson/{scenarioId}/steps/{step}:

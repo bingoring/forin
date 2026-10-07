@@ -9,6 +9,25 @@ import (
 	"context"
 )
 
+const hasNuanceCard = `-- name: HasNuanceCard :one
+SELECT EXISTS (
+    SELECT 1 FROM review_cards WHERE user_id = $1 AND source = 'nuance' AND front = $2
+)::bool
+`
+
+type HasNuanceCardParams struct {
+	UserID string `json:"user_id"`
+	Front  string `json:"front"`
+}
+
+// A reel's 감상 is noted once per word (spec 2-9 §11-8): the card's front is the word.
+func (q *Queries) HasNuanceCard(ctx context.Context, arg HasNuanceCardParams) (bool, error) {
+	row := q.db.QueryRow(ctx, hasNuanceCard, arg.UserID, arg.Front)
+	var column_1 bool
+	err := row.Scan(&column_1)
+	return column_1, err
+}
+
 const hasWordCard = `-- name: HasWordCard :one
 SELECT EXISTS (
     SELECT 1 FROM review_cards WHERE user_id = $1 AND source = 'word' AND back = $2

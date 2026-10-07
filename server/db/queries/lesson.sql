@@ -12,3 +12,9 @@ SELECT step, detail FROM lesson_step_clears WHERE user_id = $1 AND scenario_id =
 SELECT EXISTS (
     SELECT 1 FROM review_cards WHERE user_id = $1 AND source = 'word' AND back = $2
 )::bool;
+
+-- name: HasNuanceCard :one
+-- A reel's 감상 is noted once per word (spec 2-9 §11-8): the card's front is the word.
+SELECT EXISTS (
+    SELECT 1 FROM review_cards WHERE user_id = $1 AND source = 'nuance' AND front = $2
+)::bool;

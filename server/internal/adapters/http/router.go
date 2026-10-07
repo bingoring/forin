@@ -176,6 +176,7 @@ func NewRouter(d Deps) http.Handler {
 		mux.Handle("GET /me/lesson/{scenarioId}", auth(http.HandlerFunc(lh.get)))
 		mux.Handle("POST /me/lesson/{scenarioId}/steps/{step}", auth(http.HandlerFunc(lh.clearStep)))
 		mux.Handle("POST /me/lesson/{scenarioId}/words/{wordId}/confused", auth(http.HandlerFunc(lh.confusedWord)))
+		mux.Handle("POST /me/lesson/{scenarioId}/reel/feel", auth(http.HandlerFunc(lh.reelFeel)))
 	}
 
 	// 은어 도감 (authenticated). Nil when the content deck or its store is not wired.

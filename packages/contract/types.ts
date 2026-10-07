@@ -1668,6 +1668,50 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/me/lesson/{scenarioId}/reel/feel": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** 문장 릴의 감상 하나를 교정노트에 남긴다 — 정답 없음, 칩은 그 릴의 feels 중 하나, 한 단어는 한 번만 */
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    /** @description 시나리오 id */
+                    scenarioId: string;
+                };
+                cookie?: never;
+            };
+            /** @description 고른 감상 칩 */
+            requestBody: {
+                content: {
+                    "application/json": components["schemas"]["internal_adapters_http.reelFeelReq"];
+                };
+            };
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["internal_adapters_http.confusedWordResp"];
+                    };
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/me/lesson/{scenarioId}/steps/{step}": {
         parameters: {
             query?: never;
@@ -2902,6 +2946,11 @@ export interface components {
             decoys?: string[];
             exKo?: string;
             example?: string;
+            /**
+             * @description Feels are a reel's 감상 칩 (spec §11-8): 3–4 impressions with no right answer.
+             *     Whichever the learner picks, Why unfolds and the pick is saved to the notes.
+             */
+            feels?: string[];
             icon?: string;
             kind?: string;
             /** @description one per option */
@@ -3792,6 +3841,9 @@ export interface components {
             prosodyAvailable?: boolean;
             recognized?: string;
             words?: components["schemas"]["github_com_bingoring_forin_server_internal_ports.WordScore"][];
+        };
+        "internal_adapters_http.reelFeelReq": {
+            feel?: string;
         };
         "internal_adapters_http.refreshReq": {
             refreshToken?: string;

@@ -498,6 +498,8 @@ type LessonRepo interface {
 	ClearStep(ctx context.Context, userID, scenarioID, step string, missed []string) error
 	// HasWordCard reports whether a confused-word card for this headword already exists.
 	HasWordCard(ctx context.Context, userID, en string) (bool, error)
+	// HasNuanceCard reports whether a reel 감상 card for this word already exists (§11-8).
+	HasNuanceCard(ctx context.Context, userID, word string) (bool, error)
 }
 
 // ContentSeeder ingests a validated content bundle (file-source or, later, a CMS).
