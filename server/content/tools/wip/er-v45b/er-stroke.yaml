@@ -856,7 +856,7 @@ words:
   icon: lab
   example: Please don't eat or drink anything until we test it.
   cue: 결과가 나올 때까지 금식 — 삼킴을 확인하는 절차
-  tag: 영상검사
+  tag: 삼킴 선별
   distractorsEn:
   - text
   - treat
@@ -1031,7 +1031,7 @@ words:
   icon: lab
   example: You can't eat or drink until the results come back.
   cue: 검사가 끝나고 나오는 것 — until the ___s come back
-  tag: 영상검사
+  tag: 삼킴 선별
   distractorsEn:
   - remark
   - reason
@@ -2957,6 +2957,44 @@ situations:
     words:
     - w-notice
     goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-smile
+    - w-teeth
+    - w-arm
+    - w-speech
+    - w-slurred
+    pairs:
+    - - smile and show
+      - your teeth
+    - - hold both arms
+      - straight out
+    - - slurred
+      - speech
+    decoys:
+    - the pain
+    why: FAST 지시는 굳은 표현으로 씁니다. 얼굴(F)은 smile and show your teeth, 팔(A)은 hold both arms straight out, 말(S)의 이상은 slurred speech예요.
+  - kind: swap
+    words:
+    - w-speech
+    - w-slurred
+    who: 환자에게 · 말 사정 결과
+    icon: me
+    before:
+    - 'Your speech sounds a little '
+    - dysarthric
+    - ' right now.'
+    options:
+    - slurred
+    - dysarthric
+    - drunk
+    answer: slurred
+    notes:
+      slurred: 환자도 알아듣는 쉬운 말. 의료진끼리도 그대로 쓴다.
+      dysarthric: 차트·의료진의 용어(구음장애). 환자는 알아듣지 못한다.
+      drunk: 술 취했다는 뜻이라 모욕으로 들린다. 뇌졸중을 술 탓으로 돌리는 오해도 부른다.
+    why: 같은 소견이라도 환자에게는 slurred, 차트에는 dysarthria로 적어요. 뇌졸중의 어눌한 말은 술에 취한 것으로 오인되기도 해서 drunk는 특히 피해요.
 - title: 마지막 정상 시각 확정
   sentences:
   - en: When did you last see him completely normal?
@@ -3034,6 +3072,39 @@ situations:
     - w-recent
     - w-person
     goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-last
+    - w-normal
+    cue: 'Daughter: "He seemed a little tired at dinner, but he was talking and eating like always."'
+    scale:
+    - completely normal
+    - a little off
+    - clearly not normal
+    answerAt: 0
+    why: 마지막 정상 시각(LKW)은 신경학적으로 평소 그대로였던 마지막 때예요. 피곤함은 신경학적 결손이 아니라서, 말과 식사가 평소대로였다면 그때를 정상으로 봐요(어지럼·말 어눌함·한쪽 저림 같은 신경 증상이 있었다면 달라요). 말이 어눌하거나 한쪽을 못 썼다면 그보다 앞으로 거슬러 올라가요.
+    example: So at dinner he was completely normal?
+    exKo: 그럼 저녁 드실 때는 완전히 평소 같으셨던 거죠?
+  - kind: context
+    words:
+    - w-last
+    - w-normal
+    scenes:
+    - who: 차트 기록
+      icon: board
+      en: LKW 21:00 per daughter.
+      ok: true
+    - who: 신경과 의사에게
+      icon: speech
+      en: Last known well was 9 p.m., per his daughter.
+      ok: true
+    - who: 보호자에게
+      icon: me
+      en: What was his last known well?
+      ok: false
+      fix: When was the last time you saw him completely normal?
+    why: last known well(LKW)은 의료진끼리의 말이에요. 가족에게는 '마지막으로 완전히 평소 같았던 때'를 풀어서 물어요.
 - title: 즉시 혈당·활력 측정
   sentences:
   - en: I'm going to check your blood sugar with a quick finger stick.
@@ -3120,6 +3191,43 @@ situations:
     words:
     - w-sugar
     goal: 1
+  nuance:
+  - kind: pair
+    words:
+    - w-finger
+    - w-blood
+    - w-sugar
+    - w-diabetes
+    - w-medication
+    pairs:
+    - - a quick finger
+      - stick
+    - - blood
+      - sugar
+    - - diabetes
+      - medication
+    decoys:
+    - juice
+    why: finger stick은 손끝 채혈, blood sugar는 환자에게 흔히 쓰는 '혈당', diabetes medication은 당뇨약이에요.
+  - kind: context
+    words:
+    - w-sugar
+    - w-low
+    scenes:
+    - who: 의사에게 보고
+      icon: speech
+      en: Fingerstick glucose is 52.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: POC glucose 52 mg/dL.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: You're hypoglycemic at 52.
+      ok: false
+      fix: Your blood sugar is low right now, so we're bringing it up.
+    why: hypoglycemic과 숫자는 의료진끼리의 말이에요. 환자에게는 blood sugar is low처럼 쉬운 말로 해요. 저혈당은 뇌졸중과 비슷한 증상을 낼 수 있어서, 혈당은 tPA 전에 반드시 확인하는 수치예요.
 - title: 두부 CT 준비 설명
   sentences:
   - en: The CT scan checks for bleeding versus a clot in your brain.
@@ -3202,6 +3310,41 @@ situations:
     words:
     - w-scan
     goal: 2
+  nuance:
+  - kind: swap
+    words:
+    - w-bleed
+    - w-clot
+    - w-brain
+    - w-scan
+    who: 환자에게 · CT 목적 설명
+    icon: me
+    before:
+    - 'The CT scan checks for '
+    - intracranial hemorrhage
+    - ' versus a clot in your brain.'
+    options:
+    - bleeding
+    - intracranial hemorrhage
+    - hemorrhagic transformation
+    answer: bleeding
+    notes:
+      bleeding: 환자가 바로 알아듣는 말. 왜 지금 찍는지가 전해진다.
+      intracranial hemorrhage: 판독지·의료진의 용어. 환자에게는 어렵다.
+      hemorrhagic transformation: 경색 뒤에 출혈로 바뀌는 것을 가리키는 다른 말. 첫 CT의 목적과 맞지 않는다.
+    why: 첫 두부 CT는 출혈인지 막힘인지를 가려 치료를 정하려고 찍어요. 환자에게는 bleeding처럼 쉬운 말로 설명해요.
+  - kind: slider
+    words:
+    - w-quick
+    cue: 'Patient: "How long will I be in that machine?" It''s a non-contrast head CT.'
+    scale:
+    - quick
+    - a while
+    - a long time
+    answerAt: 0
+    why: 비조영 두부 CT는 촬영 자체가 몇 분이면 끝나요(MRI보다 훨씬 짧아요). quick이 사실에 맞고 환자도 안심해요.
+    example: It's quick—just a few minutes.
+    exKo: 금방 끝나요—몇 분이면 돼요.
 - title: 침상 삼킴 선별
   sentences:
   - en: Before you drink, I need to check your swallowing first.
@@ -3293,6 +3436,39 @@ situations:
     - w-drink
     - w-result
     goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-choke
+    - w-cough
+    cue: After the first sip, he sputters and can't catch his breath for a few seconds.
+    scale:
+    - cleared his throat
+    - coughed
+    - choked
+    answerAt: 2
+    why: 숨을 못 쉴 정도로 컥컥거렸다면 choke예요. 기침·사레·젖은 목소리 중 하나라도 보이면 선별 실패로 보고 입으로는 아무것도 주지 않아요.
+    example: He choked on the first sip, so he stays NPO.
+    exKo: 첫 모금에 사레가 심하게 들려서 계속 금식이에요.
+  - kind: context
+    words:
+    - w-swallow
+    - w-drink
+    scenes:
+    - who: 차트 기록
+      icon: board
+      en: Failed bedside swallow screen; NPO, SLP consult.
+      ok: true
+    - who: 의사에게 보고
+      icon: speech
+      en: He failed the swallow screen, so he's NPO for now.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: You failed the swallow screen, so you're NPO.
+      ok: false
+      fix: Swallowing isn't safe yet, so nothing by mouth for now—not even water or pills.
+    why: failed·NPO는 의료진끼리의 말이에요. 환자에게 failed는 자기 잘못처럼 들리고 NPO는 알아듣지 못해요. 삼킴 선별을 통과하기 전에는 물도, 먹는 약도 입으로 주지 않는다는 것을 분명히 말해요.
 - title: NIHSS 협조 요청
   sentences:
   - en: I'm going to ask you a few questions and tasks.
@@ -3376,6 +3552,37 @@ situations:
     words:
     - w-score
     goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-squeeze
+    cue: Checking grip strength on both sides — you want her full effort.
+    scale:
+    - touch
+    - hold
+    - squeeze
+    answerAt: 2
+    why: 힘을 볼 때는 squeeze ... as hard as you can으로 최대 힘을 끌어내요. touch나 hold로는 좌우 힘 차이가 드러나지 않아요.
+    example: Squeeze my hands as hard as you can.
+    exKo: 최대한 세게 제 손을 쥐어 보세요.
+  - kind: context
+    words:
+    - w-score
+    scenes:
+    - who: 차트 기록
+      icon: board
+      en: NIHSS 8 at 10:05.
+      ok: true
+    - who: 신경과 의사에게
+      icon: speech
+      en: Her NIHSS is 8.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Your NIHSS is 8.
+      ok: false
+      fix: We gave your exam a score, and we'll repeat it to track any changes.
+    why: NIHSS 숫자는 의료진끼리 변화를 비교하려고 쓰는 말이에요(높을수록 심해요). 환자에게 숫자만 말하면 뜻을 몰라 불안해하니, 점수를 매겨 다시 확인한다는 것만 설명해요.
 - title: 전형 좌중대뇌동맥 폐색
   sentences:
   - en: When did you last feel completely normal?
@@ -3459,6 +3666,40 @@ situations:
     - w-risk
     - w-medication
     goal: 2
+  nuance:
+  - kind: swap
+    words:
+    - w-window
+    - w-medication
+    who: 환자에게 · 치료 시간 설명
+    icon: me
+    before:
+    - 'You''re still inside the window for '
+    - thrombolytics
+    - .
+    options:
+    - clot-busting medication
+    - thrombolytics
+    - a blood thinner
+    answer: clot-busting medication
+    notes:
+      clot-busting medication: 환자 설명에 쓰는 쉬운 말. 약이 하는 일이 그대로 보인다.
+      thrombolytics: 의료진의 용어. 환자는 알아듣지 못한다.
+      a blood thinner: 다른 약이다. 항응고제는 이미 생긴 혈전을 녹이지 않고 새로 생기는 것을 막는다.
+    why: tPA(알테플라제)는 혈전을 녹이는 약이에요. 환자에게는 clot-busting medication, 의료진끼리는 thrombolytic·tPA라고 해요. blood thinner와 섞어 쓰면 다른 약으로 들려요.
+  - kind: slider
+    words:
+    - w-weak
+    - w-right
+    cue: Her right arm drifts down to the bed within 10 seconds, but she can still lift it a little.
+    scale:
+    - a little weak
+    - weak
+    - paralyzed
+    answerAt: 1
+    why: 팔이 침대까지 떨어지지만 조금이라도 들 수 있으면 weak예요. 전혀 움직이지 못할 때만 paralyzed라고 해요. 환자에게는 관찰한 만큼만 말해요.
+    example: Your right arm is weak compared to your left.
+    exKo: 오른팔이 왼팔보다 힘이 약해요.
 - title: 후순환(소뇌) 뇌졸중
   sentences:
   - en: Are you seeing one of me or two right now?
@@ -3542,6 +3783,41 @@ situations:
     - w-stroke
     - w-weakness
     goal: 1
+  nuance:
+  - kind: pair
+    words:
+    - w-double
+    - w-balance
+    - w-spin
+    pairs:
+    - - seeing
+      - double
+    - - loss of
+      - balance
+    - - the room is
+      - spinning
+    decoys:
+    - weak
+    why: 후순환 증상은 굳은 표현으로 물어요. seeing double(복시), loss of balance(균형 상실), the room is spinning(회전성 어지럼).
+  - kind: context
+    words:
+    - w-dizziness
+    - w-stroke
+    scenes:
+    - who: 의사에게 보고
+      icon: speech
+      en: Vertigo with diplopia and ataxia—I'm worried about a posterior circulation stroke.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Vertigo, diplopia, ataxia; no limb weakness.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: You have vertigo, diplopia, and ataxia, which suggests a posterior circulation stroke.
+      ok: false
+      fix: Dizziness with double vision and trouble walking can still mean a stroke, even without weakness.
+    why: diplopia·ataxia·posterior circulation은 의료진끼리의 말이에요. 환자에게는 double vision, trouble walking처럼 풀어요. 이런 증상은 팔다리 위약이 없어도 뇌졸중일 수 있어서, FAST에 균형(B)과 눈(E)을 더한 BE-FAST로 보기도 해요.
 - title: 기상 시 발견(wake-up)
   sentences:
   - en: What time did you go to sleep last night?
@@ -3623,6 +3899,41 @@ situations:
     - '?'
     words: []
     goal: 1
+  nuance:
+  - kind: context
+    words:
+    - w-normal
+    - w-sleep
+    scenes:
+    - who: 인계
+      icon: speech
+      en: Wake-up stroke—LKW 23:00 at bedtime.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Went to bed normal at 23:00; woke at 06:30 with R-sided weakness.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Your LKW is 23:00.
+      ok: false
+      fix: So the last time we know you were normal is 11 last night, when you went to sleep.
+    why: 자다가 증상을 안고 깬 경우, 증상을 알아챈 시각이 아니라 정상으로 잠든 시각(밤중에 정상으로 깨어 있었다면 그 시각)이 마지막 정상 시각이에요. 환자에게는 LKW라는 약어 대신 풀어서 확인해요.
+  - kind: pair
+    words:
+    - w-sleep
+    - w-wake
+    - w-normal
+    pairs:
+    - - went to
+      - sleep
+    - - woke
+      - up
+    - - feeling
+      - normal
+    decoys:
+    - asleep
+    why: went to sleep(잠들다), woke up(깨다), feeling normal(정상으로 느끼다). 기상 시 발견 문진은 이 세 표현으로 시간을 좁혀요.
 - title: tPA 금기 선별
   sentences:
   - en: Have you had any surgery or major bleeding recently?
@@ -3710,6 +4021,43 @@ situations:
     - w-bleed
     - w-disorder
     goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-thinner
+    - w-blood
+    - w-bleed
+    - w-disorder
+    - w-injury
+    pairs:
+    - - taking any blood
+      - thinners
+    - - a bleeding
+      - disorder
+    - - head injury in the past
+      - three months
+    decoys:
+    - clot
+    why: 금기 문진의 굳은 표현이에요. blood thinners(환자들이 항응고제를 부르는 말), bleeding disorder(출혈 장애), head injury in the past three months(최근 3개월 안의 머리 손상).
+  - kind: swap
+    words:
+    - w-thinner
+    who: 환자에게 · 금기 문진
+    icon: me
+    before:
+    - 'Are you taking any '
+    - anticoagulants
+    - '?'
+    options:
+    - blood thinners
+    - anticoagulants
+    - aspirin
+    answer: blood thinners
+    notes:
+      blood thinners: 환자들이 실제로 쓰는 말이라 바로 알아듣는다.
+      anticoagulants: 정확하지만 의료진의 말. 환자는 '아니요'라고 잘못 답하기 쉽다.
+      aspirin: 아스피린 하나만 물으면 와파린·아픽사반 같은 항응고제를 놓친다.
+    why: 환자는 anticoagulant라는 말을 몰라도 blood thinner는 알아들어요. 와파린·아픽사반처럼 약 이름을 덧붙여 물으면 더 정확해요.
 - title: 실어증 환자 소통
   sentences:
   - en: Blink twice for yes and once for no.
@@ -3788,6 +4136,41 @@ situations:
     - w-squeeze
     - w-answer
     goal: 1
+  nuance:
+  - kind: pair
+    words:
+    - w-question
+    - w-hurt
+    - w-squeeze
+    pairs:
+    - - yes-or-no
+      - questions
+    - - where it
+      - hurts
+    - - squeeze
+      - harder
+    decoys:
+    - sentence
+    why: 실어증 환자에게는 yes-or-no questions를 한 번에 하나씩, 통증은 where it hurts를 가리키게, 답은 squeeze harder처럼 몸짓으로 받아요.
+  - kind: context
+    words:
+    - w-understand
+    - w-squeeze
+    scenes:
+    - who: 실어증 환자에게
+      icon: me
+      en: Squeeze my hand if you understand me.
+      ok: true
+    - who: 보호자에게
+      icon: speech
+      en: Does that make sense so far?
+      ok: true
+    - who: 실어증 환자에게
+      icon: me
+      en: Do you understand everything I've explained about your stroke and the treatment plan?
+      ok: false
+      fix: I'll ask one thing at a time. Do you understand? Squeeze my hand for yes.
+    why: 실어증 환자는 길고 여러 겹인 질문을 처리하기 어려워요. 알아들어도 말로 '네'라고 답하지 못할 수 있으니, 짧게 하나씩 묻고 손 쥐기·눈 깜빡임으로 답을 받아요.
 - title: 심방세동 병력 통합
   sentences:
   - en: How long have you had atrial fibrillation?
@@ -3873,6 +4256,42 @@ situations:
     - w-last
     - w-dose
     goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-fibrillation
+    - w-miss
+    - w-dose
+    - w-irregular
+    pairs:
+    - - atrial
+      - fibrillation
+    - - missed any
+      - doses
+    - - an irregular
+      - heartbeat
+    decoys:
+    - pill
+    why: atrial fibrillation(심방세동), missed any doses(복용을 거르다), an irregular heartbeat(불규칙한 심장박동).
+  - kind: context
+    words:
+    - w-fibrillation
+    - w-irregular
+    scenes:
+    - who: 의사에게 보고
+      icon: speech
+      en: History of AFib on apixaban—possible cardioembolic stroke.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: 'PMH: AF on apixaban.'
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Your AFib may have caused a cardioembolic stroke.
+      ok: false
+      fix: An irregular heartbeat can let clots form in your heart, and those clots can travel to the brain.
+    why: AFib·cardioembolic은 의료진끼리의 말이에요. 환자에게는 불규칙한 박동 → 심장 안의 혈전 → 뇌로 이동, 이 순서로 풀어서 말해요.
 - title: 항응고제 복용자
   sentences:
   - en: What blood thinner do you take and what dose?
@@ -3961,6 +4380,41 @@ situations:
     words:
     - w-pill
     goal: 1
+  nuance:
+  - kind: slider
+    words:
+    - w-high
+    - w-bleed
+    - w-risk
+    cue: INR comes back 3.2 in a patient being considered for tPA.
+    scale:
+    - no extra risk
+    - some extra risk
+    - too high for tPA
+    answerAt: 2
+    why: AHA 기준으로 INR이 1.7을 넘으면 tPA(알테플라제)는 쓰지 않아요. 3.2는 '조금 높은' 값이 아니라 그 선을 넘은 값이에요.
+    example: With an INR of 3.2, tPA isn't safe for him.
+    exKo: INR이 3.2라서 tPA는 이분께 안전하지 않아요.
+  - kind: swap
+    words:
+    - w-dose
+    - w-last
+    who: 환자에게 · 마지막 복용 시각
+    icon: me
+    before:
+    - 'When was your last '
+    - anticoagulant dose
+    - '?'
+    options:
+    - dose of warfarin
+    - anticoagulant dose
+    - INR
+    answer: dose of warfarin
+    notes:
+      dose of warfarin: 환자가 이미 말한 약 이름으로 되묻는다. 알아듣기 쉽고 확인이 정확하다.
+      anticoagulant dose: 틀린 말은 아니지만 환자에게는 어려운 말.
+      INR: 피검사 이름이다. 복용 시각이 아니라 마지막 검사를 묻게 된다.
+    why: 환자가 이미 약 이름(warfarin)을 말했다면 그 이름으로 되물어요. 일반 용어보다 확인이 정확해요.
 - title: 언어장벽 뇌졸중
   sentences:
   - en: What time? Point to the clock.
@@ -4043,6 +4497,39 @@ situations:
     - w-strong
     - w-weak
     goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-interpreter
+    - w-nod
+    pairs:
+    - - get an
+      - interpreter
+    - - nod
+      - your head
+    - - count from one
+      - to five
+    decoys:
+    - clock
+    why: get an interpreter(통역사를 부르다), nod your head(고개를 끄덕이다), count from one to five(1부터 5까지 세다). 통역을 기다리는 동안 몸짓과 숫자로 핵심을 얻어요.
+  - kind: context
+    words:
+    - w-interpreter
+    scenes:
+    - who: 차트 기록
+      icon: board
+      en: Spanish video interpreter used, ID 2741.
+      ok: true
+    - who: 환자에게 (몸짓과 함께)
+      icon: me
+      en: I'm getting an interpreter right now.
+      ok: true
+    - who: 열 살 자녀에게
+      icon: baby
+      en: Can you interpret for your dad about his medications?
+      ok: false
+      fix: Thanks for helping—I'm getting a medical interpreter, so you can just stay with your dad.
+    why: 미국 병원은 자격 있는 의료 통역사를 쓰고, 당장 위험한 응급의 아주 짧은 순간 말고는 미성년 자녀에게 통역을 맡기지 않아요. 통역사가 오기 전에도 몸짓·숫자로 발병 시각은 먼저 확보해요.
 - title: 혈압 급상승 동반
   sentences:
   - en: Your blood pressure needs to come down before treatment.
@@ -4127,6 +4614,40 @@ situations:
     - w-high
     - w-pressure
     goal: 1
+  nuance:
+  - kind: slider
+    words:
+    - w-pressure
+    - w-high
+    cue: tPA candidate, BP 196/112. The target before tPA is below 185/110.
+    scale:
+    - at goal
+    - a little above goal
+    - too high to start tPA
+    answerAt: 2
+    why: AHA 기준으로 tPA 전 혈압은 185/110 미만이어야 하고, 투여 뒤 24시간은 180/105 미만으로 유지해요. 196/112는 그 선을 넘었으니 먼저 낮춰야 해요.
+    example: Your blood pressure needs to come down before treatment.
+    exKo: 치료 전에 혈압을 낮춰야 해요.
+  - kind: swap
+    words:
+    - w-pressure
+    - w-high
+    who: 환자에게 · 혈압 설명
+    icon: me
+    before:
+    - 'Your blood pressure is '
+    - severely elevated
+    - ' right now, so we''re bringing it down first.'
+    options:
+    - too high
+    - severely elevated
+    - sky-high
+    answer: too high
+    notes:
+      too high: 환자에게 쉬운 말. 먼저 낮춘다는 다음 말로 자연스럽게 이어진다.
+      severely elevated: 차트·의료진의 말. 환자에게는 딱딱하고 무겁게 들린다.
+      sky-high: 구어 과장. 불안을 키운다.
+    why: 환자에게는 too high처럼 쉬운 말로 사실을 말하고, 바로 무엇을 하는지 덧붙여요.
 - title: TIA 증상 소실
   sentences:
   - en: Even though it passed, this was a serious warning sign.
@@ -4213,6 +4734,38 @@ situations:
     - w-cause
     - w-prevent
     goal: 2
+  nuance:
+  - kind: context
+    words:
+    - w-stroke
+    - w-warning
+    scenes:
+    - who: 의사에게 보고
+      icon: speech
+      en: Right arm weakness fully resolved after 20 minutes—likely TIA.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Transient R arm weakness x20 min, resolved; likely TIA.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: You likely had a transient ischemic attack.
+      ok: false
+      fix: This was likely a mini-stroke—a warning sign that a bigger stroke could follow.
+    why: TIA·transient ischemic attack은 의료진끼리의 말이에요. 환자에게는 mini-stroke, warning sign으로 풀어요. 다만 'mini'라고 가벼운 게 아니에요 — TIA 직후 며칠은 뇌졸중이 올 위험이 특히 높아서 서둘러 원인을 찾아요.
+  - kind: slider
+    words:
+    - w-warning
+    cue: 'Patient: "It went away by itself, so it was nothing, right?"'
+    scale:
+    - nothing
+    - a minor thing
+    - a serious warning sign
+    answerAt: 2
+    why: 증상이 사라져도 TIA는 곧 올 수 있는 뇌졸중의 경고예요. nothing이나 minor로 받아 주면 환자가 그냥 집에 가 버려요.
+    example: Even though it passed, this was a serious warning sign.
+    exKo: 지나갔더라도 이건 심각한 경고 신호였어요.
 - title: 출혈성 뇌졸중 급성 악화
   sentences:
   - en: I need you to stay with me—can you open your eyes?
@@ -4298,6 +4851,42 @@ situations:
     - w-stay
     - w-eye
     goal: 1
+  nuance:
+  - kind: reel
+    words:
+    - w-stay
+    word: stay with me
+    scenes:
+    - who: 의식이 흐려지는 환자에게
+      en: Stay with me—can you open your eyes?
+      ko: 정신 놓지 마세요—눈 뜰 수 있어요?
+      tone: 급함
+    - who: 공황 상태의 보호자에게
+      en: Stay with me—look at me and breathe.
+      ko: 저한테 집중하세요—저를 보고 숨 쉬세요.
+      tone: 단호
+    - who: 설명을 놓친 듯한 보호자에게
+      en: Stay with me for a second—this part is important.
+      ko: 잠깐 제 말에 집중해 주세요—이 부분이 중요해요.
+      tone: 차분
+    - who: 보호자에게는…
+      en: You can stay with him—hold his hand and talk to him.
+      ko: 곁에 계셔도 돼요—손 잡고 말 걸어 주세요.
+      tone: 다정
+      swap: true
+  - kind: slider
+    words:
+    - w-pressure
+    - w-high
+    cue: Hemorrhagic stroke, BP 220/120, and he's vomiting.
+    scale:
+    - a little high
+    - high
+    - dangerously high
+    answerAt: 2
+    why: 뇌출혈에서 혈압이 이렇게 높으면 출혈이 커질 위험이 있어 바로 낮춰요. 환자에게도 dangerously high라고 사실대로 말하고, 지금 치료 중이라는 말을 함께 해요.
+    example: Your blood pressure is dangerously high; we're treating it now.
+    exKo: 혈압이 위험할 정도로 높아요; 지금 치료하고 있어요.
 - title: 대혈관 폐색 혈전제거술 이송
   sentences:
   - en: There's a large clot we can physically remove.
@@ -4383,6 +4972,42 @@ situations:
     - w-sign
     - w-move
     goal: 2
+  nuance:
+  - kind: swap
+    words:
+    - w-procedure
+    - w-clot
+    who: 보호자에게 · 시술 설명
+    icon: me
+    before:
+    - 'There''s a large clot we can remove with a '
+    - mechanical thrombectomy
+    - .
+    options:
+    - procedure through a blood vessel
+    - mechanical thrombectomy
+    - surgery on his brain
+    answer: procedure through a blood vessel
+    notes:
+      procedure through a blood vessel: 가족이 이해하는 말. 사타구니나 손목 혈관으로 들어가는 시술이라는 사실에도 맞다.
+      mechanical thrombectomy: 정확한 의료 용어지만 가족에게는 어렵다.
+      surgery on his brain: 사실과 다르다. 머리를 여는 수술이 아니라 혈관 안으로 하는 시술이라, 가족을 더 겁준다.
+    why: 혈전제거술은 개두술이 아니에요. 가족에게는 '혈관 안으로 들어가 혈전을 빼내는 시술'로 설명해요.
+  - kind: pair
+    words:
+    - w-blood
+    - w-clot
+    - w-sign
+    pairs:
+    - - restore
+      - blood flow
+    - - pull
+      - the clot out
+    - - sign
+      - here
+    decoys:
+    - time
+    why: restore blood flow(혈류를 회복시키다), pull the clot out(혈전을 빼내다), sign here(여기 서명하다).
 - title: tPA 후 신경학 악화
   sentences:
   - en: I'm stopping the medication right now.
@@ -4468,6 +5093,39 @@ situations:
     - w-arm
     - w-weak
     goal: 1
+  nuance:
+  - kind: context
+    words:
+    - w-stop
+    - w-medication
+    scenes:
+    - who: 의사에게 보고
+      icon: speech
+      en: New severe headache and NIHSS up 4—I've stopped the alteplase. Can we get a stat head CT?
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Alteplase stopped at 10:12 for neuro decline; stat head CT ordered.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: I'm discontinuing your alteplase infusion due to suspected hemorrhagic transformation.
+      ok: false
+      fix: I'm stopping the medication right now, and we're getting a quick scan of your head.
+    why: 의료진에게는 약 이름·시각·이유를 정확히, 환자에게는 무엇을 하는지만 쉬운 말로 해요. 투여 중 신경학적 악화·심한 두통·급격한 혈압 상승·구토가 생기면 투여를 멈추고 응급 두부 CT를 찍는 것이 표준이에요.
+  - kind: slider
+    words:
+    - w-headache
+    - w-worse
+    cue: 'Patient during the tPA infusion: "My headache is way worse—it''s the worst it''s been."'
+    scale:
+    - a bit worse
+    - worse
+    - much worse
+    answerAt: 2
+    why: tPA 중 새로 생기거나 크게 심해진 두통은 뇌출혈 신호일 수 있어요. a bit worse로 넘기지 말고 바로 투여를 멈추고 보고해요.
+    example: Tell me right away if your headache gets worse.
+    exKo: 두통이 심해지면 바로 말씀해 주세요.
 - title: 뇌간 경색 급속 의식저하
   sentences:
   - en: Stay with me—can you hear my voice?
@@ -4549,6 +5207,38 @@ situations:
     - w-team
     - w-intubation
     goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-respond
+    cue: You call his name loudly and squeeze his shoulder; he only groans.
+    scale:
+    - alert
+    - drowsy
+    - barely responding
+    answerAt: 2
+    why: 큰 소리와 통증 자극에 신음으로만 반응하면 barely responding이에요. 의식이 빠르게 떨어지면 기도를 지키는 반사도 약해지니 바로 팀을 불러요.
+    example: He's barely responding to me now.
+    exKo: 지금 거의 반응이 없어요.
+  - kind: context
+    words:
+    - w-airway
+    - w-intubation
+    scenes:
+    - who: 팀 호출
+      icon: siren
+      en: His level of consciousness is dropping fast—I need anesthesia for intubation now.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: GCS 13 to 8 in 20 min; anesthesia paged for intubation.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: We're going to intubate you because your GCS is 8.
+      ok: false
+      fix: We're putting in a breathing tube to protect your breathing.
+    why: GCS·intubate는 의료진끼리의 말이에요. 의식이 떨어져 가는 환자도 들을 수 있다고 보고, 무엇을 하는지 쉬운 말로 알려요.
 - title: 뇌졸중 SBAR 인계
   sentences:
   - en: Last known well was 08:15, symptom onset unclear.
@@ -4634,6 +5324,42 @@ situations:
     words:
     - w-call
     goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-known
+    - w-onset
+    - w-watch
+    - w-deterioration
+    pairs:
+    - - last known
+      - well
+    - - onset
+      - unclear
+    - - watch for
+      - deterioration
+    decoys:
+    - stable
+    why: 인계 시간축의 굳은 표현이에요. last known well(마지막 정상 확인), onset unclear(발현 시각 불명확), watch for deterioration(악화 관찰).
+  - kind: context
+    words:
+    - w-initial
+    - w-deterioration
+    scenes:
+    - who: 간호사 인계
+      icon: speech
+      en: Initial NIHSS was 12, now up to 15.
+      ok: true
+    - who: 의사 콜
+      icon: monitor
+      en: His NIHSS went from 12 to 15 in the last hour—can you come assess him?
+      ok: true
+    - who: 보호자에게
+      icon: me
+      en: His NIHSS went from 12 to 15.
+      ok: false
+      fix: His exam is worse than when he came in, and the doctor is coming to see him now.
+    why: NIHSS 점수는 의료진끼리 변화를 주고받는 말이에요(오르면 나빠진 것). 가족에게는 숫자 대신 무엇이 달라졌고 무엇을 하고 있는지를 말해요.
 - title: 젊은 환자 경동맥 박리
   sentences:
   - en: Did you have any neck injury or sudden strain?
@@ -4723,6 +5449,42 @@ situations:
     - w-check
     - w-tear
     goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-tear
+    - w-numbness
+    pairs:
+    - - a heavy gym
+      - session
+    - - a tear in the
+      - artery wall
+    - - numbness on one side of
+      - the face
+    decoys:
+    - strain
+    why: a heavy gym session(헬스장에서 무리한 운동), a tear in the artery wall(동맥 벽이 찢어지는 것, 곧 박리), numbness on one side of the face(한쪽 얼굴의 감각 저하).
+  - kind: swap
+    words:
+    - w-tear
+    - w-neck
+    - w-stroke
+    who: 환자에게 · 원인 설명
+    icon: me
+    before:
+    - 'A '
+    - carotid dissection
+    - ' can cause a stroke like this.'
+    options:
+    - tear in the neck artery
+    - carotid dissection
+    - pulled neck muscle
+    answer: tear in the neck artery
+    notes:
+      tear in the neck artery: 환자가 알아듣는 말. 박리가 무엇인지 그대로 보여 준다.
+      carotid dissection: 의료진의 용어. 환자는 알아듣지 못한다.
+      pulled neck muscle: 근육 문제로 들려 심각성을 놓친다. 사실과도 다르다.
+    why: 경동맥 박리는 목 동맥 벽 안쪽이 찢어지는 것이라, 환자에게는 tear in the neck artery로 풀어 말해요.
 - title: 악성 부종 감시
   sentences:
   - en: We're watching closely for swelling in the brain.
@@ -4806,3 +5568,35 @@ situations:
     - w-surgeon
     - w-change
     goal: 1
+  nuance:
+  - kind: context
+    words:
+    - w-pupil
+    - w-change
+    scenes:
+    - who: 의사에게 보고
+      icon: siren
+      en: Left pupil is now 6 mm and sluggish—new since 14:00.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: L pupil 6 mm, sluggish (prev 3 mm, brisk); MD notified.
+      ok: true
+    - who: 보호자에게
+      icon: me
+      en: His left pupil is blown.
+      ok: false
+      fix: One pupil is now larger—that's an important change, and I'm alerting the team right away.
+    why: blown pupil은 의료진끼리의 은어예요. 가족에게는 겁만 주고 뜻은 전해지지 않아요. 사실(한쪽 동공이 커졌다)과 지금 하는 조치를 함께 말해요.
+  - kind: slider
+    words:
+    - w-watch
+    cue: Large hemispheric stroke; brain swelling may still develop over the next few days.
+    scale:
+    - glance at
+    - check on
+    - watch closely
+    answerAt: 2
+    why: 큰 경색은 며칠에 걸쳐 뇌부종이 진행할 수 있어 동공과 의식을 자주 확인해요. check on보다 watch closely가 이 감시의 강도에 맞아요.
+    example: We're watching closely for swelling in the brain.
+    exKo: 뇌부종이 없는지 자세히 지켜보고 있어요.

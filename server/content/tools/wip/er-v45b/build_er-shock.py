@@ -166,6 +166,11 @@ for s in doc['situations']:
     if s['title'] in nu:
         s['nuance'] = nu[s['title']]
         for i, n in enumerate(s['nuance']):
+            if n['kind'] == 'slider' and 'exKo' not in n:
+                if n.get('example') in sent_ko:
+                    n['exKo'] = sent_ko[n['example']]
+                else:
+                    errors.append(f'{s["title"]} slider: no exKo')
             for wid in n.get('words', []):
                 if wid not in ids:
                     errors.append(f'{s["title"]} nuance[{i}]: {wid} not in situation')

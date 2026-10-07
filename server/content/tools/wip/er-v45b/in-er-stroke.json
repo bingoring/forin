@@ -1,0 +1,488 @@
+{
+ "theme": "er-stroke",
+ "situations": [
+  {
+   "title": "FAST 초기 선별",
+   "tagline": "My mouth feels funny and my arm keeps drifting down.",
+   "room": "TRIAGE",
+   "brief": "얼굴 처짐·팔 위약·언어·발현시각을 FAST로 빠르게 선별하세요.",
+   "role": "patient",
+   "skills": [
+    "FAST 사정",
+    "증상 발현 문진",
+    "신속 선별"
+   ],
+   "keyPhrases": [
+    "Can you smile and show me your teeth for me?",
+    "Hold both arms straight out and close your eyes.",
+    "What time did these symptoms first start?"
+   ],
+   "goals": [
+    "FAST 4요소를 순서대로 확인한다",
+    "증상 발현 시각을 특정한다"
+   ]
+  },
+  {
+   "title": "마지막 정상 시각 확정",
+   "tagline": "I woke up like this, so I really can't say when it began.",
+   "room": "TRIAGE",
+   "brief": "목격자·가족을 특정해 마지막으로 정상이던 시각(LKW)을 확정하세요.",
+   "role": "family",
+   "skills": [
+    "LKW 확정",
+    "목격자 특정",
+    "시간 문진"
+   ],
+   "keyPhrases": [
+    "When did you last see him completely normal?",
+    "Who was with him right before this started?",
+    "Was he acting like himself at dinner last night?"
+   ],
+   "goals": [
+    "마지막 정상 시각을 목격 증언으로 확정한다",
+    "신뢰할 목격자를 특정한다"
+   ]
+  },
+  {
+   "title": "즉시 혈당·활력 측정",
+   "tagline": "I feel shaky and I can't think straight all of a sudden.",
+   "room": "TRIAGE",
+   "brief": "즉시 혈당과 활력징후를 측정해 저혈당성 유사뇌졸중을 배제하세요.",
+   "role": "patient",
+   "skills": [
+    "혈당 측정",
+    "활력징후 사정",
+    "감별 배제"
+   ],
+   "keyPhrases": [
+    "I'm going to check your blood sugar with a quick finger stick.",
+    "Have you eaten anything today?",
+    "Are you on any diabetes medication or insulin?"
+   ],
+   "goals": [
+    "혈당으로 저혈당성 유사뇌졸중을 배제한다",
+    "기본 활력징후를 신속히 확보한다"
+   ]
+  },
+  {
+   "title": "두부 CT 준비 설명",
+   "tagline": "Why do I need a brain scan? Is something bleeding in my head?",
+   "room": "RESUS",
+   "brief": "응급 두부 CT의 목적을 설명하고 촬영 전 준비를 안내하세요.",
+   "role": "patient",
+   "skills": [
+    "검사 설명",
+    "불안 완화",
+    "절차 안내"
+   ],
+   "keyPhrases": [
+    "The CT scan checks for bleeding versus a clot in your brain.",
+    "It's quick and painless, and we need it right away.",
+    "Please hold your head still while the machine scans."
+   ],
+   "goals": [
+    "CT의 목적과 긴급성을 쉽게 설명한다",
+    "촬영 전 준비를 안내한다"
+   ]
+  },
+  {
+   "title": "침상 삼킴 선별",
+   "tagline": "Can I just have a sip of water? My mouth is so dry.",
+   "room": "OBS",
+   "brief": "경구 섭취 전 침상 삼킴 선별로 흡인 위험을 평가하세요.",
+   "role": "patient",
+   "skills": [
+    "삼킴 선별",
+    "흡인 예방",
+    "경구 금기 설명"
+   ],
+   "keyPhrases": [
+    "Before you drink, I need to check your swallowing first.",
+    "Please don't eat or drink anything until we test it.",
+    "Take a small sip and tell me if you cough."
+   ],
+   "goals": [
+    "경구 전 삼킴 선별을 시행한다",
+    "흡인 위험을 사정하고 금기를 설명한다"
+   ]
+  },
+  {
+   "title": "NIHSS 협조 요청",
+   "tagline": "You want me to do what with my fingers? Okay, I'll try.",
+   "room": "RESUS",
+   "brief": "NIHSS 점수화 검사 항목마다 환자의 협조를 이끌어내세요.",
+   "role": "patient",
+   "skills": [
+    "NIHSS 항목 안내",
+    "협조 유도",
+    "신경학 사정"
+   ],
+   "keyPhrases": [
+    "I'm going to ask you a few questions and tasks.",
+    "Follow my finger with your eyes only.",
+    "Tell me the name of this object I'm holding up."
+   ],
+   "goals": [
+    "NIHSS 항목을 순서대로 안내한다",
+    "환자 협조로 정확한 점수를 얻는다"
+   ]
+  },
+  {
+   "title": "전형 좌중대뇌동맥 폐색",
+   "tagline": "My right side went weak and I can't get my words out right.",
+   "room": "RESUS",
+   "brief": "급성 편마비·실어증 환자의 마지막 정상 시각을 확정하고 혈전용해 시간창을 사정하세요.",
+   "role": "patient",
+   "skills": [
+    "FAST 사정",
+    "실어증 소통",
+    "시간창 판단"
+   ],
+   "keyPhrases": [
+    "When did you last feel completely normal?",
+    "Can you squeeze my hand with both hands for me?",
+    "I need you to try to repeat this sentence."
+   ],
+   "goals": [
+    "FAST 3요소와 마지막 정상 시각을 신속히 확보한다",
+    "혈전용해 적응·금기를 사정한다"
+   ]
+  },
+  {
+   "title": "후순환(소뇌) 뇌졸중",
+   "tagline": "The room won't stop spinning and I'm seeing double.",
+   "room": "RESUS",
+   "brief": "현훈·복시·실조 등 비전형 후순환 증상을 사정하고 뇌졸중 가능성을 판단하세요.",
+   "role": "patient",
+   "skills": [
+    "비전형 증상 사정",
+    "소뇌 징후 확인",
+    "감별"
+   ],
+   "keyPhrases": [
+    "Are you seeing one of me or two right now?",
+    "Can you touch your nose then my finger?",
+    "Does the dizziness get worse when you move your head?"
+   ],
+   "goals": [
+    "후순환 뇌졸중의 비전형 징후를 확인한다",
+    "실조·안진·복시를 사정한다"
+   ]
+  },
+  {
+   "title": "기상 시 발견(wake-up)",
+   "tagline": "It was fine when I went to bed, but I woke up like this.",
+   "room": "RESUS",
+   "brief": "LKW가 불명확한 기상 시 발견 환자에서 영상 기반 판단을 위한 정보를 확보하세요.",
+   "role": "patient",
+   "skills": [
+    "LKW 불명 대응",
+    "영상 기반 판단",
+    "문진"
+   ],
+   "keyPhrases": [
+    "What time did you go to sleep last night?",
+    "Did you wake up at all during the night feeling normal?",
+    "When exactly did you notice the weakness this morning?"
+   ],
+   "goals": [
+    "취침·기상 시각으로 시간창을 추정한다",
+    "영상 기반 치료 판단에 필요한 정보를 모은다"
+   ]
+  },
+  {
+   "title": "tPA 금기 선별",
+   "tagline": "I had surgery two weeks ago—does that matter for this?",
+   "room": "RESUS",
+   "brief": "최근 수술·출혈력·항응고 등 혈전용해 금기 요인을 체계적으로 선별하세요.",
+   "role": "patient",
+   "skills": [
+    "tPA 금기 선별",
+    "출혈 위험 문진",
+    "복약력 확인"
+   ],
+   "keyPhrases": [
+    "Have you had any surgery or major bleeding recently?",
+    "Are you taking any blood thinners?",
+    "Have you ever had bleeding in your brain before?"
+   ],
+   "goals": [
+    "혈전용해 절대·상대 금기를 확인한다",
+    "최근 수술·출혈·항응고력을 문진한다"
+   ]
+  },
+  {
+   "title": "실어증 환자 소통",
+   "tagline": "Wa... water— no, I... I can't...",
+   "room": "RESUS",
+   "brief": "예/아니오 카드와 몸짓으로 실어증 환자와 소통하며 핵심 정보를 확보하세요.",
+   "role": "patient",
+   "skills": [
+    "실어증 소통",
+    "예아니오 카드",
+    "비언어 사정"
+   ],
+   "keyPhrases": [
+    "Blink twice for yes and once for no.",
+    "Point to where it hurts if you can.",
+    "Squeeze my hand if you understand me."
+   ],
+   "goals": [
+    "비언어적 수단으로 예/아니오를 확보한다",
+    "실어증 환자의 핵심 정보를 이끌어낸다"
+   ]
+  },
+  {
+   "title": "심방세동 병력 통합",
+   "tagline": "I have an irregular heartbeat—could that have caused this?",
+   "room": "RESUS",
+   "brief": "심방세동 병력을 색전 기전과 연결하고 항응고 여부를 통합 사정하세요.",
+   "role": "patient",
+   "skills": [
+    "색전 기전 이해",
+    "심방세동 문진",
+    "항응고 확인"
+   ],
+   "keyPhrases": [
+    "How long have you had atrial fibrillation?",
+    "Are you on a blood thinner for your heart?",
+    "Have you missed any doses recently?"
+   ],
+   "goals": [
+    "심방세동을 색전성 뇌졸중 기전과 연결한다",
+    "항응고 상태를 확인한다"
+   ]
+  },
+  {
+   "title": "항응고제 복용자",
+   "tagline": "I take warfarin every day—my last dose was this morning.",
+   "room": "RESUS",
+   "brief": "항응고제 복용자의 INR과 마지막 복용 시각을 확인해 치료 위험을 사정하세요.",
+   "role": "patient",
+   "skills": [
+    "항응고 문진",
+    "INR 확인",
+    "출혈 위험 사정"
+   ],
+   "keyPhrases": [
+    "What blood thinner do you take and what dose?",
+    "When was your last dose exactly?",
+    "Do you know your most recent INR value?"
+   ],
+   "goals": [
+    "항응고제 종류·마지막 복용 시각을 확정한다",
+    "INR과 출혈 위험을 사정한다"
+   ]
+  },
+  {
+   "title": "언어장벽 뇌졸중",
+   "tagline": "No English... arm no move... help.",
+   "room": "RESUS",
+   "brief": "언어장벽 환자에서 통역 확보 전이라도 발병 시각을 우선적으로 확보하세요.",
+   "role": "patient",
+   "skills": [
+    "언어장벽 대응",
+    "시각 우선 확보",
+    "몸짓 소통"
+   ],
+   "keyPhrases": [
+    "What time? Point to the clock.",
+    "This arm—when did it stop moving?",
+    "I'm getting an interpreter right now."
+   ],
+   "goals": [
+    "통역 전이라도 발병 시각을 우선 확보한다",
+    "몸짓과 숫자로 핵심 정보를 얻는다"
+   ]
+  },
+  {
+   "title": "혈압 급상승 동반",
+   "tagline": "My head is pounding and they said my pressure is way too high.",
+   "room": "RESUS",
+   "brief": "혈전용해 전 목표 혈압까지 강하가 필요함을 사정하고 관리하세요.",
+   "role": "patient",
+   "skills": [
+    "혈압 관리",
+    "용해 전 목표치",
+    "모니터링"
+   ],
+   "keyPhrases": [
+    "Your blood pressure needs to come down before treatment.",
+    "We'll give medication to lower it safely.",
+    "Tell me if your headache gets worse."
+   ],
+   "goals": [
+    "혈전용해 전 목표 혈압을 이해한다",
+    "강압 중 신경학 변화를 감시한다"
+   ]
+  },
+  {
+   "title": "TIA 증상 소실",
+   "tagline": "It all went away already, so can I just go home now?",
+   "room": "OBS",
+   "brief": "증상이 소실된 TIA 환자에게 정밀검사의 필요성을 설득하세요.",
+   "role": "patient",
+   "skills": [
+    "TIA 교육",
+    "재발 위험 설명",
+    "검사 설득"
+   ],
+   "keyPhrases": [
+    "Even though it passed, this was a serious warning sign.",
+    "We need tests to prevent a full stroke.",
+    "Please stay so we can find the cause."
+   ],
+   "goals": [
+    "TIA의 재발·경고 의미를 설명한다",
+    "정밀검사의 필요성을 설득한다"
+   ]
+  },
+  {
+   "title": "출혈성 뇌졸중 급성 악화",
+   "tagline": "The worst headache of my life... I think I'm going to be sick.",
+   "room": "RESUS",
+   "brief": "두통·구토·혈압·기도 위기가 동반된 출혈성 뇌졸중 악화에 대응하세요.",
+   "role": "patient",
+   "skills": [
+    "뇌압 상승 사정",
+    "기도 보호",
+    "급성 악화 대응"
+   ],
+   "keyPhrases": [
+    "I need you to stay with me—can you open your eyes?",
+    "We're protecting your airway if you keep vomiting.",
+    "Your blood pressure is dangerously high; we're treating it now."
+   ],
+   "goals": [
+    "뇌압 상승·기도 위기를 신속히 사정한다",
+    "혈압과 구토를 관리하며 악화에 대응한다"
+   ]
+  },
+  {
+   "title": "대혈관 폐색 혈전제거술 이송",
+   "tagline": "They're moving me somewhere? What are they going to do to me?",
+   "room": "RESUS",
+   "brief": "대혈관 폐색 혈전제거술 이송을 준비하고 가족 동의를 조율하세요.",
+   "role": "family",
+   "skills": [
+    "이송 준비",
+    "시술 설명",
+    "가족 동의"
+   ],
+   "keyPhrases": [
+    "There's a large clot we can physically remove.",
+    "He needs to transfer to the cath lab immediately.",
+    "I need your consent so we don't lose time."
+   ],
+   "goals": [
+    "혈전제거술 이송 준비를 신속히 진행한다",
+    "가족에게 시술을 설명하고 동의를 얻는다"
+   ]
+  },
+  {
+   "title": "tPA 후 신경학 악화",
+   "tagline": "My headache just got so much worse—something feels wrong.",
+   "room": "RESUS",
+   "brief": "tPA 투여 후 신경학적 악화 시 출혈을 의심해 투여 중단·재영상을 준비하세요.",
+   "role": "patient",
+   "skills": [
+    "투여 후 감시",
+    "출혈 의심 대응",
+    "재영상 준비"
+   ],
+   "keyPhrases": [
+    "I'm stopping the medication right now.",
+    "Tell me if the weakness is getting worse.",
+    "We need an urgent repeat scan of your head."
+   ],
+   "goals": [
+    "tPA 후 악화 징후를 조기 포착한다",
+    "출혈 의심 시 중단·재영상 절차를 밟는다"
+   ]
+  },
+  {
+   "title": "뇌간 경색 급속 의식저하",
+   "tagline": "I... can't... keep my eyes... open...",
+   "room": "RESUS",
+   "brief": "뇌간 경색으로 급속 의식저하가 진행되는 환자의 기도를 확보하고 삽관을 준비하세요.",
+   "role": "patient",
+   "skills": [
+    "기도 확보",
+    "삽관 준비",
+    "의식저하 대응"
+   ],
+   "keyPhrases": [
+    "Stay with me—can you hear my voice?",
+    "We're securing your airway to protect your breathing.",
+    "I'm getting the team for intubation now."
+   ],
+   "goals": [
+    "급속 의식저하에서 기도를 우선 확보한다",
+    "삽관 준비와 팀 호출을 신속히 한다"
+   ]
+  },
+  {
+   "title": "뇌졸중 SBAR 인계",
+   "tagline": "Here's the stroke handoff—let me give you the timeline and NIHSS.",
+   "room": "NURSE_STATION",
+   "brief": "시간축과 NIHSS 변화 중심으로 뇌졸중 환자를 SBAR로 인계하세요.",
+   "role": "colleague",
+   "skills": [
+    "SBAR 인계",
+    "시간축 정리",
+    "NIHSS 보고"
+   ],
+   "keyPhrases": [
+    "Last known well was 08:15, symptom onset unclear.",
+    "Initial NIHSS was 12, now up to 15.",
+    "tPA was started at 09:40, watch for deterioration."
+   ],
+   "goals": [
+    "시간축(LKW·발병·투여)을 명확히 인계한다",
+    "NIHSS 변화와 주의점을 전달한다"
+   ]
+  },
+  {
+   "title": "젊은 환자 경동맥 박리",
+   "tagline": "I'm only 34—I had neck pain after the gym, now my face is numb.",
+   "room": "RESUS",
+   "brief": "경부 외상력을 청취하고 젊은 환자의 경동맥 박리를 감별 사정하세요.",
+   "role": "patient",
+   "skills": [
+    "외상력 청취",
+    "경동맥 박리 감별",
+    "젊은 뇌졸중 사정"
+   ],
+   "keyPhrases": [
+    "Did you have any neck injury or sudden strain?",
+    "When did the neck pain start compared to the numbness?",
+    "Have you had any recent chiropractic or heavy lifting?"
+   ],
+   "goals": [
+    "경부 외상·긴장력을 청취한다",
+    "젊은 환자의 경동맥 박리를 감별한다"
+   ]
+  },
+  {
+   "title": "악성 부종 감시",
+   "tagline": "He was talking an hour ago—why is his pupil bigger now?",
+   "room": "RESUS",
+   "brief": "대면적 경색 환자에서 동공 변화 등 악성 부종 징후를 감시하세요.",
+   "role": "family",
+   "skills": [
+    "악성 부종 감시",
+    "동공 사정",
+    "악화 조기 발견"
+   ],
+   "keyPhrases": [
+    "We're watching closely for swelling in the brain.",
+    "One pupil is now larger—that's an important change.",
+    "I'm alerting the team right away."
+   ],
+   "goals": [
+    "대면적 경색의 악성 부종 징후를 감시한다",
+    "동공 변화 등 악화를 조기 발견한다"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,134 @@
+FAST 초기 선별:
+  - kind: pair
+    words: [w-smile, w-teeth, w-arm, w-speech, w-slurred]
+    pairs: [[smile and show, your teeth], [hold both arms, straight out], [slurred, speech]]
+    decoys: [the pain]
+    why: "FAST 지시는 굳은 표현으로 씁니다. 얼굴(F)은 smile and show your teeth, 팔(A)은 hold both arms straight out, 말(S)의 이상은 slurred speech예요."
+  - kind: swap
+    words: [w-speech, w-slurred]
+    who: "환자에게 · 말 사정 결과"
+    icon: me
+    before: ["Your speech sounds a little ", "dysarthric", " right now."]
+    options: [slurred, dysarthric, drunk]
+    answer: slurred
+    notes:
+      slurred: "환자도 알아듣는 쉬운 말. 의료진끼리도 그대로 쓴다."
+      dysarthric: "차트·의료진의 용어(구음장애). 환자는 알아듣지 못한다."
+      drunk: "술 취했다는 뜻이라 모욕으로 들린다. 뇌졸중을 술 탓으로 돌리는 오해도 부른다."
+    why: "같은 소견이라도 환자에게는 slurred, 차트에는 dysarthria로 적어요. 뇌졸중의 어눌한 말은 술에 취한 것으로 오인되기도 해서 drunk는 특히 피해요."
+마지막 정상 시각 확정:
+  - kind: slider
+    words: [w-last, w-normal]
+    cue: "Daughter: \"He seemed a little tired at dinner, but he was talking and eating like always.\""
+    scale: [completely normal, a little off, clearly not normal]
+    answerAt: 0
+    why: "마지막 정상 시각(LKW)은 신경학적으로 평소 그대로였던 마지막 때예요. 피곤함은 신경학적 결손이 아니라서, 말과 식사가 평소대로였다면 그때를 정상으로 봐요(어지럼·말 어눌함·한쪽 저림 같은 신경 증상이 있었다면 달라요). 말이 어눌하거나 한쪽을 못 썼다면 그보다 앞으로 거슬러 올라가요."
+    example: "So at dinner he was completely normal?"
+    exKo: "그럼 저녁 드실 때는 완전히 평소 같으셨던 거죠?"
+  - kind: context
+    words: [w-last, w-normal]
+    scenes:
+      - {who: 차트 기록, icon: board, en: "LKW 21:00 per daughter.", ok: true}
+      - {who: 신경과 의사에게, icon: speech, en: "Last known well was 9 p.m., per his daughter.", ok: true}
+      - {who: 보호자에게, icon: me, en: "What was his last known well?", ok: false, fix: "When was the last time you saw him completely normal?"}
+    why: "last known well(LKW)은 의료진끼리의 말이에요. 가족에게는 '마지막으로 완전히 평소 같았던 때'를 풀어서 물어요."
+즉시 혈당·활력 측정:
+  - kind: pair
+    words: [w-finger, w-blood, w-sugar, w-diabetes, w-medication]
+    pairs: [[a quick finger, stick], [blood, sugar], [diabetes, medication]]
+    decoys: [juice]
+    why: "finger stick은 손끝 채혈, blood sugar는 환자에게 흔히 쓰는 '혈당', diabetes medication은 당뇨약이에요."
+  - kind: context
+    words: [w-sugar, w-low]
+    scenes:
+      - {who: 의사에게 보고, icon: speech, en: "Fingerstick glucose is 52.", ok: true}
+      - {who: 차트 기록, icon: board, en: "POC glucose 52 mg/dL.", ok: true}
+      - {who: 환자에게, icon: me, en: "You're hypoglycemic at 52.", ok: false, fix: "Your blood sugar is low right now, so we're bringing it up."}
+    why: "hypoglycemic과 숫자는 의료진끼리의 말이에요. 환자에게는 blood sugar is low처럼 쉬운 말로 해요. 저혈당은 뇌졸중과 비슷한 증상을 낼 수 있어서, 혈당은 tPA 전에 반드시 확인하는 수치예요."
+두부 CT 준비 설명:
+  - kind: swap
+    words: [w-bleed, w-clot, w-brain, w-scan]
+    who: "환자에게 · CT 목적 설명"
+    icon: me
+    before: ["The CT scan checks for ", "intracranial hemorrhage", " versus a clot in your brain."]
+    options: [bleeding, intracranial hemorrhage, hemorrhagic transformation]
+    answer: bleeding
+    notes:
+      bleeding: "환자가 바로 알아듣는 말. 왜 지금 찍는지가 전해진다."
+      intracranial hemorrhage: "판독지·의료진의 용어. 환자에게는 어렵다."
+      hemorrhagic transformation: "경색 뒤에 출혈로 바뀌는 것을 가리키는 다른 말. 첫 CT의 목적과 맞지 않는다."
+    why: "첫 두부 CT는 출혈인지 막힘인지를 가려 치료를 정하려고 찍어요. 환자에게는 bleeding처럼 쉬운 말로 설명해요."
+  - kind: slider
+    words: [w-quick]
+    cue: "Patient: \"How long will I be in that machine?\" It's a non-contrast head CT."
+    scale: [quick, a while, a long time]
+    answerAt: 0
+    why: "비조영 두부 CT는 촬영 자체가 몇 분이면 끝나요(MRI보다 훨씬 짧아요). quick이 사실에 맞고 환자도 안심해요."
+    example: "It's quick—just a few minutes."
+    exKo: "금방 끝나요—몇 분이면 돼요."
+침상 삼킴 선별:
+  - kind: slider
+    words: [w-choke, w-cough]
+    cue: "After the first sip, he sputters and can't catch his breath for a few seconds."
+    scale: [cleared his throat, coughed, choked]
+    answerAt: 2
+    why: "숨을 못 쉴 정도로 컥컥거렸다면 choke예요. 기침·사레·젖은 목소리 중 하나라도 보이면 선별 실패로 보고 입으로는 아무것도 주지 않아요."
+    example: "He choked on the first sip, so he stays NPO."
+    exKo: "첫 모금에 사레가 심하게 들려서 계속 금식이에요."
+  - kind: context
+    words: [w-swallow, w-drink]
+    scenes:
+      - {who: 차트 기록, icon: board, en: "Failed bedside swallow screen; NPO, SLP consult.", ok: true}
+      - {who: 의사에게 보고, icon: speech, en: "He failed the swallow screen, so he's NPO for now.", ok: true}
+      - {who: 환자에게, icon: me, en: "You failed the swallow screen, so you're NPO.", ok: false, fix: "Swallowing isn't safe yet, so nothing by mouth for now—not even water or pills."}
+    why: "failed·NPO는 의료진끼리의 말이에요. 환자에게 failed는 자기 잘못처럼 들리고 NPO는 알아듣지 못해요. 삼킴 선별을 통과하기 전에는 물도, 먹는 약도 입으로 주지 않는다는 것을 분명히 말해요."
+NIHSS 협조 요청:
+  - kind: slider
+    words: [w-squeeze]
+    cue: "Checking grip strength on both sides — you want her full effort."
+    scale: [touch, hold, squeeze]
+    answerAt: 2
+    why: "힘을 볼 때는 squeeze ... as hard as you can으로 최대 힘을 끌어내요. touch나 hold로는 좌우 힘 차이가 드러나지 않아요."
+    example: "Squeeze my hands as hard as you can."
+    exKo: "최대한 세게 제 손을 쥐어 보세요."
+  - kind: context
+    words: [w-score]
+    scenes:
+      - {who: 차트 기록, icon: board, en: "NIHSS 8 at 10:05.", ok: true}
+      - {who: 신경과 의사에게, icon: speech, en: "Her NIHSS is 8.", ok: true}
+      - {who: 환자에게, icon: me, en: "Your NIHSS is 8.", ok: false, fix: "We gave your exam a score, and we'll repeat it to track any changes."}
+    why: "NIHSS 숫자는 의료진끼리 변화를 비교하려고 쓰는 말이에요(높을수록 심해요). 환자에게 숫자만 말하면 뜻을 몰라 불안해하니, 점수를 매겨 다시 확인한다는 것만 설명해요."
+전형 좌중대뇌동맥 폐색:
+  - kind: swap
+    words: [w-window, w-medication]
+    who: "환자에게 · 치료 시간 설명"
+    icon: me
+    before: ["You're still inside the window for ", "thrombolytics", "."]
+    options: [clot-busting medication, thrombolytics, a blood thinner]
+    answer: clot-busting medication
+    notes:
+      clot-busting medication: "환자 설명에 쓰는 쉬운 말. 약이 하는 일이 그대로 보인다."
+      thrombolytics: "의료진의 용어. 환자는 알아듣지 못한다."
+      a blood thinner: "다른 약이다. 항응고제는 이미 생긴 혈전을 녹이지 않고 새로 생기는 것을 막는다."
+    why: "tPA(알테플라제)는 혈전을 녹이는 약이에요. 환자에게는 clot-busting medication, 의료진끼리는 thrombolytic·tPA라고 해요. blood thinner와 섞어 쓰면 다른 약으로 들려요."
+  - kind: slider
+    words: [w-weak, w-right]
+    cue: "Her right arm drifts down to the bed within 10 seconds, but she can still lift it a little."
+    scale: [a little weak, weak, paralyzed]
+    answerAt: 1
+    why: "팔이 침대까지 떨어지지만 조금이라도 들 수 있으면 weak예요. 전혀 움직이지 못할 때만 paralyzed라고 해요. 환자에게는 관찰한 만큼만 말해요."
+    example: "Your right arm is weak compared to your left."
+    exKo: "오른팔이 왼팔보다 힘이 약해요."
+후순환(소뇌) 뇌졸중:
+  - kind: pair
+    words: [w-double, w-balance, w-spin]
+    pairs: [[seeing, double], [loss of, balance], [the room is, spinning]]
+    decoys: [weak]
+    why: "후순환 증상은 굳은 표현으로 물어요. seeing double(복시), loss of balance(균형 상실), the room is spinning(회전성 어지럼)."
+  - kind: context
+    words: [w-dizziness, w-stroke]
+    scenes:
+      - {who: 의사에게 보고, icon: speech, en: "Vertigo with diplopia and ataxia—I'm worried about a posterior circulation stroke.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Vertigo, diplopia, ataxia; no limb weakness.", ok: true}
+      - {who: 환자에게, icon: me, en: "You have vertigo, diplopia, and ataxia, which suggests a posterior circulation stroke.", ok: false, fix: "Dizziness with double vision and trouble walking can still mean a stroke, even without weakness."}
+    why: "diplopia·ataxia·posterior circulation은 의료진끼리의 말이에요. 환자에게는 double vision, trouble walking처럼 풀어요. 이런 증상은 팔다리 위약이 없어도 뇌졸중일 수 있어서, FAST에 균형(B)과 눈(E)을 더한 BE-FAST로 보기도 해요."

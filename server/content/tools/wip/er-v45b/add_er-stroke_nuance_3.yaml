@@ -1,0 +1,130 @@
+TIA 증상 소실:
+  - kind: context
+    words: [w-stroke, w-warning]
+    scenes:
+      - {who: 의사에게 보고, icon: speech, en: "Right arm weakness fully resolved after 20 minutes—likely TIA.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Transient R arm weakness x20 min, resolved; likely TIA.", ok: true}
+      - {who: 환자에게, icon: me, en: "You likely had a transient ischemic attack.", ok: false, fix: "This was likely a mini-stroke—a warning sign that a bigger stroke could follow."}
+    why: "TIA·transient ischemic attack은 의료진끼리의 말이에요. 환자에게는 mini-stroke, warning sign으로 풀어요. 다만 'mini'라고 가벼운 게 아니에요 — TIA 직후 며칠은 뇌졸중이 올 위험이 특히 높아서 서둘러 원인을 찾아요."
+  - kind: slider
+    words: [w-warning]
+    cue: "Patient: \"It went away by itself, so it was nothing, right?\""
+    scale: [nothing, a minor thing, a serious warning sign]
+    answerAt: 2
+    why: "증상이 사라져도 TIA는 곧 올 수 있는 뇌졸중의 경고예요. nothing이나 minor로 받아 주면 환자가 그냥 집에 가 버려요."
+    example: "Even though it passed, this was a serious warning sign."
+    exKo: "지나갔더라도 이건 심각한 경고 신호였어요."
+출혈성 뇌졸중 급성 악화:
+  - kind: reel
+    words: [w-stay]
+    word: stay with me
+    scenes:
+      - {who: "의식이 흐려지는 환자에게", en: "Stay with me—can you open your eyes?", ko: "정신 놓지 마세요—눈 뜰 수 있어요?", tone: 급함}
+      - {who: "공황 상태의 보호자에게", en: "Stay with me—look at me and breathe.", ko: "저한테 집중하세요—저를 보고 숨 쉬세요.", tone: 단호}
+      - {who: "설명을 놓친 듯한 보호자에게", en: "Stay with me for a second—this part is important.", ko: "잠깐 제 말에 집중해 주세요—이 부분이 중요해요.", tone: 차분}
+      - {who: "보호자에게는…", en: "You can stay with him—hold his hand and talk to him.", ko: "곁에 계셔도 돼요—손 잡고 말 걸어 주세요.", tone: 다정, swap: true}
+  - kind: slider
+    words: [w-pressure, w-high]
+    cue: "Hemorrhagic stroke, BP 220/120, and he's vomiting."
+    scale: [a little high, high, dangerously high]
+    answerAt: 2
+    why: "뇌출혈에서 혈압이 이렇게 높으면 출혈이 커질 위험이 있어 바로 낮춰요. 환자에게도 dangerously high라고 사실대로 말하고, 지금 치료 중이라는 말을 함께 해요."
+    example: "Your blood pressure is dangerously high; we're treating it now."
+    exKo: "혈압이 위험할 정도로 높아요; 지금 치료하고 있어요."
+대혈관 폐색 혈전제거술 이송:
+  - kind: swap
+    words: [w-procedure, w-clot]
+    who: "보호자에게 · 시술 설명"
+    icon: me
+    before: ["There's a large clot we can remove with a ", "mechanical thrombectomy", "."]
+    options: [procedure through a blood vessel, mechanical thrombectomy, surgery on his brain]
+    answer: procedure through a blood vessel
+    notes:
+      procedure through a blood vessel: "가족이 이해하는 말. 사타구니나 손목 혈관으로 들어가는 시술이라는 사실에도 맞다."
+      mechanical thrombectomy: "정확한 의료 용어지만 가족에게는 어렵다."
+      surgery on his brain: "사실과 다르다. 머리를 여는 수술이 아니라 혈관 안으로 하는 시술이라, 가족을 더 겁준다."
+    why: "혈전제거술은 개두술이 아니에요. 가족에게는 '혈관 안으로 들어가 혈전을 빼내는 시술'로 설명해요."
+  - kind: pair
+    words: [w-blood, w-clot, w-sign]
+    pairs: [[restore, blood flow], [pull, the clot out], [sign, here]]
+    decoys: [time]
+    why: "restore blood flow(혈류를 회복시키다), pull the clot out(혈전을 빼내다), sign here(여기 서명하다)."
+tPA 후 신경학 악화:
+  - kind: context
+    words: [w-stop, w-medication]
+    scenes:
+      - {who: 의사에게 보고, icon: speech, en: "New severe headache and NIHSS up 4—I've stopped the alteplase. Can we get a stat head CT?", ok: true}
+      - {who: 차트 기록, icon: board, en: "Alteplase stopped at 10:12 for neuro decline; stat head CT ordered.", ok: true}
+      - {who: 환자에게, icon: me, en: "I'm discontinuing your alteplase infusion due to suspected hemorrhagic transformation.", ok: false, fix: "I'm stopping the medication right now, and we're getting a quick scan of your head."}
+    why: "의료진에게는 약 이름·시각·이유를 정확히, 환자에게는 무엇을 하는지만 쉬운 말로 해요. 투여 중 신경학적 악화·심한 두통·급격한 혈압 상승·구토가 생기면 투여를 멈추고 응급 두부 CT를 찍는 것이 표준이에요."
+  - kind: slider
+    words: [w-headache, w-worse]
+    cue: "Patient during the tPA infusion: \"My headache is way worse—it's the worst it's been.\""
+    scale: [a bit worse, worse, much worse]
+    answerAt: 2
+    why: "tPA 중 새로 생기거나 크게 심해진 두통은 뇌출혈 신호일 수 있어요. a bit worse로 넘기지 말고 바로 투여를 멈추고 보고해요."
+    example: "Tell me right away if your headache gets worse."
+    exKo: "두통이 심해지면 바로 말씀해 주세요."
+뇌간 경색 급속 의식저하:
+  - kind: slider
+    words: [w-respond]
+    cue: "You call his name loudly and squeeze his shoulder; he only groans."
+    scale: [alert, drowsy, barely responding]
+    answerAt: 2
+    why: "큰 소리와 통증 자극에 신음으로만 반응하면 barely responding이에요. 의식이 빠르게 떨어지면 기도를 지키는 반사도 약해지니 바로 팀을 불러요."
+    example: "He's barely responding to me now."
+    exKo: "지금 거의 반응이 없어요."
+  - kind: context
+    words: [w-airway, w-intubation]
+    scenes:
+      - {who: 팀 호출, icon: siren, en: "His level of consciousness is dropping fast—I need anesthesia for intubation now.", ok: true}
+      - {who: 차트 기록, icon: board, en: "GCS 13 to 8 in 20 min; anesthesia paged for intubation.", ok: true}
+      - {who: 환자에게, icon: me, en: "We're going to intubate you because your GCS is 8.", ok: false, fix: "We're putting in a breathing tube to protect your breathing."}
+    why: "GCS·intubate는 의료진끼리의 말이에요. 의식이 떨어져 가는 환자도 들을 수 있다고 보고, 무엇을 하는지 쉬운 말로 알려요."
+뇌졸중 SBAR 인계:
+  - kind: pair
+    words: [w-known, w-onset, w-watch, w-deterioration]
+    pairs: [[last known, well], [onset, unclear], [watch for, deterioration]]
+    decoys: [stable]
+    why: "인계 시간축의 굳은 표현이에요. last known well(마지막 정상 확인), onset unclear(발현 시각 불명확), watch for deterioration(악화 관찰)."
+  - kind: context
+    words: [w-initial, w-deterioration]
+    scenes:
+      - {who: 간호사 인계, icon: speech, en: "Initial NIHSS was 12, now up to 15.", ok: true}
+      - {who: 의사 콜, icon: monitor, en: "His NIHSS went from 12 to 15 in the last hour—can you come assess him?", ok: true}
+      - {who: 보호자에게, icon: me, en: "His NIHSS went from 12 to 15.", ok: false, fix: "His exam is worse than when he came in, and the doctor is coming to see him now."}
+    why: "NIHSS 점수는 의료진끼리 변화를 주고받는 말이에요(오르면 나빠진 것). 가족에게는 숫자 대신 무엇이 달라졌고 무엇을 하고 있는지를 말해요."
+젊은 환자 경동맥 박리:
+  - kind: pair
+    words: [w-tear, w-numbness]
+    pairs: [[a heavy gym, session], [a tear in the, artery wall], [numbness on one side of, the face]]
+    decoys: [strain]
+    why: "a heavy gym session(헬스장에서 무리한 운동), a tear in the artery wall(동맥 벽이 찢어지는 것, 곧 박리), numbness on one side of the face(한쪽 얼굴의 감각 저하)."
+  - kind: swap
+    words: [w-tear, w-neck, w-stroke]
+    who: "환자에게 · 원인 설명"
+    icon: me
+    before: ["A ", "carotid dissection", " can cause a stroke like this."]
+    options: [tear in the neck artery, carotid dissection, pulled neck muscle]
+    answer: tear in the neck artery
+    notes:
+      tear in the neck artery: "환자가 알아듣는 말. 박리가 무엇인지 그대로 보여 준다."
+      carotid dissection: "의료진의 용어. 환자는 알아듣지 못한다."
+      pulled neck muscle: "근육 문제로 들려 심각성을 놓친다. 사실과도 다르다."
+    why: "경동맥 박리는 목 동맥 벽 안쪽이 찢어지는 것이라, 환자에게는 tear in the neck artery로 풀어 말해요."
+악성 부종 감시:
+  - kind: context
+    words: [w-pupil, w-change]
+    scenes:
+      - {who: 의사에게 보고, icon: siren, en: "Left pupil is now 6 mm and sluggish—new since 14:00.", ok: true}
+      - {who: 차트 기록, icon: board, en: "L pupil 6 mm, sluggish (prev 3 mm, brisk); MD notified.", ok: true}
+      - {who: 보호자에게, icon: me, en: "His left pupil is blown.", ok: false, fix: "One pupil is now larger—that's an important change, and I'm alerting the team right away."}
+    why: "blown pupil은 의료진끼리의 은어예요. 가족에게는 겁만 주고 뜻은 전해지지 않아요. 사실(한쪽 동공이 커졌다)과 지금 하는 조치를 함께 말해요."
+  - kind: slider
+    words: [w-watch]
+    cue: "Large hemispheric stroke; brain swelling may still develop over the next few days."
+    scale: [glance at, check on, watch closely]
+    answerAt: 2
+    why: "큰 경색은 며칠에 걸쳐 뇌부종이 진행할 수 있어 동공과 의식을 자주 확인해요. check on보다 watch closely가 이 감시의 강도에 맞아요."
+    example: "We're watching closely for swelling in the brain."
+    exKo: "뇌부종이 없는지 자세히 지켜보고 있어요."

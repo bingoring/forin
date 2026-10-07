@@ -173,7 +173,7 @@ changes:
   index: 2
   fields:
   - words
-  why: 쉬운 w-know 태그를 뺐다
+  why: 쉬운 w-know 태그를 뺐다 / short of breath가 구 헤드워드(w-short)라 명사 breath를 동사 w-breathe로 가르치지 않게 태그를 뺐다
 - kind: sentence
   situation: 면역저하 잠복 패혈증
   index: 1
@@ -424,11 +424,6 @@ changes:
   - ko
   why: ko '진행하다'가 the baby moving less(태아 움직임)에 맞지 않았다
 - kind: word
-  id: w-level
-  fields:
-  - ko
-  why: w-number와 ko(수치)가 같아 정답이 둘 — lactate level·oxygen level은 혈중 농도
-- kind: word
   id: w-confuse
   fields:
   - en
@@ -489,7 +484,8 @@ changes:
   - en
   - ipa
   - ko
-  why: 태그 문장·예문이 모두 명사 mottling(the mottling of your skin)인데 헤드워드가 동사 mottle이었다
+  - example
+  why: 태그 문장·예문이 모두 명사 mottling(the mottling of your skin)인데 헤드워드가 동사 mottle이었다 / 환자 말투 예문을 의료진 보고 말투로 — 단어 카드가 임상어 자리를 보여 주게(젖산 위기 context와 짝)
 - kind: word
   id: w-immediate
   fields:
@@ -501,3 +497,35 @@ changes:
 - kind: word-add
   id: w-runfever
   why: 노인 비전형 패혈증 문장 3에 이미 있는 관용구 — w-run(주입하다)과 뜻이 달라 따로 세웠다
+- kind: word
+  id: w-number
+  fields:
+  - ko
+  why: w-level과 ko(수치)가 같아 정답이 둘 — 태그 문장 kidney numbers·the higher the number는 환자용 쉬운 말이라 숫자(형제 er-burn·er-peds도 숫자); w-level은 형제 주제처럼 수치로 둔다
+- kind: word
+  id: w-place
+  fields:
+  - ko
+  why: '''거치하다''는 place the tube에 안 맞는다 — 형제 4개 주제처럼 삽입하다'
+- kind: word
+  id: w-crash
+  fields:
+  - ko
+  why: '''응급의''는 crash의 뜻이 아니라 crash cart의 수식 — 쓰임을 밝혀 (crash cart의) 응급'
+- kind: word
+  id: w-get
+  fields:
+  - example
+  why: ko '(그 상태가) 되다'인데 예문은 getting enough blood(받다)였다
+- kind: sentence
+  situation: 정맥로·수액 시작 설명
+  index: 4
+  fields:
+  - words
+  why: short of breath가 구 헤드워드(w-short)라 명사 breath를 동사 w-breathe로 가르치지 않게 태그를 뺐다
+- kind: sentence
+  situation: 수액반응성 평가
+  index: 5
+  fields:
+  - words
+  why: short of breath가 구 헤드워드(w-short)라 명사 breath를 동사 w-breathe로 가르치지 않게 태그를 뺐다

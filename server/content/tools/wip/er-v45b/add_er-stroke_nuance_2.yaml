@@ -1,0 +1,112 @@
+기상 시 발견(wake-up):
+  - kind: context
+    words: [w-normal, w-sleep]
+    scenes:
+      - {who: 인계, icon: speech, en: "Wake-up stroke—LKW 23:00 at bedtime.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Went to bed normal at 23:00; woke at 06:30 with R-sided weakness.", ok: true}
+      - {who: 환자에게, icon: me, en: "Your LKW is 23:00.", ok: false, fix: "So the last time we know you were normal is 11 last night, when you went to sleep."}
+    why: "자다가 증상을 안고 깬 경우, 증상을 알아챈 시각이 아니라 정상으로 잠든 시각(밤중에 정상으로 깨어 있었다면 그 시각)이 마지막 정상 시각이에요. 환자에게는 LKW라는 약어 대신 풀어서 확인해요."
+  - kind: pair
+    words: [w-sleep, w-wake, w-normal]
+    pairs: [[went to, sleep], [woke, up], [feeling, normal]]
+    decoys: [asleep]
+    why: "went to sleep(잠들다), woke up(깨다), feeling normal(정상으로 느끼다). 기상 시 발견 문진은 이 세 표현으로 시간을 좁혀요."
+tPA 금기 선별:
+  - kind: pair
+    words: [w-thinner, w-blood, w-bleed, w-disorder, w-injury]
+    pairs: [[taking any blood, thinners], [a bleeding, disorder], [head injury in the past, three months]]
+    decoys: [clot]
+    why: "금기 문진의 굳은 표현이에요. blood thinners(환자들이 항응고제를 부르는 말), bleeding disorder(출혈 장애), head injury in the past three months(최근 3개월 안의 머리 손상)."
+  - kind: swap
+    words: [w-thinner]
+    who: "환자에게 · 금기 문진"
+    icon: me
+    before: ["Are you taking any ", "anticoagulants", "?"]
+    options: [blood thinners, anticoagulants, aspirin]
+    answer: blood thinners
+    notes:
+      blood thinners: "환자들이 실제로 쓰는 말이라 바로 알아듣는다."
+      anticoagulants: "정확하지만 의료진의 말. 환자는 '아니요'라고 잘못 답하기 쉽다."
+      aspirin: "아스피린 하나만 물으면 와파린·아픽사반 같은 항응고제를 놓친다."
+    why: "환자는 anticoagulant라는 말을 몰라도 blood thinner는 알아들어요. 와파린·아픽사반처럼 약 이름을 덧붙여 물으면 더 정확해요."
+실어증 환자 소통:
+  - kind: pair
+    words: [w-question, w-hurt, w-squeeze]
+    pairs: [[yes-or-no, questions], [where it, hurts], [squeeze, harder]]
+    decoys: [sentence]
+    why: "실어증 환자에게는 yes-or-no questions를 한 번에 하나씩, 통증은 where it hurts를 가리키게, 답은 squeeze harder처럼 몸짓으로 받아요."
+  - kind: context
+    words: [w-understand, w-squeeze]
+    scenes:
+      - {who: 실어증 환자에게, icon: me, en: "Squeeze my hand if you understand me.", ok: true}
+      - {who: 보호자에게, icon: speech, en: "Does that make sense so far?", ok: true}
+      - {who: 실어증 환자에게, icon: me, en: "Do you understand everything I've explained about your stroke and the treatment plan?", ok: false, fix: "I'll ask one thing at a time. Do you understand? Squeeze my hand for yes."}
+    why: "실어증 환자는 길고 여러 겹인 질문을 처리하기 어려워요. 알아들어도 말로 '네'라고 답하지 못할 수 있으니, 짧게 하나씩 묻고 손 쥐기·눈 깜빡임으로 답을 받아요."
+심방세동 병력 통합:
+  - kind: pair
+    words: [w-fibrillation, w-miss, w-dose, w-irregular]
+    pairs: [[atrial, fibrillation], [missed any, doses], [an irregular, heartbeat]]
+    decoys: [pill]
+    why: "atrial fibrillation(심방세동), missed any doses(복용을 거르다), an irregular heartbeat(불규칙한 심장박동)."
+  - kind: context
+    words: [w-fibrillation, w-irregular]
+    scenes:
+      - {who: 의사에게 보고, icon: speech, en: "History of AFib on apixaban—possible cardioembolic stroke.", ok: true}
+      - {who: 차트 기록, icon: board, en: "PMH: AF on apixaban.", ok: true}
+      - {who: 환자에게, icon: me, en: "Your AFib may have caused a cardioembolic stroke.", ok: false, fix: "An irregular heartbeat can let clots form in your heart, and those clots can travel to the brain."}
+    why: "AFib·cardioembolic은 의료진끼리의 말이에요. 환자에게는 불규칙한 박동 → 심장 안의 혈전 → 뇌로 이동, 이 순서로 풀어서 말해요."
+항응고제 복용자:
+  - kind: slider
+    words: [w-high, w-bleed, w-risk]
+    cue: "INR comes back 3.2 in a patient being considered for tPA."
+    scale: [no extra risk, some extra risk, too high for tPA]
+    answerAt: 2
+    why: "AHA 기준으로 INR이 1.7을 넘으면 tPA(알테플라제)는 쓰지 않아요. 3.2는 '조금 높은' 값이 아니라 그 선을 넘은 값이에요."
+    example: "With an INR of 3.2, tPA isn't safe for him."
+    exKo: "INR이 3.2라서 tPA는 이분께 안전하지 않아요."
+  - kind: swap
+    words: [w-dose, w-last]
+    who: "환자에게 · 마지막 복용 시각"
+    icon: me
+    before: ["When was your last ", "anticoagulant dose", "?"]
+    options: [dose of warfarin, anticoagulant dose, INR]
+    answer: dose of warfarin
+    notes:
+      dose of warfarin: "환자가 이미 말한 약 이름으로 되묻는다. 알아듣기 쉽고 확인이 정확하다."
+      anticoagulant dose: "틀린 말은 아니지만 환자에게는 어려운 말."
+      INR: "피검사 이름이다. 복용 시각이 아니라 마지막 검사를 묻게 된다."
+    why: "환자가 이미 약 이름(warfarin)을 말했다면 그 이름으로 되물어요. 일반 용어보다 확인이 정확해요."
+언어장벽 뇌졸중:
+  - kind: pair
+    words: [w-interpreter, w-nod]
+    pairs: [[get an, interpreter], [nod, your head], [count from one, to five]]
+    decoys: [clock]
+    why: "get an interpreter(통역사를 부르다), nod your head(고개를 끄덕이다), count from one to five(1부터 5까지 세다). 통역을 기다리는 동안 몸짓과 숫자로 핵심을 얻어요."
+  - kind: context
+    words: [w-interpreter]
+    scenes:
+      - {who: 차트 기록, icon: board, en: "Spanish video interpreter used, ID 2741.", ok: true}
+      - {who: 환자에게 (몸짓과 함께), icon: me, en: "I'm getting an interpreter right now.", ok: true}
+      - {who: 열 살 자녀에게, icon: baby, en: "Can you interpret for your dad about his medications?", ok: false, fix: "Thanks for helping—I'm getting a medical interpreter, so you can just stay with your dad."}
+    why: "미국 병원은 자격 있는 의료 통역사를 쓰고, 당장 위험한 응급의 아주 짧은 순간 말고는 미성년 자녀에게 통역을 맡기지 않아요. 통역사가 오기 전에도 몸짓·숫자로 발병 시각은 먼저 확보해요."
+혈압 급상승 동반:
+  - kind: slider
+    words: [w-pressure, w-high]
+    cue: "tPA candidate, BP 196/112. The target before tPA is below 185/110."
+    scale: [at goal, a little above goal, too high to start tPA]
+    answerAt: 2
+    why: "AHA 기준으로 tPA 전 혈압은 185/110 미만이어야 하고, 투여 뒤 24시간은 180/105 미만으로 유지해요. 196/112는 그 선을 넘었으니 먼저 낮춰야 해요."
+    example: "Your blood pressure needs to come down before treatment."
+    exKo: "치료 전에 혈압을 낮춰야 해요."
+  - kind: swap
+    words: [w-pressure, w-high]
+    who: "환자에게 · 혈압 설명"
+    icon: me
+    before: ["Your blood pressure is ", "severely elevated", " right now, so we're bringing it down first."]
+    options: [too high, severely elevated, sky-high]
+    answer: too high
+    notes:
+      too high: "환자에게 쉬운 말. 먼저 낮춘다는 다음 말로 자연스럽게 이어진다."
+      severely elevated: "차트·의료진의 말. 환자에게는 딱딱하고 무겁게 들린다."
+      sky-high: "구어 과장. 불안을 키운다."
+    why: "환자에게는 too high처럼 쉬운 말로 사실을 말하고, 바로 무엇을 하는지 덧붙여요."

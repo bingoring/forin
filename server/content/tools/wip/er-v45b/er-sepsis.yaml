@@ -265,11 +265,11 @@ words:
   icon: board
   example: Do you have any burning when you urinate?
   exKo: 소변볼 때 화끈거림이 있나요?
-  cue: 요로감염을 가늠할 때 — 소변볼 때 따갑고 뜨거운 느낌
+  cue: 요로감염을 가늠할 때 — 소변볼 때 뜨겁고 화한 느낌
   tag: 증상 문진
   distractorsEn:
   - itch
-  - sting
+  - bump
   distractorsKo:
   - 가려움
   - 저림
@@ -567,10 +567,10 @@ words:
   icon: monitor
   example: Your heart is racing a little.
   exKo: 심장이 조금 빨리 뛰고 있어요.
-  cue: 환자가 '가슴이 쿵쿵 뛴다'고 할 때 쓰는 동사 — 'my heart is ___ing'
+  cue: 환자가 '심장이 너무 빨리 뛴다'고 할 때 쓰는 동사 — 'my heart is ___ing'
   tag: 바이탈
   distractorsEn:
-  - pound
+  - pace
   - rest
   distractorsKo:
   - 멈추다
@@ -683,7 +683,7 @@ words:
   icon: pill
   example: We start the antibiotic right after.
   exKo: 바로 이어서 항생제를 시작해요.
-  cue: 세균 감염에 쓰는 약 — 패혈증 인지 후 1시간 안에 들어가야 한다
+  cue: 세균 감염에 쓰는 약 — 패혈성 쇼크면 인지 후 1시간 안에, 그 밖에도 되도록 빨리 들어가야 한다
   tag: 치료
   distractorsEn:
   - antiviral
@@ -1222,8 +1222,8 @@ words:
   ipa: /ɡɛt/
   ko: (그 상태가) 되다
   icon: board
-  example: Your organs are getting enough blood.
-  exKo: 장기에 피가 충분히 가고 있어요.
+  example: Her kidney numbers are getting worse.
+  exKo: 신장 수치가 나빠지고 있어요.
   cue: 상태가 변해 가는 것을 말할 때 — '___ting worse'
   tag: 설명·안심
   distractorsEn:
@@ -1462,7 +1462,7 @@ words:
 - id: w-level
   en: level
   ipa: /ˈlɛvəl/
-  ko: 농도
+  ko: 수치
   icon: chartup
   example: This lactate level tells us how stressed your body is.
   exKo: 이 젖산 수치가 몸이 얼마나 스트레스를 받았는지 알려줘요.
@@ -1472,7 +1472,7 @@ words:
   - label
   - lever
   distractorsKo:
-  - 단계
+  - 비율
   - 부피
   chips:
   - - lev
@@ -1529,7 +1529,7 @@ words:
   tag: 설명·안심
   distractorsEn:
   - stop
-  - stage
+  - strip
   distractorsKo:
   - 결과
   - 목표
@@ -1804,7 +1804,7 @@ words:
 - id: w-number
   en: number
   ipa: /ˈnʌmbər/
-  ko: 수치
+  ko: 숫자
   icon: chartup
   example: The higher the number, the more stress on your body.
   exKo: 수치가 높을수록 몸이 받는 스트레스도 커요.
@@ -1966,7 +1966,7 @@ words:
 - id: w-confuse
   en: confused
   ipa: /kənˈfjuːzd/
-  ko: 혼란스러워하는
+  ko: 혼란스러운
   icon: board
   example: He's cold and confused right now.
   exKo: 지금 몸이 차고 혼란스러워하세요.
@@ -2890,7 +2890,7 @@ words:
   icon: board
   example: Tell me if the baby moves less than usual.
   exKo: 아기가 평소보다 덜 움직이면 말씀해 주세요.
-  cue: 양이 모자랄 때 — 비교하면 'less than usual'
+  cue: 양이 모자랄 때 — 평소보다 덜(비교급으로 쓴다)
   tag: 증상 문진
   distractorsEn:
   - large
@@ -3493,8 +3493,8 @@ words:
   ipa: /ˈmɑːtəlɪŋ/
   ko: (피부의) 얼룩덜룩함
   icon: board
-  example: The mottling of your skin worries me.
-  exKo: 피부가 얼룩덜룩해진 게 걱정돼요.
+  example: There's mottling up to her knees — I need you at bedside.
+  exKo: 무릎까지 피부가 얼룩덜룩해요 — 침상으로 와 주세요.
   cue: 관류가 나쁠 때 무릎·다리 피부에 그물처럼 번지는 보랏빛 무늬
   tag: 장기·관류
   distractorsEn:
@@ -3755,7 +3755,7 @@ words:
 - id: w-place
   en: place
   ipa: /pleɪs/
-  ko: 거치하다
+  ko: 삽입하다
   icon: board
   example: The team is getting ready to place the tube.
   exKo: 팀이 튜브를 넣을 준비를 하고 있어요.
@@ -3857,7 +3857,7 @@ words:
 - id: w-crash
   en: crash
   ipa: /kræʃ/
-  ko: 응급의
+  ko: (crash cart의) 응급
   icon: siren
   example: Get the crash cart here now.
   exKo: 크래시 카트를 여기로 가져오세요.
@@ -4615,7 +4615,6 @@ situations:
     - w-tell
     - w-feel
     - w-short
-    - w-breathe
     goal: 2
   - en: You're safe here, and we'll watch you closely.
     ko: 여기서는 안전하고, 저희가 계속 지켜볼게요.
@@ -5132,7 +5131,7 @@ situations:
     scale:
     - low
     - normal
-    - a fever
+    - high
     answerAt: 0
     why: 36℃(96.8℉) 미만은 저체온 쪽이에요. SIRS 기준도 38℃ 초과와 36℃ 미만을 모두 이상으로 봐요. 노인 패혈증은 열 대신 저체온과 혼란으로 올 수 있어서, 열이 없다고 감염을 배제하지 않아요.
     example: His temperature is low, and in older adults that can be a sign of sepsis.
@@ -5278,12 +5277,12 @@ situations:
     cue: 'CT: obstructing ureteral stone with hydronephrosis. Patient febrile and hypotensive.'
     scale:
     - routine
-    - soon
     - urgent
+    - emergent
     answerAt: 2
-    why: 막힌 요로에 감염까지 겹치면 항생제만으로는 잘 낫지 않아요. 요관 스텐트나 경피적 신루술로 막힌 곳을 빼내는 긴급 감압이 필요한 응급이에요.
-    example: With a blockage and an infection, draining the kidney is urgent.
-    exKo: 막힘에 감염까지 있으면 신장 배액이 급해요.
+    why: 막힌 요로에 감염까지 겹치면 항생제만으로는 잘 낫지 않아요. 요관 스텐트나 경피적 신루술로 막힌 곳을 빼내는 감압이 필요한 응급이에요.
+    example: With a blockage and an infection, draining the kidney is emergent.
+    exKo: 막힘에 감염까지 있으면 신장 배액은 응급이에요.
   - kind: swap
     words:
     - w-drain
@@ -5403,7 +5402,7 @@ situations:
     - a little low
     - dangerously low
     answerAt: 1
-    why: 목표(92% 이상)보다 조금 낮은 값이에요. 산소를 올리고 지켜볼 단계이지 아직 위험할 만큼은 아니에요. 다만 계속 떨어지거나 호흡이 더 힘들어지면 바로 보고해요.
+    why: 목표(92% 이상)보다 조금 낮은 값이에요. 환자에게는 'a little low'로 말하되, 간호사는 산소를 올리고 보고해요. 계속 떨어지거나 호흡이 힘들어지면 바로 알려요.
     example: Your oxygen level is a little lower than we'd like.
     exKo: 산소 수치가 원하는 것보다 조금 낮아요.
   - kind: swap
@@ -5470,7 +5469,6 @@ situations:
     - w-start
     - w-feel
     - w-short
-    - w-breathe
     goal: 2
   - en: Your blood pressure came up a little after that last bag of fluids.
     ko: 마지막 수액 한 팩 뒤로 혈압이 조금 올랐어요.
@@ -5514,7 +5512,6 @@ situations:
     - w-swell
     - w-leg
     - w-short
-    - w-breathe
     - w-mean
     - w-fluid
     goal: 2
@@ -6453,7 +6450,7 @@ situations:
       en: You have mottling to bilateral knees with a cap refill of five seconds.
       ok: false
       fix: Your skin is getting blotchy and cold, which means your circulation is struggling.
-    why: 차트와 보고에는 범위와 수치(무릎까지, 모세혈관 재충전 5초)를 정확히 적지만, 환자에게는 피부가 얼룩덜룩하고 차가워진다는 것과 그 뜻을 쉬운 말로 전해요.
+    why: 차트와 보고에는 범위와 수치(무릎까지, 모세혈관 재충전 5초)를 정확히 적지만, 환자에게는 피부가 얼룩덜룩하고 차가워진다는 것과 그 뜻을 쉬운 말로 전해요. mottling이라는 말을 쓰더라도 '순환이 힘겹다'고 바로 풀어 주면 되고, 환자에게 틀린 건 '무릎까지·5초' 같은 범위와 수치를 그대로 말한 것이에요.
   - kind: swap
     words:
     - w-call
