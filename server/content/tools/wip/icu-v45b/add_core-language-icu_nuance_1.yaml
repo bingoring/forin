@@ -1,0 +1,136 @@
+"통역 서비스 요청·활용":
+  - kind: pair
+    words: [w-make-sure, w-step, w-speak, w-naturally]
+    pairs: [["make", "sure"], ["step by", "step"], ["speak", "naturally"]]
+    decoys: ["lost"]
+    why: "make sure는 '틀림없이 ~하게 하다', step by step은 '하나씩 차례로', speak naturally는 통역을 의식하지 말고 '평소처럼 말하라'는 뜻이에요."
+  - kind: context
+    words: [w-speak, w-directly]
+    scenes:
+      - {who: "통역 중 · 환자를 보며", icon: me, en: "Mrs. Lopez, we need to take a small blood sample.", ok: true}
+      - {who: "동료에게", icon: speech, en: "She needs labs drawn — I'll do it with the interpreter on.", ok: true}
+      - {who: "통역 중 · 통역사를 보며", icon: me, en: "Tell her we need to take a small blood sample.", ok: false, fix: "Mrs. Lopez, we need to take a small blood sample."}
+    why: "의료 통역에서는 통역사가 아니라 환자를 보고 1인칭으로 직접 말해요('Tell her…'가 아니라 'Mrs. Lopez, …'). 통역사도 1인칭으로 옮기기 때문에 환자는 간호사와 직접 대화하는 것처럼 느껴요."
+  - kind: swap
+    words: [w-professional, w-interpreter]
+    who: "보호자에게 · 어머니가 영어를 못 할 때"
+    icon: me
+    before: ["I'll get ", "a family member", " for us right away."]
+    options: ["a professional interpreter", "someone who speaks Spanish", "a family member"]
+    answer: "a professional interpreter"
+    notes:
+      "a professional interpreter": "의료 용어와 통역 윤리(정확성·비밀 유지)를 훈련받은 사람이다."
+      "someone who speaks Spanish": "그 언어를 할 줄 아는 것과 의료 통역 자격은 다르다 — 검증되지 않은 사람에게 맡기지 않는다."
+      "a family member": "가족이 옮기면 내용이 걸러지거나 바뀔 수 있고, 가족에게도 큰 부담이다."
+    why: "미국 병원은 의료 내용을 자격 있는 의료 통역사를 통해 전하는 것이 원칙이에요. 이중 언어를 하는 직원이나 가족은 의료 통역사를 대신하지 않아요."
+"삽관 환자 비언어 소통":
+  - kind: pair
+    words: [w-tube, w-board, w-squeeze]
+    pairs: [["endotracheal", "tube"], ["letter", "board"], ["hand", "squeeze"]]
+    decoys: ["breath"]
+    why: "ICU에서는 기관내관(endotracheal tube) 때문에 말을 못 하는 환자와 글자판(letter board)이나 손 쥐기(hand squeeze)로 소통해요."
+  - kind: context
+    words: [w-talk, w-tube]
+    scenes:
+      - {who: "차트 기록", icon: board, en: "Pt intubated, unable to verbalize; communicates via letter board.", ok: true}
+      - {who: "보호자에게", icon: home, en: "He can't talk right now because of the breathing tube, but you can still talk to him.", ok: true}
+      - {who: "막 깨어난 환자에게", icon: me, en: "You're intubated, so you're unable to verbalize.", ok: false, fix: "You can't talk with the tube in, but we'll find another way."}
+    why: "intubated·unable to verbalize는 차트와 의료진의 말이에요. 막 깨어난 환자에게는 왜 말이 안 나오는지 쉬운 말로 알려 주고, 다른 소통 방법이 있다고 바로 덧붙여요."
+"진정 환자 의사표현 확인":
+  - kind: slider
+    words: [w-response]
+    cue: "RASS: patient opens eyes to voice and keeps eye contact for more than 10 seconds."
+    scale: ["unarousable", "drowsy", "alert"]
+    answerAt: 1
+    why: "RASS에서 목소리에 눈을 뜨고 10초 넘게 눈을 맞추면 -1(drowsy)이에요. 10초를 못 버티면 -2(light sedation), 어떤 자극에도 반응이 없으면 -5(unarousable)예요."
+    example: "He's drowsy but opens his eyes to voice."
+    exKo: "졸려 하지만 부르면 눈을 떠요."
+  - kind: swap
+    words: [w-squeeze, w-hear]
+    who: "진정·삽관 환자에게 · 반응 확인"
+    icon: me
+    before: ["Can you ", "tell me", " if you hear me?"]
+    options: ["squeeze my hand", "tell me", "say yes"]
+    answer: "squeeze my hand"
+    notes:
+      "squeeze my hand": "말을 못 해도 할 수 있는 반응이다 — 지시를 따르는지도 함께 본다."
+      "tell me": "삽관 환자는 말로 답할 수 없다 — 대답할 수 없는 부탁이 된다."
+      "say yes": "이것도 목소리가 있어야 한다."
+    why: "진정·삽관 환자에게는 몸으로 할 수 있는 반응을 부탁해요. 손 쥐기는 반사로 나올 수도 있어서 '이제 놓아 보세요'까지 시켜 지시를 따르는지 확인해요."
+  - kind: context
+    words: [w-comfortable, w-check]
+    scenes:
+      - {who: "환자에게", icon: me, en: "I'm checking if you're comfortable right now.", ok: true}
+      - {who: "차트 기록", icon: board, en: "CPOT 0; pt appears comfortable.", ok: true}
+      - {who: "보호자에게", icon: home, en: "His CPOT is zero.", ok: false, fix: "He looks comfortable right now — I don't see any signs of pain."}
+    why: "CPOT(말 못 하는 환자의 통증 척도) 점수는 의료진끼리 쓰는 말이에요. 보호자에게는 점수 대신 편안해 보인다는 것과 그렇게 판단한 근거를 말해요."
+"언어장벽 통증 사정":
+  - kind: slider
+    words: [w-pain, w-worst]
+    cue: "Wong-Baker FACES: the patient points to the last face, the one with tears."
+    scale: ["hurts a little bit", "hurts a whole lot", "hurts worst"]
+    answerAt: 2
+    why: "Wong-Baker FACES 척도는 0(No hurt)부터 10(Hurts worst)까지 얼굴 여섯 개예요. 눈물 흘리는 마지막 얼굴이 10, Hurts worst예요."
+    example: "She pointed to the last face — that's the worst pain."
+    exKo: "마지막 얼굴을 가리켰어요 — 가장 심한 통증이에요."
+  - kind: swap
+    words: [w-show, w-hurt]
+    who: "환자에게 · 영어가 서툰 환자"
+    icon: me
+    before: ["Show me ", "the location of your pain", " on your body."]
+    options: ["where it hurts", "the location of your pain", "your area of discomfort"]
+    answer: "where it hurts"
+    notes:
+      "where it hurts": "짧고 흔한 낱말이라 손짓과 함께면 영어가 서툴러도 통한다."
+      "the location of your pain": "뜻은 같지만 길고 딱딱해 알아듣기 어렵다."
+      "your area of discomfort": "돌려 말해 뜻이 흐리다 — 통증은 hurt·pain처럼 바로 묻는다."
+    why: "영어가 서툰 환자에게는 흔하고 짧은 낱말로 묻고, 몸을 가리키는 손짓을 곁들여요."
+"간단 지시·설명 명확화":
+  - kind: pair
+    words: [w-deep, w-breath, w-sense, w-own, w-word]
+    pairs: [["take a deep", "breath"], ["makes", "sense"], ["in your own", "words"]]
+    decoys: ["slow"]
+    why: "take a deep breath(숨을 깊게 들이쉬다), make sense(이해가 되다), in your own words(자기 말로)는 통째로 익혀 두는 덩어리 표현이에요. in your own words는 티치백 질문의 핵심이에요."
+  - kind: swap
+    words: [w-simple, w-word]
+    who: "환자에게 · 시술 전 금식 안내"
+    icon: me
+    before: ["Please ", "stay NPO", " after midnight."]
+    options: ["don't eat or drink anything", "stay NPO", "take nothing PO"]
+    answer: "don't eat or drink anything"
+    notes:
+      "don't eat or drink anything": "누구나 아는 말이라 지시가 정확히 전해진다."
+      "stay NPO": "NPO(금식)는 의료진 약어라 환자는 모른다."
+      "take nothing PO": "PO(입으로)도 약어 — 영어가 서툰 환자는 더 못 알아듣는다."
+    why: "plain language는 약어·전문어를 일상어로 바꿔 말하는 거예요. NPO·PO는 차트와 동료 사이에서만 써요."
+"가족 통한 기본 정보 확인":
+  - kind: pair
+    words: [w-confirm, w-interpreter, w-keep, w-safe, w-translate, w-everything]
+    pairs: [["confirm with", "an interpreter"], ["keep him", "safe"], ["translating", "everything yourself"]]
+    decoys: ["sure"]
+    why: "confirm with an interpreter는 '통역사를 통해 확인하다', keep him safe는 '그를 안전하게 지키다'예요. translating everything yourself는 혼자 다 통역하려는 가족의 부담을 덜어 줄 때 써요."
+  - kind: context
+    words: [w-detail, w-confirm]
+    scenes:
+      - {who: "보호자에게", icon: home, en: "Thanks — for the medical details, we'll confirm with an interpreter.", ok: true}
+      - {who: "차트 기록", icon: board, en: "Home meds per daughter; to be verified via interpreter.", ok: true}
+      - {who: "보호자에게", icon: home, en: "Family-reported information may be unreliable, so we'll verify it.", ok: false, fix: "This really helps — we'll double-check the details with an interpreter too."}
+    why: "가족에게 들은 정보를 통역으로 다시 확인하는 것은 절차예요. 그 말이 '믿을 수 없다'로 들리면 가족이 상처받으니, 고마움을 먼저 말하고 '한 번 더 확인한다'고 해요."
+"삽관 환자 예·아니오 소통":
+  - kind: pair
+    words: [w-need, w-suction, w-ask, w-question, w-great]
+    pairs: [["blink once if you need", "suction"], ["ask yes-or-no", "questions"], ["You're doing", "great"]]
+    decoys: ["signals"]
+    why: "삽관 환자에게는 예·아니오로 답할 수 있게 묻고(yes-or-no questions), 흡인처럼 자주 필요한 것은 신호를 미리 정해 둬요. 신호를 잘 따라 주면 칭찬해요(You're doing great)."
+  - kind: swap
+    words: [w-pain, w-blink, w-yes]
+    who: "삽관 환자에게 · 통증 확인"
+    icon: me
+    before: ["", "How would you describe your pain?", " Blink once if yes."]
+    options: ["Are you in pain?", "How would you describe your pain?", "Where does it hurt, and how bad is it?"]
+    answer: "Are you in pain?"
+    notes:
+      "Are you in pain?": "예·아니오로 답하는 닫힌 질문 — 깜빡임 한 번으로 답할 수 있다."
+      "How would you describe your pain?": "말로 풀어야 하는 열린 질문 — 삽관 환자는 답할 수 없다."
+      "Where does it hurt, and how bad is it?": "두 가지를 한꺼번에 묻는다 — 깜빡임 한 번이 어느 쪽 답인지 알 수 없다."
+    why: "삽관 환자에게는 한 번에 하나씩, 예·아니오로 답할 수 있게 물어요. 열린 질문이나 두 개를 겹친 질문은 신호로 답할 수 없어요."

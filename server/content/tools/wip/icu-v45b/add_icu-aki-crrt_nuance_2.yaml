@@ -1,0 +1,111 @@
+시간당 초여과량 적정:
+  - kind: slider
+    words: [w-drop, w-pressure]
+    cue: "모니터: MAP 70 → 66으로 내려갔다가 5분 뒤 68로 돌아왔다 — 동료에게"
+    scale: [dipped, dropped, crashed]
+    answerAt: 0
+    why: "잠깐 내려갔다 돌아오면 dipped, 내려간 채로 있으면 dropped, 갑자기 크게 떨어지면 crashed예요. 정도를 정확히 말해야 동료가 얼마나 급한지 알아요."
+    example: "His pressure dipped to 66 but came back up."
+    exKo: "혈압이 66까지 잠깐 내려갔다가 다시 올라왔어요."
+  - kind: context
+    words: [w-pause, w-removal]
+    scenes:
+      - {who: 동료에게, icon: speech, en: "If his MAP stays under 65, let's pause net removal.", ok: true}
+      - {who: 동료에게 인계, icon: speech, en: "We paused net removal at 1400 for a MAP of 62.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Took a break from pulling fluid cuz BP was kinda low.", ok: false, fix: "Net UF paused at 1400 for MAP 62; provider notified."}
+    why: "차트에는 구어('took a break', 'kinda low') 대신 시간·수치·조치를 짧게 적어요. pause net removal은 회로를 끄는 게 아니라 순 제거만 멈추는 거예요."
+시트르산 항응고 대사 감시:
+  - kind: pair
+    words: [w-protocol, w-calcium, w-build]
+    pairs: [[per, protocol], [ionized, calcium], [build, up]]
+    decoys: [ratio]
+    why: "per protocol은 '프로토콜대로'로 굳은 말이에요. 시트르산 감시에서 보는 칼슘은 ionized calcium(이온화 칼슘), '점점 쌓여 간다'는 build up이에요."
+  - kind: context
+    words: [w-citrate, w-accumulation, w-ratio, w-calcium]
+    scenes:
+      - {who: 동료에게, icon: speech, en: "His total-to-ionized ratio is 2.7, so I'm watching for citrate accumulation.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Total/ionized Ca ratio 2.7; possible citrate accumulation; provider notified.", ok: true}
+      - {who: 의사에게 보고, icon: speech, en: "His calcium numbers look kind of weird.", ok: false, fix: "His total-to-ionized calcium ratio is 2.7, so I'm concerned about citrate accumulation."}
+    why: "'weird'는 무엇이 얼마나 이상한지 알려 주지 않아요. 보고에는 수치와 걱정하는 이유를 함께 말해요. 총/이온화 칼슘 비율은 흔히 2.5를 넘으면 시트르산 축적을 의심해요."
+K·PO4 전해질 보정 연계:
+  - kind: pair
+    words: [w-heart, w-rhythm, w-protocol, w-small, w-dose]
+    pairs: [[heart, rhythm], [per, protocol], [small, doses]]
+    decoys: [phosphate]
+    why: "heart rhythm은 '심장 리듬', per protocol은 '프로토콜대로'예요. 정맥 칼륨은 한꺼번에 주지 않고 small doses로 나눠 준 뒤 다시 재요."
+  - kind: swap
+    words: [w-off, w-level, w-flag]
+    who: "동료에게 · 전해질 인계"
+    icon: speech
+    before: ["I'll flag any level that's ", "kind of funky", " after we replace it."]
+    options: [still off, kind of funky, critical]
+    answer: still off
+    notes: {still off: "동료끼리 자연스럽고, '아직 정상 범위를 벗어났다'는 뜻이 정확해요.", kind of funky: "너무 가볍고 모호해서 무엇을 봐야 할지 안 알려 줘요.", critical: "critical value는 병원이 따로 정한 위험 수치라, 그냥 벗어난 값에 쓰면 과장이에요."}
+    why: "보충 뒤에도 정상 범위를 벗어난 수치는 'still off'라고 짚어서 다음 근무자가 놓치지 않게 해요."
+회로 응고·압력 경보 대응:
+  - kind: slider
+    words: [w-alarm, w-emergency]
+    cue: "CRRT 화면: 필터 압력이 몇 시간째 천천히 오르는 중, 환자 바이탈은 안정 — 동료에게"
+    scale: [routine, urgent, emergent]
+    answerAt: 1
+    why: "환자는 안정적이지만 필터가 막혀 가면 곧 회로와 그 안의 혈액을 잃을 수 있어 미룰 일은 아니에요(urgent). emergent는 환자 생명이 바로 걸린 경우예요."
+    example: "The filter pressure is climbing, so it's urgent, but he's stable."
+    exKo: "필터 압력이 오르고 있어서 급하긴 하지만, 환자는 안정적이에요."
+  - kind: reel
+    words: [w-pressure, w-alarm]
+    word: pressure
+    scenes:
+      - {who: "동료에게", en: "Access pressure is way more negative — let's check the catheter.", ko: "접근 압력이 훨씬 더 음압으로 갔어요 — 카테터를 확인해 봐요.", tone: 급함}
+      - {who: "차트 기록", en: "Filter pressure rising; circuit change planned.", ko: "필터 압력 상승; 회로 교체 예정.", tone: 건조}
+      - {who: "출혈 부위에서", en: "Hold firm pressure on the site for me.", ko: "그 부위를 단단히 눌러 주세요.", tone: 지시}
+      - {who: "보호자에게는…", en: "It's beeping because the pressure in the tubing changed. I'm checking it now.", ko: "관 안의 압력이 바뀌어서 울리는 거예요. 지금 확인하고 있어요.", tone: 안심, swap: true}
+저혈압 동반 CRRT 관리:
+  - kind: slider
+    words: [w-fragile, w-stable]
+    cue: "간호사가 본 것: 노르에피네프린을 쓰는데도 MAP 62~66, 조금만 빼도 바로 떨어진다"
+    scale: [stable, borderline, fragile, crashing]
+    answerAt: 2
+    why: "승압제를 쓰는데도 조금만 빼면 떨어지면 fragile이에요. borderline은 경계선이라 이보다 가볍고, crashing은 지금 무너지는 중이라 바로 도움을 불러야 하는 상황이에요."
+    example: "His pressure is fragile, so we'll minimize fluid removal for now."
+    exKo: "혈압이 위태로워서 지금은 체액 제거를 최소화할 거예요."
+  - kind: context
+    words: [w-fragile, w-minimize, w-pressor]
+    scenes:
+      - {who: 동료에게 인계, icon: speech, en: "His pressure is fragile on norepi, so we're keeping net removal to a minimum.", ok: true}
+      - {who: 차트 기록, icon: board, en: "MAP 62-66 on norepinephrine; net UF minimized per provider.", ok: true}
+      - {who: 동료에게 인계, icon: speech, en: "He's kind of iffy, so go easy on the fluid.", ok: false, fix: "His MAP is 62 to 66 on norepi, so we're keeping net removal to a minimum."}
+    why: "인계에서 'iffy'·'go easy'는 얼마나 불안정한지, 무엇을 줄였는지 알려 주지 않아요. 수치·승압제·조치를 말해요."
+간헐 투석과 방식 비교 판단:
+  - kind: slider
+    words: [w-unstable, w-stable]
+    cue: "Family: \"So he's better now?\" — 승압제를 줄이는 중이지만 아직 끊지 못했다"
+    scale: [still unstable, getting more stable, stable]
+    answerAt: 1
+    why: "나아지는 중이면 getting more stable이에요. stable이라고 하면 가족은 다 나았다고 듣고, 바로 일반 투석으로 바꿀 거라 기대할 수 있어요."
+    example: "He's getting more stable, but he still needs the slow machine for now."
+    exKo: "점점 안정되고 있지만, 지금은 아직 천천히 하는 기계가 필요해요."
+  - kind: swap
+    words: [w-regular, w-dialysis, w-hard]
+    who: "보호자에게 · 방식 비교"
+    icon: me
+    before: ["Regular dialysis is faster, but it's ", "contraindicated", " right now."]
+    options: [too hard on his body, contraindicated, impossible]
+    answer: too hard on his body
+    notes: {too hard on his body: "쉬운 말로 이유를 전해요.", contraindicated: "의료진 용어라 가족은 못 알아듣고, 절대 안 된다는 뜻으로 들려요.", impossible: "사실과 달라요 — 안정되면 일반 투석으로 바꿀 수 있어요."}
+    why: "혈압이 불안정할 때 일반 투석은 짧은 시간에 많이 빼서 혈압을 떨어뜨리기 쉬워요. 가족에게는 그 이유를 쉬운 말로 전해요."
+약물 투석 청소 고려:
+  - kind: slider
+    words: [w-effective, w-level]
+    cue: "약사에게 들은 것: 반코마이신 trough 수치가 목표 범위 안에 있다 — 동료에게"
+    scale: [subtherapeutic, therapeutic, toxic]
+    answerAt: 1
+    why: "목표 범위 안이면 therapeutic이에요. CRRT로 씻겨 나가 범위보다 낮으면 subtherapeutic, 너무 높으면 toxic이라고 해요."
+    example: "His vancomycin level is therapeutic today."
+    exKo: "오늘 반코마이신 수치는 치료 범위 안이에요."
+  - kind: context
+    words: [w-antibiotic, w-dose, w-pharmacy]
+    scenes:
+      - {who: 약사에게, icon: speech, en: "He's on CVVHDF at 25 mL/kg/h — can you check his antibiotic dose?", ok: true}
+      - {who: 차트 기록, icon: board, en: "Pharmacy consulted re: antibiotic dosing on CRRT.", ok: true}
+      - {who: 약사에게, icon: speech, en: "Is his antibiotic gonna get sucked out by that thing?", ok: false, fix: "He's on CRRT — could you check whether his antibiotic dose needs adjusting?"}
+    why: "약사에게는 '그 기계(that thing)'가 아니라 CRRT 방식과 유량을 말해야 용량을 계산할 수 있어요. 약이 얼마나 빠지는지는 유출량(effluent) 속도에 따라 달라져요."

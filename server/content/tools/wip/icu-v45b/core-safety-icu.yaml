@@ -1,0 +1,4777 @@
+theme: core-safety-icu
+words:
+- id: w-red
+  en: red
+  ipa: /rɛd/
+  ko: 빨간
+  icon: board
+  example: Red alarms are life-threatening and need immediate action.
+  exKo: 빨간 알람은 생명을 위협하는 상황이라 즉각 조치가 필요해요.
+  cue: 알람 등급 중 가장 높은 단계의 색 — 지금 당장 달려가야 하는 것
+  tag: 알람
+  distractorsEn: [orange, yellow]
+  distractorsKo: [주황색의, 노란]
+  chips:
+  - [red]
+  decoyChips: [read]
+- id: w-alarm
+  en: alarm
+  ipa: /əˈlɑːrm/
+  ko: 알람
+  icon: bell
+  example: Red alarms are life-threatening and need immediate action.
+  exKo: 빨간 알람은 생명을 위협하는 상황이라 즉각 조치가 필요해요.
+  cue: 모니터·펌프·침대가 이상을 알리며 울리는 것
+  tag: 알람
+  distractorsEn: [artifact, apnea]
+  distractorsKo: [잡파(아티팩트), 호출벨]
+  chips:
+  - [a, larm]
+  decoyChips: [arm, lerm]
+- id: w-lifethreatening
+  en: life-threatening
+  ipa: /ˈlaɪf ˈθrɛtnɪŋ/
+  ko: 생명을 위협하는
+  icon: siren
+  example: Red alarms are life-threatening and need immediate action.
+  exKo: 빨간 알람은 생명을 위협하는 상황이라 즉각 조치가 필요해요.
+  cue: 빨간 알람이 뜻하는 것 — 놔두면 환자가 죽을 수 있는
+  tag: 알람
+  distractorsEn: [life-sustaining, life-limiting]
+  distractorsKo: [생명 유지의, 수명을 제한하는]
+  chips:
+  - [life-, threat, en, ing]
+  decoyChips: [treat, live-]
+- id: w-immediate
+  en: immediately
+  ipa: /ɪˈmiːdiətli/
+  ko: 즉시
+  icon: siren
+  example: Stop the infusion and disconnect it immediately.
+  exKo: 주입을 멈추고 즉시 분리하세요.
+  cue: 오연결을 발견했을 때 주입을 멈추는 타이밍 — 한순간도 미루지 않고
+  tag: 위기 대응
+  distractorsEn: [intermittently, imminently]
+  distractorsKo: [간헐적으로, 임박하여]
+  chips:
+  - [im, medi, ate, ly]
+  decoyChips: [mini, ent]
+- id: w-action
+  en: action
+  ipa: /ˈækʃn/
+  ko: 조치
+  icon: gear
+  example: Red alarms are life-threatening and need immediate action.
+  exKo: 빨간 알람은 생명을 위협하는 상황이라 즉각 조치가 필요해요.
+  cue: 빨간 알람이 울리면 필요한 것 — 손을 써서 하는 처치
+  tag: 알람
+  distractorsEn: [attention, reaction]
+  distractorsKo: [주의, 반응]
+  chips:
+  - [ac, tion]
+  decoyChips: [ten, re]
+- id: w-yellow
+  en: yellow
+  ipa: /ˈjɛloʊ/
+  ko: 노란
+  icon: board
+  example: Yellow alarms need attention, but they can wait a minute.
+  exKo: 노란 알람은 주의가 필요하지만 잠깐은 기다려도 돼요.
+  cue: 주의는 필요하지만 잠깐은 기다려도 되는 알람의 색
+  tag: 알람
+  distractorsEn: [red, orange]
+  distractorsKo: [빨간, 주황색의]
+  chips:
+  - [yel, low]
+  decoyChips: [yell, loo]
+- id: w-attention
+  en: attention
+  ipa: /əˈtɛnʃn/
+  ko: 주의
+  icon: magnify
+  example: Yellow alarms need attention, but they can wait a minute.
+  exKo: 노란 알람은 주의가 필요하지만 잠깐은 기다려도 돼요.
+  cue: 노란 알람에 필요한 것 — 눈길을 주고 살펴보는 것
+  tag: 알람
+  distractorsEn: [action, intention]
+  distractorsKo: [조치, 의도]
+  chips:
+  - [at, ten, tion]
+  decoyChips: [ac, sion]
+- id: w-wait
+  en: wait
+  ipa: /weɪt/
+  ko: 기다리다
+  icon: coffee
+  example: Yellow alarms need attention, but they can wait a minute.
+  exKo: 노란 알람은 주의가 필요하지만 잠깐은 기다려도 돼요.
+  cue: 노란 알람은 1분쯤은 이렇게 해도 된다
+  tag: 팀 소통
+  distractorsEn: [watch, weigh]
+  distractorsKo: [지켜보다, 무게를 재다]
+  chips:
+  - [wait]
+  decoyChips: [weight]
+- id: w-limit
+  en: limit
+  ipa: /ˈlɪmɪt/
+  ko: 한계
+  icon: chartup
+  example: We set limits based on each patient's baseline.
+  exKo: 우리는 환자마다 기저치를 바탕으로 한계를 설정해요.
+  cue: 알람이 울리기 시작하는 상한·하한 값
+  tag: 알람
+  distractorsEn: [level, range]
+  distractorsKo: [수준, 범위]
+  chips:
+  - [lim, it]
+  decoyChips: [lam, et]
+- id: w-baseline
+  en: baseline
+  ipa: /ˈbeɪslaɪn/
+  ko: 기저치
+  icon: chartup
+  example: We set limits based on each patient's baseline.
+  exKo: 우리는 환자마다 기저치를 바탕으로 한계를 설정해요.
+  cue: 이 환자에게 평소 정상인 값 — 알람 한계를 정하는 출발점
+  tag: 알람
+  distractorsEn: [borderline, guideline]
+  distractorsKo: [경계선, 지침]
+  chips:
+  - [base, line]
+  decoyChips: [bass, lime]
+- id: w-customize
+  en: customize
+  ipa: /ˈkʌstəmaɪz/
+  ko: 맞춤 설정하다
+  icon: gear
+  example: Let's customize these so only meaningful alarms sound.
+  exKo: 의미 있는 알람만 울리도록 이걸 맞춤 설정해요.
+  cue: 기본 설정 그대로 두지 않고 이 환자에게 맞게 손볼 때
+  tag: 알람
+  distractorsEn: [categorize, minimize]
+  distractorsKo: [분류하다, 최소화하다]
+  chips:
+  - [custom, ize]
+  decoyChips: [costum, ise]
+- id: w-meaningful
+  en: meaningful
+  ipa: /ˈmiːnɪŋfl/
+  ko: 의미 있는
+  icon: check
+  example: Let's customize these so only meaningful alarms sound.
+  exKo: 의미 있는 알람만 울리도록 이걸 맞춤 설정해요.
+  cue: 울리면 실제로 뭔가 해야 하는 알람을 가리킬 때
+  tag: 알람
+  distractorsEn: [meaningless, mindful]
+  distractorsKo: [무의미한, 마음을 쓰는]
+  chips:
+  - [mean, ing, ful]
+  decoyChips: [less, men]
+- id: w-sound
+  en: sound
+  ipa: /saʊnd/
+  ko: 울리다
+  icon: speaker
+  example: Let's customize these so only meaningful alarms sound.
+  exKo: 의미 있는 알람만 울리도록 이걸 맞춤 설정해요.
+  cue: 알람이 소리를 내기 시작할 때 쓰는 동사
+  tag: 알람
+  distractorsEn: [sense, signal]
+  distractorsKo: [감지하다, 신호를 보내다]
+  chips:
+  - [sound]
+  decoyChips: [sond]
+- id: w-hurt
+  en: hurt
+  ipa: /hɜːrt/
+  ko: 해치다
+  icon: siren
+  example: If it's not going to hurt him in the next minute, it's not a red alarm.
+  exKo: 앞으로 1분 안에 해를 끼치지 않는다면 빨간 알람이 아니에요.
+  cue: 빨간 알람인지 가르는 기준 — 1분 안에 환자에게 이렇게 하는가
+  tag: 알람
+  distractorsEn: [heal, hit]
+  distractorsKo: [낫게 하다, 때리다]
+  chips:
+  - [hurt]
+  decoyChips: [heart]
+- id: w-personalize
+  en: personalize
+  ipa: /ˈpɜːrsənəlaɪz/
+  ko: 개인화하다
+  icon: gear
+  example: Once we personalize the limits, you'll trust every alarm that sounds.
+  exKo: 한계를 개인화하고 나면 울리는 모든 알람을 신뢰하게 될 거예요.
+  cue: 기본값 대신 환자 한 사람에게 맞춘 값으로 바꿀 때
+  tag: 알람
+  distractorsEn: [personify, prioritize]
+  distractorsKo: [의인화하다, 우선시하다]
+  chips:
+  - [person, al, ize]
+  decoyChips: [ify, ise]
+- id: w-trust
+  en: trust
+  ipa: /trʌst/
+  ko: 신뢰하다
+  icon: check
+  example: Once we personalize the limits, you'll trust every alarm that sounds.
+  exKo: 한계를 개인화하고 나면 울리는 모든 알람을 신뢰하게 될 거예요.
+  cue: 한계를 맞춰 두면 울리는 알람을 믿게 된다
+  tag: 팀 소통
+  distractorsEn: [test, treat]
+  distractorsKo: [시험하다, 치료하다]
+  chips:
+  - [trust]
+  decoyChips: [trest]
+- id: w-restrictive
+  en: restrictive
+  ipa: /rɪˈstrɪktɪv/
+  ko: 제한적인
+  icon: lock
+  example: Let's try less restrictive options first.
+  exKo: 먼저 덜 제한적인 방법을 시도해요.
+  cue: 억제대 전에 먼저 고르는 쪽은 '덜 ○○한' 방법
+  tag: 억제대
+  distractorsEn: [restorative, respective]
+  distractorsKo: [회복시키는, 각각의]
+  chips:
+  - [re, strict, ive]
+  decoyChips: [struct, ative]
+- id: w-option
+  en: option
+  ipa: /ˈɑːpʃn/
+  ko: 선택지
+  icon: board
+  example: Let's try less restrictive options first.
+  exKo: 먼저 덜 제한적인 방법을 시도해요.
+  cue: 억제대 말고 써 볼 수 있는 다른 방법들
+  tag: 억제대
+  distractorsEn: [operation, opinion]
+  distractorsKo: [수술, 의견]
+  chips:
+  - [op, tion]
+  decoyChips: [ap, sion]
+- id: w-first
+  en: first
+  ipa: /fɜːrst/
+  ko: 먼저
+  icon: chartup
+  example: Let's try less restrictive options first.
+  exKo: 먼저 덜 제한적인 방법을 시도해요.
+  cue: 덜 제한적인 방법부터 — 순서상 맨 앞에
+  tag: 팀 소통
+  distractorsEn: [last, fast]
+  distractorsKo: [마지막으로, 빨리]
+  chips:
+  - [first]
+  decoyChips: [fist]
+- id: w-pull
+  en: pull
+  ipa: /pʊl/
+  ko: 잡아당기다
+  icon: gear
+  example: He's pulling at his lines, so we need to keep them safe.
+  exKo: 이분이 라인을 잡아당기고 있어서 안전하게 지켜야 해요.
+  cue: 섬망 환자가 라인을 손으로 잡고 자기 쪽으로 당길 때
+  tag: 섬망
+  distractorsEn: [push, peel]
+  distractorsKo: [밀어 넣다, 벗기다]
+  chips:
+  - [pull]
+  decoyChips: [pool]
+- id: w-line
+  en: line
+  ipa: /laɪn/
+  ko: 라인
+  icon: lab
+  example: He's pulling at his lines, so we need to keep them safe.
+  exKo: 이분이 라인을 잡아당기고 있어서 안전하게 지켜야 해요.
+  cue: 정맥·동맥에 들어가 있는 관 — ICU 환자에게 여러 개
+  tag: 라인 안전
+  distractorsEn: [lane, link]
+  distractorsKo: [배액관, 연결부]
+  chips:
+  - [line]
+  decoyChips: [lane]
+- id: w-need
+  en: need
+  ipa: /niːd/
+  ko: 필요하다
+  icon: board
+  example: He's pulling at his lines, so we need to keep them safe.
+  exKo: 이분이 라인을 잡아당기고 있어서 안전하게 지켜야 해요.
+  cue: 억제대가 정말 있어야 하는지 따질 때 쓰는 동사
+  tag: 팀 소통
+  distractorsEn: [want, kneel]
+  distractorsKo: [원하다, 무릎 꿇다]
+  chips:
+  - [need]
+  decoyChips: [knead]
+- id: w-keep
+  en: keep
+  ipa: /kiːp/
+  ko: 유지하다
+  icon: board
+  example: He's pulling at his lines, so we need to keep them safe.
+  exKo: 이분이 라인을 잡아당기고 있어서 안전하게 지켜야 해요.
+  cue: 라인·물건·환경을 계속 그 상태로 둘 때
+  tag: 팀 소통
+  distractorsEn: [keen, leave]
+  distractorsKo: [갈망하는, 떠나다]
+  chips:
+  - [keep]
+  decoyChips: [kip]
+- id: w-safe
+  en: safe
+  ipa: /seɪf/
+  ko: 안전한
+  icon: shield
+  example: He's pulling at his lines, so we need to keep them safe.
+  exKo: 이분이 라인을 잡아당기고 있어서 안전하게 지켜야 해요.
+  cue: 라인을 뽑히지 않게 지켜 둔 상태
+  tag: 팀 소통
+  distractorsEn: [sane, saved]
+  distractorsKo: [제정신인, 고정된]
+  chips:
+  - [safe]
+  decoyChips: [save]
+- id: w-sitter
+  en: sitter
+  ipa: /ˈsɪtər/
+  ko: 관찰 인력
+  icon: me
+  example: Have we tried a sitter before we reach for restraints?
+  exKo: 억제대를 쓰기 전에 관찰 인력을 먼저 시도해 봤나요?
+  cue: 억제대 대신 환자 곁에 붙어 지켜보는 사람
+  tag: 억제대
+  distractorsEn: [setter, visitor]
+  distractorsKo: [설정 담당자, 방문객]
+  chips:
+  - [sit, ter]
+  decoyChips: [set, tor]
+- id: w-reach
+  en: reach
+  ipa: /riːtʃ/
+  ko: 닿다
+  icon: pushpin
+  example: Have we tried a sitter before we reach for restraints?
+  exKo: 억제대를 쓰기 전에 관찰 인력을 먼저 시도해 봤나요?
+  cue: 손을 뻗으면 닿는 거리 — 호출 버튼은 이 안에
+  tag: 낙상 예방
+  distractorsEn: [reap, teach]
+  distractorsKo: [거두다, 가르치다]
+  chips:
+  - [reach]
+  decoyChips: [rich]
+- id: w-restraint
+  en: restraint
+  ipa: /rɪˈstreɪnt/
+  ko: 억제대
+  icon: lock
+  example: Have we tried a sitter before we reach for restraints?
+  exKo: 억제대를 쓰기 전에 관찰 인력을 먼저 시도해 봤나요?
+  cue: 손목·몸을 침대에 묶어 움직임을 막는 도구 — 마지막 수단
+  tag: 억제대
+  distractorsEn: [restriction, retainer]
+  distractorsKo: [제한, 보정기]
+  chips:
+  - [re, straint]
+  decoyChips: [strain, ri]
+- id: w-skip
+  en: skip
+  ipa: /skɪp/
+  ko: 건너뛰다
+  icon: gear
+  example: I said we need to try less restrictive options — let's not skip that step.
+  exKo: 덜 제한적인 방법을 먼저 시도하자고 말씀드렸어요, 그 단계를 건너뛰지 말아요.
+  cue: 정해진 단계를 하지 않고 넘어갈 때
+  tag: 팀 소통
+  distractorsEn: [slip, stop]
+  distractorsKo: [미끄러지다, 멈추다]
+  chips:
+  - [skip]
+  decoyChips: [skim]
+- id: w-step
+  en: step
+  ipa: /stɛp/
+  ko: 단계
+  icon: board
+  example: I said we need to try less restrictive options — let's not skip that step.
+  exKo: 덜 제한적인 방법을 먼저 시도하자고 말씀드렸어요, 그 단계를 건너뛰지 말아요.
+  cue: 절차를 이루는 한 칸 — 건너뛰면 안 되는 것
+  tag: 팀 소통
+  distractorsEn: [stage, stop]
+  distractorsKo: [무대, 정지]
+  chips:
+  - [step]
+  decoyChips: [stop]
+- id: w-reassess
+  en: reassess
+  ipa: /ˌriːəˈsɛs/
+  ko: 다시 평가하다
+  icon: magnify
+  example: We'll reassess the need for restraints every few hours.
+  exKo: 몇 시간마다 억제대의 필요성을 다시 평가할 거예요.
+  cue: 억제대가 아직 필요한지 몇 시간마다 다시 보는 것
+  tag: 억제대
+  distractorsEn: [reassign, reassure]
+  distractorsKo: [재배정하다, 안심시키다]
+  chips:
+  - [re, as, sess]
+  decoyChips: [sure, sign]
+- id: w-calm
+  en: calm
+  ipa: /kɑːm/
+  ko: 진정된
+  icon: shield
+  example: Once he's calmer, we'll take the restraints off and reassess again.
+  exKo: 이분이 진정되면 억제대를 풀고 다시 평가할게요.
+  cue: 흥분이 가라앉은 상태 — 억제대를 풀어 볼 때
+  tag: 섬망
+  distractorsEn: [restless, drowsy]
+  distractorsKo: [흥분한, 졸린]
+  chips:
+  - [calm]
+  decoyChips: [come]
+- id: w-off
+  en: 'off'
+  ipa: /ɔːf/
+  ko: 풀린
+  icon: lock
+  example: Once he's calmer, we'll take the restraints off and reassess again.
+  exKo: 이분이 진정되면 억제대를 풀고 다시 평가할게요.
+  cue: 억제대를 몸에서 떼어 낸 상태 — take them ○○
+  tag: 억제대
+  distractorsEn: ['on', up]
+  distractorsKo: [채워진, 조여진]
+  chips:
+  - ['off']
+  decoyChips: [of]
+- id: w-verify
+  en: verify
+  ipa: /ˈvɛrɪfaɪ/
+  ko: 검증하다
+  icon: magnify
+  example: Let's verify the drug, dose, rate, and pump settings together.
+  exKo: 약물, 용량, 속도, 펌프 설정을 함께 대조 확인해요.
+  cue: 고위험약을 원본 처방과 맞춰 틀림없는지 따져 볼 때
+  tag: 투약 안전
+  distractorsEn: [modify, vary]
+  distractorsKo: [변경하다, 달라지다]
+  chips:
+  - [ver, ify]
+  decoyChips: [vary, efy]
+- id: w-drug
+  en: drug
+  ipa: /drʌɡ/
+  ko: 약물
+  icon: pill
+  example: Let's verify the drug, dose, rate, and pump settings together.
+  exKo: 약물, 용량, 속도, 펌프 설정을 함께 대조 확인해요.
+  cue: 펌프에 들어가는 것 — 이중확인할 첫 항목
+  tag: 투약 안전
+  distractorsEn: [drip, dose]
+  distractorsKo: [점적, 용량]
+  chips:
+  - [drug]
+  decoyChips: [drag]
+- id: w-dose
+  en: dose
+  ipa: /doʊs/
+  ko: 용량
+  icon: pill
+  example: Let's verify the drug, dose, rate, and pump settings together.
+  exKo: 약물, 용량, 속도, 펌프 설정을 함께 대조 확인해요.
+  cue: 얼마나 줄지 — 인슐린이면 '몇 단위'
+  tag: 투약 안전
+  distractorsEn: [rate, doze]
+  distractorsKo: [속도, 농도]
+  chips:
+  - [dose]
+  decoyChips: [doze]
+- id: w-rate
+  en: rate
+  ipa: /reɪt/
+  ko: 속도
+  icon: chartup
+  example: Let's verify the drug, dose, rate, and pump settings together.
+  exKo: 약물, 용량, 속도, 펌프 설정을 함께 대조 확인해요.
+  cue: 펌프가 시간당 얼마씩 넣는지 — mL/hr
+  tag: 투약 안전
+  distractorsEn: [route, ratio]
+  distractorsKo: [경로, 비율]
+  chips:
+  - [rate]
+  decoyChips: [rat]
+- id: w-pump
+  en: pump
+  ipa: /pʌmp/
+  ko: 펌프
+  icon: gear
+  example: Let's verify the drug, dose, rate, and pump settings together.
+  exKo: 약물, 용량, 속도, 펌프 설정을 함께 대조 확인해요.
+  cue: 주입 속도를 맞춰 약을 넣어 주는 기계
+  tag: 투약 안전
+  distractorsEn: [port, plug]
+  distractorsKo: [포트, 플러그]
+  chips:
+  - [pump]
+  decoyChips: [pomp]
+- id: w-setting
+  en: setting
+  ipa: /ˈsɛtɪŋ/
+  ko: 설정
+  icon: gear
+  example: Let's verify the drug, dose, rate, and pump settings together.
+  exKo: 약물, 용량, 속도, 펌프 설정을 함께 대조 확인해요.
+  cue: 펌프에 입력해 둔 값들 — 이중확인 항목
+  tag: 투약 안전
+  distractorsEn: [sitting, setup]
+  distractorsKo: [앉은 자세, 장치 조립]
+  chips:
+  - [set, ting]
+  decoyChips: [sit, tting]
+- id: w-together
+  en: together
+  ipa: /təˈɡɛðər/
+  ko: 함께
+  icon: board
+  example: Let's verify the drug, dose, rate, and pump settings together.
+  exKo: 약물, 용량, 속도, 펌프 설정을 함께 대조 확인해요.
+  cue: 이중확인은 혼자 말고 두 사람이 나란히
+  tag: 팀 소통
+  distractorsEn: [altogether, alone]
+  distractorsKo: [완전히, 혼자]
+  chips:
+  - [to, geth, er]
+  decoyChips: [gath, al]
+- id: w-confirm
+  en: confirm
+  ipa: /kənˈfɜːrm/
+  ko: 대조 확인하다
+  icon: check
+  example: Confirm the concentration matches the order.
+  exKo: 농도가 처방과 일치하는지 확인해요.
+  cue: 농도가 처방과 같은지 맞대어 확실히 할 때
+  tag: 투약 안전
+  distractorsEn: [conform, confine]
+  distractorsKo: [순응하다, 가두다]
+  chips:
+  - [con, firm]
+  decoyChips: [form, fine]
+- id: w-concentration
+  en: concentration
+  ipa: /ˌkɑːnsənˈtreɪʃn/
+  ko: 농도
+  icon: lab
+  example: Confirm the concentration matches the order.
+  exKo: 농도가 처방과 일치하는지 확인해요.
+  cue: 같은 약이라도 mL당 얼마가 들었는지 — 백 라벨에서 처방과 맞춰 보는 값
+  tag: 투약 안전
+  distractorsEn: [concentrate, consideration]
+  distractorsKo: [용량, 고려]
+  chips:
+  - [con, cen, tra, tion]
+  decoyChips: [sen, tri]
+- id: w-match
+  en: match
+  ipa: /mætʃ/
+  ko: 일치하다
+  icon: check
+  example: Confirm the concentration matches the order.
+  exKo: 농도가 처방과 일치하는지 확인해요.
+  cue: 라벨과 처방, 두 숫자가 똑같을 때
+  tag: 투약 안전
+  distractorsEn: [mark, mask]
+  distractorsKo: [표시하다, 가리다]
+  chips:
+  - [match]
+  decoyChips: [much]
+- id: w-order
+  en: order
+  ipa: /ˈɔːrdər/
+  ko: 처방(오더)
+  icon: board
+  example: Confirm the concentration matches the order.
+  exKo: 농도가 처방과 일치하는지 확인해요.
+  cue: 의사가 낸 투약 지시 — 라벨과 맞대어 보는 원본
+  tag: 투약 안전
+  distractorsEn: [label, record]
+  distractorsKo: [라벨, 기록]
+  chips:
+  - [or, der]
+  decoyChips: [ord, dur]
+- id: w-sign
+  en: sign
+  ipa: /saɪn/
+  ko: 서명하다
+  icon: pencil
+  example: Both of us sign off before it runs.
+  exKo: 주입되기 전에 저희 둘 다 서명해요.
+  cue: 이중확인이 끝나면 둘 다 기록에 이름을 남긴다
+  tag: 투약 안전
+  distractorsEn: [sing, assign]
+  distractorsKo: [배정하다, 기입하다]
+  chips:
+  - [sign]
+  decoyChips: [sine]
+- id: w-run
+  en: run
+  ipa: /rʌn/
+  ko: 주입되다
+  icon: gear
+  example: Both of us sign off before it runs.
+  exKo: 주입되기 전에 저희 둘 다 서명해요.
+  cue: 이중확인·서명이 끝나야 약이 펌프로 들어가기 시작한다
+  tag: 투약 안전
+  distractorsEn: [rest, ruin]
+  distractorsKo: [멈추다, 새다]
+  chips:
+  - [run]
+  decoyChips: [ran]
+- id: w-unit
+  en: unit
+  ipa: /ˈjuːnɪt/
+  ko: 단위
+  icon: board
+  example: Wait — the label says fifty units, but the order says five.
+  exKo: 잠깐요, 라벨에는 50단위인데 처방에는 5단위라고 되어 있어요.
+  cue: 인슐린·헤파린 용량을 세는 말 — 50과 5를 헷갈리면 큰일
+  tag: 투약 안전
+  distractorsEn: [unity, ounce]
+  distractorsKo: [그램, 방울]
+  chips:
+  - [u, nit]
+  decoyChips: [ni, net]
+- id: w-stop
+  en: stop
+  ipa: /stɑːp/
+  ko: 멈추다
+  icon: shield
+  example: Let's stop and check this together before we give it.
+  exKo: 주기 전에 같이 멈추고 이걸 확인해요.
+  cue: 숫자가 이상하면 일단 손을 멈춘다 — 그대로 진행하지 말 것
+  tag: 위기 대응
+  distractorsEn: [step, start]
+  distractorsKo: [시작하다, 계속하다]
+  chips:
+  - [stop]
+  decoyChips: [step]
+- id: w-check
+  en: check
+  ipa: /tʃɛk/
+  ko: 확인하다
+  icon: check
+  example: Let's stop and check this together before we give it.
+  exKo: 주기 전에 같이 멈추고 이걸 확인해요.
+  cue: 라벨·펌프·환자를 눈으로 살펴볼 때 가장 흔한 동사
+  tag: 팀 소통
+  distractorsEn: [chart, change]
+  distractorsKo: [기록하다, 교체하다]
+  chips:
+  - [check]
+  decoyChips: [chuck]
+- id: w-give
+  en: give
+  ipa: /ɡɪv/
+  ko: 주다
+  icon: pill
+  example: Let's stop and check this together before we give it.
+  exKo: 주기 전에 같이 멈추고 이걸 확인해요.
+  cue: 약을 환자에게 넣는 것을 쉬운 말로
+  tag: 투약 안전
+  distractorsEn: [take, get]
+  distractorsKo: [받다, 먹다]
+  chips:
+  - [give]
+  decoyChips: [gave]
+- id: w-insulin
+  en: insulin
+  ipa: /ˈɪnsəlɪn/
+  ko: 인슐린
+  icon: pill
+  example: So that's insulin, ten units, over one hour — did I get that right?
+  exKo: 그러니까 인슐린 10단위를 1시간에 걸쳐서요, 제가 맞게 이해했나요?
+  cue: 단위로 세는 고위험 점적 — 혈당을 낮춘다
+  tag: 투약 안전
+  distractorsEn: [heparin, inulin]
+  distractorsKo: [헤파린, 이눌린]
+  chips:
+  - [in, su, lin]
+  decoyChips: [sa, len]
+- id: w-right
+  en: right
+  ipa: /raɪt/
+  ko: 맞는
+  icon: check
+  example: So that's insulin, ten units, over one hour — did I get that right?
+  exKo: 그러니까 인슐린 10단위를 1시간에 걸쳐서요, 제가 맞게 이해했나요?
+  cue: 제가 들은 게 맞는지 — did I get that ○○?
+  tag: 투약 안전
+  distractorsEn: [ready, light]
+  distractorsKo: [준비된, 가벼운]
+  chips:
+  - [right]
+  decoyChips: [rite]
+- id: w-wrong
+  en: wrong
+  ipa: /rɔːŋ/
+  ko: 틀린
+  icon: board
+  example: I'm not saying you're wrong, I just need to hear it back before we sign.
+  exKo: 틀렸다는 게 아니라, 서명하기 전에 되짚어 듣고 싶어서요.
+  cue: 동료를 탓하지 않으면서도 '혹시 내가 ○○일 수도' 하고 말을 꺼낼 때
+  tag: 팀 소통
+  distractorsEn: [strong, long]
+  distractorsKo: [확실한, 늦은]
+  chips:
+  - [wrong]
+  decoyChips: [wring]
+- id: w-hear
+  en: hear
+  ipa: /hɪr/
+  ko: 듣다
+  icon: speech
+  example: I'm not saying you're wrong, I just need to hear it back before we sign.
+  exKo: 틀렸다는 게 아니라, 서명하기 전에 되짚어 듣고 싶어서요.
+  cue: 읽어 준 숫자를 귀로 받아 되짚을 때
+  tag: 팀 소통
+  distractorsEn: [here, heal]
+  distractorsKo: [보다, 낫다]
+  chips:
+  - [hear]
+  decoyChips: [here]
+- id: w-back
+  en: back
+  ipa: /bæk/
+  ko: 되짚어
+  icon: speech
+  example: I'm not saying you're wrong, I just need to hear it back before we sign.
+  exKo: 틀렸다는 게 아니라, 서명하기 전에 되짚어 듣고 싶어서요.
+  cue: 들은 내용을 상대에게 다시 읽어 줄 때 — say it ○○
+  tag: 팀 소통
+  distractorsEn: [black, pack]
+  distractorsKo: [먼저, 크게]
+  chips:
+  - [back]
+  decoyChips: [buck]
+- id: w-agree
+  en: agree
+  ipa: /əˈɡriː/
+  ko: 동의하다
+  icon: check
+  example: Once we both agree on the numbers, we sign our names and start the pump.
+  exKo: 숫자에 둘 다 동의하면 이름을 서명하고 펌프를 시작해요.
+  cue: 두 사람이 본 숫자가 같다고 서로 인정할 때
+  tag: 팀 소통
+  distractorsEn: [argue, degree]
+  distractorsKo: [반박하다, 정도]
+  chips:
+  - [a, gree]
+  decoyChips: [de, grea]
+- id: w-number
+  en: number
+  ipa: /ˈnʌmbər/
+  ko: 숫자
+  icon: chartup
+  example: Once we both agree on the numbers, we sign our names and start the pump.
+  exKo: 숫자에 둘 다 동의하면 이름을 서명하고 펌프를 시작해요.
+  cue: 이중확인에서 서로 맞춰 보는 용량·속도 값들
+  tag: 팀 소통
+  distractorsEn: [letter, name]
+  distractorsKo: [이름, 단위]
+  chips:
+  - [num, ber]
+  decoyChips: [numb, bar]
+- id: w-start
+  en: start
+  ipa: /stɑːrt/
+  ko: 시작하다
+  icon: gear
+  example: Once we both agree on the numbers, we sign our names and start the pump.
+  exKo: 숫자에 둘 다 동의하면 이름을 서명하고 펌프를 시작해요.
+  cue: 서명이 끝나면 펌프를 이렇게 한다
+  tag: 투약 안전
+  distractorsEn: [stop, stall]
+  distractorsKo: [멈추다, 끝내다]
+  chips:
+  - [start]
+  decoyChips: [stark]
+- id: w-ahead
+  en: ahead
+  ipa: /əˈhɛd/
+  ko: 앞으로
+  icon: compass
+  example: I might be wrong, but I want to check something before we go ahead.
+  exKo: 제가 틀렸을 수도 있지만, 진행하기 전에 뭔가 확인하고 싶어요.
+  cue: 확인이 끝나기 전에는 하지 않는 것 — go ○○
+  tag: 팀 소통
+  distractorsEn: [behind, ahold]
+  distractorsKo: [뒤에, 붙잡아]
+  chips:
+  - [a, head]
+  decoyChips: [hed, e]
+- id: w-trace
+  en: trace
+  ipa: /treɪs/
+  ko: 추적하다
+  icon: magnify
+  example: Let's trace the line from the bag to the patient.
+  exKo: 수액백에서 환자까지 라인을 따라가 봐요.
+  cue: 수액백에서 환자 몸까지 라인을 손으로 짚어 가며 확인할 때
+  tag: 라인 안전
+  distractorsEn: [track, treat]
+  distractorsKo: [치료하다, 교체하다]
+  chips:
+  - [trace]
+  decoyChips: [trice]
+- id: w-bag
+  en: bag
+  ipa: /bæɡ/
+  ko: 수액백
+  icon: lab
+  example: Let's trace the line from the bag to the patient.
+  exKo: 수액백에서 환자까지 라인을 따라가 봐요.
+  cue: 폴대에 걸린 수액이 든 것 — 라인을 따라가는 출발점
+  tag: 라인 안전
+  distractorsEn: [bottle, vial]
+  distractorsKo: [병, 주사기]
+  chips:
+  - [bag]
+  decoyChips: [beg]
+- id: w-label
+  en: label
+  ipa: /ˈleɪbl/
+  ko: 라벨을 붙이다
+  icon: pushpin
+  example: Every line should be labeled at both ends.
+  exKo: 모든 라인은 양쪽 끝에 라벨이 붙어 있어야 해요.
+  cue: 라인 양쪽 끝에 이름표를 달 때
+  tag: 라인 안전
+  distractorsEn: [level, cable]
+  distractorsKo: [고정하다, 기록하다]
+  chips:
+  - [la, bel]
+  decoyChips: [ble, le]
+- id: w-end
+  en: end
+  ipa: /ɛnd/
+  ko: 끝
+  icon: board
+  example: Every line should be labeled at both ends.
+  exKo: 모든 라인은 양쪽 끝에 라벨이 붙어 있어야 해요.
+  cue: 라인의 양쪽 — 수액 쪽과 환자 쪽, 라벨은 두 군데
+  tag: 라인 안전
+  distractorsEn: [edge, middle]
+  distractorsKo: [가운데, 시작]
+  chips:
+  - [end]
+  decoyChips: [and]
+- id: w-arterial
+  en: arterial
+  ipa: /ɑːrˈtɪriəl/
+  ko: 동맥의
+  icon: stetho
+  example: This is the arterial line, not for medication.
+  exKo: 이건 동맥 라인이에요, 투약용이 아니고요.
+  cue: 혈압을 재는 라인 — 약을 넣으면 안 된다
+  tag: 라인 안전
+  distractorsEn: [venous, arteriole]
+  distractorsKo: [정맥의, 세동맥]
+  chips:
+  - [ar, ter, i, al]
+  decoyChips: [tor, ol]
+- id: w-medication
+  en: medication
+  ipa: /ˌmɛdɪˈkeɪʃn/
+  ko: 투약
+  icon: pill
+  example: This is the arterial line, not for medication.
+  exKo: 이건 동맥 라인이에요, 투약용이 아니고요.
+  cue: 이 라인은 이 용도가 아니다 — 약을 넣는 일
+  tag: 투약 안전
+  distractorsEn: [meditation, medicine]
+  distractorsKo: [명상, 처방]
+  chips:
+  - [med, i, ca, tion]
+  decoyChips: [ta, ka]
+- id: w-push
+  en: push
+  ipa: /pʊʃ/
+  ko: 밀어 넣다
+  icon: gear
+  example: If we trace it together, we won't push the wrong drug into the wrong line.
+  exKo: 같이 따라가면 엉뚱한 약을 엉뚱한 라인으로 밀어 넣지 않을 거예요.
+  cue: 주사기로 라인에 약을 밀어 넣을 때 — 확인 전엔 하지 말 것
+  tag: 투약 안전
+  distractorsEn: [pull, flush]
+  distractorsKo: [잡아당기다, 씻어 내다]
+  chips:
+  - [push]
+  decoyChips: [posh]
+- id: w-follow
+  en: follow
+  ipa: /ˈfɑːloʊ/
+  ko: 따라가다
+  icon: compass
+  example: Let's follow this tubing all the way from the pump to where it enters him.
+  exKo: 이 튜빙을 펌프에서부터 몸에 들어가는 곳까지 끝까지 따라가 봐요.
+  cue: 튜빙을 펌프에서 몸까지 쭉 뒤따라가 볼 때
+  tag: 라인 안전
+  distractorsEn: [fellow, flow]
+  distractorsKo: [흐르다, 끊다]
+  chips:
+  - [fol, low]
+  decoyChips: [fel, lo]
+- id: w-tubing
+  en: tubing
+  ipa: /ˈtuːbɪŋ/
+  ko: 튜빙
+  icon: lab
+  example: Let's follow this tubing all the way from the pump to where it enters him.
+  exKo: 이 튜빙을 펌프에서부터 몸에 들어가는 곳까지 끝까지 따라가 봐요.
+  cue: 펌프에서 환자까지 이어진 가는 관 전체
+  tag: 라인 안전
+  distractorsEn: [tube feeding, tuning]
+  distractorsKo: [경관영양, 조율]
+  chips:
+  - [tub, ing]
+  decoyChips: [tube, tun]
+- id: w-enter
+  en: enter
+  ipa: /ˈɛntər/
+  ko: 들어가다
+  icon: home
+  example: Let's follow this tubing all the way from the pump to where it enters him.
+  exKo: 이 튜빙을 펌프에서부터 몸에 들어가는 곳까지 끝까지 따라가 봐요.
+  cue: 라인이 환자 몸속으로 들어가는 지점
+  tag: 라인 안전
+  distractorsEn: [exit, center]
+  distractorsKo: [빠져나오다, 모이다]
+  chips:
+  - [en, ter]
+  decoyChips: [in, tor]
+- id: w-mix
+  en: mix
+  ipa: /mɪks/
+  ko: 혼동하다
+  icon: board
+  example: A labeled line at both ends is one less way to mix up a patient.
+  exKo: 양쪽 끝에 라벨이 붙은 라인은 환자를 혼동할 위험을 하나 줄여줘요.
+  cue: 환자나 라인을 서로 바꿔 생각하는 실수 — ○○ up
+  tag: 라인 안전
+  distractorsEn: [miss, fix]
+  distractorsKo: [놓치다, 고치다]
+  chips:
+  - [mix]
+  decoyChips: [max]
+- id: w-lower
+  en: lower
+  ipa: /ˈloʊər/
+  ko: 낮추다
+  icon: gear
+  example: Let's lower the bed and lock the wheels.
+  exKo: 침대를 낮추고 바퀴를 잠가요.
+  cue: 낙상 예방 첫 단계 — 침대 높이를 내릴 때
+  tag: 낙상 예방
+  distractorsEn: [raise, lift]
+  distractorsKo: [올리다, 들다]
+  chips:
+  - [low, er]
+  decoyChips: [law, or]
+- id: w-bed
+  en: bed
+  ipa: /bɛd/
+  ko: 침대
+  icon: hospital
+  example: Let's lower the bed and lock the wheels.
+  exKo: 침대를 낮추고 바퀴를 잠가요.
+  cue: 낮추고 바퀴를 잠그는 것 — 환자가 누운 곳
+  tag: 낙상 예방
+  distractorsEn: [stretcher, chair]
+  distractorsKo: [의자, 들것]
+  chips:
+  - [bed]
+  decoyChips: [bad]
+- id: w-lock
+  en: lock
+  ipa: /lɑːk/
+  ko: 잠그다
+  icon: lock
+  example: Let's lower the bed and lock the wheels.
+  exKo: 침대를 낮추고 바퀴를 잠가요.
+  cue: 침대 바퀴가 굴러가지 않게 고정할 때
+  tag: 낙상 예방
+  distractorsEn: [look, block]
+  distractorsKo: [풀다, 막다]
+  chips:
+  - [lock]
+  decoyChips: [lack]
+- id: w-wheel
+  en: wheel
+  ipa: /wiːl/
+  ko: 바퀴
+  icon: board
+  example: Let's lower the bed and lock the wheels.
+  exKo: 침대를 낮추고 바퀴를 잠가요.
+  cue: 침대 아래 굴러가는 것 — 잠가 둬야 한다
+  tag: 낙상 예방
+  distractorsEn: [rail, pedal]
+  distractorsKo: [난간, 페달]
+  chips:
+  - [wheel]
+  decoyChips: [whel]
+- id: w-call
+  en: call
+  ipa: /kɔːl/
+  ko: 부르다
+  icon: bell
+  example: Call for help and stay with him.
+  exKo: 도움을 부르고 곁에 있어줘요.
+  cue: 도움이 필요할 때 사람을 소리쳐 오게 하거나 연락하는 것
+  tag: 위기 대응
+  distractorsEn: [tell, hold]
+  distractorsKo: [알리다, 기다리다]
+  chips:
+  - [call]
+  decoyChips: [cal]
+- id: w-light
+  en: light
+  ipa: /laɪt/
+  ko: 등(램프)
+  icon: bulb
+  example: Keep the call light and his items within reach.
+  exKo: 호출 버튼과 물건을 손 닿는 곳에 두세요.
+  cue: 호출 버튼을 누르면 문밖에 켜지는 것 — call ○○
+  tag: 낙상 예방
+  distractorsEn: [line, right]
+  distractorsKo: [줄, 버튼]
+  chips:
+  - [light]
+  decoyChips: [lite]
+- id: w-item
+  en: item
+  ipa: /ˈaɪtəm/
+  ko: 물건
+  icon: board
+  example: Keep the call light and his items within reach.
+  exKo: 호출 버튼과 물건을 손 닿는 곳에 두세요.
+  cue: 안경·물컵·휴대폰처럼 손 닿는 곳에 둘 개인 소지품
+  tag: 낙상 예방
+  distractorsEn: [equipment, furniture]
+  distractorsKo: [가구, 장비]
+  chips:
+  - [i, tem]
+  decoyChips: [tam, e]
+- id: w-try
+  en: try
+  ipa: /traɪ/
+  ko: 시도하다
+  icon: gear
+  example: A bed alarm will let us know if he tries to get up.
+  exKo: 침대 알람이 이분이 일어나려 하면 알려줄 거예요.
+  cue: 환자가 혼자 일어나려고 애쓸 때 — 침대 알람이 알려 준다
+  tag: 낙상 예방
+  distractorsEn: [tie, cry]
+  distractorsKo: [포기하다, 거절하다]
+  chips:
+  - [try]
+  decoyChips: [tri]
+- id: w-confused
+  en: confused
+  ipa: /kənˈfjuːzd/
+  ko: 혼란스러운
+  icon: bulb
+  example: He's confused and restless, so his fall risk is high tonight.
+  exKo: 이분은 혼란스럽고 안절부절못해서 오늘 밤 낙상 위험이 높아요.
+  cue: 날짜·장소를 헷갈려하는 환자 — 낙상 위험을 높인다
+  tag: 낙상 예방
+  distractorsEn: [confined, convinced]
+  distractorsKo: [갇힌, 확신하는]
+  chips:
+  - [con, fused]
+  decoyChips: [fined, fuzed]
+- id: w-restless
+  en: restless
+  ipa: /ˈrɛstləs/
+  ko: 안절부절못하는
+  icon: bulb
+  example: He's confused and restless, so his fall risk is high tonight.
+  exKo: 이분은 혼란스럽고 안절부절못해서 오늘 밤 낙상 위험이 높아요.
+  cue: 가만히 있지 못하고 계속 뒤척이며 몸을 움직이는
+  tag: 낙상 예방
+  distractorsEn: [restful, reckless]
+  distractorsKo: [편안한, 무모한]
+  chips:
+  - [rest, less]
+  decoyChips: [ful, wrest]
+- id: w-fall
+  en: fall
+  ipa: /fɔːl/
+  ko: 낙상(하다)
+  icon: board
+  example: He's confused and restless, so his fall risk is high tonight.
+  exKo: 이분은 혼란스럽고 안절부절못해서 오늘 밤 낙상 위험이 높아요.
+  cue: 침대에서 바닥으로 넘어지는 사고 — 매 근무 위험을 사정
+  tag: 낙상 예방
+  distractorsEn: [fail, faint]
+  distractorsKo: [실패, 실신]
+  chips:
+  - [fall]
+  decoyChips: [fail]
+- id: w-risk
+  en: risk
+  ipa: /rɪsk/
+  ko: 위험
+  icon: siren
+  example: He's confused and restless, so his fall risk is high tonight.
+  exKo: 이분은 혼란스럽고 안절부절못해서 오늘 밤 낙상 위험이 높아요.
+  cue: 혼란·안절부절이 있으면 낙상의 이것이 높아진다
+  tag: 낙상 예방
+  distractorsEn: [rate, rest]
+  distractorsKo: [비율, 원인]
+  chips:
+  - [risk]
+  decoyChips: [rusk]
+- id: w-high
+  en: high
+  ipa: /haɪ/
+  ko: 높은
+  icon: chartup
+  example: He's confused and restless, so his fall risk is high tonight.
+  exKo: 이분은 혼란스럽고 안절부절못해서 오늘 밤 낙상 위험이 높아요.
+  cue: 낙상 위험 점수가 위쪽일 때 / 펌프가 용량이 너무 크다고 할 때
+  tag: 낙상 예방
+  distractorsEn: [low, huge]
+  distractorsKo: [낮은, 보통의]
+  chips:
+  - [high]
+  decoyChips: [hi]
+- id: w-tonight
+  en: tonight
+  ipa: /təˈnaɪt/
+  ko: 오늘 밤
+  icon: calendar
+  example: He's confused and restless, so his fall risk is high tonight.
+  exKo: 이분은 혼란스럽고 안절부절못해서 오늘 밤 낙상 위험이 높아요.
+  cue: 야간 근무 인계 때 — 지금부터 아침까지
+  tag: 낙상 예방
+  distractorsEn: [tomorrow, today]
+  distractorsKo: [내일, 어젯밤]
+  chips:
+  - [to, night]
+  decoyChips: [nite, too]
+- id: w-answer
+  en: answer
+  ipa: /ˈænsər/
+  ko: 응답하다
+  icon: speech
+  example: If the alarm sounds, someone needs to answer it right away.
+  exKo: 알람이 울리면 누군가 바로 응답해야 해요.
+  cue: 알람이 울리면 누군가 가서 대응해야 한다 — ○○ the alarm
+  tag: 알람
+  distractorsEn: [ignore, silence]
+  distractorsKo: [무시하다, 끄다]
+  chips:
+  - [an, swer]
+  decoyChips: [sure, en]
+- id: w-assess
+  en: assess
+  ipa: /əˈsɛs/
+  ko: 사정하다
+  icon: magnify
+  example: We assess his risk every shift, not just after he's already fallen.
+  exKo: 이미 낙상한 뒤가 아니라 매 근무마다 위험을 사정해요.
+  cue: 낙상 위험·환자 상태를 체계적으로 살펴 판단할 때 — 간호 과정의 첫 단계
+  tag: 위기 대응
+  distractorsEn: [access, assist]
+  distractorsKo: [접근하다, 돕다]
+  chips:
+  - [as, sess]
+  decoyChips: [ac, sist]
+- id: w-shift
+  en: shift
+  ipa: /ʃɪft/
+  ko: 근무
+  icon: calendar
+  example: We assess his risk every shift, not just after he's already fallen.
+  exKo: 이미 낙상한 뒤가 아니라 매 근무마다 위험을 사정해요.
+  cue: 낮 근무·밤 근무 — 낙상 위험을 다시 보는 단위
+  tag: 낙상 예방
+  distractorsEn: [staff, schedule]
+  distractorsKo: [병동, 일정]
+  chips:
+  - [shift]
+  decoyChips: [shaft]
+- id: w-route
+  en: route
+  ipa: /ruːt/
+  ko: 경로
+  icon: compass
+  example: Right patient, right drug, right dose, right route, right time.
+  exKo: 정확한 환자, 정확한 약물, 정확한 용량, 정확한 경로, 정확한 시간이에요.
+  cue: 5R의 하나 — 정맥·경구·피하처럼 약이 들어가는 길
+  tag: 투약 안전
+  distractorsEn: [rate, root]
+  distractorsKo: [속도, 근원]
+  chips:
+  - [route]
+  decoyChips: [root]
+- id: w-scan
+  en: scan
+  ipa: /skæn/
+  ko: 스캔하다
+  icon: monitor
+  example: Scan the band and confirm the order first.
+  exKo: 밴드를 스캔하고 먼저 처방을 확인해요.
+  cue: 투약 전 바코드 리더기로 밴드를 읽힐 때
+  tag: 투약 안전
+  distractorsEn: [scrub, skim]
+  distractorsKo: [문질러 닦다, 훑어 읽다]
+  chips:
+  - [scan]
+  decoyChips: [skan]
+- id: w-band
+  en: band
+  ipa: /bænd/
+  ko: 밴드
+  icon: bandage
+  example: Scan the band and confirm the order first.
+  exKo: 밴드를 스캔하고 먼저 처방을 확인해요.
+  cue: 환자 손목에 찬 바코드 띠를 줄여 부르는 말
+  tag: 투약 안전
+  distractorsEn: [bond, bend]
+  distractorsKo: [붕대, 테이프]
+  chips:
+  - [band]
+  decoyChips: [bend]
+- id: w-allergy
+  en: allergy
+  ipa: /ˈælərdʒi/
+  ko: 알레르기
+  icon: bell
+  example: Let's check for allergies before giving it.
+  exKo: 주기 전에 알레르기를 확인해요.
+  cue: 투약 전 꼭 묻는 것 — 페니실린에 두드러기가 난 적이 있는지
+  tag: 투약 안전
+  distractorsEn: [allergen, analgesia]
+  distractorsKo: [알레르기 유발 물질, 진통]
+  chips:
+  - [al, ler, gy]
+  decoyChips: [gen, lar]
+- id: w-gram
+  en: gram
+  ipa: /ɡræm/
+  ko: 그램
+  icon: chartup
+  example: So I heard vancomycin, one gram, IV, over one hour — is that right?
+  exKo: 그러니까 반코마이신 1그램을 정맥으로 1시간에 걸쳐서요, 맞나요?
+  cue: 반코마이신 1○○ — 무게 단위
+  tag: 투약 안전
+  distractorsEn: [milligram, grain]
+  distractorsKo: [밀리그램, 단위]
+  chips:
+  - [gram]
+  decoyChips: [grain]
+- id: w-say
+  en: say
+  ipa: /seɪ/
+  ko: 말하다
+  icon: speech
+  example: 'Let me say that back to you: right patient, right time, right route.'
+  exKo: 다시 말씀드릴게요, 정확한 환자, 정확한 시간, 정확한 경로예요.
+  cue: 들은 처방을 입으로 다시 읽어 줄 때 — ○○ that back
+  tag: 팀 소통
+  distractorsEn: [see, sign]
+  distractorsKo: [쓰다, 듣다]
+  chips:
+  - [say]
+  decoyChips: [sea]
+- id: w-wristband
+  en: wristband
+  ipa: /ˈrɪstbænd/
+  ko: 손목밴드
+  icon: bandage
+  example: Before I push anything, I check his wristband against the order myself.
+  exKo: 뭔가 주기 전에 저는 직접 손목밴드를 처방과 대조해서 확인해요.
+  cue: 환자 팔목에 찬, 이름·생년월일·바코드가 인쇄된 것
+  tag: 투약 안전
+  distractorsEn: [armband, headband]
+  distractorsKo: [완장, 머리띠]
+  chips:
+  - [wrist, band]
+  decoyChips: [waist, hand]
+- id: w-chart
+  en: chart
+  ipa: /tʃɑːrt/
+  ko: 차트
+  icon: board
+  example: No known allergies on the chart, but I'll ask him again just in case.
+  exKo: 차트에는 알려진 알레르기가 없지만, 혹시 몰라서 다시 물어볼게요.
+  cue: 알레르기·처방이 적힌 환자 기록 — 전자 기록 포함
+  tag: 투약 안전
+  distractorsEn: [cart, char]
+  distractorsKo: [카트, 처방]
+  chips:
+  - [chart]
+  decoyChips: [cart]
+- id: w-ask
+  en: ask
+  ipa: /æsk/
+  ko: 묻다
+  icon: speech
+  example: No known allergies on the chart, but I'll ask him again just in case.
+  exKo: 차트에는 알려진 알레르기가 없지만, 혹시 몰라서 다시 물어볼게요.
+  cue: 차트에 없어도 혹시 몰라 환자에게 직접 다시 확인할 때
+  tag: 팀 소통
+  distractorsEn: [tell, answer]
+  distractorsKo: [말하다, 답하다]
+  chips:
+  - [ask]
+  decoyChips: [axe]
+- id: w-tailor
+  en: tailor
+  ipa: /ˈteɪlər/
+  ko: 맞춤화하다
+  icon: gear
+  example: Let's tailor alarm limits to each patient's baseline.
+  exKo: 환자별 기저치에 맞춰 알람 한계를 맞춤화해요.
+  cue: 옷을 몸에 맞추듯 알람 한계를 환자에게 맞출 때
+  tag: 알람
+  distractorsEn: [taper, tally]
+  distractorsKo: [점차 줄이다, 집계하다]
+  chips:
+  - [tai, lor]
+  decoyChips: [tay, ler]
+- id: w-widen
+  en: widen
+  ipa: /ˈwaɪdn/
+  ko: 넓히다
+  icon: gear
+  example: We can widen non-critical thresholds without losing safety.
+  exKo: 안전을 잃지 않으면서 비위중 임계값은 넓힐 수 있어요.
+  cue: 덜 중요한 알람의 범위를 넓게 벌려 덜 울리게 할 때
+  tag: 알람
+  distractorsEn: [weaken, narrow]
+  distractorsKo: [약화시키다, 좁히다]
+  chips:
+  - [wid, en]
+  decoyChips: [wide, an]
+- id: w-critical
+  en: critical
+  ipa: /ˈkrɪtɪkl/
+  ko: 위중한
+  icon: siren
+  example: We can widen non-critical thresholds without losing safety.
+  exKo: 안전을 잃지 않으면서 비위중 임계값은 넓힐 수 있어요.
+  cue: 놓치면 바로 생명에 영향이 가는 — 알람 한계를 넓히면 안 되는 쪽
+  tag: 알람
+  distractorsEn: [clinical, chronic]
+  distractorsKo: [임상의, 만성의]
+  chips:
+  - [crit, i, cal]
+  decoyChips: [clin, kal]
+- id: w-threshold
+  en: threshold
+  ipa: /ˈθrɛʃhoʊld/
+  ko: 임계값
+  icon: chartup
+  example: We can widen non-critical thresholds without losing safety.
+  exKo: 안전을 잃지 않으면서 비위중 임계값은 넓힐 수 있어요.
+  cue: 이 값을 넘으면 알람이 울리기 시작하는 경계 수치
+  tag: 알람
+  distractorsEn: [baseline, foothold]
+  distractorsKo: [기저치, 평균값]
+  chips:
+  - [thresh, old]
+  decoyChips: [thre, hold]
+- id: w-safety
+  en: safety
+  ipa: /ˈseɪfti/
+  ko: 안전
+  icon: shield
+  example: We can widen non-critical thresholds without losing safety.
+  exKo: 안전을 잃지 않으면서 비위중 임계값은 넓힐 수 있어요.
+  cue: 알람을 줄여도 잃으면 안 되는 것 — 환자를 해에서 지키는 일
+  tag: 알람
+  distractorsEn: [security, stability]
+  distractorsKo: [보안, 안정성]
+  chips:
+  - [safe, ty]
+  decoyChips: [save, tee]
+- id: w-silence
+  en: silence
+  ipa: /ˈsaɪləns/
+  ko: 무음 처리하다
+  icon: speaker
+  example: Silencing without addressing the cause is never okay.
+  exKo: 원인을 해결하지 않고 무음 처리만 하는 건 절대 괜찮지 않아요.
+  cue: 원인을 보지 않고 버튼만 눌러 알람 소리를 꺼 버리는 것
+  tag: 알람
+  distractorsEn: [reset, sedate]
+  distractorsKo: [재설정하다, 진정시키다]
+  chips:
+  - [si, lence]
+  decoyChips: [lent, sci]
+- id: w-cause
+  en: cause
+  ipa: /kɔːz/
+  ko: 원인
+  icon: bulb
+  example: Silencing without addressing the cause is never okay.
+  exKo: 원인을 해결하지 않고 무음 처리만 하는 건 절대 괜찮지 않아요.
+  cue: 알람이 울린 진짜 이유 — 끄기 전에 찾아야 하는 것
+  tag: 알람
+  distractorsEn: [case, course]
+  distractorsKo: [경과, 결과]
+  chips:
+  - [cause]
+  decoyChips: [cuase]
+- id: w-okay
+  en: okay
+  ipa: /ˌoʊˈkeɪ/
+  ko: 괜찮은
+  icon: check
+  example: Silencing without addressing the cause is never okay.
+  exKo: 원인을 해결하지 않고 무음 처리만 하는 건 절대 괜찮지 않아요.
+  cue: 원인 없이 무음 처리하는 건 절대 이렇지 않다
+  tag: 알람
+  distractorsEn: [unsafe, unusual]
+  distractorsKo: [안전하지 않은, 드문]
+  chips:
+  - [o, kay]
+  decoyChips: [ok, key]
+- id: w-fatigue
+  en: fatigue
+  ipa: /fəˈtiːɡ/
+  ko: 피로
+  icon: bulb
+  example: Alarm fatigue is real — after the tenth alert, you stop hearing them.
+  exKo: 알람 피로는 실제예요, 열 번째 경고음 뒤로는 들리지 않게 돼요.
+  cue: 알람이 너무 많이 울려 무뎌지는 것 — alarm ○○
+  tag: 알람
+  distractorsEn: [fatality, fasting]
+  distractorsKo: [사망, 공복]
+  chips:
+  - [fa, tigue]
+  decoyChips: [tig, fat]
+- id: w-alert
+  en: alert
+  ipa: /əˈlɜːrt/
+  ko: 경고음
+  icon: bell
+  example: Alarm fatigue is real — after the tenth alert, you stop hearing them.
+  exKo: 알람 피로는 실제예요, 열 번째 경고음 뒤로는 들리지 않게 돼요.
+  cue: 모니터가 울리는 한 번 한 번의 알림 — 열 번째쯤 되면 안 들린다
+  tag: 알람
+  distractorsEn: [allergen, alignment]
+  distractorsKo: [알레르기 유발 물질, 정렬]
+  chips:
+  - [a, lert]
+  decoyChips: [lart, e]
+- id: w-important
+  en: important
+  ipa: /ɪmˈpɔːrtnt/
+  ko: 중요한
+  icon: star
+  example: If we personalize the limits now, the important alarms stand out later.
+  exKo: 지금 한계를 개인화해 두면 나중에 중요한 알람이 두드러져요.
+  cue: 한계를 맞춰 두면 이런 알람만 눈에 띈다
+  tag: 알람
+  distractorsEn: [imported, impatient]
+  distractorsKo: [사소한, 흔한]
+  chips:
+  - [im, por, tant]
+  decoyChips: [tent, pot]
+- id: w-stand
+  en: stand out
+  ipa: /stænd ˈaʊt/
+  ko: 두드러지다
+  icon: chartup
+  example: If we personalize the limits now, the important alarms stand out later.
+  exKo: 지금 한계를 개인화해 두면 나중에 중요한 알람이 두드러져요.
+  cue: 불필요한 알람이 줄면 중요한 알람이 눈에 확 띈다
+  tag: 알람
+  distractorsEn: [stand by, stand down]
+  distractorsKo: [대기하다, 물러서다]
+  chips:
+  - [stand]
+  - [out]
+  decoyChips: [stend, up]
+- id: w-mute
+  en: mute
+  ipa: /mjuːt/
+  ko: 음소거하다
+  icon: speaker
+  example: Never mute an alarm just because it's annoying — fix the setting instead.
+  exKo: 성가시다는 이유만으로 알람을 음소거하지 말고, 설정을 고쳐요.
+  cue: 시끄럽다고 알람 소리만 꺼 버리는 것 — 하지 말 것
+  tag: 알람
+  distractorsEn: [mutate, move]
+  distractorsKo: [변이하다, 옮기다]
+  chips:
+  - [mute]
+  decoyChips: [moot]
+- id: w-annoying
+  en: annoying
+  ipa: /əˈnɔɪɪŋ/
+  ko: 성가신
+  icon: bulb
+  example: Never mute an alarm just because it's annoying — fix the setting instead.
+  exKo: 성가시다는 이유만으로 알람을 음소거하지 말고, 설정을 고쳐요.
+  cue: 자꾸 울려 짜증 나는 — 그래도 끄는 이유가 될 수 없다
+  tag: 알람
+  distractorsEn: [alarming, boring]
+  distractorsKo: [놀라운, 지루한]
+  chips:
+  - [an, noy, ing]
+  decoyChips: [ed, noi]
+- id: w-mean
+  en: mean
+  ipa: /miːn/
+  ko: 의미하다
+  icon: board
+  example: We keep every alarm on, we just make it mean something.
+  exKo: 알람은 전부 켜 두되, 의미가 있게만 만들어요.
+  cue: 알람이 울리면 '무언가 있다'는 뜻이 되게 — make it ○○ something
+  tag: 알람
+  distractorsEn: [mend, moan]
+  distractorsKo: [고치다, 신음하다]
+  chips:
+  - [mean]
+  decoyChips: [mien]
+- id: w-circulation
+  en: circulation
+  ipa: /ˌsɜːrkjəˈleɪʃn/
+  ko: 혈액 순환
+  icon: stetho
+  example: We check circulation and skin every two hours.
+  exKo: 두 시간마다 순환과 피부를 확인해요.
+  cue: 억제대 아래 손끝 색·온기·맥박으로 보는 것
+  tag: 억제대
+  distractorsEn: [circumference, calculation]
+  distractorsKo: [둘레, 계산]
+  chips:
+  - [cir, cu, la, tion]
+  decoyChips: [cal, sir]
+- id: w-skin
+  en: skin
+  ipa: /skɪn/
+  ko: 피부
+  icon: bandage
+  example: We check circulation and skin every two hours.
+  exKo: 두 시간마다 순환과 피부를 확인해요.
+  cue: 억제대가 닿는 자리에서 발적·상처를 살피는 곳
+  tag: 억제대
+  distractorsEn: [shin, skull]
+  distractorsKo: [정강이, 두개골]
+  chips:
+  - [skin]
+  decoyChips: [shin]
+- id: w-document
+  en: document
+  ipa: /ˈdɑːkjumɛnt/
+  ko: 기록하다
+  icon: pencil
+  example: Document the reason, alternatives tried, and reassessment.
+  exKo: 이유, 시도한 대체 방법, 그리고 재사정을 기록해요.
+  cue: 억제대 사유·대안·재사정을 차트에 남길 때
+  tag: 억제대
+  distractorsEn: [comment, dominate]
+  distractorsKo: [언급하다, 지배하다]
+  chips:
+  - [doc, u, ment]
+  decoyChips: [dock, mint]
+- id: w-reason
+  en: reason
+  ipa: /ˈriːzn/
+  ko: 이유
+  icon: speech
+  example: Document the reason, alternatives tried, and reassessment.
+  exKo: 이유, 시도한 대체 방법, 그리고 재사정을 기록해요.
+  cue: 억제대를 쓴 근거 — 왜 써야 했는가
+  tag: 억제대
+  distractorsEn: [season, response]
+  distractorsKo: [결과, 반응]
+  chips:
+  - [rea, son]
+  decoyChips: [ree, sun]
+- id: w-alternative
+  en: alternative
+  ipa: /ɔːlˈtɜːrnətɪv/
+  ko: 대체 방법
+  icon: pill
+  example: Document the reason, alternatives tried, and reassessment.
+  exKo: 이유, 시도한 대체 방법, 그리고 재사정을 기록해요.
+  cue: 억제대 대신 먼저 써 본 방법들 — 관찰 인력·가림막 등
+  tag: 억제대
+  distractorsEn: [alternation, alteration]
+  distractorsKo: [교대, 변경]
+  chips:
+  - [al, ter, na, tive]
+  decoyChips: [tion, alt]
+- id: w-reassessment
+  en: reassessment
+  ipa: /ˌriːəˈsɛsmənt/
+  ko: 재사정
+  icon: magnify
+  example: Document the reason, alternatives tried, and reassessment.
+  exKo: 이유, 시도한 대체 방법, 그리고 재사정을 기록해요.
+  cue: 억제대가 아직 필요한지 다시 따져 본 기록
+  tag: 억제대
+  distractorsEn: [reassignment, reassurance]
+  distractorsKo: [재배정, 안심시키기]
+  chips:
+  - [re, assess, ment]
+  decoyChips: [assign, mint]
+- id: w-release
+  en: release
+  ipa: /rɪˈliːs/
+  ko: 풀어주다
+  icon: lock
+  example: Release and reposition on schedule.
+  exKo: 일정에 따라 풀어주고 자세를 바꿔요.
+  cue: 정해진 시간마다 억제대를 잠시 풀어 줄 때
+  tag: 억제대
+  distractorsEn: [relapse, relieve]
+  distractorsKo: [재발하다, 덜어 주다]
+  chips:
+  - [re, lease]
+  decoyChips: [leese, lapse]
+- id: w-reposition
+  en: reposition
+  ipa: /ˌriːpəˈzɪʃn/
+  ko: 자세를 바꾸다
+  icon: board
+  example: Release and reposition on schedule.
+  exKo: 일정에 따라 풀어주고 자세를 바꿔요.
+  cue: 억제대를 푼 김에 몸의 위치·자세를 다시 잡을 때
+  tag: 억제대
+  distractorsEn: [restore, reorient]
+  distractorsKo: [다시 고정하다, 들어 올리다]
+  chips:
+  - [re, posi, tion]
+  decoyChips: [pose, sion]
+- id: w-schedule
+  en: schedule
+  ipa: /ˈskɛdʒuːl/
+  ko: 일정
+  icon: calendar
+  example: Release and reposition on schedule.
+  exKo: 일정에 따라 풀어주고 자세를 바꿔요.
+  cue: 억제대를 풀고 자세를 바꾸는 정해진 시간표
+  tag: 억제대
+  distractorsEn: [scale, module]
+  distractorsKo: [척도, 단위]
+  chips:
+  - [sched, ule]
+  decoyChips: [skej, ual]
+- id: w-last
+  en: last
+  ipa: /læst/
+  ko: 마지막으로
+  icon: calendar
+  example: When did we last check his circulation and skin?
+  exKo: 마지막으로 순환과 피부를 확인한 게 언제였죠?
+  cue: 가장 최근에 확인한 때를 물을 때 — when did we ○○ check
+  tag: 억제대
+  distractorsEn: [lost, least]
+  distractorsKo: [처음으로, 자주]
+  chips:
+  - [last]
+  decoyChips: [lust]
+- id: w-restrain
+  en: restrain
+  ipa: /rɪˈstreɪn/
+  ko: 억제하다
+  icon: lock
+  example: We schedule releases so he's never restrained longer than needed.
+  exKo: 필요 이상으로 억제되지 않도록 풀어주는 일정을 정해요.
+  cue: 억제대로 환자의 움직임을 묶어 둘 때 — 필요 이상 길게는 안 된다
+  tag: 억제대
+  distractorsEn: [retain, refrain]
+  distractorsKo: [보유하다, 삼가다]
+  chips:
+  - [re, strain]
+  decoyChips: [tain, frain]
+- id: w-source
+  en: source
+  ipa: /sɔːrs/
+  ko: 근원
+  icon: compass
+  example: Trace every line back to its source before connecting.
+  exKo: 연결하기 전에 모든 라인을 근원까지 따라가 봐요.
+  cue: 라인을 거꾸로 따라가 닿는 출발점 — 어느 백·펌프에서 오는가
+  tag: 라인 안전
+  distractorsEn: [course, sauce]
+  distractorsKo: [목적지, 경로]
+  chips:
+  - [source]
+  decoyChips: [sorce]
+- id: w-connect
+  en: connect
+  ipa: /kəˈnɛkt/
+  ko: 연결하다
+  icon: gear
+  example: Trace every line back to its source before connecting.
+  exKo: 연결하기 전에 모든 라인을 근원까지 따라가 봐요.
+  cue: 라인 끝을 다른 라인·포트에 이을 때 — 그 전에 근원부터 확인
+  tag: 라인 안전
+  distractorsEn: [correct, collect]
+  distractorsKo: [바로잡다, 모으다]
+  chips:
+  - [con, nect]
+  decoyChips: [lect, rect]
+- id: w-force
+  en: force
+  ipa: /fɔːrs/
+  ko: 억지로 밀다
+  icon: gear
+  example: Never force a connection that doesn't fit easily.
+  exKo: 쉽게 맞지 않는 연결을 억지로 밀어 넣지 마세요.
+  cue: 잘 맞지 않는 연결부를 힘으로 밀어 끼우는 것 — 절대 금지
+  tag: 라인 안전
+  distractorsEn: [fold, flush]
+  distractorsKo: [접다, 씻어 내다]
+  chips:
+  - [force]
+  decoyChips: [forse]
+- id: w-connection
+  en: connection
+  ipa: /kəˈnɛkʃn/
+  ko: 연결
+  icon: gear
+  example: Never force a connection that doesn't fit easily.
+  exKo: 쉽게 맞지 않는 연결을 억지로 밀어 넣지 마세요.
+  cue: 두 라인·포트가 이어진 곳 — 쉽게 맞지 않으면 의심할 것
+  tag: 라인 안전
+  distractorsEn: [correction, collection]
+  distractorsKo: [수정, 수집]
+  chips:
+  - [con, nec, tion]
+  decoyChips: [lec, sion]
+- id: w-fit
+  en: fit
+  ipa: /fɪt/
+  ko: 맞다
+  icon: check
+  example: Never force a connection that doesn't fit easily.
+  exKo: 쉽게 맞지 않는 연결을 억지로 밀어 넣지 마세요.
+  cue: 커넥터 두 개가 억지 없이 딱 들어맞을 때
+  tag: 라인 안전
+  distractorsEn: [fix, fill]
+  distractorsKo: [고치다, 채우다]
+  chips:
+  - [fit]
+  decoyChips: [feet]
+- id: w-easily
+  en: easily
+  ipa: /ˈiːzəli/
+  ko: 쉽게
+  icon: check
+  example: Never force a connection that doesn't fit easily.
+  exKo: 쉽게 맞지 않는 연결을 억지로 밀어 넣지 마세요.
+  cue: 힘주지 않아도 술술 — 연결은 이래야 한다
+  tag: 라인 안전
+  distractorsEn: [early, eerily]
+  distractorsKo: [일찍, 단단히]
+  chips:
+  - [eas, i, ly]
+  decoyChips: [eer, ely]
+- id: w-colorcoded
+  en: color-coded
+  ipa: /ˈkʌlər ˈkoʊdɪd/
+  ko: 색으로 구분된
+  icon: board
+  example: Use the color-coded and labeled systems consistently.
+  exKo: 색으로 구분되고 라벨이 붙은 체계를 일관되게 사용해요.
+  cue: 라인 종류마다 색을 다르게 정해 둔 — 색만 봐도 무슨 라인인지 안다
+  tag: 라인 안전
+  distractorsEn: [color-blind, bar-coded]
+  distractorsKo: [색맹의, 바코드가 붙은]
+  chips:
+  - [color-, cod, ed]
+  decoyChips: [colour-, code]
+- id: w-system
+  en: system
+  ipa: /ˈsɪstəm/
+  ko: 체계
+  icon: gear
+  example: Use the color-coded and labeled systems consistently.
+  exKo: 색으로 구분되고 라벨이 붙은 체계를 일관되게 사용해요.
+  cue: 라벨·색 구분처럼 병동 모두가 같은 방식으로 따르는 틀
+  tag: 라인 안전
+  distractorsEn: [symptom, sister]
+  distractorsKo: [증상, 단계]
+  chips:
+  - [sys, tem]
+  decoyChips: [sis, tum]
+- id: w-consistently
+  en: consistently
+  ipa: /kənˈsɪstəntli/
+  ko: 일관되게
+  icon: check
+  example: Use the color-coded and labeled systems consistently.
+  exKo: 색으로 구분되고 라벨이 붙은 체계를 일관되게 사용해요.
+  cue: 어떤 날은 하고 어떤 날은 안 하는 게 아니라 매번 똑같이
+  tag: 라인 안전
+  distractorsEn: [constantly, conveniently]
+  distractorsKo: [끊임없이, 편리하게]
+  chips:
+  - [con, sist, ent, ly]
+  decoyChips: [stant, ant]
+- id: w-connector
+  en: connector
+  ipa: /kəˈnɛktər/
+  ko: 연결부
+  icon: gear
+  example: These two connectors look alike, so let's double-check before we plug in.
+  exKo: 이 두 연결부가 비슷하게 생겼으니 꽂기 전에 다시 확인해요.
+  cue: 라인 끝에 달린 꽂는 부분 — 생김새가 비슷해 헷갈린다
+  tag: 라인 안전
+  distractorsEn: [conductor, collector]
+  distractorsKo: [도체, 수집기]
+  chips:
+  - [con, nec, tor]
+  decoyChips: [ter, duc]
+- id: w-alike
+  en: alike
+  ipa: /əˈlaɪk/
+  ko: 비슷하게
+  icon: board
+  example: These two connectors look alike, so let's double-check before we plug in.
+  exKo: 이 두 연결부가 비슷하게 생겼으니 꽂기 전에 다시 확인해요.
+  cue: 두 커넥터가 생김새가 거의 같아 보일 때 — look ○○
+  tag: 라인 안전
+  distractorsEn: [alive, alight]
+  distractorsKo: [다르게, 따로]
+  chips:
+  - [a, like]
+  decoyChips: [live, lyke]
+- id: w-feeding
+  en: feeding
+  ipa: /ˈfiːdɪŋ/
+  ko: 경관영양용의
+  icon: lab
+  example: Wait, that's the feeding line — the IV port is over here.
+  exKo: 잠깐요, 그건 경관영양 라인이에요, 정맥 포트는 여기고요.
+  cue: 코·위로 들어가 영양액을 넣는 라인을 가리키는 말 — 정맥 포트와 헷갈리면 안 된다
+  tag: 라인 안전
+  distractorsEn: [feeling, bleeding]
+  distractorsKo: [정맥용의, 배액용의]
+  chips:
+  - [feed, ing]
+  decoyChips: [feel, fed]
+- id: w-port
+  en: port
+  ipa: /pɔːrt/
+  ko: 포트
+  icon: lab
+  example: Wait, that's the feeding line — the IV port is over here.
+  exKo: 잠깐요, 그건 경관영양 라인이에요, 정맥 포트는 여기고요.
+  cue: 라인에 주사기·튜빙을 꽂는 입구
+  tag: 라인 안전
+  distractorsEn: [pore, part]
+  distractorsKo: [밸브, 마개]
+  chips:
+  - [port]
+  decoyChips: [pot]
+- id: w-careless
+  en: careless
+  ipa: /ˈkɛrləs/
+  ko: 부주의한
+  icon: board
+  example: It's an easy mix-up, not a careless one — let's just trace it together.
+  exKo: 흔히 헷갈리는 거지 부주의한 게 아니에요, 같이 따라가 봐요.
+  cue: 주의를 소홀히 해서 생긴 — 동료의 실수를 이렇게 몰아붙이지 말 것
+  tag: 팀 소통
+  distractorsEn: [careful, caring]
+  distractorsKo: [신중한, 배려하는]
+  chips:
+  - [care, less]
+  decoyChips: [ful, ing]
+- id: w-guess
+  en: guess
+  ipa: /ɡɛs/
+  ko: 추측하다
+  icon: board
+  example: Let's connect these the same way every single time, so no one has to guess.
+  exKo: 매번 같은 방식으로 연결해서 아무도 추측하지 않게 해요.
+  cue: 확인 없이 짐작으로 판단할 때 — 아무도 이걸 하지 않게
+  tag: 팀 소통
+  distractorsEn: [guest, gauge]
+  distractorsKo: [확인하다, 계산하다]
+  chips:
+  - [guess]
+  decoyChips: [gess]
+- id: w-concentrated
+  en: concentrated
+  ipa: /ˈkɑːnsəntreɪtɪd/
+  ko: 고농도의
+  icon: lab
+  example: Concentrated electrolytes are stored separately and secured.
+  exKo: 고농도 전해질은 따로 분리해 잠가 보관해요.
+  cue: 희석 전 원액처럼 진한 — 칼륨은 이 상태로 병동에 두지 않는다
+  tag: 투약 안전
+  distractorsEn: [contaminated, diluted]
+  distractorsKo: [오염된, 희석된]
+  chips:
+  - [con, cen, trat, ed]
+  decoyChips: [tam, in]
+- id: w-electrolyte
+  en: electrolyte
+  ipa: /ɪˈlɛktrəlaɪt/
+  ko: 전해질
+  icon: lab
+  example: Concentrated electrolytes are stored separately and secured.
+  exKo: 고농도 전해질은 따로 분리해 잠가 보관해요.
+  cue: 칼륨·나트륨·마그네슘처럼 혈액 속 이온
+  tag: 투약 안전
+  distractorsEn: [electrode, electrolysis]
+  distractorsKo: [전극, 전기분해]
+  chips:
+  - [elec, tro, lyte]
+  decoyChips: [trode, lite]
+- id: w-store
+  en: store
+  ipa: /stɔːr/
+  ko: 보관하다
+  icon: lock
+  example: Concentrated electrolytes are stored separately and secured.
+  exKo: 고농도 전해질은 따로 분리해 잠가 보관해요.
+  cue: 약을 정해진 장소에 넣어 둘 때
+  tag: 투약 안전
+  distractorsEn: [stir, sort]
+  distractorsKo: [섞다, 분류하다]
+  chips:
+  - [store]
+  decoyChips: [stare]
+- id: w-separately
+  en: separately
+  ipa: /ˈsɛprətli/
+  ko: 따로
+  icon: board
+  example: Concentrated electrolytes are stored separately and secured.
+  exKo: 고농도 전해질은 따로 분리해 잠가 보관해요.
+  cue: 다른 약과 섞이지 않게 / 서로 보지 않고 각자
+  tag: 투약 안전
+  distractorsEn: [desperately, sparsely]
+  distractorsKo: [함께, 즉시]
+  chips:
+  - [sep, a, rate, ly]
+  decoyChips: [sap, ble]
+- id: w-secure
+  en: secure
+  ipa: /sɪˈkjʊr/
+  ko: 고정하다
+  icon: lock
+  example: Secure and camouflage his lines out of easy reach.
+  exKo: 라인을 고정하고 손 닿기 어렵게 위장해요.
+  cue: 라인이 빠지지 않게 테이프·고정장치로 단단히 붙일 때
+  tag: 라인 안전
+  distractorsEn: [secrete, rescue]
+  distractorsKo: [분비하다, 구조하다]
+  chips:
+  - [se, cure]
+  decoyChips: [cret, cue]
+- id: w-narcotic
+  en: narcotic
+  ipa: /nɑːrˈkɑːtɪk/
+  ko: 마약
+  icon: pill
+  example: Narcotics require two-nurse counts and locked storage.
+  exKo: 마약은 두 간호사의 재고 확인과 잠긴 보관을 요구해요.
+  cue: 모르핀·펜타닐처럼 이중 계수와 잠금 보관이 필요한 약
+  tag: 투약 안전
+  distractorsEn: [narcolepsy, antibiotic]
+  distractorsKo: [기면증, 항생제]
+  chips:
+  - [nar, cot, ic]
+  decoyChips: [narc, tick]
+- id: w-require
+  en: require
+  ipa: /rɪˈkwaɪər/
+  ko: 요구하다
+  icon: board
+  example: Narcotics require two-nurse counts and locked storage.
+  exKo: 마약은 두 간호사의 재고 확인과 잠긴 보관을 요구해요.
+  cue: 규정상 반드시 있어야 한다고 정할 때 — 마약은 두 간호사 계수를 ○○
+  tag: 투약 안전
+  distractorsEn: [acquire, inquire]
+  distractorsKo: [얻다, 문의하다]
+  chips:
+  - [re, quire]
+  decoyChips: [ac, quier]
+- id: w-count
+  en: count
+  ipa: /kaʊnt/
+  ko: 세다
+  icon: chartup
+  example: Narcotics require two-nurse counts and locked storage.
+  exKo: 마약은 두 간호사의 재고 확인과 잠긴 보관을 요구해요.
+  cue: 마약 재고를 한 알 한 알 세어 맞춰 볼 때
+  tag: 투약 안전
+  distractorsEn: [court, account]
+  distractorsKo: [나누다, 버리다]
+  chips:
+  - [count]
+  decoyChips: [cont]
+- id: w-locked
+  en: locked
+  ipa: /lɑːkt/
+  ko: 잠긴
+  icon: lock
+  example: Narcotics require two-nurse counts and locked storage.
+  exKo: 마약은 두 간호사의 재고 확인과 잠긴 보관을 요구해요.
+  cue: 열쇠·지문 없이는 열 수 없게 잠가 둔
+  tag: 투약 안전
+  distractorsEn: [loaded, labeled]
+  distractorsKo: [채워진, 라벨이 붙은]
+  chips:
+  - [lock, ed]
+  decoyChips: [lok, t]
+- id: w-storage
+  en: storage
+  ipa: /ˈstɔːrɪdʒ/
+  ko: 보관
+  icon: lock
+  example: Narcotics require two-nurse counts and locked storage.
+  exKo: 마약은 두 간호사의 재고 확인과 잠긴 보관을 요구해요.
+  cue: 약을 넣어 두는 일·장소 — 마약은 잠금 ○○
+  tag: 투약 안전
+  distractorsEn: [shortage, stoppage]
+  distractorsKo: [부족, 중단]
+  chips:
+  - [stor, age]
+  decoyChips: [short, idge]
+- id: w-potassium
+  en: potassium
+  ipa: /pəˈtæsiəm/
+  ko: 칼륨
+  icon: lab
+  example: Never keep concentrated potassium at the bedside.
+  exKo: 고농도 칼륨은 절대 침상 옆에 두지 마세요.
+  cue: 고농도 원액은 침상 곁에 두면 안 되는 전해질 — 바나나에 많은 그것
+  tag: 투약 안전
+  distractorsEn: [sodium, phosphorus]
+  distractorsKo: [나트륨, 인]
+  chips:
+  - [po, tas, si, um]
+  decoyChips: [pho, tass]
+- id: w-bedside
+  en: bedside
+  ipa: /ˈbɛdsaɪd/
+  ko: 침상 곁
+  icon: home
+  example: Never keep concentrated potassium at the bedside.
+  exKo: 고농도 칼륨은 절대 침상 옆에 두지 마세요.
+  cue: 환자 침대 바로 곁 — 고농도 칼륨은 여기 두지 않는다
+  tag: 투약 안전
+  distractorsEn: [bedrail, bedpan]
+  distractorsKo: [침대 난간, 변기]
+  chips:
+  - [bed, side]
+  decoyChips: [rail, sid]
+- id: w-log
+  en: log
+  ipa: /lɔːɡ/
+  ko: 기록지
+  icon: board
+  example: Let's count the narcotics together and sign the log before we leave.
+  exKo: 나가기 전에 같이 마약을 세고 기록지에 서명해요.
+  cue: 마약을 세고 둘이 서명하는 기록 장부
+  tag: 투약 안전
+  distractorsEn: [lock, label]
+  distractorsKo: [잠금장치, 라벨]
+  chips:
+  - [log]
+  decoyChips: [lug]
+- id: w-key
+  en: key
+  ipa: /kiː/
+  ko: 열쇠
+  icon: lock
+  example: The narcotics stay locked, and only the two of us hold the keys.
+  exKo: 마약은 계속 잠겨 있고, 저희 둘만 열쇠를 가지고 있어요.
+  cue: 마약 보관함을 여는 것 — 둘만 가지고 있다
+  tag: 투약 안전
+  distractorsEn: [code, card]
+  distractorsKo: [비밀번호, 출입카드]
+  chips:
+  - [key]
+  decoyChips: [kay]
+- id: w-reorient
+  en: reorient
+  ipa: /riˈɔːrient/
+  ko: 재지남시키다
+  icon: compass
+  example: Let's reorient him and keep familiar items nearby.
+  exKo: 지남력을 되찾도록 돕고 익숙한 물건을 가까이 둬요.
+  cue: 섬망 환자에게 지금 날짜·장소·상황을 다시 알려 줄 때
+  tag: 섬망
+  distractorsEn: [reassure, reposition]
+  distractorsKo: [안심시키다, 자세를 바꾸다]
+  chips:
+  - [re, ori, ent]
+  decoyChips: [ant, rio]
+- id: w-familiar
+  en: familiar
+  ipa: /fəˈmɪljər/
+  ko: 익숙한
+  icon: home
+  example: Let's reorient him and keep familiar items nearby.
+  exKo: 지남력을 되찾도록 돕고 익숙한 물건을 가까이 둬요.
+  cue: 가족사진·안경처럼 환자가 원래 알던 — 침상 가까이 둔다
+  tag: 섬망
+  distractorsEn: [familial, similar]
+  distractorsKo: [가족성의, 비슷한]
+  chips:
+  - [fa, mil, iar]
+  decoyChips: [ial, sim]
+- id: w-nearby
+  en: nearby
+  ipa: /ˌnɪrˈbaɪ/
+  ko: 가까이에
+  icon: pushpin
+  example: Let's reorient him and keep familiar items nearby.
+  exKo: 지남력을 되찾도록 돕고 익숙한 물건을 가까이 둬요.
+  cue: 환자 손이 닿을 만큼 가까이 — 물건을 둘 자리
+  tag: 섬망
+  distractorsEn: [nearly, nearest]
+  distractorsKo: [거의, 멀리에]
+  chips:
+  - [near, by]
+  decoyChips: [ly, bye]
+- id: w-camouflage
+  en: camouflage
+  ipa: /ˈkæməflɑːʒ/
+  ko: 위장하다
+  icon: board
+  example: Secure and camouflage his lines out of easy reach.
+  exKo: 라인을 고정하고 손 닿기 어렵게 위장해요.
+  cue: 라인을 옷·소매 아래로 감춰 환자 눈에 덜 띄게 할 때
+  tag: 섬망
+  distractorsEn: [cannulate, catheterize]
+  distractorsKo: [삽관하다, 도뇨하다]
+  chips:
+  - [cam, ou, flage]
+  decoyChips: [can, flag]
+- id: w-reduce
+  en: reduce
+  ipa: /rɪˈduːs/
+  ko: 줄이다
+  icon: gear
+  example: Reduce noise and keep his sleep cycle regular.
+  exKo: 소음을 줄이고 수면 주기를 규칙적으로 유지해요.
+  cue: 소음·불빛을 덜어 낮추는 것
+  tag: 섬망
+  distractorsEn: [induce, produce]
+  distractorsKo: [유도하다, 생산하다]
+  chips:
+  - [re, duce]
+  decoyChips: [in, pro]
+- id: w-noise
+  en: noise
+  ipa: /nɔɪz/
+  ko: 소음
+  icon: speaker
+  example: Reduce noise and keep his sleep cycle regular.
+  exKo: 소음을 줄이고 수면 주기를 규칙적으로 유지해요.
+  cue: 알람·대화·장비 소리 — 밤에 줄여 주는 것
+  tag: 섬망
+  distractorsEn: [nose, nurse]
+  distractorsKo: [불빛, 냄새]
+  chips:
+  - [noise]
+  decoyChips: [nose]
+- id: w-sleep
+  en: sleep
+  ipa: /sliːp/
+  ko: 수면
+  icon: coffee
+  example: Reduce noise and keep his sleep cycle regular.
+  exKo: 소음을 줄이고 수면 주기를 규칙적으로 유지해요.
+  cue: 밤에 푹 자는 것 — 섬망 예방의 핵심 리듬
+  tag: 섬망
+  distractorsEn: [sleeve, slip]
+  distractorsKo: [식사, 휴식]
+  chips:
+  - [sleep]
+  decoyChips: [slip]
+- id: w-cycle
+  en: cycle
+  ipa: /ˈsaɪkl/
+  ko: 주기
+  icon: board
+  example: Reduce noise and keep his sleep cycle regular.
+  exKo: 소음을 줄이고 수면 주기를 규칙적으로 유지해요.
+  cue: 밤에 자고 낮에 깨는 리듬처럼 되풀이되는 흐름
+  tag: 섬망
+  distractorsEn: [circle, cyclone]
+  distractorsKo: [원, 단계]
+  chips:
+  - [cy, cle]
+  decoyChips: [cir, sy]
+- id: w-regular
+  en: regular
+  ipa: /ˈrɛɡjələr/
+  ko: 규칙적인
+  icon: calendar
+  example: Reduce noise and keep his sleep cycle regular.
+  exKo: 소음을 줄이고 수면 주기를 규칙적으로 유지해요.
+  cue: 매일 비슷한 시간에 자고 깨게 — 들쑥날쑥하지 않은
+  tag: 섬망
+  distractorsEn: [irregular, singular]
+  distractorsKo: [불규칙한, 단일한]
+  chips:
+  - [reg, u, lar]
+  decoyChips: [ir, ler]
+- id: w-grab
+  en: grab
+  ipa: /ɡræb/
+  ko: 움켜쥐다
+  icon: gear
+  example: He's grabbing at his lines because he doesn't know what they are.
+  exKo: 그게 뭔지 몰라서 라인을 움켜쥐고 있는 거예요.
+  cue: 섬망 환자가 라인을 손으로 덥석 쥘 때
+  tag: 섬망
+  distractorsEn: [grub, rub]
+  distractorsKo: [문지르다, 긁다]
+  chips:
+  - [grab]
+  decoyChips: [grub]
+- id: w-clock
+  en: clock
+  ipa: /klɑːk/
+  ko: 시계
+  icon: calendar
+  example: A clock and calendar can help him stay oriented during the day.
+  exKo: 낮 동안 시계와 달력이 지남력을 유지하는 데 도움이 돼요.
+  cue: 벽에 걸어 두고 지금 몇 시인지 보게 하는 것 — 지남력 도우미
+  tag: 섬망
+  distractorsEn: [cloak, calendar]
+  distractorsKo: [달력, 창문]
+  chips:
+  - [clock]
+  decoyChips: [clok]
+- id: w-calendar
+  en: calendar
+  ipa: /ˈkæləndər/
+  ko: 달력
+  icon: calendar
+  example: A clock and calendar can help him stay oriented during the day.
+  exKo: 낮 동안 시계와 달력이 지남력을 유지하는 데 도움이 돼요.
+  cue: 오늘이 며칠·무슨 요일인지 보여 주는 것 — 지남력 도우미
+  tag: 섬망
+  distractorsEn: [colander, schedule]
+  distractorsKo: [시계, 일정표]
+  chips:
+  - [cal, en, dar]
+  decoyChips: [der, col]
+- id: w-oriented
+  en: oriented
+  ipa: /ˈɔːrientɪd/
+  ko: 지남력 있는
+  icon: compass
+  example: A clock and calendar can help him stay oriented during the day.
+  exKo: 낮 동안 시계와 달력이 지남력을 유지하는 데 도움이 돼요.
+  cue: 사람·장소·시간을 제대로 아는 상태 — 낮 동안 유지하도록 돕는다
+  tag: 섬망
+  distractorsEn: [disoriented, obtunded]
+  distractorsKo: [지남력을 잃은, 둔감한]
+  chips:
+  - [ori, ent, ed]
+  decoyChips: [dis, at]
+- id: w-gown
+  en: gown
+  ipa: /ɡaʊn/
+  ko: 가운
+  icon: shield
+  example: If we camouflage the lines under his gown, he's less likely to pull them.
+  exKo: 가운 아래로 라인을 위장하면 잡아당길 가능성이 줄어요.
+  cue: 환자가 입는 옷 — 라인을 그 아래로 감춘다
+  tag: 섬망
+  distractorsEn: [gauze, glove]
+  distractorsKo: [거즈, 이불]
+  chips:
+  - [gown]
+  decoyChips: [gaun]
+- id: w-quiet
+  en: quiet
+  ipa: /ˈkwaɪət/
+  ko: 조용한
+  icon: speaker
+  example: We keep the room quiet at night so his sleep cycle can reset.
+  exKo: 밤에는 방을 조용히 해서 수면 주기가 재설정되도록 해요.
+  cue: 밤에 병실을 이렇게 — 소리를 줄인 상태
+  tag: 섬망
+  distractorsEn: [dark, cold]
+  distractorsKo: [어두운, 추운]
+  chips:
+  - [qui, et]
+  decoyChips: [quit, te]
+- id: w-reset
+  en: reset
+  ipa: /riːˈsɛt/
+  ko: 재설정되다
+  icon: gear
+  example: We keep the room quiet at night so his sleep cycle can reset.
+  exKo: 밤에는 방을 조용히 해서 수면 주기가 재설정되도록 해요.
+  cue: 엉킨 수면 리듬이 원래대로 돌아오게 하는 것
+  tag: 섬망
+  distractorsEn: [restart, resist]
+  distractorsKo: [재시작하다, 저항하다]
+  chips:
+  - [re, set]
+  decoyChips: [sit, ri]
+- id: w-override
+  en: override
+  ipa: /ˌoʊvərˈraɪd/
+  ko: 무시하고 진행하다
+  icon: gear
+  example: Don't override without verifying the order and dose.
+  exKo: 용량과 처방을 검증하지 않고는 무시하고 진행하지 마세요.
+  cue: 스마트펌프 경고를 넘기고 그대로 진행하는 것 — 검증 없이는 금지
+  tag: 투약 안전
+  distractorsEn: [overdose, overlook]
+  distractorsKo: [과다 투여하다, 간과하다]
+  chips:
+  - [over, ride]
+  decoyChips: [rid, dose]
+- id: w-library
+  en: library
+  ipa: /ˈlaɪbrɛri/
+  ko: 라이브러리
+  icon: board
+  example: The pump's drug library is there to catch errors.
+  exKo: 펌프의 약물 라이브러리는 오류를 잡아내려고 있는 거예요.
+  cue: 스마트펌프 안에 약마다 정해 둔 용량 범위 목록 — drug ○○
+  tag: 투약 안전
+  distractorsEn: [literacy, laboratory]
+  distractorsKo: [문해력, 검사실]
+  chips:
+  - [li, brary]
+  decoyChips: [bery, lab]
+- id: w-catch
+  en: catch
+  ipa: /kætʃ/
+  ko: 잡아내다
+  icon: magnify
+  example: The pump's drug library is there to catch errors.
+  exKo: 펌프의 약물 라이브러리는 오류를 잡아내려고 있는 거예요.
+  cue: 오류가 환자에게 가기 전에 잡아채는 것
+  tag: 투약 안전
+  distractorsEn: [match, cause]
+  distractorsKo: [일으키다, 놓치다]
+  chips:
+  - [catch]
+  decoyChips: [cath]
+- id: w-error
+  en: error
+  ipa: /ˈɛrər/
+  ko: 오류
+  icon: siren
+  example: The pump's drug library is there to catch errors.
+  exKo: 펌프의 약물 라이브러리는 오류를 잡아내려고 있는 거예요.
+  cue: 투약·연결에서 생긴 실수
+  tag: 투약 안전
+  distractorsEn: [terror, order]
+  distractorsKo: [처방, 경고]
+  chips:
+  - [er, ror]
+  decoyChips: [ar, rer]
+- id: w-proceed
+  en: proceed
+  ipa: /prəˈsiːd/
+  ko: 진행하다
+  icon: gear
+  example: Let's confirm the concentration before we proceed.
+  exKo: 진행하기 전에 농도를 확인해요.
+  cue: 확인을 마치고 다음 단계로 넘어갈 때
+  tag: 투약 안전
+  distractorsEn: [precede, process]
+  distractorsKo: [앞서다, 처리하다]
+  chips:
+  - [pro, ceed]
+  decoyChips: [pre, cede]
+- id: w-hard
+  en: hard
+  ipa: /hɑːrd/
+  ko: 엄격한
+  icon: lock
+  example: Stop — that's a hard limit, not a soft one, so we don't override it.
+  exKo: 멈춰요, 그건 하드 리밋이지 소프트 리밋이 아니라서 무시하고 넘어가지 않아요.
+  cue: 스마트펌프에서 절대 넘을 수 없게 막아 둔 한계 — ○○ limit
+  tag: 투약 안전
+  distractorsEn: [harsh, heavy]
+  distractorsKo: [가혹한, 무거운]
+  chips:
+  - [hard]
+  decoyChips: [herd]
+- id: w-soft
+  en: soft
+  ipa: /sɔːft/
+  ko: 유연한
+  icon: board
+  example: Stop — that's a hard limit, not a soft one, so we don't override it.
+  exKo: 멈춰요, 그건 하드 리밋이지 소프트 리밋이 아니라서 무시하고 넘어가지 않아요.
+  cue: 확인하면 넘길 수 있는 펌프 경고 한계 — ○○ limit
+  tag: 투약 안전
+  distractorsEn: [safe, sort]
+  distractorsKo: [안전한, 낮은]
+  chips:
+  - [soft]
+  decoyChips: [sof]
+- id: w-flag
+  en: flag
+  ipa: /flæɡ/
+  ko: 표시하다
+  icon: pushpin
+  example: The pump flagged this dose as unusually high — let's not just click past it.
+  exKo: 펌프가 이 용량을 비정상적으로 높다고 표시했어요, 그냥 넘기지 말아요.
+  cue: 펌프가 이 용량은 이상하다며 경고 표시를 띄울 때
+  tag: 투약 안전
+  distractorsEn: [flap, flash]
+  distractorsKo: [승인하다, 무시하다]
+  chips:
+  - [flag]
+  decoyChips: [flog]
+- id: w-independent
+  en: independent
+  ipa: /ˌɪndɪˈpɛndənt/
+  ko: 독립적인
+  icon: check
+  example: An independent double-check means we verify separately.
+  exKo: 독립확인은 우리가 따로따로 확인한다는 뜻이에요.
+  cue: 고위험약 확인 — 서로 보지 않고 각자 따로 하는
+  tag: 투약 안전
+  distractorsEn: [interdependent, indifferent]
+  distractorsKo: [상호 의존적인, 무관심한]
+  chips:
+  - [in, de, pend, ent]
+  decoyChips: [inter, ant]
+- id: w-prompt
+  en: prompting
+  ipa: /ˈprɑːmptɪŋ/
+  ko: 유도(신호)
+  icon: speech
+  example: We each confirm the drug, dose, and pump without prompting.
+  exKo: 유도 신호 없이 각자 약물, 용량, 펌프를 확인해요.
+  cue: 상대가 먼저 답을 말해 주는 것 — 독립확인에서는 이것 없이 각자
+  tag: 투약 안전
+  distractorsEn: [promoting, printing]
+  distractorsKo: [촉진, 인쇄]
+  chips:
+  - [prompt, ing]
+  decoyChips: [promt, pting]
+- id: w-required
+  en: required
+  ipa: /rɪˈkwaɪərd/
+  ko: 요구되는
+  icon: board
+  example: This is required for all high-alert medications.
+  exKo: 이건 모든 high-alert 약물에 요구되는 절차예요.
+  cue: 규정상 반드시 해야 하는 — 선택이 아닌
+  tag: 투약 안전
+  distractorsEn: [acquired, inquired]
+  distractorsKo: [선택적인, 권장되는]
+  chips:
+  - [re, quired]
+  decoyChips: [ac, quierd]
+- id: w-heparin
+  en: heparin
+  ipa: /ˈhɛpərɪn/
+  ko: 헤파린
+  icon: pill
+  example: High-alert drugs like insulin and heparin always get this extra step.
+  exKo: 인슐린이나 헤파린 같은 high-alert 약물은 항상 이 추가 단계를 거쳐요.
+  cue: 단위로 세는 고위험 항응고제 — 역전제는 프로타민
+  tag: 투약 안전
+  distractorsEn: [insulin, warfarin]
+  distractorsKo: [인슐린, 와파린]
+  chips:
+  - [hep, a, rin]
+  decoyChips: [far, ren]
+- id: w-airway
+  en: airway
+  ipa: /ˈɛrweɪ/
+  ko: 기도
+  icon: stetho
+  example: Confirm the airway, drips, and monitor before we move.
+  exKo: 옮기기 전에 기도, 점적, 모니터를 확인해요.
+  cue: 이송 전 가장 먼저 확인하는 것 — 숨이 드나드는 길, 튜브 위치
+  tag: 이송
+  distractorsEn: [airflow, artery]
+  distractorsKo: [기류, 동맥]
+  chips:
+  - [air, way]
+  decoyChips: [flow, ware]
+- id: w-drip
+  en: drip
+  ipa: /drɪp/
+  ko: 점적(정맥주사)
+  icon: lab
+  example: Confirm the airway, drips, and monitor before we move.
+  exKo: 옮기기 전에 기도, 점적, 모니터를 확인해요.
+  cue: 펌프로 계속 들어가는 정맥 약 — 승압제·인슐린 같은
+  tag: 이송
+  distractorsEn: [drop, dip]
+  distractorsKo: [일회 주사, 배액]
+  chips:
+  - [drip]
+  decoyChips: [drop]
+- id: w-monitor
+  en: monitor
+  ipa: /ˈmɑːnɪtər/
+  ko: 모니터
+  icon: monitor
+  example: Confirm the airway, drips, and monitor before we move.
+  exKo: 옮기기 전에 기도, 점적, 모니터를 확인해요.
+  cue: 심전도·혈압·산소포화도가 뜨는 화면 장비
+  tag: 이송
+  distractorsEn: [mentor, ventilator]
+  distractorsKo: [멘토, 인공호흡기]
+  chips:
+  - [mon, i, tor]
+  decoyChips: [men, ter]
+- id: w-move
+  en: move
+  ipa: /muːv/
+  ko: 옮기다
+  icon: plane
+  example: Confirm the airway, drips, and monitor before we move.
+  exKo: 옮기기 전에 기도, 점적, 모니터를 확인해요.
+  cue: 환자를 CT로 데려가기 위해 자리를 옮길 때
+  tag: 이송
+  distractorsEn: [remove, mobilize]
+  distractorsKo: [제거하다, 운동시키다]
+  chips:
+  - [move]
+  decoyChips: [moov]
+- id: w-oxygen
+  en: oxygen
+  ipa: /ˈɑːksɪdʒən/
+  ko: 산소
+  icon: lab
+  example: Do we have enough oxygen and battery for transport?
+  exKo: 이송할 산소와 배터리가 충분한가요?
+  cue: 이송 중 떨어지지 않게 통에 충분히 채워 가는 것
+  tag: 이송
+  distractorsEn: [nitrogen, oxide]
+  distractorsKo: [질소, 공기]
+  chips:
+  - [oxy, gen]
+  decoyChips: [oxi, gin]
+- id: w-battery
+  en: battery
+  ipa: /ˈbætəri/
+  ko: 배터리
+  icon: gear
+  example: Do we have enough oxygen and battery for transport?
+  exKo: 이송할 산소와 배터리가 충분한가요?
+  cue: 콘센트 없이 이송할 때 펌프·모니터를 돌리는 것
+  tag: 이송
+  distractorsEn: [generator, charger]
+  distractorsKo: [발전기, 충전기]
+  chips:
+  - [bat, tery]
+  decoyChips: [bet, tle]
+- id: w-transport
+  en: transport
+  ipa: /ˈtrænspɔːrt/
+  ko: 이송
+  icon: plane
+  example: Do we have enough oxygen and battery for transport?
+  exKo: 이송할 산소와 배터리가 충분한가요?
+  cue: 중환자를 병실에서 CT·수술실로 데려가는 일
+  tag: 이송
+  distractorsEn: [transplant, transition]
+  distractorsKo: [이식, 전환]
+  chips:
+  - [trans, port]
+  decoyChips: [plant, fer]
+- id: w-checklist
+  en: checklist
+  ipa: /ˈtʃɛklɪst/
+  ko: 점검표
+  icon: board
+  example: Let's run the transport checklist together.
+  exKo: 이송 점검표를 같이 확인해요.
+  cue: 이송 전 하나하나 짚어 가며 읽는 확인 목록
+  tag: 이송
+  distractorsEn: [checkpoint, check-in]
+  distractorsKo: [검문소, 접수]
+  chips:
+  - [check, list]
+  decoyChips: [point, lest]
+- id: w-miss
+  en: miss
+  ipa: /mɪs/
+  ko: 놓치다
+  icon: magnify
+  example: Let's make sure nothing gets missed before we head to CT.
+  exKo: CT로 가기 전에 놓치는 게 없는지 확인해요.
+  cue: 확인할 것을 빠뜨리고 지나칠 때 — 알람도 이렇게 될 수 있다
+  tag: 이송
+  distractorsEn: [mix, mess]
+  distractorsKo: [섞다, 어지럽히다]
+  chips:
+  - [miss]
+  decoyChips: [mis]
+- id: w-cable
+  en: cable
+  ipa: /ˈkeɪbl/
+  ko: 케이블
+  icon: gear
+  example: I'll double-check the monitor cables reach the portable monitor too.
+  exKo: 모니터 케이블이 휴대용 모니터에도 닿는지 다시 확인할게요.
+  cue: 모니터와 환자 전극을 잇는 선 — 휴대용 모니터까지 닿아야 한다
+  tag: 이송
+  distractorsEn: [cradle, tubing]
+  distractorsKo: [거치대, 튜빙]
+  chips:
+  - [ca, ble]
+  decoyChips: [cra, bel]
+- id: w-portable
+  en: portable
+  ipa: /ˈpɔːrtəbl/
+  ko: 휴대용의
+  icon: monitor
+  example: I'll double-check the monitor cables reach the portable monitor too.
+  exKo: 모니터 케이블이 휴대용 모니터에도 닿는지 다시 확인할게요.
+  cue: 이송 때 침대에 실어 가는, 들고 다닐 수 있는 모니터
+  tag: 이송
+  distractorsEn: [potable, palpable]
+  distractorsKo: [마실 수 있는, 고정식의]
+  chips:
+  - [port, able]
+  decoyChips: [pot, ible]
+- id: w-brake
+  en: brake
+  ipa: /breɪk/
+  ko: 제동장치
+  icon: lock
+  example: We confirm his airway is secure before anyone touches the bed brakes.
+  exKo: 누가 침대 브레이크를 건드리기 전에 기도가 안전한지 확인해요.
+  cue: 침대 바퀴를 멈춰 두는 장치 — 이송 전 기도 확인이 먼저
+  tag: 이송
+  distractorsEn: [break, rake]
+  distractorsKo: [바퀴, 난간]
+  chips:
+  - [brake]
+  decoyChips: [break]
+- id: w-slip
+  en: slip
+  ipa: /slɪp/
+  ko: 빠지다(누락되다)
+  icon: board
+  example: Let's read the checklist out loud so nothing slips through in handoff.
+  exKo: 인계할 때 놓치는 게 없도록 점검표를 소리 내어 읽어요.
+  cue: 인계 중 확인 항목이 모르게 빠져나갈 때 — ○○ through
+  tag: 이송
+  distractorsEn: [skip, slide]
+  distractorsKo: [건너뛰다, 넘어지다]
+  chips:
+  - [slip]
+  decoyChips: [slap]
+- id: w-handoff
+  en: handoff
+  ipa: /ˈhændɔːf/
+  ko: 인계
+  icon: speech
+  example: Let's read the checklist out loud so nothing slips through in handoff.
+  exKo: 인계할 때 놓치는 게 없도록 점검표를 소리 내어 읽어요.
+  cue: 이송 팀·다음 간호사에게 환자를 넘겨줄 때 하는 보고
+  tag: 이송
+  distractorsEn: [hands-on, handout]
+  distractorsKo: [실습의, 유인물]
+  chips:
+  - [hand, 'off']
+  decoyChips: [out, hend]
+- id: w-nearmiss
+  en: near-miss
+  ipa: /ˈnɪr mɪs/
+  ko: 아차 사고
+  icon: siren
+  example: Yes — near-misses teach us how to prevent real harm.
+  exKo: 네, 아차 사고는 진짜 위해를 예방하는 법을 가르쳐줘요.
+  cue: 환자에게 닿기 직전에 잡아낸 오류 — 피해는 없었다
+  tag: 사건 보고
+  distractorsEn: [near-death, mismatch]
+  distractorsKo: [임사 체험, 불일치]
+  chips:
+  - [near-, miss]
+  decoyChips: [mis, neer-]
+- id: w-teach
+  en: teach
+  ipa: /tiːtʃ/
+  ko: 가르치다
+  icon: speech
+  example: Yes — near-misses teach us how to prevent real harm.
+  exKo: 네, 아차 사고는 진짜 위해를 예방하는 법을 가르쳐줘요.
+  cue: 아차 사고가 우리에게 주는 것 — 무엇을 막아야 할지 알려 준다
+  tag: 사건 보고
+  distractorsEn: [touch, reach]
+  distractorsKo: [숨기다, 벌주다]
+  chips:
+  - [teach]
+  decoyChips: [tech]
+- id: w-prevent
+  en: prevent
+  ipa: /prɪˈvɛnt/
+  ko: 예방하다
+  icon: shield
+  example: Yes — near-misses teach us how to prevent real harm.
+  exKo: 네, 아차 사고는 진짜 위해를 예방하는 법을 가르쳐줘요.
+  cue: 실제 피해가 일어나기 전에 미리 막을 때
+  tag: 사건 보고
+  distractorsEn: [present, protect]
+  distractorsKo: [치료하다, 보고하다]
+  chips:
+  - [pre, vent]
+  decoyChips: [pro, vant]
+- id: w-real
+  en: real
+  ipa: /ˈriːəl/
+  ko: 진짜의
+  icon: check
+  example: Yes — near-misses teach us how to prevent real harm.
+  exKo: 네, 아차 사고는 진짜 위해를 예방하는 법을 가르쳐줘요.
+  cue: 아차 사고와 달리 실제로 환자에게 생긴 피해를 말할 때
+  tag: 사건 보고
+  distractorsEn: [reel, rare]
+  distractorsKo: [가벼운, 드문]
+  chips:
+  - [real]
+  decoyChips: [reel]
+- id: w-harm
+  en: harm
+  ipa: /hɑːrm/
+  ko: 해
+  icon: siren
+  example: Yes — near-misses teach us how to prevent real harm.
+  exKo: 네, 아차 사고는 진짜 위해를 예방하는 법을 가르쳐줘요.
+  cue: 오류가 환자에게 남긴 피해
+  tag: 사건 보고
+  distractorsEn: [arm, alarm]
+  distractorsKo: [위험, 실수]
+  chips:
+  - [harm]
+  decoyChips: [arm]
+- id: w-report
+  en: report
+  ipa: /rɪˈpɔːrt/
+  ko: 보고하다
+  icon: speech
+  example: Reporting isn't about blame, it's about learning.
+  exKo: 보고는 비난이 아니라 배움에 관한 거예요.
+  cue: 아차 사고도 안전 보고 시스템에 올릴 때
+  tag: 사건 보고
+  distractorsEn: [repeat, record]
+  distractorsKo: [반복하다, 녹음하다]
+  chips:
+  - [re, port]
+  decoyChips: [pert, ri]
+- id: w-blame
+  en: blame
+  ipa: /bleɪm/
+  ko: 비난하다
+  icon: board
+  example: Reporting isn't about blame, it's about learning.
+  exKo: 보고는 비난이 아니라 배움에 관한 거예요.
+  cue: 누구 잘못인지 탓하는 것 — 보고의 목적이 아니다
+  tag: 사건 보고
+  distractorsEn: [claim, flame]
+  distractorsKo: [칭찬하다, 용서하다]
+  chips:
+  - [blame]
+  decoyChips: [blam]
+- id: w-learning
+  en: learning
+  ipa: /ˈlɜːrnɪŋ/
+  ko: 배움
+  icon: check
+  example: Reporting isn't about blame, it's about learning.
+  exKo: 보고는 비난이 아니라 배움에 관한 거예요.
+  cue: 보고의 목적 — 잘못에서 무언가를 얻어 가는 것
+  tag: 사건 보고
+  distractorsEn: [leaning, earning]
+  distractorsKo: [처벌, 기록]
+  chips:
+  - [learn, ing]
+  decoyChips: [lean, ning]
+- id: w-protect
+  en: protect
+  ipa: /prəˈtɛkt/
+  ko: 보호하다
+  icon: shield
+  example: Your report could protect the next patient.
+  exKo: 당신의 보고가 다음 환자를 보호할 수 있어요.
+  cue: 내 보고가 다음 환자를 같은 실수에서 지켜 줄 수 있다
+  tag: 사건 보고
+  distractorsEn: [project, prevent]
+  distractorsKo: [계획하다, 처벌하다]
+  chips:
+  - [pro, tect]
+  decoyChips: [ject, tact]
+- id: w-next
+  en: next
+  ipa: /nɛkst/
+  ko: 다음의
+  icon: calendar
+  example: Your report could protect the next patient.
+  exKo: 당신의 보고가 다음 환자를 보호할 수 있어요.
+  cue: 이번 환자 다음에 올 사람 — ○○ patient
+  tag: 사건 보고
+  distractorsEn: [last, near]
+  distractorsKo: [지난, 가까운]
+  chips:
+  - [next]
+  decoyChips: [nest]
+- id: w-happen
+  en: happen
+  ipa: /ˈhæpən/
+  ko: 일어나다
+  icon: board
+  example: Nothing happened this time, but that's exactly why we still write it up.
+  exKo: 이번엔 아무 일도 없었지만, 그래서 더 기록으로 남겨야 해요.
+  cue: 사건이 실제로 일어난 일을 물을 때 — what ○○ed
+  tag: 사건 보고
+  distractorsEn: [appear, open]
+  distractorsKo: [멈추다, 고치다]
+  chips:
+  - [hap, pen]
+  decoyChips: [pan, hop]
+- id: w-fix
+  en: fix
+  ipa: /fɪks/
+  ko: 해결하다
+  icon: gear
+  example: We're not looking for who to blame, we're looking for what to fix.
+  exKo: 누구를 비난할지가 아니라 무엇을 고칠지를 찾는 거예요.
+  cue: 누구를 탓할지가 아니라 시스템에서 무엇을 바로잡을지
+  tag: 사건 보고
+  distractorsEn: [fit, mix]
+  distractorsKo: [감추다, 탓하다]
+  chips:
+  - [fix]
+  decoyChips: [fax]
+- id: w-file
+  en: file
+  ipa: /faɪl/
+  ko: 제출하다
+  icon: pencil
+  example: Filing this report takes ten minutes and might save someone's life later.
+  exKo: 이 보고서를 내는 데 10분이지만 나중에 누군가의 생명을 구할 수도 있어요.
+  cue: 사건 보고서를 정식으로 내는 것 — ○○ a report
+  tag: 사건 보고
+  distractorsEn: [fill, fail]
+  distractorsKo: [채우다, 실패하다]
+  chips:
+  - [file]
+  decoyChips: [fill]
+- id: w-save
+  en: save
+  ipa: /seɪv/
+  ko: 구하다
+  icon: shield
+  example: Filing this report takes ten minutes and might save someone's life later.
+  exKo: 이 보고서를 내는 데 10분이지만 나중에 누군가의 생명을 구할 수도 있어요.
+  cue: 보고서 한 장이 나중에 누군가의 목숨을 살릴 수도
+  tag: 사건 보고
+  distractorsEn: [serve, solve]
+  distractorsKo: [위협하다, 해결하다]
+  chips:
+  - [save]
+  decoyChips: [safe]
+- id: w-life
+  en: life
+  ipa: /laɪf/
+  ko: 생명
+  icon: me
+  example: Filing this report takes ten minutes and might save someone's life later.
+  exKo: 이 보고서를 내는 데 10분이지만 나중에 누군가의 생명을 구할 수도 있어요.
+  cue: 보고가 지켜 줄 수 있는 가장 큰 것 — 누군가의 목숨
+  tag: 사건 보고
+  distractorsEn: [limb, lifestyle]
+  distractorsKo: [건강, 사망]
+  chips:
+  - [life]
+  decoyChips: [live]
+- id: w-lesson
+  en: lesson
+  ipa: /ˈlɛsn/
+  ko: 교훈
+  icon: board
+  example: Every near-miss we report becomes a lesson the whole unit can learn from.
+  exKo: 보고하는 모든 아차 사고는 병동 전체가 배우는 교훈이 돼요.
+  cue: 아차 사고에서 병동 전체가 얻는 깨달음
+  tag: 사건 보고
+  distractorsEn: [lessen, listen]
+  distractorsKo: [처벌, 경고]
+  chips:
+  - [les, son]
+  decoyChips: [sen, lis]
+- id: w-infusion
+  en: infusion
+  ipa: /ɪnˈfjuːʒn/
+  ko: 주입
+  icon: lab
+  example: Stop the infusion and disconnect it immediately.
+  exKo: 주입을 멈추고 즉시 분리하세요.
+  cue: 펌프로 정맥에 들어가고 있는 수액·약 — 오연결이면 바로 멈춘다
+  tag: 위기 대응
+  distractorsEn: [injection, inflation]
+  distractorsKo: [주사, 팽창]
+  chips:
+  - [in, fu, sion]
+  decoyChips: [fla, tion]
+- id: w-disconnect
+  en: disconnect
+  ipa: /ˌdɪskəˈnɛkt/
+  ko: 분리하다
+  icon: gear
+  example: Stop the infusion and disconnect it immediately.
+  exKo: 주입을 멈추고 즉시 분리하세요.
+  cue: 잘못 이어진 라인을 떼어 낼 때
+  tag: 위기 대응
+  distractorsEn: [discontinue, disinfect]
+  distractorsKo: [중단하다, 소독하다]
+  chips:
+  - [dis, con, nect]
+  decoyChips: [lect, in]
+- id: w-notify
+  en: notify
+  ipa: /ˈnoʊtɪfaɪ/
+  ko: 알리다
+  icon: speech
+  example: Assess the patient and notify the physician now.
+  exKo: 환자를 사정하고 지금 바로 의사에게 알려요.
+  cue: 사건이 생기면 담당 의사·책임간호사에게 알릴 때 — 공식적인 말
+  tag: 위기 대응
+  distractorsEn: [notice, modify]
+  distractorsKo: [알아차리다, 수정하다]
+  chips:
+  - [noti, fy]
+  decoyChips: [note, fi]
+- id: w-physician
+  en: physician
+  ipa: /fɪˈzɪʃn/
+  ko: 의사
+  icon: me
+  example: Assess the patient and notify the physician now.
+  exKo: 환자를 사정하고 지금 바로 의사에게 알려요.
+  cue: 오류가 나면 바로 알리는 담당 의료진 — 처방을 내는 사람
+  tag: 위기 대응
+  distractorsEn: [physicist, pharmacist]
+  distractorsKo: [물리학자, 약사]
+  chips:
+  - [phy, si, cian]
+  decoyChips: [cist, fi]
+- id: w-talk
+  en: talk
+  ipa: /tɔːk/
+  ko: 이야기하다
+  icon: speech
+  example: Right now I'm stopping the infusion — we can talk about how later.
+  exKo: 지금은 주입을 멈추는 중이에요, 어떻게 된 건지는 나중에 이야기해요.
+  cue: 지금은 처치 먼저, 어떻게 된 건지는 나중에 말로 나누자
+  tag: 위기 대응
+  distractorsEn: [walk, tell]
+  distractorsKo: [보고하다, 따지다]
+  chips:
+  - [talk]
+  decoyChips: [walk]
+- id: w-later
+  en: later
+  ipa: /ˈleɪtər/
+  ko: 나중에
+  icon: calendar
+  example: Right now I'm stopping the infusion — we can talk about how later.
+  exKo: 지금은 주입을 멈추는 중이에요, 어떻게 된 건지는 나중에 이야기해요.
+  cue: 급한 처치를 마친 뒤로 미룰 때 — 지금 말고
+  tag: 위기 대응
+  distractorsEn: [latter, sooner]
+  distractorsKo: [더 일찍, 즉시]
+  chips:
+  - [la, ter]
+  decoyChips: [tter, lat]
+- id: w-act
+  en: act
+  ipa: /ækt/
+  ko: 행동하다
+  icon: gear
+  example: 'Let''s act fast: airway first, then we call the physician.'
+  exKo: 빠르게 행동해요, 기도 먼저, 그다음 의사를 불러요.
+  cue: 망설이지 말고 바로 손을 움직이라고 할 때 — ○○ fast
+  tag: 위기 대응
+  distractorsEn: [ask, add]
+  distractorsKo: [기다리다, 지켜보다]
+  chips:
+  - [act]
+  decoyChips: [akt]
+- id: w-stay
+  en: stay
+  ipa: /steɪ/
+  ko: 머무르다
+  icon: pushpin
+  example: I'll stay with him while you notify the team what happened.
+  exKo: 제가 곁에 있을 테니 팀에게 무슨 일이 있었는지 알려주세요.
+  cue: 다른 사람이 도움을 부르는 동안 환자 곁을 떠나지 않을 때
+  tag: 위기 대응
+  distractorsEn: [stray, step]
+  distractorsKo: [떠나다, 지나가다]
+  chips:
+  - [stay]
+  decoyChips: [stey]
+- id: w-team
+  en: team
+  ipa: /tiːm/
+  ko: 팀
+  icon: board
+  example: I'll stay with him while you notify the team what happened.
+  exKo: 제가 곁에 있을 테니 팀에게 무슨 일이 있었는지 알려주세요.
+  cue: 사건을 함께 알아야 하는 병동 동료들
+  tag: 위기 대응
+  distractorsEn: [teen, steam]
+  distractorsKo: [가족, 환자]
+  chips:
+  - [team]
+  decoyChips: [teem]
+- id: w-lab
+  en: lab
+  ipa: /læb/
+  ko: 검사
+  icon: lab
+  example: Stop the drip and check his labs and status now.
+  exKo: 점적을 멈추고 지금 검사와 상태를 확인해요.
+  cue: 헤파린 과량 뒤 바로 확인하는 혈액 검사 결과 — check his ○○s
+  tag: 위기 대응
+  distractorsEn: [scan, line]
+  distractorsKo: [영상, 처방]
+  chips:
+  - [lab]
+  decoyChips: [lap]
+- id: w-status
+  en: status
+  ipa: /ˈsteɪtəs/
+  ko: 상태
+  icon: monitor
+  example: Stop the drip and check his labs and status now.
+  exKo: 점적을 멈추고 지금 검사와 상태를 확인해요.
+  cue: 지금 환자가 어떤 상태인지 — 활력징후·의식 등 전반
+  tag: 위기 대응
+  distractorsEn: [stature, statue]
+  distractorsKo: [키, 결과]
+  chips:
+  - [sta, tus]
+  decoyChips: [stat, ute]
+- id: w-prepare
+  en: prepare
+  ipa: /prɪˈpɛr/
+  ko: 준비하다
+  icon: gear
+  example: Prepare protamine and notify the physician immediately.
+  exKo: 프로타민을 준비하고 즉시 의사에게 알려요.
+  cue: 역전제를 쓸 수 있게 미리 갖춰 둘 때
+  tag: 위기 대응
+  distractorsEn: [repair, prescribe]
+  distractorsKo: [수리하다, 처방하다]
+  chips:
+  - [pre, pare]
+  decoyChips: [pair, pro]
+- id: w-protamine
+  en: protamine
+  ipa: /ˈproʊtəmiːn/
+  ko: 프로타민
+  icon: pill
+  example: Prepare protamine and notify the physician immediately.
+  exKo: 프로타민을 준비하고 즉시 의사에게 알려요.
+  cue: 헤파린 효과를 되돌리는 역전제
+  tag: 위기 대응
+  distractorsEn: [promethazine, dopamine]
+  distractorsKo: [프로메타진, 도파민]
+  chips:
+  - [pro, ta, mine]
+  decoyChips: [mene, to]
+- id: w-incident
+  en: incident
+  ipa: /ˈɪnsɪdənt/
+  ko: 사건
+  icon: board
+  example: We'll document and file an incident report right away.
+  exKo: 바로 기록하고 사건 보고서를 제출할게요.
+  cue: 환자 안전에 관한 일이 생겨 보고서로 남기는 것 — ○○ report
+  tag: 사건 보고
+  distractorsEn: [accident, incidence]
+  distractorsKo: [사고, 발생률]
+  chips:
+  - [in, ci, dent]
+  decoyChips: [dence, si]
+- id: w-question
+  en: question
+  ipa: /ˈkwɛstʃən/
+  ko: 질문
+  icon: speech
+  example: Right now, we stop the drip first and ask questions after.
+  exKo: 지금은 우선 점적을 멈추고, 질문은 나중에 해요.
+  cue: 어떻게 된 건지 묻는 것 — 처치 먼저, 이건 나중에
+  tag: 위기 대응
+  distractorsEn: [quotation, suggestion]
+  distractorsKo: [인용, 제안]
+  chips:
+  - [ques, tion]
+  decoyChips: [quest, chon]
+- id: w-after
+  en: after
+  ipa: /ˈæftər/
+  ko: 이후에
+  icon: calendar
+  example: Right now, we stop the drip first and ask questions after.
+  exKo: 지금은 우선 점적을 멈추고, 질문은 나중에 해요.
+  cue: 처치가 끝난 다음으로 미룰 때 — ask questions ○○
+  tag: 위기 대응
+  distractorsEn: [before, often]
+  distractorsKo: [이전에, 자주]
+  chips:
+  - [af, ter]
+  decoyChips: [of, tor]
+- id: w-breathe
+  en: breathing
+  ipa: /ˈbriːðɪŋ/
+  ko: 호흡
+  icon: stetho
+  example: Check his airway and breathing right now.
+  exKo: 지금 바로 기도와 호흡을 확인해요.
+  cue: 기도 다음에 확인하는 것 — 가슴이 오르내리며 숨 쉬는 일
+  tag: 위기 대응
+  distractorsEn: [bleeding, swallowing]
+  distractorsKo: [출혈, 맥박]
+  chips:
+  - [breath, ing]
+  decoyChips: [breathe, breth]
+- id: w-help
+  en: help
+  ipa: /hɛlp/
+  ko: 도움
+  icon: speech
+  example: Call for help and stay with him.
+  exKo: 도움을 부르고 곁에 있어줘요.
+  cue: 혼자 감당할 수 없을 때 크게 부르는 것 — call for ○○
+  tag: 위기 대응
+  distractorsEn: [hold, heap]
+  distractorsKo: [허락, 휴식]
+  chips:
+  - [help]
+  decoyChips: [halp]
+- id: w-slid
+  en: slide
+  ipa: /slaɪd/
+  ko: 미끄러져 내려가다
+  icon: board
+  example: He slid down and the restraint is tight across his chest.
+  exKo: 이분이 미끄러져 내려가서 억제대가 가슴을 조이고 있어요.
+  cue: 환자가 침대 아래쪽으로 스르르 내려가서 억제대가 가슴에 걸렸다
+  tag: 위기 대응
+  distractorsEn: [slip, glide]
+  distractorsKo: [넘어지다, 기어오르다]
+  chips:
+  - [slide]
+  decoyChips: [slid]
+- id: w-tight
+  en: tight
+  ipa: /taɪt/
+  ko: 조이는
+  icon: lock
+  example: He slid down and the restraint is tight across his chest.
+  exKo: 이분이 미끄러져 내려가서 억제대가 가슴을 조이고 있어요.
+  cue: 억제대가 가슴을 꽉 조여 숨쉬기 어려운 상태
+  tag: 위기 대응
+  distractorsEn: [taut, light]
+  distractorsKo: [헐거운, 무거운]
+  chips:
+  - [tight]
+  decoyChips: [tite]
+- id: w-chest
+  en: chest
+  ipa: /tʃɛst/
+  ko: 가슴
+  icon: stetho
+  example: He slid down and the restraint is tight across his chest.
+  exKo: 이분이 미끄러져 내려가서 억제대가 가슴을 조이고 있어요.
+  cue: 억제대가 미끄러져 걸리면 위험한 곳 — 숨 쉬는 부위
+  tag: 위기 대응
+  distractorsEn: [chess, cheek]
+  distractorsKo: [배, 목]
+  chips:
+  - [chest]
+  decoyChips: [chess]
+- id: w-rapidresponse
+  en: rapid response
+  ipa: /ˈræpɪd rɪˈspɑːns/
+  ko: 신속대응팀
+  icon: siren
+  example: Call for the rapid response and start oxygen.
+  exKo: 신속대응팀을 부르고 산소를 시작해요.
+  cue: 병동 환자가 급변할 때 부르는 출동 팀
+  tag: 위기 대응
+  distractorsEn: [rapid infuser, response time]
+  distractorsKo: [급속 주입기, 대응 시간]
+  chips:
+  - [rap, id]
+  - [re, sponse]
+  decoyChips: [rep, spons]
+- id: w-afterward
+  en: afterward
+  ipa: /ˈæftərwərd/
+  ko: 그 후에
+  icon: calendar
+  example: Afterward we review why the alarm was missed.
+  exKo: 나중에 알람을 왜 놓쳤는지 검토해요.
+  cue: 급변 대응을 마친 다음 — 왜 놓쳤는지 돌아볼 때
+  tag: 위기 대응
+  distractorsEn: [forward, beforehand]
+  distractorsKo: [미리, 즉시]
+  chips:
+  - [af, ter, ward]
+  decoyChips: [fore, wards]
+- id: w-review
+  en: review
+  ipa: /rɪˈvjuː/
+  ko: 검토하다
+  icon: pencil
+  example: Afterward we review why the alarm was missed.
+  exKo: 나중에 알람을 왜 놓쳤는지 검토해요.
+  cue: 알람을 왜 놓쳤는지 팀이 함께 되짚어 살펴볼 때
+  tag: 사건 보고
+  distractorsEn: [renew, revise]
+  distractorsKo: [갱신하다, 수정하다]
+  chips:
+  - [re, view]
+  decoyChips: [new, vue]
+- id: w-sat
+  en: sat
+  ipa: /sæt/
+  ko: 산소포화도
+  icon: monitor
+  example: His sat alarm was sounding, but no one caught it in time.
+  exKo: 산소포화도 알람이 울리고 있었지만 아무도 제때 알아채지 못했어요.
+  cue: 산소포화도를 의료진끼리 줄여 부르는 말 — ○○ alarm
+  tag: 알람
+  distractorsEn: [rate, rhythm]
+  distractorsKo: [혈압, 맥박]
+  chips:
+  - [sat]
+  decoyChips: [sad]
+- id: w-crash
+  en: crash
+  ipa: /kræʃ/
+  ko: 급변하다
+  icon: siren
+  example: He's crashing now — stop what you're doing and look at him.
+  exKo: 지금 급변하고 있어요, 하던 일을 멈추고 이분을 봐주세요.
+  cue: 환자 상태가 갑자기 곤두박질칠 때 의료진끼리 쓰는 말
+  tag: 위기 대응
+  distractorsEn: [crush, clash]
+  distractorsKo: [회복하다, 진정되다]
+  chips:
+  - [crash]
+  decoyChips: [crush]
+- id: w-figure
+  en: figure out
+  ipa: /ˈfɪɡjər aʊt/
+  ko: 알아내다
+  icon: magnify
+  example: We'll figure out why the alarm got missed after he's stable.
+  exKo: 안정되고 나면 알람을 왜 놓쳤는지 알아낼 거예요.
+  cue: 급한 불을 끄고 나서 원인을 따져 밝혀낼 때
+  tag: 사건 보고
+  distractorsEn: [fill out, figure in]
+  distractorsKo: [작성하다, 계산에 넣다]
+  chips:
+  - [fig, ure]
+  - [out]
+  decoyChips: [figger, in]
+- id: w-stable
+  en: stable
+  ipa: /ˈsteɪbl/
+  ko: 안정된
+  icon: monitor
+  example: We'll figure out why the alarm got missed after he's stable.
+  exKo: 안정되고 나면 알람을 왜 놓쳤는지 알아낼 거예요.
+  cue: 급변이 지나가고 바이탈이 흔들리지 않는 상태
+  tag: 위기 대응
+  distractorsEn: [unstable, suitable]
+  distractorsKo: [불안정한, 위중한]
+  chips:
+  - [sta, ble]
+  decoyChips: [stab, bel]
+- id: w-switch
+  en: switch
+  ipa: /swɪtʃ/
+  ko: 전환하다
+  icon: gear
+  example: Switch to battery backup and the red emergency outlets.
+  exKo: 배터리 백업과 빨간 비상 콘센트로 전환해요.
+  cue: 전원이 나가면 배터리·비상 콘센트로 갈아탈 때
+  tag: 위기 대응
+  distractorsEn: [stitch, swish]
+  distractorsKo: [끄다, 꽂다]
+  chips:
+  - [switch]
+  decoyChips: [swich]
+- id: w-backup
+  en: backup
+  ipa: /ˈbækʌp/
+  ko: 백업
+  icon: shield
+  example: Switch to battery backup and the red emergency outlets.
+  exKo: 배터리 백업과 빨간 비상 콘센트로 전환해요.
+  cue: 주 전원이 끊겼을 때 대신 쓰는 예비
+  tag: 위기 대응
+  distractorsEn: [backlog, backboard]
+  distractorsKo: [밀린 일, 척추 고정판]
+  chips:
+  - [back, up]
+  decoyChips: [log, bak]
+- id: w-emergency
+  en: emergency
+  ipa: /ɪˈmɜːrdʒənsi/
+  ko: 비상의
+  icon: siren
+  example: Switch to battery backup and the red emergency outlets.
+  exKo: 배터리 백업과 빨간 비상 콘센트로 전환해요.
+  cue: 정전 때도 전기가 들어오게 따로 연결된 — ○○ outlet
+  tag: 위기 대응
+  distractorsEn: [emergent, emerging]
+  distractorsKo: [일반의, 휴대용의]
+  chips:
+  - [e, mer, gen, cy]
+  decoyChips: [gent, ing]
+- id: w-outlet
+  en: outlet
+  ipa: /ˈaʊtlɛt/
+  ko: 콘센트
+  icon: gear
+  example: Switch to battery backup and the red emergency outlets.
+  exKo: 배터리 백업과 빨간 비상 콘센트로 전환해요.
+  cue: 벽에 있는 전기 꽂는 곳 — 비상용은 빨간색
+  tag: 위기 대응
+  distractorsEn: [inlet, outline]
+  distractorsKo: [전선, 스위치]
+  chips:
+  - [out, let]
+  decoyChips: [in, line]
+- id: w-manually
+  en: manually
+  ipa: /ˈmænjuəli/
+  ko: 수동으로
+  icon: gear
+  example: Manually control critical drips until pumps restart.
+  exKo: 펌프가 재시작될 때까지 위중한 점적은 수동으로 조절해요.
+  cue: 펌프가 멈췄을 때 사람 손으로 점적을 맞출 때
+  tag: 위기 대응
+  distractorsEn: [annually, mutually]
+  distractorsKo: [자동으로, 매년]
+  chips:
+  - [man, u, al, ly]
+  decoyChips: [an, mu]
+- id: w-control
+  en: control
+  ipa: /kənˈtroʊl/
+  ko: 조절하다
+  icon: shield
+  example: Manually control critical drips until pumps restart.
+  exKo: 펌프가 재시작될 때까지 위중한 점적은 수동으로 조절해요.
+  cue: 점적 속도를 원하는 만큼 맞춰 다룰 때
+  tag: 위기 대응
+  distractorsEn: [contour, console]
+  distractorsKo: [멈추다, 확인하다]
+  chips:
+  - [con, trol]
+  decoyChips: [tral, sole]
+- id: w-restart
+  en: restart
+  ipa: /riːˈstɑːrt/
+  ko: 재시작하다
+  icon: gear
+  example: Manually control critical drips until pumps restart.
+  exKo: 펌프가 재시작될 때까지 위중한 점적은 수동으로 조절해요.
+  cue: 멈췄던 펌프가 전원이 돌아와 다시 돌기 시작할 때
+  tag: 위기 대응
+  distractorsEn: [restore, restrain]
+  distractorsKo: [복구하다, 억제하다]
+  chips:
+  - [re, start]
+  decoyChips: [store, ri]
+- id: w-prioritize
+  en: prioritize
+  ipa: /praɪˈɔːrətaɪz/
+  ko: 우선시하다
+  icon: star
+  example: Prioritize the life-sustaining infusions first.
+  exKo: 생명 유지 주입을 먼저 우선시해요.
+  cue: 멈추면 안 되는 주입부터 먼저 챙길 때
+  tag: 위기 대응
+  distractorsEn: [personalize, authorize]
+  distractorsKo: [개인화하다, 승인하다]
+  chips:
+  - [pri, or, i, tize]
+  decoyChips: [tise, ority]
+- id: w-lifesustaining
+  en: life-sustaining
+  ipa: /ˈlaɪf səˈsteɪnɪŋ/
+  ko: 생명 유지의
+  icon: shield
+  example: Prioritize the life-sustaining infusions first.
+  exKo: 생명 유지 주입을 먼저 우선시해요.
+  cue: 승압제·진정제처럼 끊기면 생명이 위태로운 주입
+  tag: 위기 대응
+  distractorsEn: [life-threatening, life-limiting]
+  distractorsKo: [생명을 위협하는, 수명을 제한하는]
+  chips:
+  - [life-, sus, tain, ing]
+  decoyChips: [stain, live-]
+- id: w-power
+  en: power
+  ipa: /ˈpaʊər/
+  ko: 전원
+  icon: gear
+  example: The power just dropped, and every pump on this wall is dead.
+  exKo: 방금 전원이 나갔고, 이 벽의 펌프가 전부 작동을 멈췄어요.
+  cue: 벽에서 들어오는 전기 — 이게 나가면 펌프가 멈춘다
+  tag: 위기 대응
+  distractorsEn: [pressure, pump]
+  distractorsKo: [압력, 펌프]
+  chips:
+  - [pow, er]
+  decoyChips: [paw, wer]
+- id: w-drop
+  en: drop
+  ipa: /drɑːp/
+  ko: 떨어지다
+  icon: chartup
+  example: The power just dropped, and every pump on this wall is dead.
+  exKo: 방금 전원이 나갔고, 이 벽의 펌프가 전부 작동을 멈췄어요.
+  cue: 전원·수치가 갑자기 뚝 내려갈 때
+  tag: 위기 대응
+  distractorsEn: [drip, droop]
+  distractorsKo: [오르다, 버티다]
+  chips:
+  - [drop]
+  decoyChips: [drip]
+- id: w-dead
+  en: dead
+  ipa: /dɛd/
+  ko: 작동을 멈춘
+  icon: board
+  example: The power just dropped, and every pump on this wall is dead.
+  exKo: 방금 전원이 나갔고, 이 벽의 펌프가 전부 작동을 멈췄어요.
+  cue: 전원이 나가 화면도 꺼지고 아무 반응이 없는 기계를 말할 때
+  tag: 위기 대응
+  distractorsEn: [deaf, dull]
+  distractorsKo: [깜빡이는, 느린]
+  chips:
+  - [dead]
+  decoyChips: [dad]
+- id: w-pressor
+  en: pressor
+  ipa: /ˈprɛsər/
+  ko: 승압제
+  icon: pill
+  example: We prioritize the pressors and sedation — those infusions can't stop.
+  exKo: 승압제와 진정제를 우선시해요, 그 주입은 멈출 수 없어요.
+  cue: 혈압을 올리려고 점적으로 넣는 약 — 노르에피네프린 같은
+  tag: 위기 대응
+  distractorsEn: [pressure, processor]
+  distractorsKo: [압력, 진정제]
+  chips:
+  - [press, or]
+  decoyChips: [pres, ure]
+- id: w-sedation
+  en: sedation
+  ipa: /sɪˈdeɪʃn/
+  ko: 진정
+  icon: pill
+  example: We prioritize the pressors and sedation — those infusions can't stop.
+  exKo: 승압제와 진정제를 우선시해요, 그 주입은 멈출 수 없어요.
+  cue: 삽관 환자가 편히 있도록 약으로 재우는 것 — 끊기면 안 되는 주입
+  tag: 위기 대응
+  distractorsEn: [sensation, station]
+  distractorsKo: [감각, 진통]
+  chips:
+  - [se, da, tion]
+  decoyChips: [sen, sa]
+- id: w-disclose
+  en: disclose
+  ipa: /dɪˈskloʊz/
+  ko: 공개하다
+  icon: speech
+  example: We disclose honestly, with facts and empathy.
+  exKo: 사실과 공감을 담아 정직하게 공개해요.
+  cue: 환자·가족에게 일어난 오류를 숨기지 않고 알릴 때
+  tag: 사건 공개
+  distractorsEn: [discuss, enclose]
+  distractorsKo: [논의하다, 동봉하다]
+  chips:
+  - [dis, close]
+  decoyChips: [en, clothe]
+- id: w-honestly
+  en: honestly
+  ipa: /ˈɑːnɪstli/
+  ko: 정직하게
+  icon: check
+  example: We disclose honestly, with facts and empathy.
+  exKo: 사실과 공감을 담아 정직하게 공개해요.
+  cue: 가족의 질문에 숨기거나 꾸미지 않고 답하는 태도
+  tag: 사건 공개
+  distractorsEn: [hopefully, hastily]
+  distractorsKo: [다행히, 서둘러]
+  chips:
+  - [hon, est, ly]
+  decoyChips: [hope, ful]
+- id: w-fact
+  en: fact
+  ipa: /fækt/
+  ko: 사실
+  icon: board
+  example: We disclose honestly, with facts and empathy.
+  exKo: 사실과 공감을 담아 정직하게 공개해요.
+  cue: 추측 말고 확인된 것만 — 공개할 때 붙드는 것
+  tag: 사건 공개
+  distractorsEn: [fault, factor]
+  distractorsKo: [추측, 원인]
+  chips:
+  - [fact]
+  decoyChips: [fax]
+- id: w-empathy
+  en: empathy
+  ipa: /ˈɛmpəθi/
+  ko: 공감
+  icon: speech
+  example: We disclose honestly, with facts and empathy.
+  exKo: 사실과 공감을 담아 정직하게 공개해요.
+  cue: 사실을 전할 때 함께 담는 것 — 가족의 마음을 헤아리는 태도
+  tag: 사건 공개
+  distractorsEn: [apathy, emphasis]
+  distractorsKo: [무관심, 강조]
+  chips:
+  - [em, pa, thy]
+  decoyChips: [sym, a]
+- id: w-lead
+  en: lead
+  ipa: /liːd/
+  ko: 이끌다
+  icon: compass
+  example: The physician leads the disclosure, and we support it.
+  exKo: 의사가 공개를 주도하고, 우리는 그걸 지지해요.
+  cue: 공개 면담을 의사가 앞장서 진행할 때
+  tag: 사건 공개
+  distractorsEn: [read, plead]
+  distractorsKo: [따르다, 미루다]
+  chips:
+  - [lead]
+  decoyChips: [leed]
+- id: w-disclosure
+  en: disclosure
+  ipa: /dɪˈskloʊʒər/
+  ko: 공개
+  icon: speech
+  example: The physician leads the disclosure, and we support it.
+  exKo: 의사가 공개를 주도하고, 우리는 그걸 지지해요.
+  cue: 환자·가족에게 오류를 알리는 공식 면담 그 자체
+  tag: 사건 공개
+  distractorsEn: [discharge, enclosure]
+  distractorsKo: [퇴원, 울타리]
+  chips:
+  - [dis, clo, sure]
+  decoyChips: [en, zure]
+- id: w-support
+  en: support
+  ipa: /səˈpɔːrt/
+  ko: 지지하다
+  icon: shield
+  example: The physician leads the disclosure, and we support it.
+  exKo: 의사가 공개를 주도하고, 우리는 그걸 지지해요.
+  cue: 의사가 공개를 이끄는 동안 간호사가 곁에서 뒷받침하는 것
+  tag: 사건 공개
+  distractorsEn: [suppose, report]
+  distractorsKo: [가정하다, 반대하다]
+  chips:
+  - [sup, port]
+  decoyChips: [pose, sap]
+- id: w-acknowledge
+  en: acknowledge
+  ipa: /əkˈnɑːlɪdʒ/
+  ko: 인정하다
+  icon: speech
+  example: We acknowledge what happened and our plan to make it right.
+  exKo: 무슨 일이 있었는지 인정하고, 바로잡을 계획을 말씀드려요.
+  cue: 일어난 일을 사실로 받아들이고 인정한다고 말할 때
+  tag: 사건 공개
+  distractorsEn: [acquire, admonish]
+  distractorsKo: [부인하다, 꾸짖다]
+  chips:
+  - [ac, knowl, edge]
+  decoyChips: [knaw, ege]
+- id: w-plan
+  en: plan
+  ipa: /plæn/
+  ko: 계획
+  icon: board
+  example: We acknowledge what happened and our plan to make it right.
+  exKo: 무슨 일이 있었는지 인정하고, 바로잡을 계획을 말씀드려요.
+  cue: 앞으로 어떻게 바로잡을지 — 가족에게 함께 전하는 것
+  tag: 사건 공개
+  distractorsEn: [plane, plant]
+  distractorsKo: [결과, 사과]
+  chips:
+  - [plan]
+  decoyChips: [plane]
+- id: w-full
+  en: full
+  ipa: /fʊl/
+  ko: 전체의
+  icon: chartup
+  example: Right now, I'm answering your questions honestly — the full review comes after.
+  exKo: 지금은 정직하게 질문에 답하고 있고, 전체 검토는 나중이에요.
+  cue: 지금 답하는 건 일부, 빠짐없는 검토는 나중에
+  tag: 사건 공개
+  distractorsEn: [fall, foul]
+  distractorsKo: [간단한, 비공식의]
+  chips:
+  - [full]
+  decoyChips: [fool]
+- id: w-highalert
+  en: high-alert
+  ipa: /ˌhaɪ əˈlɝːt/
+  ko: 고위험(경계)의
+  icon: siren
+  example: This is required for all high-alert medications.
+  exKo: 이건 모든 high-alert 약물에 요구되는 절차예요.
+  cue: 인슐린·헤파린처럼 잘못 쓰면 큰 해가 되는 약 — 독립확인이 필요한 등급
+  tag: 투약 안전
+  distractorsEn: [high-flow, high-dose]
+  distractorsKo: [고용량의, 응급용의]
+  chips:
+  - [high-, a, lert]
+  decoyChips: [hi-, lart]
+situations:
+- title: 알람 설정·우선순위 이해
+  sentences:
+  - en: Red alarms are life-threatening and need immediate action.
+    ko: 빨간 알람은 생명을 위협하는 상황이라 즉각 조치가 필요해요.
+    chunks: [Red alarms are, life-threatening, and need, immediate action, .]
+    words: [w-red, w-alarm, w-lifethreatening, w-action]
+    goal: 1
+  - en: Yellow alarms need attention, but they can wait a minute.
+    ko: 노란 알람은 주의가 필요하지만 잠깐은 기다려도 돼요.
+    chunks: [Yellow alarms need, 'attention,', but they can wait, a minute, .]
+    words: [w-yellow, w-alarm, w-attention, w-wait]
+    goal: 1
+  - en: We set limits based on each patient's baseline.
+    ko: 우리는 환자마다 기저치를 바탕으로 한계를 설정해요.
+    chunks: [We set limits, based on, each patient's baseline, .]
+    words: [w-limit, w-baseline]
+    goal: 2
+  - en: Let's customize these so only meaningful alarms sound.
+    ko: 의미 있는 알람만 울리도록 이걸 맞춤 설정해요.
+    chunks: [Let's customize these, so only meaningful, alarms sound, .]
+    words: [w-customize, w-meaningful, w-alarm, w-sound]
+    goal: 2
+  - en: If it's not going to hurt him in the next minute, it's not a red alarm.
+    ko: 앞으로 1분 안에 해를 끼치지 않는다면 빨간 알람이 아니에요.
+    chunks: [If it's not going to hurt him, 'in the next minute,', it's not, a red alarm, .]
+    words: [w-hurt, w-red, w-alarm]
+    goal: 1
+  - en: Once we personalize the limits, you'll trust every alarm that sounds.
+    ko: 한계를 개인화하고 나면 울리는 모든 알람을 신뢰하게 될 거예요.
+    chunks: [Once we personalize, 'the limits,', you'll trust, every alarm that sounds, .]
+    words: [w-personalize, w-limit, w-trust, w-alarm, w-sound]
+    goal: 2
+  nuance:
+  - kind: slider
+    words: [w-alarm, w-red]
+    cue: 'Monitor: HR 34, patient pale and not responding.'
+    scale: [low-priority alarm, medium-priority alarm, high-priority alarm]
+    answerAt: 2
+    why: 지금 생명을 위협하고 즉각 조치가 필요하면 high-priority — 모니터에서는 빨간색이에요. 노란색이 medium, 그 아래가 low예요.
+    example: That's a high-priority alarm — go now.
+    exKo: 그건 최우선 알람이에요, 지금 가요.
+  - kind: context
+    words: [w-limit, w-baseline]
+    scenes:
+    - {who: 동료 간호사에게, icon: speech, en: 'His baseline heart rate is 110, so let''s set the high limit at 130.', ok: true}
+    - {who: 차트 기록, icon: board, en: HR alarm limits adjusted to pt baseline., ok: true}
+    - {who: 보호자에게, icon: me, en: We adjusted his HR alarm limits to his baseline parameters., ok: false, fix: 'We set his monitor to fit what''s normal for him, so it beeps when something really changes.'}
+    why: limit·baseline·parameter는 의료진끼리의 말이에요. 보호자에게는 '그분에게 정상인 범위에 맞췄다'로 풀어 말해요.
+- title: 억제대 적응·대안 확인
+  sentences:
+  - en: Let's try less restrictive options first.
+    ko: 먼저 덜 제한적인 방법을 시도해요.
+    chunks: [Let's try, less restrictive, options first, .]
+    words: [w-restrictive, w-option, w-first]
+    goal: 2
+  - en: He's pulling at his lines, so we need to keep them safe.
+    ko: 이분이 라인을 잡아당기고 있어서 안전하게 지켜야 해요.
+    chunks: [He's pulling, 'at his lines,', so we need to, keep them safe, .]
+    words: [w-pull, w-line, w-need, w-keep, w-safe]
+    goal: 1
+  - en: Have we tried a sitter before we reach for restraints?
+    ko: 억제대를 쓰기 전에 관찰 인력을 먼저 시도해 봤나요?
+    chunks: [Have we tried, a sitter, before we reach, for restraints, '?']
+    words: [w-sitter, w-reach, w-restraint]
+    goal: 1
+  - en: I said we need to try less restrictive options — let's not skip that step.
+    ko: 덜 제한적인 방법을 먼저 시도하자고 말씀드렸어요, 그 단계를 건너뛰지 말아요.
+    chunks: [I said we need to try, less restrictive options, —, let's not skip, that step, .]
+    words: [w-restrictive, w-option, w-skip, w-step]
+    goal: 2
+  - en: We'll reassess the need for restraints every few hours.
+    ko: 몇 시간마다 억제대의 필요성을 다시 평가할 거예요.
+    chunks: [We'll reassess, the need, for restraints, every few hours, .]
+    words: [w-reassess, w-need, w-restraint]
+    goal: 1
+  - en: Once he's calmer, we'll take the restraints off and reassess again.
+    ko: 이분이 진정되면 억제대를 풀고 다시 평가할게요.
+    chunks: ['Once he''s calmer,', we'll take, the restraints off, and reassess again, .]
+    words: [w-calm, w-restraint, w-off, w-reassess]
+    goal: 2
+  nuance:
+  - kind: slider
+    words: [w-restrictive, w-sitter]
+    cue: He settles down when someone stays at the bedside and talks to him.
+    scale: [reorientation, a sitter, mitts, wrist restraints]
+    answerAt: 1
+    why: 덜 제한적인 방법부터 올라가요. 곁에서 지켜보는 사람만으로 진정되면 그 위 단계(손 장갑·손목 억제대)로 가지 않아요.
+    example: Have we tried a sitter before we reach for restraints?
+    exKo: 억제대를 쓰기 전에 관찰 인력을 먼저 시도해 봤나요?
+  - kind: context
+    words: [w-reassess, w-restraint]
+    scenes:
+    - {who: 동료 간호사에게, icon: speech, en: Let's reassess whether he still needs the restraints at two., ok: true}
+    - {who: 차트 기록, icon: board, en: Restraint need reassessed; less restrictive alternatives ineffective., ok: true}
+    - {who: 보호자에게, icon: me, en: Restraint necessity will be reassessed per protocol., ok: false, fix: 'We check often whether he still needs them, and we take them off as soon as it''s safe.'}
+    why: '''per protocol'' 같은 행정 말투는 보호자에게 차갑게 들려요. 얼마나 자주 보고 언제 푸는지를 쉬운 말로 말해요.'
+- title: 고위험약 이중확인
+  sentences:
+  - en: Let's verify the drug, dose, rate, and pump settings together.
+    ko: 약물, 용량, 속도, 펌프 설정을 함께 대조 확인해요.
+    chunks: [Let's verify, 'the drug, dose, rate,', and pump settings, together, .]
+    words: [w-verify, w-drug, w-dose, w-rate, w-pump, w-setting, w-together]
+    goal: 1
+  - en: Confirm the concentration matches the order.
+    ko: 농도가 처방과 일치하는지 확인해요.
+    chunks: [Confirm, the concentration, matches the order, .]
+    words: [w-confirm, w-concentration, w-match, w-order]
+    goal: 2
+  - en: Both of us sign off before it runs.
+    ko: 주입되기 전에 저희 둘 다 서명해요.
+    chunks: [Both of us, sign off, before it runs, .]
+    words: [w-sign, w-run]
+    goal: 1
+  - en: Wait — the label says fifty units, but the order says five.
+    ko: 잠깐요, 라벨에는 50단위인데 처방에는 5단위라고 되어 있어요.
+    chunks: [Wait, —, the label says, 'fifty units,', but the order says, five, .]
+    words: [w-wait, w-unit, w-order]
+    goal: 2
+  - en: Let's stop and check this together before we give it.
+    ko: 주기 전에 같이 멈추고 이걸 확인해요.
+    chunks: [Let's stop, and check this, together before, we give it, .]
+    words: [w-stop, w-check, w-together, w-give]
+    goal: 2
+  - en: So that's insulin, ten units, over one hour — did I get that right?
+    ko: 그러니까 인슐린 10단위를 1시간에 걸쳐서요, 제가 맞게 이해했나요?
+    chunks: ['So that''s insulin,', 'ten units,', over one hour, —, did I get, that right, '?']
+    words: [w-insulin, w-unit, w-right]
+    goal: 1
+  - en: I'm not saying you're wrong, I just need to hear it back before we sign.
+    ko: 틀렸다는 게 아니라, 서명하기 전에 되짚어 듣고 싶어서요.
+    chunks: [I'm not saying, 'you''re wrong,', I just need to, hear it back, before we sign, .]
+    words: [w-wrong, w-need, w-hear, w-back, w-sign]
+    goal: 2
+  - en: Once we both agree on the numbers, we sign our names and start the pump.
+    ko: 숫자에 둘 다 동의하면 이름을 서명하고 펌프를 시작해요.
+    chunks: [Once we both agree, 'on the numbers,', we sign our names, and start the pump, .]
+    words: [w-agree, w-number, w-sign, w-start, w-pump]
+    goal: 1
+  nuance:
+  - kind: pair
+    words: [w-sign, w-hear, w-back, w-unit]
+    pairs:
+    - [sign, 'off']
+    - [hear it, back]
+    - [ten, units]
+    decoys: [apart]
+    why: 이중확인을 마치고 승인 서명하는 건 sign off, 들은 걸 되읽어 확인하는 건 hear it back이에요. 인슐린은 mg가 아니라 units로 세요.
+  - kind: context
+    words: [w-wrong, w-hear]
+    scenes:
+    - {who: 동료 간호사에게, icon: speech, en: I'm not saying you're wrong — I just need to hear it back before we sign., ok: true}
+    - {who: 담당 의사 콜, icon: monitor, en: 'Before we hang this, can you clarify the insulin order? The label says fifty units.', ok: true}
+    - {who: 동료 간호사에게, icon: speech, en: 'You''re wrong. That''s fifty units, not five.', ok: false, fix: 'Wait — the label says fifty units, but the order says five. Can we check it together?'}
+    why: 이중확인에서 상대를 'wrong'이라고 단정하면 방어적으로 만들어요. 숫자를 사실대로 말하고 '같이 확인하자'로 이어 가면 같은 지적도 협조를 얻어요.
+- title: 라인·튜브 라벨·경로 확인
+  sentences:
+  - en: I might be wrong, but I want to check something before we go ahead.
+    ko: 제가 틀렸을 수도 있지만, 진행하기 전에 뭔가 확인하고 싶어요.
+    chunks: ['I might be wrong,', but I want to check, something before, we go ahead, .]
+    words: [w-wrong, w-check, w-ahead]
+    goal: 1
+  - en: Let's trace the line from the bag to the patient.
+    ko: 수액백에서 환자까지 라인을 따라가 봐요.
+    chunks: [Let's trace, the line, from the bag, to the patient, .]
+    words: [w-trace, w-line, w-bag]
+    goal: 1
+  - en: Every line should be labeled at both ends.
+    ko: 모든 라인은 양쪽 끝에 라벨이 붙어 있어야 해요.
+    chunks: [Every line, should be labeled, at both ends, .]
+    words: [w-line, w-label, w-end]
+    goal: 1
+  - en: This is the arterial line, not for medication.
+    ko: 이건 동맥 라인이에요, 투약용이 아니고요.
+    chunks: [This is, 'the arterial line,', not for medication, .]
+    words: [w-arterial, w-line, w-medication]
+    goal: 2
+  - en: If we trace it together, we won't push the wrong drug into the wrong line.
+    ko: 같이 따라가면 엉뚱한 약을 엉뚱한 라인으로 밀어 넣지 않을 거예요.
+    chunks: ['If we trace it together,', we won't push, the wrong drug, into the wrong line, .]
+    words: [w-trace, w-together, w-push, w-wrong, w-drug, w-line]
+    goal: 2
+  - en: Let's follow this tubing all the way from the pump to where it enters him.
+    ko: 이 튜빙을 펌프에서부터 몸에 들어가는 곳까지 끝까지 따라가 봐요.
+    chunks: [Let's follow, this tubing, all the way, from the pump, to where it enters him, .]
+    words: [w-follow, w-tubing, w-pump, w-enter]
+    goal: 1
+  - en: A labeled line at both ends is one less way to mix up a patient.
+    ko: 양쪽 끝에 라벨이 붙은 라인은 환자를 혼동할 위험을 하나 줄여줘요.
+    chunks: [A labeled line, at both ends, is one less way, to mix up, a patient, .]
+    words: [w-label, w-line, w-end, w-mix]
+    goal: 2
+  nuance:
+  - kind: pair
+    words: [w-trace, w-label, w-push]
+    pairs:
+    - [trace the line, from bag to patient]
+    - [label, both ends]
+    - [push, into the wrong line]
+    decoys: [on hold]
+    why: trace는 출발점에서 끝까지 손으로 짚어 가는 것이라 from A to B와 어울려요. 라벨은 라인 양 끝(both ends)에 붙여요.
+  - kind: context
+    words: [w-arterial, w-line]
+    scenes:
+    - {who: 동료 간호사에게, icon: speech, en: 'Careful — that''s the art line, not for meds.', ok: true}
+    - {who: 차트 기록, icon: board, en: Arterial line R radial; no meds via A-line., ok: true}
+    - {who: 보호자에게, icon: me, en: 'That''s his art line, no meds.', ok: false, fix: 'That line measures his blood pressure all the time, so we never give medicine through it.'}
+    why: '''art line''은 의료진끼리의 줄임말이에요. 보호자에게는 그 줄이 무엇을 하는지로 설명해요.'
+- title: 낙상·손상 예방 기초
+  sentences:
+  - en: Let's lower the bed and lock the wheels.
+    ko: 침대를 낮추고 바퀴를 잠가요.
+    chunks: [Let's lower, the bed, and lock, the wheels, .]
+    words: [w-lower, w-bed, w-lock, w-wheel]
+    goal: 2
+  - en: Keep the call light and his items within reach.
+    ko: 호출 버튼과 물건을 손 닿는 곳에 두세요.
+    chunks: [Keep, the call light, and his items, within reach, .]
+    words: [w-keep, w-call, w-light, w-item, w-reach]
+    goal: 2
+  - en: A bed alarm will let us know if he tries to get up.
+    ko: 침대 알람이 이분이 일어나려 하면 알려줄 거예요.
+    chunks: [A bed alarm, will let us know, if he tries, to get up, .]
+    words: [w-bed, w-alarm, w-try]
+    goal: 2
+  - en: He's confused and restless, so his fall risk is high tonight.
+    ko: 이분은 혼란스럽고 안절부절못해서 오늘 밤 낙상 위험이 높아요.
+    chunks: ['He''s confused and restless,', so his fall risk, is high, tonight, .]
+    words: [w-confused, w-restless, w-fall, w-risk, w-high, w-tonight]
+    goal: 1
+  - en: Let's check his call light works before I step out.
+    ko: 제가 나가기 전에 호출 버튼이 작동하는지 확인해요.
+    chunks: [Let's check, his call light, works before, I step out, .]
+    words: [w-check, w-call, w-light]
+    goal: 2
+  - en: If the alarm sounds, someone needs to answer it right away.
+    ko: 알람이 울리면 누군가 바로 응답해야 해요.
+    chunks: ['If the alarm sounds,', someone needs, to answer it, right away, .]
+    words: [w-alarm, w-sound, w-answer]
+    goal: 2
+  - en: We assess his risk every shift, not just after he's already fallen.
+    ko: 이미 낙상한 뒤가 아니라 매 근무마다 위험을 사정해요.
+    chunks: [We assess his risk, 'every shift,', not just after, he's already fallen, .]
+    words: [w-assess, w-risk, w-shift, w-fall]
+    goal: 1
+  nuance:
+  - kind: pair
+    words: [w-lock, w-call, w-light, w-reach]
+    pairs:
+    - [lock, the wheels]
+    - [call, light]
+    - [within, reach]
+    decoys: [apart]
+    why: 침대 바퀴는 lock the wheels, 호출등은 call light, '손 닿는 곳에'는 within reach로 굳은 말이에요.
+  - kind: context
+    words: [w-fall, w-risk, w-high]
+    scenes:
+    - {who: 인계받는 동료에게, icon: speech, en: He's a high fall risk tonight — bed's low and the alarm is on., ok: true}
+    - {who: 차트 기록, icon: board, en: 'Fall risk high. Bed low/locked, alarm on, call light in reach.', ok: true}
+    - {who: 보호자에게, icon: me, en: 'His Morse score is 65, so he''s a high fall risk.', ok: false, fix: 'He''s more likely to fall tonight because he''s confused, so please call us before helping him up.'}
+    why: 점수와 등급은 의료진끼리의 말이에요. 보호자에게는 이유와 해 줄 일(부르기 전에 혼자 일으키지 않기)을 같이 말해야 도움이 돼요.
+- title: 투약 5R 확인
+  sentences:
+  - en: Right patient, right drug, right dose, right route, right time.
+    ko: 정확한 환자, 정확한 약물, 정확한 용량, 정확한 경로, 정확한 시간이에요.
+    chunks: ['Right patient,', 'right drug,', 'right dose,', 'right route,', right time, .]
+    words: [w-right, w-drug, w-dose, w-route]
+    goal: 1
+  - en: Scan the band and confirm the order first.
+    ko: 밴드를 스캔하고 먼저 처방을 확인해요.
+    chunks: [Scan the band, and confirm, the order first, .]
+    words: [w-scan, w-band, w-confirm, w-order, w-first]
+    goal: 1
+  - en: Let's check for allergies before giving it.
+    ko: 주기 전에 알레르기를 확인해요.
+    chunks: [Let's check, for allergies, before giving it, .]
+    words: [w-check, w-allergy, w-give]
+    goal: 2
+  - en: So I heard vancomycin, one gram, IV, over one hour — is that right?
+    ko: 그러니까 반코마이신 1그램을 정맥으로 1시간에 걸쳐서요, 맞나요?
+    chunks: ['So I heard vancomycin,', 'one gram,', 'IV,', over one hour, —, is that right, '?']
+    words: [w-hear, w-gram, w-right]
+    goal: 1
+  - en: 'Let me say that back to you: right patient, right time, right route.'
+    ko: 다시 말씀드릴게요, 정확한 환자, 정확한 시간, 정확한 경로예요.
+    chunks: ['Let me say that back to you:', 'right patient,', 'right time,', right route, .]
+    words: [w-say, w-back, w-right, w-route]
+    goal: 1
+  - en: Before I push anything, I check his wristband against the order myself.
+    ko: 뭔가 주기 전에 저는 직접 손목밴드를 처방과 대조해서 확인해요.
+    chunks: ['Before I push anything,', I check, his wristband, against the order, myself, .]
+    words: [w-push, w-check, w-wristband, w-order]
+    goal: 2
+  - en: No known allergies on the chart, but I'll ask him again just in case.
+    ko: 차트에는 알려진 알레르기가 없지만, 혹시 몰라서 다시 물어볼게요.
+    chunks: [No known allergies, 'on the chart,', but I'll ask him again, just in case, .]
+    words: [w-allergy, w-chart, w-ask]
+    goal: 2
+  nuance:
+  - kind: pair
+    words: [w-allergy, w-check, w-wristband, w-scan, w-band]
+    pairs:
+    - [allergic, to penicillin]
+    - [check his wristband, against the order]
+    - [scan, the band]
+    decoys: [of penicillin]
+    why: '''~에 알레르기가 있다''는 allergic to예요. 한국어 ''~에 대한''을 옮겨 of로 쓰기 쉬워요. 대조 확인은 check A against B.'
+  - kind: context
+    words: [w-allergy, w-ask]
+    scenes:
+    - {who: 환자에게, icon: me, en: 'Are you allergic to any medicines, like penicillin?', ok: true}
+    - {who: 동료 간호사에게, icon: speech, en: 'Any drug allergies charted for bed 4?', ok: true}
+    - {who: 환자에게, icon: me, en: 'Do you have any known drug hypersensitivities?', ok: false, fix: 'Are you allergic to any medicines?'}
+    why: hypersensitivity는 정확한 임상어지만 환자는 무엇을 묻는지 놓치기 쉬워요. 'allergic to'로 쉽게 물어요.
+- title: 알람 피로 관리·맞춤화
+  sentences:
+  - en: Let's tailor alarm limits to each patient's baseline.
+    ko: 환자별 기저치에 맞춰 알람 한계를 맞춤화해요.
+    chunks: [Let's tailor, alarm limits, to each patient's baseline, .]
+    words: [w-tailor, w-alarm, w-limit, w-baseline]
+    goal: 1
+  - en: We can widen non-critical thresholds without losing safety.
+    ko: 안전을 잃지 않으면서 비위중 임계값은 넓힐 수 있어요.
+    chunks: [We can widen, non-critical thresholds, without losing, safety, .]
+    words: [w-widen, w-critical, w-threshold, w-safety]
+    goal: 2
+  - en: Silencing without addressing the cause is never okay.
+    ko: 원인을 해결하지 않고 무음 처리만 하는 건 절대 괜찮지 않아요.
+    chunks: [Silencing, without addressing, the cause, is never okay, .]
+    words: [w-silence, w-cause, w-okay]
+    goal: 2
+  - en: Alarm fatigue is real — after the tenth alert, you stop hearing them.
+    ko: 알람 피로는 실제예요, 열 번째 경고음 뒤로는 들리지 않게 돼요.
+    chunks: [Alarm fatigue is real, —, 'after the tenth alert,', you stop, hearing them, .]
+    words: [w-alarm, w-fatigue, w-alert, w-hear]
+    goal: 1
+  - en: If we personalize the limits now, the important alarms stand out later.
+    ko: 지금 한계를 개인화해 두면 나중에 중요한 알람이 두드러져요.
+    chunks: [If we personalize, 'the limits now,', the important alarms, stand out later, .]
+    words: [w-personalize, w-limit, w-important, w-stand, w-alarm]
+    goal: 1
+  - en: Never mute an alarm just because it's annoying — fix the setting instead.
+    ko: 성가시다는 이유만으로 알람을 음소거하지 말고, 설정을 고쳐요.
+    chunks: [Never mute, an alarm, just because it's annoying, —, fix the setting, instead, .]
+    words: [w-mute, w-alarm, w-annoying, w-setting]
+    goal: 2
+  - en: We keep every alarm on, we just make it mean something.
+    ko: 알람은 전부 켜 두되, 의미가 있게만 만들어요.
+    chunks: [We keep, 'every alarm on,', we just make it, mean something, .]
+    words: [w-keep, w-alarm, w-mean]
+    goal: 2
+  nuance:
+  - kind: slider
+    words: [w-silence, w-alarm]
+    cue: You're about to suction him, and his SpO2 will dip for a minute.
+    scale: [pause, silence, turn off]
+    answerAt: 0
+    why: pause는 정해진 몇 분만 멈췄다가 저절로 다시 켜져요. silence는 지금 울리는 소리를 끄는 것, turn off는 그 알람 자체를 꺼서 다시 울리지 않으니 가장 위험해요.
+    example: Let's pause the alarms while we suction.
+    exKo: 흡인하는 동안 알람을 잠시 멈춰 둬요.
+  - kind: context
+    words: [w-alarm, w-fatigue]
+    scenes:
+    - {who: 동료 간호사에게, icon: speech, en: 'Alarm fatigue is real — after the tenth alert, you stop hearing them.', ok: true}
+    - {who: 안전 회의 보고, icon: board, en: Nonactionable alarms contributed to alarm fatigue on the unit., ok: true}
+    - {who: 보호자에게, icon: me, en: 'Don''t worry, most of these alarms are meaningless — we ignore them.', ok: false, fix: 'A lot of these beeps are routine, but we check every one, and we''ve set them to fit him.'}
+    why: '''ignore''라고 하면 보호자는 아무도 안 본다고 받아들여요. 대부분 일상적인 알람이라도 확인하고 있다는 사실을 함께 말해요.'
+- title: 억제대 사용 모니터·문서
+  sentences:
+  - en: We check circulation and skin every two hours.
+    ko: 두 시간마다 순환과 피부를 확인해요.
+    chunks: [We check, circulation and skin, every two hours, .]
+    words: [w-check, w-circulation, w-skin]
+    goal: 1
+  - en: Document the reason, alternatives tried, and reassessment.
+    ko: 이유, 시도한 대체 방법, 그리고 재사정을 기록해요.
+    chunks: ['Document the reason,', 'alternatives tried,', and reassessment, .]
+    words: [w-document, w-reason, w-alternative, w-try, w-reassessment]
+    goal: 2
+  - en: Release and reposition on schedule.
+    ko: 일정에 따라 풀어주고 자세를 바꿔요.
+    chunks: [Release, and reposition, on schedule, .]
+    words: [w-release, w-reposition, w-schedule]
+    goal: 1
+  - en: When did we last check his circulation and skin?
+    ko: 마지막으로 순환과 피부를 확인한 게 언제였죠?
+    chunks: [When did we, last check, his circulation, and skin, '?']
+    words: [w-check, w-circulation, w-skin, w-last]
+    goal: 1
+  - en: I'll document the reason and when we'll reassess again.
+    ko: 이유와 다시 평가할 시점을 기록할게요.
+    chunks: [I'll document, the reason, and when we'll reassess, again, .]
+    words: [w-document, w-reason, w-reassess]
+    goal: 2
+  - en: Let's reposition him and check his skin again before I chart this.
+    ko: 자세를 바꾸고 피부를 다시 확인한 다음 이걸 차트에 기록할게요.
+    chunks: [Let's reposition him, and check, his skin again, before I chart this, .]
+    words: [w-reposition, w-check, w-skin, w-chart]
+    goal: 1
+  - en: We schedule releases so he's never restrained longer than needed.
+    ko: 필요 이상으로 억제되지 않도록 풀어주는 일정을 정해요.
+    chunks: [We schedule releases, so he's never restrained, longer than, needed, .]
+    words: [w-schedule, w-release, w-restrain, w-need]
+    goal: 1
+  nuance:
+  - kind: slider
+    words: [w-circulation, w-check]
+    cue: 'Fingers below the restraint: warm, pink, capillary refill under 2 seconds.'
+    scale: [absent, impaired, adequate]
+    answerAt: 2
+    why: 따뜻하고 분홍빛, 모세혈관 재충전 2초 이내면 순환은 adequate(양호)예요. 차갑고 창백하거나 재충전이 늦으면 impaired로 적고 억제대를 느슨하게 해요.
+    example: Circulation adequate distal to the restraint.
+    exKo: 억제대 원위부 순환 양호.
+  - kind: swap
+    words: [w-document, w-reason]
+    who: 차트 기록 · 억제대 사유
+    icon: board
+    before: ['Restraints applied — reason: ', pt was uncooperative, .]
+    options: [pulling at ETT despite sitter, pt was uncooperative, pt was being difficult]
+    answer: pulling at ETT despite sitter
+    notes: {pulling at ETT despite sitter: 관찰한 행동과 먼저 시도한 대안이 함께 적혀 사유가 분명해요., pt was uncooperative: 평가하는 말이라 무엇이 위험했는지 드러나지 않아요., pt was being difficult: 감정이 담긴 표현이라 기록에 쓰지 않아요.}
+    why: 억제대 사유는 판단어가 아니라 관찰한 행동(무엇을 잡아당기는지)과 시도한 대안으로 적어요.
+- title: 라인 오연결 예방
+  sentences:
+  - en: Trace every line back to its source before connecting.
+    ko: 연결하기 전에 모든 라인을 근원까지 따라가 봐요.
+    chunks: [Trace, every line, back to its source, before connecting, .]
+    words: [w-trace, w-line, w-back, w-source, w-connect]
+    goal: 2
+  - en: Never force a connection that doesn't fit easily.
+    ko: 쉽게 맞지 않는 연결을 억지로 밀어 넣지 마세요.
+    chunks: [Never force, a connection, that doesn't fit, easily, .]
+    words: [w-force, w-connection, w-fit, w-easily]
+    goal: 1
+  - en: Use the color-coded and labeled systems consistently.
+    ko: 색으로 구분되고 라벨이 붙은 체계를 일관되게 사용해요.
+    chunks: [Use, the color-coded, and labeled systems, consistently, .]
+    words: [w-colorcoded, w-label, w-system, w-consistently]
+    goal: 1
+  - en: These two connectors look alike, so let's double-check before we plug in.
+    ko: 이 두 연결부가 비슷하게 생겼으니 꽂기 전에 다시 확인해요.
+    chunks: [These two connectors, 'look alike,', so let's double-check, before we plug in, .]
+    words: [w-connector, w-alike, w-check]
+    goal: 1
+  - en: Wait, that's the feeding line — the IV port is over here.
+    ko: 잠깐요, 그건 경관영양 라인이에요, 정맥 포트는 여기고요.
+    chunks: ['Wait,', that's the feeding line, —, the IV port, is over here, .]
+    words: [w-wait, w-feeding, w-line, w-port]
+    goal: 2
+  - en: It's an easy mix-up, not a careless one — let's just trace it together.
+    ko: 흔히 헷갈리는 거지 부주의한 게 아니에요, 같이 따라가 봐요.
+    chunks: ['It''s an easy mix-up,', not a careless one, —, let's just trace it together, .]
+    words: [w-mix, w-careless, w-trace, w-together]
+    goal: 1
+  - en: Let's connect these the same way every single time, so no one has to guess.
+    ko: 매번 같은 방식으로 연결해서 아무도 추측하지 않게 해요.
+    chunks: [Let's connect these, the same way, 'every single time,', so no one has to guess, .]
+    words: [w-connect, w-guess]
+    goal: 2
+  nuance:
+  - kind: pair
+    words: [w-trace, w-back, w-source, w-force, w-connection, w-connector, w-alike]
+    pairs:
+    - [trace it back, to the source]
+    - [force, a connection]
+    - [connectors, look alike]
+    decoys: [look likely]
+    why: 근원까지 거슬러 가는 건 trace it back to the source, 억지로 끼우는 건 force a connection, 생김새가 같은 건 look alike예요.
+  - kind: context
+    words: [w-careless, w-mix, w-feeding]
+    scenes:
+    - {who: 동료 간호사에게, icon: speech, en: 'It''s an easy mix-up, not a careless one — let''s just trace it together.', ok: true}
+    - {who: 사건 보고서, icon: board, en: 'Near-miss: enteral tubing nearly connected to IV port; caught on line trace.', ok: true}
+    - {who: 동료 간호사에게, icon: speech, en: 'How could you be so careless? That''s the feeding line.', ok: false, fix: 'Wait, that''s the feeding line — easy mix-up. Let''s trace it together.'}
+    why: 실수를 사람 탓으로 몰면 다음엔 숨기게 돼요. 어떤 라인인지 사실을 말하고 해결(같이 따라가기)로 이어 가요.
+- title: 고농도 전해질·마약 관리
+  sentences:
+  - en: Concentrated electrolytes are stored separately and secured.
+    ko: 고농도 전해질은 따로 분리해 잠가 보관해요.
+    chunks: [Concentrated electrolytes, are stored, separately and secured, .]
+    words: [w-concentrated, w-electrolyte, w-store, w-separately]
+    goal: 1
+  - en: Narcotics require two-nurse counts and locked storage.
+    ko: 마약은 두 간호사의 재고 확인과 잠긴 보관을 요구해요.
+    chunks: [Narcotics require, two-nurse counts, and locked storage, .]
+    words: [w-narcotic, w-require, w-count, w-locked, w-storage]
+    goal: 2
+  - en: Never keep concentrated potassium at the bedside.
+    ko: 고농도 칼륨은 절대 침상 옆에 두지 마세요.
+    chunks: [Never keep, concentrated potassium, at the bedside, .]
+    words: [w-keep, w-concentrated, w-potassium, w-bedside]
+    goal: 1
+  - en: Let's count the narcotics together and sign the log before we leave.
+    ko: 나가기 전에 같이 마약을 세고 기록지에 서명해요.
+    chunks: [Let's count, the narcotics together, and sign the log, before we leave, .]
+    words: [w-count, w-narcotic, w-together, w-sign, w-log]
+    goal: 2
+  - en: If the numbers don't match, we stop and count them again before anyone signs.
+    ko: 숫자가 맞지 않으면 멈추고 서명하기 전에 다시 세요.
+    chunks: ['If the numbers don''t match,', we stop, and count them again, before anyone signs, .]
+    words: [w-number, w-match, w-stop, w-count, w-sign]
+    goal: 2
+  - en: The narcotics stay locked, and only the two of us hold the keys.
+    ko: 마약은 계속 잠겨 있고, 저희 둘만 열쇠를 가지고 있어요.
+    chunks: ['The narcotics stay locked,', and only, the two of us, hold the keys, .]
+    words: [w-narcotic, w-locked, w-key]
+    goal: 1
+  - en: We keep this potassium in the storage room, never within reach at the bedside.
+    ko: 이 칼륨은 보관실에 두고, 절대 침상 옆 손 닿는 곳에 두지 않아요.
+    chunks: [We keep this potassium, 'in the storage room,', never within reach, at the bedside, .]
+    words: [w-keep, w-potassium, w-storage, w-reach, w-bedside]
+    goal: 1
+  nuance:
+  - kind: slider
+    words: [w-concentrated, w-potassium]
+    cue: 'Vial label: potassium chloride 2 mEq/mL — must be diluted before use.'
+    scale: [premixed, diluted, concentrated]
+    answerAt: 2
+    why: 희석해야 쓸 수 있는 원액이면 concentrated예요. 이런 고농도 칼륨은 환자 곁에 두지 않고, 병동에서는 보통 미리 섞인(premixed) 백을 써요.
+    example: Never keep concentrated potassium at the bedside.
+    exKo: 고농도 칼륨은 절대 침상 곁에 두지 마세요.
+  - kind: reel
+    words: [w-narcotic]
+    word: narcotic
+    scenes:
+    - {who: 동료 간호사에게, en: Narcotics require two-nurse counts and locked storage., ko: 마약은 두 간호사 계수와 잠금 보관이 필요해요., tone: 규정}
+    - {who: 교대 인계, en: Narcotic count is correct — we both signed., ko: '마약 계수 맞아요, 둘 다 서명했어요.', tone: 확인}
+    - {who: 차트 기록, en: Narcotic waste witnessed by second RN., ko: '마약 폐기, 두 번째 간호사 입회.', tone: 건조}
+    - {who: 환자에게는…, en: 'This is a strong pain medicine, so we keep it locked up.', ko: 이건 강한 진통제라서 잠가서 보관해요., tone: 완곡, swap: true}
+- title: 섬망 환자 안전 환경
+  sentences:
+  - en: Let's reorient him and keep familiar items nearby.
+    ko: 지남력을 되찾도록 돕고 익숙한 물건을 가까이 둬요.
+    chunks: [Let's reorient him, and keep familiar items, nearby, .]
+    words: [w-reorient, w-keep, w-familiar, w-item, w-nearby]
+    goal: 2
+  - en: Secure and camouflage his lines out of easy reach.
+    ko: 라인을 고정하고 손 닿기 어렵게 위장해요.
+    chunks: [Secure and camouflage, his lines, out of easy, reach, .]
+    words: [w-secure, w-camouflage, w-line, w-reach]
+    goal: 1
+  - en: Reduce noise and keep his sleep cycle regular.
+    ko: 소음을 줄이고 수면 주기를 규칙적으로 유지해요.
+    chunks: [Reduce noise, and keep, his sleep cycle regular, .]
+    words: [w-reduce, w-noise, w-keep, w-sleep, w-cycle, w-regular]
+    goal: 2
+  - en: He's grabbing at his lines because he doesn't know what they are.
+    ko: 그게 뭔지 몰라서 라인을 움켜쥐고 있는 거예요.
+    chunks: [He's grabbing, at his lines, because he doesn't know, what they are, .]
+    words: [w-grab, w-line]
+    goal: 1
+  - en: A clock and calendar can help him stay oriented during the day.
+    ko: 낮 동안 시계와 달력이 지남력을 유지하는 데 도움이 돼요.
+    chunks: [A clock and calendar, can help him, stay oriented, during the day, .]
+    words: [w-clock, w-calendar, w-oriented]
+    goal: 2
+  - en: If we camouflage the lines under his gown, he's less likely to pull them.
+    ko: 가운 아래로 라인을 위장하면 잡아당길 가능성이 줄어요.
+    chunks: [If we camouflage the lines, 'under his gown,', he's less likely, to pull them, .]
+    words: [w-camouflage, w-line, w-gown, w-pull]
+    goal: 1
+  - en: We keep the room quiet at night so his sleep cycle can reset.
+    ko: 밤에는 방을 조용히 해서 수면 주기가 재설정되도록 해요.
+    chunks: [We keep the room quiet, at night, so his sleep cycle, can reset, .]
+    words: [w-keep, w-quiet, w-sleep, w-cycle, w-reset]
+    goal: 2
+  nuance:
+  - kind: pair
+    words: [w-sleep, w-cycle, w-familiar, w-item, w-gown]
+    pairs:
+    - [sleep-wake, cycle]
+    - [familiar, items]
+    - [under his, gown]
+    decoys: [reach]
+    why: 자고 깨는 리듬은 sleep-wake cycle, 집에서 쓰던 물건은 familiar items, 라인을 옷 아래로 감추는 건 under his gown이에요.
+  - kind: context
+    words: [w-reorient]
+    scenes:
+    - {who: 환자에게, icon: me, en: 'You''re in the hospital, Mr. Lee. It''s Tuesday morning, and I''m your nurse.', ok: true}
+    - {who: 동료 간호사에게, icon: speech, en: He needs frequent reorienting — he thinks it's 1998., ok: true}
+    - {who: 환자에게, icon: me, en: 'Mr. Lee, you''re disoriented times three, so you need to be reoriented.', ok: false, fix: 'Mr. Lee, you''re in the hospital. It''s Tuesday morning, and you''re safe here.'}
+    why: 환자에게 'disoriented x3' 같은 평가 결과를 말하면 혼란만 커져요. 지금 어디·언제인지를 짧게 알려 주는 것이 재지남이에요.
+- title: 투약 오류 예방 시스템
+  sentences:
+  - en: Don't override without verifying the order and dose.
+    ko: 용량과 처방을 검증하지 않고는 무시하고 진행하지 마세요.
+    chunks: [Don't override, without verifying, the order and dose, .]
+    words: [w-override, w-verify, w-order, w-dose]
+    goal: 1
+  - en: The pump's drug library is there to catch errors.
+    ko: 펌프의 약물 라이브러리는 오류를 잡아내려고 있는 거예요.
+    chunks: [The pump's, drug library, is there, to catch errors, .]
+    words: [w-pump, w-drug, w-library, w-catch, w-error]
+    goal: 2
+  - en: Let's confirm the concentration before we proceed.
+    ko: 진행하기 전에 농도를 확인해요.
+    chunks: [Let's confirm, the concentration, before we proceed, .]
+    words: [w-confirm, w-concentration, w-proceed]
+    goal: 1
+  - en: Stop — that's a hard limit, not a soft one, so we don't override it.
+    ko: 멈춰요, 그건 하드 리밋이지 소프트 리밋이 아니라서 무시하고 넘어가지 않아요.
+    chunks: [Stop, —, 'that''s a hard limit,', 'not a soft one,', so we don't override it, .]
+    words: [w-stop, w-limit, w-hard, w-soft, w-override]
+    goal: 1
+  - en: The pump flagged this dose as unusually high — let's not just click past it.
+    ko: 펌프가 이 용량을 비정상적으로 높다고 표시했어요, 그냥 넘기지 말아요.
+    chunks: [The pump flagged this dose, as unusually high, —, let's not just click past it, .]
+    words: [w-pump, w-flag, w-dose, w-high]
+    goal: 2
+  - en: Every override we skip verifying is a chance for the system to miss an error.
+    ko: 검증을 건너뛰고 무시할 때마다 시스템이 오류를 놓칠 기회가 돼요.
+    chunks: [Every override we skip verifying, is a chance, for the system, to miss an error, .]
+    words: [w-override, w-skip, w-verify, w-system, w-miss, w-error]
+    goal: 2
+  - en: Trust the library, but still confirm the concentration yourself.
+    ko: 라이브러리를 믿되, 그래도 직접 농도를 확인하세요.
+    chunks: ['Trust the library,', but still confirm, the concentration, yourself, .]
+    words: [w-trust, w-library, w-confirm, w-concentration]
+    goal: 1
+  nuance:
+  - kind: slider
+    words: [w-limit, w-hard, w-soft]
+    cue: 'Pump screen: "Dose exceeds maximum — cannot be programmed."'
+    scale: [no alert, soft limit, hard limit]
+    answerAt: 2
+    why: soft limit는 확인한 뒤 넘길 수 있는 경고예요. hard limit는 펌프가 아예 입력을 막아서 처방을 다시 확인해야 해요.
+    example: That's a hard limit — the pump won't let us go past it.
+    exKo: 그건 하드 리밋이라 펌프가 넘어가게 해 주지 않아요.
+  - kind: context
+    words: [w-override, w-flag, w-verify]
+    scenes:
+    - {who: 동료 간호사에게, icon: speech, en: Let's not just click past it — check the order first., ok: true}
+    - {who: 차트 기록, icon: board, en: Soft-limit alert overridden after verification with order and pharmacy., ok: true}
+    - {who: 담당 의사 콜, icon: monitor, en: 'Hey, the pump''s freaking out about your dose — can I just override it?', ok: false, fix: 'The pump flagged a soft-limit alert on the heparin dose. Can you confirm the order before I override it?'}
+    why: 의사에게 콜할 때는 무엇이 어떤 경고를 띄웠는지 정확히 말하고 확인을 요청해요. 'freaking out'처럼 흐린 말은 판단할 정보를 주지 않아요.
+- title: 이중확인·독립확인 프로토콜
+  sentences:
+  - en: An independent double-check means we verify separately.
+    ko: 독립확인은 우리가 따로따로 확인한다는 뜻이에요.
+    chunks: [An independent double-check, means we verify, separately, .]
+    words: [w-independent, w-check, w-mean, w-verify, w-separately]
+    goal: 2
+  - en: We each confirm the drug, dose, and pump without prompting.
+    ko: 유도 신호 없이 각자 약물, 용량, 펌프를 확인해요.
+    chunks: [We each confirm, 'the drug, dose,', and pump, without prompting, .]
+    words: [w-confirm, w-drug, w-dose, w-pump, w-prompt]
+    goal: 1
+  - en: This is required for all high-alert medications.
+    ko: 이건 모든 high-alert 약물에 요구되는 절차예요.
+    chunks: [This is required, for all high-alert, medications, .]
+    words: [w-required, w-medication, w-highalert]
+    goal: 1
+  - en: This needs an independent check — I mean each of us checks it alone.
+    ko: 이건 독립확인이 필요해요, 그러니까 각자 따로 확인한다는 뜻이에요.
+    chunks: [This needs, an independent check, —, I mean, each of us checks it alone, .]
+    words: [w-need, w-independent, w-check, w-mean]
+    goal: 2
+  - en: Not a double-check where we peek at each other's numbers — an independent one.
+    ko: 서로 숫자를 훔쳐보는 이중확인이 아니라, 독립확인이에요.
+    chunks: [Not a double-check, where we peek, at each other's numbers, —, an independent one, .]
+    words: [w-check, w-number, w-independent]
+    goal: 2
+  - en: You work out the dose on your own first, then we compare numbers.
+    ko: 먼저 각자 용량을 계산하고, 그다음 숫자를 맞춰 봐요.
+    chunks: [You work out, the dose, on your own, first, ',', then we compare, numbers, .]
+    words: [w-dose, w-number]
+    goal: 1
+  - en: High-alert drugs like insulin and heparin always get this extra step.
+    ko: 인슐린이나 헤파린 같은 high-alert 약물은 항상 이 추가 단계를 거쳐요.
+    chunks: [High-alert drugs, like insulin and heparin, always get, this extra step, .]
+    words: [w-drug, w-insulin, w-heparin, w-step, w-highalert]
+    goal: 1
+  nuance:
+  - kind: pair
+    words: [w-independent, w-highalert, w-medication, w-dose]
+    pairs:
+    - [independent, of each other]
+    - [high-alert, medications]
+    - [work out, the dose]
+    decoys: [on own]
+    why: 독립확인은 두 사람이 서로에게서 independent of each other — 상대 숫자를 보지 않고 각자 work out the dose(용량을 계산)해요. 잘못 쓰면 큰 해가 되는 약은 high-alert medications(ISMP 용어)예요.
+  - kind: swap
+    words: [w-independent, w-prompt, w-confirm]
+    who: 동료에게 · 독립확인 요청
+    icon: speech
+    before: ['Can you ', confirm it's fifty units, ' before I start the drip?']
+    options: [check this on your own, confirm it's fifty units, just glance at it]
+    answer: check this on your own
+    notes: {check this on your own: 답을 먼저 말하지 않아 상대가 스스로 계산해요 — 독립확인이에요., confirm it's fifty units: 숫자를 먼저 알려 주면 상대가 그 숫자에 끌려가요(prompting). 독립확인이 아니에요., just glance at it: 훑어보기는 확인이 아니에요.}
+    why: 독립확인은 숫자를 먼저 말하지 않고 각자 따로 계산한 뒤 맞춰 봐요.
+- title: 이송·인계 중 안전 확인
+  sentences:
+  - en: Confirm the airway, drips, and monitor before we move.
+    ko: 옮기기 전에 기도, 점적, 모니터를 확인해요.
+    chunks: [Confirm, 'the airway,', 'drips, and monitor', before we move, .]
+    words: [w-confirm, w-airway, w-drip, w-monitor, w-move]
+    goal: 1
+  - en: Do we have enough oxygen and battery for transport?
+    ko: 이송할 산소와 배터리가 충분한가요?
+    chunks: [Do we have, enough oxygen, and battery, for transport, '?']
+    words: [w-oxygen, w-battery, w-transport]
+    goal: 1
+  - en: Let's run the transport checklist together.
+    ko: 이송 점검표를 같이 확인해요.
+    chunks: [Let's run, the transport checklist, together, .]
+    words: [w-transport, w-checklist, w-together]
+    goal: 2
+  - en: Let's make sure nothing gets missed before we head to CT.
+    ko: CT로 가기 전에 놓치는 게 없는지 확인해요.
+    chunks: [Let's make sure, nothing gets missed, before we head, to CT, .]
+    words: [w-miss]
+    goal: 2
+  - en: I'll double-check the monitor cables reach the portable monitor too.
+    ko: 모니터 케이블이 휴대용 모니터에도 닿는지 다시 확인할게요.
+    chunks: [I'll double-check, the monitor cables, reach the portable monitor, too, .]
+    words: [w-check, w-monitor, w-cable, w-reach, w-portable]
+    goal: 1
+  - en: We confirm his airway is secure before anyone touches the bed brakes.
+    ko: 누가 침대 브레이크를 건드리기 전에 기도가 안전한지 확인해요.
+    chunks: [We confirm his airway, is secure, before anyone touches, the bed brakes, .]
+    words: [w-confirm, w-airway, w-secure, w-brake]
+    goal: 1
+  - en: Let's read the checklist out loud so nothing slips through in handoff.
+    ko: 인계할 때 놓치는 게 없도록 점검표를 소리 내어 읽어요.
+    chunks: [Let's read the checklist, out loud, so nothing slips through, in handoff, .]
+    words: [w-checklist, w-slip, w-handoff]
+    goal: 2
+  nuance:
+  - kind: pair
+    words: [w-checklist, w-oxygen]
+    pairs:
+    - [run, the checklist]
+    - [a full, oxygen tank]
+    - [read it, out loud]
+    decoys: [loudly out]
+    why: 점검표를 '돌리다'는 run the checklist, 산소통은 a full oxygen tank, 소리 내어 읽기는 read it out loud예요.
+  - kind: context
+    words: [w-airway, w-secure]
+    scenes:
+    - {who: 동료 간호사에게, icon: speech, en: Tube's secured at 23 at the lip — okay to unlock the brakes., ok: true}
+    - {who: 차트 기록, icon: board, en: ETT secure at 23 cm at lip prior to transport., ok: true}
+    - {who: 보호자에게, icon: me, en: 'ETT''s at 23 at the lip, we''re good to roll.', ok: false, fix: We've made sure his breathing tube is secure before we move him for the scan.}
+    why: 튜브 깊이 같은 수치는 의료진끼리의 확인이에요. 보호자에게는 무엇을 확인했는지 쉬운 말로 말해요.
+- title: 사건 보고·학습 문화
+  sentences:
+  - en: Yes — near-misses teach us how to prevent real harm.
+    ko: 네, 아차 사고는 진짜 위해를 예방하는 법을 가르쳐줘요.
+    chunks: ['Yes', —, near-misses teach us, how to prevent, real harm, .]
+    words: [w-nearmiss, w-teach, w-prevent, w-real, w-harm]
+    goal: 1
+  - en: Reporting isn't about blame, it's about learning.
+    ko: 보고는 비난이 아니라 배움에 관한 거예요.
+    chunks: [Reporting isn't, 'about blame,', it's about learning, .]
+    words: [w-report, w-blame, w-learning]
+    goal: 2
+  - en: Your report could protect the next patient.
+    ko: 당신의 보고가 다음 환자를 보호할 수 있어요.
+    chunks: [Your report, could protect, the next patient, .]
+    words: [w-report, w-protect, w-next]
+    goal: 1
+  - en: Nothing happened this time, but that's exactly why we still write it up.
+    ko: 이번엔 아무 일도 없었지만, 그래서 더 기록으로 남겨야 해요.
+    chunks: [Nothing happened, 'this time,', but that's exactly why, we still write it up, .]
+    words: [w-happen]
+    goal: 1
+  - en: We're not looking for who to blame, we're looking for what to fix.
+    ko: 누구를 비난할지가 아니라 무엇을 고칠지를 찾는 거예요.
+    chunks: [We're not looking, 'for who to blame,', we're looking, for what to fix, .]
+    words: [w-blame, w-fix]
+    goal: 2
+  - en: Filing this report takes ten minutes and might save someone's life later.
+    ko: 이 보고서를 내는 데 10분이지만 나중에 누군가의 생명을 구할 수도 있어요.
+    chunks: [Filing this report, takes ten minutes, and might save, someone's life later, .]
+    words: [w-file, w-report, w-save, w-life]
+    goal: 1
+  - en: Every near-miss we report becomes a lesson the whole unit can learn from.
+    ko: 보고하는 모든 아차 사고는 병동 전체가 배우는 교훈이 돼요.
+    chunks: [Every near-miss we report, becomes a lesson, the whole unit, can learn from, .]
+    words: [w-nearmiss, w-report, w-lesson]
+    goal: 2
+  nuance:
+  - kind: slider
+    words: [w-nearmiss, w-harm]
+    cue: The wrong insulin bag was caught at the bedside scan — it never reached the patient.
+    scale: [near-miss, no-harm event, adverse event]
+    answerAt: 0
+    why: 환자에게 닿기 전에 잡았으면 near-miss, 닿았지만 해가 없었으면 no-harm event, 해가 생겼으면 adverse event예요. 셋 다 보고 대상이에요.
+    example: That was a near-miss, but we still report it.
+    exKo: 아차 사고였지만 그래도 보고해요.
+  - kind: context
+    words: [w-blame, w-report]
+    scenes:
+    - {who: 동료 간호사에게, icon: speech, en: Reporting isn't about blame — it's about learning., ok: true}
+    - {who: 사건 보고서, icon: board, en: Insulin bag mislabeled; caught at bedside scan. No patient harm., ok: true}
+    - {who: 동료 간호사에게, icon: speech, en: 'You''d better report this, or it''s on you.', ok: false, fix: Let's write this up together — it helps the whole unit learn.}
+    why: 보고를 벌처럼 말하면 다음엔 숨기게 돼요. 비난하지 않는 문화(just culture)에서는 함께 쓰고 배우자고 말해요.
+- title: 라인·튜브 치명적 오류 대응
+  sentences:
+  - en: Stop the infusion and disconnect it immediately.
+    ko: 주입을 멈추고 즉시 분리하세요.
+    chunks: [Stop the infusion, and disconnect it, immediately, .]
+    words: [w-stop, w-infusion, w-disconnect, w-immediate]
+    goal: 1
+  - en: Assess the patient and notify the physician now.
+    ko: 환자를 사정하고 지금 바로 의사에게 알려요.
+    chunks: [Assess the patient, and notify, the physician now, .]
+    words: [w-assess, w-notify, w-physician]
+    goal: 2
+  - en: We'll trace all lines and document what happened.
+    ko: 모든 라인을 따라가면서 무슨 일이 있었는지 기록할게요.
+    chunks: [We'll trace all lines, and document, what happened, .]
+    words: [w-trace, w-line, w-document, w-happen]
+    goal: 2
+  - en: Right now I'm stopping the infusion — we can talk about how later.
+    ko: 지금은 주입을 멈추는 중이에요, 어떻게 된 건지는 나중에 이야기해요.
+    chunks: [Right now, I'm stopping the infusion, —, we can talk, about how later, .]
+    words: [w-stop, w-infusion, w-talk, w-later]
+    goal: 1
+  - en: 'Let''s act fast: airway first, then we call the physician.'
+    ko: 빠르게 행동해요, 기도 먼저, 그다음 의사를 불러요.
+    chunks: ['Let''s act fast:', 'airway first,', then we call, the physician, .]
+    words: [w-act, w-airway, w-first, w-call, w-physician]
+    goal: 1
+  - en: I'll stay with him while you notify the team what happened.
+    ko: 제가 곁에 있을 테니 팀에게 무슨 일이 있었는지 알려주세요.
+    chunks: [I'll stay with him, while you notify, the team, what happened, .]
+    words: [w-stay, w-notify, w-team, w-happen]
+    goal: 2
+  - en: We document every line we traced and every step we took.
+    ko: 따라간 모든 라인과 취한 모든 단계를 기록해요.
+    chunks: [We document, every line we traced, and every step, we took, .]
+    words: [w-document, w-line, w-trace, w-step]
+    goal: 2
+  nuance:
+  - kind: slider
+    words: [w-immediate, w-stop, w-infusion]
+    cue: Tube feeding is running into his IV line right now.
+    scale: [soon, promptly, immediately]
+    answerAt: 2
+    why: 지금 이 순간 해를 끼치고 있으면 immediately. promptly는 '지체 없이', soon은 '곧'이라 조금 미뤄도 되는 일에 써요.
+    example: Stop the infusion and disconnect it immediately.
+    exKo: 주입을 멈추고 즉시 분리하세요.
+  - kind: swap
+    words: [w-physician, w-line, w-happen]
+    who: 의사 콜 · 오연결 보고
+    icon: monitor
+    before: ['Dr. Kim, ', something weird happened with his lines, ' — tube feeding was connected to his IV, and I''ve stopped it.']
+    options: [I need to report a line misconnection, something weird happened with his lines, we have a total disaster here]
+    answer: I need to report a line misconnection
+    notes: {I need to report a line misconnection: 첫마디에 무엇이 일어났는지 분명한 용어로 말해 의사가 바로 상황을 잡아요., something weird happened with his lines: '흐린 말이라 얼마나 급한지, 무엇이 문제인지 전해지지 않아요.', we have a total disaster here: 감정이 앞선 과장이라 정보 없이 불안만 전해요.}
+    why: 의사 콜은 첫마디에 무엇이 일어났는지 정확히 말하고, 이미 한 조치를 이어서 말해요.
+- title: 고위험약 용량사고 위기
+  sentences:
+  - en: Stop the drip and check his labs and status now.
+    ko: 점적을 멈추고 지금 검사와 상태를 확인해요.
+    chunks: [Stop the drip, and check, his labs and status, now, .]
+    words: [w-stop, w-drip, w-check, w-lab, w-status]
+    goal: 1
+  - en: Prepare protamine and notify the physician immediately.
+    ko: 프로타민을 준비하고 즉시 의사에게 알려요.
+    chunks: [Prepare protamine, and notify, the physician, immediately, .]
+    words: [w-prepare, w-protamine, w-notify, w-physician, w-immediate]
+    goal: 2
+  - en: We'll document and file an incident report right away.
+    ko: 바로 기록하고 사건 보고서를 제출할게요.
+    chunks: [We'll document, and file, an incident report, right away, .]
+    words: [w-document, w-file, w-incident, w-report]
+    goal: 2
+  - en: I think he was given ten times the ordered dose of heparin.
+    ko: 처방된 헤파린 용량의 10배가 투여된 것 같아요.
+    chunks: [I think he was given, ten times, the ordered dose, of heparin, .]
+    words: [w-give, w-order, w-dose, w-heparin]
+    goal: 1
+  - en: Right now, we stop the drip first and ask questions after.
+    ko: 지금은 우선 점적을 멈추고, 질문은 나중에 해요.
+    chunks: ['Right now,', we stop the drip first, and ask questions, after, .]
+    words: [w-stop, w-drip, w-first, w-question, w-after]
+    goal: 1
+  - en: We're preparing protamine now and calling the doctor before anything else.
+    ko: 지금 프로타민을 준비하고 다른 무엇보다 먼저 의사를 부르고 있어요.
+    chunks: [We're preparing protamine, now, and calling the doctor, before anything else, .]
+    words: [w-prepare, w-protamine, w-call]
+    goal: 2
+  - en: This incident report explains exactly what happened and what we did next.
+    ko: 이 사건 보고서는 무슨 일이 있었고 다음에 무엇을 했는지 설명해요.
+    chunks: [This incident report, explains exactly, what happened, and what we did next, .]
+    words: [w-incident, w-report, w-happen, w-next]
+    goal: 2
+  nuance:
+  - kind: slider
+    words: [w-dose, w-heparin]
+    cue: Heparin was programmed at ten times the ordered rate.
+    scale: [therapeutic dose, high dose, overdose]
+    answerAt: 2
+    why: 처방의 10배가 들어갔으면 high dose가 아니라 overdose(과량 투여)예요. 보고할 때는 'tenfold'처럼 배수로 분명히 말해요.
+    example: He received a tenfold heparin overdose.
+    exKo: 헤파린이 10배 과량 투여됐어요.
+  - kind: context
+    words: [w-heparin, w-give, w-dose]
+    scenes:
+    - {who: 담당 의사 콜, icon: monitor, en: He was given ten times the ordered heparin dose about twenty minutes ago; the drip is stopped., ok: true}
+    - {who: 사건 보고서, icon: board, en: 'Heparin infused at 10x ordered rate; infusion stopped, MD notified.', ok: true}
+    - {who: 동료 간호사에게, icon: speech, en: 'Uh, I think I kind of messed up the heparin?', ok: false, fix: I think he was given ten times the ordered dose of heparin — I've stopped the drip.}
+    why: 위기 때는 동료에게도 흐린 말 대신 무엇이 얼마나 들어갔는지 수치로 말해야 바로 움직일 수 있어요.
+- title: 억제대 관련 질식·손상 위기
+  sentences:
+  - en: Release the restraint and reposition him immediately.
+    ko: 억제대를 풀고 즉시 자세를 바꿔줘요.
+    chunks: [Release the restraint, and reposition him, immediately, .]
+    words: [w-release, w-restraint, w-reposition, w-immediate]
+    goal: 1
+  - en: Check his airway and breathing right now.
+    ko: 지금 바로 기도와 호흡을 확인해요.
+    chunks: [Check his airway, and breathing, right now, .]
+    words: [w-check, w-airway, w-breathe]
+    goal: 2
+  - en: Call for help and stay with him.
+    ko: 도움을 부르고 곁에 있어줘요.
+    chunks: [Call for help, and stay, with him, .]
+    words: [w-call, w-help, w-stay]
+    goal: 1
+  - en: He slid down and the restraint is tight across his chest.
+    ko: 이분이 미끄러져 내려가서 억제대가 가슴을 조이고 있어요.
+    chunks: [He slid down, and the restraint, is tight, across his chest, .]
+    words: [w-slid, w-restraint, w-tight, w-chest]
+    goal: 1
+  - en: We need to check his breathing before we do anything else.
+    ko: 다른 걸 하기 전에 호흡부터 확인해야 해요.
+    chunks: [We need to check, his breathing, before we do, anything else, .]
+    words: [w-need, w-check, w-breathe]
+    goal: 2
+  - en: I'll stay right here — someone else, please call for help now.
+    ko: 저는 여기 있을게요, 다른 분이 지금 도움을 불러주세요.
+    chunks: [I'll stay right here, —, 'someone else,', please call for help now, .]
+    words: [w-stay, w-call, w-help]
+    goal: 1
+  - en: Once it's off, we reposition him and reassess his airway right away.
+    ko: 풀리고 나면 자세를 바꾸고 기도를 다시 사정해요.
+    chunks: ['Once it''s off,', we reposition him, and reassess, his airway right away, .]
+    words: [w-off, w-reposition, w-reassess, w-airway]
+    goal: 2
+  nuance:
+  - kind: slider
+    words: [w-tight, w-restraint]
+    cue: You can't slide a finger under the vest, and he's gasping.
+    scale: [snug, tight, constricting]
+    answerAt: 2
+    why: 억제대는 손가락 두 개가 들어갈 정도(snug)가 맞아요. 손가락도 안 들어가고 숨쉬기를 막고 있으면 constricting — 즉시 풀어요.
+    example: The restraint should be snug, with two fingers' room underneath.
+    exKo: 억제대는 아래로 손가락 두 개가 들어갈 만큼 꼭 맞아야 해요.
+  - kind: context
+    words: [w-help, w-call]
+    scenes:
+    - {who: 복도의 동료에게, icon: speech, en: I need help in 12 — now!, ok: true}
+    - {who: 원내 호출, icon: siren, en: Rapid response to ICU bed 12., ok: true}
+    - {who: 복도의 동료에게, icon: speech, en: 'Sorry to bother you — could you maybe come help when you have a second?', ok: false, fix: I need help in 12 right now — he can't breathe!}
+    why: 응급에서 정중하게 돌려 말하면 급하지 않다는 뜻으로 들려요. 위치와 상황을 짧고 분명하게 말해요.
+- title: 알람 무시 급변 위기
+  sentences:
+  - en: Assess him now — airway, breathing, circulation.
+    ko: 지금 바로 사정해요, 기도, 호흡, 순환이요.
+    chunks: [Assess him now, —, 'airway,', 'breathing,', circulation, .]
+    words: [w-assess, w-airway, w-breathe, w-circulation]
+    goal: 1
+  - en: Call for the rapid response and start oxygen.
+    ko: 신속대응팀을 부르고 산소를 시작해요.
+    chunks: [Call for, the rapid response, and start, oxygen, .]
+    words: [w-call, w-rapidresponse, w-start, w-oxygen]
+    goal: 1
+  - en: Afterward we review why the alarm was missed.
+    ko: 나중에 알람을 왜 놓쳤는지 검토해요.
+    chunks: [Afterward we review, why the alarm, was missed, .]
+    words: [w-afterward, w-review, w-alarm, w-miss]
+    goal: 2
+  - en: His sat alarm was sounding, but no one caught it in time.
+    ko: 산소포화도 알람이 울리고 있었지만 아무도 제때 알아채지 못했어요.
+    chunks: [His sat alarm, 'was sounding,', but no one caught it, in time, .]
+    words: [w-sat, w-alarm, w-sound, w-catch]
+    goal: 1
+  - en: He's crashing now — stop what you're doing and look at him.
+    ko: 지금 급변하고 있어요, 하던 일을 멈추고 이분을 봐주세요.
+    chunks: [He's crashing now, —, stop what you're doing, and look at him, .]
+    words: [w-crash, w-stop]
+    goal: 1
+  - en: We'll figure out why the alarm got missed after he's stable.
+    ko: 안정되고 나면 알람을 왜 놓쳤는지 알아낼 거예요.
+    chunks: [We'll figure out, why the alarm, got missed, after he's stable, .]
+    words: [w-figure, w-alarm, w-miss, w-stable]
+    goal: 2
+  - en: This isn't about blame — it's about learning why no one heard the alarm.
+    ko: 이건 비난이 아니라 왜 아무도 알람을 못 들었는지 배우는 거예요.
+    chunks: [This isn't about blame, —, it's about learning, why no one heard, the alarm, .]
+    words: [w-blame, w-learning, w-hear, w-alarm]
+    goal: 2
+  nuance:
+  - kind: slider
+    words: [w-crash]
+    cue: SpO2 78%, HR 40 and dropping, and he's not responding.
+    scale: [declining, deteriorating, crashing]
+    answerAt: 2
+    why: crashing은 지금 당장 무너지는 중이라는 아주 급한 구어예요. 의료진끼리 말로 쓰고, 차트에는 'acutely deteriorating' 같은 말로 적어요.
+    example: He's crashing — call the rapid response.
+    exKo: 급변하고 있어요, 신속대응팀 불러요.
+  - kind: context
+    words: [w-crash]
+    scenes:
+    - {who: 동료 간호사에게, icon: speech, en: He's crashing — stop what you're doing and look at him!, ok: true}
+    - {who: 신속대응팀 콜, icon: siren, en: Rapid response to bed 8 — sats 78% and heart rate in the 40s., ok: true}
+    - {who: 보호자에게, icon: me, en: He's crashing!, ok: false, fix: 'His oxygen level dropped suddenly. The team is with him now, and I''ll update you as soon as I can.'}
+    why: crashing은 의료진끼리의 급한 말이에요. 보호자에게는 무엇이 일어났고 지금 누가 돌보고 있는지를 말해요.
+- title: 전원·펌프 고장 위기 대응
+  sentences:
+  - en: Switch to battery backup and the red emergency outlets.
+    ko: 배터리 백업과 빨간 비상 콘센트로 전환해요.
+    chunks: [Switch to, battery backup, and the red, emergency outlets, .]
+    words: [w-switch, w-battery, w-backup, w-red, w-emergency, w-outlet]
+    goal: 1
+  - en: Manually control critical drips until pumps restart.
+    ko: 펌프가 재시작될 때까지 위중한 점적은 수동으로 조절해요.
+    chunks: [Manually control, critical drips, until pumps, restart, .]
+    words: [w-manually, w-control, w-critical, w-drip, w-pump, w-restart]
+    goal: 2
+  - en: Prioritize the life-sustaining infusions first.
+    ko: 생명 유지 주입을 먼저 우선시해요.
+    chunks: [Prioritize, the life-sustaining, infusions first, .]
+    words: [w-prioritize, w-lifesustaining, w-infusion, w-first]
+    goal: 2
+  - en: The power just dropped, and every pump on this wall is dead.
+    ko: 방금 전원이 나갔고, 이 벽의 펌프가 전부 작동을 멈췄어요.
+    chunks: ['The power just dropped,', and every pump, on this wall, is dead, .]
+    words: [w-power, w-drop, w-pump, w-dead]
+    goal: 1
+  - en: Our backup is battery power and the red outlets on that wall.
+    ko: 우리 백업은 배터리 전원과 저 벽의 빨간 콘센트예요.
+    chunks: [Our backup is, battery power, and the red outlets, on that wall, .]
+    words: [w-backup, w-battery, w-power, w-red, w-outlet]
+    goal: 1
+  - en: Until the pumps restart, I'll control this drip by hand.
+    ko: 펌프가 재시작될 때까지 이 점적은 제가 손으로 조절할게요.
+    chunks: ['Until the pumps restart,', I'll control, this drip, by hand, .]
+    words: [w-pump, w-restart, w-control, w-drip]
+    goal: 2
+  - en: We prioritize the pressors and sedation — those infusions can't stop.
+    ko: 승압제와 진정제를 우선시해요, 그 주입은 멈출 수 없어요.
+    chunks: [We prioritize, the pressors and sedation, —, those infusions can't stop, .]
+    words: [w-prioritize, w-pressor, w-sedation, w-infusion, w-stop]
+    goal: 2
+  nuance:
+  - kind: pair
+    words: [w-battery, w-backup, w-red, w-outlet, w-lifesustaining, w-infusion]
+    pairs:
+    - [battery, backup]
+    - [red, outlets]
+    - [life-sustaining, infusions]
+    decoys: [pressure]
+    why: 정전 때 기대는 건 battery backup, 비상 전원이 들어오는 콘센트는 red outlets(미국 병원은 보통 빨간색), 끊기면 안 되는 주입은 life-sustaining infusions예요.
+  - kind: context
+    words: [w-power, w-drop, w-dead]
+    scenes:
+    - {who: 동료 간호사에게, icon: speech, en: Power just dropped — every pump on this wall is dead!, ok: true}
+    - {who: 시설팀 전화, icon: speech, en: ICU beds 4 through 8 lost normal power; pumps are on battery., ok: true}
+    - {who: 보호자에게, icon: me, en: The power's dead and all his pumps just died., ok: false, fix: 'We''ve lost power for a moment, but his medicines are on backup and I''m watching him closely.'}
+    why: '''dead·died''는 보호자에게 환자 이야기로 들릴 수 있어요. 무엇이 꺼졌고 어떻게 대비하고 있는지를 말해요.'
+- title: 심각 안전사건 공개·소통
+  sentences:
+  - en: We disclose honestly, with facts and empathy.
+    ko: 사실과 공감을 담아 정직하게 공개해요.
+    chunks: ['We disclose honestly,', with facts, and empathy, .]
+    words: [w-disclose, w-honestly, w-fact, w-empathy]
+    goal: 1
+  - en: The physician leads the disclosure, and we support it.
+    ko: 의사가 공개를 주도하고, 우리는 그걸 지지해요.
+    chunks: [The physician, leads, 'the disclosure,', and we support it, .]
+    words: [w-physician, w-lead, w-disclosure, w-support]
+    goal: 2
+  - en: We acknowledge what happened and our plan to make it right.
+    ko: 무슨 일이 있었는지 인정하고, 바로잡을 계획을 말씀드려요.
+    chunks: [We acknowledge, what happened, and our plan, to make it right, .]
+    words: [w-acknowledge, w-happen, w-plan, w-right]
+    goal: 1
+  - en: We tell the family first, before anyone else outside this room.
+    ko: 이 방 밖의 다른 누구보다 먼저 가족에게 말해요.
+    chunks: [We tell, 'the family first,', before anyone else, outside this room, .]
+    words: [w-first]
+    goal: 1
+  - en: Right now, I'm answering your questions honestly — the full review comes after.
+    ko: 지금은 정직하게 질문에 답하고 있고, 전체 검토는 나중이에요.
+    chunks: ['Right now,', I'm answering your questions, honestly, —, the full review comes after, .]
+    words: [w-answer, w-question, w-honestly, w-full, w-review, w-after]
+    goal: 2
+  - en: We don't guess at causes here; we stick to the facts we know.
+    ko: 여기서는 원인을 추측하지 않고 아는 사실만 말해요.
+    chunks: [We don't guess, at causes here;, we stick to, the facts we know, .]
+    words: [w-guess, w-cause, w-fact]
+    goal: 1
+  - en: Our plan going forward is as important as what already happened.
+    ko: 앞으로의 계획도 이미 일어난 일만큼 중요해요.
+    chunks: [Our plan, going forward, is as important, as what already happened, .]
+    words: [w-plan, w-important, w-happen]
+    goal: 2
+  nuance:
+  - kind: pair
+    words: [w-right, w-lead, w-disclosure, w-fact, w-empathy]
+    pairs:
+    - [make it, right]
+    - [lead, the disclosure]
+    - [with facts and, empathy]
+    decoys: [sorry]
+    why: 바로잡다는 make it right, 공개 면담을 이끄는 건 lead the disclosure, 공개의 태도는 with facts and empathy로 함께 써요.
+  - kind: swap
+    words: [w-guess, w-cause, w-honestly]
+    who: 보호자에게 · 원인 질문에 답하기
+    icon: me
+    before: ['We don''t know the full cause yet, but ', it was probably a pump glitch, .]
+    options: [we'll tell you what we find, it was probably a pump glitch, there's nothing to worry about]
+    answer: we'll tell you what we find
+    notes: {we'll tell you what we find: '모르는 것은 모른다고 하고, 알게 되면 알리겠다고 약속해요 — 지킬 수 있는 약속이에요.', it was probably a pump glitch: 확인 안 된 원인을 추측해 말하면 나중에 말이 바뀌어 신뢰를 잃어요., there's nothing to worry about: 사실과 다르게 안심시키는 말이라 공개의 정직성을 해쳐요.}
+    why: 공개 면담에서는 원인을 추측하지 않고 아는 사실만 말하며, 모르는 것은 알아보고 알리겠다고 해요.

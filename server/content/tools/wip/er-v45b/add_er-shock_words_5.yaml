@@ -1,0 +1,217 @@
+w-gi:
+  cue: "토혈 환자의 응급 내시경을 맡는 진료과를 두 글자로 부를 때"
+  tag: 출혈·수혈
+  distractorsEn: [ENT, IR]
+  distractorsKo: [이비인후과, 중재영상의학과]
+  chips: [[GI]]
+  decoyChips: [IG]
+w-emergent:
+  cue: "지금 당장 해야 하는 시술 앞에 붙는 임상어 — 'urgent'보다 한 단계 더 급하다"
+  tag: 긴급 대응
+  distractorsEn: [elective, emerging]
+  distractorsKo: [예정된, 만성의]
+  chips: [[e, mer, gent]]
+  decoyChips: [gency, mar]
+w-endoscopy:
+  cue: "입으로 카메라를 넣어 출혈하는 위·식도 혈관을 찾아 지혈하는 시술"
+  tag: 출혈·수혈
+  distractorsEn: [colonoscopy, bronchoscopy]
+  distractorsKo: [대장내시경, 기관지내시경]
+  chips: [[endo, scopy]]
+  decoyChips: [indo, scope]
+w-vomit:
+  cue: "피를 게워 낸다고 동료에게 보고할 때 쓰는 임상 동사 — 상부 위장관 출혈"
+  tag: 출혈·수혈
+  distractorsEn: [void, vent]
+  distractorsKo: [기침하다, 삼키다]
+  chips: [[vom, it]]
+  decoyChips: [vam, et]
+w-rate:
+  cue: "1분에 심장이 몇 번 뛰는지 — 'slow heart ___'와 저혈압이 함께면 신경성 쇼크"
+  tag: 바이탈
+  distractorsEn: [rhythm, range]
+  distractorsKo: [리듬, 범위]
+  chips: [[rate]]
+  decoyChips: [late]
+w-point:
+  cue: "말이 안 통하는 환자에게 손가락으로 짚어 보이라고 할 때, 소견이 어떤 진단을 가리킬 때"
+  tag: 쇼크 감별
+  distractorsEn: [print, paint]
+  distractorsKo: [숨기다, 감추다]
+  chips: [[point]]
+  decoyChips: [pint]
+w-neurogenic:
+  cue: "척수 손상으로 교감신경이 끊겨 혈압과 맥박이 함께 떨어지는 쇼크의 이름"
+  tag: 쇼크 감별
+  distractorsEn: [cardiogenic, neurologic]
+  distractorsKo: [심인성의, 저혈량성의]
+  chips: [[neuro, gen, ic]]
+  decoyChips: [cardio, logic]
+w-shock:
+  cue: "조직에 피가 충분히 가지 않는 순환 부전 상태 — 저혈량성·패혈성·심인성·신경성"
+  tag: 쇼크 감별
+  distractorsEn: [stroke, sock]
+  distractorsKo: [뇌졸중, 실신]
+  chips: [[shock]]
+  decoyChips: [shook]
+w-full:
+  cue: "척추 보호를 하나도 빼지 않고 전부 지키라고 할 때 — '___ spinal precautions'"
+  tag: 긴급 대응
+  distractorsEn: [foul, dull]
+  distractorsKo: [부분적인, 느슨한]
+  chips: [[full]]
+  decoyChips: [fool]
+w-spinal:
+  cue: "추락 외상에서 경추 칼라·통나무 굴리기로 지키는 뼈대 쪽의 — '___ precautions'"
+  tag: 쇼크 감별
+  distractorsEn: [spiral, spinach]
+  distractorsKo: [두개의, 골반의]
+  chips: [[spin, al]]
+  decoyChips: [spir, el]
+w-precaution:
+  cue: "더 다치지 않게 미리 지키는 조치 — 낙상·척추·격리 앞에도 붙는다"
+  tag: 긴급 대응
+  distractorsEn: [prescription, procedure]
+  distractorsKo: [처방, 시술]
+  chips: [[pre, cau, tion]]
+  decoyChips: [pri, caus]
+w-move:
+  cue: "척수 손상 의심 환자의 목을 함부로 돌리거나 굽히지 말라고 할 때 — 'don't ___ his neck'"
+  tag: 긴급 대응
+  distractorsEn: [remove, prove]
+  distractorsKo: [고정하다, 받치다]
+  chips: [[move]]
+  decoyChips: [mauve]
+w-consider:
+  cue: "바로 하라는 게 아니라 다음 선택지로 염두에 두자고 할 때"
+  tag: 쇼크 감별
+  distractorsEn: [consent, confirm]
+  distractorsKo: [확정하다, 배제하다]
+  chips: [[con, sid, er]]
+  decoyChips: [cen, sit]
+w-pressor:
+  cue: "수액으로도 혈압이 안 오르면 거는 혈관수축제를 간호사들이 줄여 부르는 말"
+  tag: 약물
+  distractorsEn: [processor, pressure]
+  distractorsKo: [진정제, 이뇨제]
+  chips: [[press, or]]
+  decoyChips: [pres, er]
+w-atropine:
+  cue: "신경성 쇼크에서 지나치게 느려진 맥박을 올리려고 고려하는 약"
+  tag: 약물
+  distractorsEn: [adenosine, amiodarone]
+  distractorsKo: [아데노신, 아미오다론]
+  chips: [[a, tro, pine]]
+  decoyChips: [tra, pin]
+w-situation:
+  cue: "SBAR 보고의 첫 글자 — 지금 무슨 일이 벌어지고 있는지 한 줄로"
+  tag: 인계
+  distractorsEn: [station, saturation]
+  distractorsKo: [배경, 평가]
+  chips: [[sit, u, ation]]
+  decoyChips: [sat, ution]
+w-septic:
+  cue: "감염 때문에 생긴 쇼크를 부르는 형용사 — '___ shock'"
+  tag: 쇼크 감별
+  distractorsEn: [aseptic, skeptic]
+  distractorsKo: [무균의, 출혈성의]
+  chips: [[sep, tic]]
+  decoyChips: [sip, tick]
+w-still:
+  cue: "승압제를 걸었는데도 아직 그대로 저혈압일 때 — '___ hypotensive'"
+  tag: 인계
+  distractorsEn: [already, steady]
+  distractorsKo: [이미, 다시는]
+  chips: [[still]]
+  decoyChips: [stil]
+w-hypotensive:
+  cue: "SBAR에서 혈압이 낮다는 것을 한 단어로 — 의료진끼리 쓰는 형용사"
+  tag: 인계
+  distractorsEn: [hypertensive, hypoxic]
+  distractorsKo: [고혈압의, 저산소의]
+  chips: [[hypo, tens, ive]]
+  decoyChips: [hyper, ion]
+w-climb:
+  cue: "젖산이 재측정 때마다 조금씩 더 높아질 때 — 'lactate is ___ing'"
+  tag: 검사
+  distractorsEn: [clamp, crumble]
+  distractorsKo: [떨어지다, 멈추다]
+  chips: [[climb]]
+  decoyChips: [clim]
+w-recommend:
+  cue: "SBAR의 마지막 R — 간호사가 필요한 조치를 제안할 때"
+  tag: 인계
+  distractorsEn: [recommence, remand]
+  distractorsKo: [보고하다, 거절하다]
+  chips: [[rec, om, mend]]
+  decoyChips: [mand, rek]
+w-icu:
+  cue: "승압제 두 개를 쓰는 환자를 올려 보내는 병동 — 세 글자 약어"
+  tag: 인계
+  distractorsEn: [ICD, PACU]
+  distractorsKo: [이식형 제세동기, 회복실]
+  chips: [[ICU]]
+  decoyChips: [IUC]
+w-admission:
+  cue: "응급실에서 병동·중환자실로 정식으로 입원시키는 것"
+  tag: 인계
+  distractorsEn: [discharge, omission]
+  distractorsKo: [퇴원, 전원]
+  chips: [[ad, mis, sion]]
+  decoyChips: [ed, mit]
+w-central:
+  cue: "목·쇄골 아래의 큰 정맥에 넣는 라인, 중심정맥압 감시 앞에 붙는 말"
+  tag: 수액·정맥로
+  distractorsEn: [peripheral, cerebral]
+  distractorsKo: [말초의, 뇌의]
+  chips: [[cen, tral]]
+  decoyChips: [sen, trial]
+w-monitor:
+  cue: "기계를 연결해 수치를 계속 지켜보는 것 — 중환자실에서 하는 일"
+  tag: 인계
+  distractorsEn: [mentor, motor]
+  distractorsKo: [보고하다, 투여하다]
+  chips: [[mon, i, tor]]
+  decoyChips: [men, ter]
+w-steroid:
+  cue: "매일 먹다가 갑자기 끊으면 부신위기가 올 수 있는 약 — 프레드니손 같은"
+  tag: 약물
+  distractorsEn: [sterol, opioid]
+  distractorsKo: [항생제, 진통제]
+  chips: [[ster, oid]]
+  decoyChips: [stir, old]
+w-stop:
+  cue: "스테로이드를 왜 끊었는지 물을 때 — 'why did you ___?'"
+  tag: 약물
+  distractorsEn: [stoop, step]
+  distractorsKo: [시작하다, 늘리다]
+  chips: [[stop]]
+  decoyChips: [stoop]
+w-miss:
+  cue: "약 먹는 때를 깜빡 건너뛰었을 때 — '___ a dose'"
+  tag: 약물
+  distractorsEn: [mix, mess]
+  distractorsKo: [늘리다, 나눠 먹다]
+  chips: [[miss]]
+  decoyChips: [mess]
+w-dangerous:
+  cue: "부신위기가 얼마나 심각한지 환자에게 분명하게 경고할 때의 형용사"
+  tag: 설명·안심
+  distractorsEn: [generous, gangrenous]
+  distractorsKo: [흔한, 가벼운]
+  chips: [[dan, ger, ous]]
+  decoyChips: [gen, dun]
+w-crisis:
+  cue: "스테로이드를 끊어서 부신이 버티지 못하는 급한 상태 — 'adrenal ___'"
+  tag: 쇼크 감별
+  distractorsEn: [critic, cyst]
+  distractorsKo: [회복, 부작용]
+  chips: [[cri, sis]]
+  decoyChips: [cry, ses]
+w-hydrocortisone:
+  cue: "부신위기에 정맥으로 바로 주는 스테로이드 — 수액과 함께"
+  tag: 약물
+  distractorsEn: [hydrochlorothiazide, hydromorphone]
+  distractorsKo: [이뇨제, 마약성 진통제]
+  chips: [[hydro, cor, ti, sone]]
+  decoyChips: [cort, zone]

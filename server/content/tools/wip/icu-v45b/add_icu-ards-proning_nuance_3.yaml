@@ -1,0 +1,115 @@
+앙와위 복귀 시점 판단:
+  - kind: slider
+    words: [w-closely, w-watch, w-afterward]
+    cue: "앙와위로 돌린 직후 첫 한 시간 — 복와위로 얻은 산소화가 유지되는지 봐야 한다"
+    scale: [occasionally, regularly, closely]
+    answerAt: 2
+    why: "돌려 눕힌 뒤에는 산소화가 다시 떨어지는 환자도 있어서, 직후에는 closely — 곁에서 자주 지켜봐요. occasionally면 떨어지는 순간을 놓칠 수 있어요."
+    example: "Let's plan the turn as a team and watch his sats closely afterward."
+    exKo: "팀으로 돌리는 걸 계획하고 그 후 산소포화도를 자세히 지켜볼게요."
+  - kind: context
+    words: [w-sat, w-steady, w-stable]
+    scenes:
+      - {who: 동료에게, icon: speech, en: "His sats have been steady at 95 for the last hour.", ok: true}
+      - {who: 차트 기록, icon: board, en: "SpO2 95% x 1 hr, stable.", ok: true}
+      - {who: 보호자에게, icon: me, en: "His sats have been 95 on fifty percent.", ok: false, fix: "His oxygen levels have stayed good, so we're planning to turn him onto his back."}
+    why: "sats·FiO2 퍼센트는 팀 안의 말이에요. 보호자에게는 '산소가 잘 유지돼서 다시 바로 눕힐 계획'이라는 뜻을 전해요."
+복와위 중 급성 desaturation:
+  - kind: slider
+    words: [w-suddenly, w-drop, w-sat]
+    cue: "2분 사이 SpO2가 94에서 78로"
+    scale: [drifting down, dropping, plummeting]
+    answerAt: 2
+    why: "drifting down은 서서히 내려가는 것, plummeting은 곤두박질치는 것이에요. 이렇게 갑자기 떨어지면 튜브 위치 이탈이나 막힘 같은 급한 원인부터 확인해요."
+    example: "His sats dropped fast, so something changed suddenly."
+    exKo: "산소포화도가 빠르게 떨어졌으니 갑자기 뭔가 바뀐 거예요."
+  - kind: swap
+    words: [w-call, w-drop]
+    who: "동료에게 · 도움 요청"
+    icon: siren
+    before: ["I need ", "someone to come by when they're free", " — his sats are dropping fast."]
+    options: [help in here now, someone to come by when they're free, a minute]
+    answer: help in here now
+    notes: {help in here now: "무엇이 필요한지(help), 어디로(in here), 언제(now) — 급할 때 필요한 말이 다 들어 있어요.", someone to come by when they're free: "급하지 않은 부탁으로 들려 아무도 서두르지 않아요.", a minute: "도움이 필요한 상황이라는 뜻이 사라져요."}
+    why: "급할 때 도움을 청하는 말은 짧고, 지금이라는 걸 분명히 해요."
+복와위 중 심정지 긴급 앙와위 전환:
+  - kind: pair
+    words: [w-code, w-cart, w-compression]
+    pairs: [[code, cart], [chest, compressions], [call, the code]]
+    decoys: [mask]
+    why: "code cart(응급 카트), chest compressions(흉부 압박), call the code(코드를 방송해 소생팀을 부르다) — 코드 상황의 굳은 짝이에요."
+  - kind: swap
+    words: [w-cpr, w-instant, w-start]
+    who: "코드 리더 → 팀"
+    icon: siren
+    before: ["Start CPR ", "when everyone feels ready", "."]
+    options: [the instant he's on his back, when everyone feels ready, after we talk it over]
+    answer: the instant he's on his back
+    notes: {the instant he's on his back: "언제 시작하는지가 분명해요. 압박은 늦을수록 결과가 나빠져요.", when everyone feels ready: "시작 시점이 흐려서 압박이 늦어져요.", after we talk it over: "심정지에서는 의논하느라 압박을 미루지 않아요."}
+    why: "코드에서는 '언제'를 사건으로 못 박아 말해요 — 등이 닿는 그 순간."
+복와위 중 우발적 발관:
+  - kind: pair
+    words: [w-bag-mask, w-reintubation, w-cricoid]
+    pairs: [[bag-mask, ventilation], [reintubation, cart], [cricoid, pressure]]
+    decoys: [count]
+    why: "bag-mask ventilation(백마스크 환기), reintubation cart(재삽관 카트), cricoid pressure(윤상연골 압박) — 기도 응급에서 통째로 듣고 말하는 짝이에요."
+  - kind: swap
+    words: [w-tube, w-out]
+    who: "동료에게 · 발관 발견"
+    icon: siren
+    before: ["The tube is ", "not quite where it should be", " — turn him supine immediately."]
+    options: [out, not quite where it should be, probably fine]
+    answer: out
+    notes: {out: "한 낱말로 무슨 일이 생겼는지 바로 전해요. 다들 즉시 움직여요.", not quite where it should be: "조금 밀렸다는 뜻으로 들려서, 완전히 빠진 위급함이 전해지지 않아요.", probably fine: "빠진 튜브를 괜찮다고 하면 기도 확보가 늦어져요."}
+    why: "위급한 순간에는 완곡하게 말하지 않아요. 사실을 가장 짧게 말해요."
+난치성 저산소증 ECMO 의뢰:
+  - kind: slider
+    words: [w-hypoxic, w-remain, w-despite]
+    cue: "FiO2 100%, PEEP을 올리고 복와위까지 했는데 산소화가 오르지 않는다"
+    scale: [mildly hypoxic, hypoxic, refractory hypoxemia]
+    answerAt: 2
+    why: "할 수 있는 조치를 다 했는데도 오르지 않으면 refractory(난치성)라고 해요. ECMO 의뢰를 논의할 때 쓰는 말이에요."
+    example: "He remains hypoxic despite proning and maximal ventilation."
+    exKo: "복와위와 최대 환기에도 계속 저산소증이에요."
+  - kind: swap
+    words: [w-summarize, w-course, w-coordinator]
+    who: "ECMO 코디네이터에게 · 전화"
+    icon: speech
+    before: ["He's been ", "really, really bad for a while", " despite proning and maximal ventilation."]
+    options: [hypoxic for the last six hours, "really, really bad for a while", okay-ish]
+    answer: hypoxic for the last six hours
+    notes: {hypoxic for the last six hours: "무엇이(hypoxic) 얼마 동안(six hours)인지 — 의뢰받는 쪽이 바로 판단할 수 있어요.", "really, really bad for a while": "심각하다는 느낌은 전해지지만 무엇이 얼마나인지가 빠져요.", okay-ish: "ECMO를 의뢰하는 까닭과 맞지 않아요."}
+    why: "다른 팀에 의뢰할 때는 경과를 구체적인 상태와 시간으로 요약해요."
+기흉·기압손상 동반 위기:
+  - kind: pair
+    words: [w-unequal, w-tray, w-physician]
+    pairs: [[unequal, breath sounds], [chest tube, tray], [call, the physician]]
+    decoys: [his stomach]
+    why: "unequal breath sounds(양쪽 호흡음이 다름), chest tube tray(흉관 트레이), call the physician(의사에게 연락) — 기흉 의심 때 이어서 나오는 짝이에요."
+  - kind: swap
+    words: [w-suggest, w-pneumothorax]
+    who: "의사 콜 · 기흉 의심 보고"
+    icon: monitor
+    before: ["High pressures with unequal breath sounds ", "prove", " a pneumothorax."]
+    options: [suggest, prove, rule out]
+    answer: suggest
+    notes: {suggest: "보고 있는 소견이 기흉을 가리킨다는 뜻 — 확진은 의사가 영상 등으로 해요.", prove: "소견만으로 확정할 수는 없어요. 과장된 보고가 돼요.", rule out: "정반대 뜻이에요 — 기흉이 아니라고 말하는 셈이에요."}
+    why: "간호사의 보고는 소견과 의심을 정확한 강도로 전해요."
+복와위 중 안면 압박괴사 위기:
+  - kind: slider
+    words: [w-deep, w-injury, w-stage]
+    cue: "뺨에 짙은 자줏빛 자국 — 눌러도 하얘지지 않고, 피부는 아직 안 벗겨졌다"
+    scale: [blanchable redness, stage 1 pressure injury, deep tissue pressure injury]
+    answerAt: 2
+    why: "피부가 벗겨지지 않았어도 짙은 자줏빛·적갈색이 눌러도 남으면 deep tissue pressure injury로 봐요. 겉보다 아래 조직이 이미 다쳤다는 뜻이라 바로 압박을 없애요."
+    example: "This deep pressure injury needs the head repositioned right away."
+    exKo: "깊은 압박 손상이라 머리 위치를 바로 바꿔야 해요."
+  - kind: swap
+    words: [w-consult, w-wound, w-care]
+    who: "동료에게 · 상처 자문"
+    icon: speech
+    before: ["I'll ", "get someone to look at it eventually", " and document the stage of injury."]
+    options: [consult wound care, get someone to look at it eventually, keep an eye on it]
+    answer: consult wound care
+    notes: {consult wound care: "누구에게(wound care) 무엇을(consult) 하는지가 분명해요.", get someone to look at it eventually: "누가 언제 볼지 정해지지 않아 깊은 손상이 방치될 수 있어요.", keep an eye on it: "깊은 압박 손상은 지켜보기만 할 단계가 아니에요."}
+    why: "조치가 필요한 손상은 담당 팀과 할 일을 분명히 말해요."

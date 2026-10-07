@@ -1,0 +1,6769 @@
+theme: icu-cardiogenic
+words:
+- id: w-check
+  en: check
+  ipa: /tʃɛk/
+  ko: 확인하다
+  icon: check
+  example: I'm checking your breathing, blood pressure, and circulation.
+  exKo: 숨쉬는 것, 혈압, 순환을 확인하고 있어요.
+  cue: 숨·혈압·순환을 하나씩 살펴볼 때 — 'I'm ___ing your breathing'
+  tag: 신체 사정
+  distractorsEn:
+  - chart
+  - track
+  distractorsKo:
+  - 기록하다
+  - 교체하다
+  chips:
+  - - check
+  decoyChips:
+  - chek
+- id: w-breathing
+  en: breathing
+  ipa: /ˈbriːðɪŋ/
+  ko: 호흡
+  icon: stetho
+  example: I'm checking your breathing, blood pressure, and circulation.
+  exKo: 숨쉬는 것, 혈압, 순환을 확인하고 있어요.
+  cue: 숨 쉬는 일 그 자체 — 사정할 때 맨 먼저 보는 것, 'make ___ easier'
+  tag: 신체 사정
+  distractorsEn:
+  - bleeding
+  - swallowing
+  distractorsKo:
+  - 출혈
+  - 삼킴
+  chips:
+  - - breath
+    - ing
+  decoyChips:
+  - breth
+  - eng
+- id: w-blood
+  en: blood
+  ipa: /blʌd/
+  ko: 혈액
+  icon: lab
+  example: Your blood pressure is a little low right now.
+  exKo: 지금 혈압이 조금 낮아요.
+  cue: 혈관 속을 도는 붉은 액체 — '___ pressure', '___ flow' 앞에 붙는 말
+  tag: 혈역학
+  distractorsEn:
+  - plasma
+  - urine
+  distractorsKo:
+  - 혈장
+  - 소변
+  chips:
+  - - blood
+  decoyChips:
+  - blod
+- id: w-pressure
+  en: pressure
+  ipa: /ˈprɛʃər/
+  ko: 혈압
+  icon: chartup
+  example: Your blood pressure is a little low right now.
+  exKo: 지금 혈압이 조금 낮아요.
+  cue: 커프·동맥관으로 재는 수치 — 'His ___ is low after the MI'
+  tag: 혈역학
+  distractorsEn:
+  - pulse
+  - preload
+  distractorsKo:
+  - 맥박
+  - 전부하
+  chips:
+  - - pres
+    - sure
+  decoyChips:
+  - pris
+  - shure
+- id: w-circulation
+  en: circulation
+  ipa: /ˌsɜːrkjəˈleɪʃn/
+  ko: 순환
+  icon: stetho
+  example: I'm checking your breathing, blood pressure, and circulation.
+  exKo: 숨쉬는 것, 혈압, 순환을 확인하고 있어요.
+  cue: 피가 온몸을 도는 것 — 얼룩진 피부·차가운 다리가 나빠졌다는 신호
+  tag: 관류 사정
+  distractorsEn:
+  - ventilation
+  - oxygenation
+  distractorsKo:
+  - 환기
+  - 산소화
+  chips:
+  - - circu
+    - la
+    - tion
+  decoyChips:
+  - circle
+  - ra
+- id: w-low
+  en: low
+  ipa: /loʊ/
+  ko: 낮은
+  icon: chartup
+  example: Your blood pressure is a little low right now.
+  exKo: 지금 혈압이 조금 낮아요.
+  cue: 환자에게 혈압 수치를 겁주지 않고 알릴 때 — 'a little ___'
+  tag: 혈역학
+  distractorsEn:
+  - slow
+  - weak
+  distractorsKo:
+  - 높은
+  - 느린
+  chips:
+  - - low
+  decoyChips:
+  - lo
+- id: w-hear
+  en: hear
+  ipa: /hɪr/
+  ko: 듣다
+  icon: speaker
+  example: I can hear some fluid in your lungs, so we'll help with that.
+  exKo: 폐에 물이 조금 찬 소리가 들려서, 저희가 도와드릴게요.
+  cue: 청진기로 폐에서 물소리가 잡힐 때 — 'I can ___ some fluid'
+  tag: 신체 사정
+  distractorsEn:
+  - feel
+  - see
+  distractorsKo:
+  - 만져지다
+  - 보이다
+  chips:
+  - - hear
+  decoyChips:
+  - here
+- id: w-fluid
+  en: fluid
+  ipa: /ˈfluːɪd/
+  ko: 수분
+  icon: lab
+  example: I can hear some fluid in your lungs, so we'll help with that.
+  exKo: 폐에 물이 조금 찬 소리가 들려서, 저희가 도와드릴게요.
+  cue: 폐에 차고 다리를 붓게 하는 몸속 물 — I/O로 들고 나는 양을 잰다
+  tag: 수분 관리
+  distractorsEn:
+  - flow
+  - fiber
+  distractorsKo:
+  - 가래
+  - 혈액
+  chips:
+  - - flu
+    - id
+  decoyChips:
+  - flue
+  - ed
+- id: w-lung
+  en: lung
+  ipa: /lʌŋ/
+  ko: 폐
+  icon: stetho
+  example: I can hear some fluid in your lungs, so we'll help with that.
+  exKo: 폐에 물이 조금 찬 소리가 들려서, 저희가 도와드릴게요.
+  cue: 숨을 들이쉬면 부풀고, 폐부종이면 물이 차는 가슴 속 기관
+  tag: 신체 사정
+  distractorsEn:
+  - liver
+  - lump
+  distractorsKo:
+  - 간
+  - 기관지
+  chips:
+  - - lung
+  decoyChips:
+  - lang
+- id: w-help
+  en: help
+  ipa: /hɛlp/
+  ko: 돕다
+  icon: shield
+  example: I can hear some fluid in your lungs, so we'll help with that.
+  exKo: 폐에 물이 조금 찬 소리가 들려서, 저희가 도와드릴게요.
+  cue: 숨찬 환자를 안심시키며 '저희가 손쓸게요' 할 때 — 'we'll ___ with that'
+  tag: 환자 설명
+  distractorsEn:
+  - hold
+  - heal
+  distractorsKo:
+  - 기다리다
+  - 낫게 하다
+  chips:
+  - - help
+  decoyChips:
+  - halp
+- id: w-listen
+  en: listen
+  ipa: /ˈlɪsn/
+  ko: 귀 기울이다
+  icon: speaker
+  example: I'm listening to your heart and lungs closely.
+  exKo: 심장과 폐 소리를 자세히 들어볼게요.
+  cue: 청진기를 대고 심음·폐음에 귀를 댈 때 — 'I'm ___ing to your heart'
+  tag: 신체 사정
+  distractorsEn:
+  - lessen
+  - glisten
+  distractorsKo:
+  - 만져 보다
+  - 두드려 보다
+  chips:
+  - - lis
+    - ten
+  decoyChips:
+  - les
+  - sen
+- id: w-heart
+  en: heart
+  ipa: /hɑːrt/
+  ko: 심장
+  icon: stetho
+  example: I'm listening to your heart and lungs closely.
+  exKo: 심장과 폐 소리를 자세히 들어볼게요.
+  cue: 심인성 쇼크에서 펌프 기능이 떨어진 바로 그 장기
+  tag: 혈역학
+  distractorsEn:
+  - chest
+  - artery
+  distractorsKo:
+  - 폐
+  - 동맥
+  chips:
+  - - heart
+  decoyChips:
+  - hart
+- id: w-closely
+  en: closely
+  ipa: /ˈkloʊsli/
+  ko: 자세히
+  icon: magnify
+  example: I'm listening to your heart and lungs closely.
+  exKo: 심장과 폐 소리를 자세히 들어볼게요.
+  cue: 조금의 변화도 놓치지 않게 지켜볼 때 — 'watch it ___'
+  tag: 팀 소통
+  distractorsEn:
+  - clearly
+  - loosely
+  distractorsKo:
+  - 대충
+  - 가끔
+  chips:
+  - - close
+    - ly
+  decoyChips:
+  - klose
+  - lee
+- id: w-squeeze
+  en: squeeze
+  ipa: /skwiːz/
+  ko: 꽉 쥐다
+  icon: board
+  example: Squeeze my hand if you can hear me.
+  exKo: 제 목소리 들리시면 제 손을 꽉 쥐어보세요.
+  cue: 의식을 확인하려고 '들리시면 제 손을 꼭 쥐어 보세요' 할 때
+  tag: 신체 사정
+  distractorsEn:
+  - sneeze
+  - seize
+  distractorsKo:
+  - 펴다
+  - 흔들다
+  chips:
+  - - squeeze
+  decoyChips:
+  - squeez
+- id: w-right
+  en: right
+  ipa: /raɪt/
+  ko: 맞는; 바로
+  icon: compass
+  example: I'm right here and I'll keep the team updated.
+  exKo: 제가 바로 여기 있고, 팀에 계속 알릴게요.
+  cue: 불안한 환자 곁에서 '저 ___ here 있어요'; 위치·타이밍이 딱 맞을 때도
+  tag: 환자 설명
+  distractorsEn:
+  - ready
+  - near
+  distractorsKo:
+  - 틀린
+  - 왼쪽의
+  chips:
+  - - right
+  decoyChips:
+  - rite
+- id: w-here
+  en: here
+  ipa: /hɪr/
+  ko: 여기
+  icon: pushpin
+  example: I'm right here and I'll keep the team updated.
+  exKo: 제가 바로 여기 있고, 팀에 계속 알릴게요.
+  cue: 환자 옆을 떠나지 않는다고 안심시킬 때 — 'I'm right ___'
+  tag: 환자 설명
+  distractorsEn:
+  - there
+  - near
+  distractorsKo:
+  - 저기
+  - 밖에
+  chips:
+  - - here
+  decoyChips:
+  - hear
+- id: w-keep
+  en: keep
+  ipa: /kiːp/
+  ko: 계속하다
+  icon: shield
+  example: I'm right here and I'll keep the team updated.
+  exKo: 제가 바로 여기 있고, 팀에 계속 알릴게요.
+  cue: 팀에 소식이 끊기지 않게 할 때 — '___ the team updated'
+  tag: 팀 소통
+  distractorsEn:
+  - leave
+  - hold
+  distractorsKo:
+  - 멈추다
+  - 미루다
+  chips:
+  - - keep
+  decoyChips:
+  - kip
+- id: w-team
+  en: team
+  ipa: /tiːm/
+  ko: 팀
+  icon: me
+  example: I'm right here and I'll keep the team updated.
+  exKo: 제가 바로 여기 있고, 팀에 계속 알릴게요.
+  cue: 의사·간호사·호흡치료사가 함께 움직이는 단위 — 'VA-ECMO ___'
+  tag: 팀 소통
+  distractorsEn:
+  - unit
+  - crew
+  distractorsKo:
+  - 병동
+  - 가족
+  chips:
+  - - team
+  decoyChips:
+  - teem
+- id: w-update
+  en: update
+  ipa: /ˌʌpˈdeɪt/
+  ko: 알리다
+  icon: speech
+  example: I'm right here and I'll keep the team updated.
+  exKo: 제가 바로 여기 있고, 팀에 계속 알릴게요.
+  cue: 상태가 바뀔 때마다 팀에 새 소식을 전할 때 — 'keep the team ___d'
+  tag: 팀 소통
+  distractorsEn:
+  - upgrade
+  - upload
+  distractorsKo:
+  - 숨기다
+  - 미루다
+  chips:
+  - - up
+    - date
+  decoyChips:
+  - ap
+  - data
+- id: w-report
+  en: report
+  ipa: /rɪˈpɔːrt/
+  ko: 보고하다
+  icon: speech
+  example: I'm reporting these changes to the doctor now.
+  exKo: 이 변화들을 지금 의사에게 보고할게요.
+  cue: 이상 소견을 의사·팀에 알려 책임을 넘길 때 — '___ any changes'
+  tag: 팀 소통
+  distractorsEn:
+  - repeat
+  - record
+  distractorsKo:
+  - 기록하다
+  - 반복하다
+  chips:
+  - - re
+    - port
+  decoyChips:
+  - ri
+  - part
+- id: w-change
+  en: change
+  ipa: /tʃeɪndʒ/
+  ko: 변화
+  icon: chartup
+  example: I'm reporting these changes to the doctor now.
+  exKo: 이 변화들을 지금 의사에게 보고할게요.
+  cue: 리듬·피부색·수치가 아까와 달라졌을 때 — 'any ___s'
+  tag: 팀 소통
+  distractorsEn:
+  - chance
+  - charge
+  distractorsKo:
+  - 기회
+  - 원인
+  chips:
+  - - change
+  decoyChips:
+  - chang
+- id: w-confirm
+  en: confirm
+  ipa: /kənˈfɜːrm/
+  ko: 확실히 확인하다
+  icon: check
+  example: I'll confirm the dobutamine concentration against the order.
+  exKo: 도부타민 농도를 처방과 대조해서 확인할게요.
+  cue: 약 농도를 처방과 대조해 틀림없음을 확정할 때 — '___ ... against the order'
+  tag: 약물 투여
+  distractorsEn:
+  - conform
+  - consult
+  distractorsKo:
+  - 취소하다
+  - 상의하다
+  chips:
+  - - con
+    - firm
+  decoyChips:
+  - com
+  - form
+- id: w-dobutamine
+  en: dobutamine
+  ipa: /doʊˈbjuːtəmiːn/
+  ko: 도부타민
+  icon: pill
+  example: I'll confirm the dobutamine concentration against the order.
+  exKo: 도부타민 농도를 처방과 대조해서 확인할게요.
+  cue: 심박출을 올리지만 심박수를 높이고 부정맥을 부를 수 있는 강심제
+  tag: 약물 투여
+  distractorsEn:
+  - dopamine
+  - dofetilide
+  distractorsKo:
+  - 도파민
+  - 밀리논
+  chips:
+  - - dobu
+    - ta
+    - mine
+  decoyChips:
+  - dopa
+  - mene
+- id: w-concentration
+  en: concentration
+  ipa: /ˌkɑːnsənˈtreɪʃn/
+  ko: 농도
+  icon: lab
+  example: I'll confirm the dobutamine concentration against the order.
+  exKo: 도부타민 농도를 처방과 대조해서 확인할게요.
+  cue: 수액백 하나에 약이 얼마나 녹아 있는가 — mcg/mL로 처방과 대조하는 값
+  tag: 약물 투여
+  distractorsEn:
+  - consideration
+  - contamination
+  distractorsKo:
+  - 주입 속도
+  - 오염
+  chips:
+  - - con
+    - cen
+    - tra
+    - tion
+  decoyChips:
+  - cun
+  - sen
+- id: w-order
+  en: order
+  ipa: /ˈɔːrdər/
+  ko: 처방
+  icon: board
+  example: I'll confirm the dobutamine concentration against the order.
+  exKo: 도부타민 농도를 처방과 대조해서 확인할게요.
+  cue: 약을 걸기 전 농도·용량을 대조하는 의사의 지시 — 'against the ___'
+  tag: 약물 투여
+  distractorsEn:
+  - border
+  - label
+  distractorsKo:
+  - 순서
+  - 라벨
+  chips:
+  - - or
+    - der
+  decoyChips:
+  - ar
+  - dar
+- id: w-bag
+  en: bag
+  ipa: /bæɡ/
+  ko: 수액백
+  icon: board
+  example: The bag is labeled and double-checked with another nurse.
+  exKo: 수액백에 라벨을 붙이고 다른 간호사와 함께 재확인했어요.
+  cue: 강심제가 섞여 폴대에 걸리는 수액 용기 — 라벨이 붙는 곳
+  tag: 약물 투여
+  distractorsEn:
+  - bottle
+  - vial
+  distractorsKo:
+  - 약병
+  - 주사기
+  chips:
+  - - bag
+  decoyChips:
+  - beg
+- id: w-label
+  en: label
+  ipa: /ˈleɪbl/
+  ko: 라벨을 붙이다
+  icon: pencil
+  example: The bag is labeled and double-checked with another nurse.
+  exKo: 수액백에 라벨을 붙이고 다른 간호사와 함께 재확인했어요.
+  cue: 약 이름·농도·시간을 적은 스티커를 수액백에 붙일 때
+  tag: 약물 투여
+  distractorsEn:
+  - level
+  - ladle
+  distractorsKo:
+  - 버리다
+  - 걸다
+  chips:
+  - - la
+    - bel
+  decoyChips:
+  - le
+  - vel
+- id: w-doublecheck
+  en: double-check
+  ipa: /ˈdʌbl tʃɛk/
+  ko: 이중 확인하다
+  icon: check
+  example: The bag is labeled and double-checked with another nurse.
+  exKo: 수액백에 라벨을 붙이고 다른 간호사와 함께 재확인했어요.
+  cue: 고위험 약을 다른 간호사와 둘이서 따로 한 번 더 확인할 때
+  tag: 약물 투여
+  distractorsEn:
+  - spot-check
+  - recheck
+  distractorsKo:
+  - 혼자 확인하다
+  - 기록하다
+  chips:
+  - - double-
+    - check
+  decoyChips:
+  - dubble-
+  - chek
+- id: w-continuous
+  en: continuous
+  ipa: /kənˈtɪnjuəs/
+  ko: 지속적인
+  icon: chartup
+  example: He needs continuous cardiac and blood pressure monitoring.
+  exKo: 지속적인 심장·혈압 모니터링이 필요해요.
+  cue: 끊김 없이 계속되는 — 강심제 환자의 심장·혈압 모니터링을 말할 때
+  tag: 혈역학
+  distractorsEn:
+  - continual
+  - contiguous
+  distractorsKo:
+  - 간헐적인
+  - 일시적인
+  chips:
+  - - con
+    - tinu
+    - ous
+  decoyChips:
+  - contin
+  - uos
+- id: w-cardiac
+  en: cardiac
+  ipa: /ˈkɑːrdiæk/
+  ko: 심장의
+  icon: stetho
+  example: He needs continuous cardiac and blood pressure monitoring.
+  exKo: 지속적인 심장·혈압 모니터링이 필요해요.
+  cue: '''심장의'' — ___ monitoring, ___ output처럼 다른 말 앞에 붙는 형용사'
+  tag: 혈역학
+  distractorsEn:
+  - cardinal
+  - cardio
+  distractorsKo:
+  - 폐의
+  - 혈관의
+  chips:
+  - - cardi
+    - ac
+  decoyChips:
+  - cardio
+  - ic
+- id: w-monitor
+  en: monitor
+  ipa: /ˈmɑːnɪtər/
+  ko: 모니터
+  icon: monitor
+  example: I'm putting him on the monitor before we start the drip.
+  exKo: 주입을 시작하기 전에 모니터부터 연결할게요.
+  cue: 드립을 걸기 전 환자를 먼저 연결하는 화면 장비 — 'put him on the ___'
+  tag: 혈역학
+  distractorsEn:
+  - ventilator
+  - console
+  distractorsKo:
+  - 인공호흡기
+  - 수액펌프
+  chips:
+  - - moni
+    - tor
+  decoyChips:
+  - mono
+  - ter
+- id: w-start
+  en: start
+  ipa: /stɑːrt/
+  ko: 시작하다
+  icon: board
+  example: I'll start low and titrate to his response.
+  exKo: 낮은 용량부터 시작해서 반응을 보며 조절할게요.
+  cue: 드립·압박을 처음 시작할 때 — '___ low and titrate'
+  tag: 약물 투여
+  distractorsEn:
+  - stop
+  - stall
+  distractorsKo:
+  - 중단하다
+  - 늦추다
+  chips:
+  - - start
+  decoyChips:
+  - stat
+- id: w-drip
+  en: drip
+  ipa: /drɪp/
+  ko: 정맥주입
+  icon: pill
+  example: I'm putting him on the monitor before we start the drip.
+  exKo: 주입을 시작하기 전에 모니터부터 연결할게요.
+  cue: 펌프로 쉬지 않고 들어가는 강심제·승압제 — 'before we start the ___'
+  tag: 약물 투여
+  distractorsEn:
+  - drop
+  - bolus
+  distractorsKo:
+  - 일시 주사
+  - 경구약
+  chips:
+  - - drip
+  decoyChips:
+  - drop
+- id: w-titrate
+  en: titrate
+  ipa: /ˈtaɪtreɪt/
+  ko: 적정하다
+  icon: gear
+  example: I'll start low and titrate to his response.
+  exKo: 낮은 용량부터 시작해서 반응을 보며 조절할게요.
+  cue: 혈압·반응을 보며 드립 용량을 조금씩 올리고 내릴 때
+  tag: 약물 투여
+  distractorsEn:
+  - hydrate
+  - filtrate
+  distractorsKo:
+  - 희석하다
+  - 중단하다
+  chips:
+  - - ti
+    - trate
+  decoyChips:
+  - ty
+  - trait
+- id: w-response
+  en: response
+  ipa: /rɪˈspɑːns/
+  ko: 반응
+  icon: chartup
+  example: I'll start low and titrate to his response.
+  exKo: 낮은 용량부터 시작해서 반응을 보며 조절할게요.
+  cue: 약을 시작한 뒤 혈압·심박이 어떻게 반응하는가 — 'titrate to his ___'
+  tag: 약물 투여
+  distractorsEn:
+  - reaction
+  - responsibility
+  distractorsKo:
+  - 부작용
+  - 저항
+  chips:
+  - - re
+    - sponse
+  decoyChips:
+  - ri
+  - spons
+- id: w-watch
+  en: watch
+  ipa: /wɑːtʃ/
+  ko: 지켜보다
+  icon: magnify
+  example: I'll watch his heart rate closely once it's running.
+  exKo: 주입이 시작되면 심박수를 자세히 지켜볼게요.
+  cue: 드립이 들어가는 동안 눈을 떼지 않고 지켜볼 때 — 'I'll ___ his heart rate'
+  tag: 팀 소통
+  distractorsEn:
+  - wash
+  - wait
+  distractorsKo:
+  - 기다리다
+  - 무시하다
+  chips:
+  - - watch
+  decoyChips:
+  - wach
+- id: w-rate
+  en: rate
+  ipa: /reɪt/
+  ko: 속도
+  icon: chartup
+  example: I'll watch his heart rate closely once it's running.
+  exKo: 주입이 시작되면 심박수를 자세히 지켜볼게요.
+  cue: 1분에 몇 번 뛰는가 — 'heart ___'
+  tag: 혈역학
+  distractorsEn:
+  - rhythm
+  - rank
+  distractorsKo:
+  - 리듬
+  - 세기
+  chips:
+  - - rate
+  decoyChips:
+  - rait
+- id: w-run
+  en: run
+  ipa: /rʌn/
+  ko: 주입되다
+  icon: gear
+  example: I'll watch his heart rate closely once it's running.
+  exKo: 주입이 시작되면 심박수를 자세히 지켜볼게요.
+  cue: 펌프가 돌기 시작해 약이 실제로 들어가는 중일 때 — 'once it's ___ning'
+  tag: 약물 투여
+  distractorsEn:
+  - rinse
+  - drain
+  distractorsKo:
+  - 멈추다
+  - 새다
+  chips:
+  - - run
+  decoyChips:
+  - ran
+- id: w-ecg
+  en: ECG
+  ipa: /ˌiː siː ˈdʒiː/
+  ko: 심전도
+  icon: monitor
+  example: I'll get a 12-lead ECG right now.
+  exKo: 지금 바로 12유도 심전도를 확보할게요.
+  cue: 가슴 통증이 오면 10분 안에 찍는 12-lead 검사의 약어
+  tag: 심전도
+  distractorsEn:
+  - EEG
+  - EGD
+  distractorsKo:
+  - 뇌파
+  - 심초음파
+  chips:
+  - - ECG
+  decoyChips:
+  - EEG
+- id: w-chest
+  en: chest
+  ipa: /tʃɛst/
+  ko: 가슴
+  icon: stetho
+  example: His chest pain started about ten minutes ago.
+  exKo: 가슴 통증이 약 10분 전에 시작됐어요.
+  cue: 심근경색 환자가 짓눌린다고 호소하는 몸의 앞부분 — '___ pain'
+  tag: 신체 사정
+  distractorsEn:
+  - cheek
+  - throat
+  distractorsKo:
+  - 배
+  - 목
+  chips:
+  - - chest
+  decoyChips:
+  - chess
+- id: w-pain
+  en: pain
+  ipa: /peɪn/
+  ko: 통증
+  icon: monitor
+  example: His chest pain started about ten minutes ago.
+  exKo: 가슴 통증이 약 10분 전에 시작됐어요.
+  cue: 환자가 '10분 전부터 가슴이 아프다'고 할 때 그 아픔
+  tag: 신체 사정
+  distractorsEn:
+  - tightness
+  - pallor
+  distractorsKo:
+  - 압박감
+  - 두근거림
+  chips:
+  - - pain
+  decoyChips:
+  - pane
+- id: w-ago
+  en: ago
+  ipa: /əˈɡoʊ/
+  ko: 전에
+  icon: calendar
+  example: His chest pain started about ten minutes ago.
+  exKo: 가슴 통증이 약 10분 전에 시작됐어요.
+  cue: 증상이 시작된 시각을 지금부터 거슬러 말할 때 — 'about ten minutes ___'
+  tag: 팀 소통
+  distractorsEn:
+  - later
+  - after
+  distractorsKo:
+  - 후에
+  - 동안
+  chips:
+  - - ago
+  decoyChips:
+  - agon
+- id: w-look
+  en: look
+  ipa: /lʊk/
+  ko: 보이다
+  icon: magnify
+  example: I'm looking for any ST changes that suggest ischemia.
+  exKo: 허혈을 시사하는 ST 변화가 있는지 보고 있어요.
+  cue: 수치·파형이 눈으로 보기에 어떤지 말할 때 — 'It ___s better already'
+  tag: 팀 소통
+  distractorsEn:
+  - sound
+  - feel
+  distractorsKo:
+  - 들리다
+  - 느껴지다
+  chips:
+  - - look
+  decoyChips:
+  - lock
+- id: w-suggest
+  en: suggest
+  ipa: /səɡˈdʒɛst/
+  ko: 시사하다
+  icon: bulb
+  example: I'm looking for any ST changes that suggest ischemia.
+  exKo: 허혈을 시사하는 ST 변화가 있는지 보고 있어요.
+  cue: ST 변화가 허혈을 가리킨다고 말할 때 — 확진이 아니라 그쪽을 짚는다
+  tag: 심전도
+  distractorsEn:
+  - digest
+  - suspect
+  distractorsKo:
+  - 배제하다
+  - 확진하다
+  chips:
+  - - sug
+    - gest
+  decoyChips:
+  - sag
+  - jest
+- id: w-ischemia
+  en: ischemia
+  ipa: /ɪˈskiːmiə/
+  ko: 허혈
+  icon: monitor
+  example: I'm looking for any ST changes that suggest ischemia.
+  exKo: 허혈을 시사하는 ST 변화가 있는지 보고 있어요.
+  cue: 관상동맥이 막혀 심근에 피가 모자란 상태 — 12-lead에서 ST 변화로 찾는 것
+  tag: 심전도
+  distractorsEn:
+  - infarction
+  - anemia
+  distractorsKo:
+  - 경색
+  - 빈혈
+  chips:
+  - - isch
+    - emia
+  decoyChips:
+  - isk
+  - emea
+- id: w-lead
+  en: lead
+  ipa: /liːd/
+  ko: 유도선
+  icon: monitor
+  example: The leads need to be placed exactly right for a clean tracing.
+  exKo: 깨끗한 파형을 위해 유도선을 정확히 붙여야 해요.
+  cue: 가슴·팔다리에 붙인 전극에서 이어지는 선 — 12-___
+  tag: 심전도
+  distractorsEn:
+  - line
+  - load
+  distractorsKo:
+  - 수액줄
+  - 전원선
+  chips:
+  - - lead
+  decoyChips:
+  - led
+- id: w-exactly
+  en: exactly
+  ipa: /ɪɡˈzæktli/
+  ko: 정확히
+  icon: check
+  example: The leads need to be placed exactly right for a clean tracing.
+  exKo: 깨끗한 파형을 위해 유도선을 정확히 붙여야 해요.
+  cue: 어림이 아니라 딱 맞게 — 전극 위치, 마신 양을 물을 때
+  tag: 팀 소통
+  distractorsEn:
+  - roughly
+  - extremely
+  distractorsKo:
+  - 대략
+  - 거의
+  chips:
+  - - exact
+    - ly
+  decoyChips:
+  - exakt
+  - lee
+- id: w-clean
+  en: clean
+  ipa: /kliːn/
+  ko: 깨끗한
+  icon: check
+  example: The leads need to be placed exactly right for a clean tracing.
+  exKo: 깨끗한 파형을 위해 유도선을 정확히 붙여야 해요.
+  cue: 잡음·흔들림 없이 또렷한 심전도를 말할 때 — 'a ___ tracing'
+  tag: 심전도
+  distractorsEn:
+  - noisy
+  - flat
+  distractorsKo:
+  - 지저분한
+  - 평평한
+  chips:
+  - - clean
+  decoyChips:
+  - clear
+- id: w-tracing
+  en: tracing
+  ipa: /ˈtreɪsɪŋ/
+  ko: 파형 기록
+  icon: monitor
+  example: The leads need to be placed exactly right for a clean tracing.
+  exKo: 깨끗한 파형을 위해 유도선을 정확히 붙여야 해요.
+  cue: 심전도 기계가 종이·화면에 그려 낸 선 그 자체
+  tag: 심전도
+  distractorsEn:
+  - training
+  - tracking
+  distractorsKo:
+  - 판독 소견
+  - 혈압 곡선
+  chips:
+  - - trac
+    - ing
+  decoyChips:
+  - track
+  - ink
+- id: w-show
+  en: show
+  ipa: /ʃoʊ/
+  ko: 보여주다
+  icon: speech
+  example: I'll show this to the physician immediately.
+  exKo: 이걸 즉시 의사에게 보여줄게요.
+  cue: 찍은 심전도를 의사 눈앞에 내밀 때 — '___ this to the physician'
+  tag: 팀 소통
+  distractorsEn:
+  - send
+  - sow
+  distractorsKo:
+  - 숨기다
+  - 버리다
+  chips:
+  - - show
+  decoyChips:
+  - shoe
+- id: w-physician
+  en: physician
+  ipa: /fɪˈzɪʃn/
+  ko: 의사
+  icon: stetho
+  example: I'll show this to the physician immediately.
+  exKo: 이걸 즉시 의사에게 보여줄게요.
+  cue: 간호사가 이상 소견을 보고하는 처방 권한자 — doctor보다 격식 있는 말
+  tag: 팀 소통
+  distractorsEn:
+  - physicist
+  - pharmacist
+  distractorsKo:
+  - 약사
+  - 물리치료사
+  chips:
+  - - phys
+    - i
+    - cian
+  decoyChips:
+  - phis
+  - cist
+- id: w-immediately
+  en: immediately
+  ipa: /ɪˈmiːdiətli/
+  ko: 즉시
+  icon: bulb
+  example: I'll show this to the physician immediately.
+  exKo: 이걸 즉시 의사에게 보여줄게요.
+  cue: ST 상승을 보면 한순간도 미루지 않고 — 'I'll show this ___'
+  tag: 팀 소통
+  distractorsEn:
+  - eventually
+  - intermediately
+  distractorsKo:
+  - 나중에
+  - 결국
+  chips:
+  - - im
+    - medi
+    - ate
+    - ly
+  decoyChips:
+  - in
+  - midi
+- id: w-print
+  en: print
+  ipa: /prɪnt/
+  ko: 출력하다
+  icon: pencil
+  example: I'm printing a copy for the chart right away.
+  exKo: 차트에 넣을 사본을 바로 출력할게요.
+  cue: 심전도를 종이로 뽑아 차트에 넣을 때
+  tag: 심전도
+  distractorsEn:
+  - paint
+  - sprint
+  distractorsKo:
+  - 스캔하다
+  - 저장하다
+  chips:
+  - - print
+  decoyChips:
+  - prent
+- id: w-copy
+  en: copy
+  ipa: /ˈkɑːpi/
+  ko: 사본
+  icon: board
+  example: I'm printing a copy for the chart right away.
+  exKo: 차트에 넣을 사본을 바로 출력할게요.
+  cue: 원본과 똑같이 한 장 더 뽑은 것 — 'a ___ for the chart'
+  tag: 심전도
+  distractorsEn:
+  - cover
+  - copier
+  distractorsKo:
+  - 원본
+  - 표지
+  chips:
+  - - copy
+  decoyChips:
+  - coppy
+- id: w-chart
+  en: chart
+  ipa: /tʃɑːrt/
+  ko: 차트
+  icon: board
+  example: I'm printing a copy for the chart right away.
+  exKo: 차트에 넣을 사본을 바로 출력할게요.
+  cue: 검사 결과·투약·관찰을 모아 두는 환자 기록
+  tag: 팀 소통
+  distractorsEn:
+  - cart
+  - chat
+  distractorsKo:
+  - 카트
+  - 처방전
+  chips:
+  - - chart
+  decoyChips:
+  - chat
+- id: w-away
+  en: right away
+  ipa: /raɪt əˈweɪ/
+  ko: 곧바로
+  icon: compass
+  example: I'm printing a copy for the chart right away.
+  exKo: 차트에 넣을 사본을 바로 출력할게요.
+  cue: 미루지 말고 바로 지금 — 변화가 있으면 '___ 말씀해 주세요'
+  tag: 팀 소통
+  distractorsEn:
+  - right after
+  - far away
+  distractorsKo:
+  - 나중에
+  - 천천히
+  chips:
+  - - right
+  - - a
+    - way
+  decoyChips:
+  - write
+  - weigh
+- id: w-sit
+  en: sit
+  ipa: /sɪt/
+  ko: 앉히다
+  icon: board
+  example: Let's sit you upright to make breathing easier.
+  exKo: 호흡이 편하도록 상체를 세워서 앉혀드릴게요.
+  cue: 폐부종 환자를 상체를 세워 앉게 할 때 — '___ you upright'
+  tag: 환자 설명
+  distractorsEn:
+  - set
+  - lay
+  distractorsKo:
+  - 눕히다
+  - 돌려 눕히다
+  chips:
+  - - sit
+  decoyChips:
+  - set
+- id: w-upright
+  en: upright
+  ipa: /ˈʌpraɪt/
+  ko: 똑바로
+  icon: compass
+  example: Let's sit you upright to make breathing easier.
+  exKo: 호흡이 편하도록 상체를 세워서 앉혀드릴게요.
+  cue: 폐에 물이 찬 환자가 숨쉬기 편한 자세 — 상체를 곧게 세운
+  tag: 환자 설명
+  distractorsEn:
+  - flat
+  - uptight
+  distractorsKo:
+  - 누운
+  - 엎드린
+  chips:
+  - - up
+    - right
+  decoyChips:
+  - ap
+  - rite
+- id: w-easy
+  en: easy
+  ipa: /ˈiːzi/
+  ko: 쉬운
+  icon: check
+  example: Let's sit you upright to make breathing easier.
+  exKo: 호흡이 편하도록 상체를 세워서 앉혀드릴게요.
+  cue: 자세를 바꿔 숨쉬기가 덜 힘들어질 때 — 'make breathing ___ier'
+  tag: 환자 설명
+  distractorsEn:
+  - heavy
+  - busy
+  distractorsKo:
+  - 힘든
+  - 무거운
+  chips:
+  - - easy
+  decoyChips:
+  - eazy
+- id: w-raise
+  en: raise
+  ipa: /reɪz/
+  ko: 올리다
+  icon: compass
+  example: I'll raise the head of your bed a little more.
+  exKo: 침대 머리 쪽을 조금 더 올려드릴게요.
+  cue: 침대 머리 쪽·용량을 위로 높일 때 — '___ the head of your bed'
+  tag: 환자 설명
+  distractorsEn:
+  - rise
+  - lower
+  distractorsKo:
+  - 낮추다
+  - 유지하다
+  chips:
+  - - raise
+  decoyChips:
+  - rise
+- id: w-bed
+  en: bed
+  ipa: /bɛd/
+  ko: 침대
+  icon: hospital
+  example: I'll raise the head of your bed a little more.
+  exKo: 침대 머리 쪽을 조금 더 올려드릴게요.
+  cue: 환자가 누운 자리 — 머리 쪽을 올리고, 제세동 전엔 다 같이 물러나는 곳
+  tag: 환자 설명
+  distractorsEn:
+  - stretcher
+  - chair
+  distractorsKo:
+  - 들것
+  - 의자
+  chips:
+  - - bed
+  decoyChips:
+  - bad
+- id: w-more
+  en: more
+  ipa: /mɔːr/
+  ko: 더
+  icon: board
+  example: I'll raise the head of your bed a little more.
+  exKo: 침대 머리 쪽을 조금 더 올려드릴게요.
+  cue: 지금보다 조금 덧붙여 — 'a little ___'
+  tag: 환자 설명
+  distractorsEn:
+  - less
+  - many
+  distractorsKo:
+  - 덜
+  - 가장
+  chips:
+  - - more
+  decoyChips:
+  - mor
+- id: w-turn
+  en: turn
+  ipa: /tɜːrn/
+  ko: 조절하다
+  icon: gear
+  example: I'm turning up your oxygen and watching your levels.
+  exKo: 산소를 올리면서 수치를 지켜볼게요.
+  cue: 산소 다이얼을 돌려 양을 올릴 때 — '___ing up your oxygen'
+  tag: 환자 설명
+  distractorsEn:
+  - tune
+  - return
+  distractorsKo:
+  - 끄다
+  - 떼다
+  chips:
+  - - turn
+  decoyChips:
+  - tern
+- id: w-oxygen
+  en: oxygen
+  ipa: /ˈɑːksɪdʒən/
+  ko: 산소
+  icon: lab
+  example: I'm turning up your oxygen and watching your levels.
+  exKo: 산소를 올리면서 수치를 지켜볼게요.
+  cue: 폐부종 환자가 '더 올려 달라'는 것 — 캐뉼라·마스크로 들어가는 기체
+  tag: 신체 사정
+  distractorsEn:
+  - nitrogen
+  - oxygenation
+  distractorsKo:
+  - 이산화탄소
+  - 공기
+  chips:
+  - - oxy
+    - gen
+  decoyChips:
+  - oxi
+  - gene
+- id: w-level
+  en: level
+  ipa: /ˈlɛvl/
+  ko: 수치
+  icon: chartup
+  example: I'm turning up your oxygen and watching your levels.
+  exKo: 산소를 올리면서 수치를 지켜볼게요.
+  cue: 산소포화도·칼륨·ACT처럼 재서 숫자로 나오는 값
+  tag: 혈역학
+  distractorsEn:
+  - label
+  - lever
+  distractorsKo:
+  - 농도
+  - 속도
+  chips:
+  - - lev
+    - el
+  decoyChips:
+  - lab
+  - al
+- id: w-better
+  en: better
+  ipa: /ˈbɛtər/
+  ko: 더 나은
+  icon: trophy
+  example: Your oxygen level looks better already.
+  exKo: 산소 수치가 벌써 좋아졌어요.
+  cue: 산소를 올린 뒤 수치가 좋아졌다고 환자에게 알릴 때 — 'looks ___ already'
+  tag: 환자 설명
+  distractorsEn:
+  - bitter
+  - worse
+  distractorsKo:
+  - 더 나쁜
+  - 비슷한
+  chips:
+  - - bet
+    - ter
+  decoyChips:
+  - bit
+  - tor
+- id: w-already
+  en: already
+  ipa: /ɔːlˈrɛdi/
+  ko: 이미
+  icon: calendar
+  example: Your oxygen level looks better already.
+  exKo: 산소 수치가 벌써 좋아졌어요.
+  cue: 기대보다 빨리, 벌써 — 'Your oxygen level looks better ___'
+  tag: 환자 설명
+  distractorsEn:
+  - all ready
+  - almost
+  distractorsKo:
+  - 아직
+  - 곧
+  chips:
+  - - al
+    - ready
+  decoyChips:
+  - all
+  - redy
+- id: w-feel
+  en: feel
+  ipa: /fiːl/
+  ko: 느끼다
+  icon: bulb
+  example: Tell me if you feel any more short of breath.
+  exKo: 숨이 더 차는 느낌이 들면 말씀해 주세요.
+  cue: 숨참·저림을 환자가 몸으로 겪는 것을 물을 때 — 'if you ___ any more...'
+  tag: 환자 설명
+  distractorsEn:
+  - fill
+  - fall
+  distractorsKo:
+  - 보이다
+  - 들리다
+  chips:
+  - - feel
+  decoyChips:
+  - fill
+- id: w-short
+  en: short of breath
+  ipa: /ʃɔːrt əv brɛθ/
+  ko: 숨이 찬
+  icon: board
+  example: Tell me if you feel any more short of breath.
+  exKo: 숨이 더 차는 느낌이 들면 말씀해 주세요.
+  cue: 폐에 물이 차 숨이 가쁜 환자에게 묻는 구 — 'if you feel any more ___'
+  tag: 환자 설명
+  distractorsEn:
+  - short of time
+  - short of sleep
+  distractorsKo:
+  - 기침이 나는
+  - 숨이 멎은
+  chips:
+  - - short
+  - - of
+  - - breath
+  decoyChips:
+  - breathe
+  - 'off'
+- id: w-breath
+  en: breath
+  ipa: /brɛθ/
+  ko: 숨
+  icon: stetho
+  example: Tell me if you feel any more short of breath.
+  exKo: 숨이 더 차는 느낌이 들면 말씀해 주세요.
+  cue: 들이쉬고 내쉬는 한 번 — 'take slow, deep ___s'
+  tag: 환자 설명
+  distractorsEn:
+  - death
+  - breadth
+  distractorsKo:
+  - 기침
+  - 맥박
+  chips:
+  - - breath
+  decoyChips:
+  - breathe
+- id: w-try
+  en: try
+  ipa: /traɪ/
+  ko: 시도하다
+  icon: board
+  example: Try to take slow, deep breaths for me.
+  exKo: 천천히 깊게 숨을 쉬어보세요.
+  cue: 숨찬 환자에게 부드럽게 해 보라고 권할 때 — '___ to take slow breaths'
+  tag: 환자 설명
+  distractorsEn:
+  - cry
+  - tie
+  distractorsKo:
+  - 포기하다
+  - 멈추다
+  chips:
+  - - try
+  decoyChips:
+  - tri
+- id: w-slow
+  en: slow
+  ipa: /sloʊ/
+  ko: 느린
+  icon: compass
+  example: Try to take slow, deep breaths for me.
+  exKo: 천천히 깊게 숨을 쉬어보세요.
+  cue: 급하게 몰아쉬지 말고 — '___, deep breaths'
+  tag: 환자 설명
+  distractorsEn:
+  - fast
+  - shallow
+  distractorsKo:
+  - 얕은
+  - 빠른
+  chips:
+  - - slow
+  decoyChips:
+  - slew
+- id: w-deep
+  en: deep
+  ipa: /diːp/
+  ko: 깊은
+  icon: bulb
+  example: Try to take slow, deep breaths for me.
+  exKo: 천천히 깊게 숨을 쉬어보세요.
+  cue: 숨을 끝까지 크게 들이쉬는 — 'slow, ___ breaths'
+  tag: 환자 설명
+  distractorsEn:
+  - steep
+  - shallow
+  distractorsKo:
+  - 얕은
+  - 짧은
+  chips:
+  - - deep
+  decoyChips:
+  - dip
+- id: w-track
+  en: track
+  ipa: /træk/
+  ko: 추적하다
+  icon: chartup
+  example: We track your fluids in and out to protect your heart.
+  exKo: 심장을 보호하려고 들어오고 나가는 수분을 추적해요.
+  cue: 들어간 양·나온 양을 빠짐없이 따라가며 적을 때 — '___ your fluids in and out'
+  tag: 수분 관리
+  distractorsEn:
+  - trace
+  - trap
+  distractorsKo:
+  - 제한하다
+  - 버리다
+  chips:
+  - - track
+  decoyChips:
+  - trac
+- id: w-protect
+  en: protect
+  ipa: /prəˈtɛkt/
+  ko: 보호하다
+  icon: shield
+  example: We track your fluids in and out to protect your heart.
+  exKo: 심장을 보호하려고 들어오고 나가는 수분을 추적해요.
+  cue: 수분 제한이 왜 필요한지 설명할 때 — 지친 심장이 더 무리하지 않게 지킨다
+  tag: 수분 관리
+  distractorsEn:
+  - project
+  - prevent
+  distractorsKo:
+  - 약하게 하다
+  - 검사하다
+  chips:
+  - - pro
+    - tect
+  decoyChips:
+  - pre
+  - tact
+- id: w-drink
+  en: drink
+  ipa: /drɪŋk/
+  ko: 마시다
+  icon: coffee
+  example: Can you tell me exactly how much you drink today?
+  exKo: 오늘 정확히 얼마나 드셨는지 말씀해 주시겠어요?
+  cue: I/O 기록을 위해 환자가 입으로 넘긴 물·음료를 물을 때
+  tag: 수분 관리
+  distractorsEn:
+  - drain
+  - eat
+  distractorsKo:
+  - 먹다
+  - 토하다
+  chips:
+  - - drink
+  decoyChips:
+  - drank
+- id: w-daily
+  en: daily
+  ipa: /ˈdeɪli/
+  ko: 매일의
+  icon: calendar
+  example: Daily weights tell us if fluid is building up.
+  exKo: 매일 재는 체중이 수분이 쌓이고 있는지 알려줘요.
+  cue: 하루도 빠짐없이 한 번씩 — '___ weights'
+  tag: 수분 관리
+  distractorsEn:
+  - hourly
+  - weekly
+  distractorsKo:
+  - 매시간의
+  - 매주의
+  chips:
+  - - dai
+    - ly
+  decoyChips:
+  - day
+  - lee
+- id: w-weight
+  en: weight
+  ipa: /weɪt/
+  ko: 체중
+  icon: chartup
+  example: Daily weights tell us if fluid is building up.
+  exKo: 매일 재는 체중이 수분이 쌓이고 있는지 알려줘요.
+  cue: 아침마다 같은 저울로 재는 몸무게 — 하루 사이 늘면 수분이 찬 신호
+  tag: 수분 관리
+  distractorsEn:
+  - height
+  - width
+  distractorsKo:
+  - 키
+  - 부피
+  chips:
+  - - weight
+  decoyChips:
+  - wait
+- id: w-build
+  en: build
+  ipa: /bɪld/
+  ko: 쌓이다
+  icon: chartup
+  example: Daily weights tell us if fluid is building up.
+  exKo: 매일 재는 체중이 수분이 쌓이고 있는지 알려줘요.
+  cue: 몸에서 빠지지 못한 수분이 차곡차곡 늘어 갈 때 — 'fluid is ___ing up'
+  tag: 수분 관리
+  distractorsEn:
+  - boil
+  - bulge
+  distractorsKo:
+  - 빠지다
+  - 마르다
+  chips:
+  - - build
+  decoyChips:
+  - bild
+- id: w-weigh
+  en: weigh
+  ipa: /weɪ/
+  ko: 무게를 재다
+  icon: chartup
+  example: We weigh you at the same time every morning.
+  exKo: 매일 아침 같은 시간에 체중을 재요.
+  cue: 매일 아침 같은 시간에 환자를 저울에 올릴 때 — 'We ___ you'
+  tag: 수분 관리
+  distractorsEn:
+  - wait
+  - wade
+  distractorsKo:
+  - 키를 재다
+  - 기다리다
+  chips:
+  - - weigh
+  decoyChips:
+  - way
+  - weight
+- id: w-leg
+  en: leg
+  ipa: /lɛɡ/
+  ko: 다리
+  icon: stetho
+  example: I'm checking your legs for any swelling.
+  exKo: 다리에 부종이 있는지 확인하고 있어요.
+  cue: 부종·모틀링·IABP 쪽 맥박을 보는 몸의 아랫부분
+  tag: 관류 사정
+  distractorsEn:
+  - arm
+  - lag
+  distractorsKo:
+  - 팔
+  - 발목
+  chips:
+  - - leg
+  decoyChips:
+  - lag
+- id: w-swelling
+  en: swelling
+  ipa: /ˈswɛlɪŋ/
+  ko: 부종
+  icon: monitor
+  example: I'm checking your legs for any swelling.
+  exKo: 다리에 부종이 있는지 확인하고 있어요.
+  cue: 다리를 눌렀을 때 자국이 남게 부은 것 — 수분이 찼다는 신호
+  tag: 수분 관리
+  distractorsEn:
+  - sweating
+  - smelling
+  distractorsKo:
+  - 발적
+  - 멍
+  chips:
+  - - swell
+    - ing
+  decoyChips:
+  - swole
+  - lin
+- id: w-handle
+  en: handle
+  ipa: /ˈhændl/
+  ko: 감당하다
+  icon: gear
+  example: This swelling tells us how your heart is handling the fluid.
+  exKo: 이 부종이 심장이 수분을 얼마나 감당하고 있는지 알려줘요.
+  cue: 약해진 심장이 들어온 수분을 버텨 내는지 — 'how your heart is ___ing the fluid'
+  tag: 수분 관리
+  distractorsEn:
+  - hamper
+  - hurdle
+  distractorsKo:
+  - 배출하다
+  - 흡수하다
+  chips:
+  - - han
+    - dle
+  decoyChips:
+  - hand
+  - del
+- id: w-mottled
+  en: mottled
+  ipa: /ˈmɑːtld/
+  ko: 얼룩덜룩한
+  icon: monitor
+  example: Those mottled patches can be a sign of poor circulation.
+  exKo: 그 얼룩덜룩한 반점은 순환이 나쁘다는 징후일 수 있어요.
+  cue: 무릎 주변에 보라·흰빛이 그물처럼 얼룩진 피부 — 저관류의 신호
+  tag: 관류 사정
+  distractorsEn:
+  - flushed
+  - cyanotic
+  distractorsKo:
+  - 창백한
+  - 청색증의
+  chips:
+  - - mot
+    - tled
+  decoyChips:
+  - mod
+  - tel
+- id: w-patch
+  en: patch
+  ipa: /pætʃ/
+  ko: 반점
+  icon: monitor
+  example: Those mottled patches can be a sign of poor circulation.
+  exKo: 그 얼룩덜룩한 반점은 순환이 나쁘다는 징후일 수 있어요.
+  cue: 피부 여기저기 경계가 있는 얼룩 — 'those mottled ___es'
+  tag: 관류 사정
+  distractorsEn:
+  - path
+  - rash
+  distractorsKo:
+  - 물집
+  - 딱지
+  chips:
+  - - patch
+  decoyChips:
+  - pach
+- id: w-sign
+  en: sign
+  ipa: /saɪn/
+  ko: 징후
+  icon: monitor
+  example: Those mottled patches can be a sign of poor circulation.
+  exKo: 그 얼룩덜룩한 반점은 순환이 나쁘다는 징후일 수 있어요.
+  cue: 몸이 보내는 단서 — 얼룩진 피부는 순환이 나쁘다는 이것일 수 있다
+  tag: 관류 사정
+  distractorsEn:
+  - sigh
+  - site
+  distractorsKo:
+  - 원인
+  - 결과
+  chips:
+  - - sign
+  decoyChips:
+  - sine
+- id: w-poor
+  en: poor
+  ipa: /pʊr/
+  ko: 나쁜
+  icon: board
+  example: Those mottled patches can be a sign of poor circulation.
+  exKo: 그 얼룩덜룩한 반점은 순환이 나쁘다는 징후일 수 있어요.
+  cue: 순환·관류가 충분하지 않은 상태를 말할 때 — '___ circulation'
+  tag: 관류 사정
+  distractorsEn:
+  - pure
+  - rich
+  distractorsKo:
+  - 충분한
+  - 빠른
+  chips:
+  - - poor
+  decoyChips:
+  - pour
+- id: w-skin
+  en: skin
+  ipa: /skɪn/
+  ko: 피부
+  icon: board
+  example: Your skin feels cool from your knees down.
+  exKo: 무릎 아래로 피부가 서늘하게 느껴져요.
+  cue: 손등을 대 보면 차고 축축한지 바로 알 수 있는 몸의 겉
+  tag: 관류 사정
+  distractorsEn:
+  - skull
+  - shin
+  distractorsKo:
+  - 근육
+  - 손톱
+  chips:
+  - - skin
+  decoyChips:
+  - skim
+- id: w-cool
+  en: cool
+  ipa: /kuːl/
+  ko: 서늘한
+  icon: board
+  example: Your skin feels cool from your knees down.
+  exKo: 무릎 아래로 피부가 서늘하게 느껴져요.
+  cue: 손을 대 보니 무릎 아래 피부가 차갑게 느껴질 때 — 'feels ___'
+  tag: 관류 사정
+  distractorsEn:
+  - warm
+  - cozy
+  distractorsKo:
+  - 따뜻한
+  - 축축한
+  chips:
+  - - cool
+  decoyChips:
+  - cole
+- id: w-knee
+  en: knee
+  ipa: /niː/
+  ko: 무릎
+  icon: board
+  example: Your skin feels cool from your knees down.
+  exKo: 무릎 아래로 피부가 서늘하게 느껴져요.
+  cue: 모틀링이 이 아래로 퍼졌는지 위로 올라왔는지 보는 다리 관절
+  tag: 관류 사정
+  distractorsEn:
+  - ankle
+  - kneel
+  distractorsKo:
+  - 발목
+  - 엉덩이
+  chips:
+  - - knee
+  decoyChips:
+  - nee
+- id: w-far
+  en: far
+  ipa: /fɑːr/
+  ko: 멀리
+  icon: compass
+  example: I'm checking how far up your legs the mottling goes.
+  exKo: 모틀링이 다리 위로 어디까지 올라왔는지 확인하고 있어요.
+  cue: 얼룩이 다리 위쪽으로 어디까지 올라왔는지 볼 때 — 'how ___ up'
+  tag: 관류 사정
+  distractorsEn:
+  - fast
+  - fair
+  distractorsKo:
+  - 가까이
+  - 자주
+  chips:
+  - - far
+  decoyChips:
+  - fur
+- id: w-pulse
+  en: pulse
+  ipa: /pʌls/
+  ko: 맥박
+  icon: stetho
+  example: I'm also checking the pulses in both your feet.
+  exKo: 양쪽 발의 맥박도 함께 확인하고 있어요.
+  cue: 발등·발목에서 손끝으로 만져 보는 박동 — IABP 쪽 다리에서 꼭 본다
+  tag: 관류 사정
+  distractorsEn:
+  - pause
+  - pulp
+  distractorsKo:
+  - 혈압
+  - 체온
+  chips:
+  - - pulse
+  decoyChips:
+  - pulz
+- id: w-foot
+  en: foot
+  ipa: /fʊt/
+  ko: 발
+  icon: board
+  example: I'm also checking the pulses in both your feet.
+  exKo: 양쪽 발의 맥박도 함께 확인하고 있어요.
+  cue: 발등 맥박(dorsalis pedis)을 짚는 다리 맨 끝
+  tag: 관류 사정
+  distractorsEn:
+  - toe
+  - ankle
+  distractorsKo:
+  - 발목
+  - 종아리
+  chips:
+  - - foot
+  decoyChips:
+  - fut
+- id: w-cause
+  en: cause
+  ipa: /kɔːz/
+  ko: 일으키다
+  icon: board
+  example: It's not something you caused — we're watching it closely.
+  exKo: 환자분이 그렇게 만든 게 아니에요, 저희가 자세히 지켜보고 있어요.
+  cue: 얼룩진 피부에 놀란 환자에게 '환자분 탓이 아니에요' 할 때 — 'not something you ___d'
+  tag: 환자 설명
+  distractorsEn:
+  - catch
+  - cure
+  distractorsKo:
+  - 막다
+  - 고치다
+  chips:
+  - - cause
+  decoyChips:
+  - cuz
+- id: w-milrinone
+  en: milrinone
+  ipa: /ˈmɪlrɪnoʊn/
+  ko: 밀리논
+  icon: pill
+  example: Milrinone can drop his pressure more, so we watch that.
+  exKo: 밀리논은 혈압을 더 떨어뜨릴 수 있어서 그 부분을 지켜봐요.
+  cue: 혈관을 넓혀 혈압을 더 떨어뜨릴 수 있는 PDE-3 억제 강심제
+  tag: 약물 투여
+  distractorsEn:
+  - amrinone
+  - amiodarone
+  distractorsKo:
+  - 도부타민
+  - 노르에피네프린
+  chips:
+  - - mil
+    - ri
+    - none
+  decoyChips:
+  - mel
+  - rone
+- id: w-drop
+  en: drop
+  ipa: /drɑːp/
+  ko: 떨어뜨리다
+  icon: chartup
+  example: Milrinone can drop his pressure more, so we watch that.
+  exKo: 밀리논은 혈압을 더 떨어뜨릴 수 있어서 그 부분을 지켜봐요.
+  cue: 약 때문에 혈압이 아래로 내려가게 할 때 — 'can ___ his pressure more'
+  tag: 혈역학
+  distractorsEn:
+  - drip
+  - raise
+  distractorsKo:
+  - 올리다
+  - 유지하다
+  chips:
+  - - drop
+  decoyChips:
+  - drip
+- id: w-arrhythmia
+  en: arrhythmia
+  ipa: /əˈrɪðmiə/
+  ko: 부정맥
+  icon: monitor
+  example: Dobutamine may raise his heart rate and trigger arrhythmias.
+  exKo: 도부타민은 심박수를 올려서 부정맥을 유발할 수 있어요.
+  cue: 도부타민이 심박을 올리며 부를 수 있는 불규칙한 심장 리듬
+  tag: 심전도
+  distractorsEn:
+  - asystole
+  - arthritis
+  distractorsKo:
+  - 무수축
+  - 빈맥
+  chips:
+  - - ar
+    - rhyth
+    - mia
+  decoyChips:
+  - arr
+  - mea
+- id: w-trigger
+  en: trigger
+  ipa: /ˈtrɪɡər/
+  ko: 트리거; 유발하다
+  icon: bulb
+  example: Dobutamine may raise his heart rate and trigger arrhythmias.
+  exKo: 도부타민은 심박수를 올려서 부정맥을 유발할 수 있어요.
+  cue: IABP가 언제 부풀지 맞추는 기준 신호(ECG·압력) — '___ looks off'; 부정맥을 부를 때도
+  tag: 기계보조
+  distractorsEn:
+  - timer
+  - tracer
+  distractorsKo:
+  - 경보
+  - 억제하다
+  chips:
+  - - trig
+    - ger
+  decoyChips:
+  - trick
+  - gar
+- id: w-rhythm
+  en: rhythm
+  ipa: /ˈrɪðəm/
+  ko: 리듬
+  icon: monitor
+  example: His rhythm has been borderline for the last hour.
+  exKo: 지난 한 시간 동안 리듬이 경계선에 있었어요.
+  cue: 모니터에 보이는 심장 박동의 규칙 — 동율동인지 VT인지
+  tag: 심전도
+  distractorsEn:
+  - rate
+  - rim
+  distractorsKo:
+  - 박동수
+  - 혈압
+  chips:
+  - - rhythm
+  decoyChips:
+  - rythm
+- id: w-borderline
+  en: borderline
+  ipa: /ˈbɔːrdərlaɪn/
+  ko: 경계에 있는
+  icon: chartup
+  example: His rhythm has been borderline for the last hour.
+  exKo: 지난 한 시간 동안 리듬이 경계선에 있었어요.
+  cue: 정상과 위험 사이 아슬아슬한 선 위 — 'His pressure's ___'
+  tag: 혈역학
+  distractorsEn:
+  - baseline
+  - bottomline
+  distractorsKo:
+  - 정상인
+  - 위험한
+  chips:
+  - - border
+    - line
+  decoyChips:
+  - boarder
+  - lane
+- id: w-pick
+  en: pick
+  ipa: /pɪk/
+  ko: 고르다
+  icon: board
+  example: Let's pick based on his pressure and rhythm right now.
+  exKo: 지금 혈압과 리듬을 기준으로 골라봐요.
+  cue: 두 강심제 중 하나를 고를 때 — 'Let's ___ based on his pressure'
+  tag: 약물 투여
+  distractorsEn:
+  - peek
+  - kick
+  distractorsKo:
+  - 미루다
+  - 섞다
+  chips:
+  - - pick
+  decoyChips:
+  - pik
+- id: w-lean
+  en: lean
+  ipa: /liːn/
+  ko: 기울다
+  icon: compass
+  example: I'll let the doctor know which way we lean.
+  exKo: 어느 쪽으로 기우는지 의사에게 알릴게요.
+  cue: 팀 생각이 한쪽 약으로 쏠려 있을 때 — 'which way we ___'
+  tag: 팀 소통
+  distractorsEn:
+  - learn
+  - mean
+  distractorsKo:
+  - 결정하다
+  - 망설이다
+  chips:
+  - - lean
+  decoyChips:
+  - lien
+- id: w-give
+  en: give
+  ipa: /ɡɪv/
+  ko: 주다
+  icon: pill
+  example: I'll give the IV diuretic and track her urine output closely.
+  exKo: 정맥 이뇨제를 투여하고 소변량을 자세히 추적할게요.
+  cue: 처방된 약을 환자에게 넣을 때 쓰는 쉬운 동사 — '___ the IV diuretic'
+  tag: 약물 투여
+  distractorsEn:
+  - have
+  - take
+  distractorsKo:
+  - 빼다
+  - 받다
+  chips:
+  - - give
+  decoyChips:
+  - gave
+- id: w-iv
+  en: IV
+  ipa: /ˌaɪˈviː/
+  ko: 정맥주사
+  icon: pill
+  example: I'll give the IV diuretic and track her urine output closely.
+  exKo: 정맥 이뇨제를 투여하고 소변량을 자세히 추적할게요.
+  cue: 정맥으로 바로 들어가는 경로를 뜻하는 두 글자 약어 — '___ furosemide'
+  tag: 약물 투여
+  distractorsEn:
+  - IM
+  - IO
+  distractorsKo:
+  - 근육주사
+  - 골내주사
+  chips:
+  - - IV
+  decoyChips:
+  - VI
+- id: w-diuretic
+  en: diuretic
+  ipa: /ˌdaɪəˈrɛtɪk/
+  ko: 이뇨제
+  icon: pill
+  example: I'll give the IV diuretic and track her urine output closely.
+  exKo: 정맥 이뇨제를 투여하고 소변량을 자세히 추적할게요.
+  cue: furosemide(Lasix)처럼 소변을 늘려 폐의 물을 빼는 약
+  tag: 약물 투여
+  distractorsEn:
+  - digoxin
+  - dialysate
+  distractorsKo:
+  - 강심제
+  - 혈관확장제
+  chips:
+  - - di
+    - u
+    - ret
+    - ic
+  decoyChips:
+  - dia
+  - rit
+- id: w-urine
+  en: urine
+  ipa: /ˈjʊrɪn/
+  ko: 소변
+  icon: lab
+  example: I'll give the IV diuretic and track her urine output closely.
+  exKo: 정맥 이뇨제를 투여하고 소변량을 자세히 추적할게요.
+  cue: 이뇨제를 주고 한 시간 안에 늘어나는지 보는 것 — '___ output'
+  tag: 수분 관리
+  distractorsEn:
+  - urea
+  - uterine
+  distractorsKo:
+  - 혈액
+  - 땀
+  chips:
+  - - ur
+    - ine
+  decoyChips:
+  - ure
+  - in
+- id: w-output
+  en: output
+  ipa: /ˈaʊtpʊt/
+  ko: 배출량
+  icon: chartup
+  example: I'll give the IV diuretic and track her urine output closely.
+  exKo: 정맥 이뇨제를 투여하고 소변량을 자세히 추적할게요.
+  cue: 몸에서 나간 양 — I/O의 O, 'urine ___'
+  tag: 수분 관리
+  distractorsEn:
+  - outlet
+  - intake
+  distractorsKo:
+  - 섭취량
+  - 투여량
+  chips:
+  - - out
+    - put
+  decoyChips:
+  - in
+  - pot
+- id: w-aim
+  en: aim
+  ipa: /eɪm/
+  ko: 목표로 하다
+  icon: star
+  example: We're aiming to offload the extra fluid from her lungs.
+  exKo: 폐에 찬 여분의 수분을 덜어내는 게 목표예요.
+  cue: 치료가 노리는 지점을 말할 때 — 'We're ___ing to offload the fluid'
+  tag: 팀 소통
+  distractorsEn:
+  - claim
+  - ail
+  distractorsKo:
+  - 포기하다
+  - 미루다
+  chips:
+  - - aim
+  decoyChips:
+  - ame
+- id: w-offload
+  en: offload
+  ipa: /ˈɔːfloʊd/
+  ko: 덜어내다
+  icon: gear
+  example: We're aiming to offload the extra fluid from her lungs.
+  exKo: 폐에 찬 여분의 수분을 덜어내는 게 목표예요.
+  cue: 이뇨제로 폐·몸에 넘치게 찬 수분을 빼 짐을 덜 때
+  tag: 수분 관리
+  distractorsEn:
+  - overload
+  - unload
+  distractorsKo:
+  - 채우다
+  - 쌓다
+  chips:
+  - - 'off'
+    - load
+  decoyChips:
+  - of
+  - lode
+- id: w-extra
+  en: extra
+  ipa: /ˈɛkstrə/
+  ko: 여분의
+  icon: board
+  example: We're aiming to offload the extra fluid from her lungs.
+  exKo: 폐에 찬 여분의 수분을 덜어내는 게 목표예요.
+  cue: 필요한 양을 넘어 더 있는 — '폐에 찬 ___ fluid'; IABP가 보태는 힘에도
+  tag: 수분 관리
+  distractorsEn:
+  - external
+  - exact
+  distractorsKo:
+  - 부족한
+  - 필요한
+  chips:
+  - - ex
+    - tra
+  decoyChips:
+  - eks
+  - tera
+- id: w-potassium
+  en: potassium
+  ipa: /pəˈtæsiəm/
+  ko: 칼륨
+  icon: lab
+  example: I'll watch her potassium and blood pressure as she diureses.
+  exKo: 이뇨가 진행되는 동안 칼륨과 혈압을 지켜볼게요.
+  cue: 이뇨가 되면 소변으로 빠져 떨어지기 쉬운 전해질 — K
+  tag: 수분 관리
+  distractorsEn:
+  - sodium
+  - phosphorus
+  distractorsKo:
+  - 나트륨
+  - 마그네슘
+  chips:
+  - - po
+    - tas
+    - sium
+  decoyChips:
+  - pot
+  - shium
+- id: w-diurese
+  en: diurese
+  ipa: /ˌdaɪəˈriːz/
+  ko: 이뇨하다
+  icon: gear
+  example: I'll watch her potassium and blood pressure as she diureses.
+  exKo: 이뇨가 진행되는 동안 칼륨과 혈압을 지켜볼게요.
+  cue: 이뇨제를 맞고 소변으로 수분을 빼내는 중일 때 — 'as she ___s'
+  tag: 수분 관리
+  distractorsEn:
+  - dialyze
+  - digest
+  distractorsKo:
+  - 투석하다
+  - 수분을 채우다
+  chips:
+  - - di
+    - u
+    - rese
+  decoyChips:
+  - dia
+  - rize
+- id: w-stable
+  en: stable
+  ipa: /ˈsteɪbl/
+  ko: 안정된
+  icon: chartup
+  example: We're offloading fluid slowly so her pressure stays stable.
+  exKo: 혈압이 안정적이도록 천천히 수분을 덜어내고 있어요.
+  cue: 수분을 천천히 빼는 이유 — 혈압이 출렁이지 않고 그대로 있게
+  tag: 혈역학
+  distractorsEn:
+  - table
+  - unstable
+  distractorsKo:
+  - 불안정한
+  - 떨어지는
+  chips:
+  - - sta
+    - ble
+  decoyChips:
+  - stay
+  - bel
+- id: w-mi
+  en: MI
+  ipa: /ˌɛm ˈaɪ/
+  ko: 심근경색
+  icon: siren
+  example: His pressure is low after the MI, so we support it carefully.
+  exKo: 심근경색 이후 혈압이 낮아서 신중하게 지지하고 있어요.
+  cue: 관상동맥이 막혀 심근이 죽은 사건 — '___ 후 저혈압'의 두 글자 약어
+  tag: 혈역학
+  distractorsEn:
+  - MR
+  - PE
+  distractorsKo:
+  - 승모판 역류
+  - 폐색전증
+  chips:
+  - - MI
+  decoyChips:
+  - IM
+- id: w-support
+  en: support
+  ipa: /səˈpɔːrt/
+  ko: 지지하다
+  icon: shield
+  example: His pressure is low after the MI, so we support it carefully.
+  exKo: 심근경색 이후 혈압이 낮아서 신중하게 지지하고 있어요.
+  cue: 약·기계로 떨어진 혈압과 심장을 받쳐 줄 때 — 'we ___ it carefully'
+  tag: 혈역학
+  distractorsEn:
+  - suppress
+  - supply
+  distractorsKo:
+  - 억제하다
+  - 방치하다
+  chips:
+  - - sup
+    - port
+  decoyChips:
+  - sub
+  - pert
+- id: w-carefully
+  en: carefully
+  ipa: /ˈkɛrfəli/
+  ko: 신중하게
+  icon: shield
+  example: His pressure is low after the MI, so we support it carefully.
+  exKo: 심근경색 이후 혈압이 낮아서 신중하게 지지하고 있어요.
+  cue: 손상된 심장에 무리가 가지 않게 조심조심 — 'support it ___'
+  tag: 혈역학
+  distractorsEn:
+  - carelessly
+  - quickly
+  distractorsKo:
+  - 과감하게
+  - 서둘러
+  chips:
+  - - care
+    - ful
+    - ly
+  decoyChips:
+  - car
+  - fuly
+- id: w-perfusion
+  en: perfusion
+  ipa: /pərˈfjuːʒn/
+  ko: 관류
+  icon: stetho
+  example: We want perfusion without overworking the injured heart.
+  exKo: 손상된 심장에 무리를 주지 않으면서 관류를 지키고 싶어요.
+  cue: 피가 장기·조직까지 닿아 산소를 주는 것 — 쇼크에서 지키려는 것
+  tag: 혈역학
+  distractorsEn:
+  - infusion
+  - profusion
+  distractorsKo:
+  - 주입
+  - 환기
+  chips:
+  - - per
+    - fu
+    - sion
+  decoyChips:
+  - pre
+  - fuzion
+- id: w-overwork
+  en: overwork
+  ipa: /ˌoʊvərˈwɜːrk/
+  ko: 무리하게 하다
+  icon: gear
+  example: We want perfusion without overworking the injured heart.
+  exKo: 손상된 심장에 무리를 주지 않으면서 관류를 지키고 싶어요.
+  cue: 다친 심장을 강심제로 너무 몰아붙여 지치게 할 때 — 'without ___ing the heart'
+  tag: 혈역학
+  distractorsEn:
+  - overload
+  - overlook
+  distractorsKo:
+  - 쉬게 하다
+  - 회복시키다
+  chips:
+  - - over
+    - work
+  decoyChips:
+  - ova
+  - walk
+- id: w-injured
+  en: injured
+  ipa: /ˈɪndʒərd/
+  ko: 다친
+  icon: monitor
+  example: We want perfusion without overworking the injured heart.
+  exKo: 손상된 심장에 무리를 주지 않으면서 관류를 지키고 싶어요.
+  cue: 심근경색으로 다친 심장을 말할 때 — 'the ___ heart'
+  tag: 혈역학
+  distractorsEn:
+  - infused
+  - insured
+  distractorsKo:
+  - 건강한
+  - 확장된
+  chips:
+  - - in
+    - jur
+    - ed
+  decoyChips:
+  - en
+  - jure
+- id: w-balance
+  en: balance
+  ipa: /ˈbæləns/
+  ko: 균형을 맞추다
+  icon: chartup
+  example: We're balancing his blood flow with his damaged heart muscle.
+  exKo: 손상된 심장 근육을 고려해 혈류의 균형을 맞추고 있어요.
+  cue: 혈류를 지키면서 다친 심장에 짐을 덜 지우도록 양쪽을 맞출 때
+  tag: 혈역학
+  distractorsEn:
+  - ballot
+  - bounce
+  distractorsKo:
+  - 무시하다
+  - 늘리다
+  chips:
+  - - bal
+    - ance
+  decoyChips:
+  - ball
+  - ence
+- id: w-flow
+  en: flow
+  ipa: /floʊ/
+  ko: 흐름
+  icon: chartup
+  example: We're balancing his blood flow with his damaged heart muscle.
+  exKo: 손상된 심장 근육을 고려해 혈류의 균형을 맞추고 있어요.
+  cue: 혈관 속을 흘러가는 피의 움직임 — 'blood ___'
+  tag: 혈역학
+  distractorsEn:
+  - flaw
+  - fluid
+  distractorsKo:
+  - 압력
+  - 양
+  chips:
+  - - flow
+  decoyChips:
+  - flaw
+- id: w-damaged
+  en: damaged
+  ipa: /ˈdæmɪdʒd/
+  ko: 손상된
+  icon: monitor
+  example: We're balancing his blood flow with his damaged heart muscle.
+  exKo: 손상된 심장 근육을 고려해 혈류의 균형을 맞추고 있어요.
+  cue: 심근경색 뒤 일부가 망가진 심장 근육을 말할 때 — '___ heart muscle'
+  tag: 혈역학
+  distractorsEn:
+  - dammed
+  - managed
+  distractorsKo:
+  - 회복된
+  - 두꺼워진
+  chips:
+  - - dam
+    - aged
+  decoyChips:
+  - dame
+  - ged
+- id: w-muscle
+  en: muscle
+  ipa: /ˈmʌsl/
+  ko: 근육
+  icon: stetho
+  example: We're balancing his blood flow with his damaged heart muscle.
+  exKo: 손상된 심장 근육을 고려해 혈류의 균형을 맞추고 있어요.
+  cue: 심장 벽을 이루며 수축하는 조직 — 'heart ___'
+  tag: 혈역학
+  distractorsEn:
+  - mussel
+  - mucus
+  distractorsKo:
+  - 판막
+  - 혈관
+  chips:
+  - - mus
+    - cle
+  decoyChips:
+  - muss
+  - kle
+- id: w-continuously
+  en: continuously
+  ipa: /kənˈtɪnjuəsli/
+  ko: 지속적으로
+  icon: chartup
+  example: I'll monitor his rhythm and pressure continuously.
+  exKo: 리듬과 혈압을 지속적으로 모니터할게요.
+  cue: 잠깐도 끊지 않고 쭉 — 리듬과 혈압을 모니터하는 방식
+  tag: 혈역학
+  distractorsEn:
+  - occasionally
+  - contiguously
+  distractorsKo:
+  - 가끔
+  - 간헐적으로
+  chips:
+  - - con
+    - tinu
+    - ous
+    - ly
+  decoyChips:
+  - contin
+  - uos
+- id: w-balloon
+  en: balloon
+  ipa: /bəˈluːn/
+  ko: 풍선
+  icon: board
+  example: The balloon pump helps his heart push blood more easily.
+  exKo: 풍선 펌프가 심장이 피를 더 쉽게 내보내도록 도와줘요.
+  cue: 대동맥 안에서 심장 박동에 맞춰 부풀었다 꺼지는 IABP의 그 부분
+  tag: 기계보조
+  distractorsEn:
+  - ballot
+  - bulb
+  distractorsKo:
+  - 카테터
+  - 도관
+  chips:
+  - - bal
+    - loon
+  decoyChips:
+  - ball
+  - lune
+- id: w-pump
+  en: pump
+  ipa: /pʌmp/
+  ko: 펌프
+  icon: gear
+  example: The balloon pump helps his heart push blood more easily.
+  exKo: 풍선 펌프가 심장이 피를 더 쉽게 내보내도록 도와줘요.
+  cue: IABP의 P — 심장이 피를 내보내게 돕는 기계
+  tag: 기계보조
+  distractorsEn:
+  - plump
+  - pulp
+  distractorsKo:
+  - 밸브
+  - 필터
+  chips:
+  - - pump
+  decoyChips:
+  - pomp
+- id: w-push
+  en: push
+  ipa: /pʊʃ/
+  ko: 밀다
+  icon: gear
+  example: The balloon pump helps his heart push blood more easily.
+  exKo: 풍선 펌프가 심장이 피를 더 쉽게 내보내도록 도와줘요.
+  cue: 심장이 피를 앞으로 밀어 내보내는 힘 — IABP가 매 박동 보태 주는 것
+  tag: 기계보조
+  distractorsEn:
+  - pull
+  - puff
+  distractorsKo:
+  - 끌어당기다
+  - 붙잡다
+  chips:
+  - - push
+  decoyChips:
+  - pash
+- id: w-easily
+  en: easily
+  ipa: /ˈiːzəli/
+  ko: 쉽게
+  icon: check
+  example: The balloon pump helps his heart push blood more easily.
+  exKo: 풍선 펌프가 심장이 피를 더 쉽게 내보내도록 도와줘요.
+  cue: 풍선펌프 덕분에 심장이 힘을 덜 들이고 — 'push blood more ___'
+  tag: 기계보조
+  distractorsEn:
+  - early
+  - eagerly
+  distractorsKo:
+  - 힘들게
+  - 느리게
+  chips:
+  - - eas
+    - i
+    - ly
+  decoyChips:
+  - easy
+  - lee
+- id: w-large
+  en: large
+  ipa: /lɑːrdʒ/
+  ko: 큰
+  icon: board
+  example: It sits in a large artery and works with each heartbeat.
+  exKo: 큰 동맥 안에 자리 잡고 심장박동마다 함께 작동해요.
+  cue: IABP가 자리 잡는 대동맥처럼 굵은 혈관을 말할 때 — 'a ___ artery'
+  tag: 기계보조
+  distractorsEn:
+  - long
+  - lean
+  distractorsKo:
+  - 좁은
+  - 깊은
+  chips:
+  - - large
+  decoyChips:
+  - lard
+- id: w-artery
+  en: artery
+  ipa: /ˈɑːrtəri/
+  ko: 동맥
+  icon: stetho
+  example: It sits in a large artery and works with each heartbeat.
+  exKo: 큰 동맥 안에 자리 잡고 심장박동마다 함께 작동해요.
+  cue: 심장에서 나가는 피가 지나는 혈관 — 대동맥(aorta)도 이것
+  tag: 기계보조
+  distractorsEn:
+  - vein
+  - atrium
+  distractorsKo:
+  - 정맥
+  - 심방
+  chips:
+  - - ar
+    - tery
+  decoyChips:
+  - arte
+  - ary
+- id: w-work
+  en: work
+  ipa: /wɜːrk/
+  ko: 작동하다
+  icon: gear
+  example: It sits in a large artery and works with each heartbeat.
+  exKo: 큰 동맥 안에 자리 잡고 심장박동마다 함께 작동해요.
+  cue: 기계가 맡은 일을 해내는 것 — 'It ___s with each heartbeat'
+  tag: 기계보조
+  distractorsEn:
+  - walk
+  - wait
+  distractorsKo:
+  - 멈추다
+  - 고장 나다
+  chips:
+  - - work
+  decoyChips:
+  - walk
+- id: w-heartbeat
+  en: heartbeat
+  ipa: /ˈhɑːrtbiːt/
+  ko: 심장박동
+  icon: stetho
+  example: It sits in a large artery and works with each heartbeat.
+  exKo: 큰 동맥 안에 자리 잡고 심장박동마다 함께 작동해요.
+  cue: 심장이 한 번 뛰는 것 — IABP는 이것마다 맞춰 움직인다
+  tag: 기계보조
+  distractorsEn:
+  - heartburn
+  - breath
+  distractorsKo:
+  - 호흡
+  - 맥압
+  chips:
+  - - heart
+    - beat
+  decoyChips:
+  - hart
+  - bit
+- id: w-beat
+  en: beat
+  ipa: /biːt/
+  ko: 박동
+  icon: stetho
+  example: It's like giving his heart a little extra push with every beat.
+  exKo: 박동마다 심장에 작은 힘을 더 보태주는 것과 같아요.
+  cue: 심장이 한 번 쿵 뛰는 것 — 'with every ___'
+  tag: 기계보조
+  distractorsEn:
+  - bit
+  - breath
+  distractorsKo:
+  - 호흡
+  - 경보
+  chips:
+  - - beat
+  decoyChips:
+  - beet
+- id: w-place
+  en: place
+  ipa: /pleɪs/
+  ko: 삽입하다
+  icon: board
+  example: We'll place it through a small opening in his groin.
+  exKo: 서혜부의 작은 구멍을 통해 삽입할 거예요.
+  cue: 카테터·풍선을 몸 안 정해진 자리에 넣을 때 — 'We'll ___ it through his groin'
+  tag: 기계보조
+  distractorsEn:
+  - plate
+  - pace
+  distractorsKo:
+  - 빼내다
+  - 고정하다
+  chips:
+  - - place
+  decoyChips:
+  - plays
+- id: w-small
+  en: small
+  ipa: /smɔːl/
+  ko: 작은
+  icon: board
+  example: We'll place it through a small opening in his groin.
+  exKo: 서혜부의 작은 구멍을 통해 삽입할 거예요.
+  cue: IABP를 넣는 서혜부 구멍을 보호자에게 안심시키며 말할 때 — 'a ___ opening'
+  tag: 환자 설명
+  distractorsEn:
+  - smell
+  - shallow
+  distractorsKo:
+  - 깊은
+  - 넓은
+  chips:
+  - - small
+  decoyChips:
+  - smal
+- id: w-opening
+  en: opening
+  ipa: /ˈoʊpənɪŋ/
+  ko: 구멍
+  icon: board
+  example: We'll place it through a small opening in his groin.
+  exKo: 서혜부의 작은 구멍을 통해 삽입할 거예요.
+  cue: 보호자에게 '절개'·'천자' 대신 쓰는 쉬운 말 — 피부의 작은 구멍
+  tag: 환자 설명
+  distractorsEn:
+  - ending
+  - offering
+  distractorsKo:
+  - 흉터
+  - 상처 봉합
+  chips:
+  - - open
+    - ing
+  decoyChips:
+  - oppen
+  - in
+- id: w-groin
+  en: groin
+  ipa: /ɡrɔɪn/
+  ko: 서혜부
+  icon: board
+  example: We'll place it through a small opening in his groin.
+  exKo: 서혜부의 작은 구멍을 통해 삽입할 거예요.
+  cue: IABP·ECMO 관을 대퇴동맥으로 넣는 다리 시작 부분
+  tag: 기계보조
+  distractorsEn:
+  - grain
+  - groan
+  distractorsKo:
+  - 겨드랑이
+  - 목
+  chips:
+  - - groin
+  decoyChips:
+  - grain
+- id: w-insertion
+  en: insertion
+  ipa: /ɪnˈsɜːrʃn/
+  ko: 삽입 부위
+  icon: monitor
+  example: We'll watch the insertion site and his leg closely afterward.
+  exKo: 삽입 부위와 다리를 이후에 자세히 지켜볼 거예요.
+  cue: 관이 피부를 뚫고 들어간 자리 — '___ site'를 출혈·혈종으로 본다
+  tag: 기계보조
+  distractorsEn:
+  - incision
+  - injection
+  distractorsKo:
+  - 절개
+  - 주사
+  chips:
+  - - in
+    - ser
+    - tion
+  decoyChips:
+  - inter
+  - shun
+- id: w-site
+  en: site
+  ipa: /saɪt/
+  ko: 부위
+  icon: monitor
+  example: We'll watch the insertion site and his leg closely afterward.
+  exKo: 삽입 부위와 다리를 이후에 자세히 지켜볼 거예요.
+  cue: 관이 들어간 바로 그 자리 — 'insertion ___', 'cannula ___'
+  tag: 기계보조
+  distractorsEn:
+  - sight
+  - side
+  distractorsKo:
+  - 시야
+  - 옆쪽
+  chips:
+  - - site
+  decoyChips:
+  - sight
+- id: w-afterward
+  en: afterward
+  ipa: /ˈæftərwərd/
+  ko: 이후에
+  icon: calendar
+  example: We'll watch the insertion site and his leg closely afterward.
+  exKo: 삽입 부위와 다리를 이후에 자세히 지켜볼 거예요.
+  cue: 시술이 끝난 뒤 그다음부터 — '시술 후에 다리를 지켜볼게요'
+  tag: 환자 설명
+  distractorsEn:
+  - beforehand
+  - forward
+  distractorsKo:
+  - 미리
+  - 그동안
+  chips:
+  - - after
+    - ward
+  decoyChips:
+  - aft
+  - word
+- id: w-augmentation
+  en: augmentation
+  ipa: /ˌɔːɡmɛnˈteɪʃn/
+  ko: 증강
+  icon: chartup
+  example: The augmentation should come right after the dicrotic notch.
+  exKo: 증강은 절흔 직후에 나타나야 해요.
+  cue: IABP 파형에서 풍선이 부풀며 이완기 압력이 솟는 봉우리
+  tag: 기계보조
+  distractorsEn:
+  - argumentation
+  - aggregation
+  distractorsKo:
+  - 감소
+  - 역류
+  chips:
+  - - aug
+    - men
+    - ta
+    - tion
+  decoyChips:
+  - arg
+  - ment
+- id: w-notch
+  en: notch
+  ipa: /nɑːtʃ/
+  ko: 절흔
+  icon: board
+  example: The augmentation should come right after the dicrotic notch.
+  exKo: 증강은 절흔 직후에 나타나야 해요.
+  cue: 동맥압 파형에서 대동맥판이 닫히는 자리의 작은 홈 — dicrotic ___
+  tag: 기계보조
+  distractorsEn:
+  - nudge
+  - knot
+  distractorsKo:
+  - 봉우리
+  - 기준선
+  chips:
+  - - notch
+  decoyChips:
+  - nach
+- id: w-waveform
+  en: waveform
+  ipa: /ˈweɪvfɔːrm/
+  ko: 파형
+  icon: monitor
+  example: The waveform looks a little early on this cycle.
+  exKo: 이번 주기에서 파형이 조금 이르게 나타나요.
+  cue: 콘솔 화면에 그려지는 압력의 모양 — 증강·절흔을 읽는 그림
+  tag: 기계보조
+  distractorsEn:
+  - wavelength
+  - waveband
+  distractorsKo:
+  - 경보음
+  - 수치
+  chips:
+  - - wave
+    - form
+  decoyChips:
+  - wav
+  - farm
+- id: w-early
+  en: early
+  ipa: /ˈɜːrli/
+  ko: 이른
+  icon: calendar
+  example: The waveform looks a little early on this cycle.
+  exKo: 이번 주기에서 파형이 조금 이르게 나타나요.
+  cue: 풍선이 절흔보다 먼저 부풀 때 — 'looks a little ___'
+  tag: 기계보조
+  distractorsEn:
+  - late
+  - delayed
+  distractorsKo:
+  - 늦은
+  - 정확한
+  chips:
+  - - ear
+    - ly
+  decoyChips:
+  - air
+  - lie
+- id: w-cycle
+  en: cycle
+  ipa: /ˈsaɪkl/
+  ko: 주기
+  icon: gear
+  example: The waveform looks a little early on this cycle.
+  exKo: 이번 주기에서 파형이 조금 이르게 나타나요.
+  cue: 부풀고 꺼지는 한 번의 돌림 — 'on this ___'
+  tag: 기계보조
+  distractorsEn:
+  - circle
+  - sickle
+  distractorsKo:
+  - 파형
+  - 박동수
+  chips:
+  - - cy
+    - cle
+  decoyChips:
+  - cie
+  - kle
+- id: w-timing
+  en: timing
+  ipa: /ˈtaɪmɪŋ/
+  ko: 타이밍
+  icon: calendar
+  example: If the timing is off, the support won't be effective.
+  exKo: 타이밍이 어긋나면 보조 효과가 떨어져요.
+  cue: 풍선이 부풀고 꺼지는 순간이 심장과 맞는가 — '___ is off'
+  tag: 기계보조
+  distractorsEn:
+  - taming
+  - trimming
+  distractorsKo:
+  - 압력
+  - 크기
+  chips:
+  - - tim
+    - ing
+  decoyChips:
+  - time
+  - eng
+- id: w-off
+  en: 'off'
+  ipa: /ɔːf/
+  ko: 어긋난
+  icon: board
+  example: If the timing is off, the support won't be effective.
+  exKo: 타이밍이 어긋나면 보조 효과가 떨어져요.
+  cue: 타이밍·트리거가 맞아야 할 자리에서 살짝 벗어났을 때 — 'The timing is ___'
+  tag: 기계보조
+  distractorsEn:
+  - 'on'
+  - up
+  distractorsKo:
+  - 정확한
+  - 켜진
+  chips:
+  - - 'off'
+  decoyChips:
+  - of
+- id: w-effective
+  en: effective
+  ipa: /ɪˈfɛktɪv/
+  ko: 효과적인
+  icon: check
+  example: If the timing is off, the support won't be effective.
+  exKo: 타이밍이 어긋나면 보조 효과가 떨어져요.
+  cue: 보조가 제 효과를 내는지 — 타이밍이 어긋나면 그렇지 못하다
+  tag: 기계보조
+  distractorsEn:
+  - affective
+  - efficient
+  distractorsKo:
+  - 위험한
+  - 불필요한
+  chips:
+  - - ef
+    - fec
+    - tive
+  decoyChips:
+  - af
+  - fect
+- id: w-adjust
+  en: adjust
+  ipa: /əˈdʒʌst/
+  ko: 조정하다
+  icon: gear
+  example: I'll adjust the trigger and recheck the waveform.
+  exKo: 트리거를 조정하고 파형을 다시 확인할게요.
+  cue: 트리거·헤파린 용량을 상황에 맞게 조금 바꿀 때 — '___ ... per protocol'
+  tag: 기계보조
+  distractorsEn:
+  - adapt
+  - adjourn
+  distractorsKo:
+  - 중단하다
+  - 기록하다
+  chips:
+  - - ad
+    - just
+  decoyChips:
+  - add
+  - jest
+- id: w-recheck
+  en: recheck
+  ipa: /ˌriːˈtʃɛk/
+  ko: 다시 확인하다
+  icon: check
+  example: I'll adjust the trigger and recheck the waveform.
+  exKo: 트리거를 조정하고 파형을 다시 확인할게요.
+  cue: 조정한 뒤에 결과를 한 번 더 살필 때 — '___ the waveform', '___ her levels in an hour'
+  tag: 기계보조
+  distractorsEn:
+  - recharge
+  - reset
+  distractorsKo:
+  - 기록하다
+  - 무시하다
+  chips:
+  - - re
+    - check
+  decoyChips:
+  - ri
+  - chek
+- id: w-color
+  en: color
+  ipa: /ˈkʌlər/
+  ko: 색깔
+  icon: board
+  example: I'm checking the pulses and color in that leg regularly.
+  exKo: 그 다리의 맥박과 색깔을 규칙적으로 확인하고 있어요.
+  cue: IABP 쪽 다리가 창백·푸르게 변했는지 맥박과 함께 보는 것
+  tag: 관류 사정
+  distractorsEn:
+  - collar
+  - odor
+  distractorsKo:
+  - 온도
+  - 냄새
+  chips:
+  - - col
+    - or
+  decoyChips:
+  - coll
+  - ar
+- id: w-regularly
+  en: regularly
+  ipa: /ˈrɛɡjələrli/
+  ko: 규칙적으로
+  icon: calendar
+  example: I'm checking the pulses and color in that leg regularly.
+  exKo: 그 다리의 맥박과 색깔을 규칙적으로 확인하고 있어요.
+  cue: 정해진 간격마다 빠짐없이 — 다리 맥박을 확인하는 방식
+  tag: 관류 사정
+  distractorsEn:
+  - rarely
+  - irregularly
+  distractorsKo:
+  - 가끔
+  - 한 번만
+  chips:
+  - - reg
+    - u
+    - lar
+    - ly
+  decoyChips:
+  - rag
+  - ler
+- id: w-wiggle
+  en: wiggle
+  ipa: /ˈwɪɡl/
+  ko: 움직이다
+  icon: board
+  example: Can you wiggle your toes for me?
+  exKo: 발가락을 좀 움직여 볼 수 있으세요?
+  cue: 다리 신경·혈류를 보려고 발가락을 꼼지락거려 보라고 할 때
+  tag: 관류 사정
+  distractorsEn:
+  - wrinkle
+  - giggle
+  distractorsKo:
+  - 펴다
+  - 구부리다
+  chips:
+  - - wig
+    - gle
+  decoyChips:
+  - wag
+  - gel
+- id: w-toe
+  en: toe
+  ipa: /toʊ/
+  ko: 발가락
+  icon: board
+  example: Can you wiggle your toes for me?
+  exKo: 발가락을 좀 움직여 볼 수 있으세요?
+  cue: 발끝에 달린 다섯 개 — 꼼지락거려 보세요
+  tag: 관류 사정
+  distractorsEn:
+  - heel
+  - tow
+  distractorsKo:
+  - 발뒤꿈치
+  - 발목
+  chips:
+  - - toe
+  decoyChips:
+  - tow
+- id: w-numb
+  en: numb
+  ipa: /nʌm/
+  ko: 저린
+  icon: bulb
+  example: Tell me right away if it feels more numb or painful.
+  exKo: 더 저리거나 아프면 바로 말씀해 주세요.
+  cue: IABP 쪽 다리에 감각이 둔해지고 찌릿한 느낌 — 'feels more ___'
+  tag: 관류 사정
+  distractorsEn:
+  - dumb
+  - numbered
+  distractorsKo:
+  - 가려운
+  - 뜨거운
+  chips:
+  - - numb
+  decoyChips:
+  - num
+- id: w-painful
+  en: painful
+  ipa: /ˈpeɪnfl/
+  ko: 아픈
+  icon: monitor
+  example: Tell me right away if it feels more numb or painful.
+  exKo: 더 저리거나 아프면 바로 말씀해 주세요.
+  cue: 다리가 쑤시고 아프다고 할 때 — 'more numb or ___'
+  tag: 관류 사정
+  distractorsEn:
+  - pained
+  - painless
+  distractorsKo:
+  - 가려운
+  - 무감각한
+  chips:
+  - - pain
+    - ful
+  decoyChips:
+  - pane
+  - full
+- id: w-bleeding
+  en: bleeding
+  ipa: /ˈbliːdɪŋ/
+  ko: 출혈
+  icon: monitor
+  example: I'm also watching the insertion site for any bleeding.
+  exKo: 삽입 부위에 출혈이 있는지도 지켜보고 있어요.
+  cue: 항응고 중 삽입 부위·캐뉼라에서 피가 새어 나오는 것
+  tag: 기계보조
+  distractorsEn:
+  - breeding
+  - bleaching
+  distractorsKo:
+  - 혈전
+  - 멍
+  chips:
+  - - bleed
+    - ing
+  decoyChips:
+  - blead
+  - in
+- id: w-moment
+  en: moment
+  ipa: /ˈmoʊmənt/
+  ko: 순간
+  icon: calendar
+  example: I'll let you know the moment anything changes.
+  exKo: 무엇이든 변화가 생기면 바로 알려드릴게요.
+  cue: 환자에게 변화가 생기는 그 즉시 알린다고 할 때 — 'the ___ anything changes'
+  tag: 환자 설명
+  distractorsEn:
+  - movement
+  - minute
+  distractorsKo:
+  - 다음 날
+  - 나중
+  chips:
+  - - mo
+    - ment
+  decoyChips:
+  - mom
+  - mint
+- id: w-ventricle
+  en: ventricle
+  ipa: /ˈvɛntrɪkl/
+  ko: 심실
+  icon: stetho
+  example: His right ventricle is failing, so preload balance is delicate.
+  exKo: 우심실 기능이 저하돼서 전부하 균형이 예민해요.
+  cue: 피를 내보내는 심장의 아래쪽 방 — 우심부전이면 오른쪽 이것이 지친다
+  tag: 혈역학
+  distractorsEn:
+  - atrium
+  - ventilator
+  distractorsKo:
+  - 심방
+  - 판막
+  chips:
+  - - ven
+    - tri
+    - cle
+  decoyChips:
+  - vent
+  - kle
+- id: w-fail
+  en: fail
+  ipa: /feɪl/
+  ko: 기능이 저하되다
+  icon: monitor
+  example: His right ventricle is failing, so preload balance is delicate.
+  exKo: 우심실 기능이 저하돼서 전부하 균형이 예민해요.
+  cue: 약·기계를 써도 심장이 제 일을 못 해 낼 때 — 'His right ventricle is ___ing'
+  tag: 혈역학
+  distractorsEn:
+  - fall
+  - flail
+  distractorsKo:
+  - 회복되다
+  - 안정되다
+  chips:
+  - - fail
+  decoyChips:
+  - fale
+- id: w-preload
+  en: preload
+  ipa: /ˈpriːloʊd/
+  ko: 전부하
+  icon: chartup
+  example: His right ventricle is failing, so preload balance is delicate.
+  exKo: 우심실 기능이 저하돼서 전부하 균형이 예민해요.
+  cue: 심실이 수축 직전에 채워진 피의 양 — 수액을 줄지 말지 따질 때
+  tag: 혈역학
+  distractorsEn:
+  - afterload
+  - overload
+  distractorsKo:
+  - 후부하
+  - 심박출량
+  chips:
+  - - pre
+    - load
+  decoyChips:
+  - pro
+  - lode
+- id: w-delicate
+  en: delicate
+  ipa: /ˈdɛlɪkət/
+  ko: 미묘한
+  icon: bulb
+  example: His right ventricle is failing, so preload balance is delicate.
+  exKo: 우심실 기능이 저하돼서 전부하 균형이 예민해요.
+  cue: 조금만 기울어도 무너지는 균형 — 우심실의 수액 조절을 말할 때
+  tag: 혈역학
+  distractorsEn:
+  - dedicated
+  - delegate
+  distractorsKo:
+  - 단순한
+  - 튼튼한
+  chips:
+  - - del
+    - i
+    - cate
+  decoyChips:
+  - dell
+  - kate
+- id: w-avoid
+  en: avoid
+  ipa: /əˈvɔɪd/
+  ko: 피하다
+  icon: shield
+  example: We avoid anything that raises his pulmonary pressures.
+  exKo: 폐혈관 압력을 올리는 건 뭐든 피해요.
+  cue: 폐동맥압을 올리는 저산소·과수액 같은 것을 일부러 비켜 갈 때
+  tag: 혈역학
+  distractorsEn:
+  - allow
+  - afford
+  distractorsKo:
+  - 허용하다
+  - 유발하다
+  chips:
+  - - a
+    - void
+  decoyChips:
+  - uh
+  - vod
+- id: w-pulmonary
+  en: pulmonary
+  ipa: /ˈpʊlməˌnɛri/
+  ko: 폐의
+  icon: stetho
+  example: We avoid anything that raises his pulmonary pressures.
+  exKo: 폐혈관 압력을 올리는 건 뭐든 피해요.
+  cue: '''폐의'' — 우심부전에서 낮춰야 하는 ''___ pressures'''
+  tag: 혈역학
+  distractorsEn:
+  - coronary
+  - pulmonic
+  distractorsKo:
+  - 관상동맥의
+  - 전신의
+  chips:
+  - - pul
+    - mo
+    - nary
+  decoyChips:
+  - pull
+  - nery
+- id: w-further
+  en: further
+  ipa: /ˈfɜːrðər/
+  ko: 한층 더
+  icon: board
+  example: Too much fluid could push his right heart further behind.
+  exKo: 수분이 너무 많으면 우심장이 더 뒤처질 수 있어요.
+  cue: 지금도 처진 우심장을 더 깊은 곳으로 밀어낼 때 — 'push it ___ behind'
+  tag: 혈역학
+  distractorsEn:
+  - faster
+  - fewer
+  distractorsKo:
+  - 조금 덜
+  - 다시
+  chips:
+  - - fur
+    - ther
+  decoyChips:
+  - far
+  - thur
+- id: w-behind
+  en: behind
+  ipa: /bɪˈhaɪnd/
+  ko: 뒤처진
+  icon: board
+  example: Too much fluid could push his right heart further behind.
+  exKo: 수분이 너무 많으면 우심장이 더 뒤처질 수 있어요.
+  cue: 부담을 따라가지 못해 처진 상태 — 'push his right heart further ___'
+  tag: 혈역학
+  distractorsEn:
+  - beyond
+  - beside
+  distractorsKo:
+  - 앞선
+  - 옆에
+  chips:
+  - - be
+    - hind
+  decoyChips:
+  - bee
+  - hand
+- id: w-cvp
+  en: CVP
+  ipa: /ˌsiː viː ˈpiː/
+  ko: 중심정맥압
+  icon: monitor
+  example: I'll watch his CVP and oxygenation closely.
+  exKo: 중심정맥압과 산소화를 자세히 지켜볼게요.
+  cue: 중심정맥관으로 재는 우심방 쪽 압력의 세 글자 약어
+  tag: 혈역학
+  distractorsEn:
+  - CVA
+  - PVC
+  distractorsKo:
+  - 뇌졸중
+  - 심실조기수축
+  chips:
+  - - CVP
+  decoyChips:
+  - CPV
+- id: w-oxygenation
+  en: oxygenation
+  ipa: /ˌɑːksɪdʒəˈneɪʃn/
+  ko: 산소화
+  icon: lab
+  example: I'll watch his CVP and oxygenation closely.
+  exKo: 중심정맥압과 산소화를 자세히 지켜볼게요.
+  cue: 피에 산소가 얼마나 실리는가 — SpO2·PaO2로 보는 것
+  tag: 혈역학
+  distractorsEn:
+  - oxidation
+  - ventilation
+  distractorsKo:
+  - 산화
+  - 환기
+  chips:
+  - - oxy
+    - gen
+    - a
+    - tion
+  decoyChips:
+  - oxi
+  - nation
+- id: w-eye
+  en: eye
+  ipa: /aɪ/
+  ko: 주의(눈)
+  icon: magnify
+  example: I'm keeping a close eye on his oxygen and pressures together.
+  exKo: 산소와 압력을 함께 주의 깊게 지켜보고 있어요.
+  cue: '''계속 지켜보다''를 몸의 일부로 말하는 관용구 — ''keep a close ___ on'''
+  tag: 팀 소통
+  distractorsEn:
+  - ear
+  - hand
+  distractorsKo:
+  - 귀
+  - 손
+  chips:
+  - - eye
+  decoyChips:
+  - aye
+- id: w-together
+  en: together
+  ipa: /təˈɡɛðər/
+  ko: 함께
+  icon: me
+  example: I'm keeping a close eye on his oxygen and pressures together.
+  exKo: 산소와 압력을 함께 주의 깊게 지켜보고 있어요.
+  cue: 따로가 아니라 한꺼번에·다 같이 — 산소와 압력을 함께 볼 때, 함께 결정할 때
+  tag: 팀 소통
+  distractorsEn:
+  - altogether
+  - toward
+  distractorsKo:
+  - 따로
+  - 차례로
+  chips:
+  - - to
+    - geth
+    - er
+  decoyChips:
+  - too
+  - gather
+- id: w-slowly
+  en: slowly
+  ipa: /ˈsloʊli/
+  ko: 천천히
+  icon: compass
+  example: We're slowly lowering the medication as his heart holds steady.
+  exKo: 심장이 안정적으로 유지되는 만큼 약물을 천천히 줄이고 있어요.
+  cue: 심장이 버티는지 보며 서두르지 않고 — '___ lowering the medication'
+  tag: 약물 투여
+  distractorsEn:
+  - slightly
+  - suddenly
+  distractorsKo:
+  - 갑자기
+  - 한꺼번에
+  chips:
+  - - slow
+    - ly
+  decoyChips:
+  - slo
+  - lee
+- id: w-lower
+  en: lower
+  ipa: /ˈloʊər/
+  ko: 낮추다
+  icon: chartup
+  example: We're slowly lowering the medication as his heart holds steady.
+  exKo: 심장이 안정적으로 유지되는 만큼 약물을 천천히 줄이고 있어요.
+  cue: 강심제 용량을 아래로 내릴 때 — 'We're slowly ___ing the medication'
+  tag: 약물 투여
+  distractorsEn:
+  - raise
+  - lose
+  distractorsKo:
+  - 올리다
+  - 끊다
+  chips:
+  - - low
+    - er
+  decoyChips:
+  - loo
+  - wor
+- id: w-medication
+  en: medication
+  ipa: /ˌmɛdɪˈkeɪʃn/
+  ko: 약물
+  icon: pill
+  example: We're slowly lowering the medication as his heart holds steady.
+  exKo: 심장이 안정적으로 유지되는 만큼 약물을 천천히 줄이고 있어요.
+  cue: 보호자에게 약 이름 대신 쓰는 말 — 'the heart ___'
+  tag: 약물 투여
+  distractorsEn:
+  - meditation
+  - medical
+  distractorsKo:
+  - 시술
+  - 수액
+  chips:
+  - - med
+    - i
+    - ca
+    - tion
+  decoyChips:
+  - mid
+  - cat
+- id: w-hold
+  en: hold
+  ipa: /hoʊld/
+  ko: 유지하다
+  icon: shield
+  example: We're slowly lowering the medication as his heart holds steady.
+  exKo: 심장이 안정적으로 유지되는 만큼 약물을 천천히 줄이고 있어요.
+  cue: 강심제를 줄여도 심장·혈압이 그대로 버틸 때 — '___s steady'
+  tag: 혈역학
+  distractorsEn:
+  - fold
+  - halt
+  distractorsKo:
+  - 떨어지다
+  - 흔들리다
+  chips:
+  - - hold
+  decoyChips:
+  - hald
+- id: w-steady
+  en: steady
+  ipa: /ˈstɛdi/
+  ko: 흔들림 없는
+  icon: chartup
+  example: We're slowly lowering the medication as his heart holds steady.
+  exKo: 심장이 안정적으로 유지되는 만큼 약물을 천천히 줄이고 있어요.
+  cue: 약을 줄여도 출렁이지 않고 버티는 — 'holds ___'
+  tag: 혈역학
+  distractorsEn:
+  - sturdy
+  - ready
+  distractorsKo:
+  - 흔들리는
+  - 약해진
+  chips:
+  - - steady
+  decoyChips:
+  - steddy
+- id: w-slip
+  en: slip
+  ipa: /slɪp/
+  ko: 악화되다
+  icon: chartup
+  example: I'll watch for any signs his circulation is slipping.
+  exKo: 순환이 나빠지는 징후가 있는지 지켜볼게요.
+  cue: 순환이 조금씩 나빠지며 미끄러져 내려갈 때 — 'circulation is ___ping'
+  tag: 관류 사정
+  distractorsEn:
+  - skip
+  - slide
+  distractorsKo:
+  - 회복되다
+  - 유지되다
+  chips:
+  - - slip
+  decoyChips:
+  - slep
+- id: w-reduce
+  en: reduce
+  ipa: /rɪˈduːs/
+  ko: 줄이다
+  icon: chartup
+  example: We reduce it gradually to keep him safe.
+  exKo: 안전하게 유지하려고 점차 줄이는 거예요.
+  cue: 용량·양을 줄일 때 — '___ it gradually'
+  tag: 약물 투여
+  distractorsEn:
+  - induce
+  - produce
+  distractorsKo:
+  - 늘리다
+  - 끊다
+  chips:
+  - - re
+    - duce
+  decoyChips:
+  - ri
+  - deuce
+- id: w-gradually
+  en: gradually
+  ipa: /ˈɡrædʒuəli/
+  ko: 점차
+  icon: calendar
+  example: We reduce it gradually to keep him safe.
+  exKo: 안전하게 유지하려고 점차 줄이는 거예요.
+  cue: 한 번에 끊지 않고 조금씩 단계적으로 — 강심제 이탈의 원칙
+  tag: 약물 투여
+  distractorsEn:
+  - gratefully
+  - abruptly
+  distractorsKo:
+  - 갑자기
+  - 한꺼번에
+  chips:
+  - - grad
+    - u
+    - al
+    - ly
+  decoyChips:
+  - grade
+  - uly
+- id: w-safe
+  en: safe
+  ipa: /seɪf/
+  ko: 안전한
+  icon: shield
+  example: We reduce it gradually to keep him safe.
+  exKo: 안전하게 유지하려고 점차 줄이는 거예요.
+  cue: 약을 천천히 줄이는 이유 — 환자를 위험하지 않게 지키려고 'keep him ___'
+  tag: 환자 설명
+  distractorsEn:
+  - save
+  - sane
+  distractorsKo:
+  - 위험한
+  - 편안한
+  chips:
+  - - safe
+  decoyChips:
+  - save
+- id: w-dose
+  en: dose
+  ipa: /doʊs/
+  ko: 용량
+  icon: pill
+  example: If anything changes, we can raise the dose right back up.
+  exKo: 무엇이든 변화가 생기면 용량을 다시 올릴 수 있어요.
+  cue: 약을 얼마나 넣는가 — 상태가 나빠지면 다시 올리는 그 양
+  tag: 약물 투여
+  distractorsEn:
+  - doze
+  - drug
+  distractorsKo:
+  - 농도
+  - 속도
+  chips:
+  - - dose
+  decoyChips:
+  - doze
+- id: w-draw
+  en: draw
+  ipa: /drɔː/
+  ko: 뽑다(채혈)
+  icon: lab
+  example: I'll draw the ACT and adjust the heparin per protocol.
+  exKo: 프로토콜에 따라 ACT를 채혈하고 헤파린을 조정할게요.
+  cue: ACT를 재려고 동맥관·라인에서 피를 뽑을 때 — '___ the ACT'
+  tag: 기계보조
+  distractorsEn:
+  - drain
+  - drop
+  distractorsKo:
+  - 보내다
+  - 주입하다
+  chips:
+  - - draw
+  decoyChips:
+  - drew
+- id: w-act
+  en: ACT
+  ipa: /ˌeɪ siː ˈtiː/
+  ko: 활성응고시간
+  icon: lab
+  example: I'll draw the ACT and adjust the heparin per protocol.
+  exKo: 프로토콜에 따라 ACT를 채혈하고 헤파린을 조정할게요.
+  cue: IABP·ECMO 중 헤파린 효과를 침상에서 바로 재는 응고 검사의 약어
+  tag: 기계보조
+  distractorsEn:
+  - aPTT
+  - ABG
+  distractorsKo:
+  - 혈소판 수
+  - 동맥혈가스
+  chips:
+  - - ACT
+  decoyChips:
+  - ATC
+- id: w-heparin
+  en: heparin
+  ipa: /ˈhɛpərɪn/
+  ko: 헤파린
+  icon: pill
+  example: I'll draw the ACT and adjust the heparin per protocol.
+  exKo: 프로토콜에 따라 ACT를 채혈하고 헤파린을 조정할게요.
+  cue: 기계보조 중 회로·관에 혈전이 생기지 않게 거는 항응고제
+  tag: 기계보조
+  distractorsEn:
+  - warfarin
+  - heroin
+  distractorsKo:
+  - 혈소판
+  - 프로타민
+  chips:
+  - - hep
+    - a
+    - rin
+  decoyChips:
+  - hap
+  - ren
+- id: w-protocol
+  en: protocol
+  ipa: /ˈproʊtəkɔːl/
+  ko: 프로토콜
+  icon: board
+  example: I'll draw the ACT and adjust the heparin per protocol.
+  exKo: 프로토콜에 따라 ACT를 채혈하고 헤파린을 조정할게요.
+  cue: ACT 값에 따라 헤파린을 얼마나 바꿀지 미리 정해 둔 병원 지침 — 'per ___'
+  tag: 기계보조
+  distractorsEn:
+  - procedure
+  - protector
+  distractorsKo:
+  - 임의 판단
+  - 구두 지시
+  chips:
+  - - pro
+    - to
+    - col
+  decoyChips:
+  - pre
+  - coll
+- id: w-last
+  en: last
+  ipa: /læst/
+  ko: 지난
+  icon: calendar
+  example: Her last ACT was a little below target.
+  exKo: 지난 ACT 수치가 목표보다 조금 낮았어요.
+  cue: 가장 최근에 잰 — 'Her ___ ACT was a little below target'
+  tag: 기계보조
+  distractorsEn:
+  - least
+  - next
+  distractorsKo:
+  - 다음
+  - 첫
+  chips:
+  - - last
+  decoyChips:
+  - lost
+- id: w-below
+  en: below
+  ipa: /bɪˈloʊ/
+  ko: 아래
+  icon: chartup
+  example: Her last ACT was a little below target.
+  exKo: 지난 ACT 수치가 목표보다 조금 낮았어요.
+  cue: 목표 범위에 못 미치는 — 'a little ___ target'
+  tag: 기계보조
+  distractorsEn:
+  - above
+  - beyond
+  distractorsKo:
+  - 위
+  - 안에
+  chips:
+  - - be
+    - low
+  decoyChips:
+  - bee
+  - loe
+- id: w-target
+  en: target
+  ipa: /ˈtɑːrɡɪt/
+  ko: 목표
+  icon: star
+  example: Her last ACT was a little below target.
+  exKo: 지난 ACT 수치가 목표보다 조금 낮았어요.
+  cue: ACT·aPTT를 맞춰 두려는 목표치 — 'a little below ___'
+  tag: 기계보조
+  distractorsEn:
+  - baseline
+  - threshold
+  distractorsKo:
+  - 기준선
+  - 한계치
+  chips:
+  - - tar
+    - get
+  decoyChips:
+  - tag
+  - git
+- id: w-range
+  en: range
+  ipa: /reɪndʒ/
+  ko: 범위
+  icon: board
+  example: We keep her in the target range to prevent clots and bleeding.
+  exKo: 혈전과 출혈을 막기 위해 목표 범위 안에 유지해요.
+  cue: 너무 낮지도 높지도 않게 정해 둔 위아래 폭 — 'target ___'
+  tag: 기계보조
+  distractorsEn:
+  - rate
+  - rank
+  distractorsKo:
+  - 속도
+  - 평균
+  chips:
+  - - range
+  decoyChips:
+  - rage
+- id: w-prevent
+  en: prevent
+  ipa: /prɪˈvɛnt/
+  ko: 막다
+  icon: shield
+  example: We keep her in the target range to prevent clots and bleeding.
+  exKo: 혈전과 출혈을 막기 위해 목표 범위 안에 유지해요.
+  cue: 혈전·출혈이 아예 생기지 않게 미리 막을 때
+  tag: 기계보조
+  distractorsEn:
+  - present
+  - provoke
+  distractorsKo:
+  - 치료하다
+  - 유발하다
+  chips:
+  - - pre
+    - vent
+  decoyChips:
+  - pro
+  - went
+- id: w-clot
+  en: clot
+  ipa: /klɑːt/
+  ko: 혈전
+  icon: monitor
+  example: We keep her in the target range to prevent clots and bleeding.
+  exKo: 혈전과 출혈을 막기 위해 목표 범위 안에 유지해요.
+  cue: 항응고가 모자라면 기계·관 안에 생기는 피 덩어리
+  tag: 기계보조
+  distractorsEn:
+  - clog
+  - cloth
+  distractorsKo:
+  - 출혈
+  - 공기 방울
+  chips:
+  - - clot
+  decoyChips:
+  - klot
+- id: w-circuit
+  en: circuit
+  ipa: /ˈsɜːrkɪt/
+  ko: 회로
+  icon: gear
+  example: I'm watching the circuit and her for any bleeding.
+  exKo: 회로와 환자분 모두 출혈이 있는지 지켜보고 있어요.
+  cue: ECMO에서 피가 몸 밖으로 나와 기계를 돌아 다시 들어가는 관 전체
+  tag: 기계보조
+  distractorsEn:
+  - circle
+  - culprit
+  distractorsKo:
+  - 필터
+  - 전원
+  chips:
+  - - cir
+    - cuit
+  decoyChips:
+  - sir
+  - kit
+- id: w-tubing
+  en: tubing
+  ipa: /ˈtuːbɪŋ/
+  ko: 튜브
+  icon: board
+  example: There's blood in the tubing — the balloon may have ruptured.
+  exKo: 튜브에 피가 보여요, 풍선이 파열됐을 수 있어요.
+  cue: 콘솔에서 풍선으로 헬륨이 오가는 관 — 여기 피가 보이면 파열 의심
+  tag: 기계보조
+  distractorsEn:
+  - tuning
+  - turbine
+  distractorsKo:
+  - 풍선
+  - 콘솔
+  chips:
+  - - tub
+    - ing
+  decoyChips:
+  - tube
+  - in
+- id: w-rupture
+  en: rupture
+  ipa: /ˈrʌptʃər/
+  ko: 파열되다
+  icon: siren
+  example: There's blood in the tubing — the balloon may have ruptured.
+  exKo: 튜브에 피가 보여요, 풍선이 파열됐을 수 있어요.
+  cue: IABP 풍선이 터져 관에 피가 비칠 때 — 'the balloon may have ___d'
+  tag: 응급 대응
+  distractorsEn:
+  - puncture
+  - capture
+  distractorsKo:
+  - 접히다
+  - 막히다
+  chips:
+  - - rup
+    - ture
+  decoyChips:
+  - rap
+  - tour
+- id: w-console
+  en: console
+  ipa: /ˈkɑːnsoʊl/
+  ko: 콘솔
+  icon: monitor
+  example: The console is alarming and the trigger looks off.
+  exKo: 콘솔에 경보가 울리고 트리거도 이상해 보여요.
+  cue: IABP의 화면·펌프·경보가 들어 있는 본체 기계
+  tag: 기계보조
+  distractorsEn:
+  - catheter
+  - control
+  distractorsKo:
+  - 풍선
+  - 카테터
+  chips:
+  - - con
+    - sole
+  decoyChips:
+  - kon
+  - soul
+- id: w-alarm
+  en: alarm
+  ipa: /əˈlɑːrm/
+  ko: 경보가 울리다
+  icon: bell
+  example: The console is alarming and the trigger looks off.
+  exKo: 콘솔에 경보가 울리고 트리거도 이상해 보여요.
+  cue: 기계가 이상을 알리며 소리를 낼 때 — 'The console is ___ing'
+  tag: 응급 대응
+  distractorsEn:
+  - alert
+  - arm
+  distractorsKo:
+  - 꺼지다
+  - 멈추다
+  chips:
+  - - al
+    - arm
+  decoyChips:
+  - all
+  - erm
+- id: w-stop
+  en: stop
+  ipa: /stɑːp/
+  ko: 멈추다
+  icon: board
+  example: I'm stopping the pump and calling the physician now.
+  exKo: 펌프를 멈추고 지금 의사를 부르고 있어요.
+  cue: 풍선 파열이 의심되면 바로 펌프를 멈출 때 — 'I'm ___ping the pump'
+  tag: 응급 대응
+  distractorsEn:
+  - start
+  - swap
+  distractorsKo:
+  - 켜다
+  - 늦추다
+  chips:
+  - - stop
+  decoyChips:
+  - stoop
+- id: w-call
+  en: call
+  ipa: /kɔːl/
+  ko: 부르다
+  icon: speaker
+  example: I'm stopping the pump and calling the physician now.
+  exKo: 펌프를 멈추고 지금 의사를 부르고 있어요.
+  cue: 의사·코드팀·ECMO 담당을 불러 오게 할 때; 이송 전 미리 연락할 때도
+  tag: 응급 대응
+  distractorsEn:
+  - cull
+  - tell
+  distractorsKo:
+  - 보고하다
+  - 기다리다
+  chips:
+  - - call
+  decoyChips:
+  - col
+- id: w-prepare
+  en: prepare
+  ipa: /prɪˈpɛr/
+  ko: 준비하다
+  icon: check
+  example: We need to prepare to remove or replace the balloon.
+  exKo: 풍선을 제거하거나 교체할 준비를 해야 해요.
+  cue: 다음 처치에 쓸 것을 미리 갖춰 놓을 때 — '___ the bedside'
+  tag: 응급 대응
+  distractorsEn:
+  - repair
+  - compare
+  distractorsKo:
+  - 치우다
+  - 미루다
+  chips:
+  - - pre
+    - pare
+  decoyChips:
+  - pro
+  - pair
+- id: w-remove
+  en: remove
+  ipa: /rɪˈmuːv/
+  ko: 제거하다
+  icon: board
+  example: We need to prepare to remove or replace the balloon.
+  exKo: 풍선을 제거하거나 교체할 준비를 해야 해요.
+  cue: 터진 풍선을 몸에서 빼낼 때 — 의사가 하고 간호사는 준비한다
+  tag: 응급 대응
+  distractorsEn:
+  - remote
+  - reprove
+  distractorsKo:
+  - 넣다
+  - 고정하다
+  chips:
+  - - re
+    - move
+  decoyChips:
+  - ri
+  - mov
+- id: w-replace
+  en: replace
+  ipa: /rɪˈpleɪs/
+  ko: 교체하다
+  icon: gear
+  example: We need to prepare to remove or replace the balloon.
+  exKo: 풍선을 제거하거나 교체할 준비를 해야 해요.
+  cue: 망가진 풍선을 새것으로 갈아 넣을 때 — 'remove or ___ the balloon'
+  tag: 응급 대응
+  distractorsEn:
+  - relapse
+  - repeat
+  distractorsKo:
+  - 고치다
+  - 버리다
+  chips:
+  - - re
+    - place
+  decoyChips:
+  - ri
+  - plays
+- id: w-stay
+  en: stay
+  ipa: /steɪ/
+  ko: 머무르다
+  icon: shield
+  example: I'm staying right here until the physician arrives.
+  exKo: 의사가 올 때까지 바로 여기 있을게요.
+  cue: 위기 상황에서 의사가 올 때까지 환자 곁을 떠나지 않을 때 — 'I'm ___ing right here'
+  tag: 응급 대응
+  distractorsEn:
+  - stray
+  - step
+  distractorsKo:
+  - 떠나다
+  - 숨다
+  chips:
+  - - stay
+  decoyChips:
+  - stey
+- id: w-arrive
+  en: arrive
+  ipa: /əˈraɪv/
+  ko: 도착하다
+  icon: compass
+  example: I'm staying right here until the physician arrives.
+  exKo: 의사가 올 때까지 바로 여기 있을게요.
+  cue: 부른 의사가 병상에 와 닿을 때 — 'until the physician ___s'
+  tag: 응급 대응
+  distractorsEn:
+  - derive
+  - revive
+  distractorsKo:
+  - 떠나다
+  - 전화하다
+  chips:
+  - - ar
+    - rive
+  decoyChips:
+  - a
+  - rave
+- id: w-despite
+  en: despite
+  ipa: /dɪˈspaɪt/
+  ko: ~에도 불구하고
+  icon: board
+  example: He's failing despite the IABP and inotropes.
+  exKo: 풍선펌프와 강심제에도 불구하고 상태가 나빠지고 있어요.
+  cue: IABP·강심제를 다 썼는데도 — '나빠지고 있어요 ___ ...'
+  tag: 응급 대응
+  distractorsEn:
+  - beside
+  - besides
+  distractorsKo:
+  - 덕분에
+  - 때문에
+  chips:
+  - - de
+    - spite
+  decoyChips:
+  - dis
+  - spit
+- id: w-inotrope
+  en: inotrope
+  ipa: /ˈaɪnətroʊp/
+  ko: 강심제
+  icon: pill
+  example: He's failing despite the IABP and inotropes.
+  exKo: 풍선펌프와 강심제에도 불구하고 상태가 나빠지고 있어요.
+  cue: 도부타민·밀리논처럼 심장 수축력을 키우는 약 묶음
+  tag: 약물 투여
+  distractorsEn:
+  - vasopressor
+  - isotope
+  distractorsKo:
+  - 승압제
+  - 이뇨제
+  chips:
+  - - ino
+    - trope
+  decoyChips:
+  - inno
+  - trop
+- id: w-activate
+  en: activate
+  ipa: /ˈæktɪveɪt/
+  ko: 활성화하다
+  icon: gear
+  example: We should activate the VA-ECMO team now.
+  exKo: 지금 VA-ECMO 팀을 활성화해야 해요.
+  cue: 정해진 호출 체계로 전문 팀을 출동시킬 때 — '___ the VA-ECMO team'
+  tag: 응급 대응
+  distractorsEn:
+  - captivate
+  - cultivate
+  distractorsKo:
+  - 취소하다
+  - 대기시키다
+  chips:
+  - - ac
+    - ti
+    - vate
+  decoyChips:
+  - act
+  - vait
+- id: w-ecmo
+  en: ECMO
+  ipa: /ˈɛkmoʊ/
+  ko: 에크모
+  icon: gear
+  example: We should activate the VA-ECMO team now.
+  exKo: 지금 VA-ECMO 팀을 활성화해야 해요.
+  cue: IABP로도 안 될 때 몸 밖에서 피에 산소를 넣고 순환시키는 기계 — VA-___
+  tag: 기계보조
+  distractorsEn:
+  - ECG
+  - CRRT
+  distractorsKo:
+  - 투석
+  - 인공호흡기
+  chips:
+  - - ECMO
+  decoyChips:
+  - EMCO
+- id: w-bedside
+  en: bedside
+  ipa: /ˈbɛdsaɪd/
+  ko: 침상 곁
+  icon: hospital
+  example: I'll prepare the bedside and brief the family.
+  exKo: 침상 곁을 준비하고 가족에게 간단히 알릴게요.
+  cue: 환자 침대 바로 옆 자리 — ECMO 캐뉼라 삽입 전에 비워 두는 곳
+  tag: 응급 대응
+  distractorsEn:
+  - bedsore
+  - bedspread
+  distractorsKo:
+  - 대기실
+  - 처치실
+  chips:
+  - - bed
+    - side
+  decoyChips:
+  - bad
+  - sight
+- id: w-brief
+  en: brief
+  ipa: /briːf/
+  ko: 간단히 알리다
+  icon: speech
+  example: I'll prepare the bedside and brief the family.
+  exKo: 침상 곁을 준비하고 가족에게 간단히 알릴게요.
+  cue: 급박한 상황을 가족에게 짧고 핵심만 알려 줄 때 — '___ the family'
+  tag: 팀 소통
+  distractorsEn:
+  - grieve
+  - bribe
+  distractorsKo:
+  - 위로하다
+  - 동의를 받다
+  chips:
+  - - brief
+  decoyChips:
+  - breef
+- id: w-specialist
+  en: specialist
+  ipa: /ˈspɛʃəlɪst/
+  ko: 전문가
+  icon: stetho
+  example: I'll call the ECMO specialist and get the cart ready.
+  exKo: ECMO 전문가를 부르고 카트를 준비해 둘게요.
+  cue: ECMO 회로를 맡아 돌리는 훈련받은 전담 인력 — 'ECMO ___'
+  tag: 팀 소통
+  distractorsEn:
+  - specimen
+  - spectator
+  distractorsKo:
+  - 보조원
+  - 수련의
+  chips:
+  - - spe
+    - cial
+    - ist
+  decoyChips:
+  - spec
+  - shal
+- id: w-cart
+  en: cart
+  ipa: /kɑːrt/
+  ko: 카트
+  icon: board
+  example: I'll call the ECMO specialist and get the cart ready.
+  exKo: ECMO 전문가를 부르고 카트를 준비해 둘게요.
+  cue: 필요한 물품을 싣고 병상으로 밀고 오는 바퀴 달린 수레 — crash ___
+  tag: 응급 대응
+  distractorsEn:
+  - chart
+  - card
+  distractorsKo:
+  - 차트
+  - 들것
+  chips:
+  - - cart
+  decoyChips:
+  - card
+- id: w-ready
+  en: ready
+  ipa: /ˈrɛdi/
+  ko: 준비된
+  icon: check
+  example: I'll call the ECMO specialist and get the cart ready.
+  exKo: ECMO 전문가를 부르고 카트를 준비해 둘게요.
+  cue: 필요한 순간 바로 쓸 수 있게 다 갖춘 — 'get the cart ___'
+  tag: 응급 대응
+  distractorsEn:
+  - steady
+  - already
+  distractorsKo:
+  - 비어 있는
+  - 고장 난
+  chips:
+  - - ready
+  decoyChips:
+  - redy
+- id: w-vt
+  en: VT
+  ipa: /ˌviː ˈtiː/
+  ko: 심실빈맥
+  icon: siren
+  example: He's in VT and pulseless — start compressions.
+  exKo: 심실빈맥에 맥박이 없어요, 흉부압박을 시작하세요.
+  cue: 넓은 QRS가 빠르게 이어지는 심실 리듬의 두 글자 약어
+  tag: 응급 대응
+  distractorsEn:
+  - VF
+  - SVT
+  distractorsKo:
+  - 심실세동
+  - 상심실성 빈맥
+  chips:
+  - - VT
+  decoyChips:
+  - TV
+- id: w-pulseless
+  en: pulseless
+  ipa: /ˈpʌlslɪs/
+  ko: 무맥성의
+  icon: siren
+  example: He's in VT and pulseless — start compressions.
+  exKo: 심실빈맥에 맥박이 없어요, 흉부압박을 시작하세요.
+  cue: 모니터엔 리듬이 있는데 목동맥에서 아무것도 안 만져질 때
+  tag: 응급 대응
+  distractorsEn:
+  - painless
+  - breathless
+  distractorsKo:
+  - 의식 없는
+  - 숨이 가쁜
+  chips:
+  - - pulse
+    - less
+  decoyChips:
+  - puls
+  - les
+- id: w-compression
+  en: compression
+  ipa: /kəmˈprɛʃn/
+  ko: 흉부압박
+  icon: stetho
+  example: He's in VT and pulseless — start compressions.
+  exKo: 심실빈맥에 맥박이 없어요, 흉부압박을 시작하세요.
+  cue: 가슴 한가운데를 세게·빠르게 눌러 피를 돌리는 것 — 'start ___s'
+  tag: 응급 대응
+  distractorsEn:
+  - compassion
+  - compensation
+  distractorsKo:
+  - 인공호흡
+  - 제세동
+  chips:
+  - - com
+    - pres
+    - sion
+  decoyChips:
+  - comp
+  - shun
+- id: w-code
+  en: code
+  ipa: /koʊd/
+  ko: 코드(응급콜)
+  icon: siren
+  example: Someone call a code and grab the crash cart.
+  exKo: 누가 코드를 부르고 카트를 가져와 주세요.
+  cue: 심정지 응급 호출을 부를 때 — 'call a ___'
+  tag: 응급 대응
+  distractorsEn:
+  - cord
+  - coat
+  distractorsKo:
+  - 응급 키트
+  - 비상구
+  chips:
+  - - code
+  decoyChips:
+  - coad
+- id: w-grab
+  en: grab
+  ipa: /ɡræb/
+  ko: 가져오다
+  icon: board
+  example: Someone call a code and grab the crash cart.
+  exKo: 누가 코드를 부르고 카트를 가져와 주세요.
+  cue: 급할 때 crash cart를 얼른 끌고 오라고 할 때
+  tag: 응급 대응
+  distractorsEn:
+  - grip
+  - garb
+  distractorsKo:
+  - 치우다
+  - 잠그다
+  chips:
+  - - grab
+  decoyChips:
+  - grub
+- id: w-charge
+  en: charge
+  ipa: /tʃɑːrdʒ/
+  ko: 충전하다
+  icon: gear
+  example: Charge to 200 and clear the bed.
+  exKo: 200으로 충전하고 침대에서 물러나세요.
+  cue: 제세동기에 에너지를 채울 때 — '___ to 200'
+  tag: 응급 대응
+  distractorsEn:
+  - change
+  - discharge
+  distractorsKo:
+  - 끄다
+  - 방전시키다
+  chips:
+  - - charge
+  decoyChips:
+  - charj
+- id: w-clear
+  en: clear
+  ipa: /klɪr/
+  ko: 물러나다
+  icon: check
+  example: Charge to 200 and clear the bed.
+  exKo: 200으로 충전하고 침대에서 물러나세요.
+  cue: 충격 직전 모두 침대에서 손을 떼고 떨어지라고 외칠 때
+  tag: 응급 대응
+  distractorsEn:
+  - clean
+  - close
+  distractorsKo:
+  - 붙잡다
+  - 다가가다
+  chips:
+  - - clear
+  decoyChips:
+  - clean
+- id: w-resume
+  en: resume
+  ipa: /rɪˈzuːm/
+  ko: 재개하다
+  icon: gear
+  example: Resume CPR right after the shock.
+  exKo: 충격을 준 직후 바로 심폐소생술을 재개하세요.
+  cue: 충격 직후 멈췄던 압박을 곧바로 다시 할 때 — '___ CPR'
+  tag: 응급 대응
+  distractorsEn:
+  - assume
+  - resign
+  distractorsKo:
+  - 중단하다
+  - 미루다
+  chips:
+  - - re
+    - sume
+  decoyChips:
+  - ri
+  - zoom
+- id: w-cpr
+  en: CPR
+  ipa: /ˌsiː piː ˈɑːr/
+  ko: 심폐소생술
+  icon: stetho
+  example: Resume CPR right after the shock.
+  exKo: 충격을 준 직후 바로 심폐소생술을 재개하세요.
+  cue: 가슴 압박과 인공호흡을 합친 소생술의 세 글자 약어
+  tag: 응급 대응
+  distractorsEn:
+  - CPAP
+  - PCR
+  distractorsKo:
+  - 지속기도양압
+  - 중합효소 연쇄반응
+  chips:
+  - - CPR
+  decoyChips:
+  - CRP
+- id: w-shock
+  en: shock
+  ipa: /ʃɑːk/
+  ko: 전기 충격
+  icon: siren
+  example: Resume CPR right after the shock.
+  exKo: 충격을 준 직후 바로 심폐소생술을 재개하세요.
+  cue: 제세동기가 가슴에 한 번 흘려보내는 전기 — 'right after the ___'
+  tag: 응급 대응
+  distractorsEn:
+  - shot
+  - stock
+  distractorsKo:
+  - 압박
+  - 주사
+  chips:
+  - - shock
+  decoyChips:
+  - shok
+- id: w-cannula
+  en: cannula
+  ipa: /ˈkænjələ/
+  ko: 캐뉼라
+  icon: board
+  example: She's bleeding at the cannula site while anticoagulated.
+  exKo: 항응고 중인 상태에서 캐뉼라 부위에서 출혈이 있어요.
+  cue: ECMO 피가 나가고 들어오는 굵은 관 — 그 삽입 부위에서 피가 날 때
+  tag: 기계보조
+  distractorsEn:
+  - catheter
+  - canal
+  distractorsKo:
+  - 드레싱
+  - 봉합사
+  chips:
+  - - can
+    - nu
+    - la
+  decoyChips:
+  - kan
+  - ulla
+- id: w-anticoagulated
+  en: anticoagulated
+  ipa: /ˌæntikoʊˈæɡjuleɪtɪd/
+  ko: 항응고 중인
+  icon: pill
+  example: She's bleeding at the cannula site while anticoagulated.
+  exKo: 항응고 중인 상태에서 캐뉼라 부위에서 출혈이 있어요.
+  cue: 헤파린이 들어가 피가 잘 굳지 않게 해 둔 상태 — 그래서 출혈이 더 위험하다
+  tag: 기계보조
+  distractorsEn:
+  - coagulated
+  - anesthetized
+  distractorsKo:
+  - 응고된
+  - 마취된
+  chips:
+  - - anti
+    - coag
+    - u
+    - lated
+  decoyChips:
+  - ante
+  - coa
+- id: w-soaked
+  en: soaked
+  ipa: /soʊkt/
+  ko: 흠뻑 젖은
+  icon: board
+  example: Her sheets are soaked and the dressing is saturated.
+  exKo: 시트가 흠뻑 젖었고 드레싱도 흠뻑 젖었어요.
+  cue: 피가 배어 시트가 축축하게 다 젖었을 때 — 'Her sheets are ___'
+  tag: 응급 대응
+  distractorsEn:
+  - stained
+  - soured
+  distractorsKo:
+  - 얼룩진
+  - 말라붙은
+  chips:
+  - - soak
+    - ed
+  decoyChips:
+  - soke
+  - id
+- id: w-dressing
+  en: dressing
+  ipa: /ˈdrɛsɪŋ/
+  ko: 드레싱
+  icon: bandage
+  example: Her sheets are soaked and the dressing is saturated.
+  exKo: 시트가 흠뻑 젖었고 드레싱도 흠뻑 젖었어요.
+  cue: 삽입 부위를 덮어 둔 거즈·필름 — 피가 배면 위에 덧대고 보고
+  tag: 기계보조
+  distractorsEn:
+  - drainage
+  - pressing
+  distractorsKo:
+  - 배액
+  - 봉합
+  chips:
+  - - dress
+    - ing
+  decoyChips:
+  - drez
+  - sin
+- id: w-saturated
+  en: saturated
+  ipa: /ˈsætʃəreɪtɪd/
+  ko: (피가) 흥건히 배어든
+  icon: board
+  example: Her sheets are soaked and the dressing is saturated.
+  exKo: 시트가 흠뻑 젖었고 드레싱도 흠뻑 젖었어요.
+  cue: 드레싱이 피를 더 머금지 못할 만큼 꽉 찼을 때 — 'the dressing is ___'
+  tag: 응급 대응
+  distractorsEn:
+  - sutured
+  - separated
+  distractorsKo:
+  - 봉합된
+  - 말라붙은
+  chips:
+  - - sat
+    - u
+    - rat
+    - ed
+  decoyChips:
+  - sad
+  - rate
+- id: w-type
+  en: type
+  ipa: /taɪp/
+  ko: 혈액형
+  icon: lab
+  example: We need type and cross sent right away.
+  exKo: 혈액형과 교차검사를 바로 보내야 해요.
+  cue: 수혈 전 ABO·Rh를 알아보는 검사 — '___ and cross'의 앞말
+  tag: 응급 대응
+  distractorsEn:
+  - screen
+  - tape
+  distractorsKo:
+  - 항체 선별
+  - 혈소판 수
+  chips:
+  - - type
+  decoyChips:
+  - tipe
+- id: w-cross
+  en: cross
+  ipa: /krɔːs/
+  ko: 교차검사
+  icon: lab
+  example: We need type and cross sent right away.
+  exKo: 혈액형과 교차검사를 바로 보내야 해요.
+  cue: 줄 피와 환자 피가 맞는지 실제로 섞어 보는 검사 — 'type and ___'
+  tag: 응급 대응
+  distractorsEn:
+  - crash
+  - class
+  distractorsKo:
+  - 혈액형
+  - 응고 검사
+  chips:
+  - - cross
+  decoyChips:
+  - cros
+- id: w-send
+  en: send
+  ipa: /sɛnd/
+  ko: 보내다
+  icon: board
+  example: We need type and cross sent right away.
+  exKo: 혈액형과 교차검사를 바로 보내야 해요.
+  cue: 채혈한 검체를 검사실로 올려 보낼 때 — 'type and cross ___ right away'
+  tag: 응급 대응
+  distractorsEn:
+  - sand
+  - spend
+  distractorsKo:
+  - 받다
+  - 미루다
+  chips:
+  - - send
+  decoyChips:
+  - sent
+- id: w-portable
+  en: portable
+  ipa: /ˈpɔːrtəbl/
+  ko: 휴대용의
+  icon: monitor
+  example: Let's confirm the pump, drips, and portable monitor before we move.
+  exKo: 이동 전에 펌프, 정맥주입, 휴대용 모니터를 확인해봐요.
+  cue: 이송 중 들고 다니며 쓰는 — '___ monitor'
+  tag: 이송
+  distractorsEn:
+  - potable
+  - palpable
+  distractorsKo:
+  - 고정식의
+  - 무선의
+  chips:
+  - - port
+    - able
+  decoyChips:
+  - pot
+  - abel
+- id: w-move
+  en: move
+  ipa: /muːv/
+  ko: 옮기다
+  icon: compass
+  example: Let's confirm the pump, drips, and portable monitor before we move.
+  exKo: 이동 전에 펌프, 정맥주입, 휴대용 모니터를 확인해봐요.
+  cue: 환자를 침대째 다른 곳으로 옮길 때 — 'before we ___'
+  tag: 이송
+  distractorsEn:
+  - roam
+  - prove
+  distractorsKo:
+  - 멈추다
+  - 기다리다
+  chips:
+  - - move
+  decoyChips:
+  - moov
+- id: w-line
+  en: line
+  ipa: /laɪn/
+  ko: 라인
+  icon: board
+  example: All the lines need to be secured before transport.
+  exKo: 이송 전에 모든 라인을 고정해야 해요.
+  cue: 몸에 꽂혀 약·수액이 들어가는 관들 — 이송 전에 꼭 고정할 것
+  tag: 이송
+  distractorsEn:
+  - lead
+  - lane
+  distractorsKo:
+  - 유도선
+  - 차선
+  chips:
+  - - line
+  decoyChips:
+  - lane
+- id: w-secure
+  en: secure
+  ipa: /sɪˈkjʊr/
+  ko: 고정하다
+  icon: check
+  example: All the lines need to be secured before transport.
+  exKo: 이송 전에 모든 라인을 고정해야 해요.
+  cue: 움직여도 빠지지 않게 테이프·고정 장치로 붙들어 둘 때
+  tag: 이송
+  distractorsEn:
+  - rescue
+  - seclude
+  distractorsKo:
+  - 풀다
+  - 빼다
+  chips:
+  - - se
+    - cure
+  decoyChips:
+  - si
+  - cur
+- id: w-transport
+  en: transport
+  ipa: /ˈtrænspɔːrt/
+  ko: 이송
+  icon: compass
+  example: All the lines need to be secured before transport.
+  exKo: 이송 전에 모든 라인을 고정해야 해요.
+  cue: 기계보조 환자를 cath lab까지 옮기는 일 — 미리 역할을 나눈다
+  tag: 이송
+  distractorsEn:
+  - transplant
+  - passport
+  distractorsKo:
+  - 이식
+  - 입원
+  chips:
+  - - trans
+    - port
+  decoyChips:
+  - trance
+  - part
+- id: w-role
+  en: role
+  ipa: /roʊl/
+  ko: 역할
+  icon: board
+  example: Everyone knows their role for the transport.
+  exKo: 모두가 이송에서 자기 역할을 알고 있어요.
+  cue: 이송 때 각자 맡은 몫 — 누가 펌프, 누가 기도를 보는지
+  tag: 이송
+  distractorsEn:
+  - rule
+  - row
+  distractorsKo:
+  - 순서
+  - 위치
+  chips:
+  - - role
+  decoyChips:
+  - roll
+- id: w-ahead
+  en: ahead
+  ipa: /əˈhɛd/
+  ko: 미리
+  icon: compass
+  example: I'll call ahead so the cath lab is ready for him.
+  exKo: 카테터실이 준비되도록 미리 전화할게요.
+  cue: 도착하기 전에 먼저 연락해 둘 때 — 'call ___'
+  tag: 이송
+  distractorsEn:
+  - behind
+  - ahold
+  distractorsKo:
+  - 나중에
+  - 뒤에
+  chips:
+  - - a
+    - head
+  decoyChips:
+  - uh
+  - hed
+- id: w-lab
+  en: lab
+  ipa: /læb/
+  ko: 검사실
+  icon: lab
+  example: I'll call ahead so the cath lab is ready for him.
+  exKo: 카테터실이 준비되도록 미리 전화할게요.
+  cue: 심도자 시술을 하는 곳 — cath ___
+  tag: 이송
+  distractorsEn:
+  - lap
+  - lobby
+  distractorsKo:
+  - 병동
+  - 수술실
+  chips:
+  - - lab
+  decoyChips:
+  - lap
+- id: w-count
+  en: count
+  ipa: /kaʊnt/
+  ko: 신호(카운트)
+  icon: board
+  example: We'll move on my count, everyone together.
+  exKo: 제 신호에 맞춰 모두 함께 옮길게요.
+  cue: 다 같이 들어 옮기기 전 '하나, 둘, 셋'을 외치는 사람 — 'on my ___'
+  tag: 이송
+  distractorsEn:
+  - court
+  - mount
+  distractorsKo:
+  - 속도
+  - 순서
+  chips:
+  - - count
+  decoyChips:
+  - cont
+- id: w-recover
+  en: recover
+  ipa: /rɪˈkʌvər/
+  ko: 회복하다
+  icon: chartup
+  example: His heart isn't recovering the way we hoped.
+  exKo: 심장이 저희가 바랐던 만큼 회복되고 있지 않아요.
+  cue: 망가진 심장이 다시 제 힘을 되찾는 것 — 보호자가 가장 듣고 싶은 말
+  tag: 목표 대화
+  distractorsEn:
+  - discover
+  - recur
+  distractorsKo:
+  - 악화되다
+  - 재발하다
+  chips:
+  - - re
+    - cover
+  decoyChips:
+  - ri
+  - cuver
+- id: w-way
+  en: way
+  ipa: /weɪ/
+  ko: 방식
+  icon: compass
+  example: His heart isn't recovering the way we hoped.
+  exKo: 심장이 저희가 바랐던 만큼 회복되고 있지 않아요.
+  cue: 바랐던 모습·방식대로 — 'isn't recovering the ___ we hoped'
+  tag: 목표 대화
+  distractorsEn:
+  - wave
+  - wage
+  distractorsKo:
+  - 이유
+  - 속도
+  chips:
+  - - way
+  decoyChips:
+  - weigh
+- id: w-hope
+  en: hope
+  ipa: /hoʊp/
+  ko: 바라다
+  icon: star
+  example: His heart isn't recovering the way we hoped.
+  exKo: 심장이 저희가 바랐던 만큼 회복되고 있지 않아요.
+  cue: 그렇게 되기를 마음으로 바라던 것 — 'the way we ___d'
+  tag: 목표 대화
+  distractorsEn:
+  - cope
+  - hoop
+  distractorsKo:
+  - 두려워하다
+  - 예상하다
+  chips:
+  - - hope
+  decoyChips:
+  - hop
+- id: w-everything
+  en: everything
+  ipa: /ˈɛvriθɪŋ/
+  ko: 모든 것
+  icon: board
+  example: We're doing everything we can, and the next day or two will tell us a lot.
+  exKo: 저희가 할 수 있는 모든 걸 하고 있고, 하루 이틀이면 많은 걸 알 수 있을 거예요.
+  cue: 할 수 있는 건 하나도 빼놓지 않고 — 'We're doing ___ we can'
+  tag: 목표 대화
+  distractorsEn:
+  - nothing
+  - something
+  distractorsKo:
+  - 아무것도
+  - 어떤 것
+  chips:
+  - - every
+    - thing
+  decoyChips:
+  - any
+  - think
+- id: w-next
+  en: next
+  ipa: /nɛkst/
+  ko: 다음
+  icon: calendar
+  example: We're doing everything we can, and the next day or two will tell us a lot.
+  exKo: 저희가 할 수 있는 모든 걸 하고 있고, 하루 이틀이면 많은 걸 알 수 있을 거예요.
+  cue: 바로 이어 올 하루 이틀 — 'the ___ day or two'
+  tag: 목표 대화
+  distractorsEn:
+  - last
+  - nest
+  distractorsKo:
+  - 지난
+  - 마지막
+  chips:
+  - - next
+  decoyChips:
+  - nex
+- id: w-lot
+  en: lot
+  ipa: /lɑːt/
+  ko: 많은 것
+  icon: chartup
+  example: We're doing everything we can, and the next day or two will tell us a lot.
+  exKo: 저희가 할 수 있는 모든 걸 하고 있고, 하루 이틀이면 많은 걸 알 수 있을 거예요.
+  cue: 앞으로 며칠이 많은 것을 알려 줄 때 — 'will tell us a ___'
+  tag: 목표 대화
+  distractorsEn:
+  - little
+  - lid
+  distractorsKo:
+  - 조금
+  - 아무것도
+  chips:
+  - - lot
+  decoyChips:
+  - lat
+- id: w-talk
+  en: talk
+  ipa: /tɔːk/
+  ko: 이야기하다
+  icon: speech
+  example: We can talk about a transplant evaluation or comfort-focused care.
+  exKo: 이식 평가나 완화 중심 돌봄에 대해 이야기해볼 수 있어요.
+  cue: 가족과 앞으로의 선택지를 함께 나눠 볼 때 — 'We can ___ about...'
+  tag: 목표 대화
+  distractorsEn:
+  - walk
+  - take
+  distractorsKo:
+  - 결정하다
+  - 서명하다
+  chips:
+  - - talk
+  decoyChips:
+  - tok
+- id: w-transplant
+  en: transplant
+  ipa: /ˈtrænsplænt/
+  ko: 이식
+  icon: cross
+  example: We can talk about a transplant evaluation or comfort-focused care.
+  exKo: 이식 평가나 완화 중심 돌봄에 대해 이야기해볼 수 있어요.
+  cue: 회복이 안 되는 심장을 남의 심장으로 바꾸는 수술 — 평가부터 받는다
+  tag: 목표 대화
+  distractorsEn:
+  - transfusion
+  - transport
+  distractorsKo:
+  - 수혈
+  - 이송
+  chips:
+  - - trans
+    - plant
+  decoyChips:
+  - trance
+  - plan
+- id: w-evaluation
+  en: evaluation
+  ipa: /ɪˌvæljuˈeɪʃn/
+  ko: 평가
+  icon: board
+  example: We can talk about a transplant evaluation or comfort-focused care.
+  exKo: 이식 평가나 완화 중심 돌봄에 대해 이야기해볼 수 있어요.
+  cue: 이식을 받을 수 있는지 여러 검사·면담으로 따져 보는 과정
+  tag: 목표 대화
+  distractorsEn:
+  - elevation
+  - evacuation
+  distractorsKo:
+  - 수술
+  - 대기
+  chips:
+  - - e
+    - val
+    - u
+    - ation
+  decoyChips:
+  - eva
+  - vul
+- id: w-comfort
+  en: comfort
+  ipa: /ˈkʌmfərt/
+  ko: 완화(편안함)
+  icon: shield
+  example: We can talk about a transplant evaluation or comfort-focused care.
+  exKo: 이식 평가나 완화 중심 돌봄에 대해 이야기해볼 수 있어요.
+  cue: 고통을 덜고 편안함을 최우선으로 하는 돌봄 — '___-focused care'
+  tag: 목표 대화
+  distractorsEn:
+  - effort
+  - content
+  distractorsKo:
+  - 완치
+  - 연명
+  chips:
+  - - com
+    - fort
+  decoyChips:
+  - come
+  - fourt
+- id: w-care
+  en: care
+  ipa: /kɛr/
+  ko: 돌봄
+  icon: cross
+  example: We can talk about a transplant evaluation or comfort-focused care.
+  exKo: 이식 평가나 완화 중심 돌봄에 대해 이야기해볼 수 있어요.
+  cue: 환자를 보살피는 일 전체 — 'comfort-focused ___'
+  tag: 목표 대화
+  distractorsEn:
+  - cure
+  - core
+  distractorsKo:
+  - 완치
+  - 수술
+  chips:
+  - - care
+  decoyChips:
+  - cure
+- id: w-find
+  en: find
+  ipa: /faɪnd/
+  ko: 찾다
+  icon: magnify
+  example: Let's find the path that fits what matters most to him.
+  exKo: 이 분에게 가장 중요한 것에 맞는 길을 함께 찾아봐요.
+  cue: 가족과 함께 맞는 길을 찾아 나설 때 — 'Let's ___ the path'
+  tag: 목표 대화
+  distractorsEn:
+  - fine
+  - fund
+  distractorsKo:
+  - 잃다
+  - 정하다
+  chips:
+  - - find
+  decoyChips:
+  - fined
+- id: w-path
+  en: path
+  ipa: /pæθ/
+  ko: 길
+  icon: compass
+  example: Let's find the path that fits what matters most to him.
+  exKo: 이 분에게 가장 중요한 것에 맞는 길을 함께 찾아봐요.
+  cue: 앞으로 나아갈 치료 방향을 비유로 — 'the ___ that fits him'
+  tag: 목표 대화
+  distractorsEn:
+  - patch
+  - bath
+  distractorsKo:
+  - 끝
+  - 벽
+  chips:
+  - - path
+  decoyChips:
+  - pass
+- id: w-fit
+  en: fit
+  ipa: /fɪt/
+  ko: 맞다
+  icon: check
+  example: Let's find the path that fits what matters most to him.
+  exKo: 이 분에게 가장 중요한 것에 맞는 길을 함께 찾아봐요.
+  cue: 환자가 소중히 여기는 것과 들어맞을 때 — 'the path that ___s'
+  tag: 목표 대화
+  distractorsEn:
+  - fix
+  - fill
+  distractorsKo:
+  - 고치다
+  - 채우다
+  chips:
+  - - fit
+  decoyChips:
+  - feet
+- id: w-matter
+  en: matter
+  ipa: /ˈmætər/
+  ko: 중요하다
+  icon: star
+  example: Let's find the path that fits what matters most to him.
+  exKo: 이 분에게 가장 중요한 것에 맞는 길을 함께 찾아봐요.
+  cue: 환자에게 무엇이 가장 소중한지 물을 때 — 'what ___s most to him'
+  tag: 목표 대화
+  distractorsEn:
+  - master
+  - mutter
+  distractorsKo:
+  - 망설이다
+  - 바뀌다
+  chips:
+  - - mat
+    - ter
+  decoyChips:
+  - mad
+  - tor
+- id: w-most
+  en: most
+  ipa: /moʊst/
+  ko: 가장
+  icon: chartup
+  example: Let's find the path that fits what matters most to him.
+  exKo: 이 분에게 가장 중요한 것에 맞는 길을 함께 찾아봐요.
+  cue: 여럿 가운데 으뜸으로 — 'what matters ___'
+  tag: 목표 대화
+  distractorsEn:
+  - least
+  - must
+  distractorsKo:
+  - 덜
+  - 조금
+  chips:
+  - - most
+  decoyChips:
+  - mist
+- id: w-wrong
+  en: wrong
+  ipa: /rɔːŋ/
+  ko: 잘못된
+  icon: board
+  example: There's no wrong choice here — let's decide together.
+  exKo: 잘못된 선택은 없어요, 함께 결정해요.
+  cue: 가족의 죄책감을 덜어 줄 때 — '틀린 선택은 없어요'의 '틀린'
+  tag: 목표 대화
+  distractorsEn:
+  - strong
+  - right
+  distractorsKo:
+  - 옳은
+  - 쉬운
+  chips:
+  - - wrong
+  decoyChips:
+  - rong
+- id: w-choice
+  en: choice
+  ipa: /tʃɔɪs/
+  ko: 선택
+  icon: pushpin
+  example: There's no wrong choice here — let's decide together.
+  exKo: 잘못된 선택은 없어요, 함께 결정해요.
+  cue: 이식 평가와 완화 돌봄 중에서 가족이 고르는 것
+  tag: 목표 대화
+  distractorsEn:
+  - chance
+  - voice
+  distractorsKo:
+  - 기회
+  - 책임
+  chips:
+  - - choice
+  decoyChips:
+  - chose
+- id: w-decide
+  en: decide
+  ipa: /dɪˈsaɪd/
+  ko: 결정하다
+  icon: check
+  example: There's no wrong choice here — let's decide together.
+  exKo: 잘못된 선택은 없어요, 함께 결정해요.
+  cue: 의료진과 가족이 함께 방향을 정할 때 — 'let's ___ together'
+  tag: 목표 대화
+  distractorsEn:
+  - divide
+  - decline
+  distractorsKo:
+  - 미루다
+  - 거절하다
+  chips:
+  - - de
+    - cide
+  decoyChips:
+  - di
+  - side
+situations:
+- title: 심인성 쇼크 초기 사정
+  sentences:
+  - en: I'm checking your breathing, blood pressure, and circulation.
+    ko: 숨쉬는 것, 혈압, 순환을 확인하고 있어요.
+    chunks:
+    - I'm checking
+    - your breathing
+    - ', blood pressure'
+    - ', and circulation'
+    - .
+    words:
+    - w-check
+    - w-breathing
+    - w-blood
+    - w-pressure
+    - w-circulation
+    goal: 1
+  - en: Your blood pressure is a little low right now.
+    ko: 지금 혈압이 조금 낮아요.
+    chunks:
+    - Your blood pressure
+    - is a little low
+    - right
+    - now
+    - .
+    words:
+    - w-blood
+    - w-pressure
+    - w-low
+    goal: 1
+  - en: I can hear some fluid in your lungs, so we'll help with that.
+    ko: 폐에 물이 조금 찬 소리가 들려서, 저희가 도와드릴게요.
+    chunks:
+    - I can hear
+    - some fluid in your lungs
+    - ', so we''ll help'
+    - with that
+    - .
+    words:
+    - w-hear
+    - w-fluid
+    - w-lung
+    - w-help
+    goal: 1
+  - en: I'm listening to your heart and lungs closely.
+    ko: 심장과 폐 소리를 자세히 들어볼게요.
+    chunks:
+    - I'm listening
+    - to your heart
+    - and lungs
+    - closely
+    - .
+    words:
+    - w-listen
+    - w-heart
+    - w-lung
+    - w-closely
+    goal: 1
+  - en: Squeeze my hand if you can hear me.
+    ko: 제 목소리 들리시면 제 손을 꽉 쥐어보세요.
+    chunks:
+    - Squeeze my hand
+    - if you can
+    - hear me
+    - .
+    words:
+    - w-squeeze
+    - w-hear
+    goal: 1
+  - en: I'm right here and I'll keep the team updated.
+    ko: 제가 바로 여기 있고, 팀에 계속 알릴게요.
+    chunks:
+    - I'm right here
+    - and I'll keep
+    - the team
+    - updated
+    - .
+    words:
+    - w-right
+    - w-here
+    - w-keep
+    - w-team
+    - w-update
+    goal: 2
+  - en: I'm reporting these changes to the doctor now.
+    ko: 이 변화들을 지금 의사에게 보고할게요.
+    chunks:
+    - I'm reporting
+    - these changes
+    - to the doctor
+    - now
+    - .
+    words:
+    - w-report
+    - w-change
+    goal: 2
+- title: 강심제 주입 준비
+  sentences:
+  - en: I'll confirm the dobutamine concentration against the order.
+    ko: 도부타민 농도를 처방과 대조해서 확인할게요.
+    chunks:
+    - I'll confirm
+    - the dobutamine concentration
+    - against the order
+    - .
+    words:
+    - w-confirm
+    - w-dobutamine
+    - w-concentration
+    - w-order
+    goal: 1
+  - en: The bag is labeled and double-checked with another nurse.
+    ko: 수액백에 라벨을 붙이고 다른 간호사와 함께 재확인했어요.
+    chunks:
+    - The bag
+    - is labeled
+    - and double-checked
+    - with another nurse
+    - .
+    words:
+    - w-bag
+    - w-label
+    - w-doublecheck
+    goal: 1
+  - en: He needs continuous cardiac and blood pressure monitoring.
+    ko: 지속적인 심장·혈압 모니터링이 필요해요.
+    chunks:
+    - He needs
+    - continuous cardiac
+    - and blood pressure
+    - monitoring
+    - .
+    words:
+    - w-continuous
+    - w-cardiac
+    - w-blood
+    - w-pressure
+    goal: 2
+  - en: I'm putting him on the monitor before we start the drip.
+    ko: 주입을 시작하기 전에 모니터부터 연결할게요.
+    chunks:
+    - I'm putting him
+    - on the monitor
+    - before we start
+    - the drip
+    - .
+    words:
+    - w-monitor
+    - w-start
+    - w-drip
+    goal: 2
+  - en: I'll start low and titrate to his response.
+    ko: 낮은 용량부터 시작해서 반응을 보며 조절할게요.
+    chunks:
+    - I'll start low
+    - and titrate
+    - to his response
+    - .
+    words:
+    - w-start
+    - w-low
+    - w-titrate
+    - w-response
+    goal: 2
+  - en: I'll watch his heart rate closely once it's running.
+    ko: 주입이 시작되면 심박수를 자세히 지켜볼게요.
+    chunks:
+    - I'll watch
+    - his heart rate
+    - closely
+    - once it's running
+    - .
+    words:
+    - w-watch
+    - w-heart
+    - w-rate
+    - w-closely
+    - w-run
+    goal: 2
+- title: 12유도 심전도 신속 확보
+  sentences:
+  - en: I'll get a 12-lead ECG right now.
+    ko: 지금 바로 12유도 심전도를 확보할게요.
+    chunks:
+    - I'll get
+    - a 12-lead ECG
+    - right now
+    - .
+    words:
+    - w-ecg
+    goal: 1
+  - en: His chest pain started about ten minutes ago.
+    ko: 가슴 통증이 약 10분 전에 시작됐어요.
+    chunks:
+    - His chest pain
+    - started
+    - about ten minutes
+    - ago
+    - .
+    words:
+    - w-chest
+    - w-pain
+    - w-start
+    - w-ago
+    goal: 1
+  - en: I'm looking for any ST changes that suggest ischemia.
+    ko: 허혈을 시사하는 ST 변화가 있는지 보고 있어요.
+    chunks:
+    - I'm looking
+    - for any ST changes
+    - that suggest
+    - ischemia
+    - .
+    words:
+    - w-look
+    - w-change
+    - w-suggest
+    - w-ischemia
+    goal: 2
+  - en: The leads need to be placed exactly right for a clean tracing.
+    ko: 깨끗한 파형을 위해 유도선을 정확히 붙여야 해요.
+    chunks:
+    - The leads
+    - need to be placed
+    - exactly right
+    - for a clean tracing
+    - .
+    words:
+    - w-lead
+    - w-exactly
+    - w-right
+    - w-clean
+    - w-tracing
+    goal: 1
+  - en: I'll show this to the physician immediately.
+    ko: 이걸 즉시 의사에게 보여줄게요.
+    chunks:
+    - I'll show this
+    - to the physician
+    - immediately
+    - .
+    words:
+    - w-show
+    - w-physician
+    - w-immediately
+    goal: 2
+  - en: I'm printing a copy for the chart right away.
+    ko: 차트에 넣을 사본을 바로 출력할게요.
+    chunks:
+    - I'm printing
+    - a copy
+    - for the chart
+    - right away
+    - .
+    words:
+    - w-print
+    - w-copy
+    - w-chart
+    - w-away
+    goal: 2
+- title: 폐부종 체위·산소 협조
+  sentences:
+  - en: Let's sit you upright to make breathing easier.
+    ko: 호흡이 편하도록 상체를 세워서 앉혀드릴게요.
+    chunks:
+    - Let's sit you upright
+    - to make breathing
+    - easier
+    - .
+    words:
+    - w-sit
+    - w-upright
+    - w-breathing
+    - w-easy
+    goal: 1
+  - en: I'll raise the head of your bed a little more.
+    ko: 침대 머리 쪽을 조금 더 올려드릴게요.
+    chunks:
+    - I'll raise
+    - the head
+    - of your bed
+    - a little more
+    - .
+    words:
+    - w-raise
+    - w-bed
+    - w-more
+    goal: 1
+  - en: I'm turning up your oxygen and watching your levels.
+    ko: 산소를 올리면서 수치를 지켜볼게요.
+    chunks:
+    - I'm turning up
+    - your oxygen
+    - and watching
+    - your levels
+    - .
+    words:
+    - w-turn
+    - w-oxygen
+    - w-watch
+    - w-level
+    goal: 2
+  - en: Your oxygen level looks better already.
+    ko: 산소 수치가 벌써 좋아졌어요.
+    chunks:
+    - Your oxygen level
+    - looks better
+    - already
+    - .
+    words:
+    - w-oxygen
+    - w-level
+    - w-look
+    - w-better
+    - w-already
+    goal: 2
+  - en: Tell me if you feel any more short of breath.
+    ko: 숨이 더 차는 느낌이 들면 말씀해 주세요.
+    chunks:
+    - Tell me
+    - if you feel
+    - any more
+    - short of breath
+    - .
+    words:
+    - w-feel
+    - w-short
+    goal: 2
+  - en: Try to take slow, deep breaths for me.
+    ko: 천천히 깊게 숨을 쉬어보세요.
+    chunks:
+    - Try to take
+    - slow
+    - ', deep breaths'
+    - for me
+    - .
+    words:
+    - w-try
+    - w-slow
+    - w-deep
+    - w-breath
+    goal: 1
+- title: 수분 균형·체중 모니터
+  sentences:
+  - en: We track your fluids in and out to protect your heart.
+    ko: 심장을 보호하려고 들어오고 나가는 수분을 추적해요.
+    chunks:
+    - We track
+    - your fluids
+    - in and out
+    - to protect
+    - your heart
+    - .
+    words:
+    - w-track
+    - w-fluid
+    - w-protect
+    - w-heart
+    goal: 1
+  - en: Can you tell me exactly how much you drink today?
+    ko: 오늘 정확히 얼마나 드셨는지 말씀해 주시겠어요?
+    chunks:
+    - Can you tell me
+    - exactly how much
+    - you drink
+    - today
+    - '?'
+    words:
+    - w-exactly
+    - w-drink
+    goal: 1
+  - en: Daily weights tell us if fluid is building up.
+    ko: 매일 재는 체중이 수분이 쌓이고 있는지 알려줘요.
+    chunks:
+    - Daily weights
+    - tell us
+    - if fluid
+    - is building up
+    - .
+    words:
+    - w-daily
+    - w-weight
+    - w-fluid
+    - w-build
+    goal: 1
+  - en: We weigh you at the same time every morning.
+    ko: 매일 아침 같은 시간에 체중을 재요.
+    chunks:
+    - We weigh
+    - you
+    - at the same time
+    - every morning
+    - .
+    words:
+    - w-weigh
+    goal: 1
+  - en: I'm checking your legs for any swelling.
+    ko: 다리에 부종이 있는지 확인하고 있어요.
+    chunks:
+    - I'm checking
+    - your legs
+    - for any swelling
+    - .
+    words:
+    - w-check
+    - w-leg
+    - w-swelling
+    goal: 2
+  - en: This swelling tells us how your heart is handling the fluid.
+    ko: 이 부종이 심장이 수분을 얼마나 감당하고 있는지 알려줘요.
+    chunks:
+    - This swelling
+    - tells us
+    - how your heart
+    - is handling the fluid
+    - .
+    words:
+    - w-swelling
+    - w-heart
+    - w-handle
+    - w-fluid
+    goal: 2
+- title: 말초 관류·모틀링 관찰
+  sentences:
+  - en: Those mottled patches can be a sign of poor circulation.
+    ko: 그 얼룩덜룩한 반점은 순환이 나쁘다는 징후일 수 있어요.
+    chunks:
+    - Those mottled patches
+    - can be
+    - a sign
+    - of poor circulation
+    - .
+    words:
+    - w-mottled
+    - w-patch
+    - w-sign
+    - w-poor
+    - w-circulation
+    goal: 1
+  - en: Your skin feels cool from your knees down.
+    ko: 무릎 아래로 피부가 서늘하게 느껴져요.
+    chunks:
+    - Your skin feels cool
+    - from your knees
+    - down
+    - .
+    words:
+    - w-skin
+    - w-feel
+    - w-cool
+    - w-knee
+    goal: 1
+  - en: I'm checking how far up your legs the mottling goes.
+    ko: 모틀링이 다리 위로 어디까지 올라왔는지 확인하고 있어요.
+    chunks:
+    - I'm checking
+    - how far up
+    - your legs
+    - the mottling goes
+    - .
+    words:
+    - w-check
+    - w-far
+    - w-leg
+    - w-mottled
+    goal: 1
+  - en: I'm also checking the pulses in both your feet.
+    ko: 양쪽 발의 맥박도 함께 확인하고 있어요.
+    chunks:
+    - I'm also checking
+    - the pulses
+    - in both
+    - your feet
+    - .
+    words:
+    - w-check
+    - w-pulse
+    - w-foot
+    goal: 1
+  - en: I'll report any changes to the team right away.
+    ko: 변화가 있으면 바로 팀에 보고할게요.
+    chunks:
+    - I'll report
+    - any changes
+    - to the team
+    - right away
+    - .
+    words:
+    - w-report
+    - w-change
+    - w-team
+    - w-away
+    goal: 2
+  - en: It's not something you caused — we're watching it closely.
+    ko: 환자분이 그렇게 만든 게 아니에요, 저희가 자세히 지켜보고 있어요.
+    chunks:
+    - It's not something
+    - you caused
+    - — we're watching it
+    - closely
+    - .
+    words:
+    - w-cause
+    - w-watch
+    - w-closely
+    goal: 2
+- title: 밀리논과 도부타민 선택 상황
+  sentences:
+  - en: Milrinone can drop his pressure more, so we watch that.
+    ko: 밀리논은 혈압을 더 떨어뜨릴 수 있어서 그 부분을 지켜봐요.
+    chunks:
+    - Milrinone can drop
+    - his pressure
+    - more
+    - ', so we watch that'
+    - .
+    words:
+    - w-milrinone
+    - w-drop
+    - w-pressure
+    - w-more
+    - w-watch
+    goal: 1
+  - en: Dobutamine may raise his heart rate and trigger arrhythmias.
+    ko: 도부타민은 심박수를 올려서 부정맥을 유발할 수 있어요.
+    chunks:
+    - Dobutamine may raise
+    - his heart rate
+    - and trigger
+    - arrhythmias
+    - .
+    words:
+    - w-dobutamine
+    - w-raise
+    - w-heart
+    - w-rate
+    - w-trigger
+    - w-arrhythmia
+    goal: 1
+  - en: His rhythm has been borderline for the last hour.
+    ko: 지난 한 시간 동안 리듬이 경계선에 있었어요.
+    chunks:
+    - His rhythm
+    - has been
+    - borderline
+    - for the last hour
+    - .
+    words:
+    - w-rhythm
+    - w-borderline
+    goal: 1
+  - en: Let's pick based on his pressure and rhythm right now.
+    ko: 지금 혈압과 리듬을 기준으로 골라봐요.
+    chunks:
+    - Let's pick
+    - based on
+    - his pressure and rhythm
+    - right now
+    - .
+    words:
+    - w-pick
+    - w-pressure
+    - w-rhythm
+    goal: 1
+  - en: I'll let the doctor know which way we lean.
+    ko: 어느 쪽으로 기우는지 의사에게 알릴게요.
+    chunks:
+    - I'll let
+    - the doctor know
+    - which way
+    - we lean
+    - .
+    words:
+    - w-lean
+    goal: 2
+- title: 정맥 이뇨제 적정
+  sentences:
+  - en: I'll give the IV diuretic and track her urine output closely.
+    ko: 정맥 이뇨제를 투여하고 소변량을 자세히 추적할게요.
+    chunks:
+    - I'll give
+    - the IV diuretic
+    - and track
+    - her urine output
+    - closely
+    - .
+    words:
+    - w-give
+    - w-iv
+    - w-diuretic
+    - w-track
+    - w-urine
+    - w-output
+    - w-closely
+    goal: 1
+  - en: We're aiming to offload the extra fluid from her lungs.
+    ko: 폐에 찬 여분의 수분을 덜어내는 게 목표예요.
+    chunks:
+    - We're aiming
+    - to offload
+    - the extra fluid
+    - from her lungs
+    - .
+    words:
+    - w-aim
+    - w-offload
+    - w-extra
+    - w-fluid
+    - w-lung
+    goal: 2
+  - en: Her urine output should pick up within the hour.
+    ko: 한 시간 안에 소변량이 늘어날 거예요.
+    chunks:
+    - Her urine output
+    - should pick up
+    - within
+    - the hour
+    - .
+    words:
+    - w-urine
+    - w-output
+    goal: 1
+  - en: I'll watch her potassium and blood pressure as she diureses.
+    ko: 이뇨가 진행되는 동안 칼륨과 혈압을 지켜볼게요.
+    chunks:
+    - I'll watch
+    - her potassium
+    - and blood pressure
+    - as she diureses
+    - .
+    words:
+    - w-watch
+    - w-potassium
+    - w-blood
+    - w-pressure
+    - w-diurese
+    goal: 2
+  - en: We're offloading fluid slowly so her pressure stays stable.
+    ko: 혈압이 안정적이도록 천천히 수분을 덜어내고 있어요.
+    chunks:
+    - We're offloading fluid
+    - slowly
+    - so her pressure
+    - stays stable
+    - .
+    words:
+    - w-offload
+    - w-fluid
+    - w-pressure
+    - w-stable
+    - w-slowly
+    goal: 2
+- title: 심근경색 후 저혈압 관리
+  sentences:
+  - en: His pressure is low after the MI, so we support it carefully.
+    ko: 심근경색 이후 혈압이 낮아서 신중하게 지지하고 있어요.
+    chunks:
+    - His pressure is low
+    - after the MI
+    - ', so we support it'
+    - carefully
+    - .
+    words:
+    - w-pressure
+    - w-low
+    - w-mi
+    - w-support
+    - w-carefully
+    goal: 1
+  - en: We want perfusion without overworking the injured heart.
+    ko: 손상된 심장에 무리를 주지 않으면서 관류를 지키고 싶어요.
+    chunks:
+    - We want perfusion
+    - without overworking
+    - the injured heart
+    - .
+    words:
+    - w-perfusion
+    - w-overwork
+    - w-injured
+    - w-heart
+    goal: 1
+  - en: We're balancing his blood flow with his damaged heart muscle.
+    ko: 손상된 심장 근육을 고려해 혈류의 균형을 맞추고 있어요.
+    chunks:
+    - We're balancing
+    - his blood flow
+    - with his damaged
+    - heart muscle
+    - .
+    words:
+    - w-balance
+    - w-blood
+    - w-flow
+    - w-damaged
+    - w-heart
+    - w-muscle
+    goal: 1
+  - en: I'll monitor his rhythm and pressure continuously.
+    ko: 리듬과 혈압을 지속적으로 모니터할게요.
+    chunks:
+    - I'll monitor
+    - his rhythm and pressure
+    - continuously
+    - .
+    words:
+    - w-monitor
+    - w-rhythm
+    - w-pressure
+    - w-continuously
+    goal: 2
+  - en: Any change in his rhythm gets reported right away.
+    ko: 리듬에 변화가 있으면 바로 보고돼요.
+    chunks:
+    - Any change
+    - in his rhythm
+    - gets reported
+    - right away
+    - .
+    words:
+    - w-change
+    - w-rhythm
+    - w-report
+    - w-away
+    goal: 2
+- title: IABP 삽입 전 준비·설명
+  sentences:
+  - en: The balloon pump helps his heart push blood more easily.
+    ko: 풍선 펌프가 심장이 피를 더 쉽게 내보내도록 도와줘요.
+    chunks:
+    - The balloon pump
+    - helps his heart
+    - push blood
+    - more easily
+    - .
+    words:
+    - w-balloon
+    - w-pump
+    - w-help
+    - w-heart
+    - w-push
+    - w-blood
+    - w-easily
+    goal: 1
+  - en: It sits in a large artery and works with each heartbeat.
+    ko: 큰 동맥 안에 자리 잡고 심장박동마다 함께 작동해요.
+    chunks:
+    - It sits
+    - in a large artery
+    - and works
+    - with each heartbeat
+    - .
+    words:
+    - w-large
+    - w-artery
+    - w-work
+    - w-heartbeat
+    goal: 2
+  - en: It's like giving his heart a little extra push with every beat.
+    ko: 박동마다 심장에 작은 힘을 더 보태주는 것과 같아요.
+    chunks:
+    - It's like giving
+    - his heart
+    - a little extra push
+    - with every beat
+    - .
+    words:
+    - w-give
+    - w-heart
+    - w-extra
+    - w-push
+    - w-beat
+    goal: 1
+  - en: We'll place it through a small opening in his groin.
+    ko: 서혜부의 작은 구멍을 통해 삽입할 거예요.
+    chunks:
+    - We'll place it
+    - through a small opening
+    - in
+    - his groin
+    - .
+    words:
+    - w-place
+    - w-small
+    - w-opening
+    - w-groin
+    goal: 2
+  - en: We'll watch the insertion site and his leg closely afterward.
+    ko: 삽입 부위와 다리를 이후에 자세히 지켜볼 거예요.
+    chunks:
+    - We'll watch
+    - the insertion site
+    - and his leg
+    - closely
+    - afterward
+    - .
+    words:
+    - w-watch
+    - w-insertion
+    - w-site
+    - w-leg
+    - w-closely
+    - w-afterward
+    goal: 2
+- title: IABP 타이밍·증강 파형 확인
+  sentences:
+  - en: The augmentation should come right after the dicrotic notch.
+    ko: 증강은 절흔 직후에 나타나야 해요.
+    chunks:
+    - The augmentation
+    - should come
+    - right after
+    - the dicrotic notch
+    - .
+    words:
+    - w-augmentation
+    - w-right
+    - w-notch
+    goal: 1
+  - en: The waveform looks a little early on this cycle.
+    ko: 이번 주기에서 파형이 조금 이르게 나타나요.
+    chunks:
+    - The waveform looks
+    - a little early
+    - 'on'
+    - this cycle
+    - .
+    words:
+    - w-waveform
+    - w-look
+    - w-early
+    - w-cycle
+    goal: 1
+  - en: If the timing is off, the support won't be effective.
+    ko: 타이밍이 어긋나면 보조 효과가 떨어져요.
+    chunks:
+    - If the timing
+    - is off
+    - ', the support'
+    - won't be effective
+    - .
+    words:
+    - w-timing
+    - w-off
+    - w-support
+    - w-effective
+    goal: 1
+  - en: I'll adjust the trigger and recheck the waveform.
+    ko: 트리거를 조정하고 파형을 다시 확인할게요.
+    chunks:
+    - I'll adjust
+    - the trigger
+    - and recheck
+    - the waveform
+    - .
+    words:
+    - w-adjust
+    - w-trigger
+    - w-recheck
+    - w-waveform
+    goal: 2
+  - en: Let's confirm the augmentation looks right after this change.
+    ko: 이번 조정 후 증강이 제대로 나오는지 확인해봐요.
+    chunks:
+    - Let's confirm
+    - the augmentation
+    - looks right
+    - after this change
+    - .
+    words:
+    - w-confirm
+    - w-augmentation
+    - w-look
+    - w-right
+    - w-change
+    goal: 2
+- title: IABP 다리 허혈·출혈 감시
+  sentences:
+  - en: I'm checking the pulses and color in that leg regularly.
+    ko: 그 다리의 맥박과 색깔을 규칙적으로 확인하고 있어요.
+    chunks:
+    - I'm checking
+    - the pulses and color
+    - in that leg
+    - regularly
+    - .
+    words:
+    - w-check
+    - w-pulse
+    - w-color
+    - w-leg
+    - w-regularly
+    goal: 1
+  - en: Can you wiggle your toes for me?
+    ko: 발가락을 좀 움직여 볼 수 있으세요?
+    chunks:
+    - Can you wiggle
+    - your toes
+    - for me
+    - '?'
+    words:
+    - w-wiggle
+    - w-toe
+    goal: 1
+  - en: Tell me right away if it feels more numb or painful.
+    ko: 더 저리거나 아프면 바로 말씀해 주세요.
+    chunks:
+    - Tell me right away
+    - if it feels
+    - more numb
+    - or painful
+    - .
+    words:
+    - w-away
+    - w-feel
+    - w-numb
+    - w-painful
+    goal: 1
+  - en: I'm also watching the insertion site for any bleeding.
+    ko: 삽입 부위에 출혈이 있는지도 지켜보고 있어요.
+    chunks:
+    - I'm also watching
+    - the insertion site
+    - for any
+    - bleeding
+    - .
+    words:
+    - w-watch
+    - w-insertion
+    - w-site
+    - w-bleeding
+    goal: 2
+  - en: I'll let you know the moment anything changes.
+    ko: 무엇이든 변화가 생기면 바로 알려드릴게요.
+    chunks:
+    - I'll let you know
+    - the moment
+    - anything changes
+    - .
+    words:
+    - w-moment
+    - w-change
+    goal: 2
+- title: 우심부전 동반 관리
+  sentences:
+  - en: His right ventricle is failing, so preload balance is delicate.
+    ko: 우심실 기능이 저하돼서 전부하 균형이 예민해요.
+    chunks:
+    - His right ventricle
+    - is failing
+    - ', so preload balance'
+    - is delicate
+    - .
+    words:
+    - w-ventricle
+    - w-fail
+    - w-preload
+    - w-balance
+    - w-delicate
+    goal: 1
+  - en: We avoid anything that raises his pulmonary pressures.
+    ko: 폐혈관 압력을 올리는 건 뭐든 피해요.
+    chunks:
+    - We avoid
+    - anything that raises
+    - his pulmonary pressures
+    - .
+    words:
+    - w-avoid
+    - w-raise
+    - w-pulmonary
+    - w-pressure
+    goal: 1
+  - en: Too much fluid could push his right heart further behind.
+    ko: 수분이 너무 많으면 우심장이 더 뒤처질 수 있어요.
+    chunks:
+    - Too much fluid
+    - could push
+    - his right heart
+    - further behind
+    - .
+    words:
+    - w-fluid
+    - w-push
+    - w-heart
+    - w-further
+    - w-behind
+    goal: 1
+  - en: I'll watch his CVP and oxygenation closely.
+    ko: 중심정맥압과 산소화를 자세히 지켜볼게요.
+    chunks:
+    - I'll watch
+    - his CVP
+    - and oxygenation
+    - closely
+    - .
+    words:
+    - w-watch
+    - w-cvp
+    - w-oxygenation
+    - w-closely
+    goal: 2
+  - en: I'm keeping a close eye on his oxygen and pressures together.
+    ko: 산소와 압력을 함께 주의 깊게 지켜보고 있어요.
+    chunks:
+    - I'm keeping a close eye
+    - on his oxygen
+    - and pressures
+    - together
+    - .
+    words:
+    - w-keep
+    - w-eye
+    - w-oxygen
+    - w-pressure
+    - w-together
+    goal: 2
+- title: 강심제 이탈 시도
+  sentences:
+  - en: We're slowly lowering the medication as his heart holds steady.
+    ko: 심장이 안정적으로 유지되는 만큼 약물을 천천히 줄이고 있어요.
+    chunks:
+    - We're slowly lowering
+    - the medication
+    - as his heart
+    - holds steady
+    - .
+    words:
+    - w-slowly
+    - w-lower
+    - w-medication
+    - w-heart
+    - w-hold
+    - w-steady
+    goal: 1
+  - en: His heart is doing more of the work on its own now.
+    ko: 이제 심장이 스스로 더 많은 일을 하고 있어요.
+    chunks:
+    - His heart is doing
+    - more of the work
+    - on its own
+    - now
+    - .
+    words:
+    - w-heart
+    - w-more
+    - w-work
+    goal: 1
+  - en: I'll watch for any signs his circulation is slipping.
+    ko: 순환이 나빠지는 징후가 있는지 지켜볼게요.
+    chunks:
+    - I'll watch
+    - for any signs
+    - his circulation
+    - is slipping
+    - .
+    words:
+    - w-watch
+    - w-sign
+    - w-circulation
+    - w-slip
+    goal: 2
+  - en: We reduce it gradually to keep him safe.
+    ko: 안전하게 유지하려고 점차 줄이는 거예요.
+    chunks:
+    - We reduce it
+    - gradually
+    - to keep him
+    - safe
+    - .
+    words:
+    - w-reduce
+    - w-gradually
+    - w-keep
+    - w-safe
+    goal: 1
+  - en: If anything changes, we can raise the dose right back up.
+    ko: 무엇이든 변화가 생기면 용량을 다시 올릴 수 있어요.
+    chunks:
+    - If anything changes
+    - ', we can raise'
+    - the dose
+    - right back up
+    - .
+    words:
+    - w-change
+    - w-raise
+    - w-dose
+    goal: 2
+- title: 기계보조 중 항응고 모니터
+  sentences:
+  - en: I'll draw the ACT and adjust the heparin per protocol.
+    ko: 프로토콜에 따라 ACT를 채혈하고 헤파린을 조정할게요.
+    chunks:
+    - I'll draw
+    - the ACT
+    - and adjust
+    - the heparin
+    - per protocol
+    - .
+    words:
+    - w-draw
+    - w-act
+    - w-adjust
+    - w-heparin
+    - w-protocol
+    goal: 1
+  - en: Her last ACT was a little below target.
+    ko: 지난 ACT 수치가 목표보다 조금 낮았어요.
+    chunks:
+    - Her last ACT
+    - was a little
+    - below target
+    - .
+    words:
+    - w-last
+    - w-act
+    - w-below
+    - w-target
+    goal: 1
+  - en: We keep her in the target range to prevent clots and bleeding.
+    ko: 혈전과 출혈을 막기 위해 목표 범위 안에 유지해요.
+    chunks:
+    - We keep her
+    - in the target range
+    - to prevent
+    - clots and bleeding
+    - .
+    words:
+    - w-keep
+    - w-target
+    - w-range
+    - w-prevent
+    - w-clot
+    - w-bleeding
+    goal: 2
+  - en: I'm watching the circuit and her for any bleeding.
+    ko: 회로와 환자분 모두 출혈이 있는지 지켜보고 있어요.
+    chunks:
+    - I'm watching
+    - the circuit
+    - and her
+    - for any bleeding
+    - .
+    words:
+    - w-watch
+    - w-circuit
+    - w-bleeding
+    goal: 2
+  - en: I'll recheck her levels in an hour.
+    ko: 한 시간 후에 수치를 다시 확인할게요.
+    chunks:
+    - I'll recheck
+    - her levels
+    - in an hour
+    - .
+    words:
+    - w-recheck
+    - w-level
+    goal: 1
+- title: IABP 콘솔 경보·풍선 파열 위기
+  sentences:
+  - en: There's blood in the tubing — the balloon may have ruptured.
+    ko: 튜브에 피가 보여요, 풍선이 파열됐을 수 있어요.
+    chunks:
+    - There's blood
+    - in the tubing
+    - — the balloon
+    - may have ruptured
+    - .
+    words:
+    - w-blood
+    - w-tubing
+    - w-balloon
+    - w-rupture
+    goal: 1
+  - en: The console is alarming and the trigger looks off.
+    ko: 콘솔에 경보가 울리고 트리거도 이상해 보여요.
+    chunks:
+    - The console
+    - is alarming
+    - and the trigger
+    - looks off
+    - .
+    words:
+    - w-console
+    - w-alarm
+    - w-trigger
+    - w-look
+    - w-off
+    goal: 1
+  - en: I'm stopping the pump and calling the physician now.
+    ko: 펌프를 멈추고 지금 의사를 부르고 있어요.
+    chunks:
+    - I'm stopping
+    - the pump
+    - and calling
+    - the physician
+    - now
+    - .
+    words:
+    - w-stop
+    - w-pump
+    - w-call
+    - w-physician
+    goal: 2
+  - en: We need to prepare to remove or replace the balloon.
+    ko: 풍선을 제거하거나 교체할 준비를 해야 해요.
+    chunks:
+    - We need to prepare
+    - to remove
+    - or replace
+    - the balloon
+    - .
+    words:
+    - w-prepare
+    - w-remove
+    - w-replace
+    - w-balloon
+    goal: 2
+  - en: I'm staying right here until the physician arrives.
+    ko: 의사가 올 때까지 바로 여기 있을게요.
+    chunks:
+    - I'm staying right here
+    - until the physician
+    - arrives
+    - .
+    words:
+    - w-stay
+    - w-physician
+    - w-arrive
+    goal: 2
+- title: 불응성 심인성 쇼크 ECMO 고려
+  sentences:
+  - en: He's failing despite the IABP and inotropes.
+    ko: 풍선펌프와 강심제에도 불구하고 상태가 나빠지고 있어요.
+    chunks:
+    - He's failing
+    - despite the IABP
+    - and inotropes
+    - .
+    words:
+    - w-fail
+    - w-despite
+    - w-inotrope
+    goal: 1
+  - en: Nothing we've tried has held his pressure up.
+    ko: 여러 방법을 시도했지만 혈압을 유지하지 못했어요.
+    chunks:
+    - Nothing we've tried
+    - has held
+    - his pressure
+    - up
+    - .
+    words:
+    - w-try
+    - w-hold
+    - w-pressure
+    goal: 1
+  - en: We should activate the VA-ECMO team now.
+    ko: 지금 VA-ECMO 팀을 활성화해야 해요.
+    chunks:
+    - We should activate
+    - the VA-ECMO team
+    - now
+    - .
+    words:
+    - w-activate
+    - w-ecmo
+    - w-team
+    goal: 1
+  - en: I'll prepare the bedside and brief the family.
+    ko: 침상 곁을 준비하고 가족에게 간단히 알릴게요.
+    chunks:
+    - I'll prepare
+    - the bedside
+    - and brief
+    - the family
+    - .
+    words:
+    - w-prepare
+    - w-bedside
+    - w-brief
+    goal: 2
+  - en: I'll call the ECMO specialist and get the cart ready.
+    ko: ECMO 전문가를 부르고 카트를 준비해 둘게요.
+    chunks:
+    - I'll call
+    - the ECMO specialist
+    - and get
+    - the cart ready
+    - .
+    words:
+    - w-call
+    - w-ecmo
+    - w-specialist
+    - w-cart
+    - w-ready
+    goal: 2
+- title: 심실빈맥·세동 동반 급변
+  sentences:
+  - en: He's in VT and pulseless — start compressions.
+    ko: 심실빈맥에 맥박이 없어요, 흉부압박을 시작하세요.
+    chunks:
+    - He's in VT
+    - and pulseless
+    - — start
+    - compressions
+    - .
+    words:
+    - w-vt
+    - w-pulseless
+    - w-start
+    - w-compression
+    goal: 1
+  - en: Someone call a code and grab the crash cart.
+    ko: 누가 코드를 부르고 카트를 가져와 주세요.
+    chunks:
+    - Someone call
+    - a code
+    - and grab
+    - the crash cart
+    - .
+    words:
+    - w-call
+    - w-code
+    - w-grab
+    - w-cart
+    goal: 1
+  - en: Charge to 200 and clear the bed.
+    ko: 200으로 충전하고 침대에서 물러나세요.
+    chunks:
+    - Charge to 200
+    - and clear
+    - the bed
+    - .
+    words:
+    - w-charge
+    - w-clear
+    - w-bed
+    goal: 2
+  - en: Resume CPR right after the shock.
+    ko: 충격을 준 직후 바로 심폐소생술을 재개하세요.
+    chunks:
+    - Resume CPR
+    - right after
+    - the shock
+    - .
+    words:
+    - w-resume
+    - w-cpr
+    - w-shock
+    goal: 2
+  - en: Check for a pulse before we charge again.
+    ko: 다시 충전하기 전에 맥박을 확인하세요.
+    chunks:
+    - Check for a pulse
+    - before we charge
+    - again
+    - .
+    words:
+    - w-check
+    - w-pulse
+    - w-charge
+    goal: 1
+- title: 기계보조 중 급성 출혈
+  sentences:
+  - en: She's bleeding at the cannula site while anticoagulated.
+    ko: 항응고 중인 상태에서 캐뉼라 부위에서 출혈이 있어요.
+    chunks:
+    - She's bleeding
+    - at the cannula site
+    - while anticoagulated
+    - .
+    words:
+    - w-bleeding
+    - w-cannula
+    - w-site
+    - w-anticoagulated
+    goal: 1
+  - en: Her sheets are soaked and the dressing is saturated.
+    ko: 시트가 흠뻑 젖었고 드레싱도 흠뻑 젖었어요.
+    chunks:
+    - Her sheets
+    - are soaked
+    - and the dressing
+    - is saturated
+    - .
+    words:
+    - w-soaked
+    - w-dressing
+    - w-saturated
+    goal: 2
+  - en: Hold the heparin and get blood ready.
+    ko: 헤파린을 보류하고 수혈을 준비해 주세요.
+    chunks:
+    - Hold the heparin
+    - and get
+    - blood ready
+    - .
+    words:
+    - w-heparin
+    - w-blood
+    - w-ready
+    goal: 2
+  - en: I'm holding pressure and calling the physician.
+    ko: 압박하면서 의사를 부르고 있어요.
+    chunks:
+    - I'm holding pressure
+    - and calling
+    - the physician
+    - .
+    words:
+    - w-call
+    - w-physician
+    goal: 2
+  - en: We need type and cross sent right away.
+    ko: 혈액형과 교차검사를 바로 보내야 해요.
+    chunks:
+    - We need
+    - type and cross
+    - sent right away
+    - .
+    words:
+    - w-type
+    - w-cross
+    - w-send
+    goal: 1
+- title: 기계보조 환자 이송 관리
+  sentences:
+  - en: Let's confirm the pump, drips, and portable monitor before we move.
+    ko: 이동 전에 펌프, 정맥주입, 휴대용 모니터를 확인해봐요.
+    chunks:
+    - Let's confirm
+    - the pump, drips
+    - ', and portable monitor'
+    - before we move
+    - .
+    words:
+    - w-confirm
+    - w-pump
+    - w-drip
+    - w-portable
+    - w-monitor
+    - w-move
+    goal: 1
+  - en: All the lines need to be secured before transport.
+    ko: 이송 전에 모든 라인을 고정해야 해요.
+    chunks:
+    - All
+    - the lines
+    - need to be secured
+    - before transport
+    - .
+    words:
+    - w-line
+    - w-secure
+    - w-transport
+    goal: 1
+  - en: Everyone knows their role for the transport.
+    ko: 모두가 이송에서 자기 역할을 알고 있어요.
+    chunks:
+    - Everyone knows
+    - their role
+    - for the transport
+    - .
+    words:
+    - w-role
+    - w-transport
+    goal: 2
+  - en: I'll call ahead so the cath lab is ready for him.
+    ko: 카테터실이 준비되도록 미리 전화할게요.
+    chunks:
+    - I'll call ahead
+    - so the cath lab
+    - is ready
+    - for him
+    - .
+    words:
+    - w-call
+    - w-ahead
+    - w-lab
+    - w-ready
+    goal: 2
+  - en: We'll move on my count, everyone together.
+    ko: 제 신호에 맞춰 모두 함께 옮길게요.
+    chunks:
+    - We'll move
+    - on my count
+    - ', everyone together'
+    - .
+    words:
+    - w-move
+    - w-count
+    - w-together
+    goal: 1
+- title: 회복 불가 심부전 목표 전환
+  sentences:
+  - en: His heart isn't recovering the way we hoped.
+    ko: 심장이 저희가 바랐던 만큼 회복되고 있지 않아요.
+    chunks:
+    - His heart isn't recovering
+    - the way
+    - we hoped
+    - .
+    words:
+    - w-heart
+    - w-recover
+    - w-way
+    - w-hope
+    goal: 1
+  - en: We're doing everything we can, and the next day or two will tell us a lot.
+    ko: 저희가 할 수 있는 모든 걸 하고 있고, 하루 이틀이면 많은 걸 알 수 있을 거예요.
+    chunks:
+    - We're doing everything
+    - we can
+    - ', and the next day or two'
+    - will tell us a lot
+    - .
+    words:
+    - w-everything
+    - w-next
+    - w-lot
+    goal: 1
+  - en: We can talk about a transplant evaluation or comfort-focused care.
+    ko: 이식 평가나 완화 중심 돌봄에 대해 이야기해볼 수 있어요.
+    chunks:
+    - We can talk
+    - about a transplant evaluation
+    - or
+    - comfort-focused care
+    - .
+    words:
+    - w-talk
+    - w-transplant
+    - w-evaluation
+    - w-comfort
+    - w-care
+    goal: 2
+  - en: Let's find the path that fits what matters most to him.
+    ko: 이 분에게 가장 중요한 것에 맞는 길을 함께 찾아봐요.
+    chunks:
+    - Let's find
+    - the path
+    - that fits
+    - what matters most
+    - to him
+    - .
+    words:
+    - w-find
+    - w-path
+    - w-fit
+    - w-matter
+    - w-most
+    goal: 2
+  - en: There's no wrong choice here — let's decide together.
+    ko: 잘못된 선택은 없어요, 함께 결정해요.
+    chunks:
+    - There's no wrong choice
+    - here
+    - — let's decide
+    - together
+    - .
+    words:
+    - w-wrong
+    - w-choice
+    - w-here
+    - w-decide
+    - w-together
+    goal: 2

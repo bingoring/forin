@@ -1,0 +1,190 @@
+# core-handoff-icu v45 뉘앙스 (2/2) — 상황 제목: 문항 목록
+다학제 라운드 발표:
+  - kind: pair
+    words: [w-follow, w-command, w-support, w-tolerate, w-tube, w-feed]
+    pairs:
+      - ["following", "commands off sedation"]
+      - ["on pressure", "support"]
+      - ["tolerating", "tube feeds"]
+    decoys: ["GI"]
+    why: "신경 사정은 'following commands', 호흡기 설정은 'on pressure support', 영양은 'tolerating tube feeds'처럼 굳은 틀로 발표해요."
+  - kind: context
+    words: [w-neuro, w-sedate, w-follow, w-command]
+    scenes:
+      - {who: 라운드 발표, icon: speech, en: "Neuro: sedated but following commands off sedation.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Neuro: RASS -1, follows commands during SAT.", ok: true}
+      - {who: 보호자에게, icon: me, en: "Neuro: sedated but following commands off sedation.", ok: false, fix: "When we lighten his sedation, he wakes up enough to squeeze my hand when I ask."}
+    why: "'Neuro:'처럼 계통 이름을 앞세우는 것은 라운드 발표 형식이에요. 가족에게는 환자가 무엇을 할 수 있는지로 풀어 말해요."
+
+응급실에서 ICU 입실 인계:
+  - kind: pair
+    words: [w-liter, w-fluid, w-lactate, w-trend, w-first, w-antibiotic]
+    pairs:
+      - ["three liters of", "fluid"]
+      - ["his lactate is", "trending down"]
+      - ["first antibiotics given within", "the hour"]
+    decoys: ["the ED"]
+    why: "수액은 'three liters of fluid'처럼 양으로, 젖산은 'trending down/up'처럼 방향으로, 첫 항생제는 'within the hour'처럼 시간으로 넘겨요. 패혈증 인계에서 세 가지 모두 인수자가 바로 묻는 것이에요."
+  - kind: context
+    words: [w-lactate, w-trend, w-ed]
+    scenes:
+      - {who: 응급실 간호사 인계, icon: speech, en: "He got thirty per kilo in the ED, and his lactate's trending down.", ok: true}
+      - {who: 차트 기록, icon: board, en: "30 mL/kg crystalloid given in ED; lactate 4.1 → 2.8.", ok: true}
+      - {who: 보호자에게, icon: me, en: "He got thirty per kilo in the ED, and his lactate's trending down.", ok: false, fix: "He got a lot of IV fluid downstairs, and one of his blood tests is already getting better."}
+    why: "'thirty per kilo'(체중 kg당 30mL)·'lactate'는 의료진끼리의 줄임말이에요. 가족에게는 무엇을 받았고 좋아지고 있는지로 말해요."
+
+검사·시술 후 인계:
+  - kind: pair
+    words: [w-procedure, w-bleed, w-sample, w-send, w-site]
+    pairs:
+      - ["post-procedure", "bleeding"]
+      - ["samples are", "sent"]
+      - ["new bleeding at", "the site"]
+    decoys: ["intubated"]
+    why: "시술 뒤 관찰할 것은 'post-procedure bleeding', 검체는 'samples are sent', 새로 보이는 출혈은 'new bleeding at the site'로 말해요."
+  - kind: context
+    words: [w-bronchoscopy, w-sample]
+    scenes:
+      - {who: 동료 인계, icon: speech, en: "The bronchoscopy is done and samples are sent.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Bronchoscopy completed; BAL samples sent to lab.", ok: true}
+      - {who: 보호자에게, icon: me, en: "The bronch is done and the BAL samples are sent.", ok: false, fix: "The camera test of her lungs is finished, and we've sent samples to the lab."}
+    why: "'bronch'·'BAL'은 의료진 줄임말이에요. 가족에게는 무슨 검사였는지(폐를 카메라로 보는 검사)로 풀어 말해요."
+
+불안정 환자 인계 강조점:
+  - kind: slider
+    words: [w-rhythm, w-irritable, w-vt]
+    cue: "Nurse: \"He's had a lot of PVCs and two short runs of VT this hour.\""
+    scale: [stable rhythm, irritable, sustained VT]
+    answerAt: 1
+    why: "PVC와 짧은 VT run이 섞이면 'irritable'이에요. 아직 지속성 VT는 아니지만 언제든 넘어갈 수 있다는 경고라, 인계에서 이 말을 들으면 무엇을 지켜볼지 알아요."
+    example: "His rhythm's been irritable — watch for runs of VT."
+    exKo: "리듬이 불안정했습니다, 심실빈맥 연속을 지켜봐 주세요."
+  - kind: swap
+    words: [w-escalate, w-early]
+    who: "인수 간호사에게 · 보고 기준"
+    icon: speech
+    before: ["On this one, ", "wait and see", "."]
+    options: ["escalate early", "wait and see", "call when it's convenient"]
+    answer: "escalate early"
+    notes:
+      "escalate early": "흔들리는 환자는 기준선을 넘기 전에 미리 보고하게 한다 — 조기 대응."
+      "wait and see": "이미 불안정한 환자에게는 대응이 늦어진다."
+      "call when it's convenient": "급한 일을 미뤄도 된다는 말로 들린다."
+    why: "불안정한 환자를 넘길 때는 '언제 부를지'를 분명히 해요. 조기 보고가 기본이에요."
+
+급변 중 긴급 인계:
+  - kind: slider
+    words: [w-pressure, w-crash]
+    cue: "Nurse: \"MAP was sixty two minutes ago — it's forty now.\""
+    scale: [soft, dropping, crashing]
+    answerAt: 2
+    why: "몇 분 만에 무너지면 crashing이에요. 'soft'는 기준선보다 살짝 낮은 혈압, dropping은 꾸준히 내려가는 중을 말해요. crashing이라는 말이 들리면 모두가 손을 보태야 하는 순간이에요."
+    example: "His pressure's crashing — I need a second pair of hands now."
+    exKo: "혈압이 급격히 떨어지고 있어요, 지금 한 사람 더 손이 필요해요."
+  - kind: context
+    words: [w-shock, w-map, w-max, w-norepi, w-add, w-vaso]
+    scenes:
+      - {who: 동료 급변 인계, icon: speech, en: "Septic shock, MAP forty, max norepi, adding vaso now.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Septic shock; MAP 40 on max norepinephrine; vasopressin added.", ok: true}
+      - {who: 보호자에게, icon: me, en: "Septic shock, MAP forty, max norepi, adding vaso.", ok: false, fix: "His blood pressure is very low right now. We're adding a second medicine to raise it, and the team is with him."}
+    why: "급할 때 동료에게는 짧은 명사구가 맞지만, 가족에게는 같은 사실을 완전한 문장으로, 지금 무엇을 하는지 중심으로 말해요."
+
+코드 상황 인계·역할:
+  - kind: pair
+    words: [w-epi, w-give, w-last, w-rhythm, w-pea, w-round]
+    pairs:
+      - ["Epi's been", "given"]
+      - ["last rhythm", "was PEA"]
+      - ["we're on", "round three"]
+    decoys: ["intubated"]
+    why: "코드에 새로 들어온 사람에게는 약·리듬·차례를 굳은 틀로 짧게 넘겨요. 'Epi's been given', 'last rhythm was PEA', 'we're on round three'."
+  - kind: swap
+    words: [w-take, w-compression, w-manage, w-airway]
+    who: "코드에 들어온 동료에게 · 역할 배정"
+    icon: siren
+    before: ["", "Someone take", " compressions — I'll manage the airway."]
+    options: ["You take", "Someone take", "Maybe somebody could take"]
+    answer: "You take"
+    notes:
+      "You take": "한 사람을 지목해 역할을 준다 — 누가 맡았는지 분명하다."
+      "Someone take": "모두가 남이 하겠거니 해 아무도 안 움직일 수 있다."
+      "Maybe somebody could take": "급한 순간에 부탁처럼 들려 역할이 흐려진다."
+    why: "코드에서는 'someone'이 아니라 사람을 지목해 역할을 줘요. 지목받은 사람이 되받아 말하면 폐쇄 루프 소통이 됩니다."
+
+병원간 전원 인계:
+  - kind: pair
+    words: [w-stable, w-transport, w-receive, w-team, w-full, w-sbar]
+    pairs:
+      - ["stable for", "transport"]
+      - ["the receiving", "team"]
+      - ["give a full", "SBAR"]
+    decoys: ["records"]
+    why: "이송 가능 여부는 'stable for transport', 받는 쪽은 'the receiving team', 전원 인계는 'give a full SBAR'로 말해요."
+  - kind: context
+    words: [w-fax, w-record, w-arrive, w-ambulance]
+    scenes:
+      - {who: 상대 병원 간호사에게, icon: mic, en: "I'll fax the records ahead so they arrive before the ambulance.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Records faxed to receiving facility prior to transport.", ok: true}
+      - {who: 보호자에게, icon: me, en: "I'll fax the records to the accepting facility ahead of transport.", ok: false, fix: "We're sending his records ahead, so the new hospital has them before he gets there."}
+    why: "'accepting facility'·'transport'는 병원끼리의 말이에요. 가족에게는 '새 병원', '도착하기 전에'처럼 풀어 말해요."
+
+정보 누락·오류 정정 인계:
+  - kind: slider
+    words: [w-handoff, w-potassium, w-actually]
+    cue: "Nurse: \"The last report said his potassium was 4.2 — it's actually 6.2.\""
+    scale: [mention it next shift, correct it before I leave, correct it right now]
+    answerAt: 2
+    why: "6.2 같은 고칼륨은 부정맥 위험이 있어 바로 대응해야 하는 값이에요. 위험한 오류는 발견하는 즉시 정정해요 — 미루면 그사이 아무도 대응하지 않습니다."
+    example: "I need to correct the last handoff — his potassium is actually 6.2."
+    exKo: "지난 인계를 정정해야 합니다, 칼륨 수치는 실제로 6.2입니다."
+  - kind: swap
+    words: [w-handoff, w-potassium, w-actually]
+    who: "인수 간호사에게 · 정정"
+    icon: speech
+    before: ["I need to correct the last handoff — ", "I think his potassium might be", " 6.2."]
+    options: ["his potassium is actually", "I think his potassium might be", "don't worry, but his potassium is"]
+    answer: "his potassium is actually"
+    notes:
+      "his potassium is actually": "앞서 전한 값과 다르다는 것을 분명히 짚는다."
+      "I think his potassium might be": "정정인데 확신 없이 들려 인수자가 무게를 낮게 받는다."
+      "don't worry, but his potassium is": "6.2는 바로 대응할 값 — 안심시키는 말로 시작하면 안 된다."
+    why: "정정은 'actually'로 앞선 값과 다르다는 것을 분명히 하고, 위험한 값이면 그 무게를 그대로 전해요."
+
+임종·목표변경 인계:
+  - kind: pair
+    words: [w-dnr, w-comfort, w-med, w-bedside]
+    pairs:
+      - ["changed to", "DNR"]
+      - ["comfort", "meds"]
+      - ["at", "bedside"]
+    decoys: ["intubated"]
+    why: "코드 상태가 바뀌면 'changed to DNR', 완화 목적 약은 'comfort meds', 가족이 곁을 지키면 'at bedside'라고 말해요."
+  - kind: context
+    words: [w-stop, w-neuro, w-check, w-comfort]
+    scenes:
+      - {who: 동료 인계, icon: speech, en: "We'll stop the neuro checks and focus on comfort now.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Neuro checks discontinued per comfort care orders.", ok: true}
+      - {who: 보호자에게, icon: me, en: "We'll stop the neuro checks and focus on comfort now.", ok: false, fix: "We won't wake him to check on him anymore. From now on, everything we do is to keep him comfortable."}
+    why: "'neuro checks'는 의료진 말이에요. 가족에게 'stop'만 들리면 돌봄을 멈춘다고 오해할 수 있어, 무엇이 달라지는지와 '편안하게'를 함께 말해요."
+
+다수 중환자 동시 인계 우선화:
+  - kind: pair
+    words: [w-midnight, w-routine, w-check, w-call, w-help]
+    pairs:
+      - ["labs due at", "midnight"]
+      - ["routine", "checks"]
+      - ["call for", "help"]
+    decoys: ["sickest"]
+    why: "검사 시각은 'due at midnight', 특별한 문제가 없는 환자는 'routine checks', 손이 모자라면 'call for help'로 말해요."
+  - kind: swap
+    words: [w-agree, w-cover, w-other]
+    who: "동료에게 · 과부하 대비"
+    icon: speech
+    before: ["Let's ", "just see", " who covers the other beds if I need a hand."]
+    options: ["agree now", "just see", "hope we know"]
+    answer: "agree now"
+    notes:
+      "agree now": "바빠지기 전에 지원 분담을 미리 정해 둔다."
+      "just see": "그때 가서 정하자는 말 — 두 명이 동시에 나빠지면 정할 틈이 없다."
+      "hope we know": "막연한 기대로 들린다."
+    why: "여러 중환자를 넘길 때는 과부하가 오면 누가 무엇을 맡을지 미리 정해 둬요."

@@ -1,0 +1,126 @@
+뇌사 후 혈역학 유지:
+  - kind: pair
+    words: [w-mean, w-fluid, w-bolus]
+    pairs: [[mean, arterial pressure], [fluid, bolus], [vasoactive, medication]]
+    decoys: [cuff]
+    why: "MAP은 mean arterial pressure를 줄인 말이에요. 수액은 fluid bolus로 한꺼번에 주고, 승압제처럼 혈관을 조이거나 넓히는 약은 vasoactive medication이라고 불러요."
+  - kind: context
+    words: [w-keep, w-perfusion, w-stable]
+    scenes:
+      - {who: 동료에게, icon: speech, en: "We're keeping his perfusion stable.", ok: true}
+      - {who: 차트 기록, icon: board, en: "MAP maintained at goal on norepinephrine; organ perfusion supported.", ok: true}
+      - {who: 보호자에게, icon: me, en: "We're keeping his perfusion stable.", ok: false, fix: "We're using medicine to keep his blood pressure up, so blood keeps flowing to his organs."}
+    why: "perfusion은 의료진 용어예요. 가족에게는 '장기에 피가 계속 돌도록 혈압을 올리는 약을 쓰고 있다'처럼 쉬운 말로 전해요."
+  - kind: swap
+    words: [w-donation]
+    who: "동료에게 · 기증 수술 일정"
+    icon: hospital
+    before: ["The surgical team will ", "harvest", " the organs in the OR tonight."]
+    options: [recover, harvest, take out]
+    answer: recover
+    notes:
+      recover: "장기 구득 현장과 OPO가 쓰는 표준 용어."
+      harvest: "농작물을 거두는 말이라 사람을 물건처럼 다룬다는 인상을 준다. 장기기증 단체들이 쓰지 말자고 권한다."
+      take out: "너무 구어적이고 거칠게 들린다. 가족이 들을 수 있는 곳에서는 특히 피한다."
+    why: "장기기증에서는 'harvest' 대신 'recover'를 써요. 동료끼리 쓰는 말도 언제든 가족 귀에 들어갈 수 있어요."
+
+요붕증 관리:
+  - kind: slider
+    words: [w-urine, w-output]
+    cue: "Urine output 150, then 300, then 450 mL in the last three hours — pale, almost like water."
+    scale: [low, adequate, pouring out]
+    answerAt: 2
+    why: "시간당 소변이 계속 늘고 물처럼 묽으면 요붕증을 의심해요. 뇌사 후에는 뇌하수체에서 항이뇨호르몬이 나오지 않아 요붕증이 흔해요."
+    example: "His urine output is pouring out — this looks like DI."
+    exKo: "소변이 쏟아지고 있어요 — 요붕증 같아요."
+  - kind: context
+    words: [w-desmopressin, w-match, w-loss]
+    scenes:
+      - {who: 동료에게, icon: speech, en: "Let's give desmopressin and match the fluid losses.", ok: true}
+      - {who: 차트 기록, icon: board, en: "DDAVP given; urine output replaced with IV fluids per order.", ok: true}
+      - {who: 보호자에게, icon: me, en: "We gave DDAVP and we're replacing his losses mL for mL.", ok: false, fix: "His body is losing too much water, so we're giving a medicine to help hold onto it and replacing the fluid."}
+    why: "DDAVP(데스모프레신)나 'mL for mL'은 의료진끼리의 약어와 지시예요. 가족에게는 '몸에서 물이 너무 빠져나가 그것을 붙잡는 약과 수액을 쓰고 있다'고 쉬운 말로 전해요."
+
+체온·전해질 유지:
+  - kind: slider
+    words: [w-drop, w-temperature]
+    cue: "Temp 36.4, then 36.1, then 35.8 °C over three hours."
+    scale: [drifting down, dropping fast, crashing]
+    answerAt: 0
+    why: "한 시간에 조금씩 꾸준히 내려가면 'drifting down'이에요. 'crashing'은 급격히 무너질 때 쓰는 말이라, 말의 세기를 실제 변화에 맞춰야 팀이 긴급도를 바로 판단해요."
+    example: "His temperature is drifting down, so I'll start the warming blanket."
+    exKo: "체온이 서서히 떨어지고 있어서 보온 담요를 시작할게요."
+  - kind: swap
+    words: [w-replace, w-potassium, w-recheck]
+    who: "동료에게 · 칼륨 결과 보고"
+    icon: lab
+    before: ["Potassium came back low, so let's ", "change", " it and recheck."]
+    options: [replace, change, refill]
+    answer: replace
+    notes:
+      replace: "전해질을 '보충한다'는 뜻으로 병원에서 정해 놓고 쓰는 말."
+      change: "칼륨을 다른 것으로 '바꾼다'로 들려 뜻이 통하지 않는다."
+      refill: "약병이나 처방을 다시 채울 때 쓰는 말이라 전해질에는 쓰지 않는다."
+    why: "한국어로는 '보충'이지만 영어로는 replace를 써요 — potassium replacement protocol처럼요."
+
+기증 위한 폐 보호 환기:
+  - kind: pair
+    words: [w-tidal, w-suction]
+    pairs: [[tidal, volume], [suction, catheter], [recruitment, maneuver]]
+    decoys: [bandage]
+    why: "tidal volume은 한 번 숨의 양, suction catheter는 흡인 카테터, recruitment maneuver는 닫힌 폐포를 다시 여는 조작이에요. 기증 폐를 지키는 환기 관리에서 함께 자주 나오는 말이에요."
+  - kind: context
+    words: [w-preserve, w-lung, w-function]
+    scenes:
+      - {who: 동료에게, icon: speech, en: "We're preserving lung function for possible donation.", ok: true}
+      - {who: 호흡치료사에게, icon: stetho, en: "Let's stay lung-protective so his lung function holds up.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Trying to save his lungs so someone else can get them.", ok: false, fix: "Lung-protective ventilation maintained per donor management protocol."}
+    why: "차트에는 구어나 속마음이 아니라 무엇을 했는지를 정해진 표현으로 적어요. 차트는 가족과 다른 팀도 읽는 공식 기록이에요."
+
+가족 사별 지원·소통:
+  - kind: pair
+    words: [w-goodbye, w-outside]
+    pairs: [[say, goodbye], [hold, his hand], [step, outside]]
+    decoys: [a reflex]
+    why: "작별 인사를 하다(say goodbye), 손을 잡다(hold his hand), 잠시 자리를 비켜 주다(step outside) — 사별을 앞둔 가족에게 간호사가 자주 쓰는 짝이에요."
+  - kind: reel
+    words: [w-goodbye]
+    word: goodbye
+    scenes:
+      - {who: "보호자에게", en: "There's no wrong way to say goodbye.", ko: "작별 인사를 하는 데 틀린 방법은 없습니다.", tone: 따뜻함}
+      - {who: "동료에게", en: "The family is saying goodbye — let's hold off on cares for now.", ko: "가족이 작별 인사 중이에요 — 처치는 잠시 미뤄요.", tone: 조용함}
+      - {who: "차트 기록", en: "Family at bedside to say goodbye; chaplain present.", ko: "가족 침상 옆에서 작별, 원목 동석.", tone: 건조}
+      - {who: "보호자에게는…", en: "Take all the time you need to be with him.", ko: "필요한 만큼 얼마든지 곁에 있어 주셔도 됩니다.", tone: 배려, swap: true}
+
+동의·문화적 고려:
+  - kind: pair
+    words: [w-honor, w-belief, w-arrange, w-coordinator]
+    pairs: [[honor, their beliefs], [arrange for, the coordinator to come], [come, first]]
+    decoys: [a reflex]
+    why: "honor는 가족의 신념이나 전통을 '받들어 지키다', arrange for는 누가 오도록 '자리를 마련하다', come first는 '가장 우선이다'예요."
+  - kind: swap
+    words: [w-speak, w-elder]
+    who: "보호자에게 · 어르신과 상의하겠다는 가족"
+    icon: me
+    before: ["Of course. Take the time you need to ", "get approval from", " your elders."]
+    options: [speak with, get approval from, convince]
+    answer: speak with
+    notes:
+      speak with: "가족이 정한 방식대로 상의하도록 두는 중립적인 말."
+      get approval from: "가족 안의 결정 방식을 간호사가 단정하는 말이라 실례가 될 수 있다."
+      convince: "가족이 어르신을 설득해야 한다는 뜻이 되어 기증 쪽으로 미는 말로 들린다."
+    why: "가족마다 결정하는 방식이 달라요. 간호사는 그 방식을 단정하거나 결과를 밀지 않고, 상의할 시간과 자리를 마련해요."
+
+기증 코디네이터 협업:
+  - kind: pair
+    words: [w-draw, w-page, w-map]
+    pairs: [[draw, blood cultures], [page, the coordinator], [map out, the next steps]]
+    decoys: [a reflex]
+    why: "검사 혈액은 draw, 사람을 호출기로 부를 때는 page, 앞으로의 계획을 하나씩 짚어 펼쳐 볼 때는 map out을 써요."
+  - kind: context
+    words: [w-coordinate, w-schedule, w-timeline]
+    scenes:
+      - {who: 코디네이터에게, icon: speech, en: "I'll coordinate the bedside timing with your schedule.", ok: true}
+      - {who: 동료 인계, icon: board, en: "OPO is setting the timeline — labs due at 1400, and the coordinator is updating the family.", ok: true}
+      - {who: 보호자에게, icon: me, en: "The OR time depends on the recipient teams' schedule.", ok: false, fix: "The coordinator will walk you through the timing and answer any questions."}
+    why: "수혜자 쪽 일정이나 OR 시간 같은 실무 이야기는 의료진끼리의 말이에요. 가족에게 일정을 안내하는 것은 코디네이터의 몫이라, 간호사는 가족을 코디네이터에게 이어 줘요."

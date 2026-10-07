@@ -1,0 +1,433 @@
+theme: core-language-icu
+changes:
+- kind: word
+  id: w-speak
+  fields:
+  - ko
+  why: w-say와 ko(말하다)가 같아 듣고 뜻 고르기에서 정답이 둘 — 문장 대부분(can't speak·speak clearly·speak slowly)이 소리 내어 말하기라 그쪽으로 가른다
+- kind: word
+  id: w-talk
+  fields:
+  - ko
+  why: w-say·w-speak와 ko(말하다)가 같다 — 다른 ICU 주제(16건)와 같은 이야기하다로
+- kind: word
+  id: w-check
+  fields:
+  - ko
+  why: w-confirm과 ko(확인하다)가 같다 — check on you·keep checking in은 살펴보다
+- kind: word
+  id: w-pause
+  fields:
+  - ko
+  why: w-stop과 ko(멈추다)가 같다 — 다른 ICU 주제(5건)와 같은 잠시 멈추다로
+- kind: word
+  id: w-fully
+  fields:
+  - ko
+  why: w-completely와 ko(완전히)가 같다 — explain the procedure fully는 충분히 설명하다
+- kind: word
+  id: w-honor
+  fields:
+  - ko
+  why: w-respect와 ko(존중하다)가 같다 — honors your values는 가치를 받들다
+- kind: word
+  id: w-lot
+  fields:
+  - ko
+  why: w-much와 ko(많이)가 같다 — 다른 ICU 주제와 같은 명사 뜻 많음으로
+- kind: word
+  id: w-fast
+  fields:
+  - ko
+  why: 문장(going too fast)은 부사 — 다른 ICU 주제(10건)와 같은 빠르게로
+- kind: word
+  id: w-call
+  fields:
+  - ko
+  why: 문장 3건 중 2건(call the doctor·call this number)이 전화하다 — 두 뜻을 함께 적는다
+- kind: word
+  id: w-keep
+  fields:
+  - ko
+  why: 문장 6건 중 지키다로 읽히는 것은 keep … safe뿐 — keep using·keep checking·keep things simple까지 맞는 유지하다로(다른 ICU 주제 18건과 같다)
+- kind: word
+  id: w-concern
+  fields:
+  - ko
+  why: 유일한 문장(what concerns you)이 동사인데 명사 카드(우려)였다 — 동사로
+- kind: word
+  id: w-ground
+  fields:
+  - en
+  - ipa
+  - ko
+  why: ground 한 낱말에 ko '공통 기반'이 붙어 카드 홀로 뜻이 서지 않는다 — 구(common ground)로 헤드워드를 맞추고 w-common을 합친다
+- kind: word
+  id: w-page
+  fields:
+  - en
+  - ipa
+  - ko
+  why: page에 ko '페이지'가 붙었지만 문장은 관용구 on the same page — 구로 헤드워드를 맞추고 w-same을 합친다
+- kind: word
+  id: w-aid
+  fields:
+  - en
+  - ipa
+  - ko
+  why: aid(보조기기) 홀로는 문장(hearing aids)의 뜻을 못 담는다 — ER core-language와 같은 hearing aid로
+- kind: word-remove
+  id: w-away
+  why: 어느 문장도 태그하지 않게 됐다 — right away의 away에 ko '즉시'가 붙어 카드 홀로 뜻이 서지 않는다 — 태그를 뺀다(w-right가 같은 문장에 있다)
+- kind: word-remove
+  id: w-mother
+  why: 어느 문장도 태그하지 않게 됐다 — 공통 쉬운 단어(mother) — 태그만 뺀다(문장은 그대로)
+- kind: word-remove
+  id: w-family
+  why: 어느 문장도 태그하지 않게 됐다 — 공통 쉬운 단어(family) — 태그만 뺀다(문장은 그대로)
+- kind: word-remove
+  id: w-know
+  why: 어느 문장도 태그하지 않게 됐다 — 공통 쉬운 단어(know) — 태그만 뺀다(문장은 그대로)
+- kind: word-remove
+  id: w-time
+  why: 어느 문장도 태그하지 않게 됐다 — 공통 쉬운 단어(time) — 태그만 뺀다(문장은 그대로)
+- kind: word-remove
+  id: w-hand
+  why: 어느 문장도 태그하지 않게 됐다 — 공통 쉬운 단어(hand) — 태그만 뺀다(문장은 그대로)
+- kind: word-remove
+  id: w-now
+  why: 어느 문장도 태그하지 않게 됐다 — 공통 쉬운 단어(now) — 태그만 뺀다(문장은 그대로)
+- kind: word-remove
+  id: w-minute
+  why: 어느 문장도 태그하지 않게 됐다 — 공통 쉬운 단어(minute) — 태그만 뺀다(문장은 그대로)
+- kind: word-remove
+  id: w-zero
+  why: 어느 문장도 태그하지 않게 됐다 — 공통 쉬운 단어(zero) — 태그만 뺀다(문장은 그대로)
+- kind: word-remove
+  id: w-ten
+  why: 어느 문장도 태그하지 않게 됐다 — 공통 쉬운 단어(ten) — 태그만 뺀다(문장은 그대로)
+- kind: word-remove
+  id: w-body
+  why: 어느 문장도 태그하지 않게 됐다 — 공통 쉬운 단어(body) — 태그만 뺀다(문장은 그대로)
+- kind: word-remove
+  id: w-down
+  why: 어느 문장도 태그하지 않게 됐다 — write it down의 down에 ko '적어서'가 붙어 카드 홀로 뜻이 서지 않는다 — 태그를 뺀다(w-write가 같은 문장에 있다)
+- kind: word-remove
+  id: w-see
+  why: 어느 문장도 태그하지 않게 됐다 — 공통 쉬운 단어(see) — 태그만 뺀다(문장은 그대로)
+- kind: word-remove
+  id: w-father
+  why: 어느 문장도 태그하지 않게 됐다 — 공통 쉬운 단어(father) — 태그만 뺀다(문장은 그대로)
+- kind: word-remove
+  id: w-doctor
+  why: 어느 문장도 태그하지 않게 됐다 — 공통 쉬운 단어(doctor) — 태그만 뺀다(문장은 그대로)
+- kind: word-remove
+  id: w-same
+  why: 어느 문장도 태그하지 않게 됐다 — on the same page를 w-page 한 장(헤드워드 on the same page)으로 합친다 — 겹치는 w-same 태그를 뺀다
+- kind: word-remove
+  id: w-come
+  why: 어느 문장도 태그하지 않게 됐다 — 공통 쉬운 단어(come) — 태그만 뺀다(문장은 그대로)
+- kind: word-remove
+  id: w-common
+  why: 어느 문장도 태그하지 않게 됐다 — common ground를 w-ground 한 장(헤드워드 common ground)으로 합친다 — 겹치는 w-common 태그를 뺀다
+- kind: sentence
+  situation: 통역 서비스 요청·활용
+  index: 0
+  fields:
+  - words
+  why: w-away 태그를 뺐다
+- kind: sentence
+  situation: 통역 서비스 요청·활용
+  index: 1
+  fields:
+  - words
+  why: w-mother 태그를 뺐다
+- kind: sentence
+  situation: 통역 서비스 요청·활용
+  index: 3
+  fields:
+  - words
+  why: w-family 태그를 뺐다
+- kind: sentence
+  situation: 삽관 환자 비언어 소통
+  index: 3
+  fields:
+  - words
+  why: w-know 태그를 뺐다
+- kind: sentence
+  situation: 삽관 환자 비언어 소통
+  index: 4
+  fields:
+  - words
+  why: w-time 태그를 뺐다
+- kind: sentence
+  situation: 삽관 환자 비언어 소통
+  index: 5
+  fields:
+  - words
+  why: w-hand 태그를 뺐다
+- kind: sentence
+  situation: 진정 환자 의사표현 확인
+  index: 0
+  fields:
+  - words
+  why: w-hand 태그를 뺐다
+- kind: sentence
+  situation: 진정 환자 의사표현 확인
+  index: 1
+  fields:
+  - words
+  why: w-now 태그를 뺐다
+- kind: sentence
+  situation: 진정 환자 의사표현 확인
+  index: 4
+  fields:
+  - words
+  why: w-now 태그를 뺐다
+- kind: sentence
+  situation: 진정 환자 의사표현 확인
+  index: 5
+  fields:
+  - words
+  why: w-know 태그를 뺐다
+- kind: sentence
+  situation: 진정 환자 의사표현 확인
+  index: 6
+  fields:
+  - words
+  why: w-minute 태그를 뺐다
+- kind: sentence
+  situation: 언어장벽 통증 사정
+  index: 1
+  fields:
+  - words
+  why: w-zero 태그를 뺐다; w-ten 태그를 뺐다
+- kind: sentence
+  situation: 언어장벽 통증 사정
+  index: 2
+  fields:
+  - words
+  why: w-body 태그를 뺐다
+- kind: sentence
+  situation: 간단 지시·설명 명확화
+  index: 4
+  fields:
+  - words
+  why: w-see 태그를 뺐다; w-down 태그를 뺐다
+- kind: sentence
+  situation: 가족 통한 기본 정보 확인
+  index: 2
+  fields:
+  - words
+  why: w-now 태그를 뺐다
+- kind: sentence
+  situation: 가족 통한 기본 정보 확인
+  index: 3
+  fields:
+  - words
+  why: w-now 태그를 뺐다
+- kind: sentence
+  situation: 삽관 환자 예·아니오 소통
+  index: 6
+  fields:
+  - words
+  why: w-minute 태그를 뺐다
+- kind: sentence
+  situation: 통역 통한 동의·설명
+  index: 3
+  fields:
+  - words
+  why: w-time 태그를 뺐다
+- kind: sentence
+  situation: 문화적 표현·금기 고려
+  index: 1
+  fields:
+  - words
+  why: How would you like는 동사 like인데 전치사 카드(~처럼)가 태그됐다 — 태그를 뺀다
+- kind: sentence
+  situation: 문화적 표현·금기 고려
+  index: 2
+  fields:
+  - words
+  why: w-family 태그를 뺐다
+- kind: sentence
+  situation: 가족 통역 한계·공식 통역 전환
+  index: 2
+  fields:
+  - words
+  why: w-father 태그를 뺐다
+- kind: sentence
+  situation: 가족 통역 한계·공식 통역 전환
+  index: 4
+  fields:
+  - words
+  why: w-know 태그를 뺐다
+- kind: sentence
+  situation: 가족 통역 한계·공식 통역 전환
+  index: 5
+  fields:
+  - words
+  why: w-now 태그를 뺐다
+- kind: sentence
+  situation: 청각·시각 장애 병행 소통
+  index: 1
+  fields:
+  - words
+  why: I'll face him은 동사인데 명사 카드(얼굴)가 태그됐다 — 태그를 뺀다
+- kind: sentence
+  situation: 청각·시각 장애 병행 소통
+  index: 4
+  fields:
+  - words
+  why: w-see 태그를 뺐다
+- kind: sentence
+  situation: 청각·시각 장애 병행 소통
+  index: 5
+  fields:
+  - words
+  why: w-know 태그를 뺐다
+- kind: sentence
+  situation: 통역 통한 목표설정 대화
+  index: 2
+  fields:
+  - words
+  why: w-time 태그를 뺐다
+- kind: sentence
+  situation: 통역 통한 목표설정 대화
+  index: 3
+  fields:
+  - words
+  why: w-family 태그를 뺐다
+- kind: sentence
+  situation: 통역 통한 목표설정 대화
+  index: 6
+  fields:
+  - words
+  why: w-time 태그를 뺐다
+- kind: sentence
+  situation: 다국어 약물·안전 교육
+  index: 2
+  fields:
+  - words
+  why: w-doctor 태그를 뺐다
+- kind: sentence
+  situation: 다국어 약물·안전 교육
+  index: 5
+  fields:
+  - ko
+  why: missed a dose는 약 한 번을 거른 것 — '용량을 놓쳤다면'은 오역
+- kind: sentence
+  situation: 원격 통역 활용
+  index: 1
+  fields:
+  - words
+  why: w-see 태그를 뺐다
+- kind: sentence
+  situation: 소통 오류 확인·재확립
+  index: 0
+  fields:
+  - words
+  why: w-same 태그를 뺐다
+- kind: sentence
+  situation: 급변 중 언어장벽 위기 소통
+  index: 0
+  fields:
+  - words
+  why: w-now 태그를 뺐다
+- kind: sentence
+  situation: 급변 중 언어장벽 위기 소통
+  index: 1
+  fields:
+  - ko
+  - words
+  why: w-come 태그를 뺐다; 공황 상태 보호자에게 하는 stay with me를 '저와 함께 있어 주세요'로 옮기면 역할이 흐려진다 — '저한테 집중해 주세요'
+- kind: sentence
+  situation: 급변 중 언어장벽 위기 소통
+  index: 5
+  fields:
+  - words
+  why: w-now 태그를 뺐다; w-come 태그를 뺐다
+- kind: sentence
+  situation: 급변 중 언어장벽 위기 소통
+  index: 6
+  fields:
+  - words
+  why: w-know 태그를 뺐다
+- kind: sentence
+  situation: 나쁜 소식 통역 상황
+  index: 2
+  fields:
+  - words
+  why: w-time 태그를 뺐다
+- kind: sentence
+  situation: 나쁜 소식 통역 상황
+  index: 3
+  fields:
+  - words
+  why: w-time 태그를 뺐다
+- kind: sentence
+  situation: 나쁜 소식 통역 상황
+  index: 4
+  fields:
+  - words
+  why: w-now 태그를 뺐다
+- kind: sentence
+  situation: 나쁜 소식 통역 상황
+  index: 6
+  fields:
+  - words
+  why: no matter how small은 '아무리 ~해도'라 카드(중요하다)와 뜻이 다르다 — 태그를 뺀다
+- kind: sentence
+  situation: 동의 능력·언어 혼재 판단
+  index: 0
+  fields:
+  - words
+  why: assess him fairly는 부사인데 형용사 카드(공정한)가 태그됐다 — 태그를 뺀다(같은 상황 be fair to him에 남는다)
+- kind: sentence
+  situation: 동의 능력·언어 혼재 판단
+  index: 2
+  fields:
+  - words
+  why: w-see 태그를 뺐다
+- kind: sentence
+  situation: 동의 능력·언어 혼재 판단
+  index: 6
+  fields:
+  - words
+  why: either way는 '어느 쪽이든'이라 카드(방식)와 뜻이 다르다 — 태그를 뺀다
+- kind: sentence
+  situation: 통역 부재 응급 대응
+  index: 0
+  fields:
+  - words
+  why: w-now 태그를 뺐다
+- kind: sentence
+  situation: 통역 부재 응급 대응
+  index: 3
+  fields:
+  - words
+  why: w-hand 태그를 뺐다
+- kind: sentence
+  situation: 통역 부재 응급 대응
+  index: 4
+  fields:
+  - words
+  why: w-now 태그를 뺐다
+- kind: sentence
+  situation: 통역 부재 응급 대응
+  index: 5
+  fields:
+  - words
+  why: on the way는 '오는 중'이라 카드(방식)와 뜻이 다르다 — 태그를 뺀다
+- kind: sentence
+  situation: 문화 갈등·치료 거부 소통
+  index: 2
+  fields:
+  - words
+  why: w-common 태그를 뺐다
+- kind: sentence
+  situation: 문화 갈등·치료 거부 소통
+  index: 4
+  fields:
+  - words
+  why: w-family 태그를 뺐다

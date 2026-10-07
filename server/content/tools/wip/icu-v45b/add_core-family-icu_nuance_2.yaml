@@ -1,0 +1,121 @@
+목표설정 대화 참여:
+  - kind: slider
+    words: [w-think]
+    cue: "Family: \"He told us many times he'd never want a machine breathing for him. I'm absolutely sure.\""
+    scale: ["I guess", "I think", "I'm sure"]
+    answerAt: 2
+    why: "환자가 여러 번 직접 말했다면 I'm sure, 짐작이면 I think, 거의 모르면 I guess예요. 간호사는 가족이 얼마나 확신하는지 그대로 팀에 전해요."
+    example: "Based on what you've told me, here's what I think he'd want."
+    exKo: "말씀해 주신 걸 바탕으로, 그가 원했을 법한 걸 말씀드릴게요."
+  - kind: context
+    words: [w-say, w-want]
+    scenes:
+      - {who: 가족에게, icon: me, en: "What would he say if he could speak right now?", ok: true}
+      - {who: 동료에게, icon: speech, en: "Do we know what he'd want? Has anyone talked code status with the family?", ok: true}
+      - {who: 가족에게, icon: me, en: "Do you want us to do everything or not?", ok: false, fix: "What would he want, if he could tell us himself?"}
+    why: "\"Do you want everything done?\"은 결정의 짐을 가족에게 지우고, 아니라고 하면 포기하는 것처럼 느끼게 해요. 대리결정은 가족이 원하는 것이 아니라 환자 본인이 원했을 것을 묻는 데서 시작해요(substituted judgment)."
+나쁜 소식 전달 지원:
+  - kind: slider
+    words: [w-moment]
+    cue: "가족이 소식을 듣고 숨을 고를 짧은 틈만 필요할 때"
+    scale: [a moment, a few minutes, some time]
+    answerAt: 0
+    why: "a moment는 잠깐(몇 초에서 1분쯤), a few minutes는 몇 분, some time은 그보다 길고 막연해요."
+    example: "We'll give you a moment before we go further."
+    exKo: "더 이야기하기 전에 잠시 시간을 드릴게요."
+  - kind: context
+    words: [w-sit, w-speak]
+    scenes:
+      - {who: 동료에게, icon: speech, en: "Heads up — the attending's coming to give the family bad news.", ok: true}
+      - {who: 가족에게, icon: me, en: "Let's sit down together before the doctor speaks.", ok: true}
+      - {who: 가족에게, icon: me, en: "Heads up — the doctor's got bad news for you.", ok: false, fix: "Let's sit down together before the doctor speaks. I'll be right here with you."}
+    why: "같은 예고라도 동료에게는 짧은 heads up이 괜찮지만, 가족에게 그렇게 던지면 충격만 주고 마음의 준비를 할 틈을 안 줘요. SPIKES의 첫 단계(Setting)가 함께 앉을 자리를 마련하는 거예요."
+의사결정 대리인 확인:
+  - kind: pair
+    words: [w-contact, w-align]
+    pairs: [[point of, contact], [so we're, aligned], [power of, attorney]]
+    decoys: [align]
+    why: "point of contact '연락 창구', so we're aligned '모두 같은 이해를 갖도록', power of attorney '위임장'. 의료 대리인을 지정하는 서류를 흔히 healthcare power of attorney라고 불러요."
+  - kind: context
+    words: [w-surrogate]
+    scenes:
+      - {who: 동료에게, icon: speech, en: "Who's the surrogate — the wife or one of the kids?", ok: true}
+      - {who: 차트 기록, icon: board, en: "Surrogate: spouse per state hierarchy. No HCPOA on file.", ok: true}
+      - {who: 가족에게, icon: me, en: "So who's the surrogate here?", ok: false, fix: "Did he name anyone in his documents to make medical decisions for him?"}
+    why: "surrogate는 의료진·법률 용어라 가족에게는 낯설고 딱딱해요. 가족에게는 대신 결정할 사람을 서류에 정해 두었는지처럼 풀어서 물어요."
+상충하는 가족 기대 조율:
+  - kind: slider
+    words: [w-hope]
+    cue: "Aunt: \"I just know he'll walk out of here next week.\""
+    scale: [hoping, expecting, certain]
+    answerAt: 2
+    why: "hope는 바람, expect는 그렇게 될 거라는 예상, certain은 의심 없는 확신이에요. \"I just know\"는 확신이라, 모두가 같은 정보를 함께 듣게 하는 것이 먼저예요."
+    example: "I hear that your aunt is hoping for a full recovery."
+    exKo: "이모님이 완전한 회복을 바라신다는 거 들었어요."
+  - kind: context
+    words: [w-member, w-different, w-normal]
+    scenes:
+      - {who: 동료에게, icon: speech, en: "The aunt and the daughter have very different expectations.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Family members with differing expectations of prognosis; family meeting requested.", ok: true}
+      - {who: 이모와 조카가 함께 있을 때, icon: me, en: "You two have conflicting expectations.", ok: false, fix: "It's normal for family members to see things differently."}
+    why: "conflicting은 사실을 적는 말이라 차트·동료에게는 맞지만, 당사자들 앞에서 하면 갈등을 콕 집어 대립을 키워요. 가족에게는 다르게 보는 게 자연스러운 일이라고 말해요."
+가족 참여 돌봄:
+  - kind: pair
+    words: [w-mouth, w-care, w-moisturize, w-lip, w-music, w-enjoy]
+    pairs: [[mouth, care], [moisturize, his lips], [music he used, to enjoy]]
+    decoys: [to enjoying]
+    why: "mouth care '구강 간호'는 굳은 말이에요. used to + 동사원형은 '예전에 ~하곤 했다' — used to enjoying이 아니에요."
+  - kind: context
+    words: [w-mouth, w-care]
+    scenes:
+      - {who: 가족에게, icon: me, en: "Would you like to help with his mouth care?", ok: true}
+      - {who: 동료에게, icon: speech, en: "His wife wants to help — I'll show her how to do his oral care.", ok: true}
+      - {who: 가족에게, icon: me, en: "You'll do his oral care q4h.", ok: false, fix: "Would you like to help with his mouth care? I'll show you how."}
+    why: "q4h 같은 처방 약어와 지시형은 가족에게 의무처럼 들려요. 가족의 돌봄 참여는 강요가 아니라 원할 때 하는 선택으로 제안해요."
+예후 불확실성 소통:
+  - kind: slider
+    words: [w-critical, w-serious]
+    cue: "병원의 공식 상태 표현 — 바이탈이 불안정하고, 의식이 없을 수 있으며, 지표가 좋지 않다"
+    scale: [good, fair, serious, critical]
+    answerAt: 3
+    why: "미국 병원이 환자 상태를 알릴 때 쓰는 말은 good → fair → serious → critical 순으로 무거워져요. critical은 바이탈이 불안정하고 의식이 없을 수 있는 상태예요."
+    example: "His condition is serious, and the next days are critical."
+    exKo: "상태가 심각하고, 앞으로 며칠이 고비예요."
+  - kind: swap
+    words: [w-predict]
+    who: "\"살 수 있어요?\"라고 묻는 가족에게"
+    icon: me
+    before: ["Honestly, ", "I can promise he'll be fine", " — the next few days will tell us a lot."]
+    options: [no one can predict exactly, I can promise he'll be fine, there's nothing we can do]
+    answer: no one can predict exactly
+    notes: {no one can predict exactly: "불확실성을 정직하게 인정하면서, 다음 며칠이 중요하다는 정보도 줘요.", I can promise he'll be fine: "지킬 수 없는 약속이라, 상태가 나빠지면 신뢰가 무너져요.", there's nothing we can do: "아직 치료 중인데 희망을 섣불리 꺾어요."}
+    why: "예후가 불확실할 때는 거짓 안심도 섣부른 절망도 아닌, 정직한 불확실성을 말해요."
+소아 방문·형제 지원:
+  - kind: pair
+    words: [w-social, w-worker, w-sibling, w-scared]
+    pairs: [[social, worker], [siblings can feel, scared or confused], [explain things, in words she understands]]
+    decoys: [scaring]
+    why: "social worker '사회복지사'는 한 덩어리 직함이에요. '무서워하다'는 feel scared — scaring은 '남을 겁주는'이라 뜻이 반대예요."
+  - kind: context
+    words: [w-specialist, w-prepare]
+    scenes:
+      - {who: 아동생활전문가에게, icon: speech, en: "Can child life prep his 6-year-old sister before she visits?", ok: true}
+      - {who: 부모에게, icon: me, en: "A child life specialist can help prepare her for the visit.", ok: true}
+      - {who: 6살 동생에게, icon: baby, en: "Your brother is intubated and sedated.", ok: false, fix: "Your brother has a tube that helps him breathe, and medicine that keeps him comfortable."}
+    why: "아이에게는 의료 용어 대신 눈에 보이는 것과 그 이유를 쉬운 말로 말해요 — child life specialist가 아이를 면회에 준비시킬 때 쓰는 방식이에요."
+원격 가족 소통:
+  - kind: slider
+    words: [w-soon, w-ready]
+    cue: "화상 통화 연결까지 1~2분이면 된다고 해외의 아들에게"
+    scale: [right now, in a minute, later today]
+    answerAt: 1
+    why: "in a minute는 '금방(1~2분 안에)', right now는 '지금 바로', later today는 몇 시간 뒤예요."
+    example: "We'll let you know as soon as the call is ready."
+    exKo: "통화 준비가 되면 바로 알려 드릴게요."
+  - kind: context
+    words: [w-video, w-call]
+    scenes:
+      - {who: 해외의 아들에게(전화), icon: speech, en: "We can set up a video call at the bedside — what time works for you?", ok: true}
+      - {who: 동료에게, icon: speech, en: "His son's overseas — can we grab the unit tablet for a video call at nine?", ok: true}
+      - {who: 해외의 아들에게(전화), icon: speech, en: "Video call at 0900, our time.", ok: false, fix: "We can do a video call at 9 a.m. our time — what time would that be for you?"}
+    why: "0900 같은 24시간제는 병원 안에서 쓰는 표기라 가족에게는 헷갈려요. 해외 가족에게는 a.m./p.m.으로 말하고 그쪽 시간도 확인해요."

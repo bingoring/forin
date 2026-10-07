@@ -1,0 +1,396 @@
+theme: er-stroke
+changes:
+- kind: word
+  id: w-hurt
+  fields:
+  - en
+  - ipa
+  why: 활용형 헤드워드(hurts)를 원형으로
+- kind: word
+  id: w-miss
+  fields:
+  - en
+  - ipa
+  why: 활용형 헤드워드(missed)를 원형으로
+- kind: word
+  id: w-pass
+  fields:
+  - en
+  - ipa
+  why: 활용형 헤드워드(passed)를 원형으로
+- kind: word
+  id: w-respond
+  fields:
+  - en
+  - ipa
+  why: 활용형 헤드워드(responding)를 원형으로
+- kind: word
+  id: w-alert
+  fields:
+  - en
+  - ipa
+  why: 활용형 헤드워드(alerting)를 원형으로
+- kind: word
+  id: w-spin
+  fields:
+  - en
+  - ipa
+  - ko
+  - example
+  why: 활용형 헤드워드(spinning)를 원형으로, 예문은 환자 대사를 간호사 질문으로 바꾼 문장으로
+- kind: word
+  id: w-double
+  fields:
+  - example
+  why: 예문이 환자 대사였다 — 간호사 질문으로 바꾼 문장으로
+- kind: word
+  id: w-fibrillation
+  fields:
+  - en
+  - ipa
+  - ko
+  why: '''세동''만 떼어 가르치면 쓸 데가 없다 — 문장의 실제 단위 atrial fibrillation으로'
+- kind: word
+  id: w-known
+  fields:
+  - en
+  - ipa
+  - ko
+  why: known(알려진)만 떼면 뜻이 없다 — 뇌졸중 인계의 고정 표현 last known well로
+- kind: word
+  id: w-stay
+  fields:
+  - en
+  - ipa
+  - ko
+  - example
+  why: 태그된 문장 4개 중 3개가 'Stay with me'(의식 붙잡기) — 머무르다로는 뜻이 안 맞아 구 단위로
+- kind: word
+  id: w-thinner
+  fields:
+  - ko
+  why: ER 다른 주제의 같은 id와 ko를 맞춤(정본 다수형)
+- kind: word
+  id: w-speech
+  fields:
+  - ko
+  why: 말투(어조)는 오역 — FAST의 S, 발화 자체
+- kind: word
+  id: w-slurred
+  fields:
+  - ko
+  why: 구음장애로 '어눌한'이 임상 한국어
+- kind: word
+  id: w-strain
+  fields:
+  - ko
+  why: '''긴장''은 오역 — 목을 갑자기 무리하게 쓴 것(sudden strain)'
+- kind: word
+  id: w-value
+  fields:
+  - ko
+  why: w-level(수치)과 ko가 같아 듣고 뜻 고르기에서 정답이 둘이 된다
+- kind: word
+  id: w-squeeze
+  fields:
+  - ko
+  why: ER 다른 주제의 같은 id와 ko를 맞춤(정본 다수형)
+- kind: word-remove
+  id: w-time
+  why: 공통 쉬운 단어 목록 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-see
+  why: 공통 쉬운 단어 목록 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-night
+  why: 공통 쉬운 단어 목록 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-today
+  why: 공통 쉬운 단어 목록 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-head
+  why: 공통 쉬운 단어 목록 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-minute
+  why: 공통 쉬운 단어 목록 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-name
+  why: 공통 쉬운 단어 목록 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-hand
+  why: 공통 쉬운 단어 목록 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-morning
+  why: 공통 쉬운 단어 목록 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-before
+  why: 너무 쉬움(목록 밖 판단)
+- kind: word-remove
+  id: w-yes
+  why: 너무 쉬움(목록 밖 판단) — 예/아니오
+- kind: word-remove
+  id: w-no
+  why: 너무 쉬움(목록 밖 판단) — "no rush"에도 잘못 붙어 있었다
+- kind: sentence
+  situation: FAST 초기 선별
+  index: 2
+  fields:
+  - words
+  why: 쉬운 w-time 태그를 뺐다
+- kind: sentence
+  situation: 마지막 정상 시각 확정
+  index: 0
+  fields:
+  - words
+  why: 쉬운 w-see 태그를 뺐다
+- kind: sentence
+  situation: 마지막 정상 시각 확정
+  index: 2
+  fields:
+  - words
+  why: 쉬운 w-night 태그를 뺐다
+- kind: sentence
+  situation: 마지막 정상 시각 확정
+  index: 3
+  fields:
+  - words
+  why: 쉬운 w-time 태그를 뺐다
+- kind: sentence
+  situation: 마지막 정상 시각 확정
+  index: 4
+  fields:
+  - words
+  why: 쉬운 w-see 태그를 뺐다
+- kind: sentence
+  situation: 즉시 혈당·활력 측정
+  index: 1
+  fields:
+  - words
+  why: 쉬운 w-today 태그를 뺐다
+- kind: sentence
+  situation: 두부 CT 준비 설명
+  index: 2
+  fields:
+  - words
+  why: 쉬운 w-head 태그를 뺐다
+- kind: sentence
+  situation: 두부 CT 준비 설명
+  index: 5
+  fields:
+  - words
+  why: 쉬운 w-minute 태그를 뺐다
+- kind: sentence
+  situation: NIHSS 협조 요청
+  index: 2
+  fields:
+  - words
+  why: 쉬운 w-name 태그를 뺐다
+- kind: sentence
+  situation: NIHSS 협조 요청
+  index: 3
+  fields:
+  - words
+  why: 쉬운 w-hand 태그를 뺐다
+- kind: sentence
+  situation: NIHSS 협조 요청
+  index: 6
+  fields:
+  - words
+  why: 쉬운 w-time 태그를 뺐다
+- kind: sentence
+  situation: 전형 좌중대뇌동맥 폐색
+  index: 1
+  fields:
+  - words
+  why: 쉬운 w-hand 태그를 뺐다
+- kind: sentence
+  situation: 후순환(소뇌) 뇌졸중
+  index: 0
+  fields:
+  - words
+  why: 쉬운 w-see 태그를 뺐다
+- kind: sentence
+  situation: 후순환(소뇌) 뇌졸중
+  index: 2
+  fields:
+  - words
+  why: 쉬운 w-head 태그를 뺐다
+- kind: sentence
+  situation: 기상 시 발견(wake-up)
+  index: 0
+  fields:
+  - words
+  why: 쉬운 w-time, w-night 태그를 뺐다
+- kind: sentence
+  situation: 기상 시 발견(wake-up)
+  index: 1
+  fields:
+  - words
+  why: 쉬운 w-night 태그를 뺐다
+- kind: sentence
+  situation: 기상 시 발견(wake-up)
+  index: 2
+  fields:
+  - words
+  why: 쉬운 w-morning 태그를 뺐다
+- kind: sentence
+  situation: 기상 시 발견(wake-up)
+  index: 6
+  fields:
+  - words
+  why: 쉬운 w-night 태그를 뺐다
+- kind: sentence
+  situation: tPA 금기 선별
+  index: 2
+  fields:
+  - words
+  why: 쉬운 w-before 태그를 뺐다
+- kind: sentence
+  situation: tPA 금기 선별
+  index: 3
+  fields:
+  - words
+  why: 쉬운 w-head 태그를 뺐다
+- kind: sentence
+  situation: 실어증 환자 소통
+  index: 0
+  fields:
+  - words
+  why: 쉬운 w-yes, w-no 태그를 뺐다
+- kind: sentence
+  situation: 실어증 환자 소통
+  index: 2
+  fields:
+  - words
+  why: 쉬운 w-hand 태그를 뺐다
+- kind: sentence
+  situation: 실어증 환자 소통
+  index: 3
+  fields:
+  - words
+  why: 쉬운 w-yes, w-no 태그를 뺐다
+- kind: sentence
+  situation: 실어증 환자 소통
+  index: 5
+  fields:
+  - words
+  why: 쉬운 w-time, w-no 태그를 뺐다
+- kind: sentence
+  situation: 실어증 환자 소통
+  index: 6
+  fields:
+  - words
+  why: 쉬운 w-yes 태그를 뺐다
+- kind: sentence
+  situation: 항응고제 복용자
+  index: 6
+  fields:
+  - words
+  why: 쉬운 w-time 태그를 뺐다
+- kind: sentence
+  situation: 언어장벽 뇌졸중
+  index: 0
+  fields:
+  - words
+  why: 쉬운 w-time 태그를 뺐다
+- kind: sentence
+  situation: 언어장벽 뇌졸중
+  index: 5
+  fields:
+  - words
+  why: 쉬운 w-minute 태그를 뺐다
+- kind: sentence
+  situation: 혈압 급상승 동반
+  index: 4
+  fields:
+  - words
+  why: 쉬운 w-minute 태그를 뺐다
+- kind: sentence
+  situation: 출혈성 뇌졸중 급성 악화
+  index: 3
+  fields:
+  - words
+  why: 쉬운 w-hand 태그를 뺐다
+- kind: sentence
+  situation: 대혈관 폐색 혈전제거술 이송
+  index: 2
+  fields:
+  - words
+  why: 쉬운 w-time 태그를 뺐다
+- kind: sentence
+  situation: 대혈관 폐색 혈전제거술 이송
+  index: 5
+  fields:
+  - words
+  why: 쉬운 w-minute 태그를 뺐다
+- kind: sentence
+  situation: tPA 후 신경학 악화
+  index: 2
+  fields:
+  - words
+  why: 쉬운 w-head 태그를 뺐다
+- kind: sentence
+  situation: 악성 부종 감시
+  index: 4
+  fields:
+  - words
+  why: 쉬운 w-minute 태그를 뺐다
+- kind: sentence
+  situation: FAST 초기 선별
+  index: 5
+  fields:
+  - ko
+  why: slurred를 '뭉개져'보다 임상 한국어 '어눌하게'로(w-slurred ko와 맞춤)
+- kind: sentence
+  situation: 후순환(소뇌) 뇌졸중
+  index: 3
+  fields:
+  - chunks
+  - en
+  - ko
+  why: 환자 대사(I'm seeing double)였다 — 간호사 질문으로
+- kind: sentence
+  situation: 후순환(소뇌) 뇌졸중
+  index: 4
+  fields:
+  - chunks
+  - en
+  - ko
+  why: 환자 대사(The room feels like...)였다 — 간호사 질문으로
+- kind: sentence
+  situation: 출혈성 뇌졸중 급성 악화
+  index: 0
+  fields:
+  - ko
+  why: '''저와 함께 있어 주세요''는 역할이 뒤집힌 오역 — 의식 붙잡기'
+- kind: sentence
+  situation: 출혈성 뇌졸중 급성 악화
+  index: 6
+  fields:
+  - ko
+  why: '''저와 함께 있어 주시고''는 역할이 뒤집힌 오역'
+- kind: sentence
+  situation: 뇌간 경색 급속 의식저하
+  index: 0
+  fields:
+  - ko
+  why: '''저와 함께 있어 주세요''는 역할이 뒤집힌 오역'
+- kind: sentence
+  situation: 젊은 환자 경동맥 박리
+  index: 0
+  fields:
+  - ko
+  why: '''갑작스러운 긴장''은 뜻이 흐림 — strain은 무리'
+- kind: sentence
+  situation: 악성 부종 감시
+  index: 5
+  fields:
+  - ko
+  - words
+  why: 여기 pressure는 뇌압 — 혈압(w-pressure) 태그를 빼고 ko를 뇌압으로
+- kind: sentence
+  situation: TIA 증상 소실
+  index: 2
+  fields:
+  - words
+  why: w-stay를 'stay with me' 구로 바꿨고 여기는 머무르다 — 태그를 뺐다

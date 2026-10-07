@@ -1,0 +1,102 @@
+안정 SVT 미주신경·아데노신:
+  - kind: pair
+    words: [w-bear, w-down, w-bowel, w-movement, w-skip, w-flutter]
+    pairs: [[bear, down], [a bowel, movement], [skip or, flutter]]
+    decoys: [a beat]
+    why: "미주신경 자극은 bear down(배에 힘주기), 그 비유가 bowel movement(배변)예요. 아데노신 뒤 느낌은 heart skip or flutter로 미리 알려 줘요."
+  - kind: context
+    words: [w-adenosine, w-quick, w-medication]
+    scenes:
+      - {who: 동료에게, icon: speech, en: "Six of adenosine, rapid push, then a flush.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Adenosine 6 mg rapid IV push given, followed by NS flush.", ok: true}
+      - {who: 환자에게, icon: me, en: "We're giving you six of adenosine, rapid push.", ok: false, fix: "If that doesn't work, we'll give a quick medication called adenosine."}
+    why: "'six of adenosine, rapid push'는 동료에게 하는 오더 말투예요. 깨어 있는 환자에게는 어떤 약인지, 금방 작용한다는 것을 쉬운 말로 알려요."
+서맥·전도차단 관리:
+  - kind: pair
+    words: [w-draw, w-atropine, w-place, w-pacer, w-pad, w-transcutaneous, w-pacing]
+    pairs: [[draw up, atropine], [place, the pacer pads], [transcutaneous, pacing]]
+    decoys: [the sync]
+    why: "약은 주사기에 draw up하고, 패드는 가슴에 place하고, 패드로 하는 페이싱은 transcutaneous pacing이에요."
+  - kind: context
+    words: [w-bradycardic, w-block, w-pad]
+    scenes:
+      - {who: 동료에게, icon: speech, en: "He's brady in the 40s with a block — pads are on in case we pace.", ok: true}
+      - {who: 차트 기록, icon: board, en: "HR 40s, heart block; transcutaneous pacer pads placed.", ok: true}
+      - {who: 보호자에게, icon: me, en: "He's bradycardic with a heart block, so we placed pacer pads.", ok: false, fix: "His heart is beating too slowly, so we've put pads on his chest in case we need to help it beat."}
+    why: "bradycardic·heart block은 의료진끼리의 말이에요. 보호자에게는 '심장이 너무 느리게 뛰고, 도와줄 준비를 했다'를 쉬운 말로 해요."
+QT 연장 약물 감시:
+  - kind: pair
+    words: [w-qt, w-interval, w-review, w-medication, w-torsades]
+    pairs: [[QT, interval], [review, his medications], [torsades de, pointes]]
+    decoys: [a jolt]
+    why: "QT는 interval과, 투약 목록은 review와, torsades는 de pointes와 붙어요."
+  - kind: swap
+    words: [w-qt, w-raise, w-risk, w-torsades]
+    who: "담당의에게 · QT 보고"
+    icon: speech
+    before: ["His QTc is ", "kind of long", " — that raises his risk for torsades."]
+    options: ["520, up from 440", kind of long, off the charts]
+    answer: "520, up from 440"
+    notes: {"520, up from 440": "수치와 변화 폭을 같이 전해 의사가 바로 판단할 수 있다.", kind of long: "얼마나 긴지 알 수 없어 다시 물어야 한다.", off the charts: "과장된 비격식 표현이라 실제 수치가 빠진다."}
+    why: "QT 보고는 느낌이 아니라 숫자로 — 지금 값과 기준값을 함께 말해요."
+전해질 교정으로 부정맥 안정화:
+  - kind: slider
+    words: [w-settle, w-down]
+    cue: "보충 후 PVC가 눈에 띄게 줄었지만 아직 가끔 보인다"
+    scale: [a little better, settling down, resolved]
+    answerAt: 1
+    why: "줄어드는 중이면 settling down이에요. resolved는 완전히 없어졌을 때만 써요 — 과장하면 재확인을 놓쳐요."
+    example: "Once we correct it, his rhythm often settles down."
+    exKo: "교정하고 나면 리듬이 대개 가라앉아요."
+  - kind: context
+    words: [w-irritate, w-vein]
+    scenes:
+      - {who: 동료에게, icon: speech, en: "Let's run the K slower — it's irritating his vein.", ok: true}
+      - {who: 차트 기록, icon: board, en: "KCl rate decreased d/t pt c/o burning at IV site.", ok: true}
+      - {who: 환자에게, icon: me, en: "The KCl is irritating your peripheral vein.", ok: false, fix: "This medicine can sting your vein, so I'm slowing it down."}
+    why: "KCl·peripheral vein은 의료진의 말이에요. 따가워하는 환자에게는 '약이 혈관을 따갑게 할 수 있어 천천히 넣는다'를 쉬운 말로 해요."
+경정맥 임시 페이싱 관리:
+  - kind: pair
+    words: [w-loss, w-capture, w-bit, w-above, w-threshold, w-temporary, w-pacer]
+    pairs: [[loss of, capture], [a bit above, the threshold], [temporary, pacer]]
+    decoys: [joules]
+    why: "캡처가 없어지면 loss of capture, 출력은 역치보다 a bit above로, 잠깐 쓰는 페이서는 temporary pacer예요."
+  - kind: reel
+    words: [w-capture]
+    word: capture
+    scenes:
+      - {who: "동료에게", en: "Every spike is capturing — output's at 5.", ko: "스파이크마다 캡처돼요, 출력은 5예요.", tone: 담담}
+      - {who: "차트 기록", en: "Temp pacer: 100% capture at 5 mA.", ko: "임시 페이서: 5mA에서 100% 캡처.", tone: 건조}
+      - {who: "야간 인계", en: "Watch for loss of capture if he moves around.", ko: "많이 움직이면 캡처가 소실되는지 지켜보세요.", tone: 경고}
+      - {who: "보호자에게는…", en: "The pacemaker wire is making his heart beat every time it sends a signal.", ko: "페이스메이커 선이 신호를 보낼 때마다 심장이 뛰게 하고 있어요.", tone: 쉬움, swap: true}
+예정 심율동전환 준비:
+  - kind: pair
+    words: [w-blood, w-thinner, w-answer, w-question, w-eat, w-drink, w-midnight]
+    pairs: [[blood, thinner], [answer any, questions], [eat or drink, after midnight]]
+    decoys: [the pads]
+    why: "환자에게는 항응고제를 blood thinner로, 질문은 answer any questions로, 금식은 don't eat or drink after midnight로 말해요."
+  - kind: swap
+    words: [w-blood, w-thinner, w-confirm]
+    who: "환자에게 · 시술 전 확인"
+    icon: me
+    before: ["We'll confirm your ", "anticoagulant", " has been at the right level."]
+    options: [blood thinner, anticoagulant, blood pressure medicine]
+    answer: blood thinner
+    notes: {blood thinner: "환자가 일상에서 쓰는 말이라 바로 알아듣는다.", anticoagulant: "정확한 임상어지만 환자에게는 낯설다.", blood pressure medicine: "다른 약이다 — 뜻이 바뀐다."}
+    why: "같은 약이라도 환자에게는 그가 아는 말로 — 단, 다른 약 이름과 헷갈리지 않게요."
+페이스메이커·ICD 환자 모니터:
+  - kind: slider
+    words: [w-jolt, w-feel, w-shock]
+    cue: "Patient: \"It was just a little electric tingle, then nothing.\""
+    scale: [a tingle, a jolt, a kick in the chest]
+    answerAt: 0
+    why: "ICD가 실제로 충격을 주면 환자들은 흔히 '가슴을 걷어차인 듯'하다고 해요. 약한 찌릿함은 tingle — 어느 쪽이든 알려 달라고 해요."
+    example: "Tell me right away if you feel a shock or a jolt."
+    exKo: "전기충격이나 찌릿함이 느껴지면 바로 말씀해 주세요."
+  - kind: context
+    words: [w-fire, w-job, w-protect]
+    scenes:
+      - {who: 동료에게, icon: speech, en: "If his ICD fires, print a strip and let EP know.", ok: true}
+      - {who: 차트 기록, icon: board, en: "ICD discharge x1; strip saved; pt alert, VS stable.", ok: true}
+      - {who: 환자에게, icon: me, en: "If your ICD discharges, it's delivering appropriate therapy.", ok: false, fix: "If it fires, it's doing its job to protect you."}
+    why: "appropriate therapy는 기기 판독에서 쓰는 말이에요. 환자에게는 '작동하면 당신을 지키려고 제 일을 하는 것'이라고 쉽게 말해요."
