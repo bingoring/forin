@@ -11,3 +11,14 @@
   `../lesson_author_brief.md`.
 - 합치기: `merge_dept_lessons.py <부서> <디렉터리> --replace` → `go run ./cmd/gencontent` →
   `verify_lesson_content.py --dept <부서> --baseline HEAD --changes changes/<부서>` 위반 0건.
+
+## v46 보강 (학습 화면 핸드오프 1:1, `lesson-fidelity-v46` §D)
+
+    export_dept_lessons.py <부서> <작업 폴더> <주제>  → 저작(TASK.md "v46 보강") → 검사기 → 검토(REVIEW.md "v46") → 수정 → 검사기
+    → merge_dept_lessons.py <부서> <디렉터리> --replace → go run ./cmd/gencontent
+    → verify_lesson_content.py --dept <부서> --baseline HEAD --changes changes/<부서> 위반 0건
+
+- v46 필드는 **`--replace`로만** 합칩니다(보강 경로는 v45 뉘앙스 전용). 정본과 같은 블록은 원문 그대로 남으므로 diff에는
+  새 필드만 보여야 합니다.
+- 합치기 도구를 고쳤으면 `export_dept_lessons.py --roundtrip <부서>` — 정본을 그대로 다시 합쳐 바이트 동일인지 봅니다.
+- 새 DB 컬럼(`scenarios.lesson_order`, 마이그레이션 000043)이 있어야 order가 앱까지 갑니다 — 시드 전에 migrate.

@@ -221,6 +221,146 @@ nuance:
   맞지 않아서 어색한 것이어야 합니다.
 - 따옴표 없는 `off`·`on`·`no`·`yes`·`y`·`n`·`true`·`false`는 불리언, `null`은 null로 읽힙니다 — 이것들은 YAML이 불리언으로 읽습니다. 문자열이면 따옴표로 감싸세요.
 
+## v46 — 문장 낱장과 순서 배열 카드 (학습 화면 핸드오프 1:1)
+
+STEP 2 문장 화면은 문장마다 낱장 한 장입니다. 낱장 머리에 **파란 태그**와 **앰버 원 아이콘**이 있고, 답을 확인하면
+아래에 **"왜?" 해설**이 펼쳐집니다. 프롬프트는 네 유형(듣고 뜻 고르기·청크 조립·빈칸·대화 순서)이 돌아가며
+나오는데, 핸드오프는 각 유형의 **오답을 저작**합니다 — 그래야 "같은 품사끼리의 대비"가 나옵니다. 그 재료를
+문장마다, 그리고 상황마다 한 장의 순서 배열 카드로 씁니다. 정본은
+`docs/dlc/projects/forin/02-construction/lesson-fidelity-v46/build-spec-index.md` §D,
+화면은 `inputs/design-handoff_v46/reference/forin-notebook-lesson-sent-live.jsx`의 `SENTS`입니다.
+
+**전부 선택 필드입니다.** 없으면 앱이 대체해서 그립니다(§R3). 그러나 **쓴 것은 검사기가 모양을 봅니다**(V18·V19).
+한 상황 안에서는 모든 문장에 같은 필드를 채우는 것이 원칙입니다 — 한 장만 해설이 있고 나머지가 비면 화면이 들쭉날쭉합니다.
+
+### 문장마다 (`sentences[]`에 덧붙임)
+
+| 필드 | 무엇 | 규칙(V18) |
+|---|---|---|
+| `tag` | 낱장 머리의 짧은 분류(한국어) — 그 문장이 대화에서 하는 일 | 10자 이하. 핸드오프: `환자 안심`·`이유 설명`·`공감`·`신원 확인`·`감사` |
+| `icon` | 앰버 원 안 아이콘 | NbIcon 이름(단어 아이콘과 같은 목록, `faceWorried` 포함) |
+| `why` | "왜?" 한 줄 — 이 문장을 **왜 이렇게** 말하는지 | 비우지 말 것. 1~2문장, 사실이어야 함 |
+| `decoy` | 청크 조립 풀에 섞일 **오답 조각 1개** | 이 문장의 청크와 같지 않고, `en` 안에 없는 말 |
+| `distractorsKo` | 듣고 뜻 고르기의 **오답 뜻 2개**(한국어) | 정확히 2개, 서로 다르고 `ko`와 다름 |
+| `blank` | 빈칸 2×2 — `answer`와 선택지 4개(`en`+`icon`) | `answer`는 `en`에 **낱말 경계로 정확히 한 번**, 선택지 4개는 서로 다르고 `answer`를 포함, 저마다 `icon` |
+
+```yaml
+sentences:
+  - en: "I need to check your wristband every time."
+    ko: "매번 손목 밴드를 확인해야 해요."
+    chunks: ["I need to", "check your", "wristband", "every time", "."]
+    words: [w-wristband]
+    goal: 1
+    tag: "환자 안심"
+    icon: "bandage"
+    why: "every time을 문장 끝에 — \"매번\"을 강조해 반복 확인의 이유가 자연스럽게 전달돼요."
+    decoy: "for the doctor"
+    distractorsKo: ["지금 약을 드릴게요", "차트에 기록했어요"]
+    blank:
+      answer: "every time"
+      options:
+        - {en: "every time", icon: "compass"}
+        - {en: "right now", icon: "star"}
+        - {en: "next week", icon: "calendar"}
+        - {en: "sometimes", icon: "chartup"}
+  - en: "I know it feels repetitive."
+    ko: "반복처럼 느껴지시는 거 알아요."
+    chunks: ["I know", "it feels", "repetitive", "."]
+    words: [w-repetitive]
+    goal: 2
+    tag: "공감"
+    icon: "faceWorried"
+    why: "\"I know…\"로 시작하면 지시가 아니라 공감으로 들려요. 환자 불만 응대의 첫 문장."
+    decoy: "for your safety"
+    distractorsKo: ["지금 약을 드릴게요", "알레르기가 있으신가요?"]
+    blank:
+      answer: "repetitive"
+      options:
+        - {en: "repetitive", icon: "compass"}
+        - {en: "important", icon: "star"}
+        - {en: "annoying", icon: "faceAngry"}
+        - {en: "quick", icon: "chartup"}
+```
+
+- **`decoy`는 그럴듯하지만 이 문장에는 안 맞는 조각.** 같은 자리에 올 수 있는 구(`for the doctor` ↔ `for your safety`,
+  `for waiting` ↔ `for bearing`)가 좋습니다. 이 문장의 다른 청크를 살짝 바꾼 것(`check my`)도 됩니다. 구두점만으로 된
+  조각, 문장 안에 이미 있는 말은 안 됩니다.
+- **`blank.answer`는 그 문장이 가르치는 말**(대개 `words`의 단어)을 고르세요. 청크와 같을 필요는 없습니다
+  (`repetitive`는 청크 하나, `every time`도 청크 하나지만 `wristband`처럼 청크 일부여도 됩니다). 같은 말이 문장에 두 번
+  나오면(`your … your`) 빈칸이 어디인지 모호해지니 다른 말을 고르세요.
+- **빈칸 오답은 같은 품사·같은 자리에 들어갈 말**로(형용사 자리면 형용사 셋). 넣어 읽었을 때 **문법은 맞지만 이
+  장면에서는 틀린** 말이 좋습니다. 정답으로도 맞는 오답(`repetitive` ↔ `repeated`)은 안 됩니다.
+  선택지 아이콘은 그 낱말의 느낌을 하나씩(`annoying` → `faceAngry`) — 정답만 눈에 띄는 아이콘을 주지 마세요.
+- **`distractorsKo`는 같은 상황에서 실제로 할 법한 다른 말의 뜻**(`지금 약을 드릴게요`). 정답 뜻과 반만 다른 말
+  (`손목 밴드를 한 번 확인할게요`)은 듣고 고를 때 정답이 둘이 됩니다.
+- **`why`는 `ko`를 되풀이하지 마세요.** 뜻이 아니라 **말하는 방식의 이유**(어순·완곡·공감·안전)입니다.
+- **`tag`는 상황 안에서 겹쳐도 됩니다**(공감이 두 문장이면 둘 다 `공감`). 길게 쓰면 한 줄에 안 들어갑니다.
+
+### 상황마다 순서 배열 카드 한 장 (`order:`, 결정 8)
+
+대화가 실제로 흘러가는 순서대로 **짧은 4줄**. 학습자는 섞인 4줄을 말할 순서대로 탭합니다. 문장 목록의 순서는 목표별로
+묶어 적은 것이라 대화 순서가 아닙니다 — 그래서 따로 씁니다. 줄은 그 상황 문장을 줄인 것이어도, 새 문장이어도 됩니다.
+
+```yaml
+situations:
+  - title: 반복 신원확인 이유 설명
+    sentences: [...]
+    nuance: [...]
+    order:
+      tag: 대화 흐름            # 선택(10자 이하)
+      icon: compass             # 선택(NbIcon)
+      ko: 불만 환자 응대 4문장 순서   # 필수 — 카드 머리에 형광펜으로
+      why: 공감이 먼저. 이유를 설명한 뒤 확인을 요청하고, 마지막에 이름을 불러 감사하면 관계가 닫혀요.   # 필수
+      lines:                    # 정확히 4줄, 대화 순서 그대로(이것이 정답)
+        - {en: "I know it feels repetitive.", icon: faceWorried, ko: "반복처럼 느껴지시죠", note: 공감}
+        - {en: "It's for your safety.", icon: shield, ko: "안전을 위한 거예요", note: 이유}
+        - {en: "Can you tell me your name and date of birth?", icon: board, ko: "성함과 생년월일을 말씀해 주시겠어요?", note: 확인}
+        - {en: "Thank you, Mr. Alvarez.", icon: star, ko: "감사해요, 알바레즈 씨", note: 감사}
+```
+
+- 줄마다 `en`·`icon`은 필수, `ko`·`note`(2~4자 역할: 공감·이유·확인·감사)는 쓰기를 권합니다(노트와 "공감 → 이유 → …" 요약에 씀).
+- **순서가 하나로만 맞아야 합니다.** 2번과 3번을 바꿔도 자연스러우면 학습자가 맞히고도 틀립니다. 앞 줄이 뒤 줄의
+  전제가 되게(공감 → 이유 → 요청 → 감사, 확인 → 보고 → 지시 → 재확인) 고르세요.
+- 4줄이 서로 같으면 안 됩니다. 한 줄은 15단어 안쪽 — 카드 폭이 좁습니다.
+
+### 뉘앙스에 더하는 한국어 (`ko`)
+
+- **context**: 대상 단어 `word`와 그 한국어 `ko`를 **함께** 씁니다. 화면 제목이 "`deteriorate`가 어색한 장면은?",
+  메모가 "뜻은 셋 다 “악화되다” — 듣는 사람이 달라요"입니다. 셋 중 하나만 쓰면 오류(V14).
+- **swap**: 바꾼 뒤 문장의 한국어 뜻 한 줄 `ko`(`어젯밤 어머니가 돌아가셨어요`). 화면이 뒤에 "— 라고 전해야 해요"를 붙이니
+  그 꼬리는 쓰지 마세요.
+
+```yaml
+  - kind: context
+    words: [w-deteriorate]
+    word: deteriorate
+    ko: 악화되다
+    scenes: [...]
+  - kind: swap
+    ...
+    ko: 지금 혈압이 조금 낮아요
+```
+
+### v46 보강 모드 — 이미 문장·뉘앙스가 있는 주제 (ER부터)
+
+1. 바탕은 정본에서 뽑습니다: `python3 export_dept_lessons.py <부서> <작업 폴더> <주제>` → `base-<주제>.yaml`
+   (단어·문장·뉘앙스·order가 전부 들어 있음).
+2. 출력 `<주제>.yaml`은 base를 읽어 **새 필드만 얹는 스크립트**로 만듭니다. 기존 키는 한 글자도 바꾸지 않습니다
+   (V16이 v44 필드를 정본과 비교합니다). **`nuance:`를 지우지 마세요** — 합치기(`--replace`)가 base의 뉘앙스가
+   빠진 산출물을 거절합니다.
+3. `verify_one_theme.py`로 통과 → 합치기는 `merge_dept_lessons.py <부서> <디렉터리> --replace`만 됩니다(보강 경로는
+   v45 뉘앙스 전용이라 v46 필드가 있으면 멈춥니다).
+
+### 흔한 실수 (V18·V19가 잡는 것)
+
+- `decoy`가 그 문장의 청크와 같다 / `en` 안에 있다(`decoy: "check your"`).
+- `blank.answer`가 `en`에 두 번 나온다, 낱말 중간이다(`wrist` ← `wristband`), 선택지에 없다, 선택지가 3개다.
+- `order.lines`가 3줄·5줄이다, `ko`·`why`가 없다, 줄에 `icon`이 없다.
+- 아이콘 이름이 NbIcon에 없다(`round`·`smile`) — 앱에서 빈 자리로 그려집니다.
+- `tag`가 길다(`환자에게 반복 신원확인 이유 설명`) — 10자 이하.
+- 따옴표 없는 `on`·`no`·`yes`를 태그·선택지에 썼다 — 불리언이 됩니다(V11).
+- `why`가 `ko`를 되풀이하거나 근거 없는 주장을 한다(기계가 못 잡음 — 검토가 봅니다).
+
 ## 보강 모드 — 이미 v44 콘텐츠가 있는 주제 (ER · ICU · OR)
 
 입력으로 **이미 만들어진 주제 파일**(`theme · words · situations[].sentences`)을 받습니다. 할 일은
