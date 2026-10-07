@@ -84,7 +84,7 @@ situations:
 - `icon`은 아래 목록에 **있는 것만**. 맞는 게 없으면 `board`입니다.
 
       baby bandage bell board bulb calendar chartup check coffee compass
-      cross faceAngry gear handshake2 home hospital lab lock magnify me mic monitor
+      cross faceAngry faceWorried gear handshake2 home hospital lab lock magnify me mic monitor
       pencil pill plane pushpin scalpel shield siren speaker speech star
       stetho trophy
 
