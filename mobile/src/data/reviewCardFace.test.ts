@@ -33,3 +33,11 @@ test('a confused STEP 1 word is drawn as advice, never as something said wrong',
   expect(f.correction).toBe(false);
   expect(f.promptKey).toBe('lab.faceWordPrompt');
 });
+
+// 문장 릴의 감상(스펙 2-9 §11-8) — 틀리게 말한 것이 아니므로 취소선 없는 제안 면이다.
+test('a reel 감상 card is a suggestion, not a correction', () => {
+  const f = faceOf('nuance');
+  expect(f.strike).toBe(false);
+  expect(f.correction).toBe(false);
+  expect(f.promptKey).toBe('lab.faceNuancePrompt');
+});

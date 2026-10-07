@@ -34,6 +34,11 @@ export function faceOf(source: string): CardFace {
   if (source === 'word') {
     return { strike: false, promptKey: 'lab.faceWordPrompt', badgeIcon: 'bulb', correction: false };
   }
+  // 'nuance' is the 감상 the learner left at the end of a reel (spec 2-9 §11-8): front is the
+  // word, back the reel's note, the chosen chip kept as the memo. Nothing was said wrong.
+  if (source === 'nuance') {
+    return { strike: false, promptKey: 'lab.faceNuancePrompt', badgeIcon: 'bulb', correction: false };
+  }
   // Anything else is treated as a correction, including sources this build has not seen:
   // a card whose origin is unknown is more safely shown as "you said this" than as advice
   // the learner never received.

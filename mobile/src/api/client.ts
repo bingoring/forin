@@ -78,6 +78,8 @@ export interface LessonNuance {
   cue?: string; scale?: string[]; answerAt?: number; example?: string; exKo?: string;
   pairs?: string[][]; decoys?: string[];
   word?: string; scenes?: LessonNuanceScene[];
+  /** reel: 감상 칩 3~4개 — 정답 없음(스펙 2-9 §11-8). 옛 콘텐츠에는 없다. */
+  feels?: string[];
   who?: string; icon?: string; before?: string[]; options?: string[]; answer?: string; notes?: Record<string, string>;
 }
 /** LessonResp with the situation's persona/briefing typed the way ScenarioDetail types them. */
@@ -850,6 +852,13 @@ export const api = {
   /** Files a STEP 1 word the learner found confusing into the review notes (once per word). */
   async confusedWord(scenarioId: string, wordId: string): Promise<{ cardId?: string; created: boolean }> {
     const { data } = await http.post(`/me/lesson/${scenarioId}/words/${wordId}/confused`);
+    return data as { cardId?: string; created: boolean };
+  },
+
+  /** Files the 감상 the learner picked at the end of a reel into the review notes (spec 2-9 §11-8).
+   *  `feel` must be one of that reel's `feels`; one card per word. */
+  async reelFeel(scenarioId: string, feel: string): Promise<{ cardId?: string; created: boolean }> {
+    const { data } = await http.post(`/me/lesson/${scenarioId}/reel/feel`, { feel });
     return data as { cardId?: string; created: boolean };
   },
 

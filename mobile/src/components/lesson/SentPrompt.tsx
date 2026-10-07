@@ -66,18 +66,59 @@ function Assemble({ testIDPrefix, pool, picked, onChange, locked, render }: {
   );
 }
 
-export function SentPrompt({ card, all, words, answer, onAnswer, result, reelAt, onReelNext }: {
+export function SentPrompt({ card, all, words, answer, onAnswer, result, reelAt, onReelNext, feel = null, feelSave = 'idle', onFeel }: {
   card: DrillCard; all: LessonSentence[]; words: LessonWord[];
   answer: DrillAnswer | null; onAnswer: (a: DrillAnswer) => void; result: Result;
   reelAt: number; onReelNext: () => void;
+  /** 릴 끝의 감상 칩(스펙 2-9 §11-8) — 고른 칩, 저장 상태, 고를 때 부르는 것. */
+  feel?: string | null; feelSave?: 'idle' | 'saved' | 'failed'; onFeel?: (f: string) => void;
 }) {
   const t = useT();
   const locked = result != null;
 
   if (card.kind === 'reel') {
     const scenes = card.item.scenes ?? [];
-    const sc = scenes[Math.min(reelAt, scenes.length - 1)];
     const word = card.item.word ?? '';
+    const feels = card.item.feels ?? [];
+    // 장면을 다 넘긴 뒤의 감상 카드 — 칩이 있는 릴에만 있다.
+    if (feels.length > 0 && reelAt >= scenes.length) {
+      return (
+        <View testID="sent-feel-card" style={{ marginTop: 12, padding: 16, backgroundColor: nb.paper, borderWidth: 1, borderColor: nb.paperEdge, transform: [{ rotate: '-0.5deg' }] }}>
+          <Text style={nbText.hand(18)}>{t('sent.feelAsk', { n: scenes.length, word })}</Text>
+          <Text style={[nbText.body(11, nb.soft), { marginTop: 3 }]}>{t('sent.feelHint')}</Text>
+          <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginTop: 14 }}>
+            {feels.map((f, k) => {
+              const on = feel === f;
+              return (
+                <Pressable
+                  key={f}
+                  testID={`sent-feel-${k}`}
+                  onPress={() => onFeel?.(f)}
+                  accessibilityRole="button"
+                  accessibilityState={{ selected: on }}
+                  style={{
+                    paddingHorizontal: 12, paddingVertical: 7, borderWidth: 1.6,
+                    borderColor: on ? nb.ink : faint, backgroundColor: on ? nb.ink : nb.paper,
+                    transform: [{ rotate: `${k % 2 ? 0.8 : -0.8}deg` }],
+                  }}
+                >
+                  <Text style={nbText.hand(14.5, on ? nb.paper : nb.ink)}>{f}</Text>
+                </Pressable>
+              );
+            })}
+          </View>
+          {feel != null && (
+            <View style={{ marginTop: 12, paddingHorizontal: 10, paddingVertical: 7, borderWidth: 1.3, borderStyle: 'dashed', borderColor: nb.blue, backgroundColor: 'rgba(74,111,165,.05)' }}>
+              <Text style={nbText.hand(13.5, nb.blue)}>{t('sent.feelNote')}</Text>
+              {!!card.item.why && <Text style={[nbText.hand(13.5), { marginTop: 2, lineHeight: 20 }]}>{card.item.why}</Text>}
+              {feelSave === 'saved' && <Text testID="sent-feel-saved" style={[nbText.hand(12.5, nb.soft), { marginTop: 4 }]}>{t('sent.feelSaved')}</Text>}
+              {feelSave === 'failed' && <Text testID="sent-feel-failed" style={[nbText.hand(12.5, nb.red), { marginTop: 4 }]}>{t('sent.feelFailed')}</Text>}
+            </View>
+          )}
+        </View>
+      );
+    }
+    const sc = scenes[Math.min(reelAt, scenes.length - 1)];
     const parts = sc ? sc.en.split(new RegExp(`(${word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\w*)`, 'i')) : [];
     return (
       <View style={{ marginTop: 12 }}>
@@ -101,7 +142,7 @@ export function SentPrompt({ card, all, words, answer, onAnswer, result, reelAt,
               {parts.map((p, k) => (k % 2 ? <Text key={k} style={{ backgroundColor: 'rgba(249,227,123,.7)' }}>{p}</Text> : p))}
             </Text>
             {!!sc.ko && <Text style={[nbText.hand(14.5, nb.soft), { marginTop: 10 }]}>{sc.ko}</Text>}
-            {reelAt < scenes.length - 1 && <Text style={[nbText.hand(12.5, nb.soft), { marginTop: 12, textAlign: 'right' }]}>{t('sent.reelNext')}</Text>}
+            {(reelAt < scenes.length - 1 || feels.length > 0) && <Text style={[nbText.hand(12.5, nb.soft), { marginTop: 12, textAlign: 'right' }]}>{t('sent.reelNext')}</Text>}
           </Pressable>
         )}
       </View>

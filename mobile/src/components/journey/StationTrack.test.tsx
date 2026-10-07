@@ -252,16 +252,17 @@ describe('StationTrack', () => {
       return sv.instance.scrollTo.mock.calls as Array<[{ y: number; animated: boolean }]>;
     };
     jest.clearAllMocks(); // 앞선 테스트들의 scrollTo 호출이 공유 모의에 남아 있다(구현은 지우지 않는다)
-    const deep = mount(<StationTrack steps={buildSteps(46, 30, true)} onStepPress={jest.fn()} />);
+    // 크기는 작게 — 47개짜리를 두 번 그리면 전체 실행 부하에서 5초 제한을 넘겼다(2026-10-07).
+    const deep = mount(<StationTrack steps={buildSteps(24, 20, false)} onStepPress={jest.fn()} />);
     await flush();
     const deepCalls = scrollCalls(deep);
     expect(deepCalls).toHaveLength(1);
     expect(deepCalls[0][0].animated).toBe(false);
-    expect(deepCalls[0][0].y).toBeGreaterThan(1000); // 30번째 우표는 600px 주기 세 바퀴쯤 아래다
+    expect(deepCalls[0][0].y).toBeGreaterThan(600); // 20번째 우표는 600px 주기 세 번째 바퀴에 있다
     // 모의 ScrollView의 scrollTo는 인스턴스끼리 공유되는 jest.fn이다 — 다음 마운트 전에 비운다.
     (deep.root.findAll((n) => !!n.instance?.scrollTo?.mock)[0].instance.scrollTo as jest.Mock).mockClear();
 
-    const top = mount(<StationTrack steps={buildSteps(46, 0, true)} onStepPress={jest.fn()} />);
+    const top = mount(<StationTrack steps={buildSteps(8, 0, false)} onStepPress={jest.fn()} />);
     await flush();
     expect(scrollCalls(top).map((c) => c[0].y)).toEqual([0]);
   });

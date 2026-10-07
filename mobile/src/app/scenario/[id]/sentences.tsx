@@ -60,7 +60,18 @@ export default function LessonSentencesRoute() {
   const done = deck.length > 0 && idx >= deck.length;
   const card = deck[idx];
   const reelScenes = card?.kind === 'reel' ? (card.item.scenes ?? []).length : 0;
-  const reelFinished = card?.kind === 'reel' && reelAt >= reelScenes - 1;
+  // 감상 칩(스펙 2-9 §11-8): 칩이 있는 릴은 마지막 장면 다음에 감상 카드가 한 장 더 있고
+  // (reelAt === 장면 수), 칩을 하나 골라야 끝난다. 칩이 없는 옛 콘텐츠는 장면만 보면 끝난다.
+  const reelHasFeels = card?.kind === 'reel' && (card.item.feels ?? []).length > 0;
+  const [feel, setFeel] = useState<string | null>(null);
+  const [feelSave, setFeelSave] = useState<'idle' | 'saved' | 'failed'>('idle');
+  const reelFinished = card?.kind === 'reel' && (reelHasFeels ? feel != null : reelAt >= reelScenes - 1);
+  const pickFeel = (f: string) => {
+    if (feel != null) return; // 감상은 하나 — 다시 눌러도 다시 저장하지 않는다
+    setFeel(f);
+    // 저장이 실패해도 해설은 보이고 넘어갈 수 있다 — 감상은 학습을 막을 이유가 아니다. 실패는 알린다.
+    api.reelFeel(id, f).then(() => setFeelSave('saved')).catch(() => setFeelSave('failed'));
+  };
 
   const check = () => {
     if (!card || !lesson || result || !hasDrillAnswer(card, answer)) return;
@@ -71,6 +82,8 @@ export default function LessonSentencesRoute() {
     setAnswer(null);
     setResult(null);
     setReelAt(0);
+    setFeel(null);
+    setFeelSave('idle');
   };
   const repeat = (text: string) => router.push({
     pathname: '/pronunciation/[sentenceKey]',
@@ -125,7 +138,8 @@ export default function LessonSentencesRoute() {
                 </Text>
                 <Text style={[nbText.hand(18), { marginTop: 6 }]}>{t(askKey(card))}</Text>
                 <SentPrompt card={card} all={lesson.sentences} words={lesson.words} answer={answer} onAnswer={setAnswer}
-                  result={result} reelAt={reelAt} onReelNext={() => setReelAt((r) => Math.min(r + 1, reelScenes - 1))} />
+                  result={result} reelAt={reelAt} onReelNext={() => setReelAt((r) => Math.min(r + 1, reelHasFeels ? reelScenes : reelScenes - 1))}
+                  feel={feel} feelSave={feelSave} onFeel={pickFeel} />
                 {!!result && <SentReveal card={card} result={result} />}
               </View>
             )}

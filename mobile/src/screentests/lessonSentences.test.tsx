@@ -11,6 +11,9 @@ jest.mock('@/lib/sfx', () => ({ playSfx: () => {}, primeSfx: () => {}, loadSfxPr
 jest.mock('expo-speech', () => ({ speak: (text: string) => { mockSpoken.push(text); }, stop: () => {} }));
 const mockSpoken: string[] = [];
 const mockCalls: string[] = [];
+// 스펙 2-9 §11-8 — 감상 칩이 달린 릴(true)과 옛 콘텐츠의 칩 없는 릴(false). 저장 실패도 흉내 낸다.
+let mockFeels = false;
+let mockFeelFails = false;
 
 const S = (en: string, chunks: string[], words: string[], goal: number, review = false) => ({ en, ko: `${en} (뜻)`, chunks, words, goal, review });
 function mockLesson() {
@@ -29,7 +32,8 @@ function mockLesson() {
     ],
     nuance: [
       { kind: 'reel', words: ['w-pain'], word: 'pain', scenes: [
-        { who: 'a', en: 'pain one', ko: '1' }, { who: 'b', en: 'pain two', ko: '2' }] },
+        { who: 'a', en: 'pain one', ko: '1' }, { who: 'b', en: 'pain two', ko: '2' }],
+        ...(mockFeels ? { feels: ['직설적', '환자에게도 씀', '차트용'], why: '누구에게나 쓰는 쉬운 말이에요.' } : {}) },
       { kind: 'context', words: ['w-pain'], why: '이유', scenes: [
         { who: '차트', en: 'Pt reports pain 7/10.', ok: true },
         { who: '환자에게', en: 'Your NRS is 7.', ok: false, fix: 'You said your pain is a 7.' },
@@ -41,6 +45,11 @@ jest.mock('@/api/client', () => ({
   api: {
     lesson: async () => mockLesson(),
     clearLessonStep: async (s: string, k: string) => { mockCalls.push(`clear ${s} ${k}`); return mockLesson(); },
+    reelFeel: async (s: string, f: string) => {
+      mockCalls.push(`feel ${s} ${f}`);
+      if (mockFeelFails) throw new Error('offline');
+      return { created: true };
+    },
   },
 }));
 jest.mock('expo-router', () => ({
@@ -163,4 +172,57 @@ test('walks through blank, order and the context drill to PASSED, then opens the
   expect(byID(tree.root, 'sent-done')).toHaveLength(1);
   await pressID(tree.root, 'sent-to-step3');
   expect(mockCalls.slice(-2)).toEqual(['clear SCN-ER-00002 sentences', 'replace /dialogue/SCN-ER-00002?guide=guided']);
+});
+
+describe('감상 하나 — 칩이 달린 릴 (스펙 2-9 §11-8)', () => {
+  beforeEach(() => { mockFeels = true; mockFeelFails = false; });
+  afterEach(() => { mockFeels = false; mockFeelFails = false; });
+  const feelCard = (tree: ReturnType<typeof create>) => byID(tree.root, 'sent-feel-card');
+  const nextDimmed = (tree: ReturnType<typeof create>) => byID(tree.root, 'sent-next')[0].props.style?.opacity < 1;
+
+  it('마지막 장면 다음에 감상 카드가 뜨고, 칩을 고르기 전에는 넘어가지 않는다', async () => {
+    const tree = await mount();
+    await pressID(tree.root, 'sent-reel-card'); // 장면 2
+    expect(feelCard(tree)).toHaveLength(0);
+    await pressID(tree.root, 'sent-reel-card'); // 감상 카드
+    expect(feelCard(tree)).toHaveLength(1);
+    for (const f of ['직설적', '환자에게도 씀', '차트용']) expect(texts(tree.root)).toContain(f);
+    expect(nextDimmed(tree)).toBe(true);
+    await pressID(tree.root, 'sent-next');
+    expect(typeLabel(tree)).toBe('워밍업 · 문장 릴');
+  });
+
+  it('칩을 고르면 노트에 저장하고 해설을 펼치며, 그다음에 넘어간다', async () => {
+    const tree = await mount();
+    await pressID(tree.root, 'sent-reel-card');
+    await pressID(tree.root, 'sent-reel-card');
+    await pressLabel(tree.root, 'sent-feel-', '차트용');
+    expect(mockCalls).toContain('feel SCN-ER-00002 차트용');
+    expect(texts(tree.root)).toContain('누구에게나 쓰는 쉬운 말이에요.');
+    expect(byID(tree.root, 'sent-feel-saved')).toHaveLength(1);
+    expect(nextDimmed(tree)).toBe(false);
+    await pressID(tree.root, 'sent-next');
+    expect(typeLabel(tree)).toBe('듣고 고르기');
+  });
+
+  it('감상은 한 번만 고른다 — 다시 눌러도 다시 저장하지 않는다', async () => {
+    const tree = await mount();
+    await pressID(tree.root, 'sent-reel-card');
+    await pressID(tree.root, 'sent-reel-card');
+    await pressLabel(tree.root, 'sent-feel-', '차트용');
+    await pressLabel(tree.root, 'sent-feel-', '직설적');
+    expect(mockCalls.filter((c) => c.startsWith('feel '))).toEqual(['feel SCN-ER-00002 차트용']);
+  });
+
+  it('저장이 실패해도 해설은 보이고 넘어갈 수 있다 — 실패는 알린다', async () => {
+    mockFeelFails = true;
+    const tree = await mount();
+    await pressID(tree.root, 'sent-reel-card');
+    await pressID(tree.root, 'sent-reel-card');
+    await pressLabel(tree.root, 'sent-feel-', '차트용');
+    expect(texts(tree.root)).toContain('누구에게나 쓰는 쉬운 말이에요.');
+    expect(byID(tree.root, 'sent-feel-failed')).toHaveLength(1);
+    expect(byID(tree.root, 'sent-feel-saved')).toHaveLength(0);
+    expect(nextDimmed(tree)).toBe(false);
+  });
 });
