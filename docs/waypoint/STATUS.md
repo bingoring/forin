@@ -17,6 +17,12 @@
 > 모든 수첩 화면), `.nb-press` 0.06s, `nbMotion`(참조 `@keyframes`를 테스트가 직접 대조), `faceWorried`, 낱장 묶음 `SheetStack`
 > (뜯김 620ms → 다음 장 rise·stub, 화면에는 아직 안 붙임). 모노 700·도장 800은 글꼴 자산이 없어 보류(사용자 결정 대기). 모바일 169 스위트
 > 그린. 커밋 `38dead1`·`fad7e4b`·`ffde156`. 보고 [`t1-t2-report.md`](02-construction/lesson-fidelity-v46/t1-t2-report.md).
+> **T5 콘텐츠 기반 완료(2026-10-07, ER 저작 전):** §D 확정 — 문장 `tag`·`icon`·`why`·`decoy`·`distractorsKo`·`blank{answer, options[en,icon]×4}`,
+> 상황 `order{ko, why, lines[en,icon,ko?,note?]×4, tag?, icon?}`, context `word+ko`·swap `ko`(전부 선택). Go·파이썬 검사 V18·V19·V14 같은 규칙,
+> 새 DB 컬럼 `scenarios.lesson_order`(마이그레이션 000043 — 개발 DB는 아직 42), `GET /me/lesson/{id}`의 `order`, 계약·모바일 타입 갱신.
+> 합치기는 정본과 같은 블록을 원문 그대로 두고 v46은 `--replace`로만, `export_dept_lessons.py`(바탕 뽑기·`--roundtrip` 바이트 동일 검사,
+> ER·ICU·OR 동일). 지시서·파이프라인 "v46 보강" 절. 커밋 `af9c086`·`eb7948f`·`8c2cbef`·`d32afd4`·`5067568`·`fbeed86`.
+> 보고 [`t5-report.md`](02-construction/lesson-fidelity-v46/t5-report.md). 남은 것: ER 저작(결정 14 파이프라인).
 >
 > 🏁 **서가 건물 간지(v45) — 완료, Build Spec `IMPLEMENTED` (2026-10-07).** 핸드오프 v45가 서가를 건물 인덱스 탭
 > 5개로 나눴다. 먼저 건물 구성이 실제와 맞는지 조사했다 — 미국 대학병원은 본관·여성/소아·암센터·행동건강/재활·외래로

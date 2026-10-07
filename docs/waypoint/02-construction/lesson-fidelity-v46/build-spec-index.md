@@ -56,23 +56,54 @@ T3·T4는 T1·T2 위에 선다. T5는 T4의 데이터를 채우지만 T4는 필�
 9. AI: 문장장 장 수는 상황의 문장 수(핸드오프 6장은 예시 — V6), "다시 듣기 · 2회"는 실제로 2회 제한, `faceWorried` 아이콘은 새로
    그림, 공용 부품 값은 모든 수첩 화면에 한꺼번에, 감정 칩은 한국어 감정어(기분 값 → 라벨 표), 우리가 더한 움직임은 유지.
 
-## §D. 데이터 (T5)
+## §D. 데이터 (T5) — 확정 (2026-10-07, 참조 `forin-notebook-lesson-sent-live.jsx` `SENTS` · `-nuance.jsx` `CTX`/`SWAP` 대조)
 
-문장(`content.Sentence`)에 더한다 — 전부 선택 필드(없으면 §R3 대체):
-- `tag` (한국어 짧은 분류, 낱장 헤더 태그), `icon` (NbIcon 이름, 낱장 앰버 원), `why` (해설 '왜?' 한 줄).
-- `decoy` (build 조립용 오답 조각 1개 — 그 문장 청크와 헷갈릴 만한, 정답 조립으로는 쓰이지 않는 조각).
-- `blankIcons` (blank 2×2 선택지의 아이콘 4개 — 정답 1 + 오답 3의 NbIcon 이름, 선택지 문구는 런타임이 다른 문장 청크에서 고른다)
-  — 참조 데이터 모양을 T5 착수 때 다시 대조해 확정한다.
+전부 **선택 필드**. 없으면 §R3 대체, 있으면 검사기가 모양을 본다(Go `content/lessonv46.go` · 파이썬 `verify_lesson_content.py`, 같은 규칙).
+보고: [`t5-report.md`](t5-report.md).
 
-상황(`Scenario`)에 더한다:
-- `order` (순서 배열 세트): `{lines: [{en, ko, icon, note}] ×4}` — 대화가 흘러가는 순서 그대로. 정답 = 이 순서.
+**문장 `content.Sentence`** (DB `scenarios.sentences` jsonb 안 — 컬럼 추가 없음)
 
-뉘앙스에 더한다:
-- context: `word`(대상 단어), `ko`(그 단어의 한국어) — 핸드오프 C5 머리.
-- swap: 장면의 `ko`(바꾼 문장의 한국어 한 줄).
+| 필드 | 모양 | 핸드오프 자리 | 규칙(V18) |
+|---|---|---|---|
+| `tag` | string | 낱장 머리 파란 NbTag (SL:110) | 비어 있지 않음, ≤10자 |
+| `icon` | string (NbIcon) | 앰버 원 58px (SL:117, listen은 스피커라 안 씀) | 비어 있지 않음 · NbIcon 이름(파이썬, 모바일 테스트) |
+| `why` | string | 해설 "왜?" 박스 (SL:137) | 비어 있지 않음 |
+| `decoy` | string | build 풀의 오답 조각 1개 (SL:14 `pool` − `chunks`) | 비어 있지 않음, 그 문장 청크가 아니고 `en` 안에 없음 |
+| `distractorsKo` | string[2] | listen 3지의 오답 뜻 (SL:13 `opts`) | 정확히 2, 서로 다르고 `ko`와 다름 |
+| `blank` | `{answer, options: [{en, icon}]×4}` | blank 빈칸 + 2×2 (SL:15 `before/answer/after/opts`) | `answer`가 `en`에 낱말 경계로 정확히 한 번(화면이 그 자리로 `before`/`after`를 나눔), 선택지 4개·서로 다름·`answer` 포함·저마다 `icon` |
 
-검사기(V17 다음): 각 필드의 모양(아이콘 이름은 NbIcon 집합 — 모바일 contentIcons 테스트, 순서 세트 4줄, decoy가 정답 청크와 다름 등).
-저작 지시서·파이프라인 지시서에 절을 더하고, ER을 결정 14 파이프라인(Sonnet 저작 · Opus 검토 · Sonnet 수정)으로 채운다.
+- 초안의 `blankIcons`(아이콘만, 문구는 런타임)는 **폐기** — 참조는 문구와 아이콘을 함께 저작하고(`['annoying','faceAngry']`),
+  감사 §4-5가 짚은 "같은 품사 대비"는 저작해야 나온다.
+- listen 선택지의 아이콘(SL:13 `opts[i][0]`)은 v46이 그리지 않으므로(감사 #52) 싣지 않는다. 문장 `type`(유형 배정)도 싣지 않는다 — R4대로 런타임.
+
+**상황 `content.Scenario.order`** → `content.SentenceOrder` (DB **새 컬럼 `scenarios.lesson_order` jsonb NULL**, 마이그레이션 000043;
+`order`는 SQL 예약어) → `GET /me/lesson/{id}`의 `order`(없으면 키 없음)
+
+| 필드 | 모양 | 핸드오프 자리 | 규칙(V19) |
+|---|---|---|---|
+| `tag` | string, 선택 | 낱장 머리 태그 "대화 흐름" (SL:17) | 있으면 비어 있지 않음, ≤10자 |
+| `icon` | string, 선택 | 앰버 원 compass (SL:17) | 있으면 NbIcon |
+| `ko` | string, 필수 | 머리 형광펜 "불만 환자 응대 4문장 순서" (SL:17·119) | 비어 있지 않음 |
+| `why` | string, 필수 | 해설 "왜?" (SL:17) | 비어 있지 않음 |
+| `lines` | `[{en, icon, ko?, note?}]` ×4 | 줄 글자·아이콘 17px (SL:17·96·97), 정답 = 적힌 순서 | 정확히 4, `en`·`icon` 필수, `en` 서로 다름, `ko`·`note` 있으면 비어 있지 않음 |
+
+- 참조의 줄은 `[en, icon]`뿐이다. `ko`(줄 뜻)·`note`(역할 2~4자: 공감·이유·확인·감사)는 **선택** — 교정노트와, 참조 카드 `en`
+  "공감 → 이유 → 확인 → 감사"(v46이 그리지 않음)를 쓸 때의 재료. 참조 `shuffled`는 싣지 않는다(런타임 stableShuffle, 감사 #89).
+- 문장 없는 상황에 order만 있으면 오류(STEP 2가 없다).
+
+**뉘앙스 `content.Nuance`** — `ko` 하나를 더한다(`word`는 이미 있음, context에 저작이 안 됐을 뿐)
+
+| kind | 필드 | 핸드오프 자리 | 규칙(V14 더함) |
+|---|---|---|---|
+| context | `word` + `ko` | C5 제목 "`deteriorate`가 어색한 장면은?" + 메모 “악화되다” (NU:126·139·142) | 둘 다 있거나 둘 다 없음 |
+| swap | `ko` | C6 카드 아래 "어젯밤 어머니가 돌아가셨어요 — 라고 전해야 해요" (NU:201) | 있으면 비어 있지 않음. **꼬리 "— 라고 전해야 해요"는 화면이 붙인다** |
+
+**아이콘 집합**은 코드 쪽: 모바일 `theme/contentIcons.test.ts`가 `sentences:`·`order:`·`nuance:` 블록의 `icon:`을 NbIcon 유니온과 대조한다
+(보상 아이콘 스캔에서는 뗀다). 파이썬 검사기는 `NbIcon.tsx`에서 유니온을 직접 읽는다. Go는 비어 있지 않은지만(테마 아이콘 관례).
+Go는 `omitempty` 문자열이라 `why: ""`와 키 없음을 구별하지 못해 공백만 있는 값을 잡고, 파이썬은 빈 문자열도 잡는다.
+
+저작: 지시서 `server/content/tools/lesson_author_brief.md` "v46" 절, 파이프라인 `pipeline/TASK.md`·`REVIEW.md`·`FIX.md` "v46 보강" 절
+(결정 14: Sonnet 저작·수정, Opus 검토). 보강 = `export_dept_lessons.py`로 바탕 → 새 필드만 얹음 → `merge_dept_lessons.py --replace`.
 
 ## §R. 규칙
 
@@ -80,7 +111,7 @@ T3·T4는 T1·T2 위에 선다. T5는 T4의 데이터를 채우지만 T4는 필�
 |---|---|
 | R1 | 값의 정본은 참조 JSX다. 감사 표의 핸드오프 열이 가리키는 파일:줄에서 옮기고, 옮긴 자리에 그 출처를 주석으로 남긴다 |
 | R2 | 애니메이션은 RN `Animated` + `useNativeDriver`(수첩 화면 관례). 여러 단계 keyframes는 `src/data/keyframes.ts`의 `keyframeSegments`. 모션 줄이기 설정이면 즉시 최종 상태 |
-| R3 | 새 콘텐츠 필드가 없을 때: `tag` → 상황 제목의 짧은 이름, `icon` → 부서 대표 아이콘, `why` → 해설 박스를 그리지 않음, `decoy` → 같은 상황 다른 문장의 청크 1개, `blankIcons` → 아이콘 없는 2×2 글자 카드, `order` 없음 → 순서 배열 장을 건너뜀, 릴 없음 → C0 건너뜀, C5·C6 항목 없음 → 그 화면 건너뜀. 빈 자리·지어낸 문구 없음 |
+| R3 | 새 콘텐츠 필드가 없을 때: `tag` → 상황 제목의 짧은 이름, `icon` → 부서 대표 아이콘, `why` → 해설 박스를 그리지 않음, `decoy` → 같은 상황 다른 문장의 청크 1개, `distractorsKo` → 같은 상황 다른 문장의 ko 2개, `blank` → 런타임 빈칸(가르치는 단어가 든 청크, 오답은 다른 문장 청크)의 아이콘 없는 2×2 글자 카드, context `word`/`ko` → 제목의 단어 자리·메모를 그리지 않음, swap `ko` → 한국어 줄을 그리지 않음, `order` 없음 → 순서 배열 장을 건너뜀, 릴 없음 → C0 건너뜀, C5·C6 항목 없음 → 그 화면 건너뜀. 빈 자리·지어낸 문구 없음 |
 | R4 | 장 수·유형 배정은 콘텐츠 수에서 나온다(V6). 유형은 핸드오프 순서(listen·build·blank·listen·order·build)를 주기로 돌리되, 그 문장에 필요한 데이터가 없으면 다음 유형으로 |
 | R5 | 학습 기록(STEP 1·2 클리어, missed, 헷갈린 단어·문장의 교정노트)은 v44 동작 그대로. 문장 '헷갈려요'는 새 API로 교정노트에 한 장(단어와 같은 규칙) |
 | R6 | 결정 4(허브)·결정 4(글리프) 등 §3 편차 외에는 핸드오프와 다르면 결함이다 |
@@ -99,7 +130,7 @@ T3·T4는 T1·T2 위에 선다. T5는 T4의 데이터를 채우지만 T4는 필�
 - [x] T2 낱장 묶음 부품(스프링 링 9 · 뒷장 2겹 · 아래 다음 장 .85 · 지그재그 절취 조각 · 점선 절취선 · 낱장 그림자 · 줄노트 28px 배경)
 - [ ] T3 STEP 1 — 감사 step1 표 전 행
 - [ ] T4 STEP 2 — 감사 step2 표 전 행, §L 흐름, 문장 '헷갈려요' API
-- [ ] T5 콘텐츠 — §D 스키마·검사기·지시서, ER 저작(결정 14), 순서 배열 세트
+- [ ] T5 콘텐츠 — [x] §D 스키마·검사기·지시서·적재·응답·모바일 타입(2026-10-07, [`t5-report.md`](t5-report.md)) · [ ] ER 저작(결정 14, 순서 배열 세트 포함)
 - [ ] T6 허브 — 감사 hub 표의 허브 행(결정 4 제외), StepTrack 연결선 규칙
 - [ ] T7 대화 D/D'/E — 감사 hub 표의 대화 행(무대 결정 5, 노트 결정 6), 픽셀 라인 잔재 제거, STEP 화면 StepTrack 제거(결정 1)
 - [ ] T8 시뮬레이터 대조 — 아트보드마다 핸드오프 캡처와 우리 화면을 나란히 저장(`audit/screens/`)
