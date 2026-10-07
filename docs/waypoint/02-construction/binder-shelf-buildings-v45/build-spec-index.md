@@ -1,6 +1,6 @@
 # Build Spec — 서가 건물 간지 (v45)
 
-    status: READY (2026-10-07 — 건물 구성·공통 부서 위치는 사용자 결정, §3)
+    status: IMPLEMENTED (2026-10-07 — 59628c0 · 979f7c0 · 8e72218, 시뮬레이터 확인)
     depth: standard (인덱스 하나에 domain-entities · business-rules · frontend-components를 접어 넣음)
     inputs: inputs/design-handoff_v45/07_NOTEBOOK_REDESIGN.md — "G 바인더 서가 — 건물 간지(2026-09)"
             inputs/design-handoff_v45/reference/forin-notebook-journey2.jsx — BUILDINGS · BinderShelf
@@ -100,16 +100,16 @@
 
 ## §4. 구현 체크리스트
 
-- [ ] A1 `campus.BuildingOf` + 테스트(GEN→본관, 모르는 부서 빈 값, DERM은 B 뒤 별관 3)
-- [ ] A2 `FreeRoamEntry.Building`·`JourneyView.GoalBuilding` 채우기 + 핸들러 테스트, `make contract`
-- [ ] B1 `floors.go` DERM 층 이동 + i18n 키 이동, `gencontent` 출력 변화 확인
-- [ ] B2 엘리베이터 `tower` 2F 제거 · `dx` 5F 추가, 피부과 실내 진입 확인
-- [ ] B3 `greet-wards.yaml` 안내문
-- [ ] C1 `BuildingTabs` + 테스트
-- [ ] C2 `BinderShelf` 탭·패널·통계 + 테스트(§5 표)
-- [ ] C3 i18n `building.<id>.short` 4개 언어
-- [ ] 시뮬레이터로 서가·탭 전환·피부과 엘리베이터 확인
-- [ ] STATUS·DECISIONS 기록
+- [x] A1 `campus.BuildingOf` + 테스트(GEN→본관, 모르는 부서 빈 값, DERM은 B 뒤 별관 3)
+- [x] A2 `FreeRoamEntry.Building`·`JourneyView.GoalBuilding` 채우기 + 핸들러 테스트, `make contract`
+- [x] B1 `floors.go` DERM 층 이동 + i18n 키 이동, `gencontent` 출력 변화 확인
+- [x] B2 엘리베이터 `tower` 2F 제거 · `dx` 5F 추가, 피부과 실내 진입 확인
+- [x] B3 `greet-wards.yaml` 안내문
+- [x] C1 `BuildingTabs` + 테스트
+- [x] C2 `BinderShelf` 탭·패널·통계 + 테스트(§5 표)
+- [x] C3 i18n `building.<id>.short` 4개 언어
+- [x] 시뮬레이터로 서가·탭 전환·피부과 엘리베이터 확인
+- [x] STATUS·DECISIONS 기록
 
 ## §5. 검증
 
@@ -126,4 +126,16 @@
 
 ## §7. 편차 로그
 
-(구현 후)
+- **탭은 가로 스크롤이 아니라 한 줄 flex로 나눈다.** §F는 "5개가 안 들어가면 가로 스크롤"이라 적었지만, 참조처럼
+  활성 1.5 · 나머지 1로 나누면 402pt 폭에서 다섯 개가 다 들어간다(시뮬레이터 확인). 탭이 더 늘면 다시 본다.
+- **`바인더 N권 · 건물 M`은 새 줄이 아니라 기존 제목 줄의 요약을 바꿨다.** v42의 `바인더 N권 · 통과한 주제 T`
+  자리다. 통과한 주제 수는 각 건물 패널 머리(`바인더 k권 · 주제 p/t`)로 옮겼다. 건물 수는 서가와 같은 함수
+  (`shelfBuildings`)로 센다.
+- **시뮬레이터에서 화면이 막 그려진 직후의 첫 탭 한 번이 먹지 않았다.** 두 번째부터는 기본 탭으로 바로 바뀌었고,
+  같은 일이 다른 탭에서는 다시 나오지 않았다. 앱 결함으로 확정하지 못해 기록만 한다.
+
+### 시뮬레이터 확인 (2026-10-07, 로컬 API + Metro)
+- 서가: 탭 5개(본관·여성소아·암·재활·외래진단·지원동), 제목 줄 `바인더 29권 · 건물 5`. 목표가 약국인 계정이라 본관
+  패널은 7권(ER·OR·ICU·WARD·SURGWARD·ORTHOWARD·GEN — 약국 빠짐, GEN 포함). 외래진단 탭에 피부과, 여성소아 탭 6권.
+- 캠퍼스 엘리베이터: 외래·진단 지원동 맨 위에 5F 피부과 센터, 5F로 이동하면 피부과 실내(`INT-DERM-00001`)로 들어간다.
+- 서버 응답(`/me/journey`): 건물별 묶음이 표와 같고 `goalBuilding`이 실린다.
