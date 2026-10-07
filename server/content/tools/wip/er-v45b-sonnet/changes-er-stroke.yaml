@@ -185,8 +185,8 @@ changes:
 - kind: sentence
   situation: 실어증 환자 소통
   index: 3
-  fields: [words]
-  why: 태그 뺌 w-yes, w-no
+  fields: [words, chunks]
+  why: 태그 뺌 w-yes, w-no / 청크가 구 경계를 끊음(', one at' / 'a time')
 - kind: sentence
   situation: 실어증 환자 소통
   index: 5
@@ -326,7 +326,7 @@ changes:
 - kind: word
   id: w-strain
   fields: [ko]
-  why: strain은 긴장(tension)이 아니라 무리한 힘으로 인한 근육 부담(염좌)
+  why: strain은 긴장(tension)이 아니라 무리한 힘으로 인한 근육 부담(염좌) / 염좌는 sprain — 근육 좌상으로
 - kind: sentence
   situation: 젊은 환자 경동맥 박리
   index: 0
@@ -346,3 +346,8 @@ changes:
   index: 2
   fields: [ko]
   why: 한국어 세미콜론을 마침표로
+- kind: sentence
+  situation: 언어장벽 뇌졸중
+  index: 3
+  fields: [chunks]
+  why: 청크가 구 경계를 끊음(', one' / 'to five')

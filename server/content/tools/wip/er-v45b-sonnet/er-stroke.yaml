@@ -293,7 +293,7 @@ words:
   distractorsKo: [기록하다, 보고하다]
   chips:
   - [check]
-  decoyChips: [cho, ack]
+  decoyChips: [cheek]
 - id: w-blood
   en: blood
   ipa: /blʌd/
@@ -835,7 +835,7 @@ words:
   exKo: 오른쪽이 왼쪽보다 약해 보여요.
   cue: 힘이 빠져 근력이 떨어진 팔다리를 묘사할 때
   tag: 신경 사정
-  distractorsEn: [week, weep]
+  distractorsEn: [weary, wobbly]
   distractorsKo: [뻣뻣한, 어지러운]
   chips:
   - [weak]
@@ -917,7 +917,7 @@ words:
   icon: speech
   example: Can you touch your nose then my finger?
   exKo: 코를 만졌다가 제 손가락을 만져 보실 수 있나요?
-  cue: 손가락-코 검사에서 환자가 손가락 끝으로 짚어야 하는, 얼굴 한가운데 튀어나온 곳
+  cue: 신경 검사에서 손가락으로 내 손끝과 번갈아 짚게 하는, 얼굴 한가운데 튀어나온 곳
   tag: 신체 부위
   distractorsEn: [noise, nurse]
   distractorsKo: [귀, 입]
@@ -1871,7 +1871,7 @@ words:
   ko: 목
   icon: stetho
   example: Did you have any neck injury or sudden strain?
-  exKo: 목에 부상이나 갑작스러운 긴장이 있었나요?
+  exKo: 목에 부상이나 갑자기 무리하게 힘을 준 일이 있었나요?
   cue: 머리와 몸통을 잇는 부위. 경동맥이 지나간다
   tag: 신체 부위
   distractorsEn: [nerve, knee]
@@ -1882,7 +1882,7 @@ words:
 - id: w-strain
   en: strain
   ipa: /streɪn/
-  ko: 무리한 힘(염좌)
+  ko: 무리한 힘(근육 좌상)
   icon: bandage
   example: Did you have any neck injury or sudden strain?
   exKo: 목에 부상이나 갑자기 무리하게 힘을 준 일이 있었나요?
@@ -1899,7 +1899,7 @@ words:
   ko: 무감각
   icon: bulb
   example: When did the neck pain start compared to the numbness?
-  exKo: 목 통증이 무감각보다 언제 먼저 시작됐나요?
+  exKo: 목 통증은 무감각보다 먼저 시작됐나요, 나중에 시작됐나요?
   cue: 얼굴이나 팔다리에 느낌이 없는 증상. 목 통증과 시간 순서를 따진다
   tag: 신경 사정
   distractorsEn: [weakness, dizziness]
@@ -2075,9 +2075,9 @@ situations:
   - kind: slider
     words: [w-numb]
     cue: 'Patient: "I can barely feel you touching my cheek. It''s dull, like after the dentist."'
-    scale: [tingling, numb, no feeling at all]
+    scale: [slightly numb, numb, no feeling at all]
     answerAt: 1
-    why: tingling은 저릿한 느낌, numb는 감각이 둔해진 상태(치과 마취 뒤처럼), no feeling at all은 완전한 소실이에요. 환자가 쓰는 말대로 정도를 구분해 기록하세요.
+    why: slightly numb은 조금 둔한 정도, numb는 감각이 크게 둔해진 상태(치과 마취 뒤처럼), no feeling at all은 완전한 소실이에요. 환자가 쓰는 말대로 정도를 구분해 기록하세요.
     example: Does one side of your face feel numb?
     exKo: 얼굴 한쪽이 무감각하게 느껴지세요?
   - kind: pair
@@ -2138,7 +2138,7 @@ situations:
     cue: 'Wife: "I looked at the clock when he went quiet. It was 8:15 on the dot."'
     scale: [sometime, around, exactly]
     answerAt: 2
-    why: 시계로 확인한 시각은 exactly(정각), '열 시쯤인 것 같아요'는 around, '저녁 어느 땐가요'처럼 시각을 못 박지 못하면 sometime이에요. 마지막 정상 시각은 정확할수록 시간창 판단이 믿을 만해서, 보호자가 확신하는지 어림인지를 구분해 기록해요.
+    why: 시계로 확인한 시각은 exactly(정확한 시각), '열 시쯤인 것 같아요'는 around, '저녁 어느 땐가요'처럼 시각을 못 박지 못하면 sometime이에요. 마지막 정상 시각은 정확할수록 시간창 판단이 믿을 만해서, 보호자가 확신하는지 어림인지를 구분해 기록해요.
     example: Can you tell me exactly what time it was?
     exKo: 그게 정확히 몇 시였는지 말씀해 주실 수 있나요?
   - kind: context
@@ -2190,10 +2190,10 @@ situations:
     words: [w-finger, w-sugar]
     pairs:
     - [prick, your finger]
-    - [bring up, your sugar]
+    - [give, sugar through your IV]
     - [apply, a cuff to your arm]
     decoys: [a deep breath]
-    why: 동사가 짝을 정해요. 채혈은 손끝을 prick(찔러서), 낮은 혈당은 bring up(끌어올리다), 혈압 커프는 apply(대다).
+    why: 동사가 짝을 정해요. 채혈은 손끝을 prick(찔러서), 낮은 혈당은 IV로 당을 give(주다), 혈압 커프는 apply(대다).
   - kind: swap
     words: [w-sugar, w-low]
     who: 환자에게 · 혈당이 약간 낮을 때
@@ -2606,7 +2606,7 @@ situations:
     goal: 1
   - en: I'll ask yes or no questions, one at a time.
     ko: 한 번에 하나씩 예/아니오 질문을 드릴게요.
-    chunks: [I'll ask, yes or no questions, ', one at', a time, .]
+    chunks: [I'll ask, yes or no, questions, ', one at a time', .]
     words: [w-ask, w-question]
     goal: 1
   - en: Blink once if that's not right.
@@ -2771,7 +2771,7 @@ situations:
     goal: 1
   - en: Show me with your fingers, one to five.
     ko: 손가락으로 1부터 5까지 보여 주세요.
-    chunks: [Show me, with your fingers, ', one', to five, .]
+    chunks: [Show me, with your fingers, ', one to five', .]
     words: [w-finger]
     goal: 2
   - en: Nod if you understand what I'm saying.
@@ -3015,7 +3015,7 @@ situations:
   - kind: slider
     words: [w-risk]
     cue: 'Family: "Can something go wrong?" The procedure carries a small chance of bleeding.'
-    scale: [a small risk, a real risk, a high risk]
+    scale: [a small risk, a moderate risk, a high risk]
     answerAt: 0
     why: 위험은 정직하게, 부풀리지도 줄이지도 않고 말해요. 시술에 출혈 같은 위험이 있지만 드물다는 뜻으로 'a small risk'라고 하고, 구체적인 비율은 시술 의사가 설명해요.
     example: Every minute without treatment means more brain tissue at risk.
