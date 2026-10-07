@@ -30,6 +30,7 @@ export type NbIconName =
   | 'me'
   | 'mic'
   | 'faceAngry'
+  | 'faceWorried'
   | 'speaker'
   | 'siren'
   | 'scalpel'
@@ -99,8 +100,9 @@ export function NbIcon({ name, size = 20, color = nb.ink }: {
     cross: (
       <G><Path {...P} d="M6 6 L18 18 M18 6 L6 18"/></G>
     ),
+    // forin-notebook.jsx L43: a green watercolour stroke under the ink tick (DOC 07 L228).
     check: (
-      <G><Path {...P} strokeWidth={2.4} d="M5 12.5 L10 17.5 L19.5 6.5"/></G>
+      <G><Path d="M6 13.5 L10 17.5 L18.5 7.5" fill="none" stroke={nb.wash.green} strokeWidth={5} strokeLinecap="round" strokeLinejoin="round"/><Path {...P} strokeWidth={2.2} d="M5 12.5 L10 17.5 L19 7"/></G>
     ),
     home: (
       <G><Path {...P} d="M4.5 11.5 L12 4.5 L19.5 11.5"/><Path {...P} d="M6.5 10.5 V19 H17.5 V10.5"/><Rect {...P} x="10" y="13.5" width="4" height="5.5" fill={nb.wash.yellow}/></G>
@@ -124,6 +126,13 @@ export function NbIcon({ name, size = 20, color = nb.ink }: {
     ),
     faceAngry: (
       <G><Circle {...P} cx="12" cy="12" r="8" fill={nb.wash.peach}/><Path {...P} d="M7.5 8.5 L10.5 10 M16.5 8.5 L13.5 10"/><Circle cx="9.5" cy="12" r="0.9" fill={color} stroke="none"/><Circle cx="14.5" cy="12" r="0.9" fill={color} stroke="none"/><Path {...P} d="M9.5 16 Q12 14.3 14.5 16"/></G>
+    ),
+    // Not in the handoff set — the sentence deck names it (sent-live L15, L17) and the
+    // prototype fell back to the star (spec v46 §3 9: drawn new). faceAngry's rules: the same
+    // r=8 peach face and dot eyes; the brows lift at their INNER ends, and the mouth is a
+    // small wobble rather than a frown.
+    faceWorried: (
+      <G><Circle {...P} cx="12" cy="12" r="8" fill={nb.wash.peach}/><Path {...P} d="M7.5 9.5 L10.5 8 M16.5 9.5 L13.5 8"/><Circle cx="9.5" cy="12" r="0.9" fill={color} stroke="none"/><Circle cx="14.5" cy="12" r="0.9" fill={color} stroke="none"/><Path {...P} d="M9 16 Q10.5 14.8 12 16 Q13.5 17.2 15 16"/></G>
     ),
     speaker: (
       <G><Path {...P} d="M5 10 H8 L12.5 5.8 V18.2 L8 14 H5 Z" fill={nb.wash.blue}/><Path {...P} d="M15.5 9.5 Q17 12 15.5 14.5 M18 7 Q20.7 12 18 17"/></G>

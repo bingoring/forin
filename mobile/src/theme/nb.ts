@@ -109,6 +109,35 @@ export const paperShadow = {
   elevation: 2,
 } as const;
 
+/** Hard offset shadows — the handoff's `Xpx Ypx 0 color` (no blur), per variant.
+ *
+ *  NbUI (reference/forin-notebook-ui.jsx L58–62): ink `2.5px 2.5px 0 rgba(62,54,43,.3)`,
+ *  yellow `2px 2px 0 rgba(62,54,43,.25)`, danger `2px 2px 0 rgba(199,81,70,.25)`. Lesson chips
+ *  (forin-notebook-lesson-words-live.jsx L147, -sent-live.jsx L57) `1px 2px 0 rgba(62,54,43,.2)`.
+ *
+ *  Not `paperShadow`: these are printed blocks, not paper lifting off the page. RN has no
+ *  offset-only shadow on Android (elevation always blurs) and an iOS shadow on a see-through
+ *  face (yellow, danger) would show through it, so NbUI draws them as the strip outside the
+ *  face (see NbHardShadow). */
+export const hardShadow = {
+  ink: { dx: 2.5, dy: 2.5, color: 'rgba(62,54,43,.3)' },
+  yellow: { dx: 2, dy: 2, color: 'rgba(62,54,43,.25)' },
+  danger: { dx: 2, dy: 2, color: 'rgba(199,81,70,.25)' },
+  chip: { dx: 1, dy: 2, color: 'rgba(62,54,43,.2)' },
+} as const;
+export type HardShadow = { dx: number; dy: number; color: string };
+
+/** A loose leaf in the lesson's binder — `0 4px 10px rgba(62,54,43,.16)`
+ *  (forin-notebook-lesson-words-live.jsx L156, -sent-live.jsx L107). Blur mapped 1:1 to
+ *  shadowRadius, the same convention as `paperShadow`. */
+export const sheetShadow = {
+  shadowColor: '#3E362B',
+  shadowOpacity: 0.16,
+  shadowRadius: 10,
+  shadowOffset: { width: 0, height: 4 },
+  elevation: 4,
+} as const;
+
 /** Three faces, three jobs.
  *
  *  · hand  — Gaegu. Headings, labels, buttons, anything a nurse would have written.
