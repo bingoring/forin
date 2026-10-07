@@ -37,10 +37,6 @@ changes:
   fields: [en, ipa]
   why: 다른 ER 주제(gi-bleed·geriatric 등)와 같이 헤드워드를 blood thinner로 — 문장은 늘 blood thinner
 - kind: word
-  id: w-level
-  fields: [ko]
-  why: w-value(수치)와 ko가 같아 듣고 뜻 고르기 정답이 둘이 됨 — level은 혈중 농도
-- kind: word
   id: w-call
   fields: [ko]
   why: 태그된 문장이 "call me if…"(연락) — 헤드워드 ko를 맞춤
@@ -244,8 +240,8 @@ changes:
 - kind: sentence
   situation: 출혈성 뇌졸중 급성 악화
   index: 0
-  fields: [ko]
-  why: '"Stay with me"는 환자에게 "정신 놓지 마세요" — "함께 있어 주세요"는 역할이 뒤집힌 번역(keyPhrase라 ko만)'
+  fields: [ko, words]
+  why: '"Stay with me"는 환자에게 "정신 놓지 마세요" — "함께 있어 주세요"는 역할이 뒤집힌 번역(keyPhrase라 ko만) / 태그 w-stay를 w-stay-with-me로 교체'
 - kind: sentence
   situation: 출혈성 뇌졸중 급성 악화
   index: 1
@@ -264,8 +260,8 @@ changes:
 - kind: sentence
   situation: 출혈성 뇌졸중 급성 악화
   index: 6
-  fields: [ko]
-  why: '"Stay with me"는 환자에게 "정신 놓지 마세요"'
+  fields: [ko, words]
+  why: '"Stay with me"는 환자에게 "정신 놓지 마세요" / 태그 w-stay를 w-stay-with-me로 교체'
 - kind: sentence
   situation: 대혈관 폐색 혈전제거술 이송
   index: 2
@@ -284,8 +280,8 @@ changes:
 - kind: sentence
   situation: 뇌간 경색 급속 의식저하
   index: 0
-  fields: [ko]
-  why: '"Stay with me"는 환자에게 "정신 놓지 마세요"(keyPhrase라 ko만)'
+  fields: [ko, words]
+  why: '"Stay with me"는 환자에게 "정신 놓지 마세요"(keyPhrase라 ko만) / 태그 w-stay를 w-stay-with-me로 교체'
 - kind: sentence
   situation: 뇌간 경색 급속 의식저하
   index: 1
@@ -299,8 +295,8 @@ changes:
 - kind: sentence
   situation: 악성 부종 감시
   index: 5
-  fields: [words]
-  why: 태그 뺌 w-pressure
+  fields: [words, ko]
+  why: 태그 뺌 w-pressure / 압력 → 뇌압
 - {kind: word-remove, id: w-time, why: 공통 쉬운 단어 목록 — 어느 문장도 태그하지 않게 됐다}
 - {kind: word-remove, id: w-night, why: 공통 쉬운 단어 목록 — 어느 문장도 태그하지 않게 됐다}
 - {kind: word-remove, id: w-today, why: 공통 쉬운 단어 목록 — 어느 문장도 태그하지 않게 됐다}
@@ -313,3 +309,40 @@ changes:
 - {kind: word-remove, id: w-yes, why: 너무 쉬움 — 간호사가 이미 아는 말 — 어느 문장도 태그하지 않게 됐다}
 - {kind: word-remove, id: w-no, why: 너무 쉬움 — 간호사가 이미 아는 말 — 어느 문장도 태그하지 않게 됐다}
 - {kind: word-remove, id: w-eat, why: 너무 쉬움 — 간호사가 이미 아는 말 — 어느 문장도 태그하지 않게 됐다}
+- kind: word
+  id: w-value
+  fields: [ko]
+  why: w-level(수치)과 ko가 같아 듣고 뜻 고르기 정답이 둘이 됨 — value는 검사값
+- {kind: word-add, id: w-stay-with-me, why: '"Stay with me"는 관용구(정신 놓지 마세요) — w-stay(머무르다) 카드가 오역을 가르쳐 분리. 문장 3개에 이미 있다'}
+- kind: sentence
+  situation: 즉시 혈당·활력 측정
+  index: 6
+  fields: [en, ko, chunks]
+  why: 삼킴 선별 전 환자에게 경구(주스) 안내 — 안전 문제, IV 당 투여로
+- kind: word
+  id: w-speech
+  fields: [ko]
+  why: '"speech sounds slurred"의 speech는 말투가 아니라 발화·발음'
+- kind: word
+  id: w-strain
+  fields: [ko]
+  why: strain은 긴장(tension)이 아니라 무리한 힘으로 인한 근육 부담(염좌)
+- kind: sentence
+  situation: 젊은 환자 경동맥 박리
+  index: 0
+  fields: [ko]
+  why: '"갑작스러운 긴장" → 무리하게 힘을 준 일'
+- kind: word
+  id: w-intubation
+  fields: [ipa]
+  why: 영국식 발음(tj) → 미국식
+- kind: sentence
+  situation: 젊은 환자 경동맥 박리
+  index: 1
+  fields: [ko]
+  why: 부자연스러운 한국어 어순
+- kind: sentence
+  situation: 출혈성 뇌졸중 급성 악화
+  index: 2
+  fields: [ko]
+  why: 한국어 세미콜론을 마침표로
