@@ -103,7 +103,17 @@ export default function DeptBinderScreen() {
             <NbIcon name="chevronLeft" size={16} />
           </NbPaper>
         </Pressable>
-        <NbIcon name={deptNbIcon(`SCN-${dept}-00001`)} size={22} />
+        {/* 부서 표지의 아이콘 액자(v42 §5) — 참조는 54px·-3°. 머리말 한 줄에 들도록 40px로 줄였고,
+            모양은 서가 내 부서 카드의 액자(BinderShelf GoalDeptCard)와 같다. */}
+        <View
+          testID="dept-binder-icon-frame"
+          style={{
+            width: 40, height: 40, borderWidth: 1.6, borderColor: nb.ink, backgroundColor: nb.paper,
+            alignItems: 'center', justifyContent: 'center', transform: [{ rotate: '-3deg' }],
+          }}
+        >
+          <NbIcon name={deptNbIcon(`SCN-${dept}-00001`)} size={24} />
+        </View>
         <Text testID="dept-binder-title" numberOfLines={1} style={[nbText.hand(22), { flex: 1 }]}>
           {t(`dept.${dept}`)}
         </Text>

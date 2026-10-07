@@ -29,6 +29,14 @@ function walk(dir: string, skip: (p: string) => boolean = () => false): string[]
  *  같은 `icon:` 키를 쓰지만 푸는 곳이 다르다 — 아래에서 따로 지킨다. */
 const isLexicon = (p: string) => p.includes(`${sep}lexicon${sep}`) || p.endsWith(`${sep}lexicon`);
 
+/** 주제 레지스트리(`nurse/themes.yaml`)의 `icon:`도 NbIcon 이름이다 — 간지 카드의 주제 아이콘
+ *  (journey-binder-v42 §5). 보상 스캔에서 빼고 아래에서 따로 지킨다. */
+const THEMES = join(CONTENT, 'nurse', 'themes.yaml');
+/** 저작 도구와 작업 폴더(`content/tools/`, 그 안의 `wip/`)는 서버가 읽지 않는다. 2026-10-07 작업
+ *  공간을 저장소에 넣으면서(/tmp 소실 대책) 그 안의 YAML이 정본처럼 스캔돼 이 파일이 깨졌다. */
+const isTools = (p: string) => p.includes(`${sep}content${sep}tools${sep}`) || p.endsWith(`${sep}content${sep}tools`);
+const notRewardContent = (p: string) => isLexicon(p) || isTools(p) || p === THEMES;
+
 /** YAML double-quoted scalars may carry escapes, and the generated files do: the Go
  *  yaml encoder writes 🎖 as "\U0001F396". A parser decodes that back to the emoji —
  *  reading the raw text without decoding reports a content bug that does not exist
@@ -71,7 +79,7 @@ function splitNuance(src: string): { nuance: string; rest: string } {
  *  quoted escape for the one above. */
 function rewardIcons(): Map<string, string> {
   const found = new Map<string, string>();
-  for (const f of walk(CONTENT, isLexicon)) {
+  for (const f of walk(CONTENT, notRewardContent)) {
     const src = splitNuance(readFileSync(f, 'utf8')).rest;
     for (const m of src.matchAll(/icon:\s*(?:"([^"]+)"|([^\s"'#][^\s#]*))/g)) {
       const raw = m[1] !== undefined ? decodeYamlEscapes(m[1]) : m[2];
@@ -151,7 +159,7 @@ test('every nuance icon is a name NbIcon actually draws', () => {
   const union = decl.slice(decl.indexOf('NbIconName'), decl.indexOf('export function NbIcon'));
   const known = new Set([...union.matchAll(/'([a-zA-Z0-9-]+)'/g)].map((m) => m[1]));
   const used = new Map<string, string>();
-  for (const f of walk(CONTENT, isLexicon)) {
+  for (const f of walk(CONTENT, (p) => isLexicon(p) || isTools(p))) {
     const { nuance } = splitNuance(readFileSync(f, 'utf8'));
     for (const m of nuance.matchAll(/icon:\s*"?([^\s"',}]+)"?/g)) {
       if (!used.has(m[1])) used.set(m[1], f.split('/').slice(-1)[0]);
@@ -160,4 +168,22 @@ test('every nuance icon is a name NbIcon actually draws', () => {
   expect(used.size).toBeGreaterThan(2); // 뉘앙스를 못 찾으면 통과해 버린다
   const unknown = [...used].filter(([n]) => !known.has(n)).map(([n, f]) => `${n} (first in ${f})`);
   expect(unknown).toEqual([]);
+});
+
+// 간지 카드의 주제 아이콘(2026-10-07). 레지스트리 955개 주제 전부에 하나씩 — 빠진 주제는 아이콘
+// 없이 그려지지만(DeptBinder가 부르지 않는다), 모르는 이름은 별로 조용히 떨어지므로 여기서 막는다.
+test('every theme icon in the registry is a name NbIcon actually draws, and every theme has one', () => {
+  const decl = readFileSync(join(__dirname, '..', 'components', 'nb', 'NbIcon.tsx'), 'utf8');
+  const union = decl.slice(decl.indexOf('NbIconName'), decl.indexOf('export function NbIcon'));
+  const known = new Set([...union.matchAll(/'([a-zA-Z0-9-]+)'/g)].map((m) => m[1]));
+  const src = readFileSync(THEMES, 'utf8');
+  // 항목은 줄 머리의 `- key:`로 시작한다. 그 앞(파일 머리 주석)은 버린다.
+  const entries = src.split(/^- key:/m).slice(1);
+  const themes = entries.map((e) => ({
+    key: /^\s*(\S+)/.exec(e)?.[1] ?? '?',
+    icon: /\n\s+icon:\s*"?([^\s"]+)"?/.exec(e)?.[1],
+  }));
+  expect(themes.length).toBeGreaterThan(900); // 레지스트리를 못 읽으면 통과해 버린다
+  expect(themes.filter((t) => !t.icon).map((t) => t.key)).toEqual([]);
+  expect(themes.filter((t) => t.icon && !known.has(t.icon)).map((t) => `${t.key}: ${t.icon}`)).toEqual([]);
 });

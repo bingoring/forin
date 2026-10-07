@@ -244,6 +244,28 @@ describe('StationTrack', () => {
     expect(tree.root.findAllByType(MilestoneFlag)).toHaveLength(1);
   });
 
+  // v42 §7 '들어오면 현재 위치 근처로 스크롤한다'. 처음 한 번, 애니메이션 없이, 현재 우표가 화면
+  // 위쪽에서 300px 아래쯤 오도록. 현재가 맨 위면 0에 머문다(음수로 당기지 않는다).
+  it('scrolls once on entry to near the current stamp, and stays at the top when the current stamp is first', async () => {
+    const scrollCalls = (tree: ReturnType<typeof mount>) => {
+      const sv = tree.root.findAll((n) => !!n.instance && typeof n.instance.scrollTo === 'function' && !!n.instance.scrollTo.mock)[0];
+      return sv.instance.scrollTo.mock.calls as Array<[{ y: number; animated: boolean }]>;
+    };
+    jest.clearAllMocks(); // 앞선 테스트들의 scrollTo 호출이 공유 모의에 남아 있다(구현은 지우지 않는다)
+    const deep = mount(<StationTrack steps={buildSteps(46, 30, true)} onStepPress={jest.fn()} />);
+    await flush();
+    const deepCalls = scrollCalls(deep);
+    expect(deepCalls).toHaveLength(1);
+    expect(deepCalls[0][0].animated).toBe(false);
+    expect(deepCalls[0][0].y).toBeGreaterThan(1000); // 30번째 우표는 600px 주기 세 바퀴쯤 아래다
+    // 모의 ScrollView의 scrollTo는 인스턴스끼리 공유되는 jest.fn이다 — 다음 마운트 전에 비운다.
+    (deep.root.findAll((n) => !!n.instance?.scrollTo?.mock)[0].instance.scrollTo as jest.Mock).mockClear();
+
+    const top = mount(<StationTrack steps={buildSteps(46, 0, true)} onStepPress={jest.fn()} />);
+    await flush();
+    expect(scrollCalls(top).map((c) => c[0].y)).toEqual([0]);
+  });
+
   it('gives every station a distinct key when two passes share a scenario and a name', async () => {
     const steps = buildSteps(6, 0, false).map((st, i) => ({
       ...st,

@@ -254,6 +254,24 @@ describe('BinderShelf', () => {
     expect(hostNodesWithTestId(tree.root, 'goal-topic-row').length).toBe(3);
   });
 
+  // 주제 15개(스펙 §8 2행): 줄은 12 + 3으로 접히고, 막대는 정확히 15개다 — 빈 막대를 지어내지 않는다.
+  it('주제가 15개면 막대가 15개, 줄은 두 줄이다', () => {
+    const fifteen = Array.from({ length: 15 }, (_, i) => curriculum({ themeKey: `t${i}` }));
+    const tree = mount(<BinderShelf {...baseProps()} goalCurricula={fifteen} />);
+    expect(hostNodesWithTestId(tree.root, 'goal-topic-segment').length).toBe(15);
+    expect(hostNodesWithTestId(tree.root, 'goal-topic-row').length).toBe(2);
+  });
+
+  // V5 '칸 크기가 줄지 않는다'의 반대쪽: 마지막 줄의 막대가 남은 폭을 나눠 가져 넓어지지도 않는다.
+  // 마지막 줄은 보이지 않는 자리채움으로 12칸 폭을 맞춘다 — 자리채움은 막대가 아니다(세지 않는다).
+  it('마지막 줄의 막대도 다른 줄과 같은 폭이다 — 13개면 둘째 줄은 막대 1 + 자리채움 11', () => {
+    const thirteen = Array.from({ length: 13 }, (_, i) => curriculum({ themeKey: `t${i}` }));
+    const tree = mount(<BinderShelf {...baseProps()} goalCurricula={thirteen} />);
+    const rows = hostNodesWithTestId(tree.root, 'goal-topic-row');
+    const inRow = (r: ReactTestInstance, id: string) => r.findAll((n) => typeof n.type === 'string' && n.props?.testID === id).length;
+    expect(rows.map((r) => [inRow(r, 'goal-topic-segment'), inRow(r, 'goal-topic-spacer')])).toEqual([[12, 0], [1, 11]]);
+  });
+
   // 진행 중인 주제가 없으면 '지금 …' 부분을 지어내지 않는다.
   it('진행 중인 주제가 없으면 현재 주제를 지어내지 않는다', () => {
     const tree = mount(<BinderShelf {...baseProps()} goalCurricula={[curriculum({ done: 3, total: 3 })]} />);

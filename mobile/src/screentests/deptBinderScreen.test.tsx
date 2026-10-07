@@ -123,6 +123,19 @@ test('shows the dept name in the header (the viewed dept, not the goal dept) and
 test('renders one theme card per curriculum entry and never mentions the goal dept', async () => {
   const tree = await mount();
   expect(themeCards(tree.root)).toHaveLength(CURRICULA.length);
+  // 보고 있는 부서는 ICU, 목표는 ER(VIEW.goalDept). 간지는 목표를 말하지 않는다 — '내 부서' 표식은
+  // 서가의 내 부서 카드에만 있다(§8 6행). 이름이 말하는 것을 실제로 본다(2026-10-07 전엔 카드 수만 셌다).
+  const shown = tree.root.findAllByType(Text).map((n) => String(n.props.children)).join(' | ');
+  expect(shown).not.toContain('내 부서');
+  expect(shown).not.toContain('응급실');
+});
+
+// v42 §5 부서 표지: 아이콘은 기울인 종이 액자 안에 든다(참조의 54px·-3° 액자, 서가 내 부서 카드와 같은 모양).
+test('the header draws the dept icon inside a tilted paper frame', async () => {
+  const tree = await mount();
+  const frame = tree.root.find((n) => typeof n.type === 'string' && n.props?.testID === 'dept-binder-icon-frame');
+  const icons = frame.findAll((n) => typeof n.type === 'function' && (n.type as { name?: string }).name === 'NbIcon');
+  expect(icons).toHaveLength(1);
 });
 
 test('pressing a theme card pushes the theme route for its exact themeKey', async () => {

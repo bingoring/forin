@@ -164,11 +164,30 @@ describe('DeptBinder', () => {
     }
   });
 
-  // 제약: react-native-svg를 쓰지 않는다 — 이 화면 어디에도 Svg가 없다.
-  it('draws nothing with react-native-svg', () => {
-    const curricula = [curriculum({ themeKey: 'a' })];
+  // 제약: 간지의 그림은 View로 그린다 — react-native-svg는 주제 아이콘(NbIcon) 하나에만 쓴다.
+  // 처음(Task E)에는 Svg 0개였다. 핸드오프 카드의 주제 아이콘을 넣으며 그 하나만 열었다(2026-10-07).
+  it('uses react-native-svg only for topic icons', () => {
+    const curricula = [curriculum({ themeKey: 'a', icon: 'siren' }), curriculum({ themeKey: 'b' })];
     const tree = mount(<DeptBinder curricula={curricula} onPress={jest.fn()} />);
-    expect(tree.root.findAllByType(Svg)).toHaveLength(0);
+    expect(tree.root.findAllByType(Svg)).toHaveLength(1);
+  });
+
+  it('draws the topic icon the registry gives, and none when it gives none', () => {
+    const curricula = [curriculum({ themeKey: 'a', icon: 'siren' }), curriculum({ themeKey: 'b' })];
+    const tree = mount(<DeptBinder curricula={curricula} onPress={jest.fn()} />);
+    const iconsIn = (k: string) => card(tree.root, k).findAll(
+      (n) => typeof n.type === 'function' && (n.type as { name?: string }).name === 'NbIcon');
+    expect(iconsIn('a').map((n) => n.props.name)).toEqual(['siren']);
+    // 이름이 없을 때 NbIcon을 부르면 별(star)로 조용히 떨어진다 — 그래서 아예 부르지 않는다.
+    expect(iconsIn('b')).toHaveLength(0);
+  });
+
+  it('rings the in-progress card in amber, and only that card', () => {
+    const curricula = [curriculum({ themeKey: 'a', resume: true }), curriculum({ themeKey: 'b' })];
+    const tree = mount(<DeptBinder curricula={curricula} onPress={jest.fn()} />);
+    const rings = tree.root.findAll((n) => typeof n.type === 'string' && n.props?.testID === 'theme-card-ring');
+    expect(rings).toHaveLength(1);
+    expect(card(tree.root, 'a').findAll((n) => n.props?.testID === 'theme-card-ring').length).toBeGreaterThan(0);
   });
 
   it('splits topics into 공통 코어/심화 bundles and numbers index tabs across the whole screen, not per bundle', () => {

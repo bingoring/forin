@@ -95,6 +95,7 @@ type CurriculumState struct {
 	Name       string      `json:"name"`
 	Track      string      `json:"track"`
 	Dept       string      `json:"dept"`
+	Icon       string      `json:"icon,omitempty"` // NbIcon name; empty = draw none
 	CollabWith string      `json:"collabWith,omitempty"`
 	Done       int         `json:"done"`
 	Total      int         `json:"total"`

@@ -1,7 +1,8 @@
 // DeptBinder — 일터 탭 부서 간지 (journey-binder-v42 Task E, build-spec-index.md §5·§8).
 // 시각 참조: inputs/design-handoff_v42/reference/forin-notebook-journey2.jsx의
 // `TopicBinder()`(160~234행) — 그 코드는 웹 프로토타입이라 옮겨 적지 않고 모양만 가져온다.
-// `react-native-svg`는 쓰지 않는다(제약) — 전부 `View`의 테두리·배경으로 그린다.
+// 그림은 `View`의 테두리·배경으로 그린다 — `react-native-svg`는 주제 아이콘(NbIcon) 하나에만 쓴다
+// (Task E는 Svg 0개였고, 핸드오프 카드의 주제 아이콘을 넣으며 그 하나만 열었다 — 2026-10-07).
 //
 // ThemeList.tsx가 하던 "부서 코어/부서 심화 두 묶음의 목록" 자리를 대신하지만, 이 파일은
 // 그 목록을 차트 바인더 은유로 다시 그린다: 맨 위에 부서 표지(주제·상황·우표 합계)와
@@ -20,6 +21,7 @@
 import { useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import { NbButton, NbInkStamp, NbPaper, NbTag, nbText } from '@/components/nb/NbUI';
+import { NbIcon } from '@/components/nb/NbIcon';
 import { nb, nbFonts } from '@/theme/nb';
 import { useT } from '@/i18n';
 import type { JourneyCurriculum } from './JourneyMap';
@@ -270,8 +272,20 @@ function BinderCard({ c, index, onPress }: { c: JourneyCurriculum; index: number
         accessibilityLabel={name}
       >
         <NbPaper rot={index % 2 ? 0.4 : -0.4} tape={isResume} style={{ padding: 12 }}>
-          {/* 윗줄: 주제 이름 + 상태 표시. 상태는 세 가지뿐이다(§4) — 잠금은 없다. */}
+          {/* 진행 중인 간지는 주황 테두리로 한 번 더 짚는다(참조의 `0 0 0 2px amber` 링). 테이프만으로는
+              35장 목록에서 눈에 덜 띈다. 종이 기울기를 따르도록 NbPaper 안에 깐다. */}
+          {isResume && (
+            <View
+              testID="theme-card-ring"
+              pointerEvents="none"
+              style={{ position: 'absolute', top: -1, left: -1, right: -1, bottom: -1, borderWidth: 2, borderColor: TAB_AMBER }}
+            />
+          )}
+          {/* 윗줄: 주제 아이콘 + 주제 이름 + 상태 표시. 상태는 세 가지뿐이다(§4) — 잠금은 없다. */}
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+            {/* 아이콘이 없으면 부르지 않는다 — 모르는 이름의 NbIcon은 별로 조용히 떨어진다.
+                이름이 NbIcon에 있는지는 theme/contentIcons.test.ts가 레지스트리째 지킨다. */}
+            {!!c.icon && <NbIcon name={c.icon} size={19} />}
             <Text numberOfLines={2} style={[nbText.hand(isResume ? 18 : 16.5), { flex: 1, minWidth: 0 }]}>
               {name}
             </Text>

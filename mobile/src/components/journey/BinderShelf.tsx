@@ -154,10 +154,15 @@ function GoalDeptCard({ goalDept, goalCurricula, inferred, onOpen, onChangeGoal 
         </NbButton>
       </View>
 
-      {/* 주제 막대 — 주제 하나당 하나, 한 줄 12개씩 접는다. */}
+      {/* 주제 막대 — 주제 하나당 하나, 한 줄 12개씩 접는다. 막대는 flex:1이라 마지막 줄이 덜 차면
+          남은 폭을 나눠 가져 넓어진다(13개면 둘째 줄 막대 하나가 한 줄을 다 먹는다, V5). 그래서
+          마지막 줄을 보이지 않는 자리채움으로 12칸 폭까지 맞춘다 — 자리채움은 막대가 아니다. */}
       {rows.map((row, ri) => (
         <View key={ri} testID="goal-topic-row" style={{ flexDirection: 'row', gap: 4, marginTop: 10 }}>
           {row.map((c, i) => <TopicSegment key={c.themeKey || `${ri}-${i}`} c={c} index={ri * SEG_PER_ROW + i} />)}
+          {Array.from({ length: SEG_PER_ROW - row.length }, (_, k) => (
+            <View key={`pad-${k}`} testID="goal-topic-spacer" style={{ flex: 1, height: 7 }} />
+          ))}
         </View>
       ))}
 

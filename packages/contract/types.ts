@@ -3112,6 +3112,8 @@ export interface components {
             collabWith?: string;
             dept?: string;
             done?: number;
+            /** @description NbIcon name; empty = draw none */
+            icon?: string;
             name?: string;
             resume?: boolean;
             /** @description passed | here | open */

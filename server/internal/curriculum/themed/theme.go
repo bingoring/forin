@@ -19,6 +19,9 @@ type Theme struct {
 	Dept    string `yaml:"dept"`  // depth/collab: dept code; core: ""
 	Order   int    `yaml:"order"`
 	Exam    *bool  `yaml:"exam"` // pointer so "omitted" (nil) can default to true
+	// Icon is the 간지 card's NbIcon name (journey-binder-v42 §5). The allowed set is
+	// the mobile NbIcon union, kept by mobile's contentIcons test — not checked here.
+	Icon string `yaml:"icon"`
 }
 
 // ExamOn reports the exam flag with the default-true rule applied: a theme ends
