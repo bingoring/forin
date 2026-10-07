@@ -19,6 +19,8 @@ verify_lesson_content.py 를 부서 단위로 돌린다.
           - {en: ..., ko: ..., chunks: [...], words: [...], goal: 1}
         nuance:                      # v45 (build-spec §11-3)
           - {kind: slider, words: [...], ...}
+        order:                       # v46 순서 배열 카드 (lesson-fidelity-v46 §D, 선택)
+          {ko: ..., why: ..., lines: [{en: ..., icon: ...}, ...]}
 
 정본(lexicon/<부서>.yaml)에 이 주제가 이미 있으면 보강 패스로 보고 V16도 검사한다.
 같은 폴더에 changes-<주제>.yaml 이 있으면 거기 적힌 v44 변경만 허용한다(결정 11).
@@ -51,6 +53,8 @@ def main(dept: str, path: str) -> int:
         s['sentences'] = sit['sentences']
         if sit.get('nuance'):
             s['nuance'] = sit['nuance']
+        if sit.get('order') is not None:
+            s['order'] = sit['order']     # v46 순서 배열 카드 — 얹지 않으면 V19가 영영 보지 못한다
         merged.append(s)
 
     missing = sorted(set(seeds_for_theme) - seen)

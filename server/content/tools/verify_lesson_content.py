@@ -39,6 +39,19 @@ v45 (build-spec-index.md §11 — Go 쪽 content/nuance.go 와 같은 규칙):
         문장의 en·ko·chunks·words·goal
     V17 (--baseline) 문장 ko를 고쳤으면 그 문장을 예문으로 쓰는 단어의 exKo도 옛 번역으로 남지 않았다(결정 13)
 
+v46 (학습 화면 핸드오프 1:1 — `lesson-fidelity-v46/build-spec-index.md` §D, Go 쪽 content/lessonv46.go 와
+같은 규칙). 전부 **선택 필드**라 없으면 묻지 않고, 있으면 모양을 본다:
+
+    V18 문장의 tag(≤10자)·icon(NbIcon 이름)·why·decoy가 비어 있지 않다. decoy는 그 문장의 청크가
+        아니고 en 안에도 없다. distractorsKo는 2개, 서로 다르고 문장 ko와 다르다. blank의 answer는
+        en에 낱말 경계로 정확히 한 번 나오고, options는 4개·서로 다르고·answer를 포함하며 저마다 icon이 있다
+    V19 상황의 order(순서 배열 카드)는 ko·why가 있고 줄이 정확히 4개, 줄마다 en·icon이 있고 en이
+        겹치지 않는다. tag·icon과 줄의 ko·note는 있으면 비어 있지 않다. 문장 없는 상황에 order만 있으면 오류
+    V14 (더함) context의 word와 ko는 함께 있거나 함께 없다. swap의 ko는 있으면 비어 있지 않다
+
+Go는 `omitempty` 문자열이라 `why: ""`와 키 없음을 구별하지 못해 공백만 있는 값만 잡는다. 이 검사기는
+키를 보므로 빈 문자열도 잡는다 — 저작 단계에서 더 엄격한 쪽이 이 도구다.
+
 v45 필드가 하나도 없는 은행은 v44 콘텐츠로 보고 V12~V14의 최솟값을 묻지 않는다(보강 전의
 ER·ICU·OR). 한 단어라도 v45 필드가 있으면 그 은행 전체가 v45다.
 
@@ -874,10 +887,26 @@ def assembles_to(chunks: list[str], en: str) -> bool:
 # ---------------------------------------------------------------------------
 
 V45_WORD_FIELDS = ("exKo", "cue", "tag", "distractorsEn", "distractorsKo", "chips", "decoyChips")
-# NbIcon 이 그리는 이름 — mobile/src/components/nb/NbIcon.tsx 와 같다(지시서의 목록과도).
-NB_ICONS = set("""baby bandage bell board bulb calendar chartup check chevronDown chevronLeft chevronRight
+# NbIcon 이 그리는 이름. 정본은 mobile/src/components/nb/NbIcon.tsx 의 `NbIconName` 유니온이고, 그 파일이
+# 있으면 거기서 읽는다(모바일 contentIcons 테스트와 같은 방식) — 손으로 적은 목록은 새 아이콘(faceWorried,
+# 결정 9)이 그려지는 순간 어긋난다. 아래 목록은 저장소 밖에서 이 도구만 돌릴 때의 대체값이다.
+NB_ICON_FILE = CONTENT_DIR.parent.parent / "mobile" / "src" / "components" / "nb" / "NbIcon.tsx"
+_NB_ICONS_FALLBACK = set("""baby bandage bell board bulb calendar chartup check chevronDown chevronLeft chevronRight
 chevronUp coffee compass cross faceAngry gear handshake2 home hospital lab lock magnify me mic monitor pencil pill
 plane pushpin scalpel shield siren speaker speech star stetho trophy""".split())
+
+
+def _load_nb_icons() -> set[str]:
+    try:
+        src = NB_ICON_FILE.read_text(encoding="utf-8")
+        union = src[src.index("NbIconName"):src.index("export function NbIcon")]
+        found = set(re.findall(r"'([a-zA-Z0-9-]+)'", union))
+        return found if len(found) > 20 else _NB_ICONS_FALLBACK
+    except (OSError, ValueError):
+        return _NB_ICONS_FALLBACK
+
+
+NB_ICONS = _load_nb_icons()
 MAX_FRAGS_PER_WORD, MAX_FRAGS = 4, 6
 
 
@@ -978,7 +1007,7 @@ def check_nuance(items: list, used: set[str], required: bool) -> list[tuple[str,
             out.append(("V14", f"nuance[{i}]: unknown kind {kind!r} (allowed: {sorted(NUANCE_STEP)})"))
             continue
         steps[NUANCE_STEP[kind]] += 1
-        for k in ("why", "cue", "example", "exKo", "word", "who", "icon", "answer", "scale", "decoys", "before", "options"):
+        for k in ("why", "cue", "example", "exKo", "word", "who", "icon", "answer", "scale", "decoys", "before", "options", "ko"):
             out += [(r, f"nuance[{i}] ({kind}): {d}") for r, d in _not_str(n.get(k), k)]
         for p in n.get("pairs") or []:
             out += [(r, f"nuance[{i}] ({kind}): {d}") for r, d in _not_str(p, "pairs")]
@@ -989,6 +1018,15 @@ def check_nuance(items: list, used: set[str], required: bool) -> list[tuple[str,
                 out.append(("V14", f"nuance[{i}] ({kind}): scene icon {sc.get('icon')!r} is not an NbIcon name"))
         if n.get("icon") and n.get("icon") not in NB_ICONS:
             out.append(("V14", f"nuance[{i}] ({kind}): icon {n.get('icon')!r} is not an NbIcon name"))
+        # v46 — C5 머리(대상 단어 + “한국어 뜻” 메모)와 C6 한국어 줄. Go validateNuanceV46 와 같다.
+        if kind == "context":
+            has_word, has_ko = _filled(n.get("word")), _filled(n.get("ko"))
+            if "ko" in n and not has_ko:
+                out.append(("V14", f"nuance[{i}] context: ko is blank"))
+            if has_word != has_ko:
+                out.append(("V14", f"nuance[{i}] context: needs word and ko together — the C5 title draws the word, its memo the Korean"))
+        elif kind == "swap" and "ko" in n and not _filled(n.get("ko")):
+            out.append(("V14", f"nuance[{i}] swap: ko is blank"))
         words = n.get("words") or []
         if not words:
             out.append(("V15", f"nuance[{i}] ({kind}): names no words"))
@@ -1060,6 +1098,179 @@ def check_nuance(items: list, used: set[str], required: bool) -> list[tuple[str,
             out.append(("V14", "no STEP 1 nuance (slider|pair) — a v45 situation needs at least one"))
         if steps[2] == 0:
             out.append(("V14", "no STEP 2 nuance (reel|context|swap) — a v45 situation needs at least one"))
+    return out
+
+
+# ---------------------------------------------------------------------------
+# v46 — 문장 낱장(tag·icon·why·decoy·distractorsKo·blank)과 순서 배열 카드(order).
+# Go content/lessonv46.go 와 같은 규칙. 전부 선택 필드 — 없으면 묻지 않는다.
+# ---------------------------------------------------------------------------
+
+MAX_TAG_CHARS = 10   # Go MaxTagRunes — 머리 태그는 유형 라벨·"n / N"과 한 줄(줄바꿈 없음)
+ORDER_LINES = 4      # Go OrderLines
+BLANK_OPTIONS = 4    # Go BlankOptions
+V46_SENTENCE_KEYS = ("tag", "icon", "why", "decoy", "distractorsKo", "blank")
+
+
+def _filled(v) -> bool:
+    return isinstance(v, str) and v.strip() != ""
+
+
+def _is_word_char(ch: str) -> bool:
+    return ch.isalpha() or ch.isdigit() or ch == "'"
+
+
+def count_word_occurrences(text: str, part: str) -> int:
+    """`part`가 `text`에 낱말 경계로 몇 번 나오는가 — 앞뒤에 글자·숫자·아포스트로피가 붙지 않은 자리만.
+    "petit"은 "repetitive"에 없고, "it"은 "it feels it."에 두 번. 대소문자 구별. Go CountWordOccurrences 와 같다."""
+    if not part:
+        return 0
+    n, i = 0, 0
+    while True:
+        at = text.find(part, i)
+        if at < 0:
+            return n
+        end = at + len(part)
+        if (at == 0 or not _is_word_char(text[at - 1])) and (end == len(text) or not _is_word_char(text[end])):
+            n += 1
+        i = at + 1
+
+
+def _tag_problem(tag) -> str | None:
+    if not _filled(tag):
+        return "tag is blank"
+    if len(tag.strip()) > MAX_TAG_CHARS:
+        return f"tag {tag!r} has {len(tag.strip())} characters, want <= {MAX_TAG_CHARS}"
+    return None
+
+
+def _icon_problem(field: str, icon) -> str | None:
+    if not _filled(icon):
+        return f"{field} is blank"
+    if icon not in NB_ICONS:
+        return f"{field} {icon!r} is not an NbIcon name"
+    return None
+
+
+def check_sentence_v46(i: int, sent: dict) -> list[tuple[str, str]]:
+    """V11(값 타입)·V18 — 문장 하나의 v46 필드. 키가 있는 것만 본다."""
+    out: list[tuple[str, str]] = []
+    at = f"sentence[{i}]"
+    for k in ("tag", "icon", "why", "decoy", "distractorsKo"):
+        out += [(r, f"{at}: {d}") for r, d in _not_str(sent.get(k), k)]
+    blank = sent.get("blank")
+    if isinstance(blank, dict):
+        out += [(r, f"{at}: {d}") for r, d in _not_str(blank.get("answer"), "blank.answer")]
+        for j, o in enumerate(blank.get("options") or []):
+            if isinstance(o, dict):
+                for k in ("en", "icon"):
+                    out += [(r, f"{at}: {d}") for r, d in _not_str(o.get(k), f"blank.options[{j}].{k}")]
+    if any(r == "V11" for r, _ in out):
+        return out  # 불리언·숫자가 섞인 자리에서 아래 문자열 비교는 엉뚱한 말만 한다
+
+    if "tag" in sent and (p := _tag_problem(sent.get("tag"))):
+        out.append(("V18", f"{at}: {p}"))
+    if "icon" in sent and (p := _icon_problem("icon", sent.get("icon"))):
+        out.append(("V18", f"{at}: {p}"))
+    if "why" in sent and not _filled(sent.get("why")):
+        out.append(("V18", f"{at}: why is blank"))
+    en, ko, chunks = str(sent.get("en") or ""), str(sent.get("ko") or ""), sent.get("chunks") or []
+    if "decoy" in sent:
+        d = _norm(sent.get("decoy") or "")
+        if not d:
+            out.append(("V18", f"{at}: decoy is blank"))
+        elif count_word_occurrences(_norm(en), d) > 0:
+            out.append(("V18", f"{at}: decoy {sent.get('decoy')!r} is part of the sentence — it would build a right answer"))
+        elif any(_norm(c) == d for c in chunks):
+            out.append(("V18", f"{at}: decoy {sent.get('decoy')!r} is one of the sentence's own chunks"))
+    if "distractorsKo" in sent:
+        opts = sent.get("distractorsKo")
+        opts = opts if isinstance(opts, list) else []
+        if len(opts) != 2:
+            out.append(("V18", f"{at}: distractorsKo has {len(opts)}, want 2"))
+        seen = {_norm(ko)}
+        for o in opts:
+            n = _norm(o)
+            if not n:
+                out.append(("V18", f"{at}: distractorsKo has a blank option"))
+            elif n == _norm(ko):
+                out.append(("V18", f"{at}: distractorsKo option {o!r} is the sentence's own ko"))
+            elif n in seen:
+                out.append(("V18", f"{at}: distractorsKo option {o!r} repeats"))
+            seen.add(n)
+    if "blank" in sent:
+        if not isinstance(blank, dict):
+            out.append(("V18", f"{at}: blank must be a mapping {{answer, options}}, got {blank!r}"))
+            return out
+        answer = blank.get("answer") or ""
+        c = count_word_occurrences(en, answer)
+        if not _filled(answer):
+            out.append(("V18", f"{at}: blank answer is empty"))
+        elif c == 0:
+            out.append(("V18", f"{at}: blank answer {answer!r} is not a whole word or phrase of en {en!r}"))
+        elif c > 1:
+            out.append(("V18", f"{at}: blank answer {answer!r} occurs {c} times in en — the blank would be ambiguous"))
+        opts = blank.get("options") or []
+        if len(opts) != BLANK_OPTIONS:
+            out.append(("V18", f"{at}: blank has {len(opts)} options, want {BLANK_OPTIONS}"))
+        seen, offered = set(), False
+        for o in opts:
+            o = o if isinstance(o, dict) else {}
+            n = _norm(o.get("en") or "")
+            if not n:
+                out.append(("V18", f"{at}: blank has an empty option"))
+                continue
+            if n in seen:
+                out.append(("V18", f"{at}: blank option {o.get('en')!r} repeats"))
+            seen.add(n)
+            offered = offered or o.get("en") == answer
+            if p := _icon_problem(f"blank option {o.get('en')!r} icon", o.get("icon")):
+                out.append(("V18", f"{at}: {p}"))
+        if not offered:
+            out.append(("V18", f"{at}: blank answer {answer!r} is not one of the options"))
+    return out
+
+
+def check_order(order) -> list[tuple[str, str]]:
+    """V11·V19 — 상황의 순서 배열 카드. 없으면(None) 묻지 않는다 — 화면이 그 장을 건너뛴다."""
+    if order is None:
+        return []
+    if not isinstance(order, dict):
+        return [("V19", f"order must be a mapping {{ko, why, lines}}, got {order!r}")]
+    out: list[tuple[str, str]] = []
+    for k in ("tag", "icon", "ko", "why"):
+        out += [(r, f"order: {d}") for r, d in _not_str(order.get(k), k)]
+    lines = order.get("lines") or []
+    for j, l in enumerate(lines):
+        if isinstance(l, dict):
+            for k in ("en", "icon", "ko", "note"):
+                out += [(r, f"order: {d}") for r, d in _not_str(l.get(k), f"lines[{j}].{k}")]
+    if out:
+        return out
+    if not _filled(order.get("ko")):
+        out.append(("V19", "order: ko is empty — the card's header line"))
+    if not _filled(order.get("why")):
+        out.append(("V19", "order: why is empty — the note after the answer"))
+    if "tag" in order and (p := _tag_problem(order.get("tag"))):
+        out.append(("V19", f"order: {p}"))
+    if "icon" in order and (p := _icon_problem("icon", order.get("icon"))):
+        out.append(("V19", f"order: {p}"))
+    if len(lines) != ORDER_LINES:
+        out.append(("V19", f"order: has {len(lines)} lines, want {ORDER_LINES}"))
+    seen = set()
+    for j, l in enumerate(lines):
+        l = l if isinstance(l, dict) else {}
+        if not _filled(l.get("en")):
+            out.append(("V19", f"order: line {j} has no en"))
+        elif _norm(l["en"]) in seen:
+            out.append(("V19", f"order: line {j} {l['en']!r} repeats another line"))
+        else:
+            seen.add(_norm(l["en"]))
+        if p := _icon_problem(f"line {j} icon", l.get("icon")):
+            out.append(("V19", f"order: {p}"))
+        for k in ("ko", "note"):
+            if k in l and not _filled(l.get(k)):
+                out.append(("V19", f"order: line {j} {k} is blank"))
     return out
 
 
@@ -1227,6 +1438,9 @@ def verify_dept(
             if seed.get("nuance"):
                 violations.append(Violation(dept, theme, seed.get("title", "?"), "V15",
                                             "has nuance but no sentences to anchor it"))
+            if seed.get("order") is not None:
+                violations.append(Violation(dept, theme, seed.get("title", "?"), "V19",
+                                            "has an order card but no sentences — there is no STEP 2 to hold it"))
             continue  # 아직 2차가 안 돌았다 — 이 시드는 검사 대상이 아니다 (부분 실행 정상)
         n_with_sentences += 1
 
@@ -1297,6 +1511,10 @@ def verify_dept(
                     )
                 )
 
+            # V18 — v46 낱장 필드(있을 때만)
+            for rule, detail in check_sentence_v46(i, sent):
+                violations.append(Violation(dept, theme, title, rule, detail))
+
             # V6
             if not isinstance(goal, int) or not (1 <= goal <= len(goals)):
                 violations.append(
@@ -1322,6 +1540,10 @@ def verify_dept(
         # V14·V15 — 뉘앙스. 이 상황 문장이 쓰는 단어 id를 기준으로 본다.
         sentence_word_ids = {w for sent in sentences for w in (sent.get("words") or [])}
         for rule, detail in check_nuance(seed.get("nuance") or [], sentence_word_ids, theme in v45_themes):
+            violations.append(Violation(dept, theme, title, rule, detail))
+
+        # V19 — 순서 배열 카드(있을 때만)
+        for rule, detail in check_order(seed.get("order")):
             violations.append(Violation(dept, theme, title, rule, detail))
 
         # V4
@@ -1908,6 +2130,96 @@ def run_selftest() -> int:
 
     # v44 은행에 뉘앙스가 없는 것은 정상이다 — 보강 전의 ER·ICU·OR.
     cases.append(("v44 bank, no nuance (no violations expected)", _LEX_BASE, v45_seed(None), "", False))
+
+    # ── v46 (V18·V19, V14 더함) — 핸드오프 SENTS 모양을 GOOD 대조군 둘째 문장("Let me check your
+    # wristband.")에 얹는다. 은행은 v44 그대로 — v46 필드는 은행 판과 무관하게 선택이다.
+    def v46_sentence() -> dict:
+        return {
+            "tag": "신원 확인", "icon": "bandage", "why": "Let me…로 시작하면 지시가 아니라 안내로 들려요.",
+            "decoy": "for the doctor", "distractorsKo": ["지금 약을 드릴게요", "차트에 기록했어요"],
+            "blank": {"answer": "wristband", "options": [
+                {"en": "wristband", "icon": "bandage"}, {"en": "chart", "icon": "board"},
+                {"en": "pill", "icon": "pill"}, {"en": "monitor", "icon": "monitor"}]},
+        }
+
+    def v46_order() -> dict:
+        return {"tag": "대화 흐름", "icon": "compass", "ko": "신원 확인 4문장 순서", "why": "공감이 먼저예요.",
+                "lines": [{"en": "I know it feels repetitive.", "icon": "faceAngry", "ko": "반복처럼 느껴지시죠", "note": "공감"},
+                          {"en": "It's for your safety.", "icon": "shield", "note": "이유"},
+                          {"en": "Can you tell me your name?", "icon": "board", "note": "확인"},
+                          {"en": "Thank you.", "icon": "star", "note": "감사"}]}
+
+    def v46_seed(sent_mut=None, order="good", nuance=None, sentences=True) -> str:
+        seeds = parse_topics(_seed_with_sentences(_good_sentences()))
+        sn = seeds[0]["sentences"][1]
+        sn.update(v46_sentence())
+        if sent_mut:
+            sent_mut(sn)
+        if order is not None:
+            seeds[0]["order"] = v46_order() if order == "good" else order
+        if nuance is not None:
+            seeds[0]["nuance"] = nuance
+        if not sentences:
+            seeds[0].pop("sentences")
+        return yaml.safe_dump(seeds, allow_unicode=True)
+
+    def order_with(mut) -> dict:
+        o = v46_order()
+        mut(o)
+        return o
+
+    cases.append(("GOOD v46 (no violations expected)", _LEX_BASE, v46_seed(), "", False))
+    cases.append(("v46 fields absent (no violations expected)", _LEX_BASE, v46_seed(lambda s: [s.pop(k) for k in V46_SENTENCE_KEYS], order=None), "", False))
+    for name, mut in (
+        ("empty tag", lambda s: s.update(tag="")),
+        ("tag longer than 10 characters", lambda s: s.update(tag="환자에게 반복 신원확인 이유 설명")),
+        ("icon NbIcon does not draw", lambda s: s.update(icon="round")),
+        ("empty icon", lambda s: s.update(icon="")),
+        ("empty why", lambda s: s.update(why=" ")),
+        ("decoy is one of the chunks", lambda s: s.update(decoy="Check Your")),
+        ("decoy is inside the en", lambda s: s.update(decoy="me check")),
+        ("empty decoy", lambda s: s.update(decoy="")),
+        ("one ko distractor", lambda s: s.update(distractorsKo=["지금 약을 드릴게요"])),
+        ("ko distractor is the ko", lambda s: s.update(distractorsKo=[s["ko"], "차트에 기록했어요"])),
+        ("ko distractors repeat", lambda s: s.update(distractorsKo=["같은 말", "같은 말"])),
+        ("blank answer not in en", lambda s: s["blank"].update(answer="bandage")),
+        ("blank answer mid-word", lambda s: (s["blank"].update(answer="wrist"), s["blank"]["options"][0].update(en="wrist"))),
+        ("blank answer twice in en", lambda s: s.update(en="Let me check your wristband, your wristband.",
+                                                        chunks=["Let me", "check your", "wristband", ", your wristband", "."])),
+        ("blank with three options", lambda s: s["blank"]["options"].pop()),
+        ("blank answer not offered", lambda s: s["blank"]["options"][0].update(en="band")),
+        ("blank options repeat", lambda s: s["blank"]["options"][2].update(en="Chart")),
+        ("blank option icon NbIcon does not draw", lambda s: s["blank"]["options"][3].update(icon="round")),
+        ("blank option without icon", lambda s: s["blank"]["options"][3].pop("icon")),
+        ("blank is not a mapping", lambda s: s.update(blank=["wristband"])),
+    ):
+        cases.append((f"V18 ({name})", _LEX_BASE, v46_seed(mut), "V18", False))
+    cases.append(("V11 (bare on as a sentence tag reads as a boolean)", _LEX_BASE, v46_seed(lambda s: s.update(tag=True)), "V11", False))
+    for name, mut in (
+        ("three lines", lambda o: o["lines"].pop()),
+        ("five lines", lambda o: o["lines"].append({"en": "Bye.", "icon": "star"})),
+        ("no ko", lambda o: o.pop("ko")),
+        ("no why", lambda o: o.update(why="")),
+        ("tag longer than 10 characters", lambda o: o.update(tag="불만 환자 응대의 대화 흐름 순서")),
+        ("icon NbIcon does not draw", lambda o: o.update(icon="round")),
+        ("line without en", lambda o: o["lines"][2].update(en=" ")),
+        ("line without icon", lambda o: o["lines"][1].pop("icon")),
+        ("line icon NbIcon does not draw", lambda o: o["lines"][1].update(icon="round")),
+        ("line note blank", lambda o: o["lines"][1].update(note="")),
+        ("line ko blank", lambda o: o["lines"][0].update(ko=" ")),
+        ("lines repeat", lambda o: o["lines"][3].update(en="it's for your  safety.")),
+    ):
+        cases.append((f"V19 ({name})", _LEX_BASE, v46_seed(order=order_with(mut)), "V19", False))
+    cases.append(("V19 (order is not a mapping)", _LEX_BASE, v46_seed(order=["a", "b", "c", "d"]), "V19", False))
+    cases.append(("V19 (an order card with no sentences)", _LEX_BASE, v46_seed(sentences=False), "V19", False))
+    ctx = {"kind": "context", "words": ["w-name"], "why": "w", "word": "name", "ko": "이름", "scenes": [
+        {"who": "a", "en": "1", "ok": True}, {"who": "b", "en": "2", "ok": False, "fix": "f"}, {"who": "c", "en": "3", "ok": True}]}
+    swap = {"kind": "swap", "words": ["w-check"], "before": ["a ", "x", " b"], "options": ["y", "z"], "answer": "y",
+            "notes": {"y": "1", "z": "2"}, "why": "w", "ko": "어젯밤 어머니가 돌아가셨어요"}
+    cases.append(("GOOD v46 nuance — context word+ko, swap ko", _LEX_BASE, v46_seed(nuance=[ctx, swap]), "", False))
+    cases.append(("V14 (context ko without its word)", _LEX_BASE, v46_seed(nuance=[{**ctx, "word": ""}, swap]), "V14", False))
+    cases.append(("V14 (context word without its ko)", _LEX_BASE, v46_seed(nuance=[{k: v for k, v in ctx.items() if k != "ko"}, swap]), "V14", False))
+    cases.append(("V14 (swap ko blank)", _LEX_BASE, v46_seed(nuance=[ctx, {**swap, "ko": " "}]), "V14", False))
 
     ok = True
     print("=== verify_lesson_content.py selftest ===")
