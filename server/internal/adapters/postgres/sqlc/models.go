@@ -288,22 +288,23 @@ type ReviewSchedule struct {
 }
 
 type Scenario struct {
-	ID         string `json:"id"`
-	Profession string `json:"profession"`
-	EventID    string `json:"event_id"`
-	Title      string `json:"title"`
-	Tagline    string `json:"tagline"`
-	Goals      []byte `json:"goals"`
-	Guardrails []byte `json:"guardrails"`
-	KeyPhrases []byte `json:"key_phrases"`
-	Steps      []byte `json:"steps"`
-	Persona    []byte `json:"persona"`
-	Briefing   []byte `json:"briefing"`
-	Acuity     string `json:"acuity"`
-	Theme      string `json:"theme"`
-	CollabWith string `json:"collab_with"`
-	Sentences  []byte `json:"sentences"`
-	Nuance     []byte `json:"nuance"`
+	ID          string `json:"id"`
+	Profession  string `json:"profession"`
+	EventID     string `json:"event_id"`
+	Title       string `json:"title"`
+	Tagline     string `json:"tagline"`
+	Goals       []byte `json:"goals"`
+	Guardrails  []byte `json:"guardrails"`
+	KeyPhrases  []byte `json:"key_phrases"`
+	Steps       []byte `json:"steps"`
+	Persona     []byte `json:"persona"`
+	Briefing    []byte `json:"briefing"`
+	Acuity      string `json:"acuity"`
+	Theme       string `json:"theme"`
+	CollabWith  string `json:"collab_with"`
+	Sentences   []byte `json:"sentences"`
+	Nuance      []byte `json:"nuance"`
+	LessonOrder []byte `json:"lesson_order"`
 }
 
 type ScenarioAttempt struct {

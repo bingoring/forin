@@ -2899,6 +2899,10 @@ export interface components {
         };
         /** @enum {string} */
         "github_com_bingoring_forin_server_internal_domain_colleague.Relation": "peer" | "mentor" | "mentee";
+        "github_com_bingoring_forin_server_internal_domain_content.BlankOption": {
+            en?: string;
+            icon?: string;
+        };
         "github_com_bingoring_forin_server_internal_domain_content.Briefing": {
             accent?: string;
             /** @description SITUATION paragraph */
@@ -2953,6 +2957,12 @@ export interface components {
             feels?: string[];
             icon?: string;
             kind?: string;
+            /**
+             * @description Ko (v46) is the Korean the C5/C6 screens draw: for context, the meaning of Word
+             *     (the memo “악화되다”, set together with Word); for swap, the swapped sentence's
+             *     meaning (the line under the card — the screen adds "— 라고 전해야 해요").
+             */
+            ko?: string;
             /** @description one per option */
             notes?: {
                 [key: string]: string;
@@ -2988,6 +2998,12 @@ export interface components {
             swap?: boolean;
             tone?: string;
             who?: string;
+        };
+        "github_com_bingoring_forin_server_internal_domain_content.OrderLine": {
+            en?: string;
+            icon?: string;
+            ko?: string;
+            note?: string;
         };
         "github_com_bingoring_forin_server_internal_domain_content.Persona": {
             /** @description e.g. "60s" */
@@ -3039,6 +3055,26 @@ export interface components {
             meds?: string[];
             notes?: string;
             vitals?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_content.QuizVital"][];
+        };
+        "github_com_bingoring_forin_server_internal_domain_content.SentenceBlank": {
+            answer?: string;
+            options?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_content.BlankOption"][];
+        };
+        /**
+         * @description Order is the situation's order card (v46, 결정 8); absent when not authored, and
+         *     the sentence sheet then skips the order prompt (lesson-fidelity-v46 §R3).
+         */
+        "github_com_bingoring_forin_server_internal_domain_content.SentenceOrder": {
+            /** @description amber circle (fallback: §R3) */
+            icon?: string;
+            /** @description header line, e.g. "불만 환자 응대 4문장 순서" */
+            ko?: string;
+            /** @description exactly 4, in conversation order */
+            lines?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_content.OrderLine"][];
+            /** @description header tag (fallback: §R3) */
+            tag?: string;
+            /** @description the "왜?" note after the answer */
+            why?: string;
         };
         "github_com_bingoring_forin_server_internal_domain_content.Word": {
             /** @description words → fragments; JoinChips(Chips) == En */
@@ -3689,6 +3725,7 @@ export interface components {
              *     into STEP 1 (slider, pair) and STEP 2 (reel, context, swap).
              */
             nuance?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_content.Nuance"][];
+            order?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_content.SentenceOrder"];
             sentences?: components["schemas"]["internal_adapters_http.lessonSentence"][];
             situation?: components["schemas"]["internal_adapters_http.lessonSituation"];
             steps?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_learning.LessonStep"][];
@@ -3696,12 +3733,20 @@ export interface components {
             words?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_content.Word"][];
         };
         "internal_adapters_http.lessonSentence": {
+            blank?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_content.SentenceBlank"];
             /**
              * @description Chunks, joined per JoinChunks' spacing rule, must reproduce En exactly
              *     (checked A4) — that agreement is what makes the STEP 2 chunk-assembly
              *     exercise solvable at all.
              */
             chunks?: string[];
+            /**
+             * @description Decoy is build's one wrong chunk mixed into the pool — close to the sentence's own
+             *     chunks, but none of them and nowhere in En.
+             */
+            decoy?: string;
+            /** @description DistractorsKo are listen's two wrong meanings (Korean), next to Ko as the third. */
+            distractorsKo?: string[];
             en?: string;
             /**
              * @description Goal is the 1-based index into the seed's own `goals` this sentence advances
@@ -3709,12 +3754,18 @@ export interface components {
              *     situation's sentences in this order.
              */
             goal?: number;
+            /** @description NbIcon in the sheet's amber circle */
+            icon?: string;
             ko?: string;
             /**
              * @description Review marks a sentence that uses a word missed in the last STEP 1 run — STEP 2
              *     brings these first ("틀린 단어는 STEP 2 문장에 다시 나와요").
              */
             review?: boolean;
+            /** @description short Korean label, the sheet header's blue tag */
+            tag?: string;
+            /** @description the "왜?" note under the answer (Korean) */
+            why?: string;
             /**
              * @description Words are bank word ids this sentence actually uses (checked A1: every id
              *     must exist in the situation's theme bank; A2: the bank itself must have no

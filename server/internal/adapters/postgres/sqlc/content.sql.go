@@ -158,26 +158,27 @@ func (q *Queries) GetQuiz(ctx context.Context, id string) (Quiz, error) {
 }
 
 const getScenario = `-- name: GetScenario :one
-SELECT id, profession, event_id, title, tagline, persona, goals, guardrails, key_phrases, steps, briefing, acuity, theme, sentences, nuance
+SELECT id, profession, event_id, title, tagline, persona, goals, guardrails, key_phrases, steps, briefing, acuity, theme, sentences, nuance, lesson_order
 FROM scenarios WHERE id = $1
 `
 
 type GetScenarioRow struct {
-	ID         string `json:"id"`
-	Profession string `json:"profession"`
-	EventID    string `json:"event_id"`
-	Title      string `json:"title"`
-	Tagline    string `json:"tagline"`
-	Persona    []byte `json:"persona"`
-	Goals      []byte `json:"goals"`
-	Guardrails []byte `json:"guardrails"`
-	KeyPhrases []byte `json:"key_phrases"`
-	Steps      []byte `json:"steps"`
-	Briefing   []byte `json:"briefing"`
-	Acuity     string `json:"acuity"`
-	Theme      string `json:"theme"`
-	Sentences  []byte `json:"sentences"`
-	Nuance     []byte `json:"nuance"`
+	ID          string `json:"id"`
+	Profession  string `json:"profession"`
+	EventID     string `json:"event_id"`
+	Title       string `json:"title"`
+	Tagline     string `json:"tagline"`
+	Persona     []byte `json:"persona"`
+	Goals       []byte `json:"goals"`
+	Guardrails  []byte `json:"guardrails"`
+	KeyPhrases  []byte `json:"key_phrases"`
+	Steps       []byte `json:"steps"`
+	Briefing    []byte `json:"briefing"`
+	Acuity      string `json:"acuity"`
+	Theme       string `json:"theme"`
+	Sentences   []byte `json:"sentences"`
+	Nuance      []byte `json:"nuance"`
+	LessonOrder []byte `json:"lesson_order"`
 }
 
 func (q *Queries) GetScenario(ctx context.Context, id string) (GetScenarioRow, error) {
@@ -199,6 +200,7 @@ func (q *Queries) GetScenario(ctx context.Context, id string) (GetScenarioRow, e
 		&i.Theme,
 		&i.Sentences,
 		&i.Nuance,
+		&i.LessonOrder,
 	)
 	return i, err
 }
@@ -383,27 +385,28 @@ func (q *Queries) InsertQuiz(ctx context.Context, arg InsertQuizParams) error {
 }
 
 const insertScenario = `-- name: InsertScenario :exec
-INSERT INTO scenarios (id, profession, event_id, title, tagline, persona, goals, guardrails, key_phrases, steps, briefing, acuity, theme, collab_with, sentences, nuance)
-VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16)
+INSERT INTO scenarios (id, profession, event_id, title, tagline, persona, goals, guardrails, key_phrases, steps, briefing, acuity, theme, collab_with, sentences, nuance, lesson_order)
+VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17)
 `
 
 type InsertScenarioParams struct {
-	ID         string `json:"id"`
-	Profession string `json:"profession"`
-	EventID    string `json:"event_id"`
-	Title      string `json:"title"`
-	Tagline    string `json:"tagline"`
-	Persona    []byte `json:"persona"`
-	Goals      []byte `json:"goals"`
-	Guardrails []byte `json:"guardrails"`
-	KeyPhrases []byte `json:"key_phrases"`
-	Steps      []byte `json:"steps"`
-	Briefing   []byte `json:"briefing"`
-	Acuity     string `json:"acuity"`
-	Theme      string `json:"theme"`
-	CollabWith string `json:"collab_with"`
-	Sentences  []byte `json:"sentences"`
-	Nuance     []byte `json:"nuance"`
+	ID          string `json:"id"`
+	Profession  string `json:"profession"`
+	EventID     string `json:"event_id"`
+	Title       string `json:"title"`
+	Tagline     string `json:"tagline"`
+	Persona     []byte `json:"persona"`
+	Goals       []byte `json:"goals"`
+	Guardrails  []byte `json:"guardrails"`
+	KeyPhrases  []byte `json:"key_phrases"`
+	Steps       []byte `json:"steps"`
+	Briefing    []byte `json:"briefing"`
+	Acuity      string `json:"acuity"`
+	Theme       string `json:"theme"`
+	CollabWith  string `json:"collab_with"`
+	Sentences   []byte `json:"sentences"`
+	Nuance      []byte `json:"nuance"`
+	LessonOrder []byte `json:"lesson_order"`
 }
 
 func (q *Queries) InsertScenario(ctx context.Context, arg InsertScenarioParams) error {
@@ -424,6 +427,7 @@ func (q *Queries) InsertScenario(ctx context.Context, arg InsertScenarioParams) 
 		arg.CollabWith,
 		arg.Sentences,
 		arg.Nuance,
+		arg.LessonOrder,
 	)
 	return err
 }

@@ -2,6 +2,7 @@ package http
 
 import (
 	"context"
+	"encoding/json"
 	"errors"
 	"net/http"
 	"net/http/httptest"
@@ -369,5 +370,36 @@ func TestLesson_reelFeelMustBeOneOfTheReelsFeels(t *testing.T) {
 		if rec.Code != c.want || len(h.review.(*fakeLessonReview).cards) != 0 {
 			t.Fatalf("%s %s: status %d, want %d", c.scn, c.body, rec.Code, c.want)
 		}
+	}
+}
+
+// v46 (lesson-fidelity-v46 §D): the sentence sheet's fields and the order card reach the
+// response as written, and a situation without them encodes no `order` key at all.
+func TestLesson_carriesV46Fields(t *testing.T) {
+	h, _ := lessonFixture("A2")
+	sc := h.content.(fakeLessonScenarios).s["SCN-ER-1"]
+	sc.Sentences[0].Tag, sc.Sentences[0].Icon, sc.Sentences[0].Why, sc.Sentences[0].Decoy = "환자 안심", "bandage", "왜", "c d"
+	sc.Sentences[0].Blank = &content.SentenceBlank{Answer: "a", Options: []content.BlankOption{{En: "a", Icon: "star"}}}
+	sc.Order = &content.SentenceOrder{Ko: "순서", Why: "왜", Lines: []content.OrderLine{{En: "x", Icon: "star", Note: "공감"}}}
+	resp, _, _ := h.build(context.Background(), "u1", "SCN-ER-1")
+	raw, _ := json.Marshal(resp)
+	var got struct {
+		Sentences []map[string]any `json:"sentences"`
+		Order     map[string]any   `json:"order"`
+	}
+	if err := json.Unmarshal(raw, &got); err != nil {
+		t.Fatal(err)
+	}
+	s0 := got.Sentences[0]
+	if s0["tag"] != "환자 안심" || s0["icon"] != "bandage" || s0["why"] != "왜" || s0["decoy"] != "c d" || s0["blank"] == nil {
+		t.Fatalf("sentence v46 fields: %v", s0)
+	}
+	if got.Order["ko"] != "순서" || len(got.Order["lines"].([]any)) != 1 {
+		t.Fatalf("order: %v", got.Order)
+	}
+	empty, _, _ := h.build(context.Background(), "u1", "SCN-EMPTY")
+	raw, _ = json.Marshal(empty)
+	if strings.Contains(string(raw), `"order"`) {
+		t.Fatalf("no order card must leave the key out: %s", raw)
 	}
 }

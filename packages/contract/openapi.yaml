@@ -20,6 +20,13 @@ components:
       - RelationPeer
       - RelationMentor
       - RelationMentee
+    github_com_bingoring_forin_server_internal_domain_content.BlankOption:
+      properties:
+        en:
+          type: string
+        icon:
+          type: string
+      type: object
     github_com_bingoring_forin_server_internal_domain_content.Briefing:
       properties:
         accent:
@@ -126,6 +133,12 @@ components:
           type: string
         kind:
           type: string
+        ko:
+          description: |-
+            Ko (v46) is the Korean the C5/C6 screens draw: for context, the meaning of Word
+            (the memo “악화되다”, set together with Word); for swap, the swapped sentence's
+            meaning (the line under the card — the screen adds "— 라고 전해야 해요").
+          type: string
         notes:
           additionalProperties:
             type: string
@@ -194,6 +207,17 @@ components:
         tone:
           type: string
         who:
+          type: string
+      type: object
+    github_com_bingoring_forin_server_internal_domain_content.OrderLine:
+      properties:
+        en:
+          type: string
+        icon:
+          type: string
+        ko:
+          type: string
+        note:
           type: string
       type: object
     github_com_bingoring_forin_server_internal_domain_content.Persona:
@@ -279,6 +303,40 @@ components:
             $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_content.QuizVital'
           type: array
           uniqueItems: false
+      type: object
+    github_com_bingoring_forin_server_internal_domain_content.SentenceBlank:
+      properties:
+        answer:
+          type: string
+        options:
+          items:
+            $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_content.BlankOption'
+          type: array
+          uniqueItems: false
+      type: object
+    github_com_bingoring_forin_server_internal_domain_content.SentenceOrder:
+      description: |-
+        Order is the situation's order card (v46, 결정 8); absent when not authored, and
+        the sentence sheet then skips the order prompt (lesson-fidelity-v46 §R3).
+      properties:
+        icon:
+          description: 'amber circle (fallback: §R3)'
+          type: string
+        ko:
+          description: header line, e.g. "불만 환자 응대 4문장 순서"
+          type: string
+        lines:
+          description: exactly 4, in conversation order
+          items:
+            $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_content.OrderLine'
+          type: array
+          uniqueItems: false
+        tag:
+          description: 'header tag (fallback: §R3)'
+          type: string
+        why:
+          description: the "왜?" note after the answer
+          type: string
       type: object
     github_com_bingoring_forin_server_internal_domain_content.Word:
       properties:
@@ -1388,6 +1446,8 @@ components:
             $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_content.Nuance'
           type: array
           uniqueItems: false
+        order:
+          $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_content.SentenceOrder'
         sentences:
           items:
             $ref: '#/components/schemas/internal_adapters_http.lessonSentence'
@@ -1410,11 +1470,25 @@ components:
       type: object
     internal_adapters_http.lessonSentence:
       properties:
+        blank:
+          $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_content.SentenceBlank'
         chunks:
           description: |-
             Chunks, joined per JoinChunks' spacing rule, must reproduce En exactly
             (checked A4) — that agreement is what makes the STEP 2 chunk-assembly
             exercise solvable at all.
+          items:
+            type: string
+          type: array
+          uniqueItems: false
+        decoy:
+          description: |-
+            Decoy is build's one wrong chunk mixed into the pool — close to the sentence's own
+            chunks, but none of them and nowhere in En.
+          type: string
+        distractorsKo:
+          description: DistractorsKo are listen's two wrong meanings (Korean), next
+            to Ko as the third.
           items:
             type: string
           type: array
@@ -1427,6 +1501,9 @@ components:
             toward (checked A3: 1..len(seed.Goals)). STEP 3's guided pass walks a
             situation's sentences in this order.
           type: integer
+        icon:
+          description: NbIcon in the sheet's amber circle
+          type: string
         ko:
           type: string
         review:
@@ -1434,6 +1511,12 @@ components:
             Review marks a sentence that uses a word missed in the last STEP 1 run — STEP 2
             brings these first ("틀린 단어는 STEP 2 문장에 다시 나와요").
           type: boolean
+        tag:
+          description: short Korean label, the sheet header's blue tag
+          type: string
+        why:
+          description: the "왜?" note under the answer (Korean)
+          type: string
         words:
           description: |-
             Words are bank word ids this sentence actually uses (checked A1: every id

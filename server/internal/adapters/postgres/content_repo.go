@@ -71,11 +71,7 @@ func (r *ContentRepo) Seed(ctx context.Context, b *content.Bundle) error {
 		}
 	}
 	for _, s := range b.Scenarios {
-		if err := q.InsertScenario(ctx, sqlc.InsertScenarioParams{
-			ID: s.ID, Profession: s.Profession, EventID: s.EventID, Title: s.Title, Tagline: s.Tagline,
-			Persona: jsonb(s.Persona), Goals: jsonb(s.Goals), Guardrails: jsonb(s.Guardrails),
-			KeyPhrases: jsonb(s.KeyPhrases), Steps: jsonb(s.Steps), Briefing: jsonb(s.Briefing),
-			Acuity: s.Acuity, Theme: s.Theme, CollabWith: s.CollabWith, Sentences: jsonbList(s.Sentences), Nuance: jsonbList(s.Nuance)}); err != nil {
+		if err := q.InsertScenario(ctx, scenarioParams(s)); err != nil {
 			return err
 		}
 	}
@@ -174,6 +170,7 @@ func (r *ContentRepo) GetScenario(ctx context.Context, id string) (*content.Scen
 	unjson(s.Persona, &out.Persona)
 	unjson(s.Sentences, &out.Sentences)
 	unjson(s.Nuance, &out.Nuance)
+	unjson(s.LessonOrder, &out.Order)
 	unjson(s.Goals, &out.Goals)
 	unjson(s.Guardrails, &out.Guardrails)
 	unjson(s.KeyPhrases, &out.KeyPhrases)
@@ -879,6 +876,26 @@ func jsonbList[T any](xs []T) []byte {
 		xs = []T{}
 	}
 	return jsonb(xs)
+}
+
+// scenarioParams maps a scenario onto its row — the one place Seed and the round-trip
+// test (content_repo_lesson_test.go) agree on which field lands in which column.
+func scenarioParams(s content.Scenario) sqlc.InsertScenarioParams {
+	return sqlc.InsertScenarioParams{
+		ID: s.ID, Profession: s.Profession, EventID: s.EventID, Title: s.Title, Tagline: s.Tagline,
+		Persona: jsonb(s.Persona), Goals: jsonb(s.Goals), Guardrails: jsonb(s.Guardrails),
+		KeyPhrases: jsonb(s.KeyPhrases), Steps: jsonb(s.Steps), Briefing: jsonb(s.Briefing),
+		Acuity: s.Acuity, Theme: s.Theme, CollabWith: s.CollabWith, Sentences: jsonbList(s.Sentences), Nuance: jsonbList(s.Nuance),
+		LessonOrder: jsonbOpt(s.Order)}
+}
+
+// jsonbOpt encodes an optional value so an absent one is SQL NULL, not the JSON `null`:
+// "not authored yet" reads the same in a query (`lesson_order IS NULL`) as it does here.
+func jsonbOpt[T any](v *T) []byte {
+	if v == nil {
+		return nil
+	}
+	return jsonb(v)
 }
 
 func unjson(b []byte, dst any) {

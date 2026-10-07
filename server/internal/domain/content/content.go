@@ -308,6 +308,7 @@ type Sentence struct {
 	// optional — a sentence without them falls back per §R3 — but checked when present
 	// (ValidateSentenceV46, V18). Icon names are NbIcon names; the allowed set is the
 	// mobile NbIcon union, kept by mobile's contentIcons test, not checked here.
+
 	Tag  string `yaml:"tag,omitempty" json:"tag,omitempty"`   // short Korean label, the sheet header's blue tag
 	Icon string `yaml:"icon,omitempty" json:"icon,omitempty"` // NbIcon in the sheet's amber circle
 	Why  string `yaml:"why,omitempty" json:"why,omitempty"`   // the "왜?" note under the answer (Korean)

@@ -50,6 +50,9 @@ type lessonResp struct {
 	// Nuance are the situation's nuance items (v45); the client splits them by kind
 	// into STEP 1 (slider, pair) and STEP 2 (reel, context, swap).
 	Nuance []content.Nuance `json:"nuance"`
+	// Order is the situation's order card (v46, 결정 8); absent when not authored, and
+	// the sentence sheet then skips the order prompt (lesson-fidelity-v46 §R3).
+	Order *content.SentenceOrder `json:"order,omitempty"`
 }
 
 // lessonSentence is a STEP 2 sentence as this learner meets it.
@@ -143,6 +146,7 @@ func (h *lessonHandler) build(ctx context.Context, uid, scenarioID string) (less
 		Words:     words,
 		Sentences: view,
 		Nuance:    nuance,
+		Order:     s.Order,
 	}, true, nil
 }
 
