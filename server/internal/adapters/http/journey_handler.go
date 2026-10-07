@@ -3,6 +3,7 @@ package http
 import (
 	"net/http"
 
+	"github.com/bingoring/forin/server/internal/domain/campus"
 	"github.com/bingoring/forin/server/internal/domain/learning"
 	"github.com/bingoring/forin/server/internal/i18n"
 	"github.com/bingoring/forin/server/internal/platform/httpx"
@@ -75,9 +76,10 @@ func (h *journeyHandler) journey(w http.ResponseWriter, r *http.Request) {
 	}
 
 	view := learning.JourneyView{
-		GoalDept: goal,
-		Inferred: inferred,
-		FreeRoam: summariseFreeRoam(tracks, goal),
+		GoalDept:     goal,
+		GoalBuilding: campus.BuildingOf(goal),
+		Inferred:     inferred,
+		FreeRoam:     summariseFreeRoam(tracks, goal),
 	}
 	for _, tg := range tracks {
 		if tg.Dept == viewDept {

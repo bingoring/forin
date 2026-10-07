@@ -480,6 +480,12 @@ components:
       type: object
     github_com_bingoring_forin_server_internal_domain_learning.FreeRoamEntry:
       properties:
+        building:
+          description: |-
+            Building is the 서가 tab this binder sits under (서가 건물 간지 v45) — the
+            campus table's building name. The server decides it; the client never guesses
+            a building from a department code.
+          type: string
         dept:
           description: 부서 코드 — 아이콘과 라벨을 고르는 키
           type: string
@@ -506,6 +512,10 @@ components:
             $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_learning.FreeRoamEntry'
           type: array
           uniqueItems: false
+        goalBuilding:
+          description: GoalBuilding is the goal department's building — the 서가's first
+            tab (v45).
+          type: string
         goalDept:
           type: string
         inferred:

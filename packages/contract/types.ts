@@ -3124,6 +3124,12 @@ export interface components {
             track?: string;
         };
         "github_com_bingoring_forin_server_internal_domain_learning.FreeRoamEntry": {
+            /**
+             * @description Building is the 서가 tab this binder sits under (서가 건물 간지 v45) — the
+             *     campus table's building name. The server decides it; the client never guesses
+             *     a building from a department code.
+             */
+            building?: string;
             /** @description 부서 코드 — 아이콘과 라벨을 고르는 키 */
             dept?: string;
             /** @description 통과한 정거장 수 = 도장 카운트 */
@@ -3137,6 +3143,8 @@ export interface components {
         "github_com_bingoring_forin_server_internal_domain_learning.GuideLevel": "guided" | "free";
         "github_com_bingoring_forin_server_internal_domain_learning.JourneyView": {
             freeRoam?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_learning.FreeRoamEntry"][];
+            /** @description GoalBuilding is the goal department's building — the 서가's first tab (v45). */
+            goalBuilding?: string;
             goalDept?: string;
             inferred?: boolean;
             track?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_learning.TrackGroup"];

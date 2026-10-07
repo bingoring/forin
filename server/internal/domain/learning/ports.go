@@ -167,15 +167,21 @@ type FreeRoamEntry struct {
 	Dept   string `json:"dept"`   // 부서 코드 — 아이콘과 라벨을 고르는 키
 	Passed int    `json:"passed"` // 통과한 정거장 수 = 도장 카운트
 	Total  int    `json:"total"`
+	// Building is the 서가 tab this binder sits under (서가 건물 간지 v45) — the
+	// campus table's building name. The server decides it; the client never guesses
+	// a building from a department code.
+	Building string `json:"building"`
 }
 
 // JourneyView is everything the journey screen draws, in one round trip. Sending all
 // 29 departments would be 340KB against the 11.7KB the screen actually renders.
 type JourneyView struct {
-	GoalDept string          `json:"goalDept"`
-	Inferred bool            `json:"inferred"`
-	Track    TrackGroup      `json:"track"`
-	FreeRoam []FreeRoamEntry `json:"freeRoam"`
+	GoalDept string `json:"goalDept"`
+	// GoalBuilding is the goal department's building — the 서가's first tab (v45).
+	GoalBuilding string          `json:"goalBuilding"`
+	Inferred     bool            `json:"inferred"`
+	Track        TrackGroup      `json:"track"`
+	FreeRoam     []FreeRoamEntry `json:"freeRoam"`
 }
 
 // Journey is the single domain port for one profession's live learning experience.

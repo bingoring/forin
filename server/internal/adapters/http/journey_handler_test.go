@@ -617,3 +617,26 @@ func TestJourneyRoutesRequireAuth(t *testing.T) {
 		})
 	}
 }
+
+// 서가 건물 간지(v45) R1·R2: 서가 항목마다 서버 표의 건물이 실리고, 목표 부서의 건물이 따로 실린다.
+// GEN은 엘리베이터 층이 없지만 본관이다 — 클라이언트가 부서 코드로 건물을 추측하지 않게 서버가 정한다.
+func TestJourney_CarriesTheBuildingOfEveryShelfEntryAndOfTheGoal(t *testing.T) {
+	h := &journeyHandler{
+		progress: journeyProgress{},
+		users:    fakeUsers{goal: "WARD"},
+		journeys: stubJourneys{j: journeyStub{tracks: fakeTracks()}},
+	}
+	var out learning.JourneyView
+	getJSON(t, h.journey, "/me/journey", &out)
+
+	if out.GoalBuilding != "본관" {
+		t.Fatalf("goal WARD sits in 본관, got %q", out.GoalBuilding)
+	}
+	got := map[string]string{}
+	for _, e := range out.FreeRoam {
+		got[e.Dept] = e.Building
+	}
+	if got["ER"] != "본관" || got["GEN"] != "본관" {
+		t.Fatalf("every shelf entry carries its building (GEN → 본관): %v", got)
+	}
+}
