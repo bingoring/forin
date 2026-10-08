@@ -71,6 +71,20 @@
         - w-rate
         - w-pain
       goal: 1
+      tag: 통증 점수
+      icon: chartup
+      why: 범위(zero to ten)를 먼저 주면 환자가 숫자로 답하기 쉬워요. how would you …는 would 덕분에 지시보다 부드러운 질문이 돼요.
+      decoy: last night
+      distractorsKo:
+        - 어디가 아픈지 가리켜 주시겠어요?
+        - 통증이 언제 시작됐나요?
+      blank:
+        answer: rate
+        options:
+            - en: rate
+            - en: manage
+            - en: treat
+            - en: describe
     - en: Can you point to exactly where it hurts?
       ko: 정확히 어디가 아픈지 가리켜 주시겠어요?
       chunks:
@@ -82,6 +96,20 @@
         - w-point
         - w-hurt
       goal: 1
+      tag: 부위 확인
+      icon: magnify
+      why: point to는 말로 설명하기 어려운 환자도 손으로 답할 수 있게 해요. exactly를 넣으면 대략이 아니라 한 지점을 짚어 달라는 뜻이 돼요.
+      decoy: at the doctor
+      distractorsKo:
+        - 통증이 얼마나 심한가요?
+        - 언제부터 아프셨어요?
+      blank:
+        answer: hurts
+        options:
+            - en: bleeds
+            - en: hurts
+            - en: heals
+            - en: itches
     - en: Is it a sharp, dull, or burning kind of pain?
       ko: 날카로운 통증인가요, 둔한 통증인가요, 아니면 타는 듯한 통증인가요?
       chunks:
@@ -96,6 +124,20 @@
         - w-burning
         - w-pain
       goal: 1
+      tag: 통증 양상
+      icon: stetho
+      why: sharp, dull, burning처럼 보기를 말로 들려 주면 통증을 표현할 단어가 없는 환자도 고르기 쉬워요. 통증의 양상은 원인을 짐작하는 단서가 돼요.
+      decoy: in your leg
+      distractorsKo:
+        - 가슴이 답답하세요?
+        - 통증이 얼마나 오래 갔나요?
+      blank:
+        answer: burning
+        options:
+            - en: itchy
+            - en: throbbing
+            - en: burning
+            - en: stabbing
     - en: Does anything make the pain worse, like moving or coughing?
       ko: 움직이거나 기침할 때처럼 통증이 심해지는 게 있나요?
       chunks:
@@ -108,6 +150,20 @@
         - w-worse
         - w-pain
       goal: 1
+      tag: 악화 요인
+      icon: faceWorried
+      why: make A worse 틀과 like 뒤의 예시는 환자가 떠올리기 어려운 악화 요인을 짚어 줘요. 움직임이나 기침은 통증이 심해지는 흔한 요인이에요.
+      decoy: like resting
+      distractorsKo:
+        - 통증이 언제 시작됐나요?
+        - 어떤 약을 드셨어요?
+      blank:
+        answer: worse
+        options:
+            - en: better
+            - en: lower
+            - en: milder
+            - en: worse
     - en: I believe you, and we'll get this pain under control.
       ko: 환자분 말씀 믿어요, 이 통증을 꼭 조절해 드릴게요.
       chunks:
@@ -121,6 +177,20 @@
         - w-pain
         - w-control
       goal: 2
+      tag: 신뢰 표현
+      icon: handshake2
+      why: I believe you를 먼저 말하면 통증을 의심받을까 하는 걱정이 줄어요. 통증은 환자가 말하는 만큼 있다고 보는 것이 사정의 기본 원칙이에요.
+      decoy: so we'll wait
+      distractorsKo:
+        - 통증 점수를 다시 말씀해 주세요
+        - 차트에 기록해 둘게요
+      blank:
+        answer: believe
+        options:
+            - en: believe
+            - en: doubt
+            - en: blame
+            - en: ignore
     - en: There's no right or wrong number, just tell me what you feel.
       ko: 정답은 없어요, 느끼는 그대로 말씀해 주시면 돼요.
       chunks:
@@ -132,6 +202,20 @@
       words:
         - w-feel
       goal: 2
+      tag: 부담 덜기
+      icon: coffee
+      why: 정답이 없다고 먼저 말해 주면 환자가 의료진이 원하는 숫자를 맞히려 하지 않아요. 통증 점수는 환자 본인의 보고가 기준이에요.
+      decoy: only a score
+      distractorsKo:
+        - 점수가 높으면 약을 더 드려요
+        - 어제 통증은 몇 점이었어요?
+      blank:
+        answer: feel
+        options:
+            - en: want
+            - en: feel
+            - en: know
+            - en: see
   nuance:
     - kind: slider
       words:
@@ -165,6 +249,8 @@
         - w-rate
         - w-scale
       why: NRS 같은 약어와 quantify 같은 딱딱한 동사는 의료진 말이에요. 환자에게는 '0부터 10까지'로 풀어 묻고, 차트에는 'rates pain 8/10'처럼 짧게 적어요.
+      ko: 통증 점수를 매기다
+      word: rate
       scenes:
         - who: 환자에게
           icon: me
@@ -179,6 +265,28 @@
           en: Please quantify your pain on the NRS.
           ok: false
           fix: How bad is your pain, from zero to ten?
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 통증 첫 사정 4문장 순서
+    why: 점수를 먼저 묻고, 아픈 곳을 짚게 한 뒤 그곳이 어떤 느낌인지 물어요. 마지막은 모은 정보에 대한 감사와 약속이에요. 뒤 줄이 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+        - en: First, how would you rate your pain from zero to ten?
+          icon: chartup
+          ko: 먼저 통증을 0에서 10으로 매기면요?
+          note: 점수
+        - en: Thank you. Can you point to where it is?
+          icon: magnify
+          ko: 감사해요. 어디인지 가리켜 주시겠어요?
+          note: 부위
+        - en: Does it feel sharp, dull, or burning right there?
+          icon: stetho
+          ko: 바로 그곳이 날카롭고 둔하고 타는 듯한가요?
+          note: 양상
+        - en: Thank you for telling me all of that, and we'll get this under control.
+          icon: handshake2
+          ko: 다 말씀해 주셔서 고마워요, 꼭 조절해 드릴게요
+          note: 약속
 - id: SCN-ER-00102
   profession: ""
   eventId: EVT-ER-00101
@@ -250,6 +358,20 @@
         - w-give
         - w-pain
       goal: 1
+      tag: 투여 안내
+      icon: pill
+      why: something으로 약 이름은 아직 말하지 않고 목적(for the pain)부터 알려요. 구체적인 이름은 다음 문장에서 이어 말하면 돼요.
+      decoy: for the nurse
+      distractorsKo:
+        - 드시기 전에 알레르기를 확인할게요
+        - 30분 뒤에 다시 올게요
+      blank:
+        answer: pain
+        options:
+            - en: allergy
+            - en: pain
+            - en: fever
+            - en: cough
     - en: It usually starts working in about ten to fifteen minutes.
       ko: 보통 10분에서 15분 정도면 효과가 나타나요.
       chunks:
@@ -262,6 +384,20 @@
         - w-work
         - w-minute
       goal: 1
+      tag: 발현 시간
+      icon: calendar
+      why: about ten to fifteen minutes처럼 범위로 말하면 정확한 시각을 약속하지 않고도 기대를 줄 수 있어요. 발현 시간은 약과 투여 경로에 따라 달라요.
+      decoy: once a day
+      distractorsKo:
+        - 하루에 세 번 드시면 돼요
+        - 이 약은 알약으로 드릴게요
+      blank:
+        answer: minutes
+        options:
+            - en: hours
+            - en: days
+            - en: minutes
+            - en: seconds
     - en: Let me know if it makes you feel drowsy or dizzy.
       ko: 졸리거나 어지러우면 알려 주세요.
       chunks:
@@ -275,6 +411,20 @@
         - w-drowsy
         - w-dizzy
       goal: 2
+      tag: 부작용 안내
+      icon: bell
+      why: Let me know if …는 증상을 보고해 달라는 부탁을 부드럽게 만들어요. 졸림과 어지럼은 진통제의 흔한 부작용이라 미리 알려 두면 환자가 겁먹지 않고 말해요.
+      decoy: if it helps
+      distractorsKo:
+        - 약은 30분 뒤에 드릴게요
+        - 통증이 나아졌는지 점수를 말해 주세요
+      blank:
+        answer: drowsy
+        options:
+            - en: hungry
+            - en: itchy
+            - en: nauseous
+            - en: drowsy
     - en: This is a pain medicine called morphine.
       ko: 이건 모르핀이라는 진통제예요.
       chunks:
@@ -287,6 +437,20 @@
         - w-medicine
         - w-morphine
       goal: 1
+      tag: 약 이름
+      icon: lab
+      why: 약의 종류(pain medicine)를 먼저 말하고 이름을 덧붙이면 낯선 이름도 부담이 덜해요. 투약 전 약 이름을 알려 주는 것은 안전 확인의 일부이기도 해요.
+      decoy: for fever
+      distractorsKo:
+        - 이건 항생제예요
+        - 이건 수액이에요
+      blank:
+        answer: morphine
+        options:
+            - en: morphine
+            - en: insulin
+            - en: heparin
+            - en: penicillin
     - en: It will help take the edge off the pain.
       ko: 통증을 한결 가라앉혀 줄 거예요.
       chunks:
@@ -299,6 +463,20 @@
         - w-edge
         - w-pain
       goal: 1
+      tag: 효과 설명
+      icon: shield
+      why: take the edge off는 통증을 없앤다는 약속 없이 날카로운 부분을 덜어 준다고 말하는 관용구예요. 기대를 현실적으로 맞춰 줘요.
+      decoy: onto
+      distractorsKo:
+        - 바로 일어나 걸으셔도 돼요
+        - 물을 많이 드셔야 해요
+      blank:
+        answer: edge
+        options:
+            - en: top
+            - en: edge
+            - en: corner
+            - en: side
     - en: If you feel drowsy, that's normal, so just rest a bit.
       ko: 졸리시면 정상이니까 잠시 쉬세요.
       chunks:
@@ -312,6 +490,20 @@
         - w-normal
         - w-rest
       goal: 2
+      tag: 안심시키기
+      icon: coffee
+      why: 졸림이 흔한 반응이라고 먼저 말하면 환자가 약이 잘못됐다고 걱정하지 않아요. 다만 깨우기 힘들 만큼 졸리면 호흡이 느려지는 신호라, 간호사가 진정 정도를 계속 확인해요.
+      decoy: right away
+      distractorsKo:
+        - 졸리면 바로 알려 주세요, 위험해요
+        - 졸려도 일어나 걸어 다니세요
+      blank:
+        answer: normal
+        options:
+            - en: rare
+            - en: forbidden
+            - en: normal
+            - en: dangerous
   nuance:
     - kind: slider
       words:
@@ -331,6 +523,7 @@
         - w-give
         - w-medicine
       why: narcotic은 미국에서 법 집행·불법 약물의 뉘앙스가 강해 임상에서는 opioid로 바꿔 부르는 추세예요. 환자에게는 pain medicine이 가장 편해요.
+      ko: 지금 통증약을 드릴게요
       who: 환자에게 · 진통제 투여 전
       icon: me
       before:
@@ -350,6 +543,8 @@
       words:
         - w-drowsy
       why: CNS depression은 의료진 용어라 환자는 못 알아듣거나 '우울증'으로 오해해 겁을 먹을 수 있어요. 환자에게는 drowsy·sleepy로 말해요.
+      ko: 졸린
+      word: drowsy
       scenes:
         - who: 환자에게
           icon: me
@@ -364,6 +559,28 @@
           en: This medicine may cause CNS depression.
           ok: false
           fix: This medicine may make you feel a little sleepy.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 진통제 투여 4문장 순서
+    why: 투여 전에 확인부터 하고, 확인이 끝났다고 말한 뒤 약을 넣어요. 그다음 효과가 나타날 시간을 알리고, 그 시간에 맞춰 다시 오겠다고 해요. 앞 줄을 가리키는 말(Everything, It, then)이 순서를 고정해요.
+    lines:
+        - en: Let me check your wristband and allergies first.
+          icon: bandage
+          ko: 손목밴드와 알레르기부터 확인할게요
+          note: 확인
+        - en: Everything matches, so I'm putting the medicine in your IV.
+          icon: pill
+          ko: 다 맞네요, 수액줄로 약을 넣을게요
+          note: 투여
+        - en: It should start working in about ten minutes.
+          icon: monitor
+          ko: 10분쯤 지나면 효과가 나타날 거예요
+          note: 발현
+        - en: I'll come back then to see how your pain feels.
+          icon: stetho
+          ko: 그때 다시 와서 통증이 어떤지 볼게요
+          note: 재평가
 - id: SCN-ER-00103
   profession: ""
   eventId: EVT-ER-00101
@@ -435,6 +652,20 @@
         - w-cold_pack
         - w-swelling
       goal: 1
+      tag: 냉찜질
+      icon: bandage
+      why: 냉찜질은 급성 부기에 흔히 쓰이고, 피부를 보호하려고 얇은 천을 사이에 대고 쓰는 것이 일반적이에요. to bring … down은 목적을 알려 줘요.
+      decoy: to warm up
+      distractorsKo:
+        - 다리를 심장보다 높이 올려 주세요
+        - 불을 어둡게 해 드릴게요
+      blank:
+        answer: cold
+        options:
+            - en: warm
+            - en: soft
+            - en: cold
+            - en: hot
     - en: Try keeping the leg raised on this pillow.
       ko: 이 베개 위에 다리를 올려 두세요.
       chunks:
@@ -447,6 +678,20 @@
         - w-raise
         - w-pillow
       goal: 1
+      tag: 다리 올리기
+      icon: home
+      why: 다리를 올리면 중력 덕분에 부기가 덜하고 통증 완화에 도움이 돼요. 올리는 높이는 보통 심장보다 높게 안내해요.
+      decoy: on the floor
+      distractorsKo:
+        - 지금 바로 일어나 걸어 보세요
+        - 다리에 얼음을 대 드릴게요
+      blank:
+        answer: raised
+        options:
+            - en: lowered
+            - en: hanging
+            - en: dropped
+            - en: raised
     - en: I can dim the lights if that helps you relax.
       ko: 긴장이 풀리시게 조명을 어둡게 해드릴 수 있어요.
       chunks:
@@ -460,6 +705,20 @@
         - w-light
         - w-relax
       goal: 1
+      tag: 환경 조절
+      icon: bulb
+      why: 밝은 조명은 통증이 있는 환자를 더 예민하게 할 수 있어서 조명을 낮추면 긴장을 푸는 데 도움이 돼요. if that helps는 환자가 선택하게 해 줘요.
+      decoy: when that hurts
+      distractorsKo:
+        - 창문을 열어 드릴게요
+        - TV를 켜 드릴게요
+      blank:
+        answer: dim
+        options:
+            - en: dim
+            - en: brighten
+            - en: flash
+            - en: turn up
     - en: A warm blanket might feel good on your back.
       ko: 등에 따뜻한 담요를 덮으면 편안하실 거예요.
       chunks:
@@ -472,6 +731,20 @@
         - w-warm
         - w-blanket
       goal: 1
+      tag: 온기 제공
+      icon: home
+      why: might는 효과를 약속하지 않고 가능성만 말해서 부담이 없어요. 따뜻함은 근육 긴장을 풀어 줄 수 있어 요통 같은 통증에 흔히 권해요.
+      decoy: on the floor
+      distractorsKo:
+        - 담요는 드릴 수 없어요
+        - 얼음 주머니를 올려 드릴게요
+      blank:
+        answer: warm
+        options:
+            - en: cold
+            - en: warm
+            - en: heavy
+            - en: thin
     - en: These methods can lower your pain without more medicine.
       ko: 이런 방법들로 약을 더 쓰지 않고도 통증을 줄일 수 있어요.
       chunks:
@@ -485,6 +758,20 @@
         - w-pain
         - w-medicine
       goal: 2
+      tag: 효과 설명
+      icon: check
+      why: without more medicine은 약을 쓰지 않는다는 뜻이 아니라 약을 더하지 않아도 된다는 말이에요. 약 없는 방법은 약과 함께 써도 돼요.
+      decoy: with extra
+      distractorsKo:
+        - 약을 더 드려야만 줄어요
+        - 이 방법은 효과가 없어요
+      blank:
+        answer: lower
+        options:
+            - en: increase
+            - en: worsen
+            - en: lower
+            - en: raise
     - en: Let's try this first before we add anything else.
       ko: 다른 걸 더하기 전에 이걸 먼저 해볼게요.
       chunks:
@@ -496,6 +783,20 @@
       words:
         - w-try
       goal: 2
+      tag: 먼저 시도
+      icon: handshake2
+      why: 먼저 약 없는 방법을 해 보고 필요하면 더하겠다고 순서를 알려 주면 환자가 거절당했다고 느끼지 않아요. 두 방법은 함께 쓸 수도 있어요.
+      decoy: for later
+      distractorsKo:
+        - 약부터 먼저 드릴게요
+        - 이 방법은 효과가 없으니 건너뛸게요
+      blank:
+        answer: before
+        options:
+            - en: after
+            - en: unless
+            - en: while
+            - en: before
   nuance:
     - kind: pair
       words:
@@ -518,6 +819,8 @@
         - w-raise
         - w-pillow
       why: elevation·extremity는 차트와 의료진 사이의 말이에요. 환자에게는 leg·raise·up 같은 쉬운 말로 무엇을 할지 알려 줘요.
+      ko: 올리다
+      word: raise
       scenes:
         - who: 차트 기록
           icon: board
@@ -532,6 +835,28 @@
           en: Maintain elevation of the affected extremity.
           ok: false
           fix: Keep your leg up on the pillow, a little higher than your heart.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 약 없이 통증 줄이기 4문장 순서
+    why: 냉찜질을 먼저 대고, 그것을 올려 둔 채 다리를 베개에 올려요. 그다음 그 모든 방법이 도움이 되는지 묻고, 도움이 되면 약을 더하기 전에 계속해요. 앞 줄을 가리키는 말(it, all of that, If it is)로 순서가 하나예요.
+    lines:
+        - en: Let's put a cold pack on your leg first.
+          icon: bandage
+          ko: 먼저 다리에 냉찜질팩을 대 볼게요
+          note: 냉찜질
+        - en: Please keep it raised on this pillow while the pack is on.
+          icon: home
+          ko: 팩을 대는 동안 베개 위에 올려 두세요
+          note: 올리기
+        - en: Is all of that making your pain feel any better?
+          icon: stetho
+          ko: 그 모든 게 통증에 도움이 되나요?
+          note: 확인
+        - en: If it is, we'll keep going before we add any medicine.
+          icon: handshake2
+          ko: 도움이 되면 약을 더하기 전에 계속해 봐요
+          note: 계획
 - id: SCN-ER-00104
   profession: ""
   eventId: EVT-ER-00101
@@ -603,6 +928,20 @@
         - w-allergic
         - w-medication
       goal: 1
+      tag: 알레르기 질문
+      icon: shield
+      why: 알려진 알레르기를 먼저 묻는 것은 투약 전 안전 확인의 기본이에요. that you know of를 덧붙이면 확실하지 않은 환자도 아는 범위에서 부담 없이 답해요.
+      decoy: for any foods
+      distractorsKo:
+        - 평소에 드시는 약이 있나요?
+        - 수술을 받으신 적이 있나요?
+      blank:
+        answer: allergic
+        options:
+            - en: used
+            - en: new
+            - en: open
+            - en: allergic
     - en: Have you ever taken morphine or codeine before?
       ko: 예전에 모르핀이나 코데인을 복용하신 적 있나요?
       chunks:
@@ -614,6 +953,20 @@
         - w-morphine
         - w-codeine
       goal: 1
+      tag: 복용력
+      icon: calendar
+      why: Have you ever + 과거분사는 경험을 묻는 틀이라 정확한 날짜를 기억하지 못해도 답할 수 있어요. 예전 복용 경험은 약 선택에 참고돼요.
+      decoy: last year
+      distractorsKo:
+        - 오늘 아침에 약을 드셨나요?
+        - 집에 약이 남아 있나요?
+      blank:
+        answer: taken
+        options:
+            - en: taken
+            - en: seen
+            - en: sold
+            - en: lost
     - en: What kind of reaction did you have last time?
       ko: 지난번엔 어떤 반응이 있으셨어요?
       chunks:
@@ -625,6 +978,20 @@
       words:
         - w-reaction
       goal: 2
+      tag: 반응 확인
+      icon: faceWorried
+      why: last time으로 과거의 한 번을 짚으면 환자가 기억을 더듬기 쉬워요. 반응의 종류를 알아야 진짜 알레르기인지 부작용인지 가릴 수 있어요.
+      decoy: right now
+      distractorsKo:
+        - 지금도 그 약을 드시고 계세요?
+        - 그 약은 누가 처방했나요?
+      blank:
+        answer: reaction
+        options:
+            - en: medicine
+            - en: reaction
+            - en: doctor
+            - en: test
     - en: Did you break out in a rash or have trouble breathing?
       ko: 발진이 났거나 숨쉬기 힘드셨나요?
       chunks:
@@ -637,6 +1004,20 @@
         - w-rash
         - w-breathe
       goal: 2
+      tag: 증상 확인
+      icon: stetho
+      why: 발진과 호흡곤란은 약물 알레르기 반응에서 확인하는 대표 증상이에요. or로 나눠 묻기 때문에 한쪽만 해당해도 대답할 수 있어요.
+      decoy: with a fever
+      distractorsKo:
+        - 속이 메스꺼우셨나요?
+        - 어지러워서 쓰러지셨나요?
+      blank:
+        answer: breathing
+        options:
+            - en: walking
+            - en: reading
+            - en: breathing
+            - en: sleeping
     - en: Have you ever had an allergic reaction to ibuprofen or aspirin?
       ko: 이부프로펜이나 아스피린에 알레르기 반응을 보이신 적 있나요?
       chunks:
@@ -650,6 +1031,20 @@
         - w-ibuprofen
         - w-aspirin
       goal: 1
+      tag: 진통제 알레르기
+      icon: pill
+      why: 이부프로펜과 아스피린 같은 비스테로이드 소염진통제(NSAID)는 서로 교차 반응할 수 있어서 함께 물어요. 경험을 묻는 Have you ever had …를 그대로 써요.
+      decoy: taken a
+      distractorsKo:
+        - 이부프로펜을 하루에 몇 번 드세요?
+        - 두통이 얼마나 자주 있으세요?
+      blank:
+        answer: had
+        options:
+            - en: noticed
+            - en: seen
+            - en: reported
+            - en: had
     - en: I'll note this in your chart so the team knows.
       ko: 팀에서 알 수 있게 차트에 기록해 둘게요.
       chunks:
@@ -662,6 +1057,20 @@
         - w-chart
         - w-team
       goal: 2
+      tag: 기록 안내
+      icon: board
+      why: 차트에 남기면 다음 교대 간호사와 의사도 같은 정보를 보고 그 약을 피할 수 있어요. 기록한다고 말하면 알려 준 정보가 쓰인다는 신뢰가 생겨요.
+      decoy: in the lobby
+      distractorsKo:
+        - 처방전은 약국에 보낼게요
+        - 보험 정보를 확인할게요
+      blank:
+        answer: knows
+        options:
+            - en: knows
+            - en: forgets
+            - en: guesses
+            - en: ignores
   nuance:
     - kind: pair
       words:
@@ -683,6 +1092,7 @@
         - w-allergic
         - w-medication
       why: hypersensitivity는 약리·차트 용어예요. 환자에게는 allergic to로 묻고, 대답이 나오면 무슨 일이 있었는지 이어 물어 알레르기와 부작용을 가려요.
+      ko: 혹시 약물 알레르기가 있으세요?
       who: 환자에게 · 알레르기 확인
       icon: me
       before:
@@ -698,6 +1108,28 @@
         allergic: 환자에게 묻는 표준 질문이에요.
         intolerant: '''잘 못 견딘다''는 뜻으로, 메스꺼움 같은 부작용을 진짜 알레르기와 구분할 때 쓰는 말이라 이 질문에는 맞지 않아요.'
         sensitive: '''예민하다'' 정도로 들려 알레르기인지 부작용인지가 흐려져요.'
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 약물 알레르기 확인 4문장 순서
+    why: 알레르기가 있는지 먼저 묻고, 특정 약을 먹은 적이 있는지 물어요. 그 약을 먹었을 때 무슨 일이 있었는지 이어 묻고, 마지막에 기록하겠다고 해요. it과 that이 앞 줄을 가리켜서 순서가 하나예요.
+    lines:
+        - en: First, are you allergic to any medications?
+          icon: shield
+          ko: 먼저 약물 알레르기가 있으세요?
+          note: 알레르기
+        - en: Have you ever taken morphine before?
+          icon: pill
+          ko: 예전에 모르핀을 드신 적 있으세요?
+          note: 복용력
+        - en: What happened when you took it?
+          icon: faceWorried
+          ko: 드셨을 때 어떤 일이 있었나요?
+          note: 반응
+        - en: Thank you, I'll note all of that in your chart.
+          icon: board
+          ko: 감사해요, 모두 차트에 적어 둘게요
+          note: 기록
 - id: SCN-ER-00105
   profession: ""
   eventId: EVT-ER-00101
@@ -769,6 +1201,20 @@
         - w-check
         - w-minute
       goal: 1
+      tag: 재방문 안내
+      icon: calendar
+      why: in about twenty minutes로 구체적인 시간을 말하면 환자가 기다리는 동안 덜 불안해요. 진통제 뒤 재평가는 병원 지침에 정해진 시간에 해요.
+      decoy: in a week
+      distractorsKo:
+        - 약을 지금 바로 드릴게요
+        - 호출 버튼을 눌러 주세요
+      blank:
+        answer: minutes
+        options:
+            - en: minutes
+            - en: hours
+            - en: days
+            - en: seconds
     - en: If the pain gets worse before then, press this call button.
       ko: 그전에 통증이 심해지면 이 호출 버튼을 눌러 주세요.
       chunks:
@@ -781,6 +1227,20 @@
         - w-worse
         - w-call_button
       goal: 2
+      tag: 호출 안내
+      icon: bell
+      why: 재평가 사이에 통증이 심해질 때를 미리 알려 주면 환자가 정해진 시간까지 참지 않아요. 호출 버튼의 위치와 쓰는 법도 함께 보여 줘요.
+      decoy: right after
+      distractorsKo:
+        - 약이 안 들으면 의사 선생님께 말할게요
+        - 통증이 줄면 퇴원하세요
+      blank:
+        answer: worse
+        options:
+            - en: milder
+            - en: worse
+            - en: better
+            - en: lower
     - en: We'll rate it again to see if the medicine helped.
       ko: 약이 도움이 됐는지 다시 통증 점수를 매겨볼게요.
       chunks:
@@ -794,6 +1254,20 @@
         - w-medicine
         - w-help
       goal: 1
+      tag: 재평가
+      icon: chartup
+      why: again으로 처음 점수와 비교할 것임을 알려요. 투약 뒤 통증 점수를 다시 매겨 효과를 확인하는 것이 재평가예요.
+      decoy: if we waited
+      distractorsKo:
+        - 약을 한 번 더 드릴게요
+        - 통증 점수는 기록하지 않을게요
+      blank:
+        answer: medicine
+        options:
+            - en: family
+            - en: test
+            - en: medicine
+            - en: doctor
     - en: This helps us know if the medicine is working.
       ko: 이렇게 하면 약효가 있는지 알 수 있어요.
       chunks:
@@ -805,6 +1279,20 @@
       words:
         - w-work
       goal: 1
+      tag: 목적 설명
+      icon: lab
+      why: 점수를 다시 묻는 이유를 설명하면 환자가 같은 질문을 되풀이한다고 느끼지 않아요. 재평가 결과는 약을 더 쓸지 바꿀지 판단하는 근거가 돼요.
+      decoy: the nurse is
+      distractorsKo:
+        - 약을 바꿔야 하는지는 의사가 정해요
+        - 통증이 몇 시간 갈지 알 수 있어요
+      blank:
+        answer: working
+        options:
+            - en: expired
+            - en: empty
+            - en: cold
+            - en: working
     - en: Don't wait until it's unbearable, call us right away.
       ko: 참을 수 없을 때까지 기다리지 말고 바로 불러 주세요.
       chunks:
@@ -817,6 +1305,20 @@
         - w-wait
         - w-unbearable
       goal: 2
+      tag: 참지 않기
+      icon: siren
+      why: unbearable까지 기다리지 말라고 말하면 참는 것이 미덕이 아니라는 신호가 돼요. 통증 조절은 심해지기 전에 하는 편이 쉬워요.
+      decoy: tomorrow morning
+      distractorsKo:
+        - 참을 수 있으면 기다려 주세요
+        - 통증이 있으면 간호사실로 오세요
+      blank:
+        answer: until
+        options:
+            - en: until
+            - en: unless
+            - en: after
+            - en: before
     - en: You're not bothering anyone by asking for help.
       ko: 도움을 요청하는 건 절대 폐가 아니에요.
       chunks:
@@ -828,6 +1330,20 @@
         - w-bother
         - w-help
       goal: 2
+      tag: 부담 덜기
+      icon: handshake2
+      why: 도움 요청이 폐가 아니라고 먼저 말하면 눈치를 보는 환자도 호출을 눌러요. 통증을 참는 환자를 위한 안심 표현이에요.
+      decoy: for water
+      distractorsKo:
+        - 도움을 요청하면 늦어질 수 있어요
+        - 다른 환자분들이 불편해해요
+      blank:
+        answer: bothering
+        options:
+            - en: blaming
+            - en: bothering
+            - en: helping
+            - en: scaring
   nuance:
     - kind: slider
       words:
@@ -847,6 +1363,7 @@
         - w-bother
         - w-help
       why: '''정말 필요할 때만''은 호출이 폐라는 느낌을 줘요. 통증은 참지 말고 부르라고 해야 재평가가 제때 이뤄져요.'
+      ko: 필요하실 때 언제든 호출 버튼을 누르세요
       who: 환자에게 · 호출 안내
       icon: me
       before:
@@ -862,6 +1379,28 @@
         anytime you need us: 망설이지 말고 부르라는 말 — 통증을 참는 환자에게 필요해요.
         if you must: 부르는 게 귀찮다는 뉘앙스로 들려요.
         only in an emergency: 통증이 심해지는 건 응급이 아니라고 여겨 참게 만들어요.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 재평가 안내 4문장 순서
+    why: 다시 오는 시간을 먼저 알려요. 그 시간 전에 심해지면 호출하라고 하고(before then), 호출을 망설이지 않게 한 뒤(it) 돌아와서 통증을 다시 점수로 물어요. then, this, it이 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+        - en: I'll check back with you in about twenty minutes.
+          icon: calendar
+          ko: 20분쯤 뒤에 다시 올게요
+          note: 재방문
+        - en: If the pain gets worse before then, press this call button.
+          icon: bell
+          ko: 그전에 심해지면 이 호출 버튼을 누르세요
+          note: 호출
+        - en: Don't wait until it's unbearable to press it.
+          icon: siren
+          ko: 참을 수 없을 때까지 기다리지 말고 누르세요
+          note: 참지 않기
+        - en: Once I'm back, we'll rate it again.
+          icon: chartup
+          ko: 돌아오면 그 통증을 다시 점수로 매길게요
+          note: 재평가
 - id: SCN-ER-00106
   profession: ""
   eventId: EVT-ER-00101
@@ -934,6 +1473,20 @@
         - w-real
         - w-pain
       goal: 1
+      tag: 공감 표현
+      icon: faceWorried
+      why: 통증이 진짜라고 먼저 인정하면 약을 요구하는 환자도 방어적으로 되지 않아요. 요구하는 행동을 판단하지 않고 통증을 믿는다는 것을 먼저 전해요.
+      decoy: ', but I doubt'
+      distractorsKo:
+        - 약을 더 드릴 수는 없어요
+        - 의사 선생님이 곧 오세요
+      blank:
+        answer: real
+        options:
+            - en: fake
+            - en: real
+            - en: imaginary
+            - en: exaggerated
     - en: Let me tell you what the doctor has ordered for you.
       ko: 의사 선생님이 처방하신 걸 말씀드릴게요.
       chunks:
@@ -945,6 +1498,20 @@
       words:
         - w-order
       goal: 1
+      tag: 처방 설명
+      icon: board
+      why: 의사가 처방한 내용을 먼저 알려 주면 간호사가 마음대로 정한다는 느낌이 줄어요. 약의 종류와 용량은 처방 범위 안에서만 줄 수 있다는 점도 자연스럽게 전해져요.
+      decoy: what you have
+      distractorsKo:
+        - 약을 더 요청하셨다고 기록할게요
+        - 약은 하루 한 번만 나와요
+      blank:
+        answer: ordered
+        options:
+            - en: refused
+            - en: stopped
+            - en: ordered
+            - en: cancelled
     - en: We can also try other ways to bring the pain down.
       ko: 통증을 줄일 다른 방법도 함께 시도해볼 수 있어요.
       chunks:
@@ -957,6 +1524,20 @@
         - w-try
         - w-pain
       goal: 2
+      tag: 대안 제시
+      icon: bulb
+      why: also는 약을 거절하는 것이 아니라 약에 더해 다른 방법도 쓴다는 신호예요. 대안에는 비약물적 방법과 비마약성 진통제가 들어갈 수 있어요.
+      decoy: to talk about
+      distractorsKo:
+        - 약은 더 이상 쓸 수 없어요
+        - 통증은 시간이 지나면 사라져요
+      blank:
+        answer: try
+        options:
+            - en: avoid
+            - en: ignore
+            - en: refuse
+            - en: try
     - en: I can't give more than what's been ordered, but I'm not giving up on your pain.
       ko: 처방된 것보다 더 드릴 순 없지만, 통증을 포기하지 않을게요.
       chunks:
@@ -969,6 +1550,20 @@
         - w-give
         - w-order
       goal: 1
+      tag: 한계 설명
+      icon: lock
+      why: can't 뒤에 한계의 이유(처방된 범위)를 말하고 but으로 돌봄을 이어 가요. 거절 바로 뒤에 포기하지 않는다는 말을 붙이면 방치로 들리지 않아요.
+      decoy: except when
+      distractorsKo:
+        - 지금 바로 두 배로 드릴게요
+        - 처방된 약은 이제 다 쓰셨어요
+      blank:
+        answer: more
+        options:
+            - en: more
+            - en: less
+            - en: faster
+            - en: earlier
     - en: Let's talk about what's worked for you before.
       ko: 예전에 효과가 있었던 방법에 대해 이야기해봐요.
       chunks:
@@ -979,6 +1574,20 @@
       words:
         - w-work
       goal: 2
+      tag: 경험 묻기
+      icon: speech
+      why: 예전에 효과가 있었던 방법을 물으면 환자가 치료 계획에 참여한다고 느껴요. 환자의 과거 경험은 진통 계획을 세울 때 유용한 정보예요.
+      decoy: next time
+      distractorsKo:
+        - 지금 드실 약을 정해 볼게요
+        - 어느 병원에서 처방받으셨어요?
+      blank:
+        answer: worked
+        options:
+            - en: started
+            - en: worked
+            - en: failed
+            - en: changed
     - en: I'm on your side, and we'll figure this out together.
       ko: 저는 환자분 편이에요, 함께 방법을 찾아볼게요.
       chunks:
@@ -991,6 +1600,20 @@
         - w-side
         - w-together
       goal: 2
+      tag: 동반 표현
+      icon: star
+      why: on your side는 환자와 간호사를 같은 편으로 놓아 약을 두고 맞서는 구도를 피해요. together는 해결책을 함께 찾겠다는 약속이에요.
+      decoy: on my own
+      distractorsKo:
+        - 제가 대신 결정해 드릴게요
+        - 의사 선생님이 해결하실 거예요
+      blank:
+        answer: together
+        options:
+            - en: later
+            - en: separately
+            - en: together
+            - en: alone
   nuance:
     - kind: pair
       words:
@@ -1012,6 +1635,8 @@
       words:
         - w-pain
       why: '''drug-seeking''·''demanding''은 판단이 담긴 낙인 표현이라 차트에 쓰지 않도록 교육해요. 요청 내용, 통증 점수, 투여량처럼 관찰한 사실만 적어요.'
+      ko: 더 달라고 요청하다
+      word: ask for more
       scenes:
         - who: 환자에게
           icon: me
@@ -1026,6 +1651,28 @@
           en: Pt is drug-seeking, demanding narcotics.
           ok: false
           fix: Pt requesting additional analgesia; reports pain 9/10 despite morphine 4 mg IV.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 약을 더 원하는 환자 응대 4문장 순서
+    why: 통증이 진짜라고 먼저 인정하고, 의사가 처방한 내용을 알려요. 그 범위(that)를 넘길 수 없다고 말한 뒤, 그래서(So) 다른 방법을 함께 찾아요. 앞 줄을 가리키는 말이 순서를 고정해요.
+    lines:
+        - en: I hear that your pain is real, and I want to help.
+          icon: faceWorried
+          ko: 통증이 진짜라는 거 알고, 도와드리고 싶어요
+          note: 공감
+        - en: Here's what the doctor ordered for you.
+          icon: board
+          ko: 의사 선생님이 처방하신 내용이에요
+          note: 처방
+        - en: I can't give more than that, but I'm not giving up on your pain.
+          icon: lock
+          ko: 그 이상은 드릴 수 없지만 통증을 포기하진 않아요
+          note: 한계
+        - en: So let's talk about what else has worked for you before.
+          icon: speech
+          ko: 그러니 예전에 또 뭐가 도움이 됐는지 얘기해요
+          note: 대안
 - id: SCN-ER-00107
   profession: ""
   eventId: EVT-ER-00101
@@ -1098,6 +1745,20 @@
         - w-usual
         - w-pain
       goal: 1
+      tag: 비교 질문
+      icon: compass
+      why: 평소 통증과 비교해 묻는 것이 새로 생긴 통증과 원래 통증을 가르는 첫 질문이에요. usual pain을 기준으로 삼으면 만성 통증 환자의 경험을 존중하게 돼요.
+      decoy: similar to
+      distractorsKo:
+        - 이 약을 얼마나 오래 드셨어요?
+        - 평소에 어디가 가장 아프세요?
+      blank:
+        answer: usual
+        options:
+            - en: first
+            - en: brief
+            - en: usual
+            - en: worst
     - en: Tell me what medicines you already take at home.
       ko: 집에서 이미 드시는 약을 말씀해 주세요.
       chunks:
@@ -1109,6 +1770,20 @@
       words:
         - w-medicine
       goal: 2
+      tag: 복용약 확인
+      icon: pill
+      why: 집에서 이미 먹는 약을 먼저 물으면 진통제 용량과 약물 상호작용을 판단할 수 있어요. 처방약뿐 아니라 사 먹는 약과 보충제도 함께 묻는 것이 좋아요.
+      decoy: at work
+      distractorsKo:
+        - 약을 어디서 구하세요?
+        - 약을 몇 시에 드세요?
+      blank:
+        answer: already
+        options:
+            - en: never
+            - en: rarely
+            - en: hardly
+            - en: already
     - en: Because of your tolerance, the doctor may adjust the dose.
       ko: 내성 때문에 의사 선생님이 용량을 조절하실 수도 있어요.
       chunks:
@@ -1121,6 +1796,20 @@
         - w-tolerance
         - w-dose
       goal: 2
+      tag: 내성 설명
+      icon: stetho
+      why: 내성은 오래 써서 같은 용량의 효과가 줄어드는 현상으로 중독과 달라요. 쉬운 말로 풀어 주면 환자가 낙인찍힌다고 느끼지 않아요.
+      decoy: must stop
+      distractorsKo:
+        - 약을 끊으면 중독돼요
+        - 의사 선생님이 약을 바꾸지 않을 거예요
+      blank:
+        answer: adjust
+        options:
+            - en: adjust
+            - en: stop
+            - en: skip
+            - en: check
     - en: Is this new pain sharp, or in a different spot?
       ko: 이번 통증은 날카로운가요, 아니면 다른 부위인가요?
       chunks:
@@ -1133,6 +1822,20 @@
         - w-sharp
         - w-spot
       goal: 1
+      tag: 새 통증 확인
+      icon: magnify
+      why: 평소와 다른 양상이나 다른 부위는 새로 생긴 통증일 수 있다는 단서예요. 새롭거나 달라진 통증은 원인이 다를 수 있어 의사에게 알리는 근거가 돼요.
+      decoy: and in the same
+      distractorsKo:
+        - 통증이 얼마나 오래 갔어요?
+        - 어떤 약을 드셨어요?
+      blank:
+        answer: sharp
+        options:
+            - en: dull
+            - en: sharp
+            - en: mild
+            - en: steady
     - en: Your body may need more medicine than it used to.
       ko: 예전보다 몸이 더 많은 약을 필요로 할 수 있어요.
       chunks:
@@ -1144,6 +1847,20 @@
       words:
         - w-medicine
       goal: 2
+      tag: 내성 설명
+      icon: chartup
+      why: used to는 예전에는 그랬지만 지금은 아니라는 변화를 말해요. 오래 약을 써 온 몸은 같은 용량에 덜 반응할 수 있다고 쉬운 말로 설명해요.
+      decoy: than I do
+      distractorsKo:
+        - 몸이 약에 중독되었어요
+        - 약이 더 이상 필요하지 않아요
+      blank:
+        answer: more
+        options:
+            - en: better
+            - en: cheaper
+            - en: more
+            - en: less
     - en: We'll watch you closely as we adjust the dose.
       ko: 용량을 조절하는 동안 세심하게 지켜볼게요.
       chunks:
@@ -1156,6 +1873,20 @@
         - w-watch
         - w-dose
       goal: 2
+      tag: 관찰 약속
+      icon: monitor
+      why: 용량을 바꾸는 동안 더 가까이 지켜본다고 알리면 환자가 불안해하지 않아요. 약을 조절할 때는 호흡과 진정 정도를 자주 확인해요.
+      decoy: as we wait
+      distractorsKo:
+        - 용량은 제가 직접 정할게요
+        - 모니터는 필요 없어요
+      blank:
+        answer: closely
+        options:
+            - en: rarely
+            - en: briefly
+            - en: casually
+            - en: closely
   nuance:
     - kind: pair
       words:
@@ -1176,6 +1907,7 @@
         - w-tolerance
         - w-dose
       why: 내성은 중독이 아니에요. 오래 쓴 환자에게 addicted라고 하면 사실도 틀리고 신뢰도 잃어요.
+      ko: 이 약들에 익숙해지셔서 의사 선생님이 용량을 조절하실 수 있어요
       who: 만성 통증 환자에게 · 용량 설명
       icon: me
       before:
@@ -1191,6 +1923,28 @@
         a drug user: 불법 약물 사용자라는 낙인으로 들려요.
         dependent: 신체 의존을 뜻하는 임상어지만, 환자에게는 중독처럼 들릴 수 있어요.
         used to these medicines: 내성을 판단 없이 쉬운 말로 풀었어요.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 만성 통증 환자의 급성 악화 4문장 순서
+    why: 새 통증이 평소와 어떻게 다른지 먼저 묻고, 집에서 먹는 약을 물어요. 그 약 때문에 몸이 더 많은 약이 필요할 수 있다고 설명하고(Because of those), 그래서(That's why) 용량을 조절하며 지켜본다고 해요.
+    lines:
+        - en: First, how is this pain different from your usual pain?
+          icon: compass
+          ko: 먼저 이번 통증이 평소와 어떻게 다른가요?
+          note: 비교
+        - en: Thank you. What medicines do you take at home for that?
+          icon: pill
+          ko: 감사해요. 그 통증에 집에서 어떤 약을 드세요?
+          note: 복용약
+        - en: Because of those medicines, your body may need more than it used to.
+          icon: gear
+          ko: 그 약들 때문에 몸이 예전보다 더 필요할 수 있어요
+          note: 내성
+        - en: That's why the doctor may adjust the dose, and we'll watch you closely.
+          icon: monitor
+          ko: 그래서 용량을 조절할 수 있고, 가까이서 지켜볼게요
+          note: 계획
 - id: SCN-ER-00108
   profession: ""
   eventId: EVT-ER-00101
@@ -1261,6 +2015,20 @@
         - w-eat
         - w-drink
       goal: 1
+      tag: 금식 확인
+      icon: coffee
+      why: 마지막으로 먹고 마신 시간은 의사가 진정 방법과 시점을 정하는 근거라 꼭 물어요. NPO 같은 약어보다 eat or drink로 풀어 물어야 환자가 정확히 답해요. 응급실에서는 금식 시간만으로 진정을 미루지 않지만, 구토 위험을 가늠하는 데 써요.
+      decoy: Where did you
+      distractorsKo:
+        - 마지막으로 약을 드신 게 언제예요?
+        - 마지막으로 화장실에 가신 게 언제예요?
+      blank:
+        answer: When
+        options:
+            - en: Where
+            - en: How
+            - en: Why
+            - en: When
     - en: We'll keep you on monitors the whole time.
       ko: 내내 모니터를 계속 붙여 둘 거예요.
       chunks:
@@ -1271,6 +2039,20 @@
       words:
         - w-monitor
       goal: 1
+      tag: 모니터 안내
+      icon: monitor
+      why: the whole time으로 시작부터 끝까지 지켜본다고 말하면 환자가 안심해요. 진정 중에는 호흡, 산소포화도, 심박수를 계속 확인해요.
+      decoy: in the hallway
+      distractorsKo:
+        - 모니터를 잠깐만 붙일게요
+        - 중간에 모니터를 뗄 거예요
+      blank:
+        answer: monitors
+        options:
+            - en: monitors
+            - en: antibiotics
+            - en: fluids
+            - en: bed rest
     - en: You'll feel sleepy, and we'll wake you gently afterward.
       ko: 졸리실 거고, 끝나면 부드럽게 깨워 드릴게요.
       chunks:
@@ -1284,6 +2066,20 @@
         - w-wake
         - w-gently
       goal: 2
+      tag: 진정 설명
+      icon: bell
+      why: sleepy라고 쉬운 말로 말하면 환자가 어떤 느낌일지 그릴 수 있어요. gently는 깨울 때도 부드럽게 한다는 약속이에요.
+      decoy: you suddenly
+      distractorsKo:
+        - 진정 중에는 계속 깨어 계실 거예요
+        - 끝나도 하루 종일 주무실 거예요
+      blank:
+        answer: sleepy
+        options:
+            - en: numb
+            - en: sleepy
+            - en: hungry
+            - en: dizzy
     - en: This is called procedural sedation.
       ko: 이걸 절차적 진정이라고 해요.
       chunks:
@@ -1294,6 +2090,20 @@
       words:
         - w-sedation
       goal: 1
+      tag: 용어 설명
+      icon: lab
+      why: 시술을 위한 진정이라는 이름을 알려 준 뒤 뜻을 풀어 주면 돼요. procedural sedation은 시술 동안 통증과 불안을 줄이려고 쓰는 진정으로, 전신마취와는 달리 환자가 스스로 숨을 쉬는 깊이를 목표로 해요.
+      decoy: or anesthesia
+      distractorsKo:
+        - 이걸 전신마취라고 해요
+        - 이건 수면제예요
+      blank:
+        answer: procedural
+        options:
+            - en: general
+            - en: palliative
+            - en: procedural
+            - en: daily
     - en: Your oxygen and heart rate will be watched the whole time.
       ko: 산소포화도와 심박수를 계속 지켜볼 거예요.
       chunks:
@@ -1307,6 +2117,20 @@
         - w-heart_rate
         - w-watch
       goal: 2
+      tag: 감시 항목
+      icon: stetho
+      why: 산소포화도와 심박수는 진정 중 가장 기본적인 감시 항목이에요. 쉬운 말로 oxygen and heart rate라고 해서 환자가 무엇을 지켜보는지 알게 해요.
+      decoy: will be changed
+      distractorsKo:
+        - 키와 몸무게를 쟀어요
+        - 혈액검사 결과를 계속 볼 거예요
+      blank:
+        answer: oxygen
+        options:
+            - en: temperature
+            - en: blood sugar
+            - en: weight
+            - en: oxygen
     - en: Someone will be with you from start to finish.
       ko: 처음부터 끝까지 누군가 함께 있을 거예요.
       chunks:
@@ -1318,6 +2142,20 @@
       words:
         - w-finish
       goal: 2
+      tag: 곁에 머물기
+      icon: hospital
+      why: 누군가 처음부터 끝까지 곁에 있다고 말하면 진정 중 혼자 남겨지는 두려움이 줄어요. 진정 중에는 환자를 계속 지켜보는 사람을 따로 두는 것이 권고돼요.
+      decoy: from here
+      distractorsKo:
+        - 중간에 잠깐 혼자 계실 거예요
+        - 의사 선생님이 대신 오실 거예요
+      blank:
+        answer: Someone
+        options:
+            - en: Someone
+            - en: Nobody
+            - en: A doctor
+            - en: Everyone
   nuance:
     - kind: slider
       words:
@@ -1338,6 +2176,8 @@
         - w-eat
         - w-drink
       why: NPO(nil per os, 금식)는 의료진 약어라 환자는 모를 수 있어요. 환자에게는 eat·drink로 풀어서 물어요.
+      ko: 먹거나 마시다
+      word: eat or drink
       scenes:
         - who: 인계
           icon: speech
@@ -1352,6 +2192,28 @@
           en: Have you been NPO?
           ok: false
           fix: Have you had anything to eat or drink since midnight?
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 진정 전 설명 4문장 순서
+    why: 마지막 식사 시간부터 확인해요. 그다음 졸리게 하는 약을 주겠다고 알리고, 졸린 동안(While you're sleepy) 모니터를 붙여 둔다고 해요. 마지막은 끝난 뒤(Afterward)의 약속이에요.
+    lines:
+        - en: First, when did you last eat or drink anything?
+          icon: coffee
+          ko: 먼저 마지막으로 먹거나 마신 게 언제예요?
+          note: 확인
+        - en: Thank you. We're going to give you a medicine that makes you sleepy.
+          icon: pill
+          ko: 감사해요. 졸리게 하는 약을 드릴 거예요
+          note: 설명
+        - en: While you're sleepy, we'll keep you on monitors the whole time.
+          icon: monitor
+          ko: 졸려 계시는 동안 내내 모니터를 붙여 둘게요
+          note: 감시
+        - en: Afterward, we'll wake you gently, and someone will stay with you.
+          icon: handshake2
+          ko: 끝나면 부드럽게 깨우고, 누군가 곁에 있을 거예요
+          note: 약속
 - id: SCN-ER-00109
   profession: ""
   eventId: EVT-ER-00101
@@ -1423,6 +2285,20 @@
         - w-give
         - w-stitches
       goal: 1
+      tag: 약 설명
+      icon: pill
+      why: won't feel the stitches로 아이가 아프지 않다는 점을 먼저 말해 부모를 안심시켜요. 국소마취나 진정 같은 방법은 의사가 정하니, 간호사는 부모가 이해하는 말로 목적을 전해요.
+      decoy: so he can feel
+      distractorsKo:
+        - 아이가 잠들 때까지 기다릴게요
+        - 봉합 후에 약을 드릴게요
+      blank:
+        answer: stitches
+        options:
+            - en: stitches
+            - en: bandage
+            - en: cast
+            - en: fever
     - en: You can stay right by his side the whole time.
       ko: 내내 아이 곁에 계셔도 돼요.
       chunks:
@@ -1435,6 +2311,20 @@
         - w-stay
         - w-side
       goal: 2
+      tag: 부모 동석
+      icon: home
+      why: 부모가 곁에 있을 수 있다고 알려 주면 아이도 부모도 덜 불안해요. 시술 중 보호자가 함께 있을 수 있는지는 병원 지침과 시술 종류에 따라 달라서 가능한 범위로 말해요.
+      decoy: far from
+      distractorsKo:
+        - 부모님은 밖에서 기다려 주세요
+        - 잠시 후에 들어오시면 돼요
+      blank:
+        answer: can
+        options:
+            - en: shouldn't
+            - en: can
+            - en: can't
+            - en: won't
     - en: Do you have any questions before we begin?
       ko: 시작하기 전에 궁금하신 점 있으세요?
       chunks:
@@ -1446,6 +2336,20 @@
         - w-question
         - w-begin
       goal: 2
+      tag: 질문 기회
+      icon: speech
+      why: 시작 전에 질문을 받으면 부모가 모르는 채 시술이 시작되지 않아요. any questions는 예·아니요보다 말문을 열어 주는 질문이에요.
+      decoy: after we finish
+      distractorsKo:
+        - 아이가 아침에 뭘 먹었나요?
+        - 아이 몸무게가 얼마나 되나요?
+      blank:
+        answer: questions
+        options:
+            - en: insurance
+            - en: pain
+            - en: questions
+            - en: allergies
     - en: The medicine will help him stay calm and still.
       ko: 이 약이 아이를 차분하고 가만히 있게 도와줄 거예요.
       chunks:
@@ -1458,6 +2362,20 @@
         - w-calm
         - w-still
       goal: 1
+      tag: 효과 설명
+      icon: coffee
+      why: calm and still은 약이 하는 일을 아이의 모습으로 그려 줘서 부모가 이해하기 쉬워요. 가만히 있어야 봉합이 안전하고 정확해서 알려 줘요.
+      decoy: and quickly
+      distractorsKo:
+        - 약이 아이를 뛰어다니게 해요
+        - 약이 열을 내려 줘요
+      blank:
+        answer: still
+        options:
+            - en: loud
+            - en: angry
+            - en: scared
+            - en: still
     - en: It's normal to feel nervous, and I'll explain each step.
       ko: 긴장되는 건 정상이에요, 단계마다 설명해 드릴게요.
       chunks:
@@ -1470,6 +2388,20 @@
         - w-nervous
         - w-step
       goal: 2
+      tag: 공감
+      icon: faceWorried
+      why: 긴장은 정상이라고 먼저 말하면 부모가 자기 반응을 잘못으로 여기지 않아요. 단계마다 설명한다는 약속은 통제감을 줘요.
+      decoy: It's rare to feel
+      distractorsKo:
+        - 긴장하면 시술을 못 해요
+        - 설명 없이 바로 시작할게요
+      blank:
+        answer: nervous
+        options:
+            - en: nervous
+            - en: guilty
+            - en: relieved
+            - en: angry
     - en: He'll wake up soon after we finish.
       ko: 끝나면 곧 아이가 깨어날 거예요.
       chunks:
@@ -1481,6 +2413,20 @@
         - w-wake
         - w-finish
       goal: 1
+      tag: 회복 안내
+      icon: calendar
+      why: soon after we finish로 깨어나는 시점을 알려 주면 부모가 기다리는 동안 덜 불안해요. 깨어나는 속도는 약과 아이에 따라 달라서 정확한 분 대신 soon이라고 말해요.
+      decoy: long after
+      distractorsKo:
+        - 아이는 하루 종일 잘 거예요
+        - 시술 중에 깨어 있을 거예요
+      blank:
+        answer: finish
+        options:
+            - en: leave
+            - en: finish
+            - en: arrive
+            - en: start
   nuance:
     - kind: pair
       words:
@@ -1503,6 +2449,7 @@
         - w-give
         - w-stitches
       why: laceration repair는 차트·시술명이에요. 가족에게는 stitches라고 해요.
+      ko: 봉합할 때 아프지 않게 아이에게 약을 조금 드릴 거예요
       who: 부모에게 · 봉합 전 설명
       icon: me
       before:
@@ -1518,6 +2465,28 @@
         stitches: 부모와 아이에게 쓰는 일상어예요.
         sutures: 의료진 용어예요. 틀리진 않지만 부모에게는 stitches가 더 친근해요.
         suturing procedure: 시술명처럼 딱딱해서 부모를 더 긴장시켜요.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 아이 봉합 전 설명 4문장 순서
+    why: 약 → 그 약(That medicine)이 하는 일 → 그 졸음(That sleepiness)이 풀리는 때를 설명하고, 다 들은 뒤(Now that you've heard all of that) 시작 전에 질문을 받아요.
+    lines:
+        - en: We'll give him a little medicine so he won't feel the stitches.
+          icon: pill
+          ko: 봉합이 아프지 않게 약을 조금 드릴 거예요
+          note: 약
+        - en: That medicine will make him sleepy, calm, and still.
+          icon: coffee
+          ko: 그 약이 아이를 졸리고 차분하게, 가만히 있게 해요
+          note: 효과
+        - en: That sleepiness wears off soon after we finish.
+          icon: calendar
+          ko: 그 졸음은 끝나고 곧 풀려요
+          note: 회복
+        - en: Now that you've heard all of that, do you have any questions before we begin?
+          icon: speech
+          ko: 다 들으셨으니, 시작 전에 궁금한 점 있으세요?
+          note: 질문
 - id: SCN-ER-00110
   profession: ""
   eventId: EVT-ER-00101
@@ -1589,6 +2558,20 @@
         - w-hurt
         - w-okay
       goal: 2
+      tag: 솔직 허용
+      icon: handshake2
+      why: 솔직하게 말해도 된다고 열어 주면 참는 환자가 실제 통증을 말하기 쉬워요. 판단하는 말을 쓰지 않고 말하는 사람의 부담을 덜어 줘요.
+      decoy: if it's easy
+      distractorsKo:
+        - 아프다고 말하면 약을 더 드려요
+        - 아프지 않으면 말씀하지 마세요
+      blank:
+        answer: really
+        options:
+            - en: hardly
+            - en: really
+            - en: never
+            - en: rarely
     - en: I notice you're guarding that side — can you show me?
       ko: 그쪽을 감싸고 계신 게 보이는데, 보여주시겠어요?
       chunks:
@@ -1602,6 +2585,20 @@
         - w-guard
         - w-side
       goal: 1
+      tag: 관찰 공유
+      icon: magnify
+      why: I notice …는 관찰한 사실만 말하고 추측이나 비난을 담지 않아요. 몸을 감싸는 자세(guarding)는 통증의 객관적인 단서라 조용히 확인하는 것이 좋아요.
+      decoy: I wonder if you
+      distractorsKo:
+        - 그쪽은 아프지 않은 거죠?
+        - 그쪽에 상처가 있나요?
+      blank:
+        answer: notice
+        options:
+            - en: hope
+            - en: insist
+            - en: notice
+            - en: doubt
     - en: There's no need to tough it out with me.
       ko: 저한테는 억지로 참으실 필요 없어요.
       chunks:
@@ -1613,6 +2610,20 @@
       words:
         - w-tough
       goal: 2
+      tag: 참지 않게
+      icon: coffee
+      why: tough it out은 아파도 참고 견딘다는 관용구예요. 나와 있을 땐 참지 않아도 된다고 말하면 소극적인 환자도 통증을 알려요.
+      decoy: to stop it
+      distractorsKo:
+        - 저한테 힘들다고 하지 마세요
+        - 통증은 참는 게 좋아요
+      blank:
+        answer: tough
+        options:
+            - en: talk
+            - en: work
+            - en: fight
+            - en: tough
     - en: Everyone shows pain in a different way, and that's okay.
       ko: 사람마다 통증을 표현하는 방식이 다르고, 그건 괜찮아요.
       chunks:
@@ -1625,6 +2636,20 @@
         - w-different
         - w-way
       goal: 1
+      tag: 다양성 인정
+      icon: speech
+      why: 사람마다 통증 표현이 다르다고 말하면 조용한 환자도 판단받지 않는다고 느껴요. 통증은 환자의 보고가 기준이지만, 표현이 적은 환자는 감싸기·찡그림 같은 행동 단서도 함께 봐요.
+      decoy: in the same
+      distractorsKo:
+        - 모두 같은 방식으로 아파해요
+        - 표현하지 않으면 통증이 아니에요
+      blank:
+        answer: different
+        options:
+            - en: different
+            - en: similar
+            - en: bad
+            - en: slow
     - en: You don't have to be brave for me.
       ko: 저한테 용감한 척 안 하셔도 돼요.
       chunks:
@@ -1635,6 +2660,20 @@
       words:
         - w-brave
       goal: 2
+      tag: 부담 덜기
+      icon: handshake2
+      why: 용감할 필요 없다고 말하면 아파도 괜찮은 척하던 환자가 부담을 내려놓아요. for me가 의료진을 위해 참을 필요가 없다는 뜻을 분명히 해요.
+      decoy: to be here
+      distractorsKo:
+        - 용감하면 약을 덜 드려요
+        - 저를 위해 용감해야 해요
+      blank:
+        answer: brave
+        options:
+            - en: polite
+            - en: brave
+            - en: calm
+            - en: quiet
     - en: Let's make sure we're not missing anything.
       ko: 혹시 놓친 게 없는지 확인해봐요.
       chunks:
@@ -1645,6 +2684,20 @@
       words:
         - w-miss
       goal: 2
+      tag: 함께 확인
+      icon: check
+      why: 함께 놓친 게 없는지 보자고 하면 환자를 의심하는 게 아니라 같이 확인하는 말로 들려요. 통증 점수와 몸의 신호가 어긋날 때 다시 살피는 계기가 돼요.
+      decoy: we're not done
+      distractorsKo:
+        - 지금까지 아무 문제도 없어요
+        - 더 이상 확인할 건 없어요
+      blank:
+        answer: missing
+        options:
+            - en: adding
+            - en: sharing
+            - en: missing
+            - en: hiding
   nuance:
     - kind: slider
       words:
@@ -1663,6 +2716,8 @@
         - w-tough
         - w-hurt
       why: minimizing은 사정 결과를 기술하는 임상어라 환자에게 직접 하면 '거짓말한다'는 비난처럼 들려요. 환자에게는 솔직하게 말해도 된다고 열어 줘요.
+      ko: 통증을 축소하다
+      word: minimize
       scenes:
         - who: 인계
           icon: speech
@@ -1677,6 +2732,28 @@
           en: You're minimizing your pain.
           ok: false
           fix: It's okay to tell me if it really hurts.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 통증을 숨기는 환자 4문장 순서
+    why: 보고(3점)와 행동이 어긋나는 것을 사실로 말하고(I notice), 그쪽(that side)이 더 아픈지 물어요. 정말 그렇다면(if it really does) 말해도 된다고 열어 주고, 그래야(That way) 놓치지 않는다고 마무리해요.
+    lines:
+        - en: You said a 3, but I notice you're guarding your right side.
+          icon: magnify
+          ko: 3점이라고 하셨는데 오른쪽을 감싸고 계시네요
+          note: 관찰
+        - en: Does that side hurt more than you said?
+          icon: stetho
+          ko: 그쪽이 말씀하신 것보다 더 아프세요?
+          note: 확인
+        - en: It's okay to tell me if it really does.
+          icon: handshake2
+          ko: 정말 그렇다면 말씀하셔도 괜찮아요
+          note: 허용
+        - en: That way, we won't miss anything.
+          icon: check
+          ko: 그래야 놓치는 게 없어요
+          note: 확인
 - id: SCN-ER-00111
   profession: ""
   eventId: EVT-ER-00101
@@ -1748,6 +2825,20 @@
         - w-worry
         - w-medicine
       goal: 1
+      tag: 걱정 묻기
+      icon: speech
+      why: what worries you는 거부의 이유를 판단 없이 열어 주는 질문이에요. 거부 이유(부작용이나 중독 걱정 등)를 알아야 대안을 제안할 수 있어요.
+      decoy: what helps you
+      distractorsKo:
+        - 약을 먹기 싫으신 이유를 적어 둘게요
+        - 약은 꼭 드셔야 해요
+      blank:
+        answer: medicine
+        options:
+            - en: bed
+            - en: schedule
+            - en: medicine
+            - en: food
     - en: I respect your choice — let's talk about other options.
       ko: 환자분의 선택을 존중해요, 다른 선택지도 이야기해봐요.
       chunks:
@@ -1761,6 +2852,20 @@
         - w-choice
         - w-option
       goal: 2
+      tag: 선택 존중
+      icon: handshake2
+      why: choice를 존중한다고 먼저 말하면 거절이 논쟁으로 번지지 않아요. 환자에게는 치료를 거부할 권리가 있고, 그 뒤에 대안을 이야기하는 것이 이어지는 돌봄이에요.
+      decoy: — let's skip
+      distractorsKo:
+        - 선택을 바꾸셔야 해요
+        - 의사에게 말씀하셔도 소용없어요
+      blank:
+        answer: respect
+        options:
+            - en: doubt
+            - en: question
+            - en: hate
+            - en: respect
     - en: We can start with something milder if you prefer.
       ko: 원하시면 더 순한 걸로 먼저 시작할 수 있어요.
       chunks:
@@ -1773,6 +2878,20 @@
         - w-start
         - w-prefer
       goal: 2
+      tag: 단계적 제안
+      icon: pill
+      why: if you prefer는 환자에게 선택권을 돌려줘요. 순한 약부터 시작해 필요하면 올리는 단계적 접근은 걱정이 큰 환자가 받아들이기 쉬워요.
+      decoy: if you must
+      distractorsKo:
+        - 더 센 약으로 바로 시작할게요
+        - 약 없이 끝까지 참으셔야 해요
+      blank:
+        answer: milder
+        options:
+            - en: milder
+            - en: stronger
+            - en: sweeter
+            - en: faster
     - en: Some patients worry about feeling too sleepy or losing control.
       ko: 너무 졸리거나 정신을 놓을까봐 걱정하는 환자분들도 계세요.
       chunks:
@@ -1787,6 +2906,20 @@
         - w-lose
         - w-control
       goal: 1
+      tag: 일반화
+      icon: faceWorried
+      why: Some patients …로 일반화하면 환자가 자기 걱정을 이상하게 여기지 않고 말해요. 졸림과 통제력 상실은 진정 효과가 있는 진통제를 꺼리는 흔한 이유예요.
+      decoy: about visiting
+      distractorsKo:
+        - 대부분의 환자는 약을 걱정하지 않아요
+        - 환자분만 그렇게 걱정하세요
+      blank:
+        answer: sleepy
+        options:
+            - en: nauseous
+            - en: sleepy
+            - en: itchy
+            - en: dizzy
     - en: We can try a non-opioid option instead.
       ko: 대신 비마약성 진통제를 시도해볼 수 있어요.
       chunks:
@@ -1799,6 +2932,20 @@
         - w-option
         - w-instead
       goal: 2
+      tag: 대안 약
+      icon: pill
+      why: non-opioid는 마약성이 아닌 진통제(아세트아미노펜, NSAID 등)를 가리켜요. 마약성 약을 꺼리는 환자에게도 통증 조절을 포기하지 않는다는 뜻을 전해요.
+      decoy: an opioid option
+      distractorsKo:
+        - 마약성 진통제를 더 드릴게요
+        - 진통제는 쓰지 않을 거예요
+      blank:
+        answer: instead
+        options:
+            - en: again
+            - en: tomorrow
+            - en: instead
+            - en: later
     - en: It's your choice, and I'll support whatever you decide.
       ko: 환자분의 선택이니, 무엇을 결정하시든 지지해드릴게요.
       chunks:
@@ -1812,6 +2959,20 @@
         - w-support
         - w-decide
       goal: 2
+      tag: 자기결정
+      icon: star
+      why: whatever you decide는 어떤 결정이든 존중한다는 뜻이라 거부하는 환자가 압박받지 않아요. 다만 필요하면 의사에게 알리고 위험을 설명해야 하는 책임은 남아 있어요.
+      decoy: ', but I''ll argue'
+      distractorsKo:
+        - 결정은 제가 대신 할게요
+        - 환자분의 선택은 중요하지 않아요
+      blank:
+        answer: support
+        options:
+            - en: question
+            - en: judge
+            - en: change
+            - en: support
   nuance:
     - kind: pair
       words:
@@ -1834,6 +2995,7 @@
         - w-choice
         - w-option
       why: '''강요할 수 없다''는 사실이지만 체념이나 불만처럼 들려요. respect your choice로 바꾸면 거부를 존중하면서 다음 이야기로 넘어가요.'
+      ko: 선택을 존중해요, 다른 방법도 이야기해봐요
       who: 진통제를 거부하는 환자에게
       icon: me
       before:
@@ -1849,6 +3011,28 @@
         have to accept that: 마지못해 받아들이는 것처럼 들려요.
         respect your choice: 환자의 결정권을 인정하면서 대안으로 대화를 이어 가요.
         won't argue with you: 대화를 끝내 버리는 느낌이라 대안을 찾기 어려워요.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 진통제를 거부하는 환자 4문장 순서
+    why: 걱정이 무엇인지 먼저 물어요. 그 걱정(that)이 흔하다고 알린 뒤, 더 순한 약이나 비마약성 약을 제안해요. 마지막은 어떤 결정이든 지지한다는 말이에요(Whichever of those).
+    lines:
+        - en: First, can you tell me what worries you about the medicine?
+          icon: speech
+          ko: 먼저 약에 대해 어떤 점이 걱정되세요?
+          note: 질문
+        - en: Thank you. Many patients worry about that.
+          icon: faceWorried
+          ko: 감사해요. 많은 분들이 그 점을 걱정해요
+          note: 공감
+        - en: If you prefer, we can try something milder or a non-opioid option.
+          icon: pill
+          ko: 원하시면 순한 약이나 비마약성 약을 해볼 수 있어요
+          note: 제안
+        - en: Whichever of those you choose, or none, I'll support you.
+          icon: star
+          ko: 그중 무엇을 고르시든, 안 고르셔도 지지할게요
+          note: 지지
 - id: SCN-ER-00112
   profession: ""
   eventId: EVT-ER-00101
@@ -1919,6 +3103,20 @@
         - w-list
         - w-medicine
       goal: 1
+      tag: 복용약 나열
+      icon: pill
+      why: Can you list는 한 번에 모두 말해 달라는 부드러운 부탁이에요. 사 먹는 약, 수면제, 보충제까지 포함해 물어야 병용 위험을 빠뜨리지 않아요.
+      decoy: the doctors you
+      distractorsKo:
+        - 오늘 몇 시에 일어나셨어요?
+        - 오늘 식사를 하셨나요?
+      blank:
+        answer: list
+        options:
+            - en: count
+            - en: bring
+            - en: check
+            - en: list
     - en: Some of these can make you very sleepy together.
       ko: 이 약들이 함께면 많이 졸리게 만들 수 있어요.
       chunks:
@@ -1931,6 +3129,20 @@
         - w-sleepy
         - w-together
       goal: 1
+      tag: 위험 안내
+      icon: bell
+      why: together라는 한 단어로 약이 합쳐질 때 문제가 생긴다는 핵심을 전해요. 졸리게 하는 약끼리는 효과가 겹쳐 더 졸릴 수 있어요.
+      decoy: one by one
+      distractorsKo:
+        - 이 약들은 서로 아무 문제가 없어요
+        - 이 약 하나만으로도 위험해요
+      blank:
+        answer: together
+        options:
+            - en: together
+            - en: alone
+            - en: tomorrow
+            - en: outside
     - en: We'll choose something safe with what you already take.
       ko: 이미 드시는 약과 안전하게 맞는 걸 골라드릴게요.
       chunks:
@@ -1944,6 +3156,20 @@
         - w-safe
         - w-take
       goal: 2
+      tag: 안전 선택
+      icon: shield
+      why: 이미 먹는 약을 고려해 고른다고 알리면 환자가 약 때문에 위험해질까 하는 걱정을 덜어요. 약의 상호작용은 약사와 의사가 함께 확인하는 것이 안전해요.
+      decoy: risky with
+      distractorsKo:
+        - 제일 센 약부터 고를게요
+        - 드시는 약을 모두 끊을게요
+      blank:
+        answer: safe
+        options:
+            - en: fast
+            - en: safe
+            - en: strong
+            - en: new
     - en: Mixing sedatives and pain medicine can slow your breathing.
       ko: 진정제와 진통제를 섞으면 호흡이 느려질 수 있어요.
       chunks:
@@ -1958,6 +3184,20 @@
         - w-slow
         - w-breathe
       goal: 1
+      tag: 위험 설명
+      icon: lock
+      why: 진정 효과가 있는 약과 마약성 진통제를 함께 쓰면 호흡을 느리게 하는 효과가 겹칠 수 있어요. 환자에게는 slow your breathing처럼 그려지는 말로 설명해요.
+      decoy: can help your
+      distractorsKo:
+        - 진정제는 호흡에 도움이 돼요
+        - 진통제를 섞으면 더 빨리 나아요
+      blank:
+        answer: slow
+        options:
+            - en: improve
+            - en: boost
+            - en: slow
+            - en: speed
     - en: This combination could make you too drowsy to stay safe.
       ko: 이 조합은 너무 졸리게 만들어 안전하지 않을 수 있어요.
       chunks:
@@ -1972,6 +3212,20 @@
         - w-safe
         - w-stay
       goal: 1
+      tag: 위험 설명
+      icon: faceWorried
+      why: too … to … 틀은 졸림이 안전을 해칠 정도라는 뜻이에요. 너무 졸리면 낙상이나 호흡 문제의 위험이 커져서 미리 알려요.
+      decoy: wake you
+      distractorsKo:
+        - 이 조합은 아주 안전해요
+        - 이 조합은 잠을 못 자게 해요
+      blank:
+        answer: drowsy
+        options:
+            - en: dizzy
+            - en: restless
+            - en: weak
+            - en: drowsy
     - en: I'll pick a dose that won't add to that risk.
       ko: 그 위험을 더하지 않을 용량으로 골라드릴게요.
       chunks:
@@ -1983,6 +3237,20 @@
       words:
         - w-risk
       goal: 2
+      tag: 용량 선택
+      icon: gear
+      why: that risk로 앞에서 설명한 위험을 가리켜 이어 말해요. 병용 위험이 있을 때는 처방 범위 안에서 용량을 낮추거나 조정하고, 그 계획을 환자에게 풀어 설명해요.
+      decoy: that will add
+      distractorsKo:
+        - 위험을 더 크게 할 용량을 고를게요
+        - 용량은 환자분이 직접 고르세요
+      blank:
+        answer: risk
+        options:
+            - en: risk
+            - en: list
+            - en: stress
+            - en: pain
   nuance:
     - kind: pair
       words:
@@ -2005,6 +3273,8 @@
         - w-breathe
         - w-sedative
       why: benzodiazepine·respiratory depression은 의료진끼리 쓰는 말이에요. 환자에게는 자기 약을 쉬운 이름으로 부르고 'slow your breathing'이라고 해요.
+      ko: 느려지게 하다
+      word: slow
       scenes:
         - who: 환자에게
           icon: me
@@ -2019,6 +3289,28 @@
           en: Concurrent benzodiazepine use increases your risk of respiratory depression.
           ok: false
           fix: Taking your anxiety pill with pain medicine can slow your breathing.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 여러 약을 함께 먹는 환자 4문장 순서
+    why: 먹은 약부터 말하게 해요. 그 약들(those)이 함께 졸리게 할 수 있다고 알리고, 진통제를 더하면 그것(that)이 호흡까지 느리게 할 수 있다고 설명해요. 그래서(that risk) 용량을 고른다고 마무리해요.
+    lines:
+        - en: Can you list the medicines you took today?
+          icon: pencil
+          ko: 오늘 드신 약들을 말씀해 주시겠어요?
+          note: 확인
+        - en: Some of those can make you very sleepy together.
+          icon: bell
+          ko: 그중 몇 가지는 함께면 많이 졸리게 해요
+          note: 위험
+        - en: With pain medicine added, that can even slow your breathing.
+          icon: lock
+          ko: 진통제까지 더하면 호흡이 느려질 수도 있어요
+          note: 설명
+        - en: So I'll pick a dose that won't add to that risk.
+          icon: gear
+          ko: 그 위험을 더하지 않을 용량으로 고를게요
+          note: 선택
 - id: SCN-ER-00113
   profession: ""
   eventId: EVT-ER-00101
@@ -2090,6 +3382,20 @@
         - w-interpreter
         - w-understand
       goal: 1
+      tag: 통역 연결
+      icon: speech
+      why: 자격을 갖춘 의료 통역사를 쓰면 통증 설명이 정확해져요. 미국 병원은 영어가 서툰 환자에게 통역 서비스(대면·전화·화상)를 제공해야 해요.
+      decoy: so we argue
+      distractorsKo:
+        - 가족을 불러올게요
+        - 의사 선생님을 불러올게요
+      blank:
+        answer: get
+        options:
+            - en: get
+            - en: cancel
+            - en: skip
+            - en: ignore
     - en: Point to the face that matches your pain.
       ko: 통증과 맞는 얼굴을 가리켜 주세요.
       chunks:
@@ -2102,6 +3408,20 @@
         - w-face
         - w-pain
       goal: 1
+      tag: 얼굴 척도
+      icon: faceWorried
+      why: 통증 얼굴 척도(Wong-Baker FACES 등)는 말이 통하지 않아도 강도를 표현하게 해 줘요. 숫자 대신 얼굴을 고르게 하면 영어가 서툰 환자나 아이도 답할 수 있어요.
+      decoy: that scares
+      distractorsKo:
+        - 통증이 있는 부위를 가리켜 주세요
+        - 통증이 시작된 날짜를 가리켜 주세요
+      blank:
+        answer: matches
+        options:
+            - en: fixes
+            - en: matches
+            - en: hides
+            - en: causes
     - en: Show me with your hand where it hurts.
       ko: 손으로 아픈 곳을 보여주세요.
       chunks:
@@ -2114,6 +3434,20 @@
         - w-hand
         - w-hurt
       goal: 2
+      tag: 손짓 사정
+      icon: me
+      why: Show me …는 말을 못 해도 몸짓으로 답할 수 있게 해요. 짧고 쉬운 동사 위주 문장은 통역이 오기 전에도 알아듣기 쉬워요.
+      decoy: with your foot
+      distractorsKo:
+        - 아픈 날짜를 말씀해 주세요
+        - 아픈 정도를 숫자로 말씀해 주세요
+      blank:
+        answer: hurts
+        options:
+            - en: itches
+            - en: grows
+            - en: hurts
+            - en: heals
     - en: This face means no pain, and this one means the worst pain.
       ko: 이 얼굴은 통증 없음, 이 얼굴은 가장 심한 통증을 뜻해요.
       chunks:
@@ -2126,6 +3460,20 @@
         - w-face
         - w-worst
       goal: 1
+      tag: 척도 설명
+      icon: star
+      why: 양 끝(통증 없음, 가장 심한 통증)을 먼저 알려 주면 환자가 그 사이에서 고를 수 있어요. 척도의 끝은 쉬운 단어로 천천히 설명해요.
+      decoy: means a happy day
+      distractorsKo:
+        - 이 얼굴은 가장 행복한 상태를 뜻해요
+        - 두 얼굴 모두 같은 통증이에요
+      blank:
+        answer: worst
+        options:
+            - en: best
+            - en: same
+            - en: first
+            - en: worst
     - en: Squeeze my hand if you can't speak right now.
       ko: 지금 말씀하기 힘드시면 제 손을 꽉 쥐어 주세요.
       chunks:
@@ -2138,6 +3486,20 @@
         - w-squeeze
         - w-speak
       goal: 2
+      tag: 비언어 응답
+      icon: handshake2
+      why: 말하기 힘든 환자에게는 손을 쥐는 간단한 신호로 답하게 해요. 쥐기로 예·아니요를 미리 약속해 두면 통증과 의식 상태를 계속 확인할 수 있어요.
+      decoy: when you can
+      distractorsKo:
+        - 숨을 크게 쉬어 보세요
+        - 눈을 감고 계세요
+      blank:
+        answer: Squeeze
+        options:
+            - en: Squeeze
+            - en: Drop
+            - en: Shake
+            - en: Release
     - en: I'm watching your breathing and your expression too.
       ko: 호흡이랑 표정도 함께 지켜보고 있어요.
       chunks:
@@ -2150,6 +3512,20 @@
         - w-breathe
         - w-expression
       goal: 2
+      tag: 관찰 안내
+      icon: stetho
+      why: 말이 통하지 않을 때는 호흡과 표정 같은 비언어 신호가 중요한 단서예요. 지켜본다고 알리면 환자가 말하지 못해도 돌봄을 받고 있다고 느껴요.
+      decoy: I'm asking about
+      distractorsKo:
+        - 숨 쉬는 소리는 안 들어요
+        - 표정은 기록하지 않아요
+      blank:
+        answer: watching
+        options:
+            - en: missing
+            - en: watching
+            - en: ignoring
+            - en: forgetting
   nuance:
     - kind: pair
       words:
@@ -2172,6 +3548,7 @@
         - w-interpreter
         - w-understand
       why: 가족, 특히 자녀를 통역으로 쓰는 건 정확성과 사생활 문제로 권장되지 않아요. 의료 통역사를 불러요.
+      ko: 서로 이해할 수 있게 통역사를 불러올게요
       who: 영어가 서툰 환자에게
       icon: me
       before:
@@ -2187,6 +3564,28 @@
         a translator: translator는 문서를 번역하는 사람이에요. 대화에는 interpreter라고 해요.
         an interpreter: 말을 통역하는 사람은 interpreter예요. 미국 병원은 자격 있는 의료 통역(대면·전화·화상)을 제공해야 해요.
         someone who speaks your language: 자격 없는 직원이나 방문객은 의학 용어를 잘못 옮길 위험이 있어요.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 영어가 서툰 환자의 통증 사정 4문장 순서
+    why: 통역사를 부르는 것이 먼저예요. 기다리는 동안(While we wait) 얼굴 척도를 가리키게 하고, 그것(that)이 어려우면 손으로 보여 달라고 해요. 어느 쪽이든(Either way) 호흡과 얼굴을 계속 지켜본다고 마무리해요.
+    lines:
+        - en: Let me get an interpreter so we understand each other.
+          icon: speech
+          ko: 서로 이해할 수 있게 통역사를 불러올게요
+          note: 통역
+        - en: While we wait, point to the face that matches your pain.
+          icon: faceWorried
+          ko: 기다리는 동안 통증과 맞는 얼굴을 가리켜 주세요
+          note: 척도
+        - en: If that's hard, just show me with your hand where it hurts.
+          icon: me
+          ko: 그게 어려우면 손으로 아픈 곳을 보여 주세요
+          note: 손짓
+        - en: Either way, I'll keep watching your breathing and your face.
+          icon: monitor
+          ko: 어느 쪽이든 호흡과 표정을 계속 지켜볼게요
+          note: 관찰
 - id: SCN-ER-00114
   profession: ""
   eventId: EVT-ER-00102
@@ -2256,6 +3655,20 @@
         - '?'
       words: []
       goal: 1
+      tag: 지남력 확인
+      icon: speech
+      why: 이름과 장소를 묻는 것은 마취에서 깨어난 환자의 지남력(의식과 방향 감각)을 확인하는 기본 질문이에요. 짧고 천천히 말해야 졸린 환자도 따라와요.
+      decoy: your phone
+      distractorsKo:
+        - 어디가 아픈지 말씀해 주세요
+        - 약을 언제 드셨는지 말씀해 주세요
+      blank:
+        answer: name
+        options:
+            - en: diet
+            - en: name
+            - en: address
+            - en: weight
     - en: Take a nice deep breath for me.
       ko: 저를 위해 깊게 숨을 한번 쉬어 주세요.
       chunks:
@@ -2266,6 +3679,20 @@
       words:
         - w-breathe
       goal: 1
+      tag: 호흡 요청
+      icon: monitor
+      why: nice deep breath는 환자가 숨을 스스로 깊게 쉬는지 확인하는 간단한 요청이에요. for me를 붙이면 지시가 아니라 부탁처럼 들려 졸린 환자가 따라 하기 쉬워요.
+      decoy: long sigh
+      distractorsKo:
+        - 숨을 참고 계세요
+        - 입을 크게 벌려 주세요
+      blank:
+        answer: deep
+        options:
+            - en: weak
+            - en: tiny
+            - en: deep
+            - en: shallow
     - en: You did great — the procedure is all done.
       ko: 정말 잘하셨어요, 시술이 다 끝났어요.
       chunks:
@@ -2279,6 +3706,20 @@
         - w-procedure
         - w-done
       goal: 2
+      tag: 격려
+      icon: trophy
+      why: You did great로 환자를 칭찬하면서 all done으로 끝났음을 분명히 알려요. 깨어나는 환자에게는 칭찬과 '끝났다'는 사실을 함께 말해 불안을 먼저 덜어요.
+      decoy: visit is
+      distractorsKo:
+        - 시술이 이제 막 시작됐어요
+        - 시술이 아직 절반 남았어요
+      blank:
+        answer: procedure
+        options:
+            - en: paperwork
+            - en: test
+            - en: X-ray
+            - en: procedure
     - en: Do you know what day it is?
       ko: 오늘이 며칠인지 아세요?
       chunks:
@@ -2289,6 +3730,20 @@
       words:
         - w-day
       goal: 1
+      tag: 지남력 확인
+      icon: compass
+      why: 날짜를 묻는 것은 마취에서 깨어난 환자의 지남력을 보는 질문이에요. 답이 흐리면 아직 약기운이 남아 있다는 신호라 계속 지켜봐요.
+      decoy: how old
+      distractorsKo:
+        - 지금 몇 시인지 아세요?
+        - 오늘 날씨를 아세요?
+      blank:
+        answer: day
+        options:
+            - en: day
+            - en: time
+            - en: hospital
+            - en: floor
     - en: Your breathing looks much better now.
       ko: 호흡이 훨씬 좋아지셨네요.
       chunks:
@@ -2300,6 +3755,20 @@
         - w-breathe
         - w-better
       goal: 1
+      tag: 호흡 설명
+      icon: stetho
+      why: much better now로 이전과 비교해 좋아졌다고 알려 주면 환자가 안심해요. 호흡 상태를 말로 알려 주는 것은 회복 중 환자에게 중요한 피드백이에요.
+      decoy: much worse
+      distractorsKo:
+        - 호흡이 아직 불안정해요
+        - 호흡 소리가 시끄러워요
+      blank:
+        answer: better
+        options:
+            - en: faster
+            - en: better
+            - en: worse
+            - en: heavier
     - en: You're safe, and everything went well.
       ko: 안전하세요, 다 잘 됐어요.
       chunks:
@@ -2311,6 +3780,20 @@
         - w-safe
         - w-well
       goal: 2
+      tag: 안심시키기
+      icon: shield
+      why: 깨어나는 환자는 어디에 있는지 몰라 불안할 수 있어서 safe를 먼저 말해 줘요. 결과는 짧게 알리고 자세한 설명은 환자가 더 깨어난 뒤에 해요.
+      decoy: but everything
+      distractorsKo:
+        - 아직 위험한 상태예요
+        - 시술이 잘 안 됐어요
+      blank:
+        answer: safe
+        options:
+            - en: awake
+            - en: angry
+            - en: safe
+            - en: alone
   nuance:
     - kind: pair
       words:
@@ -2329,6 +3812,8 @@
         - w-done
         - w-well
       why: '''tolerated the procedure well''은 차트·인계 표현이에요. 깨어나는 환자 앞에서 3인칭 ''the patient''로 말하면 차갑고 혼란스럽게 들려요.'
+      ko: 시술
+      word: procedure
       scenes:
         - who: 환자에게
           icon: me
@@ -2343,6 +3828,28 @@
           en: The patient tolerated the procedure well.
           ok: false
           fix: You did great — it's all done, and everything went well.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 마취에서 깨어난 환자 4문장 순서
+    why: 끝났다는 말로 안심시킨 뒤 장소를 물어요. 답을 확인한 뒤(That's right, the hospital) 날짜를 물어요. 마지막은 대답에 이어(Good) 호흡이 좋아졌다고 알려요.
+    lines:
+        - en: You did great — the procedure is all done.
+          icon: trophy
+          ko: 정말 잘하셨어요, 시술이 다 끝났어요
+          note: 격려
+        - en: Can you tell me where you are right now?
+          icon: speech
+          ko: 지금 어디 계신지 말씀해 주시겠어요?
+          note: 장소
+        - en: That's right, the hospital. Do you know what day it is?
+          icon: compass
+          ko: 맞아요, 병원이에요. 오늘이 며칠인지 아세요?
+          note: 날짜
+        - en: Good, your breathing looks much better now.
+          icon: stetho
+          ko: 좋아요, 호흡이 훨씬 좋아지셨어요
+          note: 호흡
 - id: SCN-ER-00115
   profession: ""
   eventId: EVT-ER-00102
@@ -2414,6 +3921,20 @@
         - w-breathe
         - w-deeply
       goal: 1
+      tag: 호흡 지시
+      icon: monitor
+      why: 호흡이 느려질 때는 짧고 구체적인 지시가 가장 잘 전달돼요. right now로 급하다는 점을 알리고 deeply로 행동을 정확히 말해요.
+      decoy: for him
+      distractorsKo:
+        - 숨을 참고 계세요
+        - 눈을 감고 쉬세요
+      blank:
+        answer: deeply
+        options:
+            - en: quietly
+            - en: rarely
+            - en: deeply
+            - en: lightly
     - en: Open your eyes — squeeze my hand.
       ko: 눈을 떠 보세요, 제 손을 꽉 쥐어 보세요.
       chunks:
@@ -2426,6 +3947,20 @@
         - w-eye
         - w-squeeze
       goal: 2
+      tag: 각성 자극
+      icon: faceWorried
+      why: 눈을 뜨고 손을 쥐게 하는 것은 의식과 반응을 확인하는 가장 단순한 명령이에요. 두 동작을 한 번에 말해 환자의 반응 정도를 한눈에 봐요.
+      decoy: — shake
+      distractorsKo:
+        - 눈을 감고 계세요
+        - 다리를 움직여 보세요
+      blank:
+        answer: squeeze
+        options:
+            - en: drop
+            - en: release
+            - en: raise
+            - en: squeeze
     - en: We're giving you extra oxygen to help you breathe.
       ko: 숨쉬기 편하게 산소를 더 드리고 있어요.
       chunks:
@@ -2439,6 +3974,20 @@
         - w-oxygen
         - w-breathe
       goal: 2
+      tag: 산소 투여
+      icon: lab
+      why: extra oxygen이라고 쉬운 말로 알려 주면 환자가 지금 무슨 일이 일어나는지 알아요. 진정 중 호흡이 느려지면 깨우는 자극, 기도 열기, 산소 올리기를 함께 해요.
+      decoy: to let you
+      distractorsKo:
+        - 수액을 더 드리고 있어요
+        - 약을 더 드리고 있어요
+      blank:
+        answer: oxygen
+        options:
+            - en: oxygen
+            - en: water
+            - en: pillows
+            - en: blankets
     - en: Your oxygen level is dropping, so I'm calling for help.
       ko: 산소포화도가 떨어지고 있어서 도움을 부르고 있어요.
       chunks:
@@ -2451,6 +4000,20 @@
         - w-level
         - w-call
       goal: 1
+      tag: 도움 요청
+      icon: siren
+      why: 수치가 떨어지는 사실을 알리고 그래서 도움을 부른다고 이유를 이으면 환자가 불안한 와중에도 상황을 이해해요. 진정 중에는 도움 요청이 지체 없이 이뤄져야 해요.
+      decoy: ', so I''m leaving'
+      distractorsKo:
+        - 산소가 충분히 올라가고 있어요
+        - 산소가 필요 없어졌어요
+      blank:
+        answer: dropping
+        options:
+            - en: growing
+            - en: dropping
+            - en: rising
+            - en: improving
     - en: I'm going to open your airway now.
       ko: 지금 기도를 열어 드릴게요.
       chunks:
@@ -2461,6 +4024,20 @@
       words:
         - w-airway
       goal: 1
+      tag: 기도 확보
+      icon: stetho
+      why: 기도를 연다는 말을 미리 하면 머리나 턱을 만져도 환자가 놀라지 않아요. 진정 중 호흡이 약하면 턱을 들거나 기도를 열어 주는 조치를 해요.
+      decoy: check your arm
+      distractorsKo:
+        - 지금 바로 침대에서 내려오세요
+        - 지금 산소 마스크를 벗겨 드릴게요
+      blank:
+        answer: open
+        options:
+            - en: block
+            - en: cover
+            - en: open
+            - en: close
     - en: Stay with me and keep your eyes open.
       ko: 저와 함께 있어요, 눈을 계속 뜨고 계세요.
       chunks:
@@ -2473,6 +4050,20 @@
         - w-eye
         - w-open
       goal: 2
+      tag: 의식 유지
+      icon: me
+      why: Stay with me는 곁에 있겠다는 신호이면서 환자가 의식을 붙잡게 해요. 눈 뜨기 같은 행동 지시는 반응을 확인하는 수단도 돼요.
+      decoy: and let go
+      distractorsKo:
+        - 눈을 감고 쉬세요
+        - 저를 보지 말고 누워 계세요
+      blank:
+        answer: open
+        options:
+            - en: closed
+            - en: shut
+            - en: down
+            - en: open
   nuance:
     - kind: pair
       words:
@@ -2494,6 +4085,8 @@
         - w-oxygen
         - w-level
       why: sats·desatting은 의료진 은어예요. 환자에게는 숫자 대신 지금 할 행동(숨 크게 쉬기)과 하고 있는 조치를 말해요.
+      ko: 산소포화도
+      word: sats
       scenes:
         - who: 팀에게
           icon: siren
@@ -2508,6 +4101,28 @@
           en: You're desatting, your sats are 84.
           ok: false
           fix: Take a big breath for me — we're giving you extra oxygen.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 진정 중 호흡이 느려질 때 4문장 순서
+    why: 수치가 떨어진다고 알리며 숨을 크게 쉬게 해요. 그것(that)을 돕는 산소를 준다고 말하고, 그래도 오르지 않으면(it) 기도를 연다고 알려요. 실제로는 자극·기도 열기·산소를 지체 없이 함께 해요. 마지막은 그 조치(that) 동안 눈을 뜨게 해요.
+    lines:
+        - en: Your oxygen level is dropping, so breathe deeply for me.
+          icon: monitor
+          ko: 산소포화도가 떨어져서 깊게 숨을 쉬어 주세요
+          note: 지시
+        - en: We're giving you extra oxygen to help with that.
+          icon: lab
+          ko: 그걸 돕도록 산소를 더 드리고 있어요
+          note: 산소
+        - en: If it doesn't come up, I'm going to open your airway.
+          icon: stetho
+          ko: 오르지 않으면 기도를 열어 드릴게요
+          note: 기도
+        - en: Stay with me and keep your eyes open while I do that.
+          icon: me
+          ko: 제가 그걸 하는 동안 눈을 계속 뜨고 계세요
+          note: 의식
 - id: SCN-ER-00116
   profession: ""
   eventId: EVT-ER-00102
@@ -2579,6 +4194,20 @@
         - w-breathe
         - w-reversal
       goal: 1
+      tag: 상황 설명
+      icon: bell
+      why: reversal medicine은 약의 효과를 되돌리는 약이라는 쉬운 설명이에요. 왜 약을 줬는지(숨을 잘 못 쉬었다)를 먼저 말하면 환자가 놀라지 않아요.
+      decoy: ', so we told you'
+      distractorsKo:
+        - 숨 쉬는 게 더 좋아져서 약을 줄였어요
+        - 수면제를 드렸어요
+      blank:
+        answer: reversal
+        options:
+            - en: sleeping
+            - en: cough
+            - en: heart
+            - en: reversal
     - en: Do you know what you took today?
       ko: 오늘 뭘 드셨는지 아세요?
       chunks:
@@ -2589,6 +4218,20 @@
       words:
         - w-know
       goal: 1
+      tag: 복용 확인
+      icon: pill
+      why: 무엇을 얼마나 복용했는지는 과다복용 치료에서 가장 중요한 정보예요. 판단하지 않는 말투로 물어야 환자가 사실대로 답해요.
+      decoy: what you need
+      distractorsKo:
+        - 오늘 뭘 드셔야 하는지 아세요?
+        - 오늘 몇 시에 일어나셨는지 아세요?
+      blank:
+        answer: took
+        options:
+            - en: took
+            - en: bought
+            - en: sold
+            - en: smoked
     - en: You may feel sick or shaky — that will pass.
       ko: 속이 안 좋거나 떨릴 수 있는데, 곧 지나갈 거예요.
       chunks:
@@ -2602,6 +4245,20 @@
         - w-shaky
         - w-pass
       goal: 2
+      tag: 증상 안내
+      icon: faceWorried
+      why: 오피오이드에 의존이 있는 사람은 날록손 뒤에 약효가 갑자기 풀려 메스꺼움·떨림 같은 금단 증상이 올 수 있어요. that will pass로 일시적이라고 알리면 환자가 놀라지 않아요.
+      decoy: — that will stay
+      distractorsKo:
+        - 메스꺼움은 오래 갈 거예요
+        - 떨림은 위험해서 약을 더 드릴게요
+      blank:
+        answer: shaky
+        options:
+            - en: calm
+            - en: shaky
+            - en: sleepy
+            - en: itchy
     - en: The reversal medicine works fast, but it wears off sooner than the opioid.
       ko: 역전제는 빨리 듣지만 마약성 진통제보다 먼저 효과가 사라져요.
       chunks:
@@ -2615,6 +4272,20 @@
         - w-wear_off
         - w-opioid
       goal: 1
+      tag: 지속 시간
+      icon: calendar
+      why: 날록손은 작용 시간이 짧아서, 마약성 약이 더 오래 남으면 호흡이 다시 느려질 수 있어요. 그래서 약이 풀린 뒤에도 환자를 지켜봐요.
+      decoy: ', so it lasts'
+      distractorsKo:
+        - 이 약은 마약성 약보다 오래 가요
+        - 이 약은 한 번 맞으면 영구히 가요
+      blank:
+        answer: sooner
+        options:
+            - en: easier
+            - en: slower
+            - en: sooner
+            - en: later
     - en: Your pain may come back once the medicine wears off.
       ko: 약효가 사라지면 통증이 다시 돌아올 수 있어요.
       chunks:
@@ -2627,6 +4298,20 @@
         - w-pain
         - w-wear_off
       goal: 2
+      tag: 통증 재발
+      icon: chartup
+      why: 역전제는 진통 효과까지 되돌리므로 통증이 다시 올 수 있어요. 미리 알리면 통증이 돌아와도 약이 잘못된 게 아니라고 이해해요.
+      decoy: away when
+      distractorsKo:
+        - 통증은 이제 다시 안 올 거예요
+        - 약이 오래 남아서 통증이 없을 거예요
+      blank:
+        answer: once
+        options:
+            - en: unless
+            - en: before
+            - en: although
+            - en: once
     - en: We'll stay close and watch you for a few hours.
       ko: 몇 시간 동안 가까이서 지켜볼게요.
       chunks:
@@ -2640,6 +4325,20 @@
         - w-watch
         - w-hour
       goal: 2
+      tag: 관찰 약속
+      icon: monitor
+      why: 역전제 뒤에는 약효가 다시 올라올 수 있어서 몇 시간 지켜보는 것이 일반적이에요. 얼마나 지켜볼지는 약과 환자 상태에 따라 병원 지침으로 정해요.
+      decoy: for the days
+      distractorsKo:
+        - 한 시간 안에 퇴원하실 거예요
+        - 저는 바로 자리를 비울 거예요
+      blank:
+        answer: hours
+        options:
+            - en: hours
+            - en: seconds
+            - en: weeks
+            - en: years
   nuance:
     - kind: slider
       words:
@@ -2658,6 +4357,7 @@
         - w-reversal
         - w-breathe
       why: opioid antagonist는 약리 용어예요. 환자에게는 약 이름과 하는 일(숨쉬게 돕는다)을 쉬운 말로 알려 줘요.
+      ko: 숨 쉬는 걸 돕는 나르칸이라는 약을 드렸어요
       who: 깨어난 환자에게 · 날록손 설명
       icon: me
       before:
@@ -2673,6 +4373,28 @@
         a medicine called Narcan: Narcan은 날록손의 상품명으로, 미국에서는 일반 판매도 되어 환자에게 익숙한 이름이에요.
         a narcotic: 정반대예요. 날록손은 마약성 약이 아니라 그 효과를 되돌리는 약이에요.
         naloxone hydrochloride: 정확하지만 화학명이라 딱딱해요. 차트에는 naloxone으로 적어요.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 날록손 투여 후 설명 4문장 순서
+    why: 숨을 못 쉬어서 역전제를 줬다고 먼저 알려요. 한꺼번에 되돌려서(it) 올 수 있는 증상을 말하고, 그건 지나가지만(That will pass) 역전제가 먼저 풀리면 마약성 약 때문에 호흡이 다시 느려질 수 있다고 해요. 그래서(So) 몇 시간 호흡을 지켜봐요.
+    lines:
+        - en: You stopped breathing well, so we gave you a reversal medicine.
+          icon: bell
+          ko: 호흡이 잘 안 되셔서 역전제를 드렸어요
+          note: 설명
+        - en: It reverses the opioid all at once, so you may feel sick or shaky.
+          icon: faceWorried
+          ko: 한꺼번에 되돌려서 속이 안 좋거나 떨릴 수 있어요
+          note: 증상
+        - en: That will pass, but the medicine can wear off before the opioid does.
+          icon: calendar
+          ko: 그건 지나가지만, 역전제가 마약성 약보다 먼저 풀릴 수 있어요
+          note: 지속
+        - en: So we'll stay close and watch your breathing for a few hours.
+          icon: monitor
+          ko: 그래서 몇 시간 곁에서 호흡을 지켜볼게요
+          note: 관찰
 - id: SCN-ER-00117
   profession: ""
   eventId: EVT-ER-00102
@@ -2745,6 +4467,20 @@
         - w-unbearable
         - w-believe
       goal: 2
+      tag: 공감 표현
+      icon: faceWorried
+      why: I can see …로 환자의 고통을 직접 보고 인정해요. 약이 듣지 않는 통증일수록 믿는다는 말이 먼저 필요해요.
+      decoy: ', but I doubt'
+      distractorsKo:
+        - 이 통증은 곧 사라질 거예요
+        - 이 통증은 별것 아니에요
+      blank:
+        answer: unbearable
+        options:
+            - en: unbearable
+            - en: mild
+            - en: manageable
+            - en: minor
     - en: We're calling the doctor to try a different approach.
       ko: 다른 방법을 시도해보게 의사 선생님을 부를게요.
       chunks:
@@ -2758,6 +4494,20 @@
         - w-different
         - w-approach
       goal: 1
+      tag: 계획 변경
+      icon: stetho
+      why: 의사를 부르는 이유를 to try a different approach로 바로 붙이면 계획이 바뀌고 있다는 희망을 줘요. 효과 없는 약을 되풀이하지 않고 처방을 다시 검토하라는 신호예요.
+      decoy: to skip
+      distractorsKo:
+        - 약을 그대로 한 번 더 드릴게요
+        - 통증이 저절로 나아질 때까지 기다릴게요
+      blank:
+        answer: calling
+        options:
+            - en: blaming
+            - en: calling
+            - en: ignoring
+            - en: thanking
     - en: Stay with me — we'll get on top of this together.
       ko: 저와 함께 있어요, 이걸 함께 이겨낼 거예요.
       chunks:
@@ -2770,6 +4520,20 @@
         - w-stay
         - w-together
       goal: 2
+      tag: 동행 약속
+      icon: hospital
+      why: get on top of this는 통증을 다시 잡겠다는 관용 표현이에요. together로 환자가 혼자가 아니라는 점을 분명히 해요.
+      decoy: on my own
+      distractorsKo:
+        - 혼자 이겨내셔야 해요
+        - 의사 선생님이 혼자 해결하실 거예요
+      blank:
+        answer: together
+        options:
+            - en: later
+            - en: quietly
+            - en: together
+            - en: alone
     - en: I know you've tried everything and nothing has worked yet.
       ko: 다 시도해보셨는데 아직 효과가 없었다는 거 알아요.
       chunks:
@@ -2781,6 +4545,20 @@
       words:
         - w-work
       goal: 1
+      tag: 상황 인정
+      icon: board
+      why: 이미 해 본 것을 인정하면 환자가 같은 설명을 반복하지 않아도 돼요. yet은 앞으로 달라질 수 있다는 여지를 남겨요.
+      decoy: and something
+      distractorsKo:
+        - 효과가 있었던 걸 알고 있어요
+        - 아직 한 가지도 안 해보셨죠
+      blank:
+        answer: worked
+        options:
+            - en: arrived
+            - en: started
+            - en: ended
+            - en: worked
     - en: We won't stop until we find something that helps.
       ko: 도움이 될 걸 찾을 때까지 멈추지 않을게요.
       chunks:
@@ -2793,6 +4571,20 @@
         - w-stop
         - w-find
       goal: 1
+      tag: 포기 안 함
+      icon: shield
+      why: until로 도움이 되는 것을 찾을 때까지 계속하겠다는 목표를 말해요. 약속은 처방 범위와 안전 안에서 지킬 수 있는 말로 해요.
+      decoy: if we find
+      distractorsKo:
+        - 효과가 없으면 여기서 멈출게요
+        - 찾으면 바로 퇴원하세요
+      blank:
+        answer: until
+        options:
+            - en: until
+            - en: unless
+            - en: after
+            - en: because
     - en: You're not alone in this — I'm right here.
       ko: 혼자가 아니에요, 제가 바로 여기 있어요.
       chunks:
@@ -2804,6 +4596,20 @@
       words:
         - w-alone
       goal: 2
+      tag: 곁에 머물기
+      icon: me
+      why: I'm right here는 지금 이 자리에 있다는 구체적인 약속이라, 막연한 위로보다 환자가 붙잡기 쉬워요. 고통이 큰 환자에게 혼자가 아니라고 말하는 것이 신뢰를 지켜요.
+      decoy: — I'm far
+      distractorsKo:
+        - 혼자 견디셔야 해요
+        - 저는 곧 자리를 비울 거예요
+      blank:
+        answer: alone
+        options:
+            - en: weak
+            - en: alone
+            - en: wrong
+            - en: stuck
   nuance:
     - kind: slider
       words:
@@ -2822,6 +4628,7 @@
         - w-try
         - w-approach
       why: '''더 할 수 있는 게 없다''는 포기로 들려요. 여러 약이 안 들었을 때는 다음 계획이 있다는 걸 먼저 말해요.'
+      ko: 죄송해요, 의사 선생님을 불러 다른 방법을 시도해 볼게요
       who: 진통제가 듣지 않는 환자에게
       icon: me
       before:
@@ -2837,6 +4644,28 @@
         the medicine should kick in eventually: 이미 안 듣는 약을 기다리라는 말이라 공감이 없어요.
         we're calling the doctor to try a different approach: 계획을 바꾸는 중이라고 알려 희망과 신뢰를 지켜요.
         you'll just have to wait it out: 그냥 견디라는 말이라 환자를 혼자 두는 느낌이에요.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 약이 듣지 않는 환자 4문장 순서
+    why: 이미 시도한 것을 인정하며 시작해요. 그래서(That's why) 의사를 불러 방법을 바꾼다고 하고, 새 방법(that)도 안 들으면 도움이 될 것을 계속 찾겠다고 해요. 그것을 찾을 때까지(Until we find it) 곁에 있겠다고 마무리해요.
+    lines:
+        - en: I know you've tried everything, and nothing has worked yet.
+          icon: board
+          ko: 다 해 보셨는데 아직 효과가 없다는 거 알아요
+          note: 인정
+        - en: That's why we're calling the doctor to try a different approach.
+          icon: stetho
+          ko: 그래서 다른 방법을 시도하려고 의사를 불러요
+          note: 변경
+        - en: If that doesn't work either, we'll keep looking for something that helps.
+          icon: shield
+          ko: 그것도 안 들으면 도움이 될 걸 계속 찾을게요
+          note: 약속
+        - en: Until we find it, stay with me — you're not alone.
+          icon: me
+          ko: 찾을 때까지 저와 함께 있어요, 혼자가 아니에요
+          note: 동행
 - id: SCN-ER-00118
   profession: ""
   eventId: EVT-ER-00102
@@ -2908,6 +4737,20 @@
         - w-reaction
         - w-medicine
       goal: 1
+      tag: 상황 설명
+      icon: siren
+      why: 지금 무슨 일이 일어나는지 짧게 알리면 환자가 겁에 질려도 상황을 이해해요. 아나필락시스는 약물 같은 원인에 대한 급성 알레르기 반응이에요.
+      decoy: to the weather
+      distractorsKo:
+        - 약이 잘 듣고 있어요
+        - 그냥 잠이 오는 거예요
+      blank:
+        answer: allergic
+        options:
+            - en: early
+            - en: allergic
+            - en: emotional
+            - en: angry
     - en: We're giving you epinephrine to help you breathe.
       ko: 숨쉬기 편하게 에피네프린을 드리고 있어요.
       chunks:
@@ -2920,6 +4763,20 @@
         - w-epinephrine
         - w-breathe
       goal: 1
+      tag: 약 설명
+      icon: pill
+      why: 에피네프린은 아나필락시스의 1차 치료약이에요. 쉬운 말로 목적(숨쉬기를 돕는다)을 함께 알려 주세요. 허벅지 바깥쪽 근육주사가 일반적인 투여 방법이에요.
+      decoy: to help you rest
+      distractorsKo:
+        - 졸리게 하는 약을 드리고 있어요
+        - 수액을 빠르게 넣고 있어요
+      blank:
+        answer: epinephrine
+        options:
+            - en: heparin
+            - en: vitamins
+            - en: epinephrine
+            - en: insulin
     - en: Try to stay calm — we're right here with you.
       ko: 차분히 있어 보세요, 저희가 바로 곁에 있어요.
       chunks:
@@ -2932,6 +4789,20 @@
         - w-stay
         - w-calm
       goal: 2
+      tag: 안정 유도
+      icon: handshake2
+      why: calm은 불안을 낮춰 호흡을 덜 힘들게 해요. we're right here with you로 혼자 두지 않는다고 함께 말해요.
+      decoy: Try to leave
+      distractorsKo:
+        - 빨리 일어나서 움직여 보세요
+        - 잠들지 말고 크게 소리 지르세요
+      blank:
+        answer: calm
+        options:
+            - en: angry
+            - en: awake
+            - en: warm
+            - en: calm
     - en: Your throat feels tight because of the reaction.
       ko: 반응 때문에 목이 조이는 느낌이 드는 거예요.
       chunks:
@@ -2944,6 +4815,20 @@
         - w-tight
         - w-reaction
       goal: 1
+      tag: 증상 설명
+      icon: stetho
+      why: 목이 조이는 느낌은 기도가 붓는 대표 증상이에요. 증상이 반응 때문이라고 설명하면 환자가 자기 잘못이라고 느끼지 않아요.
+      decoy: of the noise
+      distractorsKo:
+        - 목이 아픈 건 감기 때문이에요
+        - 목이 편해지고 있어요
+      blank:
+        answer: tight
+        options:
+            - en: tight
+            - en: cold
+            - en: sore
+            - en: dry
     - en: The epinephrine will open your airway quickly.
       ko: 에피네프린이 기도를 빠르게 열어줄 거예요.
       chunks:
@@ -2956,6 +4841,20 @@
         - w-airway
         - w-quickly
       goal: 1
+      tag: 효과 설명
+      icon: siren
+      why: open your airway로 약이 하는 일을 눈에 그려지게 말해요. 에피네프린은 부은 기도를 열고 혈압을 올리는 작용을 해요.
+      decoy: close your door
+      distractorsKo:
+        - 에피네프린이 열을 내려 줄 거예요
+        - 에피네프린이 통증을 없애 줄 거예요
+      blank:
+        answer: airway
+        options:
+            - en: mouth
+            - en: airway
+            - en: eyes
+            - en: nose
     - en: We're not leaving your side until you're stable.
       ko: 안정될 때까지 곁을 떠나지 않을게요.
       chunks:
@@ -2968,6 +4867,20 @@
         - w-side
         - w-stable
       goal: 2
+      tag: 곁에 머물기
+      icon: hospital
+      why: stable은 활력징후가 안정되었다는 뜻이에요. 안정될 때까지 곁에 있겠다고 기한을 말하면 환자가 안심해요.
+      decoy: unless you're ready
+      distractorsKo:
+        - 안정되면 바로 자리를 비울게요
+        - 검사가 끝날 때까지 곁에 있을게요
+      blank:
+        answer: stable
+        options:
+            - en: asleep
+            - en: discharged
+            - en: stable
+            - en: home
   nuance:
     - kind: pair
       words:
@@ -2989,6 +4902,8 @@
         - w-epinephrine
         - w-give
       why: 짧은 명령형 'epi 0.5 IM'은 팀 콜아웃이에요. 환자에게는 무엇을 왜 하는지 문장으로 말해 안심시켜요.
+      ko: 에피네프린
+      word: epinephrine
       scenes:
         - who: 팀에게
           icon: siren
@@ -3003,6 +4918,28 @@
           en: Epi 0.5 IM, now!
           ok: false
           fix: We're giving you a shot of epinephrine to help you breathe.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 아나필락시스 환자 안심시키기 4문장 순서
+    why: 무슨 일인지 먼저 알리고, 약을 주고 있다고 말해요. 그 약(It)이 기도를 열어 줄 것이니 침착하라고 하고, 기도가 열린 뒤에도(Once it's open) 곁에 있겠다고 해요. 아나필락시스는 나아진 뒤 다시 올 수 있어(이상성 반응) 계속 지켜봐요.
+    lines:
+        - en: You're having an allergic reaction to the medicine.
+          icon: siren
+          ko: 약물에 알레르기 반응이 일어나고 있어요
+          note: 설명
+        - en: We're giving you epinephrine to help you breathe.
+          icon: pill
+          ko: 숨쉬기 편하게 에피네프린을 드리고 있어요
+          note: 투여
+        - en: It will open your airway quickly, so try to stay calm.
+          icon: handshake2
+          ko: 기도를 빨리 열어 줄 테니 침착해 주세요
+          note: 안정
+        - en: Once it's open, we'll still stay right by your side.
+          icon: hospital
+          ko: 기도가 열린 뒤에도 곁을 지킬게요
+          note: 곁에
 - id: SCN-ER-00119
   profession: ""
   eventId: EVT-ER-00102
@@ -3074,6 +5011,20 @@
         - w-focus
         - w-comfort
       goal: 1
+      tag: 목표 전환
+      icon: home
+      why: now와 not more tests로 목표가 바뀌었음을 부드럽게 알려요. 완화 돌봄은 치료를 포기하는 것이 아니라 편안함과 삶의 질을 목표로 하는 돌봄이에요.
+      decoy: ', and more'
+      distractorsKo:
+        - 지금은 검사를 더 늘려야 해요
+        - 지금은 완치가 목표예요
+      blank:
+        answer: comfort
+        options:
+            - en: cure
+            - en: diet
+            - en: comfort
+            - en: recovery
     - en: This medicine will ease her pain and let her rest.
       ko: 이 약이 통증을 덜어주고 편히 쉬게 해줄 거예요.
       chunks:
@@ -3088,6 +5039,20 @@
         - w-pain
         - w-rest
       goal: 1
+      tag: 약 설명
+      icon: pill
+      why: ease는 아픔을 덜어 준다는 뜻이라 낫게 한다는 과장 없이 약의 목적을 정직하게 전해요. rest는 편히 쉬게 한다는 현실적인 기대를 줘요.
+      decoy: and keep her up
+      distractorsKo:
+        - 이 약이 환자분을 깨워 줄 거예요
+        - 이 약이 검사 결과를 좋게 해 줄 거예요
+      blank:
+        answer: ease
+        options:
+            - en: double
+            - en: cause
+            - en: show
+            - en: ease
     - en: Let's talk about what matters most to your family.
       ko: 가족분들께 가장 중요한 게 뭔지 이야기해봐요.
       chunks:
@@ -3100,6 +5065,20 @@
         - w-matter
         - w-family
       goal: 2
+      tag: 가치 묻기
+      icon: speech
+      why: what matters most로 가족이 중요하게 여기는 가치를 열어 주면 돌봄 계획을 가족의 뜻에 맞출 수 있어요. 의료 결정은 환자의 가치와 목표에 맞춰 가는 것이 기본이에요.
+      decoy: what costs most
+      distractorsKo:
+        - 비용은 원무과에서 안내해 드려요
+        - 가족분들은 잠시 밖에서 기다려 주세요
+      blank:
+        answer: family
+        options:
+            - en: family
+            - en: doctor
+            - en: nurse
+            - en: hospital
     - en: We're not trying to cure her anymore, our focus is on her comfort.
       ko: 이제 치료보다 편안함에 집중하고 있어요.
       chunks:
@@ -3114,6 +5093,20 @@
         - w-cure
         - w-comfort
       goal: 1
+      tag: 목표 설명
+      icon: lab
+      why: not trying to cure는 완치가 아니라 편안함이 목표라는 사실을 정직하게 말해요. 완곡하게 피하면 가족이 계속 완치를 기대할 수 있어요.
+      decoy: to move her
+      distractorsKo:
+        - 이제 더 강한 치료를 시작해요
+        - 이제 검사를 모두 다시 해요
+      blank:
+        answer: cure
+        options:
+            - en: test
+            - en: cure
+            - en: teach
+            - en: wake
     - en: We want her peaceful and free of pain.
       ko: 통증 없이 평온하시길 바라요.
       chunks:
@@ -3126,6 +5119,20 @@
         - w-free
         - w-pain
       goal: 1
+      tag: 소망 표현
+      icon: star
+      why: peaceful and free of pain은 목표를 가족이 그릴 수 있는 모습으로 말해요. 마지막 단계의 통증 조절 목표는 편안함이에요.
+      decoy: restless and full
+      distractorsKo:
+        - 환자분이 깨어 활동하시길 바라요
+        - 환자분이 통증을 견디시길 바라요
+      blank:
+        answer: peaceful
+        options:
+            - en: restless
+            - en: awake
+            - en: peaceful
+            - en: active
     - en: What would she want us to do for her now?
       ko: 지금 환자분이 뭘 원하실 것 같으세요?
       chunks:
@@ -3137,6 +5144,20 @@
       words:
         - w-want
       goal: 2
+      tag: 의사 확인
+      icon: compass
+      why: What would she want는 환자가 말하지 못해도 그 사람의 뜻을 중심에 두는 질문이에요. 평소 가치나 기록된 사전 지시가 있으면 그것을 따라요.
+      decoy: What would you want
+      distractorsKo:
+        - 가족분들은 지금 무엇을 원하세요?
+        - 환자분 이름이 어떻게 되세요?
+      blank:
+        answer: want
+        options:
+            - en: forbid
+            - en: force
+            - en: teach
+            - en: want
   nuance:
     - kind: pair
       words:
@@ -3159,6 +5180,7 @@
         - w-cure
         - w-focus
       why: 완화로 전환할 때 'stop treatment'나 'withdraw care'는 돌봄을 멈추는 걸로 오해되기 쉬워요. 무엇을 계속하는지(comfort)를 말해요.
+      ko: 이제 환자분의 편안함에 집중할 거예요
       who: 임종기 환자의 가족에게
       icon: me
       before:
@@ -3202,6 +5224,28 @@
         - 완화 돌봄의 용어
         - 가족에게도 씀
         - 오더에선 건조함
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 임종기 환자 가족과의 대화 4문장 순서
+    why: 목표가 편안함으로 바뀌었다고 먼저 알려요. 그래서(That's why) 약이 하는 일을 설명하고, 그 너머(Beyond that)로 환자가 무엇을 원할지 물어요. 마지막은 그 선택(Whatever she'd choose)에 맞춘 약속이에요.
+    lines:
+        - en: Our focus now is her comfort, not more tests.
+          icon: home
+          ko: 지금 중요한 건 검사가 아니라 편안함이에요
+          note: 목표
+        - en: That's why this medicine will ease her pain and let her rest.
+          icon: pill
+          ko: 그래서 이 약이 통증을 덜고 쉬게 해줄 거예요
+          note: 약
+        - en: Beyond that, what would she want us to do for her?
+          icon: compass
+          ko: 그 밖에 환자분이 우리에게 뭘 원하실까요?
+          note: 질문
+        - en: Whatever she'd choose, we'll keep her as peaceful and comfortable as we can.
+          icon: star
+          ko: 어떤 선택이시든 최대한 평온하고 편안하게 해 드릴게요
+          note: 약속
 - id: SCN-ER-00120
   profession: ""
   eventId: EVT-ER-00102
@@ -3273,6 +5317,20 @@
         - w-room
         - w-safe
       goal: 2
+      tag: 장소 안내
+      icon: hospital
+      why: 깨어나는 환자는 어디인지 모를 수 있어 장소를 먼저 알려 줘요. 짧은 문장으로 장소와 안전을 한 번에 말하면 흥분이 가라앉기 쉬워요.
+      decoy: — you're lost
+      distractorsKo:
+        - 지금 수술실에 계세요
+        - 지금 집에 계세요
+      blank:
+        answer: emergency
+        options:
+            - en: waiting
+            - en: operating
+            - en: recovery
+            - en: emergency
     - en: Let's keep your hands still so you don't hurt yourself.
       ko: 다치지 않게 손을 가만히 두어요.
       chunks:
@@ -3286,6 +5344,20 @@
         - w-still
         - w-hurt
       goal: 2
+      tag: 안전 안내
+      icon: shield
+      why: Let's …로 같이 한다는 틀을 써서 명령 대신 협력으로 들려요. 흥분한 환자가 정맥주사나 모니터를 뽑을 수 있어 손을 가만히 두도록 부드럽게 안내해요.
+      decoy: so you can fall
+      distractorsKo:
+        - 손을 흔들어 보세요
+        - 손을 머리 위로 올리세요
+      blank:
+        answer: still
+        options:
+            - en: still
+            - en: busy
+            - en: up
+            - en: free
     - en: I'm your nurse, and I'm staying right here.
       ko: 저는 담당 간호사예요, 바로 여기 있을게요.
       chunks:
@@ -3297,6 +5369,20 @@
         - w-nurse
         - w-stay
       goal: 2
+      tag: 신원 안내
+      icon: me
+      why: 자기소개로 낯선 환경에서 누구인지 알려 안심시켜요. right here는 곁을 떠나지 않겠다는 약속이에요.
+      decoy: ', and I''m leaving soon'
+      distractorsKo:
+        - 저는 의사예요, 곧 갈 거예요
+        - 저는 다른 환자 담당이에요, 곧 올게요
+      blank:
+        answer: nurse
+        options:
+            - en: doctor
+            - en: nurse
+            - en: interpreter
+            - en: technician
     - en: You're waking up from sedation, and some confusion is normal.
       ko: 진정에서 깨어나는 중이라 약간 혼란스러운 건 정상이에요.
       chunks:
@@ -3311,6 +5397,20 @@
         - w-confusion
         - w-normal
       goal: 1
+      tag: 상황 설명
+      icon: bell
+      why: 깨어나는 중이라 혼란은 정상이라고 쉬운 말로 설명하면 환자가 자신이 이상하다고 겁먹지 않아요. waking up from sedation은 지금 상태의 이유를 알려 줘요.
+      decoy: ', and some snow'
+      distractorsKo:
+        - 진정제가 아직 들어가고 있어요
+        - 혼란스러운 건 위험한 신호예요
+      blank:
+        answer: confusion
+        options:
+            - en: pain
+            - en: nausea
+            - en: confusion
+            - en: drowsiness
     - en: It's Tuesday, and you're at City Hospital.
       ko: 오늘은 화요일이고, 시티 병원에 계세요.
       chunks:
@@ -3321,6 +5421,20 @@
       words:
         - w-hospital
       goal: 1
+      tag: 지남력 안내
+      icon: calendar
+      why: 요일과 병원 이름으로 지금이 언제 어디인지 알려 주면 방향 감각이 돌아오도록 도와요. 진정에서 깨어날 때는 같은 정보를 여러 번 짧게 알려 줘도 좋아요.
+      decoy: in Memorial Clinic
+      distractorsKo:
+        - 지금은 월요일이에요
+        - 지금은 집에 계세요
+      blank:
+        answer: Hospital
+        options:
+            - en: Pharmacy
+            - en: Nursing Home
+            - en: Rehab Center
+            - en: Hospital
     - en: I need you to stay in the bed for your own safety.
       ko: 안전을 위해 침대에 계셔야 해요.
       chunks:
@@ -3334,6 +5448,20 @@
         - w-bed
         - w-safety
       goal: 2
+      tag: 침대 안내
+      icon: shield
+      why: I need you to …는 이유(for your own safety)를 붙여 부탁하는 틀이라 명령보다 협조를 얻기 쉬워요. 낙상과 라인 제거를 막으려는 안내예요.
+      decoy: to climb out of
+      distractorsKo:
+        - 침대 밖으로 나오셔도 돼요
+        - 혼자 서서 걸어 보세요
+      blank:
+        answer: stay
+        options:
+            - en: stay
+            - en: stand
+            - en: kneel
+            - en: move around
   nuance:
     - kind: pair
       words:
@@ -3354,6 +5482,8 @@
         - w-sedation
         - w-wake
       why: emergence reaction은 의료진끼리 쓰는 말이에요. 환자에게는 지금 무슨 일인지(깨어나는 중, 혼란은 정상) 쉬운 말로 알려 안심시켜요.
+      ko: 혼란
+      word: confusion
       scenes:
         - who: 인계
           icon: speech
@@ -3374,6 +5504,7 @@
         - w-bed
         - w-safety
       why: 명령과 위협은 흥분을 키워요. 'I need you to…'에 이유를 덧붙이는 게 흥분한 환자를 가라앉히는 기본 틀이에요.
+      ko: 침대에 계시길 부탁드려요
       who: 흥분한 환자에게 · 침대 이탈 방지
       icon: me
       before:
@@ -3389,6 +5520,28 @@
         I need you to stay in bed: 부탁의 틀로 분명하게 말해요. 이유(for your own safety)를 붙이면 더 좋아요.
         we'll have to restrain you: 위협으로 들려요. 억제대는 최후의 수단이지 경고용이 아니에요.
         you're not allowed to get up: 금지와 통제로 들려 흥분을 키워요.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 흥분한 채 깨어나는 환자 4문장 순서
+    why: 먼저(First) 안전하다는 것과 어디인지 알려요. 누가 곁에 있는지 말하고, 혼란이 정상이라고 설명해요. 그래서(That's why) 안전을 위해 침대에 있어 달라고 부탁해요.
+    lines:
+        - en: First, you're safe — you're in the emergency room.
+          icon: hospital
+          ko: 먼저, 안전하세요. 여기는 응급실이에요
+          note: 장소
+        - en: I'm your nurse, and I'm staying right here with you.
+          icon: me
+          ko: 저는 간호사고, 곁에 있을게요
+          note: 신원
+        - en: You're waking up from sedation, and some confusion is normal.
+          icon: bell
+          ko: 진정에서 깨는 중이라 혼란은 정상이에요
+          note: 설명
+        - en: That's why I need you to stay in the bed for your own safety.
+          icon: shield
+          ko: 그래서 안전을 위해 침대에 계셔야 해요
+          note: 부탁
 - id: SCN-ER-00121
   profession: ""
   eventId: EVT-ER-00102
@@ -3461,6 +5614,20 @@
         - w-pain
         - w-amount
       goal: 1
+      tag: 투여 안내
+      icon: pill
+      why: 작은 양으로 나눠 준다고 알리면 환자가 약이 부족하다고 오해하지 않아요. 혈압이 낮은 환자는 진통제를 조금씩 올려 가며 반응을 봐요.
+      decoy: ', in a hurry'
+      distractorsKo:
+        - 한 번에 많은 양을 드릴게요
+        - 약은 아직 드리지 않아요
+      blank:
+        answer: small
+        options:
+            - en: small
+            - en: large
+            - en: huge
+            - en: equal
     - en: Stay with me and keep looking at my eyes.
       ko: 저와 함께 있어요, 제 눈을 계속 봐 주세요.
       chunks:
@@ -3474,6 +5641,20 @@
         - w-look
         - w-eye
       goal: 2
+      tag: 의식 유지
+      icon: me
+      why: 눈을 보게 하면 환자의 의식과 집중을 계속 확인할 수 있어요. 위기에서는 짧고 한 가지씩 말하는 지시가 가장 잘 전달돼요.
+      decoy: and stop looking
+      distractorsKo:
+        - 제 손만 보세요
+        - 눈을 감고 계세요
+      blank:
+        answer: eyes
+        options:
+            - en: watch
+            - en: eyes
+            - en: shoes
+            - en: phone
     - en: We're watching your blood pressure very closely.
       ko: 혈압을 아주 면밀히 지켜보고 있어요.
       chunks:
@@ -3486,6 +5667,20 @@
         - w-blood_pressure
         - w-closely
       goal: 2
+      tag: 감시 설명
+      icon: monitor
+      why: very closely로 혈압을 자주 확인한다고 알리면 약을 쓰는 동안 안전하다고 느껴요. 외상에서는 출혈로 혈압이 떨어질 수 있어 진통제를 쓰기 전후로 계속 봐요.
+      decoy: very loosely
+      distractorsKo:
+        - 혈압은 한 번만 잴게요
+        - 혈압은 재지 않을 거예요
+      blank:
+        answer: closely
+        options:
+            - en: briefly
+            - en: lightly
+            - en: closely
+            - en: rarely
     - en: Too much medicine right now could drop your blood pressure further.
       ko: 지금 약을 너무 많이 쓰면 혈압이 더 떨어질 수 있어요.
       chunks:
@@ -3499,6 +5694,20 @@
         - w-drop
         - w-blood_pressure
       goal: 1
+      tag: 위험 설명
+      icon: lock
+      why: 약이 혈압을 더 떨어뜨릴 수 있어서 한 번에 많이 쓰지 않는다고 이유를 설명해요. 출혈이 있는 외상 환자는 마약성 진통제로 혈압이 더 떨어질 수 있어 신중히 써요.
+      decoy: could hold
+      distractorsKo:
+        - 약이 많으면 혈압이 올라가요
+        - 약은 혈압에 영향을 주지 않아요
+      blank:
+        answer: drop
+        options:
+            - en: raise
+            - en: boost
+            - en: fix
+            - en: drop
     - en: We'll give small doses and watch how your body responds.
       ko: 소량씩 드리면서 몸이 어떻게 반응하는지 지켜볼게요.
       chunks:
@@ -3512,6 +5721,20 @@
         - w-dose
         - w-respond
       goal: 1
+      tag: 용량 설명
+      icon: gear
+      why: small doses와 watch를 짝지어 말하면 조금씩 주고 반응을 보며 조절한다는 흐름이 전달돼요. 반응을 보며 용량을 조절하는 것을 적정 용량 조절(titration)이라고 해요.
+      decoy: how your mind
+      distractorsKo:
+        - 반응은 보지 않고 약만 드릴게요
+        - 한 번에 큰 용량을 드릴게요
+      blank:
+        answer: responds
+        options:
+            - en: responds
+            - en: heals
+            - en: moves
+            - en: looks
     - en: Keep talking to me, I'm not going anywhere.
       ko: 계속 저한테 말씀하세요, 어디 안 가요.
       chunks:
@@ -3522,6 +5745,20 @@
       words:
         - w-talk
       goal: 2
+      tag: 곁에 머물기
+      icon: me
+      why: 계속 말하게 하면 의식 수준을 확인하면서 환자를 곁에서 붙잡아 줄 수 있어요. I'm not going anywhere는 떠나지 않겠다는 가장 쉬운 약속이에요.
+      decoy: Stay quiet with me
+      distractorsKo:
+        - 저는 곧 자리를 비울 거예요
+        - 조용히 눈을 감고 계세요
+      blank:
+        answer: talking
+        options:
+            - en: listening
+            - en: talking
+            - en: waving
+            - en: holding on
   nuance:
     - kind: pair
       words:
@@ -3544,6 +5781,8 @@
         - w-blood_pressure
         - w-amount
       why: hypotensive·titrate는 의료진 말이에요. 환자에게는 'blood pressure is low', 'small amounts'로 풀어서 말해요.
+      ko: 혈압
+      word: BP
       scenes:
         - who: 의사에게 보고
           icon: speech
@@ -3558,6 +5797,28 @@
           en: You're hypotensive, so I'm titrating your fentanyl.
           ok: false
           fix: Your blood pressure is low, so we're giving you pain medicine in small amounts.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 중증 외상 환자 진통 4문장 순서
+    why: 조금씩 나눠 주고 있다고 먼저 알려요. 그 이유(That's because)가 혈압이 더 떨어질 수 있어서라고 설명하고, 그래서(So) 혈압을 지켜본다고 해요. 마지막은 곁에 머문다는 약속이에요.
+    lines:
+        - en: We're giving you something for the pain, in small amounts.
+          icon: pill
+          ko: 통증약을 조금씩 나눠서 드리고 있어요
+          note: 투여
+        - en: That's because too much right now could drop your blood pressure.
+          icon: lock
+          ko: 지금 많이 쓰면 혈압이 떨어질 수 있어서예요
+          note: 이유
+        - en: So we're watching it very closely.
+          icon: monitor
+          ko: 그래서 혈압을 아주 면밀히 지켜보고 있어요
+          note: 감시
+        - en: Keep talking to me, I'm not going anywhere.
+          icon: me
+          ko: 계속 말씀하세요, 어디 안 가요
+          note: 곁에
 - id: SCN-ER-00122
   profession: ""
   eventId: EVT-ER-00102

@@ -1,0 +1,109 @@
+- title: 비전형 흉통(당뇨 여성)
+  s:
+  - {t: "비전형 증상", i: me, w: "unusually로 평소와 다른지를 물어 환자가 비교해 답하게 해요. 피로·땀·숨참은 여성이나 당뇨 환자에게서 흉통 대신 나타나는 심장 증상일 수 있어요.", d: ", or hungry", k: ["최근에 체중이 갑자기 줄었나요?", "최근에 열이 나고 기침을 했나요?"], a: "tired", o: ["thirsty", "hungry", "cold"]}
+  - {t: "인식 전환", i: bulb, w: "Even without …로 가슴이 안 아프면 심장은 아니라는 생각을 부드럽게 바꿔 줘요. 여성과 당뇨 환자는 전형적인 가슴 통증 없이 심근경색이 오는 경우가 있어요.", d: "from the lungs", k: ["가슴이 아프지 않으면 심장은 괜찮아요", "이 증상은 대부분 위에서 와요"], a: "heart", o: ["stomach", "back", "brain"]}
+  - {t: "이유 설명", i: shield, w: "Because you …로 환자 자신의 사정을 이유로 들면 검사가 의심이 아니라 맞춤 안전 조치로 들려요. 당뇨는 통증을 전하는 신경을 무디게 할 수 있어요.", d: "to be quick", k: ["당뇨가 없으시니 심장은 확인하지 않아도 돼요", "당뇨 때문에 혈당을 먼저 재고 싶어요"], a: "diabetes", o: ["asthma", "arthritis", "anemia"]}
+  - {t: "배경 설명", i: board, w: "don't always는 단정 대신 가능성을 말해서 환자를 놀라게 하지 않아요. 당뇨는 통증을 전달하는 신경을 무디게 해서 흉통이 덜 느껴질 수 있어요.", d: "feel severe", k: ["당뇨가 있는 남성분들은 항상 통증이 심해요", "당뇨가 있으면 흉통이 전혀 없어요"], a: "diabetes", o: ["migraines", "allergies", "asthma"]}
+  - {t: "검사 안내", i: lab, w: "Let's …는 우리 함께 하자는 틀이라 환자도 과정의 일부로 느껴요. just to be thorough는 의심이 아니라 빠짐없이 확인하려는 것이라고 말해 줘요.", d: "an X-ray", k: ["심전도만 하고 피 검사는 안 해요", "지금은 아무 검사도 필요 없어요"], a: "thorough", o: ["quick", "brief", "polite"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "비전형 흉통 설명 4문장 순서"
+    why: "증상을 먼저 묻고, 그 증상도 심장에서 올 수 있다고 알리고, 그 말이 맞는 환자군을 근거로 확인을 청하고, 그래서 어떤 검사를 하는지 말해요. 뒤 줄이 앞 줄의 내용을 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "Have you felt unusually tired, sweaty, or short of breath?", icon: me, ko: "평소와 달리 피곤하거나 땀이 나거나 숨이 찼나요?", note: "문진"}
+    - {en: "Even without chest pain, those symptoms can come from the heart.", icon: bulb, ko: "가슴이 안 아파도 그런 증상은 심장에서 올 수 있어요", note: "설명"}
+    - {en: "Since that's true for many women with diabetes, I'd like to check your heart.", icon: shield, ko: "당뇨가 있는 여성에게 흔해서 심장을 확인하고 싶어요", note: "근거"}
+    - {en: "To do that, let's start with an ECG and some blood work.", icon: lab, ko: "그러려면 심전도와 혈액 검사부터 해요", note: "검사"}
+  sw: {ko: "가슴 통증이 없어도 이런 증상이 심장에서 올 수 있어요"}
+- title: 불안성 vs 심장성 감별
+  s:
+  - {t: "곁에 있음", i: me, w: "I'm right here로 곁에 있음을 먼저 알리면 불안이 가라앉기 시작해요. with me로 함께 호흡을 맞추게 하면 지시가 동행으로 들려요.", d: "very fast", k: ["제가 잠깐 자리를 비울게요", "숨을 최대한 빨리 쉬세요"], a: "slowly", o: ["quickly", "loudly", "hard"]}
+  - {t: "과거력", i: board, w: "like this before로 지금과 비슷한 일이 예전에도 있었는지 물어요. 예전에 같은 증상으로 진단받은 적이 있어도 이번 흉통은 심장부터 확인해요.", d: "this week", k: ["예전에도 이런 가슴 통증으로 입원하셨나요?", "공황발작 약을 지금 드시고 계신가요?"], a: "panic", o: ["asthma", "heart", "migraine"]}
+  - {t: "계속 확인", i: stetho, w: "still이 불안이라 짐작돼도 확인은 계속한다는 뜻을 더해요. make sure everything is okay는 검사의 목적을 안심으로 말해 줘요.", d: "to leave early", k: ["불안 때문이니 심장은 확인하지 않아요", "집에 가서 쉬시면 다 괜찮아질 거예요"], a: "check", o: ["ignore", "skip", "forget"]}
+  - {t: "경과 안심", i: chartup, w: "so far로 지금까지는이라고 한정해 아직 검사가 끝나지 않았음을 남겨요. which is a good sign은 앞 내용을 한마디로 받아 안심을 전해요.", d: "looks irregular", k: ["심장 리듬이 불규칙해서 걱정돼요", "심장 리듬 검사는 아직 시작하지 않았어요"], a: "normal", o: ["irregular", "fast", "slow"]}
+  - {t: "이유 설명", i: bulb, w: "exactly like로 둘이 구별하기 어렵다는 점을 인정하면 환자가 내 탓이라고 느끼지 않아요. so we check both는 검사의 이유를 한 줄로 말해 줘요.", d: ", so we wait", k: ["공황은 심장 문제와 전혀 달라서 한 가지만 확인해요", "심장 문제는 공황처럼 느껴지지 않아요"], a: "both", o: ["neither", "one", "nothing"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "불안성 흉통 응대 4문장 순서"
+    why: "곁에서 숨을 맞추게 하고, 숨 쉬는 동안 공황 이력을 묻고, 답이 무엇이든 심장은 확인한다고 말하고, 확인하는 동안 지금까지의 리듬이 정상이라고 알려요. 뒤 줄이 앞 줄을 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "I'm right here with you — try to breathe slowly with me.", icon: me, ko: "제가 여기 있어요 — 천천히 같이 숨 쉬어요", note: "곁에"}
+    - {en: "While you breathe, I'll ask: have you had panic attacks like this before?", icon: board, ko: "숨 쉬는 동안 여쭤볼게요, 이런 공황발작이 예전에 있었나요?", note: "과거력"}
+    - {en: "Whatever the answer, we'll still check your heart to make sure everything is okay.", icon: stetho, ko: "답이 뭐든 심장은 확인할게요", note: "확인"}
+    - {en: "As we check, your heart rhythm looks normal so far, which is a good sign.", icon: chartup, ko: "확인하는 동안 지금까지 리듬이 정상이라 좋은 신호예요", note: "경과"}
+  ctx: {word: "rhythm", ko: "리듬"}
+- title: 증상 축소 환자
+  s:
+  - {t: "증상 중요성", i: bulb, w: "Even mild로 작아도 말해 달라고 먼저 알려서 증상을 축소하는 환자의 부담을 덜어요. show me where는 말 대신 손으로 보여 줘도 되는 질문이에요.", d: "Only severe", k: ["가벼운 조임은 신경 쓰지 않으셔도 돼요", "그 느낌이 언제 시작됐는지 말씀해 주시겠어요?"], a: "mild", o: ["severe", "sudden", "constant"]}
+  - {t: "동반 증상", i: stetho, w: "하나씩 보기를 주면 그건 별거 아니라서라며 빼는 환자도 답해요. 식은땀·메스꺼움·팔 불편감은 심근경색에서 흔히 동반되는 증상이에요.", d: ", or leg cramps", k: ["최근에 열이 나거나 기침이 있었나요?", "다리가 붓거나 저린 적이 있었나요?"], a: "nausea", o: ["cough", "itching", "rash"]}
+  - {t: "신뢰 형성", i: handshake2, w: "It's my job to …는 환자가 과장하는 게 아니라는 뜻을 간호사의 책임으로 말해요. 축소하지 않고 말해도 괜찮다는 허락이 돼요.", d: "to take a break", k: ["이건 별일 아니니 안 말씀하셔도 돼요", "제 일은 환자분 차트를 정리하는 거예요"], a: "everything", o: ["nothing", "less", "only one thing"]}
+  - {t: "공감과 격려", i: shield, w: "downplay를 환자 탓이 아니라 don't need to로 부드럽게 풀어 줘요. every detail helps me help you는 말하는 일이 환자 자신에게 도움이 된다고 이어 줘요.", d: "every minute", k: ["작은 건 말씀하지 않는 게 좋아요", "사소한 것은 의사 선생님께만 말하세요"], a: "detail", o: ["minute", "hour", "day"]}
+  - {t: "이유 설명", i: bulb, w: "Sometimes로 모든 경우가 아니라 그럴 때도 있다고 말해 겁을 주지 않아요. turn out to be는 처음엔 몰랐다가 나중에 드러난다는 뜻이에요.", d: "to be nothing", k: ["작은 증상은 대부분 신경 쓰지 않아도 돼요", "큰 증상만 골라서 확인해 볼게요"], a: "small", o: ["strange", "rare", "old"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "증상 축소 환자 응대 4문장 순서"
+    why: "작은 조임도 중요하다며 위치를 묻고, 위치를 짚은 증상에 동반된 것을 묻고, 작아 보여도 말해 달라고 청하고, 그래서 전부 확인한다고 맺어요. 뒤 줄이 앞 줄의 답을 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "Even mild tightness matters — can you show me exactly where?", icon: bulb, ko: "가벼운 조임도 중요해요 — 정확히 어디예요?", note: "위치"}
+    - {en: "Thank you. Have you had any sweating, nausea, or arm discomfort with it?", icon: stetho, ko: "고마워요. 그것과 함께 땀, 메스꺼움, 팔 불편감이 있었나요?", note: "동반"}
+    - {en: "Even if those seem small, please tell me about them — every detail helps.", icon: handshake2, ko: "작아 보여도 말씀해 주세요 — 하나하나 도움이 돼요", note: "격려"}
+    - {en: "That's why we'll check all of it, even the small things.", icon: shield, ko: "그래서 작은 것까지 전부 확인할게요", note: "확인"}
+  ctx: {word: "detail", ko: "세부사항"}
+- title: 재발 환자 재평가
+  s:
+  - {t: "이전과 비교", i: compass, w: "the same as로 지금과 예전을 직접 견줘 답하게 해요. 예전 통증과 같은지 다른지에 따라 의료진이 가능성을 좁혀요.", d: "as your next", k: ["이 통증이 처음 겪는 거예요?", "예전에 심장 수술을 받으셨어요?"], a: "event", o: ["surgery", "checkup", "stay"]}
+  - {t: "치료 이력", i: pill, w: "Which로 목록을 직접 말하게 해서 예·아니오보다 많은 정보를 얻어요. 약과 스텐트 이력은 지금 쓸 수 있는 치료를 정하는 데 필요해요.", d: "and allergies", k: ["어떤 약을 알레르기 때문에 못 드세요?", "스텐트를 언제 뺐는지 말씀해 주세요"], a: "stents", o: ["allergies", "vaccines", "injuries"]}
+  - {t: "복약 확인", i: pill, w: "as prescribed는 처방대로를 판단 없이 묻는 표현이에요. 약을 빠뜨린 날이 있었는지 알아야 지금 증상과 연결할 수 있어요.", d: "when you can", k: ["심장약을 새로 처방받으셨나요?", "심장약을 어디서 사셨나요?"], a: "heart", o: ["thyroid", "allergy", "stomach"]}
+  - {t: "강도 비교", i: chartup, w: "Compared to last time은 기준을 지난번으로 정해 줘서 환자가 비교하기 쉬워요. stronger or weaker는 두 방향을 모두 보기로 줘서 한쪽으로 유도하지 않아요.", d: "Before that", k: ["지난번과 똑같은 약을 드셨나요?", "지난번은 언제였는지 기억하시나요?"], a: "last time", o: ["last week", "last month", "last night"]}
+  - {t: "공유 안내", i: speech, w: "I'll let … know는 간호사가 직접 전달하겠다는 약속이에요. 이전 병력을 심장내과가 미리 알면 치료 결정이 빨라져요.", d: "next week", k: ["심장내과 팀이 이미 병력을 알고 있어요", "병력은 퇴원하실 때 말씀해 주세요"], a: "cardiology", o: ["radiology", "pharmacy", "dietary"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "재발 환자 재평가 4문장 순서"
+    why: "지금 통증이 예전과 같은지 먼저 묻고, 같다면 그때의 약과 스텐트를 묻고, 그 약을 처방대로 먹었는지 묻고, 마지막에 병력을 팀에 전한다고 맺어요. 뒤 줄이 앞 줄의 답을 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "Is this pain the same as your previous heart event?", icon: compass, ko: "이 통증이 예전 심장 발작 때와 같나요?", note: "비교"}
+    - {en: "If it is, which medications and stents did you have then?", icon: pill, ko: "같다면 그때 어떤 약과 스텐트를 하셨나요?", note: "이력"}
+    - {en: "Have you been taking those medicines as prescribed?", icon: board, ko: "그 약들을 처방대로 드셨나요?", note: "복약"}
+    - {en: "Thank you — I'll tell the cardiology team about your medicines and history right away.", icon: speech, ko: "고마워요 — 약과 병력을 바로 심장내과에 알릴게요", note: "공유"}
+  ctx: {word: "medicine", ko: "약"}
+- title: 흉통+언어장벽
+  s:
+  - {t: "쉬운 영어", i: pushpin, w: "단어를 줄이고 한 번에 하나만 물어 영어가 서툰 환자도 알아들어요. Point는 말 대신 손으로 답하게 하는 몸짓 질문이에요.", d: ", slowly", k: ["여기 앉아 보세요", "이름을 말해 주세요"], a: "Point", o: ["Wait", "Sit", "Smile"]}
+  - {t: "통증 점수", i: chartup, w: "숫자와 손가락으로 답하게 하면 통역 없이도 통증 점수를 받아요. 문장을 짧게 끊어 말하는 것이 이 환자에게는 더 잘 통해요.", d: "with words", k: ["1부터 10까지 소리 내어 세어 보세요", "지금 숨을 크게 쉬어 보세요"], a: "fingers", o: ["words", "eyes", "paper"]}
+  - {t: "통역 안내", i: speaker, w: "interpreter가 곧 온다고 먼저 알리면 말이 안 통해도 곧 해결된다는 걸 환자가 알아요. 영어가 서툰 환자에게는 가족 대신 훈련된 통역사를 쓰는 것이 원칙이에요.", d: "is leaving", k: ["가족분이 통역해 주실 거예요", "통역사는 없어요, 직접 말씀하세요"], a: "interpreter", o: ["orderly", "intern", "electrician"]}
+  - {t: "짧은 허락", i: handshake2, w: "okay?로 끝내면 환자가 고개로만 답해도 허락을 받아요. 조사와 시제를 줄인 짧은 문장이 영어가 서툰 환자에게 더 잘 전달돼요.", d: ". I call you", k: ["의사예요. 지금 수술할게요", "간호사예요. 나중에 확인할게요"], a: "Nurse", o: ["Doctor", "Technician", "Guard"]}
+  - {t: "안정 유도", i: me, w: "짧은 지시 뒤에 Good으로 바로 반응해 주면 말이 통하지 않아도 잘하고 있다는 신호가 돼요. You are okay는 지금 괜찮다는 안심의 말이에요.", d: "Hold it", k: ["숨을 참고 계세요", "빨리 숨 쉬세요. 좋아요"], a: "slow", o: ["fast", "hard", "loud"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "언어장벽 흉통 응대 4문장 순서"
+    why: "먼저 간호사임을 밝히고 확인을 허락받고, 아픈 곳을 짚게 하고, 그 통증을 손가락으로 점수 매기게 한 뒤, 그 숫자를 받았다며 통역사가 온다고 알려요. 뒤 줄이 앞 줄의 답을 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "Nurse here. I check you now, okay?", icon: handshake2, ko: "간호사예요. 지금 확인할게요, 괜찮죠?", note: "허락"}
+    - {en: "Where is the pain? Point for me, please.", icon: pushpin, ko: "어디가 아파요? 짚어주세요", note: "위치"}
+    - {en: "That pain — one to ten? Show me with fingers.", icon: chartup, ko: "그 통증은 1부터 10 중 몇이에요?", note: "점수"}
+    - {en: "I see that number. An interpreter is coming to help more.", icon: speaker, ko: "그 숫자 알겠어요. 통역사가 더 도우러 와요", note: "통역"}
+  ctx: {word: "point", ko: "가리키다"}
+  sw: {ko: "지금 통역사가 전화로 연결되어 있어요"}
+- title: 니트로글리세린 투여 전 설명
+  s:
+  - {t: "약 설명", i: pill, w: "goes under your tongue으로 삼키지 않고 혀 밑에서 녹인다는 사용법을 먼저 알려요. 니트로글리세린 설하정은 혈관을 넓혀 심장의 부담을 줄이는 약이에요.", d: "to swallow", k: ["이 알약은 물과 함께 삼켜요", "이 알약은 통증을 완전히 없애 줘요"], a: "tongue", o: ["arm", "skin", "lip"]}
+  - {t: "부작용 안내", i: bell, w: "may로 가능성을 말하면 겁을 주지 않으면서 미리 알릴 수 있어요. 혈관이 넓어지면서 두통이나 머리가 핑 도는 느낌이 흔한 부작용이에요.", d: "or a rash", k: ["두통은 전혀 생기지 않아요", "배가 아프거나 설사가 날 수 있어요"], a: "headache", o: ["rash", "cough", "fever"]}
+  - {t: "보고 요청", i: speech, w: "right away로 증상이 바뀌면 즉시 알려 달라고 해요. 투여 후 통증과 어지러움의 변화는 계속 평가해야 하는 신호예요.", d: "tomorrow", k: ["통증이 달라져도 말씀 안 하셔도 돼요", "약을 드신 지 몇 분 됐는지 말씀해 주세요"], a: "dizzy", o: ["hungry", "thirsty", "cold"]}
+  - {t: "동의 확인", i: handshake2, w: "Are you okay with …?는 지시가 아니라 환자의 동의를 묻는 틀이에요. 약 이름과 이유를 알려 준 뒤 동의를 받으면 환자가 치료에 참여한다고 느껴요.", d: "about taking", k: ["이 약을 언제 드셨나요?", "이 약에 알레르기가 있으세요?"], a: "taking", o: ["giving", "losing", "refusing"]}
+  - {t: "경과 관찰", i: monitor, w: "keep checking은 한 번이 아니라 계속 본다는 뜻이에요. 이 약은 혈압을 낮출 수 있어서 투여 후 혈압을 자주 확인해요.", d: "while you sleep", k: ["약을 드시면 혈압을 확인하지 않을게요", "혈압약을 한 알 더 드릴게요"], a: "closely", o: ["rarely", "quickly", "quietly"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "니트로글리세린 설명 4문장 순서"
+    why: "약이 무엇이고 어떻게 쓰는지 먼저 알리고, 그 약을 지금 먹어도 되는지 동의를 구하고, 동의하면 생길 수 있는 불편을 알리고, 그 증상을 지켜보기 위해 혈압을 계속 잰다고 말해요. 뒤 줄이 앞 줄을 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "This tablet goes under your tongue to relax your heart's vessels.", icon: pill, ko: "이 알약은 혀 밑에 두어 심장 혈관을 이완시켜요", note: "설명"}
+    - {en: "Are you okay with taking it now?", icon: handshake2, ko: "지금 이걸 드셔도 괜찮으세요?", note: "동의"}
+    - {en: "If you say yes, it may cause a headache or make you feel lightheaded.", icon: bell, ko: "동의하시면 두통이나 어지러움이 생길 수 있어요", note: "부작용"}
+    - {en: "To watch for that, I'll keep checking your blood pressure.", icon: monitor, ko: "그걸 지켜보려고 혈압을 계속 확인할게요", note: "관찰"}
+  sw: {ko: "두통이 생기거나 머리가 핑 도는 느낌이 들 수 있어요"}

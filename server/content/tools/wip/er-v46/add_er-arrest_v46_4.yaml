@@ -1,0 +1,90 @@
+- title: 임산부 심정지 자궁 좌측 전위
+  s:
+  - {t: "자궁 이동", i: baby, w: "Manually는 기구가 아니라 손으로 한다는 부사예요. 임신 후반의 임산부는 자궁이 큰 혈관을 눌러 순환을 방해할 수 있어서 자궁을 왼쪽으로 밀어요.", d: "the bed", k: ["손으로 자궁을 오른쪽으로 밀어 주세요", "손으로 배를 세게 눌러 주세요"], a: "left", o: ["right", "back", "front"]}
+  - {t: "산과팀 호출", i: bell, w: "두 팀을 먼저 부르고 준비할 일을 이어 말해요. perimortem C-section은 임산부가 심정지일 때 소생을 돕기 위해 하는 제왕절개예요.", d: "appendectomy", k: ["정형외과와 마취과를 불러서 기관 삽관을 준비하세요", "산부인과만 부르고 제왕절개는 하지 마세요"], a: "OB", o: ["ENT", "ortho", "derm"]}
+  - {t: "압박 위치", i: chartup, w: "위치를 high on the sternum처럼 짧게 말하고 continuous로 끊지 말라고 덧붙여요. continuous는 중간에 멈추지 않고 이어진다는 뜻이에요.", d: "hard", k: ["흉골 아래쪽에서 압박을 가끔씩 하세요", "배 위쪽에서 압박을 끊김 없이 계속하세요"], a: "continuous", o: ["occasional", "delayed", "optional"]}
+  - {t: "인원 필요", i: me, w: "Someone needs to …는 지금 비어 있는 역할을 말로 만들어 사람이 나서게 해요. 자궁을 미는 사람이 따로 있어야 압박과 환기가 끊기지 않아요.", d: "the table", k: ["누군가 자궁을 오른쪽으로 밀어야 해요", "누군가 산모 가족을 안내해야 해요"], a: "needs", o: ["wants", "refuses", "hopes"]}
+  - {t: "호출 이유", i: siren, w: "may need는 확정이 아니라 가능성으로 알려요. 그래서 결정이 나기 전에 미리 팀을 부르는 거예요.", d: "later", k: ["산부인과는 부르지 않아도 돼요", "지금 신생아과를 불러 주세요 — 인큐베이터가 필요해요"], a: "may", o: ["won't", "shouldn't", "doesn't"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "임산부 심정지 4문장 순서"
+    why: "먼저 자궁을 손으로 밀고, 그동안 압박을 이어 가고, 맥박이 계속 없으면 산부인과를 부르고, 수술 준비를 시켜요. that, still, that C-section이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Manually displace the uterus to the left.", icon: baby, ko: "손으로 자궁을 왼쪽으로 밀어 주세요", note: "자궁"}
+    - {en: "While that's held, keep compressions continuous on the sternum.", icon: chartup, ko: "그걸 유지하는 동안 압박을 끊김 없이 이어요", note: "압박"}
+    - {en: "If there's still no pulse, call OB — she may need a perimortem C-section.", icon: bell, ko: "맥박이 여전히 없으면 산부인과를 불러요 — 임사 제왕절개가 필요할 수 있어요", note: "호출"}
+    - {en: "Have the neonatal team and a tray ready for that C-section.", icon: scalpel, ko: "그 제왕절개에 대비해 신생아팀과 수술 도구를 준비해요", note: "준비"}
+  sw: {ko: "아내분과 아기 둘 모두를 위해 여기서 응급 제왕절개를 해야 할 수도 있어요"}
+- title: 아나필락시스성 심정지
+  s:
+  - {t: "상황 선언", i: siren, w: "상황 이름을 먼저 말하고 그에 맞는 약을 지시해요. 아나필락시스로 심정지가 오면 에피네프린을 정맥으로 바로 주는 것이 핵심이에요.", d: "IV atropine", k: ["아나필락시스예요 — 항히스타민제를 먹여 주세요", "심정지예요 — 에피네프린은 주지 마세요"], a: "IV", o: ["oral", "topical", "nasal"]}
+  - {t: "수액 지시", i: pill, w: "wide open은 조절기를 최대로 연다는 뜻이에요. 아나필락시스에서는 혈관이 넓어지고 새어서 혈압이 떨어지므로 많은 수액이 필요해요.", d: "slowly", k: ["수액은 천천히 소량만 주세요", "수액 대신 진통제를 열어 주세요"], a: "fluids", o: ["antibiotics", "insulin", "nutrition"]}
+  - {t: "기도 준비", i: gear, w: "with all that …으로 어려움의 이유를 덧붙여요. 아나필락시스에서는 혀와 목이 붓는 일이 많아서 기도 확보가 어려울 수 있어요.", d: "bleeding", k: ["기도는 쉬울 테니 천천히 준비하세요", "부종이 없으니 일반 마스크만 준비하세요"], a: "difficult", o: ["simple", "routine", "quick"]}
+  - {t: "투여 경로", i: pill, w: "not just …로 이미 하던 방식에 더해 달라는 뜻을 담아요. 순환이 멈추면 근육주사는 약이 제대로 퍼지지 않아서 정맥(또는 골내)으로 줘요.", d: ", not just the oxygen", k: ["근육으로만 에피네프린을 천천히 주세요", "정맥이 아니라 피부에 에피네프린을 주세요"], a: "vein", o: ["artery", "skin", "stomach"]}
+  - {t: "상태 관찰", i: magnify, w: "and로 지금 할 일과 지켜볼 일을 이어요. swell은 붓는다는 동사라서 기도가 좁아지는지 계속 보라는 뜻이에요.", d: "his pupils", k: ["수액을 잠그고 기도가 마르는지 보세요", "수액은 천천히 열고 체온을 지켜보세요"], a: "swell", o: ["dry", "clean", "drain"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "아나필락시스성 심정지 4문장 순서"
+    why: "상황을 선언하고 에피네프린을 주고, 그동안 수액을 열고, 수액이 돌면 기도를 준비하고, 붓기가 심해지면 기도를 확보해요. that, Once the fluids are running, it, that airway가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "This is anaphylactic arrest — give IV epinephrine now.", icon: siren, ko: "아나필락시스성 심정지예요 — 지금 정맥으로 에피네프린을 줘요", note: "선언"}
+    - {en: "While that goes in, run large-volume fluids wide open.", icon: pill, ko: "그게 들어가는 동안 대용량 수액을 완전히 열어요", note: "수액"}
+    - {en: "Once the fluids are running, prepare for a difficult airway.", icon: gear, ko: "수액이 돌면 어려운 기도에 대비해요", note: "기도"}
+    - {en: "Watch it closely — if the swelling gets worse, we secure that airway.", icon: magnify, ko: "잘 지켜봐요 — 붓기가 심해지면 그 기도를 확보해요", note: "관찰"}
+  ctx: {word: "difficult", ko: "어려운"}
+- title: ROSC 후 재정지 반복
+  s:
+  - {t: "재정지 선언", i: siren, w: "re-arrested처럼 re-를 붙여 다시 일어났다는 것을 한 단어로 말해요. ROSC 후에 재정지가 오면 바로 압박을 다시 시작해요.", d: "slowly", k: ["맥박이 돌아왔어요 — 압박을 멈추세요", "다시 심정지가 왔어요 — 잠시 기다리세요"], a: "restart", o: ["stop", "pause", "hold"]}
+  - {t: "원인 탐색", i: magnify, w: "Let's find and fix로 동사 두 개를 묶어 '찾고 고치자'는 한 가지 목표로 말해요. 재정지가 반복되면 처음 원인이 해결되지 않았을 수 있어요.", d: "gaining his weight", k: ["왜 맥박이 돌아왔는지 확인해 봐요", "맥박을 잃어도 원인은 나중에 찾아요"], a: "fix", o: ["ignore", "forget", "skip"]}
+  - {t: "이송 가능성", i: hospital, w: "may need로 아직 정해지지 않은 가능성을 미리 알려요. 심장 문제가 원인으로 의심되면 혈관을 직접 보고 치료하는 심혈관조영실(cath lab)로 옮길 수 있어요.", d: "to the cafeteria", k: ["영상의학과로 일반 이송이 필요할 수 있어요", "심혈관조영실 이송은 필요 없어요"], a: "urgent", o: ["routine", "optional", "delayed"]}
+  - {t: "재발 알림", i: bell, w: "again이 ROSC 뒤 두 번째라는 점을 알려 줘요. 현재완료로 방금 일어난 변화를 보고하고 곧바로 명령을 이어요.", d: "— stop compressions", k: ["맥박이 다시 잡혔어요 — 압박을 멈추세요", "처음부터 맥박이 없었어요 — 지금 압박을 시작하세요"], a: "lost", o: ["found", "regained", "kept"]}
+  - {t: "원인 필요", i: compass, w: "We need to …는 해야 할 일을 팀 모두의 과제로 말해요. keeps …ing는 같은 일이 되풀이된다는 뜻이에요.", d: "sleeping", k: ["왜 계속 맥박이 잡히는지 찾아야 해요", "재정지는 원인을 찾을 필요 없어요"], a: "keeps", o: ["stops", "quits", "avoids"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "재정지 반복 4문장 순서"
+    why: "재정지를 알리고 압박을 재시작하고, 원인을 찾아 고치겠다고 하고, 반복되니 이송 가능성을 알리고, 그곳에 도착할 때까지 원인을 찾아요. Compressions are back on, it, there가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "He re-arrested — restart compressions immediately.", icon: siren, ko: "다시 심정지가 왔어요 — 즉시 압박을 재시작해요", note: "재정지"}
+    - {en: "Compressions are back on — let's find and fix why he keeps losing his pulse.", icon: magnify, ko: "압박 재개 — 왜 계속 맥박을 잃는지 찾아 고쳐요", note: "원인"}
+    - {en: "Since it keeps happening, we may need urgent transfer to the cath lab.", icon: hospital, ko: "계속 반복되니 심혈관조영실로 긴급 이송이 필요할 수 있어요", note: "이송"}
+    - {en: "Until we get there, we need to find why he keeps re-arresting.", icon: compass, ko: "거기 도착할 때까지 왜 계속 재정지가 오는지 찾아야 해요", note: "탐색"}
+  ctx: {word: "lose", ko: "잃다"}
+- title: 소생 중단·사망 고지
+  s:
+  - {t: "소생 거부", i: board, w: "We've confirmed는 방금 확인을 마쳤다는 현재완료예요. 소생을 원치 않는다는 뜻은 사전 지시서(DNR)나 가족·대리인 확인으로 알 수 있어요.", d: "to be discharged", k: ["소생시켜 달라는 그의 뜻을 확인했어요", "그의 뜻은 아직 확인하지 못했어요"], a: "wishes", o: ["complaints", "allergies", "medications"]}
+  - {t: "팀 합의", i: handshake2, w: "it's time to …는 이제 방향을 바꿀 시점이라는 부드러운 선언이에요. 소생을 멈춘 뒤에는 환자와 가족의 편안함이 돌봄의 중심이 돼요.", d: "his billing", k: ["팀은 소생을 더 이어가기로 했어요", "팀은 이제 퇴원시킬 때라고 해요"], a: "comfort", o: ["recovery", "discharge", "rehab"]}
+  - {t: "위로와 배려", i: faceWorried, w: "I'm so sorry는 잘못을 인정하는 사과가 아니라 슬픔에 공감하는 위로예요. 원하는 만큼 시간을 허락하면 가족이 작별할 여유를 가져요.", d: "in the hall", k: ["정말 죄송해요 — 시간이 없으니 서둘러 주세요", "정말 죄송해요 — 잠시 후에 다시 올게요"], a: "time", o: ["money", "food", "medicine"]}
+  - {t: "공감", i: faceWorried, w: "I know this is …로 상대의 감정을 먼저 인정해요. 나쁜 소식을 전한 뒤 바로 설명으로 넘어가기보다 공감하는 말을 두면 가족이 소식을 받아들일 틈이 생겨요.", d: "to explain", k: ["이 소식이 반가우시리라 생각해요", "듣기 힘드시겠지만 괜찮을 거예요"], a: "hard", o: ["easy", "simple", "quick"]}
+  - {t: "소생 중단", i: bell, w: "We'll …and focus on …로 멈추는 것과 이어서 하는 일을 한 문장에 담아요. 멈춘다는 말만 하면 가족이 버려졌다고 느낄 수 있어서 이어서 할 일을 함께 말해요.", d: "his pulse now", k: ["압박을 계속하고 이제 맥박에 집중할게요", "압박을 멈추고 이제 퇴원 준비를 할게요"], a: "stop", o: ["start", "continue", "resume"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "소생 중단과 가족 응대 4문장 순서"
+    why: "뜻을 확인하고, 그에 따라 팀이 합의하고, 압박을 멈추고, 멈춘 뒤 가족에게 위로와 시간을 건네요. Because of that, With that decided, Now that we've stopped가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "We've confirmed his wishes not to be resuscitated.", icon: board, ko: "소생시키지 말라는 그의 뜻을 확인했어요", note: "확인"}
+    - {en: "Because of that, the team agrees it's time to focus on his comfort.", icon: handshake2, ko: "그래서 팀은 이제 편안함에 집중할 때라고 해요", note: "합의"}
+    - {en: "With that decided, we'll stop compressions now.", icon: bell, ko: "그렇게 정해졌으니 이제 압박을 멈출게요", note: "중단"}
+    - {en: "Now that we've stopped, I'm so sorry — take all the time you need with him.", icon: faceWorried, ko: "멈췄어요, 정말 죄송해요 — 필요한 만큼 곁에 계세요", note: "위로"}
+  sw: {ko: "정말 죄송해요 — 아버님이 돌아가셨어요"}
+- title: 외상성 심정지 특수 대응
+  s:
+  - {t: "감압 지시", i: siren, w: "상황 이름을 먼저 던지고 바로 처치를 이어요. 외상성 심정지에서는 긴장성 기흉이 흔한 원인이라 양쪽 가슴을 감압하는 것이 먼저 고려돼요.", d: "of the head", k: ["내과적 심정지예요 — 약물을 주세요", "외상성 심정지예요 — 머리를 고정하세요"], a: "decompress", o: ["palpate", "tape", "ultrasound"]}
+  - {t: "출혈 대응", i: pill, w: "Control과 start 두 동사를 and로 이어 한 번에 지시해요. 외상성 심정지의 흔한 원인은 출혈이라 지혈과 수혈이 압박만큼 중요해요.", d: "light fluids", k: ["출혈은 두고 약물만 주세요", "출혈을 조절하고 수혈은 하지 마세요"], a: "massive", o: ["small", "slow", "light"]}
+  - {t: "우선순위", i: compass, w: "matter less than …으로 우선순위를 비교해요. 외상성 심정지는 출혈이나 기흉 같은 원인을 해결하지 않으면 압박만으로는 소생이 어려워요.", d: "the budget", k: ["여기서도 압박이 원인 치료보다 더 중요해요", "원인을 찾기 전에 압박을 멈추세요"], a: "fixing", o: ["hiding", "ignoring", "forgetting"]}
+  - {t: "순서 지시", i: redo, w: "first와 then으로 두 단계의 순서를 말해요. 외상성 심정지에서는 큰 출혈을 먼저 잡는 것이 우선이에요.", d: "fluids", k: ["먼저 압박을 시작하고, 그다음 출혈을 조절하세요", "출혈은 신경 쓰지 말고 압박만 하세요"], a: "first", o: ["last", "later", "never"]}
+  - {t: "감압 먼저", i: play, w: "before you …로 순서를 고정해요. 긴장성 기흉이 있으면 압박이 효과를 내지 못해서 감압이 먼저예요.", d: "keep breathing", k: ["양쪽 가슴을 감압한 뒤에 압박을 멈추세요", "한쪽 가슴만 감압하고 계속 누르세요"], a: "keep", o: ["stop", "quit", "finish"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "외상성 심정지 4문장 순서"
+    why: "상황을 선언하며 감압하고, 열린 다음 출혈과 수혈을 시작하고, 원인 해결을 우선하고, 출혈이 잡히면 압박을 시작해요. Now that both sides are open, that cause, Once it's controlled가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Traumatic arrest — decompress both sides of the chest.", icon: siren, ko: "외상성 심정지예요 — 양쪽 가슴을 감압해요", note: "감압"}
+    - {en: "Now that both sides are open, control the bleeding and start massive transfusion.", icon: pill, ko: "양쪽이 열렸으니 출혈을 조절하고 대량수혈을 시작해요", note: "출혈"}
+    - {en: "Fixing that cause comes first — compressions matter less here.", icon: compass, ko: "그 원인을 고치는 게 먼저예요 — 여기선 압박이 덜 중요해요", note: "우선"}
+    - {en: "Once it's controlled, start compressions.", icon: play, ko: "잡히면 압박을 시작해요", note: "압박"}
+  ctx: {word: "traumatic", ko: "외상성의"}

@@ -1,0 +1,108 @@
+- title: 저혈압 초기 활력 인지
+  s:
+  - {t: "활력 확인", i: stetho, w: "Let me …는 허락을 구하는 형태라 환자가 손을 내어 줄 마음의 준비를 해요. 혈압과 맥박은 쇼크 사정에서 가장 먼저 보는 활력징후예요.", d: "on your own", k: ["심전도 스티커를 붙일게요", "피검사를 위해 채혈할게요"], a: "pulse", o: ["temperature", "reflexes", "pupils"]}
+  - {t: "상태 알림", i: monitor, w: "feel cool처럼 느낀 그대로 말하면 진단을 단정하지 않고 관찰만 전해요. 차가운 손은 말초 순환이 떨어졌다는 단서가 될 수 있어요.", d: "very painful", k: ["손에 힘이 들어가는지 볼게요", "손끝에서 혈당을 재 볼게요"], a: "cool", o: ["swollen", "stiff", "dry"]}
+  - {t: "기간 문진", i: calendar, w: "have been …ing는 지금까지 이어진 기간을 묻는 현재완료진행이에요. 증상이 언제부터인지는 갑자기 생긴 것인지 서서히 진행된 것인지 가르는 단서예요.", d: "at home", k: ["어디가 제일 아프신지 말씀해 주세요", "약을 언제 드셨는지 말씀해 주세요"], a: "weak", o: ["dizzy", "nauseated", "cold"]}
+  - {t: "결과 안내", i: chartup, w: "a little로 수치를 부드럽게 전하면 환자가 놀라지 않아요. right now는 지금 이 순간의 값이라는 점을 짚어 줘요.", d: "all day", k: ["커프가 너무 꽉 조여서 그런 거예요", "재는 동안은 말씀하지 마세요"], a: "low", o: ["high", "uneven", "weak"]}
+  - {t: "의식 확인", i: magnify, w: "alert는 의식이 또렷한 정도를 뜻해요. 쇼크에서는 혈압과 함께 의식 수준도 관류 상태를 보여 주는 지표라 같이 확인해요.", d: "how much", k: ["이름과 생년월일을 확인할게요", "통증이 몇 점인지 물어볼게요"], a: "alert", o: ["drowsy", "anxious", "tired"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "저혈압 첫 사정 4문장 순서"
+    why: "측정을 알리고, 그 결과를 전한 뒤, 손의 상태와 증상 기간을 묻고, 마지막에 의사에게 알린다고 닫아요. 'That reading'·'They'·'all of that'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "I'm going to take your blood pressure and pulse now.", icon: stetho, ko: "지금 혈압과 맥박을 잴게요", note: "측정"}
+    - {en: "That reading is a little low, so I'm checking your hands too.", icon: chartup, ko: "그 수치가 조금 낮아서 손도 확인할게요", note: "결과"}
+    - {en: "They feel cool, so I'd like to know how long you've felt weak.", icon: calendar, ko: "서늘하네요, 얼마나 오래 힘이 없으셨는지 알고 싶어요", note: "문진"}
+    - {en: "Thanks, I'll let the doctor know all of that right away.", icon: speech, ko: "고마워요, 그 모두를 바로 의사에게 알릴게요", note: "보고"}
+  ctx: {word: "circulation", ko: "순환"}
+- title: 기립성 저혈압 문진
+  s:
+  - {t: "증상 문진", i: me, w: "only when으로 범위를 좁혀 물으면 일어설 때 생기는 증상인지 가려내기 쉬워요. 자세를 바꿀 때만 어지러우면 기립성 저혈압을 의심해 볼 수 있어요.", d: "lie down", k: ["어지러울 때 귀에서 소리가 나나요?", "어지러울 때 구역질도 나나요?"], a: "dizzy", o: ["nauseous", "shaky", "sweaty"]}
+  - {t: "수분 섭취", i: coffee, w: "How much …?로 양을 열어 묻고 today로 기간을 좁혀요. 수분 섭취가 적었는지는 기립성 저혈압의 흔한 원인 중 하나를 가려내는 질문이에요.", d: "since lunch", k: ["커피나 술을 드셨나요?", "마지막으로 소변을 본 게 언제인가요?"], a: "drink", o: ["eat", "sleep", "walk"]}
+  - {t: "절차 안내", i: monitor, w: "lying down and standing처럼 두 자세를 나란히 말하면 환자가 누웠다 일어서는 순서를 미리 알아요. 자세를 바꿔 가며 재는 것이 기립성 저혈압을 확인하는 방법이에요.", d: "while sitting", k: ["재기 전에 소변을 보고 오세요", "혈압약 먹은 시간을 적어 둘게요"], a: "lying", o: ["sitting", "leaning", "kneeling"]}
+  - {t: "낙상 확인", i: shield, w: "Have you had any …?는 지금까지 겪은 경험을 묻는 현재완료라 최근 일로 한정하지 않아요. 어지러움으로 넘어진 적이 있다면 머리를 다쳤는지 이어서 확인해야 해요.", d: "at night", k: ["어지러울 때 곁에 누가 있었나요?", "지팡이나 보행기를 쓰시나요?"], a: "falls", o: ["bumps", "trips", "cuts"]}
+  - {t: "예방 교육", i: bulb, w: "can help …로 가능성만 말해 과한 약속을 피해요. 자세를 천천히 바꾸면 혈압이 따라올 시간을 벌어 어지러움을 줄일 수 있어요.", d: "all at once", k: ["혼자 화장실에 가지 말고 벨을 눌러 주세요", "미끄럽지 않은 신발을 신으세요"], a: "slowly", o: ["quickly", "fully", "twice"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "기립성 저혈압 문진 4문장 순서"
+    why: "증상이 언제 나는지 먼저 묻고, 그 답을 받아 수분 섭취를, 이어서 측정 방법을 알리고, 숫자가 나온 뒤 교육으로 마칩니다. 'that'·'that answer'·'those numbers'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Do you feel dizzy only when you stand up?", icon: me, ko: "일어설 때만 어지러우세요?", note: "증상"}
+    - {en: "When that happens, how much have you had to drink today?", icon: coffee, ko: "그럴 때, 오늘 물은 얼마나 드셨어요?", note: "수분"}
+    - {en: "Based on that answer, I'll check your pressure lying down and then standing.", icon: monitor, ko: "그 답을 바탕으로 누워서, 이어서 서서 혈압을 잴게요", note: "측정"}
+    - {en: "Once I have those numbers, I'll show you how to stand up slowly.", icon: bulb, ko: "수치가 나오면 천천히 일어나는 법을 알려 드릴게요", note: "교육"}
+  ctx: {word: "fall", ko: "낙상"}
+- title: 대구경 정맥로·수액 설명
+  s:
+  - {t: "절차 안내", i: bandage, w: "I'm placing …은 지금 하고 있는 일을 알리는 진행형이고 so we can …은 그 목적을 밝혀요. 목적을 함께 말하면 굵은 바늘에 대한 불안이 줄어요.", d: "on your own", k: ["지금 바로 채혈부터 할게요", "수액 대신 산소부터 드릴게요"], a: "larger", o: ["smaller", "shorter", "longer"]}
+  - {t: "목적 설명", i: chartup, w: "will help …로 효과를 도움으로 말해 과한 약속을 피해요. 수액은 혈관 안의 부피를 채워 혈압을 올리는 쇼크의 기본 치료예요.", d: "back down", k: ["이 수액은 통증을 줄여 줘요", "이 수액은 열을 내려 줘요"], a: "fluid", o: ["medicine", "oxygen", "blood"]}
+  - {t: "감각 예고", i: bell, w: "quick pinch처럼 짧다는 말을 같이 써야 환자가 견딜 만하다고 느껴요. then으로 두 번째 느낌을 미리 알려 주면 찬 수액이 들어갈 때 놀라지 않아요.", d: "for a while", k: ["바늘을 넣을 때 팔을 움직이지 마세요", "팔이 저리면 바로 말씀해 주세요"], a: "pinch", o: ["tug", "burn", "squeeze"]}
+  - {t: "필요 설명", i: pill, w: "if needed로 지금은 수액이지만 필요하면 약도 같은 길로 줄 수 있다고 알려요. 굵은 정맥로 하나로 수액과 약을 모두 빠르게 줄 수 있어요.", d: "by mouth", k: ["이 정맥로로 채혈도 할 거예요", "정맥로는 내일 아침에 뺄 거예요"], a: "medicine", o: ["blood", "oxygen", "contrast"]}
+  - {t: "소독 안내", i: shield, w: "first, then …으로 순서를 말하면 환자가 지금 어느 단계인지 알 수 있어요. 소독은 정맥로 감염을 줄이는 첫 단계예요.", d: "after that", k: ["먼저 팔에 압박대를 감을게요", "먼저 손등을 살펴볼게요"], a: "clean", o: ["dry", "warm", "mark"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "굵은 정맥로 설명 4문장 순서"
+    why: "무엇을 할지 알리고, 그것으로 무엇을 할 수 있는지 설명한 뒤, 들어갈 때의 느낌을 예고하고, 불편하면 알려 달라고 닫아요. 'it'·'they're'·'that'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "I'm going to put a larger IV in your arm.", icon: bandage, ko: "팔에 더 굵은 정맥로를 넣을게요", note: "안내"}
+    - {en: "With it, we can give fluids quickly if your pressure stays low.", icon: chartup, ko: "그걸로 혈압이 계속 낮으면 수액을 빠르게 줄 수 있어요", note: "목적"}
+    - {en: "Once they're running, your arm may feel cool.", icon: bell, ko: "수액이 들어가기 시작하면 팔이 서늘할 수 있어요", note: "예고"}
+    - {en: "If that bothers you, please tell me right away.", icon: speech, ko: "그게 불편하면 바로 말씀해 주세요", note: "요청"}
+  sw: {ko: "수액을 빠르게 줄 수 있도록 팔에 더 굵은 정맥로를 넣을게요"}
+- title: 탈수 관련 저혈압 교육
+  s:
+  - {t: "원인 설명", i: bulb, w: "Losing that much fluid가 주어라 '잃은 양'이 원인이라는 점이 먼저 보여요. can으로 가능성을 말해 겁주지 않으면서 이유를 알려요.", d: "the next day", k: ["수분이 많이 빠지면 소변이 진해져요", "수분이 많이 빠지면 열이 날 수 있어요"], a: "lower", o: ["raise", "hold", "lift"]}
+  - {t: "치료 안내", i: bandage, w: "catch you up은 모자란 만큼 따라잡는다는 구어체라 수액으로 채운다는 말을 쉽게 풀어 줘요. through your vein으로 경로를 알려 주면 정맥으로 들어간다는 것도 미리 알아요.", d: "to your doctor", k: ["입으로 먹는 약부터 시작할게요", "수혈이 필요한지 먼저 볼게요"], a: "vein", o: ["skin", "mouth", "muscle"]}
+  - {t: "경구 안내", i: coffee, w: "Once …로 조건을 먼저 말하면 환자가 언제 마실 수 있는지 기준을 알아요. 구토 뒤에는 한꺼번에 많이 마시면 다시 토할 수 있어서 조금씩 시도해요.", d: "all at once", k: ["나아지면 바로 식사하실 수 있어요", "나아지면 오늘 퇴원하실 수 있어요"], a: "sips", o: ["gulps", "bites", "spoons"]}
+  - {t: "원인 설명", i: bulb, w: "can make you …로 원인과 결과를 이어 줘요. 구토가 이틀 이어지면 몸에서 수분이 빠져나가는 데다 마시기도 어려워 탈수가 되기 쉬워요.", d: "since lunch", k: ["이틀 동안 못 드시면 영양이 부족해질 수 있어요", "이틀 토하셨으니 위에 염증이 생겼을 수 있어요"], a: "lose", o: ["gain", "save", "burn"]}
+  - {t: "경과 관찰", i: monitor, w: "watch how much …로 마시는 양을 지켜본다고 하면 감시가 아니라 돌봄으로 들려요. 섭취량 기록은 수액 보충이 충분한지 판단하는 근거가 돼요.", d: "from a bottle", k: ["화장실에 가실 때는 벨을 눌러 주세요", "토할 것 같으면 바로 말씀해 주세요"], a: "slowly", o: ["quickly", "daily", "twice"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "탈수 저혈압 교육 4문장 순서"
+    why: "원인을 설명하고, 그래서 수액을 준다고 이어 가고, 수액으로 따라잡은 뒤 조금씩 마시기를 시도하고, 잘 넘기면 조금씩 늘린다고 마칩니다. 'That's why'·'they've'·'those'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Losing that much fluid can lower your blood pressure.", icon: bulb, ko: "그렇게 수분을 잃으면 혈압이 내려갈 수 있어요", note: "원인"}
+    - {en: "That's why we'll give fluids through your vein.", icon: bandage, ko: "그래서 정맥으로 수액을 드릴 거예요", note: "치료"}
+    - {en: "After they've caught you up, we'll try small sips slowly.", icon: coffee, ko: "수액으로 채워지면 조금씩 천천히 마셔 볼게요", note: "경구"}
+    - {en: "If you keep those down, we'll let you drink a little more.", icon: check, ko: "그걸 잘 넘기면 조금 더 드릴게요", note: "확대"}
+  ctx: {word: "fluid", ko: "수액"}
+- title: 실신 후 내원 사정
+  s:
+  - {t: "전조 확인", i: bulb, w: "remember로 물으면 기억에 기댄 보고를 구하는 거예요. 실신 전의 어지러움·식은땀·두근거림 같은 전조는 원인을 가르는 단서예요.", d: "when you woke up", k: ["쓰러지기 직전에 무엇을 하고 계셨나요?", "쓰러진 뒤 누가 곁에 왔나요?"], a: "fainted", o: ["slipped", "tripped", "vomited"]}
+  - {t: "목격자 확인", i: me, w: "anyone을 쓰면 가족이든 행인이든 누구나 답할 수 있어요. 의식을 잃은 동안의 일은 목격자만 알려 줄 수 있어요.", d: "today", k: ["누가 구급차를 불렀나요?", "쓰러지신 곳이 어디였나요?"], a: "happened", o: ["changed", "followed", "remained"]}
+  - {t: "외상 확인", i: bandage, w: "hit your head를 먼저 구체적으로 묻고 hurt yourself로 범위를 넓혀요. 실신으로 넘어졌다면 머리 손상 여부가 우선 확인 대상이에요.", d: "at the store", k: ["넘어질 때 누가 잡아 줬나요?", "넘어진 뒤 바로 일어나셨나요?"], a: "head", o: ["neck", "back", "hip"]}
+  - {t: "기억 유도", i: bulb, w: "Try to …는 확실히 기억나지 않아도 괜찮다는 느낌을 줘요. if로 묻는 형태라 예·아니오로 답하기 쉬워요.", d: "after lunch", k: ["쓰러진 뒤 정신이 바로 돌아왔는지 말씀해 주세요", "쓰러지기 전에 뭘 드셨는지 떠올려 보세요"], a: "dizzy", o: ["sweaty", "nauseous", "cold"]}
+  - {t: "손상 확인", i: magnify, w: "Let's …로 함께 하는 느낌을 주고 for any injury로 찾는 대상을 알려요. 넘어진 뒤에는 환자 본인이 모르는 멍이나 상처가 있을 수 있어서 직접 살펴봐요.", d: "on your own", k: ["다친 곳을 사진으로 남길게요", "다친 곳에는 얼음을 대 드릴게요"], a: "injury", o: ["rash", "infection", "allergy"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "실신 후 사정 4문장 순서"
+    why: "전조를 묻고, 목격자를 확인하고, 다쳤는지 묻고, 다쳤다면 살펴본다고 이어요. 'Thanks for that'·'Whether or not anyone saw it'·'If you did'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Do you remember feeling anything before you fainted?", icon: bulb, ko: "쓰러지기 전에 뭔가 느낀 게 기억나세요?", note: "전조"}
+    - {en: "Thanks for that. Did anyone see you fall?", icon: me, ko: "고마워요. 쓰러지는 걸 본 사람이 있나요?", note: "목격"}
+    - {en: "Whether or not anyone saw it, did you hit your head or hurt yourself?", icon: bandage, ko: "본 사람이 있든 없든, 머리를 부딪히거나 다치셨나요?", note: "외상"}
+    - {en: "If you did, let's check your head and arms for any injury.", icon: magnify, ko: "그랬다면 머리와 팔에 손상이 있는지 확인해 볼게요", note: "확인"}
+  sw: {ko: "남편분이 가게에서 쓰러지셨어요"}
+- title: 저혈량성 쇼크 출혈원 사정
+  s:
+  - {t: "출혈 문진", i: magnify, w: "black or bloody로 눈에 보이는 두 모습을 직접 말해 환자가 쉽게 떠올려요. 검은 변은 위·식도 쪽 출혈을, 붉은 피는 아래쪽 출혈을 시사해요.", d: "after eating", k: ["변을 볼 때 통증이 있으세요?", "최근에 설사를 하셨나요?"], a: "bloody", o: ["loose", "hard", "greasy"]}
+  - {t: "복약 확인", i: pill, w: "any를 붙이면 처방약과 약국에서 산 약을 모두 떠올리게 해요. 항응고제는 출혈을 오래 지속시킬 수 있어서 출혈 환자에게 가장 먼저 확인해요.", d: "every day", k: ["평소에 드시는 혈압약이 있나요?", "최근에 새로 시작한 약이 있나요?"], a: "taking", o: ["missing", "skipping", "stopping"]}
+  - {t: "준비 안내", i: bandage, w: "We're getting …ready는 이미 준비에 들어갔다는 진행형이라 환자가 안심해요. 출혈로 인한 쇼크에서는 수액과 함께 수혈을 준비하는 것이 기본 대응이에요.", d: "for the test", k: ["산소부터 연결하고 있어요", "혈액검사부터 하고 있어요"], a: "ready", o: ["clean", "warm", "labeled"]}
+  - {t: "출혈원 확인", i: magnify, w: "명사만 나열한 짧은 문진이라 환자가 하나씩 떠올려 답해요. 최근 수술·부상·질 출혈은 출혈원을 좁히는 세 갈래라 한 번에 물어요.", d: "last week", k: ["최근에 임신했을 가능성이 있으세요?", "최근에 치과 치료를 받으셨나요?"], a: "injury", o: ["fever", "rash", "cough"]}
+  - {t: "준비 안내", i: lab, w: "in case you need it은 필요하다고 확정한 것이 아니라서 불안을 덜어요. 수혈용 혈액은 적합성 검사에 시간이 걸려서 필요해지기 전에 미리 준비해요.", d: "to be safe", k: ["결과가 나오면 바로 수혈을 시작할게요", "수혈 동의서를 가져올게요"], a: "draw", o: ["order", "review", "send"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "출혈원 사정 4문장 순서"
+    why: "출혈 증상을 묻고, 그 답을 받아 복약을 확인하고, 두 답을 근거로 채혈과 혈액 준비를 알린 뒤, 결과를 기다리는 동안 수액을 시작한다고 마칩니다. 'Thanks for that'·'both of those answers'·'those results'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Have you noticed any black or bloody stools?", icon: magnify, ko: "검거나 피가 섞인 대변을 본 적이 있으세요?", note: "증상"}
+    - {en: "Thanks for that. Are you taking any blood thinners?", icon: pill, ko: "고마워요. 항응고제를 드시고 계신가요?", note: "복약"}
+    - {en: "With both of those answers, we'll draw labs and get blood ready.", icon: lab, ko: "두 답을 토대로 채혈하고 혈액을 준비할게요", note: "준비"}
+    - {en: "We'll start fluids while we wait for those results.", icon: bandage, ko: "그 결과를 기다리는 동안 수액을 시작할게요", note: "수액"}
+  ctx: {word: "ready", ko: "준비된"}

@@ -1,0 +1,75 @@
+- title: 완전방실차단 서맥성 실신
+  s:
+  - {t: "상황 설명", i: siren, w: "so we may need …에서 may가 아직 확정이 아니라는 여지를 남겨 환자를 덜 놀라게 해요. pace는 전기 자극으로 심장이 뛰게 한다는 뜻이에요.", d: "so we can relax", k: ["심장이 너무 빠르게 뛰고 있어요", "심장은 정상으로 뛰고 있어요"], a: "slowly", o: ["quickly", "loudly", "weakly"]}
+  - {t: "장비 설명", i: bandage, w: "that give …로 패드가 하는 일을 관계절로 붙여 설명해요. 환자가 자극을 어떻게 느끼는지는 사람마다 다르니 느낌이 있으면 말해 달라고 따로 알려 주면 좋아요.", d: "that read only", k: ["약을 넣어 주는 패드를 붙일 거예요", "체온을 재는 패드를 붙일 거예요"], a: "gentle", o: ["strong", "painful", "loud"]}
+  - {t: "의식 확인", i: me, w: "if you can …으로 조건을 달아 환자가 할 수 있는 만큼만 반응하게 해요. 말을 못 해도 손을 쥐는 간단한 동작으로 의식과 반응을 확인할 수 있어요.", d: "to answer yes", k: ["제 손을 놓고 눈을 감아 주세요", "제 말이 들리면 대답해 주세요"], a: "hear", o: ["see", "feel", "smell"]}
+  - {t: "상황 설명", i: siren, w: "so로 지금 서두르는 이유를 앞 문장과 연결해 줘요. 빠르게 움직이는 이유를 알려 주면 환자와 가족이 분주한 모습에 덜 놀라요.", d: "so we can wait", k: ["심박수가 올라서 천천히 볼게요", "심박수는 정상이라 기다리고 있어요"], a: "quickly", o: ["slowly", "quietly", "later"]}
+  - {t: "목적 설명", i: monitor, w: "to keep …으로 장비의 목적을 '유지하려고'로 말해요. 페이싱 패드는 심장이 스스로 박동을 충분히 만들지 못할 때 전기 신호로 박동을 만들어 줘요.", d: "to make it stop", k: ["패드가 심장 소리를 녹음해요", "패드가 통증을 줄여 줘요"], a: "steadily", o: ["wildly", "slowly", "randomly"]}
+  - {t: "협조 요청", i: me, w: "as … as you can은 환자가 할 수 있는 만큼만 부탁해서 부담을 줄여요. while로 지금 준비하는 동안이라는 범위를 알려 주면 환자가 언제까지 기다릴지 알 수 있어요.", d: "and keep talking", k: ["준비하는 동안 걸어다니셔도 돼요", "준비하는 동안 눈을 크게 뜨고 있으세요"], a: "ready", o: ["clean", "quiet", "wrapped"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "서맥 페이싱 준비 4문장 순서"
+    why: "느린 심박수와 페이싱 필요성을 말하고, 그 방법으로 패드를 붙인다고 알리고, 준비하는 동안 가만히 있게 하고, 패드가 붙은 뒤 손을 쥐어 반응을 확인합니다. 'To do that'·'them'·'Once they're on'이 앞 줄을 가리켜요."
+    lines:
+    - {en: "Your heart is beating too slowly, so we may need to pace it.", icon: siren, ko: "심장이 너무 느리게 뛰어서 페이싱이 필요할 수 있어요", note: "상황"}
+    - {en: "To do that, we'll place pads that give gentle electrical pulses.", icon: bandage, ko: "그러려고 부드러운 전기 자극을 주는 패드를 붙일 거예요", note: "패드"}
+    - {en: "While we get them ready, stay as still as you can.", icon: me, ko: "준비하는 동안 최대한 가만히 계세요", note: "요청"}
+    - {en: "Once they're on, squeeze my hand if you can hear me.", icon: handshake2, ko: "다 붙이면 제 말이 들릴 때 제 손을 꽉 쥐어 보세요", note: "확인"}
+  sw: {ko: "부드러운 전기 자극을 주는 패드를 붙일 거예요."}
+- title: Torsades·QT연장
+  s:
+  - {t: "약 이력", i: pill, w: "What …have you …?는 구체적인 약 이름을 말하게 하는 열린 질문이에요. 일부 약은 심장의 전기 회복 시간(QT)을 늘리므로 최근에 시작한 약이 중요한 단서예요.", d: "from home", k: ["어떤 음식을 드셨나요?", "어떤 약에 알레르기가 있나요?"], a: "started", o: ["stopped", "finished", "refilled"]}
+  - {t: "검사 안내", i: lab, w: "now로 지금 하고 있는 일이라는 점을 알려요. 칼륨과 마그네슘이 낮으면 심장의 전기적 불안정성이 커질 수 있어서 먼저 확인해요.", d: "later today", k: ["혈당과 콜레스테롤을 확인하고 있어요", "소변 검사 결과를 확인하고 있어요"], a: "potassium", o: ["calcium", "iron", "glucose"]}
+  - {t: "약 준비", i: pill, w: "drawing up은 주사기에 약을 담는 동작을 가리키는 현장 용어예요. 목적을 to protect …로 붙이면 환자가 왜 이 약을 쓰는지 알 수 있어요.", d: "to wake you up", k: ["칼륨을 뽑아서 드릴게요", "마그네슘을 먹는 약으로 드릴게요"], a: "protect", o: ["change", "speed", "test"]}
+  - {t: "원인 설명", i: bulb, w: "Some …can …로 단정하지 않고 가능성을 말해요. QT 연장은 박동 뒤 심장이 전기적으로 회복하는 시간이 길어지는 상태이고 일부 약이 원인이 될 수 있어요.", d: "every day", k: ["약은 심장에 영향을 주지 않아요", "모든 약은 심장을 보호해요"], a: "electrical", o: ["chemical", "mechanical", "structural"]}
+  - {t: "원인 설명", i: shield, w: "can make …로 원인과 결과를 이어 설명해요. 칼륨이나 마그네슘이 낮으면 심장 근육의 전기 활동이 불안정해져 위험한 리듬이 생기기 쉬워요.", d: "very rarely", k: ["수치가 높으면 리듬이 안정돼요", "수치는 리듬과 아무 관련이 없어요"], a: "unstable", o: ["steady", "regular", "calm"]}
+  - {t: "목적 설명", i: pill, w: "helps keep …으로 약이 완전히 보장하는 것이 아니라 돕는다는 정도로 말해 과장을 피해요. 마그네슘은 이런 위험한 리듬이 반복될 때 정맥으로 쓰는 치료예요.", d: "makes it faster", k: ["이 약은 심박을 더 빠르게 해 줘요", "이 약은 통증을 줄여 줘요"], a: "steady", o: ["fast", "loud", "slow"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "QT 연장 대응 4문장 순서"
+    why: "최근 약을 묻고, 약이 전기적 타이밍에 영향을 준다고 설명하고, 전해질이 낮으면 더 불안정해진다며 수치를 확인하고, 결과를 기다리는 동안 마그네슘을 준비합니다. 'that'·'those results'가 앞 줄을 가리켜요."
+    lines:
+    - {en: "What medications have you started recently?", icon: pill, ko: "최근에 새로 시작한 약이 있나요?", note: "약 이력"}
+    - {en: "Thanks. Some medications can affect your heart's electrical timing.", icon: bulb, ko: "고마워요. 어떤 약들은 심장의 전기적 타이밍에 영향을 줄 수 있어요", note: "설명"}
+    - {en: "Low potassium or magnesium can make that worse, so we're checking your levels now.", icon: lab, ko: "칼륨이나 마그네슘이 낮으면 더 나빠질 수 있어서 지금 수치를 확인해요", note: "검사"}
+    - {en: "While we wait on those results, I'm drawing up magnesium to protect your heart rhythm.", icon: pill, ko: "그 결과를 기다리는 동안 심장 리듬을 보호하려고 마그네슘을 뽑고 있어요", note: "약 준비"}
+  ctx: {word: "draw up", ko: "약을 뽑다"}
+- title: 부정맥 급속 악화 SBAR
+  s:
+  - {t: "상황 보고", i: siren, w: "SBAR의 S는 지금 무슨 일인지를 한 문장으로 말하는 칸이에요. 침상 번호를 먼저 말하고 just converted로 방금 바뀌었음을 알려 듣는 사람이 시점을 바로 알 수 있어요.", d: "at the clinic", k: ["배경: 2번 침상 환자는 심장 병력이 있습니다", "평가: 2번 침상 환자는 안정적입니다"], a: "tachycardia", o: ["bradycardia", "fibrillation", "asystole"]}
+  - {t: "객관 정보", i: chartup, w: "혈압을 숫자로 말하면 '떨어졌다'는 말보다 정확해서 듣는 사람이 위급도를 가늠해요. 78/40은 seventy-eight over forty로 읽는 것이 일반적이에요.", d: "back to normal", k: ["혈압이 120/80으로 올랐고 편안해 보입니다", "혈압이 안정적이고 식은땀도 없습니다"], a: "dropped", o: ["rose", "jumped", "climbed"]}
+  - {t: "권고(R)", i: bell, w: "SBAR의 R은 원하는 조치를 분명히 말하는 칸이에요. I recommend …로 요청을 완곡하고 전문적으로 전하고 now로 긴급함을 분명히 해요.", d: "in the morning", k: ["팀이 나중에 와도 됩니다", "심율동전환은 필요하지 않습니다"], a: "now", o: ["later", "tomorrow", "eventually"]}
+  - {t: "추가 정보", i: chartup, w: "now와 climbing으로 현재 값과 변화 방향을 함께 알려요. 숫자와 추세를 같이 말하면 듣는 사람이 상황이 나빠지고 있음을 바로 알아요.", d: "and falling", k: ["지금 심박수가 40으로 떨어졌습니다", "지금 심박수가 안정적으로 유지됩니다"], a: "over", o: ["under", "below", "near"]}
+  - {t: "권고(R)", i: siren, w: "need someone처럼 누가 올지 정하지 않고 필요한 역할을 요청하면 사람이 빨리 모일 수 있어요. immediately가 요청의 긴급도를 분명히 해요.", d: "when free", k: ["침상에서 기다릴 사람은 필요 없습니다", "심율동전환은 다음 주에 준비합니다"], a: "immediately", o: ["eventually", "tomorrow", "quietly"]}
+  - {t: "연락 유지", i: speaker, w: "stay on the line은 전화를 끊지 않고 있겠다는 뜻이에요. 보고하는 사람이 전화를 유지하면 의사에게 알린 뒤에도 추가 정보를 바로 이어서 줄 수 있어요.", d: "until you hang up", k: ["전화를 끊고 직접 의사에게 갈게요", "의사가 올 때까지 기다리지 마세요"], a: "notify", o: ["wake", "thank", "replace"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "SBAR 보고 4문장 순서"
+    why: "먼저 상황을 한 문장으로 알리고, 그 뒤의 활력징후를 말하고, 그에 근거해 권고하고, 권고가 실행되도록 연락을 유지하겠다고 합니다. 'Since then'·'Because of that'·'To get them here'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Situation: bed 2 just converted to a wide-complex tachycardia.", icon: siren, ko: "상황: 2번 침상 환자가 방금 광범위 QRS 빈맥으로 전환됐습니다", note: "상황"}
+    - {en: "Since then, her BP has dropped to 78 over 40 and she's diaphoretic.", icon: chartup, ko: "그 뒤 혈압이 78/40으로 떨어졌고 식은땀을 흘립니다", note: "정보"}
+    - {en: "Because of that, I recommend the team come now and prepare for cardioversion.", icon: bell, ko: "그래서 팀이 지금 와서 심율동전환을 준비할 것을 권고합니다", note: "권고"}
+    - {en: "To get them here, I'll stay on the line while you notify the physician.", icon: speaker, ko: "팀이 오도록 제가 전화를 잡고 있을 테니 의사에게 알려 주세요", note: "연락"}
+  sw: {ko: "혈압이 78/40으로 떨어졌고 식은땀을 흘리고 있습니다."}
+- title: ICD 반복 쇼크(전기폭풍)
+  s:
+  - {t: "공감", i: faceWorried, w: "I know that was …로 환자가 방금 겪은 일을 먼저 인정하면 위로가 돼요. 뒤에 we're going to help you now로 이제 도움이 시작된다는 점을 이어요.", d: "but it's over", k: ["그건 아무 일도 아니에요", "곧 퇴원하실 수 있어요"], a: "frightening", o: ["painful", "confusing", "tiring"]}
+  - {t: "치료 안내", i: pill, w: "to calm …로 약의 목적을 알려요. 전기폭풍에서는 반복되는 빠른 리듬과 ICD 충격을 가라앉히기 위해 약을 쓰는 것이 일반적이에요.", d: "to wake it up", k: ["심장을 더 빠르게 해 주는 약을 드릴게요", "통증 부위에 바르는 약을 드릴게요"], a: "calm", o: ["speed", "wake", "test"]}
+  - {t: "조치 안내", i: gear, w: "and로 지금 진행 중인 두 가지 조치를 함께 알려요. ICD 위에 자석을 대면 기기가 충격을 주는 기능이 잠시 멈추는 경우가 많아요.", d: "and leaving", k: ["팀이 이식형 장치를 새로 넣고 있어요", "팀이 환자의 가족을 부르고 있어요"], a: "magnet", o: ["monitor", "mask", "cuff"]}
+  - {t: "이유 설명", i: bulb, w: "even though로 충격이 끔찍하게 느껴지는 것과 장치가 하는 일을 대비시켜요. ICD의 충격은 위험한 빠른 리듬을 끊으려는 치료인 경우가 많아서 이유를 알려 주면 두려움이 줄어요.", d: "because it's broken", k: ["장치가 고장 나서 충격을 주는 거예요", "장치가 환자를 깨우려고 충격을 줘요"], a: "dangerous", o: ["slow", "normal", "familiar"]}
+  - {t: "조치 설명", i: shield, w: "until로 자석이 임시 조치라는 점을 알려요. 자석은 충격 기능을 잠시 멈출 뿐이라 원인을 찾은 뒤 기기를 다시 점검해요.", d: "until you leave", k: ["자석이 충격을 더 세게 만들어요", "자석이 영구적으로 장치를 꺼요"], a: "stop", o: ["start", "repeat", "increase"]}
+  - {t: "안심", i: handshake2, w: "You're safe now로 현재 상태를 짧게 확정하고 and we're staying으로 곁에 있겠다는 약속을 이어요. 충격을 겪은 환자는 안전하다는 말을 짧고 분명하게 들어야 안심해요.", d: "and we're leaving", k: ["이제 혼자 계셔도 돼요", "이제 곧 다시 충격이 올 거예요"], a: "safe", o: ["ready", "tired", "awake"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "ICD 전기폭풍 응대 4문장 순서"
+    why: "먼저 공감하고, 충격이 위험한 리듬 때문이라고 설명하고, 그 충격을 멈추려고 자석을 댄다고 알리고, 자석이 붙은 뒤 안심시킵니다. 'those shocks'·'With the magnet on'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "I know that was frightening — we're going to help you now.", icon: faceWorried, ko: "무서우셨을 거 알아요 — 이제 저희가 도와드릴게요", note: "공감"}
+    - {en: "Your device is trying to fix a dangerous rhythm, even though the shocks feel awful.", icon: bulb, ko: "장치는 위험한 리듬을 고치려는 건데 충격이 끔찍하게 느껴지실 거예요", note: "이유"}
+    - {en: "To stop those shocks for now, the team is placing a magnet and calling cardiology.", icon: gear, ko: "그 충격을 당분간 멈추려고 팀이 자석을 대고 심장내과를 부르고 있어요", note: "조치"}
+    - {en: "With the magnet on, you're safe now, and we're staying right here with you.", icon: handshake2, ko: "자석을 대 놨으니 이제 안전해요, 저희가 여기 함께 있을게요", note: "안심"}
