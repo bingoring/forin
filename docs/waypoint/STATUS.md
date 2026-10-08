@@ -4,7 +4,7 @@
 **PRD:** [prd.md](prd.md) | [prd-tech.md](prd-tech.md)
 **Design handoff:** [inputs/design-handoff_v42/](inputs/design-handoff_v42/README.md) (최신) · [v40](inputs/design-handoff_v40/README.md) · [v39](inputs/design-handoff_v39/README.md) · [v38](inputs/design-handoff_v38/README.md) · [v22](inputs/design-handoff_v22/README.md)
 **Decisions (audit):** [DECISIONS.md](DECISIONS.md)
-**Last updated:** 2026-10-07
+**Last updated:** 2026-10-08
 
 > 🚩 **학습 화면 핸드오프 1:1(v46) — 착수 (2026-10-07).** 사용자 지적: 학습 화면(STEP 1 회상 6장+뉘앙스 2장, STEP 2, 워밍업 릴)이
 > 핸드오프와 전체적으로 다르고(조각 칩 모양·선택 상태·정답 뒤 넘김 애니메이션), 릴 스와이프 연출을 사용자 의견 없이 범위에서
@@ -24,6 +24,11 @@
 > ER·ICU·OR 동일). 지시서·파이프라인 "v46 보강" 절. 커밋 `af9c086`·`eb7948f`·`8c2cbef`·`d32afd4`·`5067568`·`fbeed86`.
 > 보고 [`t5-report.md`](02-construction/lesson-fidelity-v46/t5-report.md). 남은 것: ER 저작(결정 14 파이프라인).
 > **T3 STEP 1 단어장 완료(2026-10-08):** WordStudyLive 1:1 — 낱장 묶음에 올려 판정 뒤 좌/우 뜯김→다음 장 rise, 오답 흔들림, 해설 nb-reveal·이중선 도장 nb-ok, 헤더(나가기·초록 STEP 태그, StepTrack 뺌), 진행 칸 색 전환, 헤드라인 문장 안 형광펜(`MarkedText`), 조각별 빼기·빗금·하드 그림자·내 답, 저울 그라디언트 축·점 .15s, 짝 글로우·→·예고 60%, STEP 2 버튼 상시. 변이 22건 확인. 남은 차이: 보기 섞음(미승인)·글꼴 굵기(T1)·저울/짝 `ko`·`icon` 저작(T5). 커밋 `b9a7731`. 보고 [`t3-report.md`](02-construction/lesson-fidelity-v46/t3-report.md).
+> **T6 허브 완료(2026-10-08):** 감사 허브 행 — 진행 중 티켓 바깥 2.5px 링, 태그 10.5 + shield·siren, 감정 칩 한국어 감정어(기분 13개 × 4개 언어),
+> `+60 XP`·`노트 자동저장`, 부제 커리큘럼 좌표(서버 `GET /me/lesson`의 새 `course` — 여정 journey에서 주제·순번/전체), 한 줄 상황 형광펜
+> (새 선택 필드 `briefing.line` `[[…]]`, 적재 검사; ER 저작 전이라 지금은 brief 그대로), 완료 도장 ✓·CTA ›·↺(NbIcon `redo` 새로), 건너뜀 카드 빗금,
+> 줄노트 27–28, 모노 자간 0. StepTrack 연결선은 실제로 끝낸 단계 뒤만 실선. 남은 차이·시뮬레이터 확인 목록은
+> [`t6-report.md`](02-construction/lesson-fidelity-v46/t6-report.md).
 > **T4 STEP 2 완료(2026-10-08):** 아트보드 순서로 화면 분리 — 릴(뒷카드 2·swipe-out 380→in·감상 칩 다시 고르기/저장 1회) → 문장장
 > (SheetStack, listen·build·blank·listen·order·build 주기, 다시 듣기 실제 2회, 해설·이중선 도장·흔들림·좌/우 뜯김·DONE 집계) → C5 → C6 → C'(점수 원).
 > 문장 헷갈려요 API `POST /me/lesson/{id}/sentences/confused`, 문장 안 형광펜 `NbInline`(아래 45%). 커밋 `4e0fb48`·`6b9b32c`·`3a6adcb`.
