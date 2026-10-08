@@ -1,0 +1,93 @@
+- title: 대기 지연 불만 환자
+  s:
+  - {t: "사과·설명", i: faceWorried, w: "사과를 먼저 하고 let me explain으로 설명을 약속하면 변명이 아니라 정보 공유로 들려요. 환자는 이유를 모를 때 더 화나기 쉬워요.", d: "for the parking", k: ["물이나 담요가 필요하세요?", "의사 선생님께 바로 전달할게요."], a: "wait", o: ["visit", "shift", "bill"]}
+  - {t: "우선순위", i: siren, w: "대기 순서가 도착 순이 아니라 위급한 정도 순이라는 사실을 그대로 알려요. 누구를 탓하지 않고 체계를 설명하는 문장이에요.", d: "in order of arrival", k: ["보험 정보를 확인할게요.", "화장실은 복도 끝에 있어요."], a: "life-threatening", o: ["minor", "routine", "chronic"]}
+  - {t: "순서 확인", i: magnify, w: "check on으로 직접 알아보겠다는 약속과 update you로 다시 알려 주겠다는 약속을 한 문장에 담아요. 막연한 soon 대신 shortly를 써서 곧 소식이 온다는 기대를 줘요.", d: "with the doctor", k: ["접수 번호를 다시 알려 주세요.", "차트에 메모를 남길게요."], a: "update", o: ["discharge", "bill", "charge"]}
+  - {t: "공감", i: faceWorried, w: "I know로 환자의 느낌을 먼저 인정해요. forever라는 환자 쪽 표현을 반박하지 않고 그대로 받아 주면 방어하는 말로 들리지 않아요.", d: "at home", k: ["진료비는 나중에 안내해 드릴게요.", "제가 직접 모시고 갈게요."], a: "forever", o: ["a moment", "nothing", "a break"]}
+  - {t: "약속", i: bell, w: "come find you는 환자가 와서 묻게 하지 않고 내가 찾아가겠다는 약속이라 기다리는 부담을 덜어요. as soon as로 시점을 소식이 생기는 때에 맞추면 지키지 못할 시각을 말하지 않아도 돼요.", d: "to your seat", k: ["담요 하나 가져다 드릴게요.", "대기실 TV를 켜 드릴게요."], a: "as soon as", o: ["unless", "although", "even if"]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 대기 지연 불만 응대 4문장 순서
+    why: 사과가 먼저, 이유가 그 뒤를 받고('That's why'), 이유를 알린 상태에서 순서를 확인하고('With that in mind'), 확인한 결과를 직접 알려 주는('Whatever I find out') 흐름이에요.
+    lines:
+    - {en: "I'm sorry the wait has been so long.", icon: faceWorried, ko: "오래 기다리게 해서 죄송해요", note: 사과}
+    - {en: "That's why: the sickest patients are seen first.", icon: siren, ko: "그래서예요, 가장 위급한 분들이 먼저 진료를 받아요", note: 이유}
+    - {en: "With that in mind, I'll check on your place in line.", icon: magnify, ko: "그걸 감안해서 대기 순서를 확인할게요", note: 확인}
+    - {en: "Whatever I find out, I'll come tell you myself.", icon: bell, ko: "무엇을 알게 되든 제가 직접 알려 드릴게요", note: 보고}
+  sw: {ko: "생명이 위독한 환자분들이 먼저 진료를 받으세요."}
+- title: 목소리 높아지는 초기 신호
+  s:
+  - {t: "공감", i: faceWorried, w: "상대의 감정이 맞다고 먼저 인정하고 I'm listening으로 듣겠다고 하면 반박이 아니라 경청으로 들려요. 진정하라는 말이 오히려 화를 키우는 것과 반대 방향이에요.", d: "about this", k: ["잠깐 앉아서 기다려 주세요.", "혈압부터 재겠습니다."], a: "listening", o: ["charting", "rushing", "timing"]}
+  - {t: "시간 약속", i: calendar, w: "Let's로 같이 하는 대화임을 알리고 I've got time으로 서두르지 않겠다고 해요. 서두르는 기색이 보이면 환자는 무시당한다고 느끼기 쉬워요.", d: "for now", k: ["잠깐 혈압을 재 볼게요.", "조용한 방으로 안내할게요."], a: "talk", o: ["rush", "push", "hurry"]}
+  - {t: "요구 묻기", i: mic, w: "Tell me로 열린 질문을 하면 환자가 통제감을 되찾아요. right now가 지금 당장 할 수 있는 일에 초점을 맞춰 줘요.", d: "for the staff", k: ["이쪽 의자에 앉으세요.", "제가 다른 간호사를 불러올게요."], a: "help", o: ["hurt", "delay", "annoy"]}
+  - {t: "눈높이", i: me, w: "서서 내려다보면 위압적으로 느껴질 수 있어서 앉아서 눈높이를 맞춰요. 몸으로 보여 주는 비언어적 진정 신호예요.", d: "with you", k: ["제가 의사를 불러올게요.", "혈압 먼저 재 볼게요."], a: "same", o: ["higher", "lower", "different"]}
+  - {t: "호흡 제안", i: me, w: "Let's … together로 환자에게 시키지 않고 함께 하자고 제안해요. 천천히 숨 쉬는 것은 긴장을 가라앉히는 데 도움이 돼요.", d: "in the hall", k: ["이쪽에서 잠깐 기다려 주세요.", "물을 좀 가져다 드릴게요."], a: "together", o: ["alone", "separately", "apart"]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 목소리가 높아지는 환자 응대 4문장 순서
+    why: 감정을 인정하는 말이 먼저, 그 말이 진심임을 앉아서 보여 주고('To show I mean it'), 앉은 자리에서('From down here') 필요한 것을 묻고, 들은 내용을 받아('Whatever you tell me') 시간을 약속해요.
+    lines:
+    - {en: "You're right to be frustrated — I'm listening.", icon: faceWorried, ko: "답답하실 만해요, 듣고 있어요", note: 공감}
+    - {en: "To show I mean it, I'm sitting down so we're at the same level.", icon: me, ko: "진심이라는 걸 보이려고 눈높이를 맞춰 앉을게요", note: 자세}
+    - {en: "From down here, tell me what would help right now.", icon: mic, ko: "앉은 자리에서 지금 뭐가 도움이 될지 말씀해 주세요", note: 질문}
+    - {en: "Whatever you tell me, I've got time to talk it through.", icon: calendar, ko: "무슨 말씀이든 차근차근 이야기할 시간이 있어요", note: 약속}
+  sw: {ko: "무슨 말씀인지 알겠어요, 듣고 있어요."}
+- title: 공간·개인영역 확보
+  s:
+  - {t: "공간 주기", i: me, w: "물러서서 공간을 주고 is this better?로 바로 확인해요. 환자가 편한 거리를 스스로 정하게 하는 질문이에요.", d: "by the door", k: ["이쪽으로 앉으세요.", "혈압을 재 볼게요."], a: "some", o: ["no", "less", "little"]}
+  - {t: "선택권", i: me, w: "You can으로 환자에게 선택권을 줘요. 움직여도 된다고 허락하면 갇혔다는 느낌이 줄어요.", d: "in this room", k: ["침대에 누워 주세요.", "물 한 잔 드릴까요?"], a: "comfortable", o: ["crowded", "cramped", "tight"]}
+  - {t: "의도 설명", i: handshake2, w: "not … just로 압박이 아니라 도움이 목적임을 분명히 해요. 위협으로 느끼는 환자에게는 의도를 말로 알려 주는 것이 안전감을 줘요.", d: "with you", k: ["도움이 필요하면 불러 주세요.", "제가 보호자분께 알릴게요."], a: "help", o: ["watch", "stare", "hurry"]}
+  - {t: "출구 확보", i: shield, w: "문 옆에 서서 출구를 비워 두면 환자가 갇혔다고 느끼지 않아요. 직원이 문을 막지 않아야 필요할 때 누구든 나갈 수 있어요.", d: "next to you", k: ["필요하시면 커튼을 칠게요.", "보호자분께 연락할게요."], a: "not", o: ["and", "to", "just to"]}
+  - {t: "요청 안내", i: speech, w: "Let me know로 환자가 원할 때 말하게 해요. 더 물러서겠다는 약속을 먼저 해 두면 환자가 거리를 정할 수 있어요.", d: "right now", k: ["담요를 가져다 드릴까요?", "불을 좀 줄여 드릴까요?"], a: "room", o: ["pills", "blankets", "tests"]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 개인 공간 확보 4문장 순서
+    why: 물러서서 공간을 주고, 괜찮은지 묻고('Does that feel better'), 어느 쪽이든('Whichever it is') 움직일 자유를 알리고, 환자가 어디로 움직여도('Even if you move') 문을 막지 않겠다고 약속해요.
+    lines:
+    - {en: "I'm going to step back and give you some room.", icon: me, ko: "뒤로 물러서서 공간을 드릴게요", note: 공간}
+    - {en: "Does that feel better, or do you want more?", icon: faceWorried, ko: "이러면 좀 나으세요, 더 필요하세요?", note: 확인}
+    - {en: "Whichever it is, you're free to move wherever feels comfortable.", icon: me, ko: "어느 쪽이든 편한 곳으로 움직이셔도 돼요", note: 선택}
+    - {en: "Even if you move toward the door, I won't get in your way.", icon: shield, ko: "문 쪽으로 가셔도 제가 막지 않을게요", note: 출구}
+  ctx:
+    word: space
+    ko: 공간
+    sc: {1: "Let's give him some space and stay near the door."}
+- title: 요구 반복 환자 경청
+  s:
+  - {t: "이해 확인", i: magnify, w: "make sure로 내가 이해한 것이 맞는지 확인하겠다고 해요. 짐작하지 않고 확인하면 같은 말을 되풀이해야 했던 환자의 피로가 줄어요.", d: "for the chart", k: ["다시 접수 창구로 가 주세요.", "담당 선생님께 전달해 둘게요."], a: "understand", o: ["forget", "dismiss", "ignore"]}
+  - {t: "공감", i: faceWorried, w: "I hear로 환자가 한 말을 들었다고 알리고 반복해야 했던 불편을 frustrating으로 이름 붙여 줘요. 불편의 원인이 환자가 아니라 과정에 있다고 보여 줘요.", d: "at the desk", k: ["진료비 안내를 드릴게요.", "보호자분께 전화할게요."], a: "frustrating", o: ["amusing", "unusual", "convenient"]}
+  - {t: "가능한 조치", i: check, w: "what I can do로 못 하는 일이 아니라 할 수 있는 일에 초점을 맞춰요. right now가 곧바로 행동으로 이어진다는 느낌을 줘요.", d: "at the desk", k: ["성함과 생년월일을 확인할게요.", "다른 부서에 전화해 볼게요."], a: "for", o: ["against", "without", "about"]}
+  - {t: "기록 약속", i: pencil, w: "this time이 지난번과 다르게 하겠다는 약속이고 write it down이 그 약속을 눈에 보이게 해 줘요. 같은 말을 또 하게 한 데 대한 보상이에요.", d: "for you", k: ["이쪽에 서명해 주세요.", "지금 바로 의사를 불러올게요."], a: "write", o: ["turn", "keep", "shut"]}
+  - {t: "재요청 방지", i: shield, w: "I don't want you to로 환자가 겪은 불편을 내 책임으로 가져와요. 두 번 묻게 하지 않겠다는 약속이 신뢰를 조금씩 쌓아요.", d: "at the desk", k: ["제가 담당 간호사에게 전달할게요.", "접수 번호를 알려 주세요."], a: "twice", o: ["rudely", "secretly", "slowly"]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 같은 요구를 반복한 환자 경청 4문장 순서
+    why: 공감이 먼저, 그 불편을 고치겠다며('Let's fix that') 듣고 적고, 적은 것을 되읽어('it') 확인하고, 그 내용을 근거로('Based on that') 지금 할 수 있는 일을 말해요.
+    lines:
+    - {en: "I hear you've had to repeat yourself — that's frustrating.", icon: faceWorried, ko: "여러 번 말씀하셔야 했다니 답답하셨겠어요", note: 공감}
+    - {en: "Let's fix that: tell me what you need and I'll write it down.", icon: pencil, ko: "바로잡을게요, 필요한 걸 말씀하시면 적을게요", note: 기록}
+    - {en: "I'll read it back to you so you know I've got it right.", icon: check, ko: "제대로 이해했는지 다시 읽어 드릴게요", note: 확인}
+    - {en: "Based on that, here's what I can do for you right now.", icon: bell, ko: "그걸 바탕으로 지금 해 드릴 수 있는 걸 말씀드릴게요", note: 조치}
+  sw: {ko: "필요하신 게 뭔지 제가 제대로 이해했는지 확인할게요."}
+- title: 통증·불편 기인 초조
+  s:
+  - {t: "통증 조절", i: pill, w: "Let's로 같이 해결하자고 하고 first로 통증이 우선순위임을 알려요. 아픈 환자가 화를 내는 것은 통증의 표현일 수 있어요.", d: "with medicine", k: ["침대 난간을 올릴게요.", "알레르기가 있으신지 볼게요."], a: "pain", o: ["bleeding", "fever", "nausea"]}
+  - {t: "통증 점수", i: chartup, w: "0~10 숫자 척도는 환자의 통증을 같은 기준으로 확인하는 널리 쓰이는 방법이에요. 숫자로 답하게 하면 짧게 대답할 수 있어서 격한 환자도 말하기 쉬워요.", d: "last night", k: ["어디가 가장 아프세요?", "언제부터 아프기 시작했어요?"], a: "how bad", o: ["how often", "how long", "how far"]}
+  - {t: "즉각 조치", i: pill, w: "something이라고 하면 무엇을 가져올지 정해지기 전에도 쓸 수 있고, right away가 지금 움직이고 있다는 신호를 줘요.", d: "after lunch", k: ["혈압을 한 번 재 볼게요.", "침대를 조금 올릴게요."], a: "right away", o: ["next week", "by Friday", "someday"]}
+  - {t: "공감", i: faceWorried, w: "hard to sit with는 참기 힘든 고통을 인정하는 표현이라, 아프다고 화내는 환자의 감정을 있는 그대로 받아 줘요.", d: "on your own", k: ["숨을 깊게 쉬어 보세요.", "얼음찜질을 해 볼게요."], a: "hard", o: ["easy", "pleasant", "comfortable"]}
+  - {t: "자세 조절", i: me, w: "Let's find로 같이 찾자고 하고 hurts less로 통증을 없애겠다는 과한 약속 대신 현실적인 목표를 말해요. 덜 아픈 자세는 환자마다 달라요.", d: "for you", k: ["약 이름을 말씀해 주세요.", "차트에 적어 둘게요."], a: "less", o: ["more", "worse", "longer"]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 통증으로 초조한 환자 응대 4문장 순서
+    why: 공감이 먼저, 그 통증에 대해('To help with it') 정도를 묻고, 숫자가 얼마든('Whatever the number') 바로 조치하고, 그와 함께('Along with that') 자세를 찾아요.
+    lines:
+    - {en: "I know pain like this is hard to sit with.", icon: faceWorried, ko: "이런 통증은 견디기 힘들다는 거 알아요", note: 공감}
+    - {en: "To help with it, tell me how bad it is, from zero to ten.", icon: chartup, ko: "도와드리려고 그러는데, 0에서 10까지 얼마나 아프세요?", note: 정도}
+    - {en: "Whatever the number, I'm getting something for you right away.", icon: pill, ko: "숫자가 얼마든 바로 뭔가 가져다 드릴게요", note: 조치}
+    - {en: "Along with that, let's find a position that hurts less.", icon: me, ko: "그와 함께 덜 아픈 자세를 찾아봐요", note: 자세}
+  sw: {ko: "먼저 통증부터 조절해 봐요."}

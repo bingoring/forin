@@ -3836,7 +3836,7 @@ situations:
       - en: everyone
       - en: someone
       - en: nobody
-      - en: anyone
+      - en: only you
   - en: How many days has it been since your last drink?
     ko: 마지막으로 드신 지 며칠이나 됐어요?
     chunks:
@@ -3855,7 +3855,7 @@ situations:
     decoy: since you arrived
     distractorsKo:
     - 하루에 몇 잔 드세요?
-    - 보통 얼마나 드세요?
+    - 혼자만 여쭤보는 게 아니에요
     blank:
       answer: last
       options:
@@ -3897,7 +3897,7 @@ situations:
       fix: How much do you usually drink in a day?
     why: EtOH(에탄올)는 차트와 의료진끼리 쓰는 약어예요. 환자에게는 '보통 하루에 얼마나 드세요?'처럼 풀어서 물어요.
     word: drink
-    ko: 술을 마시다
+    ko: 술(한 잔)
   - kind: swap
     words:
     - w-judge
@@ -3923,7 +3923,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 음주 문진 4문장 순서
-    why: 문진을 열며 비난이 아니라고 밝히고, 하루 음주량을 묻고, 그 양을 받아 마지막 음주 시각을 묻고, 그 시각이 무엇을 지켜볼지 정한다고 닫아요. 'that amount'·'that time'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 문진을 열며 비난이 아니라고 밝히고, 하루 음주량을 묻고, 그 양이 얼마든 마지막 음주 시각을 묻고, 그 시각이 무엇을 지켜볼지 정한다고 닫아요. 'the amount'·'that time'이 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: I'm going to ask you a few questions about drinking — I'm not here to judge.
       icon: handshake2
@@ -3933,9 +3933,9 @@ situations:
       icon: speech
       ko: 하루에 보통 몇 잔 드세요?
       note: 음주량
-    - en: Thank you — with that amount in mind, when was your last drink?
+    - en: Whatever the amount, when was your last drink?
       icon: calendar
-      ko: 감사해요 — 그 양을 생각하면 마지막으로 드신 건 언제예요?
+      ko: 양이 얼마든, 마지막으로 드신 건 언제예요?
       note: 시점
     - en: Knowing that time helps us decide what to watch for.
       icon: magnify
@@ -4142,15 +4142,15 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 금단 초기 사정 4문장 순서
-    why: 마지막 음주 시각을 먼저 묻고, 그 시간표에 비추어 떨림·발한이 금단 초기라고 설명하고, 그것을 추적할 도구를 소개한 뒤, 그 도구로 자주 점수를 적겠다고 해요. 'that timing'·'it'·'that checklist'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 마지막 음주 시각을 먼저 묻고, 그 시각에 따라 떨림·발한이 금단 초기일 수 있다고 설명하고, 그것을 추적할 도구를 소개한 뒤, 그 도구로 자주 점수를 적겠다고 해요. 'that time'·'it'·'that checklist'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: When did you have your last drink?
       icon: calendar
       ko: 마지막으로 언제 드셨어요?
       note: 시점
-    - en: With that timing, your shaking and sweating fit early alcohol withdrawal.
+    - en: Depending on that time, the shaking and sweating may be early withdrawal.
       icon: stetho
-      ko: 그 시점으로 보면 떨림과 땀은 알코올 금단 초기에 맞아요
+      ko: 그 시각에 따라 떨림과 땀은 금단 초기일 수 있어요
       note: 설명
     - en: To track it, we'll use a checklist called CIWA.
       icon: board
@@ -4209,7 +4209,7 @@ situations:
     tag: 질문 항목
     icon: speech
     why: 매번 같은 항목을 같은 방식으로 물으면 점수를 시간에 따라 비교할 수 있어요. 떨림·발한·기분은 CIWA가 묻는 대표 항목이에요.
-    decoy: once a day
+    decoy: about your job
     distractorsKo:
     - 자주 확인하러 올게요
     - 지금 약을 드릴게요
@@ -4526,7 +4526,7 @@ situations:
     goal: 2
     tag: 순서 원칙
     icon: bell
-    why: always를 넣어 예외 없는 원칙이라고 알려요. 알코올 관련 환자에게는 포도당 수액보다 티아민을 먼저 주는 것이 표준 순서예요.
+    why: always로 습관처럼 지키는 순서라고 알려요. 알코올 관련 환자에게는 포도당 수액 전에 티아민을 줘요 — 다만 저혈당이면 포도당을 미루지 않고 티아민을 함께 줘요.
     decoy: before any meal
     distractorsKo:
     - 심각한 문제를 막으려고 드려요
@@ -4611,7 +4611,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 티아민 설명 4문장 순서
-    why: 약이 무엇인지 먼저 소개하고, 왜 이 환자에게 흔한지 설명하고, 그래서 당분보다 먼저 준다고 이은 뒤, 그 순서가 손상을 막는다고 닫아요. 'it'·'That's why'·'that order'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 약이 무엇인지 먼저 소개하고, 왜 이 환자에게 흔한지 설명하고, 모자랄 수 있어서 당분보다 먼저 준다고 이은 뒤, 그 순서가 손상을 막는다고 닫아요. 'it'·'you may be low'·'that order'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: This is a vitamin called thiamine, and it protects your brain and nerves.
       icon: pill
@@ -4621,9 +4621,9 @@ situations:
       icon: board
       ko: 정기적으로 술을 드시는 분은 이게 모자라기 쉬워서 흔한 일이에요
       note: 이유
-    - en: That's why we give it before any sugar or glucose fluids.
+    - en: Because you may be low, we give it before any sugar or glucose fluids.
       icon: bell
-      ko: 그래서 당분이나 포도당 수액보다 먼저 드려요
+      ko: 모자랄 수 있어서 당분이나 포도당 수액보다 먼저 드려요
       note: 순서
     - en: Giving it in that order helps prevent lasting brain damage.
       icon: shield
@@ -4752,7 +4752,7 @@ situations:
     words:
     - w-fall
     goal: 1
-    tag: 호출 요청
+    tag: 낙상 예방
     icon: bell
     why: on your own으로 혼자 일어나지 말고 부르라는 뜻을 분명히 해요. 이유를 '넘어질 수 있어요'로 붙이면 지시가 아니라 걱정으로 들려요.
     decoy: in a hurry
@@ -4788,10 +4788,10 @@ situations:
     blank:
       answer: fifteen
       options:
-      - en: forty
       - en: fifteen
       - en: five
-      - en: fifty
+      - en: two
+      - en: ten
   nuance:
   - kind: slider
     words:
@@ -4822,17 +4822,17 @@ situations:
       ok: true
     - who: 환자에게
       icon: me
-      en: You are a high fall risk. Remain in bed.
+      en: Your Morse score makes you a high fall risk. Remain in bed.
       ok: false
-      fix: Please don't get up on your own — call me and I'll help you.
-    why: fall risk는 차트와 의료진끼리의 말이고, 명령조 remain은 딱딱하게 들려요. 환자에게는 걱정하는 이유와 함께 부탁해요.
+      fix: Call me before you get up, and I'll walk with you so you don't fall.
+    why: Morse 점수 같은 평가 이름과 명령조 remain은 환자에게 딱딱하게 들려요. 넘어질까 걱정하는 이유와 함께 부탁해요.
     word: fall
     ko: 낙상(넘어짐)
   order:
     tag: 대화 흐름
     icon: compass
     ko: 만취 환자 관찰 4문장 순서
-    why: 침대 머리를 올리는 이유를 알리고, 그 자세로 침대에 머물러 달라고 부탁하고, 머무는 동안 자주 확인하겠다고 하며, 그 확인을 십오 분마다 이어 간다고 닫아요. 'like that'·'staying there'·'keep'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 침대 머리를 올리는 이유를 알리고, 그 자세로 침대에 머물러 달라고 부탁하고, 거기서 쉬는 동안에도 자주 확인하겠다고 하며, 그 확인이 십오 분마다라고 닫아요. 'like that'·'there'·'That means'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: I'm going to keep the head of your bed up to protect your breathing.
       icon: shield
@@ -4842,13 +4842,13 @@ situations:
       icon: bell
       ko: 그렇게 머리를 올린 채 침대에 계셔 주세요 — 넘어지시면 안 돼요
       note: 요청
-    - en: Because you'll be staying right there, I'll be checking on you often to make sure you're okay.
+    - en: Even while you're resting there, I'll be checking on you often.
       icon: monitor
-      ko: 거기 계실 거라서 괜찮으신지 자주 와서 확인할게요
+      ko: 거기서 쉬고 계셔도 자주 와서 확인할게요
       note: 확인
-    - en: I'll keep checking every fifteen minutes to see how awake you're getting.
+    - en: That means every fifteen minutes, until you're more awake.
       icon: calendar
-      ko: 얼마나 깨어나시는지 보려고 십오 분마다 계속 확인할게요
+      ko: 십오 분마다, 더 깨실 때까지 그렇게 할게요
       note: 간격
 - title: 중등도 금단
   sentences:
@@ -4876,12 +4876,12 @@ situations:
     - 확인할 때마다 용량을 조절해요
     - 보이지 않는 게 보이면 말해 주세요
     blank:
-      answer: high
+      answer: medication
       options:
-      - en: stable
-      - en: high
-      - en: low
-      - en: normal
+      - en: medication
+      - en: a snack
+      - en: a blanket
+      - en: a brochure
   - en: We adjust the dose based on how you're doing each time I check.
     ko: 매번 확인할 때 상태에 맞춰 용량을 조절해요.
     chunks:
@@ -4906,10 +4906,10 @@ situations:
     blank:
       answer: dose
       options:
-      - en: price
-      - en: color
       - en: dose
       - en: label
+      - en: brand
+      - en: wristband
   - en: Tell me if you see or feel things that aren't there.
     ko: 실제로 없는 걸 보이거나 느끼시면 말씀해주세요.
     chunks:
@@ -4957,12 +4957,12 @@ situations:
     - 확인할 때마다 용량을 맞춰요
     - 증상이 심해지는지 지켜봐요
     blank:
-      answer: high
+      answer: medication
       options:
-      - en: high
-      - en: low
-      - en: small
-      - en: short
+      - en: medication
+      - en: tests
+      - en: blankets
+      - en: visitors
   - en: I'm watching closely to see if your symptoms get worse.
     ko: 증상이 더 심해지는지 자세히 지켜보고 있어요.
     chunks:
@@ -5056,7 +5056,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 중등도 금단 4문장 순서
-    why: 점수가 높아 약을 준다고 이유를 밝히고, 그 약이 진정시키는 효과를 알리고, 그 진정 정도가 사람마다 달라 확인할 때마다 용량을 맞춘다고 하며, 그 변화 속에서 없는 것이 보이면 알려 달라고 닫아요. 'It'·'that calming'·'like that'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 점수가 높아 약을 준다고 이유를 밝히고, 그 약이 진정시키는 효과를 알리고, 없는 것이 보이거나 느껴지면 바로 알려 달라고 청한 뒤, 무엇을 알리든 다시 확인하고 용량을 맞춘다고 닫아요. 환각은 용량 변화의 결과가 아니라 금단이 심해지는 신호라서 알려 달라고 해요. 'It'·'Whatever you notice'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Your withdrawal score is high, so I'm giving you medication to calm it.
       icon: pill
@@ -5066,14 +5066,14 @@ situations:
       icon: pill
       ko: 몸을 진정시키고 떨림을 도와줄 거예요
       note: 효과
-    - en: Because that calming differs from person to person, we adjust the dose each time I check.
-      icon: gear
-      ko: 그 진정 정도는 사람마다 달라서 확인할 때마다 용량을 맞춰요
-      note: 조절
-    - en: With the dose changing like that, tell me right away if you see or feel things that aren't there.
+    - en: If you start to see or feel things that aren't there, tell me right away.
       icon: bell
-      ko: 용량이 그렇게 바뀌니, 없는 게 보이거나 느껴지면 바로 말씀해 주세요
+      ko: 없는 게 보이거나 느껴지기 시작하면 바로 말씀해 주세요
       note: 요청
+    - en: Whatever you notice, I'll check again and adjust the dose each time.
+      icon: gear
+      ko: 무엇을 알아채시든 제가 다시 확인하고 매번 용량을 맞출게요
+      note: 조절
 - title: 금단 발작
   sentences:
   - en: You had a seizure from the withdrawal — you're safe now.
@@ -5398,12 +5398,12 @@ situations:
     - 여긴 병원이에요
     - 약이 곧 도와줄 거예요
     blank:
-      answer: exactly
+      answer: seeing
       options:
-      - en: hardly
-      - en: secretly
-      - en: exactly
-      - en: barely
+      - en: seeing
+      - en: eating
+      - en: reading
+      - en: drinking
   - en: You're safe here in the hospital with me.
     ko: 여기 병원에서 저와 함께 안전하게 계세요.
     chunks:
@@ -5536,7 +5536,7 @@ situations:
     - w-thiamine
     - w-deficiency
     goal: 1
-    tag: 소견 보고
+    tag: 소견 설명
     icon: stetho
     why: 세 징후(눈·혼돈·걸음)를 한 문장에 묶어 한 원인을 가리킨다고 말해요. 안구 운동 이상·혼돈·보행 불안정은 베르니케 뇌병증의 전형적인 세 징후예요.
     decoy: an ear infection
@@ -5626,10 +5626,10 @@ situations:
     blank:
       answer: unsteady
       options:
-      - en: steady
-      - en: cheerful
-      - en: hungry
       - en: unsteady
+      - en: steady
+      - en: strong
+      - en: fast
   - en: I'm watching his eye movements closely for anything unusual.
     ko: 안구 움직임에 이상이 없는지 자세히 지켜보고 있어요.
     chunks:
@@ -5656,7 +5656,7 @@ situations:
       - en: unusual
       - en: normal
       - en: familiar
-      - en: funny
+      - en: pleasant
   - en: We're treating this as an emergency and giving thiamine right now.
     ko: 응급 상황으로 보고 지금 바로 티아민을 드리고 있어요.
     chunks:
@@ -5726,7 +5726,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 베르니케 의심 4문장 순서
-    why: 세 징후가 티아민 결핍을 가리킨다고 알리고, 그 때문에 응급으로 보고 바로 티아민을 주고, 반응을 보려고 눈을 지켜보고, 그 관찰과 함께 시작 시점과 식사를 묻는 순서예요. 'Because of that'·'it'·'Alongside that'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 세 징후가 티아민 결핍을 가리킨다고 알리고, 그 때문에 응급으로 보고 바로 티아민을 주고, 반응을 보려고 눈을 지켜보고, 지켜보는 동안 시작 시점과 식사를 묻는 순서예요. 'Because of that'·'it'·'While I watch'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: The eye movements, confusion, and unsteady walk all point to a thiamine deficiency.
       icon: stetho
@@ -5740,9 +5740,9 @@ situations:
       icon: magnify
       ko: 반응을 보려고 안구 움직임을 자세히 지켜보고 있어요
       note: 관찰
-    - en: Alongside that watching, how long has he been confused, and has he been eating?
+    - en: While I watch, how long has he been confused, and has he eaten?
       icon: calendar
-      ko: 그렇게 지켜보면서, 언제부터 혼란스러웠고 식사는 하셨어요?
+      ko: 지켜보는 동안 묻는데, 언제부터 혼란스러웠고 식사는 하셨어요?
       note: 문진
 - title: 만성 음주 전해질 이상
   sentences:
@@ -5957,17 +5957,17 @@ situations:
       ok: true
     - who: 환자에게
       icon: me
-      en: Your low magnesium and hypokalemia are causing ectopy.
+      en: Your magnesium and potassium are low, so you're having ventricular ectopy on tele.
       ok: false
       fix: Your potassium and magnesium are low, and that can make your heart flutter.
-    why: hypokalemia·ectopy 같은 말은 의료진끼리의 말이에요. 환자에게는 '칼륨·마그네슘이 낮아서 심장이 두근거릴 수 있어요'처럼 풀어 말해요.
+    why: ectopy·tele 같은 말은 의료진끼리의 말이에요. 환자에게는 '칼륨·마그네슘이 낮아서 심장이 두근거릴 수 있어요'처럼 풀어 말해요.
     word: magnesium
     ko: 마그네슘
   order:
     tag: 대화 흐름
     icon: compass
     ko: 전해질 이상 4문장 순서
-    why: 과음이 두근거림의 원인이라고 설명하고, 그걸 바로잡으려고 수치를 확인해 IV로 보충하고, 그 반응을 보려고 모니터로 리듬을 보고, 보충이 끝나면 다시 확인한다고 닫아요. 'To fix that'·'that'·'the replacement'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 과음이 두근거림의 원인이라고 설명하고, 그걸 바로잡으려고 수치를 확인해 IV로 보충하고, 그것이 들어가는 동안 모니터로 리듬을 보고, 보충이 끝나면 다시 확인한다고 닫아요. 'To fix that'·'those'·'the replacement'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Heavy drinking can drop your magnesium and potassium, which is causing that fluttering.
       icon: stetho
@@ -5977,9 +5977,9 @@ situations:
       icon: lab
       ko: 그걸 바로잡으려고 수치를 확인해서 낮은 건 IV로 보충할게요
       note: 보충
-    - en: To see how your heart responds to that, we're watching your rhythm on the monitor.
+    - en: As those go in, we're watching your heart rhythm on the monitor.
       icon: monitor
-      ko: 심장이 어떻게 반응하는지 보려고 모니터로 리듬을 지켜보고 있어요
+      ko: 그게 들어가는 동안 모니터로 심장 리듬을 지켜보고 있어요
       note: 감시
     - en: When the replacement is finished, we'll check your levels again.
       icon: redo
@@ -6057,7 +6057,7 @@ situations:
     goal: 1
     tag: 외상 문진
     icon: speech
-    why: 머리를 부딪혔는지와 넘어진 걸 기억하는지를 한 문장에 묻고 있어요. 머리 부상 가능성이 있을 때는 기억이 흐린 정도가 의식을 잃었는지 가늠하는 단서예요.
+    why: 두 가지를 한 번에 물어 머리 부상 가능성을 빨리 가려요. 넘어진 순간이 기억나지 않으면 의식을 잃었을 수 있다는 단서예요.
     decoy: the weather clearly
     distractorsKo:
     - 넘어지면 부상이 생길 수 있어요
@@ -6085,7 +6085,7 @@ situations:
     tag: 지연 증상
     icon: bell
     why: Sometimes로 항상은 아니지만 있을 수 있다고 말해 겁을 주지 않고 경계를 알려요. 부상은 시간이 지나 붓거나 아파서 알게 되기도 해요.
-    decoy: you can treat at home
+    decoy: you can see in a mirror
     distractorsKo:
     - 머리를 부딪히셨어요?
     - 전신을 확인할게요
@@ -6145,10 +6145,10 @@ situations:
     blank:
       answer: withdrawal
       options:
-      - en: paperwork
-      - en: billing
-      - en: laundry
       - en: withdrawal
+      - en: discharge
+      - en: transfer
+      - en: visit
   nuance:
   - kind: slider
     words:
@@ -6407,15 +6407,15 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 반복 재원 환자 4문장 순서
-    why: 방문을 반기며 시작하고, 그 마음이 이전 방문과 상관없다고 잇고, 오늘 돌봄 너머로 준비되면 도움을 연결할 수 있다고 제안하고, 그 제안은 부담 없이 열려 있다고 닫아요. 'That's true'·'Beyond today's care'·'that offer'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 방문을 반기며 시작하고, 그 마음이 매번 마찬가지라고 이전 방문과 상관없다고 잇고, 오늘 돌봄 너머로 준비되면 도움을 연결할 수 있다고 제안하고, 그 제안은 부담 없이 열려 있다고 닫아요. 'That goes for'·'Beyond today's care'·'that offer'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: I'm glad you came in — let's take care of you properly today.
       icon: handshake2
       ko: 와 주셔서 다행이에요 — 오늘 제대로 돌봐 드릴게요
       note: 환영
-    - en: That's true even though you've been here before.
+    - en: That goes for every visit, even if you've been here before.
       icon: faceWorried
-      ko: 전에 오신 적이 있어도 마찬가지예요
+      ko: 오실 때마다 마찬가지예요, 전에 오신 적이 있어도요
       note: 공감
     - en: Beyond today's care, when you're ready, I can connect you with people who can help.
       icon: home
@@ -6642,7 +6642,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 간질환 동반 4문장 순서
-    why: 피부가 노란 이유를 먼저 설명하고, 부기도 같은 원인이라고 잇고, 두 징후를 합쳐 출혈 위험이 높다고 알린 뒤, 그러니 금단 치료와 간 지지를 같이 한다고 닫아요. 'the same thing'·'both of those signs'·'So'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 피부가 노란 이유를 먼저 설명하고, 부기도 같은 원인이라고 잇고, 두 징후를 합쳐 출혈 위험이 높다고 알린 뒤, 그 위험 때문에 금단 치료와 간 지지를 같이 한다고 닫아요. 'the same thing'·'both of those signs'·'that risk'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Your skin looks yellow because your liver isn't working well.
       icon: faceWorried
@@ -6656,9 +6656,9 @@ situations:
       icon: bell
       ko: 그 두 징후가 있어서 출혈 위험도 높아 저희가 조심할게요
       note: 위험
-    - en: So we'll treat the withdrawal carefully and support your liver at the same time.
+    - en: Because of that risk, we'll treat the withdrawal carefully and support your liver.
       icon: gear
-      ko: 그래서 금단을 조심스럽게 치료하면서 동시에 간을 지지할게요
+      ko: 그 위험 때문에 금단을 조심스럽게 치료하면서 간을 지지할게요
       note: 계획
 - title: 금단+정신질환
   sentences:
@@ -6743,10 +6743,10 @@ situations:
     blank:
       answer: psychiatry
       options:
-      - en: dental
-      - en: laundry
-      - en: kitchen
       - en: psychiatry
+      - en: dental
+      - en: radiology
+      - en: physical therapy
   - en: We're treating your withdrawal and your mental health at the same time.
     ko: 금단과 정신 건강을 동시에 치료하고 있어요.
     chunks:
@@ -6801,7 +6801,7 @@ situations:
       - en: rested
       - en: safe
       - en: warm
-      - en: hungry
+      - en: dressed
   - en: The psychiatry team will work with us on your care.
     ko: 정신과 팀이 저희와 함께 치료를 도와줄 거예요.
     chunks:
@@ -6825,10 +6825,10 @@ situations:
     blank:
       answer: psychiatry
       options:
-      - en: billing
-      - en: front-desk
       - en: psychiatry
-      - en: parking
+      - en: dermatology
+      - en: orthopedic
+      - en: urology
   nuance:
   - kind: pair
     words:
@@ -6975,9 +6975,9 @@ situations:
       answer: mornings
       options:
       - en: mornings
-      - en: weekends
-      - en: winters
-      - en: vacations
+      - en: afternoons
+      - en: evenings
+      - en: summers
   - en: These signs can show up even when someone feels they don't drink much.
     ko: 술을 많이 안 드신다고 느끼셔도 이런 징후는 나타날 수 있어요.
     chunks:
@@ -7101,11 +7101,11 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 음주 부인 환자 4문장 순서
-    why: 어떤 대답도 괜찮다고 안심시키고, 아침에 이런 느낌이 있었는지 묻고, 그 대답이 무엇이든 떨림이 금단 초기일 수 있다고 설명하고, 그런 징후가 적게 마셨다고 느끼는 사람에게도 나타난다고 닫아요. 'Whatever the answer'·'Those signs'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 질문을 예고하며 어떤 대답도 괜찮다고 안심시키고, 아침에 이런 느낌이 있었는지 묻고, 그 대답이 무엇이든 떨림이 금단 초기일 수 있다고 설명하고, 그런 징후가 적게 마셨다고 느끼는 사람에게도 나타난다고 닫아요. 'Whatever the answer'·'Those signs'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
-    - en: Whatever you tell me is fine — I just want to keep you safe.
+    - en: I'm going to ask you something, and whatever you tell me is fine.
       icon: handshake2
-      ko: 뭐라고 말씀하셔도 괜찮아요 — 안전하게 해드리고 싶을 뿐이에요
+      ko: 하나 여쭤볼게요, 뭐라고 말씀하셔도 괜찮아요
       note: 안심
     - en: Have you noticed feeling like this in the mornings before?
       icon: calendar
@@ -7142,7 +7142,7 @@ situations:
     decoy: ', bradycardic'
     distractorsKo:
     - 벤조디아제핀 진정이 필요해요
-    - 지금 혈압과 심박수가 높아요
+    - 1:1 안전 관리가 필요해요
     blank:
       answer: severely
       options:
@@ -7233,9 +7233,9 @@ situations:
     blank:
       answer: heart rate
       options:
-      - en: height
-      - en: hearing
       - en: heart rate
+      - en: oxygen level
+      - en: urine output
       - en: weight
   - en: I need a physician now — this needs aggressive sedation.
     ko: 지금 의사가 필요해요 — 적극적인 진정이 필요해요.
@@ -7332,19 +7332,19 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 진전섬망 보고 4문장 순서
-    why: 상태를 먼저 보고하고, 점수가 척도를 벗어나 의사가 필요하다고 이어 호출하고, 의사에게 필요한 오더를 요청하고, 그 진정에도 반응이 없으면 ICU 병상이 필요할 수 있다고 닫아요. 'On top of that'·'For that'·'that sedation'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 상태를 먼저 보고하고, 점수가 척도를 벗어났다며 의사에게 지금 와 달라고 이어 부르고, 그 모든 걸 근거로 필요한 오더를 요청하고, 그 진정에도 반응이 없으면 ICU 병상이 필요할 수 있다고 닫아요. 줄마다 듣는 사람은 의사예요. 'On top of that'·'that score'·'that sedation'이 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: He's in delirium tremens — hypertensive, tachycardic, and severely agitated.
       icon: siren
       ko: 진전섬망 상태예요 — 고혈압, 빈맥이고 심하게 초조해해요
       note: 상태
-    - en: On top of that, his CIWA is off the scale, so I need a physician now.
+    - en: On top of that, CIWA is off the scale — please come now.
       icon: bell
-      ko: 게다가 CIWA가 척도를 벗어나서 지금 의사가 필요해요
+      ko: 게다가 CIWA가 척도를 벗어났어요 — 지금 와 주세요
       note: 호출
-    - en: For that, please order aggressive benzodiazepine sedation and one-to-one safety for him.
+    - en: With that score, please order aggressive benzo sedation and one-to-one safety.
       icon: pill
-      ko: 그래서 그분께 적극적인 벤조디아제핀 진정과 1:1 안전 관리를 오더해 주세요
+      ko: 그 점수라면 적극적인 벤조 진정과 1:1 안전 관리를 오더해 주세요
       note: 요청
     - en: If he doesn't respond to that sedation, we may need an ICU bed.
       icon: hospital
@@ -7426,7 +7426,7 @@ situations:
     goal: 2
     tag: 단계 상향
     icon: gear
-    why: If로 이어질 단계를 미리 말해 두면 팀이 다음 행동을 준비해요. 약으로 발작이 멈추지 않으면 기도 확보(삽관)로 넘어가는 것이 정해진 순서예요.
+    why: If로 다음 단계를 미리 말해 두면 팀이 준비해요. 벤조로 멈추지 않으면 2차 약으로 올리고, 그때 기도를 지키려고 삽관을 준비해요.
     decoy: and prepare the paperwork
     distractorsKo:
     - 벤조디아제핀을 한 번 더 투여하세요
@@ -7491,9 +7491,9 @@ situations:
       answer: cart
       options:
       - en: cart
-      - en: form
-      - en: menu
-      - en: ticket
+      - en: chart
+      - en: sign
+      - en: bed
   - en: If the seizure doesn't break soon, we need to prepare to intubate.
     ko: 발작이 곧 멈추지 않으면 삽관을 준비해야 해요.
     chunks:
@@ -7723,7 +7723,7 @@ situations:
       - en: ordered
       - en: reversed
       - en: repeated
-      - en: erased
+      - en: measured
   - en: He's making up stories to fill in the memory loss.
     ko: 기억 상실을 채우려고 이야기를 지어내고 있어요.
     chunks:
@@ -7795,23 +7795,23 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 코르사코프 진행 4문장 순서
-    why: 기억이 언제부터 그랬는지 묻고, 그 설명에 비추어 기억 상실과 지어낸 이야기가 진행의 신호라고 말하고, 그 이야기들이 일부러가 아니라 빈 기억을 채우는 것이라고 풀고, 그래서 서둘러 티아민을 준다고 닫아요. 'what you describe'·'those stories'·'That's why'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 기억이 언제부터 그랬는지 묻고, 그 설명에 비추어 기억의 빈틈을 일부러가 아닌 이야기로 채우는 것이라고 풀고, 그런 양상이 결핍의 진행을 뜻한다고 짚고, 그래서 서둘러 티아민을 준다고 닫아요. 'what you describe'·'That pattern'·'it has advanced'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: How long has his memory been like this?
       icon: calendar
       ko: 언제부터 이렇게 기억이 안 좋으셨어요?
       note: 문진
-    - en: From what you describe, the memory loss and made-up stories suggest the deficiency has advanced.
-      icon: stetho
-      ko: 말씀하신 걸 보면 기억 상실과 지어낸 이야기는 결핍이 진행됐다는 뜻이에요
-      note: 소견
-    - en: He's making up those stories to fill in the memory loss — it isn't on purpose.
+    - en: From what you describe, he's filling memory gaps with stories — not on purpose.
       icon: speech
-      ko: 기억 상실을 채우려고 그 이야기를 지어내는 거예요 — 일부러가 아니에요
+      ko: 말씀하신 걸 보면 기억의 빈틈을 이야기로 채우고 있어요 — 일부러가 아니에요
       note: 작화
-    - en: That's why we're giving urgent high-dose thiamine, though some damage may be lasting.
+    - en: That pattern suggests the thiamine deficiency has advanced.
+      icon: stetho
+      ko: 그런 양상은 티아민 결핍이 진행됐다는 뜻이에요
+      note: 소견
+    - en: Because it has advanced, we're giving urgent high-dose thiamine, though some damage may be lasting.
       icon: pill
-      ko: 그래서 긴급히 고용량 티아민을 드리고 있어요, 다만 일부 손상은 남을 수 있어요
+      ko: 진행됐기 때문에 긴급히 고용량 티아민을 드리고 있어요, 다만 일부 손상은 남을 수 있어요
       note: 치료
 - title: 금단+패혈증 감별
   sentences:
@@ -7981,10 +7981,10 @@ situations:
     blank:
       answer: pain
       options:
-      - en: hunger
-      - en: thirst
-      - en: noise
       - en: pain
+      - en: relief
+      - en: sleepiness
+      - en: hunger
   nuance:
   - kind: pair
     words:
@@ -8104,9 +8104,9 @@ situations:
       answer: storm
       options:
       - en: storm
-      - en: crowd
-      - en: queue
-      - en: budget
+      - en: fever
+      - en: bleeding
+      - en: cough
   - en: Keep him on continuous monitoring and call the physician back in.
     ko: 계속 감시하면서 의사를 다시 불러주세요.
     chunks:
@@ -8123,7 +8123,7 @@ situations:
     goal: 2
     tag: 감시·호출
     icon: monitor
-    why: Keep him on …은 이미 하고 있는 감시를 유지하라는 지시고, call … back in은 의사를 다시 불러 달라는 말이에요.
+    why: Keep him on으로 지금 하는 감시를 끊지 말라고 하고, call … back in으로 이미 봤던 의사를 다시 부른다는 걸 분명히 해요. 진정을 늘리는 중이라 감시와 호출을 한 문장에 묶어요.
     decoy: and call the pharmacy back in
     distractorsKo:
     - 진정을 늘려야 해요
@@ -8208,7 +8208,7 @@ situations:
     goal: 2
     tag: 감시·호출
     icon: bell
-    why: going은 이미 하는 감시를 끊지 말라는 뜻이고, now로 호출은 지금 하라고 못 박아요.
+    why: going으로 감시를 멈추지 말라고 하고, 문장 끝의 now로 호출이 미룰 일이 아님을 못 박아요. 급변 중에는 지시를 짧게 둘로 나눠 말해요.
     decoy: and call the pharmacy now
     distractorsKo:
     - 진정을 늘려야 해요
@@ -8260,7 +8260,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: DT 심혈관 위기 4문장 순서
-    why: 수치가 다시 치솟는 것을 알리고, 그걸 조절하려고 진정을 늘려야 한다고 이으며, 진정이 호흡을 늦출 수 있으니 연속 감시를 유지하고, 감시가 보여 주는 것을 의사에게 알리며 다시 부르는 순서예요. 'it'·'that'·'the monitor'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 수치가 다시 치솟는 것을 알리고, 그걸 조절하려고 진정을 늘려야 한다고 이으며, 진정이 호흡을 늦출 수 있으니 연속 감시를 유지하고, 그 감시가 보여 주는 것을 의사에게 알리며 다시 부르는 순서예요. 'it'·'that'·'that monitoring'이 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: His heart rate and pressure are spiking again — this is the autonomic storm.
       icon: siren
@@ -8274,9 +8274,9 @@ situations:
       icon: monitor
       ko: 진정이 더해지면 호흡이 느려질 수 있으니 계속 감시를 이어 가세요
       note: 감시
-    - en: Call the physician back in now, and tell them what the monitor shows.
+    - en: Call the physician back in now and report what that monitoring shows.
       icon: bell
-      ko: 지금 의사를 다시 불러서 모니터가 보여 주는 걸 알려 주세요
+      ko: 지금 의사를 다시 불러서 그 감시가 보여 주는 걸 알려 주세요
       note: 호출
 - title: 중증 금단 야간 급변 인계
   sentences:
@@ -8363,7 +8363,7 @@ situations:
       - en: talkative
       - en: cheerful
       - en: tremulous
-      - en: hungry
+      - en: sleepy
   - en: His CIWA score has been climbing steadily overnight.
     ko: 밤새 CIWA 점수가 꾸준히 오르고 있어요.
     chunks:
@@ -8473,7 +8473,7 @@ situations:
       ok: true
     - who: 차트 기록
       icon: board
-      en: 'Benzo: lorazepam 2 mg IV x3 since 0200; CIWA 12 to 22.'
+      en: CIWA 12 to 22 despite benzo x3 (lorazepam 2 mg IV since 0200).
       ok: true
     - who: 보호자에게
       icon: me

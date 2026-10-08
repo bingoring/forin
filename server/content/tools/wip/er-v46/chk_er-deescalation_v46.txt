@@ -1,0 +1,820 @@
+
+## S0 대기 지연 불만 환자
+ [0] KO: 오래 기다리게 해서 죄송해요, 지금 상황을 설명해 드릴게요.
+     B: I'm sorry for the long [wait] — let me explain what's happening.   <== ANS
+     B: I'm sorry for the long [visit] — let me explain what's happening.
+     B: I'm sorry for the long [shift] — let me explain what's happening.
+     B: I'm sorry for the long [bill] — let me explain what's happening.
+     X1: 물이나 담요가 필요하세요? | X2: 의사 선생님께 바로 전달할게요. | decoy: for the parking | chunks: ["I'm sorry", 'for the long wait', '— let me explain', "what's happening", '.']
+ [1] KO: 생명이 위독한 환자분들이 먼저 진료를 받으세요.
+     B: Patients with [chronic] issues are seen first.
+     B: Patients with [life-threatening] issues are seen first.   <== ANS
+     B: Patients with [minor] issues are seen first.
+     B: Patients with [routine] issues are seen first.
+     X1: 보험 정보를 확인할게요. | X2: 화장실은 복도 끝에 있어요. | decoy: in order of arrival | chunks: ['Patients with', 'life-threatening issues', 'are seen', 'first', '.']
+ [2] KO: 순서를 확인하고 곧 알려드릴게요.
+     B: I'll check on your place in line and [bill] you shortly.
+     B: I'll check on your place in line and [charge] you shortly.
+     B: I'll check on your place in line and [update] you shortly.   <== ANS
+     B: I'll check on your place in line and [discharge] you shortly.
+     X1: 접수 번호를 다시 알려 주세요. | X2: 차트에 메모를 남길게요. | decoy: with the doctor | chunks: ["I'll check", 'on your place', 'in line', 'and update you', 'shortly', '.']
+ [3] KO: 세 시간이 정말 길게 느껴지실 거예요.
+     B: I know three hours can feel like [a moment].
+     B: I know three hours can feel like [nothing].
+     B: I know three hours can feel like [a break].
+     B: I know three hours can feel like [forever].   <== ANS
+     X1: 진료비는 나중에 안내해 드릴게요. | X2: 제가 직접 모시고 갈게요. | decoy: at home | chunks: ['I know', 'three hours', 'can feel', 'like forever', '.']
+ [4] KO: 소식이 있으면 바로 찾아뵐게요.
+     B: I'll come find you [as soon as] I have news.   <== ANS
+     B: I'll come find you [unless] I have news.
+     B: I'll come find you [although] I have news.
+     B: I'll come find you [even if] I have news.
+     X1: 담요 하나 가져다 드릴게요. | X2: 대기실 TV를 켜 드릴게요. | decoy: to your seat | chunks: ["I'll come", 'find you', 'as soon as', 'I have news', '.']
+ ORDER:
+    1 I'm sorry the wait has been so long. (8w)
+    2 That's why: the sickest patients are seen first. (8w)
+    3 With that in mind, I'll check on your place in line. (11w)
+    4 Whatever I find out, I'll come tell you myself. (9w)
+  SWAP12: That's why: the sickest patients are seen first. // I'm sorry the wait has been so long. // With that in mind, I'll check on your place in line. // Whatever I find out, I'll come tell you myself.
+  SWAP23: I'm sorry the wait has been so long. // With that in mind, I'll check on your place in line. // That's why: the sickest patients are seen first. // Whatever I find out, I'll come tell you myself.
+  SWAP34: I'm sorry the wait has been so long. // That's why: the sickest patients are seen first. // Whatever I find out, I'll come tell you myself. // With that in mind, I'll check on your place in line.
+ SWAP-KO 생명이 위독한 환자분들이 먼저 진료를 받으세요. | ['Patients with life-threatening issues are ', 'triaged by acuity', '.'] seen first
+
+## S1 목소리 높아지는 초기 신호
+ [0] KO: 답답하실 만해요, 제가 듣고 있어요.
+     B: You're right to be frustrated — I'm [timing].
+     B: You're right to be frustrated — I'm [listening].   <== ANS
+     B: You're right to be frustrated — I'm [charting].
+     B: You're right to be frustrated — I'm [rushing].
+     X1: 잠깐 앉아서 기다려 주세요. | X2: 혈압부터 재겠습니다. | decoy: about this | chunks: ["You're right", 'to be frustrated', "— I'm listening", '.']
+ [1] KO: 차근차근 이야기해요, 시간은 충분해요.
+     B: Let's [push] this through, I've got time for you.
+     B: Let's [hurry] this through, I've got time for you.
+     B: Let's [talk] this through, I've got time for you.   <== ANS
+     B: Let's [rush] this through, I've got time for you.
+     X1: 잠깐 혈압을 재 볼게요. | X2: 조용한 방으로 안내할게요. | decoy: for now | chunks: ["Let's talk", 'this through', ", I've got", 'time for you', '.']
+ [2] KO: 지금 뭐가 도움이 될지 말씀해 주세요.
+     B: Tell me what would [hurt] right now.
+     B: Tell me what would [delay] right now.
+     B: Tell me what would [annoy] right now.
+     B: Tell me what would [help] right now.   <== ANS
+     X1: 이쪽 의자에 앉으세요. | X2: 제가 다른 간호사를 불러올게요. | decoy: for the staff | chunks: ['Tell me', 'what would help', 'right now', '.']
+ [3] KO: 눈높이를 맞추려고 제가 앉을게요.
+     B: I'm going to sit down so we're at the [same] level.   <== ANS
+     B: I'm going to sit down so we're at the [higher] level.
+     B: I'm going to sit down so we're at the [lower] level.
+     B: I'm going to sit down so we're at the [different] level.
+     X1: 제가 의사를 불러올게요. | X2: 혈압 먼저 재 볼게요. | decoy: with you | chunks: ["I'm going", 'to sit down', "so we're at", 'the same level', '.']
+ [4] KO: 잠깐 천천히 함께 숨을 쉬어봐요.
+     B: Let's slow down and breathe [apart] for a second.
+     B: Let's slow down and breathe [together] for a second.   <== ANS
+     B: Let's slow down and breathe [alone] for a second.
+     B: Let's slow down and breathe [separately] for a second.
+     X1: 이쪽에서 잠깐 기다려 주세요. | X2: 물을 좀 가져다 드릴게요. | decoy: in the hall | chunks: ["Let's slow down", 'and breathe', 'together for', 'a second', '.']
+ ORDER:
+    1 You're right to be frustrated — I'm listening. (8w)
+    2 To show I mean it, I'm sitting down so we're at the same level. (14w)
+    3 From down here, tell me what would help right now. (10w)
+    4 Whatever you tell me, I've got time to talk it through. (11w)
+  SWAP12: To show I mean it, I'm sitting down so we're at the same level. // You're right to be frustrated — I'm listening. // From down here, tell me what would help right now. // Whatever you tell me, I've got time to talk it through.
+  SWAP23: You're right to be frustrated — I'm listening. // From down here, tell me what would help right now. // To show I mean it, I'm sitting down so we're at the same level. // Whatever you tell me, I've got time to talk it through.
+  SWAP34: You're right to be frustrated — I'm listening. // To show I mean it, I'm sitting down so we're at the same level. // Whatever you tell me, I've got time to talk it through. // From down here, tell me what would help right now.
+ SWAP-KO 무슨 말씀인지 알겠어요, 듣고 있어요. | ['', 'Calm down', " — I'm listening."] I hear you
+
+## S2 공간·개인영역 확보
+ [0] KO: 공간을 좀 드릴게요, 이러면 좀 나으세요?
+     B: I'll give you [less] space — is this better?
+     B: I'll give you [little] space — is this better?
+     B: I'll give you [some] space — is this better?   <== ANS
+     B: I'll give you [no] space — is this better?
+     X1: 이쪽으로 앉으세요. | X2: 혈압을 재 볼게요. | decoy: by the door | chunks: ["I'll give you", 'some space', '— is this', 'better', '?']
+ [1] KO: 편하게 느껴지는 곳으로 움직이셔도 돼요.
+     B: You can move wherever feels [crowded] to you.
+     B: You can move wherever feels [cramped] to you.
+     B: You can move wherever feels [tight] to you.
+     B: You can move wherever feels [comfortable] to you.   <== ANS
+     X1: 침대에 누워 주세요. | X2: 물 한 잔 드릴까요? | decoy: in this room | chunks: ['You can move', 'wherever feels', 'comfortable to you', '.']
+ [2] KO: 압박하려는 게 아니라 그저 도우려는 거예요.
+     B: I'm not here to crowd you, just to [help].   <== ANS
+     B: I'm not here to crowd you, just to [watch].
+     B: I'm not here to crowd you, just to [stare].
+     B: I'm not here to crowd you, just to [hurry].
+     X1: 도움이 필요하면 불러 주세요. | X2: 제가 보호자분께 알릴게요. | decoy: with you | chunks: ["I'm not here", 'to crowd you', ', just to', 'help', '.']
+ [3] KO: 문을 막지 않고 문 옆에 서 있을게요.
+     B: I'm going to stand by the door, [just to] block it.
+     B: I'm going to stand by the door, [not] block it.   <== ANS
+     B: I'm going to stand by the door, [and] block it.
+     B: I'm going to stand by the door, [to] block it.
+     X1: 필요하시면 커튼을 칠게요. | X2: 보호자분께 연락할게요. | decoy: next to you | chunks: ["I'm going", 'to stand by', 'the door', ', not block it', '.']
+ [4] KO: 숨 쉴 공간이 더 필요하면 말씀해 주세요.
+     B: Let me know if you want more [blankets] to breathe.
+     B: Let me know if you want more [tests] to breathe.
+     B: Let me know if you want more [room] to breathe.   <== ANS
+     B: Let me know if you want more [pills] to breathe.
+     X1: 담요를 가져다 드릴까요? | X2: 불을 좀 줄여 드릴까요? | decoy: right now | chunks: ['Let me know', 'if you want', 'more room', 'to breathe', '.']
+ ORDER:
+    1 I'm going to step back and give you some room. (10w)
+    2 Does that feel better, or do you want more? (9w)
+    3 Whichever it is, you're free to move wherever feels comfortable. (10w)
+    4 Even if you move toward the door, I won't get in your way. (13w)
+  SWAP12: Does that feel better, or do you want more? // I'm going to step back and give you some room. // Whichever it is, you're free to move wherever feels comfortable. // Even if you move toward the door, I won't get in your way.
+  SWAP23: I'm going to step back and give you some room. // Whichever it is, you're free to move wherever feels comfortable. // Does that feel better, or do you want more? // Even if you move toward the door, I won't get in your way.
+  SWAP34: I'm going to step back and give you some room. // Does that feel better, or do you want more? // Even if you move toward the door, I won't get in your way. // Whichever it is, you're free to move wherever feels comfortable.
+ CTX space 공간 [(True, "I'll give you some space — is this better?", None), (True, "Let's give him some space and stay near the door.", None), (False, "I'll give you some space, okay? Is this better?", 'Pt requested more personal space; staff stepped back, exit kept clear.')]
+
+## S3 요구 반복 환자 경청
+ [0] KO: 정말로 필요하신 게 뭔지 제가 확실히 이해할게요.
+     B: Let me make sure I [forget] what you really need.
+     B: Let me make sure I [dismiss] what you really need.
+     B: Let me make sure I [ignore] what you really need.
+     B: Let me make sure I [understand] what you really need.   <== ANS
+     X1: 다시 접수 창구로 가 주세요. | X2: 담당 선생님께 전달해 둘게요. | decoy: for the chart | chunks: ['Let me make sure', 'I understand', 'what you really', 'need', '.']
+ [1] KO: 몇 번씩 반복하셔야 했다는 거 들었어요, 답답하셨을 거예요.
+     B: I hear you've had to repeat yourself — that's [frustrating].   <== ANS
+     B: I hear you've had to repeat yourself — that's [amusing].
+     B: I hear you've had to repeat yourself — that's [unusual].
+     B: I hear you've had to repeat yourself — that's [convenient].
+     X1: 진료비 안내를 드릴게요. | X2: 보호자분께 전화할게요. | decoy: at the desk | chunks: ['I hear', "you've had to repeat", 'yourself', "— that's frustrating", '.']
+ [2] KO: 지금 당장 해드릴 수 있는 건 이거예요.
+     B: Here's what I can do right now [about] you.
+     B: Here's what I can do right now [for] you.   <== ANS
+     B: Here's what I can do right now [against] you.
+     B: Here's what I can do right now [without] you.
+     X1: 성함과 생년월일을 확인할게요. | X2: 다른 부서에 전화해 볼게요. | decoy: at the desk | chunks: ["Here's what", 'I can do', 'right now', 'for you', '.']
+ [3] KO: 다시 말씀해 주시면 이번엔 적어둘게요.
+     B: Tell me again, and I'll [keep] it down this time.
+     B: Tell me again, and I'll [shut] it down this time.
+     B: Tell me again, and I'll [write] it down this time.   <== ANS
+     B: Tell me again, and I'll [turn] it down this time.
+     X1: 이쪽에 서명해 주세요. | X2: 지금 바로 의사를 불러올게요. | decoy: for you | chunks: ['Tell me again', ", and I'll write", 'it down', 'this time', '.']
+ [4] KO: 두 번 물어보시게 하고 싶지 않아요.
+     B: I don't want you to have to ask [rudely].
+     B: I don't want you to have to ask [secretly].
+     B: I don't want you to have to ask [slowly].
+     B: I don't want you to have to ask [twice].   <== ANS
+     X1: 제가 담당 간호사에게 전달할게요. | X2: 접수 번호를 알려 주세요. | decoy: at the desk | chunks: ["I don't want", 'you to have', 'to ask', 'twice', '.']
+ ORDER:
+    1 I hear you've had to repeat yourself — that's frustrating. (10w)
+    2 Let's fix that: tell me what you need and I'll write it down. (13w)
+    3 I'll read it back to you so you know I've got it right. (13w)
+    4 Based on that, here's what I can do for you right now. (12w)
+  SWAP12: Let's fix that: tell me what you need and I'll write it down. // I hear you've had to repeat yourself — that's frustrating. // I'll read it back to you so you know I've got it right. // Based on that, here's what I can do for you right now.
+  SWAP23: I hear you've had to repeat yourself — that's frustrating. // I'll read it back to you so you know I've got it right. // Let's fix that: tell me what you need and I'll write it down. // Based on that, here's what I can do for you right now.
+  SWAP34: I hear you've had to repeat yourself — that's frustrating. // Let's fix that: tell me what you need and I'll write it down. // Based on that, here's what I can do for you right now. // I'll read it back to you so you know I've got it right.
+ SWAP-KO 필요하신 게 뭔지 제가 제대로 이해했는지 확인할게요. | ['Let me ', 'clarify your chief complaint', '.'] make sure I understand what you need
+
+## S4 통증·불편 기인 초조
+ [0] KO: 먼저 통증부터 조절해봐요.
+     B: Let's get your [pain] under control first.   <== ANS
+     B: Let's get your [bleeding] under control first.
+     B: Let's get your [fever] under control first.
+     B: Let's get your [nausea] under control first.
+     X1: 침대 난간을 올릴게요. | X2: 알레르기가 있으신지 볼게요. | decoy: with medicine | chunks: ["Let's get", 'your pain', 'under control', 'first', '.']
+ [1] KO: 0에서 10까지 중에, 지금 얼마나 아프세요?
+     B: On a scale of zero to ten, [how far] is it right now?
+     B: On a scale of zero to ten, [how bad] is it right now?   <== ANS
+     B: On a scale of zero to ten, [how often] is it right now?
+     B: On a scale of zero to ten, [how long] is it right now?
+     X1: 어디가 가장 아프세요? | X2: 언제부터 아프기 시작했어요? | decoy: last night | chunks: ['On a scale', 'of zero to ten', ', how bad is it', 'right now', '?']
+ [2] KO: 바로 뭔가 가져다드릴게요.
+     B: I'm getting something for you [by Friday].
+     B: I'm getting something for you [someday].
+     B: I'm getting something for you [right away].   <== ANS
+     B: I'm getting something for you [next week].
+     X1: 혈압을 한 번 재 볼게요. | X2: 침대를 조금 올릴게요. | decoy: after lunch | chunks: ["I'm getting", 'something for you', 'right away', '.']
+ [3] KO: 이런 통증은 견디기 힘들다는 거 알아요.
+     B: I know pain like this is [easy] to sit with.
+     B: I know pain like this is [pleasant] to sit with.
+     B: I know pain like this is [comfortable] to sit with.
+     B: I know pain like this is [hard] to sit with.   <== ANS
+     X1: 숨을 깊게 쉬어 보세요. | X2: 얼음찜질을 해 볼게요. | decoy: on your own | chunks: ['I know', 'pain like this', 'is hard', 'to sit with', '.']
+ [4] KO: 덜 아픈 자세를 찾아봐요.
+     B: Let's find a position that hurts [less].   <== ANS
+     B: Let's find a position that hurts [more].
+     B: Let's find a position that hurts [worse].
+     B: Let's find a position that hurts [longer].
+     X1: 약 이름을 말씀해 주세요. | X2: 차트에 적어 둘게요. | decoy: for you | chunks: ["Let's find", 'a position', 'that hurts less', '.']
+ ORDER:
+    1 I know pain like this is hard to sit with. (10w)
+    2 To help with it, tell me how bad it is, from zero to ten. (14w)
+    3 Whatever the number, I'm getting something for you right away. (10w)
+    4 Along with that, let's find a position that hurts less. (10w)
+  SWAP12: To help with it, tell me how bad it is, from zero to ten. // I know pain like this is hard to sit with. // Whatever the number, I'm getting something for you right away. // Along with that, let's find a position that hurts less.
+  SWAP23: I know pain like this is hard to sit with. // Whatever the number, I'm getting something for you right away. // To help with it, tell me how bad it is, from zero to ten. // Along with that, let's find a position that hurts less.
+  SWAP34: I know pain like this is hard to sit with. // To help with it, tell me how bad it is, from zero to ten. // Along with that, let's find a position that hurts less. // Whatever the number, I'm getting something for you right away.
+ SWAP-KO 먼저 통증부터 조절해 봐요. | ["Let's ", 'calm you down', ' first.'] get your pain under control
+
+## S5 알코올 취기 공격성
+ [0] KO: 여기서 아무도 비난하지 않아요, 그저 돕고 싶을 뿐이에요.
+     B: Nobody's [feeding] you here — I just want to help.
+     B: Nobody's [judging] you here — I just want to help.   <== ANS
+     B: Nobody's [weighing] you here — I just want to help.
+     B: Nobody's [billing] you here — I just want to help.
+     X1: 술을 얼마나 드셨는지 알려 주세요. | X2: 여기 침대에 누워 주세요. | decoy: about the noise | chunks: ["Nobody's judging you", 'here', '— I just want', 'to help', '.']
+ [1] KO: 차분히 있어요, 저는 당신 편이에요.
+     B: Let's keep it calm; I'm on your [back].
+     B: Let's keep it calm; I'm on your [nerves].
+     B: Let's keep it calm; I'm on your [side].   <== ANS
+     B: Let's keep it calm; I'm on your [case].
+     X1: 지금 혈당을 재 볼게요. | X2: 옷을 갈아입으셔야 해요. | decoy: at the desk | chunks: ["Let's keep it calm;", "I'm on", 'your side', '.']
+ [2] KO: 앉아서 이야기로 풀어보는 게 어때요?
+     B: How about we [rush] down and talk this out?
+     B: How about we [hurry] down and talk this out?
+     B: How about we [race] down and talk this out?
+     B: How about we [sit] down and talk this out?   <== ANS
+     X1: 술은 얼마나 드셨어요? | X2: 보호자분께 전화할까요? | decoy: right now | chunks: ['How about', 'we sit down', 'and talk', 'this out', '?']
+ [3] KO: 말씀 듣고 있어요, 싸우려는 게 아니에요.
+     B: I hear you, and I'm not here to [fight].   <== ANS
+     B: I hear you, and I'm not here to [pay].
+     B: I hear you, and I'm not here to [sleep].
+     B: I hear you, and I'm not here to [shop].
+     X1: 지금 체온을 재도 될까요? | X2: 병실로 모셔 드릴게요. | decoy: with you | chunks: ['I hear you', ", and I'm", 'not here', 'to fight', '.']
+ [4] KO: 함께 천천히 진정해봐요.
+     B: Let's slow things down [apart].
+     B: Let's slow things down [together].   <== ANS
+     B: Let's slow things down [alone].
+     B: Let's slow things down [separately].
+     X1: 물 좀 드시겠어요? | X2: 담요를 가져다 드릴게요. | decoy: for the staff | chunks: ["Let's slow", 'things down', 'together', '.']
+ ORDER:
+    1 I hear you, and I'm not here to fight. (9w)
+    2 Because of that, let's slow things down together. (8w)
+    3 To do that, how about we sit down and talk this out? (12w)
+    4 Either way, I'm on your side. (6w)
+  SWAP12: Because of that, let's slow things down together. // I hear you, and I'm not here to fight. // To do that, how about we sit down and talk this out? // Either way, I'm on your side.
+  SWAP23: I hear you, and I'm not here to fight. // To do that, how about we sit down and talk this out? // Because of that, let's slow things down together. // Either way, I'm on your side.
+  SWAP34: I hear you, and I'm not here to fight. // Because of that, let's slow things down together. // Either way, I'm on your side. // To do that, how about we sit down and talk this out?
+ SWAP-KO 여기서 아무도 당신을 비난하지 않아요, 그저 돕고 싶어요. | ["Nobody's ", 'blaming you for drinking', ' here — I just want to help.'] judging you
+
+## S6 치매 초조 행동
+ [0] KO: 여기서는 안전해요, 제가 곁에 있을게요.
+     B: You're safe [upstairs], and I'm going to stay with you.
+     B: You're safe [downtown], and I'm going to stay with you.
+     B: You're safe [here], and I'm going to stay with you.   <== ANS
+     B: You're safe [outside], and I'm going to stay with you.
+     X1: 따님께 전화해 드릴게요. | X2: 점심 드실 시간이에요. | decoy: in bed | chunks: ["You're safe here", ", and I'm going", 'to stay', 'with you', '.']
+ [1] KO: 따님이 지금 오고 계세요.
+     B: Your daughter is on her [own] to see you.
+     B: Your daughter is on her [back] to see you.
+     B: Your daughter is on her [list] to see you.
+     B: Your daughter is on her [way] to see you.   <== ANS
+     X1: 어디가 아프세요? | X2: 아침 약을 드릴게요. | decoy: at home | chunks: ['Your daughter is', 'on her way', 'to see', 'you', '.']
+ [2] KO: 잠깐 이 사진들을 함께 봐요.
+     B: Let's look at these [photos] together for a moment.   <== ANS
+     B: Let's look at these [charts] together for a moment.
+     B: Let's look at these [forms] together for a moment.
+     B: Let's look at these [bills] together for a moment.
+     X1: 약을 같이 드실까요? | X2: 화장실에 가고 싶으세요? | decoy: on the wall | chunks: ["Let's look", 'at these photos', 'together', 'for a moment', '.']
+ [3] KO: 저와 함께 있으니 안전해요, 제가 바로 곁에 있어요.
+     B: You're safe [despite] me, and I'm right beside you.
+     B: You're safe [with] me, and I'm right beside you.   <== ANS
+     B: You're safe [without] me, and I'm right beside you.
+     B: You're safe [against] me, and I'm right beside you.
+     X1: 잠깐 팔을 걷어 주세요. | X2: 따뜻한 담요를 드릴게요. | decoy: in this room | chunks: ["You're safe", 'with me', ',', "and I'm", 'right beside you', '.']
+ [4] KO: 잠시 가족 이야기를 나눠봐요.
+     B: Let's talk about your [insurance] for a while.
+     B: Let's talk about your [diagnosis] for a while.
+     B: Let's talk about your [family] for a while.   <== ANS
+     B: Let's talk about your [surgery] for a while.
+     X1: 오늘 약은 다 드셨어요? | X2: 팔찌를 확인할게요. | decoy: at lunch | chunks: ["Let's talk", 'about your family', 'for a while', '.']
+ ORDER:
+    1 You're safe here, and I'm going to stay with you. (10w)
+    2 Besides me, your daughter is on her way to see you. (11w)
+    3 Let's look at some photos of her together. (8w)
+    4 Tell me about the people in them. (7w)
+  SWAP12: Besides me, your daughter is on her way to see you. // You're safe here, and I'm going to stay with you. // Let's look at some photos of her together. // Tell me about the people in them.
+  SWAP23: You're safe here, and I'm going to stay with you. // Let's look at some photos of her together. // Besides me, your daughter is on her way to see you. // Tell me about the people in them.
+  SWAP34: You're safe here, and I'm going to stay with you. // Besides me, your daughter is on her way to see you. // Tell me about the people in them. // Let's look at some photos of her together.
+ SWAP-KO 이곳이 낯설게 느껴지실 거예요, 하지만 여기서는 안전하고 제가 곁에 있을게요. | ['', "You're confused", ", but you're safe here, and I'm staying with you."] I know this place feels strange
+
+## S7 마약 갈망·요구 환자
+ [0] KO: 그 통증이 진짜라는 걸 믿어요, 그리고 안전하게 치료해 드리고 싶어요.
+     B: I believe your pain is real, and I want to treat it [secretly].
+     B: I believe your pain is real, and I want to treat it [reluctantly].
+     B: I believe your pain is real, and I want to treat it [suddenly].
+     B: I believe your pain is real, and I want to treat it [safely].   <== ANS
+     X1: 약 알레르기가 있으세요? | X2: 오늘 몇 시에 오셨어요? | decoy: for you | chunks: ['I believe', 'your pain is real', ', and I want', 'to treat it safely', '.']
+ [1] KO: 그건 드릴 수 없지만, 대신 이걸 제안드릴 수 있어요.
+     B: I [can't] give you that, but here's what I can offer.   <== ANS
+     B: I [can] give you that, but here's what I can offer.
+     B: I [will] give you that, but here's what I can offer.
+     B: I [must] give you that, but here's what I can offer.
+     X1: 통증 점수를 알려 주세요. | X2: 처방전은 어느 약국이세요? | decoy: right now | chunks: ["I can't give you that", ", but here's", 'what I can', 'offer', '.']
+ [2] KO: 실제로 도움이 될 것에 집중해봐요.
+     B: Let's [speculate] on what will actually help you feel better.
+     B: Let's [focus] on what will actually help you feel better.   <== ANS
+     B: Let's [comment] on what will actually help you feel better.
+     B: Let's [elaborate] on what will actually help you feel better.
+     X1: 가족분께 전화할까요? | X2: 접수 서류에 서명해 주세요. | decoy: for the chart | chunks: ["Let's focus", 'on what will', 'actually help', 'you feel better', '.']
+ [3] KO: 많이 아프신 거 알아요, 비난하려는 게 아니에요.
+     B: I hear that you're [healing], and I'm not judging you.
+     B: I hear that you're [sleeping], and I'm not judging you.
+     B: I hear that you're [hurting], and I'm not judging you.   <== ANS
+     B: I hear that you're [improving], and I'm not judging you.
+     X1: 지금 통증이 어디쯤이세요? | X2: 제가 의사 선생님께 말씀드릴게요. | decoy: at home | chunks: ['I hear', "that you're hurting", ", and I'm not", 'judging you', '.']
+ [4] KO: 당신에게 효과가 있을 다른 방법을 이야기해봐요.
+     B: Let's talk about what else might [hurt] for you.
+     B: Let's talk about what else might [fail] for you.
+     B: Let's talk about what else might [shake] for you.
+     B: Let's talk about what else might [work] for you.   <== ANS
+     X1: 약을 드시는 시간은 언제예요? | X2: 지난번에도 같은 통증이었어요? | decoy: with me | chunks: ["Let's talk", 'about what', 'else might work', 'for you', '.']
+ ORDER:
+    1 I hear that you're hurting, and I'm not judging you. (10w)
+    2 Beyond that, I believe your pain is real, and I want to treat it safely. (15w)
+    3 Treating it safely means I can't give you that, but here's what I can offer. (15w)
+    4 Let's talk about what else might work for you. (9w)
+  SWAP12: Beyond that, I believe your pain is real, and I want to treat it safely. // I hear that you're hurting, and I'm not judging you. // Treating it safely means I can't give you that, but here's what I can offer. // Let's talk about what else might work for you.
+  SWAP23: I hear that you're hurting, and I'm not judging you. // Treating it safely means I can't give you that, but here's what I can offer. // Beyond that, I believe your pain is real, and I want to treat it safely. // Let's talk about what else might work for you.
+  SWAP34: I hear that you're hurting, and I'm not judging you. // Beyond that, I believe your pain is real, and I want to treat it safely. // Let's talk about what else might work for you. // Treating it safely means I can't give you that, but here's what I can offer.
+ SWAP-KO 통증이 진짜라고 믿어요, 안전하게 치료해 드리고 싶어요. | ['', "You say you're in pain", ', and I want to treat it safely.'] I believe your pain is real
+
+## S8 대기실 다인 긴장 확산
+ [0] KO: 따로 이야기할 수 있는 곳으로 옮겨봐요.
+     B: Let's step over here where we can talk [privately].   <== ANS
+     B: Let's step over here where we can talk [publicly].
+     B: Let's step over here where we can talk [loudly].
+     B: Let's step over here where we can talk [angrily].
+     X1: 이쪽 의자에 앉아 주세요. | X2: 잠깐 신분증을 보여 주세요. | decoy: with everyone | chunks: ["Let's step", 'over here', 'where we can', 'talk privately', '.']
+ [1] KO: 일대일로 걱정되시는 부분을 듣고 싶어요.
+     B: I want to hear your concern [in groups].
+     B: I want to hear your concern [one-on-one].   <== ANS
+     B: I want to hear your concern [in public].
+     B: I want to hear your concern [all at once].
+     X1: 번호표를 받아 가세요. | X2: 물을 드릴까요? | decoy: right now | chunks: ['I want', 'to hear', 'your concern one-on-one', '.']
+ [2] KO: 이 문제는 제가 처리할게요, 모두를 위해 차분하게 있어요.
+     B: I'll [skip] this, but let's keep it calm for everyone.
+     B: I'll [forget] this, but let's keep it calm for everyone.
+     B: I'll [address] this, but let's keep it calm for everyone.   <== ANS
+     B: I'll [ignore] this, but let's keep it calm for everyone.
+     X1: 다른 환자분들도 곧 안내해 드릴게요. | X2: 접수 번호를 불러 드릴게요. | decoy: at the desk | chunks: ["I'll address this", ", but let's keep", 'it calm', 'for everyone', '.']
+ [3] KO: 사람들과 좀 떨어져서 서로 이야기를 들어봐요.
+     B: Let's move [closer to] the crowd so we can hear each other.
+     B: Let's move [into] the crowd so we can hear each other.
+     B: Let's move [toward] the crowd so we can hear each other.
+     B: Let's move [away from] the crowd so we can hear each other.   <== ANS
+     X1: 번호표를 새로 뽑아 오세요. | X2: 접수 창구가 저쪽이에요. | decoy: in the lobby | chunks: ["Let's move away", 'from the crowd', 'so we can', 'hear each other', '.']
+ [4] KO: 이 일이 필요 이상으로 커지지 않았으면 해요.
+     B: I don't want this to get [bigger] than it needs to be.   <== ANS
+     B: I don't want this to get [smaller] than it needs to be.
+     B: I don't want this to get [quieter] than it needs to be.
+     B: I don't want this to get [calmer] than it needs to be.
+     X1: 대기 번호를 다시 알려 드릴게요. | X2: 다른 분들께도 안내해 드릴게요. | decoy: next time | chunks: ["I don't want", 'this to get bigger', 'than it needs', 'to be', '.']
+ ORDER:
+    1 Let's step over here where we can talk privately. (9w)
+    2 Over here, I want to hear your concern one-on-one. (9w)
+    3 Whatever it is, I'll address it, but let's keep it calm for everyone. (13w)
+    4 That way, it won't get bigger than it needs to be. (11w)
+  SWAP12: Over here, I want to hear your concern one-on-one. // Let's step over here where we can talk privately. // Whatever it is, I'll address it, but let's keep it calm for everyone. // That way, it won't get bigger than it needs to be.
+  SWAP23: Let's step over here where we can talk privately. // Whatever it is, I'll address it, but let's keep it calm for everyone. // Over here, I want to hear your concern one-on-one. // That way, it won't get bigger than it needs to be.
+  SWAP34: Let's step over here where we can talk privately. // Over here, I want to hear your concern one-on-one. // That way, it won't get bigger than it needs to be. // Whatever it is, I'll address it, but let's keep it calm for everyone.
+ SWAP-KO 따로 이야기할 수 있는 곳으로 옮겨 봐요. | ["Let's step over here where we can talk ", 'in front of everyone', '.'] privately
+
+## S9 언어폭력 대상 직원 보호
+ [0] KO: 도와드리고 싶어요, 그리고 서로 정중하게 말씀해 주시면 좋겠어요.
+     B: I want to help you, and I need us to speak [rudely].
+     B: I want to help you, and I need us to speak [respectfully].   <== ANS
+     B: I want to help you, and I need us to speak [angrily].
+     B: I want to help you, and I need us to speak [loudly].
+     X1: 지금 혈압을 재도 될까요? | X2: 의사 선생님이 곧 오실 거예요. | decoy: at the desk | chunks: ['I want to help you', ', and I need', 'us to speak', 'respectfully', '.']
+ [1] KO: 그런 식으로 말씀하시는 건 받아들일 수 없지만, 그래도 곁에 있을게요.
+     B: I won't [regret] being spoken to that way, but I'm still here for you.
+     B: I won't [deny] being spoken to that way, but I'm still here for you.
+     B: I won't [accept] being spoken to that way, but I'm still here for you.   <== ANS
+     B: I won't [forget] being spoken to that way, but I'm still here for you.
+     X1: 보호자분께 연락드릴게요. | X2: 차트에 기록해 둘게요. | decoy: by anyone | chunks: ["I won't accept", 'being spoken to', 'that way', ", but I'm still", 'here for you', '.']
+ [2] KO: 처음부터 다시 함께 풀어봐요.
+     B: Let's reset and figure this out [alone].
+     B: Let's reset and figure this out [separately].
+     B: Let's reset and figure this out [apart].
+     B: Let's reset and figure this out [together].   <== ANS
+     X1: 신분증을 다시 보여 주세요. | X2: 진료 순서를 확인할게요. | decoy: at home | chunks: ["Let's reset", 'and figure', 'this out together', '.']
+ [3] KO: 저는 당신 편이에요, 그래도 존중은 필요해요.
+     B: I'm on your [team], but I need respect too.   <== ANS
+     B: I'm on your [list], but I need respect too.
+     B: I'm on your [floor], but I need respect too.
+     B: I'm on your [clock], but I need respect too.
+     X1: 의사 선생님께 말씀드릴게요. | X2: 서류에 서명해 주세요. | decoy: for you | chunks: ["I'm on", 'your team', ', but I need', 'respect too', '.']
+ [4] KO: 처음부터 다시 시도해봐요.
+     B: Let's start over and try this [silently].
+     B: Let's start over and try this [again].   <== ANS
+     B: Let's start over and try this [alone].
+     B: Let's start over and try this [separately].
+     X1: 이름과 생년월일을 알려 주세요. | X2: 물을 드릴까요? | decoy: in the hall | chunks: ["Let's start", 'over and', 'try this again', '.']
+ ORDER:
+    1 I'm on your team, and I want to help you. (10w)
+    2 To do that, I need us to speak respectfully. (9w)
+    3 I won't accept being spoken to that way, but I'm still here for you. (14w)
+    4 With that said, let's reset and figure this out together. (10w)
+  SWAP12: To do that, I need us to speak respectfully. // I'm on your team, and I want to help you. // I won't accept being spoken to that way, but I'm still here for you. // With that said, let's reset and figure this out together.
+  SWAP23: I'm on your team, and I want to help you. // I won't accept being spoken to that way, but I'm still here for you. // To do that, I need us to speak respectfully. // With that said, let's reset and figure this out together.
+  SWAP34: I'm on your team, and I want to help you. // To do that, I need us to speak respectfully. // With that said, let's reset and figure this out together. // I won't accept being spoken to that way, but I'm still here for you.
+ SWAP-KO 도와드리고 싶어요, 서로 정중하게 말씀해 주시면 좋겠어요. | ['I want to help you, and I need us to speak ', 'nicely', '.'] respectfully
+
+## S10 문화·인종 관련 불신
+ [0] KO: 말씀 듣고 있어요, 여기서 존중받으실 수 있도록 확실히 할게요.
+     B: I hear you, and I want to make sure you're treated with [haste] here.
+     B: I hear you, and I want to make sure you're treated with [pity] here.
+     B: I hear you, and I want to make sure you're treated with [respect] here.   <== ANS
+     B: I hear you, and I want to make sure you're treated with [caution] here.
+     X1: 어떤 점이 가장 불편하셨어요? | X2: 통역이 필요하신가요? | decoy: by everyone | chunks: ['I hear you', ', and I want', 'to make sure', "you're treated", 'with respect here', '.']
+ [1] KO: 그 우려는 타당해요, 최선을 다할게요.
+     B: Your concern is [private], and I'll do my best for you.
+     B: Your concern is [temporary], and I'll do my best for you.
+     B: Your concern is [visible], and I'll do my best for you.
+     B: Your concern is [valid], and I'll do my best for you.   <== ANS
+     X1: 성함이 어떻게 되세요? | X2: 진료실은 이쪽이에요. | decoy: for now | chunks: ['Your concern is valid', ", and I'll do", 'my best', 'for you', '.']
+ [2] KO: 뭐가 더 편안하게 느껴지실지 말씀해 주세요.
+     B: Tell me what would help you feel more [comfortable].   <== ANS
+     B: Tell me what would help you feel more [nervous].
+     B: Tell me what would help you feel more [rushed].
+     B: Tell me what would help you feel more [tired].
+     X1: 어디가 가장 아프세요? | X2: 보험 정보를 알려 주세요. | decoy: about this | chunks: ['Tell me', 'what would help', 'you feel', 'more comfortable', '.']
+ [3] KO: 말씀하시는 걸 진지하게 받아들이고 있어요.
+     B: I take what you're telling me [reluctantly].
+     B: I take what you're telling me [seriously].   <== ANS
+     B: I take what you're telling me [lightly].
+     B: I take what you're telling me [casually].
+     X1: 제가 차트에 적어 둘게요. | X2: 의사 선생님을 불러올게요. | decoy: in my notes | chunks: ['I take', "what you're telling me", 'seriously', '.']
+ [4] KO: 저희를 신뢰하시는 데 뭐가 도움이 될지 이야기해봐요.
+     B: Let's talk about what would build your [anger] in us.
+     B: Let's talk about what would build your [fear] in us.
+     B: Let's talk about what would build your [trust] in us.   <== ANS
+     B: Let's talk about what would build your [doubt] in us.
+     X1: 생년월일을 말씀해 주세요. | X2: 팔찌를 확인할게요. | decoy: with you | chunks: ["Let's talk", 'about what', 'would build', 'your trust in us', '.']
+ ORDER:
+    1 I hear you, and I want to make sure you're treated with respect here. (14w)
+    2 That includes your concern: it's valid, and I'll do my best for you. (13w)
+    3 To do my best for you, tell me what would help you feel more comfortable. (15w)
+    4 From what you tell me, let's talk about what would build your trust in us. (15w)
+  SWAP12: That includes your concern: it's valid, and I'll do my best for you. // I hear you, and I want to make sure you're treated with respect here. // To do my best for you, tell me what would help you feel more comfortable. // From what you tell me, let's talk about what would build your trust in us.
+  SWAP23: I hear you, and I want to make sure you're treated with respect here. // To do my best for you, tell me what would help you feel more comfortable. // That includes your concern: it's valid, and I'll do my best for you. // From what you tell me, let's talk about what would build your trust in us.
+  SWAP34: I hear you, and I want to make sure you're treated with respect here. // That includes your concern: it's valid, and I'll do my best for you. // From what you tell me, let's talk about what would build your trust in us. // To do my best for you, tell me what would help you feel more comfortable.
+ SWAP-KO 그 우려는 타당해요, 최선을 다할게요. | ['', "I'm sorry you feel that way", " — and I'll do my best for you."] Your concern is valid
+
+## S11 보호자발 공격성
+ [0] KO: 아드님을 얼마나 사랑하시는지 느껴져요, 저희도 같은 마음이에요.
+     B: I can see how much you love your son — we want the [opposite] thing.
+     B: I can see how much you love your son — we want the [different] thing.
+     B: I can see how much you love your son — we want the [separate] thing.
+     B: I can see how much you love your son — we want the [same] thing.   <== ANS
+     X1: 아이 이름과 생년월일을 확인할게요. | X2: 아이의 몸무게를 재 볼게요. | decoy: for him | chunks: ['I can see', 'how much you love', 'your son', '— we want', 'the same thing', '.']
+ [1] KO: 아이를 위해 저희가 정확히 뭘 하고 있는지 말씀드릴게요.
+     B: Let me tell you [exactly] what we're doing for him.   <== ANS
+     B: Let me tell you [vaguely] what we're doing for him.
+     B: Let me tell you [secretly] what we're doing for him.
+     B: Let me tell you [sadly] what we're doing for him.
+     X1: 아이를 병실로 옮길게요. | X2: 보호자분 성함을 알려 주세요. | decoy: at the desk | chunks: ['Let me tell you', 'exactly what', "we're doing", 'for him', '.']
+ [2] KO: 제가 아이를 잘 돌볼 수 있도록 차분하게 있어 주세요.
+     B: I need us to stay calm [whether] I can care for him well.
+     B: I need us to stay calm [so] I can care for him well.   <== ANS
+     B: I need us to stay calm [unless] I can care for him well.
+     B: I need us to stay calm [although] I can care for him well.
+     X1: 아이 약 알레르기가 있나요? | X2: 보호자 팔찌를 채워 드릴게요. | decoy: in the room | chunks: ['I need us', 'to stay calm', 'so I can', 'care for him well', '.']
+ [3] KO: 화나신 마음은 이해해요, 하지만 소리치시면 아이가 무서워해요.
+     B: Your anger makes sense, but yelling [helps] him.
+     B: Your anger makes sense, but yelling [comforts] him.
+     B: Your anger makes sense, but yelling [scares] him.   <== ANS
+     B: Your anger makes sense, but yelling [calms] him.
+     X1: 아이 이름을 확인할게요. | X2: 의사 선생님께 바로 알릴게요. | decoy: in here | chunks: ['Your anger makes sense', ', but yelling', 'scares him', '.']
+ [4] KO: 아이가 최선의 치료를 받도록 함께 협력해봐요.
+     B: Let's work together so he [misses] the best care.
+     B: Let's work together so he [skips] the best care.
+     B: Let's work together so he [avoids] the best care.
+     B: Let's work together so he [gets] the best care.   <== ANS
+     X1: 아이 몸무게를 재 볼게요. | X2: 서류에 서명해 주세요. | decoy: in here | chunks: ["Let's work together", 'so he gets', 'the best', 'care', '.']
+ ORDER:
+    1 I can see how much you love your son. (9w)
+    2 Because of that, your anger makes sense, but yelling scares him. (11w)
+    3 Instead of yelling, let me tell you exactly what we're doing for him. (13w)
+    4 With that in mind, let's stay calm so I can care for him well. (14w)
+  SWAP12: Because of that, your anger makes sense, but yelling scares him. // I can see how much you love your son. // Instead of yelling, let me tell you exactly what we're doing for him. // With that in mind, let's stay calm so I can care for him well.
+  SWAP23: I can see how much you love your son. // Instead of yelling, let me tell you exactly what we're doing for him. // Because of that, your anger makes sense, but yelling scares him. // With that in mind, let's stay calm so I can care for him well.
+  SWAP34: I can see how much you love your son. // Because of that, your anger makes sense, but yelling scares him. // With that in mind, let's stay calm so I can care for him well. // Instead of yelling, let me tell you exactly what we're doing for him.
+ SWAP-KO 화나신 마음은 이해해요, 하지만 소리치시면 아이가 무서워해요. | ['Your anger makes sense, but ', 'you need to calm down', '.'] yelling scares him
+
+## S12 정신질환+초조 복합
+ [0] KO: 여기 아무도 당신에게 반대하지 않아요, 안전하게 느끼시도록 돕고 싶어요.
+     B: No one here is [against] you — I want to help you feel safe.   <== ANS
+     B: No one here is [around] you — I want to help you feel safe.
+     B: No one here is [opposite] you — I want to help you feel safe.
+     B: No one here is [over] you — I want to help you feel safe.
+     X1: 지금 혈압을 재 볼게요. | X2: 담당 의사가 곧 올 거예요. | decoy: tonight | chunks: ['No one here', 'is against you', '— I want', 'to help you', 'feel safe', '.']
+ [1] KO: 다 보이도록 숨김없이 할게요.
+     B: I'll keep everything out in the open so you can [shop].
+     B: I'll keep everything out in the open so you can [see].   <== ANS
+     B: I'll keep everything out in the open so you can [pay].
+     B: I'll keep everything out in the open so you can [vote].
+     X1: 필요한 건 제가 다 해 드릴게요. | X2: 가족분께 연락해 드릴까요? | decoy: for you | chunks: ["I'll keep everything", 'out in', 'the open', 'so you can see', '.']
+ [2] KO: 무엇을 이야기할지는 당신이 정하는 거예요.
+     B: You're in [need] of what we talk about.
+     B: You're in [doubt] of what we talk about.
+     B: You're in [charge] of what we talk about.   <== ANS
+     B: You're in [favor] of what we talk about.
+     X1: 이쪽에 앉아 주세요. | X2: 불이 너무 밝으면 말씀해 주세요. | decoy: right now | chunks: ["You're in charge", 'of what we', 'talk about', '.']
+ [3] KO: 하기 전에 무엇이든 미리 말씀드릴게요.
+     B: I'll tell you everything [after] I do it.
+     B: I'll tell you everything [unless] I do it.
+     B: I'll tell you everything [until] I do it.
+     B: I'll tell you everything [before] I do it.   <== ANS
+     X1: 손목을 잠깐 볼게요. | X2: 혈압계를 팔에 감을게요. | decoy: at the door | chunks: ["I'll tell you", 'everything before', 'I do it', '.']
+ [4] KO: 언제든 멈춰달라고 말씀하셔도 돼요.
+     B: You can ask me to [stop] at any time.   <== ANS
+     B: You can ask me to [sign] at any time.
+     B: You can ask me to [pay] at any time.
+     B: You can ask me to [guess] at any time.
+     X1: 가운을 입혀 드릴게요. | X2: 불을 조금 낮출까요? | decoy: in here | chunks: ['You can ask', 'me to stop', 'at any', 'time', '.']
+ ORDER:
+    1 No one here is against you — I want to help you feel safe. (14w)
+    2 To help you feel safe, I'll keep everything out in the open. (12w)
+    3 Along with that, anything I do, I'll tell you about it before I do it. (15w)
+    4 Whatever it is, you can ask me to stop at any time. (12w)
+  SWAP12: To help you feel safe, I'll keep everything out in the open. // No one here is against you — I want to help you feel safe. // Along with that, anything I do, I'll tell you about it before I do it. // Whatever it is, you can ask me to stop at any time.
+  SWAP23: No one here is against you — I want to help you feel safe. // Along with that, anything I do, I'll tell you about it before I do it. // To help you feel safe, I'll keep everything out in the open. // Whatever it is, you can ask me to stop at any time.
+  SWAP34: No one here is against you — I want to help you feel safe. // To help you feel safe, I'll keep everything out in the open. // Whatever it is, you can ask me to stop at any time. // Along with that, anything I do, I'll tell you about it before I do it.
+ CTX before ~하기 전에 [(True, "I'll tell you everything before I do it.", None), (True, "Let's explain each step to him before we do it.", None), (False, "I'll notify you before each intervention.", "I'll let you know before I do anything.")]
+
+## S13 무기 소지 의심
+ [0] KO: 거리를 유지하고 있어요, 아무도 다치지 않았으면 해요.
+     B: I'm keeping my [balance] — I don't want anyone to get hurt.
+     B: I'm keeping my [distance] — I don't want anyone to get hurt.   <== ANS
+     B: I'm keeping my [silence] — I don't want anyone to get hurt.
+     B: I'm keeping my [promise] — I don't want anyone to get hurt.
+     X1: 이름을 말씀해 주시겠어요? | X2: 여기 앉으셔도 돼요. | decoy: at the door | chunks: ["I'm keeping", 'my distance', "— I don't want", 'anyone to get hurt', '.']
+ [1] KO: 지금 뭐가 불안하게 만드는지 말씀해 주시겠어요?
+     B: Can you tell me what's making you feel [sleepy] right now?
+     B: Can you tell me what's making you feel [ready] right now?
+     B: Can you tell me what's making you feel [unsafe] right now?   <== ANS
+     B: Can you tell me what's making you feel [hungry] right now?
+     X1: 지금 물을 드릴까요? | X2: 누구와 같이 오셨어요? | decoy: in here | chunks: ['Can you tell me', "what's making you", 'feel unsafe', 'right now', '?']
+ [2] KO: 이야기해요, 무슨 말씀이든 들을게요.
+     B: Let's talk, and I'll [point] to whatever you need to say.
+     B: Let's talk, and I'll [bow] to whatever you need to say.
+     B: Let's talk, and I'll [stoop] to whatever you need to say.
+     B: Let's talk, and I'll [listen] to whatever you need to say.   <== ANS
+     X1: 지금 어디가 불편하세요? | X2: 물 한 잔 드릴까요? | decoy: in the hall | chunks: ["Let's talk", ", and I'll listen", 'to whatever', 'you need to say', '.']
+ [3] KO: 괜찮다고 하시지 않으면 더 가까이 가지 않을게요.
+     B: I'm not going to move closer [unless] you say it's okay.   <== ANS
+     B: I'm not going to move closer [wherever] you say it's okay.
+     B: I'm not going to move closer [although] you say it's okay.
+     B: I'm not going to move closer [because] you say it's okay.
+     X1: 물이라도 드릴까요? | X2: 의자를 가져다 드릴까요? | decoy: to the bed | chunks: ["I'm not going", 'to move closer', 'unless you say', "it's okay", '.']
+ [4] KO: 보안팀이 가까이 있어요, 저는 차분히 있을게요.
+     B: [Dietary] is close by, and I'm staying calm.
+     B: [Security] is close by, and I'm staying calm.   <== ANS
+     B: [Billing] is close by, and I'm staying calm.
+     B: [Parking] is close by, and I'm staying calm.
+     X1: 의자에 앉으시겠어요? | X2: 담요를 드릴까요? | decoy: for you | chunks: ['Security is close by', ", and I'm", 'staying calm', '.']
+ ORDER:
+    1 I'm keeping my distance — I don't want anyone to get hurt. (12w)
+    2 For the same reason, security is close by, and I'm staying calm. (12w)
+    3 With that in place, can you tell me what's making you feel unsafe right now? (15w)
+    4 Whatever it is, I'll listen, and I won't move closer unless you say it's okay. (15w)
+  SWAP12: For the same reason, security is close by, and I'm staying calm. // I'm keeping my distance — I don't want anyone to get hurt. // With that in place, can you tell me what's making you feel unsafe right now? // Whatever it is, I'll listen, and I won't move closer unless you say it's okay.
+  SWAP23: I'm keeping my distance — I don't want anyone to get hurt. // With that in place, can you tell me what's making you feel unsafe right now? // For the same reason, security is close by, and I'm staying calm. // Whatever it is, I'll listen, and I won't move closer unless you say it's okay.
+  SWAP34: I'm keeping my distance — I don't want anyone to get hurt. // For the same reason, security is close by, and I'm staying calm. // Whatever it is, I'll listen, and I won't move closer unless you say it's okay. // With that in place, can you tell me what's making you feel unsafe right now?
+ SWAP-KO 괜찮다고 하시지 않으면 더 가까이 가지 않을게요. | ["I'm not going to move closer ", 'if you calm down', '.'] unless you say it's okay
+
+## S14 신체 공격 임박 코드
+ [0] KO: 억제하고 싶지 않아요, 이걸 차분하게 유지하도록 도와주세요.
+     B: I don't want to restrain you — help me keep this [tense].
+     B: I don't want to restrain you — help me keep this [angry].
+     B: I don't want to restrain you — help me keep this [calm].   <== ANS
+     B: I don't want to restrain you — help me keep this [loud].
+     X1: 물이라도 드릴까요? | X2: 잠깐 앉으실래요? | decoy: right now | chunks: ["I don't want", 'to restrain you', '— help me', 'keep this calm', '.']
+ [1] KO: 필요하신 걸 말씀해 주시면 이루어지도록 해볼게요.
+     B: Tell me what you need and I'll [refuse] to make it happen.
+     B: Tell me what you need and I'll [pretend] to make it happen.
+     B: Tell me what you need and I'll [hesitate] to make it happen.
+     B: Tell me what you need and I'll [try] to make it happen.   <== ANS
+     X1: 담요가 필요하세요? | X2: 화장실에 가시겠어요? | decoy: right now | chunks: ['Tell me', 'what you need', "and I'll try", 'to make it happen', '.']
+ [2] KO: 당신을 포함해서 모두를 안전하게 지킬 거예요.
+     B: We're going to keep everyone [safe], including you.   <== ANS
+     B: We're going to keep everyone [busy], including you.
+     B: We're going to keep everyone [late], including you.
+     B: We're going to keep everyone [warm], including you.
+     X1: 지금 어디가 불편하세요? | X2: 보호자께 연락드릴까요? | decoy: in the room | chunks: ["We're going", 'to keep everyone safe', ', including you', '.']
+ [3] KO: 필요하면 저희 팀이 바로 바깥에 있어요.
+     B: My team is right [offshore] if we need them.
+     B: My team is right [outside] if we need them.   <== ANS
+     B: My team is right [downtown] if we need them.
+     B: My team is right [abroad] if we need them.
+     X1: 지금 혈압을 재 볼게요. | X2: 같이 심호흡해 볼까요? | decoy: with us | chunks: ['My team is', 'right outside', 'if we need', 'them', '.']
+ [4] KO: 그래도 먼저 당신과 함께 풀어보고 싶어요.
+     B: I still want to work this out with you [later].
+     B: I still want to work this out with you [afterward].
+     B: I still want to work this out with you [first].   <== ANS
+     B: I still want to work this out with you [last].
+     X1: 의사 선생님이 곧 오세요. | X2: 심호흡을 해 볼까요? | decoy: in here | chunks: ['I still want', 'to work this out', 'with you', 'first', '.']
+ ORDER:
+    1 I still want to work this out with you first. (10w)
+    2 So tell me what you need, and I'll try to make it happen. (13w)
+    3 My team is right outside if we need them, but let's try this way. (14w)
+    4 Either way, we're going to keep everyone safe, including you. (10w)
+  SWAP12: So tell me what you need, and I'll try to make it happen. // I still want to work this out with you first. // My team is right outside if we need them, but let's try this way. // Either way, we're going to keep everyone safe, including you.
+  SWAP23: I still want to work this out with you first. // My team is right outside if we need them, but let's try this way. // So tell me what you need, and I'll try to make it happen. // Either way, we're going to keep everyone safe, including you.
+  SWAP34: I still want to work this out with you first. // So tell me what you need, and I'll try to make it happen. // Either way, we're going to keep everyone safe, including you. // My team is right outside if we need them, but let's try this way.
+ CTX outside 바깥에 [(True, 'My team is right outside if we need them.', None), (True, 'Stay right outside the room — come in if I call you.', None), (False, 'Security is staged outside in case you become combative.', 'There are more staff right outside if we need them.')]
+
+## S15 억제 후 후속 소통
+ [0] KO: 무서우셨을 텐데 죄송해요, 안전을 위해서만 그렇게 한 거예요.
+     B: I'm sorry that was scary — we only [said] it to keep you safe.
+     B: I'm sorry that was scary — we only [wrote] it to keep you safe.
+     B: I'm sorry that was scary — we only [sent] it to keep you safe.
+     B: I'm sorry that was scary — we only [did] it to keep you safe.   <== ANS
+     X1: 지금 팔 상태를 확인할게요. | X2: 물을 드실래요? | decoy: in the hall | chunks: ["I'm sorry", 'that was scary', '— we only did it', 'to keep you safe', '.']
+ [1] KO: 무슨 일이 있었는지 설명하고 궁금하신 걸 답해드릴게요.
+     B: Let me explain what happened and answer your [questions].   <== ANS
+     B: Let me explain what happened and answer your [bills].
+     B: Let me explain what happened and answer your [forms].
+     B: Let me explain what happened and answer your [orders].
+     X1: 손목 색을 확인할게요. | X2: 침대 높이를 맞춰 드릴게요. | decoy: at once | chunks: ['Let me explain', 'what happened', 'and answer', 'your questions', '.']
+ [2] KO: 이제 좀 진정되셨는데, 기분은 어떠세요?
+     B: Now that things are [busier], how are you feeling?
+     B: Now that things are [calmer], how are you feeling?   <== ANS
+     B: Now that things are [louder], how are you feeling?
+     B: Now that things are [tenser], how are you feeling?
+     X1: 손목 밴드를 다시 확인할게요. | X2: 이제 잠시 쉬세요. | decoy: tonight | chunks: ['Now that things', 'are calmer', ', how are you', 'feeling', '?']
+ [3] KO: 앞으로 어떻게 할지는 여전히 당신 뜻이 반영돼요.
+     B: You still have a [debt] in what happens next.
+     B: You still have a [shift] in what happens next.
+     B: You still have a [say] in what happens next.   <== ANS
+     B: You still have a [doubt] in what happens next.
+     X1: 지금 어디가 불편하세요? | X2: 담요를 드릴까요? | decoy: in here | chunks: ['You still have', 'a say', 'in what happens', 'next', '.']
+ [4] KO: 저는 여기 있고, 지금 듣고 있어요.
+     B: I'm here, and I'm [leaving] now.
+     B: I'm here, and I'm [charting] now.
+     B: I'm here, and I'm [rushing] now.
+     B: I'm here, and I'm [listening] now.   <== ANS
+     X1: 약 이름을 말씀드릴게요. | X2: 보호자께 연락드릴게요. | decoy: for you | chunks: ["I'm here", ", and I'm", 'listening now', '.']
+ ORDER:
+    1 I'm sorry that was scary — we only did it to keep you safe. (14w)
+    2 To make sense of it, let me explain what happened and answer your questions. (14w)
+    3 After hearing all that, how are you feeling? (8w)
+    4 However you feel, you still have a say in what happens next. (12w)
+  SWAP12: To make sense of it, let me explain what happened and answer your questions. // I'm sorry that was scary — we only did it to keep you safe. // After hearing all that, how are you feeling? // However you feel, you still have a say in what happens next.
+  SWAP23: I'm sorry that was scary — we only did it to keep you safe. // After hearing all that, how are you feeling? // To make sense of it, let me explain what happened and answer your questions. // However you feel, you still have a say in what happens next.
+  SWAP34: I'm sorry that was scary — we only did it to keep you safe. // To make sense of it, let me explain what happened and answer your questions. // However you feel, you still have a say in what happens next. // After hearing all that, how are you feeling?
+ SWAP-KO 무서우셨을 텐데 죄송해요, 안전을 위해서만 그렇게 한 거예요. | ["I'm sorry that was scary — we only did it ", "because you wouldn't listen", '.'] to keep you safe
+
+## S16 흥분성 섬망(ExDS)
+ [0] KO: 체온이 너무 올라갔어요, 빨리 식혀드릴게요.
+     B: You're [overheating] — we're going to cool you down fast.   <== ANS
+     B: You're [freezing] — we're going to cool you down fast.
+     B: You're [shaking] — we're going to cool you down fast.
+     B: You're [sleeping] — we're going to cool you down fast.
+     X1: 산소를 씌워 드릴게요. | X2: 지금 혈압을 잴게요. | decoy: in bed | chunks: ["You're overheating", "— we're going", 'to cool you', 'down fast', '.']
+ [1] KO: 정신 놓지 마세요, 지금 바로 도움을 드릴게요.
+     B: Stay with [them], we're getting you help right now.
+     B: Stay with [me], we're getting you help right now.   <== ANS
+     B: Stay with [him], we're getting you help right now.
+     B: Stay with [her], we're getting you help right now.
+     X1: 약 이름을 말씀해 주세요. | X2: 다리를 펴 보세요. | decoy: in here | chunks: ['Stay with me', ", we're getting you", 'help', 'right now', '.']
+ [2] KO: 저 바로 여기 있어요, 저희가 지켜드릴게요.
+     B: I'm right here; we've [passed] you.
+     B: I'm right here; we've [paid] you.
+     B: I'm right here; we've [got] you.   <== ANS
+     B: I'm right here; we've [met] you.
+     X1: 눈을 떠 보세요. | X2: 이름이 뭐예요? | decoy: for you | chunks: ["I'm right here;", "we've got", 'you', '.']
+ [3] KO: 지금 몸이 아주 힘들게 애쓰고 있어요.
+     B: Your body is working very [slowly] right now.
+     B: Your body is working very [quietly] right now.
+     B: Your body is working very [gently] right now.
+     B: Your body is working very [hard] right now.   <== ANS
+     X1: 가슴에 전극을 붙일게요. | X2: 정맥에 주사를 놓을게요. | decoy: in the bed | chunks: ['Your body is working', 'very hard', 'right now', '.']
+ [4] KO: 체온을 다시 확인하고 있어요.
+     B: We're checking your [temperature] again.   <== ANS
+     B: We're checking your [height] again.
+     B: We're checking your [weight] again.
+     B: We're checking your [hearing] again.
+     X1: 눈을 떠 보세요. | X2: 제 목소리가 들리세요? | decoy: at home | chunks: ["We're checking", 'your temperature', 'again', '.']
+ ORDER:
+    1 You're overheating — we're going to cool you down fast. (10w)
+    2 We're checking your temperature again to see how the cooling is working. (12w)
+    3 That's a lot for your body — it's working very hard right now. (13w)
+    4 Whatever you feel, I'm right here; we've got you. (9w)
+  SWAP12: We're checking your temperature again to see how the cooling is working. // You're overheating — we're going to cool you down fast. // That's a lot for your body — it's working very hard right now. // Whatever you feel, I'm right here; we've got you.
+  SWAP23: You're overheating — we're going to cool you down fast. // That's a lot for your body — it's working very hard right now. // We're checking your temperature again to see how the cooling is working. // Whatever you feel, I'm right here; we've got you.
+  SWAP34: You're overheating — we're going to cool you down fast. // We're checking your temperature again to see how the cooling is working. // Whatever you feel, I'm right here; we've got you. // That's a lot for your body — it's working very hard right now.
+ CTX cool 식히다 [(True, "Temp is 40.5 and climbing — he's hyperthermic, start cooling now.", None), (True, "You're overheating — we're going to cool you down fast.", None), (False, "Your core temp is 40.5 — you're hyperthermic, so we're cooling you.", "Your body is too hot — we're cooling you down right now.")]
+
+## S17 집단 폭력·다중 위협
+ [0] KO: 아무도 다치지 않도록 모두 떨어져 계셔야 해요.
+     B: I need everyone to [cluster] so no one gets hurt.
+     B: I need everyone to [separate] so no one gets hurt.   <== ANS
+     B: I need everyone to [gather] so no one gets hurt.
+     B: I need everyone to [merge] so no one gets hurt.
+     X1: 이쪽 의자에 앉아 주세요. | X2: 물을 드릴게요. | decoy: in the hall | chunks: ['I need everyone', 'to separate', 'so no one', 'gets hurt', '.']
+ [1] KO: 한 번에 한 그룹씩 처리할게요, 먼저 이쪽부터요.
+     B: Let's take this one group [in a crowd] — you first.
+     B: Let's take this one group [all together] — you first.
+     B: Let's take this one group [at a time] — you first.   <== ANS
+     B: Let's take this one group [in a hurry] — you first.
+     X1: 이쪽으로 오세요. | X2: 이름을 알려 주세요. | decoy: in the lobby | chunks: ["Let's take this", 'one group', 'at a time', '— you first', '.']
+ [2] KO: 보안팀이 당신을 포함해 모두를 안전하게 지키러 왔어요.
+     B: Security is here to keep everyone safe, [regarding] you.
+     B: Security is here to keep everyone safe, [following] you.
+     B: Security is here to keep everyone safe, [concerning] you.
+     B: Security is here to keep everyone safe, [including] you.   <== ANS
+     X1: 침대 번호를 확인할게요. | X2: 가족분들은 이쪽으로 오세요. | decoy: right now | chunks: ['Security is here', 'to keep everyone', 'safe', ', including you', '.']
+ [3] KO: 지금은 잠시 뒤로 물러나 주시겠어요.
+     B: I'm going to ask you to step [back] for now.   <== ANS
+     B: I'm going to ask you to step [forward] for now.
+     B: I'm going to ask you to step [closer] for now.
+     B: I'm going to ask you to step [in] for now.
+     X1: 서류에 서명해 주세요. | X2: 보호자 팔찌를 받아 가세요. | decoy: in line | chunks: ["I'm going", 'to ask you', 'to step back', 'for now', '.']
+ [4] KO: 한 사람씩 안전하게 해결해나갈게요.
+     B: We'll sort this out [angrily], one person at a time.
+     B: We'll sort this out [safely], one person at a time.   <== ANS
+     B: We'll sort this out [loudly], one person at a time.
+     B: We'll sort this out [hastily], one person at a time.
+     X1: 이름을 한 명씩 말씀해 주세요. | X2: 서류를 가져올게요. | decoy: at the door | chunks: ["We'll sort this out", 'safely', ', one person', 'at a time', '.']
+ ORDER:
+    1 I need everyone to separate so no one gets hurt. (10w)
+    2 That's why security is here: to keep everyone safe, including you. (11w)
+    3 With security here, I'm going to ask you to step back for now. (13w)
+    4 With that space, we'll sort this out safely, one person at a time. (13w)
+  SWAP12: That's why security is here: to keep everyone safe, including you. // I need everyone to separate so no one gets hurt. // With security here, I'm going to ask you to step back for now. // With that space, we'll sort this out safely, one person at a time.
+  SWAP23: I need everyone to separate so no one gets hurt. // With security here, I'm going to ask you to step back for now. // That's why security is here: to keep everyone safe, including you. // With that space, we'll sort this out safely, one person at a time.
+  SWAP34: I need everyone to separate so no one gets hurt. // That's why security is here: to keep everyone safe, including you. // With that space, we'll sort this out safely, one person at a time. // With security here, I'm going to ask you to step back for now.
+ CTX separate 분리하다 [(True, 'Can you take that group to the family room? We need them separated.', None), (True, 'I need everyone to separate so no one gets hurt.', None), (False, 'I need everyone to separate so no one gets hurt!', 'Two visitor groups in verbal altercation; separated with security assist, no injuries.')]
+
+## S18 진정제 투여 후 감시
+ [0] KO: 쉬시는 동안 계속 상태를 확인할게요.
+     B: I'm going to keep checking on you while you [walk].
+     B: I'm going to keep checking on you while you [stand].
+     B: I'm going to keep checking on you while you [rest].   <== ANS
+     B: I'm going to keep checking on you while you [eat].
+     X1: 손을 한 번 꼭 쥐어 보세요. | X2: 이름이 뭐예요? | decoy: from the door | chunks: ["I'm going", 'to keep checking', 'on you', 'while you rest', '.']
+ [1] KO: 잠깐 눈을 떠 주시겠어요?
+     B: Can you open your [bag] for me for a second?
+     B: Can you open your [door] for me for a second?
+     B: Can you open your [window] for me for a second?
+     B: Can you open your [eyes] for me for a second?   <== ANS
+     X1: 제 손을 한 번 꼭 쥐어 보세요. | X2: 이름이 뭐예요? | decoy: right now | chunks: ['Can you open', 'your eyes', 'for me', 'for a second', '?']
+ [2] KO: 천천히 깊게 숨 쉬세요, 제가 계속 지켜보고 있어요.
+     B: Take slow, deep [breaths] — I'm watching over you.   <== ANS
+     B: Take slow, deep [steps] — I'm watching over you.
+     B: Take slow, deep [notes] — I'm watching over you.
+     B: Take slow, deep [turns] — I'm watching over you.
+     X1: 지금 손가락에 센서를 끼울게요. | X2: 혈압을 한 번 더 잴게요. | decoy: after lunch | chunks: ['Take slow', ', deep breaths', "— I'm watching", 'over you', '.']
+ [3] KO: 지금 호흡이 좋아 보여요.
+     B: Your [watch] looks good right now.
+     B: Your [breathing] looks good right now.   <== ANS
+     B: Your [hair] looks good right now.
+     B: Your [shirt] looks good right now.
+     X1: 혈압을 재 볼게요. | X2: 눈을 떠 보시겠어요? | decoy: in the bed | chunks: ['Your breathing', 'looks good', 'right now', '.']
+ [4] KO: 필요한 게 있으면 바로 여기 있을게요.
+     B: I'll be right [downstairs] if you need anything.
+     B: I'll be right [outside] if you need anything.
+     B: I'll be right [here] if you need anything.   <== ANS
+     B: I'll be right [upstairs] if you need anything.
+     X1: 혈압을 한 번 더 잴게요. | X2: 침대 높이를 조절할게요. | decoy: at home | chunks: ["I'll be right here", 'if you need', 'anything', '.']
+ ORDER:
+    1 I'm going to keep checking on you while you rest. (10w)
+    2 That means watching your breathing, so take slow, deep breaths for me. (12w)
+    3 Your breathing looks good right now, and I'll keep watching it. (11w)
+    4 Whatever changes, I'll be right here if you need anything. (10w)
+  SWAP12: That means watching your breathing, so take slow, deep breaths for me. // I'm going to keep checking on you while you rest. // Your breathing looks good right now, and I'll keep watching it. // Whatever changes, I'll be right here if you need anything.
+  SWAP23: I'm going to keep checking on you while you rest. // Your breathing looks good right now, and I'll keep watching it. // That means watching your breathing, so take slow, deep breaths for me. // Whatever changes, I'll be right here if you need anything.
+  SWAP34: I'm going to keep checking on you while you rest. // That means watching your breathing, so take slow, deep breaths for me. // Whatever changes, I'll be right here if you need anything. // Your breathing looks good right now, and I'll keep watching it.
+ SWAP-KO 지금 호흡이 좋아 보여요. | ['Your breathing ', 'is within normal limits', ' right now.'] looks good
+
+## S19 자의 퇴원(AMA) 갈등 완화
+ [0] KO: 답답하신 거 들려요, 무슨 일이 있었는지 이해하도록 도와주세요.
+     B: I hear that you're [satisfied] — help me understand what happened.
+     B: I hear that you're [pleased] — help me understand what happened.
+     B: I hear that you're [relieved] — help me understand what happened.
+     B: I hear that you're [frustrated] — help me understand what happened.   <== ANS
+     X1: 지금 통증은 어떠세요? | X2: 물 한 잔 드릴까요? | decoy: at night | chunks: ['I hear', "that you're frustrated", '— help me', 'understand what happened', '.']
+ [1] KO: 여기 붙잡아 둘 수는 없지만, 위험이 뭔지는 아셨으면 해요.
+     B: I can't hold you here, but I want you to [know] what the risks are.   <== ANS
+     B: I can't hold you here, but I want you to [forget] what the risks are.
+     B: I can't hold you here, but I want you to [ignore] what the risks are.
+     B: I can't hold you here, but I want you to [doubt] what the risks are.
+     X1: 기다리는 시간을 확인해 볼게요. | X2: 담당 의사를 불러올게요. | decoy: at the door | chunks: ["I can't hold you", 'here', ', but I want', 'you to know', 'what the risks are', '.']
+ [2] KO: 남기로 결정하시면, 기다리는 시간을 최대한 짧게 해드릴게요.
+     B: If you decide to [shop], I'll make the wait as short as I can.
+     B: If you decide to [stay], I'll make the wait as short as I can.   <== ANS
+     B: If you decide to [leave], I'll make the wait as short as I can.
+     B: If you decide to [pay], I'll make the wait as short as I can.
+     X1: 서류에 서명해 주세요. | X2: 환자분 팔찌를 확인할게요. | decoy: at the desk | chunks: ['If you decide', 'to stay', ", I'll make", 'the wait', 'as short as I can', '.']
+ [3] KO: 저는 남아주셨으면 하지만, 그래도 결정은 당신 몫이에요.
+     B: I'd rather you stay, but it's still your [chart].
+     B: I'd rather you stay, but it's still your [name].
+     B: I'd rather you stay, but it's still your [choice].   <== ANS
+     B: I'd rather you stay, but it's still your [bill].
+     X1: 지금 통증은 어떠세요? | X2: 차트를 확인할게요. | decoy: at the door | chunks: ["I'd rather", 'you stay', ", but it's still", 'your choice', '.']
+ [4] KO: 위험을 한 번 더 설명해 드릴게요.
+     B: Let me explain the [colors] one more time.
+     B: Let me explain the [songs] one more time.
+     B: Let me explain the [jokes] one more time.
+     B: Let me explain the [risks] one more time.   <== ANS
+     X1: 지금 어디가 불편하세요? | X2: 차트에 적어 둘게요. | decoy: at the desk | chunks: ['Let me explain', 'the risks', 'one more time', '.']
+ ORDER:
+    1 I hear that you're frustrated — help me understand what happened. (11w)
+    2 Whatever happened, I can't hold you here, but I'd rather you stay — it's your choice. (16w)
+    3 To make that choice clear, let me explain the risks one more time. (13w)
+    4 If you stay after that, I'll make the wait as short as I can. (14w)
+  SWAP12: Whatever happened, I can't hold you here, but I'd rather you stay — it's your choice. // I hear that you're frustrated — help me understand what happened. // To make that choice clear, let me explain the risks one more time. // If you stay after that, I'll make the wait as short as I can.
+  SWAP23: I hear that you're frustrated — help me understand what happened. // To make that choice clear, let me explain the risks one more time. // Whatever happened, I can't hold you here, but I'd rather you stay — it's your choice. // If you stay after that, I'll make the wait as short as I can.
+  SWAP34: I hear that you're frustrated — help me understand what happened. // Whatever happened, I can't hold you here, but I'd rather you stay — it's your choice. // If you stay after that, I'll make the wait as short as I can. // To make that choice clear, let me explain the risks one more time.
+ SWAP-KO 여기 붙잡아 둘 수는 없지만, 위험이 뭔지는 아셨으면 해요. | ['', "You're not allowed to leave", ', but I want you to know what the risks are.'] I can't hold you here

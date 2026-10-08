@@ -1,0 +1,56 @@
+- title: 집단 폭력·다중 위협
+  s:
+  - {t: "분리 요청", i: shield, w: "I need everyone to로 한 사람을 지적하지 않고 모두에게 같은 요청을 해요. so no one gets hurt로 이유를 말하면 명령이 아니라 안전을 위한 부탁으로 들려요.", d: "in the hall", k: ["이쪽 의자에 앉아 주세요.", "물을 드릴게요."], a: "separate", o: ["gather", "merge", "cluster"]}
+  - {t: "순서 정하기", i: compass, w: "한꺼번에 말하면 더 격해지기 쉬워서 한 그룹씩 차례로 듣겠다고 해요. you first로 먼저 말할 사람을 정해 줘서 차례가 분명해져요.", d: "in the lobby", k: ["이쪽으로 오세요.", "이름을 알려 주세요."], a: "at a time", o: ["in a hurry", "in a crowd", "all together"]}
+  - {t: "보안 설명", i: siren, w: "보안 인력이 보이면 위협으로 느낄 수 있어서 처벌이 아니라 안전을 위해 왔다고 목적을 말로 알려요. including you로 환자와 보호자도 포함해요.", d: "right now", k: ["침대 번호를 확인할게요.", "가족분들은 이쪽으로 오세요."], a: "including", o: ["regarding", "following", "concerning"]}
+  - {t: "물러나기", i: shield, w: "I'm going to ask로 명령 대신 요청의 형태를 쓰고 for now로 잠시만이라는 단서를 붙여요. 서로 거리가 생기면 몸싸움 위험이 줄어요.", d: "in line", k: ["서류에 서명해 주세요.", "보호자 팔찌를 받아 가세요."], a: "back", o: ["forward", "closer", "in"]}
+  - {t: "순차 해결", i: handshake2, w: "one person at a time은 여러 사람이 한꺼번에 말하는 상황을 하나씩 풀겠다는 약속이에요. safely로 해결 방식의 기준을 안전에 둬요.", d: "at the door", k: ["이름을 한 명씩 말씀해 주세요.", "서류를 가져올게요."], a: "safely", o: ["loudly", "hastily", "angrily"]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 여러 사람이 얽힌 갈등 개입 4문장 순서
+    why: 떨어지라는 요청이 먼저, 그 이유로('That's why') 보안이 와 있음을 알리고, 보안이 있으니('With security here') 물러서 달라고 하고, 생긴 공간에서('With that space') 한 사람씩 해결해요.
+    lines:
+    - {en: "I need everyone to separate so no one gets hurt.", icon: shield, ko: "아무도 다치지 않도록 모두 떨어져 주세요", note: 분리}
+    - {en: "That's why security is here: to keep everyone safe, including you.", icon: siren, ko: "그래서 보안팀이 왔어요, 당신을 포함해 모두를 위해서예요", note: 보안}
+    - {en: "With security here, I'm going to ask you to step back for now.", icon: shield, ko: "보안팀이 있으니 잠시 뒤로 물러나 달라고 부탁드릴게요", note: 요청}
+    - {en: "With that space, we'll sort this out safely, one person at a time.", icon: handshake2, ko: "그렇게 생긴 공간에서 한 사람씩 안전하게 풀어 가요", note: 해결}
+  ctx:
+    word: separate
+    ko: 분리하다
+- title: 진정제 투여 후 감시
+  s:
+  - {t: "계속 확인", i: monitor, w: "진정제를 맞은 환자는 쉬는 동안에도 호흡과 의식을 계속 확인해야 해요. keep checking으로 쉬게 두고 방치하지 않는다고 알려요.", d: "from the door", k: ["손을 한 번 꼭 쥐어 보세요.", "이름이 뭐예요?"], a: "rest", o: ["eat", "walk", "stand"]}
+  - {t: "의식 확인", i: magnify, w: "눈을 떠 보라는 가장 간단한 요청이라 진정제 뒤 의식 수준과 반응을 바로 확인할 수 있어요. for me로 요청을 부드럽게 해요.", d: "right now", k: ["제 손을 한 번 꼭 쥐어 보세요.", "이름이 뭐예요?"], a: "eyes", o: ["bag", "door", "window"]}
+  - {t: "호흡 안내", i: stetho, w: "천천히 깊게 쉬라는 요청과 I'm watching over you로 계속 지켜보고 있다는 안심을 함께 줘요. 진정제 뒤에는 호흡 상태를 계속 지켜보는 것이 안전 감시의 핵심이에요.", d: "after lunch", k: ["지금 손가락에 센서를 끼울게요.", "혈압을 한 번 더 잴게요."], a: "breaths", o: ["steps", "notes", "turns"]}
+  - {t: "호흡 안심", i: stetho, w: "looks good은 지금 관찰한 사실만 말하는 안심이에요. 진정제 뒤에는 상태가 바뀔 수 있어서 right now로 현재 시점에 한정하고 앞으로도 괜찮다는 약속은 하지 않아요.", d: "in the bed", k: ["혈압을 재 볼게요.", "눈을 떠 보시겠어요?"], a: "breathing", o: ["hair", "shirt", "watch"]}
+  - {t: "곁에 있음", i: bell, w: "right here로 환자 곁에 있다고 알려서 쉬는 동안의 불안을 줄여요. if you need anything으로 도움이 필요하면 부르라는 문을 열어 줘요.", d: "at home", k: ["혈압을 한 번 더 잴게요.", "침대 높이를 조절할게요."], a: "here", o: ["upstairs", "downstairs", "outside"]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 진정제를 맞은 환자 감시 4문장 순서
+    why: 계속 확인하겠다는 말이 먼저, 그 확인의 일부로('That means') 호흡을 지켜보며 천천히 숨 쉬게 하고, 지켜본 호흡을 알리고('looks good'), 무엇이 달라지든('Whatever changes') 곁에 있다고 말해요.
+    lines:
+    - {en: "I'm going to keep checking on you while you rest.", icon: monitor, ko: "쉬시는 동안 계속 상태를 확인할게요", note: 확인}
+    - {en: "That means watching your breathing, so take slow, deep breaths for me.", icon: stetho, ko: "호흡을 지켜본다는 뜻이니 천천히 깊게 숨 쉬어 주세요", note: 호흡}
+    - {en: "Your breathing looks good right now, and I'll keep watching it.", icon: stetho, ko: "지금 호흡이 좋아 보여요, 계속 지켜볼게요", note: 관찰}
+    - {en: "Whatever changes, I'll be right here if you need anything.", icon: bell, ko: "무엇이 달라지든 필요하시면 바로 여기 있을게요", note: 곁}
+  sw: {ko: "지금 호흡이 좋아 보여요."}
+- title: 자의 퇴원(AMA) 갈등 완화
+  s:
+  - {t: "공감·경청", i: faceWorried, w: "I hear로 감정을 먼저 받고 help me understand로 환자가 이야기하게 해요. 떠나려는 이유를 알아야 풀 수 있는 문제인지 보이기 때문이에요.", d: "at night", k: ["지금 통증은 어떠세요?", "물 한 잔 드릴까요?"], a: "frustrated", o: ["satisfied", "pleased", "relieved"]}
+  - {t: "권리 인정", i: shield, w: "환자가 떠날 권리가 있다는 사실을 숨기지 않고 말하면서, 떠나기 전에 위험은 알려 주겠다고 해요. 판단 능력이 있는 환자를 억지로 붙잡을 수 없다는 원칙에 맞아요.", d: "at the door", k: ["기다리는 시간을 확인해 볼게요.", "담당 의사를 불러올게요."], a: "know", o: ["forget", "ignore", "doubt"]}
+  - {t: "남을 때 제안", i: calendar, w: "If you decide로 선택은 환자 몫임을 분명히 하면서 남으면 할 수 있는 일을 구체적으로 약속해요. as short as I can은 지킬 수 있는 만큼만 약속하는 표현이에요.", d: "at the desk", k: ["서류에 서명해 주세요.", "환자분 팔찌를 확인할게요."], a: "stay", o: ["leave", "pay", "shop"]}
+  - {t: "의사 존중", i: handshake2, w: "I'd rather로 남아 주길 바라는 내 마음을 솔직하게 말하고 it's still your choice로 결정권이 환자에게 있음을 되새겨요. 설득과 존중이 함께 가요.", d: "at the door", k: ["지금 통증은 어떠세요?", "차트를 확인할게요."], a: "choice", o: ["bill", "chart", "name"]}
+  - {t: "위험 재설명", i: board, w: "위험을 한 번 더 설명하는 것은 이해했는지 확인하는 기회예요. Let me로 허락을 구하는 형태라 강요처럼 들리지 않아요.", d: "at the desk", k: ["지금 어디가 불편하세요?", "차트에 적어 둘게요."], a: "risks", o: ["colors", "songs", "jokes"]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 퇴원하겠다는 환자 응대 4문장 순서
+    why: 무슨 일이 있었는지 듣는 것이 먼저, 어떤 일이었든('Whatever happened') 붙잡을 수 없지만 남아 주길 바란다고 말하고, 그 선택을 분명히 하려고('To make that choice clear') 위험을 설명하고, 설명 뒤 남기로 하면('after that') 할 일을 약속해요.
+    lines:
+    - {en: "I hear that you're frustrated — help me understand what happened.", icon: faceWorried, ko: "답답하신 거 들려요, 무슨 일이 있었는지 알려 주세요", note: 경청}
+    - {en: "Whatever happened, I can't hold you, but I'd rather you stay — it's your choice.", icon: shield, ko: "무슨 일이 있었든 붙잡을 수는 없지만 남아 주셨으면 하고, 결정은 당신 몫이에요", note: 존중}
+    - {en: "To make that choice clear, let me explain the risks one more time.", icon: board, ko: "그 선택이 분명하도록 위험을 한 번 더 설명할게요", note: 설명}
+    - {en: "If you stay after that, I'll make the wait as short as I can.", icon: calendar, ko: "그 뒤 남기로 하시면 기다림을 최대한 줄일게요", note: 약속}
+  sw: {ko: "여기 붙잡아 둘 수는 없지만, 위험이 뭔지는 아셨으면 해요."}
