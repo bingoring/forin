@@ -3554,7 +3554,7 @@ situations:
     - w-low
     goal: 2
     tag: 결과 안내
-    icon: chartup
+    icon: monitor
     why: a little로 수치를 부드럽게 전하면 환자가 놀라지 않아요. right now는 지금 이 순간의 값이라는 점을 짚어 줘요.
     decoy: all day
     distractorsKo:
@@ -3827,19 +3827,19 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 기립성 저혈압 문진 4문장 순서
-    why: 증상이 언제 나는지 먼저 묻고, 그 답을 받아 수분 섭취를, 이어서 측정 방법을 알리고, 숫자가 나온 뒤 교육으로 마칩니다. 'that'·'that answer'·'those numbers'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 증상이 언제 나는지 먼저 묻고, 그 증상이 시작된 뒤의 수분 섭취를 묻고, 물을 덜 마시면 그럴 수 있다며 측정 방법을 알리고, 숫자가 나온 뒤 교육으로 마칩니다. 'that started'·'do that'·'those numbers'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Do you feel dizzy only when you stand up?
       icon: me
       ko: 일어설 때만 어지러우세요?
       note: 증상
-    - en: When that happens, how much have you had to drink today?
+    - en: Since that started, how much have you been drinking each day?
       icon: coffee
-      ko: 그럴 때, 오늘 물은 얼마나 드셨어요?
+      ko: 그게 시작된 뒤로 하루에 물을 얼마나 드셨어요?
       note: 수분
-    - en: Based on that answer, I'll check your pressure lying down and then standing.
+    - en: Not drinking enough can do that, so I'll check your pressure lying down, then standing.
       icon: monitor
-      ko: 그 답을 바탕으로 누워서, 이어서 서서 혈압을 잴게요
+      ko: 물을 덜 드시면 그럴 수 있어서, 누워서 재고 이어서 서서 잴게요
       note: 측정
     - en: Once I have those numbers, I'll show you how to stand up slowly.
       icon: bulb
@@ -3895,8 +3895,8 @@ situations:
     why: will help …로 효과를 도움으로 말해 과한 약속을 피해요. 수액은 혈관 안의 부피를 채워 혈압을 올리는 쇼크의 기본 치료예요.
     decoy: back down
     distractorsKo:
-    - 이 수액은 통증을 줄여 줘요
-    - 이 수액은 열을 내려 줘요
+    - 수액은 한 시간쯤 들어가요
+    - 수액이 들어가는 동안 혈압을 자주 잴게요
     blank:
       answer: fluid
       options:
@@ -3951,7 +3951,7 @@ situations:
     goal: 1
     tag: 필요 설명
     icon: pill
-    why: if needed로 지금은 수액이지만 필요하면 약도 같은 길로 줄 수 있다고 알려요. 굵은 정맥로 하나로 수액과 약을 모두 빠르게 줄 수 있어요.
+    why: if needed로 지금은 수액이지만 필요하면 약도 같은 길로 줄 수 있다고 알려요. 그래서 굵은 정맥로 하나를 미리 잡아 두면 위급할 때 다시 바늘을 찌르지 않아도 돼요.
     decoy: by mouth
     distractorsKo:
     - 이 정맥로로 채혈도 할 거예요
@@ -4177,7 +4177,7 @@ situations:
     goal: 2
     tag: 경과 관찰
     icon: monitor
-    why: watch how much …로 마시는 양을 지켜본다고 하면 감시가 아니라 돌봄으로 들려요. 섭취량 기록은 수액 보충이 충분한지 판단하는 근거가 돼요.
+    why: watch how much …로 마시는 양을 우리가 챙긴다고 알려요. 섭취량 기록은 수액 보충이 충분한지 판단하는 근거가 돼요.
     decoy: from a bottle
     distractorsKo:
     - 화장실에 가실 때는 벨을 눌러 주세요
@@ -4225,8 +4225,8 @@ situations:
       ok: false
       fix: You've lost a lot of fluid from throwing up, so we'll give some back through your vein.
     why: volume-depleted, emesis는 의료진끼리의 말이에요. 환자에게는 '토해서 수분을 많이 잃었고 정맥으로 채워 준다'처럼 풀어서 말해요.
-    word: fluid
-    ko: 수액
+    word: volume-depleted
+    ko: 체액이 부족한
   order:
     tag: 대화 흐름
     icon: compass
@@ -4374,15 +4374,15 @@ situations:
     why: Let's …로 함께 하는 느낌을 주고 for any injury로 찾는 대상을 알려요. 넘어진 뒤에는 환자 본인이 모르는 멍이나 상처가 있을 수 있어서 직접 살펴봐요.
     decoy: on your own
     distractorsKo:
-    - 다친 곳을 사진으로 남길게요
+    - 어디가 제일 아프신지 짚어 주세요
     - 다친 곳에는 얼음을 대 드릴게요
     blank:
-      answer: injury
+      answer: arms
       options:
-      - en: injury
-      - en: rash
-      - en: infection
-      - en: allergy
+      - en: arms
+      - en: legs
+      - en: hips
+      - en: ribs
   nuance:
   - kind: slider
     words:
@@ -4421,7 +4421,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 실신 후 사정 4문장 순서
-    why: 전조를 묻고, 목격자를 확인하고, 다쳤는지 묻고, 다쳤다면 살펴본다고 이어요. 'Thanks for that'·'Whether or not anyone saw it'·'If you did'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 전조를 묻고, 목격자를 확인하고, 다쳤는지 묻고, 다치지 않았다고 해도 살펴본다고 이어요. 'Thanks for that'·'Whether or not anyone saw it'·'Even if you didn't'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Do you remember feeling anything before you fainted?
       icon: bulb
@@ -4435,9 +4435,9 @@ situations:
       icon: bandage
       ko: 본 사람이 있든 없든, 머리를 부딪히거나 다치셨나요?
       note: 외상
-    - en: If you did, let's check your head and arms for any injury.
+    - en: Even if you didn't, let's check your head and arms for any injury.
       icon: magnify
-      ko: 그랬다면 머리와 팔에 손상이 있는지 확인해 볼게요
+      ko: 안 다치셨더라도 머리와 팔에 다친 데가 있는지 볼게요
       note: 확인
 - title: 저혈량성 쇼크 출혈원 사정
   sentences:
@@ -4481,7 +4481,7 @@ situations:
     goal: 1
     tag: 복약 확인
     icon: pill
-    why: any를 붙이면 처방약과 약국에서 산 약을 모두 떠올리게 해요. 항응고제는 출혈을 오래 지속시킬 수 있어서 출혈 환자에게 가장 먼저 확인해요.
+    why: any로 종류를 가리지 않고 묻는 거예요. 항응고제는 출혈을 오래 끌 수 있어서 출혈 환자에게 꼭 확인해요.
     decoy: every day
     distractorsKo:
     - 평소에 드시는 혈압약이 있나요?
@@ -4562,14 +4562,14 @@ situations:
     tag: 준비 안내
     icon: lab
     why: in case you need it은 필요하다고 확정한 것이 아니라서 불안을 덜어요. 수혈용 혈액은 적합성 검사에 시간이 걸려서 필요해지기 전에 미리 준비해요.
-    decoy: to be safe
+    decoy: for your surgery
     distractorsKo:
     - 결과가 나오면 바로 수혈을 시작할게요
     - 수혈 동의서를 가져올게요
     blank:
       answer: draw
       options:
-      - en: send
+      - en: cancel
       - en: draw
       - en: order
       - en: review
@@ -4760,7 +4760,7 @@ situations:
     goal: 1
     tag: 증상 설명
     icon: faceWorried
-    why: can be an early sign으로 가능성만 말해 단정과 환자 탓을 피해요. 갑작스러운 혼란은 뇌로 가는 혈류가 줄거나 감염이 몸 전체로 퍼졌다는 신호일 수 있어요.
+    why: can be an early sign으로 가능성만 말해 단정을 피해요. 갑작스러운 혼란은 뇌로 가는 혈류가 줄거나 감염이 몸 전체로 퍼졌다는 신호일 수 있어요.
     decoy: of old age
     distractorsKo:
     - 혼란스러운 건 약 때문일 수 있어요
@@ -4771,7 +4771,7 @@ situations:
       - en: shaky
       - en: cold
       - en: confused
-      - en: drowsy
+      - en: thirsty
   nuance:
   - kind: slider
     words:
@@ -4812,7 +4812,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 패혈증 의심 설명 4문장 순서
-    why: 걱정을 전하고, 감염원을 묻고, 생각하는 동안 채취를 알리고, 채취가 끝나면 항생제와 수액을 시작한다고 이어요. 'it'·'that'·'those'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 걱정을 전하고, 감염원을 묻고, 생각하는 동안 수액을 시작하고 배양·젖산을 채취한다고 알리고, 배양이 끝나면 바로 항생제를 시작한다고 이어요. 'it'·'that'·'the cultures'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: You feel warm and your heart is racing — I'm concerned about infection.
       icon: faceWorried
@@ -4822,14 +4822,14 @@ situations:
       icon: magnify
       ko: 어디에서 시작됐다고 생각하세요?
       note: 감염원
-    - en: While you think about that, we're drawing blood cultures and lactate.
+    - en: While you think about that, we're starting fluids and drawing cultures and lactate.
       icon: lab
-      ko: 생각하시는 동안 혈액배양과 젖산을 채취할게요
+      ko: 생각하시는 동안 수액을 시작하고 배양·젖산을 채취할게요
       note: 채취
-    - en: Once those are drawn, we'll start antibiotics and fluids.
-      icon: bandage
-      ko: 채취가 끝나면 항생제와 수액을 시작할게요
-      note: 치료
+    - en: Once the cultures are drawn, we'll start antibiotics right away.
+      icon: pill
+      ko: 배양 채취가 끝나면 바로 항생제를 시작할게요
+      note: 항생제
 - title: 심인성 쇼크 감별
   sentences:
   - en: Does the chest heaviness spread to your arm or jaw?
@@ -5006,15 +5006,15 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 심인성 쇼크 감별 4문장 순서
-    why: 통증이 퍼지는지 묻고, 그렇다면 급하다고 알리며 심전도를 시작하고, 심전도가 도는 동안 호흡을 묻고, 답을 받아 청진으로 넘어가요. 'it does'·'the ECG'·'that helps'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 통증이 퍼지는지 묻고, 그런 압박감은 급하다고 알리며 심전도를 시작하고, 심전도가 도는 동안 호흡을 묻고, 답을 받아 청진으로 넘어가요. 'like that'·'the ECG'·'that helps'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Does the chest heaviness spread to your arm or jaw?
       icon: magnify
       ko: 가슴 압박감이 팔이나 턱으로 퍼지나요?
       note: 문진
-    - en: If it does, that needs urgent attention, so we're getting an ECG now.
+    - en: Pressure like that needs urgent attention, so we're getting an ECG now.
       icon: siren
-      ko: 그렇다면 긴급해서 지금 심전도를 찍을게요
+      ko: 그런 압박감은 급히 봐야 해서 지금 심전도를 찍을게요
       note: 검사
     - en: While the ECG runs, is it harder to breathe when you lie flat?
       icon: me
@@ -5206,9 +5206,9 @@ situations:
       icon: faceWorried
       ko: 목이나 혀가 조이는 느낌이 있으세요?
       note: 증상
-    - en: That could be a serious allergic reaction, so I'm giving you epinephrine in your thigh right now.
+    - en: That could be a serious reaction, so I'm giving epinephrine in your thigh now.
       icon: siren
-      ko: 심한 알레르기 반응일 수 있어서 지금 허벅지에 에피네프린을 놓을게요
+      ko: 심한 반응일 수 있어서 지금 허벅지에 에피네프린을 놓을게요
       note: 투약
     - en: While it works, I'll watch your airway closely.
       icon: monitor
@@ -5242,10 +5242,10 @@ situations:
     blank:
       answer: up
       options:
-      - en: back
-      - en: up
       - en: down
+      - en: up
       - en: 'off'
+      - en: out
   - en: We're watching your urine output as a good sign.
     ko: 소변량을 좋은 신호로 보고 지켜보고 있어요.
     chunks:
@@ -5291,7 +5291,7 @@ situations:
     why: If you don't improve로 조건을 앞에 두면 지금 상태가 나쁘다는 선언이 아니라 대비책임이 분명해져요. 수액에 반응하지 않으면 승압제 등 치료를 더하는 것이 쇼크의 단계적 접근이에요.
     decoy: by tonight
     distractorsKo:
-    - 호전되면 퇴원 준비를 할게요
+    - 호전되면 수액 속도를 줄일게요
     - 수액을 잠시 쉬고 지켜볼게요
     blank:
       answer: add
@@ -5422,23 +5422,23 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 수액 반응 평가 4문장 순서
-    why: 수액 뒤의 혈압을 전하고, 좋은 신호라며 재측정을 예고하고, 그때까지 소변량을 본다고 하고, 둘 다 호전이 없으면 치료를 더한다고 마무리해요. 'That'·'Until then'·'neither one'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 수액 뒤의 혈압을 전하고, 좋은 신호라며 재측정을 예고하고, 그때까지 소변량도 본다고 하고, 둘 다 더 나아지지 않으면 치료를 더한다고 마무리해요. 'That'·'Until then'·'neither'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: After the fluid, your pressure came up a little.
       icon: chartup
       ko: 수액 뒤에 혈압이 조금 올랐어요
       note: 결과
-    - en: That's a good sign. We'll recheck your blood pressure after the bolus.
+    - en: That's a good sign, so we'll recheck it in fifteen minutes.
       icon: stetho
-      ko: 좋은 신호예요. 볼루스 뒤에 혈압을 다시 잴게요
+      ko: 좋은 신호예요, 15분 뒤 다시 잴게요
       note: 재측정
-    - en: Until then, we're watching your urine output as another sign.
+    - en: Until then, we're also watching your urine output.
       icon: monitor
-      ko: 그때까지 소변량도 또 다른 신호로 보고 있어요
+      ko: 그때까지 소변량도 지켜볼게요
       note: 소변량
-    - en: If neither one improves, we'll add another treatment.
+    - en: If neither keeps improving, we'll add another treatment.
       icon: compass
-      ko: 둘 다 호전이 없으면 다른 치료를 더할게요
+      ko: 둘 다 더 나아지지 않으면 다른 치료를 더할게요
       note: 계획
 - title: 승압제 시작 전 설명
   sentences:
@@ -5570,7 +5570,7 @@ situations:
     goal: 1
     tag: 라인 설명
     icon: bandage
-    why: placed로 이미 넣었다고 과거형으로 말해 지금 보이는 라인이 무엇인지 알려요. 중심정맥관은 약이 큰 혈관으로 바로 들어가 빨리 퍼져요.
+    why: placed로 이미 넣었다고 과거형으로 말해 지금 보이는 라인이 무엇인지 알려요. 중심정맥관은 큰 혈관으로 바로 들어가 약이 새어 조직을 상하게 할 위험이 적고, 효과도 고르게 나요.
     decoy: while you slept
     distractorsKo:
     - 이 라인으로 피도 뽑을 수 있어요
@@ -5747,15 +5747,15 @@ situations:
     why: quietly로 겉으로 피가 안 보여도 혈압이 떨어질 수 있다는 점을 짚어요. 항응고제를 쓰면 몸속 출혈이 오래 모르게 진행될 수 있어요.
     decoy: from outside
     distractorsKo:
-    - 혈압이 낮으면 피가 묽다는 뜻이에요
-    - 항응고제를 오래 먹으면 혈압이 떨어져요
+    - 검사 결과가 나오면 바로 알려 드릴게요
+    - 배가 아프거나 불러 오면 바로 말씀해 주세요
     blank:
       answer: quietly
       options:
       - en: visibly
       - en: rarely
       - en: quietly
-      - en: loudly
+      - en: suddenly
   - en: Let's ask if you missed a dose or took extra medicine.
     ko: 약을 거르셨거나 추가로 더 드셨는지 여쭤볼게요.
     chunks:
@@ -5825,7 +5825,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 항응고제 복용 확인 4문장 순서
-    why: 약 이름과 마지막 복용 시각을 묻고, 그 뒤로 출혈 징후를 묻고, 해당되면 검사를 알린 뒤, 검사를 하는 이유를 설명해요. 'since then'·'those'·'That's because'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 약 이름과 마지막 복용 시각을 묻고, 그 뒤로 출혈 징후를 묻고, 징후가 없어도 검사를 알린 뒤, 검사를 하는 이유를 설명해요. 'since then'·'those'·'That's because'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Which blood thinner do you take, and when was your last dose?
       icon: pill
@@ -5835,9 +5835,9 @@ situations:
       icon: magnify
       ko: 고마워요. 그 뒤로 넘어지거나 멍이 들거나 검은 변을 보셨나요?
       note: 징후
-    - en: If any of those happened, we're checking your blood count and clotting right away.
+    - en: Even without any of those, we're checking your blood count and clotting now.
       icon: lab
-      ko: 그중 하나라도 있었다면 혈구 수와 응고 기능을 바로 확인할게요
+      ko: 그런 일이 없었더라도 혈구 수와 응고 기능은 지금 확인할게요
       note: 검사
     - en: That's because bleeding inside can quietly drop your blood pressure.
       icon: bulb
@@ -5867,9 +5867,9 @@ situations:
       answer: Bleeding
       options:
       - en: Bleeding
-      - en: Vomiting
       - en: Swelling
-      - en: Fever
+      - en: Bruising
+      - en: Rash
   - en: Pain here? Yes or no?
     ko: 여기가 아파요? 예, 아니오?
     chunks:
@@ -5883,9 +5883,9 @@ situations:
     tag: 핵심 확인
     icon: faceWorried
     why: here를 가리키며 묻는 짧은 말은 번역이 필요 없어요. 쇼크 환자가 말하기 힘들 때 예·아니오 질문만으로 증상을 좁혀 갈 수 있어요.
-    decoy: Hurts a lot
+    decoy: Can you walk
     distractorsKo:
-    - 여기를 눌러도 아파요?
+    - 물 마실 수 있어요? 예, 아니오?
     - 어제부터 아팠어요?
     blank:
       answer: Pain
@@ -5942,9 +5942,9 @@ situations:
     blank:
       answer: once
       options:
-      - en: again
-      - en: always
-      - en: never
+      - en: three times
+      - en: hard
+      - en: gently
       - en: once
   - en: We'll get the interpreter here as soon as possible.
     ko: 최대한 빨리 통역사를 모셔올게요.
@@ -5967,12 +5967,12 @@ situations:
     - 통역사는 전화로 연결할게요
     - 통역사가 오면 가족분도 같이 들어와요
     blank:
-      answer: possible
+      answer: interpreter
       options:
-      - en: possible
-      - en: necessary
-      - en: likely
-      - en: helpful
+      - en: interpreter
+      - en: doctor
+      - en: pharmacist
+      - en: chaplain
   nuance:
   - kind: slider
     words:
@@ -6051,7 +6051,7 @@ situations:
     why: Can we …?로 함께 하자고 청하면 약 점검이 추궁이 아니라 협력이 돼요. all을 붙여 처방약·상비약·영양제까지 포함하자고 알려요.
     decoy: by yourself
     distractorsKo:
-    - 약은 약사에게 맡기셔도 돼요
+    - 드시는 약 목록을 가지고 오셨어요?
     - 오늘 드신 음식을 말씀해 주시겠어요?
     blank:
       answer: today
@@ -6227,9 +6227,9 @@ situations:
       icon: magnify
       ko: 그 약병 속 약을 더 드신 적이 있으세요?
       note: 과량
-    - en: If so, too many pills at once can make you feel very dizzy.
+    - en: If so, that could explain why you feel so dizzy.
       icon: bulb
-      ko: 그렇다면 한꺼번에 많이 드시면 많이 어지러울 수 있어요
+      ko: 그렇다면 그래서 많이 어지러우신 걸 수 있어요
       note: 설명
 - title: 원인 미상 저혈압 계통 접근
   sentences:
@@ -6276,7 +6276,7 @@ situations:
     goal: 1
     tag: 증상 나열
     icon: magnify
-    why: 증상 이름만 나열하는 짧은 문진이에요. 열은 감염, 출혈, 가슴 통증은 심장, 새 약은 약물 반응으로 저혈압의 서로 다른 원인을 한 번에 훑어요.
+    why: 증상 이름만 나열하는 짧은 문진이에요. 열은 감염, 출혈은 혈액 손실, 가슴 통증은 심장, 새 약은 약물 반응 — 저혈압의 서로 다른 원인을 한 번에 훑어요.
     decoy: last week
     distractorsKo:
     - 기침이나 가래가 있으세요?
@@ -6359,7 +6359,7 @@ situations:
     goal: 2
     tag: 계획 안내
     icon: compass
-    why: first, then으로 순서를 말해 영상 검사가 바로 필요한 것은 아니라는 점을 알려요. 피검사 결과에 따라 영상 여부를 정해 불필요한 검사를 줄여요.
+    why: first, then으로 다음 단계를 알려 환자가 기다리는 이유를 알게 해요. 영상 검사는 결과를 보고 의사가 정해요.
     decoy: after lunch
     distractorsKo:
     - 영상 검사는 오늘 예약해 둘게요
@@ -6411,7 +6411,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 원인 미상 저혈압 접근 4문장 순서
-    why: 마지막으로 괜찮았던 때부터 묻고, 그 뒤의 증상을 훑고, 들은 내용을 근거로 검사를 진행하고, 결과가 나오면 영상 여부를 정한다고 이어요. 'Since then'·'what you've told me'·'those results'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 마지막으로 괜찮았던 때부터 묻고, 그 뒤의 증상을 훑고, 그걸 가려내려고 검사를 진행하고, 결과가 나오면 영상 여부를 정한다고 이어요. 'Since then'·'all of that'·'those results'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Let's start from the beginning — when did you last feel well?
       icon: compass
@@ -6421,9 +6421,9 @@ situations:
       icon: magnify
       ko: 그 뒤로 열, 출혈, 가슴 통증, 새 약이 있었나요?
       note: 증상
-    - en: Based on what you've told me, we're running labs and an ECG to find the cause.
+    - en: To sort all of that out, we're running labs and an ECG.
       icon: lab
-      ko: 말씀 주신 걸 토대로 원인을 찾으려고 검사와 심전도를 할게요
+      ko: 그걸 가려내려고 피검사와 심전도를 할게요
       note: 검사
     - en: Once those results are back, we'll decide on imaging.
       icon: compass
@@ -6472,18 +6472,18 @@ situations:
     goal: 2
     tag: 항생제 지시
     icon: pill
-    why: within the hour로 시간 제한을 말해요. 패혈증성 쇼크에서는 항생제를 가능한 한 빨리 늦어도 한 시간 안에 시작하는 것이 번들의 핵심이에요.
+    why: within the hour로 시간 제한을 말해요. 패혈증성 쇼크에서는 항생제를 가능한 한 빨리, 이상적으로는 한 시간 안에 시작하는 것이 번들의 핵심이에요.
     decoy: by tomorrow
     distractorsKo:
     - 항생제를 약국에 요청하세요
     - 항생제 알레르기를 차트에서 확인하세요
     blank:
-      answer: hour
+      answer: broad-spectrum
       options:
-      - en: hour
-      - en: day
-      - en: shift
-      - en: week
+      - en: broad-spectrum
+      - en: narrow-spectrum
+      - en: oral
+      - en: topical
   - en: Recheck the lactate and keep the MAP above 65.
     ko: 젖산을 재확인하고 평균동맥압을 65 이상으로 유지하세요.
     chunks:
@@ -6531,7 +6531,7 @@ situations:
     why: get … moving은 일이 막혀 있으니 속도를 내자는 구어체예요. 항생제는 약국 조제와 전달에 시간이 걸려서 먼저 연락해 병목을 줄여요.
     decoy: for the doctor
     distractorsKo:
-    - 약국에 항생제를 반납하세요
+    - 약국에 신장 수치를 알려 주세요
     - 약국에서 용량을 확인받으세요
     blank:
       answer: pharmacy
@@ -6558,15 +6558,15 @@ situations:
     why: Keep …ing는 계속 반복하라는 지시이고 every few minutes로 간격을 줘요. 승압제를 쓰는 동안 혈압은 짧은 간격으로 또는 동맥관으로 연속 확인해요.
     decoy: once a shift
     distractorsKo:
-    - 그녀의 체온을 계속 확인하세요
-    - 그녀의 소변량을 비우세요
+    - 소변 주머니를 비우고 양을 적어 주세요
+    - 체온을 한 시간마다 재 주세요
     blank:
-      answer: minutes
+      answer: blood pressure
       options:
-      - en: hours
-      - en: days
-      - en: shifts
-      - en: minutes
+      - en: temperature
+      - en: blood sugar
+      - en: urine output
+      - en: blood pressure
   nuance:
   - kind: slider
     words:
@@ -6609,7 +6609,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 패혈증 번들 지시 4문장 순서
-    why: 승압제를 시작하라고 지시하고, 그것이 돌아가면 젖산과 목표 혈압을 확인하게 하고, 그동안 약국에 연락하고, 항생제가 들어가면 혈압 확인을 이어 가게 해요. 'it'·'that'·'the antibiotics'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 승압제를 시작하라고 지시하고, 그것이 돌아가면 젖산과 목표 혈압을 확인하게 하고, 젖산을 다시 보는 동안 약국에 연락해 항생제를 서두르고, 승압제와 항생제가 들어가는 동안 혈압 확인을 이어 가게 해요. 'it'·'it(젖산)'·'both'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Fluids aren't holding — start norepinephrine now.
       icon: siren
@@ -6619,13 +6619,13 @@ situations:
       icon: chartup
       ko: 들어가기 시작하면 젖산을 재확인하고 MAP을 65 이상으로 유지하세요
       note: 목표
-    - en: While you do that, I'll call the pharmacy and get antibiotics moving.
+    - en: While you recheck it, I'll call the pharmacy and get antibiotics moving.
       icon: speech
-      ko: 그동안 저는 약국에 연락해서 항생제를 준비시킬게요
+      ko: 그걸 다시 확인하는 동안 저는 약국에 연락해서 항생제를 준비시킬게요
       note: 항생제
-    - en: Once the antibiotics are in, keep checking her blood pressure every few minutes.
+    - en: While both are going in, keep checking her blood pressure every few minutes.
       icon: monitor
-      ko: 항생제가 들어가면 몇 분마다 혈압을 계속 확인하세요
+      ko: 둘 다 들어가는 동안 몇 분마다 혈압을 계속 확인하세요
       note: 감시
 - title: 폐색전 폐쇄성 쇼크
   sentences:
@@ -6735,8 +6735,8 @@ situations:
     why: Watch … closely right now로 지금 놓치지 말라고 강조해요. 폐색전 환자는 산소포화도와 혈압이 순식간에 나빠질 수 있어서 두 수치를 함께 지켜봐요.
     decoy: on the chart
     distractorsKo:
-    - 그의 체온과 맥박을 기록하세요
-    - 그의 소변량을 비우세요
+    - 산소를 더 올려 주세요
+    - 보호자에게 상황을 알려 주세요
     blank:
       answer: closely
       options:
@@ -6763,7 +6763,7 @@ situations:
     decoy: tonight
     distractorsKo:
     - 의사에게 알리고 검사 결과를 기다리세요
-    - 팀에 연락하고 환자를 안정시키세요
+    - 약국에 혈전용해제 용량을 물어보세요
     blank:
       answer: possible
       options:
@@ -6838,15 +6838,15 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 대량 폐색전 대응 4문장 순서
-    why: 의심을 말하고, 그것이 맞는지 보려고 초음파를 가져오게 하고, 결과와 상관없이 팀을 부르며 혈전용해에 대비하고, 팀이 올 때까지 감시를 맡겨요. 'that's right'·'the echo'·'they'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 의심을 말하고, 그것을 확인하려고 초음파를 가져오게 하고, 결과와 상관없이 팀을 부르며 혈전용해에 대비하고, 팀이 올 때까지 감시를 맡겨요. 'To check that'·'the echo'·'they'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: The swollen leg and crash suggest a massive PE.
       icon: siren
       ko: 다리 부종과 급격한 악화는 대량 폐색전이 의심돼요
       note: 의심
-    - en: If that's right, get a bedside echo to look at the right heart.
+    - en: To check that, get a bedside echo to look at the right heart.
       icon: monitor
-      ko: 맞다면 우심장을 볼 침상 초음파를 준비하세요
+      ko: 그걸 확인하려면 침상 초음파로 우심장을 보세요
       note: 초음파
     - en: Whatever the echo shows, call the team and prepare for possible thrombolytics.
       icon: speech
@@ -6910,7 +6910,7 @@ situations:
     decoy: for the scan
     distractorsKo:
     - 엑스레이를 가져오고 흉관 키트를 요청하세요
-    - 초음파를 끄고 환자를 눕히세요
+    - 심장내과에 연락하고 수액을 올리세요
     blank:
       answer: ultrasound
       options:
@@ -6938,8 +6938,8 @@ situations:
     why: while로 동시에 하는 일을 묶어요. 심장압전에서는 배액 전까지 수액으로 심장 충만압을 높여 혈압을 잠시 받쳐요.
     decoy: after the drain
     distractorsKo:
-    - 혈압을 재면서 배액을 준비하세요
-    - 환자를 눕히면서 배액을 준비하세요
+    - 심낭천자 동의서를 받아 주세요
+    - 승압제를 준비해 주세요
     blank:
       answer: while
       options:
@@ -6968,8 +6968,8 @@ situations:
     why: look big처럼 보이는 그대로 말하는 관찰 보고예요. 목 정맥 팽창과 둔탁한 심음은 심낭에 액체가 차 심장이 눌리고 있다는 단서예요.
     decoy: from the side
     distractorsKo:
-    - 그녀의 목에 멍이 들었고 숨소리가 약해요
-    - 그녀의 맥이 빠르고 팔다리가 차요
+    - 목에 멍이 들었고 숨소리가 약해요
+    - 맥이 빠르고 팔다리가 차요
     blank:
       answer: veins
       options:
@@ -7046,7 +7046,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 심장압전 대응 4문장 순서
-    why: 소견을 보고하고, 그 소견을 근거로 초음파와 키트를 부르고, 초음파로 확인되면 배액 준비를 지시하고, 그 배액을 준비하는 동안 수액을 줍니다. 'those findings'·'it'·'the drain'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 소견을 보고하고, 그 소견을 근거로 초음파와 키트를 부르고, 초음파로 확인되면 배액 준비를 지시하고, 그 배액을 준비하는 동안 수액을 줍니다. 'those findings'·'it'·'that drain'이 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Her neck veins look big and her heart tones are muffled.
       icon: magnify
@@ -7056,13 +7056,13 @@ situations:
       icon: monitor
       ko: 그 소견이면 초음파를 가져오고 심낭천자 키트를 요청하세요
       note: 장비
-    - en: If it confirms tamponade, get the kit ready — we may need to drain this now.
+    - en: If it confirms tamponade, get the kit ready — we may need to drain now.
       icon: siren
       ko: 그게 심장압전이면 키트를 준비하세요 — 지금 배액해야 할 수 있어요
       note: 준비
-    - en: Give a fluid bolus while we prepare the drain.
+    - en: While we prepare that drain, give a fluid bolus.
       icon: bandage
-      ko: 배액을 준비하는 동안 수액 볼루스를 주세요
+      ko: 그 배액을 준비하는 동안 수액 볼루스를 주세요
       note: 수액
 - title: 소화관 대량출혈 쇼크
   sentences:
@@ -7109,18 +7109,18 @@ situations:
     goal: 1
     tag: 접근 확보
     icon: bandage
-    why: 명사구와 지시를 짧게 이어 급박한 상황의 말투를 보여 줘요. 혈액형을 확인하기 전에는 O형 음성 혈액을 쓰고 굵은 정맥로 두 개로 빠르게 넣어요.
+    why: 명사구와 지시를 짧게 이어 급박한 말투를 보여 줘요. 혈액형을 확인하기 전에는 교차시험 없이 O형 혈액을 쓰고(가임기 여성은 O형 음성), 굵은 정맥로 두 개로 빠르게 넣어요.
     decoy: in the hall
     distractorsKo:
-    - 정맥로는 하나만 잡고 천천히 주세요
-    - 정맥로 두 개를 잡고 채혈하세요
+    - 혈액 가온기를 연결하세요
+    - 칼슘을 준비해 두세요
     blank:
-      answer: blood
+      answer: O-negative
       options:
-      - en: saline
-      - en: oxygen
-      - en: plasma
-      - en: blood
+      - en: AB-positive
+      - en: A-negative
+      - en: B-positive
+      - en: O-negative
   - en: Call GI for emergent endoscopy.
     ko: 응급 내시경을 위해 소화기내과에 연락하세요.
     chunks:
@@ -7167,8 +7167,8 @@ situations:
     why: 관찰한 모습을 그대로 말하는 보고예요. 토혈과 창백함은 출혈량이 많다는 눈에 보이는 단서라 수치를 확인하기 전에도 위급도를 짐작할 수 있어요.
     decoy: since noon
     distractorsKo:
-    - 그는 피를 토하고 열이 많이 나요
-    - 그는 구토를 하고 얼굴이 붉어요
+    - 혈압이 80까지 떨어졌어요
+    - 구토를 하고 얼굴이 붉어요
     blank:
       answer: pale
       options:
@@ -7196,15 +7196,15 @@ situations:
     why: Keep …running은 지금 있는 것을 끊지 말라는 지시예요. 대량 출혈에서는 굵은 정맥로 두 개가 있어야 수혈과 수액이 끊기지 않고 들어가요.
     decoy: for the lab
     distractorsKo:
-    - 정맥로를 하나 빼서 채혈하세요
-    - 정맥로를 소독하고 닫아 두세요
+    - 혈액이 오면 두 사람이 확인하세요
+    - 혈압을 5분마다 알려 주세요
     blank:
       answer: running
       options:
-      - en: flushed
       - en: labeled
-      - en: running
       - en: clamped
+      - en: running
+      - en: paused
   nuance:
   - kind: slider
     words:
@@ -7245,7 +7245,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 대량 위장관 출혈 대응 4문장 순서
-    why: 상태를 보고하고, 그 상태를 근거로 프로토콜을 가동하고, 그 혈액을 받을 정맥로를 유지하고, 라인이 돌아가면 내시경을 요청합니다. 'Given that'·'receive it'·'those lines'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 상태를 보고하고, 그 상태를 근거로 프로토콜을 가동하고, 그 혈액을 받을 정맥로를 유지하고, 라인이 도는 동안 내시경을 요청합니다. 'Given that'·'receive it'·'those lines'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: He's vomiting blood and looks very pale and weak.
       icon: faceWorried
@@ -7259,9 +7259,9 @@ situations:
       icon: bandage
       ko: 그걸 받으려면 굵은 정맥로 두 개를 유지하세요
       note: 정맥로
-    - en: Once those lines are going, call GI for emergent endoscopy.
+    - en: While those lines run, call GI for emergent endoscopy.
       icon: speech
-      ko: 그 라인들이 돌아가면 응급 내시경을 위해 소화기내과에 연락하세요
+      ko: 그 라인들이 도는 동안 응급 내시경을 위해 소화기내과에 연락하세요
       note: 협진
 - title: 신경성 쇼크 척수손상
   sentences:
@@ -7346,7 +7346,7 @@ situations:
     decoy: and a steroid
     distractorsKo:
     - 수액을 멈추고 승압제만 쓰세요
-    - 수액과 함께 이뇨제를 고려하세요
+    - 수액과 함께 혈액도 준비하세요
     blank:
       answer: atropine
       options:
@@ -7377,8 +7377,8 @@ situations:
     why: suggest로 단정하지 않고 시사한다고 말해요. 척수 손상 환자에서 저혈압과 서맥이 함께 오면 교감신경이 끊긴 신경성 쇼크를 의심하되 출혈도 같이 배제해요.
     decoy: his fast breathing
     distractorsKo:
-    - 그의 빠른 맥박과 낮은 혈압은 출혈 쇼크를 시사해요
-    - 그의 열과 낮은 혈압은 패혈증 쇼크를 시사해요
+    - 빠른 맥박과 낮은 혈압은 출혈 쇼크를 시사해요
+    - 열과 낮은 혈압은 패혈증 쇼크를 시사해요
     blank:
       answer: neurogenic
       options:
@@ -7405,8 +7405,8 @@ situations:
     why: if fluids don't fix로 조건을 앞서 말해 승압제가 둘째 단계임을 알려요. 신경성 쇼크도 먼저 수액을 쓰고, 수액만으로 혈압이 안 오르면 승압제를 더해요.
     decoy: after the scan
     distractorsKo:
-    - 수액으로 혈압이 오르면 승압제를 끊을게요
-    - 혈압이 오르면 수액을 더 빨리 줄게요
+    - 맥박이 더 느려지면 아트로핀을 줄게요
+    - 목은 계속 움직이지 않게 할게요
     blank:
       answer: pressor
       options:
@@ -7526,8 +7526,8 @@ situations:
     why: 과거형 dropped와 현재진행 is climbing을 맞춰 써서 이미 일어난 변화와 지금 진행 중인 변화를 구분해요. 소변량 감소와 젖산 상승은 장기 관류가 나빠지고 있다는 신호예요.
     decoy: stayed flat
     distractorsKo:
-    - 그녀의 체온이 올랐고 호흡수는 느려졌어요
-    - 그녀의 혈당이 떨어지고 칼륨이 올라가고 있어요
+    - 체온이 올랐고 호흡수는 느려졌어요
+    - 혈당이 떨어지고 칼륨이 올라가고 있어요
     blank:
       answer: climbing
       options:
@@ -7552,10 +7552,10 @@ situations:
     goal: 2
     tag: 권고
     icon: hospital
-    why: I recommend …는 SBAR의 R(권고)로 요청을 분명히 말하는 틀이에요. 승압제가 둘 필요한 환자는 중환자실 수준의 감시와 중심 라인이 필요해 입실을 권해요.
+    why: I recommend …는 SBAR의 R(권고)로 요청을 분명히 말하는 틀이에요. 승압제를 둘이나 쓰는 환자는 중환자실 수준의 집중 감시가 필요해 입실을 권해요.
     decoy: a short stay
     distractorsKo:
-    - 퇴원을 권고합니다
+    - 승압제 용량을 더 올리기를 권합니다
     - 일반 병동 입원을 권고합니다
     blank:
       answer: ICU
@@ -7579,7 +7579,7 @@ situations:
     goal: 1
     tag: 평가
     icon: chartup
-    why: despite로 치료 중에도 나빠진다는 대비를 한 문장에 담아요. 승압제를 두 개 쓰는데도 혈압이 떨어지는 것은 쇼크가 매우 심하다는 가장 강한 근거예요.
+    why: despite로 치료 중에도 나빠진다는 대비를 한 문장에 담아요. 승압제를 두 개 쓰는데도 혈압이 떨어지는 것은 쇼크가 매우 심하다는 분명한 신호예요.
     decoy: thanks to fluids
     distractorsKo:
     - 두 승압제를 쓰기 시작한 지 한 시간 됐어요
@@ -7611,7 +7611,7 @@ situations:
     why: I think she needs …로 권고를 단정하지 않고 완곡하게 말해요. 보고받는 사람에게 결정할 여지를 두면서도 필요한 것을 분명히 전해요.
     decoy: at home
     distractorsKo:
-    - 제 생각엔 그녀가 퇴원해도 될 것 같아요
+    - 제 생각엔 승압제를 하나 더 써야 할 것 같아요
     - 제 생각엔 그녀가 수술이 필요해 보여요
     blank:
       answer: needs
@@ -7657,10 +7657,10 @@ situations:
     word: hypotensive
     ko: 저혈압인
   order:
-    tag: SBAR
+    tag: 보고 흐름
     icon: compass
     ko: ICU 이송 SBAR 4문장 순서
-    why: 상황을 말하고, 그 치료 뒤의 변화를 보고하고, 그 악화 때문에 승압제를 더했는데도 혈압이 떨어진다고 평가한 뒤, 권고로 마칩니다. 'that'·'Because of that'·'the second pressor'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 상황을 말하고, 그 치료 뒤의 변화를 보고하고, 그 변화 때문에 승압제를 더했는데도 혈압이 떨어진다고 평가한 뒤, 권고로 마칩니다. 'that'·'those changes'·'the second pressor'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: 'Situation: septic shock on norepinephrine, still hypotensive.'
       icon: board
@@ -7670,9 +7670,9 @@ situations:
       icon: chartup
       ko: 그걸 시작한 뒤 소변량이 줄고 젖산이 올라가고 있어요
       note: 경과
-    - en: Because of that, we added a second pressor, but her pressure keeps dropping.
+    - en: Because of those changes, we added a second pressor, but her pressure keeps dropping.
       icon: monitor
-      ko: 그래서 승압제를 하나 더했는데도 혈압이 계속 떨어져요
+      ko: 그 변화들 때문에 승압제를 하나 더했는데도 혈압이 계속 떨어져요
       note: 평가
     - en: Given the second pressor, I recommend ICU admission and central monitoring now.
       icon: hospital
@@ -7752,7 +7752,7 @@ situations:
     why: right away로 바로 시작한다고 알려요. 부신위기에는 하이드로코르티손과 수액을 늦추지 않고 줘서 모자란 코르티솔과 수분을 채워요.
     decoy: after the test
     distractorsKo:
-    - 스테로이드를 끊고 수액만 드릴게요
+    - 혈당을 먼저 재 볼게요
     - 진통제와 수액을 드릴게요
     blank:
       answer: hydrocortisone
@@ -7780,12 +7780,12 @@ situations:
     - 스테로이드는 아침에 한 번만 드세요
     - 스테로이드는 우유와 함께 드세요
     blank:
-      answer: suddenly
+      answer: plan
       options:
-      - en: suddenly
-      - en: quietly
-      - en: partly
-      - en: twice
+      - en: plan
+      - en: reason
+      - en: refill
+      - en: warning
   - en: We'll give hydrocortisone now to help prevent a crisis.
     ko: 위기를 막기 위해 지금 하이드로코르티손을 드릴게요.
     chunks:
@@ -7805,8 +7805,8 @@ situations:
     why: to help prevent로 약의 목적을 알려요. 몸이 아플 때는 코르티솔 필요량이 늘어서 미리 채워 부신위기를 막아요.
     decoy: after the lab
     distractorsKo:
-    - 위기가 오면 하이드로코르티손을 드릴게요
-    - 위기를 막기 위해 수액을 줄일게요
+    - 혈압을 15분마다 잴게요
+    - 가족분께 연락드릴게요
     blank:
       answer: crisis
       options:
@@ -7867,7 +7867,7 @@ situations:
       icon: pill
       ko: 그걸 막으려고 하이드로코르티손과 수액을 바로 드릴게요
       note: 치료
-    - en: When the hydrocortisone has done its job, remember that steroids can't just stop suddenly without a plan.
+    - en: 'After the hydrocortisone works, remember: don''t stop steroids suddenly without a plan.'
       icon: bulb
-      ko: 하이드로코르티손이 효과를 내면, 스테로이드는 계획 없이 갑자기 끊으면 안 된다는 걸 기억하세요
+      ko: '하이드로코르티손이 효과를 내면 기억하세요: 스테로이드를 계획 없이 갑자기 끊지 마세요'
       note: 교육
