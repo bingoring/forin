@@ -1,0 +1,114 @@
+- title: 폐좌상 지연성 악화
+  s:
+  - {t: "수치 변화", i: monitor, w: "has dropped와 since you arrived로 도착한 뒤 달라졌다는 점을 짚어요. 폐 좌상은 시간이 지나며 산소 수치가 서서히 떨어질 수 있어 추이를 비교해요.", d: "in an hour", k: ["산소 수치를 매시간 확인할게요", "숨이 차신 지 얼마나 되셨어요?"], a: "arrived", o: ["slept", "walked", "ate"]}
+  - {t: "경과 예고", i: bulb, w: "can get worse over …로 지금보다 나빠질 수 있다는 가능성과 기간을 함께 알려요. 폐 좌상은 처음엔 가벼워 보여도 몇 시간 사이 부종이 늘어 나빠질 수 있어 관찰이 필요해요.", d: "in your sleep", k: ["폐 사진을 다시 찍을 수 있어요", "그동안 침대에서 쉬고 계세요"], a: "bruised", o: ["healed", "tiny", "dry"]}
+  - {t: "호흡 비교", i: faceWorried, w: "compared to earlier로 아까와 비교해서 답하게 해요. 환자가 느끼는 호흡곤란의 변화는 수치만으로 놓치기 쉬운 악화의 단서예요.", d: "at rest", k: ["지금 숨이 얼마나 차세요?", "기침이 나오나요?"], a: "earlier", o: ["tomorrow", "later", "tonight"]}
+  - {t: "산소 치료", i: hospital, w: "and로 치료(산소)와 감시를 함께 말해 환자가 앞으로 무슨 일이 있을지 알게 해요. 산소는 처방이나 프로토콜에 따라 주고 반응을 보며 조절해요.", d: "by yourself", k: ["가슴 사진을 한 장 더 찍을게요", "베개로 머리를 높여 드릴게요"], a: "closely", o: ["rarely", "privately", "quietly"]}
+  - {t: "마스크 안내", i: hospital, w: "to help you …로 마스크의 목적을 먼저 알려 답답해하는 환자의 거부감을 줄여요. 산소 마스크는 코와 입을 덮어 산소를 코로만 마실 때보다 더 높은 농도로 줄 수 있어요.", d: "on your arm", k: ["이 마스크가 답답하면 말씀해 주세요", "마스크는 고무줄로 머리에 걸어 드릴게요"], a: "mask", o: ["cuff", "bracelet", "bandage"]}
+  - {t: "재확인 약속", i: redo, w: "in a few minutes로 언제 다시 보는지 알려 줘요. 산소를 준 뒤 수치가 올랐는지 아니면 계속 내려가는지 확인해야 해요.", d: "on the monitor", k: ["필요하면 동맥혈 가스 검사를 할게요", "의사 선생님께 지금 수치를 말씀드릴게요"], a: "recheck", o: ["skip", "cancel", "forget"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "폐좌상 악화 대응 4문장 순서"
+    why: "수치가 떨어졌다고 알리고, 그런 일이 폐 좌상에서 흔하다고 설명한 뒤, 더 나빠지지 않게 마스크를 씌우고, 씌운 뒤 다시 확인한다고 해요. 'That'·'it'·'the mask'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Your oxygen level has dropped since you arrived.", icon: monitor, ko: "도착하신 뒤로 산소 수치가 떨어졌어요", note: "수치"}
+    - {en: "That's common with a bruised lung, and it can get worse over the next few hours.", icon: bulb, ko: "폐 좌상에서는 흔한 일이고 앞으로 몇 시간 동안 더 나빠질 수 있어요", note: "설명"}
+    - {en: "To keep it from getting worse, I'm putting this mask on you.", icon: hospital, ko: "더 나빠지지 않도록 이 마스크를 씌워 드릴게요", note: "마스크"}
+    - {en: "Once the mask is on, I'll recheck your oxygen level in a few minutes.", icon: redo, ko: "마스크를 쓰시면 몇 분 뒤에 산소 수치를 다시 확인할게요", note: "재확인"}
+  ctx: {word: "contusion", ko: "좌상"}
+- title: 비장손상 의심 좌상복부
+  s:
+  - {t: "연관통 문진", i: faceWorried, w: "spread up to …로 통증이 퍼지는 방향을 짚어 물어요. 왼쪽 윗배의 손상이 어깨 통증으로 느껴지는 일이 있어 의사에게 전할 중요한 단서예요.", d: "from your back", k: ["통증이 숨 쉴 때 더 심해지나요?", "통증이 가슴 쪽으로도 느껴지나요?"], a: "shoulder", o: ["ankle", "wrist", "knee"]}
+  - {t: "촉진 안내", i: magnify, w: "I'm pressing처럼 지금 하는 행동을 말하고 tell me if로 반응을 부탁해요. 왼쪽 윗배에는 비장이 있어 외상 뒤 누르면 아픈 것이 손상의 단서가 돼요.", d: "with both hands", k: ["왼쪽으로 돌아누워 보세요", "오른쪽 윗배도 눌러 볼게요"], a: "upper", o: ["lower", "outer", "inner"]}
+  - {t: "움직임 통증", i: bell, w: "when you move로 움직일 때 달라지는지 물어요. 움직일 때 심해지면 복막이 자극받고 있다는 단서일 수 있어요.", d: "in the morning", k: ["움직이지 말고 누워 계세요", "통증이 오면 벨을 눌러 주세요"], a: "worse", o: ["better", "softer", "longer"]}
+  - {t: "검사 이유", i: magnify, w: "so stay with me는 정신을 놓지 말고 대화를 이어 가 달라는 뜻이에요. 대답이 흐려지는지 보는 것도 출혈을 놓치지 않는 방법 중 하나예요.", d: "for broken bones", k: ["지금 검사하러 이동할 거예요", "혈액 검사를 위해 채혈할게요"], a: "internal", o: ["external", "visible", "minor"]}
+  - {t: "혈압 안내", i: chartup, w: "has been dropping은 지금까지 계속 이어진 변화를 말하는 현재완료진행이에요. 혈압이 계속 떨어지는 것은 출혈이 이어진다는 신호일 수 있어 바로 의사에게 알려요.", d: "at home", k: ["혈압을 5분마다 재고 있어요", "혈압약은 드시고 계신가요?"], a: "dropping", o: ["rising", "climbing", "growing"]}
+  - {t: "즉시 보고", i: speech, w: "right away로 기다리지 않고 바로 알린다고 말해요. 혈압이 떨어지는 외상 환자의 변화는 모든 환자에게 즉시 보고해야 하는 소견이에요.", d: "later today", k: ["의사 선생님이 곧 오실 거예요", "필요한 검사는 의사 선생님이 정해 주실 거예요"], a: "doctor", o: ["family", "pharmacist", "interpreter"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "비장손상 의심 대응 4문장 순서"
+    why: "눌러서 아픈지 확인하고, 그 자리에서 어깨로 퍼지는지 묻고, 두 답과 혈압 하락을 묶어 출혈을 확인한다고 말한 뒤, 그 출혈 가능성을 의사에게 알려요. 'from there'·'Those answers'·'the bleeding concern'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "I'm pressing on your upper left belly—tell me if it's tender.", icon: magnify, ko: "왼쪽 윗배를 눌러볼게요, 아프면 말씀해 주세요", note: "촉진"}
+    - {en: "Does the pain from there spread up to your left shoulder?", icon: faceWorried, ko: "거기서부터 통증이 왼쪽 어깨까지 퍼지나요?", note: "문진"}
+    - {en: "Those answers and your dropping pressure mean we're checking for internal bleeding.", icon: chartup, ko: "그 답과 떨어지는 혈압 때문에 내부출혈을 확인하고 있어요", note: "이유"}
+    - {en: "I'm reporting the bleeding concern to the doctor right away.", icon: speech, ko: "출혈 가능성을 바로 의사 선생님께 보고할게요", note: "보고"}
+  sw: {ko: "내부출혈이 있는지 확인 중이니 정신 놓지 말고 계세요"}
+- title: 간손상 의심 우상복부
+  s:
+  - {t: "촉진 안내", i: magnify, w: "feel under …로 만질 위치를 정확히 알려요. 오른쪽 갈비뼈 아래에는 간이 있어 외상 뒤 이 부위의 통증이나 압통을 살펴봐요.", d: "with both hands", k: ["숨을 크게 들이쉬어 보세요", "무릎을 세우고 편하게 누우세요"], a: "right", o: ["left", "front", "lower"]}
+  - {t: "통증 문진", i: faceWorried, w: "on the right side처럼 위치를 말로도 짚어 환자가 어디를 누르는지 알아요. 오른쪽 윗배를 누를 때 커지는 통증은 간 손상을 의심하게 하는 단서가 돼요.", d: "after you eat", k: ["여기가 어제부터 아팠나요?", "이쪽으로 누우면 편한가요?"], a: "side", o: ["leg", "arm", "foot"]}
+  - {t: "근육 방어", i: magnify, w: "guarding은 배를 만지면 아픈 것을 피하려고 근육이 저절로 굳는 반응이에요. 이런 방어 반응은 복강 안에 자극이나 출혈이 있다는 단서가 될 수 있어요.", d: "when you cough", k: ["배가 불편하면 숨을 천천히 내쉬어 보세요", "배에 손을 올려 주세요"], a: "guarding", o: ["bleeding", "itching", "coughing"]}
+  - {t: "추세 안내", i: chartup, w: "trending down은 한 번의 값이 아니라 여러 번 잰 값이 이어서 내려가는 추세를 뜻해요. 간 손상이 의심되는 환자의 혈압이 계속 내려가면 출혈을 걱정하게 돼요.", d: "so we'll wait", k: ["혈압은 한 번 더 잴게요", "수액을 놓을 준비를 해 둘게요"], a: "down", o: ["up", "flat", "high"]}
+  - {t: "증상 보고", i: bell, w: "right away로 기다리지 말고 바로 말해 달라고 해요. 어지러움이나 통증 증가는 출혈이 늘고 있다는 신호일 수 있어 환자가 직접 알려 주면 빨리 대응할 수 있어요.", d: "if you cough", k: ["움직이실 때는 먼저 불러 주세요", "화장실에 가고 싶으면 말씀해 주세요"], a: "faint", o: ["hungry", "sleepy", "thirsty"]}
+  - {t: "감시 안내", i: monitor, w: "keep a close eye on은 계속 눈을 떼지 않고 지켜본다는 관용구예요. 이 환자는 수치가 달라질 수 있어 활력징후를 반복해서 살펴요.", d: "from the door", k: ["활력징후는 15분마다 잴게요", "측정한 수치는 차트에 적을게요"], a: "close", o: ["blind", "brief", "small"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "간손상 의심 사정 4문장 순서"
+    why: "만질 위치를 알리고, 그쪽을 누를 때 더 아픈지 묻고, 대답하는 동안 방어 반응을 살핀 뒤, 그 모든 것을 바탕으로 활력징후를 지켜본다고 해요. 'that side'·'While you tell me'·'all of that'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "I'm going to feel under your right rib cage.", icon: magnify, ko: "오른쪽 갈비뼈 아래를 만져볼게요", note: "안내"}
+    - {en: "Does it hurt more when I press here on that side?", icon: faceWorried, ko: "그쪽 여기를 누르면 더 아프세요?", note: "문진"}
+    - {en: "While you tell me, I'm watching for any guarding when I touch your belly.", icon: magnify, ko: "말씀하시는 동안 배를 만질 때 방어 반응이 있는지 살필게요", note: "관찰"}
+    - {en: "Based on all of that, we'll keep a close eye on your vital signs.", icon: monitor, ko: "그 모든 걸 바탕으로 활력징후를 계속 자세히 지켜볼게요", note: "감시"}
+  ctx: {word: "guarding", ko: "근육 방어"}
+- title: 안전벨트 증후군
+  s:
+  - {t: "의미 설명", i: bulb, w: "tells us to …로 자국이 다음에 할 일을 알려 준다고 말해요. 벨트 모양 자국은 눈에 안 보이는 안쪽 손상을 찾아봐야 한다는 신호예요.", d: "on your skin", k: ["그 자국을 사진으로 남겨 둘게요", "그 자국 위에는 아무것도 바르지 마세요"], a: "seatbelt", o: ["airbag", "shoulder", "dashboard"]}
+  - {t: "장 손상 설명", i: bulb, w: "can mean으로 가능성만 말해 단정하지 않아요. 벨트가 배를 강하게 눌렀을 때 장이 다칠 수 있어서 자국이 있으면 배를 더 꼼꼼히 봐요.", d: "by the wheel", k: ["이런 자국이 있으면 등뼈도 살펴봐요", "이런 자국은 크기를 재서 기록해요"], a: "injured", o: ["tested", "covered", "replaced"]}
+  - {t: "검사 안내", i: magnify, w: "to look for …로 영상 검사를 하는 목적을 알려요. 겉으로 안 보이는 안쪽 손상은 CT 같은 영상 검사로 확인해요.", d: "with a pen", k: ["검사 전에 금속 물건을 빼 주세요", "검사실로 옮겨 드릴게요"], a: "underneath", o: ["outside", "upstairs", "overnight"]}
+  - {t: "지연 가능성", i: calendar, w: "can show up hours later로 나중에 드러날 수 있다고 알려요. 장 손상은 처음 검사에서 안 보여도 몇 시간 뒤 나타날 수 있어 관찰해요.", d: "in advance", k: ["그래서 식사는 하지 마세요", "그동안 편히 쉬고 계세요"], a: "later", o: ["before", "ago", "apart"]}
+  - {t: "변화 요청", i: bell, w: "Let me know if …로 환자가 알릴 기준을 쉽게 말해 줘요. 배 통증이 퍼지거나 심해지는 것은 처음엔 안 보였던 손상이 드러나는 신호일 수 있어요.", d: "or turns blue", k: ["식사를 하고 싶으면 말씀해 주세요", "화장실에 가실 때는 불러 주세요"], a: "spreads", o: ["fades", "shrinks", "stops"]}
+  - {t: "관찰 안내", i: monitor, w: "a while longer로 기간을 정확한 숫자 없이 알려요. 이 환자는 배 사정과 활력징후를 반복해서 확인해야 해서 응급실에 더 머물러야 해요.", d: "in a bed", k: ["가족에게 연락해 드릴게요", "점심 식사는 확인 후에 드릴게요"], a: "observe", o: ["discharge", "transfer", "release"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "안전벨트 자국 설명 4문장 순서"
+    why: "자국의 의미를 말하고, 그것이 장 손상을 뜻할 수도 있다고 설명한 뒤, 그것을 찾으려 영상 검사를 하고, 영상이 깨끗해도 늦게 나타날 수 있어 관찰한다고 해요. 'It'·'that'·'clear images'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "That seatbelt mark tells us to check for deeper injury.", icon: bulb, ko: "그 안전벨트 자국은 더 깊은 손상을 확인해야 한다는 뜻이에요", note: "자국"}
+    - {en: "It can even mean the bowel was injured.", icon: bulb, ko: "심하면 장을 다쳤다는 뜻일 수도 있어요", note: "가능성"}
+    - {en: "To look for that, we'll take images of what's underneath.", icon: magnify, ko: "그걸 찾으려고 안쪽 영상 검사를 할게요", note: "검사"}
+    - {en: "Even with clear images, it can show up hours later, so we'll observe you.", icon: monitor, ko: "영상이 깨끗해도 몇 시간 뒤 나타날 수 있어서 관찰할게요", note: "관찰"}
+  ctx: {word: "admitted", ko: "입원시키다"}
+- title: 항응고제 흉복부 둔상
+  s:
+  - {t: "위험 설명", i: bulb, w: "Because …로 이유를 먼저 말해 왜 더 조심하는지 알려요. 혈액 희석제를 쓰면 피가 잘 굳지 않아 외상 뒤 출혈이 늘거나 오래 갈 수 있어요.", d: "right now", k: ["그래서 지금 몇 가지 질문을 드릴게요", "그래서 피검사를 먼저 할 거예요"], a: "spread", o: ["stop", "end", "clear"]}
+  - {t: "복용약 확인", i: pill, w: "두 질문을 and로 이어 어떤 약인지와 마지막 복용 시각을 함께 물어요. 약 종류와 마지막 복용 시간은 출혈 위험을 가늠하고 치료를 정하는 데 필요한 정보예요.", d: "this week", k: ["약은 누가 챙겨 주나요?", "약을 처방받은 병원이 어디예요?"], a: "dose", o: ["visit", "fall", "nap"]}
+  - {t: "복용 횟수", i: calendar, w: "How many times a day로 하루 복용 횟수를 구체적으로 물어요. 하루에 몇 번 먹는지 알면 약 효과가 얼마나 남아 있을지 가늠하는 데 도움이 돼요.", d: "with food", k: ["약은 식사 전에 드세요, 후에 드세요?", "약을 몇 년째 드시고 계세요?"], a: "take", o: ["miss", "skip", "forget"]}
+  - {t: "멍 설명", i: bulb, w: "a lot worse than usual처럼 평소와 비교해 말해요. 피가 잘 굳지 않으면 가벼운 부딪힘도 큰 멍이나 혈종이 될 수 있어요.", d: "very quickly", k: ["작은 상처도 오래 눌러 지혈해야 해요", "혈액 희석제는 약국에서 다시 받으세요"], a: "worse", o: ["better", "smaller", "lighter"]}
+  - {t: "관찰 연장", i: monitor, w: "to be safe로 지나치게 걱정시키지 않으면서 이유를 말해요. 혈액 희석제를 쓰는 외상 환자는 출혈이 늦게 드러날 수 있어 더 오래 지켜보고 검사를 반복해요.", d: "in a week", k: ["가족이 오실 때까지 기다려 주세요", "결과가 나오는 대로 말씀드릴게요"], a: "repeat", o: ["cancel", "hide", "skip"]}
+  - {t: "증상 보고", i: bell, w: "Any new …로 새로 생긴 증상만 콕 집어 말해요. 새 멍이나 어지러움은 출혈이 계속되고 있다는 신호일 수 있어 바로 알려야 해요.", d: "or hair loss", k: ["멍이 커지면 크기를 표시해 둘게요", "어지러우면 침대에서 일어나지 마세요"], a: "dizziness", o: ["itching", "hunger", "thirst"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "항응고제 복용 사정 4문장 순서"
+    why: "약 때문에 출혈이 쉽다고 알리고, 어떤 약이고 마지막 복용이 언제인지 묻고, 그 약을 하루 몇 번 먹는지 물은 뒤, 그 정보를 가지고 더 오래 지켜보겠다고 해요. 'Which one'·'that one'·'that in mind'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Because you take a blood thinner, bleeding can spread more easily.", icon: bulb, ko: "혈액 희석제를 드셔서 출혈이 더 쉽게 퍼질 수 있어요", note: "이유"}
+    - {en: "Which one do you take, and when was your last dose?", icon: pill, ko: "어떤 약이고 마지막 복용은 언제였나요?", note: "약 확인"}
+    - {en: "How many times a day do you take that one?", icon: calendar, ko: "그 약을 하루에 몇 번 드세요?", note: "횟수"}
+    - {en: "With that in mind, we'll watch you longer and repeat your labs to be safe.", icon: monitor, ko: "그걸 염두에 두고 더 오래 지켜보고 검사도 다시 할게요", note: "계획"}
+  sw: {ko: "혈액 희석제를 드시는 게 있으세요?"}
+- title: 관통성 복부 자상
+  s:
+  - {t: "제거 금지", i: shield, w: "will not remove로 하지 않을 일을 먼저 못 박고 we'll …로 대신 할 일을 말해요. 박힌 물체가 출혈을 막고 있을 수 있어서 수술실 같은 통제된 곳에서 의사가 빼요.", d: "with your hand", k: ["물체 주변에 패드를 대 드릴게요", "수술실에서 의사가 빼실 거예요"], a: "stabilize", o: ["pull", "twist", "move"]}
+  - {t: "손대지 않기", i: shield, w: "at all로 조금도 안 된다고 강조해요. 박힌 물체를 건드리면 안에서 움직여 출혈이나 손상이 더 커질 수 있어요.", d: "in the car", k: ["그 주변은 제가 고정해 드릴게요", "괜찮으니 계속 가만히 계세요"], a: "touch", o: ["cover", "tape", "dress"]}
+  - {t: "고정 안내", i: bandage, w: "so it doesn't move로 목적을 밝혀요. 박힌 물체가 움직이지 않게 고정해야 이동 중에도 안쪽 조직이 더 다치지 않아요.", d: "to the floor", k: ["물체 주변에 두꺼운 패드를 댈게요", "상처 위치를 사진으로 남길게요"], a: "tape", o: ["pull", "lift", "bend"]}
+  - {t: "드레싱 안내", i: bandage, w: "a moist sterile dressing으로 무엇으로 덮는지 구체적으로 말해요. 멸균 드레싱은 오염을 막고 젖은 드레싱은 조직이 마르는 것을 막아 줘요.", d: "with a towel", k: ["상처 크기를 재서 기록해 둘게요", "출혈이 얼마나 되는지 확인할게요"], a: "sterile", o: ["dirty", "rough", "dusty"]}
+  - {t: "보호 설명", i: shield, w: "until surgery로 이 처치가 임시라는 점을 알려요. 수술로 제대로 치료하기 전까지 조직이 마르거나 오염되지 않게 지켜 줘요.", d: "from the cold", k: ["수술 전까지 드레싱은 열지 않을 거예요", "수술 준비는 다른 팀이 해요"], a: "protect", o: ["damage", "wash", "replace"]}
+  - {t: "안정 요청", i: me, w: "so we don't …로 가만히 있어야 하는 이유를 함께 말해요. 움직이면 박힌 물체가 안에서 흔들려 손상이 커질 수 있어요.", d: "for a minute", k: ["숨은 편하게 쉬세요", "통증이 심하면 바로 말씀해 주세요"], a: "worse", o: ["better", "smaller", "clearer"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "관통 물체 응급 처치 4문장 순서"
+    why: "빼지 않고 고정한다고 알리고, 그것을 고정하려 테이프를 붙이고, 고정된 뒤 상처를 드레싱으로 덮고, 그 드레싱이 수술 전까지 보호한다고 말하며 가만히 있기를 부탁해요. 'it'·'Once it's taped'·'this dressing'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "We will not remove the object—we'll stabilize it in place.", icon: shield, ko: "물체를 빼지 않고 그 자리에 고정할게요", note: "원칙"}
+    - {en: "To keep it steady, we're going to tape it in place.", icon: bandage, ko: "움직이지 않게 테이프로 고정할게요", note: "고정"}
+    - {en: "Once it's taped, I'm covering the wound with a moist sterile dressing.", icon: bandage, ko: "고정되면 촉촉한 멸균 드레싱으로 상처를 덮을게요", note: "드레싱"}
+    - {en: "Until surgery, this dressing will protect the organ, so try to stay still.", icon: shield, ko: "수술 전까지 이 드레싱이 장기를 보호하니 가만히 계세요", note: "보호"}
+  ctx: {word: "extracted", ko: "빼내다"}

@@ -1,0 +1,85 @@
+- title: 경련 목격 문진
+  s:
+  - {t: "지속시간", i: calendar, w: "How long으로 시작하면 숫자로 답할 수 있어요. 경련이 5분을 넘기는지가 치료를 바로 시작할지 정하는 기준이에요.", d: "lost", k: ["넘어지면서 머리를 부딪혔나요?", "전에도 이런 적이 있었나요?"], a: "shaking", o: ["coughing", "vomiting", "crying"]}
+  - {t: "양상 문진", i: compass, w: "or just one side로 두 가능성을 함께 열어 두면 본 대로 답해요. 한쪽만 떨렸다면 국소 발작을 의심할 단서가 돼요.", d: "both", k: ["그 뒤에 숨은 잘 쉬었나요?", "쓰러질 때 머리를 부딪혔나요?"], a: "whole", o: ["upper", "lower", "front"]}
+  - {t: "직후 상태", i: check, w: "right after로 시점을 못 박아야 발작 직후의 상태를 묻는 질문이 돼요. 시간이 지난 뒤의 상태와는 다른 정보예요.", d: "before", k: ["쓰러지기 전에는 무엇을 하고 있었나요?", "발작이 시작된 게 몇 시쯤인가요?"], a: "stopped", o: ["started", "worsened", "spread"]}
+  - {t: "혀 깨묾", i: magnify, w: "전신 경련 중에는 혀 옆면을 깨무는 일이 흔해서, 경련이 실제로 있었는지 가늠하는 단서가 돼요. during it으로 시점을 좁혀 물어요.", d: "twice", k: ["소변이나 대변을 지렸나요?", "입술이 파랗게 변했나요?"], a: "during", o: ["before", "after", "instead of"]}
+  - {t: "발작 후 상태", i: faceWorried, w: "발작 직후의 혼란이나 졸림은 흔한 반응이에요. 기절과 구분할 때도 이 질문이 단서가 돼요.", d: "alone", k: ["평소에 먹는 약이 있나요?", "술을 마셨나요?"], a: "afterward", o: ["beforehand", "earlier", "lately"]}
+  - {t: "알아보기", i: me, w: "깨어난 뒤 사람을 알아보는지는 의식이 돌아왔는지를 가장 쉽게 가늠하는 질문이에요. 목격자도 쉽게 답할 수 있어요.", d: "answer", k: ["혼자서 걸을 수 있었나요?", "구급차는 몇 시에 불렀나요?"], a: "recognize", o: ["thank", "blame", "follow"]}
+  order: {tag: "대화 흐름", icon: compass, ko: "경련 목격자 문진 4문장 순서", why: "먼저 목격자의 놀란 마음을 인정하고(First), 본 것을 말하게 한 뒤, 'that'이 가리키는 지속 시간과 'it'이 가리키는 멈춘 직후 상태를 묻는 순서예요. 대명사가 앞 줄을 가리켜 순서가 하나예요.", lines: [
+    {en: "First, I know that was frightening to watch.", icon: faceWorried, ko: "먼저, 보기에 무서웠을 거예요", note: "공감"},
+    {en: "Can you walk me through what you saw?", icon: speech, ko: "본 것을 차근차근 말씀해 주시겠어요?", note: "청취"},
+    {en: "How long did that go on?", icon: calendar, ko: "그게 얼마나 계속됐나요?", note: "지속"},
+    {en: "Was he confused when it stopped?", icon: check, ko: "멈췄을 때 혼란스러워했나요?", note: "직후"}]}
+  ctx: {word: "seizure", ko: "발작"}
+- title: 의식수준 GCS 사정
+  s:
+  - {t: "눈 뜨기", i: magnify, w: "for me를 붙이면 명령이 아니라 부탁처럼 들려서 의식이 흐린 환자도 덜 놀라요. 눈 뜨기는 GCS의 첫 항목이에요.", d: "wide", k: ["제 이름을 따라 말해 보시겠어요?", "다리를 움직여 보시겠어요?"], a: "open", o: ["close", "cover", "rub"]}
+  - {t: "장소 지남력", i: hospital, w: "지금 있는 곳을 묻는 질문은 의식이 또렷한지 가늠하는 지남력 확인의 대표 질문이에요. Do you know…로 시작하면 부드럽게 들려요.", d: "from", k: ["오늘 아침에 뭘 드셨는지 기억하세요?", "여기 오기 전에 무슨 일이 있었는지 기억나세요?"], a: "where", o: ["when", "how", "why"]}
+  - {t: "운동 반응", i: me, w: "동사 하나로 짧게 지시하면 의식이 흐린 환자도 따라 할 수 있어요. 지시를 따르는지가 GCS 운동 반응의 최고 점수 기준이에요.", d: "lightly", k: ["발가락을 움직여 보시겠어요?", "다리를 들어 보시겠어요?"], a: "hard", o: ["gently", "slowly", "quietly"]}
+  - {t: "날짜 확인", i: calendar, w: "날짜를 묻는 것은 시간에 대한 지남력 확인이에요. 발작 직후나 의식이 흐린 환자는 날짜를 틀리는 일이 흔해요.", d: "full", k: ["성함의 철자를 말씀해 주시겠어요?", "어디에 사시는지 말씀해 주시겠어요?"], a: "today's", o: ["tomorrow's", "yesterday's", "Monday's"]}
+  - {t: "눈 따라가기", i: magnify, w: "머리는 두고 눈으로만 따라가게 하면 안구 움직임과 주의 집중을 한 번에 볼 수 있어요. with your eyes가 무엇으로 따라갈지 분명히 해요.", d: "ears", k: ["이마를 찡그려 보시겠어요?", "혀를 내밀어 보시겠어요?"], a: "Follow", o: ["Cover", "Bend", "Touch"]}
+  - {t: "통증 반응", i: bell, w: "누르기 전에 말로 먼저 알리면 환자가 놀라지 않아요. 아픈지 묻는 말에 어떻게 반응하는지도 의식 수준을 보는 단서예요.", d: "again", k: ["숨 쉬는 게 불편하세요?", "어지러운 느낌이 있으세요?"], a: "hurt", o: ["itch", "tickle", "move"]}
+  order: {tag: "대화 흐름", icon: compass, ko: "의식 사정 4문장 순서", why: "하려는 일을 알리고, 눈 뜨기(눈 반응)로 시작해, 장소를 묻고(언어 반응), 마지막에 손가락 쥐기(운동 반응)로 끝나요. 'Good'·'Thank you'가 앞 대답을 받아 순서가 하나예요.", lines: [
+    {en: "I'm going to check how awake you are.", icon: stetho, ko: "얼마나 깨어 계신지 확인할게요", note: "예고"},
+    {en: "Can you open your eyes for me?", icon: magnify, ko: "눈을 떠 보시겠어요?", note: "눈"},
+    {en: "Good. Now tell me where you are.", icon: hospital, ko: "좋아요. 이제 여기가 어디인지 말해 주세요", note: "언어"},
+    {en: "Thank you. Last, squeeze my fingers as hard as you can.", icon: me, ko: "고마워요. 마지막으로 제 손가락을 최대한 세게 쥐어 보세요", note: "운동"}]}
+  sw: {ko: "제 손가락을 쥐어 보시겠어요?"}
+- title: 즉시 혈당 확인
+  s:
+  - {t: "혈당 알림", i: lab, w: "지금 하는 일을 먼저 말해 주면 환자가 불안해하지 않아요. 의식이 흐린 환자에게 혈당은 가장 먼저 확인하는 항목 중 하나예요.", d: "tomorrow", k: ["지금 혈압을 재고 있어요", "체온을 확인하고 있어요"], a: "checking", o: ["lowering", "raising", "adjusting"]}
+  - {t: "식사 문진", i: coffee, w: "마지막 식사 시각은 저혈당이 못 먹어서 생긴 것인지 가늠하는 단서예요. last가 '마지막으로'라서 대답이 시각으로 나와요.", d: "ago", k: ["오늘 아침에 약은 드셨나요?", "물은 마셨나요?"], a: "last", o: ["first", "next", "ever"]}
+  - {t: "당뇨약 문진", i: pill, w: "인슐린과 당뇨약은 저혈당을 일으키는 대표 원인이라 함께 물어요. any를 붙이면 환자가 떠올린 약을 빠뜨리지 않고 말해요.", d: "daily", k: ["가족 중에 당뇨 있는 분이 있나요?", "알레르기가 있는 약이 있나요?"], a: "insulin", o: ["aspirin", "vitamins", "laxatives"]}
+  - {t: "결과 안내", i: chartup, w: "very low right now로 지금 상태가 위험하다는 점을 숨기지 않고 알려요. 숫자부터 읽는 것보다 환자가 이해하기 쉬워요.", d: "slow", k: ["혈압이 조금 높아요", "산소 수치는 괜찮아요"], a: "low", o: ["high", "stable", "normal"]}
+  - {t: "치료 설명", i: pill, w: "through your IV로 어느 경로로 주는지 알려 주면 정맥줄에 손이 가도 놀라지 않아요. 의식이 흐리면 입이 아니라 정맥으로 줘요.", d: "by", k: ["산소를 마스크로 드리고 있어요", "피를 조금 뽑을게요"], a: "through", o: ["under", "behind", "over"]}
+  - {t: "회복 안내", i: star, w: "once는 조건이 이뤄지는 즉시를 뜻해서 곧 나아진다는 기대를 줘요. 안심시키되 시간을 약속하지는 않는 표현이에요.", d: "sooner", k: ["잠시 후에 검사실로 가실 거예요", "곧 식사를 하실 수 있어요"], a: "better", o: ["worse", "colder", "thirstier"]}
+  order: {tag: "대화 흐름", icon: compass, ko: "저혈당 대응 4문장 순서", why: "혈당을 재고, 'That number'로 결과를 받아 포도당을 주고, 'that'으로 이어 회복을 알린 뒤, 'again'으로 재측정을 예고해요. 대명사와 again이 앞 줄을 가리켜 순서가 하나예요.", lines: [
+    {en: "I'm checking your blood sugar right now.", icon: lab, ko: "지금 혈당을 확인하고 있어요", note: "측정"},
+    {en: "That number is very low, so I'm giving you sugar.", icon: pill, ko: "그 수치가 매우 낮아서 포도당을 드릴게요", note: "치료"},
+    {en: "Your sugar should come up soon after that.", icon: chartup, ko: "그러면 곧 혈당이 오를 거예요", note: "회복"},
+    {en: "I'll check it again to make sure it stays up.", icon: redo, ko: "유지되는지 다시 확인할게요", note: "재측정"}]}
+  ctx: {word: "glucose", ko: "혈당"}
+- title: 낙상·손상 방지 설명
+  s:
+  - {t: "금지 안내", i: shield, w: "누르면 근육이나 뼈를 다칠 수 있고, 입에 넣은 물건은 이를 부러뜨리거나 기도를 막을 수 있어요. 하면 안 되는 것부터 분명히 말해요.", d: "gently", k: ["꽉 끼는 옷을 느슨하게 해 주세요", "시간을 재 주세요"], a: "Never", o: ["Always", "Sometimes", "Quickly"]}
+  - {t: "자세 설명", i: shield, w: "옆으로 눕히면 침이나 구토물이 기도로 들어가지 않고 흘러나와요. to protect로 이유를 붙이면 보호자가 지시를 따르기 쉬워요.", d: "over", k: ["그의 머리 밑에 부드러운 걸 받쳐 주세요", "곧 구급대가 올 거예요"], a: "side", o: ["back", "stomach", "knees"]}
+  - {t: "주변 정리", i: home, w: "Just는 '그것만 하면 된다'는 뜻이라 보호자가 더 하려고 애쓰지 않게 해요. 경련 중에는 붙잡기보다 주변 위험을 치우는 것이 안전해요.", d: "safe", k: ["그의 이름을 계속 불러 주세요", "발작이 시작된 시간을 알려 주세요"], a: "hurt", o: ["wet", "tired", "lost"]}
+  - {t: "입 안 금지", i: cross, w: "손가락을 넣으면 물려서 다칠 수 있고 환자의 입도 다쳐요. 경련 중에 혀를 삼킬 위험은 없다는 점도 알려 주면 보호자가 안심해요.", d: "nothing", k: ["입 주변에 거품이 있으면 닦아 주세요", "그의 옆에 계속 있어 주세요"], a: "Don't", o: ["Please", "Just", "Always"]}
+  - {t: "위험물 치우기", i: siren, w: "sharp와 near him이 무엇을 어디서 치우라는 것인지 말해 줘요. 경련 중에는 가구 모서리나 안경 같은 물건이 상처의 원인이 돼요.", d: "off", k: ["문을 열어 두세요", "다른 사람들은 뒤로 물러서게 해 주세요"], a: "sharp", o: ["soft", "quiet", "sweet"]}
+  - {t: "자세 이유", i: stetho, w: "This position은 앞에서 말한 옆으로 눕힌 자세를 가리켜요. 목적을 말해 주면 보호자가 자세를 풀지 않아요.", d: "wide", k: ["곧 구급대가 도착할 거예요", "지금 의사가 오고 있어요"], a: "open", o: ["closed", "dry", "narrow"]}
+  order: {tag: "대화 흐름", icon: compass, ko: "경련 중 보호자 안내 4문장 순서", why: "하면 안 되는 일을 먼저 막고, 'instead'로 대신 할 일을 알려요. 'As soon as it's safe'로 자세를 바꾸고, 'That position'이 그 자세의 이유를 말해요. instead와 That position이 앞 줄을 가리켜 순서가 하나예요.", lines: [
+    {en: "Please don't hold him down or put anything in his mouth.", icon: cross, ko: "그를 누르거나 입에 아무것도 넣지 마세요", note: "금지"},
+    {en: "Just clear away anything sharp near him instead.", icon: siren, ko: "대신 주변의 날카로운 것만 치워 주세요", note: "대안"},
+    {en: "As soon as it's safe, we turn him on his side.", icon: shield, ko: "안전해지는 대로 옆으로 돌려 눕혀요", note: "자세"},
+    {en: "That position keeps his airway open.", icon: stetho, ko: "그 자세가 기도를 열어 둬요", note: "이유"}]}
+  ctx: {word: "restraint", ko: "억제"}
+- title: 발작력·복약 청취
+  s:
+  - {t: "발작 기간", i: calendar, w: "have you had는 지금까지 이어진 기간을 묻는 현재완료예요. 처음인지 오래된 병력인지에 따라 원인을 찾는 방향이 달라져요.", d: "since", k: ["발작할 때 의식을 잃으셨나요?", "가족 중에 발작 있는 분이 있나요?"], a: "seizures", o: ["headaches", "allergies", "symptoms"]}
+  - {t: "복용 약", i: pill, w: "for them은 방금 말한 발작을 가리켜서 질문이 짧아져요. 약 이름을 알아야 어떤 항경련제를 쓰는지 알 수 있어요.", d: "against", k: ["약을 하루에 몇 번 드시나요?", "약 때문에 불편한 점이 있나요?"], a: "medications", o: ["vitamins", "drinks", "snacks"]}
+  - {t: "마지막 복용", i: calendar, w: "마지막으로 약을 먹은 시각은 약을 거른 시점과 이번 발작이 이어지는지 가늠하는 단서예요. last가 '마지막으로'를 뜻해요.", d: "again", k: ["약은 누가 챙겨 주나요?", "약을 어디서 받으시나요?"], a: "medication", o: ["breakfast", "shower", "walk"]}
+  - {t: "임의 중단", i: redo, w: "on your own은 '스스로'라는 뜻이라 병원 지시가 아니라 환자 판단으로 끊었는지를 가려내요. 임의로 끊는 것은 재발의 흔한 원인이에요.", d: "alone", k: ["약을 먹고 나서 졸린 적이 있나요?", "약값 때문에 걱정한 적이 있나요?"], a: "on your own", o: ["in the morning", "with water", "at work"]}
+  - {t: "중단 이유", i: speech, w: "이유를 물을 때 탓하는 말투를 빼면 솔직한 답이 나와요. 부작용인지, 비용인지, 잊어서인지에 따라 대책이 달라져요.", d: "ever", k: ["지금 약은 어디에 두셨나요?", "처방은 누가 해 주셨나요?"], a: "stopped", o: ["started", "refused", "missed"]}
+  - {t: "빈도 변화", i: chartup, w: "getting more frequent로 지금의 추세를 물어요. 발작이 잦아지는 것은 치료를 바꿔야 한다는 신호일 수 있어요.", d: "less", k: ["발작은 주로 밤에 일어나나요?", "발작 뒤에 두통이 있나요?"], a: "frequent", o: ["rare", "brief", "mild"]}
+  - {t: "전조 증상", i: bell, w: "warning signs는 발작 직전의 전조예요. 전조를 알면 환자가 미리 안전한 곳에 앉거나 누울 수 있어요.", d: "since", k: ["발작이 끝난 뒤에 얼마나 졸리세요?", "발작할 때 소리를 지르시나요?"], a: "before", o: ["after", "without", "instead of"]}
+  order: {tag: "대화 흐름", icon: compass, ko: "발작 병력 청취 4문장 순서", why: "발작 기간을 묻고, 'for them'으로 그 발작의 약을 묻고, 'it'이 가리키는 약의 마지막 복용을 묻고, 마지막으로 임의 중단을 확인해요. 'them'·'it'이 앞 줄을 가리켜 순서가 하나예요.", lines: [
+    {en: "How long have you had seizures?", icon: calendar, ko: "발작을 얼마나 오래 겪으셨나요?", note: "기간"},
+    {en: "What medicine do you take for them?", icon: pill, ko: "그것 때문에 어떤 약을 드시나요?", note: "약"},
+    {en: "When did you last take it?", icon: calendar, ko: "마지막으로 드신 게 언제였나요?", note: "복용"},
+    {en: "Have you ever stopped taking it on your own?", icon: redo, ko: "임의로 끊은 적이 있나요?", note: "중단"}]}
+  sw: {ko: "발작 약을 거르고 계신가요?"}
+- title: 첫 발작 성인
+  s:
+  - {t: "생활 문진", i: coffee, w: "수면 부족과 식사를 거르는 것은 첫 발작의 흔한 유발 요인이라 일상을 먼저 물어요. normally는 평소와 다른지를 묻는 말이에요.", d: "twice", k: ["머리를 다친 적이 있나요?", "가족 중에 발작 있는 분이 있나요?"], a: "normally", o: ["quickly", "loudly", "quietly"]}
+  - {t: "유발 요인", i: magnify, w: "열·감염, 음주나 금단, 새 약은 첫 발작의 원인이 될 수 있어서 한 문장에 묶어 물어요. Any로 시작하면 짧게 물으면서 빠뜨리지 않아요.", d: "serious", k: ["머리를 부딪히거나 다친 적이 있나요?", "어젯밤에 잠은 몇 시간 주무셨나요?"], a: "recent", o: ["daily", "yearly", "upcoming"]}
+  - {t: "검사 안내", i: lab, w: "find out why로 목적을 말하면 검사가 많아도 환자가 이유를 이해해요. 첫 발작은 혈액검사와 영상으로 원인을 찾아요.", d: "again", k: ["물을 조금 가져다 드릴게요", "가족분께 연락해 드릴까요?"], a: "tests", o: ["rounds", "errands", "laundry"]}
+  - {t: "약물 사용", i: pill, w: "drugs는 처방약뿐 아니라 마약류도 뜻해서 새로 쓴 약물을 열어 놓고 물어요. 약물이 발작의 원인일 수 있어서 판단 없이 물어요.", d: "ever", k: ["담배는 하루에 몇 갑 피우시나요?", "카페인 음료는 얼마나 마시나요?"], a: "drugs", o: ["supplements", "herbs", "inhalers"]}
+  - {t: "영상 검사", i: monitor, w: "need라고 말하면 선택을 묻지 않고 필요한 검사라는 뜻이 전해져요. 뇌 영상은 출혈이나 종양 같은 구조적 원인을 찾는 데 써요.", d: "full", k: ["심전도를 먼저 찍을게요", "소변 검사를 할게요"], a: "brain", o: ["chest", "knee", "back"]}
+  - {t: "원인 불명", i: bulb, w: "첫 발작은 뚜렷한 원인을 못 찾는 경우도 적지 않아요. 원인 없이도 생길 수 있다고 알려야 환자가 자책하지 않아요.", d: "clear", k: ["이건 곧 저절로 좋아질 거예요", "다음 주에 다시 오셔야 해요"], a: "reason", o: ["warning", "symptom", "injury"]}
+  order: {tag: "대화 흐름", icon: compass, ko: "첫 발작 설명 4문장 순서", why: "먼저(First) 놀란 마음을 인정하고, 최근 변화를 묻고, 'that'이 가리키는 답을 받아 검사를 안내한 뒤, 'Even then'으로 원인을 못 찾을 수도 있다고 알려요. First·Even then이 순서를 고정해요.", lines: [
+    {en: "First, I know this was frightening for you.", icon: faceWorried, ko: "먼저, 많이 놀라셨을 거예요", note: "공감"},
+    {en: "Has anything changed lately, like sleep, alcohol, or medicine?", icon: magnify, ko: "최근 수면, 술, 약에 변화가 있었나요?", note: "문진"},
+    {en: "Thanks, that helps, and we'll do tests to find out why this happened.", icon: lab, ko: "고마워요, 도움이 돼요. 이유를 알아보려고 검사를 할게요", note: "검사"},
+    {en: "Even then, it can happen without any obvious reason.", icon: bulb, ko: "그래도 뚜렷한 이유 없이 생길 수 있어요", note: "설명"}]}
+  ctx: {word: "workup", ko: "원인 검사"}

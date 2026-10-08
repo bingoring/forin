@@ -1,0 +1,76 @@
+- title: 심장탐포네이드 Beck 삼징후
+  s:
+  - {t: "소견 설명", i: magnify, w: "두 소견을 and로 이어 말해요. 목 정맥이 부풀고 혈압이 낮은 것은 심장 주위에 액체가 찬 탐포네이드를 의심하게 하는 단서예요.", d: "and very cold", k: ["목 정맥을 한 번 더 확인할게요", "혈압을 계속 재고 있어요"], a: "full", o: ["flat", "thin", "small"]}
+  - {t: "심음 소견", i: stetho, w: "much quieter than before로 이전과 비교한 변화를 말해요. 심장 주위에 액체가 차면 심장 소리가 작고 멀게 들리는 일이 있어 중요한 소견이에요.", d: "on the left", k: ["심장 소리를 다시 들어 볼게요", "심전도를 붙여서 볼게요"], a: "quieter", o: ["louder", "faster", "sharper"]}
+  - {t: "원인 설명", i: bulb, w: "may be …ing로 가능성으로 말해요. 심장을 싸고 있는 막 안에 액체가 차면 심장이 충분히 펴지지 못해 피를 내보내는 힘이 떨어져요.", d: "from your lungs", k: ["그래서 혈압이 많이 낮아졌어요", "그래서 초음파로 확인할 거예요"], a: "limiting", o: ["improving", "helping", "boosting"]}
+  - {t: "즉시 보고", i: speech, w: "these three signs로 세 소견을 묶어 보고한다고 말해요. 목 정맥 확장, 낮은 혈압, 작은 심음은 탐포네이드를 시사하는 조합이라 의사에게 바로 알려요.", d: "after rounds", k: ["의사 선생님이 곧 오실 거예요", "초음파 장비도 불러 놓을게요"], a: "doctor", o: ["pharmacist", "chaplain", "receptionist"]}
+  - {t: "처치 준비", i: hospital, w: "preparing to …로 곧 할 일을 미리 알려요. 심장 주위 압력을 푸는 처치는 의사나 APP가 하고 간호사는 물품과 환자를 준비해요.", d: "to measure", k: ["필요한 물품을 가져오고 있어요", "자세를 조금 올려 드릴게요"], a: "preparing", o: ["refusing", "forgetting", "declining"]}
+  - {t: "처치 설명", i: bandage, w: "to drain으로 바늘이 필요한 이유를 알려요. 심낭에 찬 액체를 바늘로 빼내는 심낭천자는 의사가 해요.", d: "in your arm", k: ["이 바늘은 의사 선생님이 넣어요", "초음파를 보면서 천천히 할 거예요"], a: "drain", o: ["fill", "freeze", "weigh"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "탐포네이드 징후 설명 4문장 순서"
+    why: "목 정맥과 혈압을 말하고, 거기에 심음 변화를 보태고, 세 소견이 뜻하는 것을 설명한 뒤, 그 때문에 처치를 준비한다고 해요. 'On top of that'·'These three signs'·'that'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Your neck veins are full and your pressure is very low.", icon: magnify, ko: "목 정맥이 가득 부풀고 혈압이 매우 낮아요", note: "소견"}
+    - {en: "On top of that, your heart sounds are much quieter than before.", icon: stetho, ko: "게다가 심장 소리가 아까보다 훨씬 작게 들려요", note: "심음"}
+    - {en: "These three signs mean fluid may be limiting your heart's pumping.", icon: bulb, ko: "이 세 가지는 액체가 심장의 펌프질을 방해할 수 있다는 뜻이에요", note: "설명"}
+    - {en: "Because of that, we're preparing to relieve the pressure around your heart.", icon: hospital, ko: "그래서 심장 주위 압력을 풀어드릴 준비를 하고 있어요", note: "준비"}
+  ctx: {word: "triad", ko: "삼징후"}
+- title: 복강내 대량출혈 쇼크
+  s:
+  - {t: "상황 설명", i: siren, w: "두 사실을 and로 이어 지금 일어나는 일을 직접 말해요. 배 안 출혈이 계속되면 혈압이 떨어져 쇼크로 이어지므로 시간이 중요해요.", d: "very slowly", k: ["수술 준비를 서두르고 있어요", "정신을 놓지 않게 계속 말씀해 주세요"], a: "filling", o: ["emptying", "healing", "clearing"]}
+  - {t: "복부 소견", i: magnify, w: "all over로 한 곳이 아니라 배 전체의 상태를 짚어요. 팽팽하고 부은 배는 복강 안에 피가 고여 있다는 단서일 수 있어요.", d: "on one side", k: ["배를 만질 때 많이 아프세요?", "배가 불러 오는 느낌이 있어요?"], a: "tight", o: ["soft", "loose", "flat"]}
+  - {t: "긴박 설명", i: siren, w: "faster than we can …으로 상황의 긴박함을 솔직히 전해요. 출혈 속도가 수혈 속도를 넘으면 수술로 출혈을 멈추는 것이 가장 시급해져요.", d: "from your arm", k: ["지금 혈액을 계속 드리고 있어요", "피를 더 가져오고 있어요"], a: "faster", o: ["slower", "safer", "better"]}
+  - {t: "수술 필요", i: hospital, w: "right away로 기다릴 시간이 없다고 분명히 말해요. 배 안 출혈이 계속되면 약이나 수혈만으로는 멈추지 않아 수술로 출혈 부위를 막아야 해요.", d: "next week", k: ["의사 선생님이 곧 설명해 드릴 거예요", "보호자분께 연락해 드릴게요"], a: "surgery", o: ["dialysis", "therapy", "rehab"]}
+  - {t: "이동 안내", i: hospital, w: "두 일을 and로 이어 동시에 한다고 말해요. 출혈 환자는 수혈을 이어 가면서 수술실로 옮겨 시간을 아껴요.", d: "to your room", k: ["보호자분은 대기실에서 기다려 주세요", "수술실에서 의사 선생님이 기다리고 계세요"], a: "OR", o: ["ICU", "lab", "pharmacy"]}
+  - {t: "수술팀 대기", i: siren, w: "already로 이미 준비를 마쳤다고 알려 안심시켜요. scrubbed in은 손을 씻고 가운과 장갑을 갖춰 바로 수술할 수 있는 상태를 말해요.", d: "in the hall", k: ["수술실도 이미 준비됐어요", "마취과 의사도 와 있어요"], a: "waiting", o: ["leaving", "resting", "eating"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "복강내 출혈 쇼크 안내 4문장 순서"
+    why: "지금 일어나는 일을 말하고, 그래서 수술이 필요하다고 설명한 뒤, 수술팀이 대기 중이라고 알리고, 팀이 기다리니 수혈하며 수술실로 옮긴다고 해요. 'That'·'For that'·'they're waiting'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Your belly is filling with blood and your pressure is dropping.", icon: siren, ko: "배 안에 피가 차오르고 혈압이 떨어지고 있어요", note: "상황"}
+    - {en: "That means you need surgery right away to stop the bleeding.", icon: hospital, ko: "그래서 출혈을 멈추려면 지금 바로 수술이 필요해요", note: "수술"}
+    - {en: "For that, the surgical team is already scrubbed in and waiting.", icon: siren, ko: "그를 위해 수술팀은 이미 준비하고 기다리고 있어요", note: "대기"}
+    - {en: "Since they're waiting, we're giving you blood and moving you to the OR now.", icon: hospital, ko: "팀이 기다리니 수혈하면서 지금 바로 수술실로 이동할게요", note: "이동"}
+  ctx: {word: "distended", ko: "팽만한"}
+- title: 연가양 흉부(flail chest)
+  s:
+  - {t: "소견 설명", i: magnify, w: "a section of …으로 일부만 따로 움직인다고 쉬운 말로 풀어요. 갈비뼈 여러 곳이 부러져 한 부분이 떨어지면 숨 쉴 때 그 부분이 따로 움직여요.", d: "very fast", k: ["가슴 사진을 곧 찍을 거예요", "숨쉬기가 많이 아프시죠?"], a: "separately", o: ["together", "normally", "quietly"]}
+  - {t: "역설 호흡", i: magnify, w: "the wrong way로 정상과 반대로 움직인다고 쉬운 말로 설명해요. 숨을 들이쉴 때 그 부분이 오히려 들어가는 것을 역설 호흡이라 하고 연가양 흉부의 특징적인 소견이에요.", d: "on both sides", k: ["그 부분이 부어 있는 게 보여요", "그 부분을 만지면 아프세요?"], a: "wrong", o: ["right", "same", "slow"]}
+  - {t: "호흡 변화", i: monitor, w: "looks처럼 눈에 보이는 것을 말하고 than before로 이전과 비교해요. 아파서 얕게 쉬면 폐가 덜 펴지고 산소와 이산화탄소 교환이 나빠질 수 있어요.", d: "at night", k: ["산소 수치를 계속 보고 있어요", "호흡수를 다시 세어 볼게요"], a: "shallow", o: ["noisy", "regular", "relaxed"]}
+  - {t: "치료 안내", i: hospital, w: "두 가지를 and로 이어 호흡 보조와 통증 조절을 함께 말해요. 연가양 흉부는 통증 조절과 산소·호흡 보조가 치료의 중심이에요.", d: "your diet", k: ["필요하면 산소를 더 드릴게요", "진통제는 처방에 따라 드릴게요"], a: "pain", o: ["fever", "hunger", "thirst"]}
+  - {t: "호흡기 설명", i: hospital, w: "may need로 확정이 아니라 가능성이라고 말해요. 스스로 충분히 숨 쉬지 못하면 인공호흡기가 숨쉬기를 대신 도와줄 수 있어요.", d: "from home", k: ["그 전에 산소부터 최대한 드릴게요", "호흡기가 필요하면 먼저 설명드릴게요"], a: "ventilator", o: ["thermometer", "stethoscope", "wheelchair"]}
+  - {t: "통증 조절", i: pill, w: "make it easier로 통증 조절의 이점을 말해요. 통증이 줄면 깊게 숨 쉴 수 있어 폐가 덜 가라앉아요.", d: "at night", k: ["진통제는 정해진 시간에 드려요", "통증이 올라가면 바로 말씀해 주세요"], a: "easier", o: ["harder", "tougher", "slower"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "연가양 흉부 설명 4문장 순서"
+    why: "갈비뼈 일부가 따로 움직인다고 알리고, 그 부분이 반대로 움직인다고 짚은 뒤, 그 때문에 숨이 얕아졌다고 하고, 얕은 호흡을 돕겠다고 말해요. 'That part'·'Because of that'·'shallow breathing'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "A section of your ribs is moving separately when you breathe.", icon: magnify, ko: "숨을 쉴 때 갈비뼈 일부가 따로 움직이고 있어요", note: "소견"}
+    - {en: "That part of your chest moves the wrong way when you breathe in.", icon: magnify, ko: "그 부분은 숨을 들이쉴 때 반대로 움직여요", note: "역설"}
+    - {en: "Because of that, your breathing looks more shallow than before.", icon: monitor, ko: "그래서 숨쉬기가 아까보다 얕아 보여요", note: "결과"}
+    - {en: "For your shallow breathing, we'll support it and control your pain.", icon: hospital, ko: "얕은 호흡은 도와드리고 통증도 조절해 드릴게요", note: "치료"}
+  ctx: {word: "paradoxical", ko: "역설적인"}
+- title: 흉복부외상 SBAR 인계
+  s:
+  - {t: "상황 보고", i: speech, w: "This is …로 누구인지와 주된 문제를 한 문장에 담아요. SBAR의 S(상황)는 환자와 가장 중요한 문제를 먼저 말하는 부분이에요.", d: "from a fall", k: ["40세 환자가 교통사고로 이송됐습니다", "40세 환자의 활력징후가 불안정합니다"], a: "blunt", o: ["penetrating", "minor", "major"]}
+  - {t: "배경 보고", i: bulb, w: "from a car crash로 원인을 붙이는 것이 SBAR의 B(배경)예요. 사고 기전을 알려야 받는 의사가 어디를 의심할지 짐작해요.", d: "this morning", k: ["가장 아픈 곳은 가슴입니다", "구급차로 사고 직후에 왔습니다"], a: "car", o: ["bike", "horse", "train"]}
+  - {t: "처치 보고", i: bandage, w: "We placed로 지금까지 한 처치를 말해요. 한 일과 그 이유(혈흉)를 같이 말해야 받는 사람이 이어서 판단해요.", d: "in the bay", k: ["흉관은 오른쪽에 넣었습니다", "흉관을 넣기 전에 마취했습니다"], a: "hemothorax", o: ["pneumonia", "fracture", "laceration"]}
+  - {t: "배액량 보고", i: chartup, w: "숫자와 단위를 함께 말해요. 400 milliliters처럼 정확한 값과 and rising으로 추세를 알려야 받는 사람이 출혈 속도를 판단해요.", d: "per day", k: ["흉관 배액은 선홍색입니다", "흉관 배액에 거품이 있습니다"], a: "rising", o: ["falling", "stopped", "clearing"]}
+  - {t: "혈압 보고", i: chartup, w: "despite two units of blood로 혈액을 줬는데도 떨어진다고 짚어요. 혈액 제제는 단위(units)로 세므로 몇 단위를 줬는지 같이 전해요.", d: "of saline", k: ["혈압은 80에 40입니다", "맥박은 130대입니다"], a: "units", o: ["pills", "tablets", "grams"]}
+  - {t: "요청 보고", i: siren, w: "needs … now로 원하는 것을 분명히 요청해요. SBAR의 R(권고)로, 보고에서 가장 중요한 요청을 마지막에 짧게 말해요.", d: "later today", k: ["수술 동의서는 아직 받지 못했습니다", "마취과에도 연락했습니다"], a: "OR", o: ["ICU", "CT", "ward"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "SBAR 인계 4문장 순서"
+    why: "S로 환자와 문제를 말하고, B로 사고와 한 처치를 말하고, A로 배액량 추이를 말한 뒤, R로 수술실을 요청해요. 'It'·'Since then'·'that output'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "This is a 40-year-old with blunt chest and abdominal trauma.", icon: speech, ko: "40세 환자로 흉부·복부 둔상입니다", note: "상황"}
+    - {en: "It was a car crash, and we placed a chest tube for the hemothorax.", icon: bulb, ko: "교통사고였고 혈흉으로 흉관을 삽입했습니다", note: "배경"}
+    - {en: "Since then, chest tube output is 400 milliliters and rising.", icon: chartup, ko: "그 뒤로 흉관 배액량이 400밀리리터이고 증가 중입니다", note: "평가"}
+    - {en: "With that output, he needs the OR now to control the bleeding.", icon: siren, ko: "그 배액량으로 출혈 조절을 위해 지금 수술실이 필요합니다", note: "요청"}
+  ctx: {word: "banged up", ko: "다친"}

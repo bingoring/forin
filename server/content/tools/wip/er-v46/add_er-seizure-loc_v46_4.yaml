@@ -1,0 +1,56 @@
+- title: 저혈당 혼수 급속교정
+  s:
+  - {t: "포도당 투여", i: pill, w: "dextrose는 정맥으로 쓰는 포도당이에요. to raise your sugar로 목적을 쉬운 말로 알려요.", d: "keep", k: ["산소를 코로 드릴게요", "팔에 혈압을 잴게요"], a: "raise", o: ["lower", "check", "drop"]}
+  - {t: "의식 확인", i: speaker, w: "once로 들리는 즉시 반응하게 해서 의식이 돌아오는 순간을 잡아요. 이름을 말하게 하면 의식과 언어 반응을 한 번에 봐요.", d: "loudly", k: ["눈을 떠서 저를 봐 주세요", "손가락을 움직여 보세요"], a: "once", o: ["unless", "because", "although"]}
+  - {t: "재측정", i: redo, w: "re-는 '다시'라서 이미 올린 혈당을 다시 재는 거예요. 인슐린이나 당뇨약 때문의 저혈당은 다시 떨어질 수 있어서 재확인이 중요해요.", d: "keep", k: ["저혈당 원인을 찾으려고 채혈할게요", "식사를 가져다 드릴게요"], a: "recheck", o: ["lower", "reduce", "stop"]}
+  - {t: "결과 설명", i: chartup, w: "과거형 was로 도착했을 때의 상태라고 구분해요. 지금 상태는 따로 말해 줘야 환자가 헷갈리지 않아요.", d: "dropped", k: ["혈당이 지금은 정상으로 돌아왔어요", "도착했을 때 혈압이 매우 높았어요"], a: "arrived", o: ["left", "woke", "fell"]}
+  - {t: "회복 예고", i: star, w: "should는 '그럴 것이다'라는 예상이라 약속보다 부드러워요. 포도당이 들어가면 몇 분 안에 깨어나는 경우가 많아요.", d: "getting", k: ["잠시 더 주무셔도 돼요", "곧 검사실로 이동할 거예요"], a: "waking up", o: ["calming down", "cooling down", "settling down"]}
+  - {t: "재하락 관찰", i: magnify, w: "watching for는 '일어날지 지켜본다'는 뜻이에요. 혈당이 오른 뒤에도 약 효과가 길면 다시 떨어질 수 있어서 계속 봐요.", d: "jumping", k: ["혈당이 오를 때까지 기다려요", "혈당 수치를 기록하고 있어요"], a: "dropping", o: ["rising", "spiking", "climbing"]}
+  order: {tag: "대화 흐름", icon: compass, ko: "저혈당 혼수 교정 4문장 순서", why: "포도당을 주고, 'That'이 가리키는 처치로 곧 깨어날 것이라 알리고, 의식이 돌아오면 이름을 말하게 하고, 'so'로 혈당을 계속 재확인하는 이유를 잇는 순서예요. That과 so가 앞 줄을 가리켜 순서가 하나예요.", lines: [
+    {en: "We're giving IV dextrose to raise your sugar.", icon: pill, ko: "혈당을 올리려고 정맥으로 포도당을 드리고 있어요", note: "투여"},
+    {en: "That should help you wake up soon.", icon: star, ko: "그러면 곧 정신이 들 거예요", note: "예고"},
+    {en: "Tell me your name once you can hear me.", icon: speaker, ko: "제 말이 들리면 이름을 말해 주세요", note: "확인"},
+    {en: "Your sugar was very low, so we'll keep rechecking it.", icon: redo, ko: "혈당이 매우 낮았어서 계속 다시 확인할게요", note: "재측정"}]}
+  ctx: {word: "normalized", ko: "정상화됐다"}
+- title: 발작 후 급성 결손
+  s:
+  - {t: "팔 들기", i: me, w: "at all은 '조금이라도'라서 힘이 거의 없는 환자도 시도하게 해요. 한쪽 약화는 뇌졸중과 발작 후 약화에서 모두 볼 수 있어서 좌우를 구분해 물어요.", d: "sore", k: ["오른쪽 다리를 움직여 보시겠어요?", "얼굴을 웃는 모양으로 해 보시겠어요?"], a: "left", o: ["right", "bad", "tired"]}
+  - {t: "변화 추이", i: chartup, w: "better와 the same을 함께 제시해 변화를 있는 그대로 말하게 해요. 발작 후 약화는 대개 시간이 가며 나아져요.", d: "slowly", k: ["처음 약해진 게 언제인가요?", "말이 어눌해진 것 같나요?"], a: "weakness", o: ["numbness", "headache", "pain"]}
+  - {t: "영상 이유", i: monitor, w: "rule out은 '아닌지 확인해 배제한다'는 뜻이라 뇌졸중이라고 단정하지 않아요. 발작 후 약화와 뇌졸중은 치료가 달라서 영상으로 구분해요.", d: "heart", k: ["심전도부터 먼저 찍을게요", "혈당부터 먼저 잴게요"], a: "stroke", o: ["fracture", "tumor", "sprain"]}
+  - {t: "악력 확인", i: me, w: "손으로 쥐어 보게 하면 힘의 차이를 바로 비교할 수 있어요. 왼손이라고 정해 주면 좌우 차이를 놓치지 않아요.", d: "by", k: ["오른쪽 다리를 들어 보시겠어요?", "제 손가락을 눈으로 따라가 보시겠어요?"], a: "with", o: ["on", "from", "under"]}
+  - {t: "경과 설명", i: star, w: "If로 가능성을 열어 두고 usually로 확답을 피해요. 발작 후 국소 약화는 대개 수 시간에서 수일 안에 회복돼요.", d: "soon", k: ["약화가 심해지면 바로 알려 주세요", "검사 결과는 의사 선생님이 설명할 거예요"], a: "usually", o: ["never", "always", "rarely"]}
+  - {t: "배제 필요", i: shield, w: "Even if…, we still…로 좋아지고 있어도 검사가 필요한 이유를 양보 구문으로 말해요. 좋아지는 것만으로 뇌졸중이 아니라고 단정하지 않아요.", d: "also", k: ["지금 바로 퇴원하셔도 돼요", "약화가 있으면 운전은 하지 마세요"], a: "still", o: ["never", "hardly", "barely"]}
+  order: {tag: "대화 흐름", icon: compass, ko: "발작 후 약화 사정 4문장 순서", why: "팔을 들어 보게 하고, 'Good. Now'로 손 쥐기를 이어 비교하고, 'like that'으로 그런 약화가 대개 나아진다고 설명하고, 'Even so'로 그래도 뇌졸중 배제가 필요하다고 닫아요. Good. Now·Even so가 순서를 고정해요.", lines: [
+    {en: "Can you lift your left arm at all?", icon: me, ko: "왼팔을 조금이라도 들어보시겠어요?", note: "팔"},
+    {en: "Good. Now squeeze my hand with your left hand.", icon: me, ko: "좋아요. 이제 왼손으로 제 손을 쥐어보세요", note: "악력"},
+    {en: "Weakness like that usually improves within a day or two after a seizure.", icon: star, ko: "그런 약화는 발작 뒤 대개 하루 이틀 안에 나아져요", note: "경과"},
+    {en: "Even so, we still need to rule out a stroke.", icon: shield, ko: "그래도 뇌졸중은 꼭 배제해야 해요", note: "배제"}]}
+  ctx: {word: "neuroimaging", ko: "뇌 영상 검사"}
+- title: 의식저하 SBAR 인계
+  s:
+  - {t: "상태 변화", i: chartup, w: "도착 때 값과 지금 값을 나란히 말해 변화를 숫자로 전해요. 인계는 숫자와 시점을 분명히 해요.", d: "unchanged", k: ["도착 시 혈당은 90이었어요", "도착 시 혈압이 낮았어요"], a: "improved", o: ["dropped", "fallen", "worsened"]}
+  - {t: "투여 약물", i: pill, w: "무슨 약을 얼마나 줬는지 용량까지 말해야 다음 근무자가 중복 투여를 피해요. received는 인계에서 쓰는 과거형이에요.", d: "needed", k: ["알레르기 반응은 없었어요", "마지막 투약 시각은 1400입니다"], a: "received", o: ["refused", "requested", "declined"]}
+  - {t: "현재 상태", i: monitor, w: "마지막 수치와 지금 상태를 세미콜론으로 이어 한 번에 전해요. currently는 지금 시점의 상태라는 표시예요.", d: "noisy", k: ["마지막 혈압은 130이었고 맥박은 안정적입니다", "마지막 체온은 37도였고 열은 없습니다"], a: "stable", o: ["blocked", "narrow", "unsafe"]}
+  - {t: "발작 경과", i: calendar, w: "about으로 목격자 진술에 따른 대략의 시간임을 밝혀요. 발작 시간은 5분을 넘었는지가 치료를 정하므로 인계에서 꼭 전해요.", d: "flew", k: ["발작 때 혀를 깨물었습니다", "발작 중 소변 실금이 있었습니다"], a: "arrived", o: ["woke", "left", "fell"]}
+  - {t: "재발 여부", i: check, w: "No further는 '추가로는 없다'는 부정 표현이라 재발 여부를 짧게 전해요. since arrival로 기준 시점을 분명히 해요.", d: "from", k: ["도착한 뒤 호흡은 안정적이었습니다", "도착 이후 항경련제를 한 번 더 썼습니다"], a: "since", o: ["before", "until", "during"]}
+  - {t: "요청 사항", i: redo, w: "Please로 요청하고 in one hour로 시점을 정해 줘요. 무엇을 언제 하는지가 인계 요청에 꼭 들어가야 해요.", d: "daily", k: ["한 시간 후에 활력징후를 다시 확인해 주세요", "두 시간 후에 소변량을 확인해 주세요"], a: "glucose", o: ["vitals", "pupils", "weight"]}
+  order: {tag: "대화 흐름", icon: compass, ko: "의식저하 SBAR 인계 4문장 순서", why: "상황(발작)으로 시작하고, 도착 때와 지금의 GCS를 전하고, 'That improvement'로 앞 변화를 받아 투여한 약을 말하고, 마지막에 할 일을 요청해요. That improvement와 Please가 순서를 고정해요.", lines: [
+    {en: "He came in after a seizure that lasted about six minutes.", icon: calendar, ko: "약 6분간 지속된 발작 뒤에 왔습니다", note: "상황"},
+    {en: "On arrival his GCS was 8, and it's 12 now.", icon: chartup, ko: "도착 때 GCS가 8이었고 지금은 12입니다", note: "상태"},
+    {en: "That improvement came after 4mg lorazepam and IV dextrose.", icon: pill, ko: "그 호전은 로라제팜 4mg과 정맥 포도당 뒤에 왔습니다", note: "처치"},
+    {en: "Please recheck his glucose in one hour.", icon: redo, ko: "한 시간 후에 혈당을 다시 확인해 주세요", note: "요청"}]}
+  sw: {ko: "15시에 혈당을 다시 확인해 주세요. 한 시간 전에 포도당을 맞았어요"}
+- title: 다약물 중독 혼수
+  s:
+  - {t: "현장 단서", i: magnify, w: "empty bottles는 과량 복용의 단서예요. 대시 뒤에 하는 일을 붙여 지금 확인 중임을 전해요.", d: "pill", k: ["환자 곁에서 주사기를 찾았어요", "보호자가 약 이름을 알고 있어요"], a: "empty", o: ["broken", "wet", "clean"]}
+  - {t: "상태 감시", i: monitor, w: "과량 복용은 호흡과 심장 리듬이 갑자기 변할 수 있어서 두 가지를 같이 지켜봐요. 주어를 생략한 짧은 현재분사형이에요.", d: "slowly", k: ["혈압과 체온을 함께 재고 있어요", "소변량과 수액을 기록하고 있어요"], a: "closely", o: ["rarely", "casually", "secretly"]}
+  - {t: "독성 검사", i: lab, w: "screening은 의심되는 독성 물질을 넓게 훑는 검사예요. supporting you는 해독제가 없어도 호흡과 순환을 지키는 지지 치료를 말해요.", d: "alone", k: ["중독 센터에 전화하고 있어요", "가족에게 약 목록을 물어보고 있어요"], a: "toxins", o: ["allergies", "bacteria", "viruses"]}
+  - {t: "불확실 인정", i: bell, w: "don't know exactly로 모른다는 사실을 솔직히 말해요. 모르는 것을 추측으로 메우지 않는 것이 가족과의 신뢰예요.", d: "ever", k: ["그가 마지막으로 정상이었던 시각은 몰라요", "가족이 약을 얼마나 챙겼는지 몰라요"], a: "what", o: ["when", "who", "where"]}
+  - {t: "리듬 이상", i: monitor, w: "looks abnormal로 모니터에서 본 것을 판단 없이 전해요. 약물 과량에서는 리듬 이상이 갑자기 위험해질 수 있어서 계속 봐요.", d: "alone", k: ["그의 호흡이 모니터에서 불규칙해 보여요", "그의 산소 수치가 모니터에서 낮아 보여요"], a: "abnormal", o: ["normal", "regular", "steady"]}
+  - {t: "지지 치료", i: shield, w: "until we know more으로 계속할 기간을 정보가 모일 때까지로 잡아요. 원인을 모르는 동안에도 할 수 있는 것은 계속한다는 약속이에요.", d: "treating", k: ["검사 결과가 나오면 바로 알려 드릴게요", "오늘 밤은 입원해서 지켜볼게요"], a: "supporting", o: ["ignoring", "delaying", "stopping"]}
+  order: {tag: "대화 흐름", icon: compass, ko: "다약물 중독 응대 4문장 순서", why: "빈 약병을 알리고, 'though'로 그래도 무엇을 먹었는지 정확히 모른다고 인정하고, 'So'로 독성 검사와 지지 치료를 잇고, 마지막에 더 알 때까지 계속한다고 약속해요. though·So가 앞 줄을 가리켜 순서가 하나예요.", lines: [
+    {en: "We found several empty bottles—checking what they were.", icon: magnify, ko: "빈 약병 여러 개를 찾아서 무엇이었는지 확인 중이에요", note: "단서"},
+    {en: "We don't know exactly what he took, though.", icon: bell, ko: "그래도 정확히 무엇을 먹었는지는 몰라요", note: "인정"},
+    {en: "So we're screening for toxins and supporting his breathing.", icon: lab, ko: "그래서 독성 검사를 하고 호흡을 지지하고 있어요", note: "치료"},
+    {en: "We'll keep supporting him until we know more.", icon: shield, ko: "더 알아낼 때까지 계속 지지 치료를 할게요", note: "약속"}]}
+  ctx: {word: "ingestion", ko: "섭취"}

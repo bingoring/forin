@@ -1,0 +1,96 @@
+- title: 두개저 골절 징후
+  s:
+  - {t: "멍 확인", i: magnify, w: "I see…로 눈에 보이는 걸 그대로 말하고 when으로 시작 시점을 물어요. 눈 주위 멍이 외상 직후가 아니라 몇 시간 뒤에 생기면 두개저 골절을 시사하는 소견이에요.", d: "dryness", k: ["눈 주위가 아프세요, 따가우세요?", "눈이 잘 안 보이시나요?"], a: "bruising", o: ["swelling", "redness", "itching"]}
+  - {t: "액체 확인", i: magnify, w: "from your nose or ears로 나올 수 있는 두 곳을 같이 짚어 물어요. 맑은 액체는 뇌척수액이 샐 수 있다는 신호라 코나 귀에서 나오는지 꼭 물어요.", d: "thick mucus", k: ["코나 귀가 막힌 느낌이 있나요?", "귀에서 윙 소리가 나나요?"], a: "clear", o: ["thick", "green", "yellow"]}
+  - {t: "행동 제한", i: shield, w: "Please don't로 금지를 정중하게 말해요. 코를 세게 풀면 두개저 골절 부위로 공기나 세균이 밀려 들어갈 수 있다고 알려져 있어 피하게 해요.", d: "squeeze", k: ["고개를 뒤로 젖히지 말아 주세요", "코에서 나오는 건 닦지 말고 알려 주세요"], a: "blow", o: ["rub", "pick", "scratch"]}
+  - {t: "의미 설명", i: bulb, w: "can mean으로 가능성만 말해 진단을 단정하지 않아요. 양쪽 눈 주위의 멍은 두개저 골절에서 나타나는 전형적인 징후로 알려져 있어요.", d: "an infection", k: ["그래서 CT를 먼저 찍어 볼 거예요", "눈 주위 멍은 며칠 뒤에 저절로 빠져요"], a: "skull", o: ["spine", "neck", "thumb"]}
+  - {t: "의미 설명", i: bulb, w: "could be로 가능성만 말하고 확정은 검사 뒤로 미뤄요. 맑은 액체가 뇌척수액이면 뇌를 감싼 막이 찢어져 감염 위험이 생기므로 따로 확인해요.", d: "tears", k: ["그 액체는 검사용으로 조금 받아 둘게요", "그 액체가 흐르면 닦지 말고 알려 주세요"], a: "spinal", o: ["nasal", "ear", "sinus"]}
+  - {t: "추가 확인", i: magnify, w: "Let me check…로 허락을 구하는 형태라 환자가 귀 뒤를 보여 줄 준비를 해요. 귀 뒤 멍(Battle 징후)도 두개저 골절의 징후라 눈 주위와 함께 살펴봐요.", d: "inside your mouth", k: ["귀 안도 불빛으로 살펴볼게요", "귀에서 소리가 들리는지 확인할게요"], a: "behind", o: ["inside", "above", "beneath"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "두개저 골절 징후 4문장 순서"
+    why: "눈 주위 멍을 보고, 그 멍과 함께 맑은 액체를 묻고, 그런 소견의 의미를 알린 뒤, 코를 풀지 말라고 해요. 'that bruising'·'like that'·'Because of that'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "I see bruising around your eyes—when did that appear?", icon: magnify, ko: "눈 주위에 멍이 보이는데 언제부터 생겼어요?", note: "멍"}
+    - {en: "Along with that bruising, is there any clear fluid from your nose or ears?", icon: magnify, ko: "그 멍과 함께 코나 귀에서 맑은 액체가 나오나요?", note: "액체"}
+    - {en: "Bruising and fluid like that can mean a skull base fracture.", icon: bulb, ko: "그런 멍과 액체는 두개저 골절을 의미할 수 있어요", note: "의미"}
+    - {en: "Because of that, please don't blow your nose.", icon: shield, ko: "그래서 코를 풀지 말아 주세요", note: "주의"}
+  ctx: {word: "ecchymosis", ko: "반상출혈"}
+  sw: {ko: "그 맑은 액체는 뇌척수액이 새는 것일 수 있어요"}
+- title: 뇌진탕후증후군
+  s:
+  - {t: "기간 문진", i: calendar, w: "have been going on으로 지금까지 이어진 기간을 묻는 현재완료진행이에요. 두통이 며칠인지 몇 주인지에 따라 뇌진탕 후 증상인지 다른 원인인지 가늠해요.", d: "How often", k: ["두통이 하루 중 언제 가장 심한가요?", "두통약은 어떤 걸 드셨어요?"], a: "headaches", o: ["nosebleeds", "hiccups", "coughs"]}
+  - {t: "증상 확인", i: bulb, w: "Any trouble…?로 짧게 물으면 환자가 겪는 어려움을 자기 말로 이어 가기 쉬워요. 집중과 수면의 어려움은 뇌진탕 후 증상에서 흔히 묻는 항목이에요.", d: "or eating", k: ["최근에 스트레스 받는 일이 있었나요?", "낮에 졸음이 심한가요?"], a: "concentrating", o: ["swallowing", "breathing", "walking"]}
+  - {t: "경과 설명", i: calendar, w: "can linger로 한동안 남을 수 있다는 가능성만 말해 겁주지 않아요. 뇌진탕 후 증상은 며칠에서 몇 주 이어질 수 있다는 걸 미리 알려 줘요.", d: "can vanish", k: ["이런 증상 때문에 일상이 불편하면 말씀해 주세요", "증상이 있을 때는 메모해 두세요"], a: "a concussion", o: ["a stroke", "a surgery", "an infection"]}
+  - {t: "어지럼 확인", i: me, w: "still로 처음 증상이 아직 남았는지를 묻고 dizzy or off balance로 어지러움과 균형을 함께 확인해요. 균형 문제는 낙상 위험과도 이어져서 같이 물어요.", d: "cold", k: ["일어설 때만 어지러우세요?", "귀에서 소리가 나나요?"], a: "dizzy", o: ["hungry", "thirsty", "hot"]}
+  - {t: "회복 안내", i: chartup, w: "Most people로 환자가 혼자가 아니라는 안심을 주고 slowly over several weeks로 회복 속도를 현실적으로 알려요. 뇌진탕 후 증상은 대부분 몇 주 안에 좋아져요.", d: "within a day", k: ["일부는 몇 달까지 증상이 가기도 해요", "좋아지는 속도는 사람마다 달라요"], a: "improve", o: ["worsen", "relapse", "struggle"]}
+  - {t: "회복 방법", i: bulb, w: "both로 두 가지가 함께 도움이 된다고 짚어 쉬기만 하면 된다고 오해하지 않게 해요. 완전한 안정만 오래 하기보다 증상이 심해지지 않는 선에서 가벼운 활동을 늘리는 쪽이 권고돼요.", d: "Heavy lifting", k: ["회복 중에는 화면 보는 시간을 줄여 보세요", "잠은 평소처럼 충분히 주무세요"], a: "brain", o: ["heart", "back", "mood"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "뇌진탕 후 증상 설명 4문장 순서"
+    why: "두통 기간을 묻고, 그와 함께 집중·수면 문제를 묻고, 증상이 남을 수 있지만 서서히 좋아진다고 설명한 뒤, 회복 방법으로 닫아요. 'them'·'These symptoms'·'Until then'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "How long have the headaches been going on?", icon: calendar, ko: "두통이 얼마나 오래 지속되고 있나요?", note: "기간"}
+    - {en: "Any trouble concentrating or sleeping along with them?", icon: bulb, ko: "그와 함께 집중하거나 잠드는 데 어려움이 있으세요?", note: "증상"}
+    - {en: "These symptoms can linger, but most people improve slowly over several weeks.", icon: chartup, ko: "이런 증상은 남을 수 있지만 대부분 몇 주에 걸쳐 서서히 나아져요", note: "경과"}
+    - {en: "Until then, rest and light activity both help your brain recover.", icon: bulb, ko: "그때까지 휴식과 가벼운 활동 둘 다 뇌 회복에 도움이 돼요", note: "회복"}
+  sw: {ko: "이런 증상은 뇌진탕 뒤에도 한동안 남을 수 있어요"}
+- title: 반복 구토·기면 진행
+  s:
+  - {t: "구토 횟수", i: magnify, w: "now로 지금까지의 누적 횟수를 묻고 has he vomited로 현재완료를 써요. 구토가 반복될수록 두개내압 상승 가능성이 높아져 정확한 횟수가 중요해요.", d: "has he slept", k: ["토한 건 무슨 색이었나요?", "마지막으로 먹은 게 언제예요?"], a: "vomited", o: ["eaten", "drunk", "slept"]}
+  - {t: "각성 확인", i: bell, w: "getting harder로 지금 어떤 방향으로 변하는지를 묻는 진행형이에요. 점점 깨우기 힘들어지는 것은 의식 수준이 떨어지는 신호라 보고 대상이에요.", d: "quicker", k: ["이름을 부르면 눈을 뜨나요?", "자는 동안 숨소리가 달라졌나요?"], a: "wake up", o: ["sit up", "stand up", "speak up"]}
+  - {t: "의미 설명", i: bulb, w: "This could mean…으로 가능성만 말하고 we're rechecking him now로 바로 확인한다고 이어 줘요. 반복 구토와 졸림이 겹치면 두개내압 상승을 의심해 바로 신경학적 재평가를 해요.", d: "a stomach bug", k: ["의사 선생님도 곧 와서 보실 거예요", "CT를 다시 찍을 수도 있어요"], a: "rising", o: ["falling", "stable", "low"]}
+  - {t: "경과 보고", i: board, w: "three times in the last hour처럼 횟수와 시간 범위를 숫자로 말하면 듣는 사람이 추이를 바로 알아요. 한 시간에 세 번 구토는 보고해야 할 만큼 잦은 거예요.", d: "in the last week", k: ["한 시간 전에 마지막으로 먹었어요", "한 시간 동안 두 번 깨웠어요"], a: "vomited", o: ["slept", "walked", "coughed"]}
+  - {t: "의사 호출", i: speech, w: "right now로 지체하지 않고 지금 부른다고 알리고 to report…로 목적을 붙여요. 의식 저하가 보이면 정해진 간격을 기다리지 않고 바로 의사에게 보고해요.", d: "later today", k: ["수액 라인을 다시 확인할게요", "보호자분께 상황을 다시 말씀드릴게요"], a: "doctor", o: ["pharmacist", "dietitian", "technician"]}
+  - {t: "비교 보고", i: chartup, w: "than he was an hour ago처럼 기준 시점을 붙이면 나빠졌다는 말이 객관적인 비교가 돼요. 같은 환자의 이전 상태와 견주는 것이 의식 변화를 알리는 가장 분명한 방법이에요.", d: "than usual", k: ["한 시간 전에는 먹은 걸 모두 토했어요", "한 시간 전보다 맥박이 느려졌어요"], a: "ago", o: ["later", "before", "since"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "반복 구토·기면 보고 4문장 순서"
+    why: "구토 횟수를 묻고, 그에 더해 깨우기가 힘든지 묻고, 의미를 말하며 의사를 부른 뒤, 의사에게 전할 내용을 말해요. 'that'·'This'·'them'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "How many times has he vomited now?", icon: magnify, ko: "지금까지 몇 번 토했나요?", note: "구토"}
+    - {en: "Along with that, is he getting harder to wake up?", icon: bell, ko: "그와 함께 점점 깨우기가 더 힘들어지고 있나요?", note: "각성"}
+    - {en: "This could mean rising pressure, so I'm calling the doctor right now.", icon: speech, ko: "압력이 오르고 있다는 뜻일 수 있어서 지금 바로 의사를 부를게요", note: "호출"}
+    - {en: "I'll tell them he's vomited three times and is harder to wake now.", icon: board, ko: "세 번 토했고 지금 깨우기 더 힘들다고 전할게요", note: "보고"}
+  ctx: {word: "somnolent", ko: "기면 상태인"}
+- title: 언어장벽 두부외상
+  s:
+  - {t: "예·아니오", i: speech, w: "짧은 문장과 Yes or no로 답을 두 가지로 좁혀 영어가 서툰 환자도 대답하기 쉬워요. black out은 쉬운 구어라 의식을 잃었는지 묻는 데 통해요.", d: "feel sick", k: ["넘어지셨어요? 예, 아니오?", "머리가 아프세요? 예, 아니오?"], a: "black out", o: ["throw up", "fall down", "wake up"]}
+  - {t: "복용 확인", i: pill, w: "Blood thinner medicine처럼 핵심 단어를 먼저 던지고 do you take it?으로 이어 영어가 서툰 환자가 중요한 말을 놓치지 않게 해요.", d: "Pain", k: ["알레르기 약은 드시나요?", "혈압약은 드시나요?"], a: "take", o: ["need", "want", "lose"]}
+  - {t: "통역 안내", i: speaker, w: "I'm getting…으로 지금 바로 하고 있다고 알려 환자가 안심해요. 미국 병원은 영어가 서툰 환자에게 통역을 제공해야 하고 가족이 아니라 자격 있는 통역을 쓰는 것이 원칙이에요.", d: "an X-ray", k: ["가족분께 연락해 드릴게요", "의사 선생님을 불러 드릴게요"], a: "an interpreter", o: ["a wheelchair", "a blanket", "a pillow"]}
+  - {t: "가리키기", i: me, w: "Point to로 말 대신 몸짓으로 답하게 하면 언어 장벽을 넘을 수 있어요. 아픈 위치를 직접 가리키면 머리인지 목인지 바로 알 수 있어요.", d: "when it started", k: ["손가락으로 통증 점수를 보여 주세요", "아픈 곳을 손으로 감싸 보세요"], a: "hurts", o: ["itches", "bleeds", "burns"]}
+  - {t: "몸짓 답변", i: check, w: "Nod와 shake your head로 동작을 직접 보여 줄 수 있어 말이 안 통해도 따라 하기 쉬워요. yes·no 같은 아주 쉬운 단어만 써서 부담을 줄여요.", d: "or wave", k: ["손가락을 들어 숫자를 알려 주세요", "엄지를 올려 괜찮다고 알려 주세요"], a: "shake", o: ["wave", "tap", "rub"]}
+  - {t: "통역 설명", i: speaker, w: "will help us로 통역이 환자와 의료진 모두를 돕는다고 말해 환자가 부담을 덜어요. 통역사가 오면 간호사의 말과 환자의 말을 서로 정확히 이해할 수 있어요.", d: "talk to your son", k: ["통역사는 전화로 연결될 수도 있어요", "통역사에게도 편하게 말씀하세요"], a: "interpreter", o: ["pharmacist", "chaplain", "volunteer"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "언어장벽 두부외상 4문장 순서"
+    why: "통역을 부른다고 알리고, 그때까지 몸짓으로 아픈 곳을 가리키게 하고, 그 몸짓 답으로 의식 소실을 묻고, 같은 방식으로 복용약을 물어요. 'Until then'·'Thank you'·'Same way'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "I'm getting an interpreter for you.", icon: speaker, ko: "통역사를 불러 드릴게요", note: "통역"}
+    - {en: "Until then, point to where it hurts the most.", icon: me, ko: "그때까지 가장 아픈 곳을 가리켜 주세요", note: "가리키기"}
+    - {en: "Thank you. Now nod yes or shake your head no: did you black out?", icon: check, ko: "고마워요. 이제 맞으면 끄덕, 아니면 저어 주세요. 의식을 잃으셨어요?", note: "의식"}
+    - {en: "Same way, please: do you take any blood thinner medicine?", icon: pill, ko: "같은 방식으로요. 항응고제 약을 드시나요?", note: "복용약"}
+  sw: {ko: "의료 통역사를 불러 드릴게요"}
+- title: 경막외혈종 명료기 후 악화
+  s:
+  - {t: "상황 알림", i: siren, w: "suddenly much worse로 갑작스러운 악화를 짚고 we're acting now로 바로 대응한다고 알려 환자를 안심시켜요. 명료기 뒤 갑자기 심해지는 두통은 경막외혈종의 전형적인 악화 양상이에요.", d: "is slowly", k: ["두통이 어느 쪽에서 더 심하세요?", "지금 토할 것 같으세요?"], a: "headache", o: ["vision", "hearing", "balance"]}
+  - {t: "의식 유지", i: speech, w: "Stay with me는 정신을 놓지 말라는 말이고 keep talking은 구체적인 행동 지시예요. 환자가 대답하는 동안은 의식 수준을 계속 확인할 수 있어요.", d: "and close your eyes", k: ["눈을 감지 말고 저를 봐 주세요", "숨을 크게 쉬어 보세요"], a: "keep", o: ["stop", "quit", "avoid"]}
+  - {t: "전문의 호출", i: speech, w: "calling과 immediately로 지금 호출 중임을 분명히 알려 환자와 가족이 심각성과 대응을 함께 알아요. 경막외혈종처럼 압력이 빠르게 오르는 출혈은 응급 수술이 필요할 수 있어요.", d: "the pharmacy", k: ["CT실에 지금 바로 연락하고 있어요", "마취과에도 곧 연락할게요"], a: "neurosurgery", o: ["cardiology", "dermatology", "radiology"]}
+  - {t: "변화 확인", i: magnify, w: "minutes ago와 now를 나란히 두어 짧은 시간 안에 달라진 점을 환자가 스스로 말하게 해요. 괜찮다가 갑자기 나빠지는 경과(명료기 뒤 악화)가 경막외혈종의 특징이에요.", d: "days ago—now", k: ["언제부터 머리가 아프기 시작했는지 말씀해 주세요", "지금 어떤 느낌인지 숫자로 말씀해 주세요"], a: "fine", o: ["ill", "weak", "sick"]}
+  - {t: "의미 설명", i: bulb, w: "looks like로 진단 확정이 아니라 보이는 양상을 말해요. 머리뼈 안에서 출혈이 빠르게 쌓이면 뇌가 눌려서 급격히 나빠질 수 있어요.", d: "This small change", k: ["수술로 고여 있는 피를 빼야 할 수도 있어요", "정확한 건 CT로 바로 확인할게요"], a: "sudden", o: ["slow", "small", "mild"]}
+  - {t: "수술 필요", i: scalpel, w: "We need…fast로 수술이 급하다고 솔직하게 알리고 to relieve…로 이유를 붙여요. 경막외혈종은 고인 피가 뇌를 누르는 응급이라 신속한 수술로 압력을 낮춰요.", d: "rest soon", k: ["수술 전에 동의서를 받아야 해요", "수술 준비를 위해 금식해 주세요"], a: "relieve", o: ["increase", "measure", "record"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "경막외혈종 악화 대응 4문장 순서"
+    why: "갑작스러운 악화를 알리고, 말을 이어 가게 하며 상태를 설명하고, 그래서 신경외과를 부르며 수술이 필요하다고 해요. 'while we do'·'As you talk'·'Because of that'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Your headache is suddenly much worse—we're acting now.", icon: siren, ko: "두통이 갑자기 훨씬 심해졌어요, 지금 바로 대응하고 있어요", note: "알림"}
+    - {en: "Stay with me and keep talking to me while we do.", icon: speech, ko: "저희가 하는 동안 정신 차리고 계속 말씀 나눠요", note: "유지"}
+    - {en: "As you talk, this sudden change looks like bleeding building up fast.", icon: bulb, ko: "말씀하시는 동안 이 갑작스러운 변화는 출혈이 빠르게 쌓이는 것 같아요", note: "설명"}
+    - {en: "Because of that, we're calling neurosurgery now—we need surgery fast.", icon: scalpel, ko: "그래서 지금 신경외과를 부르고 있어요, 빨리 수술이 필요해요", note: "호출"}
+  ctx: {word: "STAT", ko: "즉시"}

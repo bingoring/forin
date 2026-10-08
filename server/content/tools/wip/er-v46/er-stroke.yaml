@@ -3162,15 +3162,15 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: FAST 선별 4문장 순서
-    why: 얼굴 확인에서 만든 자세를 팔 검사가 이어받고, 팔을 든 채 말하기를 보고, 마지막에 전체 증상이 시작된 시각을 물어요. 각 줄이 앞 줄의 동작을 가리켜서 순서가 하나예요.
+    why: 얼굴 확인으로 시작하고, 이어서 팔을 뻗게 하고, 팔을 든 채 말하기를 보고, 마지막에 팔을 내리게 한 뒤 전체 증상이 시작된 시각을 물어요. First가 첫 줄을, While your arms are up이 팔과 말 줄을 잡아 순서가 하나예요.
     lines:
     - en: First, please smile and show me your teeth.
       icon: speech
       ko: 먼저 웃으면서 이를 보여 주세요
       note: 얼굴
-    - en: Good. Now keep that smile and hold both arms straight out.
+    - en: Good. Now hold both arms straight out.
       icon: bandage
-      ko: 좋아요, 그 미소를 유지하고 양팔을 뻗어 보세요
+      ko: 좋아요, 이제 양팔을 앞으로 쭉 뻗어 보세요
       note: 팔
     - en: While your arms are up, repeat this sentence after me.
       icon: speech
@@ -3247,7 +3247,7 @@ situations:
     why: acting like himself는 평소와 같았는지를 가르는 일상적인 기준이에요. 특정한 식사 자리를 짚으면 보호자가 그때를 더 정확히 떠올려요.
     decoy: this morning
     distractorsKo:
-    - 어젯밤에 식사를 하셨나요?
+    - 그가 어젯밤 몇 시에 잠자리에 들었나요?
     - 어젯밤에 몇 시에 주무셨나요?
     blank:
       answer: dinner
@@ -3319,7 +3319,7 @@ situations:
     tag: 연락처 확보
     icon: bell
     why: 목격 진술을 다시 확인해야 할 때를 대비해 보호자 연락처를 받아요. in case로 연락할 이유를 먼저 밝히면 개인 정보를 달라는 부담이 줄어요.
-    decoy: to send a bill
+    decoy: to send your results
     distractorsKo:
     - 보호자님의 성함과 관계를 말씀해 주세요
     - 환자분의 보험증을 보여 주시겠어요?
@@ -3344,7 +3344,7 @@ situations:
     goal: 2
     tag: 최종 목격자
     icon: me
-    why: 마지막 정상 시각은 환자를 가장 나중에 본 사람의 진술로 정해요. 그 사람이 환자의 평소 모습을 아는지도 함께 확인해요.
+    why: 마지막 정상 시각은 환자를 가장 나중에 본 사람의 진술로 정해요. the most recent로 "마지막으로 본 사람"을 한 번에 짚어요.
     decoy: the youngest
     distractorsKo:
     - 보호자님이 환자분과 같이 사시나요?
@@ -3394,7 +3394,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 마지막 정상 시각 확인 4문장 순서
-    why: 마지막 정상 시각을 묻고, 그 시각에 함께 있던 사람을 찾고, 그 사람이 이후에 봤는지 확인한 뒤, 맞다면 연락처를 받아요. 뒤 줄이 앞 줄의 답을 가리켜서 순서가 하나예요.
+    why: 마지막 정상 시각을 묻고, 그 시각에 함께 있던 사람을 찾고, 그 사람이 이후에 봤는지 확인한 뒤, 어느 쪽이든 연락처를 받아요. 뒤 줄이 앞 줄의 답을 가리켜서 순서가 하나예요.
     lines:
     - en: When did you last see him completely normal?
       icon: calendar
@@ -3408,9 +3408,9 @@ situations:
       icon: me
       ko: 그 사람이 그 뒤에 그를 다시 봤나요?
       note: 이후
-    - en: If so, I'll need their phone number so we can confirm the time.
+    - en: Either way, I'll need that person's phone number so we can confirm the time.
       icon: bell
-      ko: 그렇다면 시각을 확인하게 그분 전화번호가 필요해요
+      ko: 어느 쪽이든 시각을 확인하게 그분 전화번호가 필요해요
       note: 연락처
 - title: 즉시 혈당·활력 측정
   sentences:
@@ -3530,7 +3530,7 @@ situations:
     - w-oxygen
     goal: 2
     tag: 산소 확인
-    icon: gear
+    icon: monitor
     why: also는 앞서 하던 측정에 이어서 한다는 뜻이에요. 산소포화도는 손가락 센서로 바로 잴 수 있어서 환자에게 부담이 적어요.
     decoy: your pain
     distractorsKo:
@@ -3567,8 +3567,8 @@ situations:
       answer: low
       options:
       - en: high
-      - en: normal
-      - en: unsteady
+      - en: elevated
+      - en: unstable
       - en: low
   - en: We'll give you sugar through your IV to bring it up.
     ko: 혈당을 올리기 위해 정맥으로 당을 드릴게요.
@@ -3586,7 +3586,7 @@ situations:
     why: 저혈당이면 당을 올리는 치료를 해요. 정맥으로 주면 효과가 빠르고 삼키기 어려운 환자에게도 쓸 수 있어요. to bring it up으로 목적을 밝혀요.
     decoy: by mouth
     distractorsKo:
-    - 수액을 걸어 드릴게요
+    - 혈당이 오를 때까지 옆에 있을게요
     - 혈당을 한 번 더 확인할게요
     blank:
       answer: IV
@@ -3649,9 +3649,9 @@ situations:
       icon: monitor
       ko: 그게 들어가는 동안 혈압과 맥박을 잴게요
       note: 활력
-    - en: Once all of that is done, I'll recheck your sugar to see if it came up.
+    - en: Once all of that is done, I'll recheck your sugar.
       icon: lab
-      ko: 그게 다 끝나면 혈당이 올랐는지 다시 확인할게요
+      ko: 그게 다 끝나면 혈당을 다시 확인할게요
       note: 재확인
 - title: 두부 CT 준비 설명
   sentences:
@@ -3671,7 +3671,7 @@ situations:
     goal: 1
     tag: 검사 목적
     icon: magnify
-    why: 응급 두부 CT는 출혈인지 혈전인지부터 가려요. 이 구분이 혈전용해제를 쓸 수 있는지를 정해요.
+    why: 응급 두부 CT는 먼저 출혈이 있는지를 가려요. 초기 경색은 CT에 잘 안 보일 수 있지만, 출혈이 없어야 혈전용해제를 쓸 수 있어요.
     decoy: in your chest
     distractorsKo:
     - CT로 폐에 물이 찼는지 확인해요
@@ -3707,7 +3707,7 @@ situations:
       - en: painless
       - en: noisy
       - en: tiring
-      - en: costly
+      - en: uncomfortable
   - en: Please hold your head still while the machine scans.
     ko: 기계가 촬영하는 동안 머리를 가만히 있어 주세요.
     chunks:
@@ -3962,7 +3962,7 @@ situations:
     goal: 1
     tag: 시험 삼킴
     icon: coffee
-    why: 처음에는 아주 적은 양으로 시험해야 기도로 넘어가도 위험이 작아요. 기침은 물이 기도 쪽으로 들어갔다는 신호일 수 있어요.
+    why: 병원 선별 도구에 따라 양은 다르지만, small sip으로 시작하면 한 번에 많이 마시지 않아 기도로 넘어가도 위험이 작아요. 기침은 물이 기도 쪽으로 들어갔다는 신호일 수 있어요.
     decoy: a big gulp
     distractorsKo:
     - 삼킨 뒤에 아 하고 소리를 내 보세요
@@ -4077,8 +4077,8 @@ situations:
     blank:
       answer: results
       options:
-      - en: visitors
-      - en: patients
+      - en: doctors
+      - en: therapists
       - en: results
       - en: nurses
   nuance:
@@ -4216,7 +4216,7 @@ situations:
       answer: name
       options:
       - en: color
-      - en: price
+      - en: size
       - en: owner
       - en: name
   - en: Squeeze my hands as hard as you can.
@@ -4294,7 +4294,7 @@ situations:
       - en: silly
       - en: boring
       - en: hard
-      - en: easy
+      - en: long
   - en: This score helps us track any changes over time.
     ko: 이 점수는 시간에 따른 변화를 추적하는 데 도움이 돼요.
     chunks:
@@ -4309,14 +4309,14 @@ situations:
     tag: 점수 설명
     icon: chartup
     why: 점수를 숫자로 남기면 나중에 다시 재서 나아졌는지 나빠졌는지 비교할 수 있어요. over time은 한 번이 아니라 여러 번 반복해서 본다는 뜻이에요.
-    decoy: your bill
+    decoy: your weight
     distractorsKo:
     - 이 점수를 보고 약 용량을 정해요
     - 이 점수는 의사에게 먼저 전달할게요
     blank:
       answer: changes
       options:
-      - en: costs
+      - en: doses
       - en: visits
       - en: errors
       - en: changes
@@ -4471,7 +4471,7 @@ situations:
     decoy: looks slower
     distractorsKo:
     - 오른쪽 눈이 붉어 보여요
-    - 오른쪽 팔의 맥박이 약해요
+    - 오른쪽 입꼬리가 처져 보여요
     blank:
       answer: weaker
       options:
@@ -4553,7 +4553,7 @@ situations:
       answer: risks
       options:
       - en: risks
-      - en: costs
+      - en: benefits
       - en: steps
       - en: names
   nuance:
@@ -4605,7 +4605,7 @@ situations:
       icon: calendar
       ko: 그 시각이면 아직 혈전용해제 시간창 안이에요
       note: 시간창
-    - en: Before we use it, have you had any surgery or bleeding in the past two weeks?
+    - en: Before we use it, any surgery or bleeding in the past two weeks?
       icon: board
       ko: 쓰기 전에 지난 2주 안에 수술이나 출혈이 있었나요?
       note: 금기
@@ -4706,7 +4706,7 @@ situations:
     goal: 2
     tag: 복시 감별
     icon: magnify
-    why: 한쪽 눈을 가렸을 때 사라지는지는 복시의 원인이 눈 자체인지 두 눈의 협응인지 가르는 단서예요. 환자의 답을 정확히 전달하는 것이 간호사의 몫이에요.
+    why: 한쪽 눈을 가렸을 때 사라지는지는 복시의 원인이 눈 자체인지 두 눈의 협응인지 가르는 단서예요. 사라지면 두 눈의 정렬 문제(뇌간·뇌신경 쪽), 그대로면 눈 자체의 문제를 먼저 생각해요.
     decoy: if you blink
     distractorsKo:
     - 겹쳐 보이는 게 언제부터 시작됐나요?
@@ -4785,8 +4785,8 @@ situations:
     why: 뇌졸중이 꼭 팔다리 힘 빠짐으로 나타나는 것은 아니에요. can still mean은 가능성을 인정하되 단정하지 않는 표현이에요.
     decoy: a cold
     distractorsKo:
-    - 이 증상은 대부분 곧 사라져요
-    - 이 증상은 약만 드시면 돼요
+    - 이 증상은 귀 문제일 수도 있어요
+    - 걷기 검사를 한 번 더 해 볼게요
     blank:
       answer: weakness
       options:
@@ -4836,7 +4836,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 후순환 뇌졸중 문진 4문장 순서
-    why: 겹쳐 보이는지 먼저 묻고, 둘로 보이면 한쪽 눈을 가려 보게 하고, 그 상태에서 방이 도는지 묻고, 이 증상들이 뇌졸중일 수 있다고 알려요. 뒤 줄이 앞 줄의 답을 가리켜서 순서가 하나예요.
+    why: 겹쳐 보이는지 먼저 묻고, 둘로 보이면 한쪽 눈을 가려 보게 하고, 복시와 함께 방이 도는지 묻고, 이 증상들이 뇌졸중일 수 있다고 알려요. 뒤 줄이 앞 줄의 답을 가리켜서 순서가 하나예요.
     lines:
     - en: Are you seeing one of me or two right now?
       icon: magnify
@@ -4846,9 +4846,9 @@ situations:
       icon: magnify
       ko: 둘로 보이면 한쪽 눈을 가릴 때 사라지나요?
       note: 감별
-    - en: Even with that eye covered, does the room feel like it's spinning?
+    - en: Along with the double vision, does the room feel like it's spinning?
       icon: faceWorried
-      ko: 그 눈을 가려도 방이 도는 것처럼 느껴지세요?
+      ko: 겹쳐 보이는 것과 함께 방이 도는 것처럼 느껴지세요?
       note: 현훈
     - en: Together, these symptoms can still mean a stroke, even without weakness.
       icon: shield
@@ -5025,7 +5025,7 @@ situations:
     why: 밤중에 깨어 있던 사람이 있다면 환자가 정상이던 마지막 시각을 말해 줄 수 있어요. anyone else로 환자 말고 다른 사람을 찾아요.
     decoy: all day
     distractorsKo:
-    - 밤에 같이 주무신 분이 계셨나요?
+    - 밤에 화장실에 몇 번 가셨나요?
     - 밤에 아프다고 말한 적이 있나요?
     blank:
       answer: awake
@@ -5096,7 +5096,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 기상 시 발견 문진 4문장 순서
-    why: 잠든 시각을 묻고, 그 뒤 밤중에 정상으로 깼는지 확인하고, 깼다면 아침에 증상을 알아챈 시각을 묻고, 시각을 못 잡으면 영상으로 판단한다고 알려요. 뒤 줄이 앞 줄의 답을 가리켜서 순서가 하나예요.
+    why: 잠든 시각을 묻고, 그 뒤 밤중에 정상으로 깼는지 확인하고, 어느 쪽이든 아침에 증상을 알아챈 시각을 묻고, 그래도 시작 시각이 불분명하면 영상으로 판단한다고 알려요. 뒤 줄이 앞 줄의 답을 가리켜서 순서가 하나예요.
     lines:
     - en: What time did you go to sleep last night?
       icon: calendar
@@ -5106,13 +5106,13 @@ situations:
       icon: bell
       ko: 잠드신 뒤에 정상이라고 느끼며 깬 적이 있나요?
       note: 각성
-    - en: If you did, when exactly did you notice the weakness this morning?
+    - en: Either way, when exactly did you notice the weakness this morning?
       icon: calendar
-      ko: 그랬다면 오늘 아침 위약감을 정확히 언제 알아챘나요?
+      ko: 어느 쪽이든 오늘 아침 위약감을 정확히 언제 알아챘나요?
       note: 발견
-    - en: Since we can't pin that time down either, the scan will guide us.
+    - en: Since that still leaves the start time unclear, the scan will guide us.
       icon: monitor
-      ko: 그 시각도 못 정하니 촬영이 판단에 도움이 될 거예요
+      ko: 그래도 시작 시각이 불분명하니 촬영이 판단에 도움이 될 거예요
       note: 영상
 - title: tPA 금기 선별
   sentences:
@@ -5134,7 +5134,7 @@ situations:
     why: 혈전용해제는 출혈을 늘릴 수 있어서 최근 수술이나 큰 출혈이 있었는지 먼저 확인해요. major를 붙이면 코피 같은 사소한 일과 구분돼요.
     decoy: years ago
     distractorsKo:
-    - 약을 먹고 출혈이 있었던 적이 있나요?
+    - 최근에 치과 치료를 받으셨나요?
     - 최근에 낙상이 있었나요?
     blank:
       answer: surgery
@@ -5262,17 +5262,17 @@ situations:
     tag: 질문 이유
     icon: shield
     why: 질문의 이유를 밝히면 환자가 캐묻는다고 느끼지 않고 정확히 답해요. make sure는 확인 절차라는 뜻을 전해요.
-    decoy: for the bill
+    decoy: for the pharmacy
     distractorsKo:
     - 이 질문들은 곧 끝날 거예요
     - 이 질문들은 의사가 다시 물을 거예요
     blank:
       answer: safe
       options:
-      - en: free
+      - en: effective
       - en: ready
       - en: safe
-      - en: cheap
+      - en: available
   - en: Do you know if you have any bleeding disorders?
     ko: 출혈 장애가 있는지 알고 계신가요?
     chunks:
@@ -5338,7 +5338,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 혈전용해제 금기 문진 4문장 순서
-    why: 질문하는 이유를 알리고, 뇌출혈 병력을 먼저 묻고, 아니라는 답을 이어받아 항응고제를 묻고, 마지막에 지금까지의 답을 근거로 출혈 질환을 물어요. 뒤 줄이 앞 줄의 답을 가리켜서 순서가 하나예요.
+    why: 질문하는 이유를 알리고, 뇌출혈 병력을 먼저 묻고, 항응고제를 묻고, 마지막에 출혈 질환을 물어요. First와 Last가 처음과 끝을 잡아 순서가 하나예요.
     lines:
     - en: I'm going to ask some questions to make sure the medication is safe for you.
       icon: shield
@@ -5348,13 +5348,13 @@ situations:
       icon: stetho
       ko: 먼저, 전에 뇌출혈이 있었던 적이 있나요?
       note: 뇌출혈
-    - en: If not, are you taking any blood thinners?
+    - en: Are you taking any blood thinners?
       icon: pill
-      ko: 없다면 항응고제를 복용하고 계신가요?
+      ko: 항응고제를 복용하고 계신가요?
       note: 항응고
-    - en: Last, with those answers in mind, do you know if you have any bleeding disorders?
+    - en: Last, do you know if you have any bleeding disorders?
       icon: bandage
-      ko: 마지막으로 그 답들을 보면, 출혈 장애가 있는지 아세요?
+      ko: 마지막으로, 출혈 장애가 있는지 아세요?
       note: 출혈병
 - title: 실어증 환자 소통
   sentences:
@@ -5374,7 +5374,7 @@ situations:
     why: 말이 안 나오는 실어증 환자도 눈 깜빡임으로는 답할 수 있어요. 횟수로 예와 아니오를 정해 두면 한 번에 하나씩 확인하기 쉬워요.
     decoy: three times
     distractorsKo:
-    - 눈을 깜빡이지 말고 가만히 계세요
+    - 고개를 끄덕여서 대답해 주세요
     - 눈을 크게 떠 보세요
     blank:
       answer: Blink
@@ -5477,12 +5477,12 @@ situations:
     - 제 질문이 이해되지 않으면 손을 들어 주세요
     - 잘 모르겠으면 눈을 감고 계세요
     blank:
-      answer: not
+      answer: right
       options:
-      - en: exactly
-      - en: always
-      - en: not
-      - en: really
+      - en: clear
+      - en: finished
+      - en: right
+      - en: comfortable
   - en: Take your time, there's no rush at all.
     ko: 천천히 하세요, 전혀 서두를 필요 없어요.
     chunks:
@@ -5519,7 +5519,7 @@ situations:
     - w-answer
     goal: 1
     tag: 강도 신호
-    icon: gear
+    icon: me
     why: 예와 아니오를 쥐는 세기로 나눠 두면 눈을 깜빡이기 어려운 환자도 답할 수 있어요. 한 가지 방법이 안 되면 다른 신호를 준비해요.
     decoy: if it's wrong
     distractorsKo:
@@ -5580,9 +5580,9 @@ situations:
       icon: speech
       ko: 예/아니오 질문을 한 번에 하나씩 드릴게요
       note: 방식
-    - en: For your answers, blink twice for yes and once for no.
+    - en: For those questions, blink twice for yes and once for no.
       icon: magnify
-      ko: 답은 예이면 두 번, 아니오면 한 번 깜빡여 주세요
+      ko: 그 질문에는 예이면 두 번, 아니오면 한 번 깜빡여 주세요
       note: 깜빡임
     - en: If blinking is hard, squeeze my hand harder for yes instead.
       icon: gear
@@ -5688,7 +5688,7 @@ situations:
     why: 심방이 규칙적으로 수축하지 않으면 피가 고여 응고되기 쉬워요. 이 원리를 알려 주면 환자가 약을 꾸준히 먹어야 하는 이유를 이해해요.
     decoy: inside your lungs
     distractorsKo:
-    - 빠른 심장박동은 위험하지 않아요
+    - 혈압이 높으면 혈관이 약해질 수 있어요
     - 심장이 불규칙하면 숨이 차기 쉬워요
     blank:
       answer: An irregular
@@ -5716,7 +5716,7 @@ situations:
     decoy: a heart attack
     distractorsKo:
     - 그 혈전은 약으로 바로 녹일 수 있어요
-    - 그 혈전은 혈액검사에서 바로 보여요
+    - 심전도로 리듬을 계속 지켜볼게요
     blank:
       answer: stroke
       options:
@@ -5739,7 +5739,7 @@ situations:
     why: 꾸준히 복용하면 혈전이 생기는 것을 줄여 뇌졸중을 예방해요. Staying on은 계속 이어 간다는 뜻이라 잠깐만 먹는 약이 아님을 전해요.
     decoy: Starting
     distractorsKo:
-    - 약은 증상이 있을 때만 드시면 돼요
+    - 약은 매일 같은 시간에 드세요
     - 약은 식사와 상관없이 드세요
     blank:
       answer: prevent
@@ -5814,7 +5814,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 심방세동 병력 확인 4문장 순서
-    why: 병력 기간을 묻고, 그 병 때문에 항응고제를 쓰는지 묻고, 그렇다면 거른 적이 있는지 묻고, 걸렀다면 마지막 복용 시각을 확인해요. 뒤 줄이 앞 줄의 답을 가리켜서 순서가 하나예요.
+    why: 병력 기간을 묻고, 그 병 때문에 항응고제를 쓰는지 묻고, 그렇다면 거른 적이 있는지 묻고, 거른 적이 있든 없든 마지막 복용 시각을 확인해요. 뒤 줄이 앞 줄의 답을 가리켜서 순서가 하나예요.
     lines:
     - en: How long have you had atrial fibrillation?
       icon: stetho
@@ -5828,9 +5828,9 @@ situations:
       icon: calendar
       ko: 그렇다면 최근에 복용을 거른 적이 있나요?
       note: 순응
-    - en: If you did miss any, let's check when you took your last dose.
+    - en: Either way, let's check when you took your last dose.
       icon: calendar
-      ko: 거른 적이 있다면 마지막 복용 시각을 확인해 봐요
+      ko: 어느 쪽이든 마지막 복용 시각을 확인해 봐요
       note: 시각
 - title: 항응고제 복용자
   sentences:
@@ -5957,8 +5957,8 @@ situations:
     why: INR이 높으면 피가 잘 멎지 않아 출혈 위험이 커져요. means로 수치를 의미로 바로 번역해 주면 환자가 숫자의 뜻을 이해해요.
     decoy: a lower
     distractorsKo:
-    - INR이 높으면 혈전이 더 잘 생겨요
-    - INR이 높으면 약을 한 알 더 드셔야 해요
+    - INR은 피가 굳는 데 걸리는 시간을 보여 줘요
+    - 지금 피를 뽑아 INR을 다시 볼게요
     blank:
       answer: bleeding
       options:
@@ -6007,7 +6007,7 @@ situations:
     tag: 약병 요청
     icon: pill
     why: 약병에는 약 이름과 용량이 적혀 있어서 정확한 복용 정보를 확인하기 좋아요. if you can은 어려우면 안 해도 된다는 배려예요.
-    decoy: tomorrow
+    decoy: to the pharmacy
     distractorsKo:
     - 약 이름을 종이에 적어 주세요
     - 처방전은 약국에 두고 오세요
@@ -6057,7 +6057,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 항응고제 복용 확인 4문장 순서
-    why: 약 이름과 용량을 묻고, 그 약의 마지막 복용 시각을 묻고, 그 시각과 함께 최근 INR을 묻고, 높은 INR과 심한 출혈이면 해독이 필요할 수 있다고 알려요. 뒤 줄이 앞 줄의 답을 가리켜서 순서가 하나예요.
+    why: 약 이름과 용량을 묻고, 그 약의 마지막 복용 시각을 묻고, 와파린이면 INR을 묻고, INR이 높고 출혈이 심하면 약효를 되돌려야 할 수 있다고 알려요. 뒤 줄이 앞 줄의 답을 가리켜서 순서가 하나예요.
     lines:
     - en: What blood thinner do you take and what dose?
       icon: pill
@@ -6067,13 +6067,13 @@ situations:
       icon: calendar
       ko: 그 약의 마지막 복용이 정확히 언제였나요?
       note: 시각
-    - en: With that timing in mind, do you know your most recent INR value?
+    - en: Besides that time, do you know your most recent INR value?
       icon: lab
-      ko: 그 시각을 감안해 최근 INR 수치를 아세요?
+      ko: 그 시각 말고, 최근 INR 수치를 아세요?
       note: INR
-    - en: If that INR is high and bleeding is severe, we may need to reverse the medication.
+    - en: If it's high and bleeding is severe, we may need to reverse it.
       icon: pill
-      ko: 그 INR이 높고 출혈이 심하면 약효를 되돌려야 할 수 있어요
+      ko: 그게 높고 출혈이 심하면 약효를 되돌려야 할 수 있어요
       note: 해독
 - title: 언어장벽 뇌졸중
   sentences:
@@ -6382,7 +6382,7 @@ situations:
     why: 혈압을 낮추는 중에 두통이 심해지면 뇌출혈 같은 합병증의 신호일 수 있어서 바로 알려 달라고 해요. if로 무엇을 알려야 하는지 분명히 해요.
     decoy: comes back
     distractorsKo:
-    - 약을 드시면 알려 주세요
+    - 숨이 차면 바로 말씀해 주세요
     - 어지러우면 눕지 말고 앉아 계세요
     blank:
       answer: headache
@@ -6409,7 +6409,7 @@ situations:
     decoy: after we can treat
     distractorsKo:
     - 목표 수치는 약을 먹은 뒤 알려 드릴게요
-    - 혈전 치료는 수치와 상관없이 시작해요
+    - 혈압약은 정맥으로 들어가요
     blank:
       answer: clot
       options:
@@ -6434,7 +6434,7 @@ situations:
     decoy: every day
     distractorsKo:
     - 지금 바로 혈압약을 드릴게요
-    - 혈압이 괜찮으면 퇴원할 수 있어요
+    - 혈압약이 들어가면 조금 어지러울 수 있어요
     blank:
       answer: check
       options:
@@ -6458,7 +6458,7 @@ situations:
     why: 시야 변화는 혈압이나 뇌 혈류가 달라질 때 나타날 수 있어서 바로 알려 달라고 해요. right away는 기다리지 말고 즉시라는 뜻이에요.
     decoy: later today
     distractorsKo:
-    - 시야가 좋아지면 알려 주세요
+    - 팔다리에 힘이 빠지면 알려 주세요
     - 눈이 아프면 바로 말씀해 주세요
     blank:
       answer: vision
@@ -6485,7 +6485,7 @@ situations:
     why: 갑작스러운 두통에 높은 혈압이 겹치면 뇌출혈 같은 위급한 원인일 수 있어요. sudden과 quick이 함께 오면 왜 서두르는지가 한 문장에 담겨요.
     decoy: mild
     distractorsKo:
-    - 갑작스러운 두통은 진통제만 드시면 돼요
+    - 두통이 언제 시작됐는지 기록할게요
     - 두통이 있으면 먼저 눈을 감고 쉬세요
     blank:
       answer: quick
@@ -6533,7 +6533,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 혈압 조절 안내 4문장 순서
-    why: 치료 전에 혈압을 낮춰야 한다고 알리고, 그 목표를 위해 약을 쓴다고 하고, 약이 들어간 뒤 일정 시간 뒤 재측정을 예고하고, 그때까지 시야나 두통 변화를 알려 달라고 해요. 뒤 줄이 앞 줄을 가리켜서 순서가 하나예요.
+    why: 치료 전에 혈압을 낮춰야 한다고 알리고, 그 목표를 위해 약을 쓴다고 하고, 약이 들어간 뒤 일정 시간 뒤 재측정을 예고하고, 수치가 어떻든 시야나 두통 변화를 바로 알려 달라고 해요. 뒤 줄이 앞 줄을 가리켜서 순서가 하나예요.
     lines:
     - en: Your blood pressure needs to come down before treatment.
       icon: monitor
@@ -6547,9 +6547,9 @@ situations:
       icon: monitor
       ko: 그 약이 들어간 뒤 15분 후에 혈압을 다시 잴게요
       note: 재측정
-    - en: Until then, let me know right away if your vision changes or your headache gets worse.
+    - en: Whatever that number shows, tell me right away if your vision changes or headache worsens.
       icon: bell
-      ko: 그때까지 시야가 변하거나 두통이 심해지면 바로 알려 주세요
+      ko: 그 수치가 어떻든 시야가 변하거나 두통이 심해지면 바로 알려 주세요
       note: 보고
 - title: TIA 증상 소실
   sentences:
@@ -6697,10 +6697,10 @@ situations:
     tag: 치료 안 할 때
     icon: chartup
     why: Without treatment로 시작해 치료를 받지 않았을 때의 결과를 먼저 보여 줘요. 위험이 오른다는 사실을 과장 없이 말해요.
-    decoy: your bill for
+    decoy: of a heart attack
     distractorsKo:
     - 치료받지 않으면 퇴원이 늦어져요
-    - 치료받지 않으면 약이 부족해요
+    - 치료 계획은 신경과 의사가 정해요
     blank:
       answer: real
       options:
@@ -6803,19 +6803,19 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: TIA 후 입원 권유 4문장 순서
-    why: 증상이 지나갔어도 경고였다고 알리고, 그것이 미니 뇌졸중일 가능성과 재발을 말하고, 그래서 검사가 필요하다고 이유를 잇고, 집에 가면 그 검사를 못 하니 남아 달라고 해요. 뒤 줄이 앞 줄을 가리켜서 순서가 하나예요.
+    why: 증상이 지나갔어도 경고였다고 알리고, 그 경고가 미니 뇌졸중일 가능성과 재발을 말하고, 재발을 막으려면 검사가 필요하다고 이유를 잇고, 집에 가면 그 검사를 못 하니 남아 달라고 해요. 뒤 줄이 앞 줄을 가리켜서 순서가 하나예요.
     lines:
     - en: Even though it passed, this was a serious warning sign.
       icon: siren
       ko: 지나갔더라도 이건 심각한 경고 신호였어요
       note: 경고
-    - en: It was likely a mini-stroke, and it can happen again.
+    - en: That warning was likely a mini-stroke, and it can happen again.
       icon: faceWorried
-      ko: 미니 뇌졸중일 가능성이 높고 다시 올 수 있어요
+      ko: 그 경고는 미니 뇌졸중이었을 가능성이 높고 다시 올 수 있어요
       note: 재발
-    - en: That's why we need tests to find the cause and prevent a full stroke.
+    - en: To keep it from happening again, we need tests to find the cause.
       icon: lab
-      ko: 그래서 원인을 찾고 본격적인 뇌졸중을 막을 검사가 필요해요
+      ko: 다시 오지 않게 하려면 원인을 찾을 검사가 필요해요
       note: 이유
     - en: Going home now would mean skipping those tests, so please stay.
       icon: hospital
@@ -6840,7 +6840,7 @@ situations:
     why: 의식이 떨어지는 환자에게는 눈을 뜨게 하는 지시로 반응을 확인해요. stay with me는 놓치지 않겠다는 뜻이라 곁에 있다는 안정감을 줘요.
     decoy: rest now
     distractorsKo:
-    - 눈을 감고 천천히 숨을 쉬세요
+    - 지금 어디가 제일 아프세요?
     - 제 손을 쥐어 보실 수 있나요?
     blank:
       answer: eyes
@@ -7046,7 +7046,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 출혈성 뇌졸중 악화 응대 4문장 순서
-    why: 의식을 붙잡는 말로 시작하고, 그동안 혈압약을 쓴다고 알리고, 치료 중 구토가 이어지면 옆으로 돌려 기도를 지키고, 옆으로 누운 상태에서 반응을 다시 확인해요. 뒤 줄이 앞 줄을 가리켜서 순서가 하나예요.
+    why: 의식을 붙잡는 말로 시작하고, 그동안 혈압약을 쓴다고 알리고, 치료 중 구토하면 옆으로 돌려 기도를 지키고, 옆으로 누운 상태에서 반응을 다시 확인해요. 뒤 줄이 앞 줄을 가리켜서 순서가 하나예요.
     lines:
     - en: Stay with me and keep your eyes open if you can.
       icon: bell
@@ -7056,13 +7056,13 @@ situations:
       icon: pill
       ko: 그동안 혈압을 낮추려고 지금 약을 드리고 있어요
       note: 투약
-    - en: If you keep vomiting during that, we're turning you on your side to protect your airway.
+    - en: If you vomit during that, we'll turn you on your side for your airway.
       icon: shield
-      ko: 그러는 중 계속 토하면 기도를 보호하려고 옆으로 돌려 드려요
+      ko: 그러는 중 토하면 기도를 위해 옆으로 돌려 드릴게요
       note: 체위
-    - en: Once you're on your side, can you squeeze my hand and open your eyes for me?
+    - en: On your side now, can you squeeze my hand and open your eyes?
       icon: me
-      ko: 옆으로 누우면 제 손을 쥐고 눈을 떠 보실 수 있나요?
+      ko: 이제 옆으로 누우셨으니 제 손을 쥐고 눈을 떠 보실 수 있나요?
       note: 반응
 - title: 대혈관 폐색 혈전제거술 이송
   sentences:
@@ -7133,7 +7133,7 @@ situations:
     why: so we don't lose time으로 서두르는 이유를 붙이면 압박이 아니라 설명으로 들려요. 설명 동의는 시술 의사가 받고, 간호사는 서명에 입회하며 이해했는지 확인해요.
     decoy: your opinion
     distractorsKo:
-    - 동의서는 시술 후에 받을게요
+    - 시술 의사가 곧 와서 설명할 거예요
     - 동의서는 의사가 이미 받았어요
     blank:
       answer: consent
@@ -7212,7 +7212,7 @@ situations:
     why: 뇌졸중에서는 치료가 늦어질수록 더 많은 뇌 조직이 손상돼요. Every minute으로 지체의 비용을 구체적으로 말하면 가족이 서둘러야 하는 이유를 이해해요.
     decoy: Every week
     distractorsKo:
-    - 치료 시간이 지날수록 비용이 올라가요
+    - 시술은 한두 시간쯤 걸려요
     - 치료 전에 몇 가지 검사를 더 해야 해요
     blank:
       answer: brain
@@ -7286,7 +7286,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 혈전제거술 동의와 이송 4문장 순서
-    why: 시술이 필요한 이유를 알리고, 그 시술이 어떻게 혈류를 되돌리는지 설명한 뒤, 설명이 끝난 상태에서 동의를 요청하고, 서명이 끝나면 시술실로 이송해요. 뒤 줄이 앞 줄을 가리켜서 순서가 하나예요.
+    why: 시술이 필요한 이유를 알리고, 그 시술이 어떻게 혈류를 되돌리는지 설명한 뒤, 의사의 설명이 끝난 뒤 서명을 요청하고, 서명이 끝나면 시술실로 이송해요. 뒤 줄이 앞 줄을 가리켜서 순서가 하나예요.
     lines:
     - en: There's a large clot we can physically remove.
       icon: scalpel
@@ -7296,9 +7296,9 @@ situations:
       icon: scalpel
       ko: 이 시술로 혈전을 빼내 혈류를 되돌려요
       note: 설명
-    - en: With all of that explained, I need your consent so we don't lose time.
+    - en: Now that the doctor has explained all of that, we need your consent.
       icon: pencil
-      ko: 그 설명이 끝났으니 시간을 잃지 않게 동의가 필요해요
+      ko: 의사가 그 설명을 마쳤으니 동의가 필요해요
       note: 동의
     - en: Once you've signed, he'll transfer to the cath lab immediately.
       icon: hospital
@@ -7536,9 +7536,9 @@ situations:
       icon: siren
       ko: 그 변화 때문에 지금 바로 약을 멈출게요
       note: 중단
-    - en: Now that it's stopped, we need an urgent repeat scan because I'm worried about bleeding in the brain.
+    - en: Now that it's stopped, we need an urgent head scan to check for bleeding.
       icon: monitor
-      ko: 멈췄으니 뇌출혈이 걱정돼서 긴급 재촬영이 필요해요
+      ko: 멈췄으니 출혈을 확인하려고 긴급 두부 촬영이 필요해요
       note: 재촬영
     - en: We'll get the scan done as fast as possible.
       icon: siren
@@ -7904,7 +7904,7 @@ situations:
     why: 혈압 상태와 혈압약 투여 여부를 한 문장에 함께 보고하면 인계받는 사람이 치료 이력을 바로 알아요. no … given은 투여하지 않았다는 보고 문체예요.
     decoy: no insulin given
     distractorsKo:
-    - 혈압은 안정적이었고 혈당도 정상이었습니다
+    - 산소포화도는 98%였고 산소는 쓰지 않았습니다
     - 혈압을 오른팔에서 쟀습니다
     blank:
       answer: antihypertensives
@@ -7961,10 +7961,10 @@ situations:
     blank:
       answer: exam
       options:
-      - en: room
+      - en: vitals
       - en: family
       - en: exam
-      - en: diet
+      - en: pressure
   nuance:
   - kind: pair
     words:
@@ -8005,7 +8005,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 뇌졸중 SBAR 인계 4문장 순서
-    why: 누구에 대한 보고인지 밝히고, 그 환자의 시각 정보를 말하고, 그 이후의 점수 변화를 이어 말한 뒤, 그 증가를 근거로 후속 계획과 연락 요청을 해요. 뒤 줄이 앞 줄을 가리켜서 순서가 하나예요.
+    why: 누구에 대한 보고인지 밝히고, 그 환자의 시각 정보를 말하고, 그 이후의 점수 변화를 이어 말한 뒤, 그 증가 때문에 투여를 멈추고 응급 CT를 냈다고 알려요. 뒤 줄이 앞 줄을 가리켜서 순서가 하나예요.
     lines:
     - en: I'm calling about a sixty-year-old man with left-sided weakness.
       icon: me
@@ -8019,10 +8019,10 @@ situations:
       icon: chartup
       ko: 그 뒤로 NIHSS가 12에서 15로 올랐어요
       note: 평가
-    - en: Given that increase, repeat CT is in one hour, so please call me if his exam changes.
-      icon: bell
-      ko: 그 상승 때문에 한 시간 후 재촬영이니 검사 변화가 있으면 연락 주세요
-      note: 요청
+    - en: Given that increase, the tPA is stopped and a stat CT is ordered.
+      icon: siren
+      ko: 그 상승 때문에 tPA를 멈췄고 응급 CT를 냈어요
+      note: 조치
 - title: 젊은 환자 경동맥 박리
   sentences:
   - en: Did you have any neck injury or sudden strain?
@@ -8151,7 +8151,7 @@ situations:
     decoy: a bruise
     distractorsKo:
     - 목 동맥 수술을 받으셔야 할 수도 있어요
-    - 이런 뇌졸중은 나이가 많을 때만 생겨요
+    - 목 통증이 심해지면 바로 말씀해 주세요
     blank:
       answer: artery
       options:
@@ -8250,23 +8250,23 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 경동맥 박리 의심 문진 4문장 순서
-    why: 젊은 환자라 다른 원인을 찾는다고 알리고, 그 원인 중 하나로 목 동맥을 들어 외상을 묻고, 있었다면 통증 순서를 묻고, 어느 쪽이든 목 혈관을 촬영해요. 뒤 줄이 앞 줄을 가리켜서 순서가 하나예요.
+    why: 젊은 환자라 다른 원인을 찾는다고 알리고, 그 원인 중 하나로 목 동맥을 들어 외상을 묻고, 외상 여부와 상관없이 통증이 언제 시작됐는지 묻고, 그 찢어짐을 확인하려고 목 혈관을 촬영해요. 뒤 줄이 앞 줄을 가리켜서 순서가 하나예요.
     lines:
     - en: You're young for a stroke, so we look for other causes.
       icon: magnify
       ko: 뇌졸중을 겪기엔 젊으셔서 다른 원인을 찾아봐요
       note: 이유
-    - en: One cause is a tear in the neck artery, so did you have any neck injury?
+    - en: One cause is a torn neck artery—did you have any neck injury?
       icon: bandage
-      ko: 원인 하나는 목 동맥의 찢어짐인데, 목을 다친 적이 있나요?
+      ko: 원인 하나는 목 동맥이 찢어지는 것인데, 목을 다친 적이 있나요?
       note: 외상
-    - en: If so, when did the neck pain start compared to the numbness?
+    - en: Either way, when did the neck pain start compared to the numbness?
       icon: calendar
-      ko: 그렇다면 목 통증은 무감각과 비교해 언제 시작됐나요?
+      ko: 어느 쪽이든 목 통증은 무감각과 비교해 언제 시작됐나요?
       note: 순서
-    - en: Either way, we'll image the neck vessels to check for a tear.
+    - en: To check for that tear, we'll image the neck vessels.
       icon: monitor
-      ko: 어느 쪽이든 찢어졌는지 목 혈관을 촬영할게요
+      ko: 그 찢어짐을 확인하려고 목 혈관을 촬영할게요
       note: 촬영
 - title: 악성 부종 감시
   sentences:
@@ -8363,8 +8363,8 @@ situations:
     why: 큰 뇌졸중에서는 손상된 뇌가 붓고, 두개골 안은 공간이 한정돼 압력이 오를 수 있어요. as는 한 일이 일어나는 동안 다른 일이 함께 진행됨을 보여 줘요.
     decoy: shrinks
     distractorsKo:
-    - 이런 일은 며칠에 걸쳐 서서히 좋아져요
-    - 이런 일은 약을 먹으면 바로 가라앉아요
+    - 뇌압을 낮추려고 침대 머리를 올릴게요
+    - 의사가 곧 와서 동공을 다시 볼 거예요
     blank:
       answer: large
       options:
@@ -8385,7 +8385,7 @@ situations:
     goal: 2
     tag: 점검 지시
     icon: monitor
-    why: 동공은 뇌압 변화를 가장 빨리 보여 주는 신호 중 하나라서 간격을 정해 반복해서 봐요. for now는 지금 상태에 한정한 지시이며 의사 지시에 따라 바뀔 수 있어요.
+    why: 동공 변화는 뇌압이 이미 많이 올랐다는 신호라, 의식 수준과 함께 간격을 정해 반복해서 봐요. for now는 지금 상태에 한정한 지시이며 의사 지시에 따라 바뀔 수 있어요.
     decoy: once a day
     distractorsKo:
     - 그의 침대 난간을 올려 주세요
@@ -8414,7 +8414,7 @@ situations:
     decoy: an infection
     distractorsKo:
     - 동공이 커지는 것은 약 부작용일 수 있어요
-    - 동공이 한쪽만 커지면 반드시 눈 질환이에요
+    - 동공 크기를 기록해 둘게요
     blank:
       answer: pressure
       options:
@@ -8446,9 +8446,9 @@ situations:
       answer: surgeon
       options:
       - en: surgeon
-      - en: dietitian
+      - en: radiologist
       - en: pharmacist
-      - en: chaplain
+      - en: cardiologist
   nuance:
   - kind: slider
     words:
@@ -8490,7 +8490,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 뇌부종 악화 대응 4문장 순서
-    why: 감시 중에 동공이 커진 것을 알리고, 그 변화가 뇌압 상승일 수 있어 팀을 부른다고 하고, 팀이 오기 전까지 동공을 15분마다 확인하게 해요. 뒤 줄이 앞 줄을 가리켜서 순서가 하나예요.
+    why: 감시 중에 동공이 커진 것을 알리고, 그 변화가 뇌압 상승일 수 있어 팀을 부른다고 하고, 팀이 오는 동안 곁에서 계속 지켜본다고 알려요. 뒤 줄이 앞 줄을 가리켜서 순서가 하나예요.
     lines:
     - en: We're watching closely for swelling in the brain.
       icon: monitor
@@ -8504,7 +8504,7 @@ situations:
       icon: bell
       ko: 뇌압이 오른다는 뜻일 수 있어서 바로 팀에 알릴게요
       note: 알림
-    - en: Until they arrive, check his pupils every fifteen minutes.
+    - en: While they're on their way, I'll stay right here and keep checking his pupils.
       icon: monitor
-      ko: 그들이 올 때까지 15분마다 동공을 확인해 주세요
+      ko: 그들이 오는 동안 제가 곁에서 계속 동공을 확인할게요
       note: 점검

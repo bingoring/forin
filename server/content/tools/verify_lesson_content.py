@@ -1027,6 +1027,13 @@ def check_nuance(items: list, used: set[str], required: bool) -> list[tuple[str,
                 out.append(("V14", f"nuance[{i}] context: ko is blank"))
             if has_word != has_ko:
                 out.append(("V14", f"nuance[{i}] context: needs word and ko together — the C5 title draws the word, its memo the Korean"))
+            if has_word:
+                # 핸드오프 CTX(deteriorate): 같은 말이 세 장면 모두에 나오고, 어색한 장면은 그 말이 듣는 사람에게 맞지 않는 곳이다.
+                # 어색한 표현 자체를 word로 고르면 제목 "{word}가 어색한 장면은?"이 답을 말해 버린다(T8, polytrauma·seizure).
+                stem = re.sub(r"(e|es|s|ed|ing)$", "", str(n.get("word")).strip().lower()) or str(n.get("word")).lower()
+                miss = [j for j, sc in enumerate(n.get("scenes") or []) if stem not in str(sc.get("en") or "").lower()]
+                if miss:
+                    out.append(("W14", f"nuance[{i}] context: word {n.get('word')!r} is missing from scene(s) {miss} — the word should be in all three scenes, the odd one using it for the wrong listener"))
         elif kind == "swap" and "ko" in n and not _filled(n.get("ko")):
             out.append(("V14", f"nuance[{i}] swap: ko is blank"))
         words = n.get("words") or []
@@ -1543,7 +1550,8 @@ def verify_dept(
         # V14·V15 — 뉘앙스. 이 상황 문장이 쓰는 단어 id를 기준으로 본다.
         sentence_word_ids = {w for sent in sentences for w in (sent.get("words") or [])}
         for rule, detail in check_nuance(seed.get("nuance") or [], sentence_word_ids, theme in v45_themes):
-            violations.append(Violation(dept, theme, title, rule, detail))
+            # W14 는 경고 — 같은 말의 활용형·약어를 기계가 다 알아보지 못한다(deteriorate/deteriorating은 잡지만 SpO2/sats는 못 잡음).
+            (v45_warnings if rule.startswith("W") else violations).append(Violation(dept, theme, title, rule, detail))
 
         # V19 — 순서 배열 카드(있을 때만)
         for rule, detail in check_order(seed.get("order")):
@@ -2080,7 +2088,7 @@ def run_selftest() -> int:
     good_nuance = [
         {"kind": "slider", "words": ["w-check"], "cue": "c", "scale": ["a", "b", "c"], "answerAt": 1, "why": "w"},
         {"kind": "context", "words": ["w-name"], "why": "w", "scenes": [
-            {"who": "a", "en": "1", "ok": True}, {"who": "b", "en": "2", "ok": False, "fix": "f"}, {"who": "c", "en": "3", "ok": True}]},
+            {"who": "a", "en": "Name, please.", "ok": True}, {"who": "b", "en": "Your name.", "ok": False, "fix": "f"}, {"who": "c", "en": "Pt name on band.", "ok": True}]},
     ]
 
     def v45_seed(nuance) -> str:
@@ -2214,10 +2222,13 @@ def run_selftest() -> int:
     cases.append(("V19 (order is not a mapping)", _LEX_BASE, v46_seed(order=["a", "b", "c", "d"]), "V19", False))
     cases.append(("V19 (an order card with no sentences)", _LEX_BASE, v46_seed(sentences=False), "V19", False))
     ctx = {"kind": "context", "words": ["w-name"], "why": "w", "word": "name", "ko": "이름", "scenes": [
-        {"who": "a", "en": "1", "ok": True}, {"who": "b", "en": "2", "ok": False, "fix": "f"}, {"who": "c", "en": "3", "ok": True}]}
+        {"who": "a", "en": "Name, please.", "ok": True}, {"who": "b", "en": "Your name.", "ok": False, "fix": "f"}, {"who": "c", "en": "Pt name on band.", "ok": True}]}
     swap = {"kind": "swap", "words": ["w-check"], "before": ["a ", "x", " b"], "options": ["y", "z"], "answer": "y",
             "notes": {"y": "1", "z": "2"}, "why": "w", "ko": "어젯밤 어머니가 돌아가셨어요"}
     cases.append(("GOOD v46 nuance — context word+ko, swap ko", _LEX_BASE, v46_seed(nuance=[ctx, swap]), "", False))
+    ctx_odd = {**ctx, "scenes": [dict(sc) for sc in ctx["scenes"]]}
+    ctx_odd["scenes"][1]["en"] = "What do they call you?"
+    cases.append(("W14 (context word missing from the odd scene — warning)", _LEX_BASE, v46_seed(nuance=[ctx_odd, swap]), "W14", True))
     cases.append(("V14 (context ko without its word)", _LEX_BASE, v46_seed(nuance=[{**ctx, "word": ""}, swap]), "V14", False))
     cases.append(("V14 (context word without its ko)", _LEX_BASE, v46_seed(nuance=[{k: v for k, v in ctx.items() if k != "ko"}, swap]), "V14", False))
     cases.append(("V14 (swap ko blank)", _LEX_BASE, v46_seed(nuance=[ctx, {**swap, "ko": " "}]), "V14", False))
