@@ -1,0 +1,105 @@
+- title: 아나필락시스 쇼크 불응
+  s:
+  - {t: "지속 주입", i: siren, w: "so로 관찰한 사실(낮은 혈압)을 곧바로 행동의 이유로 이어요. 근육주사에도 혈압이 오르지 않으면 에피네프린을 정맥으로 지속 주입하고, 용량을 조절하며 모니터로 감시해요.", d: "by mouth", k: ["산소를 높은 농도로 드릴게요", "심전도 모니터를 확인할게요"], a: "low", o: ["high", "steady", "normal"]}
+  - {t: "수액 설명", i: chartup, w: "pouring in처럼 힘 있는 표현으로 빠르게 많이 넣는다고 알려요. 아나필락시스 쇼크에서는 혈관이 새면서 혈액량이 줄어서 빠른 수액 투여가 혈압을 올리는 데 쓰여요.", d: "to wash the rash", k: ["수액이 차갑게 느껴질 수 있어요", "팔 정맥이 아프면 말해 주세요"], a: "fluids", o: ["antibiotics", "painkillers", "insulin"]}
+  - {t: "의식 확인", i: me, w: "Stay with me로 정신을 붙들게 하고 squeeze my hand if…로 말하기 어려워도 답할 수 있는 쉬운 신호를 줘요. 쇼크에서는 의식이 흐려지는지 계속 확인해요.", d: "when it's over", k: ["눈을 뜨고 저를 봐 주세요", "숨을 천천히 쉬어 보세요"], a: "squeeze", o: ["wave", "release", "push"]}
+  - {t: "재투여 설명", i: calendar, w: "since로 두 번째 투여의 이유를 첫 번째의 결과에 둬서 자연스럽게 설명해요. fully를 넣으면 완전히 실패한 건 아니고 부족했다는 뜻이고, 증상이 계속되면 에피네프린은 반복해서 놓아요.", d: "because you asked", k: ["혈압을 몇 분마다 다시 잴게요", "소변량도 같이 확인할게요"], a: "second", o: ["first", "final", "third"]}
+  - {t: "순환 지지", i: monitor, w: "is going in처럼 수동태로 지금 진행되는 일을 말해 환자가 할 일이 없다는 걸 알려요. support your circulation으로 목적을 밝혀요. 순환이 무너지는 쇼크에서는 수액이 혈압을 받쳐 줘요.", d: "under the skin", k: ["수액이 들어갈 때 팔이 차가울 수 있어요", "혈압은 계속 재고 있어요"], a: "circulation", o: ["digestion", "vision", "memory"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "쇼크 불응 대응 4문장 순서"
+    why: "혈압이 낮아 지속 주입을 시작한다고 알리고, 'it'이 그 혈압을 가리켜 수액을 넣고, 'Both of those'가 두 처치를 가리켜 의식을 확인하고, 'Good'과 'More'가 앞 대답과 앞 수액을 가리켜 닫아요. 앞 줄을 가리키는 말이 줄마다 있어 순서가 하나예요."
+    lines:
+    - {en: "Your pressure is very low, so we're starting an epinephrine drip.", icon: siren, ko: "혈압이 아주 낮아서 에피네프린 지속 주입을 시작해요", note: "주입"}
+    - {en: "To bring it up, we're pouring in fluids too.", icon: chartup, ko: "그걸 올리려고 수액도 많이 넣고 있어요", note: "수액"}
+    - {en: "Both of those take time. Squeeze my hand if you can hear me.", icon: me, ko: "둘 다 시간이 걸려요. 들리면 제 손을 쥐어 주세요", note: "의식"}
+    - {en: "Good. More fluid is going in fast to support your circulation.", icon: monitor, ko: "좋아요. 순환을 돕도록 수액이 더 빨리 들어가고 있어요", note: "지지"}
+  sw: {ko: "혈압을 올리려고 수액을 많이 드리고 있어요"}
+- title: 심정지 진행 아나필락시스
+  s:
+  - {t: "압박 지시", i: siren, w: "명령형 Start compressions를 맨 앞에 두어 가장 급한 행동부터 말해요. 이유는 대시 뒤에 짧게 붙여요. 맥박이 없으면 원인이 무엇이든 흉부압박이 먼저예요.", d: "if you can", k: ["제세동기 패드를 붙이세요", "기도 카트를 가져오세요"], a: "compressions", o: ["injections", "transfusions", "measurements"]}
+  - {t: "약·수액", i: pill, w: "Give…and hang…으로 동사 둘을 and로 이어 한 번에 두 지시를 줘요. 아나필락시스로 심정지가 오면 에피네프린 정맥투여와 빠른 수액을 함께 진행해요.", d: "if there's time", k: ["도와줄 사람을 한 명 더 불러 주세요", "다음 리듬 확인은 2분 뒤에 해요"], a: "epinephrine", o: ["atropine", "adenosine", "heparin"]}
+  - {t: "기도 카트", i: hospital, w: "so로 이유를 앞에 두고 get…now로 지시를 바로 이어요. 기도가 부은 환자는 일반 삽관이 어려울 수 있어서 어려운 기도 카트를 미리 가져와요.", d: "tomorrow", k: ["비디오 후두경을 준비해 주세요", "마취과에도 연락하세요"], a: "swollen", o: ["clear", "open", "normal"]}
+  - {t: "상태 선언", i: stetho, w: "No pulse로 확인한 사실을 짧게 말하고 starting…now로 곧바로 행동을 선언해요. 팀원 모두가 같은 상황을 알도록 크게 말하는 것이 closed-loop의 시작이에요.", d: "for two minutes", k: ["심전도 리듬을 확인합니다", "제세동기를 가져와 주세요"], a: "starting", o: ["stopping", "pausing", "skipping"]}
+  - {t: "인력 요청", i: handshake2, w: "I need one more…으로 사람이 아니라 필요한 일손의 수를 말해 요청처럼 들리게 해요. 코드 중에는 누가 할지 정해 주면 더 좋아서 이름을 부르거나 시선을 맞춰요.", d: "in the hallway", k: ["기록을 맡아 줄 사람이 필요해요", "시간을 재 줄 사람이 필요해요"], a: "hands", o: ["eyes", "legs", "tools"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "아나필락시스 심정지 지휘 4문장 순서"
+    why: "맥박이 없다고 선언하며 CPR을 시작하고, 'That's'가 그 상태를 가리키며 에피네프린과 수액을 지시하고, 'that going'이 그 처치를 가리키며 기도 카트를 부르고, 'the airway cart'가 방금 부른 카트를 가리켜 일손을 요청해요. 앞 줄을 가리키는 말이 줄마다 있어 순서가 하나예요."
+    lines:
+    - {en: "No pulse — starting CPR now.", icon: stetho, ko: "맥박 없습니다 — 지금 CPR 시작합니다", note: "선언"}
+    - {en: "That's anaphylactic arrest, so give epinephrine and hang a liter wide open.", icon: pill, ko: "아나필락시스성 심정지예요, 에피네프린 투여하고 수액 1리터 전개방으로 걸어주세요", note: "약·수액"}
+    - {en: "With that going, get the difficult airway cart now — his airway is swollen.", icon: hospital, ko: "그게 진행되는 동안 어려운 기도 카트를 지금 가져오세요 — 기도가 부었어요", note: "기도"}
+    - {en: "I need one more set of hands on the airway cart.", icon: handshake2, ko: "기도 카트에 손이 하나 더 필요합니다", note: "일손"}
+  ctx:
+    word: "give"
+    ko: "투여하다"
+- title: 이상성 반응 재악화
+  s:
+  - {t: "재투여", i: siren, w: "This is a second wave로 지금 벌어지는 일에 이름을 붙여 환자가 영문을 몰라 불안하지 않게 해요. 재악화에는 지체 없이 에피네프린을 다시 투여해요.", d: "for your comfort", k: ["산소를 더 올려 드릴게요", "호출 버튼은 손 닿는 곳에 둘게요"], a: "second", o: ["first", "final", "last"]}
+  - {t: "곁 지킴", i: monitor, w: "keeping과 staying 두 -ing를 and로 이어 하는 일을 둘로 나눠 말해요. 모니터는 변화를 알아채고, 곁에 있다는 말은 재악화로 놀란 환자를 안정시켜요.", d: "by the door", k: ["다른 간호사도 곧 올 거예요", "심호흡을 해 보세요"], a: "monitor", o: ["stretcher", "ventilator", "pump"]}
+  - {t: "상태 비교", i: magnify, w: "exactly로 대충이 아니라 구체적으로 말해 달라고 하고 compared to before로 비교 기준을 줘요. 이전과 비교한 변화가 재악화를 판단하는 가장 좋은 단서예요.", d: "if you want", k: ["숨 쉴 때 쌕쌕 소리가 나는지 말씀해 주세요", "목이 조이는 느낌이 있나요?"], a: "breathing", o: ["pain", "skin", "stomach"]}
+  - {t: "재발 시점", i: calendar, w: "Even after로 치료가 끝난 뒤에도 안심할 수 없다고 알려 지켜보는 이유를 줘요. 두 번째 반응은 몇 시간 안에 오는 경우가 많지만 더 늦게 오기도 해요.", d: "after one day", k: ["퇴원할 때 에피펜 사용법을 다시 알려 드릴게요", "가족분께도 상황을 알려 드릴게요"], a: "return", o: ["vanish", "heal", "fade"]}
+  - {t: "용량·감시", i: monitor, w: "giving과 checking을 and로 이어 약과 감시를 한 번에 알려요. every ten minutes처럼 간격을 말하면 환자가 자주 오가는 이유를 알아요.", d: "at bedtime", k: ["혈압 커프는 계속 감아 둘게요", "팔에 라인을 하나 더 잡을게요"], a: "vitals", o: ["bandage", "dressing", "stitches"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "이상성 반응 재악화 4문장 순서"
+    why: "두 번째 반응이라며 에피네프린을 다시 놓고, 'the shot'이 그 투여를 가리키며 호흡을 비교해 묻고, 'Your answer'가 그 대답을 받아 모니터를 설명하고, 'That's why'가 그 감시를 이유로 곁을 지켜요. 앞 줄을 가리키는 말이 줄마다 있어 순서가 하나예요."
+    lines:
+    - {en: "This is a second wave — I'm giving epinephrine again now.", icon: siren, ko: "두 번째 반응이에요 — 지금 에피네프린을 다시 놓을게요", note: "투여"}
+    - {en: "Tell me exactly how your breathing feels compared to before the shot.", icon: magnify, ko: "주사 전과 비교해 호흡이 어떤지 정확히 말해 주세요", note: "비교"}
+    - {en: "Your answer helps, and we're keeping you on the monitor to see the rest.", icon: monitor, ko: "말씀이 도움이 되고 나머지는 모니터로 지켜봐요", note: "감시"}
+    - {en: "That's why I'm staying right here and checking your vitals every ten minutes.", icon: handshake2, ko: "그래서 곁에서 10분마다 활력징후를 확인할게요", note: "곁에"}
+  ctx:
+    word: "wave"
+    ko: "파도"
+    sc:
+      0: {en: "This wave is worse than the first — I'm giving epinephrine again now."}
+      1: {en: "Second wave at hour six: wheezing, lip swelling. Repeat epi IM given."}
+      2: {en: "You're having a biphasic wave: recurrence of anaphylaxis at hour six.", fix: "Your reaction is back, and it hit in a second wave, so I'm giving you another dose now."}
+    why: "biphasic wave·recurrence는 차트와 보고의 말이에요. 환자에게는 '반응이 다시 왔다'고 쉽게 말해요."
+- title: 다중 알레르겐 중환자
+  s:
+  - {t: "환경 정리", i: shield, w: "anything you might be reacting to처럼 might로 확실하진 않아도 의심되는 건 다 치운다고 말해요. 원인을 모를 때는 의심되는 것부터 치워서 추가 노출을 막아요.", d: "after lunch", k: ["병실 환기를 시켜 드릴게요", "향이 나는 제품은 쓰지 말아 주세요"], a: "anything", o: ["nothing", "someone", "nobody"]}
+  - {t: "목록 작성", i: pencil, w: "Let's로 간호사와 환자가 함께 하는 일로 만들어 부담을 낮춰요. eaten·touched·taken 세 동사로 입·피부·약 노출 경로를 빠짐없이 훑어요.", d: "at work", k: ["가족 중에 알레르기 있는 분이 있나요?", "알레르기 병력이 있으신가요?"], a: "touched", o: ["washed", "cooked", "bought"]}
+  - {t: "치료 우선", i: siren, w: "now와 while로 치료는 지금 하고 원인 찾기는 동시에 한다고 말해요. 아나필락시스는 원인을 모르더라도 기다리지 않고 바로 치료해요.", d: "before we talk", k: ["에피네프린을 한 번 더 놓을 수도 있어요", "혈압을 몇 분마다 재요"], a: "treating", o: ["ignoring", "delaying", "hiding"]}
+  - {t: "노출 목록", i: board, w: "medication·food·product 세 범주를 말해 환자가 빠뜨리기 쉬운 노출(화장품·세제 같은 제품)까지 떠올리게 해요. near는 직접 닿지 않았어도 가까이 있었던 것까지 묻는 말이에요.", d: "last month", k: ["증상이 생기기 전에 운동을 하셨나요?", "가족 중에 비슷한 반응이 있었나요?"], a: "every", o: ["one", "some", "no"]}
+  - {t: "환경 유지", i: lock, w: "free of every trigger로 하나도 없게 한다는 뜻을 분명히 해요. we know about을 덧붙여 아직 모르는 유발원이 있을 수 있다는 점도 솔직하게 말해요.", d: "at home", k: ["새로 알게 된 유발원은 바로 추가할게요", "병실 밖에서 가져온 음식은 드시지 마세요"], a: "trigger", o: ["visitor", "flower", "noise"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "다중 알레르겐 환자 4문장 순서"
+    why: "먼저 원인을 몰라도 치료한다고 알리고, 'it'이 그 유발원을 가리켜 목록을 만들고, 'that list'가 그 목록을 가리켜 더 묻고, 'all of that'이 지금까지 들은 것을 가리켜 병실에서 치워요. 앞 줄을 가리키는 말이 줄마다 있어 순서가 하나예요."
+    lines:
+    - {en: "I'm treating the reaction right now, even though we don't know the trigger.", icon: siren, ko: "유발원은 몰라도 지금 반응을 치료하고 있어요", note: "치료"}
+    - {en: "To find it, let's list everything you've eaten, touched, or taken today.", icon: pencil, ko: "그걸 찾으려고 오늘 드시고 만지고 복용한 것을 적어 봐요", note: "목록"}
+    - {en: "Beyond that list, tell me every medication, food, and product you've been near this week.", icon: board, ko: "그 목록 밖에도 이번 주에 가까이한 약, 음식, 제품을 말해 주세요", note: "추가"}
+    - {en: "With all of that, we're removing anything you might be reacting to from your room.", icon: shield, ko: "그걸 바탕으로 반응할 만한 것은 병실에서 모두 치울게요", note: "정리"}
+  ctx:
+    word: "list"
+    ko: "목록"
+    sc:
+      1: {en: "Multiple allergies, trigger unknown. Exposure list started; room cleared of latex and scented products."}
+      2: {en: "We need a comprehensive exposure list for allergen identification.", fix: "Let's go through everything you've eaten, touched, or taken today."}
+    why: "exposure list·allergen identification은 의료진 말이에요. 환자와는 오늘 먹은 것·만진 것·먹은 약을 하나씩 같이 짚어요."
+- title: 관찰 중 급변 야간 SBAR
+  s:
+  - {t: "상황 보고", i: speech, w: "until로 안정이 끝난 시점을 먼저 잡아 변화가 언제 시작됐는지 보여요. obs patient 같은 줄임말은 의료진끼리의 보고라서 쓸 수 있어요.", d: "since this afternoon", k: ["환자는 지금 의식이 명료합니다", "환자 이름과 생년월일은 확인했습니다"], a: "stable", o: ["asleep", "sedated", "hypoxic"]}
+  - {t: "현재 변화", i: chartup, w: "dropped to와 returned를 and로 이어 숫자와 증상 두 가지를 한 문장에 보고해요. 혈압은 ninety over fifty처럼 숫자로 읽어 정확히 전달해요.", d: "after the nap", k: ["산소 포화도는 아직 97입니다", "심박수는 110으로 올랐습니다"], a: "dropped", o: ["rose", "climbed", "jumped"]}
+  - {t: "조치·요청", i: siren, w: "I gave로 한 일을, I need you to로 요청을 이어서 SBAR의 A와 R을 한 문장에 담아요. now를 붙여 시급함을 분명히 해요.", d: "when you can", k: ["두 번째 에피는 허벅지에 놓았습니다", "수액 1리터를 걸었습니다"], a: "reassess", o: ["discharge", "transfer", "sedate"]}
+  - {t: "배경 설명", i: calendar, w: "all shift로 근무 전체의 흐름을, until about으로 변화 시점을 대략 밝혀요. 안정적이었던 기준선을 말해야 지금 얼마나 달라졌는지 전해져요.", d: "since noon", k: ["환자는 오늘 오후에 입원했습니다", "알레르기는 페니실린으로 확인됐습니다"], a: "steady", o: ["unstable", "falling", "erratic"]}
+  - {t: "호출 요청", i: bell, w: "Please come…and…로 두 가지를 부탁하고 right away로 시급함을 끝에 붙여요. 야간 SBAR의 R은 원하는 행동을 구체적으로 말해야 상대가 와서 뭘 할지 알아요.", d: "in the morning", k: ["혈압 변화는 5분 단위로 알리겠습니다", "에피네프린은 한 번 더 준비해 두겠습니다"], a: "doctor", o: ["pharmacist", "dietitian", "chaplain"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "야간 SBAR 4문장 순서"
+    why: "상황(혈압 저하)을 먼저 말하고, 'Before that'이 그 저하 이전을 가리켜 배경을 대고, 'it'이 그 저하를 가리켜 평가와 조치를 말하고, 마지막에 와서 봐 달라고 요청해요. 앞 줄을 가리키는 말이 줄마다 있어 순서가 하나예요."
+    lines:
+    - {en: "Calling about my post-anaphylaxis obs patient — his blood pressure dropped to ninety over fifty.", icon: speech, ko: "아나필락시스 후 관찰 환자인데 혈압이 90/50으로 떨어졌습니다", note: "상황"}
+    - {en: "Before that, vitals were steady all shift until about zero-one-thirty.", icon: calendar, ko: "그 전에는 근무 내내 새벽 1시 반쯤까지 안정적이었습니다", note: "배경"}
+    - {en: "Along with it, hives returned, so I gave a second epi.", icon: chartup, ko: "그와 함께 두드러기가 다시 나서 두 번째 에피를 투여했습니다", note: "평가"}
+    - {en: "Please come reassess him now.", icon: bell, ko: "와서 지금 재평가해 주세요", note: "요청"}
+  sw: {ko: "두 번째 에피를 투여했고, 지금 환자 재평가를 요청합니다"}

@@ -2,7 +2,7 @@
   s:
   - {t: "약물 확인", i: magnify, w: "What exactly로 약 이름을 정확히 짚고, 같은 문장에서 약병까지 이어 물어요. 병 라벨에는 약 이름과 용량이 적혀 있어서 독극물센터나 약사에게 그대로 전할 수 있어요.", d: "for the nurse", k: ["다른 병원에서 치료받으신 적이 있어요?", "토하신 적은 있으세요?"], a: "bottle", o: ["wristband", "insurance card", "referral form"]}
   - {t: "양·시각", i: calendar, w: "About으로 개수를 어림으로 묻고 how long ago로 시각을 이어 물어요. 먹은 양과 경과 시간이 있어야 독성 위험과 치료 시점을 가늠할 수 있어요.", d: "last week", k: ["가족 중에 함께 드신 분이 있나요?", "병원에 오기 전에 토하셨어요?"], a: "ago", o: ["later", "left", "away"]}
-  - {t: "동반 복용", i: pill, w: "anything else로 한 가지 더 있는지 열어 두고 along with it으로 같이 먹은 것을 물어요. 술이나 다른 약처럼 위험이 겹치는 것을 놓치지 않으려는 질문이에요.", d: "instead of it", k: ["그 약은 처방받으신 건가요?", "약을 드신 뒤에 토하셨나요?"], a: "along with", o: ["instead of", "apart from", "in front of"]}
+  - {t: "동반 복용", i: pill, w: "anything else로 한 가지 더 있는지 열어 두고 along with it으로 같이 먹은 것을 물어요. 술이나 다른 약처럼 위험이 겹치는 것을 놓치지 않으려는 질문이에요.", d: "instead of it", k: ["그 약은 처방받으신 건가요?", "약을 드신 뒤에 토하셨나요?"], a: "along with", o: ["instead of", "in front of", "away from"]}
   - {t: "안심", i: faceWorried, w: "It's okay if…로 모른다고 해도 괜찮다고 먼저 허락해 줘요. 겁먹은 환자는 정확하지 않을까 봐 입을 닫기 쉬워서, 기억나는 만큼이 단서가 돼요.", d: "from the label", k: ["그 약은 어디서 구하셨어요?", "확실하시면 약병을 보여 주세요"], a: "remember", o: ["forget", "regret", "deny"]}
   - {t: "비난 완화", i: shield, w: "You're not in any trouble로 혼날 일이 아니라고 먼저 못 박아요. 의도적 과다복용이나 불법 약물일 때 환자는 처벌이 두려워 숨기기 쉬워서, 목적이 안전이라고 알려요.", d: "with the police", k: ["집에 돌아가셔도 되는지 의사 선생님께 물어볼게요", "가족분께 연락해 드릴까요?"], a: "safe", o: ["lonely", "stuck", "angry"]}
   - {t: "약병 확인", i: pill, w: "or is it still at home으로 안 가져왔을 가능성을 같은 문장에서 열어 둬요. 안 가져왔다면 가족에게 병이나 라벨 사진을 부탁하는 다음 단계로 바로 이어갈 수 있어요.", d: "in the car", k: ["병에 처방 날짜가 적혀 있나요?", "약을 얼마나 오래 드셨어요?"], a: "bring", o: ["throw", "borrow", "fill"]}
@@ -10,21 +10,21 @@
     tag: "대화 흐름"
     icon: compass
     ko: "복용 약물 문진 4문장 순서"
-    why: "무엇을 먹었는지 묻고, 그 약의 개수와 시각을 묻고, 함께 먹은 것을 확인한 뒤, 병을 가져왔는지 물어요. 'those pills'·'them'·'all of that'이 앞 줄을 가리켜 순서가 하나예요."
+    why: "무엇을 먹었는지 묻고, 그 약의 개수와 시각을 묻고, 그 양과 함께 먹은 것을 확인한 뒤, 말한 모든 것의 병을 가져왔는지 물어요. 'those pills'·'that amount'·'everything you've told me about'이 앞 줄을 가리켜 순서가 하나예요."
     lines:
     - {en: "Can you tell me what you took?", icon: pill, ko: "무엇을 드셨는지 말씀해 주시겠어요?", note: "약물"}
     - {en: "How many of those pills was it, and how long ago?", icon: calendar, ko: "그 알약을 몇 개, 얼마 전에 드셨어요?", note: "양·시각"}
-    - {en: "Was there anything else along with them?", icon: magnify, ko: "그것들과 함께 먹은 다른 게 있나요?", note: "동반"}
-    - {en: "Do you have the bottle for all of that with you?", icon: board, ko: "그 모든 약의 병을 가지고 계신가요?", note: "약병"}
+    - {en: "Was there anything else along with that amount?", icon: magnify, ko: "그 양과 함께 먹은 다른 게 있나요?", note: "동반"}
+    - {en: "Do you have the bottle for everything you've told me about?", icon: board, ko: "말씀하신 모든 것의 병을 가지고 계신가요?", note: "약병"}
   sw: {ko: "알약을 언제 드셨어요?"}
 - title: 활성탄 투여 설명
   s:
   - {t: "작용 설명", i: pill, w: "This charcoal binds…로 무엇이 무슨 일을 하는지 주어와 동사로 짧게 말해요. 활성탄은 위장 안에 남은 약물에 붙어 흡수를 줄이는 것이라, 이미 혈액에 들어간 약에는 효과가 제한적이에요.", d: "with a straw", k: ["이 약은 위를 직접 씻어 내요", "이 활성탄은 통증을 줄여 줘요"], a: "less", o: ["more", "most", "all"]}
-  - {t: "시급성", i: bell, w: "while it can still help으로 시간이 지나면 효과가 줄어든다는 이유를 바로 붙여요. 활성탄은 먹은 뒤 가능한 한 이르게 줄수록 아직 흡수되지 않은 약에 닿을 수 있어요.", d: "all at once", k: ["약은 식사 후에 드세요", "천천히 쉬면서 드셔도 돼요"], a: "important", o: ["optional", "tasty", "late"]}
-  - {t: "증상 보고", i: bell, w: "right away로 시간을 못 박고 feel like you might로 토하기 전의 느낌까지 말하게 해요. 활성탄을 먹고 토하면 기도로 넘어갈 위험이 있어서 미리 알려야 해요.", d: "after dinner", k: ["어지러우면 눕지 말고 앉아 계세요", "숨이 차면 바로 말씀해 주세요"], a: "throw", o: ["sit", "stand", "wake"]}
+  - {t: "시급성", i: bell, w: "while it can still help으로 시간이 지나면 효과가 줄어든다는 이유를 바로 붙여요. 활성탄은 먹은 뒤 가능한 한 이르게 줄수록 아직 흡수되지 않은 약에 닿을 수 있어요.", d: "all at once", k: ["약은 식사 후에 드세요", "천천히 쉬면서 드셔도 돼요"], a: "important", o: ["optional", "tasty", "painless"]}
+  - {t: "증상 보고", i: bell, w: "right away로 시간을 못 박고 feel like you might로 토하기 전의 느낌까지 말하게 해요. 활성탄을 먹고 토하면 기도로 넘어갈 위험이 있어서 미리 알려야 해요.", d: "after dinner", k: ["어지러우면 침대 머리를 올려 드릴게요", "숨이 차면 바로 말씀해 주세요"], a: "throw", o: ["sit", "stand", "wake"]}
   - {t: "공감", i: faceWorried, w: "I know…, but…으로 불편함을 먼저 인정한 뒤 이유를 대요. 맛에 대한 불평을 무시하면 환자가 마시기를 거부할 수 있어서 먼저 공감해요.", d: "like chalk", k: ["맛은 곧 괜찮아질 거예요", "마신 뒤에 입을 헹구셔도 돼요"], a: "poison", o: ["pain", "fever", "infection"]}
   - {t: "요령", i: bulb, w: "can으로 확정이 아니라 도움이 될 수 있다는 정도로 말해요. 걸쭉하고 검은 액체라 보기만 해도 거부하는 환자가 있어서, 눈에 덜 띄는 방법을 권해요.", d: "with ice", k: ["잘게 부숴서 드리면 더 쉬워요", "차갑게 해서 드리면 더 쉬워요"], a: "straw", o: ["spoon", "fork", "glass"]}
-  - {t: "안심", i: monitor, w: "in case로 아직 일어나지 않은 일에 대비한다고 말해서 겁을 줄여요. can't keep it down은 토해서 넘기지 못하는 상태를 부드럽게 돌려 말한 거예요.", d: "for tonight", k: ["토하면 바로 활성탄을 다시 드릴게요", "구토 방지 약을 먼저 드릴게요"], a: "closely", o: ["rarely", "briefly", "blindly"]}
+  - {t: "안심", i: monitor, w: "in case로 아직 일어나지 않은 일에 대비한다고 말해서 겁을 줄여요. can't keep it down은 토해서 넘기지 못하는 상태를 부드럽게 돌려 말한 거예요.", d: "for tonight", k: ["토하면 바로 활성탄을 다시 드릴게요", "구토 방지 약을 먼저 드릴게요"], a: "closely", o: ["rarely", "briefly", "casually"]}
   order:
     tag: "대화 흐름"
     icon: compass
@@ -47,36 +47,36 @@
   - {t: "직접 질문", i: faceWorried, w: "I need to ask로 민감한 질문임을 먼저 알리고 바로 직접 물어요. 돌려 묻지 않고 분명히 묻는 것이 자살 위험 평가의 기본 접근이에요.", d: "by accident", k: ["이 약은 왜 처방받으셨어요?", "누가 이 약을 드렸나요?"], a: "hurt", o: ["feed", "wake", "check"]}
   - {t: "안심", i: shield, w: "I won't judge로 판단하지 않겠다고 약속해 솔직한 대답을 열어 줘요. 낙인이 두려우면 환자는 의도를 숨기기 쉬워요.", d: "or tell anyone", k: ["이 이야기는 가족에게 전할게요", "지금 퇴원 서류를 가져올게요"], a: "safe", o: ["alone", "sick", "lost"]}
   - {t: "병력", i: magnify, w: "before today로 오늘만의 일인지 전에도 있었는지 시간을 넓혀 물어요. 이전의 생각이나 시도는 앞으로의 위험을 가늠하는 가장 중요한 단서 가운데 하나예요.", d: "about work", k: ["이 약은 오늘 처음 드신 건가요?", "지금도 그런 생각이 드세요?"], a: "thoughts", o: ["injuries", "seizures", "symptoms"]}
-  - {t: "공감", i: faceWorried, w: "It's okay to feel…로 감정 자체를 인정하고 I'm glad you're here로 찾아온 행동을 인정해요. 감정을 부정하면 대화가 닫혀서 먼저 받아 줘요.", d: "for asking", k: ["이런 생각은 곧 사라질 거예요", "지금은 눈을 붙이시는 게 좋겠어요"], a: "feel", o: ["look", "sound", "smell"]}
-  - {t: "목표 제시", i: shield, w: "my only job으로 지금 간호사의 역할을 하나로 좁혀 말해요. 평가나 훈계가 아니라 안전이 목적이라고 해야 환자가 방어를 풀어요.", d: "for the doctor", k: ["상담사가 곧 올 거예요", "지금은 병실에서 쉬세요"], a: "job", o: ["shift", "break", "lunch"]}
-  - {t: "안전 확인", i: home, w: "who might also로 다른 피해자가 있을 가능성을 열어 둬요. 가족이 함께 노출됐거나 약이나 독극물이 집에 있으면 다른 사람도 위험할 수 있어서 물어요.", d: "at school", k: ["집에 약이 더 있나요?", "집까지 가는 차편이 있으세요?"], a: "danger", o: ["jail", "court", "debt"]}
+  - {t: "공감", i: faceWorried, w: "It's okay to feel…로 감정 자체를 인정하고 I'm glad you're here로 찾아온 행동을 인정해요. 감정을 부정하면 대화가 닫혀서 먼저 받아 줘요.", d: "for asking", k: ["이런 생각은 곧 사라질 거예요", "지금은 눈을 붙이시는 게 좋겠어요"], a: "okay", o: ["wrong", "bad", "silly"]}
+  - {t: "목표 제시", i: shield, w: "my only job으로 지금 간호사의 역할을 하나로 좁혀 말해요. 평가나 훈계가 아니라 안전이 목적이라고 해야 환자가 방어를 풀어요.", d: "for the doctor", k: ["상담사가 곧 올 거예요", "지금은 병실에서 쉬세요"], a: "Right now", o: ["Last year", "Next week", "Every night"]}
+  - {t: "안전 확인", i: home, w: "who might also로 다른 피해자가 있을 가능성을 열어 둬요. 가족이 함께 노출됐거나 약이나 독극물이 집에 있으면 다른 사람도 위험할 수 있어서 물어요.", d: "at school", k: ["집에 약이 더 있나요?", "집까지 가는 차편이 있으세요?"], a: "also", o: ["never", "barely", "hardly"]}
   order:
     tag: "대화 흐름"
     icon: compass
     ko: "의도성 사정 4문장 순서"
-    why: "민감한 질문임을 알리고, 직접 묻고, 말해 준 것에 감사하며 안심시킨 뒤, 집에 위험한 사람이 있는지 물어요. 'Thank you for telling me'·'any of this'가 앞 줄의 답을 가리켜 순서가 하나예요."
+    why: "민감한 질문임을 알리고, 직접 묻고, 말해 준 것에 감사하며 안심시킨 뒤, 집에 위험한 다른 사람이 있는지 물어요. 'Thank you for telling me'가 앞 줄의 답을 가리키고 'anyone else'가 앞 줄의 'you'를 가리켜 순서가 하나예요."
     lines:
     - {en: "I need to ask you something personal.", icon: faceWorried, ko: "개인적인 것을 여쭤봐야 해요", note: "예고"}
     - {en: "Were you trying to hurt yourself?", icon: magnify, ko: "스스로를 다치게 하려고 하셨나요?", note: "질문"}
-    - {en: "Thank you for telling me — I won't judge you for it.", icon: shield, ko: "말해 줘서 고마워요, 그것으로 판단하지 않아요", note: "안심"}
-    - {en: "Is anyone at home in danger from any of this?", icon: home, ko: "이 중 어떤 것으로든 집에 위험한 분이 있나요?", note: "안전"}
+    - {en: "Thank you for telling me — I won't judge you, and I'm keeping you safe.", icon: shield, ko: "말해 줘서 고마워요, 판단하지 않고 안전하게 지켜 드릴게요", note: "안심"}
+    - {en: "Is there anyone else at home who might be in danger?", icon: home, ko: "집에 위험할 수 있는 다른 분이 계신가요?", note: "안전"}
   sw: {ko: "스스로를 다치게 하려고 하셨나요?"}
 - title: 가정 화학물질 노출
   s:
   - {t: "노출 경로", i: magnify, w: "Which products로 이름을 묻고 이어서 흡입했는지 한 문장에 물어요. 섞은 제품의 성분에 따라 가스의 종류와 치료가 달라서 이름이 중요해요.", d: "on the floor", k: ["제품 라벨을 가져오셨나요?", "환기는 시켜 두셨나요?"], a: "breathe in", o: ["swallow", "taste", "touch"]}
-  - {t: "노출 경로", i: magnify, w: "Did any of it로 일부라도 닿았는지 넓게 묻고 눈과 피부를 짚어요. 눈이나 피부에 묻었으면 물로 오래 씻는 처치가 바로 필요해서 먼저 확인해요.", d: "in your hair", k: ["가스를 마신 뒤 기침이 있었나요?", "피부에 발진이 생겼나요?"], a: "eyes", o: ["ears", "hair", "shoes"]}
+  - {t: "노출 경로", i: magnify, w: "Did any of it로 일부라도 닿았는지 넓게 묻고 눈과 피부를 짚어요. 눈이나 피부에 묻었으면 물로 오래 씻는 처치가 바로 필요해서 먼저 확인해요.", d: "in your hair", k: ["가스를 마신 뒤 기침이 있었나요?", "피부에 발진이 생겼나요?"], a: "eyes", o: ["ears", "teeth", "shoes"]}
   - {t: "계획 안내", i: speech, w: "I'm calling…으로 지금 하는 일을 먼저 알리고 so we로 이유를 붙여요. 미국의 독극물센터는 24시간 전화로 제품과 성분에 맞는 처치를 안내해서, 모르는 것을 짐작하지 않고 확인해요.", d: "to your family", k: ["지금 구급차를 부를게요", "약사에게 먼저 물어볼게요"], a: "calling", o: ["texting", "emailing", "visiting"]}
-  - {t: "시각 확인", i: calendar, w: "How long ago로 몇 분인지 몇 시간인지 경과 시간을 물어요. 노출 시간이 길수록 폐와 눈의 손상이 커질 수 있어서 처치 속도와 관찰 시간이 달라져요.", d: "this morning", k: ["지금 숨은 편안하세요?", "같은 제품을 전에도 섞으신 적 있어요?"], a: "mixing", o: ["cooking", "painting", "shopping"]}
+  - {t: "시각 확인", i: calendar, w: "How long ago로 몇 분인지 몇 시간인지 경과 시간을 물어요. 노출 시간이 길수록 폐와 눈의 손상이 커질 수 있어서 처치 속도와 관찰 시간이 달라져요.", d: "this morning", k: ["지금 숨은 편안하세요?", "같은 제품을 전에도 섞으신 적 있어요?"], a: "mixing", o: ["fire", "fall", "crash"]}
   - {t: "처치 안내", i: bandage, w: "We'll…and…로 두 가지 처치를 한 번에 약속하고 right away로 바로 한다고 말해요. 눈과 피부에 묻은 화학물질은 물로 충분히 씻어 내는 것이 기본 처치예요.", d: "with warm water", k: ["눈에 안약을 넣어 드릴게요", "옷을 모두 소독해 드릴게요"], a: "flush", o: ["rub", "cover", "dry"]}
-  - {t: "증상 확인", i: stetho, w: "right now로 지금 이 순간의 상태를 묻고 any trouble로 작은 불편도 말하게 해요. 가스를 마신 뒤의 호흡 곤란은 시간이 지나 나타나기도 해서 계속 살펴요.", d: "last night", k: ["지금 기침이 심해지고 있나요?", "목이 따갑거나 아픈가요?"], a: "having", o: ["making", "giving", "taking"]}
+  - {t: "증상 확인", i: stetho, w: "right now로 지금 이 순간의 상태를 묻고 any trouble로 작은 불편도 말하게 해요. 가스를 마신 뒤의 호흡 곤란은 시간이 지나 나타나기도 해서 계속 살펴요.", d: "last night", k: ["지금 기침이 심해지고 있나요?", "목이 따갑거나 아픈가요?"], a: "right now", o: ["last night", "next week", "yesterday"]}
   order:
     tag: "대화 흐름"
     icon: compass
     ko: "화학물질 노출 4문장 순서"
-    why: "숨 쉬는 데 문제가 있는지 먼저 확인하고, 숨 쉬는 문제와 연결해 섞은 제품을 묻고, 그 제품으로 독극물센터에 전화하고, 센터가 알려 줄 처치 시간을 말해요. 'what you breathed in'·'those products'·'They'가 앞 줄을 가리켜 순서가 하나예요."
+    why: "숨 쉬는 데 문제가 있는지 먼저 확인하고, 그 답을 듣고 섞은 제품을 묻고, 그 제품으로 독극물센터에 전화하고, 센터가 알려 줄 처치 시간을 말해요. 'that answer'·'those products'·'They'가 앞 줄을 가리켜 순서가 하나예요."
     lines:
     - {en: "Are you having any trouble breathing right now?", icon: stetho, ko: "지금 숨쉬기 힘든 점이 있나요?", note: "호흡"}
-    - {en: "Which products did you mix? I want to know what you breathed in.", icon: magnify, ko: "어떤 제품을 섞으셨나요? 무엇을 들이마셨는지 알고 싶어요", note: "제품"}
+    - {en: "With that answer, I need to know which products you mixed.", icon: magnify, ko: "그 답을 듣고 어떤 제품을 섞으셨는지 알아야 해요", note: "제품"}
     - {en: "I'm calling Poison Control with those products so we treat this exactly right.", icon: speech, ko: "그 제품들로 독극물센터에 전화해서 정확히 처치할게요", note: "전화"}
     - {en: "They'll tell us how long your eyes and skin need rinsing.", icon: bandage, ko: "눈과 피부를 얼마나 헹궈야 하는지 알려 줄 거예요", note: "처치"}
   ctx:
@@ -84,40 +84,40 @@
     ko: "노출"
 - title: 소아 우발 섭취
   s:
-  - {t: "개수 파악", i: pill, w: "before와 now를 나란히 놓아 줄어든 만큼이 먹은 양이라는 계산을 쉽게 해요. 아이가 먹었을 수 있는 최대량을 가늠해야 독성 가능성과 관찰 방침이 정해져요.", d: "in the house", k: ["아이 몸무게는 몇 킬로예요?", "병은 뚜껑이 닫혀 있었나요?"], a: "left", o: ["full", "closed", "safe"]}
-  - {t: "시각 확인", i: calendar, w: "find her로 발견한 순간을 기준점으로 삼아요. 실제로 먹은 시각은 모르니 발견 시각이 먹은 시각의 가장 늦은 한계가 되어 위험 시점을 추정할 수 있어요.", d: "at the park", k: ["아이는 평소 약병을 만지곤 하나요?", "발견했을 때 의식이 있었나요?"], a: "find", o: ["lose", "miss", "drop"]}
-  - {t: "인정", i: handshake2, w: "You did the right thing으로 보호자가 한 행동을 구체적으로 인정해요. 죄책감과 불안이 큰 보호자는 이 한마디로 마음을 놓고 이어지는 질문에 더 솔직해져요.", d: "by calling us", k: ["보호자분은 잠시 밖에서 기다려 주세요", "아이는 지금 잘 버티고 있어요"], a: "quickly", o: ["slowly", "quietly", "gently"]}
-  - {t: "상황 파악", i: magnify, w: "alone with the bottle로 아이가 병에 닿을 수 있었던 상황을 사실로만 물어요. 비난하지 않고 사실을 물어야 먹은 시간 범위를 좁힐 수 있어요.", d: "in her room", k: ["병은 높은 곳에 두셨어요?", "다른 형제가 함께 있었나요?"], a: "alone", o: ["asleep", "angry", "dressed"]}
+  - {t: "개수 파악", i: pill, w: "before와 now를 나란히 놓아 줄어든 만큼이 먹은 양이라는 계산을 쉽게 해요. 아이가 먹었을 수 있는 최대량을 가늠해야 독성 가능성과 관찰 방침이 정해져요.", d: "in the house", k: ["아이 몸무게는 몇 킬로예요?", "병은 뚜껑이 닫혀 있었나요?"], a: "now", o: ["yesterday", "tomorrow", "last week"]}
+  - {t: "시각 확인", i: calendar, w: "find her로 발견한 순간을 기준점으로 삼아요. 실제로 먹은 시각은 모르니 발견 시각이 먹은 시각의 가장 늦은 한계가 되어 위험 시점을 추정할 수 있어요.", d: "at the park", k: ["아이는 평소 약병을 만지곤 하나요?", "발견했을 때 의식이 있었나요?"], a: "find", o: ["feed", "wash", "dress"]}
+  - {t: "인정", i: handshake2, w: "You did the right thing으로 보호자가 한 행동을 구체적으로 인정해요. 죄책감과 불안이 큰 보호자는 이 한마디로 마음을 놓고 이어지는 질문에 더 솔직해져요.", d: "by calling us", k: ["보호자분은 잠시 밖에서 기다려 주세요", "아이는 지금 잘 버티고 있어요"], a: "quickly", o: ["late", "gently", "quietly"]}
+  - {t: "상황 파악", i: magnify, w: "alone with the bottle로 아이가 병에 닿을 수 있었던 상황을 사실로만 물어요. 비난하지 않고 사실을 물어야 먹은 시간 범위를 좁힐 수 있어요.", d: "in her room", k: ["병은 높은 곳에 두셨어요?", "다른 형제가 함께 있었나요?"], a: "bottle", o: ["stove", "toys", "pool"]}
   - {t: "죄책감 완화", i: faceWorried, w: "a lot of parents로 혼자만의 실수가 아님을 알려 죄책감을 덜어 줘요. 아이는 아주 짧은 순간에도 약을 집을 수 있어서, 비난 대신 안전 점검으로 이어가요.", d: "this time", k: ["아이가 약을 먹은 건 처음인가요?", "약은 이제 높은 곳에 두세요"], a: "fault", o: ["secret", "choice", "habit"]}
   - {t: "안심", i: shield, w: "now로 지금부터 우리가 맡는다는 시점을 분명히 해요. 보호자가 짊어졌던 책임을 넘겨받는 말이라 불안을 줄여요.", d: "of your family", k: ["아이 옆에는 보호자분이 계세요", "곧 검사 결과를 알려 드릴게요"], a: "care", o: ["pictures", "photos", "notes"]}
   order:
     tag: "대화 흐름"
     icon: compass
     ko: "소아 우발 섭취 4문장 순서"
-    why: "발견한 시각을 묻고, 그때 병에 남은 알약 수를 묻고, 빨리 데려온 것을 인정하고, 이제부터 맡겠다고 닫아요. 'her'·'that quick'·'From here'가 앞 줄을 가리켜 순서가 하나예요."
+    why: "발견한 시각을 묻고, 그때의 알약 수를 묻고, 병을 들고 데려온 것을 인정하고, 이제부터 맡겠다고 닫아요. 'that time'·'the bottle'·'From here'가 앞 줄을 가리켜 순서가 하나예요."
     lines:
     - {en: "About what time did you find her?", icon: calendar, ko: "대략 몇 시에 발견하셨어요?", note: "시각"}
-    - {en: "How many pills are left in the bottle she had?", icon: pill, ko: "아이가 가졌던 병에 알약이 몇 개 남았나요?", note: "개수"}
-    - {en: "You did the right thing bringing her in after that.", icon: handshake2, ko: "그러고 나서 데려오신 건 잘하신 거예요", note: "인정"}
+    - {en: "How many pills were in the bottle at that time, and how many are left?", icon: pill, ko: "그때 병에 알약이 몇 개 있었고 지금 몇 개 남았나요?", note: "개수"}
+    - {en: "You did the right thing bringing her in with the bottle.", icon: handshake2, ko: "병을 가지고 아이를 데려오신 건 잘하신 거예요", note: "인정"}
     - {en: "From here, we'll take good care of her.", icon: shield, ko: "이제부터는 저희가 잘 돌봐드릴게요", note: "인계"}
   sw: {ko: "많은 부모님들께 일어나는 일이고, 보호자분 잘못이 아니에요"}
 - title: 아세트아미노펜 과다
   s:
-  - {t: "증상 설명", i: bell, w: "but으로 지금 괜찮다는 안심과 나중에 위험하다는 경고를 한 문장에 대비해요. 아세트아미노펜 과다는 처음 몇 시간은 증상이 거의 없다가 간 손상이 뒤늦게 나타날 수 있어요.", d: "right away", k: ["증상이 없는지 몇 시간 뒤에 다시 볼게요", "체온부터 다시 재 볼게요"], a: "danger", o: ["relief", "energy", "hunger"]}
+  - {t: "증상 설명", i: bell, w: "but으로 지금 괜찮다는 안심과 나중에 위험하다는 경고를 한 문장에 대비해요. 아세트아미노펜 과다는 처음 몇 시간은 증상이 거의 없다가 간 손상이 뒤늦게 나타날 수 있어요.", d: "right away", k: ["몇 시간 뒤에 증상을 다시 확인할게요", "체온부터 다시 재 볼게요"], a: "danger", o: ["relief", "energy", "hunger"]}
   - {t: "검사 설명", i: lab, w: "based on…으로 검사 결과를 먹은 시각에 맞춰 읽는다고 이유를 말해요. 혈중 농도를 먹은 뒤 몇 시간째인지에 맞춰 판단하는 기준이 있어서 정확한 시각이 필요해요.", d: "after dinner", k: ["간 초음파를 먼저 해 볼게요", "소변 검사를 먼저 할게요"], a: "exact", o: ["usual", "average", "normal"]}
   - {t: "해독제", i: shield, w: "called NAC로 약 이름을 쉬운 말과 함께 소개하고 early matters로 시간의 중요성을 짚어요. NAC는 간 손상을 막는 해독제라 일찍 시작할수록 보호 효과가 커요.", d: "for your kidneys", k: ["이 약은 통증을 바로 가라앉혀요", "이 약은 위 속 약을 씻어 내요"], a: "liver", o: ["kidneys", "stomach", "skin"]}
   - {t: "위험 설명", i: bell, w: "Even without symptoms로 증상이 없는 것과 위험이 있는 것을 정면으로 이어요. 간 손상은 눈에 띄는 증상보다 먼저 시작될 수 있어서, 증상이 없다고 치료를 늦추지 않아요.", d: "this week", k: ["지금 간 수치부터 다시 확인할게요", "약 이름을 이 종이에 적어 드릴게요"], a: "risk", o: ["rest", "ease", "peace"]}
   - {t: "치료 시작", i: pill, w: "now로 지금 시작한다고 말하고 so로 목적을 이어요. 의사 처방에 따라 정해지고, 정맥으로 주는 경우가 많아요.", d: "next week", k: ["이 약은 간 수치를 보면서 용량을 조절해요", "지금 간 수치를 한 번 더 확인할게요"], a: "best", o: ["worst", "last", "same"]}
-  - {t: "설명 약속", i: speech, w: "each step으로 모든 단계를 알리겠다고 약속하고 so you know로 목적을 말해요. 환자가 무슨 일이 벌어지는지 알면 불안이 줄고 치료에 협조하기 쉬워요.", d: "after the test", k: ["궁금한 건 지금 바로 물어보세요", "다음 단계는 제가 먼저 해 볼게요"], a: "explain", o: ["skip", "hide", "rush"]}
+  - {t: "설명 약속", i: speech, w: "each step으로 모든 단계를 알리겠다고 약속하고 so you know로 목적을 말해요. 환자가 무슨 일이 벌어지는지 알면 불안이 줄고 치료에 협조하기 쉬워요.", d: "after the test", k: ["궁금한 건 지금 바로 물어보세요", "다음 단계는 제가 먼저 해 볼게요"], a: "explain", o: ["skip", "delay", "rush"]}
   order:
     tag: "대화 흐름"
     icon: compass
     ko: "아세트아미노펜 과다 4문장 순서"
-    why: "지금 괜찮아도 나중에 위험할 수 있다고 알리고, 그래서 정확한 시각에 수치를 확인하고, NAC를 시작하고, 단계마다 설명하겠다고 닫아요. 'That's why'·'it'이 앞 줄을 가리켜 순서가 하나예요."
+    why: "지금 괜찮아도 나중에 위험할 수 있다고 알리고, 그래서 수치와 먹은 시각을 확인하고, 그 둘을 바탕으로 NAC를 시작하고, 단계마다 설명하겠다고 닫아요. 'That's why'·'both of those'·'it'이 앞 줄을 가리켜 순서가 하나예요."
     lines:
     - {en: "Feeling okay now is normal, but the danger can show up later.", icon: bell, ko: "지금 괜찮은 건 정상이지만 위험은 나중에 나타날 수 있어요", note: "경고"}
-    - {en: "That's why we'll check your acetaminophen level at the right time.", icon: lab, ko: "그래서 알맞은 시각에 아세트아미노펜 수치를 확인할게요", note: "검사"}
-    - {en: "We'll start NAC now so your liver has the best chance.", icon: pill, ko: "간이 가장 좋은 기회를 갖도록 지금 NAC를 시작할게요", note: "치료"}
+    - {en: "That's why we'll check your acetaminophen level and the exact time you took it.", icon: lab, ko: "그래서 아세트아미노펜 수치와 드신 정확한 시각을 확인할게요", note: "검사"}
+    - {en: "Using both of those, we'll start NAC now so your liver has the best chance.", icon: pill, ko: "그 둘을 바탕으로 간이 가장 좋은 기회를 갖도록 지금 NAC를 시작할게요", note: "치료"}
     - {en: "I'll explain each step of it so you know what's happening.", icon: speech, ko: "무슨 일인지 아시도록 그 단계마다 설명할게요", note: "설명"}
   ctx:
     word: "level"
@@ -127,22 +127,22 @@
     why: "APAP는 acetaminophen의 약어로 차트와 의료진끼리 써요. 환자에게는 알아듣는 약 이름, 흔히 상표명 Tylenol로 말하고 수치는 혈액 검사라고 풀어 줘요."
 - title: 오피오이드 과다
   s:
-  - {t: "해독제 투여", i: pill, w: "I'm giving으로 지금 하는 일을 진행형으로 알리고 to reverse로 목적을 밝혀요. 날록손은 오피오이드의 작용을 막아 호흡 억제를 풀어 주지만, 호흡과 기도 지지를 대신하지는 않아요.", d: "for the pain", k: ["산소 마스크를 먼저 씌울게요", "혈당부터 확인할게요"], a: "reverse", o: ["increase", "repeat", "hide"]}
-  - {t: "재진정 경고", i: bell, w: "may…but…으로 깨어난 뒤에도 다시 처질 가능성을 같이 말해요. 날록손은 작용 시간이 짧아 오피오이드가 남아 있으면 다시 졸리고 숨이 느려질 수 있어서 계속 지켜봐요.", d: "right away", k: ["깨어나면 혈당을 다시 확인할게요", "깨어나면 바로 일으켜 앉힐게요"], a: "closely", o: ["once", "rarely", "later"]}
-  - {t: "문진", i: magnify, w: "What…and how much로 약 이름과 양을 한 번에 묻는 짧은 질문이에요. 어떤 오피오이드를 얼마나 먹었는지에 따라 날록손을 다시 줄지와 지켜볼 시간이 달라져요.", d: "in the bag", k: ["그가 평소 먹는 약이 있나요?", "마지막으로 깨어 있던 게 언제였나요?"], a: "take", o: ["break", "sell", "lose"]}
-  - {t: "호흡 확인", i: stetho, w: "on his own으로 스스로 쉬는지를 묻고 or로 도움이 필요한지를 나란히 놓아 하나를 고르게 해요. 오피오이드 과다의 가장 큰 위험은 호흡 저하라서 숨 쉬는 상태가 가장 먼저예요.", d: "for a while", k: ["지금 눈은 뜨고 있나요?", "맥박은 규칙적인가요?"], a: "own", o: ["bed", "phone", "shift"]}
+  - {t: "해독제 투여", i: pill, w: "I'm giving으로 지금 하는 일을 진행형으로 알리고 to reverse로 목적을 밝혀요. 날록손은 오피오이드의 작용을 막아 호흡 억제를 풀어 주지만, 호흡과 기도 지지를 대신하지는 않아요.", d: "for the pain", k: ["산소 마스크를 먼저 씌울게요", "혈당부터 확인할게요"], a: "reverse", o: ["increase", "repeat", "feed"]}
+  - {t: "재진정 경고", i: bell, w: "may…but…으로 깨어난 뒤에도 다시 처질 가능성을 같이 말해요. 날록손은 작용 시간이 짧아 오피오이드가 남아 있으면 다시 졸리고 숨이 느려질 수 있어서 계속 지켜봐요.", d: "right away", k: ["깨어나면 혈당을 다시 확인할게요", "깨어나면 바로 일으켜 앉힐게요"], a: "closely", o: ["once", "rarely", "briefly"]}
+  - {t: "문진", i: magnify, w: "What…and how much로 약 이름과 양을 한 번에 묻는 짧은 질문이에요. 어떤 오피오이드를 얼마나 먹었는지에 따라 날록손을 다시 줄지와 지켜볼 시간이 달라져요.", d: "in the bag", k: ["그가 평소 먹는 약이 있나요?", "마지막으로 깨어 있던 게 언제였나요?"], a: "much", o: ["old", "far", "tall"]}
+  - {t: "호흡 확인", i: stetho, w: "on his own으로 스스로 쉬는지를 묻고 or로 도움이 필요한지를 나란히 놓아 하나를 고르게 해요. 오피오이드 과다의 가장 큰 위험은 호흡 저하라서 숨 쉬는 상태가 가장 먼저예요.", d: "for a while", k: ["지금 눈은 뜨고 있나요?", "맥박은 규칙적인가요?"], a: "breathing", o: ["eating", "walking", "drinking"]}
   - {t: "경과 예고", i: monitor, w: "should look better within…으로 확정 대신 예상과 시간 범위를 말해요. 날록손은 정맥으로 준 뒤 몇 분 안에 작용하기 시작해서, 호흡이 바뀌는 것을 보며 반응을 판단해요.", d: "right now", k: ["몇 분 뒤에 혈압을 다시 잴게요", "몇 분마다 의식 수준을 확인할게요"], a: "better", o: ["worse", "slower", "weaker"]}
   - {t: "계속 관찰", i: shield, w: "in case로 아직 일어나지 않은 일에 대비한다고 말해요. 날록손 효과가 사라지면 호흡이 다시 느려질 수 있어서 일정 시간 지켜보는 경우가 많아요.", d: "for a while", k: ["보호자분은 밖에서 기다려 주세요", "지금 퇴원 서류를 가져올게요"], a: "staying", o: ["leaving", "resting", "sleeping"]}
   order:
     tag: "대화 흐름"
     icon: compass
     ko: "오피오이드 과다 4문장 순서"
-    why: "호흡을 먼저 지지하고, 호흡이 지지된 상태에서 날록손을 투여하고, 호흡이 나아지는 것을 알리고, 다시 처질 수 있어 계속 지켜본다고 닫아요. 'his breathing'·'it'이 앞 줄을 가리켜 순서가 하나예요."
+    why: "호흡을 먼저 지지하고, 호흡이 지지된 상태에서 날록손을 투여하고, 호흡이 나아지는 것을 알리고, 나아져도 효과가 떨어질 수 있어 계속 지켜본다고 닫아요. 'his breathing'·'it improves'가 앞 줄을 가리켜 순서가 하나예요."
     lines:
     - {en: "I'm supporting his breathing right now.", icon: stetho, ko: "지금 그의 호흡을 지지하고 있어요", note: "호흡"}
     - {en: "With his breathing supported, I'm giving naloxone to reverse the opioid.", icon: pill, ko: "호흡을 지지한 채 오피오이드를 되돌리려고 날록손을 드려요", note: "투여"}
     - {en: "His breathing should look better within a few minutes.", icon: monitor, ko: "몇 분 안에 호흡이 더 나아질 거예요", note: "경과"}
-    - {en: "It can wear off, so we'll keep watching him closely.", icon: shield, ko: "효과가 떨어질 수 있어서 계속 가까이서 지켜볼게요", note: "관찰"}
+    - {en: "Even when it improves, it can wear off, so we'll keep watching him closely.", icon: shield, ko: "나아져도 효과가 떨어질 수 있어서 계속 가까이서 지켜볼게요", note: "관찰"}
   ctx:
     word: "naloxone"
     ko: "날록손"

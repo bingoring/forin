@@ -1,0 +1,155 @@
+- title: 약물 은폐 환자
+  s:
+  - {t: "비난 완화", i: shield, w: "I'm not here to로 내가 온 이유가 처벌이 아님을 먼저 못 박아요. 처벌이 걱정되면 환자는 약물을 숨겨서 처치가 늦어질 수 있어요.", d: "with the police", k: ["다른 병원 기록을 확인해 볼게요", "보호자분께 연락해도 될까요?"], a: "trouble", o: ["debt", "danger", "pain"]}
+  - {t: "징후 설명", i: stetho, w: "your signs…tell me로 환자의 말이 아니라 몸의 징후를 근거로 시작해요. 이 순서면 추궁이 아니라 같은 정보를 함께 보는 대화가 돼요.", d: "from the lab", k: ["이 증상은 약 때문이 아닐 수도 있어요", "혈액 검사 결과를 먼저 설명해 드릴게요"], a: "talk", o: ["argue", "joke", "worry"]}
+  - {t: "비밀 범위", i: lock, w: "stays between으로 이야기가 퍼지는 범위를 정해 줘요. 치료에 필요한 사람들 안에서만 나눈다는 뜻이고, 모든 비밀을 약속하는 말은 아니에요.", d: "and the police", k: ["말씀하신 내용은 가족분께 먼저 알릴게요", "말씀하신 내용은 다른 병원에도 보낼게요"], a: "between", o: ["outside", "beyond", "against"]}
+  - {t: "사실 제시", i: magnify, w: "don't add up으로 거짓말이라는 말 없이 앞뒤가 안 맞는 부분만 짚어요. 바로 that's okay를 붙여 방어를 풀어요.", d: "about the pills", k: ["몇 가지 검사를 먼저 해 볼게요", "혈액 검사 결과가 곧 나와요"], a: "okay", o: ["wrong", "rude", "silly"]}
+  - {t: "비난 완화", i: shield, w: "no matter what으로 어떤 내용이어도 상관없다고 범위를 열어요. 비난하지 않겠다는 뜻이지 모든 비밀을 약속한다는 뜻은 아니에요.", d: "or at home", k: ["여기서는 누구도 비난하지 않아요", "원하시면 상담사를 불러 드릴게요"], a: "here", o: ["there", "outside", "tomorrow"]}
+  - {t: "목적 설명", i: handshake2, w: "just wants to로 팀의 목적을 하나로 좁히고 what happened to you로 환자를 주어로 둬요. 어떻게 했냐가 아니라 무슨 일이 있었냐를 묻는 틀이라 방어가 덜해요.", d: "from you", k: ["의료팀은 약 이름만 알면 돼요", "의료팀은 보호자분께 먼저 물어볼 거예요"], a: "understand", o: ["blame", "judge", "punish"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "약물 은폐 환자 4문장 순서"
+    why: "처벌하러 온 게 아니라고 먼저 말하고, 그래도 몸의 징후를 근거로 대화를 열고, 그 이야기의 비밀 범위를 알리고, 그 밖에 팀이 이해하려는 목적으로 닫아요. 'Still'·'it'·'Beyond that'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "I'm not here to get you in trouble — I just want to keep you safe.", icon: shield, ko: "곤란하게 하려는 게 아니라 안전하게 해드리고 싶은 거예요", note: "안심"}
+    - {en: "Still, some of your signs tell me your body reacted to something.", icon: stetho, ko: "그래도 몇 가지 징후를 보면 몸이 뭔가에 반응한 것 같아요", note: "징후"}
+    - {en: "Whatever you tell me about it stays between us and your care team.", icon: lock, ko: "그것에 대해 말씀하신 건 저와 의료팀 사이에만 남아요", note: "비밀"}
+    - {en: "Beyond that, your care team just wants to understand what happened, not to blame you.", icon: handshake2, ko: "그 밖에 의료팀은 탓하려는 게 아니라 무슨 일인지 이해하고 싶은 거예요", note: "목적"}
+  sw: {ko: "의료팀은 그저 무슨 일이 있었는지 이해하고 싶은 거예요"}
+- title: 미상 물질 의식불명
+  s:
+  - {t: "상태 보고", i: stetho, w: "숫자를 먼저 대고 this looks like로 판단을 뒤에 붙여요. 작은 동공과 느린 호흡은 오피오이드 톡시드롬의 대표적인 조합이에요.", d: "on the left", k: ["동공이 크고 호흡수는 서른이에요", "동공은 정상이고 호흡수는 열여섯이에요"], a: "toxidrome", o: ["rash", "fracture", "sprain"]}
+  - {t: "지원 요청", i: siren, w: "I need로 필요한 것을 분명히 말하고 at the bedside now로 장소와 시점을 박아요. 기도 지지를 해독제보다 앞에 두고, 위급할 때는 필요한 것만 짧게 요청해요.", d: "in the lobby", k: ["의사와 약사를 병실로 불러 주세요", "크래시카트를 문 앞에 두세요"], a: "naloxone", o: ["insulin", "aspirin", "heparin"]}
+  - {t: "인계 요청", i: speech, w: "핵심 정보를 짧은 구로 이어 붙이고 can you take report로 인계를 받아 달라고 부탁해요. 미국 병원에서 인계를 받는 것을 take report라고 해요.", d: "from the family", k: ["가족이 가져온 약병을 확인 중입니다", "의사 호출은 이미 했습니다"], a: "protecting", o: ["ignoring", "delaying", "abandoning"]}
+  - {t: "우선순위", i: shield, w: "first, then으로 우선순위를 한 문장에 못 박아요. 원인이 무엇이든 기도·호흡·순환이 무너지면 해독제나 검사보다 먼저 지켜요.", d: "if you want", k: ["원인은 검사 결과가 나오면 알려 드릴게요", "원인은 가족분께 먼저 물어볼게요"], a: "Airway", o: ["Imaging", "Labs", "Consult"]}
+  - {t: "상태 보고", i: monitor, w: "for now와 but으로 지금은 안정적이지만 변할 수 있다는 단서를 붙여요. 미상 물질은 시간이 지나며 급변할 수 있어서 안정적이어도 계속 봐요.", d: "after the scan", k: ["활력징후를 한 번만 재요", "활력징후는 15분 전 수치예요"], a: "stable", o: ["unstable", "critical", "absent"]}
+  - {t: "인계 요청", i: speech, w: "while I stay with으로 내가 지금 무엇을 하는지 이유로 붙여요. 기도에서 손을 뗄 수 없는 사람이 다른 일을 맡길 때 쓰는 말이에요.", d: "after lunch", k: ["기도는 제가 곧 넘길게요", "보고서는 나중에 쓰세요"], a: "stay with", o: ["step away from", "walk away from", "let go of"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "미상 물질 의식불명 4문장 순서"
+    why: "동공과 호흡수를 보고하고, 그것이 톡시드롬 같아 기도를 보호한다고 알리고, 기도가 보호된 상태에서 날록손을 요청하고, 요청한 뒤 기도를 맡은 채 인계를 부탁해요. 'That'·'With the airway protected'·'With naloxone requested'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Pupils are pinpoint and respirations are eight.", icon: stetho, ko: "동공이 점같이 작고 호흡수는 8회예요", note: "보고"}
+    - {en: "That looks like a toxidrome, so I'm protecting the airway.", icon: shield, ko: "톡시드롬 같아서 기도를 보호하고 있어요", note: "판단"}
+    - {en: "With the airway protected, I need naloxone at the bedside now.", icon: siren, ko: "기도를 보호한 채 날록손을 침상 곁에 지금 준비해 주세요", note: "요청"}
+    - {en: "With naloxone requested, can you take report while I stay with the airway?", icon: speech, ko: "날록손을 요청했으니, 제가 기도를 맡는 동안 인계 받으실 수 있나요?", note: "인계"}
+  ctx:
+    word: "respirations"
+    ko: "호흡수"
+    sc:
+      1: {en: "Respirations eight, sats eighty-four — I need you at the bedside now."}
+- title: 유기인계 중독
+  s:
+  - {t: "징후 설명", i: bulb, w: "목록 세 개를 대시로 끊어 보여 주고 point to로 결론을 뒤에 둬요. 침 흘림·땀·눈물은 콜린성 증상으로, 유기인계 중독을 가리키는 대표적인 조합이에요.", d: "after dinner", k: ["이 증상은 탈수 때문일 수 있어요", "이 증상은 감기에서 흔해요"], a: "poisoning", o: ["allergy", "migraine", "fracture"]}
+  - {t: "치료 안내", i: pill, w: "to dry up…and protect로 목적을 둘로 나눠 말해요. 아트로핀은 콜린성 분비물을 줄여 기도와 호흡을 확보하도록 돕는 해독제예요.", d: "for the pain", k: ["아트로핀으로 열을 내릴게요", "아트로핀으로 통증을 줄일게요"], a: "dry up", o: ["increase", "thicken", "collect"]}
+  - {t: "제독", i: bandage, w: "remove…and wash로 제독의 두 단계를 나열해요. 살충제가 묻은 옷과 피부는 계속 흡수되는 통로라서 옷을 벗기고 씻어야 하고, 처치하는 사람도 보호구를 입어요.", d: "in the sun", k: ["몸에 묻은 건 거즈로 닦아 낼게요", "몸을 따뜻한 담요로 덮어 드릴게요"], a: "wash", o: ["cover", "oil", "powder"]}
+  - {t: "노출 시간", i: calendar, w: "How long으로 노출된 시간의 길이를 묻고 was exposed to로 수동태를 써서 환자를 탓하지 않아요. 노출이 길수록 흡수량이 늘어 치료 강도가 달라져요.", d: "last week", k: ["어떤 살충제인지 이름을 아세요?", "그가 살충제를 직접 뿌렸나요?"], a: "pesticide", o: ["radiation", "mold", "asbestos"]}
+  - {t: "효과 설명", i: pill, w: "will help로 도움이 되는 정도로 말하고 extra fluid로 눈에 보이는 문제를 가리켜요. 유기인계는 기관지 분비물이 늘어 숨쉬기 어렵게 해서, 아트로핀으로 말리는 것이 치료의 핵심이에요.", d: "from his stomach", k: ["아트로핀은 폐를 직접 씻어 내요", "아트로핀은 맥박을 느리게 만들어요"], a: "lungs", o: ["knees", "wrists", "shoulders"]}
+  - {t: "투여 계획", i: pill, w: "until로 끝나는 기준을 시간이 아니라 몸의 반응으로 정해요. 아트로핀은 정해진 용량이 아니라 분비물이 마를 때까지 반복해서 늘려 가며 줘요.", d: "for ten minutes", k: ["분비물이 마르면 체온을 다시 잴게요", "분비물이 마르면 산소를 줄여 볼게요"], a: "keep", o: ["quit", "pause", "delay"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "유기인계 중독 4문장 순서"
+    why: "징후가 유기인계 중독을 가리킨다고 알리고, 분비물을 말려 호흡을 보호하는 아트로핀을 시작하고, 호흡이 보호된 상태에서 제독하고, 제독으로는 분비물이 멎지 않아 아트로핀을 계속한다고 닫아요. 'these signs'·'his breathing protected'·'Washing'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "These signs point to organophosphate poisoning.", icon: bulb, ko: "이 징후들은 유기인계 중독을 가리켜요", note: "판단"}
+    - {en: "We're giving atropine to dry up his secretions and protect his breathing.", icon: pill, ko: "분비물을 말리고 호흡을 보호하도록 아트로핀을 드려요", note: "해독제"}
+    - {en: "With his breathing protected, we need to remove his clothes and wash his skin.", icon: bandage, ko: "호흡을 보호한 채 옷을 벗기고 피부를 씻어야 해요", note: "제독"}
+    - {en: "Washing won't stop the secretions, so we'll keep giving atropine until they dry up.", icon: pill, ko: "씻는 것만으로 분비물이 멎지 않아서 마를 때까지 아트로핀을 계속 드려요", note: "지속"}
+  ctx:
+    word: "atropine"
+    ko: "아트로핀"
+- title: 세로토닌 증후군
+  s:
+  - {t: "원인 추정", i: bulb, w: "suggest로 확정이 아니라 가능성이라고 말해요. 씰룩임과 고열은 세로토닌 증후군의 특징이라 약물 병용을 의심하는 단서가 돼요.", d: "from the cold", k: ["고열은 감염 때문이라는 뜻이에요", "씰룩임은 곧 멎을 거예요"], a: "suggest", o: ["prove", "deny", "replace"]}
+  - {t: "치료 안내", i: shield, w: "stopping the trigger and cooling으로 원인 제거와 체온 낮추기를 한 번에 알려요. 세로토닌 증후군은 원인 약물을 끊는 것이 기본 치료고, 체온이 높으면 식히는 처치가 함께 필요해요.", d: "in the shower", k: ["해열제를 먼저 드릴게요", "수액 속도를 먼저 조절할게요"], a: "stopping", o: ["adding", "doubling", "starting"]}
+  - {t: "문진", i: pill, w: "new…or supplement로 약 말고 보충제까지 넓혀 물어요. 세로토닌 증후군은 새로 시작했거나 용량을 올린 약, 보충제(예: 세인트존스워트) 때문에도 생겨요.", d: "last year", k: ["평소 드시던 약은 뭐예요?", "약을 바꾼 이유가 뭐예요?"], a: "this week", o: ["next week", "tomorrow", "tonight"]}
+  - {t: "상태 설명", i: stetho, w: "두 가지 사실을 and로 나란히 말해 지금 상태를 분명히 알려요. 근육 강직과 고체온은 세로토닌 증후군이 심해지는 신호라 빠른 처치가 필요해요.", d: "from your fever", k: ["심박수가 매우 빨라요", "혈압이 높아요"], a: "stiff", o: ["soft", "loose", "relaxed"]}
+  - {t: "치료 안내", i: pill, w: "to calm your body down으로 목적을 한 줄로 요약해요. 냉각은 체온을, 약은 근육 경직과 불안을 가라앉히려는 것이고 약은 의사가 처방해요.", d: "in the sun", k: ["진정시키는 약을 정맥으로 드릴게요", "팔에 얼음 팩을 대 드릴게요"], a: "cooling", o: ["heat", "blankets", "warm fluids"]}
+  - {t: "치료 안내", i: pill, w: "every…that could be로 의심되는 것을 하나도 빼지 않고 끊는다고 범위를 밝혀요. 원인이 불확실할 때는 세로토닌에 영향을 주는 약을 모두 멈추고 지켜봐요.", d: "except one", k: ["이 약들은 수치를 보고 다시 시작할게요", "이 약들은 당분간 줄여서 드릴게요"], a: "stop", o: ["start", "add", "double"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "세로토닌 증후군 4문장 순서"
+    why: "씰룩임과 고열이 약물 상호작용을 시사한다고 알리고, 그 약 가운데 새 것을 묻고, 의심되는 약을 모두 멈추고, 식혀서 원인이 일으킨 반응을 가라앉힌다고 닫아요. 'those medications'·'every one'·'the trigger'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "The twitching and high fever suggest your medications are interacting.", icon: bulb, ko: "씰룩거림과 고열은 약물이 상호작용한다는 걸 시사해요", note: "추정"}
+    - {en: "Which of those medications is new, or did you start a supplement?", icon: pill, ko: "그 약 중 어느 게 새 거고, 보충제를 시작하셨나요?", note: "문진"}
+    - {en: "We'll stop every one that could be the trigger.", icon: shield, ko: "유발 원인일 수 있는 것은 전부 중단할게요", note: "중단"}
+    - {en: "Cooling you down helps calm your body from what the trigger caused.", icon: pill, ko: "식혀 드리면 유발 원인이 일으킨 반응에서 몸이 진정돼요", note: "냉각"}
+  ctx:
+    word: "tramadol"
+    ko: "트라마돌"
+    sc:
+      2: {en: "You're presenting with a serotonergic toxidrome from the tramadol.", fix: "The tramadol and your usual medicine may be interacting — that's why your muscles are twitching."}
+    why: "셋 다 약이 서로 겹쳐 세로토닌 증후군이 왔다는 같은 말이에요. serotonergic toxidrome은 의료진끼리의 말이라, 환자에게는 약끼리 부딪혔다고 쉽게 말해요."
+- title: 청산/메탄올 중독
+  s:
+  - {t: "증상 설명", i: magnify, w: "can mean으로 가능성으로 말하고 trouble seeing으로 환자가 쓰는 말로 증상을 불러요. 메탄올은 시신경을 해쳐 시야가 흐려지거나 안 보이는 증상을 일으켜요.", d: "after the fall", k: ["눈이 아프면 바로 말씀해 주세요", "시력은 곧 돌아올 거예요"], a: "mean", o: ["prevent", "treat", "cure"]}
+  - {t: "치료 안내", i: pill, w: "There's an antidote로 쓸 수 있는 해독제가 있다고 안심시키고 you may need로 투석 가능성은 단정하지 않고 말해요. 해독제는 독성 대사물이 생기는 것을 막고, 투석은 독을 직접 걸러 내요.", d: "tomorrow", k: ["해독제는 먹는 약으로 드려요", "투석은 퇴원한 뒤에 할 수 있어요"], a: "urgent", o: ["optional", "routine", "outpatient"]}
+  - {t: "문진", i: magnify, w: "How much와 how long ago로 양과 시점을 나눠 묻고 about으로 어림도 괜찮다고 알려요. 메탄올은 증상이 늦게 나타날 수 있어서 시점과 양이 치료 결정에 중요해요.", d: "this week", k: ["다른 약이나 술도 드셨나요?", "병이나 용기를 가져오셨나요?"], a: "drink", o: ["spill", "waste", "lose"]}
+  - {t: "검사 안내", i: magnify, w: "your eyes and how well you can see로 눈 자체와 시력을 나눠 확인한다고 말해요. 시력 변화가 메탄올 독성의 가장 중요한 단서라 지금 상태를 기록해 둬요.", d: "with a light", k: ["혈액 검사를 먼저 해 볼게요", "소변 검사를 먼저 해 볼게요"], a: "eyes", o: ["ears", "knees", "teeth"]}
+  - {t: "치료 설명", i: bell, w: "but으로 해독제가 빨리 듣는다는 좋은 소식과 그래도 투석이 급할 수 있다는 단서를 대비해요. 해독제가 독성 대사물이 생기는 것을 막아도 이미 몸에 있는 독은 투석으로 걸러야 할 수 있어요.", d: "in the morning", k: ["해독제는 여러 번 나눠서 드려요", "투석 준비는 의사 선생님이 해요"], a: "works", o: ["fails", "spoils", "expires"]}
+  - {t: "이유 설명", i: siren, w: "because로 서두르는 이유를 바로 대요. 메탄올 중독은 시신경 손상과 산증이 중요하고, 빠른 처치가 영구적인 시력 손상을 줄이는 데 도움이 돼요.", d: "after lunch", k: ["서두르는 이유는 시력 때문이에요", "서두르는 이유는 검사 예약 때문이에요"], a: "fast", o: ["slowly", "quietly", "lazily"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "메탄올 중독 4문장 순서"
+    why: "마신 양과 시점을 묻고, 그 뒤의 시야 문제가 메탄올 중독일 수 있다고 알리고, 그에 대한 해독제와 투석을 설명하고, 그래서 서두른다고 닫아요. 'that'·'For that'·'That's why'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "How much did you drink, and about how long ago?", icon: magnify, ko: "얼마나 드셨고, 대략 얼마나 전이었어요?", note: "문진"}
+    - {en: "Trouble seeing after that can mean methanol poisoning.", icon: magnify, ko: "그 뒤의 시야 문제는 메탄올 중독을 뜻할 수 있어요", note: "설명"}
+    - {en: "For that, there's an antidote we're giving now, and you may need urgent dialysis.", icon: pill, ko: "그에 대해 지금 드리는 해독제가 있고 긴급 투석이 필요할 수도 있어요", note: "치료"}
+    - {en: "That's why we're moving fast — your vision and kidneys are both at risk.", icon: siren, ko: "그래서 서두르는 거예요, 시력과 신장이 둘 다 위험해요", note: "이유"}
+  ctx:
+    word: "dialysis"
+    ko: "투석"
+    sc:
+      0: {en: "Methanol ingestion with a high osmolar gap — we need emergent dialysis."}
+      1: {en: "Fomepizole given; nephrology consulted for dialysis."}
+      2: {en: "Nephrology is consulted for emergent HD — we'll need dialysis access.", fix: "We're giving you an antidote now, and you may need dialysis soon to clean your blood."}
+    why: "셋 다 긴급 투석이 필요하다는 같은 말이에요. HD·nephrology·access는 의료진끼리의 말이라, 환자에게는 dialysis가 무엇을 하는지로 풀어 말해요."
+- title: 과다복용 심정지 전조
+  s:
+  - {t: "상태 설명", i: monitor, w: "unstable로 상태를 솔직히 알리고 so로 우리가 하는 일을 이어요. 불안정한 리듬은 갑자기 나빠질 수 있어서 장비와 약을 미리 준비해요.", d: "from the scan", k: ["리듬이 불안정한 건 약 때문일 수 있어요", "리듬이 안정되면 바로 설명해 드릴게요"], a: "unstable", o: ["stable", "normal", "regular"]}
+  - {t: "협조 요청", i: bell, w: "Stay with me로 의식을 붙잡는 말을 먼저 하고 tell me right away로 신호를 알리게 해요. 환자가 느끼는 변화는 모니터에 나타나기 전에 올 수 있어서 직접 말하게 해요.", d: "after a while", k: ["숨이 차면 손을 들어 주세요", "가슴이 아프면 바로 말씀해 주세요"], a: "right away", o: ["tomorrow", "next week", "sometime"]}
+  - {t: "도움 요청", i: siren, w: "상태를 명사구 두 개로 짧게 대고 I need로 필요한 두 가지를 분명히 요청해요. 위급할 때는 배경 설명보다 상태와 필요한 것을 먼저 말해요.", d: "in the hallway", k: ["QRS가 좁고 맥박이 빨라요", "과다복용인데 활력징후는 안정적이에요"], a: "widening", o: ["narrowing", "shortening", "normal"]}
+  - {t: "감시 보고", i: monitor, w: "any new로 이미 있는 변화가 아니라 새로 생기는 변화를 본다고 구분해요. 전보다 QRS가 더 넓어지거나 맥박이 더 느려지는지 비교해서 악화를 알아요.", d: "on the left", k: ["그의 혈압도 계속 보고 있어요", "그의 체온도 계속 보고 있어요"], a: "new", o: ["same", "old", "previous"]}
+  - {t: "증상 보고", i: bell, w: "feel your heart…ing로 환자가 느끼는 말로 증상을 대신 불러 줘요. 심계항진이나 건너뛰는 느낌은 부정맥의 단서라 모니터와 함께 환자의 말도 도움이 돼요.", d: "after walking", k: ["손이 저리면 바로 말씀해 주세요", "어지러우면 바로 말씀해 주세요"], a: "feel", o: ["want", "keep", "need"]}
+  - {t: "안심", i: shield, w: "everything we might need로 가능한 모든 경우에 대비했다고 안심시켜요. 환자는 자신을 둘러싼 준비를 알면 불안이 줄어요.", d: "for you", k: ["의사 선생님이 방금 도착했어요", "약사가 약을 가져오고 있어요"], a: "ready", o: ["late", "absent", "missing"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "과다복용 심정지 전조 4문장 순서"
+    why: "리듬이 불안정하다고 알리고, 그 리듬 때문에 느껴지는 변화를 바로 말하게 하고, 모니터로 새 변화를 지켜본다고 알리고, 그래서 팀이 준비됐다고 닫아요. 'that rhythm'·'Whatever you feel'·'That's why'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Your rhythm is unstable, so we're preparing everything to support you.", icon: monitor, ko: "리듬이 불안정해서 지원할 수 있도록 모든 걸 준비하고 있어요", note: "상태"}
+    - {en: "Stay with me, and tell me if that rhythm makes your heart race or skip.", icon: bell, ko: "정신 놓지 마시고, 그 리듬 때문에 심장이 빨리 뛰거나 건너뛰면 말씀해 주세요", note: "요청"}
+    - {en: "Whatever you feel, your monitor shows me any new widening or slowing.", icon: monitor, ko: "무엇을 느끼시든 모니터가 새로 넓어지거나 느려지는 걸 보여 줘요", note: "감시"}
+    - {en: "That's why the team is ready with everything we might need.", icon: shield, ko: "그래서 팀은 필요할 수 있는 모든 걸 준비하고 있어요", note: "준비"}
+  sw: {ko: "리듬이 불안정해서, 지원할 수 있도록 모든 걸 준비하고 있어요"}
+- title: 중독 이송 중 급변 인계
+  s:
+  - {t: "섭취 보고", i: pill, w: "Ingestion was로 무엇을 먹었는지 명사로 시작하고 about…ago로 시각을 어림으로, per the family로 출처를 밝혀요. 인계에서는 직접 확인한 것과 전해 들은 것을 구분해요.", d: "after the fall", k: ["섭취는 어제 저녁이었다고 합니다", "섭취한 약은 아세트아미노펜이라고 합니다"], a: "per", o: ["despite", "without", "against"]}
+  - {t: "경과 보고", i: monitor, w: "but으로 인수 때의 상태와 이송 중 변한 상태를 대비해요. 변화가 있었다는 사실이 인계에서 가장 중요해서 처음과 지금을 둘 다 말해요.", d: "in the lobby", k: ["인수 때부터 열이 있었습니다", "이송 중 구토가 있었습니다"], a: "talking", o: ["unresponsive", "seizing", "intubated"]}
+  - {t: "수치 보고", i: chartup, w: "숫자는 읽는 그대로 eighty over forty처럼 말하고 and로 한 일을 이어요. 수치와 처치를 한 문장에 묶어야 받는 쪽이 효과를 판단할 수 있어요.", d: "an hour ago", k: ["마지막 혈압은 120에 80이었습니다", "마지막 맥박은 40이었고 아트로핀을 드렸습니다"], a: "gave", o: ["held", "stopped", "declined"]}
+  - {t: "경과 보고", i: chartup, w: "from…to로 변화의 처음과 끝을 숫자로 대요. GCS는 의식 수준 점수라 15에서 9로 내려간 것만으로도 상태가 얼마나 급히 나빠졌는지 전달돼요.", d: "after the call", k: ["GCS는 인수 때 이미 9였습니다", "동공은 이송 중 작아졌습니다"], a: "dropped", o: ["rose", "held", "doubled"]}
+  - {t: "현재 조치", i: shield, w: "and로 지금 하고 있는 두 가지를 나란히 보고해요. 기도 보호와 혈압 관찰은 이송 중 급변한 환자에게 인계 직후 이어 가야 할 일이에요.", d: "with a mask", k: ["기도는 보호하고 있고 혈압은 안정적입니다", "혈압을 올리는 약을 시작하고 있습니다"], a: "protecting", o: ["blocking", "closing", "covering"]}
+  - {t: "인계 요청", i: speech, w: "take over로 일을 넘겨받아 달라고 부탁하고 while I give report로 이유와 시간을 붙여요. 한 사람이 기도와 인계를 동시에 하기 어려워서 역할을 나눠요.", d: "after lunch", k: ["기도와 혈압은 제가 계속 맡을게요", "혈압만 먼저 맡아 주실 수 있나요?"], a: "take over", o: ["skip", "delay", "cancel"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "이송 중 급변 인계 4문장 순서"
+    why: "섭취 약물과 시각을 보고하고, 이송 중 변한 상태를 알리고, 마지막 혈압과 처치를 보고하고, 이어서 기도와 혈압을 넘겨받아 달라고 부탁해요. 'He'·'Last pressure'·'so I can finish report'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Ingestion was tricyclics about ninety minutes ago per the family.", icon: pill, ko: "가족에 따르면 약 90분 전에 삼환계 약물을 섭취했습니다", note: "섭취"}
+    - {en: "He was talking at pickup but became hypotensive and drowsy en route.", icon: monitor, ko: "인수 때는 말했는데 이송 중 저혈압에 졸린 상태가 됐습니다", note: "경과"}
+    - {en: "His latest pressure was eighty over forty, and I gave a bicarb bolus.", icon: chartup, ko: "마지막 혈압은 80에 40이었고 중탄산제 볼루스를 드렸습니다", note: "수치"}
+    - {en: "Can you take over airway and pressure so I can finish report?", icon: speech, ko: "제가 인계를 마치도록 기도와 혈압을 맡아주실 수 있나요?", note: "요청"}
+  ctx:
+    word: "hypotensive"
+    ko: "저혈압의"
+    sc:
+      0: {en: "He was hypotensive on the last check — eighty over forty."}

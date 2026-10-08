@@ -26,7 +26,7 @@
   - {t: "투약 중단", i: siren, w: "stopping과 flushing을 and로 이어 두 행동을 한 번에 알려요. 반응이 의심되면 먼저 주입을 멈춰야 더 들어가지 않고, 정맥 라인은 필요한 약을 넣어야 할 수 있어서 살려 둬요.", d: "later on", k: ["다른 항생제로 바꿀 수 있는지 의사에게 물어볼게요", "팔을 편하게 두고 계세요"], a: "antibiotic", o: ["painkiller", "insulin", "vitamin"]}
   - {t: "부종 문진", i: faceWorried, w: "Are you feeling any…로 지금 느끼는 증상을 묻고 in your face·trouble swallowing으로 얼굴과 삼킴을 짚어요. 얼굴 부기와 삼킴 곤란은 기도 부종으로 이어질 수 있는 증상이에요.", d: "since last week", k: ["주사 부위가 아프세요?", "열이 나는 느낌이 있으세요?"], a: "swallowing", o: ["hearing", "seeing", "walking"]}
   - {t: "준비 안내", i: shield, w: "in case로 지금 쓰는 게 아니라 만약을 위한 준비라고 구분해 환자를 안심시켜요. 반응이 진행하면 에피네프린 근육주사를 지체 없이 놓아야 해서 미리 가까이 준비해 둬요.", d: "for later today", k: ["산소를 연결해 둘게요", "의사 선생님이 곧 오실 거예요"], a: "epinephrine", o: ["lidocaine", "heparin", "naloxone"]}
-  - {t: "중증 신호", i: stetho, w: "두 질문을 or로 이어 가슴과 목 중 한쪽만 해당해도 답하게 해요. closing up은 목이 막히는 느낌을 그대로 옮긴 쉬운 표현이고, 이 증상이 있으면 에피네프린을 쓸 때예요.", d: "after the shot", k: ["주사 맞은 팔이 저린가요?", "메스꺼움이 있으세요?"], a: "closing", o: ["opening", "drying", "healing"]}
+  - {t: "중증 신호", i: stetho, w: "두 질문을 or로 이어 가슴과 목 중 한쪽만 해당해도 답하게 해요. closing up은 목이 막히는 느낌을 그대로 옮긴 쉬운 표현이고, 이 증상이 있으면 에피네프린을 쓸 때예요.", d: "if it hurts", k: ["주사 맞은 팔이 저린가요?", "메스꺼움이 있으세요?"], a: "closing", o: ["opening", "drying", "healing"]}
   - {t: "미리 준비", i: bell, w: "now와 the moment를 맞세워 지금 준비해서 필요한 순간에 지연이 없게 한다고 알려요. so로 준비하는 이유를 바로 붙여요. 약을 주사기에 미리 뽑아 두면 투여가 빨라져요.", d: "after you ask", k: ["라인으로 수액을 더 넣을게요", "혈압은 계속 재고 있을게요"], a: "now", o: ["later", "tomorrow", "eventually"]}
   order:
     tag: "대화 흐름"
@@ -48,7 +48,7 @@
 - title: 벌쏘임 전신반응
   s:
   - {t: "전신 판단", i: stetho, w: "tells me this is…로 증상 두 가지를 근거로 판단했다는 흐름을 보여 줘요. 쏘인 곳만이 아니라 어지러움과 온몸 가려움이 함께 있으면 전신 반응(아나필락시스)으로 봐요.", d: "from the sting", k: ["쏘인 곳에 얼음을 대 드릴게요", "벌침이 남아 있는지 볼게요"], a: "whole-body", o: ["local", "mild", "minor"]}
-  - {t: "재투여 가능", i: siren, w: "may need to로 아직 정해진 건 아니지만 대비하고 있다고 말해요. 에피네프린 효과는 오래가지 않아서 증상이 계속 진행하면 5~15분 간격으로 다시 놓을 수 있어요.", d: "in an hour", k: ["항히스타민제는 이미 드렸어요", "수액도 같이 맞게 될 거예요"], a: "progressing", o: ["improving", "fading", "disappearing"]}
+  - {t: "재투여 가능", i: siren, w: "may need to로 아직 정해진 건 아니지만 대비하고 있다고 말해요. 에피네프린 효과는 오래가지 않아서 증상이 계속 진행하면 5~15분 간격으로 다시 놓을 수 있어요.", d: "in an hour", k: ["항히스타민제는 이미 드렸어요", "수액도 같이 맞게 될 거예요"], a: "progressing", o: ["improving", "fading", "resolving"]}
   - {t: "과거력", i: calendar, w: "been stung처럼 수동태로 벌이 한 일에 초점을 두고, reacted like this before로 전에도 같은 반응이 있었는지 물어요. 전에 전신 반응이 있었다면 다시 쏘였을 때 반응할 가능성이 커서 꼭 물어요.", d: "last summer", k: ["벌에 쏘인 곳이 어디예요?", "벌침은 직접 빼셨어요?"], a: "stung", o: ["burned", "scratched", "bruised"]}
   - {t: "악화 보고", i: bell, w: "Tell me if로 환자가 변화를 알아챌 기준을 주고 starts to swell로 아직 시작 전인 변화를 말해요. 얼굴 부기와 번지는 가려움은 반응이 진행 중이라는 신호예요.", d: "when it stops", k: ["손바닥도 가려운지 말씀해 주세요", "어지러움은 어느 정도인지 알려 주세요"], a: "swell", o: ["peel", "bleed", "shake"]}
   - {t: "재투여 이유", i: shield, w: "still로 지금도 반응이 계속된다는 근거를 주고 so로 결론을 이어요. 에피네프린은 효과가 짧아서 증상이 남아 있으면 한 번 더 놓는 것이 안전한 방법이에요.", d: "for the night", k: ["심장이 빨리 뛰는 건 약 때문이에요", "얼굴 부기는 사진으로 남길게요"], a: "still", o: ["never", "hardly", "rarely"]}
@@ -70,7 +70,7 @@
       2: {en: "Refractory symptoms — repeating IM epi q5-15 min per protocol.", fix: "If this keeps getting worse, we may need to give you another shot."}
 - title: 음식(견과) 아나필락시스
   s:
-  - {t: "에피 투여", i: siren, w: "I'm giving…now로 지금 하는 행동을, for this reaction으로 이유를 짧게 함께 말해요. 음식 알레르기로 인한 아나필락시스도 치료는 에피네프린 근육주사가 먼저예요.", d: "for this test", k: ["입안에 남은 음식이 있으면 뱉어 주세요", "누운 채로 다리를 올려 드릴게요"], a: "reaction", o: ["infection", "seizure", "injury"]}
+  - {t: "에피 투여", i: siren, w: "I'm giving…now로 지금 하는 행동을, for this reaction으로 이유를 짧게 함께 말해요. 음식 알레르기로 인한 아나필락시스도 치료는 에피네프린 근육주사가 먼저예요.", d: "for this test", k: ["입안에 남은 음식이 있으면 뱉어 주세요", "누운 채로 다리를 올려 드릴게요"], a: "reaction", o: ["fall", "fever", "wound"]}
   - {t: "원인 확인", i: magnify, w: "that you know of로 모르는 것까지는 답할 수 없다는 점을 인정해 부담 없이 답하게 해요. 땅콩과 견과류는 아나필락시스를 일으키는 흔한 음식이에요.", d: "in the sauce", k: ["이 음식은 어디서 드셨어요?", "같이 드신 분은 괜찮으세요?"], a: "peanuts", o: ["eggs", "shrimp", "wheat"]}
   - {t: "사후 계획", i: calendar, w: "After this로 지금은 치료가 먼저이고 교육은 그다음이라는 순서를 알려 환자가 지금 할 일에 집중하게 해요. 퇴원 전에는 원인 회피와 에피펜 소지를 꼭 교육해요.", d: "before lunch", k: ["지금은 가만히 누워 계세요", "알레르기 검사는 나중에 받으실 수 있어요"], a: "avoid", o: ["order", "share", "cook"]}
   - {t: "상황 설명", i: faceWorried, w: "so로 관찰한 사실을 곧바로 행동의 이유로 이어요. 얼굴·입술이 빠르게 붓는 건 기도 침범 가능성이 있다는 뜻이라 지체 없이 치료해요.", d: "on your hands", k: ["얼굴 사진을 찍어 둘게요", "입을 크게 벌려 보시겠어요?"], a: "fast", o: ["slowly", "slightly", "gradually"]}
@@ -103,7 +103,7 @@
     - {en: "That's why I need you to stay in bed with the monitor on.", icon: shield, ko: "그래서 침대에 계시고 모니터를 붙여 두셔야 해요", note: "안정"}
     - {en: "Push the call button right away if you notice that wave starting.", icon: bell, ko: "그 반응이 시작되는 걸 느끼면 바로 호출 버튼을 누르세요", note: "호출"}
   ctx:
-    word: "symptoms"
+    word: "symptom"
     ko: "증상"
     sc:
       0: {en: "Sometimes the symptoms come back hours later — that's why we kept you here."}
