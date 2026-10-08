@@ -55838,7 +55838,7 @@
   difficulty: 1
   skills: [동공 사정, 빛반응 확인, 신경학 평가]
   keyPhrases:
-    - "I'm shining a light in your eyes—look straight ahead."
+    - "I'm shining a light in your eyes — look straight ahead."
     - "This checks how your pupils respond."
     - "It'll only take a second, hold still."
   goals:
@@ -55847,9 +55847,9 @@
   acuity: urgent
   persona: { name: Victor Lang, ageRange: 50s, sub: "54y / Male", mood: worried, personality: 빛에 예민, speakingStyle: 눈을 찡그리며 답 }
   sentences:
-    - en: "I'm shining a light in your eyes—look straight ahead."
+    - en: "I'm shining a light in your eyes — look straight ahead."
       ko: "눈에 빛을 비출게요—정면을 봐 주세요."
-      chunks: ["I'm shining", "a light", "in your eyes—look", "straight ahead", "."]
+      chunks: ["I'm shining", "a light", "in your eyes", "— look", "straight ahead", "."]
       words: [w-light, w-eye]
       goal: 1
       tag: "검사 안내"
@@ -57095,7 +57095,7 @@
   skills: [취기·손상 감별, 관찰 설득, 신경학 사정]
   keyPhrases:
     - "How much did you drink tonight?"
-    - "I can't tell if it's alcohol or your injury—so we watch you."
+    - "I can't tell if it's alcohol or your injury — so we watch you."
     - "Please stay so we can recheck you."
   goals:
     - 취기와 두부손상을 감별한다
@@ -57120,9 +57120,9 @@
           - {en: "drink"}
           - {en: "eat"}
           - {en: "smoke"}
-    - en: "I can't tell if it's alcohol or your injury—so we watch you."
+    - en: "I can't tell if it's alcohol or your injury — so we watch you."
       ko: "술 때문인지 부상 때문인지 구분이 안 돼서—그래서 계속 지켜봐요."
-      chunks: ["I can't tell", "if it's alcohol", "or your injury—so", "we watch you", "."]
+      chunks: ["I can't tell", "if it's alcohol", "or your injury", "— so we watch you", "."]
       words: [w-alcohol, w-injury, w-watch]
       goal: 1
       tag: "관찰 이유"
@@ -57273,7 +57273,7 @@
   difficulty: 2
   skills: [두개저 골절 사정, 징후 확인, CSF 유출 감별]
   keyPhrases:
-    - "I see bruising around your eyes—when did that appear?"
+    - "I see bruising around your eyes — when did that appear?"
     - "Is there any clear fluid from your nose or ears?"
     - "Please don't blow your nose."
   goals:
@@ -57282,9 +57282,9 @@
   acuity: urgent
   persona: { name: Marvin Sledge, ageRange: 40s, sub: "48y / Male", mood: worried, personality: 코 분비물에 당황, speakingStyle: 코를 훌쩍이며 답 }
   sentences:
-    - en: "I see bruising around your eyes—when did that appear?"
+    - en: "I see bruising around your eyes — when did that appear?"
       ko: "눈 주위에 멍이 보이는데—언제부터 생겼어요?"
-      chunks: ["I see", "bruising", "around your eyes—when", "did that appear", "?"]
+      chunks: ["I see", "bruising", "around your eyes", "— when did that appear", "?"]
       words: [w-bruise, w-eye, w-appear]
       goal: 1
       tag: "멍 확인"
@@ -57450,7 +57450,7 @@
     ko: 두개저 골절 징후 4문장 순서
     why: 눈 주위 멍을 보고, 그 멍과 함께 맑은 액체를 묻고, 그런 소견의 의미를 알린 뒤, 골절 가능성 때문에 코를 풀지 말라고 해요. 'that bruising'·'like that'·'a possible fracture'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
-    - en: I see bruising around your eyes—when did that appear?
+    - en: I see bruising around your eyes — when did that appear?
       icon: magnify
       ko: 눈 주위에 멍이 보이는데 언제부터 생겼어요?
       note: 멍
@@ -57656,7 +57656,7 @@
   keyPhrases:
     - "How many times has he vomited now?"
     - "Is he getting harder to wake up?"
-    - "This could mean rising pressure—we're rechecking him now."
+    - "This could mean rising pressure — we're rechecking him now."
   goals:
     - 반복 구토·기면을 뇌압 상승으로 인지한다
     - 신속히 재평가하고 알린다
@@ -57697,15 +57697,15 @@
           - {en: "wake up"}
           - {en: "sit up"}
           - {en: "stand up"}
-    - en: "This could mean rising pressure—we're rechecking him now."
+    - en: "This could mean rising pressure — we're rechecking him now."
       ko: "압력이 오르고 있다는 뜻일 수 있어서—지금 다시 확인하고 있어요."
-      chunks: ["This could mean", "rising pressure—we're", "rechecking him", "now", "."]
+      chunks: ["This could mean", "rising pressure", "— we're rechecking him", "now", "."]
       words: [w-pressure, w-recheck]
       goal: 2
       tag: "의미 설명"
       icon: "bulb"
       why: "This could mean…으로 가능성만 말하고 we're rechecking him now로 바로 확인한다고 이어 줘요. 반복 구토와 졸림이 겹치면 두개내압 상승을 의심해 바로 신경학적 재평가를 해요."
-      decoy: "a stomach bug"
+      decoy: "keeps sleeping"
       distractorsKo: ["의사 선생님도 곧 와서 보실 거예요", "CT를 다시 찍을 수도 있어요"]
       blank:
         answer: "rising"
@@ -57834,7 +57834,7 @@
   skills: [언어장벽 대응, 의식소실 확인, 항응고 문진]
   keyPhrases:
     - "Did you black out? Yes or no?"
-    - "Blood thinner medicine—do you take it?"
+    - "Blood thinner medicine — do you take it?"
     - "I'm getting an interpreter for you."
   goals:
     - 통역·몸짓으로 의식소실 여부를 확인한다
@@ -57859,9 +57859,9 @@
           - {en: "black out"}
           - {en: "throw up"}
           - {en: "fall down"}
-    - en: "Blood thinner medicine—do you take it?"
+    - en: "Blood thinner medicine — do you take it?"
       ko: "항응고제 약—드시고 계세요?"
-      chunks: ["Blood thinner", "medicine—do you", "take it", "?"]
+      chunks: ["Blood thinner", "medicine", "— do you", "take it", "?"]
       words: [w-bloodthinner, w-take]
       goal: 2
       tag: "복용 확인"
@@ -58013,7 +58013,7 @@
   difficulty: 3
   skills: [lucid interval 인지, 급성 악화 대응, 신경외과 연계]
   keyPhrases:
-    - "Your headache is suddenly much worse—we're acting now."
+    - "Your headache is suddenly much worse — we're acting now."
     - "Stay with me and keep talking to me."
     - "We're calling neurosurgery immediately."
   goals:
@@ -58022,9 +58022,9 @@
   acuity: critical
   persona: { name: Scott Farley, ageRange: 20s, sub: "23y / Male", mood: panic, personality: 갑작스런 악화에 공포, speakingStyle: 신음하며 다급 }
   sentences:
-    - en: "Your headache is suddenly much worse—we're acting now."
+    - en: "Your headache is suddenly much worse — we're acting now."
       ko: "두통이 갑자기 훨씬 심해졌어요—지금 바로 대응하고 있어요."
-      chunks: ["Your headache", "is suddenly", "much worse—we're", "acting now", "."]
+      chunks: ["Your headache", "is suddenly", "much worse", "— we're acting now", "."]
       words: [w-headache, w-worse]
       goal: 1
       tag: "상황 알림"
@@ -58073,15 +58073,15 @@
           - {en: "cardiology"}
           - {en: "orthopedics"}
           - {en: "radiology"}
-    - en: "You felt fine minutes ago—now tell me what changed."
+    - en: "You felt fine minutes ago — now tell me what changed."
       ko: "몇 분 전만 해도 괜찮으셨는데—지금 뭐가 달라졌는지 말씀해 주세요."
-      chunks: ["You felt fine", "minutes ago—now", "tell me", "what changed", "."]
+      chunks: ["You felt fine", "minutes ago", "— now tell me", "what changed", "."]
       words: [w-change]
       goal: 1
       tag: "변화 확인"
       icon: "magnify"
       why: "minutes ago와 now를 나란히 두어 짧은 시간 안에 달라진 점을 환자가 스스로 말하게 해요. 괜찮다가 갑자기 나빠지는 경과(명료기 뒤 악화)가 경막외혈종의 특징이에요."
-      decoy: "days ago—now"
+      decoy: "days ago"
       distractorsKo: ["언제부터 머리가 아프기 시작했는지 말씀해 주세요", "지금 어떤 느낌인지 숫자로 말씀해 주세요"]
       blank:
         answer: "fine"
@@ -58165,7 +58165,7 @@
     ko: 경막외혈종 악화 대응 4문장 순서
     why: 갑작스러운 악화를 알리고, 계속 말하게 하고, 환자의 말에서 출혈이 빠르게 쌓이는 양상을 읽은 뒤, 응급 CT와 신경외과 호출로 이어 가요. 'while we do'·'From what you're telling me'·'Because of that'이 앞 줄을 가리켜 순서가 하나예요.
     lines:
-    - en: Your headache is suddenly much worse—we're acting now.
+    - en: Your headache is suddenly much worse — we're acting now.
       icon: siren
       ko: 두통이 갑자기 훨씬 심해졌어요, 지금 바로 대응하고 있어요
       note: 알림
@@ -58187,22 +58187,22 @@
   tagline: "*one pupil blown, decerebrate posturing*"
   room: TRAUMA_BAY
   brief: 동공 산대·자세이상을 뇌탈출 임박으로 인지하고 응급 감압을 준비하세요.
-  role: patient
+  role: "colleague"
   difficulty: 3
   skills: [뇌탈출 인지, 동공 산대 사정, 응급 감압 준비]
   keyPhrases:
-    - "One pupil is blown—this is an emergency."
+    - "One pupil is blown — this is an emergency."
     - "We're hyperventilating and giving medication to reduce pressure."
     - "Neurosurgery is coming for emergency decompression."
   goals:
     - 동공 산대·자세이상을 뇌탈출로 인지한다
     - 응급 감압과 신경외과 연계를 준비한다
   acuity: critical
-  persona: { name: Ronald Estes, ageRange: 50s, sub: "58y / Male", mood: panic, personality: 반응이 급격히 소실, speakingStyle: 무반응·자세이상 }
+  persona: { name: "Renee Calloway", ageRange: "30s", sub: "37y / Female (RN)", mood: "neutral", personality: "위기에 침착", speakingStyle: "지시를 명확히 복창" }
   sentences:
-    - en: "One pupil is blown—this is an emergency."
+    - en: "One pupil is blown — this is an emergency."
       ko: "한쪽 동공이 산대됐어요—응급 상황이에요."
-      chunks: ["One pupil", "is blown—this", "is an emergency", "."]
+      chunks: ["One pupil", "is blown", "— this is an emergency", "."]
       words: [w-pupil, w-emergency]
       goal: 1
       tag: "응급 선언"
@@ -58268,9 +58268,9 @@
           - {en: "sinking"}
           - {en: "rising"}
           - {en: "falling"}
-    - en: "Check the other pupil now—compare both sides."
+    - en: "Check the other pupil now — compare both sides."
       ko: "지금 다른 쪽 동공도 확인해서—양쪽을 비교해요."
-      chunks: ["Check the other pupil", "now—compare", "both sides", "."]
+      chunks: ["Check the other pupil now", "— compare", "both sides", "."]
       words: [w-check, w-pupil]
       goal: 1
       tag: "동공 비교"
@@ -58347,7 +58347,7 @@
     ko: 뇌탈출 임박 대응 4문장 순서
     why: 응급을 선언하면 바로 신경외과를 부르고, 그동안 다른 쪽 동공과 비교해 그 차이를 전해요. 'Because of that'·'While you call'·'That difference'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
-    - en: One pupil is blown—this is an emergency.
+    - en: One pupil is blown — this is an emergency.
       icon: siren
       ko: 한쪽 동공이 산대됐어요, 응급 상황이에요
       note: 선언
@@ -58373,7 +58373,7 @@
   difficulty: 3
   skills: [삽관 준비, 뇌압 조절, 환기 관리]
   keyPhrases:
-    - "GCS is 6—we need to secure the airway."
+    - "GCS is 6 — we need to secure the airway."
     - "Maintain oxygenation and avoid rises in pressure."
     - "Target normal CO2 to protect the brain."
   goals:
@@ -58382,15 +58382,15 @@
   acuity: critical
   persona: { name: Alex Coburn, ageRange: 30s, sub: "34y / Male (RN)", mood: neutral, personality: 위기에 침착, speakingStyle: 지시를 명확히 복창 }
   sentences:
-    - en: "GCS is 6—we need to secure the airway."
+    - en: "GCS is 6 — we need to secure the airway."
       ko: "GCS가 6점이라—기도를 확보해야 합니다."
-      chunks: ["GCS is 6—we", "need", "to secure", "the airway", "."]
+      chunks: ["GCS is 6", "— we need", "to secure", "the airway", "."]
       words: [w-airway, w-secure]
       goal: 1
       tag: "기도 확보"
       icon: "siren"
       why: "GCS 숫자로 상태를 밝히고 we need to로 필요성을 말해 팀이 이유를 알고 움직여요. GCS 8 이하면 스스로 기도를 지키지 못할 위험이 커서 기도 확보를 고려해요."
-      decoy: "to clean"
+      decoy: "was 6"
       distractorsKo: ["흡인기를 켜 두세요", "기관삽관 도구를 준비해 주세요"]
       blank:
         answer: "airway"
@@ -58450,15 +58450,15 @@
           - {en: "surgery"}
           - {en: "transfer"}
           - {en: "intubation"}
-    - en: "Airway takes priority—GCS is too low to protect it."
+    - en: "Airway takes priority — GCS is too low to protect it."
       ko: "기도가 우선입니다—GCS가 너무 낮아서 스스로 보호가 안 됩니다."
-      chunks: ["Airway takes", "priority—GCS", "is too low", "to protect it", "."]
+      chunks: ["Airway takes", "priority", "— GCS is too low", "to protect it", "."]
       words: [w-airway, w-protect]
       goal: 1
       tag: "우선순위"
       icon: "shield"
       why: "Airway takes priority로 무엇이 먼저인지 한 문장에 못 박고 이유를 이어 붙여요. 의식이 낮으면 기도 반사가 약해져 흡인이나 막힘이 생길 수 있어요."
-      decoy: "Fluids take"
+      decoy: "takes turns"
       distractorsKo: ["출혈 조절이 그다음 우선순위예요", "흡인 준비를 해 주세요"]
       blank:
         answer: "Airway"
@@ -58612,9 +58612,9 @@
           - {en: "Pharmacy"}
           - {en: "Security"}
           - {en: "Neurosurgery"}
-    - en: "We will not remove it here—that could cause more bleeding."
+    - en: "We will not remove it here — that could cause more bleeding."
       ko: "여기서는 제거하지 않을 거예요—출혈이 더 심해질 수 있거든요."
-      chunks: ["We will not remove it", "here—that", "could cause", "more bleeding", "."]
+      chunks: ["We will not remove it", "here", "— that could cause", "more bleeding", "."]
       words: [w-remove, w-bleed]
       goal: 1
       tag: "제거 금지"
@@ -58794,9 +58794,9 @@
           - {en: "warfarin"}
           - {en: "heparin"}
           - {en: "aspirin"}
-    - en: "Left pupil remains reactive and equal."
-      ko: "좌측 동공은 반응이 있고 양쪽이 동일합니다."
-      chunks: ["Left pupil", "remains reactive", "and equal", "."]
+    - en: "Left pupil remains brisk and reactive."
+      ko: "좌측 동공은 여전히 반응이 빠르고 정상입니다."
+      chunks: ["Left pupil", "remains brisk", "and reactive", "."]
       words: [w-pupil, w-reactive]
       goal: 1
       tag: "동공 소견"
@@ -78132,7 +78132,7 @@
           - {en: "hip"}
           - {en: "arm"}
     - en: "The needle pinch lasts only a second."
-      ko: "바늘의 따끔함은 단 몇 초만 갑니다."
+      ko: "바늘 따끔함은 잠깐이면 지나가요."
       chunks: ["The needle pinch", "lasts only", "a second", "."]
       words: [w-needle, w-pinch, w-second]
       goal: 2
@@ -80286,7 +80286,7 @@
           - {en: "gently"}
           - {en: "quickly"}
     - en: "More blood is on the way for you."
-      ko: "혈액이 오고 있어요."
+      ko: "혈액이 더 오고 있어요."
       chunks: ["More blood", "is on the way", "for you", "."]
       words: [w-blood, w-way]
       goal: 2
@@ -80619,7 +80619,7 @@
           - {en: "breathing"}
           - {en: "sleeping"}
     - en: "We're ordering platelets and plasma to help you clot."
-      ko: "응고를 돕기 위해 혈소판과 혈장을 처방할게요."
+      ko: "응고를 돕기 위해 혈소판과 혈장을 요청할게요."
       chunks: ["We're ordering platelets", "and plasma", "to help you", "clot", "."]
       words: [w-order, w-platelet, w-plasma, w-help, w-clot]
       goal: 2
@@ -80742,7 +80742,7 @@
       FFP: 신선동결혈장(fresh frozen plasma)의 의료진 약어.
       clotting factors: 특정 응고인자를 농축한 다른 제제라 뜻이 달라진다.
     why: FFP는 동료와 혈액은행에 쓰는 약어예요. 환자에게는 plasma로 말해요.
-    ko: 응고를 돕기 위해 혈소판과 혈장을 처방할게요
+    ko: 응고를 돕기 위해 혈소판과 혈장을 요청할게요
   order:
     tag: 대화 흐름
     icon: compass
@@ -80763,7 +80763,7 @@
       note: 상태
     - en: Because of that result, we're ordering platelets and plasma to help you clot.
       icon: bandage
-      ko: 그 결과 때문에 응고를 돕는 혈소판과 혈장을 처방할게요
+      ko: 그 결과 때문에 응고를 돕는 혈소판과 혈장을 요청할게요
       note: 치료
 
 - theme: er-gi-bleed
@@ -81032,7 +81032,7 @@
           - {en: "find"}
           - {en: "hide"}
     - en: "You'll be moved to a different room for this procedure."
-      ko: "이 시술을 위해 다른 병실로 옮겨질 거예요."
+      ko: "이 시술을 위해 다른 방으로 옮겨질 거예요."
       chunks: ["You'll be moved", "to a different", "room", "for this procedure", "."]
       words: [w-move, w-different, w-procedure]
       goal: 2
@@ -82636,7 +82636,7 @@
   keyPhrases:
     - "Have you had a weak stream or trouble starting for a while?"
     - "We'll do a quick bladder scan to see how full it is."
-    - "This will tell us how much urine is left inside."
+    - "This will tell us how much urine is inside your bladder."
   goals:
     - 전립선 관련 요폐 증상을 사정한다
     - 방광스캔·잔뇨량 측정을 안내한다
@@ -82677,15 +82677,15 @@
           - {en: "slow"}
           - {en: "long"}
           - {en: "big"}
-    - en: "This will tell us how much urine is left inside."
-      ko: "이걸로 안에 소변이 얼마나 남았는지 알 수 있어요."
-      chunks: ["This will tell us", "how much urine", "is left", "inside", "."]
-      words: [w-tell, w-much, w-urine, w-left, w-inside]
+    - en: "This will tell us how much urine is inside your bladder."
+      ko: "이걸로 방광 안에 소변이 얼마나 있는지 알 수 있어요."
+      chunks: ["This will tell us", "how much urine", "is inside", "your bladder", "."]
+      words: [w-tell, w-much, w-urine, w-inside, w-bladder]
       goal: 2
       tag: "결과 설명"
       icon: "bulb"
-      why: "This는 앞 문장의 스캔을 가리켜 검사의 목적을 풀어 줘요. how much…is left는 배뇨 뒤에 방광에 남은 양, 곧 잔뇨량을 묻는 말이에요."
-      decoy: "how much blood"
+      why: "This는 앞 문장의 스캔을 가리켜 검사의 목적을 풀어 줘요. how much…is inside는 방광에 지금 차 있는 소변량을 묻는 말이에요. 요폐에서는 이 양이 도뇨를 정하는 단서예요."
+      decoy: "how long ago"
       distractorsKo: ["이 검사는 조금 아파요", "몸을 눕혀 주세요"]
       blank:
         answer: "urine"
@@ -82765,7 +82765,7 @@
     - w-bladder
     - w-scan
     - w-full
-    who: 환자에게 · 잔뇨 측정 안내
+    who: 환자에게 · 방광 스캔 안내
     icon: me
     before:
     - 'We''ll do a quick '
@@ -82778,9 +82778,9 @@
     answer: bladder scan
     notes:
       bladder scan: 무엇을 하는지 바로 알 수 있는 쉬운 말. 배에 젤을 바르고 초음파기를 대는 검사다.
-      PVR: 의료진끼리의 약어(배뇨 후 잔뇨량). 환자는 모른다.
+      PVR: 의료진끼리의 약어(post-void residual, 배뇨 후 남은 양). 환자는 모르고, 아직 소변을 못 보는 환자의 방광 용적에는 맞지도 않는다.
       post-void residual measurement: 맞는 말이지만 환자에게는 길고 딱딱하다. 차트에 어울린다.
-    why: 잔뇨량(PVR)은 휴대용 방광 초음파기로 재요. 환자에게는 bladder scan이라고 하면 무엇을 하는지 바로 알아요.
+    why: 방광 스캔은 휴대용 초음파기로 방광에 찬 소변량을 재요. PVR 같은 약어 대신 환자에게는 bladder scan이라고 하면 무엇을 하는지 바로 알아요.
     ko: 얼마나 찼는지 보려고 방광스캔을 빠르게 할게요
   order:
     tag: 대화 흐름
@@ -97000,23 +97000,23 @@
           - {en: "long"}
           - {en: "full"}
           - {en: "hard"}
-    - en: "Small sips are easier on your stomach than big gulps."
-      ko: "작게 마시는 게 벌컥 마시는 것보다 속에 편해요."
-      chunks: ["Small sips", "are easier", "on your stomach", "than big gulps", "."]
-      words: [w-sip, w-gulp]
+    - en: "Big gulps can upset your stomach and make you throw up."
+      ko: "한꺼번에 많이 마시면 속이 불편해져서 토할 수 있어요."
+      chunks: ["Big gulps", "can upset your stomach", "and make you", "throw up", "."]
+      words: [w-gulp]
       goal: 2
       tag: "이유 설명"
       icon: "bulb"
-      why: "easier on…than으로 이유를 비교해요. 작게 마시는 쪽이 위에 부담이 덜해서 메스꺼운 환자에게 설득력이 있어요."
-      decoy: "on your throat"
+      why: "can upset으로 한꺼번에 마실 때 생길 수 있는 일을 알려요. 큰 모금이 위를 자극해 토하게 할 수 있어서 조금씩 마시라는 안내에 설득력이 생겨요."
+      decoy: "last night"
       distractorsKo: ["토할 것 같으면 말씀하세요.", "천천히 드세요."]
       blank:
-        answer: "easier"
+        answer: "stomach"
         options:
-          - {en: "faster"}
-          - {en: "easier"}
-          - {en: "harder"}
-          - {en: "rougher"}
+          - {en: "ankle"}
+          - {en: "stomach"}
+          - {en: "eyes"}
+          - {en: "hair"}
   nuance:
   - kind: slider
     words:
@@ -97084,7 +97084,7 @@
   skills: [열사병 인지, 중심체온 관리, 적극 냉각]
   keyPhrases:
     - "Your body temperature is dangerously high and we're cooling you fast."
-    - "We're putting cool packs and misting you to bring it down."
+    - "We're putting cool packs on you and misting you to bring it down."
     - "Can you tell me your name and where you are right now?"
   goals:
     - 의식변화·발한소실을 열사병으로 인지한다
@@ -97109,9 +97109,9 @@
           - {en: "dangerously"}
           - {en: "slightly"}
           - {en: "usually"}
-    - en: "We're putting cool packs and misting you to bring it down."
+    - en: "We're putting cool packs on you and misting you to bring it down."
       ko: "체온을 낮추려고 찜질팩을 대고 분무를 하고 있어요."
-      chunks: ["We're putting", "cool packs", "and misting you", "to bring it down", "."]
+      chunks: ["We're putting", "cool packs on you", "and misting you", "to bring it down", "."]
       words: [w-cool, w-pack, w-mist, w-bring]
       goal: 2
       tag: "냉각 설명"
@@ -97240,7 +97240,7 @@
       icon: siren
       ko: 체온이 위험할 정도로 높아서 빠르게 식히고 있어요
       note: 상태
-    - en: We're putting cool packs and misting you to bring it down.
+    - en: We're putting cool packs on you and misting you to bring it down.
       icon: bandage
       ko: 체온을 낮추려고 찜질팩을 대고 분무를 하고 있어요
       note: 냉각
@@ -98250,23 +98250,23 @@
           - {en: "sweating"}
           - {en: "coughing"}
           - {en: "sneezing"}
-    - en: "We pulled him out of the ice water a few minutes ago."
-      ko: "몇 분 전에 얼음물에서 끌어냈어요."
-      chunks: ["We pulled him out", "of the ice water", "a few minutes", "ago", "."]
+    - en: "So you pulled him out of the ice water a few minutes ago?"
+      ko: "몇 분 전에 얼음물에서 끌어내셨다는 거죠?"
+      chunks: ["So you pulled him out", "of the ice water", "a few minutes", "ago", "?"]
       words: [w-pull, w-ice, w-water]
       goal: 1
-      tag: "경위 설명"
+      tag: "경위 확인"
       icon: "pushpin"
-      why: "a few minutes ago로 시간을 어림으로 전해요. 물에서 나온 뒤 경과 시간은 저체온 정도와 치료를 정하는 단서라서 가족에게도 시점을 알려요."
-      decoy: "a long time"
+      why: "So…?로 들은 경위를 되짚어 확인해요. 물에서 나온 시점은 저체온 정도와 치료를 정하는 단서라서, 꺼낸 사람에게 시간을 다시 확인해요."
+      decoy: "did he go"
       distractorsKo: ["물에서 얼마나 있었어요?", "숨을 쉬었어요?"]
       blank:
-        answer: "ago"
+        answer: "pulled"
         options:
-          - {en: "later"}
-          - {en: "away"}
-          - {en: "early"}
-          - {en: "ago"}
+          - {en: "poured"}
+          - {en: "washed"}
+          - {en: "pulled"}
+          - {en: "dropped"}
     - en: "We'll listen to his lungs and check his oxygen levels."
       ko: "폐 소리를 듣고 산소 수치를 확인할게요."
       chunks: ["We'll listen", "to his lungs", "and check", "his oxygen levels", "."]
@@ -98535,7 +98535,7 @@
   difficulty: 2
   skills: [통역 활용, 노출 경위 확인, 처치 설명]
   keyPhrases:
-    - "Through the interpreter — how high did he climb and how fast?"
+    - "How high did he climb, and how fast?"
     - "When did the headache and shortness of breath start?"
     - "We're giving oxygen and will explain each step through the interpreter."
   goals:
@@ -98544,15 +98544,15 @@
   acuity: urgent
   persona: { name: Wei Chen, ageRange: 40s, sub: "brother, 45y / Male", mood: worried, personality: 소통 답답해하며 걱정, speakingStyle: 통역 통해 천천히 전달함 }
   sentences:
-    - en: "Through the interpreter — how high did he climb and how fast?"
-      ko: "통역을 통해 — 얼마나 높이, 얼마나 빨리 올라갔는지 여쭤 주세요."
-      chunks: ["Through the interpreter", "— how high", "did he climb", "and how fast", "?"]
-      words: [w-interpreter, w-high, w-climb, w-fast]
+    - en: "How high did he climb, and how fast?"
+      ko: "얼마나 높이, 얼마나 빨리 올라갔나요?"
+      chunks: ["How high", "did he climb", ", and how fast", "?"]
+      words: [w-high, w-climb, w-fast]
       goal: 1
-      tag: "통역 문진"
+      tag: "고도 문진"
       icon: "speech"
-      why: "how high·how fast처럼 짧은 질문 두 개로 나누면 통역에서 뜻이 덜 흐려져요. 질문은 통역사가 아니라 보호자를 보고 해요."
-      decoy: "to the top"
+      why: "how high·how fast처럼 짧은 질문 두 개로 나누면 통역을 거쳐도 뜻이 덜 흐려져요. 통역사가 아니라 보호자를 보고 직접 물어요."
+      decoy: "or what time"
       distractorsKo: ["언제부터 두통이 있었나요?", "산소를 드릴게요."]
       blank:
         answer: "climb"
@@ -98595,23 +98595,23 @@
           - {en: "juice"}
           - {en: "ice"}
           - {en: "oxygen"}
-    - en: "Please ask him how high he climbed and how quickly."
-      ko: "얼마나 높이, 얼마나 빨리 올라갔는지 여쭤봐 주세요."
-      chunks: ["Please ask him", "how high", "he climbed", "and how quickly", "."]
-      words: [w-high, w-climb]
+    - en: "Did he come down as soon as he started feeling sick?"
+      ko: "몸이 안 좋아지기 시작하자마자 바로 내려왔나요?"
+      chunks: ["Did he come down", "as soon as", "he started", "feeling sick", "?"]
+      words: [w-start, w-feel, w-sick]
       goal: 1
-      tag: "통역 요청"
+      tag: "하산 확인"
       icon: "speech"
-      why: "묻는 내용(how high·how quickly)을 그대로 넣어 통역사가 바꾸지 않고 옮기게 해요. 다만 원칙은 통역사가 아니라 보호자를 보고 직접 묻는 거예요."
-      decoy: "if he ate"
+      why: "as soon as로 증상과 하산 사이의 시간을 물어요. 고산병은 내려오는 것이 가장 중요한 치료라서 증상이 생긴 뒤 바로 내려왔는지가 위중도를 가늠하는 단서예요."
+      decoy: "to the top"
       distractorsKo: ["환자에게 산소를 드릴게요.", "통역사님 잠시 기다려 주세요."]
       blank:
-        answer: "ask"
+        answer: "sick"
         options:
-          - {en: "ask"}
-          - {en: "show"}
-          - {en: "remind"}
-          - {en: "teach"}
+          - {en: "sick"}
+          - {en: "hungry"}
+          - {en: "bored"}
+          - {en: "rested"}
     - en: "Is he still having chest pain or feeling confused?"
       ko: "아직 가슴 통증이 있거나 혼란스러워하시나요?"
       chunks: ["Is he still", "having chest pain", "or feeling", "confused", "?"]
@@ -104397,23 +104397,23 @@
           - {en: "helps"}
           - {en: "hurts"}
           - {en: "worsens"}
-    - en: "This medicine will bring your fever down within thirty minutes or so."
-      ko: "이 약은 삼십 분쯤 안에 열을 내려줄 거예요."
-      chunks: ["This medicine will", "bring your fever", "down", "within thirty minutes", "or so", "."]
+    - en: "This medicine will bring your fever down within an hour or so."
+      ko: "이 약은 한 시간쯤 안에 열을 내려줄 거예요."
+      chunks: ["This medicine will", "bring your fever", "down", "within an hour", "or so", "."]
       words: [w-medicine, w-bring, w-fever, w-down, w-within]
       goal: 1
       tag: "효과 시간"
       icon: "calendar"
       why: "within…or so로 정확한 시각 대신 대략의 범위를 말해 기대를 현실적으로 맞춰요. 먹는 약은 효과가 나타나기까지 시간이 걸려요."
-      decoy: "after an hour"
+      decoy: "for a week"
       distractorsKo: ["이 약은 알약이라 삼키시면 돼요", "체온이 내려가면 알려 주세요"]
       blank:
-        answer: "thirty"
+        answer: "medicine"
         options:
-          - {en: "five"}
-          - {en: "ten"}
-          - {en: "thirty"}
-          - {en: "two"}
+          - {en: "medicine"}
+          - {en: "thermometer"}
+          - {en: "bandage"}
+          - {en: "inhaler"}
     - en: "If your fever goes back up before then, please let us know."
       ko: "그 전에 열이 다시 오르면 저희에게 알려주세요."
       chunks: ["If your fever", "goes back up", "before then", ", please let us know", "."]
@@ -104481,9 +104481,9 @@
       icon: pill
       ko: 열을 낮추고 더 편안하게 해드릴 거예요
       note: 효과
-    - en: It should start working within thirty minutes or so.
+    - en: It should start working within an hour or so.
       icon: calendar
-      ko: 삼십 분쯤 안에 듣기 시작할 거예요
+      ko: 한 시간쯤 안에 듣기 시작할 거예요
       note: 시간
     - en: We'll recheck your temperature in about an hour.
       icon: monitor
@@ -105224,7 +105224,7 @@
           - {en: "mask"}
           - {en: "face shield"}
     - en: "Everyone at your work having the flu makes this very likely."
-      ko: "직장 동료들이 다 독감이라면 이것도 그럴 가능성이 커요."
+      ko: "직장 동료들이 다 독감이라면 독감일 가능성이 아주 커요."
       chunks: ["Everyone at your work", "having the flu", "makes this", "very likely", "."]
       words: [w-flu, w-make, w-likely]
       goal: 1
@@ -105558,9 +105558,9 @@
           - {en: "easy"}
           - {en: "quick"}
           - {en: "ready"}
-    - en: "Seizures like this look scary, but they usually stop on their own within a minute."
-      ko: "이런 경련은 무서워 보이지만 보통 1분 안에 저절로 멈춰요."
-      chunks: ["Seizures like this", "look scary", ", but they usually stop", "on their own", "within a minute", "."]
+    - en: "Seizures like this look scary, but they usually stop on their own within a few minutes."
+      ko: "이런 경련은 무서워 보이지만 보통 몇 분 안에 저절로 멈춰요."
+      chunks: ["Seizures like this", "look scary", ", but they usually stop", "on their own", "within a few minutes", "."]
       words: [w-seizure, w-scary, w-usually, w-stop, w-own, w-within]
       goal: 1
       tag: "경련 설명"
@@ -105844,7 +105844,7 @@
   difficulty: 2
   skills: [수막자극징후 사정, 요추천자 설명, 신속 격리]
   keyPhrases:
-    - "The stiff neck with fever and headache concerns me about meningitis."
+    - "The stiff neck with fever and headache makes me worried about meningitis."
     - "We'll need a spinal tap to check the fluid around your brain."
     - "Does bright light bother your eyes right now?"
   goals:
@@ -105853,15 +105853,15 @@
   acuity: critical
   persona: { name: Derek Falk, ageRange: 20s, sub: "23y / Male", mood: pain, personality: 극심한 두통에 예민, speakingStyle: 눈을 찡그리며 낮게 말함 }
   sentences:
-    - en: "The stiff neck with fever and headache concerns me about meningitis."
+    - en: "The stiff neck with fever and headache makes me worried about meningitis."
       ko: "뻣뻣한 목에 발열, 두통까지 있으니 수막염이 걱정돼요."
-      chunks: ["The stiff neck", "with fever and headache", "concerns me", "about meningitis", "."]
-      words: [w-stiff, w-neck, w-fever, w-headache, w-concern, w-meningitis]
+      chunks: ["The stiff neck", "with fever and headache", "makes me worried", "about meningitis", "."]
+      words: [w-stiff, w-neck, w-fever, w-headache, w-worry, w-meningitis]
       goal: 1
       tag: "의심 설명"
       icon: "faceWorried"
-      why: "concerns me로 의료진의 걱정을 직접 말해 검사가 필요한 이유를 알려요. 목 뻣뻣함·열·두통은 수막염을 의심하는 대표 조합이라 서둘러 확인해요."
-      decoy: "reassures me"
+      why: "makes me worried about으로 의료진의 걱정을 직접 말해 검사가 필요한 이유를 알려요. 목 뻣뻣함·열·두통은 수막염을 의심하는 대표 조합이라 서둘러 확인해요."
+      decoy: "keeps me"
       distractorsKo: ["두통약을 바로 드릴게요", "목 베개를 가져다 드릴게요"]
       blank:
         answer: "meningitis"
@@ -105987,7 +105987,7 @@
     ko: 수막염 의심 평가 4문장 순서
     why: 수막염이 걱정된다고 알리고, 그 걱정을 확인하려 목 동작을 부탁하고, 그 동작이 어땠는지에 이어 빛 과민을 묻고, 모든 걸 근거로 척수천자를 안내해요. 'To check your neck'·'how that felt'·'all of that'이 앞 줄을 가리켜 순서가 하나예요.
     lines:
-    - en: The stiff neck with fever and headache concerns me about meningitis.
+    - en: The stiff neck with fever and headache makes me worried about meningitis.
       icon: faceWorried
       ko: 뻣뻣한 목에 열과 두통이라 수막염이 걱정돼요
       note: 걱정
@@ -106392,7 +106392,7 @@
           - {en: "oral"}
           - {en: "topical"}
     - en: "Febrile neutropenia with sepsis — I need fluids running and a physician now."
-      ko: "발열성 호중구감소증에 패혈증까지 — 수액을 흘리고 의사가 지금 필요해요."
+      ko: "발열성 호중구감소증에 패혈증까지 — 수액을 달고 의사가 지금 필요해요."
       chunks: ["Febrile neutropenia", "with sepsis", "— I need fluids", "running", "and a physician now", "."]
       words: [w-febrile, w-neutropenia, w-sepsis, w-need, w-fluid, w-run, w-physician]
       goal: 2
@@ -106683,7 +106683,7 @@
   difficulty: 3
   skills: [괴사성 근막염 인지, 통증-소견 불일치, 외과 긴급연계]
   keyPhrases:
-    - "Pain this severe with a fever worries me about a deep infection."
+    - "Pain this severe with a fever makes me worried about a deep infection."
     - "We're calling surgery urgently to evaluate you."
     - "We're starting strong antibiotics and fluids right now."
   goals:
@@ -106692,15 +106692,15 @@
   acuity: critical
   persona: { name: Marcus Feld, ageRange: 50s, sub: "53y / Male", mood: pain, personality: 극심한 통증에 절박, speakingStyle: 신음하며 통증을 강조함 }
   sentences:
-    - en: "Pain this severe with a fever worries me about a deep infection."
+    - en: "Pain this severe with a fever makes me worried about a deep infection."
       ko: "이렇게 심한 통증에 발열까지 있으면 깊은 감염이 걱정돼요."
-      chunks: ["Pain this severe", "with a fever", "worries me", "about a deep infection", "."]
+      chunks: ["Pain this severe", "with a fever", "makes me worried", "about a deep infection", "."]
       words: [w-pain, w-severe, w-fever, w-worry, w-deep, w-infection]
       goal: 1
       tag: "위험 설명"
       icon: "faceWorried"
-      why: "worries me로 의료진의 걱정을 솔직히 말해 왜 서두르는지 이유를 줘요. 겉보기보다 심한 통증에 열이 더해지면 깊은 조직 감염을 의심해요."
-      decoy: "calms me"
+      why: "makes me worried about으로 의료진의 걱정을 솔직히 말해 왜 서두르는지 이유를 줘요. 겉보기보다 심한 통증에 열이 더해지면 깊은 조직 감염을 의심해요."
+      decoy: "keeps me"
       distractorsKo: ["통증약을 바로 드릴게요", "다리를 높이 올려 드릴게요"]
       blank:
         answer: "deep"
@@ -106824,7 +106824,7 @@
       icon: magnify
       ko: 이 통증은 발적만으로 설명이 안 될 만큼 심해요
       note: 통증
-    - en: Pain this severe with a fever worries me about a deep infection.
+    - en: Pain this severe with a fever makes me worried about a deep infection.
       icon: faceWorried
       ko: 이렇게 심한 통증에 열까지 있으면 깊은 감염이 걱정돼요
       note: 걱정
@@ -106924,7 +106924,7 @@
           - {en: "tendons"}
           - {en: "bones"}
     - en: "We need fluids running fast to bring your pressure back up."
-      ko: "혈압을 다시 올리려고 수액을 빠르게 흘릴게요."
+      ko: "혈압을 다시 올리려고 수액을 빠르게 넣을게요."
       chunks: ["We need fluids", "running fast", "to bring your pressure", "back up", "."]
       words: [w-need, w-fluid, w-run, w-fast, w-pressure, w-back, w-up]
       goal: 2
@@ -107172,7 +107172,7 @@
   difficulty: 3
   skills: [감염 이송 인계, 격리 정보 전달, 배양·항생제 이력]
   keyPhrases:
-    - "Suspected meningococcemia — he's on airborne and contact precautions."
+    - "Suspected meningococcemia — he's on droplet precautions."
     - "Cultures were drawn and first antibiotic dose given at nineteen-hundred."
     - "Last pressure eighty-five systolic on fluids — please continue isolation."
   goals:
@@ -107181,15 +107181,15 @@
   acuity: critical
   persona: { name: Tanya Brooks, ageRange: 30s, sub: "transport RN, 34y / Female", mood: neutral, personality: 정확하고 체계적, speakingStyle: 표준 인계 순서로 보고함 }
   sentences:
-    - en: "Suspected meningococcemia — he's on airborne and contact precautions."
-      ko: "수막구균혈증 의심 — 공기 및 접촉 격리 중입니다."
-      chunks: ["Suspected meningococcemia", "— he's on", "airborne", "and contact precautions", "."]
-      words: [w-suspect, w-meningococcemia, w-airborne, w-contact, w-precaution]
+    - en: "Suspected meningococcemia — he's on droplet precautions."
+      ko: "수막구균혈증 의심 — 비말 격리 중입니다."
+      chunks: ["Suspected meningococcemia", "— he's on", "droplet precautions", "."]
+      words: [w-suspect, w-meningococcemia, w-droplet, w-precaution]
       goal: 1
       tag: "의심·격리"
       icon: "siren"
-      why: "Suspected로 확진 전임을 먼저 밝히고 대시 뒤에 격리 상태를 이어요. 인계는 진단 의심과 현재 격리 조치를 첫 줄에 말해야 받는 쪽이 방과 보호구를 준비해요."
-      decoy: "Probable measles"
+      why: "Suspected로 확진 전임을 먼저 밝히고 대시 뒤에 격리 상태를 이어요. 수막구균은 비말로 퍼져 비말 격리(droplet precautions)를 해요. 인계는 진단 의심과 현재 격리 조치를 첫 줄에 말해야 받는 쪽이 방과 보호구를 준비해요."
+      decoy: "is cleared"
       distractorsKo: ["환자는 중환자실에서 오는 중입니다", "환자는 의식이 또렷합니다"]
       blank:
         answer: "Suspected"
@@ -107271,7 +107271,7 @@
     words:
     - w-large
     - w-iv
-    - w-contact
+    - w-droplet
     - w-precaution
     - w-liter
     - w-fluid
@@ -107279,13 +107279,13 @@
     pairs:
     - - large-bore
       - IVs
-    - - contact
+    - - droplet
       - precautions
     - - one liter of fluids
       - so far
     decoys:
     - systolic
-    why: 굵은 정맥로는 large-bore IVs, 격리 조치는 ___ precautions 꼴로, 지금까지 들어간 양은 one liter of fluids so far로 인계해요.
+    why: 굵은 정맥로는 large-bore IVs, 격리 조치는 droplet precautions 꼴로, 지금까지 들어간 양은 one liter of fluids so far로 인계해요.
   - kind: context
     words:
     - w-culture
@@ -123492,7 +123492,7 @@
           - {en: "shared"}
           - {en: "added"}
     - en: "This combination may be making you unsteady on your feet."
-      ko: "이 약 조합이 다리 힘을 불안정하게 만들고 있을 수 있어요."
+      ko: "이 약 조합 때문에 걸을 때 휘청거리실 수 있어요."
       chunks: ["This combination", "may be making you", "unsteady", "on your feet", "."]
       words: [w-unsteady]
       goal: 2
@@ -123773,7 +123773,7 @@
   skills: [노인 학대 사정, 비대립적 청취, 안전 확보]
   keyPhrases:
     - "I noticed some things I'd like to understand better."
-    - "You're safe to talk with me — nothing leaves this room without your say."
+    - "You're safe to talk with me — I'll be honest about who else needs to know."
     - "My only goal is to make sure you're cared for."
   goals:
     - 영양불량·상처를 비대립적으로 사정한다
@@ -123798,20 +123798,20 @@
           - {en: "read"}
           - {en: "noticed"}
           - {en: "wrote"}
-    - en: "You're safe to talk with me — nothing leaves this room without your say."
-      ko: "여기서는 안전하게 말씀하셔도 돼요 — 허락 없이는 이 방 밖으로 나가지 않아요."
-      chunks: ["You're safe", "to talk with me", "— nothing leaves", "this room", "without your say", "."]
-      words: [w-safe, w-leave, w-say]
+    - en: "You're safe to talk with me — I'll be honest about who else needs to know."
+      ko: "여기서는 안전하게 말씀하셔도 돼요 — 누가 더 알아야 하는지는 솔직하게 말씀드릴게요."
+      chunks: ["You're safe", "to talk with me", "— I'll be honest", "about who else", "needs to know", "."]
+      words: [w-safe, w-need]
       goal: 2
       tag: "안전한 대화"
       icon: "shield"
-      why: "You're safe to talk with me로 말해도 안전하다는 느낌을 먼저 줘요. without your say는 환자의 뜻을 존중한다는 말투일 뿐이에요. 미국에서는 노인 학대가 의심되면 병원 지침과 주법에 따라 보고해야 할 수 있어서, 실제로는 비밀 보장을 약속하지 않고 누가 더 알아야 하는지를 정직하게 설명해요."
-      decoy: "on the phone"
+      why: "You're safe to talk with me로 말해도 안전하다는 느낌을 먼저 줘요. 미국에서는 노인 학대가 의심되면 병원 지침과 주법에 따라 보고해야 할 수 있어서, 비밀 보장을 약속하지 않고 I'll be honest about who else needs to know로 누가 더 알아야 하는지를 정직하게 알려요."
+      decoy: "who you are"
       distractorsKo: ["지금 불편한 점이 있으세요?", "물이나 담요를 드릴까요?"]
       blank:
         answer: "safe"
         options:
-          - {en: "ready"}
+          - {en: "wrong"}
           - {en: "early"}
           - {en: "late"}
           - {en: "safe"}
@@ -125461,38 +125461,38 @@
           - {en: "shoulder"}
           - {en: "hip"}
           - {en: "wrist"}
-    - en: "Drink some water to help stay hydrated before surgery."
-      ko: "수술 전에 물을 좀 드셔서 수분을 유지해 주세요."
-      chunks: ["Drink some water", "to help", "stay hydrated", "before surgery", "."]
+    - en: "Let me check if you can drink water to stay hydrated before surgery."
+      ko: "수술 전에 수분 유지를 위해 물을 드셔도 되는지 확인해 볼게요."
+      chunks: ["Let me check", "if you can drink water", "to stay hydrated", "before surgery", "."]
       words: [w-hydrate, w-surgery]
       goal: 2
-      tag: "수분 안내"
+      tag: "금식 확인"
       icon: "coffee"
-      why: "to help stay hydrated로 물을 마시는 목적을 먼저 밝혀 지시가 아니라 제안으로 들려요. 다만 수술을 기다리는 환자의 금식 여부는 마취팀 지시가 정하므로, 간호사는 지시를 확인하기 전에는 물을 권하지 않아요. 이 문장은 마셔도 된다고 확인된 뒤에 쓰는 말이에요."
-      decoy: "after surgery"
+      why: "Let me check if…로 물을 마셔도 되는지 먼저 확인하겠다고 말해요. 수술을 기다리는 환자의 금식 여부는 마취팀 지시가 정하므로 간호사는 확인하기 전에는 물을 권하지 않고, 마셔도 된다는 확인이 나온 뒤에 수분 유지를 안내해요."
+      decoy: "of the surgery"
       distractorsKo: ["소변은 잘 나오시나요?", "입이 마르신가요?"]
       blank:
-        answer: "Drink"
+        answer: "check"
         options:
-          - {en: "Pour"}
-          - {en: "Spill"}
-          - {en: "Splash"}
-          - {en: "Drink"}
-    - en: "Let's keep you moving and oriented while you wait."
-      ko: "기다리시는 동안 계속 움직이시고 지남력을 유지하게 도와드릴게요."
-      chunks: ["Let's keep you", "moving", "and oriented", "while you wait", "."]
+          - {en: "check"}
+          - {en: "decide"}
+          - {en: "guess"}
+          - {en: "forget"}
+    - en: "Let's keep you oriented and engaged while you wait."
+      ko: "기다리시는 동안 지남력을 유지하고 계속 이야기 나누며 지내시도록 도와드릴게요."
+      chunks: ["Let's keep you", "oriented", "and engaged", "while you wait", "."]
       words: [w-orient, w-wait]
       goal: 2
       tag: "지남력 유지"
       icon: "compass"
-      why: "oriented는 날짜와 있는 곳을 아는 상태를 가리켜요. moving은 계속 움직인다는 뜻이지만 수술 전 고관절 골절 환자는 골절 부위를 고정하고 움직임을 제한하므로, 움직임은 정형외과·마취팀 지시를 따라요. 이 문장에서 간호사가 실제로 하는 일은 말을 걸어 지남력을 유지하는 쪽이에요."
-      decoy: "at the window"
+      why: "oriented는 날짜와 있는 곳을 아는 상태를, engaged는 말을 걸어 대화에 계속 함께하는 것을 가리켜요. 수술 전 고관절 골절 환자는 골절 부위를 고정하고 움직임을 제한하므로, 간호사가 실제로 하는 일은 말을 걸어 지남력을 유지하는 쪽이에요."
+      decoy: "was waiting"
       distractorsKo: ["다리는 움직이지 않게 지켜 드릴게요", "자세를 바꿔 드릴까요?"]
       blank:
         answer: "oriented"
         options:
           - {en: "oriented"}
-          - {en: "entertained"}
+          - {en: "disoriented"}
           - {en: "dressed"}
           - {en: "shaved"}
   nuance:

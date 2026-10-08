@@ -35,3 +35,4 @@ dash(15,'뇌탈출 임박(동공 산대)',4,'Check the other pupil now—compare
 dash(17,'관통성 두부손상',3,'We will not remove it here—that could cause more bleeding.','We will not remove it here — that could cause more bleeding.',
      ['We will not remove it','here','— that could cause','more bleeding','.'])
 f.finish(C)
+# (후속 실행 기록) order 줄 인용 2건(S11 L1, S16 L1)은 situation['order']['lines']에 있어 별도 패치로 새 en에 맞춤
