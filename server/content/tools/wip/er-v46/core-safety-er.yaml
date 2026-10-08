@@ -2527,7 +2527,7 @@ situations:
     tag: 신원 확인
     icon: speech
     why: Can you … for me?는 명령 대신 부탁의 모양이라 환자가 취조당하는 느낌이 덜해요. state는 say보다 격식 있는 확인 절차의 동사예요.
-    decoy: for the chart
+    decoy: your nickname
     distractorsKo:
     - 생년월일을 말씀해 주시겠어요?
     - 어디가 불편하세요?
@@ -2535,7 +2535,7 @@ situations:
       answer: state
       options:
       - en: state
-        icon: speech
+        icon: mic
       - en: guess
         icon: bulb
       - en: hide
@@ -2566,11 +2566,11 @@ situations:
       - en: insurance plan
         icon: board
       - en: date of birth
-        icon: calendar
-      - en: home address
+        icon: baby
+      - en: bed number
         icon: home
-      - en: phone number
-        icon: speaker
+      - en: room number
+        icon: hospital
   - en: I'm checking this against your wristband.
     ko: 이걸 손목밴드와 대조해서 확인할게요.
     chunks:
@@ -2625,10 +2625,10 @@ situations:
         icon: cross
       - en: rarely
         icon: calendar
-      - en: almost
+      - en: sometimes
         icon: chartup
       - en: always
-        icon: check
+        icon: redo
   - en: This helps prevent us from mixing up two patients.
     ko: 이렇게 하면 두 환자를 혼동하는 걸 막을 수 있어요.
     chunks:
@@ -2642,22 +2642,22 @@ situations:
     goal: 2
     tag: 이유 설명
     icon: shield
-    why: prevent A from -ing는 A가 …하지 못하게 막는다는 구조예요. 확인의 목적을 알려 주면 되풀이되는 질문도 환자가 이해해요.
+    why: prevent A from -ing는 A가 …하지 못하게 막는다는 구조예요. mix up은 둘을 뒤바꿔 혼동한다는 구동사예요. 확인의 목적을 알려 주면 되풀이되는 질문도 환자가 이해해요.
     decoy: us to
     distractorsKo:
     - 이 확인은 시간이 오래 걸려요
     - 두 환자분 모두 이름이 같아요
     blank:
-      answer: prevent
+      answer: mixing up
       options:
-      - en: prevent
-        icon: shield
-      - en: cause
-        icon: siren
-      - en: allow
-        icon: handshake2
-      - en: remind
-        icon: bell
+      - en: mixing up
+        icon: faceWorried
+      - en: picking up
+        icon: pushpin
+      - en: cheering up
+        icon: star
+      - en: backing up
+        icon: chevronLeft
   - en: If your name or date of birth doesn't match, I'll stop and ask again.
     ko: 이름이나 생년월일이 일치하지 않으면 멈추고 다시 확인할게요.
     chunks:
@@ -2831,11 +2831,11 @@ situations:
     blank:
       answer: use
       options:
-      - en: sell
-        icon: cross
-      - en: paint
-        icon: pencil
-      - en: break
+      - en: rent
+        icon: board
+      - en: store
+        icon: lock
+      - en: fix
         icon: gear
       - en: use
         icon: check
@@ -2865,12 +2865,12 @@ situations:
       options:
       - en: raise
         icon: chartup
-      - en: wash
+      - en: lower
+        icon: chevronDown
+      - en: measure
+        icon: monitor
+      - en: treat
         icon: bandage
-      - en: paint
-        icon: pencil
-      - en: borrow
-        icon: handshake2
   - en: Based on what I find, we'll work together to prevent a fall.
     ko: 확인한 내용을 바탕으로 낙상을 예방하도록 함께 노력할게요.
     chunks:
@@ -2897,7 +2897,7 @@ situations:
       - en: quietly
         icon: mic
       - en: together
-        icon: handshake2
+        icon: check
       - en: alone
         icon: me
       - en: later
@@ -2915,7 +2915,7 @@ situations:
     goal: 2
     tag: 사전 안내
     icon: shield
-    why: before you get up on your own은 혼자 일어나시기 전에 먼저 말씀해 달라는 안내예요. 위험 요소는 일어나기 전에 알려야 낙상을 줄여요.
+    why: Let's talk about …은 지시가 아니라 함께 이야기하자는 제안의 모양이에요. before you get up on your own을 붙여 혼자 일어나시기 전에 위험부터 함께 짚자는 말로 들리게 해요.
     decoy: after you eat
     distractorsKo:
     - 혼자서 일어나셔도 괜찮아요
@@ -2923,14 +2923,14 @@ situations:
     blank:
       answer: risk
       options:
-      - en: hobby
-        icon: star
-      - en: address
-        icon: home
+      - en: discharge
+        icon: plane
+      - en: diet
+        icon: coffee
       - en: risk
         icon: siren
-      - en: lunch
-        icon: coffee
+      - en: visitors
+        icon: handshake2
   nuance:
   - kind: pair
     words:
@@ -3006,7 +3006,7 @@ situations:
     goal: 1
     tag: 침상 설정
     icon: gear
-    why: -ing로 지금 하는 일을 환자에게 그대로 중계해요. 침대를 낮추고 난간을 올리는 것은 낙상 예방의 기본 설정이에요.
+    why: -ing로 지금 하는 일을 환자에게 그대로 중계해요. 병원 지침에 따라 침대를 낮추고 난간을 올려 낙상을 예방해요.
     decoy: the lights off
     distractorsKo:
     - 침대를 높여서 편하게 해 드릴게요
@@ -3014,14 +3014,14 @@ situations:
     blank:
       answer: lowering
       options:
-      - en: painting
-        icon: bulb
-      - en: breaking
-        icon: cross
+      - en: raising
+        icon: chevronUp
+      - en: moving
+        icon: compass
       - en: lowering
         icon: chevronDown
-      - en: selling
-        icon: pencil
+      - en: cleaning
+        icon: bandage
   - en: This is your call button — press it if you need help.
     ko: 이건 호출벨이에요, 도움이 필요하면 누르세요.
     chunks:
@@ -3052,7 +3052,7 @@ situations:
       - en: hide
         icon: pushpin
       - en: press
-        icon: bell
+        icon: play
   - en: Please don't get up on your own; call me first.
     ko: 혼자 일어나지 마시고, 먼저 저를 불러주세요.
     chunks:
@@ -3104,14 +3104,14 @@ situations:
     blank:
       answer: low
       options:
-      - en: tall
-        icon: trophy
+      - en: unlocked
+        icon: lock
       - en: low
         icon: chevronDown
       - en: high
         icon: chevronUp
-      - en: wet
-        icon: bandage
+      - en: empty
+        icon: cross
   - en: The rails will stay up whenever I'm not right beside you.
     ko: 제가 바로 옆에 없을 때는 난간을 항상 올려 둘게요.
     chunks:
@@ -3162,16 +3162,16 @@ situations:
     - 도움이 필요 없으면 누르지 마세요
     - 호출벨은 간호사만 눌러요
     blank:
-      answer: Press
+      answer: alone
       options:
-      - en: Hide
-        icon: lock
-      - en: Break
-        icon: cross
-      - en: Remove
-        icon: scalpel
-      - en: Press
-        icon: bell
+      - en: together
+        icon: handshake2
+      - en: slowly
+        icon: chevronDown
+      - en: later
+        icon: calendar
+      - en: alone
+        icon: me
   - en: Setting up your bed and call button correctly helps prevent falls.
     ko: 침대와 호출벨을 올바르게 설정하면 낙상을 예방하는 데 도움이 돼요.
     chunks:
@@ -3200,10 +3200,10 @@ situations:
         icon: chevronDown
       - en: infections
         icon: lab
-      - en: bills
-        icon: board
-      - en: noise
-        icon: speaker
+      - en: blood clots
+        icon: pushpin
+      - en: delirium
+        icon: faceWorried
   - en: Let's check the bed height together before I go.
     ko: 제가 가기 전에 침대 높이를 같이 확인해요.
     chunks:
@@ -3226,14 +3226,14 @@ situations:
     blank:
       answer: height
       options:
-      - en: brand
-        icon: pushpin
+      - en: sheets
+        icon: bandage
       - en: height
         icon: chartup
-      - en: color
+      - en: blanket
+        icon: home
+      - en: pillow
         icon: star
-      - en: price
-        icon: board
   nuance:
   - kind: pair
     words:
@@ -3274,7 +3274,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 침상 안전 설정 4단계
-    why: 침대를 먼저 설정하고, 호출벨을 알려 준 뒤 그 벨을 먼저 누르라고 요청하고, 떠나기 전 마지막으로 높이를 확인해요. 앞 줄이 뒤 줄의 전제라 순서가 하나예요.
+    why: 침대를 먼저 설정하고, 호출벨을 알려 준 뒤, 그러니 일어나기 전에 먼저 저를 부르라고 요청하고, 떠나기 전 마지막으로 높이를 확인해요. 앞 줄이 뒤 줄의 전제라 순서가 하나예요.
     lines:
     - en: First, I'm lowering the bed and putting the rails up.
       icon: gear
@@ -3284,9 +3284,9 @@ situations:
       icon: bell
       ko: 호출벨이에요, 도움이 필요하면 누르세요
       note: 안내
-    - en: So please press it before you try to get up.
+    - en: So please call me before you try to get up.
       icon: shield
-      ko: 그러니 일어나기 전에 먼저 누르세요
+      ko: 그러니 일어나려 하기 전에 먼저 저를 불러 주세요
       note: 요청
     - en: Before I go, let's check the bed height together.
       icon: check
@@ -3309,22 +3309,22 @@ situations:
     goal: 1
     tag: 정보 확인
     icon: bandage
-    why: 밴드에 적힌 내용을 먼저 말하고 correct?로 맞는지 묻는 방식이에요. 환자는 맞다·아니다만 답하면 되고, 밴드와 본인 말이 어긋나는지도 바로 드러나요.
+    why: you're allergic to …로 밴드에 적힌 내용을 먼저 말하고 correct?로 맞는지 묻는 방식이에요. 환자는 맞다·아니다만 답하면 되고, 밴드와 본인 말이 어긋나는지도 바로 드러나요.
     decoy: shows you're
     distractorsKo:
     - 페니실린을 드시고 계세요?
     - 밴드를 새로 채워 드릴게요
     blank:
-      answer: correct
+      answer: allergic
       options:
-      - en: finished
-        icon: trophy
-      - en: tired
-        icon: faceWorried
-      - en: cold
-        icon: monitor
-      - en: correct
-        icon: check
+      - en: addicted
+        icon: pill
+      - en: immune
+        icon: shield
+      - en: used
+        icon: redo
+      - en: allergic
+        icon: siren
   - en: Any other allergies we should add?
     ko: 추가해야 할 다른 알레르기가 있으세요?
     chunks:
@@ -3346,7 +3346,7 @@ situations:
       answer: add
       options:
       - en: add
-        icon: pencil
+        icon: chartup
       - en: skip
         icon: cross
       - en: hide
@@ -3444,7 +3444,7 @@ situations:
       - en: taste
         icon: pill
       - en: see
-        icon: magnify
+        icon: monitor
   - en: Let's add that to your allergy band and your chart together.
     ko: 그럼 알레르기 밴드와 차트에 같이 추가할게요.
     chunks:
@@ -3468,7 +3468,7 @@ situations:
       answer: add
       options:
       - en: add
-        icon: pencil
+        icon: chartup
       - en: send
         icon: plane
       - en: move
@@ -3646,12 +3646,12 @@ situations:
     blank:
       answer: leave
       options:
-      - en: eat
+      - en: return
+        icon: chevronRight
+      - en: rest
         icon: coffee
-      - en: pray
-        icon: star
-      - en: argue
-        icon: faceAngry
+      - en: chat
+        icon: speech
       - en: leave
         icon: plane
   - en: I'll also make sure your fall risk precautions are in place for the move.
@@ -3678,13 +3678,13 @@ situations:
       answer: precautions
       options:
       - en: precautions
-        icon: shield
-      - en: rumors
-        icon: speech
-      - en: hobbies
-        icon: star
-      - en: snacks
-        icon: coffee
+        icon: lock
+      - en: factors
+        icon: gear
+      - en: medications
+        icon: pill
+      - en: injuries
+        icon: bandage
   - en: Once we arrive, stay lying down until the team says it's safe to sit up.
     ko: 도착하면 팀이 안전하다고 할 때까지 누워 계세요.
     chunks:
@@ -3759,7 +3759,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 이송 전후 안전 안내 순서
-    why: 출발 전에 줄을 확인하고, 산소를 이어서(too) 알리고, 이동 중 자세를 요청하고, 도착 뒤 팀이 앉는 것을 돕는 시간 순서예요.
+    why: 출발 전에 줄을 확인하고, 산소통이 찼음을 이어서(too) 알리고, 그 산소를 연결한 채 이동 중 자세를 요청하고(With the oxygen on이 앞 줄을 받아), 도착 뒤 팀이 앉는 것을 돕는 시간 순서예요.
     lines:
     - en: Before we leave, I'm making sure your IV line is secure.
       icon: check
@@ -3769,9 +3769,9 @@ situations:
       icon: gear
       ko: 산소통도 이송에 충분히 차 있어요
       note: 산소
-    - en: Now please stay lying down while we move you.
+    - en: With the oxygen on, please stay lying down while we move you.
       icon: bandage
-      ko: 이제 옮기는 동안 누워 계세요
+      ko: 산소를 연결했으니 옮기는 동안 누워 계세요
       note: 자세
     - en: Once we arrive, the team will help you sit up.
       icon: me
@@ -3802,8 +3802,8 @@ situations:
     blank:
       answer: unsteady
       options:
-      - en: sleepy
-        icon: home
+      - en: talkative
+        icon: speech
       - en: unsteady
         icon: faceWorried
       - en: cheerful
@@ -3835,7 +3835,7 @@ situations:
       - en: much later
         icon: plane
       - en: right away
-        icon: bell
+        icon: chevronRight
       - en: next week
         icon: calendar
   - en: For now, stay in bed so you don't fall.
@@ -3851,7 +3851,7 @@ situations:
     - w-bed
     - w-fall
     goal: 2
-    tag: 안내
+    tag: 침상 유지
     icon: shield
     why: For now는 지금만의 한시적 요청이라는 신호예요. so you don't fall로 이유를 붙이면 지시가 아니라 배려로 들려요.
     decoy: to rest well
@@ -3927,7 +3927,7 @@ situations:
       - en: lazy
         icon: coffee
       - en: close
-        icon: magnify
+        icon: monitor
       - en: careless
         icon: cross
       - en: distant
@@ -4002,24 +4002,24 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 고위험 낙상 환자 안내 순서
-    why: 상태를 먼저 설명하고 도움을 제안한 뒤, 침대에 있도록 요청하고, 필요하면 벨을 누르라고 이어서(And) 알리고, 마지막으로 자주 확인하겠다고 해요.
+    why: 상태를 말하며 침대에 있으라고 먼저 요청하고, 일어나야 하면 버튼을 누르라고 알리고, 누르면 바로 와서 돕겠다고 약속하고, 마지막으로 다시 한번 짚어요. 3줄은 2줄의 버튼을 전제로 하고 4줄의 again이 앞 안내를 가리켜 순서가 하나예요.
     lines:
-    - en: You're a bit unsteady, so let me help you move.
+    - en: You're a bit unsteady, so for now, please stay in bed.
       icon: me
-      ko: 조금 불안정하시니 제가 도와드릴게요
+      ko: 조금 불안정하시니 지금은 침대에 계세요
       note: 상태
-    - en: For now, stay in bed so you don't fall.
-      icon: lock
-      ko: 지금은 넘어지지 않게 침대에 계세요
-      note: 요청
-    - en: And if you need anything, press this button and I'll come right away.
+    - en: If you need to get up, press this button.
       icon: bell
-      ko: 필요하면 이 버튼을 누르세요, 바로 갈게요
+      ko: 일어나야 하시면 이 버튼을 누르세요
       note: 호출
-    - en: I'll also check on you often, since you're at high risk.
-      icon: stetho
-      ko: 위험이 높아서 자주 확인할게요
-      note: 관찰
+    - en: I'll come right away and help you move.
+      icon: handshake2
+      ko: 바로 가서 옮기는 걸 도와드릴게요
+      note: 약속
+    - en: 'Let me remind you again: stay in bed and call first.'
+      icon: speech
+      ko: 다시 한번 알려드릴게요, 침대에 계시고 먼저 불러 주세요
+      note: 재안내
 - title: 투약 오류 예방
   sentences:
   - en: Is this hydralazine or hydroxyzine? Let's confirm.
@@ -4065,7 +4065,7 @@ situations:
     goal: 1
     tag: 이중 확인
     icon: check
-    why: verify는 직접 대조해 확인한다는 동사예요. with me로 혼자가 아니라 둘이 함께하는 독립 이중 확인을 청해요.
+    why: verify는 직접 대조해 확인한다는 동사예요. with me로 혼자 확인하지 않고 두 번째 간호사의 확인을 청해요. 고위험약은 두 사람이 각자 따로 대조하는 독립 이중 확인이 원칙이에요.
     decoy: without me
     distractorsKo:
     - 농도는 제가 혼자 확인할게요
@@ -4080,7 +4080,7 @@ situations:
       - en: sign
         icon: pencil
       - en: verify
-        icon: check
+        icon: magnify
   - en: Right patient, right dose — read it back to me.
     ko: 정확한 환자, 정확한 용량이에요, 저한테 다시 읽어주세요.
     chunks:
@@ -4093,24 +4093,24 @@ situations:
     words:
     - w-dose
     goal: 1
-    tag: 5 Rights
+    tag: 복창 요청
     icon: pill
     why: right patient·right dose는 투약 안전의 확인 항목(5 rights)에서 나온 말이에요. read back은 들은 내용을 되읽게 해 잘못 들은 것을 잡아내요.
     decoy: write it down
     distractorsKo:
-    - 정확한 환자에게 정확한 약이에요
+    - 약은 제가 혼자 준비할게요
     - 저한테 소리 내어 읽지 마세요
     blank:
       answer: dose
       options:
       - en: dose
-        icon: pill
-      - en: color
-        icon: star
-      - en: price
-        icon: board
-      - en: shape
-        icon: gear
+        icon: lab
+      - en: room
+        icon: home
+      - en: nurse
+        icon: stetho
+      - en: shift
+        icon: calendar
   - en: These two medicine names look alike, so let's say them out loud together.
     ko: 이 두 약 이름이 비슷해서 같이 소리 내어 말해요.
     chunks:
@@ -4132,14 +4132,14 @@ situations:
     blank:
       answer: alike
       options:
-      - en: empty
-        icon: cross
+      - en: different
+        icon: gear
       - en: alike
         icon: pill
-      - en: cold
-        icon: monitor
-      - en: tall
-        icon: trophy
+      - en: familiar
+        icon: home
+      - en: safe
+        icon: shield
   - en: If the concentration doesn't match the order, we stop right away.
     ko: 농도가 처방과 일치하지 않으면 바로 멈춰요.
     chunks:
@@ -4165,14 +4165,14 @@ situations:
     blank:
       answer: order
       options:
-      - en: menu
-        icon: home
-      - en: music
-        icon: speaker
+      - en: brand
+        icon: pushpin
+      - en: price
+        icon: chartup
       - en: order
         icon: board
-      - en: weather
-        icon: bulb
+      - en: color
+        icon: star
   - en: Let's check it again together before we give a single dose.
     ko: 용량을 주기 전에 같이 한 번 더 확인해요.
     chunks:
@@ -4242,7 +4242,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 투약 직전 확인 4단계
-    why: 비슷한 이름부터 가려내고, 농도를 같이 대조한 뒤, 5 rights를 읽어 확인하고, 모두 일치하면 투약해요. 앞 단계의 확인이 끝나야 다음으로 가서 순서가 하나예요.
+    why: 비슷한 이름부터 가려내고, 농도를 같이 대조한 뒤, 농도가 맞는다는 확인(the concentration matches)을 받아 5 rights를 읽어 확인하고, 모두 일치하면 투약해요. 3줄이 2줄의 농도 대조를 전제로 해서 순서가 하나예요.
     lines:
     - en: Is this hydralazine or hydroxyzine? Let's confirm.
       icon: pill
@@ -4252,9 +4252,9 @@ situations:
       icon: check
       ko: 농도를 같이 확인해 주시겠어요?
       note: 농도
-    - en: Good. Now right patient, right dose — read it back to me.
+    - en: Good — the concentration matches. Now right patient, right dose — read it back to me.
       icon: speaker
-      ko: 좋아요, 환자와 용량을 다시 읽어 주세요
+      ko: 좋아요, 농도가 맞네요. 이제 환자와 용량을 다시 읽어 주세요
       note: 복창
     - en: If it all matches, we give it.
       icon: shield
@@ -4291,7 +4291,7 @@ situations:
       - en: Forget
         icon: bulb
       - en: Register
-        icon: board
+        icon: pencil
   - en: Put the temporary band on and label all samples with it.
     ko: 임시 밴드를 채우고 모든 검체에 그걸로 라벨을 붙여요.
     chunks:
@@ -4345,10 +4345,10 @@ situations:
     blank:
       answer: update
       options:
-      - en: sell
-        icon: board
+      - en: delete
+        icon: cross
       - en: update
-        icon: pencil
+        icon: redo
       - en: hide
         icon: lock
       - en: lose
@@ -4381,7 +4381,7 @@ situations:
       - en: wrong
         icon: cross
       - en: same
-        icon: lock
+        icon: check
       - en: different
         icon: gear
   - en: Let's confirm the team knows he's registered as trauma alpha.
@@ -4434,14 +4434,14 @@ situations:
     decoy: one by one
     distractorsKo:
     - 가족이 곧 도착할 거예요
-    - 이름은 나중에 바꿔요
+    - 임시 밴드를 지금 빼 드릴게요
     blank:
       answer: real
       options:
       - en: real
         icon: star
-      - en: fake
-        icon: cross
+      - en: middle
+        icon: compass
       - en: funny
         icon: faceAngry
       - en: secret
@@ -4489,7 +4489,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 신원 불명 환자 처리 순서
-    why: 먼저 임시 이름으로 등록하고, 임시 밴드를 채운 뒤, 같은 번호로 검체에 라벨을 붙이고, 신원이 확인되면 기록을 갱신해요. 앞 단계가 있어야 다음 단계의 임시 번호가 생겨서 순서가 하나예요.
+    why: 먼저 임시 이름으로 등록하고, 임시 밴드를 채운 뒤, 그 밴드의 번호(that band)로 검체에 라벨을 붙이고, 신원이 확인되면 기록을 갱신해요. 앞 단계가 있어야 다음 단계의 임시 번호가 생겨서 순서가 하나예요.
     lines:
     - en: Register him as unknown male, trauma alpha.
       icon: board
@@ -4499,9 +4499,9 @@ situations:
       icon: bandage
       ko: 이제 임시 밴드를 채워요
       note: 밴드
-    - en: Label all samples with the same temporary ID.
+    - en: Then label all samples with the ID on that band.
       icon: lab
-      ko: 모든 검체에 같은 임시 번호를 붙여요
+      ko: 그다음 모든 검체에 그 밴드의 번호로 라벨을 붙여요
       note: 라벨
     - en: Once we identify him, we'll update everything.
       icon: pencil
@@ -4561,14 +4561,14 @@ situations:
     blank:
       answer: name
       options:
-      - en: shape
-        icon: gear
+      - en: room
+        icon: home
       - en: name
-        icon: speech
-      - en: price
-        icon: board
-      - en: color
-        icon: star
+        icon: mic
+      - en: diagnosis
+        icon: stetho
+      - en: doctor
+        icon: me
   - en: We label at the bedside, never at the desk.
     ko: 라벨은 침상 옆에서 붙이고, 데스크에서는 절대 안 해요.
     chunks:
@@ -4621,12 +4621,12 @@ situations:
     blank:
       answer: grab
       options:
-      - en: paint
-        icon: pencil
-      - en: kick
-        icon: faceAngry
-      - en: sing
-        icon: mic
+      - en: shake
+        icon: bell
+      - en: open
+        icon: lock
+      - en: warm
+        icon: coffee
       - en: grab
         icon: lab
   - en: Always check the bed number before you label the tube.
@@ -4645,7 +4645,7 @@ situations:
     goal: 2
     tag: 사전 확인
     icon: check
-    why: Always로 예외 없는 규칙임을 말해요. before you label로 순서를 정해 라벨을 붙이기 전에 침상 번호부터 보게 해요.
+    why: Always로 예외 없는 규칙임을 말해요. before you label은 라벨을 붙이기 전이라는 순서를 정해요. 다만 병실·침상 번호는 환자 식별자가 아니라서, 실제 환자 확인은 손목밴드의 이름과 생년월일로 해요.
     decoy: once you leave
     distractorsKo:
     - 라벨을 붙인 뒤 번호를 확인해요
@@ -4657,8 +4657,8 @@ situations:
         icon: calendar
       - en: after
         icon: chevronRight
-      - en: while
-        icon: monitor
+      - en: unless
+        icon: cross
       - en: since
         icon: pushpin
   - en: Never carry labels to the desk and label them there instead.
@@ -4686,7 +4686,7 @@ situations:
       - en: Sometimes
         icon: chartup
       - en: Never
-        icon: cross
+        icon: lock
       - en: Always
         icon: check
       - en: Often
@@ -4733,12 +4733,12 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 검체 라벨링 4단계
-    why: 침상 번호를 먼저 확인하고, 이름과 오더를 읽어 맞춘 뒤, 그 자리에서 라벨을 붙이고, 마지막에 이유를 정리해요. 앞 단계가 뒤 단계의 조건이라 순서가 하나예요.
+    why: 손목밴드의 두 가지 식별자(이름·생년월일)를 먼저 확인하고, 이름과 오더를 읽어 맞춘 뒤, 그 자리에서 라벨을 붙이고, 마지막에 이유를 정리해요. 병실·침상 번호는 환자 식별자가 아니라서 밴드로 확인해요. 앞 단계가 뒤 단계의 조건이라 순서가 하나예요.
     lines:
-    - en: First, check the bed number.
-      icon: check
-      ko: 먼저 침상 번호를 확인해요
-      note: 번호
+    - en: First, check her wristband — name and date of birth.
+      icon: bandage
+      ko: 먼저 손목밴드의 이름과 생년월일을 확인해요
+      note: 밴드
     - en: Then read me the name and the order together.
       icon: speech
       ko: 그다음 이름과 오더를 같이 읽어 주세요
@@ -4775,14 +4775,14 @@ situations:
     blank:
       answer: hurts
       options:
-      - en: sings
-        icon: mic
+      - en: itches
+        icon: bandage
       - en: hurts
-        icon: faceWorried
-      - en: sleeps
-        icon: coffee
-      - en: smiles
+        icon: stetho
+      - en: tickles
         icon: star
+      - en: happened
+        icon: calendar
   - en: Did you hit your head at all?
     ko: 머리를 부딪히셨어요?
     chunks:
@@ -4795,7 +4795,7 @@ situations:
     goal: 1
     tag: 머리 부상
     icon: stetho
-    why: at all은 조금이라도 부딪혔는지 묻는 강조예요. 낙상 후에는 머리를 부딪혔는지가 이후 평가의 범위를 정해서 가장 먼저 묻는 항목이에요.
+    why: at all은 조금이라도 부딪혔는지 묻는 강조예요. 낙상 후에는 머리를 부딪혔는지가 이후 평가의 범위를 정해서 꼭 묻는 항목이에요.
     decoy: your neck
     distractorsKo:
     - 넘어질 때 어지러우셨어요?
@@ -4803,14 +4803,14 @@ situations:
     blank:
       answer: hit
       options:
-      - en: paint
-        icon: pencil
-      - en: comb
-        icon: gear
+      - en: turn
+        icon: redo
+      - en: lift
+        icon: chevronUp
       - en: hit
-        icon: stetho
-      - en: wash
-        icon: bandage
+        icon: faceWorried
+      - en: shake
+        icon: bell
   - en: I'm going to check you before we move you up.
     ko: 옮기기 전에 먼저 확인해 볼게요.
     chunks:
@@ -4865,12 +4865,12 @@ situations:
       options:
       - en: injury
         icon: bandage
-      - en: dessert
-        icon: coffee
-      - en: weather
-        icon: bulb
-      - en: visitor
-        icon: home
+      - en: fever
+        icon: monitor
+      - en: allergy
+        icon: shield
+      - en: infection
+        icon: lab
   - en: I'll report this fall and update your care plan to prevent another one.
     ko: 이 낙상을 보고하고 재발 방지를 위해 계획을 갱신할게요.
     chunks:
@@ -4898,7 +4898,7 @@ situations:
       - en: forget
         icon: bulb
       - en: report
-        icon: board
+        icon: speech
       - en: hide
         icon: lock
       - en: deny
@@ -4926,13 +4926,13 @@ situations:
     blank:
       answer: talk
       options:
-      - en: sing
-        icon: mic
-      - en: laugh
-        icon: star
+      - en: worry
+        icon: faceWorried
+      - en: forget
+        icon: bulb
       - en: talk
         icon: speech
-      - en: joke
+      - en: argue
         icon: faceAngry
   nuance:
   - kind: pair
@@ -4975,7 +4975,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 낙상 직후 대응 순서
-    why: 먼저 움직이지 않게 하고 통증 부위를 묻고, 머리를 부딪혔는지 이어서 묻고, 옮기기 전에 직접 살핀 뒤, 보고와 계획 갱신으로 마무리해요.
+    why: 먼저 움직이지 않게 하고 통증 부위를 묻고, 머리를 부딪혔는지 이어서 묻고, 그 답을 바탕으로(Okay) 옮기기 전에 머리와 몸을 직접 살핀 뒤, 보고와 계획 갱신으로 마무리해요.
     lines:
     - en: Stay still — can you tell me where it hurts?
       icon: faceWorried
@@ -4985,9 +4985,9 @@ situations:
       icon: stetho
       ko: 그리고 머리를 부딪히셨어요?
       note: 머리
-    - en: Let me check you before we move you up.
+    - en: Okay, let me check your head and body before we move you up.
       icon: magnify
-      ko: 옮기기 전에 먼저 살펴볼게요
+      ko: 좋아요, 옮기기 전에 머리와 몸을 살펴볼게요
       note: 평가
     - en: I'll report this fall and update your care plan.
       icon: board
@@ -5054,7 +5054,7 @@ situations:
       - en: year
         icon: plane
       - en: hour
-        icon: calendar
+        icon: monitor
   - en: We'll remove them as soon as it's safe.
     ko: 안전해지는 대로 바로 풀어드릴게요.
     chunks:
@@ -5077,13 +5077,13 @@ situations:
       answer: remove
       options:
       - en: remove
-        icon: check
+        icon: cross
       - en: tighten
         icon: lock
-      - en: wash
+      - en: replace
+        icon: redo
+      - en: pad
         icon: bandage
-      - en: sell
-        icon: board
   - en: Restraints are only used when he might pull out his IV line or fall.
     ko: 억제대는 정맥 주사줄을 잡아당기거나 낙상할 위험이 있을 때만 사용해요.
     chunks:
@@ -5143,7 +5143,7 @@ situations:
       - en: deny
         icon: cross
       - en: explain
-        icon: speech
+        icon: mic
       - en: hide
         icon: lock
   - en: As soon as he's calmer, we'll remove the restraint and check his skin again.
@@ -5166,7 +5166,7 @@ situations:
     decoy: Unless he's calmer
     distractorsKo:
     - 진정되어도 풀지 않을 거예요
-    - 풀기 전에 피부를 한 번 확인해요
+    - 억제대를 더 단단히 묶을게요
     blank:
       answer: calmer
       options:
@@ -5177,7 +5177,7 @@ situations:
       - en: weaker
         icon: bandage
       - en: calmer
-        icon: faceWorried
+        icon: me
   nuance:
   - kind: pair
     words:
@@ -5220,16 +5220,16 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 억제대 설명 4문장 순서
-    why: 먼저 일시적이라는 것과 목적을 말하고, 사용하는 동안의 확인을 알린 뒤, 진정되면 푼다고 하고, 푼 다음 확인으로 마무리해요. 시간 흐름 그대로라 순서가 하나예요.
+    why: 일시적이고 목적이 줄을 지키는 것이라 말하고, 아직 줄을 당기니 지금은 유지한다고 하고, 진정되면 푼다고 하고, 푼 다음 피부를 다시 확인해요. still … for now는 풀기 전, As soon as he is calmer는 풀기 위한 조건, Then … again은 푼 뒤라서 순서가 하나예요.
     lines:
     - en: This is temporary, only to keep him from pulling his lines.
       icon: lock
       ko: 일시적이에요, 줄을 잡아당기지 못하게 하려는 거예요
       note: 목적
-    - en: In the meantime, we check his circulation and skin every hour.
+    - en: He's still pulling at his lines, so the restraints stay on for now.
       icon: stetho
-      ko: 그동안 매시간 순환과 피부를 확인해요
-      note: 확인
+      ko: 아직 줄을 잡아당겨서 억제대는 지금 그대로 둬요
+      note: 유지
     - en: As soon as he's calmer, we'll remove them.
       icon: check
       ko: 진정되면 바로 풀어드릴게요
@@ -5269,7 +5269,7 @@ situations:
       - en: labor
         icon: baby
       - en: isolation
-        icon: shield
+        icon: lock
   - en: Please wear this gown, gloves, and mask before entering.
     ko: 들어가시기 전에 이 가운, 장갑, 마스크를 착용해 주세요.
     chunks:
@@ -5295,7 +5295,7 @@ situations:
       answer: mask
       options:
       - en: mask
-        icon: shield
+        icon: hospital
       - en: scarf
         icon: bandage
       - en: hat
@@ -5394,7 +5394,7 @@ situations:
       - en: rings
         icon: trophy
       - en: gloves
-        icon: shield
+        icon: hospital
   - en: Always wash your hands again right after you leave the room.
     ko: 병실을 나온 직후에는 항상 다시 손을 씻어 주세요.
     chunks:
@@ -5464,20 +5464,20 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 격리 병실 안내 4문장 순서
-    why: 이유를 먼저 설명하고, 들어가기 전 보호구를 입게 한 뒤, 들어가기 전 손 씻기를 덧붙이고, 나올 때 다시 씻는 것으로 마무리해요. And와 again이 앞 줄을 가리켜서 순서가 하나예요.
+    why: 이유를 먼저 설명하고, 들어가기 전에 손을 씻은 다음 가운·장갑·마스크를 착용하게 하고, 나올 때 다시 씻는 것으로 마무리해요. First … Then이 순서를 못 박고 again이 2줄의 손 씻기를 가리켜 순서가 하나예요.
     lines:
     - en: He's in isolation to protect others from infection.
       icon: shield
       ko: 다른 사람들을 지키려고 격리 중이에요
       note: 이유
-    - en: Please wear this gown, gloves, and mask before entering.
-      icon: shield
-      ko: 들어가기 전에 가운, 장갑, 마스크를 착용해 주세요
-      note: 보호구
-    - en: And wash your hands well before you go in.
+    - en: First, wash your hands well before you go in.
       icon: me
-      ko: 그리고 들어가기 전에 손을 잘 씻으세요
+      ko: 먼저 들어가기 전에 손을 잘 씻으세요
       note: 손 씻기
+    - en: Then put on this gown, gloves, and mask.
+      icon: shield
+      ko: 그다음 이 가운, 장갑, 마스크를 착용하세요
+      note: 보호구
     - en: Always wash your hands again right after you leave the room.
       icon: me
       ko: 나온 직후에 다시 손을 씻으세요
@@ -5498,7 +5498,7 @@ situations:
     tag: 환경 안전
     icon: shield
     why: -ing로 지금 하고 있다고 알리면 환자가 몰래 조치당하는 기분이 들지 않아요. for you를 붙이면 조치가 환자를 위한 것이라는 뜻이 전해져요.
-    decoy: for visitors
+    decoy: the room messy
     distractorsKo:
     - 방을 비워 드릴게요
     - 이 방은 안전하지 않아요
@@ -5506,7 +5506,7 @@ situations:
       answer: safe
       options:
       - en: safe
-        icon: shield
+        icon: lock
       - en: noisy
         icon: speaker
       - en: messy
@@ -5537,7 +5537,7 @@ situations:
       - en: whisper
         icon: mic
       - en: stay
-        icon: me
+        icon: pushpin
       - en: argue
         icon: faceAngry
       - en: shout
@@ -5567,9 +5567,9 @@ situations:
       - en: blame
         icon: faceAngry
       - en: judge
-        icon: scalpel
+        icon: board
       - en: help
-        icon: handshake2
+        icon: shield
       - en: punish
         icon: cross
   - en: I'm going to remove anything in the room that could hurt you.
@@ -5594,12 +5594,12 @@ situations:
     blank:
       answer: remove
       options:
-      - en: add
-        icon: pencil
-      - en: paint
-        icon: bulb
-      - en: wash
-        icon: bandage
+      - en: leave
+        icon: plane
+      - en: count
+        icon: monitor
+      - en: show
+        icon: magnify
       - en: remove
         icon: scalpel
   - en: I'll check on you often, and someone will always be close by.
@@ -5613,7 +5613,7 @@ situations:
     words:
     - w-check
     goal: 1
-    tag: 가까이
+    tag: 곁 지키기
     icon: stetho
     why: close by는 가까이에 있다는 부사구예요. 자주 확인한다는 말과 항상 곁에 사람이 있다는 말을 함께 하면 환자가 혼자 남겨진 느낌이 덜해요.
     decoy: far away
@@ -5647,7 +5647,7 @@ situations:
     tag: 안심·요청
     icon: handshake2
     why: just want는 다른 의도가 없다는 뜻을 담아요. 도움을 청해도 된다는 말로 마무리하면 환자가 말문을 열 여지가 생겨요.
-    decoy: to watch you
+    decoy: to punish you
     distractorsKo:
     - 도움을 청하면 안 돼요
     - 저희는 안전을 걱정하지 않아요
@@ -5703,7 +5703,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 자살 위험 환자 안전 안내 순서
-    why: 먼저 벌이 아니라고 안심시키고(So가 이어받아) 위험물을 치우는 이유를 말하고, 곁을 지킨다고 약속하고, 마지막으로 언제든 도움을 청하라고 해요.
+    why: 먼저 벌이 아니라고 안심시키고(So가 이어받아) 위험물을 치우는 이유를 말하고, 곁을 지킨다고 약속하고, 마지막으로 필요하면 곁의 사람이나 저에게 말하라고 해요. them이 3줄의 someone을 가리켜 순서가 하나예요.
     lines:
     - en: You're not in trouble — we just want to help.
       icon: handshake2
@@ -5717,9 +5717,9 @@ situations:
       icon: me
       ko: 그리고 항상 누군가 곁에 있을 거예요
       note: 약속
-    - en: You can always ask me for help.
+    - en: If you need anything, just tell them or me.
       icon: speech
-      ko: 언제든 도움을 요청하세요
+      ko: 필요한 게 있으면 그분들이나 저에게 말씀하세요
       note: 마무리
 - title: 오환자 시술 방지
   sentences:
@@ -5743,16 +5743,16 @@ situations:
     - 존 레예스 씨는 퇴원했어요
     - 시술은 이미 끝났어요
     blank:
-      answer: John Reyes
+      answer: Time-out
       options:
-      - en: Anna Kim
-        icon: star
-      - en: John Reyes
-        icon: me
-      - en: Maria Lopez
-        icon: baby
-      - en: Peter Chen
-        icon: star
+      - en: Hand-off
+        icon: handshake2
+      - en: Time-out
+        icon: monitor
+      - en: Check-in
+        icon: check
+      - en: Debrief
+        icon: speech
   - en: We're doing a right chest tube — everyone agree?
     ko: 오른쪽 흉관 삽입을 할 거예요, 모두 동의하세요?
     chunks:
@@ -5774,12 +5774,12 @@ situations:
     blank:
       answer: right
       options:
-      - en: small
-        icon: pushpin
-      - en: new
+      - en: bilateral
+        icon: compass
+      - en: spare
         icon: star
       - en: right
-        icon: scalpel
+        icon: chevronRight
       - en: left
         icon: chevronLeft
   - en: Consent is signed and the site is marked.
@@ -5812,7 +5812,7 @@ situations:
       - en: wrapped
         icon: bandage
       - en: marked
-        icon: pencil
+        icon: check
   - en: Before we start the procedure, let's confirm the patient's name together.
     ko: 시술을 시작하기 전에 환자분 성함을 같이 확인해요.
     chunks:
@@ -5864,14 +5864,14 @@ situations:
     blank:
       answer: stop
       options:
-      - en: sing
-        icon: mic
+      - en: continue
+        icon: chevronRight
       - en: stop
         icon: cross
       - en: start
-        icon: chevronRight
-      - en: laugh
-        icon: star
+        icon: bell
+      - en: hurry
+        icon: plane
   - en: Everyone on the team must agree before we begin the procedure.
     ko: 시술을 시작하기 전에 팀 전체가 동의해야 해요.
     chunks:
@@ -5942,19 +5942,19 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 시술 전 타임아웃 4단계
-    why: 환자와 시술을 먼저 말하고, 동의서와 표시를 보고한 뒤, 어긋나면 멈춘다는 규칙을 말하고, 마지막으로 모두의 동의를 받아 시작해요.
+    why: 환자(이름·생년)와 시술을 먼저 말하고, 동의서와 표시를 보고한 뒤, 그 모두 중 하나라도 어긋나면 멈춘다는 규칙을 말하고(any of that이 앞 줄을 받아), 마지막으로 모두의 동의를 받아 시작해요.
     lines:
-    - en: 'Time-out: this is John Reyes, we''re doing a right chest tube.'
+    - en: 'Time-out: John Reyes, born in 1962, right chest tube.'
       icon: siren
-      ko: 타임아웃, 존 레예스 씨 오른쪽 흉관이에요
+      ko: 타임아웃, 존 레예스 씨, 1962년생, 오른쪽 흉관이에요
       note: 환자
     - en: Consent is signed and the site is marked.
       icon: pencil
       ko: 동의서는 서명됐고 부위는 표시됐어요
       note: 점검
-    - en: If anything we just said doesn't match, we stop right there.
+    - en: If any of that — patient, procedure, consent, or site — doesn't match, we stop right there.
       icon: cross
-      ko: 방금 말한 것 중 어긋나면 그 자리에서 멈춰요
+      ko: 그중 하나라도 — 환자, 시술, 동의서, 부위 — 어긋나면 그 자리에서 멈춰요
       note: 규칙
     - en: Everyone agree? Then we begin.
       icon: handshake2
@@ -5986,8 +5986,8 @@ situations:
       options:
       - en: steady
         icon: monitor
-      - en: flat
-        icon: bandage
+      - en: normal
+        icon: check
       - en: dropping
         icon: chevronDown
       - en: rising
@@ -6015,8 +6015,8 @@ situations:
       options:
       - en: calm
         icon: star
-      - en: sleepy
-        icon: coffee
+      - en: comfortable
+        icon: home
       - en: happy
         icon: trophy
       - en: confused
@@ -6044,7 +6044,7 @@ situations:
       answer: now
       options:
       - en: now
-        icon: siren
+        icon: play
       - en: later
         icon: calendar
       - en: tomorrow
@@ -6136,10 +6136,10 @@ situations:
       options:
       - en: vague
         icon: bulb
-      - en: secret
-        icon: lock
-      - en: funny
-        icon: star
+      - en: long
+        icon: chevronRight
+      - en: late
+        icon: calendar
       - en: clear
         icon: check
   nuance:
@@ -6181,7 +6181,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 급변 환자 신속대응 순서
-    why: 수치의 변화를 먼저 알리고, Also로 이어 증상을 말하고, 신속대응을 요청한 뒤, 팀이 도착하면 정리해서 보고해요.
+    why: 수치의 변화를 먼저 알리고, Also로 이어 증상을 말하고, 그 모두를 근거로(With all of that) 신속대응을 요청한 뒤, 팀이 도착하면 정리해서 보고해요.
     lines:
     - en: Her heart rate is up and pressure is dropping.
       icon: monitor
@@ -6191,9 +6191,9 @@ situations:
       icon: faceWorried
       ko: 또 호흡수는 30이고 의식이 혼란스러워요
       note: 증상
-    - en: I need eyes on her now — this is a rapid response.
+    - en: With all of that, I need eyes on her now — this is a rapid response.
       icon: siren
-      ko: 지금 봐주세요, 신속대응이에요
+      ko: 이 모든 걸 보고 지금 봐주셔야 해요, 신속대응이에요
       note: 호출
     - en: When the team arrives, I'll give a clear report.
       icon: board
@@ -6225,14 +6225,14 @@ situations:
     blank:
       answer: similar
       options:
-      - en: strange
+      - en: different
         icon: faceWorried
-      - en: famous
-        icon: star
-      - en: funny
-        icon: faceAngry
+      - en: long
+        icon: chevronUp
+      - en: short
+        icon: chevronDown
       - en: similar
-        icon: bandage
+        icon: handshake2
   - en: Confirm the medical record number, not just the name.
     ko: 이름만이 아니라 의무기록번호를 확인해 주세요.
     chunks:
@@ -6319,7 +6319,7 @@ situations:
       - en: early
         icon: calendar
       - en: crowded
-        icon: siren
+        icon: hospital
       - en: empty
         icon: home
   - en: Always confirm the record number, never rely on the name alone.
@@ -6375,7 +6375,7 @@ situations:
       answer: every single time
       options:
       - en: every single time
-        icon: bandage
+        icon: redo
       - en: once in a while
         icon: calendar
       - en: now and then
@@ -6423,7 +6423,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 비슷한 이름 환자 확인 순서
-    why: 혼잡과 비슷한 이름이라는 문제를 먼저 말하고, So로 속도를 늦추자고 제안한 뒤, 기록번호 확인을 요청하고, Then으로 밴드 확인까지 이어요.
+    why: 혼잡과 비슷한 이름이라는 문제를 먼저 말하고, So로 속도를 늦추자고 제안한 뒤, 기록번호 확인을 요청하고, Then으로 그 번호(it)를 밴드와 맞춰 보는 것까지 이어요.
     lines:
     - en: It's crowded right now, and two patients have similar names.
       icon: siren
@@ -6437,9 +6437,9 @@ situations:
       icon: board
       ko: 이름만이 아니라 기록번호를 확인해요
       note: 번호
-    - en: Then check the wristband before we act.
+    - en: Then match it to the wristband before we act.
       icon: bandage
-      ko: 그다음 행동 전에 밴드를 확인해요
+      ko: 그다음 행동 전에 그 번호를 손목밴드와 맞춰 봐요
       note: 밴드
 - title: 낙상 후 두부외상
   sentences:
@@ -6466,13 +6466,13 @@ situations:
       answer: scan
       options:
       - en: scan
-        icon: monitor
-      - en: haircut
-        icon: scalpel
-      - en: shampoo
+        icon: magnify
+      - en: wrap
+        icon: redo
+      - en: cover
+        icon: lock
+      - en: bandage
         icon: bandage
-      - en: tattoo
-        icon: pencil
   - en: Tell me if your headache gets worse or you feel sleepy.
     ko: 두통이 심해지거나 졸리면 말씀해 주세요.
     chunks:
@@ -6498,7 +6498,7 @@ situations:
       - en: cheerful
         icon: star
       - en: sleepy
-        icon: faceWorried
+        icon: stetho
       - en: hungry
         icon: coffee
       - en: thirsty
@@ -6519,8 +6519,8 @@ situations:
     why: any로 하나라도 있으면 알려 달라는 열린 질문이에요. 저림이나 시야 문제는 신경 증상이라 머리를 다친 뒤 꼭 확인해요.
     decoy: trouble eating
     distractorsKo:
-    - 어지러운 곳이 있으세요?
-    - 시야는 잘 보이시죠?
+    - 두통이 있으세요?
+    - 언제 넘어지셨어요?
     blank:
       answer: numbness
       options:
@@ -6529,7 +6529,7 @@ situations:
       - en: sadness
         icon: faceWorried
       - en: numbness
-        icon: stetho
+        icon: magnify
       - en: hunger
         icon: coffee
   - en: Because you're on a blood thinner, even a small fall can cause bleeding.
@@ -6555,14 +6555,14 @@ situations:
     blank:
       answer: bleeding
       options:
-      - en: sleeping
+      - en: clotting
+        icon: lab
+      - en: itching
+        icon: bandage
+      - en: sweating
         icon: monitor
-      - en: laughing
-        icon: star
-      - en: singing
-        icon: mic
       - en: bleeding
-        icon: siren
+        icon: cross
   - en: We'll watch you closely and repeat the head scan if anything changes.
     ko: 계속 지켜보고 변화가 있으면 머리 스캔을 다시 할게요.
     chunks:
@@ -6619,7 +6619,7 @@ situations:
       - en: someday
         icon: star
       - en: right away
-        icon: bell
+        icon: chevronRight
       - en: next week
         icon: calendar
       - en: next month
@@ -6664,7 +6664,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 두부외상 환자 안내 순서
-    why: 스캔이 필요한 이유를 먼저 말하고, 기다리는 동안 신경 증상을 묻고, 촬영 뒤 관찰을 알리고, 변화가 있으면 바로 알려 달라고 당부해요. 시간 순서라 하나예요.
+    why: 스캔이 필요한 이유를 먼저 말하고, 기다리는 동안 신경 증상을 묻고, 촬영 뒤 관찰을 알리고, 지켜보는 동안(While we watch) 변화가 있으면 바로 알려 달라고 당부해요. 시간 순서라 하나예요.
     lines:
     - en: Because you take a blood thinner, we need a head scan fast.
       icon: monitor
@@ -6678,9 +6678,9 @@ situations:
       icon: magnify
       ko: 스캔 후에는 계속 지켜볼게요
       note: 관찰
-    - en: And please tell us right away if anything changes.
+    - en: While we watch, tell us right away if anything changes.
       icon: bell
-      ko: 그리고 변화가 있으면 바로 말씀해 주세요
+      ko: 지켜보는 동안 변화가 있으면 바로 말씀해 주세요
       note: 당부
 - title: 투약 위해사건 대응
   sentences:
@@ -6706,10 +6706,10 @@ situations:
     blank:
       answer: double
       options:
-      - en: zero
-        icon: cross
+      - en: only
+        icon: pushpin
       - en: double
-        icon: pill
+        icon: siren
       - en: half
         icon: chevronDown
       - en: triple
@@ -6767,12 +6767,12 @@ situations:
     blank:
       answer: incident
       options:
-      - en: weather
-        icon: bulb
-      - en: lunch
-        icon: coffee
-      - en: menu
-        icon: home
+      - en: annual
+        icon: calendar
+      - en: expense
+        icon: chartup
+      - en: audit
+        icon: magnify
       - en: incident
         icon: board
   - en: First, we make sure the patient is safe and stable.
@@ -6789,7 +6789,7 @@ situations:
     goal: 1
     tag: 안전 우선
     icon: shield
-    why: First로 첫 순서가 환자의 안전임을 분명히 해요. safe and stable은 위험한 상태가 아니고 상태가 안정적이라는 뜻이에요.
+    why: First로 첫 순서가 환자의 안전임을 분명히 해요. 투약 사고 뒤 첫 순서는 보고가 아니라 환자의 상태예요. 환자부터 지켜야 이어지는 조치와 보고도 의미가 있어요.
     decoy: Lastly
     distractorsKo:
     - 먼저 보고서를 작성해요
@@ -6799,12 +6799,12 @@ situations:
       options:
       - en: stable
         icon: monitor
-      - en: angry
-        icon: faceAngry
-      - en: noisy
-        icon: speaker
-      - en: sticky
-        icon: bandage
+      - en: unstable
+        icon: chevronDown
+      - en: sedated
+        icon: pill
+      - en: discharged
+        icon: plane
   - en: I'm reporting exactly what happened, even though it's hard.
     ko: 힘들어도 있었던 일을 그대로 보고할게요.
     chunks:
@@ -6861,7 +6861,7 @@ situations:
       - en: carelessly
         icon: cross
       - en: honestly
-        icon: pencil
+        icon: handshake2
       - en: vaguely
         icon: bulb
   nuance:
@@ -6907,7 +6907,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 투약 위해사건 대응 순서
-    why: 환자의 안전을 먼저 확보하고, 상태 관찰과 의사 통보를 하고, 그다음 보고서를 쓰고, 보고서에 사실대로 적는다는 순서예요. Then과 in the report가 앞 줄을 가리켜 순서가 하나예요.
+    why: 환자의 안전을 먼저 확보하고, 상태 관찰과 의사 통보를 하고, 안정되면(Once she is stable) 보고서를 쓰고, 보고서에 사실대로 적는다는 순서예요. in the report가 앞 줄의 보고서를 가리켜 순서가 하나예요.
     lines:
     - en: First, we make sure the patient is safe and stable.
       icon: shield
@@ -6917,9 +6917,9 @@ situations:
       icon: monitor
       ko: 활력징후를 관찰하고 의사에게 알리고 있어요
       note: 조치
-    - en: Then I'll complete an incident report right away.
+    - en: Once she's stable, I'll complete an incident report.
       icon: pencil
-      ko: 그다음 바로 사건 보고서를 작성할게요
+      ko: 환자가 안정되면 사건 보고서를 작성할게요
       note: 보고서
     - en: And in the report I'll write exactly what happened.
       icon: board
@@ -6980,10 +6980,10 @@ situations:
     blank:
       answer: team
       options:
-      - en: taxi
-        icon: plane
-      - en: ladder
+      - en: ramp
         icon: chevronUp
+      - en: key
+        icon: lock
       - en: pillow
         icon: bandage
       - en: team
@@ -7038,14 +7038,14 @@ situations:
     blank:
       answer: walk
       options:
-      - en: sing
-        icon: mic
+      - en: talk
+        icon: speech
       - en: walk
         icon: me
-      - en: sleep
-        icon: monitor
-      - en: swim
-        icon: plane
+      - en: see
+        icon: magnify
+      - en: hear
+        icon: speaker
   - en: Two of us will carry the intubated patient on the bed together.
     ko: 저희 둘이서 삽관된 환자를 침대째로 같이 옮길게요.
     chunks:
@@ -7068,14 +7068,14 @@ situations:
     blank:
       answer: carry
       options:
-      - en: paint
-        icon: pencil
-      - en: sell
-        icon: board
+      - en: leave
+        icon: plane
+      - en: wake
+        icon: bell
       - en: carry
         icon: handshake2
-      - en: drop
-        icon: chevronDown
+      - en: bathe
+        icon: bandage
   - en: Once everyone is out, close the doors and check the count together.
     ko: 모두 나가면 문을 닫고 같이 인원을 확인해요.
     chunks:
@@ -7097,14 +7097,14 @@ situations:
     blank:
       answer: count
       options:
-      - en: menu
-        icon: home
-      - en: color
-        icon: star
-      - en: price
-        icon: board
+      - en: time
+        icon: monitor
+      - en: schedule
+        icon: calendar
+      - en: supplies
+        icon: lab
       - en: count
-        icon: check
+        icon: board
   nuance:
   - kind: pair
     words:
@@ -7221,10 +7221,10 @@ situations:
         icon: chevronUp
       - en: low
         icon: chevronDown
-      - en: rare
-        icon: calendar
-      - en: old
-        icon: monitor
+      - en: moderate
+        icon: compass
+      - en: minor
+        icon: pushpin
   - en: Everyone clear on their role if she deteriorates?
     ko: 악화될 경우 각자 역할은 다 명확하세요?
     chunks:
@@ -7245,14 +7245,14 @@ situations:
     blank:
       answer: role
       options:
-      - en: color
-        icon: star
+      - en: shift
+        icon: calendar
       - en: role
-        icon: handshake2
-      - en: seat
-        icon: home
-      - en: lunch
+        icon: me
+      - en: break
         icon: coffee
+      - en: schedule
+        icon: board
   - en: Let's brief the team on her key risks before the shift starts.
     ko: 근무 시작 전에 팀에게 핵심 위험을 브리핑해요.
     chunks:
@@ -7345,8 +7345,8 @@ situations:
         icon: lock
       - en: forget
         icon: bulb
-      - en: sell
-        icon: board
+      - en: skip
+        icon: chevronRight
   nuance:
   - kind: pair
     words:
