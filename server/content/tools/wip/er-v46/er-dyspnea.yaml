@@ -4021,7 +4021,7 @@ situations:
     goal: 2
     tag: 자세 문진
     icon: me
-    why: sitting up처럼 자세를 한 단어로 묻는 질문은 환자가 몸으로 바로 느껴 보고 답할 수 있어요. 숨찬 환자는 상체를 세우면 편해하는 경우가 많아요.
+    why: sitting up처럼 자세를 짧은 말로 묻는 질문은 환자가 몸으로 바로 느껴 보고 답할 수 있어요. 숨찬 환자는 상체를 세우면 편해하는 경우가 많아요.
     decoy: lying down
     distractorsKo:
     - 침대 머리를 올려 드릴까요?
@@ -4072,11 +4072,15 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 호흡곤란 문진 4문장 순서
-    why: 시작 시점을 먼저 묻고, 시작된 뒤 상황별 악화를 묻고, 그때 따라오는 증상을 묻고, 지금 상태로 마무리합니다. 'Since it started'·'like that'·'all of that'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 지금 호흡 상태를 먼저 묻고, 언제 시작됐는지 묻고, 시작된 뒤 누우면 더 힘든지 묻고, 그렇게 심해질 때 동반 증상을 묻습니다. 'it'·'Since it started'·'like that'이 앞 줄을 가리켜 순서가 하나예요.
     lines:
-    - en: When did the shortness of breath start?
+    - en: Are you having trouble breathing right now?
+      icon: faceWorried
+      ko: 지금 숨쉬기 힘드신가요?
+      note: 현재
+    - en: When did it start?
       icon: calendar
-      ko: 호흡곤란이 언제 시작됐나요?
+      ko: 언제 시작됐나요?
       note: 시작
     - en: Since it started, is it worse when you lie down?
       icon: me
@@ -4086,10 +4090,6 @@ situations:
       icon: stetho
       ko: 그렇게 심해질 때 기침이나 가슴 통증도 있나요?
       note: 동반
-    - en: Are you having trouble breathing with all of that right now?
-      icon: faceWorried
-      ko: 그 모든 것과 함께 지금 숨쉬기 힘드신가요?
-      note: 현재
 - title: 산소포화·호흡수 사정 설명
   sentences:
   - en: This clip measures the oxygen level in your blood.
@@ -4142,12 +4142,12 @@ situations:
     - 1분 동안 맥박이 몇 번 뛰는지 재고 있어요
     - 숨소리를 들어 보고 있어요
     blank:
-      answer: minute
+      answer: breaths
       options:
-      - en: hour
-      - en: visit
-      - en: minute
-      - en: second
+      - en: steps
+      - en: swallows
+      - en: breaths
+      - en: sips
   - en: This won't hurt at all.
     ko: 이건 전혀 아프지 않아요.
     chunks:
@@ -4258,8 +4258,8 @@ situations:
       ok: false
       fix: Your oxygen level is 91 — a little lower than we'd like.
     why: SpO2·RA(room air)는 의료진끼리의 약어예요. 환자에게는 oxygen level처럼 풀어서 말해요.
-    word: oxygen level
-    ko: 산소 수치
+    word: SpO2
+    ko: 산소포화도
   order:
     tag: 대화 흐름
     icon: compass
@@ -4355,9 +4355,9 @@ situations:
     tag: 상태 확인
     icon: stetho
     why: through your nose처럼 숨 쉬는 경로를 콕 집어 물으면 환자가 코가 막혔는지 바로 답할 수 있어요. 코가 막히면 캐뉼라의 산소가 잘 안 들어갈 수 있어요.
-    decoy: with your lips closed
+    decoy: through your mouth
     distractorsKo:
-    - 코가 막혀서 답답하세요?
+    - 산소 줄이 귀 뒤에서 아프지 않으세요?
     - 입으로 숨 쉬는 게 더 편하세요?
     blank:
       answer: nose
@@ -4457,24 +4457,24 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 비강 캐뉼라 4문장 순서
-    why: 착용을 알리고, 그 갈래로 숨 쉬는 것이 괜찮은지 묻고, 괜찮다면 산소를 틀고, 켜진 뒤 불편을 확인합니다. 'them'·'If you can'·'Once it's running'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 산소를 낮은 유량으로 맞췄다고 먼저 알리고, 그 산소를 내보낼 갈래를 코에 넣고, 갈래를 낀 채 코로 숨 쉬기 괜찮은지 묻고, 아니거나 건조하고 조이면 조절한다고 말합니다. 'it'·'With them in'·'If not'이 앞 줄을 가리켜 순서가 하나예요.
     lines:
-    - en: I'm going to put a thin tube with two soft prongs in your nose.
-      icon: me
-      ko: 부드러운 갈래 두 개가 달린 가는 관을 코에 넣을게요
-      note: 착용
-    - en: Can you breathe through them okay?
-      icon: stetho
-      ko: 그걸로 숨 쉬는 게 괜찮으세요?
-      note: 확인
-    - en: If you can, I'll turn the oxygen on at a low flow.
+    - en: I've set the oxygen to a low flow, so you'll feel a little air.
       icon: monitor
-      ko: 괜찮으면 낮은 유량으로 산소를 틀게요
-      note: 시작
-    - en: Once it's running, tell me if it feels dry or too tight.
+      ko: 산소를 낮은 유량으로 맞췄어요, 바람이 조금 느껴질 거예요
+      note: 유량
+    - en: Now, the two soft prongs go just inside your nose to deliver it.
+      icon: me
+      ko: 이제 그걸 전달할 부드러운 갈래 두 개를 코 안쪽에 넣을게요
+      note: 착용
+    - en: With them in, can you breathe through your nose okay?
+      icon: stetho
+      ko: 그걸 끼고 코로 숨 쉬는 게 괜찮으세요?
+      note: 확인
+    - en: If not, or if it feels dry or tight, I'll adjust it.
       icon: faceWorried
-      ko: 켜지면 건조하거나 너무 조이는지 말해 주세요
-      note: 불편
+      ko: 아니거나 건조하고 조이면 조절해 드릴게요
+      note: 조절
 - title: 과호흡 증후군 진정 코칭
   sentences:
   - en: You're safe — let's slow your breathing down together.
@@ -4689,7 +4689,7 @@ situations:
     tag: 열 문진
     icon: stetho
     why: How high …?는 정도를 물어서 환자가 숫자나 느낌으로 답하게 해요. 열의 높이는 감염이 얼마나 심한지 가늠하는 단서가 돼요.
-    decoy: since morning
+    decoy: has your cough
     distractorsKo:
     - 열이 언제부터 있었나요?
     - 열이 날 때 약을 드셨나요?
@@ -4697,9 +4697,9 @@ situations:
       answer: high
       options:
       - en: high
-      - en: long
       - en: low
-      - en: often
+      - en: mild
+      - en: bad
   - en: Is the cough bringing anything up?
     ko: 기침할 때 뭔가 나오나요?
     chunks:
@@ -4843,7 +4843,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 상기도 감염 문진 4문장 순서
-    why: 열의 높이를 묻고, 그 열에 집에서 무엇을 했는지 묻고, 그 조치로 열이 내렸는지 묻고, 열이 내린 뒤에도 기침이 숨쉬기를 방해하는지 묻습니다. 'for it'·'that'·'still'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 열의 높이를 묻고, 그 열에 집에서 무엇을 했는지 묻고, 그 조치로 열이 내렸는지 묻고, 열이 내렸는지와 상관없이 기침이 숨쉬기를 방해하는지 묻습니다. 'for it'·'that'·'it came down'이 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: How high has your fever been?
       icon: stetho
@@ -4857,9 +4857,9 @@ situations:
       icon: chartup
       ko: 그걸로 열이 조금이라도 내렸나요?
       note: 반응
-    - en: If the fever is down, does the cough still make it hard to breathe?
+    - en: Whether or not it came down, does the cough make it hard to breathe?
       icon: faceWorried
-      ko: 열이 내렸어도 기침 때문에 여전히 숨쉬기 힘든가요?
+      ko: 내렸든 아니든 기침 때문에 숨쉬기 힘든가요?
       note: 기침
 - title: 급성 폐부종 기좌호흡
   sentences:
@@ -4890,7 +4890,7 @@ situations:
       - en: still
       - en: upright
       - en: sideways
-      - en: forward
+      - en: lower
   - en: The pink, frothy cough worries me about fluid in your lungs.
     ko: 분홍빛 거품 섞인 기침이 걱정돼요, 폐에 물이 찬 것 같아서요.
     chunks:
@@ -5046,24 +5046,24 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 폐부종 대응 4문장 순서
-    why: 먼저 앉혀 호흡을 돕고, 앉은 뒤 폐 소리를 듣고, 듣는 동안 거품 가래 경험을 묻고, 그렇다면 산소를 준비하는 이유를 설명합니다. 'Now that'·'While I listen'·'If so'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 먼저 앉혀 호흡을 돕고, 앉은 뒤 청진과 산소를 같이 시작하고, 들은 소리와 가래로 폐에 물이 찼을 수 있다고 설명하고, 그래서 바로 의사에게 알립니다. 'Now that'·'with that'·'Because of the fluid'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Let's sit you upright to help you breathe.
       icon: me
       ko: 숨쉬기 편하게 앉혀 드릴게요
       note: 자세
-    - en: Now that you're sitting up, I'm listening to your lungs.
+    - en: Now that you're sitting up, I'm listening to your lungs and starting oxygen.
       icon: stetho
-      ko: 앉으셨으니 폐 소리를 듣고 있어요
+      ko: 앉으셨으니 폐 소리를 듣고 산소를 시작할게요
       note: 청진
-    - en: While I listen, have you ever coughed up anything pink or frothy?
-      icon: calendar
-      ko: 듣는 동안, 분홍빛이나 거품 섞인 기침을 한 적이 있나요?
-      note: 문진
-    - en: If so, it may be fluid in your lungs, so I'm getting oxygen on you.
+    - en: I hear crackles, and with that pink, frothy cough, it may be fluid.
       icon: faceWorried
-      ko: 그렇다면 폐에 물이 찬 것일 수 있어서 산소를 연결하고 있어요
-      note: 이유
+      ko: 물 소리가 들리고 분홍빛 거품 기침까지 있어서 물이 찬 걸 수 있어요
+      note: 설명
+    - en: Because of the fluid, I'm letting the doctor know right away.
+      icon: speaker
+      ko: 물이 찬 것 때문에 바로 의사 선생님께 알릴게요
+      note: 보고
 - title: 폐렴성 저산소증 사정
   sentences:
   - en: What color is the phlegm you're coughing up?
@@ -5168,10 +5168,10 @@ situations:
     blank:
       answer: low
       options:
-      - en: stable
-      - en: low
       - en: high
-      - en: uneven
+      - en: low
+      - en: better
+      - en: higher
   - en: We'll get your oxygen back up.
     ko: 산소 수치를 다시 올려드릴게요.
     chunks:
@@ -5186,9 +5186,9 @@ situations:
     tag: 경과 안내
     icon: chartup
     why: get … back up은 떨어진 수치를 되돌려 놓겠다는 약속이에요. 환자가 지금 무엇을 목표로 하는지 알면 불안이 줄어요.
-    decoy: all the way
+    decoy: back down
     distractorsKo:
-    - 산소 수치를 다시 확인해 볼게요
+    - 가래 검사를 보내 드릴게요
     - 산소를 천천히 줄여 볼게요
     blank:
       answer: oxygen
@@ -5331,7 +5331,7 @@ situations:
     - w-recently
     goal: 1
     tag: 위험 인자
-    icon: bulb
+    icon: plane
     why: traveled far or been immobile처럼 두 가지 상황을 한 질문에 담아요. 장거리 이동이나 오래 움직이지 못한 것은 혈전의 위험 인자예요.
     decoy: by plane
     distractorsKo:
@@ -5389,7 +5389,7 @@ situations:
     decoy: and warm
     distractorsKo:
     - 다리가 언제부터 부었는지 말씀해 주세요
-    - 다리에 힘이 빠지는 곳을 가리켜 주세요
+    - 다리를 쭉 펴고 누워 계세요
     blank:
       answer: leg
       options:
@@ -5437,23 +5437,23 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 폐색전 문진 4문장 순서
-    why: 시작 양상을 먼저 묻고, 위험 인자를 묻고, 그 조건에 이어 다리를 묻고, 다리 다음에 가슴 통증을 묻습니다. 'Since it started'·'If you were'·'Along with the leg'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 갑자기 시작됐는지 먼저 묻고, 시작되기 전의 위험 인자를 묻고, 어느 쪽이든 다리를 묻고, 다리 말고 가슴 통증을 묻습니다. 'Before it started'·'Either way'·'Besides your leg'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Did the shortness of breath start suddenly?
       icon: calendar
       ko: 호흡곤란이 갑자기 시작됐나요?
       note: 시작
-    - en: Since it started, have you traveled far or been immobile?
-      icon: bulb
-      ko: 시작된 뒤로 멀리 다녀오셨거나 오래 움직이지 못하셨나요?
+    - en: Before it started, had you traveled far or been stuck in bed?
+      icon: plane
+      ko: 시작되기 전에 멀리 다녀오셨거나 침대에 오래 계셨나요?
       note: 위험
-    - en: If you were immobile, is one of your legs more swollen?
+    - en: Either way, is one of your legs more swollen or painful?
       icon: me
-      ko: 움직이지 못하셨다면 한쪽 다리가 더 부었나요?
+      ko: 어느 쪽이든 한쪽 다리가 더 붓거나 아픈가요?
       note: 다리
-    - en: Along with the leg, does your chest hurt when you breathe in?
+    - en: Besides your leg, does your chest hurt when you breathe in?
       icon: stetho
-      ko: 다리와 함께 숨을 들이쉴 때 가슴도 아픈가요?
+      ko: 다리 말고 숨을 들이쉴 때 가슴도 아픈가요?
       note: 가슴
 - title: 비침습환기(BiPAP) 설명
   sentences:
@@ -5477,7 +5477,7 @@ situations:
     why: pushes air in처럼 눈에 그려지는 동사로 기계가 하는 일을 말해요. BiPAP은 마스크로 압력을 넣어 숨쉬기를 돕는 비침습 환기예요.
     decoy: to stop you coughing
     distractorsKo:
-    - 이 마스크는 가래를 빨아내 줘요
+    - 이 마스크는 잘 때도 쓰고 계셔야 해요
     - 이 마스크는 기계에 연결해서 써요
     blank:
       answer: pushes
@@ -5505,7 +5505,7 @@ situations:
     why: hold it gently first로 바로 씌우지 않고 먼저 대 보겠다고 말하면 답답함에 대한 걱정이 줄어요. 처음엔 손으로 얼굴에 가볍게 대서 압력에 익숙해지게 해요.
     decoy: so you can sleep
     distractorsKo:
-    - 마스크 끈은 나중에 조여 드릴게요
+    - 숨이 차면 손을 들어 알려 주세요
     - 마스크가 새는지 확인할게요
     blank:
       answer: gently
@@ -5587,15 +5587,15 @@ situations:
     why: 숨쉬기 일을 기계가 나눠 맡는다는 이유를 알려 주면 환자가 마스크를 받아들이기 쉬워요. 비침습환기는 호흡하는 근육의 일을 덜어 줘요.
     decoy: your heart
     distractorsKo:
-    - 마스크를 쓰면 더 편해질 거예요
+    - 마스크는 의사 선생님이 벗겨도 된다고 할 때까지 써요
     - 마스크를 벗고 싶으면 말씀하세요
     blank:
       answer: rest
       options:
       - en: rest
-      - en: grow
-      - en: dry
-      - en: shrink
+      - en: tire
+      - en: strain
+      - en: collapse
   nuance:
   - kind: slider
     words:
@@ -5728,7 +5728,7 @@ situations:
     tag: 느낌 대비
     icon: faceWorried
     why: but으로 느낌과 수치가 엇갈린다는 점을 분명히 해요. 숨이 차지 않아도 수치가 낮을 수 있다는 점을 환자가 이해해야 치료에 협조해요.
-    decoy: on the screen
+    decoy: are normal
     distractorsKo:
     - 가슴이 답답한 느낌은 없으신가요?
     - 숨이 찬 건 아닌지 다시 여쭤볼게요
@@ -5784,7 +5784,7 @@ situations:
     - w-again
     goal: 2
     tag: 측정 안내
-    icon: play
+    icon: monitor
     why: again으로 한 번 더 잰다고 알려 두면 환자가 반복 측정을 걱정하지 않아요. 수치는 치료 뒤에 변화를 보려고 계속 다시 재요.
     decoy: on your ear
     distractorsKo:
@@ -5845,7 +5845,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 무증상 저산소 4문장 순서
-    why: 수치가 낮다고 말하고, 그 수치를 다시 확인하고, 계속 낮을 때의 조치를 알리고, 어느 쪽이든 지켜본다고 마무리합니다. 'it'·'If it stays low'·'Either way'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 수치가 낮다고 말하고, 그 수치를 다시 확인하고, 계속 낮을 때의 조치를 알리고, 산소를 달아도 계속 지켜본다고 마무리합니다. 'it'·'If it stays low'·'Even with the oxygen on'이 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Your oxygen is lower than we'd like, even though you feel okay.
       icon: monitor
@@ -5859,9 +5859,9 @@ situations:
       icon: pill
       ko: 계속 낮으면 산소를 드릴게요
       note: 조치
-    - en: Either way, we'll keep a close eye on you.
+    - en: Even with the oxygen on, we'll keep a close eye on you.
       icon: shield
-      ko: 어느 쪽이든 계속 가까이서 지켜볼게요
+      ko: 산소를 달아도 계속 가까이서 지켜볼게요
       note: 관찰
 - title: 흉수·기흉 감별 문진
   sentences:
@@ -6034,8 +6034,8 @@ situations:
       ok: false
       fix: It sounds a bit quieter on your right side, so we're going to check why.
     why: diminished breath sounds는 청진 소견을 의료진끼리 전하는 말이에요. 환자에게는 한쪽 소리가 작게 들린다고 쉽게 말하고, 다음에 무엇을 할지 알려요.
-    word: listen
-    ko: 듣다(청진)
+    word: breath sounds
+    ko: 호흡음
   order:
     tag: 대화 흐름
     icon: compass
@@ -6185,7 +6185,7 @@ situations:
     goal: 2
     tag: 안심 약속
     icon: shield
-    why: until help arrives처럼 도움이 올 때까지라는 기한을 주면 환자가 막연히 기다리지 않아요. 지켜보며 안전을 지킨다는 약속이 가장 먼저 전해야 할 말이에요.
+    why: until help arrives처럼 도움이 올 때까지라는 기한을 주면 환자가 막연히 기다리지 않아요. 지켜보며 안전을 지킨다고 약속하면 기다리는 동안 불안이 줄어요.
     decoy: until morning
     distractorsKo:
     - 의사 선생님이 곧 오실 거예요
@@ -6194,8 +6194,8 @@ situations:
       answer: safe
       options:
       - en: warm
-      - en: busy
       - en: quiet
+      - en: waiting
       - en: safe
   nuance:
   - kind: pair
@@ -6241,7 +6241,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 언어장벽 문진 4문장 순서
-    why: 짧은 질문을 하겠다고 알리고, 첫 질문을 하고, 아니라면 다음 질문으로 넘어가고, 마지막에 통역사가 올 때까지 지킨다고 알립니다. 'First one'·'If it's not your chest'·'until then'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 짧게 묻겠다고 알리고, 통증·질식감·알레르기를 하나씩 차례로 묻고, 통역사가 오고 있다고 알립니다. 'First one'·'Next one'·'Last one'이 순서를 가리켜 순서가 하나예요.
     lines:
     - en: I'm going to ask you short questions — please answer with a nod or a shake.
       icon: speech
@@ -6251,14 +6251,14 @@ situations:
       icon: stetho
       ko: '첫 번째요: 가슴 통증? 예, 아니오?'
       note: 첫째
-    - en: If it's not your chest, is it a choking feeling? Point to your throat, yes or no?
+    - en: 'Next one: choking feeling? Point to your throat if yes.'
       icon: pushpin
-      ko: 가슴이 아니면 질식할 것 같은 느낌인가요? 목을 가리켜 보세요, 예, 아니오?
+      ko: '다음이요: 질식할 것 같은 느낌? 맞으면 목을 가리켜 보세요'
       note: 둘째
-    - en: Thank you — an interpreter is on the way, and we'll keep you safe until then.
-      icon: shield
-      ko: 고마워요 — 통역사가 오고 있고, 그때까지 안전하게 지켜드릴게요
-      note: 마무리
+    - en: 'Last one: allergy to medicine? An interpreter is on the way.'
+      icon: pill
+      ko: '마지막이요: 약 알레르기? 통역사가 오고 있어요'
+      note: 셋째
 - title: 신경근질환 환기저하
   sentences:
   - en: Has your cough gotten weaker over the past few days?
@@ -6276,7 +6276,7 @@ situations:
     goal: 1
     tag: 기침 변화
     icon: chartup
-    why: over the past few days로 기간을 한정하면 환자가 최근 변화를 떠올려 답해요. 기침이 약해지면 가래를 뱉어 내는 힘이 줄어 호흡 근육이 약해졌을 수 있어요.
+    why: over the past few days로 기간을 한정하면 환자가 최근 변화를 떠올려 답해요. 기침이 약해졌다는 건 호흡 근육이 약해진 신호일 수 있고, 그러면 가래를 뱉어 내기 어려워져요.
     decoy: since last night
     distractorsKo:
     - 기침이 더 자주 나오나요?
@@ -6387,7 +6387,7 @@ situations:
     why: again으로 이전에 쟀다는 것을 알려요. 호흡 근육 힘은 시간에 따라 변해서 같은 방법으로 반복해 재야 추이를 알 수 있어요.
     decoy: tomorrow
     distractorsKo:
-    - 오늘 폐활량도 다시 확인해 볼게요
+    - 오늘 식사는 잘 삼키셨어요?
     - 오늘 물 삼키는 걸 다시 지켜볼게요
     blank:
       answer: strength
@@ -6437,7 +6437,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 신경근질환 문진 4문장 순서
-    why: 기침이 약해졌는지 묻고, 약해진 기침과 함께 삼킴 문제를 묻고, 그 때문에 호흡근을 지켜본다고 알리고, 그것을 추적하려고 힘을 다시 잰다고 말합니다. 'weaker cough'·'Because of that'·'To track it'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 기침이 약해졌는지 묻고, 약해진 기침과 함께 삼킴 문제를 묻고, 그 때문에 호흡근을 지켜본다고 알리고, 그것을 추적하려고 힘을 다시 잰다고 말합니다. 'weaker cough'·'both of those'·'To track it'이 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Has your cough gotten weaker over the past few days?
       icon: chartup
@@ -6447,9 +6447,9 @@ situations:
       icon: faceWorried
       ko: 기침이 약해졌다면 삼키기나 목에 낀 걸 뱉기가 힘든가요?
       note: 삼킴
-    - en: Because of that, we need to watch your breathing muscles closely.
+    - en: With both of those, we need to watch your breathing muscles closely.
       icon: shield
-      ko: 그래서 호흡근을 가까이서 지켜봐야 해요
+      ko: 그 두 가지 때문에 호흡근을 가까이서 지켜봐야 해요
       note: 관찰
     - en: To track it, let's check your strength again today.
       icon: monitor
@@ -6476,7 +6476,7 @@ situations:
     decoy: for everyone
     distractorsKo:
     - 산소가 부족하면 입술이 파래질 수 있어요
-    - 산소 마스크는 하루에 몇 번 바꿔요
+    - 숨이 차면 언제든 말씀해 주세요
     blank:
       answer: harmful
       options:
@@ -6639,7 +6639,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 산소 목표치 설명 4문장 순서
-    why: 산소가 해로울 수 있다는 위험을 먼저 말하고, 그래서 목표 범위를 맞춘다고 설명하고, 그 범위를 지키려고 수치를 확인하며 조절하고, 그렇게 해도 끝까지 올리지는 않는다고 덧붙입니다. 'That's why'·'that range'·'Even then'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 산소가 해로울 수 있다는 위험을 먼저 말하고, 그래서 목표 범위를 맞춘다고 설명하고, 그 범위를 지키려고 수치를 확인하며 조절하고, 그렇게 해도 끝까지 올리지는 않는다고 덧붙입니다. 'That's why'·'that range'·'Even with those checks'이 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: For you, too much oxygen can actually be harmful.
       icon: shield
@@ -6653,9 +6653,9 @@ situations:
       icon: monitor
       ko: 그 범위에 있도록 수치를 확인하고 필요하면 조절할게요
       note: 조절
-    - en: Even then, turning it all the way up wouldn't be safe for you.
+    - en: Even with those checks, turning it all the way up wouldn't be safe for you.
       icon: faceWorried
-      ko: 그렇게 해도 끝까지 올리는 건 환자분께 안전하지 않아요
+      ko: 그런 확인을 해도 끝까지 올리는 건 환자분께 안전하지 않아요
       note: 한계
 - title: 불안 동반 호흡곤란 감별
   sentences:
@@ -6676,7 +6676,7 @@ situations:
     tag: 결과 안내
     icon: check
     why: reassuring은 걱정을 덜어 주는 소견이라는 뜻이에요. 산소와 폐 진찰이 정상일 때 먼저 알려 주면 환자의 두려움이 가라앉아요.
-    decoy: so far
+    decoy: and heart rate
     distractorsKo:
     - 심전도 결과도 곧 나올 거예요
     - 혈액검사 결과는 아직 안 나왔어요
@@ -6758,7 +6758,7 @@ situations:
     goal: 2
     tag: 호흡 시도
     icon: speech
-    why: Let's …로 같이 해 보자고 하고 see if로 결과를 지켜보자고 말해요. 천천히 숨 쉬어 나아지면 불안이 호흡을 빠르게 했을 가능성을 가늠할 수 있어요.
+    why: Let's …로 같이 해 보자고 하고 see if로 결과를 지켜보자고 말해요. 천천히 숨 쉬어 나아지면 불안이 영향을 줬을 수 있어요. 다만 나아져도 기질적 원인 검사는 끝까지 해요.
     decoy: while you rest
     distractorsKo:
     - 숨이 안정되면 말씀해 주세요
@@ -6838,11 +6838,11 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 불안 동반 호흡곤란 4문장 순서
-    why: 검사 소견이 안심할 만하다고 알리고, 그런 결과를 두고 불안과 관련이 있는지 묻고, 그렇다면 호흡을 늦춰 보고, 시도하는 동안 불안해도 괜찮다고 말합니다. 'these'·'If it does'·'that'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 검사 소견이 안심할 만해도 검사는 끝까지 한다고 알리고, 그런 결과를 두고 불안과 관련이 있는지 묻고, 그렇다면 호흡을 늦춰 보고, 시도하는 동안 불안해도 괜찮다고 말합니다. 'these'·'If it does'·'that'이 앞 줄을 가리켜 순서가 하나예요.
     lines:
-    - en: Your oxygen and lung exam look reassuring.
+    - en: Your oxygen and lung exam look reassuring, but we'll still finish your tests.
       icon: check
-      ko: 산소 수치도 폐 진찰 소견도 안심할 만해요
+      ko: 산소 수치도 폐 진찰도 안심할 만하지만 검사는 끝까지 할게요
       note: 소견
     - en: With results like these, does this happen when you feel stressed or anxious?
       icon: faceWorried
@@ -6901,14 +6901,14 @@ situations:
     decoy: by yourself
     distractorsKo:
     - 지금 목소리를 낼 수 있으세요?
-    - 지금 입을 벌릴 수 있으세요?
+    - 목이 언제부터 부었나요?
     blank:
       answer: swallow
       options:
       - en: swallow
-      - en: stand
-      - en: walk
-      - en: sleep
+      - en: speak
+      - en: cough
+      - en: lie down
   - en: I'm calling for airway help right now — stay calm.
     ko: 기도 도움을 지금 부를게요 — 침착하게 계세요.
     chunks:
@@ -6934,10 +6934,10 @@ situations:
     blank:
       answer: calm
       options:
-      - en: home
-      - en: calm
       - en: awake
+      - en: calm
       - en: quiet
+      - en: upright
   - en: We're keeping you upright and getting oxygen ready.
     ko: 곧게 앉혀드리고 산소도 준비하고 있어요.
     chunks:
@@ -6985,13 +6985,13 @@ situations:
     why: Try to로 환자에게 지시하되 let us help you로 환자를 도와주는 쪽에 둬요. 움직이거나 힘을 쓰면 기도가 더 좁아질 수 있어서 가만히 있게 해요.
     decoy: and keep talking
     distractorsKo:
-    - 가능하면 말은 하지 말고 계세요
+    - 침이 나오면 뱉으셔도 돼요
     - 목을 만지지 말고 계세요
     blank:
       answer: still
       options:
-      - en: quiet
-      - en: awake
+      - en: flat
+      - en: standing
       - en: warm
       - en: still
   nuance:
@@ -7100,7 +7100,7 @@ situations:
     why: drawn up and labeled는 약을 주사기에 뽑아 이름을 붙여 놓았다는 뜻이에요. 약 이름 표시는 투여 전에 혼동을 막는 기본 안전 수칙이에요.
     decoy: and signed
     distractorsKo:
-    - 유도제와 근이완제를 곧 섞을 겁니다
+    - 유도제와 근이완제 용량을 다시 확인하겠습니다
     - 약 이름을 한 번 더 복창하겠습니다
     blank:
       answer: paralytic
@@ -7154,12 +7154,12 @@ situations:
     - 산소포화도는 모니터로 계속 보고 있습니다
     - 수액은 연결돼 있습니다 — 시작하세요
     blank:
-      answer: '98'
+      answer: ahead
       options:
-      - en: '88'
-      - en: '79'
-      - en: '85'
-      - en: '98'
+      - en: back
+      - en: away
+      - en: home
+      - en: ahead
   - en: I'll call it out step by step.
     ko: 단계별로 콜아웃하겠습니다.
     chunks:
@@ -7174,7 +7174,7 @@ situations:
     tag: 진행 약속
     icon: speech
     why: step by step으로 단계마다 큰 소리로 말하면 팀원이 같은 시점에 움직여요. 팀원이 되받아 말해 확인하는 닫힌 고리 소통(closed-loop)이 안전해요.
-    decoy: one by one
+    decoy: all at once
     distractorsKo:
     - 약을 하나씩 확인하며 말하겠습니다
     - 각 단계마다 시간을 기록하겠습니다
@@ -7226,7 +7226,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 삽관 준비 4문장 순서
-    why: 장비 준비를 먼저 보고하고, 그 준비가 끝난 상태에서 약을 보고하고, 수치를 확인하며 진행을 허락하고, 진행하는 동안 콜아웃한다고 말합니다. 'all of that'·'Go ahead'·'As you go'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 장비 준비를 먼저 보고하고, 그 준비가 끝난 상태에서 약을 보고하고, 수치를 확인하며 준비 완료를 알리고, 진행하는 동안 콜아웃한다고 말합니다. 'all of that'·'Go ahead'·'As you go'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Suction is on, blade and tube are ready.
       icon: speaker
@@ -7239,7 +7239,7 @@ situations:
     - en: Sats are 98 — we're good to go. Go ahead.
       icon: monitor
       ko: 산소포화도 98, 진행해도 좋습니다 — 시작하세요
-      note: 허락
+      note: 신호
     - en: As you go, I'll call it out step by step.
       icon: speech
       ko: 진행하시는 동안 단계별로 콜아웃하겠습니다
@@ -7514,7 +7514,7 @@ situations:
     why: Call for로 무엇을 부르는지를 두 가지 이름으로 짧게 말해요. 부종이 심한 환자의 기도는 마취과나 이비인후과 같은 기도 전문 인력이 필요할 수 있어요.
     decoy: and the crash cart
     distractorsKo:
-    - 마취과에 전화해 주세요
+    - 알부테롤 네뷸라이저를 준비해 주세요
     - 혈액은행에 연락해 주세요
     blank:
       answer: ENT
@@ -7539,12 +7539,12 @@ situations:
     - w-bedside
     goal: 2
     tag: 장비 지시
-    icon: bandage
+    icon: scalpel
     why: open at the bedside로 장비를 옆에 열어 두라고 해서 기도가 막히면 곧바로 쓸 수 있게 해요. 기도가 완전히 막히는 최후의 경우를 대비해 외과적 기도 세트를 준비해요.
     decoy: in the hallway
     distractorsKo:
     - 기관삽관 세트를 열어 두세요
-    - 기관절개관을 교체해 주세요
+    - 흡인기를 하나 더 준비해 주세요
     blank:
       answer: surgical
       options:
@@ -7624,23 +7624,23 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 후두부종 대응 4문장 순서
-    why: 먼저 에피네프린을 주고, 약이 들어간 뒤 기도 카트와 이비인후과를 부르고, 카트가 도착하면 외과적 기도 세트를 열어 두고, 그래도 입술이 계속 붓는다면 재투여를 준비합니다. 'it goes in'·'the cart'·'once the kit is open'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 에피네프린을 주는 동시에 기도 카트와 이비인후과를 부르고, 카트가 오면 외과적 기도 세트를 열고, 그러고도 5~15분 뒤에도 부종이 계속되면 재투여를 준비합니다. 'While it goes in'·'the cart'·'after all that'이 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Give IM epinephrine now — her airway is closing.
       icon: pill
       ko: 지금 근육주사로 에피네프린 주세요 — 기도가 막히고 있습니다
       note: 투약
-    - en: After it goes in, call for the difficult airway cart and ENT.
+    - en: While it goes in, call for the difficult airway cart and ENT.
       icon: speaker
-      ko: 들어간 뒤에 어려운 기도 카트와 이비인후과를 불러주세요
+      ko: 들어가는 동안 어려운 기도 카트와 이비인후과를 불러주세요
       note: 호출
     - en: When the cart arrives, have a surgical airway kit open at the bedside.
       icon: bandage
       ko: 카트가 오면 외과적 기도 세트를 침상에 열어 두세요
       note: 준비
-    - en: If her lips keep swelling once the kit is open, get epinephrine ready to give again.
-      icon: stetho
-      ko: 세트를 열어도 입술이 계속 붓는다면 에피네프린을 다시 줄 준비를 하세요
+    - en: If her lips are still swelling after all that, get the next epinephrine dose ready.
+      icon: pill
+      ko: 그러고도 입술이 계속 붓는다면 다음 에피네프린 용량을 준비하세요
       note: 재투여
 - title: 삽관 후 갑작스런 악화(DOPE)
   sentences:
@@ -7773,7 +7773,7 @@ situations:
     tag: 호전 보고
     icon: chartup
     why: climbing again으로 수치가 다시 오르는 것을 보고해요. 조치가 효과가 있었는지를 팀이 알 수 있게 짧게 말해요.
-    decoy: slowly
+    decoy: are falling
     distractorsKo:
     - 모니터 알람이 멈췄습니다
     - 혈압이 올라가고 있습니다
@@ -7892,7 +7892,7 @@ situations:
     goal: 1
     tag: 상태 보고
     icon: stetho
-    why: bleeding a lot은 출혈이 많다는 것을 환자가 아닌 팀에게 짧게 말하는 표현이에요. 보고 뒤에 바로 할 일(suction again)을 붙여 팀이 움직이게 해요.
+    why: bleeding a lot처럼 쉬운 말로 상황을 먼저 보고하고, 바로 할 일(suction again)을 붙여 팀이 움직이게 해요.
     decoy: and tell me
     distractorsKo:
     - 출혈량을 기록하세요
@@ -8025,7 +8025,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 객혈 대응 4문장 순서
-    why: 많은 출혈과 흡인을 먼저 지시하고, 흡인하는 동안 측위를 잡고, 그 자세가 건강한 폐를 보호한다고 알리고, 그럼에도 출혈이 이어지면 삽관을 준비합니다. 'While you suction'·'That'·'even then'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 많은 출혈과 흡인을 먼저 지시하고, 흡인하는 동안 측위를 잡고, 그 자세가 건강한 폐를 보호한다고 알리고, 그럼에도 출혈이 이어지면 삽관을 준비하고 도움은 지금 바로 부릅니다. 'While you suction'·'That'·'even then'이 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: He's bleeding a lot — suction again.
       icon: stetho
@@ -8039,10 +8039,10 @@ situations:
       icon: shield
       ko: 그러면 건강한 폐가 위로 가니 그걸 지켜주세요
       note: 보호
-    - en: If he keeps bleeding even then, prepare to intubate and call for help now.
-      icon: bulb
-      ko: 그래도 계속 출혈하면 삽관 준비하고 지금 도움을 요청하세요
-      note: 삽관
+    - en: Call for help now — if he keeps bleeding even then, prepare to intubate.
+      icon: speaker
+      ko: 지금 도움을 요청하세요 — 그래도 계속 출혈하면 삽관을 준비하세요
+      note: 호출
 - title: 기관절개 튜브 폐쇄·이탈
   sentences:
   - en: I'm suctioning your trach to clear any blockage.
@@ -8088,7 +8088,7 @@ situations:
     goal: 1
     tag: 공기 확인
     icon: me
-    why: Can you feel …?로 환자의 느낌을 물어 튜브로 공기가 통하는지 확인해요. 공기가 느껴지지 않으면 튜브가 막히거나 빠졌을 수 있어요.
+    why: 환자 느낌을 물어 보조로 확인하고, 흡인 카테터가 들어가는지·관 입구로 공기가 나오는지를 직접 봐요. 공기가 안 통하면 막히거나 빠졌을 수 있어요.
     decoy: stuck inside
     distractorsKo:
     - 기침할 때 공기가 새는 소리가 나나요?
@@ -8180,10 +8180,10 @@ situations:
     blank:
       answer: new
       options:
-      - en: smaller
-      - en: new
       - en: used
+      - en: new
       - en: bigger
+      - en: damaged
   nuance:
   - kind: slider
     words:
@@ -8223,7 +8223,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 기관절개관 폐쇄 4문장 순서
-    why: 막힌 곳을 흡인한다고 알리고, 흡인한 뒤 공기가 통하는지 묻고, 여전히 어긋나 있으면 교체한다고 알리고, 교체할 때까지 산소로 안심시킵니다. 'it'·'still'·'Until then'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 막힌 곳을 흡인한다고 알리고, 흡인한 뒤 공기가 통하는지 묻고, 그래도 공기가 안 통하면 교체한다고 알리고, 교체할 때까지 산소로 안심시킵니다. 'it'·'still'·'Until then'이 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: I'm suctioning your trach to clear any blockage.
       icon: stetho
@@ -8233,9 +8233,9 @@ situations:
       icon: me
       ko: 이제 공기가 통해서 느껴지세요?
       note: 확인
-    - en: If it's still out of place, we'll change the tube right away.
+    - en: If air still isn't moving, we'll change the tube right away.
       icon: bandage
-      ko: 아직도 어긋나 있으면 바로 튜브를 교체할게요
+      ko: 그래도 공기가 안 통하면 바로 튜브를 교체할게요
       note: 교체
     - en: Until then, try to stay calm — we're giving you oxygen.
       icon: shield
