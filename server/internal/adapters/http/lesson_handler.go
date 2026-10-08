@@ -28,6 +28,23 @@ type lessonHandler struct {
 	review  interface {
 		CreateCard(ctx context.Context, c ports.NewReviewCard) (string, error)
 	}
+	// journeys places the situation in its curriculum theme for the hub's subtitle
+	// (lesson-fidelity-v46 T6). Nil → no coordinate.
+	journeys learning.Journeys
+}
+
+// lessonCourse is where the situation sits in the curriculum — the hub subtitle
+// `ER · 환자 안전·오류 예방 · 3/34` (handoff forin-notebook-lesson.jsx L110).
+type lessonCourse struct {
+	// Dept is the theme's department code ("ER"); empty for a theme shared by all.
+	Dept string `json:"dept,omitempty"`
+	// Theme is the theme's name in the request's locale.
+	Theme string `json:"theme"`
+	// Index is this situation's place among the theme's situations (1-based), in the
+	// journey's order; Total is how many there are. The 주제 시험 and bonus quizzes are
+	// not situations and are not counted.
+	Index int `json:"index"`
+	Total int `json:"total"`
 }
 
 // lessonSituation is what the hub draws above the step tickets.
@@ -53,6 +70,9 @@ type lessonResp struct {
 	// Order is the situation's order card (v46, 결정 8); absent when not authored, and
 	// the sentence sheet then skips the order prompt (lesson-fidelity-v46 §R3).
 	Order *content.SentenceOrder `json:"order,omitempty"`
+	// Course is the hub subtitle's curriculum coordinate; absent for a situation that
+	// belongs to no theme.
+	Course *lessonCourse `json:"course,omitempty"`
 }
 
 // lessonSentence is a STEP 2 sentence as this learner meets it.
@@ -147,7 +167,48 @@ func (h *lessonHandler) build(ctx context.Context, uid, scenarioID string) (less
 		Sentences: view,
 		Nuance:    nuance,
 		Order:     s.Order,
+		Course:    courseOf(journeyFor(ctx, h.journeys), i18n.FromContext(ctx), s.ID),
 	}, true, nil
+}
+
+// courseOf finds the situation in the journey: its theme (name and department, from the
+// same Tracks list the 여정 draws) and its place among that theme's situations. Nil when
+// the situation is in no theme.
+func courseOf(j learning.Journey, loc, scenarioID string) *lessonCourse {
+	ref, ok := j.Locate(learning.ScenarioID(scenarioID))
+	if !ok {
+		return nil
+	}
+	c := &lessonCourse{}
+	found := false
+outer:
+	for _, tg := range j.Tracks(learning.Progress{}) {
+		for _, cs := range tg.Curricula {
+			if cs.ThemeKey == string(ref.Theme) {
+				c.Dept, c.Theme, found = cs.Dept, i18n.Tr(loc, cs.ThemeKey, cs.Name), true
+				break outer
+			}
+		}
+	}
+	if !found {
+		return nil
+	}
+	// One row per run (a dialogue has two), so count each situation once.
+	seen := map[string]bool{}
+	for _, st := range j.Steps(ref.Theme, learning.Progress{}) {
+		if st.Optional || st.ScenarioID == "" || seen[st.ScenarioID] {
+			continue
+		}
+		seen[st.ScenarioID] = true
+		c.Total++
+		if st.ScenarioID == scenarioID {
+			c.Index = c.Total
+		}
+	}
+	if c.Index == 0 {
+		return nil
+	}
+	return c
 }
 
 // @Summary 상황 학습 4단계 — 단어·문장·가이드 대화·자유 대화의 상태와 콘텐츠

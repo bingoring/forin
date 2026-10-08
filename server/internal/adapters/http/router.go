@@ -172,7 +172,7 @@ func NewRouter(d Deps) http.Handler {
 
 	// 상황 학습 4단계 (authenticated). Nil when the lesson store is not wired.
 	if d.Lessons != nil {
-		lh := &lessonHandler{content: d.Content, profiles: d.Users, passes: d.Progress, lessons: d.Lessons, review: d.Review}
+		lh := &lessonHandler{content: d.Content, profiles: d.Users, passes: d.Progress, lessons: d.Lessons, review: d.Review, journeys: d.Journeys}
 		mux.Handle("GET /me/lesson/{scenarioId}", auth(http.HandlerFunc(lh.get)))
 		mux.Handle("POST /me/lesson/{scenarioId}/steps/{step}", auth(http.HandlerFunc(lh.clearStep)))
 		mux.Handle("POST /me/lesson/{scenarioId}/words/{wordId}/confused", auth(http.HandlerFunc(lh.confusedWord)))

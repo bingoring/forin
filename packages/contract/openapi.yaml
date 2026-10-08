@@ -1434,8 +1434,31 @@ components:
         title:
           type: string
       type: object
+    internal_adapters_http.lessonCourse:
+      description: |-
+        Course is the hub subtitle's curriculum coordinate; absent for a situation that
+        belongs to no theme.
+      properties:
+        dept:
+          description: Dept is the theme's department code ("ER"); empty for a theme
+            shared by all.
+          type: string
+        index:
+          description: |-
+            Index is this situation's place among the theme's situations (1-based), in the
+            journey's order; Total is how many there are. The 주제 시험 and bonus quizzes are
+            not situations and are not counted.
+          type: integer
+        theme:
+          description: Theme is the theme's name in the request's locale.
+          type: string
+        total:
+          type: integer
+      type: object
     internal_adapters_http.lessonResp:
       properties:
+        course:
+          $ref: '#/components/schemas/internal_adapters_http.lessonCourse'
         level:
           type: string
         nuance:

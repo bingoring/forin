@@ -10,6 +10,7 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/bingoring/forin/server/internal/curriculum/themed"
 	"github.com/bingoring/forin/server/internal/domain/content"
 	"github.com/bingoring/forin/server/internal/domain/learning"
 	"github.com/bingoring/forin/server/internal/domain/user"
@@ -401,5 +402,38 @@ func TestLesson_carriesV46Fields(t *testing.T) {
 	raw, _ = json.Marshal(empty)
 	if strings.Contains(string(raw), `"order"`) {
 		t.Fatalf("no order card must leave the key out: %s", raw)
+	}
+}
+
+type lessonJourneys struct{ j learning.Journey }
+
+func (f lessonJourneys) For(learning.Profession) learning.Journey { return f.j }
+
+// lesson-fidelity-v46 T6 (hub #8): the subtitle's curriculum coordinate — the theme's
+// department, the theme's name and where this situation sits in it — comes from the same
+// journey the 여정 draws, and is left out for a situation in no theme.
+func TestLesson_carriesCourseCoordinate(t *testing.T) {
+	h, _ := lessonFixture("A2")
+	themes := []themed.Theme{{Key: "core-safety-er", Name: "환자 안전·오류 예방", Track: "core", Dept: "ER", Order: 10}}
+	tags := []themed.ScenarioTag{
+		{ID: "SCN-ER-0", Title: "a", Theme: "core-safety-er", Dept: "ER", Difficulty: 1},
+		{ID: "SCN-ER-1", Title: "b", Theme: "core-safety-er", Dept: "ER", Difficulty: 1},
+		{ID: "SCN-ER-2", Title: "c", Theme: "core-safety-er", Dept: "ER", Difficulty: 2},
+	}
+	h.journeys = lessonJourneys{themed.NewEngine(themed.NewCatalog(themes, tags))}
+	resp, _, _ := h.build(context.Background(), "u1", "SCN-ER-1")
+	want := &lessonCourse{Dept: "ER", Theme: "환자 안전·오류 예방", Index: 2, Total: 3}
+	if resp.Course == nil || *resp.Course != *want {
+		t.Fatalf("course = %+v, want %+v", resp.Course, want)
+	}
+	empty, _, _ := h.build(context.Background(), "u1", "SCN-EMPTY")
+	raw, _ := json.Marshal(empty)
+	if strings.Contains(string(raw), `"course"`) {
+		t.Fatalf("a situation in no theme must leave the key out: %s", raw)
+	}
+	h.journeys = nil
+	none, _, _ := h.build(context.Background(), "u1", "SCN-ER-1")
+	if none.Course != nil {
+		t.Fatalf("no journey wired → no course, got %+v", none.Course)
 	}
 }

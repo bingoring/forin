@@ -3718,7 +3718,25 @@ export interface components {
             scenarioId?: string;
             title?: string;
         };
+        /**
+         * @description Course is the hub subtitle's curriculum coordinate; absent for a situation that
+         *     belongs to no theme.
+         */
+        "internal_adapters_http.lessonCourse": {
+            /** @description Dept is the theme's department code ("ER"); empty for a theme shared by all. */
+            dept?: string;
+            /**
+             * @description Index is this situation's place among the theme's situations (1-based), in the
+             *     journey's order; Total is how many there are. The 주제 시험 and bonus quizzes are
+             *     not situations and are not counted.
+             */
+            index?: number;
+            /** @description Theme is the theme's name in the request's locale. */
+            theme?: string;
+            total?: number;
+        };
         "internal_adapters_http.lessonResp": {
+            course?: components["schemas"]["internal_adapters_http.lessonCourse"];
             level?: string;
             /**
              * @description Nuance are the situation's nuance items (v45); the client splits them by kind
