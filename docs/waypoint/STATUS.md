@@ -4,7 +4,7 @@
 **PRD:** [prd.md](prd.md) | [prd-tech.md](prd-tech.md)
 **Design handoff:** [inputs/design-handoff_v42/](inputs/design-handoff_v42/README.md) (최신) · [v40](inputs/design-handoff_v40/README.md) · [v39](inputs/design-handoff_v39/README.md) · [v38](inputs/design-handoff_v38/README.md) · [v22](inputs/design-handoff_v22/README.md)
 **Decisions (audit):** [DECISIONS.md](DECISIONS.md)
-**Last updated:** 2026-10-08
+**Last updated:** 2026-10-09
 
 > 🚩 **학습 화면 핸드오프 1:1(v46) — 착수 (2026-10-07).** 사용자 지적: 학습 화면(STEP 1 회상 6장+뉘앙스 2장, STEP 2, 워밍업 릴)이
 > 핸드오프와 전체적으로 다르고(조각 칩 모양·선택 상태·정답 뒤 넘김 애니메이션), 릴 스와이프 연출을 사용자 의견 없이 범위에서
@@ -57,6 +57,17 @@
 > **C5 장면 정비 완료(2026-10-08)**: 합쳐 둔 13주제를 세 묶음(A·B·C)으로 Sonnet 수정 → Opus 검토(고칠 것 16·24·19) → Sonnet 반영, ER 정본 **W14 0건**.
 > 그 뒤 새 주제는 저작 단계에서 바로 정비. 검사기 W14는 낱말별 어간 비교(pass away↔passed away, verify↔verified, warm↔rewarming).
 > **합친 ER 주제 26/35**(+gi-bleed·diabetic·genitourinary·anaphylaxis·poisoning). 수정 중 environmental, 검토 중 alcohol-withdrawal·fever-infection·psych·sepsis, 남은 4(deescalation·peds·geriatric·obgyn).
+> **TODO (2026-10-09 점검 — 남은 일):**
+> - [ ] **`briefing.line` ER 저작** — T6 화면·검사(`ValidateHubLine`)는 있으나 ER 751상황 모두 비어 있음(허브는 brief 문단을 형광펜 없이). 지시서에 넣고 결정 14 파이프라인으로 저작. **T5 체크는 이 저작 전이라 잘못 체크됨** — 저작 후 다시 체크.
+> - [ ] T7 시뮬레이터 확인 목록 중 미확인: D 마이크 홀드 녹음, 키보드 올라올 때 무대·카드, 그래버 끌기와 크기 기억, iPhone SE(667) 레일 위치.
+> - [ ] Android 실기 확인(층 순서·그림자·T1 편차 3·4) — 한 번도 안 함.
+> - [ ] 대화 E 힌트 내용이 다음에 할 말이 아니라 방금 한 말을 설명함(AI 힌트 프롬프트 확인).
+> - [ ] v22 발음 루프 브랜치 최종 전체 리뷰 미실행.
+> - [ ] CI에 `TEST_DATABASE_URL` 없음 — 실 DB 테스트가 CI에서 늘 건너뜀.
+> - [ ] 커리큘럼 v3 fan-out: WARD·미태깅 140건·라이브 전환.
+> - [ ] 다른 부서 v46 콘텐츠(이번 결정은 ER만).
+> - [ ] 스토어: iOS TestFlight 사람 단계, Android Play 신원 확인.
+> - [ ] 모바일 전체 jest를 한 번에 돌리면 부하로 매번 다른 스위트가 시간 초과(따로 돌리면 통과) — 원인 미확인.
 > **T8 시뮬레이터 대조 완료(2026-10-09):** 대화 E 같음, C6 고침 2건(본문 스크롤·윗줄 덮음 — 사용자 결정, §7). 대시 표기 공백 대시로 통일(사용자 결정, `b42e320`).
 > **v44 문장 수정 157건 완료(2026-10-09):** 6묶음 Sonnet 수정 → Opus 재검토(바뀐 문장·딸린 필드만) → Sonnet 반영 → 합치기. 커밋 `bea77ab`(G5)·`9ec0903`(G2)·`ecf782e`(G3)·`cf98434`(G1)·`54e9ddd`(G4)·`b5629ef`(G6), 매번 ER 위반 0·V16 0·go test 통과.
 > keyPhrase 63건은 정본 시드에 직접 반영(`wip/er-v44fix/apply_keyphrases.py`, 기록 `keyphrases-applied.tsv`), 시드 필드 패치 11건(`apply_seed_patch.py`, `seed-patch-G*.yaml`: core-family 기증 장면 tagline·brief·goals, anaphylaxis 7.2 피부 증상 장면, head-trauma 뇌탈출 = 동료 RN, abdominal·sepsis brief/goals).

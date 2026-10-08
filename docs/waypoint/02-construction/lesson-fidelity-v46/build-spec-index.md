@@ -130,7 +130,7 @@ Go는 `omitempty` 문자열이라 `why: ""`와 키 없음을 구별하지 못해
 - [x] T2 낱장 묶음 부품(스프링 링 9 · 뒷장 2겹 · 아래 다음 장 .85 · 지그재그 절취 조각 · 점선 절취선 · 낱장 그림자 · 줄노트 28px 배경)
 - [x] T3 STEP 1 — 감사 step1 표 전 행 (2026-10-08, [`t3-report.md`](t3-report.md) — 남은 차이 표 포함, 저울·짝 `ko`·`icon` ER 저작은 T5 몫)
 - [x] T4 STEP 2 — 감사 step2 표 전 행, §L 흐름, 문장 '헷갈려요' API (2026-10-08, [`t4-report.md`](t4-report.md) — 남은 차이 표 포함, API `POST /me/lesson/{id}/sentences/confused`)
-- [x] T5 콘텐츠 — [x] §D 스키마·검사기·지시서·적재·응답·모바일 타입(2026-10-07, [`t5-report.md`](t5-report.md)) · [x] ER 저작 35/35(결정 14, 순서 배열 세트·C5 장면 포함, 2026-10-08 — v44 문장 결정 대기는 STATUS)
+- [ ] T5 콘텐츠 — [x] §D 스키마·검사기·지시서·적재·응답·모바일 타입(2026-10-07, [`t5-report.md`](t5-report.md)) · [ ] `briefing.line` ER 저작(빠뜨림, 2026-10-09 발견) · [x] ER 저작 35/35(결정 14, 순서 배열 세트·C5 장면 포함, 2026-10-08 — v44 문장 결정 대기는 STATUS)
 - [x] T6 허브 — 감사 hub 표의 허브 행(결정 4 제외), StepTrack 연결선 규칙 (2026-10-08, [`t6-report.md`](t6-report.md) — 남은 차이 표 포함, `briefing.line` ER 저작은 T5 몫)
 - [x] T7 대화 D/D'/E — 감사 hub 표의 대화 행(무대 결정 5, 노트 결정 6), 픽셀 라인 잔재 제거, STEP 화면 StepTrack 제거(결정 1) (2026-10-08, [`t7-report.md`](t7-report.md) — 남은 차이 표 포함, 노트 API `GET /me/review/scenarios/{id}`)
 - [x] T8 시뮬레이터 대조 — 아트보드마다 핸드오프 캡처와 우리 화면을 나란히 저장(`audit/screens/`)
