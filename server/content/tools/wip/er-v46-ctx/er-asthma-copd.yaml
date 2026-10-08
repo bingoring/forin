@@ -6896,7 +6896,7 @@ situations:
       icon: me
       en: You're a CO2 retainer, so hyperoxia could worsen your hypercapnia.
       ok: false
-      fix: Too much oxygen can make carbon dioxide build up in your blood.
+      fix: Your body tends to hold on to carbon dioxide, so we keep your oxygen a little lower on purpose.
     why: CO2 retainer·hyperoxia·hypercapnia는 의료진끼리의 말이에요. 환자에게는 '산소가 너무 많으면 이산화탄소가 쌓인다'로 풀어 말해요.
     word: CO2
     ko: 이산화탄소
@@ -8011,20 +8011,20 @@ situations:
     scenes:
     - who: 환자에게
       icon: me
-      en: Any orthopnea — is it harder to breathe when you lie flat?
+      en: Can you lie flat to sleep, or do you need extra pillows?
       ok: true
     - who: 차트 기록
       icon: board
-      en: Reports orthopnea, sleeps on three pillows.
+      en: Orthopnea — unable to lie flat, sleeps on three pillows.
       ok: true
     - who: 환자에게
       icon: me
-      en: Do you have orthopnea?
+      en: Do you have orthopnea, or can you lie flat?
       ok: false
       fix: Do you get more short of breath when you lie flat?
     why: orthopnea(기좌호흡)는 차트의 말이에요. 환자에게는 '누우면 숨이 더 차요?'처럼 증상으로 풀어 물어야 알아들어요.
-    word: orthopnea
-    ko: 기좌호흡
+    word: lie flat
+    ko: 똑바로 눕다
   order:
     tag: 대화 흐름
     icon: compass

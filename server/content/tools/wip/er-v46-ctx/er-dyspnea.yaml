@@ -5224,20 +5224,20 @@ situations:
     scenes:
     - who: 환자에게
       icon: me
-      en: Sputum is just the phlegm you cough up — what color is it?
+      en: What color is the phlegm you're coughing up?
       ok: true
     - who: 차트 기록
       icon: board
-      en: Productive cough with purulent green sputum.
+      en: Coughing up purulent green sputum.
       ok: true
     - who: 환자에게
       icon: me
-      en: Is your sputum purulent?
+      en: Are you coughing up purulent sputum?
       ok: false
-      fix: What color is it — clear, yellow, or green?
-    why: sputum·purulent는 차트와 의료진끼리의 말이에요. 환자에게는 sputum이 phlegm이라고 풀어 주고, 색깔로 물어야 답해요.
-    word: sputum
-    ko: 가래
+      fix: Is the phlegm clear, yellow, or green?
+    why: purulent·sputum은 차트에 쓰는 말이에요. 환자에게는 phlegm이나 mucus라고 하고, 색깔로 물어요.
+    word: cough up
+    ko: 기침해서 뱉다
   order:
     tag: 대화 흐름
     icon: compass
@@ -7606,7 +7606,7 @@ situations:
     scenes:
     - who: 팀에게
       icon: speaker
-      en: Give IM epinephrine now — her airway is closing.
+      en: Give IM epi now — her airway is closing.
       ok: true
     - who: 차트 기록
       icon: board
@@ -7614,11 +7614,11 @@ situations:
       ok: true
     - who: 환자에게
       icon: me
-      en: Administering IM epinephrine for angioedema.
+      en: Administering IM epi for angioedema.
       ok: false
       fix: This is a shot in your thigh to bring the swelling down.
     why: IM·epi·angioedema는 의료진끼리의 줄임말과 진단명이에요. 환자에게는 무엇을 왜 하는지 쉬운 말로 알려요.
-    word: epinephrine
+    word: epi
     ko: 에피네프린
   order:
     tag: 대화 흐름

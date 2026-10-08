@@ -3541,7 +3541,7 @@ situations:
       en: Are you on any OTC sympathomimetics?
       ok: false
       fix: Are you taking any cold medicine or diet pills?
-    why: OTC와 sympathomimetic(교감신경 흥분제)은 의료진 말이에요. 환자에게는 OTC가 감기약·다이어트 약 같은 것이라고 풀어 주어야 답할 수 있어요.
+    why: sympathomimetic(교감신경 흥분제)은 의료진 말이에요. OTC는 환자도 아는 말이지만, 감기약·다이어트 약처럼 구체적인 예를 들어야 빠짐없이 답해요.
     word: OTC
     ko: 일반의약품
   order:
@@ -4413,7 +4413,7 @@ situations:
     scenes:
     - who: 환자에게
       icon: me
-      en: Any syncopal episodes — did you actually pass out, or just feel close to it?
+      en: Have you had any episodes where you actually passed out, or just felt close to it?
       ok: true
     - who: 차트 기록
       icon: board
@@ -4424,9 +4424,9 @@ situations:
       en: Have you had any syncopal episodes?
       ok: false
       fix: Have you actually passed out or blacked out?
-    why: syncopal은 의료진 말이에요. 환자에게는 pass out·black out처럼 일상어로 풀어 주어야 무엇을 묻는지 알아들어요.
-    word: syncopal
-    ko: 실신의
+    why: syncopal은 의료진 말이에요. 환자에게는 pass out·black out처럼 일상어로 물어야 무엇을 묻는지 알아들어요.
+    word: episode
+    ko: (증상이 있었던) 한 번
   order:
     tag: 대화 흐름
     icon: compass
@@ -7075,7 +7075,7 @@ situations:
       icon: me
       en: I'm drawing up two grams of mag sulfate for your prolonged QT.
       ok: false
-      fix: I'm drawing up some magnesium to protect your heart rhythm.
+      fix: This is magnesium — it helps keep your heartbeat steady.
     why: 약어(mag)와 용량·경로는 의료진끼리 주고받는 말이에요. 환자에게는 무엇을 왜 주는지로 말해요.
     word: mag
     ko: 마그네슘

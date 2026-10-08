@@ -3539,7 +3539,7 @@ situations:
       ok: true
     - who: 환자에게
       icon: me
-      en: Please rate your pain by quantifying it on the NRS.
+      en: Please rate your pain on the NRS.
       ok: false
       fix: How bad is your pain, from zero to ten?
     why: NRS 같은 약어와 quantify 같은 딱딱한 동사는 의료진 말이에요. 환자에게는 '0부터 10까지'로 풀어 묻고, 차트에는 'rates pain 8/10'처럼 짧게 적어요.
@@ -3776,7 +3776,7 @@ situations:
       ok: true
     - who: 환자에게
       icon: me
-      en: This medicine may make you drowsy through CNS depression.
+      en: This causes CNS depression, so you may get drowsy.
       ok: false
       fix: This medicine may make you feel a little sleepy.
     why: CNS depression은 의료진 용어라 환자는 못 알아듣거나 '우울증'으로 오해해 겁을 먹을 수 있어요. 환자에게는 drowsy·sleepy로 말해요.
@@ -5938,7 +5938,7 @@ situations:
       icon: me
       en: Concurrent benzodiazepine use may slow your respiratory drive, risking respiratory depression.
       ok: false
-      fix: Taking your anxiety pill with pain medicine can slow your breathing.
+      fix: Your anxiety pill plus this pain medicine can slow your breathing, so I'll check on you often.
     why: benzodiazepine·respiratory depression은 의료진끼리 쓰는 말이에요. 환자에게는 자기 약을 쉬운 이름으로 부르고 'slow your breathing'이라고 해요.
     word: slow
     ko: 느려지게 하다
@@ -6363,7 +6363,7 @@ situations:
       icon: me
       en: The patient tolerated the procedure well.
       ok: false
-      fix: You did great — it's all done, and everything went well.
+      fix: Everything went well — you're waking up now, and I'm right here.
     why: '''tolerated the procedure well''은 차트·인계 표현이에요. 깨어나는 환자 앞에서 3인칭 ''the patient''로 말하면 차갑고 혼란스럽게 들려요.'
     word: procedure
     ko: 시술
@@ -7215,7 +7215,7 @@ situations:
     scenes:
     - who: 팀에게
       icon: siren
-      en: Anaphylaxis — epinephrine 0.5 IM, now!
+      en: Anaphylaxis — epi 0.5 IM, now!
       ok: true
     - who: 차트 기록
       icon: board
@@ -7223,11 +7223,11 @@ situations:
       ok: true
     - who: 환자에게
       icon: me
-      en: Epinephrine 0.5 IM, now!
+      en: Epi 0.5 IM, now!
       ok: false
       fix: We're giving you a shot of epinephrine to help you breathe.
     why: 짧은 명령형 'epi 0.5 IM'은 팀 콜아웃이에요. 환자에게는 무엇을 왜 하는지 문장으로 말해 안심시켜요.
-    word: epinephrine
+    word: epi
     ko: 에피네프린
   order:
     tag: 대화 흐름
@@ -7931,10 +7931,10 @@ situations:
       ok: true
     - who: 환자에게
       icon: me
-      en: Your BP is hypotensive, so I'm titrating your fentanyl.
+      en: Your BP's soft, so I'm titrating the fentanyl.
       ok: false
       fix: Your blood pressure is low, so we're giving you pain medicine in small amounts.
-    why: hypotensive·titrate는 의료진 말이에요. 환자에게는 'blood pressure is low', 'small amounts'로 풀어서 말해요.
+    why: soft(혈압이 낮다는 의료진 은어)·titrate는 의료진 말이에요. 환자에게는 'blood pressure is low', 'small amounts'로 풀어서 말해요.
     word: BP
     ko: 혈압
   order:

@@ -2712,7 +2712,7 @@ situations:
       ok: true
     - who: 의사에게 보고
       icon: speech
-      en: He says he lost consciousness for a few seconds after the fall.
+      en: He had a brief LOC after the fall—just a few seconds.
       ok: true
     - who: 환자에게
       icon: me
@@ -2812,7 +2812,7 @@ situations:
     why: in a few minutes로 시점을 말해 주면 환자가 곧 다시 온다는 걸 알고 안심해요. GCS는 한 번으로 끝나지 않고 반복해서 비교해요.
     decoy: in a few days
     distractorsKo:
-    - 이건 지금 바로 끝낼게요
+    - 잠깐 혈압을 잴게요
     - 결과가 나오면 바로 알려 드릴게요
     blank:
       answer: recheck
@@ -2886,7 +2886,7 @@ situations:
     why: these same questions로 같은 질문이 반복된다는 걸 미리 알려 주면 환자가 이상하게 여기지 않아요. 반복 질문은 변화를 보려는 정상 절차예요.
     decoy: different questions
     distractorsKo:
-    - 질문은 이게 마지막이에요
+    - 이제 양팔을 들어 보세요
     - 곧 간단한 검사를 하나 할게요
     blank:
       answer: same
@@ -3051,12 +3051,12 @@ situations:
     - 눈을 크게 뜨고 계세요
     - 빛이 조금 눈부실 수 있어요
     blank:
-      answer: second
+      answer: still
       options:
-      - en: second
-      - en: day
-      - en: week
-      - en: month
+      - en: still
+      - en: up
+      - en: out
+      - en: back
   - en: Both pupils should be the same size.
     ko: 양쪽 동공은 크기가 같아야 해요.
     chunks:
@@ -3123,7 +3123,7 @@ situations:
     goal: 2
     tag: 의미 설명
     icon: bulb
-    why: could mean으로 가능성만 말해 환자를 겁주지 않으면서 중요성을 전해요. 동공 변화는 뇌압 상승·뇌 손상의 빠른 신호라 간호사가 바로 알려요.
+    why: could mean으로 가능성만 말해 환자를 겁주지 않으면서 중요성을 전해요. 동공 변화는 뇌압이 이미 많이 올랐다는 늦은 신호라, 의식 수준과 함께 보고 바로 알려요.
     decoy: nothing at all
     distractorsKo:
     - 눈이 흐릿해 보이면 바로 말씀해 주세요
@@ -3164,7 +3164,7 @@ situations:
       ok: true
     - who: 동료 간호사에게
       icon: speech
-      en: Pupils are equal, round, and reactive, 3 millimeters.
+      en: Pupils are PERRL, 3 millimeters on both sides.
       ok: true
     - who: 환자에게
       icon: me
@@ -3180,9 +3180,9 @@ situations:
     ko: 동공 검사 4문장 순서
     why: 빛을 비추겠다고 알리고, 그 검사의 목적과 기준을 설명한 뒤, 이상이 있으면 의사에게 알린다고 닫아요. 'This'·'they'·'that comparison'이 앞 줄을 가리켜 순서가 하나예요.
     lines:
-    - en: I'm shining a light in your eyes, so please look straight ahead.
+    - en: First, I'm shining a light in your eyes, so please look straight ahead.
       icon: magnify
-      ko: 눈에 빛을 비출 테니 정면을 봐 주세요
+      ko: 먼저 눈에 빛을 비출 테니 정면을 봐 주세요
       note: 안내
     - en: This checks how your pupils respond, so hold still for a second.
       icon: bulb
@@ -3192,7 +3192,7 @@ situations:
       icon: check
       ko: 이제 어떻게 반응했는지 견주어 보는데 둘 다 크기가 같아야 해요
       note: 비교
-    - en: Any difference in that comparison, I'll tell the doctor right away.
+    - en: If that comparison shows any difference, I'll tell the doctor right away.
       icon: speech
       ko: 그 비교에서 차이가 있으면 바로 의사에게 알릴게요
       note: 보고
@@ -3433,12 +3433,12 @@ situations:
     - 마지막으로 식사하신 게 언제예요?
     - 토하실 때 피가 섞여 있었나요?
     blank:
-      answer: times
+      answer: vomited
       options:
-      - en: times
-      - en: hours
-      - en: days
-      - en: weeks
+      - en: vomited
+      - en: coughed
+      - en: fainted
+      - en: choked
   - en: Is the nausea getting worse?
     ko: 오심이 점점 심해지고 있나요?
     chunks:
@@ -3533,15 +3533,15 @@ situations:
     why: each hour로 확인 간격을 알려 주면 환자가 자주 오는 이유를 이해해요. 증상을 시간별로 적어 두면 변화가 보여서 악화를 일찍 알아챌 수 있어요.
     decoy: each morning
     distractorsKo:
-    - 활력징후를 한 시간마다 잴게요
+    - 토할 것 같으면 이 봉투를 쓰세요
     - 한 시간 뒤에 CT를 찍을 거예요
     blank:
       answer: hour
       options:
       - en: hour
-      - en: day
-      - en: week
-      - en: month
+      - en: shift
+      - en: meal
+      - en: dose
   - en: Let me know right away if it gets worse.
     ko: 더 심해지면 바로 알려주세요.
     chunks:
@@ -3591,7 +3591,7 @@ situations:
       ok: true
     - who: 의사에게 보고
       icon: speech
-      en: He's vomited twice in the last hour.
+      en: He's had two episodes of emesis in the last hour.
       ok: true
     - who: 환자에게
       icon: me
@@ -3647,10 +3647,10 @@ situations:
     blank:
       answer: headache
       options:
-      - en: fever
+      - en: bruising
       - en: headache
-      - en: rash
-      - en: cough
+      - en: swelling
+      - en: soreness
   - en: Watch for confusion, drowsiness, or weakness.
     ko: 혼돈, 졸림, 무력감이 있는지 지켜봐 주세요.
     chunks:
@@ -3675,10 +3675,10 @@ situations:
     blank:
       answer: drowsiness
       options:
-      - en: thirst
-      - en: boredom
+      - en: soreness
+      - en: stiffness
       - en: drowsiness
-      - en: hunger
+      - en: bruising
   - en: Have someone stay with you tonight.
     ko: 오늘 밤은 누군가와 함께 계세요.
     chunks:
@@ -3701,7 +3701,7 @@ situations:
       answer: tonight
       options:
       - en: tomorrow
-      - en: yesterday
+      - en: all week
       - en: later
       - en: tonight
   - en: If the headache gets much worse, come back right away.
@@ -3727,9 +3727,9 @@ situations:
       answer: headache
       options:
       - en: headache
-      - en: cough
-      - en: rash
-      - en: fever
+      - en: bump
+      - en: bruise
+      - en: swelling
   - en: Wake him every few hours to check that he responds normally.
     ko: 몇 시간마다 깨워서 정상적으로 반응하는지 확인해 주세요.
     chunks:
@@ -3745,18 +3745,18 @@ situations:
     goal: 2
     tag: 깨우기 안내
     icon: bell
-    why: every few hours로 간격을, to check that…으로 목적을 밝혀요. 자는 동안 의식이 나빠지는 걸 놓치지 않기 위한 확인이라 깨웠을 때 평소처럼 반응하는지가 기준이에요.
+    why: every few hours로 간격을, to check that…으로 목적을 밝혀요. 모든 환자에게 하는 것은 아니고, 의사가 첫날 밤 확인하라고 할 때 깨워서 평소처럼 반응하는지를 봐요.
     decoy: Let him sleep
     distractorsKo:
     - 깨울 때는 이름을 불러 주세요
     - 깨어나면 시간과 장소를 물어봐 주세요
     blank:
-      answer: hours
+      answer: responds
       options:
-      - en: minutes
-      - en: hours
-      - en: days
-      - en: weeks
+      - en: sleeps
+      - en: responds
+      - en: eats
+      - en: walks
   - en: Any seizure or trouble waking up means you need to return.
     ko: 발작이 있거나 잘 깨어나지 못하면 다시 와야 해요.
     chunks:
@@ -3779,10 +3779,10 @@ situations:
     blank:
       answer: seizure
       options:
-      - en: cough
+      - en: bruise
       - en: cramp
       - en: seizure
-      - en: rash
+      - en: ache
   nuance:
   - kind: slider
     words:
@@ -3822,7 +3822,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 뇌진탕 귀가교육 4문장 순서
-    why: 함께 있을 사람을 정하고, 그 사람이 볼 증상을 알리고, 그 증상이면 돌아오라고 한 뒤, 적어 주겠다고 닫아요. 'That person'·'Any of those'·'those warning signs'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 함께 있을 사람을 정하고, 그 사람이 볼 증상을 알리고, 그 증상이면 돌아오라고 한 뒤, 돌아올 기준을 잊지 않게 적어 주겠다고 닫아요. 'That person'·'Any of those'·'when to come back'이 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Have someone stay with you tonight.
       icon: home
@@ -3836,9 +3836,9 @@ situations:
       icon: siren
       ko: 그중 하나라도 있으면 바로 다시 오셔야 해요
       note: 기준
-    - en: Before you go, I'll write down those warning signs for you.
+    - en: So you don't forget when to come back, I'll write it all down.
       icon: pencil
-      ko: 가시기 전에 그 경고 증상을 적어 드릴게요
+      ko: 언제 돌아와야 하는지 잊지 않도록 제가 다 적어 드릴게요
       note: 서면
 - title: 항응고제 복용 경미 두부외상
   sentences:
@@ -3938,15 +3938,15 @@ situations:
     why: make even small…으로 작은 부상조차를 강조해 CT를 권하는 이유를 뒷받침해요. 항응고제는 피가 굳는 것을 늦춰 작은 출혈도 멎기 어렵게 해요.
     decoy: more painful
     distractorsKo:
-    - 약 때문에 멍이 더 쉽게 들 수 있어요
+    - 약은 오늘 아침에도 드셨어요?
     - 약 이름은 차트에 적어 둘게요
     blank:
       answer: riskier
       options:
-      - en: lighter
+      - en: milder
       - en: riskier
       - en: safer
-      - en: easier
+      - en: slower
   - en: The scan checks for bleeding we can't see or feel yet.
     ko: 스캔은 아직 안 보이거나 느껴지지 않는 출혈까지 확인해요.
     chunks:
@@ -3970,8 +3970,8 @@ situations:
     blank:
       answer: bleeding
       options:
-      - en: fever
-      - en: allergy
+      - en: fractures
+      - en: swelling
       - en: bleeding
       - en: infection
   - en: Even without symptoms now, bleeding can show up hours later.
@@ -3989,7 +3989,7 @@ situations:
     tag: 지연 출혈
     icon: calendar
     why: Even without symptoms now로 지금 괜찮다는 안심을 먼저 인정한 뒤 hours later로 시간차를 알려요. 항응고제를 먹는 환자는 늦게 출혈이 생길 수 있어 증상이 없어도 주의해요.
-    decoy: right now
+    decoy: yesterday
     distractorsKo:
     - 오늘 밤은 가족과 함께 계세요
     - 두통이 심해지면 바로 알려 주세요
@@ -4024,7 +4024,7 @@ situations:
     scenes:
     - who: 차트 기록
       icon: board
-      en: Pt on anticoagulation (apixaban).
+      en: Pt anticoagulated on apixaban.
       ok: true
     - who: 의사에게 보고
       icon: speech
@@ -4154,12 +4154,12 @@ situations:
     - 평소에 혼자 걸어 다니셨어요?
     - 최근에 약이 바뀐 게 있나요?
     blank:
-      answer: usually
+      answer: differently
       options:
-      - en: seldom
-      - en: sometimes
-      - en: usually
-      - en: rarely
+      - en: better
+      - en: calmer
+      - en: differently
+      - en: quieter
   - en: Family often notices these changes before we do.
     ko: 이런 변화는 저희보다 가족이 먼저 알아채는 경우가 많아요.
     chunks:
@@ -4205,7 +4205,7 @@ situations:
     decoy: to treat
     distractorsKo:
     - CT 전에 금속 장신구를 빼 주세요
-    - CT 결과는 가족분께 먼저 알려 드릴게요
+    - CT실로 갈 때 같이 가셔도 돼요
     blank:
       answer: brain
       options:
@@ -4236,7 +4236,7 @@ situations:
     scenes:
     - who: 차트 기록
       icon: board
-      en: Increased confusion since fall 1 wk ago; r/o SDH.
+      en: Increased confusion since fall 1 wk ago; r/o subdural.
       ok: true
     - who: 의사에게 보고
       icon: speech
@@ -4249,12 +4249,12 @@ situations:
       fix: We're worried there may be slow bleeding around his brain, so we'll check with a CT scan.
     why: SDH, subdural hematoma는 의료진끼리의 말이에요. 가족에게는 뇌 주변에 천천히 피가 고였을 수 있다고 풀어서 말해요.
     word: subdural
-    ko: 경막하
+    ko: 경막하 혈종
   order:
     tag: 대화 흐름
     icon: compass
     ko: 고령 낙상 문진 4문장 순서
-    why: 넘어진 시점을 묻고, 그 이후의 혼돈 경과를 묻고, 출혈 가능성과 CT를 알린 뒤, 기다리는 동안 달라진 점을 알려 달라고 해요. 'that fall'·'like that'·'the scan'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 넘어진 시점을 묻고, 그 이후의 혼돈 경과를 묻고, 출혈 가능성과 CT를 알린 뒤, 결과와 상관없이 달라진 점을 알려 달라고 해요. 'that fall'·'like that'·'the scan'이 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: When exactly did he fall?
       icon: calendar
@@ -4268,9 +4268,9 @@ situations:
       icon: monitor
       ko: 서서히 진행되는 출혈이 그렇게 나타날 수 있어서 CT를 찍을게요
       note: 검사
-    - en: While we wait for the scan, tell us anything he's doing differently than usual.
+    - en: Whatever the scan shows, tell us right away if he seems different than usual.
       icon: me
-      ko: 스캔을 기다리는 동안 평소와 다르게 하는 게 있으면 알려 주세요
+      ko: 스캔 결과와 상관없이 평소와 다르게 보이면 바로 알려 주세요
       note: 당부
 - title: 소아 두부외상 부모 소통
   sentences:
@@ -4323,10 +4323,10 @@ situations:
     blank:
       answer: fussiness
       options:
-      - en: laughter
+      - en: teething
       - en: fussiness
-      - en: hunger
-      - en: thirst
+      - en: drooling
+      - en: sneezing
   - en: We'll examine him carefully to be sure.
     ko: 확실히 하기 위해 꼼꼼하게 진찰할게요.
     chunks:
@@ -4390,17 +4390,17 @@ situations:
     goal: 2
     tag: 졸림 확인
     icon: bell
-    why: if he seems로 아이가 그렇게 보이면이라 확신이 없어도 말하기 쉬워요. 평소보다 더 졸린 것은 소아 두부외상에서 부모가 가장 먼저 알아챌 수 있는 변화예요.
+    why: if he seems로 아이가 그렇게 보이면이라 확신이 없어도 말하기 쉬워요. 평소보다 더 졸린 것은 소아 두부외상에서 부모가 알아채기 쉬운 경고 신호예요.
     decoy: more cheerful
     distractorsKo:
-    - 아이가 잠들면 저희에게 알려 주세요
+    - 아이가 좋아하는 장난감이 있으면 주세요
     - 평소 잠드는 시간이 언제인지 알려 주세요
     blank:
       answer: sleepy
       options:
       - en: sleepy
-      - en: hungry
-      - en: thirsty
+      - en: playful
+      - en: active
       - en: chatty
   - en: Call us right away if he throws up or won't wake easily.
     ko: 토하거나 잘 깨지 않으면 바로 저희를 불러 주세요.
@@ -4534,8 +4534,8 @@ situations:
     blank:
       answer: alcohol
       options:
-      - en: fever
-      - en: hunger
+      - en: low sugar
+      - en: a seizure
       - en: alcohol
       - en: medicine
   - en: Please stay so we can recheck you.
@@ -4554,14 +4554,14 @@ situations:
     why: so we can으로 머무는 이유를 목적으로 붙이면 지시가 아니라 협조 요청으로 들려요. 술이 깨는 동안 상태가 달라지는지 다시 확인해야 해서 환자가 자리를 뜨지 않게 부탁해요.
     decoy: Please leave
     distractorsKo:
-    - 술이 깰 때까지 침대에서 쉬세요
+    - 물 한 잔 가져다 드릴게요
     - 가족분께도 연락해 드릴까요?
     blank:
       answer: recheck
       options:
       - en: discharge
-      - en: weigh
-      - en: bill
+      - en: admit
+      - en: transfer
       - en: recheck
   - en: Have you hit your head at all tonight?
     ko: 오늘 밤 머리를 부딪힌 적이 있나요?
@@ -4680,7 +4680,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 음주 두부외상 설명 4문장 순서
-    why: 마신 양을 묻고, 술이 징후를 가린다고 알리고, 그래서 머물러 달라고 하고, 깰 때까지 확인한다고 닫아요. 'Thanks'·'Because of that'·'That's why'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 마신 양을 묻고, 술이 징후를 가린다고 알리고, 그래서 머물러 달라고 하고, 그 재확인을 술이 깰 때까지 한다고 닫아요. 'Thanks'·'Because of that'·'those rechecks'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: How much did you drink tonight?
       icon: coffee
@@ -4694,9 +4694,9 @@ situations:
       icon: pushpin
       ko: 그래서 다시 확인할 수 있게 계셔 주세요
       note: 요청
-    - en: That's why we'll keep checking on you until you're clearly sober and steady.
+    - en: We'll do those rechecks until you're clearly sober and steady.
       icon: monitor
-      ko: 그래서 확실히 술이 깨고 안정될 때까지 계속 확인할게요
+      ko: 그 재확인은 확실히 술이 깨고 안정될 때까지 할게요
       note: 기준
 - title: 두개저 골절 징후
   sentences:
@@ -4715,7 +4715,7 @@ situations:
     goal: 1
     tag: 멍 확인
     icon: magnify
-    why: I see…로 눈에 보이는 걸 그대로 말하고 when으로 시작 시점을 물어요. 눈 주위 멍이 외상 직후가 아니라 몇 시간 뒤에 생기면 두개저 골절을 시사하는 소견이에요.
+    why: I see…로 눈에 보이는 걸 그대로 말하고 when으로 시작 시점을 물어요. 눈 주위 멍이 외상 직후가 아니라 몇 시간에서 하루 이틀 뒤에 양쪽으로 생기면 두개저 골절을 시사해요.
     decoy: dryness
     distractorsKo:
     - 눈 주위가 아프세요, 따가우세요?
@@ -4724,7 +4724,7 @@ situations:
       answer: bruising
       options:
       - en: redness
-      - en: itching
+      - en: scratches
       - en: bruising
       - en: swelling
   - en: Is there any clear fluid from your nose or ears?
@@ -4850,7 +4850,7 @@ situations:
     why: Let me check…로 허락을 구하는 형태라 환자가 귀 뒤를 보여 줄 준비를 해요. 귀 뒤 멍(Battle 징후)도 두개저 골절의 징후라 눈 주위와 함께 살펴봐요.
     decoy: inside your mouth
     distractorsKo:
-    - 귀 안도 불빛으로 살펴볼게요
+    - 목을 움직이면 아프세요?
     - 귀에서 소리가 들리는지 확인할게요
     blank:
       answer: behind
@@ -4888,7 +4888,7 @@ situations:
       ok: true
     - who: 의사에게 보고
       icon: speech
-      en: She has raccoon eyes—bruising around both eyes.
+      en: She has periorbital ecchymosis on both sides—raccoon eyes.
       ok: true
     - who: 환자에게
       icon: me
@@ -4923,7 +4923,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 두개저 골절 징후 4문장 순서
-    why: 눈 주위 멍을 보고, 그 멍과 함께 맑은 액체를 묻고, 그런 소견의 의미를 알린 뒤, 코를 풀지 말라고 해요. 'that bruising'·'like that'·'Because of that'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 눈 주위 멍을 보고, 그 멍과 함께 맑은 액체를 묻고, 그런 소견의 의미를 알린 뒤, 골절 가능성 때문에 코를 풀지 말라고 해요. 'that bruising'·'like that'·'a possible fracture'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: I see bruising around your eyes—when did that appear?
       icon: magnify
@@ -4937,9 +4937,9 @@ situations:
       icon: bulb
       ko: 그런 멍과 액체는 두개저 골절을 의미할 수 있어요
       note: 의미
-    - en: Because of that, please don't blow your nose.
+    - en: With a possible fracture, please don't blow your nose.
       icon: shield
-      ko: 그래서 코를 풀지 말아 주세요
+      ko: 골절일 수 있으니 코를 풀지 말아 주세요
       note: 주의
 - title: 뇌진탕후증후군
   sentences:
@@ -4964,8 +4964,8 @@ situations:
       answer: headaches
       options:
       - en: nosebleeds
-      - en: hiccups
-      - en: coughs
+      - en: neck pains
+      - en: earaches
       - en: headaches
   - en: Any trouble concentrating or sleeping?
     ko: 집중하거나 잠드는 데 어려움이 있으세요?
@@ -5039,10 +5039,10 @@ situations:
     blank:
       answer: dizzy
       options:
-      - en: thirsty
-      - en: hot
+      - en: sleepy
+      - en: numb
       - en: dizzy
-      - en: hungry
+      - en: nauseous
   - en: Most people improve slowly over several weeks.
     ko: 대부분은 몇 주에 걸쳐 서서히 나아져요.
     chunks:
@@ -5278,7 +5278,7 @@ situations:
       options:
       - en: doctor
       - en: pharmacist
-      - en: dietitian
+      - en: charge nurse
       - en: technician
   - en: He's much harder to wake than he was an hour ago.
     ko: 한 시간 전보다 훨씬 깨우기 힘들어졌어요.
@@ -5300,12 +5300,12 @@ situations:
     - 한 시간 전에는 먹은 걸 모두 토했어요
     - 한 시간 전보다 맥박이 느려졌어요
     blank:
-      answer: ago
+      answer: wake
       options:
-      - en: since
-      - en: ago
-      - en: later
-      - en: before
+      - en: feed
+      - en: wake
+      - en: move
+      - en: lift
   nuance:
   - kind: slider
     words:
@@ -5332,7 +5332,7 @@ situations:
       ok: true
     - who: 의사에게 보고
       icon: speech
-      en: He's much harder to arouse than he was an hour ago.
+      en: He's more somnolent and much harder to arouse than an hour ago.
       ok: true
     - who: 보호자에게
       icon: me
@@ -5590,7 +5590,7 @@ situations:
     goal: 1
     tag: 상황 알림
     icon: siren
-    why: suddenly much worse로 갑작스러운 악화를 짚고 we're acting now로 바로 대응한다고 알려 환자를 안심시켜요. 명료기 뒤 갑자기 심해지는 두통은 경막외혈종의 전형적인 악화 양상이에요.
+    why: suddenly much worse로 갑작스러운 악화를 짚고 we're acting now로 바로 대응한다고 알려 환자를 안심시켜요. 명료기 뒤 두통이 갑자기 심해지고 의식이 떨어지는 것이 경막외혈종의 전형적인 악화 양상이에요.
     decoy: is slowly
     distractorsKo:
     - 두통이 어느 쪽에서 더 심하세요?
@@ -5618,7 +5618,7 @@ situations:
     why: Stay with me는 정신을 놓지 말라는 말이고 keep talking은 구체적인 행동 지시예요. 환자가 대답하는 동안은 의식 수준을 계속 확인할 수 있어요.
     decoy: and close your eyes
     distractorsKo:
-    - 눈을 감지 말고 저를 봐 주세요
+    - 제 손을 꽉 쥐어 보세요
     - 숨을 크게 쉬어 보세요
     blank:
       answer: keep
@@ -5650,7 +5650,7 @@ situations:
       options:
       - en: neurosurgery
       - en: cardiology
-      - en: dermatology
+      - en: orthopedics
       - en: radiology
   - en: You felt fine minutes ago—now tell me what changed.
     ko: 몇 분 전만 해도 괜찮으셨는데—지금 뭐가 달라졌는지 말씀해 주세요.
@@ -5769,7 +5769,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 경막외혈종 악화 대응 4문장 순서
-    why: 갑작스러운 악화를 알리고, 말을 이어 가게 하며 상태를 설명하고, 그래서 신경외과를 부르며 수술이 필요하다고 해요. 'while we do'·'As you talk'·'Because of that'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 갑작스러운 악화를 알리고, 계속 말하게 하고, 환자의 말에서 출혈이 빠르게 쌓이는 양상을 읽은 뒤, 응급 CT와 신경외과 호출로 이어 가요. 'while we do'·'From what you're telling me'·'Because of that'이 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Your headache is suddenly much worse—we're acting now.
       icon: siren
@@ -5779,13 +5779,13 @@ situations:
       icon: speech
       ko: 저희가 하는 동안 정신 차리고 계속 말씀 나눠요
       note: 유지
-    - en: As you talk, this sudden change looks like bleeding building up fast.
+    - en: From what you're telling me, this looks like bleeding building up fast.
       icon: bulb
-      ko: 말씀하시는 동안 이 갑작스러운 변화는 출혈이 빠르게 쌓이는 것 같아요
+      ko: 말씀해 주시는 것을 보니 출혈이 빠르게 쌓이는 것 같아요
       note: 설명
-    - en: Because of that, we're calling neurosurgery now—we need surgery fast.
-      icon: scalpel
-      ko: 그래서 지금 신경외과를 부르고 있어요, 빨리 수술이 필요해요
+    - en: Because of that, we're getting an urgent scan and calling neurosurgery now.
+      icon: monitor
+      ko: 그래서 응급 CT를 찍고 지금 신경외과를 부르고 있어요
       note: 호출
 - title: 뇌탈출 임박(동공 산대)
   sentences:
@@ -5976,34 +5976,34 @@ situations:
       ok: true
     - who: 보호자에게
       icon: me
-      en: His right pupil is blown and nonreactive.
+      en: His right pupil is fixed, dilated, and nonreactive.
       ok: false
       fix: One of his pupils has become very large and isn't reacting to light—this is an emergency, and we're acting now.
-    why: blown pupil은 의료진끼리 쓰는 말이에요. 가족에게는 동공이 커지고 빛에 반응하지 않는다고 풀어서, 응급 상황이며 조치 중이라는 것을 함께 말해요.
+    why: nonreactive·fixed and dilated는 차트와 의료진끼리의 정확한 말이에요. 가족에게는 동공이 커지고 빛에 반응하지 않는다고 풀어서, 응급 상황이며 조치 중이라는 것을 함께 말해요.
     word: nonreactive
     ko: 반응이 없는
   order:
     tag: 대화 흐름
     icon: compass
     ko: 뇌탈출 임박 대응 4문장 순서
-    why: 응급을 선언하고, 다른 쪽 동공과 비교하게 하고, 그 차이의 의미를 알린 뒤, 그래서 신경외과에 전화하라고 해요. 'the other pupil'·'That difference'·'Because of that'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 응급을 선언하면 바로 신경외과를 부르고, 그동안 다른 쪽 동공과 비교해 그 차이를 전해요. 'Because of that'·'While you call'·'That difference'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: One pupil is blown—this is an emergency.
       icon: siren
       ko: 한쪽 동공이 산대됐어요, 응급 상황이에요
       note: 선언
-    - en: Check the other pupil now to compare both sides.
-      icon: magnify
-      ko: 지금 다른 쪽 동공을 확인해 양쪽을 비교해요
-      note: 비교
-    - en: That difference means the pressure in his brain is rising fast.
-      icon: bulb
-      ko: 그 차이는 뇌압이 빠르게 오르고 있다는 뜻이에요
-      note: 의미
     - en: Because of that, get neurosurgery on the phone right now.
       icon: speech
       ko: 그래서 지금 바로 신경외과에 전화 연결해 주세요
       note: 호출
+    - en: While you call, I'll check the other pupil and compare both sides.
+      icon: magnify
+      ko: 전화하는 동안 저는 다른 쪽 동공을 확인해 양쪽을 비교할게요
+      note: 비교
+    - en: That difference tells neurosurgery how fast the pressure is rising.
+      icon: bulb
+      ko: 그 차이가 신경외과에 뇌압이 얼마나 빠르게 오르는지 알려 줘요
+      note: 의미
 - title: 두부외상 삽관·환기
   sentences:
   - en: GCS is 6—we need to secure the airway.
@@ -6023,7 +6023,7 @@ situations:
     why: GCS 숫자로 상태를 밝히고 we need to로 필요성을 말해 팀이 이유를 알고 움직여요. GCS 8 이하면 스스로 기도를 지키지 못할 위험이 커서 기도 확보를 고려해요.
     decoy: to clean
     distractorsKo:
-    - 의사 선생님이 기도 확보를 하러 오세요
+    - 흡인기를 켜 두세요
     - 기관삽관 도구를 준비해 주세요
     blank:
       answer: airway
@@ -6125,7 +6125,7 @@ situations:
     decoy: Fluids take
     distractorsKo:
     - 출혈 조절이 그다음 우선순위예요
-    - 혈압 관리는 기도 확보 뒤에 해요
+    - 흡인 준비를 해 주세요
     blank:
       answer: Airway
       options:
@@ -6184,16 +6184,16 @@ situations:
       ok: true
     - who: 호흡치료사에게
       icon: speech
-      en: GCS is 6—we're intubating for airway protection.
+      en: GCS is 6—we've intubated for airway protection.
       ok: true
     - who: 보호자에게
       icon: me
-      en: We're intubating him for airway protection because his GCS is 6.
+      en: We've intubated him for airway protection because his GCS is 6.
       ok: false
-      fix: He isn't awake enough to protect his airway, so we're placing a breathing tube to help him breathe.
+      fix: He isn't awake enough to protect his airway, so we've placed a breathing tube to help him breathe.
     why: intubate, GCS는 의료진끼리의 말이에요. 가족에게는 스스로 숨길을 지킬 만큼 깨어 있지 않아 숨관을 넣는다고 풀어서 말해요.
-    word: intubating
-    ko: 삽관 중
+    word: intubated
+    ko: 삽관된
   order:
     tag: 대화 흐름
     icon: compass
@@ -6237,7 +6237,7 @@ situations:
     why: 두 조치를 and로 묶어 무엇을 하고 무엇을 하지 않는지 함께 알려요. 박힌 물체는 빼지 않고 고정해야 물체가 막고 있던 출혈이 커지는 걸 막을 수 있어요.
     decoy: and removing it
     distractorsKo:
-    - 물체 주위를 거즈로 감싸고 있어요
+    - 진통제를 곧 드릴게요
     - 머리를 움직이지 않게 잡아 드릴게요
     blank:
       answer: stabilizing
@@ -6320,8 +6320,8 @@ situations:
       options:
       - en: bleeding
       - en: pain
-      - en: itching
-      - en: cramping
+      - en: swelling
+      - en: bruising
   - en: The trauma team is already talking with neurosurgery.
     ko: 외상팀이 이미 신경외과와 이야기하고 있어요.
     chunks:
@@ -6342,10 +6342,10 @@ situations:
     blank:
       answer: trauma
       options:
-      - en: nutrition
+      - en: stroke
       - en: trauma
       - en: cardiac
-      - en: dialysis
+      - en: burn
   - en: Try not to touch or move near the object.
     ko: 물체 근처는 만지거나 움직이지 않도록 해 주세요.
     chunks:
@@ -6414,7 +6414,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 관통성 두부손상 설명 4문장 순서
-    why: 물체를 고정한다고 알리고, 머리를 가만히 하게 하고, 여기서는 빼지 않고 신경외과가 한다고 알린 뒤, 도착 전까지 건드리지 말라고 해요. 'it'·'Until they arrive'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 물체를 고정한다고 알리고, 머리를 가만히 하게 하고, 그렇게 가만히 둔 채 여기서는 빼지 않고 신경외과가 한다고 알린 뒤, 수술실에서 뺄 때까지 건드리지 말라고 해요. 'it'·'like that'·'Until it's removed'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: We're stabilizing the object and leaving it in place.
       icon: bandage
@@ -6424,13 +6424,13 @@ situations:
       icon: me
       ko: 그게 움직이지 않도록 머리를 최대한 가만히 유지해 주세요
       note: 자세
-    - en: We won't remove it here; neurosurgery will do that in the operating room.
+    - en: With your head still like that, we won't remove it here; neurosurgery will.
       icon: hospital
-      ko: 여기서는 빼지 않고 신경외과가 수술실에서 할 거예요
+      ko: 그렇게 머리를 가만히 두면 여기서는 빼지 않고 신경외과가 뺄 거예요
       note: 제거
-    - en: Until they arrive, try not to touch or move near it.
+    - en: Until it's removed in the operating room, try not to touch it.
       icon: shield
-      ko: 그분들이 올 때까지 그 근처는 만지거나 움직이지 않도록 해 주세요
+      ko: 수술실에서 뺄 때까지 만지지 않도록 해 주세요
       note: 당부
 - title: 두부외상 SBAR 인계
   sentences:
@@ -6551,7 +6551,7 @@ situations:
     decoy: weekly
     distractorsKo:
     - 심방세동으로 심장내과에 다니고 있습니다
-    - 심방세동 때문에 심박 조절약도 복용합니다
+    - 알려진 약물 알레르기는 없습니다
     blank:
       answer: atrial fibrillation
       options:
@@ -6667,8 +6667,8 @@ situations:
       answer: medication
       options:
       - en: fluids
-      - en: ice
-      - en: food
+      - en: oxygen
+      - en: sugar
       - en: medication
   - en: Protecting the airway and giving oxygen.
     ko: 기도를 보호하고 산소를 주고 있어요.
@@ -6694,7 +6694,7 @@ situations:
       - en: oxygen
       - en: fluids
       - en: medicine
-      - en: food
+      - en: blood
   - en: Watching closely for rising brain pressure.
     ko: 뇌압 상승이 있는지 유심히 지켜보고 있어요.
     chunks:
@@ -6740,12 +6740,12 @@ situations:
     - 발작이 시작된 시각은 방금 기록했어요
     - 발작은 온몸이 뻣뻣해지는 형태예요
     blank:
-      answer: lasted
+      answer: seizure
       options:
-      - en: ended
-      - en: paused
-      - en: lasted
-      - en: stopped
+      - en: tremor
+      - en: headache
+      - en: seizure
+      - en: shivering
   - en: His GCS is dropping while he's still seizing.
     ko: 발작이 계속되는 동안 GCS가 떨어지고 있어요.
     chunks:
@@ -6759,7 +6759,7 @@ situations:
     goal: 1
     tag: 의식 저하
     icon: chartup
-    why: while로 두 가지가 동시에 벌어지고 있다고 짚어요. 발작이 멈춘 뒤에도 의식이 돌아오지 않으면 다른 원인(출혈 등)을 의심해 평가해요.
+    why: while로 두 가지가 동시에 벌어지고 있다고 짚어요. 발작이 멈춘 뒤에도 의식이 예상보다 오래 돌아오지 않으면 출혈 같은 다른 원인을 의심해요.
     decoy: is rising
     distractorsKo:
     - 의식이 돌아오면 바로 알려 드릴게요
@@ -6785,7 +6785,7 @@ situations:
     goal: 2
     tag: 동시 관리
     icon: gear
-    why: at the same time으로 두 가지를 한꺼번에 한다고 말해요. 발작을 멈추는 일과 기도를 지키는 일은 우선순위가 같아서 동시에 진행해요.
+    why: at the same time으로 두 가지를 한꺼번에 한다고 말해요. 발작을 멈추는 약과 기도 관리는 팀이 역할을 나눠 동시에 진행해요.
     decoy: one after another
     distractorsKo:
     - 의사 선생님과 환자 상태를 같이 보고 있어요
@@ -6832,28 +6832,28 @@ situations:
       en: He's seizing, so we just pushed a benzo.
       ok: false
       fix: He's having a seizure, and we've given him medicine to stop it.
-    why: push a benzo는 의료진끼리의 줄임말이에요. 가족에게는 발작을 멈추는 약을 드렸다고 쉽게 말해요.
+    why: push a benzo는 의료진끼리의 줄임말이에요. 가족에게는 발작을 멈추는 약을 드렸다고 쉽게 말해요. 차트에는 줄임말 benzo 대신 benzodiazepine(또는 약 이름)으로 적어요.
     word: benzo
     ko: 벤조디아제핀
   order:
     tag: 대화 흐름
     icon: compass
     ko: 외상성 발작 대응 4문장 순서
-    why: 발작이 얼마나 이어졌는지 알리고, 그래서 약을 주고, 약이 듣는 동안 기도와 산소를 챙기며, 약이 들은 뒤 다시 평가한다고 해요. 'Because of that'·'While it takes effect'·'the medication'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 발작이 5분 가까이 이어져 멈추는 약을 쓰고, 그 내내 기도·산소를 지키며, 뇌압 신호를 함께 봐요. 'that long'·'the medication'·'all of that'이 앞 줄을 가리켜 순서가 하나예요.
     lines:
-    - en: The seizure has lasted almost two minutes now.
+    - en: The seizure has lasted almost five minutes now.
       icon: calendar
-      ko: 발작이 거의 2분째 계속되고 있어요
+      ko: 발작이 거의 5분째 계속되고 있어요
       note: 시간
-    - en: Because of that, we're giving medication to stop it.
+    - en: Because it's lasted that long, we're giving medication to stop it.
       icon: pill
-      ko: 그래서 멈추는 약을 주고 있어요
+      ko: 그렇게 오래 이어져서 멈추는 약을 주고 있어요
       note: 투약
-    - en: While it takes effect, we're protecting the airway and giving oxygen.
+    - en: Along with the medication, we keep protecting his airway and giving oxygen.
       icon: shield
-      ko: 약이 듣는 동안 기도를 보호하고 산소를 주고 있어요
+      ko: 약과 함께 계속 기도를 보호하고 산소를 주고 있어요
       note: 기도
-    - en: Once the medication has worked, we'll recheck his GCS and watch for rising brain pressure.
+    - en: Through all of that, we're watching his pupils and GCS for rising pressure.
       icon: monitor
-      ko: 약이 들으면 GCS를 다시 확인하고 뇌압 상승을 지켜볼게요
-      note: 재평가
+      ko: 그 모든 과정 내내 동공과 GCS로 뇌압 상승을 지켜보고 있어요
+      note: 감시

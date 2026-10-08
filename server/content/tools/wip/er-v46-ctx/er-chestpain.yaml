@@ -3686,10 +3686,10 @@ situations:
       ok: true
     - who: 환자에게
       icon: me
-      en: What was the time of symptom start relative to presentation?
+      en: Did symptoms start at rest or on exertion, and how long PTA?
       ok: false
-      fix: What time did the pain first start?
-    why: onset·PTA는 차트와 의료진끼리의 말이에요. 환자에게는 start처럼 쉬운 동사로 물어야 바로 대답해요.
+      fix: Were you resting or active when it started, and how long ago was that?
+    why: PTA(병원 도착 전)·on exertion 같은 말은 차트와 의료진끼리의 말이에요. 환자에게는 '쉬고 있었는지, 움직이고 있었는지, 얼마나 전인지'를 쉬운 말로 물어요.
     word: start
     ko: 시작되다
   order:
@@ -3884,7 +3884,7 @@ situations:
       icon: me
       en: You're a high priority, so you'll be roomed immediately — you're an ESI 2.
       ok: false
-      fix: I'm placing you in a higher priority so the doctor can see you sooner.
+      fix: I'm moving you up the list so the doctor can see you sooner.
     why: ESI 등급과 'roomed'는 의료진끼리의 말이에요. 환자에게는 우선순위를 올렸다는 것과 그 이유(더 빨리 진료)를 쉬운 말로 알려요.
     word: priority
     ko: 우선순위
@@ -4465,11 +4465,11 @@ situations:
     scenes:
     - who: 환자에게
       icon: me
-      en: It hurts when I press here, so it may be coming from your chest wall — but we'll still confirm with tests.
+      en: Does it hurt more when I press here?
       ok: true
     - who: 동료에게
       icon: monitor
-      en: Pain reproduces when I press on the sternum — could be costochondritis, but ECG and labs are still pending.
+      en: Pain reproduces when I press on the sternum — maybe costochondritis, but ECG's still pending.
       ok: true
     - who: 환자에게
       icon: me
@@ -4669,7 +4669,7 @@ situations:
       icon: me
       en: Possible STEMI — stat ECG, and I'm paging the attending.
       ok: false
-      fix: This could be your heart, so we're getting a quick heart test and the doctor right now.
+      fix: We're checking your heart right now, and the doctor is on the way.
     why: STEMI·stat·paging the attending은 의료진끼리의 말이에요. 환자에게는 같은 급함을 쉬운 말로 — 무엇을, 왜 서두르는지 알려 줘요.
     word: ECG
     ko: 심전도
@@ -5061,7 +5061,7 @@ situations:
       icon: me
       en: You're in normal sinus rhythm with no acute ST changes.
       ok: false
-      fix: Your heart rhythm looks normal so far, which is a good sign.
+      fix: Your heartbeat looks steady so far — that's good, but we're still checking.
     why: sinus rhythm·ST changes는 의료진 말이에요. 환자에게는 쉬운 말로 전하되 'so far'를 붙여 아직 검사가 끝나지 않았다는 것을 남겨요 — 첫 심전도가 정상이어도 심장 원인이 배제된 것은 아니에요.
     word: rhythm
     ko: 리듬
@@ -5255,7 +5255,7 @@ situations:
       icon: me
       en: You're minimizing your symptoms and leaving out details.
       ok: false
-      fix: You don't need to downplay it — every detail helps me help you.
+      fix: Please tell me everything you're feeling — even the small stuff matters.
     why: minimizing은 의료진이 환자의 태도를 전하거나 기록할 때 쓰는 말이에요. 환자 본인에게 하면 탓하는 것처럼 들려서, 말해도 괜찮다는 쪽으로 바꿔 말해요.
     word: detail
     ko: 세부사항
@@ -5663,7 +5663,7 @@ situations:
       icon: me
       en: Could you please point to the precise location of your discomfort?
       ok: false
-      fix: Pain here? Point for me, please.
+      fix: Show me — where does it hurt?
     why: 영어가 서툰 환자에게 길고 격식 있는 문장은 뜻이 같아도 전달되지 않아요. 짧은 단어와 몸짓으로 묻는 것이 이 자리에 맞아요.
     word: point
     ko: 가리키다
@@ -6646,7 +6646,7 @@ situations:
       icon: me
       en: Does the tearing pain radiate to your interscapular region?
       ok: false
-      fix: Is the pain tearing, and does it go into your back, between your shoulder blades?
+      fix: Does the pain go into your back, between your shoulder blades?
     why: radiate·interscapular(견갑골 사이)는 의료진 말이에요. 환자에게는 go into your back, between your shoulder blades처럼 몸의 위치를 쉬운 말로 물어요.
     word: tear
     ko: 찢어지다
@@ -7057,7 +7057,7 @@ situations:
       icon: me
       en: Your presentation is consistent with pericardial inflammation.
       ok: false
-      fix: This sharp pain that changes with position can point to inflammation around the heart.
+      fix: The lining around your heart may be irritated — that can cause this kind of sharp pain.
     why: presentation·pericarditis는 의료진끼리의 말이에요. 환자에게는 '심장 주위의 염증'처럼 무엇이 문제일 수 있는지 쉬운 말로 알려요.
     word: inflammation
     ko: 염증
@@ -7444,10 +7444,10 @@ situations:
       ok: true
     - who: 환자에게
       icon: me
-      en: You're decompensating, so I'm calling an escalation of care now.
+      en: You're decompensating, so I'm calling a rapid response.
       ok: false
-      fix: Stay with me — I'm calling for help right now.
-    why: decompensating·escalating은 의료진끼리의 말이에요. 의식이 흐려지는 환자에게는 짧고 쉬운 말로 곁에 있다는 것과 도움을 부른다는 것을 알려요.
+      fix: I'm right here with you — more help is coming right now.
+    why: decompensating·rapid response는 의료진끼리의 말이에요. 의식이 흐려지는 환자에게는 짧고 쉬운 말로 곁에 있다는 것과 도움이 온다는 것을 알려요.
     word: call
     ko: 부르다
   order:
@@ -7631,7 +7631,7 @@ situations:
     scenes:
     - who: 의사에게
       icon: monitor
-      en: Bed 3, NSTEMI — chest pain is back at seven out of ten; repeat ECG is done. Quick update — can you come see her?
+      en: Quick update on bed 3 — chest pain's back at 7/10, repeat ECG done.
       ok: true
     - who: 차트 기록
       icon: board
