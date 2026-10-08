@@ -65,6 +65,8 @@ context `word`가 세 장면(특히 `ok: false` 장면)에 나오는지, swap `k
 
 ## 고칠 것 (v46 필드)
 
+개수: why 7 · 빈칸 15문장 · decoy 2(+낮음 1) · distractorsKo 65문장(67줄) · order 7(그중 낮음 3) · context·swap 7 · tag·icon 3(낮음) = **106건**, 결정 11 보고 8건.
+
 ### why (7)
 - 16.1 · 뜻 풀이가 틀림 → "Stay with me는 의식이 흐려지는 환자에게 '정신 놓지 마세요'라고 붙잡는 말이에요. 뒤에 짧은 질문을 붙여 대답하는지로 의식을 확인해요."
 - 18.1 · 문장과 상관없는 말 → "gentle은 제세동 충격과 다르다는 걸 알리되 아프지 않다고 약속하지는 않는 말이에요. 경피 페이싱은 불편할 수 있어 진통·진정을 함께 준비해요."
@@ -72,7 +74,7 @@ context `word`가 세 장면(특히 `ok: false` 장면)에 나오는지, swap `k
 - 20.0 · 침상 번호를 앞세움 → "SBAR의 S는 지금 무슨 일인지를 한 문장으로 말하는 칸이에요. just converted로 방금 바뀌었다는 시점을 먼저 알려요. 실제 보고에서는 환자 이름으로 누구인지 밝혀요(침상 번호는 위치일 뿐이에요)."
 - 21.4 · 자석의 안전 한계가 빠짐 → "until로 자석이 임시 조치라는 점을 알려요. 자석을 대는 동안에는 ICD가 위험한 리듬도 치료하지 않아서, 체외 제세동 패드를 붙이고 모니터로 지켜봐요."
 - 7.5 · 기립 검사에서 혈압이 빠짐 → "…누웠을 때와 섰을 때의 맥박과 혈압을 비교하면 자세에 따라 어떻게 달라지는지 알 수 있어요."
-- 14.5 · `for the next while`을 표준 표현처럼 설명 → "for the next while은 '당분간'을 뜻해요(캐나다 쪽에서 더 흔하고, 미국에서는 for a while이 더 흔해요)." (문장은 결정 11)
+- 14.5 · `for the next while`을 표준 표현처럼 설명 → "for the next while은 정확한 시간을 정하지 않고 '당분간'이라고 말하는 표현이에요. 미국에서는 for a while이 더 흔해요." (문장은 결정 11)
 
 ### 빈칸 (blank)
 동떨어진 오답 묶음 `thirsty/hungry/sleepy` (같은 분야에서 틀린 말로):
@@ -182,11 +184,12 @@ context `word`가 세 장면(특히 `ok: false` 장면)에 나오는지, swap `k
 - 21.4 `자석이 충격을 더 세게 만들어요` → `기기 회사에 점검을 요청할게요` (`영구적으로 꺼요`는 "임시 vs 영구"를 가르는 좋은 오답이라 둠)
 - 21.5 `이제 곧 다시 충격이 올 거예요` → `충격이 또 오면 바로 알려 주세요`
 
-### order (6)
-- S21 L4 · 자석을 댔으니 안전하다는 말(사실 오류 1) → `While the magnet is on, the pads on your chest will protect you, and we're staying right here.` / ko `자석을 대는 동안에는 가슴의 패드가 지켜 줄 거예요, 저희가 여기 함께 있을게요`. why의 끝 구절도 "자석이 붙은 동안 패드로 지킨다고 안심시킵니다"로.
+### order (7)
+- S21 L4 · 자석을 댔으니 안전하다는 말(사실 오류 1) → `While the magnet is on, we're watching your monitor and staying right here.` / ko `자석을 대는 동안 저희가 모니터를 지켜보며 여기 함께 있을게요` (카드에 없는 패드를 새로 끌어들이지 않음). why의 끝 구절도 "자석이 붙은 동안 모니터로 지켜본다고 안심시킵니다"로.
   (S21 1↔2는 경계선: `I know that was frightening`은 L2 뒤에도 자연스럽다. L2를 `Those shocks mean your device is trying to fix a dangerous rhythm.`로 바꾸면 L1의 `that`을 받아 고정된다.)
 - S11 · 2↔3 교환이 자연스러움(`which is why I'm asking`은 오히려 L1 바로 뒤에 맞음) → L3 `That's a common reason, but stopping can bring the irregular rhythm back.` / ko `흔한 이유예요, 하지만 중단하면 불규칙한 리듬이 돌아올 수 있어요` (L2의 답을 받아 고정). why에서 "순서가 하나예요"의 근거를 `That's a common reason`으로.
 - S17 · 2↔3 교환이 자연스러움(`So we'll avoid … / That's because …`도 된다) → L3 `So we'll avoid those medicines and choose safer ones.` / ko `그래서 그런 약은 피하고 더 안전한 약을 고를 거예요` (`those medicines`가 L2의 `some common medicines`를 받음).
+- S13 · 2↔3 교환이 경계선(`…since the last check?` 뒤에 `When was the device last checked?`도 읽힘) → L3 `Since that check, have you had hiccup-like twitching or dizziness?` (`that check`가 L2의 답을 받아 고정). (낮음)
 - S0 L4 · `If it lasts that long`이 유발 요인을 긴 발작에만 묻는 조건이 됨 → `For each of those, does anything seem to bring it on?` / ko `그럴 때마다 무언가가 유발하는 것 같나요?`. why의 `'that long'`도 `'each of those'`로.
 - S3 L3 · `Both of those`가 카페인·감기약·다이어트 약 셋을 받음 → `All of those can speed up your heart, so let's cut back.` (낮음)
 - S14 L2 · `To check it, are you having …?`이 어색함 → `To check it, I need to ask: any chest pain, fainting, or trouble breathing?` (낮음)
@@ -220,4 +223,4 @@ context `word`가 세 장면(특히 `ok: false` 장면)에 나오는지, swap `k
 ## 종합
 
 사실 오류는 S21 order L4(자석을 대면 안전하다), 16.1 why, 20.0 why, 15.2의 모순, 18.1의 `painful`을 오답으로 가르치는 것 — 다섯 곳으로 좁다. 저작자가 꼽은 임상 사실 5개는 모두 맞다.
-가장 큰 덩어리는 `distractorsKo` 뒤집기(약 60문장)와 context `word`가 어색한 장면에 없는 것(6/7)이다. 위 목록을 반영하면 내보내도 된다.
+가장 큰 덩어리는 `distractorsKo` 뒤집기(약 60문장)와 `word` 선택이 어긋난 context 6/7이다(4개는 어색한 장면에 `word`가 없고, 2개는 어색함이 다른 말에서 온다). 위 목록을 반영하면 내보내도 된다.
