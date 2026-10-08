@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"net/http"
+	"strings"
 
 	"github.com/bingoring/forin/server/internal/domain/content"
 	"github.com/bingoring/forin/server/internal/domain/learning"
@@ -338,6 +339,80 @@ func (h *lessonHandler) confusedWord(w http.ResponseWriter, r *http.Request) {
 	// nothing struck out — the learner did not say it wrong, they did not know it.
 	id, err := h.review.CreateCard(r.Context(), ports.NewReviewCard{
 		UserID: uid, Source: "word", Front: word.Ko, Back: word.En, Note: word.Example,
+		ScenarioID: sit.ID, Context: rc,
+	})
+	if err != nil {
+		httpx.Error(w, http.StatusInternalServerError, "record failed")
+		return
+	}
+	httpx.JSON(w, http.StatusOK, confusedWordResp{CardID: id, Created: true})
+}
+
+type confusedSentenceReq struct {
+	En string `json:"en"`
+}
+
+// @Summary 헷갈린 문장을 교정노트에 넣는다 — 이 상황의 문장(또는 순서 배열 카드의 이은 줄)만, 한 문장은 한 번만
+// @Tags progress
+// @Security Bearer
+// @Param scenarioId path string true "시나리오 id"
+// @Param body body confusedSentenceReq true "STEP 2 문장장의 문장 en (순서 배열 카드는 네 줄을 공백으로 이은 것)"
+// @Success 200 {object} confusedWordResp
+// @Router /me/lesson/{scenarioId}/sentences/confused [post]
+func (h *lessonHandler) confusedSentence(w http.ResponseWriter, r *http.Request) {
+	uid, _ := UserID(r.Context())
+	var req confusedSentenceReq
+	if err := json.NewDecoder(r.Body).Decode(&req); err != nil || strings.TrimSpace(req.En) == "" {
+		httpx.Error(w, http.StatusBadRequest, "invalid body")
+		return
+	}
+	lesson, ok, err := h.build(r.Context(), uid, r.PathValue("scenarioId"))
+	if err != nil {
+		httpx.Error(w, http.StatusInternalServerError, "lookup failed")
+		return
+	}
+	// The sheet's line (lesson-fidelity-v46 SL:133): a sentence, or the order card's four
+	// lines run together. Front is its meaning, back the line, note the "왜?" — the
+	// suggestion face, as for a word: not said wrong, not known yet.
+	var front, back, note string
+	if ok {
+		for _, s := range lesson.Sentences {
+			if s.En == req.En {
+				front, back, note = s.Ko, s.En, s.Why
+				break
+			}
+		}
+		if back == "" && lesson.Order != nil {
+			lines := make([]string, len(lesson.Order.Lines))
+			for i, l := range lesson.Order.Lines {
+				lines[i] = l.En
+			}
+			if joined := strings.Join(lines, " "); joined == req.En {
+				front, back, note = lesson.Order.Ko, joined, lesson.Order.Why
+			}
+		}
+	}
+	if back == "" {
+		httpx.Error(w, http.StatusNotFound, "sentence not in this lesson")
+		return
+	}
+	if has, err := h.lessons.HasSentenceCard(r.Context(), uid, back); err != nil {
+		httpx.Error(w, http.StatusInternalServerError, "lookup failed")
+		return
+	} else if has {
+		httpx.JSON(w, http.StatusOK, confusedWordResp{})
+		return
+	}
+	sit := lesson.Situation
+	rc := progress.ReviewContext{Title: sit.Title, Situation: sit.Tagline}
+	if sit.Briefing != nil {
+		rc.Dept = sit.Briefing.Dept
+		if sit.Briefing.Brief != "" {
+			rc.Situation = sit.Briefing.Brief
+		}
+	}
+	id, err := h.review.CreateCard(r.Context(), ports.NewReviewCard{
+		UserID: uid, Source: "sentence", Front: front, Back: back, Note: note,
 		ScenarioID: sit.ID, Context: rc,
 	})
 	if err != nil {

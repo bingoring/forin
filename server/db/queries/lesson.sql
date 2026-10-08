@@ -18,3 +18,10 @@ SELECT EXISTS (
 SELECT EXISTS (
     SELECT 1 FROM review_cards WHERE user_id = $1 AND source = 'nuance' AND front = $2
 )::bool;
+
+-- name: HasSentenceCard :one
+-- A STEP 2 sentence the learner found confusing is filed once (lesson-fidelity-v46 R5):
+-- the card's back is the sentence.
+SELECT EXISTS (
+    SELECT 1 FROM review_cards WHERE user_id = $1 AND source = 'sentence' AND back = $2
+)::bool;

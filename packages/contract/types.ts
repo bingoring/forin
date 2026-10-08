@@ -1712,6 +1712,50 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/me/lesson/{scenarioId}/sentences/confused": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** 헷갈린 문장을 교정노트에 넣는다 — 이 상황의 문장(또는 순서 배열 카드의 이은 줄)만, 한 문장은 한 번만 */
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    /** @description 시나리오 id */
+                    scenarioId: string;
+                };
+                cookie?: never;
+            };
+            /** @description STEP 2 문장장의 문장 en (순서 배열 카드는 네 줄을 공백으로 이은 것) */
+            requestBody: {
+                content: {
+                    "application/json": components["schemas"]["internal_adapters_http.confusedSentenceReq"];
+                };
+            };
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["internal_adapters_http.confusedWordResp"];
+                    };
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/me/lesson/{scenarioId}/steps/{step}": {
         parameters: {
             query?: never;
@@ -3596,6 +3640,9 @@ export interface components {
         };
         "internal_adapters_http.choicesResp": {
             choices?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_conversation.Choice"][];
+        };
+        "internal_adapters_http.confusedSentenceReq": {
+            en?: string;
         };
         "internal_adapters_http.confusedWordResp": {
             cardId?: string;

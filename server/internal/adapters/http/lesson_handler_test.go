@@ -53,6 +53,10 @@ func (f *fakeLessonRepo) HasNuanceCard(_ context.Context, _, word string) (bool,
 	return f.carded["nuance:"+word], nil
 }
 
+func (f *fakeLessonRepo) HasSentenceCard(_ context.Context, _, en string) (bool, error) {
+	return f.carded["sentence:"+en], nil
+}
+
 type fakeLessonReview struct{ cards []ports.NewReviewCard }
 
 func (f *fakeLessonReview) CreateCard(_ context.Context, c ports.NewReviewCard) (string, error) {
@@ -435,5 +439,70 @@ func TestLesson_carriesCourseCoordinate(t *testing.T) {
 	none, _, _ := h.build(context.Background(), "u1", "SCN-ER-1")
 	if none.Course != nil {
 		t.Fatalf("no journey wired → no course, got %+v", none.Course)
+	}
+}
+
+func sentReq(scenarioID, body string) *http.Request { return feelReq(scenarioID, body) }
+
+// lesson-fidelity-v46 R5: 문장장의 '아직 헷갈려요'는 교정노트에 한 장 — 단어와 같은 규칙. 앞면 뜻, 뒷면 문장,
+// 메모 "왜?". 제안 면(sentence)이다 — 틀리게 말한 것이 아니다.
+func TestLesson_confusedSentenceFilesACard(t *testing.T) {
+	h, _ := lessonFixture("A2")
+	sc := h.content.(fakeLessonScenarios).s["SCN-ER-1"]
+	sc.Sentences[1].Ko, sc.Sentences[1].Why = "비 씨", "이유"
+	rec := httptest.NewRecorder()
+	h.confusedSentence(rec, sentReq("SCN-ER-1", `{"en":"b c"}`))
+	if rec.Code != http.StatusOK {
+		t.Fatalf("status %d: %s", rec.Code, rec.Body)
+	}
+	cards := h.review.(*fakeLessonReview).cards
+	if len(cards) != 1 {
+		t.Fatalf("cards %d, want 1", len(cards))
+	}
+	if c := cards[0]; c.Source != "sentence" || c.Front != "비 씨" || c.Back != "b c" || c.Note != "이유" || c.ScenarioID != "SCN-ER-1" {
+		t.Fatalf("card %+v", c)
+	}
+}
+
+// 순서 배열 카드의 해설 줄(네 줄을 이은 것, SL:133)도 이 상황의 것이라 한 장으로 남는다 — 앞면 카드의 ko.
+func TestLesson_confusedSentenceTakesTheOrderCard(t *testing.T) {
+	h, _ := lessonFixture("A2")
+	sc := h.content.(fakeLessonScenarios).s["SCN-ER-1"]
+	sc.Order = &content.SentenceOrder{Ko: "응대 순서", Why: "공감 먼저", Lines: []content.OrderLine{{En: "One."}, {En: "Two."}, {En: "Three."}, {En: "Four."}}}
+	rec := httptest.NewRecorder()
+	h.confusedSentence(rec, sentReq("SCN-ER-1", `{"en":"One. Two. Three. Four."}`))
+	cards := h.review.(*fakeLessonReview).cards
+	if rec.Code != http.StatusOK || len(cards) != 1 || cards[0].Front != "응대 순서" || cards[0].Back != "One. Two. Three. Four." || cards[0].Note != "공감 먼저" {
+		t.Fatalf("status %d, cards %+v", rec.Code, cards)
+	}
+}
+
+func TestLesson_confusedSentenceIsFiledOnce(t *testing.T) {
+	h, repo := lessonFixture("A2")
+	repo.carded = map[string]bool{"sentence:b c": true}
+	rec := httptest.NewRecorder()
+	h.confusedSentence(rec, sentReq("SCN-ER-1", `{"en":"b c"}`))
+	if rec.Code != http.StatusOK || len(h.review.(*fakeLessonReview).cards) != 0 {
+		t.Fatalf("status %d, cards %d — a sentence already noted must not be noted again", rec.Code, len(h.review.(*fakeLessonReview).cards))
+	}
+}
+
+// 이 상황의 문장만 — 다른 문장, 없는 상황, 빈 몸은 받지 않는다.
+func TestLesson_confusedSentenceOnlyThisLesson(t *testing.T) {
+	h, _ := lessonFixture("A2")
+	for _, c := range []struct {
+		scn, body string
+		want      int
+	}{
+		{"SCN-ER-1", `{"en":"not in this lesson"}`, http.StatusNotFound},
+		{"SCN-NOPE", `{"en":"b c"}`, http.StatusNotFound},
+		{"SCN-ER-1", `{}`, http.StatusBadRequest},
+		{"SCN-ER-1", `not json`, http.StatusBadRequest},
+	} {
+		rec := httptest.NewRecorder()
+		h.confusedSentence(rec, sentReq(c.scn, c.body))
+		if rec.Code != c.want || len(h.review.(*fakeLessonReview).cards) != 0 {
+			t.Fatalf("%s %s: status %d, want %d", c.scn, c.body, rec.Code, c.want)
+		}
 	}
 }

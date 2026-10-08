@@ -28,6 +28,26 @@ func (q *Queries) HasNuanceCard(ctx context.Context, arg HasNuanceCardParams) (b
 	return column_1, err
 }
 
+const hasSentenceCard = `-- name: HasSentenceCard :one
+SELECT EXISTS (
+    SELECT 1 FROM review_cards WHERE user_id = $1 AND source = 'sentence' AND back = $2
+)::bool
+`
+
+type HasSentenceCardParams struct {
+	UserID string `json:"user_id"`
+	Back   string `json:"back"`
+}
+
+// A STEP 2 sentence the learner found confusing is filed once (lesson-fidelity-v46 R5):
+// the card's back is the sentence.
+func (q *Queries) HasSentenceCard(ctx context.Context, arg HasSentenceCardParams) (bool, error) {
+	row := q.db.QueryRow(ctx, hasSentenceCard, arg.UserID, arg.Back)
+	var column_1 bool
+	err := row.Scan(&column_1)
+	return column_1, err
+}
+
 const hasWordCard = `-- name: HasWordCard :one
 SELECT EXISTS (
     SELECT 1 FROM review_cards WHERE user_id = $1 AND source = 'word' AND back = $2

@@ -59,3 +59,8 @@ func (r *LessonRepo) HasWordCard(ctx context.Context, userID, en string) (bool, 
 func (r *LessonRepo) HasNuanceCard(ctx context.Context, userID, word string) (bool, error) {
 	return r.q.HasNuanceCard(ctx, sqlc.HasNuanceCardParams{UserID: userID, Front: word})
 }
+
+// HasSentenceCard reports whether a confused-sentence card for this line already exists.
+func (r *LessonRepo) HasSentenceCard(ctx context.Context, userID, en string) (bool, error) {
+	return r.q.HasSentenceCard(ctx, sqlc.HasSentenceCardParams{UserID: userID, Back: en})
+}

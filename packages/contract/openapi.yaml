@@ -1160,6 +1160,11 @@ components:
           type: array
           uniqueItems: false
       type: object
+    internal_adapters_http.confusedSentenceReq:
+      properties:
+        en:
+          type: string
+      type: object
     internal_adapters_http.confusedWordResp:
       properties:
         cardId:
@@ -2706,6 +2711,36 @@ paths:
       security:
       - Bearer: []
       summary: 문장 릴의 감상 하나를 교정노트에 남긴다 — 정답 없음, 칩은 그 릴의 feels 중 하나, 한 단어는 한 번만
+      tags:
+      - progress
+  /me/lesson/{scenarioId}/sentences/confused:
+    post:
+      parameters:
+      - description: 시나리오 id
+        in: path
+        name: scenarioId
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/internal_adapters_http.confusedSentenceReq'
+              description: STEP 2 문장장의 문장 en (순서 배열 카드는 네 줄을 공백으로 이은 것)
+              summary: body
+        description: STEP 2 문장장의 문장 en (순서 배열 카드는 네 줄을 공백으로 이은 것)
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/internal_adapters_http.confusedWordResp'
+          description: OK
+      security:
+      - Bearer: []
+      summary: 헷갈린 문장을 교정노트에 넣는다 — 이 상황의 문장(또는 순서 배열 카드의 이은 줄)만, 한 문장은 한 번만
       tags:
       - progress
   /me/lesson/{scenarioId}/steps/{step}:

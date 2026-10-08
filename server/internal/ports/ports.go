@@ -500,6 +500,9 @@ type LessonRepo interface {
 	HasWordCard(ctx context.Context, userID, en string) (bool, error)
 	// HasNuanceCard reports whether a reel 감상 card for this word already exists (§11-8).
 	HasNuanceCard(ctx context.Context, userID, word string) (bool, error)
+	// HasSentenceCard reports whether a confused-sentence card for this line already exists
+	// (lesson-fidelity-v46 R5 — one card per sentence, as for a word).
+	HasSentenceCard(ctx context.Context, userID, en string) (bool, error)
 }
 
 // ContentSeeder ingests a validated content bundle (file-source or, later, a CMS).
