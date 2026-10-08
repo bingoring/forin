@@ -4385,10 +4385,10 @@ situations:
     blank:
       answer: covering
       options:
-      - en: painting
-      - en: bleeding
-      - en: covering
       - en: cooling
+      - en: soothing
+      - en: covering
+      - en: protecting
   - en: Tell me exactly where it hurts the most.
     ko: 가장 아픈 곳이 정확히 어딘지 말씀해 주세요.
     chunks:
@@ -4480,24 +4480,24 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 화상 초기 사정 4문장 순서
-    why: 경위를 묻고, 들은 뒤 범위와 깊이를 살피겠다고 알리고, 가장 아픈 곳을 묻고, 그 부위를 덮은 것을 조심스럽게 제거해요. 'Thanks'·'it'·'that spot'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 경위를 묻고, 고맙다고 한 뒤 덮은 것을 먼저 제거하고, 이제 범위와 깊이를 볼 수 있다고 알리고, 그 모든 부위 중 가장 아픈 곳을 물어요. 'Thanks, First'·'Now'·'Of all those areas'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: How did the burn happen, and what caused it?
       icon: magnify
       ko: 화상이 어떻게 생겼고 원인이 뭐였나요?
       note: 경위
-    - en: Thanks. I'm going to look at how large and deep it is.
-      icon: me
-      ko: 고마워요, 얼마나 넓고 깊은지 살펴볼게요
-      note: 안내
-    - en: Which spot hurts the most?
-      icon: pushpin
-      ko: 어느 곳이 가장 아프세요?
-      note: 통증
-    - en: Let me remove anything covering that spot gently.
+    - en: Thanks. First, let me gently remove anything covering the burn.
       icon: bandage
-      ko: 그 부위를 덮은 것을 부드럽게 제거할게요
+      ko: 고마워요, 먼저 화상을 덮은 것을 살살 제거할게요
       note: 제거
+    - en: Now I can look at how large and deep it is.
+      icon: magnify
+      ko: 이제 얼마나 넓고 깊은지 볼 수 있어요
+      note: 범위
+    - en: Of all those areas, which spot hurts the most?
+      icon: pushpin
+      ko: 그 모든 부위 중에서 어디가 가장 아프세요?
+      note: 통증
 - title: TBSA 9의 법칙 설명
   sentences:
   - en: We estimate how much skin is burned using body regions.
@@ -4524,10 +4524,10 @@ situations:
     blank:
       answer: skin
       options:
-      - en: water
+      - en: muscle
       - en: skin
-      - en: blood
       - en: hair
+      - en: fat
   - en: Each arm counts as about nine percent of your body.
     ko: 팔 하나는 몸의 약 9퍼센트로 쳐요.
     chunks:
@@ -4603,12 +4603,12 @@ situations:
     - 얼굴과 머리는 팔과 같은 값으로 쳐요
     - 환자 손바닥 크기가 약 1퍼센트예요
     blank:
-      answer: larger
+      answer: legs
       options:
-      - en: larger
-      - en: smaller
-      - en: softer
-      - en: separate
+      - en: legs
+      - en: hands
+      - en: face
+      - en: feet
   - en: We'll use this number to plan your fluids for today.
     ko: 이 수치로 오늘 드릴 수액을 계획할게요.
     chunks:
@@ -4632,10 +4632,10 @@ situations:
     blank:
       answer: number
       options:
-      - en: bed
+      - en: bag
       - en: number
-      - en: name
-      - en: room
+      - en: pump
+      - en: line
   nuance:
   - kind: pair
     words:
@@ -4660,7 +4660,7 @@ situations:
     scenes:
     - who: 차트 기록
       icon: board
-      en: Est. TBSA 27 percent, partial thickness, rule of nines.
+      en: Est. TBSA 27%, partial thickness, rule of nines.
       ok: true
     - who: 동료에게
       icon: monitor
@@ -4672,8 +4672,8 @@ situations:
       ok: false
       fix: About a quarter of your skin is burned — that's why you need a lot of fluid.
     why: TBSA(체표면적)는 의료진끼리의 약어예요. 환자에게는 '피부의 약 4분의 1'처럼 그림이 그려지는 말로, 왜 중요한지까지 붙여요.
-    word: percent
-    ko: 퍼센트
+    word: TBSA
+    ko: 화상 체표면적(TBSA)
   order:
     tag: 대화 흐름
     icon: compass
@@ -4684,7 +4684,7 @@ situations:
       icon: chartup
       ko: 신체 부위를 이용해 피부가 얼마나 탔는지 추정해요
       note: 추정
-    - en: In those regions, each arm counts as about nine percent.
+    - en: Of those regions, each arm counts as about nine percent.
       icon: magnify
       ko: 그 부위들 중 팔 하나는 약 9퍼센트로 쳐요
       note: 값
@@ -4804,12 +4804,12 @@ situations:
     - 아프면 바로 말씀해 주세요
     - 화상 부위를 깨끗하게 덮어 둘게요
     blank:
-      answer: still
+      answer: serious
       options:
-      - en: rarely
-      - en: still
-      - en: never
-      - en: hardly
+      - en: mild
+      - en: serious
+      - en: minor
+      - en: harmless
   - en: Sharp pain usually points to a shallow burn.
     ko: 날카로운 통증은 보통 얕은 화상을 뜻해요.
     chunks:
@@ -4948,7 +4948,7 @@ situations:
     why: so we don't…로 금지의 이유를 붙이면 환자가 얼음을 달라고 하지 않아요. 얼음은 혈관을 수축시키고 이미 다친 피부에 추가 손상을 줄 수 있어요.
     decoy: for the pain
     distractorsKo:
-    - 얼음 대신 마른 거즈로 덮을게요
+    - 다 헹군 뒤에 깨끗한 거즈로 덮을게요
     - 추우면 담요를 가져다 드릴게요
     blank:
       answer: avoid
@@ -5060,20 +5060,20 @@ situations:
     scenes:
     - who: 차트 기록
       icon: board
-      en: Pt shivering, reports feeling cold. Cooling stopped, warm blankets applied.
+      en: Pt shivering, reports feeling cold. Cooling stopped for hypothermia risk; warm blankets applied.
       ok: true
     - who: 동료에게
       icon: monitor
-      en: She's getting cold and shivery — let's stop the water and warm her up.
+      en: She's cold and shivery — let's stop the water before hypothermia sets in.
       ok: true
     - who: 환자에게
       icon: me
-      en: You're getting cold, which means you're developing hypothermia.
+      en: You're developing hypothermia.
       ok: false
-      fix: You feel cold because of the water, so I'll stop rinsing and get you a warm blanket.
+      fix: You're getting cold, so I'm going to stop the water and warm you up.
     why: 의료진끼리는 hypothermia(저체온)를 경계하지만, 환자에게 진단명을 던지면 겁만 줘요. 춥다는 사실과 지금 할 조치를 함께 말해요.
-    word: cold
-    ko: 추운
+    word: hypothermia
+    ko: 저체온
   order:
     tag: 대화 흐름
     icon: compass
@@ -5116,7 +5116,7 @@ situations:
     why: what caused와 how long을 한 문장에 묶어 원인과 노출 시간을 함께 물어요. 열이 닿은 시간이 길수록 화상이 깊어져서 시간이 중요한 정보예요.
     decoy: were you sleeping
     distractorsKo:
-    - 파상풍 주사는 언제 맞으셨어요?
+    - 불을 끄려고 뭘 하셨어요?
     - 처음에 응급처치를 하셨나요?
     blank:
       answer: exposed
@@ -5140,7 +5140,7 @@ situations:
     tag: 흡입 위험
     icon: bell
     why: enclosed, smoky 두 낱말로 흡입 손상 위험 단서를 한 번에 물어요. 밀폐된 공간의 연기는 기도와 폐 손상 위험을 높이는 대표 단서예요.
-    decoy: Did you stay in
+    decoy: Were you near
     distractorsKo:
     - 연기를 마신 뒤 기침이 났나요?
     - 불이 난 곳에서 직접 나오셨나요?
@@ -5173,8 +5173,8 @@ situations:
     blank:
       answer: scale
       options:
-      - en: map
-      - en: clock
+      - en: form
+      - en: test
       - en: scale
       - en: list
   - en: Was it hot water, fire, or a chemical?
@@ -5199,9 +5199,9 @@ situations:
     blank:
       answer: chemical
       options:
-      - en: cream
-      - en: medicine
-      - en: bandage
+      - en: wire
+      - en: spark
+      - en: heater
       - en: chemical
   - en: Breathing in smoke can hurt your lungs and airway.
     ko: 연기를 마시면 폐와 기도가 상할 수 있어요.
@@ -5315,7 +5315,7 @@ situations:
     blank:
       answer: mouth
       options:
-      - en: hands
+      - en: nose
       - en: mouth
       - en: ears
       - en: eyes
@@ -5399,9 +5399,9 @@ situations:
       answer: soot
       options:
       - en: soot
-      - en: pollen
-      - en: paint
-      - en: chalk
+      - en: blood
+      - en: vomit
+      - en: mucus
   - en: Tell me right away if breathing gets harder.
     ko: 숨쉬기가 더 힘들어지면 바로 말씀해 주세요.
     chunks:
@@ -5422,12 +5422,12 @@ situations:
     - 숨이 가쁠 때는 앉아서 쉬어 보세요
     - 목이 따갑거나 쉬면 알려 주세요
     blank:
-      answer: right away
+      answer: harder
       options:
-      - en: after lunch
-      - en: right away
-      - en: tomorrow
-      - en: next week
+      - en: easier
+      - en: harder
+      - en: deeper
+      - en: calmer
   nuance:
   - kind: slider
     words:
@@ -5463,20 +5463,20 @@ situations:
       black stuff: 뜻은 통하지만 보고로는 막연하다.
       dirt: 뜻이 달라져 흡입 손상의 단서가 사라진다.
     why: 입·코 주변 그을음(soot)은 흡입 손상의 대표 단서예요. 의사에게는 정확한 말로 보고해야 기도 평가가 빨라져요.
-    ko: 그의 입과 코 주변에 그을음이 보여요
+    ko: 환자 입과 코 주변에 그을음이 보여요
   order:
     tag: 대화 흐름
     icon: compass
     ko: 흡입 손상 의심 4문장 순서
-    why: 입안을 보겠다고 알리고, 본 소견을 말하고, 그 소견 때문에 증상을 묻고, 어떤 답이든 숨쉬기가 힘들어지면 바로 알리라고 닫아요. 'I see'·'Because of that'·'In any case'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 입안을 보겠다고 알리고, 안쪽에서 본 소견을 말하고, 그 소견 때문에 증상을 묻고, 어떤 답이든 숨쉬기가 힘들어지면 바로 알리라고 닫아요. 'Inside'·'Because of that'·'In any case'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: I need to look inside your mouth and throat.
       icon: magnify
       ko: 입과 목구멍 안을 살펴봐야 해요
       note: 안내
-    - en: I see soot around your mouth and nose.
+    - en: Inside, I can see soot at the back of your throat.
       icon: magnify
-      ko: 입과 코 주변에 그을음이 보이네요
+      ko: 입안 뒤쪽에 그을음이 보여요
       note: 소견
     - en: Because of that, has your voice changed or does it hurt to swallow?
       icon: speech
@@ -5571,9 +5571,9 @@ situations:
       answer: thirsty
       options:
       - en: thirsty
-      - en: itchy
-      - en: greasy
-      - en: sticky
+      - en: hungry
+      - en: dizzy
+      - en: hot
   - en: We calculate your fluids using your weight and burn size.
     ko: 체중과 화상 크기로 수액량을 계산해요.
     chunks:
@@ -5628,10 +5628,10 @@ situations:
     blank:
       answer: working
       options:
-      - en: expiring
-      - en: freezing
+      - en: leaking
+      - en: failing
       - en: working
-      - en: spilling
+      - en: pooling
   nuance:
   - kind: slider
     words:
@@ -5671,7 +5671,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 수액 소생 4문장 순서
-    why: 체액 손실과 보충을 알리고, 그 양을 계산하는 재료를 말하고, 양이 맞는지 소변으로 확인한다고 설명한 뒤, 결과가 뜻하는 바를 닫아요. 'the amount'·'To check that amount'·'a good result'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 체액 손실과 보충을 알리고, 그 양을 계산하는 재료를 말하고, 맞는 양인지 소변으로 확인한다고 설명한 뒤, 결과가 뜻하는 바를 닫아요. 'the amount'·"To check it's the right amount"·'a good result'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Large burns lose fluid, so we replace it carefully.
       icon: bulb
@@ -5681,9 +5681,9 @@ situations:
       icon: board
       ko: 체중과 화상 크기로 그 양을 계산해요
       note: 계산
-    - en: To check that amount, we measure your urine.
+    - en: To check it's the right amount, we measure your urine.
       icon: lab
-      ko: 그 양이 맞는지 소변량을 측정해요
+      ko: 맞는 양인지 확인하려고 소변량을 측정해요
       note: 측정
     - en: A good result tells us the fluid is working.
       icon: chartup
@@ -5712,9 +5712,9 @@ situations:
     blank:
       answer: name
       options:
-      - en: price
-      - en: age
-      - en: address
+      - en: smell
+      - en: color
+      - en: strength
       - en: name
   - en: We'll rinse it with lots of water, not neutralize it.
     ko: 중화시키지 않고 물을 많이 써서 헹굴게요.
@@ -5735,7 +5735,7 @@ situations:
     decoy: and scrub it
     distractorsKo:
     - 묻은 가루가 있으면 먼저 털어낼게요
-    - 물이 닿는 부위를 잘 봐 주세요
+    - 눈에도 들어갔으면 바로 씻을게요
     blank:
       answer: water
       options:
@@ -5764,12 +5764,12 @@ situations:
     - 물이 너무 차가우면 말씀해 주세요
     - 눈에 들어가지 않게 조심하세요
     blank:
-      answer: removes
+      answer: chemical
       options:
-      - en: spreads
-      - en: removes
-      - en: adds
-      - en: hides
+      - en: soot
+      - en: chemical
+      - en: oil
+      - en: blood
   - en: We'll take off any clothes with chemical on them.
     ko: 화학물질이 묻은 옷은 벗을게요.
     chunks:
@@ -5811,9 +5811,9 @@ situations:
     tag: 시간 안내
     icon: calendar
     why: at least로 최소 시간을 못 박아 중간에 멈추지 않게 해요. 화학 화상은 보통 20분 이상 씻고, 알칼리처럼 더 오래 씻어야 하는 물질도 있어요.
-    decoy: if possible
+    decoy: until it stings
     distractorsKo:
-    - 물이 닿지 않게 비닐로 덮어 드릴게요
+    - 헹군 물이 눈에 튀지 않게 할게요
     - 헹구는 중에 통증이 줄면 말씀해 주세요
     blank:
       answer: keep
@@ -5873,9 +5873,9 @@ situations:
       icon: bandage
       ko: 뭐든 그것이 묻은 옷은 벗을게요
       note: 옷
-    - en: Along with that, we'll rinse your skin with lots of water, not neutralize it.
+    - en: Along with that, we'll rinse your skin with lots of water, not neutralize the chemical.
       icon: shield
-      ko: 그와 함께 중화하지 않고 물을 많이 써서 헹굴게요
+      ko: 그와 함께 화학물질을 중화하지 않고 물을 많이 써서 피부를 헹굴게요
       note: 헹굼
     - en: Please keep rinsing for at least twenty minutes.
       icon: calendar
@@ -5900,7 +5900,7 @@ situations:
     goal: 1
     tag: 심장 감시
     icon: monitor
-    why: so로 이유와 조치를 이어요. 전류가 심장을 지나면 부정맥이 생길 수 있어서 전기 화상 환자는 대개 심전도 모니터를 붙여요.
+    why: so로 이유와 조치를 이어요. 전류가 심장을 지나면 부정맥이 생길 수 있어서 전기 손상 환자는 심전도를 찍고, 고전압·의식 소실·심전도 이상이 있으면 계속 모니터해요.
     decoy: so we're resting it
     distractorsKo:
     - 지금 통증이 얼마나 심한지 알려 주세요
@@ -5909,9 +5909,9 @@ situations:
       answer: heart
       options:
       - en: heart
-      - en: knee
-      - en: wrist
-      - en: tooth
+      - en: liver
+      - en: stomach
+      - en: bladder
   - en: Let me find the entry and exit wounds on your body.
     ko: 몸에서 입구와 출구 상처를 찾아볼게요.
     chunks:
@@ -5963,12 +5963,12 @@ situations:
     - 손가락이 저리면 말씀해 주세요
     - 전기가 닿았던 곳이 가장 아픈지 알려 주세요
     blank:
-      answer: Tell
+      answer: dizzy
       options:
-      - en: Ask
-      - en: Teach
-      - en: Tell
-      - en: Show
+      - en: hungry
+      - en: sleepy
+      - en: dizzy
+      - en: chilly
   - en: We'll put you on a heart monitor now.
     ko: 지금 심장 모니터를 달아드릴게요.
     chunks:
@@ -5982,18 +5982,18 @@ situations:
     goal: 1
     tag: 모니터 부착
     icon: monitor
-    why: now로 바로 시작한다고 알려 환자가 기다리지 않아요. 가슴에 붙인 전극이 심장 리듬을 계속 보여 줘서 이상이 생기면 바로 알 수 있어요.
+    why: now로 바로 시작한다고 알려 무엇이 붙는지 미리 알게 해요. 가슴에 붙인 전극이 심장 리듬을 계속 보여 줘서 이상이 생기면 바로 알 수 있어요.
     decoy: later today
     distractorsKo:
     - 모니터 소리가 나도 놀라지 마세요
     - 전극을 붙일 자리의 털을 조금 정리할게요
     blank:
-      answer: now
+      answer: monitor
       options:
-      - en: tomorrow
-      - en: yesterday
-      - en: last week
-      - en: now
+      - en: pump
+      - en: medicine
+      - en: drip
+      - en: monitor
   - en: Electricity can damage deep tissue that looks fine on the skin.
     ko: 전기는 피부는 멀쩡해 보여도 깊은 조직을 손상시킬 수 있어요.
     chunks:
@@ -6077,9 +6077,9 @@ situations:
       icon: magnify
       ko: 몸에서 입구와 출구 상처를 찾아볼게요
       note: 탐색
-    - en: Those wounds look small, but electricity can damage deep tissue.
+    - en: Even if those wounds look small, electricity can damage deep tissue.
       icon: bulb
-      ko: 그 상처는 작아 보여도 전기는 깊은 조직을 손상시킬 수 있어요
+      ko: 그 상처가 작아 보여도 전기는 깊은 조직을 손상시킬 수 있어요
       note: 설명
     - en: It can affect your heart too, so we'll put you on a monitor now.
       icon: monitor
@@ -6109,7 +6109,7 @@ situations:
     why: may로 가능성을 말해 겁주지 않으면서 위험은 숨기지 않아요. 팔을 빙 두른 전층 화상은 딱딱한 가피가 조여서 혈류가 막힐 수 있어요.
     decoy: and may spread
     distractorsKo:
-    - 화상이 팔 전체로 번질 수 있어요
+    - 팔이 많이 부을 수 있어요
     - 팔을 베개 위에 올려 둘게요
     blank:
       answer: cut off
@@ -6142,10 +6142,10 @@ situations:
     blank:
       answer: pulse
       options:
-      - en: height
-      - en: age
+      - en: color
+      - en: swelling
       - en: pulse
-      - en: weight
+      - en: temperature
   - en: We may need to release the pressure with a small cut.
     ko: 작은 절개로 압력을 풀어줘야 할 수도 있어요.
     chunks:
@@ -6162,10 +6162,10 @@ situations:
     goal: 2
     tag: 절개 가능성
     icon: scalpel
-    why: may need로 아직 결정이 아니라 가능성이라고 알려 줘요. 가피가 부풀어 오른 조직을 조일 때는 의사가 작은 절개로 압력을 풀어요.
+    why: may need로 아직 결정이 아니라 가능성이라고 알려 줘요. 가피가 붓는 조직을 조이면 의사가 가피를 따라 갈라 압력을 풀어요(가피절개).
     decoy: with a bandage
     distractorsKo:
-    - 붕대를 조금 느슨하게 다시 감을게요
+    - 손가락 색을 자주 볼게요
     - 손가락을 높이 올려 두세요
     blank:
       answer: release
@@ -6192,7 +6192,7 @@ situations:
     tag: 소견 전달
     icon: magnify
     why: to me로 제가 본 바라고 말해 환자가 놀라지 않게 해요. 창백하고 차가운 손가락은 혈류가 줄었다는 단서라 바로 의사에게 알려요.
-    decoy: right now
+    decoy: to the doctor
     distractorsKo:
     - 손가락에 감각이 돌아왔는지 볼게요
     - 손가락이 붓지 않게 높이 올릴게요
@@ -6342,12 +6342,12 @@ situations:
     - 화상 부위 사진을 찍어도 될까요?
     - 아이가 아파하지 않게 천천히 할게요
     blank:
-      answer: noting
+      answer: edges
       options:
-      - en: washing
-      - en: cooling
-      - en: wrapping
-      - en: noting
+      - en: color
+      - en: smell
+      - en: size
+      - en: edges
   - en: We check every child's injury to keep them safe.
     ko: 아이들을 안전하게 지키려고 모든 아이의 손상을 확인해요.
     chunks:
@@ -6363,7 +6363,7 @@ situations:
     - w-keep
     - w-safe
     goal: 2
-    tag: 전 아동 확인
+    tag: 모든 아이 확인
     icon: shield
     why: every child로 모든 아이에게 같은 절차라고 말해 부모가 의심받는다고 느끼지 않게 해요. 상처가 설명한 경위와 맞는지 보는 것은 아이를 보호하는 표준 절차예요.
     decoy: for the doctor
@@ -6374,9 +6374,9 @@ situations:
       answer: injury
       options:
       - en: injury
-      - en: toys
-      - en: shoes
-      - en: lunch
+      - en: vaccines
+      - en: weight
+      - en: diet
   - en: Was anyone else home when this happened?
     ko: 이 일이 생겼을 때 집에 다른 사람도 있었나요?
     chunks:
@@ -6397,12 +6397,12 @@ situations:
     - 아이가 평소에 이렇게 자주 다치나요?
     - 아이를 돌보는 분이 누구예요?
     blank:
-      answer: anyone
+      answer: home
       options:
-      - en: everything
-      - en: anyone
-      - en: something
-      - en: nothing
+      - en: hurt
+      - en: home
+      - en: awake
+      - en: burned
   - en: This burn pattern looks even on both sides, which we always check.
     ko: 이 화상 패턴이 양쪽이 고르게 보이는데, 저희가 항상 확인하는 부분이에요.
     chunks:
@@ -6475,7 +6475,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 소아 화상 확인 4문장 순서
-    why: 경위를 차근차근 묻고, 집에 누가 있었는지 묻고, 답이 상처 기록에 쓰인다고 알린 뒤, 모든 아이에게 하는 일이라고 닫아요. 'it'·'Your answers'·'That's routine'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 경위를 차근차근 묻고, 집에 누가 있었는지 묻고, 그 답과 함께 상처 모양을 기록한다고 알린 뒤, 모든 아이에게 하는 일이라고 닫아요. 'it'·'Alongside your answers'·"That's routine"이 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Can you walk me through exactly how the burn happened?
       icon: speech
@@ -6485,9 +6485,9 @@ situations:
       icon: speech
       ko: 고마워요, 그때 집에 다른 사람도 있었나요?
       note: 목격
-    - en: Your answers help me, because I'm noting the shape and edges of the burn.
+    - en: Alongside your answers, I'm noting the shape and edges of the burn.
       icon: pencil
-      ko: 답변이 도움이 돼요, 화상의 모양과 경계를 기록하고 있거든요
+      ko: 답변과 함께 화상의 모양과 경계를 기록하고 있어요
       note: 기록
     - en: That's routine, and it's how we keep every child safe.
       icon: shield
@@ -6512,7 +6512,7 @@ situations:
     goal: 1
     tag: 이유 설명
     icon: bulb
-    why: so로 이유를 먼저 대고 결과를 말해서 나이 탓이 아니라 피부의 특성이라는 점이 전해져요. 얇은 피부는 같은 열에도 더 깊이 손상될 수 있어요.
+    why: so로 이유를 먼저 대고 결과를 말해 겁주지 않고 설명해요. 나이가 들면 진피가 얇아져서 같은 열에도 더 깊이 손상될 수 있어요.
     decoy: on the surface
     distractorsKo:
     - 화상 깊이는 며칠 지나야 정확히 알 수 있어요
@@ -6566,7 +6566,7 @@ situations:
     goal: 2
     tag: 병력 문진
     icon: pill
-    why: medicines and health problems 두 가지를 함께 물어 한 번에 병력을 모아요. 혈액 희석제나 당뇨약 같은 복용약은 화상 치료와 수액 계획에 영향을 줘요.
+    why: medicines and health problems 두 가지를 함께 물어 한 번에 병력을 모아요. 혈액 희석제는 출혈과 수술 계획에, 당뇨약은 혈당 관리에 영향을 줘요.
     decoy: in your family
     distractorsKo:
     - 가족 중에 화상을 입은 분이 있나요?
@@ -6595,7 +6595,7 @@ situations:
     tag: 재확인
     icon: magnify
     why: more than once로 한 번 보고 끝내지 않는다고 미리 말해요. 화상 깊이는 처음엔 가늠하기 어렵고 시간이 지나며 드러나서 여러 번 다시 봐요.
-    decoy: just in case
+    decoy: only today
     distractorsKo:
     - 피부가 건조하면 알려 주세요
     - 화상 부위에 진통제를 먼저 드릴게요
@@ -6628,9 +6628,9 @@ situations:
     blank:
       answer: take
       options:
-      - en: sell
-      - en: wash
-      - en: borrow
+      - en: keep
+      - en: buy
+      - en: skip
       - en: take
   nuance:
   - kind: pair
@@ -6655,7 +6655,7 @@ situations:
     scenes:
     - who: 차트 기록
       icon: board
-      en: Elderly pt, thin skin; burn depth may be underestimated.
+      en: Older adult, thin skin; burn depth may be underestimated.
       ok: true
     - who: 동료에게
       icon: monitor
@@ -6665,8 +6665,8 @@ situations:
       icon: me
       en: Because you're elderly, your skin is too thin and burns go deeper.
       ok: false
-      fix: Skin gets thinner as we all get older, so we're taking extra care with your burn.
-    why: '''elderly''·''fragile''을 환자 본인에게 붙이면 늙고 약하다는 딱지처럼 들릴 수 있어요. 미국 의학 글쓰기에서도 ''older adults''를 권해요. 나이 드는 일을 ''우리''의 일로 말하고 이유는 사실대로 전해요.'
+      fix: Skin gets thinner as we all get older, so a burn can be deeper than it looks — we'll check it closely.
+    why: '''elderly''로 부르고 피부가 ''too thin''이라고 하면 환자 본인에게는 늙고 약하다는 딱지처럼 들려요. 미국 의학 글쓰기도 ''older adults''를 권해요. 나이 드는 일을 ''우리''의 일로 말하고 이유는 사실대로 전해요.'
     word: thin
     ko: 얇은
   order:
@@ -6802,9 +6802,9 @@ situations:
     blank:
       answer: move
       options:
+      - en: count
+      - en: touch
       - en: wash
-      - en: hide
-      - en: paint
       - en: move
   - en: A burn center has specialists trained in hand and face injuries.
     ko: 화상센터에는 손과 얼굴 손상을 다루는 전문의가 있어요.
@@ -6825,7 +6825,7 @@ situations:
     tag: 전문성 설명
     icon: hospital
     why: specialists trained in…으로 전원이 왜 이득인지 근거를 대요. 화상센터에는 손·얼굴 치료와 재활을 함께 하는 팀이 있어요.
-    decoy: in cooking
+    decoy: in eye and ear
     distractorsKo:
     - 센터까지 구급차로 이동할 거예요
     - 전원 전에 의무기록을 같이 보낼게요
@@ -6833,9 +6833,9 @@ situations:
       answer: specialists
       options:
       - en: specialists
-      - en: visitors
+      - en: volunteers
+      - en: interpreters
       - en: students
-      - en: cooks
   nuance:
   - kind: pair
     words:
@@ -6922,10 +6922,10 @@ situations:
     blank:
       answer: interpreter
       options:
-      - en: accountant
+      - en: aide
       - en: interpreter
-      - en: electrician
-      - en: engineer
+      - en: educator
+      - en: officer
   - en: What caused the burn—heat, chemical, or electricity?
     ko: 화상 원인이 뭐였나요—열이었나요, 화학물질이었나요, 전기였나요?
     chunks:
@@ -6975,12 +6975,12 @@ situations:
     - 그것이 옷 위로 닿았나요, 피부에 직접 닿았나요?
     - 닿은 직후에 물로 씻으셨나요?
     blank:
-      answer: long
+      answer: skin
       options:
-      - en: far
-      - en: tall
-      - en: wide
-      - en: long
+      - en: eye
+      - en: clothing
+      - en: hair
+      - en: skin
   - en: Do you have any allergies to medicine?
     ko: 약에 알레르기가 있으세요?
     chunks:
@@ -7000,12 +7000,12 @@ situations:
     - 지금 드시는 약이 있으세요?
     - 임신 중이거나 모유 수유 중이세요?
     blank:
-      answer: allergies
+      answer: medicine
       options:
-      - en: allergies
-      - en: questions
-      - en: insurance
-      - en: plans
+      - en: medicine
+      - en: food
+      - en: latex
+      - en: tape
   - en: The interpreter will repeat everything in your language.
     ko: 통역사가 모든 내용을 당신의 언어로 다시 말해줄 거예요.
     chunks:
@@ -7028,10 +7028,10 @@ situations:
     blank:
       answer: repeat
       options:
-      - en: hide
+      - en: summarize
       - en: repeat
-      - en: ignore
-      - en: delete
+      - en: shorten
+      - en: write
   nuance:
   - kind: pair
     words:
@@ -7377,10 +7377,10 @@ situations:
     blank:
       answer: calm
       options:
-      - en: angry
+      - en: flat
       - en: calm
+      - en: awake
       - en: busy
-      - en: loud
   - en: I hear a change in how you sound when you breathe.
     ko: 숨쉴 때 소리가 달라진 게 들려요.
     chunks:
@@ -7403,12 +7403,12 @@ situations:
     - 목이 쉬었는지 한번 말해 보세요
     - 숨을 들이쉴 때 가슴이 아프신가요?
     blank:
-      answer: hear
+      answer: breathe
       options:
-      - en: taste
-      - en: touch
-      - en: hear
-      - en: smell
+      - en: talk
+      - en: cough
+      - en: breathe
+      - en: swallow
   - en: We're getting everything ready to protect your airway.
     ko: 기도를 보호하려고 모든 준비를 하고 있어요.
     chunks:
@@ -7519,7 +7519,7 @@ situations:
     tag: 원인과 조치
     icon: bulb
     why: cause와 so로 원인에서 조치로 흐르는 인과 문장이에요. 큰 화상은 모세혈관에서 체액이 새어 혈압이 떨어질 수 있어서 처음 몇 시간 수액이 중요해요.
-    decoy: pills daily
+    decoy: fluids slowly
     distractorsKo:
     - 혈관을 하나 더 확보할게요
     - 수액이 따뜻한지 확인할게요
@@ -7555,10 +7555,10 @@ situations:
     blank:
       answer: working
       options:
-      - en: melting
+      - en: leaking
       - en: working
-      - en: spilling
-      - en: freezing
+      - en: dripping
+      - en: stopping
   - en: We're watching your pressure and heart rate closely.
     ko: 혈압과 심박수를 면밀히 지켜보고 있어요.
     chunks:
@@ -7583,10 +7583,10 @@ situations:
     blank:
       answer: pressure
       options:
-      - en: vision
-      - en: hearing
+      - en: temperature
+      - en: oxygen
       - en: pressure
-      - en: height
+      - en: weight
   - en: This is a large burn, so your body is losing a lot of fluid.
     ko: 넓은 화상이라 몸에서 체액이 많이 빠져나가고 있어요.
     chunks:
@@ -7633,7 +7633,7 @@ situations:
     goal: 2
     tag: 목표 안내
     icon: chartup
-    why: We want…to로 목표를 함께 정한 것처럼 말해 환자가 협력자가 돼요. 혈압과 맥박이 안정적이면 수액이 충분히 들어가고 있다는 뜻이에요.
+    why: We want…to로 목표를 함께 정한 것처럼 말해 환자가 협력자가 돼요. 혈압과 맥박도 보지만, 화상 수액이 충분한지는 주로 시간당 소변량으로 판단해요.
     decoy: to jump up
     distractorsKo:
     - 맥박이 빨라지면 바로 알려 드릴게요
@@ -7642,9 +7642,9 @@ situations:
       answer: stable
       options:
       - en: stable
-      - en: loud
-      - en: dark
-      - en: empty
+      - en: low
+      - en: high
+      - en: fast
   nuance:
   - kind: pair
     words:
@@ -7680,17 +7680,17 @@ situations:
       ok: true
     - who: 환자에게
       icon: me
-      en: Your urine output is 20 mL per hour, below goal.
+      en: Your urine output is only 20 mL an hour, under 0.5 per kilo.
       ok: false
       fix: You're not making as much urine as we want yet, so we may need to give you more fluid.
-    why: 소변량을 mL 같은 수치로만 읽어 주면 환자는 알아듣기 어려워요. 의료진끼리는 수치로 말하지만, 환자에게는 소변이 기대만큼 나오지 않는다는 사실과 다음 조치를 쉬운 말로 전해요.
+    why: mL·per kilo 같은 수치와 기준은 의료진끼리의 말이에요. 환자에게는 소변이 기대만큼 나오지 않는다는 사실과 다음 조치를 쉬운 말로 전해요.
     word: urine
     ko: 소변
   order:
     tag: 대화 흐름
     icon: compass
     ko: 대면적 화상 쇼크 4문장 순서
-    why: 큰 화상으로 체액이 빠진다고 알리고, 그래서 수액을 빨리 준다고 설명하고, 수액이 듣는지 소변량으로 보고, 혈압과 맥박도 함께 본다고 닫아요. 'That's why'·'the fluids'·'Along with that'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 큰 화상으로 체액이 빠진다고 알리고, 그래서 수액을 빨리 준다고 설명하고, 수액이 듣는지 소변량으로 보고, 그 수치 외에 혈압과 맥박도 본다고 닫아요. "That's why"·'the fluids'·'Besides that number'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: This is a large burn, so your body is losing a lot of fluid.
       icon: bulb
@@ -7704,9 +7704,9 @@ situations:
       icon: lab
       ko: 소변량이 수액이 효과가 있는지 알려줘요
       note: 소변
-    - en: Along with that, we're watching your pressure and heart rate closely.
+    - en: Besides that number, we're watching your pressure and heart rate closely.
       icon: monitor
-      ko: 그와 함께 혈압과 심박수를 면밀히 지켜보고 있어요
+      ko: 그 수치 외에도 혈압과 심박수를 면밀히 지켜보고 있어요
       note: 감시
 - title: 일산화탄소/시안 중독
   sentences:
@@ -7845,12 +7845,12 @@ situations:
     - 산소 수치는 계속 지켜볼게요
     - 가족에게 중독 사실을 알려 드릴게요
     blank:
-      answer: look
+      answer: oxygen
       options:
-      - en: smell
-      - en: look
-      - en: sound
-      - en: taste
+      - en: sugar
+      - en: oxygen
+      - en: potassium
+      - en: blood pressure
   nuance:
   - kind: slider
     words:
@@ -7955,18 +7955,18 @@ situations:
     goal: 2
     tag: 절개 안내
     icon: scalpel
-    why: We may…로 확정이 아닌 가능성으로 말해요. 조여든 가피에 작은 절개를 내면 가슴이 다시 부풀 수 있게 돼요.
+    why: We may…로 확정이 아닌 가능성으로 말해요. 가피절개는 조인 가피를 따라 길고 얕게 갈라서 가슴이 다시 부풀 수 있게 해요.
     decoy: to let it dry
     distractorsKo:
     - 절개 전에 통증 약을 충분히 드릴게요
     - 가슴 사진을 먼저 찍어 볼게요
     blank:
-      answer: small
+      answer: expand
       options:
-      - en: huge
-      - en: giant
-      - en: wide
-      - en: small
+      - en: shrink
+      - en: harden
+      - en: close
+      - en: expand
   - en: This will help your chest move so you can breathe.
     ko: 이렇게 하면 가슴이 움직여서 숨을 쉴 수 있어요.
     chunks:
@@ -8043,7 +8043,7 @@ situations:
     goal: 2
     tag: 절개 필요성
     icon: scalpel
-    why: may need…to로 필요하다면 하게 될 일을 목적과 함께 말해요. 환기가 나아지지 않으면 의사가 가슴 둘레의 가피를 절개해 호흡 운동을 되살려요.
+    why: may need…to로 필요하다면 하게 될 일을 목적과 함께 말해요. 환기가 나아지지 않으면 의사가 가슴 둘레의 가피를 길게 절개해 호흡 운동을 되살려요.
     decoy: to cover your chest
     distractorsKo:
     - 의사 선생님이 절개 부위를 설명해 드릴 거예요
@@ -8090,21 +8090,21 @@ situations:
       ok: false
       fix: The burned skin around your chest is tight, so it's hard for your chest to move when you breathe.
     why: '''circumferential eschar''·''chest wall excursion''은 의료진 말이에요. 환자에게는 탄 피부가 가슴을 조여 숨쉬기 힘들다는 것을 쉬운 말로 전해요.'
-    word: chest
-    ko: 가슴
+    word: circumferential
+    ko: 둘레를 감싼(원주형)
   order:
     tag: 대화 흐름
     icon: compass
     ko: 흉부 화상 4문장 순서
-    why: 화상이 숨쉬기를 조인다고 알리고, 그 때문에 깊은 숨이 힘들다고 공감하고, 그래서 절개가 필요할 수 있다고 하고, 그것이 가슴 움직임을 돕는다고 닫아요. 'That'·'That's why'·'This'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 화상이 숨쉬기를 조인다고 알리고, 가슴이 이렇게 조이면 깊은 숨이 힘들다고 공감하고, 그래서 절개가 필요할 수 있다고 하고, 그것이 가슴 움직임을 돕는다고 닫아요. 'this tight'·"That's why"·'This'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: The burn around your chest is restricting your breathing.
       icon: faceWorried
       ko: 가슴 주변 화상이 호흡을 제한하고 있어요
       note: 상태
-    - en: That makes it hard to take a full breath when your chest feels tight.
+    - en: I know it's hard to take a full breath with your chest this tight.
       icon: faceWorried
-      ko: 그래서 가슴이 조이면 숨을 완전히 들이쉬기 힘들어요
+      ko: 가슴이 이렇게 조이면 숨을 다 들이쉬기 힘드시죠
       note: 공감
     - en: That's why we may need small cuts to help your chest expand.
       icon: scalpel
@@ -8194,12 +8194,12 @@ situations:
     - 채혈은 몇 시간마다 반복할 거예요
     - 심장 모니터 소리가 나도 놀라지 마세요
     blank:
-      answer: heart
+      answer: potassium
       options:
-      - en: liver
-      - en: heart
-      - en: lung
-      - en: kidney
+      - en: sodium
+      - en: potassium
+      - en: sugar
+      - en: calcium
   - en: Your muscles broke down after the electrical burn.
     ko: 전기 화상 후에 근육이 파괴됐어요.
     chunks:
@@ -8247,7 +8247,7 @@ situations:
     why: extra로 평소보다 더 많이 준다고 알려 이유를 이해시켜요. 소변량을 충분히 유지해 신장을 지켜요.
     decoy: to keep your heart rate up
     distractorsKo:
-    - 소변 색은 이제 걱정 안 하셔도 돼요
+    - 신장 수치는 피검사로 따로 확인할게요
     - 수액이 들어갈 때 팔이 부을 수 있어요
     blank:
       answer: extra
@@ -8297,7 +8297,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 횡문근융해 4문장 순서
-    why: 어두운 소변이 근육 파괴일 수 있다고 알리고, 그래서 수액을 준다고 하고, 수액이 들어가는 동안 칼륨과 리듬을 보고, 필요하면 수액을 더한다고 닫아요. 'That's why'·'the fluids'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 어두운 소변이 근육 파괴일 수 있다고 알리고, 그래서 수액을 준다고 하고, 소변이 계속 어두우면 더 준다고 하고, 그 모든 과정 내내 칼륨과 리듬을 본다고 닫아요. "That's why"·'even more'·'Through all of it'이 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Dark urine can mean your muscles are breaking down.
       icon: lab
@@ -8307,14 +8307,14 @@ situations:
       icon: shield
       ko: 그래서 신장을 보호하려고 수액을 드리고 있어요
       note: 수액
-    - en: With the fluids running, we're watching your potassium and heart rhythm closely.
-      icon: monitor
-      ko: 수액이 들어가는 동안 칼륨과 심장 리듬을 면밀히 지켜보고 있어요
-      note: 감시
-    - en: We'll give extra fluids as needed to keep your kidneys safe.
+    - en: If your urine stays dark, we'll give even more.
       icon: shield
-      ko: 신장을 안전하게 지키려고 필요하면 수액을 더 드릴게요
+      ko: 소변이 계속 어두우면 더 드릴게요
       note: 증량
+    - en: Through all of it, we'll watch your potassium and heart rhythm closely.
+      icon: monitor
+      ko: 그 모든 과정 내내 칼륨과 심장 리듬을 면밀히 지켜볼게요
+      note: 감시
 - title: 화상 SBAR 인계
   sentences:
   - en: This is a 35-year-old with 30 percent TBSA burns.
@@ -8368,10 +8368,10 @@ situations:
     blank:
       answer: adequate
       options:
-      - en: painful
+      - en: low
       - en: adequate
       - en: absent
-      - en: bloody
+      - en: excessive
   - en: The airway is patent but we're watching for swelling.
     ko: 기도는 열려 있지만 부종을 지켜보고 있습니다.
     chunks:
@@ -8425,9 +8425,9 @@ situations:
     blank:
       answer: partial
       options:
+      - en: full
+      - en: split
       - en: total
-      - en: double
-      - en: hidden
       - en: partial
   - en: Vitals are stable and we're ready for transfer.
     ko: 활력징후는 안정적이고 이송 준비가 되었습니다.

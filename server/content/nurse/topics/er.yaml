@@ -64573,26 +64573,86 @@
       chunks: ["How did", "the burn", "happen", "and what caused it", "?"]
       words: [w-burn, w-happen, w-cause]
       goal: 1
+      tag: "병력 청취"
+      icon: "magnify"
+      why: "How did…happen으로 경위를, what caused로 원인을 한 문장에 묻는 열린 질문이에요. 끓는 물·불·화학물질·전기에 따라 응급 처치와 위험이 달라져요."
+      decoy: "last night"
+      distractorsKo: ["화상 부위에 뭘 바르셨어요?", "파상풍 주사는 언제 맞으셨어요?"]
+      blank:
+        answer: "caused"
+        options:
+          - {en: "caused"}
+          - {en: "healed"}
+          - {en: "cooled"}
+          - {en: "covered"}
     - en: "I'm going to look at how large and deep the burn is."
       ko: "화상이 얼마나 넓고 깊은지 살펴볼게요."
       chunks: ["I'm going to", "look at", "how large and deep", "the burn is", "."]
       words: [w-look, w-large, w-deep, w-burn]
       goal: 1
+      tag: "범위 사정"
+      icon: "magnify"
+      why: "I'm going to로 지금부터 볼 것을 미리 알려 환자가 놀라지 않게 해요. 화상은 넓이와 깊이를 둘 다 봐야 치료와 전원 여부가 정해져요."
+      decoy: "how recent"
+      distractorsKo: ["화상 부위 사진을 찍어 둘게요", "지금 통증이 어느 정도인지 알려 주세요"]
+      blank:
+        answer: "deep"
+        options:
+          - {en: "itchy"}
+          - {en: "deep"}
+          - {en: "hot"}
+          - {en: "wet"}
     - en: "Let me remove anything covering the burned skin gently."
       ko: "화상 입은 피부를 덮은 것을 부드럽게 제거할게요."
       chunks: ["Let me", "remove anything", "covering the burned skin", "gently", "."]
       words: [w-remove, w-cover, w-burn, w-skin, w-gently]
       goal: 2
+      tag: "덮은 것 제거"
+      icon: "bandage"
+      why: "Let me…는 허락을 구하는 말투라 아픈 부위를 건드리기 전에 동의를 얻어요. 부기가 오르면 반지나 시계가 조여 오기 때문에 일찍 풀어요."
+      decoy: "with tweezers"
+      distractorsKo: ["화상 부위를 깨끗한 천으로 덮을게요", "팔을 심장보다 높이 올려 주세요"]
+      blank:
+        answer: "covering"
+        options:
+          - {en: "cooling"}
+          - {en: "soothing"}
+          - {en: "covering"}
+          - {en: "protecting"}
     - en: "Tell me exactly where it hurts the most."
       ko: "가장 아픈 곳이 정확히 어딘지 말씀해 주세요."
       chunks: ["Tell me exactly", "where it hurts", "the most", "."]
       words: [w-tell, w-hurt]
       goal: 2
+      tag: "통증 위치"
+      icon: "pushpin"
+      why: "exactly로 정확한 지점을, the most로 가장 심한 곳 하나를 말하게 해요. 깊은 화상은 감각이 둔해서 가장 아픈 곳이 오히려 얕은 화상 부위일 때가 많아요."
+      decoy: "before today"
+      distractorsKo: ["통증은 0에서 10 중에 얼마나 되세요?", "언제부터 아프기 시작했나요?"]
+      blank:
+        answer: "hurts"
+        options:
+          - {en: "itches"}
+          - {en: "bleeds"}
+          - {en: "drips"}
+          - {en: "hurts"}
     - en: "I'll check your arm and chest for the size of the burn."
       ko: "화상 크기를 보려고 팔과 가슴을 확인할게요."
       chunks: ["I'll check", "your arm and chest", "for the size", "of the burn", "."]
       words: [w-check, w-chest, w-size, w-burn]
       goal: 1
+      tag: "범위 확인"
+      icon: "board"
+      why: "I'll check로 지금 하겠다고 약속하고 for the size of the burn으로 목적을 밝혀요. 부위별 면적을 더해서 전체 화상 크기를 어림해요."
+      decoy: "for the color"
+      distractorsKo: ["팔과 가슴에 붕대를 감을게요", "화상 정도를 사진으로 남길게요"]
+      blank:
+        answer: "check"
+        options:
+          - {en: "check"}
+          - {en: "wash"}
+          - {en: "wrap"}
+          - {en: "cool"}
   nuance:
   - kind: slider
     words:
@@ -64626,6 +64686,29 @@
       rip off: '''확 뜯어낸다''는 말이라 아픈 환자를 겁주고, 실제로 그렇게 하지도 않는다.'
       debride: 괴사 조직을 걷어 내는 처치를 가리키는 의료 용어라 뜻도 다르고 환자는 못 알아듣는다.
     why: 옷·장신구는 붓기 전에 살살 떼어 내요. 피부에 달라붙은 옷은 억지로 떼지 않고 둘레를 잘라 두는 것이 원칙이에요.
+    ko: 화상을 덮은 것을 살살 제거할게요
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 화상 초기 사정 4문장 순서
+    why: 경위를 묻고, 고맙다고 한 뒤 덮은 것을 먼저 제거하고, 이제 범위와 깊이를 볼 수 있다고 알리고, 그 모든 부위 중 가장 아픈 곳을 물어요. 'Thanks, First'·'Now'·'Of all those areas'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: How did the burn happen, and what caused it?
+      icon: magnify
+      ko: 화상이 어떻게 생겼고 원인이 뭐였나요?
+      note: 경위
+    - en: Thanks. First, let me gently remove anything covering the burn.
+      icon: bandage
+      ko: 고마워요, 먼저 화상을 덮은 것을 살살 제거할게요
+      note: 제거
+    - en: Now I can look at how large and deep it is.
+      icon: magnify
+      ko: 이제 얼마나 넓고 깊은지 볼 수 있어요
+      note: 범위
+    - en: Of all those areas, which spot hurts the most?
+      icon: pushpin
+      ko: 그 모든 부위 중에서 어디가 가장 아프세요?
+      note: 통증
 
 - theme: er-burn
   title: TBSA 9의 법칙 설명
@@ -64650,26 +64733,86 @@
       chunks: ["We estimate", "how much skin", "is burned", "using body regions", "."]
       words: [w-estimate, w-skin, w-burn, w-region]
       goal: 1
+      tag: "크기 추정"
+      icon: "chartup"
+      why: "We estimate로 정확한 측정이 아니라 어림이라고 알려 줘요. 화상 크기는 몸을 부위로 나눠 더해서 정하고, 처음 값은 나중에 다시 조정할 수 있어요."
+      decoy: "using a ruler"
+      distractorsKo: ["화상 깊이는 색과 감각으로 구분해요", "몸무게를 먼저 재 볼게요"]
+      blank:
+        answer: "skin"
+        options:
+          - {en: "muscle"}
+          - {en: "skin"}
+          - {en: "hair"}
+          - {en: "fat"}
     - en: "Each arm counts as about nine percent of your body."
       ko: "팔 하나는 몸의 약 9퍼센트로 쳐요."
       chunks: ["Each arm", "counts as", "about nine percent", "of your body", "."]
       words: [w-count, w-percent]
       goal: 1
+      tag: "9의 법칙"
+      icon: "chartup"
+      why: "Each …로 부위마다 같은 값을 매긴다고 말해요. 성인은 한쪽 팔이 약 9퍼센트라서 9의 법칙이라는 이름이 붙었어요."
+      decoy: "of your weight"
+      distractorsKo: ["다리 하나는 약 18퍼센트로 쳐요", "손바닥 하나는 약 1퍼센트로 쳐요"]
+      blank:
+        answer: "nine"
+        options:
+          - {en: "eighteen"}
+          - {en: "thirty-six"}
+          - {en: "nine"}
+          - {en: "four"}
     - en: "This helps us decide how much fluid you need."
       ko: "이건 수액이 얼마나 필요한지 결정하는 데 도움이 돼요."
       chunks: ["This helps us", "decide", "how much fluid", "you need", "."]
       words: [w-help, w-decide, w-fluid, w-need]
       goal: 2
+      tag: "이유 설명"
+      icon: "bulb"
+      why: "This는 앞에서 말한 크기 추정을 가리켜 왜 재는지 연결해 줘요. 화상이 클수록 처음 24시간에 필요한 수액이 많아서 크기가 수액 계산의 출발점이에요."
+      decoy: "how long"
+      distractorsKo: ["수액은 정맥으로 드릴 거예요", "회복까지 얼마나 걸릴지 알 수 있어요"]
+      blank:
+        answer: "fluid"
+        options:
+          - {en: "insulin"}
+          - {en: "cream"}
+          - {en: "antibiotic"}
+          - {en: "fluid"}
     - en: "Your legs and back count as larger areas than your arms."
       ko: "다리와 등은 팔보다 더 넓은 부위로 쳐요."
       chunks: ["Your legs and back", "count as", "larger areas", "than your arms", "."]
       words: [w-back, w-count, w-large]
       goal: 1
+      tag: "부위 비교"
+      icon: "magnify"
+      why: "than으로 팔과 견주면 왜 다리와 등이 더 큰 값인지 한눈에 들어와요. 성인에서 다리 하나와 몸통 앞면·뒷면이 각각 약 18퍼센트라 한쪽 팔(9퍼센트)의 두 배예요."
+      decoy: "than yesterday"
+      distractorsKo: ["얼굴과 머리는 팔과 같은 값으로 쳐요", "환자 손바닥 크기가 약 1퍼센트예요"]
+      blank:
+        answer: "legs"
+        options:
+          - {en: "legs"}
+          - {en: "hands"}
+          - {en: "face"}
+          - {en: "feet"}
     - en: "We'll use this number to plan your fluids for today."
       ko: "이 수치로 오늘 드릴 수액을 계획할게요."
       chunks: ["We'll use", "this number", "to plan your fluids", "for today", "."]
       words: [w-number, w-plan, w-fluid]
       goal: 2
+      tag: "수액 계획"
+      icon: "board"
+      why: "We'll use…to plan으로 이 수치가 다음 행동으로 이어진다고 말해요. 화상 수액은 Parkland 같은 공식에 체중과 화상 크기를 넣어 첫 24시간 양을 잡고, 소변량을 보며 조절해요."
+      decoy: "to plan your surgery"
+      distractorsKo: ["수치는 다시 재서 바뀔 수 있어요", "오늘 식사는 나중에 정할게요"]
+      blank:
+        answer: "number"
+        options:
+          - {en: "bag"}
+          - {en: "number"}
+          - {en: "pump"}
+          - {en: "line"}
   nuance:
   - kind: pair
     words:
@@ -64706,6 +64849,30 @@
       ok: false
       fix: About a quarter of your skin is burned — that's why you need a lot of fluid.
     why: TBSA(체표면적)는 의료진끼리의 약어예요. 환자에게는 '피부의 약 4분의 1'처럼 그림이 그려지는 말로, 왜 중요한지까지 붙여요.
+    word: TBSA
+    ko: 화상 체표면적(TBSA)
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 9의 법칙 설명 4문장 순서
+    why: 몸을 부위로 나눠 추정한다고 알리고, 그 부위별 값을 설명한 뒤, 불탄 부위를 더해 한 수치를 만들고, 그 수치가 수액량을 정한다고 닫아요. 'those regions'·'the burned regions'·'That number'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: We estimate how much skin is burned using body regions.
+      icon: chartup
+      ko: 신체 부위를 이용해 피부가 얼마나 탔는지 추정해요
+      note: 추정
+    - en: Of those regions, each arm counts as about nine percent.
+      icon: magnify
+      ko: 그 부위들 중 팔 하나는 약 9퍼센트로 쳐요
+      note: 값
+    - en: We add up the burned regions to get one number.
+      icon: board
+      ko: 불탄 부위를 더해서 하나의 수치를 얻어요
+      note: 합산
+    - en: That number tells us how much fluid you need.
+      icon: bulb
+      ko: 그 수치가 수액이 얼마나 필요한지 알려 줘요
+      note: 결과
 
 - theme: er-burn
   title: 화상 깊이 구분
@@ -64730,26 +64897,86 @@
       chunks: ["Deeper burns", "can actually feel", "numb", "because of nerve damage", "."]
       words: [w-deep, w-burn, w-feel, w-numb, w-nerve, w-damage]
       goal: 1
+      tag: "깊이 설명"
+      icon: "bulb"
+      why: "actually가 더 깊으면 더 아플 것이라는 기대를 뒤집어 줘요. 신경 말단까지 손상된 깊은 화상은 통증 감각이 사라질 수 있어요."
+      decoy: "because of the heat"
+      distractorsKo: ["깊이는 시간이 지나야 정확히 알 수 있어요", "화상 부위가 붓기 시작할 거예요"]
+      blank:
+        answer: "numb"
+        options:
+          - {en: "itchy"}
+          - {en: "sweaty"}
+          - {en: "numb"}
+          - {en: "sore"}
     - en: "The very painful areas are usually more shallow burns."
       ko: "많이 아픈 부위가 보통 더 얕은 화상이에요."
       chunks: ["The very painful areas", "are usually", "more shallow", "burns", "."]
       words: [w-painful, w-shallow, w-burn]
       goal: 1
+      tag: "통증 해석"
+      icon: "faceWorried"
+      why: "usually가 항상 그렇지는 않다는 여지를 남겨요. 통증을 느끼는 신경이 살아 있다는 뜻이라 대개 표층에 가까운 화상이에요."
+      decoy: "on the arm"
+      distractorsKo: ["통증이 심하면 진통제를 바로 드릴게요", "아픈 부위부터 먼저 덮어 드릴게요"]
+      blank:
+        answer: "painful"
+        options:
+          - {en: "numb"}
+          - {en: "dry"}
+          - {en: "dark"}
+          - {en: "painful"}
     - en: "I'm checking each area for depth and sensation."
       ko: "각 부위의 깊이와 감각을 확인하고 있어요."
       chunks: ["I'm checking", "each area", "for depth and sensation", "."]
       words: [w-check, w-area, w-depth, w-sensation]
       goal: 2
+      tag: "사정 안내"
+      icon: "magnify"
+      why: "I'm checking처럼 진행형으로 지금 하는 일을 알려요. 깊이와 감각을 함께 보는 건 깊은 화상일수록 감각이 둔해지기 때문이에요."
+      decoy: "for blisters"
+      distractorsKo: ["각 부위를 한 번씩 소독할게요", "깊이는 사진으로 남겨 둘게요"]
+      blank:
+        answer: "checking"
+        options:
+          - {en: "checking"}
+          - {en: "cooling"}
+          - {en: "covering"}
+          - {en: "cleaning"}
     - en: "A burn that doesn't hurt at all can still be serious."
       ko: "전혀 안 아픈 화상도 심각할 수 있어요."
       chunks: ["A burn", "that doesn't hurt", "at all", "can still be", "serious", "."]
       words: [w-burn, w-hurt, w-serious]
       goal: 2
+      tag: "오해 바로잡기"
+      icon: "bell"
+      why: "still이 안 아프니 괜찮겠지라는 생각을 정면으로 바로잡아요. 통증이 없는 화상은 신경까지 손상된 깊은 화상일 수 있어서 오히려 더 주의해요."
+      decoy: "for hours"
+      distractorsKo: ["아프면 바로 말씀해 주세요", "화상 부위를 깨끗하게 덮어 둘게요"]
+      blank:
+        answer: "serious"
+        options:
+          - {en: "mild"}
+          - {en: "serious"}
+          - {en: "minor"}
+          - {en: "harmless"}
     - en: "Sharp pain usually points to a shallow burn."
       ko: "날카로운 통증은 보통 얕은 화상을 뜻해요."
       chunks: ["Sharp pain", "usually points", "to a shallow burn", "."]
       words: [w-sharp, w-pain, w-shallow, w-burn]
       goal: 1
+      tag: "통증 해석"
+      icon: "bulb"
+      why: "points to처럼 단서가 가리키는 방향을 말해 단정하지 않아요. 날카로운 통증은 신경이 살아 있다는 신호라 얕은 화상 쪽을 가리켜요."
+      decoy: "comes from"
+      distractorsKo: ["얕은 화상은 보통 물집이 생겨요", "통증은 며칠 지나면 가라앉아요"]
+      blank:
+        answer: "shallow"
+        options:
+          - {en: "chemical"}
+          - {en: "full-thickness"}
+          - {en: "shallow"}
+          - {en: "deep"}
   nuance:
   - kind: slider
     words:
@@ -64786,6 +65013,29 @@
       burn is healing: 사실과 반대다. 감각이 없는 것은 오히려 화상이 깊다는 신호라 잘못 안심시킨다.
       nerve endings are destroyed: 틀린 말은 아니지만 '파괴됐다'는 말이 되돌릴 수 없다는 느낌으로 무겁게 들린다.
     why: 안 아픈 부위가 더 깊은 화상일 수 있다는 것은 환자가 가장 헷갈려하는 부분이에요. 거짓 안심 없이 쉬운 말로 설명해요.
+    ko: 이 부위가 감각이 없는 건 그곳 신경이 손상됐기 때문이에요
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 화상 깊이 구분 4문장 순서
+    why: 각 부위를 살피겠다고 알리고, 날카로운 통증이 있는지 묻고, 그 통증이 뜻하는 바를 설명한 뒤, 반대로 감각이 없는 부위를 짚어요. 'any spot'·'That kind of pain'·'But a numb spot'이 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: I'm checking each area for depth and sensation.
+      icon: magnify
+      ko: 각 부위의 깊이와 감각을 확인하고 있어요
+      note: 안내
+    - en: Tell me if any spot feels sharp and painful.
+      icon: bell
+      ko: 날카롭고 아픈 곳이 있으면 말씀해 주세요
+      note: 문진
+    - en: That kind of pain usually points to a shallow burn.
+      icon: bulb
+      ko: 그런 통증은 보통 얕은 화상을 뜻해요
+      note: 해석
+    - en: But a numb spot can be deeper, so I'll look at it again.
+      icon: faceWorried
+      ko: 하지만 감각이 없는 곳은 더 깊을 수 있어서 다시 볼게요
+      note: 주의
 
 - theme: er-burn
   title: 초기 냉각·세척
@@ -64810,26 +65060,86 @@
       chunks: ["We'll rinse", "the burn", "with cool water", "to stop the heat", "."]
       words: [w-rinse, w-burn, w-cool, w-water, w-stop, w-heat]
       goal: 1
+      tag: "냉각 안내"
+      icon: "bandage"
+      why: "to stop the heat로 왜 헹구는지 목적을 붙여요. 열이 피부에 남아 있으면 계속 깊이 타 들어가서 흐르는 시원한 물로 식혀요."
+      decoy: "to stop the bleeding"
+      distractorsKo: ["물집은 터뜨리지 않을 거예요", "통증 때문에 진통제를 먼저 드릴게요"]
+      blank:
+        answer: "cool"
+        options:
+          - {en: "hot"}
+          - {en: "soapy"}
+          - {en: "icy"}
+          - {en: "cool"}
     - en: "We avoid ice so we don't damage the skin further."
       ko: "피부가 더 손상되지 않게 얼음은 피해요."
       chunks: ["We avoid ice", "so we don't", "damage the skin", "further", "."]
       words: [w-avoid, w-ice, w-damage, w-skin, w-further]
       goal: 2
+      tag: "주의 사항"
+      icon: "shield"
+      why: "so we don't…로 금지의 이유를 붙이면 환자가 얼음을 달라고 하지 않아요. 얼음은 혈관을 수축시키고 이미 다친 피부에 추가 손상을 줄 수 있어요."
+      decoy: "for the pain"
+      distractorsKo: ["다 헹군 뒤에 깨끗한 거즈로 덮을게요", "추우면 담요를 가져다 드릴게요"]
+      blank:
+        answer: "avoid"
+        options:
+          - {en: "avoid"}
+          - {en: "add"}
+          - {en: "need"}
+          - {en: "prefer"}
     - en: "Tell me if you start feeling cold or shivery."
       ko: "춥거나 오한이 느껴지면 말씀해 주세요."
       chunks: ["Tell me", "if you start", "feeling cold", "or shivery", "."]
       words: [w-tell, w-feel, w-cold, w-shivery]
       goal: 2
+      tag: "증상 보고"
+      icon: "bell"
+      why: "if you start로 지금은 괜찮아도 시작되면 알려 달라고 미리 부탁해요. 넓은 화상을 오래 식히면 체온이 떨어질 수 있어서 오한이 첫 신호예요."
+      decoy: "when you finish"
+      distractorsKo: ["물 온도가 괜찮은지 알려 주세요", "통증이 심해지면 말씀해 주세요"]
+      blank:
+        answer: "shivery"
+        options:
+          - {en: "sweaty"}
+          - {en: "shivery"}
+          - {en: "itchy"}
+          - {en: "tight"}
     - en: "We'll keep rinsing for about twenty minutes."
       ko: "약 20분 동안 계속 헹굴게요."
       chunks: ["We'll keep rinsing", "for about", "twenty minutes", "."]
       words: [w-rinse]
       goal: 1
+      tag: "시간 안내"
+      icon: "calendar"
+      why: "for about으로 정확한 초가 아니라 대략 20분이라고 말해 환자가 기대를 맞춰요. 열화상은 보통 20분 정도 흐르는 물로 식히는 것이 권고돼요."
+      decoy: "until tomorrow"
+      distractorsKo: ["10분 뒤에 다시 와서 볼게요", "헹군 뒤에 붕대를 감을게요"]
+      blank:
+        answer: "twenty"
+        options:
+          - {en: "five"}
+          - {en: "sixty"}
+          - {en: "twenty"}
+          - {en: "two"}
     - en: "Cool water helps, but freezing cold water can hurt you more."
       ko: "시원한 물은 도움이 되지만, 너무 차가운 물은 오히려 해로울 수 있어요."
       chunks: ["Cool water helps,", "but freezing cold water", "can hurt you", "more", "."]
       words: [w-cool, w-water, w-help, w-cold, w-hurt]
       goal: 2
+      tag: "온도 주의"
+      icon: "faceWorried"
+      why: "but으로 도움이 되는 점과 해로운 점을 대비해요. 너무 찬물은 혈관을 수축시키고 체온을 떨어뜨려 오히려 손상과 저체온 위험을 키워요."
+      decoy: "can freeze you"
+      distractorsKo: ["물은 계속 흐르게 둘게요", "수돗물도 충분히 깨끗해요"]
+      blank:
+        answer: "hurt"
+        options:
+          - {en: "warm"}
+          - {en: "heal"}
+          - {en: "calm"}
+          - {en: "hurt"}
   nuance:
   - kind: slider
     words:
@@ -64852,11 +65162,11 @@
     scenes:
     - who: 차트 기록
       icon: board
-      en: Pt shivering, reports feeling cold. Cooling stopped, warm blankets applied.
+      en: Pt shivering, reports feeling cold. Cooling stopped for hypothermia risk; warm blankets applied.
       ok: true
     - who: 동료에게
       icon: monitor
-      en: She's getting cold and shivery — let's stop the water and warm her up.
+      en: She's cold and shivery — let's stop the water before hypothermia sets in.
       ok: true
     - who: 환자에게
       icon: me
@@ -64864,6 +65174,30 @@
       ok: false
       fix: You're getting cold, so I'm going to stop the water and warm you up.
     why: 의료진끼리는 hypothermia(저체온)를 경계하지만, 환자에게 진단명을 던지면 겁만 줘요. 춥다는 사실과 지금 할 조치를 함께 말해요.
+    word: hypothermia
+    ko: 저체온
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 초기 냉각 4문장 순서
+    why: 시원한 물로 헹군다고 알리고, 얼음은 쓰지 않는 이유를 말하고, 그래도 추위가 오면 알리게 한 뒤, 오한이 뜻하는 것과 조치를 닫아요. 'Cool is enough'·'Even so'·'A chill'이 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: We'll rinse the burn with cool water to stop the heat.
+      icon: bandage
+      ko: 열을 멈추려고 시원한 물로 헹굴게요
+      note: 냉각
+    - en: Cool is enough — ice would damage the skin further.
+      icon: shield
+      ko: 시원한 정도면 충분해요 — 얼음은 피부를 더 상하게 해요
+      note: 이유
+    - en: Even so, tell me if the water makes you feel cold or shivery.
+      icon: bell
+      ko: 그래도 물 때문에 춥거나 오한이 들면 말씀해 주세요
+      note: 보고
+    - en: A chill means the water is cooling you too much, so we'll warm you up.
+      icon: me
+      ko: 오한은 물이 너무 식힌다는 뜻이라 따뜻하게 해 드릴게요
+      note: 조치
 
 - theme: er-burn
   title: 통증 척도·기전 청취
@@ -64888,26 +65222,86 @@
       chunks: ["What caused", "the burn", "and how long", "were you exposed", "?"]
       words: [w-cause, w-burn, w-expose]
       goal: 1
+      tag: "노출 문진"
+      icon: "magnify"
+      why: "what caused와 how long을 한 문장에 묶어 원인과 노출 시간을 함께 물어요. 열이 닿은 시간이 길수록 화상이 깊어져서 시간이 중요한 정보예요."
+      decoy: "were you sleeping"
+      distractorsKo: ["불을 끄려고 뭘 하셨어요?", "처음에 응급처치를 하셨나요?"]
+      blank:
+        answer: "exposed"
+        options:
+          - {en: "exposed"}
+          - {en: "injured"}
+          - {en: "treated"}
+          - {en: "wrapped"}
     - en: "Were you in an enclosed, smoky space?"
       ko: "밀폐되고 연기 찬 공간에 있었나요?"
       chunks: ["Were you in", "an enclosed, smoky", "space", "?"]
       words: [w-enclose, w-smoky, w-space]
       goal: 1
+      tag: "흡입 위험"
+      icon: "bell"
+      why: "enclosed, smoky 두 낱말로 흡입 손상 위험 단서를 한 번에 물어요. 밀폐된 공간의 연기는 기도와 폐 손상 위험을 높이는 대표 단서예요."
+      decoy: "Were you near"
+      distractorsKo: ["연기를 마신 뒤 기침이 났나요?", "불이 난 곳에서 직접 나오셨나요?"]
+      blank:
+        answer: "smoky"
+        options:
+          - {en: "bright"}
+          - {en: "smoky"}
+          - {en: "noisy"}
+          - {en: "crowded"}
     - en: "On a scale of zero to ten, how bad is the pain?"
       ko: "0에서 10까지 중에 통증이 얼마나 심하세요?"
       chunks: ["On a scale", "of zero to ten,", "how bad is", "the pain", "?"]
       words: [w-scale, w-pain]
       goal: 2
+      tag: "통증 점수"
+      icon: "chartup"
+      why: "On a scale of로 범위를 먼저 알려 주면 환자가 숫자로 답하기 쉬워요. 같은 척도를 계속 쓰면 치료 뒤 통증이 줄었는지 비교할 수 있어요."
+      decoy: "of one to five"
+      distractorsKo: ["통증이 언제부터 시작됐나요?", "통증 때문에 움직이기 힘드세요?"]
+      blank:
+        answer: "scale"
+        options:
+          - {en: "form"}
+          - {en: "test"}
+          - {en: "scale"}
+          - {en: "list"}
     - en: "Was it hot water, fire, or a chemical?"
       ko: "뜨거운 물이었나요, 불이었나요, 아니면 화학물질이었나요?"
       chunks: ["Was it hot water,", "fire,", "or a chemical", "?"]
       words: [w-water, w-fire, w-chemical]
       goal: 1
+      tag: "원인 구분"
+      icon: "bulb"
+      why: "보기를 셋 주면 환자가 설명 대신 하나만 고르면 돼서 급할 때 빨라요. 열·불·화학물질은 처치가 달라서 처음에 가려야 해요."
+      decoy: "or a shock"
+      distractorsKo: ["몇 시쯤 화상을 입으셨나요?", "화상을 입은 곳이 어디였나요?"]
+      blank:
+        answer: "chemical"
+        options:
+          - {en: "wire"}
+          - {en: "spark"}
+          - {en: "heater"}
+          - {en: "chemical"}
     - en: "Breathing in smoke can hurt your lungs and airway."
       ko: "연기를 마시면 폐와 기도가 상할 수 있어요."
       chunks: ["Breathing in smoke", "can hurt", "your lungs", "and airway", "."]
       words: [w-smoke, w-hurt, w-lung, w-airway]
       goal: 2
+      tag: "위험 설명"
+      icon: "bell"
+      why: "can으로 가능성을 말해 겁주지 않으면서 이유를 알려요. 연기를 들이마시면 뜨거운 가스와 그을음이 기도를 붓게 하고 폐를 자극해요."
+      decoy: "your eyes and ears"
+      distractorsKo: ["산소 수치를 확인해 볼게요", "코와 입 주변을 살펴볼게요"]
+      blank:
+        answer: "hurt"
+        options:
+          - {en: "hurt"}
+          - {en: "warm"}
+          - {en: "clean"}
+          - {en: "cool"}
   nuance:
   - kind: slider
     words:
@@ -64942,6 +65336,30 @@
       ok: false
       fix: Were you in a closed room with smoke?
     why: '''enclosed-space exposure''는 흡입 손상 위험을 적는 의료진 말이에요. 환자에게는 닫힌 방에 연기와 함께 있었는지 그대로 물어야 정확한 답이 와요.'
+    word: enclosed
+    ko: 밀폐된
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 기전 청취 4문장 순서
+    why: 원인을 묻고, 연기 공간에 있었는지 묻고, 그 질문을 하는 이유를 설명한 뒤, 마지막으로 통증 점수를 물어요. 'it'·'That'·'Last question'이 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: Was it hot water, fire, or a chemical?
+      icon: bulb
+      ko: 뜨거운 물이었나요, 불이었나요, 화학물질이었나요?
+      note: 원인
+    - en: Were you in an enclosed, smoky space during it?
+      icon: bell
+      ko: 그때 밀폐되고 연기 찬 공간에 있었나요?
+      note: 연기
+    - en: That matters because breathing in smoke can hurt your lungs and airway.
+      icon: lab
+      ko: 연기를 마시면 폐와 기도가 상할 수 있어서 중요해요
+      note: 이유
+    - en: 'Last question: on a scale of zero to ten, how bad is the pain?'
+      icon: chartup
+      ko: 마지막 질문, 0에서 10까지 통증이 얼마나 심하세요?
+      note: 통증
 
 # ---- Lv2 ----
 - theme: er-burn
@@ -64967,26 +65385,86 @@
       chunks: ["I need to", "look inside", "your mouth", "and throat", "."]
       words: [w-need, w-look, w-mouth, w-throat]
       goal: 1
+      tag: "구강 확인"
+      icon: "magnify"
+      why: "I need to로 필요해서 하는 일이라고 알려 환자가 입을 벌리는 데 협조해요. 입과 목구멍의 그을음이나 붓기는 흡입 손상을 가늠하는 단서예요."
+      decoy: "look behind"
+      distractorsKo: ["산소 마스크를 씌워 드릴게요", "목 주변 부기를 만져 볼게요"]
+      blank:
+        answer: "mouth"
+        options:
+          - {en: "nose"}
+          - {en: "mouth"}
+          - {en: "ears"}
+          - {en: "eyes"}
     - en: "Has your voice changed or does it hurt to swallow?"
       ko: "목소리가 변했거나 삼킬 때 아프신가요?"
       chunks: ["Has your voice changed", "or does it", "hurt", "to swallow", "?"]
       words: [w-voice, w-change, w-hurt, w-swallow]
       goal: 1
+      tag: "증상 문진"
+      icon: "speech"
+      why: "voice changed와 hurt to swallow 두 가지를 한 번에 물어 하나만 해당해도 말하게 해요. 쉰 목소리와 삼킴 통증은 기도 부종이 시작됐다는 신호일 수 있어요."
+      decoy: "last night"
+      distractorsKo: ["기침할 때 검은 가래가 나오나요?", "숨 쉴 때 쌕쌕 소리가 나나요?"]
+      blank:
+        answer: "voice"
+        options:
+          - {en: "hearing"}
+          - {en: "mood"}
+          - {en: "voice"}
+          - {en: "vision"}
     - en: "We may need to protect your airway early to be safe."
       ko: "안전을 위해 기도를 미리 보호해야 할 수도 있어요."
       chunks: ["We may need to", "protect your airway", "early", "to be safe", "."]
       words: [w-need, w-protect, w-airway, w-early, w-safe]
       goal: 2
+      tag: "기도 계획"
+      icon: "shield"
+      why: "may need로 아직 확정이 아니라 가능성이라고 알려 환자가 놀라지 않게 해요. 흡입 손상은 기도 부종이 몇 시간에 걸쳐 진행해서 막히기 전에 관을 넣는 쪽이 안전해요."
+      decoy: "after the scan"
+      distractorsKo: ["산소 수치는 지금 괜찮아요", "목을 쉬게 하려고 말을 줄이세요"]
+      blank:
+        answer: "protect"
+        options:
+          - {en: "close"}
+          - {en: "block"}
+          - {en: "lower"}
+          - {en: "protect"}
     - en: "I see soot around your mouth and nose."
       ko: "입과 코 주변에 그을음이 보이네요."
       chunks: ["I see soot", "around your mouth", "and nose", "."]
       words: [w-soot, w-mouth, w-nose]
       goal: 1
+      tag: "소견 전달"
+      icon: "magnify"
+      why: "I see로 본 것을 그대로 말해 진단을 단정하지 않아요. 입·코 주변과 가래의 그을음은 뜨거운 연기를 들이마셨다는 단서예요."
+      decoy: "on your shoes"
+      distractorsKo: ["코와 입 주변이 붉게 부었어요", "코에 산소 튜브를 걸어 드릴게요"]
+      blank:
+        answer: "soot"
+        options:
+          - {en: "soot"}
+          - {en: "blood"}
+          - {en: "vomit"}
+          - {en: "mucus"}
     - en: "Tell me right away if breathing gets harder."
       ko: "숨쉬기가 더 힘들어지면 바로 말씀해 주세요."
       chunks: ["Tell me right away", "if breathing gets", "harder", "."]
       words: [w-tell, w-breathe, w-hard]
       goal: 2
+      tag: "즉시 보고"
+      icon: "bell"
+      why: "right away로 기다리지 말고 바로 알려 달라고 분명히 해요. 흡입 손상에서는 숨쉬기가 갑자기 어려워질 수 있어서 변화를 빨리 아는 것이 중요해요."
+      decoy: "when you can"
+      distractorsKo: ["숨이 가쁠 때는 앉아서 쉬어 보세요", "목이 따갑거나 쉬면 알려 주세요"]
+      blank:
+        answer: "harder"
+        options:
+          - {en: "easier"}
+          - {en: "harder"}
+          - {en: "deeper"}
+          - {en: "calmer"}
   nuance:
   - kind: slider
     words:
@@ -65022,6 +65500,29 @@
       black stuff: 뜻은 통하지만 보고로는 막연하다.
       dirt: 뜻이 달라져 흡입 손상의 단서가 사라진다.
     why: 입·코 주변 그을음(soot)은 흡입 손상의 대표 단서예요. 의사에게는 정확한 말로 보고해야 기도 평가가 빨라져요.
+    ko: 환자 입과 코 주변에 그을음이 보여요
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 흡입 손상 의심 4문장 순서
+    why: 입안을 보겠다고 알리고, 안쪽에서 본 소견을 말하고, 그 소견 때문에 증상을 묻고, 어떤 답이든 숨쉬기가 힘들어지면 바로 알리라고 닫아요. 'Inside'·'Because of that'·'In any case'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: I need to look inside your mouth and throat.
+      icon: magnify
+      ko: 입과 목구멍 안을 살펴봐야 해요
+      note: 안내
+    - en: Inside, I can see soot at the back of your throat.
+      icon: magnify
+      ko: 입안 뒤쪽에 그을음이 보여요
+      note: 소견
+    - en: Because of that, has your voice changed or does it hurt to swallow?
+      icon: speech
+      ko: 그래서 목소리가 변했거나 삼킬 때 아프신가요?
+      note: 문진
+    - en: In any case, tell me right away if breathing gets harder.
+      icon: bell
+      ko: 어떤 경우든 숨쉬기가 힘들어지면 바로 말씀해 주세요
+      note: 보고
 
 - theme: er-burn
   title: 대면적 화상 수액소생
@@ -65046,26 +65547,86 @@
       chunks: ["Large burns", "lose fluid,", "so we replace it", "carefully", "."]
       words: [w-large, w-burn, w-lose, w-fluid, w-replace, w-carefully]
       goal: 1
+      tag: "수액 이유"
+      icon: "bulb"
+      why: "so로 원인과 대책을 한 문장에 이어요. 큰 화상은 혈관에서 체액이 새어 나가 혈압이 떨어질 수 있어서 너무 적게도 많게도 주지 않으려고 신중히 보충해요."
+      decoy: "right away"
+      distractorsKo: ["정맥 주사를 두 군데 확보할게요", "체중을 먼저 재 볼게요"]
+      blank:
+        answer: "replace"
+        options:
+          - {en: "hide"}
+          - {en: "remove"}
+          - {en: "replace"}
+          - {en: "drain"}
     - en: "We measure your urine to make sure the fluids are enough."
       ko: "수액이 충분한지 확인하려고 소변량을 측정해요."
       chunks: ["We measure", "your urine", "to make sure", "the fluids are enough", "."]
       words: [w-measure, w-urine, w-fluid, w-enough]
       goal: 2
+      tag: "소변량 측정"
+      icon: "lab"
+      why: "to make sure로 측정의 목적을 밝혀요. 소변량은 수액이 장기로 충분히 가고 있는지 알려 주는 가장 쉬운 지표예요."
+      decoy: "right now"
+      distractorsKo: ["소변 색이 어두워지면 알려 주세요", "피검사로 신장 수치도 볼게요"]
+      blank:
+        answer: "urine"
+        options:
+          - {en: "sweat"}
+          - {en: "saliva"}
+          - {en: "tears"}
+          - {en: "urine"}
     - en: "Tell me if you feel thirsty or very tired."
       ko: "목이 마르거나 많이 피곤하면 말씀해 주세요."
       chunks: ["Tell me", "if you feel", "thirsty", "or very tired", "."]
       words: [w-tell, w-feel, w-thirsty, w-tired]
       goal: 2
+      tag: "증상 보고"
+      icon: "bell"
+      why: "if you feel로 증상이 느껴지면 말해 달라고 환자에게 역할을 줘요. 갈증과 심한 피로는 체액이 모자라다는 몸의 신호일 수 있어요."
+      decoy: "after you drink"
+      distractorsKo: ["소변이 마려우면 알려 주세요", "어지러우면 눕혀 드릴게요"]
+      blank:
+        answer: "thirsty"
+        options:
+          - {en: "thirsty"}
+          - {en: "hungry"}
+          - {en: "dizzy"}
+          - {en: "hot"}
     - en: "We calculate your fluids using your weight and burn size."
       ko: "체중과 화상 크기로 수액량을 계산해요."
       chunks: ["We calculate", "your fluids", "using your weight", "and burn size", "."]
       words: [w-calculate, w-fluid, w-weight, w-burn, w-size]
       goal: 1
+      tag: "수액 계산"
+      icon: "board"
+      why: "using으로 계산에 쓰는 두 재료를 분명히 말해요. 화상 수액은 체중과 화상 면적을 공식에 넣어 첫 24시간 양을 정해요."
+      decoy: "using your age"
+      distractorsKo: ["화상 크기는 나중에 다시 확인할게요", "수액 속도는 소변량을 보고 조절할게요"]
+      blank:
+        answer: "weight"
+        options:
+          - {en: "insurance"}
+          - {en: "weight"}
+          - {en: "height"}
+          - {en: "birthday"}
     - en: "A good urine amount tells us the fluid is working."
       ko: "소변량이 적절하면 수액이 잘 듣고 있다는 뜻이에요."
       chunks: ["A good urine amount", "tells us", "the fluid", "is working", "."]
       words: [w-urine, w-amount, w-tell, w-fluid, w-work]
       goal: 2
+      tag: "결과 해석"
+      icon: "chartup"
+      why: "tells us로 수치가 알려 주는 것을 말해 줘요. 소변량이 목표 범위면 장기로 가는 혈류가 충분하다는 뜻이라 수액 속도를 조절하는 기준이 돼요."
+      decoy: "is leaking"
+      distractorsKo: ["소변량은 한 시간마다 확인할게요", "소변 색도 함께 볼게요"]
+      blank:
+        answer: "working"
+        options:
+          - {en: "leaking"}
+          - {en: "failing"}
+          - {en: "working"}
+          - {en: "pooling"}
   nuance:
   - kind: slider
     words:
@@ -65100,6 +65661,29 @@
       cause capillary leak: 정확한 기전이지만 의료진 말이라 환자에게는 어렵다.
       dry you out: 피부가 건조해진다거나 물만 마시면 된다는 식으로 오해할 수 있다.
     why: 넓은 화상에서는 혈관 밖으로 체액이 새어 나가요. 환자에게는 '몸이 체액을 잃는다'고 말하면 수액이 많은 이유가 전해져요.
+    ko: 넓은 화상은 몸에서 체액이 빠져나가게 해서 수액을 많이 드리고 있어요
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 수액 소생 4문장 순서
+    why: 체액 손실과 보충을 알리고, 그 양을 계산하는 재료를 말하고, 맞는 양인지 소변으로 확인한다고 설명한 뒤, 결과가 뜻하는 바를 닫아요. 'the amount'·"To check it's the right amount"·'a good result'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: Large burns lose fluid, so we replace it carefully.
+      icon: bulb
+      ko: 넓은 화상은 체액이 빠져나가서 조심스럽게 보충해요
+      note: 이유
+    - en: We calculate the amount using your weight and burn size.
+      icon: board
+      ko: 체중과 화상 크기로 그 양을 계산해요
+      note: 계산
+    - en: To check it's the right amount, we measure your urine.
+      icon: lab
+      ko: 맞는 양인지 확인하려고 소변량을 측정해요
+      note: 측정
+    - en: A good result tells us the fluid is working.
+      icon: chartup
+      ko: 결과가 좋으면 수액이 잘 듣고 있다는 뜻이에요
+      note: 결과
 
 - theme: er-burn
   title: 화학 화상
@@ -65124,26 +65708,86 @@
       chunks: ["What chemical was it,", "and do you", "know", "its name", "?"]
       words: [w-chemical]
       goal: 1
+      tag: "물질 확인"
+      icon: "lab"
+      why: "its name까지 물어 정확한 이름을 얻어요. 물질 이름이 있으면 안전 자료나 독극물 센터에서 맞는 처치를 찾을 수 있어요."
+      decoy: "from the label"
+      distractorsKo: ["피부에 닿은 지 얼마나 됐나요?", "냄새나 연기가 났나요?"]
+      blank:
+        answer: "name"
+        options:
+          - {en: "smell"}
+          - {en: "color"}
+          - {en: "strength"}
+          - {en: "name"}
     - en: "We'll rinse it with lots of water, not neutralize it."
       ko: "중화시키지 않고 물을 많이 써서 헹굴게요."
       chunks: ["We'll rinse it", "with lots of water,", "not neutralize", "it", "."]
       words: [w-rinse, w-water, w-neutralize]
       goal: 2
+      tag: "처치 원칙"
+      icon: "shield"
+      why: "not neutralize로 하지 않을 일을 짚어 줘요. 산과 염기를 서로 섞어 중화하면 열이 나서 화상이 더 나빠질 수 있어 물로 씻어 내요."
+      decoy: "and scrub it"
+      distractorsKo: ["묻은 가루가 있으면 먼저 털어낼게요", "눈에도 들어갔으면 바로 씻을게요"]
+      blank:
+        answer: "water"
+        options:
+          - {en: "water"}
+          - {en: "soap"}
+          - {en: "alcohol"}
+          - {en: "vinegar"}
     - en: "Keep rinsing—this removes the chemical from your skin."
       ko: "계속 헹궈 주세요—이렇게 하면 피부에서 화학물질이 제거돼요."
       chunks: ["Keep rinsing—this removes", "the chemical", "from your skin", "."]
       words: [w-rinse, w-remove, w-chemical, w-skin]
       goal: 2
+      tag: "지속 요청"
+      icon: "me"
+      why: "Keep …로 멈추지 말고 이어 가라는 부탁이에요. 흐르는 물은 피부에 남은 화학물질을 계속 씻어 내서 손상이 더 깊어지는 것을 막아요."
+      decoy: "this cools"
+      distractorsKo: ["물이 너무 차가우면 말씀해 주세요", "눈에 들어가지 않게 조심하세요"]
+      blank:
+        answer: "chemical"
+        options:
+          - {en: "soot"}
+          - {en: "chemical"}
+          - {en: "oil"}
+          - {en: "blood"}
     - en: "We'll take off any clothes with chemical on them."
       ko: "화학물질이 묻은 옷은 벗을게요."
       chunks: ["We'll take off", "any clothes", "with chemical", "on them", "."]
       words: [w-clothes, w-chemical, w-takeoff]
       goal: 1
+      tag: "옷 제거"
+      icon: "bandage"
+      why: "any로 조금이라도 묻은 옷은 모두 벗긴다는 뜻이에요. 옷에 남은 화학물질이 계속 피부를 태우기 때문에 서둘러 벗겨요."
+      decoy: "with scissors"
+      distractorsKo: ["옷은 따로 비닐봉투에 담아 둘게요", "눈에 들어갔는지도 확인할게요"]
+      blank:
+        answer: "take off"
+        options:
+          - {en: "hand over"}
+          - {en: "fold up"}
+          - {en: "take off"}
+          - {en: "put on"}
     - en: "Please keep rinsing for at least twenty minutes."
       ko: "적어도 20분은 계속 헹궈 주세요."
       chunks: ["Please keep rinsing", "for at least", "twenty minutes", "."]
       words: [w-rinse, w-atleast]
       goal: 2
+      tag: "시간 안내"
+      icon: "calendar"
+      why: "at least로 최소 시간을 못 박아 중간에 멈추지 않게 해요. 화학 화상은 보통 20분 이상 씻고, 알칼리처럼 더 오래 씻어야 하는 물질도 있어요."
+      decoy: "until it stings"
+      distractorsKo: ["헹군 물이 눈에 튀지 않게 할게요", "헹구는 중에 통증이 줄면 말씀해 주세요"]
+      blank:
+        answer: "keep"
+        options:
+          - {en: "stop"}
+          - {en: "skip"}
+          - {en: "avoid"}
+          - {en: "keep"}
   nuance:
   - kind: swap
     words:
@@ -65166,6 +65810,7 @@
       neutralize the acid with a base: 중화 반응에서 열이 나 손상을 키울 수 있고 세척이 늦어져 하지 않는다.
       put a cream on it: 물질이 남은 채로 덮어 버려 손상이 계속된다.
     why: 화학 화상은 중화하지 않고 많은 물로 오래 씻어요. 환자에게도 왜 계속 씻는지 알려 주면 협조가 쉬워요.
+    ko: 화끈거림이 멎도록 물을 많이 써서 계속 헹굴게요
   - kind: pair
     words:
     - w-takeoff
@@ -65180,6 +65825,28 @@
     decoys:
     - a base
     why: take off는 옷을 벗기다, at least는 '최소한'이에요. 화학 화상은 최소 20분 이상 씻고, 알칼리처럼 깊이 스며드는 물질은 더 오래 씻어요.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 화학 화상 4문장 순서
+    why: 물질 이름을 묻고, 묻은 옷을 벗기고, 그와 함께 많은 물로 헹구고, 20분 이상 계속하게 해요. 'it'·'Along with that'·'keep rinsing'이 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: What chemical was it, and do you know its name?
+      icon: lab
+      ko: 어떤 화학물질이었고, 이름을 아세요?
+      note: 확인
+    - en: Whatever it was, we'll take off any clothes with it on them.
+      icon: bandage
+      ko: 뭐든 그것이 묻은 옷은 벗을게요
+      note: 옷
+    - en: Along with that, we'll rinse your skin with lots of water, not neutralize the chemical.
+      icon: shield
+      ko: 그와 함께 화학물질을 중화하지 않고 물을 많이 써서 피부를 헹굴게요
+      note: 헹굼
+    - en: Please keep rinsing for at least twenty minutes.
+      icon: calendar
+      ko: 적어도 20분은 계속 헹궈 주세요
+      note: 시간
 
 - theme: er-burn
   title: 전기 화상 심전도 감시
@@ -65204,26 +65871,86 @@
       chunks: ["Electrical burns", "can affect", "your heart,", "so we're monitoring it", "."]
       words: [w-electrical, w-burn, w-affect, w-heart, w-monitor]
       goal: 1
+      tag: "심장 감시"
+      icon: "monitor"
+      why: "so로 이유와 조치를 이어요. 전류가 심장을 지나면 부정맥이 생길 수 있어서 전기 손상 환자는 심전도를 찍고, 고전압·의식 소실·심전도 이상이 있으면 계속 모니터해요."
+      decoy: "so we're resting it"
+      distractorsKo: ["지금 통증이 얼마나 심한지 알려 주세요", "전류가 흐른 길을 따라 살펴볼게요"]
+      blank:
+        answer: "heart"
+        options:
+          - {en: "heart"}
+          - {en: "liver"}
+          - {en: "stomach"}
+          - {en: "bladder"}
     - en: "Let me find the entry and exit wounds on your body."
       ko: "몸에서 입구와 출구 상처를 찾아볼게요."
       chunks: ["Let me find", "the entry", "and exit wounds", "on your body", "."]
       words: [w-find, w-entry, w-exit, w-wound]
       goal: 2
+      tag: "상처 확인"
+      icon: "magnify"
+      why: "Let me…로 몸을 살피기 전에 양해를 구해요. 전류는 들어간 곳과 나간 곳 사이의 조직을 지나가서 두 지점을 알면 손상 범위를 가늠할 수 있어요."
+      decoy: "from the wall"
+      distractorsKo: ["상처 부위에 연고를 발라 드릴게요", "전선에 닿은 시간을 물어볼게요"]
+      blank:
+        answer: "body"
+        options:
+          - {en: "chart"}
+          - {en: "body"}
+          - {en: "clothes"}
+          - {en: "bed"}
     - en: "Tell me if your heart races or you feel dizzy."
       ko: "심장이 빨리 뛰거나 어지러우면 말씀해 주세요."
       chunks: ["Tell me", "if your heart races", "or you feel", "dizzy", "."]
       words: [w-tell, w-heart, w-race, w-feel, w-dizzy]
       goal: 1
+      tag: "증상 보고"
+      icon: "faceWorried"
+      why: "if로 두 증상을 나란히 들어 하나만 있어도 알리게 해요. 두근거림과 어지러움은 전기가 일으킨 부정맥의 흔한 신호예요."
+      decoy: "when you wake"
+      distractorsKo: ["손가락이 저리면 말씀해 주세요", "전기가 닿았던 곳이 가장 아픈지 알려 주세요"]
+      blank:
+        answer: "dizzy"
+        options:
+          - {en: "hungry"}
+          - {en: "sleepy"}
+          - {en: "dizzy"}
+          - {en: "chilly"}
     - en: "We'll put you on a heart monitor now."
       ko: "지금 심장 모니터를 달아드릴게요."
       chunks: ["We'll put you", "on a heart monitor", "now", "."]
       words: [w-heart, w-monitor]
       goal: 1
+      tag: "모니터 부착"
+      icon: "monitor"
+      why: "now로 바로 시작한다고 알려 무엇이 붙는지 미리 알게 해요. 가슴에 붙인 전극이 심장 리듬을 계속 보여 줘서 이상이 생기면 바로 알 수 있어요."
+      decoy: "later today"
+      distractorsKo: ["모니터 소리가 나도 놀라지 마세요", "전극을 붙일 자리의 털을 조금 정리할게요"]
+      blank:
+        answer: "monitor"
+        options:
+          - {en: "pump"}
+          - {en: "medicine"}
+          - {en: "drip"}
+          - {en: "monitor"}
     - en: "Electricity can damage deep tissue that looks fine on the skin."
       ko: "전기는 피부는 멀쩡해 보여도 깊은 조직을 손상시킬 수 있어요."
       chunks: ["Electricity can damage", "deep tissue", "that looks fine", "on the skin", "."]
       words: [w-electricity, w-damage, w-deep, w-tissue, w-look, w-skin]
       goal: 2
+      tag: "숨은 손상"
+      icon: "bulb"
+      why: "that looks fine on the skin이 겉과 속이 다를 수 있다는 점을 짚어요. 전류는 저항이 낮은 근육·혈관을 따라 흘러서 피부 상처가 작아도 속 조직이 크게 상할 수 있어요."
+      decoy: "that feels warm"
+      distractorsKo: ["근육 효소 수치는 피검사로 확인할 거예요", "전기가 지나간 팔은 높이 올려 둘게요"]
+      blank:
+        answer: "deep"
+        options:
+          - {en: "deep"}
+          - {en: "dry"}
+          - {en: "clean"}
+          - {en: "pale"}
   nuance:
   - kind: pair
     words:
@@ -65265,6 +65992,30 @@
       ok: false
       fix: The burns on your skin look small, but electricity can hurt deeper inside, so we're watching closely.
     why: 전기 화상은 피부 상처가 작아도 속 조직 손상이 클 수 있어요. 의료진끼리는 'deep tissue injury'로 말하지만, 환자에게 'occult necrosis' 같은 말은 알아듣기 어렵고 겁만 줘요.
+    word: deep
+    ko: 깊은
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 전기 화상 감시 4문장 순서
+    why: 입구와 출구 상처를 찾고, 상처가 작아도 속 손상이 있을 수 있다고 알리고, 심장에도 영향이 있어 모니터를 붙이고, 증상을 말하게 해요. 'Those wounds'·'It'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: Let me find the entry and exit wounds on your body.
+      icon: magnify
+      ko: 몸에서 입구와 출구 상처를 찾아볼게요
+      note: 탐색
+    - en: Even if those wounds look small, electricity can damage deep tissue.
+      icon: bulb
+      ko: 그 상처가 작아 보여도 전기는 깊은 조직을 손상시킬 수 있어요
+      note: 설명
+    - en: It can affect your heart too, so we'll put you on a monitor now.
+      icon: monitor
+      ko: 심장에도 영향을 줄 수 있어서 지금 모니터를 달아드릴게요
+      note: 감시
+    - en: Tell me if your heart races or you feel dizzy.
+      icon: faceWorried
+      ko: 심장이 빨리 뛰거나 어지러우면 말씀해 주세요
+      note: 보고
 
 - theme: er-burn
   title: 순환성 전층화상
@@ -65289,26 +66040,86 @@
       chunks: ["The burn", "is circling your arm", "and may", "cut off circulation", "."]
       words: [w-burn, w-circle, w-circulation]
       goal: 1
+      tag: "위험 설명"
+      icon: "bulb"
+      why: "may로 가능성을 말해 겁주지 않으면서 위험은 숨기지 않아요. 팔을 빙 두른 전층 화상은 딱딱한 가피가 조여서 혈류가 막힐 수 있어요."
+      decoy: "and may spread"
+      distractorsKo: ["팔이 많이 부을 수 있어요", "팔을 베개 위에 올려 둘게요"]
+      blank:
+        answer: "cut off"
+        options:
+          - {en: "build up"}
+          - {en: "cut off"}
+          - {en: "speed up"}
+          - {en: "warm up"}
     - en: "I'm checking the pulse and feeling in your fingers."
       ko: "손가락의 맥박과 감각을 확인하고 있어요."
       chunks: ["I'm checking", "the pulse", "and feeling", "in your fingers", "."]
       words: [w-check, w-pulse, w-feel, w-finger]
       goal: 1
+      tag: "말단 확인"
+      icon: "stetho"
+      why: "I'm checking으로 지금 하는 일을 알려 환자가 손을 맡겨요. 손가락 맥박과 감각은 조여진 화상 아래로 피가 통하는지 보는 가장 쉬운 방법이에요."
+      decoy: "every day"
+      distractorsKo: ["반지가 있으면 먼저 빼 드릴게요", "손을 심장보다 높이 올려 둘게요"]
+      blank:
+        answer: "pulse"
+        options:
+          - {en: "color"}
+          - {en: "swelling"}
+          - {en: "pulse"}
+          - {en: "temperature"}
     - en: "We may need to release the pressure with a small cut."
       ko: "작은 절개로 압력을 풀어줘야 할 수도 있어요."
       chunks: ["We may need", "to release", "the pressure", "with a small cut", "."]
       words: [w-need, w-release, w-pressure, w-cut]
       goal: 2
+      tag: "절개 가능성"
+      icon: "scalpel"
+      why: "may need로 아직 결정이 아니라 가능성이라고 알려 줘요. 가피가 붓는 조직을 조이면 의사가 가피를 따라 갈라 압력을 풀어요(가피절개)."
+      decoy: "with a bandage"
+      distractorsKo: ["손가락 색을 자주 볼게요", "손가락을 높이 올려 두세요"]
+      blank:
+        answer: "release"
+        options:
+          - {en: "raise"}
+          - {en: "double"}
+          - {en: "hide"}
+          - {en: "release"}
     - en: "Your fingers look pale and feel cool to me."
       ko: "손가락이 창백해 보이고 제가 만져보니 차가워요."
       chunks: ["Your fingers", "look pale", "and feel", "cool to me", "."]
       words: [w-finger, w-look, w-pale, w-feel, w-cool]
       goal: 1
+      tag: "소견 전달"
+      icon: "magnify"
+      why: "to me로 제가 본 바라고 말해 환자가 놀라지 않게 해요. 창백하고 차가운 손가락은 혈류가 줄었다는 단서라 바로 의사에게 알려요."
+      decoy: "to the doctor"
+      distractorsKo: ["손가락에 감각이 돌아왔는지 볼게요", "손가락이 붓지 않게 높이 올릴게요"]
+      blank:
+        answer: "pale"
+        options:
+          - {en: "pale"}
+          - {en: "pink"}
+          - {en: "warm"}
+          - {en: "normal"}
     - en: "We may need a small cut in the skin to relieve the pressure."
       ko: "압력을 완화하려고 피부에 작은 절개가 필요할 수도 있어요."
       chunks: ["We may need", "a small cut", "in the skin", "to relieve the pressure", "."]
       words: [w-need, w-cut, w-skin, w-relieve, w-pressure]
       goal: 2
+      tag: "시술 안내"
+      icon: "scalpel"
+      why: "to relieve로 절개의 목적을 밝혀 두려움을 줄여요. 압력이 풀리면 눌려 있던 혈관으로 피가 다시 흐를 수 있어요."
+      decoy: "to remove the burn"
+      distractorsKo: ["절개 전에 동의서를 먼저 받을 거예요", "절개한 뒤에는 상처를 깨끗하게 덮을게요"]
+      blank:
+        answer: "relieve"
+        options:
+          - {en: "build"}
+          - {en: "relieve"}
+          - {en: "add"}
+          - {en: "cause"}
   nuance:
   - kind: pair
     words:
@@ -65344,6 +66155,29 @@
       an escharotomy incision: 의료진끼리의 용어라 환자는 무슨 처치인지 모른다.
       a deep cut down to the bone: 사실과 다르고(탄 가피를 가르는 것이지 뼈까지 가르지 않는다) 환자를 겁준다.
     why: 가피절개(escharotomy)는 조이는 가피를 갈라 압력을 빼는 처치예요. 환자에게는 용어 대신 무엇을 왜 하는지 쉬운 말로 말해요.
+    ko: 압력을 풀려고 화상 입은 피부에 작은 절개를 낼 수도 있어요
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 순환성 화상 4문장 순서
+    why: 화상이 팔을 두른 위험을 알리고, 손가락 맥박과 감각을 확인하고, 본 소견을 전한 뒤, 그래서 절개가 필요할 수 있다고 닫아요. 'They'·'That's why'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: The burn is circling your arm and may cut off circulation.
+      icon: bulb
+      ko: 화상이 팔을 둘러싸고 있어서 순환을 막을 수도 있어요
+      note: 위험
+    - en: I'm checking the pulse and feeling in your fingers.
+      icon: stetho
+      ko: 손가락의 맥박과 감각을 확인하고 있어요
+      note: 확인
+    - en: They look pale and feel cool to me.
+      icon: magnify
+      ko: 제가 보기엔 창백하고 차가워요
+      note: 소견
+    - en: That's why we may need a small cut in the skin to relieve the pressure.
+      icon: scalpel
+      ko: 그래서 압력을 풀려고 피부에 작은 절개가 필요할 수도 있어요
+      note: 절개
 
 - theme: er-burn
   title: 소아 화상 학대 감별
@@ -65368,26 +66202,86 @@
       chunks: ["Can you walk me", "through exactly", "how the burn", "happened", "?"]
       words: [w-walk, w-burn, w-happen]
       goal: 2
+      tag: "경위 청취"
+      icon: "speech"
+      why: "walk me through는 처음부터 차근차근 들려 달라는 열린 요청이라 추궁처럼 들리지 않아요. 경위가 상처의 모양·깊이와 맞는지는 학대 가능성을 가리는 핵심 정보예요."
+      decoy: "one more time"
+      distractorsKo: ["아이가 평소에 어떻게 지내는지 말씀해 주세요", "화상을 입은 시간이 언제인지 알려 주세요"]
+      blank:
+        answer: "burn"
+        options:
+          - {en: "crash"}
+          - {en: "bite"}
+          - {en: "burn"}
+          - {en: "fall"}
     - en: "I'm noting the shape and edges of the burn carefully."
       ko: "화상의 모양과 경계를 조심스럽게 기록하고 있어요."
       chunks: ["I'm noting", "the shape", "and edges", "of the burn carefully", "."]
       words: [w-note, w-shape, w-edge, w-burn, w-carefully]
       goal: 1
+      tag: "기록 안내"
+      icon: "pencil"
+      why: "I'm noting으로 지금 기록한다는 사실을 투명하게 알려요. 모양과 경계는 뜨거운 물이 튄 건지 담긴 건지 같은 기전을 가늠하는 단서가 돼요."
+      decoy: "by hand"
+      distractorsKo: ["화상 부위 사진을 찍어도 될까요?", "아이가 아파하지 않게 천천히 할게요"]
+      blank:
+        answer: "edges"
+        options:
+          - {en: "color"}
+          - {en: "smell"}
+          - {en: "size"}
+          - {en: "edges"}
     - en: "We check every child's injury to keep them safe."
       ko: "아이들을 안전하게 지키려고 모든 아이의 손상을 확인해요."
       chunks: ["We check", "every child's injury", "to keep them", "safe", "."]
       words: [w-check, w-child, w-injury, w-keep, w-safe]
       goal: 2
+      tag: "모든 아이 확인"
+      icon: "shield"
+      why: "every child로 모든 아이에게 같은 절차라고 말해 부모가 의심받는다고 느끼지 않게 해요. 상처가 설명한 경위와 맞는지 보는 것은 아이를 보호하는 표준 절차예요."
+      decoy: "for the doctor"
+      distractorsKo: ["부모님을 의심하는 건 아니에요", "아이가 편하도록 보호자는 옆에 계셔도 돼요"]
+      blank:
+        answer: "injury"
+        options:
+          - {en: "injury"}
+          - {en: "vaccines"}
+          - {en: "weight"}
+          - {en: "diet"}
     - en: "Was anyone else home when this happened?"
       ko: "이 일이 생겼을 때 집에 다른 사람도 있었나요?"
       chunks: ["Was anyone else", "home", "when this happened", "?"]
       words: [w-anyone, w-else, w-happen]
       goal: 1
+      tag: "목격자 확인"
+      icon: "speech"
+      why: "anyone else로 이미 말한 사람 외에 또 있었는지 물어 목격자를 찾아요. 화상이 생길 때 곁에 누가 있었는지는 경위를 확인하는 기본 질문이에요."
+      decoy: "at school"
+      distractorsKo: ["아이가 평소에 이렇게 자주 다치나요?", "아이를 돌보는 분이 누구예요?"]
+      blank:
+        answer: "home"
+        options:
+          - {en: "hurt"}
+          - {en: "home"}
+          - {en: "awake"}
+          - {en: "burned"}
     - en: "This burn pattern looks even on both sides, which we always check."
       ko: "이 화상 패턴이 양쪽이 고르게 보이는데, 저희가 항상 확인하는 부분이에요."
       chunks: ["This burn pattern", "looks even", "on both sides,", "which we always check", "."]
       words: [w-burn, w-pattern, w-even, w-side, w-check]
       goal: 2
+      tag: "대칭 확인"
+      icon: "magnify"
+      why: "which we always check로 이것이 특별한 의심이 아니라 늘 하는 확인이라고 말해요. 양쪽이 대칭인 화상은 설명한 경위와 맞는지 더 꼼꼼히 살펴보게 돼요."
+      decoy: "in the middle"
+      distractorsKo: ["이 부위는 사진으로 남겨 둘게요", "양쪽 화상 크기를 각각 재 볼게요"]
+      blank:
+        answer: "check"
+        options:
+          - {en: "hide"}
+          - {en: "change"}
+          - {en: "check"}
+          - {en: "skip"}
   nuance:
   - kind: pair
     words:
@@ -65426,6 +66320,29 @@
       prove to me: 보호자를 거짓말하는 사람으로 대하는 말이라 방어적으로 만든다.
       admit to me: 잘못을 이미 전제한 말이라 추궁처럼 들린다.
     why: 학대가 의심돼도 간호사는 판단하지 않고 경위를 묻고, 보호자가 한 말을 그대로 기록해요. 의심이 들면 신고하는 것은 간호사의 법적 의무이고, 조사·판정은 아동보호 담당자의 몫이에요. 캐묻는 말은 정확한 경위를 듣기 어렵게 해요.
+    ko: 화상이 정확히 어떻게 생겼는지 차근차근 설명해 주시겠어요?
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 소아 화상 확인 4문장 순서
+    why: 경위를 차근차근 묻고, 집에 누가 있었는지 묻고, 그 답과 함께 상처 모양을 기록한다고 알린 뒤, 모든 아이에게 하는 일이라고 닫아요. 'it'·'Alongside your answers'·"That's routine"이 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: Can you walk me through exactly how the burn happened?
+      icon: speech
+      ko: 화상이 정확히 어떻게 생겼는지 차근차근 설명해 주시겠어요?
+      note: 경위
+    - en: Thank you. Was anyone else home when it happened?
+      icon: speech
+      ko: 고마워요, 그때 집에 다른 사람도 있었나요?
+      note: 목격
+    - en: Alongside your answers, I'm noting the shape and edges of the burn.
+      icon: pencil
+      ko: 답변과 함께 화상의 모양과 경계를 기록하고 있어요
+      note: 기록
+    - en: That's routine, and it's how we keep every child safe.
+      icon: shield
+      ko: 늘 하는 일이고, 모든 아이를 지키는 방법이에요
+      note: 안심
 
 - theme: er-burn
   title: 고령 화상 동반질환
@@ -65450,26 +66367,86 @@
       chunks: ["Older skin", "is thinner,", "so burns can be", "deeper than they look", "."]
       words: [w-old, w-skin, w-burn, w-deep, w-look]
       goal: 1
+      tag: "이유 설명"
+      icon: "bulb"
+      why: "so로 이유를 먼저 대고 결과를 말해 겁주지 않고 설명해요. 나이가 들면 진피가 얇아져서 같은 열에도 더 깊이 손상될 수 있어요."
+      decoy: "on the surface"
+      distractorsKo: ["화상 깊이는 며칠 지나야 정확히 알 수 있어요", "마른 피부에는 보습제를 발라 드릴게요"]
+      blank:
+        answer: "thinner"
+        options:
+          - {en: "thicker"}
+          - {en: "oilier"}
+          - {en: "darker"}
+          - {en: "thinner"}
     - en: "Your diabetes may slow healing, so we'll watch it closely."
       ko: "당뇨병이 있으면 치유가 늦어질 수 있어서 면밀히 지켜볼게요."
       chunks: ["Your diabetes", "may slow healing,", "so we'll watch it", "closely", "."]
       words: [w-diabetes, w-slow, w-heal, w-watch, w-closely]
       goal: 2
+      tag: "위험 설명"
+      icon: "lab"
+      why: "may로 가능성이라고 말하고 so we'll watch로 대책을 붙여 불안을 줄여요. 당뇨는 혈류와 면역이 떨어져 상처가 늦게 낫고 감염되기 쉬워요."
+      decoy: "every day"
+      distractorsKo: ["혈당을 지금 바로 한번 재 볼게요", "상처 부위는 매일 소독할 거예요"]
+      blank:
+        answer: "slow"
+        options:
+          - {en: "slow"}
+          - {en: "speed"}
+          - {en: "boost"}
+          - {en: "help"}
     - en: "What medicines and health problems do you have?"
       ko: "어떤 약을 드시고 어떤 건강 문제가 있으세요?"
       chunks: ["What medicines", "and health problems", "do you have", "?"]
       words: [w-medicine, w-health]
       goal: 2
+      tag: "병력 문진"
+      icon: "pill"
+      why: "medicines and health problems 두 가지를 함께 물어 한 번에 병력을 모아요. 혈액 희석제는 출혈과 수술 계획에, 당뇨약은 혈당 관리에 영향을 줘요."
+      decoy: "in your family"
+      distractorsKo: ["가족 중에 화상을 입은 분이 있나요?", "집에서 쓰던 연고가 있으세요?"]
+      blank:
+        answer: "health"
+        options:
+          - {en: "school"}
+          - {en: "health"}
+          - {en: "family"}
+          - {en: "money"}
     - en: "We'll check your skin more than once to make sure we're not missing anything."
       ko: "놓치는 게 없도록 피부를 여러 번 확인할게요."
       chunks: ["We'll check your skin", "more than once", "to make sure", "we're not missing anything", "."]
       words: [w-check, w-skin, w-miss, w-anything]
       goal: 1
+      tag: "재확인"
+      icon: "magnify"
+      why: "more than once로 한 번 보고 끝내지 않는다고 미리 말해요. 화상 깊이는 처음엔 가늠하기 어렵고 시간이 지나며 드러나서 여러 번 다시 봐요."
+      decoy: "only today"
+      distractorsKo: ["피부가 건조하면 알려 주세요", "화상 부위에 진통제를 먼저 드릴게요"]
+      blank:
+        answer: "check"
+        options:
+          - {en: "dry"}
+          - {en: "cover"}
+          - {en: "check"}
+          - {en: "wash"}
     - en: "Please tell us about every medicine you take at home."
       ko: "집에서 드시는 모든 약을 저희에게 말씀해 주세요."
       chunks: ["Please tell us", "about every medicine", "you take", "at home", "."]
       words: [w-tell, w-medicine]
       goal: 2
+      tag: "약 확인"
+      icon: "pill"
+      why: "every medicine으로 처방약뿐 아니라 약국에서 산 약과 영양제까지 다 말해 달라는 뜻이에요. 혈액 응고나 혈당에 영향을 주는 약은 치료 선택을 바꿀 수 있어요."
+      decoy: "on your own"
+      distractorsKo: ["약 이름이 기억나지 않으면 처방전 사진을 보여 주세요", "알레르기가 있는 약이 있나요?"]
+      blank:
+        answer: "take"
+        options:
+          - {en: "keep"}
+          - {en: "buy"}
+          - {en: "skip"}
+          - {en: "take"}
   nuance:
   - kind: pair
     words:
@@ -65493,7 +66470,7 @@
     scenes:
     - who: 차트 기록
       icon: board
-      en: Elderly pt, thin skin; burn depth may be underestimated.
+      en: Older adult, thin skin; burn depth may be underestimated.
       ok: true
     - who: 동료에게
       icon: monitor
@@ -65501,10 +66478,34 @@
       ok: true
     - who: 환자에게
       icon: me
-      en: Because you're elderly, your skin is fragile and burns go deeper.
+      en: Because you're elderly, your skin is too thin and burns go deeper.
       ok: false
-      fix: As we get older, skin gets thinner, so a burn can be deeper than it looks.
-    why: '''elderly''·''fragile''을 환자 본인에게 붙이면 늙고 약하다는 딱지처럼 들릴 수 있어요. 미국 의학 글쓰기에서도 ''older adults''를 권해요. 나이 드는 일을 ''우리''의 일로 말하고 이유는 사실대로 전해요.'
+      fix: Skin gets thinner as we all get older, so a burn can be deeper than it looks — we'll check it closely.
+    why: '''elderly''로 부르고 피부가 ''too thin''이라고 하면 환자 본인에게는 늙고 약하다는 딱지처럼 들려요. 미국 의학 글쓰기도 ''older adults''를 권해요. 나이 드는 일을 ''우리''의 일로 말하고 이유는 사실대로 전해요.'
+    word: thin
+    ko: 얇은
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 고령 화상 4문장 순서
+    why: 얇은 피부 때문에 겉보다 깊을 수 있다고 알리고, 그래서 여러 번 확인하고, 또 다른 이유로 당뇨를 짚은 뒤, 그 당뇨약을 묻고 닫아요. 'That's why'·'another reason'·'it'이 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: Older skin is thinner, so burns can be deeper than they look.
+      icon: bulb
+      ko: 나이든 피부는 얇아서 화상이 겉보기보다 깊을 수 있어요
+      note: 이유
+    - en: That's why we'll check your skin more than once.
+      icon: magnify
+      ko: 그래서 피부를 여러 번 확인할게요
+      note: 재확인
+    - en: Your diabetes is another reason, since it may slow healing.
+      icon: lab
+      ko: 당뇨도 또 다른 이유예요, 치유를 늦출 수 있거든요
+      note: 당뇨
+    - en: What medicines do you take for it at home?
+      icon: pill
+      ko: 그것 때문에 집에서 어떤 약을 드세요?
+      note: 약
 
 - theme: er-burn
   title: 안면·수부 화상 기능
@@ -65529,26 +66530,86 @@
       chunks: ["Burns to", "your hands", "need special care", "to keep function", "."]
       words: [w-burn, w-need, w-special, w-care, w-keep, w-function]
       goal: 1
+      tag: "중요성 설명"
+      icon: "bandage"
+      why: "special care로 손은 일반 화상보다 더 신경 쓴다고 알려요. 손은 관절과 힘줄이 피부 가까이 있어서 흉터로 굳기 전에 움직임을 지키는 치료가 중요해요."
+      decoy: "to look better"
+      distractorsKo: ["반지는 지금 빼 드릴게요", "손은 심장보다 높이 올려 둘게요"]
+      blank:
+        answer: "special"
+        options:
+          - {en: "special"}
+          - {en: "simple"}
+          - {en: "routine"}
+          - {en: "minimal"}
     - en: "We'll refer you to a burn center for the best outcome."
       ko: "최선의 결과를 위해 화상센터로 전원해 드릴게요."
       chunks: ["We'll refer you", "to a burn center", "for the best", "outcome", "."]
       words: [w-refer, w-burn, w-center, w-best, w-outcome]
       goal: 2
+      tag: "전원 안내"
+      icon: "hospital"
+      why: "for the best outcome으로 전원 이유를 환자의 이득으로 말해요. 손·얼굴 화상은 미국화상학회의 화상센터 의뢰 기준에 들어가요."
+      decoy: "for your insurance"
+      distractorsKo: ["화상센터에 자리가 있는지 확인해 볼게요", "전원 전에 보호자 연락처를 확인할게요"]
+      blank:
+        answer: "best"
+        options:
+          - {en: "simplest"}
+          - {en: "best"}
+          - {en: "worst"}
+          - {en: "cheapest"}
     - en: "We'll keep your fingers positioned and covered properly."
       ko: "손가락을 제대로 자세 잡고 덮어드릴게요."
       chunks: ["We'll keep", "your fingers positioned", "and covered properly", "."]
       words: [w-keep, w-finger, w-position, w-cover, w-properly]
       goal: 1
+      tag: "자세·드레싱"
+      icon: "bandage"
+      why: "positioned and covered 두 가지를 같이 약속해요. 화상 입은 손은 손가락을 벌려 감싸고 올려 두면 붓기와 굳음을 줄여요."
+      decoy: "squeezed tight"
+      distractorsKo: ["움직이는 연습은 나중에 알려 드릴게요", "붕대가 너무 조이면 말씀해 주세요"]
+      blank:
+        answer: "covered"
+        options:
+          - {en: "squeezed"}
+          - {en: "twisted"}
+          - {en: "covered"}
+          - {en: "pinched"}
     - en: "Can you move each finger for me one at a time?"
       ko: "손가락을 하나씩 움직여 보시겠어요?"
       chunks: ["Can you move", "each finger", "for me", "one at a time", "?"]
       words: [w-move, w-finger]
       goal: 1
+      tag: "움직임 확인"
+      icon: "me"
+      why: "for me가 부탁하는 말투라 아픈 손도 거부감이 덜해요. 손가락을 하나씩 움직이게 하면 힘줄과 신경 손상 여부를 가려 볼 수 있어요."
+      decoy: "all at once"
+      distractorsKo: ["손가락 색이 어떤지 볼게요", "손가락 끝을 가볍게 눌러서 감각을 볼게요"]
+      blank:
+        answer: "move"
+        options:
+          - {en: "count"}
+          - {en: "touch"}
+          - {en: "wash"}
+          - {en: "move"}
     - en: "A burn center has specialists trained in hand and face injuries."
       ko: "화상센터에는 손과 얼굴 손상을 다루는 전문의가 있어요."
       chunks: ["A burn center has", "specialists trained", "in hand and face", "injuries", "."]
       words: [w-burn, w-center, w-specialist, w-train, w-face, w-injury]
       goal: 2
+      tag: "전문성 설명"
+      icon: "hospital"
+      why: "specialists trained in…으로 전원이 왜 이득인지 근거를 대요. 화상센터에는 손·얼굴 치료와 재활을 함께 하는 팀이 있어요."
+      decoy: "in eye and ear"
+      distractorsKo: ["센터까지 구급차로 이동할 거예요", "전원 전에 의무기록을 같이 보낼게요"]
+      blank:
+        answer: "specialists"
+        options:
+          - {en: "specialists"}
+          - {en: "volunteers"}
+          - {en: "interpreters"}
+          - {en: "students"}
   nuance:
   - kind: pair
     words:
@@ -65588,6 +66649,29 @@
       definitely fix your hands: 간호사가 지킬 수 없는 약속이다.
       handle it, so don't worry: 환자의 걱정을 받아 주지 않고 넘겨 버린다.
     why: 손 기능 회복은 화상 깊이와 재활에 달려 있어 결과를 장담할 수 없어요. 거짓 약속 대신 가장 좋은 결과를 위해 전원한다고 말해요.
+    ko: 화상센터가 손이 가장 잘 회복하도록 도울 거예요 — 이 분야 전문이에요
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 손 화상 4문장 순서
+    why: 먼저 손가락을 움직여 보게 하고, 고마움과 함께 자세와 드레싱을 알리고, 그 이유로 손 화상은 특별한 관리가 필요하다고 설명한 뒤, 같은 이유로 화상센터를 말해요. 'Thanks'·'That's because'·'the same reason'이 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: First, can you move each finger for me one at a time?
+      icon: me
+      ko: 먼저 손가락을 하나씩 움직여 보시겠어요?
+      note: 확인
+    - en: Thanks. We'll keep your fingers positioned and covered properly.
+      icon: bandage
+      ko: 고마워요, 손가락을 제대로 자세 잡고 덮어드릴게요
+      note: 조치
+    - en: That's because burns to your hands need special care to keep function.
+      icon: bulb
+      ko: 손 화상은 기능을 지키려고 특별한 관리가 필요해서예요
+      note: 이유
+    - en: For the same reason, we'll refer you to a burn center for the best outcome.
+      icon: hospital
+      ko: 같은 이유로 최선의 결과를 위해 화상센터로 전원해 드릴게요
+      note: 전원
 
 - theme: er-burn
   title: 언어장벽 화상
@@ -65612,26 +66696,86 @@
       chunks: ["I'm getting", "an interpreter", "to help us communicate", "."]
       words: [w-interpreter, w-help, w-communicate]
       goal: 1
+      tag: "통역 안내"
+      icon: "speech"
+      why: "I'm getting으로 지금 부르고 있다고 알려 환자가 안심해요. 병원은 영어가 서툰 환자에게 자격 있는 통역사를 제공해야 해요."
+      decoy: "a family member"
+      distractorsKo: ["통역은 무료로 제공돼요", "그림 카드로 아픈 곳을 가리켜 보실 수 있어요"]
+      blank:
+        answer: "interpreter"
+        options:
+          - {en: "aide"}
+          - {en: "interpreter"}
+          - {en: "educator"}
+          - {en: "officer"}
     - en: "What caused the burn—heat, chemical, or electricity?"
       ko: "화상 원인이 뭐였나요—열이었나요, 화학물질이었나요, 전기였나요?"
       chunks: ["What caused", "the burn—heat,", "chemical,", "or electricity", "?"]
       words: [w-cause, w-burn, w-heat, w-chemical, w-electricity]
       goal: 2
+      tag: "원인 질문"
+      icon: "magnify"
+      why: "보기를 세 개 주어 짧은 말이나 손짓으로도 답할 수 있게 해요. 열·화학물질·전기에 따라 처치가 달라서 먼저 가려야 해요."
+      decoy: "or sunlight"
+      distractorsKo: ["화상은 언제 입으셨어요?", "화상 말고 다른 곳은 다치지 않으셨나요?"]
+      blank:
+        answer: "caused"
+        options:
+          - {en: "soothed"}
+          - {en: "treated"}
+          - {en: "caused"}
+          - {en: "cured"}
     - en: "How long was your skin in contact with it?"
       ko: "피부가 그것과 얼마나 오래 접촉했나요?"
       chunks: ["How long", "was your skin", "in contact", "with it", "?"]
       words: [w-skin, w-contact]
       goal: 2
+      tag: "접촉 시간"
+      icon: "calendar"
+      why: "in contact with it은 닿은 대상을 몰라도 물을 수 있는 형태예요. 열이든 화학물질이든 닿은 시간이 길수록 깊게 손상돼요."
+      decoy: "last night"
+      distractorsKo: ["그것이 옷 위로 닿았나요, 피부에 직접 닿았나요?", "닿은 직후에 물로 씻으셨나요?"]
+      blank:
+        answer: "skin"
+        options:
+          - {en: "eye"}
+          - {en: "clothing"}
+          - {en: "hair"}
+          - {en: "skin"}
     - en: "Do you have any allergies to medicine?"
       ko: "약에 알레르기가 있으세요?"
       chunks: ["Do you have", "any allergies", "to medicine", "?"]
       words: [w-allergy, w-medicine]
       goal: 2
+      tag: "알레르기 확인"
+      icon: "pill"
+      why: "any allergies to로 범위를 넓게 물어 놓치는 약이 없게 해요. 진통제나 항생제를 쓰기 전에 알레르기를 확인하는 것은 안전의 기본이에요."
+      decoy: "to pollen"
+      distractorsKo: ["지금 드시는 약이 있으세요?", "임신 중이거나 모유 수유 중이세요?"]
+      blank:
+        answer: "medicine"
+        options:
+          - {en: "medicine"}
+          - {en: "food"}
+          - {en: "latex"}
+          - {en: "tape"}
     - en: "The interpreter will repeat everything in your language."
       ko: "통역사가 모든 내용을 당신의 언어로 다시 말해줄 거예요."
       chunks: ["The interpreter will repeat", "everything", "in your language", "."]
       words: [w-interpreter, w-repeat, w-language]
       goal: 1
+      tag: "통역 방식"
+      icon: "speaker"
+      why: "everything으로 중간에 줄이지 않고 전부 옮긴다고 약속해요. 의료 통역사는 말을 줄이거나 바꾸지 않고 그대로 옮기도록 훈련받아요."
+      decoy: "in plain English"
+      distractorsKo: ["통역사는 환자 정보의 비밀을 지켜 줘요", "모르는 말은 언제든 다시 물어보세요"]
+      blank:
+        answer: "repeat"
+        options:
+          - {en: "summarize"}
+          - {en: "repeat"}
+          - {en: "shorten"}
+          - {en: "write"}
   nuance:
   - kind: pair
     words:
@@ -65668,6 +66812,29 @@
       have your daughter translate: 가족 통역은 누락·오역이 잦다. 성인 가족은 환자가 원할 때만, 미성년 자녀는 통역을 바로 구할 수 없는 급박한 위험 상황이 아니면 안 된다(연방 규정).
       just use hand signals: 원인 물질과 노출 시간 같은 정보는 몸짓으로 정확히 얻을 수 없다.
     why: 가족이 곁에 있어도 병력·동의 같은 핵심 대화는 의료 통역을 통해요. 가족은 환자를 안심시키는 자리에 두는 것이 좋아요.
+    ko: 의료 통역사를 쓰죠, 그래야 모든 내용을 정확히 전해요
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 언어장벽 화상 4문장 순서
+    why: 통역사를 부른다고 알리고, 통역사가 모든 말을 옮긴다고 약속하고, 원인을 묻고, 그 원인에 닿은 시간을 물어요. 'The interpreter'·'it'이 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: I'm getting an interpreter to help us communicate.
+      icon: speech
+      ko: 소통을 돕도록 통역사를 부를게요
+      note: 통역
+    - en: The interpreter will repeat everything in your language.
+      icon: speaker
+      ko: 통역사가 모든 내용을 당신의 언어로 다시 말해줄 거예요
+      note: 약속
+    - en: What caused the burn—heat, chemical, or electricity?
+      icon: magnify
+      ko: 화상 원인이 뭐였나요—열, 화학물질, 전기?
+      note: 원인
+    - en: How long was your skin in contact with it?
+      icon: calendar
+      ko: 피부가 그것과 얼마나 오래 접촉했나요?
+      note: 시간
 
 - theme: er-burn
   title: 화상센터 이송 기준
@@ -65692,26 +66859,86 @@
       chunks: ["A burn center", "has specialists", "for burns", "like yours", "."]
       words: [w-burn, w-center, w-specialist]
       goal: 1
+      tag: "전원 이유"
+      icon: "hospital"
+      why: "for burns like yours로 환자 본인의 화상에 맞는 곳이라고 설명해요. 화상센터는 큰 화상의 수액·수술·재활을 한 팀이 맡아요."
+      decoy: "for any illness"
+      distractorsKo: ["센터에는 소아 화상 전문 병동도 있어요", "이송 전에 센터와 먼저 통화할 거예요"]
+      blank:
+        answer: "burns"
+        options:
+          - {en: "strokes"}
+          - {en: "infections"}
+          - {en: "burns"}
+          - {en: "fractures"}
     - en: "Before transfer, we'll cover the burns and manage your pain."
       ko: "이송 전에 화상 부위를 덮고 통증을 관리할게요."
       chunks: ["Before transfer,", "we'll cover the burns", "and manage", "your pain", "."]
       words: [w-transfer, w-cover, w-burn, w-manage, w-pain]
       goal: 2
+      tag: "이송 전 처치"
+      icon: "bandage"
+      why: "Before transfer로 시간 순서를 먼저 말해 환자가 준비된 상태로 떠난다고 느껴요. 이송 전 화상은 깨끗한 마른 드레싱으로 덮어 통증과 감염 위험을 줄여요."
+      decoy: "After lunch"
+      distractorsKo: ["이송 전에 혈액 검사를 한 번 더 할게요", "가족에게 이송 소식을 전해 드릴게요"]
+      blank:
+        answer: "cover"
+        options:
+          - {en: "freeze"}
+          - {en: "shave"}
+          - {en: "peel"}
+          - {en: "cover"}
     - en: "We'll keep you warm and send your records with you."
       ko: "따뜻하게 해드리고 기록도 함께 보내드릴게요."
       chunks: ["We'll keep you", "warm", "and send", "your records with you", "."]
       words: [w-keep, w-warm, w-send, w-record]
       goal: 2
+      tag: "이송 준비"
+      icon: "board"
+      why: "keep you warm과 send your records 두 약속을 and로 묶어요. 화상 환자는 열 손실이 커서 이송 중 따뜻하게 두고, 기록이 같이 가야 센터가 이어서 치료해요."
+      decoy: "and call your family"
+      distractorsKo: ["검사 결과는 센터에서 따로 알려 줄 거예요", "이송 중 구급대원이 곁에서 살펴볼 거예요"]
+      blank:
+        answer: "warm"
+        options:
+          - {en: "warm"}
+          - {en: "cold"}
+          - {en: "wet"}
+          - {en: "damp"}
     - en: "The burn center team knows how to treat your kind of burn."
       ko: "화상센터 팀은 이런 종류의 화상을 치료하는 법을 알아요."
       chunks: ["The burn center team", "knows how", "to treat", "your kind of burn", "."]
       words: [w-burn, w-center, w-team, w-treat]
       goal: 1
+      tag: "신뢰 형성"
+      icon: "star"
+      why: "knows how to로 팀의 전문성을 말해 불안을 줄여요. 화상센터는 화상 치료 경험이 많은 의사·간호사·재활팀이 함께 일해요."
+      decoy: "was asked to"
+      distractorsKo: ["센터에서는 수술이 필요할 수도 있어요", "센터 위치는 보호자분께 알려 드릴게요"]
+      blank:
+        answer: "treat"
+        options:
+          - {en: "forget"}
+          - {en: "treat"}
+          - {en: "ignore"}
+          - {en: "avoid"}
     - en: "We'll give you pain medicine before you go."
       ko: "가시기 전에 진통제를 드릴게요."
       chunks: ["We'll give you", "pain medicine", "before you go", "."]
       words: [w-give, w-pain, w-medicine]
       goal: 2
+      tag: "통증 관리"
+      icon: "pill"
+      why: "before you go로 이송 전에 미리 약을 준다고 약속해요. 이동 중 흔들림과 자세 변화로 통증이 커질 수 있어서 미리 조절해 둬요."
+      decoy: "if you ask"
+      distractorsKo: ["통증이 심하면 이송 중에도 말씀하세요", "약 때문에 졸릴 수 있어요"]
+      blank:
+        answer: "pain"
+        options:
+          - {en: "cold"}
+          - {en: "allergy"}
+          - {en: "pain"}
+          - {en: "cough"}
   nuance:
   - kind: pair
     words:
@@ -65752,6 +66979,29 @@
       we can't handle you here: 환자가 떠밀려 간다고 느끼게 한다.
       your burn is too much for us: 사실보다 무겁게 들려 불안을 키운다.
     why: 전원 이유는 '여기서 못 봐서'가 아니라 '더 잘 볼 곳으로 간다'로 말해요. 같은 사실이라도 환자가 버려진다고 느끼지 않게요.
+    ko: 화상센터로 가시는 건 그곳에 이런 화상을 다루는 전문의가 있어서예요
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 화상센터 이송 4문장 순서
+    why: 전원하는 이유를 알리고, 이송 전에 할 처치를 말하고, 이동 중에 할 일을 알린 뒤, 센터가 바로 이어받는다고 닫아요. 'transfer'·'the trip itself'·'That way'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: A burn center has specialists for burns like yours.
+      icon: hospital
+      ko: 화상센터에는 이런 화상을 다루는 전문의가 있어요
+      note: 이유
+    - en: Before transfer, we'll cover the burns and manage your pain.
+      icon: bandage
+      ko: 이송 전에 화상 부위를 덮고 통증을 관리할게요
+      note: 준비
+    - en: For the trip itself, we'll keep you warm and send your records with you.
+      icon: board
+      ko: 이동 중에는 따뜻하게 해드리고 기록도 함께 보내드릴게요
+      note: 이동
+    - en: That way, the burn center team can take over right away.
+      icon: star
+      ko: 그러면 화상센터 팀이 바로 이어받을 수 있어요
+      note: 인수
 
 # ---- Lv3 ----
 - theme: er-burn
@@ -65777,26 +67027,86 @@
       chunks: ["Your airway is swelling,", "so we need", "to secure it", "now", "."]
       words: [w-airway, w-swell, w-need, w-secure]
       goal: 1
+      tag: "긴급 안내"
+      icon: "siren"
+      why: "so로 이유와 행동을 이어 짧게 설명해요. 기도 부종은 빠르게 진행해 막힐 수 있어서 설명은 짧게, 조치는 바로 시작해요."
+      decoy: "when it closes"
+      distractorsKo: ["산소를 먼저 마스크로 드릴게요", "곧 마취과 의사가 올 거예요"]
+      blank:
+        answer: "swelling"
+        options:
+          - {en: "clearing"}
+          - {en: "opening"}
+          - {en: "healing"}
+          - {en: "swelling"}
     - en: "We're going to place a breathing tube before it closes."
       ko: "기도가 막히기 전에 호흡관을 삽입할 거예요."
       chunks: ["We're going to", "place a breathing tube", "before it", "closes", "."]
       words: [w-place, w-breathe, w-tube, w-close]
       goal: 2
+      tag: "삽관 안내"
+      icon: "gear"
+      why: "before it closes로 지금 하는 이유를 시간 압박과 함께 알려요. 부은 기도는 막히면 관을 넣기 어려워져서 막히기 전에 넣는 쪽이 안전해요."
+      decoy: "after it heals"
+      distractorsKo: ["넣는 동안에는 약으로 잠들게 해 드릴게요", "관을 넣은 뒤에는 말씀을 못 하실 수 있어요"]
+      blank:
+        answer: "breathing"
+        options:
+          - {en: "breathing"}
+          - {en: "feeding"}
+          - {en: "urine"}
+          - {en: "chest"}
     - en: "Try to stay calm—this will help you breathe safely."
       ko: "차분함을 유지해 보세요—그러면 안전하게 숨쉬는 데 도움이 돼요."
       chunks: ["Try to", "stay calm—this", "will help you", "breathe safely", "."]
       words: [w-stay, w-calm, w-help, w-breathe, w-safe]
       goal: 2
+      tag: "환자 안심"
+      icon: "me"
+      why: "Try to로 명령이 아니라 시도해 보라는 부드러운 말투예요. 불안해서 숨이 빨라지면 부은 기도에 더 힘이 들어서 차분함이 도움이 돼요."
+      decoy: "Please sit up"
+      distractorsKo: ["고개를 들고 편히 앉아 계세요", "잠시 눈을 감고 쉬세요"]
+      blank:
+        answer: "calm"
+        options:
+          - {en: "flat"}
+          - {en: "calm"}
+          - {en: "awake"}
+          - {en: "busy"}
     - en: "I hear a change in how you sound when you breathe."
       ko: "숨쉴 때 소리가 달라진 게 들려요."
       chunks: ["I hear", "a change", "in how you sound", "when you breathe", "."]
       words: [w-hear, w-change, w-sound, w-breathe]
       goal: 1
+      tag: "소견 전달"
+      icon: "stetho"
+      why: "I hear로 들은 것을 그대로 말해 진단을 단정하지 않아요. 쉰 소리나 높은 숨소리는 기도가 좁아졌다는 소리 단서예요."
+      decoy: "I feel"
+      distractorsKo: ["목이 쉬었는지 한번 말해 보세요", "숨을 들이쉴 때 가슴이 아프신가요?"]
+      blank:
+        answer: "breathe"
+        options:
+          - {en: "talk"}
+          - {en: "cough"}
+          - {en: "breathe"}
+          - {en: "swallow"}
     - en: "We're getting everything ready to protect your airway."
       ko: "기도를 보호하려고 모든 준비를 하고 있어요."
       chunks: ["We're getting everything", "ready", "to protect your airway", "."]
       words: [w-ready, w-protect, w-airway]
       goal: 2
+      tag: "준비 안내"
+      icon: "gear"
+      why: "We're getting…ready로 팀이 이미 움직이고 있다고 알려 안심시켜요. 흡입 손상 환자는 기도가 막히기 전에 장비와 약을 미리 준비해 둬요."
+      decoy: "to cover your burn"
+      distractorsKo: ["가족분께는 곧 상황을 설명해 드릴게요", "도와줄 의료진이 곧 올 거예요"]
+      blank:
+        answer: "protect"
+        options:
+          - {en: "block"}
+          - {en: "close"}
+          - {en: "narrow"}
+          - {en: "protect"}
   nuance:
   - kind: pair
     words:
@@ -65835,6 +67145,29 @@
       intubate you: 의료진 용어라 환자는 무슨 뜻인지 모를 수 있다.
       stick a tube down your throat: 뜻은 같지만 거칠고 무섭게 들린다.
     why: 환자에게는 삽관이라는 용어 대신 무엇을 하는지, 왜 지금 하는지를 짧게 말해요. 삽관 전에 잠드는 약을 쓴다는 것도 함께 알려 주면 덜 무서워해요.
+    ko: 기도가 부어서 막히기 전에 호흡관을 넣을 거예요
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 기도 부종 대응 4문장 순서
+    why: 숨소리의 변화를 말하고, 기도가 붓는다고 알리고, 준비하고 삽관할 것이라 말한 뒤, 차분함이 도움이 된다고 닫아요. 'I hear'·'it'·'as we do this'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: I hear a change in how you sound when you breathe.
+      icon: stetho
+      ko: 숨쉴 때 소리가 달라진 게 들려요
+      note: 소견
+    - en: Your airway is swelling, so we need to secure it now.
+      icon: siren
+      ko: 기도가 붓고 있어서 지금 확보해야 해요
+      note: 긴급
+    - en: We're getting everything ready, and we'll place a breathing tube before it closes.
+      icon: gear
+      ko: 준비를 하고 있고 기도가 막히기 전에 호흡관을 넣을 거예요
+      note: 준비
+    - en: Staying calm will help you breathe safely as we do this.
+      icon: me
+      ko: 차분히 계시면 이 과정에서 안전하게 숨 쉬는 데 도움이 돼요
+      note: 안심
 
 - theme: er-burn
   title: 대면적 화상 저혈량 쇼크
@@ -65859,26 +67192,86 @@
       chunks: ["Large burns cause", "heavy fluid loss,", "so we're giving", "fluids fast", "."]
       words: [w-large, w-burn, w-cause, w-heavy, w-fluid, w-loss, w-give, w-fast]
       goal: 1
+      tag: "원인과 조치"
+      icon: "bulb"
+      why: "cause와 so로 원인에서 조치로 흐르는 인과 문장이에요. 큰 화상은 모세혈관에서 체액이 새어 혈압이 떨어질 수 있어서 처음 몇 시간 수액이 중요해요."
+      decoy: "fluids slowly"
+      distractorsKo: ["혈관을 하나 더 확보할게요", "수액이 따뜻한지 확인할게요"]
+      blank:
+        answer: "heavy"
+        options:
+          - {en: "heavy"}
+          - {en: "light"}
+          - {en: "tiny"}
+          - {en: "rare"}
     - en: "Your urine output tells us if the fluids are working."
       ko: "소변량이 수액이 효과가 있는지 알려줘요."
       chunks: ["Your urine output", "tells us", "if the fluids", "are working", "."]
       words: [w-urine, w-output, w-tell, w-fluid, w-work]
       goal: 2
+      tag: "소변량 확인"
+      icon: "lab"
+      why: "tells us if…로 소변량이 하는 일을 말해 소변을 재는 이유가 분명해져요. 시간당 소변량은 장기로 가는 혈류가 충분한지 알려 주는 대표 지표예요."
+      decoy: "if you slept"
+      distractorsKo: ["소변이 마려우면 바로 말씀해 주세요", "소변량은 소변줄로 정확히 잴게요"]
+      blank:
+        answer: "working"
+        options:
+          - {en: "leaking"}
+          - {en: "working"}
+          - {en: "dripping"}
+          - {en: "stopping"}
     - en: "We're watching your pressure and heart rate closely."
       ko: "혈압과 심박수를 면밀히 지켜보고 있어요."
       chunks: ["We're watching", "your pressure", "and heart rate closely", "."]
       words: [w-watch, w-pressure, w-heart, w-rate, w-closely]
       goal: 2
+      tag: "활력 감시"
+      icon: "monitor"
+      why: "We're watching으로 계속 지켜본다고 알려요. 체액이 빠지면 혈압이 떨어지고 심박수가 올라가서 두 값을 함께 봐요."
+      decoy: "every morning"
+      distractorsKo: ["산소 수치도 계속 지켜볼게요", "체온이 내려가지 않게 담요를 덮을게요"]
+      blank:
+        answer: "pressure"
+        options:
+          - {en: "temperature"}
+          - {en: "oxygen"}
+          - {en: "pressure"}
+          - {en: "weight"}
     - en: "This is a large burn, so your body is losing a lot of fluid."
       ko: "넓은 화상이라 몸에서 체액이 많이 빠져나가고 있어요."
       chunks: ["This is a large burn,", "so your body", "is losing", "a lot of fluid", "."]
       words: [w-large, w-burn, w-lose, w-lot, w-fluid]
       goal: 1
+      tag: "상태 설명"
+      icon: "bulb"
+      why: "This is…, so…로 큰 화상이라는 사실을 먼저 말하고 결과를 이어요. 몸에서 일어나는 일을 쉬운 말로 알려 주면 수액을 많이 맞는 이유가 납득돼요."
+      decoy: "at home"
+      distractorsKo: ["화상 때문에 몸이 많이 붓고 있어요", "수액은 필요한 만큼만 조절해서 드릴게요"]
+      blank:
+        answer: "losing"
+        options:
+          - {en: "making"}
+          - {en: "saving"}
+          - {en: "hiding"}
+          - {en: "losing"}
     - en: "We want your blood pressure and pulse to stay stable."
       ko: "혈압과 맥박이 안정적으로 유지되길 바라요."
       chunks: ["We want", "your blood pressure", "and pulse", "to stay stable", "."]
       words: [w-blood, w-pressure, w-pulse, w-stay, w-stable]
       goal: 2
+      tag: "목표 안내"
+      icon: "chartup"
+      why: "We want…to로 목표를 함께 정한 것처럼 말해 환자가 협력자가 돼요. 혈압과 맥박도 보지만, 화상 수액이 충분한지는 주로 시간당 소변량으로 판단해요."
+      decoy: "to jump up"
+      distractorsKo: ["맥박이 빨라지면 바로 알려 드릴게요", "혈압은 15분마다 재 볼게요"]
+      blank:
+        answer: "stable"
+        options:
+          - {en: "stable"}
+          - {en: "low"}
+          - {en: "high"}
+          - {en: "fast"}
   nuance:
   - kind: pair
     words:
@@ -65910,14 +67303,38 @@
       ok: true
     - who: 동료에게
       icon: monitor
-      en: UOP's only 20 this hour — below goal, let's tell the doctor.
+      en: Urine's only 20 this hour — below goal, let's tell the doctor.
       ok: true
     - who: 환자에게
       icon: me
-      en: Your UOP is below goal.
+      en: Your urine output is only 20 mL an hour, under 0.5 per kilo.
       ok: false
       fix: You're not making as much urine as we want yet, so we may need to give you more fluid.
-    why: UOP(urine output)는 의료진끼리의 약어예요. 환자에게는 소변이 기대만큼 나오지 않는다는 사실과 다음 조치를 쉬운 말로 전해요.
+    why: mL·per kilo 같은 수치와 기준은 의료진끼리의 말이에요. 환자에게는 소변이 기대만큼 나오지 않는다는 사실과 다음 조치를 쉬운 말로 전해요.
+    word: urine
+    ko: 소변
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 대면적 화상 쇼크 4문장 순서
+    why: 큰 화상으로 체액이 빠진다고 알리고, 그래서 수액을 빨리 준다고 설명하고, 수액이 듣는지 소변량으로 보고, 그 수치 외에 혈압과 맥박도 본다고 닫아요. "That's why"·'the fluids'·'Besides that number'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: This is a large burn, so your body is losing a lot of fluid.
+      icon: bulb
+      ko: 넓은 화상이라 몸에서 체액이 많이 빠져나가고 있어요
+      note: 상태
+    - en: That's why we're giving fluids fast.
+      icon: bulb
+      ko: 그래서 수액을 빠르게 드리고 있어요
+      note: 조치
+    - en: Your urine output tells us if the fluids are working.
+      icon: lab
+      ko: 소변량이 수액이 효과가 있는지 알려줘요
+      note: 소변
+    - en: Besides that number, we're watching your pressure and heart rate closely.
+      icon: monitor
+      ko: 그 수치 외에도 혈압과 심박수를 면밀히 지켜보고 있어요
+      note: 감시
 
 - theme: er-burn
   title: 일산화탄소/시안 중독
@@ -65942,26 +67359,86 @@
       chunks: ["The pulse oximeter", "can read normal", "even with this", "poisoning", "."]
       words: [w-oximeter, w-read, w-normal, w-poison]
       goal: 1
+      tag: "측정 한계"
+      icon: "monitor"
+      why: "even with로 정상 수치와 위험이 동시에 가능하다는 반전을 말해요. 일산화탄소는 헤모글로빈에 붙어도 기계가 산소로 읽어서 포화도가 정상으로 나올 수 있어요."
+      decoy: "if you are calm"
+      distractorsKo: ["센서가 손가락에 잘 닿는지 볼게요", "검사 결과는 의사 선생님이 설명해 드릴 거예요"]
+      blank:
+        answer: "normal"
+        options:
+          - {en: "blank"}
+          - {en: "normal"}
+          - {en: "low"}
+          - {en: "fast"}
     - en: "We're giving you high-flow oxygen right away."
       ko: "고농도 산소를 바로 드리고 있어요."
       chunks: ["We're giving you", "high-flow oxygen", "right away", "."]
       words: [w-give, w-oxygen, w-away]
       goal: 2
+      tag: "산소 투여"
+      icon: "me"
+      why: "right away로 지금 바로 한다고 알려요. 일산화탄소 중독에서는 고농도 산소가 헤모글로빈에 붙은 일산화탄소를 떼어내는 속도를 높여요."
+      decoy: "if you ask"
+      distractorsKo: ["마스크가 답답하면 말씀해 주세요", "마스크를 쓴 채로 편하게 숨 쉬세요"]
+      blank:
+        answer: "oxygen"
+        options:
+          - {en: "steam"}
+          - {en: "smoke"}
+          - {en: "oxygen"}
+          - {en: "nitrogen"}
     - en: "Confusion and headache after a fire are important warning signs."
       ko: "화재 후 혼돈과 두통은 중요한 경고 신호예요."
       chunks: ["Confusion and headache", "after a fire", "are important", "warning signs", "."]
       words: [w-confusion, w-headache, w-fire, w-important, w-warning, w-sign]
       goal: 1
+      tag: "위험 신호"
+      icon: "bell"
+      why: "important warning signs로 놓치기 쉬운 증상이 중요하다고 짚어요. 화재 뒤 두통과 혼돈은 일산화탄소나 시안화물 중독의 대표 증상이에요."
+      decoy: "usually harmless"
+      distractorsKo: ["어지러우면 바로 눕혀 드릴게요", "혼돈이 있으면 가족에게 연락해 둘게요"]
+      blank:
+        answer: "fire"
+        options:
+          - {en: "nap"}
+          - {en: "meal"}
+          - {en: "trip"}
+          - {en: "fire"}
     - en: "We'll check a blood test for the poison level."
       ko: "중독 수치를 보려고 혈액 검사를 확인할게요."
       chunks: ["We'll check", "a blood test", "for the poison", "level", "."]
       words: [w-check, w-blood, w-test, w-poison, w-level]
       goal: 2
+      tag: "혈액 검사"
+      icon: "lab"
+      why: "blood test와 poison level로 무엇을 재는지 구체적으로 알려요. 일산화탄소는 카복시헤모글로빈을 재는 혈액 검사로 확인해요."
+      decoy: "for the sugar"
+      distractorsKo: ["채혈할 때 따끔할 수 있어요", "동맥혈로 검사해야 할 수도 있어요"]
+      blank:
+        answer: "blood"
+        options:
+          - {en: "blood"}
+          - {en: "saliva"}
+          - {en: "skin"}
+          - {en: "hair"}
     - en: "Your oxygen number can look fine even when you're poisoned."
       ko: "중독됐을 때도 산소 수치는 괜찮아 보일 수 있어요."
       chunks: ["Your oxygen number", "can look fine", "even when", "you're poisoned", "."]
       words: [w-oxygen, w-number, w-look, w-poison]
       goal: 1
+      tag: "수치 해석"
+      icon: "monitor"
+      why: "can look fine even when…으로 수치가 정상이어도 안심할 수 없다고 짚어요. 일산화탄소가 붙은 헤모글로빈도 산소처럼 읽혀서 포화도가 높게 나올 수 있어요."
+      decoy: "after you leave"
+      distractorsKo: ["산소 수치는 계속 지켜볼게요", "가족에게 중독 사실을 알려 드릴게요"]
+      blank:
+        answer: "oxygen"
+        options:
+          - {en: "sugar"}
+          - {en: "oxygen"}
+          - {en: "potassium"}
+          - {en: "blood pressure"}
   nuance:
   - kind: slider
     words:
@@ -65996,6 +67473,29 @@
       so he's fine: 정상 SpO2 함정에 그대로 빠진 보고다.
       so we can take the oxygen off: 위험하다 — CO 중독이 의심되면 고농도 산소를 유지한다.
     why: CO 중독은 SpO2가 아니라 CO-oximetry로 잰 COHb 수치로 확인해요. 수치가 나오기 전에도 고농도 산소를 먼저 줘요.
+    ko: SpO2는 99%지만 일산화탄소 중독에서는 거짓으로 정상일 수 있어요 — 화재 후 두통과 혼돈이 있어요
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: CO 중독 4문장 순서
+    why: 측정기가 정상으로 나올 수 있다고 알리고, 그래서 산소를 바로 주고, 혈액 검사로 확인한 뒤, 그 결과가 두통·혼돈의 원인을 알려 준다고 닫아요. 'So'·'it'·'Your results'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: The pulse oximeter can read normal even with this poisoning.
+      icon: monitor
+      ko: 산소포화도 측정기는 이런 중독에도 정상으로 나타날 수 있어요
+      note: 한계
+    - en: So we're giving you high-flow oxygen right away.
+      icon: me
+      ko: 그래서 고농도 산소를 바로 드리고 있어요
+      note: 산소
+    - en: To confirm it, we'll check a blood test for the poison level.
+      icon: lab
+      ko: 확인하려고 중독 수치를 보는 혈액 검사를 할게요
+      note: 검사
+    - en: Your results will show whether the poison is behind your headache and confusion.
+      icon: bulb
+      ko: 결과로 중독이 두통과 혼돈의 원인인지 알 수 있어요
+      note: 결과
 
 - theme: er-burn
   title: 흉부 원주형 화상 환기장애
@@ -66020,26 +67520,86 @@
       chunks: ["The burn", "around your chest", "is restricting", "your breathing", "."]
       words: [w-burn, w-chest, w-restrict, w-breathe]
       goal: 1
+      tag: "상태 설명"
+      icon: "faceWorried"
+      why: "restricting으로 화상이 숨쉬기를 조인다는 원인과 결과를 한 문장에 말해요. 가슴을 두른 딱딱한 가피는 가슴이 부풀지 못하게 해서 호흡이 힘들어져요."
+      decoy: "is relaxing"
+      distractorsKo: ["화상 때문에 가슴이 아플 수 있어요", "산소는 계속 드리고 있어요"]
+      blank:
+        answer: "restricting"
+        options:
+          - {en: "soothing"}
+          - {en: "supporting"}
+          - {en: "restricting"}
+          - {en: "improving"}
     - en: "We may make small cuts in the burned skin to let it expand."
       ko: "피부가 팽창하도록 화상 입은 피부에 작은 절개를 낼 수도 있어요."
       chunks: ["We may make", "small cuts", "in the burned skin", "to let it expand", "."]
       words: [w-small, w-cut, w-burn, w-skin, w-expand]
       goal: 2
+      tag: "절개 안내"
+      icon: "scalpel"
+      why: "We may…로 확정이 아닌 가능성으로 말해요. 가피절개는 조인 가피를 따라 길고 얕게 갈라서 가슴이 다시 부풀 수 있게 해요."
+      decoy: "to let it dry"
+      distractorsKo: ["절개 전에 통증 약을 충분히 드릴게요", "가슴 사진을 먼저 찍어 볼게요"]
+      blank:
+        answer: "expand"
+        options:
+          - {en: "shrink"}
+          - {en: "harden"}
+          - {en: "close"}
+          - {en: "expand"}
     - en: "This will help your chest move so you can breathe."
       ko: "이렇게 하면 가슴이 움직여서 숨을 쉴 수 있어요."
       chunks: ["This will help", "your chest move", "so you can", "breathe", "."]
       words: [w-help, w-chest, w-move, w-breathe]
       goal: 1
+      tag: "이유 설명"
+      icon: "bulb"
+      why: "This will help…so로 처치가 가져올 변화를 먼저 말해요. 가슴이 움직일 수 있어야 폐가 부풀어서 숨을 쉴 수 있어요."
+      decoy: "so you can sleep"
+      distractorsKo: ["숨쉬기가 편해지면 말씀해 주세요", "산소 수치는 계속 재고 있어요"]
+      blank:
+        answer: "move"
+        options:
+          - {en: "move"}
+          - {en: "freeze"}
+          - {en: "shrink"}
+          - {en: "harden"}
     - en: "It's hard to take a full breath when your chest feels tight."
       ko: "가슴이 조이면 숨을 완전히 들이쉬기 힘들어요."
       chunks: ["It's hard", "to take a full breath", "when your chest", "feels tight", "."]
       words: [w-hard, w-full, w-breathe, w-chest, w-feel, w-tight]
       goal: 1
+      tag: "공감"
+      icon: "faceWorried"
+      why: "It's hard로 환자의 힘든 점을 먼저 인정하는 공감 표현이에요. 가슴이 조이면 깊이 들이쉬기 어려운 게 당연하다고 말해 불안을 덜어요."
+      decoy: "at night"
+      distractorsKo: ["숨이 가쁘면 침대 머리를 올려 드릴게요", "가슴을 한 번 눌러 볼게요"]
+      blank:
+        answer: "tight"
+        options:
+          - {en: "light"}
+          - {en: "tight"}
+          - {en: "loose"}
+          - {en: "empty"}
     - en: "We may need small cuts to help your chest expand."
       ko: "가슴이 팽창하도록 작은 절개가 필요할 수도 있어요."
       chunks: ["We may need", "small cuts", "to help", "your chest expand", "."]
       words: [w-need, w-small, w-cut, w-help, w-chest, w-expand]
       goal: 2
+      tag: "절개 필요성"
+      icon: "scalpel"
+      why: "may need…to로 필요하다면 하게 될 일을 목적과 함께 말해요. 환기가 나아지지 않으면 의사가 가슴 둘레의 가피를 길게 절개해 호흡 운동을 되살려요."
+      decoy: "to cover your chest"
+      distractorsKo: ["의사 선생님이 절개 부위를 설명해 드릴 거예요", "절개 부위는 거즈로 덮을 거예요"]
+      blank:
+        answer: "expand"
+        options:
+          - {en: "stop"}
+          - {en: "sink"}
+          - {en: "expand"}
+          - {en: "shrink"}
   nuance:
   - kind: pair
     words:
@@ -66075,6 +67635,30 @@
       ok: false
       fix: The burned skin around your chest is tight, so it's hard for your chest to move when you breathe.
     why: '''circumferential eschar''·''chest wall excursion''은 의료진 말이에요. 환자에게는 탄 피부가 가슴을 조여 숨쉬기 힘들다는 것을 쉬운 말로 전해요.'
+    word: circumferential
+    ko: 둘레를 감싼(원주형)
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 흉부 화상 4문장 순서
+    why: 화상이 숨쉬기를 조인다고 알리고, 가슴이 이렇게 조이면 깊은 숨이 힘들다고 공감하고, 그래서 절개가 필요할 수 있다고 하고, 그것이 가슴 움직임을 돕는다고 닫아요. 'this tight'·"That's why"·'This'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: The burn around your chest is restricting your breathing.
+      icon: faceWorried
+      ko: 가슴 주변 화상이 호흡을 제한하고 있어요
+      note: 상태
+    - en: I know it's hard to take a full breath with your chest this tight.
+      icon: faceWorried
+      ko: 가슴이 이렇게 조이면 숨을 다 들이쉬기 힘드시죠
+      note: 공감
+    - en: That's why we may need small cuts to help your chest expand.
+      icon: scalpel
+      ko: 그래서 가슴이 팽창하도록 작은 절개가 필요할 수도 있어요
+      note: 절개
+    - en: This will help your chest move so you can breathe.
+      icon: bulb
+      ko: 이렇게 하면 가슴이 움직여서 숨을 쉴 수 있어요
+      note: 효과
 
 - theme: er-burn
   title: 전기화상 횡문근융해
@@ -66099,26 +67683,86 @@
       chunks: ["Dark urine", "can mean", "your muscles", "are breaking down", "."]
       words: [w-dark, w-urine, w-mean, w-muscle, w-break]
       goal: 1
+      tag: "소견 해석"
+      icon: "lab"
+      why: "can mean으로 단정하지 않고 가능성으로 말해요. 근육이 깨지면 미오글로빈이 소변으로 나와 콜라색처럼 어두워져요."
+      decoy: "from the medicine"
+      distractorsKo: ["소변은 모아서 검사실로 보낼게요", "소변량을 시간마다 재고 있어요"]
+      blank:
+        answer: "Dark"
+        options:
+          - {en: "Clear"}
+          - {en: "Pale"}
+          - {en: "Cold"}
+          - {en: "Dark"}
     - en: "We're giving fluids to protect your kidneys."
       ko: "신장을 보호하려고 수액을 드리고 있어요."
       chunks: ["We're giving fluids", "to protect", "your kidneys", "."]
       words: [w-give, w-fluid, w-protect, w-kidney]
       goal: 2
+      tag: "수액 목적"
+      icon: "shield"
+      why: "to protect로 수액의 목적을 밝혀요. 수액으로 소변을 충분히 내보내 근육 단백질이 신장을 막지 않게 해요."
+      decoy: "your liver"
+      distractorsKo: ["수액을 맞으면 소변을 자주 볼 수 있어요", "소변 색이 맑아지는지 지켜볼게요"]
+      blank:
+        answer: "protect"
+        options:
+          - {en: "protect"}
+          - {en: "warm"}
+          - {en: "cool"}
+          - {en: "feed"}
     - en: "We're watching your potassium and heart rhythm closely."
       ko: "칼륨 수치와 심장 리듬을 면밀히 지켜보고 있어요."
       chunks: ["We're watching", "your potassium", "and heart rhythm closely", "."]
       words: [w-watch, w-potassium, w-heart, w-rhythm, w-closely]
       goal: 2
+      tag: "전해질 감시"
+      icon: "monitor"
+      why: "potassium과 heart rhythm을 짝으로 말해 왜 둘을 같이 보는지 전해요. 근육이 깨지면 칼륨이 혈액으로 쏟아져 심장 리듬을 위협할 수 있어요."
+      decoy: "every month"
+      distractorsKo: ["채혈은 몇 시간마다 반복할 거예요", "심장 모니터 소리가 나도 놀라지 마세요"]
+      blank:
+        answer: "potassium"
+        options:
+          - {en: "sodium"}
+          - {en: "potassium"}
+          - {en: "sugar"}
+          - {en: "calcium"}
     - en: "Your muscles broke down after the electrical burn."
       ko: "전기 화상 후에 근육이 파괴됐어요."
       chunks: ["Your muscles broke down", "after", "the electrical burn", "."]
       words: [w-muscle, w-break, w-electrical, w-burn]
       goal: 1
+      tag: "경과 설명"
+      icon: "bulb"
+      why: "after로 원인과 결과를 시간 순서로 이어요. 전류와 열이 근육 세포를 깨뜨려 속의 물질이 혈액과 소변으로 새 나와요."
+      decoy: "after the surgery"
+      distractorsKo: ["근육통이 있는 곳이 어디인지 알려 주세요", "소변이 어두워지면 바로 말씀해 주세요"]
+      blank:
+        answer: "muscles"
+        options:
+          - {en: "hairs"}
+          - {en: "teeth"}
+          - {en: "muscles"}
+          - {en: "nails"}
     - en: "We'll give extra fluids to keep your kidneys safe."
       ko: "신장을 안전하게 지키려고 수액을 더 드릴게요."
       chunks: ["We'll give extra fluids", "to keep", "your kidneys", "safe", "."]
       words: [w-give, w-fluid, w-keep, w-kidney, w-safe]
       goal: 2
+      tag: "수액 증량"
+      icon: "shield"
+      why: "extra로 평소보다 더 많이 준다고 알려 이유를 이해시켜요. 소변량을 충분히 유지해 신장을 지켜요."
+      decoy: "to keep your heart rate up"
+      distractorsKo: ["신장 수치는 피검사로 따로 확인할게요", "수액이 들어갈 때 팔이 부을 수 있어요"]
+      blank:
+        answer: "extra"
+        options:
+          - {en: "less"}
+          - {en: "no"}
+          - {en: "fewer"}
+          - {en: "extra"}
   nuance:
   - kind: slider
     words:
@@ -66155,6 +67799,29 @@
       you have rhabdomyolysis: 의료진 용어라 환자는 알아듣지 못한다.
       your kidneys have failed: 사실보다 앞서 나간 말이다 — 짙은 소변은 신장 손상 위험 신호이지 이미 신부전이라는 뜻은 아니다.
     why: 근육이 부서지면 신장이 다칠 수 있어 수액을 많이 줘요. 환자에게는 무엇이 문제이고 왜 수액을 주는지 쉬운 말로 이어서 말해요.
+    ko: 소변이 어두우면 근육이 파괴되고 있다는 뜻일 수 있어요
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 횡문근융해 4문장 순서
+    why: 어두운 소변이 근육 파괴일 수 있다고 알리고, 그래서 수액을 준다고 하고, 소변이 계속 어두우면 더 준다고 하고, 그 모든 과정 내내 칼륨과 리듬을 본다고 닫아요. "That's why"·'even more'·'Through all of it'이 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: Dark urine can mean your muscles are breaking down.
+      icon: lab
+      ko: 짙은 소변은 근육이 파괴되고 있다는 뜻일 수 있어요
+      note: 해석
+    - en: That's why we're giving fluids to protect your kidneys.
+      icon: shield
+      ko: 그래서 신장을 보호하려고 수액을 드리고 있어요
+      note: 수액
+    - en: If your urine stays dark, we'll give even more.
+      icon: shield
+      ko: 소변이 계속 어두우면 더 드릴게요
+      note: 증량
+    - en: Through all of it, we'll watch your potassium and heart rhythm closely.
+      icon: monitor
+      ko: 그 모든 과정 내내 칼륨과 심장 리듬을 면밀히 지켜볼게요
+      note: 감시
 
 - theme: er-burn
   title: 화상 SBAR 인계
@@ -66179,26 +67846,86 @@
       chunks: ["This is", "a 35-year-old", "with 30 percent", "TBSA burns", "."]
       words: [w-percent, w-burn]
       goal: 1
+      tag: "상황 보고"
+      icon: "board"
+      why: "This is로 시작해 누구 이야기인지 먼저 밝히는 SBAR의 S 문장이에요. 나이와 화상 크기(TBSA)를 첫 줄에 넣으면 받는 사람이 위중도를 바로 알아요."
+      decoy: "with fever"
+      distractorsKo: ["이 환자는 화상센터로 전원 예정입니다", "환자는 현재 통증을 호소하고 있습니다"]
+      blank:
+        answer: "TBSA"
+        options:
+          - {en: "TBSA"}
+          - {en: "BMI"}
+          - {en: "BUN"}
+          - {en: "INR"}
     - en: "We started Parkland fluids and urine output is adequate."
       ko: "Parkland 수액을 시작했고 소변량은 적정합니다."
       chunks: ["We started", "Parkland fluids", "and urine output", "is adequate", "."]
       words: [w-start, w-fluid, w-urine, w-output, w-adequate]
       goal: 1
+      tag: "현재 조치"
+      icon: "lab"
+      why: "한 일과 그 반응을 한 문장에 묶는 보고예요. Parkland는 체중과 화상 크기로 첫 24시간 수액량을 정하는 공식이고, 소변량으로 속도를 조절해요."
+      decoy: "and the burn is covered"
+      distractorsKo: ["수액 속도를 소변량에 맞춰 조절하고 있습니다", "정맥 라인은 두 개 확보했습니다"]
+      blank:
+        answer: "adequate"
+        options:
+          - {en: "low"}
+          - {en: "adequate"}
+          - {en: "absent"}
+          - {en: "excessive"}
     - en: "The airway is patent but we're watching for swelling."
       ko: "기도는 열려 있지만 부종을 지켜보고 있습니다."
       chunks: ["The airway", "is patent", "but we're watching", "for swelling", "."]
       words: [w-airway, w-patent, w-watch, w-swell]
       goal: 2
+      tag: "기도 상태"
+      icon: "stetho"
+      why: "but으로 현재 상태와 우려를 한 문장에 대비시켜요. patent는 지금 열려 있어 공기가 통한다는 의료진 용어고, 부종 가능성 때문에 계속 봐요."
+      decoy: "waiting for the CT"
+      distractorsKo: ["기도 삽관은 이미 완료했습니다", "산소는 마스크로 투여 중입니다"]
+      blank:
+        answer: "patent"
+        options:
+          - {en: "closed"}
+          - {en: "blocked"}
+          - {en: "patent"}
+          - {en: "sealed"}
     - en: "Burn size is about thirty percent, mostly partial thickness."
       ko: "화상 크기는 약 30퍼센트이고 대부분 부분층입니다."
       chunks: ["Burn size is", "about thirty percent,", "mostly partial", "thickness", "."]
       words: [w-burn, w-size, w-percent, w-partial, w-thickness]
       goal: 1
+      tag: "화상 규모"
+      icon: "chartup"
+      why: "about thirty percent와 mostly partial thickness로 크기와 깊이를 숫자와 분류어로 압축해요. 부분층은 표피와 진피 일부가 손상된 화상이에요."
+      decoy: "and deep scars"
+      distractorsKo: ["화상은 얼굴과 손에 집중돼 있습니다", "손과 얼굴 화상은 없습니다"]
+      blank:
+        answer: "partial"
+        options:
+          - {en: "full"}
+          - {en: "split"}
+          - {en: "total"}
+          - {en: "partial"}
     - en: "Vitals are stable and we're ready for transfer."
       ko: "활력징후는 안정적이고 이송 준비가 되었습니다."
       chunks: ["Vitals are stable", "and we're ready", "for transfer", "."]
       words: [w-stable, w-ready, w-transfer]
       goal: 2
+      tag: "인계 마무리"
+      icon: "check"
+      why: "stable과 ready for transfer로 현재 상태와 다음 단계를 한 문장에 닫아요. 받는 쪽이 이송 직전 상태를 가장 먼저 알고 싶어 해요."
+      decoy: "and she's asleep"
+      distractorsKo: ["활력징후는 다시 확인할 예정입니다", "이송 구급차가 도착했습니다"]
+      blank:
+        answer: "stable"
+        options:
+          - {en: "stable"}
+          - {en: "dropping"}
+          - {en: "rising"}
+          - {en: "missing"}
   nuance:
   - kind: pair
     words:
@@ -66239,6 +67966,29 @@
       fine: 막연해서 무엇을 확인했는지 전해지지 않는다.
       totally safe: 흡입 손상의 기도 부종은 진행할 수 있어, 뒤따르는 '부종을 지켜보는 중'과도 맞지 않는다.
     why: 인계에서는 기도가 지금 열려 있다는 사실(patent)과 부종 위험을 함께 말해요.
+    ko: 기도는 열려 있지만 부종을 지켜보고 있습니다
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 화상 SBAR 4문장 순서
+    why: 환자와 화상 크기로 시작하고, 그 화상에 한 일을 말하고, 수액 말고 기도 상태를 말한 뒤, 전체 상태와 이송 준비로 닫아요. 'for that'·'Besides the fluids'·'Overall'이 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: This is a 35-year-old with 30 percent TBSA burns.
+      icon: board
+      ko: 35세 환자로 체표면적 30퍼센트 화상입니다
+      note: 상황
+    - en: We started Parkland fluids for that, and urine output is adequate.
+      icon: lab
+      ko: 그에 대해 Parkland 수액을 시작했고 소변량은 적정합니다
+      note: 조치
+    - en: Besides the fluids, the airway is patent, but we're watching for swelling.
+      icon: stetho
+      ko: 수액 외에 기도는 열려 있지만 부종을 지켜보고 있습니다
+      note: 기도
+    - en: Overall, vitals are stable and we're ready for transfer.
+      icon: check
+      ko: 전반적으로 활력징후는 안정적이고 이송 준비가 되었습니다
+      note: 마무리
 
 # ============================================================
 # er-bleeding-wound (출혈·상처 처치)
