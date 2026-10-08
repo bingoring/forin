@@ -89,7 +89,7 @@ export function SentSheets({ sheets, name, fallbackIcon, onConfused, onRepeat, o
       <LessonSheet testID={`sent-sheet-${k}-${mode}`} dim={mode === 'next'} tag={tag || name}
         typeLabel={r ? t('sent.explained', { type: typeName }) : typeName} n={k + 1} total={N}>
         <SentSheetBody card={c} icon={icon} answer={live ? answer : null} onAnswer={setAnswer} result={r}
-          plays={plays} onPlay={() => play(c)} interactive={mode === 'current'} />
+          plays={live ? plays : 0} onPlay={() => play(c)} interactive={mode === 'current'} />
         {!!r && <SentReveal card={c} result={r} onSay={() => say(sheetLine(c))} onRepeat={() => onRepeat(sheetLine(c))} />}
       </LessonSheet>
     );

@@ -63,11 +63,12 @@ export function SentReel({ item, feel, feelSave, onFeel, onStart, onExit }: {
       </View>
 
       <View style={{ position: 'absolute', left: 24, right: 24, top: frameTop(176) }}>
-        <View style={{ flexDirection: 'row', alignItems: 'flex-end', gap: 8 }}>
+        {/* NU:76 `align-items: baseline` — the speaker (no text) sits on the word's baseline by its bottom edge. */}
+        <View style={{ flexDirection: 'row', alignItems: 'baseline', gap: 8 }}>
           <Text style={{ fontFamily: nbFonts.monoBold, fontSize: 24, color: nb.ink }}>{word}</Text>
-          <Pressable testID="sent-reel-say" onPress={() => say(word)} hitSlop={8} style={{ marginBottom: 5 }}><NbIcon name="speaker" size={16} /></Pressable>
+          <Pressable testID="sent-reel-say" onPress={() => say(word)} hitSlop={8}><NbIcon name="speaker" size={16} /></Pressable>
           <View style={{ flex: 1 }} />
-          <Text testID="sent-reel-count" style={[nbText.monoBold(11, nb.soft), { marginBottom: 5 }]}>{`${Math.min(i + 1, n)} / ${n}`}</Text>
+          <Text testID="sent-reel-count" style={nbText.monoBold(11, nb.soft)}>{`${Math.min(i + 1, n)} / ${n}`}</Text>
         </View>
         <View style={{ position: 'relative', height: 300, marginTop: 14 }}>
           {!done && i + 2 < n && <BackCard testID="sent-reel-back2" inset={8} rot={2} bg="#F7F1E1" />}
