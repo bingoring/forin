@@ -5916,7 +5916,7 @@ situations:
     tag: 사정 필요
     icon: stetho
     why: will assess you first로 결정 전에 평가가 먼저라는 순서를 알려요. 보호 중인 환자에게 평가가 끝나면 나간다고 약속하지 않고, 평가 뒤 다음 단계를 이야기한다고만 말해요.
-    decoy: at the clinic
+    decoy: let you go
     distractorsKo:
     - 이쪽에서 잠깐 기다려 주세요
     - 담당 의사 선생님을 불러 드릴게요
@@ -6361,33 +6361,33 @@ situations:
       - en: simple
       - en: quick
       - en: wrong
-  - en: I want to double-check a few things with you first.
-    ko: 먼저 몇 가지만 같이 다시 확인하고 싶어요.
+  - en: Can I ask you a few more questions about how you've been feeling?
+    ko: 요즘 기분이 어떠셨는지 몇 가지 더 여쭤봐도 될까요?
     chunks:
-    - I want to double-check
-    - a few things
-    - with you
-    - first
-    - .
+    - Can I ask you
+    - a few more questions
+    - about how
+    - you've been feeling
+    - '?'
     words:
-    - w-want
-    - w-check
-    - w-thing
+    - w-ask
+    - w-question
+    - w-feel
     goal: 1
-    tag: 확인 요청
-    icon: check
-    why: with you first로 확인이 먼저라는 순서를 말해요. 자살 위험을 부정하는 환자도 위험을 다시 확인하고, 퇴원 결정은 평가 뒤에 의사가 해요.
-    decoy: your medications
+    tag: 추가 질문
+    icon: speech
+    why: Can I ask …?로 허락을 구하며 질문을 이어 가요. 괜찮다고 말하는 환자에게도 요즘 어떻게 지냈는지 열린 질문을 더 하면 숨은 위험을 찾을 수 있어요. 퇴원 결정은 평가 뒤에 의사가 해요.
+    decoy: is fine
     distractorsKo:
     - 오늘 밤 같이 계실 분이 있으세요?
     - 집에는 몇 분이나 같이 사세요?
     blank:
-      answer: things
+      answer: ask
       options:
-      - en: things
-      - en: minutes
-      - en: people
-      - en: rooms
+      - en: ask
+      - en: give
+      - en: show
+      - en: hand
   - en: It's okay to say more than fine if that's true for you.
     ko: 괜찮다는 말로 다 담기지 않는다면, 그렇게 말씀하셔도 돼요.
     chunks:
@@ -7108,8 +7108,8 @@ situations:
       options:
       - en: safe
       - en: sorry
-      - en: busy
-      - en: quiet
+      - en: warm
+      - en: fed
   - en: You don't have to talk to them if you're not comfortable.
     ko: 편하지 않으면 그 분과 굳이 이야기하지 않아도 돼요.
     chunks:
@@ -8320,7 +8320,7 @@ situations:
     tag: 노력 알림
     icon: handshake2
     why: everything we can로 노력의 범위를 말하되 as soon as possible이라 시간을 약속하지는 않아요. 언제 날지 모르는 병상을 두고 지킬 수 있는 말만 해요.
-    decoy: in the lobby
+    decoy: is ready now
     distractorsKo:
     - 병상이 나기 전까지는 이곳에 계실 거예요
     - 소식이 있으면 바로 알려 드릴게요

@@ -993,6 +993,25 @@ words:
   decoyChips:
   - sit
   - bolt
+- id: w-sit
+  en: sit
+  ipa: /sɪt/
+  ko: 앉다
+  icon: me
+  example: Which part of the car were you sitting in?
+  exKo: 차 안에서 어느 자리에 앉아 계셨나요?
+  cue: 사고 때 차 안 어디에 앉아 있었는지 물을 때 — 'were you ___ting in'
+  tag: 수상기전
+  distractorsEn:
+  - stand
+  - lie
+  distractorsKo:
+  - 서다
+  - 눕다
+  chips:
+  - - sit
+  decoyChips:
+  - set
 - id: w-throw
   en: thrown
   ipa: /θroʊn/
@@ -3077,7 +3096,7 @@ situations:
     tag: 호흡 확인
     icon: stetho
     why: for me를 붙이면 지시가 부탁처럼 들려요. 숨쉴 때의 통증은 갈비뼈 골절이나 폐 손상 같은 호흡 문제의 단서라 B 단계에서 확인해요.
-    decoy: all at once
+    decoy: breathe deep
     distractorsKo:
     - 목이 아픈지 말씀해 주세요
     - 오른팔을 한번 살펴볼게요
@@ -3262,7 +3281,7 @@ situations:
     tag: 움직임 통제
     icon: lock
     why: Please don't …로 금지를 정중하게 시작하고 for me로 부탁처럼 마무리해요. 경추 손상이 의심되면 환자가 스스로 목을 움직이다 척수를 더 다칠 수 있어서 가만히 있게 해요.
-    decoy: to the side
+    decoy: is fine
     distractorsKo:
     - 눈을 감고 계세요
     - 팔을 옆으로 펴 주세요
@@ -3507,17 +3526,17 @@ situations:
     tag: 증상 문진
     icon: me
     why: right now를 붙이면 몸을 움직이게 하지 않고 지금 상태만 물어요. 경추를 확인하기 전의 다발외상 환자에게는 머리를 들게 하지 않아요. 가만히 있는데도 어지럽거나 핑 도는 느낌이 있으면 혈압이 떨어졌을 수 있다는 단서예요.
-    decoy: in the car
+    decoy: is normal
     distractorsKo:
     - 지금 목이 아프세요?
     - 지금 구역질이 나세요?
     blank:
-      answer: dizzy
+      answer: feel
       options:
-      - en: nauseous
-      - en: sleepy
-      - en: sore
-      - en: dizzy
+      - en: feel
+      - en: look
+      - en: sound
+      - en: smell
   - en: Your heart rate is high — we're watching you closely.
     ko: 심박수가 높아서—세심히 지켜보고 있어요.
     chunks:
@@ -3971,7 +3990,8 @@ situations:
     - were you
     - sitting in
     - '?'
-    words: []
+    words:
+    - w-sit
     goal: 2
     tag: 좌석 위치
     icon: me
@@ -4759,7 +4779,7 @@ situations:
     tag: 약 목록
     icon: pill
     why: even the ones in small doses로 적은 양이라고 빼놓지 않게 미리 막아요. 소량의 아스피린이나 보충제도 출혈에 영향을 줄 수 있어서 전부 알아야 해요.
-    decoy: from home
+    decoy: small dose ones
     distractorsKo:
     - 약 부작용이 있었는지 말씀해 주세요
     - 약을 어디서 받으셨는지 말씀해 주세요
@@ -6503,7 +6523,7 @@ situations:
     tag: 맥박 확인
     icon: stetho
     why: now와 hold를 짧게 붙여 말해 압박을 잠깐 멈추라는 신호를 명확히 해요. 맥박 확인 때는 압박을 오래 멈추지 않도록 시간을 짧게 잡아요.
-    decoy: Rhythm check
+    decoy: Pulse is
     distractorsKo:
     - 지금 리듬 확인—충격 준비
     - 지금 약 투여—압박 계속
@@ -6790,7 +6810,7 @@ situations:
       icon: lab
       ko: 그 때문에 혈액 두 팩 투여, 현재 혈압 안정되는 중
       note: 치료
-    - en: Even with the BP stabilizing, watching for internal bleeding—next scan in an hour.
+    - en: Even with the BP stabilizing, watching for internal bleeding — next scan in an hour.
       icon: calendar
       ko: 혈압이 안정돼도 내부출혈 관찰 중—다음 스캔은 한 시간 후
       note: 계획
