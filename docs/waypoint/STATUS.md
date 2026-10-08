@@ -23,6 +23,7 @@
 > 합치기는 정본과 같은 블록을 원문 그대로 두고 v46은 `--replace`로만, `export_dept_lessons.py`(바탕 뽑기·`--roundtrip` 바이트 동일 검사,
 > ER·ICU·OR 동일). 지시서·파이프라인 "v46 보강" 절. 커밋 `af9c086`·`eb7948f`·`8c2cbef`·`d32afd4`·`5067568`·`fbeed86`.
 > 보고 [`t5-report.md`](02-construction/lesson-fidelity-v46/t5-report.md). 남은 것: ER 저작(결정 14 파이프라인).
+> **T3 STEP 1 단어장 완료(2026-10-08):** WordStudyLive 1:1 — 낱장 묶음에 올려 판정 뒤 좌/우 뜯김→다음 장 rise, 오답 흔들림, 해설 nb-reveal·이중선 도장 nb-ok, 헤더(나가기·초록 STEP 태그, StepTrack 뺌), 진행 칸 색 전환, 헤드라인 문장 안 형광펜(`MarkedText`), 조각별 빼기·빗금·하드 그림자·내 답, 저울 그라디언트 축·점 .15s, 짝 글로우·→·예고 60%, STEP 2 버튼 상시. 변이 22건 확인. 남은 차이: 보기 섞음(미승인)·글꼴 굵기(T1)·저울/짝 `ko`·`icon` 저작(T5). 커밋 `b9a7731`. 보고 [`t3-report.md`](02-construction/lesson-fidelity-v46/t3-report.md).
 > **T4 STEP 2 완료(2026-10-08):** 아트보드 순서로 화면 분리 — 릴(뒷카드 2·swipe-out 380→in·감상 칩 다시 고르기/저장 1회) → 문장장
 > (SheetStack, listen·build·blank·listen·order·build 주기, 다시 듣기 실제 2회, 해설·이중선 도장·흔들림·좌/우 뜯김·DONE 집계) → C5 → C6 → C'(점수 원).
 > 문장 헷갈려요 API `POST /me/lesson/{id}/sentences/confused`, 문장 안 형광펜 `NbInline`(아래 45%). 커밋 `4e0fb48`·`6b9b32c`·`3a6adcb`.
