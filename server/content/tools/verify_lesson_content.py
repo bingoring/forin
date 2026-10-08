@@ -47,6 +47,9 @@ v46 (학습 화면 핸드오프 1:1 — `lesson-fidelity-v46/build-spec-index.md
         en에 낱말 경계로 정확히 한 번 나오고, options는 4개·서로 다르고·answer를 포함한다. 선택지에 icon을 쓰지
         않는다 — T8 사용자 결정으로 선택지는 STEP 1 고르기처럼 아이콘 없는 줄로 그린다(아이콘 2×2 카드는
         정답 아이콘이 튀고 판정 표시 check·cross가 답을 드러내는 문제만 만들었다)
+    V20 문장 distractorsKo가 정답 ko와 길이가 비슷하다 — 글자 수(공백 뺌)가 1.25배 이내이거나 3자 이내 차이
+        (2026-10-09 사용자 결정: 하나만 길거나 짧으면 듣지 않고도 고른다). W16 단어의 distractorsEn·Ko, W17 빈칸 선택지에
+        같은 기준(경고).
     V19 상황의 order(순서 배열 카드)는 ko·why가 있고 줄이 정확히 4개, 줄마다 en·icon이 있고 en이
         겹치지 않는다. tag·icon과 줄의 ko·note는 있으면 비어 있지 않다. 문장 없는 상황에 order만 있으면 오류
     V14 (더함) context의 word와 ko는 함께 있거나 함께 없다. swap의 ko는 있으면 비어 있지 않다
@@ -980,6 +983,8 @@ def check_word_v45(w: dict) -> list[tuple[str, str]]:
                 out.append(("V13", f"word {wid!r}: {k} option {o!r} is the answer"))
             elif n in seen:
                 out.append(("V13", f"word {wid!r}: {k} option {o!r} repeats"))
+            elif length_tell(answer, o):
+                out.append(("W16", f"word {wid!r}: {k} option {o!r} is much longer or shorter than {answer!r} — length gives the answer away"))
             seen.add(n)
     real = {_norm(f) for word in chips if isinstance(word, list) for f in word}
     for d in w.get("decoyChips") or []:
@@ -1210,6 +1215,8 @@ def check_sentence_v46(i: int, sent: dict) -> list[tuple[str, str]]:
                 out.append(("V18", f"{at}: distractorsKo option {o!r} is the sentence's own ko"))
             elif n in seen:
                 out.append(("V18", f"{at}: distractorsKo option {o!r} repeats"))
+            elif length_tell(ko, o):
+                out.append(("V20", f"{at}: distractorsKo option {o!r} is much longer or shorter than the ko {ko!r} — length gives the answer away"))
             seen.add(n)
     if "blank" in sent:
         if not isinstance(blank, dict):
@@ -1242,6 +1249,9 @@ def check_sentence_v46(i: int, sent: dict) -> list[tuple[str, str]]:
                 out.append(("V18", f"{at}: blank option {o.get('en')!r} has an icon — options are drawn as rows without icons now"))
         if not offered:
             out.append(("V18", f"{at}: blank answer {answer!r} is not one of the options"))
+        wrong = [str(o.get("en") or "") for o in opts if isinstance(o, dict) and o.get("en") and o.get("en") != answer]
+        if offered and wrong and all(length_tell(answer, w) for w in wrong):
+            out.append(("W17", f"{at}: blank answer {answer!r} is much longer or shorter than every other option {wrong!r}"))
     return out
 
 
@@ -1290,6 +1300,17 @@ def check_order(order) -> list[tuple[str, str]]:
 
 V44_WORD_KEYS = ("id", "en", "ko", "ipa", "icon", "example")
 V44_SENTENCE_KEYS = ("en", "ko", "chunks", "words", "goal")
+
+
+LEN_RATIO, LEN_SLACK = 1.25, 3
+
+
+def length_tell(answer: str, option: str) -> bool:
+    """V20/W16/W17 — 오답이 정답보다 눈에 띄게 길거나 짧은가(공백 뺀 글자 수, 1.25배 넘고 3자 넘게 차이)."""
+    a, b = len(re.sub(r"\s", "", answer)), len(re.sub(r"\s", "", option))
+    if not a or not b:
+        return False
+    return max(a, b) / min(a, b) > LEN_RATIO and abs(a - b) > LEN_SLACK
 
 
 def load_changes(raw: str) -> tuple[str, list[dict]]:
@@ -1527,7 +1548,7 @@ def verify_dept(
 
             # V18 — v46 낱장 필드(있을 때만)
             for rule, detail in check_sentence_v46(i, sent):
-                violations.append(Violation(dept, theme, title, rule, detail))
+                (v45_warnings if rule.startswith("W") else violations).append(Violation(dept, theme, title, rule, detail))
 
             # V6
             if not isinstance(goal, int) or not (1 <= goal <= len(goals)):
@@ -2207,6 +2228,15 @@ def run_selftest() -> int:
         ("blank option still has an icon", lambda s: s["blank"]["options"][1].update(icon="star")),
     ):
         cases.append((f"V18 ({name})", _LEX_BASE, v46_seed(mut), "V18", False))
+    # V20 — 오답 뜻 길이(공백 뺀 글자 수 1.25배 넘고 3자 넘게 차이면 오류). 경계: 정확히 3자 차이는 통과.
+    cases.append(("V20 (a ko distractor much longer than the ko)", _LEX_BASE,
+                  v46_seed(lambda s: s.update(distractorsKo=["지금 약을 드릴게요", "차트에 기록하고 담당 의사 선생님께도 바로 알려 드렸어요"])), "V20", False))
+    cases.append(("V20 (a ko distractor much shorter than the ko)", _LEX_BASE,
+                  v46_seed(lambda s: s.update(ko="손목 밴드에 적힌 성함과 생년월일을 확인할게요", distractorsKo=["약 드릴게요", "차트에 적힌 성함과 생년월일을 확인할게요"])), "V20", False))
+    cases.append(("V20 edge (exactly 3 characters apart passes — no violations expected)", _LEX_BASE,
+                  v46_seed(lambda s: s.update(ko="밴드 확인", distractorsKo=["차트를 확인할게", "약을 줄게요"])), "", False))
+    cases.append(("W17 (the blank answer is much longer than every other option)", _LEX_BASE,
+                  v46_seed(lambda s: s["blank"].update(options=[{"en": "wristband"}, {"en": "pen"}, {"en": "bed"}, {"en": "cup"}])), "W17", True))
     cases.append(("V11 (bare on as a sentence tag reads as a boolean)", _LEX_BASE, v46_seed(lambda s: s.update(tag=True)), "V11", False))
     for name, mut in (
         ("three lines", lambda o: o["lines"].pop()),
