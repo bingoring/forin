@@ -48,10 +48,10 @@
     tag: "대화 흐름"
     icon: compass
     ko: "임산부 두근거림 4문장 순서"
-    why: "일부 두근거림은 정상이라고 안심시킨 뒤 위험 증상을 묻고, 모니터하겠다고 알리고, 모니터에 보이는 결과를 말합니다. 'To start'·'Thanks'·'the monitor shows'가 앞 줄에 기대어 순서가 하나예요."
+    why: "일부 두근거림은 정상이라고 안심시킨 뒤 위험 증상을 묻고, 모니터하겠다고 알리고, 모니터에 보이는 결과를 말합니다. 'To check it'·'Thanks'·'the monitor shows'가 앞 줄에 기대어 순서가 하나예요."
     lines:
     - {en: "Some racing is normal in pregnancy, but let's check it carefully.", icon: shield, ko: "임신 중 빠른 박동은 어느 정도 정상이지만 신중히 확인해요", note: "안심"}
-    - {en: "To start, any chest pain, fainting, or trouble breathing?", icon: siren, ko: "먼저, 가슴 통증이나 실신, 숨쉬기 힘든 증상이 있나요?", note: "질문"}
+    - {en: "To check it, are you having any chest pain, fainting, or trouble breathing?", icon: siren, ko: "확인하려고 여쭤요, 가슴 통증이나 실신, 숨쉬기 힘든 증상이 있나요?", note: "질문"}
     - {en: "Thanks. We'll monitor your heart and keep both of you safe.", icon: monitor, ko: "고마워요. 심장을 모니터하며 두 분 다 안전하게 지켜드릴게요", note: "모니터"}
     - {en: "From what the monitor shows, your baby's heart rate looks fine, and so does yours.", icon: check, ko: "모니터를 보니 아기 심박수도 좋고 산모님도 마찬가지예요", note: "결과"}
   sw: {ko: "심장을 모니터하면서 두 분 다 안전하게 지켜드릴게요."}
@@ -61,7 +61,7 @@
   - {t: "진정 안내", i: pill, w: "first로 순서를 못 박아 충격 전에 약을 먼저 쓴다고 알려요. 의식이 있는 환자의 심율동전환은 아프지 않도록 먼저 진정제를 쓰는 것이 일반적이에요.", d: "after the shock", k: ["먼저 전기 충격부터 드릴게요", "먼저 물을 드릴게요"], a: "sleepy", o: ["thirsty", "nervous", "hungry"]}
   - {t: "과정 안내", i: bell, w: "while you're sedated로 충격이 진정된 상태에서 일어난다는 점을 말해 줘요. 뒤에 we're right here를 붙이면 환자가 혼자가 아니라는 안심이 전해져요.", d: "after you wake", k: ["깨어 있는 상태에서 충격을 드릴 거예요", "충격은 한 번도 안 드릴 거예요"], a: "quick", o: ["long", "painful", "strong"]}
   - {t: "안심 설명", i: shield, w: "Everything will happen quickly, but …은 빠르게 진행된다는 사실을 솔직히 말하고 but으로 곁에 있다는 점을 붙여요. 속도를 미리 알려 주면 환자가 갑작스러운 움직임에 덜 놀라요.", d: "and slowly", k: ["모든 게 천천히 진행될 거예요", "팀은 밖에서 기다릴 거예요"], a: "team", o: ["family", "machine", "chaplain"]}
-  - {t: "안심 설명", i: check, w: "won't … or …로 두 가지 걱정을 한 번에 지워 줘요. 진정제는 의식을 낮추고 기억을 흐리게 해서 시술 중의 느낌을 기억하지 못하는 경우가 많아요.", d: "or worry about", k: ["잠든 동안에도 충격은 느끼실 거예요", "충격은 깨고 나서 한 번 더 있어요"], a: "remember", o: ["hear", "enjoy", "expect"]}
+  - {t: "안심 설명", i: check, w: "won't … or …로 두 가지 걱정을 한 번에 지워 줘요. 진정제는 의식을 낮추고 기억을 흐리게 해서 시술 중의 느낌을 기억하지 못하는 경우가 많아요.", d: "or worry about", k: ["잠든 동안에도 충격은 느끼실 거예요", "충격은 깨고 나서 한 번 더 있어요"], a: "remember", o: ["hear", "see", "expect"]}
   - {t: "경과 안내", i: chartup, w: "As soon as로 리듬이 돌아오는 즉시라는 시점을 알려 줘요. 빠른 부정맥이 정상 리듬으로 돌아오면 심장이 다시 효율적으로 뛰어서 혈압도 회복되는 경우가 많아요.", d: "even before it", k: ["리듬이 돌아와도 혈압은 계속 낮아요", "혈압이 올라오면 리듬이 사라져요"], a: "resets", o: ["stops", "slows", "worsens"]}
   order:
     tag: "대화 흐름"
@@ -77,9 +77,9 @@
 - title: 심실빈맥(VT) 긴급 대응
   s:
   - {t: "긴급 대응", i: siren, w: "I'm …ing로 지금 하고 있는 행동을 짧게 알려 환자와 주변 사람이 상황을 알게 해요. 위험한 심실빈맥에서는 도움 요청과 제세동 장비 준비를 함께 시작해요.", d: "for lunch", k: ["보호자를 부르고 있어요", "약을 가지러 가고 있어요"], a: "crash cart", o: ["stretcher", "wheelchair", "ventilator"]}
-  - {t: "의식 확인", i: speech, w: "질문을 짧게 던져 환자가 대답하는지로 의식 상태를 확인해요. 위험한 리듬에서는 환자가 말을 하는지 반응하는지가 상태를 가르는 중요한 단서예요.", d: "right now", k: ["눈을 감고 쉬세요", "숨을 크게 쉬어 보세요"], a: "still", o: ["again", "ever", "always"]}
+  - {t: "의식 확인", i: speech, w: "Stay with me는 곁에 있겠다는 말이자 환자가 반응하게 하는 말이에요. 뒤의 짧은 질문에 대답하는지를 보면 의식 상태를 확인할 수 있어요.", d: "right now", k: ["눈을 감고 쉬세요", "숨을 크게 쉬어 보세요"], a: "Stay", o: ["Talk", "Breathe", "Walk"]}
   - {t: "예방 조치", i: bandage, w: "as a precaution은 지금 필요해서라기보다 대비하려고 한다는 뜻이라 환자가 과하게 놀라지 않게 해요. 패드를 미리 붙여 두면 상태가 나빠질 때 바로 전기 치료를 할 수 있어요.", d: "on your back", k: ["가슴에 패드를 붙이면 아플 거예요", "팔에 혈압 커프를 감고 있어요"], a: "pads", o: ["bandages", "magnets", "blankets"]}
-  - {t: "상태 설명", i: siren, w: "dangerously fast처럼 정도 부사를 써서 지금이 평소와 다르다는 심각성을 정직하게 전해요. 환자에게 상황을 솔직히 알려야 협조를 구하기 쉬워요.", d: "very slowly", k: ["심장이 너무 느리게 뛰고 있어요", "심장은 정상으로 뛰고 있어요"], a: "dangerously", o: ["slightly", "normally", "strangely"]}
+  - {t: "상태 설명", i: siren, w: "dangerously fast처럼 정도 부사를 써서 지금이 평소와 다르다는 심각성을 정직하게 전해요. 환자에게 상황을 솔직히 알려야 협조를 구하기 쉬워요.", d: "very slowly", k: ["심장이 너무 느리게 뛰고 있어요", "심장은 정상으로 뛰고 있어요"], a: "dangerously", o: ["slightly", "suddenly", "relatively"]}
   - {t: "도움 안내", i: bell, w: "on the way로 도움이 이미 오고 있다고 알려요. more hands는 '일손'을 뜻하는 관용 표현이라 사람이 더 온다는 말을 쉽게 해요.", d: "to leave", k: ["의사 선생님은 퇴근하셨어요", "도움은 기다리셔야 해요"], a: "doctor", o: ["pharmacist", "chaplain", "technician"]}
   - {t: "목적 설명", i: shield, w: "let us …는 '우리가 ~할 수 있게 해 준다'는 구조라 장비의 목적을 쉽게 설명해요. if we need to를 붙여 반드시 쓴다는 뜻이 아니라 대비라는 점을 전해요.", d: "if we forget", k: ["이 패드는 체온을 재 줘요", "이 패드는 약을 넣어 줘요"], a: "immediately", o: ["slowly", "later", "quietly"]}
   order:
@@ -99,7 +99,7 @@
   - {t: "약 선택", i: pill, w: "certain …은 모든 약이 아니라 일부 약만 피한다는 뜻이라 환자가 치료를 겁내지 않게 해요. WPW에서는 일부 약이 위험할 수 있어 피해요.", d: "all of your pills", k: ["모든 심장약을 두 배로 쓸 거예요", "어떤 약도 쓰지 않을 거예요"], a: "avoid", o: ["use", "repeat", "increase"]}
   - {t: "과거력", i: calendar, w: "this …로 지금 보이는 리듬을 가리키며 전에도 있었는지 물어요. 이전에 비슷한 발작이 있었는지는 원인을 가늠하는 단서예요.", d: "last night", k: ["이런 약을 먹은 적이 있나요?", "이런 리듬이 가족에게도 있나요?"], a: "irregular", o: ["slow", "steady", "painful"]}
   - {t: "원인 설명", i: bulb, w: "means는 '~라는 뜻이다'로 앞 사실에서 결론을 이끌어 내요. WPW는 심방과 심실 사이에 여분의 전기 통로가 있는 상태라 일부 약이 오히려 위험할 수 있어요.", d: "many people", k: ["여분의 통로가 있으면 모든 약이 더 잘 들어요", "여분의 통로는 약과 상관이 없어요"], a: "common", o: ["new", "strong", "expensive"]}
-  - {t: "정보 공유", i: bell, w: "making sure …는 '확실히 ~되도록 하고 있다'는 뜻이라 책임지고 챙긴다는 느낌을 줘요. 모든 팀원이 같은 정보를 알아야 위험한 약을 실수로 쓰지 않아요.", d: "to the family", k: ["WPW는 혼자만 알고 있을게요", "WPW에 대해 가족에게 먼저 알릴게요"], a: "everyone", o: ["nobody", "someone", "anyone"]}
+  - {t: "정보 공유", i: bell, w: "making sure …는 '확실히 ~되도록 하고 있다'는 뜻이라 책임지고 챙긴다는 느낌을 줘요. 모든 팀원이 같은 정보를 알아야 위험한 약을 실수로 쓰지 않아요.", d: "to the family", k: ["WPW는 혼자만 알고 있을게요", "WPW에 대해 가족에게 먼저 알릴게요"], a: "everyone", o: ["nobody", "someone", "only one"]}
   - {t: "목적 설명", i: shield, w: "helps us …로 정보를 알리는 이유를 '우리가 더 잘 고르도록 돕는다'로 말해요. 이유를 알면 환자도 병력을 빠뜨리지 않고 말해 주려 해요.", d: "for the hospital", k: ["이 정보는 보험 청구에 쓰여요", "이 정보는 퇴원 날짜를 정해 줘요"], a: "safest", o: ["fastest", "cheapest", "newest"]}
   order:
     tag: "대화 흐름"

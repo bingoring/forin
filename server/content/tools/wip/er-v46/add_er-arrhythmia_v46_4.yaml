@@ -5,7 +5,7 @@
   - {t: "의식 확인", i: me, w: "if you can …으로 조건을 달아 환자가 할 수 있는 만큼만 반응하게 해요. 말을 못 해도 손을 쥐는 간단한 동작으로 의식과 반응을 확인할 수 있어요.", d: "to answer yes", k: ["제 손을 놓고 눈을 감아 주세요", "제 말이 들리면 대답해 주세요"], a: "hear", o: ["see", "feel", "smell"]}
   - {t: "상황 설명", i: siren, w: "so로 지금 서두르는 이유를 앞 문장과 연결해 줘요. 빠르게 움직이는 이유를 알려 주면 환자와 가족이 분주한 모습에 덜 놀라요.", d: "so we can wait", k: ["심박수가 올라서 천천히 볼게요", "심박수는 정상이라 기다리고 있어요"], a: "quickly", o: ["slowly", "quietly", "later"]}
   - {t: "목적 설명", i: monitor, w: "to keep …으로 장비의 목적을 '유지하려고'로 말해요. 페이싱 패드는 심장이 스스로 박동을 충분히 만들지 못할 때 전기 신호로 박동을 만들어 줘요.", d: "to make it stop", k: ["패드가 심장 소리를 녹음해요", "패드가 통증을 줄여 줘요"], a: "steadily", o: ["wildly", "slowly", "randomly"]}
-  - {t: "협조 요청", i: me, w: "as … as you can은 환자가 할 수 있는 만큼만 부탁해서 부담을 줄여요. while로 지금 준비하는 동안이라는 범위를 알려 주면 환자가 언제까지 기다릴지 알 수 있어요.", d: "and keep talking", k: ["준비하는 동안 걸어다니셔도 돼요", "준비하는 동안 눈을 크게 뜨고 있으세요"], a: "ready", o: ["clean", "quiet", "wrapped"]}
+  - {t: "협조 요청", i: me, w: "as … as you can은 환자가 할 수 있는 만큼만 부탁해서 부담을 줄여요. while로 지금 준비하는 동안이라는 범위를 알려 주면 환자가 언제까지 기다릴지 알 수 있어요.", d: "and keep talking", k: ["준비하는 동안 걸어다니셔도 돼요", "준비하는 동안 눈을 크게 뜨고 있으세요"], a: "ready", o: ["clean", "labeled", "wrapped"]}
   order:
     tag: "대화 흐름"
     icon: compass
@@ -58,7 +58,7 @@
 - title: ICD 반복 쇼크(전기폭풍)
   s:
   - {t: "공감", i: faceWorried, w: "I know that was …로 환자가 방금 겪은 일을 먼저 인정하면 위로가 돼요. 뒤에 we're going to help you now로 이제 도움이 시작된다는 점을 이어요.", d: "but it's over", k: ["그건 아무 일도 아니에요", "곧 퇴원하실 수 있어요"], a: "frightening", o: ["painful", "confusing", "tiring"]}
-  - {t: "치료 안내", i: pill, w: "to calm …로 약의 목적을 알려요. 전기폭풍에서는 반복되는 빠른 리듬과 ICD 충격을 가라앉히기 위해 약을 쓰는 것이 일반적이에요.", d: "to wake it up", k: ["심장을 더 빠르게 해 주는 약을 드릴게요", "통증 부위에 바르는 약을 드릴게요"], a: "calm", o: ["speed", "wake", "test"]}
+  - {t: "치료 안내", i: pill, w: "to calm …로 약의 목적을 알려요. 전기폭풍에서는 반복되는 빠른 리듬과 ICD 충격을 가라앉히기 위해 약을 쓰는 것이 일반적이에요.", d: "to wake it up", k: ["심장을 더 빠르게 해 주는 약을 드릴게요", "통증 부위에 바르는 약을 드릴게요"], a: "calm", o: ["speed", "strengthen", "test"]}
   - {t: "조치 안내", i: gear, w: "and로 지금 진행 중인 두 가지 조치를 함께 알려요. ICD 위에 자석을 대면 기기가 충격을 주는 기능이 잠시 멈추는 경우가 많아요.", d: "and leaving", k: ["팀이 이식형 장치를 새로 넣고 있어요", "팀이 환자의 가족을 부르고 있어요"], a: "magnet", o: ["monitor", "mask", "cuff"]}
   - {t: "이유 설명", i: bulb, w: "even though로 충격이 끔찍하게 느껴지는 것과 장치가 하는 일을 대비시켜요. ICD의 충격은 위험한 빠른 리듬을 끊으려는 치료인 경우가 많아서 이유를 알려 주면 두려움이 줄어요.", d: "because it's broken", k: ["장치가 고장 나서 충격을 주는 거예요", "장치가 환자를 깨우려고 충격을 줘요"], a: "dangerous", o: ["slow", "normal", "familiar"]}
   - {t: "조치 설명", i: shield, w: "until로 자석이 임시 조치라는 점을 알려요. 자석은 충격 기능을 잠시 멈출 뿐이라 원인을 찾은 뒤 기기를 다시 점검해요.", d: "until you leave", k: ["자석이 충격을 더 세게 만들어요", "자석이 영구적으로 장치를 꺼요"], a: "stop", o: ["start", "repeat", "increase"]}

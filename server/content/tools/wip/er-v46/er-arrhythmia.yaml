@@ -2899,7 +2899,7 @@ situations:
       icon: calendar
       ko: 언제부터 두근거림이 시작됐는지 말씀해 주시겠어요?
       note: 시작
-    - en: Thank you. And has it come back since then?
+    - en: Thank you. Has it come back since then?
       icon: redo
       ko: 감사해요. 그 뒤로 다시 왔나요?
       note: 재발
@@ -3240,7 +3240,7 @@ situations:
     blank:
       answer: untuck
       options:
-      - en: iron
+      - en: button
       - en: untuck
       - en: unzip
       - en: fold
@@ -3289,12 +3289,12 @@ situations:
     - 30분쯤 걸릴 수 있어요
     - 검사는 두 번 해야 해요
     blank:
-      answer: takes
+      answer: ten
       options:
-      - en: costs
-      - en: hurts
-      - en: weighs
-      - en: takes
+      - en: thirty
+      - en: sixty
+      - en: five
+      - en: ten
   nuance:
   - kind: pair
     words:
@@ -3451,12 +3451,12 @@ situations:
     - 커피는 심장에 전혀 영향이 없어요
     - 물은 얼마나 드시는지 알려 주세요
     blank:
-      answer: count
+      answer: coffee
       options:
-      - en: cost
-      - en: sound
-      - en: count
-      - en: taste
+      - en: juice
+      - en: milk
+      - en: coffee
+      - en: water
   - en: Let's cut back and see if the fluttering calms down.
     ko: 좀 줄여보고 두근거림이 가라앉는지 봐요.
     chunks:
@@ -3616,10 +3616,10 @@ situations:
     blank:
       answer: chest
       options:
-      - en: tooth
+      - en: ear
       - en: chest
       - en: back
-      - en: ear
+      - en: arm
   - en: Cutting back on caffeine and stress often helps a lot.
     ko: 카페인과 스트레스를 줄이는 게 대체로 많이 도움이 돼요.
     chunks:
@@ -3672,7 +3672,7 @@ situations:
       options:
       - en: nervous
       - en: circulatory
-      - en: breathing
+      - en: digestive
       - en: electrical
   - en: It's not dangerous, but please come back if it feels different.
     ko: 위험하지는 않지만, 느낌이 달라지면 꼭 다시 와주세요.
@@ -3722,10 +3722,10 @@ situations:
     blank:
       answer: reduce
       options:
-      - en: copy
+      - en: hide
       - en: reduce
       - en: cause
-      - en: hide
+      - en: increase
   nuance:
   - kind: slider
     words:
@@ -3891,7 +3891,7 @@ situations:
       - en: stroke
       - en: seizure
       - en: fracture
-      - en: ulcer
+      - en: tumor
   - en: Are you currently taking a blood thinner like warfarin?
     ko: 와파린 같은 혈액 희석제를 지금 드시고 있나요?
     chunks:
@@ -4059,7 +4059,7 @@ situations:
       options:
       - en: slow
       - en: daily
-      - en: oral
+      - en: weekly
       - en: fast
   - en: You may feel a brief flushing or heavy chest — it passes in seconds.
     ko: 잠깐 얼굴이 화끈거리거나 가슴이 무겁게 느껴질 수 있는데 — 몇 초 안에 지나가요.
@@ -4251,12 +4251,12 @@ situations:
     - 어지러울 때 구토도 하셨나요?
     - 어지러울 때 눈이 침침한가요?
     blank:
-      answer: stand
+      answer: lightheaded
       options:
-      - en: eat
-      - en: cough
-      - en: exercise
-      - en: stand
+      - en: nauseous
+      - en: thirsty
+      - en: sleepy
+      - en: lightheaded
   - en: Are you on any blood pressure or heart-rate medications?
     ko: 혈압약이나 심박수 관련 약을 드시고 계신가요?
     chunks:
@@ -4364,8 +4364,8 @@ situations:
       answer: blood pressure
       options:
       - en: allergy
-      - en: antibiotic
-      - en: vitamin
+      - en: cholesterol
+      - en: stomach
       - en: blood pressure
   - en: Let's check your pulse now while you're lying down and again standing up.
     ko: 지금 누운 상태에서 맥박을 확인하고, 일어선 상태에서 다시 확인해볼게요.
@@ -4573,18 +4573,18 @@ situations:
     goal: 2
     tag: 단서 설명
     icon: magnify
-    why: together가 두 증상이 함께 있을 때를 강조해요. point to는 '~를 가리키다'라는 뜻이라 단정이 아니라 단서라는 느낌을 줘요.
+    why: often이 단정을 피해 '그럴 때가 많다'로 말해 줘요. 손 떨림과 빠른 심장 박동이 함께 보이면 갑상선 문제를 의심하는 단서가 돼요.
     decoy: very rarely
     distractorsKo:
     - 손 떨림은 심장이 느리다는 뜻이에요
     - 손 떨림은 늘 불안 때문이에요
     blank:
-      answer: together
+      answer: hands
       options:
-      - en: together
-      - en: alone
-      - en: daily
-      - en: suddenly
+      - en: hands
+      - en: legs
+      - en: knees
+      - en: lips
   - en: We'll draw blood to check your thyroid levels along with your heart rhythm.
     ko: 심장 리듬과 함께 갑상선 수치도 확인하려고 채혈할게요.
     chunks:
@@ -4611,10 +4611,10 @@ situations:
     blank:
       answer: levels
       options:
-      - en: scar
+      - en: history
       - en: levels
       - en: size
-      - en: pills
+      - en: shape
   nuance:
   - kind: pair
     words:
@@ -4875,15 +4875,15 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 증상을 축소하는 환자 응대 4문장 순서
-    why: 환자의 말을 받아 주며 질문을 시작하고, 위험 신호를 묻고, 그 증상이 사소해도 확인할 가치가 있다고 설득하고, 그래서 신중히 확인하자고 마무리합니다. 'First'·'those symptoms'·'Because of that'이 앞 줄을 가리켜요.
+    why: 환자의 말을 받아 주며 질문을 시작하고, 위험 신호를 묻고, 그 증상이 사소해도 확인할 가치가 있다고 설득하고, 그래서 신중히 확인하자고 마무리합니다. 'The first one'·'those symptoms'·'Because of that'이 앞 줄을 가리켜요.
     lines:
     - en: I hear you, but I need to ask a few important questions.
       icon: handshake2
       ko: 말씀 잘 들었어요, 그래도 중요한 질문 몇 가지를 해야 해요
       note: 공감
-    - en: First, did you have any chest pain or come close to fainting?
+    - en: 'The first one: did you have any chest pain or come close to fainting?'
       icon: siren
-      ko: 먼저, 가슴 통증이 있었거나 실신할 뻔했나요?
+      ko: 첫 번째로, 가슴 통증이 있었거나 실신할 뻔했나요?
       note: 질문
     - en: Even if it felt minor, those symptoms are worth checking.
       icon: shield
@@ -5030,7 +5030,7 @@ situations:
       answer: four
       options:
       - en: twenty
-      - en: hundred
+      - en: thirty
       - en: four
       - en: ten
   - en: Your heart rhythm looks steady right now, which is reassuring.
@@ -5097,7 +5097,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 공황·부정맥 감별 4문장 순서
-    why: 공황과 두근거림의 선후를 묻고, 호흡을 같이 늦추겠다고 하고, 구체적인 호흡을 지시하고, 그 호흡 뒤의 리듬을 알려 줍니다. 'Thanks'·'now'·'those breaths'가 앞 줄에 기대어 순서가 하나예요.
+    why: 공황과 두근거림의 선후를 묻고, 호흡을 같이 늦추겠다고 하고, 구체적인 호흡을 지시하고, 그 호흡 뒤의 리듬을 알려 줍니다. 'Thanks'·'For that'·'those breaths'가 앞 줄에 기대어 순서가 하나예요.
     lines:
     - en: Did the racing start with a feeling of panic or fear?
       icon: faceWorried
@@ -5107,9 +5107,9 @@ situations:
       icon: me
       ko: 고마워요. 심장을 확인하는 동안 같이 호흡을 늦춰 봐요
       note: 제안
-    - en: Good, now breathe in slowly with me for a count of four.
+    - en: For that, breathe in slowly with me for a count of four.
       icon: speaker
-      ko: 좋아요, 이제 저와 함께 넷을 세며 천천히 들이쉬어 보세요
+      ko: 그러려면 저와 함께 넷을 세며 천천히 들이쉬어 보세요
       note: 지시
     - en: After those breaths, your rhythm looks steady, which is reassuring.
       icon: check
@@ -5168,7 +5168,7 @@ situations:
       - en: stop
       - en: start
       - en: keep
-      - en: change
+      - en: resume
   - en: Skipping doses can bring the irregular rhythm back.
     ko: 복용을 거르면 불규칙한 리듬이 다시 돌아올 수 있어요.
     chunks:
@@ -5976,15 +5976,15 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 임산부 두근거림 4문장 순서
-    why: 일부 두근거림은 정상이라고 안심시킨 뒤 위험 증상을 묻고, 모니터하겠다고 알리고, 모니터에 보이는 결과를 말합니다. 'To start'·'Thanks'·'the monitor shows'가 앞 줄에 기대어 순서가 하나예요.
+    why: 일부 두근거림은 정상이라고 안심시킨 뒤 위험 증상을 묻고, 모니터하겠다고 알리고, 모니터에 보이는 결과를 말합니다. 'To check it'·'Thanks'·'the monitor shows'가 앞 줄에 기대어 순서가 하나예요.
     lines:
     - en: Some racing is normal in pregnancy, but let's check it carefully.
       icon: shield
       ko: 임신 중 빠른 박동은 어느 정도 정상이지만 신중히 확인해요
       note: 안심
-    - en: To start, any chest pain, fainting, or trouble breathing?
+    - en: To check it, are you having any chest pain, fainting, or trouble breathing?
       icon: siren
-      ko: 먼저, 가슴 통증이나 실신, 숨쉬기 힘든 증상이 있나요?
+      ko: 확인하려고 여쭤요, 가슴 통증이나 실신, 숨쉬기 힘든 증상이 있나요?
       note: 질문
     - en: Thanks. We'll monitor your heart and keep both of you safe.
       icon: monitor
@@ -6126,7 +6126,7 @@ situations:
       answer: remember
       options:
       - en: hear
-      - en: enjoy
+      - en: see
       - en: expect
       - en: remember
   - en: As soon as your rhythm resets, your blood pressure should come back up.
@@ -6256,18 +6256,18 @@ situations:
     goal: 1
     tag: 의식 확인
     icon: speech
-    why: 질문을 짧게 던져 환자가 대답하는지로 의식 상태를 확인해요. 위험한 리듬에서는 환자가 말을 하는지 반응하는지가 상태를 가르는 중요한 단서예요.
+    why: Stay with me는 곁에 있겠다는 말이자 환자가 반응하게 하는 말이에요. 뒤의 짧은 질문에 대답하는지를 보면 의식 상태를 확인할 수 있어요.
     decoy: right now
     distractorsKo:
     - 눈을 감고 쉬세요
     - 숨을 크게 쉬어 보세요
     blank:
-      answer: still
+      answer: Stay
       options:
-      - en: always
-      - en: still
-      - en: again
-      - en: ever
+      - en: Walk
+      - en: Stay
+      - en: Talk
+      - en: Breathe
   - en: We're placing pads on your chest as a precaution.
     ko: 예방 차원에서 가슴에 패드를 붙이고 있어요.
     chunks:
@@ -6319,8 +6319,8 @@ situations:
       answer: dangerously
       options:
       - en: slightly
-      - en: normally
-      - en: strangely
+      - en: suddenly
+      - en: relatively
       - en: dangerously
   - en: The doctor is on the way, and more hands are coming to help.
     ko: 의사 선생님이 오고 계시고, 도와줄 사람들도 더 오고 있어요.
@@ -6565,7 +6565,7 @@ situations:
     blank:
       answer: everyone
       options:
-      - en: anyone
+      - en: only one
       - en: everyone
       - en: nobody
       - en: someone
@@ -6812,7 +6812,7 @@ situations:
       answer: ready
       options:
       - en: clean
-      - en: quiet
+      - en: labeled
       - en: wrapped
       - en: ready
   nuance:
@@ -7373,7 +7373,7 @@ situations:
     blank:
       answer: calm
       options:
-      - en: wake
+      - en: strengthen
       - en: test
       - en: calm
       - en: speed
