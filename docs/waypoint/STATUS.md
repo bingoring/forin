@@ -64,6 +64,7 @@
 > 단어 보기·빈칸 선택지는 길이 기준만 더함(W16·W17 경고). 범위: ER 문장 distractorsKo **전부 재저작** + 길이로 걸린 단어 보기·빈칸.
 > 지시서·TASK·REVIEW 갱신(예전 "같은 상황의 다른 말" 규칙 대체). 파형은 한 색으로(`3f2601b`).
 > **범위(사용자 결정 2026-10-09, 주간 토큰 사정):** 이번 주는 25주제(5묶음 — core 4·abdominal·alcohol-withdrawal·anaphylaxis·arrest·arrhythmia·asthma-copd·bleeding-wound·burn·chest-abd-trauma·chestpain·deescalation·diabetic·dyspnea·environmental·fever-infection·genitourinary·geriatric·gi-bleed·head-trauma·obgyn·ortho-trauma)만 저작·Opus 검토·반영. **남은 10주제(pain-sedation·peds·poisoning·polytrauma·procedures·psych·seizure-loc·sepsis·shock·stroke)는 다음 주** — 그때까지 정본 검사에 이 주제들의 V20이 남는다. 표본: Sonnet 저작은 길이·들리는 자리는 좋으나 안전 시험을 놓침(911 빠진 오답 등) → Opus 검토 생략 불가.
+> **오답 보기 재저작 25주제 완료(2026-10-09):** 5묶음 Sonnet 저작 → Opus 검토(고칠 것 57·62·96·56·125, 안전·처치 빠짐·바꿔치기 다수) → Sonnet 반영 → 합치기. 커밋 `a5f3684`·`4c04a61`·`316cd37`·`b7a4f46`·`08c7184`. 합친 주제 V20 0·위반 0, go test 통과, 시뮬레이터에서 에피펜 문제 보기 확인. 정답이 가장 긴/짧은 보기 12%/8%(우연 33%) — 길이 단서 없음. 검토가 더한 규칙: 옆 단계 낱말(기록·확인·사진·"제가"·약사) 주제당 5회 이하, 오답 둘 중 하나는 정답 길이 이하, 지시("다시 오세요"·911·물러나세요) 보존, 고지 문장에서 탓·감쌈 금지. 남은 10주제는 TODO.
 > **TODO (2026-10-09 점검 — 남은 일):**
 > - [ ] **오답 보기 재저작 남은 10주제**(위 '범위') — `wip/er-dk/` 같은 지시서로.
 > - [ ] **`briefing.line` ER 저작** — T6 화면·검사(`ValidateHubLine`)는 있으나 ER 751상황 모두 비어 있음(허브는 brief 문단을 형광펜 없이). 지시서에 넣고 결정 14 파이프라인으로 저작. **T5 체크는 이 저작 전이라 잘못 체크됨** — 저작 후 다시 체크.
