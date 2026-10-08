@@ -202,9 +202,9 @@
        Your heart may slow after the shot, and that's expected.
        Your heart may stop after the shot, and that's expected.
      DK: ['혈압이 오르면 어지러울 수 있어요', '두통이 생기면 바로 말씀해 주세요'] | decoy: after the meal
-  SW 1 | Your heart may race after the shot, and that's expected. / I'm giving you a shot of epinephrine in your thigh now. / Now that it's in, squeeze my hand and tell me if your voice sounds different. / Thanks for squeezing my hand. What did you eat or take right before this started?
-  SW 2 | I'm giving you a shot of epinephrine in your thigh now. / Now that it's in, squeeze my hand and tell me if your voice sounds different. / Your heart may race after the shot, and that's expected. / Thanks for squeezing my hand. What did you eat or take right before this started?
-  SW 3 | I'm giving you a shot of epinephrine in your thigh now. / Your heart may race after the shot, and that's expected. / Thanks for squeezing my hand. What did you eat or take right before this started? / Now that it's in, squeeze my hand and tell me if your voice sounds different.
+  SW 1 | Now that it's in, squeeze my hand and tell me if your voice sounds different. / I'm giving you a shot of epinephrine in your thigh now. / Thanks for squeezing my hand. Your heart may race after the shot, and that's expected. / Is that clear? What did you eat or take right before this started?
+  SW 2 | I'm giving you a shot of epinephrine in your thigh now. / Thanks for squeezing my hand. Your heart may race after the shot, and that's expected. / Now that it's in, squeeze my hand and tell me if your voice sounds different. / Is that clear? What did you eat or take right before this started?
+  SW 3 | I'm giving you a shot of epinephrine in your thigh now. / Now that it's in, squeeze my hand and tell me if your voice sounds different. / Is that clear? What did you eat or take right before this started? / Thanks for squeezing my hand. Your heart may race after the shot, and that's expected.
 ## 6 조영제 반응
  [0] ko:지금 바로 조영제 주입을 멈출게요.
      * I'm stopping the contrast right now.
@@ -232,13 +232,13 @@
      DK: ['주사 맞은 팔은 어느 쪽이에요?', '예전에 조영제를 쓴 적이 있나요?'] | decoy: before the scan
  [4] ko:이제 몇 분마다 혈압과 산소 수치를 확인할게요.
      * I'm checking your blood pressure and oxygen every few minutes now.
-       I'm checking your blood pressure and height every few minutes now.
-       I'm checking your blood pressure and vision every few minutes now.
-       I'm checking your blood pressure and weight every few minutes now.
+       I'm ignoring your blood pressure and oxygen every few minutes now.
+       I'm delaying your blood pressure and oxygen every few minutes now.
+       I'm skipping your blood pressure and oxygen every few minutes now.
      DK: ['심전도 전극을 붙일게요', '정맥 라인을 하나 더 잡을게요'] | decoy: once an hour
-  SW 1 | Now that the contrast is off, any itching, flushing, or swelling? / I'm stopping the contrast right now. / Thanks. I'm checking your blood pressure and oxygen every few minutes. / Those numbers help us decide where to watch you closely.
-  SW 2 | I'm stopping the contrast right now. / Thanks. I'm checking your blood pressure and oxygen every few minutes. / Now that the contrast is off, any itching, flushing, or swelling? / Those numbers help us decide where to watch you closely.
-  SW 3 | I'm stopping the contrast right now. / Now that the contrast is off, any itching, flushing, or swelling? / Those numbers help us decide where to watch you closely. / Thanks. I'm checking your blood pressure and oxygen every few minutes.
+  SW 1 | Now that the contrast is off, any itching, flushing, or swelling? / I'm stopping the contrast right now. / Thanks. I'm checking your blood pressure and oxygen every few minutes. / We're moving you where we can watch those numbers closely and treat this.
+  SW 2 | I'm stopping the contrast right now. / Thanks. I'm checking your blood pressure and oxygen every few minutes. / Now that the contrast is off, any itching, flushing, or swelling? / We're moving you where we can watch those numbers closely and treat this.
+  SW 3 | I'm stopping the contrast right now. / Now that the contrast is off, any itching, flushing, or swelling? / We're moving you where we can watch those numbers closely and treat this. / Thanks. I'm checking your blood pressure and oxygen every few minutes.
   CTX stop in odd: True all: True
 ## 7 항생제 IV 중 반응
  [0] ko:지금 항생제를 멈추고 라인을 씻어낼게요.
@@ -313,9 +313,9 @@
 ## 9 음식(견과) 아나필락시스
  [0] ko:이 반응 때문에 지금 에피네프린을 투여할게요.
      * I'm giving epinephrine now for this reaction.
-       I'm giving epinephrine now for this injury.
-       I'm giving epinephrine now for this infection.
-       I'm giving epinephrine now for this seizure.
+       I'm giving epinephrine now for this wound.
+       I'm giving epinephrine now for this fall.
+       I'm giving epinephrine now for this fever.
      DK: ['입안에 남은 음식이 있으면 뱉어 주세요', '누운 채로 다리를 올려 드릴게요'] | decoy: for this test
  [1] ko:그 음식에 아는 한 땅콩이나 견과류가 들어 있었나요?
      * Did the food have peanuts or tree nuts that you know of?
@@ -375,9 +375,9 @@
        Push the call button right away if someone feels different.
        Push the call button right away if nothing feels different.
      DK: ['침대 난간은 올려 두세요', '화장실에 가고 싶으면 불러 주세요'] | decoy: before you eat
-  SW 1 | That wave can come even after you start feeling fine. / We're watching you on the monitor for a second wave. / That's why I need you to stay in bed with the monitor on. / Push the call button right away if you notice that wave starting.
-  SW 2 | We're watching you on the monitor for a second wave. / That's why I need you to stay in bed with the monitor on. / That wave can come even after you start feeling fine. / Push the call button right away if you notice that wave starting.
-  SW 3 | We're watching you on the monitor for a second wave. / That wave can come even after you start feeling fine. / Push the call button right away if you notice that wave starting. / That's why I need you to stay in bed with the monitor on.
+  SW 1 | That wave can come even after you start feeling fine. / We're watching you on the monitor for a second wave. / Even then, I need you to stay in bed with the monitor on. / Push the call button right away if you notice that wave starting.
+  SW 2 | We're watching you on the monitor for a second wave. / Even then, I need you to stay in bed with the monitor on. / That wave can come even after you start feeling fine. / Push the call button right away if you notice that wave starting.
+  SW 3 | We're watching you on the monitor for a second wave. / That wave can come even after you start feeling fine. / Push the call button right away if you notice that wave starting. / Even then, I need you to stay in bed with the monitor on.
   CTX symptom in odd: True all: True
 ## 11 베타차단제 복용자
  [0] ko:심장약 때문에 에피네프린이 덜 잘 들을 수 있어요.
@@ -394,9 +394,9 @@
      DK: ['혈당을 다시 한 번 잴게요', '에피네프린은 한 번 더 놓을 수 있어요'] | decoy: for the pain
  [2] ko:베타차단제 이름이 뭐고, 마지막으로 언제 복용하셨나요?
      * What's the name of your beta blocker and when did you last take it?
-       What's the color of your beta blocker and when did you last take it?
-       What's the price of your beta blocker and when did you last take it?
-       What's the shape of your beta blocker and when did you last take it?
+       What's the name of your allergy pill and when did you last take it?
+       What's the name of your blood thinner and when did you last take it?
+       What's the name of your inhaler and when did you last take it?
      DK: ['다른 처방약도 가져오셨어요?', '심장이 안 좋다는 말을 들은 지 얼마나 되셨어요?'] | decoy: at the pharmacy
  [3] ko:반응을 얻으려면 더 큰 용량이나 여러 번의 투여가 필요할 수도 있어요.
      * You might need a bigger dose or several doses to get a response.
@@ -462,9 +462,9 @@
      DK: ['라텍스 장갑을 쓰는 직업이세요?', '풍선이나 고무줄에 닿아도 반응하세요?'] | decoy: every morning
  [2] ko:라텍스 알레르기를 표시해서 돌보는 모든 사람이 알 수 있게 할게요.
      * I'll flag your latex allergy so everyone caring for you knows.
-       I'll flag your latex allergy so nobody caring for you knows.
-       I'll flag your latex allergy so someone caring for you knows.
-       I'll flag your latex allergy so anyone caring for you knows.
+       I'll hide your latex allergy so everyone caring for you knows.
+       I'll delete your latex allergy so everyone caring for you knows.
+       I'll cancel your latex allergy so everyone caring for you knows.
      DK: ['라텍스가 들어간 물품은 다 치울게요', '알레르기가 처음 생긴 때를 말씀해 주세요'] | decoy: on the door
  [3] ko:이제부터 이 병실 안 어떤 것도 라텍스에 닿으면 안 돼요.
      * Nothing in this room should touch latex from now on.
@@ -485,15 +485,15 @@
 ## 14 소아 아나필락시스 보호자
  [0] ko:지금 아이 체중에 맞춘 용량으로 에피네프린을 투여할게요.
      * I'm giving him epinephrine dosed for his weight right now.
-       I'm giving him morphine dosed for his weight right now.
-       I'm giving him heparin dosed for his weight right now.
+       I'm giving him atropine dosed for his weight right now.
        I'm giving him insulin dosed for his weight right now.
+       I'm giving him lidocaine dosed for his weight right now.
      DK: ['아이 허벅지를 잡아 줄 사람이 필요해요', '보호자님은 아이 곁에 계세요'] | decoy: for his age
  [1] ko:정말 잘하고 계세요 — 아이를 진정시켜 주시는 게 큰 도움이 돼요.
      * You're doing great — keeping him calm helps a lot.
-       You're doing badly — keeping him calm helps a lot.
-       You're doing poorly — keeping him calm helps a lot.
-       You're doing wrong — keeping him calm helps a lot.
+       You're doing great — keeping him calm hurts a lot.
+       You're doing great — keeping him calm slows a lot.
+       You're doing great — keeping him calm bothers a lot.
      DK: ['아이가 울어도 괜찮아요', '아이에게 먹을 걸 주지 말아 주세요'] | decoy: for the doctors
  [2] ko:아이가 무엇을 먹었고, 체중은 얼마나 나가나요?
      * What did he eat, and how much does he weigh?
@@ -513,9 +513,9 @@
        Hold his hand and talk to him angrily — that helps us both.
        Hold his hand and talk to him loudly — that helps us both.
      DK: ['아이를 안아 올리지 말고 눕혀 주세요', '옆에서 아이 이름을 계속 불러 주세요'] | decoy: in the hall
-  SW 1 | It has to be dosed for his weight, so how much does he weigh? / I'm giving him epinephrine right now. / Thanks. We calculate every dose by his weight, so it's exact for him. / That part is ours — you can hold his hand and talk to him softly.
-  SW 2 | I'm giving him epinephrine right now. / Thanks. We calculate every dose by his weight, so it's exact for him. / It has to be dosed for his weight, so how much does he weigh? / That part is ours — you can hold his hand and talk to him softly.
-  SW 3 | I'm giving him epinephrine right now. / It has to be dosed for his weight, so how much does he weigh? / That part is ours — you can hold his hand and talk to him softly. / Thanks. We calculate every dose by his weight, so it's exact for him.
+  SW 1 | How much does he weigh, so I can check the dose? / I'm giving him epinephrine now, dosed by his estimated weight. / Thanks. We calculate every dose by his weight, so it's exact for him. / That part is ours — you can hold his hand and talk to him softly.
+  SW 2 | I'm giving him epinephrine now, dosed by his estimated weight. / Thanks. We calculate every dose by his weight, so it's exact for him. / How much does he weigh, so I can check the dose? / That part is ours — you can hold his hand and talk to him softly.
+  SW 3 | I'm giving him epinephrine now, dosed by his estimated weight. / How much does he weigh, so I can check the dose? / That part is ours — you can hold his hand and talk to him softly. / Thanks. We calculate every dose by his weight, so it's exact for him.
 ## 15 후두부종 기도폐쇄 임박
  [0] ko:기도가 붓고 있어요 — 막히기 전에 확보할게요.
      * Your airway is swelling — we're securing it before it closes.
@@ -612,9 +612,9 @@
      DK: ['심전도 리듬을 확인합니다', '제세동기를 가져와 주세요'] | decoy: for two minutes
  [4] ko:기도 카트에 손이 하나 더 필요합니다.
      * I need one more set of hands on the airway cart.
+       I need one more set of wheels on the airway cart.
        I need one more set of tools on the airway cart.
-       I need one more set of eyes on the airway cart.
-       I need one more set of legs on the airway cart.
+       I need one more set of labels on the airway cart.
      DK: ['기록을 맡아 줄 사람이 필요해요', '시간을 재 줄 사람이 필요해요'] | decoy: in the hallway
   SW 1 | That's anaphylactic arrest, so give epinephrine and hang a liter wide open. / No pulse — starting CPR now. / With that going, get the difficult airway cart now — his airway is swollen. / I need one more set of hands on the airway cart.
   SW 2 | No pulse — starting CPR now. / With that going, get the difficult airway cart now — his airway is swollen. / That's anaphylactic arrest, so give epinephrine and hang a liter wide open. / I need one more set of hands on the airway cart.
@@ -654,13 +654,13 @@
   SW 1 | Tell me exactly how your breathing feels compared to before the shot. / This is a second wave — I'm giving epinephrine again now. / Your answer helps, and we're keeping you on the monitor to see the rest. / That's why I'm staying right here and checking your vitals every ten minutes.
   SW 2 | This is a second wave — I'm giving epinephrine again now. / Your answer helps, and we're keeping you on the monitor to see the rest. / Tell me exactly how your breathing feels compared to before the shot. / That's why I'm staying right here and checking your vitals every ten minutes.
   SW 3 | This is a second wave — I'm giving epinephrine again now. / Tell me exactly how your breathing feels compared to before the shot. / That's why I'm staying right here and checking your vitals every ten minutes. / Your answer helps, and we're keeping you on the monitor to see the rest.
-  CTX wave in odd: True all: True
+  CTX return in odd: True all: True
 ## 19 다중 알레르겐 중환자
  [0] ko:혹시 반응을 일으킬 만한 것들을 병실에서 모두 치울게요.
      * We're removing anything you might be reacting to from your room.
-       We're removing nothing you might be reacting to from your room.
-       We're removing someone you might be reacting to from your room.
-       We're removing nobody you might be reacting to from your room.
+       We're removing anything you might be reacting to from your bag.
+       We're removing anything you might be reacting to from your bed.
+       We're removing anything you might be reacting to from your hand.
      DK: ['병실 환기를 시켜 드릴게요', '향이 나는 제품은 쓰지 말아 주세요'] | decoy: after lunch
  [1] ko:오늘 드시거나 만지거나 복용한 모든 것을 목록으로 적어봐요.
      * Let's list everything you've eaten, touched, or taken today.
@@ -676,9 +676,9 @@
      DK: ['에피네프린을 한 번 더 놓을 수도 있어요', '혈압을 몇 분마다 재요'] | decoy: before we talk
  [3] ko:이번 주에 가까이 했던 모든 약, 음식, 제품을 말씀해 주세요.
      * Tell me every medication, food, and product you've been near this week.
-       Tell me some medication, food, and product you've been near this week.
-       Tell me no medication, food, and product you've been near this week.
-       Tell me one medication, food, and product you've been near this week.
+       Hand me every medication, food, and product you've been near this week.
+       Pass me every medication, food, and product you've been near this week.
+       Give me every medication, food, and product you've been near this week.
      DK: ['증상이 생기기 전에 운동을 하셨나요?', '가족 중에 비슷한 반응이 있었나요?'] | decoy: last month
  [4] ko:우리가 아는 모든 유발원이 없도록 이 병실을 유지할게요.
      * We're keeping this room free of every trigger we know about.
@@ -686,9 +686,9 @@
        We're keeping this room free of every flower we know about.
        We're keeping this room free of every noise we know about.
      DK: ['새로 알게 된 유발원은 바로 추가할게요', '병실 밖에서 가져온 음식은 드시지 마세요'] | decoy: at home
-  SW 1 | To find it, let's list everything you've eaten, touched, or taken today. / I'm treating the reaction right now, even though we don't know the trigger. / Beyond that list, tell me every medication, food, and product you've been near this week. / With all of that, we're removing anything you might be reacting to from your room.
-  SW 2 | I'm treating the reaction right now, even though we don't know the trigger. / Beyond that list, tell me every medication, food, and product you've been near this week. / To find it, let's list everything you've eaten, touched, or taken today. / With all of that, we're removing anything you might be reacting to from your room.
-  SW 3 | I'm treating the reaction right now, even though we don't know the trigger. / To find it, let's list everything you've eaten, touched, or taken today. / With all of that, we're removing anything you might be reacting to from your room. / Beyond that list, tell me every medication, food, and product you've been near this week.
+  SW 1 | That's why we're removing anything you might be reacting to from your room. / I'm treating the reaction right now, even though we don't know the trigger. / With the room cleared, let's list everything you've eaten, touched, or taken today. / Beyond that list, tell me every medication, food, and product you've been near this week.
+  SW 2 | I'm treating the reaction right now, even though we don't know the trigger. / With the room cleared, let's list everything you've eaten, touched, or taken today. / That's why we're removing anything you might be reacting to from your room. / Beyond that list, tell me every medication, food, and product you've been near this week.
+  SW 3 | I'm treating the reaction right now, even though we don't know the trigger. / That's why we're removing anything you might be reacting to from your room. / Beyond that list, tell me every medication, food, and product you've been near this week. / With the room cleared, let's list everything you've eaten, touched, or taken today.
   CTX list in odd: True all: True
 ## 20 관찰 중 급변 야간 SBAR
  [0] ko:아나필락시스 후 관찰 환자로, 새벽 2시까지는 안정적이었습니다.
@@ -721,8 +721,8 @@
        Please come reassess him and let the dietitian know right away.
        Please come reassess him and let the chaplain know right away.
      DK: ['혈압 변화는 5분 단위로 알리겠습니다', '에피네프린은 한 번 더 준비해 두겠습니다'] | decoy: in the morning
-  SW 1 | Before that, vitals were steady all shift until about zero-one-thirty. / Calling about my post-anaphylaxis obs patient — his blood pressure dropped to ninety over fifty. / Along with it, hives returned, so I gave a second epi. / Please come reassess him now.
-  SW 2 | Calling about my post-anaphylaxis obs patient — his blood pressure dropped to ninety over fifty. / Along with it, hives returned, so I gave a second epi. / Before that, vitals were steady all shift until about zero-one-thirty. / Please come reassess him now.
-  SW 3 | Calling about my post-anaphylaxis obs patient — his blood pressure dropped to ninety over fifty. / Before that, vitals were steady all shift until about zero-one-thirty. / Please come reassess him now. / Along with it, hives returned, so I gave a second epi.
+  SW 1 | Before that, vitals were steady all shift until about zero-one-thirty. / Calling about my post-anaphylaxis obs patient — his blood pressure dropped to ninety over fifty. / That's when the hives returned, so I gave a second epi. / Please come reassess him now.
+  SW 2 | Calling about my post-anaphylaxis obs patient — his blood pressure dropped to ninety over fifty. / That's when the hives returned, so I gave a second epi. / Before that, vitals were steady all shift until about zero-one-thirty. / Please come reassess him now.
+  SW 3 | Calling about my post-anaphylaxis obs patient — his blood pressure dropped to ninety over fifty. / Before that, vitals were steady all shift until about zero-one-thirty. / Please come reassess him now. / That's when the hives returned, so I gave a second epi.
 cond []
-dup option sets [('infection', 'injury', 'reaction', 'seizure'), ('epinephrine', 'heparin', 'insulin', 'morphine')]
+dup option sets []

@@ -2,7 +2,7 @@
   s:
   - {t: "약효 안내", i: pill, w: "Because of…로 이유를 먼저 말해 환자가 왜 그런지 바로 납득하게 해요. 베타차단제를 복용 중이면 에피네프린 반응이 약해지고 아나필락시스가 더 심해질 수 있어요.", d: "right away", k: ["에피네프린은 반복해서 맞을 수 있어요", "혈압을 더 자주 잴게요"], a: "medication", o: ["surgery", "scan", "screening"]}
   - {t: "글루카곤", i: pill, w: "to help…로 약의 목적을 환자의 몸을 돕는 일로 풀어 말해요. 글루카곤은 베타차단제 때문에 에피네프린이 잘 듣지 않을 때 쓰는 약이에요.", d: "for the pain", k: ["혈당을 다시 한 번 잴게요", "에피네프린은 한 번 더 놓을 수 있어요"], a: "glucagon", o: ["aspirin", "nitroglycerin", "atropine"]}
-  - {t: "복용력 문진", i: pill, w: "두 질문을 and로 묶어 이름과 마지막 복용 시각을 한 번에 물어요. 약 종류와 복용 시간은 에피네프린이 얼마나 약해질지 가늠하는 단서예요.", d: "at the pharmacy", k: ["다른 처방약도 가져오셨어요?", "심장이 안 좋다는 말을 들은 지 얼마나 되셨어요?"], a: "name", o: ["price", "shape", "color"]}
+  - {t: "복용력 문진", i: pill, w: "두 질문을 and로 묶어 이름과 마지막 복용 시각을 한 번에 물어요. 약 종류와 복용 시간은 에피네프린이 얼마나 약해질지 가늠하는 단서예요.", d: "at the pharmacy", k: ["다른 처방약도 가져오셨어요?", "심장이 안 좋다는 말을 들은 지 얼마나 되셨어요?"], a: "beta blocker", o: ["blood thinner", "inhaler", "allergy pill"]}
   - {t: "용량 안내", i: bulb, w: "might로 가능성을 열어 두고 or로 두 경우를 나란히 알려요. 에피네프린이 잘 듣지 않으면 여러 번 투여해야 할 수 있다는 점은 사실이에요.", d: "or a different pill", k: ["투여한 뒤에는 혈압을 자주 잴게요", "글루카곤은 천천히 넣을게요"], a: "bigger", o: ["smaller", "lower", "weaker"]}
   - {t: "작용 원리", i: bulb, w: "works around…to…로 방법과 목적을 한 문장에 담아 약이 어떻게 우회하는지 말해요. 글루카곤은 베타 수용체를 거치지 않고 심장 수축력을 올려서 베타차단제의 영향을 피해요.", d: "to ease your pain", k: ["혈압은 몇 분마다 잴게요", "글루카곤은 구역질을 일으킬 수 있어요"], a: "raise", o: ["lower", "protect", "check"]}
   order:
@@ -38,7 +38,7 @@
   s:
   - {t: "환경 교체", i: shield, w: "right away로 지체 없이 바꾼다고 말해 환자가 안심하게 해요. 라텍스 알레르기 환자는 장갑·튜브 같은 라텍스 제품에 닿기만 해도 반응할 수 있어서 환경부터 바꿔요.", d: "by tomorrow", k: ["의사 선생님께 알레르기 사실을 전할게요", "손목에 알레르기 밴드를 채워 드릴게요"], a: "gloves", o: ["gowns", "masks", "shoes"]}
   - {t: "교차반응", i: magnify, w: "certain foods like…로 예를 들어 환자가 자기 경험을 떠올리게 해요. 라텍스 알레르기가 있는 사람 일부는 바나나·아보카도·키위 같은 과일에도 반응해요.", d: "every morning", k: ["라텍스 장갑을 쓰는 직업이세요?", "풍선이나 고무줄에 닿아도 반응하세요?"], a: "avocado", o: ["rice", "cheese", "bread"]}
-  - {t: "알레르기 표시", i: bandage, w: "so everyone…knows로 표시하는 목적을 밝혀 한 사람이 아니라 팀 전체가 알게 한다고 말해요. 차트 표시와 밴드가 있어야 부서가 바뀌어도 라텍스가 환자에게 닿지 않아요.", d: "on the door", k: ["라텍스가 들어간 물품은 다 치울게요", "알레르기가 처음 생긴 때를 말씀해 주세요"], a: "everyone", o: ["nobody", "someone", "anyone"]}
+  - {t: "알레르기 표시", i: bandage, w: "so everyone…knows로 표시하는 목적을 밝혀 한 사람이 아니라 팀 전체가 알게 한다고 말해요. 차트 표시와 밴드가 있어야 부서가 바뀌어도 라텍스가 환자에게 닿지 않아요.", d: "on the door", k: ["라텍스가 들어간 물품은 다 치울게요", "알레르기가 처음 생긴 때를 말씀해 주세요"], a: "flag", o: ["hide", "delete", "cancel"]}
   - {t: "환경 규칙", i: lock, w: "Nothing…should touch…로 주어를 사물로 두어 환자가 아니라 환경이 책임진다고 말해요. from now on으로 방금 바꾼 규칙이 이후에도 계속된다는 점을 알려요.", d: "after dinner", k: ["이 병실의 장갑은 모두 바꿨어요", "라텍스가 든 물품은 전부 치웠어요"], a: "latex", o: ["nickel", "iodine", "perfume"]}
   - {t: "인계 표시", i: pencil, w: "so the next shift sees it too로 지금 근무자뿐 아니라 다음 근무조도 안다고 말해요. 차트에 적어 두면 교대할 때 정보가 끊기지 않아요.", d: "on a sticky note", k: ["밴드도 같이 채워 드릴게요", "다음 근무조에게 말로도 전할게요"], a: "shift", o: ["floor", "lab", "bed"]}
   order:
@@ -60,7 +60,7 @@
 - title: 소아 아나필락시스 보호자
   s:
   - {t: "체중 용량", i: siren, w: "dosed for his weight로 용량이 아이 몸에 맞춰져 있다는 점을 먼저 보여 줘 보호자가 안심해요. 소아 에피네프린은 체중으로 계산해서(0.01 mg/kg) 근육주사해요.", d: "for his age", k: ["아이 허벅지를 잡아 줄 사람이 필요해요", "보호자님은 아이 곁에 계세요"], a: "epinephrine", o: ["lidocaine", "atropine", "insulin"]}
-  - {t: "보호자 격려", i: star, w: "You're doing great로 평가를 먼저 해 주고 keeping him calm으로 보호자가 지금 할 수 있는 일을 구체적으로 알려요. 보호자의 불안은 아이에게 전해져서 보호자가 차분하면 아이도 안정돼요.", d: "for the doctors", k: ["아이가 울어도 괜찮아요", "아이에게 먹을 걸 주지 말아 주세요"], a: "great", o: ["badly", "poorly", "wrong"]}
+  - {t: "보호자 격려", i: star, w: "You're doing great로 평가를 먼저 해 주고 keeping him calm으로 보호자가 지금 할 수 있는 일을 구체적으로 알려요. 보호자의 불안은 아이에게 전해져서 보호자가 차분하면 아이도 안정돼요.", d: "for the doctors", k: ["아이가 울어도 괜찮아요", "아이에게 먹을 걸 주지 말아 주세요"], a: "helps", o: ["hurts", "slows", "bothers"]}
   - {t: "원인·체중", i: magnify, w: "두 질문을 and로 이어 한 번에 필요한 정보 둘을 물어요. 먹은 것은 원인을, 체중은 에피네프린 용량 계산에 필요해요.", d: "at school", k: ["아이 이름과 생년월일이 어떻게 되나요?", "집에 에피펜이 있었나요?"], a: "weigh", o: ["cough", "grow", "sleep"]}
   - {t: "용량 설명", i: chartup, w: "every dose로 예외 없이 체중으로 계산한다고 말해 신뢰를 줘요. 소아는 체중 범위가 넓어서 용량을 체중에 맞춰 계산해요.", d: "by his age", k: ["약 이름과 용량은 차트에 적어 둘게요", "다음 용량이 필요하면 바로 말씀드릴게요"], a: "exact", o: ["rough", "random", "generic"]}
   - {t: "보호자 요청", i: handshake2, w: "Hold…and talk…으로 보호자가 할 수 있는 행동 둘을 쉬운 명령형으로 줘요. that helps us both로 보호자의 행동이 의료진에게도 도움이 된다고 해서 방해가 아니라 협력이라고 느끼게 해요.", d: "in the hall", k: ["아이를 안아 올리지 말고 눕혀 주세요", "옆에서 아이 이름을 계속 불러 주세요"], a: "softly", o: ["loudly", "quickly", "angrily"]}
@@ -68,10 +68,10 @@
     tag: "대화 흐름"
     icon: compass
     ko: "소아 에피네프린 보호자 설명 4문장 순서"
-    why: "먼저 에피네프린을 놓고, 'It'이 그 약을 가리키며 체중을 묻고, 'Thanks'가 그 대답을 받아 계산을 설명하고, 'That part'가 그 의료진의 몫을 가리켜 보호자가 할 일을 말해요. 앞 줄을 가리키는 말이 줄마다 있어 순서가 하나예요."
+    why: "먼저 에피네프린을 놓고, 'the dose'가 그 용량을 가리키며 체중을 묻고, 'Thanks'가 그 대답을 받아 계산을 설명하고, 'That part'가 그 의료진의 몫을 가리켜 보호자가 할 일을 말해요. 앞 줄을 가리키는 말이 줄마다 있어 순서가 하나예요."
     lines:
-    - {en: "I'm giving him epinephrine right now.", icon: siren, ko: "지금 아이에게 에피네프린을 놓을게요", note: "투여"}
-    - {en: "It has to be dosed for his weight, so how much does he weigh?", icon: magnify, ko: "체중에 맞춰야 해서요, 아이 체중이 얼마예요?", note: "체중"}
+    - {en: "I'm giving him epinephrine now, dosed by his estimated weight.", icon: siren, ko: "아이 추정 체중에 맞춰 지금 에피네프린을 놓을게요", note: "투여"}
+    - {en: "How much does he weigh, so I can check the dose?", icon: magnify, ko: "용량을 확인하게 아이 체중이 얼마예요?", note: "체중"}
     - {en: "Thanks. We calculate every dose by his weight, so it's exact for him.", icon: chartup, ko: "고마워요. 모든 용량을 체중으로 계산해 아이에게 정확해요", note: "계산"}
     - {en: "That part is ours — you can hold his hand and talk to him softly.", icon: handshake2, ko: "그건 저희 몫이에요 — 아이 손을 잡고 부드럽게 말해 주세요", note: "요청"}
   sw: {ko: "지금 아이 체중에 맞춘 용량으로 에피네프린을 투여할게요"}

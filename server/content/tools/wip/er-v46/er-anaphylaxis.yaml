@@ -5104,23 +5104,23 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 에피네프린 투여 4문장 순서
-    why: 먼저 에피네프린을 놓고, 'the shot'이 그 주사를 가리키며 흔한 반응을 알리고, 'Now that it's in'이 주사가 들어간 뒤임을 가리키며 상태를 확인하고, 'Thanks for squeezing my hand'가 그 확인에 답한 환자에게 원인을 물어요. 약을 먼저 놓고 묻는 것이 에피네프린을 미루지 않는 순서예요.
+    why: 먼저 에피네프린을 놓고, 'Now that it's in'이 주사가 들어간 뒤임을 가리키며 상태를 확인하고, 'Thanks for squeezing my hand'가 그 확인에 답하며 흔한 반응을 알리고, 'Is that clear?'가 그 설명을 가리키며 원인을 물어요. 약을 먼저 놓고 묻는 것이 에피네프린을 미루지 않는 순서예요.
     lines:
     - en: I'm giving you a shot of epinephrine in your thigh now.
       icon: siren
       ko: 지금 허벅지에 에피네프린 주사를 놓을게요
       note: 투여
-    - en: Your heart may race after the shot, and that's expected.
-      icon: faceWorried
-      ko: 주사 후에 심장이 빨리 뛸 수 있는데 정상이에요
-      note: 안내
     - en: Now that it's in, squeeze my hand and tell me if your voice sounds different.
       icon: me
       ko: 들어갔으니 제 손을 쥐고 목소리가 달라지면 말해 주세요
       note: 확인
-    - en: Thanks for squeezing my hand. What did you eat or take right before this started?
+    - en: Thanks for squeezing my hand. Your heart may race after the shot, and that's expected.
+      icon: faceWorried
+      ko: 손 쥐어 줘서 고마워요. 주사 후에 심장이 빨리 뛸 수 있는데 정상이에요
+      note: 안내
+    - en: Is that clear? What did you eat or take right before this started?
       icon: magnify
-      ko: 손 쥐어 줘서 고마워요. 이게 시작되기 직전에 뭘 드시거나 복용하셨어요?
+      ko: 이해되셨나요? 이게 시작되기 직전에 뭘 드시거나 복용하셨어요?
       note: 원인
 - title: 조영제 반응
   sentences:
@@ -5258,12 +5258,12 @@ situations:
     - 심전도 전극을 붙일게요
     - 정맥 라인을 하나 더 잡을게요
     blank:
-      answer: oxygen
+      answer: checking
       options:
-      - en: height
-      - en: vision
-      - en: oxygen
-      - en: weight
+      - en: ignoring
+      - en: delaying
+      - en: checking
+      - en: skipping
   nuance:
   - kind: slider
     words:
@@ -5295,14 +5295,14 @@ situations:
       en: Contrast infusion stopped; pt symptomatic with urticaria and flushing.
       ok: false
       fix: We've stopped the dye, and I'm staying right here with you.
-    why: iodinated contrast medium·discontinue는 의료진 말이에요. 미국 환자는 조영제를 흔히 'dye'라고 불러서, 환자에게는 그 말이 더 쉽게 들려요.
+    why: infusion·symptomatic·urticaria는 차트와 의료진끼리의 말이에요. 미국 환자는 조영제를 흔히 'dye'라고 부르니, 환자에게는 그 말로 멈췄다고 하고 곁에 있다는 점을 전해요.
     word: stop
     ko: 멈추다
   order:
     tag: 대화 흐름
     icon: compass
     ko: 조영제 반응 대응 4문장 순서
-    why: 먼저 조영제를 멈추고, 'the contrast is off'가 멈춘 뒤임을 가리키며 증상을 묻고, 'Thanks'가 그 대답에 답하며 활력징후를 확인하고, 'Those numbers'가 그 수치를 가리켜 이동을 설명해요. 앞 줄을 가리키는 말이 줄마다 있어 순서가 하나예요.
+    why: 먼저 조영제를 멈추고, 'the contrast is off'가 멈춘 뒤임을 가리키며 증상을 묻고, 'Thanks'가 그 대답에 답하며 활력징후를 확인하고, 'those numbers'가 그 수치를 가리켜 이동을 알려요. 앞 줄을 가리키는 말이 줄마다 있어 순서가 하나예요.
     lines:
     - en: I'm stopping the contrast right now.
       icon: siren
@@ -5316,9 +5316,9 @@ situations:
       icon: monitor
       ko: 고마워요. 몇 분마다 혈압과 산소를 확인할게요
       note: 감시
-    - en: Those numbers help us decide where to watch you closely.
+    - en: We're moving you where we can watch those numbers closely and treat this.
       icon: hospital
-      ko: 그 수치로 어디서 자세히 지켜볼지 정해요
+      ko: 그 수치를 가까이서 지켜보고 치료할 수 있는 곳으로 옮길게요
       note: 이동
 - title: 항생제 IV 중 반응
   sentences:
@@ -5701,7 +5701,7 @@ situations:
       en: Refractory symptoms — repeating IM epi q5-15 min per protocol.
       ok: false
       fix: If this keeps getting worse, we may need to give you another shot.
-    why: refractory·re-dose·q5는 팀끼리 쓰는 말이에요. 환자에게는 '더 나빠지면 한 번 더 놓을 수 있다'로 말해요.
+    why: refractory·IM·q5-15 min은 팀끼리 쓰는 말이에요. 환자에게는 '더 나빠지면 한 번 더 놓을 수 있다'로 말해요.
     word: repeat
     ko: 반복하다
   order:
@@ -6128,7 +6128,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 이상성 반응 관찰 4문장 순서
-    why: 모니터로 두 번째 반응을 지켜본다고 알리고, 'That wave'가 앞의 두 번째 반응을 가리키며 괜찮아진 뒤에도 온다고 하고, 'That's why'가 그 이유를 받아 안정을 부탁하고, 'that wave'가 다시 그 반응을 가리켜 호출을 부탁해요. 앞 줄을 가리키는 말이 줄마다 있어 순서가 하나예요.
+    why: 모니터로 두 번째 반응을 지켜본다고 알리고, 'That wave'가 앞의 두 번째 반응을 가리키며 괜찮아진 뒤에도 온다고 하고, 'Even then'이 그 시점을 가리켜 안정을 부탁하고, 'that wave'가 다시 그 반응을 가리켜 호출을 부탁해요. 앞 줄을 가리키는 말이 줄마다 있어 순서가 하나예요.
     lines:
     - en: We're watching you on the monitor for a second wave.
       icon: monitor
@@ -6138,9 +6138,9 @@ situations:
       icon: faceWorried
       ko: 그 반응은 괜찮다고 느낀 뒤에도 올 수 있어요
       note: 설명
-    - en: That's why I need you to stay in bed with the monitor on.
+    - en: Even then, I need you to stay in bed with the monitor on.
       icon: shield
-      ko: 그래서 침대에 계시고 모니터를 붙여 두셔야 해요
+      ko: 그때도 침대에 계시고 모니터를 붙여 두셔야 해요
       note: 안정
     - en: Push the call button right away if you notice that wave starting.
       icon: bell
@@ -6226,12 +6226,12 @@ situations:
     - 다른 처방약도 가져오셨어요?
     - 심장이 안 좋다는 말을 들은 지 얼마나 되셨어요?
     blank:
-      answer: name
+      answer: beta blocker
       options:
-      - en: color
-      - en: name
-      - en: price
-      - en: shape
+      - en: allergy pill
+      - en: beta blocker
+      - en: blood thinner
+      - en: inhaler
   - en: You might need a bigger dose or several doses to get a response.
     ko: 반응을 얻으려면 더 큰 용량이나 여러 번의 투여가 필요할 수도 있어요.
     chunks:
@@ -6642,12 +6642,12 @@ situations:
     - 라텍스가 들어간 물품은 다 치울게요
     - 알레르기가 처음 생긴 때를 말씀해 주세요
     blank:
-      answer: everyone
+      answer: flag
       options:
-      - en: nobody
-      - en: someone
-      - en: anyone
-      - en: everyone
+      - en: hide
+      - en: delete
+      - en: cancel
+      - en: flag
   - en: Nothing in this room should touch latex from now on.
     ko: 이제부터 이 병실 안 어떤 것도 라텍스에 닿으면 안 돼요.
     chunks:
@@ -6814,12 +6814,12 @@ situations:
     - 아이가 울어도 괜찮아요
     - 아이에게 먹을 걸 주지 말아 주세요
     blank:
-      answer: great
+      answer: helps
       options:
-      - en: badly
-      - en: poorly
-      - en: wrong
-      - en: great
+      - en: hurts
+      - en: slows
+      - en: bothers
+      - en: helps
   - en: What did he eat, and how much does he weigh?
     ko: 아이가 무엇을 먹었고, 체중은 얼마나 나가나요?
     chunks:
@@ -6945,15 +6945,15 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 소아 에피네프린 보호자 설명 4문장 순서
-    why: 먼저 에피네프린을 놓고, 'It'이 그 약을 가리키며 체중을 묻고, 'Thanks'가 그 대답을 받아 계산을 설명하고, 'That part'가 그 의료진의 몫을 가리켜 보호자가 할 일을 말해요. 앞 줄을 가리키는 말이 줄마다 있어 순서가 하나예요.
+    why: 먼저 에피네프린을 놓고, 'the dose'가 그 용량을 가리키며 체중을 묻고, 'Thanks'가 그 대답을 받아 계산을 설명하고, 'That part'가 그 의료진의 몫을 가리켜 보호자가 할 일을 말해요. 앞 줄을 가리키는 말이 줄마다 있어 순서가 하나예요.
     lines:
-    - en: I'm giving him epinephrine right now.
+    - en: I'm giving him epinephrine now, dosed by his estimated weight.
       icon: siren
-      ko: 지금 아이에게 에피네프린을 놓을게요
+      ko: 아이 추정 체중에 맞춰 지금 에피네프린을 놓을게요
       note: 투여
-    - en: It has to be dosed for his weight, so how much does he weigh?
+    - en: How much does he weigh, so I can check the dose?
       icon: magnify
-      ko: 체중에 맞춰야 해서요, 아이 체중이 얼마예요?
+      ko: 용량을 확인하게 아이 체중이 얼마예요?
       note: 체중
     - en: Thanks. We calculate every dose by his weight, so it's exact for him.
       icon: chartup
@@ -7495,10 +7495,10 @@ situations:
     blank:
       answer: hands
       options:
-      - en: tools
+      - en: wheels
       - en: hands
-      - en: eyes
-      - en: legs
+      - en: tools
+      - en: labels
   nuance:
   - kind: pair
     words:
@@ -7729,20 +7729,20 @@ situations:
     scenes:
     - who: 환자에게
       icon: me
-      en: This wave is worse than the first — I'm giving epinephrine again now.
+      en: The wheezing is returning, so I'm giving epinephrine again now.
       ok: true
     - who: 의사 보고
       icon: monitor
-      en: 'Second wave at hour six: wheezing, lip swelling. Repeat epi IM given.'
+      en: 'Symptoms returned at hour six: wheezing, lip swelling. Repeat epi IM given.'
       ok: true
     - who: 환자에게
       icon: me
-      en: 'You''re having a biphasic wave: recurrence of anaphylaxis at hour six.'
+      en: There's a biphasic return of anaphylactic symptoms.
       ok: false
-      fix: Your reaction is back, and it hit in a second wave, so I'm giving you another dose now.
-    why: biphasic wave·recurrence는 차트와 보고의 말이에요. 환자에게는 '반응이 다시 왔다'고 쉽게 말해요.
-    word: wave
-    ko: 파도
+      fix: Your symptoms have returned, so I'm giving you another dose now.
+    why: biphasic·anaphylactic symptoms는 차트와 보고의 말이에요. 환자에게는 '증상이 다시 돌아왔다'고 쉽게 말해요.
+    word: return
+    ko: 다시 나타나다
   order:
     tag: 대화 흐름
     icon: compass
@@ -7787,12 +7787,12 @@ situations:
     - 병실 환기를 시켜 드릴게요
     - 향이 나는 제품은 쓰지 말아 주세요
     blank:
-      answer: anything
+      answer: room
       options:
-      - en: nothing
-      - en: someone
-      - en: nobody
-      - en: anything
+      - en: bag
+      - en: bed
+      - en: hand
+      - en: room
   - en: Let's list everything you've eaten, touched, or taken today.
     ko: 오늘 드시거나 만지거나 복용한 모든 것을 목록으로 적어봐요.
     chunks:
@@ -7871,12 +7871,12 @@ situations:
     - 증상이 생기기 전에 운동을 하셨나요?
     - 가족 중에 비슷한 반응이 있었나요?
     blank:
-      answer: every
+      answer: Tell
       options:
-      - en: some
-      - en: 'no'
-      - en: every
-      - en: one
+      - en: Hand
+      - en: Pass
+      - en: Tell
+      - en: Give
   - en: We're keeping this room free of every trigger we know about.
     ko: 우리가 아는 모든 유발원이 없도록 이 병실을 유지할게요.
     chunks:
@@ -7941,24 +7941,24 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 다중 알레르겐 환자 4문장 순서
-    why: 먼저 원인을 몰라도 치료한다고 알리고, 'it'이 그 유발원을 가리켜 목록을 만들고, 'that list'가 그 목록을 가리켜 더 묻고, 'all of that'이 지금까지 들은 것을 가리켜 병실에서 치워요. 앞 줄을 가리키는 말이 줄마다 있어 순서가 하나예요.
+    why: 먼저 원인을 몰라도 치료한다고 알리고, 'That's why'가 그 상황을 이유로 병실의 의심 물질을 치우고, 'With the room cleared'가 그 뒤에 목록을 만들고, 'that list'가 그 목록을 가리켜 더 물어요. 환경 정리는 목록을 기다리지 않고 바로 해요. 앞 줄을 가리키는 말이 줄마다 있어 순서가 하나예요.
     lines:
     - en: I'm treating the reaction right now, even though we don't know the trigger.
       icon: siren
       ko: 유발원은 몰라도 지금 반응을 치료하고 있어요
       note: 치료
-    - en: To find it, let's list everything you've eaten, touched, or taken today.
+    - en: That's why we're removing anything you might be reacting to from your room.
+      icon: shield
+      ko: 그래서 반응할 만한 것은 병실에서 모두 치울게요
+      note: 정리
+    - en: With the room cleared, let's list everything you've eaten, touched, or taken today.
       icon: pencil
-      ko: 그걸 찾으려고 오늘 드시고 만지고 복용한 것을 적어 봐요
+      ko: 병실을 치웠으니 오늘 드시고 만지고 복용한 것을 적어 봐요
       note: 목록
     - en: Beyond that list, tell me every medication, food, and product you've been near this week.
       icon: board
       ko: 그 목록 밖에도 이번 주에 가까이한 약, 음식, 제품을 말해 주세요
       note: 추가
-    - en: With all of that, we're removing anything you might be reacting to from your room.
-      icon: shield
-      ko: 그걸 바탕으로 반응할 만한 것은 병실에서 모두 치울게요
-      note: 정리
 - title: 관찰 중 급변 야간 SBAR
   sentences:
   - en: Post-anaphylaxis obs patient, stable until zero-two-hundred.
@@ -8133,7 +8133,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 야간 SBAR 4문장 순서
-    why: 상황(혈압 저하)을 먼저 말하고, 'Before that'이 그 저하 이전을 가리켜 배경을 대고, 'it'이 그 저하를 가리켜 평가와 조치를 말하고, 마지막에 와서 봐 달라고 요청해요. 앞 줄을 가리키는 말이 줄마다 있어 순서가 하나예요.
+    why: 상황(혈압 저하)을 먼저 말하고, 'Before that'이 그 저하 이전을 가리켜 배경을 대고, 'That's when'이 그 시점을 가리켜 평가와 조치를 말하고, 마지막에 와서 봐 달라고 요청해요. 앞 줄을 가리키는 말이 줄마다 있어 순서가 하나예요.
     lines:
     - en: Calling about my post-anaphylaxis obs patient — his blood pressure dropped to ninety over fifty.
       icon: speech
@@ -8143,9 +8143,9 @@ situations:
       icon: calendar
       ko: 그 전에는 근무 내내 새벽 1시 반쯤까지 안정적이었습니다
       note: 배경
-    - en: Along with it, hives returned, so I gave a second epi.
+    - en: That's when the hives returned, so I gave a second epi.
       icon: chartup
-      ko: 그와 함께 두드러기가 다시 나서 두 번째 에피를 투여했습니다
+      ko: 그때 두드러기가 다시 나서 두 번째 에피를 투여했습니다
       note: 평가
     - en: Please come reassess him now.
       icon: bell
