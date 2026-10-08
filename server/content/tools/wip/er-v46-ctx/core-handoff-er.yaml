@@ -3027,7 +3027,7 @@ situations:
       fix: Can you tell me your full name and date of birth?
     why: 동료끼리는 '맞죠?'로 확인해도 되지만, 환자에게 이름을 먼저 말하고 '맞죠?'라고 물으면 잘못 듣고도 '네'라고 할 수 있어요. 환자에게는 이름과 생년월일을 직접 말하게 해요.
     word: correct
-    ko: 맞나요?(확인)
+    ko: 맞는(확인)
   order:
     tag: 대화 흐름
     icon: compass
@@ -3763,16 +3763,16 @@ situations:
       ok: true
     - who: 차트 기록
       icon: board
-      en: Pt may turn quickly — close monitoring in place.
+      en: Pt at risk for rapid deterioration; monitoring closely.
       ok: true
     - who: 보호자에게
       icon: me
-      en: She could turn quickly — so watch her and call us if anything changes.
+      en: She could turn quickly, so watch her closely and call us if anything changes.
       ok: false
       fix: We're keeping a very close eye on her, and we'll tell you right away if anything changes.
-    why: '''turn''은 ''급격히 나빠지다''라는 의료진 구어예요. 보호자에게 쓰면 뜻이 전해지지 않거나 겁을 주고, 관찰을 가족에게 떠넘기는 말처럼 들려요.'
-    word: turn
-    ko: 급격히 나빠지다
+    why: '''turn quickly, watch her closely''는 급변 가능성을 동료에게 넘기는 인계 말이에요. 보호자에게 쓰면 뜻이 전해지지 않거나 겁을 주고, 관찰을 가족에게 떠넘기는 말처럼 들려요.'
+    word: closely
+    ko: 주의 깊게
   order:
     tag: 대화 흐름
     icon: compass
@@ -5490,10 +5490,10 @@ situations:
       ok: true
     - who: 보호자에게
       icon: me
-      en: Forget what I just said — his status has changed.
+      en: Forget what I said — his status has changed. He's desatting.
       ok: false
-      fix: I need to update you — things have changed, and we're checking on him right now.
-    why: '''Forget what I just said — his status has changed''는 바쁜 동료 사이에서 인계를 무를 때 쓰는 말이에요. 가족에게는 앞서 한 설명을 없던 일로 하라는 말로 들려 불신을 줄 수 있어요.'
+      fix: I need to update you — his oxygen level has dropped, and the team is with him now.
+    why: '''Forget what I just said''는 동료 사이에서 인계를 무를 때 쓰는 말이고, status·desatting은 의료진 말이에요. 가족에게는 앞서 한 말을 없던 일로 하라는 말로 들리니, 무엇이 바뀌었는지 쉬운 말로 알려요.'
     word: status
     ko: 상태
   order:

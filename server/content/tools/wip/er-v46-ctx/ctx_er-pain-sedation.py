@@ -1,0 +1,21 @@
+from _ctx_common_b import run
+run("er-pain-sedation", {
+ "rate": {"scenes": {2: {"en": "Please rate your pain by quantifying it on the NRS."}}},
+ "drowsy": {"scenes": {2: {"en": "This medicine may make you drowsy through CNS depression."}}},
+ "raise": {"scenes": {0: {"en": "RLE raised on pillow; cold pack applied."},
+                      2: {"en": "Maintain the affected extremity in a raised position."}}},
+ "ask for more": {"scenes": {2: {"en": "Pt keeps asking for more — drug-seeking, demanding narcotics."}}},
+ "eat or drink": {"word": "NPO", "ko": "금식",
+   "why": "NPO(nil per os, 금식)는 의료진 약어라 설명 없이 환자에게 쓰면 모를 수 있어요. 환자에게는 eat·drink로 풀어서 물어요.",
+   "scenes": {1: {"en": "NPO means nothing to eat or drink. When did you last have anything?"}}},
+ "minimize": {"scenes": {1: {"en": "Pt minimizing pain: rates 3/10 while grimacing and guarding RLQ."}}},
+ "slow": {"scenes": {1: {"en": "She takes a benzo at home — the opioid could slow her breathing, so I'm worried."},
+                     2: {"en": "Concurrent benzodiazepine use may slow your respiratory drive, risking respiratory depression."}}},
+ "sats": {"scenes": {1: {"en": "Sats 84% during sedation; jaw thrust and BVM, RT at bedside."}}},
+ "epinephrine": {"scenes": {0: {"en": "Anaphylaxis — epinephrine 0.5 IM, now!"},
+                            2: {"en": "Epinephrine 0.5 IM, now!"}}},
+ "confusion": {"scenes": {0: {"en": "He's emerging from ketamine — agitated, some confusion, so keep the room quiet."},
+                          1: {"en": "Emergence agitation with confusion post-sedation; pt reoriented, bed alarm on."},
+                          2: {"en": "You're having an emergence reaction with confusion."}}},
+ "BP": {"scenes": {2: {"en": "Your BP is hypotensive, so I'm titrating your fentanyl."}}},
+})

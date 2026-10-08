@@ -3734,9 +3734,9 @@ situations:
       ok: true
     - who: 가족에게
       icon: me
-      en: 'To explain: labs are pending, turnaround about an hour.'
+      en: Let me explain — labs are pending, turnaround's about an hour.
       ok: false
-      fix: That's a good question — let me explain again. The tests take about an hour.
+      fix: Let me explain it another way — her blood test results take about an hour.
     why: 같은 설명이어도 'labs are pending, turnaround' 같은 인계식 말은 가족에게 벽처럼 들려요. 다시 묻는 가족에게는 질문을 반기고 쉬운 말로 다시 설명하세요.
     word: explain
     ko: 설명하다
@@ -4700,14 +4700,14 @@ situations:
       ok: true
     - who: 부모에게
       icon: me
-      en: You can stay close and hold her hand while we work.
+      en: You're welcome to stay — sit right here by her head.
       ok: true
     - who: 부모에게
       icon: me
-      en: You can stay, as long as you don't get in the way.
+      en: Mom can stay at bedside for the IV start.
       ok: false
-      fix: You can stay close — holding her hand really helps her.
-    why: 같은 허락이어도 조건을 앞세우면 부모에게는 경고로 들려요. 할 수 있는 역할(손 잡아 주기)을 주면 부모도 아이도 편해져요.
+      fix: You can stay right here and hold her hand while we put in the IV.
+    why: '''Mom can stay at bedside''는 동료에게 넘기는 인계 말투예요. 부모 앞에서 3인칭으로 말하면 허락받는 사람이 아니라 지켜보는 대상처럼 들려요. ''You''로 직접 말하고, 할 수 있는 역할(손 잡아 주기)을 주세요.'
     word: stay
     ko: 곁에 머물다
   order:
@@ -4896,10 +4896,10 @@ situations:
       ok: true
     - who: 가족에게
       icon: me
-      en: What religion do you practice?
+      en: Cultural practices or religious preferences — any?
       ok: false
-      fix: Please tell me what practices are important to you.
-    why: 종교 이름만 물으면 닫힌 질문이 돼요. 무엇이 중요한지 물으면 종교가 없거나 문화적 관습인 경우까지 열어 둘 수 있어요.
+      fix: Is there anything about your faith or traditions that's important for us to know?
+    why: 입원 사정지의 칸 이름을 가족에게 그대로 읽으면 닫힌 확인 질문이 돼요. 무엇이 중요한지 열어 물으면 종교가 없거나 문화적 관습인 경우까지 담을 수 있어요.
     word: practice
     ko: 관습
   order:
@@ -5293,10 +5293,10 @@ situations:
       ok: true
     - who: 복도에서 가족에게
       icon: me
-      en: This hallway is private enough — the doctor has bad news.
+      en: We need a private room — the doctor has bad news about your dad.
       ok: false
-      fix: Let's step into a private room where we can talk.
-    why: 나쁜 소식 전달의 첫 단계(SPIKES의 Setting)는 조용하고 사적인 곳으로 옮기는 거예요. 복도를 '이 정도면 충분히 private'이라고 넘기고 바로 나쁜 소식을 말하면 가족은 준비 없이 그 자리에서 충격을 받아요.
+      fix: Let's go somewhere quiet where we can sit down. The doctor will join us there.
+    why: 나쁜 소식이라는 것부터 복도에서 말하면 가족은 준비 없이 충격을 받아요. 먼저 조용한 곳으로 옮기고(SPIKES의 Setting), 소식은 앉은 뒤에 전해요.
     word: private
     ko: 사적인
   order:
@@ -5715,20 +5715,20 @@ situations:
     scenes:
     - who: 차트 기록
       icon: board
-      en: Pt passed away at 14:32. Family at bedside.
+      en: Pt expired at 14:32. Family at bedside.
       ok: true
     - who: 동료에게
       icon: speech
-      en: Bed 3 passed away at 2:30 — the family's in the quiet room.
+      en: Bed 3 expired at 2:30 — the family's in the quiet room.
       ok: true
     - who: 아내에게
       icon: me
-      en: Pt passed away at 2:30. Sign here for his belongings.
+      en: Your husband expired at 2:30.
       ok: false
       fix: I'm so sorry — your husband died at 2:30. I'll stay with you.
-    why: 아내를 'Pt'라고 부르며 곧바로 서류부터 내미는 말은 차갑게 들려요. 가족에게는 먼저 애도를 전하고, 돌아가셨다는 사실을 분명한 말로 알린 뒤 곁에 있겠다고 하세요.
-    word: passed away
-    ko: 돌아가시다
+    why: '''expired''는 차트와 동료 사이에서 쓰는 말이지만 가족에게는 차갑게 들려요. 가족에게는 먼저 애도를 전하고, 완곡어보다 died처럼 분명한 말로 알린 뒤 곁에 있겠다고 하세요.'
+    word: expired
+    ko: 사망하다
   order:
     tag: 대화 흐름
     icon: compass

@@ -3434,7 +3434,7 @@ situations:
       ok: true
     - who: 동료에게
       icon: speech
-      en: Still trying to find a Mam interpreter — 40 minutes out.
+      en: Still trying to find a Mam interpreter — the service says maybe 40 minutes.
       ok: true
     - who: 환자에게
       icon: me
@@ -4570,20 +4570,20 @@ situations:
     scenes:
     - who: 환자에게
       icon: me
-      en: The interpreter is coming — stay with me.
+      en: The interpreter is coming — please stay here with me.
       ok: true
     - who: 동료에게
       icon: speech
-      en: Interpreter is five minutes out — can you stay with him?
+      en: Interpreter is five minutes out — can you stay in the room with him?
       ok: true
     - who: 환자에게
       icon: me
       en: Please stay in your current position until language services arrive.
       ok: false
-      fix: Stay here with me — the interpreter is coming.
+      fix: Please stay right here — I'm with you, and the interpreter will be here soon.
     why: 영어가 서툰 환자에게 긴 격식어는 통하지 않아요. 응급 상황일수록 짧고 쉬운 말로 해요.
     word: stay
-    ko: 함께 있다
+    ko: 머물다(그대로 있다)
   order:
     tag: 대화 흐름
     icon: compass
@@ -4962,19 +4962,19 @@ situations:
     scenes:
     - who: 가족에게
       icon: me
-      en: I'm so sorry — his condition is very grave.
+      en: I'm so sorry — he's in critical condition.
       ok: true
     - who: 의사에게 보고
       icon: monitor
-      en: Bed 6's prognosis is grave — MAP 55 on two pressors.
+      en: Bed 6 is critical — MAP 55 on two pressors.
       ok: true
     - who: 가족에게
       icon: me
-      en: His prognosis is grave — he's hemodynamically unstable on two pressors.
+      en: He's critical — hemodynamically unstable on two pressors.
       ok: false
-      fix: I'm so sorry — he is very sick, and his condition is grave.
-    why: prognosis·hemodynamically·pressors 같은 임상어는 의료진끼리의 말이에요. 가족에게는, 특히 통역을 거칠 때는 쉬운 말로 분명하게 전해요.
-    word: grave
+      fix: I'm so sorry — he is very sick, and we're doing everything we can.
+    why: hemodynamically·pressors 같은 임상어는 의료진끼리의 말이에요. 가족에게는, 특히 통역을 거칠 때는 쉬운 말로 분명하게 전해요.
+    word: critical
     ko: 위중한
   order:
     tag: 대화 흐름
