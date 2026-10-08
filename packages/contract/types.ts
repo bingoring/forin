@@ -2088,6 +2088,45 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/me/review/scenarios/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** One scenario's correction notes (STEP 3 대화 레일의 노트 바텀시트) */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    /** @description scenario id */
+                    id: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["internal_adapters_http.scenarioNotesResp"];
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/me/route": {
         parameters: {
             query?: never;
@@ -3927,6 +3966,10 @@ export interface components {
         "internal_adapters_http.resumableTurn": {
             content?: string;
             role?: string;
+        };
+        "internal_adapters_http.scenarioNotesResp": {
+            cards?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_progress.ModelAnswerCard"][];
+            scenarioId?: string;
         };
         "internal_adapters_http.sessionReviewResp": {
             average?: number;

@@ -1776,6 +1776,16 @@ components:
         role:
           type: string
       type: object
+    internal_adapters_http.scenarioNotesResp:
+      properties:
+        cards:
+          items:
+            $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_progress.ModelAnswerCard'
+          type: array
+          uniqueItems: false
+        scenarioId:
+          type: string
+      type: object
     internal_adapters_http.sessionReviewResp:
       properties:
         average:
@@ -2896,6 +2906,27 @@ paths:
       - Bearer: []
       summary: '시나리오 모범답안 summary block (Review Lab): recent scenario expanded, three
         collapsed, "+ N개 더"'
+      tags:
+      - review
+  /me/review/scenarios/{id}:
+    get:
+      parameters:
+      - description: scenario id
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/internal_adapters_http.scenarioNotesResp'
+          description: OK
+      security:
+      - Bearer: []
+      summary: One scenario's correction notes (STEP 3 대화 레일의 노트 바텀시트)
       tags:
       - review
   /me/route:

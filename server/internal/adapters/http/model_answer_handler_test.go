@@ -172,3 +172,42 @@ func TestModelAnswerListOffsetPastEndIsAnEmptyPage(t *testing.T) {
 		t.Errorf("offset past end body = %s", body)
 	}
 }
+
+// STEP 3 레일의 '노트'(lesson-fidelity-v46 결정 6): 대화를 떠나지 않고 이 상황의
+// 교정노트만 바텀시트로 본다 — 한 상황, 한 번의 조회.
+func TestScenarioNotesListsOnlyThatScenariosCards(t *testing.T) {
+	repo := maRepo(3, 3)
+	ph := &progressHandler{review: repo}
+
+	req := httptest.NewRequest(http.MethodGet, "/me/review/scenarios/SCN-ER-00002", nil)
+	req.SetPathValue("id", "SCN-ER-00002")
+	req = withUser(req, "user-a")
+	w := httptest.NewRecorder()
+	ph.scenarioNotes(w, req)
+	if w.Code != http.StatusOK {
+		t.Fatalf("status = %d: %s", w.Code, w.Body.String())
+	}
+	var out scenarioNotesResp
+	if err := json.Unmarshal(w.Body.Bytes(), &out); err != nil {
+		t.Fatal(err)
+	}
+	if out.ScenarioID != "SCN-ER-00002" || len(out.Cards) != 1 || out.Cards[0].Model != "I'm giving you your medication" {
+		t.Errorf("notes = %+v", out)
+	}
+	if len(repo.cardCalls) != 1 || len(repo.cardCalls[0]) != 1 || repo.cardCalls[0][0] != "SCN-ER-00002" {
+		t.Errorf("card fetches = %v; want one call for this scenario", repo.cardCalls)
+	}
+}
+
+// 노트가 없는 상황은 null이 아니라 빈 배열 — 시트가 '아직 없어요'를 그린다.
+func TestScenarioNotesEmptyIsAnEmptyList(t *testing.T) {
+	ph := &progressHandler{review: maRepo(0, 0)}
+	req := httptest.NewRequest(http.MethodGet, "/me/review/scenarios/SCN-X", nil)
+	req.SetPathValue("id", "SCN-X")
+	req = withUser(req, "user-a")
+	w := httptest.NewRecorder()
+	ph.scenarioNotes(w, req)
+	if w.Code != http.StatusOK || !strings.Contains(w.Body.String(), `"cards":[]`) {
+		t.Fatalf("status = %d body = %s", w.Code, w.Body.String())
+	}
+}

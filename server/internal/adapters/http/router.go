@@ -126,6 +126,8 @@ func NewRouter(d Deps) http.Handler {
 	// order also documents which is which.
 	mux.Handle("GET /me/review/model-answers/summary", auth(http.HandlerFunc(ph.modelAnswerSummary)))
 	mux.Handle("GET /me/review/model-answers", auth(http.HandlerFunc(ph.modelAnswers)))
+	// One situation's notes — the dialogue rail's 노트 sheet (lesson-fidelity-v46 결정 6).
+	mux.Handle("GET /me/review/scenarios/{id}", auth(http.HandlerFunc(ph.scenarioNotes)))
 
 	// Journey map — one goal-department track + the rest of the campus as chips.
 	jh := &journeyHandler{progress: d.Progress, users: d.Users, journeys: d.Journeys}

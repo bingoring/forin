@@ -1071,6 +1071,12 @@ export const api = {
     return { total: d?.total ?? 0, groups: d?.groups ?? [], more: d?.more ?? 0 };
   },
 
+  /** One situation's 교정노트 — the dialogue rail's 노트 sheet (lesson-fidelity-v46 결정 6). */
+  async scenarioNotes(scenarioId: string): Promise<ModelAnswerCard[]> {
+    const { data } = await http.get(`/me/review/scenarios/${encodeURIComponent(scenarioId)}`);
+    return ((data as { cards?: ModelAnswerCard[] } | null)?.cards ?? []);
+  },
+
   /** One page of ScreenModelAnswerList. Every group carries its cards, so a row
    *  expands without another request. */
   async modelAnswers(opts: { sort: ModelAnswerSort; limit?: number; offset?: number }): Promise<{ groups: ModelAnswerGroup[]; total: number }> {
