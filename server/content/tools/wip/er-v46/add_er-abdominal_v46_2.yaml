@@ -1,0 +1,106 @@
+- title: 급성 췌장염(음주력)
+  sw: {ko: "보통 일주일에 술을 얼마나 드세요?"}
+  s:
+  - {t: "방사 양상", i: compass, w: "go through to your back은 배에서 등까지 뚫고 지나가는 느낌을 쉽게 말한 표현이에요. 췌장 쪽 통증은 등으로 뻗는 경우가 흔해서 꼭 물어요.", d: "only at night", k: ["술은 얼마나 드셨나요?", "구토는 하셨나요?"], a: "back", o: ["neck", "knee", "arm"]}
+  - {t: "음주력", i: board, w: "How much로 열린 질문을 하면 '조금'이라는 얼버무림이 줄어요. 음주와 담석은 급성 췌장염의 흔한 원인이라 비난 없이 솔직히 말하도록 물어요.", d: "at night", k: ["통증이 등까지 가나요?", "마지막으로 드신 게 언제예요?"], a: "alcohol", o: ["water", "coffee", "soda"]}
+  - {t: "금식 안내", i: shield, w: "keep you from …ing은 막아야 한다는 표현이라 지시처럼 들려요. 환자에게는 이유를 곧 덧붙여 주는 게 좋아요.", d: "all night", k: ["수액을 먼저 맞으실 거예요", "통증이 어디에 있는지 말해 주세요"], a: "eating", o: ["moving", "talking", "bathing"]}
+  - {t: "발병·음주력", i: calendar, w: "and had you…로 통증 시작 전의 음주까지 한 문장에 묶어 선후 관계를 한 번에 파악해요. had you been은 그 시점보다 앞선 일을 묻는 시제예요.", d: "since morning", k: ["지금 통증이 몇 점인가요?", "술을 얼마나 드셨나요?"], a: "drinking", o: ["smoking", "vomiting", "fasting"]}
+  - {t: "치료 안내", i: pill, w: "to control your pain으로 약의 목적을 알려 주면 환자가 안심해요. 급성 췌장염의 기본 치료가 수액과 통증 조절이에요.", d: "before dinner", k: ["지금부터 아무것도 드시지 마세요", "혈액검사 결과를 기다리는 중이에요"], a: "pain", o: ["fever", "nausea", "pressure"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "급성 췌장염 대응 4문장 순서"
+    why: "통증의 방향을 먼저 묻고, 그 통증의 시작과 음주를 확인하고, 금식을 안내한 뒤, 먹지 못하는 동안의 치료를 알려요. 'it'·'Since you won't be eating'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Does the pain go through to your back?", icon: compass, ko: "통증이 등까지 관통하듯 뻗치나요?", note: "양상"}
+    - {en: "When did it start, and had you been drinking before that?", icon: calendar, ko: "그건 언제 시작됐고, 그 전에 술을 드셨나요?", note: "음주"}
+    - {en: "We'll need to keep you from eating or drinking for now.", icon: shield, ko: "지금은 먹거나 마시지 못하게 해야 해요", note: "금식"}
+    - {en: "Since you won't be eating or drinking, we're starting IV fluids and medicine for the pain.", icon: pill, ko: "먹거나 마시지 않으실 테니, 수액과 통증 약을 시작할게요", note: "치료"}
+- title: 게실염 좌하복부
+  s:
+  - {t: "통증 위치", i: pushpin, w: "low on your left side로 위치를 쉬운 말로 짚어요. 왼쪽 아랫배 통증은 게실염에서 흔한 위치예요.", d: "since breakfast", k: ["열이 있었나요?", "움직일 때 더 아픈가요?"], a: "low", o: ["high", "deep", "tight"]}
+  - {t: "동반 증상", i: faceWorried, w: "stools는 환자에게도 쓸 수 있는 대변의 점잖은 말이에요. 열·오한·배변 변화는 대장 염증의 단서라 한 번에 묶어 물어요.", d: "last week", k: ["왼쪽 아래가 아픈가요?", "CT 검사를 할 거예요"], a: "chills", o: ["cough", "rash", "itching"]}
+  - {t: "검사 준비", i: lab, w: "contrast liquid로 무엇을 마시는지 풀어 말하면 환자가 준비를 이해해요. CT에서 장을 더 잘 보이게 하려고 조영제를 마시게 하기도 해요.", d: "in your arm", k: ["지금부터 금식하셔야 해요", "수액을 놓아 드릴게요"], a: "before", o: ["after", "during", "without"]}
+  - {t: "악화 요인", i: magnify, w: "움직이거나 기침할 때 더 아프면 복막이 자극됐을 수 있어서 이 질문을 해요.", d: "when I press", k: ["열이나 오한이 있었나요?", "어느 쪽이 아픈가요?"], a: "cough", o: ["sleep", "eat", "rest"]}
+  - {t: "검사 목적", i: monitor, w: "검사로 무엇을 알 수 있는지 말해 주면 환자가 불안 대신 이유를 알아요. 게실염에서 CT는 염증이 퍼졌는지 확인하는 대표 검사예요.", d: "by tomorrow", k: ["CT 전에 마실 게 있어요", "결과는 의사가 설명해 드릴 거예요"], a: "infection", o: ["bleeding", "swelling", "fluid"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "게실염 의심 4문장 순서"
+    why: "통증 위치를 먼저 확인하고, 그 자리가 움직임에 따라 더 아픈지 묻고, 열·오한 같은 증상을 확인한 뒤, 그런 증상을 근거로 CT 준비를 알려요. 'that spot'·'those symptoms'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Is the pain low on your left side?", icon: pushpin, ko: "통증이 왼쪽 아래쪽에 있나요?", note: "위치"}
+    - {en: "Does that spot hurt more when you move or cough?", icon: magnify, ko: "그 자리가 움직이거나 기침할 때 더 아픈가요?", note: "악화"}
+    - {en: "Besides the pain, have you had any fever, chills, or change in your stools?", icon: faceWorried, ko: "통증 외에 열이나 오한, 대변에 변화가 있었나요?", note: "증상"}
+    - {en: "With symptoms like those, you may need to drink a contrast liquid before the CT scan.", icon: lab, ko: "그런 증상이면 CT 촬영 전에 조영제 액체를 드셔야 할 수도 있어요", note: "검사"}
+- title: 소장 폐색(수술력)
+  sw: {ko: "압력을 줄이려고 코로 관을 넣어야 할 수도 있어요"}
+  s:
+  - {t: "수술력", i: scalpel, w: "in the past로 과거를 넓게 묻고 abdominal로 범위를 좁혀요. 이전 복부 수술 뒤에 생긴 유착은 소장 폐색의 흔한 원인이에요.", d: "last year", k: ["가스는 나오나요?", "오늘 몇 번 토하셨어요?"], a: "surgeries", o: ["injuries", "infections", "allergies"]}
+  - {t: "배출 확인", i: magnify, w: "able to로 할 수 있는지를 물어서 못 하는 것인지 안 하는 것인지 구별해요. 가스와 대변이 모두 안 나오면 장 폐색을 강하게 의심해요.", d: "this morning", k: ["수술 받은 적이 있나요?", "토한 적이 있나요?"], a: "gas", o: ["blood", "stones", "water"]}
+  - {t: "비위관 안내", i: hospital, w: "간호사가 환자에게 NGT 대신 코로 관이라고 풀어 말해야 환자가 무엇을 하는지 알아요. 위에 찬 내용물과 가스를 빼서 압력을 줄여요.", d: "in your sleep", k: ["아무것도 드시지 마세요", "곧 수액을 연결할게요"], a: "nose", o: ["arm", "ear", "chest"]}
+  - {t: "구토 횟수", i: bell, w: "how many times로 횟수를 숫자로 들으면 상태를 비교하기 쉬워요. 구토 횟수와 양은 폐색 정도와 탈수를 가늠하는 단서예요.", d: "this week", k: ["수술은 언제 받으셨어요?", "가스는 나오나요?"], a: "vomited", o: ["eaten", "urinated", "coughed"]}
+  - {t: "관찰 소견", i: faceWorried, w: "looks로 보이는 모습을 전하면 진단을 단정하지 않고 사실만 알려요. 배가 부풀고 단단한 것은 장 폐색에서 볼 수 있는 소견이에요.", d: "since morning", k: ["지금 배를 눌러 볼게요", "금식하셔야 해요"], a: "firm", o: ["red", "warm", "bruised"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "소장 폐색 의심 4문장 순서"
+    why: "수술력을 먼저 묻고, 그런 수술 뒤에 가스와 배변이 나오는지 확인하고, 그 답이 구토 질문을 중요하게 만든다고 말한 뒤, 모든 것을 근거로 코로 관을 넣을 수 있다고 안내해요. 'a history like that'·'That'·'With all of that'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Have you had any abdominal surgeries in the past?", icon: scalpel, ko: "과거에 복부 수술을 받으신 적이 있나요?", note: "수술력"}
+    - {en: "With a history like that, have you been able to pass gas or have a bowel movement?", icon: magnify, ko: "그런 병력이면 가스를 배출하거나 배변을 할 수 있었나요?", note: "배출"}
+    - {en: "That makes vomiting important, so tell me how many times you've vomited today.", icon: bell, ko: "그래서 구토가 중요하니, 오늘 몇 번 토하셨는지 말씀해 주세요", note: "구토"}
+    - {en: "With all of that, we may need to place a tube through your nose to relieve the pressure.", icon: hospital, ko: "그 모든 것을 근거로 압력을 줄이려고 코로 관을 넣어야 할 수도 있어요", note: "안내"}
+- title: 신우신염 동반 복통 여성
+  sw: {ko: "소변볼 때 화끈거리는 느낌이 있나요?"}
+  s:
+  - {t: "옆구리 압통", i: stetho, w: "CVA 압통은 갈비뼈와 척추 사이 옆구리를 두드려 보는 검사예요. 환자에게는 여기 등을 두드리면처럼 동작으로 풀어 말해요.", d: "with the cuff", k: ["소변볼 때 아프세요?", "열이 있었나요?"], a: "back", o: ["knee", "neck", "shoulder"]}
+  - {t: "배뇨 증상", i: lab, w: "burning or pain으로 두 가지 느낌을 함께 주면 환자가 대답하기 쉬워요. 배뇨 때의 통증은 요로감염의 대표 증상이에요.", d: "in the morning", k: ["등을 두드리면 아픈가요?", "소변 색이 달라졌나요?"], a: "urinate", o: ["swallow", "breathe", "cough"]}
+  - {t: "검체 안내", i: lab, w: "to check for infection으로 검사 목적을 말하면 협조가 쉬워요. 소변검사는 요로감염을 확인하는 기본 검사예요.", d: "every hour", k: ["소변 검사 뒤에 약을 드릴게요", "열을 다시 재 볼게요"], a: "urine", o: ["blood", "stool", "sputum"]}
+  - {t: "동반 증상", i: faceWorried, w: "열과 오한은 소변 감염이 콩팥까지 번졌을 때 흔한 증상이라 복통과 함께 물어요.", d: "last week", k: ["소변볼 때 화끈거리나요?", "등 어디가 아파요?"], a: "chills", o: ["bruising", "cough", "itching"]}
+  - {t: "배양 안내", i: lab, w: "culture는 균을 키워 어떤 균인지, 어떤 항생제가 듣는지 보는 검사예요. as well로 앞선 검사에 더해진다고 알려요.", d: "to the pharmacy", k: ["항생제를 바로 시작할게요", "소변 검체를 컵에 받아 주세요"], a: "culture", o: ["scan", "biopsy", "swab"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "신우신염 의심 4문장 순서"
+    why: "등을 두드려 옆구리 통증을 확인하고, 그 통증과 함께 배뇨 증상을 묻고, 열·오한을 확인한 뒤, 감염 확인을 위해 소변을 모아 검사한다고 안내해요. 'that back pain'·'those symptoms'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Does it hurt when I tap on your back here?", icon: stetho, ko: "여기 등을 두드리면 아픈가요?", note: "압통"}
+    - {en: "Along with that back pain, do you have any burning or pain when you urinate?", icon: lab, ko: "그 등 통증과 함께 소변볼 때 화끈거리거나 아픈가요?", note: "배뇨"}
+    - {en: "Have you had a fever or chills with those symptoms?", icon: faceWorried, ko: "그 증상들과 함께 열이나 오한이 있었나요?", note: "열"}
+    - {en: "To check for infection, we'll need a urine sample and send it for a culture.", icon: lab, ko: "감염을 확인하려고 소변 검체를 받아 배양검사로 보낼게요", note: "검사"}
+- title: 임신 가능 여성 복통
+  s:
+  - {t: "마지막 생리", i: calendar, w: "last menstrual period는 임신 가능성과 임신 주수를 가늠하는 기본 질문이라 가임기 여성의 복통에서는 꼭 물어요.", d: "this morning", k: ["임신 가능성이 있나요?", "어디가 아픈지 짚어 보세요"], a: "last", o: ["first", "next", "normal"]}
+  - {t: "임신 가능성", i: baby, w: "any chance로 조금이라도를 물으면 환자가 부담 없이 가능성을 말해요. 임신 여부는 영상검사와 약 선택에 영향을 줘서 미리 확인해요.", d: "this month", k: ["마지막 생리가 언제였나요?", "배가 어디가 아픈가요?"], a: "pregnant", o: ["allergic", "anemic", "dehydrated"]}
+  - {t: "임신 검사 안내", i: lab, w: "as part of로 임신 검사가 복통 검사의 일환임을 밝혀요. 가임기 여성의 복통에는 기본으로 하는 검사라 특별한 의심이 아님을 알려 줘요.", d: "this evening", k: ["소변 컵을 드릴게요", "초음파를 할게요"], a: "pregnancy", o: ["glucose", "strep", "flu"]}
+  - {t: "생리 지연", i: calendar, w: "missed a period는 생리를 거르다를 쉽게 말하는 표현이에요. 생리가 늦어지는 것은 임신 가능성의 단서예요.", d: "last month", k: ["마지막 생리가 언제였나요?", "임신 검사를 할게요"], a: "missed", o: ["started", "finished", "had"]}
+  - {t: "검사 의미", i: shield, w: "help guide로 결과가 치료 방향을 정한다고 밝혀 검사를 받아들이게 해요. 임신 여부에 따라 영상검사와 약을 안전하게 고를 수 있어요.", d: "tomorrow morning", k: ["소변 검체를 받아 올게요", "진통제는 의사와 상의해서 드릴게요"], a: "guide", o: ["delay", "block", "replace"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "가임기 여성 복통 4문장 순서"
+    why: "마지막 생리를 묻고, 그 날짜를 근거로 임신 가능성을 확인하고, 어느 쪽이든 임신 검사를 한다고 알리고, 그 결과가 치료에 쓰인다고 말해요. 'that date'·'Either way'·'The result'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "When was your last menstrual period?", icon: calendar, ko: "마지막 생리가 언제였나요?", note: "생리"}
+    - {en: "Based on that date, is there any chance you could be pregnant?", icon: baby, ko: "그 날짜로 보면 임신 가능성이 있나요?", note: "가능성"}
+    - {en: "Either way, we'll do a pregnancy test as part of checking your belly pain.", icon: lab, ko: "어느 쪽이든 복통 검사의 일환으로 임신 검사를 할게요", note: "검사"}
+    - {en: "The result will help guide your treatment safely.", icon: shield, ko: "그 결과가 안전한 치료 방향을 정하는 데 도움이 될 거예요", note: "의미"}
+- title: 이소성 임신 감별
+  sw: {ko: "쓰러질 것 같은 느낌이 있나요?"}
+  s:
+  - {t: "출혈 문진", i: faceWorried, w: "spotting은 소량의 출혈을 환자도 잘 아는 말이에요. 임신 가능성이 있는 복통에서 질출혈은 자궁외임신을 떠올리는 단서예요.", d: "this week", k: ["어지러우세요?", "마지막 생리가 언제예요?"], a: "spotting", o: ["itching", "swelling", "cramping"]}
+  - {t: "실신 증상", i: faceWorried, w: "like you might faint로 풀어 물으면 어질어질함을 실신 직전의 느낌과 함께 확인해요. 출혈로 혈압이 떨어지면 생기는 증상이라 놓치지 않아요.", d: "every morning", k: ["출혈이 있었나요?", "얼마나 오래 어지러우셨어요?"], a: "faint", o: ["vomit", "sneeze", "cough"]}
+  - {t: "임신 확인", i: baby, w: "right away로 급하다고 알려 임신 검사에 대한 협조를 얻어요. 가임기 여성의 복통과 출혈에서는 임신 여부가 가장 먼저 확인할 일 중 하나예요.", d: "for the doctor", k: ["소변을 받아 주세요", "피가 많이 나오나요?"], a: "right away", o: ["tomorrow", "next week", "after lunch"]}
+  - {t: "경과 시간", i: calendar, w: "How long have you…로 시작해 지금까지 이어진 기간을 묻고, 증상이 갑자기 시작됐는지 오래됐는지 가려요.", d: "since breakfast", k: ["출혈은 언제부터였나요?", "지금도 어지러우세요?"], a: "weak", o: ["numb", "cold", "itchy"]}
+  - {t: "긴급 검사", i: siren, w: "urgent와 right now로 긴급함을 겹쳐 강조해 서둘러야 하는 이유를 알게 해요. 혈액검사와 초음파는 자궁외임신을 확인하는 대표 검사예요.", d: "on the unit", k: ["수액을 놓아 드릴게요", "초음파실에서 곧 부를 거예요"], a: "urgent", o: ["routine", "optional", "delayed"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "자궁외임신 감별 4문장 순서"
+    why: "출혈을 먼저 묻고, 그와 함께 어지러움을 확인하고, 두 증상 때문에 임신을 바로 확인해야 한다고 알린 뒤, 그 확인이 긴급 검사로 이어진다고 설명해요. 'that'·'both'·'That check'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Have you noticed any vaginal bleeding or spotting?", icon: faceWorried, ko: "질출혈이나 소량출혈이 있었나요?", note: "출혈"}
+    - {en: "With that, do you feel lightheaded or like you might faint?", icon: faceWorried, ko: "그와 함께 어질어질하거나 쓰러질 것 같은가요?", note: "어지러움"}
+    - {en: "Because of both, we need to check right away whether you could be pregnant.", icon: baby, ko: "둘 다 때문에 임신 가능성을 바로 확인해야 해요", note: "확인"}
+    - {en: "That check means urgent blood work and an ultrasound right now.", icon: siren, ko: "그 확인에는 긴급 혈액검사와 초음파가 필요해요", note: "검사"}

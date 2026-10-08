@@ -1,0 +1,88 @@
+- title: 복통+언어장벽
+  ctx: {word: "point", ko: "가리키다", sc: {0: "I'm speaking to you through the interpreter. Can you point to where it hurts the most?"}, fix: {1: "Please point to the spot that hurts the most — I'll look at you while the interpreter helps."}}
+  s:
+  - {t: "통역 연결", i: speech, w: "I'll get으로 곧 조치한다고 말하면 환자가 안심해요. 통역은 가족이 아니라 자격 있는 통역사를 쓰는 것이 원칙이에요.", d: "for your family", k: ["손으로 아픈 곳을 가리켜 주세요", "고개를 끄덕여 대답해 주세요"], a: "an interpreter", o: ["a pharmacist", "a chaplain", "a technician"]}
+  - {t: "위치 가리키기", i: pushpin, w: "Can you point to…는 말 없이도 답할 수 있는 요청이라 언어 장벽이 있어도 통해요.", d: "on the paper", k: ["통역사가 곧 올 거예요", "예, 아니오로 대답해 주세요"], a: "hurts", o: ["itches", "bleeds", "swells"]}
+  - {t: "예·아니오", i: check, w: "nod yes or shake your head no처럼 동작을 시범 보이며 말하면 통역이 없어도 예·아니오를 받을 수 있어요.", d: "with your eyes", k: ["손으로 아픈 곳을 가리켜 주세요", "통역사를 불러 드릴게요"], a: "nod", o: ["wave", "clap", "bow"]}
+  - {t: "손으로 표시", i: me, w: "with your hand로 방법까지 말해 주면 말이 안 통해도 따라 하기 쉬워요. exactly는 대충이 아니라 한 지점을 짚어 달라는 뜻이에요.", d: "on the paper", k: ["고개를 끄덕여 주세요", "통역사가 도와드릴 거예요"], a: "hand", o: ["eyes", "voice", "ear"]}
+  - {t: "변화 알림", i: bell, w: "Tell the interpreter로 누구에게 말하면 되는지 정해 줘요. 새로운 증상은 바로 알려야 해서 환자가 말할 길을 열어 둬요.", d: "right now", k: ["지금 가리켜 주세요", "통역사가 오고 있어요"], a: "feels", o: ["sounds", "tastes", "smells"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "언어 장벽 복통 문진 4문장 순서"
+    why: "통역사를 먼저 부르고, 그 통역사의 도움으로 아픈 곳을 가리키게 하고, 이어지는 질문은 끄덕임으로 받고, 그 답들 밖의 변화는 통역사에게 말하게 해요. 'the interpreter'·'my other questions'·'those answers'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "I'll get an interpreter so we can understand you better.", icon: speech, ko: "통역사를 불러서 더 잘 이해할 수 있게 할게요", note: "통역"}
+    - {en: "With the interpreter's help, can you point to where it hurts the most?", icon: pushpin, ko: "통역사의 도움으로 가장 아픈 곳을 가리켜 주시겠어요?", note: "위치"}
+    - {en: "For my other questions, please nod yes or shake your head no.", icon: check, ko: "다른 질문에는 맞으면 고개를 끄덕이고 아니면 저어 주세요", note: "예·아니오"}
+    - {en: "Besides those answers, tell the interpreter if anything feels new or different.", icon: bell, ko: "그 답들 외에, 새롭거나 다르게 느껴지는 게 있으면 통역사에게 말씀해 주세요", note: "알림"}
+- title: 오피오이드 남용 의심 복통
+  sw: {ko: "최근에 진통제를 복용하고 계셨나요?"}
+  s:
+  - {t: "공감 시작", i: handshake2, w: "I want to understand로 시작하면 의심이 아니라 도우려는 말로 들려요. 통증 평가는 치료를 안전하게 정하려는 거라고 처음에 밝혀요.", d: "for the doctor", k: ["어떤 약을 드셨는지 알려 주세요", "통증이 몇 점인가요?"], a: "understand", o: ["judge", "test", "blame"]}
+  - {t: "복용 약 확인", i: pill, w: "What medications로 열린 질문을 하면 처방약부터 일반약까지 환자가 떠올리는 대로 들을 수 있어요. 이미 먹은 진통제는 다음 투약량을 정하는 데 꼭 필요해요.", d: "this morning", k: ["통증이 언제부터 시작됐나요?", "전에 도움 된 게 있나요?"], a: "medications", o: ["foods", "drinks", "exercises"]}
+  - {t: "충분한 사정", i: stetho, w: "fully before…로 먼저 충분히 평가한다고 알리면 약을 주느냐 마느냐로 다투는 분위기를 피해요.", d: "in the morning", k: ["약 알레르기가 있나요?", "혈압을 재 볼게요"], a: "fully", o: ["briefly", "quickly", "separately"]}
+  - {t: "솔직한 대화", i: speech, w: "honestly는 추궁이 아니라 정확한 정보가 필요하다는 뜻으로 써요. 전에 효과 있었던 약과 방법은 치료 계획을 세우는 데 도움이 돼요.", d: "last year", k: ["지금 복용 중인 약이 있나요?", "지금 통증은 몇 점인가요?"], a: "helped", o: ["caused", "worsened", "started"]}
+  - {t: "비난 아님", i: shield, w: "not judging you로 낙인에 대한 걱정을 먼저 덜어 줘요. 환자가 불안하면 복용한 약을 숨기기 쉬워서, 안전이 목적이라는 말이 정확한 정보로 이어져요.", d: "in the room", k: ["의사 선생님이 곧 오실 거예요", "궁금한 점은 편하게 물어보세요"], a: "safe", o: ["busy", "cold", "warm"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "통증 약 사용력 대화 4문장 순서"
+    why: "도우려는 마음을 먼저 밝히고, 그 이해를 위해 이미 먹은 약을 묻고, 그 약 외에 도움이 된 것을 물은 뒤, 들은 모든 것을 근거로 충분히 사정한다고 말해요. 'To understand it'·'those'·'everything you've told me'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "I want to understand your pain so we can help you safely.", icon: handshake2, ko: "통증을 이해해서 안전하게 도와드리고 싶어요", note: "공감"}
+    - {en: "To understand it, what medications have you taken for this already?", icon: pill, ko: "이해하려고 하는데, 이미 어떤 약을 드셨나요?", note: "약"}
+    - {en: "Beyond those, tell me honestly what has helped your pain before.", icon: speech, ko: "그 약들 말고, 전에 무엇이 통증에 도움이 됐는지 솔직히 말씀해 주세요", note: "경험"}
+    - {en: "With everything you've told me, we'll assess you fully before deciding on treatment.", icon: stetho, ko: "말씀해 주신 모든 것을 바탕으로 치료를 정하기 전에 충분히 사정할게요", note: "사정"}
+- title: 노인 비전형 복통
+  ctx: {word: "VS", ko: "활력징후", sc: {2: "Please recheck her VS every fifteen minutes."}}
+  s:
+  - {t: "신중한 확인", i: magnify, w: "Sometimes…can로 단정하지 않고 가능성으로 말해 노인이 불안해하지 않게 해요. 고령자는 심각한 복부 질환이 가벼운 통증으로만 나타나기도 해서 꼼꼼히 봐요.", d: "at home", k: ["메스꺼움이 있나요?", "활력징후를 다시 확인할게요"], a: "carefully", o: ["hastily", "casually", "lightly"]}
+  - {t: "비특이 증상", i: faceWorried, w: "고령 환자는 복통 대신 메스꺼움·힘없음·어지러움으로 나타나는 경우가 있어서 증상을 세 가지로 나눠 짚어 물어요.", d: "since yesterday", k: ["통증이 얼마나 심한가요?", "혈압을 다시 잴게요"], a: "weakness", o: ["itching", "coughing", "sneezing"]}
+  - {t: "재확인", i: monitor, w: "Let me…로 허락을 구하듯 말해 반복 측정이 불편하지 않게 해요. 고령자는 활력징후의 작은 변화가 상태 악화의 첫 신호일 수 있어요.", d: "every minute", k: ["어디가 아픈지 말씀해 주세요", "진통제를 바로 드릴게요"], a: "vital signs", o: ["IV line", "blood sugar", "bandage"]}
+  - {t: "가벼워도 중요", i: bell, w: "Even a little…로 작은 통증도 말해 달라는 부탁이에요. 참는 성향의 환자는 증상을 줄여 말하기 쉬워서 미리 안심시켜요.", d: "at night", k: ["지금 통증이 있으신가요?", "어지러운 적 있나요?"], a: "little", o: ["sudden", "strange", "constant"]}
+  - {t: "작은 변화", i: chartup, w: "a small change…matters a lot으로 작은 수치 변화도 놓치지 않겠다는 이유를 말해요. 고령자는 심박이 잘 오르지 않는 경우도 있어서 작은 변화도 중요해요.", d: "at home", k: ["수치를 다시 재 볼게요", "의사 선생님께 알려 드릴게요"], a: "matters", o: ["helps", "hurts", "changes"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "고령자 비전형 복통 4문장 순서"
+    why: "가볍게 느껴져도 신중히 본다고 먼저 말하고, 그 점을 염두에 두고 증상을 묻고, 증상 때문에 활력징후를 다시 재고, 그 수치의 작은 변화도 중요하다고 알려요. 'that in mind'·'those symptoms'·'them'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Sometimes serious problems can feel mild, so I want to check carefully.", icon: magnify, ko: "때로는 심각한 문제도 가볍게 느껴질 수 있어서, 신중히 확인하고 싶어요", note: "안내"}
+    - {en: "With that in mind, have you had any nausea, weakness, or dizziness?", icon: faceWorried, ko: "그걸 염두에 두고, 메스꺼움이나 힘없음, 어지러움이 있었나요?", note: "증상"}
+    - {en: "Let me recheck your vital signs, since those symptoms can matter.", icon: monitor, ko: "그 증상들이 중요할 수 있어서 활력징후를 다시 확인할게요", note: "재측정"}
+    - {en: "A small change in them matters a lot, so tell me even if the pain is small.", icon: bell, ko: "그 수치의 작은 변화도 중요하니, 통증이 작아도 말씀해 주세요", note: "알림"}
+- title: 대동맥류 파열(찢는 통증)
+  s:
+  - {t: "통증 양상", i: faceWorried, w: "tearing or ripping처럼 찢어지는 느낌을 그대로 보기로 주면 환자가 비슷한 말을 찾기 쉬워요. 갑작스러운 찢어지는 통증은 대동맥 문제의 위험 신호예요.", d: "in your leg", k: ["배에서 뭔가 뛰는 게 느껴지나요?", "어디가 가장 아파요?"], a: "tearing", o: ["itching", "tickling", "freezing"]}
+  - {t: "긴급성 설명", i: siren, w: "because로 서두르는 이유를 말하면 불안은 줄고 협조가 늘어요. could be로 확정이 아닌 가능성임을 지켜요.", d: "for now", k: ["외과 선생님을 부르고 있어요", "혈액을 준비하고 있어요"], a: "because", o: ["although", "unless", "until"]}
+  - {t: "조치 알림", i: hospital, w: "진행형으로 지금 하고 있는 일을 알리면 환자가 방치되지 않는다고 느껴요. 대동맥류 파열이 의심되면 외과 연락과 혈액 준비를 함께 진행해요.", d: "for you", k: ["혈압을 다시 재고 있어요", "통증이 찢어지는 느낌인가요?"], a: "surgeon", o: ["pharmacist", "therapist", "dentist"]}
+  - {t: "박동 덩어리", i: magnify, w: "pulsatile mass 대신 pulsing lump로 쉽게 물어요. 배에서 박동하는 덩어리는 복부대동맥류에서 볼 수 있는 소견이에요.", d: "in your back", k: ["통증이 찢어지는 느낌인가요?", "지금 어지러운가요?"], a: "pulsing", o: ["growing", "hard", "painful"]}
+  - {t: "상황 설명", i: monitor, w: "수치를 말하되 so로 우리가 무엇을 하는지까지 이어 주면 불안이 줄어요. 혈압 저하는 대량 출혈이 의심될 때 가장 급한 신호 중 하나예요.", d: "since you came", k: ["지금 외과 선생님을 부르고 있어요", "어떻게 아픈지 말씀해 주세요"], a: "low", o: ["high", "normal", "rising"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "대동맥류 파열 의심 4문장 순서"
+    why: "통증의 성질을 먼저 묻고, 그 통증과 함께 박동하는 덩어리를 묻고, 그 답과 낮은 혈압이 심각할 수 있다고 알린 뒤, 그 이유로 외과 연락과 혈액 준비를 알려요. 'that kind of pain'·'Those answers'·'that reason'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Is the pain tearing or ripping in quality?", icon: faceWorried, ko: "통증이 찢어지거나 뜯기는 성질인가요?", note: "양상"}
+    - {en: "Along with that kind of pain, have you ever noticed a pulsing lump in your belly?", icon: magnify, ko: "그런 통증과 함께 배에서 박동하는 덩어리를 느낀 적이 있나요?", note: "덩어리"}
+    - {en: "Those answers and your low blood pressure mean this could be very serious.", icon: monitor, ko: "그 답들과 낮은 혈압을 보면 매우 심각할 수 있어요", note: "설명"}
+    - {en: "For that reason, we're calling the surgeon and preparing blood right now.", icon: hospital, ko: "그래서 지금 외과 선생님을 부르고 혈액을 준비하고 있어요", note: "조치"}
+- title: 장간막 허혈
+  s:
+  - {t: "솔직한 설명", i: faceWorried, w: "out of proportion 같은 진찰 표현을 풀어 말하고, that concerns us로 왜 서두르는지 정직하게 알려요. 괴로움이 무시되지 않는다고 느끼게 해 줘요.", d: "since morning", k: ["젖산 수치를 확인해야 해요", "배 CT를 찍어야 해요"], a: "worse", o: ["longer", "closer", "faster"]}
+  - {t: "채혈 안내", i: lab, w: "drawing a lactate level은 피를 뽑는다는 말을 풀지 않은 표현이라, 환자에게는 혈액검사라고 덧붙여 주면 더 쉬워요. 젖산은 조직에 피가 잘 안 통할 때 오르는 수치예요.", d: "tomorrow", k: ["CT를 찍으러 갈 거예요", "통증약을 드릴게요"], a: "lactate", o: ["sodium", "glucose", "potassium"]}
+  - {t: "검사 안내", i: monitor, w: "urgent를 앞에 붙여 서두르는 검사임을 알려요. belly는 abdomen을 쉽게 부르는 말이에요. 장간막 허혈은 CT 같은 영상으로 확인해요.", d: "for tomorrow", k: ["젖산 피검사를 해요", "통증이 얼마나 심한가요?"], a: "belly", o: ["head", "chest", "neck"]}
+  - {t: "소견과 통증", i: stetho, w: "but으로 진찰 소견과 환자의 통증이 어긋남을 대비시켜요. 배가 부드러운데 통증이 아주 심한 것은 장간막 허혈에서 특징적인 단서예요.", d: "on your right", k: ["젖산을 확인하고 있어요", "배 CT를 찍을 거예요"], a: "severe", o: ["mild", "new", "constant"]}
+  - {t: "원인 탐색", i: compass, w: "find the cause로 서두르는 목적을 말해요. 원인을 아직 모른다는 것도 정직하게 전하면서 불안을 줄여요.", d: "in the morning", k: ["진통제를 곧 드릴게요", "피검사를 방금 했어요"], a: "pain", o: ["fever", "nausea", "bleeding"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "장간막 허혈 의심 4문장 순서"
+    why: "걱정되는 이유를 먼저 정직하게 말하고, 그 걱정 때문에 젖산을 채혈하고, 그 채혈과 함께 CT가 필요하다고 안내하고, 두 검사가 원인을 찾으려는 것이라고 정리해요. 'that concern'·'that blood test'·'Both tests'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Your pain is much worse than what we feel on exam — that concerns us.", icon: faceWorried, ko: "진찰에서 느끼는 것보다 통증이 훨씬 심해요, 그게 저희를 걱정시켜요", note: "걱정"}
+    - {en: "Because of that concern, we're drawing a lactate level right away.", icon: lab, ko: "그 걱정 때문에 지금 바로 젖산 수치를 채혈할게요", note: "채혈"}
+    - {en: "Along with that blood test, you'll need an urgent CT scan of your belly.", icon: monitor, ko: "그 혈액검사와 함께 배 긴급 CT가 필요해요", note: "CT"}
+    - {en: "Both tests are to find the cause of this pain, so we're moving quickly.", icon: compass, ko: "두 검사는 이 통증의 원인을 찾으려는 거라서 빠르게 움직이고 있어요", note: "목적"}

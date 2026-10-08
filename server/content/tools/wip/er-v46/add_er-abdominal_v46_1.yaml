@@ -1,0 +1,105 @@
+- title: 초기 복통 문진
+  s:
+  - {t: "발병 시점", i: calendar, w: "first를 넣어 '처음 시작된 때'를 짚어요. 복통은 시작 시점과 경과가 원인을 가르는 첫 단서예요.", d: "last week", k: ["어디가 가장 아픈지 보여 주세요", "통증이 몇 점인지 말씀해 주세요"], a: "pain", o: ["nausea", "vomiting", "bleeding"]}
+  - {t: "위치 확인", i: pushpin, w: "show me로 말 대신 손으로 보여 달라고 하면 환자가 위치를 정확히 짚을 수 있어요. 아픈 자리는 복부를 네 구역으로 나눠 원인을 좁히는 근거가 돼요.", d: "right now", k: ["언제부터 아팠는지 말씀해 주세요", "통증이 등으로 퍼지는지 알려 주세요"], a: "where", o: ["when", "how", "why"]}
+  - {t: "방사 확인", i: compass, w: "move or spread처럼 쉬운 동사로 물으면 radiate를 몰라도 환자가 답할 수 있어요. 다른 곳으로 옮겨 가는 통증은 원인을 가리는 단서예요.", d: "only at night", k: ["식사 후에 더 심해지나요?", "열이나 오한이 있었나요?"], a: "spread", o: ["fade", "stop", "shrink"]}
+  - {t: "시점 강조", i: calendar, w: "exactly를 더해 대충이 아니라 정확한 시각을 달라고 해요. 발병 시각은 수술이 필요한 복통인지 가늠할 때 중요해요.", d: "in the morning", k: ["지금 통증이 몇 점인가요?", "어디가 제일 아픈지 짚어 보세요"], a: "began", o: ["ended", "worsened", "spread"]}
+  - {t: "경과 알림", i: bell, w: "if절로 퍼지면 바로 알려 달라고 부탁해요. 복통이 등이나 가슴으로 번지면 대동맥이나 심장 쪽 원인도 함께 보게 돼서 놓치지 않아요.", d: "to your leg", k: ["아프면 이 벨을 눌러 주세요", "토하고 싶으면 말씀해 주세요"], a: "Tell", o: ["Ask", "Show", "Remind"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "초기 복통 문진 4문장 순서"
+    why: "아픈 자리를 먼저 짚게 하고, 그 자리가 언제부터 아팠는지 묻고, 그 사이 번졌는지 확인한 뒤, 앞으로의 알림을 부탁해요. 'that spot'·'that time'·'From now on'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Can you point to where the pain is the worst?", icon: pushpin, ko: "통증이 가장 심한 곳을 가리켜 주시겠어요?", note: "위치"}
+    - {en: "How long has it hurt in that spot?", icon: calendar, ko: "그 자리가 얼마나 오래 아팠나요?", note: "기간"}
+    - {en: "Over that time, has it moved or spread anywhere else?", icon: compass, ko: "그동안 다른 곳으로 옮겨가거나 퍼진 적이 있나요?", note: "방사"}
+    - {en: "From now on, tell me right away if it spreads to your back or chest.", icon: bell, ko: "지금부터 등이나 가슴으로 퍼지면 바로 말씀해 주세요", note: "알림"}
+- title: 활력·통증척도 사정
+  sw: {ko: "지금은 아무것도 먹거나 마시지 마세요"}
+  s:
+  - {t: "통증 점수", i: chartup, w: "0~10 척도를 먼저 제시하면 환자가 숫자로 답해서 차트에 그대로 적을 수 있고, 시간이 지난 뒤 비교하기 쉬워요.", d: "for an hour", k: ["마지막으로 먹은 게 언제인가요?", "혈압을 재 볼게요"], a: "pain", o: ["nausea", "fever", "swelling"]}
+  - {t: "마지막 섭취", i: coffee, w: "last time으로 마지막 섭취 시점을 물어요. 수술이나 마취, 진정이 필요할 수 있어서 먹고 마신 시각을 꼭 적어 둬요.", d: "in the past hour", k: ["지금 통증이 몇 점인가요?", "열은 없으셨나요?"], a: "drank", o: ["smoked", "vomited", "passed"]}
+  - {t: "활력징후", i: monitor, w: "I'm going to로 곧 할 일을 먼저 알리면 환자가 놀라지 않고 팔을 내밀어요. 혈압과 체온은 감염이나 출혈 같은 복통의 위험 신호를 보여 줘요.", d: "in your arm", k: ["지금 약을 드릴게요", "소변 검사를 할게요"], a: "temperature", o: ["allergies", "medications", "weight"]}
+  - {t: "변화 확인", i: faceWorried, w: "any worse로 조금이라도 나빠졌는지를 물어요. 복통이 시간이 갈수록 심해지는지는 응급 수술이 필요한지 가르는 단서예요.", d: "this morning", k: ["처음 아팠던 곳이 어디예요?", "체온을 다시 재 볼게요"], a: "worse", o: ["better", "longer", "closer"]}
+  - {t: "섭취 확인", i: coffee, w: "Have you had로 오늘 하루 전체를 묻고, 앞 질문의 '마지막'과 짝을 이뤄요. 금식 지시를 내리기 전에 무엇을 먹었는지 파악해 둬요.", d: "in the waiting room", k: ["지금 통증이 몇 점인가요?", "열이 있었는지 알려 주세요"], a: "eat", o: ["buy", "cook", "order"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "활력징후·통증 사정 4문장 순서"
+    why: "측정을 먼저 알리고, 통증 점수를 받은 뒤, 그 점수가 달라졌는지 묻고, 그 변화가 수술로 이어질 수 있어 마지막 섭취를 확인해요. 'those numbers'·'that score'·'that change'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "I'm going to check your blood pressure and temperature now.", icon: monitor, ko: "혈압과 체온을 확인할게요", note: "측정"}
+    - {en: "With those numbers noted, how bad is the pain from zero to ten?", icon: chartup, ko: "그 수치를 적었으니, 0에서 10까지 통증이 얼마나 심한가요?", note: "점수"}
+    - {en: "Is that score any higher than it was an hour ago?", icon: faceWorried, ko: "그 점수가 한 시간 전보다 높아졌나요?", note: "변화"}
+    - {en: "Because that change could mean a procedure, I need to know when you last ate or drank.", icon: coffee, ko: "그 변화가 시술로 이어질 수 있어서, 마지막으로 언제 먹거나 마셨는지 알아야 해요", note: "섭취"}
+- title: 우하복부 압통(충수염 의심)
+  s:
+  - {t: "위치 확인", i: pushpin, w: "point to로 손가락으로 짚게 하면 위치가 정확해져요. 충수염은 배꼽 주위에서 시작해 오른쪽 아랫배로 옮겨 가는 경우가 많아서 짚은 자리가 중요한 단서예요.", d: "at your side", k: ["누를 때가 더 아픈가요, 뗄 때가 더 아픈가요?", "마지막으로 드신 게 언제예요?"], a: "point", o: ["walk", "step", "turn"]}
+  - {t: "반발통 확인", i: magnify, w: "환자에게는 반발통이라는 이름 대신 누를 때와 뗄 때를 비교해 물어요. 뗄 때 더 아프면 복막이 자극됐다는 소견일 수 있어요.", d: "your belly", k: ["통증이 어디로 퍼지는지 말씀해 주세요", "열이 나는 것 같으세요?"], a: "let go", o: ["step back", "look away", "sit down"]}
+  - {t: "마지막 섭취", i: coffee, w: "수술 가능성이 있는 복통에서는 마지막 섭취 시각이 마취 계획에 영향을 줘서 일찍 물어요.", d: "at home", k: ["어디가 가장 아픈지 짚어 보세요", "누르면 아픈지 말씀해 주세요"], a: "eat", o: ["smoke", "vomit", "cook"]}
+  - {t: "증상 알림", i: bell, w: "feel sick은 메스꺼움을 쉽게 부르는 말이에요. 메스꺼움과 열이 복통에 더해지면 염증성 원인을 뒷받침해서 바로 알려 달라고 해요.", d: "to the nurse", k: ["어지러우면 말씀해 주세요", "소변은 잘 나오나요?"], a: "fever", o: ["rash", "cough", "headache"]}
+  - {t: "금식 안내", i: shield, w: "so로 금식의 이유(수술 가능성)를 붙이면 환자가 이유를 알고 따라요. 충수염이 의심되면 수술에 대비해 먹고 마시는 것을 멈춰요.", d: "after lunch", k: ["수술 동의서를 설명해 드릴게요", "지금 진통제를 드릴게요"], a: "surgeon", o: ["dietitian", "pharmacist", "chaplain"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "충수염 의심 사정 4문장 순서"
+    why: "아픈 자리를 먼저 짚게 하고, 그 자리를 눌러 보고, 그 압통과 함께 오심·열을 묻고, 그 답들을 근거로 금식을 안내해요. 'there'·'that tenderness'·'those answers'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Can you point to where it hurts the most?", icon: pushpin, ko: "가장 아픈 곳을 가리켜 주시겠어요?", note: "위치"}
+    - {en: "I'm pressing there now — does it hurt more when I press or when I let go?", icon: magnify, ko: "지금 거기를 누르고 있어요, 누를 때와 뗄 때 중 언제 더 아픈가요?", note: "촉진"}
+    - {en: "Along with that tenderness, do you feel sick or have a fever?", icon: faceWorried, ko: "그 압통과 함께 메스껍거나 열이 나나요?", note: "증상"}
+    - {en: "Because of those answers, we may need to call the surgeon, so nothing to eat or drink for now.", icon: shield, ko: "그 답들 때문에 외과 선생님을 부를 수도 있어서, 지금은 먹지도 마시지도 마세요", note: "금식"}
+- title: 소화불량성 복통 감별
+  sw: {ko: "이 통증과 함께 땀을 많이 흘리셨나요?"}
+  s:
+  - {t: "양상 확인", i: faceWorried, w: "burning과 sharp처럼 두 보기를 주면 환자가 고르기 쉬워요. 타는 듯하면 속쓰림 쪽, 날카로우면 다른 원인도 함께 떠올려요.", d: "like a wave", k: ["먹은 뒤에 더 아픈가요?", "통증이 등으로 퍼지나요?"], a: "sharp", o: ["dull", "crushing", "tingling"]}
+  - {t: "식사 관계", i: coffee, w: "식사 전후로 달라지는지를 물으면 소화기 원인을 가늠하는 단서가 돼요. 먹기 전과 후를 비교해 묻는 습관이 좋아요.", d: "than before", k: ["지금 가슴이 아픈가요?", "어떤 느낌의 통증인가요?"], a: "eat", o: ["sleep", "walk", "cough"]}
+  - {t: "위험 신호", i: siren, w: "복통이어도 가슴 통증·식은땀·숨참을 함께 물어 심장 원인을 걸러요. 이 세 가지는 소화불량으로 오인하기 쉬운 심장 문제의 신호예요.", d: "in your leg", k: ["속이 메스꺼운가요?", "열이 있었나요?"], a: "sweating", o: ["itching", "coughing", "bleeding"]}
+  - {t: "현재 증상", i: monitor, w: "right now로 지금 이 순간의 상태를 확인해요. 위험 신호가 지금 있으면 활력징후를 바로 다시 봐야 해서 시점이 중요해요.", d: "after you eat", k: ["가슴이 아팠던 적이 있나요?", "먹고 나면 어때요?"], a: "dizzy", o: ["nauseated", "itchy", "feverish"]}
+  - {t: "음식 문진", i: board, w: "before the pain started로 시점을 못 박으면 기억에 기대는 대답이 줄어요. 기름진 음식이나 술은 소화불량성 통증의 흔한 계기예요.", d: "after you woke", k: ["지금 가슴이 답답한가요?", "통증이 얼마나 오래 갔나요?"], a: "ate", o: ["felt", "saw", "said"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "소화불량성 복통 감별 4문장 순서"
+    why: "통증의 느낌을 먼저 묻고, 그 느낌이 식사와 관련되는지 보고, 심장 원인을 걸러 위험 신호를 묻고, 그 증상이 지금도 있는지 확인해요. 'that feeling'·'those symptoms'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Is the pain more of a burning or a sharp feeling?", icon: faceWorried, ko: "통증이 화끈거리나요, 날카롭나요?", note: "양상"}
+    - {en: "Does that feeling get better or worse after you eat?", icon: coffee, ko: "그 느낌이 먹고 나면 나아지나요, 심해지나요?", note: "식사"}
+    - {en: "Because heart problems can look like this, have you had any chest pain, sweating, or shortness of breath?", icon: siren, ko: "심장 문제도 이렇게 보일 수 있어서, 가슴 통증이나 식은땀, 숨찬 느낌이 있었나요?", note: "위험"}
+    - {en: "Do you have any of those symptoms right now?", icon: monitor, ko: "그 증상 중 지금 있는 게 있나요?", note: "현재"}
+- title: 변비성 복통 노인
+  sw: {ko: "마지막 배변이 언제였나요?"}
+  s:
+  - {t: "배변 문진", i: calendar, w: "bowel movement는 환자가 알아듣는 정식 말이에요. 변비성 복통에서는 마지막 배변 시점이 첫 단서예요.", d: "in the morning", k: ["가스는 나오나요?", "배가 어디가 아픈가요?"], a: "last", o: ["first", "normal", "worst"]}
+  - {t: "섭취 상태", i: coffee, w: "normally lately로 평소와의 차이를 물어요. 노인은 마시는 양이 줄면 탈수와 변비가 함께 오기 쉬워요.", d: "at the hospital", k: ["마지막 배변이 언제였나요?", "배가 팽팽한 느낌이 있나요?"], a: "normally", o: ["poorly", "rarely", "slowly"]}
+  - {t: "가스 배출", i: magnify, w: "at all로 조금이라도를 강조해요. 가스도 안 나오면 장이 막혔을 가능성을 의심해서 변비와 가르는 질문이에요.", d: "every day", k: ["변이 딱딱한가요?", "배가 아픈지 말씀해 주세요"], a: "gas", o: ["urine", "blood", "water"]}
+  - {t: "식습관", i: board, w: "this week로 최근 한 주를 묻고, 섬유질과 수분을 충분히 먹었는지 살펴요. 식습관은 변비의 흔한 원인이에요.", d: "at the store", k: ["마지막 배변은 언제였나요?", "복용 중인 약이 있나요?"], a: "drinking", o: ["cooking", "buying", "ordering"]}
+  - {t: "복부 팽만", i: faceWorried, w: "swollen or tight처럼 느낌 그대로의 말로 물으면 팽만감을 정확히 들을 수 있어요. 변이 쌓이거나 장이 막히면 배가 불러 오는 느낌이 생겨요.", d: "after you eat", k: ["숨쉬기가 불편한가요?", "열이 나거나 토하셨나요?"], a: "swollen", o: ["itchy", "cold", "numb"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "변비성 복통 문진 4문장 순서"
+    why: "마지막 배변을 먼저 묻고, 그 뒤로 가스가 나오는지 확인하고, 같은 기간 동안 배가 불렀는지 묻고, 이 모든 것의 원인을 찾으려 식습관을 물어요. 'Since then'·'that time'·'all of that'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "When was your last bowel movement?", icon: calendar, ko: "마지막 배변이 언제였나요?", note: "배변"}
+    - {en: "Since then, are you passing any gas at all?", icon: magnify, ko: "그 뒤로 가스는 조금이라도 나오나요?", note: "가스"}
+    - {en: "In that time, has your belly felt swollen or tight?", icon: faceWorried, ko: "그동안 배가 붓거나 팽팽한 느낌이 있었나요?", note: "팽만"}
+    - {en: "To find the cause of all of that, what have you been eating and drinking this week?", icon: board, ko: "그 모든 것의 원인을 찾으려는데, 이번 주에 뭘 드시고 마셨나요?", note: "식습관"}
+- title: 담석 산통(RUQ)
+  s:
+  - {t: "유발 요인", i: coffee, w: "기름진 식사 뒤에 시작됐는지 묻는 것은 담낭 통증의 전형적인 유발 요인을 확인하는 거예요.", d: "before lunch", k: ["숨을 들이쉴 때 아픈가요?", "오른쪽 어깨도 아픈가요?"], a: "fatty", o: ["salty", "cold", "sweet"]}
+  - {t: "숨 쉴 때 압통", i: stetho, w: "숨을 들이쉬는 동안 누르게 하는 것은 Murphy 징후를 확인하는 방법이에요. 이름 대신 동작으로 말해야 환자가 협조해요.", d: "after you eat", k: ["기름진 걸 드신 뒤였나요?", "열이 있었나요?"], a: "breathe in", o: ["lie flat", "sit up", "hold still"]}
+  - {t: "방사통", i: compass, w: "담낭 통증은 등이나 오른쪽 어깨 밑으로 퍼지는 경우가 많아서 이 두 곳을 짚어 물어요.", d: "to your arm", k: ["어디가 가장 아픈지 짚어 보세요", "열이나 숨찬 적이 있나요?"], a: "shoulder", o: ["hip", "groin", "knee"]}
+  - {t: "동반 증상", i: faceWorried, w: "열이 함께 있으면 염증이나 감염 쪽을 더 의심하게 돼서 복통 문진에 꼭 넣어요.", d: "last night", k: ["지금 토할 것 같으세요?", "기름진 음식을 드셨나요?"], a: "fever", o: ["rash", "headache", "sore throat"]}
+  - {t: "검사 안내", i: monitor, w: "so로 검사의 이유를 붙여 금식을 납득시켜요. 담낭 초음파는 보통 공복일 때 더 잘 보여서 금식을 안내해요.", d: "on the unit", k: ["통증약을 곧 드릴게요", "수액을 먼저 맞으실 거예요"], a: "an ultrasound", o: ["an MRI", "an endoscopy", "an EKG"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "담석 산통 문진 4문장 순서"
+    why: "유발 요인을 먼저 묻고, 그 뒤로 퍼진 곳을 확인하고, 어깨 말고 누를 때의 통증을 보고, 그 답들을 근거로 초음파와 금식을 안내해요. 'Since then'·'your shoulder'·'all that'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Did the pain start after a fatty or heavy meal?", icon: coffee, ko: "기름지거나 과한 식사 후에 통증이 시작됐나요?", note: "유발"}
+    - {en: "Since then, has it spread to your back or right shoulder?", icon: compass, ko: "그 뒤로 등이나 오른쪽 어깨로 퍼졌나요?", note: "방사"}
+    - {en: "Apart from your shoulder, does it hurt when I press here as you breathe in?", icon: stetho, ko: "어깨 말고도, 숨을 들이쉴 때 여기를 누르면 아픈가요?", note: "촉진"}
+    - {en: "Based on all that, we'll need an ultrasound, so please don't eat anything for now.", icon: monitor, ko: "그 모든 것을 근거로 초음파가 필요하니, 지금은 아무것도 드시지 마세요", note: "검사"}
