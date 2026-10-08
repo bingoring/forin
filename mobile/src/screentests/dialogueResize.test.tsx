@@ -376,3 +376,18 @@ test('no pixel-line residue: no navy page, no pixel or flat icon sets, no hard K
   expect(src).not.toMatch(/PixelIcon|FIcon|deptWash|borderWidth: 2\.5/);
   expect(src).not.toMatch(/이어서 대화할까요|번 주고받은 기록/);
 });
+
+test('the free input’s placeholder breaks where the handoff breaks it (L97 <br/>)', async () => {
+  const tree = await mount();
+  const { TextInput } = require('react-native') as typeof import('react-native');
+  const input = tree.root.findByType(TextInput);
+  expect(input.props.placeholder).toBe('자유롭게 영어로 답하거나\n마이크로 말해보세요…');
+  expect(flat(input.props.style)).toMatchObject({ fontSize: 16, lineHeight: 20.8 });
+});
+
+test('the ruled lines sit where the handoff gradient draws them: 27, 55, … (ui.jsx L164)', async () => {
+  const tree = await mount();
+  const tops = tree.root.findAll((n) => typeof n.type === 'string' && flat(n.props?.style).height === 1 && flat(n.props?.style).backgroundColor === 'rgba(62,54,43,.06)')
+    .map((n) => flat(n.props.style).top as number);
+  expect(tops.slice(0, 3)).toEqual([27, 55, 83]);
+});

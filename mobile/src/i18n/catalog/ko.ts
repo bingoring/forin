@@ -521,7 +521,7 @@ export const ko: Record<string, string> = {
   'dialogue.correctionFix': '이렇게 하면 더 자연스러워요',
   'dialogue.correctionGood': '잘 말했어요',
   'dialogue.tapMicAgain': '말한 뒤 마이크를 다시 누르세요…',
-  'dialogue.inputPlaceholder': '자유롭게 영어로 답하거나 마이크로 말해보세요…',
+  'dialogue.inputPlaceholder': '자유롭게 영어로 답하거나\n마이크로 말해보세요…',
   'dialogue.sending': '전송 중…',
   'dialogue.send': '보내기',
   'dialogue.hint': '힌트',

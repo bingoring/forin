@@ -1292,7 +1292,8 @@ export default function DialogueRoute() {
 /** dialogue.jsx L6 `stage: '#F6E3DC'`. */
 const STAGE_BG = '#F6E3DC';
 
-/** The notebook's ruled lines, behind everything. */
+/** The notebook's ruled lines, behind everything — `repeating-linear-gradient(transparent 0
+ *  27px, rule 27px 28px)` (ui.jsx L164), so the first line is at 27. */
 // memo, and that matters here: this paints ~30 absolutely-positioned rule lines, and it
 // has no props, so it never needs to redraw once mounted. Without memo it was re-created
 // on every render — and during a streaming reply that is once per token, which is a
@@ -1302,7 +1303,7 @@ const Rules = memo(function Rules() {
   return (
     <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, overflow: 'hidden' }}>
       {Array.from({ length: Math.ceil(height / RULE_H) }).map((_, i) => (
-        <View key={i} style={{ position: 'absolute', left: 0, right: 0, top: (i + 1) * RULE_H, height: 1, backgroundColor: RULE_COLOR }} />
+        <View key={i} style={{ position: 'absolute', left: 0, right: 0, top: i * RULE_H + 27, height: 1, backgroundColor: RULE_COLOR }} />
       ))}
     </View>
   );
