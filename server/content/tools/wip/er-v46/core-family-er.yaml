@@ -3156,7 +3156,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 대기 가족 안내 4문장 순서
-    why: 먼저 안내를 시작하고 상태를 말한 뒤, 그 검사의 소요 시간을 알리고 결과가 나오면 찾아가겠다고 약속해요. 3줄의 Those tests는 2줄의 검사를, 4줄의 they는 3줄의 검사를 가리켜서 순서가 하나예요.
+    why: 먼저 안내를 시작하고 상태를 말한 뒤, 그 검사의 소요 시간을 알리고 한 시간이 지나면 결과를 들고 찾아가겠다고 약속해요. 3줄의 Those tests는 2줄의 검사를, 4줄의 that hour는 3줄의 한 시간을 가리켜서 순서가 하나예요.
     lines:
     - en: First, let me update you on how things are going.
       icon: bell
@@ -3170,9 +3170,9 @@ situations:
       icon: lab
       ko: 그 검사는 결과까지 한 시간쯤 걸려요
       note: 시간
-    - en: I'll come find you as soon as they're back.
+    - en: When that hour is up, I'll come find you with the results.
       icon: compass
-      ko: 결과가 나오면 바로 찾아뵐게요
+      ko: 그 한 시간이 지나면 결과를 들고 찾아뵐게요
       note: 약속
 - title: 면회 규정 설명
   sentences:
@@ -3199,7 +3199,7 @@ situations:
     blank:
       answer: one visitor
       options:
-      - en: no visitors
+      - en: three visitors
       - en: one visitor
       - en: two visitors
       - en: ten visitors
@@ -3254,7 +3254,7 @@ situations:
       options:
       - en: noisy
       - en: crowded
-      - en: dark
+      - en: busy
       - en: safe
   - en: Right now, only one person can be at the bedside.
     ko: 지금은 한 분만 침상 곁에 계실 수 있어요.
@@ -3295,7 +3295,7 @@ situations:
     - w-calm
     goal: 2
     tag: 이유 추가
-    icon: faceWorried
+    icon: hospital
     why: It also helps는 앞서 말한 이유에 하나를 더 얹는 모양이에요. 환자의 안정을 이유로 들면 규정이 환자를 위한 것이라는 점이 분명해져요.
     decoy: of her
     distractorsKo:
@@ -3423,7 +3423,7 @@ situations:
     goal: 2
     tag: 관계 확인
     icon: speech
-    why: the patient's로 환자를 기준으로 물으면 보호자가 자기 위치를 스스로 말하게 돼요. 예/아니오로 답하는 짧은 질문이라 긴장한 가족도 쉽게 대답해요.
+    why: emergency contact는 차트에 등록된 연락 담당자라, 정보를 나눌 사람인지 가늠하는 첫 단서가 돼요. 예/아니오로 답하는 짧은 질문이라 긴장한 가족도 쉽게 대답해요.
     decoy: of the doctor
     distractorsKo:
     - 환자분의 보험증을 가져오셨나요?
@@ -3500,7 +3500,7 @@ situations:
     - w-check
     goal: 1
     tag: 배려 안내
-    icon: check
+    icon: monitor
     why: It's okay if …로 모르는 것이 잘못이 아니라고 먼저 말해 줘요. 가족이 확신 없이 답해 틀리는 것보다 기록으로 확인하는 쪽이 정확해요.
     decoy: of ours
     distractorsKo:
@@ -3570,7 +3570,7 @@ situations:
       ko: 감사해요, 덕분에 어디까지 말씀드릴지 알 수 있어요
       note: 이유
     - en: If you're not sure about something, I can check our records.
-      icon: check
+      icon: magnify
       ko: 확실하지 않은 건 기록으로 확인해 볼게요
       note: 대안
 - title: 가족 질문 경청
@@ -3692,8 +3692,8 @@ situations:
     words:
     - w-question
     goal: 2
-    tag: 경청 약속
-    icon: pushpin
+    tag: 질문 존중
+    icon: speech
     why: 질문을 주어로 세우고 matter(중요하다)로 받으면 질문이 환영받는다는 걸 말 자체로 보여 줘요.
     decoy: to them
     distractorsKo:
@@ -3702,9 +3702,9 @@ situations:
     blank:
       answer: matters
       options:
-      - en: bothers
-      - en: scares
-      - en: annoys
+      - en: gets
+      - en: comes
+      - en: belongs
       - en: matters
   nuance:
   - kind: slider
@@ -3744,7 +3744,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 가족 질문 응대 4문장 순서
-    why: 걱정을 먼저 인정하고, That's why로 질문이 중요하다고 이어 말해요. 3줄의 them은 2줄의 질문을, 4줄의 Each time은 3줄의 묻는 일을 가리켜서 순서가 하나예요.
+    why: 걱정을 먼저 인정하고, That's why로 질문이 중요하다고 이어 말해요. 3줄의 them은 2줄의 질문을, 4줄의 Each time you do는 3줄의 ask(묻는 일)를 가리켜서 순서가 하나예요.
     lines:
     - en: I can see you're worried, and that's understandable.
       icon: faceWorried
@@ -3758,9 +3758,9 @@ situations:
       icon: redo
       ko: 그러니 필요한 만큼 몇 번이든 물어보세요
       note: 허용
-    - en: Each time, I'll explain again until it makes sense.
+    - en: Each time you do, I'll explain again until it makes sense.
       icon: bulb
-      ko: 그때마다 이해되실 때까지 다시 설명할게요
+      ko: 그럴 때마다 이해되실 때까지 다시 설명할게요
       note: 약속
 - title: 환자 상태 기초 전달
   sentences:
@@ -3814,10 +3814,10 @@ situations:
     blank:
       answer: cause
       options:
-      - en: doctor
+      - en: cure
       - en: cause
-      - en: room
-      - en: nurse
+      - en: dose
+      - en: bed
   - en: There's no immediate danger right now.
     ko: 지금 당장 위험한 상황은 아니에요.
     chunks:
@@ -3931,8 +3931,8 @@ situations:
       ok: false
       fix: There's no immediate danger right now.
     why: in extremis(죽음이 임박한)는 의사들이 쓰는 라틴어라 가족은 알아듣지 못하거나 오히려 놀라요.
-    word: immediate
-    ko: 즉각적인
+    word: danger
+    ko: 위험
   order:
     tag: 대화 흐름
     icon: compass
@@ -4162,7 +4162,7 @@ situations:
     tag: 정리 제안
     icon: board
     why: Let me …로 정리를 제안하면 앞선 이야기가 틀렸다는 말 없이 다시 시작할 수 있어요. what we actually know는 확인된 것과 아직 모르는 것을 나누겠다는 뜻이에요.
-    decoy: by now
+    decoy: next week
     distractorsKo:
     - 가족분들끼리 먼저 정리해 보세요
     - 저도 아직 아무것도 몰라요
@@ -4321,7 +4321,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 엇갈린 가족 정보 정리 4문장 순서
-    why: 다른 이야기를 들은 것을 인정하고, 그 문제를 풀려고 사실을 정리하고, 정리가 끝난 뒤 담당자를 정해 그래서 모두가 같은 정보를 갖게 돼요. 2줄의 that, 3줄의 that, 4줄의 That way가 모두 앞 줄을 가리켜서 순서가 하나예요.
+    why: 다른 이야기를 들은 것을 인정하고, 그 문제를 풀려고 사실을 정리하고, 정리가 끝난 뒤 담당자를 정해요. 2줄의 that, 3줄의 that이 앞 줄을 가리키고, 4줄의 That person은 3줄에서 정한 담당자라서 순서가 하나예요.
     lines:
     - en: I understand you each heard something different earlier.
       icon: speech
@@ -4335,9 +4335,9 @@ situations:
       icon: pushpin
       ko: 정리되면 연락 담당자를 한 분 정하면 좋아요
       note: 제안
-    - en: That way, everyone has the same information.
+    - en: That person can then pass the same information to everyone.
       icon: handshake2
-      ko: 그러면 모두가 같은 정보를 갖게 돼요
+      ko: 그분이 모두에게 같은 정보를 전해 주실 수 있어요
       note: 효과
 - title: 치료 거부하는 가족
   sentences:
@@ -4632,7 +4632,7 @@ situations:
     tag: 안심 안내
     icon: shield
     why: taking good care of는 '잘 돌보다'의 관용 표현이에요. 안심시키는 말 뒤에 stay close로 곁에 있어도 된다고 허락해 주면 부모가 쫓겨난다는 불안을 덜어요.
-    decoy: of him
+    decoy: for her
     distractorsKo:
     - 아이는 잠시 혼자 있어야 해요
     - 부모님은 밖에서 기다리세요
@@ -4714,18 +4714,18 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 아이 부모 안심시키기 4문장 순서
-    why: 곁에 있어도 된다고 허락하고, 아이를 진정시키는 방법을 묻고, 그 답을 받아 지금 해 보자고 하고, 해 본 결과를 칭찬해요. 3줄의 that은 2줄의 답을, 4줄의 already는 3줄에서 해 본 뒤라는 뜻이어서 순서가 하나예요.
+    why: 곁에 있어도 된다고 허락하고, 아이를 진정시키는 방법을 묻고, 그 답을 받아 지금 해 보자고 하고, 해 본 결과를 칭찬해요. 2줄의 While you do는 1줄의 hold(손 잡기)를, 3줄의 that은 2줄의 답을, 4줄의 already는 3줄에서 해 본 뒤라는 뜻이어서 순서가 하나예요.
     lines:
     - en: You can stay close and hold her hand while we work.
       icon: handshake2
       ko: 곁에서 아이 손을 잡고 계셔도 돼요
       note: 허용
-    - en: Tell me what usually comforts her at home.
+    - en: While you do, tell me what usually comforts her at home.
       icon: home
-      ko: 집에서 보통 뭐가 아이를 진정시키는지 알려주세요
+      ko: 그러시는 동안 집에서 보통 뭐가 아이를 진정시키는지 알려주세요
       note: 질문
     - en: Thank you — let's try that now.
-      icon: check
+      icon: play
       ko: 감사해요, 지금 그렇게 해 봐요
       note: 실행
     - en: See? She's already calmer, and you're doing great.
@@ -4906,7 +4906,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 문화·종교 요청 반영 4문장 순서
-    why: 가장 중요한 것을 묻고, 들은 뒤 감사하며 가능한 일을 알리고, 팀과 조율해 그것이 이뤄지게 하겠다고 하고, 최선을 다하겠다고 맺어요. 2줄의 telling me, 3줄의 that, 4줄의 Until then이 앞 줄을 이어서 순서가 하나예요.
+    why: 가장 중요한 것을 묻고, 들은 뒤 감사하며 가능한 일을 알리고, 팀과 조율해 그것이 이뤄지게 하겠다고 하고, 준비되면 시간을 알려드리겠다고 맺어요. 2줄의 telling me, 3줄의 that, 4줄의 Once it's arranged가 앞 줄을 이어서 순서가 하나예요.
     lines:
     - en: What matters most to your family during this time?
       icon: compass
@@ -4920,9 +4920,9 @@ situations:
       icon: handshake2
       ko: 그렇게 되도록 팀과 조율할게요
       note: 조율
-    - en: Until then, we'll do our best to honor your family's wishes.
-      icon: star
-      ko: 그때까지 가족분들의 뜻을 존중하도록 최선을 다할게요
+    - en: Once it's arranged, I'll come back and tell you the time.
+      icon: bell
+      ko: 준비되면 다시 와서 시간을 알려드릴게요
       note: 약속
 - title: 보호자 과잉 개입
   sentences:
@@ -4977,9 +4977,9 @@ situations:
     blank:
       answer: space
       options:
-      - en: money
-      - en: noise
-      - en: sugar
+      - en: light
+      - en: time
+      - en: help
       - en: space
   - en: You can help most by staying near her head and talking softly.
     ko: 머리 쪽 가까이 계시면서 부드럽게 말씀해 주시는 게 가장 도움이 돼요.
@@ -4998,7 +4998,7 @@ situations:
     goal: 2
     tag: 역할 안내
     icon: handshake2
-    why: help most by -ing는 …하는 것이 가장 도움이 된다는 구조라, 막는 대신 할 수 있는 일을 쥐여 줘요. 머리맡은 대개 처치가 이뤄지는 몸 쪽과 겹치지 않는 자리예요.
+    why: help most by -ing는 …하는 것이 가장 도움이 된다는 구조라, 막는 대신 할 수 있는 일을 쥐여 줘요. 팔·다리 처치 때 머리맡은 팀의 손과 덜 겹치고 환자가 보호자의 얼굴을 볼 수 있는 자리예요.
     decoy: for her
     distractorsKo:
     - 발치에서 지켜보시면 돼요
@@ -5200,10 +5200,10 @@ situations:
     blank:
       answer: someone
       options:
-      - en: no one
+      - en: something
       - en: someone
-      - en: nobody
-      - en: nothing
+      - en: a blanket
+      - en: a phone
   - en: The doctor will be here soon — let's find a quiet space.
     ko: 의사 선생님이 곧 오실 거예요, 조용한 공간을 찾아볼게요.
     chunks:
@@ -5256,9 +5256,9 @@ situations:
     blank:
       answer: moment
       options:
-      - en: picture
-      - en: ticket
-      - en: shower
+      - en: pill
+      - en: number
+      - en: test
       - en: moment
   nuance:
   - kind: pair
@@ -5591,10 +5591,10 @@ situations:
     blank:
       answer: passed away
       options:
-      - en: walked away
-      - en: run away
+      - en: pulled through
+      - en: passed out
       - en: passed away
-      - en: moved away
+      - en: woken up
   - en: Take all the time you need — I'm here with you.
     ko: 필요한 만큼 시간을 가지세요, 제가 곁에 있을게요.
     chunks:
@@ -5618,7 +5618,7 @@ situations:
       options:
       - en: without
       - en: against
-      - en: like
+      - en: instead of
       - en: with
   - en: I'm so sorry — despite everything, he has died.
     ko: 정말 죄송합니다, 최선을 다했지만 돌아가셨습니다.
@@ -5660,7 +5660,7 @@ situations:
     tag: 곁에 있기
     icon: me
     why: I'm not going anywhere는 떠나지 않겠다고 부정문으로 말해 가족이 혼자 남겨질까 하는 불안을 덜어요. right here로 지금 이 자리에 있다는 걸 구체적으로 말해요.
-    decoy: for you
+    decoy: from you
     distractorsKo:
     - 잠시 자리를 비울게요
     - 서류를 가져올게요
@@ -5733,7 +5733,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 사망 고지 4문장 순서
-    why: 먼저 힘든 소식이 있다고 예고하고, 죄송하다고 하며 died로 분명히 알리고, 그 말을 들은 뒤 시간을 가지라고 하고, 그동안 곁에 있겠다고 해요. 3줄의 that은 2줄의 소식을, 4줄의 While you do는 3줄의 시간을 가리켜서 순서가 하나예요.
+    why: 먼저 힘든 소식이 있다고 예고하고, 죄송하다고 하며 died로 분명히 알리고, 그 소식을 받아들일 시간을 가지라고 하고, 그동안 곁에 있겠다고 해요. 3줄의 that은 2줄의 소식을, 4줄의 While you do는 3줄의 시간을 가리켜서 순서가 하나예요.
     lines:
     - en: I have very difficult news to share.
       icon: bell
@@ -5743,9 +5743,9 @@ situations:
       icon: faceWorried
       ko: 정말 죄송해요, 최선을 다했지만 돌아가셨어요
       note: 고지
-    - en: Please take all the time you need after hearing that.
+    - en: I know that's a lot to take in — take all the time you need.
       icon: shield
-      ko: 그 말을 들으셨으니 필요한 만큼 시간을 가지세요
+      ko: 받아들이기 힘드실 거예요, 필요한 만큼 시간을 가지세요
       note: 시간
     - en: While you do, I'll stay right here with you.
       icon: handshake2
@@ -5767,7 +5767,7 @@ situations:
     tag: 팀 상황
     icon: siren
     why: The team으로 한 사람이 아니라 팀 전체가 움직인다고 말해요. everything possible은 가능한 모든 것이라는 뜻이라, 결과를 장담하지 않으면서 최선을 알리는 정직한 표현이에요.
-    decoy: for him
+    decoy: of her
     distractorsKo:
     - 환자분은 방금 일어나셨어요
     - 팀은 지금 쉬고 있어요
@@ -5872,7 +5872,7 @@ situations:
     tag: 계속 알림
     icon: board
     why: keep -ing는 계속 반복한다는 뜻이라 한 번이 아니라 끝까지 알려 주겠다는 약속이 돼요. what the team is doing으로 알려 줄 내용도 구체적으로 정해 줘요.
-    decoy: for him
+    decoy: of her
     distractorsKo:
     - 처치가 끝나면 알려드릴게요
     - 팀이 하는 일은 알려드릴 수 없어요
@@ -5921,29 +5921,29 @@ situations:
       ok: false
       fix: The team is pressing on her chest to keep blood moving, and giving medicine to help her heart.
     why: 소생 중 가족 곁에 있는 간호사는 약어와 용량 대신, 지금 무엇을 왜 하는지 쉬운 말로 풀어 줘요.
-    word: tell
-    ko: 알려 주다
+    word: CPR
+    ko: 심폐소생술
   order:
     tag: 대화 흐름
     icon: compass
     ko: 소생 중 가족 입회 4문장 순서
-    why: 팀이 최선을 다하고 있다고 알린 뒤 곁에 있어도 된다고 허락하고, 그 자리에 있는 동안 말을 걸어도 된다고 알리고, 그동안 상황을 계속 알려 주겠다고 해요. While you're here는 2줄의 입회를, Meanwhile은 3줄의 시간을 이어서 순서가 하나예요.
+    why: 팀이 최선을 다하고 있다고 알린 뒤 팀이 일하는 동안 곁에 있어도 된다고 허락하고, 그 자리에 있는 동안 말을 걸어도 된다고 알리고, 말을 거는 동안 상황을 계속 알려 주겠다고 해요. While they work의 they는 1줄의 팀을, While you're here는 2줄의 입회를, As you talk to her는 3줄의 말 거는 일을 이어서 순서가 하나예요.
     lines:
     - en: The team is doing everything possible for her.
       icon: siren
       ko: 팀이 할 수 있는 모든 걸 하고 있어요
       note: 상황
-    - en: You can be here with her, and I'll stay by your side.
+    - en: While they work, you can stay with her — I'll be by your side.
       icon: faceWorried
-      ko: 곁에 계셔도 돼요, 저도 옆에 있을게요
+      ko: 팀이 일하는 동안 곁에 계셔도 돼요, 저도 옆에 있을게요
       note: 허락
     - en: While you're here, you can talk to her.
       icon: speech
       ko: 곁에 계시는 동안 말을 걸어주셔도 돼요
       note: 안내
-    - en: Meanwhile, I'll keep telling you what the team is doing.
+    - en: As you talk to her, I'll keep telling you what the team is doing.
       icon: board
-      ko: 그동안 팀이 하는 일을 계속 말씀드릴게요
+      ko: 말을 거시는 동안 팀이 하는 일을 계속 말씀드릴게요
       note: 약속
 - title: 급성 상실 애도 지지
   sentences:
@@ -6039,7 +6039,7 @@ situations:
     tag: 곁에 있기
     icon: faceWorried
     why: no right words는 완벽한 말은 없다고 먼저 인정해서 말을 찾아야 하는 부담을 덜어요. 뒤의 I'm here with you가 말보다 곁에 있음을 전해요.
-    decoy: for you
+    decoy: to you
     distractorsKo:
     - 제가 위로가 될 말을 알아요
     - 곧 의사 선생님이 오실 거예요
@@ -6049,7 +6049,7 @@ situations:
       - en: new
       - en: short
       - en: right
-      - en: many
+      - en: more
   - en: I'm right here, and there's no need to rush anything.
     ko: 제가 바로 여기 있어요, 서두르지 않으셔도 돼요.
     chunks:
@@ -6119,15 +6119,15 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 급성 상실 애도 지지 4문장 순서
-    why: 먼저 상상도 안 된다고 공감하고, 그에 대한 어떤 반응이든 괜찮다고 하고, 마음을 추스를 시간을 주고, 준비되면 도울 수 있다고 해요. in response to that, When you are이 앞 줄을 이어서 순서가 하나예요.
+    why: 먼저 상상도 안 된다고 공감하고, 그에 대해 어떤 마음이 들든 괜찮다고 하고, 마음을 추스를 시간을 주고, 준비되면 도울 수 있다고 해요. 2줄의 it은 1줄의 이 순간을, 4줄의 When you are는 3줄의 준비를 이어서 순서가 하나예요.
     lines:
     - en: I can't imagine how hard this moment is.
       icon: faceWorried
       ko: 이 순간이 얼마나 힘드실지 상상도 안 돼요
       note: 공감
-    - en: However you feel in response to that, it's okay.
+    - en: Whatever you're feeling about it, that's okay.
       icon: me
-      ko: 그에 대해 어떤 마음이 드셔도 괜찮아요
+      ko: 그것에 대해 어떤 마음이 드셔도 괜찮아요
       note: 허락
     - en: Take your time getting ready — there's no need to rush.
       icon: handshake2
@@ -6188,10 +6188,10 @@ situations:
     blank:
       answer: comfort
       options:
-      - en: noise
+      - en: surgery
       - en: comfort
-      - en: speed
-      - en: profit
+      - en: recovery
+      - en: discharge
   - en: There's no wrong choice — let's decide together.
     ko: 틀린 선택은 없어요, 함께 결정해요.
     chunks:
@@ -6240,9 +6240,9 @@ situations:
     blank:
       answer: wanted
       options:
-      - en: cooked
-      - en: painted
-      - en: bought
+      - en: refused
+      - en: signed
+      - en: feared
       - en: wanted
   - en: You know her best, so what mattered most to her?
     ko: 가장 잘 아시니까, 어머님께 가장 중요했던 게 뭐였을까요?
@@ -6400,7 +6400,7 @@ situations:
     goal: 2
     tag: 전문가 연결
     icon: bell
-    why: When you're ready로 시작해 가족의 속도를 존중해요. a specialist는 기증을 전문으로 다루는 사람을 가리켜서, 간호사가 직접 설득하지 않고 훈련받은 담당자에게 잇는다는 뜻이에요.
+    why: When you're ready로 시작해 가족의 속도를 존중해요. a specialist는 기증을 전문으로 다루는 사람을 가리켜요. 기증 요청은 OPO(장기구득기관) 담당자 몫이고 간호사는 연결만 해요. 간호사가 직접 설득하지 않고 훈련받은 담당자에게 잇는다는 뜻이에요.
     decoy: for you
     distractorsKo:
     - 의사 선생님이 지금 수술하세요
@@ -6456,7 +6456,7 @@ situations:
     goal: 1
     tag: 조심스러운 언급
     icon: pushpin
-    why: sensitive option으로 민감한 주제임을 미리 알려요. gently mention이라고 하면 지금 결정하라는 말이 아니라 조심스럽게 꺼낸다는 태도가 전해져요.
+    why: sensitive option으로 민감한 주제임을 미리 알려요. gently mention이라고 하면 지금 결정하라는 말이 아니라 조심스럽게 꺼낸다는 태도가 전해져요. 다만 기증을 구체적으로 청하는 일은 OPO 담당자 몫이고, 간호사는 연결만 해요.
     decoy: to them
     distractorsKo:
     - 꼭 하셔야 하는 일이 있어요
@@ -6540,7 +6540,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 장기기증 대화 연계 4문장 순서
-    why: 애도로 시작하고, 준비되면 조심스러운 이야기를 꺼내고, That said로 압박이 없다고 선택권을 알리고, 더 알고 싶다고 선택하면 코디네이터가 설명해요. That said, choose가 앞 줄을 이어서 순서가 하나예요.
+    why: 애도로 시작하고, 준비되면 조심스러운 이야기를 꺼내고, That said로 압박이 없다고 선택권을 알리고, 가족이 더 듣고 싶어 하면 코디네이터가 설명해요. 기증 요청과 설명은 OPO 담당자 몫이고 간호사는 연결만 해요. That said, If you do가 앞 줄을 이어서 순서가 하나예요(do는 3줄의 '압박 없음'에 맞서는 말).
     lines:
     - en: First, I'm so sorry for what you're facing.
       icon: me
@@ -6554,9 +6554,9 @@ situations:
       icon: shield
       ko: 다만 압박은 없고 전적으로 가족분들의 선택이에요
       note: 선택권
-    - en: If you choose to hear more, a donation coordinator will explain everything.
+    - en: If you do want to hear more, a donation coordinator can explain everything.
       icon: speech
-      ko: 더 듣기로 하시면 기증 코디네이터가 모두 설명해 드려요
+      ko: 정말 더 듣고 싶으시면 기증 코디네이터가 모두 설명해 드릴 수 있어요
       note: 연결
 - title: 가족 분노·비난 대응
   sentences:
@@ -6688,10 +6688,10 @@ situations:
     blank:
       answer: listening
       options:
-      - en: laughing
-      - en: shouting
+      - en: objecting
+      - en: replying
       - en: listening
-      - en: leaving
+      - en: agreeing
   nuance:
   - kind: slider
     words:
@@ -6730,23 +6730,23 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 분노한 가족 응대 4문장 순서
-    why: 분노를 먼저 인정하고, 앉아서 말하도록 청하고, 서두르지 않고 듣겠다고 하고, 다 들은 뒤에 설명하겠다고 해요. Take your time은 2줄의 청을, Once you're finished는 3줄의 듣는 시간을 이어서 순서가 하나예요.
+    why: 분노를 먼저 인정하고, 앉아서 말하도록 청하고, 서두르지 않고 끝까지 듣겠다고 하고, 다 들은 뒤에 설명하겠다고 해요. 2줄의 it은 1줄의 분노를, 4줄의 When you are는 3줄의 done을 이어서 순서가 하나예요.
     lines:
     - en: I hear your anger — you have every right to it.
       icon: me
       ko: 화나신 마음 느껴져요, 그럴 자격이 충분히 있으세요
       note: 인정
-    - en: Let's sit down, and tell me everything you need to say.
+    - en: Let's sit down, and tell me all of it.
       icon: home
       ko: 앉으셔서 하고 싶으신 말씀을 모두 해 주세요
       note: 청
-    - en: Take your time — I'm listening to everything you say.
+    - en: Take your time — I'll just listen until you're done.
       icon: bell
-      ko: 천천히 하세요, 하시는 말씀 모두 듣고 있어요
+      ko: 천천히 하세요, 다 끝나실 때까지 듣기만 할게요
       note: 경청
-    - en: Once you're finished, I'll explain what happened.
+    - en: When you are, I'll explain what happened.
       icon: speech
-      ko: 다 말씀하시면 무슨 일이 있었는지 설명할게요
+      ko: 끝나시면 무슨 일이 있었는지 설명할게요
       note: 설명
 - title: 소아 사망 가족 지지
   sentences:
@@ -6773,8 +6773,8 @@ situations:
       answer: loss
       options:
       - en: test
-      - en: bill
-      - en: trip
+      - en: illness
+      - en: injury
       - en: loss
   - en: You can hold her for as long as you need.
     ko: 필요한 만큼 오래 아이를 안고 계셔도 돼요.

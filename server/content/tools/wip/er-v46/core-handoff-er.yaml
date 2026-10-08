@@ -2527,7 +2527,7 @@ situations:
     tag: 대기 중
     icon: hospital
     why: wait on은 결과가 나오기를 기다린다는 뜻으로 병원에서 흔히 써요. still을 넣으면 이미 시간이 꽤 지났다는 느낌까지 전해요.
-    decoy: of the
+    decoy: for the MRI
     distractorsKo:
     - CT 결과는 이미 나왔습니다
     - CT 촬영을 예약해야 합니다
@@ -2770,7 +2770,7 @@ situations:
     tag: 확인 요청
     icon: speech
     why: once는 ~하는 대로라는 뜻이라 결과가 나오는 때를 조건으로 부탁해요. Can you …?는 지시 대신 부탁의 모양이에요.
-    decoy: of the
+    decoy: the X-ray report
     distractorsKo:
     - 결과가 나오기 전에 확인해 주시겠어요?
     - 결과를 제가 대신 확인할게요
@@ -2814,29 +2814,29 @@ situations:
       fix: You'll get your next antibiotic at four o'clock.
     why: 24시간제(1600)와 'dose is due'는 의료진끼리의 말이에요. 환자에게는 'four o'clock'처럼 일상 시각으로 말해요.
     word: dose
-    ko: 용량
+    ko: (1회) 투여분
   order:
     tag: 대화 흐름
     icon: compass
     ko: 미결 업무 인계 4문장 순서
-    why: 검체를 보내는 일이 먼저고, 그것이 끝나면 혈압을 다시 재요. 잰 값을 적고 나서 다음 투약 시각을 안내하니 앞 줄이 뒤 줄의 전제예요.
+    why: 지난 투약을 말하고, the next one으로 다음 투약이 4시라고 이어요. Before that으로 그 전에 검체를 보내야 한다고 짚고, 마지막으로 the result가 나오면 확인해 달라고 부탁해요. 줄마다 앞 줄을 가리키는 말이 있어 순서가 하나예요.
     lines:
-    - en: The urine sample still needs to go to the lab.
-      icon: lab
-      ko: 소변 검체는 아직 검사실로 보내야 해요
-      note: 검체
-    - en: Once it's there, please recheck her blood pressure.
-      icon: monitor
-      ko: 도착하면 혈압을 다시 확인해 주세요
-      note: 재측정
-    - en: Write down whatever number you get.
-      icon: pencil
-      ko: 나온 수치를 적어 주세요
-      note: 기록
-    - en: After that, her next antibiotic dose is due at four.
+    - en: His last dose of antibiotic was given on time.
       icon: pill
-      ko: 그다음 항생제는 4시 예정이에요
-      note: 투약
+      ko: 그분의 지난 항생제는 제시간에 투여됐어요
+      note: 지난 투약
+    - en: The next one is due at four.
+      icon: calendar
+      ko: 다음 투약은 4시 예정이에요
+      note: 다음 투약
+    - en: Before that, the urine sample still needs to go to the lab.
+      icon: lab
+      ko: 그 전에 소변 검체를 아직 검사실로 보내야 해요
+      note: 검체
+    - en: Can you confirm the result once it's back?
+      icon: magnify
+      ko: 결과가 나오면 확인해 주시겠어요?
+      note: 결과 확인
 - title: 환자 정보 재확인
   sentences:
   - en: This is Mr. Alvarez in bed two, correct?
@@ -3026,8 +3026,8 @@ situations:
       ok: false
       fix: Can you tell me your full name and date of birth?
     why: 동료끼리는 '맞죠?'로 확인해도 되지만, 환자에게 이름을 먼저 말하고 '맞죠?'라고 물으면 잘못 듣고도 '네'라고 할 수 있어요. 환자에게는 이름과 생년월일을 직접 말하게 해요.
-    word: bed
-    ko: 병상
+    word: correct
+    ko: 맞나요?(확인)
   order:
     tag: 대화 흐름
     icon: compass
@@ -3221,7 +3221,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 우선순위 환자 지목 4문장 순서
-    why: 누구를 볼지 먼저 짚고, 그 환자의 추세를 근거로 대요. 이어서 호출 기준을 주고, 마지막에 나머지 환자는 안정적이라고 정리해요. Otherwise는 앞의 조건 뒤에만 올 수 있어요.
+    why: 누구를 볼지 먼저 짚고, 그 환자의 추세를 근거로 대요. 이어서 호출 기준을 주고, 마지막에 나머지 환자는 안정적이라고 정리해요. Other than her가 앞의 3번 병상을, that call이 앞 줄의 호출을 받아요.
     lines:
     - en: Watch bed three most closely this shift.
       icon: magnify
@@ -3235,9 +3235,9 @@ situations:
       icon: bell
       ko: 더 떨어지면 일찍 의사를 부르세요
       note: 호출
-    - en: Otherwise, the other three beds are stable and just waiting for discharge.
+    - en: Other than her, the other three beds are stable and just waiting for discharge, so that call is only for her.
       icon: home
-      ko: 아니라면 나머지 세 병상은 안정적이고 퇴원만 기다려요
+      ko: 그분 말고 나머지 세 병상은 안정적이고 퇴원만 기다리니, 그 호출은 그분만 해당돼요
       note: 나머지
 - title: 병동 입원 인계
   sentences:
@@ -3335,14 +3335,14 @@ situations:
     decoy: by mouth
     distractorsKo:
     - 다음 항생제는 6시에 이미 투여했습니다
-    - 다음 항생제 투여는 8시 예정입니다
+    - 항생제 처방이 아직 나지 않았습니다
     blank:
-      answer: six
+      answer: antibiotic
       options:
-      - en: six
-      - en: ten
-      - en: two
-      - en: noon
+      - en: antibiotic
+      - en: insulin
+      - en: heparin
+      - en: steroid
   - en: Please recheck her oxygen level once she's settled on the floor.
     ko: 병동에 자리 잡으면 산소 수치를 다시 확인해 주세요.
     chunks:
@@ -3777,15 +3777,15 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 불안정 환자 인계 4문장 순서
-    why: 상태를 말하고 그 근거로 경보 이력을 대요. 두 가지를 받아 의사가 이미 안다고 전한 뒤, 의사가 정한 조치 기준으로 마무리해요.
+    why: 상태를 말하고, Because of that으로 그 상태 때문에 경보가 울렸다는 이력을 이어요. 두 가지를 받아(Given both) 의사가 이미 안다고 전한 뒤, 의사가 정한 조치 기준으로 마무리해요.
     lines:
     - en: Her pressure is borderline and trending down.
       icon: chevronDown
       ko: 혈압이 경계선이고 계속 떨어져요
       note: 상태
-    - en: Her monitor alarm has gone off twice this hour.
+    - en: Because of that, her monitor alarm has gone off twice this hour.
       icon: bell
-      ko: 이번 한 시간에 경보가 두 번 울렸어요
+      ko: 그 때문에 이번 한 시간에 경보가 두 번 울렸어요
       note: 경보
     - en: Given both, the doctor is aware and wants a call for any change.
       icon: speech
@@ -4087,12 +4087,12 @@ situations:
     - 간호사가 이미 환자를 봤나요?
     - 의사가 이미 처방을 냈나요?
     blank:
-      answer: doctor
+      answer: pending
       options:
-      - en: doctor
-      - en: nurse
-      - en: resident
-      - en: pharmacist
+      - en: pending
+      - en: finished
+      - en: canceled
+      - en: charted
   - en: I'll go check the chart now so we don't miss anything.
     ko: 놓치는 게 없도록 지금 차트를 확인하러 갈게요.
     chunks:
@@ -4159,23 +4159,23 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 누락 정보 확인 4문장 순서
-    why: 빠진 알레르기부터 묻고, Next와 Last로 투여 여부와 진료 여부를 차례로 확인해요. With that으로 앞의 답을 모두 받은 뒤 차트를 보러 가며 마무리해요.
+    why: 빠진 알레르기부터 묻고, With no allergies로 그 답을 받아 투여 여부를 확인해요. it이 앞 줄의 진통제를 받아 처방자와 진료 여부를 묻고, With all of that으로 앞의 답을 모두 받은 뒤 차트를 보러 가며 마무리해요.
     lines:
     - en: You didn't mention her allergies — any I should know?
       icon: shield
       ko: 알레르기 말씀이 없었는데, 알아야 할 게 있나요?
       note: 누락
-    - en: Thanks. Next, was the pain medicine actually given, or just ordered?
+    - en: With no allergies, was the pain medicine actually given, or just ordered?
       icon: pill
-      ko: 다음으로, 진통제는 실제 투여됐나요, 처방만인가요?
+      ko: 알레르기가 없다면, 진통제는 실제 투여됐나요, 처방만인가요?
       note: 투여
-    - en: Okay. Last, did the doctor already see her, or is that still pending?
+    - en: Who ordered it — has the doctor already seen her, or is that still pending?
       icon: stetho
-      ko: 마지막으로, 의사가 이미 봤나요, 대기 중인가요?
+      ko: 누가 처방했나요 — 의사가 이미 봤나요, 아니면 아직 대기 중인가요?
       note: 진료
-    - en: With that, I'll go check the chart now so we don't miss anything.
+    - en: With all of that, I'll go check the chart now so we don't miss anything.
       icon: board
-      ko: 그럼 놓치는 게 없도록 지금 차트를 볼게요
+      ko: 이 모든 걸 감안해 놓치는 게 없도록 지금 차트를 볼게요
       note: 차트
 - title: 언어·문화 배경 전달
   sentences:
@@ -4279,7 +4279,7 @@ situations:
     blank:
       answer: interpret
       options:
-      - en: answer
+      - en: care
       - en: interpret
       - en: decide
       - en: sign
@@ -4407,7 +4407,7 @@ situations:
     goal: 1
     tag: 1대1 관찰
     icon: magnify
-    why: one-to-one은 한 사람이 환자 한 명만 지켜본다는 뜻이에요. at all times는 잠깐도 눈을 떼지 않는다는 뜻이에요.
+    why: requires로 말하면 선택이 아닌 의무라는 게 분명해져요. at all times를 붙여 교대·휴식 중에도 끊기지 않게 해요.
     decoy: for one hour
     distractorsKo:
     - 그분은 가끔씩만 관찰하면 됩니다
@@ -4444,7 +4444,7 @@ situations:
       options:
       - en: blankets
       - en: cords
-      - en: bags
+      - en: charts
       - en: pillows
   - en: Please recheck the room every time you leave and return.
     ko: 나갔다 돌아올 때마다 병실을 다시 확인해 주세요.
@@ -4469,7 +4469,7 @@ situations:
       answer: every time
       options:
       - en: the last time
-      - en: one time
+      - en: the next time
       - en: every time
       - en: the first time
   - en: Security is aware and will call if he tries to leave.
@@ -4538,7 +4538,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 정신과 보류 환자 4문장 순서
-    why: 보류 상태가 근거라 먼저 말해요. 그 때문에 1대1 관찰이 필요하고, 관찰하는 동안 병실을 점검하며, 그래도 나가려 하면 보안이 연락한다는 순서예요.
+    why: 보류 상태가 근거라 먼저 말해요. 그 때문에 1대1 관찰이 필요하고, 관찰하는 사람이 바뀔 때마다 병실을 점검하며, 그 점검 중에 나가려 하면(those room checks가 앞 줄을 받아) 보안이 연락한다는 순서예요.
     lines:
     - en: He's under a seventy-two-hour hold, so he cannot leave.
       icon: lock
@@ -4548,13 +4548,13 @@ situations:
       icon: magnify
       ko: 그래서 항상 1대1 관찰이 필요해요
       note: 관찰
-    - en: While you watch him, please recheck the room every time you leave and return.
+    - en: Whenever the sitter changes, please recheck the room.
       icon: home
-      ko: 지켜보는 동안 나갔다 올 때마다 병실을 다시 확인하세요
+      ko: 지켜보는 사람이 바뀔 때마다 병실을 다시 확인해 주세요
       note: 점검
-    - en: If he tries to leave anyway, security is aware and will call.
+    - en: If he tries to leave during those room checks, security is aware and will call.
       icon: shield
-      ko: 그래도 나가려 하면 보안팀이 알고 연락할 거예요
+      ko: 그 병실 점검 중에 나가려 하면 보안팀이 알고 연락할 거예요
       note: 보안
 - title: 가족 소통 이력 인계
   sentences:
@@ -4630,7 +4630,7 @@ situations:
     decoy: at night
     distractorsKo:
     - 아드님이 아까 매우 차분했어요, 평소처럼 대해 주세요
-    - 아드님은 지금 많이 화가 나 있어요, 조심하세요
+    - 아드님은 아까 면회를 마치고 돌아가셨어요
     blank:
       answer: gentle
       options:
@@ -4658,12 +4658,12 @@ situations:
     - 가족은 예후를 이미 들었습니다
     - 의사가 예후를 이미 설명했습니다
     blank:
-      answer: family
+      answer: mentioned
       options:
-      - en: doctor
-      - en: nurse
-      - en: patient
-      - en: family
+      - en: hidden
+      - en: changed
+      - en: denied
+      - en: mentioned
   - en: Let the doctor know before you say anything about the prognosis.
     ko: 예후에 대해 말하기 전에 의사에게 먼저 알려 주세요.
     chunks:
@@ -4794,7 +4794,7 @@ situations:
     goal: 1
     tag: 발병 시각
     icon: calendar
-    why: 뇌졸중은 증상이 시작된 시각에 따라 치료할 수 있는지가 달라져서 전원 인계에서 꼭 전해요. tPA를 줬는지도 함께 알려야 받는 병원이 중복 투여를 피해요.
+    why: 뇌졸중은 증상이 시작된 시각(시작을 못 봤다면 마지막으로 정상이던 시각, 미국에서는 last known well)에 따라 치료할 수 있는지가 달라져서 전원 인계에서 꼭 전해요. tPA를 줬는지에 따라 받는 병원의 혈압 관리·출혈 감시·혈전제거술 결정이 달라져요.
     decoy: last week
     distractorsKo:
     - 증상은 이틀 전에 시작되었고 tPA를 투여했습니다
@@ -4821,7 +4821,7 @@ situations:
     goal: 2
     tag: 서류 동행
     icon: board
-    why: are traveling with the patient는 서류와 영상이 환자와 함께 이동한다는 뜻이에요. 영상을 같이 보내면 받는 병원이 촬영을 다시 하는 일을 줄일 수 있어요.
+    why: are traveling with the patient는 진행형으로 지금 함께 실려 간다는 걸 알려서, 받는 쪽이 따로 요청하지 않아도 돼요. 영상을 같이 보내면 받는 병원이 촬영을 다시 하는 일을 줄일 수 있어요.
     decoy: to follow
     distractorsKo:
     - 기록과 영상은 나중에 따로 보내겠습니다
@@ -4846,7 +4846,7 @@ situations:
     tag: 수용의 확인
     icon: mic
     why: accepting doctor는 환자를 받겠다고 한 상대 병원 의사예요. 이송 전에 이름을 확인해 두면 도착해서 누구에게 인계할지 헷갈리지 않아요.
-    decoy: of the
+    decoy: after transport
     distractorsKo:
     - 이송하는 의사의 성함을 확인해 주세요
     - 이송이 끝난 뒤 성함을 확인해 주세요
@@ -4875,7 +4875,7 @@ situations:
     why: before the transfer는 측정 시점을 전원 직전으로 정해 줘요. 이송 중 변화를 비교할 기준값이 되어서 받는 쪽이 도착 후 수치를 해석하기 쉬워요.
     decoy: this morning
     distractorsKo:
-    - 전원 후 마지막 혈압은 안정적이었습니다
+    - 이송 중에는 혈압을 재지 못했습니다
     - 전원 전 마지막 혈압은 떨어지고 있었습니다
     blank:
       answer: stable
@@ -5066,7 +5066,7 @@ situations:
     goal: 1
     tag: 동행 인계
     icon: speech
-    why: travel with her는 환자가 불안정할 때 간호사가 이송에 동행한다는 뜻이에요. at the door는 도착하자마자 바로 보고하겠다는 뜻이에요.
+    why: travel with her로 간호사가 이송에 동행한다고 밝혀요. 불안정한 환자라 이송 중에도 간호사가 곁을 지킨다는 뜻이 돼요.
     decoy: by phone
     distractorsKo:
     - 저는 병동에 남아 있겠습니다
@@ -5074,7 +5074,7 @@ situations:
     blank:
       answer: travel
       options:
-      - en: stay
+      - en: talk
       - en: sit
       - en: travel
       - en: wait
@@ -5186,12 +5186,12 @@ situations:
     - '배경: 정지 시간은 약 한 시간이었습니다'
     - '배경: 제세동은 없었습니다'
     blank:
-      answer: eight
+      answer: shocks
       options:
-      - en: eight
-      - en: two
-      - en: twelve
-      - en: twenty
+      - en: shocks
+      - en: breaths
+      - en: doses
+      - en: codes
   - en: Right now he's on a norepinephrine drip and intubated.
     ko: 지금은 노르에피네프린을 투여 중이고 삽관된 상태입니다.
     chunks:
@@ -5218,7 +5218,7 @@ situations:
       - en: awake
       - en: intubated
       - en: extubated
-      - en: sedated
+      - en: ambulating
   - en: His pressure has been stable since the last shock.
     ko: 마지막 제세동 이후 혈압은 안정적이었습니다.
     chunks:
@@ -5238,7 +5238,7 @@ situations:
     decoy: for a week
     distractorsKo:
     - 마지막 제세동 이후 혈압이 계속 떨어졌습니다
-    - 첫 번째 제세동 이후 혈압은 안정적이었습니다
+    - 제세동 뒤 승압제를 끊었습니다
     blank:
       answer: stable
       options:
@@ -5404,12 +5404,12 @@ situations:
     - 저 혼자 가서 그분을 다시 사정할게요
     - 같이 가서 그분을 퇴원시켜요
     blank:
-      answer: see
+      answer: reassess
       options:
-      - en: tell
-      - en: show
-      - en: see
-      - en: call
+      - en: discharge
+      - en: transfer
+      - en: reassess
+      - en: sedate
   - en: Call the doctor now — this can't wait.
     ko: 지금 바로 의사를 호출하세요, 기다릴 수 없습니다.
     chunks:
@@ -5429,12 +5429,12 @@ situations:
     - 의사에게 나중에 연락해도 괜찮아요
     - 의사를 부르지 말고 기다리세요
     blank:
-      answer: now
+      answer: wait
       options:
-      - en: later
-      - en: tomorrow
-      - en: tonight
-      - en: now
+      - en: last
+      - en: change
+      - en: matter
+      - en: wait
   - en: His monitor is showing the drop in oxygen right now.
     ko: 모니터에 지금 산소 수치 하락이 나타나고 있습니다.
     chunks:
@@ -5494,8 +5494,8 @@ situations:
       ok: false
       fix: I need to update you — things have changed, and we're checking on him right now.
     why: '''Forget what I just said''는 바쁜 동료 사이에서 인계를 무를 때 쓰는 말이에요. 가족에게는 앞서 한 설명을 없던 일로 하라는 말로 들려 불신을 줄 수 있어요.'
-    word: status
-    ko: 상태
+    word: Forget what I just said
+    ko: 방금 한 말은 잊으세요
   order:
     tag: 대화 흐름
     icon: compass
@@ -5785,7 +5785,7 @@ situations:
     tag: 담당 지정
     icon: pushpin
     why: Let's agree who …는 회의가 흩어지기 전에 항목마다 책임자를 정하자는 제안이에요. 책임자가 없으면 누군가 하겠지로 끝나는 경우가 많아요.
-    decoy: of the
+    decoy: by tomorrow
     distractorsKo:
     - 각 항목은 제가 혼자 후속 처리할게요
     - 각 항목은 나중에 정해요
@@ -5794,7 +5794,7 @@ situations:
       options:
       - en: agree
       - en: forget
-      - en: argue
+      - en: ignore
       - en: guess
   - en: The doctor still needs to confirm the discharge plan.
     ko: 의사는 아직 퇴원 계획을 확인해야 합니다.
@@ -5820,7 +5820,7 @@ situations:
       options:
       - en: delay
       - en: confirm
-      - en: sign
+      - en: reject
       - en: cancel
   - en: Her family knows about the shelter plan already.
     ko: 가족은 이미 보호소 계획을 알고 있습니다.
@@ -5887,23 +5887,23 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 다직역 인계 회의 4문장 순서
-    why: 간호 보고로 시작하고 사회복지가 퇴원 준비를 말해요. 가족이 그 계획을 이미 안다는 점을 받아 they already know로 이어 담당을 정하며 회의를 마쳐요.
+    why: 간호 보고로 시작하고, 사회복지가 거동이 나아지면(her mobility가 앞 줄을 받아) 퇴원을 주선한다고 이어요. 가족이 그 계획을 이미 안다고 전한 뒤, With all of that으로 앞 내용을 모두 받아 담당을 정하며 회의를 마쳐요.
     lines:
     - en: From nursing, her pain is controlled but mobility is poor.
       icon: stetho
       ko: '간호: 통증은 조절되지만 거동은 좋지 않아요'
       note: 간호
-    - en: Social work is arranging safe discharge to a shelter for her.
+    - en: Social work is arranging safe discharge to a shelter once her mobility improves.
       icon: home
-      ko: '사회복지: 그분의 보호소 퇴원을 주선 중이에요'
+      ko: '사회복지: 거동이 나아지면 보호소로 안전하게 퇴원시키도록 주선 중이에요'
       note: 복지
     - en: Her family knows about it already.
       icon: speech
       ko: 가족은 그 계획을 이미 알고 있어요
       note: 가족
-    - en: Since they already know, let's agree who follows up on each item.
+    - en: With all of that, let's agree who follows up on each item.
       icon: pushpin
-      ko: 이미 아니까 항목마다 누가 후속 처리할지 정해요
+      ko: 이 모든 걸 감안해 항목마다 누가 후속 처리할지 정해요
       note: 담당
 - title: 대량재해 환자 분류 인계
   sentences:
@@ -5925,14 +5925,14 @@ situations:
     why: reds, yellows, greens는 중증도 분류 색을 복수로 세는 현장 말투예요. 색과 숫자를 짧게 말하면 전체 규모가 한눈에 전해져요.
     decoy: at noon
     distractorsKo:
-    - 적색 3명, 황색 8명, 녹색 5명입니다
+    - 적색 환자는 이미 모두 이송했습니다
     - 적색은 한 명도 없습니다
     blank:
       answer: yellows
       options:
-      - en: blacks
       - en: blues
-      - en: whites
+      - en: oranges
+      - en: purples
       - en: yellows
   - en: The reds are in bays one through three, most critical first.
     ko: 적색 환자는 1번부터 3번 구역에 있고, 가장 위중한 순서입니다.
@@ -5979,14 +5979,14 @@ situations:
     decoy: at night
     distractorsKo:
     - 황색 환자는 한 번만 재사정하세요
-    - 녹색 환자를 15분마다 재사정하세요
+    - 황색 환자는 녹색 구역으로 보내세요
     blank:
-      answer: fifteen
+      answer: Reassess
       options:
-      - en: sixty
-      - en: fifteen
-      - en: five
-      - en: thirty
+      - en: Discharge
+      - en: Reassess
+      - en: Sedate
+      - en: Transfer
   - en: Greens can wait in the hallway until we call them.
     ko: 녹색 환자는 호출할 때까지 복도에서 기다릴 수 있습니다.
     chunks:
@@ -6081,7 +6081,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 대량재해 분류 4문장 순서
-    why: 전체 인원으로 시작하고 적색의 위치를 말해요. 그 구역을 맡은 뒤 황색을 재사정하고, 두 그룹을 모두 본 뒤에 녹색이 기다린다는 순서예요.
+    why: 전체 인원으로 시작하고 적색의 위치를 말해요. 그 구역을 맡은 뒤(Once those bays are covered) 황색을 재사정하고, 그 재사정을 하는 동안(those reassessments) 녹색은 복도에서 기다린다는 순서예요.
     lines:
     - en: We have three reds, five yellows, and eight greens.
       icon: board
@@ -6095,7 +6095,7 @@ situations:
       icon: redo
       ko: 그 구역을 맡은 뒤 황색을 15분마다 재사정하세요
       note: 황색
-    - en: The greens can wait in the hallway until both groups are seen.
+    - en: While you do those reassessments, the greens can wait in the hallway.
       icon: home
-      ko: 녹색은 두 그룹을 본 뒤까지 복도에서 기다려도 돼요
+      ko: 그 재사정을 하는 동안 녹색은 복도에서 기다려도 돼요
       note: 녹색

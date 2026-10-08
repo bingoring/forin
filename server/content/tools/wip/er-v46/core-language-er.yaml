@@ -2288,15 +2288,15 @@ situations:
     why: Yes or no?를 붙이면 환자가 한두 단어로 답할 수 있어요. 약물 알레르기는 투약 전에 꼭 확인해야 하는 정보예요.
     decoy: or maybe
     distractorsKo:
-    - 음식 알레르기가 있나요?
+    - 지금 약을 드릴게요
     - 지금 드시는 약이 있나요?
     blank:
       answer: allergy
       options:
-      - en: fever
-      - en: cough
+      - en: objection
+      - en: access
       - en: allergy
-      - en: pain
+      - en: exposure
   - en: Show me with your fingers, zero to ten.
     ko: 손가락으로 보여주세요, 0에서 10까지요.
     chunks:
@@ -2366,18 +2366,18 @@ situations:
     goal: 1
     tag: 알레르기
     icon: pill
-    why: today를 붙여 오늘 방문 기준의 질문임을 분명히 해요. 같은 질문을 순서만 바꿔 다시 물으면 대답이 같은지 확인할 수 있어요.
+    why: 같은 질문을 낱말 순서만 바꿔 다시 물으면 앞선 대답이 같은지 확인할 수 있어요. 알레르기는 평생 이력이라 today는 '지금 다시 확인한다'는 뜻으로만 써요.
     decoy: at home
     distractorsKo:
     - 지난주에 약을 드셨나요?
     - 어떤 약이 필요하세요?
     blank:
-      answer: today
+      answer: allergy
       options:
-      - en: last year
-      - en: today
-      - en: yesterday
-      - en: tomorrow
+      - en: refill
+      - en: allergy
+      - en: bill
+      - en: delivery
   nuance:
   - kind: slider
     words:
@@ -2476,7 +2476,7 @@ situations:
     tag: 이해 확인
     icon: speech
     why: teach-back은 환자가 들은 내용을 자기 말로 다시 말하게 해서 이해했는지 확인하는 방법이에요. 예·아니오로 답하게 하는 것보다 정확해요.
-    decoy: again slowly
+    decoy: if you signed
     distractorsKo:
     - 다시 한번 설명해 드릴게요
     - 서명해 주세요
@@ -2536,12 +2536,12 @@ situations:
     - 처치가 끝난 뒤에 설명할 거예요
     - 각 단계는 제가 직접 할 거예요
     blank:
-      answer: before
+      answer: step
       options:
-      - en: although
-      - en: before
-      - en: until
-      - en: unless
+      - en: result
+      - en: step
+      - en: bill
+      - en: meal
   - en: Please tell me if you don't understand something.
     ko: 이해가 안 되는 부분이 있으면 말씀해 주세요.
     chunks:
@@ -2561,12 +2561,12 @@ situations:
     - 이해하셨으면 서명해 주세요
     - 모르면 가족에게 물어보세요
     blank:
-      answer: Please
+      answer: understand
       options:
-      - en: Don't
-      - en: Seldom
-      - en: Please
-      - en: Never
+      - en: sign
+      - en: pay
+      - en: understand
+      - en: own
   nuance:
   - kind: pair
     words:
@@ -2640,17 +2640,17 @@ situations:
     tag: 감사
     icon: handshake2
     why: 먼저 고마움을 표현하면 가족이 거절당했다고 느끼지 않아요. 도우려는 마음을 인정한 뒤에 이유를 설명하는 순서가 좋아요.
-    decoy: for coming
+    decoy: for leaving
     distractorsKo:
     - 통역은 가족이 해 주세요
     - 번역 앱을 쓰고 싶어요
     blank:
-      answer: Thank
+      answer: wanting
       options:
-      - en: Blame
-      - en: Warn
-      - en: Scold
-      - en: Thank
+      - en: refusing
+      - en: forgetting
+      - en: pretending
+      - en: wanting
   - en: For medical details, we use a trained interpreter.
     ko: 의료 세부사항은 훈련된 통역사를 이용해요.
     chunks:
@@ -2721,7 +2721,7 @@ situations:
     goal: 2
     tag: 병원 방침
     icon: hospital
-    why: always로 예외 없는 병원의 방침임을 알려요. 개인 판단이 아니라 방침이라고 말하면 가족이 덜 서운해해요.
+    why: always로 개인 판단이 아니라 병원 방침이라는 것을 알려요. 방침이라고 말하면 가족이 덜 서운해해요.
     decoy: only at night
     distractorsKo:
     - 가족 통역도 가끔 허용해요
@@ -2753,7 +2753,7 @@ situations:
     why: 고마움으로 시작해 부탁으로 끝내면 거절이 아니라 역할 분담으로 들려요. let은 허락을 구하는 모양이라 명령보다 부드러워요.
     decoy: so you can rest
     distractorsKo:
-    - 도와주셔서 감사해요, 이제 쉬세요
+    - 가족분이 대신 통역해 주세요
     - 통역사가 나가도록 해 주세요
     blank:
       answer: translate
@@ -2801,7 +2801,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 가족 통역을 정중히 사양하는 순서
-    why: 고마움을 먼저 전하고, 의료 내용은 통역사가 맡는다는 이유를 말하고, 그러면 내용이 정확해진다고 설명한 뒤, 가족은 곁에 있어 달라고 부탁해요. though, That way, they가 앞 줄을 가리켜 순서가 하나예요.
+    why: 고마움을 먼저 전하고, 의료 내용은 통역사가 맡는다는 이유를 말하고, 그러면 내용이 정확해지고 의학 용어를 가족이 맡지 않아도 된다고 설명한 뒤, 그 말들을 맡기고 가족으로 곁에 있어 달라고 부탁해요. though, That way, those words가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Thank you for offering to help.
       icon: handshake2
@@ -2811,13 +2811,13 @@ situations:
       icon: lock
       ko: 다만 의료 내용은 훈련된 통역사가 맡아요
       note: 이유
-    - en: That way, everything stays accurate, and you can just be family.
+    - en: That way, everything stays accurate, and the medical words aren't on you.
       icon: shield
-      ko: 그러면 정확하고, 가족은 가족으로 계실 수 있어요
+      ko: 그러면 정확하고, 의학 용어는 가족분이 맡지 않으셔도 돼요
       note: 효과
-    - en: Would you stay with her while they interpret?
+    - en: With those words off your plate, would you stay with her as family?
       icon: home
-      ko: 통역하는 동안 어머니 곁에 계시겠어요?
+      ko: 그 말들은 맡기시고, 가족으로 곁에 계시겠어요?
       note: 부탁
 - title: 언어 선호 확인
   sentences:
@@ -2834,17 +2834,17 @@ situations:
     tag: 언어 질문
     icon: speech
     why: 언어를 추측하지 않고 직접 묻는 것이 첫 단계예요. 국적이나 외모로 짐작하면 틀리기 쉬워요.
-    decoy: for your visit
+    decoy: us to avoid
     distractorsKo:
     - 영어를 할 줄 아세요?
     - 통역사를 원하세요?
     blank:
-      answer: What
+      answer: language
       options:
-      - en: What
-      - en: Why
-      - en: Where
-      - en: When
+      - en: language
+      - en: medicine
+      - en: room
+      - en: form
   - en: Is it easier to read or to listen for you?
     ko: 읽는 것과 듣는 것 중 어느 쪽이 더 편하세요?
     chunks:
@@ -2865,12 +2865,12 @@ situations:
     - 읽고 쓰는 법을 배우셨나요?
     - 설명서를 드릴까요?
     blank:
-      answer: for you
+      answer: listen
       options:
-      - en: for them
-      - en: for you
-      - en: for me
-      - en: for us
+      - en: type
+      - en: listen
+      - en: draw
+      - en: count
   - en: We can get materials in your language too.
     ko: 환자분 언어로 된 자료도 준비해 드릴 수 있어요.
     chunks:
@@ -2940,17 +2940,17 @@ situations:
     tag: 편한 언어
     icon: coffee
     why: 편한 언어를 물으면 말하기·듣기·읽기를 그 언어에 맞출 수 있어요. 가장 편한 언어가 하나가 아닐 수도 있어요.
-    decoy: at home
+    decoy: comfortable to them
     distractorsKo:
     - 영어가 얼마나 편하세요?
     - 가장 아픈 곳이 어디세요?
     blank:
-      answer: to you
+      answer: comfortable
       options:
-      - en: to you
-      - en: to me
-      - en: to us
-      - en: to them
+      - en: comfortable
+      - en: difficult
+      - en: foreign
+      - en: formal
   - en: We'll prepare written materials if you'd like to read.
     ko: 읽는 것을 원하시면 문서 자료를 준비해 드릴게요.
     chunks:
@@ -3055,12 +3055,12 @@ situations:
     - 전화기에게 말씀하세요
     - 저는 의사에게 말하고 있어요
     blank:
-      answer: to you
+      answer: speaking
       options:
-      - en: to him
-      - en: to you
-      - en: to her
-      - en: to them
+      - en: pointing
+      - en: speaking
+      - en: waving
+      - en: walking
   - en: Please look at me, and the interpreter will follow.
     ko: 저를 봐 주세요, 통역사가 따라갈 거예요.
     chunks:
@@ -3114,7 +3114,7 @@ situations:
       options:
       - en: something
       - en: everything
-      - en: anything
+      - en: much
       - en: nothing
   - en: Keep your sentences short so the interpreter can follow.
     ko: 문장을 짧게 해 주세요, 통역사가 따라갈 수 있게요.
@@ -3132,7 +3132,7 @@ situations:
     goal: 2
     tag: 짧게 말하기
     icon: pencil
-    why: so는 이유를 이끌어 문장을 짧게 해야 하는 까닭을 알려요. 통역사가 따라가기 쉬워야 환자의 말이 빠지지 않아요.
+    why: so the interpreter can follow는 목적을 덧붙여, 문장을 짧게 해 달라는 부탁이 통역을 위한 것임을 알려요. 통역사가 따라가기 쉬워야 환자의 말이 빠지지 않아요.
     decoy: and slow
     distractorsKo:
     - 문장을 길게 말씀해 주세요
@@ -3167,10 +3167,10 @@ situations:
     blank:
       answer: speak
       options:
-      - en: drink
+      - en: read
       - en: speak
-      - en: sleep
-      - en: eat
+      - en: sign
+      - en: type
   nuance:
   - kind: slider
     words:
@@ -3299,12 +3299,12 @@ situations:
     - 서두르셔야 해요
     - 잘못하고 계세요
     blank:
-      answer: fine
+      answer: time
       options:
-      - en: fine
-      - en: terrible
-      - en: wrong
-      - en: awful
+      - en: time
+      - en: coat
+      - en: turn
+      - en: temperature
   - en: Please be patient while we find the right dialect for you.
     ko: 정확한 방언을 찾는 동안 조금만 기다려 주세요.
     chunks:
@@ -3327,10 +3327,10 @@ situations:
     blank:
       answer: patient
       options:
-      - en: angry
+      - en: quick
       - en: patient
-      - en: rude
-      - en: upset
+      - en: ready
+      - en: brief
   - en: You're doing fine, and I'll wait with you.
     ko: 잘하고 계세요, 제가 함께 기다릴게요.
     chunks:
@@ -3351,7 +3351,7 @@ situations:
     blank:
       answer: wait
       options:
-      - en: pay
+      - en: check
       - en: argue
       - en: wait
       - en: leave
@@ -3448,7 +3448,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 방언 통역 지연 안내 순서
-    why: 방언 통역사를 찾아야 한다고 알리고, 시간이 걸려도 그것이 정확도를 높인다고 설명하고, 기다리는 동안 편히 있게 하고, 연결되면 감사해요. that, While we wait이 앞 줄을 가리켜 순서가 하나예요.
+    why: 방언 통역사를 찾아야 한다고 알리고, 시간이 더 걸려도 그것이 정확도를 높인다고 설명하고, 늘어난 몇 분 동안 편히 쉬게 하고, 연결되면 감사해요. that, those extra minutes가 앞 줄(a little longer)을 가리켜 순서가 하나예요.
     lines:
     - en: I need to find an interpreter who speaks your dialect.
       icon: compass
@@ -3458,9 +3458,9 @@ situations:
       icon: calendar
       ko: 조금 더 걸릴 수 있지만 그래야 정확해져요
       note: 이유
-    - en: While we wait, please take your time and rest.
+    - en: While you wait those extra minutes, please rest.
       icon: coffee
-      ko: 기다리는 동안 편히 쉬세요
+      ko: 늘어난 몇 분 동안 편히 쉬세요
       note: 배려
     - en: Thank you for waiting. The interpreter is here now.
       icon: star
@@ -3546,7 +3546,7 @@ situations:
       - en: harder
       - en: different
       - en: longer
-      - en: louder
+      - en: faster
   - en: Please ask the interpreter to repeat every word.
     ko: 통역사에게 한 마디도 빠짐없이 다시 말해 달라고 해 주세요.
     chunks:
@@ -3570,10 +3570,10 @@ situations:
     blank:
       answer: every
       options:
-      - en: some
-      - en: half
+      - en: one
+      - en: the last
       - en: every
-      - en: 'no'
+      - en: that
   - en: That felt short, so let's go over it again to be sure.
     ko: 짧게 느껴졌으니, 확실히 하기 위해 다시 한번 살펴볼게요.
     chunks:
@@ -3639,15 +3639,15 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 통역 오역이 의심될 때 순서
-    why: 환자가 말한 것을 다 듣고 싶다고 하고, 통역이 짧게 느껴졌다고 전체를 요청하고, 질문을 바꿔 다시 확인한 뒤, 그래도 안 맞으면 한 번 더 확인해요. it, Thank you, it still이 앞 줄을 가리켜 순서가 하나예요.
+    why: 환자가 말한 것을 다 듣고 싶다고 하고, 그렇게 많은 말(so much)치고 통역이 짧았다고 전체를 요청하고, 질문을 바꿔 다시 확인한 뒤, 그래도 안 맞으면 한 번 더 확인해요. so much가 첫 줄의 a lot을, it still이 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: You said a lot, and I want to hear all of it.
       icon: speaker
       ko: 말씀을 많이 하셨고, 전부 듣고 싶어요
       note: 경청
-    - en: That felt short, so can the interpreter repeat it in full?
+    - en: For so much, that felt short — can the interpreter repeat it in full?
       icon: redo
-      ko: 짧게 느껴졌는데, 전부 다시 말해 줄 수 있나요?
+      ko: 그렇게 많이 하신 말씀치고 짧았는데, 전부 다시 말해 줄 수 있나요?
       note: 요청
     - en: Thank you. Let me ask again a different way to be sure.
       icon: bulb
@@ -3758,12 +3758,12 @@ situations:
     - 남성 간호사로 바꿔 드릴 수 있어요
     - 진찰은 의사가 해요
     blank:
-      answer: if
+      answer: prefer
       options:
-      - en: unless
-      - en: because
-      - en: although
-      - en: if
+      - en: complain
+      - en: leave
+      - en: pay
+      - en: prefer
   - en: We'll keep you covered during the exam.
     ko: 진찰 중에도 계속 가려 드릴게요.
     chunks:
@@ -3786,9 +3786,9 @@ situations:
       answer: during
       options:
       - en: during
-      - en: without
-      - en: unless
-      - en: except
+      - en: before
+      - en: after
+      - en: until
   nuance:
   - kind: pair
     words:
@@ -3924,9 +3924,9 @@ situations:
     blank:
       answer: fast
       options:
-      - en: loud
-      - en: soft
-      - en: wide
+      - en: slow
+      - en: far
+      - en: early
       - en: fast
   - en: Let's go step by step, and I'll draw it too.
     ko: 한 단계씩 해요, 그리고 그림도 그려드릴게요.
@@ -3948,12 +3948,12 @@ situations:
     - 그림 없이 말로만 할게요
     - 한 번에 끝낼게요
     blank:
-      answer: too
+      answer: draw
       options:
-      - en: too
-      - en: first
-      - en: later
-      - en: again
+      - en: draw
+      - en: skip
+      - en: erase
+      - en: sign
   - en: Take your time — there's no rush to understand this.
     ko: 천천히 하세요, 이걸 이해하는 데 서두를 필요 없어요.
     chunks:
@@ -4021,19 +4021,19 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 읽기 어려운 환자에게 설명하는 순서
-    why: 소리 내어 설명하겠다고 하고, 한 단계씩 그림과 함께 진행하고, 그동안 속도를 조절하게 하고, 마지막에 다시 짚을 것을 묻는 순서예요. each one, While I do that, again이 앞 줄을 가리키고 Last가 마지막을 고정해요.
+    why: 먼저 소리 내어 설명하겠다고 하고, 설명하면서 한 단계씩 그림과 함께 진행하고, 그림을 그리는 동안 속도를 조절하게 하고, 마지막에 다시 짚을 것을 묻는 순서예요. First가 처음을, As I explain이 1줄을, While I draw가 2줄의 그림을 가리키고, Last, again이 마지막을 고정해요.
     lines:
-    - en: I'll explain this out loud, so you won't need to read anything.
+    - en: First, I'll explain this out loud, so you won't need to read anything.
       icon: speaker
-      ko: 소리 내어 설명할 테니 읽으실 필요 없어요
+      ko: 먼저 소리 내어 설명할 테니 읽으실 필요 없어요
       note: 방식
-    - en: I'll go step by step, and I'll draw a picture of each one.
+    - en: As I explain, I'll go step by step and draw each step.
       icon: pencil
-      ko: 한 단계씩 하고, 각각 그림도 그려드릴게요
+      ko: 설명하면서 한 단계씩, 단계마다 그림을 그릴게요
       note: 그림
-    - en: While I do that, tell me if I go too fast.
+    - en: While I draw, tell me if I go too fast.
       icon: coffee
-      ko: 그러는 동안 제가 너무 빠르면 말씀해 주세요
+      ko: 그리는 동안 제가 너무 빠르면 말씀해 주세요
       note: 속도
     - en: Last, take your time and ask me to go over anything again.
       icon: faceWorried
@@ -4056,7 +4056,7 @@ situations:
     goal: 1
     tag: 수어 통역
     icon: handshake2
-    why: 청각장애 환자에게는 수어 통역을 제공해야 해요. 미국에서는 장애인법(ADA)이 병원에 효과적인 의사소통 수단을 요구해요.
+    why: 수어를 쓰는 환자에게는 자격 있는 수어 통역사를 불러요. 미국에서는 장애인법(ADA)이 병원에 효과적인 의사소통 수단(수어 통역·문자 통역 등)을 요구해요.
     decoy: for the family
     distractorsKo:
     - 필담 도구를 가져올게요
@@ -4133,7 +4133,7 @@ situations:
     tag: 통역 안내
     icon: speech
     why: 통역사가 말을 전부 옮긴다고 알려 주면 환자가 놓치는 게 없다고 안심해요. 통역은 간호사가 하는 말 전체를 전달하는 것이 원칙이에요.
-    decoy: for you
+    decoy: the consent form
     distractorsKo:
     - 통역사가 가끔 요약할 거예요
     - 통역사가 글로 써 줄 거예요
@@ -4209,7 +4209,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 수어 통역 준비 순서
-    why: 수어 통역사를 준비 중이라고 알리고, 기다리는 동안 글로 소통하고, 통역사가 오면 말 전체를 수어로 옮긴다고 하고, 그때도 간호사를 보게 해요. While we wait, Once …here, When they sign이 앞 줄을 가리켜 순서가 하나예요.
+    why: 수어 통역사를 준비 중이라고 알리고, 기다리는 동안 글로 소통하고, 통역사가 오면 말 전체를 수어로 옮기니 그만 써도 된다고 하고, 수어할 때는 통역사가 제 옆에 서서 환자가 둘을 함께 보게 해요. While we wait, Once …here, When they sign이 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: I'm arranging a sign language interpreter for you now.
       icon: handshake2
@@ -4219,14 +4219,14 @@ situations:
       icon: pencil
       ko: 기다리는 동안 함께 글로 써서 소통해요
       note: 필담
-    - en: Once the interpreter is here, they'll sign everything I say.
+    - en: Once they're here, they'll sign everything I say, so we can stop writing.
       icon: speech
-      ko: 통역사가 오면 제가 하는 말을 전부 수어로 옮겨요
+      ko: 통역사가 오면 제 말을 전부 수어로 옮기니 그때는 그만 써도 돼요
       note: 통역
-    - en: When they sign, please keep facing me so you can see my expressions.
+    - en: When they sign, they'll stand next to me so you can see us both.
       icon: faceWorried
-      ko: 수어를 할 때도 제 표정이 보이게 저를 봐 주세요
-      note: 시선
+      ko: 수어할 때는 제 옆에 서서 둘 다 보이게 할게요
+      note: 위치
 - title: 통증 표현 문화차
   sentences:
   - en: In here, telling me your pain helps us help you.
@@ -4269,17 +4269,17 @@ situations:
     tag: 참지 않기
     icon: faceWorried
     why: 참는 태도를 존중하면서 나에게는 그럴 필요가 없다고 말해요. 통증을 참으면 진통제가 늦어질 수 있어요.
-    decoy: to stay quiet
+    decoy: to be here
     distractorsKo:
     - 더 참아 주세요
     - 저를 위해 웃어 주세요
     blank:
-      answer: for me
+      answer: strong
       options:
-      - en: for me
-      - en: for them
-      - en: for him
-      - en: for her
+      - en: strong
+      - en: loud
+      - en: dressed
+      - en: early
   - en: I can see you're tensing — is it worse than you're saying?
     ko: 긴장하시는 게 보이는데, 말씀하신 것보다 더 심한가요?
     chunks:
@@ -4305,8 +4305,8 @@ situations:
       options:
       - en: sleeping
       - en: tensing
-      - en: smiling
-      - en: laughing
+      - en: relaxing
+      - en: resting
   - en: It's okay to tell me your real pain.
     ko: 실제 통증을 저에게 말씀하셔도 괜찮아요.
     chunks:
@@ -4440,12 +4440,12 @@ situations:
     - 다리가 아프세요? 예 아니오?
     - 숨이 차세요? 예 아니오?
     blank:
-      answer: Yes or no
+      answer: Point
       options:
-      - en: Yes or no
-      - en: Hot or cold
-      - en: Up or down
-      - en: Left or right
+      - en: Point
+      - en: Sign
+      - en: Wait
+      - en: Sit
   - en: Squeeze my hand if the pain is very bad.
     ko: 통증이 아주 심하면 제 손을 꽉 쥐어 주세요.
     chunks:
@@ -4521,9 +4521,9 @@ situations:
     blank:
       answer: pain
       options:
-      - en: fever
-      - en: chill
-      - en: heat
+      - en: bleeding
+      - en: itch
+      - en: swelling
       - en: pain
   - en: Squeeze my hand twice if you understand.
     ko: 이해하시면 제 손을 두 번 꽉 쥐어 주세요.
@@ -4541,15 +4541,15 @@ situations:
     why: 횟수로 신호를 정해 두면 예·아니오를 구분할 수 있어요. 이해했다는 확인도 말 없이 받을 수 있어요.
     decoy: once more
     distractorsKo:
-    - 한 번 쥐면 이해한 거예요
+    - 아프면 손을 들어 주세요
     - 이해하지 못하면 쥐어 주세요
     blank:
       answer: understand
       options:
       - en: understand
-      - en: disagree
+      - en: cough
       - en: forget
-      - en: refuse
+      - en: itch
   nuance:
   - kind: slider
     words:
@@ -4588,7 +4588,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 통역 없이 위급할 때 순서
-    why: 통증 위치를 먼저 묻고, 심하면 손을 쥐게 하고, 이해했다는 응답과 함께 통역사가 오고 있다고 알리고, 통역사가 오면 말하게 해요. it, Good, they가 앞 줄을 가리켜 순서가 하나예요.
+    why: 통증 위치를 먼저 묻고, 심하면 손을 쥐게 하고, 쥔 것(that squeeze)을 느꼈다고 답하며 통역사가 오고 있다고 알리고, 통역사가 오면 말하게 해요. that squeeze, they가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Chest pain? Point to where.
       icon: stetho
@@ -4598,9 +4598,9 @@ situations:
       icon: handshake2
       ko: 아주 심하면 제 손을 쥐어 주세요
       note: 신호
-    - en: Good, I understand. The interpreter is coming, so stay with me.
+    - en: Good, I felt that squeeze. The interpreter is coming, so stay with me.
       icon: bell
-      ko: 알겠어요. 통역사가 오고 있으니 곁에 계세요
+      ko: 네, 꽉 쥐신 거 느꼈어요. 통역사가 오고 있으니 곁에 계세요
       note: 안심
     - en: When they get here, you can tell them everything.
       icon: speech
@@ -4714,9 +4714,9 @@ situations:
       answer: nod
       options:
       - en: nod
-      - en: shout
-      - en: jump
-      - en: cry
+      - en: sign
+      - en: call
+      - en: leave
   - en: Shake your head no if you can't breathe.
     ko: 숨을 못 쉬시면 고개를 저어 주세요.
     chunks:
@@ -4736,14 +4736,14 @@ situations:
     decoy: if you feel fine
     distractorsKo:
     - 숨을 쉬시면 고개를 저어 주세요
-    - 숨을 못 쉬시면 손을 드세요
+    - 가슴이 아프면 가리켜 주세요
     blank:
       answer: Shake
       options:
-      - en: Turn
+      - en: Bow
       - en: Shake
       - en: Nod
-      - en: Hold
+      - en: Tilt
   nuance:
   - kind: pair
     words:
@@ -4822,7 +4822,7 @@ situations:
     tag: 예고
     icon: bell
     why: 나쁜 소식 전에 심각한 이야기라고 예고하면 환자나 가족이 마음의 준비를 해요. 통역사가 함께 전한다고 알려 혼자 듣지 않게 해요.
-    decoy: to tell the doctor
+    decoy: ask you
     distractorsKo:
     - 통역사는 곧 나갈 거예요
     - 좋은 소식을 전할게요
@@ -4883,9 +4883,9 @@ situations:
       answer: ask
       options:
       - en: ask
-      - en: forget
-      - en: hide
-      - en: deny
+      - en: bring
+      - en: send
+      - en: sell
   - en: The interpreter will help you understand his condition.
     ko: 통역사가 상태를 이해하도록 도와드릴 거예요.
     chunks:
@@ -4909,7 +4909,7 @@ situations:
     blank:
       answer: understand
       options:
-      - en: pay
+      - en: change
       - en: understand
       - en: ignore
       - en: hide
@@ -4938,7 +4938,7 @@ situations:
       - en: happy
       - en: proud
       - en: sorry
-      - en: glad
+      - en: lucky
   nuance:
   - kind: slider
     words:
@@ -5102,12 +5102,12 @@ situations:
     - 서명하시면 알려 주세요
     - 다음에 설명해 드릴게요
     blank:
-      answer: Let
+      answer: again
       options:
-      - en: Never
-      - en: Stop
-      - en: Let
-      - en: Don't
+      - en: later
+      - en: faster
+      - en: again
+      - en: louder
   - en: We'll check his consent carefully with the interpreter.
     ko: 통역사와 함께 동의 여부를 꼼꼼히 확인할게요.
     chunks:
@@ -5173,7 +5173,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 언어와 동의 능력을 함께 확인하는 순서
-    why: 통역사를 통해 설명하고, 그 설명을 다시 말하게 하고, 못 하면 언어 문제인지 먼저 확인하고, 언어 문제가 아니면 가족에게 연락해요. Then, it, If it's not the language가 앞 줄을 가리켜 순서가 하나예요.
+    why: 통역사를 통해 설명하고, 그 설명을 다시 말하게 하고, 못 하면 언어 문제인지 통역사에게 먼저 물어보고, 언어 문제가 아니면 가족에게 연락해요. 동의 능력은 의사가 판단하고 통역사는 언어 쪽만 도와요. Then, it, If it's not the language가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: I'll explain the procedure to him through the interpreter.
       icon: speaker
@@ -5183,9 +5183,9 @@ situations:
       icon: speech
       ko: 그다음 방금 설명한 걸 다시 말해 달라고 할게요
       note: 복창
-    - en: If he can't tell it back, the interpreter will check whether it's the language.
+    - en: If he can't tell it back, I'll ask the interpreter whether it's the language.
       icon: magnify
-      ko: 다시 말하지 못하면 언어 때문인지 통역사가 확인해요
+      ko: 다시 말하지 못하면 언어 때문인지 통역사에게 물어볼게요
       note: 확인
     - en: If it's not the language and he can't consent, we'll reach his next of kin.
       icon: home
@@ -5234,7 +5234,7 @@ situations:
     goal: 1
     tag: 직접 질문
     icon: faceWorried
-    why: 자살 위험은 돌려 말하지 않고 직접 묻는 것이 권장돼요. 직접 물어도 자살 생각이 늘어나지 않는다고 알려져 있어요.
+    why: 자살 위험은 돌려 말하지 않고 직접 묻는 것이 권장돼요. 직접 물어도 자살 생각이 늘어나지 않는다고 알려져 있어요. hurting yourself만으로는 자해와 자살이 구분되지 않아 이어서 killing yourself를 직접 물어요.
     decoy: about leaving
     distractorsKo:
     - 스스로를 돌볼 생각을 하셨나요?
@@ -5260,7 +5260,7 @@ situations:
     goal: 2
     tag: 안심
     icon: handshake2
-    why: 혼자가 아니라고 말하면 위기에 처한 환자가 고립감을 덜 느껴요. keep you safe는 감시가 아니라 보호가 목적이라는 뜻이에요.
+    why: 혼자가 아니라고 말하면 위기에 처한 환자가 고립감을 덜 느껴요. keep you safe는 곁에서 지켜보는 것도 벌이 아니라 보호를 위한 것이라는 뜻이에요.
     decoy: to leave you
     distractorsKo:
     - 혼자 있어도 괜찮아요
@@ -5295,9 +5295,9 @@ situations:
     blank:
       answer: ask
       options:
-      - en: forget
-      - en: hide
-      - en: cancel
+      - en: guess
+      - en: decide
+      - en: judge
       - en: ask
   - en: We're here, and you're safe with us.
     ko: 저희가 여기 있고, 저희와 함께 안전하세요.
@@ -5505,7 +5505,7 @@ situations:
     why: 걱정을 이해한다고 하고 강요하지 않겠다고 약속하면 환자가 자기 결정을 존중받는다고 느껴요. 결정은 환자에게 있다는 뜻이에요.
     decoy: so sign it
     distractorsKo:
-    - 걱정은 이해해요, 곧 설득할게요
+    - 오늘 꼭 치료를 받으셔야 해요
     - 걱정 말고 동의해 주세요
     blank:
       answer: won't
@@ -5552,19 +5552,19 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 치료를 거부하는 환자와 대화하는 순서
-    why: 몰아붙이지 않고 걱정을 이해하겠다고 하고, 오해가 있을 수 있다고 하고, 통역사가 설명을 정확히 옮긴다고 하고, 그다음 결정은 환자에게 있다고 마무리해요. it과 After that이 앞 줄을 가리켜 순서가 하나예요.
+    why: 몰아붙이지 않고 걱정을 이해하겠다고 하고, 그 걱정 뒤에 오해가 있을 수 있다고 하고, 오해를 푸는 동안 통역사가 설명을 정확히 옮긴다고 하고, 그다음 결정은 환자에게 있다고 마무리해요. that concern이 1줄을, it이 2줄의 오해를, After that이 앞 줄 전체를 가리켜 순서가 하나예요.
     lines:
     - en: I want to understand your concern, not push you.
       icon: faceWorried
       ko: 걱정을 이해하고 싶을 뿐, 밀어붙이려는 게 아니에요
       note: 경청
-    - en: There may be a misunderstanding I can clear up.
+    - en: Maybe there's a misunderstanding behind that concern that I can clear up.
       icon: bulb
-      ko: 제가 풀어드릴 수 있는 오해가 있을 수 있어요
+      ko: 그 걱정 뒤에 제가 풀어드릴 오해가 있을지도 몰라요
       note: 오해
-    - en: The interpreter will make sure I explain it right.
+    - en: As I clear it up, the interpreter will make sure I explain it right.
       icon: speaker
-      ko: 통역사가 제 설명이 정확한지 도와줄 거예요
+      ko: 오해를 푸는 동안 통역사가 제 설명이 정확한지 도와줄 거예요
       note: 통역
     - en: After that, the choice is yours, and I'll respect it.
       icon: handshake2
@@ -5640,7 +5640,7 @@ situations:
     - w-interpreter
     goal: 2
     tag: 확인 지시
-    icon: check
+    icon: magnify
     why: Always로 예외 없는 규칙임을 알려요. 통역사를 통해 이해를 확인하는 것은 환자 안전을 위한 기본이에요.
     decoy: when asked
     distractorsKo:
@@ -5705,12 +5705,12 @@ situations:
     - 한 번 확인하면 충분해요
     - 거부한 적이 한 번도 없어요
     blank:
-      answer: once
+      answer: understanding
       options:
-      - en: often
-      - en: never
-      - en: once
-      - en: twice
+      - en: insurance
+      - en: address
+      - en: understanding
+      - en: diet
   nuance:
   - kind: pair
     words:
@@ -5756,7 +5756,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 언어 인계 순서
-    why: 환자의 언어를 먼저 알리고, 필요한 통역 방식을 말하고, 통역사를 통한 이해 확인과 거부 이력을 이어서 전하고, 다시 거부하면 연락해 달라고 해요. He, the interpreter, again이 앞 줄을 가리켜 순서가 하나예요.
+    why: 환자의 언어를 먼저 알리고, 필요한 통역 방식을 말하고, 그 화상 통역사와 함께 매번 이해를 확인하라고 하고, 다시 거부하면 연락해 달라고 해요. He, that video interpreter, again이 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: 'Quick handoff: this patient speaks only Somali.'
       icon: speech
@@ -5766,9 +5766,9 @@ situations:
       icon: monitor
       ko: 전화 말고 화상 통역사가 필요해요
       note: 방식
-    - en: With the interpreter, confirm his understanding each time, since he declined care once.
-      icon: check
-      ko: 통역사와 함께 매번 이해를 확인하세요, 한 번 거부하셨거든요
+    - en: With that video interpreter, confirm his understanding each time, since he declined care once.
+      icon: magnify
+      ko: 그 화상 통역사와 함께 매번 이해를 확인하세요, 한 번 거부하셨거든요
       note: 확인
     - en: Call me if he declines again.
       icon: bell
@@ -5877,12 +5877,12 @@ situations:
     - 각 단계를 제 말로 다시 해 주세요
     - 각 단계는 건너뛰세요
     blank:
-      answer: Tell
+      answer: your
       options:
-      - en: Forget
-      - en: Skip
-      - en: Tell
-      - en: Hide
+      - en: my
+      - en: the doctor's
+      - en: your
+      - en: his
   - en: Ask me anything — there's no wrong question here.
     ko: 뭐든 물어보세요, 여기엔 잘못된 질문이 없어요.
     chunks:
@@ -5904,12 +5904,12 @@ situations:
     - 질문은 하지 마세요
     - 질문은 다음에 받을게요
     blank:
-      answer: anything
+      answer: wrong
       options:
-      - en: nothing
-      - en: nobody
-      - en: never
-      - en: anything
+      - en: easy
+      - en: second
+      - en: extra
+      - en: wrong
   nuance:
   - kind: pair
     words:
