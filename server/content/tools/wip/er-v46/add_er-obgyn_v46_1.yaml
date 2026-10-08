@@ -16,12 +16,12 @@
     - {en: "How far along are you, and when did the bleeding start?", icon: calendar, ko: "임신 몇 주째이고, 출혈은 언제 시작됐나요?", note: "시점"}
     - {en: "Since it started, is it more like spotting, or heavier than your period?", icon: monitor, ko: "시작된 뒤로, 소량인가요 아니면 생리보다 많은가요?", note: "출혈량"}
     - {en: "Whichever it is, are you having any pain or cramping with it?", icon: stetho, ko: "어느 쪽이든, 통증이나 쥐어짜는 느낌이 함께 있나요?", note: "통증"}
-    - {en: "Thank you for telling me all that — we'll check on you and the baby right away.", icon: baby, ko: "말씀해 주셔서 고마워요, 당신과 아기를 바로 확인할게요", note: "안심"}
+    - {en: "Thanks for telling me all that — we'll check on you and the baby right away.", icon: baby, ko: "말씀해 주셔서 고마워요, 당신과 아기를 바로 확인할게요", note: "안심"}
 - title: 마지막 월경일 청취
   s:
   - {t: "마지막 생리", i: calendar, w: "마지막 생리의 '첫날'을 묻는 이유는 임신 주수를 그날부터 세기 때문이에요. even roughly를 붙이면 정확히 모르는 환자도 대략 답할 수 있어요.", d: "to the day", k: ["생리 주기가 규칙적인 편인가요?", "생리통이 심하셨나요?"], a: "period", o: ["pregnancy", "delivery", "visit"]}
   - {t: "임신 가능성", i: baby, w: "Is there any chance…는 단정하지 않고 가능성만 묻는 완곡한 질문이라 부담이 적어요. 임신 가능성이 있는 환자는 영상 검사나 약 처방 전에 반드시 이를 확인해요.", d: "you must be", k: ["마지막으로 임신 검사를 한 게 언제인가요?", "피임약을 복용하고 계신가요?"], a: "pregnant", o: ["anemic", "dehydrated", "infected"]}
-  - {t: "안심", i: shield, w: "It's okay if…로 모른다고 말해도 된다고 먼저 허락하면 환자가 추측으로 답하지 않아요. 확실하지 않아도 소변 검사로 임신 여부를 바로 확인할 수 있어요.", d: "unless you're", k: ["대략적인 날짜도 괜찮아요", "그날 이후로 달라진 증상이 있었나요?"], a: "not sure", o: ["nervous", "embarrassed", "upset"]}
+  - {t: "안심", i: shield, w: "It's okay if…로 모른다고 말해도 된다고 먼저 허락하면 환자가 추측으로 답하지 않아요. 확실하지 않아도 소변 검사로 임신 여부를 바로 확인할 수 있어요.", d: "unless you're", k: ["소변 검사는 몇 분이면 끝나요", "그날 이후로 달라진 증상이 있었나요?"], a: "not sure", o: ["nervous", "embarrassed", "upset"]}
   - {t: "기억 유도", i: bulb, w: "well enough to…로 정확하지 않아도 되는 수준을 알려 줘서 환자가 부담 없이 답해요. rough estimate는 날짜를 정확히 모르는 환자에게 대략의 시기를 묻는 말이에요.", d: "an exact date", k: ["마지막 생리가 평소보다 일찍 시작했나요?", "생리 양은 평소와 비슷했나요?"], a: "estimate", o: ["summary", "list", "report"]}
   - {t: "이유 설명", i: bulb, w: "because로 왜 묻는지 먼저 밝히면 개인적인 질문에도 거부감이 줄어요. 마지막 생리일은 임신 주수와 출산 예정일을 계산하는 기준이에요.", d: "for your insurance", k: ["의사 선생님이 곧 결과를 설명해 드릴 거예요", "소변 검사를 잠시 해 볼게요"], a: "how far along you are", o: ["how healthy the baby is", "how much pain you have", "where the pain is"]}
   - {t: "부담 덜기", i: shield, w: "so로 앞 말의 결론을 이어 '정확해야 한다'는 부담을 덜어요. 마지막 생리일은 대략이라도 임신 주수를 짐작하는 데 쓸 수 있어요.", d: "to the hour", k: ["다음 검사는 소변으로 할게요", "복용 중인 약이 있으면 알려 주세요"], a: "exact", o: ["late", "embarrassed", "quick"]}
@@ -29,15 +29,15 @@
     tag: "대화 흐름"
     icon: compass
     ko: "마지막 월경일 청취 4문장 순서"
-    why: "마지막 생리 첫날을 먼저 묻고, 그 날짜와 별개로 임신 가능성을 묻고, 어느 쪽 답이든 소변 검사를 하겠다고 말한 뒤, 날짜와 검사로 주수를 알아낸다고 설명해요. 'that date'·'Aside from'·'Either way'·'the test'가 앞 줄을 가리켜 순서가 하나예요."
+    why: "마지막 생리 첫날을 먼저 묻고, 그 날짜와 별개로 임신 가능성을 묻고, 어느 쪽 답이든 소변 검사를 하겠다고 말한 뒤, 날짜와 검사로 주수를 알아낸다고 설명해요. 'that date'·'yes or no'·'the test'가 앞 줄을 가리켜 순서가 하나예요."
     lines:
     - {en: "When was the first day of your last period, even roughly?", icon: calendar, ko: "마지막 생리 첫날이 언제였나요, 대략이라도요?", note: "날짜"}
     - {en: "Aside from that date, is there any chance you could be pregnant?", icon: baby, ko: "그 날짜 말고, 임신하셨을 가능성이 있나요?", note: "가능성"}
-    - {en: "Either way, we'll do a quick urine test to check.", icon: lab, ko: "어느 쪽이든, 소변 검사로 빠르게 확인할게요", note: "검사"}
+    - {en: "Whether it's yes or no, we'll do a quick urine test to check.", icon: lab, ko: "예든 아니오든, 소변 검사로 빠르게 확인할게요", note: "검사"}
     - {en: "That date and the test will help us figure out how far along you are.", icon: bulb, ko: "그 날짜와 검사로 임신 주수를 알아볼 수 있어요", note: "이유"}
 - title: 골반통 초기 사정
   s:
-  - {t: "위치 확인", i: pushpin, w: "point to로 손가락으로 짚게 하면 말로 설명하기 어려운 부위도 정확히 알 수 있어요. 골반통은 오른쪽·왼쪽·정중앙 중 어디인지가 원인을 좁히는 단서예요.", d: "to the side", k: ["통증이 언제부터 있었나요?", "체온을 재 볼게요"], a: "point", o: ["walk", "turn", "look"]}
+  - {t: "위치 확인", i: pushpin, w: "point to로 손가락으로 짚게 하면 말로 설명하기 어려운 부위도 정확히 알 수 있어요. 골반통은 오른쪽·왼쪽·정중앙 중 어디인지가 원인을 좁히는 단서예요.", d: "to the side", k: ["통증이 언제부터 있었나요?", "체온을 재 볼게요"], a: "point", o: ["reach", "turn", "look"]}
   - {t: "통증 양상", i: stetho, w: "sharp·dull·crampy처럼 보기를 주면 환자가 통증을 설명할 말을 몰라도 고를 수 있어요. 날카로운지 쥐어짜는지에 따라 의심하는 원인이 달라져요.", d: "like a burn", k: ["통증이 허리로도 번지나요?", "소변볼 때 아프지는 않으세요?"], a: "dull", o: ["burning", "throbbing", "itchy"]}
   - {t: "동반 증상", i: stetho, w: "열·분비물·메스꺼움을 한 문장에 묶어 물으면 환자가 한 번에 답할 수 있어요. 골반통에 열과 분비물이 함께 있으면 골반 감염을 의심하는 단서가 돼요.", d: "from your leg", k: ["아랫배를 눌러 볼게요", "소변 검사를 위해 컵을 드릴게요"], a: "discharge", o: ["bruising", "dizziness", "vomiting"]}
   - {t: "통증 경과", i: chartup, w: "두 가지 선택지를 or로 이어 주면 환자가 '계속'과 '왔다갔다' 중 골라 답하기 쉬워요. 간헐적인 쥐어짜는 통증과 지속적인 통증은 원인을 가르는 단서예요.", d: "keep getting worse", k: ["열이 나는지 재 볼게요", "통증이 몇 점인지 말씀해 주세요"], a: "come and go", o: ["get worse", "move around", "spread out"]}
@@ -58,17 +58,17 @@
   - {t: "검사 순서", i: lab, w: "먼저 쉬운 검사를 하고 필요하면 더 정확한 검사로 넘어간다고 순서를 알려 주면 환자가 앞으로의 일을 예상할 수 있어요. 소변 임신 검사는 빠르고 간단해서 보통 먼저 해요.", d: "with a swab", k: ["먼저 혈압과 체온을 재겠습니다", "결과는 의사 선생님이 설명해 주실 거예요"], a: "urine", o: ["stool", "saliva", "sputum"]}
   - {t: "검사 차이", i: lab, w: "more precise로 두 검사의 차이를 한 단어로 비교해요. 혈액 검사는 hCG 수치를 정확히 재서 필요하면 변화를 추적할 수 있어요.", d: "to your doctor", k: ["소변 컵은 화장실에 있어요", "결과는 곧 알려 드릴게요"], a: "precise", o: ["basic", "general", "limited"]}
   - {t: "정서 지지", i: handshake2, w: "However…로 어떤 반응도 괜찮다고 먼저 열어 두면 기다리던 결과든 아니든 환자가 감정을 말하기 쉬워요. 결과가 나오기 전에 판단하지 않겠다는 약속이에요.", d: "to hurry you", k: ["결과가 나오면 바로 알려 드릴게요", "화장실은 복도 끝에 있어요"], a: "feeling", o: ["thinking", "deciding", "reacting"]}
-  - {t: "소요 안내", i: lab, w: "usually와 just a few minutes로 시간을 대략이라도 알려 주면 기다리는 환자의 불안이 줄어요. 소변 임신 검사는 보통 몇 분 안에 결과가 나와요.", d: "about a day", k: ["이 컵에 소변을 받아 오세요", "결과는 의사 선생님이 설명해 주실 거예요"], a: "start", o: ["finish", "wait", "stay"]}
+  - {t: "소요 안내", i: lab, w: "usually와 just a few minutes로 시간을 대략이라도 알려 주면 기다리는 환자의 불안이 줄어요. 소변 임신 검사는 보통 몇 분 안에 결과가 나와요.", d: "about a day", k: ["이 컵에 소변을 받아 오세요", "결과는 의사 선생님이 설명해 주실 거예요"], a: "urine", o: ["blood", "swab", "tissue"]}
   - {t: "다음 안내", i: speech, w: "If로 결과에 따라 이야기하겠다고 하되 together로 함께 정한다는 뜻을 보여 줘요. 결과 뒤의 계획은 환자의 상황과 바람에 따라 달라서 환자와 같이 이야기해요.", d: "we'll decide for you", k: ["혈액 검사도 함께 해 볼게요", "검사 컵은 화장실에 있어요"], a: "together", o: ["alone", "later", "quietly"]}
   order:
     tag: "대화 흐름"
     icon: compass
     ko: "임신 확인 검사 안내 4문장 순서"
-    why: "검사 순서를 먼저 알리고, 그 소변 검사의 소요 시간을 말하고, 나온 결과가 무엇이든 함께 이야기하겠다고 한 뒤, 그 대화가 어디로 가든 곁에서 돕겠다고 해요. 'The urine test'·'that result'·'that conversation'이 앞 줄을 가리켜 순서가 하나예요."
+    why: "검사 순서를 먼저 알리고, 그 소변 검사의 소요 시간을 말하고, 나온 결과가 무엇이든 함께 이야기하겠다고 한 뒤, 그 대화가 어디로 가든 곁에서 돕겠다고 해요. 'The urine test'·'those few minutes'·'that conversation'이 앞 줄을 가리켜 순서가 하나예요."
     lines:
     - {en: "We'll start with a urine test, then confirm with blood if needed.", icon: lab, ko: "먼저 소변 검사를 하고, 필요하면 혈액으로 확인할게요", note: "순서"}
     - {en: "The urine test usually takes just a few minutes.", icon: lab, ko: "소변 검사는 보통 몇 분이면 돼요", note: "소요"}
-    - {en: "Whatever that result is, we'll talk through what happens next.", icon: speech, ko: "그 결과가 무엇이든, 다음에 어떻게 할지 이야기할게요", note: "결과"}
+    - {en: "Whatever it shows after those few minutes, we'll talk through what happens next.", icon: speech, ko: "몇 분 뒤 결과가 무엇이든, 다음에 어떻게 할지 이야기할게요", note: "결과"}
     - {en: "Wherever that conversation goes, we're here to support you.", icon: handshake2, ko: "그 대화가 어디로 가든, 저희가 곁에서 지지할게요", note: "지지"}
 - title: 산전 기록 확인
   s:

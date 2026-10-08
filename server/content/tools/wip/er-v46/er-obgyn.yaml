@@ -3096,7 +3096,7 @@ situations:
       icon: stetho
       ko: 어느 쪽이든, 통증이나 쥐어짜는 느낌이 함께 있나요?
       note: 통증
-    - en: Thank you for telling me all that — we'll check on you and the baby right away.
+    - en: Thanks for telling me all that — we'll check on you and the baby right away.
       icon: baby
       ko: 말씀해 주셔서 고마워요, 당신과 아기를 바로 확인할게요
       note: 안심
@@ -3172,7 +3172,7 @@ situations:
     why: It's okay if…로 모른다고 말해도 된다고 먼저 허락하면 환자가 추측으로 답하지 않아요. 확실하지 않아도 소변 검사로 임신 여부를 바로 확인할 수 있어요.
     decoy: unless you're
     distractorsKo:
-    - 대략적인 날짜도 괜찮아요
+    - 소변 검사는 몇 분이면 끝나요
     - 그날 이후로 달라진 증상이 있었나요?
     blank:
       answer: not sure
@@ -3301,7 +3301,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 마지막 월경일 청취 4문장 순서
-    why: 마지막 생리 첫날을 먼저 묻고, 그 날짜와 별개로 임신 가능성을 묻고, 어느 쪽 답이든 소변 검사를 하겠다고 말한 뒤, 날짜와 검사로 주수를 알아낸다고 설명해요. 'that date'·'Aside from'·'Either way'·'the test'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 마지막 생리 첫날을 먼저 묻고, 그 날짜와 별개로 임신 가능성을 묻고, 어느 쪽 답이든 소변 검사를 하겠다고 말한 뒤, 날짜와 검사로 주수를 알아낸다고 설명해요. 'that date'·'yes or no'·'the test'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: When was the first day of your last period, even roughly?
       icon: calendar
@@ -3311,9 +3311,9 @@ situations:
       icon: baby
       ko: 그 날짜 말고, 임신하셨을 가능성이 있나요?
       note: 가능성
-    - en: Either way, we'll do a quick urine test to check.
+    - en: Whether it's yes or no, we'll do a quick urine test to check.
       icon: lab
-      ko: 어느 쪽이든, 소변 검사로 빠르게 확인할게요
+      ko: 예든 아니오든, 소변 검사로 빠르게 확인할게요
       note: 검사
     - en: That date and the test will help us figure out how far along you are.
       icon: bulb
@@ -3345,7 +3345,7 @@ situations:
       - en: turn
       - en: look
       - en: point
-      - en: walk
+      - en: reach
   - en: Is the pain sharp, dull, or crampy?
     ko: 통증이 날카로운가요, 둔한가요, 아니면 쥐어짜는 듯한가요?
     chunks:
@@ -3616,12 +3616,12 @@ situations:
     - 이 컵에 소변을 받아 오세요
     - 결과는 의사 선생님이 설명해 주실 거예요
     blank:
-      answer: start
+      answer: urine
       options:
-      - en: wait
-      - en: stay
-      - en: start
-      - en: finish
+      - en: swab
+      - en: tissue
+      - en: urine
+      - en: blood
   - en: If the test is positive, we'll talk through what happens next together.
     ko: 검사 결과가 양성이면, 다음에 어떻게 할지 함께 이야기할게요.
     chunks:
@@ -3690,7 +3690,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 임신 확인 검사 안내 4문장 순서
-    why: 검사 순서를 먼저 알리고, 그 소변 검사의 소요 시간을 말하고, 나온 결과가 무엇이든 함께 이야기하겠다고 한 뒤, 그 대화가 어디로 가든 곁에서 돕겠다고 해요. 'The urine test'·'that result'·'that conversation'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 검사 순서를 먼저 알리고, 그 소변 검사의 소요 시간을 말하고, 나온 결과가 무엇이든 함께 이야기하겠다고 한 뒤, 그 대화가 어디로 가든 곁에서 돕겠다고 해요. 'The urine test'·'those few minutes'·'that conversation'이 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: We'll start with a urine test, then confirm with blood if needed.
       icon: lab
@@ -3700,9 +3700,9 @@ situations:
       icon: lab
       ko: 소변 검사는 보통 몇 분이면 돼요
       note: 소요
-    - en: Whatever that result is, we'll talk through what happens next.
+    - en: Whatever it shows after those few minutes, we'll talk through what happens next.
       icon: speech
-      ko: 그 결과가 무엇이든, 다음에 어떻게 할지 이야기할게요
+      ko: 몇 분 뒤 결과가 무엇이든, 다음에 어떻게 할지 이야기할게요
       note: 결과
     - en: Wherever that conversation goes, we're here to support you.
       icon: handshake2
@@ -4081,12 +4081,12 @@ situations:
     - 침대 난간은 올려 둘게요
     - 수액이 다 들어가면 알려 드릴게요
     blank:
-      answer: suddenly
+      answer: worse
       options:
-      - en: slightly
-      - en: gradually
-      - en: suddenly
-      - en: slowly
+      - en: lighter
+      - en: calmer
+      - en: worse
+      - en: better
   nuance:
   - kind: slider
     words:
@@ -4126,7 +4126,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 자궁외임신 의심 4문장 순서
-    why: 위험 신호를 먼저 알리고, 그래서 바로 확인한다고 말하고, 그 확인을 위해 초음파가 필요하다고 설명한 뒤, 이 모든 과정 내내 악화를 알려 달라고 부탁해요. 'Because of that'·'that check'·'all of this'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 위험 신호를 먼저 알리고, 그래서 바로 확인한다고 말하고, 그 확인을 위해 초음파가 필요하다고 설명한 뒤, 이 모든 과정 내내 악화를 알려 달라고 부탁해요. 'Because of that'·'that check'·'the ultrasound'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: One-sided pain with dizziness is something we take seriously.
       icon: siren
@@ -4140,9 +4140,9 @@ situations:
       icon: monitor
       ko: 그 확인을 위해 지금 초음파로 임신 위치를 봐야 해요
       note: 초음파
-    - en: Through all of this, tell me immediately if the pain or dizziness gets worse.
+    - en: Through the ultrasound, tell me immediately if the pain or dizziness gets worse.
       icon: bell
-      ko: 이 모든 과정에서 통증이나 어지러움이 심해지면 바로 말씀해 주세요
+      ko: 초음파 내내 통증이나 어지러움이 심해지면 바로 말씀해 주세요
       note: 알림
 - title: 유산 진행 중 소통
   sentences:
@@ -4190,9 +4190,9 @@ situations:
     blank:
       answer: did
       options:
-      - en: ate
-      - en: said
-      - en: felt
+      - en: wore
+      - en: read
+      - en: heard
       - en: did
   - en: I'll stay with you and explain everything gently.
     ko: 제가 곁에서 하나하나 부드럽게 설명해 드릴게요.
@@ -4287,7 +4287,7 @@ situations:
     why: could have done으로 지난 일을 돌아보며 자책하는 마음에 직접 답해요. 환자의 활동이나 음식이 유산을 일으킨 것이 아니라는 점을 분명히 해 줘요.
     decoy: to ignore this
     distractorsKo:
-    - 필요하시면 따뜻한 차를 드릴게요
+    - 휴지를 여기 두겠습니다
     - 불을 조금 낮춰 드릴게요
     blank:
       answer: prevent
@@ -4357,23 +4357,23 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 유산 진행 중 소통 4문장 순서
-    why: 보이는 소견을 먼저 전하고, 그 일에 대한 안타까움을 표하고, 환자가 느끼는 감정이 무엇이든 탓이 아니라고 말한 뒤, 그 뒤에 배출량을 묻고 곁에 있겠다고 해요. 'this'·'Whatever you're feeling'·'since then'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 보이는 소견을 먼저 전하고, 그 일에 대한 안타까움을 표하고, 환자가 느끼는 감정이 무엇이든 탓이 아니라고 말한 뒤, 그 뒤에 배출량을 묻고 곁에 있겠다고 해요. 'about that'·'As painful as it is'·'Knowing that'이 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Based on what we're seeing, I'm worried this may be a miscarriage.
       icon: stetho
       ko: 지금 보이는 상황으로는 유산일 수 있어 걱정돼요
       note: 소견
-    - en: I'm so sorry — this is a painful thing to go through.
+    - en: I'm so sorry about that — it's a painful thing to go through.
       icon: faceWorried
-      ko: 너무 안타까워요, 이건 견디기 힘든 일이에요
+      ko: 그 일이 정말 안타까워요, 견디기 힘든 일이에요
       note: 공감
-    - en: Whatever you're feeling, there was nothing you did to cause this.
+    - en: As painful as it is, there was nothing you did to cause this.
       icon: shield
-      ko: 어떤 마음이 드시든, 당신이 뭘 잘못해서 생긴 일이 아니에요
+      ko: 아무리 힘들어도, 당신이 뭘 잘못해서 생긴 일이 아니에요
       note: 탓 아님
-    - en: I'm staying right here — how much tissue or blood have you passed since then?
+    - en: Knowing that, I'm staying right here — how much tissue or blood have you passed?
       icon: bandage
-      ko: 바로 곁에 있을게요, 그 뒤로 조직이나 혈액을 얼마나 배출하셨나요?
+      ko: 그걸 알고 바로 곁에 있을게요, 조직이나 혈액을 얼마나 배출하셨나요?
       note: 배출량
 - title: 임신오조 탈수
   sentences:
@@ -4571,7 +4571,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 임신오조 탈수 4문장 순서
-    why: 구토를 못 멈춘 기간을 먼저 묻고, 그 기간 동안의 구토 횟수를 묻고, 그 구토 때문에 전해질 확인과 수액을 한다고 설명한 뒤, 수액이 무엇을 채우는지 알려요. 'Since then'·'that vomiting'·'This IV'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 구토를 못 멈춘 기간을 먼저 묻고, 그 기간 동안의 구토 횟수를 묻고, 그 횟수가 어떻든 전해질 확인과 수액을 한다고 설명한 뒤, 수액이 무엇을 채우는지 알려요. 'Since then'·'Either way'·'This IV'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: How long have you been unable to keep fluids down?
       icon: calendar
@@ -4581,9 +4581,9 @@ situations:
       icon: monitor
       ko: 그 뒤로 하루에 몇 번 토하셨나요?
       note: 횟수
-    - en: Because of that vomiting, we'll check your electrolytes and give you IV fluids.
+    - en: Either way, we'll check your electrolytes and give you IV fluids.
       icon: lab
-      ko: 그 구토 때문에 전해질을 확인하고 정맥 수액을 드릴게요
+      ko: 어느 쪽이든 전해질을 확인하고 정맥 수액을 드릴게요
       note: 처치
     - en: This IV will replace the fluids and nutrients you've lost.
       icon: hospital
@@ -4635,7 +4635,7 @@ situations:
     decoy: on Monday
     distractorsKo:
     - 이 방에는 저와 간호사만 있어요
-    - 물을 한 잔 드릴까요?
+    - 필요하시면 휴지를 드릴게요
     blank:
       answer: stop
       options:
@@ -4662,7 +4662,7 @@ situations:
     decoy: at my pace
     distractorsKo:
     - 지금 통증이 있는 곳을 알려 주세요
-    - 옷을 갈아입을 수 있게 커튼을 칠게요
+    - 커튼을 쳐서 사생활을 지켜 드릴게요
     blank:
       answer: pace
       options:
@@ -4764,7 +4764,7 @@ situations:
     decoy: the staff's
     distractorsKo:
     - 제가 곁에서 필요한 걸 도와드릴게요
-    - 원하시면 옷을 갈아입으실 수 있어요
+    - 편하게 앉으실 수 있도록 의자를 가져올게요
     blank:
       answer: fault
       options:
@@ -4814,7 +4814,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 성폭력 피해자 접수 4문장 순서
-    why: 안전과 통제권을 먼저 말하고, 그 뜻을 진행 속도로 구체화하고, 그 방식으로 검사 여부를 묻고, 어떤 결정이든 언제든 멈출 수 있다고 마무리해요. 'That means'·'With that in mind'·'Whatever you decide'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 안전과 통제권을 먼저 말하고, 그 뜻을 진행 속도로 구체화하고, 그 방식으로 검사 여부를 묻고, 어떤 결정이든 언제든 멈출 수 있다고 마무리해요. 'That means'·'At that pace'·'Whatever you decide'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: You are safe here, and you're in control of what happens next.
       icon: shield
@@ -4824,9 +4824,9 @@ situations:
       icon: compass
       ko: 그래서 당신의 속도에 맞춰 한 단계씩 설명할게요
       note: 속도
-    - en: With that in mind, would you like to have an exam and collect evidence, or not?
+    - en: At that pace, would you like an exam and evidence collection, or not?
       icon: board
-      ko: 그 점을 생각하며, 검사와 증거 채취를 원하시나요, 아니면 원치 않으시나요?
+      ko: 그 속도로, 검사와 증거 채취를 원하시나요, 아니면 원치 않으시나요?
       note: 선택
     - en: Whatever you decide, you can stop at any time.
       icon: shield
@@ -5470,7 +5470,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 조기 진통 징후 4문장 순서
-    why: 수축 간격을 먼저 묻고, 그 수축이 규칙적인지 묻고, 어느 쪽이든 양수가 샌 시점과 색을 묻고, 어느 쪽이든 모니터를 붙인다고 알려요. 'they'·'Whichever pattern'·'Either way'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 수축 간격을 먼저 묻고, 그 수축이 규칙적인지 묻고, 그 수축이 규칙적이든 아니든 양수가 샌 시점과 색을 묻고, 그 양수가 무엇이든 모니터를 붙인다고 알려요. 'they'·'Regular or not'·'Whatever it turns out to be'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: How far apart are the tightenings coming?
       icon: monitor
@@ -5480,13 +5480,13 @@ situations:
       icon: chartup
       ko: 그 수축이 규칙적으로 오나요, 아니면 왔다갔다 하나요?
       note: 양상
-    - en: Whichever pattern it is, when did you notice any fluid, and what color was it?
+    - en: Regular or not, when did you notice any fluid, and what color was it?
       icon: calendar
-      ko: 어느 쪽이든, 양수는 언제 느끼셨고 색은 어땠나요?
+      ko: 규칙적이든 아니든, 양수는 언제 느끼셨고 색은 어땠나요?
       note: 양수
-    - en: Either way, we'll put a monitor on your belly to watch the contractions and the baby's heartbeat.
+    - en: Whatever it turns out to be, we'll put a monitor on your belly.
       icon: monitor
-      ko: 어느 쪽이든 배에 모니터를 대서 수축과 아기 심박을 볼게요
+      ko: 그게 무엇이든, 배에 모니터를 붙일게요
       note: 모니터
 - title: 부인과 감염·분비물
   sentences:
@@ -6114,7 +6114,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 임신 후기 대량출혈 4문장 순서
-    why: 서두르는 이유를 먼저 알리고, 출혈의 원인을 설명하고, 그 원인을 확인하는 중이라고 말한 뒤, 그 때문에 수술실로 모신다고 해요. 'That's because'·'To check that'·'Because of that'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 서두르는 이유를 먼저 알리고, 출혈의 원인을 설명하고, 그 원인을 확인하는 중이라고 말한 뒤, 그 때문에 수술실로 모신다고 해요. 'That's because'·'To check that'·'that tightness'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: We're moving fast to keep you and your baby safe.
       icon: siren
@@ -6128,9 +6128,9 @@ situations:
       icon: stetho
       ko: 그걸 확인하려고 지금 배의 딱딱함을 만져 보고 있어요
       note: 확인
-    - en: Because of that, we're getting you to the operating room quickly to protect you both.
+    - en: Because of that tightness, we're getting you to the operating room quickly.
       icon: hospital
-      ko: 그래서 두 분을 보호하려고 빠르게 수술실로 모실게요
+      ko: 그 딱딱함 때문에 빠르게 수술실로 모실게요
       note: 수술실
 - title: 자간전증·자간증
   sentences:
@@ -6180,7 +6180,7 @@ situations:
     why: right away와 if절로 어떤 증상이 생기면 곧바로 부르라는 기준을 줘요. 심한 두통은 경련이 오기 전 신호일 수 있어서 놓치지 않게 해요.
     decoy: Tell the doctor
     distractorsKo:
-    - 눈앞에 반점이 보이는지 말씀해 주세요
+    - 산소 수치를 확인할게요
     - 혈압을 한 번 더 재 볼게요
     blank:
       answer: headache
@@ -6208,7 +6208,7 @@ situations:
     decoy: to test you
     distractorsKo:
     - 침대 난간을 올려 둘게요
-    - 불을 조금 어둡게 할게요
+    - 혈압을 계속 다시 재 볼게요
     blank:
       answer: quiet
       options:
@@ -6332,7 +6332,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 자간전증·자간증 4문장 순서
-    why: 높은 혈압을 먼저 알리고, 그래서 경련 예방 약을 쓰고, 같은 이유로 방을 조용하게 유지하며, 이 시점부터 경련 징후를 바로 알려 달라고 해요. 'Because of that'·'the same reason'·'From here on'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 높은 혈압을 먼저 알리고, 그래서 경련 예방 약을 쓰고, 같은 이유로 방을 조용하게 유지하며, 이 시점부터 경련 징후를 바로 알려 달라고 해요. 'Because of that'·'the same reason'·'this calm room'이 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Your blood pressure is high, and we're treating it now.
       icon: monitor
@@ -6346,9 +6346,9 @@ situations:
       icon: shield
       ko: 같은 이유로 방을 차분하고 조용하게 유지해요
       note: 환경
-    - en: From here on, tell me right away if you feel a seizure coming or more headache.
+    - en: In this calm room, tell me right away if you feel a seizure coming.
       icon: bell
-      ko: 지금부터 경련이 올 것 같거나 두통이 심해지면 바로 말씀해 주세요
+      ko: 이 조용한 방에서 경련이 올 것 같으면 바로 말씀해 주세요
       note: 알림
 - title: ER 내 급속 분만
   sentences:
@@ -6422,7 +6422,7 @@ situations:
     decoy: to wait for
     distractorsKo:
     - 소아과 의사에게도 연락했어요
-    - 아기가 태어나면 바로 알려 드릴게요
+    - 산모분 혈압은 제가 계속 확인할게요
     blank:
       answer: your baby
       options:
@@ -6454,7 +6454,7 @@ situations:
       options:
       - en: finally
       - en: slowly
-      - en: partly
+      - en: suddenly
       - en: already
   - en: Give me one more big push when the next contraction comes.
     ko: 다음 수축이 올 때 한 번 더 크게 힘주세요.
@@ -6551,15 +6551,15 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: ER 내 급속 분만 4문장 순서
-    why: 격려로 시작하고, 머리가 보이면 힘주기를 멈추게 하고, 그 충동을 숨으로 넘기게 하고, 그 호흡으로 다음 수축에 한 번 더 힘주게 해요. 'The head is already showing'·'it'·'that breathing'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 격려로 시작하고, 머리가 보이면 힘주기를 멈추게 하고, 그 충동을 숨으로 넘기게 하고, 그 호흡으로 다음 수축에 한 번 더 힘주게 해요. 'done so well'·'it'·'that breathing'이 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: You're doing great — I'm right here to help you deliver.
       icon: star
       ko: 정말 잘하고 계세요, 제가 바로 옆에서 도울게요
       note: 격려
-    - en: The head is already showing, so I need you to stop pushing for a moment.
+    - en: You've done so well the head is showing — please stop pushing for a moment.
       icon: siren
-      ko: 머리가 이미 보여서 잠시 힘주기를 멈춰야 해요
+      ko: 정말 잘하셔서 머리가 보여요, 잠시 힘주기를 멈춰 주세요
       note: 멈춤
     - en: Listen to me and breathe through it; we'll do this together.
       icon: speech
@@ -6771,7 +6771,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 자궁외임신 파열 쇼크 4문장 순서
-    why: 혈압이 떨어진다고 먼저 알리고, 그 이유(딱딱한 배)를 설명하고, 그 때문에 수액과 혈액을 주며, 그것이 들어가는 동안 수술실로 모셔요. 'That's because'·'For that'·'those fluids and blood'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 혈압이 떨어진다고 먼저 알리고, 그 이유(딱딱한 배)를 설명하고, 그 때문에 수액과 혈액을 주며, 그것이 들어가는 동안 수술실로 모셔요. 'That's because'·'that serious'·'those fluids and blood'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Your pressure is dropping and we're acting fast to stabilize you.
       icon: monitor
@@ -6781,9 +6781,9 @@ situations:
       icon: stetho
       ko: 배가 딱딱하고 아주 아파서예요, 심각한 일이 생기고 있어요
       note: 이유
-    - en: For that, we're giving you fluids and blood to bring your pressure back up.
+    - en: To treat something that serious, we're giving you fluids and blood.
       icon: hospital
-      ko: 그래서 혈압을 다시 올리려고 수액과 혈액을 드려요
+      ko: 그렇게 심각한 일이라 수액과 혈액을 드려요
       note: 수혈
     - en: With those fluids and blood going in, we're getting you to surgery quickly.
       icon: scalpel
@@ -6811,7 +6811,7 @@ situations:
     why: 처치 두 가지를 한 문장에 말해 무엇을 하는 중인지 알려요. 산후 출혈에서는 자궁 마사지와 자궁수축제로 자궁을 수축시켜 출혈을 줄여요.
     decoy: We're weighing
     distractorsKo:
-    - 아기는 지금 옆에서 보고 있어요
+    - 정맥 라인을 하나 더 잡을게요
     - 수혈 준비를 하고 있어요
     blank:
       answer: massaging
@@ -6888,7 +6888,7 @@ situations:
     why: since the delivery로 기준 시점을 분명히 해서 환자가 출산 이후의 양만 떠올려 말하게 해요. 분만 후 출혈량은 처치의 강도를 정하는 근거가 돼요.
     decoy: since the visit
     distractorsKo:
-    - 아기를 안아 보셨나요?
+    - 혈압과 맥박을 다시 잴게요
     - 어지럽거나 춥게 느껴지세요?
     blank:
       answer: delivery
@@ -6993,7 +6993,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 산후 대량출혈 4문장 순서
-    why: 하고 있는 처치를 먼저 알리고, 그 이유(물렁한 자궁)를 설명하고, 그 상태를 감안해 출혈량을 묻고, 잃은 만큼을 채운다고 말해요. 'That's because'·'Given that'·'what you've lost'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 하고 있는 처치를 먼저 알리고, 그 이유(물렁한 자궁)를 설명하고, 그 상태를 감안해 출혈량을 묻고, 잃은 만큼을 채운다고 말해요. 'That's because'·'that soft'·'what you've lost'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: We're massaging your uterus and giving medication to stop the bleeding.
       icon: hospital
@@ -7003,9 +7003,9 @@ situations:
       icon: stetho
       ko: 자궁이 물렁해서, 수축하도록 도와야 하기 때문이에요
       note: 이유
-    - en: Given that, how much blood have you lost since the delivery?
+    - en: With your uterus that soft, how much blood have you lost since the delivery?
       icon: bandage
-      ko: 그걸 감안해서, 분만 이후 출혈이 얼마나 있었나요?
+      ko: 자궁이 그렇게 물렁하니, 분만 이후 출혈이 얼마나 있었나요?
       note: 출혈량
     - en: We're giving you more blood and fluids to replace what you've lost.
       icon: hospital
@@ -7245,9 +7245,9 @@ situations:
       icon: faceWorried
       ko: 그건 아기가 사망했다는 뜻이에요, 정말 안타깝습니다
       note: 고지
-    - en: Nothing you did caused your baby's death, and we'll be here with you through whatever comes next.
+    - en: Nothing you did caused your baby's death — and we're here with you.
       icon: handshake2
-      ko: 당신이 한 일 때문이 아니고, 앞으로 무슨 일이 있든 곁에 있을게요
+      ko: 당신이 한 일 때문이 아니에요, 저희가 곁에 있어요
       note: 위로
 - title: 패혈성 유산
   sentences:
@@ -7279,7 +7279,7 @@ situations:
       - en: infection
       - en: allergy
       - en: injury
-      - en: clot
+      - en: obstruction
   - en: We're starting antibiotics and fluids right away.
     ko: 지금 바로 항생제와 수액을 시작할게요.
     chunks:
@@ -7468,7 +7468,7 @@ situations:
       icon: hospital
       ko: 그 수액이 혈압을 지탱해 줄 거예요
       note: 수액
-    - en: With the treatment started, we'll take good care of you — you did the right thing coming in.
+    - en: With treatment started, we'll care for you — you did well to come in.
       icon: handshake2
-      ko: 치료가 시작됐으니 잘 돌봐 드릴게요, 잘 오셨어요
+      ko: 치료가 시작됐으니 돌봐 드릴게요, 잘 오셨어요
       note: 안심

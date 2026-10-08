@@ -4,14 +4,14 @@
     DIST: ['머리를 부딪히셨나요?', '그때 혼자 계셨나요?']   TAG:낙상 정황  DECOY: at the door
     * Can you tell me what happened right before you fell?
       Can you tell me what happened right after you fell?
-      Can you tell me what happened right since you fell?
-      Can you tell me what happened right while you fell?
+      Can you tell me what happened right when you fell?
+      Can you tell me what happened right as you fell?
 [0.1] KO: 넘어지시기 전에 어지럽거나 아찔한 느낌이 있으셨나요?
     DIST: ['넘어진 뒤에 머리가 아프셨나요?', '어지러울 때 약을 드셨나요?']   TAG:실신 전조  DECOY: after dinner
       Do you remember feeling dizzy or thirsty before you fell?
     * Do you remember feeling dizzy or faint before you fell?
-      Do you remember feeling dizzy or hungry before you fell?
-      Do you remember feeling dizzy or itchy before you fell?
+      Do you remember feeling dizzy or silly before you fell?
+      Do you remember feeling dizzy or chatty before you fell?
 [0.2] KO: 잠깐이라도 의식을 잃으신 적이 있나요?
     DIST: ['넘어진 뒤에 일어나기가 힘드셨나요?', '넘어질 때 머리를 부딪히셨나요?']   TAG:의식 소실  DECOY: in the car
       Did you lose appetite at any point?
@@ -32,7 +32,7 @@
       Let's hand out the medications you take.
 [0.5] KO: 지난 1년 동안 넘어지신 적이 있으신가요?
     DIST: ['지난 1년 동안 입원하신 적이 있나요?', '넘어졌을 때 다치신 적이 있나요?']   TAG:낙상 이력  DECOY: in the next year
-      Have you worsened before in the past year?
+      Have you forgotten before in the past year?
     * Have you fallen before in the past year?
       Have you fainted before in the past year?
       Have you fractured before in the past year?
@@ -45,11 +45,11 @@
   ORDER:
      - Can you tell me what happened right before you fell?
      - In that moment, did you feel dizzy or faint, or lose consciousness?
-     - Has anything like that happened before, in the past year?
+     - Have you had other falls in the past year, with or without that feeling?
      - Let's go over the medications you take, in case one of them is behind these falls.
-   swap1/2: In that moment, did you feel dizzy or faint, or lose consciousness? || Can you tell me what happened right before you fell? || Has anything like that happened before, in the past year? || Let's go over the medications you take, in case one of them is behind these falls.
-   swap2/3: Can you tell me what happened right before you fell? || Has anything like that happened before, in the past year? || In that moment, did you feel dizzy or faint, or lose consciousness? || Let's go over the medications you take, in case one of them is behind these falls.
-   swap3/4: Can you tell me what happened right before you fell? || In that moment, did you feel dizzy or faint, or lose consciousness? || Let's go over the medications you take, in case one of them is behind these falls. || Has anything like that happened before, in the past year?
+   swap1/2: In that moment, did you feel dizzy or faint, or lose consciousness? || Can you tell me what happened right before you fell? || Have you had other falls in the past year, with or without that feeling? || Let's go over the medications you take, in case one of them is behind these falls.
+   swap2/3: Can you tell me what happened right before you fell? || Have you had other falls in the past year, with or without that feeling? || In that moment, did you feel dizzy or faint, or lose consciousness? || Let's go over the medications you take, in case one of them is behind these falls.
+   swap3/4: Can you tell me what happened right before you fell? || In that moment, did you feel dizzy or faint, or lose consciousness? || Let's go over the medications you take, in case one of them is behind these falls. || Have you had other falls in the past year, with or without that feeling?
 
 ## 1 다약제 복용력 정리
 [1.0] KO: 약 목록이나 약병을 가지고 계신가요?
@@ -90,12 +90,12 @@
       It's okay if you don't remember every dose, we can call the cafeteria.
   ORDER:
      - Do you have a list or the bottles with you?
-     - Whatever you have, take your time — we'll go through it one by one.
-     - For each one, what is it for, and how long have you been taking it?
-     - Let's include vitamins and anything you buy over the counter, since they can interact with those pills.
-   swap1/2: Whatever you have, take your time — we'll go through it one by one. || Do you have a list or the bottles with you? || For each one, what is it for, and how long have you been taking it? || Let's include vitamins and anything you buy over the counter, since they can interact with those pills.
-   swap2/3: Do you have a list or the bottles with you? || For each one, what is it for, and how long have you been taking it? || Whatever you have, take your time — we'll go through it one by one. || Let's include vitamins and anything you buy over the counter, since they can interact with those pills.
-   swap3/4: Do you have a list or the bottles with you? || Whatever you have, take your time — we'll go through it one by one. || Let's include vitamins and anything you buy over the counter, since they can interact with those pills. || For each one, what is it for, and how long have you been taking it?
+     - Whatever you have, take your time — we'll pick one to start with.
+     - For that one, what is it for, and how long have you been taking it?
+     - Let's do the same for vitamins and anything you buy over the counter.
+   swap1/2: Whatever you have, take your time — we'll pick one to start with. || Do you have a list or the bottles with you? || For that one, what is it for, and how long have you been taking it? || Let's do the same for vitamins and anything you buy over the counter.
+   swap2/3: Do you have a list or the bottles with you? || For that one, what is it for, and how long have you been taking it? || Whatever you have, take your time — we'll pick one to start with. || Let's do the same for vitamins and anything you buy over the counter.
+   swap3/4: Do you have a list or the bottles with you? || Whatever you have, take your time — we'll pick one to start with. || Let's do the same for vitamins and anything you buy over the counter. || For that one, what is it for, and how long have you been taking it?
 
 ## 2 청력저하 환자 소통
 [2.0] KO: 제가 마주 보고 천천히 말씀드릴게요 — 이게 더 잘 들리시면 말씀해 주세요.
@@ -137,11 +137,11 @@
   ORDER:
      - Let's check if your hearing aids are in and working.
      - I'll face you and speak slowly — is that clearer with them in?
-     - Just raise your hand any time you miss something, and I'll say it again.
+     - Just raise your hand any time that isn't clear, and I'll say it again.
      - If hearing it again doesn't help, I can write it down for you.
-   swap1/2: I'll face you and speak slowly — is that clearer with them in? || Let's check if your hearing aids are in and working. || Just raise your hand any time you miss something, and I'll say it again. || If hearing it again doesn't help, I can write it down for you.
-   swap2/3: Let's check if your hearing aids are in and working. || Just raise your hand any time you miss something, and I'll say it again. || I'll face you and speak slowly — is that clearer with them in? || If hearing it again doesn't help, I can write it down for you.
-   swap3/4: Let's check if your hearing aids are in and working. || I'll face you and speak slowly — is that clearer with them in? || If hearing it again doesn't help, I can write it down for you. || Just raise your hand any time you miss something, and I'll say it again.
+   swap1/2: I'll face you and speak slowly — is that clearer with them in? || Let's check if your hearing aids are in and working. || Just raise your hand any time that isn't clear, and I'll say it again. || If hearing it again doesn't help, I can write it down for you.
+   swap2/3: Let's check if your hearing aids are in and working. || Just raise your hand any time that isn't clear, and I'll say it again. || I'll face you and speak slowly — is that clearer with them in? || If hearing it again doesn't help, I can write it down for you.
+   swap3/4: Let's check if your hearing aids are in and working. || I'll face you and speak slowly — is that clearer with them in? || If hearing it again doesn't help, I can write it down for you. || Just raise your hand any time that isn't clear, and I'll say it again.
   !! cond/time/connective: If hearing it again doesn't help, I can write it down for you.
 
 ## 3 기저 인지기능 확인
@@ -245,10 +245,10 @@
 ## 5 급성 섬망 감별
 [5.0] KO: 지금 병원에 계시고, 저와 함께 안전하세요.
     DIST: ['지금 몇 시인지 아시겠어요?', '성함이 어떻게 되세요?']   TAG:재지남  DECOY: at the airport
-      You're in the hospital and you're ready with me.
+      You're in the cafeteria and you're safe with me.
     * You're in the hospital and you're safe with me.
-      You're in the hospital and you're sick with me.
-      You're in the hospital and you're late with me.
+      You're in the parking lot and you're safe with me.
+      You're in the elevator and you're safe with me.
 [5.1] KO: 이 혼돈은 새로 생긴 걸 수도 있어요 — 저희가 원인을 찾고 있어요.
     DIST: ['이 혼란이 약 때문일 수도 있어요', '가족분께 연락드릴까요?']   TAG:이유 설명  DECOY: in the morning
       This confusion may be familiar — we're finding out why.
@@ -258,8 +258,8 @@
 [5.2] KO: 제가 곁에 있으면서 좀 더 편안해지시도록 도와드릴게요.
     DIST: ['가족분께 전화해 드릴까요?', '물을 좀 드릴까요?']   TAG:곁에 있기  DECOY: with your daughter
       I'm going to stay close and help you feel warmer.
-      I'm going to stay close and help you feel hungrier.
-      I'm going to stay close and help you feel thirstier.
+      I'm going to stay close and help you feel stronger.
+      I'm going to stay close and help you feel cleaner.
     * I'm going to stay close and help you feel calmer.
 [5.3] KO: 지금 어디에 계신지 아시겠어요?
     DIST: ['여기가 어디인지 제가 알려 드릴까요?', '오늘이 며칠인지 아시겠어요?']   TAG:지남력 확인  DECOY: last night
@@ -291,10 +291,10 @@
 ## 6 비전형 감염 표현
 [6.0] KO: 노인분들은 감염이 열 대신 혼돈으로 나타날 수 있어요.
     DIST: ['열이 언제부터 있었나요?', '최근에 병원에 다녀오셨나요?']   TAG:비전형 설명  DECOY: in the lungs
-      In older adults, fractures can show up as confusion, not fever.
-      In older adults, bruises can show up as confusion, not fever.
+      In older adults, infections can show up as confusion, not itching.
+      In older adults, infections can show up as confusion, not swelling.
     * In older adults, infections can show up as confusion, not fever.
-      In older adults, allergies can show up as confusion, not fever.
+      In older adults, infections can show up as confusion, not rash.
 [6.1] KO: 소변이나 호흡에 변화가 있으셨나요?
     DIST: ['최근에 새로 먹기 시작한 약이 있나요?', '식사량은 어땠나요?']   TAG:증상 문진  DECOY: in the morning
       Has she had any changes in hearing or breathing?
@@ -344,9 +344,9 @@
 [7.1] KO: 평소보다 더 피곤하시거나 숨이 차시나요?
     DIST: ['누우면 숨이 더 차시나요?', '평소보다 소변이 줄었나요?']   TAG:증상 문진  DECOY: after meals
     * Do you feel more tired or short of breath than usual?
-      Do you feel more hungry or short of breath than usual?
-      Do you feel more thirsty or short of breath than usual?
-      Do you feel more itchy or short of breath than usual?
+      Do you feel more bored or short of breath than usual?
+      Do you feel more chatty or short of breath than usual?
+      Do you feel more cheerful or short of breath than usual?
 [7.2] KO: 안전을 위해 심장을 확인해볼게요.
     DIST: ['혈압을 재 볼게요', '약을 먼저 드릴게요']   TAG:검사 안내  DECOY: at the desk
       We'll check your throat to be safe.
@@ -355,22 +355,22 @@
       We'll check your wrist to be safe.
 [7.3] KO: 어르신 연령대에서는 통증 대신 압박감이나 피로감을 느끼기도 해요.
     DIST: ['통증이 팔이나 턱으로 퍼지나요?', '가슴이 답답할 때 약을 드시나요?']   TAG:이유 설명  DECOY: in your sleep
-      Some people your age feel hunger or tiredness instead of pain.
-      Some people your age feel sneezing or tiredness instead of pain.
+      Some people your age feel thirst or tiredness instead of pain.
+      Some people your age feel cravings or tiredness instead of pain.
     * Some people your age feel pressure or tiredness instead of pain.
-      Some people your age feel itching or tiredness instead of pain.
+      Some people your age feel hunger or tiredness instead of pain.
 [7.4] KO: 메스꺼움이나 식은땀, 어지러움이 함께 있으셨나요?
     DIST: ['가슴 통증이 있을 때 숨이 차시나요?', '이런 증상이 전에도 있었나요?']   TAG:동반 증상  DECOY: after eating
+      Have you had any nausea, itching, or dizziness with this?
+      Have you had any nausea, hiccups, or dizziness with this?
       Have you had any nausea, snoring, or dizziness with this?
-      Have you had any nausea, sneezing, or dizziness with this?
-      Have you had any nausea, blinking, or dizziness with this?
     * Have you had any nausea, sweating, or dizziness with this?
 [7.5] KO: 노인 환자분들의 흉부 증상은 저희가 진지하게 받아들여요.
     DIST: ['약을 드신 뒤 증상이 나아지셨나요?', '가슴 통증이 전에도 있었나요?']   TAG:심각성 안내  DECOY: in the morning
     * We take chest symptoms seriously in older patients.
       We take chest symptoms seriously in pregnant patients.
-      We take chest symptoms seriously in hospitalized patients.
       We take chest symptoms seriously in sleeping patients.
+      We take chest symptoms seriously in talkative patients.
 [7.6] KO: 심전도랑 혈액 검사로 심장을 확인해볼게요.
     DIST: ['가슴 사진을 찍을게요', '심장 초음파도 볼게요']   TAG:검사 안내  DECOY: for the insurance
       We'll do an EKG and some saliva tests on your heart.
@@ -471,12 +471,12 @@
       Let's call the facility to cancel her medication list.
   ORDER:
      - Do you know her baseline and what happened today?
-     - The paperwork doesn't say much — can you help me reach the facility for her records?
+     - Beyond what you know, the paperwork doesn't say much — can you help me reach the facility for her records?
      - Do you have a contact number for the nurse there?
      - Let's call that nurse to confirm her medication list.
-   swap1/2: The paperwork doesn't say much — can you help me reach the facility for her records? || Do you know her baseline and what happened today? || Do you have a contact number for the nurse there? || Let's call that nurse to confirm her medication list.
-   swap2/3: Do you know her baseline and what happened today? || Do you have a contact number for the nurse there? || The paperwork doesn't say much — can you help me reach the facility for her records? || Let's call that nurse to confirm her medication list.
-   swap3/4: Do you know her baseline and what happened today? || The paperwork doesn't say much — can you help me reach the facility for her records? || Let's call that nurse to confirm her medication list. || Do you have a contact number for the nurse there?
+   swap1/2: Beyond what you know, the paperwork doesn't say much — can you help me reach the facility for her records? || Do you know her baseline and what happened today? || Do you have a contact number for the nurse there? || Let's call that nurse to confirm her medication list.
+   swap2/3: Do you know her baseline and what happened today? || Do you have a contact number for the nurse there? || Beyond what you know, the paperwork doesn't say much — can you help me reach the facility for her records? || Let's call that nurse to confirm her medication list.
+   swap3/4: Do you know her baseline and what happened today? || Beyond what you know, the paperwork doesn't say much — can you help me reach the facility for her records? || Let's call that nurse to confirm her medication list. || Do you have a contact number for the nurse there?
 
 ## 10 학대·방임 의심
 [10.0] KO: 몇 가지 알아차린 점이 있어서 더 이해하고 싶어요.
@@ -527,22 +527,22 @@
 ## 11 진통제 신중 투여
 [11.0] KO: 적은 용량으로 시작해서 신장 상태에 맞춰 조절할게요.
     DIST: ['통증이 몇 점인지 0에서 10으로 말씀해 주세요', '알레르기가 있는지 다시 확인할게요']   TAG:용량 설명  DECOY: in the morning
-      We'll start low and adjust carefully for your hair.
-      We'll start low and adjust carefully for your nails.
-      We'll start low and adjust carefully for your teeth.
+      We'll start low and adjust carefully for your insurance.
+      We'll start low and adjust carefully for your budget.
+      We'll start low and adjust carefully for your calendar.
     * We'll start low and adjust carefully for your kidneys.
 [11.1] KO: 너무 몽롱하거나 휘청거리지 않도록 도와드릴게요.
     DIST: ['부작용이 걱정되시나요?', '통증이 계속되면 말씀해 주세요']   TAG:부작용 예방  DECOY: after surgery
     * I'll help you avoid feeling too groggy or unsteady.
       I'll help you avoid feeling too hungry or unsteady.
-      I'll help you avoid feeling too thirsty or unsteady.
-      I'll help you avoid feeling too itchy or unsteady.
+      I'll help you avoid feeling too lonely or unsteady.
+      I'll help you avoid feeling too cold or unsteady.
 [11.2] KO: 조금이라도 어지러우시면 언제든 말씀해 주세요.
     DIST: ['혈압은 한 번 더 확인할게요', '다음 약은 시간이 되면 드릴게요']   TAG:보고 요청  DECOY: after lunch
-      Tell me if you feel bored at any point.
+      Tell me if you feel curious at any point.
     * Tell me if you feel dizzy at any point.
-      Tell me if you feel cold at any point.
-      Tell me if you feel hot at any point.
+      Tell me if you feel proud at any point.
+      Tell me if you feel grateful at any point.
 [11.3] KO: 나이가 드시면 신장이 약을 더 천천히 처리해요.
     DIST: ['신장 기능 검사 결과를 먼저 볼게요', '다른 약도 함께 확인할게요']   TAG:이유 설명  DECOY: as you sleep
       Your bones process medication more slowly as you age.
@@ -551,7 +551,7 @@
       Your eyes process medication more slowly as you age.
 [11.4] KO: 다른 부작용이 없는지 가까이서 지켜볼게요.
     DIST: ['약 효과가 얼마나 가는지 말씀드릴게요', '통증이 다시 오면 바로 말씀해 주세요']   TAG:관찰 안내  DECOY: in the lobby
-      We'll watch you closely for any rumors.
+      We'll watch you closely for any visitors.
       We'll watch you closely for any bills.
       We'll watch you closely for any delays.
     * We'll watch you closely for any side effects.
@@ -564,12 +564,12 @@
   ORDER:
      - Your kidneys process medication more slowly as you age.
      - So we'll start low and adjust carefully for your kidneys.
-     - I'll help you avoid feeling too groggy or unsteady, so tell me if you feel dizzy at any point.
+     - With that small start, I'll help you avoid feeling too groggy or unsteady, so tell me if you feel dizzy at any point.
      - Part of that: please don't try to get up alone until we check on you.
-   swap1/2: So we'll start low and adjust carefully for your kidneys. || Your kidneys process medication more slowly as you age. || I'll help you avoid feeling too groggy or unsteady, so tell me if you feel dizzy at any point. || Part of that: please don't try to get up alone until we check on you.
-   swap2/3: Your kidneys process medication more slowly as you age. || I'll help you avoid feeling too groggy or unsteady, so tell me if you feel dizzy at any point. || So we'll start low and adjust carefully for your kidneys. || Part of that: please don't try to get up alone until we check on you.
-   swap3/4: Your kidneys process medication more slowly as you age. || So we'll start low and adjust carefully for your kidneys. || Part of that: please don't try to get up alone until we check on you. || I'll help you avoid feeling too groggy or unsteady, so tell me if you feel dizzy at any point.
-  !! cond/time/connective: I'll help you avoid feeling too groggy or unsteady, so tell me if you feel dizzy at any point.
+   swap1/2: So we'll start low and adjust carefully for your kidneys. || Your kidneys process medication more slowly as you age. || With that small start, I'll help you avoid feeling too groggy or unsteady, so tell me if you feel dizzy at any point. || Part of that: please don't try to get up alone until we check on you.
+   swap2/3: Your kidneys process medication more slowly as you age. || With that small start, I'll help you avoid feeling too groggy or unsteady, so tell me if you feel dizzy at any point. || So we'll start low and adjust carefully for your kidneys. || Part of that: please don't try to get up alone until we check on you.
+   swap3/4: Your kidneys process medication more slowly as you age. || So we'll start low and adjust carefully for your kidneys. || Part of that: please don't try to get up alone until we check on you. || With that small start, I'll help you avoid feeling too groggy or unsteady, so tell me if you feel dizzy at any point.
+  !! cond/time/connective: With that small start, I'll help you avoid feeling too groggy or unsteady, so tell me if you feel dizzy at any point.
 
 ## 12 보청기·안경 보조기구
 [12.0] KO: 듣고 보시는 데 도움이 될 만한 걸 함께 찾아볼게요.
@@ -639,15 +639,15 @@
 [13.3] KO: 평소에 원하시는 치료 방식에 대해 말씀하신 적이 있나요?
     DIST: ['그분이 유언장을 쓰셨나요?', '그분 가족이 모두 오셨나요?']   TAG:평소 대화  DECOY: to the pastor
     * Has he ever talked about what kind of care he'd want?
-      Has he ever talked about what cost of care he'd want?
+      Has he ever talked about what amount of care he'd want?
+      Has he ever talked about what price of care he'd want?
       Has he ever talked about what brand of care he'd want?
-      Has he ever talked about what color of care he'd want?
 [13.4] KO: 오늘 사전의향서 사본을 가지고 오셨나요?
     DIST: ['POLST는 누가 작성했나요?', '서류를 팩스로 받을 수 있나요?']   TAG:사본 요청  DECOY: from the lawyer
-      Do you have a ticket of the directive with you today?
+      Do you have a copy of the passport with you today?
     * Do you have a copy of the directive with you today?
-      Do you have a bill of the directive with you today?
-      Do you have a receipt of the directive with you today?
+      Do you have a copy of the receipt with you today?
+      Do you have a copy of the invoice with you today?
 [13.5] KO: 그분의 뜻을 존중하고 가족분들을 지지해드리고 싶어요.
     DIST: ['그분과 가족분들께 사회복지사를 연결해 드릴게요', '원하시는 건 언제든 말씀해 주세요']   TAG:지지 표현  DECOY: in this hospital
       We want to respect his wishes and support your lawyer.
@@ -658,18 +658,18 @@
      - Do you know if he has a POLST or advance directive?
      - Whether or not there's a paper, what matters most to him about his care?
      - Has he ever talked about that — what kind of care he'd want?
-     - We'll honor his wishes as best we can.
-   swap1/2: Whether or not there's a paper, what matters most to him about his care? || Do you know if he has a POLST or advance directive? || Has he ever talked about that — what kind of care he'd want? || We'll honor his wishes as best we can.
-   swap2/3: Do you know if he has a POLST or advance directive? || Has he ever talked about that — what kind of care he'd want? || Whether or not there's a paper, what matters most to him about his care? || We'll honor his wishes as best we can.
-   swap3/4: Do you know if he has a POLST or advance directive? || Whether or not there's a paper, what matters most to him about his care? || We'll honor his wishes as best we can. || Has he ever talked about that — what kind of care he'd want?
+     - We'll honor those wishes as best we can.
+   swap1/2: Whether or not there's a paper, what matters most to him about his care? || Do you know if he has a POLST or advance directive? || Has he ever talked about that — what kind of care he'd want? || We'll honor those wishes as best we can.
+   swap2/3: Do you know if he has a POLST or advance directive? || Has he ever talked about that — what kind of care he'd want? || Whether or not there's a paper, what matters most to him about his care? || We'll honor those wishes as best we can.
+   swap3/4: Do you know if he has a POLST or advance directive? || Whether or not there's a paper, what matters most to him about his care? || We'll honor those wishes as best we can. || Has he ever talked about that — what kind of care he'd want?
 
 ## 14 노인 패혈증 급속 진행
 [14.0] KO: 체온이 낮고 혈압도 걱정돼서 저희가 빠르게 움직이고 있어요.
     DIST: ['환자분 병력을 알려 주시겠어요?', '환자분 약은 잠시 보관할게요']   TAG:상태 공유  DECOY: with the doctor
-      Her low hearing and pressure worry me — we're acting fast.
-      Her low vision and pressure worry me — we're acting fast.
+      Her low memory and pressure worry me — we're acting fast.
+      Her low speech and pressure worry me — we're acting fast.
     * Her low temperature and pressure worry me — we're acting fast.
-      Her low appetite and pressure worry me — we're acting fast.
+      Her low mood and pressure worry me — we're acting fast.
 [14.1] KO: 노인분들은 패혈증이 다르게 나타날 수 있는데, 저희가 확인하고 있어요.
     DIST: ['따님께 곧 상황을 다시 설명드릴게요', '환자분 병력을 알려 주시겠어요?']   TAG:비전형 설명  DECOY: in the lab
       In older adults anemia can look different, and we're on it.
@@ -721,7 +721,7 @@
     * We'll get a scan right away to rule out bleeding.
       We'll get a scan right away to rule out allergies.
       We'll get a scan right away to rule out hunger.
-      We'll get a scan right away to rule out thirst.
+      We'll get a scan right away to rule out fatigue.
 [15.2] KO: 졸리거나 혼란스러운 모습이 보이면 바로 알려 주세요.
     DIST: ['두통이 심해지면 알려 주세요', '구토가 나면 알려 주세요']   TAG:관찰 요청  DECOY: at the desk
       Watch for any sneezing or confusion — tell me immediately.
@@ -736,16 +736,16 @@
       Even a small bump can cause bleeding on vitamins.
 [15.4] KO: 앞으로 몇 시간 동안 가까이서 지켜볼게요.
     DIST: ['머리 사진 결과를 곧 알려 드릴게요', '환자분 베개를 높여 드릴게요']   TAG:관찰 안내  DECOY: in the lobby
-      We'll transport her closely for the next few hours.
-      We'll bathe her closely for the next few hours.
-      We'll feed her closely for the next few hours.
+      We'll monitor her closely for the past few hours.
+      We'll monitor her closely for the last few hours.
+      We'll monitor her closely for the previous few hours.
     * We'll monitor her closely for the next few hours.
 [15.5] KO: 더 혼란스러워 보이시면 바로 알려주세요.
     DIST: ['물이 필요하시면 말씀해 주세요', '통증이 심해지면 말씀해 주세요']   TAG:관찰 요청  DECOY: to the doctor
     * Please tell us right away if she seems more confused.
-      Please tell us right away if she seems more thirsty.
-      Please tell us right away if she seems more bored.
-      Please tell us right away if she seems more hungry.
+      Please tell us right away if she seems more proud.
+      Please tell us right away if she seems more cheerful.
+      Please tell us right away if she seems more cold.
   ORDER:
      - Because she's on blood thinners, we take head bumps seriously.
      - That's why we'll get a scan right away to rule out bleeding.
@@ -760,8 +760,8 @@
     DIST: ['제가 누군지 말씀드릴게요', '물을 좀 드릴까요?']   TAG:안심시키기  DECOY: at the door
     * You're safe here — I'm not going to hurt you.
       You're ready here — I'm not going to hurt you.
-      You're welcome here — I'm not going to hurt you.
       You're covered here — I'm not going to hurt you.
+      You're early here — I'm not going to hurt you.
 [16.1] KO: 이 혼돈을 일으키는 원인이 있고, 저희가 찾고 있어요.
     DIST: ['지금 어디가 불편하세요?', '가족분께 연락드릴까요?']   TAG:이유 설명  DECOY: by the bed
       Something's causing this headache and we're finding it.
@@ -770,10 +770,10 @@
       Something's causing this cough and we're finding it.
 [16.2] KO: 소음을 줄여서 좀 더 편안해지시게 할게요.
     DIST: ['TV를 켜 드릴까요?', '베개를 바로 해 드릴게요']   TAG:환경 조성  DECOY: with a pillow
-      Let's lower the rent so you feel calmer.
-      Let's lower the tax so you feel calmer.
+      Let's boost the noise so you feel calmer.
+      Let's increase the noise so you feel calmer.
     * Let's lower the noise so you feel calmer.
-      Let's lower the price so you feel calmer.
+      Let's raise the noise so you feel calmer.
 [16.3] KO: 이걸 일으킨 원인을 찾기 위해 혈액과 몸 상태를 확인하고 있어요.
     DIST: ['소변 검사도 할게요', '가족분께 병력을 물어볼게요']   TAG:검사 안내  DECOY: in the lab
       We're checking your blood and body for what's curing this.
@@ -788,9 +788,9 @@
       I won't hold you down unless it keeps you awake.
 [16.5] KO: 조명을 낮추고 주변을 차분하게 유지할게요.
     DIST: ['커튼을 닫아 드릴까요?', '담요를 덮어 드릴까요?']   TAG:환경 조성  DECOY: on the ceiling
-      Let's clean the lights and keep things calm around you.
+      Let's blast the lights and keep things calm around you.
     * Let's dim the lights and keep things calm around you.
-      Let's flood the lights and keep things calm around you.
+      Let's brighten the lights and keep things calm around you.
       Let's flash the lights and keep things calm around you.
   ORDER:
      - You're safe here — I'm not going to hurt you.
@@ -834,10 +834,10 @@
       We can focus on his comfort instead of expensive treatment.
 [17.5] KO: 어떤 결정을 하시든 가족분들을 온전히 지지해드릴게요.
     DIST: ['결정을 서두르지 않으셔도 돼요', '다른 가족분들께도 말씀드릴게요']   TAG:지지 표현  DECOY: in this room
-      Whatever you decide, we'll support your lawyer fully.
-      Whatever you decide, we'll support your insurer fully.
+      Whatever you decide, we'll support your coworkers fully.
+      Whatever you decide, we'll support your customers fully.
     * Whatever you decide, we'll support your family fully.
-      Whatever you decide, we'll support your landlord fully.
+      Whatever you decide, we'll support your neighbors fully.
   ORDER:
      - Let's talk about what would give him the most comfort.
      - That kind of comfort care is an active, caring option.
@@ -874,10 +874,10 @@
       Your legs are stiff because your heart isn't pumping well.
 [18.4] KO: 호흡이랑 심장을 동시에 치료할게요.
     DIST: ['호흡 치료 후 결과를 알려 드릴게요', '이뇨제 반응을 지켜볼게요']   TAG:치료 안내  DECOY: one by one
-      We'll treat your breathing and your vision at the same time.
-      We'll treat your breathing and your diet at the same time.
+      We'll treat your breathing and your bruise at the same time.
+      We'll treat your breathing and your blister at the same time.
     * We'll treat your breathing and your heart at the same time.
-      We'll treat your breathing and your teeth at the same time.
+      We'll treat your breathing and your rash at the same time.
 [18.5] KO: 어떤 문제를 먼저 치료할지 함께 정해볼게요.
     DIST: ['결정은 의사와 함께 내릴 거예요', '가족과 먼저 상의해 보시겠어요?']   TAG:함께 결정  DECOY: in the hospital
       Let's figure out together which symptom to treat first.
@@ -887,11 +887,11 @@
   ORDER:
      - Your heart and kidneys are both under strain — we're balancing them.
      - That's why your legs are swollen: your heart isn't pumping well.
-     - We'll treat your breathing and your heart at the same time.
+     - To fix that, we'll treat your breathing and your heart at the same time.
      - Tell me which symptom bothers you most, and we'll adjust from there.
-   swap1/2: That's why your legs are swollen: your heart isn't pumping well. || Your heart and kidneys are both under strain — we're balancing them. || We'll treat your breathing and your heart at the same time. || Tell me which symptom bothers you most, and we'll adjust from there.
-   swap2/3: Your heart and kidneys are both under strain — we're balancing them. || We'll treat your breathing and your heart at the same time. || That's why your legs are swollen: your heart isn't pumping well. || Tell me which symptom bothers you most, and we'll adjust from there.
-   swap3/4: Your heart and kidneys are both under strain — we're balancing them. || That's why your legs are swollen: your heart isn't pumping well. || Tell me which symptom bothers you most, and we'll adjust from there. || We'll treat your breathing and your heart at the same time.
+   swap1/2: That's why your legs are swollen: your heart isn't pumping well. || Your heart and kidneys are both under strain — we're balancing them. || To fix that, we'll treat your breathing and your heart at the same time. || Tell me which symptom bothers you most, and we'll adjust from there.
+   swap2/3: Your heart and kidneys are both under strain — we're balancing them. || To fix that, we'll treat your breathing and your heart at the same time. || That's why your legs are swollen: your heart isn't pumping well. || Tell me which symptom bothers you most, and we'll adjust from there.
+   swap3/4: Your heart and kidneys are both under strain — we're balancing them. || That's why your legs are swollen: your heart isn't pumping well. || Tell me which symptom bothers you most, and we'll adjust from there. || To fix that, we'll treat your breathing and your heart at the same time.
 
 ## 19 고관절 골절 통증·수술 대기
 [19.0] KO: 수술을 기다리시는 동안 통증을 관리해 드릴게요.
@@ -908,10 +908,10 @@
       Staying oriented and employed helps prevent confusion.
 [19.2] KO: 혼자 계시지 않도록 계속 살펴보러 올게요.
     DIST: ['벨을 누르시면 바로 올게요', '가족분께 연락해 둘게요']   TAG:곁에 있기  DECOY: at the door
-      I'll keep checking on you so you're not lost.
+      I'll keep checking on you so you're not late.
     * I'll keep checking on you so you're not alone.
-      I'll keep checking on you so you're not thirsty.
-      I'll keep checking on you so you're not hungry.
+      I'll keep checking on you so you're not lost.
+      I'll keep checking on you so you're not shy.
 [19.3] KO: 고관절 골절이라 수술이 필요하지만, 그때까지 편안하게 지내시도록 도와드릴게요.
     DIST: ['수술 전에 금식이 필요한지 확인할게요', '마취과 의사가 곧 설명할 거예요']   TAG:계획 설명  DECOY: in a cast
       Your ankle fracture needs surgery, but we'll keep you comfortable until then.
@@ -944,8 +944,8 @@
     DIST: ['가족분들께 필요한 게 있는지 말씀해 주세요', '어르신이 불편해하시는지 계속 살펴볼게요']   TAG:안심  DECOY: in her room
     * We'll focus on keeping her comfortable and peaceful.
       We'll focus on keeping her active and peaceful.
-      We'll focus on keeping her awake and peaceful.
-      We'll focus on keeping her alert and peaceful.
+      We'll focus on keeping her busy and peaceful.
+      We'll focus on keeping her cheerful and peaceful.
 [20.1] KO: 손을 잡고 말을 건네셔도 돼요 — 아직 들리실 수 있어요.
     DIST: ['그분 입술을 촉촉하게 해 드릴 수 있어요', '그분이 불편해 보이면 알려 주세요']   TAG:가족 안내  DECOY: from the door
       You can dress her hand and speak to her — she may still hear you.
@@ -960,9 +960,9 @@
       Waste all the time you need; we're here for all of you.
 [20.3] KO: 방을 차분하게 하고 조명을 낮춰드릴게요.
     DIST: ['창문을 열어 둘까요?', '음악을 틀어 드릴까요?']   TAG:환경 조성  DECOY: with the TV on
-      We'll keep the room calm and flood the lights for her.
-      We'll keep the room calm and flash the lights for her.
-      We'll keep the room calm and clean the lights for her.
+      We'll keep the room noisy and dim the lights for her.
+      We'll keep the room loud and dim the lights for her.
+      We'll keep the room hectic and dim the lights for her.
     * We'll keep the room calm and dim the lights for her.
 [20.4] KO: 어떤 방식으로든 편하게 작별 인사를 하셔도 괜찮아요.
     DIST: ['그분께 하고 싶은 말씀을 편하게 하세요', '다른 가족분들도 오시게 연락해 드릴까요?']   TAG:작별 안내  DECOY: on the phone
@@ -979,8 +979,8 @@
   ORDER:
      - We'll focus on keeping her comfortable and peaceful.
      - Part of that is making sure she stays free of pain.
-     - You can help her feel at peace: hold her hand and speak to her — she may still hear you.
+     - Beyond that, you can help her feel at peace: hold her hand and speak to her — she may still hear you.
      - Whatever you say to her, it's okay to say goodbye in whatever way feels right to you.
-   swap1/2: Part of that is making sure she stays free of pain. || We'll focus on keeping her comfortable and peaceful. || You can help her feel at peace: hold her hand and speak to her — she may still hear you. || Whatever you say to her, it's okay to say goodbye in whatever way feels right to you.
-   swap2/3: We'll focus on keeping her comfortable and peaceful. || You can help her feel at peace: hold her hand and speak to her — she may still hear you. || Part of that is making sure she stays free of pain. || Whatever you say to her, it's okay to say goodbye in whatever way feels right to you.
-   swap3/4: We'll focus on keeping her comfortable and peaceful. || Part of that is making sure she stays free of pain. || Whatever you say to her, it's okay to say goodbye in whatever way feels right to you. || You can help her feel at peace: hold her hand and speak to her — she may still hear you.
+   swap1/2: Part of that is making sure she stays free of pain. || We'll focus on keeping her comfortable and peaceful. || Beyond that, you can help her feel at peace: hold her hand and speak to her — she may still hear you. || Whatever you say to her, it's okay to say goodbye in whatever way feels right to you.
+   swap2/3: We'll focus on keeping her comfortable and peaceful. || Beyond that, you can help her feel at peace: hold her hand and speak to her — she may still hear you. || Part of that is making sure she stays free of pain. || Whatever you say to her, it's okay to say goodbye in whatever way feels right to you.
+   swap3/4: We'll focus on keeping her comfortable and peaceful. || Part of that is making sure she stays free of pain. || Whatever you say to her, it's okay to say goodbye in whatever way feels right to you. || Beyond that, you can help her feel at peace: hold her hand and speak to her — she may still hear you.

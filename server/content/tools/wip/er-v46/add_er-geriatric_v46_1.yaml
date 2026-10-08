@@ -1,21 +1,21 @@
 - title: 노인 낙상 후 문진
   s:
-  - {t: 낙상 정황, i: magnify, w: "right before로 시점을 낙상 직전에 고정해요. 노인은 그냥 미끄러졌다고 줄여 말하기 쉬워서, 직전 상황을 열린 질문으로 물어야 어지럼이나 걸림 같은 단서가 나와요.", d: "at the door", k: ["머리를 부딪히셨나요?", "그때 혼자 계셨나요?"], a: "before", o: ["after", "since", "while"]}
-  - {t: 실신 전조, i: faceWorried, w: "dizzy or faint를 나란히 주면 환자가 어느 쪽에 가까운지 고르기 쉬워요. 낙상 전의 어지럼이나 아찔함은 실신이나 기립성 저혈압 같은 원인을 가르는 단서예요.", d: "after dinner", k: ["넘어진 뒤에 머리가 아프셨나요?", "어지러울 때 약을 드셨나요?"], a: "faint", o: ["hungry", "itchy", "thirsty"]}
+  - {t: 낙상 정황, i: magnify, w: "right before로 시점을 낙상 직전에 고정해요. 노인은 그냥 미끄러졌다고 줄여 말하기 쉬워서, 직전 상황을 열린 질문으로 물어야 어지럼이나 걸림 같은 단서가 나와요.", d: "at the door", k: ["머리를 부딪히셨나요?", "그때 혼자 계셨나요?"], a: "before", o: ["after", "when", "as"]}
+  - {t: 실신 전조, i: faceWorried, w: "dizzy or faint를 나란히 주면 환자가 어느 쪽에 가까운지 고르기 쉬워요. 낙상 전의 어지럼이나 아찔함은 실신이나 기립성 저혈압 같은 원인을 가르는 단서예요.", d: "after dinner", k: ["넘어진 뒤에 머리가 아프셨나요?", "어지러울 때 약을 드셨나요?"], a: "faint", o: ["silly", "chatty", "thirsty"]}
   - {t: 의식 소실, i: stetho, w: "at any point로 잠깐이라도를 포함해 물어요. 노인은 짧은 실신을 그냥 넘어졌다고 기억하기도 해서 폭넓게 묻는 것이 좋아요.", d: "in the car", k: ["넘어진 뒤에 일어나기가 힘드셨나요?", "넘어질 때 머리를 부딪히셨나요?"], a: "consciousness", o: ["weight", "appetite", "hearing"]}
   - {t: 원인 구분, i: compass, w: "or로 두 가능성을 나란히 주면 환자가 걸린 것인지 다리 힘이 풀린 것인지 고를 수 있어요. 걸림은 환경 요인, 힘이 풀림은 근력·혈압·신경 문제를 의심하는 단서예요.", d: "by yourself", k: ["넘어진 곳이 어디였나요?", "누가 도와주셨나요?"], a: "legs", o: ["arms", "eyes", "lungs"]}
   - {t: 복용약 확인, i: pill, w: "Let's go over는 지시가 아니라 함께 훑어본다는 말투예요. 노인은 약이 많아 낙상 원인이 약일 수 있어서 같이 목록을 살피는 것으로 시작해요.", d: "you stopped", k: ["약 알레르기가 있으신가요?", "약은 어디서 받으세요?"], a: "go over", o: ["pick up", "throw out", "hand out"]}
-  - {t: 낙상 이력, i: calendar, w: "in the past year로 기간을 정해 주면 환자가 기억을 더듬기 쉬워요. 지난 1년 사이 낙상 이력은 노인의 낙상 위험을 가늠하는 핵심 질문이에요.", d: "in the next year", k: ["지난 1년 동안 입원하신 적이 있나요?", "넘어졌을 때 다치신 적이 있나요?"], a: "fallen", o: ["fainted", "fractured", "worsened"]}
+  - {t: 낙상 이력, i: calendar, w: "in the past year로 기간을 정해 주면 환자가 기억을 더듬기 쉬워요. 지난 1년 사이 낙상 이력은 노인의 낙상 위험을 가늠하는 핵심 질문이에요.", d: "in the next year", k: ["지난 1년 동안 입원하신 적이 있나요?", "넘어졌을 때 다치신 적이 있나요?"], a: "fallen", o: ["fainted", "fractured", "forgotten"]}
   - {t: 위험약 확인, i: pill, w: "혈액 희석제는 낙상 때의 출혈 위험을, 수면제는 어지럼과 균형 저하를 높여서 둘을 함께 물어요. currently로 지금 복용 중인 약을 짚어요.", d: "or herbal tea", k: ["약은 어디에서 받으세요?", "그 약을 드신 지 얼마나 되셨나요?"], a: "blood thinners", o: ["eye drops", "antacids", "laxatives"]}
   order:
     tag: 대화 흐름
     icon: compass
     ko: 낙상 문진 4문장 순서
-    why: 낙상 직전 상황을 먼저 묻고, 그때 증상을 묻고, 비슷한 일이 전에 있었는지 묻고, 마지막으로 약을 살핍니다. 'that'·'like that'·'these falls'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 낙상 직전 상황을 먼저 묻고, 그때 증상을 묻고, 비슷한 일이 전에 있었는지 묻고, 마지막으로 약을 살핍니다. 'that moment'·'that feeling'·'these falls'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - {en: "Can you tell me what happened right before you fell?", icon: magnify, ko: "넘어지시기 직전에 무슨 일이 있었는지 말씀해 주시겠어요?", note: 정황}
     - {en: "In that moment, did you feel dizzy or faint, or lose consciousness?", icon: faceWorried, ko: "그 순간 어지럽거나 아찔했나요, 아니면 의식을 잃으셨나요?", note: 증상}
-    - {en: "Has anything like that happened before, in the past year?", icon: calendar, ko: "지난 1년 안에 그런 일이 전에도 있었나요?", note: 이력}
+    - {en: "Have you had other falls in the past year, with or without that feeling?", icon: calendar, ko: "지난 1년 안에 그런 느낌이 있었든 없었든 다른 낙상이 있었나요?", note: 이력}
     - {en: "Let's go over the medications you take, in case one of them is behind these falls.", icon: pill, ko: "혹시 약 때문일 수 있으니 복용하시는 약을 함께 살펴볼게요.", note: 약}
 - title: 다약제 복용력 정리
   s:
@@ -29,12 +29,12 @@
     tag: 대화 흐름
     icon: compass
     ko: 복용약 정리 4문장 순서
-    why: 목록·약병이 있는지 묻고, 가진 것을 하나씩 살피고, 약마다 용도와 기간을 묻고, 마지막에 비처방약을 더합니다. 'Whatever you have'·'each one'·'those pills'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 목록·약병이 있는지 묻고, 가진 것 중 하나를 골라 시작하고, 그 약의 용도와 기간을 묻고, 같은 방식으로 비처방약까지 살핍니다. 'Whatever you have'·'that one'·'the same'이 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - {en: "Do you have a list or the bottles with you?", icon: board, ko: "약 목록이나 약병을 가지고 계신가요?", note: 확인}
-    - {en: "Whatever you have, take your time — we'll go through it one by one.", icon: handshake2, ko: "가진 것이 무엇이든 천천히 하나씩 살펴볼게요", note: 안심}
-    - {en: "For each one, what is it for, and how long have you been taking it?", icon: pill, ko: "약마다 무엇 때문에 드시고 얼마나 오래 드셨나요?", note: 용도}
-    - {en: "Let's include vitamins and anything you buy over the counter, since they can interact with those pills.", icon: bell, ko: "그 약들과 영향을 줄 수 있으니 비타민과 약국에서 직접 사신 약도 포함해 주세요", note: 비처방}
+    - {en: "Whatever you have, take your time — we'll pick one to start with.", icon: handshake2, ko: "가진 것이 무엇이든 천천히 하세요, 하나를 골라 시작해 볼게요", note: 안심}
+    - {en: "For that one, what is it for, and how long have you been taking it?", icon: pill, ko: "그 약은 무엇 때문에 드시고 얼마나 오래 드셨나요?", note: 용도}
+    - {en: "Let's do the same for vitamins and anything you buy over the counter.", icon: bell, ko: "비타민과 약국에서 직접 사신 약도 같은 식으로 살펴볼게요", note: 비처방}
   sw: {ko: "통증이나 잠을 위해 처방 없이 사서 드시는 약이 있으세요?"}
 - title: 청력저하 환자 소통
   s:
@@ -52,7 +52,7 @@
     lines:
     - {en: "Let's check if your hearing aids are in and working.", icon: gear, ko: "보청기가 끼워져 있고 작동하는지 확인해볼게요", note: 점검}
     - {en: "I'll face you and speak slowly — is that clearer with them in?", icon: speech, ko: "마주 보고 천천히 말할게요, 보청기를 끼니 더 잘 들리세요?", note: 말하기}
-    - {en: "Just raise your hand any time you miss something, and I'll say it again.", icon: me, ko: "놓치신 게 있으면 언제든 손을 들어 주세요, 다시 말씀드릴게요", note: 신호}
+    - {en: "Just raise your hand any time that isn't clear, and I'll say it again.", icon: me, ko: "분명하지 않을 때마다 손을 들어 주세요, 다시 말씀드릴게요", note: 신호}
     - {en: "If hearing it again doesn't help, I can write it down for you.", icon: pencil, ko: "다시 들으셔도 어려우면 적어서 보여드릴게요", note: 서면}
   sw: {ko: "제 말을 알아들으실 수 있도록 마주 보고 또렷하게 말씀드릴게요."}
 - title: 기저 인지기능 확인

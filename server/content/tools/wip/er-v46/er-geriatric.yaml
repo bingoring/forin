@@ -3084,8 +3084,8 @@ situations:
       options:
       - en: before
       - en: after
-      - en: since
-      - en: while
+      - en: when
+      - en: as
   - en: Do you remember feeling dizzy or faint before you fell?
     ko: 넘어지시기 전에 어지럽거나 아찔한 느낌이 있으셨나요?
     chunks:
@@ -3112,8 +3112,8 @@ situations:
       options:
       - en: thirsty
       - en: faint
-      - en: hungry
-      - en: itchy
+      - en: silly
+      - en: chatty
   - en: Did you lose consciousness at any point?
     ko: 잠깐이라도 의식을 잃으신 적이 있나요?
     chunks:
@@ -3210,7 +3210,7 @@ situations:
     blank:
       answer: fallen
       options:
-      - en: worsened
+      - en: forgotten
       - en: fallen
       - en: fainted
       - en: fractured
@@ -3284,7 +3284,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 낙상 문진 4문장 순서
-    why: 낙상 직전 상황을 먼저 묻고, 그때 증상을 묻고, 비슷한 일이 전에 있었는지 묻고, 마지막으로 약을 살핍니다. 'that'·'like that'·'these falls'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 낙상 직전 상황을 먼저 묻고, 그때 증상을 묻고, 비슷한 일이 전에 있었는지 묻고, 마지막으로 약을 살핍니다. 'that moment'·'that feeling'·'these falls'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Can you tell me what happened right before you fell?
       icon: magnify
@@ -3294,9 +3294,9 @@ situations:
       icon: faceWorried
       ko: 그 순간 어지럽거나 아찔했나요, 아니면 의식을 잃으셨나요?
       note: 증상
-    - en: Has anything like that happened before, in the past year?
+    - en: Have you had other falls in the past year, with or without that feeling?
       icon: calendar
-      ko: 지난 1년 안에 그런 일이 전에도 있었나요?
+      ko: 지난 1년 안에 그런 느낌이 있었든 없었든 다른 낙상이 있었나요?
       note: 이력
     - en: Let's go over the medications you take, in case one of them is behind these falls.
       icon: pill
@@ -3499,23 +3499,23 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 복용약 정리 4문장 순서
-    why: 목록·약병이 있는지 묻고, 가진 것을 하나씩 살피고, 약마다 용도와 기간을 묻고, 마지막에 비처방약을 더합니다. 'Whatever you have'·'each one'·'those pills'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 목록·약병이 있는지 묻고, 가진 것 중 하나를 골라 시작하고, 그 약의 용도와 기간을 묻고, 같은 방식으로 비처방약까지 살핍니다. 'Whatever you have'·'that one'·'the same'이 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Do you have a list or the bottles with you?
       icon: board
       ko: 약 목록이나 약병을 가지고 계신가요?
       note: 확인
-    - en: Whatever you have, take your time — we'll go through it one by one.
+    - en: Whatever you have, take your time — we'll pick one to start with.
       icon: handshake2
-      ko: 가진 것이 무엇이든 천천히 하나씩 살펴볼게요
+      ko: 가진 것이 무엇이든 천천히 하세요, 하나를 골라 시작해 볼게요
       note: 안심
-    - en: For each one, what is it for, and how long have you been taking it?
+    - en: For that one, what is it for, and how long have you been taking it?
       icon: pill
-      ko: 약마다 무엇 때문에 드시고 얼마나 오래 드셨나요?
+      ko: 그 약은 무엇 때문에 드시고 얼마나 오래 드셨나요?
       note: 용도
-    - en: Let's include vitamins and anything you buy over the counter, since they can interact with those pills.
+    - en: Let's do the same for vitamins and anything you buy over the counter.
       icon: bell
-      ko: 그 약들과 영향을 줄 수 있으니 비타민과 약국에서 직접 사신 약도 포함해 주세요
+      ko: 비타민과 약국에서 직접 사신 약도 같은 식으로 살펴볼게요
       note: 비처방
 - title: 청력저하 환자 소통
   sentences:
@@ -3724,9 +3724,9 @@ situations:
       icon: speech
       ko: 마주 보고 천천히 말할게요, 보청기를 끼니 더 잘 들리세요?
       note: 말하기
-    - en: Just raise your hand any time you miss something, and I'll say it again.
+    - en: Just raise your hand any time that isn't clear, and I'll say it again.
       icon: me
-      ko: 놓치신 게 있으면 언제든 손을 들어 주세요, 다시 말씀드릴게요
+      ko: 분명하지 않을 때마다 손을 들어 주세요, 다시 말씀드릴게요
       note: 신호
     - en: If hearing it again doesn't help, I can write it down for you.
       icon: pencil
@@ -4201,12 +4201,12 @@ situations:
     - 지금 몇 시인지 아시겠어요?
     - 성함이 어떻게 되세요?
     blank:
-      answer: safe
+      answer: hospital
       options:
-      - en: ready
-      - en: safe
-      - en: sick
-      - en: late
+      - en: cafeteria
+      - en: hospital
+      - en: parking lot
+      - en: elevator
   - en: This confusion may be new — we're finding out why.
     ko: 이 혼돈은 새로 생긴 걸 수도 있어요 — 저희가 원인을 찾고 있어요.
     chunks:
@@ -4257,8 +4257,8 @@ situations:
       answer: calmer
       options:
       - en: warmer
-      - en: hungrier
-      - en: thirstier
+      - en: stronger
+      - en: cleaner
       - en: calmer
   - en: Do you know where you are right now?
     ko: 지금 어디에 계신지 아시겠어요?
@@ -4415,12 +4415,12 @@ situations:
     - 열이 언제부터 있었나요?
     - 최근에 병원에 다녀오셨나요?
     blank:
-      answer: infections
+      answer: fever
       options:
-      - en: fractures
-      - en: bruises
-      - en: infections
-      - en: allergies
+      - en: itching
+      - en: swelling
+      - en: fever
+      - en: rash
   - en: Has she had any changes in urination or breathing?
     ko: 소변이나 호흡에 변화가 있으셨나요?
     chunks:
@@ -4665,9 +4665,9 @@ situations:
       answer: tired
       options:
       - en: tired
-      - en: hungry
-      - en: thirsty
-      - en: itchy
+      - en: bored
+      - en: chatty
+      - en: cheerful
   - en: We'll check your heart to be safe.
     ko: 안전을 위해 심장을 확인해볼게요.
     chunks:
@@ -4714,10 +4714,10 @@ situations:
     blank:
       answer: pressure
       options:
-      - en: hunger
-      - en: sneezing
+      - en: thirst
+      - en: cravings
       - en: pressure
-      - en: itching
+      - en: hunger
   - en: Have you had any nausea, sweating, or dizziness with this?
     ko: 메스꺼움이나 식은땀, 어지러움이 함께 있으셨나요?
     chunks:
@@ -4741,9 +4741,9 @@ situations:
     blank:
       answer: sweating
       options:
+      - en: itching
+      - en: hiccups
       - en: snoring
-      - en: sneezing
-      - en: blinking
       - en: sweating
   - en: We take chest symptoms seriously in older patients.
     ko: 노인 환자분들의 흉부 증상은 저희가 진지하게 받아들여요.
@@ -4767,8 +4767,8 @@ situations:
       options:
       - en: older
       - en: pregnant
-      - en: hospitalized
       - en: sleeping
+      - en: talkative
   - en: We'll do an EKG and some blood tests on your heart.
     ko: 심전도랑 혈액 검사로 심장을 확인해볼게요.
     chunks:
@@ -5265,15 +5265,15 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 시설 정보 확인 4문장 순서
-    why: 이송 직원에게 평소 상태를 묻고, 서류가 부족하니 시설 연락을 부탁하고, 그곳 간호사의 연락처를 묻고, 그 간호사와 약 목록을 확인합니다. 'there'·'that nurse'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 이송 직원에게 평소 상태를 묻고, 서류가 부족하니 시설 연락을 부탁하고, 그곳 간호사의 연락처를 묻고, 그 간호사와 약 목록을 확인합니다. 'Beyond what you know'·'there'·'that nurse'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Do you know her baseline and what happened today?
       icon: board
       ko: 평소 상태랑 오늘 무슨 일이 있었는지 아시나요?
       note: 기저
-    - en: The paperwork doesn't say much — can you help me reach the facility for her records?
+    - en: Beyond what you know, the paperwork doesn't say much — can you help me reach the facility for her records?
       icon: speaker
-      ko: 서류에 별 내용이 없어서요, 기록을 위해 시설에 연락하는 걸 도와주실 수 있나요?
+      ko: 아시는 것 외에는 서류에 별 내용이 없어요, 기록을 위해 시설에 연락하는 걸 도와주실 수 있나요?
       note: 부탁
     - en: Do you have a contact number for the nurse there?
       icon: speaker
@@ -5529,9 +5529,9 @@ situations:
     blank:
       answer: kidneys
       options:
-      - en: hair
-      - en: nails
-      - en: teeth
+      - en: insurance
+      - en: budget
+      - en: calendar
       - en: kidneys
   - en: I'll help you avoid feeling too groggy or unsteady.
     ko: 너무 몽롱하거나 휘청거리지 않도록 도와드릴게요.
@@ -5558,8 +5558,8 @@ situations:
       options:
       - en: groggy
       - en: hungry
-      - en: thirsty
-      - en: itchy
+      - en: lonely
+      - en: cold
   - en: Tell me if you feel dizzy at any point.
     ko: 조금이라도 어지러우시면 언제든 말씀해 주세요.
     chunks:
@@ -5582,10 +5582,10 @@ situations:
     blank:
       answer: dizzy
       options:
-      - en: bored
+      - en: curious
       - en: dizzy
-      - en: cold
-      - en: hot
+      - en: proud
+      - en: grateful
   - en: Your kidneys process medication more slowly as you age.
     ko: 나이가 드시면 신장이 약을 더 천천히 처리해요.
     chunks:
@@ -5632,7 +5632,7 @@ situations:
     blank:
       answer: side effects
       options:
-      - en: rumors
+      - en: visitors
       - en: bills
       - en: delays
       - en: side effects
@@ -5701,7 +5701,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 노인 진통제 안내 4문장 순서
-    why: 신장이 약을 천천히 처리한다고 설명하고, 그래서 적게 시작한다고 말하고, 몽롱함·어지럼을 알려 달라 하고, 그 예방으로 혼자 일어나지 말라고 합니다. 'your kidneys'·'that'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 신장이 약을 천천히 처리한다고 설명하고, 그래서 적게 시작한다고 말하고, 몽롱함·어지럼을 알려 달라 하고, 그 예방으로 혼자 일어나지 말라고 합니다. 'your kidneys'·'that small start'·'that'이 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Your kidneys process medication more slowly as you age.
       icon: bulb
@@ -5711,7 +5711,7 @@ situations:
       icon: pill
       ko: 그래서 적은 용량으로 시작해 신장에 맞춰 조절할게요
       note: 용량
-    - en: I'll help you avoid feeling too groggy or unsteady, so tell me if you feel dizzy at any point.
+    - en: With that small start, I'll help you avoid feeling too groggy or unsteady, so tell me if you feel dizzy at any point.
       icon: shield
       ko: 너무 몽롱하거나 휘청거리지 않도록 도울게요, 어지러우시면 언제든 말씀해 주세요
       note: 보고
@@ -6033,9 +6033,9 @@ situations:
       answer: kind
       options:
       - en: kind
-      - en: cost
+      - en: amount
+      - en: price
       - en: brand
-      - en: color
   - en: Do you have a copy of the directive with you today?
     ko: 오늘 사전의향서 사본을 가지고 오셨나요?
     chunks:
@@ -6056,12 +6056,12 @@ situations:
     - POLST는 누가 작성했나요?
     - 서류를 팩스로 받을 수 있나요?
     blank:
-      answer: copy
+      answer: directive
       options:
-      - en: ticket
-      - en: copy
-      - en: bill
+      - en: passport
+      - en: directive
       - en: receipt
+      - en: invoice
   - en: We want to respect his wishes and support your family.
     ko: 그분의 뜻을 존중하고 가족분들을 지지해드리고 싶어요.
     chunks:
@@ -6128,7 +6128,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 의향 확인 4문장 순서
-    why: 서류가 있는지 묻고, 서류 여부와 상관없이 그분께 중요한 것을 묻고, 그것을 평소 말한 적 있는지 묻고, 뜻을 지키겠다고 약속합니다. 'Whether or not'·'that'·'his wishes'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 서류가 있는지 묻고, 서류 여부와 상관없이 그분께 중요한 것을 묻고, 그것을 평소 말한 적 있는지 묻고, 뜻을 지키겠다고 약속합니다. 'Whether or not'·'that'·'those wishes'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Do you know if he has a POLST or advance directive?
       icon: board
@@ -6142,9 +6142,9 @@ situations:
       icon: speech
       ko: 그것에 대해, 원하시는 치료 방식을 말씀하신 적이 있나요?
       note: 평소
-    - en: We'll honor his wishes as best we can.
+    - en: We'll honor those wishes as best we can.
       icon: handshake2
-      ko: 할 수 있는 한 그분의 뜻을 지켜 드릴게요
+      ko: 할 수 있는 한 그 뜻을 지켜 드릴게요
       note: 약속
 - title: 노인 패혈증 급속 진행
   sentences:
@@ -6172,10 +6172,10 @@ situations:
     blank:
       answer: temperature
       options:
-      - en: hearing
-      - en: vision
+      - en: memory
+      - en: speech
       - en: temperature
-      - en: appetite
+      - en: mood
   - en: In older adults sepsis can look different, and we're on it.
     ko: 노인분들은 패혈증이 다르게 나타날 수 있는데, 저희가 확인하고 있어요.
     chunks:
@@ -6412,7 +6412,7 @@ situations:
       - en: bleeding
       - en: allergies
       - en: hunger
-      - en: thirst
+      - en: fatigue
   - en: Watch for any drowsiness or confusion — tell me immediately.
     ko: 졸리거나 혼란스러운 모습이 보이면 바로 알려 주세요.
     chunks:
@@ -6488,12 +6488,12 @@ situations:
     - 머리 사진 결과를 곧 알려 드릴게요
     - 환자분 베개를 높여 드릴게요
     blank:
-      answer: monitor
+      answer: next
       options:
-      - en: transport
-      - en: bathe
-      - en: feed
-      - en: monitor
+      - en: past
+      - en: last
+      - en: previous
+      - en: next
   - en: Please tell us right away if she seems more confused.
     ko: 더 혼란스러워 보이시면 바로 알려주세요.
     chunks:
@@ -6517,9 +6517,9 @@ situations:
       answer: confused
       options:
       - en: confused
-      - en: thirsty
-      - en: bored
-      - en: hungry
+      - en: proud
+      - en: cheerful
+      - en: cold
   nuance:
   - kind: slider
     words:
@@ -6603,8 +6603,8 @@ situations:
       options:
       - en: safe
       - en: ready
-      - en: welcome
       - en: covered
+      - en: early
   - en: Something's causing this confusion and we're finding it.
     ko: 이 혼돈을 일으키는 원인이 있고, 저희가 찾고 있어요.
     chunks:
@@ -6650,12 +6650,12 @@ situations:
     - TV를 켜 드릴까요?
     - 베개를 바로 해 드릴게요
     blank:
-      answer: noise
+      answer: lower
       options:
-      - en: rent
-      - en: tax
-      - en: noise
-      - en: price
+      - en: boost
+      - en: increase
+      - en: lower
+      - en: raise
   - en: We're checking your blood and body for what's causing this.
     ko: 이걸 일으킨 원인을 찾기 위해 혈액과 몸 상태를 확인하고 있어요.
     chunks:
@@ -6728,9 +6728,9 @@ situations:
     blank:
       answer: dim
       options:
-      - en: clean
+      - en: blast
       - en: dim
-      - en: flood
+      - en: brighten
       - en: flash
   nuance:
   - kind: slider
@@ -6943,10 +6943,10 @@ situations:
     blank:
       answer: family
       options:
-      - en: lawyer
-      - en: insurer
+      - en: coworkers
+      - en: customers
       - en: family
-      - en: landlord
+      - en: neighbors
   nuance:
   - kind: slider
     words:
@@ -7134,10 +7134,10 @@ situations:
     blank:
       answer: heart
       options:
-      - en: vision
-      - en: diet
+      - en: bruise
+      - en: blister
       - en: heart
-      - en: teeth
+      - en: rash
   - en: Let's figure out together which problem to treat first.
     ko: 어떤 문제를 먼저 치료할지 함께 정해볼게요.
     chunks:
@@ -7206,7 +7206,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 만성질환 악화 설명 4문장 순서
-    why: 장기가 힘든 상태를 알리고, 다리가 붓는 이유를 잇고, 호흡과 심장을 함께 치료한다고 알리고, 가장 힘든 증상을 알려 달라고 합니다. "That's why"·'adjust from there'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 장기가 힘든 상태를 알리고, 다리가 붓는 이유를 잇고, 호흡과 심장을 함께 치료한다고 알리고, 가장 힘든 증상을 알려 달라고 합니다. "That's why"·'To fix that'·'adjust from there'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Your heart and kidneys are both under strain — we're balancing them.
       icon: stetho
@@ -7216,9 +7216,9 @@ situations:
       icon: bulb
       ko: 그래서 다리가 부으신 거예요, 심장이 잘 뛰지 못하고 있어요
       note: 이유
-    - en: We'll treat your breathing and your heart at the same time.
+    - en: To fix that, we'll treat your breathing and your heart at the same time.
       icon: pill
-      ko: 호흡이랑 심장을 동시에 치료할게요
+      ko: 그걸 바로잡으려고 호흡이랑 심장을 동시에 치료할게요
       note: 치료
     - en: Tell me which symptom bothers you most, and we'll adjust from there.
       icon: speech
@@ -7302,10 +7302,10 @@ situations:
     blank:
       answer: alone
       options:
-      - en: lost
+      - en: late
       - en: alone
-      - en: thirsty
-      - en: hungry
+      - en: lost
+      - en: shy
   - en: Your hip fracture needs surgery, but we'll keep you comfortable until then.
     ko: 고관절 골절이라 수술이 필요하지만, 그때까지 편안하게 지내시도록 도와드릴게요.
     chunks:
@@ -7470,8 +7470,8 @@ situations:
       options:
       - en: comfortable
       - en: active
-      - en: awake
-      - en: alert
+      - en: busy
+      - en: cheerful
   - en: You can hold her hand and speak to her — she may still hear you.
     ko: 손을 잡고 말을 건네셔도 돼요 — 아직 들리실 수 있어요.
     chunks:
@@ -7546,12 +7546,12 @@ situations:
     - 창문을 열어 둘까요?
     - 음악을 틀어 드릴까요?
     blank:
-      answer: dim
+      answer: calm
       options:
-      - en: flood
-      - en: flash
-      - en: clean
-      - en: dim
+      - en: noisy
+      - en: loud
+      - en: hectic
+      - en: calm
   - en: It's okay to say goodbye in whatever way feels right to you.
     ko: 어떤 방식으로든 편하게 작별 인사를 하셔도 괜찮아요.
     chunks:
@@ -7645,7 +7645,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 임종 가족 안내 4문장 순서
-    why: 편안함이 목표라고 알리고, 그 일환으로 통증이 없게 하겠다고 말하고, 가족이 곁에서 할 수 있는 일을 알리고, 작별 방식에 정답이 없다고 말합니다. 'that'·'at peace'·'to her'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 편안함이 목표라고 알리고, 그 일환으로 통증이 없게 하겠다고 말하고, 가족이 곁에서 할 수 있는 일을 알리고, 작별 방식에 정답이 없다고 말합니다. 'that'·'Beyond that'·'to her'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: We'll focus on keeping her comfortable and peaceful.
       icon: handshake2
@@ -7655,9 +7655,9 @@ situations:
       icon: pill
       ko: 그 일환으로 통증 없이 지내시도록 해드릴게요
       note: 통증
-    - en: 'You can help her feel at peace: hold her hand and speak to her — she may still hear you.'
+    - en: 'Beyond that, you can help her feel at peace: hold her hand and speak to her — she may still hear you.'
       icon: handshake2
-      ko: 손을 잡고 말을 건네 평온하게 해 주셔도 돼요, 아직 들리실 수 있어요
+      ko: 그 밖에 손을 잡고 말을 건네 평온하게 해 주셔도 돼요, 아직 들리실 수 있어요
       note: 곁에
     - en: Whatever you say to her, it's okay to say goodbye in whatever way feels right to you.
       icon: star
