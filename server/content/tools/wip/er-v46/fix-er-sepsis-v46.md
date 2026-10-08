@@ -46,7 +46,7 @@
    - `infection`: **고칠 것.** XX의 어색함은 `nasty…hang in there`라는 관용어에 있지 `infection`에 있지 않습니다. 가족에게 `infection`은 맞는 말이라 메모 "뜻은 셋 다 '감염' — 듣는 사람이 달라요"가 성립하지 않습니다(ctx-A #10 passed away와 같은 모양). 차트도 `urinary source`를 `urinary infection`으로 바꿔 차트 말에서 멀어졌습니다. 안은 H-1에 적었습니다.
    - `organ failure`: OK. 가족에게 AKI·shock liver·DIC를 늘어놓은 장면이라 어색함이 분명합니다.
 
-## 고칠 것 (v46 필드) — 모두 93건
+## 고칠 것 (v46 필드) — 모두 97건
 
 ### A. 위험한 그림 — 빈칸·decoy·오답 뜻 (11건)
 
@@ -139,7 +139,7 @@
 | 15.5 | `all day`를 끼우면 "…peripheral line all day until central access is in" — 말초 승압제를 오래 두는 그림 | `in the hall` |
 | 전반 | 약 90개가 시간·장소 부사구 틀이라 문장 끝에 붙여도 우습기만 해서 걸러집니다. 브리프가 권하는 것은 "같은 자리에 올 수 있는 구"나 "이 문장의 청크를 살짝 바꾼 것"입니다. | 다음 수정에서 상황마다 두세 개라도 청크 변형형으로 바꾸기를 권합니다(예: 9.4 `one by one` ↔ `at the same time`처럼). 이번 목록에서는 개수만 셉니다. |
 
-### E. distractorsKo (10건)
+### E. distractorsKo (9건)
 
 | 어디 | 문제 | 안 |
 |---|---|---|
@@ -176,7 +176,7 @@
    - 4번 줄 안: `When it does, tell me, and I'll explain each part as we go.` (`it does`가 3번 줄의 `feels like a lot`을 받습니다)
    - why에 승압제를 덧붙입니다("혈압이 계속 낮으면 승압제가 더해져요").
 3. **S7** — 2↔3을 바꿔도 자연스럽습니다("To check for that"의 `that`이 1번 줄의 혼란을 가리킬 수 있음).
-   - 3번 줄 안: `To find the infection behind it, has he had any recent infection, catheter problem, or wound?` → 고친 안이 `infection`을 두 번 써서 어색하므로 `To find where it's coming from, has he had a recent catheter problem, wound, or infection?`보다는 다음 안을 권합니다: `To find the source of that sepsis, has he had any recent catheter problem or wound?` (`that sepsis`가 2번 줄을 가리킵니다)
+   - 3번 줄 안: `To find the source of that sepsis, has he had any recent catheter problem or wound?` (`that sepsis`가 2번 줄을 가리켜, 1번 줄 바로 뒤에는 올 수 없습니다)
 4. **S9** — 3↔4를 바꿔도 자연스럽습니다(`too`가 2번 줄 치료 뒤에도 맞음).
    - 4번 줄 안: `You can help me with that — tell me right away if breathing gets harder.` (`that`이 3번 줄의 지켜보기를 가리킵니다)
 5. **S12** — 항생제가 없습니다(심각 2).
@@ -234,4 +234,4 @@
 
 ## 종합
 
-교정된 고칠 것은 v46 필드 93건(A 11, B 49, C 3, D 3, E 10, F 9, G 11, H 2, I 1 — 일부는 서로 겹침)이고, 결정 11 보고 2건(+keyPhrase 3건 보고)입니다. 사실 오류·위험한 그림 8건(특히 12.5 decoy와 S12 카드에 항생제 없음, 6.1·3.3·15.1·15.5 빈칸, 15.3 수액만 더 주기)을 먼저 고친 뒤 B의 동떨어진 오답을 바꾸면 내보낼 수 있습니다. 지금 상태로는 내보내지 않는 것을 권합니다.
+고칠 것은 v46 필드 97건(A 11, B 49, C 3, D 3, E 9, F 9, G 11, H 2 — I 1건은 G-9와 겹침)이고, 결정 11 보고 2건(+keyPhrase 3건 보고)입니다. 사실 오류·위험한 그림 8건(특히 12.5 decoy와 S12 카드에 항생제 없음, 6.1·3.3·15.1·15.5 빈칸, 15.3 수액만 더 주기)을 먼저 고친 뒤 B의 동떨어진 오답을 바꾸면 내보낼 수 있습니다. 지금 상태로는 내보내지 않는 것을 권합니다.

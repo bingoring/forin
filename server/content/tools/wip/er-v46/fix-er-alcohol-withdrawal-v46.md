@@ -18,8 +18,8 @@ context `word`가 세 장면 `en`에 있는지와 base 대비 바뀐 장면·`fi
 | # | 항목 | 점수 | 근거 |
 |---|---|---|---|
 | 1 | `why` | 4 | 대부분 사실이고 말하는 방식의 이유를 짚는다. 금단 시작 6~24시간(0.5), 티아민 전 포도당 위험(3.1), CIWA 시각 항목(7.3), 베르니케 세 징후(8.0), 확진 전 티아민(8.1·8.5), K·Mg 교정 중 심장 감시(9.2), 간질환의 응고인자·진정제 선택(12.1·12.5), 자살 직접 질문(13.1), 작화(17.5), 배양 먼저(18.1) — 모두 맞다. 고칠 것 5: 3.4 "예외 없는 원칙"(저혈당이면 포도당을 미루면 안 됨 — 심각 1), 16.2 "삽관으로 넘어가는 것이 정해진 순서"(과장), 10.2·19.2·19.5는 `ko`를 영어 구문 풀이로 되풀이. |
-| 2 | 빈칸 | 3 | `ko`로도 **정답이 둘**인 것 3(0.4 `anyone`, 8.4 `funny`, 17.4 `erased`). **처치 논리를 뒤집거나 위험한 감시 간격을 보이는 오답 3**(5.0·5.3 "점수가 낮으니 약을 더", 4.5 만취 환자 `forty/fifty minutes`). **문법·전치사로 걸러지는 것 3**(7.3 `hardly/barely`, 14.2 `in the weekends/vacations`, 18.5 `feel any noise`). **동떨어진 말 7**(5.1 `price/color`, 10.5 `paperwork/billing/laundry`, 13.2 `laundry/kitchen`, 13.5 `billing/front-desk/parking`, 15.3 `height/hearing/weight`, 16.4 `menu/ticket`, 19.1 `crowd/queue/budget`). 묶음 돌려쓰기: `hungry` 5문장, `briefly` 6·`quietly` 5, `quiet/busy/warm` 14.1·14.4 같은 셋, `oxygen/saline`이 약 자리마다. |
-| 3 | `decoy` | 4 | `ko`에 맞는 다른 문장이 되는 것은 없다(0.2 `to quiz you`가 경계 — 참고). 고칠 것 2: 2.1 `once a day`(조립하면 "하루 한 번 떨림을 묻는다" — 감시 간격을 틀리게 보임), 10.3 `you can treat at home`(낙상을 "그냥 멍"이라 축소하는 환자에게 "집에서 치료할 부상"을 조립). `paperwork` 계열 decoy 5개(2.2·16.2·17.1·17.4·20.1)는 돌려쓰기(선택). |
+| 2 | 빈칸 | 3 | 고칠 것 17문장. `ko`로도 **정답이 둘**인 것 3(0.4 `anyone`, 8.4 `funny`, 17.4 `erased`). **위험하게 긴 감시 간격 1**(4.5 만취 환자 `forty/fifty minutes`), **스스로 모순되는 투약 조립 2**(5.0·5.3 "점수가 낮으니 약을 더"). **문법·전치사로 걸러지는 것 3**(7.3 `hardly/barely`, 14.2 `in the weekends/vacations`, 18.5 `feel any noise`). **동떨어진 말 7**(5.1 `price/color`, 10.5 `paperwork/billing/laundry`, 13.2 `laundry/kitchen`, 13.5 `billing/front-desk/parking`, 15.3 `height/hearing/weight`, 16.4 `menu/ticket`, 19.1 `crowd/queue/budget`). 묶음 돌려쓰기: `hungry` 5문장(고칠 것), `briefly` 6·`quietly` 5, `quiet/busy/warm` 14.1·14.4 같은 셋, `oxygen/saline`이 약 자리마다 4번(참고). |
+| 3 | `decoy` | 4 | `ko`에 맞는 다른 문장이 되는 것은 없다(0.2 `to quiz you`가 경계 — 참고). 고칠 것 2: 2.1 `once a day`(조립하면 "하루 한 번 떨림을 묻는다" — 감시 간격을 틀리게 보임, 심각 5), 10.3 `you can treat at home`(낙상을 "그냥 멍"이라 축소하는 환자에게 "집에서 치료할 부상"을 조립). `paperwork` 계열 decoy 5개(2.2·16.2·17.1·17.4·20.1)는 돌려쓰기(선택). |
 | 4 | `distractorsKo` | 4 | 거의 다 같은 상황의 다른 문장 뜻이라 실제로 할 말이고, 정답을 뒤집은 것("절대 ~")이 없다. 고칠 것 2: 15.0 "지금 혈압과 심박수가 높아요"(정답 `hypertensive, tachycardic`의 반쪽 — 심각 4), 0.5 두 오답 "하루에 몇 잔 드세요?"·"보통 얼마나 드세요?"가 같은 질문. |
 | 5 | `order` | 3 | `If` 줄 2개는 실제 조건부다(아래 자기 보고 2). 감시·투약을 다른 일 뒤로 미루는 시간 묶음은 없다. 그러나 **인접 교환이 열린 카드 7장**(S3 2↔3 약하게, S5 2↔3, S9 2↔3, S12 3↔4, S14 1↔2, S17 3↔4, S19 3↔4), **임상 인과가 틀린 줄 1**(S5 L4 환각 보고를 용량 변화 탓으로 — 심각 2), **답을 전제한 줄 1**(S1 L2 `With that timing … fit`), **듣는 사람이 바뀌는 카드 1**(S15 L2 "의사가 필요해요" → L3 의사에게 "오더해 주세요"), **억지 연결어 4**(S0 L3 `with that amount in mind`, S4 L3 `Because you'll be staying right there`, S8 L4 `Alongside that watching`, S11 L2 `That's true even though`). |
 | 6 | `tag`·`icon` | 4 | 한국어 10자 이하, 상황 안에서 일관. order 21장 모두 `대화 흐름`·`compass`. 고칠 것 2: 4.4 `호출 요청`(부르라는 말이 문장에 없음), 8.0 `소견 보고`(보호자에게 하는 말 — `소견 설명`). |
@@ -32,7 +32,7 @@ context `word`가 세 장면 `en`에 있는지와 base 대비 바뀐 장면·`fi
 2. **S5 order L4 `With the dose changing like that, tell me right away if you see or feel things that aren't there.`** — 환각을 "용량이 바뀌니까" 생기는 것처럼 묶었다. 환각은 금단이 심해지는 신호(같은 상황 5.2 why도 그렇게 말함)이지 용량 변화의 결과가 아니다. 게다가 L1 → L3 → L2로 바꿔 읽어도 자연스러워 2↔3이 열려 있다. → O5.
 3. **8.4 빈칸 `funny`** — `watching … for anything funny`는 미국 구어에서 "이상한 것"이라는 뜻의 흔한 말이라 정답 `unusual`과 같다. `ko` "이상이 없는지"에도 그대로 맞는다. → B2.
 4. **15.0 distractorsKo `지금 혈압과 심박수가 높아요`** — 정답 `hypertensive, tachycardic`이 바로 그 뜻이다. 듣고 고를 때 정답이 둘이다. → K1.
-5. **처치·감시를 뒤집는 오답** — 5.0 `Your withdrawal score is low/normal/stable, so I'm giving you medication`, 5.3 `A low score means we need more medication right now`는 점수가 낮은데 벤조를 더 주는 말(과진정)을 조립한다. 4.5 만취 환자에게 `every forty/fifty minutes`, 2.1 decoy `Once a day I ask about shaking…`은 이 주제의 핵심인 감시 간격을 틀리게 보인다. → B14·B15·B16·D1.
+5. **감시 간격을 틀리게 보이는 오답** — 4.5 만취 환자에게 `every forty/fifty minutes`, 2.1 decoy로 조립되는 `Once a day I ask about shaking…`은 이 주제의 핵심인 감시 간격(만취는 자주, CIWA는 정해진 간격으로 반복)을 위험하게 길게 보인다. → B16·D1. (5.0·5.3 `low` 점수에 약을 더 주는 조립은 읽으면 스스로 모순이라 심각으로 세지 않지만, 벤조 과진정 방향이라 고칠 것으로 둔다 → B14·B15. 브리프 2(a)의 `high/low` 대비는 상태 묘사일 때 좋고, 여기처럼 투약 결정의 근거 자리면 다른 말로 옮기는 편이 낫다.)
 6. **S15 order 듣는 사람이 바뀜** — L2 `I need a physician now`(의사를 부르는 말, 듣는 사람은 동료)와 L3 `please order aggressive benzodiazepine sedation`(의사에게 하는 말)이 한 카드에 이어진다. → O11.
 
 ## 저작자 자기 보고 3건 판정
@@ -65,7 +65,7 @@ context `word`가 세 장면 `en`에 있는지와 base 대비 바뀐 장면·`fi
   - `spiders`(S7): XX `There are no spiders. You're hallucinating.`의 어색함은 환자에게 붙인 임상 이름표(`hallucinating`)와 단칼 부정이다. 듣는 사람은 ✓ 장면과 같지만 의료진 말(차트 `visual hallucinations`)을 환자에게 그대로 쓴 대비라 C 기준으로 허용. 유지.
   - `fall`(S4): 고칠 것 → C1.
 
-## 고칠 것 (44건)
+## 고칠 것 (45건)
 
 ### why (5)
 - **Y1 · 3.4 why** · "예외 없는 원칙" — 저혈당에 포도당 지연을 부를 수 있음(심각 1) · → "always로 습관처럼 지키는 순서라고 알려요. 알코올 관련 환자에게는 포도당 수액 전에 티아민을 줘요 — 다만 저혈당이면 포도당을 미루지 않고 티아민을 함께 줘요."
@@ -74,7 +74,7 @@ context `word`가 세 장면 `en`에 있는지와 base 대비 바뀐 장면·`fi
 - **Y4 · 19.2 why** · 구문 뜻풀이뿐(`ko` 되풀이) · → "Keep him on으로 지금 하는 감시를 끊지 말라고 하고, call … back in으로 이미 봤던 의사를 다시 부른다는 걸 분명히 해요. 진정을 늘리는 중이라 감시와 호출을 한 문장에 묶어요."
 - **Y5 · 19.5 why** · 구문 뜻풀이뿐 · → "going으로 감시를 멈추지 말라고 하고, 문장 끝의 now로 호출이 미룰 일이 아님을 못 박아요. 급변 중에는 지시를 짧게 둘로 나눠 말해요."
 
-### 빈칸 (16)
+### 빈칸 (17)
 정답이 둘(3)
 - **B1 · 0.4** `anyone` — `I ask anyone these questions`는 "누구에게나 묻는다"로 정답과 뜻이 거의 같다 · → `anyone` → `only you`(반대 방향, 문법 맞음).
 - **B2 · 8.4** `funny` = `unusual`(구어, 심각 3) · → `funny` → `pleasant`.
@@ -91,7 +91,7 @@ context `word`가 세 장면 `en`에 있는지와 base 대비 바뀐 장면·`fi
 - **B11 · 15.3** `height/hearing/weight` · → `heart rate / oxygen level / urine output / weight`.
 - **B12 · 16.4** `form/menu/ticket` · → `cart / chart / sign / bed`.
 - **B13 · 19.1** `crowd/queue/budget` · → `storm / fever / bleeding / cough`(진정으로 조절하지 않는 같은 분야 말).
-처치·감시를 뒤집는 오답(3, 심각 5)
+감시 간격·투약 논리를 뒤집는 오답(3; 4.5는 심각 5)
 - **B14 · 5.0** `low/normal/stable` — 점수가 낮은데 약을 주는 조립 · → 빈칸을 `medication`으로 옮김: `medication / a snack / a blanket / a brochure`.
 - **B15 · 5.3** `low/small/short` — "점수가 낮으면 약이 더 필요" · → 빈칸을 `medication`으로 옮김: `medication / tests / blankets / visitors`.
 - **B16 · 4.5** `forty/fifty` — 만취 환자에게 위험하게 긴 감시 간격 · → `fifteen / five / two / ten`(더 짧은 쪽은 틀려도 위험한 간격을 가르치지 않음; `ko` "십오 분"이 가름).
@@ -107,11 +107,11 @@ context `word`가 세 장면 `en`에 있는지와 base 대비 바뀐 장면·`fi
 - **K2 · 0.5** 두 오답이 같은 질문 · → 둘째 `보통 얼마나 드세요?` → `혼자만 여쭤보는 게 아니에요`.
 
 ### order (13)
-- **O1 · S0 L3** · `with that amount in mind, when was your last drink?` — 마지막 음주 시각은 양과 상관없이 묻는 말이라 억지 연결 · → `Thanks for telling me that. When was your last drink?` (10, `that`이 L2의 답을 가리킴).
+- **O1 · S0 L3** · `with that amount in mind, when was your last drink?` — 마지막 음주 시각은 양과 상관없이 묻는 말이라 억지 연결 · → `Whatever the amount, when was your last drink?` (7, `the amount`가 L2를 가리키고 답을 전제하지 않음).
 - **O2 · S1 L2** · `With that timing, your shaking and sweating fit early alcohol withdrawal.` — 환자가 답할 시각이 금단 초기에 맞는다고 전제 · → `Depending on that time, the shaking and sweating may be early withdrawal.` (12).
 - **O3 · S3 L3 (2↔3 약하게 열림)** · `That's why`가 L1 "뇌를 보호해요" 바로 뒤에도 읽힘 · → `Because you may be low, we give it before any sugar or glucose fluids.` (14, `low`가 L2를 가리킴).
-- **O4 · S4 L3** · `Because you'll be staying right there, I'll be checking on you often` — 자주 보는 이유는 침대에 있어서가 아니라 의식 저하 · → `While you rest there, I'll be checking on you often to make sure you're okay.` (15). L4는 `That means every fifteen minutes, until you're more awake.` (9)로 L3에 묶기.
-- **O5 · S5 L3·L4 (심각 2, 2↔3 열림)** · → L3 `If you start to see or feel things that aren't there, tell me right away.` (15) / L4 `Whatever you notice, I'll check again and adjust the dose each time.` (12). 교환: 1↔2 `It will calm`이 먼저 오면 가리킬 것이 없음, 2↔3 L1 바로 뒤 L3은 되지만 그다음 `It will calm`이 환각을 가리켜 깨짐, 3↔4 `Whatever you notice`가 앞에 오면 깨짐.
+- **O4 · S4 L3** · `Because you'll be staying right there, I'll be checking on you often` — 자주 보는 이유는 침대에 있어서가 아니라 의식 저하 · → `Even while you're resting there, I'll be checking on you often.` (10, `there`가 L2의 침대를 가리킴; `While`만 쓰면 "쉬는 동안만"으로 읽혀 TASK 10에 걸림). L4는 `That means every fifteen minutes, until you're more awake.` (9)로 L3에 묶기.
+- **O5 · S5 L3·L4 (심각 2, 2↔3 열림)** · → L3 `If you start to see or feel things that aren't there, tell me right away.` (15) / L4 `Whatever you notice, I'll check again and adjust the dose each time.` (12). 새 L3의 `If`는 환자가 알려 줄 조건이라(환각이 있을 때만 말함) TASK 10의 "모든 환자에게 하는 처치를 조건부로"가 아니다. 교환: 1↔2 `It will calm`이 먼저 오면 가리킬 것이 없음, 2↔3 L1 바로 뒤 L3은 되지만 그다음 `It will calm`이 환각을 가리켜 깨짐, 3↔4 `Whatever you notice`가 앞에 오면 깨짐.
 - **O6 · S8 L4** · `Alongside that watching`은 부자연스러운 영어 · → `While I watch, how long has he been confused, and has he eaten?` (13, 식사 질문 유지).
 - **O7 · S9 L3 (2↔3 열림)** · `To see how your heart responds to that`의 `that`이 L1의 낮은 수치도 가리켜 L2와 바꿔도 읽힘 · → `As those go in, we're watching your heart rhythm on the monitor.` (12, `those`가 L2의 보충을 가리킴).
 - **O8 · S11 L2** · `That's true even though you've been here before.`는 "그 말이 맞다"로 읽혀 어색 · → `That goes for every visit, even if you've been here before.` (11).
@@ -126,7 +126,7 @@ context `word`가 세 장면 `en`에 있는지와 base 대비 바뀐 장면·`fi
 - **T2 · 8.0 tag** `소견 보고` — 보호자에게 하는 말 · → `소견 설명`.
 
 ### context (4)
-- **C1 · S4 `fall` XX** · `You are a high fall risk. Remain in bed.` — `fall risk`는 환자에게도 흔히 말하고(노란 양말·표지) 어색함이 명령조에만 있음, why "fall risk는 차트와 의료진끼리의 말"은 사실과 다름 · → en `Your Morse score makes you a high fall risk. Remain in bed.` / why "Morse 점수 같은 평가 이름과 명령조 remain은 환자에게 딱딱하게 들려요. 넘어질까 걱정하는 이유와 함께 부탁해요." (fix 그대로).
+- **C1 · S4 `fall` XX** · `You are a high fall risk. Remain in bed.` — `fall risk`는 환자에게도 흔히 말하고(노란 양말·표지) 어색함이 명령조에만 있음, why "fall risk는 차트와 의료진끼리의 말"은 사실과 다름 · → en `Your Morse score makes you a high fall risk. Remain in bed.` / why "Morse 점수 같은 평가 이름과 명령조 remain은 환자에게 딱딱하게 들려요. 넘어질까 걱정하는 이유와 함께 부탁해요." / fix는 문장 4.4와 거의 같아(`Please don't try to get up on your own`) → `Call me before you get up, and I'll walk with you so you don't fall.`
 - **C2 · S0 `drink` ko** · 세 장면 모두 명사(drinks·last drink·standard drinks)인데 `ko`가 동사 · → `ko: 술(한 잔)`.
 - **C3 · S9 `magnesium` XX** · W14용 섞어 쓰기 · → en `Your magnesium and potassium are low, so you're having ventricular ectopy on tele.` / why "ectopy·tele 같은 말은 의료진끼리의 말이에요. 환자에게는 '칼륨·마그네슘이 낮아서 심장이 두근거릴 수 있어요'처럼 풀어 말해요." (fix 그대로).
 - **C4 · S20 `benzo` 차트(장면 1)** · `Benzo:` 머리말은 차트에 쓰지 않음 · → en `CIWA 12 to 22 despite benzo x3 (lorazepam 2 mg IV since 0200).`
@@ -136,8 +136,16 @@ context `word`가 세 장면 `en`에 있는지와 base 대비 바뀐 장면·`fi
 - 경계 decoy: 0.2 `to quiz you`(`I'm not here to quiz you`는 "캐묻다"라 `ko` "판단"과 다름), 0.4 `feel left out`.
 - 덜 걸리는 order 교환: S6 1↔2(`I'm keeping the rails up`이 먼저 와도 뜻은 통함), S7 L2 `Even so`(약간 어색), S16 3↔4(위 자기 보고 2).
 - 빈칸이 기능어인 곳: 12.3 `because`(`although/unless/until`) — 걸러지긴 하나 가르치는 말이 아님. 1.5 `receipt`, 9.3 `freezing/shrinking/glowing`, 12.4 `teeth`는 동떨어진 편(선택).
+- 동떨어진 오답 기준: 병원 밖·사무 말(laundry·kitchen·price·crowd·menu 등)이 한 문장 오답 셋 중 **둘 이상**이면 고칠 것(B7~B13), 하나만 섞였으면 참고로 둔다 — 15.1 `billing`, 15.4 `paperwork`, 16.0 `vaccine`, 16.2·16.5 `vaccinate`, 19.2 `janitor`, 1.5 `receipt`, 12.4 `teeth`. `oxygen/saline`이 약 자리 오답으로 2.5·3.4·8.1·20.4에 되풀이되는 것도 같은 분야라 참고.
+- order의 `If` 줄은 원래 2개(S15 L4·S16 L3)이고, O5가 새로 넣는 S5 L3은 환자가 알려 줄 조건이라 같은 점검 대상이 아니다.
 - 한 상황에 같은 정답 빈칸: S1 `checklist` 2, S18 `infection` 3, S16 `intubate` 2(오답 `vaccinate`도 겹침).
 
+## 결정 11 — base 문장·장면 (v46에서는 고치지 않음, 따로 보고)
+- **G1 · 4.0 en / S4 L1** `keep the head of your bed up to protect your breathing` — 졸린 만취 환자의 흡인 예방은 보통 옆으로 눕히기(회복 자세)로 가르친다. 침대 머리 올리기도 틀린 말은 아니지만(why는 "줄이는 데 도움"으로 과장 없음) 정본에 회복 자세를 함께 다루는지 확인.
+- **G2 · 2.3 ko** `괜찮아 보여도 자주 확인하러 와요` — en은 `even when you feel fine`(본인이 느끼기에)이라 "괜찮다고 느끼셔도"가 맞다. 경미.
+- **G3 · 16.0·16.3 en** `give another dose of benzodiazepine now`·`give the next benzodiazepine dose now` — 간호사가 팀에 투약을 지시하는 말이다. 코드 상황에서 의사 오더(또는 프로토콜)에 따른 복창이라는 전제가 장면에 있는지 확인만.
+- 청크 경계(보고만): 문제 되는 끊김은 없다.
+
 ## 종합
-고칠 것 **44건**(why 5 · 빈칸 16 · decoy 2 · distractorsKo 2 · order 13 · tag 2 · context 4). 사실 오류는 3.4 why와 S5 order L4 두 곳이고, 정답이 둘인 곳은 빈칸 3(`anyone`·`funny`·`erased`)과 오답 뜻 1(15.0)이다.
+고칠 것 **45건**(why 5 · 빈칸 17 · decoy 2 · distractorsKo 2 · order 13 · tag 2 · context 4). 사실 오류는 3.4 why와 S5 order L4 두 곳이고, 정답이 둘인 곳은 빈칸 3(`anyone`·`funny`·`erased`)과 오답 뜻 1(15.0)이다.
 티아민 먼저·즉시 티아민, 발작·DT의 벤조 즉시 투여, 기도 준비를 미루지 않는 흐름은 정답과 order에서 일관되고 `If` 줄 둘도 실제 조건부라 뼈대는 좋다. 심각 1~6을 반영하면 내보내도 된다.
