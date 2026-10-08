@@ -57,6 +57,7 @@
 > **C5 장면 정비 완료(2026-10-08)**: 합쳐 둔 13주제를 세 묶음(A·B·C)으로 Sonnet 수정 → Opus 검토(고칠 것 16·24·19) → Sonnet 반영, ER 정본 **W14 0건**.
 > 그 뒤 새 주제는 저작 단계에서 바로 정비. 검사기 W14는 낱말별 어간 비교(pass away↔passed away, verify↔verified, warm↔rewarming).
 > **합친 ER 주제 26/35**(+gi-bleed·diabetic·genitourinary·anaphylaxis·poisoning). 수정 중 environmental, 검토 중 alcohol-withdrawal·fever-infection·psych·sepsis, 남은 4(deescalation·peds·geriatric·obgyn).
+> **학습 버튼·파형(2026-10-09, 사용자 요청):** 단어장·문장장 확인/판정 버튼을 맨 아래(34)로, 단어장 다음 단계 버튼은 끝났을 때만. 듣고 뜻 고르기 파형이 TTS 재생 중 움직임(단어 경계마다 튐). §7 기록, 시뮬레이터 확인.
 > **TODO (2026-10-09 점검 — 남은 일):**
 > - [ ] **`briefing.line` ER 저작** — T6 화면·검사(`ValidateHubLine`)는 있으나 ER 751상황 모두 비어 있음(허브는 brief 문단을 형광펜 없이). 지시서에 넣고 결정 14 파이프라인으로 저작. **T5 체크는 이 저작 전이라 잘못 체크됨** — 저작 후 다시 체크.
 > - [ ] T7 시뮬레이터 확인 목록 중 미확인: D 마이크 홀드 녹음, 키보드 올라올 때 무대·카드, 그래버 끌기와 크기 기억, iPhone SE(667) 레일 위치.
