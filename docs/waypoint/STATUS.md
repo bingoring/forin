@@ -48,7 +48,9 @@
 > 보고 [`t8-report.md`](02-construction/lesson-fidelity-v46/t8-report.md).
 > **ER 34주제 v46 저작 진행 중(2026-10-08):** 지시서 보강(파일럿 교훈 다섯 갈래, V18 정답 아이콘≠문장 아이콘·선택지 아이콘 중복·판정 아이콘 금지,
 > `e1c9cd4`) 뒤 바탕 34개 뽑기. 저작 끝 3(core-language·family·handoff, `5058519`) → Opus 검토 중, 저작 중 2(pain-sedation·procedures).
-> 저작자 공통 보고: NbIcon이 41개뿐이라 선택지 아이콘 일부가 낱말과 어울리지 않음.
+> 저작자 공통 보고였던 '선택지 아이콘이 낱말과 안 맞음'은 **사용자 결정으로 빈칸 선택지 아이콘 폐지**(STEP 1 고르기 줄, `cdf7b75`)로 해소.
+> **합친 주제 4/35**: core-safety·family·handoff·language(`c892fd1`·`4a66b73`·`7675c78`). 검토 중 2(pain-sedation·procedures), 저작 중 3(chestpain·arrhythmia·arrest).
+> 결정 대기 추가: core-family S17 장기기증 흐름(병상 간호사가 먼저 꺼냄 — 미국은 OPO 통보 뒤 OPO·지정 요청자가 청함, keyPhrase 설계라 v44 문장은 그대로, why·order만 고침).
 >
 > 🏁 **서가 건물 간지(v45) — 완료, Build Spec `IMPLEMENTED` (2026-10-07).** 핸드오프 v45가 서가를 건물 인덱스 탭
 > 5개로 나눴다. 먼저 건물 구성이 실제와 맞는지 조사했다 — 미국 대학병원은 본관·여성/소아·암센터·행동건강/재활·외래로
