@@ -88,7 +88,7 @@ FIX-V44의 검사를 스크래치 환경에서 다시 돌렸다.
     - 같은 주제의 S17 「두부외상 삽관·환기」와 polytrauma 「외상성 심정지 대응」이 같은 꼴(무대 지시 tagline + RN 동료)을 쓴다.
   - **바꿀 값:**
     - `role: colleague`
-    - `persona: { name: Dana Whitaker, ageRange: 30s, sub: "37y / Female (RN)", mood: neutral, personality: 위기에 침착, speakingStyle: 지시를 명확히 복창 }`
+    - `persona: { name: Renee Calloway, ageRange: 30s, sub: "37y / Female (RN)", mood: neutral, personality: 위기에 침착, speakingStyle: 지시를 명확히 복창 }`
     - `tagline`·`brief`·`keyPhrases`·`goals`·`acuity`·`room`은 그대로 둔다.
 - **S15 「경막외혈종 명료기 후 악화」 → `role: patient` 그대로 둔다.**
   - 문장 여섯 개가 모두 의식이 있고 겁에 질린 환자에게 하는 말로 성립한다.

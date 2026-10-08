@@ -297,7 +297,8 @@ changes:
   - en
   - ko
   - chunks
-  why: 'v46 검토 결정 11 예외: `Please ask him`은 통역사에게 3인칭으로 부탁하는 모양이라 보호자에게 직접 묻는 말로 바꾼다'
+  - words
+  why: 'v46 검토 결정 11 예외: `Please ask him`은 통역사에게 3인칭으로 부탁하는 모양이라 보호자에게 직접 묻는 말로 바꿨고, 재검토에서 14.1과 겹치는 질문이라 하산 여부를 묻는 문장으로 바꾼다'
 - kind: sentence
   situation: 익수 후 저체온
   index: 4
@@ -305,12 +306,12 @@ changes:
   - en
   - ko
   - chunks
-  why: 'v46 검토 결정 11 예외: `We pulled`은 간호사가 구조한 것으로 읽혀 주어를 구조대로 바꾼다'
+  why: 'v46 검토 결정 11 예외: 구조한 사람이 보호자(시드 tagline "we pulled him out")라 간호사가 그 사실을 되짚어 확인하는 말로'
 - kind: word
   id: w-pull
   fields:
   - example
-  why: 'v46 검토 결정 11 예외: 예시 문장이 12.5 en과 같아 새 en으로 맞춤'
+  why: 'v46 검토 결정 11 예외: 예문이 12.5 en과 같아 새 en으로 맞춤'
 - kind: sentence
   situation: 열사병
   index: 1
@@ -327,3 +328,8 @@ changes:
   - chunks
   - words
   why: 'v46 검토 결정 11 예외: 5.3과 거의 같은 문장(조금씩 ↔ 벌컥)이라 큰 모금이 부르는 증상으로 달리 쓴다'
+- kind: word
+  id: w-interpreter
+  fields:
+  - example
+  why: 'v46 검토 결정 11 예외: 예문이 통역사에게 3인칭으로 부탁하는 모양(14.1에서 고친 것)이라 직접 설명하는 문장으로'

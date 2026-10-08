@@ -2187,8 +2187,8 @@ words:
   ipa: /pʊl/
   ko: 끌어내다
   icon: board
-  example: The rescuers pulled him out of the ice water a few minutes ago.
-  exKo: 구조대가 몇 분 전에 얼음물에서 끌어냈어요.
+  example: So you pulled him out of the ice water a few minutes ago?
+  exKo: 몇 분 전에 얼음물에서 끌어내셨다는 거죠?
   cue: 물에 빠진 사람을 붙잡아 밖으로 꺼낼 때 — '___ed him out'
   tag: 저체온
   distractorsEn:
@@ -2350,8 +2350,8 @@ words:
   ipa: /ɪnˈtɜːrprɪtər/
   ko: 통역사
   icon: speech
-  example: Through the interpreter — how high did he climb?
-  exKo: 통역사를 통해서 — 얼마나 높이 올라갔나요?
+  example: We'll explain everything slowly through the interpreter.
+  exKo: 통역을 통해 천천히 다 설명해 드릴게요.
   cue: 환자·보호자와 말이 통하지 않을 때 병원이 연결해 주는 사람
   tag: 환자 소통
   distractorsEn:
@@ -6388,33 +6388,33 @@ situations:
       - en: sweating
       - en: coughing
       - en: sneezing
-  - en: The rescuers pulled him out of the ice water a few minutes ago.
-    ko: 구조대가 몇 분 전에 얼음물에서 끌어냈어요.
+  - en: So you pulled him out of the ice water a few minutes ago?
+    ko: 몇 분 전에 얼음물에서 끌어내셨다는 거죠?
     chunks:
-    - The rescuers pulled him out
+    - So you pulled him out
     - of the ice water
     - a few minutes
     - ago
-    - .
+    - '?'
     words:
     - w-pull
     - w-ice
     - w-water
     goal: 1
-    tag: 경위 설명
+    tag: 경위 확인
     icon: pushpin
-    why: a few minutes ago로 시간을 어림으로 전해요. 물에서 나온 뒤 경과 시간은 저체온 정도와 치료를 정하는 단서라서 구조 시점을 팀과 가족이 같이 알아요.
-    decoy: a long time
+    why: So…?로 들은 경위를 되짚어 확인해요. 물에서 나온 시점은 저체온 정도와 치료를 정하는 단서라서, 꺼낸 사람에게 시간을 다시 확인해요.
+    decoy: did he go
     distractorsKo:
     - 물에서 얼마나 있었어요?
     - 숨을 쉬었어요?
     blank:
-      answer: ago
+      answer: pulled
       options:
-      - en: later
-      - en: away
-      - en: early
-      - en: ago
+      - en: poured
+      - en: washed
+      - en: pulled
+      - en: dropped
   - en: We'll listen to his lungs and check his oxygen levels.
     ko: 폐 소리를 듣고 산소 수치를 확인할게요.
     chunks:
@@ -6814,32 +6814,33 @@ situations:
       - en: juice
       - en: ice
       - en: oxygen
-  - en: Can you tell me how high he climbed and how quickly?
-    ko: 얼마나 높이, 얼마나 빨리 올라갔는지 말씀해 주시겠어요?
+  - en: Did he come down as soon as he started feeling sick?
+    ko: 몸이 안 좋아지기 시작하자마자 바로 내려왔나요?
     chunks:
-    - Can you tell me
-    - how high
-    - he climbed
-    - and how quickly
+    - Did he come down
+    - as soon as
+    - he started
+    - feeling sick
     - '?'
     words:
-    - w-high
-    - w-climb
+    - w-start
+    - w-feel
+    - w-sick
     goal: 1
-    tag: 고도 확인
+    tag: 하산 확인
     icon: speech
-    why: Can you tell me…로 정중하게 직접 요청하고 how high·how quickly를 한 문장에 담아요. 통역을 거치더라도 통역사가 아니라 보호자를 보고 말하는 것이 원칙이에요.
-    decoy: if he ate
+    why: as soon as로 증상과 하산 사이의 시간을 물어요. 고산병은 내려오는 것이 가장 중요한 치료라서 증상이 생긴 뒤 바로 내려왔는지가 위중도를 가늠하는 단서예요.
+    decoy: to the top
     distractorsKo:
     - 환자에게 산소를 드릴게요.
     - 통역사님 잠시 기다려 주세요.
     blank:
-      answer: tell
+      answer: sick
       options:
-      - en: tell
-      - en: show
-      - en: lend
-      - en: hide
+      - en: sick
+      - en: hungry
+      - en: bored
+      - en: rested
   - en: Is he still having chest pain or feeling confused?
     ko: 아직 가슴 통증이 있거나 혼란스러워하시나요?
     chunks:

@@ -5289,14 +5289,14 @@ situations:
     tag: 안전한 대화
     icon: shield
     why: You're safe to talk with me로 말해도 안전하다는 느낌을 먼저 줘요. 미국에서는 노인 학대가 의심되면 병원 지침과 주법에 따라 보고해야 할 수 있어서, 비밀 보장을 약속하지 않고 I'll be honest about who else needs to know로 누가 더 알아야 하는지를 정직하게 알려요.
-    decoy: on the phone
+    decoy: who you are
     distractorsKo:
     - 지금 불편한 점이 있으세요?
     - 물이나 담요를 드릴까요?
     blank:
       answer: safe
       options:
-      - en: ready
+      - en: wrong
       - en: early
       - en: late
       - en: safe
@@ -7307,10 +7307,10 @@ situations:
     - w-hydrate
     - w-surgery
     goal: 2
-    tag: 수분 안내
+    tag: 금식 확인
     icon: coffee
     why: Let me check if…로 물을 마셔도 되는지 먼저 확인하겠다고 말해요. 수술을 기다리는 환자의 금식 여부는 마취팀 지시가 정하므로 간호사는 확인하기 전에는 물을 권하지 않고, 마셔도 된다는 확인이 나온 뒤에 수분 유지를 안내해요.
-    decoy: for a week
+    decoy: of the surgery
     distractorsKo:
     - 소변은 잘 나오시나요?
     - 입이 마르신가요?
@@ -7318,8 +7318,8 @@ situations:
       answer: check
       options:
       - en: check
-      - en: cancel
-      - en: refuse
+      - en: decide
+      - en: guess
       - en: forget
   - en: Let's keep you oriented and engaged while you wait.
     ko: 기다리시는 동안 지남력을 유지하고 계속 이야기 나누며 지내시도록 도와드릴게요.
@@ -7336,7 +7336,7 @@ situations:
     tag: 지남력 유지
     icon: compass
     why: oriented는 날짜와 있는 곳을 아는 상태를, engaged는 말을 걸어 대화에 계속 함께하는 것을 가리켜요. 수술 전 고관절 골절 환자는 골절 부위를 고정하고 움직임을 제한하므로, 간호사가 실제로 하는 일은 말을 걸어 지남력을 유지하는 쪽이에요.
-    decoy: at the window
+    decoy: was waiting
     distractorsKo:
     - 다리는 움직이지 않게 지켜 드릴게요
     - 자세를 바꿔 드릴까요?
@@ -7344,7 +7344,7 @@ situations:
       answer: oriented
       options:
       - en: oriented
-      - en: entertained
+      - en: disoriented
       - en: dressed
       - en: shaved
   nuance:

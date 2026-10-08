@@ -10,7 +10,7 @@
 - **14.1·14.4 (통역사에게 3인칭으로 묻던 문장):** 바르게 고쳤다. 두 문장 모두 보호자에게 1인칭으로 직접 묻는다.
   context 장면 `fix`도 이미 같은 문장(`How high did he climb, and how fast?`)이라 맞는다.
   `chunks`의 `', and how fast'`는 V5 이음 규칙(쉼표로 시작하는 조각은 붙임)에 맞다.
-  `w-interpreter` 태그를 뺀 것도 맞다. 14.3·14.6이 계속 쓴다.
+  `w-interpreter` 태그를 뺀 것도 맞다. S14 문장 2·문장 5가 계속 쓴다.
 - **5.6 (새로 쓴 문장) `Big gulps can upset your stomach and make you throw up.`:** 10단어로 사실에 맞고 간호사가 실제로 하는 말이다.
   `ko`도 같은 뜻이다. 5.3(조금씩이 낫다)이 방법이고 5.6이 이유라 이제 겹치지 않는다.
   빈칸·decoy·tag도 문제없다.
@@ -45,7 +45,7 @@
   - `icon`: 그대로
   - `why`: `So…?로 들은 경위를 되짚어 확인해요. 물에서 나온 시점은 저체온 정도와 치료를 정하는 단서라서, 꺼낸 사람에게 시간을 다시 확인해요.`
   - `decoy`: `did he go`
-    - 자리마다 조립해도 맞는 문장이 되지 않는다. 12.2의 `did he go under`와 헷갈리게 하는 오답이다.
+    - 자리마다 조립해도 맞는 문장이 되지 않는다. S12 문장 2의 `did he go under`와 헷갈리게 하는 오답이다.
   - `blank`: `answer: pulled`, 선택지 `pulled / poured / washed / dropped`
     - 지금 빈칸 `ago`의 선택지는 `later / away / early`다.
     - 이 가운데 `a few minutes later?`·`a few minutes early?`는 기준 시점만 있으면 성립하는 영어라 정답이 여럿이 된다.
