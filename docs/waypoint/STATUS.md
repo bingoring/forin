@@ -57,6 +57,7 @@
 > **C5 장면 정비 완료(2026-10-08)**: 합쳐 둔 13주제를 세 묶음(A·B·C)으로 Sonnet 수정 → Opus 검토(고칠 것 16·24·19) → Sonnet 반영, ER 정본 **W14 0건**.
 > 그 뒤 새 주제는 저작 단계에서 바로 정비. 검사기 W14는 낱말별 어간 비교(pass away↔passed away, verify↔verified, warm↔rewarming).
 > **합친 ER 주제 26/35**(+gi-bleed·diabetic·genitourinary·anaphylaxis·poisoning). 수정 중 environmental, 검토 중 alcohol-withdrawal·fever-infection·psych·sepsis, 남은 4(deescalation·peds·geriatric·obgyn).
+> **결정 11 예외 승인(사용자, 2026-10-08):** v46 검토가 보고만 한 v44 필드 항목을 **157건 전부** 검토 권고대로 고친다(사실·안전 58·문법·뜻 55·문체·선호 44, 처방 없음 57은 Sonnet이 새로 씀). obgyn 19.4 빈칸은 sorry 쪽으로. 목록 `server/content/tools/wip/v44fix-items.md`. 흐름: 정본에서 새로 뽑기(`wip/er-v44fix/`) → Sonnet 수정(`changes/er/changes-<t>.yaml`에 전부 기록) → Opus 재검토(바뀐 문장과 거기 기대는 필드만) → 합치기·V16 0.
 > **ER v46 저작 완료 35/35(2026-10-08)** — 나머지 9주제(environmental·alcohol-withdrawal·fever-infection·psych·sepsis·deescalation·peds·geriatric·obgyn) 합침(마지막 `66ae399` obgyn·`4f1d88d` geriatric). 정본 ER 위반 0·W14 0(경고 97은 W13 등 기존). 남은 T5 몫 없음; T8 시뮬레이터 대조 남은 2건(C6 한 단어 바꾸기·대화 E), 결정 대기(아래) 사용자 확인.
 > 결정 대기 추가: obgyn 19.4 빈칸(태아 사망 고지 `has passed`가 `ko`에도 맞아 정답 둘 — `is lost`만 교체 또는 빈칸을 sorry 쪽으로), 6.3 `en` 진단 고지 틀, 19.5 `ko` "막을 수 없었다" 단정 → "당신이 한 어떤 일도 원인이 아니에요" 권고(결정 11 보고 6건 중).
 > 결정 대기 추가(v44 문장, 중요): geriatric 10.1 keyPhrase "nothing leaves this room without your say" — 미국은 노인 학대 신고(APS) 의무라 지킬 수 없는 비밀 약속(keyPhrase·태그 함께), 19.4 "Drink some water … before surgery"(NPO 확인 전), 19.5 "keep you moving"(수술 전 고관절 골절); peds 10.5 "nothing more", 17.3 영아 사망 원인 단정; sepsis 5.3 번들 "done"→"started", 14.3 통역 3인칭.
