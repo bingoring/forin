@@ -23,6 +23,10 @@
 > 합치기는 정본과 같은 블록을 원문 그대로 두고 v46은 `--replace`로만, `export_dept_lessons.py`(바탕 뽑기·`--roundtrip` 바이트 동일 검사,
 > ER·ICU·OR 동일). 지시서·파이프라인 "v46 보강" 절. 커밋 `af9c086`·`eb7948f`·`8c2cbef`·`d32afd4`·`5067568`·`fbeed86`.
 > 보고 [`t5-report.md`](02-construction/lesson-fidelity-v46/t5-report.md). 남은 것: ER 저작(결정 14 파이프라인).
+> **T4 STEP 2 완료(2026-10-08):** 아트보드 순서로 화면 분리 — 릴(뒷카드 2·swipe-out 380→in·감상 칩 다시 고르기/저장 1회) → 문장장
+> (SheetStack, listen·build·blank·listen·order·build 주기, 다시 듣기 실제 2회, 해설·이중선 도장·흔들림·좌/우 뜯김·DONE 집계) → C5 → C6 → C'(점수 원).
+> 문장 헷갈려요 API `POST /me/lesson/{id}/sentences/confused`, 문장 안 형광펜 `NbInline`(아래 45%). 커밋 `4e0fb48`·`6b9b32c`·`3a6adcb`.
+> 확인 필요한 해석(문장장 CTA "다음", C5·C6 k/K, 틀림→노트 범위)과 시뮬레이터 목록은 [`t4-report.md`](02-construction/lesson-fidelity-v46/t4-report.md).
 > **T7 대화 완료(2026-10-08):** D/D'/E를 핸드오프 1:1로 — 무대 `#F6E3DC` E 236·D 168(이름표·감정 태그 왼쪽, 스피커 오른쪽, 끌어 조절 유지·키 v2),
 > D 입력 `말하기/타이핑` 알약 + 84px 홀드 마이크(떼면 STT, 받아쓴 줄은 작성 중 말풍선) + 타이핑 카드(밑줄 필기란·단어 칩 삽입),
 > D 레일 `▷ 보내기 · 듣기 · 노트`(노트 = 이 상황 교정노트 바텀시트, 새 API `GET /me/review/scenarios/{id}`), 힌트 버튼·카드 안 듣기 제거,
