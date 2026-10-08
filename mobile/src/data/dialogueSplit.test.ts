@@ -63,3 +63,9 @@ test('the choices band keeps one card readable and cannot swallow the conversati
   expect(clampChoices(10, 874)).toBe(96);
   expect(clampChoices(5_000, 874)).toBe(874 * 0.55);
 });
+
+test('on a short phone the guided stage gives way so the rail stays on screen', () => {
+  // iPhone SE (667): the guided column needs ~500 under the stage.
+  expect(clampStage(STAGE.guided, 667, 'guided')).toBeLessThan(STAGE.guided);
+  expect(667 - STAGE_TOP - clampStage(STAGE.guided, 667, 'guided')).toBeGreaterThanOrEqual(GUIDED_FLOOR - 1);
+});

@@ -63,9 +63,11 @@ export function stageGeometry(h: number): StageGeometry {
 export const DOCK_H = 44;
 /** The least stage: the shrunken print plus the name block still fit. */
 export const STAGE_MIN = 124;
-/** What the guided column needs under the stage: grabber, tools, a few lines of messages,
- *  the target card, the 말하기/타이핑 switch, the mic and the rail. */
-export const GUIDED_FLOOR = 440;
+/** What the guided column needs under the stage: grabber ① 19, tools ~30, the message
+ *  band at its 56 floor, grabber ② 19, the target card + switch + mic ~308, the rail ~40 and
+ *  the 22 under it. On a short phone (667) this caps the stage below the handoff's 168, so
+ *  the rail never runs off the bottom; on the artboard's 874 the cap is far above it. */
+export const GUIDED_FLOOR = 500;
 
 /** Keeps a dragged stage height inside what the screen can draw. */
 export function clampStage(h: number, screenH: number, mode: StageMode): number {
