@@ -2,10 +2,10 @@
   s:
   - {t: "투여 시점", i: calendar, w: "How long ago로 지금부터 거슬러 올라간 시간을 묻고 give him the sugar로 무엇을 줬는지 확인해요. 포도당을 준 뒤 얼마나 지났는지에 따라 아직 흡수 중인지 효과가 없는지 가려요.", d: "how far", k: ["얼마나 드렸어요?", "주스로 드렸어요, 알약으로 드렸어요?"], a: "sugar", o: ["insulin", "water", "aspirin"]}
   - {t: "상태 설명", i: magnify, w: "but으로 좋아진 점(혈당)과 아직인 점(의식)을 나란히 놓아 상황을 정직하게 말해요. 혈당이 올랐는데도 깨지 않으면 저혈당 말고 다른 원인이나 뇌 손상을 살펴봐야 해요.", d: "so we're waiting", k: ["혈당은 계속 지켜볼게요", "의사 선생님이 곧 오실 거예요"], a: "up", o: ["down", "low", "unstable"]}
-  - {t: "반응 확인", i: magnify, w: "at all로 '조금이라도'를 넣어 아주 작은 반응도 놓치지 않게 물어요. 눈 뜨기와 움직임은 GCS의 눈·운동 반응으로 의식 회복을 보는 가장 쉬운 단서예요.", d: "or talking", k: ["부르면 반응하나요?", "마지막으로 반응한 게 언제예요?"], a: "moving", o: ["talking", "smiling", "waving"]}
+  - {t: "반응 확인", i: magnify, w: "at all로 '조금이라도'를 넣어 아주 작은 반응도 놓치지 않게 물어요. 눈 뜨기와 움직임은 GCS의 눈·운동 반응으로 의식 회복을 보는 가장 쉬운 단서예요.", d: "or crying", k: ["부르면 반응하나요?", "마지막으로 반응한 게 언제예요?"], a: "moving", o: ["talking", "smiling", "waving"]}
   - {t: "처치 안내", i: pill, w: "and로 처치와 원인 탐색을 한 문장에 묶어 동시에 진행한다고 알려요. 저혈당이 오래 이어진 뒤 깨어나지 않으면 감염이나 뇌 질환 같은 다른 원인도 같이 찾아야 해요.", d: "and cutting back", k: ["혈당은 15분마다 재요", "머리 CT를 찍을 수도 있어요"], a: "glucose", o: ["insulin", "morphine", "steroids"]}
   - {t: "추가 처치", i: pill, w: "may로 정해진 계획이 아니라 상태를 보고 정한다고 말해요. 처음 포도당으로 깨지 않으면 혈당을 다시 확인해 필요하면 한 번 더 주는 것이 일반적인 순서예요.", d: "eat soon", k: ["혈당부터 다시 재 볼게요", "그때까지 곁에서 지켜볼게요"], a: "wake", o: ["sit", "speak", "cheer"]}
-  - {t: "원인 탐색", i: magnify, w: "also로 앞서 말한 처치에 더해 한 가지를 더 한다고 알리고 other reasons로 아직 모르는 원인을 열어 둬요. 의식이 돌아오지 않는 이유는 저혈당 외에 뇌 손상이나 감염 등 여러 가지일 수 있어요.", d: "hungry", k: ["혈당은 이미 정상이에요", "곧 검사를 할 거예요"], a: "drowsy", o: ["hungry", "thirsty", "cold"]}
+  - {t: "원인 탐색", i: magnify, w: "also로 앞서 말한 처치에 더해 한 가지를 더 한다고 알리고 other reasons로 아직 모르는 원인을 열어 둬요. 의식이 돌아오지 않는 이유는 저혈당 외에 뇌 손상이나 감염 등 여러 가지일 수 있어요.", d: "angry", k: ["혈당은 이미 정상이에요", "곧 검사를 할 거예요"], a: "drowsy", o: ["hungry", "thirsty", "cold"]}
   order:
     tag: "대화 흐름"
     icon: compass
@@ -15,14 +15,14 @@
     - {en: "How long ago did you give him the sugar?", icon: calendar, ko: "포도당을 드린 지 얼마나 됐어요?", note: "시점"}
     - {en: "It brought his sugar up, but he's still not fully awake.", icon: magnify, ko: "혈당은 올랐는데 아직 완전히 깨지 않았어요", note: "상태"}
     - {en: "We're giving more glucose and checking for other causes.", icon: pill, ko: "포도당을 더 드리고 다른 원인도 확인하고 있어요", note: "처치"}
-    - {en: "If he still isn't waking after that, we may give another dose of sugar.", icon: pill, ko: "그 뒤에도 안 깨면 포도당을 한 번 더 드릴 수 있어요", note: "추가"}
+    - {en: "We may give another dose of sugar if he still isn't waking after that.", icon: pill, ko: "그 뒤에도 안 깨면 포도당을 한 번 더 드릴 수 있어요", note: "추가"}
   ctx: {word: "AMS", ko: "의식 변화", sc: {0: {en: "His sugar's 140 now but he still has AMS — can we look for other causes?"}}}
 - title: 당뇨발 괴사 패혈증
   s:
   - {t: "심각성 설명", i: bell, w: "together로 감염과 열이 따로가 아니라 함께일 때 의미가 커진다는 걸 짚고 very serious로 솔직하게 말해요. 열을 동반한 발 감염은 온몸으로 번지는 패혈증의 신호일 수 있어요.", d: "unusual", k: ["지금 항생제를 시작할게요", "외과팀이 곧 올 거예요"], a: "serious", o: ["common", "minor", "mild"]}
   - {t: "경과 문진", i: calendar, w: "has…looked like this로 지금 모습이 얼마나 이어졌는지를 눈에 보이는 상태로 물어요. 며칠 사이 빠르게 변했는지가 괴사성 감염의 진행 속도를 가늠하는 단서예요.", d: "healed like this", k: ["처음에는 어떻게 시작했어요?", "발이 언제부터 검게 변했어요?"], a: "foot", o: ["hand", "arm", "knee"]}
   - {t: "확산 확인", i: magnify, w: "spreading up your leg로 퍼지는 방향까지 구체적으로 묻고 swelling and blackness 두 변화를 함께 확인해요. 위쪽으로 번진다면 감염이 조직을 따라 빠르게 진행 중이라는 신호예요.", d: "shrinking back", k: ["통증도 같이 번지나요?", "다리에 감각이 있으세요?"], a: "up", o: ["down", "across", "around"]}
-  - {t: "연결 설명", i: bulb, w: "all connected로 세 가지가 따로가 아니라 서로 영향을 준다고 한 문장에 묶어 설명해요. 혈당이 높으면 감염에 약해지고, 감염과 열은 다시 혈당을 올려 악순환이 돼요.", d: "are all separate here", k: ["그래서 항생제와 수액이 필요해요", "혈당은 인슐린으로 낮출 거예요"], a: "connected", o: ["separate", "unrelated", "independent"]}
+  - {t: "연결 설명", i: bulb, w: "all connected로 세 가지가 따로가 아니라 서로 영향을 준다고 한 문장에 묶어 설명해요. 혈당이 높으면 감염에 약해지고, 감염과 열은 다시 혈당을 올려 악순환이 돼요.", d: "are all coincidental here", k: ["그래서 항생제와 수액이 필요해요", "혈당은 인슐린으로 낮출 거예요"], a: "connected", o: ["separate", "unrelated", "independent"]}
   - {t: "치료 안내", i: pill, w: "We're starting…right away로 지금 시작한다고 진행형으로 알려 환자가 안심해요. 패혈증이 의심되면 항생제와 수액을 늦추지 않고 바로 시작하는 것이 원칙이에요.", d: "tomorrow morning", k: ["혈액배양 검체를 먼저 채취할게요", "젖산 수치도 같이 확인할게요"], a: "antibiotics", o: ["vitamins", "steroids", "painkillers"]}
   - {t: "보고 안내", i: speech, w: "calling…with an SBAR report로 연락하는 대상과 방식을 함께 밝혀요. SBAR는 상황·배경·평가·요청 순으로 말해서 급한 상황에서도 빠짐없이 전달돼요.", d: "by e-mail", k: ["외과 선생님이 곧 오실 거예요", "가족에게도 알릴게요"], a: "SBAR", o: ["MRI", "ECG", "EEG"]}
   - {t: "보고 목적", i: speech, w: "so로 보고하는 목적을 밝히고 can act fast로 보고 뒤에 외과팀이 서두를 수 있다는 결과를 말해요. 전체 보고(상황·배경·평가·요청)가 빠지면 팀이 되묻느라 시간이 걸려요.", d: "a quick note", k: ["영상 검사 결과도 같이 드릴게요", "수술 동의서는 곧 설명드릴게요"], a: "fast", o: ["slowly", "quietly", "later"]}
@@ -41,10 +41,10 @@
   s:
   - {t: "변화 비교", i: stetho, w: "compare to로 과거와 비교하게 해서 환자가 변화의 방향을 말하게 해요. DKA가 나빠지면 산증을 보상하려고 호흡이 더 빠르고 깊어지고, 좋아지면 가라앉아요.", d: "since lunch", k: ["지금 숨쉬기가 편하세요?", "가슴이 답답하세요?"], a: "breathing", o: ["vision", "appetite", "headache"]}
   - {t: "호흡 문진", i: stetho, w: "more…tonight로 오늘 밤 사이 더 나빠졌는지를 묻고 short of breath로 숨찬 느낌을 일상어로 물어요. 숨참이 갑자기 늘면 산증이 다시 심해졌거나 폐에 문제가 생겼을 수 있어요.", d: "less short", k: ["기침이 나오세요?", "가슴이 아프세요?"], a: "breath", o: ["sleep", "energy", "appetite"]}
-  - {t: "보고 안내", i: lab, w: "still로 아직 나아지지 않았다는 점을, so로 그래서 보고한다는 이유를 이어요. 음이온차가 좁아지지 않으면 케톤이 아직 만들어지고 있다는 뜻이라 치료가 끝나지 않았어요.", d: "a narrow", k: ["검사를 한 번 더 할게요", "인슐린 속도를 올릴 거예요"], a: "wide", o: ["narrow", "normal", "small"]}
+  - {t: "보고 안내", i: lab, w: "still로 아직 나아지지 않았다는 점을, so로 그래서 보고한다는 이유를 이어요. 음이온차가 좁아지지 않으면 케톤이 아직 만들어지고 있다는 뜻이라 치료가 끝나지 않았어요.", d: "a clean", k: ["검사를 한 번 더 할게요", "인슐린 속도를 올릴 거예요"], a: "wide", o: ["narrow", "normal", "small"]}
   - {t: "보고 안내", i: board, w: "report…clearly로 값 하나가 아니라 흐름(trend)을 분명하게 전달한다고 말해요. pH가 오르고 음이온차가 줄어드는 방향인지가 치료가 듣는지 판단하는 핵심이에요.", d: "and weight", k: ["의사 선생님께 먼저 말씀드릴게요", "결과는 나오는 대로 알려 드릴게요"], a: "clearly", o: ["quietly", "privately", "slowly"]}
-  - {t: "보고 안내", i: speech, w: "give someone an update로 소식 전달을 '건넨다'로 말하고 on-call로 지금 당직인 의사임을 분명히 해요. 밤에는 담당 의사가 아니라 당직 의사에게 알려요.", d: "a vague", k: ["지금 당직 의사에게 전화해요", "검사 결과를 기록에 남겨요"], a: "clear", o: ["vague", "rude", "messy"]}
-  - {t: "인계 목적", i: handshake2, w: "hand off는 환자를 다음 사람에게 넘기는 인계를 뜻하는 구동사예요. so nothing gets missed로 명확히 인계하는 이유를 밝혀요. 인계에서 빠진 정보는 다음 근무자의 치료 공백으로 이어져요.", d: "gets repeated", k: ["다음 근무자에게 구두로 전할게요", "차트도 같이 업데이트할게요"], a: "missed", o: ["repeated", "praised", "delayed"]}
+  - {t: "보고 안내", i: speech, w: "give someone an update로 소식 전달을 '건넨다'로 말하고 on-call로 지금 당직인 의사임을 분명히 해요. 밤에는 담당 의사가 아니라 당직 의사에게 알려요.", d: "a sloppy", k: ["지금 당직 의사에게 전화해요", "검사 결과를 기록에 남겨요"], a: "clear", o: ["vague", "rude", "messy"]}
+  - {t: "인계 목적", i: handshake2, w: "hand off는 환자를 다음 사람에게 넘기는 인계를 뜻하는 구동사예요. so nothing gets missed로 명확히 인계하는 이유를 밝혀요. 인계에서 빠진 정보는 다음 근무자의 치료 공백으로 이어져요.", d: "gets reversed", k: ["다음 근무자에게 구두로 전할게요", "차트도 같이 업데이트할게요"], a: "missed", o: ["repeated", "praised", "delayed"]}
   order:
     tag: "대화 흐름"
     icon: compass
