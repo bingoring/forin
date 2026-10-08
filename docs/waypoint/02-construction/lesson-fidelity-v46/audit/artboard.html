@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!-- 아트보드 하나만 402×874로 그리는 확인용 페이지(T8). 핸드오프 원본 스크립트를 그대로 불러온다.
+     http://localhost:8090/02-construction/lesson-fidelity-v46/audit/artboard.html?c=WordStudyLive&p={"done":2} -->
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=IBM+Plex+Mono:wght@700&display=swap" rel="stylesheet" />
+<style>body{margin:0;background:#fff}#root{width:402px;height:874px;position:relative;overflow:hidden}</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+<script type="text/babel" src="../../../inputs/design-handoff_v46/reference/design-canvas.jsx"></script>
+<script type="text/babel" src="../../../inputs/design-handoff_v46/reference/forin-notebook.jsx"></script>
+<script type="text/babel" src="../../../inputs/design-handoff_v46/reference/forin-notebook-ui.jsx"></script>
+<script type="text/babel" src="../../../inputs/design-handoff_v46/reference/forin-notebook-avatar.jsx"></script>
+<script type="text/babel" src="../../../inputs/design-handoff_v46/reference/forin-notebook-career.jsx"></script>
+<script type="text/babel" src="../../../inputs/design-handoff_v46/reference/forin-notebook-lesson.jsx"></script>
+<script type="text/babel" src="../../../inputs/design-handoff_v46/reference/forin-notebook-lesson-words-live.jsx"></script>
+<script type="text/babel" src="../../../inputs/design-handoff_v46/reference/forin-notebook-lesson-sent-live.jsx"></script>
+<script type="text/babel" src="../../../inputs/design-handoff_v46/reference/forin-notebook-lesson-nuance.jsx"></script>
+<script type="text/babel" src="../../../inputs/design-handoff_v46/reference/forin-notebook-dialogue.jsx"></script>
+<script type="text/babel">
+const q = new URLSearchParams(location.search);
+const C = window[q.get('c') || 'LessonHub'];
+const props = JSON.parse(q.get('p') || '{}');
+ReactDOM.createRoot(document.getElementById('root')).render(C ? <C {...props}/> : <div>no component {q.get('c')}</div>);
+</script>
+</body>
+</html>
