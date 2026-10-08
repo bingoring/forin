@@ -118178,31 +118178,103 @@
       chunks: ["When did", "the fever start", "and how high", "has it been", "?"]
       words: [w-fever, w-start, w-high]
       goal: 1
+      tag: "발열 문진"
+      icon: "monitor"
+      why: "When으로 시작 시점, how high로 열의 높이를 물어 경과를 한 문장에 묶어요. 열이 언제 시작됐는지와 몇 도까지 올랐는지는 소아 발열 평가의 기본 정보예요."
+      decoy: "and how often"
+      distractorsKo: ["어떤 약을 먹여 보셨나요?", "아이가 아프기 전에 어디에 다녀왔나요?"]
+      blank:
+        answer: "fever"
+        options:
+          - {en: "fever"}
+          - {en: "cough"}
+          - {en: "rash"}
+          - {en: "vomiting"}
     - en: "Is she still drinking and making wet diapers?"
       ko: "아직 잘 마시고 기저귀도 젖고 있나요?"
       chunks: ["Is she still", "drinking and making", "wet diapers", "?"]
       words: [w-drink, w-wet, w-diaper]
       goal: 1
+      tag: "수분·배설"
+      icon: "coffee"
+      why: "drinking과 wet diapers를 and로 묶어 마시는 양과 소변량을 함께 물어요. 영아는 젖은 기저귀가 줄면 수분이 모자란다는 신호로 봐요."
+      decoy: "with a bottle"
+      distractorsKo: ["마지막으로 약을 먹인 게 언제예요?", "토하거나 설사한 적이 있나요?"]
+      blank:
+        answer: "drinking"
+        options:
+          - {en: "playing"}
+          - {en: "drinking"}
+          - {en: "eating"}
+          - {en: "sleeping"}
     - en: "You're doing the right thing by bringing her in."
       ko: "이렇게 데려오신 게 잘하신 거예요."
       chunks: ["You're", "doing the right thing", "by bringing her", "in", "."]
       words: [w-right, w-bring]
       goal: 2
+      tag: "부모 안심"
+      icon: "handshake2"
+      why: "You're doing the right thing으로 부모가 내린 결정을 먼저 인정해요. 아픈 아이를 데려온 보호자가 자책하거나 괜히 왔나 망설이지 않게 도와요."
+      decoy: "back home"
+      distractorsKo: ["아이가 오늘 뭘 먹었는지 알려 주세요", "접종 기록은 가져오셨나요?"]
+      blank:
+        answer: "right"
+        options:
+          - {en: "usual"}
+          - {en: "small"}
+          - {en: "right"}
+          - {en: "easy"}
     - en: "Has she seemed more tired than usual?"
       ko: "평소보다 더 처져 보이던가요?"
       chunks: ["Has she seemed", "more tired", "than usual", "?"]
       words: [w-tired, w-usual]
       goal: 1
+      tag: "활동성 문진"
+      icon: "faceWorried"
+      why: "Has she seemed…으로 부모가 본 변화를 묻고 than usual로 평소 모습과 견주게 해요. 평소보다 많이 처지거나 깨우기 힘든 것은 소아에서 중요한 위험 신호라 일상과 비교해서 확인해요."
+      decoy: "after lunch"
+      distractorsKo: ["오늘 몇 번 토했나요?", "집에서 해열제를 먹였나요?"]
+      blank:
+        answer: "tired"
+        options:
+          - {en: "hungry"}
+          - {en: "cranky"}
+          - {en: "thirsty"}
+          - {en: "tired"}
     - en: "Can I feel your forehead, sweetie?"
       ko: "이마 좀 만져봐도 될까, 아가?"
       chunks: ["Can I feel", "your forehead", ", sweetie", "?"]
       words: [w-forehead, w-sweetie]
       goal: 1
+      tag: "호칭·접촉"
+      icon: "me"
+      why: "Can I…?로 만지기 전에 먼저 허락을 구하고, sweetie 같은 다정한 호칭으로 아이의 긴장을 풀어요. 미국에서는 아이에게 sweetie·buddy 같은 호칭을 흔히 써요."
+      decoy: "your tummy"
+      distractorsKo: ["배가 아픈지 한번 볼까?", "곰인형도 같이 봐도 될까?"]
+      blank:
+        answer: "sweetie"
+        options:
+          - {en: "sweetie"}
+          - {en: "ma'am"}
+          - {en: "sir"}
+          - {en: "madam"}
     - en: "I'm going to take her temperature now."
       ko: "지금 체온을 재 볼게요."
       chunks: ["I'm going to", "take her temperature", "now", "."]
       words: [w-take, w-temperature]
       goal: 1
+      tag: "처치 예고"
+      icon: "monitor"
+      why: "I'm going to…로 하려는 일을 미리 알려 부모와 아이가 놀라지 않게 해요. 영유아의 체온은 나이에 맞는 방법으로 재요."
+      decoy: "her pulse"
+      distractorsKo: ["체중부터 먼저 잴게요", "호흡 소리를 들어 볼게요"]
+      blank:
+        answer: "temperature"
+        options:
+          - {en: "height"}
+          - {en: "temperature"}
+          - {en: "weight"}
+          - {en: "pulse"}
   nuance:
   - kind: pair
     words:
@@ -118241,6 +118313,29 @@
       lethargic: 의료진에게는 '깨우기 힘들 만큼 처짐'이라는 위험 소견을 뜻하는 임상어. 부모는 다른 뜻으로 알고 답할 수 있다.
       fatigued: 문서체라 대화에서는 딱딱하게 들린다.
     why: 소아에서 lethargic은 무게 있는 임상 소견이에요. 부모에게는 tired처럼 쉬운 말로 묻고, 들은 모습을 보고 의료진이 판단해요.
+    ko: 평소보다 더 피곤해 보이던가요?
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 소아 발열 문진 4문장 순서
+    why: 먼저 체온을 재겠다고 알리고, 'It's'가 그 측정값을 가리키며 시작 시점을 묻고, 'Since then'이 그 시작 시점을 받아 수분·배설을 묻고, 'all that'이 앞의 대답을 모두 받아 부모를 안심시켜요. 'It's'·'Since then'·'all that'이 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: I'm going to take her temperature now.
+      icon: monitor
+      ko: 지금 체온을 재 볼게요
+      note: 예고
+    - en: It's 101.2, so she does have a fever. When did it start?
+      icon: bell
+      ko: 화씨 101.2도(약 38.4℃)라 열이 있네요. 언제 시작됐나요?
+      note: 문진
+    - en: Since then, is she still drinking and making wet diapers?
+      icon: coffee
+      ko: 그 뒤로 아직 잘 마시고 기저귀도 젖고 있나요?
+      note: 수분
+    - en: Thank you for all that. You're doing the right thing bringing her in.
+      icon: handshake2
+      ko: 말씀 고마워요. 데려오신 게 잘하신 거예요
+      note: 안심
 
 - theme: er-peds
   title: 체중 기반 투약 설명
@@ -118265,26 +118360,86 @@
       chunks: ["We calculate", "the dose", "based on", "his exact weight", "."]
       words: [w-calculate, w-dose, w-weight]
       goal: 1
+      tag: "용량 근거"
+      icon: "pill"
+      why: "based on으로 용량의 근거를 먼저 밝혀 '왜 이 양인가'를 설명해요. 소아 약 용량은 보통 체중에 맞춰(mg/kg) 계산해서 아이마다 달라요."
+      decoy: "every hour"
+      distractorsKo: ["아이가 알레르기가 있는지 확인할게요", "약은 천천히 들어갈 거예요"]
+      blank:
+        answer: "weight"
+        options:
+          - {en: "appetite"}
+          - {en: "weight"}
+          - {en: "temperature"}
+          - {en: "pulse"}
     - en: "This amount is safe and carefully measured for him."
       ko: "이 양은 안전하고 이 아이에 맞춰 신중하게 측정된 거예요."
       chunks: ["This amount", "is safe", "and carefully measured", "for him", "."]
       words: [w-amount, w-safe, w-measure]
       goal: 2
+      tag: "안전 안내"
+      icon: "shield"
+      why: "safe와 carefully measured를 함께 말해 이 아이에게 맞춰 잰 양이라는 점을 강조해요. 소아 투약은 정확한 용량이 안전의 핵심이라 그 점을 말로 확인시켜요."
+      decoy: "on the shelf"
+      distractorsKo: ["처방이 바뀌면 바로 알려 드릴게요", "이 약은 몇 시간 간격으로 줄 거예요"]
+      blank:
+        answer: "amount"
+        options:
+          - {en: "taste"}
+          - {en: "smell"}
+          - {en: "amount"}
+          - {en: "color"}
     - en: "I'll double-check every number before he gets it."
       ko: "투여하기 전에 숫자를 다시 한번 확인할게요."
       chunks: ["I'll double-check", "every number", "before he gets it", "."]
       words: [w-doublecheck, w-number]
       goal: 2
+      tag: "이중 확인"
+      icon: "check"
+      why: "double-check로 한 번 더 본다고 약속해 부모의 걱정을 덜어요. 약 이름·용량·환자를 투여 전에 다시 대조하는 것이 투약 안전의 기본이에요."
+      decoy: "after lunch"
+      distractorsKo: ["투여가 끝나면 바로 알려 드릴게요", "먹이는 방법은 따로 알려 드릴게요"]
+      blank:
+        answer: "number"
+        options:
+          - {en: "price"}
+          - {en: "color"}
+          - {en: "shape"}
+          - {en: "number"}
     - en: "Every dose here is based on his weight, not just his age."
       ko: "모든 용량은 나이가 아니라 체중을 기준으로 정해져요."
       chunks: ["Every dose here", "is based on", "his weight", ", not just his age", "."]
       words: [w-dose, w-weight, w-age]
       goal: 1
+      tag: "체중 기준"
+      icon: "chartup"
+      why: "not just…로 '나이로만 정한다'는 흔한 오해를 바로잡아요. 소아 용량은 보통 체중에 맞추되 성인 최대 용량을 넘기지 않게 정해요."
+      decoy: "by the clock"
+      distractorsKo: ["약마다 이름을 한 번씩 읽어 드릴게요", "약이 효과를 내려면 시간이 걸려요"]
+      blank:
+        answer: "weight"
+        options:
+          - {en: "weight"}
+          - {en: "appetite"}
+          - {en: "schedule"}
+          - {en: "mood"}
     - en: "I know it's scary to watch, but this keeps him safe."
       ko: "지켜보시기 무서우실 텐데, 이게 아이를 안전하게 지켜줘요."
       chunks: ["I know", "it's scary to watch", ", but this", "keeps him safe", "."]
       words: [w-scary, w-watch, w-safe]
       goal: 2
+      tag: "공감"
+      icon: "faceWorried"
+      why: "I know…로 부모의 감정을 먼저 인정하고 but으로 이유를 이어요. 감정을 먼저 받아 주면 뒤따르는 설명이 변명이 아니라 안심으로 들려요."
+      decoy: "for a while"
+      distractorsKo: ["곧 의사 선생님이 오실 거예요", "아이가 잠들면 알려 주세요"]
+      blank:
+        answer: "scary"
+        options:
+          - {en: "simple"}
+          - {en: "scary"}
+          - {en: "easy"}
+          - {en: "boring"}
   nuance:
   - kind: slider
     words:
@@ -118310,14 +118465,38 @@
       ok: true
     - who: 동료 간호사와 이중 확인
       icon: speech
-      en: Weight is 18.2 kilos, so at 15 per kilo the dose is 273 milligrams.
+      en: Weight is 18.2 kilos, so at 15 mg/kg the dose is 273 milligrams.
       ok: true
     - who: 부모에게
       icon: me
-      en: Dose is 15 mg/kg, so 273 mg per wt.
+      en: Dose is 15 mg/kg, so 273 mg PO.
       ok: false
       fix: We give 15 milligrams for every kilo he weighs, so his dose is 273 milligrams.
     why: mg/kg·wt 같은 차트 약어는 의료진끼리의 말이에요. 부모에게는 '체중 1 kg마다 몇 mg'처럼 풀어 말해야 계산 원리가 전해지고 안심이 돼요.
+    word: mg/kg
+    ko: 체중 1 kg당 mg
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 투약 설명 4문장 순서
+    why: 용량 계산 근거를 말하고, 'That's why'가 그 근거를 이유로 받아 아이마다 양이 다르다고 하고, 'it'이 앞의 용량을 가리켜 투여 전 확인을 약속하고, 'all of this'가 앞의 모든 과정을 받아 공감과 안심으로 닫아요. 'That's why'·'it'·'all of this'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: We calculate the dose based on his exact weight.
+      icon: pill
+      ko: 정확한 체중을 기준으로 용량을 계산해요
+      note: 근거
+    - en: That's why the amount is different for every child.
+      icon: chartup
+      ko: 그래서 아이마다 양이 달라요
+      note: 이유
+    - en: I'll double-check the numbers with a second nurse before he gets it.
+      icon: check
+      ko: 투여 전에 다른 간호사와 숫자를 다시 확인할게요
+      note: 확인
+    - en: I know it's a lot to watch, but all of this keeps him safe.
+      icon: faceWorried
+      ko: 지켜보기 힘드시겠지만 이 모든 게 아이를 지켜줘요
+      note: 공감
 
 - theme: er-peds
   title: 예방접종력 확인
@@ -118342,31 +118521,103 @@
       chunks: ["Do you have", "her vaccine card", "or an app record", "with you", "?"]
       words: [w-vaccine, w-card, w-app, w-record]
       goal: 1
+      tag: "접종 기록"
+      icon: "board"
+      why: "Do you have…?로 가진 것을 묻는 말이라 부담 없이 시작해요. 접종 기록은 종이 카드 말고도 앱이나 병원 포털에 남아 있는 경우가 많아요."
+      decoy: "at school"
+      distractorsKo: ["아이가 알레르기가 있나요?", "언제 마지막으로 병원에 갔어요?"]
+      blank:
+        answer: "vaccine"
+        options:
+          - {en: "allergy"}
+          - {en: "medication"}
+          - {en: "vaccine"}
+          - {en: "insurance"}
     - en: "Let's go through which ones she's had so far."
       ko: "지금까지 맞은 것들을 같이 확인해 볼게요."
       chunks: ["Let's go through", "which ones", "she's had", "so far", "."]
       words: [w-far]
       goal: 1
+      tag: "함께 확인"
+      icon: "check"
+      why: "Let's…는 '같이 한다'는 말투라 기록이 비어 있어도 추궁처럼 들리지 않아요. had로 맞은 백신을 하나씩 짚어요(which ones she's had)."
+      decoy: "from home"
+      distractorsKo: ["아이 몸무게를 다시 재 볼게요", "담당 의사 선생님께 물어볼게요"]
+      blank:
+        answer: "had"
+        options:
+          - {en: "missed"}
+          - {en: "lost"}
+          - {en: "forgotten"}
+          - {en: "had"}
     - en: "It's okay if some are missing — we can catch up."
       ko: "빠진 게 있어도 괜찮아요 — 지금부터 채우면 돼요."
       chunks: ["It's okay", "if some are missing", "— we can", "catch up", "."]
       words: [w-missing, w-catchup]
       goal: 2
+      tag: "안심"
+      icon: "handshake2"
+      why: "It's okay if…로 빠진 것이 있어도 괜찮다고 먼저 말해 부모가 위축되지 않게 해요. 접종이 늦어진 아이는 남은 접종을 이어서 맞추는 catch-up 일정으로 따라잡아요."
+      decoy: "for school"
+      distractorsKo: ["접종 때문에 열이 날 수 있어요", "병원에서 다시 연락드릴게요"]
+      blank:
+        answer: "missing"
+        options:
+          - {en: "missing"}
+          - {en: "early"}
+          - {en: "extra"}
+          - {en: "recent"}
     - en: "I'll pull up her records so we don't guess."
       ko: "짐작하지 않도록 기록을 불러올게요."
       chunks: ["I'll pull up", "her records", "so we", "don't guess", "."]
       words: [w-record, w-guess]
       goal: 1
+      tag: "기록 조회"
+      icon: "magnify"
+      why: "so we don't…으로 기록을 찾아보는 이유를 밝혀요. 기억에만 의존하면 접종 횟수나 날짜를 틀리기 쉬워서 기록으로 확인해요."
+      decoy: "to your phone"
+      distractorsKo: ["기록 사본을 드릴게요", "이름과 생년월일을 한 번 더 말씀해 주세요"]
+      blank:
+        answer: "guess"
+        options:
+          - {en: "forget"}
+          - {en: "guess"}
+          - {en: "hurry"}
+          - {en: "worry"}
     - en: "There's no blame here, we just want her protected."
       ko: "탓하려는 게 아니라, 그저 아이를 보호하고 싶은 거예요."
       chunks: ["There's no blame", "here", ", we just want", "her protected", "."]
       words: [w-blame, w-protect]
       goal: 2
+      tag: "비난 없음"
+      icon: "handshake2"
+      why: "no blame으로 비난이 아니라는 점을 먼저 못 박고, we just want…로 목적을 아이의 보호로 돌려요. 접종이 비어 있어도 판단하지 않는 말이 부모가 사실대로 말하게 해요."
+      decoy: "her records"
+      distractorsKo: ["접종 기록 사본을 따로 드릴게요", "다음 방문은 소아과 선생님과 정하세요"]
+      blank:
+        answer: "blame"
+        options:
+          - {en: "fee"}
+          - {en: "pressure"}
+          - {en: "blame"}
+          - {en: "rush"}
     - en: "I'll note today's visit and we can schedule the rest."
       ko: "오늘 방문을 기록해 두고 나머지는 일정을 잡을게요."
       chunks: ["I'll note", "today's visit", "and we can", "schedule the rest", "."]
       words: [w-note, w-schedule]
       goal: 1
+      tag: "후속 계획"
+      icon: "calendar"
+      why: "I'll note…과 we can schedule…로 지금 할 일과 나중에 할 일을 나눠 말해요. 빠진 접종은 소아과 주치의와 일정을 잡아 이어서 맞추는 것이 일반적이에요."
+      decoy: "with her mom"
+      distractorsKo: ["다음 방문 때 영수증을 드릴게요", "접종 카드는 돌려드릴게요"]
+      blank:
+        answer: "note"
+        options:
+          - {en: "cancel"}
+          - {en: "delay"}
+          - {en: "miss"}
+          - {en: "note"}
   nuance:
   - kind: pair
     words:
@@ -118404,6 +118655,29 @@
       she'll have to start over: 사실과 다르다. CDC는 접종 간격이 길어졌어도 시리즈를 처음부터 다시 시작하지 않는다고 한다.
       you should have kept up: 탓하는 말이라 부모가 방어적이 되고 기록을 떠올리기 어려워진다.
     why: 밀린 접종은 처음부터가 아니라 이어서 맞히면 돼요. 비난 없이 사실을 말해야 부모가 기록을 함께 찾아요.
+    ko: 빠진 게 있어도 괜찮아요 — 지금부터 채우면 돼요
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 접종력 확인 4문장 순서
+    why: 접종 카드를 먼저 요청하고, 'which ones'가 그 기록 속 백신을 가리켜 하나씩 확인하자고 하고, 'some'이 그 백신 중 빠진 것을 받아 괜찮다고 안심시키고, 'those catch-up shots'가 3번 줄의 catch up을 받아 일정을 잡아요. 'which ones'·'some'·'those catch-up shots'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: Do you have her vaccine card or an app record with you?
+      icon: board
+      ko: 접종 카드나 앱 기록 가지고 오셨나요?
+      note: 요청
+    - en: Let's go through which ones she's had so far.
+      icon: check
+      ko: 지금까지 맞은 것들을 같이 확인해 볼게요
+      note: 확인
+    - en: It's okay if some are missing — we can catch up.
+      icon: handshake2
+      ko: 빠진 게 있어도 괜찮아요 — 지금부터 채우면 돼요
+      note: 안심
+    - en: I'll note today's visit, and we can schedule those catch-up shots.
+      icon: calendar
+      ko: 오늘 방문을 기록해 두고 그 따라잡기 접종 일정을 잡을게요
+      note: 계획
 
 - theme: er-peds
   title: 연령별 정상 활력
@@ -118428,31 +118702,103 @@
       chunks: ["For his age", ", a faster heart rate", "is completely", "normal", "."]
       words: [w-age, w-heart, w-rate, w-normal]
       goal: 1
+      tag: "정상 범위"
+      icon: "monitor"
+      why: "For his age로 기준을 먼저 밝혀요. 영유아는 어른보다 안정 시 심박수가 빨라서 나이별 정상 범위와 견줘서 판단해요."
+      decoy: "at night"
+      distractorsKo: ["지금 혈압도 같이 확인할게요", "숨 쉬는 속도를 세어 볼게요"]
+      blank:
+        answer: "age"
+        options:
+          - {en: "weight"}
+          - {en: "height"}
+          - {en: "size"}
+          - {en: "age"}
     - en: "These numbers are right where we'd expect them to be."
       ko: "이 수치들은 예상했던 딱 그 범위예요."
       chunks: ["These numbers are right", "where we'd expect", "them", "to be", "."]
       words: [w-number, w-expect]
       goal: 1
+      tag: "수치 설명"
+      icon: "chartup"
+      why: "right where we'd expect로 '예상 범위 안'이라는 뜻을 쉬운 말로 풀어요. numbers는 심박수·호흡수 같은 측정값을 두루 가리켜요."
+      decoy: "in a hurry"
+      distractorsKo: ["수치가 변하면 바로 알려 드릴게요", "나머지 수치는 의사가 설명할 거예요"]
+      blank:
+        answer: "numbers"
+        options:
+          - {en: "numbers"}
+          - {en: "weights"}
+          - {en: "names"}
+          - {en: "dates"}
     - en: "Let me show you what's normal for a child his age."
       ko: "이 나이 아이한테 정상인 게 뭔지 보여드릴게요."
       chunks: ["Let me show you", "what's normal", "for a child", "his age", "."]
       words: [w-show, w-normal, w-child, w-age]
       goal: 1
+      tag: "정상 안내"
+      icon: "board"
+      why: "Let me show you…으로 말로만이 아니라 기준을 보여 주며 설명한다고 알려요. 연령별 정상 범위를 보여 주면 부모가 '빠르다'는 숫자를 스스로 확인할 수 있어요."
+      decoy: "in your room"
+      distractorsKo: ["수치가 올라가면 바로 알려 드릴게요", "아이를 침대에 눕혀 주세요"]
+      blank:
+        answer: "normal"
+        options:
+          - {en: "abnormal"}
+          - {en: "normal"}
+          - {en: "unusual"}
+          - {en: "rare"}
     - en: "Children's hearts naturally beat faster than adult hearts."
       ko: "아이들의 심장은 원래 어른보다 더 빨리 뛰어요."
       chunks: ["Children's hearts", "naturally beat faster", "than adult hearts", "."]
       words: [w-child, w-heart, w-beat, w-fast, w-adult]
       goal: 1
+      tag: "원리 설명"
+      icon: "bulb"
+      why: "naturally로 병 때문이 아니라 원래 그렇다는 점을 한 단어로 전해요. 영유아는 심장이 작아서 박동수를 높여 혈액을 내보내므로 심박수가 어른보다 빨라요."
+      decoy: "after meals"
+      distractorsKo: ["운동하면 심장이 더 빨리 뛰어요", "잠잘 때는 심박수가 더 느려져요"]
+      blank:
+        answer: "naturally"
+        options:
+          - {en: "slowly"}
+          - {en: "quietly"}
+          - {en: "naturally"}
+          - {en: "suddenly"}
     - en: "I'll double-check her numbers against the chart for her age."
       ko: "나이에 맞는 표와 수치를 다시 한번 대조해 볼게요."
       chunks: ["I'll double-check", "her numbers", "against the chart", "for her age", "."]
       words: [w-doublecheck, w-number, w-chart, w-age]
       goal: 2
+      tag: "기준표 대조"
+      icon: "board"
+      why: "against the chart로 무엇과 견주는지 밝혀 확인이 객관적이라는 인상을 줘요. 소아 활력징후는 나이별 정상 범위표와 맞춰 판단해요."
+      decoy: "with a ruler"
+      distractorsKo: ["숫자는 의사 선생님과 같이 볼게요", "체중은 따로 적어 둘게요"]
+      blank:
+        answer: "chart"
+        options:
+          - {en: "calendar"}
+          - {en: "report"}
+          - {en: "form"}
+          - {en: "chart"}
     - en: "Can I count your heartbeats with my stethoscope?"
       ko: "청진기로 심장 소리 세어 봐도 될까?"
       chunks: ["Can I count", "your heartbeats", "with my stethoscope", "?"]
       words: [w-count, w-heartbeat]
       goal: 2
+      tag: "청진 허락"
+      icon: "stetho"
+      why: "Can I…?로 청진기를 대기 전에 허락을 구해요. count your heartbeats는 하는 일을 아이도 알아듣는 말로 풀어 겁을 덜어요."
+      decoy: "on the scale"
+      distractorsKo: ["이 청진기가 차가운지 만져 볼래?", "엄마 무릎에 앉아 볼까?"]
+      blank:
+        answer: "stethoscope"
+        options:
+          - {en: "stethoscope"}
+          - {en: "thermometer"}
+          - {en: "scale"}
+          - {en: "flashlight"}
   nuance:
   - kind: slider
     words:
@@ -118477,7 +118823,7 @@
     scenes:
     - who: 차트 기록
       icon: board
-      en: HR 128, WNL for age.
+      en: HR 128, within normal limits for age.
       ok: true
     - who: 의사에게 보고
       icon: speech
@@ -118485,10 +118831,34 @@
       ok: true
     - who: 부모에게
       icon: me
-      en: HR's 128, WNL for age.
+      en: His HR's 128 — within normal limits for age.
       ok: false
       fix: His heart rate is 128, which is completely normal for a boy his age.
-    why: HR·WNL(within normal limits)은 차트와 의료진끼리의 약어예요. 불안한 부모에게는 풀어서 '이 나이에 정상'이라고 말해야 안심이 돼요.
+    why: HR·within normal limits는 차트와 의료진끼리의 말이에요. 불안한 부모에게는 풀어서 '이 나이에 완전히 정상'이라고 말해야 안심이 돼요.
+    word: within normal limits
+    ko: 정상 범위 내
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 정상 활력 설명 4문장 순서
+    why: 수치가 정상이라고 먼저 알리고, 'That's because'가 그 판단을 이유로 받아 설명하고, 'your'로 아이에게 돌아가 청진을 허락받고, 'Both counts'가 모니터와 직접 센 두 값을 가리켜 기준표와 맞다고 마무리해요. 'That's because'·'Both counts'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: His heart rate is 128, which is completely normal for a boy his age.
+      icon: monitor
+      ko: 심박수 128, 이 나이 남자아이에게 완전히 정상이에요
+      note: 결과
+    - en: That's because children's hearts naturally beat faster than adult hearts.
+      icon: bulb
+      ko: 아이들 심장은 원래 어른보다 빨리 뛰기 때문이에요
+      note: 이유
+    - en: Can I count your heartbeats with my stethoscope, buddy?
+      icon: stetho
+      ko: 청진기로 심장 소리 세어 봐도 될까, 친구야?
+      note: 허락
+    - en: Both counts match the chart for his age, so we're right where we'd expect.
+      icon: board
+      ko: 두 수치 모두 이 나이 기준표와 맞아서 예상한 그대로예요
+      note: 확인
 
 - theme: er-peds
   title: 놀이·눈높이 접근
@@ -118513,31 +118883,103 @@
       chunks: ["Hi buddy", ", do you want", "to help me", "check your teddy", "first", "?"]
       words: [w-buddy, w-help, w-teddy, w-first]
       goal: 1
+      tag: "놀이 접근"
+      icon: "play"
+      why: "do you want to…?로 지시가 아니라 제안으로 시작하고, 인형을 먼저 확인하자고 해서 검사를 놀이로 바꿔요. 아이에게 먼저 선택권을 주면 낯선 의료진에 대한 경계가 줄어요."
+      decoy: "and sit"
+      distractorsKo: ["오늘 어디가 제일 아프니?", "엄마 옆에 앉아 볼래?"]
+      blank:
+        answer: "teddy"
+        options:
+          - {en: "teddy"}
+          - {en: "doll"}
+          - {en: "puppy"}
+          - {en: "robot"}
     - en: "I'm going to be really gentle, I promise."
       ko: "정말 살살 할게, 약속해."
       chunks: ["I'm going to be", "really gentle", ", I promise", "."]
       words: [w-gentle, w-promise]
       goal: 2
+      tag: "약속"
+      icon: "handshake2"
+      why: "I promise로 아이가 알아듣는 짧은 약속을 해요. 약속은 지킬 수 있는 것만 하고, 아플 수 있는 처치는 미리 솔직히 말해야 신뢰가 유지돼요."
+      decoy: "for the doctor"
+      distractorsKo: ["엄마도 같이 있을 거야", "불빛이 너무 밝으면 말해 줘"]
+      blank:
+        answer: "gentle"
+        options:
+          - {en: "busy"}
+          - {en: "gentle"}
+          - {en: "strict"}
+          - {en: "loud"}
     - en: "You're so brave — can you show me your superhero muscles?"
       ko: "정말 용감하네 — 슈퍼히어로 근육 좀 보여줄래?"
       chunks: ["You're so brave", "— can you show me", "your superhero", "muscles", "?"]
       words: [w-brave, w-show, w-superhero, w-muscle]
       goal: 2
+      tag: "칭찬·놀이"
+      icon: "star"
+      why: "brave로 아이를 칭찬하고 superhero muscles로 팔을 내밀게 해요. 팔을 보여 주는 동작을 놀이로 바꾸면 검사를 쉽게 시작할 수 있어요."
+      decoy: "in the box"
+      distractorsKo: ["약은 마시는 거란다", "아프면 손을 들어 줘"]
+      blank:
+        answer: "muscles"
+        options:
+          - {en: "toes"}
+          - {en: "teeth"}
+          - {en: "muscles"}
+          - {en: "shoes"}
     - en: "It helps if you stay close and stay calm for him."
       ko: "가까이서 차분하게 있어 주시면 아이한테 도움이 돼요."
       chunks: ["It helps", "if you stay close", "and stay calm", "for him", "."]
       words: [w-help, w-close, w-calm]
       goal: 2
+      tag: "부모 협조"
+      icon: "handshake2"
+      why: "It helps if…로 지시가 아니라 도움이 되는 방법으로 부탁해요. 보호자가 곁에서 차분하면 아이도 따라 진정되는 경우가 많아서 보호자의 역할을 요청해요."
+      decoy: "in the hall"
+      distractorsKo: ["아이가 울면 잠깐 안아 주세요", "검사는 금방 끝날 거예요"]
+      blank:
+        answer: "calm"
+        options:
+          - {en: "busy"}
+          - {en: "serious"}
+          - {en: "curious"}
+          - {en: "calm"}
     - en: "Let's pretend your teddy needs a checkup too."
       ko: "네 곰인형도 검진이 필요한 척 해보자."
       chunks: ["Let's pretend", "your teddy needs", "a checkup too", "."]
       words: [w-pretend, w-teddy, w-checkup]
       goal: 1
+      tag: "역할 놀이"
+      icon: "play"
+      why: "Let's pretend로 인형을 환자로 삼아 아이가 검사 과정을 먼저 구경하게 해요. 인형으로 먼저 보여 주면 청진기나 체온계에 대한 두려움이 줄어요."
+      decoy: "on the floor"
+      distractorsKo: ["여기 누워 볼래?", "청진기는 차갑지 않게 할게"]
+      blank:
+        answer: "pretend"
+        options:
+          - {en: "pretend"}
+          - {en: "decide"}
+          - {en: "remember"}
+          - {en: "promise"}
     - en: "You can pick the sticker you want after, okay?"
       ko: "끝나고 원하는 스티커 고를 수 있어, 알겠지?"
       chunks: ["You can pick", "the sticker", "you want after", ", okay", "?"]
       words: [w-pick, w-sticker]
       goal: 1
+      tag: "보상 약속"
+      icon: "star"
+      why: "after로 끝난 뒤의 보상을 미리 알려 아이가 견딜 이유를 줘요. 고를 수 있게(pick) 하면 아이가 상황을 어느 정도 통제한다고 느껴요."
+      decoy: "in the car"
+      distractorsKo: ["다 끝나면 같이 게임 하자", "엄마도 같이 구경하자"]
+      blank:
+        answer: "sticker"
+        options:
+          - {en: "toy"}
+          - {en: "sticker"}
+          - {en: "balloon"}
+          - {en: "crayon"}
   nuance:
   - kind: pair
     words:
@@ -118575,6 +119017,29 @@
       it won't hurt at all: 아프면 약속이 깨져 다음 처치부터 아이가 간호사를 믿지 않는다.
       stop crying now: 우는 것을 막으면 겁이 더 커진다. 울어도 괜찮다고 해 주는 편이 낫다.
     why: 아이에게 '하나도 안 아파'라는 약속은 하지 않아요. 살살 하겠다는 말에, 만지기 전에 먼저 알려 주겠다는 정직한 말을 더해요.
+    ko: 정말 살살 할게 — 만지기 전에 먼저 말해 줄게
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 놀이로 진찰 시작 4문장 순서
+    why: 곰인형을 먼저 확인하자고 제안하고, 'he'가 그 곰인형을 가리켜 인형 검진 놀이로 이어지고, 'your turn'이 인형 검진이 끝난 뒤 아이 차례를 가리키며 살살 하겠다고 약속하고, 'all of that'이 지난 과정을 받아 칭찬과 스티커로 닫아요. 'he'·'your turn'·'all of that'이 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: Hi buddy, do you want to help me check your teddy first?
+      icon: play
+      ko: 안녕 친구야, 먼저 네 곰인형부터 같이 확인해 볼래?
+      note: 제안
+    - en: Let's pretend he needs a checkup too — you can hold him.
+      icon: play
+      ko: 곰인형도 검진이 필요한 척 해보자 — 네가 안고 있어도 돼
+      note: 놀이
+    - en: Now it's your turn. I'm going to be really gentle, I promise.
+      icon: handshake2
+      ko: 이제 네 차례야. 정말 살살 할게, 약속해
+      note: 약속
+    - en: You were so brave through all of that — you can pick a sticker, okay?
+      icon: star
+      ko: 정말 용감했어 — 스티커를 골라도 돼, 알겠지?
+      note: 보상
 
 - theme: er-peds
   title: 열성 경련 목격 부모
@@ -118599,31 +119064,103 @@
       chunks: ["What you saw", "was terrifying", ", but he's stable", "now", "."]
       words: [w-terrifying, w-stable]
       goal: 1
+      tag: "공감·상태"
+      icon: "faceWorried"
+      why: "terrifying으로 목격한 경험을 먼저 인정하고 but으로 지금은 안정됐다는 정보를 이어 줘요. 열성 경련을 본 부모는 큰 충격을 받는 경우가 많아요."
+      decoy: "for him"
+      distractorsKo: ["아이 열은 지금 내려가고 있어요", "경련은 몇 분 동안 이어졌나요?"]
+      blank:
+        answer: "stable"
+        options:
+          - {en: "awake"}
+          - {en: "stable"}
+          - {en: "sleepy"}
+          - {en: "upset"}
     - en: "Febrile seizures are common and usually not harmful."
       ko: "열성 경련은 흔하고 대개 해롭지 않아요."
       chunks: ["Febrile seizures are", "common and usually", "not harmful", "."]
       words: [w-seizure, w-common, w-harmful]
       goal: 2
+      tag: "질환 설명"
+      icon: "bulb"
+      why: "common과 usually not harmful을 함께 말해 흔하고 대개 해롭지 않다는 두 가지를 전해요. 열성 경련은 보통 생후 6개월~5세 사이 열이 오를 때 생겨요."
+      decoy: "in adults"
+      distractorsKo: ["아이는 계속 지켜볼 거예요", "검사는 의사가 정할 거예요"]
+      blank:
+        answer: "common"
+        options:
+          - {en: "unusual"}
+          - {en: "painful"}
+          - {en: "common"}
+          - {en: "rare"}
     - en: "Let me explain what to watch for and what to do next time."
       ko: "다음에 뭘 살피고 어떻게 해야 할지 설명해 드릴게요."
       chunks: ["Let me explain", "what to watch for", "and what to do", "next time", "."]
       words: [w-explain, w-watch]
       goal: 2
+      tag: "교육 예고"
+      icon: "board"
+      why: "Let me…로 설명을 시작하겠다고 알리고, what to watch for와 what to do로 살필 것과 할 일을 나눠요. 경련을 본 부모는 다음에 무엇을 할지 알면 덜 불안해해요."
+      decoy: "in the car"
+      distractorsKo: ["약 이름은 나중에 알려 드릴게요", "열이 내리면 퇴원 안내를 드릴게요"]
+      blank:
+        answer: "explain"
+        options:
+          - {en: "decide"}
+          - {en: "remember"}
+          - {en: "promise"}
+          - {en: "explain"}
     - en: "It's scary to witness, but you did everything right."
       ko: "목격하시기엔 무서웠겠지만, 다 잘 하셨어요."
       chunks: ["It's scary", "to witness", ", but you did", "everything right", "."]
       words: [w-scary, w-witness, w-right]
       goal: 1
+      tag: "공감·인정"
+      icon: "handshake2"
+      why: "scary…, but…으로 겁났던 마음을 인정한 뒤 부모의 대처가 옳았다고 말해요. 경련을 본 부모가 '내가 뭘 잘못했나' 하고 자책하기 쉬워서 짚어 줘요."
+      decoy: "at night"
+      distractorsKo: ["지금은 열이 내리고 있어요", "경련 모습을 의사에게 다시 설명해 주세요"]
+      blank:
+        answer: "scary"
+        options:
+          - {en: "scary"}
+          - {en: "easy"}
+          - {en: "boring"}
+          - {en: "quick"}
     - en: "Most children outgrow febrile seizures by school age."
       ko: "대부분의 아이들은 학령기가 되면 열성 경련이 없어져요."
       chunks: ["Most children", "outgrow febrile seizures", "by school age", "."]
       words: [w-child, w-outgrow, w-seizure, w-age]
       goal: 2
+      tag: "예후 설명"
+      icon: "calendar"
+      why: "Most…by school age로 시간이 지나면 좋아진다는 전망을 줘요. 열성 경련은 대부분 학령기 무렵이면 더 생기지 않아요."
+      decoy: "in winter"
+      distractorsKo: ["열이 나는 동안 다시 올 수 있어요", "의사가 곧 설명해 드릴 거예요"]
+      blank:
+        answer: "outgrow"
+        options:
+          - {en: "hide"}
+          - {en: "outgrow"}
+          - {en: "catch"}
+          - {en: "miss"}
     - en: "If a seizure lasts more than five minutes, call 911 right away."
       ko: "경련이 5분 넘게 지속되면 바로 911에 전화하세요."
       chunks: ["If a seizure lasts", "more than five minutes", ", call 911", "right away", "."]
       words: [w-seizure, w-last]
       goal: 2
+      tag: "응급 기준"
+      icon: "siren"
+      why: "If…, call 911 right away로 기준(5분 넘게 지속)과 행동을 한 문장에 담아요. 경련이 5분 넘게 이어지면 응급으로 보고 바로 구조를 요청해요."
+      decoy: "or longer"
+      distractorsKo: ["경련하면 아이를 옆으로 눕혀 주세요", "열이 있으면 옷을 가볍게 입히세요"]
+      blank:
+        answer: "seizure"
+        options:
+          - {en: "cough"}
+          - {en: "rash"}
+          - {en: "seizure"}
+          - {en: "fever"}
   nuance:
   - kind: slider
     words:
@@ -118658,6 +119195,29 @@
       wait for it to stop: 5분이 넘으면 저절로 멈추기를 기다리지 않는다.
       put something in his mouth: 혀를 깨물까 봐 넣는 것은 흔한 오해다. 질식·치아 손상 위험이 있어 절대 넣지 않는다.
     why: 경련 중에는 옆으로 눕히고 시간을 재요. 5분이 넘으면 911을 부르고, 입에는 아무것도 넣지 않아요.
+    ko: 경련이 5분 넘게 지속되면 911에 전화하세요
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 열성 경련 부모 설명 4문장 순서
+    why: 목격한 일을 인정하며 안정됐다고 알리고, 'like that'이 방금 본 경련을 가리켜 흔하고 해롭지 않다고 설명하고, 'what to do next time'으로 교육을 예고하고, 'of those'가 그 교육 내용 중 가장 중요한 것을 짚어요. 'like that'·'of those'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: What you saw was terrifying, but he's stable now.
+      icon: faceWorried
+      ko: 보신 건 정말 무서우셨겠지만, 지금은 안정됐어요
+      note: 공감
+    - en: Febrile seizures like that are common and usually not harmful.
+      icon: bulb
+      ko: 그런 열성 경련은 흔하고 대개 해롭지 않아요
+      note: 설명
+    - en: Let me explain what to watch for and what to do next time.
+      icon: board
+      ko: 다음에 뭘 살피고 어떻게 할지 설명해 드릴게요
+      note: 예고
+    - en: 'The most important of those: call 911 right away if it lasts over five minutes.'
+      icon: siren
+      ko: 그중 가장 중요한 건 5분 넘게 지속되면 바로 911에 전화하는 거예요
+      note: 기준
 
 - theme: er-peds
   title: 세기관지염 호흡곤란
@@ -118682,31 +119242,103 @@
       chunks: ["I can see", "she's working hard", "to breathe", "— we'll help her", "."]
       words: [w-breathe, w-help]
       goal: 1
+      tag: "상태 인정"
+      icon: "stetho"
+      why: "I can see…로 보호자가 이미 느끼는 것을 먼저 인정하고 we'll help her로 곧 돕겠다고 이어요. working hard to breathe는 숨 쉬는 데 힘이 드는 모습을 쉬운 말로 풀어요."
+      decoy: "to the doctor"
+      distractorsKo: ["아이가 열은 있었나요?", "기침은 언제부터 했어요?"]
+      blank:
+        answer: "hard"
+        options:
+          - {en: "easily"}
+          - {en: "calmly"}
+          - {en: "hard"}
+          - {en: "gently"}
     - en: "How much is she feeding compared to normal?"
       ko: "평소에 비해 얼마나 먹고 있나요?"
       chunks: ["How much", "is she feeding", "compared to normal", "?"]
       words: [w-feed, w-normal]
       goal: 1
+      tag: "수유량 문진"
+      icon: "coffee"
+      why: "compared to normal로 평소 수유량과 견주게 해요. 세기관지염 영아는 숨이 차서 먹는 양이 줄기 쉬워서 수유량이 탈수 위험과 입원 필요를 가늠하는 단서예요."
+      decoy: "than her brother"
+      distractorsKo: ["기침은 밤에 더 심해지나요?", "집에 담배 피우는 사람이 있나요?"]
+      blank:
+        answer: "feeding"
+        options:
+          - {en: "sleeping"}
+          - {en: "crying"}
+          - {en: "coughing"}
+          - {en: "feeding"}
     - en: "I'll show you the signs to watch at home."
       ko: "집에서 살펴야 할 징후를 보여드릴게요."
       chunks: ["I'll show you", "the signs", "to watch", "at home", "."]
       words: [w-show, w-sign, w-watch]
       goal: 2
+      tag: "가정 관찰 교육"
+      icon: "board"
+      why: "I'll show you…로 집에서 볼 징후를 직접 보여 주겠다고 예고해요. 퇴원 후 호흡 곤란 징후를 알아보는 법을 미리 알려 두는 것이 중요해요."
+      decoy: "next door"
+      distractorsKo: ["약 먹이는 시간을 알려 드릴게요", "다음 진료 일정을 잡아 드릴게요"]
+      blank:
+        answer: "signs"
+        options:
+          - {en: "signs"}
+          - {en: "tests"}
+          - {en: "pills"}
+          - {en: "tubes"}
     - en: "Her chest is pulling in a little with every breath."
       ko: "숨을 쉴 때마다 가슴이 살짝 함몰되고 있어요."
       chunks: ["Her chest is", "pulling in", "a little", "with every breath", "."]
       words: [w-chest, w-breathe]
       goal: 1
+      tag: "소견 설명"
+      icon: "stetho"
+      why: "chest is pulling in으로 숨쉴 때 가슴이 쏙 들어가는 모습을 보이는 그대로 말해요. 의료진은 이것을 함몰호흡(retractions)이라 부르고 숨 쉬는 데 힘이 든다는 신호로 봐요."
+      decoy: "on her arm"
+      distractorsKo: ["산소 수치를 재 볼게요", "가슴 사진은 의사가 정할 거예요"]
+      blank:
+        answer: "chest"
+        options:
+          - {en: "leg"}
+          - {en: "chest"}
+          - {en: "back"}
+          - {en: "hand"}
     - en: "We'll clear her nose and give her oxygen to help her breathe."
       ko: "코를 뚫어주고 산소를 줘서 숨쉬는 걸 도와드릴게요."
       chunks: ["We'll clear her nose", "and give her oxygen", "to help her", "breathe", "."]
       words: [w-clear, w-nose, w-oxygen, w-help, w-breathe]
       goal: 1
+      tag: "처치 설명"
+      icon: "hospital"
+      why: "clear her nose는 코의 분비물을 빼 준다는 뜻이에요. 세기관지염 영아는 코가 막히면 숨 쉬고 먹기가 더 힘들어서 코를 먼저 정리하고 필요하면 산소를 줘요."
+      decoy: "with a spoon"
+      distractorsKo: ["아이를 편안한 자세로 안아 주세요", "아이가 먹는 양은 계속 확인할게요"]
+      blank:
+        answer: "nose"
+        options:
+          - {en: "eyes"}
+          - {en: "skin"}
+          - {en: "nose"}
+          - {en: "ears"}
     - en: "I'll teach you what harder breathing looks like before you go home."
       ko: "퇴원 전에 호흡이 힘들어지는 모습이 어떤지 알려드릴게요."
       chunks: ["I'll teach you", "what harder breathing", "looks like", "before you go home", "."]
       words: [w-teach, w-hard, w-breathe]
       goal: 2
+      tag: "퇴원 교육"
+      icon: "calendar"
+      why: "before you go home으로 교육 시점을 못 박아 퇴원 전에 꼭 알려 준다는 뜻을 전해요. what…looks like로 눈으로 알아볼 모습을 가르쳐 집에서도 악화를 알아보게 해요."
+      decoy: "at school"
+      distractorsKo: ["콧물은 이렇게 닦아 주시면 돼요", "수유는 조금씩 자주 해 주세요"]
+      blank:
+        answer: "harder"
+        options:
+          - {en: "easier"}
+          - {en: "slower"}
+          - {en: "quieter"}
+          - {en: "harder"}
   nuance:
   - kind: pair
     words:
@@ -118743,6 +119375,30 @@
       ok: false
       fix: Her chest is pulling in a little with every breath — that tells us she's working hard.
     why: retractions(함몰호흡)는 의료진의 말이에요. 부모에게는 '숨쉴 때 가슴이 쏙 들어간다'처럼 눈에 보이는 말로 해야 집에서도 알아볼 수 있어요.
+    word: retractions
+    ko: 함몰호흡
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 세기관지염 설명 4문장 순서
+    why: 숨쉬기 힘들어 보인다고 인정하고, 'that's how I can tell'이 그 판단의 근거로 가슴 모습을 말하고, 'that pulling'이 그 가슴 당김을 가리켜 코를 뚫고 필요하면 산소를 준다고 알리고, 'harder breathing'이 앞의 힘든 호흡을 받아 퇴원 전 교육으로 이어요. 'that's how I can tell'·'that pulling'·'harder breathing'이 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: I can see she's working hard to breathe — we'll help her.
+      icon: stetho
+      ko: 숨쉬기가 힘들어 보이네요 — 저희가 도와드릴게요
+      note: 인정
+    - en: Her chest pulls in a little with every breath — that's how I can tell.
+      icon: stetho
+      ko: 숨 쉴 때마다 가슴이 살짝 들어가요 — 그래서 알 수 있어요
+      note: 근거
+    - en: To ease that pulling, we'll clear her nose and give oxygen if she needs it.
+      icon: hospital
+      ko: 그 당김을 덜어 주려고 코를 뚫어주고 필요하면 산소를 줄게요
+      note: 처치
+    - en: Before you go home, I'll teach you what harder breathing looks like.
+      icon: calendar
+      ko: 퇴원 전에 호흡이 힘들어지는 모습을 알려드릴게요
+      note: 교육
 
 - theme: er-peds
   title: 탈수 유아 평가
@@ -118767,31 +119423,103 @@
       chunks: ["When was", "her last", "wet diaper", "?"]
       words: [w-wet, w-diaper]
       goal: 1
+      tag: "소변량 문진"
+      icon: "calendar"
+      why: "last wet diaper로 가장 최근의 소변 시점을 물어요. 영아는 기저귀가 오래 마르면 탈수의 단서라 마지막 소변 시각이 핵심 질문이에요."
+      decoy: "in the bag"
+      distractorsKo: ["열이 있었나요?", "마지막으로 먹은 게 언제예요?"]
+      blank:
+        answer: "last"
+        options:
+          - {en: "first"}
+          - {en: "next"}
+          - {en: "best"}
+          - {en: "last"}
     - en: "Let's try small sips of fluid frequently."
       ko: "수분을 조금씩 자주 마시게 해볼게요."
       chunks: ["Let's try", "small sips of fluid", "frequently", "."]
       words: [w-try, w-sip, w-fluid]
       goal: 2
+      tag: "수분 보충"
+      icon: "coffee"
+      why: "Let's try…로 같이 해 보자는 제안이에요. 탈수된 아이는 한 번에 많이 먹이면 토하기 쉬워서 조금씩 자주 먹이는 방법을 써요."
+      decoy: "with a straw"
+      distractorsKo: ["링거를 놓을지 의사가 정할 거예요", "열이 있으면 먼저 알려 주세요"]
+      blank:
+        answer: "sips"
+        options:
+          - {en: "sips"}
+          - {en: "jugs"}
+          - {en: "bags"}
+          - {en: "bowls"}
     - en: "I'll show you the signs of dehydration to watch for."
       ko: "살펴야 할 탈수 징후를 보여드릴게요."
       chunks: ["I'll show you", "the signs of dehydration", "to watch", "for", "."]
       words: [w-show, w-sign, w-dehydration, w-watch]
       goal: 2
+      tag: "탈수 징후"
+      icon: "board"
+      why: "I'll show you…로 직접 보여 주겠다고 예고하고 to watch for로 앞으로 살필 것을 알려요. 탈수 징후를 알아보면 병원에 다시 올 시점을 판단하기 쉬워요."
+      decoy: "on your phone"
+      distractorsKo: ["약 이름을 적어 드릴게요", "체중을 다시 재 볼게요"]
+      blank:
+        answer: "dehydration"
+        options:
+          - {en: "fracture"}
+          - {en: "dehydration"}
+          - {en: "infection"}
+          - {en: "allergy"}
     - en: "Has she vomited today, or is it just loose stools?"
       ko: "오늘 토하기도 했나요, 아니면 무른 변만 있었나요?"
       chunks: ["Has she vomited today", ", or is it", "just loose", "stools", "?"]
       words: [w-vomit, w-stool]
       goal: 1
+      tag: "증상 감별"
+      icon: "magnify"
+      why: "Has she…, or is it just…?로 구토와 묽은 변 중 무엇이 있는지 둘로 나눠 묻고 just로 부담 없이 답하게 해요. 구토·설사는 소아 탈수의 가장 흔한 원인이에요."
+      decoy: "last week"
+      distractorsKo: ["토한 게 초록빛이었나요?", "변에 피가 섞여 있었나요?"]
+      blank:
+        answer: "vomited"
+        options:
+          - {en: "cried"}
+          - {en: "slept"}
+          - {en: "vomited"}
+          - {en: "coughed"}
     - en: "Try small amounts every few minutes instead of a lot at once."
       ko: "한 번에 많이보다 조금씩 자주 마시게 해보세요."
       chunks: ["Try small amounts", "every few minutes", "instead of a lot", "at once", "."]
       words: [w-amount]
       goal: 2
+      tag: "급여 방법"
+      icon: "coffee"
+      why: "instead of…로 해야 할 방법과 피할 방법을 대비해 기억하기 쉽게 해요. 한 번에 많이 마시면 토하기 쉬워서 조금씩 자주 주는 것이 원칙이에요."
+      decoy: "all night"
+      distractorsKo: ["아이가 좋아하는 컵으로 주세요", "토하면 잠시 쉬었다 다시 시작하세요"]
+      blank:
+        answer: "instead of"
+        options:
+          - {en: "along with"}
+          - {en: "as well as"}
+          - {en: "together with"}
+          - {en: "instead of"}
     - en: "I'll show you how to check for dry lips and sunken eyes at home."
       ko: "집에서 입술 마름과 눈 꺼짐을 확인하는 법을 알려드릴게요."
       chunks: ["I'll show you", "how to check", "for dry lips", "and sunken eyes", "at home", "."]
       words: [w-show, w-check, w-dry, w-eye]
       goal: 2
+      tag: "가정 점검"
+      icon: "magnify"
+      why: "how to check for…로 방법과 확인할 부위를 함께 알려 줘요. 입술이 마르고 눈이 푹 꺼지는 것은 아이가 탈수일 때 나타나는 대표적인 모습이에요."
+      decoy: "at the door"
+      distractorsKo: ["소변 횟수를 적어 두세요", "토하는 횟수도 적어 두세요"]
+      blank:
+        answer: "sunken"
+        options:
+          - {en: "sunken"}
+          - {en: "watery"}
+          - {en: "swollen"}
+          - {en: "bulging"}
   nuance:
   - kind: slider
     words:
@@ -118827,6 +119555,29 @@
       decreased urine output: 의료진끼리의 말. 부모에게는 무엇을 세라는 건지 막연하다.
       oliguria: 의학 용어라 부모는 알아듣지 못한다.
     why: 같은 징후라도 부모에게는 기저귀처럼 눈으로 셀 수 있는 말로 가르쳐요. 그래야 집에서 실제로 살필 수 있어요.
+    ko: 기저귀가 덜 젖고 울어도 눈물이 안 나는지 살펴보세요
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 탈수 평가 4문장 순서
+    why: 마지막 소변 시점을 묻고, 'Thank you'가 그 대답을 받아 구토·설사를 묻고, 'what she's losing'이 구토·설사로 잃는 수분을 가리켜 조금씩 자주 먹이자고 하고, 'the sips'가 그 급여를 가리켜 효과를 가늠할 징후를 알려요. 'Thank you'·'what she's losing'·'the sips'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: When was her last wet diaper?
+      icon: calendar
+      ko: 마지막으로 기저귀가 젖은 게 언제였나요?
+      note: 문진
+    - en: Thank you. Has she vomited today, or is it just loose stools?
+      icon: magnify
+      ko: 고마워요. 오늘 토하기도 했나요, 아니면 무른 변만 있었나요?
+      note: 감별
+    - en: To replace what she's losing, let's try small sips of fluid frequently.
+      icon: coffee
+      ko: 잃은 수분을 채우려고 조금씩 자주 마시게 해볼게요
+      note: 처치
+    - en: To tell if the sips work, I'll show you the signs of dehydration to watch.
+      icon: board
+      ko: 효과가 있는지 알 수 있게 살필 탈수 징후를 보여드릴게요
+      note: 교육
 
 - theme: er-peds
   title: 소아 골절 통증 관리
@@ -118851,31 +119602,103 @@
       chunks: ["Can you point", "to the face", "that shows", "how much it hurts", "?"]
       words: [w-point, w-face, w-hurt]
       goal: 1
+      tag: "통증 평가"
+      icon: "faceWorried"
+      why: "point to the face로 말로 설명하기 어려운 아이가 얼굴 그림을 가리켜 아픈 정도를 표현하게 해요. 어린 아이에게는 숫자보다 얼굴 통증 척도(Wong-Baker 등)가 쓰여요."
+      decoy: "to the door"
+      distractorsKo: ["어디가 제일 아프니?", "언제 넘어졌는지 기억하니?"]
+      blank:
+        answer: "hurts"
+        options:
+          - {en: "hurts"}
+          - {en: "itches"}
+          - {en: "helps"}
+          - {en: "grows"}
     - en: "I'm going to be very gentle and get you medicine soon."
       ko: "아주 살살 할 거고 곧 약도 줄게."
       chunks: ["I'm going to be", "very gentle", "and get you", "medicine soon", "."]
       words: [w-gentle, w-medicine, w-soon]
       goal: 2
+      tag: "통증 약속"
+      icon: "pill"
+      why: "very gentle과 get you medicine soon으로 조심스럽게 다루겠다는 약속과 통증 조절을 곧 해 주겠다는 약속을 함께 줘요. 골절 아이의 통증은 일찍 조절할수록 이후 처치가 수월해요."
+      decoy: "for your mom"
+      distractorsKo: ["엑스레이는 사진을 찍는 거야", "엄마는 여기 계실 거야"]
+      blank:
+        answer: "gentle"
+        options:
+          - {en: "strong"}
+          - {en: "gentle"}
+          - {en: "quiet"}
+          - {en: "quick"}
     - en: "You're being so brave — squeeze mom's hand if it hurts."
       ko: "정말 용감하네 — 아프면 엄마 손을 꽉 잡아."
       chunks: ["You're being", "so brave", "— squeeze mom's hand", "if it hurts", "."]
       words: [w-brave, w-squeeze, w-hurt]
       goal: 2
+      tag: "칭찬·대처"
+      icon: "star"
+      why: "You're so brave로 칭찬하고 squeeze mom's hand로 아플 때 할 수 있는 행동을 줘요. 아플 때 할 일을 알면 아이가 울음 대신 행동으로 표현할 수 있어요."
+      decoy: "in your pocket"
+      distractorsKo: ["엄마가 안아 줄게", "곧 끝나니까 조금만 참아"]
+      blank:
+        answer: "squeeze"
+        options:
+          - {en: "wave"}
+          - {en: "shake"}
+          - {en: "squeeze"}
+          - {en: "pat"}
     - en: "This is just a quick pinch, then it's all done."
       ko: "이건 따끔하고 금방 끝나."
       chunks: ["This is just", "a quick pinch", ", then it's", "all done", "."]
       words: [w-quick, w-pinch]
       goal: 2
+      tag: "처치 예고"
+      icon: "bandage"
+      why: "quick pinch로 따끔한 순간이 짧다는 점을 아이 말로 알려 줘요. 안 아프다고 거짓말하지 않고 따끔하다고 솔직히 말해야 아이가 다음에도 의료진을 믿어요."
+      decoy: "all night"
+      distractorsKo: ["이 약은 먹는 약이야", "엄마가 손 잡아 줄게"]
+      blank:
+        answer: "quick"
+        options:
+          - {en: "long"}
+          - {en: "big"}
+          - {en: "deep"}
+          - {en: "quick"}
     - en: "Do you want the cold spray or the bandage first?"
       ko: "차가운 스프레이랑 밴드 중에 뭘 먼저 할래?"
       chunks: ["Do you want", "the cold spray", "or the bandage", "first", "?"]
       words: [w-cold, w-spray, w-bandage, w-first]
       goal: 2
+      tag: "선택권"
+      icon: "check"
+      why: "Do you want A or B first?로 할지 말지가 아니라 어느 것부터인지 고르게 해요. 아이에게 작은 선택권을 주면 통제감이 생겨 협조가 쉬워져요."
+      decoy: "or the music"
+      distractorsKo: ["지금 누워 볼래?", "아프면 말해 줘"]
+      blank:
+        answer: "cold"
+        options:
+          - {en: "cold"}
+          - {en: "warm"}
+          - {en: "loud"}
+          - {en: "sticky"}
     - en: "We'll splint the arm and give pain medicine before the X-ray."
       ko: "엑스레이 전에 팔에 부목을 대고 진통제를 드릴게요."
       chunks: ["We'll splint the arm", "and give", "pain medicine", "before the X-ray", "."]
       words: [w-splint, w-medicine, w-xray]
       goal: 2
+      tag: "처치 계획"
+      icon: "bandage"
+      why: "We'll…and…before…로 부목과 진통제 두 가지를 하고 그 시점을 엑스레이 앞이라고 밝혀요. 골절이 의심되면 움직이지 않게 고정하고 통증 조절을 함께 해요."
+      decoy: "in the hall"
+      distractorsKo: ["엑스레이는 사진 찍는 거라 아프지 않아요", "결과는 의사가 먼저 볼 거예요"]
+      blank:
+        answer: "arm"
+        options:
+          - {en: "ankle"}
+          - {en: "arm"}
+          - {en: "leg"}
+          - {en: "knee"}
   nuance:
   - kind: slider
     words:
@@ -118912,6 +119735,29 @@
       shot with a big needle: needle·shot은 아이에게 무서운 그림을 떠올리게 해 소아 처치 때 피하는 말이다.
       little bee sting: 쏘여서 아팠던 기억을 떠올리게 하는 비유라 피하는 편이 낫다.
     why: 아이에게는 거짓 없이, 하지만 무서운 단어는 피해서 짧고 구체적으로 말해요.
+    ko: 이건 따끔하고 금방 끝나
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 아이 골절 통증 4문장 순서
+    why: 얼굴 그림으로 통증을 평가하고, 'Thank you'가 그 대답을 받아 약을 곧 주겠다고 약속하고, 'That medicine'이 앞의 약을 가리켜 부목과 엑스레이 계획을 말하고, 'all of that'이 지나온 과정을 받아 칭찬과 보상으로 닫아요. 'Thank you'·'That medicine'·'all of that'이 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: Can you point to the face that shows how much it hurts?
+      icon: faceWorried
+      ko: 얼마나 아픈지 보여주는 얼굴을 짚어볼래?
+      note: 평가
+    - en: Thank you. I'm going to be very gentle and get you medicine soon.
+      icon: pill
+      ko: 고마워. 아주 살살 할 거고 곧 약도 줄게
+      note: 약속
+    - en: That medicine will help, and we'll splint the arm before the X-ray.
+      icon: bandage
+      ko: 그 약이 도와줄 거고 엑스레이 전에 팔에 부목을 댈 거야
+      note: 계획
+    - en: You were so brave through all of that — sticker or bandage?
+      icon: star
+      ko: 정말 용감했어 — 스티커 할래, 밴드 할래?
+      note: 보상
 
 - theme: er-peds
   title: 이물질 흡인·삼킴
@@ -118936,31 +119782,103 @@
       chunks: ["Can you tell me", "exactly what", "he swallowed", "and when", "?"]
       words: [w-tell, w-swallow]
       goal: 1
+      tag: "삼킨 물질"
+      icon: "magnify"
+      why: "what…and when으로 삼킨 물건과 시각을 한 번에 묻는 두 질문이에요. 무엇을 언제 삼켰는지에 따라 영상 검사와 처치의 시급도를 정해요."
+      decoy: "to school"
+      distractorsKo: ["아이가 지금 기침하나요?", "마지막으로 먹은 게 언제예요?"]
+      blank:
+        answer: "swallowed"
+        options:
+          - {en: "broke"}
+          - {en: "swallowed"}
+          - {en: "dropped"}
+          - {en: "chewed"}
     - en: "Is he able to breathe and talk normally right now?"
       ko: "지금 숨쉬고 말하는 게 정상적으로 되나요?"
       chunks: ["Is he able", "to breathe and talk", "normally", "right now", "?"]
       words: [w-breathe, w-talk]
       goal: 1
+      tag: "기도 확인"
+      icon: "stetho"
+      why: "able to breathe and talk로 기도가 막히지 않았는지 가장 먼저 확인해요. 숨쉬기와 말하기가 정상이면 기도가 완전히 막힌 것은 아니라는 단서가 돼요."
+      decoy: "last night"
+      distractorsKo: ["지금 기침을 계속하나요?", "삼킨 뒤로 먹은 게 있나요?"]
+      blank:
+        answer: "breathe"
+        options:
+          - {en: "walk"}
+          - {en: "sit"}
+          - {en: "breathe"}
+          - {en: "eat"}
     - en: "You did the right thing bringing him in immediately."
       ko: "바로 데려오신 게 잘하신 거예요."
       chunks: ["You did", "the right thing", "bringing him in", "immediately", "."]
       words: [w-right, w-bring]
       goal: 2
+      tag: "부모 인정"
+      icon: "handshake2"
+      why: "You did the right thing으로 바로 데려온 결정을 인정해요. 이물을 삼키면 시간이 중요해서 즉시 온 것을 인정하는 것이 맞아요."
+      decoy: "back home"
+      distractorsKo: ["아이가 마지막으로 먹은 게 언제예요?", "집에 같은 물건이 더 있나요?"]
+      blank:
+        answer: "right"
+        options:
+          - {en: "hard"}
+          - {en: "first"}
+          - {en: "brave"}
+          - {en: "right"}
     - en: "Can you describe the coin or toy he had in his hand?"
       ko: "손에 들고 있던 동전이나 장난감을 설명해 주시겠어요?"
       chunks: ["Can you describe", "the coin or toy", "he had", "in his hand", "?"]
       words: [w-describe, w-coin, w-toy]
       goal: 1
+      tag: "물체 파악"
+      icon: "magnify"
+      why: "describe로 크기·모양·종류를 말하게 해요. 동전·건전지·자석처럼 종류에 따라 위험과 처치 시급도가 달라서 무엇인지 정확히 알아야 해요."
+      decoy: "in a bag"
+      distractorsKo: ["그 물건과 같은 걸 가지고 계신가요?", "아이가 입에 넣는 걸 본 사람이 있나요?"]
+      blank:
+        answer: "describe"
+        options:
+          - {en: "describe"}
+          - {en: "wash"}
+          - {en: "keep"}
+          - {en: "count"}
     - en: "Is he drooling or having any trouble swallowing his own saliva?"
       ko: "침을 흘리거나 자기 침을 삼키는 데 어려움이 있나요?"
       chunks: ["Is he drooling", "or having any trouble", "swallowing", "his own saliva", "?"]
       words: [w-drool, w-trouble, w-swallow]
       goal: 1
+      tag: "삼킴 곤란"
+      icon: "faceWorried"
+      why: "drooling과 trouble swallowing은 삼킨 물체가 식도에 걸려 침도 넘기기 힘들 때 나타나는 경고 신호예요. 이 둘을 or로 묶어 한 번에 확인해요."
+      decoy: "since last week"
+      distractorsKo: ["숨이 가쁜 적이 있나요?", "가슴이 아프다고 하나요?"]
+      blank:
+        answer: "drooling"
+        options:
+          - {en: "coughing"}
+          - {en: "drooling"}
+          - {en: "sweating"}
+          - {en: "shaking"}
     - en: "We'll get an X-ray to see exactly where it is."
       ko: "정확히 어디 있는지 엑스레이로 확인할게요."
       chunks: ["We'll get", "an X-ray", "to see exactly", "where it is", "."]
       words: [w-xray]
       goal: 2
+      tag: "검사 설명"
+      icon: "hospital"
+      why: "get an X-ray to see…로 검사와 그 목적을 함께 말해요. 엑스레이로 삼킨 물체의 위치와 종류를 보고 처치 방법을 정해요. 금속 이물은 영상에 보이지만 모든 이물이 보이는 것은 아니에요."
+      decoy: "with a flashlight"
+      distractorsKo: ["엑스레이는 아프지 않아요", "결과는 의사가 설명해 드릴 거예요"]
+      blank:
+        answer: "exactly"
+        options:
+          - {en: "partly"}
+          - {en: "later"}
+          - {en: "exactly"}
+          - {en: "roughly"}
   nuance:
   - kind: slider
     words:
@@ -118987,7 +119905,7 @@
       ok: true
     - who: 의사에게 보고
       icon: speech
-      en: He swallowed a coin around two and he's drooling — the X-ray's ordered.
+      en: Coin ingestion around two o'clock — he's drooling, and the X-ray's ordered.
       ok: true
     - who: 부모에게
       icon: me
@@ -118995,6 +119913,30 @@
       ok: false
       fix: We'll get an X-ray to see exactly where the coin is.
     why: ingestion·CXR은 차트의 말이에요. 부모에게는 '삼킨 동전이 어디 있는지 엑스레이로 본다'처럼 풀어서 말해요.
+    word: ingestion
+    ko: 삼킴
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 삼킴 문진 4문장 순서
+    why: 삼킨 것과 시각을 묻고, 'Thank you'가 그 대답을 받아 호흡과 말하기를 확인하고, 'Besides his breathing'이 앞의 호흡 확인을 가리켜 침 흘림과 삼킴 곤란을 묻고, 'all that'이 지금까지의 대답을 받아 엑스레이를 알려요. 'Thank you'·'Besides his breathing'·'all that'이 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: Can you tell me exactly what he swallowed and when?
+      icon: magnify
+      ko: 정확히 뭘 삼켰고 언제였는지 말씀해 주시겠어요?
+      note: 문진
+    - en: Thank you. Is he able to breathe and talk normally right now?
+      icon: stetho
+      ko: 고마워요. 지금 숨쉬고 말하는 게 정상적으로 되나요?
+      note: 기도
+    - en: Besides his breathing, is he drooling or having any trouble swallowing his own saliva?
+      icon: faceWorried
+      ko: 숨 외에도 침을 흘리거나 자기 침을 삼키기 힘들어하나요?
+      note: 삼킴
+    - en: Thanks for all that — an X-ray will show exactly where it is.
+      icon: hospital
+      ko: 다 말씀해 주셔서 고마워요 — 엑스레이로 정확히 어디 있는지 보일 거예요
+      note: 검사
 
 - theme: er-peds
   title: 학대 의심 정황
@@ -119019,31 +119961,103 @@
       chunks: ["Help me understand", "exactly how", "the injury happened", "."]
       words: [w-understand, w-injury, w-happen]
       goal: 1
+      tag: "경위 문진"
+      icon: "magnify"
+      why: "Help me understand로 추궁이 아니라 이해를 돕는 부탁으로 시작해요. 설명이 상처와 맞는지 보려고 경위를 구체적으로 묻는 것이 아동 학대 평가의 기본이에요."
+      decoy: "to school"
+      distractorsKo: ["아이가 평소에 어디서 노나요?", "아이가 최근에 아픈 적은 있었나요?"]
+      blank:
+        answer: "understand"
+        options:
+          - {en: "prove"}
+          - {en: "decide"}
+          - {en: "understand"}
+          - {en: "guess"}
     - en: "I'm asking these questions for every child, not just yours."
       ko: "이 질문들은 모든 아이에게 똑같이 드리는 거예요."
       chunks: ["I'm asking", "these questions", "for every child", ", not just yours", "."]
       words: [w-ask, w-question, w-child]
       goal: 1
+      tag: "공통 질문"
+      icon: "shield"
+      why: "for every child로 이 질문이 이 가족만을 겨냥한 것이 아니라 모든 아이에게 하는 표준 절차라고 알려요. 비난으로 들리지 않게 하는 데 핵심이에요."
+      decoy: "on your own"
+      distractorsKo: ["아이는 지금 안전한 곳에 있어요", "질문이 불편하시면 말씀해 주세요"]
+      blank:
+        answer: "yours"
+        options:
+          - {en: "mine"}
+          - {en: "ours"}
+          - {en: "theirs"}
+          - {en: "yours"}
     - en: "My main focus is making sure he's okay."
       ko: "제 가장 큰 관심은 아이가 괜찮은지예요."
       chunks: ["My main focus", "is making sure", "he's okay", "."]
       words: [w-focus]
       goal: 2
+      tag: "목적 강조"
+      icon: "shield"
+      why: "My main focus로 질문의 목적이 누군가를 찾는 것이 아니라 아이의 안전이라고 밝혀요. 보호자의 방어적 반응을 낮추고 협조를 얻는 데 도움이 돼요."
+      decoy: "at school"
+      distractorsKo: ["의사 선생님이 곧 진찰하실 거예요", "아이는 지금 편안하게 있어요"]
+      blank:
+        answer: "okay"
+        options:
+          - {en: "okay"}
+          - {en: "discharged"}
+          - {en: "admitted"}
+          - {en: "warm"}
     - en: "Can you walk me through what happened just before the fall?"
       ko: "넘어지기 직전에 무슨 일이 있었는지 차근차근 말씀해 주시겠어요?"
       chunks: ["Can you walk me", "through what happened", "just before", "the fall", "?"]
       words: [w-happen, w-fall]
       goal: 1
+      tag: "경위 구체화"
+      icon: "speech"
+      why: "walk me through로 사건을 순서대로 차근차근 말하게 해요. just before처럼 특정 시점을 짚으면 기억이 구체적으로 나오고 설명이 일관적인지도 가늠할 수 있어요."
+      decoy: "at the park"
+      distractorsKo: ["넘어진 뒤 아이가 바로 울었나요?", "바닥은 어떤 재질이었나요?"]
+      blank:
+        answer: "before"
+        options:
+          - {en: "since"}
+          - {en: "before"}
+          - {en: "after"}
+          - {en: "during"}
     - en: "This is part of our routine exam for every child who comes in."
       ko: "이건 오는 모든 아이에게 하는 일상적인 진찰의 일부예요."
       chunks: ["This is part", "of our routine exam", "for every child", "who comes in", "."]
       words: [w-routine, w-exam, w-child]
       goal: 1
+      tag: "일상 절차"
+      icon: "board"
+      why: "part of our routine으로 특별한 의심이 아니라 일상 절차라고 설명해요. 모든 아이에게 같은 진찰을 한다는 점이 보호자의 방어감을 줄여요."
+      decoy: "for adults"
+      distractorsKo: ["검사는 오래 걸리지 않아요", "기록은 의사가 확인해요"]
+      blank:
+        answer: "routine"
+        options:
+          - {en: "special"}
+          - {en: "private"}
+          - {en: "routine"}
+          - {en: "rare"}
     - en: "My job right now is to keep him safe, nothing more."
       ko: "지금 제 역할은 오직 아이를 안전하게 지키는 것뿐이에요."
       chunks: ["My job right now", "is to keep him", "safe", ", nothing more", "."]
       words: [w-job, w-safe]
       goal: 2
+      tag: "역할 설명"
+      icon: "shield"
+      why: "My job…is to keep him safe로 지금 하는 일을 아이 보호에 모아요. 수사나 판단은 간호사 몫이 아니지만, 학대가 의심되면 간호사는 법에 따른 의무 신고자예요 — 신고도 아이를 지키는 일의 일부예요."
+      decoy: "at the desk"
+      distractorsKo: ["아이를 여기 눕혀 주시겠어요?", "필요한 건 말씀해 주세요"]
+      blank:
+        answer: "safe"
+        options:
+          - {en: "busy"}
+          - {en: "awake"}
+          - {en: "entertained"}
+          - {en: "safe"}
   nuance:
   - kind: pair
     words:
@@ -119080,6 +120094,29 @@
       Your story doesn't match his injuries: 추궁으로 들려 보호자가 입을 닫는다. 불일치는 따지지 않고 들은 그대로 기록한다.
       Tell me who did this to him: 가해자를 전제한 질문이라 대화가 끊기고 이후 조사에도 방해가 된다.
     why: 학대가 의심돼도 간호사의 몫은 판단이 아니라 사정과 기록이에요. 보호자의 말을 들은 그대로 적고, 판단은 신고 뒤 전문 기관이 해요.
+    ko: 어떻게 된 건지 정확히 이해할 수 있게 도와주세요
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 경위 문진 4문장 순서
+    why: 경위를 이해하고 싶다고 부탁하고, 'it'이 그 손상을 가리켜 직전 상황을 묻고, 'Both of those questions'가 앞의 두 질문을 가리켜 모든 아이에게 하는 일상 진찰이라고 설명하고, 'that routine'이 그 진찰을 받아 간호사의 역할을 아이 보호와 법에 따른 신고로 말해요. 학대가 의심되면 간호사는 법에 따른 의무 신고자예요. 'it'·'Both of those questions'·'that routine'이 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: Help me understand exactly how the injury happened.
+      icon: magnify
+      ko: 다치신 경위를 정확히 이해할 수 있게 말씀해 주세요
+      note: 경위
+    - en: Can you walk me through what happened just before it?
+      icon: speech
+      ko: 그 직전에 무슨 일이 있었는지 차근차근 말씀해 주시겠어요?
+      note: 구체화
+    - en: Both of those questions are part of our routine exam for every child.
+      icon: board
+      ko: 그 두 질문 모두 모든 아이에게 하는 일상 진찰의 일부예요
+      note: 절차
+    - en: Beyond that routine, my job is keeping him safe, and by law, reporting suspected harm.
+      icon: shield
+      ko: 그 일상 진찰 밖에서 제 역할은 아이를 안전하게 지키는 것, 그리고 법에 따라 학대가 의심되면 신고하는 거예요
+      note: 역할
 
 - theme: er-peds
   title: 자폐·감각 예민 아동
@@ -119104,31 +120141,103 @@
       chunks: ["Tell me", "what usually helps him", "stay calm", "."]
       words: [w-tell, w-calm]
       goal: 1
+      tag: "진정 방법"
+      icon: "handshake2"
+      why: "Tell me what…으로 부모를 아이에 대한 전문가로 존중해요. 자폐 아동은 진정시키는 방법이 아이마다 달라서 보호자가 가장 잘 알아요."
+      decoy: "in the car"
+      distractorsKo: ["아이가 평소에 어떤 소리를 싫어하나요?", "아이가 말로 표현하는 편인가요?"]
+      blank:
+        answer: "calm"
+        options:
+          - {en: "awake"}
+          - {en: "alert"}
+          - {en: "busy"}
+          - {en: "calm"}
     - en: "I'll dim the lights and keep my voice soft."
       ko: "불빛을 어둡게 하고 목소리도 부드럽게 할게요."
       chunks: ["I'll dim", "the lights", "and keep", "my voice soft", "."]
       words: [w-dim, w-light, w-voice, w-soft]
       goal: 1
+      tag: "감각 조정"
+      icon: "bulb"
+      why: "I'll…and…로 불빛과 목소리라는 두 가지 자극을 낮추겠다고 구체적으로 말해요. 감각에 예민한 아이는 밝은 조명과 큰 소리에 쉽게 압도돼요."
+      decoy: "and my hands"
+      distractorsKo: ["문을 닫아 둘까요?", "기다리는 동안 조용한 방으로 옮길게요"]
+      blank:
+        answer: "soft"
+        options:
+          - {en: "soft"}
+          - {en: "loud"}
+          - {en: "sharp"}
+          - {en: "fast"}
     - en: "We'll go at his pace and follow your lead."
       ko: "아이 속도에 맞춰 부모님이 이끄시는 대로 따라갈게요."
       chunks: ["We'll go", "at his pace", "and follow", "your lead", "."]
       words: [w-pace, w-follow, w-lead]
       goal: 2
+      tag: "속도 존중"
+      icon: "handshake2"
+      why: "go at his pace로 진행 속도를 아이에게 맞추겠다고 하고 follow your lead로 보호자의 안내를 따르겠다고 해요. 예고 없는 변화에 힘들어하는 아이에게는 속도와 방식을 존중하는 것이 협조를 이끌어요."
+      decoy: "and his friends"
+      distractorsKo: ["아이가 불안해하면 알려 주세요", "순서는 미리 말씀드릴게요"]
+      blank:
+        answer: "follow"
+        options:
+          - {en: "question"}
+          - {en: "follow"}
+          - {en: "ignore"}
+          - {en: "change"}
     - en: "Would his favorite toy or some headphones help right now?"
       ko: "지금 아이가 좋아하는 장난감이나 헤드폰이 도움이 될까요?"
       chunks: ["Would his favorite toy", "or some headphones", "help", "right now", "?"]
       words: [w-favorite, w-toy, w-headphone, w-help]
       goal: 2
+      tag: "감각 도구"
+      icon: "speaker"
+      why: "favorite toy or some headphones로 아이가 좋아하는 물건과 소리를 줄이는 도구를 함께 제안해요. 익숙한 물건과 헤드폰은 낯선 소음 속에서 아이를 안정시키는 데 흔히 써요."
+      decoy: "in the room"
+      distractorsKo: ["아이가 좋아하는 노래가 있나요?", "아이가 앉아 있을 의자를 가져올게요"]
+      blank:
+        answer: "headphones"
+        options:
+          - {en: "blankets"}
+          - {en: "bandages"}
+          - {en: "headphones"}
+          - {en: "sunglasses"}
     - en: "We can move slowly and skip anything that feels too loud."
       ko: "천천히 진행하고 너무 시끄럽게 느껴지는 건 건너뛸게요."
       chunks: ["We can move slowly", "and skip", "anything that feels", "too loud", "."]
       words: [w-slow, w-skip, w-loud]
       goal: 1
+      tag: "천천히 진행"
+      icon: "check"
+      why: "We can…and…로 속도와 범위를 조절할 수 있다고 알려요. 검사 중 소리·접촉 자극을 줄이면 자극에 민감한 아이가 덜 힘들어해요."
+      decoy: "at once"
+      distractorsKo: ["보호자분이 옆에 계셔도 돼요", "큰 소리가 나면 미리 말씀드릴게요"]
+      blank:
+        answer: "slowly"
+        options:
+          - {en: "quickly"}
+          - {en: "loudly"}
+          - {en: "suddenly"}
+          - {en: "slowly"}
     - en: "Please let me know if anything I'm doing is too much for him."
       ko: "제가 하는 것 중에 아이에게 너무 과하다 싶으면 알려주세요."
       chunks: ["Please let me know", "if anything I'm doing", "is too much", "for him", "."]
       words: []
       goal: 2
+      tag: "피드백 요청"
+      icon: "speech"
+      why: "let me know로 아이의 신호를 알려 달라고 부탁해요. 말이 적은 아이의 불편은 보호자가 가장 먼저 알아채서, 그 관찰에 의지한다는 뜻을 전해요."
+      decoy: "at the door"
+      distractorsKo: ["아이가 소리를 지르면 알려 주세요", "필요하면 의사에게 바로 전할게요"]
+      blank:
+        answer: "much"
+        options:
+          - {en: "much"}
+          - {en: "little"}
+          - {en: "slow"}
+          - {en: "far"}
   nuance:
   - kind: pair
     words:
@@ -119165,6 +120274,29 @@
       We'll do it the same way we do for every kid: 감각이 예민한 아이에게는 개별 맞춤이 핵심이라 모든 아이와 같은 방식은 맞지 않는다.
       We'll just hold him still and get it done: 억지로 붙잡으면 감각 과부하가 커져 멜트다운이 심해지고 다음 처치도 어려워진다.
     why: 감각이 예민한 아이는 부모가 가장 잘 알아요. 속도와 순서를 아이에게 맞추는 것이 결국 더 안전하고 빨라요.
+    ko: 아이 속도에 맞춰 진행할게요
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 자폐 아동 진료 4문장 순서
+    why: 진정 방법을 묻고, 'Thank you'가 그 대답을 받아 조명과 목소리를 조절하고, 'the lights'가 앞 줄의 조명을 가리켜 장난감과 헤드폰을 더 제안하고, 'them'이 그 물건들을 가리켜 속도를 맞추고 피드백을 부탁해요. 'Thank you'·'the lights'·'them'이 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: Tell me what usually helps him stay calm.
+      icon: handshake2
+      ko: 평소에 뭐가 아이를 진정시키는지 알려주세요
+      note: 문진
+    - en: Thank you. I'll dim the lights and keep my voice soft.
+      icon: bulb
+      ko: 고마워요. 불빛을 어둡게 하고 목소리도 부드럽게 할게요
+      note: 조정
+    - en: Besides the lights, would his favorite toy or some headphones help?
+      icon: speaker
+      ko: 불빛 말고도 좋아하는 장난감이나 헤드폰이 도움이 될까요?
+      note: 제안
+    - en: With them in place, we'll go at his pace; tell me if anything's too much.
+      icon: check
+      ko: 그게 갖춰지면 아이 속도에 맞출게요. 과하면 알려주세요
+      note: 진행
 
 - theme: er-peds
   title: 청소년 비밀보장 경계
@@ -119189,31 +120321,103 @@
       chunks: ["Some of what", "we talk about", "can stay", "private", "."]
       words: [w-talk, w-private]
       goal: 1
+      tag: "비밀보장"
+      icon: "lock"
+      why: "Some of…로 전부가 아니라 일부라고 한정해 거짓 약속을 피해요. 청소년 면담은 비밀을 지키되 안전이 걸리면 예외가 있다는 점을 먼저 정직하게 밝혀야 해요."
+      decoy: "in school"
+      distractorsKo: ["여기서는 편하게 물어봐도 돼", "오늘은 어디가 불편해서 왔어?"]
+      blank:
+        answer: "private"
+        options:
+          - {en: "private"}
+          - {en: "public"}
+          - {en: "recorded"}
+          - {en: "shared"}
     - en: "The only thing I'd share is if your safety was at risk."
       ko: "내가 얘기할 유일한 경우는 네 안전이 위험할 때뿐이야."
       chunks: ["The only thing", "I'd share", "is if your safety", "was at risk", "."]
       words: [w-share, w-safety, w-risk]
       goal: 1
+      tag: "예외 안내"
+      icon: "shield"
+      why: "The only thing…is if your safety was at risk로 비밀을 지킬 수 없는 예외를 분명히 말해요. 자해·타해 위험이나 학대 같은 안전 문제는 비밀로 둘 수 없다고 미리 알려 주는 것이 청소년 면담의 기본이에요."
+      decoy: "in class"
+      distractorsKo: ["필요하면 언제든 다시 물어봐도 돼", "오늘 여기까지 오느라 힘들었지?"]
+      blank:
+        answer: "safety"
+        options:
+          - {en: "mood"}
+          - {en: "safety"}
+          - {en: "address"}
+          - {en: "grade"}
     - en: "You can be honest with me — no judgment here."
       ko: "나한테는 솔직해도 돼 — 여기서는 아무도 판단하지 않아."
       chunks: ["You can be", "honest with me", "— no judgment", "here", "."]
       words: [w-honest, w-judgment]
       goal: 2
+      tag: "비판단"
+      icon: "handshake2"
+      why: "no judgment here로 솔직히 말해도 평가받지 않는다는 점을 먼저 보장해요. 청소년은 혼날까 봐 위험 행동을 숨기기 쉬워서 비판단적 태도가 정확한 정보를 얻게 해요."
+      decoy: "in class"
+      distractorsKo: ["어디가 불편한지 말해 줄래?", "오늘 기분은 어때?"]
+      blank:
+        answer: "honest"
+        options:
+          - {en: "careful"}
+          - {en: "polite"}
+          - {en: "honest"}
+          - {en: "quiet"}
     - en: "Would you like your parents to step out for this part?"
       ko: "이 부분은 부모님이 잠시 나가 계셨으면 좋겠어?"
       chunks: ["Would you like", "your parents", "to step out", "for this part", "?"]
       words: [w-parent, w-stepout]
       goal: 1
+      tag: "선택 제안"
+      icon: "me"
+      why: "Would you like…?로 내보낸다고 통보하지 않고 청소년에게 선택을 물어요. 민감한 질문은 보호자 없이 따로 하는 것이 일반적이지만 정중하게 제안해야 해요."
+      decoy: "for this call"
+      distractorsKo: ["부모님께는 곧 다시 들어오시라고 할게", "이 부분은 금방 끝날 거야"]
+      blank:
+        answer: "step out"
+        options:
+          - {en: "sit down"}
+          - {en: "come in"}
+          - {en: "stay close"}
+          - {en: "step out"}
     - en: "Are you sexually active, or using any drugs or alcohol?"
       ko: "성관계를 하거나 약물이나 술을 쓰고 있니?"
       chunks: ["Are you", "sexually active", ", or using any", "drugs or alcohol", "?"]
       words: [w-drug, w-alcohol]
       goal: 2
+      tag: "위험 문진"
+      icon: "magnify"
+      why: "성·약물·술을 돌려 말하지 않고 판단 없는 말투로 물어요. 청소년 진료에서는 이런 위험 요인을 보호자 없이 본인에게 따로, 하나씩 묻는 것이 표준이에요."
+      decoy: "or your friends"
+      distractorsKo: ["최근에 다친 적이 있니?", "학교생활은 어때?"]
+      blank:
+        answer: "alcohol"
+        options:
+          - {en: "alcohol"}
+          - {en: "vitamins"}
+          - {en: "caffeine"}
+          - {en: "candy"}
     - en: "If you ever feel unsafe at home, please tell me."
       ko: "집에서 불안하다고 느껴지면 언제든 나한테 말해줘."
       chunks: ["If you ever feel", "unsafe", "at home", ", please tell me", "."]
       words: [w-tell]
       goal: 2
+      tag: "안전 확인"
+      icon: "shield"
+      why: "If you ever…로 지금이 아니어도 언제든 말해도 된다는 열린 문을 둬요. 집에서의 안전 문제는 아이가 먼저 꺼내기 어려워서 의료진이 먼저 길을 열어 주는 것이 중요해요."
+      decoy: "at school"
+      distractorsKo: ["연락처를 적어 줄게", "오늘 얘기는 여기까지만 할게"]
+      blank:
+        answer: "unsafe"
+        options:
+          - {en: "bored"}
+          - {en: "unsafe"}
+          - {en: "busy"}
+          - {en: "sleepy"}
   nuance:
   - kind: pair
     words:
@@ -119249,6 +120453,29 @@
       Everything you tell me stays between us: 지킬 수 없는 약속이다. 안전이 위험하면 알려야 해서 나중에 신뢰가 깨진다.
       I have to tell your parents everything: 대부분의 경우 사실이 아니고, 청소년이 솔직하게 말하지 않게 만든다.
     why: 청소년 문진은 비밀보장과 그 예외를 처음에 함께 말해요. 무조건 비밀을 약속하면 안 돼요.
+    ko: 네가 나한테 말하는 대부분은 비밀로 지켜질 거야
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 청소년 비밀보장 4문장 순서
+    why: 비밀로 남는 부분이 있다고 말하고, 'exception'이 그 비밀의 예외를 가리켜 안전 문제를 말하고, 'the private part'가 처음 말한 비밀 부분을 가리켜 부모의 퇴실을 제안하고, 'Whatever you decide'가 그 제안에 대한 선택을 받아 솔직히 말해도 된다고 안심시켜요. 'exception'·'the private part'·'Whatever you decide'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: Some of what we talk about can stay private.
+      icon: lock
+      ko: 우리가 나누는 얘기 중 일부는 비밀로 남을 수 있어
+      note: 비밀
+    - en: The only exception I'd make is if your safety was at risk.
+      icon: shield
+      ko: 내가 예외로 두는 건 네 안전이 위험할 때뿐이야
+      note: 예외
+    - en: Would you like your parents to step out for the private part?
+      icon: me
+      ko: 비밀로 할 부분은 부모님이 잠시 나가 계셨으면 좋겠어?
+      note: 제안
+    - en: Whatever you decide, you can be honest with me — no judgment here.
+      icon: handshake2
+      ko: 어떻게 정하든 나한테는 솔직해도 돼 — 판단하지 않아
+      note: 안심
 
 - theme: er-peds
   title: 신생아 이상 징후
@@ -119273,31 +120500,103 @@
       chunks: ["When did she last", "feed well", ", and how long", "has she been sleepy", "?"]
       words: [w-feed, w-sleepy]
       goal: 1
+      tag: "수유·기면"
+      icon: "coffee"
+      why: "When…and how long…으로 마지막으로 잘 먹은 시점과 처진 기간을 한 문장에 묻는 두 질문이에요. 신생아가 먹기를 거부하고 유난히 처지는 것은 감염이나 황달의 단서일 수 있어요."
+      decoy: "since birth"
+      distractorsKo: ["출산은 순조로웠나요?", "아이가 몇 주 만에 태어났나요?"]
+      blank:
+        answer: "sleepy"
+        options:
+          - {en: "cold"}
+          - {en: "sleepy"}
+          - {en: "hungry"}
+          - {en: "fussy"}
     - en: "The yellow color is something we'll check right away."
       ko: "노란빛은 지금 바로 확인해 볼게요."
       chunks: ["The yellow color", "is something", "we'll check", "right away", "."]
       words: [w-yellow, w-color, w-check]
       goal: 1
+      tag: "황달 안내"
+      icon: "magnify"
+      why: "right away로 지금 바로 확인한다고 말해 부모의 걱정을 덜어요. 신생아의 노란 빛은 황달일 수 있고 수치가 높은지 빠르게 확인해야 해요."
+      decoy: "in the hall"
+      distractorsKo: ["아이 몸무게도 같이 잴게요", "피부색을 밝은 불빛 아래서 볼게요"]
+      blank:
+        answer: "yellow"
+        options:
+          - {en: "green"}
+          - {en: "brown"}
+          - {en: "yellow"}
+          - {en: "red"}
     - en: "You were right to bring her in — newborns need quick attention."
       ko: "데려오신 게 맞아요 — 신생아는 빠른 대응이 필요해요."
       chunks: ["You were right", "to bring her in", "— newborns need", "quick attention", "."]
       words: [w-right, w-bring, w-newborn, w-quick]
       goal: 2
+      tag: "부모 인정"
+      icon: "handshake2"
+      why: "You were right to…로 데려온 판단이 맞았다고 확인해 줘요. 생후 한 달 안의 신생아는 증상이 빨리 나빠질 수 있어서 빨리 오는 것이 맞아요."
+      decoy: "back home"
+      distractorsKo: ["퇴원한 지 며칠 됐나요?", "임신 중에 별다른 문제는 없었나요?"]
+      blank:
+        answer: "newborns"
+        options:
+          - {en: "toddlers"}
+          - {en: "teenagers"}
+          - {en: "adults"}
+          - {en: "newborns"}
     - en: "Has she had fewer wet diapers than usual today?"
       ko: "오늘 평소보다 젖은 기저귀가 적었나요?"
       chunks: ["Has she had", "fewer wet diapers", "than usual", "today", "?"]
       words: [w-diaper, w-usual]
       goal: 1
+      tag: "배설 문진"
+      icon: "calendar"
+      why: "fewer…than usual로 평소와 비교한 기저귀 수의 감소를 물어요. 신생아는 소변이 줄면 수분 섭취 부족이나 탈수를 의심해요."
+      decoy: "than her sister"
+      distractorsKo: ["오늘 변은 어떤 색이었나요?", "열을 재 보셨나요?"]
+      blank:
+        answer: "fewer"
+        options:
+          - {en: "fewer"}
+          - {en: "more"}
+          - {en: "heavier"}
+          - {en: "bigger"}
     - en: "We'll test her blood to see how high her jaundice level is."
       ko: "혈액 검사로 황달 수치가 얼마나 높은지 확인할게요."
       chunks: ["We'll test her blood", "to see", "how high", "her jaundice level is", "."]
       words: [w-test, w-blood, w-high, w-jaundice]
       goal: 1
+      tag: "검사 설명"
+      icon: "lab"
+      why: "how high…level로 수치가 얼마인지를 본다고 설명해요. 황달 정도는 혈액의 빌리루빈 수치로 확인하고 치료가 필요한지 정해요."
+      decoy: "with a mask"
+      distractorsKo: ["결과가 나오면 의사가 먼저 설명해 드릴게요", "아이 체중도 같이 잴게요"]
+      blank:
+        answer: "jaundice"
+        options:
+          - {en: "calcium"}
+          - {en: "jaundice"}
+          - {en: "iron"}
+          - {en: "salt"}
     - en: "Newborns can get sick quickly, so we move fast to check her."
       ko: "신생아는 빠르게 나빠질 수 있어서 저희도 신속히 확인해요."
       chunks: ["Newborns can get sick", "quickly", ", so we move", "fast to check her", "."]
       words: [w-newborn, w-sick, w-fast, w-check]
       goal: 2
+      tag: "신속 대응"
+      icon: "bell"
+      why: "so로 빨리 움직이는 이유를 앞 절에서 이어 줘요. 신생아는 감염이나 황달이 빠르게 진행할 수 있어서 증상이 있으면 서둘러 평가해요."
+      decoy: "than adults"
+      distractorsKo: ["아이가 태어난 병원은 어디예요?", "집에서 열을 잰 적이 있나요?"]
+      blank:
+        answer: "sick"
+        options:
+          - {en: "bigger"}
+          - {en: "stronger"}
+          - {en: "sick"}
+          - {en: "heavier"}
   nuance:
   - kind: slider
     words:
@@ -119320,7 +120619,7 @@
     scenes:
     - who: 차트 기록
       icon: board
-      en: Jaundice to chest; TSB sent.
+      en: Jaundice to chest; bili sent.
       ok: true
     - who: 의사에게 보고
       icon: speech
@@ -119332,6 +120631,30 @@
       ok: false
       fix: We sent a blood test to see how high her jaundice level is.
     why: TSB·bili는 빌리루빈 검사를 부르는 의료진의 말이에요. 부모에게는 '황달 수치를 보는 피검사'처럼 풀어서 말해요.
+    word: bili
+    ko: 빌리루빈(수치)
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 신생아 이상 징후 4문장 순서
+    why: 수유와 처진 기간을 묻고, 'Thank you'가 그 대답을 받아 노란빛을 바로 확인하겠다고 하고, 'it'이 그 노란빛을 가리켜 황달과 감염을 보는 혈액 검사를 설명하고, 'Those tests'가 그 검사를 가리켜 빠르다고 하며 부모의 판단을 인정해요. 'Thank you'·'it'·'Those tests'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: When did she last feed well, and how long has she been sleepy?
+      icon: coffee
+      ko: 마지막으로 잘 먹은 게 언제고, 얼마나 오래 처져 있었나요?
+      note: 문진
+    - en: Thank you. The yellow color is something we'll check right away.
+      icon: magnify
+      ko: 고마워요. 노란빛은 지금 바로 확인해 볼게요
+      note: 확인
+    - en: To check it, we'll test her blood for jaundice and infection.
+      icon: lab
+      ko: 확인하려고 혈액 검사로 황달과 감염을 볼게요
+      note: 검사
+    - en: Those tests are quick — newborns need fast care, and you were right to come.
+      icon: handshake2
+      ko: 그 검사는 빨라요 — 신생아는 빠른 대응이 필요하고 데려오신 게 맞아요
+      note: 인정
 
 - theme: er-peds
   title: 소아 아나필락시스
@@ -119356,31 +120679,103 @@
       chunks: ["We're giving him", "epinephrine", "right now", "— it works fast", "."]
       words: [w-epinephrine, w-fast]
       goal: 1
+      tag: "응급 투약"
+      icon: "siren"
+      why: "right now와 it works fast로 지금 즉시 한다는 것과 효과가 빠르다는 것을 알려요. 에피네프린은 아나필락시스의 1차 치료약이라 가장 먼저 투여해요."
+      decoy: "for the doctor"
+      distractorsKo: ["알레르기 반응을 확인하고 있어요", "아이 혈압을 계속 재고 있어요"]
+      blank:
+        answer: "epinephrine"
+        options:
+          - {en: "vitamins"}
+          - {en: "antacid"}
+          - {en: "epinephrine"}
+          - {en: "lotion"}
     - en: "Stay with me; we're on top of his airway."
       ko: "저한테 집중해 주세요 — 기도는 저희가 확실히 챙기고 있어요."
       chunks: ["Stay with me;", "we're", "on top", "of his airway", "."]
       words: [w-airway]
       goal: 1
+      tag: "보호자 안정"
+      icon: "handshake2"
+      why: "Stay with me로 당황한 보호자의 주의를 간호사에게 붙잡고, on top of…로 기도를 챙기고 있다고 전해요. 아나필락시스에서 가장 급한 것이 기도라는 점도 함께 알려요."
+      decoy: "by the door"
+      distractorsKo: ["아이가 먹은 음식 포장지를 가지고 계세요?", "곧 의사 선생님이 오실 거예요"]
+      blank:
+        answer: "airway"
+        options:
+          - {en: "rash"}
+          - {en: "fever"}
+          - {en: "cough"}
+          - {en: "airway"}
     - en: "You got him here in time — that matters."
       ko: "제때 데려오셨어요 — 그게 중요해요."
       chunks: ["You got", "him here", "in time", "— that matters", "."]
       words: []
       goal: 2
+      tag: "부모 인정"
+      icon: "star"
+      why: "in time으로 제때 왔다는 사실을 짚어 부모의 죄책감을 덜어요. 아나필락시스는 빨리 치료할수록 경과가 좋아요."
+      decoy: "at lunch"
+      distractorsKo: ["땅콩을 먹은 시간을 기억하세요?", "아이가 먹은 걸 말씀해 주시겠어요?"]
+      blank:
+        answer: "time"
+        options:
+          - {en: "time"}
+          - {en: "bed"}
+          - {en: "line"}
+          - {en: "trouble"}
     - en: "His throat is swelling, so we need to act immediately."
       ko: "목이 붓고 있어서 바로 조치해야 해요."
       chunks: ["His throat is", "swelling", ", so we need", "to act immediately", "."]
       words: [w-throat, w-swell, w-act]
       goal: 1
+      tag: "위급 설명"
+      icon: "siren"
+      why: "so로 목이 붓고 있다는 이유와 바로 조치한다는 결과를 이어요. 목구멍·기도가 붓는 것은 숨길을 막을 수 있어서 가장 급한 소견이에요."
+      decoy: "in the hall"
+      distractorsKo: ["숨소리를 계속 확인하고 있어요", "산소를 연결해서 숨을 도울게요"]
+      blank:
+        answer: "swelling"
+        options:
+          - {en: "shaking"}
+          - {en: "swelling"}
+          - {en: "healing"}
+          - {en: "clearing"}
     - en: "Try to stay calm — panicking makes it harder to help him."
       ko: "차분하게 있어 주세요 — 당황하시면 아이를 돕기 더 어려워져요."
       chunks: ["Try to stay calm", "— panicking makes it", "harder", "to help him", "."]
       words: [w-calm, w-hard, w-help]
       goal: 2
+      tag: "부모 협조"
+      icon: "me"
+      why: "Try to…로 명령이 아니라 시도해 보라는 부드러운 요청이고 이유를 덧붙여 따르게 해요. 응급 중에는 보호자가 침착해야 의료진이 안내하기 쉬워요."
+      decoy: "for a while"
+      distractorsKo: ["아이 옆에서 목소리를 들려주세요", "필요한 건 저희가 곧 알려 드릴게요"]
+      blank:
+        answer: "harder"
+        options:
+          - {en: "faster"}
+          - {en: "simpler"}
+          - {en: "harder"}
+          - {en: "easier"}
     - en: "We know peanuts caused this, so we'll keep him away from them."
       ko: "땅콩 때문인 걸 알고 있어서, 앞으로 멀리하게 할게요."
       chunks: ["We know", "peanuts caused this", ", so we'll keep him", "away from them", "."]
       words: [w-peanut, w-cause, w-away]
       goal: 1
+      tag: "원인 안내"
+      icon: "shield"
+      why: "We know…, so…로 원인과 앞으로의 계획을 이어 말해요. 원인 식품을 확인하면 이후 피하는 계획과 응급약 교육을 이어 갈 수 있어요."
+      decoy: "on the shelf"
+      distractorsKo: ["퇴원할 때 응급약 사용법을 알려 드릴게요", "알레르기 전문의 진료를 안내해 드릴게요"]
+      blank:
+        answer: "caused"
+        options:
+          - {en: "cured"}
+          - {en: "stopped"}
+          - {en: "treated"}
+          - {en: "caused"}
   nuance:
   - kind: pair
     words:
@@ -119417,6 +120812,29 @@
       Benadryl: 두드러기·가려움에는 쓰지만 기도 부종과 저혈압을 되돌리지 못해 에피네프린을 대신하지 않는다.
       an inhaler: 쌕쌕거림은 덜어 주어도 전신 반응은 막지 못한다.
     why: 목이 붓고 쌕쌕거리는 아나필락시스에는 에피네프린이 먼저예요. 항히스타민제나 흡입기는 그 뒤의 보조일 뿐이에요.
+    ko: 지금 바로 에피네프린을 놓고 있어요 — 빠르게 들어요
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 아나필락시스 설명 4문장 순서
+    why: 에피네프린을 지금 투여한다고 알리고, 'That's because'가 그 투여를 이유로 받아 목이 붓는다고 설명하고, 'That's why'가 그 위급함을 가리켜 보호자에게 곁에 있어 달라고 하고, 'what matters'가 지금까지의 모든 상황을 받아 제때 온 것을 인정해요. 'That's because'·'That's why'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: We're giving him epinephrine right now — it works fast.
+      icon: siren
+      ko: 지금 바로 에피네프린을 투여하고 있어요 — 빠르게 들어요
+      note: 투약
+    - en: That's because his throat is swelling and we need to act immediately.
+      icon: siren
+      ko: 목이 붓고 있어서 바로 조치해야 하기 때문이에요
+      note: 이유
+    - en: That's why I need you to stay close — we're on top of his airway.
+      icon: handshake2
+      ko: 그래서 곁에 계셔 주세요 — 기도는 저희가 챙기고 있어요
+      note: 안정
+    - en: You got him here in time — that's what matters most right now.
+      icon: star
+      ko: 제때 데려오셨어요 — 지금 가장 중요한 게 그거예요
+      note: 인정
 
 - theme: er-peds
   title: 소아 패혈증 초기
@@ -119441,31 +120859,103 @@
       chunks: ["Her signs worry me", "— we're moving", "quickly", "to help her", "."]
       words: [w-sign, w-worry, w-help]
       goal: 1
+      tag: "걱정 공유"
+      icon: "bell"
+      why: "Her signs worry me로 걱정을 솔직히 말해 상황의 심각성을 부모에게 전해요. we're moving quickly로 이미 움직이고 있다고 이어 불안만 키우지 않게 해요."
+      decoy: "for her mother"
+      distractorsKo: ["아이 이름을 다시 확인할게요", "아이가 오늘 뭘 먹었는지 알려 주세요"]
+      blank:
+        answer: "worry"
+        options:
+          - {en: "confuse"}
+          - {en: "surprise"}
+          - {en: "interest"}
+          - {en: "worry"}
     - en: "Tell me when this change started."
       ko: "이 변화가 언제 시작됐는지 말씀해 주세요."
       chunks: ["Tell me", "when this change", "started", "."]
       words: [w-tell, w-change, w-start]
       goal: 1
+      tag: "변화 시점"
+      icon: "calendar"
+      why: "Tell me when…으로 명령형이지만 부탁하는 어조로 변화가 시작된 때를 물어요. 패혈증은 시간이 중요해서 증상이 시작된 시각이 치료 속도를 정하는 단서예요."
+      decoy: "on the phone"
+      distractorsKo: ["아이가 오늘 얼마나 먹었나요?", "소변은 마지막으로 언제 봤나요?"]
+      blank:
+        answer: "started"
+        options:
+          - {en: "started"}
+          - {en: "ended"}
+          - {en: "stopped"}
+          - {en: "slowed"}
     - en: "We're calling the team so nothing is missed."
       ko: "놓치는 게 없도록 팀을 부르고 있어요."
       chunks: ["We're calling", "the team", "so nothing is missed", "."]
       words: [w-call, w-team]
       goal: 2
+      tag: "팀 호출"
+      icon: "bell"
+      why: "calling the team으로 도움을 부르고 있다고 알려요. 소아 패혈증이 의심되면 의사·약사·검사실 등 여러 사람이 함께 빠르게 움직여요."
+      decoy: "in the hall"
+      distractorsKo: ["의사 선생님이 곧 오실 거예요", "검사실에도 연락하고 있어요"]
+      blank:
+        answer: "team"
+        options:
+          - {en: "office"}
+          - {en: "team"}
+          - {en: "lab"}
+          - {en: "pharmacy"}
     - en: "Is she harder to wake up than she was an hour ago?"
       ko: "한 시간 전보다 깨우기가 더 힘든가요?"
       chunks: ["Is she harder", "to wake up", "than she was", "an hour ago", "?"]
       words: [w-hard, w-wake]
       goal: 1
+      tag: "의식 문진"
+      icon: "faceWorried"
+      why: "harder…than…으로 한 시간 전과 지금의 의식 수준을 견주게 해요. 깨우기 어려워지는 것은 소아 패혈증에서 중요한 악화 신호예요."
+      decoy: "than her brother"
+      distractorsKo: ["오늘 열이 몇 도까지 올랐나요?", "마지막으로 먹은 게 언제예요?"]
+      blank:
+        answer: "harder"
+        options:
+          - {en: "quicker"}
+          - {en: "faster"}
+          - {en: "harder"}
+          - {en: "easier"}
     - en: "Her skin feels cool and looks a little blotchy."
       ko: "피부가 서늘하고 얼룩덜룩해 보여요."
       chunks: ["Her skin feels", "cool", "and looks", "a little blotchy", "."]
       words: [w-skin, w-cool, w-blotchy]
       goal: 1
+      tag: "피부 설명"
+      icon: "magnify"
+      why: "feels cool and looks…로 만져서 느끼는 것과 눈으로 보이는 것을 함께 말해요. 피부가 차갑고 얼룩덜룩한 것은 혈액순환이 떨어진다는 신호일 수 있어요."
+      decoy: "in the photo"
+      distractorsKo: ["아이 몸이 뜨거운가요?", "열은 몇 도까지 올랐나요?"]
+      blank:
+        answer: "blotchy"
+        options:
+          - {en: "dry"}
+          - {en: "itchy"}
+          - {en: "shiny"}
+          - {en: "blotchy"}
     - en: "We're moving fast because early treatment saves lives."
       ko: "빠른 치료가 생명을 구하기 때문에 저희도 서두르고 있어요."
       chunks: ["We're moving fast", "because early treatment", "saves lives", "."]
       words: [w-fast, w-early, w-treatment]
       goal: 2
+      tag: "신속 이유"
+      icon: "siren"
+      why: "because로 서두르는 이유를 한 문장으로 설명해요. 패혈증은 항생제와 수액을 일찍 시작할수록 경과가 좋다고 알려져 있어요."
+      decoy: "for the staff"
+      distractorsKo: ["검사 결과는 나오는 대로 알려 드릴게요", "팀이 아이 곁을 계속 지킬 거예요"]
+      blank:
+        answer: "lives"
+        options:
+          - {en: "lives"}
+          - {en: "time"}
+          - {en: "tests"}
+          - {en: "beds"}
   nuance:
   - kind: pair
     words:
@@ -119505,6 +120995,30 @@
       ok: false
       fix: Her skin feels cool and looks a little blotchy — that tells us she needs help fast.
     why: mottled·cap refill은 의료진 사이의 소견 용어예요. 부모에게는 '서늘하고 얼룩덜룩하다'처럼 보이는 그대로 말해요.
+    word: mottled
+    ko: 얼룩덜룩한
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 소아 패혈증 의심 4문장 순서
+    why: 걱정되는 징후를 말하며 의식 상태를 묻고, 'Thank you'가 그 대답을 받아 피부 소견을 말하고, 'both of those'가 앞의 두 소견을 가리켜 팀 호출을 알리고, 'The team'이 방금 부른 팀을 가리켜 변화 시점을 물어요. 'Thank you'·'both of those'·'The team'이 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: Her signs worry me — is she harder to wake up than an hour ago?
+      icon: faceWorried
+      ko: 걱정되는 징후라 여쭤볼게요 — 한 시간 전보다 깨우기가 더 힘든가요?
+      note: 문진
+    - en: Thank you. Her skin feels cool and looks a little blotchy.
+      icon: magnify
+      ko: 고마워요. 피부가 서늘하고 얼룩덜룩해 보여요
+      note: 소견
+    - en: Because of both of those, we're calling the team so nothing is missed.
+      icon: bell
+      ko: 그 두 가지 때문에 놓치는 게 없도록 팀을 부르고 있어요
+      note: 호출
+    - en: The team will want to know — when did this change start?
+      icon: calendar
+      ko: 팀이 알고 싶어 할 거예요 — 이 변화가 언제 시작됐나요?
+      note: 시점
 
 - theme: er-peds
   title: 소아 심정지 코드
@@ -119529,31 +121043,103 @@
       chunks: ["Our whole team", "is working", "on her", "right now", "."]
       words: [w-team, w-work]
       goal: 1
+      tag: "팀 안내"
+      icon: "siren"
+      why: "whole team으로 한 사람이 아니라 팀 전체가 움직인다고 알려 보호자가 혼자 남겨진 느낌을 덜어요. 소아 소생 처치는 여러 사람이 역할을 나눠 동시에 진행해요."
+      decoy: "at the desk"
+      distractorsKo: ["아이 이름을 확인하고 있어요", "곧 의사 선생님이 상황을 설명할 거예요"]
+      blank:
+        answer: "whole"
+        options:
+          - {en: "whole"}
+          - {en: "small"}
+          - {en: "tiny"}
+          - {en: "new"}
     - en: "You can stay right here where she can hear your voice."
       ko: "아이가 목소리를 들을 수 있게 바로 여기 계셔도 돼요."
       chunks: ["You can stay", "right here", "where she can hear", "your voice", "."]
       words: [w-hear, w-voice]
       goal: 2
+      tag: "보호자 곁"
+      icon: "handshake2"
+      why: "stay right here…로 보호자가 아이 곁에 있어도 된다고 허락해요. 소생 중에도 가족이 곁에 있도록 허용하는 병원이 많고, 의료진 한 명이 옆에서 설명해 줘요."
+      decoy: "at the door"
+      distractorsKo: ["의자를 가져다 드릴게요", "물이 필요하시면 말씀하세요"]
+      blank:
+        answer: "hear"
+        options:
+          - {en: "know"}
+          - {en: "hear"}
+          - {en: "see"}
+          - {en: "feel"}
     - en: "I'll keep telling you what's happening every step."
       ko: "매 단계마다 무슨 일이 있는지 계속 말씀드릴게요."
       chunks: ["I'll keep telling you", "what's happening", "every step", "."]
       words: [w-tell, w-happen, w-step]
       goal: 2
+      tag: "상황 공유"
+      icon: "speech"
+      why: "keep telling…every step으로 계속 알려 주겠다는 약속이에요. 소생 중 가족은 정보가 끊기면 최악을 상상하기 쉬워서 한 사람이 단계마다 설명해 주는 것이 좋아요."
+      decoy: "to the nurse"
+      distractorsKo: ["다른 가족분께 연락해 드릴까요?", "궁금한 건 언제든 물어보세요"]
+      blank:
+        answer: "telling"
+        options:
+          - {en: "showing"}
+          - {en: "teaching"}
+          - {en: "telling"}
+          - {en: "asking"}
     - en: "We're giving chest compressions and medicine to help her heart."
       ko: "심장을 돕기 위해 흉부 압박과 약물을 주고 있어요."
       chunks: ["We're giving", "chest compressions", "and medicine", "to help her heart", "."]
       words: [w-chest, w-compression, w-medicine, w-help, w-heart]
       goal: 1
+      tag: "처치 설명"
+      icon: "monitor"
+      why: "chest compressions and medicine으로 지금 하는 처치 두 가지를 쉬운 말로 알려요. 흉부 압박은 심장이 멈췄을 때 피를 돌게 하려고 하는 처치예요."
+      decoy: "in the bed"
+      distractorsKo: ["전기 충격이 필요한지 보고 있어요", "호흡도 같이 도와주고 있어요"]
+      blank:
+        answer: "heart"
+        options:
+          - {en: "lungs"}
+          - {en: "brain"}
+          - {en: "stomach"}
+          - {en: "heart"}
     - en: "It's okay to hold her hand while we work."
       ko: "저희가 처치하는 동안 아이 손을 잡고 계셔도 돼요."
       chunks: ["It's okay", "to hold", "her hand", "while we work", "."]
       words: [w-hold, w-work]
       goal: 2
+      tag: "접촉 허락"
+      icon: "handshake2"
+      why: "It's okay to…로 보호자가 아이를 만져도 된다고 먼저 허락해요. 처치에 방해되지 않는 자리에서 손을 잡는 것은 아이와 가족 모두에게 의미가 있어요."
+      decoy: "in the room"
+      distractorsKo: ["아이 머리 쪽은 비워 주세요", "의자를 여기에 놓을게요"]
+      blank:
+        answer: "hold"
+        options:
+          - {en: "hold"}
+          - {en: "wave"}
+          - {en: "pat"}
+          - {en: "kiss"}
     - en: "Every second counts, and our whole team is focused on her."
       ko: "1초가 소중해서, 저희 팀 전체가 아이에게 집중하고 있어요."
       chunks: ["Every second counts", ", and our whole team", "is focused", "on her", "."]
       words: [w-second, w-team, w-focus]
       goal: 1
+      tag: "집중 안내"
+      icon: "bell"
+      why: "Every second counts로 시간이 중요하다는 점을 한마디로 전하고 whole team으로 총력을 알려요. 소생에서는 시간이 결과를 좌우해서 서두르는 이유를 가족에게도 알려요."
+      decoy: "and our families"
+      distractorsKo: ["필요하면 원목이나 사회복지사를 불러 드릴게요", "아이 이름을 다시 확인해 볼게요"]
+      blank:
+        answer: "focused"
+        options:
+          - {en: "counting"}
+          - {en: "focused"}
+          - {en: "waiting"}
+          - {en: "relying"}
   nuance:
   - kind: pair
     words:
@@ -119592,6 +121178,29 @@
       You need to leave the room now: 안전 문제가 없는데도 부모를 내보내는 것은 지금의 권고와 맞지 않는다.
       You shouldn't watch this: 보호자의 선택을 간호사가 대신 정해 버린다.
     why: 미국 응급간호협회(ENA)와 미국심장협회(AHA)는 소생술 중 가족이 원하면 곁에 있게 하도록 권해요. 이때 설명을 맡을 직원이 함께 있어요.
+    ko: 아이가 목소리를 들을 수 있게 바로 여기 계셔도 돼요
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 소아 심정지 가족 안내 4문장 순서
+    why: 팀이 지금 아이에게 매달려 있다고 알리고, 'That's what'이 그 팀이 하는 일을 가리켜 처치를 설명하고, 'you'로 보호자에게 곁에 있어도 된다고 하고, 'here with her'가 그 허락을 받아 곁에서 단계마다 설명하겠다고 약속해요. 'That's what'·'here with her'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: Our whole team is working on her right now.
+      icon: siren
+      ko: 저희 팀 전체가 지금 아이를 돌보고 있어요
+      note: 안내
+    - en: 'That''s what they''re doing: chest compressions and medicine to help her heart.'
+      icon: monitor
+      ko: '그게 지금 하는 일이에요: 심장을 돕는 흉부 압박과 약물이에요'
+      note: 처치
+    - en: You can stay right here where she can hear your voice.
+      icon: handshake2
+      ko: 아이가 목소리를 들을 수 있게 바로 여기 계셔도 돼요
+      note: 허락
+    - en: While you're here with her, I'll stay beside you and tell you each step.
+      icon: speech
+      ko: 아이 곁에 계시는 동안 제가 곁에서 매 단계를 말씀드릴게요
+      note: 약속
 
 - theme: er-peds
   title: 영아 SIDS 소생 실패
@@ -119616,31 +121225,103 @@
       chunks: ["I'm so sorry", "— we did everything", "we could", ", and she didn't survive", "."]
       words: [w-sorry, w-survive]
       goal: 1
+      tag: "사망 고지"
+      icon: "handshake2"
+      why: "I'm so sorry로 먼저 애도를 표하고 we did everything we could로 최선을 다했음을 전해요. 사망 소식은 돌려 말하지 않고 분명하게 말해야 가족이 현실을 받아들일 수 있어요."
+      decoy: "in the hall"
+      distractorsKo: ["아이는 지금 침대에 누워 있어요", "의사 선생님이 곧 오실 거예요"]
+      blank:
+        answer: "sorry"
+        options:
+          - {en: "proud"}
+          - {en: "sorry"}
+          - {en: "glad"}
+          - {en: "sure"}
     - en: "Take all the time you need to be with her."
       ko: "아이 곁에 있고 싶으신 만큼 충분히 시간을 가지세요."
       chunks: ["Take all", "the time you need", "to be", "with her", "."]
       words: [w-alltime]
       goal: 2
+      tag: "시간 허용"
+      icon: "me"
+      why: "Take all the time you need로 서두르지 않아도 된다고 허락해요. 사망 직후 가족이 아이와 충분히 함께하도록 시간을 주는 것은 애도에 도움이 돼요."
+      decoy: "in the hall"
+      distractorsKo: ["필요하시면 담요를 가져다 드릴게요", "물이 필요하시면 말씀하세요"]
+      blank:
+        answer: "time"
+        options:
+          - {en: "help"}
+          - {en: "blankets"}
+          - {en: "time"}
+          - {en: "tissues"}
     - en: "You are not alone; we're here with you."
       ko: "혼자가 아니에요; 저희가 곁에 있어요."
       chunks: ["You are not", "alone;", "we're here", "with you", "."]
       words: [w-alone]
       goal: 2
+      tag: "곁에 있음"
+      icon: "handshake2"
+      why: "You are not alone으로 부모가 느낄 고립감을 직접 덜어 줘요. 말이 안 나올 때는 긴 위로보다 곁에 있다는 짧은 표현이 도움이 돼요."
+      decoy: "at the door"
+      distractorsKo: ["필요하시면 사회복지사를 불러 드릴게요", "가족분께 연락해 드릴까요?"]
+      blank:
+        answer: "alone"
+        options:
+          - {en: "lost"}
+          - {en: "late"}
+          - {en: "wrong"}
+          - {en: "alone"}
     - en: "This is not something you caused or could have prevented."
       ko: "이건 부모님이 일으켰거나 막을 수 있었던 일이 아니에요."
       chunks: ["This is not", "something you caused", "or could", "have prevented", "."]
       words: [w-cause, w-prevent]
       goal: 1
+      tag: "자책 덜기"
+      icon: "handshake2"
+      why: "not something you caused로 부모의 죄책감을 덜어요. 다만 원인 불명의 영아 사망은 검시관 조사가 끝나야 원인이 정해지니, 원인을 단정하는 말은 하지 않고 탓하지 않는 데 집중해요."
+      decoy: "at night"
+      distractorsKo: ["아이가 어떤 모습으로 발견됐는지 기억하시나요?", "집에 다른 가족이 있나요?"]
+      blank:
+        answer: "caused"
+        options:
+          - {en: "caused"}
+          - {en: "missed"}
+          - {en: "ignored"}
+          - {en: "expected"}
     - en: "Would you like a chaplain or someone else here with you?"
       ko: "원목이나 다른 누군가가 곁에 있었으면 하시나요?"
       chunks: ["Would you like", "a chaplain", "or someone else", "here with you", "?"]
       words: [w-chaplain]
       goal: 2
+      tag: "지원 제안"
+      icon: "handshake2"
+      why: "Would you like…?로 필요한지 의사를 묻는 제안형이에요. 원목(chaplain)이나 사회복지사는 병원이 가족에게 제공하는 지지 자원이에요."
+      decoy: "in the car"
+      distractorsKo: ["아이를 위해 해 드릴 일이 있을까요?", "물이나 담요가 필요하세요?"]
+      blank:
+        answer: "chaplain"
+        options:
+          - {en: "surgeon"}
+          - {en: "chaplain"}
+          - {en: "pharmacist"}
+          - {en: "radiologist"}
     - en: "You can hold her for as long as you'd like."
       ko: "원하시는 만큼 오래 아이를 안고 계셔도 돼요."
       chunks: ["You can hold her", "for as long", "as you'd", "like", "."]
       words: [w-hold]
       goal: 2
+      tag: "안아도 됨"
+      icon: "handshake2"
+      why: "hold her for as long as…로 아이를 안고 있어도 되고 시간 제한이 없다고 허락해요. 사망 후 아이를 안고 작별할 기회는 가족의 애도에 도움이 될 수 있어요. 원인 불명의 영아 사망은 검시 사건이라, 튜브·라인은 그대로 두고 직원이 곁에 있는 등 병원 지침 안에서 안게 해요."
+      decoy: "in the hall"
+      distractorsKo: ["아이 모습이 달라 보여도 괜찮아요", "원하시면 손도장을 남길 수 있어요"]
+      blank:
+        answer: "hold"
+        options:
+          - {en: "move"}
+          - {en: "visit"}
+          - {en: "hold"}
+          - {en: "see"}
   nuance:
   - kind: pair
     words:
@@ -119677,6 +121358,29 @@
       passed: 흔한 완곡어지만, 충격 속의 가족은 아이가 아직 살아 있는지 되물을 수 있다.
       went to a better place: 가족의 믿음을 모른 채 종교적 위로를 얹는 말이라 고지에 쓰지 않는다.
     why: 사망을 알릴 때는 완곡어 대신 died나 didn't survive처럼 분명한 말을 써요. 그다음 곁에 머물며 가족의 반응을 받아 줘요.
+    ko: 정말 유감이에요 — 아이가 사망했어요
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 영아 사망 가족 안내 4문장 순서
+    why: 사망 소식을 분명히 전하고, 'This'가 그 소식을 가리켜 부모 탓이 아니라고 하고, 'hold her'로 아이와 함께할 시간을 허락하고, 'for that'이 그 허락을 가리켜 곁에 있어 줄 사람을 제안해요. 'This'·'for that'이 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: I'm so sorry — we did everything we could, and she didn't survive.
+      icon: handshake2
+      ko: 정말 유감입니다 — 최선을 다했지만 아이는 살아나지 못했어요
+      note: 고지
+    - en: This is not something you caused or could have prevented.
+      icon: handshake2
+      ko: 이건 부모님이 일으켰거나 막을 수 있었던 일이 아니에요
+      note: 자책 덜기
+    - en: You can hold her for as long as you'd like.
+      icon: me
+      ko: 원하시는 만큼 오래 아이를 안고 계셔도 돼요
+      note: 허락
+    - en: Would you like a chaplain or someone else here with you for that?
+      icon: handshake2
+      ko: 그때 원목이나 다른 누군가가 곁에 있었으면 하시나요?
+      note: 제안
 
 - theme: er-peds
   title: 학대 의심 신고 결정
@@ -119701,31 +121405,103 @@
       chunks: ["By law", ", I have to report", "certain injuries", "— it's not", "an accusation", "."]
       words: [w-law, w-report, w-injury, w-accusation]
       goal: 1
+      tag: "신고 의무"
+      icon: "shield"
+      why: "By law로 개인의 선택이 아니라 법적 의무임을 먼저 밝히고 it's not an accusation으로 비난이 아님을 분명히 해요. 미국에서는 의료진이 아동 학대를 의심하면 신고할 법적 의무가 있어요."
+      decoy: "in writing"
+      distractorsKo: ["아이는 오늘 안전하게 돌볼게요", "담당 전문가가 곧 올 거예요"]
+      blank:
+        answer: "law"
+        options:
+          - {en: "request"}
+          - {en: "luck"}
+          - {en: "law"}
+          - {en: "habit"}
     - en: "My focus is your child's safety, and I want to work with you."
       ko: "제 초점은 아이의 안전이고, 부모님과 함께 풀어 가고 싶어요."
       chunks: ["My focus is", "your child's safety", ", and I want", "to work with you", "."]
       words: [w-focus, w-child, w-safety]
       goal: 2
+      tag: "협력 의지"
+      icon: "handshake2"
+      why: "My focus…and I want to work with you로 목적(아이 안전)과 태도(함께)를 한 문장에 담아요. 신고 상황에서도 보호자와 협력하는 관계를 유지하는 것이 아이에게 이로워요."
+      decoy: "at school"
+      distractorsKo: ["아이 곁에는 계속 있을 거예요", "모든 걸 설명해 드릴게요"]
+      blank:
+        answer: "safety"
+        options:
+          - {en: "schedule"}
+          - {en: "grades"}
+          - {en: "weight"}
+          - {en: "safety"}
     - en: "A specialist will help us figure this out together."
       ko: "전문가가 저희와 함께 이 상황을 파악하는 걸 도와줄 거예요."
       chunks: ["A specialist will", "help us", "figure this out", "together", "."]
       words: [w-specialist, w-help, w-together]
       goal: 2
+      tag: "전문가 연계"
+      icon: "me"
+      why: "A specialist…together로 전문가가 판단하고 우리는 함께 상황을 파악한다고 알려요. 아동 학대 평가는 소아과·사회복지 등 전문팀이 맡아요."
+      decoy: "in the lobby"
+      distractorsKo: ["사회복지사도 같이 올 거예요", "아이는 계속 곁에서 돌볼게요"]
+      blank:
+        answer: "specialist"
+        options:
+          - {en: "specialist"}
+          - {en: "neighbor"}
+          - {en: "teacher"}
+          - {en: "stranger"}
     - en: "I understand this feels upsetting, but I have to follow the process."
       ko: "속상하게 느껴지실 걸 알지만, 절차를 따라야 해요."
       chunks: ["I understand", "this feels upsetting", ", but I have", "to follow the process", "."]
       words: [w-understand, w-upset, w-follow, w-process]
       goal: 1
+      tag: "공감·절차"
+      icon: "faceWorried"
+      why: "I understand…, but…으로 속상한 마음을 먼저 인정하고 절차를 따라야 한다는 한계를 이어요. 감정을 먼저 인정한 뒤 규정을 말하면 책임을 피하는 말로 들리지 않아요."
+      decoy: "and I agree"
+      distractorsKo: ["아이는 안전하게 돌볼게요", "전문가가 곧 설명해 드릴 거예요"]
+      blank:
+        answer: "upsetting"
+        options:
+          - {en: "simple"}
+          - {en: "upsetting"}
+          - {en: "exciting"}
+          - {en: "boring"}
     - en: "The specialist will ask both of you the same questions."
       ko: "전문가가 두 분께 똑같은 질문을 드릴 거예요."
       chunks: ["The specialist will ask", "both of you", "the same", "questions", "."]
       words: [w-specialist, w-ask, w-question]
       goal: 1
+      tag: "면담 안내"
+      icon: "speech"
+      why: "both of you…the same questions로 두 보호자에게 똑같은 질문을 한다고 미리 알려요. 같은 질문을 각각 묻는 것은 특정인을 의심해서가 아니라 표준 절차라는 점을 전해요."
+      decoy: "in a row"
+      distractorsKo: ["질문은 오래 걸리지 않을 수 있어요", "질문이 불편하면 말씀해 주세요"]
+      blank:
+        answer: "same"
+        options:
+          - {en: "easy"}
+          - {en: "long"}
+          - {en: "same"}
+          - {en: "different"}
     - en: "Nothing you say here changes how much we care about your child."
       ko: "여기서 뭐라고 하시든 저희가 아이를 아끼는 마음은 변하지 않아요."
       chunks: ["Nothing you say", "here changes", "how much we care", "about your child", "."]
       words: [w-care, w-child]
       goal: 2
+      tag: "변치 않는 마음"
+      icon: "handshake2"
+      why: "Nothing you say…로 말한 내용 때문에 아이에 대한 돌봄이 달라지지 않는다고 약속해요. 보호자가 방어적이 되지 않고 사실대로 이야기하도록 돕는 말이에요."
+      decoy: "at school"
+      distractorsKo: ["아이 진료는 그대로 계속돼요", "필요한 건 말씀해 주세요"]
+      blank:
+        answer: "care"
+        options:
+          - {en: "know"}
+          - {en: "hear"}
+          - {en: "learn"}
+          - {en: "care"}
   nuance:
   - kind: pair
     words:
@@ -119763,6 +121539,29 @@
       I'm reporting you: 보호자를 가해자로 지목하는 말로 들려 대립이 커진다.
       I have to accuse someone: 간호사의 역할이 아니다. 신고는 합리적 의심만으로 하고, 조사와 판단은 아동보호기관이 한다.
     why: 미국의 모든 주에서 간호사는 아동 학대 의무 신고자예요. 증거가 아니라 합리적 의심으로 신고하고, 조사와 판단은 아동보호기관의 몫이에요.
+    ko: 법에 따라 제가 신고를 해야 해요
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 학대 의심 신고 설명 4문장 순서
+    why: 신고 의무를 밝히며 비난이 아니라고 하고, 'this'가 그 상황을 가리켜 속상함을 인정하며 절차를 말하고, 'That process'가 앞 줄의 'the process'를 받아 전문가가 함께한다고 말하고, 'the specialist'가 그 전문가를 가리켜 마음이 변치 않는다고 닫아요. 'this'·'That process'·'the specialist'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: By law, I have to report certain injuries — it's not an accusation.
+      icon: shield
+      ko: 법에 따라 특정 손상은 신고해야 해요 — 비난하려는 게 아니에요
+      note: 의무
+    - en: I understand this feels upsetting, but I have to follow the process.
+      icon: faceWorried
+      ko: 속상하게 느껴지실 걸 알지만, 절차를 따라야 해요
+      note: 공감
+    - en: That process includes a specialist who will help us figure this out together.
+      icon: me
+      ko: 그 절차에는 함께 파악하는 걸 도와줄 전문가가 포함돼요
+      note: 전문가
+    - en: Whatever the specialist asks, nothing you say changes how much we care about your child.
+      icon: handshake2
+      ko: 전문가가 뭘 묻든, 하신 말씀이 아이를 아끼는 마음을 바꾸진 않아요
+      note: 약속
 
 - theme: er-peds
   title: 소아 DKA
@@ -119787,31 +121586,103 @@
       chunks: ["Her body is low", "on insulin", ", and we're correcting", "it carefully", "."]
       words: [w-low, w-insulin, w-correct]
       goal: 1
+      tag: "원인 설명"
+      icon: "bulb"
+      why: "low on insulin으로 DKA의 핵심 원인(인슐린 부족)을 쉬운 말로 설명하고 correcting it carefully로 신중하게 바로잡는다고 알려요. DKA는 인슐린이 모자라 몸이 당을 못 쓰고 산이 쌓이는 상태예요."
+      decoy: "at the desk"
+      distractorsKo: ["아이가 최근에 많이 마시고 소변을 자주 봤나요?", "마지막으로 인슐린을 맞은 게 언제예요?"]
+      blank:
+        answer: "insulin"
+        options:
+          - {en: "water"}
+          - {en: "iron"}
+          - {en: "calcium"}
+          - {en: "insulin"}
     - en: "This is a lot to take in — I'll walk you through each step."
       ko: "받아들이기 힘드시겠지만 — 단계마다 차근차근 설명해 드릴게요."
       chunks: ["This is a lot", "to take in", "— I'll walk you", "through each step", "."]
       words: [w-walk, w-step]
       goal: 2
+      tag: "단계 설명"
+      icon: "handshake2"
+      why: "This is a lot to take in으로 받아들이기 벅찬 마음을 인정하고 walk you through each step으로 단계마다 곁에서 설명하겠다고 약속해요. 새로 당뇨를 알게 된 부모는 한꺼번에 많은 정보를 받아요."
+      decoy: "for your family"
+      distractorsKo: ["질문은 언제든 하셔도 돼요", "검사 결과는 나오는 대로 알려 드릴게요"]
+      blank:
+        answer: "step"
+        options:
+          - {en: "step"}
+          - {en: "test"}
+          - {en: "meal"}
+          - {en: "visit"}
     - en: "She's in the right place and we're helping her now."
       ko: "제대로 된 곳에 오셨고 지금 저희가 돕고 있어요."
       chunks: ["She's in", "the right place", "and we're helping", "her now", "."]
       words: [w-right, w-place, w-help]
       goal: 2
+      tag: "안심"
+      icon: "check"
+      why: "in the right place로 올바른 곳에 왔다고 확인해 부모의 불안을 덜어요. we're helping her now로 이미 치료가 시작됐음을 알려요."
+      decoy: "for her mom"
+      distractorsKo: ["아이 이름을 다시 확인할게요", "곧 의사 선생님이 상황을 설명해 드릴 거예요"]
+      blank:
+        answer: "place"
+        options:
+          - {en: "order"}
+          - {en: "place"}
+          - {en: "time"}
+          - {en: "mood"}
     - en: "We're giving fluids and insulin through an IV to bring her sugar down safely."
       ko: "정맥주사로 수액과 인슐린을 줘서 혈당을 안전하게 낮추고 있어요."
       chunks: ["We're giving fluids", "and insulin", "through an IV", "to bring her sugar down", "safely", "."]
       words: [w-fluid, w-insulin, w-iv, w-sugar]
       goal: 1
+      tag: "처치 설명"
+      icon: "pill"
+      why: "fluids and insulin으로 DKA의 두 가지 핵심 치료(수액과 인슐린)를 알려요. safely로 혈당을 너무 빨리 낮추지 않고 단계적으로 내린다는 점도 전해요."
+      decoy: "at the bedside"
+      distractorsKo: ["혈액 검사를 자주 해서 확인할게요", "아이 몸무게에 맞춰 용량을 정해요"]
+      blank:
+        answer: "fluids"
+        options:
+          - {en: "vitamins"}
+          - {en: "antibiotics"}
+          - {en: "fluids"}
+          - {en: "blood"}
     - en: "Diabetes means her body needs help managing sugar every day."
       ko: "당뇨병은 매일 혈당 관리에 몸이 도움을 필요로 한다는 뜻이에요."
       chunks: ["Diabetes means", "her body needs help", "managing sugar", "every day", "."]
       words: [w-diabetes, w-help, w-manage, w-sugar]
       goal: 2
+      tag: "질환 설명"
+      icon: "bulb"
+      why: "means로 병의 뜻을 한 문장으로 정의하고 every day로 평생 관리가 필요한 병이라는 점을 짚어요. 소아 1형 당뇨는 인슐린을 매일 맞아야 해요."
+      decoy: "at school"
+      distractorsKo: ["식사 계획은 영양사가 도와줄 거예요", "인슐린 주사법은 천천히 알려 드릴게요"]
+      blank:
+        answer: "sugar"
+        options:
+          - {en: "salt"}
+          - {en: "water"}
+          - {en: "fat"}
+          - {en: "sugar"}
     - en: "We'll check her levels often until she's stable and steady."
       ko: "안정되고 일정해질 때까지 수치를 자주 확인할게요."
       chunks: ["We'll check her levels", "often", "until she's stable", "and steady", "."]
       words: [w-check, w-level, w-stable, w-steady]
       goal: 1
+      tag: "모니터링"
+      icon: "monitor"
+      why: "check her levels often으로 혈당과 전해질을 자주 재서 확인한다고 알려요. DKA 치료 중에는 혈당과 칼륨 등을 자주 확인해 치료를 조절해요."
+      decoy: "in the lobby"
+      distractorsKo: ["수치가 바뀌면 바로 알려 드릴게요", "아이는 곁에서 계속 지켜볼게요"]
+      blank:
+        answer: "levels"
+        options:
+          - {en: "levels"}
+          - {en: "lines"}
+          - {en: "bags"}
+          - {en: "tubes"}
   nuance:
   - kind: pair
     words:
@@ -119847,6 +121718,29 @@
       as fast as we can: 부모를 안심시키려는 말이지만 사실과 다르다. 급하게 내리지 않는다.
       all at once: 한 번에 떨어뜨리는 치료는 없다. 부모가 치료를 잘못 이해하게 된다.
     why: 소아 DKA에서 '천천히'는 늦장이 아니라 지침이에요. 뇌부종 같은 합병증을 줄이려고 인슐린을 볼루스 없이 정주하며 혈당을 서서히 내려요.
+    ko: 혈당을 천천히 안전하게 낮추고 있어요
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 소아 DKA 설명 4문장 순서
+    why: 인슐린이 모자라 바로잡고 있다고 설명하고, 'To do that'이 그 바로잡기를 가리켜 수액과 인슐린을 말하고, 'it's working'의 it이 그 투여를 가리켜 수치 확인을 알리고, 'This'가 지금까지의 모든 설명을 받아 단계별 안내를 약속해요. 'To do that'·'it's working'·'This'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: Her body is low on insulin, and we're correcting it carefully.
+      icon: bulb
+      ko: 아이 몸에 인슐린이 부족해서 저희가 신중하게 바로잡고 있어요
+      note: 원인
+    - en: To do that, we're giving fluids and insulin through an IV.
+      icon: pill
+      ko: 그러려고 정맥주사로 수액과 인슐린을 주고 있어요
+      note: 처치
+    - en: We'll check her levels often to make sure it's working.
+      icon: monitor
+      ko: 잘 듣는지 수치를 자주 확인할게요
+      note: 확인
+    - en: This is a lot to take in — I'll walk you through each step.
+      icon: handshake2
+      ko: 받아들이기 힘드시겠지만 단계마다 차근차근 설명해 드릴게요
+      note: 안내
 
 - theme: er-peds
   title: 중증 천식 지속상태
@@ -119871,31 +121765,103 @@
       chunks: ["We're giving", "stronger treatments", "right now", "to open his airways", "."]
       words: [w-strong, w-treatment, w-open, w-airway]
       goal: 1
+      tag: "치료 안내"
+      icon: "hospital"
+      why: "stronger…right now로 지금 더 강하게 치료한다고 알려요. 중증 천식에서는 기관지를 여는 흡입약을 반복해서 쓰고 스테로이드 등을 함께 써요."
+      decoy: "for his cough"
+      distractorsKo: ["산소도 같이 드리고 있어요", "아이가 숨 쉬는 모습을 계속 보고 있어요"]
+      blank:
+        answer: "treatments"
+        options:
+          - {en: "treatments"}
+          - {en: "tests"}
+          - {en: "X-rays"}
+          - {en: "fluids"}
     - en: "Stay close and keep your voice calm for him."
       ko: "가까이서 차분한 목소리로 있어 주세요."
       chunks: ["Stay close", "and keep", "your voice calm", "for him", "."]
       words: [w-close, w-voice, w-calm]
       goal: 2
+      tag: "보호자 역할"
+      icon: "handshake2"
+      why: "Stay close and keep…로 보호자가 할 수 있는 일을 두 가지 구체적으로 말해요. 천식 발작 중 아이가 불안하면 숨이 더 가빠져서 차분한 목소리가 도움이 돼요."
+      decoy: "for the nurse"
+      distractorsKo: ["아이가 편한 자세를 찾게 도와주세요", "아이 손을 잡아 주세요"]
+      blank:
+        answer: "voice"
+        options:
+          - {en: "eyes"}
+          - {en: "voice"}
+          - {en: "hands"}
+          - {en: "face"}
     - en: "We're watching him every second."
       ko: "매 순간 아이를 지켜보고 있어요."
       chunks: ["We're watching", "him", "every second", "."]
       words: [w-watch, w-second]
       goal: 2
+      tag: "지속 관찰"
+      icon: "monitor"
+      why: "every second로 잠깐도 눈을 떼지 않는다고 강조해 부모가 혼자 감시하지 않아도 된다는 안도를 줘요. 중증 천식은 상태가 빨리 변해서 계속 지켜봐요."
+      decoy: "at the door"
+      distractorsKo: ["아이가 편하게 앉도록 침대를 세울게요", "숨소리도 계속 확인하고 있어요"]
+      blank:
+        answer: "watching"
+        options:
+          - {en: "weighing"}
+          - {en: "teaching"}
+          - {en: "watching"}
+          - {en: "moving"}
     - en: "His oxygen level is dropping, so we're adding more support now."
       ko: "산소 수치가 떨어지고 있어서 지금 호흡 보조를 더 올리고 있어요."
       chunks: ["His oxygen level is", "dropping", ", so we're adding", "more support now", "."]
       words: [w-oxygen, w-level, w-drop, w-support]
       goal: 1
+      tag: "악화 설명"
+      icon: "monitor"
+      why: "dropping과 so로 산소 수치가 떨어져서 지원을 늘린다는 인과를 한 문장에 이어요. 산소 포화도가 떨어지면 산소 공급과 호흡 보조를 늘려요."
+      decoy: "in the room"
+      distractorsKo: ["의사가 곧 설명해 드릴 거예요", "아이 상태를 계속 알려 드릴게요"]
+      blank:
+        answer: "oxygen"
+        options:
+          - {en: "sugar"}
+          - {en: "pressure"}
+          - {en: "fever"}
+          - {en: "oxygen"}
     - en: "If breathing gets any harder, we'll help him with a breathing machine."
       ko: "호흡이 더 힘들어지면 호흡 보조 기계로 도와드릴게요."
       chunks: ["If breathing gets", "any harder", ", we'll help him", "with a breathing machine", "."]
       words: [w-breathe, w-hard, w-help, w-machine]
       goal: 1
+      tag: "호흡 보조 예고"
+      icon: "hospital"
+      why: "If…, we'll…로 지금은 아니지만 악화되면 쓸 수단을 미리 알려요. breathing machine은 호흡을 대신 돕는 기계를 보호자가 알아듣는 말로 푼 거예요."
+      decoy: "in the hall"
+      distractorsKo: ["지금은 산소와 약으로 먼저 도와드려요", "상태가 바뀌면 바로 알려 드릴게요"]
+      blank:
+        answer: "harder"
+        options:
+          - {en: "harder"}
+          - {en: "easier"}
+          - {en: "better"}
+          - {en: "calmer"}
     - en: "You're doing great staying calm — it really helps him."
       ko: "차분히 계셔주셔서 정말 잘하고 계세요 — 아이한테 큰 도움이 돼요."
       chunks: ["You're doing great", "staying calm", "— it really", "helps him", "."]
       words: [w-calm, w-help]
       goal: 2
+      tag: "격려"
+      icon: "star"
+      why: "You're doing great로 부모의 행동을 칭찬하고 it really helps him으로 그 행동이 아이에게 도움이 된다고 이유를 줘요. 침착한 보호자는 아이의 불안을 낮추는 데 실제로 도움이 돼요."
+      decoy: "for you"
+      distractorsKo: ["아이 곁에서 계속 말을 걸어 주세요", "물이 필요하시면 말씀하세요"]
+      blank:
+        answer: "calm"
+        options:
+          - {en: "focused"}
+          - {en: "calm"}
+          - {en: "busy"}
+          - {en: "tired"}
   nuance:
   - kind: slider
     words:
@@ -119916,7 +121882,7 @@
     scenes:
     - who: 차트 기록
       icon: board
-      en: Worsening WOB despite continuous albuterol; prep for intubation.
+      en: Worsening WOB despite continuous albuterol; prep to intubate.
       ok: true
     - who: 의사에게 보고
       icon: speech
@@ -119928,6 +121894,30 @@
       ok: false
       fix: If breathing gets any harder, we'll help him with a breathing machine.
     why: intubate(기관 삽관)는 의료진의 말이에요. 부모에게는 '숨 쉬는 걸 도와줄 기계'처럼 풀어서 말하고, 왜 필요한지 함께 설명해요.
+    word: intubate
+    ko: 기관 삽관하다
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 중증 천식 가족 안내 4문장 순서
+    why: 더 강한 치료를 한다고 알리고, 'That's because'가 그 치료를 이유로 받아 산소 저하를 설명하고, 'that support'가 앞의 지원을 가리켜 호흡 보조 계획을 말하고, 'next'가 그 계획 다음 상황을 받아 보호자를 격려해요. 'That's because'·'that support'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: We're giving stronger treatments right now to open his airways.
+      icon: hospital
+      ko: 지금 더 강한 치료로 기도를 열어주고 있어요
+      note: 치료
+    - en: That's because his oxygen level is dropping, so we're adding more support.
+      icon: monitor
+      ko: 산소 수치가 떨어지고 있어서 호흡 보조를 더 올리고 있어요
+      note: 이유
+    - en: If breathing gets harder even with that support, we'll use a breathing machine.
+      icon: hospital
+      ko: 그 보조에도 호흡이 더 힘들어지면 호흡 보조 기계를 쓸게요
+      note: 계획
+    - en: Whatever happens next, you're doing great staying calm — it really helps him.
+      icon: star
+      ko: 앞으로 어떻게 되든 차분히 계셔주셔서 정말 잘하고 계세요 — 아이한테 큰 도움이 돼요
+      note: 격려
 
 - theme: er-geriatric
   title: 노인 낙상 후 문진
