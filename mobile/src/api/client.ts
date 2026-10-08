@@ -121,7 +121,13 @@ export interface LessonDetail {
   nuance: LessonNuance[];
   /** v46 order card — absent when not authored. */
   order?: LessonOrder;
+  /** Where the situation sits in the curriculum — the hub subtitle (v46 T6); absent when it
+   *  belongs to no theme. */
+  course?: LessonCourse;
 }
+
+/** The hub subtitle's coordinate: `ER · 환자 안전·오류 예방 · 3/34`. */
+export interface LessonCourse { dept?: string; theme: string; index: number; total: number }
 
 // --- scenario + conversation types (GET /scenarios/{id} is untyped in the
 // contract, so we mirror the server content.Scenario json tags here). ---
@@ -136,6 +142,8 @@ export interface ScenarioBriefing {
   dept?: string; deptColor?: string; brief?: string; difficulty?: number; timeLabel?: string;
   skills?: string[]; rewards?: ScenarioReward[]; reqs?: ScenarioReq[]; tone?: string; accent?: string;
   chart?: ScenarioChart; riskyPhrases?: string[];
+  /** The hub's one line with one `[[highlighted]]` span (v46 T6); optional. */
+  line?: string;
 }
 export interface ScenarioStep {
   id: string; type: string; next?: string;

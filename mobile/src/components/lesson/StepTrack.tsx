@@ -10,7 +10,7 @@ import { NbIcon, type NbIconName } from '@/components/nb/NbIcon';
 import { nbText } from '@/components/nb/NbUI';
 import type { LessonStepKind, LessonStepState, LessonStepView } from '@/api/client';
 import { useT } from '@/i18n';
-import { nb } from '@/theme/nb';
+import { nb, nbFonts } from '@/theme/nb';
 
 const STEP_LOOK: Record<LessonStepKind, { icon: NbIconName; color: string }> = {
   words: { icon: 'pencil', color: nb.amber },
@@ -22,9 +22,6 @@ const STEP_LOOK: Record<LessonStepKind, { icon: NbIconName; color: string }> = {
 const D = 44;
 const faint = 'rgba(62,54,43,.25)';
 
-/** A step the line may run past: finished, or never to be done here (skipped, empty). */
-const passed = (s: LessonStepState) => s === 'done' || s === 'skip' || s === 'empty';
-
 export function StepTrack({ steps }: { steps: LessonStepView[] }) {
   const t = useT();
   return (
@@ -32,8 +29,10 @@ export function StepTrack({ steps }: { steps: LessonStepView[] }) {
       {steps.map((s, i) => {
         const look = STEP_LOOK[s.kind];
         const dim = s.state === 'lock' || s.state === 'skip' || s.state === 'empty';
-        // Solid only while every step up to this one is behind the learner.
-        const solid = steps.slice(0, i + 1).every((x) => passed(x.state));
+        // lesson.jsx L43 `i < done`: solid after a step the learner actually finished. A
+        // skipped or not-yet-written step was not done, so the line after it stays dashed
+        // (lesson-fidelity-v46 T6, audit hub #87).
+        const solid = s.state === 'done';
         const label = t(`lesson.step.${s.kind}`);
         const note = s.state === 'skip' ? t('lesson.step.skip') : s.state === 'empty' ? t('lesson.step.empty') : '';
         return (
@@ -65,7 +64,10 @@ export function StepTrack({ steps }: { steps: LessonStepView[] }) {
                 numberOfLines={1}
                 style={[
                   nbText.hand(12.5, dim ? nb.soft : nb.ink),
-                  { marginTop: 4, fontWeight: s.state === 'now' ? '700' : '400' },
+                  // L41 `fontWeight: 700` — Gaegu's own bold cut; a weight on the regular face
+                  // is not synthesised for a custom font on iOS (audit hub #86).
+                  { marginTop: 4 },
+                  s.state === 'now' ? { fontFamily: nbFonts.handBold } : null,
                   s.state === 'skip' ? { textDecorationLine: 'line-through' } : null,
                 ]}
               >
@@ -110,7 +112,12 @@ function circle(state: LessonStepState, color: string) {
   }
 }
 
-/** The reference's repeating -45° gradient, drawn as SVG lines clipped to the circle. */
+/**
+ * The reference's `repeating-linear-gradient(-45deg, rgba(62,54,43,.07) 0 3px, transparent
+ * 3px 7px)`, drawn as SVG lines clipped to the circle. The 3 and 7 are measured across the
+ * stripes, so the lines are 3 thick and 7·√2 apart along a row (audit hub #81).
+ */
+const HATCH_STEP = 7 * Math.SQRT2;
 function Hatch() {
   return (
     <View testID="steptrack-hatch" pointerEvents="none" style={{ position: 'absolute', left: 0, top: 0 }}>
@@ -119,8 +126,8 @@ function Hatch() {
           <ClipPath id="steptrack-hatch-clip"><Circle cx={D / 2} cy={D / 2} r={D / 2 - 1} /></ClipPath>
         </Defs>
         <G clipPath="url(#steptrack-hatch-clip)">
-          {Array.from({ length: 14 }).map((_, k) => (
-            <Line key={k} x1={k * 7 - D} y1={D} x2={k * 7} y2={0} stroke="rgba(62,54,43,.07)" strokeWidth={3} />
+          {Array.from({ length: Math.ceil((2 * D) / HATCH_STEP) + 1 }).map((_, k) => (
+            <Line key={k} x1={k * HATCH_STEP - D} y1={D} x2={k * HATCH_STEP} y2={0} stroke="rgba(62,54,43,.07)" strokeWidth={3} />
           ))}
         </G>
       </Svg>

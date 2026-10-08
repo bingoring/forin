@@ -893,7 +893,7 @@ V45_WORD_FIELDS = ("exKo", "cue", "tag", "distractorsEn", "distractorsKo", "chip
 NB_ICON_FILE = CONTENT_DIR.parent.parent / "mobile" / "src" / "components" / "nb" / "NbIcon.tsx"
 _NB_ICONS_FALLBACK = set("""baby bandage bell board bulb calendar chartup check chevronDown chevronLeft chevronRight
 chevronUp coffee compass cross faceAngry faceWorried gear handshake2 home hospital lab lock magnify me mic monitor pencil pill
-plane pushpin scalpel shield siren speaker speech star stetho trophy""".split())
+plane pushpin redo scalpel shield siren speaker speech star stetho trophy""".split())
 
 
 def _load_nb_icons() -> set[str]:

@@ -21,6 +21,7 @@ export type NbIconName =
   | 'chevronRight'
   | 'chevronDown'
   | 'chevronUp'
+  | 'redo'
   | 'cross'
   | 'check'
   | 'home'
@@ -93,6 +94,11 @@ export function NbIcon({ name, size = 20, color = nb.ink }: {
     ),
     chevronUp: (
       <G><Path {...P} d="M5 14.5 L12 8 L19 14.5"/></G>
+    ),
+    // ↺ — the hub CTA's `다시 풀기 ↺` (lesson.jsx L154; lesson-fidelity-v46 결정 4 — glyphs are
+    // drawn). An open circle running anticlockwise, the head at the top pointing left.
+    redo: (
+      <G><Path {...P} d="M12 6.5 A6.5 6.5 0 1 1 6.37 9.75"/><Path {...P} d="M14.6 4 L12 6.5 L14.6 9"/></G>
     ),
     // The way out and the way to finish. Drawn, not typed: ✕ and ✓ are in the ratchet
     // (theme/glyphs.test.ts) for the reason it names — they render at the font's weight,

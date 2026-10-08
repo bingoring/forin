@@ -414,3 +414,31 @@ test('a chip shrinks to .94 over 0.06s while held', () => {
     jest.useRealTimers();
   }
 });
+
+// lesson-fidelity-v46 T6 — the hub's tags carry an icon before the words (lesson.jsx L110 ·
+// L122 `<NbIcon name="siren" size={11}/> ER BAY 2`), and its done stamp a drawn ✓ (L103).
+const str = (n: ReactTestInstance): string => n.children.map((c) => (typeof c === 'string' ? c : str(c))).join('');
+
+describe('NbTag icon', () => {
+  it('draws the icon at 11, then a space, then the words', () => {
+    const tree = mount(<NbTag icon="siren" textStyle={{ fontSize: 10.5 }}>ER BAY 2</NbTag>);
+    const icon = tree.root.findAllByType(NbIcon);
+    expect(icon.map((i) => [i.props.name, i.props.size])).toEqual([['siren', 11]]);
+    expect(str(tree.root.findAllByType(Text)[0])).toBe(' ER BAY 2');
+  });
+  it('is the plain pill without one', () => {
+    const tree = mount(<NbTag>Lv.B1</NbTag>);
+    expect(tree.root.findAllByType(NbIcon)).toHaveLength(0);
+    expect(str(tree.root.findAllByType(Text)[0])).toBe('Lv.B1');
+  });
+});
+
+describe('NbStamp topIcon', () => {
+  it('draws the top line as an icon in the stamp colour, inked like the glyph', () => {
+    const tree = mount(<NbStamp color={nb.green} size={40} topIcon="check" bottom="완료" />);
+    const icon = tree.root.findAllByType(NbIcon);
+    expect(icon).toHaveLength(1);
+    expect(icon[0].props).toMatchObject({ name: 'check', color: nb.green });
+    expect(icon[0].props.size).toBeCloseTo(40 * 0.17 * 1.25, 5);
+  });
+});

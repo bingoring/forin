@@ -364,17 +364,23 @@ export function NbButton({ variant = 'ink', icon, iconRight, iconColor, rot = 0,
  *  ui.jsx L74: `padding: '0 6px'` — no vertical padding; the line box alone sets the height.
  *  The prototype's `style` reaches the span, so a caller can set the type size there
  *  (the hub's 10.5pt tags); here that is `textStyle`, since `style` is the box. */
-export function NbTag({ color = nb.ink, fill, rot = 0, style, textStyle, children }: {
+export function NbTag({ color = nb.ink, fill, rot = 0, style, textStyle, icon, iconSize = 11, children }: {
   color?: string;
   fill?: boolean;
   rot?: number;
   style?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
+  /** An icon before the words — lesson.jsx L110 · L122 `<NbIcon size={11}/> ER BAY 2`: the
+   *  icon, then the space the JSX leaves, then the words. */
+  icon?: NbIconName;
+  iconSize?: number;
   children?: ReactNode;
 }) {
   return (
     <View style={[{
       alignSelf: 'flex-start',
+      flexDirection: icon ? 'row' : undefined,
+      alignItems: icon ? 'center' : undefined,
       backgroundColor: fill ? color : 'transparent',
       borderWidth: fill ? 0 : 1.4,
       borderColor: color,
@@ -383,8 +389,9 @@ export function NbTag({ color = nb.ink, fill, rot = 0, style, textStyle, childre
       paddingVertical: 0,
       transform: deg(rot),
     }, style]}>
+      {!!icon && <NbIcon name={icon} size={iconSize} />}
       <Text numberOfLines={1} style={[{ fontFamily: nbFonts.hand, fontSize: 12.5, color: fill ? '#fff' : color }, textStyle]}>
-        {children}
+        {icon ? ' ' : null}{children}
       </Text>
     </View>
   );
@@ -455,11 +462,15 @@ export function NbDoubleRing({ color, radius }: { color: string; radius: number 
  *  ui.jsx L85–92. The top line is Pretendard 800 in the prototype; the app bundles no
  *  ExtraBold cut, so it is the Bold (700) — see lesson-fidelity-v46 t1-t2-report. The bottom
  *  line is `lineHeight: 1`. */
-export function NbStamp({ color = nb.red, rot = -8, size = 54, top, bottom }: {
+export function NbStamp({ color = nb.red, rot = -8, size = 54, top, topIcon, bottom }: {
   color?: string;
   rot?: number;
   size?: number;
   top?: string;
+  /** A drawn top line in place of a glyph — the hub's done stamp `top="✓"` (lesson.jsx L103;
+   *  lesson-fidelity-v46 결정 4). The glyph is set at size·.17; a ✓ inks about .75 of its em
+   *  and the icon's tick about 14/24 of its box, so the box is size·.17 × 1.25 to ink alike. */
+  topIcon?: NbIconName;
   bottom?: string;
 }) {
   return (
@@ -469,6 +480,7 @@ export function NbStamp({ color = nb.red, rot = -8, size = 54, top, bottom }: {
     }}>
       <NbDoubleRing color={color} radius={size / 2} />
       {!!top && <Text numberOfLines={1} style={{ fontFamily: nbFonts.bodyBold, fontSize: size * 0.17, color }}>{top}</Text>}
+      {!!topIcon && <NbIcon name={topIcon} size={size * 0.17 * 1.25} color={color} />}
       {!!bottom && <Text numberOfLines={1} style={{ fontFamily: nbFonts.hand, fontSize: size * 0.32, color, lineHeight: size * 0.32 }}>{bottom}</Text>}
     </View>
   );

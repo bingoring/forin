@@ -71,16 +71,21 @@ describe('StepTrack — 연결선', () => {
     expect([0, 1, 2].map((i) => solid(tree, i))).toEqual([true, true, false]);
   });
 
-  it('treats a skipped or empty step as passed — it does not hold the line back', () => {
+  // lesson-fidelity-v46 T6 (audit hub #87): lesson.jsx L43 `i < done` — the line after a
+  // step is solid only when that step was actually finished. A skipped or not-yet-written
+  // step was not done, so the line after it stays dashed.
+  it('is solid only after a step actually finished — not after a skipped or empty one', () => {
     const tree = mount(S('skip', 'now', 'lock', 'lock'));
-    expect([0, 1, 2].map((i) => solid(tree, i))).toEqual([true, false, false]);
+    expect([0, 1, 2].map((i) => solid(tree, i))).toEqual([false, false, false]);
     const empty = mount(S('empty', 'empty', 'done', 'now'));
-    expect([0, 1, 2].map((i) => solid(empty, i))).toEqual([true, true, true]);
+    expect([0, 1, 2].map((i) => solid(empty, i))).toEqual([false, false, true]);
+    const skipDone = mount(S('skip', 'done', 'done', 'now'));
+    expect([0, 1, 2].map((i) => solid(skipDone, i))).toEqual([false, true, true]);
   });
 
-  it('stays dashed past a step that is not finished, even if a later one is', () => {
+  it('follows the step itself, not the ones before it', () => {
     const tree = mount(S('now', 'lock', 'done', 'done'));
-    expect([0, 1, 2].map((i) => solid(tree, i))).toEqual([false, false, false]);
+    expect([0, 1, 2].map((i) => solid(tree, i))).toEqual([false, false, true]);
   });
 });
 
@@ -88,5 +93,29 @@ describe('StepTrack — 완료 배지', () => {
   it('puts a green badge on each done step', () => {
     const tree = mount(S('done', 'skip', 'done', 'now'));
     expect(badges(tree)).toHaveLength(2);
+  });
+});
+
+// Audit hub #81: lesson.jsx L36 `repeating-linear-gradient(-45deg, rgba(62,54,43,.07) 0 3px,
+// transparent 3px 7px)` — 3 of every 7 measured across the stripes, so lines 3 thick, 7·√2
+// apart along a row.
+describe('StepTrack — 건너뜀 빗금', () => {
+  it('spaces the stripes 7·√2 apart, 3 thick', () => {
+    const tree = mount(S('skip', 'now', 'lock', 'lock'));
+    const lines = hatches(tree)[0].findAll((n) => n.props?.stroke === 'rgba(62,54,43,.07)' && n.props?.x1 !== undefined && typeof n.props.x1 === 'number');
+    expect(lines.length).toBeGreaterThan(2);
+    expect(lines[0].props.strokeWidth).toBe(3);
+    expect(Math.abs(lines[0].props.x1 - lines[1].props.x1)).toBeCloseTo(7 * Math.SQRT2, 5);
+  });
+});
+
+// Audit hub #86: L41 `fontWeight: 700` on the step in progress — Gaegu's own bold cut, not a
+// synthesised weight on the regular face.
+describe('StepTrack — 진행 중 라벨', () => {
+  it('sets the step in progress in Gaegu Bold', () => {
+    const tree = mount(S('done', 'now', 'lock', 'lock'));
+    const style = (k: string) => Object.assign({}, ...[tree.root.findByProps({ testID: `steptrack-label-${k}` }).props.style].flat(3).filter(Boolean));
+    expect(style('sentences').fontFamily).toBe('Gaegu-Bold');
+    expect(style('words').fontFamily).toBe('Gaegu');
   });
 });
