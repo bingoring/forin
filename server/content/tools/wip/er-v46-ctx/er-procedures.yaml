@@ -3964,10 +3964,10 @@ situations:
       ok: true
     - who: 환자에게
       icon: me
-      en: I'm going to start cannulation of your forearm now.
+      en: I'm going to start a 20-gauge PIV in your left forearm now.
       ok: false
       fix: I'm going to put a small IV in your arm now.
-    why: cannulate는 의료진 용어예요. 환자에게는 put in an IV, start an IV처럼 쉬운 말로 해요.
+    why: 20-gauge·PIV 같은 규격과 약어는 의료진 말이에요. 환자에게는 put in an IV처럼 쉬운 말로 해요.
     word: start
     ko: (정맥로를) 잡다
   order:
@@ -4630,10 +4630,10 @@ situations:
       ok: true
     - who: 환자에게
       icon: me
-      en: We're sending labs for your abd pain workup.
+      en: We're sending labs for your abdominal pain workup.
       ok: false
       fix: These tests help us find what's causing your pain.
-    why: labs·workup·abd는 의료진끼리의 말이에요. 환자에게는 검사가 무엇을 위한 것인지를 쉬운 말로 해요.
+    why: workup은 의료진끼리의 말이에요. labs는 환자도 듣는 말이지만, 무엇을 알아보려는 검사인지까지 쉬운 말로 해요.
     word: labs
     ko: (혈액) 검사
   - kind: swap
@@ -5113,20 +5113,20 @@ situations:
     scenes:
     - who: 아이에게
       icon: baby
-      en: All done! You were so brave!
+      en: All done! You did so well!
       ok: true
     - who: 차트 기록
       icon: board
-      en: Pt brave throughout; tolerated venipuncture well.
+      en: Pt tolerated venipuncture well.
       ok: true
     - who: 아이에게
       icon: baby
-      en: You were brave and tolerated the venipuncture well.
+      en: You tolerated the venipuncture well.
       ok: false
-      fix: All done, and you held so still. That took real courage!
+      fix: You were so brave — you held really still for me!
     why: tolerated … well은 기록 말투예요. 아이에게는 같은 뜻을 칭찬의 말로 해요.
-    word: brave
-    ko: 용감한
+    word: well
+    ko: 잘 (해내다)
   order:
     tag: 대화 흐름
     icon: compass
@@ -5604,7 +5604,7 @@ situations:
       en: Your blood culture shows contamination with skin flora.
       ok: false
       fix: One of your blood tests may have picked up germs from your skin, so we'd like to redo it.
-    why: contaminant·skin flora는 의료진 말이에요. 환자에게는 '피부 세균이 섞였을 수 있다'고 풀고, 왜 다시 하는지도 함께 말해요.
+    why: contamination·skin flora는 의료진 말이에요. 환자에게는 '피부 세균이 섞였을 수 있다'고 풀고, 왜 다시 하는지도 함께 말해요.
     word: contamination
     ko: 오염
   order:
@@ -6281,7 +6281,7 @@ situations:
     scenes:
     - who: 의사에게
       icon: speech
-      en: The NGT is in — can we get an X-ray to confirm placement?
+      en: The NG is in — can we get an X-ray to confirm placement?
       ok: true
     - who: 차트 기록
       icon: board
@@ -6293,8 +6293,8 @@ situations:
       ok: false
       fix: We'll take a quick X-ray to make sure the tube is in your stomach.
     why: radiographic confirmation·NGT는 의료진 말이에요. 환자에게는 왜 사진을 찍는지 쉽게 — X선이 관 위치를 확인하는 가장 확실한 방법이고, 관으로 영양·약을 넣기 전에는 X선 확인이 표준이에요.
-    word: NGT
-    ko: 비위관
+    word: placement
+    ko: (관의) 위치
   order:
     tag: 대화 흐름
     icon: compass
@@ -6978,7 +6978,7 @@ situations:
       ok: true
     - who: 차트 기록
       icon: board
-      en: Continuous cardiac monitoring during CVC insertion.
+      en: Cardiac monitor in place throughout CVC insertion; no sustained ectopy.
       ok: true
     - who: 환자에게
       icon: me
@@ -7424,7 +7424,7 @@ situations:
     scenes:
     - who: 동료에게
       icon: speech
-      en: Epinephrine 0.5 IM going in, lateral thigh, at 14:02.
+      en: Epi 0.5 IM given, lateral thigh, at 14:02.
       ok: true
     - who: 차트 기록
       icon: board
@@ -7436,8 +7436,8 @@ situations:
       ok: false
       fix: I'm giving you a shot of epinephrine in your thigh — it'll help open your airway.
     why: 용량·경로·시각은 동료와 기록에 정확히 남겨요. 환자에게는 무엇을 왜 하는지 짧게 말해요.
-    word: epinephrine
-    ko: 에피네프린
+    word: epi
+    ko: 에피(네프린)
   order:
     tag: 대화 흐름
     icon: compass
@@ -7680,7 +7680,7 @@ situations:
       en: We're placing an IO line in your proximal tibia.
       ok: false
       fix: We're putting a small line into the bone below your knee to give you medicine fast.
-    why: intraosseous·proximal tibia는 의료진 말이에요. 위급한 환자에게는 어디에, 왜 하는지만 짧게 말해요.
+    why: IO·proximal tibia는 의료진 말이에요. 위급한 환자에게는 어디에, 왜 하는지만 짧게 말해요.
     word: IO
     ko: 골내 주사
   order:

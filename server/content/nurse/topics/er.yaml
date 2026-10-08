@@ -4024,13 +4024,13 @@
       ok: true
     - who: 동료와 대조
       icon: speech
-      en: Can you confirm the name and DOB on this wristband with me?
+      en: Can you confirm the name and date of birth on this wristband with me?
       ok: true
     - who: 환자에게
       icon: me
-      en: You're John Smith, born March 4th, 1960, right?
+      en: You're John Smith, date of birth March 4th, 1960, right?
       ok: false
-      fix: Can you state your full name and date of birth for me?
+      fix: Please tell me your name and your birthday, so I can match your wristband.
     why: 환자 확인은 환자가 이름과 생년월일을 직접 말하게 하는 열린 질문이 원칙이에요. 간호사가 먼저 불러 주고 '맞죠?'라고 물으면 잘 못 들었거나 아프고 지친 환자가 그냥 '네'라고 해 버릴 수 있어요.
     word: date of birth
     ko: 생년월일
@@ -4226,10 +4226,10 @@
       ok: true
     - who: 환자에게
       icon: me
-      en: I'm going to cannulate your forearm now.
+      en: I'm going to start a 20-gauge PIV in your left forearm now.
       ok: false
       fix: I'm going to put a small IV in your arm now.
-    why: cannulate는 의료진 용어예요. 환자에게는 put in an IV, start an IV처럼 쉬운 말로 해요.
+    why: 20-gauge·PIV 같은 규격과 약어는 의료진 말이에요. 환자에게는 put in an IV처럼 쉬운 말로 해요.
     word: start
     ko: (정맥로를) 잡다
   order:
@@ -4423,7 +4423,7 @@
       ok: true
     - who: 차트 기록
       icon: board
-      en: Clean-catch UA collected and sent.
+      en: Clean-catch UA specimen collected and sent.
       ok: true
     - who: 환자에게
       icon: me
@@ -4779,7 +4779,7 @@
     scenes:
     - who: 동료에게
       icon: speech
-      en: I drew a CBC, BMP, and lipase for his abdominal pain.
+      en: 'I drew labs for his abdominal pain: CBC, BMP, and lipase.'
       ok: true
     - who: 차트 기록
       icon: board
@@ -4787,10 +4787,10 @@
       ok: true
     - who: 환자에게
       icon: me
-      en: We're sending labs for your abd pain workup.
+      en: We're sending labs for your abdominal pain workup.
       ok: false
       fix: These tests help us find what's causing your pain.
-    why: labs·workup·abd는 의료진끼리의 말이에요. 환자에게는 검사가 무엇을 위한 것인지를 쉬운 말로 해요.
+    why: workup은 의료진끼리의 말이에요. labs는 환자도 듣는 말이지만, 무엇을 알아보려는 검사인지까지 쉬운 말로 해요.
     word: labs
     ko: (혈액) 검사
   - kind: swap
@@ -5003,7 +5003,7 @@
       ok: true
     - who: 차트 기록
       icon: board
-      en: Warm compress applied to L arm prior to PIV attempt.
+      en: Poor veins; warm compress applied to L arm prior to PIV attempt.
       ok: true
     - who: 환자에게
       icon: me
@@ -5201,7 +5201,7 @@
     scenes:
     - who: 아이에게
       icon: baby
-      en: That was it! You were so brave!
+      en: All done! You did so well!
       ok: true
     - who: 차트 기록
       icon: board
@@ -5211,10 +5211,10 @@
       icon: baby
       en: You tolerated the venipuncture well.
       ok: false
-      fix: You did it! You were so brave.
+      fix: You were so brave — you held really still for me!
     why: tolerated … well은 기록 말투예요. 아이에게는 같은 뜻을 칭찬의 말로 해요.
-    word: brave
-    ko: 용감한
+    word: well
+    ko: 잘 (해내다)
   order:
     tag: 대화 흐름
     icon: compass
@@ -5409,9 +5409,9 @@
       ok: true
     - who: 환자에게
       icon: me
-      en: Any history of CKD or biguanide use?
+      en: Any history of CKD or biguanide use, such as metformin?
       ok: false
-      fix: Do you have any kidney problems, or take a diabetes pill called metformin?
+      fix: Do you have any kidney trouble? Do you take a pill for diabetes?
     why: CKD·biguanide는 의료진 말이에요. 환자에게는 병과 약 이름을 쉬운 말로 풀어서 물어요.
     word: metformin
     ko: 메트포르민
@@ -5605,7 +5605,7 @@
     scenes:
     - who: 동료에게
       icon: speech
-      en: That culture was probably a contaminant.
+      en: That culture looks like contamination, not true bacteremia.
       ok: true
     - who: 의사에게
       icon: speech
@@ -5613,10 +5613,10 @@
       ok: true
     - who: 환자에게
       icon: me
-      en: Your blood culture grew a contaminant.
+      en: Your blood culture shows contamination with skin flora.
       ok: false
       fix: One of your blood tests may have picked up germs from your skin, so we'd like to redo it.
-    why: contaminant·skin flora는 의료진 말이에요. 환자에게는 '피부 세균이 섞였을 수 있다'고 풀고, 왜 다시 하는지도 함께 말해요.
+    why: contamination·skin flora는 의료진 말이에요. 환자에게는 '피부 세균이 섞였을 수 있다'고 풀고, 왜 다시 하는지도 함께 말해요.
     word: contamination
     ko: 오염
   order:
@@ -5810,7 +5810,7 @@
       ok: true
     - who: 차트 기록
       icon: board
-      en: 'Allergies: PCN (rash).'
+      en: 'Allergy: PCN (rash).'
       ok: true
     - who: 환자에게
       icon: me
@@ -5986,20 +5986,20 @@
     scenes:
     - who: 동료와 이중확인
       icon: speech
-      en: Unit number, ABO/Rh, and expiration all match — verified.
+      en: Let's double-check together — unit number, ABO/Rh, and expiration all match.
       ok: true
     - who: 차트 기록
       icon: board
-      en: Blood product verified at bedside by two RNs.
+      en: Double-check done at bedside by two RNs; product matches pt ID.
       ok: true
     - who: 환자에게
       icon: me
-      en: Your ABO/Rh and unit number are verified.
+      en: Your ABO/Rh and unit number have been double-checked.
       ok: false
       fix: Two of us checked, and this blood matches you exactly.
-    why: 환자에게는 번호와 기호 대신 '두 사람이 확인했고 정확히 맞다'는 결론을 말해요.
-    word: verify
-    ko: 검증하다
+    why: 숫자·기호(ABO/Rh, unit number)로 말하는 확인은 의료진끼리의 말이에요. 환자에게는 두 사람이 확인했고 정확히 맞다는 결론을 말해요.
+    word: double-check
+    ko: 이중 확인하다
   order:
     tag: 대화 흐름
     icon: compass
@@ -6197,8 +6197,8 @@
       ok: false
       fix: We'll take a quick X-ray to make sure the tube is in your stomach.
     why: radiographic confirmation·NGT는 의료진 말이에요. 환자에게는 왜 사진을 찍는지 쉽게 — X선이 관 위치를 확인하는 가장 확실한 방법이고, 관으로 영양·약을 넣기 전에는 X선 확인이 표준이에요.
-    word: NGT
-    ko: 비위관
+    word: placement
+    ko: (관의) 위치
   order:
     tag: 대화 흐름
     icon: compass
@@ -6572,7 +6572,7 @@
       ok: true
     - who: 환자에게
       icon: me
-      en: Per policy, specimens are labeled in the patient's presence.
+      en: Per policy, specimens are labeled at the bedside in the patient's presence.
       ok: false
       fix: I'm labeling these right here with you so nothing gets mixed up.
     why: '''Per policy''나 3인칭 ''the patient''는 환자에게 규정문처럼 들려요. 환자에게는 ''지금 여기서, 뒤바뀌지 않게''라고 이유와 함께 말해요.'
@@ -6773,11 +6773,11 @@
       ok: true
     - who: 차트 기록
       icon: board
-      en: Continuous cardiac monitoring during CVC insertion.
+      en: Cardiac monitor in place throughout CVC insertion; no sustained ectopy.
       ok: true
     - who: 환자에게
       icon: me
-      en: I'm watching for ectopy from the guidewire.
+      en: I'm watching for ectopy from the guidewire on the monitor.
       ok: false
       fix: I'm watching your heart monitor the whole time.
     why: 유도철선이 심장 가까이 들어가면 부정맥(ectopy)이 생길 수 있어 모니터를 봐요. 환자에게는 그 위험을 전문어로 말하기보다 '계속 지켜보고 있다'고 안심시켜요.
@@ -7163,8 +7163,8 @@
       ok: false
       fix: I'm giving you a shot of epinephrine in your thigh — it'll help open your airway.
     why: 용량·경로·시각은 동료와 기록에 정확히 남겨요. 환자에게는 무엇을 왜 하는지 짧게 말해요.
-    word: epinephrine
-    ko: 에피네프린
+    word: epi
+    ko: 에피(네프린)
   order:
     tag: 대화 흐름
     icon: compass
@@ -7366,10 +7366,10 @@
       ok: true
     - who: 환자에게
       icon: me
-      en: We're placing an intraosseous line in your proximal tibia.
+      en: We're placing an IO line in your proximal tibia.
       ok: false
       fix: We're putting a small line into the bone below your knee to give you medicine fast.
-    why: intraosseous·proximal tibia는 의료진 말이에요. 위급한 환자에게는 어디에, 왜 하는지만 짧게 말해요.
+    why: IO·proximal tibia는 의료진 말이에요. 위급한 환자에게는 어디에, 왜 하는지만 짧게 말해요.
     word: IO
     ko: 골내 주사
   order:
@@ -7569,7 +7569,7 @@
       icon: speech
       en: I have a slight concern that this might not match the order, if that's okay?
       ok: false
-      fix: Stop — this doesn't match the order.
+      fix: Stop — the label says 5 mg, but the order says 0.5. Don't give it.
     why: 투약 오류를 발견하면 돌려 말하지 말고 분명히 멈춰 세워요. TeamSTEPPS의 CUS(concerned·uncomfortable·safety issue)처럼 안전 문제는 누구든 직접 말하도록 훈련해요.
     word: match
     ko: 일치하다
@@ -7766,7 +7766,7 @@
       ok: true
     - who: 환자에게
       icon: me
-      en: Your pneumothorax has resolved on the post-procedure film.
+      en: Your pneumothorax has resolved, and your lung is re-expanded on the post-procedure film.
       ok: false
       fix: The X-ray shows your lung has filled back up, so your breathing should get easier.
     why: pneumothorax·resolved·film은 의료진 말이에요. 환자에게는 폐가 다시 펴졌고 숨쉬기가 나아질 거라고 쉽게 말해요.
@@ -7939,17 +7939,17 @@
     scenes:
     - who: 소생실 의사에게
       icon: speech
-      en: BP 82 over 50, heart rate 128, after unit two.
+      en: 'Vitals just now: BP 90 over 56, heart rate 120, after unit two.'
       ok: true
     - who: 차트 기록
       icon: board
-      en: VS q5min during MTP; see flowsheet.
+      en: Vitals q5min during MTP; see flowsheet.
       ok: true
     - who: 소생실 의사에게
       icon: speech
-      en: Um, I think the blood pressure might be kind of low-ish?
+      en: Um, I think the vitals might be kind of low-ish?
       ok: false
-      fix: BP 82 over 50, heart rate 128.
+      fix: BP is 82 over 50 and heart rate 128 — worse than five minutes ago.
     why: 위급한 소생 중 보고는 숫자부터 짧게 해요. 돌려 말하면 판단이 늦어져요.
     word: vitals
     ko: 활력징후
@@ -32513,18 +32513,18 @@
     scenes:
     - who: 차트 기록
       icon: board
-      en: Extremities cool; cap refill 4 sec.
+      en: 'Circulation: extremities cool; cap refill 4 sec.'
       ok: true
     - who: 의사에게 보고
       icon: speech
-      en: Her hands are cool and cap refill is delayed — perfusion looks poor.
+      en: Her circulation looks poor — hands are cool and cap refill is delayed.
       ok: true
     - who: 환자에게
       icon: me
-      en: Your peripheral perfusion is compromised, with delayed capillary refill.
+      en: Your peripheral circulation is compromised, with delayed capillary refill.
       ok: false
       fix: Your hands feel cool, so I'm checking how well the blood is flowing to them.
-    why: perfusion, capillary refill은 의료진끼리의 말이에요. 환자에게는 '손이 서늘해서 피가 잘 흐르는지 확인한다'처럼 풀어 말해요.
+    why: peripheral circulation·capillary refill은 의료진끼리의 말이에요. 환자에게는 '손이 서늘해서 피가 잘 흐르는지 확인한다'처럼 풀어 말해요.
     word: circulation
     ko: 순환
   order:
@@ -33003,7 +33003,7 @@
     scenes:
     - who: 차트 기록
       icon: board
-      en: Pt dehydrated d/t vomiting x 2 days.
+      en: Pt volume-depleted d/t vomiting x 2 days.
       ok: true
     - who: 의사에게 보고
       icon: speech
@@ -33329,11 +33329,11 @@
       ok: true
     - who: 의사에게 보고
       icon: speech
-      en: I've got fluids running and blood on standby.
+      en: I've got fluids running and blood ready to go.
       ok: true
     - who: 환자에게
       icon: me
-      en: Two units of PRBCs are crossmatched and on standby.
+      en: Two units of PRBCs are crossmatched and ready.
       ok: false
       fix: We're getting blood ready in case you need it.
     why: T&C, crossmatch, PRBC 같은 혈액은행 용어는 의료진끼리의 말이에요. 환자에게는 '필요할 때를 대비해 혈액을 준비해 둔다'고 풀어요.
@@ -33487,17 +33487,17 @@
     scenes:
     - who: 차트 기록
       icon: board
-      en: Febrile, tachycardic, hypotensive; suspected sepsis, source unknown.
+      en: Febrile, tachycardic, hypotensive; suspected infection, source unknown.
       ok: true
     - who: 의사에게 보고
       icon: speech
-      en: She's febrile and tachycardic with low pressure — I'm concerned for sepsis.
+      en: She's febrile and tachycardic with low pressure — I'm concerned for infection, maybe sepsis.
       ok: true
     - who: 환자에게
       icon: me
-      en: You're febrile, tachycardic, and hypotensive, with suspected sepsis.
+      en: You're febrile, tachycardic, and hypotensive, with a suspected infection.
       ok: false
-      fix: You have a fever, your heart is racing, and your pressure is low — I'm concerned about infection.
+      fix: You have a fever, your heart is racing, and your pressure is low. It may be an infection.
     why: febrile, tachycardic, hypotensive는 의료진끼리 쓰는 임상어예요. 환자에게는 열이 나고 심장이 빨리 뛰고 혈압이 낮다고 쉬운 말로 풀어요.
     word: infection
     ko: 감염
@@ -33971,7 +33971,7 @@
     scenes:
     - who: 차트 기록
       icon: board
-      en: UOP 20 mL/hr over the last 2 hrs.
+      en: Urine output 20 mL/hr over the last 2 hrs.
       ok: true
     - who: 의사에게 보고
       icon: speech
@@ -33979,10 +33979,10 @@
       ok: true
     - who: 환자에게
       icon: me
-      en: Your UOP is 20 mL an hour.
+      en: Your urine output is only 20 mL an hour, under 0.5 per kilo.
       ok: false
       fix: You're making less urine than we'd like, so we may give you more fluid.
-    why: UOP 같은 약어와 mL/hr 수치는 의료진끼리의 말이에요. 환자에게는 '소변이 기대보다 적어서 수액을 더 줄 수 있다'로 풀어 말해요.
+    why: mL·per kilo 같은 수치와 기준은 의료진끼리의 말이에요. 환자에게는 '소변이 기대보다 적어서 수액을 더 줄 수 있다'로 풀어 말해요.
     word: output
     ko: 배출량
   - kind: reel
@@ -34164,7 +34164,7 @@
     scenes:
     - who: 차트 기록
       icon: board
-      en: Norepi 8 mcg/min via R IJ; MAP 66.
+      en: Norepi 8 mcg/min via R IJ; MAP holding at 66.
       ok: true
     - who: 의사에게 보고
       icon: speech
@@ -34172,7 +34172,7 @@
       ok: true
     - who: 환자에게
       icon: me
-      en: Norepi is at 8 mcg/min and titrating to MAP.
+      en: Norepi is at 8 mcg/min, titrating to hold your MAP above 65.
       ok: false
       fix: This medicine is going in through your neck line to hold your blood pressure up.
     why: mcg/min, MAP, titrate 같은 수치와 말은 의료진끼리의 표현이에요. 환자에게는 '목의 라인으로 약이 들어가 혈압을 유지해 준다'처럼 풀어 말해요.
@@ -34818,16 +34818,16 @@
       ok: true
     - who: 의사에게 보고
       icon: speech
-      en: Still no clear etiology — labs and ECG are pending.
+      en: Etiology still unclear — labs and ECG are pending.
       ok: true
     - who: 환자에게
       icon: me
-      en: The etiology of your hypotension is undetermined.
+      en: The etiology of your hypotension remains unclear.
       ok: false
       fix: We don't know yet why your pressure is low, so we're running tests to find the cause.
-    why: etiology, undetermined는 의료진끼리의 말이에요. 환자에게는 '아직 원인을 모르니 검사로 찾고 있다'고 풀어서 말해요.
-    word: cause
-    ko: 원인
+    why: etiology, hypotension은 의료진끼리의 말이에요. 환자에게는 '아직 원인을 모르니 검사로 찾고 있다'고 풀어서 말해요.
+    word: unclear
+    ko: 분명하지 않은
   order:
     tag: 대화 흐름
     icon: compass
@@ -34986,11 +34986,11 @@
       ok: true
     - who: 보호자에게
       icon: me
-      en: She's fluid-refractory, so we're starting a vasopressor.
+      en: She's fluid-refractory, so we're starting norepi, a vasopressor.
       ok: false
       fix: The fluids aren't raising her pressure enough, so we're starting a stronger medicine.
     why: refractory, vasopressor 같은 말은 의료진끼리의 표현이에요. 보호자에게는 '수액만으로 혈압이 안 올라서 더 강한 약을 시작한다'로 풀어 말해요.
-    word: norepinephrine
+    word: norepi
     ko: 노르에피네프린
   order:
     tag: 대화 흐름
@@ -35147,12 +35147,12 @@
       ok: true
     - who: 환자에게
       icon: me
-      en: I've activated the PERT per the massive PE pathway.
+      en: I've notified the PERT per the massive PE pathway.
       ok: false
       fix: I've called our specialist team, and they're coming to help right now.
     why: PERT, pathway 같은 약어와 절차 이름은 의료진끼리의 말이에요. 환자에게는 '전문 팀을 불렀고 곧 온다'처럼 풀어 말해요.
-    word: notify
-    ko: 알리다
+    word: notified
+    ko: 알렸다
   - kind: reel
     words:
     - w-crash
@@ -35329,18 +35329,18 @@
     scenes:
     - who: 차트 기록
       icon: board
-      en: Pericardial effusion with tamponade physiology; pericardiocentesis planned.
+      en: Tamponade physiology on echo; pericardial drainage planned.
       ok: true
     - who: 의사에게 보고
       icon: speech
-      en: Echo shows tamponade — setting up for pericardiocentesis.
+      en: Echo shows tamponade — setting up to drain the effusion.
       ok: true
     - who: 보호자에게
       icon: me
-      en: She has tamponade physiology, so we need emergent pericardiocentesis.
+      en: She has tamponade physiology, so we need emergent pericardial drainage.
       ok: false
       fix: Fluid is pressing on her heart, so we need to drain it right away.
-    why: tamponade physiology, pericardiocentesis는 의료진끼리의 용어예요. 보호자에게는 '심장을 누르는 액체를 지금 빼야 한다'로 풀어 말해요.
+    why: tamponade physiology·emergent pericardial drainage는 의료진끼리의 용어예요. 보호자에게는 '심장을 누르는 액체를 지금 빼야 한다'로 풀어 말해요.
     word: drain
     ko: 배액하다
   order:
@@ -35495,7 +35495,7 @@
       ok: true
     - who: 의사에게 보고
       icon: speech
-      en: MTP is active, and the first cooler is on its way.
+      en: MTP is activated, and the first cooler is on its way.
       ok: true
     - who: 환자에게
       icon: me
@@ -35659,11 +35659,11 @@
       ok: true
     - who: 의사에게 보고
       icon: speech
-      en: C-spine is immobilized, and we're log-rolling only.
+      en: 'Spinal precautions on: C-spine immobilized, log-rolling only.'
       ok: true
     - who: 환자에게
       icon: me
-      en: Your C-spine is immobilized, so no range of motion.
+      en: Your C-spine is immobilized under spinal precautions, so no range of motion.
       ok: false
       fix: Please stay still. We're keeping your neck and back straight to protect your spine.
     why: C-spine, log-roll, range of motion은 의료진끼리의 말이에요. 환자에게는 '움직이지 말고, 목과 등을 곧게 유지해 척추를 보호한다'로 풀어 말해요.
@@ -35825,10 +35825,10 @@
       ok: true
     - who: 보호자에게
       icon: me
-      en: She's refractory hypotensive on 12 mcg/min with rising lactate.
+      en: She's persistently hypotensive on 12 mcg/min of norepi, with rising lactate.
       ok: false
       fix: Her blood pressure is still too low even with strong medicine, so we want her in the ICU.
-    why: refractory hypotensive, mcg/min, lactate 같은 말과 수치는 의료진끼리의 표현이에요. 보호자에게는 '강한 약을 써도 혈압이 낮아 중환자실로 옮기려 한다'처럼 풀어 말해요.
+    why: hypotensive, mcg/min, lactate 같은 말과 수치는 의료진끼리의 표현이에요. 보호자에게는 '강한 약을 써도 혈압이 낮아 중환자실로 옮기려 한다'처럼 풀어 말해요.
     word: hypotensive
     ko: 저혈압인
   order:
@@ -43752,10 +43752,10 @@
       ok: true
     - who: 환자에게
       icon: me
-      en: You are presenting with dysarthria and facial palsy.
+      en: You are presenting with slurred speech and facial palsy.
       ok: false
       fix: Your words sound a little slurred, and one side of your face looks droopy.
-    why: 의료진끼리는 dysarthria·facial palsy 같은 임상 용어가 정확하지만, 환자에게는 눈에 보이고 들리는 대로 쉬운 말로 설명해야 해요.
+    why: 의료진끼리는 presenting with·facial palsy 같은 임상 표현이 정확하지만, 환자에게는 눈에 보이고 들리는 대로 쉬운 말로 설명해야 해요.
     word: slurred
     ko: 뭉개진
   order:
@@ -43942,14 +43942,14 @@
       ok: true
     - who: 신경과 의사 콜
       icon: monitor
-      en: Last known well was 08:15, per his wife.
+      en: Last known well 08:15 — his wife says he was normal then.
       ok: true
     - who: 보호자에게
       icon: me
-      en: At what hour did his premorbid baseline cease?
+      en: When was he last known normal — at his neuro baseline?
       ok: false
-      fix: What time did you last see him acting completely like himself?
-    why: 의료진끼리는 last known well·baseline 같은 압축 표현을 쓰지만, 불안한 보호자에게는 쉬운 질문으로 시각을 끌어내야 정확한 답이 나와요.
+      fix: Think back — what time did you last see him acting like himself?
+    why: 의료진끼리는 last known normal·baseline 같은 압축 표현을 쓰지만, 불안한 보호자에게는 쉬운 질문으로 시각을 끌어내야 정확한 답이 나와요.
     word: normal
     ko: 정상인
   order:
@@ -44528,17 +44528,17 @@
     scenes:
     - who: 환자에게
       icon: me
-      en: I know your mouth feels dry, but we test first.
+      en: Your mouth feels dry, I know. Nothing to drink until we test your swallow.
       ok: true
     - who: 인계
       icon: board
-      en: NPO until swallow screen passed.
+      en: NPO — no food or drink until swallow screen passed.
       ok: true
     - who: 환자에게
       icon: me
-      en: You are not permitted to ingest fluids.
+      en: You are not permitted to drink any fluids.
       ok: false
-      fix: I know you're thirsty, but please wait until we check your swallowing.
+      fix: Please wait on drinks for now. I need to check your swallowing first, then I'll get you water.
     why: 금식을 알릴 때 환자에게는 공감과 이유를 함께 줘야 해요. 규정 문구처럼 말하면 차갑게 들리고, 환자는 몰래 마실 수도 있어요.
     word: drink
     ko: 마시다
@@ -44721,15 +44721,15 @@
     scenes:
     - who: 신경과 의사 콜
       icon: monitor
-      en: 'NIHSS is 12: right arm drift, aphasia, left gaze preference.'
+      en: 'NIHSS score is 12: right arm drift, aphasia, left gaze preference.'
       ok: true
     - who: 차트 기록
       icon: board
-      en: Baseline NIHSS 12 at 09:10.
+      en: Baseline NIHSS score 12 at 09:10.
       ok: true
     - who: 환자에게
       icon: me
-      en: Your NIHSS is 12, with a motor arm score of 3 and an aphasia score of 2.
+      en: Your NIHSS score is 12, with a motor arm score of 3 and an aphasia score of 2.
       ok: false
       fix: This score helps us track how your stroke is affecting you and any changes over time.
     why: NIHSS는 의료진끼리는 항목과 점수로 말하지만, 환자에게는 이 점수가 왜 필요한지를 쉬운 말로 풀어야 협조가 나와요.
@@ -45118,11 +45118,11 @@
       ok: true
     - who: 차트 기록
       icon: board
-      en: Pt c/o dizziness and double vision x 1 hr, unable to walk without assistance.
+      en: Pt c/o dizziness, diplopia x 1 hr, unable to ambulate without assist; r/o stroke.
       ok: true
     - who: 환자에게
       icon: me
-      en: I'm afraid you're having a cerebellar infarct and may deteriorate rapidly.
+      en: I'm afraid you're having a cerebellar stroke and may deteriorate rapidly.
       ok: false
       fix: These symptoms can still mean a stroke, so we're checking you right away.
     why: 의료진끼리는 정확한 임상 표현이 좋지만, 환자에게 최악의 시나리오를 쏟아내면 공포만 커져요. 가능성은 솔직하게, 어조는 침착하게 말해요.
@@ -45310,15 +45310,15 @@
     scenes:
     - who: 환자에게
       icon: me
-      en: What time did you go to sleep last night?
+      en: When did you wake up this morning, and when did you go to bed?
       ok: true
     - who: 의사 콜
       icon: monitor
-      en: Last known well 22:30, when he went to sleep. Found with weakness at 06:00.
+      en: 'Wake-up stroke: last known well 22:30 at bedtime; found with weakness on waking at 06:00.'
       ok: true
     - who: 환자에게
       icon: me
-      en: State the timestamp of your last neurologically intact moment.
+      en: What's your last known well time — before sleep, or on waking?
       ok: false
       fix: What time did you last feel completely normal, before you went to sleep?
     why: 자고 일어나 증상을 발견했다면 기준은 깨어난 시각이 아니라 마지막으로 정상이던 시각, 보통 잠들기 전이에요. 환자에게는 쉬운 질문으로 그 시각을 끌어내요.
@@ -45531,11 +45531,11 @@
       ok: true
     - who: 의사 콜
       icon: monitor
-      en: I'm screening him for bleeding risks before tPA.
+      en: I'm screening him for bleeding risks to see if tPA is safe.
       ok: true
     - who: 환자에게
       icon: me
-      en: Please confirm the absence of contraindications on this checklist.
+      en: Please confirm the absence of contraindications so tPA is safe.
       ok: false
       fix: I need to ask about bleeding risks, because the clot-busting medicine can make bleeding worse.
     why: 의료진끼리는 'screening for bleeding risks before tPA'처럼 목적을 압축해 말하지만, 환자에게는 왜 묻는지 이유를 붙인 쉬운 질문이어야 정확한 답이 나와요.
@@ -46321,7 +46321,7 @@
       ok: true
     - who: 환자에게
       icon: me
-      en: Please remain until linguistic support personnel become available.
+      en: Please remain until an interpreter becomes available for linguistic support.
       ok: false
       fix: An interpreter will be here in a few minutes. Meanwhile, point to the clock for me.
     why: 말이 통하지 않는 환자에게는 어려운 문장이 더 큰 장벽이에요. 짧고 쉬운 말에 몸짓을 곁들이고, 가족이 대신 통역하면 누락이 생길 수 있으니 전문 통역사를 연결해요.
@@ -46516,9 +46516,9 @@
       ok: true
     - who: 환자에게
       icon: me
-      en: Report any exacerbation of cephalalgia.
+      en: Report any exacerbation of your headache.
       ok: false
-      fix: Please tell me right away if your head starts hurting more.
+      fix: If the headache comes back stronger, press this button and call me.
     why: 환자에게는 cephalalgia·exacerbation 같은 용어 대신 쉬운 말로 요청해야 보고가 빨라져요. 혈압을 낮추는 중의 두통 악화는 바로 알려야 하는 신호예요.
     word: headache
     ko: 두통
@@ -46703,15 +46703,15 @@
     scenes:
     - who: 환자에게
       icon: me
-      en: Please stay so we can find the cause.
+      en: Please stay with us a little longer while we run tests.
       ok: true
     - who: 의사 콜
       icon: monitor
-      en: TIA with resolved symptoms. Requesting admission for workup.
+      en: TIA, symptoms resolved. She wants to leave, but I'd like her to stay for workup.
       ok: true
     - who: 환자에게
       icon: me
-      en: Discharge is not recommended at this time.
+      en: Per protocol, you'll need to stay; discharge isn't advised at this time.
       ok: false
       fix: I'd really like you to stay so we can find the cause and prevent a bigger stroke.
     why: 퇴원하려는 환자에게는 규정 문구보다 이유를 붙인 부탁이 설득력 있어요. 왜 남아야 하는지를 말해야 환자가 받아들여요.
@@ -47122,7 +47122,7 @@
     scenes:
     - who: 가족에게
       icon: me
-      en: The doctor will explain everything, then we'll need your signature.
+      en: The doctor will explain everything, then we'll need your consent.
       ok: true
     - who: 의사 콜
       icon: monitor
@@ -47325,9 +47325,9 @@
       ok: true
     - who: 환자에게
       icon: me
-      en: The infusion has been discontinued pending reassessment.
+      en: The infusion has been stopped pending reassessment.
       ok: false
-      fix: I'm stopping the medication right now, and we'll get a scan as fast as we can.
+      fix: I've stopped the medicine to be safe, and we're getting a scan right away.
     why: 급박할수록 환자에게는 지금 하는 일을 짧고 직접 말해요. 의료진끼리의 보고 문장은 환자에게는 차갑고 불안하게 들려요.
     word: stop
     ko: 멈추다
@@ -47709,11 +47709,11 @@
     scenes:
     - who: 의사 콜
       icon: monitor
-      en: NIHSS is up from 12 to 15.
+      en: NIHSS is up from 12 to 15 — neurological deterioration.
       ok: true
     - who: 인계받는 간호사에게
       icon: bell
-      en: 'He''s getting worse: NIHSS went from 12 to 15. Watch him closely.'
+      en: 'Neurological deterioration: NIHSS went from 12 to 15. Watch him closely.'
       ok: true
     - who: 가족에게
       icon: me
@@ -48110,9 +48110,9 @@
       ok: true
     - who: 가족에게
       icon: me
-      en: The patient is exhibiting anisocoria with impending herniation.
+      en: His pupils show anisocoria with impending herniation.
       ok: false
-      fix: One pupil is larger now, and that's an important change. I'm alerting the team right away.
+      fix: His pupils are different sizes, which tells us the brain is under pressure. Doctors are coming now.
     why: 의료진끼리는 anisocoria·herniation 같은 정확한 용어가 빠르지만, 가족에게는 무슨 일이 일어나고 무엇을 하고 있는지 쉬운 말로 전해야 해요.
     word: pupil
     ko: 동공

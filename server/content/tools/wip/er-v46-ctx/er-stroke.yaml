@@ -3155,7 +3155,7 @@ situations:
       en: You are presenting with slurred speech and facial palsy.
       ok: false
       fix: Your words sound a little slurred, and one side of your face looks droopy.
-    why: 의료진끼리는 dysarthria·facial palsy 같은 임상 용어가 정확하지만, 환자에게는 눈에 보이고 들리는 대로 쉬운 말로 설명해야 해요.
+    why: 의료진끼리는 presenting with·facial palsy 같은 임상 표현이 정확하지만, 환자에게는 눈에 보이고 들리는 대로 쉬운 말로 설명해야 해요.
     word: slurred
     ko: 뭉개진
   order:
@@ -3380,14 +3380,14 @@ situations:
       ok: true
     - who: 신경과 의사 콜
       icon: monitor
-      en: Per his wife, he was completely normal at 08:15.
+      en: Last known well 08:15 — his wife says he was normal then.
       ok: true
     - who: 보호자에게
       icon: me
-      en: At what hour did his premorbid baseline cease to be normal?
+      en: When was he last known normal — at his neuro baseline?
       ok: false
       fix: Think back — what time did you last see him acting like himself?
-    why: 의료진끼리는 last known well·baseline 같은 압축 표현을 쓰지만, 불안한 보호자에게는 쉬운 질문으로 시각을 끌어내야 정확한 답이 나와요.
+    why: 의료진끼리는 last known normal·baseline 같은 압축 표현을 쓰지만, 불안한 보호자에게는 쉬운 질문으로 시각을 끌어내야 정확한 답이 나와요.
     word: normal
     ko: 정상인
   order:
@@ -5064,7 +5064,7 @@ situations:
       ok: true
     - who: 환자에게
       icon: me
-      en: State the timestamp of your last intact moment prior to wake-up.
+      en: What's your last known well time — before sleep, or on waking?
       ok: false
       fix: What time did you last feel completely normal, before you went to sleep?
     why: 자고 일어나 증상을 발견했다면 기준은 깨어난 시각이 아니라 마지막으로 정상이던 시각, 보통 잠들기 전이에요. 환자에게는 쉬운 질문으로 그 시각을 끌어내요.
@@ -6525,7 +6525,7 @@ situations:
       icon: me
       en: Report any exacerbation of your headache.
       ok: false
-      fix: Please tell me right away if your head starts hurting more.
+      fix: If the headache comes back stronger, press this button and call me.
     why: 환자에게는 cephalalgia·exacerbation 같은 용어 대신 쉬운 말로 요청해야 보고가 빨라져요. 혈압을 낮추는 중의 두통 악화는 바로 알려야 하는 신호예요.
     word: headache
     ko: 두통
@@ -6765,7 +6765,7 @@ situations:
       ok: true
     - who: 환자에게
       icon: me
-      en: Staying is recommended per protocol, and discharge is not advised at this time.
+      en: Per protocol, you'll need to stay; discharge isn't advised at this time.
       ok: false
       fix: I'd really like you to stay so we can find the cause and prevent a bigger stroke.
     why: 퇴원하려는 환자에게는 규정 문구보다 이유를 붙인 부탁이 설득력 있어요. 왜 남아야 하는지를 말해야 환자가 받아들여요.

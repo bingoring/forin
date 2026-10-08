@@ -3625,7 +3625,7 @@ situations:
       en: Your peripheral circulation is compromised, with delayed capillary refill.
       ok: false
       fix: Your hands feel cool, so I'm checking how well the blood is flowing to them.
-    why: perfusion, capillary refill은 의료진끼리의 말이에요. 환자에게는 '손이 서늘해서 피가 잘 흐르는지 확인한다'처럼 풀어 말해요.
+    why: peripheral circulation·capillary refill은 의료진끼리의 말이에요. 환자에게는 '손이 서늘해서 피가 잘 흐르는지 확인한다'처럼 풀어 말해요.
     word: circulation
     ko: 순환
   order:
@@ -4599,7 +4599,7 @@ situations:
       ok: true
     - who: 의사에게 보고
       icon: speech
-      en: I've got fluids running and blood ready on standby.
+      en: I've got fluids running and blood ready to go.
       ok: true
     - who: 환자에게
       icon: me
@@ -5384,10 +5384,10 @@ situations:
       ok: true
     - who: 환자에게
       icon: me
-      en: Your urine output is 20 mL an hour.
+      en: Your urine output is only 20 mL an hour, under 0.5 per kilo.
       ok: false
       fix: You're making less urine than we'd like, so we may give you more fluid.
-    why: UOP 같은 약어와 mL/hr 수치는 의료진끼리의 말이에요. 환자에게는 '소변이 기대보다 적어서 수액을 더 줄 수 있다'로 풀어 말해요.
+    why: mL·per kilo 같은 수치와 기준은 의료진끼리의 말이에요. 환자에게는 '소변이 기대보다 적어서 수액을 더 줄 수 있다'로 풀어 말해요.
     word: output
     ko: 배출량
   - kind: reel
@@ -6393,20 +6393,20 @@ situations:
     scenes:
     - who: 차트 기록
       icon: board
-      en: Cause of hypotension unclear; work-up in progress.
+      en: Etiology of hypotension unclear; work-up in progress.
       ok: true
     - who: 의사에게 보고
       icon: speech
-      en: Still no clear cause — labs and ECG are pending.
+      en: Etiology still unclear — labs and ECG are pending.
       ok: true
     - who: 환자에게
       icon: me
-      en: The cause of your hypotension is undetermined.
+      en: The etiology of your hypotension remains unclear.
       ok: false
       fix: We don't know yet why your pressure is low, so we're running tests to find the cause.
-    why: etiology, undetermined는 의료진끼리의 말이에요. 환자에게는 '아직 원인을 모르니 검사로 찾고 있다'고 풀어서 말해요.
-    word: cause
-    ko: 원인
+    why: etiology, hypotension은 의료진끼리의 말이에요. 환자에게는 '아직 원인을 모르니 검사로 찾고 있다'고 풀어서 말해요.
+    word: unclear
+    ko: 분명하지 않은
   order:
     tag: 대화 흐름
     icon: compass
@@ -7032,14 +7032,14 @@ situations:
       ok: true
     - who: 의사에게 보고
       icon: speech
-      en: Echo shows tamponade — setting up to drain it by pericardiocentesis.
+      en: Echo shows tamponade — setting up to drain the effusion.
       ok: true
     - who: 보호자에게
       icon: me
       en: She has tamponade physiology, so we need emergent pericardial drainage.
       ok: false
       fix: Fluid is pressing on her heart, so we need to drain it right away.
-    why: tamponade physiology, pericardiocentesis는 의료진끼리의 용어예요. 보호자에게는 '심장을 누르는 액체를 지금 빼야 한다'로 풀어 말해요.
+    why: tamponade physiology·emergent pericardial drainage는 의료진끼리의 용어예요. 보호자에게는 '심장을 누르는 액체를 지금 빼야 한다'로 풀어 말해요.
     word: drain
     ko: 배액하다
   order:
@@ -7650,10 +7650,10 @@ situations:
       ok: true
     - who: 보호자에게
       icon: me
-      en: She's refractory hypotensive on 12 mcg/min with rising lactate.
+      en: She's persistently hypotensive on 12 mcg/min of norepi, with rising lactate.
       ok: false
       fix: Her blood pressure is still too low even with strong medicine, so we want her in the ICU.
-    why: refractory hypotensive, mcg/min, lactate 같은 말과 수치는 의료진끼리의 표현이에요. 보호자에게는 '강한 약을 써도 혈압이 낮아 중환자실로 옮기려 한다'처럼 풀어 말해요.
+    why: hypotensive, mcg/min, lactate 같은 말과 수치는 의료진끼리의 표현이에요. 보호자에게는 '강한 약을 써도 혈압이 낮아 중환자실로 옮기려 한다'처럼 풀어 말해요.
     word: hypotensive
     ko: 저혈압인
   order:
