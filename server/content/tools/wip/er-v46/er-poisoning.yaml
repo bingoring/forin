@@ -3866,7 +3866,7 @@ situations:
     decoy: for the nurse
     distractorsKo:
     - 다른 병원에서 치료받으신 적이 있어요?
-    - 토하신 적은 있으세요?
+    - 평소 드시는 약이 있으세요?
     blank:
       answer: bottle
       options:
@@ -3894,12 +3894,12 @@ situations:
     - 가족 중에 함께 드신 분이 있나요?
     - 병원에 오기 전에 토하셨어요?
     blank:
-      answer: ago
+      answer: About
       options:
-      - en: away
-      - en: ago
-      - en: later
-      - en: left
+      - en: Exactly
+      - en: About
+      - en: Precisely
+      - en: Just
   - en: Did you take anything else along with it?
     ko: 그것과 함께 다른 것도 드셨나요?
     chunks:
@@ -3918,7 +3918,7 @@ situations:
     decoy: instead of it
     distractorsKo:
     - 그 약은 처방받으신 건가요?
-    - 약을 드신 뒤에 토하셨나요?
+    - 그 약은 누구 약이었어요?
     blank:
       answer: along with
       options:
@@ -3944,7 +3944,7 @@ situations:
     decoy: from the label
     distractorsKo:
     - 그 약은 어디서 구하셨어요?
-    - 확실하시면 약병을 보여 주세요
+    - 약은 집에서 드셨어요?
     blank:
       answer: remember
       options:
@@ -3975,9 +3975,9 @@ situations:
       answer: safe
       options:
       - en: safe
-      - en: lonely
-      - en: stuck
-      - en: angry
+      - en: calm
+      - en: awake
+      - en: comfortable
   - en: Did you bring the pill bottle, or is it still at home?
     ko: 약병을 가져오셨나요, 아니면 아직 집에 있나요?
     chunks:
@@ -4045,7 +4045,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 복용 약물 문진 4문장 순서
-    why: 무엇을 먹었는지 묻고, 그 약의 개수와 시각을 묻고, 그 양과 함께 먹은 것을 확인한 뒤, 말한 모든 것의 병을 가져왔는지 물어요. 'those pills'·'that amount'·'everything you've told me about'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 무엇을 먹었는지 묻고, 그 약의 개수와 시각을 묻고, 그 양과 함께 먹은 것을 확인한 뒤, 'anything else'가 가리킨 그 밖의 것까지 병이나 포장이 있는지 물어요. 'those pills'·'that amount'·'Whatever else'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Can you tell me what you took?
       icon: pill
@@ -4059,9 +4059,9 @@ situations:
       icon: magnify
       ko: 그 양과 함께 먹은 다른 게 있나요?
       note: 동반
-    - en: Do you have the bottle for everything you've told me about?
+    - en: Whatever else it was, do you have its bottle or package?
       icon: board
-      ko: 말씀하신 모든 것의 병을 가지고 계신가요?
+      ko: 그게 뭐였든, 그 약병이나 포장을 가지고 계신가요?
       note: 약병
 - title: 활성탄 투여 설명
   sentences:
@@ -4083,7 +4083,7 @@ situations:
     why: This charcoal binds…로 무엇이 무슨 일을 하는지 주어와 동사로 짧게 말해요. 활성탄은 위장 안에 남은 약물에 붙어 흡수를 줄이는 것이라, 이미 혈액에 들어간 약에는 효과가 제한적이에요.
     decoy: with a straw
     distractorsKo:
-    - 이 약은 위를 직접 씻어 내요
+    - 천천히 다 드시면 돼요
     - 이 활성탄은 통증을 줄여 줘요
     blank:
       answer: less
@@ -4110,15 +4110,15 @@ situations:
     why: while it can still help으로 시간이 지나면 효과가 줄어든다는 이유를 바로 붙여요. 활성탄은 먹은 뒤 가능한 한 이르게 줄수록 아직 흡수되지 않은 약에 닿을 수 있어요.
     decoy: all at once
     distractorsKo:
-    - 약은 식사 후에 드세요
-    - 천천히 쉬면서 드셔도 돼요
+    - 병에 남은 건 제가 치울게요
+    - 컵은 제가 들고 있을게요
     blank:
       answer: important
       options:
       - en: tasty
       - en: painless
       - en: important
-      - en: optional
+      - en: boring
   - en: Tell me right away if you feel like you might throw up.
     ko: 토할 것 같으면 바로 말씀해 주세요.
     chunks:
@@ -4190,7 +4190,7 @@ situations:
     why: can으로 확정이 아니라 도움이 될 수 있다는 정도로 말해요. 걸쭉하고 검은 액체라 보기만 해도 거부하는 환자가 있어서, 눈에 덜 띄는 방법을 권해요.
     decoy: with ice
     distractorsKo:
-    - 잘게 부숴서 드리면 더 쉬워요
+    - 조금씩 나눠 드셔도 돼요
     - 차갑게 해서 드리면 더 쉬워요
     blank:
       answer: straw
@@ -4215,15 +4215,15 @@ situations:
     why: in case로 아직 일어나지 않은 일에 대비한다고 말해서 겁을 줄여요. can't keep it down은 토해서 넘기지 못하는 상태를 부드럽게 돌려 말한 거예요.
     decoy: for tonight
     distractorsKo:
-    - 토하면 바로 활성탄을 다시 드릴게요
+    - 토하면 몸을 옆으로 돌려 드릴게요
     - 구토 방지 약을 먼저 드릴게요
     blank:
       answer: closely
       options:
       - en: briefly
-      - en: casually
+      - en: remotely
       - en: closely
-      - en: rarely
+      - en: occasionally
   nuance:
   - kind: slider
     words:
@@ -4247,7 +4247,7 @@ situations:
       ok: true
     - who: 환자에게
       icon: me
-      en: Report any vomiting or emesis — aspiration risk with the charcoal.
+      en: Report any vomiting — aspiration risk with the charcoal.
       ok: false
       fix: Tell me right away if you feel like you might throw up.
     - who: 동료에게
@@ -4303,10 +4303,10 @@ situations:
     blank:
       answer: hurt
       options:
-      - en: wake
-      - en: check
+      - en: treat
+      - en: calm
       - en: hurt
-      - en: feed
+      - en: numb
   - en: You're safe here, and I won't judge you for anything you tell me.
     ko: 여긴 안전해요, 무슨 말씀을 하셔도 판단하지 않을게요.
     chunks:
@@ -4323,10 +4323,10 @@ situations:
     tag: 안심
     icon: shield
     why: I won't judge로 판단하지 않겠다고 약속해 솔직한 대답을 열어 줘요. 낙인이 두려우면 환자는 의도를 숨기기 쉬워요.
-    decoy: or tell anyone
+    decoy: for being here
     distractorsKo:
     - 이 이야기는 가족에게 전할게요
-    - 지금 퇴원 서류를 가져올게요
+    - 지금 활력징후를 잴게요
     blank:
       answer: safe
       options:
@@ -4350,7 +4350,7 @@ situations:
     decoy: about work
     distractorsKo:
     - 이 약은 오늘 처음 드신 건가요?
-    - 지금도 그런 생각이 드세요?
+    - 오늘 술도 드셨어요?
     blank:
       answer: thoughts
       options:
@@ -4374,7 +4374,7 @@ situations:
     why: It's okay to feel…로 감정 자체를 인정하고 I'm glad you're here로 찾아온 행동을 인정해요. 감정을 부정하면 대화가 닫혀서 먼저 받아 줘요.
     decoy: for asking
     distractorsKo:
-    - 이런 생각은 곧 사라질 거예요
+    - 지금 곁에 있어 줄 사람이 있나요?
     - 지금은 눈을 붙이시는 게 좋겠어요
     blank:
       answer: okay
@@ -4402,12 +4402,12 @@ situations:
     - 상담사가 곧 올 거예요
     - 지금은 병실에서 쉬세요
     blank:
-      answer: Right now
+      answer: only
       options:
-      - en: Next week
-      - en: Every night
-      - en: Right now
-      - en: Last year
+      - en: first
+      - en: next
+      - en: only
+      - en: usual
   - en: Is there anyone at home who might also be in danger?
     ko: 집에 위험할 수 있는 다른 분이 계신가요?
     chunks:
@@ -4427,12 +4427,12 @@ situations:
     - 집에 약이 더 있나요?
     - 집까지 가는 차편이 있으세요?
     blank:
-      answer: also
+      answer: home
       options:
-      - en: never
-      - en: barely
-      - en: hardly
-      - en: also
+      - en: work
+      - en: church
+      - en: daycare
+      - en: home
   nuance:
   - kind: pair
     words:
@@ -4473,7 +4473,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 의도성 사정 4문장 순서
-    why: 민감한 질문임을 알리고, 직접 묻고, 말해 준 것에 감사하며 안심시킨 뒤, 집에 위험한 다른 사람이 있는지 물어요. 'Thank you for telling me'가 앞 줄의 답을 가리키고 'anyone else'가 앞 줄의 'you'를 가리켜 순서가 하나예요.
+    why: 민감한 질문임을 알리고, 직접 묻고, 어떤 대답이든 판단하지 않고 안전하게 지킨다고 안심시킨 뒤, 그 안전에 이어 집에 위험한 다른 사람이 있는지 물어요. 'Whatever your answer'가 앞 줄의 질문에, 'your safety'가 앞 줄의 안전에 이어져 순서가 하나예요.
     lines:
     - en: I need to ask you something personal.
       icon: faceWorried
@@ -4483,13 +4483,13 @@ situations:
       icon: magnify
       ko: 스스로를 다치게 하려고 하셨나요?
       note: 질문
-    - en: Thank you for telling me — I won't judge you, and I'm keeping you safe.
+    - en: Whatever your answer, I won't judge you, and I'm keeping you safe.
       icon: shield
-      ko: 말해 줘서 고마워요, 판단하지 않고 안전하게 지켜 드릴게요
+      ko: 어떤 대답이든 판단하지 않을게요, 안전하게 지켜 드릴게요
       note: 안심
-    - en: Is there anyone else at home who might be in danger?
+    - en: Along with your safety, is anyone else at home in danger?
       icon: home
-      ko: 집에 위험할 수 있는 다른 분이 계신가요?
+      ko: 안전과 함께, 집에 위험한 다른 분이 계신가요?
       note: 안전
 - title: 가정 화학물질 노출
   sentences:
@@ -4623,9 +4623,9 @@ situations:
     blank:
       answer: flush
       options:
-      - en: rub
-      - en: cover
-      - en: dry
+      - en: numb
+      - en: check
+      - en: test
       - en: flush
   - en: Are you having any trouble breathing right now?
     ko: 지금 숨쉬기 힘든 점이 있나요?
@@ -4646,12 +4646,12 @@ situations:
     - 지금 기침이 심해지고 있나요?
     - 목이 따갑거나 아픈가요?
     blank:
-      answer: right now
+      answer: breathing
       options:
-      - en: right now
-      - en: last night
-      - en: next week
-      - en: yesterday
+      - en: breathing
+      - en: swallowing
+      - en: seeing
+      - en: sleeping
   nuance:
   - kind: pair
     words:
@@ -4695,23 +4695,23 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 화학물질 노출 4문장 순서
-    why: 숨 쉬는 데 문제가 있는지 먼저 확인하고, 그 답을 듣고 섞은 제품을 묻고, 그 제품으로 독극물센터에 전화하고, 센터가 알려 줄 처치 시간을 말해요. 'that answer'·'those products'·'They'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 숨 쉬는 데 문제가 있는지 먼저 확인하고, 호흡을 지켜보며 섞은 제품을 묻고, 독극물센터에 그 제품으로 자문하는 동안 눈과 피부에 묻은 것은 바로 씻어요. 'While I keep watching your breathing'·'those products'·'they'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Are you having any trouble breathing right now?
       icon: stetho
       ko: 지금 숨쉬기 힘든 점이 있나요?
       note: 호흡
-    - en: With that answer, I need to know which products you mixed.
+    - en: While I keep watching your breathing, which products did you mix?
       icon: magnify
-      ko: 그 답을 듣고 어떤 제품을 섞으셨는지 알아야 해요
+      ko: 계속 호흡을 지켜보는 동안 어떤 제품을 섞으셨나요?
       note: 제품
-    - en: I'm calling Poison Control with those products so we treat this exactly right.
+    - en: I'm calling Poison Control about those products so we treat this right.
       icon: speech
-      ko: 그 제품들로 독극물센터에 전화해서 정확히 처치할게요
+      ko: 그 제품들로 독극물센터에 전화해서 제대로 처치할게요
       note: 전화
-    - en: They'll tell us how long your eyes and skin need rinsing.
+    - en: While they advise us, we'll rinse anything that touched your eyes or skin.
       icon: bandage
-      ko: 눈과 피부를 얼마나 헹궈야 하는지 알려 줄 거예요
+      ko: 그분들이 자문하는 동안 눈이나 피부에 닿은 것은 바로 씻어 낼게요
       note: 처치
 - title: 소아 우발 섭취
   sentences:
@@ -4736,12 +4736,12 @@ situations:
     - 아이 몸무게는 몇 킬로예요?
     - 병은 뚜껑이 닫혀 있었나요?
     blank:
-      answer: now
+      answer: left
       options:
-      - en: now
-      - en: yesterday
-      - en: tomorrow
-      - en: last week
+      - en: left
+      - en: missing
+      - en: spilled
+      - en: crushed
   - en: About what time did you find her?
     ko: 대략 몇 시에 발견하셨어요?
     chunks:
@@ -4754,7 +4754,7 @@ situations:
     goal: 1
     tag: 시각 확인
     icon: calendar
-    why: find her로 발견한 순간을 기준점으로 삼아요. 실제로 먹은 시각은 모르니 발견 시각이 먹은 시각의 가장 늦은 한계가 되어 위험 시점을 추정할 수 있어요.
+    why: find her로 발견한 순간을 기준점으로 삼아요. 먹은 시각은 모르니 마지막으로 괜찮았던 시각과 발견 시각을 함께 알아야 먹은 시각의 범위를 좁힐 수 있어요.
     decoy: at the park
     distractorsKo:
     - 아이는 평소 약병을 만지곤 하나요?
@@ -4869,7 +4869,7 @@ situations:
       - en: notes
       - en: care
       - en: pictures
-      - en: photos
+      - en: measurements
   nuance:
   - kind: slider
     words:
@@ -4908,24 +4908,24 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 소아 우발 섭취 4문장 순서
-    why: 발견한 시각을 묻고, 그때의 알약 수를 묻고, 병을 들고 데려온 것을 인정하고, 이제부터 맡겠다고 닫아요. 'that time'·'the bottle'·'From here'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 발견한 시각을 묻고, 그 전의 알약 수와 남은 수를 묻고, 병을 가져온 것을 인정하고, 그 덕에 무엇을 살필지 안다고 닫아요. 'before that'·'that bottle'·'Thanks to that'이 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: About what time did you find her?
       icon: calendar
       ko: 대략 몇 시에 발견하셨어요?
       note: 시각
-    - en: How many pills were in the bottle at that time, and how many are left?
+    - en: How many pills were in the bottle before that, and how many are left?
       icon: pill
-      ko: 그때 병에 알약이 몇 개 있었고 지금 몇 개 남았나요?
+      ko: 그 전에 병에 알약이 몇 개 있었고 지금 몇 개 남았나요?
       note: 개수
-    - en: You did the right thing bringing her in with the bottle.
+    - en: Bringing that bottle in with her was the right thing to do.
       icon: handshake2
-      ko: 병을 가지고 아이를 데려오신 건 잘하신 거예요
+      ko: 그 병을 가지고 아이를 데려오신 건 잘하신 거예요
       note: 인정
-    - en: From here, we'll take good care of her.
+    - en: Thanks to that, we know exactly what to watch for.
       icon: shield
-      ko: 이제부터는 저희가 잘 돌봐드릴게요
-      note: 인계
+      ko: 덕분에 무엇을 살펴야 하는지 정확히 알아요
+      note: 안심
 - title: 아세트아미노펜 과다
   sentences:
   - en: Feeling okay now is normal, but the danger can show up later.
@@ -5009,8 +5009,8 @@ situations:
     why: called NAC로 약 이름을 쉬운 말과 함께 소개하고 early matters로 시간의 중요성을 짚어요. NAC는 간 손상을 막는 해독제라 일찍 시작할수록 보호 효과가 커요.
     decoy: for your kidneys
     distractorsKo:
-    - 이 약은 통증을 바로 가라앉혀요
-    - 이 약은 위 속 약을 씻어 내요
+    - 이 약은 정맥으로 몇 시간에 걸쳐 들어가요
+    - 간 수치는 내일 아침에 다시 볼게요
     blank:
       answer: liver
       options:
@@ -5058,8 +5058,8 @@ situations:
     goal: 2
     tag: 치료 시작
     icon: pill
-    why: now로 지금 시작한다고 말하고 so로 목적을 이어요. 의사 처방에 따라 정해지고, 정맥으로 주는 경우가 많아요.
-    decoy: next week
+    why: now로 지금 시작한다고 말하고 so로 목적을 이어요. NAC는 보통 정맥으로 몇 시간에 걸쳐 주고, 시작과 기간은 수치와 먹은 시각을 보고 의사가 정해요.
+    decoy: for you
     distractorsKo:
     - 이 약은 간 수치를 보면서 용량을 조절해요
     - 지금 간 수치를 한 번 더 확인할게요
@@ -5092,10 +5092,10 @@ situations:
     blank:
       answer: explain
       options:
-      - en: delay
-      - en: rush
+      - en: record
+      - en: check
       - en: explain
-      - en: skip
+      - en: time
   nuance:
   - kind: pair
     words:
@@ -5140,23 +5140,23 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 아세트아미노펜 과다 4문장 순서
-    why: 지금 괜찮아도 나중에 위험할 수 있다고 알리고, 그래서 수치와 먹은 시각을 확인하고, 그 둘을 바탕으로 NAC를 시작하고, 단계마다 설명하겠다고 닫아요. 'That's why'·'both of those'·'it'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 지금 괜찮아도 나중에 위험할 수 있다고 알리고, 그래서 수치와 먹은 시각을 확인하고, 그 둘을 바탕으로 NAC를 시작하고, 단계마다 설명하겠다고 닫아요. 'That's why'·'both of those'·'that treatment'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Feeling okay now is normal, but the danger can show up later.
       icon: bell
       ko: 지금 괜찮은 건 정상이지만 위험은 나중에 나타날 수 있어요
       note: 경고
-    - en: That's why we'll check your acetaminophen level and the exact time you took it.
+    - en: That's why we'll check your acetaminophen level against the exact time you took it.
       icon: lab
-      ko: 그래서 아세트아미노펜 수치와 드신 정확한 시각을 확인할게요
+      ko: 그래서 아세트아미노펜 수치를 드신 정확한 시각에 맞춰 확인할게요
       note: 검사
     - en: Using both of those, we'll start NAC now so your liver has the best chance.
       icon: pill
       ko: 그 둘을 바탕으로 간이 가장 좋은 기회를 갖도록 지금 NAC를 시작할게요
       note: 치료
-    - en: I'll explain each step of it so you know what's happening.
+    - en: I'll explain each step of that treatment so you know what's happening.
       icon: speech
-      ko: 무슨 일인지 아시도록 그 단계마다 설명할게요
+      ko: 무슨 일인지 아시도록 그 치료의 단계마다 설명할게요
       note: 설명
 - title: 오피오이드 과다
   sentences:
@@ -5209,12 +5209,12 @@ situations:
     - 깨어나면 혈당을 다시 확인할게요
     - 깨어나면 바로 일으켜 앉힐게요
     blank:
-      answer: closely
+      answer: wake
       options:
-      - en: once
-      - en: rarely
-      - en: briefly
-      - en: closely
+      - en: sit
+      - en: stand
+      - en: cheer
+      - en: wake
   - en: What did he take, and do you know how much?
     ko: 무엇을 드셨고, 얼마나 드셨는지 아세요?
     chunks:
@@ -5309,14 +5309,14 @@ situations:
     decoy: for a while
     distractorsKo:
     - 보호자분은 밖에서 기다려 주세요
-    - 지금 퇴원 서류를 가져올게요
+    - 보호자분 연락처를 적어 주시겠어요?
     blank:
-      answer: staying
+      answer: again
       options:
-      - en: leaving
-      - en: resting
-      - en: sleeping
-      - en: staying
+      - en: first
+      - en: later
+      - en: sooner
+      - en: again
   nuance:
   - kind: slider
     words:
@@ -5356,7 +5356,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 오피오이드 과다 4문장 순서
-    why: 호흡을 먼저 지지하고, 호흡이 지지된 상태에서 날록손을 투여하고, 호흡이 나아지는 것을 알리고, 나아져도 효과가 떨어질 수 있어 계속 지켜본다고 닫아요. 'his breathing'·'it improves'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 호흡을 먼저 지지하고, 호흡이 지지된 상태에서 날록손을 투여하고, 그 약으로 호흡이 나아지는 것을 알리고, 나아져도 효과가 떨어질 수 있어 계속 지켜본다고 닫아요. 'his breathing'·'That drug'·'it improves'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: I'm supporting his breathing right now.
       icon: stetho
@@ -5366,9 +5366,9 @@ situations:
       icon: pill
       ko: 호흡을 지지한 채 오피오이드를 되돌리려고 날록손을 드려요
       note: 투여
-    - en: His breathing should look better within a few minutes.
+    - en: That drug should make his breathing better within a few minutes.
       icon: monitor
-      ko: 몇 분 안에 호흡이 더 나아질 거예요
+      ko: 그 약이 몇 분 안에 호흡을 더 나아지게 할 거예요
       note: 경과
     - en: Even when it improves, it can wear off, so we'll keep watching him closely.
       icon: shield
@@ -5481,10 +5481,10 @@ situations:
     blank:
       answer: airway
       options:
-      - en: paperwork
-      - en: billing
+      - en: pain
+      - en: comfort
       - en: airway
-      - en: discharge
+      - en: sleep
   - en: We'll give the reversal drug slowly and watch closely for seizures.
     ko: 역전제를 천천히 투여하고 발작을 가까이서 지켜볼게요.
     chunks:
@@ -5503,17 +5503,17 @@ situations:
     tag: 투여 안내
     icon: pill
     why: slowly로 천천히 주는 방식과 watch closely for로 지켜볼 것을 한 문장에 묶어요. 급하게 주면 갑자기 깨어나 흥분하거나 발작할 수 있어서 조금씩 주며 반응을 봐요.
-    decoy: all at once
+    decoy: at the bedside
     distractorsKo:
     - 역전제를 드린 뒤 기도를 다시 확인할게요
     - 역전제를 정맥 수액에 섞어 드릴게요
     blank:
-      answer: slowly
+      answer: seizures
       options:
-      - en: quickly
-      - en: rapidly
-      - en: suddenly
-      - en: slowly
+      - en: bleeding
+      - en: rashes
+      - en: fever
+      - en: seizures
   - en: Tell me if you notice any twitching or jerking.
     ko: 씰룩거리거나 움찔거리는 게 보이면 말씀해 주세요.
     chunks:
@@ -5580,7 +5580,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 벤조 과다 4문장 순서
-    why: 진정 정도를 확인하고, 그 결과에 따라 기도를 지지하고, 기도가 보호된 상태에서 역전제를 천천히 쓰고, 그 약으로 생길 수 있는 움찔거림을 알리게 해요. 'That'·'her airway protected'·'it'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 진정 정도를 확인하고, 그 결과에 따라 기도를 지지하고, 기도가 보호되고 의사가 동의할 때만 역전제를 천천히 쓰고, 그 약으로 생길 수 있는 움찔거림을 알리게 해요. 벤조디아제핀 역전제는 섞어 먹었거나 오래 먹은 사람에게는 쓰지 않는 경우가 많아요. 'That'·'her airway'·'it'이 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: I'm going to check how deeply she's sedated.
       icon: stetho
@@ -5590,9 +5590,9 @@ situations:
       icon: shield
       ko: 그걸로 기도에 얼마나 지지가 필요한지 알 수 있어요
       note: 기도
-    - en: With her airway protected, we use the reversal drug slowly.
+    - en: If her airway is protected and the doctor agrees, the reversal drug is given slowly.
       icon: pill
-      ko: 기도를 보호한 채 역전제를 천천히 써요
+      ko: 기도가 보호되고 의사가 동의하면 역전제를 천천히 투여해요
       note: 역전제
     - en: Tell me if you notice any twitching or jerking from it.
       icon: bell
@@ -5622,7 +5622,7 @@ situations:
     why: a clue that으로 증상을 단정이 아니라 단서로 설명해요. 귀 울림은 살리실산(아스피린) 중독에서 흔한 증상 가운데 하나예요.
     decoy: from the noise
     distractorsKo:
-    - 귀 울림은 곧 가라앉을 거예요
+    - 귀 울림이 심해지면 알려 주세요
     - 귀 검사를 먼저 받아 보실게요
     blank:
       answer: high
@@ -5652,7 +5652,7 @@ situations:
     why: to help…faster로 목적과 속도를 함께 말해요. 중탄산염은 소변을 알칼리성으로 만들어 살리실산이 소변으로 더 빨리 빠지게 도와요.
     decoy: through your mouth
     distractorsKo:
-    - 수액은 팔 대신 입으로 드릴게요
+    - 소변 검사를 몇 번 할게요
     - 체온을 낮추는 담요를 덮어 드릴게요
     blank:
       answer: clear
@@ -5706,7 +5706,7 @@ situations:
     why: can be a sign으로 단정하지 않고 가능성으로 설명해요. 살리실산은 호흡 중추를 자극해 숨을 빠르게 쉬게 하고, 몸이 산 염기 균형을 맞추려는 반응이기도 해요.
     decoy: from the fever
     distractorsKo:
-    - 빠른 호흡은 아스피린이 위에서 녹아서 생겨요
+    - 숨이 더 차면 바로 말씀해 주세요
     - 빠른 호흡이 멎으면 바로 알려 주세요
     blank:
       answer: Fast
@@ -5731,18 +5731,18 @@ situations:
     goal: 2
     tag: 치료 설명
     icon: pill
-    why: helps로 중탄산염이 몸을 도와서 하는 일이라고 말해요. 소변을 알칼리성으로 만들어 아스피린이 소변으로 빠지는 것을 돕는 치료예요.
+    why: helps로 중탄산염이 몸을 도와서 하는 일이라고 말해요. 치료 중에는 소변 산도와 칼륨을 함께 확인해요.
     decoy: from your stomach
     distractorsKo:
-    - 중탄산염은 위산을 더 늘려요
-    - 중탄산염은 열을 내려 줘요
+    - 중탄산염은 정맥으로 천천히 들어가요
+    - 칼륨 수치도 함께 볼게요
     blank:
       answer: bicarbonate
       options:
       - en: bicarbonate
       - en: oxygen
       - en: insulin
-      - en: morphine
+      - en: calcium
   - en: We'll keep checking your breathing and blood levels closely.
     ko: 호흡과 혈액 수치를 계속 가까이서 확인할게요.
     chunks:
@@ -5765,12 +5765,12 @@ situations:
     - 혈당과 체온을 계속 확인할게요
     - 소변 양을 계속 확인할게요
     blank:
-      answer: keep
+      answer: breathing
       options:
-      - en: skip
-      - en: keep
-      - en: stop
-      - en: finish
+      - en: pain
+      - en: breathing
+      - en: mood
+      - en: sleep
   nuance:
   - kind: pair
     words:
@@ -5815,15 +5815,15 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 살리실산 중독 4문장 순서
-    why: 먹은 양과 기간을 묻고, 그만큼이면 귀 울림이 수치가 높다는 단서라고 알리고, 그 수치를 내리는 치료를 설명하고, 치료가 듣는지 계속 확인한다고 닫아요. 'that many'·'that level'·'it'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 먹은 양과 기간을 묻고, 개수와 상관없이 귀 울림이 수치가 높을 수 있다는 단서라고 알리고, 그 수치를 내리는 치료를 설명하고, 치료가 듣는지 계속 확인한다고 닫아요. 'Whatever the number'·'that level'·'it'이 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: How many aspirin did you take, and over how long?
       icon: magnify
       ko: 아스피린을 몇 알, 얼마 동안 드셨어요?
       note: 문진
-    - en: With that many, the ringing in your ears is a clue the level is high.
+    - en: Whatever the number, that ringing in your ears means the level may be high.
       icon: bulb
-      ko: 그만큼 드셨으면 귀 울림은 수치가 높다는 단서예요
+      ko: 몇 개든, 귀 울림은 수치가 높을 수 있다는 뜻이에요
       note: 해석
     - en: To bring that level down, we'll give you fluids with bicarbonate.
       icon: pill
@@ -5856,12 +5856,12 @@ situations:
     - 지금 약물 수치를 확인하고 있어요
     - 지금 호흡을 가까이서 보고 있어요
     blank:
-      answer: closely
+      answer: rhythm
       options:
-      - en: lazily
-      - en: closely
-      - en: carelessly
-      - en: casually
+      - en: valves
+      - en: rhythm
+      - en: sounds
+      - en: muscle
   - en: This bicarbonate helps protect your heart from the medication.
     ko: 이 중탄산염이 약물로부터 심장을 보호하는 데 도와줘요.
     chunks:
@@ -5881,8 +5881,8 @@ situations:
     why: helps protect로 완전히 막는 게 아니라 돕는다고 정직하게 말해요. 중탄산나트륨은 삼환계 약물이 심장 전도를 늦추는 작용을 줄여 QRS가 넓어질 때 쓰는 치료예요.
     decoy: from the cold
     distractorsKo:
-    - 이 약은 심장 박동을 더 빠르게 해요
-    - 이 약은 혈압을 바로 올려 줘요
+    - 이 약은 정맥으로 들어가요
+    - 소변량도 같이 볼게요
     blank:
       answer: heart
       options:
@@ -5938,12 +5938,12 @@ situations:
     - 심장 초음파를 곧 해 볼게요
     - 심장 약을 먼저 드릴게요
     blank:
-      answer: quickly
+      answer: change
       options:
-      - en: quickly
-      - en: slowly
-      - en: rarely
-      - en: seldom
+      - en: change
+      - en: repeat
+      - en: freeze
+      - en: return
   - en: We're ready to act fast if your heart rhythm changes.
     ko: 심장 리듬이 바뀌면 바로 빠르게 대응할 준비가 돼 있어요.
     chunks:
@@ -5969,10 +5969,10 @@ situations:
     blank:
       answer: ready
       options:
-      - en: unwilling
+      - en: trained
       - en: ready
+      - en: allowed
       - en: unable
-      - en: afraid
   - en: Stay still for me while we watch the monitor.
     ko: 제가 모니터를 보는 동안 가만히 계세요.
     chunks:
@@ -5988,17 +5988,17 @@ situations:
     tag: 협조 요청
     icon: monitor
     why: for me로 부탁하는 말투를 만들고 while로 이유가 되는 시간을 정해요. 움직이면 전극이 흔들려 심전도 파형이 어긋나서 정확히 읽기 어려워요.
-    decoy: in bed
+    decoy: after the test
     distractorsKo:
     - 눈을 감고 쉬어 주세요
     - 팔을 앞으로 뻗어 주세요
     blank:
       answer: watch
       options:
+      - en: move
       - en: clean
-      - en: cover
       - en: watch
-      - en: unplug
+      - en: adjust
   nuance:
   - kind: pair
     words:
@@ -6141,12 +6141,12 @@ situations:
     - 어지럽거나 머리가 아프세요?
     - 최근에 넘어지신 적 있어요?
     blank:
-      answer: seeing
+      answer: bruising
       options:
-      - en: seeing
-      - en: hiding
-      - en: feeling
-      - en: wanting
+      - en: bruising
+      - en: swelling
+      - en: itching
+      - en: sweating
   - en: How many extra pills did you take by mistake?
     ko: 실수로 얼마나 더 많은 약을 드셨나요?
     chunks:
@@ -6162,7 +6162,7 @@ situations:
     goal: 1
     tag: 문진
     icon: pill
-    why: extra pills로 평소 먹는 약에 더한 양을 묻고 by mistake로 실수라는 전제를 줘요. 실수라고 말해 주면 환자가 부담 없이 사실대로 말할 수 있어요.
+    why: by mistake로 환자가 말한 실수 복용을 그대로 받아, 부담 없이 양을 말하게 해요. 의도적이었을 가능성은 따로 물어 확인해요.
     decoy: this morning
     distractorsKo:
     - 평소 드시는 용량은 몇 알이에요?
@@ -6221,17 +6221,17 @@ situations:
     tag: 대비 안내
     icon: siren
     why: If…we're ready로 조건과 준비를 한 문장에 묶어요. 심한 출혈이나 머리 외상 등에서는 역전제를 지체 없이 쓰는 것이 중요해서 미리 준비해 둬요.
-    decoy: after lunch
+    decoy: for the lab
     distractorsKo:
     - 출혈이 심하면 혈액 검사를 다시 할게요
     - 출혈이 심하면 바로 영상 검사를 할게요
     blank:
-      answer: ready
+      answer: reversal
       options:
-      - en: reluctant
-      - en: unable
-      - en: unwilling
-      - en: ready
+      - en: pain
+      - en: sleeping
+      - en: nausea
+      - en: reversal
   nuance:
   - kind: slider
     words:
@@ -6271,23 +6271,23 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 항응고제 과다 4문장 순서
-    why: INR로 혈액이 얼마나 묽은지 확인하고, 그만큼 묽은 상태에서 어디에 출혈이 있는지 묻고, 보이는 것이 심해지면 쓸 역전제를 알리고, 그래서 새 출혈을 지켜본다고 닫아요. 'that thin'·'what you're seeing'·'That's why'가 앞 줄을 가리켜 순서가 하나예요.
+    why: INR로 혈액이 얼마나 묽은지 확인하고, 결과를 기다리는 동안 출혈 징후를 묻고, 그 답이 '예'이거나 INR이 높으면 역전제가 있다고 알리고, 약을 쓰든 안 쓰든 새 출혈을 지켜본다고 닫아요. 'that'·'If so'·'that medicine'이 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: We'll check your INR to see how thin your blood is.
       icon: lab
       ko: 혈액이 얼마나 묽은지 INR로 확인할게요
       note: 검사
-    - en: With your blood that thin, are you seeing any bruising or blood in your urine?
+    - en: While we wait on that, any bruising or blood in your urine?
       icon: magnify
-      ko: 그만큼 묽으니 멍이나 소변에 피가 보이나요?
+      ko: 그 결과를 기다리는 동안, 멍이나 소변에 피가 보이나요?
       note: 문진
-    - en: If what you're seeing gets worse, there's a reversal medicine we can give.
+    - en: If so, or if the INR is high, we have a reversal medicine.
       icon: pill
-      ko: 지금 보이는 게 심해지면 드릴 수 있는 역전제가 있어요
+      ko: 그렇다면, 혹은 INR이 높다면 드릴 수 있는 역전제가 있어요
       note: 치료
-    - en: That's why we're watching closely for any new bruising or bleeding.
+    - en: With or without that medicine, we're watching closely for any new bleeding.
       icon: magnify
-      ko: 그래서 새 멍이나 출혈을 가까이서 지켜보고 있어요
+      ko: 그 약을 쓰든 안 쓰든 새 출혈을 가까이서 지켜보고 있어요
       note: 관찰
 - title: 자살시도 다약제
   sentences:
@@ -6313,12 +6313,12 @@ situations:
     - 지금 바로 보호자분께 연락할게요
     - 지금은 쉬시고 나중에 이야기해요
     blank:
-      answer: hear
+      answer: pain
       options:
-      - en: doubt
-      - en: ignore
-      - en: forget
-      - en: hear
+      - en: danger
+      - en: shock
+      - en: denial
+      - en: pain
   - en: Can you tell me each thing you took so we can keep you safe?
     ko: 안전하게 해드릴 수 있도록 드신 것 하나하나 말씀해 주시겠어요?
     chunks:
@@ -6397,10 +6397,10 @@ situations:
     blank:
       answer: know
       options:
-      - en: deny
-      - en: forget
+      - en: think
+      - en: guess
       - en: know
-      - en: doubt
+      - en: bet
   - en: You're not alone, and we're going to help you through this.
     ko: 혼자가 아니고, 이 일을 함께 헤쳐나가도록 도와드릴게요.
     chunks:
@@ -6421,12 +6421,12 @@ situations:
     - 지금 가족에게 연락해 드릴게요
     - 배우자분이 오고 계세요
     blank:
-      answer: help
+      answer: alone
       options:
-      - en: blame
-      - en: ignore
-      - en: judge
-      - en: help
+      - en: wrong
+      - en: weak
+      - en: broken
+      - en: alone
   - en: Someone will be with you every step of the way.
     ko: 매 순간 누군가 함께 있어드릴 거예요.
     chunks:
@@ -6493,24 +6493,24 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 자살시도 다약제 4문장 순서
-    why: 고통에 먼저 공감하고, 그 고통을 돕기 위해 먹은 것을 빠짐없이 묻고, 그 정보를 상담사와 나누겠다고 알리고, 그 과정 내내 곁에 있다고 닫아요. 'that pain'·'all of that'·'that'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 고통에 먼저 공감하고, 그 고통을 생각해 먹은 것을 묻고, 그 정보가 치료에 쓰인다고 알리고, 치료가 끝나 안정되면 상담사가 온다고 닫아요. 'your pain'·'those'·'that'이 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: I hear how much pain you're in, and I'm staying right here.
       icon: faceWorried
       ko: 얼마나 힘드신지 느껴져요, 바로 여기 있을게요
       note: 공감
-    - en: To help with that pain, can you tell me each thing you took?
+    - en: With your pain in mind, can you tell me each thing you took?
       icon: pill
-      ko: 그 고통을 돕기 위해 드신 것을 하나하나 말씀해 주시겠어요?
+      ko: 그 고통을 생각해서, 드신 것을 하나하나 말씀해 주시겠어요?
       note: 약물
-    - en: I'll share all of that with a counselor who will come see you.
+    - en: Knowing each of those helps the doctor treat every one safely.
+      icon: pill
+      ko: 그 하나하나를 알면 의사가 모든 것을 안전하게 치료할 수 있어요
+      note: 치료
+    - en: Once that's done and you're medically safe, a counselor will come talk with you.
       icon: speech
-      ko: 그 모두를 상담사에게 전할 거고, 상담사가 뵈러 올 거예요
+      ko: 그게 끝나고 몸이 안정되면 상담사가 와서 이야기할 거예요
       note: 연계
-    - en: Someone will stay with you through that, so you're not alone.
-      icon: handshake2
-      ko: 그 과정 내내 누군가 함께 있을 거라서 혼자가 아니에요
-      note: 연대
 - title: 알코올+약물 혼합
   sentences:
   - en: Alcohol and those pills together can slow your breathing, so we'll watch you closely.
@@ -6584,18 +6584,18 @@ situations:
     goal: 2
     tag: 안심
     icon: shield
-    why: Stay with me로 의식을 붙잡는 말을 먼저 하고 I'll keep checking으로 곁을 떠나지 않는다고 약속해요. 술과 진정 약물이 겹치면 갑자기 처질 수 있어서 자주 확인해요.
+    why: Stay with me로 의식을 붙잡는 말을 먼저 하고 I'll keep checking으로 자주 와서 확인한다고 약속해요. 술과 진정 약물이 겹치면 갑자기 처질 수 있어서 자주 확인해요.
     decoy: after a while
     distractorsKo:
     - 제가 계속 곁에서 말을 걸게요
     - 지금 혈압을 한 번 더 잴게요
     blank:
-      answer: keep
+      answer: checking
       options:
-      - en: quit
-      - en: forget
-      - en: keep
-      - en: stop
+      - en: calling
+      - en: waiting
+      - en: checking
+      - en: texting
   - en: Mixing alcohol with sedatives can make you stop breathing without warning.
     ko: 술과 진정제를 함께 쓰면 경고 없이 숨이 멈출 수 있어요.
     chunks:
@@ -6613,8 +6613,8 @@ situations:
     why: without warning으로 미리 알리는 증상 없이 닥칠 수 있다고 강조해요. 겹친 진정 효과는 잠들듯 호흡이 느려지다 멈출 수 있어서 증상이 없어도 지켜봐요.
     decoy: on weekends
     distractorsKo:
-    - 술과 약을 같이 먹으면 간이 쉬어요
-    - 술이 깨면 약 효과도 바로 끝나요
+    - 술은 언제 마지막으로 드셨어요?
+    - 드신 수면제 이름을 아세요?
     blank:
       answer: sedatives
       options:
@@ -6666,15 +6666,15 @@ situations:
     why: Try to로 부탁하는 말투를 쓰고 for now로 지금만이라고 한정해 부담을 낮춰요. 깨어서 말하면 의식 수준을 바로 확인할 수 있어요.
     decoy: all night
     distractorsKo:
-    - 물을 조금 드세요
+    - 팔을 들어 보실 수 있나요?
     - 침대 난간을 잡고 계세요
     blank:
       answer: awake
       options:
-      - en: silent
+      - en: calm
       - en: awake
-      - en: asleep
-      - en: quiet
+      - en: still
+      - en: seated
   nuance:
   - kind: slider
     words:
@@ -6716,7 +6716,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 술과 약 혼합 4문장 순서
-    why: 호흡이 느려질 위험을 알리고, 그래서 먹은 양을 묻고, 그 양을 바탕으로 확인 주기를 알리고, 그 확인 사이에 깨어 있게 부탁해요. 'That's why'·'that amount'·'those checks'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 호흡이 느려질 위험을 알리고, 그래서 먹은 양을 묻고, 양이 얼마든 확인 주기를 알리고, 그 확인 사이에 깨어 있게 부탁해요. 'That's why'·'Whatever the amount'·'those checks'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Alcohol and those pills together can slow your breathing, so I'm watching you closely.
       icon: bell
@@ -6726,9 +6726,9 @@ situations:
       icon: magnify
       ko: 그래서 술을 얼마나, 알약은 몇 개 드셨는지 알아야 해요
       note: 문진
-    - en: With that amount in mind, I'll check your oxygen and alertness every few minutes.
+    - en: Whatever the amount, I'll check your oxygen and alertness every few minutes.
       icon: monitor
-      ko: 그 양을 감안해 산소와 각성 상태를 몇 분마다 확인할게요
+      ko: 양이 얼마든 산소와 각성 상태를 몇 분마다 확인할게요
       note: 감시
     - en: Try to stay awake and talk with me between those checks.
       icon: speech
@@ -6758,7 +6758,7 @@ situations:
     why: can look normal even with로 정상처럼 보여도 믿을 수 없다는 점을 먼저 말하고 so we use로 대안을 이어요. 일반 맥박산소측정기는 일산화탄소가 붙은 헤모글로빈을 산소가 붙은 것처럼 읽어요.
     decoy: in your arm
     distractorsKo:
-    - 산소 수치가 정상이니 안심하셔도 돼요
+    - 두통은 언제부터 있었어요?
     - 산소 수치는 손가락에서 다시 재 볼게요
     blank:
       answer: special
@@ -6785,8 +6785,8 @@ situations:
     why: to clear it from…으로 산소를 주는 목적을 밝혀요. 높은 농도의 산소는 일산화탄소가 헤모글로빈에서 떨어져 나가는 속도를 크게 높여요.
     decoy: in the car
     distractorsKo:
-    - 산소 마스크는 몇 분만 쓰실 거예요
-    - 산소는 코로만 조금씩 드릴게요
+    - 두통이 심하면 바로 말씀해 주세요
+    - 마스크가 답답하면 알려 주세요
     blank:
       answer: high-flow
       options:
@@ -6814,12 +6814,12 @@ situations:
     - 집에 일산화탄소 경보기가 있었나요?
     - 집에 난방기구를 켜 두셨나요?
     blank:
-      answer: too
+      answer: sick
       options:
-      - en: twice
-      - en: soon
-      - en: first
-      - en: too
+      - en: cold
+      - en: hungry
+      - en: sleepy
+      - en: sick
   - en: Headaches in the whole family can be a big clue for carbon monoxide.
     ko: 가족 전체의 두통은 일산화탄소 중독의 큰 단서가 될 수 있어요.
     chunks:
@@ -6840,7 +6840,7 @@ situations:
     decoy: last winter
     distractorsKo:
     - 가족 모두 검사를 받아야 해요
-    - 두통은 곧 가라앉을 거예요
+    - 다른 증상은 없으셨어요?
     blank:
       answer: Headaches
       options:
@@ -6867,7 +6867,7 @@ situations:
     why: even when으로 겉으로 괜찮아 보이는 수치와 실제 상태가 다를 수 있다고 말해요. 일반 측정기는 일산화탄소가 붙은 헤모글로빈을 구분하지 못해서 정상 수치만 보고 안심하지 않아요.
     decoy: in the room
     distractorsKo:
-    - 산소 수치가 낮으면 일산화탄소가 높아요
+    - 피 검사 결과는 곧 나와요
     - 산소 수치는 팔을 따뜻하게 하면 달라져요
     blank:
       answer: fine
@@ -6956,7 +6956,7 @@ situations:
       ko: 그래서 특별한 검사를 써요
       note: 검사
     - en: Whatever the test shows, you're on high-flow oxygen to clear it from your blood.
-      icon: pill
+      icon: monitor
       ko: 검사 결과가 어떻든 혈액에서 씻어내도록 고유량 산소를 드려요
       note: 산소
     - en: We'll keep you on it until your levels are safe.
@@ -7040,15 +7040,15 @@ situations:
     why: stays between으로 이야기가 퍼지는 범위를 정해 줘요. 치료에 필요한 사람들 안에서만 나눈다는 뜻이고, 모든 비밀을 약속하는 말은 아니에요.
     decoy: and the police
     distractorsKo:
-    - 말씀하신 내용은 가족분께 먼저 알릴게요
-    - 말씀하신 내용은 다른 병원에도 보낼게요
+    - 원하시면 상담 선생님도 불러 드릴게요
+    - 검사 결과는 의사 선생님이 설명하실 거예요
     blank:
-      answer: between
+      answer: care team
       options:
-      - en: between
-      - en: outside
-      - en: beyond
-      - en: against
+      - en: care team
+      - en: family
+      - en: employer
+      - en: insurance
   - en: I can see some things that don't add up, and that's okay.
     ko: 앞뒤가 안 맞는 부분이 좀 보이는데, 그래도 괜찮아요.
     chunks:
@@ -7090,7 +7090,7 @@ situations:
     why: no matter what으로 어떤 내용이어도 상관없다고 범위를 열어요. 비난하지 않겠다는 뜻이지 모든 비밀을 약속한다는 뜻은 아니에요.
     decoy: or at home
     distractorsKo:
-    - 여기서는 누구도 비난하지 않아요
+    - 약을 어디서 구하셨는지 여쭤봐도 될까요?
     - 원하시면 상담사를 불러 드릴게요
     blank:
       answer: here
@@ -7121,12 +7121,12 @@ situations:
     - 의료팀은 약 이름만 알면 돼요
     - 의료팀은 보호자분께 먼저 물어볼 거예요
     blank:
-      answer: understand
+      answer: happened
       options:
-      - en: blame
-      - en: judge
-      - en: punish
-      - en: understand
+      - en: changed
+      - en: hurt
+      - en: helped
+      - en: happened
   nuance:
   - kind: pair
     words:
@@ -7168,7 +7168,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 약물 은폐 환자 4문장 순서
-    why: 처벌하러 온 게 아니라고 먼저 말하고, 그래도 몸의 징후를 근거로 대화를 열고, 그 이야기의 비밀 범위를 알리고, 그 밖에 팀이 이해하려는 목적으로 닫아요. 'Still'·'it'·'Beyond that'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 처벌하러 온 게 아니라고 먼저 말하고, 그래도 몸의 징후를 근거로 대화를 열고, 그 이야기의 비밀 범위를 알린 뒤, 그 약속을 바탕으로 무엇을 먹었는지 물어요. 'Still'·'it'·'that promise'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: I'm not here to get you in trouble — I just want to keep you safe.
       icon: shield
@@ -7182,10 +7182,10 @@ situations:
       icon: lock
       ko: 그것에 대해 말씀하신 건 저와 의료팀 사이에만 남아요
       note: 비밀
-    - en: Beyond that, your care team just wants to understand what happened, not to blame you.
-      icon: handshake2
-      ko: 그 밖에 의료팀은 탓하려는 게 아니라 무슨 일인지 이해하고 싶은 거예요
-      note: 목적
+    - en: With that promise, can you tell me what you took?
+      icon: pill
+      ko: 그 약속이 있으니, 무엇을 드셨는지 말씀해 주시겠어요?
+      note: 요청
 - title: 미상 물질 의식불명
   sentences:
   - en: Pupils are pinpoint and respirations are eight — this looks like a toxidrome.
@@ -7207,14 +7207,14 @@ situations:
     why: 숫자를 먼저 대고 this looks like로 판단을 뒤에 붙여요. 작은 동공과 느린 호흡은 오피오이드 톡시드롬의 대표적인 조합이에요.
     decoy: on the left
     distractorsKo:
-    - 동공이 크고 호흡수는 서른이에요
-    - 동공은 정상이고 호흡수는 열여섯이에요
+    - 날록손 0.4 mg 들어갔습니다
+    - 보호자가 약병을 가져왔습니다
     blank:
       answer: toxidrome
       options:
-      - en: rash
-      - en: fracture
-      - en: sprain
+      - en: seizure
+      - en: stroke
+      - en: head injury
       - en: toxidrome
   - en: I need airway support and naloxone at the bedside now.
     ko: 기도 지지와 날록손을 침상 곁에 지금 준비해 주세요.
@@ -7267,12 +7267,12 @@ situations:
     - 가족이 가져온 약병을 확인 중입니다
     - 의사 호출은 이미 했습니다
     blank:
-      answer: protecting
+      answer: Unknown
       options:
-      - en: abandoning
-      - en: protecting
-      - en: ignoring
-      - en: delaying
+      - en: Intentional
+      - en: Unknown
+      - en: Accidental
+      - en: Chronic
   - en: Airway first, then we treat the cause.
     ko: 기도가 먼저고, 그다음 원인을 치료해요.
     chunks:
@@ -7390,7 +7390,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 미상 물질 의식불명 4문장 순서
-    why: 동공과 호흡수를 보고하고, 그것이 톡시드롬 같아 기도를 보호한다고 알리고, 기도가 보호된 상태에서 날록손을 요청하고, 요청한 뒤 기도를 맡은 채 인계를 부탁해요. 'That'·'With the airway protected'·'With naloxone requested'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 동공과 호흡수를 보고하고, 그것이 톡시드롬 같아 기도를 보호한다고 알리고, 기도가 보호된 상태에서 날록손을 요청하고, 그것이 오는 동안 기도를 맡은 채 인계를 부탁해요. 'That'·'With the airway protected'·'that's coming'이 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Pupils are pinpoint and respirations are eight.
       icon: stetho
@@ -7404,9 +7404,9 @@ situations:
       icon: siren
       ko: 기도를 보호한 채 날록손을 침상 곁에 지금 준비해 주세요
       note: 요청
-    - en: With naloxone requested, can you take report while I stay with the airway?
+    - en: While that's coming, can you take report? I'll stay with the airway.
       icon: speech
-      ko: 날록손을 요청했으니, 제가 기도를 맡는 동안 인계 받으실 수 있나요?
+      ko: 그게 오는 동안 인계 받으실 수 있나요? 기도는 제가 맡을게요
       note: 인계
 - title: 유기인계 중독
   sentences:
@@ -7432,15 +7432,15 @@ situations:
     why: 목록 세 개를 대시로 끊어 보여 주고 point to로 결론을 뒤에 둬요. 침 흘림·땀·눈물은 콜린성 증상으로, 유기인계 중독을 가리키는 대표적인 조합이에요.
     decoy: after dinner
     distractorsKo:
-    - 이 증상은 탈수 때문일 수 있어요
-    - 이 증상은 감기에서 흔해요
+    - 그 살충제 통을 가져오셨나요?
+    - 보호복을 입고 씻겨 드릴게요
     blank:
-      answer: poisoning
+      answer: drooling
       options:
-      - en: poisoning
-      - en: allergy
-      - en: migraine
-      - en: fracture
+      - en: drooling
+      - en: bleeding
+      - en: itching
+      - en: shivering
   - en: We're giving atropine to dry up his secretions and protect his breathing.
     ko: 분비물을 말리고 호흡을 보호하도록 아트로핀을 드릴게요.
     chunks:
@@ -7462,8 +7462,8 @@ situations:
     why: to dry up…and protect로 목적을 둘로 나눠 말해요. 아트로핀은 콜린성 분비물을 줄여 기도와 호흡을 확보하도록 돕는 해독제예요.
     decoy: for the pain
     distractorsKo:
-    - 아트로핀으로 열을 내릴게요
-    - 아트로핀으로 통증을 줄일게요
+    - 숨소리를 계속 들어 볼게요
+    - 맥박이 빨라지는지 볼게요
     blank:
       answer: dry up
       options:
@@ -7493,8 +7493,8 @@ situations:
     why: remove…and wash로 제독의 두 단계를 나열해요. 살충제가 묻은 옷과 피부는 계속 흡수되는 통로라서 옷을 벗기고 씻어야 하고, 처치하는 사람도 보호구를 입어요.
     decoy: in the sun
     distractorsKo:
-    - 몸에 묻은 건 거즈로 닦아 낼게요
-    - 몸을 따뜻한 담요로 덮어 드릴게요
+    - 벗긴 옷은 따로 봉투에 담을게요
+    - 처치하는 사람은 보호구를 입을게요
     blank:
       answer: wash
       options:
@@ -7546,15 +7546,15 @@ situations:
     why: will help로 도움이 되는 정도로 말하고 extra fluid로 눈에 보이는 문제를 가리켜요. 유기인계는 기관지 분비물이 늘어 숨쉬기 어렵게 해서, 아트로핀으로 말리는 것이 치료의 핵심이에요.
     decoy: from his stomach
     distractorsKo:
-    - 아트로핀은 폐를 직접 씻어 내요
-    - 아트로핀은 맥박을 느리게 만들어요
+    - 가래를 자주 뽑아 드릴게요
+    - 동공 크기도 같이 볼게요
     blank:
       answer: lungs
       options:
       - en: lungs
-      - en: knees
-      - en: wrists
-      - en: shoulders
+      - en: legs
+      - en: ankles
+      - en: belly
   - en: We'll keep giving atropine until his secretions dry up.
     ko: 분비물이 마를 때까지 아트로핀을 계속 드릴게요.
     chunks:
@@ -7577,12 +7577,12 @@ situations:
     - 분비물이 마르면 체온을 다시 잴게요
     - 분비물이 마르면 산소를 줄여 볼게요
     blank:
-      answer: keep
+      answer: atropine
       options:
-      - en: delay
-      - en: keep
-      - en: quit
-      - en: pause
+      - en: oxygen
+      - en: atropine
+      - en: fluids
+      - en: steroids
   nuance:
   - kind: pair
     words:
@@ -7667,8 +7667,8 @@ situations:
     why: suggest로 확정이 아니라 가능성이라고 말해요. 씰룩임과 고열은 세로토닌 증후군의 특징이라 약물 병용을 의심하는 단서가 돼요.
     decoy: from the cold
     distractorsKo:
-    - 고열은 감염 때문이라는 뜻이에요
-    - 씰룩임은 곧 멎을 거예요
+    - 열이 얼마나 높은지 재 볼게요
+    - 씰룩임은 언제부터 있었어요?
     blank:
       answer: suggest
       options:
@@ -7693,15 +7693,15 @@ situations:
     why: stopping the trigger and cooling으로 원인 제거와 체온 낮추기를 한 번에 알려요. 세로토닌 증후군은 원인 약물을 끊는 것이 기본 치료고, 체온이 높으면 식히는 처치가 함께 필요해요.
     decoy: in the shower
     distractorsKo:
-    - 해열제를 먼저 드릴게요
+    - 근육이 뻣뻣한지 먼저 볼게요
     - 수액 속도를 먼저 조절할게요
     blank:
-      answer: stopping
+      answer: trigger
       options:
-      - en: doubling
-      - en: starting
-      - en: stopping
-      - en: adding
+      - en: shivering
+      - en: feeding
+      - en: trigger
+      - en: vomiting
   - en: Which new medication or supplement did you start this week?
     ko: 이번 주에 새로 시작한 약이나 보충제가 있나요?
     chunks:
@@ -7723,12 +7723,12 @@ situations:
     - 평소 드시던 약은 뭐예요?
     - 약을 바꾼 이유가 뭐예요?
     blank:
-      answer: this week
+      answer: supplement
       options:
-      - en: next week
-      - en: tomorrow
-      - en: tonight
-      - en: this week
+      - en: diet
+      - en: exercise
+      - en: routine
+      - en: supplement
   - en: Your muscles are stiff and your body temperature is very high.
     ko: 근육이 뻣뻣하고 체온이 아주 높아요.
     chunks:
@@ -7776,15 +7776,15 @@ situations:
     why: to calm your body down으로 목적을 한 줄로 요약해요. 냉각은 체온을, 약은 근육 경직과 불안을 가라앉히려는 것이고 약은 의사가 처방해요.
     decoy: in the sun
     distractorsKo:
-    - 진정시키는 약을 정맥으로 드릴게요
-    - 팔에 얼음 팩을 대 드릴게요
+    - 체온을 30분마다 잴게요
+    - 드신 약 목록을 보여 주세요
     blank:
       answer: cooling
       options:
-      - en: warm fluids
+      - en: oxygen
       - en: cooling
-      - en: heat
-      - en: blankets
+      - en: nutrition
+      - en: counseling
   - en: We'll stop every medication that could be the trigger.
     ko: 유발 원인이 될 수 있는 약물은 전부 중단할게요.
     chunks:
@@ -7802,15 +7802,15 @@ situations:
     why: every…that could be로 의심되는 것을 하나도 빼지 않고 끊는다고 범위를 밝혀요. 원인이 불확실할 때는 세로토닌에 영향을 주는 약을 모두 멈추고 지켜봐요.
     decoy: except one
     distractorsKo:
-    - 이 약들은 수치를 보고 다시 시작할게요
-    - 이 약들은 당분간 줄여서 드릴게요
+    - 약 이름과 용량을 적어 주세요
+    - 새로 드신 약부터 알려 주세요
     blank:
       answer: stop
       options:
-      - en: add
-      - en: double
+      - en: list
+      - en: review
       - en: stop
-      - en: start
+      - en: check
   nuance:
   - kind: slider
     words:
@@ -7850,7 +7850,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 세로토닌 증후군 4문장 순서
-    why: 씰룩임과 고열이 약물 상호작용을 시사한다고 알리고, 그 약 가운데 새 것을 묻고, 의심되는 약을 모두 멈추고, 식혀서 원인이 일으킨 반응을 가라앉힌다고 닫아요. 'those medications'·'every one'·'the trigger'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 씰룩임과 고열이 약물 상호작용을 시사한다고 알리고, 그 약 가운데 새 것을 묻고, 의심되는 약을 모두 멈추고, 식혀서 그 원인이 일으킨 반응을 가라앉힌다고 닫아요. 'those medications'·'every one'·'that trigger'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: The twitching and high fever suggest your medications are interacting.
       icon: bulb
@@ -7864,9 +7864,9 @@ situations:
       icon: shield
       ko: 유발 원인일 수 있는 것은 전부 중단할게요
       note: 중단
-    - en: Cooling you down helps calm your body from what the trigger caused.
-      icon: pill
-      ko: 식혀 드리면 유발 원인이 일으킨 반응에서 몸이 진정돼요
+    - en: Cooling you down eases the reaction that trigger caused.
+      icon: shield
+      ko: 식혀 드리면 그 유발 원인이 일으킨 반응이 가라앉아요
       note: 냉각
 - title: 청산/메탄올 중독
   sentences:
@@ -7891,7 +7891,7 @@ situations:
     decoy: after the fall
     distractorsKo:
     - 눈이 아프면 바로 말씀해 주세요
-    - 시력은 곧 돌아올 거예요
+    - 다른 분도 같이 드셨나요?
     blank:
       answer: mean
       options:
@@ -7919,13 +7919,13 @@ situations:
     decoy: tomorrow
     distractorsKo:
     - 해독제는 먹는 약으로 드려요
-    - 투석은 퇴원한 뒤에 할 수 있어요
+    - 소변 검사를 한 번 더 할게요
     blank:
       answer: urgent
       options:
-      - en: optional
-      - en: routine
-      - en: outpatient
+      - en: daily
+      - en: brief
+      - en: simple
       - en: urgent
   - en: How much did you drink, and about how long ago?
     ko: 얼마나 드셨고, 대략 얼마나 전이었어요?
@@ -7969,7 +7969,7 @@ situations:
     goal: 1
     tag: 검사 안내
     icon: magnify
-    why: your eyes and how well you can see로 눈 자체와 시력을 나눠 확인한다고 말해요. 시력 변화가 메탄올 독성의 가장 중요한 단서라 지금 상태를 기록해 둬요.
+    why: 시력 변화는 메탄올 독성의 중요한 단서라 지금 상태를 기록해 두고 변화와 비교해요.
     decoy: with a light
     distractorsKo:
     - 혈액 검사를 먼저 해 볼게요
@@ -8027,7 +8027,7 @@ situations:
     why: because로 서두르는 이유를 바로 대요. 메탄올 중독은 시신경 손상과 산증이 중요하고, 빠른 처치가 영구적인 시력 손상을 줄이는 데 도움이 돼요.
     decoy: after lunch
     distractorsKo:
-    - 서두르는 이유는 시력 때문이에요
+    - 투석실에 연락해 둘게요
     - 서두르는 이유는 검사 예약 때문이에요
     blank:
       answer: fast
@@ -8070,17 +8070,17 @@ situations:
       ok: true
     - who: 환자에게
       icon: me
-      en: Nephrology is consulted for emergent HD — we'll need dialysis access.
+      en: We're consulting nephrology for emergent dialysis — you'll need access.
       ok: false
       fix: We're giving you an antidote now, and you may need dialysis soon to clean your blood.
-    why: 셋 다 긴급 투석이 필요하다는 같은 말이에요. HD·nephrology·access는 의료진끼리의 말이라, 환자에게는 dialysis가 무엇을 하는지로 풀어 말해요.
+    why: 셋 다 긴급 투석이 필요하다는 같은 말이에요. nephrology·emergent·access는 의료진끼리의 말이라, 환자에게는 dialysis가 무엇을 하는지로 풀어 말해요.
     word: dialysis
     ko: 투석
   order:
     tag: 대화 흐름
     icon: compass
     ko: 메탄올 중독 4문장 순서
-    why: 마신 양과 시점을 묻고, 그 뒤의 시야 문제가 메탄올 중독일 수 있다고 알리고, 그에 대한 해독제와 투석을 설명하고, 그래서 서두른다고 닫아요. 'that'·'For that'·'That's why'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 마신 양과 시점을 묻고, 그 뒤의 시야 문제가 메탄올 중독일 수 있다고 알리고, 그에 대한 해독제와 투석을 설명하고, 그 둘은 일찍 할수록 좋아서 서두른다고 닫아요. 'that'·'For that'·'Both of those'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: How much did you drink, and about how long ago?
       icon: magnify
@@ -8094,9 +8094,9 @@ situations:
       icon: pill
       ko: 그에 대해 지금 드리는 해독제가 있고 긴급 투석이 필요할 수도 있어요
       note: 치료
-    - en: That's why we're moving fast — your vision and kidneys are both at risk.
+    - en: Both of those work best early, so we're moving fast.
       icon: siren
-      ko: 그래서 서두르는 거예요, 시력과 신장이 둘 다 위험해요
+      ko: 그 둘은 일찍 할수록 효과가 좋아서 서둘러 움직이고 있어요
       note: 이유
 - title: 과다복용 심정지 전조
   sentences:
@@ -8119,7 +8119,7 @@ situations:
     why: unstable로 상태를 솔직히 알리고 so로 우리가 하는 일을 이어요. 불안정한 리듬은 갑자기 나빠질 수 있어서 장비와 약을 미리 준비해요.
     decoy: from the scan
     distractorsKo:
-    - 리듬이 불안정한 건 약 때문일 수 있어요
+    - 심전도를 한 번 더 찍을게요
     - 리듬이 안정되면 바로 설명해 드릴게요
     blank:
       answer: unstable
@@ -8142,18 +8142,18 @@ situations:
     goal: 1
     tag: 협조 요청
     icon: bell
-    why: Stay with me로 의식을 붙잡는 말을 먼저 하고 tell me right away로 신호를 알리게 해요. 환자가 느끼는 변화는 모니터에 나타나기 전에 올 수 있어서 직접 말하게 해요.
+    why: 가슴 두근거림이나 어지럼 같은 느낌은 모니터와 함께 악화를 알리는 단서라서 환자가 바로 말하게 해요.
     decoy: after a while
     distractorsKo:
     - 숨이 차면 손을 들어 주세요
     - 가슴이 아프면 바로 말씀해 주세요
     blank:
-      answer: right away
+      answer: worse
       options:
-      - en: right away
-      - en: tomorrow
-      - en: next week
-      - en: sometime
+      - en: worse
+      - en: better
+      - en: easier
+      - en: quieter
   - en: Overdose with widening QRS and bradycardia — I need the crash cart and a physician now.
     ko: 과다복용에 QRS 확대와 서맥이 있습니다 — 지금 크래시카트와 의사가 필요해요.
     chunks:
@@ -8176,8 +8176,8 @@ situations:
     why: 상태를 명사구 두 개로 짧게 대고 I need로 필요한 두 가지를 분명히 요청해요. 위급할 때는 배경 설명보다 상태와 필요한 것을 먼저 말해요.
     decoy: in the hallway
     distractorsKo:
-    - QRS가 좁고 맥박이 빨라요
-    - 과다복용인데 활력징후는 안정적이에요
+    - 제세동기 패드를 붙였습니다
+    - 중탄산염을 한 번 더 준비해 주세요
     blank:
       answer: widening
       options:
@@ -8260,12 +8260,12 @@ situations:
     - 의사 선생님이 방금 도착했어요
     - 약사가 약을 가져오고 있어요
     blank:
-      answer: ready
+      answer: team
       options:
-      - en: ready
-      - en: late
-      - en: absent
-      - en: missing
+      - en: team
+      - en: pharmacy
+      - en: family
+      - en: lab
   nuance:
   - kind: pair
     words:
@@ -8308,7 +8308,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 과다복용 심정지 전조 4문장 순서
-    why: 리듬이 불안정하다고 알리고, 그 리듬 때문에 느껴지는 변화를 바로 말하게 하고, 모니터로 새 변화를 지켜본다고 알리고, 그래서 팀이 준비됐다고 닫아요. 'that rhythm'·'Whatever you feel'·'That's why'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 리듬이 불안정하다고 알리고, 그 리듬 때문에 느껴지는 변화를 바로 말하게 하고, 모니터로도 지켜본다고 알리고, 그 화면에 변화가 있어도 팀이 준비돼 있다고 닫아요. 'that rhythm'·'Whatever you feel'·'that screen'이 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Your rhythm is unstable, so we're preparing everything to support you.
       icon: monitor
@@ -8318,13 +8318,13 @@ situations:
       icon: bell
       ko: 정신 놓지 마시고, 그 리듬 때문에 심장이 빨리 뛰거나 건너뛰면 말씀해 주세요
       note: 요청
-    - en: Whatever you feel, your monitor shows me any new widening or slowing.
+    - en: Whatever you feel, I'm also watching your heart on this monitor.
       icon: monitor
-      ko: 무엇을 느끼시든 모니터가 새로 넓어지거나 느려지는 걸 보여 줘요
+      ko: 어떻게 느끼시든 저도 이 모니터로 심장을 지켜보고 있어요
       note: 감시
-    - en: That's why the team is ready with everything we might need.
+    - en: For any change on that screen, the team is ready with everything.
       icon: shield
-      ko: 그래서 팀은 필요할 수 있는 모든 걸 준비하고 있어요
+      ko: 그 화면에 어떤 변화가 있어도 팀이 모든 걸 준비해 뒀어요
       note: 준비
 - title: 중독 이송 중 급변 인계
   sentences:
@@ -8350,12 +8350,12 @@ situations:
     - 섭취는 어제 저녁이었다고 합니다
     - 섭취한 약은 아세트아미노펜이라고 합니다
     blank:
-      answer: per
+      answer: ninety
       options:
-      - en: per
-      - en: despite
-      - en: without
-      - en: against
+      - en: ninety
+      - en: nineteen
+      - en: thirty
+      - en: nine
   - en: He was talking at pickup but became hypotensive and drowsy en route.
     ko: 인수 시점엔 말도 했는데, 이송 중 저혈압에 졸린 상태가 됐습니다.
     chunks:
@@ -8405,7 +8405,7 @@ situations:
     why: 숫자는 읽는 그대로 eighty over forty처럼 말하고 and로 한 일을 이어요. 수치와 처치를 한 문장에 묶어야 받는 쪽이 효과를 판단할 수 있어요.
     decoy: an hour ago
     distractorsKo:
-    - 마지막 혈압은 120에 80이었습니다
+    - 이송 중 수액이 1 L 들어갔습니다
     - 마지막 맥박은 40이었고 아트로핀을 드렸습니다
     blank:
       answer: gave
@@ -8433,12 +8433,12 @@ situations:
     - GCS는 인수 때 이미 9였습니다
     - 동공은 이송 중 작아졌습니다
     blank:
-      answer: dropped
+      answer: transport
       options:
-      - en: rose
-      - en: held
-      - en: doubled
-      - en: dropped
+      - en: triage
+      - en: handoff
+      - en: intake
+      - en: transport
   - en: I'm protecting his airway and watching his pressure closely.
     ko: 기도를 보호하고 혈압을 가까이서 지켜보고 있습니다.
     chunks:
@@ -8458,15 +8458,15 @@ situations:
     why: and로 지금 하고 있는 두 가지를 나란히 보고해요. 기도 보호와 혈압 관찰은 이송 중 급변한 환자에게 인계 직후 이어 가야 할 일이에요.
     decoy: with a mask
     distractorsKo:
-    - 기도는 보호하고 있고 혈압은 안정적입니다
+    - 동공은 양쪽 다 커져 있습니다
     - 혈압을 올리는 약을 시작하고 있습니다
     blank:
-      answer: protecting
+      answer: pressure
       options:
-      - en: protecting
-      - en: blocking
-      - en: closing
-      - en: covering
+      - en: pressure
+      - en: sugar
+      - en: temperature
+      - en: pupils
   - en: Can you take over airway and pressure while I give report?
     ko: 제가 인계하는 동안 기도와 혈압을 맡아주실 수 있나요?
     chunks:
@@ -8485,15 +8485,15 @@ situations:
     why: take over로 일을 넘겨받아 달라고 부탁하고 while I give report로 이유와 시간을 붙여요. 한 사람이 기도와 인계를 동시에 하기 어려워서 역할을 나눠요.
     decoy: after lunch
     distractorsKo:
-    - 기도와 혈압은 제가 계속 맡을게요
-    - 혈압만 먼저 맡아 주실 수 있나요?
+    - 의사 선생님은 지금 오고 계십니다
+    - 심전도를 바로 다시 찍어 주세요
     blank:
-      answer: take over
+      answer: report
       options:
-      - en: cancel
-      - en: take over
-      - en: skip
-      - en: delay
+      - en: meds
+      - en: report
+      - en: fluids
+      - en: blood
   nuance:
   - kind: pair
     words:
@@ -8536,19 +8536,19 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 이송 중 급변 인계 4문장 순서
-    why: 섭취 약물과 시각을 보고하고, 이송 중 변한 상태를 알리고, 마지막 혈압과 처치를 보고하고, 이어서 기도와 혈압을 넘겨받아 달라고 부탁해요. 'He'·'Last pressure'·'so I can finish report'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 섭취 약물과 시각을 보고하고, 그 뒤 변한 상태를 알리고, 그 낮은 혈압과 처치를 보고하고, 이어서 기도와 혈압을 넘겨받아 달라고 부탁해요. 'Since then'·'that low pressure'·'so I can finish report'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Ingestion was tricyclics about ninety minutes ago per the family.
       icon: pill
       ko: 가족에 따르면 약 90분 전에 삼환계 약물을 섭취했습니다
       note: 섭취
-    - en: He was talking at pickup but became hypotensive and drowsy en route.
+    - en: Since then, he went from talking at pickup to hypotensive and drowsy.
       icon: monitor
-      ko: 인수 때는 말했는데 이송 중 저혈압에 졸린 상태가 됐습니다
+      ko: 그 뒤 인수 때는 말했는데 저혈압에 졸린 상태가 됐습니다
       note: 경과
-    - en: His latest pressure was eighty over forty, and I gave a bicarb bolus.
+    - en: For that low pressure, eighty over forty, I gave a bicarb bolus.
       icon: chartup
-      ko: 마지막 혈압은 80에 40이었고 중탄산제 볼루스를 드렸습니다
+      ko: 그 낮은 혈압, 80에 40에 중탄산제 볼루스를 드렸습니다
       note: 수치
     - en: Can you take over airway and pressure so I can finish report?
       icon: speech
