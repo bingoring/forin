@@ -474,15 +474,17 @@ export function NbStamp({ color = nb.red, rot = -8, size = 54, top, topIcon, bot
   topIcon?: NbIconName;
   bottom?: string;
 }) {
+  // 줄 상자는 링의 두 배 폭에 가운데 — CSS는 링보다 넓은 줄(C'의 92 "PASSED")을 링 밖으로 넘쳐 그리는데,
+  // 링 폭 Text는 "PASS…"로 자른다(T8 시뮬레이터 대조). Yoga는 넘치는 자식도 가운데에 둔다.
   return (
     <View style={{
       width: size, height: size, borderRadius: size / 2, borderWidth: DOUBLE_RING.line, borderColor: color,
       alignItems: 'center', justifyContent: 'center', transform: deg(rot), opacity: 0.9, flexShrink: 0,
     }}>
       <NbDoubleRing color={color} radius={size / 2} />
-      {!!top && <Text numberOfLines={1} style={{ fontFamily: nbFonts.bodyBold, fontSize: size * 0.17, color }}>{top}</Text>}
+      {!!top && <Text numberOfLines={1} style={{ fontFamily: nbFonts.bodyBold, fontSize: size * 0.17, color, width: size * 2, textAlign: 'center' }}>{top}</Text>}
       {!!topIcon && <NbIcon name={topIcon} size={size * 0.17 * 1.25} color={color} />}
-      {!!bottom && <Text numberOfLines={1} style={{ fontFamily: nbFonts.hand, fontSize: size * 0.32, color, lineHeight: size * 0.32 }}>{bottom}</Text>}
+      {!!bottom && <Text numberOfLines={1} style={{ fontFamily: nbFonts.hand, fontSize: size * 0.32, color, lineHeight: size * 0.32, width: size * 2, textAlign: 'center' }}>{bottom}</Text>}
     </View>
   );
 }

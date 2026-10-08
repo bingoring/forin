@@ -394,6 +394,8 @@ describe('DONE 장 → C5 → C6 → C\'', () => {
 
     // C'
     expect(byID(tree.root, 'sent-passed')).toHaveLength(1);
+    // the artboard draws the stamp at the left edge — its centring text-align does not move a flex block (T8)
+    expect(flat(hostID(tree.root, 'sent-passed-stamp')[0]).alignSelf).toBe('flex-start');
     expect(allText(tree.root)).toContain('문장 5개, 입에 붙었어요');
     expect(texts(byID(tree.root, 'sent-score-0')[0])).toEqual(['91']);
     expect(texts(byID(tree.root, 'sent-score-1')[0])).toEqual(['69']);

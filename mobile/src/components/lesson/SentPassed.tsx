@@ -61,7 +61,7 @@ export function SentPassed({ sentences, situation, onExit, onRepeat, onFinish, s
 
       <ScrollView style={{ flex: 1 }} contentContainerStyle={{ paddingBottom: 110 }} showsVerticalScrollIndicator={false}>
         <View testID="sent-passed" style={{ paddingTop: 20, paddingHorizontal: 24, alignItems: 'center' }}>
-          <NbEnter kind="pop" testID="sent-passed-stamp"><NbStamp color={nb.green} size={92} top="STEP 2" bottom="PASSED" /></NbEnter>
+          <NbEnter kind="pop" testID="sent-passed-stamp" style={{ alignSelf: 'flex-start' }}><NbStamp color={nb.green} size={92} top="STEP 2" bottom="PASSED" /></NbEnter>
           <Text style={[nbText.hand(22), { marginTop: 14 }]}>{t('sent.passed', { n })}</Text>
         </View>
         <View style={{ paddingTop: 14, paddingHorizontal: 20 }}>

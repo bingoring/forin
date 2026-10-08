@@ -46,7 +46,8 @@ v46 (학습 화면 핸드오프 1:1 — `lesson-fidelity-v46/build-spec-index.md
         아니고 en 안에도 없다. distractorsKo는 2개, 서로 다르고 문장 ko와 다르다. blank의 answer는
         en에 낱말 경계로 정확히 한 번 나오고, options는 4개·서로 다르고·answer를 포함하며 저마다 icon이 있다.
         (품질, 파이썬만 — 적재는 막지 않음) 선택지 icon은 서로 다르고, 정답 선택지 icon은 문장 icon과 다르다
-        — 머리 앰버 원과 같은 아이콘이 정답 칸에만 있으면 답이 보인다(v46 ER 파일럿 46/122)
+        — 머리 앰버 원과 같은 아이콘이 정답 칸에만 있으면 답이 보인다(v46 ER 파일럿 46/122). 선택지 icon은
+        판정 표시 check·cross가 아니다 — 낱장이 결과를 ✓/✕로 그리므로 답이 보인다(T8, 파일럿 53개)
     V19 상황의 order(순서 배열 카드)는 ko·why가 있고 줄이 정확히 4개, 줄마다 en·icon이 있고 en이
         겹치지 않는다. tag·icon과 줄의 ko·note는 있으면 비어 있지 않다. 문장 없는 상황에 order만 있으면 오류
     V14 (더함) context의 word와 ko는 함께 있거나 함께 없다. swap의 ko는 있으면 비어 있지 않다
@@ -1111,6 +1112,7 @@ def check_nuance(items: list, used: set[str], required: bool) -> list[tuple[str,
 MAX_TAG_CHARS = 10   # Go MaxTagRunes — 머리 태그는 유형 라벨·"n / N"과 한 줄(줄바꿈 없음)
 ORDER_LINES = 4      # Go OrderLines
 BLANK_OPTIONS = 4    # Go BlankOptions
+JUDGE_ICONS = {"check", "cross"}
 V46_SENTENCE_KEYS = ("tag", "icon", "why", "decoy", "distractorsKo", "blank")
 
 
@@ -1228,6 +1230,8 @@ def check_sentence_v46(i: int, sent: dict) -> list[tuple[str, str]]:
             offered = offered or o.get("en") == answer
             if p := _icon_problem(f"blank option {o.get('en')!r} icon", o.get("icon")):
                 out.append(("V18", f"{at}: {p}"))
+            elif o.get("icon") in JUDGE_ICONS:
+                out.append(("V18", f"{at}: blank option {o.get('en')!r} icon {o.get('icon')!r} is a judgement mark — it reads as right/wrong"))
             elif o.get("icon") in icons:
                 out.append(("V18", f"{at}: blank option {o.get('en')!r} icon {o.get('icon')!r} repeats — two options look alike"))
             else:
@@ -2201,6 +2205,7 @@ def run_selftest() -> int:
         ("blank option without icon", lambda s: s["blank"]["options"][3].pop("icon")),
         ("blank answer icon is the sentence icon", lambda s: s.update(icon="bandage")),
         ("blank option icons repeat", lambda s: s["blank"]["options"][3].update(icon="board")),
+        ("blank option icon is a judgement mark", lambda s: s["blank"]["options"][1].update(icon="check")),
         ("blank is not a mapping", lambda s: s.update(blank=["wristband"])),
     ):
         cases.append((f"V18 ({name})", _LEX_BASE, v46_seed(mut), "V18", False))
