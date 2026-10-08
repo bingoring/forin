@@ -391,7 +391,8 @@ export function NbTag({ color = nb.ink, fill, rot = 0, style, textStyle, icon, i
     }, style]}>
       {!!icon && <NbIcon name={icon} size={iconSize} />}
       <Text numberOfLines={1} style={[{ fontFamily: nbFonts.hand, fontSize: 12.5, color: fill ? '#fff' : color }, textStyle]}>
-        {icon ? ' ' : null}{children}
+        {/* No icon → the children alone, so a caller's Text keeps its one child. */}
+        {icon ? <>{' '}{children}</> : children}
       </Text>
     </View>
   );
