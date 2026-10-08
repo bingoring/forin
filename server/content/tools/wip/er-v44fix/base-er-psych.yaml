@@ -188,8 +188,8 @@ words:
   ipa: /hɜːrt/
   ko: 다치게 하다
   icon: board
-  example: Have you had any thoughts of ending your life?
-  exKo: 삶을 끝내려는 생각이 든 적이 있나요?
+  example: Do you have access to anything you could use to hurt yourself?
+  exKo: 자해에 쓸 만한 것에 접근할 수 있나요?
   cue: 자살보다 넓게, 스스로 몸을 해칠 생각을 물을 때 — '___ing yourself'
   tag: 위험 사정
   distractorsEn:
@@ -2732,8 +2732,8 @@ words:
   ipa: /wɑːtʃ/
   ko: 감시하다
   icon: magnify
-  example: They'll watch over you to keep you safe, not as a punishment.
-  exKo: 안전을 지키려고 곁에서 지켜보는 것이지, 벌로 그러는 게 아니에요.
+  example: They're not here to watch you like a punishment.
+  exKo: 처벌하듯 감시하려고 있는 게 아니에요.
   cue: 1:1 관찰을 벌처럼 느끼는 환자에게, 처벌하듯 눈을 떼지 않으려는 게 아니라고 할 때
   tag: 안전 확보
   distractorsEn:
@@ -2752,8 +2752,8 @@ words:
   ipa: /ˈpʌnɪʃmənt/
   ko: 처벌
   icon: board
-  example: They'll watch over you to keep you safe, not as a punishment.
-  exKo: 안전을 지키려고 곁에서 지켜보는 것이지, 벌로 그러는 게 아니에요.
+  example: They'll stay with you to keep you safe, not as a punishment.
+  exKo: 안전을 지키려고 곁에 있는 것이지, 벌로 그러는 게 아니에요.
   cue: 1:1 관찰·소지품 회수가 벌이 아니라고 분명히 할 때 — 'This isn't ___.'
   tag: 권리·선택
   distractorsEn:
@@ -7101,34 +7101,35 @@ situations:
       - en: walk
       - en: run
       - en: stay
-  - en: They'll watch over you to keep you safe, not as a punishment.
-    ko: 안전을 지키려고 곁에서 지켜보는 것이지, 벌로 그러는 게 아니에요.
+  - en: They'll stay with you to keep you safe, not as a punishment.
+    ko: 안전을 지키려고 곁에 있는 것이지, 벌로 그러는 게 아니에요.
     chunks:
-    - They'll watch over you
+    - They'll stay
+    - with you
     - to keep you safe
     - ', not as'
     - a punishment
     - .
     words:
-    - w-watch
+    - w-stay
     - w-keep
     - w-safe
     - w-punishment
     goal: 1
     tag: 처벌 아님
     icon: shield
-    why: to keep you safe로 지켜보는 목적을 안전이라고 말하고, not as a punishment로 벌이 아니라고 덧붙여요. 시터는 실제로 곁에서 지켜보므로 감시가 아니라고 부정하지 않고 왜 지켜보는지를 솔직히 말해요. 1:1 관찰을 벌로 느끼면 위축되고 숨기게 돼요.
+    why: to keep you safe로 곁에 머무는 목적을 안전이라고 말하고, not as a punishment로 벌이 아니라고 덧붙여요. 시터는 실제로 곁에 있으므로 감시가 아니라고 부정하지 않고 왜 곁에 있는지를 솔직히 말해요. 환자에게 watch you는 감시처럼 들려서 stay with you를 써요. 1:1 관찰을 벌로 느끼면 위축되고 숨기게 돼요.
     decoy: to talk to you
     distractorsKo:
     - 이분은 교대 시간에 바뀔 수 있어요
     - 저는 간호사실에 있을게요
     blank:
-      answer: watch
+      answer: safe
       options:
-      - en: watch
-      - en: quiz
-      - en: test
-      - en: lecture
+      - en: safe
+      - en: sorry
+      - en: busy
+      - en: quiet
   - en: You don't have to talk to them if you're not comfortable.
     ko: 편하지 않으면 그 분과 굳이 이야기하지 않아도 돼요.
     chunks:
@@ -7176,7 +7177,6 @@ situations:
     why: stay close by는 가까이 머문다, make sure you're safe는 그 목적, the next steps는 앞으로의 과정 — 관찰을 감시가 아니라 돌봄으로 설명하는 말들이에요.
   - kind: context
     words:
-    - w-watch
     - w-someone
     - w-keep
     scenes:

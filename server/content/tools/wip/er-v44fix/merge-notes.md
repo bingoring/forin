@@ -1,3 +1,4 @@
 - anaphylaxis 7.2: 정본 상황 tagline/brief 수정 필요(base 범위 밖) — 합칠 때 처리
 - head-trauma S14·S15 상황 role이 patient로 잘못됨(정본 시드 필드) — 합칠 때 확인
 - G3(burn·chest-abd-trauma·chestpain·diabetic·dyspnea)는 base 상황에 keyPhrases 키를 넣음 — merge가 무시/반영하는지 확인. w-small word-remove(burn 은행만)
+- anaphylaxis 7.2 정본(합칠 때, review-er-anaphylaxis-v44.md): tagline "You just started that IV antibiotic and now I'm itchy and my face feels hot." / brief "주입을 즉시 멈추고 얼굴·목·호흡 증상을 확인하며, 에피네프린을 바로 쓸 수 있게 준비하세요." / persona.speakingStyle `가슴을 짚으며`→`팔과 목을 긁으며`

@@ -36,8 +36,8 @@ o=S[18]['order']; L=o['lines']
 assert L[0]['en']==t['en'] and L[1]['en']=="Let's read it against the order, aloud."
 L[0]['ko']='먼저 혼자 유닛을 계산해 주세요, 그다음 맞춰 봐요'; L[0]['note']='계산'
 L[1]['en']="Now let's read both numbers against the order, aloud."; L[1]['ko']='이제 두 숫자를 처방과 대조해 소리 내어 읽어봐요'
-L[2]['en']="Wait — my number doesn't match the order."; L[2]['ko']='잠깐만요, 제 숫자가 처방과 안 맞아요'
-o['why']="먼저 각자 따로 계산하자고 하고, 두 숫자를 처방과 소리 내어 대조하고, 어긋나면 멈추라고 하고, 잡아 준 것에 감사해요. 'both numbers'·'my number'·'that'이 앞 줄에 기대어 순서가 하나예요."
+L[2]['en']="Wait — one of our numbers doesn't match the order."; L[2]['ko']='잠깐만요, 우리 숫자 중 하나가 처방과 안 맞아요'
+o['why']="먼저 각자 따로 계산하자고 하고, 두 숫자를 처방과 소리 내어 대조하고, 어긋나면 멈추라고 하고, 잡아 준 것에 감사해요. 'both numbers'·'our numbers'·'that'이 앞 줄에 기대어 순서가 하나예요."
 # 20.1 관사
 f.sent(20,T(20),1,'Do you want one-to-one-to-one ratio with plasma and platelets?','`one-to-one-to-one ratio` 앞에 관사 a가 빠짐',
   en='Do you want a one-to-one-to-one ratio with plasma and platelets?',

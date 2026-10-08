@@ -65,9 +65,9 @@ f.sent(7,T(7),4,"Let's listen to your heart and lungs now.",'7.2와 뜻이 겹�
   blank={'answer':'worse','options':[{'en':'worse'},{'en':'better'},{'en':'lighter'},{'en':'calmer'}]},
   why='right away로 지체 없이 알리라고 하고 if the pressure in your chest gets worse로 환자가 직접 느끼는 변화를 기준으로 줘요. 심인성 쇼크에서는 가슴 압박감이 심해지는 것이 심장 상태가 나빠진다는 신호일 수 있어 바로 팀에 알려야 해요.')
 f.sent(16,T(16),4,'Call the team and prepare for possible thrombolytics.','16.2와 뜻이 겹쳐 폐색전 의심 환자의 다리를 문지르지 말라는 말로 바꿈',
-  en="Don't rub the swollen leg, and keep it still.",
+  en="Don't rub his swollen leg, and keep it still.",
   ko='부은 다리는 문지르지 말고 가만히 두세요.',
-  chunks=["Don't rub",'the swollen leg',', and keep','it still','.'],
+  chunks=["Don't rub",'his swollen leg',', and keep','it still','.'],
   words=['w-swell','w-leg','w-still'],
   tag='다리 주의',icon='shield',decoy='for ten minutes',
   distractorsKo=['다리 둘레를 재 주세요','양쪽 다리 맥박을 확인해 주세요'],

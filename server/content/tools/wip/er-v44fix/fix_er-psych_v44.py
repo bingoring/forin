@@ -24,12 +24,15 @@ f.sent(7,T(7),3,'We have to assess you before we can let you go.','억류 중인
   words=['w-assess','w-first','w-next','w-step'],
   why='will assess you first로 결정 전에 평가가 먼저라는 순서를 알려요. 보호 중인 환자에게 평가가 끝나면 나간다고 약속하지 않고, 평가 뒤 다음 단계를 이야기한다고만 말해요.')
 # 13.5 시터
-f.sent(12,T(12),4,"They're not here to watch you like a punishment.",'시터는 실제로 지켜보므로 감시가 아니라고 부정하지 않고 안전을 위해 지켜본다고 말함',
-  en="They'll watch over you to keep you safe, not as a punishment.",
-  ko='안전을 지키려고 곁에서 지켜보는 것이지, 벌로 그러는 게 아니에요.',
-  chunks=["They'll watch over you",'to keep you safe',', not as','a punishment','.'],
-  words=['w-watch','w-keep','w-safe','w-punishment'],
-  why='to keep you safe로 지켜보는 목적을 안전이라고 말하고, not as a punishment로 벌이 아니라고 덧붙여요. 시터는 실제로 곁에서 지켜보므로 감시가 아니라고 부정하지 않고 왜 지켜보는지를 솔직히 말해요. 1:1 관찰을 벌로 느끼면 위축되고 숨기게 돼요.')
+f.sent(12,T(12),4,"They're not here to watch you like a punishment.",'시터는 실제로 곁에 있으므로 감시가 아니라고 부정하지 않고 안전을 위해 곁에 있다고 말함(환자에게 watch는 감시로 들림)',
+  en="They'll stay with you to keep you safe, not as a punishment.",
+  ko='안전을 지키려고 곁에 있는 것이지, 벌로 그러는 게 아니에요.',
+  chunks=["They'll stay",'with you','to keep you safe',', not as','a punishment','.'],
+  words=['w-stay','w-keep','w-safe','w-punishment'],
+  blank={'answer':'safe','options':[{'en':'safe'},{'en':'sorry'},{'en':'busy'},{'en':'quiet'}]},
+  why='to keep you safe로 곁에 머무는 목적을 안전이라고 말하고, not as a punishment로 벌이 아니라고 덧붙여요. 시터는 실제로 곁에 있으므로 감시가 아니라고 부정하지 않고 왜 곁에 있는지를 솔직히 말해요. 환자에게 watch you는 감시처럼 들려서 stay with you를 써요. 1:1 관찰을 벌로 느끼면 위축되고 숨기게 돼요.')
+for nu in S[12]['nuance']:
+    if nu.get('words') and 'w-watch' in nu['words']: nu['words']=[x for x in nu['words'] if x!='w-watch']
 # 10.4 귀가
 t=f.sent(9,T(9),3,'I want to double-check a few things before you go home.','자살 위험을 부정하는 환자에게 귀가를 전제하지 않고 먼저 확인한다고 바꿈',
   en='I want to double-check a few things with you first.',
@@ -39,4 +42,10 @@ t=f.sent(9,T(9),3,'I want to double-check a few things before you go home.','자
   blank={'answer':'things','options':[{'en':'things'},{'en':'minutes'},{'en':'people'},{'en':'rooms'}]},
   why='with you first로 확인이 먼저라는 순서를 말해요. 자살 위험을 부정하는 환자도 위험을 다시 확인하고, 퇴원 결정은 평가 뒤에 의사가 해요.')
 W['w-thought']['cue']=W['w-thought']['cue'].replace('hurting yourself','ending your life').replace('자해를 떠올린 적이 있는지','삶을 끝낼 생각을 한 적이 있는지')
+for wid in getattr(f,'needs',[]):
+    if wid=='w-hurt': continue
+    for s in S:
+        hit=[x for x in s['sentences'] if wid in x['words'] and x['en']!=W[wid]['example']]
+        if hit: W[wid]['example']=hit[0]['en']; W[wid]['exKo']=hit[0]['ko']; f.wwhy=getattr(f,'wwhy',{}); f.wwhy[wid]='예문이 문장 en과 같았으나 그 문장이 바뀌어 단어가 빠져, 이 낱말이 든 다른 문장으로 바꿈'; print('  ->',wid,hit[0]['en']); break
+f.word('w-hurt','단독 예문이 바뀐 1.1 문장이라 hurt가 든 다른 문장(수단 접근 질문)으로 바꿈',example='Do you have access to anything you could use to hurt yourself?',exKo='자해에 쓸 만한 것에 접근할 수 있나요?')
 f.finish()

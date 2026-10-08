@@ -5224,22 +5224,22 @@ situations:
       - en: itchy
       - en: tired
       - en: dizzy
-  - en: Please call us right away if the irregular rhythm comes back.
-    ko: 불규칙한 리듬이 다시 돌아오면 바로 연락 주세요.
+  - en: Come back to the ER right away if the irregular rhythm returns.
+    ko: 불규칙한 리듬이 다시 돌아오면 바로 응급실로 오세요.
     chunks:
-    - Please call us
+    - Come back to the ER
     - right away
     - if the irregular rhythm
-    - comes back
+    - returns
     - .
     words:
     - w-rhythm
     - w-irregular
     goal: 2
-    tag: 재발 시 연락
+    tag: 재방문 안내
     icon: bell
-    why: if로 어떤 경우에 연락할지 조건을 분명히 말해요. 약을 거른 뒤 불규칙한 리듬이 돌아오면 미루지 말고 알려야 해서 right away를 붙여요.
-    decoy: at the clinic
+    why: if로 어떤 경우에 다시 와야 하는지 조건을 분명히 말해요. 리듬이 다시 흐트러지면 미루지 말고 와야 해서 right away를 붙여요.
+    decoy: returned
     distractorsKo:
     - 복용 알람을 같이 설정해 드릴게요
     - 다음 진료 날짜를 잡아 드릴게요
@@ -6072,7 +6072,7 @@ situations:
     blank:
       answer: quick
       options:
-      - en: strong
+      - en: constant
       - en: quick
       - en: long
       - en: painful
@@ -6449,7 +6449,7 @@ situations:
     tag: 위험 공유
     icon: pushpin
     why: I'm flagging …은 지금 하고 있는 일을 알리는 말이에요. so the whole team knows로 이유를 붙여 환자가 이 표시가 자신을 위한 것임을 알게 해요. WPW처럼 치료 선택에 영향을 주는 진단은 팀 전체가 알도록 바로 공유하는 것이 안전해요.
-    decoy: tomorrow morning
+    decoy: knows about
     distractorsKo:
     - 예전에 시술을 받으신 적 있나요?
     - WPW가 있는지 먼저 물어볼게요
@@ -6565,9 +6565,9 @@ situations:
       answer: new
       options:
       - en: new
-      - en: busy
-      - en: tired
-      - en: young
+      - en: former
+      - en: absent
+      - en: retired
   - en: This information helps us choose the safest treatment for your heart.
     ko: 이 정보가 심장에 가장 안전한 치료를 고르는 데 도움이 돼요.
     chunks:
