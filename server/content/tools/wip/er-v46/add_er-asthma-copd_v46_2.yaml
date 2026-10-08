@@ -20,8 +20,8 @@
 - title: 스테로이드 시작 설명
   s:
   - {t: "약 효과", i: pill, w: "'A short course of …'처럼 '짧은 기간'을 앞세우면 환자가 오래 먹는 약으로 오해하지 않아요. 스테로이드는 기도의 염증과 붓기를 줄여 숨쉬기를 돕는 약이에요.", d: "high dose", k: ["이 약은 가래를 묽게 해요", "이 약은 세균을 죽여요"], a: "calms", o: ["causes", "increases", "spreads"]}
-  - {t: "복용 기간", i: calendar, w: "'about five days'로 기간을 숫자로 못 박고 not long term으로 장기 복용 걱정을 덜어요. 천식·COPD 악화에 쓰는 스테로이드는 대개 5일 안팎의 짧은 기간이에요.", d: "every other", k: ["하루에 세 번 드세요", "식사와 상관없이 드세요"], a: "days", o: ["weeks", "months", "years"]}
-  - {t: "치료 효과", i: chartup, w: "'It helps you …'와 'prevents …'처럼 이점 둘을 and로 이어 약의 효과를 한 문장에 말해요. 악화 때 스테로이드를 쓰면 회복이 빨라지고 곧바로 다시 나빠지는 일을 줄일 수 있어요.", d: "at night", k: ["이 약은 졸음을 일으킬 수 있어요", "이 약은 냉장 보관하세요"], a: "recover", o: ["walk", "sleep", "eat"]}
+  - {t: "복용 기간", i: calendar, w: "'about five days'로 기간을 숫자로 못 박고 not long term으로 장기 복용 걱정을 덜어요. 천식·COPD 악화에 쓰는 스테로이드는 대개 5일 안팎의 짧은 기간이에요.", d: "every other", k: ["하루에 세 번 드세요", "식사와 상관없이 드세요"], a: "take", o: ["skip", "avoid", "refuse"]}
+  - {t: "치료 효과", i: chartup, w: "'It helps you …'와 'prevents …'처럼 이점 둘을 and로 이어 약의 효과를 한 문장에 말해요. 악화 때 스테로이드를 쓰면 회복이 빨라지고 곧바로 다시 나빠지는 일을 줄일 수 있어요.", d: "at night", k: ["이 약은 졸음을 일으킬 수 있어요", "이 약은 냉장 보관하세요"], a: "prevents", o: ["causes", "hides", "delays"]}
   - {t: "부작용", i: bell, w: "'can …'으로 가능성만 말해 과장하지 않으면서 미리 알려요. 스테로이드는 혈당을 올릴 수 있어서 당뇨가 있는 환자는 며칠간 혈당을 더 자주 확인해요.", d: "slightly", k: ["속이 쓰릴 수 있으니 음식과 같이 드세요", "잠이 잘 안 올 수 있어요"], a: "raise", o: ["lower", "drop", "cut"]}
   - {t: "복용 경험", i: pill, w: "'Have you … before, and did they …?'는 과거 경험과 그때의 반응을 한 문장에 묻는 틀이에요. 이전에 속이 쓰렸다면 음식과 함께 먹도록 안내할 수 있어요.", d: "last month", k: ["스테로이드 알레르기가 있으세요?", "지금 다른 약도 드시나요?"], a: "stomach", o: ["sleep", "mood", "heart"]}
   - {t: "안심", i: shield, w: "'won't …'로 단정해 말하면 환자가 안심해요. 그만큼 근거가 있어야 하는데, 짧게 쓰는 스테로이드는 오래 쓸 때와 위험의 종류와 크기가 달라요.", d: "very rarely", k: ["처방전은 약국에서 받으세요", "집에서는 정해진 시간에 드세요"], a: "short", o: ["long", "daily", "new"]}
@@ -29,12 +29,12 @@
     tag: "대화 흐름"
     icon: compass
     ko: "스테로이드 시작 설명 4문장 순서"
-    why: "약이 하는 일과 기간을 먼저 알리고, 부작용을 덧붙인 뒤, 그 모든 것을 근거로 장기 사용과 다르다고 안심시켜요. 'those'·'That'·'all of that'이 앞 줄을 가리켜 순서가 하나예요."
+    why: "약이 하는 일과 기간을 먼저 알리고, 부작용을 덧붙인 뒤, 그 모든 것을 근거로 장기 사용과 다르다고 안심시켜요. 'those five days'·'all of that'이 앞 줄을 가리켜 순서가 하나예요."
     lines:
     - {en: "A short course of steroids calms the swelling in your airways.", icon: pill, ko: "짧은 기간의 스테로이드가 기도의 붓기를 가라앉혀요", note: "효과"}
     - {en: "It helps you recover faster, and you'll take them for about five days.", icon: calendar, ko: "더 빨리 회복하게 돕고 약 5일 드실 거예요", note: "기간"}
-    - {en: "That includes a small rise in blood sugar for a few days.", icon: bell, ko: "그 며칠 동안 혈당이 조금 오르는 것도 포함돼요", note: "부작용"}
-    - {en: "After all of that, you'll be off them, so it won't cause the same problems as long-term use.", icon: shield, ko: "그 모든 뒤에 끊을 거라 장기 사용과 같은 문제는 없어요", note: "안심"}
+    - {en: "During those five days, it can also raise your blood sugar a little.", icon: bell, ko: "그 5일 동안 혈당이 조금 오를 수도 있어요", note: "부작용"}
+    - {en: "After all of that, you'll stop, so it won't cause long-term problems.", icon: shield, ko: "그 모든 뒤에 끊을 거라 장기적인 문제는 없어요", note: "안심"}
   ctx: {word: "steroids", ko: "스테로이드"}
 - title: 말하기 힘든 호흡곤란 중증도
   s:
@@ -80,8 +80,8 @@
   - {t: "도움 안내", i: handshake2, w: "'There are …'로 선택지가 있다는 사실을 먼저 알리면 금연이 혼자 견디는 일이 아니라고 느껴요. 금연 약물과 상담을 함께 쓰면 성공률이 올라가요.", d: "only a few", k: ["금연 앱도 무료로 받으실 수 있어요", "가족도 같이 상담을 받을 수 있어요"], a: "medications", o: ["vitamins", "antibiotics", "vaccines"]}
   - {t: "연계 제안", i: handshake2, w: "'Would you like me to …?'는 환자의 의사를 먼저 묻는 제안형이라 밀어붙이는 느낌이 없어요. 금연 프로그램 연결은 환자가 동의한 뒤 진행해요.", d: "force you", k: ["금연 구역 안내문을 드릴까요?", "퇴원 후 진료를 예약해 드릴까요?"], a: "quit program", o: ["social worker", "dietitian", "pharmacist"]}
   - {t: "시도 경험", i: pill, w: "'Have you tried …?'는 지금까지의 시도를 묻는 현재완료이고 like …로 예를 들어 주면 환자가 구체적으로 떠올려요. 이전에 써 본 방법과 실패한 이유를 알아야 더 맞는 도움을 줄 수 있어요.", d: "last time", k: ["담배를 처음 피운 게 몇 살이세요?", "집에 흡연자가 또 있나요?"], a: "gum", o: ["candy", "mints", "tea"]}
-  - {t: "어려움 파악", i: me, w: "'What usually makes it hardest …?'는 비난 없이 어려운 순간을 환자의 말로 끌어내요. 어떤 상황에서 흔들리는지 알아야 그 순간에 대처할 계획을 같이 세울 수 있어요.", d: "last week", k: ["지금 끊은 지 얼마나 되셨어요?", "끊고 나서 몸이 달라진 게 있나요?"], a: "hardest", o: ["easiest", "quickest", "nicest"]}
-  - {t: "자원 안내", i: speaker, w: "'I can also …'의 also로 앞의 도움에 더해 줄 수 있는 것을 덧붙여요. 전화 금연 상담(quitline)은 무료로 쓸 수 있는 자원이라 환자가 부담 없이 시작해요.", d: "only once", k: ["상담사는 병원에 상주해요", "약은 약국에서 받으세요"], a: "free", o: ["paid", "private", "secret"]}
+  - {t: "어려움 파악", i: me, w: "'What usually makes it hardest …?'는 비난 없이 어려운 순간을 환자의 말로 끌어내요. 어떤 상황에서 흔들리는지 알아야 그 순간에 대처할 계획을 같이 세울 수 있어요.", d: "last week", k: ["지금 끊은 지 얼마나 되셨어요?", "끊고 나서 몸이 달라진 게 있나요?"], a: "stay quit", o: ["get help", "feel calm", "fall asleep"]}
+  - {t: "자원 안내", i: speaker, w: "'I can also …'의 also로 앞의 도움에 더해 줄 수 있는 것을 덧붙여요. 전화 금연 상담(quitline)은 무료로 쓸 수 있는 자원이라 환자가 부담 없이 시작해요.", d: "only once", k: ["상담사는 병원에 상주해요", "약은 약국에서 받으세요"], a: "free", o: ["local", "state", "national"]}
   order:
     tag: "대화 흐름"
     icon: compass

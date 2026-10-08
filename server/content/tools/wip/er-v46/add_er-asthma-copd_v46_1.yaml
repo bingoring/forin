@@ -3,7 +3,7 @@
   - {t: "유발인자", i: magnify, w: "What set off …?처럼 의문사를 주어로 두면 원인을 한 번에 묻는 질문이 돼요. 유발인자를 알아야 같은 악화를 막는 교육으로 이어갈 수 있어요.", d: "at night", k: ["증상이 시작된 지 얼마나 됐나요?", "평소 쓰시는 약이 뭔가요?"], a: "set off", o: ["calmed down", "relieved", "cured"]}
   - {t: "횟수 문진", i: pill, w: "How many times …?는 횟수를 숫자로 답하게 해서 '조금 썼다' 같은 모호한 대답을 피해요. 구조 흡입기를 자주 쓸수록 천식이 조절되지 않았다는 단서가 돼요.", d: "per week", k: ["흡입기를 어떻게 쓰는지 보여 주시겠어요?", "흡입기를 마지막으로 바꾼 게 언제예요?"], a: "rescue", o: ["controller", "steroid", "spare"]}
   - {t: "조절제 확인", i: pill, w: "Do you take …?는 습관적으로 쓰는 약을 묻는 현재형이에요. 매일 쓰는 조절제가 있는지가 구조 흡입기만 쓰는 환자와 가르는 첫 질문이에요.", d: "as needed", k: ["흡입기를 쓸 때 숨이 차지 않나요?", "알레르기 약은 드시나요?"], a: "controller", o: ["rescue", "nasal", "emergency"]}
-  - {t: "과거력", i: calendar, w: "Have you had …?는 지금까지의 경험을 묻는 현재완료예요. 비슷한 악화를 겪은 이력은 이번 발작이 얼마나 심할지 가늠하는 단서가 돼요.", d: "last night", k: ["지금 쌕쌕거림이 들리세요?", "가슴이 조이는 느낌이 있나요?"], a: "flare-up", o: ["infection", "cough", "fever"]}
+  - {t: "과거력", i: calendar, w: "Have you had …?는 지금까지의 경험을 묻는 현재완료예요. 비슷한 악화를 겪은 이력은 이번 발작이 얼마나 심할지 가늠하는 단서가 돼요.", d: "last night", k: ["지금 쌕쌕거림이 들리세요?", "가슴이 조이는 느낌이 있나요?"], a: "flare-up", o: ["rash", "cough", "fever"]}
   - {t: "유발인자", i: magnify, w: "usually를 넣으면 한 번이 아니라 되풀이되는 패턴을 묻게 돼요. 연기나 찬 공기 같은 환경 요인은 피할 수 있어서 교육으로 이어져요.", d: "every day", k: ["약을 쓰면 바로 나아지나요?", "밤에 기침으로 깨시나요?"], a: "smoke", o: ["pollen", "mold", "dust"]}
   - {t: "조절 정도", i: chartup, w: "How well …?는 정도를 열어 묻는 의문문이라 예/아니오보다 환자 스스로의 평가를 끌어내요. 최근 조절 상태는 장기 관리 약이 충분했는지 보는 근거가 돼요.", d: "so far", k: ["지난달 병원에 몇 번 가셨어요?", "밤에 얼마나 자주 깨세요?"], a: "asthma", o: ["diabetes", "blood pressure", "allergy"]}
   order:
@@ -19,7 +19,7 @@
   sw: {ko: "이번에는 무엇이 천식을 일으켰나요?"}
 - title: 최고호기유속(PEF) 측정 설명
   s:
-  - {t: "측정 방법", i: stetho, w: "'as hard and fast as you can'은 as … as로 최대치를 요청하는 틀이에요. PEF는 최대한 세게 불어야 의미 있는 수치가 나와요.", d: "as slowly as", k: ["튜브를 입에 물고 평소처럼 숨 쉬세요", "숨을 참고 열까지 세세요"], a: "blow out", o: ["breathe in", "cough", "gasp"]}
+  - {t: "측정 방법", i: stetho, w: "'as hard and fast as you can'은 as … as로 최대치를 요청하는 틀이에요. PEF는 최대한 세게 불어야 의미 있는 수치가 나와요.", d: "as slowly as", k: ["튜브를 입에 물고 평소처럼 숨 쉬세요", "숨을 참고 열까지 세세요"], a: "blow out", o: ["breathe in", "cough", "sniff"]}
   - {t: "측정 횟수", i: redo, w: "'take the best number'는 세 번 가운데 가장 높은 값을 기록한다는 뜻이에요. PEF는 협조에 따라 값이 달라져서 최고값을 기준으로 삼아요.", d: "on average", k: ["측정하는 동안 눈을 감으세요", "불 때마다 튜브를 새것으로 바꿀게요"], a: "best", o: ["average", "lowest", "first"]}
   - {t: "의미 설명", i: bulb, w: "how + 형용사를 명사절로 쓰면 수치가 무엇을 재는지 쉬운 말로 풀 수 있어요. PEF는 기도가 얼마나 열려 있는지를 간접적으로 보여 줘요.", d: "how big", k: ["이건 혈액 속 산소가 얼마인지 보여줘요", "이건 폐에 물이 찼는지 알려줘요"], a: "airways", o: ["sinuses", "nostrils", "veins"]}
   - {t: "기준치 문진", i: chartup, w: "'your usual …'은 평소 기준을 묻는 말이에요. 집에서 재 둔 평소 수치가 있어야 오늘 값을 환자 자신의 기준과 견줄 수 있어요.", d: "last night", k: ["오늘 몇 시에 측정하셨어요?", "이 튜브는 처음 써 보세요?"], a: "peak flow", o: ["blood pressure", "blood sugar", "oxygen"]}
@@ -76,7 +76,7 @@
   ctx: {word: "albuterol", ko: "살부타몰"}
 - title: COPD 기저질환 병력
   s:
-  - {t: "산소 사용", i: hospital, w: "'How long …, and at what flow?'처럼 기간과 유량을 한 문장에 묻으면 가정 산소 상태를 한 번에 파악해요. 평소 유량(L/min)은 지금 산소를 조절할 때 기준이 돼요.", d: "last week", k: ["산소통은 누가 갈아 주세요?", "산소 줄에 걸려 넘어진 적 있으세요?"], a: "How long", o: ["How often", "How much", "How far"]}
+  - {t: "산소 사용", i: hospital, w: "'How long …, and at what flow?'처럼 기간과 유량을 한 문장에 묻으면 가정 산소 상태를 한 번에 파악해요. 평소 유량(L/min)은 지금 산소를 조절할 때 기준이 돼요.", d: "last week", k: ["산소통은 누가 갈아 주세요?", "산소 줄에 걸려 넘어진 적 있으세요?"], a: "home oxygen", o: ["home dialysis", "home hospice", "home CPAP"]}
   - {t: "흡연력", i: magnify, w: "'Do you still …, or when did you …?'로 현재와 과거를 함께 물으면 끊은 사람도 부담 없이 답해요. 흡연력은 COPD 악화 위험과 치료 계획의 기본 정보예요.", d: "since then", k: ["담배는 하루에 몇 갑 피우세요?", "전자담배를 쓰세요?"], a: "smoke", o: ["drink", "gamble", "run"]}
   - {t: "입원 빈도", i: hospital, w: "'end up in …'은 계획한 건 아닌데 결국 그렇게 된다는 뉘앙스예요. 악화로 입원한 빈도는 COPD가 얼마나 불안정한지 보여 주는 기준이에요.", d: "on weekends", k: ["입원하면 보통 며칠 계세요?", "주치의는 누구세요?"], a: "flare-ups", o: ["checkups", "surgeries", "falls"]}
   - {t: "병력 기간", i: calendar, w: "'How many years …?'는 숫자로 답하게 해서 병이 얼마나 오래됐는지 분명히 해요. 오래된 COPD일수록 평소 폐 기능이 많이 떨어져 있을 수 있어요.", d: "in total", k: ["COPD 진단은 어느 병원에서 받으셨어요?", "가족 중에 폐 질환이 있으세요?"], a: "COPD", o: ["asthma", "diabetes", "hypertension"]}
@@ -99,7 +99,7 @@
   - {t: "말하기 사정", i: speech, w: "Is it easier to …?로 느낌을 묻되 '완전한 문장'이라는 기준을 주면 대답이 구체적이에요. 한 번에 문장으로 말할 수 있는지는 천식 발작의 중증도를 가르는 기준이에요.", d: "on the phone", k: ["지금도 기침이 계속 나오세요?", "가슴이 아직 쌕쌕거리나요?"], a: "full sentences", o: ["whispers", "short phrases", "one-word answers"]}
   - {t: "경과 안내", i: chartup, w: "that's a good sign으로 수치의 의미를 바로 풀어 주면 환자가 숫자만 보고 불안해하지 않아요. 치료 뒤 수치가 오르면 약에 반응하고 있다는 신호예요.", d: "for now", k: ["수치는 퇴원 때 다시 알려드릴게요", "의사가 수치를 곧 보러 올 거예요"], a: "improving", o: ["dropping", "falling", "slipping"]}
   - {t: "증상 변화", i: me, w: "any different처럼 any를 쓰면 좋아졌는지 나빠졌는지 방향을 정하지 않고 열어 물어요. 좋아졌다고 유도하지 않아야 환자의 실제 느낌을 정확히 들을 수 있어요.", d: "this morning", k: ["치료받는 동안 어지러우셨나요?", "다음 치료는 한 시간 뒤예요"], a: "treatments", o: ["oxygen", "injection", "breathing test"]}
-  - {t: "호흡 확인", i: stetho, w: "Can you …?는 부탁하는 정중한 의문문이에요. 한 호흡에 다섯까지 세어 보게 하면 숨이 얼마나 이어지는지 말하기로 간단히 가늠할 수 있어요.", d: "out loud", k: ["일어서서 걸어 보시겠어요?", "입을 크게 벌려 보시겠어요?"], a: "five", o: ["ten", "three", "twenty"]}
+  - {t: "호흡 확인", i: stetho, w: "Can you …?는 부탁하는 정중한 의문문이에요. 한 호흡에 다섯까지 세어 보게 하면 숨이 얼마나 이어지는지 말하기로 간단히 가늠할 수 있어요.", d: "out loud", k: ["일어서서 걸어 보시겠어요?", "입을 크게 벌려 보시겠어요?"], a: "full", o: ["shallow", "quick", "small"]}
   - {t: "다음 계획", i: compass, w: "'If … keeps …ing, we can …'는 조건에 따라 다음 단계를 미리 알리는 틀이에요. 반응이 좋으면 치료 간격을 늘려 가는 식으로 단계적으로 줄여요.", d: "right away", k: ["수치가 좋아지면 오늘 퇴원하실 수 있어요", "수치가 그대로면 약을 바꿔 볼게요"], a: "space out", o: ["speed up", "double", "repeat"]}
   order:
     tag: "대화 흐름"

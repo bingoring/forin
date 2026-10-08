@@ -5,7 +5,7 @@
   - {t: "방해 요인", i: me, w: "'What makes it hard to …?'는 '왜 안 하세요'와 달리 환자를 탓하지 않고 걸림돌을 묻는 방식이에요. 비난 없이 묻는 것이 약 순응 상담의 첫걸음이에요.", d: "for you", k: ["약값이 얼마나 드나요?", "약이 어디서 처방됐나요?"], a: "daily", o: ["weekly", "new", "extra"]}
   - {t: "소진 확인", i: bell, w: "'run out of …'는 '다 떨어지다'라는 구동사예요. 재조제 전에 약이 떨어진다면 처방 용량이나 재조제 시점에 문제가 있다는 단서예요.", d: "by mistake", k: ["약이 남은 채로 버리신 적 있으세요?", "약국이 집에서 멀어요?"], a: "before", o: ["after", "until", "without"]}
   - {t: "원인 탐색", i: magnify, w: "'A, B, or just C?'로 가능한 이유를 먼저 늘어놓으면 환자가 부끄러워하지 않고 해당하는 것을 골라요. 비용·부작용·건망증은 조절제를 거르는 흔한 이유예요.", d: "or maybe", k: ["흡입기가 너무 커서 불편하세요?", "약을 누가 챙겨 주나요?"], a: "side effects", o: ["rules", "doctors", "pharmacies"]}
-  - {t: "해결 제안", i: pushpin, w: "'Let's …'로 같이 해 보자고 제안하면 환자가 지시받는 느낌이 줄어요. 양치처럼 매일 하는 일에 약을 연결하면 기억하기 쉬워요.", d: "once a month", k: ["약통을 새로 드릴게요", "다음 진료 때 같이 보죠"], a: "set", o: ["skip", "cancel", "forget"]}
+  - {t: "해결 제안", i: pushpin, w: "'Let's …'로 같이 해 보자고 제안하면 환자가 지시받는 느낌이 줄어요. 양치처럼 매일 하는 일에 약을 연결하면 기억하기 쉬워요.", d: "once a month", k: ["약통을 새로 드릴게요", "다음 진료 때 같이 보죠"], a: "set", o: ["skip", "cancel", "change"]}
   order:
     tag: "대화 흐름"
     icon: compass
@@ -59,7 +59,7 @@
   s:
   - {t: "치료 알림", i: siren, w: "'We're giving …'은 지금 하고 있는 일을 알리는 진행형이에요. 중증 천식 발작에는 지속 흡입 치료에 정맥 마그네슘을 더하기도 해요.", d: "after lunch", k: ["지금 수혈을 시작했어요", "지금 수술실로 옮겨요"], a: "magnesium", o: ["calcium", "insulin", "aspirin"]}
   - {t: "곁 지키기", i: handshake2, w: "'Stay with me'는 곁에 있겠다는 뜻이라 위급할 때 환자를 붙잡아 줘요. 의식이 흐려지는 환자에게는 짧고 분명한 말로 계속 연결해 줘요.", d: "Hold on", k: ["눈을 감고 쉬세요", "가족분께 연락할게요"], a: "Stay", o: ["Look", "Talk", "Sit"]}
-  - {t: "상황 안내", i: faceWorried, w: "'If … doesn't …, we may …'는 아직 결정이 아닌 조건부 계획을 부드럽게 말하는 틀이에요. 호전이 없으면 기계로 호흡을 대신해 주는 삽관을 쓸 수 있다는 점을 미리 알려요.", d: "right away", k: ["이게 끝나면 바로 퇴원해요", "이 약은 곧 끝나요"], a: "breathe for you", o: ["cough for you", "talk for you", "walk for you"]}
+  - {t: "상황 안내", i: faceWorried, w: "'If … doesn't …, we may …'는 아직 결정이 아닌 조건부 계획을 부드럽게 말하는 틀이에요. 호전이 없으면 기계로 호흡을 대신해 주는 삽관을 쓸 수 있다는 점을 미리 알려요.", d: "right away", k: ["이게 끝나면 바로 퇴원해요", "이 약은 곧 끝나요"], a: "turn around", o: ["wear off", "run out", "speed up"]}
   - {t: "의식 확인", i: speaker, w: "'Nod if …'로 말을 못 하는 환자도 답할 수 있게 해요. 숨이 찬 환자의 의식이 유지되는지 간단히 확인할 수 있어요.", d: "twice", k: ["제 손을 꼭 잡으세요", "눈을 크게 뜨세요"], a: "hear", o: ["see", "feel", "follow"]}
   - {t: "상태 전달", i: magnify, w: "'look blue'처럼 보이는 그대로 말하면 진단을 단정하지 않고 사실만 전해요. 입술과 손끝이 파래지는 청색증은 산소가 부족하다는 눈에 보이는 징후예요.", d: "feel cold", k: ["손끝이 많이 차가워요", "손에서 땀이 나고 있어요"], a: "fingertips", o: ["toes", "earlobes", "eyelids"]}
   - {t: "지원 요청", i: siren, w: "'calling for backup'은 도움을 요청 중이라는 진행 상황을 알려요. 환자가 혼자가 아니고 필요하면 기도 확보까지 준비한다는 신호예요.", d: "waiting for", k: ["지금 의사가 퇴근했어요", "검사 결과를 기다리고 있어요"], a: "help", o: ["make", "let", "watch"]}
