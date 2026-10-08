@@ -1,9 +1,10 @@
-// The dialogue screen's two dragged edges, driven for real.
+// The dialogue screen's stage and its dragged edges, driven for real.
 //
-// The complaint that produced them: the reply choices covered the exchange they were
-// answers to. Every fixed fraction was wrong for somebody, so the divider between the
-// character and the conversation, and the top of the choices band, are the reader's to
-// place.
+// lesson-fidelity-v46 결정 5: the stage is the handoff's (dialogue.jsx Stage — 236 on the
+// free run, 168 on the guided run, `#F6E3DC`, name and mood on the left, speaker on the
+// right), and the learner can still drag its edge. The complaint that produced the drag:
+// the reply choices covered the exchange they were answers to. Every fixed fraction was
+// wrong for somebody, so the edges are the reader's to place.
 //
 // These tests MOUNT the screen and drive the gestures through panDriver, because the
 // failures that matter here are not "the constant is in the file" — they are "dragging
@@ -53,6 +54,7 @@ jest.mock('expo-speech', () => ({ speak: () => {}, stop: () => {} }));
 jest.mock('@/lib/sfx', () => ({ playSfx: () => {}, primeSfx: () => {}, loadSfxPreference: async () => {} }));
 
 const written: string[] = [];
+const mockRun = { guide: 'free' as string };
 jest.mock('expo-secure-store', () => ({
   getItemAsync: async () => null,
   setItemAsync: async (_k: string, v: string) => { written.push(v); },
@@ -64,9 +66,8 @@ jest.mock('expo-router', () => {
   return {
     Stack: { Screen: () => null },
     useRouter: () => ({ push: () => {}, replace: () => {}, back: () => {}, canGoBack: () => true }),
-    // guide=choices, because the choices band only exists on the guided pass — which is
-    // the pass the complaint came from.
-    useLocalSearchParams: () => ({ id: 'SCN-ER-00002', guide: 'choices' }),
+    // Per test: the free run (E) or the guided run with reply choices (D, no sentences).
+    useLocalSearchParams: () => ({ id: 'SCN-ER-00002', guide: mockRun.guide }),
     useFocusEffect: (cb: () => void | (() => void)) => React.useEffect(cb, []),
   };
 });
@@ -77,12 +78,13 @@ jest.mock('@/api/client', () => ({
     // the band these tests measure.
     lesson: async () => ({ sentences: [] }),
     scenario: async () => ({
-      id: 'SCN-ER-00002', title: '첫 인사', tagline: 'Good morning.', guide: 'choices',
+      id: 'SCN-ER-00002', title: '첫 인사', tagline: 'Good morning.', guide: mockRun.guide,
       persona: { name: '김민준', role: 'patient', mood: 'worried', hair: 'short' },
       steps: [{ type: 'dialogue', payload: { lineEn: 'It hurts here.', lineKo: '여기가 아파요.' } }],
       missions: [],
     }),
     resumableConversation: async () => ({ sessionId: '', turns: [] }),
+    scenarioNotes: async () => [{ said: 'Where pain?', model: 'Where does it hurt?', createdAt: '2026-10-01T00:00:00Z' }],
     startConversation: async () => 'sess-1',
     // The turn shape, not a bare array: an authored conversation reports where it
     // stands, and the screen decides whether to draw a text box from that.
@@ -98,9 +100,11 @@ jest.mock('@/api/client', () => ({
 }));
 
 import { Keyboard } from 'react-native';
+import { readFileSync } from 'fs';
+import { join } from 'path';
 import { act, create, type ReactTestInstance } from 'react-test-renderer';
 import DialogueRoute from '@/app/dialogue/[id]';
-import { clampChoices, clampSplit, DOCK_H, PORTRAIT_MAX } from '@/data/dialogueSplit';
+import { STAGE, STAGE_MIN, STAGE_TOP, clampChoices, clampStage } from '@/data/dialogueSplit';
 import { NOT_SET, setDialogueLayout } from '@/lib/dialogueLayout';
 import { trackMounts } from '../testing/mountRegistry';
 import { panDriver } from '../testing/panDriver';
@@ -110,9 +114,8 @@ const track = trackMounts();
 // The saved sizes are module state ON PURPOSE — they outlive the screen, which is the
 // whole feature: a learner sets them once, not once per scenario. That also means one
 // test's drag is the next test's starting point, so each case starts from "never
-// dragged". Without this the second case began from the first one's number and read as a
-// portrait that shrank when it should have rearranged.
-beforeEach(async () => { await setDialogueLayout(NOT_SET); written.length = 0; });
+// dragged".
+beforeEach(async () => { await setDialogueLayout(NOT_SET); written.length = 0; mockRun.guide = 'free'; });
 
 // react-test-renderer's default window is 750×1334 (RN's Dimensions mock).
 const WIN_H = 1334;
@@ -122,11 +125,20 @@ async function mount() {
   await act(async () => { tree = track(create(<DialogueRoute />)); });
   // The screen opens a session and loads choices in an effect chain.
   await act(async () => { await Promise.resolve(); });
+  await act(async () => { await Promise.resolve(); });
   return tree;
 }
 
-/** The pan-handler host for one handle. Found via the handle's testID, so the two
- *  edges cannot be confused with each other. */
+const flat = (st: unknown) => (Array.isArray(st) ? Object.assign({}, ...st.flat(3).filter(Boolean)) : (st ?? {})) as Record<string, unknown>;
+const num = (v: unknown): number => (typeof v === 'number' ? v : (v as { __getValue: () => number }).__getValue());
+const host = (root: ReactTestInstance, id: string) => root.findAll((n) => typeof n.type === 'string' && n.props?.testID === id);
+function texts(root: ReactTestInstance): string[] {
+  return root.findAll((n) => String(n.type) === 'Text', { deep: true })
+    .flatMap((n) => n.children.filter((c): c is string => typeof c === 'string'));
+}
+
+/** The pan-handler host for one handle. Found via the handle's testID, so the edges
+ *  cannot be confused with each other. */
 function handleOf(root: ReactTestInstance, testID: string) {
   const hits = root.findAll(
     (n) => typeof n.type === 'string' && n.props?.testID === testID && typeof n.props?.onMoveShouldSetResponder === 'function',
@@ -139,106 +151,74 @@ function handleOf(root: ReactTestInstance, testID: string) {
 /** The conversation column's top edge, as a NUMBER. It is an interpolation, so this is
  *  the only way to see where it actually is. */
 function threadTop(root: ReactTestInstance): number {
-  const hits = root.findAll((n) => {
-    const st = n.props?.style;
-    return !!st && !Array.isArray(st) && st.zIndex === 6 && st.left === 14 && st.top !== undefined;
-  }, { deep: true });
-  expect(hits.length).toBeGreaterThan(0);
-  const v = hits[0].props.style.top;
-  return typeof v === 'number' ? v : v.__getValue();
+  return num(flat(host(root, 'thread-column')[0].props.style).top);
+}
+/** The stage band's height. */
+function stageBand(root: ReactTestInstance): number {
+  const st = flat(host(root, 'stage-band')[0].props.style);
+  // A percentage string would sail through a loose read and report a passing test on a
+  // band that does not move, so anything but a number is a failure here.
+  expect(typeof st.height === 'number' || typeof (st.height as { __getValue?: unknown })?.__getValue === 'function').toBe(true);
+  return num(st.height);
 }
 
 /** The QUICK INFO dock's label node. */
 function dockNode(root: ReactTestInstance): ReactTestInstance | undefined {
-  return root.findAll(
-    (n) => String(n.type) === 'Text' && n.children.includes('QUICK INFO'),
-    { deep: true },
-  )[0];
+  return root.findAll((n) => String(n.type) === 'Text' && n.children.includes('QUICK INFO'), { deep: true })[0];
 }
-
-/** True when the bedside tools live INSIDE the conversation column — which is the whole
- *  claim: they are the learner's instruments, used while talking, so they travel with the
- *  conversation's edge rather than sitting above it as something the patient presents. */
+/** True when the bedside tools live INSIDE the conversation column — they are the
+ *  learner's instruments, used while talking, so they travel with the conversation's edge. */
 function dockIsInThread(root: ReactTestInstance): boolean {
   let n = dockNode(root)?.parent ?? null;
   while (n) {
-    const st = n.props?.style;
-    if (!!st && !Array.isArray(st) && st.zIndex === 6 && st.left === 14) return true;
+    if (n.props?.testID === 'thread-column') return true;
     n = n.parent;
   }
   return false;
 }
-
-/** The portrait frame's drawn box. */
-function frameBox(root: ReactTestInstance): { w: number; h: number } {
-  const hits = root.findAll((n) => {
-    const st = n.props?.style;
-    // v29 draws the portrait as a polaroid: the PAPER carries the border, and the print
-    // itself is a clipped box with a size. So the box is found by its size and clip, not
-    // by a border it no longer has.
-    return !!st && !Array.isArray(st) && st.overflow === 'hidden' && typeof st.width === 'number' && typeof st.height === 'number';
-  }, { deep: true });
-  expect(hits.length).toBeGreaterThan(0);
-  return { w: hits[0].props.style.width, h: hits[0].props.style.height };
+/** The top of the absolutely-placed box that holds `testID`'s node. */
+function placedTop(root: ReactTestInstance, testID: string): number {
+  let n: ReactTestInstance | null = host(root, testID)[0];
+  while (n && !(typeof n.type === 'string' && flat(n.props?.style).position === 'absolute' && flat(n.props?.style).top !== undefined)) n = n.parent;
+  return num(flat(n!.props.style).top);
 }
 
-/** The name/mood plate's own box. */
-function plate(root: ReactTestInstance): Record<string, unknown> {
-  const hits = root.findAll(
-    (n) => typeof n.type === 'string' && n.props?.testID === 'portrait-plate',
-    { deep: true },
-  );
-  expect(hits.length).toBe(1);
-  return hits[0].props.style as Record<string, unknown>;
-}
+// ── the stage (lesson-fidelity-v46 결정 5) ─────────────────────────────────────
 
-/** True when the plate hangs off the frame's LEFT edge instead of sitting under it.
- *
- *  Positioned OUT of the layout is the whole point: as a row it took width, and the strip
- *  centres the container, so the plate's width pushed the frame to the right — the
- *  character slid sideways as the divider came up. */
-function nameIsBeside(root: ReactTestInstance): boolean {
-  const st = plate(root);
-  return st.position === 'absolute' && typeof st.right === 'number';
-}
+test('the free run opens on the handoff stage: #F6E3DC, 236 under the status bar (E)', async () => {
+  const tree = await mount();
+  expect(stageBand(tree.root)).toBe(STAGE.free);
+  expect(flat(host(tree.root, 'stage-band')[0].props.style)).toMatchObject({ backgroundColor: '#F6E3DC', borderBottomWidth: 1.5, borderBottomColor: '#E0D6C0' });
+  expect(threadTop(tree.root)).toBe(STAGE_TOP + STAGE.free);
+});
 
-/** The department wash band's height — the coloured ground the portrait stands on. */
-function washHeight(root: ReactTestInstance): number {
-  const hits = root.findAll(
-    (n) => typeof n.type === 'string' && n.props?.testID === 'wash-band',
-    { deep: true },
-  );
-  expect(hits.length).toBe(1);
-  const v = hits[0].props.style.height;
-  // A percentage string would sail through a loose read and report a passing test on a
-  // band that does not move, so anything but a number is a failure here.
-  expect(typeof v === 'number' || typeof v?.__getValue === 'function').toBe(true);
-  return typeof v === 'number' ? v : v.__getValue();
-}
+test('on the stage: the print 118×120 at 54, the name and mood on the LEFT, the speaker on the RIGHT (L44–55)', async () => {
+  const tree = await mount();
+  expect(flat(host(tree.root, 'stage-print')[0].props.style)).toMatchObject({ width: 118, height: 120, overflow: 'hidden' });
+  // Positions are screen coordinates: the stage starts at 44.
+  const plate = flat(host(tree.root, 'stage-plate')[0].props.style);
+  expect(plate).toMatchObject({ position: 'absolute', left: 22, top: STAGE_TOP + 88 });
+  // The mood tag: red, white Pretendard 9.5 tracking 1, 2/7, -2° (L52).
+  const mood = host(tree.root, 'stage-mood')[0];
+  expect(flat(mood.props.style)).toMatchObject({ backgroundColor: '#C75146', paddingVertical: 2, paddingHorizontal: 7, marginTop: 6 });
+  expect(flat(mood.findAll((n) => String(n.type) === 'Text')[0].props.style)).toMatchObject({ fontSize: 9.5, letterSpacing: 1, color: '#fff' });
+  expect(texts(mood)).toEqual(['WORRIED']);
+  // The speaker: right 26, top 96, a 32×32 paper with NbIcon speaker 17 — not the pixel
+  // volume box with a hard shadow and a 2.5 ink border.
+  let sp: ReactTestInstance | null = host(tree.root, 'stage-voice')[0];
+  while (sp && flat(sp.props?.style).right === undefined) sp = sp.parent;
+  expect(flat(sp!.props.style)).toMatchObject({ position: 'absolute', right: 26, top: STAGE_TOP + 96 });
+  const face = host(tree.root, 'stage-voice')[0].findAll((n) => typeof n.type === 'string' && flat(n.props?.style).width === 32)[0];
+  expect(flat(face.props.style)).toMatchObject({ width: 32, height: 32, borderWidth: 1, borderColor: '#E0D6C0' });
+  // The polaroid sits 54 into the stage; its tape is the 58×16 strip at -9 (L46).
+  expect(placedTop(tree.root, 'stage-print')).toBe(STAGE_TOP + 54);
+  expect(flat(host(tree.root, 'stage-tape')[0].props.style)).toMatchObject({ top: -9, width: 58, height: 16 });
+});
 
-/** The ceiling the reply cards actually scroll inside. */
-function choicesBand(root: ReactTestInstance): number {
-  const hits = root.findAll((n) => {
-    const st = n.props?.style;
-    const flat = Array.isArray(st) ? Object.assign({}, ...st.filter(Boolean)) : st;
-    return !!flat && typeof flat.maxHeight === 'number' && flat.maxHeight > 50;
-  }, { deep: true });
-  expect(hits.length).toBeGreaterThan(0);
-  return hits[0].props.style.maxHeight ?? 0;
-}
-
-test('dragging the divider moves the conversation, and the bedside tools come with it', async () => {
+test('dragging the edge resizes the stage, and the bedside tools come with the conversation', async () => {
   const tree = await mount();
   const before = threadTop(tree.root);
-  // The default is the position that shipped — someone who never touches the handle
-  // must get the screen they already had.
-  expect(before).toBe(clampSplit(WIN_H * 0.41 + 34, WIN_H));
-  // The tools are in the conversation, so they need no position of their own — they move
-  // because the column moves.
   expect(dockIsInThread(tree.root)).toBe(true);
-  // And the coloured ground ends exactly at the edge. At a fixed 40% the wash stayed put
-  // while the divider moved, so dragging cut the colour across the conversation.
-  expect(washHeight(tree.root)).toBe(before);
 
   const pan = handleOf(tree.root, 'split-handle');
   await act(async () => {
@@ -247,122 +227,30 @@ test('dragging the divider moves the conversation, and the bedside tools come wi
     pan.up();
   });
 
-  const after = threadTop(tree.root);
   // 90, not 100: PanResponder resets dy at the moment it grants, so the few pixels that
   // won the claim are not part of the drag. Every gesture in the app behaves this way.
-  expect(after).toBe(before - 90);
+  expect(threadTop(tree.root)).toBe(before - 90);
+  expect(stageBand(tree.root)).toBe(STAGE.free - 90);
   expect(dockIsInThread(tree.root)).toBe(true);
-  expect(washHeight(tree.root)).toBe(after);
 });
 
-test('the portrait rearranges before it shrinks, and keeps its ratio when it does', async () => {
+test('dragged small, the print shrinks in place with its ratio, to a floor', async () => {
   const tree = await mount();
-  const drawn = frameBox(tree.root);
-  expect(drawn.h).toBe(PORTRAIT_MAX);
-  expect(nameIsBeside(tree.root)).toBe(false);
-
-  // Up past the point where the stacked plate fits, but not past the portrait's floor.
-  // A fresh driver per gesture: one PanResponder carries its state between gestures, so
-  // a reused driver's bank computes the next dy from the wrong origin.
   await act(async () => {
     const pan = handleOf(tree.root, 'split-handle');
     expect(pan.claim(-10)).toBe(true);
-    pan.move(-260);
+    pan.move(-2_000);
     pan.up();
   });
-  // The plate moved; the drawing did not have to.
-  expect(nameIsBeside(tree.root)).toBe(true);
-  expect(frameBox(tree.root).h).toBe(PORTRAIT_MAX);
-
-  // All the way up: now it scales, and the ratio survives.
-  await act(async () => {
-    const pan = handleOf(tree.root, 'split-handle');
-    expect(pan.claim(-10)).toBe(true);
-    pan.move(-400);
-    pan.up();
-  });
-  const small = frameBox(tree.root);
-  expect(small.h).toBeLessThan(drawn.h);
-  expect(small.w / small.h).toBeCloseTo(drawn.w / drawn.h, 1);
-
-  // …and it shrinks IN PLACE. The plate is out of the layout, so the container is the
-  // frame's width and the strip's centring still lands on the drawing. As a row the
-  // plate's width pushed the frame right, and dragging read as the character sliding
-  // sideways rather than getting smaller.
-  const st = plate(tree.root);
-  expect(st.position).toBe('absolute');
-  // Clear of the frame's left edge, not overlapping it.
-  expect(st.right).toBeGreaterThanOrEqual(small.w);
-  expect(holdingBox(tree.root).flexDirection).toBeUndefined();
+  expect(stageBand(tree.root)).toBe(STAGE_MIN);
+  const print = flat(host(tree.root, 'stage-print')[0].props.style);
+  expect(print.height as number).toBeLessThan(92);
+  expect((print.width as number) / (print.height as number)).toBeCloseTo(118 / 92, 1);
+  // Still on the left / right — the plate and the speaker do not move into the print.
+  expect(flat(host(tree.root, 'stage-plate')[0].props.style).left).toBe(22);
 });
 
-/** The style of the box that holds the frame and the plate. */
-function holdingBox(root: ReactTestInstance): Record<string, unknown> {
-  let n: ReactTestInstance | null = root.findAll(
-    (x) => typeof x.type === 'string' && x.props?.testID === 'portrait-plate',
-    { deep: true },
-  )[0]?.parent ?? null;
-  while (n && typeof n.type !== 'string') n = n.parent;
-  return (n?.props?.style ?? {}) as Record<string, unknown>;
-}
-
-test('the voice toggle is centred on the portrait, at its right edge', async () => {
-  // Vertically centred against the FRAME, not against the frame plus the stacked plate:
-  // a fixed offset put it three quarters of the way down, and it moved as the portrait
-  // scaled. `top: 0, bottom: 0` centres it without this file knowing the button's height.
-  const tree = await mount();
-  const hits = tree.root.findAll(
-    (n) => typeof n.type === 'string' && n.props?.testID === 'portrait-aside',
-    { deep: true },
-  );
-  expect(hits.length).toBe(1);
-  const st = hits[0].props.style;
-  expect(st.position).toBe('absolute');
-  expect(st.right).toBeLessThan(0);
-  expect(st.top).toBe(0);
-  expect(st.bottom).toBe(0);
-  expect(st.justifyContent).toBe('center');
-
-  // The box it is centred against draws the frame, and nothing else — otherwise
-  // "centred" would mean centred on the plate as well.
-  let holder = hits[0].parent;
-  while (holder && typeof holder.type !== 'string') holder = holder.parent;
-  const drawsFrame = holder?.findAll((n) => {
-    const s2 = n.props?.style;
-    return !!s2 && !Array.isArray(s2) && s2.overflow === 'hidden' && typeof s2.width === 'number' && typeof s2.height === 'number';
-  }, { deep: true }) ?? [];
-  expect(drawsFrame.length).toBeGreaterThan(0);
-  expect(holder?.findAll(
-    (n) => typeof n.type === 'string' && n.props?.testID === 'portrait-plate', { deep: true },
-  ) ?? []).toHaveLength(0);
-});
-
-test('the choices band is the reader\'s, and it cannot be dragged over the conversation', async () => {
-  const tree = await mount();
-  const start = choicesBand(tree.root);
-  expect(start).toBe(clampChoices(WIN_H * 0.34, WIN_H));
-
-  // Down on the band's TOP edge gives the conversation more room.
-  await act(async () => {
-    const pan = handleOf(tree.root, 'choices-handle');
-    expect(pan.claim(10)).toBe(true);
-    pan.move(60);
-    pan.up();
-  });
-  expect(choicesBand(tree.root)).toBe(start - 60);
-
-  // And it stops: one card stays readable however far down it is pushed.
-  await act(async () => {
-    const pan = handleOf(tree.root, 'choices-handle');
-    expect(pan.claim(10)).toBe(true);
-    pan.move(2_000);
-    pan.up();
-  });
-  expect(choicesBand(tree.root)).toBe(96);
-});
-
-test('the sizes are remembered, so nobody sets them again next scenario', async () => {
-  written.length = 0;
+test('the stage size is remembered per run, written on release', async () => {
   const tree = await mount();
   await act(async () => {
     const pan = handleOf(tree.root, 'split-handle');
@@ -374,59 +262,74 @@ test('the sizes are remembered, so nobody sets them again next scenario', async 
   // Written on RELEASE, not per frame: a keychain write in the gesture's path would
   // show up as a stutter under the finger.
   expect(written.length).toBe(1);
-  expect(JSON.parse(written[0]).splitTop).toBe(threadTop(tree.root));
+  expect(JSON.parse(written[0]).stageFree).toBe(STAGE.free - 90);
+  expect(JSON.parse(written[0]).stageGuided).toBe(0);
 });
 
-test('the voice toggle sits beside the portrait, not off the edge of the screen', async () => {
-  // It was `position: absolute; right: -38` inside the full-width portrait STRIP, so
-  // "38pt past the frame's right edge" was really 38pt past the right edge of the phone.
-  // The toggle was off-screen — which is why the whole feature reads as missing rather
-  // than misplaced. It now hangs off a wrapper that shrinks to the frame.
+test('the guided run opens on the short stage (D 168)', async () => {
+  mockRun.guide = 'choices';
   const tree = await mount();
-  const hits = tree.root.findAll(
-    (n) => typeof n.type === 'string' && n.props?.accessibilityRole === 'switch',
-    { deep: true },
-  );
-  expect(hits.length).toBe(1);
-  // Walk out to the View that actually positions it.
-  let box = hits[0].parent;
-  while (box && !(typeof box.type === 'string' && box.props?.style?.position === 'absolute' && box.props.style.right < 0)) {
-    box = box.parent;
-  }
-  expect(box).toBeTruthy();
-  // The container it is measured from must be the one that DRAWS THE FRAME. That is the
-  // only box in this screen whose right edge is the portrait's right edge: the full-width
-  // strip put the toggle off the screen, and a wrapper that also held the name plate grew
-  // with the plate and pushed the toggle a notch past the frame.
-  // Up to the next HOST node. The immediate parent is RN's View class component, which
-  // carries the same style — mistaking it for the container is how this read as broken.
-  let holder = box!.parent;
-  while (holder && typeof holder.type !== 'string') holder = holder.parent;
-  const drawsFrame = holder?.findAll((n) => {
-    const st = n.props?.style;
-    return !!st && !Array.isArray(st) && st.overflow === 'hidden' && typeof st.width === 'number' && typeof st.height === 'number';
-  }, { deep: true }) ?? [];
-  expect(drawsFrame.length).toBeGreaterThan(0);
-  const spans = holder?.props?.style;
-  const flat = Array.isArray(spans) ? Object.assign({}, ...spans.filter(Boolean)) : spans;
-  expect(flat?.left).toBeUndefined();
-  expect(flat?.right).toBeUndefined();
+  expect(stageBand(tree.root)).toBe(STAGE.guided);
+  expect(stageBand(tree.root)).toBe(clampStage(STAGE.guided, WIN_H, 'guided'));
+  expect(flat(host(tree.root, 'stage-plate')[0].props.style).top).toBe(STAGE_TOP + 60);
+});
+
+test('the choices band is the reader\'s, and it cannot be dragged over the conversation', async () => {
+  mockRun.guide = 'choices';
+  const tree = await mount();
+  const band = () => {
+    const hits = tree.root.findAll((n) => typeof flat(n.props?.style).maxHeight === 'number' && (flat(n.props?.style).maxHeight as number) > 50, { deep: true });
+    expect(hits.length).toBeGreaterThan(0);
+    return flat(hits[0].props.style).maxHeight as number;
+  };
+  const start = band();
+  expect(start).toBe(clampChoices(WIN_H * 0.34, WIN_H));
+  await act(async () => {
+    const pan = handleOf(tree.root, 'choices-handle');
+    expect(pan.claim(10)).toBe(true);
+    pan.move(60);
+    pan.up();
+  });
+  expect(band()).toBe(start - 60);
+  await act(async () => {
+    const pan = handleOf(tree.root, 'choices-handle');
+    expect(pan.claim(10)).toBe(true);
+    pan.move(2_000);
+    pan.up();
+  });
+  expect(band()).toBe(96);
+});
+
+// ── the free run's thread and rail (E) ──────────────────────────────────────
+
+test('bubbles are blocks: mine 40 in from the left, theirs 40 in from the right, flat (L72–73)', async () => {
+  const tree = await mount();
+  const npc = tree.root.findAll((n) => typeof n.type === 'string' && flat(n.props?.style).backgroundColor === '#FCEEDC')[0];
+  let row: ReactTestInstance | null = npc.parent;
+  while (row && flat(row.props?.style).marginRight === undefined) row = row.parent;
+  expect(flat(row!.props.style).marginRight).toBe(40);
+  // rot 0 → no rotation, and the neutral edge is the handoff's #E8D2B0.
+  expect(JSON.stringify(flat(npc.props.style).transform)).toMatch(/"0deg"/);
+  // The exchange: padding 10/16/4, gap 10 (L85).
+  const log = tree.root.findAll((n) => n.props?.testID === 'thread-log' && n.props?.contentContainerStyle)[0];
+  expect(flat(log.props.contentContainerStyle)).toMatchObject({ paddingTop: 10, paddingBottom: 4, paddingHorizontal: 16, gap: 10 });
+});
+
+test('E’s rail is paper: ▷ 보내기 · 힌트 · 노트 n (L99–103)', async () => {
+  const tree = await mount();
+  const face = (id: string) => flat(host(tree.root, id)[0].findAll((n) => typeof n.type === 'string' && flat(n.props?.style).paddingVertical === 9)[0].props.style);
+  expect(face('rail-send')).toMatchObject({ backgroundColor: '#FFFdf4', borderWidth: 1, paddingHorizontal: 0, opacity: 0.6 });
+  expect(face('rail-hint')).toMatchObject({ paddingHorizontal: 16 });
+  expect(face('rail-notes')).toMatchObject({ paddingHorizontal: 13 });
+  expect(texts(host(tree.root, 'rail-hint')[0])).toEqual(['힌트']);
+  // The count is this situation's notes.
+  expect(texts(host(tree.root, 'rail-notes')[0])).toEqual(['1']);
 });
 
 test('the keyboard borrows the edge, and the tools hand their row back', async () => {
-  // Two things at once, because they are the same fact: while the keyboard is up the
-  // divider is NOT at the learner's number — it is borrowed — and the bedside tools stop
-  // being drawn rather than merely fading, so the exchange gets their height back at the
-  // moment the screen is smallest. Then both return.
-  //
-  // Driven through real Keyboard events. The source-level version of this check matched
-  // the `{!typing && (` that guards the DRAG HANDLE a few lines above the dock, so it
-  // passed with the dock rendered unconditionally.
-  // Keyboard has no emit(), so the subscription is intercepted and the screen's own
-  // handler is called. The platform is the only part faked; the handler is the real one.
-  // A LIST per event, not one callback: more than one component on this screen listens,
-  // and keeping only the last registration silently dropped the screen's own handler —
-  // the dock stayed on and the test read as a broken guard.
+  // Driven through real Keyboard events. Keyboard has no emit(), so the subscription is
+  // intercepted and the screen's own handler is called. A LIST per event: more than one
+  // component on this screen listens.
   const fired: Record<string, ((e: unknown) => void)[]> = {};
   const spy = jest.spyOn(Keyboard, 'addListener').mockImplementation(((evt: string, cb: (e: unknown) => void) => {
     (fired[evt] ??= []).push(cb);
@@ -436,13 +339,10 @@ test('the keyboard borrows the edge, and the tools hand their row back', async (
   const tree = await mount();
   const resting = threadTop(tree.root);
   expect(dockNode(tree.root)).toBeTruthy();
-  // will*, because jest-expo reports Platform.OS as ios — the same branch the screen
-  // takes there. Other components on the screen subscribe to did* as well.
   expect(Object.keys(fired)).toEqual(expect.arrayContaining(['keyboardWillShow', 'keyboardWillHide']));
 
   await act(async () => {
-    // duration 1, not 0: the screen reads `e.duration || 220`, so a zero would
-    // silently take the 220ms fallback and the assertions would land mid-flight.
+    // duration 1, not 0: the screen reads `e.duration || 220`.
     emit('keyboardWillShow', { duration: 1, endCoordinates: { height: 300 } });
     await Promise.resolve();
   });
@@ -450,8 +350,6 @@ test('the keyboard borrows the edge, and the tools hand their row back', async (
 
   await act(async () => {
     emit('keyboardWillHide', { duration: 1 });
-    // Animated's JS driver runs on frames, so a microtask flush lands mid-flight. This
-    // waits for the animation to actually arrive.
     await new Promise((r) => setTimeout(r, 60));
   });
   expect(dockNode(tree.root)).toBeTruthy();
@@ -460,15 +358,21 @@ test('the keyboard borrows the edge, and the tools hand their row back', async (
 });
 
 test('the conversation happens on a ruled page', async () => {
-  // The 근무 수첩 line is paper, and the rules are what make it paper. They are a run of
-  // 1pt views here because RN has no repeating background — so an empty run is a blank
-  // cream rectangle, which reads as "the notebook look did not load" rather than a bug.
   const tree = await mount();
   const rules = tree.root.findAll((n) => {
     if (typeof n.type !== 'string') return false;
-    const st = n.props?.style;
-    const flat = Array.isArray(st) ? Object.assign({}, ...st.filter(Boolean)) : st;
-    return !!flat && flat.height === 1 && flat.backgroundColor === 'rgba(62,54,43,.06)';
+    const st = flat(n.props?.style);
+    return st.height === 1 && st.backgroundColor === 'rgba(62,54,43,.06)';
   }, { deep: true });
   expect(rules.length).toBeGreaterThan(10);
+});
+
+test('no pixel-line residue: no navy page, no pixel or flat icon sets, no hard Korean', () => {
+  // lesson-fidelity-v46 T7: the loading page was #1F2937 (the pixel line's navy), the
+  // voice toggle a PixelIcon with a hard shadow, the sheets FIcon with 2.5 borders and
+  // Korean typed into the JSX.
+  const src = readFileSync(join(__dirname, '..', 'app', 'dialogue', '[id].tsx'), 'utf8');
+  expect(src).not.toMatch(/#1F2937/);
+  expect(src).not.toMatch(/PixelIcon|FIcon|deptWash|borderWidth: 2\.5/);
+  expect(src).not.toMatch(/이어서 대화할까요|번 주고받은 기록/);
 });

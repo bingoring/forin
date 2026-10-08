@@ -56,7 +56,8 @@ export type NbIconName =
   | 'gear'
   | 'calendar'
   | 'lock'
-  | 'pencil';
+  | 'pencil'
+  | 'play';
 
 export function NbIcon({ name, size = 20, color = nb.ink }: {
   name: NbIconName | string;
@@ -214,6 +215,12 @@ export function NbIcon({ name, size = 20, color = nb.ink }: {
     ),
     pencil: (
       <G><Path {...P} d="M14.5 5 L19 9.5 L9.5 19 L4.8 19.2 L5 14.5 Z" fill={nb.wash.yellow}/><Path {...P} d="M12.8 6.7 L17.3 11.2"/><Path {...P} d="M5 14.5 L9.5 19"/></G>
+    ),
+    // The dialogue rail's `▷ 보내기` (dialogue.jsx L100·L179; lesson-fidelity-v46 결정 4 —
+    // glyphs are drawn). An open triangle, as ▷ is: outline only, no wash, in the label's
+    // own colour so a dimmed button dims it too.
+    play: (
+      <G><Path {...P} d="M7.5 5.5 L18 12 L7.5 18.5 Z"/></G>
     ),
   };
   return (

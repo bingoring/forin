@@ -16,3 +16,23 @@ export function targetFor(sentences: LessonSentence[], turn: number): LessonSent
   const ordered = guidedTargets(sentences);
   return ordered.length ? ordered[turn % ordered.length] : null;
 }
+
+const EDGE_PUNCT = /^[\s.,?!]+|[\s.,?!]+$/g;
+
+/** The typing card's word chips (handoff v46 dialogue.jsx L171 — `mechanism`, `vital`,
+ *  `Can you` for the hints `mechanism of injury`, `vital signs`, `Can you tell me`).
+ *
+ *  One per hint chunk, cut to its head word so the chip is a nudge rather than the answer;
+ *  a head of three letters or fewer ('Can', 'I', 'you') does not stand alone and keeps the
+ *  word after it. At most three, as drawn, and none repeated. */
+export function wordChips(s: LessonSentence): string[] {
+  const out: string[] = [];
+  for (const c of s.chunks) {
+    const words = c.replace(EDGE_PUNCT, '').split(/\s+/).filter(Boolean);
+    if (!words.length) continue;
+    const chip = words[0].replace(/[^A-Za-z']/g, '').length <= 3 && words.length > 1 ? `${words[0]} ${words[1]}` : words[0];
+    if (!out.includes(chip)) out.push(chip);
+    if (out.length === 3) break;
+  }
+  return out;
+}

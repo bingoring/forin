@@ -1,4 +1,4 @@
-import { guidedTargets, targetFor } from './guidedTarget';
+import { guidedTargets, targetFor, wordChips } from './guidedTarget';
 import type { LessonSentence } from '@/api/client';
 
 const S = (en: string, goal: number): LessonSentence => ({ en, ko: `${en}-뜻`, chunks: [en], words: [], goal });
@@ -18,4 +18,17 @@ test('turn k asks for the k-th sentence, and wraps after the last', () => {
 
 test('no sentences, no target — the guided pass falls back to its reply choices', () => {
   expect(targetFor([], 0)).toBeNull();
+});
+
+// The typing card's word chips (handoff v46 dialogue.jsx L171): one per hint chunk, cut to
+// its head word — 'mechanism of injury' → 'mechanism', 'vital signs' → 'vital' — and a
+// head too short to stand alone keeps its partner ('Can you tell me' → 'Can you').
+test('word chips are the hint chunks cut to their head word, as the handoff draws them', () => {
+  const s = { en: '', ko: '', chunks: ['mechanism of injury', 'vital signs', 'Can you tell me', '?'], words: [], goal: 1 };
+  expect(wordChips(s)).toEqual(['mechanism', 'vital', 'Can you']);
+});
+
+test('at most three chips, none repeated, punctuation never one', () => {
+  const s = { en: '', ko: '', chunks: ['I understand', 'I understand', ', you feel', 'upset', 'right now', '.'], words: [], goal: 1 };
+  expect(wordChips(s)).toEqual(['I understand', 'you feel', 'upset']);
 });

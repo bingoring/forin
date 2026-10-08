@@ -5,7 +5,7 @@
 // are three views of ONE fact. When they were derived separately the face could say
 // worried while the border said calm, and a reader trusts whichever they noticed
 // first.
-import { colors } from '@/theme/tokens';
+import { nb } from '@/theme/nb';
 import type { Expression } from '@engine';
 
 /** The moods the server can send — exactly the drawable Expression union. Kept as a
@@ -25,31 +25,36 @@ export function asMood(raw?: string): Mood | undefined {
   return raw && MOOD_SET.has(raw) ? (raw as Mood) : undefined;
 }
 
+/** The NPC bubble's own edge (dialogue.jsx L73 `borderColor: '#E8D2B0'`). */
+export const NPC_EDGE = '#E8D2B0';
+
 /** The bubble's outline colour.
  *
  *  Three bands rather than thirteen colours: the border is peripheral vision while
  *  the learner reads the words, and thirteen hues there would be noise. Distress is
- *  the app's red, unsettled its peach (the NPC's own bubble colour, deepened), and
- *  relief its mint — the same three tones every score band in the app already uses,
+ *  the app's red, unsettled amber, and
+ *  relief green — the same three tones every score band in the app already uses,
  *  so a red border reads as "not good" without being taught. */
+// lesson-fidelity-v46: notebook colours (the red pen, amber, green) rather than the pixel
+// line's tokens, and "nothing notable" is the handoff's own bubble edge.
 export function moodBorder(mood?: Mood): string {
   switch (mood) {
     case 'panic':
     case 'pain':
     case 'angry':
-      return colors.red;
+      return nb.red;
     case 'sad':
     case 'worried':
     case 'surprised':
     case 'shy':
-      return colors.peachShadow;
+      return nb.amber;
     case 'happy':
-      return colors.mintShadow;
-    // neutral, derp, thinking, focused, sleepy — and an unknown mood — keep the ink
-    // outline every other bubble has. "Nothing notable" must look like the default,
+      return nb.green;
+    // neutral, derp, thinking, focused, sleepy — and an unknown mood — keep the
+    // edge every other NPC bubble has. "Nothing notable" must look like the default,
     // not like a fourth state.
     default:
-      return colors.ink;
+      return NPC_EDGE;
   }
 }
 

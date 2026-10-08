@@ -95,22 +95,22 @@ test('상황 종료 is centred on the SCREEN, in the same top row as the exit', 
   // width. It is its own child of the status row now, pinned across the full width so
   // the centre is the screen's centre.
   const src = readFileSync(join(__dirname, '..', 'app', 'dialogue', '[id].tsx'), 'utf8');
-  // The chip is a SIBLING of the status row now, not a child of it, at `top: 52`.
-  //
-  // As a child its absolute `top: 0` rode up above the row's paddingTop toward the notch
-  // ("엄청 위에 달려있어"). The × and the mission cluster are flow children that start at
-  // the row's paddingTop of 52, so the chip pinned at top:52 shares their line. jest has
-  // no layout engine, so what is checked is that the two numbers agree: the chip's top
-  // equals the row's paddingTop.
-  expect(src).toMatch(/position: 'absolute', left: 0, right: 0, top: 52, alignItems: 'center', zIndex: 6/);
-  // The status row it lines up with really does start at paddingTop 52.
-  expect(src).toMatch(/paddingTop: 52, paddingHorizontal: 16/);
+  // The chip is a SIBLING of the status row, not a child of it — as a child its absolute
+  // `top: 0` rode up toward the notch ("엄청 위에 달려있어"). The bar is the handoff's
+  // (dialogue.jsx L31: top 50, centred on one line), and the chip is pinned to the same
+  // 34pt line: top 50, 34 tall, centred in it. jest has no layout engine, so what is
+  // checked is that the numbers agree.
+  expect(src).toMatch(/position: 'absolute', left: 0, right: 0, top: 50, height: 34, alignItems: 'center', justifyContent: 'center', zIndex: 6/);
+  expect(src).toMatch(/paddingTop: 50, paddingHorizontal: 16/);
+  // L34: padding 6/16.
+  expect(src).toMatch(/paddingVertical: 6, paddingHorizontal: 16, backgroundColor: nb\.paper/);
   // v29 draws it as a paper card in the nurse's own hand rather than a PixelButton. What
   // has to hold is that it is the same control, in the same place, and that it presses —
   // a label with no press was the original complaint about this row.
   expect(src).toMatch(/\{t\('dialogue\.endSituation'\)\}/);
   expect(src).toMatch(/onPress=\{endSituation\}/);
-  expect(src).toMatch(/pressed \? \[\{ translateX: 1\.5 \}, \{ translateY: 2 \}\]/);
+  // Presses as the kit does (.nb-press, 0.06s): NbPressable.
+  expect(src).toMatch(/<NbPressable\s+testID="dialogue-end"/);
 });
 
 test('a covered mission is ticked and struck through', () => {
@@ -138,15 +138,20 @@ test('faded chrome does not take touches', () => {
   expect(tree.root.findByProps({ testID: 'mission-cluster' }).props.pointerEvents).toBe('none');
 });
 
-test('the exit is pinned to the top, and presses', () => {
+test('the exit stays put when the missions open, and presses', () => {
   const src = readFileSync(join(__dirname, '..', 'app', 'dialogue', '[id].tsx'), 'utf8');
-  // The row centred its children vertically, so growing this cluster re-centred the ×
-  // and slid it down. It pins to the top now.
-  const row = /paddingTop: 52[^}]*alignItems: '([a-z-]+)'/.exec(src);
-  expect(row?.[1]).toBe('flex-start');
-  // And the × had a shadow but no press — tapping it moved nothing, so on a slow frame
-  // there was no sign the tap had landed. Same mechanic as every control in the kit now:
-  // the card sinks and loses its shadow.
-  expect(src).toMatch(/onPressIn=\{\(\) => setExitDown\(true\)\}/);
-  expect(src).toMatch(/transform: exitDown \? \[\{ translateX: 1\.5 \}, \{ translateY: 2 \}\]/);
+  // The bar centres its children (L31 alignItems center). Centring re-centred the × every
+  // time this cluster grew — so the cluster sits in a FIXED 34pt slot (the ×'s own height)
+  // and the panel overflows below it instead of growing the row.
+  const row = /paddingTop: 50[^}]*alignItems: '([a-z-]+)'/.exec(src);
+  expect(row?.[1]).toBe('center');
+  expect(src).toMatch(/<View testID="mission-slot" style=\{\{ height: 34 \}\}>\s*<MissionCluster/);
+  // And the × presses as every control in the kit does.
+  expect(src).toMatch(/<NbPressable\s+testID="dialogue-exit"/);
+});
+
+test('the chip is the handoff paper(1), padding 6/10, yellow .5 (L36)', () => {
+  const tree = mount({});
+  const face = tree.root.findAll((n) => typeof n.type === 'string' && flat(n.props?.style).backgroundColor === 'rgba(249,227,123,.5)', { deep: true })[0];
+  expect(flat(face.props.style)).toMatchObject({ paddingVertical: 6, paddingHorizontal: 10 });
 });

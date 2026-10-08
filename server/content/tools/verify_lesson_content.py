@@ -892,7 +892,7 @@ V45_WORD_FIELDS = ("exKo", "cue", "tag", "distractorsEn", "distractorsKo", "chip
 # 결정 9)이 그려지는 순간 어긋난다. 아래 목록은 저장소 밖에서 이 도구만 돌릴 때의 대체값이다.
 NB_ICON_FILE = CONTENT_DIR.parent.parent / "mobile" / "src" / "components" / "nb" / "NbIcon.tsx"
 _NB_ICONS_FALLBACK = set("""baby bandage bell board bulb calendar chartup check chevronDown chevronLeft chevronRight
-chevronUp coffee compass cross faceAngry faceWorried gear handshake2 home hospital lab lock magnify me mic monitor pencil pill
+chevronUp coffee compass cross faceAngry faceWorried gear handshake2 home hospital lab lock magnify me mic monitor pencil pill play
 plane pushpin redo scalpel shield siren speaker speech star stetho trophy""".split())
 
 

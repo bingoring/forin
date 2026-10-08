@@ -20,14 +20,13 @@
 // Order: the way out first, missions under it. Asked for directly — and it also puts the
 // exit at a fixed distance from the top corner instead of one that moves with the
 // mission count.
-import { Animated, Pressable, Text, View } from 'react-native';
+import { Animated, Text, View } from 'react-native';
 import { Collapsible, DisclosureChevron } from '@/components/Collapsible';
 import { NbIcon } from '@/components/nb/NbIcon';
-import { NbPaper, nbText } from '@/components/nb/NbUI';
+import { NbPaper, NbPressable, nbText } from '@/components/nb/NbUI';
 import { nb } from '@/theme/nb';
 import { useT } from '@/i18n';
 
-const C = nb.ink;
 
 /** The cluster's width, and therefore the panel's.
  *
@@ -64,27 +63,31 @@ export function MissionCluster({ goals, done, open, onToggle, opacity, disabled 
               five goals — the shape all content has now — grew tall enough to cover the
               portrait and crowd the thread. A learner glances at this; they do not read
               it continuously. So it is closed by default and one tap away. */}
-          <Pressable onPress={onToggle} hitSlop={6}>
-            {({ pressed }) => (
-              <NbPaper rot={1} bg="rgba(249,227,123,.5)" style={{
-                flexDirection: 'row', alignItems: 'center', gap: 5,
-                paddingVertical: 5, paddingHorizontal: 10,
-                transform: pressed ? [{ translateX: 1.5 }, { translateY: 2 }] : [{ rotate: '1deg' }],
-              }}>
-                <Text numberOfLines={1} style={nbText.hand(14)}>
-                  {t('dialogue.missionCount', { n: goals.length })}
-                </Text>
-                {/* Says how far along, when the character has reported anything — the
-                    number is the reason to open it or not. */}
-                {done.size > 0 && (
-                  <Text numberOfLines={1} style={nbText.hand(12.5, nb.soft)}>
-                    {done.size}/{goals.length}
-                  </Text>
-                )}
-                <NbIcon name={open ? 'chevronUp' : 'chevronDown'} size={13} />
-              </NbPaper>
+          <NbPressable
+            testID="mission-chip"
+            onPress={onToggle}
+            rot={1}
+            shadow="paper"
+            // dialogue.jsx L36: paper(1), padding 6/10, yellow .5. `.nb-press` on touch.
+            faceStyle={{
+              flexDirection: 'row', alignItems: 'center', gap: 5,
+              paddingVertical: 6, paddingHorizontal: 10,
+              backgroundColor: 'rgba(249,227,123,.5)', borderWidth: 1, borderColor: nb.paperEdge,
+            }}
+          >
+            <Text numberOfLines={1} style={nbText.hand(14)}>
+              {t('dialogue.missionCount', { n: goals.length })}
+            </Text>
+            {/* Says how far along, when the character has reported anything — the
+                number is the reason to open it or not. */}
+            {done.size > 0 && (
+              <Text numberOfLines={1} style={nbText.hand(12.5, nb.soft)}>
+                {done.size}/{goals.length}
+              </Text>
             )}
-          </Pressable>
+            {/* The handoff's ∨, drawn (lesson-fidelity-v46 결정 4). */}
+            <NbIcon name={open ? 'chevronUp' : 'chevronDown'} size={13} />
+          </NbPressable>
 
           {/* The WIDTH CHAIN, and every link of it matters.
               The panel's text is a `flex: 1` child, so it needs a parent with a definite

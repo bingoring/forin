@@ -163,15 +163,18 @@ test('회차 판정을 화면에서 직접 하지 않는다 — 옛 이름이 �
   expect(SRC).not.toMatch(/'choices' : 'free'/);
 });
 
-test('the speak area opens once an intent is picked, or on the free path', () => {
-  // The mic-driven input replaces the option list the moment a goal is chosen; it also
-  // stands in for the whole box on the free / no-mic / empty path.
-  // v44 J: a STEP 3 target (the situation's STEP 2 sentence) also opens it.
-  expect(SRC).toMatch(/selectedChoice \|\| wroteOwn \|\| !guided \|\| !!target \|\| \(!choicesBusy && choices\.length === 0\)/);
+test('the guided input opens with a target, once an intent is picked, or on the empty path', () => {
+  // The STEP 3 input (말하기 / 타이핑, lesson-fidelity-v46) replaces the option list the
+  // moment a goal is chosen; it also stands in on the no-mic / empty path. v44 J: a STEP 3
+  // target (the situation's STEP 2 sentence) opens it straight away.
+  expect(SRC).toMatch(/const guidedInputOn = guided && \(!!target \|\| !!selectedChoice \|\| wroteOwn \|\| \(!choicesBusy && choices\.length === 0\)\);/);
+  // Asking for the box ("직접 적기") opens the typing card, not the mic.
+  expect(SRC).toMatch(/onWriteMyOwn=\{\(\) => \{ setWroteOwn\(true\); setInputMode\('type'\); \}\}/);
 });
 
 test('send carries the picked intent so the correction can judge against it', () => {
-  expect(SRC).toMatch(/send\(selectedChoice \? \{ text: draft, intent: selectedChoice\.intent \}/);
+  expect(SRC).toMatch(/const guidedIntent = selectedChoice \? selectedChoice\.intent : target \? target\.ko : undefined;/);
+  expect(SRC).toMatch(/send\(guidedIntent !== undefined \? \{ text: draft, intent: guidedIntent \} : undefined\)/);
 });
 
 test('the immediate correction lands under the learner’s own bubble', () => {
@@ -196,12 +199,13 @@ test('asking for the box is remembered', () => {
 });
 
 // ── the hint ──────────────────────────────────────────────────────────────
-test('the hint reveals the picked intent’s model line when stuck', () => {
-  // With a goal chosen, "막히면 보기" shows THAT intent's model line in the target
-  // language — it is already in hand, so no fetch. On the free pass it still withholds
-  // the sentence and shows only the reason.
+test('the hint is the free pass’s, and withholds the sentence', () => {
+  // lesson-fidelity-v46: the guided rail is 보내기 · 듣기 · 노트 (dialogue.jsx L178–182) —
+  // no 힌트; its hints are the target card's chunks. On the free pass the hint shows only
+  // the reason the best reply works, never the reply.
   expect(SRC).toMatch(/const askHint = async \(\) => \{/);
-  expect(SRC).toMatch(/if \(selectedChoice\) \{ setHintText\(selectedChoice\.text\); return; \}/);
+  expect(SRC).not.toMatch(/setHintText\(selectedChoice\.text\)/);
+  expect(SRC).not.toMatch(/setHintText\(target\.en\)/);
   expect(SRC).toMatch(/setHintText\(cs\.find\(\(c\) => c\.tier === 'best'\)\?\.why/);
 });
 

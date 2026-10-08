@@ -8,7 +8,8 @@
 // and hint-mode choices with a red risky (평판 위험) variant, plus 🎤 mic dictation (record → Azure STT → draft).
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { GUIDED, isGuidedRung } from '@/data/guideRung';
-import { ActivityIndicator, Alert, Animated, Keyboard, KeyboardAvoidingView, Platform, Pressable, ScrollView, Text, TextInput, useWindowDimensions, View, type ViewStyle } from 'react-native';
+import { ActivityIndicator, Alert, Animated, Keyboard, KeyboardAvoidingView, Platform, Pressable, ScrollView, Text, TextInput, useWindowDimensions, View } from 'react-native';
+import * as Speech from 'expo-speech';
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import {
   useAudioPlayer,
@@ -19,33 +20,30 @@ import { readAsStringAsync, EncodingType, cacheDirectory, downloadAsync, deleteA
 import { type RoleKind, type Expression } from '@engine';
 import { NbAvatar } from '@/components/nb/NbAvatar';
 import { npcAvatarSpec, type NpcExpression } from '@/data/npcAvatar';
-import Svg, { Path } from 'react-native-svg';
 import { NbIcon } from '@/components/nb/NbIcon';
-import { NbButton, NbGrabber, NbMemo, NbPaper, NbTag, nbText } from '@/components/nb/NbUI';
+import { NbButton, NbGrabber, NbMemo, NbPaper, NbPressable, nbText } from '@/components/nb/NbUI';
 import { RULE_COLOR, RULE_H, nb, nbFonts } from '@/theme/nb';
-import { api, type LessonSentence, type ReplyChoice, type ScenarioDetail } from '@/api/client';
-import { PixelIcon } from '@/components/PixelIcon';
-import { FIcon } from '@/components/FIcon';
+import { api, type LessonSentence, type ModelAnswerCard, type ReplyChoice, type ScenarioDetail } from '@/api/client';
 import { MissionCluster } from '@/components/dialogue/MissionCluster';
 import { ResizeHandle } from '@/components/ResizeHandle';
-import { DOCK_H, clampChoices, clampSplit, portraitLayout } from '@/data/dialogueSplit';
+import { GUIDED_THREAD, STAGE, STAGE_TOP, clampChoices, clampGuidedThread, clampStage, stageGeometry } from '@/data/dialogueSplit';
 import { setDialogueLayout, useDialogueLayout } from '@/lib/dialogueLayout';
 import { ReplyChoices } from '@/components/dialogue/ReplyChoices';
 import { GuidedTarget } from '@/components/lesson/GuidedTarget';
-import { targetFor } from '@/data/guidedTarget';
+import { targetFor, wordChips } from '@/data/guidedTarget';
 import { Typewriter } from '@/components/dialogue/Typewriter';
-import { Collapsible, DisclosureChevron } from '@/components/Collapsible';
 import { BottomSheet } from '@/components/BottomSheet';
 import { threadOf } from '@/data/thread';
 import { offerShareSource } from '@/data/loungeShare';
 import { asMood, moodBorder, moodExpression, moodShowsSweat, type Mood } from '@/data/moodTone';
-import { deptWash } from '@/data/deptWash';
 import { MoodLift } from '@/components/dialogue/MoodLift';
+import { DialogueStage } from '@/components/dialogue/DialogueStage';
+import { GuidedInput, type GuidedInputMode, type RecState } from '@/components/dialogue/GuidedInput';
+import { Rail, RailButton } from '@/components/dialogue/DialogueRail';
+import { NotesSheet } from '@/components/dialogue/NotesSheet';
 import { playSfx } from '@/lib/sfx';
 import { t, type Translate, useLocale, useT } from '@/i18n';
 import { TASK_SCREEN } from '@/theme/transitions';
-
-const C = nb.ink;
 
 // 16kHz mono PCM WAV — the format the server STT endpoint expects.
 const WAV_16K_MONO: RecordingOptions = {
@@ -180,21 +178,24 @@ export default function DialogueRoute() {
   // from the keyboard event and applied directly. Deterministic, and it rides the
   // same timing as the top edge — the column moves as one thing.
   const keyboardLift = useRef(new Animated.Value(0)).current;
-  // Where the conversation starts when the keyboard is down.
+  // Where the conversation starts when the keyboard is down: under the stage.
   //
-  // The learner's own number when they have dragged the divider, otherwise the design's
-  // default for this device. The keyboard still overrides it while it is up — that is a
-  // borrowed position, not a new resting one, and the edge returns here when it closes.
+  // lesson-fidelity-v46 결정 5 — the stage OPENS at the handoff's height (E 236, D 168) and
+  // the learner can still drag its edge; a dragged height is remembered per run kind. The
+  // keyboard overrides it while it is up — that is a borrowed position, not a new resting
+  // one, and the edge returns here when it closes.
   const saved = useDialogueLayout();
-  const [splitTop, setSplitTop] = useState(0);
-  const restingTop = clampSplit(splitTop || saved.splitTop || winH * 0.41 + 34, winH);
-  // The band the reply choices get. Same rule: their number if they set one.
+  const stageMode = guided ? 'guided' : 'free';
+  const [stageDrag, setStageDrag] = useState(0);
+  const stageH = clampStage(stageDrag || (guided ? saved.stageGuided : saved.stageFree) || STAGE[stageMode], winH, stageMode);
+  const restingTop = STAGE_TOP + stageH;
+  const stageGeo = stageGeometry(stageH);
+  // D's message band — the handoff's fixed 128, resizable by the grabber under it.
+  const [threadDrag, setThreadDrag] = useState(0);
+  const guidedThread = clampGuidedThread(threadDrag || saved.threadGuided || GUIDED_THREAD, winH);
+  // The band the reply choices get (the no-sentence guided pass). Same rule.
   const [choicesH, setChoicesH] = useState(0);
   const choicesBand = clampChoices(choicesH || saved.choicesH || winH * 0.34, winH);
-  // What the top band can draw in the room the divider leaves it — full portrait with
-  // its plate underneath, plate moved beside it, or a smaller portrait. See
-  // data/dialogueSplit for why rearranging always comes before shrinking.
-  const top = portraitLayout(restingTop);
   // Where each drag began, so the handle's per-gesture delta can be applied to it — and
   // where it ENDED, which is what gets saved.
   //
@@ -202,8 +203,17 @@ export default function DialogueRoute() {
   // setState, so a closure over the rendered value saves the position the finger started
   // from. It did exactly that, and a relaunch restored the size the learner had just
   // dragged away from.
-  const dragFrom = useRef({ split: 0, choices: 0 });
-  const dragTo = useRef({ split: 0, choices: 0 });
+  const dragFrom = useRef({ stage: 0, thread: 0, choices: 0 });
+  const dragTo = useRef({ stage: 0, thread: 0, choices: 0 });
+  // STEP 3's input: 말하기 (the hold mic) or 타이핑 (the writing line) — dialogue.jsx L151.
+  const [inputMode, setInputMode] = useState<GuidedInputMode>('speak');
+  // The rail's 노트 — this situation's correction notes (결정 6). null while loading.
+  const [notesOpen, setNotesOpen] = useState(false);
+  const [notes, setNotes] = useState<ModelAnswerCard[] | null>(null);
+  const loadNotes = useCallback(() => {
+    api.scenarioNotes(id).then(setNotes).catch(() => setNotes([]));
+  }, [id]);
+  useEffect(() => { loadNotes(); }, [loadNotes]);
   // Just under the status bar — MEASURED, not guessed.
   //
   // A constant was wrong: the bar is the exit button on the left and, on the right, a
@@ -239,9 +249,14 @@ export default function DialogueRoute() {
     () => threadTop.interpolate({ inputRange: [0, 1], outputRange: [restingTop, raisedTop] }),
     [threadTop, restingTop, raisedTop],
   );
-  // 20 is the resting gap above the home indicator.
+  // The stage band ends where the conversation begins — the same edge, so dragging moves both.
+  const stageBandStyle = useMemo(
+    () => threadTop.interpolate({ inputRange: [0, 1], outputRange: [restingTop - STAGE_TOP, raisedTop - STAGE_TOP] }),
+    [threadTop, restingTop, raisedTop],
+  );
+  // 22 is the handoff's resting gap above the home indicator (dialogue.jsx L93 / L178).
   const threadBottomStyle = useMemo(
-    () => Animated.add(new Animated.Value(20), keyboardLift),
+    () => Animated.add(new Animated.Value(22), keyboardLift),
     [keyboardLift],
   );
   const messages = threadOf(transcript, npcLine);
@@ -274,43 +289,69 @@ export default function DialogueRoute() {
   const [doneMissions, setDoneMissions] = useState<Set<number>>(new Set());
   // Closed by default — see the chip's own comment for why.
   const [missionsOpen, setMissionsOpen] = useState(false);
-  // The exit's pressed state — it is hand-drawn rather than a PixelButton because it is
-  // a 30pt square with an icon and no label.
-  const [exitDown, setExitDown] = useState(false);
-  const [rec, setRec] = useState<'idle' | 'recording' | 'transcribing'>('idle'); // mic dictation
+  const [rec, setRecState] = useState<RecState>('idle'); // mic dictation
+  // Mirrored in a ref: the hold mic's press-in and release race the async recorder, and
+  // each needs the state as it is NOW, not as it was when the render made the handler.
+  const recRef = useRef<RecState>('idle');
+  const setRec = (r: RecState) => { recRef.current = r; setRecState(r); };
+  // Whether the finger is still on the hold mic.
+  const heldRef = useRef(false);
   const recorder = useAudioRecorder(WAV_16K_MONO);
 
-  // Mic → speech-to-text: tap to record, tap to stop → transcribe → fill the draft.
-  const toggleMic = async () => {
-    if (rec === 'transcribing') return;
-    if (rec === 'recording') {
-      setRec('transcribing');
-      try {
-        await recorder.stop();
-        const uri = recorder.uri;
-        if (!uri) throw new Error('no audio');
-        const b64 = await readAsStringAsync(uri, { encoding: EncodingType.Base64 });
-        // The session id makes the server score this utterance too, filed under
-        // this run — that is what the Scenario Clear review and the Review Lab
-        // 직접 말하기 연습 block read back. Without it they would be permanently
-        // empty, since free dialogue produces no other pronunciation record.
-        const text = await api.transcribe(
-          b64,
-          sessionRef.current ? { sessionId: sessionRef.current, scenarioId: id } : undefined,
-        );
-        if (text) setDraft((d) => (d.trim() ? `${d.trim()} ${text}` : text));
-      } catch { /* mic/STT unavailable — leave draft as-is */ }
-      finally { setRec('idle'); }
-      return;
-    }
+  /** Opens the mic. Resolves true once it is recording. */
+  const startRecording = async (): Promise<boolean> => {
+    if (recRef.current !== 'idle') return false;
     try {
       const perm = await requestRecordingPermissionsAsync();
-      if (!perm.granted) return;
+      if (!perm.granted) return false;
       await setAudioModeAsync({ allowsRecording: true, playsInSilentMode: true });
       await recorder.prepareToRecordAsync();
       recorder.record();
       setRec('recording');
-    } catch { setRec('idle'); }
+      return true;
+    } catch { setRec('idle'); return false; }
+  };
+
+  /** Stops the mic → speech-to-text → the draft. */
+  const finishRecording = async () => {
+    if (recRef.current !== 'recording') return;
+    setRec('transcribing');
+    try {
+      await recorder.stop();
+      const uri = recorder.uri;
+      if (!uri) throw new Error('no audio');
+      const b64 = await readAsStringAsync(uri, { encoding: EncodingType.Base64 });
+      // The session id makes the server score this utterance too, filed under
+      // this run — that is what the Scenario Clear review and the Review Lab
+      // 직접 말하기 연습 block read back. Without it they would be permanently
+      // empty, since free dialogue produces no other pronunciation record.
+      const text = await api.transcribe(
+        b64,
+        sessionRef.current ? { sessionId: sessionRef.current, scenarioId: id } : undefined,
+      );
+      if (text) setDraft((d) => (d.trim() ? `${d.trim()} ${text}` : text));
+    } catch { /* mic/STT unavailable — leave draft as-is */ }
+    finally { setRec('idle'); }
+  };
+
+  // SPEAK FREELY (E): tap to record, tap to stop — "마이크를 눌러 말하기" (dialogue.jsx L94).
+  const toggleMic = async () => {
+    if (recRef.current === 'recording') await finishRecording();
+    else if (recRef.current === 'idle') await startRecording();
+  };
+
+  // STEP 3 (D): the big mic is HELD — "꾹 누르고 영어로 말하기" (L162, 07 "큰 마이크 홀드").
+  // Recording runs while the finger is down and ends when it lifts. Opening the recorder is
+  // async, so a quick tap can lift before it is recording; the release is remembered and
+  // the mic closes the moment it opens.
+  const micDown = async () => {
+    heldRef.current = true;
+    const ok = await startRecording();
+    if (ok && !heldRef.current) await finishRecording();
+  };
+  const micUp = async () => {
+    heldRef.current = false;
+    await finishRecording();
   };
 
   const loadChoices = useCallback(async () => {
@@ -545,17 +586,14 @@ export default function DialogueRoute() {
   // Refetched whenever it is the learner's move again: the suggestions are answers to
   // the line that was just said, and yesterday's answers to a different line are worse
   // than none. Never blocks anything — an empty result simply leaves the text box.
-  /** Ask for a nudge when stuck.
+  /** Ask for a nudge when stuck — the free pass's 힌트 (dialogue.jsx L101).
    *
-   *  Guided, with an intent picked: reveal THAT intent's model line in the target
-   *  language — "막히면 보기". It is already in hand, so no fetch. Otherwise (the free
-   *  pass) fetch the best reply's reason with the sentence withheld, so producing it stays
-   *  the learner's own work. */
+   *  Fetches the best reply's reason with the sentence withheld, so producing it stays the
+   *  learner's own work. The guided pass has no 힌트 on its rail (L178–182): its hints are
+   *  the target card's chunks, opened with 힌트 더. */
   const askHint = async () => {
     if (hintOn) { setHintOn(false); return; }
     setHintOn(true);
-    if (selectedChoice) { setHintText(selectedChoice.text); return; }
-    if (target) { setHintText(target.en); return; }
     const sid = sessionRef.current;
     if (!sid) return;
     setHintBusy(true);
@@ -600,8 +638,6 @@ export default function DialogueRoute() {
   const npcSeed = `${p.name || 'npc'}|${id}`;
   // The turn's mood wins; the scenario's authored mood is the opening state and the
   // fallback for a reply that carried none.
-  // The scenario's own background tone, from its department colour (see deptWash).
-  const wash = deptWash(scenario?.briefing?.deptColor);
   const authored = (EXPRESSIONS.has(p.mood as Expression) ? p.mood : 'neutral') as Expression;
   const expr = moodExpression(turnMood) ?? authored;
   // Built once per (person, uniform, mood) rather than once per render. npcAvatarSpec
@@ -612,7 +648,6 @@ export default function DialogueRoute() {
   const npcName = (p.name || 'NPC').toUpperCase();
   const goals = scenario?.goals ?? [];
   const chart = scenario?.briefing?.chart;
-  const riskyPhrases = scenario?.briefing?.riskyPhrases ?? [];
   const showSweat = moodShowsSweat(turnMood) || (!turnMood && (expr === 'pain' || expr === 'panic' || expr === 'worried'));
   // A scenario can embed several quiz steps; surface them all as one sequence.
   const quizIds = (scenario?.steps ?? [])
@@ -620,11 +655,27 @@ export default function DialogueRoute() {
     .map((s) => s.payload?.quizId)
     .filter((q): q is string => !!q);
 
+  // What the learner's line is FOR on the guided pass: the target sentence, or the intent
+  // they picked from the reply choices (the no-sentence fallback).
+  const guidedIntent = selectedChoice ? selectedChoice.intent : target ? target.ko : undefined;
+  const sendDraft = () => { void send(guidedIntent !== undefined ? { text: draft, intent: guidedIntent } : undefined); };
+  // 듣기 on the guided rail plays the model line (07 "듣기(모범 발음)").
+  const modelLine = target?.en ?? selectedChoice?.text ?? '';
+  const canSend = !pending && !!draft.trim();
+  // The guided pass's input (D): with a target, or once a reply choice is picked / the
+  // learner asked to answer without the choices.
+  const guidedInputOn = guided && (!!target || !!selectedChoice || wroteOwn || (!choicesBusy && choices.length === 0));
+  // "작성 중" (dialogue.jsx L90): the line the learner is about to send, faded into the
+  // thread. Not while the typing card is open — the card is where that line is shown then.
+  const composing = !pending && !!draft.trim() && !(guided && inputMode === 'type');
+  const openQuiz = () => router.push(`/quiz/${quizIds[0]}?scenario=${id}&q=${quizIds.join(',')}&i=0`);
+
   if (state === 'loading') {
     return (
-      <View style={{ flex: 1, backgroundColor: '#1F2937', alignItems: 'center', justifyContent: 'center' }}>
+      <View style={{ flex: 1, backgroundColor: nb.cream, alignItems: 'center', justifyContent: 'center' }}>
         <Stack.Screen options={{ headerShown: false }} />
-        <ActivityIndicator color={'rgba(168,217,151,.4)'} />
+        <Rules />
+        <ActivityIndicator color={nb.ink} />
       </View>
     );
   }
@@ -643,179 +694,103 @@ export default function DialogueRoute() {
     // No `behavior` prop: the thread column lifts itself by the keyboard's measured
     // height, and KeyboardAvoidingView's padding would move it a second time — the
     // input then travels past the top of the keyboard and off the thread entirely.
-    <KeyboardAvoidingView style={{ flex: 1, backgroundColor: '#1F2937' }}>
+    <KeyboardAvoidingView style={{ flex: 1, backgroundColor: nb.cream }}>
       <Stack.Screen options={TASK_SCREEN} />
 
-      {/* room backdrop: peach (patient room) over cream (working area).
-          Also the keyboard's escape hatch — a full-screen chat has nowhere
+      {/* The page, and the keyboard's escape hatch — a full-screen chat has nowhere
           obvious to tap, so the room itself dismisses it. */}
       <Pressable
         onPress={() => Keyboard.dismiss()}
         accessible={false}
         style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}
       >
-        {/* Ivory underneath, the department's wash on top of the upper band.
-            The wash fades on the same timing as the thread rising, so the ivory the
-            conversation sits on grows to fill the screen as the keyboard opens instead
-            of leaving a band of another colour above it.
-            The colour is the scenario's own department (deptWash) — an ER conversation
-            reads warm, an ICU one cool — washed most of the way to cream so it cannot
-            fight the bubbles drawn on it. */}
-        {/* The notebook page. The department's wash tints the STAGE — the strip the
-            character stands on — rather than the whole sheet: on paper the page is the
-            page, and a coloured band is a thing laid on it. */}
         <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: nb.cream }} />
         <Rules />
-        {/* Its height IS the divider. At a fixed 40% the colour stayed put while the edge
-            moved, so dragging left the wash cutting across the conversation — or a strip
-            of ivory above the portrait. Same animated value as the thread's top, so the
-            two edges are the same edge.
+        {/* The stage (dialogue.jsx L43): `#F6E3DC` under the 44pt status bar, a 1.5 #E0D6C0
+            line along its foot. Its height IS the divider, so the band and the top of the
+            conversation are the same edge.
 
             TWO nested nodes, and it has to be two: `opacity` runs on the native driver
             and `height` cannot. On one node RN moves the whole style to native and then
             throws "Attempting to run JS driven animation on animated node that has been
             moved to native" the first time the keyboard opens. */}
-        <Animated.View style={{ opacity: chromeOpacity }}>
-          {/* The stage. Its height IS the divider, so the coloured strip and the top of
-              the conversation are the same edge — and it carries the notebook's cut line
-              along the bottom rather than a heavy border.
-
-              TWO nested nodes, and it has to be two: `opacity` runs on the native driver
-              and `height` cannot. On one node RN moves the whole style to native and then
-              throws "Attempting to run JS driven animation on animated node that has been
-              moved to native" the first time the keyboard opens. */}
-          <Animated.View testID="wash-band" style={{ height: threadTopStyle, backgroundColor: wash, borderBottomWidth: 1.5, borderBottomColor: nb.paperEdge }} />
+        <Animated.View style={{ position: 'absolute', top: STAGE_TOP, left: 0, right: 0, opacity: chromeOpacity }}>
+          <Animated.View testID="stage-band" style={{ height: stageBandStyle, backgroundColor: STAGE_BG, borderBottomWidth: 1.5, borderBottomColor: nb.paperEdge }} />
         </Animated.View>
       </Pressable>
 
-      {/* status bar */}
+      {/* The top bar (dialogue.jsx TopBar L29–39): top 50, sides 16, centred on one line. */}
       <View
         onLayout={(e) => setBarH(e.nativeEvent.layout.height)}
-        // alignItems: 'flex-start', not 'center'. Centred, this row re-centred its
-        // children every time the mission cluster on the right grew — so opening the
-        // missions slid the × in the opposite corner downwards. The exit is the one
-        // control on this screen that must be in the same place every time it is
-        // needed.
-        style={{ position: 'absolute', top: 0, left: 0, right: 0, paddingTop: 52, paddingHorizontal: 16, paddingBottom: 8, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start', zIndex: 5 }}
+        pointerEvents="box-none"
+        style={{ position: 'absolute', top: 0, left: 0, right: 0, paddingTop: 50, paddingHorizontal: 16, paddingBottom: 8, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', zIndex: 5 }}
       >
-        {/* A bare ×. Renaming this to "호출 받기" put the fiction on the button,
-            where it read as a feature rather than an exit; the framing belongs in
-            the sheet it opens ("다른 곳에서 호출이 왔어요", and the promise that
-            the conversation is kept). The affordance stays a plain close. */}
-        {/* The exit stands alone up here, with nothing beside it to catch a thumb.
-            The voice toggle used to sit 8px to its right — and both carried hitSlop 8, so
-            their touch areas MET: there was no dead zone at all between a benign toggle
-            and the way out, however far apart they looked. The toggle moved to the NPC's
-            name plate, where the voice it controls comes from. */}
-        {/* The way out. It had a shadow but no press: tapping it moved nothing, so on a
-            slow frame there was no sign the tap had landed at all. Same mechanic as
-            PixelButton now — the cap drops onto its own shadow. */}
-        <Pressable
-          onPressIn={() => setExitDown(true)}
-          onPressOut={() => setExitDown(false)}
+        {/* The way out — paper(-1) 34×34, the red ✕ (drawn: lesson-fidelity-v46 결정 4). It
+            stands alone up here, with nothing beside it to catch a thumb. */}
+        <NbPressable
+          testID="dialogue-exit"
+          accessibilityLabel={t('dialogue.leave')}
+          rot={-1}
+          shadow="paper"
           onPress={() => { playSfx('back'); stepAway(); }}
-          hitSlop={8}
+          faceStyle={{ width: 34, height: 34, alignItems: 'center', justifyContent: 'center', backgroundColor: nb.paper, borderWidth: 1, borderColor: nb.paperEdge }}
         >
-          <NbPaper rot={-1} style={{
-            width: 34, height: 34, alignItems: 'center', justifyContent: 'center',
-            transform: exitDown ? [{ translateX: 1.5 }, { translateY: 2 }] : [{ rotate: '-1deg' }],
-          }}>
-            <NbIcon name="cross" size={17} color={nb.red} />
-          </NbPaper>
-        </Pressable>
-        {/* The missions, top-right. Everything about this cluster — including why its
-            width is repeated down the chain — is in MissionCluster. */}
-        <MissionCluster
-          goals={goals}
-          done={doneMissions}
-          open={missionsOpen}
-          onToggle={() => setMissionsOpen((v) => !v)}
-          opacity={chromeOpacity}
-          disabled={typing}
-        />
+          <NbIcon name="cross" size={17} color={nb.red} />
+        </NbPressable>
+        {/* The missions, top-right. A FIXED 34pt box — the × is centred against it, and the
+            panel opening below overflows it instead of growing the row, so opening the
+            missions can never slide the exit. Everything else is in MissionCluster. */}
+        <View testID="mission-slot" style={{ height: 34 }}>
+          <MissionCluster
+            goals={goals}
+            done={doneMissions}
+            open={missionsOpen}
+            onToggle={() => setMissionsOpen((v) => !v)}
+            opacity={chromeOpacity}
+            disabled={typing}
+          />
+        </View>
       </View>
 
-      {/* 상황 종료, centred across the screen and on the SAME line as the × and the
-          missions. It is a sibling of the status-bar row, not a child: as a child its
-          absolute `top: 0` sat above the row's paddingTop and rode up near the notch
-          ("엄청 위에 달려있어"). Pinned here at `top: 52` — the same paddingTop the ×
-          and the mission cluster start at — it shares their line, while left/right 0 +
-          alignItems centre keep it on the screen's centre regardless of the mission
-          chip's width. box-none so the row underneath stays tappable. */}
-      <View pointerEvents="box-none" style={{ position: 'absolute', left: 0, right: 0, top: 52, alignItems: 'center', zIndex: 6 }}>
+      {/* ✓ 상황 종료 — paper(0.5) 6/16, Gaegu 15 green (L34), on the bar's line and centred
+          on the screen. A sibling of the bar rather than its child, so the mission chip's
+          width cannot push it off centre; box-none so the bar underneath stays tappable. */}
+      <View pointerEvents="box-none" style={{ position: 'absolute', left: 0, right: 0, top: 50, height: 34, alignItems: 'center', justifyContent: 'center', zIndex: 6 }}>
         <Animated.View style={{ opacity: chromeOpacity }} pointerEvents={typing ? 'none' : 'auto'}>
-          <Pressable onPress={endSituation} hitSlop={6}>
-            {({ pressed }) => (
-              <NbPaper rot={0.5} style={{
-                flexDirection: 'row', alignItems: 'center', gap: 5,
-                paddingVertical: 6, paddingHorizontal: 14,
-                transform: pressed ? [{ translateX: 1.5 }, { translateY: 2 }] : [{ rotate: '0.5deg' }],
-              }}>
-                <NbIcon name="check" size={14} color={nb.green} />
-                <Text numberOfLines={1} style={nbText.hand(15, nb.green)}>{t('dialogue.endSituation')}</Text>
-              </NbPaper>
-            )}
-          </Pressable>
+          <NbPressable
+            testID="dialogue-end"
+            rot={0.5}
+            shadow="paper"
+            onPress={endSituation}
+            faceStyle={{ flexDirection: 'row', alignItems: 'center', gap: 4, paddingVertical: 6, paddingHorizontal: 16, backgroundColor: nb.paper, borderWidth: 1, borderColor: nb.paperEdge }}
+          >
+            <NbIcon name="check" size={14} color={nb.green} />
+            <Text numberOfLines={1} style={nbText.hand(15, nb.green)}>{t('dialogue.endSituation')}</Text>
+          </NbPressable>
         </Animated.View>
       </View>
 
-      {/* The NPC portrait, centred. Fades out while the keyboard is up — see `typing`.
-
-          There used to be a second frame on the right holding the LEARNER's own face.
-          It cost the top third of the screen to tell you what you look like, in a
-          conversation where you are the one typing, and it pushed the NPC — the person
-          being spoken to, whose expression is the feedback — off to one side. One
-          portrait, in the middle, is the whole of what this strip is for. */}
-      {/* top: 96, up from 128. The status row and 상황 종료 end near y≈82, so this sits
-          just below them ("상황종료 버튼 살짝 아래") instead of hanging a third of the
-          way down the screen. */}
-      <Animated.View style={{ position: 'absolute', left: 0, right: 0, top: 96, alignItems: 'center', zIndex: 3, opacity: chromeOpacity }} pointerEvents={typing ? 'none' : 'auto'}>
-        <PortraitFrame
-          name={p.name || 'NPC'}
-          // Same fact as the face's `expr` (this turn's mood, falling back to the
-          // authored one): the bug was the face moving to a new mood while this chip
-          // kept showing the scenario's OPENING mood forever (e.g. still ANGRY after
-          // the patient calmed down). Shown only when there IS a mood to report — a
-          // turn mood, or an authored one — so a scenario that never authors a mood
-          // does not grow a "NEUTRAL" chip that never existed before.
-          status={(turnMood || p.mood) ? expr.toUpperCase() : undefined}
-          sweat={showSweat}
-          // Set by the divider: full size with its plate underneath, plate moved to the
-          // LEFT of it, or scaled down to a floor. See data/dialogueSplit.
-          scale={top.scale}
-          nameBeside={top.nameBeside}
-          // Handed to the frame rather than placed beside it. Positioned out here it was
-          // measured from whatever contained it — first the full-width strip, which put
-          // it off the right of the screen, then a wrapper that grew with the name plate,
-          // which pushed it a notch further out than the frame it belongs to. Inside the
-          // frame there is only one thing it can be relative to.
-          aside={(
-            <Pressable
-              onPress={() => { setVoiceOn((v) => { if (v) { try { npcPlayer.pause(); } catch { /* nothing playing */ } } return !v; }); }}
-              hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
-              accessibilityRole="switch"
-              accessibilityState={{ checked: voiceOn }}
-              accessibilityLabel={t(voiceOn ? 'dialogue.voiceOn' : 'dialogue.voiceOff')}
-            >
-              <Shadowed offset={2}>
-                <View style={{ width: 30, height: 30, backgroundColor: voiceOn ? 'rgba(168,217,151,.4)' : '#fff', borderWidth: 2.5, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-                  <PixelIcon name="volume" color={voiceOn ? C : C + '66'} size={15} sw={1.9} />
-                </View>
-              </Shadowed>
-            </Pressable>
-          )}
-        >
-          {/* The notebook-line portrait (v34), built from the persona rather than
-              the pixel RoleFace it replaced — same three inputs (role, mood, a seed for
-              the person), drawn in the avatar system every other face on the app uses. */}
-          <NbAvatar spec={npcSpec} size={Math.round(110 * top.scale)} />
-        </PortraitFrame>
-      </Animated.View>
+      {/* What stands on the stage: the polaroid, the name and mood on the left, the voice on
+          the right. Fades out while the keyboard is up — see `typing`. */}
+      <DialogueStage
+        g={stageGeo}
+        name={p.name || 'NPC'}
+        // Same fact as the face's `expr` (this turn's mood, falling back to the authored
+        // one). Shown only when there IS a mood to report, so a scenario that never authors
+        // a mood does not grow a "NEUTRAL" tag that never existed before.
+        status={(turnMood || p.mood) ? expr.toUpperCase() : undefined}
+        sweat={showSweat}
+        portrait={(w) => <NbAvatar spec={npcSpec} size={w} />}
+        voiceOn={voiceOn}
+        onToggleVoice={() => { setVoiceOn((v) => { if (v) { try { npcPlayer.pause(); } catch { /* nothing playing */ } } return !v; }); }}
+        voiceLabel={t(voiceOn ? 'dialogue.voiceOn' : 'dialogue.voiceOff')}
+        opacity={chromeOpacity}
+        typing={typing}
+      />
 
       {/* QUICK INFO — the chart, pulled out and held up.
-          A taped sheet of paper over a dimmed page, not a pixel card on a navy scrim: the
-          learner is looking at the same notebook, with one page raised. Tapping the page
-          behind puts it back. */}
+          A taped sheet of paper over a dimmed page: the learner is looking at the same
+          notebook, with one page raised. Tapping the page behind puts it back. */}
       {tool && (
         <Pressable onPress={() => setTool(null)} style={styles.quickScrim}>
           <Pressable onPress={() => {}} style={{ alignSelf: 'stretch' }}>
@@ -833,59 +808,45 @@ export default function DialogueRoute() {
         </Pressable>
       )}
 
-      {/* The conversation, from below QUICK INFO down to the input.
-          This used to be a VN box: one NPC line at a time, with everything said before it
-          behind a 기록 chip and a sheet. Reading back a turn meant leaving the conversation
-          to look at it, and a role-play is the one screen where what was already said is
-          the thing you need — you are being graded on the thread.
-          So the column fills the space instead: the exchange scrolls in the middle, the
-          input stays put at the bottom, newest at the bottom. A messaging screen, because
-          that is what this is. */}
-      <Animated.View style={{ position: 'absolute', left: 14, right: 14, top: threadTopStyle, bottom: threadBottomStyle, zIndex: 6 }}>
-        {/* The divider. Hidden while the keyboard is up, because the edge is not at the
-            learner's number then — it is borrowed by the keyboard, and dragging a handle
-            that is not where it appears to be would move something invisible. */}
+      {/* The conversation, from the stage's foot down to the rail (dialogue.jsx L81–104 /
+          L118–183): grabber, QUICK INFO, the exchange, grabber, then the input. A messaging
+          screen, because that is what this is — the thread scrolls, newest at the bottom. */}
+      <Animated.View testID="thread-column" style={{ position: 'absolute', left: 0, right: 0, top: threadTopStyle, bottom: threadBottomStyle, zIndex: 6 }}>
+        {/* Grabber ① — the stage's edge. Hidden while the keyboard is up, because the edge
+            is not at the learner's number then — it is borrowed by the keyboard. */}
         {!typing && (
           <ResizeHandle
             testID="split-handle"
             onDrag={(dy) => {
               // dy is cumulative for the gesture, so it applies to where the edge was
               // when the finger landed — captured on the first move, cleared on release.
-              if (!dragFrom.current.split) dragFrom.current.split = restingTop;
-              const next = clampSplit(dragFrom.current.split + dy, winH);
-              dragTo.current.split = next;
-              setSplitTop(next);
+              if (!dragFrom.current.stage) dragFrom.current.stage = stageH;
+              const next = clampStage(dragFrom.current.stage + dy, winH, stageMode);
+              dragTo.current.stage = next;
+              setStageDrag(next);
             }}
             onDone={() => {
-              dragFrom.current.split = 0;
-              if (dragTo.current.split) void setDialogueLayout({ splitTop: dragTo.current.split });
+              dragFrom.current.stage = 0;
+              if (dragTo.current.stage) void setDialogueLayout(guided ? { stageGuided: dragTo.current.stage } : { stageFree: dragTo.current.stage });
             }}
           />
         )}
-        {/* QUICK INFO — bedside reference tools (차트 / 약물 / 활력).
-            Inside the conversation, not above it. These are the learner's own
-            instruments, reached for WHILE talking, and they always sat on the ivory the
-            exchange sits on — so they belong to this column and travel with its edge.
-            Above the divider they read as something the patient was presenting.
-            Gone while the keyboard is up rather than faded: the row's height is exactly
-            what the exchange needs back when the screen is at its smallest. */}
+        {/* QUICK INFO (L61–70): gap 7, padding 2/16/0. Inside the conversation, not above it
+            — these are the learner's own instruments, reached for WHILE talking. Gone while
+            the keyboard is up rather than faded: the row's height is exactly what the
+            exchange needs back when the screen is at its smallest. */}
         {!typing && (
-          <View style={{ marginTop: 8 }}>
-            {/* Scrolls rather than wrapping. Wrapping costs a whole row of the thread
-                every time it happens; scrolling costs nothing until the row is actually
-                too wide, and then it costs a swipe. */}
+          <View style={{ paddingTop: 2 }}>
+            {/* Scrolls rather than wrapping: wrapping costs a whole row of the thread. */}
             <ScrollView
               horizontal
               showsHorizontalScrollIndicator={false}
-              contentContainerStyle={{ flexDirection: 'row', alignItems: 'center', gap: 6, paddingRight: 4 }}
+              contentContainerStyle={{ flexDirection: 'row', alignItems: 'center', gap: 7, paddingHorizontal: 16 }}
             >
-              {/* The label is PRINTED, not written: it names a set of reference tools,
-                  which in the fiction is a stamp on a chart rather than a note. */}
+              {/* The label is PRINTED, not written: a stamp on a chart rather than a note. */}
               <View style={{ borderWidth: 1.3, borderColor: nb.soft, paddingVertical: 2, paddingHorizontal: 6 }}>
                 <Text numberOfLines={1} style={{ fontFamily: nbFonts.monoBold, fontSize: 9, letterSpacing: 1, color: nb.soft }}>QUICK INFO</Text>
               </View>
-              {/* Each chip used to draw its icon NAME as text, so the row literally read
-                  "stethoscope 활력". */}
               {([['chart', 'board', t('dialogue.tabChart')], ['meds', 'pill', t('dialogue.tabMeds')], ['vitals', 'monitor', t('dialogue.tabVitals')]] as const).map(([k, nbIcon, label]) => (
                 <Pressable key={k} onPress={() => setTool((cur) => (cur === k ? null : k))}>
                   <NbPaper
@@ -901,11 +862,15 @@ export default function DialogueRoute() {
             </ScrollView>
           </View>
         )}
-        {/* the exchange */}
+        {/* The exchange (E L85: flex 1, padding 10/16/4, gap 10 · D L122: height 128,
+            padding 10/16/2). D's band is the learner's to resize, from the grabber below. */}
         <ScrollView
           ref={logRef}
-          style={{ flex: 1 }}
-          contentContainerStyle={{ paddingTop: 12, paddingBottom: 6 }}
+          testID="thread-log"
+          style={guided && target
+            ? { height: guidedThread, flexGrow: 0, flexShrink: 1, minHeight: 56 }
+            : { flex: 1 }}
+          contentContainerStyle={{ paddingTop: 10, paddingBottom: guided && target ? 2 : 4, paddingHorizontal: 16, gap: 10 }}
           showsVerticalScrollIndicator={false}
           // Anchored to the bottom, like every messaging app: a new line arriving off
           // screen is a line the learner does not know arrived.
@@ -916,92 +881,68 @@ export default function DialogueRoute() {
             const mine = m.role === 'user';
             const last = i === messages.length - 1;
             return (
-              <View key={i} style={{ flexDirection: 'row', justifyContent: mine ? 'flex-end' : 'flex-start', marginBottom: 8 }}>
-                <View style={{ maxWidth: '86%' }}>
-                  {/* The NEWEST NPC bubble carries the mood in its outline. Only the
-                      newest: the mood belongs to the turn, and colouring the whole
-                      history would repaint lines whose mood is no longer known (the
-                      server stores it per turn, but the transcript this screen keeps
-                      is text) and turn the thread into a colour chart. */}
-                  {/* Mine is the page's own paper; theirs is the warmer sheet the
-                      briefing used for the person. The NEWEST NPC bubble takes the mood in
-                      its edge — only the newest, because the mood belongs to the turn and
-                      colouring the history would repaint lines whose mood is no longer
-                      known. */}
-                  <NbPaper
-                    rot={mine ? 0.35 : -0.35}
-                    bg={mine ? nb.paper : '#FCEEDC'}
-                    style={[
-                      { paddingVertical: 9, paddingHorizontal: 12 },
-                      mine ? null : { borderColor: !last ? '#E8D2B0' : moodBorder(turnMood) },
-                    ]}
-                  >
-                    <View>
-                      {last && !mine ? (
-                        // The newest character line types out letter by letter; the history
-                        // above it is already read, so those bubbles stay plain.
-                        <Typewriter
-                          text={showKo && npcLineKo ? npcLineKo : m.text}
-                          style={{ fontFamily: nbFonts.body, fontSize: 13.5, color: nb.ink, lineHeight: 20 }}
-                        />
-                      ) : (
-                        <Text style={{ fontFamily: nbFonts.body, fontSize: 13.5, color: nb.ink, lineHeight: 20 }}>
-                          {m.text}
-                        </Text>
-                      )}
-                      {/* The immediate correction of the learner's own line — feedback on
-                          the thing they just did, which is why it lives under their bubble
-                          and not on the cards. A real fix shows the better phrasing; an
-                          already-good line just gets a ✓ and the encouraging note. */}
-                      {mine && !!m.correction && (
-                        <View style={{ marginTop: 7, borderTopWidth: 1, borderTopColor: 'rgba(62,54,43,.15)', paddingTop: 6, gap: 3 }}>
-                          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5 }}>
-                            <NbIcon
-                              name={m.correction.corrected.trim() && m.correction.corrected.trim() !== m.text.trim() ? 'pencil' : 'check'}
-                              size={12}
-                              color={m.correction.corrected.trim() && m.correction.corrected.trim() !== m.text.trim() ? '#C77E2E' : nb.green}
-                            />
-                            <Text style={nbText.hand(13, m.correction.corrected.trim() && m.correction.corrected.trim() !== m.text.trim() ? '#C77E2E' : nb.green)}>
-                              {m.correction.corrected.trim() && m.correction.corrected.trim() !== m.text.trim() ? t('dialogue.correctionFix') : t('dialogue.correctionGood')}
-                            </Text>
-                          </View>
-                          {m.correction.corrected.trim() && m.correction.corrected.trim() !== m.text.trim() && (
-                            <Text style={{ fontFamily: nbFonts.body, fontSize: 12.5, color: nb.ink, lineHeight: 18 }}>
-                              {m.correction.corrected}
-                            </Text>
-                          )}
-                          {!!m.correction.note && (
-                            <Text style={{ fontFamily: nbFonts.body, fontSize: 10.5, color: nb.soft, lineHeight: 15 }}>
-                              {m.correction.note}
-                            </Text>
-                          )}
+              // Blocks, as the handoff draws them: mine marginLeft 40, theirs marginRight 40
+              // (L72–73), each the full width that leaves.
+              <View key={i} style={mine ? { marginLeft: 40 } : { marginRight: 40 }}>
+                {/* Mine is the page's own paper; theirs is the warmer sheet (#FCEEDC, edge
+                    #E8D2B0). The NEWEST NPC bubble takes the mood in its edge — only the
+                    newest, because the mood belongs to the turn and colouring the history
+                    would repaint lines whose mood is no longer known. */}
+                <NbPaper
+                  rot={0}
+                  bg={mine ? nb.paper : '#FCEEDC'}
+                  style={[
+                    { paddingVertical: 9, paddingHorizontal: 12 },
+                    mine ? null : { borderColor: !last ? '#E8D2B0' : moodBorder(turnMood) },
+                  ]}
+                >
+                  <View>
+                    {last && !mine ? (
+                      // The newest character line types out letter by letter; the history
+                      // above it is already read, so those bubbles stay plain.
+                      <Typewriter
+                        text={showKo && npcLineKo ? npcLineKo : m.text}
+                        style={styles.bubbleText}
+                      />
+                    ) : (
+                      <Text style={styles.bubbleText}>{m.text}</Text>
+                    )}
+                    {/* The immediate correction of the learner's own line — feedback on
+                        the thing they just did, which is why it lives under their bubble.
+                        A real fix shows the better phrasing; an already-good line just gets
+                        a ✓ and the encouraging note. */}
+                    {mine && !!m.correction && <CorrectionNote text={m.text} correction={m.correction} />}
+                    {/* Translation belongs to the line being worked on, so it is offered on
+                        the newest NPC bubble only (L125: marginTop 7). */}
+                    {last && !mine && !!npcLineKo && (
+                      <Pressable onPress={() => setShowKo((v) => !v)} style={{ marginTop: 7, alignSelf: 'flex-start' }}>
+                        <View style={{ backgroundColor: showKo ? 'rgba(249,227,123,.5)' : 'rgba(95,141,90,.2)', borderWidth: 1.5, borderColor: showKo ? nb.ink : nb.green, borderRadius: 3, paddingVertical: 2, paddingHorizontal: 8 }}>
+                          <Text numberOfLines={1} style={nbText.hand(12.5, showKo ? nb.ink : nb.green)}>
+                            {showKo ? t('dialogue.showSource') : t('dialogue.tapTranslate')}
+                          </Text>
                         </View>
-                      )}
-                      {/* Translation belongs to the line being worked on, so it is offered on
-                          the newest NPC bubble only — on every bubble it would be four buttons
-                          asking the same question. */}
-                      {last && !mine && !!npcLineKo && (
-                        <Pressable onPress={() => setShowKo((v) => !v)} style={{ marginTop: 8, alignSelf: 'flex-start' }}>
-                          <View style={{ backgroundColor: showKo ? 'rgba(249,227,123,.5)' : 'rgba(95,141,90,.2)', borderWidth: 1.5, borderColor: showKo ? nb.ink : nb.green, borderRadius: 3, paddingVertical: 2, paddingHorizontal: 8 }}>
-                            <Text numberOfLines={1} style={nbText.hand(12.5, showKo ? nb.ink : nb.green)}>
-                              {showKo ? t('dialogue.showSource') : t('dialogue.tapTranslate')}
-                            </Text>
-                          </View>
-                        </Pressable>
-                      )}
-                    </View>
-                  </NbPaper>
-                </View>
+                      </Pressable>
+                    )}
+                  </View>
+                </NbPaper>
               </View>
             );
           })}
           {/* Waiting for the reply. In the thread rather than in a box of its own, so the
               answer lands where the waiting was. */}
           {!npcLine && (
-            <View style={{ flexDirection: 'row', justifyContent: 'flex-start', marginBottom: 8 }}>
-              <NbPaper rot={-0.35} bg="#FCEEDC" style={{ flexDirection: 'row', alignItems: 'center', gap: 8, paddingVertical: 9, paddingHorizontal: 12, borderColor: '#E8D2B0' }}>
+            <View style={{ marginRight: 40 }}>
+              <NbPaper rot={0} bg="#FCEEDC" style={{ flexDirection: 'row', alignItems: 'center', gap: 8, paddingVertical: 9, paddingHorizontal: 12, borderColor: '#E8D2B0' }}>
                 <ActivityIndicator color={nb.ink} size="small" />
                 <Text style={nbText.hand(15, nb.soft)}>{t('dialogue.npcThinking', { name: npcName })}</Text>
+              </NbPaper>
+            </View>
+          )}
+          {/* 작성 중 (L90): my line, not yet sent, at .6. */}
+          {composing && (
+            <View testID="composing-bubble" style={{ marginLeft: 40, opacity: 0.6 }}>
+              <NbPaper rot={0} style={{ paddingVertical: 9, paddingHorizontal: 12 }}>
+                <Text style={styles.bubbleText}>{draft.trim()}</Text>
               </NbPaper>
             </View>
           )}
@@ -1011,99 +952,175 @@ export default function DialogueRoute() {
             anything, and gone on its own before the next reply lands. */}
         <MoodLift mood={improved} onDone={() => setImproved(undefined)} />
 
-        {/* HINT: what this turn NEEDS, not what to say.
-            It used to be the scenario's authored key phrases, shown as a permanent list
-            of ready-made sentences. Two things were wrong with that. It cost nothing and
-            sat on screen, so there was no reason not to read it — and a hint nobody has
-            to reach for teaches nothing. And it handed over the answer, which on the free
-            pass is the one thing that must stay theirs.
-            Now it is one line: the REASON the best reply works, with the reply itself
-            withheld. Asked for per turn, because the situation has moved on. */}
-        {hintOn && (
-          <View style={{ marginTop: 12 }}>
-            <NbPaper rot={0.4} bg="rgba(249,227,123,.5)" style={{ paddingVertical: 10, paddingHorizontal: 12, flexDirection: 'row', alignItems: 'flex-start', gap: 9 }}>
-              <NbIcon name="bulb" size={16} />
-              {hintBusy ? (
-                <ActivityIndicator color={nb.ink} />
-              ) : (
-                <Text style={[nbText.body(12.5), { flex: 1, minWidth: 0 }]}>
-                  {hintText || t('dialogue.hintNone')}
-                </Text>
-              )}
-              <Pressable onPress={() => setHintOn(false)} hitSlop={8}>
-                <NbIcon name="cross" size={13} color={nb.soft} />
-              </Pressable>
-            </NbPaper>
-          </View>
-        )}
-
-        {/* GUIDED PASS: pick an INTENT (in the learner's own language), then say it in the
-            target language with the mic (guided-turn redesign). The card no longer hands
-            over the words — it hands over the goal, and producing the sentence is the
-            practice. Shown until one is picked; picking reveals the speak area below. */}
-        {/* STEP 3 guided target (v44 J) — replaces the choices when the situation has
-            STEP 2 sentences. Keyed on the sentence so its hints reset each turn. */}
-        {target && !hintOn && <GuidedTarget key={`${target.en}|${transcript.length}`} sentence={target} />}
-
-        {guided && !target && !wroteOwn && !hintOn && !selectedChoice && (choicesBusy || choices.length > 0) && (
-          <View style={{ marginTop: 12 }}>
-            {/* Drag this edge DOWN to give the conversation more room. */}
-            <ResizeHandle
-              testID="choices-handle"
-              onDrag={(dy) => {
-                if (!dragFrom.current.choices) dragFrom.current.choices = choicesBand;
-                const next = clampChoices(dragFrom.current.choices - dy, winH);
-                dragTo.current.choices = next;
-                setChoicesH(next);
-              }}
-              onDone={() => {
-                dragFrom.current.choices = 0;
-                if (dragTo.current.choices) void setDialogueLayout({ choicesH: dragTo.current.choices });
-              }}
-            />
-            <ReplyChoices
-              choices={choices}
-              loading={choicesBusy}
-              // Picking selects the intent and opens the mic below — it no longer fills a
-              // box with ready-made words.
-              onPick={(c) => { setSelectedChoice(c); setDraft(''); }}
-              // The no-microphone fallback: type instead. On a mic-less device the guided
-              // turn would otherwise be a dead end.
-              onWriteMyOwn={() => setWroteOwn(true)}
-              maxHeight={choicesBand}
-            />
-          </View>
-        )}
-
-        {/* SPEAK: the mic-driven input. Shown once an intent is picked (guided), or on the
-            free / no-choices / no-mic path. The learner speaks the target language; the
-            transcript fills the box, and Send carries the picked intent so the immediate
-            correction can judge the line against it. */}
-        {(!hintOn && (selectedChoice || wroteOwn || !guided || !!target || (!choicesBusy && choices.length === 0))) && (
-          <View style={{ marginTop: 14 }}>
-            {selectedChoice ? (
-              // The picked intent, held above the mic as the thing to say. The × puts the
-              // list back — a different goal, a different sentence.
-              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 6 }}>
-                <Text numberOfLines={1} style={{ fontFamily: nbFonts.monoBold, fontSize: 9.5, letterSpacing: 1, color: nb.soft }}>
-                  {rec === 'recording' ? t('dialogue.listening') : rec === 'transcribing' ? t('dialogue.transcribing') : t('dialogue.sayThis')}
-                </Text>
-                <Text numberOfLines={2} style={[nbText.hand(15), { flex: 1, minWidth: 0 }]}>{selectedChoice.intent}</Text>
-                <Pressable onPress={() => { setSelectedChoice(null); setDraft(''); }} hitSlop={8}>
-                  <NbIcon name="cross" size={13} color={nb.soft} />
-                </Pressable>
-              </View>
+        {guided ? (
+          <>
+            {target ? (
+              <>
+                {/* Grabber ② (L128) — the message band's foot. Drag it down for more
+                    conversation, up for more room below. */}
+                {!typing && (
+                  <ResizeHandle
+                    testID="thread-handle"
+                    onDrag={(dy) => {
+                      if (!dragFrom.current.thread) dragFrom.current.thread = guidedThread;
+                      const next = clampGuidedThread(dragFrom.current.thread + dy, winH);
+                      dragTo.current.thread = next;
+                      setThreadDrag(next);
+                    }}
+                    onDone={() => {
+                      dragFrom.current.thread = 0;
+                      if (dragTo.current.thread) void setDialogueLayout({ threadGuided: dragTo.current.thread });
+                    }}
+                  />
+                )}
+                {/* The guide (L130): flex 1, padding 2/16/0. Keyed on the sentence so its
+                    hints reset each turn. The Korean target stays on screen whatever else
+                    happens — the learner is always looking at what to say. */}
+                <View style={{ flex: 1, minHeight: 0, paddingTop: 2, paddingHorizontal: 16 }}>
+                  <GuidedTarget key={`${target.en}|${transcript.length}`} sentence={target} />
+                  <GuidedInput
+                    mode={inputMode}
+                    onMode={setInputMode}
+                    rec={rec}
+                    onMicDown={() => { void micDown(); }}
+                    onMicUp={() => { void micUp(); }}
+                    draft={draft}
+                    onDraft={setDraft}
+                    chips={wordChips(target)}
+                    editable={!pending && rec === 'idle'}
+                    micEnabled={!pending && rec !== 'transcribing'}
+                    onSubmit={sendDraft}
+                  />
+                </View>
+              </>
             ) : (
-              // SPEAK FREELY, printed. The label is the one place this screen names the
-              // mode, and a mode is a stamp rather than a note.
-              <Text numberOfLines={1} style={{ fontFamily: nbFonts.monoBold, fontSize: 9.5, letterSpacing: 1, color: nb.soft, marginBottom: 6 }}>
-                {rec === 'recording' ? t('dialogue.listening') : rec === 'transcribing' ? t('dialogue.transcribing') : target ? t('guided.inputLabel') : t('dialogue.speakFreely')}
-              </Text>
+              // No STEP 2 sentences in this situation: the reply choices stay (v44 spec J —
+              // the handoff has no picture of this case). Pick an intent, then say it.
+              <View style={{ flex: guidedInputOn ? 1 : undefined, minHeight: 0, paddingHorizontal: 16 }}>
+                {!wroteOwn && !selectedChoice && (choicesBusy || choices.length > 0) && (
+                  <View>
+                    {/* Grabber ② here is the choices band's top edge. Drag it DOWN to give
+                        the conversation more room. */}
+                    <ResizeHandle
+                      testID="choices-handle"
+                      onDrag={(dy) => {
+                        if (!dragFrom.current.choices) dragFrom.current.choices = choicesBand;
+                        const next = clampChoices(dragFrom.current.choices - dy, winH);
+                        dragTo.current.choices = next;
+                        setChoicesH(next);
+                      }}
+                      onDone={() => {
+                        dragFrom.current.choices = 0;
+                        if (dragTo.current.choices) void setDialogueLayout({ choicesH: dragTo.current.choices });
+                      }}
+                    />
+                    <ReplyChoices
+                      choices={choices}
+                      loading={choicesBusy}
+                      onPick={(c) => { setSelectedChoice(c); setDraft(''); }}
+                      // The no-microphone fallback: type instead.
+                      onWriteMyOwn={() => { setWroteOwn(true); setInputMode('type'); }}
+                      maxHeight={choicesBand}
+                    />
+                  </View>
+                )}
+                {guidedInputOn && (
+                  <>
+                    {!typing && <NbGrabber />}
+                    {selectedChoice && (
+                      // The picked intent, held above the input as the thing to say. The ×
+                      // puts the list back — a different goal, a different sentence.
+                      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+                        <NbIcon name="speech" size={16} />
+                        <Text numberOfLines={2} style={[nbText.hand(15.5), { flex: 1, minWidth: 0 }]}>{selectedChoice.intent}</Text>
+                        <Pressable onPress={() => { setSelectedChoice(null); setDraft(''); }} hitSlop={8}>
+                          <NbIcon name="cross" size={13} color={nb.soft} />
+                        </Pressable>
+                      </View>
+                    )}
+                    <GuidedInput
+                      mode={inputMode}
+                      onMode={setInputMode}
+                      rec={rec}
+                      onMicDown={() => { void micDown(); }}
+                      onMicUp={() => { void micUp(); }}
+                      draft={draft}
+                      onDraft={setDraft}
+                      chips={[]}
+                      editable={!pending && rec === 'idle'}
+                      micEnabled={!pending && rec !== 'transcribing'}
+                      onSubmit={sendDraft}
+                    />
+                  </>
+                )}
+              </View>
             )}
-            <NbPaper rot={0} style={{ paddingVertical: 10, paddingHorizontal: 12, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-                <Pressable onPress={toggleMic} disabled={pending}>
-                  {/* Recording turns the box red and puts a stop square in it; the mic is
-                      a doodle the rest of the time. */}
+            {/* D's rail (L178–182): ▷ 보내기 (live once there is a line) · 듣기 · 노트. */}
+            <View style={{ paddingHorizontal: 16 }}>
+              <Rail>
+                <RailButton
+                  testID="rail-send"
+                  rot={0} padH={0} flex
+                  icon="play"
+                  label={pending ? t('dialogue.sending') : t('dialogue.send')}
+                  color={canSend ? nb.ink : nb.soft}
+                  dim={!canSend}
+                  bg={canSend ? 'rgba(249,227,123,.5)' : undefined}
+                  disabled={!canSend}
+                  onPress={sendDraft}
+                />
+                <RailButton
+                  testID="rail-listen"
+                  rot={0.5} padH={16}
+                  icon="speaker"
+                  label={t('guided.listen')}
+                  disabled={!modelLine}
+                  onPress={() => { Speech.stop(); Speech.speak(modelLine, { language: 'en-US', rate: 0.9 }); }}
+                />
+                <RailButton
+                  testID="rail-notes"
+                  rot={-0.5} padH={13}
+                  icon="board"
+                  accessibilityLabel={t('dialogue.notesTitle')}
+                  onPress={() => { setNotesOpen(true); loadNotes(); }}
+                />
+              </Rail>
+            </View>
+          </>
+        ) : (
+          <>
+            {/* HINT: what this turn NEEDS, not what to say — the REASON the best reply
+                works, with the reply itself withheld. Asked for per turn, because the
+                situation has moved on. */}
+            {hintOn && (
+              <View style={{ marginTop: 6, paddingHorizontal: 16 }}>
+                <NbPaper rot={0.4} bg="rgba(249,227,123,.5)" style={{ paddingVertical: 10, paddingHorizontal: 12, flexDirection: 'row', alignItems: 'flex-start', gap: 9 }}>
+                  <NbIcon name="bulb" size={16} />
+                  {hintBusy ? (
+                    <ActivityIndicator color={nb.ink} />
+                  ) : (
+                    <Text style={[nbText.body(12.5), { flex: 1, minWidth: 0 }]}>
+                      {hintText || t('dialogue.hintNone')}
+                    </Text>
+                  )}
+                  <Pressable onPress={() => setHintOn(false)} hitSlop={8}>
+                    <NbIcon name="cross" size={13} color={nb.soft} />
+                  </Pressable>
+                </NbPaper>
+              </View>
+            )}
+            {/* Grabber ② (L92). Drawn as the handoff draws it; on this run the band below
+                it is the input, which has nothing to give, so it does not drag. */}
+            {!typing && <NbGrabber />}
+            {/* SPEAK FREELY (L93–98): padding 0/16, label, then the mic box 7 below. */}
+            <View style={{ paddingHorizontal: 16 }}>
+              <Text numberOfLines={1} style={{ fontFamily: nbFonts.monoBold, fontSize: 9.5, letterSpacing: 1, color: nb.soft }}>
+                {rec === 'recording' ? t('dialogue.listening') : rec === 'transcribing' ? t('dialogue.transcribing') : t('dialogue.speakFreely')}
+              </Text>
+              <NbPaper rot={0} style={{ marginTop: 7, paddingVertical: 10, paddingHorizontal: 12, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+                <Pressable testID="free-mic" onPress={() => { void toggleMic(); }} disabled={pending}>
+                  {/* L96: 38×38, green wash, 1.7 ink, radius 4, mic 20. Recording turns the
+                      box red and puts a stop square in it (ours). */}
                   <View style={{
                     width: 38, height: 38, borderRadius: 4, borderWidth: 1.7, borderColor: nb.ink,
                     backgroundColor: rec === 'recording' ? 'rgba(199,81,70,.2)' : 'rgba(95,141,90,.15)',
@@ -1120,55 +1137,65 @@ export default function DialogueRoute() {
                   value={draft}
                   onChangeText={setDraft}
                   editable={!pending && rec === 'idle'}
+                  // L97: two lines, broken where the handoff breaks them.
                   placeholder={rec === 'recording' ? t('dialogue.tapMicAgain') : t('dialogue.inputPlaceholder')}
                   placeholderTextColor={nb.placeholder}
-                  style={{ flex: 1, fontFamily: nbFonts.hand, fontSize: 16, color: nb.ink, paddingVertical: 4 }}
-                  onSubmitEditing={() => { void send(target ? { text: draft, intent: target.ko } : undefined); }}
+                  style={{ flex: 1, fontFamily: nbFonts.hand, fontSize: 16, lineHeight: 20.8, color: nb.ink, paddingVertical: 0 }}
+                  onSubmitEditing={sendDraft}
                   returnKeyType="send"
                   multiline
-                  // With `multiline`, RN defaults to keeping focus on return, so
-                  // the "send" key inserted a newline and the keyboard could
-                  // never be dismissed. Blur AND submit instead — that is what
-                  // the key says it does.
+                  // With `multiline`, RN defaults to keeping focus on return, so the "send"
+                  // key inserted a newline and the keyboard could never be dismissed.
                   submitBehavior="blurAndSubmit"
                 />
-            </NbPaper>
-          </View>
+              </NbPaper>
+              {/* E's rail (L99–103): marginTop 10 — ▷ 보내기 · 힌트 (paper .5, 9/16) · 노트 n
+                  (paper -.5, 9/13). */}
+              <View style={{ marginTop: 10 }}>
+                <Rail>
+                  <RailButton
+                    testID="rail-send"
+                    rot={0} padH={0} flex
+                    icon="play"
+                    label={pending ? t('dialogue.sending') : t('dialogue.send')}
+                    color={canSend ? nb.ink : nb.soft}
+                    dim={!canSend}
+                    bg={canSend ? 'rgba(249,227,123,.5)' : undefined}
+                    disabled={!canSend}
+                    onPress={sendDraft}
+                  />
+                  <RailButton
+                    testID="rail-hint"
+                    rot={0.5} padH={16}
+                    icon="bulb"
+                    label={t('dialogue.hint')}
+                    bg={hintOn ? 'rgba(249,227,123,.5)' : undefined}
+                    onPress={() => { void askHint(); }}
+                  />
+                  <RailButton
+                    testID="rail-notes"
+                    rot={-0.5} padH={13}
+                    icon="board"
+                    label={notes?.length ? String(notes.length) : undefined}
+                    accessibilityLabel={t('dialogue.notesTitle')}
+                    onPress={() => { setNotesOpen(true); loadNotes(); }}
+                  />
+                </Rail>
+              </View>
+            </View>
+          </>
         )}
-
-        {/* action rail */}
-        <View style={{ marginTop: 12, flexDirection: 'row', gap: 9 }}>
-          <View style={{ flex: 2 }}>
-            {/* Send carries the picked intent (if any) so the immediate correction judges
-                the spoken line against what the learner meant to convey. Enabled only once
-                there is a line — they have to SAY it (or type it) first. */}
-            <NbButton variant="ink" full icon={pending ? undefined : 'pencil'} iconColor={nb.paper} disabled={pending || !draft.trim()} onPress={() => { void send(selectedChoice ? { text: draft, intent: selectedChoice.intent } : target ? { text: draft, intent: target.ko } : undefined); }}>
-              {pending ? t('dialogue.sending') : t('dialogue.send')}
-            </NbButton>
-          </View>
-          <View style={{ flex: 1 }}>
-            <NbButton variant={hintOn ? 'yellow' : 'paper'} full icon="bulb" onPress={askHint}>
-              {t('dialogue.hint')}
-            </NbButton>
-          </View>
-          {/* 핵심 표현 발음 연습 lived here and has been removed. It sent the learner
-              OUT of a conversation they were in the middle of, to drill a phrase from the
-              scenario's key-phrase list — and the same practice is now reachable from
-              where it belongs: the result screen lists every sentence they actually spoke
-              with its score, and the Review Lab's 직접 말하기 연습 holds the whole history.
-              Practising a phrase you were handed is a weaker exercise than practising the
-              sentence you chose yourself. */}
-          {quizIds.length > 0 && (
-            <NbButton
-              variant="paper"
-              icon="board"
-              onPress={() => router.push(`/quiz/${quizIds[0]}?scenario=${id}&q=${quizIds.join(',')}&i=0`)}
-            >
-              {quizIds.length > 1 ? `${quizIds.length}` : ' '}
-            </NbButton>
-          )}
-        </View>
       </Animated.View>
+
+      {/* The rail's 노트 (결정 6). */}
+      <NotesSheet
+        visible={notesOpen}
+        onClose={() => setNotesOpen(false)}
+        notes={notes}
+        quizCount={quizIds.length}
+        onQuiz={() => { setNotesOpen(false); openQuiz(); }}
+      />
+
       {/* 상황이 해소된 것 같을 때 한 번 묻는다. 판단이 아니라 질문이다 — 마무리를
           누르면 지금까지의 대화로 채점하고, 계속을 누르면 다시 묻지 않는다. */}
       <BottomSheet visible={wrapUp} onClose={() => setWrapUp(false)}>
@@ -1196,22 +1223,23 @@ export default function DialogueRoute() {
       <BottomSheet visible={!!resumable} onClose={() => { void startFresh(); }}>
         <View style={{ paddingHorizontal: 16, paddingTop: 6, paddingBottom: 24 }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 8 }}>
-            <FIcon name="doc" size={17} />
-            <Text style={{ fontFamily: nbFonts.hand, fontSize: 20.2, color: C }}>이어서 대화할까요?</Text>
+            <NbIcon name="speech" size={17} />
+            <Text style={nbText.hand(20)}>{t('dialogue.resumeTitle')}</Text>
           </View>
-          <Text style={{ fontFamily: nbFonts.body, fontSize: 11, color: nb.soft, marginBottom: 10 }}>
-            {npcName} 님과 {resumable?.turns.filter((t) => t.role === 'user').length ?? 0}번 주고받은 기록이 있어요.
+          <Text style={[nbText.body(11, nb.soft), { marginBottom: 10 }]}>
+            {t('dialogue.resumeBody', { name: npcName, n: resumable?.turns.filter((x) => x.role === 'user').length ?? 0 })}
           </Text>
           {(() => {
             const last = resumable ? [...resumable.turns].reverse()[0] : undefined;
             if (!last) return null;
             return (
-              <View style={{ backgroundColor: last.role === 'user' ? '#fff' : '#FFF3EE', borderWidth: 2.5, borderColor: C, paddingVertical: 9, paddingHorizontal: 11, marginBottom: 16 }}>
-                <Text style={{ fontFamily: nbFonts.hand, fontSize: 12.2, color: nb.soft, marginBottom: 3 }}>
+              // The line as it stood in the thread: my paper, or their warmer sheet.
+              <NbPaper rot={0} bg={last.role === 'user' ? nb.paper : '#FCEEDC'} style={{ paddingVertical: 9, paddingHorizontal: 11, marginBottom: 16, ...(last.role === 'user' ? null : { borderColor: '#E8D2B0' }) }}>
+                <Text style={[nbText.hand(12.5, nb.soft), { marginBottom: 3 }]}>
                   {last.role === 'user' ? t('dialogue.lastMine') : t('dialogue.lastNpc', { name: npcName })}
                 </Text>
-                <Text style={{ fontFamily: nbFonts.body, fontSize: 11, color: C, lineHeight: 17 }} numberOfLines={3}>{last.content}</Text>
-              </View>
+                <Text style={[nbText.body(11), { lineHeight: 17 }]} numberOfLines={3}>{last.content}</Text>
+              </NbPaper>
             );
           })()}
           <View style={{ gap: 9 }}>
@@ -1225,19 +1253,15 @@ export default function DialogueRoute() {
         </View>
       </BottomSheet>
 
-      {/* Leaving, said plainly.
-          This used to be framed as a page from elsewhere — "다른 곳에서 호출이 왔어요" —
-          on the theory that a ward nurse does not "exit" a patient, they get pulled away.
-          The fiction was doing the wrong job: someone tapping × has already decided to
-          leave, and being told a story about why is one more thing to read before a door
-          opens. The three answers are the three things a person actually wants here. */}
+      {/* Leaving, said plainly. Someone tapping × has already decided to leave; the three
+          answers are the three things a person actually wants here. */}
       <BottomSheet visible={pagedOut} onClose={() => setPagedOut(false)}>
         <View style={{ paddingHorizontal: 16, paddingTop: 6, paddingBottom: 24 }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 10 }}>
-            <FIcon name="cross" size={18} />
-            <Text style={{ fontFamily: nbFonts.hand, fontSize: 20.2, color: C }}>{t('dialogue.exitTitle')}</Text>
+            <NbIcon name="cross" size={18} color={nb.red} />
+            <Text style={nbText.hand(20)}>{t('dialogue.exitTitle')}</Text>
           </View>
-          <Text style={{ fontFamily: nbFonts.body, fontSize: 11.5, color: nb.ink, lineHeight: 19, marginBottom: 16 }}>
+          <Text style={[nbText.body(11.5), { lineHeight: 19, marginBottom: 16 }]}>
             {t('dialogue.exitBody', { name: npcName })}
           </Text>
           <View style={{ gap: 9 }}>
@@ -1252,7 +1276,7 @@ export default function DialogueRoute() {
             <NbButton variant="danger" full onPress={() => { void leaveAndDiscard(); }}>
               {t('dialogue.exitDiscard')}
             </NbButton>
-            <Text style={{ fontFamily: nbFonts.body, fontSize: 10, color: nb.soft, textAlign: 'center' }}>
+            <Text style={[nbText.body(10, nb.soft), { textAlign: 'center' }]}>
               {t('dialogue.exitDiscardNote')}
             </Text>
           </View>
@@ -1265,14 +1289,8 @@ export default function DialogueRoute() {
 
 // ── helpers ──────────────────────────────────────────────────────────
 
-function Shadowed({ children, offset = 4, shadowColor = C, style }: { children: React.ReactNode; offset?: number; shadowColor?: string; style?: ViewStyle }) {
-  return (
-    <View style={style}>
-      <View style={{ position: 'absolute', left: offset, top: offset, right: -offset, bottom: -offset, backgroundColor: shadowColor }} />
-      {children}
-    </View>
-  );
-}
+/** dialogue.jsx L6 `stage: '#F6E3DC'`. */
+const STAGE_BG = '#F6E3DC';
 
 /** The notebook's ruled lines, behind everything. */
 // memo, and that matters here: this paints ~30 absolutely-positioned rule lines, and it
@@ -1290,95 +1308,25 @@ const Rules = memo(function Rules() {
   );
 });
 
-/** Portrait frame with a name plate (and optional red status chip).
- *
- *  Two things move with the divider the learner drags:
- *   · `scale` multiplies every drawn dimension. One factor for all of them is what keeps
- *     the frame from distorting — a separately-computed width is how portraits end up
- *     squashed. The TEXT is not scaled: a name plate at 0.55 is not a name plate.
- *   · `nameBeside` puts the plate to the LEFT of the frame instead of under it. A row is
- *     shorter than a stack, so this buys height back without shrinking the drawing, which
- *     is why it happens before any scaling does. LEFT because the right of the frame is
- *     taken: `aside` hangs there, and a plate arriving on that side shouldered it out.
- *
- *  `aside` is drawn against the FRAME's own box, which is the only container in this
- *  screen whose right edge is the portrait's right edge. */
-function PortraitFrame({ children, name, status, hue, sweat, scale = 1, nameBeside = false, aside }: { children: React.ReactNode; name: string; status?: string; hue?: string; sweat?: boolean; scale?: number; nameBeside?: boolean; aside?: React.ReactNode }) {
-  const w = Math.round(110 * scale);
-  const h = Math.round(130 * scale);
+/** The immediate correction under the learner's own bubble (ours — the handoff has no
+ *  picture of it; kept per lesson-fidelity-v46 결정 9). */
+function CorrectionNote({ text, correction }: { text: string; correction: { corrected: string; note: string } }) {
+  const t = useT();
+  const fixed = !!correction.corrected.trim() && correction.corrected.trim() !== text.trim();
+  const tone = fixed ? nb.amber : nb.green;
   return (
-    // Frame-sized in BOTH modes, which is what keeps the portrait centred.
-    //
-    // The beside layout used to be a row of [plate][frame]. The strip centres this
-    // container, so the plate's width pushed the frame off to the right — dragging the
-    // divider up moved the character sideways, which is not what shrinking should look
-    // like. The plate is positioned out of the layout instead: it hangs to the left and
-    // takes no space, so the frame stays where it was and only gets smaller.
-    <View>
-      <View>
-        {/* A polaroid taped to the page: the border is the print's own margin, and the
-            tape is what holds it there. The pixel line drew a bordered frame with a hard
-            offset shadow — the same information, in the other language. */}
-        <NbPaper rot={-1.5} tape tapeLeft={Math.round(w / 2) - 29} style={{ paddingTop: 8, paddingHorizontal: 8, paddingBottom: 4 }}>
-          <View style={{ width: w, height: h, backgroundColor: hue || '#F6E3DC', overflow: 'hidden', alignItems: 'center', justifyContent: 'flex-end' }}>
-            {children}
-          </View>
-        </NbPaper>
-        {sweat && (
-          <View style={{ position: 'absolute', top: 2, right: -8, zIndex: 4 }}>
-            <Svg viewBox="0 0 24 24" width={18} height={18}>
-              <Path d="M12 4 Q17 12 17 15 A5 5 0 0 1 7 15 Q7 12 12 4 Z" fill="rgba(74,111,165,.35)" stroke={nb.blue} strokeWidth="1.6" strokeLinejoin="round" />
-            </Svg>
-          </View>
-        )}
-        {/* Off the frame's right edge, vertically centred ON THE FRAME. `top: 0,
-            bottom: 0` rather than a computed offset: the button's own height then does not
-            have to be known here, and it stays centred when the frame scales. */}
-        {!!aside && (
-          <View testID="portrait-aside" style={{ position: 'absolute', right: -38, top: 0, bottom: 0, justifyContent: 'center' }}>
-            {aside}
-          </View>
-        )}
+    <View style={{ marginTop: 7, borderTopWidth: 1, borderTopColor: 'rgba(62,54,43,.15)', paddingTop: 6, gap: 3 }}>
+      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5 }}>
+        <NbIcon name={fixed ? 'pencil' : 'check'} size={12} color={tone} />
+        <Text style={nbText.hand(13, tone)}>{fixed ? t('dialogue.correctionFix') : t('dialogue.correctionGood')}</Text>
       </View>
-
-      {/* The name STAMPED — typed, not written: a name band on a photo is printed, and it
-          is the one label on this screen that must never wrap (07's 재발 방지 note).
-          Under the frame when there is room; hanging off its LEFT edge when there is not —
-          out of the layout, so the frame does not move. Right is taken: that is where the
-          voice toggle lives. */}
-      <View
-        testID="portrait-plate"
-        style={nameBeside
-          ? { position: 'absolute', right: w + 22, top: 0, bottom: 0, justifyContent: 'center', alignItems: 'flex-end', gap: 6 }
-          : { marginTop: 8, alignItems: 'flex-start', gap: 6 }}
-      >
-        <NbPaper rot={-2} style={{ paddingVertical: 3, paddingHorizontal: 9 }}>
-          <Text numberOfLines={1} style={{ fontFamily: nbFonts.monoBold, fontSize: 11, color: nb.ink }}>{name}</Text>
-        </NbPaper>
-        {!!status && <NbTag color={nb.red} fill rot={-2}>{status}</NbTag>}
-      </View>
+      {fixed && (
+        <Text style={{ fontFamily: nbFonts.body, fontSize: 12.5, color: nb.ink, lineHeight: 18 }}>{correction.corrected}</Text>
+      )}
+      {!!correction.note && (
+        <Text style={{ fontFamily: nbFonts.body, fontSize: 10.5, color: nb.soft, lineHeight: 15 }}>{correction.note}</Text>
+      )}
     </View>
-  );
-}
-
-/** A tappable suggested response (hint mode). Numbered chip + phrase.
- *  suggested = mint (AI 추천) · risky = red (평판 위험) · else peach (normal). */
-function ChoiceRow({ num, text, suggested, risky, onPress }: { num: number; text: string; suggested?: boolean; risky?: boolean; onPress: () => void }) {
-  const tabBg = risky ? '#FCA5A5' : suggested ? 'rgba(168,217,151,.4)' : '#FFF3EE';
-  const shadow = suggested ? nb.green : '#2A252266';
-  return (
-    <Shadowed offset={suggested ? 3 : 2} shadowColor={shadow}>
-      <Pressable onPress={onPress} style={{ flexDirection: 'row', backgroundColor: '#fff', borderWidth: 2, borderColor: C }}>
-        <View style={{ width: 28, backgroundColor: tabBg, borderRightWidth: 2, borderColor: C, alignItems: 'center', justifyContent: 'center' }}>
-          <Text style={{ fontFamily: nbFonts.hand, fontSize: 18.9, color: C }}>{num}</Text>
-        </View>
-        <View style={{ flex: 1, paddingVertical: 8, paddingHorizontal: 10 }}>
-          <Text style={{ fontFamily: nbFonts.body, fontSize: 12, color: C, lineHeight: 17 }}>{text}</Text>
-          {suggested && <Text style={{ fontFamily: nbFonts.hand, fontSize: 12.2, color: nb.green, marginTop: 3 }}>AI 추천 · 미션 진행</Text>}
-          {risky && <Text style={{ fontFamily: nbFonts.hand, fontSize: 12.2, color: '#B91C1C', marginTop: 3 }}>평판 −2 위험</Text>}
-        </View>
-      </Pressable>
-    </Shadowed>
   );
 }
 
@@ -1454,6 +1402,8 @@ const ROLE_KINDS = new Set<RoleKind>(['nurse', 'doctor', 'surgeon', 'paramedic',
 const EXPRESSIONS = new Set<Expression>(['neutral', 'derp', 'happy', 'sad', 'worried', 'pain', 'surprised', 'angry', 'thinking', 'sleepy', 'panic', 'focused', 'shy']);
 
 const styles = {
+  /** Bubble text (L72–73): Pretendard 13.5, lineHeight 1.5. */
+  bubbleText: { fontFamily: nbFonts.body, fontSize: 13.5, color: nb.ink, lineHeight: 20.25 } as const,
   /** The page behind, dimmed with the notebook's own dark rather than a navy wash. */
   quickScrim: {
     position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 20,
