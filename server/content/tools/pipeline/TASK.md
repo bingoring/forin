@@ -86,6 +86,8 @@
    차갑거나 못 알아듣는 말). 기존 장면이 이 모양이 아니면 **장면 `en`과 `fix`를 고쳐 씁니다** — 이 점검에 한해 `nuance:`의 context
    `scenes[].en`·`scenes[].fix`·`why`를 고쳐도 됩니다(`who`·`icon`·`ok`·`tone`과 문항 수·순서는 그대로). 어색한 표현 자체(`owie`,
    `belt thing`, `CNS depression`)를 `word`로 고르면 안 됩니다. 검사기 W14가 세 장면 중 `word`가 없는 곳을 알려 줍니다 — 0건이 목표.
+   **base 장면이 이미 같은 임상어를 세 장면에 공유하면(`torsion`·`priapism`·`peaked T waves` — 핸드오프 `deteriorate`와 같은 모양) 그대로 두세요.**
+   쉬운 말로 바꾸려고 장면을 고치면 끼워 넣기가 됩니다(genitourinary 검토 5건). 피할 것은 **세 장면 중 어색한 장면에만 있는** 표현을 `word`로 고르는 것입니다.
    **W14를 맞추려고 낱말을 억지로 끼워 넣지 마세요** — 묶음 검토마다 영어가 틀린 장면("At what hour did his premorbid baseline cease to be
    normal?", "Your BP is hypotensive", "calling an escalation of care")과 장면에서 사라진 말을 아직 설명하는 `why`가 나왔습니다. 세 장면이
    자연스럽게 공유하지 못하면 `word`를 다른 말로 바꾸세요. 장면을 바꿨으면 `why`가 지금 장면의 말을 설명하는지 다시 읽으세요.
