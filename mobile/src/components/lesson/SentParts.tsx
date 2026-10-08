@@ -6,7 +6,7 @@
 // STEP 2 화면(릴 C0 · 문장장 · C5 · C6)은 같은 머리를 쓴다(NU:28-45 Frame = SL:186-198):
 // "‹ 나가기" 손글씨 칩 · 오른쪽 파란 외곽선 태그(rot 1) + 보조 글자/카운터 · 진행 바 · 손글씨 21 제목.
 // 진행 바는 세 가지다 — 릴(지난 장면 파랑), 문장장(지난 장 잉크, 헷갈린 장 빨강), C5·C6(지난 잉크·지금 앰버).
-// 프레임 기준 좌표(상태 표시줄 44)는 앱의 TOP_INSET으로 옮긴다: frameTop(v) = TOP_INSET − 44 + v.
+// 프레임 기준 좌표(상태 표시줄 44)는 시트 안 좌표로 옮긴다: frameTop(v) = v − 44 (시트가 이미 TOP_INSET만큼 내려가 있다).
 import { useState, type ReactNode } from 'react';
 import { Animated, Pressable, Text, View, type StyleProp, type ViewStyle } from 'react-native';
 import Svg, { Line, Path } from 'react-native-svg';
@@ -17,7 +17,10 @@ import { NbEnter, useNbColorTransition } from '@/components/nb/nbMotion';
 import { TOP_INSET, nb, nbFonts } from '@/theme/nb';
 
 /** The handoff frames put the status bar at 44; the app's top inset is TOP_INSET. */
-export const frameTop = (v: number) => TOP_INSET - 44 + v;
+// STEP 2 화면은 NbSheet에 paddingTop: TOP_INSET을 주고 그 안에 절대 위치로 그린다. RN(Yoga)은 절대 위치
+// 자식에도 부모의 padding을 더하므로, 여기서 TOP_INSET을 다시 더하면 상단 여백이 두 번 들어가 본문이
+// 52pt 아래로 밀린다(T8 시뮬레이터 대조에서 발견). 그래서 프레임 값에서 상태 표시줄 44만 뺀다.
+export const frameTop = (v: number) => v - 44;
 
 export const FAINT = 'rgba(62,54,43,.3)';
 export const OK_BG = 'rgba(95,141,90,.12)';

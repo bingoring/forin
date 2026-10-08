@@ -4,14 +4,32 @@
     {
       "name": "api",
       "runtimeExecutable": "bash",
-      "runtimeArgs": ["-c", "cd server && set -a && . ./.env && set +a && go run ./cmd/api"],
+      "runtimeArgs": [
+        "-c",
+        "cd server && set -a && . ./.env && set +a && go run ./cmd/api"
+      ],
       "port": 8080
     },
     {
       "name": "metro",
       "runtimeExecutable": "bash",
-      "runtimeArgs": ["-c", "cd mobile && npx expo start --port 8081 --clear"],
+      "runtimeArgs": [
+        "-c",
+        "cd mobile && npx expo start --port 8081 --clear"
+      ],
       "port": 8081
+    },
+    {
+      "name": "handoff",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "8090",
+        "--directory",
+        "docs/dlc/projects/forin"
+      ],
+      "port": 8090
     }
   ]
 }
