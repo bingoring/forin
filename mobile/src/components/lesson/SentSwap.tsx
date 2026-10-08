@@ -11,8 +11,8 @@
 //   NU:227-231 확인하기 → [바꾼 문장 따라 말하기][다음 ›]
 //
 // R3: swap `ko`가 없으면 한국어 줄을 그리지 않는다. 확인 전에는 다른 후보로 바꿀 수 있다(핸드오프와 같음).
-import { useState } from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { useRef, useState } from 'react';
+import { Pressable, ScrollView, Text, View } from 'react-native';
 import { NbInline } from '@/components/nb/NbInline';
 import { NbButton, NbPaper, NbTag, nbText } from '@/components/nb/NbUI';
 import { NbEnter } from '@/components/nb/nbMotion';
@@ -25,6 +25,9 @@ import { useT } from '@/i18n';
 import { nb, nbFonts } from '@/theme/nb';
 
 const LINE = 32.3; // 19 × 1.7
+// 바꿀 말이 둘째 줄 이후에 있으면 위(-26)에 얹은 고른 말이 윗줄 글자를 덮는다(핸드오프 예시는 한 줄이라 드러나지 않음).
+// 그 줄만 이만큼 띄워 고른 말이 들어갈 틈을 만든다 — 사용자 결정(T8, §7).
+const ROOM = 22;
 
 export function SentSwap({ item, k, total, onRepeat, onNext, onExit }: {
   item: LessonNuance; k: number; total: number;
@@ -38,19 +41,23 @@ export function SentSwap({ item, k, total, onRepeat, onNext, onExit }: {
   const check = () => { if (pick && !res) setRes(pick === item.answer ? 'right' : 'wrong'); };
   const swapped = `${before}${item.answer ?? ''}${after}`;
   const overColor = res ? (res === 'right' ? nb.green : nb.red) : nb.blue;
+  const [below, setBelow] = useState(false);
+  const room = below && pick ? ROOM : 0; // 고르기 전에는 핸드오프 줄 간격 그대로
+  const [barH, setBarH] = useState(52);
+  const scroll = useRef<ScrollView>(null);
 
   // The target word, inline-block: its red underline (struck once checked) and the pick written above it.
   const targetNode = (
-    <View testID="sent-swap-target" style={{ height: LINE, justifyContent: 'flex-start' }}>
+    <View testID="sent-swap-target" style={{ height: LINE + room, paddingTop: room, justifyContent: 'flex-start' }}>
       <Text style={{ fontFamily: nbFonts.bodyMid, fontSize: 19, lineHeight: LINE, color: res ? nb.soft : nb.ink }}>{target}</Text>
       {/* NU:196 — CSS underline 2.5 at offset 5 below the baseline; line-through at mid x-height. Drawn: iOS
           alone honours textDecorationColor, and neither platform the thickness or offset. */}
       <View testID={res ? 'sent-swap-strike' : 'sent-swap-underline'} pointerEvents="none" style={{
-        position: 'absolute', left: 0, right: 0, height: 2.5, backgroundColor: nb.red, top: res ? 16.5 : 27.6,
+        position: 'absolute', left: 0, right: 0, height: 2.5, backgroundColor: nb.red, top: room + (res ? 16.5 : 27.6),
       }} />
       {!!pick && (
         <NbEnter kind="reveal" testID="sent-swap-over" pointerEvents="none"
-          style={{ position: 'absolute', top: -26, left: -200, right: -200, alignItems: 'center' }}>
+          style={{ position: 'absolute', top: room - 26, left: -200, right: -200, alignItems: 'center' }}>
           <View style={{ transform: [{ rotate: '-3deg' }], backgroundColor: nb.paper, paddingHorizontal: 4, borderBottomWidth: 1.5, borderColor: overColor }}>
             <Text numberOfLines={1} style={nbText.hand(17, overColor)}>{pick}</Text>
           </View>
@@ -67,7 +74,12 @@ export function SentSwap({ item, k, total, onRepeat, onNext, onExit }: {
         <Step2Title text={t('sent.swapTitle')} />
       </View>
 
-      <View style={{ position: 'absolute', left: 24, right: 24, top: frameTop(176) }}>
+      {/* 본문은 버튼 위까지 스크롤된다 — 실제 문장은 후보·해설이 길어 판정 뒤 버튼 밑으로 넘친다. 사용자 결정(T8, §7).
+          테이프·기울기가 잘리지 않게 14만큼 위로 연다. */}
+      <ScrollView ref={scroll} testID="sent-swap-scroll" showsVerticalScrollIndicator={false}
+        style={{ position: 'absolute', left: 0, right: 0, top: frameTop(176) - 14, bottom: 34 + barH + 10 }}
+        contentContainerStyle={{ paddingHorizontal: 24, paddingTop: 14, paddingBottom: 4 }}
+        onContentSizeChange={() => { if (res) scroll.current?.scrollToEnd({ animated: true }); }}>
         <NbPaper rot={-0.5} tape tapeLeft={130} style={{ paddingTop: 16, paddingHorizontal: 16, paddingBottom: 14 }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
             <IconTile icon={item.icon || 'me'} size={40} iconSize={22} color={nb.amber} wash={`${nb.amber}22`} />
@@ -75,7 +87,9 @@ export function SentSwap({ item, k, total, onRepeat, onNext, onExit }: {
           </View>
           <NbInline testID="sent-swap-line" style={{ marginTop: 14 }}
             textStyle={{ fontFamily: nbFonts.bodyMid, fontSize: 19, lineHeight: LINE, color: nb.ink }}
-            parts={[...(before ? [{ text: before }] : []), { node: targetNode, key: 'target' }, ...(after ? [{ text: after }] : [])]} />
+            parts={[...(before ? [{ text: before }] : []),
+              { node: targetNode, key: 'target', grow: true, onLayout: (e) => setBelow(e.nativeEvent.layout.y > 1) },
+              ...(after ? [{ text: after }] : [])]} />
           {!!item.ko && <Text testID="sent-swap-ko" style={[nbText.hand(13.5, nb.soft), { marginTop: 8 }]}>{t('sent.swapKo', { ko: item.ko })}</Text>}
         </NbPaper>
         <Text style={[nbText.hand(14.5, nb.soft), { marginTop: 14 }]}>{t('sent.swapPick')}</Text>
@@ -115,9 +129,9 @@ export function SentSwap({ item, k, total, onRepeat, onNext, onExit }: {
             {!!item.why && <NuanceMemo testID="sent-swap-why" head={t('sent.feelNote')} style={{ marginTop: 10 }}>{item.why}</NuanceMemo>}
           </NbEnter>
         )}
-      </View>
+      </ScrollView>
 
-      <View style={{ position: 'absolute', left: 24, right: 24, bottom: 34 }}>
+      <View onLayout={(e) => setBarH(e.nativeEvent.layout.height)} style={{ position: 'absolute', left: 24, right: 24, bottom: 34 }}>
         {!res ? (
           <View testID="sent-check" style={{ opacity: pick ? 1 : 0.4 }}>
             <NbButton variant="ink" size="lg" full icon="pencil" iconColor={nb.paper} onPress={check}>{t('recall.check')}</NbButton>

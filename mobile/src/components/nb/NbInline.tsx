@@ -13,13 +13,15 @@
 //
 // 낱말 사이에서만 줄이 바뀐다(영어 문장, 띄어 쓴 한국어 제목에 맞는 규칙).
 import type { ReactNode } from 'react';
-import { Text, View, type StyleProp, type TextStyle, type ViewStyle } from 'react-native';
+import { Text, View, type LayoutChangeEvent, type StyleProp, type TextStyle, type ViewStyle } from 'react-native';
 import { MARK } from './NbUI';
 import { nb } from '@/theme/nb';
 
 export type InlinePart =
   | { text: string; mark?: boolean; strike?: { color: string; width: number }; style?: StyleProp<TextStyle> }
-  | { node: ReactNode; key: string };
+  // `grow`: the node may be taller than one line — its row grows (words bottom-aligned) instead of the node
+  // overflowing. `onLayout` reports the node's box within the line block (y > 0 = not on the first line).
+  | { node: ReactNode; key: string; grow?: boolean; onLayout?: (e: LayoutChangeEvent) => void };
 
 /** `*…*` in a catalog string marks the highlighted run: '외우지 말고 *다섯 장면*에서 …'. */
 export function markParts(s: string, style?: StyleProp<TextStyle>): InlinePart[] {
@@ -28,13 +30,13 @@ export function markParts(s: string, style?: StyleProp<TextStyle>): InlinePart[]
 
 type Tok =
   | { kind: 'word'; text: string; space: boolean; part: Extract<InlinePart, { text: string }>; first: boolean; last: boolean; joinNext: boolean; strikeNext: boolean }
-  | { kind: 'node'; node: ReactNode; key: string; space: boolean };
+  | { kind: 'node'; node: ReactNode; key: string; space: boolean; grow?: boolean; onLayout?: (e: LayoutChangeEvent) => void };
 
 function tokenize(parts: InlinePart[]): Tok[] {
   const out: Tok[] = [];
   parts.forEach((p, pi) => {
     if ('node' in p) {
-      out.push({ kind: 'node', node: p.node, key: p.key, space: false });
+      out.push({ kind: 'node', node: p.node, key: p.key, space: false, grow: p.grow, onLayout: p.onLayout });
       return;
     }
     // Words with the space that follows each; a leading space belongs to the token before.
@@ -83,7 +85,10 @@ export function NbInline({ parts, textStyle, style, testID }: {
       {toks.map((t, i) => {
         if (t.kind === 'node') {
           return (
-            <View key={`n${t.key}`} style={{ flexDirection: 'row', alignItems: 'center', height: textStyle.lineHeight }}>
+            <View key={`n${t.key}`} onLayout={t.onLayout}
+              style={t.grow
+                ? { flexDirection: 'row', alignItems: 'flex-end', minHeight: textStyle.lineHeight }
+                : { flexDirection: 'row', alignItems: 'center', height: textStyle.lineHeight }}>
               {t.node}
               {t.space && space}
             </View>

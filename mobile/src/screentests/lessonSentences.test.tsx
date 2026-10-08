@@ -393,6 +393,16 @@ describe('DONE 장 → C5 → C6 → C\'', () => {
     expect(texts(byID(tree.root, 'sent-swap-over')[0])).toEqual(['hurt']);
     await pressLabel(tree.root, 'sent-swap-opt-', 'pain');
     expect(texts(byID(tree.root, 'sent-swap-over')[0])).toEqual(['pain']);
+    // the body scrolls above the buttons — real notes run past the screen (T8, §7)
+    expect(hostID(tree.root, 'sent-swap-scroll')).toHaveLength(1);
+    // on the first line the pick sits at the artboard's -26; on a later line that line opens 22 so the pick
+    // does not cover the line above (T8, §7)
+    expect(flat(hostID(tree.root, 'sent-swap-target')[0]).height).toBe(32.3);
+    const box = tree.root.findAll((n) => typeof n.type === 'string' && !!n.props.onLayout
+      && n.findAll((m) => m.props.testID === 'sent-swap-target').length > 0).pop()!;
+    await act(async () => { box.props.onLayout({ nativeEvent: { layout: { x: 0, y: 32.3, width: 100, height: 32.3 } } }); });
+    expect(flat(hostID(tree.root, 'sent-swap-target')[0]).height).toBeCloseTo(54.3);
+    expect(flat(hostID(tree.root, 'sent-swap-over')[0]).top).toBe(-4);
     await pressID(tree.root, 'sent-check');
     expect(hostID(tree.root, 'sent-swap-strike')).toHaveLength(1);
     expect(hostID(tree.root, 'sent-stamp-good')).toHaveLength(1);
