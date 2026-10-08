@@ -83,6 +83,9 @@
    바꾼 것인지, ② 그 상황의 간호사가 실제로 할 말인지 한 줄씩 판정하세요. ①이거나 ②가 아니면 고칩니다(ER 검토마다 45~65문장 지적).
 9. **context `word` 자기 점검(필수)** — `word`가 **어색한 장면(정답 장면) 문장에 글자 그대로** 있는지 스크립트로 확인하세요.
    없으면 그 장면에 실제로 있는 말로 `word`를 바꾸고 `ko`도 맞춥니다(arrhythmia 6/7 틀림).
+10. **order 조건부 점검(필수)** — `If so`·`If it does`·`If not`·`In that case`·`If any of those`로 시작하는 줄마다, 그 줄의 행동
+   (심전도·산소·외상 사정·혈액검사·혈압 감시·도움 요청·보고)이 **모든 환자에게 하는 것인지** 따지세요. 그렇다면 조건을 빼고 다른
+   가리키는 말로 묶습니다(arrest·shock·asthma·dyspnea 검토마다 6~8장 지적). 청색증·대량 출혈·조용한 흉부는 기다리지 않고 바로 부릅니다.
 
 ## 검사 — 통과할 때까지
     python3 /Users/ywyeom/private/forin/server/content/tools/verify_one_theme.py <부서코드> <작업 폴더>/<주제>.yaml
