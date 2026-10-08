@@ -44,7 +44,9 @@ v46 (학습 화면 핸드오프 1:1 — `lesson-fidelity-v46/build-spec-index.md
 
     V18 문장의 tag(≤10자)·icon(NbIcon 이름)·why·decoy가 비어 있지 않다. decoy는 그 문장의 청크가
         아니고 en 안에도 없다. distractorsKo는 2개, 서로 다르고 문장 ko와 다르다. blank의 answer는
-        en에 낱말 경계로 정확히 한 번 나오고, options는 4개·서로 다르고·answer를 포함하며 저마다 icon이 있다
+        en에 낱말 경계로 정확히 한 번 나오고, options는 4개·서로 다르고·answer를 포함하며 저마다 icon이 있다.
+        (품질, 파이썬만 — 적재는 막지 않음) 선택지 icon은 서로 다르고, 정답 선택지 icon은 문장 icon과 다르다
+        — 머리 앰버 원과 같은 아이콘이 정답 칸에만 있으면 답이 보인다(v46 ER 파일럿 46/122)
     V19 상황의 order(순서 배열 카드)는 ko·why가 있고 줄이 정확히 4개, 줄마다 en·icon이 있고 en이
         겹치지 않는다. tag·icon과 줄의 ko·note는 있으면 비어 있지 않다. 문장 없는 상황에 order만 있으면 오류
     V14 (더함) context의 word와 ko는 함께 있거나 함께 없다. swap의 ko는 있으면 비어 있지 않다
@@ -1213,7 +1215,7 @@ def check_sentence_v46(i: int, sent: dict) -> list[tuple[str, str]]:
         opts = blank.get("options") or []
         if len(opts) != BLANK_OPTIONS:
             out.append(("V18", f"{at}: blank has {len(opts)} options, want {BLANK_OPTIONS}"))
-        seen, offered = set(), False
+        seen, offered, icons = set(), False, []
         for o in opts:
             o = o if isinstance(o, dict) else {}
             n = _norm(o.get("en") or "")
@@ -1226,6 +1228,12 @@ def check_sentence_v46(i: int, sent: dict) -> list[tuple[str, str]]:
             offered = offered or o.get("en") == answer
             if p := _icon_problem(f"blank option {o.get('en')!r} icon", o.get("icon")):
                 out.append(("V18", f"{at}: {p}"))
+            elif o.get("icon") in icons:
+                out.append(("V18", f"{at}: blank option {o.get('en')!r} icon {o.get('icon')!r} repeats — two options look alike"))
+            else:
+                icons.append(o.get("icon"))
+            if o.get("en") == answer and o.get("icon") and o.get("icon") == sent.get("icon"):
+                out.append(("V18", f"{at}: blank answer icon {o.get('icon')!r} is the sentence's icon — the sheet's head gives the answer away"))
         if not offered:
             out.append(("V18", f"{at}: blank answer {answer!r} is not one of the options"))
     return out
@@ -2135,7 +2143,7 @@ def run_selftest() -> int:
     # wristband.")에 얹는다. 은행은 v44 그대로 — v46 필드는 은행 판과 무관하게 선택이다.
     def v46_sentence() -> dict:
         return {
-            "tag": "신원 확인", "icon": "bandage", "why": "Let me…로 시작하면 지시가 아니라 안내로 들려요.",
+            "tag": "신원 확인", "icon": "shield", "why": "Let me…로 시작하면 지시가 아니라 안내로 들려요.",
             "decoy": "for the doctor", "distractorsKo": ["지금 약을 드릴게요", "차트에 기록했어요"],
             "blank": {"answer": "wristband", "options": [
                 {"en": "wristband", "icon": "bandage"}, {"en": "chart", "icon": "board"},
@@ -2191,6 +2199,8 @@ def run_selftest() -> int:
         ("blank options repeat", lambda s: s["blank"]["options"][2].update(en="Chart")),
         ("blank option icon NbIcon does not draw", lambda s: s["blank"]["options"][3].update(icon="round")),
         ("blank option without icon", lambda s: s["blank"]["options"][3].pop("icon")),
+        ("blank answer icon is the sentence icon", lambda s: s.update(icon="bandage")),
+        ("blank option icons repeat", lambda s: s["blank"]["options"][3].update(icon="board")),
         ("blank is not a mapping", lambda s: s.update(blank=["wristband"])),
     ):
         cases.append((f"V18 ({name})", _LEX_BASE, v46_seed(mut), "V18", False))
