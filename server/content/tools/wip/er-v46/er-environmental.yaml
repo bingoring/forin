@@ -3876,12 +3876,12 @@ situations:
     - 어디가 가장 불편하세요?
     - 물은 좀 드셨어요?
     blank:
-      answer: When
+      answer: dizzy
       options:
-      - en: How
-      - en: When
-      - en: Where
-      - en: Why
+      - en: itchy
+      - en: dizzy
+      - en: sore
+      - en: thirsty
   - en: Were you able to find any shade or rest?
     ko: 그늘을 찾거나 쉴 수는 있으셨어요?
     chunks:
@@ -3982,10 +3982,10 @@ situations:
     blank:
       answer: temperature
       options:
-      - en: hearing
+      - en: oxygen
       - en: temperature
       - en: weight
-      - en: height
+      - en: blood sugar
   nuance:
   - kind: slider
     words:
@@ -4024,7 +4024,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 더위 노출 문진 4문장 순서
-    why: 노출 시간으로 시작해 증상이 시작된 때를 묻고, 도움이 된 것을 이어 물은 뒤 그것을 감안해 체온과 맥박을 재요. 'out there'·'it'·'whatever helped'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 노출 시간으로 시작해 'out there'가 그 장소를 가리켜 증상이 시작된 때를 묻고, 'Once that started'가 그 증상을 가리켜 도움이 된 것을 묻고, 'Thanks'가 그 대답을 받아 체온과 맥박을 재요.
     lines:
     - en: How long were you out in the heat today?
       icon: calendar
@@ -4034,13 +4034,13 @@ situations:
       icon: magnify
       ko: 거기서 언제부터 어지럽거나 메스꺼우셨어요?
       note: 시작
-    - en: Did anything help with it, like shade, rest or water?
+    - en: Once that started, did anything help, like shade, rest or water?
       icon: coffee
-      ko: 그늘, 휴식, 물처럼 도움이 된 게 있었어요?
+      ko: 그게 시작됐을 때 그늘이나 휴식, 물처럼 도움이 된 게 있었어요?
       note: 대처
-    - en: With whatever helped in mind, I'm going to check your temperature and pulse now.
+    - en: Thanks — now let me check your temperature and pulse.
       icon: stetho
-      ko: 도움이 된 것을 감안해서 체온과 맥박을 재 볼게요
+      ko: 고마워요 — 이제 체온과 맥박을 확인해 볼게요
       note: 측정
 - title: 경증 열탈진 사정
   sentences:
@@ -4119,17 +4119,17 @@ situations:
     tag: 위험 징후
     icon: siren
     why: if로 환자가 스스로 알아차릴 신호를 구체적으로 알려요. 혼란이나 땀이 멎는 것은 열탈진이 더 심한 열 손상으로 넘어가는 경고라서 바로 말해 달라고 해요.
-    decoy: right away
+    decoy: or get thirsty
     distractorsKo:
     - 물을 천천히 드세요.
     - 얼마나 오래 계셨어요?
     blank:
-      answer: serious
+      answer: confused
       options:
-      - en: common
-      - en: normal
-      - en: helpful
-      - en: serious
+      - en: hungry
+      - en: thirsty
+      - en: bored
+      - en: confused
   - en: Let's get you some water and a cool cloth.
     ko: 물이랑 시원한 수건을 가져다드릴게요.
     chunks:
@@ -4247,7 +4247,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 열탈진 설명과 안내 4문장 순서
-    why: 원인을 말하고, 그래서 나타난 증상과 병명을 잇고, 해결을 알린 뒤 위험 징후로 마무리해요. 'That's why'·'it'·'all that'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 원인을 말하고, 'That's why'가 그 원인을 가리켜 증상과 병명을 잇고, 'To fix it'이 그 상태를 가리켜 처치를 알린 뒤, 'Even with that care'가 그 처치를 가리켜 위험 징후를 당부해요.
     lines:
     - en: Your body got too hot out there today.
       icon: faceWorried
@@ -4261,9 +4261,9 @@ situations:
       icon: coffee
       ko: 해결하려고 식혀 드리고 마실 것을 드려요
       note: 처치
-    - en: Alongside all that, tell me if you get confused or stop sweating.
+    - en: Even with that care, tell me right away if you get confused or stop sweating.
       icon: siren
-      ko: 그와 함께 혼란스럽거나 땀이 멈추면 말씀해 주세요
+      ko: 그렇게 돌봐 드려도 혼란스러워지거나 땀이 멈추면 바로 말씀해 주세요
       note: 경고
 - title: 경증 저체온 초기
   sentences:
@@ -4285,15 +4285,15 @@ situations:
     why: means로 증상의 이유를 풀어 줘요. 떨림이 몸이 스스로 열을 만들려는 반응이라고 설명하면 환자가 겁먹지 않고 보온 치료를 받아들여요.
     decoy: has stopped
     distractorsKo:
-    - 언제부터 젖어 있었어요?
+    - 언제부터 젖어 계셨어요?
     - 담요를 덮어 드릴게요.
     blank:
       answer: shivering
       options:
       - en: sweating
-      - en: itching
+      - en: sneezing
       - en: shivering
-      - en: coughing
+      - en: yawning
   - en: We're getting you out of these wet clothes and into warm blankets.
     ko: 젖은 옷을 벗고 따뜻한 담요로 감싸 드릴게요.
     chunks:
@@ -4423,9 +4423,9 @@ situations:
     blank:
       answer: temperature
       options:
-      - en: weight
-      - en: hearing
-      - en: vision
+      - en: blood pressure
+      - en: oxygen
+      - en: blood sugar
       - en: temperature
   nuance:
   - kind: slider
@@ -4465,7 +4465,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 초기 저체온 보온 4문장 순서
-    why: 떨림의 뜻을 말하고, 돕는 조치를 알리고, 담요 속 상태를 묻고, 계속 체온을 보겠다고 마무리해요. 'it'·'the blankets'·'Whatever you tell me'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 떨림의 뜻을 말하고, 'it'이 그 떨림을 가리켜 돕는 조치를 알리고, 'the blankets'가 그 담요를 가리켜 상태를 묻고, 'Thanks for telling me'가 그 대답을 받아 계속 체온을 보겠다고 마무리해요.
     lines:
     - en: That shivering means your body is trying to warm itself.
       icon: me
@@ -4479,9 +4479,9 @@ situations:
       icon: speech
       ko: 담요를 덮고 어떤 느낌인지 말씀해 주시겠어요?
       note: 확인
-    - en: Whatever you tell me, we'll keep checking your temperature as you warm up.
+    - en: Thanks for telling me — we'll keep checking your temperature as you warm up.
       icon: monitor
-      ko: 어떻게 말씀하셔도 따뜻해지는 동안 체온을 계속 확인할게요
+      ko: 말씀 고마워요 — 따뜻해지는 동안 체온을 계속 확인할게요
       note: 감시
 - title: 일광화상 처치 설명
   sentences:
@@ -4508,9 +4508,9 @@ situations:
     blank:
       answer: pain
       options:
-      - en: cough
+      - en: itching
       - en: nausea
-      - en: cold
+      - en: swelling
       - en: pain
   - en: Drink plenty of water, since sunburn can dry you out.
     ko: 일광화상은 몸을 건조하게 하니 물을 충분히 드세요.
@@ -4534,12 +4534,12 @@ situations:
     - 열이 나는지 지켜보세요.
     - 얼음은 직접 대지 마세요.
     blank:
-      answer: since
+      answer: sunburn
       options:
-      - en: since
-      - en: although
-      - en: unless
-      - en: until
+      - en: sunburn
+      - en: frostbite
+      - en: a bruise
+      - en: a rash
   - en: Watch for blisters or a fever, and don't pop any blisters.
     ko: 물집이나 열이 나는지 지켜보시고, 물집은 터뜨리지 마세요.
     chunks:
@@ -4563,10 +4563,10 @@ situations:
     blank:
       answer: fever
       options:
-      - en: stomachache
+      - en: headache
       - en: fever
-      - en: cough
-      - en: cold
+      - en: rash
+      - en: tan
   - en: Your shoulders look pretty sunburned and tender.
     ko: 어깨가 꽤 심하게 타고 만지면 아프시겠어요.
     chunks:
@@ -4676,17 +4676,17 @@ situations:
       ok: true
     - who: 환자에게
       icon: me
-      en: Monitor for blistering, bullae or pyrexia, and avoid rupturing the blisters.
+      en: Monitor for blister formation or pyrexia, and avoid rupturing them.
       ok: false
       fix: Watch for blisters or a fever, and don't pop any blisters.
-    why: bullae(큰 물집)·pyrexia(발열)는 기록에 쓰는 의학 용어예요. 집에 가서 스스로 지켜볼 환자에게는 blisters·fever처럼 매일 쓰는 말로 알려 줘야 실제로 지켜요.
+    why: pyrexia(발열)·formation·rupture는 기록에 쓰는 말이에요. 집에 가서 스스로 지켜볼 환자에게는 blisters·fever처럼 매일 쓰는 말로 알려 줘야 실제로 지켜요.
     word: blister
     ko: 물집
   order:
     tag: 대화 흐름
     icon: compass
     ko: 일광화상 안내 4문장 순서
-    why: 상태를 말하고, 그것을 덜어 줄 처치를 알린 뒤, 집에서 할 일과 지켜볼 일을 이어요. 'that'·'the same pain'·'all of that'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 상태를 말하고, 'that'이 그 통증을 가리켜 처치를 알리고, 'it'이 그 통증을 가리켜 집에서 할 일을 말하고, 'despite that'이 그 집 관리를 가리켜 물집이나 열이 생기면 어떻게 할지 이어요.
     lines:
     - en: Your shoulders look pretty sunburned and tender.
       icon: faceWorried
@@ -4696,13 +4696,13 @@ situations:
       icon: bandage
       ko: 덜어 드리려고 피부를 식히고 통증 약을 드릴게요
       note: 처치
-    - en: At home, aloe or a cool compress can keep helping with the same pain.
+    - en: At home, aloe or a cool compress can keep easing it.
       icon: pill
-      ko: 집에서도 알로에나 시원한 찜질이 같은 통증에 계속 도움이 돼요
+      ko: 집에서도 알로에나 시원한 찜질이 계속 덜어 줄 수 있어요
       note: 집에서
-    - en: On top of aloe or a compress, watch for blisters or a fever, and don't pop them.
+    - en: If blisters or a fever show up despite that, don't pop them. Come back.
       icon: siren
-      ko: 알로에나 찜질 말고도 물집이나 열을 지켜보시고 터뜨리지 마세요
+      ko: 그래도 물집이나 열이 생기면 터뜨리지 말고 다시 오세요
       note: 주의
 - title: 탈수 수분보충 교육
   sentences:
@@ -4751,7 +4751,7 @@ situations:
     tag: 대안 안내
     icon: pill
     why: If로 조건과 다음 단계를 함께 알려요. 마시기가 안 되면 정맥으로 넘어간다고 미리 말하면 환자가 마시기를 시도하면서도 안심해요.
-    decoy: by mouth
+    decoy: with a meal
     distractorsKo:
     - 오늘 소변을 보셨나요?
     - 어지러우세요?
@@ -4905,7 +4905,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 탈수 수분보충 4문장 순서
-    why: 상태를 보고, 진찰하고, 진찰 결과를 바탕으로 입으로 마시기를 시작한 뒤, 부족할 때의 대안을 말해요. 'that exam'·'those sips'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 상태를 보고, 진찰하고, 'the exam'이 그 진찰을 가리켜 가벼우면 입으로 마시기를 시작한 뒤, 'those sips'가 그 조금씩 마시기를 가리켜 부족할 때의 대안을 말해요.
     lines:
     - en: You look pretty weak and thirsty right now.
       icon: faceWorried
@@ -4915,9 +4915,9 @@ situations:
       icon: stetho
       ko: 간단히 진찰해서 얼마나 탈수됐는지 확인해 볼게요
       note: 진찰
-    - en: Based on that exam, let's start with small sips of fluid.
+    - en: If the exam shows it's mild, let's start with small sips of fluid.
       icon: coffee
-      ko: 진찰 결과로 수분을 조금씩 마시는 것부터 시작해요
+      ko: 진찰에서 가벼운 탈수로 나오면 수분을 조금씩 마시는 것부터 시작해요
       note: 경구
     - en: If those sips aren't enough, we'll give you fluids through an IV.
       icon: pill
@@ -5000,12 +5000,12 @@ situations:
     - 체온을 다시 잴게요.
     - 어디가 가장 아프세요?
     blank:
-      answer: where
+      answer: name
       options:
-      - en: why
-      - en: when
-      - en: how
-      - en: where
+      - en: age
+      - en: weight
+      - en: job
+      - en: name
   - en: Can you squeeze my hand for me?
     ko: 제 손을 꽉 쥐어 보실 수 있어요?
     chunks:
@@ -5050,10 +5050,10 @@ situations:
     blank:
       answer: temperature
       options:
-      - en: cholesterol
+      - en: heart rate
       - en: temperature
+      - en: pain
       - en: weight
-      - en: voice
   - en: Stay with me — you're going to be okay.
     ko: 정신 놓지 마세요 — 괜찮아지실 거예요.
     chunks:
@@ -5118,7 +5118,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 열사병 응대 4문장 순서
-    why: 상태와 냉각을 말하고, 그 상태에서 의식을 확인한 뒤, 묻는 이유를 알려요. 'it'·'those packs'·'asking'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 상태와 냉각을 말하고, 'it'이 그 체온을 가리켜 냉각을 알리고, 'those packs'가 그 냉각 팩을 가리켜 의식을 확인한 뒤, 'asking'이 그 질문을 가리켜 묻는 이유를 알려요.
     lines:
     - en: Your body temperature is dangerously high, and we're cooling you fast.
       icon: siren
@@ -5128,9 +5128,9 @@ situations:
       icon: bandage
       ko: 체온을 낮추려고 찜질팩을 대고 분무를 하고 있어요
       note: 냉각
-    - en: With those packs on, stay with me — can you tell me your name and where you are?
+    - en: While those packs work, can you tell me your name and where you are?
       icon: me
-      ko: 팩을 댄 채로 정신 놓지 말고 성함과 어디인지 말해 주세요
+      ko: 팩이 작용하는 동안 성함과 여기가 어디인지 말씀해 주시겠어요?
       note: 의식
     - en: I'm asking because confusion can be a sign the heat is affecting you.
       icon: faceWorried
@@ -5161,12 +5161,12 @@ situations:
     - 체온을 다시 재 볼게요.
     - 언제 발견되셨나요?
     blank:
-      answer: serious
+      answer: shivering
       options:
-      - en: minor
-      - en: fine
-      - en: serious
-      - en: normal
+      - en: sweating
+      - en: coughing
+      - en: shivering
+      - en: talking
   - en: We're actively warming him with heated blankets and warm fluids.
     ko: 가온 담요와 따뜻한 수액으로 능동적으로 재가온하고 있어요.
     chunks:
@@ -5272,17 +5272,17 @@ situations:
     tag: 모니터링
     icon: monitor
     why: while we로 재가온 중에도 지켜본다고 말해요. 저체온에서는 재가온하는 동안에도 심장 리듬이 변할 수 있어서 계속 모니터로 봐요.
-    decoy: once a day
+    decoy: his breathing
     distractorsKo:
     - 체온을 다시 재 볼게요.
-    - 가족분께 설명해 드릴게요.
+    - 손발이 아직 차가워요.
     blank:
-      answer: closely
+      answer: rhythm
       options:
-      - en: briefly
-      - en: loosely
-      - en: closely
-      - en: rarely
+      - en: valves
+      - en: size
+      - en: rhythm
+      - en: muscle
   - en: Try not to rub or massage his arms and legs.
     ko: 팔다리는 문지르거나 주무르지 마세요.
     chunks:
@@ -5306,7 +5306,7 @@ situations:
       options:
       - en: shake
       - en: bend
-      - en: squeeze
+      - en: wash
       - en: massage
   nuance:
   - kind: pair
@@ -5354,7 +5354,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 중등도 저체온 가족 안내 4문장 순서
-    why: 왜 위험한지를 말하고, 그래서 하는 치료를 알리고, 피할 일을 덧붙인 뒤, 심장 리듬 감시로 마무리해요. 'That's why'·'that'·'leaving his limbs alone'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 왜 위험한지를 말하고, 'That's why'가 그 위험을 가리켜 치료를 알리고, 'During that warming'이 그 치료를 가리켜 예민한 심장을 이유로 문지르지 말라 하고, 'the same reason'이 그 이유를 가리켜 심장 리듬 감시로 마무리해요.
     lines:
     - en: When shivering stops, the cold has gone deeper — this is serious.
       icon: siren
@@ -5364,13 +5364,13 @@ situations:
       icon: bandage
       ko: 그래서 가온 담요와 따뜻한 수액으로 적극적으로 데우고 있어요
       note: 치료
-    - en: To help with that, try not to rub or massage his arms and legs.
+    - en: During that warming, please don't rub his arms and legs; his heart is sensitive.
       icon: lock
-      ko: 도우시려면 팔다리를 문지르거나 주무르지 마세요
+      ko: 그렇게 데우는 동안 팔다리는 문지르지 마세요, 심장이 예민해요
       note: 금지
-    - en: Along with leaving his limbs alone, we'll watch his heart rhythm closely.
+    - en: For the same reason, we're watching his heart rhythm closely.
       icon: monitor
-      ko: 팔다리를 가만히 두는 것과 함께 심장 리듬을 계속 볼게요
+      ko: 같은 이유로 심장 리듬을 계속 지켜보고 있어요
       note: 감시
 - title: 동상 손발
   sentences:
@@ -5514,9 +5514,9 @@ situations:
     blank:
       answer: tingling
       options:
-      - en: hunger
-      - en: thirst
-      - en: nausea
+      - en: numbness
+      - en: itching
+      - en: stiffness
       - en: tingling
   - en: We're keeping your hands elevated to help the swelling.
     ko: 붓기에 도움이 되게 손을 올려 두고 있어요.
@@ -5587,7 +5587,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 동상 재가온 안내 4문장 순서
-    why: 병명과 해야 할 일을 말하고, 재가온 방법과 아픔을 알리고, 느낌을 알려 달라 하고, 지켜볼 것으로 마무리해요. 'that'·'the warm water'·'what you tell me'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 병명과 해야 할 일을 말하고, 'that'이 그 재가온을 가리켜 방법과 아픔을 알리고, 'in it'이 그 따뜻한 물을 가리켜 녹는 느낌을 알려 달라 하고, 'they've thawed'가 그 손가락을 가리켜 지켜볼 것으로 마무리해요.
     lines:
     - en: Your fingers had frostbite, so we need to rewarm them.
       icon: bulb
@@ -5597,13 +5597,13 @@ situations:
       icon: bandage
       ko: 따뜻한 물에서 하고 있고, 욱신거리는 건 예상되는 거예요
       note: 방법
-    - en: Tell me when you start to feel any tingling or pain from the warm water.
+    - en: As your fingers thaw in it, tell me if you feel tingling or pain.
       icon: bell
-      ko: 따뜻한 물 때문에 따끔거리거나 아프면 말씀해 주세요
+      ko: 손가락이 거기서 녹는 동안 따끔거리거나 아프면 말씀해 주세요
       note: 보고
-    - en: Together with what you tell me, we'll watch for blisters and check the color.
+    - en: Once they've thawed, we'll watch for blisters and check how the color returns.
       icon: magnify
-      ko: 말씀해 주시는 것과 함께 물집과 색깔을 지켜볼게요
+      ko: 다 녹으면 물집을 살피고 색이 어떻게 돌아오는지 볼게요
       note: 관찰
 - title: 노인 여름 탈수 혼돈
   sentences:
@@ -5662,7 +5662,7 @@ situations:
       - en: weight
       - en: electrolytes
       - en: allergies
-      - en: hearing
+      - en: medications
   - en: Has she been urinating less or feeling dizzy when standing?
     ko: 소변량이 줄었거나 서 있을 때 어지러워하셨어요?
     chunks:
@@ -5687,10 +5687,10 @@ situations:
     blank:
       answer: urinating
       options:
-      - en: snoring
-      - en: blinking
+      - en: sweating
+      - en: eating
       - en: urinating
-      - en: coughing
+      - en: sleeping
   - en: How much has she been eating or drinking the past few days?
     ko: 지난 며칠 동안 얼마나 드시고 마셨어요?
     chunks:
@@ -5738,12 +5738,12 @@ situations:
     - 방금 혼란이 시작됐나요?
     - 혈압약을 드시나요?
     blank:
-      answer: quickly
+      answer: dehydrated
       options:
-      - en: quickly
-      - en: slowly
-      - en: rarely
-      - en: hardly
+      - en: dehydrated
+      - en: hungry
+      - en: tired
+      - en: sunburned
   - en: We'll keep a close eye on her while the fluids go in.
     ko: 수액이 들어가는 동안 잘 지켜볼게요.
     chunks:
@@ -5764,12 +5764,12 @@ situations:
     - 곧 의사가 올 거예요.
     - 잠시 일어나지 마세요.
     blank:
-      answer: eye
+      answer: close
       options:
-      - en: hair
-      - en: eye
-      - en: ear
-      - en: hand
+      - en: loose
+      - en: close
+      - en: quick
+      - en: light
   nuance:
   - kind: pair
     words:
@@ -5814,7 +5814,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 노인 탈수 혼란 문진 4문장 순서
-    why: 원인을 설명하고, 먹고 마신 양을 묻고, 소변과 어지럼을 이어 묻고, 모은 답으로 검사와 보충을 알려요. 'That's why'·'that intake'·'those answers'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 원인을 설명하고, 'That's why'가 그 원인을 가리켜 먹고 마신 양을 묻고, 'what she's drunk'가 그 양을 가리켜 소변과 어지럼을 이어 묻고, 'Either way'가 그 답과 상관없이 전해질 확인과 보충을 알려요.
     lines:
     - en: Dehydration in the heat can cause confusion in older adults.
       icon: bulb
@@ -5824,13 +5824,13 @@ situations:
       icon: coffee
       ko: 그래서 요즘 얼마나 드셨는지 알아야 해요
       note: 섭취
-    - en: With that intake in mind, has she been urinating less or feeling dizzy when standing?
+    - en: Besides what she's drunk, has she been urinating less or feeling dizzy when standing?
       icon: magnify
-      ko: 그 양을 감안해서, 소변이 줄거나 설 때 어지러워하셨나요?
+      ko: 마신 양 말고, 소변이 줄었거나 서 있을 때 어지러워하셨어요?
       note: 증상
-    - en: With all of those answers, we'll check her electrolytes and rehydrate her carefully.
+    - en: Either way, we'll check her electrolytes and rehydrate her carefully.
       icon: lab
-      ko: 그 답들로 전해질을 확인하고 조심스럽게 수분을 보충할게요
+      ko: 어느 쪽이든 전해질을 확인하고 조심스럽게 수분을 보충할게요
       note: 처치
 - title: 운동성 열손상 선수
   sentences:
@@ -5858,10 +5858,10 @@ situations:
     blank:
       answer: probe
       options:
-      - en: brush
+      - en: patch
       - en: probe
-      - en: scale
-      - en: mask
+      - en: strip
+      - en: cuff
   - en: We're cooling you with an ice-water immersion to bring it down fast.
     ko: 얼음물 침수로 빠르게 체온을 낮추고 있어요.
     chunks:
@@ -5966,10 +5966,10 @@ situations:
     blank:
       answer: cramping
       options:
-      - en: hiccups
+      - en: nausea
       - en: cramping
-      - en: coughing
-      - en: itching
+      - en: headache
+      - en: dizziness
   - en: Your temperature is coming down well with the cooling.
     ko: 냉각으로 체온이 잘 내려가고 있어요.
     chunks:
@@ -5983,7 +5983,7 @@ situations:
     - w-cool
     goal: 2
     tag: 경과 안내
-    icon: chartup
+    icon: check
     why: coming down well로 좋은 경과를 구체적으로 알려요. 냉각 중에 체온이 내려가는 것을 확인해서 말해 주면 환자가 치료가 듣는다고 안심해요.
     decoy: since morning
     distractorsKo:
@@ -6037,19 +6037,19 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 운동성 열손상 응대 4문장 순서
-    why: 체온을 재고, 식히고, 내려가는 것을 알린 뒤, 경위를 묻습니다. 'it'·'the cooling'·'That's good news'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 먼저 얼음물로 식히고, 'While you're in it'이 그 욕조를 가리켜 동시에 심부 체온을 재고, 'That reading'이 그 측정을 가리켜 내려가는 것을 알린 뒤, 경위를 물어요. 운동성 열사병은 먼저 식히는 것이 원칙이라 냉각이 측정보다 앞에 와요.
     lines:
-    - en: We're checking your core temperature with a special probe.
-      icon: monitor
-      ko: 특수 탐침으로 심부 체온을 확인하고 있어요
-      note: 측정
-    - en: We're cooling you with an ice-water immersion to bring it down fast.
+    - en: We're cooling you in an ice-water bath to bring your temperature down fast.
       icon: bandage
-      ko: 얼음물 침수로 빠르게 체온을 낮추고 있어요
+      ko: 얼음물 욕조로 빠르게 체온을 낮추고 있어요
       note: 냉각
-    - en: Your temperature is coming down well with the cooling.
+    - en: While you're in it, we're checking your core temperature with a special probe.
+      icon: monitor
+      ko: 들어가 계신 동안 특수 탐침으로 심부 체온을 확인하고 있어요
+      note: 측정
+    - en: That reading shows your temperature is coming down well with the cooling.
       icon: chartup
-      ko: 냉각으로 체온이 잘 내려가고 있어요
+      ko: 그 측정값을 보면 냉각으로 체온이 잘 내려가고 있어요
       note: 경과
     - en: That's good news — how long were you running, and when did the cramps start?
       icon: calendar
@@ -6135,7 +6135,7 @@ situations:
       options:
       - en: eat
       - en: sleep
-      - en: bathe
+      - en: rest
       - en: walk
   - en: It's okay, we just want to make sure you're safe tonight.
     ko: 괜찮아요, 오늘 밤 안전하신지만 확인하고 싶은 거예요.
@@ -6158,10 +6158,10 @@ situations:
     blank:
       answer: safe
       options:
-      - en: loud
+      - en: awake
       - en: safe
-      - en: late
-      - en: busy
+      - en: dressed
+      - en: fed
   - en: Have you had anything to drink today, including alcohol?
     ko: 오늘 술을 포함해서 뭐든 마신 게 있으세요?
     chunks:
@@ -6214,7 +6214,7 @@ situations:
       options:
       - en: dry
       - en: tight
-      - en: dirty
+      - en: heavy
       - en: wet
   nuance:
   - kind: pair
@@ -6273,9 +6273,9 @@ situations:
       icon: lab
       ko: 판단하려는 게 아니에요, 오늘 술 포함해서 마신 게 있으세요?
       note: 문진
-    - en: Whatever you tell me, it's okay — we just want to make sure you're safe tonight.
+    - en: Whatever you tell me is okay — we just want you safe tonight.
       icon: shield
-      ko: 뭐라고 하셔도 괜찮아요, 오늘 밤 안전하신지만 확인하고 싶어요
+      ko: 뭐라고 하셔도 괜찮아요 — 오늘 밤 안전하셨으면 해요
       note: 안심
 - title: 익수 후 저체온
   sentences:
@@ -6302,12 +6302,12 @@ situations:
     - 언제 물에서 꺼냈어요?
     - 기침은 하나요?
     blank:
-      answer: closely
+      answer: lungs
       options:
-      - en: rarely
-      - en: briefly
-      - en: loosely
-      - en: closely
+      - en: kidneys
+      - en: liver
+      - en: skin
+      - en: lungs
   - en: At the same time we're warming his body core.
     ko: 동시에 몸의 심부도 따뜻하게 하고 있어요.
     chunks:
@@ -6440,9 +6440,9 @@ situations:
       answer: oxygen
       options:
       - en: oxygen
-      - en: noise
-      - en: light
-      - en: volume
+      - en: sugar
+      - en: sodium
+      - en: iron
   nuance:
   - kind: slider
     words:
@@ -6472,29 +6472,29 @@ situations:
       ok: true
     - who: 보호자에게
       icon: me
-      en: What was his total duration under, from submersion to rescue?
+      en: What was his total time underwater, from submersion to extrication?
       ok: false
       fix: How long was he under the water?
-    why: submersion(수면 아래 잠김)·duration은 의료진이 인계·기록에 쓰는 말이에요. 놀란 보호자에게는 how long · under처럼 쉬운 말로 물어요.
+    why: submersion·extrication은 의료진이 인계·기록에 쓰는 말이에요. 놀란 보호자에게는 how long · under처럼 쉬운 말로 물어요.
     word: under
     ko: 물속에 잠기다
   order:
     tag: 대화 흐름
     icon: compass
     ko: 익수 환자 보호자 안내 4문장 순서
-    why: 구조 시점을 알리고, 물속에 있던 시간을 묻고, 답에 상관없이 하는 처치를 알린 뒤, 폐 검사를 이어요. 'it'·'Whatever the answer'·'Besides that'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 물 밖으로 나왔다고 알리고, 'in it'이 그 물을 가리켜 얼마나 있었는지 묻고, 'That helps'가 그 대답을 받아 데우기와 호흡 감시를 알리고, 'Besides that'이 그 처치 말고 폐 검사를 더해요.
     lines:
-    - en: We pulled him out of the ice water a few minutes ago.
+    - en: He's out of the water now, and we're taking care of him.
       icon: pushpin
-      ko: 몇 분 전에 얼음물에서 끌어냈어요
+      ko: 이제 물 밖으로 나왔고 저희가 돌보고 있어요
       note: 경위
     - en: How long was he in it, and did he go under?
       icon: calendar
       ko: 거기에 얼마나 있었고 물속에 잠긴 적 있어요?
       note: 문진
-    - en: Whatever the answer, we're warming him and watching his breathing closely.
+    - en: That helps — we're warming him and watching his breathing closely.
       icon: bandage
-      ko: 답이 무엇이든 데우면서 호흡을 계속 지켜봐요
+      ko: 도움이 돼요 — 데우면서 호흡을 계속 지켜보고 있어요
       note: 처치
     - en: Besides that, we'll check his oxygen and listen to his lungs, which water can affect.
       icon: stetho
@@ -6526,12 +6526,12 @@ situations:
     - 쥐가 난 곳이 어디예요?
     - 언제부터 쥐가 났어요?
     blank:
-      answer: often
+      answer: salt
       options:
-      - en: often
-      - en: rarely
-      - en: never
-      - en: hardly
+      - en: salt
+      - en: sugar
+      - en: iron
+      - en: weight
   - en: We'll give you fluids with electrolytes to replace what you lost.
     ko: 잃은 걸 보충하려고 전해질이 든 수액을 드릴게요.
     chunks:
@@ -6611,12 +6611,12 @@ situations:
     - 다리를 쭉 펴 보세요.
     - 어디가 제일 아프세요?
     blank:
-      answer: because
+      answer: cramping
       options:
-      - en: although
-      - en: unless
-      - en: whereas
-      - en: because
+      - en: swelling
+      - en: shaking
+      - en: bruising
+      - en: cramping
   - en: Let's stretch your leg gently to help the cramp ease.
     ko: 쥐가 풀리게 다리를 부드럽게 스트레칭해 볼게요.
     chunks:
@@ -6663,12 +6663,12 @@ situations:
     - 오늘 일은 어디서 하세요?
     - 물을 드실 수 있어요?
     blank:
-      answer: hour
+      answer: heat
       options:
-      - en: year
-      - en: hour
-      - en: week
-      - en: month
+      - en: cold
+      - en: heat
+      - en: rain
+      - en: dark
   nuance:
   - kind: pair
     words:
@@ -6750,7 +6750,7 @@ situations:
     goal: 1
     tag: 통역 문진
     icon: speech
-    why: Through the interpreter로 통역을 거친다는 것을 먼저 밝혀 질문이 통역을 통해 전달된다는 걸 분명히 해요. 질문은 how high·how fast처럼 짧게 두 가지만 물어야 통역에서 뜻이 덜 흐려져요.
+    why: how high·how fast처럼 짧은 질문 두 개로 나누면 통역에서 뜻이 덜 흐려져요. 질문은 통역사가 아니라 보호자를 보고 해요.
     decoy: to the top
     distractorsKo:
     - 언제부터 두통이 있었나요?
@@ -6783,12 +6783,12 @@ situations:
     - 지금도 어지러운가요?
     - 같이 가신 분이 있었나요?
     blank:
-      answer: When
+      answer: headache
       options:
-      - en: Where
-      - en: How
-      - en: When
-      - en: Why
+      - en: cough
+      - en: rash
+      - en: headache
+      - en: nosebleed
   - en: We're giving oxygen and will explain each step through the interpreter.
     ko: 산소를 드리고 통역을 통해 각 단계를 설명해 드릴게요.
     chunks:
@@ -6806,7 +6806,7 @@ situations:
     tag: 처치 안내
     icon: speaker
     why: and로 처치와 설명을 한 문장에 묶어요. 통역을 거치는 환자는 무엇을 하는지 모른 채 처치를 받기 쉬워서 각 단계를 설명하겠다고 미리 약속해요.
-    decoy: by phone
+    decoy: through the family
     distractorsKo:
     - 어디가 가장 불편하세요?
     - 언제 내려오셨어요?
@@ -6831,7 +6831,7 @@ situations:
     goal: 1
     tag: 통역 요청
     icon: speech
-    why: Please ask him으로 통역사에게 부탁해요. 묻는 내용(how high·how quickly)을 문장에 그대로 넣어 통역사가 바꾸지 않고 옮기게 해요.
+    why: 묻는 내용(how high·how quickly)을 그대로 넣어 통역사가 바꾸지 않고 옮기게 해요. 다만 원칙은 통역사가 아니라 보호자를 보고 직접 묻는 거예요.
     decoy: if he ate
     distractorsKo:
     - 환자에게 산소를 드릴게요.
@@ -6924,37 +6924,37 @@ situations:
       ok: true
     - who: 차트 기록
       icon: board
-      en: Rapid climb to high altitude per family via interpreter.
+      en: Pt climbed rapidly to high altitude per family via interpreter.
       ok: true
     - who: 보호자에게 (통역 중)
       icon: speech
-      en: What was his rate of climb and maximum altitude reached?
+      en: What was his rate of ascent and the maximum altitude he climbed to?
       ok: false
       fix: How high did he climb, and how fast?
-    why: 통역을 거칠 때는 짧고 쉬운 말이 정확하게 전해져요. rate of climb·maximum altitude 같은 전문 용어는 통역 중에 뜻이 흐려지기 쉬워요.
+    why: 통역을 거칠 때는 짧고 쉬운 말이 정확하게 전해져요. rate of ascent·maximum altitude 같은 전문 용어는 통역 중에 뜻이 흐려지기 쉬워요.
     word: climb
     ko: 오르다
   order:
     tag: 대화 흐름
     icon: compass
     ko: 통역을 통한 고산 문진 4문장 순서
-    why: 설명 방식을 알리고, 올라간 높이와 속도를 묻고, 그 답 뒤에 시작 시점을 묻고, 두 답을 바탕으로 지금 증상을 확인해요. 'So'·'that answer'·'both answers'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 통역을 거쳐 짧은 질문을 하나씩 하겠다고 알리고, 'the first one'이 그 첫 질문으로 올라간 높이와 속도를 묻고, 'that climb'이 그 등반을 가리켜 증상이 시작된 때를 묻고, 'them'이 그 증상을 가리켜 지금도 있는지와 가슴 통증·혼란을 바로 확인해요. 질문은 통역사가 아니라 보호자를 보고 직접 해요.
     lines:
-    - en: We'll explain everything slowly through the interpreter.
+    - en: I'll speak with you through the interpreter, one short question at a time.
       icon: speech
-      ko: 통역을 통해 천천히 다 설명해 드릴게요
+      ko: 통역사를 통해 짧은 질문을 하나씩 드릴게요
       note: 안내
-    - en: So, please ask him how high he climbed and how quickly.
+    - en: For the first one, how high did he climb, and how fast?
       icon: speaker
-      ko: 그러니 얼마나 높이, 얼마나 빨리 올라갔는지 여쭤봐 주세요
+      ko: 첫 번째로, 얼마나 높이 올라갔고 얼마나 빨리 올라갔나요?
       note: 요청
-    - en: With that answer, ask him when the headache and shortness of breath started.
+    - en: After that climb, when did his headache and shortness of breath start?
       icon: calendar
-      ko: 그 답과 함께 두통과 숨참이 언제 시작됐는지 여쭤봐 주세요
+      ko: 그렇게 올라간 뒤 두통과 숨참이 언제 시작됐어요?
       note: 시작
-    - en: Based on both answers, ask if he's still having chest pain or feeling confused.
+    - en: Does he still have them now, or any chest pain or confusion?
       icon: faceWorried
-      ko: 두 답을 바탕으로 아직 가슴 통증이나 혼란이 있는지 여쭤봐 주세요
+      ko: 지금도 그 증상이 있나요, 아니면 가슴 통증이나 혼란이 있나요?
       note: 증상
 - title: 약물 유발 고체온 감별
   sentences:
@@ -7029,7 +7029,7 @@ situations:
     tag: 냉각 설명
     icon: bandage
     why: while we로 냉각과 원인 찾기를 같이 한다고 알려요. 원인을 찾느라 처치를 미루지 않는다는 점이 환자에게 안심이 돼요.
-    decoy: in an hour
+    decoy: the exact dose
     distractorsKo:
     - 지금 열이 몇 도예요?
     - 가족에게 연락할까요?
@@ -7037,9 +7037,9 @@ situations:
       answer: cause
       options:
       - en: cause
-      - en: price
-      - en: color
-      - en: number
+      - en: dose
+      - en: time
+      - en: drug
   - en: Are you feeling stiff anywhere besides your neck and jaw?
     ko: 목과 턱 말고 다른 데도 뻣뻣하게 느껴지세요?
     chunks:
@@ -7057,7 +7057,7 @@ situations:
     why: anywhere besides…로 이미 아는 부위(목·턱)는 빼고 다른 곳을 열어 물어요. 뻣뻣함이 몸 전체로 퍼졌는지는 약물에 의한 근육 경직을 가늠하는 단서예요.
     decoy: in your sleep
     distractorsKo:
-    - 언제부터 뻣뻣했어요?
+    - 언제부터 뻣뻣하셨어요?
     - 드신 약이 있나요?
     blank:
       answer: stiff
@@ -7088,10 +7088,10 @@ situations:
     blank:
       answer: name
       options:
-      - en: owner
-      - en: smell
+      - en: dose
+      - en: color
       - en: name
-      - en: price
+      - en: shape
   - en: We're checking your temperature closely to see if it's the heat or the drug.
     ko: 더위 때문인지 약 때문인지 보려고 체온을 자세히 확인하고 있어요.
     chunks:
@@ -7108,17 +7108,17 @@ situations:
     tag: 감별 설명
     icon: monitor
     why: to see if…or…로 자주 확인하는 이유를 두 가지 가능성으로 설명해요. 환자가 자주 재는 이유를 알면 협조해요.
-    decoy: once a day
+    decoy: your blood sugar
     distractorsKo:
     - 얼음을 대 드릴게요.
     - 약 이름을 알려 주세요.
     blank:
-      answer: closely
+      answer: drug
       options:
-      - en: rarely
-      - en: briefly
-      - en: loosely
-      - en: closely
+      - en: infection
+      - en: food
+      - en: stress
+      - en: drug
   nuance:
   - kind: slider
     words:
@@ -7159,7 +7159,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 약물 의심 고체온 감별 4문장 순서
-    why: 가설을 말하고, 새 약을 묻고, 그 위에 뻣뻣함을 묻고, 둘을 합쳐 체온을 지켜본다고 말해요. 'To find out'·'the medicines'·'both answers'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 가설을 말하고, 'To find out'이 그 가설을 가리켜 새 약을 묻고, 'the medicines'가 그 약을 가리켜 뻣뻣함을 묻고, 'that'이 앞의 두 답을 가리켜 원인을 좁히며 냉각을 계속한다고 말해요.
     lines:
     - en: The stiffness makes me wonder if a medication is causing this, not just heat.
       icon: bulb
@@ -7173,10 +7173,10 @@ situations:
       icon: magnify
       ko: 약 말고도 목과 턱 말고 다른 데도 뻣뻣하세요?
       note: 증상
-    - en: With both answers, we're checking your temperature closely.
-      icon: monitor
-      ko: 두 답을 함께 보면서 체온을 자세히 확인할게요
-      note: 감시
+    - en: Thank you — that helps us narrow the cause while we keep cooling you.
+      icon: bandage
+      ko: 고마워요 — 원인을 좁히는 데 도움이 되고, 계속 식혀 드릴게요
+      note: 마무리
 - title: 열사병 다장기부전
   sentences:
   - en: Core temp is critically high with signs of organ injury and clotting problems.
@@ -7205,12 +7205,12 @@ situations:
     - 혈액검사를 지금 보낼게요.
     - 중환자실 병상을 요청해 주세요.
     blank:
-      answer: critically
+      answer: clotting
       options:
-      - en: slightly
-      - en: mildly
-      - en: barely
-      - en: critically
+      - en: breathing
+      - en: feeding
+      - en: sleep
+      - en: clotting
   - en: We're aggressively cooling and checking for muscle breakdown and DIC.
     ko: 적극적으로 냉각하면서 근육 분해와 DIC를 확인하고 있습니다.
     chunks:
@@ -7228,7 +7228,7 @@ situations:
     goal: 1
     tag: 처치 보고
     icon: bandage
-    why: aggressively cooling은 열사병에서 체온을 빠르게 내리는 처치를 가리켜요. checking for…로 합병증(근육 분해, DIC)을 함께 확인한다고 말해 팀이 검사를 준비해요.
+    why: aggressively는 냉각을 미루지도 천천히 하지도 않는다는 뜻이라, 받는 사람이 처치의 강도를 바로 알아요. checking for…로 합병증(근육 분해, DIC)을 함께 확인한다고 말해 팀이 검사를 준비해요.
     decoy: for sepsis
     distractorsKo:
     - 소변이 어두운 색이에요.
@@ -7237,9 +7237,9 @@ situations:
       answer: muscle
       options:
       - en: muscle
+      - en: skin
       - en: bone
-      - en: tooth
-      - en: hair
+      - en: fat
   - en: Heat stroke with multi-organ failure — I need labs and blood products ready.
     ko: 다장기부전을 동반한 열사병입니다 — 검사와 혈액제제를 준비해 주세요.
     chunks:
@@ -7260,7 +7260,7 @@ situations:
     tag: 요청
     icon: lab
     why: 진단명 — 필요한 것 순서로 말해요. ready로 미리 준비해 달라고 요청하면 팀이 혈액제제와 검사를 기다리지 않고 준비해요.
-    decoy: right now
+    decoy: a discharge form
     distractorsKo:
     - 체온이 아직 떨어지지 않아요.
     - 소변 색이 어두워요.
@@ -7336,7 +7336,7 @@ situations:
     tag: 인계 요청
     icon: speaker
     why: 명령(Call the ICU) — 이유(we'll need…) 순서로 짧게 말해요. 이유를 붙이면 중환자실이 어떤 병상과 지지가 필요한지 미리 준비해요.
-    decoy: this afternoon
+    decoy: a stretcher
     distractorsKo:
     - 혈액제제를 준비해 주세요.
     - 체온은 아직 높아요.
@@ -7344,9 +7344,9 @@ situations:
       answer: bed
       options:
       - en: bed
-      - en: chair
+      - en: consult
       - en: form
-      - en: desk
+      - en: transfer
   nuance:
   - kind: slider
     words:
@@ -7396,23 +7396,23 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 열사병 다장기부전 보고 4문장 순서
-    why: 진단과 요청으로 열고, 처치에도 오르는 체온을 보고하고, 그 체온을 근거로 소견을 더하고, 이 모두를 이유로 중환자실을 부르는 순서예요. 'For that'·'temp that high'·'all of that'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 진단과 냉각을 말하고, 'Despite that'이 그 냉각에도 오르는 체온을 보고하고, 'That heat'이 그 열을 가리켜 어두운 소변으로 횡문근융해를 의심하고, 'all of that'이 이 모두를 이유로 검사·혈액제제·중환자실 병상을 요청해요.
     lines:
-    - en: Heat stroke with multi-organ failure — I need labs and blood products ready.
-      icon: lab
-      ko: 다장기부전을 동반한 열사병이에요, 검사와 혈액제제를 준비해 주세요
+    - en: Heat stroke with multi-organ failure — we're cooling aggressively.
+      icon: siren
+      ko: 다장기부전을 동반한 열사병이에요 — 적극적으로 냉각 중이에요
       note: 진단
-    - en: For that, we're cooling aggressively, but his temp's forty-one and climbing.
+    - en: Despite that, his temp's forty-one and still climbing.
       icon: chartup
-      ko: 그래서 적극 냉각 중인데 체온이 41도이고 오르고 있어요
+      ko: 그런데도 체온이 41도이고 계속 오르고 있어요
       note: 체온
-    - en: With temp that high, I'm worried about rhabdo — urine is dark.
+    - en: That heat is breaking down his muscles — urine is dark, likely rhabdo.
       icon: lab
-      ko: 체온이 그렇게 높아서 횡문근융해가 걱정돼요, 소변이 어두워요
+      ko: 그 열이 근육을 분해하고 있어요 — 소변이 어둡고 횡문근융해가 의심돼요
       note: 소견
-    - en: Because of all of that, call the ICU — we'll need a bed for multi-organ support.
+    - en: With all of that, I need labs, blood products, and an ICU bed.
       icon: speaker
-      ko: 그 모두 때문에 중환자실에 연락해 주세요, 다장기 지지 병상이 필요해요
+      ko: 그 모든 것 때문에 검사와 혈액제제, 중환자실 병상이 필요해요
       note: 요청
 - title: 심부저체온 심정지
   sentences:
@@ -7443,7 +7443,7 @@ situations:
       - en: resuscitating
       - en: charting
       - en: talking
-      - en: texting
+      - en: reporting
   - en: Continue compressions while we actively rewarm the core.
     ko: 심부를 능동적으로 재가온하는 동안 압박을 계속하세요.
     chunks:
@@ -7468,10 +7468,10 @@ situations:
     blank:
       answer: actively
       options:
-      - en: quietly
+      - en: passively
       - en: actively
-      - en: rarely
-      - en: briefly
+      - en: externally
+      - en: partially
   - en: Deep hypothermic arrest — let's activate the ECMO team now.
     ko: 심부저체온 심정지입니다 — 지금 ECMO 팀을 활성화합시다.
     chunks:
@@ -7524,9 +7524,9 @@ situations:
     blank:
       answer: still
       options:
-      - en: soon
-      - en: rarely
-      - en: barely
+      - en: now
+      - en: again
+      - en: finally
       - en: still
   - en: Keep him horizontal and avoid rough handling during the resuscitation.
     ko: 수평으로 유지하고 소생술 중 거친 조작은 피하세요.
@@ -7552,9 +7552,9 @@ situations:
       answer: resuscitation
       options:
       - en: resuscitation
-      - en: shift
-      - en: meeting
-      - en: lunch
+      - en: transfer
+      - en: scan
+      - en: handoff
   - en: We're prepping the room for ECMO right now.
     ko: 지금 ECMO를 위해 방을 준비하고 있어요.
     chunks:
@@ -7568,7 +7568,7 @@ situations:
     tag: 준비 보고
     icon: gear
     why: We're prepping…right now는 지금 진행 중인 준비를 알려요. 팀이 ECMO를 곧 시작할 수 있게 방과 장비를 미리 준비하는 일이라 진행 상황을 알려야 서로 기다리지 않아요.
-    decoy: this evening
+    decoy: the ICU bed
     distractorsKo:
     - 환자를 이송해 주세요.
     - 압박을 계속해 주세요.
@@ -7625,19 +7625,19 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 저체온 심정지 지시 4문장 순서
-    why: 원칙을 말하고, 그래서 ECMO를 부르고, 그 준비를 알린 뒤, 그 모든 동안의 취급을 당부해요. 'So'·'For that'·'Through all of that'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 원칙을 말하고, 'To get him warm'이 그 원칙의 warm을 받아 ECMO 팀을 부르고, 'that team'이 그 팀을 가리켜 방 준비를 알린 뒤, 'all of that'이 그 모든 동안의 취급을 당부해요.
     lines:
     - en: He's not dead until he's warm and dead — keep resuscitating.
       icon: siren
       ko: 따뜻해질 때까지는 죽은 게 아니에요, 계속 소생시키세요
       note: 원칙
-    - en: So it's a deep hypothermic arrest — let's activate the ECMO team now.
+    - en: To get him warm, let's activate the ECMO team now.
       icon: siren
-      ko: 그러니 심부저체온 심정지예요, 지금 ECMO 팀을 활성화합시다
+      ko: 따뜻하게 만들려면 지금 ECMO 팀을 활성화합시다
       note: 요청
-    - en: For that, we're prepping the room for ECMO right now.
+    - en: For that team, we're prepping the room right now.
       icon: gear
-      ko: 그걸 위해 지금 ECMO 방을 준비하고 있어요
+      ko: 그 팀을 위해 지금 방을 준비하고 있어요
       note: 준비
     - en: Through all of that, keep him horizontal and avoid rough handling.
       icon: lock
@@ -7693,17 +7693,17 @@ situations:
     tag: 처치 설명
     icon: hospital
     why: and로 확인과 협진 요청을 함께 알려요. to assess you로 외과가 와서 먼저 평가한다고 말해, 수술이 정해진 것처럼 들리지 않게 해요.
-    decoy: this evening
+    decoy: calling dermatology
     distractorsKo:
     - 통증은 몇 점이에요?
     - 발가락에 감각이 있나요?
     blank:
       answer: assess
       options:
-      - en: dress
-      - en: thank
+      - en: photograph
+      - en: interview
       - en: assess
-      - en: weigh
+      - en: train
   - en: Tell me if the numbness or pain gets worse — that's important.
     ko: 감각이 없어지거나 통증이 심해지면 말씀해 주세요 — 중요한 거예요.
     chunks:
@@ -7728,8 +7728,8 @@ situations:
       answer: numbness
       options:
       - en: itching
-      - en: coughing
-      - en: sneezing
+      - en: bruising
+      - en: warmth
       - en: numbness
   - en: Your foot looks more swollen than before, and it's very tight.
     ko: 발이 전보다 더 부었고, 아주 조여 있어요.
@@ -7774,7 +7774,7 @@ situations:
     tag: 협진 설명
     icon: hospital
     why: We need…right away로 협진이 필요하고 급하다는 것을 직접 말해요. 구획증후군은 시간이 지날수록 근육과 신경이 상해서 빨리 외과가 평가하는 게 중요해요.
-    decoy: next week
+    decoy: in your hand
     distractorsKo:
     - 발 사진을 찍을게요.
     - 통증약을 드릴게요.
@@ -7944,7 +7944,7 @@ situations:
     tag: 모니터링
     icon: monitor
     why: and로 두 가지(소변량, CK)를 한 문장에 묶어요. CK는 근육이 손상되면 혈액에 올라가는 효소라 수치로 손상 정도를 가늠해요. called CK로 약어를 모르는 환자에게도 이름을 알려요.
-    decoy: every week
+    decoy: a liver enzyme
     distractorsKo:
     - 소변 색을 확인할게요.
     - 수액을 더 드릴게요.
@@ -8031,9 +8031,9 @@ situations:
     blank:
       answer: bloodwork
       options:
-      - en: paperwork
-      - en: homework
-      - en: framework
+      - en: X-ray
+      - en: EKG
+      - en: ultrasound
       - en: bloodwork
   nuance:
   - kind: pair
@@ -8081,7 +8081,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 횡문근융해 설명 4문장 순서
-    why: 몸에서 생기는 일을 말하고, 그 이유를 잇고, 그 때문에 보는 검사를 알리고, 검사 결과와 상관없는 치료를 알려요. 'That'·'Because of that'·'Whatever it shows'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 몸에서 생기는 일을 말하고, 'That'이 그 상태를 가리켜 이유를 잇고, 'Because of that'이 그 이유를 가리켜 보는 검사를 알리고, 'Those numbers'가 소변량·CK 수치를 가리켜 수액 양을 정한다고 알려요.
     lines:
     - en: Dark urine with muscle aches can mean your muscles are breaking down.
       icon: bulb
@@ -8095,9 +8095,9 @@ situations:
       icon: monitor
       ko: 그래서 소변량을 지켜보고 근육 효소 CK를 확인할게요
       note: 감시
-    - en: Whatever it shows, we're giving lots of fluids to protect your kidneys.
+    - en: Those numbers will guide how much fluid we give to protect your kidneys.
       icon: pill
-      ko: 결과가 어떻든 신장을 보호하려고 수액을 많이 드려요
+      ko: 그 수치로 신장을 보호하려고 수액을 얼마나 드릴지 정해요
       note: 치료
 - title: 저체온 부정맥 급변
   sentences:
@@ -8123,7 +8123,7 @@ situations:
     decoy: in his chest
     distractorsKo:
     - 재가온을 계속해 주세요.
-    - 불필요한 움직임은 피하세요.
+    - 심장 리듬이 바뀌었어요.
     blank:
       answer: irritable
       options:
@@ -8147,17 +8147,17 @@ situations:
     tag: 지시
     icon: monitor
     why: Keep…while we…로 두 가지를 동시에 한다고 지시해요. 재가온을 멈추지 않으면서 리듬 변화를 놓치지 않겠다는 뜻이에요.
-    decoy: every hour
+    decoy: his blood pressure
     distractorsKo:
     - 움직임을 최소로 할게요.
     - 순환기내과에 연락할게요.
     blank:
-      answer: closely
+      answer: rhythm
       options:
-      - en: closely
-      - en: rarely
-      - en: briefly
-      - en: loosely
+      - en: rhythm
+      - en: temp
+      - en: IV
+      - en: chart
   - en: Avoid unnecessary movement so we don't trigger a worse arrhythmia.
     ko: 더 심한 부정맥을 유발하지 않게 불필요한 움직임은 피하세요.
     chunks:
@@ -8206,12 +8206,12 @@ situations:
     - 순환기내과를 호출할게요.
     - 지금 맥박은 느려요.
     blank:
-      answer: moment
+      answer: position
       options:
-      - en: year
-      - en: season
-      - en: moment
-      - en: week
+      - en: IV
+      - en: monitor
+      - en: position
+      - en: blanket
   - en: Let's minimize how much we touch him right now.
     ko: 지금은 최대한 적게 만지도록 할게요.
     chunks:
@@ -8227,7 +8227,7 @@ situations:
     why: Let's로 팀 전체가 함께 줄이자는 뜻으로 말해요. 필요한 처치는 계속하되 불필요한 접촉만 줄이라는 지시예요.
     decoy: for hours
     distractorsKo:
-    - 움직임을 피하세요.
+    - 체온을 다시 재 주세요.
     - 리듬을 계속 보세요.
     blank:
       answer: minimize
@@ -8252,7 +8252,7 @@ situations:
     tag: 호출 지시
     icon: speaker
     why: Continue…, and page…if로 계속할 일과 조건부 호출을 나눠요. 재가온은 멈추지 않고, 리듬이 나빠지면 전문과를 부르는 기준을 분명히 해요.
-    decoy: after lunch
+    decoy: page radiology
     distractorsKo:
     - 리듬을 계속 지켜보세요.
     - 움직임을 줄이세요.
@@ -8310,19 +8310,19 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 저체온 부정맥 대응 4문장 순서
-    why: 원칙을 말하고, 그 이유와 방법을 잇고, 그럼에도 생긴 변화를 알린 뒤, 그 변화에 따른 조치로 마무리해요. "That's why"·'Even so'·'that change'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 원칙을 말하고, 'That's why'가 그 원칙을 가리켜 꼭 필요한 처치만 한다고 잇고, 'that essential care'가 그 처치를 가리켜 그래도 생긴 변화를 알린 뒤, 'that change'가 그 변화를 가리켜 조치로 마무리해요.
     lines:
     - en: Cold hearts are irritable — handle him as gently as possible.
       icon: shield
       ko: 차가운 심장은 예민하니 최대한 부드럽게 다루세요
       note: 원칙
-    - en: That's why we avoid unnecessary movement, so we don't trigger a worse arrhythmia.
+    - en: That's why we're turning him only for essential care.
       icon: lock
-      ko: 그래서 더 심한 부정맥을 유발하지 않게 불필요한 움직임을 피해요
+      ko: 그래서 꼭 필요한 처치 때문에만 자세를 바꿔요
       note: 이유
-    - en: Even so, his rhythm changed the moment we shifted his position.
+    - en: Even for that essential care, his rhythm changed the moment we shifted him.
       icon: chartup
-      ko: 그런데도 자세를 바꾼 순간 리듬이 바뀌었어요
+      ko: 그 필요한 처치를 하는데도 옮기는 순간 리듬이 바뀌었어요
       note: 변화
     - en: Because of that change, let's minimize how much we touch him and keep rewarming.
       icon: lock
@@ -8346,7 +8346,7 @@ situations:
     tag: 발견 상황
     icon: pushpin
     why: Found down은 인계의 첫 말로 쓰는 짧은 표현이에요. 장소와 상황을 먼저, 모르는 것은 unknown duration으로 분명히 말해 받는 팀이 노출 시간을 가정하지 않게 해요.
-    decoy: by a coworker
+    decoy: in a cold car
     distractorsKo:
     - 현장 체온은 41도였어요.
     - 이송 중 냉각을 시작했어요.
@@ -8375,7 +8375,7 @@ situations:
     why: on scene으로 수치가 어디서 잰 것인지 밝혀요. and hasn't come down much는 추세를 한 마디로 전해 받는 팀이 냉각 효과를 바로 가늠해요.
     decoy: last night
     distractorsKo:
-    - 이송 중 체온이 계속 올랐어요.
+    - 쓰러진 채 발견됐어요.
     - 큰 정맥주사를 확보했어요.
     blank:
       answer: scene
@@ -8459,17 +8459,17 @@ situations:
     tag: 긴급 인계
     icon: siren
     why: handing off로 인계 중임을 알리고 critical heat emergency로 위중도를 먼저 말해요. so let's move fast로 팀이 속도를 맞추게 해요.
-    decoy: to the ward
+    decoy: a lab sample
     distractorsKo:
     - 큰 정맥주사 두 개가 들어가 있어요.
     - 소생실로 가겠습니다.
     blank:
-      answer: critical
+      answer: heat
       options:
-      - en: critical
-      - en: minor
-      - en: mild
-      - en: small
+      - en: heat
+      - en: cold
+      - en: chemical
+      - en: cardiac
   - en: Vitals and access are stable, and he's ready for the resus bay.
     ko: 활력징후와 정맥로는 안정적이고, 소생실로 들어갈 준비가 됐습니다.
     chunks:
@@ -8540,15 +8540,15 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 환경 위기 이송 인계 4문장 순서
-    why: 발견 상황으로 열고, 현장 수치를 말하고, 그 수치에서 시작한 처치를 알린 뒤, 그럼에도 오른 체온으로 서두르자고 마무리해요. 'On scene'·'that reading'·'Even with that'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 발견 상황으로 열고, 'There'가 그 창고를 가리켜 현장 수치를 말하고, 'that reading'이 그 수치를 가리켜 처치를 알린 뒤, 'Even with that'이 그 처치를 가리켜 오른 체온으로 서두르자고 마무리해요.
     lines:
     - en: Found down in a hot warehouse, unknown duration.
       icon: pushpin
       ko: 더운 창고에서 쓰러진 채 발견됐고 지속 시간은 불명이에요
       note: 발견
-    - en: On scene, his core temp was forty-one.
+    - en: There, his core temp was forty-one.
       icon: monitor
-      ko: 현장에서 심부 체온이 41도였어요
+      ko: 거기서 심부 체온이 41도였어요
       note: 수치
     - en: From that reading, we started cooling and two large-bore IVs en route.
       icon: bandage
