@@ -163,7 +163,7 @@ base와 비교해 v44 필드(`en`·`ko`·`chunks`)는 한 글자도 바뀌지 �
 - 14.1 (a) 둘 다 → `젖은 옷을 벗겨 주세요` · `가온 담요를 덮어 주세요`
 - 14.2 (a) 둘 다 → `심부 체온을 15분마다 알려 주세요` · `체외순환(ECMO) 팀에 연락해 주세요`
 - 14.3 (a) 둘 다 → `심부 체온은 28도예요` · `가족에게 상황을 알려 드릴게요`
-- 14.4 (b) 둘 다(`바로 선언`·`전에 선언`) → `보호자분께 연락드렸어요` · `따뜻한 수액을 한 번 더 걸어 주세요`
+- 14.4 (b) 둘 다(`바로 선언`·`전에 선언`) → `보호자분께 연락드렸어요` · `체온을 다시 재 볼게요`
 - 15.0 (a)(c) 둘 다 → `투석 카테터가 오른쪽 가슴에 있어요` · `인슐린을 걸러서 고혈당일 수 있어요`
 - 15.1 (c)(a) 둘 다 → `중탄산나트륨도 준비해 주세요` · `칼륨 수치가 몇이었나요?`
 - 15.2 (a) 둘 다 → `알부테롤 흡입도 준비해 주세요` · `30분 뒤에 혈당을 다시 재 주세요`
@@ -174,7 +174,7 @@ base와 비교해 v44 필드(`en`·`ko`·`chunks`)는 한 글자도 바뀌지 �
 - 16.3 (b) `오른쪽으로` → `누군가 시각을 기록해 주세요`
 - 16.4 (a) `산부인과는 부르지 않아도 돼요` → `자궁을 계속 왼쪽으로 밀고 있어요`
 - 17.0 (a) 둘 다 → `원인이 된 약 주입을 멈춰 주세요` · `마취과에 기도 확보를 요청해 주세요`
-- 17.1 (a) 둘 다 → `두 번째 정맥로를 잡아 주세요` · `원인이 된 약 이름을 확인해 주세요`
+- 17.1 (a) 둘 다 → `두 번째 정맥로를 잡아 주세요` · `알레르기 팔찌를 확인해 주세요`
 - 17.2 (a) 둘 다 → `수액을 최대로 열어 주세요` · `에피네프린 다음 투여는 3분 뒤예요`
 - 17.3 (a) 둘 다 → `항히스타민제는 나중에 줄게요` · `산소를 100%로 올려 주세요`
 - 17.4 (a) 둘 다 → `이 환자는 조영제를 맞았어요` · `에피네프린을 한 번 더 준비해 주세요`
@@ -190,20 +190,22 @@ base와 비교해 v44 필드(`en`·`ko`·`chunks`)는 한 글자도 바뀌지 �
 - 19.4 (b)(a) 둘 다 → `가족분들을 안으로 모실게요` · `사망 시각은 의사 선생님이 선언하실 거예요`
 - 20.1 (a)(b) 둘 다 → `골반 고정대를 채워 주세요` · `초음파로 심낭을 봐 주세요`
 - 20.2 (a) 둘 다 → `양쪽 가슴을 감압해 주세요` · `혈액을 데워서 주세요`
-- 20.3 (a) 둘 다 → `골반 고정대를 채워 주세요` · `대량수혈 프로토콜을 켤게요`
+- 20.3 (a) 둘 다 → `양쪽 가슴 감압이 끝났어요` · `대량수혈 프로토콜을 켤게요`
 - 20.4 (b) 둘 다 → `흉관을 넣을 준비를 해 주세요` · `산소를 100%로 연결해 주세요`
 
 (0.1·0.2·0.4·1.0·1.1·1.2·1.4·3.0·5.0·5.3·6.0·6.3·7.0·7.1·7.2·8.0·8.3·10.1·11.0·11.1·11.2·11.4·12.x·20.0은 같은 상황에서 할 법한 말이라 그대로 둔다.)
 
 ### order (14장) — 줄을 고치면 `why`도 함께 고친다. why는 바뀐 연결어를 가리키게 쓰고, "순서가 하나예요"의 근거도 새로 쓴다.
+바꾼 줄은 `icon`·`ko`·`note`도 새 뜻에 맞춘다(V18은 줄마다 `icon`이 필수다). 예: S16 L1은 이제 호출 줄이라 `bell`/`호출`, L2는 `baby`/`자궁`. S8·S14·S17도 줄 뜻이 옮겨졌다.
+아래 새 줄은 모두 인접 교환 셋을 다시 읽어 확인했다.
 - S4 · 사실 3. 리듬 분석 없이 충전함 → L2 `They're sticking well — that's V-fib, so I'm charging now.` (`They're`가 L1의 패드를 가리킴, 줄 ko·why도)
 - S16 · 사실 1 →
   - L1 `Maternal arrest — call OB and neonatal now.`
   - L2 `While they come, manually displace the uterus to the left.`
   - L3 `With that held, keep compressions continuous.`
-  - L4 `If there's no ROSC by four minutes, she may need a perimortem C-section.`
+  - L4 `If four minutes of that brings no ROSC, she may need a perimortem C-section.` (`that`이 L3의 압박을 가리킴)
   - why: "호출이 먼저, 그사이 자궁 전위와 압박, 4분에 PMCD 판단".
-- S20 · 사실 4 → L4 `Anyone free keeps compressions going while we fix it.` (`it`이 L3의 bleeding을 가리킴). why의 "출혈이 잡히면 압박을 시작해요"도 고침.
+- S20 · 사실 4 → L4 `Even so, anyone free keeps compressions going while we fix that.` (`Even so`가 L3의 "압박보다 원인"을 받으므로 L2 바로 뒤에는 못 옴). why의 "출혈이 잡히면 압박을 시작해요"도 고침.
 - S9 · 사실 6 → L4 `With that target set, get a twelve-lead now and prepare to move to the ICU.`
 - S17 · 사실 7 →
   - L3 `While those run, prepare for a difficult airway — the swelling is bad.`
@@ -244,7 +246,7 @@ base와 비교해 v44 필드(`en`·`ko`·`chunks`)는 한 글자도 바뀌지 �
 - 20.1 `pill` → `bandage`
 
 ## 결정 11 · base 보고 (v46 범위 밖, 고치지 않고 보고만)
-- 16.2 `Keep compressions high on the sternum and continuous.` (**keyPhrase**) — 2015년 이후 지침과 어긋난다(사실 2). 바꾼다면 `Keep compressions in the center of the chest and continuous.`이고, `ko` `흉골 위쪽에서`도 함께 바꾼다. 사용자 결정이 필요하다.
+- 16.2 `Keep compressions high on the sternum and continuous.` (**keyPhrase**) — 2015년 이후 지침과 어긋난다(사실 2). 근거: Jeejeebhoy et al., "Cardiac Arrest in Pregnancy", AHA Scientific Statement, *Circulation* 2015;132:1747; ERC Guidelines 2021 "Cardiac arrest in special circumstances"(임신 — 흉골 아래쪽 절반의 보통 위치). 2010 AHA 지침 Part 12의 "slightly higher" 권고가 빠졌다. 바꾼다면 `Keep compressions in the center of the chest and continuous.`이고, `ko` `흉골 위쪽에서`도 함께 바꾼다. 사용자 결정이 필요하다.
 - 10.3 `We've given epi twice so far in this round.` — 한 라운드(2분)에 에피 두 번은 3~5분 간격과 어긋난다(사실 5) → `…twice so far in this code.`
 - 20.3 `Control the bleeding first, then start compressions.` — 압박을 보류하라는 말로 읽힌다(사실 4) → `Control the bleeding first — compressions come second here.` 같은 모양으로 바꾸거나 why로만 보완한다.
 - 17.3 ko `근육이 아니라 정맥으로` — en `not just the muscle`은 "근육만이 아니라"라는 뜻이라 ko와 어긋난다(why도 "이미 하던 방식에 더해"). ko를 `근육주사만 하지 말고 정맥으로 바로 주세요`로 바꾼다.

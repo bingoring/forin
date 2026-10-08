@@ -1,0 +1,121 @@
+- title: 전형 좌중대뇌동맥 폐색
+  s:
+  - {t: "마지막 정상", i: calendar, w: "환자 본인에게는 feel로 물어 몸이 느낀 정상 상태를 끌어내요. 이 시각이 치료 시간창을 재는 출발점이에요.", d: "a little tired", k: ["언제 병원에 오기로 결정하셨나요?", "언제 마지막으로 식사하셨나요?"], a: "feel", o: ["look", "sound", "act"]}
+  - {t: "악력 확인", i: me, w: "양손으로 쥐게 하면 좌우 힘의 차이를 한 번에 비교할 수 있어요. for me는 시험이 아니라 부탁처럼 들리게 해요.", d: "with one hand", k: ["제 손가락을 눈으로 따라와 보세요", "두 팔을 앞으로 쭉 뻗어 보세요"], a: "squeeze", o: ["shake", "push", "release"]}
+  - {t: "따라 말하기", i: speech, w: "I need you to로 필요한 협조임을 분명히 하고 try to로 못 해도 괜찮다는 여지를 줘요. 문장 따라 말하기는 말의 유창함과 정확도를 봐요.", d: "this picture", k: ["제가 한 말이 이해되시나요?", "오늘이 며칠인지 말씀해 주세요"], a: "sentence", o: ["number", "name", "address"]}
+  - {t: "관찰 전달", i: stetho, w: "looks는 내 관찰이라고 밝혀 단정을 피하는 표현이에요. 좌측 중대뇌동맥 뇌졸중은 흔히 오른쪽 몸의 위약과 언어 문제로 나타나요.", d: "looks slower", k: ["오른쪽 눈이 붉어 보여요", "오른쪽 팔의 맥박이 약해요"], a: "weaker", o: ["warmer", "paler", "larger"]}
+  - {t: "시간창 안내", i: calendar, w: "혈전용해제는 증상이 시작된 뒤 정해진 시간 안에서만 쓸 수 있어서 시간창이 중요해요. still은 아직 늦지 않았다는 안심을 줘요.", d: "outside", k: ["약 투여 전에 혈액검사 결과를 기다려야 해요", "약을 쓰기 전에 가족의 동의가 필요해요"], a: "clot-busting", o: ["pain", "sleeping", "blood-pressure"]}
+  - {t: "금기 문진", i: board, w: "최근의 수술이나 출혈은 혈전용해제를 쓰면 출혈이 더 심해질 수 있어서 꼭 확인하는 항목이에요. any로 작은 것까지 모두 떠올리게 해요.", d: "this morning", k: ["지난 2주 안에 여행을 다녀오셨나요?", "지난 2주 안에 열이 난 적이 있나요?"], a: "bleeding", o: ["fever", "infection", "vomiting"]}
+  - {t: "위험 설명", i: pill, w: "혈전용해제는 도움이 큰 만큼 출혈 위험도 있어서 쓰기 전에 위험을 설명해요. I'm going to로 곧 시작한다고 알려 마음의 준비를 시켜요.", d: "the benefits", k: ["약을 언제 받을지 알려 드릴게요", "약 이름을 확인해 드릴게요"], a: "risks", o: ["costs", "steps", "names"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "혈전용해제 전 확인 4문장 순서"
+    why: "마지막 정상 시각을 묻고, 그 시각으로 시간창 안인지 알리고, 약을 쓰기 전 수술·출혈을 확인한 뒤, 문제없으면 위험 설명으로 넘어가요. 뒤 줄이 앞 줄의 결과를 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "When did you last feel completely normal?", icon: calendar, ko: "마지막으로 완전히 정상으로 느끼신 게 언제였나요?", note: "시각"}
+    - {en: "Given that time, you're still inside the window for clot-busting medication.", icon: calendar, ko: "그 시각이면 아직 혈전용해제 시간창 안이에요", note: "시간창"}
+    - {en: "Before we use it, have you had any surgery or bleeding in the past two weeks?", icon: board, ko: "쓰기 전에 지난 2주 안에 수술이나 출혈이 있었나요?", note: "금기"}
+    - {en: "Since none of that rules it out, I'm going to explain the risks now.", icon: pill, ko: "그중 제외할 게 없으니 이제 위험을 설명할게요", note: "위험"}
+  sw: {ko: "이 약은 소수의 환자에게 출혈을 일으킬 수 있어요"}
+- title: 후순환(소뇌) 뇌졸중
+  s:
+  - {t: "복시 확인", i: magnify, w: "한 물체가 둘로 보이는 복시는 후순환 뇌졸중에서 나타날 수 있어요. one … or two로 물으면 환자가 설명 대신 숫자로 쉽게 답해요.", d: "last night", k: ["지금 제 말소리가 잘 들리세요?", "지금 눈이 많이 아프세요?"], a: "seeing", o: ["hearing", "feeling", "counting"]}
+  - {t: "손가락-코", i: me, w: "손가락-코 검사는 팔의 협응을 봐요. 소뇌에 문제가 있으면 목표를 지나치거나 떨릴 수 있어요.", d: "your elbow", k: ["제 손가락을 눈으로만 따라와 보세요", "발뒤꿈치를 반대쪽 정강이에 대 보세요"], a: "nose", o: ["chin", "ear", "knee"]}
+  - {t: "어지럼 양상", i: faceWorried, w: "머리 움직임에 따라 달라지는지는 어지럼의 성격을 가리는 데 쓰는 문진이에요. get worse when …은 조건과 변화를 한 문장으로 묻는 틀이에요.", d: "stand up", k: ["어지럼증이 언제부터 시작됐나요?", "어지러울 때 귀에서 소리가 나나요?"], a: "dizziness", o: ["nausea", "headache", "pain"]}
+  - {t: "복시 감별", i: magnify, w: "한쪽 눈을 가렸을 때 사라지는지는 복시의 원인이 눈 자체인지 두 눈의 협응인지 가르는 단서예요. 환자의 답을 정확히 전달하는 것이 간호사의 몫이에요.", d: "if you blink", k: ["겹쳐 보이는 게 언제부터 시작됐나요?", "눈이 충혈되거나 아픈가요?"], a: "go away", o: ["get worse", "come back", "stay the same"]}
+  - {t: "현훈 확인", i: faceWorried, w: "방이 도는 느낌은 어지럼 중에서도 균형 기관이나 뇌간·소뇌와 관련된 경우가 많아요. feel like로 환자가 느낌을 비유로 말하게 해요.", d: "falling", k: ["어지러울 때 구역질이 나나요?", "어지러울 때 귀가 먹먹한가요?"], a: "spinning", o: ["shaking", "shrinking", "sinking"]}
+  - {t: "균형 문진", i: me, w: "균형과 걸음은 소뇌가 맡는 기능이에요. 팔다리 힘이 정상이어도 똑바로 걷지 못하면 후순환 문제일 수 있어서 따로 물어요.", d: "your sleep", k: ["걸을 때 다리에 쥐가 나나요?", "최근에 넘어진 적이 있나요?"], a: "balance", o: ["hearing", "memory", "appetite"]}
+  - {t: "가능성 설명", i: shield, w: "뇌졸중이 꼭 팔다리 힘 빠짐으로 나타나는 것은 아니에요. can still mean은 가능성을 인정하되 단정하지 않는 표현이에요.", d: "a cold", k: ["이 증상은 대부분 곧 사라져요", "이 증상은 약만 드시면 돼요"], a: "weakness", o: ["pain", "fever", "headache"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "후순환 뇌졸중 문진 4문장 순서"
+    why: "겹쳐 보이는지 먼저 묻고, 둘로 보이면 한쪽 눈을 가려 보게 하고, 그 상태에서 방이 도는지 묻고, 이 증상들이 뇌졸중일 수 있다고 알려요. 뒤 줄이 앞 줄의 답을 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "Are you seeing one of me or two right now?", icon: magnify, ko: "지금 제가 하나로 보이세요, 둘로 보이세요?", note: "복시"}
+    - {en: "If it's two, does it go away when you cover one eye?", icon: magnify, ko: "둘로 보이면 한쪽 눈을 가릴 때 사라지나요?", note: "감별"}
+    - {en: "Even with that eye covered, does the room feel like it's spinning?", icon: faceWorried, ko: "그 눈을 가려도 방이 도는 것처럼 느껴지세요?", note: "현훈"}
+    - {en: "Together, these symptoms can still mean a stroke, even without weakness.", icon: shield, ko: "이 증상들이 모이면 위약이 없어도 뇌졸중일 수 있어요", note: "설명"}
+  ctx: {word: "stroke", ko: "뇌졸중"}
+- title: 기상 시 발견(wake-up)
+  s:
+  - {t: "취침 시각", i: calendar, w: "자는 동안 생긴 증상은 잠들기 전의 마지막 정상 시각이 기준이에요. 그래서 먼저 잠든 시각을 물어요.", d: "wake up", k: ["오늘 아침 몇 시에 일어나셨나요?", "어젯밤에 약을 드셨나요?"], a: "sleep", o: ["work", "dinner", "town"]}
+  - {t: "야간 각성", i: bell, w: "밤중에 깨어났을 때 정상이었다면 마지막 정상 시각이 그때로 늦춰져요. at all은 한 번이라도 깬 적이 있는지 묻는 열린 질문이에요.", d: "in the morning", k: ["밤에 악몽을 꾸셨나요?", "어젯밤에 술을 드셨나요?"], a: "normal", o: ["tired", "thirsty", "cold"]}
+  - {t: "발견 시각", i: calendar, w: "깨어난 뒤 증상을 알아챈 시각은 발병 시각이 아니라 발견 시각이에요. exactly로 시각을 좁혀 잠들기 전과 비교해요.", d: "last night", k: ["아침에 일어나서 뭘 드셨나요?", "아침에 누가 먼저 발견했나요?"], a: "weakness", o: ["headache", "fever", "rash"]}
+  - {t: "영상 판단", i: monitor, w: "발병 시각을 알 수 없을 때는 영상검사 소견으로 치료 여부를 판단하는 경우가 있어요. 그 판단은 의사가 해요.", d: "how bad", k: ["영상검사 비용을 미리 알려 드릴게요", "영상검사 전에 금식하셔야 해요"], a: "imaging", o: ["blood tests", "your chart", "a checklist"]}
+  - {t: "기억 확인", i: me, w: "밤중에 화장실에 간 기억은 그때 환자가 정상이었다는 단서가 될 수 있어요. Do you remember …?는 확신이 없는 기억도 부담 없이 꺼내게 해요.", d: "in the afternoon", k: ["밤에 가족이 깨워 줬는지 기억나세요?", "밤새 불을 켜 둔 기억이 나세요?"], a: "bathroom", o: ["kitchen", "phone", "stairs"]}
+  - {t: "판단 근거", i: monitor, w: "Since는 이유를 먼저 대는 접속사예요. 시작 시각이 불확실하면 추측 대신 영상이라는 객관적 근거로 판단한다는 점을 알려 줘요.", d: "exact day", k: ["촬영은 가족 도착 후에 할게요", "촬영 결과는 환자분께 따로 보내 드려요"], a: "scan", o: ["family", "chart", "doctor"]}
+  - {t: "목격자 탐색", i: me, w: "밤중에 깨어 있던 사람이 있다면 환자가 정상이던 마지막 시각을 말해 줄 수 있어요. anyone else로 환자 말고 다른 사람을 찾아요.", d: "all day", k: ["밤에 같이 주무신 분이 계셨나요?", "밤에 아프다고 말한 적이 있나요?"], a: "awake", o: ["home", "sick", "upstairs"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "기상 시 발견 문진 4문장 순서"
+    why: "잠든 시각을 묻고, 그 뒤 밤중에 정상으로 깼는지 확인하고, 깼다면 아침에 증상을 알아챈 시각을 묻고, 시각을 못 잡으면 영상으로 판단한다고 알려요. 뒤 줄이 앞 줄의 답을 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "What time did you go to sleep last night?", icon: calendar, ko: "어젯밤 몇 시에 주무셨나요?", note: "취침"}
+    - {en: "After you fell asleep, did you ever wake up feeling normal?", icon: bell, ko: "잠드신 뒤에 정상이라고 느끼며 깬 적이 있나요?", note: "각성"}
+    - {en: "If you did, when exactly did you notice the weakness this morning?", icon: calendar, ko: "그랬다면 오늘 아침 위약감을 정확히 언제 알아챘나요?", note: "발견"}
+    - {en: "Since we can't pin that time down either, the scan will guide us.", icon: monitor, ko: "그 시각도 못 정하니 촬영이 판단에 도움이 될 거예요", note: "영상"}
+  ctx: {word: "wake", ko: "깨다"}
+  sw: {ko: "정확한 시작 시각을 알 수 없어서 촬영으로 치료 방향을 정할게요"}
+- title: tPA 금기 선별
+  s:
+  - {t: "수술·출혈력", i: board, w: "혈전용해제는 출혈을 늘릴 수 있어서 최근 수술이나 큰 출혈이 있었는지 먼저 확인해요. major를 붙이면 코피 같은 사소한 일과 구분돼요.", d: "years ago", k: ["약을 먹고 출혈이 있었던 적이 있나요?", "최근에 낙상이 있었나요?"], a: "surgery", o: ["travel", "fever", "vaccines"]}
+  - {t: "항응고제 확인", i: pill, w: "항응고제를 쓰는 환자는 혈전용해제를 쓰면 출혈 위험이 더 커질 수 있어서 복용 여부가 중요해요. any로 약 이름을 몰라도 답하기 쉽게 물어요.", d: "pain pills", k: ["알레르기 약을 드시나요?", "당뇨약을 드시나요?"], a: "blood thinners", o: ["antibiotics", "vitamins", "steroids"]}
+  - {t: "뇌출혈력", i: stetho, w: "과거의 뇌출혈은 혈전용해제를 쓰기 어렵게 하는 중요한 병력이에요. ever와 before를 함께 써서 오래전 일도 빠뜨리지 않고 물어요.", d: "recently", k: ["가족 중 뇌졸중이 있으신가요?", "두통이 자주 있으신가요?"], a: "brain", o: ["stomach", "nose", "eye"]}
+  - {t: "병력 문진", i: board, w: "최근 석 달 안의 뇌졸중이나 머리 손상은 혈전용해제를 고를 때 영향을 주는 항목이에요. Any history of …는 병력을 짧게 묻는 흔한 틀이에요.", d: "in the past week", k: ["지난 3개월 안에 심장 수술을 받으셨나요?", "지난 3개월 안에 체중이 많이 변했나요?"], a: "head injury", o: ["knee injury", "back pain", "chest pain"]}
+  - {t: "혈압 조절", i: monitor, w: "혈압이 너무 높으면 혈전용해제의 출혈 위험이 커져서 치료 전에 혈압을 확인하고 조절해요. 평소 조절 상태를 물으면 만성 고혈압도 함께 알 수 있어요.", d: "at the clinic", k: ["집에서 혈압을 얼마나 자주 재세요?", "혈압약을 하루에 몇 번 드세요?"], a: "blood pressure", o: ["blood sugar", "cholesterol", "weight"]}
+  - {t: "질문 이유", i: shield, w: "질문의 이유를 밝히면 환자가 캐묻는다고 느끼지 않고 정확히 답해요. make sure는 확인 절차라는 뜻을 전해요.", d: "for the bill", k: ["이 질문들은 곧 끝날 거예요", "이 질문들은 의사가 다시 물을 거예요"], a: "safe", o: ["cheap", "free", "ready"]}
+  - {t: "출혈 질환", i: bandage, w: "혈우병처럼 피가 잘 멎지 않는 병이 있으면 혈전용해제를 쓰기 어려워요. Do you know if …는 확실하지 않아도 아는 만큼 답하게 하는 부드러운 질문이에요.", d: "kidney problems", k: ["평소 약을 거르는 일이 있으신가요?", "병원에서 검사를 받아 보신 적이 있나요?"], a: "bleeding", o: ["sleeping", "breathing", "eating"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "혈전용해제 금기 문진 4문장 순서"
+    why: "질문하는 이유를 알리고, 뇌출혈 병력을 먼저 묻고, 아니라는 답을 이어받아 항응고제를 묻고, 마지막에 지금까지의 답을 근거로 출혈 질환을 물어요. 뒤 줄이 앞 줄의 답을 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "I'm going to ask some questions to make sure the medication is safe for you.", icon: shield, ko: "약이 안전한지 확인하려고 몇 가지 여쭐게요", note: "이유"}
+    - {en: "First, have you ever had bleeding in your brain before?", icon: stetho, ko: "먼저, 전에 뇌출혈이 있었던 적이 있나요?", note: "뇌출혈"}
+    - {en: "If not, are you taking any blood thinners?", icon: pill, ko: "없다면 항응고제를 복용하고 계신가요?", note: "항응고"}
+    - {en: "Last, with those answers in mind, do you know if you have any bleeding disorders?", icon: bandage, ko: "마지막으로 그 답들을 보면, 출혈 장애가 있는지 아세요?", note: "출혈병"}
+  ctx: {word: "safe", ko: "안전한"}
+- title: 실어증 환자 소통
+  s:
+  - {t: "눈 깜빡임", i: magnify, w: "말이 안 나오는 실어증 환자도 눈 깜빡임으로는 답할 수 있어요. 횟수로 예와 아니오를 정해 두면 한 번에 하나씩 확인하기 쉬워요.", d: "three times", k: ["눈을 깜빡이지 말고 가만히 계세요", "눈을 크게 떠 보세요"], a: "Blink", o: ["Nod", "Squeeze", "Wave"]}
+  - {t: "통증 부위", i: me, w: "말이 어려운 환자는 말 대신 몸짓으로 아픈 부위를 알려 줄 수 있어요. if you can은 못 해도 괜찮다는 여지를 줘서 압박을 덜어요.", d: "how much", k: ["아픈 곳을 제가 눌러 볼게요", "아픈 정도를 숫자로 말해 보세요"], a: "hurts", o: ["itches", "swells", "bleeds"]}
+  - {t: "이해 확인", i: me, w: "말을 못 해도 이해는 되는 환자가 많아서 손 쥐기로 이해했는지 확인해요. 이해하지 못한다고 단정하지 말고 답할 방법을 열어 둬요.", d: "if you feel pain", k: ["제 손을 놓고 눈을 감아 보세요", "제 손을 잡고 일어나 보세요"], a: "understand", o: ["hear", "trust", "remember"]}
+  - {t: "질문 방식", i: speech, w: "예와 아니오로 답하는 질문을 한 번에 하나씩 하면 실어증 환자가 부담 없이 답할 수 있어요. 질문 방식을 먼저 알리면 환자가 준비해요.", d: "in writing", k: ["질문은 가족이 대신 해 줄 거예요", "질문은 글로 써서 보여 드릴게요"], a: "one at a time", o: ["all at once", "in a hurry", "very fast"]}
+  - {t: "부정 응답", i: speech, w: "once가 아니오라고 앞에서 정해 두었으니 같은 약속을 되풀이해 환자의 혼란을 줄여요. 일관된 신호가 의사소통의 정확도를 높여요.", d: "twice", k: ["제 질문이 이해되지 않으면 손을 들어 주세요", "잘 모르겠으면 눈을 감고 계세요"], a: "not", o: ["really", "exactly", "always"]}
+  - {t: "안심시키기", i: faceWorried, w: "말이 잘 안 나오는 환자는 서두를수록 더 막혀요. 시간이 충분하다고 먼저 말해 주면 부담이 줄고 답이 더 잘 나올 수 있어요.", d: "we're running late", k: ["편하게 눈을 감고 쉬세요", "한 번에 하나씩 대답해 주세요"], a: "rush", o: ["problem", "pain", "doubt"]}
+  - {t: "강도 신호", i: gear, w: "예와 아니오를 쥐는 세기로 나눠 두면 눈을 깜빡이기 어려운 환자도 답할 수 있어요. 한 가지 방법이 안 되면 다른 신호를 준비해요.", d: "if it's wrong", k: ["예이면 고개를 끄덕이세요", "답을 모르시면 손을 놓으세요"], a: "harder", o: ["softer", "longer", "faster"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "실어증 환자 소통 4문장 순서"
+    why: "질문 방식을 먼저 알리고, 그 질문에 눈 깜빡임으로 답하게 하고, 깜빡임이 어려우면 손 쥐기로 바꾸게 하고, 어떤 방법이든 서두르지 않아도 된다고 말해요. 뒤 줄이 앞 줄을 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "I'll ask yes or no questions, one at a time.", icon: speech, ko: "예/아니오 질문을 한 번에 하나씩 드릴게요", note: "방식"}
+    - {en: "For your answers, blink twice for yes and once for no.", icon: magnify, ko: "답은 예이면 두 번, 아니오면 한 번 깜빡여 주세요", note: "깜빡임"}
+    - {en: "If blinking is hard, squeeze my hand harder for yes instead.", icon: gear, ko: "깜빡이기 어려우면 대신 예일 때 제 손을 더 세게 쥐세요", note: "대안"}
+    - {en: "Whichever way you answer, take your time, there's no rush at all.", icon: faceWorried, ko: "어느 방법이든 천천히 하세요, 서두를 필요 없어요", note: "안심"}
+  sw: {ko: "예/아니오로 답할 수 있는 질문을 한 번에 하나씩 드릴게요"}
+- title: 심방세동 병력 통합
+  s:
+  - {t: "병력 기간", i: stetho, w: "심방세동은 심장 윗부분이 불규칙하게 떠는 리듬 이상으로 뇌졸중 위험을 높여요. How long have you had …?는 오래된 병인지 새로 생긴 것인지를 가려요.", d: "this cough", k: ["심장약을 드신 지 얼마나 됐나요?", "가슴이 아픈 지 얼마나 됐나요?"], a: "atrial fibrillation", o: ["diabetes", "asthma", "high cholesterol"]}
+  - {t: "복약 확인", i: pill, w: "심방세동 환자는 혈전을 막으려고 항응고제를 쓰는 경우가 많아서 복용 여부부터 확인해요. for your heart로 약을 쓰는 이유까지 한 번에 물어요.", d: "for pain", k: ["심장약을 하루에 몇 번 드세요?", "처방받은 약을 가져오셨나요?"], a: "heart", o: ["legs", "lungs", "kidneys"]}
+  - {t: "복약 순응", i: calendar, w: "항응고제를 거르면 혈전을 막는 효과가 떨어져요. missed는 일부러가 아니라 잊어서 놓친 경우까지 편하게 묻는 단어예요.", d: "any meals", k: ["약을 한 번에 두 알씩 드신 적이 있나요?", "약을 바꾼 적이 있나요?"], a: "missed", o: ["doubled", "changed", "finished"]}
+  - {t: "원인 설명", i: stetho, w: "심방이 규칙적으로 수축하지 않으면 피가 고여 응고되기 쉬워요. 이 원리를 알려 주면 환자가 약을 꾸준히 먹어야 하는 이유를 이해해요.", d: "inside your lungs", k: ["빠른 심장박동은 위험하지 않아요", "심장이 불규칙하면 숨이 차기 쉬워요"], a: "An irregular", o: ["A slow", "A loud", "A weak"]}
+  - {t: "합병증 설명", i: siren, w: "심장에서 생긴 혈전이 혈류를 타고 뇌혈관을 막으면 뇌경색이 와요. 경로를 구체적으로 말하면 환자가 위험을 이해하기 쉬워요.", d: "a heart attack", k: ["그 혈전은 약으로 바로 녹일 수 있어요", "그 혈전은 혈액검사에서 바로 보여요"], a: "stroke", o: ["seizure", "headache", "fever"]}
+  - {t: "복용 권유", i: pill, w: "꾸준히 복용하면 혈전이 생기는 것을 줄여 뇌졸중을 예방해요. Staying on은 계속 이어 간다는 뜻이라 잠깐만 먹는 약이 아님을 전해요.", d: "Starting", k: ["약은 증상이 있을 때만 드시면 돼요", "약은 식사와 상관없이 드세요"], a: "prevent", o: ["predict", "explain", "diagnose"]}
+  - {t: "마지막 복용", i: calendar, w: "마지막 복용 시각은 약효가 남아 있는지 가늠하는 핵심 정보예요. Let's로 같이 확인하자고 하면 추궁이 아니라 협력처럼 들려요.", d: "an extra dose", k: ["마지막으로 병원에 간 날을 확인해 볼게요", "약이 얼마나 남았는지 확인해 볼게요"], a: "last", o: ["first", "usual", "extra"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "심방세동 병력 확인 4문장 순서"
+    why: "병력 기간을 묻고, 그 병 때문에 항응고제를 쓰는지 묻고, 그렇다면 거른 적이 있는지 묻고, 걸렀다면 마지막 복용 시각을 확인해요. 뒤 줄이 앞 줄의 답을 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "How long have you had atrial fibrillation?", icon: stetho, ko: "심방세동을 얼마나 오래 앓으셨나요?", note: "병력"}
+    - {en: "For that, are you on a blood thinner for your heart?", icon: pill, ko: "그 때문에 심장 항응고제를 복용하고 계신가요?", note: "복약"}
+    - {en: "If so, have you missed any doses recently?", icon: calendar, ko: "그렇다면 최근에 복용을 거른 적이 있나요?", note: "순응"}
+    - {en: "If you did miss any, let's check when you took your last dose.", icon: calendar, ko: "거른 적이 있다면 마지막 복용 시각을 확인해 봐요", note: "시각"}
+  sw: {ko: "약을 거르면 심장에 혈전이 생겨 뇌로 갈 수 있어요"}

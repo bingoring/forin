@@ -2893,7 +2893,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 두근거림 문진 4문장 순서
-    why: 시작 시점을 먼저 묻고, 그 뒤로 다시 왔는지, 한 번에 얼마나 가는지, 무엇이 유발하는지로 좁혀 갑니다. 'since then'·'each time it comes back'·'that long'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 시작 시점을 먼저 묻고, 그 뒤로 다시 왔는지, 한 번에 얼마나 가는지, 무엇이 유발하는지로 좁혀 갑니다. 'since then'·'each time it comes back'·'each of those'이 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Can you tell me when the fluttering started?
       icon: calendar
@@ -2907,9 +2907,9 @@ situations:
       icon: chartup
       ko: 다시 올 때마다 얼마나 지속되나요?
       note: 지속
-    - en: If it lasts that long, does anything seem to bring it on?
+    - en: For each of those, does anything seem to bring it on?
       icon: bulb
-      ko: 그 정도 지속된다면, 무언가가 유발하는 것 같나요?
+      ko: 그럴 때마다 무언가가 유발하는 것 같나요?
       note: 유발
 - title: 활력·리듬 확인 설명
   sentences:
@@ -2960,7 +2960,7 @@ situations:
     why: just가 스티커의 역할을 '읽기만 한다'로 좁혀 불안을 줄여요. they don't hurt를 붙이면 환자가 가장 궁금해하는 통증 걱정에 바로 답해요.
     decoy: your blood sugar
     distractorsKo:
-    - 이 선은 전기가 흘러서 따끔해요
+    - 검사 끝나면 스티커를 떼 드릴게요
     - 이 스티커는 혈압을 재 줘요
     blank:
       answer: read
@@ -3017,7 +3017,7 @@ situations:
     why: so we can …은 연결의 목적을 '우리가 ~할 수 있게'로 알려 줘요. 목적을 알면 몸에 선이 붙는 낯선 느낌이 덜 무서워요.
     decoy: to your bed
     distractorsKo:
-    - 이 전선은 전기를 내보내 심장을 치료해요
+    - 선이 당기면 말씀해 주세요
     - 이 전선으로 약이 들어가요
     blank:
       answer: monitor
@@ -3043,8 +3043,8 @@ situations:
     why: won't shock you처럼 걱정을 먼저 부정해 주면 환자의 두려움이 바로 풀려요. 모니터는 보기만 하는 장비이고 치료는 별도의 장비로 한다는 점도 분명히 해요.
     decoy: it treats too
     distractorsKo:
-    - 모니터가 전기로 심장을 치료해요
-    - 모니터를 끄면 아프지 않아요
+    - 모니터 알람이 울려도 놀라지 마세요
+    - 선이 빠지면 저희가 다시 붙일게요
     blank:
       answer: shock
       options:
@@ -3115,8 +3115,8 @@ situations:
       ok: false
       fix: I'm putting some stickers on so we can watch your heart.
     why: electrode·telemetry는 의료진끼리의 말이에요. 환자에게는 stickers처럼 쉬운 말로, 무엇을 하는지 알려 줘요.
-    word: sticker
-    ko: 스티커 패드
+    word: electrode
+    ko: 전극
   order:
     tag: 대화 흐름
     icon: compass
@@ -3242,8 +3242,8 @@ situations:
       options:
       - en: button
       - en: untuck
+      - en: tuck
       - en: unzip
-      - en: fold
   - en: Try not to talk or move while the machine is recording.
     ko: 기계가 기록하는 동안 말하거나 움직이지 않도록 해주세요.
     chunks:
@@ -3282,19 +3282,19 @@ situations:
     - w-second
     goal: 2
     tag: 소요 안내
-    icon: play
+    icon: calendar
     why: only가 시간을 작게 보이게 하고 then you're done이 끝을 분명히 알려 줘요. 짧다는 것을 숫자로 말하면 막연한 불안이 줄어요.
     decoy: for an hour
     distractorsKo:
     - 30분쯤 걸릴 수 있어요
     - 검사는 두 번 해야 해요
     blank:
-      answer: ten
+      answer: done
       options:
-      - en: thirty
-      - en: sixty
-      - en: five
-      - en: ten
+      - en: next
+      - en: up
+      - en: home
+      - en: done
   nuance:
   - kind: pair
     words:
@@ -3328,7 +3328,7 @@ situations:
       electrodes: 정확한 말이지만 의료진 용어라 환자에게는 딱딱하다.
       leads: 의료진끼리 쓰는 말(전극·전선, 또는 심전도의 유도)이라 환자에게는 낯설다.
     why: 환자에게 설명할 때는 같은 전극도 stickers라고 불러요.
-    ko: 가슴, 팔, 다리에 작은 스티커를 붙일게요
+    ko: 가슴, 팔, 다리에 작은 스티커 열 개를 붙일게요
   order:
     tag: 대화 흐름
     icon: compass
@@ -3424,8 +3424,8 @@ situations:
     why: often이 단정 대신 '대개'라는 가능성으로 말해 줘요. wear off는 약이나 자극제의 효과가 서서히 사라진다는 구동사예요.
     decoy: once you sleep
     distractorsKo:
-    - 약을 끊으면 바로 괜찮아져요
-    - 두근거림은 보통 계속 심해져요
+    - 물을 충분히 드시면 도움이 돼요
+    - 오늘은 에너지 드링크를 드시지 마세요
     blank:
       answer: stimulant
       options:
@@ -3446,9 +3446,9 @@ situations:
     tag: 범위 설명
     icon: coffee
     why: count as는 '~로 친다'는 뜻이라 환자가 카페인으로 생각하지 못한 음료도 포함시켜요. 에너지 드링크에는 카페인이 많이 든 제품이 흔해요.
-    decoy: mean no
+    decoy: count as sugar
     distractorsKo:
-    - 커피는 심장에 전혀 영향이 없어요
+    - 에너지 드링크는 하루에 몇 캔 드세요?
     - 물은 얼마나 드시는지 알려 주세요
     blank:
       answer: coffee
@@ -3496,11 +3496,11 @@ situations:
     - w-settle
     goal: 2
     tag: 회복 설명
-    icon: stetho
+    icon: chartup
     why: Once …는 조건이 끝나는 때를 가리켜 환자가 기다릴 시점을 알려 줘요. should는 단정하지 않고 '그럴 것'이라는 예상으로 말해요.
     decoy: as soon as
     distractorsKo:
-    - 커피를 마시면 심박수가 내려가요
+    - 몇 시간 지켜보고 다시 재 볼게요
     - 자극제는 몸에 오래 남아요
     blank:
       answer: clears
@@ -3542,13 +3542,13 @@ situations:
       ok: false
       fix: Are you taking any cold medicine or diet pills?
     why: sympathomimetic(교감신경 흥분제)이나 OTC는 의료진 말이에요. 환자에게는 감기약·다이어트 약처럼 구체적인 이름으로 물어야 답할 수 있어요.
-    word: pill
-    ko: 알약
+    word: OTC
+    ko: 일반의약품
   order:
     tag: 대화 흐름
     icon: compass
     ko: 카페인 문진 4문장 순서
-    why: 카페인 양을 묻고, 그 위에 다른 약을 묻고, 두 가지를 묶어 줄이자고 제안하고, 줄이면 어떻게 되는지 말합니다. 'on top of that'·'Both of those'·'that'이 앞 줄을 받아서 순서가 하나예요.
+    why: 카페인 양을 묻고, 그 위에 다른 약을 묻고, 두 가지를 묶어 줄이자고 제안하고, 줄이면 어떻게 되는지 말합니다. 'on top of that'·'All of those'·'that'이 앞 줄을 받아서 순서가 하나예요.
     lines:
     - en: How much caffeine do you usually have in a day?
       icon: coffee
@@ -3558,9 +3558,9 @@ situations:
       icon: pill
       ko: 고마워요. 그 외에 감기약이나 다이어트 약도 드시나요?
       note: 복용 약
-    - en: Both of those can speed up your heart, so let's cut back.
+    - en: All of those can speed up your heart, so let's cut back.
       icon: chartup
-      ko: 둘 다 심장을 빠르게 할 수 있으니 줄여 봐요
+      ko: 그 모두가 심장을 빠르게 할 수 있으니 줄여 봐요
       note: 제안
     - en: If you do that, your heart rate should settle back down.
       icon: stetho
@@ -3585,8 +3585,8 @@ situations:
     why: common과 harmless를 나란히 쓰면 '흔하고 해롭지 않다'가 한 번에 전달돼요. usually가 예외의 여지를 남겨서 과장 없이 안심시켜요.
     decoy: and very rare
     distractorsKo:
-    - 이 박동은 위험해서 입원해야 해요
-    - 이 박동은 약으로 바로 멈춰야 해요
+    - 심전도를 한 번 더 찍어 볼게요
+    - 의사 선생님이 곧 설명해 주실 거예요
     blank:
       answer: harmless
       options:
@@ -3691,8 +3691,8 @@ situations:
     why: not dangerous but …로 안심을 먼저 주고 조건을 덧붙이면 방심시키지 않으면서 안심시켜요. 평소와 다른 느낌은 다시 평가해야 하는 신호예요.
     decoy: if it stops
     distractorsKo:
-    - 위험하니 집에 가시면 안 돼요
-    - 느낌이 같으면 다시 오세요
+    - 퇴원 안내지를 드릴게요
+    - 일주일 안에 외래에 가 보세요
     blank:
       answer: different
       options:
@@ -3718,7 +3718,7 @@ situations:
     decoy: or skipping sleep
     distractorsKo:
     - 충분히 자면 약이 필요 없어요
-    - 커피를 마시면 박동이 줄어요
+    - 증상이 생기면 시간을 적어 두세요
     blank:
       answer: reduce
       options:
@@ -3855,16 +3855,16 @@ situations:
     tag: 현재 증상
     icon: faceWorried
     why: right now가 지금 이 순간의 증상을 묻는다는 점을 분명히 해요. 어지럼이나 숨참은 심장이 너무 빠르게 뛸 때 나타날 수 있는 증상이라 먼저 확인해요.
-    decoy: last night
+    decoy: this morning
     distractorsKo:
     - 가슴이 아프거나 답답하신가요?
     - 팔다리가 저리거나 약하신가요?
     blank:
       answer: dizzy
       options:
-      - en: thirsty
-      - en: hungry
-      - en: sleepy
+      - en: nauseous
+      - en: sweaty
+      - en: shaky
       - en: dizzy
   - en: Have you ever had a stroke or a blood clot before?
     ko: 예전에 뇌졸중이나 혈전이 있었던 적이 있나요?
@@ -3980,8 +3980,8 @@ situations:
       ok: false
       fix: Are you taking a blood thinner, like warfarin or Eliquis?
     why: anticoagulated는 의료진 말이에요. 환자들은 blood thinner라고 부르고, 약 이름을 예로 들어 주면 더 잘 답해요.
-    word: blood thinner
-    ko: 혈액 희석제
+    word: anticoagulated
+    ko: 항응고 중인
   order:
     tag: 대화 흐름
     icon: compass
@@ -4052,8 +4052,8 @@ situations:
     why: If that doesn't work로 다음 계획을 미리 알려 주면 첫 시도가 안 들어도 환자가 놀라지 않아요. 발작성 SVT에서 이런 동작이 안 들으면 정맥으로 빠르게 작용하는 약을 쓰는 것이 일반적인 다음 단계예요.
     decoy: by mouth
     distractorsKo:
-    - 그래도 안 되면 바로 수술해요
-    - 그래도 안 되면 집에 가서 쉬세요
+    - 먼저 심전도를 한 번 더 찍을게요
+    - 팔에 정맥주사를 잡을게요
     blank:
       answer: fast
       options:
@@ -4084,7 +4084,7 @@ situations:
     decoy: for an hour
     distractorsKo:
     - 몇 시간 동안 가슴이 아플 수 있어요
-    - 아무 느낌도 없을 거예요
+    - 주사 맞는 팔이 잠깐 차가울 수 있어요
     blank:
       answer: brief
       options:
@@ -4110,8 +4110,8 @@ situations:
     why: so로 지금의 빠른 심박수와 이 방법을 쓰는 이유를 이어 줘요. 미주신경을 자극하는 동작은 약이나 전기 치료 전에 먼저 시도해 볼 수 있는 안전한 방법이에요.
     decoy: next week
     distractorsKo:
-    - 심박수가 낮아서 약을 줄일 거예요
-    - 심박수는 정상이니 걱정 마세요
+    - 지금 심전도를 다시 찍을게요
+    - 의사 선생님이 곧 오실 거예요
     blank:
       answer: safe
       options:
@@ -4136,8 +4136,8 @@ situations:
     why: normal을 먼저 말해 그 느낌이 이상 신호가 아님을 알려요. 뒤에 and goes away quickly를 붙이면 곧 끝난다는 점이 함께 전해져요.
     decoy: and lasts all day
     distractorsKo:
-    - 화끈거림은 위험한 신호예요
-    - 화끈거림은 하루 종일 가요
+    - 주사 자리를 잠깐 눌러 둘게요
+    - 끝나면 리듬을 다시 확인할게요
     blank:
       answer: normal
       options:
@@ -4163,7 +4163,7 @@ situations:
     decoy: once in a while
     distractorsKo:
     - 모니터는 잠깐만 확인할게요
-    - 모니터를 끄고 진행할게요
+    - 불편하면 바로 말씀해 주세요
     blank:
       answer: watching
       options:
@@ -4254,8 +4254,8 @@ situations:
       answer: lightheaded
       options:
       - en: nauseous
-      - en: thirsty
-      - en: sleepy
+      - en: sweaty
+      - en: breathless
       - en: lightheaded
   - en: Are you on any blood pressure or heart-rate medications?
     ko: 혈압약이나 심박수 관련 약을 드시고 계신가요?
@@ -4328,17 +4328,17 @@ situations:
     tag: 원인 설명
     icon: bulb
     why: can sometimes로 가능성을 부드럽게 말해요. 심박수가 느리면 뇌로 가는 혈류가 줄 수 있어서 특히 갑자기 일어날 때 어지러울 수 있어요.
-    decoy: after you eat
+    decoy: when you lie down
     distractorsKo:
-    - 빠른 심박수 때문에 열이 날 수 있어요
-    - 느린 심박수는 아무 증상이 없어요
+    - 물을 충분히 안 드셔도 어지러울 수 있어요
+    - 일어날 때는 천천히 일어나세요
     blank:
       answer: lightheaded
       options:
-      - en: thirsty
-      - en: cold
+      - en: jittery
+      - en: flushed
       - en: lightheaded
-      - en: hungry
+      - en: feverish
   - en: Some blood pressure medications can slow your heart rate too much.
     ko: 일부 혈압약은 심박수를 너무 많이 느리게 만들 수 있어요.
     chunks:
@@ -4358,8 +4358,8 @@ situations:
     why: Some …은 모든 약이 아니라 일부만 그렇다는 뜻이라 환자가 약을 임의로 끊지 않게 도와줘요. 베타차단제 같은 일부 혈압약은 심박수를 느리게 만들어요.
     decoy: very quickly
     distractorsKo:
-    - 혈압약은 모두 끊으셔야 해요
-    - 혈압약은 심박수를 올려요
+    - 드시는 약 목록을 보여 주시겠어요?
+    - 오늘 아침 약은 드셨어요?
     blank:
       answer: blood pressure
       options:
@@ -4381,8 +4381,8 @@ situations:
     goal: 1
     tag: 검사 안내
     icon: stetho
-    why: now와 again으로 두 번 잰다는 순서를 알려 줘요. 누웠을 때와 섰을 때의 맥박을 비교하면 자세에 따라 심박수가 어떻게 달라지는지 알 수 있어요.
-    decoy: after you eat
+    why: now와 again으로 두 번 잰다는 순서를 알려 줘요. 누웠을 때와 섰을 때의 맥박과 혈압을 비교하면 자세에 따라 어떻게 달라지는지 알 수 있어요.
+    decoy: in the morning
     distractorsKo:
     - 지금 앉아서 체온을 잴게요
     - 누워서 소변 검사를 할게요
@@ -4425,8 +4425,8 @@ situations:
       ok: false
       fix: Have you actually passed out or blacked out?
     why: syncope는 의료진 말이에요. 환자에게는 pass out·black out처럼 일상어로 물어요.
-    word: pass out
-    ko: 기절하다
+    word: syncopal
+    ko: 실신의
   order:
     tag: 대화 흐름
     icon: compass
@@ -4471,12 +4471,12 @@ situations:
     - 최근에 식욕이 늘었나요?
     - 최근에 다이어트를 시작하셨나요?
     blank:
-      answer: loss
+      answer: trying
       options:
-      - en: loss
-      - en: gain
-      - en: lifting
-      - en: training
+      - en: trying
+      - en: eating
+      - en: sleeping
+      - en: moving
   - en: Do you feel hot, sweaty, or shaky more than usual?
     ko: 평소보다 덥거나 땀이 나거나 손이 떨리시나요?
     chunks:
@@ -4548,8 +4548,8 @@ situations:
     why: working overtime은 '과하게 일한다'는 비유라서 갑상선이 호르몬을 너무 많이 만든다는 개념을 쉬운 말로 전해요. 갑상선 호르몬이 많으면 심박수가 빨라질 수 있어요.
     decoy: all by itself
     distractorsKo:
-    - 빠른 심박수는 갑상선이 쉬고 있다는 뜻이에요
-    - 빠른 심박수는 늘 심장병 때문이에요
+    - 최근에 체중이 줄었나요?
+    - 가족 중에 갑상선 질환이 있나요?
     blank:
       answer: overtime
       options:
@@ -4576,8 +4576,8 @@ situations:
     why: often이 단정을 피해 '그럴 때가 많다'로 말해 줘요. 손 떨림과 빠른 심장 박동이 함께 보이면 갑상선 문제를 의심하는 단서가 돼요.
     decoy: very rarely
     distractorsKo:
-    - 손 떨림은 심장이 느리다는 뜻이에요
-    - 손 떨림은 늘 불안 때문이에요
+    - 손 떨림은 언제부터 있었어요?
+    - 요즘 잠은 잘 주무세요?
     blank:
       answer: hands
       options:
@@ -4606,7 +4606,7 @@ situations:
     why: along with로 채혈과 심장 리듬 확인을 함께 한다고 알려 줘요. 갑상선 수치는 혈액 검사로 확인하고 심장 리듬은 모니터나 심전도로 확인해요.
     decoy: and your weight
     distractorsKo:
-    - 심장 리듬만 확인하고 채혈은 안 해요
+    - 결과는 한 시간쯤 걸려요
     - 소변을 받아서 갑상선을 볼게요
     blank:
       answer: levels
@@ -4694,8 +4694,8 @@ situations:
     why: I hear you로 먼저 환자의 말을 받아 주고 but으로 필요한 질문을 이어요. 환자가 증상을 줄여 말해도 말을 끊지 않고 존중하면 더 솔직하게 말해 줘요.
     decoy: right away
     distractorsKo:
-    - 걱정 마세요, 질문은 하지 않을게요
-    - 그럼 바로 퇴원하셔도 돼요
+    - 어디가 제일 불편하세요?
+    - 증상이 언제 시작됐어요?
     blank:
       answer: important
       options:
@@ -4727,10 +4727,10 @@ situations:
     blank:
       answer: fainting
       options:
-      - en: sneezing
       - en: vomiting
+      - en: choking
       - en: fainting
-      - en: crying
+      - en: coughing
   - en: Even if it felt minor, these symptoms are worth checking.
     ko: 사소하게 느껴졌더라도, 이런 증상은 확인해볼 가치가 있어요.
     chunks:
@@ -4751,7 +4751,7 @@ situations:
     why: Even if …로 환자가 작게 여기는 마음을 인정하면서 확인의 필요성을 말해요. worth checking은 '확인할 가치가 있다'는 표현이라 지시가 아니라 이유로 들려요.
     decoy: unless it stops
     distractorsKo:
-    - 사소하다면 확인하지 않아도 돼요
+    - 증상이 다시 오면 바로 알려 주세요
     - 이 증상은 이미 다 해결됐어요
     blank:
       answer: minor
@@ -4776,8 +4776,8 @@ situations:
     why: I know …, but …은 환자의 생각을 먼저 인정한 뒤 내 의도를 말하는 구조예요. the full picture는 일부가 아니라 전체 상황을 알고 싶다는 관용 표현이에요.
     decoy: so skip the rest
     distractorsKo:
-    - 큰 일처럼 느껴지시는 거 알아요, 그래서 걱정돼요
-    - 작게 느껴지니 더 묻지 않을게요
+    - 지금 많이 불안하세요?
+    - 전에도 이런 적이 있었나요?
     blank:
       answer: small
       options:
@@ -4802,7 +4802,7 @@ situations:
     why: Sometimes와 actually로 사소해 보여도 중요할 수 있다는 반전을 부드럽게 말해요. 짧게 지나간 증상도 병력에서는 부정맥을 찾는 중요한 단서가 될 수 있어요.
     decoy: and often useless
     distractorsKo:
-    - 짧은 느낌은 보통 의미가 없어요
+    - 그 느낌이 몇 초쯤 갔나요?
     - 짧은 느낌은 검사로 알 수 없어요
     blank:
       answer: brief
@@ -4828,8 +4828,8 @@ situations:
     why: Let's …는 함께하는 계획으로 들려요. so we don't miss anything serious는 신중히 보는 목적이 환자를 위한 것임을 알려요.
     decoy: so we can leave
     distractorsKo:
-    - 빨리 끝내고 퇴원해요
-    - 중요한 건 나중에 확인해요
+    - 심전도를 한 번 더 찍어 볼게요
+    - 피검사도 같이 할게요
     blank:
       answer: carefully
       options:
@@ -4946,9 +4946,9 @@ situations:
     blank:
       answer: helped
       options:
-      - en: hurt
-      - en: failed
-      - en: worsened
+      - en: happened
+      - en: changed
+      - en: started
       - en: helped
   - en: Let's slow your breathing together while we check your heart.
     ko: 심장을 확인하는 동안 같이 호흡을 천천히 해봐요.
@@ -4969,7 +4969,7 @@ situations:
     why: Let's …와 together가 환자를 혼자 두지 않고 같이 한다는 느낌을 줘요. 천천히 호흡하면 불안으로 빨라진 호흡과 심박이 안정되는 데 도움이 될 수 있어요.
     decoy: on your own
     distractorsKo:
-    - 숨을 더 빠르게 쉬어 봐요
+    - 편하게 기대어 앉으세요
     - 숨을 오래 참아 봐요
     blank:
       answer: slow
@@ -4996,9 +4996,9 @@ situations:
     tag: 감별 설명
     icon: bulb
     why: but so can …은 두 가지 가능성을 나란히 놓아 공황이라고 단정하지 않는 말투예요. 공황으로도 심박이 빨라질 수 있지만 부정맥도 같은 증상을 낼 수 있어 확인이 필요해요.
-    decoy: and so will
+    decoy: but not
     distractorsKo:
-    - 공황은 심장에 전혀 영향을 주지 않아요
+    - 심전도로 리듬을 확인해 볼게요
     - 리듬은 이미 모두 정상으로 확인됐어요
     blank:
       answer: race
@@ -5025,14 +5025,14 @@ situations:
     decoy: as hard as you can
     distractorsKo:
     - 숨을 내쉬고 다섯을 세 보세요
-    - 숨을 최대한 빨리 들이쉬세요
+    - 어깨에 힘을 빼 보세요
     blank:
-      answer: four
+      answer: slowly
       options:
-      - en: twenty
-      - en: thirty
-      - en: four
-      - en: ten
+      - en: quickly
+      - en: sharply
+      - en: slowly
+      - en: loudly
   - en: Your heart rhythm looks steady right now, which is reassuring.
     ko: 지금 심장 리듬이 안정적으로 보여서 다행이에요.
     chunks:
@@ -5108,7 +5108,7 @@ situations:
       ko: 고마워요. 심장을 확인하는 동안 같이 호흡을 늦춰 봐요
       note: 제안
     - en: For that, breathe in slowly with me for a count of four.
-      icon: speaker
+      icon: me
       ko: 그러려면 저와 함께 넷을 세며 천천히 들이쉬어 보세요
       note: 지시
     - en: After those breaths, your rhythm looks steady, which is reassuring.
@@ -5188,7 +5188,7 @@ situations:
     why: can은 '그럴 수 있다'는 가능성으로 말해 겁주지 않아요. 항부정맥제를 거르면 약효가 떨어져 이전의 불규칙한 리듬이 다시 나타날 수 있어요.
     decoy: can keep away
     distractorsKo:
-    - 약을 거르면 리듬이 더 좋아져요
+    - 약은 식사와 함께 드세요
     - 약을 거르면 혈압이 바로 올라요
     blank:
       answer: doses
@@ -5241,7 +5241,7 @@ situations:
     why: even a few로 몇 번만 걸러도 영향이 있다는 점을 강조해요. 항부정맥제는 몸에 일정한 양이 유지되어야 효과가 나서 거르면 리듬이 다시 흐트러질 수 있어요.
     decoy: and never
     distractorsKo:
-    - 약을 거르면 오히려 리듬이 안정돼요
+    - 약 알람을 맞춰 두시면 좋아요
     - 약을 거르면 맥박이 느려져요
     blank:
       answer: abnormal
@@ -5267,8 +5267,8 @@ situations:
     why: Let's talk about …은 해결책을 함께 찾자는 제안이라 환자를 꾸짖는 말이 되지 않아요. ways to make … easier는 복약을 어렵게 만드는 이유를 같이 줄이자는 뜻이에요.
     decoy: why you won't
     distractorsKo:
-    - 약을 더 많이 드시도록 설득할게요
-    - 약값을 환자가 직접 내셔야 해요
+    - 복약 시간을 적어 드릴게요
+    - 부작용이 있으면 의사 선생님께 알려 드릴게요
     blank:
       answer: easier
       options:
@@ -5317,7 +5317,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 복약 순응도 확인 4문장 순서
-    why: 마지막 복용을 묻고, 중단한 이유를 묻고, 중단이 리듬에 미치는 영향을 말하고, 그걸 바탕으로 해결을 제안합니다. 'I see'·'it'·'Knowing that'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 마지막 복용을 묻고, 중단한 이유를 묻고, 중단이 리듬에 미치는 영향을 말하고, 그걸 바탕으로 해결을 제안합니다. 'I see'·'That's a common reason'(앞 줄의 대답을 받음)·'Knowing that'이 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: When did you last take your heart medication?
       icon: pill
@@ -5327,9 +5327,9 @@ situations:
       icon: bulb
       ko: 그렇군요. 왜 중단하게 되셨어요?
       note: 이유
-    - en: Stopping it can bring the irregular rhythm back, which is why I'm asking.
+    - en: That's a common reason, but stopping can bring the irregular rhythm back.
       icon: stetho
-      ko: 중단하면 불규칙한 리듬이 돌아올 수 있어서 여쭤보는 거예요
+      ko: 흔한 이유예요, 하지만 중단하면 불규칙한 리듬이 돌아올 수 있어요
       note: 설명
     - en: Knowing that, let's talk about ways to make taking it easier for you.
       icon: handshake2
@@ -5383,10 +5383,10 @@ situations:
     blank:
       answer: Dizzy
       options:
-      - en: Sleepy
+      - en: Nauseous
       - en: Dizzy
-      - en: Hungry
-      - en: Thirsty
+      - en: Sweaty
+      - en: Numb
   - en: I'm calling an interpreter to help us.
     ko: 저희를 도와줄 통역사를 부르고 있어요.
     chunks:
@@ -5431,7 +5431,7 @@ situations:
     decoy: your back
     distractorsKo:
     - 어지러워요? 몸을 가리켜 주세요
-    - 숨이 차요? 가슴을 가리켜 주세요
+    - 물 드릴까요?
     blank:
       answer: pain
       options:
@@ -5483,8 +5483,8 @@ situations:
     why: will keep …ing로 기다리는 동안에도 계속 지켜본다고 알려요. 통역사를 기다리는 시간에도 모니터가 심장 리듬을 계속 보여 주기 때문에 환자가 안심해도 돼요.
     decoy: until it breaks
     distractorsKo:
-    - 모니터는 기다리는 동안 꺼 둘게요
-    - 모니터가 약을 자동으로 줄 거예요
+    - 통역사가 곧 도착할 거예요
+    - 불편하면 손을 들어 주세요
     blank:
       answer: heart
       options:
@@ -5650,7 +5650,7 @@ situations:
     why: keeps A from …ing는 'A가 ~하지 못하게 막아 준다'는 구조예요. 페이스메이커는 심장이 너무 느리게 뛸 때 전기 신호를 보내 박동을 이끌어요.
     decoy: at night
     distractorsKo:
-    - 페이스메이커가 심장을 더 빠르게 뛰게 해요
+    - 페이스메이커 배터리는 몇 년 가요
     - 페이스메이커가 혈압을 낮춰 줘요
     blank:
       answer: slowly
@@ -5704,7 +5704,7 @@ situations:
     why: If …, … can …은 조건과 가능한 결과를 이어 말해 확인이 필요한 이유를 알려 줘요. 기기가 박동을 제대로 만들지 못하면 심박수가 갑자기 떨어져 어지럼이나 실신으로 이어질 수 있어요.
     decoy: all day
     distractorsKo:
-    - 페이스메이커가 고장 나도 심박수는 그대로예요
+    - 기기 회사에 점검을 요청할게요
     - 페이스메이커가 켜지면 맥박이 빨라져요
     blank:
       answer: drop
@@ -5747,13 +5747,13 @@ situations:
       ok: false
       fix: When was your pacemaker last checked?
     why: interrogation은 장치 점검을 뜻하는 의료진 용어인데, 환자에게는 '심문'으로 들려요. 환자에게는 checked라고 해요.
-    word: device
-    ko: 장치
+    word: interrogation
+    ko: 장치 점검
   order:
     tag: 대화 흐름
     icon: compass
     ko: 페이스메이커 문진 4문장 순서
-    why: 기기 카드를 묻고, 마지막 점검 시점을 묻고, 그 뒤의 증상을 묻고, 그 증상이 뜻할 수 있는 위험을 설명합니다. 'Thanks'·'since the last check'·'those symptoms'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 기기 카드를 묻고, 마지막 점검 시점을 묻고, 그 뒤의 증상을 묻고, 그 증상이 뜻할 수 있는 위험을 설명합니다. 'Thanks'·'Since that check'·'those symptoms'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Do you have your pacemaker ID card with you?
       icon: board
@@ -5763,9 +5763,9 @@ situations:
       icon: gear
       ko: 고마워요. 장치를 마지막으로 점검한 게 언제예요?
       note: 점검
-    - en: Have you had hiccup-like twitching or dizziness since the last check?
+    - en: Since that check, have you had hiccup-like twitching or dizziness?
       icon: faceWorried
-      ko: 마지막 점검 이후 딸꾹질 같은 경련이나 어지럼증이 있었나요?
+      ko: 그 점검 이후 딸꾹질 같은 경련이나 어지럼증이 있었나요?
       note: 증상
     - en: If those symptoms mean it isn't pacing correctly, your heart rate can drop suddenly.
       icon: siren
@@ -5793,8 +5793,8 @@ situations:
     why: Some … is normal, but …은 안심을 먼저 주고 but으로 확인의 필요를 이어 균형을 잡아요. 임신 중에는 혈액량이 늘어 심박수가 올라가는 것이 흔해요.
     decoy: so skip the check
     distractorsKo:
-    - 임신 중 두근거림은 모두 위험해요
-    - 임신 중에는 검사를 피해야 해요
+    - 임신 몇 주째세요?
+    - 아기 심박수도 확인할게요
     blank:
       answer: normal
       options:
@@ -5876,8 +5876,8 @@ situations:
     why: naturally로 몸이 당연히 보이는 변화라는 점을 알려 줘요. 임신 중에는 혈액량이 늘어서 심박수가 조금 오르는 것이 흔해요.
     decoy: very slowly
     distractorsKo:
-    - 임신 중에는 심장이 보통 더 느려져요
-    - 임신 중에는 맥박이 거의 안 변해요
+    - 임신 중에는 숨이 조금 찰 수도 있어요
+    - 물을 자주 드세요
     blank:
       answer: pregnancy
       options:
@@ -5924,7 +5924,7 @@ situations:
     goal: 2
     tag: 계획 안내
     icon: monitor
-    why: keep …ing로 지금 하는 일을 이어 간다고 알려요. for the next while은 정확한 시간을 정하지 않고 '당분간'이라고 말할 때 쓰는 표현이에요.
+    why: keep …ing로 지금 하는 일을 이어 간다고 알려요. for the next while은 정확한 시간을 정하지 않고 '당분간'이라고 말하는 표현이에요. 미국에서는 for a while이 더 흔해요.
     decoy: for the whole week
     distractorsKo:
     - 두 분 모두 내일 퇴원할 거예요
@@ -5982,9 +5982,9 @@ situations:
       icon: shield
       ko: 임신 중 빠른 박동은 어느 정도 정상이지만 신중히 확인해요
       note: 안심
-    - en: To check it, are you having any chest pain, fainting, or trouble breathing?
+    - en: 'To check it, I need to ask: any chest pain, fainting, or trouble breathing?'
       icon: siren
-      ko: 확인하려고 여쭤요, 가슴 통증이나 실신, 숨쉬기 힘든 증상이 있나요?
+      ko: 확인하려고 여쭤볼게요, 가슴 통증이나 실신, 숨쉬기 힘든 증상이 있나요?
       note: 질문
     - en: Thanks. We'll monitor your heart and keep both of you safe.
       icon: monitor
@@ -6015,8 +6015,8 @@ situations:
     why: and로 지금의 상태와 필요한 조치를 한 문장에 이어요. 빠른 부정맥으로 혈압이 떨어지면 불안정한 상태로 보고 리듬을 되돌리는 치료를 서둘러요.
     decoy: and we can wait
     distractorsKo:
-    - 혈압이 높아서 약을 바꿀 거예요
-    - 혈압은 괜찮고 리듬만 확인할게요
+    - 가슴에 패드를 붙일게요
+    - 산소를 드릴게요
     blank:
       answer: low
       options:
@@ -6047,9 +6047,9 @@ situations:
       answer: sleepy
       options:
       - en: sleepy
-      - en: thirsty
+      - en: alert
       - en: nervous
-      - en: hungry
+      - en: numb
   - en: You'll feel a quick shock while you're sedated — we're right here.
     ko: 진정된 상태에서 짧은 전기 충격을 느끼실 텐데 — 저희가 바로 옆에 있을게요.
     chunks:
@@ -6065,11 +6065,11 @@ situations:
     goal: 2
     tag: 과정 안내
     icon: bell
-    why: while you're sedated로 충격이 진정된 상태에서 일어난다는 점을 말해 줘요. 뒤에 we're right here를 붙이면 환자가 혼자가 아니라는 안심이 전해져요.
+    why: while you're sedated로 충격은 진정된 뒤에 준다는 순서를 알려요. 진정 중에는 대개 충격을 느끼거나 기억하지 못해요.
     decoy: after you wake
     distractorsKo:
-    - 깨어 있는 상태에서 충격을 드릴 거예요
-    - 충격은 한 번도 안 드릴 거예요
+    - 끝나면 리듬을 바로 확인할게요
+    - 혹시 알레르기 있는 약이 있나요?
     blank:
       answer: quick
       options:
@@ -6094,8 +6094,8 @@ situations:
     why: Everything will happen quickly, but …은 빠르게 진행된다는 사실을 솔직히 말하고 but으로 곁에 있다는 점을 붙여요. 속도를 미리 알려 주면 환자가 갑작스러운 움직임에 덜 놀라요.
     decoy: and slowly
     distractorsKo:
-    - 모든 게 천천히 진행될 거예요
-    - 팀은 밖에서 기다릴 거예요
+    - 가족분은 밖에서 기다리실 수 있어요
+    - 마지막으로 식사하신 게 언제예요?
     blank:
       answer: team
       options:
@@ -6120,8 +6120,8 @@ situations:
     why: won't … or …로 두 가지 걱정을 한 번에 지워 줘요. 진정제는 의식을 낮추고 기억을 흐리게 해서 시술 중의 느낌을 기억하지 못하는 경우가 많아요.
     decoy: or worry about
     distractorsKo:
-    - 잠든 동안에도 충격은 느끼실 거예요
-    - 충격은 깨고 나서 한 번 더 있어요
+    - 깨어나면 조금 어지러울 수 있어요
+    - 패드 자리가 조금 쓰릴 수 있어요
     blank:
       answer: remember
       options:
@@ -6147,8 +6147,8 @@ situations:
     why: As soon as로 리듬이 돌아오는 즉시라는 시점을 알려 줘요. 빠른 부정맥이 정상 리듬으로 돌아오면 심장이 다시 효율적으로 뛰어서 혈압도 회복되는 경우가 많아요.
     decoy: even before it
     distractorsKo:
-    - 리듬이 돌아와도 혈압은 계속 낮아요
-    - 혈압이 올라오면 리듬이 사라져요
+    - 깨어나실 때까지 옆에서 지켜볼게요
+    - 혈압은 몇 분마다 잴 거예요
     blank:
       answer: resets
       options:
@@ -6256,7 +6256,7 @@ situations:
     goal: 1
     tag: 의식 확인
     icon: speech
-    why: Stay with me는 곁에 있겠다는 말이자 환자가 반응하게 하는 말이에요. 뒤의 짧은 질문에 대답하는지를 보면 의식 상태를 확인할 수 있어요.
+    why: Stay with me는 의식이 흐려지는 환자에게 '정신 놓지 마세요'라고 붙잡는 말이에요. 뒤에 짧은 질문을 붙여 대답하는지로 의식을 확인해요.
     decoy: right now
     distractorsKo:
     - 눈을 감고 쉬세요
@@ -6314,13 +6314,13 @@ situations:
     decoy: very slowly
     distractorsKo:
     - 심장이 너무 느리게 뛰고 있어요
-    - 심장은 정상으로 뛰고 있어요
+    - 지금 혈압을 다시 잴게요
     blank:
       answer: dangerously
       options:
       - en: slightly
-      - en: suddenly
       - en: relatively
+      - en: mildly
       - en: dangerously
   - en: The doctor is on the way, and more hands are coming to help.
     ko: 의사 선생님이 오고 계시고, 도와줄 사람들도 더 오고 있어요.
@@ -6338,8 +6338,8 @@ situations:
     why: on the way로 도움이 이미 오고 있다고 알려요. more hands는 '일손'을 뜻하는 관용 표현이라 사람이 더 온다는 말을 쉽게 해요.
     decoy: to leave
     distractorsKo:
-    - 의사 선생님은 퇴근하셨어요
-    - 도움은 기다리셔야 해요
+    - 가족분께는 제가 연락드릴게요
+    - 산소를 드릴게요
     blank:
       answer: doctor
       options:
@@ -6363,8 +6363,8 @@ situations:
     why: let us …는 '우리가 ~할 수 있게 해 준다'는 구조라 장비의 목적을 쉽게 설명해요. if we need to를 붙여 반드시 쓴다는 뜻이 아니라 대비라는 점을 전해요.
     decoy: if we forget
     distractorsKo:
-    - 이 패드는 체온을 재 줘요
-    - 이 패드는 약을 넣어 줘요
+    - 패드가 차갑게 느껴질 수 있어요
+    - 가슴 털을 조금 밀어야 해요
     blank:
       answer: immediately
       options:
@@ -6452,7 +6452,7 @@ situations:
     why: I need to …로 의무처럼 말하되 환자에게 이유가 있다는 느낌을 줘요. WPW처럼 치료 선택에 영향을 주는 진단은 팀 전체가 알도록 바로 공유하는 것이 안전해요.
     decoy: tomorrow morning
     distractorsKo:
-    - WPW는 이미 완치됐다고 알릴게요
+    - 예전에 시술을 받으신 적 있나요?
     - WPW가 있는지 먼저 물어볼게요
     blank:
       answer: team
@@ -6481,7 +6481,7 @@ situations:
     why: certain …은 모든 약이 아니라 일부 약만 피한다는 뜻이라 환자가 치료를 겁내지 않게 해요. WPW에서는 일부 약이 위험할 수 있어 피해요.
     decoy: all of your pills
     distractorsKo:
-    - 모든 심장약을 두 배로 쓸 거예요
+    - 필요하면 전기로 리듬을 되돌릴 수도 있어요
     - 어떤 약도 쓰지 않을 거예요
     blank:
       answer: avoid
@@ -6505,7 +6505,7 @@ situations:
     tag: 과거력
     icon: calendar
     why: this …로 지금 보이는 리듬을 가리키며 전에도 있었는지 물어요. 이전에 비슷한 발작이 있었는지는 원인을 가늠하는 단서예요.
-    decoy: last night
+    decoy: in the past year
     distractorsKo:
     - 이런 약을 먹은 적이 있나요?
     - 이런 리듬이 가족에게도 있나요?
@@ -6535,8 +6535,8 @@ situations:
     why: means는 '~라는 뜻이다'로 앞 사실에서 결론을 이끌어 내요. WPW는 심방과 심실 사이에 여분의 전기 통로가 있는 상태라 일부 약이 오히려 위험할 수 있어요.
     decoy: many people
     distractorsKo:
-    - 여분의 통로가 있으면 모든 약이 더 잘 들어요
-    - 여분의 통로는 약과 상관이 없어요
+    - 심전도에 특징적인 모양이 보여요
+    - 예전에 이 진단을 받으셨어요?
     blank:
       answer: common
       options:
@@ -6560,15 +6560,15 @@ situations:
     why: making sure …는 '확실히 ~되도록 하고 있다'는 뜻이라 책임지고 챙긴다는 느낌을 줘요. 모든 팀원이 같은 정보를 알아야 위험한 약을 실수로 쓰지 않아요.
     decoy: to the family
     distractorsKo:
-    - WPW는 혼자만 알고 있을게요
+    - 심장내과 선생님이 곧 오실 거예요
     - WPW에 대해 가족에게 먼저 알릴게요
     blank:
       answer: everyone
       options:
-      - en: only one
-      - en: everyone
       - en: nobody
+      - en: everyone
       - en: someone
+      - en: one person
   - en: This information helps us choose the safest treatment for your heart.
     ko: 이 정보가 심장에 가장 안전한 치료를 고르는 데 도움이 돼요.
     chunks:
@@ -6634,7 +6634,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: WPW 위험 공유 4문장 순서
-    why: 팀에 알려야 한다고 말하고, 그 이유(여분의 전기 통로)를 설명하고, 그래서 피할 약을 말하고, 그것을 지키기 위해 팀원 모두가 알게 한다고 합니다. 'That's because'·'So'·'that'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 팀에 알려야 한다고 말하고, 그 이유(여분의 전기 통로)를 설명하고, 그래서 피할 약을 말하고, 그것을 지키기 위해 팀원 모두가 알게 한다고 합니다. 'That's because'·'So … those medicines'·'that'이 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: I need to flag that you have WPW to the team right away.
       icon: pushpin
@@ -6644,9 +6644,9 @@ situations:
       icon: bulb
       ko: 여분의 전기 통로 때문에 흔한 약 일부가 안전하지 않아서예요
       note: 이유
-    - en: So we'll avoid certain heart medicines that could be dangerous for you.
+    - en: So we'll avoid those medicines and choose safer ones.
       icon: pill
-      ko: 그래서 위험할 수 있는 특정 심장약은 피할 거예요
+      ko: 그래서 그런 약은 피하고 더 안전한 약을 고를 거예요
       note: 약 선택
     - en: To make sure of that, everyone on the team will know about your WPW before we start.
       icon: bell
@@ -6673,7 +6673,7 @@ situations:
     decoy: so we can relax
     distractorsKo:
     - 심장이 너무 빠르게 뛰고 있어요
-    - 심장은 정상으로 뛰고 있어요
+    - 어지러우면 바로 말씀해 주세요
     blank:
       answer: slowly
       options:
@@ -6696,18 +6696,18 @@ situations:
     goal: 2
     tag: 장비 설명
     icon: bandage
-    why: that give …로 패드가 하는 일을 관계절로 붙여 설명해요. 환자가 자극을 어떻게 느끼는지는 사람마다 다르니 느낌이 있으면 말해 달라고 따로 알려 주면 좋아요.
+    why: gentle은 제세동 충격과 다르다는 걸 알리되 아프지 않다고 약속하지는 않는 말이에요. 경피 페이싱은 불편할 수 있어 진통·진정을 함께 준비해요.
     decoy: that read only
     distractorsKo:
     - 약을 넣어 주는 패드를 붙일 거예요
     - 체온을 재는 패드를 붙일 거예요
     blank:
-      answer: gentle
+      answer: place
       options:
-      - en: strong
-      - en: painful
-      - en: loud
-      - en: gentle
+      - en: remove
+      - en: check
+      - en: change
+      - en: place
   - en: Squeeze my hand if you can hear me.
     ko: 제 말이 들리면 제 손을 꽉 쥐어 보세요.
     chunks:
@@ -6725,14 +6725,14 @@ situations:
     decoy: to answer yes
     distractorsKo:
     - 제 손을 놓고 눈을 감아 주세요
-    - 제 말이 들리면 대답해 주세요
+    - 팔에 힘을 빼고 계세요
     blank:
       answer: hear
       options:
       - en: hear
       - en: see
       - en: feel
-      - en: smell
+      - en: reach
   - en: Your heart rate has dropped very low, so we're acting quickly.
     ko: 심박수가 아주 낮게 떨어져서, 저희가 빠르게 움직이고 있어요.
     chunks:
@@ -6751,8 +6751,8 @@ situations:
     why: so로 지금 서두르는 이유를 앞 문장과 연결해 줘요. 빠르게 움직이는 이유를 알려 주면 환자와 가족이 분주한 모습에 덜 놀라요.
     decoy: so we can wait
     distractorsKo:
-    - 심박수가 올라서 천천히 볼게요
-    - 심박수는 정상이라 기다리고 있어요
+    - 가슴에 패드를 붙이고 있어요
+    - 산소를 드릴게요
     blank:
       answer: quickly
       options:
@@ -6780,8 +6780,8 @@ situations:
     why: to keep …으로 장비의 목적을 '유지하려고'로 말해요. 페이싱 패드는 심장이 스스로 박동을 충분히 만들지 못할 때 전기 신호로 박동을 만들어 줘요.
     decoy: to make it stop
     distractorsKo:
-    - 패드가 심장 소리를 녹음해요
-    - 패드가 통증을 줄여 줘요
+    - 패드 자리가 따끔할 수 있어요
+    - 진통제를 같이 드릴게요
     blank:
       answer: steadily
       options:
@@ -6806,7 +6806,7 @@ situations:
     why: as … as you can은 환자가 할 수 있는 만큼만 부탁해서 부담을 줄여요. while로 지금 준비하는 동안이라는 범위를 알려 주면 환자가 언제까지 기다릴지 알 수 있어요.
     decoy: and keep talking
     distractorsKo:
-    - 준비하는 동안 걸어다니셔도 돼요
+    - 혹시 가슴이 아프세요?
     - 준비하는 동안 눈을 크게 뜨고 있으세요
     blank:
       answer: ready
@@ -6974,8 +6974,8 @@ situations:
     why: Some …can …로 단정하지 않고 가능성을 말해요. QT 연장은 박동 뒤 심장이 전기적으로 회복하는 시간이 길어지는 상태이고 일부 약이 원인이 될 수 있어요.
     decoy: every day
     distractorsKo:
-    - 약은 심장에 영향을 주지 않아요
-    - 모든 약은 심장을 보호해요
+    - 최근에 항생제를 드셨나요?
+    - 심전도를 다시 찍어 볼게요
     blank:
       answer: electrical
       options:
@@ -7002,8 +7002,8 @@ situations:
     why: can make …로 원인과 결과를 이어 설명해요. 칼륨이나 마그네슘이 낮으면 심장 근육의 전기 활동이 불안정해져 위험한 리듬이 생기기 쉬워요.
     decoy: very rarely
     distractorsKo:
-    - 수치가 높으면 리듬이 안정돼요
-    - 수치는 리듬과 아무 관련이 없어요
+    - 결과는 30분쯤 걸려요
+    - 칼륨은 정맥으로 보충할게요
     blank:
       answer: unstable
       options:
@@ -7075,10 +7075,10 @@ situations:
       icon: me
       en: I'm drawing up two grams of mag sulfate for your prolonged QT.
       ok: false
-      fix: I'm getting some magnesium ready to protect your heart rhythm.
+      fix: I'm drawing up some magnesium to protect your heart rhythm.
     why: 약어(mag)와 용량·경로는 의료진끼리 주고받는 말이에요. 환자에게는 무엇을 왜 주는지로 말해요.
-    word: draw up
-    ko: 약을 뽑다
+    word: mag
+    ko: 마그네슘
   order:
     tag: 대화 흐름
     icon: compass
@@ -7118,7 +7118,7 @@ situations:
     goal: 1
     tag: 상황 보고
     icon: siren
-    why: SBAR의 S는 지금 무슨 일인지를 한 문장으로 말하는 칸이에요. 침상 번호를 먼저 말하고 just converted로 방금 바뀌었음을 알려 듣는 사람이 시점을 바로 알 수 있어요.
+    why: SBAR의 S는 지금 무슨 일인지를 한 문장으로 말하는 칸이에요. just converted로 방금 바뀌었다는 시점을 먼저 알려요. 실제 보고에서는 환자 이름으로 누구인지 밝혀요(침상 번호는 위치일 뿐이에요).
     decoy: at the clinic
     distractorsKo:
     - '배경: 2번 침상 환자는 심장 병력이 있습니다'
@@ -7147,8 +7147,8 @@ situations:
     why: 혈압을 숫자로 말하면 '떨어졌다'는 말보다 정확해서 듣는 사람이 위급도를 가늠해요. 78/40은 seventy-eight over forty로 읽는 것이 일반적이에요.
     decoy: back to normal
     distractorsKo:
-    - 혈압이 120/80으로 올랐고 편안해 보입니다
-    - 혈압이 안정적이고 식은땀도 없습니다
+    - '배경: 심부전 병력이 있습니다'
+    - 산소포화도는 94%입니다
     blank:
       answer: dropped
       options:
@@ -7175,8 +7175,8 @@ situations:
     why: SBAR의 R은 원하는 조치를 분명히 말하는 칸이에요. I recommend …로 요청을 완곡하고 전문적으로 전하고 now로 긴급함을 분명히 해요.
     decoy: in the morning
     distractorsKo:
-    - 팀이 나중에 와도 됩니다
-    - 심율동전환은 필요하지 않습니다
+    - 제가 심전도를 다시 찍겠습니다
+    - 아미오다론 처방을 확인해 주세요
     blank:
       answer: now
       options:
@@ -7226,8 +7226,8 @@ situations:
     why: need someone처럼 누가 올지 정하지 않고 필요한 역할을 요청하면 사람이 빨리 모일 수 있어요. immediately가 요청의 긴급도를 분명히 해요.
     decoy: when free
     distractorsKo:
-    - 침상에서 기다릴 사람은 필요 없습니다
-    - 심율동전환은 다음 주에 준비합니다
+    - 제세동기는 이미 침상에 있습니다
+    - 정맥로는 두 개 확보했습니다
     blank:
       answer: immediately
       options:
@@ -7252,7 +7252,7 @@ situations:
     decoy: until you hang up
     distractorsKo:
     - 전화를 끊고 직접 의사에게 갈게요
-    - 의사가 올 때까지 기다리지 마세요
+    - 5분 뒤에 다시 전화드리겠습니다
     blank:
       answer: notify
       options:
@@ -7340,7 +7340,7 @@ situations:
     why: I know that was …로 환자가 방금 겪은 일을 먼저 인정하면 위로가 돼요. 뒤에 we're going to help you now로 이제 도움이 시작된다는 점을 이어요.
     decoy: but it's over
     distractorsKo:
-    - 그건 아무 일도 아니에요
+    - 충격이 몇 번 왔어요?
     - 곧 퇴원하실 수 있어요
     blank:
       answer: frightening
@@ -7368,8 +7368,8 @@ situations:
     why: to calm …로 약의 목적을 알려요. 전기폭풍에서는 반복되는 빠른 리듬과 ICD 충격을 가라앉히기 위해 약을 쓰는 것이 일반적이에요.
     decoy: to wake it up
     distractorsKo:
-    - 심장을 더 빠르게 해 주는 약을 드릴게요
-    - 통증 부위에 바르는 약을 드릴게요
+    - 심전도를 바로 찍을게요
+    - 정맥주사를 잡을게요
     blank:
       answer: calm
       options:
@@ -7397,7 +7397,7 @@ situations:
     why: and로 지금 진행 중인 두 가지 조치를 함께 알려요. ICD 위에 자석을 대면 기기가 충격을 주는 기능이 잠시 멈추는 경우가 많아요.
     decoy: and leaving
     distractorsKo:
-    - 팀이 이식형 장치를 새로 넣고 있어요
+    - 팀이 가슴에 패드를 붙이고 있어요
     - 팀이 환자의 가족을 부르고 있어요
     blank:
       answer: magnet
@@ -7427,7 +7427,7 @@ situations:
     decoy: because it's broken
     distractorsKo:
     - 장치가 고장 나서 충격을 주는 거예요
-    - 장치가 환자를 깨우려고 충격을 줘요
+    - 충격이 몇 번 왔는지 기록할게요
     blank:
       answer: dangerous
       options:
@@ -7450,10 +7450,10 @@ situations:
     goal: 1
     tag: 조치 설명
     icon: shield
-    why: until로 자석이 임시 조치라는 점을 알려요. 자석은 충격 기능을 잠시 멈출 뿐이라 원인을 찾은 뒤 기기를 다시 점검해요.
+    why: until로 자석이 임시 조치라는 점을 알려요. 자석을 대는 동안에는 ICD가 위험한 리듬도 치료하지 않아서, 체외 제세동 패드를 붙이고 모니터로 지켜봐요.
     decoy: until you leave
     distractorsKo:
-    - 자석이 충격을 더 세게 만들어요
+    - 기기 회사에 점검을 요청할게요
     - 자석이 영구적으로 장치를 꺼요
     blank:
       answer: stop
@@ -7480,7 +7480,7 @@ situations:
     decoy: and we're leaving
     distractorsKo:
     - 이제 혼자 계셔도 돼요
-    - 이제 곧 다시 충격이 올 거예요
+    - 충격이 또 오면 바로 알려 주세요
     blank:
       answer: safe
       options:
@@ -7533,21 +7533,21 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: ICD 전기폭풍 응대 4문장 순서
-    why: 먼저 공감하고, 충격이 위험한 리듬 때문이라고 설명하고, 그 충격을 멈추려고 자석을 댄다고 알리고, 자석이 붙은 뒤 안심시킵니다. 'those shocks'·'With the magnet on'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 먼저 공감하고, 충격이 위험한 리듬 때문이라고 설명하고, 그 충격을 멈추려고 자석을 댄다고 알리고, 자석이 붙은 동안 모니터로 지켜본다고 안심시킵니다. 'Those shocks'가 1번의 that을 받고 'those shocks'·'While the magnet is on'이 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: I know that was frightening — we're going to help you now.
       icon: faceWorried
       ko: 무서우셨을 거 알아요 — 이제 저희가 도와드릴게요
       note: 공감
-    - en: Your device is trying to fix a dangerous rhythm, even though the shocks feel awful.
+    - en: Those shocks mean your device is trying to fix a dangerous rhythm.
       icon: bulb
-      ko: 장치는 위험한 리듬을 고치려는 건데 충격이 끔찍하게 느껴지실 거예요
+      ko: 그 충격은 장치가 위험한 리듬을 고치려는 중이라는 뜻이에요
       note: 이유
-    - en: To stop those shocks for now, the team is placing a magnet and calling cardiology.
+    - en: So to stop those shocks for now, the team is placing a magnet and calling cardiology.
       icon: gear
-      ko: 그 충격을 당분간 멈추려고 팀이 자석을 대고 심장내과를 부르고 있어요
+      ko: 그래서 그 충격을 당분간 멈추려고 팀이 자석을 대고 심장내과를 부르고 있어요
       note: 조치
-    - en: With the magnet on, you're safe now, and we're staying right here with you.
+    - en: While the magnet is on, we're watching your monitor and staying right here.
       icon: handshake2
-      ko: 자석을 대 놨으니 이제 안전해요, 저희가 여기 함께 있을게요
+      ko: 자석을 대는 동안 저희가 모니터를 지켜보며 여기 함께 있을게요
       note: 안심
