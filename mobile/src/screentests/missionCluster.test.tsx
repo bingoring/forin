@@ -100,7 +100,7 @@ test('상황 종료 is centred on the SCREEN, in the same top row as the exit', 
   // (dialogue.jsx L31: top 50, centred on one line), and the chip is pinned to the same
   // 34pt line: top 50, 34 tall, centred in it. jest has no layout engine, so what is
   // checked is that the numbers agree.
-  expect(src).toMatch(/position: 'absolute', left: 0, right: 0, top: 50, height: 34, alignItems: 'center', justifyContent: 'center', zIndex: 6/);
+  expect(src).toMatch(/position: 'absolute', left: 0, right: 0, top: 50, height: 34, alignItems: 'center', justifyContent: 'center', zIndex: 8/);
   expect(src).toMatch(/paddingTop: 50, paddingHorizontal: 16/);
   // L34: padding 6/16.
   expect(src).toMatch(/paddingVertical: 6, paddingHorizontal: 16, backgroundColor: nb\.paper/);
@@ -154,4 +154,15 @@ test('the chip is the handoff paper(1), padding 6/10, yellow .5 (L36)', () => {
   const tree = mount({});
   const face = tree.root.findAll((n) => typeof n.type === 'string' && flat(n.props?.style).backgroundColor === 'rgba(249,227,123,.5)', { deep: true })[0];
   expect(flat(face.props.style)).toMatchObject({ paddingVertical: 6, paddingHorizontal: 10 });
+});
+
+test('the open mission list is drawn over the conversation, not under it', () => {
+  // The handoff stage is short (D 168; 124 on a 667pt phone, or dragged small), so the
+  // conversation column starts right under the bar — and an open list of 4+ missions
+  // hangs past that edge. The bar has to sit above the column or the list is painted over.
+  const src = readFileSync(join(__dirname, '..', 'app', 'dialogue', '[id].tsx'), 'utf8');
+  const bar = Number(/paddingTop: 50[^}]*zIndex: (\d+)/.exec(src)?.[1]);
+  const thread = Number(/testID="thread-column" style=\{\{[^}]*zIndex: (\d+)/.exec(src)?.[1]);
+  expect(thread).toBeGreaterThan(0);
+  expect(bar).toBeGreaterThan(thread);
 });

@@ -723,7 +723,7 @@ export default function DialogueRoute() {
       <View
         onLayout={(e) => setBarH(e.nativeEvent.layout.height)}
         pointerEvents="box-none"
-        style={{ position: 'absolute', top: 0, left: 0, right: 0, paddingTop: 50, paddingHorizontal: 16, paddingBottom: 8, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', zIndex: 5 }}
+        style={{ position: 'absolute', top: 0, left: 0, right: 0, paddingTop: 50, paddingHorizontal: 16, paddingBottom: 8, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', zIndex: 7 }}
       >
         {/* The way out — paper(-1) 34×34, the red ✕ (drawn: lesson-fidelity-v46 결정 4). It
             stands alone up here, with nothing beside it to catch a thumb. */}
@@ -755,7 +755,7 @@ export default function DialogueRoute() {
       {/* ✓ 상황 종료 — paper(0.5) 6/16, Gaegu 15 green (L34), on the bar's line and centred
           on the screen. A sibling of the bar rather than its child, so the mission chip's
           width cannot push it off centre; box-none so the bar underneath stays tappable. */}
-      <View pointerEvents="box-none" style={{ position: 'absolute', left: 0, right: 0, top: 50, height: 34, alignItems: 'center', justifyContent: 'center', zIndex: 6 }}>
+      <View pointerEvents="box-none" style={{ position: 'absolute', left: 0, right: 0, top: 50, height: 34, alignItems: 'center', justifyContent: 'center', zIndex: 8 }}>
         <Animated.View style={{ opacity: chromeOpacity }} pointerEvents={typing ? 'none' : 'auto'}>
           <NbPressable
             testID="dialogue-end"
