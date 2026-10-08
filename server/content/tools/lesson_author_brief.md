@@ -346,7 +346,7 @@ situations:
 1. 바탕은 정본에서 뽑습니다: `python3 export_dept_lessons.py <부서> <작업 폴더> <주제>` → `base-<주제>.yaml`
    (단어·문장·뉘앙스·order가 전부 들어 있음).
 2. 출력 `<주제>.yaml`은 base를 읽어 **새 필드만 얹는 스크립트**로 만듭니다. 기존 키는 한 글자도 바꾸지 않습니다
-   (V16이 v44 필드를 정본과 비교합니다). **`nuance:`를 지우지 마세요** — 합치기(`--replace`)가 base의 뉘앙스가
+   (V16이 v44 필드를 정본과 비교합니다). 예외는 context 장면 정비(`pipeline/TASK.md` 9번 — 같은 말이 세 장면 모두에, T8 사용자 결정)뿐입니다. **`nuance:`를 지우지 마세요** — 합치기(`--replace`)가 base의 뉘앙스가
    빠진 산출물을 거절합니다.
 3. `verify_one_theme.py`로 통과 → 합치기는 `merge_dept_lessons.py <부서> <디렉터리> --replace`만 됩니다(보강 경로는
    v45 뉘앙스 전용이라 v46 필드가 있으면 멈춥니다).

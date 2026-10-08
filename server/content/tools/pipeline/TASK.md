@@ -71,7 +71,7 @@
 ## 반드시 지킬 것
 1. base를 읽어 새 필드만 얹는 파이썬 스크립트(`build_<주제>_v46.py`)로 만듭니다. 새 값은 주제 이름을 넣은 데이터 파일
    (`add_<주제>_v46_1.yaml` …, 상황 예닐곱 건씩)에 쓰고 스크립트가 상황 제목과 문장 순번으로 맞춰 얹습니다.
-2. **`nuance:`를 지우거나 고치지 마세요**(ko/word 추가만). 합치기가 뉘앙스가 빠진 산출물을 거절합니다.
+2. **`nuance:`를 지우거나 고치지 마세요**(ko/word 추가만 — 단, 9번 context 장면 정비는 예외). 합치기가 뉘앙스가 빠진 산출물을 거절합니다.
 3. `why`는 사실이어야 하고 `ko`를 되풀이하지 않습니다. 확신 없는 주장은 쓰지 마세요.
 4. 오답(`decoy`·`distractorsKo`·빈칸 선택지)은 **정답으로도 맞는 것이 없게**. 빈칸 선택지는 같은 품사, 넣어 읽으면 문법은 맞는 말.
 5. `order`는 순서가 **하나로만** 맞게. 2·3번을 바꿔도 자연스러우면 다시 고르세요.
@@ -81,12 +81,19 @@
 7. 다 쓰면 스스로 한 번 뽑아 보세요: 빈칸 선택지 넷을 문장에 넣은 네 줄, order 인접 교환 세 가지. 정답이 둘인 것은 고칩니다.
 8. **distractorsKo 자기 점검(필수)** — 문장마다 `ko`와 오답 둘을 나란히 뽑아, 오답이 ① 정답에 "안/못/절대"를 붙이거나 반대말로
    바꾼 것인지, ② 그 상황의 간호사가 실제로 할 말인지 한 줄씩 판정하세요. ①이거나 ②가 아니면 고칩니다(ER 검토마다 45~65문장 지적).
-9. **context `word` 자기 점검(필수)** — 핸드오프 CTX(`deteriorate`)처럼 **같은 말이 세 장면 모두에** 나오고, 어색한 장면은 그 말이
-   듣는 사람(가족·환자)에게 맞지 않는 곳입니다. `word`는 세 장면이 같은 뜻으로 공유하는 말이어야 합니다 — 어색한 표현 자체(`owie`,
-   `belt thing`)를 고르면 제목 "`word`가 어색한 장면은?"이 답을 말해 버립니다. 검사기 W14가 장면에 없는 `word`를 경고합니다.
+9. **context 장면 정비(필수, T8 사용자 결정 2026-10-08)** — 핸드오프 CTX(`deteriorate`)처럼 **같은 말 `word`가 세 장면 모두의
+   `en`에** 나오고, 어색한 장면(ok=false)은 그 말을 **듣는 사람에게 맞지 않게** 쓴 곳입니다(의료진끼리는 정확한 임상어, 가족·환자에게는
+   차갑거나 못 알아듣는 말). 기존 장면이 이 모양이 아니면 **장면 `en`과 `fix`를 고쳐 씁니다** — 이 점검에 한해 `nuance:`의 context
+   `scenes[].en`·`scenes[].fix`·`why`를 고쳐도 됩니다(`who`·`icon`·`ok`·`tone`과 문항 수·순서는 그대로). 어색한 표현 자체(`owie`,
+   `belt thing`, `CNS depression`)를 `word`로 고르면 안 됩니다. 검사기 W14가 세 장면 중 `word`가 없는 곳을 알려 줍니다 — 0건이 목표.
+   예) word `drowsy`: 환자에게 "This may make you feel drowsy." ✓ / 차트 "Pt drowsy but easily arousable." ✓ /
+       어색한 장면은 같은 `drowsy`를 듣는 사람에게 맞지 않게 — 예: 보호자에게 "Pt is drowsy, GCS 14, monitoring for resp depression." ✕
+       (`fix`: "He'll be sleepy for a while — we're watching his breathing closely.")
 10. **order 조건부 점검(필수)** — `If so`·`If it does`·`If not`·`In that case`·`If any of those`로 시작하는 줄마다, 그 줄의 행동
    (심전도·산소·외상 사정·혈액검사·혈압 감시·도움 요청·보고)이 **모든 환자에게 하는 것인지** 따지세요. 그렇다면 조건을 빼고 다른
    가리키는 말로 묶습니다(arrest·shock·asthma·dyspnea 검토마다 6~8장 지적). 청색증·대량 출혈·조용한 흉부는 기다리지 않고 바로 부릅니다.
+   `While`·`Once`·`Until then`·`After the scan`처럼 **시간으로 묶은 줄**도 같은 눈으로 보세요 — 그 행동을 다른 일이 끝날 때까지 미루거나
+   그동안만 하게 만들면 같은 오류입니다(polytrauma 검토 3장).
 
 ## 검사 — 통과할 때까지
     python3 /Users/ywyeom/private/forin/server/content/tools/verify_one_theme.py <부서코드> <작업 폴더>/<주제>.yaml
