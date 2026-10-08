@@ -1,0 +1,194 @@
+## 0 알레르기력·노출원 문진
+ [0] What did you eat, take, or come into contact with before the hives started? | 두드러기가 시작되기 전에 무엇을 먹었거나 복용했거나, 무엇에 닿았나요? | What did you eat, take,/or come into contact with/before the hives/started/? | eat,take,contact,hives,start
+ [1] Have you ever had a reaction like this before? | 예전에 이런 반응이 있었던 적이 있나요? | Have you ever had/a reaction/like this/before/? | ever,reaction,before
+ [2] Any trouble breathing or tightness in your throat right now? | 지금 숨쉬기가 힘들거나 목이 조이는 느낌이 있나요? | Any trouble breathing/or tightness/in your throat/right now/? | trouble,breathe,throat,tightness
+ [3] Did a bee sting you, or did you take any new medication recently? | 벌에 쏘였거나 최근에 새로운 약을 복용했나요? | Did a bee sting you,/or did you take/any new medication/recently/? | sting,take,new,medication,recently
+ [4] I'm going to check your lips, tongue, and airway right now. | 지금 입술과 혀, 기도를 확인해 볼게요. | I'm going to check/your lips, tongue,/and airway/right now/. | check,lip,tongue,airway
+  CTX ['reaction', 'ever']
+     0 True 환자에게 | Have you ever had a reaction like this before? | None
+     1 True 차트 기록 | Hx of hives after PCN, no prior anaphylaxis. | None
+     2 False 환자에게 | Any prior history of anaphylaxis or angioedema? | Have you ever had a reaction like this before — like swelling or trouble breathing?
+    why: anaphylaxis·angioedema는 의료진과 차트의 말이에요. 환자에게는 '전에도 이런 반응이 있었나요?'처럼 풀어서 물어야 정확한 답이 나와요.
+## 1 경증 두드러기 사정
+ [0] Right now it looks limited to your arms, which is reassuring. | 지금은 팔에만 국한돼 있어서 안심이 되네요. | Right now/it looks limited/to your arms,/which is reassuring/. | look,limit,arm,reassure
+ [1] We'll watch to make sure it doesn't spread or affect your breathing. | 퍼지거나 호흡에 영향을 주지 않는지 지켜볼게요. | We'll watch/to make sure/it doesn't spread/or affect your breathing/. | watch,spread,affect,breathe
+ [2] Let me know immediately if your lips or tongue start to tingle. | 입술이나 혀가 저릿해지기 시작하면 바로 알려주세요. | Let me know/immediately/if your lips or tongue/start to tingle/. | immediately,lip,tongue,start,tingle
+ [3] The redness is only on your arms right now, not on your face or chest. | 발적은 지금 팔에만 있고, 얼굴이나 가슴에는 없어요. | The redness is only/on your arms/right now,/not on your face/or chest/. | redness,arm,face,chest
+ [4] If it spreads to your face or you feel your throat tighten, tell me right away. | 얼굴로 퍼지거나 목이 조여오는 느낌이 들면 바로 말씀해 주세요. | If it spreads/to your face/or you feel/your throat tighten,/tell me right away/. | spread,face,feel,throat,tighten,tell
+  SWAP ['Let me know ', "whenever it's convenient", ' if your lips or tongue start to tingle.'] immediately ['immediately', "whenever it's convenient", 'eventually'] 환자에게 · 악화 신호 알려 달라기
+## 2 항히스타민 투여 설명
+ [0] This antihistamine will calm the itching and the hives. | 이 항히스타민제가 가려움과 두드러기를 가라앉혀 줄 거예요. | This antihistamine/will calm/the itching/and the hives/. | antihistamine,calm,itch,hives
+ [1] It can make you drowsy, so you shouldn't drive for a while. | 졸릴 수 있어서 당분간 운전은 하지 마세요. | It can make you/drowsy,/so you shouldn't drive/for a while/. | drowsy,drive
+ [2] We'll keep you here a bit to make sure you don't react again. | 다시 반응이 없는지 확인하러 잠시 더 계셔야 해요. | We'll keep you here/a bit/to make sure/you don't react again/. | keep,react,again
+ [3] The itching should ease within thirty minutes or so. | 가려움은 30분 정도면 완화될 거예요. | The itching/should ease/within thirty minutes/or so/. | itch,ease
+ [4] Have someone else drive you, or wait here until the drowsiness wears off. | 다른 분이 운전해 주시거나, 졸림이 가실 때까지 여기서 기다려 주세요. | Have someone else/drive you,/or wait here/until the drowsiness/wears off/. | drive,wait,drowsiness
+  CTX ['drowsy', 'drive']
+     0 True 환자에게 | It can make you drowsy, so you shouldn't drive for a while. | None
+     1 True 차트 기록 | Diphenhydramine 50 mg IV given. Pt drowsy, ride home arranged. | None
+     2 False 환자에게 | Sedation is an expected adverse effect, so driving is contraindicated. | This can make you sleepy, so please don't drive for a while.
+    why: sedation·adverse effect·contraindicated는 문서에 쓰는 말이에요. 환자에게는 '졸릴 수 있으니 한동안 운전하지 마세요'처럼 쉽게 말해요.
+## 3 약물 알레르기 이력 확인
+ [0] Can you describe what happened when you took penicillin? | 페니실린을 복용했을 때 어떤 일이 있었는지 설명해 주시겠어요? | Can you describe/what happened/when you took/penicillin/? | describe,happen,take,penicillin
+ [1] Was it a rash, swelling, or trouble breathing? | 발진이었나요, 부기였나요, 아니면 숨쉬기 힘든 거였나요? | Was it a rash,/swelling,/or trouble breathing/? | rash,swell,trouble,breathe
+ [2] I'll put a red allergy band on you and flag it in your chart. | 빨간 알레르기 밴드를 채워드리고 차트에도 표시해 둘게요. | I'll put a red/allergy band/on you/and flag it/in your chart/. | allergy,band,flag,chart
+ [3] Did the rash come with any swelling of your lips or face? | 발진과 함께 입술이나 얼굴이 붓기도 했나요? | Did the rash/come with any/swelling of your lips/or face/? | rash,swell,lip,face
+ [4] This band tells every nurse and doctor to avoid penicillin completely. | 이 밴드는 모든 간호사와 의사에게 페니실린을 완전히 피하라고 알려줘요. | This band tells/every nurse and doctor/to avoid penicillin/completely/. | band,avoid,penicillin,completely
+  CTX ['rash', 'swell', 'trouble']
+     0 True 환자에게 | Was it a rash, swelling, or trouble breathing? | None
+     1 True 차트 기록 | PCN allergy: hives and lip swelling in 2019. | None
+     2 False 환자에게 | Was it urticaria, angioedema, or bronchospasm? | Did you get hives, swelling, or trouble breathing?
+    why: urticaria·angioedema·bronchospasm은 정확한 임상어지만 환자는 대답하기 어려워요. 반응의 종류는 쉬운 말로 물어야 이력이 정확해져요.
+## 4 에피펜 사용법 교육
+ [0] Pull off the blue cap, then press the orange tip firmly into your outer thigh. | 파란 뚜껑을 당겨서 빼고, 주황색 끝부분을 허벅지 바깥쪽에 힘껏 눌러 주세요. | Pull off the blue cap,/then press/the orange tip/firmly into your outer thigh/. | pull,cap,press,tip,thigh
+ [1] Hold it for three seconds, then call 911 even if you feel better. | 3초간 누르고 있다가, 좋아진 것 같아도 911에 전화하세요. | Hold it/for three seconds,/then call 911/even if you feel better/. | hold,second,call,feel
+ [2] Can you show me on the trainer how you'd do it? | 연습용 기구로 어떻게 하실 건지 보여주시겠어요? | Can you show me/on the trainer/how you'd/do it/? | show,trainer
+ [3] Push the pen against your thigh until you hear a click. | 딸깍 소리가 들릴 때까지 펜을 허벅지에 대고 눌러 주세요. | Push the pen/against your thigh/until you hear/a click/. | push,pen,thigh,hear,click
+ [4] Even after the shot, you need to come back so we can watch for another reaction. | 주사를 맞은 뒤에도 다시 반응이 없는지 지켜봐야 하니 응급실에 다시 오셔야 해요. | Even after the shot,/you need to/come back/so we can watch/for another reaction/. | shot,need,watch,reaction
+  SWAP ['Press the orange tip into ', 'your vastus lateralis', '.'] your outer thigh ['your outer thigh', 'your vastus lateralis', 'any muscle you like'] 환자에게 · 주사 부위 설명
+## 5 전형 아나필락시스
+ [0] I'm giving you a shot of epinephrine in your thigh now. | 지금 허벅지에 에피네프린 주사를 놓을게요. | I'm giving you/a shot of epinephrine/in your thigh/now/. | give,shot,epinephrine,thigh
+ [1] Does your throat feel tight or is it hard to breathe? | 목이 조이거나 숨쉬기 힘든 느낌이 있나요? | Does your throat feel/tight/or is it/hard to breathe/? | throat,feel,tight,breathe,hard
+ [2] What did you eat or take right before this started? | 이게 시작되기 바로 전에 무엇을 먹거나 복용했나요? | What did you eat/or take/right before this/started/? | eat,take,before,start
+ [3] Squeeze my hand and tell me if your voice sounds different. | 제 손을 꽉 쥐고, 목소리가 다르게 들리면 말씀해 주세요. | Squeeze my hand/and tell me/if your voice/sounds different/. | squeeze,tell,voice,different
+ [4] Your heart may race after the shot, and that's expected. | 주사 후에 심장이 빨리 뛸 수 있는데, 정상적인 거예요. | Your heart may race/after the shot,/and that's/expected/. | heart,race,shot,expect
+  SWAP ["I'm giving you ", '0.5 milligrams of epi IM', ' in your thigh now.'] a shot of epinephrine ['a shot of epinephrine', '0.5 milligrams of epi IM', 'something to calm you down'] 환자에게 · 투약 설명
+## 6 조영제 반응
+ [0] I'm stopping the contrast right now. | 지금 바로 조영제 주입을 멈출게요. | I'm stopping/the contrast/right now/. | stop,contrast
+ [1] Tell me if your throat feels tight or your breathing changes. | 목이 조이거나 호흡이 달라지면 말씀해 주세요. | Tell me/if your throat feels tight/or your breathing/changes/. | tell,throat,feel,tight,breathe,change
+ [2] We're moving you where we can watch you closely and treat this. | 가까이서 지켜보고 치료할 수 있는 곳으로 옮길게요. | We're moving you/where we can watch you/closely/and treat this/. | move,watch,closely,treat
+ [3] Any itching, flushing, or swelling since the injection started? | 주입이 시작된 뒤로 가려움, 홍조, 또는 부기가 있었나요? | Any itching,/flushing,/or swelling/since the injection/started/? | itch,swell,injection,start
+ [4] I'm checking your blood pressure and oxygen every few minutes now. | 이제 몇 분마다 혈압과 산소 수치를 확인할게요. | I'm checking/your blood pressure/and oxygen/every few minutes now/. | check,blood,pressure,oxygen
+  CTX ['stop', 'contrast']
+     0 True 환자에게 | I'm stopping the contrast right now. | None
+     1 True 영상의학과 의사에게 | Contrast stopped. Pt has hives and flushing, BP 118/76. | None
+     2 False 환자에게 | I'm discontinuing the iodinated contrast medium. | I'm stopping the dye right now.
+    why: iodinated contrast medium·discontinue는 의료진 말이에요. 미국 환자는 조영제를 흔히 'dye'라고 불러서, 환자에게는 그 말이 더 쉽게 들려요.
+## 7 항생제 IV 중 반응
+ [0] I'm stopping the antibiotic and flushing your line now. | 지금 항생제를 멈추고 라인을 씻어낼게요. | I'm stopping/the antibiotic/and flushing/your line now/. | stop,antibiotic,flush,line
+ [1] Are you feeling any swelling in your face or trouble swallowing? | 얼굴이 붓거나 삼키기 힘든 느낌이 있나요? | Are you feeling/any swelling/in your face/or trouble swallowing/? | feel,swell,face,trouble,swallow
+ [2] I have epinephrine ready in case we need it. | 필요할 경우를 대비해 에피네프린을 준비해 뒀어요. | I have epinephrine/ready/in case/we need it/. | epinephrine,ready,need
+ [3] Does your chest feel tight, or is your throat closing up? | 가슴이 조이거나 목이 막히는 느낌이 있나요? | Does your chest feel/tight,/or is your throat/closing up/? | chest,feel,tight,throat,close
+ [4] I'll draw it up now so it's ready the moment you need it. | 필요한 순간 바로 쓸 수 있도록 지금 미리 뽑아 둘게요. | I'll draw it up/now/so it's ready/the moment/you need it/. | draw,ready,moment,need
+  CTX ['epinephrine', 'ready']
+     0 True 동료 간호사에게 | Antibiotic stopped, possible anaphylaxis — epi 0.3 IM drawn up. | None
+     1 True 환자에게 | I have epinephrine ready in case we need it. | None
+     2 False 환자에게 | Epi's drawn up in case you code. | I have medicine ready right here in case we need it.
+    why: code는 심정지를 뜻하는 의료진 말이라, 환자에게는 겁을 주는 말이 돼요. 대비하고 있다는 사실만 차분하게 전해요.
+## 8 벌쏘임 전신반응
+ [0] The dizziness with itching tells me this is a whole-body reaction. | 어지러움과 가려움이 함께 있는 걸 보니 전신반응이네요. | The dizziness/with itching/tells me/this is a whole-body reaction/. | dizziness,itch,tell,reaction
+ [1] We may need to repeat the epinephrine if symptoms keep progressing. | 증상이 계속 진행되면 에피네프린을 다시 투여해야 할 수도 있어요. | We may need/to repeat/the epinephrine/if symptoms keep progressing/. | need,repeat,epinephrine,symptom,keep,progress
+ [2] Have you ever been stung and reacted like this before? | 예전에도 벌에 쏘여서 이렇게 반응한 적이 있나요? | Have you ever/been stung/and reacted/like this before/? | ever,react,before
+ [3] Tell me if the itching spreads or your face starts to swell. | 가려움이 퍼지거나 얼굴이 붓기 시작하면 말씀해 주세요. | Tell me/if the itching spreads/or your face/starts to swell/. | tell,itch,spread,face,start,swell
+ [4] Your body is still reacting, so another dose keeps you safe. | 몸이 아직 반응하고 있어서, 한 번 더 투여해야 안전해요. | Your body is still/reacting,/so another dose/keeps you safe/. | react,another,dose,safe
+  CTX ['repeat', 'epinephrine']
+     0 True 환자에게 | If this keeps getting worse, we may need to give you another dose. | None
+     1 True 의사에게 | Symptoms progressing five minutes after epi — requesting a repeat IM dose. | None
+     2 False 환자에게 | Your symptoms are refractory, so we'll re-dose IM epi q5 minutes. | If this keeps getting worse, we may need to give you another shot.
+    why: refractory·re-dose·q5는 팀끼리 쓰는 말이에요. 환자에게는 '더 나빠지면 한 번 더 놓을 수 있다'로 말해요.
+## 9 음식(견과) 아나필락시스
+ [0] I'm giving epinephrine now for this reaction. | 이 반응 때문에 지금 에피네프린을 투여할게요. | I'm giving epinephrine/now/for this reaction/. | give,epinephrine,reaction
+ [1] Did the food have peanuts or tree nuts that you know of? | 그 음식에 아는 한 땅콩이나 견과류가 들어 있었나요? | Did the food/have peanuts/or tree nuts/that you know of/? | food,peanut,nut
+ [2] After this we'll talk about how to avoid it and carry an EpiPen. | 이 일이 끝나면 어떻게 피할지, 에피펜을 어떻게 소지할지 이야기해요. | After this/we'll talk about/how to avoid it/and carry an EpiPen/. | talk,avoid,carry,EpiPen
+ [3] Your face and lips are swelling fast, so I'm treating this right away. | 얼굴과 입술이 빠르게 붓고 있어서 지금 바로 치료할게요. | Your face and lips/are swelling fast,/so I'm treating/this right away/. | face,lip,swell,fast,treat
+ [4] Read every food label and ask about hidden nuts before you eat. | 먹기 전에 모든 음식 라벨을 읽고 숨은 견과가 있는지 물어보세요. | Read every food label/and ask/about hidden nuts/before you eat/. | read,food,label,ask,nut,before,eat
+## 10 이상성 반응 관찰
+ [0] Sometimes symptoms come back hours later — that's why we kept you here. | 가끔 증상이 몇 시간 뒤에 다시 나타나서, 그래서 여기 계시게 한 거예요. | Sometimes symptoms come back/hours later —/that's why/we kept you here/. | symptom,later,keep
+ [1] Tell me the moment your throat or breathing changes again. | 목이나 호흡이 다시 달라지는 순간 바로 말씀해 주세요. | Tell me/the moment/your throat or breathing/changes again/. | tell,moment,throat,breathe,change,again
+ [2] We may repeat treatment, so stay in bed and keep your monitor on. | 치료를 반복해야 할 수도 있으니, 침대에 계시고 모니터를 계속 붙이고 계세요. | We may repeat/treatment,/so stay in bed/and keep your monitor on/. | repeat,treatment,stay,bed,keep,monitor
+ [3] This second wave can hit even after you start feeling fine. | 괜찮아졌다고 느낀 뒤에도 이 두 번째 파동이 닥칠 수 있어요. | This second wave/can hit/even after you/start feeling fine/. | wave,hit,start,feel,fine
+ [4] Push the call button right away if anything feels different. | 뭔가 다르게 느껴지면 바로 호출 버튼을 누르세요. | Push the call button/right away/if anything/feels different/. | push,call,button,feel,different
+  CTX ['wave', 'symptom', 'later']
+     0 True 환자에게 | Sometimes symptoms come back hours later — that's why we kept you here. | None
+     1 True 인계 | Observing for biphasic reaction, last epi at 1300. | None
+     2 False 환자에게 | We're monitoring you for a biphasic anaphylactic reaction. | Sometimes the reaction comes back in a second wave, so we're watching you.
+    why: biphasic reaction은 의료진 말이에요. 환자에게는 'second wave'나 '다시 올 수 있다'처럼 풀어서 말해요.
+## 11 베타차단제 복용자
+ [0] Because of your heart medication, the epinephrine may work less well. | 심장약 때문에 에피네프린이 덜 잘 들을 수 있어요. | Because of your heart/medication,/the epinephrine/may work less well/. | heart,medication,epinephrine,work,less,well
+ [1] We're giving glucagon to help your body respond. | 몸이 반응하도록 돕기 위해 글루카곤을 투여할게요. | We're giving glucagon/to help/your body respond/. | give,glucagon,help,respond
+ [2] What's the name of your beta blocker and when did you last take it? | 베타차단제 이름이 뭐고, 마지막으로 언제 복용하셨나요? | What's the name/of your beta blocker/and when/did you last take it/? | blocker,last,take
+ [3] You might need a bigger dose or several doses to get a response. | 반응을 얻으려면 더 큰 용량이나 여러 번의 투여가 필요할 수도 있어요. | You might need/a bigger dose/or several doses/to get a response/. | need,big,dose,several,response
+ [4] Glucagon works around your beta blocker to raise your blood pressure. | 글루카곤은 베타차단제를 우회해서 혈압을 올려줘요. | Glucagon works/around your beta blocker/to raise/your blood pressure/. | glucagon,work,blocker,raise,blood,pressure
+  SWAP ["We're giving glucagon to ", 'bypass your beta-adrenergic blockade', '.'] help your body respond ['help your body respond', 'bypass your beta-adrenergic blockade', 'cancel out your heart pills'] 환자에게 · 글루카곤 설명
+## 12 임산부 아나필락시스
+ [0] I'm giving epinephrine now — it's safe and it helps both of you. | 지금 에피네프린을 투여할게요 — 안전하고 두 분 모두에게 도움이 돼요. | I'm giving epinephrine/now —/it's safe/and it helps both of you/. | give,epinephrine,safe,help
+ [1] I'm tilting you onto your left side to help blood flow to your baby. | 아기에게 혈류가 잘 가도록 왼쪽으로 기울여 드릴게요. | I'm tilting you/onto your left side/to help blood flow/to your baby/. | tilt,left,side,help,blood,flow
+ [2] We're monitoring your baby's heartbeat the whole time. | 아기의 심장박동을 계속 지켜보고 있을게요. | We're monitoring/your baby's heartbeat/the whole time/. | monitor,heartbeat
+ [3] Your baby needs you breathing well, so the epinephrine helps both of you. | 아기는 산모가 잘 숨쉬는 게 필요해서, 에피네프린이 두 분 모두에게 도움이 돼요. | Your baby needs you/breathing well,/so the epinephrine/helps both of you/. | need,breathe,well,epinephrine,help
+ [4] Your blood pressure and your baby's heart rate are both being watched closely. | 산모의 혈압과 아기의 심박수 모두 면밀히 지켜보고 있어요. | Your blood pressure/and your baby's heart rate/are both/being watched closely/. | blood,pressure,heart,rate,watch,closely
+  SWAP ["I'm giving epinephrine now — ", "it shouldn't be too harmful to the baby", '.'] it's safe and it helps both of you ["it's safe and it helps both of you", "it shouldn't be too harmful to the baby", "we'll deal with the baby later"] 임산부에게 · 에피네프린 걱정에 답하기
+## 13 라텍스 알레르기
+ [0] We're switching to latex-free gloves and supplies right away. | 지금 바로 무라텍스 장갑과 물품으로 바꿀게요. | We're switching/to latex-free gloves/and supplies/right away/. | switch,latex,glove,supply
+ [1] Do certain foods like bananas or avocado also bother you? | 바나나나 아보카도 같은 특정 음식도 문제가 되나요? | Do certain foods/like bananas/or avocado/also bother you/? | food,banana,avocado,bother
+ [2] I'll flag your latex allergy so everyone caring for you knows. | 라텍스 알레르기를 표시해서 돌보는 모든 사람이 알 수 있게 할게요. | I'll flag/your latex allergy/so everyone caring/for you knows/. | flag,latex,allergy,care
+ [3] Nothing in this room should touch latex from now on. | 이제부터 이 병실 안 어떤 것도 라텍스에 닿으면 안 돼요. | Nothing in this room/should touch/latex/from now on/. | touch,latex
+ [4] I'm writing this on your chart so the next shift sees it too. | 다음 근무조도 볼 수 있도록 차트에 적어 둘게요. | I'm writing this/on your chart/so the next shift/sees it too/. | write,chart,shift
+  CTX ['latex', 'banana', 'avocado', 'food']
+     0 True 환자에게 | Do certain foods like bananas or avocado also bother you? | None
+     1 True 차트 기록 | Latex allergy. Screen for latex-fruit cross-reactivity (banana, avocado, kiwi). | None
+     2 False 환자에게 | Do you have latex-fruit syndrome cross-reactivity? | Do foods like bananas, avocado, or kiwi ever give you a reaction?
+    why: latex-fruit syndrome·cross-reactivity는 임상어예요. 환자에게는 음식 이름으로 물어야 답이 나와요. 라텍스 알레르기가 있는 사람 일부는 바나나·아보카도·키위·밤에도 반응해요.
+## 14 소아 아나필락시스 보호자
+ [0] I'm giving him epinephrine dosed for his weight right now. | 지금 아이 체중에 맞춘 용량으로 에피네프린을 투여할게요. | I'm giving him/epinephrine dosed/for his weight/right now/. | give,epinephrine,dose,weight
+ [1] You're doing great — keeping him calm helps a lot. | 정말 잘하고 계세요 — 아이를 진정시켜 주시는 게 큰 도움이 돼요. | You're doing/great —/keeping him calm/helps a lot/. | calm,help,lot
+ [2] What did he eat, and how much does he weigh? | 아이가 무엇을 먹었고, 체중은 얼마나 나가나요? | What did he eat,/and how much/does he/weigh/? | eat,weigh
+ [3] We calculate every dose by his weight, so it's exact for him. | 모든 용량을 체중에 맞춰 계산해서, 아이에게 정확한 양이에요. | We calculate/every dose/by his weight,/so it's exact for him/. | calculate,dose,weight,exact
+ [4] Hold his hand and talk to him softly — that helps us both. | 아이 손을 잡고 부드럽게 말을 걸어주세요 — 저희 모두에게 도움이 돼요. | Hold his hand/and talk to him/softly —/that helps us both/. | hold,talk,softly,help
+  SWAP ["I'm giving him epinephrine ", 'at 0.01 milligrams per kilogram IM', ' right now.'] dosed for his weight ['dosed for his weight', 'at 0.01 milligrams per kilogram IM', 'at a smaller adult dose'] 보호자에게 · 소아 용량 설명
+## 15 후두부종 기도폐쇄 임박
+ [0] Your airway is swelling — we're securing it before it closes. | 기도가 붓고 있어요 — 막히기 전에 확보할게요. | Your airway is/swelling —/we're securing it/before it closes/. | airway,swell,secure,before,close
+ [1] I'm continuing epinephrine and calling ENT to the bedside. | 에피네프린을 계속 투여하면서 이비인후과를 침상 곁으로 부를게요. | I'm continuing epinephrine/and calling/ENT/to the bedside/. | continue,epinephrine,call,bedside
+ [2] Stay as calm as you can and breathe slowly with me. | 최대한 진정하시고 저랑 같이 천천히 숨을 쉬어봐요. | Stay as calm/as you can/and breathe slowly/with me/. | stay,calm,breathe,slowly
+ [3] Can you nod if it's getting harder to breathe? | 숨쉬기가 더 힘들어지면 고개를 끄덕여 주시겠어요? | Can you nod/if it's getting/harder/to breathe/? | nod,hard,breathe
+ [4] ENT is on the way, and I'm staying right here with you. | 이비인후과가 오고 있고, 저는 계속 곁에 있을게요. | ENT is/on the way,/and I'm staying/right here with you/. | way,stay
+  CTX ['airway', 'secure', 'call', 'bedside']
+     0 True 동료에게 | Call ENT to the bedside now — impending airway compromise. | None
+     1 True 환자에게 | Your airway is swelling — we're securing it before it closes. | None
+     2 False 환자에게 | You're at risk of complete airway obstruction and may need a cric. | Your airway is swelling, so we're getting ready to help you breathe.
+    why: cric(윤상갑상막 절개)·obstruction은 팀끼리의 말이에요. 숨이 막히는 환자에게는 겁주는 말 대신 무엇을 하는지 짧게 말해요.
+## 16 아나필락시스 쇼크 불응
+ [0] Your pressure is very low, so we're starting an epinephrine drip. | 혈압이 많이 낮아서, 에피네프린을 지속 투여로 시작할게요. | Your pressure is/very low,/so we're starting/an epinephrine drip/. | pressure,low,start,epinephrine,drip
+ [1] We're pouring in fluids to bring your blood pressure up. | 혈압을 올리기 위해 수액을 많이 넣고 있어요. | We're pouring/in fluids/to bring your blood/pressure up/. | pour,fluid,bring,blood,pressure
+ [2] Stay with me — squeeze my hand if you can hear me. | 정신 차리세요 — 제 목소리가 들리면 손을 꽉 쥐어보세요. | Stay with me —/squeeze my hand/if you can/hear me/. | stay,squeeze,hear
+ [3] This is a second round of epinephrine since the first didn't fully work. | 첫 번째가 완전히 듣지 않아서 에피네프린을 두 번째로 투여해요. | This is a second round/of epinephrine/since the first/didn't fully work/. | round,epinephrine,first,fully,work
+ [4] More fluid is going in fast to support your circulation. | 순환을 돕기 위해 수액을 더 빠르게 넣고 있어요. | More fluid/is going in/fast/to support your circulation/. | fluid,fast,support,circulation
+  SWAP ["We're ", 'running a 2-liter bolus of NS wide open', ' to bring your blood pressure up.'] giving you lots of fluid ['giving you lots of fluid', 'running a 2-liter bolus of NS wide open', 'draining some fluid'] 환자에게 · 수액 설명
+## 17 심정지 진행 아나필락시스
+ [0] Start compressions — this is anaphylactic arrest. | 흉부압박 시작하세요 — 아나필락시스성 심정지입니다. | Start compressions —/this is/anaphylactic arrest/. | compression,arrest
+ [1] Give epinephrine and hang a liter wide open. | 에피네프린 투여하고 수액 1리터 전개방으로 걸어주세요. | Give epinephrine/and hang a liter/wide open/. | give,epinephrine,hang,liter,open
+ [2] Airway is swollen, so get the difficult airway cart now. | 기도가 부어 있으니 지금 어려운 기도 카트를 가져오세요. | Airway is swollen,/so get/the difficult airway cart/now/. | airway,swell,difficult,cart
+ [3] No pulse — starting CPR now. | 맥박 없습니다 — 지금 CPR 시작합니다. | No pulse —/starting CPR/now/. | pulse,start
+ [4] I need one more set of hands on the airway cart. | 기도 카트에 손이 하나 더 필요합니다. | I need/one more set/of hands/on the airway cart/. | need,airway,cart
+  CTX ['give', 'epinephrine']
+     0 True 팀 리더 → 간호사 | Maria, give 1 milligram of epi IV push now. | None
+     1 True 간호사 → 팀 리더 | 1 milligram epi IV push, given. | None
+     2 False 팀 리더 → 팀 전체 | If anyone gets a chance, maybe someone could give some epi? | Maria, give 1 milligram of epi IV now and tell me when it's in.
+    why: 코드 중에는 이름을 불러 짧게 지시하고 복창을 받는 closed-loop가 원칙이에요. 돌려 말하면 아무도 안 하거나 두 사람이 같이 해요.
+## 18 이상성 반응 재악화
+ [0] This is a second wave — I'm giving epinephrine again now. | 두 번째 파동이에요 — 지금 에피네프린을 다시 투여할게요. | This is a second wave —/I'm giving/epinephrine again/now/. | wave,give,epinephrine,again
+ [1] We're keeping you on the monitor and staying right here. | 모니터를 계속 붙이고, 계속 곁에 있을게요. | We're keeping you/on the monitor/and staying/right here/. | keep,monitor,stay
+ [2] Tell me exactly how your breathing feels compared to before. | 이전과 비교해서 호흡이 어떻게 느껴지는지 정확히 말씀해 주세요. | Tell me exactly/how your breathing feels/compared to/before/. | tell,breathe,feel,compare,before
+ [3] Even after treatment, symptoms can return two to twelve hours later. | 치료 후에도 증상이 2시간에서 12시간 뒤에 다시 돌아올 수 있어요. | Even after treatment,/symptoms can return/two to twelve hours/later/. | treatment,symptom,return,later
+ [4] I'm giving a full second dose and checking your vitals every ten minutes. | 전체 용량으로 두 번째 투여를 하고, 10분마다 활력징후를 확인할게요. | I'm giving a full/second dose/and checking/your vitals every ten minutes/. | give,full,dose,check,vitals
+  CTX ['wave', 'return', 'symptom']
+     0 True 환자에게 | This is a second wave — I'm giving epinephrine again now. | None
+     1 True 의사 보고 | Biphasic reaction at hour six: wheezing, lip swelling. Repeat epi IM given. | None
+     2 False 환자에게 | You're having a biphasic recurrence of anaphylaxis. | Your reaction has come back, so I'm giving you another dose now.
+    why: biphasic recurrence는 차트와 보고의 말이에요. 환자에게는 '반응이 다시 왔다'고 쉽게 말해요.
+## 19 다중 알레르겐 중환자
+ [0] We're removing anything you might be reacting to from your room. | 혹시 반응을 일으킬 만한 것들을 병실에서 모두 치울게요. | We're removing anything/you might be/reacting to/from your room/. | remove,react
+ [1] Let's list everything you've eaten, touched, or taken today. | 오늘 드시거나 만지거나 복용한 모든 것을 목록으로 적어봐요. | Let's list everything/you've eaten,/touched,/or taken today/. | list,eat,touch,take
+ [2] I'm treating the reaction now while we figure out the trigger. | 유발원을 파악하는 동안 지금은 반응을 치료할게요. | I'm treating/the reaction now/while we figure out/the trigger/. | treat,reaction,figure,trigger
+ [3] Tell me every medication, food, and product you've been near this week. | 이번 주에 가까이 했던 모든 약, 음식, 제품을 말씀해 주세요. | Tell me every medication,/food,/and product/you've been near this week/. | tell,medication,food,product
+ [4] We're keeping this room free of every trigger we know about. | 우리가 아는 모든 유발원이 없도록 이 병실을 유지할게요. | We're keeping/this room free/of every trigger/we know about/. | keep,trigger
+  CTX ['list', 'touch']
+     0 True 환자에게 | Let's list everything you've eaten, touched, or taken today. | None
+     1 True 인계 | Multiple allergies, trigger unknown. Room cleared of latex and scented products. | None
+     2 False 환자에게 | We need a comprehensive exposure history for allergen identification. | Let's go through everything you've eaten, touched, or taken today.
+    why: exposure history·allergen identification은 의료진 말이에요. 환자와는 오늘 먹은 것·만진 것·먹은 약을 하나씩 같이 짚어요.
+## 20 관찰 중 급변 야간 SBAR
+ [0] Post-anaphylaxis obs patient, stable until zero-two-hundred. | 아나필락시스 후 관찰 환자로, 새벽 2시까지는 안정적이었습니다. | Post-anaphylaxis obs patient,/stable/until zero-two-hundred/. | stable
+ [1] Blood pressure dropped to ninety over fifty and hives returned. | 혈압이 90에 50으로 떨어졌고 두드러기가 다시 나타났습니다. | Blood pressure dropped/to ninety/over fifty/and hives returned/. | blood,pressure,drop,hives,return
+ [2] I gave a second epi and I need you to reassess him now. | 두 번째 에피를 투여했고, 지금 재평가가 필요합니다. | I gave a second epi/and I need/you to reassess/him now/. | give,need,reassess
+ [3] Vitals were steady all shift until about zero-one-thirty. | 활력징후는 새벽 1시 반쯤까지 근무 내내 안정적이었습니다. | Vitals were steady/all shift/until about zero-one-thirty/. | vitals,steady,shift
+ [4] Please come reassess him and let the doctor know right away. | 와서 재평가해 주시고, 의사에게도 바로 알려주세요. | Please come reassess/him and/let the doctor/know right away/. | reassess
+  SWAP ['I gave a second epi, and ', 'maybe you could look at him sometime', '.'] I need you to reassess him now ['I need you to reassess him now', 'maybe you could look at him sometime', "he's probably fine"] 야간 의사 호출 · SBAR의 R

@@ -1,0 +1,124 @@
+- title: 알레르기력·노출원 문진
+  s:
+  - {t: "노출원 문진", i: magnify, w: "eat·take·contact 세 동사를 한 문장에 묶어 입·약·피부로 들어온 모든 경로를 한 번에 묻고, before로 시점을 잡아 원인 후보를 좁혀요.", d: "last night", k: ["두드러기가 몇 시간째 계속되고 있나요?", "집에서 드시던 약이 있으면 보여 주시겠어요?"], a: "hives", o: ["fever", "cough", "dizziness"]}
+  - {t: "과거력 문진", i: calendar, w: "Have you ever had…는 평생 한 번이라도 있었는지 묻는 현재완료예요. 전에 심한 반응이 있었는지는 이번 반응을 얼마나 경계할지 정하는 단서가 돼요.", d: "this morning", k: ["최근에 약을 새로 시작하셨나요?", "지금 가려운 곳이 어디예요?"], a: "reaction", o: ["fever", "seizure", "fall"]}
+  - {t: "기도 증상", i: stetho, w: "Any 뒤에 증상 명사만 붙여 문장 전체를 짧은 예/아니오 질문으로 줄였어요. 숨쉬기 곤란과 목 조임은 기도가 침범됐다는 신호라 가장 먼저 확인해요.", d: "after you ate", k: ["두드러기가 몸 어디에 있나요?", "혹시 천식 진단을 받은 적이 있나요?"], a: "tightness", o: ["itching", "dryness", "soreness"]}
+  - {t: "노출 문진", i: pill, w: "sting과 take를 or로 이어 곤충과 약 두 가지 노출원을 한 번에 물어요. new와 recently로 범위를 좁혀 원인으로 의심되는 새 약을 찾아요.", d: "from the pharmacy", k: ["식사는 언제 하셨어요?", "집에 에피펜이 있으세요?"], a: "medication", o: ["soap", "perfume", "jewelry"]}
+  - {t: "기도 확인", i: magnify, w: "I'm going to로 지금 하려는 검사를 미리 알려 환자가 놀라지 않게 해요. 입술·혀·기도의 부기는 가장 먼저 위험해지는 부위라 바로 봐요.", d: "after the test", k: ["혈압부터 먼저 잴게요", "팔에 있는 두드러기를 볼게요"], a: "airway", o: ["pulse", "skin", "fingers"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "노출원 문진 4문장 순서"
+    why: "기도 증상을 먼저 묻고, 그 대답에 고마워하며 입술·혀·기도를 확인한 뒤, 확인한 결과를 말하며 노출원을 묻고, 마지막에 그 노출원에 전에도 반응했는지 물어요. 'Thanks for telling me'·'so far'·'those'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Any trouble breathing or tightness in your throat right now?", icon: stetho, ko: "지금 숨쉬기 힘들거나 목이 조이세요?", note: "기도"}
+    - {en: "Thanks for telling me. I'm going to check your lips, tongue, and airway now.", icon: magnify, ko: "말씀 고마워요. 입술과 혀, 기도를 확인할게요", note: "확인"}
+    - {en: "Your lips look fine so far. What did you eat or take?", icon: pill, ko: "지금까진 입술이 괜찮아 보여요. 뭘 드시거나 복용하셨어요?", note: "노출"}
+    - {en: "Have you ever reacted to any of those before?", icon: calendar, ko: "그중 어떤 것에든 전에 반응한 적 있으세요?", note: "과거력"}
+  ctx:
+    word: "reaction"
+    ko: "반응"
+    sc:
+      1: {en: "Prior reaction: hives after PCN, no anaphylaxis."}
+      2: {en: "Any prior history of anaphylactic reaction or angioedema?", fix: "Have you ever had a reaction like this before — like swelling or trouble breathing?"}
+- title: 경증 두드러기 사정
+  s:
+  - {t: "안심 전달", i: shield, w: "which is reassuring이 앞 내용 전체를 받아 '이건 좋은 소식'이라고 평가해요. Right now로 지금 기준임을 밝혀 나중에 달라질 수 있다는 여지도 남겨요.", d: "on your legs", k: ["지금 얼굴이 붓는 느낌이 있나요?", "가려워도 긁지 말아 주세요"], a: "reassuring", o: ["worrying", "surprising", "dangerous"]}
+  - {t: "경과 관찰", i: monitor, w: "to make sure로 지켜보는 목적을 밝혀 지켜본다는 말이 방치처럼 들리지 않게 해요. 피부 증상이 호흡이나 다른 장기로 번지는지가 경증과 아나필락시스를 가르는 점이에요.", d: "for a few days", k: ["두드러기 부위 사진을 찍어 둘게요", "팔에 찬 수건을 올려 둘게요"], a: "spread", o: ["fade", "itch", "clear"]}
+  - {t: "악화 신호", i: bell, w: "Let me know는 명령이 아니라 부탁이고, immediately가 기다리지 말라는 신호를 분명히 해요. 입술·혀가 저린 건 반응이 기도 쪽으로 번질 수 있다는 이른 신호예요.", d: "later today", k: ["혀를 내밀어 보여 주시겠어요?", "가려운 곳은 긁지 말아 주세요"], a: "immediately", o: ["occasionally", "sometimes", "gradually"]}
+  - {t: "범위 설명", i: board, w: "only on…, not on…으로 있는 곳과 없는 곳을 대비해 상태를 구체적으로 알려요. 막연히 괜찮다고 하는 것보다 어디까지 번졌는지 말해 주는 편이 환자가 변화를 알아채기 쉬워요.", d: "since yesterday", k: ["붉은 부위에 크림을 발라 드릴게요", "붉어진 건 어제부터인가요?"], a: "redness", o: ["bleeding", "bruising", "numbness"]}
+  - {t: "즉시 보고", i: siren, w: "If로 조건을 먼저 말하고 끝에 tell me right away로 행동을 붙여, 무엇을 보면 곧바로 말할지 한 문장으로 알려요. 얼굴 침범과 목 조임은 기도 증상이 시작됐다는 신호예요.", d: "if you feel hungry", k: ["가려움이 심해지면 약을 더 드릴게요", "두드러기가 가라앉으면 알려 주세요"], a: "right away", o: ["tomorrow", "next week", "later today"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "경증 두드러기 설명 4문장 순서"
+    why: "지금 상태를 알리고, 'that'이 그 상태를 가리키며 계속 지켜본다고 하고, 지켜보는 일에 환자가 도울 방법을 말한 뒤, 'Those'가 그 신호를 가리키며 기다리지 말라고 닫아요. 'that'·'You can help'·'Those'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Right now it looks limited to your arms, which is reassuring.", icon: shield, ko: "지금은 팔에만 있어서 안심이 돼요", note: "상태"}
+    - {en: "We'll keep watching to see whether that changes.", icon: monitor, ko: "그게 달라지는지 계속 지켜볼게요", note: "관찰"}
+    - {en: "You can help by telling me right away if your lips or tongue tingle.", icon: bell, ko: "입술이나 혀가 저리면 바로 말해 주시면 도움이 돼요", note: "협조"}
+    - {en: "Those are early warning signs, so don't wait to tell me.", icon: siren, ko: "그건 이른 경고 신호라 기다리지 말고 말해 주세요", note: "강조"}
+  sw: {ko: "입술이나 혀가 저릿해지기 시작하면 바로 알려 주세요"}
+- title: 항히스타민 투여 설명
+  s:
+  - {t: "약 설명", i: pill, w: "will로 약이 하는 일을 단정적으로 미리 말해 환자가 효과를 기대하게 해요. 항히스타민제는 가려움·두드러기를 줄이지만, 기도·혈압 증상의 치료제는 에피네프린이에요.", d: "the pain", k: ["이 약은 정맥으로 천천히 넣을 거예요", "약을 맞고 나면 잠시 쉬세요"], a: "itching", o: ["fever", "bleeding", "bruising"]}
+  - {t: "부작용 안내", i: bell, w: "can으로 가능성을 말해 겁주지 않고, so로 졸림을 운전 금지의 이유와 바로 이어요. 졸리게 하는 항히스타민제(디펜히드라민 등)를 맞은 뒤에는 운전이 위험해요.", d: "so you should rest", k: ["졸리면 호출 버튼을 눌러 주세요", "퇴원 서류는 나중에 드릴게요"], a: "drowsy", o: ["itchy", "thirsty", "hungry"]}
+  - {t: "관찰 이유", i: monitor, w: "a bit로 부담을 줄이면서 to make sure로 기다리는 이유를 밝혀요. 알레르기 반응은 가라앉은 뒤에 다시 올 수 있어서 항히스타민을 맞은 뒤에도 잠시 지켜봐요.", d: "overnight", k: ["퇴원 안내문은 나중에 드릴게요", "물은 천천히 드셔도 돼요"], a: "react", o: ["faint", "vomit", "choke"]}
+  - {t: "경과 안내", i: calendar, w: "should로 보장이 아니라 예상으로 말해요. within…or so로 정확한 시각 대신 대략의 범위를 줘서 기다리는 동안의 불안을 줄여요.", d: "by tomorrow morning", k: ["가려워도 긁지 말고 호출해 주세요", "지금은 물을 조금 드셔도 돼요"], a: "ease", o: ["spread", "return", "worsen"]}
+  - {t: "귀가 방법", i: home, w: "Have someone else…로 대안을 먼저 주고 or로 두 번째 선택지를 줘서 환자가 고르게 해요. 졸림이 남은 채 운전하는 것을 막는 문장이라 전달이 분명해야 해요.", d: "call a taxi", k: ["퇴원 서류에 서명해 주세요", "가시기 전에 활력징후를 한 번 더 잴게요"], a: "drowsiness", o: ["itching", "redness", "swelling"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "항히스타민 안내 4문장 순서"
+    why: "약을 놓는다고 알리고, 'It'이 그 약을 가리키며 졸림을 말하고, 'That'이 운전 금지를 가리키며 누가 데려다줄지 정하고, 'Before you leave'로 돌아가기 전 관찰을 알려요. 'It'·'That'·'Before you leave'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "I'm giving you an antihistamine for the itching and the hives.", icon: pill, ko: "가려움과 두드러기에 항히스타민을 드릴게요", note: "투약"}
+    - {en: "It can make you drowsy, so please don't drive for a while.", icon: bell, ko: "졸릴 수 있어서 당분간 운전은 하지 마세요", note: "부작용"}
+    - {en: "That means someone else will need to drive you home.", icon: home, ko: "그러니 다른 분이 집까지 운전해 주셔야 해요", note: "귀가"}
+    - {en: "Before you leave, we'll watch you a bit longer for another reaction.", icon: monitor, ko: "가시기 전에 다시 반응이 없는지 조금 더 지켜볼게요", note: "관찰"}
+  ctx:
+    word: "drowsy"
+    ko: "졸린"
+    sc:
+      2: {en: "Drowsy from diphenhydramine — sedation precautions, no driving.", fix: "You may feel drowsy for a few hours, so please have someone else drive you home."}
+    why: "diphenhydramine·sedation precautions는 차트와 의료진끼리 쓰는 말이에요. 환자에게는 졸릴 수 있다는 것과, 그래서 다른 사람이 운전해야 한다는 것을 쉬운 말로 알려요."
+- title: 약물 알레르기 이력 확인
+  s:
+  - {t: "반응 묘사", i: speech, w: "Can you describe는 단답이 아니라 환자 말로 이야기하게 이끄는 열린 질문이에요. 약 알레르기는 환자가 겪은 반응을 들어야 진짜 알레르기인지 흔한 부작용인지 가려요.", d: "after the surgery", k: ["지금 복용 중인 약 목록을 볼게요", "페니실린은 언제 처방받으셨어요?"], a: "took", o: ["stopped", "refused", "requested"]}
+  - {t: "증상 선택지", i: magnify, w: "세 가지를 or로 나열해 환자가 기억을 짚기 쉽게 해요. 발진·부기·호흡곤란은 알레르기의 전형 반응이고, 메스꺼움 같은 부작용과 구분해야 이력이 정확해져요.", d: "or a headache", k: ["그때 병원에서 치료를 받으셨나요?", "그 약은 몇 알이나 드셨어요?"], a: "swelling", o: ["vomiting", "fainting", "bleeding"]}
+  - {t: "밴드·표시", i: bandage, w: "I'll로 지금 하는 두 가지 행동을 약속하고 on you·in your chart로 어디에 하는지 알려요. 빨간 알레르기 밴드는 다른 의료진이 약을 주기 전에 눈으로 알아보게 하는 장치예요.", d: "around your wrist", k: ["이름과 생년월일을 한 번 더 확인할게요", "알레르기 검사 일정은 의사가 정할 거예요"], a: "red", o: ["blue", "white", "green"]}
+  - {t: "부기 확인", i: faceWorried, w: "come with any…로 함께 나타난 증상이 있었는지 물어요. 입술·얼굴 부기는 단순 발진보다 심한 반응이라 이력의 중증도를 가늠하는 단서예요.", d: "after the pill", k: ["발진은 며칠 만에 사라졌나요?", "가려움은 어디가 가장 심했어요?"], a: "lips", o: ["knees", "ankles", "elbows"]}
+  - {t: "밴드 의미", i: shield, w: "This band가 주어라 밴드가 대신 알려 준다는 점을 강조해요. avoid…completely로 조금도 투여하지 않는다는 뜻을 분명히 해서 환자가 안심해요.", d: "unless it's needed", k: ["밴드는 퇴원할 때 풀어 드릴게요", "다른 항생제는 써도 되는지 의사가 정할 거예요"], a: "penicillin", o: ["aspirin", "sulfa", "latex"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "약물 알레르기 확인 4문장 순서"
+    why: "먼저 어떤 일이 있었는지 묻고, 'it'이 그 일을 가리키며 증상을 고르게 하고, 'Any of those'가 그 목록을 가리키며 밴드를 채우고, 'This band'가 방금 채운 밴드를 가리켜요. 'it'·'Any of those'·'This band'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Can you describe what happened when you took penicillin?", icon: speech, ko: "페니실린을 복용했을 때 어떤 일이 있었는지 설명해 주시겠어요?", note: "경위"}
+    - {en: "Thanks. Was it a rash, swelling, or trouble breathing?", icon: magnify, ko: "고마워요. 발진이었나요, 부기였나요, 호흡곤란이었나요?", note: "증상"}
+    - {en: "Any of those is worth flagging, so I'll put a red allergy band on you.", icon: bandage, ko: "그중 무엇이든 표시해 둘 만해서 빨간 알레르기 밴드를 채울게요", note: "밴드"}
+    - {en: "This band tells every nurse and doctor to avoid penicillin completely.", icon: shield, ko: "이 밴드는 모든 간호사와 의사에게 페니실린을 완전히 피하라고 알려요", note: "의미"}
+  ctx:
+    word: "rash"
+    ko: "발진"
+    sc:
+      1: {en: "PCN allergy: rash and lip swelling in 2019."}
+      2: {en: "Was the rash urticarial or maculopapular, and was there angioedema?", fix: "Was the rash raised and itchy like hives, and did your lips or face swell?"}
+    why: "urticarial·maculopapular·angioedema는 임상어라 환자는 대답하기 어려워요. 발진이 볼록하고 가려웠는지, 입술·얼굴이 부었는지처럼 쉬운 말로 물어야 이력이 정확해져요."
+- title: 에피펜 사용법 교육
+  s:
+  - {t: "단계 안내", i: pushpin, w: "Pull off…, then press…로 명령형 동작을 순서대로 이어 한 번에 한 가지씩 따라 하게 해요. 에피펜은 파란 안전 마개를 빼고 주황색 끝을 넓적다리 바깥쪽에 대는 방식이에요.", d: "into your arm", k: ["연습용 기구로 먼저 해 보세요", "주사를 놓은 시간을 기억해 두세요"], a: "orange", o: ["yellow", "green", "black"]}
+  - {t: "사용 후", i: siren, w: "then call 911 even if…로 좋아져도 전화해야 한다는 예외를 못 박아요. 에피펜은 응급 처치일 뿐이라 증상이 가라앉아도 응급실 진료를 받아야 해요.", d: "once you feel calm", k: ["주사 부위를 문질러 주세요", "사용한 펜은 응급실에 가져오세요"], a: "three", o: ["thirty", "ten", "sixty"]}
+  - {t: "시연 요청", i: play, w: "show me…how you'd…로 말로 설명하는 대신 직접 해 보게 해요. 연습용 기구로 해 보면 실제 상황에서 손이 먼저 움직이는지 확인할 수 있어요.", d: "on my arm", k: ["이 펜은 한 번만 쓸 수 있어요", "유효기간이 지난 펜은 새것으로 바꿔야 해요"], a: "trainer", o: ["chart", "pillow", "monitor"]}
+  - {t: "확인 신호", i: speaker, w: "until로 끝나는 시점을 소리라는 감각 단서로 줘서 시간을 세지 않아도 되게 해요. 에피펜은 힘껏 누르면 딸깍 소리가 나면서 주사가 시작돼요.", d: "a pop", k: ["주사 뒤에 그 부위를 문질러 주세요", "펜은 응급실에 가져오세요"], a: "click", o: ["beep", "ring", "buzz"]}
+  - {t: "재방문 이유", i: hospital, w: "Even after로 이미 괜찮아졌다는 가정을 먼저 인정한 뒤 반전을 줘요. so we can watch로 오라는 이유를 밝혀서 지시가 아니라 설득으로 들려요. 첫 반응이 가라앉은 뒤 다시 올 수 있어요.", d: "next Friday", k: ["새 펜은 약국에서 받으세요", "주사 맞은 시간은 적어 두세요"], a: "reaction", o: ["infection", "bleeding", "seizure"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "에피펜 사용 4문장 순서"
+    why: "마개를 빼고 허벅지에 누르고, 'it there'가 그 자리를 가리키며 3초를 세고, 'that'이 끝난 일을 가리키며 911을 부르고, 'the shot'이 이미 놓은 주사를 가리키며 병원에 오라고 닫아요. 'it there'·'that'·'Even after the shot'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Pull off the blue cap, then press the orange tip firmly into your outer thigh.", icon: pushpin, ko: "파란 뚜껑을 빼고 주황색 끝을 허벅지 바깥쪽에 힘껏 누르세요", note: "주사"}
+    - {en: "Hold it there for three seconds until it finishes.", icon: calendar, ko: "끝날 때까지 3초간 그대로 누르고 계세요", note: "유지"}
+    - {en: "Right after that, call 911, even if you feel better.", icon: siren, ko: "그 직후에 좋아진 것 같아도 911에 전화하세요", note: "신고"}
+    - {en: "Even after the shot, you need to come back so we can watch for another reaction.", icon: hospital, ko: "주사를 맞은 뒤에도 다시 반응이 없는지 보러 오셔야 해요", note: "재방문"}
+  sw: {ko: "주황색 끝을 허벅지 바깥쪽에 눌러 주세요"}
+- title: 전형 아나필락시스
+  s:
+  - {t: "에피 투여", i: siren, w: "I'm giving you…now로 지금 하는 일을 곧바로 알려요. 아나필락시스의 1차 치료는 에피네프린 근육주사이고 허벅지 바깥쪽 근육에 놓아요. 항히스타민이나 스테로이드를 기다리지 않아요.", d: "in your arm", k: ["산소마스크를 씌워 드릴게요", "정맥주사 라인을 잡을게요"], a: "epinephrine", o: ["insulin", "heparin", "morphine"]}
+  - {t: "기도 증상", i: stetho, w: "두 증상을 or로 묶어 예/아니오로 빠르게 답하게 해요. 목 조임과 숨쉬기 곤란은 기도·호흡 침범 신호라 에피네프린을 놓는 동안에도 계속 확인해요.", d: "after the shot", k: ["속이 메스꺼우세요?", "어지럽거나 정신이 흐려지는 느낌이 있나요?"], a: "tight", o: ["dry", "cold", "numb"]}
+  - {t: "원인 문진", i: magnify, w: "right before this started로 증상 직전 시점에 초점을 맞춰 물어요. 아나필락시스는 원인에 노출된 뒤 대개 수 분에서 몇 시간 안에 나타나서 직전에 먹거나 복용한 것이 단서예요.", d: "last year", k: ["천식이나 심장 질환이 있으신가요?", "지금 어디가 제일 불편하세요?"], a: "take", o: ["wear", "touch", "smell"]}
+  - {t: "상태 확인", i: me, w: "Squeeze my hand처럼 행동 하나를 시켜 의식과 힘을 보고, 목소리 변화를 묻는 말은 후두 부종의 단서가 돼요. 쉰 목소리는 기도가 부어 간다는 신호일 수 있어요.", d: "if your lips itch", k: ["제 이름이 들리면 눈을 떠 보세요", "다리를 위로 올려 드릴게요"], a: "voice", o: ["breathing", "cough", "speech"]}
+  - {t: "부작용 안내", i: faceWorried, w: "may로 반드시 생기는 건 아니라고 여지를 두고, that's expected로 놀라지 않게 먼저 안심시켜요. 에피네프린은 심장 박동 증가·떨림·불안감을 흔히 일으켜요.", d: "after the meal", k: ["혈압이 오르면 어지러울 수 있어요", "두통이 생기면 바로 말씀해 주세요"], a: "race", o: ["slow", "stop", "ache"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "에피네프린 투여 4문장 순서"
+    why: "먼저 에피네프린을 놓고, 'the shot'이 그 주사를 가리키며 흔한 반응을 알리고, 'Now that it's in'이 주사가 들어간 뒤임을 가리키며 상태를 확인하고, 'Thanks'가 그 확인에 답한 환자에게 원인을 물어요. 약을 먼저 놓고 묻는 것이 에피네프린을 미루지 않는 순서예요."
+    lines:
+    - {en: "I'm giving you a shot of epinephrine in your thigh now.", icon: siren, ko: "지금 허벅지에 에피네프린 주사를 놓을게요", note: "투여"}
+    - {en: "Your heart may race after the shot, and that's expected.", icon: faceWorried, ko: "주사 후에 심장이 빨리 뛸 수 있는데 정상이에요", note: "안내"}
+    - {en: "Now that it's in, squeeze my hand and tell me if your voice sounds different.", icon: me, ko: "들어갔으니 제 손을 쥐고 목소리가 달라지면 말해 주세요", note: "확인"}
+    - {en: "Thanks. What did you eat or take right before this started?", icon: magnify, ko: "고마워요. 이게 시작되기 직전에 뭘 드시거나 복용하셨어요?", note: "원인"}
+  sw: {ko: "지금 허벅지에 에피네프린 주사를 놓을게요"}

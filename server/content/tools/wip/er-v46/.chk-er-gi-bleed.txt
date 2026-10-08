@@ -1,0 +1,925 @@
+## 0 상부 vs 하부 출혈 문진
+ [0] ko:피를 토했거나 커피 찌꺼기 같은 것을 토하셨나요?
+     * Did you vomit any blood or something that looked like coffee grounds?
+       Did you vomit any blood or something that looked like coffee beans?
+       Did you vomit any blood or something that looked like tea leaves?
+       Did you vomit any blood or something that looked like black pepper?
+     DK: ['토하기 전에 무엇을 드셨나요?', '토하신 게 몇 번이었나요?'] | decoy: in the toilet
+ [1] ko:변이 검고 끈적했나요, 아니면 선홍색이었나요?
+     * Have your stools been black and tarry, or bright red?
+       Have your stools been black and lumpy, or bright red?
+       Have your stools been black and watery, or bright red?
+       Have your stools been black and chalky, or bright red?
+     DK: ['변을 볼 때 통증이 있나요?', '하루에 변을 몇 번 보세요?'] | decoy: and watery
+ [2] ko:언제 처음 알아차리셨어요?
+     * When did you first notice this?
+       Why did you first notice this?
+       Who did you first notice this?
+       Where did you first notice this?
+     DK: ['이게 얼마나 심한가요?', '전에도 이런 적이 있었나요?'] | decoy: in bed
+ [3] ko:게워내신 피가 얼마나 많다고 생각하세요?
+     * How much blood do you think you brought up?
+       How much blood do you think you held up?
+       How much blood do you think you kept up?
+       How much blood do you think you carried up?
+     DK: ['피가 어디서 나오는 것 같나요?', '토하신 게 몇 번이었어요?'] | decoy: last night
+ [4] ko:출혈이 위쪽에서 오는지 아래쪽에서 오는지 알아야 해요.
+     * I need to know if the bleeding is coming from above or below.
+       I need to know if the bleeding is coming from above or beyond.
+       I need to know if the bleeding is coming from above or behind.
+       I need to know if the bleeding is coming from above or within.
+     DK: ['출혈량을 재야 해요', '출혈이 멈췄는지 알아야 해요'] | decoy: right now
+ [5] ko:토하신 것의 정확한 색을 설명해 주시겠어요?
+     * Can you describe the exact color of what you vomited?
+       Can you describe the normal color of what you vomited?
+       Can you describe the usual color of what you vomited?
+       Can you describe the favorite color of what you vomited?
+     DK: ['토한 것에서 냄새가 났나요?', '토한 것을 보관해 두셨나요?'] | decoy: in a cup
+  SW 1 | How much of that was there, and what color was it? / Did you vomit any blood, or anything that looked dark? / Same question for your stools: were they black and tarry, or bright red? / I need all of that to tell if the bleeding is from above or below.
+  SW 2 | Did you vomit any blood, or anything that looked dark? / Same question for your stools: were they black and tarry, or bright red? / How much of that was there, and what color was it? / I need all of that to tell if the bleeding is from above or below.
+  SW 3 | Did you vomit any blood, or anything that looked dark? / How much of that was there, and what color was it? / I need all of that to tell if the bleeding is from above or below. / Same question for your stools: were they black and tarry, or bright red?
+  CTX coffee grounds [True, True, True]
+      True He's had two episodes of coffee-ground emesis. | 
+      True Coffee-ground emesis x2 prior to arrival. | 
+      False Have you had any coffee-ground emesis? | Did you throw up anything that looked like coffee grounds?
+     why: emesis(구토물)는 의료진끼리 쓰는 말이에요. 환자에게는 throw up·vomit으로, 무엇처럼 보였는지 물어요.
+## 1 활력·기립성 저혈압
+ [0] ko:일어설 때 어지럽거나 머리가 띵하세요?
+     * Do you feel dizzy or lightheaded when you stand up?
+       Do you taste dizzy or lightheaded when you stand up?
+       Do you look dizzy or lightheaded when you stand up?
+       Do you sound dizzy or lightheaded when you stand up?
+     DK: ['서 있을 때 가슴이 답답한가요?', '누워 있을 때도 어지러운가요?'] | decoy: while you walk
+ [1] ko:실신했거나 거의 의식을 잃을 뻔했나요?
+     * Have you fainted or nearly passed out?
+       Have you stumbled or nearly passed out?
+       Have you dropped or nearly passed out?
+       Have you tripped or nearly passed out?
+     DK: ['넘어져서 머리를 부딪혔나요?', '가슴이 두근거린 적 있나요?'] | decoy: in the hallway
+ [2] ko:누운 상태와 선 상태에서 혈압을 확인할게요.
+     * I'm going to check your blood pressure lying down and standing up.
+       I'm going to lower your blood pressure lying down and standing up.
+       I'm going to treat your blood pressure lying down and standing up.
+       I'm going to raise your blood pressure lying down and standing up.
+     DK: ['지금 바로 채혈할게요', '혈압약은 잠시 끊을게요'] | decoy: after lunch
+ [3] ko:어지러웠을 때 거의 넘어지실 뻔했나요?
+     * Did you almost fall when you felt dizzy?
+       Did you never fall when you felt dizzy?
+       Did you barely fall when you felt dizzy?
+       Did you hardly fall when you felt dizzy?
+     DK: ['어지러울 때 구토하셨나요?', '어지러움이 얼마나 오래갔나요?'] | decoy: at home
+ [4] ko:지금까지 피를 얼마나 잃었다고 생각하세요?
+     * How much blood do you think you have lost so far?
+       How much blood do you think you have stored so far?
+       How much blood do you think you have gained so far?
+       How much blood do you think you have tested so far?
+     DK: ['지금까지 수액을 얼마나 맞았나요?', '피를 마지막으로 뽑은 게 언제인가요?'] | decoy: at home
+ [5] ko:당분간 혈압을 자세히 지켜봐야 해요.
+     * We need to watch your blood pressure closely for a while.
+       We need to watch your blood pressure briefly for a while.
+       We need to watch your blood pressure casually for a while.
+       We need to watch your blood pressure rarely for a while.
+     DK: ['혈압약을 당분간 끊어야 해요', '오늘 안에 퇴원하실 수 있어요'] | decoy: every day
+  SW 1 | Now stand up slowly, and I'll check it again. / First, I'll check your blood pressure while you lie flat. / Tell me right away if that makes you dizzy or lightheaded. / We'll compare those numbers and your symptoms to estimate how much blood you've lost.
+  SW 2 | First, I'll check your blood pressure while you lie flat. / Tell me right away if that makes you dizzy or lightheaded. / Now stand up slowly, and I'll check it again. / We'll compare those numbers and your symptoms to estimate how much blood you've lost.
+  SW 3 | First, I'll check your blood pressure while you lie flat. / Now stand up slowly, and I'll check it again. / We'll compare those numbers and your symptoms to estimate how much blood you've lost. / Tell me right away if that makes you dizzy or lightheaded.
+## 2 NSAID·항응고제 복용력
+ [0] ko:어떤 항응고제를 복용하시고, 마지막 복용은 언제였나요?
+     * Which blood thinner do you take, and when was your last dose?
+       Which blood thinner do you take, and when was your last scan?
+       Which blood thinner do you take, and when was your last fall?
+       Which blood thinner do you take, and when was your last meal?
+     DK: ['그 약을 처음 시작한 게 언제인가요?', '그 약 때문에 불편한 적이 있나요?'] | decoy: each morning
+ [1] ko:이부프로펜 같은 진통제를 얼마나 자주 드세요?
+     * How often do you take pain relievers like ibuprofen?
+       How often do you wear pain relievers like ibuprofen?
+       How often do you hear pain relievers like ibuprofen?
+       How often do you drop pain relievers like ibuprofen?
+     DK: ['진통제를 언제 처음 드셨나요?', '진통제를 누가 처방했나요?'] | decoy: by mouth
+ [2] ko:아스피린을 규칙적으로 드세요?
+     * Do you take any aspirin regularly?
+       Do you take any aspirin rarely?
+       Do you take any aspirin suddenly?
+       Do you take any aspirin recently?
+     DK: ['아스피린 알레르기가 있으세요?', '아스피린을 오늘 드셨나요?'] | decoy: at night
+ [3] ko:이 약들을 매일 드세요, 아니면 가끔만 드세요?
+     * Are you taking these medicines every day or only sometimes?
+       Are you drawing these medicines every day or only sometimes?
+       Are you making these medicines every day or only sometimes?
+       Are you wearing these medicines every day or only sometimes?
+     DK: ['약을 식사와 함께 드시나요?', '약은 누가 챙겨 주시나요?'] | decoy: at bedtime
+ [4] ko:이 약들이 출혈 위험을 높일 수 있어요.
+     * These medicines can raise your risk of bleeding.
+       These medicines can remove your risk of bleeding.
+       These medicines can avoid your risk of bleeding.
+       These medicines can lower your risk of bleeding.
+     DK: ['이 약들은 졸음을 일으킬 수 있어요', '이 약들은 식욕을 떨어뜨릴 수 있어요'] | decoy: for sure
+ [5] ko:지금은 이 약들 중 하나를 중단해야 할 수도 있어요.
+     * We may need to stop one of these medicines for now.
+       We may need to double one of these medicines for now.
+       We may need to refill one of these medicines for now.
+       We may need to share one of these medicines for now.
+     DK: ['이 약들을 두 배로 드셔야 해요', '이 약들을 식사 후에 드세요'] | decoy: forever
+  SW 1 | Besides that, do you take pain relievers like ibuprofen or aspirin? / Which blood thinner do you take, and when was your last dose? / Some of those medicines can raise your risk of bleeding. / So we may need to stop one of them for now.
+  SW 2 | Which blood thinner do you take, and when was your last dose? / Some of those medicines can raise your risk of bleeding. / Besides that, do you take pain relievers like ibuprofen or aspirin? / So we may need to stop one of them for now.
+  SW 3 | Which blood thinner do you take, and when was your last dose? / Besides that, do you take pain relievers like ibuprofen or aspirin? / So we may need to stop one of them for now. / Some of those medicines can raise your risk of bleeding.
+  CTX ibuprofen [True, True, True]
+      True She's been taking ibuprofen 800 mg three times a day. | 
+      True Reports daily NSAID use (ibuprofen 800 mg TID). | 
+      False Ibuprofen use — dose and frequency? | Do you take any pain relievers like ibuprofen, Advil, or Motrin?
+     why: 차트식 단답을 환자에게 그대로 읽으면 차갑게 들려요. 환자는 자기 약이 NSAID에 든다는 것을 모르기도 하니, 흔한 이름·상품명을 들어 문장으로 물어요.
+## 3 흑색변 주소 노인
+ [0] ko:며칠째 변이 검은색으로 보이시나요?
+     * How many days have your stools looked black?
+       How many days have your stools looked pale?
+       How many days have your stools looked green?
+       How many days have your stools looked yellow?
+     DK: ['변을 하루에 몇 번 보세요?', '변을 마지막으로 본 게 언제인가요?'] | decoy: in a row
+ [1] ko:평소보다 더 피곤하거나 숨이 차셨나요?
+     * Have you felt more tired or short of breath than usual?
+       Have you felt less tired or short of breath than usual?
+       Have you felt very tired or short of breath than usual?
+       Have you felt so tired or short of breath than usual?
+     DK: ['숨 쉴 때 가슴이 아프신가요?', '기침이 평소보다 심해졌나요?'] | decoy: at night
+ [2] ko:이와 함께 배가 아프기도 하셨나요?
+     * Have you had any belly pain along with this?
+       Have you had any knee pain along with this?
+       Have you had any chest pain along with this?
+       Have you had any back pain along with this?
+     DK: ['배를 눌러 볼 때 아프신가요?', '배가 부풀어 오른 것 같으세요?'] | decoy: on one side
+ [3] ko:색이나 양이 조금이라도 변했나요?
+     * Has the color or amount changed at all?
+       Has the shape or amount changed at all?
+       Has the texture or amount changed at all?
+       Has the smell or amount changed at all?
+     DK: ['변이 묽어졌나요?', '변을 볼 때 힘이 드나요?'] | decoy: since lunch
+ [4] ko:전보다 힘이 없거나 더 피곤하세요?
+     * Do you feel weak or more tired than before?
+       Do you feel strong or more tired than before?
+       Do you feel calm or more tired than before?
+       Do you feel happy or more tired than before?
+     DK: ['힘이 없을 때 숨이 차나요?', '기운이 없을 때 어지러운가요?'] | decoy: at night
+ [5] ko:빈혈이 있는지 혈액 수치를 확인할게요.
+     * We'll check your blood count to look for anemia.
+       We'll check your blood count to look for diabetes.
+       We'll check your blood count to look for fractures.
+       We'll check your blood count to look for sprains.
+     DK: ['엑스레이로 빈혈을 확인할게요', '소변검사로 감염을 확인할게요'] | decoy: in the lab
+  SW 1 | Over that time, have you felt more tired or short of breath than usual? / How many days have your stools looked black? / Besides the tiredness, has anything else come along, like belly pain? / Based on all that, we'll check your blood count for anemia.
+  SW 2 | How many days have your stools looked black? / Besides the tiredness, has anything else come along, like belly pain? / Over that time, have you felt more tired or short of breath than usual? / Based on all that, we'll check your blood count for anemia.
+  SW 3 | How many days have your stools looked black? / Over that time, have you felt more tired or short of breath than usual? / Based on all that, we'll check your blood count for anemia. / Besides the tiredness, has anything else come along, like belly pain?
+  CTX tired [True, True, True]
+      True She's more tired than usual — hemoglobin is 7.2, down from 11 last month. | 
+      True Symptomatic anemia, Hgb 7.2; pt reports feeling tired. | 
+      False You're tired because of symptomatic anemia — your Hgb is 7.2. | Your blood count is low, and that can make you feel tired and weak.
+     why: symptomatic anemia(증상이 있는 빈혈)·Hgb는 의료진과 차트의 말이에요. 환자에게는 수치가 낮아서 피곤하고 기운이 없을 수 있다고 풀어 말해요.
+## 4 대량 정맥로 확보 설명
+ [0] ko:수액이나 혈액이 급히 필요할 경우를 대비해 큰 정맥로 두 개가 필요해요.
+     * We need two large IVs in case you need fluids or blood quickly.
+       We need two large IVs in case you need fluids or blood rarely.
+       We need two large IVs in case you need fluids or blood gently.
+       We need two large IVs in case you need fluids or blood slowly.
+     DK: ['정맥로를 넣기 전에 소독할게요', '정맥로 자리는 팔꿈치 안쪽이에요'] | decoy: for tests
+ [1] ko:따끔할 수 있지만 금방 끝날 거예요.
+     * You may feel a pinch, but it will be over fast.
+       You may feel a cramp, but it will be over fast.
+       You may feel a burn, but it will be over fast.
+       You may feel a bruise, but it will be over fast.
+     DK: ['바늘을 넣는 동안 움직이지 마세요', '팔에 멍이 들 수 있어요'] | decoy: right here
+ [2] ko:이렇게 하면 가능한 한 안전하고 빠르게 치료할 수 있어요.
+     * This helps us treat you as safely and quickly as possible.
+       This helps us test you as safely and quickly as possible.
+       This helps us move you as safely and quickly as possible.
+       This helps us scan you as safely and quickly as possible.
+     DK: ['대기 시간이 줄어서 빨리 끝나요', '팔을 편하게 두시면 돼요'] | decoy: for sure
+ [3] ko:빨리 처치할 수 있도록 각 팔에 정맥로를 하나씩 놓을게요.
+     * One IV goes in each arm so we can work fast.
+       One IV goes in each leg so we can work fast.
+       One IV goes in each foot so we can work fast.
+       One IV goes in each hip so we can work fast.
+     DK: ['두 팔에 압박대를 감을게요', '팔을 심장보다 낮게 두세요'] | decoy: on your back
+ [4] ko:바늘의 따끔함은 단 몇 초만 갑니다.
+     * The needle pinch lasts only a second.
+       The cuff pinch lasts only a second.
+       The tourniquet pinch lasts only a second.
+       The strap pinch lasts only a second.
+     DK: ['바늘 자국에 밴드를 붙일게요', '바늘을 빼고 눌러 드릴게요'] | decoy: in your vein
+ [5] ko:제가 처음부터 끝까지 바로 여기 있을게요.
+     * I'll stay right here with you the whole time.
+       I'll ride right here with you the whole time.
+       I'll leave right here with you the whole time.
+       I'll hide right here with you the whole time.
+     DK: ['필요한 물품을 가져올게요', '가족분께 연락해 드릴게요'] | decoy: for you
+  SW 1 | That way, we can give you fluids or blood quickly if you need them. / We need to put in two large IVs, one in each arm. / You may feel a pinch, but it should be over fast. / I'll stay right here with you through that pinch and all of it.
+  SW 2 | We need to put in two large IVs, one in each arm. / You may feel a pinch, but it should be over fast. / That way, we can give you fluids or blood quickly if you need them. / I'll stay right here with you through that pinch and all of it.
+  SW 3 | We need to put in two large IVs, one in each arm. / That way, we can give you fluids or blood quickly if you need them. / I'll stay right here with you through that pinch and all of it. / You may feel a pinch, but it should be over fast.
+  CTX fluid [True, True, True]
+      True Two 18-gauge IVs are in, and a liter of fluid is running. | 
+      True Two large-bore PIVs placed; IV fluid bolus (NS 1 L) started. | 
+      False I'm hanging a one-liter IV fluid bolus now. | I'm starting some IV fluids now to help your blood pressure.
+     why: fluid bolus·NS는 의료진끼리의 말이에요. 환자에게는 수액을 넣는다는 것과 그 이유를 쉬운 말로 알려요.
+## 5 정맥류 출혈(간경변)
+ [0] ko:간질환이나 간경변 병력이 있으세요?
+     * Do you have a history of liver disease or cirrhosis?
+       Do you have a history of heart disease or cirrhosis?
+       Do you have a history of lung disease or cirrhosis?
+       Do you have a history of kidney disease or cirrhosis?
+     DK: ['간 수치를 마지막으로 확인한 게 언제인가요?', '간 이식을 받으신 적 있나요?'] | decoy: in your family
+ [1] ko:피를 얼마나 토하셨고, 언제였나요?
+     * How much blood did you vomit, and when?
+       How much blood did you vomit, and why?
+       How much blood did you vomit, and which?
+       How much blood did you vomit, and where?
+     DK: ['피를 토하기 전에 무엇을 드셨나요?', '토한 뒤 어지러움이 있었나요?'] | decoy: last night
+ [2] ko:출혈을 줄이는 약을 시작하고 내시경을 준비할게요.
+     * We'll start a medicine to reduce the bleeding and prepare for an endoscopy.
+       We'll start a medicine to cause the bleeding and prepare for an endoscopy.
+       We'll start a medicine to double the bleeding and prepare for an endoscopy.
+       We'll start a medicine to hide the bleeding and prepare for an endoscopy.
+     DK: ['약을 먹고 바로 퇴원하시게 돼요', '내시경은 내일 외래에서 해요'] | decoy: after lunch
+ [3] ko:과거에 술을 심하게 드셨나요?
+     * Have you been drinking alcohol heavily in the past?
+       Have you been drinking coffee heavily in the past?
+       Have you been drinking soda heavily in the past?
+       Have you been drinking water heavily in the past?
+     DK: ['최근에 약을 같이 드셨나요?', '마지막으로 술을 드신 게 언제인가요?'] | decoy: in a week
+ [4] ko:이 약이 정맥의 압력을 낮추는 데 도움이 될 거예요.
+     * This medicine will help lower the pressure in your veins.
+       This medicine will help check the pressure in your veins.
+       This medicine will help raise the pressure in your veins.
+       This medicine will help hold the pressure in your veins.
+     DK: ['이 약은 통증을 줄여 줘요', '이 약은 구토를 막아 줘요'] | decoy: around your heart
+ [5] ko:의사 선생님이 작은 카메라로 위 안쪽을 들여다볼 거예요.
+     * The doctor will look inside your stomach with a small camera.
+       The doctor will look behind your stomach with a small camera.
+       The doctor will look above your stomach with a small camera.
+       The doctor will look outside your stomach with a small camera.
+     DK: ['위에 넣을 관은 의사 선생님이 설명해 드릴 거예요', '검사 결과는 의사 선생님이 보여 줄 거예요'] | decoy: from outside
+  SW 1 | With that history, we'll start a medicine to lower the pressure in your veins. / Do you have a history of liver disease or cirrhosis? / Along with that medicine, the doctor will look inside your stomach with a small camera. / Both of those help stop the bleeding, so we'll watch you closely.
+  SW 2 | Do you have a history of liver disease or cirrhosis? / Along with that medicine, the doctor will look inside your stomach with a small camera. / With that history, we'll start a medicine to lower the pressure in your veins. / Both of those help stop the bleeding, so we'll watch you closely.
+  SW 3 | Do you have a history of liver disease or cirrhosis? / With that history, we'll start a medicine to lower the pressure in your veins. / Both of those help stop the bleeding, so we'll watch you closely. / Along with that medicine, the doctor will look inside your stomach with a small camera.
+  CTX pressure [True, True, True]
+      True Octreotide drip is started to lower portal pressure. | 
+      True Octreotide infusion initiated to lower portal pressure; suspected variceal bleed. | 
+      False This infusion will decrease your portal venous pressure. | This medicine will help lower the pressure in your veins.
+     why: portal venous pressure(문맥압)는 의료진의 말이에요. 환자에게는 '혈관 속 압력을 낮춘다'로 충분해요.
+## 6 소화성 궤양 토혈
+ [0] ko:커피 찌꺼기 같은 모습은 위에서 출혈이 있음을 시사해요.
+     * The coffee-ground appearance suggests bleeding in your stomach.
+       The coffee-ground appearance hides bleeding in your stomach.
+       The coffee-ground appearance removes bleeding in your stomach.
+       The coffee-ground appearance prevents bleeding in your stomach.
+     DK: ['위산이 많이 나온다는 뜻이에요', '커피를 줄이라는 뜻이에요'] | decoy: from earlier
+ [1] ko:전에 속쓰림이나 궤양 문제가 있으셨나요?
+     * Have you had heartburn or ulcer problems before?
+       Have you had heartburn or ulcer problems tomorrow?
+       Have you had heartburn or ulcer problems soon?
+       Have you had heartburn or ulcer problems later?
+     DK: ['속쓰림이 있을 때 뭘 드셨나요?', '궤양 수술을 받으신 적이 있나요?'] | decoy: last year
+ [2] ko:위산을 줄이는 정맥주사 약을 시작하고 내시경을 계획할게요.
+     * We'll start an IV acid-reducing medicine and plan for an endoscopy.
+       We'll stop an IV acid-reducing medicine and plan for an endoscopy.
+       We'll skip an IV acid-reducing medicine and plan for an endoscopy.
+       We'll avoid an IV acid-reducing medicine and plan for an endoscopy.
+     DK: ['먹는 제산제를 드릴게요', '수술 일정을 잡을게요'] | decoy: at home
+ [3] ko:매운 음식을 드신 후에 자주 속이 쓰리세요?
+     * Do you often get heartburn after eating spicy food?
+       Do you often get heartburn after eating salty food?
+       Do you often get heartburn after eating bland food?
+       Do you often get heartburn after eating cold food?
+     DK: ['속쓰림 때문에 잠을 설치세요?', '속쓰림에 먹는 약이 있나요?'] | decoy: at night
+ [4] ko:전에 위궤양으로 치료받으신 적 있으세요?
+     * Have you ever been treated for a stomach ulcer before?
+       Have you ever been treated for a mouth ulcer before?
+       Have you ever been treated for a leg ulcer before?
+       Have you ever been treated for a skin ulcer before?
+     DK: ['위 수술을 받으신 적이 있나요?', '위내시경을 받으신 적이 있나요?'] | decoy: last month
+ [5] ko:이 약이 위산을 낮춰줄 거예요.
+     * The medicine will lower the acid in your stomach.
+       The medicine will raise the acid in your stomach.
+       The medicine will hide the acid in your stomach.
+       The medicine will spill the acid in your stomach.
+     DK: ['이 약이 통증을 바로 없애 줘요', '이 약이 구토를 막아 줘요'] | decoy: from your throat
+  SW 1 | Have you had heartburn or ulcer problems before this? / The coffee-ground look suggests bleeding in your stomach. / Either way, we'll start an IV medicine that lowers the acid in your stomach. / That medicine helps, and an endoscopy will show us where it's coming from.
+  SW 2 | The coffee-ground look suggests bleeding in your stomach. / Either way, we'll start an IV medicine that lowers the acid in your stomach. / Have you had heartburn or ulcer problems before this? / That medicine helps, and an endoscopy will show us where it's coming from.
+  SW 3 | The coffee-ground look suggests bleeding in your stomach. / Have you had heartburn or ulcer problems before this? / That medicine helps, and an endoscopy will show us where it's coming from. / Either way, we'll start an IV medicine that lowers the acid in your stomach.
+  CTX burning [True, True, True]
+      True He reports burning in his chest after meals for the past month. | 
+      True Reports postprandial epigastric burning x1 month. | 
+      False Do you have postprandial epigastric burning? | Do you get heartburn after eating?
+     why: postprandial(식후)·epigastric(명치)은 차트의 말이에요. 환자에게는 heartburn, after eating으로 물어요.
+## 7 하부 GI 대량 혈변
+ [0] ko:지금까지 몇 번, 매번 얼마나 피를 보셨나요?
+     * How many times have you passed blood, and how much each time?
+       How many times have you passed gas, and how much each time?
+       How many times have you passed urine, and how much each time?
+       How many times have you passed stool, and how much each time?
+     DK: ['변을 볼 때 얼마나 아팠나요?', '마지막으로 변을 본 게 언제인가요?'] | decoy: this week
+ [1] ko:피가 선홍색인가요, 아니면 변에 섞여 있나요?
+     * Is the blood bright red or mixed in with the stool?
+       Is the blood pale red or mixed in with the stool?
+       Is the blood dull red or mixed in with the stool?
+       Is the blood thin red or mixed in with the stool?
+     DK: ['피가 휴지에만 묻나요?', '변 색이 검은색이었나요?'] | decoy: from above
+ [2] ko:원인을 찾기 위해 대장내시경이 필요할 것 같아요.
+     * You'll likely need a colonoscopy to find the source.
+       You'll likely need a transfusion to find the source.
+       You'll likely need a surgery to find the source.
+       You'll likely need a biopsy to find the source.
+     DK: ['내일 아침 약 먹고 퇴원하세요', '수술로 원인을 제거할게요'] | decoy: at home
+ [3] ko:피가 변과 함께 나오나요, 아니면 따로 나오나요?
+     * Does the blood come out with the stool or by itself?
+       Does the blood come out with the vomit or by itself?
+       Does the blood come out with the mucus or by itself?
+       Does the blood come out with the urine or by itself?
+     DK: ['변을 볼 때 휴지에 피가 묻나요?', '피가 나올 때 통증이 있나요?'] | decoy: all at once
+ [4] ko:혈액 수치를 확인하고 활력징후를 지켜볼게요.
+     * We'll need to check your blood count and watch your vital signs.
+       We'll need to check your blood count and ignore your vital signs.
+       We'll need to check your blood count and hide your vital signs.
+       We'll need to check your blood count and skip your vital signs.
+     DK: ['산소 치료부터 시작할게요', '소변 검사를 먼저 할게요'] | decoy: by phone
+ [5] ko:대장내시경으로 출혈이 어디서 오는지 의사 선생님이 찾을 수 있을 거예요.
+     * The colonoscopy will help the doctor find where the bleeding is coming from.
+       The colonoscopy will help the doctor find when the bleeding is coming from.
+       The colonoscopy will help the doctor find how the bleeding is coming from.
+       The colonoscopy will help the doctor find who the bleeding is coming from.
+     DK: ['대장내시경은 오늘 밤에 할 거예요', '대장내시경 결과는 바로 나와요'] | decoy: in your arm
+  SW 1 | Is that blood bright red, or is it mixed in with the stool? / How many times have you passed blood, and how much each time? / Based on your answers, you'll likely need a colonoscopy to find the source. / Along with that test, we'll check your blood count and watch your vital signs.
+  SW 2 | How many times have you passed blood, and how much each time? / Based on your answers, you'll likely need a colonoscopy to find the source. / Is that blood bright red, or is it mixed in with the stool? / Along with that test, we'll check your blood count and watch your vital signs.
+  SW 3 | How many times have you passed blood, and how much each time? / Is that blood bright red, or is it mixed in with the stool? / Along with that test, we'll check your blood count and watch your vital signs. / Based on your answers, you'll likely need a colonoscopy to find the source.
+  CTX episodes [True, True, True]
+      True She's had three episodes of large-volume hematochezia. | 
+      True Hematochezia, 3 episodes since 0200. | 
+      False How many episodes of hematochezia have you had? | How many times have you passed blood?
+     why: hematochezia(선혈변)는 의료진의 말이에요. 환자에게는 passed blood처럼 쉬운 말로, 몇 번이었는지 물어요.
+## 8 와파린 과다 출혈
+ [0] ko:마지막으로 INR을 언제 확인하셨나요?
+     * When did you last have your INR checked?
+       When did you first have your INR checked?
+       When did you next have your INR checked?
+       When did you just have your INR checked?
+     DK: ['INR 수치가 얼마였나요?', 'INR 검사를 누가 해 주셨나요?'] | decoy: at home
+ [1] ko:하루에 와파린을 얼마나 드세요?
+     * How much warfarin do you take each day?
+       How much warfarin do you spill each day?
+       How much warfarin do you double each day?
+       How much warfarin do you refuse each day?
+     DK: ['와파린을 얼마나 오래 드셨나요?', '와파린을 마지막으로 드신 게 언제예요?'] | decoy: with food
+ [2] ko:항응고제를 역전시키고 출혈을 멈추는 약을 드릴게요.
+     * We'll give medicine to reverse the blood thinner and stop the bleeding.
+       We'll give medicine to repeat the blood thinner and stop the bleeding.
+       We'll give medicine to refill the blood thinner and stop the bleeding.
+       We'll give medicine to increase the blood thinner and stop the bleeding.
+     DK: ['진통제를 먼저 드릴게요', '수액부터 놓을게요'] | decoy: at once
+ [3] ko:최근에 의사 선생님이 와파린 용량을 바꾸셨나요?
+     * Has your doctor changed your warfarin dose recently?
+       Has your doctor changed your warfarin brand recently?
+       Has your doctor changed your warfarin schedule recently?
+       Has your doctor changed your warfarin pharmacy recently?
+     DK: ['와파린 말고 다른 항응고제로 바꿨나요?', '와파린을 중간에 빼먹은 적 있나요?'] | decoy: last year
+ [4] ko:효과를 역전시키도록 비타민K를 드릴게요.
+     * We'll give you vitamin K to help reverse the effect.
+       We'll give you vitamin K to help reverse the color.
+       We'll give you vitamin K to help reverse the taste.
+       We'll give you vitamin K to help reverse the price.
+     DK: ['비타민 C를 드릴게요', '철분제를 드릴게요'] | decoy: in the morning
+ [5] ko:치료 후에 혈액을 다시 확인해야 해요.
+     * Your blood will need to be checked again after treatment.
+       Your blood will need to be checked again without treatment.
+       Your blood will need to be checked again before treatment.
+       Your blood will need to be checked again during treatment.
+     DK: ['치료가 끝나면 퇴원하셔도 돼요', '치료 후에는 약을 끊으셔야 해요'] | decoy: at home
+  SW 1 | At that time, how much warfarin were you taking each day? / When did you last have your INR checked? / With that dose and your bleeding, we'll give vitamin K to help reverse the effect. / We'll check your blood again to see how well that worked.
+  SW 2 | When did you last have your INR checked? / With that dose and your bleeding, we'll give vitamin K to help reverse the effect. / At that time, how much warfarin were you taking each day? / We'll check your blood again to see how well that worked.
+  SW 3 | When did you last have your INR checked? / At that time, how much warfarin were you taking each day? / We'll check your blood again to see how well that worked. / With that dose and your bleeding, we'll give vitamin K to help reverse the effect.
+## 9 수혈 동의·부작용 설명
+ [0] ko:수혈은 잃으신 피를 대체해서 안전하게 지켜줘요.
+     * A transfusion replaces the blood you've lost to keep you safe.
+       A transfusion wastes the blood you've lost to keep you safe.
+       A transfusion removes the blood you've lost to keep you safe.
+       A transfusion hides the blood you've lost to keep you safe.
+     DK: ['수혈은 혈압약을 대신해 줘요', '수혈은 하루에 한 번만 받아요'] | decoy: for weeks
+ [1] ko:오한, 가려움, 숨쉬기 곤란을 느끼면 바로 말씀해 주세요.
+     * Tell me right away if you feel chills, itching, or trouble breathing.
+       Text me right away if you feel chills, itching, or trouble breathing.
+       Show me right away if you feel chills, itching, or trouble breathing.
+       Ask me right away if you feel chills, itching, or trouble breathing.
+     DK: ['약이 다 들어가면 알려 주세요', '수혈 팩이 비면 알려 주세요'] | decoy: after dinner
+ [2] ko:수혈하는 동안 자세히 지켜볼게요.
+     * We'll watch you closely during the transfusion.
+       We'll watch you seldom during the transfusion.
+       We'll watch you vaguely during the transfusion.
+       We'll watch you loosely during the transfusion.
+     DK: ['팔에 힘을 빼고 계셔 주세요', '불을 조금 낮춰 둘게요'] | decoy: all night
+ [3] ko:수혈은 대체로 매우 안전하지만 반응이 생길 수 있어요.
+     * A transfusion is generally very safe, but reactions can happen.
+       A transfusion is rarely very safe, but reactions can happen.
+       A transfusion is barely very safe, but reactions can happen.
+       A transfusion is hardly very safe, but reactions can happen.
+     DK: ['보통 몇 시간 걸려요', '주로 팔에서 해요'] | decoy: in a week
+ [4] ko:조금이라도 다르게 느껴지면 바로 저희에게 말씀해 주세요.
+     * If you feel any different, please tell us immediately.
+       If you feel any different, please tell us sometime.
+       If you feel any different, please tell us tomorrow.
+       If you feel any different, please tell us eventually.
+     DK: ['아프면 진통제를 드릴게요', '불편하면 수혈 속도를 늦출 수 있어요'] | decoy: next week
+ [5] ko:수혈하는 동안 체온과 맥박을 자주 확인할게요.
+     * We'll check your temperature and pulse often during the transfusion.
+       We'll check your weight and pulse often during the transfusion.
+       We'll check your address and pulse often during the transfusion.
+       We'll check your height and pulse often during the transfusion.
+     DK: ['수혈이 끝나면 팔을 소독할게요', '수혈 전에 알레르기를 확인할게요'] | decoy: at home
+  SW 1 | It is generally very safe, but reactions can happen. / A transfusion replaces the blood you've lost to keep you safe. / That's why I'll check your temperature and pulse often and watch you closely. / You can help: tell me right away if you feel chills, itching, or trouble breathing.
+  SW 2 | A transfusion replaces the blood you've lost to keep you safe. / That's why I'll check your temperature and pulse often and watch you closely. / It is generally very safe, but reactions can happen. / You can help: tell me right away if you feel chills, itching, or trouble breathing.
+  SW 3 | A transfusion replaces the blood you've lost to keep you safe. / It is generally very safe, but reactions can happen. / You can help: tell me right away if you feel chills, itching, or trouble breathing. / That's why I'll check your temperature and pulse often and watch you closely.
+  CTX reaction [True, True, True]
+      True Transfusion reactions like TRALI and TACO are rare, but let's watch her closely. | 
+      True Transfusion risks, including reactions, discussed; pt consents. | 
+      False Your risk of a TRALI or TACO reaction is low. | Serious reactions are rare, and we'll watch you closely the whole time.
+     why: TRALI·TACO는 수혈 관련 폐손상·순환 과부하를 줄인 의료진의 말이에요. 환자에게는 '심한 반응은 드물고 계속 지켜본다'로 말해요.
+## 10 Mallory-Weiss(반복 구토 후)
+ [0] ko:구토가 피를 알아차리기 전에 있었나요?
+     * Did the vomiting come before you noticed the blood?
+       Did the vomiting come while you noticed the blood?
+       Did the vomiting come since you noticed the blood?
+       Did the vomiting come after you noticed the blood?
+     DK: ['구토가 피 때문에 멈췄나요?', '피를 닦아 내신 적이 있나요?'] | decoy: last night
+ [1] ko:그 전에 몇 번 구토하셨나요?
+     * How many times had you vomited beforehand?
+       How many times had you vomited afterwards?
+       How many times had you vomited later?
+       How many times had you vomited tomorrow?
+     DK: ['구토하기 전에 무엇을 드셨나요?', '구토가 몇 시간째 계속되나요?'] | decoy: in a row
+ [2] ko:최근에 술을 드셨나요?
+     * Have you been drinking alcohol recently?
+       Have you been drinking coffee recently?
+       Have you been drinking water recently?
+       Have you been drinking juice recently?
+     DK: ['술을 마신 뒤에 토하셨나요?', '술을 얼마나 오래 드셨나요?'] | decoy: at night
+ [3] ko:구토와 피 중에 무엇이 먼저였나요?
+     * Which happened first, the vomiting or the blood?
+       Which happened next, the vomiting or the blood?
+       Which happened last, the vomiting or the blood?
+       Which happened second, the vomiting or the blood?
+     DK: ['둘이 같이 나왔나요?', '어느 쪽이 더 많았나요?'] | decoy: again
+ [4] ko:처음 몇 번 토하셨을 때 피가 있었나요?
+     * Was there any blood the first few times you vomited?
+       Was there any bile the first few times you vomited?
+       Was there any mucus the first few times you vomited?
+       Was there any food the first few times you vomited?
+     DK: ['처음 토하셨을 때 음식이 섞였나요?', '처음 토하신 게 언제였나요?'] | decoy: this morning
+ [5] ko:일주일에 술을 보통 얼마나 드세요?
+     * How much alcohol do you usually drink in a week?
+       How much alcohol do you never drink in a week?
+       How much alcohol do you hardly drink in a week?
+       How much alcohol do you seldom drink in a week?
+     DK: ['술을 몇 년째 드셨나요?', '술을 끊으신 적이 있나요?'] | decoy: at night
+  SW 1 | How many times had you vomited before that? / Did the vomiting come before you noticed the blood? / Was there any blood the first few of those times? / With all of that in mind, have you been drinking alcohol recently?
+  SW 2 | Did the vomiting come before you noticed the blood? / Was there any blood the first few of those times? / How many times had you vomited before that? / With all of that in mind, have you been drinking alcohol recently?
+  SW 3 | Did the vomiting come before you noticed the blood? / How many times had you vomited before that? / With all of that in mind, have you been drinking alcohol recently? / Was there any blood the first few of those times?
+## 11 출혈+빈혈 실신
+ [0] ko:일어나 앉을 때 어지럽거나 힘이 없으세요?
+     * Do you feel dizzy or weak when you sit up?
+       Do you sound dizzy or weak when you sit up?
+       Do you taste dizzy or weak when you sit up?
+       Do you smell dizzy or weak when you sit up?
+     DK: ['앉을 때 숨이 차나요?', '앉을 때 가슴이 아픈가요?'] | decoy: at night
+ [1] ko:침대에서 나오시기 전에 저희를 불러 주세요.
+     * Please call us before getting out of bed.
+       Please text us before getting out of bed.
+       Please email us before getting out of bed.
+       Please wave us before getting out of bed.
+     DK: ['침대에서 나오시기 전에 신발을 신으세요', '침대에서 나오시면 제가 옆에서 부축할게요'] | decoy: at night
+ [2] ko:낙상을 막기 위해 침대를 낮추고 난간을 올려둘게요.
+     * We're keeping the bed low and the rails up to prevent a fall.
+       We're keeping the bed low and the rails up to allow a fall.
+       We're keeping the bed low and the rails up to cause a fall.
+       We're keeping the bed low and the rails up to invite a fall.
+     DK: ['침대 알람을 꺼 둘게요', '침대 시트를 갈아 드릴게요'] | decoy: all day
+ [3] ko:실신하셨을 때 얼마나 오래 의식이 없으셨나요?
+     * How long were you unconscious when you fainted?
+       How long were you sober when you fainted?
+       How long were you absent when you fainted?
+       How long were you silent when you fainted?
+     DK: ['쓰러지신 뒤 바로 일어나셨나요?', '쓰러지기 전에 뭘 하고 계셨나요?'] | decoy: in the car
+ [4] ko:다시 넘어져서 다치지 않으셨으면 해요.
+     * We don't want you to fall and get hurt again.
+       We don't want you to fall and get sick again.
+       We don't want you to fall and get scared again.
+       We don't want you to fall and get lost again.
+     DK: ['다시 쓰러지지 않게 수액을 더 드릴게요', '넘어진 곳을 사진으로 남길게요'] | decoy: at home
+ [5] ko:매번 누군가 일어나실 때 도와드릴게요.
+     * Someone will help you get up every time.
+       Nobody will help you get up every time.
+       Nothing will help you get up every time.
+       Nowhere will help you get up every time.
+     DK: ['일어나실 때 보행기를 쓰세요', '일어나실 때 천천히 숨 쉬세요'] | decoy: by yourself
+  SW 1 | That's why we're keeping the bed low and the rails up. / Do you feel dizzy or weak when you sit up? / Please call us before getting out of bed, even if you feel fine. / Someone will answer that call and help you get up every time.
+  SW 2 | Do you feel dizzy or weak when you sit up? / Please call us before getting out of bed, even if you feel fine. / That's why we're keeping the bed low and the rails up. / Someone will answer that call and help you get up every time.
+  SW 3 | Do you feel dizzy or weak when you sit up? / That's why we're keeping the bed low and the rails up. / Someone will answer that call and help you get up every time. / Please call us before getting out of bed, even if you feel fine.
+  CTX fall [True, True, True]
+      True She's a high fall risk — bed alarm is on. | 
+      True Fall precautions in place; bed low, rails up x2. | 
+      False You're a high fall risk, so don't get up. | You might feel dizzy when you stand, so please call us and we'll help you get up.
+     why: high fall risk는 의료진이 붙이는 분류예요. 환자에게는 왜 위험한지와 어떻게 하면 되는지(부르면 도와준다)를 말해요.
+## 12 여호와의증인 수혈 거부
+ [0] ko:결정을 존중하고 바람을 완전히 이해하고 싶어요.
+     * I respect your decision and want to understand your wishes fully.
+       I respect your decision and want to understand your wishes barely.
+       I respect your decision and want to understand your wishes rarely.
+       I respect your decision and want to understand your wishes loudly.
+     DK: ['결정하시기까지 시간을 드릴게요', '결정하신 내용을 서류에 적어 드릴게요'] | decoy: right now
+ [1] ko:환자분을 돕기 위해 쓸 수 있는 다른 치료법들이 있어요.
+     * There are other treatments we can use to support you.
+       There are other treatments we can use to charge you.
+       There are other treatments we can use to blame you.
+       There are other treatments we can use to scare you.
+     DK: ['다른 치료는 의사 선생님과 먼저 상의할게요', '다른 병원으로 옮겨야 할 수도 있어요'] | decoy: for sure
+ [2] ko:팀과 함께 환자분의 선호를 명확하게 기록해 둘게요.
+     * Let's document your preferences clearly with the team.
+       Let's hide your preferences clearly with the team.
+       Let's ignore your preferences clearly with the team.
+       Let's delete your preferences clearly with the team.
+     DK: ['서류에 서명하실 분을 확인할게요', '가족분께 연락해 둘게요'] | decoy: in private
+ [3] ko:수혈에 관한 환자분의 신념을 더 말씀해 주시겠어요?
+     * Can you tell me more about your beliefs regarding blood transfusions?
+       Can you tell me more about your allergies regarding blood transfusions?
+       Can you tell me more about your symptoms regarding blood transfusions?
+       Can you tell me more about your insurance regarding blood transfusions?
+     DK: ['수혈 외에 거부하시는 치료가 있나요?', '이런 결정을 가족과 이야기해 보셨나요?'] | decoy: at home
+ [4] ko:혈액 제품을 쓰지 않고 가능한 모든 것을 해볼게요.
+     * We will do everything possible without using blood products.
+       We will do everything possible with using blood products.
+       We will do everything possible before using blood products.
+       We will do everything possible after using blood products.
+     DK: ['혈액 제품 없이 가능한 치료를 의사 선생님과 정할게요', '혈액 제품 대신 어떤 약이 있는지 설명할게요'] | decoy: for you
+ [5] ko:치료 내내 팀이 환자분의 바람을 존중할 거예요.
+     * The team will respect your wishes throughout your care.
+       The team will reject your wishes throughout your care.
+       The team will forget your wishes throughout your care.
+       The team will change your wishes throughout your care.
+     DK: ['팀이 환자분 곁을 교대로 지킬 거예요', '팀이 치료 계획을 매일 설명해 드릴 거예요'] | decoy: right now
+  SW 1 | To understand them fully, can you tell me more about your beliefs regarding blood transfusions? / I respect your decision and want to understand your wishes fully. / With those wishes in mind, we'll do everything possible without blood products. / We'll document all of that clearly so the whole team respects it.
+  SW 2 | I respect your decision and want to understand your wishes fully. / With those wishes in mind, we'll do everything possible without blood products. / To understand them fully, can you tell me more about your beliefs regarding blood transfusions? / We'll document all of that clearly so the whole team respects it.
+  SW 3 | I respect your decision and want to understand your wishes fully. / To understand them fully, can you tell me more about your beliefs regarding blood transfusions? / We'll document all of that clearly so the whole team respects it. / With those wishes in mind, we'll do everything possible without blood products.
+## 13 재출혈 이력 통합
+ [0] ko:전에 받으신 내시경에 대해 말씀해 주세요.
+     * Tell me about the endoscopy you had before.
+       Tell me about the biopsy you had before.
+       Tell me about the surgery you had before.
+       Tell me about the scan you had before.
+     DK: ['내시경 전에 금식하셨는지 말씀해 주세요', '내시경을 받은 병원 이름을 말씀해 주세요'] | decoy: last year
+ [1] ko:지난번에 무엇이 발견됐거나 치료됐는지 아세요?
+     * Do you know what was found or treated last time?
+       Do you know what was found or removed last time?
+       Do you know what was found or repaired last time?
+       Do you know what was found or tested last time?
+     DK: ['지난번에 어느 병원에서 하셨는지 아세요?', '지난번에 약을 얼마나 드셨는지 아세요?'] | decoy: in the lab
+ [2] ko:이런 종류의 출혈이 한 번 넘게 있었나요?
+     * Has this type of bleeding happened more than once?
+       Has this type of pain happened more than once?
+       Has this type of vomiting happened more than once?
+       Has this type of dizziness happened more than once?
+     DK: ['출혈 때문에 수혈을 받은 적이 있나요?', '이런 출혈이 있을 때 약을 드셨나요?'] | decoy: at night
+ [3] ko:마지막 시술이 몇 년 전이었나요?
+     * How many years ago was your last procedure?
+       How many years later was your last procedure?
+       How many years after was your last procedure?
+       How many years before was your last procedure?
+     DK: ['그 시술 때 며칠 입원하셨나요?', '그 시술은 누가 하셨나요?'] | decoy: at home
+ [4] ko:그때 의사 선생님들이 원인에 대해 뭐라고 하셨나요?
+     * Did the doctors say anything about the cause back then?
+       Did the doctors say anything about the cost back then?
+       Did the doctors say anything about the plan back then?
+       Did the doctors say anything about the risk back then?
+     DK: ['그때 약을 몇 주 드시라고 했나요?', '그때 수술을 하자고 했나요?'] | decoy: in writing
+ [5] ko:이 병력이 재출혈 위험을 이해하는 데 도움이 돼요.
+     * This history helps us understand your risk of bleeding again.
+       This history helps us avoid your risk of bleeding again.
+       This history helps us ignore your risk of bleeding again.
+       This history helps us hide your risk of bleeding again.
+     DK: ['이 병력은 퇴원 날짜에 영향을 줘요', '이 병력은 보험 처리에 쓰여요'] | decoy: for sure
+  SW 1 | Do you know what was found or treated at that time? / Tell me about the endoscopy you had before. / Since then, has bleeding like this happened more than once? / This history helps us understand your risk of bleeding again.
+  SW 2 | Tell me about the endoscopy you had before. / Since then, has bleeding like this happened more than once? / Do you know what was found or treated at that time? / This history helps us understand your risk of bleeding again.
+  SW 3 | Tell me about the endoscopy you had before. / Do you know what was found or treated at that time? / This history helps us understand your risk of bleeding again. / Since then, has bleeding like this happened more than once?
+  CTX endoscopy [True, True, True]
+      True History of a bleeding ulcer, clipped on endoscopy in 2019. | 
+      True Hx PUD with bleed s/p endoscopic clipping (2019). | 
+      False So you're s/p endoscopic clipping in 2019? | So in 2019 you had an endoscopy where they clipped a bleeding ulcer?
+     why: s/p(status post, ~한 뒤)는 차트의 약어예요. 환자에게는 언제 무엇을 받았는지 풀어서 확인해요.
+## 14 항혈소판제 심장환자 출혈
+ [0] ko:아스피린이나 클로피도그렐 같은 어떤 심장약을 드세요?
+     * Which heart medicines are you taking, like aspirin or clopidogrel?
+       Which pain medicines are you taking, like aspirin or clopidogrel?
+       Which sleep medicines are you taking, like aspirin or clopidogrel?
+       Which stomach medicines are you taking, like aspirin or clopidogrel?
+     DK: ['심장약을 드시고 나서 부작용이 있었나요?', '심장약은 누가 처방하셨나요?'] | decoy: by mouth
+ [1] ko:최근에 스텐트나 심장 시술을 받으셨나요?
+     * Have you had a stent or heart procedure recently?
+       Have you had a stent or heart procedure tomorrow?
+       Have you had a stent or heart procedure daily?
+       Have you had a stent or heart procedure rarely?
+     DK: ['스텐트 시술을 받은 병원이 어디예요?', '시술 뒤에 흉통이 있었나요?'] | decoy: last year
+ [2] ko:팀이 출혈과 응고 위험을 신중하게 저울질할 거예요.
+     * The team will weigh your bleeding against your clot risk carefully.
+       The team will ignore your bleeding against your clot risk carefully.
+       The team will hide your bleeding against your clot risk carefully.
+       The team will raise your bleeding against your clot risk carefully.
+     DK: ['팀이 심장 검사 결과를 먼저 확인할 거예요', '팀이 가족분께 먼저 설명드릴 거예요'] | decoy: for you
+ [3] ko:이 심장약을 얼마나 오래 드셨나요?
+     * How long have you been taking this medicine for your heart?
+       How many have you been taking this medicine for your heart?
+       How often have you been taking this medicine for your heart?
+       How much have you been taking this medicine for your heart?
+     DK: ['하루에 몇 번 드시는지 말씀해 주세요', '처음 처방받은 병원이 어디예요?'] | decoy: in a row
+ [4] ko:이 약을 너무 일찍 끊으면 응고 위험이 늘어날 수 있어요.
+     * Stopping this medicine too soon could increase your clot risk.
+       Stopping this medicine too soon could remove your clot risk.
+       Stopping this medicine too soon could cure your clot risk.
+       Stopping this medicine too soon could reduce your clot risk.
+     DK: ['이 약을 끊으면 속쓰림이 심해질 수 있어요', '이 약을 끊으면 혈압이 오를 수 있어요'] | decoy: for good
+ [5] ko:심장 의사와 소화기 의사가 함께 결정할 거예요.
+     * The heart doctor and the stomach doctor will decide together.
+       The heart doctor and the stomach doctor will decide alone.
+       The heart doctor and the stomach doctor will decide separately.
+       The heart doctor and the stomach doctor will decide apart.
+     DK: ['두 분 모두 오늘 중으로 보러 오실 거예요', '두 분 선생님께 검사 결과를 드릴 거예요'] | decoy: in person
+  SW 1 | Did you start them after a stent or another heart procedure? / Which heart medicines are you taking, like aspirin or clopidogrel? / Because of that, stopping those medicines too soon could increase your clot risk. / That's why the heart doctor and the stomach doctor will decide together.
+  SW 2 | Which heart medicines are you taking, like aspirin or clopidogrel? / Because of that, stopping those medicines too soon could increase your clot risk. / Did you start them after a stent or another heart procedure? / That's why the heart doctor and the stomach doctor will decide together.
+  SW 3 | Which heart medicines are you taking, like aspirin or clopidogrel? / Did you start them after a stent or another heart procedure? / That's why the heart doctor and the stomach doctor will decide together. / Because of that, stopping those medicines too soon could increase your clot risk.
+  CTX stent [True, True, True]
+      True He's three months out from a stent, on aspirin and clopidogrel. | 
+      True S/p coronary stent (DES) 3 mo ago; on DAPT (ASA + clopidogrel). | 
+      False You're on DAPT for your DES stent, right? | You had a stent put in about three months ago, and you take aspirin and clopidogrel for it, right?
+     why: DAPT(이중 항혈소판요법)·DES(약물방출 스텐트)는 의료진의 약어예요. 환자에게는 스텐트와 먹는 약 이름으로 확인해요.
+## 15 출혈성 쇼크 인지
+ [0] ko:심박수는 높고 혈압은 떨어지고 있어요 — 지금 바로 조치할게요.
+     * Your heart rate is high and your pressure is dropping — we're acting now.
+       Your heart rate is high and your pressure is rising — we're acting now.
+       Your heart rate is high and your pressure is holding — we're acting now.
+       Your heart rate is high and your pressure is climbing — we're acting now.
+     DK: ['지금 심전도를 먼저 찍을게요', '지금 보호자분께 연락할게요'] | decoy: slowly
+ [1] ko:수액과 혈액을 바로 드릴게요.
+     * We're giving fluids and blood right away.
+       We're giving pills and blood right away.
+       We're giving food and blood right away.
+       We're giving ice and blood right away.
+     DK: ['먼저 산소부터 드릴게요', '먼저 검사부터 끝낼게요'] | decoy: tomorrow
+ [2] ko:팀이 모든 걸 준비하는 동안 저와 함께 있어 주세요.
+     * Stay with me while the team gets everything ready.
+       Stay with me while the team gets everything empty.
+       Stay with me while the team gets everything lost.
+       Stay with me while the team gets everything closed.
+     DK: ['숨을 크게 쉬세요', '팔을 움직이지 마세요'] | decoy: right now
+ [3] ko:심장이 지금 아주 빠르게 뛰고 있어요.
+     * Your heart is beating very fast right now.
+       Your heart is beating very weak right now.
+       Your heart is beating very uneven right now.
+       Your heart is beating very slow right now.
+     DK: ['숨이 지금 아주 얕아요', '혈압이 지금 아주 높아요'] | decoy: at rest
+ [4] ko:안전하게 지켜드리려면 빠르게 조치해야 해요.
+     * We need to act quickly to keep you safe.
+       We need to act slowly to keep you safe.
+       We need to act later to keep you safe.
+       We need to act gently to keep you safe.
+     DK: ['산소 마스크를 쓰려면 입을 벌려 주세요', '안정을 위해 침대를 조금 낮출게요'] | decoy: for now
+ [5] ko:혈액이 오고 있어요.
+     * More blood is on the way for you.
+       Less blood is on the way for you.
+       Old blood is on the way for you.
+       Little blood is on the way for you.
+     DK: ['수액이 더 오고 있어요', '의사 선생님이 더 오고 있어요'] | decoy: right now
+  SW 1 | That's why we're giving you fluids and blood right away. / Your heart rate is high and your pressure is dropping — we're acting now. / That should help your heart slow down, and more blood is on the way. / Stay with me through all of that, and tell me how you feel.
+  SW 2 | Your heart rate is high and your pressure is dropping — we're acting now. / That should help your heart slow down, and more blood is on the way. / That's why we're giving you fluids and blood right away. / Stay with me through all of that, and tell me how you feel.
+  SW 3 | Your heart rate is high and your pressure is dropping — we're acting now. / That's why we're giving you fluids and blood right away. / Stay with me through all of that, and tell me how you feel. / That should help your heart slow down, and more blood is on the way.
+  CTX activate [True, True, True]
+      True Let's activate the massive transfusion protocol. | 
+      True We need MTP activated for a GI bleed in bay 4. | 
+      False We're activating MTP for you. | More blood is on the way for you.
+     why: MTP(대량수혈 프로토콜)는 팀과 혈액은행 사이의 말이에요. 환자에게는 '피가 더 오고 있다'로 충분해요.
+## 16 정맥류 대량 토혈 기도위험
+ [0] ko:기도를 보호하기 위해 옆으로 돌려드릴게요.
+     * We're turning you on your side to protect your airway.
+       We're turning you on your side to block your airway.
+       We're turning you on your side to close your airway.
+       We're turning you on your side to hide your airway.
+     DK: ['숨을 편하게 쉬도록 침대를 올릴게요', '토할 수 있게 그릇을 대 드릴게요'] | decoy: on your back
+ [1] ko:기도를 깨끗하게 유지하도록 흡인 준비가 됐어요.
+     * Suction is ready to keep your airway clear.
+       Suction is loud to keep your airway clear.
+       Suction is broken to keep your airway clear.
+       Suction is empty to keep your airway clear.
+     DK: ['산소 마스크가 준비됐어요', '수액이 준비됐어요'] | decoy: for later
+ [2] ko:출혈을 조절하기 위해 특수한 튜브가 필요할 수도 있어요.
+     * We may need a special tube to control the bleeding.
+       We may need a special tube to hide the bleeding.
+       We may need a special tube to create the bleeding.
+       We may need a special tube to cause the bleeding.
+     DK: ['입으로 관을 넣어 영양을 드릴게요', '코로 관을 넣어 산소를 드릴게요'] | decoy: next week
+ [3] ko:아주 빠르게 많은 피를 게워내고 계세요.
+     * You're bringing up a lot of blood very quickly.
+       You're keeping up a lot of blood very quickly.
+       You're holding up a lot of blood very quickly.
+       You're drinking up a lot of blood very quickly.
+     DK: ['지금 토한 것을 담아 둘게요', '지금 토한 양을 재고 있어요'] | decoy: last night
+ [4] ko:숨쉬는 걸 돕기 위해 입안을 흡인할게요.
+     * We're going to suction your mouth to help you breathe.
+       We're going to suction your mouth to stop you breathe.
+       We're going to suction your mouth to force you breathe.
+       We're going to suction your mouth to teach you breathe.
+     DK: ['입안에 물을 조금 넣어 드릴게요', '입을 크게 벌려 보세요'] | decoy: from the side
+ [5] ko:이 튜브가 출혈 혈관을 눌러서 멈추게 할 거예요.
+     * This tube will press on the bleeding vessel to stop it.
+       This tube will drain on the bleeding vessel to stop it.
+       This tube will cut on the bleeding vessel to stop it.
+       This tube will burn on the bleeding vessel to stop it.
+     DK: ['이 관으로 영양을 넣을 거예요', '이 관으로 피를 빼낼 거예요'] | decoy: from above
+  SW 1 | Suction is ready, so we can keep it clear. / We're turning you on your side to protect your airway. / On top of that, we may need a special tube to control the bleeding. / That tube will press on the bleeding vessel to stop it.
+  SW 2 | We're turning you on your side to protect your airway. / On top of that, we may need a special tube to control the bleeding. / Suction is ready, so we can keep it clear. / That tube will press on the bleeding vessel to stop it.
+  SW 3 | We're turning you on your side to protect your airway. / Suction is ready, so we can keep it clear. / That tube will press on the bleeding vessel to stop it. / On top of that, we may need a special tube to control the bleeding.
+  CTX airway [True, True, True]
+      True He can't protect his airway — let's intubate. | 
+      True Intubated for airway protection in setting of massive hematemesis. | 
+      False You can't protect your airway, so we're intubating you. | We're putting in a breathing tube to keep your airway safe while you're bleeding.
+     why: intubate·airway protection은 팀의 말이에요. 환자에게는 '숨 쉬는 관을 넣어 기도를 지킨다'고 이유와 함께 말해요.
+## 17 응고병증 동반 출혈
+ [0] ko:알려진 출혈이나 응고 장애가 있으세요?
+     * Do you have a known bleeding or clotting disorder?
+       Do you have a known eating or clotting disorder?
+       Do you have a known breathing or clotting disorder?
+       Do you have a known sleeping or clotting disorder?
+     DK: ['가족 중에 출혈 질환이 있으세요?', '피가 잘 안 멎는 걸 느끼신 적 있나요?'] | decoy: at work
+ [1] ko:응고를 돕기 위해 혈소판과 혈장을 처방할게요.
+     * We're ordering platelets and plasma to help you clot.
+       We're ordering vitamins and plasma to help you clot.
+       We're ordering oxygen and plasma to help you clot.
+       We're ordering antibiotics and plasma to help you clot.
+     DK: ['혈소판과 혈장을 검사실로 보낼게요', '혈소판 수치를 내일 다시 볼게요'] | decoy: right now
+ [2] ko:지금 검사 수치에 대해 팀에 SBAR로 업데이트할게요.
+     * I'm giving the team an SBAR update on your labs now.
+       I'm giving the team an SBAR update on your x-rays now.
+       I'm giving the team an SBAR update on your meals now.
+       I'm giving the team an SBAR update on your visitors now.
+     DK: ['지금 검사실에 직접 전화할게요', '지금 환자분 가족께 보고할게요'] | decoy: last week
+ [3] ko:여전히 같은 부위에서 피가 나나요?
+     * Are you still bleeding from the same spot?
+       Are you never bleeding from the same spot?
+       Are you ever bleeding from the same spot?
+       Are you hardly bleeding from the same spot?
+     DK: ['다른 곳에서도 피가 나나요?', '피가 나는 곳을 눌러 보셨나요?'] | decoy: since lunch
+ [4] ko:지금 혈액이 제대로 응고되지 않고 있어요.
+     * Your blood isn't clotting the way it should right now.
+       Your blood isn't clotting the way it might right now.
+       Your blood isn't clotting the way it could right now.
+       Your blood isn't clotting the way it would right now.
+     DK: ['지금 혈액 검사 결과가 나왔어요', '지금 혈액이 부족해지고 있어요'] | decoy: for you
+ [5] ko:의사 선생님이 최대한 빨리 검사 수치를 알아야 해요.
+     * The doctor needs to know your labs as soon as possible.
+       The doctor needs to know your vitals as soon as possible.
+       The doctor needs to know your meds as soon as possible.
+       The doctor needs to know your x-rays as soon as possible.
+     DK: ['검사실에는 제가 직접 다녀올게요', '가족분께는 의사 선생님이 연락하실 거예요'] | decoy: tomorrow
+  SW 1 | Either way, are you still bleeding from the same spot? / Do you have a known bleeding or clotting disorder? / Your labs show your blood isn't clotting the way it should. / Because of that result, we're ordering platelets and plasma to help you clot.
+  SW 2 | Do you have a known bleeding or clotting disorder? / Your labs show your blood isn't clotting the way it should. / Either way, are you still bleeding from the same spot? / Because of that result, we're ordering platelets and plasma to help you clot.
+  SW 3 | Do you have a known bleeding or clotting disorder? / Either way, are you still bleeding from the same spot? / Because of that result, we're ordering platelets and plasma to help you clot. / Your labs show your blood isn't clotting the way it should.
+## 18 내시경 중 급속악화
+ [0] ko:활력징후가 떨어지고 있어서 시술을 잠시 멈출게요.
+     * Your vitals are dropping, so we're pausing the procedure.
+       Your vitals are dropping, so we're finishing the procedure.
+       Your vitals are dropping, so we're repeating the procedure.
+       Your vitals are dropping, so we're starting the procedure.
+     DK: ['활력징후를 보면서 마취를 조금 더 할게요', '활력징후를 의사 선생님께 직접 보여 드릴게요'] | decoy: slowly
+ [1] ko:수액을 드리고 추가 도움을 요청할게요.
+     * We're giving you fluids and calling for extra help.
+       We're giving you ice and calling for extra help.
+       We're giving you stitches and calling for extra help.
+       We're giving you bandages and calling for extra help.
+     DK: ['산소를 올리고 가족을 부를게요', '약을 바꾸고 침대를 낮출게요'] | decoy: in the hall
+ [2] ko:저와 함께 있어 주세요 — 바로 여기 있어요.
+     * Stay with me — we're right here with you.
+       Leave with me — we're right here with you.
+       Hide with me — we're right here with you.
+       Run with me — we're right here with you.
+     DK: ['심호흡을 해 보세요', '손을 이쪽으로 주세요'] | decoy: in the hall
+ [3] ko:산소 수치가 지금 빠르게 떨어지고 있어요.
+     * Your oxygen level is falling quickly right now.
+       Your oxygen level is jumping quickly right now.
+       Your oxygen level is rising quickly right now.
+       Your oxygen level is climbing quickly right now.
+     DK: ['산소 수치를 다시 재 볼게요', '산소 수치는 의사 선생님께 알릴게요'] | decoy: slowly
+ [4] ko:안전하게 지켜드리려고 시술을 멈출게요.
+     * We're stopping the procedure to keep you safe.
+       We're continuing the procedure to keep you safe.
+       We're extending the procedure to keep you safe.
+       We're starting the procedure to keep you safe.
+     DK: ['마취를 더 하려고 잠깐 기다려 주세요', '보호자분을 모셔 오려고 문을 열게요'] | decoy: for good
+ [5] ko:지금 더 많은 도움이 병실로 오고 있어요.
+     * More help is coming into the room right now.
+       More help is leaving into the room right now.
+       More help is staying into the room right now.
+       More help is hiding into the room right now.
+     DK: ['보호자분이 방으로 들어오고 있어요', '마취과 선생님께 전화하고 있어요'] | decoy: from home
+  SW 1 | To turn that around, we're giving you fluids and calling for extra help. / Your vitals are dropping, so we're pausing the procedure. / That help is coming into the room right now. / Keep your eyes on me as they come in, and tell me how you feel.
+  SW 2 | Your vitals are dropping, so we're pausing the procedure. / That help is coming into the room right now. / To turn that around, we're giving you fluids and calling for extra help. / Keep your eyes on me as they come in, and tell me how you feel.
+  SW 3 | Your vitals are dropping, so we're pausing the procedure. / To turn that around, we're giving you fluids and calling for extra help. / Keep your eyes on me as they come in, and tell me how you feel. / That help is coming into the room right now.
+## 19 하부출혈 지속 색전술 이송
+ [0] ko:출혈이 멈추지 않아서 전문의에게 보내드릴게요.
+     * The bleeding hasn't stopped, so we're sending you to a specialist.
+       The bleeding hasn't started, so we're sending you to a specialist.
+       The bleeding hasn't returned, so we're sending you to a specialist.
+       The bleeding hasn't begun, so we're sending you to a specialist.
+     DK: ['약을 한 번 더 드려 볼게요, 지켜보세요', '가족분께 연락해 상황을 알려 드릴게요'] | decoy: to the lab
+ [1] ko:작은 카테터를 통해 출혈 혈관을 막을 거예요.
+     * They'll block the bleeding vessel through a small catheter.
+       They'll open the bleeding vessel through a small catheter.
+       They'll widen the bleeding vessel through a small catheter.
+       They'll stretch the bleeding vessel through a small catheter.
+     DK: ['큰 수술로 혈관을 꿰맬 거예요', '내시경으로 출혈 부위를 태울 거예요'] | decoy: from outside
+ [2] ko:다음 팀에게 모든 정보를 인계할게요.
+     * I'll hand off all your information to the next team.
+       I'll hand off all your information to the old team.
+       I'll hand off all your information to the previous team.
+       I'll hand off all your information to the same team.
+     DK: ['환자분 짐은 병실에 두고 갈게요', '환자분 정보는 가족분께 먼저 드릴게요'] | decoy: by phone
+ [3] ko:이 시술로 출혈 혈관을 찾아 멈출 거예요.
+     * This procedure will find and stop the bleeding vessel.
+       This procedure will create and stop the bleeding vessel.
+       This procedure will protect and stop the bleeding vessel.
+       This procedure will hide and stop the bleeding vessel.
+     DK: ['배 속 염증을 가라앉히는 약을 쓸 거예요', '시술 뒤에는 한동안 누워 계셔야 해요'] | decoy: in the room
+ [4] ko:이 시술을 위해 다른 병실로 옮겨질 거예요.
+     * You'll be moved to a different room for this procedure.
+       You'll be moved to a sunny room for this procedure.
+       You'll be moved to a cozy room for this procedure.
+       You'll be moved to a tiny room for this procedure.
+     DK: ['이 시술에는 금식이 필요해요', '이 시술은 마취과 선생님이 도와요'] | decoy: by yourself
+ [5] ko:다음 팀이 전체 병력과 현재 상태를 알게 될 거예요.
+     * The next team will know your full history and current condition.
+       The next team will lose your full history and current condition.
+       The next team will forget your full history and current condition.
+       The next team will hide your full history and current condition.
+     DK: ['가족분께는 담당 간호사가 연락할 거예요', '새 처방은 그 팀이 받아 올 거예요'] | decoy: by phone
+  SW 1 | They'll block the bleeding vessel through a small catheter. / The bleeding hasn't stopped, so we're sending you to a specialist. / You'll be moved to a different room for that procedure. / In that room, that team will already know your full history and current condition.
+  SW 2 | The bleeding hasn't stopped, so we're sending you to a specialist. / You'll be moved to a different room for that procedure. / They'll block the bleeding vessel through a small catheter. / In that room, that team will already know your full history and current condition.
+  SW 3 | The bleeding hasn't stopped, so we're sending you to a specialist. / They'll block the bleeding vessel through a small catheter. / In that room, that team will already know your full history and current condition. / You'll be moved to a different room for that procedure.
+  CTX vessel [True, True, True]
+      True Ongoing lower GI bleed, CTA positive — IR will embolize the bleeding vessel. | 
+      True Pt transferred to IR for embolization of bleeding mesenteric vessel. | 
+      False You're going to IR for embolization of the bleeding vessel. | A specialist will block the bleeding vessel through a small tube.
+     why: embolization(색전술)·IR은 의료진의 말이에요. 환자에게는 가는 관으로 피 나는 혈관을 막는다고 풀어 말해요.
+## 20 재출혈 급변 야간 SBAR
+ [0] ko:출혈이 오늘 밤 아까와 비교해서 어떤가요?
+     * How does the bleeding compare to earlier tonight?
+       How does the pain compare to earlier tonight?
+       How does the nausea compare to earlier tonight?
+       How does the dizziness compare to earlier tonight?
+     DK: ['처음 피가 난 게 언제였나요?', '낮에는 피가 얼마나 있었나요?'] | decoy: last year
+ [1] ko:활력징후가 변해서 의사 선생님을 부를게요.
+     * Your vital signs have changed, so I'm calling the doctor.
+       Your vital signs have changed, so I'm calling the chaplain.
+       Your vital signs have changed, so I'm calling the pharmacist.
+       Your vital signs have changed, so I'm calling the manager.
+     DK: ['활력징후를 방금 다시 쟀어요', '활력징후를 차트에 적어 둘게요'] | decoy: from home
+ [2] ko:상황, 배경, 활력징후를 명확하게 보고할게요.
+     * I'll report your situation, background, and vitals clearly.
+       I'll report your situation, background, and vitals badly.
+       I'll report your situation, background, and vitals quietly.
+       I'll report your situation, background, and vitals slowly.
+     DK: ['환자분 상황을 가족께 먼저 알릴게요', '환자분 병력은 나중에 말씀드릴게요'] | decoy: tonight
+ [3] ko:피가 전보다 더 어두운가요, 아니면 더 밝은가요?
+     * Is the blood darker or lighter than before?
+       Is the urine darker or lighter than before?
+       Is the vomit darker or lighter than before?
+       Is the stool darker or lighter than before?
+     DK: ['피가 아까보다 더 많은가요?', '피가 덩어리로 나오나요?'] | decoy: in the toilet
+ [4] ko:오늘 밤 활력징후를 자세히 지켜보고 있어요.
+     * I'm watching your vitals closely tonight.
+       I'm watching your vitals rarely tonight.
+       I'm watching your vitals barely tonight.
+       I'm watching your vitals vaguely tonight.
+     DK: ['오늘 밤 소변량을 같이 재 볼게요', '오늘 밤 침대 알람을 켜 둘게요'] | decoy: at home
+ [5] ko:의사 선생님이 이 변화에 대해 바로 들어야 해요.
+     * The doctor needs to hear about this change right away.
+       The visitor needs to hear about this change right away.
+       The family needs to hear about this change right away.
+       The chaplain needs to hear about this change right away.
+     DK: ['가족분께도 이 변화를 곧 전해 드릴게요', '차트에는 이 변화를 시간과 함께 적어 둘게요'] | decoy: next week
+  SW 1 | Help me report it: how does the bleeding compare to earlier tonight? / Your vital signs have changed, so I'm calling the doctor. / Is that blood darker or lighter than it was then? / I'll report all of that clearly, because the doctor needs to hear it right away.
+  SW 2 | Your vital signs have changed, so I'm calling the doctor. / Is that blood darker or lighter than it was then? / Help me report it: how does the bleeding compare to earlier tonight? / I'll report all of that clearly, because the doctor needs to hear it right away.
+  SW 3 | Your vital signs have changed, so I'm calling the doctor. / Help me report it: how does the bleeding compare to earlier tonight? / I'll report all of that clearly, because the doctor needs to hear it right away. / Is that blood darker or lighter than it was then?
+FLAGS
+  ('dk', 2, 2, '아스피린을 오늘 드셨나요?')
+  ('dk', 4, 1, '바늘을 넣는 동안 움직이지 마세요')
+  ('dk', 8, 3, '와파린 말고 다른 항응고제로 바꿨나요?')
+  ('dk', 11, 1, '침대에서 나오시기 전에 신발을 신으세요')
+  ('dk', 11, 1, '침대에서 나오시면 제가 옆에서 부축할게요')
+  ('dk', 11, 4, '다시 쓰러지지 않게 수액을 더 드릴게요')
+  ('dk', 17, 0, '피가 잘 안 멎는 걸 느끼신 적 있나요?')
+  ('article', 17, 2, "I'm giving the team an SBAR update on your labs now.")
+  ('article', 17, 2, "I'm giving the team an SBAR update on your x-rays now.")
+  ('article', 17, 2, "I'm giving the team an SBAR update on your meals now.")
+  ('article', 17, 2, "I'm giving the team an SBAR update on your visitors now.")
+  ('dk', 17, 4, '지금 혈액이 부족해지고 있어요')
+  ('dk', 19, 3, '시술 뒤에는 한동안 누워 계셔야 해요')
+dup option sets []
