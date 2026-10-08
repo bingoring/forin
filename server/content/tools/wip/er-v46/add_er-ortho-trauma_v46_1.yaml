@@ -2,9 +2,9 @@
   s:
   - {t: "진찰 안내", i: magnify, w: "look at and gently check로 보는 것과 만지는 것을 나눠 말하면, 아픈 팔에 손이 닿는 순간을 환자가 미리 알아요. gently는 만지는 방식을 먼저 약속하는 말이에요.", d: "after the x-ray", k: ["손목 맥박부터 짚어 볼게요", "팔에 부목을 대 드릴게요"], a: "gently", o: ["roughly", "hastily", "suddenly"]}
   - {t: "상처 확인", i: bandage, w: "any open cut or just …로 두 갈래를 주면 환자가 보이는 대로 고를 수 있어요. 피부가 열려 있는지는 감염 위험과 치료 방향을 가르는 첫 구분이에요.", d: "at the elbow", k: ["어디에 부딪히셨는지 말씀해 주세요", "붓기가 언제부터 시작됐나요?"], a: "open", o: ["closed", "sealed", "healed"]}
-  - {t: "압통 확인", i: pushpin, w: "when I touch로 만지는 순간을 짚어 주면 환자가 가만히 있다가 아픈 곳에서 바로 알릴 수 있어요. tender는 누르거나 만질 때 아픈 것을 가리켜요.", d: "after you stand", k: ["팔을 한번 들어 보세요", "통증이 몇 점인가요?"], a: "tender", o: ["swollen", "itchy", "stiff"]}
+  - {t: "압통 확인", i: pushpin, w: "when I touch로 만지는 순간을 짚어 주면 환자가 가만히 있다가 아픈 곳에서 바로 알릴 수 있어요. tender는 누르거나 만질 때 아픈 것을 가리켜요.", d: "after you stand", k: ["팔을 한번 들어 보세요", "통증이 몇 점인가요?"], a: "tender", o: ["sticky", "itchy", "stiff"]}
   - {t: "위치 짚기", i: pushpin, w: "show me exactly로 말로 설명하기 힘든 통증 위치를 손가락으로 답하게 해요. Can you …?는 지시보다 부드러운 부탁이라 아픈 환자도 거부감이 적어요.", d: "with your good hand", k: ["손가락을 움직여 보시겠어요?", "언제부터 아팠는지 말씀해 주세요"], a: "hurts", o: ["itches", "bleeds", "swells"]}
-  - {t: "변형 설명", i: magnify, w: "compared to the other side로 비교 기준을 말해 주면 변형이 막연한 겁이 아니라 반대쪽과 다르다는 관찰로 들려요. a little로 수위를 낮춰 환자가 놀라지 않게 해요.", d: "since this morning", k: ["반대쪽 팔도 볼게요", "팔을 움직이지 마세요"], a: "deformed", o: ["paler", "darker", "warmer"]}
+  - {t: "변형 설명", i: magnify, w: "compared to the other side로 비교 기준을 말해 주면 변형이 막연한 겁이 아니라 반대쪽과 다르다는 관찰로 들려요. a little로 수위를 낮춰 환자가 놀라지 않게 해요.", d: "since this morning", k: ["반대쪽 팔도 볼게요", "팔을 움직이지 마세요"], a: "deformed", o: ["healed", "rested", "cleaned"]}
   order:
     tag: "대화 흐름"
     icon: compass
@@ -19,15 +19,15 @@
 - title: 신경혈관(5P) 확인
   s:
   - {t: "감각 확인", i: me, w: "feel me touching처럼 환자가 느끼는 것을 주어로 물어서, 눈을 감고 있어도 대답할 수 있어요. 감각이 있는지는 신경이 손상됐는지 보는 확인이에요.", d: "on your shoulder", k: ["손가락 색깔이 어떤가요?", "손가락을 꼼지락거려 보세요"], a: "feel", o: ["see", "hear", "imagine"]}
-  - {t: "운동 확인", i: me, w: "for me는 부탁하는 말투고 if you can은 아프면 무리하지 않아도 된다는 여지를 줘요. 손가락과 발가락이 움직이는지는 신경과 근육이 살아 있는지 보는 확인이에요.", d: "one at a time", k: ["제 손을 힘껏 잡아 보세요", "손가락이 저린가요?"], a: "wiggle", o: ["wave", "tap", "fold"]}
+  - {t: "운동 확인", i: me, w: "for me는 부탁하는 말투고 if you can은 아프면 무리하지 않아도 된다는 여지를 줘요. 손가락과 발가락이 움직이는지는 신경과 근육이 살아 있는지 보는 확인이에요.", d: "one at a time", k: ["제 손을 힘껏 잡아 보세요", "손가락이 저린가요?"], a: "Wiggle", o: ["Wave", "Tap", "Fold"]}
   - {t: "맥박 확인", i: stetho, w: "below your injury로 어디를 짚는지 말해 줘요. 손상 아래쪽 맥박은 혈류가 이어지는지 보는 기본 확인이라, 이유 없이 손목을 잡는 것처럼 느끼지 않게 해요.", d: "above your shoulder", k: ["발가락 색깔을 보고 있어요", "손목을 움직이지 마세요"], a: "pulse", o: ["pressure", "temperature", "size"]}
   - {t: "색 확인", i: magnify, w: "from the other side로 반대쪽을 기준 삼게 해서, 환자가 다르다는 것을 스스로 판단할 수 있어요. 창백하거나 푸르스름한 색은 혈류가 줄었다는 단서예요.", d: "since this morning", k: ["손가락을 꼼지락거려 보세요", "어디가 가장 아픈가요?"], a: "color", o: ["texture", "temperature", "thickness"]}
-  - {t: "근력 확인", i: me, w: "as hard as you can는 최대한이라는 기준을 줘서 양손의 힘을 같은 조건에서 비교할 수 있어요. on both hands로 좌우를 모두 시키는 것도 비교를 위해서예요.", d: "for a long time", k: ["손끝이 차가운지 만져 볼게요", "숨을 깊게 쉬어 보세요"], a: "squeeze", o: ["release", "drop", "tap"]}
+  - {t: "근력 확인", i: me, w: "as hard as you can는 최대한이라는 기준을 줘서 양손의 힘을 같은 조건에서 비교할 수 있어요. on both hands로 좌우를 모두 시키는 것도 비교를 위해서예요.", d: "for a long time", k: ["손끝이 차가운지 만져 볼게요", "숨을 깊게 쉬어 보세요"], a: "Squeeze", o: ["Release", "Drop", "Tap"]}
   order:
     tag: "대화 흐름"
     icon: compass
     ko: "5P 확인 4문장 순서"
-    why: "무엇을 확인할지 먼저 알리고, 만지는 감각을 묻고, 'them'으로 이어서 손가락을 움직이게 한 뒤, 마지막에 'all of that'으로 반대쪽과 비교한다고 닫아요. 'them'·'all of that'이 앞 줄을 가리켜 순서가 하나예요."
+    why: "무엇을 확인할지 먼저 알리고, 만지는 감각을 묻고, 'them'으로 이어서 손가락을 움직이게 한 뒤, 마지막에 'all of that'으로 반대쪽과 비교한다고 닫아요. 'them'·'all that'이 앞 줄을 가리켜 순서가 하나예요."
     lines:
     - {en: "I'm going to check a few things in your hand, starting with the pulse.", icon: stetho, ko: "맥박부터 손의 몇 가지를 확인할게요", note: "안내"}
     - {en: "Tell me if you feel my touch on your fingers.", icon: me, ko: "손가락에 제 손길이 느껴지면 말씀해 주세요", note: "감각"}
@@ -37,7 +37,7 @@
 - title: 부목 고정 설명
   s:
   - {t: "이유 설명", i: bandage, w: "so it can heal로 부목의 이유를 먼저 말해 주면 움직이지 말라는 지시가 납득돼요. 뼈가 움직이지 않아야 제자리에서 붙는다는 설명이라 환자 협조를 이끌어요.", d: "while you walk", k: ["부목 위에 얼음을 올릴게요", "다리를 높이 올려 주세요"], a: "still", o: ["loose", "dry", "wide"]}
-  - {t: "활동 제한", i: lock, w: "move or put weight on으로 움직임과 체중 싣기를 나눠 말해, 앉아서 다리를 흔드는 것도 안 된다는 범위를 분명히 해요. Please로 금지 지시를 부드럽게 시작해요.", d: "until tomorrow", k: ["다리를 심장보다 높게 올려 두세요", "다리가 저리면 바로 말씀해 주세요"], a: "weight", o: ["ice", "water", "oil"]}
+  - {t: "활동 제한", i: lock, w: "move or put weight on으로 움직임과 체중 싣기를 나눠 말해, 앉아서 다리를 흔드는 것도 안 된다는 범위를 분명히 해요. Please로 금지 지시를 부드럽게 시작해요.", d: "until tomorrow", k: ["다리를 심장보다 높게 올려 두세요", "다리가 저리면 바로 말씀해 주세요"], a: "weight", o: ["tape", "water", "oil"]}
   - {t: "경고 증상", i: bell, w: "feels too tight or numb로 환자가 느끼는 증상을 그대로 말하게 해요. 부목이 너무 조이면 혈류가 줄 수 있어서 환자가 직접 알려야 빨리 풀 수 있어요.", d: "after you sleep", k: ["부목은 며칠 뒤에 풀 거예요", "통증이 0에서 10 중 몇 점이에요?"], a: "tight", o: ["heavy", "hot", "wet"]}
   - {t: "순환 확인", i: monitor, w: "every hour로 확인 주기를 약속해 두면 환자가 기다리며 불안해하지 않아요. 색과 온기는 부목 아래쪽으로 혈류가 가는지 보는 단서예요.", d: "with ice", k: ["발가락 움직임을 볼게요", "부목 아래 붕대를 갈아 드릴게요"], a: "color", o: ["weight", "length", "shape"]}
   - {t: "퇴원 교육", i: home, w: "at home을 끝에 붙여 병원 밖에서도 이어 가야 한다는 점을 분명히 해요. 다리를 올려 두면 붓기가 줄어 부목 안이 덜 조여요.", d: "on the stairs", k: ["내일 다시 와서 부목을 확인하세요", "샤워할 때는 부목을 덮으세요"], a: "raised", o: ["bent", "crossed", "hanging"]}
@@ -45,11 +45,11 @@
     tag: "대화 흐름"
     icon: compass
     ko: "부목 설명 4문장 순서"
-    why: "부목을 댄다고 알리고, 'It'으로 이유와 체중 제한을 말한 뒤, 'Even when you're careful'로 지켜도 생길 수 있는 경고 증상을 알리고, 마지막에 'Either way'로 매시간 확인을 약속해요. 'It'·'Even when you're careful'·'Either way'가 앞 줄을 가리켜 순서가 하나예요."
+    why: "부목을 댄다고 알리고, 'It'으로 이유와 체중 제한을 말한 뒤, 'Even when careful'로 지켜도 생길 수 있는 경고 증상을 알리고, 마지막에 'Either way'로 매시간 확인을 약속해요. 'It'·'Even when you're careful'·'Either way'가 앞 줄을 가리켜 순서가 하나예요."
     lines:
     - {en: "I'm going to put a splint on your leg now.", icon: bandage, ko: "지금 다리에 부목을 댈게요", note: "안내"}
     - {en: "It keeps the bone still, so please don't put weight on it.", icon: shield, ko: "뼈를 가만히 잡아 주니 체중을 싣지 마세요", note: "이유"}
-    - {en: "Even when you're careful, tell me if it feels too tight or your toes feel numb.", icon: bell, ko: "조심해도 너무 조이거나 발가락이 저리면 말씀해 주세요", note: "경고"}
+    - {en: "Even when careful, tell me if it feels too tight or your toes feel numb.", icon: bell, ko: "조심해도 너무 조이거나 발가락이 저리면 말씀해 주세요", note: "경고"}
     - {en: "Either way, I'll check your toes every hour.", icon: monitor, ko: "어느 쪽이든 한 시간마다 발가락을 확인할게요", note: "확인"}
   sw: {ko: "발가락이 찌릿하거나 저리면 바로 말씀해 주세요."}
 - title: 통증 척도·기전 청취
@@ -99,12 +99,12 @@
     tag: "대화 흐름"
     icon: compass
     ko: "개방골절 감염 예방 4문장 순서"
-    why: "뼈가 보여서 바로 덮는다고 알리고, 항생제를 주는 이유를 말한 뒤, 'For the same reason'으로 파상풍 접종을 묻고, 'With all of that done'으로 의사가 뼈를 본다고 이어요. 'For the same reason'·'all of that'이 앞 줄을 가리켜 순서가 하나예요."
+    why: "뼈가 보여서 바로 덮는다고 알리고, 항생제를 주는 이유를 말한 뒤, 'For the same reason'으로 파상풍 접종을 묻고, 'With all that done'으로 의사가 뼈를 본다고 이어요. 'For the same reason'·'all that'이 앞 줄을 가리켜 순서가 하나예요."
     lines:
     - {en: "We can see the bone, so I'm covering the wound with a sterile dressing now.", icon: bandage, ko: "뼈가 보여서 지금 멸균 드레싱으로 상처를 덮고 있어요", note: "덮기"}
     - {en: "You'll get antibiotics to help prevent infection.", icon: pill, ko: "감염을 막는 데 도움이 되도록 항생제를 맞으실 거예요", note: "예방"}
     - {en: "For the same reason, when was your last tetanus shot?", icon: calendar, ko: "같은 이유로 마지막 파상풍 주사는 언제 맞으셨나요?", note: "접종"}
-    - {en: "With all of that done, the doctor will look at the bone before we close the skin.", icon: scalpel, ko: "그게 다 되면 피부를 닫기 전에 의사가 뼈를 살펴볼 거예요", note: "진료"}
+    - {en: "With all that done, the doctor will check the bone before we close the skin.", icon: scalpel, ko: "그게 다 끝나면 피부를 닫기 전에 의사가 뼈를 확인할 거예요", note: "진료"}
   sw: null
 - title: 원위부 맥박 소실 골절
   s:

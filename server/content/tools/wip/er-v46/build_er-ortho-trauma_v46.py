@@ -28,9 +28,13 @@ for si, sit in enumerate(out['situations']):
     for nu in sit['nuance']:
         if nu['kind'] == 'context':
             c = CTX[sit['title']]
+            if isinstance(c, dict) and 'word' not in c: raise SystemExit('bad ctx')
             nu['word'] = c['word']; nu['ko'] = c['ko']
             for k, v in (c.get('sc') or {}).items():
-                nu['scenes'][k]['en'] = v
+                if isinstance(v, str): v = {'en': v}
+                nu['scenes'][k]['en'] = v['en']
+                if 'fix' in v: nu['scenes'][k]['fix'] = v['fix']
+            if c.get('why'): nu['why'] = c['why']
         if nu['kind'] == 'swap':
             assert a.get('sw'), sit['title']
             nu['ko'] = a['sw']['ko']
