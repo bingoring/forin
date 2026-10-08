@@ -252,7 +252,7 @@ test('masking tape casts its faint shadow', () => {
 test('mono type: tracking is the caller\'s, bold has none by default', () => {
   expect(nbText.mono(11).letterSpacing).toBe(1);
   expect(nbText.mono(11, nb.soft, 0).letterSpacing).toBe(0);
-  expect(nbText.monoBold(11)).toMatchObject({ fontFamily: 'IBMPlexMono-SemiBold', letterSpacing: 0, fontSize: 11 });
+  expect(nbText.monoBold(11)).toMatchObject({ fontFamily: 'IBMPlexMono-Bold', letterSpacing: 0, fontSize: 11 });
 });
 
 test('the index tab in front joins the page instead of closing its box', () => {
@@ -343,6 +343,9 @@ test('paper, stamps and checks carry the props the look depends on', () => {
   // `lineHeight: 1` on the bottom line.
   const bottomLine = stamp.root.findAll((n) => String(n.type) === 'Text' && n.props.children === '12일', { deep: true })[0];
   expect(readStyle(bottomLine).lineHeight).toBeCloseTo(54 * 0.32);
+  // The top line is Pretendard 800 (ui.jsx L88) — the ExtraBold cut is bundled.
+  const topLine = stamp.root.findAll((n) => String(n.type) === 'Text' && n.props.children === '연속출근', { deep: true })[0];
+  expect(readStyle(topLine).fontFamily).toBe('Pretendard-ExtraBold');
   // CSS lets a line wider than the ring spill past it (C' "PASSED" at 92 is wider than 92). A Text
   // as wide as the ring would end in "…" instead (T8), so each line gets a box twice the ring,
   // centred on it.

@@ -460,8 +460,7 @@ export function NbDoubleRing({ color, radius }: { color: string; radius: number 
 
 /** A rubber stamp: double ring, rotated, slightly faded — 통과 / 근무중 / 연속출근.
  *
- *  ui.jsx L85–92. The top line is Pretendard 800 in the prototype; the app bundles no
- *  ExtraBold cut, so it is the Bold (700) — see lesson-fidelity-v46 t1-t2-report. The bottom
+ *  ui.jsx L85–92. The top line is Pretendard 800 (ExtraBold, bundled 2026-10-09). The bottom
  *  line is `lineHeight: 1`. */
 export function NbStamp({ color = nb.red, rot = -8, size = 54, top, topIcon, bottom }: {
   color?: string;
@@ -482,7 +481,7 @@ export function NbStamp({ color = nb.red, rot = -8, size = 54, top, topIcon, bot
       alignItems: 'center', justifyContent: 'center', transform: deg(rot), opacity: 0.9, flexShrink: 0,
     }}>
       <NbDoubleRing color={color} radius={size / 2} />
-      {!!top && <Text numberOfLines={1} style={{ fontFamily: nbFonts.bodyBold, fontSize: size * 0.17, color, width: size * 2, textAlign: 'center' }}>{top}</Text>}
+      {!!top && <Text numberOfLines={1} style={{ fontFamily: nbFonts.bodyHeavy, fontSize: size * 0.17, color, width: size * 2, textAlign: 'center' }}>{top}</Text>}
       {!!topIcon && <NbIcon name={topIcon} size={size * 0.17 * 1.25} color={color} />}
       {!!bottom && <Text numberOfLines={1} style={{ fontFamily: nbFonts.hand, fontSize: size * 0.32, color, lineHeight: size * 0.32, width: size * 2, textAlign: 'center' }}>{bottom}</Text>}
     </View>

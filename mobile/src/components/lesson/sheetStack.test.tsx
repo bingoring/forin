@@ -165,7 +165,7 @@ test('a loose leaf: paper, edge, shadow, padding, perforation and header', () =>
   expect(flat(label)).toMatchObject({ fontFamily: 'Gaegu', fontSize: 12.5, color: nb.soft });
   const count = tree.root.findAll((n) => String(n.type) === 'Text' && n.props.children === '2 / 6', { deep: true })[0];
   expect(count.props.numberOfLines).toBe(1);
-  expect(flat(count)).toMatchObject({ fontFamily: 'IBMPlexMono-SemiBold', fontSize: 11, color: nb.soft, letterSpacing: 0, flexShrink: 0 });
+  expect(flat(count)).toMatchObject({ fontFamily: 'IBMPlexMono-Bold', fontSize: 11, color: nb.soft, letterSpacing: 0, flexShrink: 0 });
 });
 
 test('the amber circle: 58, 2pt amber ring on its own wash, tilted -4°, icon 32 — and the listen variant', () => {

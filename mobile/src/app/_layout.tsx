@@ -35,8 +35,9 @@ const FONTS = {
   Pretendard: require('../../assets/fonts/Pretendard-Regular.ttf'),
   'Pretendard-SemiBold': require('../../assets/fonts/Pretendard-SemiBold.ttf'),
   'Pretendard-Bold': require('../../assets/fonts/Pretendard-Bold.ttf'),
+  'Pretendard-ExtraBold': require('../../assets/fonts/Pretendard-ExtraBold.ttf'),
   IBMPlexMono: require('../../assets/fonts/IBMPlexMono-Regular.ttf'),
-  'IBMPlexMono-SemiBold': require('../../assets/fonts/IBMPlexMono-SemiBold.ttf'),
+  'IBMPlexMono-Bold': require('../../assets/fonts/IBMPlexMono-Bold.ttf'),
 };
 
 // Root navigator: onboarding stack + main tabs. Rehydrates the session from

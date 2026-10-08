@@ -153,6 +153,7 @@ export const nbFonts = {
   body: 'Pretendard',
   bodyMid: 'Pretendard-SemiBold',
   bodyBold: 'Pretendard-Bold',
+  bodyHeavy: 'Pretendard-ExtraBold', // 800 — the stamp's top line (ui.jsx L85–92)
   mono: 'IBMPlexMono',
-  monoBold: 'IBMPlexMono-SemiBold',
+  monoBold: 'IBMPlexMono-Bold', // the handoff's MONO is always 700
 } as const;
