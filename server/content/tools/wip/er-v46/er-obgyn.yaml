@@ -2983,7 +2983,7 @@ situations:
     decoy: ', or lighter'
     distractorsKo:
     - 지금 어지럽지는 않으세요?
-    - 마지막 생리가 언제였나요?
+    - 소변 검사를 해 볼게요
     blank:
       answer: spotting
       options:
@@ -3064,19 +3064,19 @@ situations:
     scenes:
     - who: 차트 기록
       icon: board
-      en: Gestational age 8 wks by LMP, vaginal bleeding since 0600.
+      en: GA 8 wks by LMP, vaginal bleeding since 0600.
       ok: true
     - who: 의사에게 보고
       icon: speech
-      en: Her gestational age is about eight weeks by her last period, bleeding since six this morning.
+      en: Her GA is about eight weeks by her last period, bleeding since six this morning.
       ok: true
     - who: 환자에게
       icon: me
-      en: What's your gestational age?
+      en: What's your GA?
       ok: false
       fix: How many weeks along are you?
-    why: gestational age(임신 주수)는 의료진의 말이에요. 환자에게는 'How many weeks along are you?'가 자연스럽고 바로 답이 나와요.
-    word: gestational age
+    why: GA(gestational age, 임신 주수)는 의료진끼리 쓰는 약어예요. 환자에게는 'How many weeks along are you?'가 자연스럽고 바로 답이 나와요.
+    word: GA
     ko: 임신 주수
   order:
     tag: 대화 흐름
@@ -3196,17 +3196,17 @@ situations:
     tag: 기억 유도
     icon: bulb
     why: well enough to…로 정확하지 않아도 되는 수준을 알려 줘서 환자가 부담 없이 답해요. rough estimate는 날짜를 정확히 모르는 환자에게 대략의 시기를 묻는 말이에요.
-    decoy: an exact date
+    decoy: a short summary
     distractorsKo:
     - 마지막 생리가 평소보다 일찍 시작했나요?
     - 생리 양은 평소와 비슷했나요?
     blank:
-      answer: estimate
+      answer: a rough estimate
       options:
-      - en: estimate
-      - en: summary
-      - en: list
-      - en: report
+      - en: a rough estimate
+      - en: an exact date
+      - en: a full history
+      - en: a written list
   - en: We ask this because it helps us figure out how far along you are.
     ko: 임신이 얼마나 진행되었는지 파악하는 데 도움이 되어서 여쭤보는 거예요.
     chunks:
@@ -3614,7 +3614,7 @@ situations:
     decoy: about a day
     distractorsKo:
     - 이 컵에 소변을 받아 오세요
-    - 결과는 의사 선생님이 설명해 주실 거예요
+    - 컵에 이름 라벨을 붙여 드릴게요
     blank:
       answer: urine
       options:
@@ -3637,7 +3637,7 @@ situations:
     tag: 다음 안내
     icon: speech
     why: If로 결과에 따라 이야기하겠다고 하되 together로 함께 정한다는 뜻을 보여 줘요. 결과 뒤의 계획은 환자의 상황과 바람에 따라 달라서 환자와 같이 이야기해요.
-    decoy: we'll decide for you
+    decoy: we'll check the chart
     distractorsKo:
     - 혈액 검사도 함께 해 볼게요
     - 검사 컵은 화장실에 있어요
@@ -3783,10 +3783,10 @@ situations:
     blank:
       answer: prenatal
       options:
-      - en: school
-      - en: military
+      - en: insurance
+      - en: vaccine
       - en: prenatal
-      - en: dental
+      - en: billing
   - en: How many times have you been pregnant, and how many babies have you delivered?
     ko: 임신은 몇 번 하셨고, 출산은 몇 번 하셨나요?
     chunks:
@@ -3857,7 +3857,7 @@ situations:
     why: 지금까지 물은 질문이 왜 필요한지 마지막에 한 줄로 설명하면 환자가 캐묻는다는 느낌을 덜 받아요. 과거 임신력은 지금 임신의 위험을 가늠하는 데 쓰여요.
     decoy: for the insurance
     distractorsKo:
-    - 지금 혈압을 다시 재 볼게요
+    - 체온을 한 번 재 볼게요
     - 궁금하신 점이 있으면 편하게 물어보세요
     blank:
       answer: baby
@@ -4026,17 +4026,17 @@ situations:
     tag: 초음파
     icon: monitor
     why: to see where로 초음파의 목적이 임신의 위치 확인임을 알려요. 임신 반응이 있는데 자궁 안에서 임신낭이 보이지 않으면 자궁외임신 가능성을 의심해요.
-    decoy: why it happened
+    decoy: a family visit
     distractorsKo:
     - 정맥 주사를 먼저 잡을게요
     - 혈액 검사 결과가 곧 나와요
     blank:
-      answer: where
+      answer: an ultrasound
       options:
-      - en: where
-      - en: why
-      - en: who
-      - en: when
+      - en: an ultrasound
+      - en: a blood test
+      - en: a urine test
+      - en: a nurse
   - en: This can become an emergency fast, so we're moving quickly.
     ko: 이건 빠르게 응급 상황이 될 수 있어서, 저희도 신속히 움직이고 있어요.
     chunks:
@@ -4126,7 +4126,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 자궁외임신 의심 4문장 순서
-    why: 위험 신호를 먼저 알리고, 그래서 바로 확인한다고 말하고, 그 확인을 위해 초음파가 필요하다고 설명한 뒤, 이 모든 과정 내내 악화를 알려 달라고 부탁해요. 'Because of that'·'that check'·'the ultrasound'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 위험 신호를 먼저 알리고, 그래서 바로 확인한다고 말하고, 그 확인을 위해 초음파가 필요하다고 설명한 뒤, 초음파를 하든 안 하든 악화를 바로 알려 달라고 부탁해요. 'Because of that'·'that check'·'Scan or no scan'이 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: One-sided pain with dizziness is something we take seriously.
       icon: siren
@@ -4140,9 +4140,9 @@ situations:
       icon: monitor
       ko: 그 확인을 위해 지금 초음파로 임신 위치를 봐야 해요
       note: 초음파
-    - en: Through the ultrasound, tell me immediately if the pain or dizziness gets worse.
+    - en: Scan or no scan, tell me immediately if the pain or dizziness gets worse.
       icon: bell
-      ko: 초음파 내내 통증이나 어지러움이 심해지면 바로 말씀해 주세요
+      ko: 초음파를 하든 안 하든, 통증이나 어지러움이 심해지면 바로 말씀해 주세요
       note: 알림
 - title: 유산 진행 중 소통
   sentences:
@@ -4357,7 +4357,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 유산 진행 중 소통 4문장 순서
-    why: 보이는 소견을 먼저 전하고, 그 일에 대한 안타까움을 표하고, 환자가 느끼는 감정이 무엇이든 탓이 아니라고 말한 뒤, 그 뒤에 배출량을 묻고 곁에 있겠다고 해요. 'about that'·'As painful as it is'·'Knowing that'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 보이는 소견을 먼저 전하고, 그 일이 안타깝다고 말하고, 그렇게 힘들어도 환자 탓이 아니라고 알린 뒤, 곁에 있으면서 배출량을 물어요. 'about that'·'As painful as it is'·'Knowing that'이 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Based on what we're seeing, I'm worried this may be a miscarriage.
       icon: stetho
@@ -4634,7 +4634,7 @@ situations:
     why: your choice와 can stop at any time으로 선택권과 중단권을 분명히 해요. 성폭력 피해자의 검사와 면담은 모든 단계에서 동의가 필요하고 환자가 거절하거나 멈출 수 있어요.
     decoy: on Monday
     distractorsKo:
-    - 이 방에는 저와 간호사만 있어요
+    - 방 문은 닫아 둘게요
     - 필요하시면 휴지를 드릴게요
     blank:
       answer: stop
@@ -4659,7 +4659,7 @@ situations:
     tag: 속도 존중
     icon: compass
     why: at your pace로 진행 속도를 환자가 정한다고 알리고 each step을 설명해 예고 없는 접촉을 피해요. 외상 후 환자에게는 예측할 수 있는 진행이 안정감을 줘요.
-    decoy: at my pace
+    decoy: at the bedside
     distractorsKo:
     - 지금 통증이 있는 곳을 알려 주세요
     - 커튼을 쳐서 사생활을 지켜 드릴게요
@@ -4715,12 +4715,12 @@ situations:
     - 피해자 지원 상담사를 연결해 드릴 수 있어요
     - 조용한 방으로 옮겨 드릴게요
     blank:
-      answer: police
+      answer: the police
       options:
-      - en: police
-      - en: landlord
-      - en: insurance
-      - en: pharmacy
+      - en: the police
+      - en: a lawyer
+      - en: your employer
+      - en: your school
   - en: I won't ask what happened unless you want to share it.
     ko: 말씀하고 싶지 않으시면, 무슨 일이 있었는지 묻지 않을게요.
     chunks:
@@ -4766,12 +4766,12 @@ situations:
     - 제가 곁에서 필요한 걸 도와드릴게요
     - 편하게 앉으실 수 있도록 의자를 가져올게요
     blank:
-      answer: fault
+      answer: your
       options:
-      - en: wish
-      - en: habit
-      - en: fault
-      - en: fear
+      - en: her
+      - en: their
+      - en: your
+      - en: my
   nuance:
   - kind: pair
     words:
@@ -5252,7 +5252,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 산과 병력 언어장벽 4문장 순서
-    why: 통역사를 부른다고 먼저 알리고, 그래서 가족에게 통역을 맡기지 않는다고 설명하고, 가족이 통역하지 않으니 환자에게 병력을 묻고, 각 질문마다 천천히 진행한다고 말해요. 'That's why'·'Since your family'·'each question'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 통역사를 부른다고 먼저 알리고, 그래서 가족에게 통역을 맡기지 않는다고 설명하고, 가족이 통역하지 않으니 환자에게 병력을 묻고, 각 질문마다 천천히 진행한다고 말해요. 'That's why'·'With your family'·'each question'이 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: I'm getting an interpreter so we can understand each other.
       icon: speech
@@ -5262,9 +5262,9 @@ situations:
       icon: shield
       ko: 그래서 가족에게 통역을 맡기지 않을게요, 내용이 빠지거나 헷갈리지 않게요
       note: 이유
-    - en: Since your family won't be interpreting, can you tell me about your pregnancies?
+    - en: With your family not interpreting, tell me about your pregnancies through the interpreter.
       icon: board
-      ko: 가족이 통역하지 않으니, 이전 임신에 대해 말씀해 주시겠어요?
+      ko: 가족이 통역하지 않으니, 통역사를 통해 이전 임신에 대해 말씀해 주세요
       note: 병력
     - en: For each question, take your time — we'll go slowly until we understand everything.
       icon: coffee
@@ -5321,9 +5321,9 @@ situations:
       answer: odor
       options:
       - en: odor
-      - en: taste
-      - en: sound
-      - en: weight
+      - en: amount
+      - en: texture
+      - en: thickness
   - en: We're going to monitor you and the baby closely.
     ko: 당신과 아기를 세심히 관찰할게요.
     chunks:
@@ -5452,19 +5452,19 @@ situations:
     scenes:
     - who: 차트 기록
       icon: board
-      en: Pt reports gush of clear fluid at 1400; rupture of membranes suspected.
+      en: Pt reports gush of clear fluid at 1400; ?ROM.
       ok: true
     - who: 의사에게 보고
       icon: speech
-      en: She felt a gush of clear fluid around two — possible rupture of membranes.
+      en: She felt a gush of clear fluid around two — possible ROM.
       ok: true
     - who: 환자에게
       icon: me
-      en: Did you have a rupture of membranes?
+      en: Did you have ROM?
       ok: false
       fix: Did you feel a gush of fluid, like your water broke?
     why: rupture of membranes(ROM, 양막파열)는 의료진의 말이에요. 환자는 'my water broke'라고 하니 그 말로 물어야 정확한 답이 나와요.
-    word: rupture of membranes
+    word: ROM
     ko: 양막 파열
   order:
     tag: 대화 흐름
@@ -5563,12 +5563,12 @@ situations:
     - 이 검사는 몇 분 안 걸려요
     - 문진표를 작성해 주세요
     blank:
-      answer: share
+      answer: confidential
       options:
-      - en: order
-      - en: pay
-      - en: share
-      - en: sign
+      - en: optional
+      - en: billable
+      - en: confidential
+      - en: temporary
   - en: Have you had any new sexual partners recently?
     ko: 최근에 새로운 성 파트너가 있었나요?
     chunks:
@@ -5687,7 +5687,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 부인과 감염·분비물 4문장 순서
-    why: 민감한 질문을 시작한다고 알리며 안심시키고, 그 말에 이어 비밀 보장과 함께 증상을 묻고, 그 증상이 시작된 뒤의 성병력을 묻고, 그 병력을 근거로 검사를 안내해요. 'private questions'·'those symptoms'·'that history'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 민감한 질문을 시작한다고 알리며 안심시키고, 그 말에 이어 비밀 보장과 함께 증상을 묻고, 그 증상이 생기기 전의 성병력을 묻고, 그 병력을 근거로 검사를 안내해요. 'private questions'·'those symptoms'·'that history'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: I'll ask some private questions — there's no need to feel embarrassed.
       icon: shield
@@ -5697,9 +5697,9 @@ situations:
       icon: lock
       ko: 말씀하신 건 비밀이 지켜지니, 분비물과 다른 증상을 알려 주세요
       note: 증상
-    - en: Since those symptoms started, have you had any new sexual partners?
+    - en: In the weeks before those symptoms, have you had any new sexual partners?
       icon: stetho
-      ko: 그 증상이 시작된 뒤 새로운 성 파트너가 있었나요?
+      ko: 그 증상이 생기기 몇 주 전에 새로운 성 파트너가 있었나요?
       note: 병력
     - en: With that history, we'll do a swab test to find out exactly what's causing this.
       icon: lab
@@ -5755,10 +5755,10 @@ situations:
     blank:
       answer: works
       options:
-      - en: breaks
-      - en: runs
+      - en: lasts
+      - en: starts
       - en: works
-      - en: hurts
+      - en: costs
   - en: This is a judgment-free conversation about what's right for you.
     ko: 이건 당신에게 맞는 것에 대한, 판단하지 않는 대화예요.
     chunks:
@@ -6150,18 +6150,18 @@ situations:
     goal: 1
     tag: 혈압 알림
     icon: monitor
-    why: 수치 대신 high라는 쉬운 말로 알리고 treating it now로 이미 대응 중이라고 말해 안심시켜요. 임신 중 혈압 상승은 자간전증으로 이어질 수 있어서 바로 치료해요.
-    decoy: we're charting it
+    why: 수치 대신 high라는 쉬운 말로 알리고 treating it now로 이미 치료 중이라고 말해 안심시켜요. 임신 중 혈압 상승은 자간전증으로 이어질 수 있어서 바로 치료해요.
+    decoy: we're moving you
     distractorsKo:
     - 두통이 있는지 말씀해 주세요
     - 소변 검사를 해 볼게요
     blank:
-      answer: treating
+      answer: high
       options:
-      - en: watching
-      - en: recording
-      - en: measuring
-      - en: treating
+      - en: low
+      - en: normal
+      - en: steady
+      - en: high
   - en: Tell me right away if you feel a seizure coming or more headache.
     ko: 경련이 올 것 같거나 두통이 심해지면 바로 말씀해 주세요.
     chunks:
@@ -6282,7 +6282,7 @@ situations:
     tag: 경련 예방
     icon: pill
     why: to help prevent로 약을 주는 목적이 이미 시작된 경련을 멈추는 것이 아니라 막는 것임을 알려요. 자간전증 환자에게는 경련 예방으로 황산마그네슘을 쓰는 것이 표준이에요.
-    decoy: to help you sleep
+    decoy: to help the doctor
     distractorsKo:
     - 약을 정맥으로 천천히 넣을 거예요
     - 약 때문에 얼굴이 화끈거릴 수 있어요
@@ -6332,7 +6332,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 자간전증·자간증 4문장 순서
-    why: 높은 혈압을 먼저 알리고, 그래서 경련 예방 약을 쓰고, 같은 이유로 방을 조용하게 유지하며, 이 시점부터 경련 징후를 바로 알려 달라고 해요. 'Because of that'·'the same reason'·'this calm room'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 높은 혈압을 먼저 알리고, 그래서 경련 예방 약을 쓰고, 같은 이유로 방을 조용하게 유지하며, 조용한 방에서도 두통이 심해지면 바로 알려 달라고 해요. 'Because of that'·'the same reason'·'Even in this quiet room'이 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Your blood pressure is high, and we're treating it now.
       icon: monitor
@@ -6346,9 +6346,9 @@ situations:
       icon: shield
       ko: 같은 이유로 방을 차분하고 조용하게 유지해요
       note: 환경
-    - en: In this calm room, tell me right away if you feel a seizure coming.
+    - en: Even in this quiet room, tell me right away if your headache gets worse.
       icon: bell
-      ko: 이 조용한 방에서 경련이 올 것 같으면 바로 말씀해 주세요
+      ko: 이 조용한 방에서도 두통이 심해지면 바로 말씀해 주세요
       note: 알림
 - title: ER 내 급속 분만
   sentences:
@@ -6426,10 +6426,10 @@ situations:
     blank:
       answer: your baby
       options:
-      - en: your parents
-      - en: your doctor
+      - en: your cord
+      - en: your wound
       - en: your baby
-      - en: your husband
+      - en: your placenta
   - en: The head is already showing, so I need you to stop pushing for a moment.
     ko: 머리가 이미 보이니, 잠시 힘주기를 멈춰 주세요.
     chunks:
@@ -6753,20 +6753,20 @@ situations:
     scenes:
     - who: 차트 기록
       icon: board
-      en: 'Pt crashing: BP 74/40, HR 136; 2 units PRBC via rapid infuser.'
+      en: 'Hypotensive: BP 74/40, HR 136; 2 units PRBC via rapid infuser.'
       ok: true
     - who: 의사에게 보고
       icon: speech
-      en: She's crashing — pressure's 74 over 40, tachy at 136, and we're hanging blood.
+      en: She's hypotensive — 74 over 40, tachy at 136, and we're hanging blood.
       ok: true
     - who: 환자에게
       icon: me
-      en: You're crashing.
+      en: You're hypotensive.
       ok: false
       fix: Your pressure is dropping and we're acting fast to stabilize you.
-    why: crashing은 의료진끼리 급박함을 나누는 말이에요. 환자에게 그대로 하면 공포만 커지니, 무슨 일인지와 무엇을 하고 있는지를 함께 말해요.
-    word: crashing
-    ko: (상태가) 급격히 나빠지는
+    why: hypotensive(저혈압)는 의료진끼리 쓰는 말이에요. 환자에게 그대로 하면 공포만 커지니, 무슨 일인지와 무엇을 하고 있는지를 함께 말해요.
+    word: hypotensive
+    ko: 저혈압의
   order:
     tag: 대화 흐름
     icon: compass
@@ -6816,10 +6816,10 @@ situations:
     blank:
       answer: massaging
       options:
-      - en: lifting
-      - en: covering
+      - en: measuring
+      - en: checking
       - en: massaging
-      - en: washing
+      - en: scanning
   - en: Stay with me — we're on top of this.
     ko: 정신 놓지 마세요 — 저희가 잘 대응하고 있어요.
     chunks:
@@ -7036,8 +7036,8 @@ situations:
       answer: heartbeat
       options:
       - en: position
-      - en: name
-      - en: chart
+      - en: movement
+      - en: head
       - en: heartbeat
   - en: This isn't your fault, and you didn't do anything wrong.
     ko: 이건 당신의 잘못이 아니고, 당신은 아무것도 잘못하지 않으셨어요.
@@ -7348,7 +7348,7 @@ situations:
     tag: 경고 증상
     icon: siren
     why: 증상 세 가지를 한 문장에 나열해 환자가 자신의 증상과 맞춰 볼 수 있게 해요. 유산 후 열·오한·심한 분비물은 자궁 안 감염의 경고 신호예요.
-    decoy: can mean a long wait
+    decoy: can mean a transfer
     distractorsKo:
     - 체온이 몇 도인지 재 볼게요
     - 출혈은 얼마나 있으셨나요?
@@ -7436,20 +7436,20 @@ situations:
     scenes:
     - who: 차트 기록
       icon: board
-      en: Post-miscarriage, T 38.9, HR 124, foul discharge; septic, sepsis bundle initiated.
+      en: Post-miscarriage, T 38.9, HR 124, foul discharge; sepsis bundle initiated.
       ok: true
     - who: 의사에게 보고
       icon: speech
-      en: She's febrile to 38.9 and tachy at 124 after a miscarriage — I'm worried she's septic.
+      en: She's febrile to 38.9 and tachy at 124 after a miscarriage — I'm worried about sepsis.
       ok: true
     - who: 환자에게
       icon: me
-      en: You're septic.
+      en: You have sepsis.
       ok: false
       fix: Your symptoms point to an infection we need to treat urgently.
-    why: septic은 의료진끼리 쓰는 짧은 말이에요. 환자에게는 감염이 의심되고 서둘러 치료해야 한다는 뜻을 풀어서 말해요.
-    word: septic
-    ko: 패혈 상태의
+    why: sepsis(패혈증)는 진단명이에요. 환자에게는 감염이 의심되고 서둘러 치료해야 한다는 뜻을 풀어서 말해요.
+    word: sepsis
+    ko: 패혈증
   order:
     tag: 대화 흐름
     icon: compass

@@ -27,8 +27,8 @@
 
 1. **20.4 빈칸 `quieter`·`slower`**: 중증 천식에서 숨소리가 조용해지는 것(silent chest)과 호흡이 느려지는 것은 호흡 부전 직전의 징후입니다. 삽관을 서두르는 신호입니다. 그래서 "If breathing gets any quieter, we'll help him with a breathing machine."은 임상적으로 **맞는 말**입니다. 이것을 오답으로 보이면 "조용해지면 나아진 것"이라는 위험한 오해를 가르칩니다(TASK 10 "조용한 흉부는 기다리지 않고 바로 부릅니다").
 2. **S0 order 2번 줄 `ko` "101.2도라 열이 있네요"**: 한국 학습자는 섭씨로 읽습니다. "화씨 101.2도(약 38.4℃)"로 고쳐야 합니다.
-3. **S10 10.5 "My job right now is to keep him safe, nothing more."와 why, S10 카드 4번 줄**: why가 "수사나 판단이 아니라는 점"만 말하고 신고 의무는 말하지 않습니다. 그래서 `nothing more`가 "신고는 하지 않는다"는 약속으로 읽힐 수 있습니다. 학대가 의심되면 간호사는 법에 따른 의무 신고자이고, S18이 바로 그 말("By law, I have to report…")을 가르칩니다. 두 상황이 서로 어긋납니다. 10.5는 keyPhrase가 아니므로 결정 11로 보고하고(J-1), why와 카드는 v46으로 고칩니다(F-1, G-1). 같은 문장의 빈칸 오답 `quiet`("keep him quiet")은 학대 장면에서 '아이 입을 막는다'로 들릴 수 있어 바꿉니다(B-5).
-4. **17.3 why** "부모가 막을 수 있었던 일이 아니라고 분명히 말해 줘요": 미국에서 원인 불명의 영아 사망(SUID)은 검시관(ME)이 맡는 사건입니다. 사망 현장 조사(SUIDI)와 부검이 끝나야 원인이 정해지고, 안전하지 않은 수면 환경이 관여한 경우도 있습니다. 간호사가 '막을 수 없었다'고 단정하라고 가르치면 안 됩니다. 탓하지 않는 말로 죄책감을 덜되, 원인은 단정하지 않는다고 고칩니다(F-2). 문장 자체는 결정 11로 보고합니다(J-2). 17.5 why에도 검시 사건이라 튜브·라인을 그대로 두고 병원 지침 안에서 안는다는 점을 넣습니다(F-3).
+3. **S10 10.5 "My job right now is to keep him safe, nothing more."와 why, S10 카드 4번 줄**: why가 "수사나 판단이 아니라는 점"만 말하고 신고 의무는 말하지 않습니다. 그래서 `nothing more`가 "신고는 하지 않는다"는 약속으로 읽힐 수 있습니다. 학대가 의심되면 간호사는 법에 따른 의무 신고자이고, S18이 바로 그 말("By law, I have to report…")을 가르칩니다. 두 상황이 서로 어긋납니다. 10.5는 keyPhrase가 아니므로 결정 11로 보고하고(결정 11 보고 1), why와 카드는 v46으로 고칩니다(F-1, G-1). 같은 문장의 빈칸 오답 `quiet`("keep him quiet")은 학대 장면에서 '아이 입을 막는다'로 들릴 수 있어 바꿉니다(B-5).
+4. **17.3 why** "부모가 막을 수 있었던 일이 아니라고 분명히 말해 줘요": 미국에서 원인 불명의 영아 사망(SUID)은 검시관(ME)이 맡는 사건입니다. 사망 현장 조사(SUIDI)와 부검이 끝나야 원인이 정해지고, 안전하지 않은 수면 환경이 관여한 경우도 있습니다. 간호사가 '막을 수 없었다'고 단정하라고 가르치면 안 됩니다. 탓하지 않는 말로 죄책감을 덜되, 원인은 단정하지 않는다고 고칩니다(F-2). 문장 자체는 결정 11로 보고합니다(결정 11 보고 2). 17.5 why에도 검시 사건이라 튜브·라인을 그대로 두고 병원 지침 안에서 안는다는 점을 넣습니다(F-3).
 5. **context `dose`**(저작자 정비): 차트 장면에서 약 이름(acetaminophen)을 지워 "Dose 15 mg/kg = 273 mg PO"가 됐습니다. 이건 차트 기록으로 성립하지 않습니다. XX "Dose is 15 mg/kg, so 273 mg per wt."는 base에서 물려받은 비문입니다(273 mg은 '체중당'이 아니라 총량). 게다가 부모에게 `dose`는 맞는 말이라, 어색함이 `dose`가 아니라 mg/kg·wt에 있습니다. 안은 H-1에 있습니다.
 6. **2.4 decoy `of course`**: `here` 자리에 넣으면 "There's no blame, of course, we just want her protected."가 됩니다. 자연스럽고 `ko`("탓하려는 게 아니라, 그저 아이를 보호하고 싶은 거예요")와도 맞아 정답이 둘입니다.
 7. **위험한 문장을 만드는 decoy**
@@ -54,9 +54,9 @@
    - `ingestion`: OK. `ingestion`은 부모가 쓰지 않는 임상어라 XX가 그 낱말 때문에 어색합니다. 의사 보고 "Coin ingestion around two o'clock — …"도 실제 말투입니다.
    - `intubate`: OK. 차트 `prep to intubate`는 `prep for intubation`보다 조금 덜 차트답지만 허용합니다.
    - 그대로 둔 `retractions`·`mottled`: OK. base가 이미 같은 임상어를 세 장면에 공유하는 모양이라(TASK 9 "그대로 두세요") 맞는 판단입니다.
-5. **유지한 `If` 줄 — S20 3번 "If breathing gets any harder even with that support, …"**: 받아들입니다. 기계 환기는 모든 환자에게 하는 일이 아니라 지지에도 나빠질 때만 하는 진짜 조건입니다. `even with that support`가 2번 줄을 받아 순서도 묶습니다(16단어라 G-9에서 줄입니다).
+5. **유지한 `If` 줄 — S20 3번 "If breathing gets any harder even with that support, …"**: 받아들입니다. 기계 환기는 모든 환자에게 하는 일이 아니라 지지에도 나빠질 때만 하는 진짜 조건입니다. `even with that support`가 2번 줄을 받아 순서도 묶습니다(16단어라 G-9에서 가리키는 말을 남기고 줄입니다).
 
-## 고칠 것 (v46 필드) — 모두 47건
+## 고칠 것 (v46 필드) — 모두 46건
 
 ### A. 위험한 그림·정답이 둘인 빈칸 (7건)
 
@@ -68,7 +68,7 @@
 | 19.3 빈칸 | `oxygen … through an IV` — 경로 혼동 그림 | `oxygen`을 `blood`로 |
 | 7.1 빈칸 | `cups`(small cups of fluid frequently)가 `ko` "조금씩 자주"에도 맞음. `bottles`도 비슷 | 오답을 `gulps`/`bags`/`bowls`로 |
 | 17.5 빈칸 | `carry`가 `ko` "안고 계셔도"와 겹침 | `carry`를 `move`로 |
-| 10.0 빈칸 | `bruise`/`burn`이 "다치신 경위"에 그대로 맞음 | 빈칸을 `understand`로 옮기고 오답 `prove`/`decide`/`report` |
+| 10.0 빈칸 | `bruise`/`burn`이 "다치신 경위"에 그대로 맞음 | 빈칸을 `understand`로 옮기고 오답 `prove`/`decide`/`guess` |
 
 ### B. 장면과 동떨어진 빈칸 오답 → 같은 분야의 틀린 말로 (12건)
 
@@ -77,10 +77,10 @@
 | 2.2 | ready/clear/closed | `early`/`extra`/`recent` (catch up 논리로 틀림) |
 | 5.0 | cold/hungry/angry | `cured`/`discharged`/`immune` |
 | 6.0 | quietly/happily/slowly | `easily`/`calmly`/`gently` |
-| 10.2 | hungry/asleep/cold | `discharged`/`admitted`/`sedated` |
+| 10.2 | hungry/asleep/cold | `discharged`/`admitted`/`warm` |
 | 10.5 | busy/hungry/quiet | `busy`/`awake`/`entertained` (`quiet`은 학대 장면에서 '입막음'으로 들림, 심각 3) |
 | 11.0 | awake/hungry/busy | `hungry`만 `alert`로 |
-| 12.5 | hungry/bored/tired | `lonely`/`bored`/`sick` |
+| 12.5 | hungry/bored/tired | `bored`/`busy`/`sleepy` (`lonely`·`sick`은 간호사가 실제로 할 말이라 피함) |
 | 13.5 | tired/cold/hungry | `bigger`/`stronger`/`heavier` (`cold`는 신생아에게 사실이라 빼기를 권함) |
 | 15.5 | time/money/space | `time`/`tests`/`beds` |
 | 17.1 | food/help/money | `help`/`blankets`/`tissues` |
@@ -153,7 +153,8 @@
    - S15 4번(18): `The team will want to know — when did this change start?`
    - S5 4번(18): `The most important of those: over five minutes, call 911 right away.`
    - S9 4번(18)은 G-6 안으로 줄어듭니다.
-   - 16~17단어인 S0 4번, S4 4번, S6 2번, S7 4번, S8 4번, S18 4번, S20 3번은 군말(`Thank you for telling me all that.`, `through all of that`, `even with that support`의 앞부분 등)을 덜어 15단어 안으로 맞춥니다. 가리키는 말은 남기세요.
+   - S20 3번(16): `If breathing gets harder even with that support, we'll use a breathing machine.` (가리키는 말 `even with that support`는 남김)
+   - 16~17단어인 S0 4번, S4 4번, S6 2번, S7 4번, S8 4번, S18 4번은 군말(`Thank you for telling me all that.`의 앞부분, `so`, `okay` 등)을 덜어 15단어 안으로 맞춥니다. 가리키는 말(`all that`, `all of that`, `the sips`, `Whatever the specialist asks`)은 남기세요.
 
 참고(고칠 것에 넣지 않음): S19는 3↔4가 약하게 바뀝니다. 바꾼다면 4번 줄을 `Between the IV and the checks, it's a lot — I'll walk you through it.`로 합니다. S1 3번 줄 "with a second nurse"는 독립 이중 확인(각자 따로)으로 읽히게 why에 한마디 덧붙이면 좋습니다.
 
@@ -186,4 +187,4 @@
 
 ## 종합
 
-고칠 것은 v46 필드 47건(A 7, B 12, C 1, D 6, E 3, F 5, G 9, H 3)이고, 결정 11 보고는 3건입니다. 먼저 고칠 것은 사실 오류·위험한 그림 7건입니다(20.4 `quieter`·`slower`, S0 카드 화씨 표기, S10 신고 의무, 17.3 단정, `dose` context, 2.4·19.0·15.4·14.0 decoy). 그다음 S10·S2·S13·S16·S18 카드의 순서를 못 박고 긴 줄을 줄이면 내보낼 수 있습니다. 소아 핵심(체중 기반 용량, 응급약 지연 없음, 청소년 비밀보장의 한계, S18 의무 신고)은 정확합니다. 지금 상태로는 내보내지 않는 것을 권합니다.
+고칠 것은 v46 필드 46건(A 7, B 12, C 1, D 6, E 3, F 5, G 9, H 3 — D 전반 1건은 개수에서 뺌)이고, 결정 11 보고는 3건입니다. 먼저 고칠 것은 사실 오류·위험한 그림 7건입니다(20.4 `quieter`·`slower`, S0 카드 화씨 표기, S10 신고 의무, 17.3 단정, `dose` context, 2.4·19.0·15.4·14.0 decoy). 그다음 S10·S2·S13·S16·S18 카드의 순서를 못 박고 긴 줄을 줄이면 내보낼 수 있습니다. 소아 핵심(체중 기반 용량, 응급약 지연 없음, 청소년 비밀보장의 한계, S18 의무 신고)은 정확합니다. 지금 상태로는 내보내지 않는 것을 권합니다.

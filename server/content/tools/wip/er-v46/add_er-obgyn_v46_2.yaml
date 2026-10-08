@@ -3,19 +3,19 @@
   - {t: "위험 신호", i: siren, w: "한쪽 통증과 어지러움 두 가지를 함께 짚어 둘이 같이 올 때가 왜 중요한지 알려 줘요. 임신 가능한 여성의 한쪽 하복부 통증과 어지러움은 자궁외임신 파열로 인한 출혈 신호일 수 있어요.", d: "we write down", k: ["지금 혈압과 맥박을 확인할게요", "마지막 생리가 언제였나요?"], a: "dizziness", o: ["headache", "nausea", "fever"]}
   - {t: "즉시 확인", i: magnify, w: "to rule out으로 무엇이 아닌지 확인하려는 목적을 말해 환자가 왜 서두르는지 이해해요. 자궁외임신은 파열되면 대출혈로 이어질 수 있어서 먼저 배제해야 해요.", d: "to write down", k: ["아기 심장 소리를 들어 볼게요", "혈액형을 확인해야 해요"], a: "tubal", o: ["twin", "molar", "full-term"]}
   - {t: "즉시 알림", i: bell, w: "immediately와 if절로 어떤 변화를 알려야 하는지 분명히 해요. 통증이나 어지러움이 심해지는 것은 내부 출혈이 늘고 있다는 신호일 수 있어서 놓치면 안 돼요.", d: "to the nurse", k: ["통증이 몇 점인지 말씀해 주세요", "어디가 가장 아픈지 짚어 주세요"], a: "Tell", o: ["Show", "Remind", "Promise"]}
-  - {t: "초음파", i: monitor, w: "to see where로 초음파의 목적이 임신의 위치 확인임을 알려요. 임신 반응이 있는데 자궁 안에서 임신낭이 보이지 않으면 자궁외임신 가능성을 의심해요.", d: "why it happened", k: ["정맥 주사를 먼저 잡을게요", "혈액 검사 결과가 곧 나와요"], a: "where", o: ["why", "who", "when"]}
+  - {t: "초음파", i: monitor, w: "to see where로 초음파의 목적이 임신의 위치 확인임을 알려요. 임신 반응이 있는데 자궁 안에서 임신낭이 보이지 않으면 자궁외임신 가능성을 의심해요.", d: "a family visit", k: ["정맥 주사를 먼저 잡을게요", "혈액 검사 결과가 곧 나와요"], a: "an ultrasound", o: ["a blood test", "a urine test", "a nurse"]}
   - {t: "긴박함 설명", i: siren, w: "so로 이유와 행동을 이어 환자가 서두르는 모습을 불안이 아니라 대응으로 이해하게 해요. 파열된 자궁외임신은 짧은 시간에 쇼크로 진행할 수 있어요.", d: "in the hall", k: ["가족분께 연락드릴까요?", "아기 심박을 확인해 볼게요"], a: "quickly", o: ["quietly", "gently", "carefully"]}
   - {t: "도움 요청", i: bell, w: "If절로 언제 부를지 기준을 주고 right away로 망설이지 말라고 해요. 갑작스러운 통증 악화는 파열을 시사할 수 있어서 환자가 스스로 판단해 기다리지 않게 해요.", d: "ask a friend", k: ["침대 난간은 올려 둘게요", "수액이 다 들어가면 알려 드릴게요"], a: "worse", o: ["better", "lighter", "calmer"]}
   order:
     tag: "대화 흐름"
     icon: compass
     ko: "자궁외임신 의심 4문장 순서"
-    why: "위험 신호를 먼저 알리고, 그래서 바로 확인한다고 말하고, 그 확인을 위해 초음파가 필요하다고 설명한 뒤, 이 모든 과정 내내 악화를 알려 달라고 부탁해요. 'Because of that'·'that check'·'the ultrasound'가 앞 줄을 가리켜 순서가 하나예요."
+    why: "위험 신호를 먼저 알리고, 그래서 바로 확인한다고 말하고, 그 확인을 위해 초음파가 필요하다고 설명한 뒤, 초음파를 하든 안 하든 악화를 바로 알려 달라고 부탁해요. 'Because of that'·'that check'·'Scan or no scan'이 앞 줄을 가리켜 순서가 하나예요."
     lines:
     - {en: "One-sided pain with dizziness is something we take seriously.", icon: siren, ko: "한쪽으로만 아프면서 어지러운 건 심각하게 받아들여요", note: "신호"}
     - {en: "Because of that, we're checking right away to rule out a tubal pregnancy.", icon: magnify, ko: "그래서 자궁외임신인지 바로 확인해 배제할게요", note: "확인"}
     - {en: "For that check, we need an ultrasound now to see where the pregnancy is.", icon: monitor, ko: "그 확인을 위해 지금 초음파로 임신 위치를 봐야 해요", note: "초음파"}
-    - {en: "Through the ultrasound, tell me immediately if the pain or dizziness gets worse.", icon: bell, ko: "초음파 내내 통증이나 어지러움이 심해지면 바로 말씀해 주세요", note: "알림"}
+    - {en: "Scan or no scan, tell me immediately if the pain or dizziness gets worse.", icon: bell, ko: "초음파를 하든 안 하든, 통증이나 어지러움이 심해지면 바로 말씀해 주세요", note: "알림"}
 - title: 유산 진행 중 소통
   sw: {ko: "지금 보이는 상황을 봤을 때, 유산이 진행되고 있는 것 같아요"}
   s:
@@ -30,7 +30,7 @@
     tag: "대화 흐름"
     icon: compass
     ko: "유산 진행 중 소통 4문장 순서"
-    why: "보이는 소견을 먼저 전하고, 그 일에 대한 안타까움을 표하고, 환자가 느끼는 감정이 무엇이든 탓이 아니라고 말한 뒤, 그 뒤에 배출량을 묻고 곁에 있겠다고 해요. 'about that'·'As painful as it is'·'Knowing that'이 앞 줄을 가리켜 순서가 하나예요."
+    why: "보이는 소견을 먼저 전하고, 그 일이 안타깝다고 말하고, 그렇게 힘들어도 환자 탓이 아니라고 알린 뒤, 곁에 있으면서 배출량을 물어요. 'about that'·'As painful as it is'·'Knowing that'이 앞 줄을 가리켜 순서가 하나예요."
     lines:
     - {en: "Based on what we're seeing, I'm worried this may be a miscarriage.", icon: stetho, ko: "지금 보이는 상황으로는 유산일 수 있어 걱정돼요", note: "소견"}
     - {en: "I'm so sorry about that — it's a painful thing to go through.", icon: faceWorried, ko: "그 일이 정말 안타까워요, 견디기 힘든 일이에요", note: "공감"}
@@ -58,12 +58,12 @@
   sw: {ko: "검사를 받고 증거를 채취할지는 당신이 고를 수 있어요"}
   s:
   - {t: "안전 확인", i: shield, w: "먼저 safe here로 안전을 확인하고 in control로 선택권이 환자에게 있다고 알려요. 성폭력 피해자 응대에서는 통제감을 되돌려 주는 것이 첫걸음이에요.", d: "in a hurry", k: ["지금 아프신 곳이 있나요?", "따뜻한 담요를 가져다 드릴게요"], a: "safe", o: ["welcome", "heard", "believed"]}
-  - {t: "선택권", i: shield, w: "your choice와 can stop at any time으로 선택권과 중단권을 분명히 해요. 성폭력 피해자의 검사와 면담은 모든 단계에서 동의가 필요하고 환자가 거절하거나 멈출 수 있어요.", d: "on Monday", k: ["이 방에는 저와 간호사만 있어요", "필요하시면 휴지를 드릴게요"], a: "stop", o: ["rest", "ask", "speak"]}
-  - {t: "속도 존중", i: compass, w: "at your pace로 진행 속도를 환자가 정한다고 알리고 each step을 설명해 예고 없는 접촉을 피해요. 외상 후 환자에게는 예측할 수 있는 진행이 안정감을 줘요.", d: "at my pace", k: ["지금 통증이 있는 곳을 알려 주세요", "커튼을 쳐서 사생활을 지켜 드릴게요"], a: "pace", o: ["schedule", "request", "direction"]}
+  - {t: "선택권", i: shield, w: "your choice와 can stop at any time으로 선택권과 중단권을 분명히 해요. 성폭력 피해자의 검사와 면담은 모든 단계에서 동의가 필요하고 환자가 거절하거나 멈출 수 있어요.", d: "on Monday", k: ["방 문은 닫아 둘게요", "필요하시면 휴지를 드릴게요"], a: "stop", o: ["rest", "ask", "speak"]}
+  - {t: "속도 존중", i: compass, w: "at your pace로 진행 속도를 환자가 정한다고 알리고 each step을 설명해 예고 없는 접촉을 피해요. 외상 후 환자에게는 예측할 수 있는 진행이 안정감을 줘요.", d: "at the bedside", k: ["지금 통증이 있는 곳을 알려 주세요", "커튼을 쳐서 사생활을 지켜 드릴게요"], a: "pace", o: ["schedule", "request", "direction"]}
   - {t: "선택 묻기", i: board, w: "Would you like…, or not?으로 하든 안 하든 똑같이 괜찮다는 열린 질문을 해요. 증거 채취는 환자의 동의가 있어야 하고, 하지 않기로 해도 진료는 받을 수 있어요.", d: "and sign a form", k: ["오늘 어떤 도움이 필요하신지 말씀해 주세요", "의사 선생님이 곧 오실 거예요"], a: "evidence", o: ["paperwork", "medicine", "receipts"]}
-  - {t: "신고 선택", i: shield, w: "or not right now를 붙여 지금 정하지 않아도 된다고 알려요. 신고는 환자의 결정이고, 신고하지 않아도 진료는 받을 수 있어요.", d: "to your family", k: ["피해자 지원 상담사를 연결해 드릴 수 있어요", "조용한 방으로 옮겨 드릴게요"], a: "police", o: ["landlord", "insurance", "pharmacy"]}
+  - {t: "신고 선택", i: shield, w: "or not right now를 붙여 지금 정하지 않아도 된다고 알려요. 신고는 환자의 결정이고, 신고하지 않아도 진료는 받을 수 있어요.", d: "to your family", k: ["피해자 지원 상담사를 연결해 드릴 수 있어요", "조용한 방으로 옮겨 드릴게요"], a: "the police", o: ["a lawyer", "your employer", "your school"]}
   - {t: "강요 안 함", i: shield, w: "unless로 환자가 원할 때만 이야기하도록 예외를 열어 둬요. 피해자에게 사건을 되풀이해 말하게 하지 않는 것이 외상 중심 응대의 원칙이에요.", d: "unless you forget", k: ["안전한 곳에서 지낼 수 있는지 먼저 확인할게요", "지금 가장 필요한 게 무엇인지 말씀해 주세요"], a: "share", o: ["forget", "repeat", "write"]}
-  - {t: "비난 아님", i: shield, w: "fault라는 말을 직접 꺼내 환자가 속으로 묻는 질문에 먼저 답해요. 피해자는 자책하는 경우가 많아서 짧고 분명하게 한 번 말해 주는 것이 도움이 돼요.", d: "the staff's", k: ["제가 곁에서 필요한 걸 도와드릴게요", "편하게 앉으실 수 있도록 의자를 가져올게요"], a: "fault", o: ["fear", "wish", "habit"]}
+  - {t: "비난 아님", i: shield, w: "fault라는 말을 직접 꺼내 환자가 속으로 묻는 질문에 먼저 답해요. 피해자는 자책하는 경우가 많아서 짧고 분명하게 한 번 말해 주는 것이 도움이 돼요.", d: "the staff's", k: ["제가 곁에서 필요한 걸 도와드릴게요", "편하게 앉으실 수 있도록 의자를 가져올게요"], a: "your", o: ["my", "her", "their"]}
   order:
     tag: "대화 흐름"
     icon: compass

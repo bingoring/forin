@@ -11,16 +11,16 @@
     tag: "대화 흐름"
     icon: compass
     ko: "산과 병력 언어장벽 4문장 순서"
-    why: "통역사를 부른다고 먼저 알리고, 그래서 가족에게 통역을 맡기지 않는다고 설명하고, 가족이 통역하지 않으니 환자에게 병력을 묻고, 각 질문마다 천천히 진행한다고 말해요. 'That's why'·'Since your family'·'each question'이 앞 줄을 가리켜 순서가 하나예요."
+    why: "통역사를 부른다고 먼저 알리고, 그래서 가족에게 통역을 맡기지 않는다고 설명하고, 가족이 통역하지 않으니 환자에게 병력을 묻고, 각 질문마다 천천히 진행한다고 말해요. 'That's why'·'With your family'·'each question'이 앞 줄을 가리켜 순서가 하나예요."
     lines:
     - {en: "I'm getting an interpreter so we can understand each other.", icon: speech, ko: "서로 이해할 수 있도록 통역사를 부를게요", note: "통역"}
     - {en: "That's why I won't ask your family to interpret, so nothing gets lost or confused.", icon: shield, ko: "그래서 가족에게 통역을 맡기지 않을게요, 내용이 빠지거나 헷갈리지 않게요", note: "이유"}
-    - {en: "Since your family won't be interpreting, can you tell me about your pregnancies?", icon: board, ko: "가족이 통역하지 않으니, 이전 임신에 대해 말씀해 주시겠어요?", note: "병력"}
+    - {en: "With your family not interpreting, tell me about your pregnancies through the interpreter.", icon: board, ko: "가족이 통역하지 않으니, 통역사를 통해 이전 임신에 대해 말씀해 주세요", note: "병력"}
     - {en: "For each question, take your time — we'll go slowly until we understand everything.", icon: coffee, ko: "질문마다 천천히 하세요, 다 이해할 때까지 천천히 갈게요", note: "여유"}
 - title: 조기 진통 징후
   s:
   - {t: "수축 간격", i: monitor, w: "How far apart로 간격을 물으면 환자가 시계를 보며 몇 분마다인지 답할 수 있어요. 수축 간격은 진통이 진행 중인지 가늠하는 핵심 정보예요.", d: "how strong", k: ["양수가 샌 것 같으신가요?", "허리 통증도 있나요?"], a: "tightenings", o: ["kicks", "headaches", "hiccups"]}
-  - {t: "양수 상태", i: lab, w: "color or odor처럼 구체적인 보기를 주면 환자가 본 것을 말로 옮기기 쉬워요. 양수의 색과 냄새는 감염이나 태변이 섞였는지 가늠하는 단서예요.", d: "any amount", k: ["양수가 터진 시각이 언제인가요?", "배가 얼마나 자주 뭉치나요?"], a: "odor", o: ["taste", "sound", "weight"]}
+  - {t: "양수 상태", i: lab, w: "color or odor처럼 구체적인 보기를 주면 환자가 본 것을 말로 옮기기 쉬워요. 양수의 색과 냄새는 감염이나 태변이 섞였는지 가늠하는 단서예요.", d: "any amount", k: ["양수가 터진 시각이 언제인가요?", "배가 얼마나 자주 뭉치나요?"], a: "odor", o: ["amount", "texture", "thickness"]}
   - {t: "관찰 안내", i: monitor, w: "monitor you and the baby로 산모와 태아를 함께 지켜본다고 알려요. 조기 진통이 의심되면 태아 심박과 수축을 이어서 모니터해 진행 여부를 살펴요.", d: "weigh you", k: ["지금 소변 검사를 해 볼게요", "혈압을 재 볼게요"], a: "closely", o: ["quietly", "privately", "gently"]}
   - {t: "수축 양상", i: chartup, w: "regularly와 come and go를 맞세워 규칙적인지 불규칙한지 고르게 해요. 일정한 간격으로 점점 잦아지는 수축은 진짜 진통을 의심하는 단서예요.", d: "stay the same", k: ["수축이 시작된 지 얼마나 됐나요?", "아기가 움직이는 게 느껴지나요?"], a: "regularly", o: ["constantly", "suddenly", "painfully"]}
   - {t: "양수 시점", i: calendar, w: "notice로 터졌다는 판단이 아니라 환자가 알아차린 시점을 묻고 how much로 양도 함께 물어요. 양수가 샌 시각은 감염 위험을 가늠하고 분만 시기를 정하는 데 쓰여요.", d: "drink", k: ["수축은 얼마나 자주 오나요?", "배가 아픈 정도는 몇 점인가요?"], a: "fluid", o: ["bleeding", "cramping", "kicking"]}
@@ -40,7 +40,7 @@
   s:
   - {t: "수치심 덜기", i: shield, w: "no need to로 감정을 부정하지 않고 가볍게 풀어 주고 very common으로 흔한 일임을 알려 환자가 숨기지 않고 말하게 해요. 분비물이나 감염은 창피해서 늦게 오는 경우가 많아요.", d: "feel hurried", k: ["분비물은 언제부터 있었나요?", "최근에 새 비누나 세정제를 쓰셨나요?"], a: "embarrassed", o: ["rushed", "tired", "surprised"]}
   - {t: "증상 청취", i: stetho, w: "about으로 범위를 열어 두고 any other symptoms로 환자가 덧붙이게 해요. 분비물의 색·냄새·양과 동반 증상은 감염 종류를 가르는 첫 정보예요.", d: "about the visit", k: ["마지막 생리는 언제였나요?", "소변볼 때 따갑지는 않으세요?"], a: "discharge", o: ["odor", "swelling", "rash"]}
-  - {t: "비밀 보장", i: lock, w: "stays confidential로 말한 내용이 밖으로 나가지 않는다고 약속해 환자가 민감한 이야기도 꺼낼 수 있게 해요. 병원은 환자 정보를 법으로 보호하고, 치료팀 안에서는 필요한 만큼만 공유해요.", d: "you hear", k: ["이 검사는 몇 분 안 걸려요", "문진표를 작성해 주세요"], a: "share", o: ["sign", "order", "pay"]}
+  - {t: "비밀 보장", i: lock, w: "stays confidential로 말한 내용이 밖으로 나가지 않는다고 약속해 환자가 민감한 이야기도 꺼낼 수 있게 해요. 병원은 환자 정보를 법으로 보호하고, 치료팀 안에서는 필요한 만큼만 공유해요.", d: "you hear", k: ["이 검사는 몇 분 안 걸려요", "문진표를 작성해 주세요"], a: "confidential", o: ["temporary", "optional", "billable"]}
   - {t: "성병력", i: stetho, w: "partners로 상대의 성별이나 관계를 가정하지 않고 물어요. 새 파트너 여부는 성매개감염 가능성을 가늠하는 문진 항목이에요.", d: "any new doctors", k: ["피임은 어떤 방법을 쓰시나요?", "마지막 성관계는 언제였나요?"], a: "new", o: ["other", "regular", "past"]}
   - {t: "동반 증상", i: stetho, w: "burning·itching·unusual smell을 나열해 환자가 해당하는 것을 고르게 해요. 증상마다 의심하는 감염이 달라서 하나씩 짚어 물어요.", d: ", or strange taste", k: ["분비물 색이 어떤가요?", "최근에 항생제를 드셨나요?"], a: "itching", o: ["bleeding", "swelling", "fever"]}
   - {t: "검사 안내", i: lab, w: "to find out으로 검사의 목적을 알려 환자가 불안해하지 않게 해요. 질 분비물 면봉 검사로 세균·곰팡이·성매개감염 병원체를 가려내요.", d: "to write down", k: ["검사 중에 불편하면 말씀해 주세요", "지금 가운으로 갈아입어 주세요"], a: "swab", o: ["saliva", "stool", "sweat"]}
@@ -48,17 +48,17 @@
     tag: "대화 흐름"
     icon: compass
     ko: "부인과 감염·분비물 4문장 순서"
-    why: "민감한 질문을 시작한다고 알리며 안심시키고, 그 말에 이어 비밀 보장과 함께 증상을 묻고, 그 증상이 시작된 뒤의 성병력을 묻고, 그 병력을 근거로 검사를 안내해요. 'private questions'·'those symptoms'·'that history'가 앞 줄을 가리켜 순서가 하나예요."
+    why: "민감한 질문을 시작한다고 알리며 안심시키고, 그 말에 이어 비밀 보장과 함께 증상을 묻고, 그 증상이 생기기 전의 성병력을 묻고, 그 병력을 근거로 검사를 안내해요. 'private questions'·'those symptoms'·'that history'가 앞 줄을 가리켜 순서가 하나예요."
     lines:
     - {en: "I'll ask some private questions — there's no need to feel embarrassed.", icon: shield, ko: "민감한 질문을 드릴 건데, 창피해하실 필요 없어요", note: "안심"}
     - {en: "Everything you share stays confidential, so tell me about the discharge and any other symptoms.", icon: lock, ko: "말씀하신 건 비밀이 지켜지니, 분비물과 다른 증상을 알려 주세요", note: "증상"}
-    - {en: "Since those symptoms started, have you had any new sexual partners?", icon: stetho, ko: "그 증상이 시작된 뒤 새로운 성 파트너가 있었나요?", note: "병력"}
+    - {en: "In the weeks before those symptoms, have you had any new sexual partners?", icon: stetho, ko: "그 증상이 생기기 몇 주 전에 새로운 성 파트너가 있었나요?", note: "병력"}
     - {en: "With that history, we'll do a swab test to find out exactly what's causing this.", icon: lab, ko: "그 병력을 바탕으로, 정확한 원인을 찾기 위해 면봉 검사를 할게요", note: "검사"}
 - title: 피임·응급피임 상담
   sw: {ko: "혹시 어떤 피임법을 쓰셨는지, 쓰셨다면 여쭤봐도 될까요?"}
   s:
   - {t: "선택지 안내", i: compass, w: "options로 환자에게 선택지가 있음을 먼저 알려 막막함을 덜고 the sooner…the better로 서두를 이유를 붙여요. 응급피임은 성관계 후 빨리 쓸수록 효과가 좋아요.", d: "we ask", k: ["지금 복용 중인 약이 있나요?", "마지막 생리가 언제였나요?"], a: "options", o: ["rules", "risks", "limits"]}
-  - {t: "설명 제안", i: speech, w: "Let me…로 허락을 구하듯 설명을 시작해 환자가 듣는 입장에 서게 해요. 각 방법이 어떻게 작용하는지 알아야 환자가 스스로 고를 수 있어요.", d: "the results", k: ["궁금한 점은 편하게 물어보세요", "보험 처리는 나중에 안내해 드릴게요"], a: "works", o: ["hurts", "breaks", "runs"]}
+  - {t: "설명 제안", i: speech, w: "Let me…로 허락을 구하듯 설명을 시작해 환자가 듣는 입장에 서게 해요. 각 방법이 어떻게 작용하는지 알아야 환자가 스스로 고를 수 있어요.", d: "the results", k: ["궁금한 점은 편하게 물어보세요", "보험 처리는 나중에 안내해 드릴게요"], a: "works", o: ["costs", "lasts", "starts"]}
   - {t: "판단 없음", i: shield, w: "judgment-free로 상담이 평가가 아니라 정보 제공이라고 못 박아 환자가 솔직하게 말하게 해요. 부끄러움 때문에 정보를 숨기면 안전한 선택이 어려워져요.", d: "for your partner", k: ["혹시 약 알레르기가 있으신가요?", "지금 임신 가능성은 없으신가요?"], a: "judgment-free", o: ["private", "short", "quiet"]}
   - {t: "경과 확인", i: calendar, w: "환자가 말한 시점을 되짚어 확인하고 hours ago로 정확한 경과 시간을 물어요. 응급피임은 성관계 후 시간이 지날수록 효과가 떨어져서 경과 시간이 선택에 영향을 줘요.", d: "in March", k: ["소변 검사로 임신 여부를 먼저 확인할게요", "평소에 피임약을 복용하시나요?"], a: "last night", o: ["this morning", "last week", "last month"]}
   - {t: "복용 시기", i: pill, w: "The sooner…, the more…의 비례 구조로 서두를 이유를 한 문장에 담아요. 응급피임약은 가능한 한 빨리 복용할수록 효과가 높아요.", d: "you ask for it", k: ["약은 물과 함께 삼키시면 돼요", "복용 후 구토하면 알려 주세요"], a: "take", o: ["buy", "get", "start"]}
