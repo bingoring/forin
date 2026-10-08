@@ -12394,7 +12394,7 @@
           ok: true
         - who: 차트 기록
           icon: board
-          en: 'CC: abd pain since this AM.'
+          en: 'Chief complaint: abd pain since this AM.'
           ok: true
         - who: 보호자에게
           icon: me
@@ -12902,7 +12902,7 @@
         - w-correct
         - w-bed
       why: 동료끼리는 '맞죠?'로 확인해도 되지만, 환자에게 이름을 먼저 말하고 '맞죠?'라고 물으면 잘못 듣고도 '네'라고 할 수 있어요. 환자에게는 이름과 생년월일을 직접 말하게 해요.
-      ko: 맞나요?(확인)
+      ko: 맞는(확인)
       word: correct
       scenes:
         - who: 인수 간호사에게
@@ -12911,7 +12911,7 @@
           ok: true
         - who: 차트 대조
           icon: board
-          en: Name and DOB match the chart.
+          en: Name and DOB correct per the chart.
           ok: true
         - who: 환자에게
           icon: me
@@ -13402,7 +13402,7 @@
           ok: true
         - who: 차트 기록
           icon: board
-          en: 'Pending: AM blood cultures.'
+          en: 'Pending labs: AM blood cultures.'
           ok: true
         - who: 환자에게
           icon: me
@@ -13875,9 +13875,9 @@
     - kind: context
       words:
         - w-watch
-      why: '''turn''은 ''급격히 나빠지다''라는 의료진 구어예요. 보호자에게 쓰면 뜻이 전해지지 않거나 겁을 주고, 관찰을 가족에게 떠넘기는 말처럼 들려요.'
-      ko: 급격히 나빠지다
-      word: turn
+      why: '''turn quickly, watch her closely''는 급변 가능성을 동료에게 넘기는 인계 말이에요. 보호자에게 쓰면 뜻이 전해지지 않거나 겁을 주고, 관찰을 가족에게 떠넘기는 말처럼 들려요.'
+      ko: 주의 깊게
+      word: closely
       scenes:
         - who: 인수 간호사에게
           icon: speech
@@ -13885,11 +13885,11 @@
           ok: true
         - who: 차트 기록
           icon: board
-          en: Pt at risk for rapid deterioration; close monitoring.
+          en: Pt at risk for rapid deterioration; monitoring closely.
           ok: true
         - who: 보호자에게
           icon: me
-          en: Watch her closely — she could turn quickly.
+          en: She could turn quickly, so watch her closely and call us if anything changes.
           ok: false
           fix: We're keeping a very close eye on her, and we'll tell you right away if anything changes.
   order:
@@ -15628,7 +15628,7 @@
           ok: true
         - who: 차트 기록
           icon: board
-          en: Norepi gtt titrated up for MAP goal.
+          en: Norepi drip titrated up for MAP goal.
           ok: true
         - who: 보호자에게
           icon: me
@@ -16113,9 +16113,9 @@
       words:
         - w-status
         - w-change
-      why: '''Forget what I just said''는 바쁜 동료 사이에서 인계를 무를 때 쓰는 말이에요. 가족에게는 앞서 한 설명을 없던 일로 하라는 말로 들려 불신을 줄 수 있어요.'
-      ko: 방금 한 말은 잊으세요
-      word: Forget what I just said
+      why: '''Forget what I just said''는 동료 사이에서 인계를 무를 때 쓰는 말이고, status·desatting은 의료진 말이에요. 가족에게는 앞서 한 말을 없던 일로 하라는 말로 들리니, 무엇이 바뀌었는지 쉬운 말로 알려요.'
+      ko: 상태
+      word: status
       scenes:
         - who: 인수 간호사에게
           icon: speech
@@ -16127,9 +16127,9 @@
           ok: true
         - who: 보호자에게
           icon: me
-          en: Forget what I just said — his status has changed.
+          en: Forget what I said — his status has changed. He's desatting.
           ok: false
-          fix: I need to update you — things have changed, and we're checking on him right now.
+          fix: I need to update you — his oxygen level has dropped, and the team is with him now.
   order:
     tag: 대화 흐름
     icon: compass
@@ -17124,13 +17124,13 @@
           ok: true
         - who: 동료에게
           icon: speech
-          en: Can you get the Spanish interpreter on the line for bed 4?
+          en: Can you call the Spanish interpreter for bed 4?
           ok: true
         - who: 환자에게
           icon: me
-          en: I will now initiate a language access services request.
+          en: I will now call language access services and initiate a request.
           ok: false
-          fix: I'm getting an interpreter on the phone for us.
+          fix: I'm calling an interpreter now so we can talk.
   order:
     tag: 대화 흐름
     icon: compass
@@ -17615,7 +17615,7 @@
       scenes:
         - who: 환자에게
           icon: me
-          en: Please tell me back what you understood.
+          en: Please tell me in your own words what you understand.
           ok: true
         - who: 차트 기록
           icon: board
@@ -18690,13 +18690,13 @@
           ok: true
         - who: 동료에게
           icon: speech
-          en: Mam interpreter is about 40 minutes out — I'll keep trying.
+          en: Still trying to find a Mam interpreter — the service says maybe 40 minutes.
           ok: true
         - who: 환자에게
           icon: me
-          en: Interpreter ETA is 40 minutes, pending vendor availability.
+          en: ETA to find an interpreter is 40 minutes, pending vendor availability.
           ok: false
-          fix: It may take a little longer, and I'll wait with you.
+          fix: It may take a little longer to find one, and I'll wait with you.
   order:
     tag: 대화 흐름
     icon: compass
@@ -19675,7 +19675,7 @@
       scenes:
         - who: 환자에게 (필담)
           icon: pencil
-          en: I'm getting a sign language interpreter for you now.
+          en: I'm arranging a sign language interpreter — we'll write notes until then.
           ok: true
         - who: 동료에게
           icon: speech
@@ -19685,7 +19685,7 @@
           icon: pencil
           en: We are arranging ADA-compliant auxiliary aids.
           ok: false
-          fix: I'm arranging a sign language interpreter for you now.
+          fix: I'm arranging a sign language interpreter for you now. Please wait.
   order:
     tag: 대화 흐름
     icon: compass
@@ -20163,22 +20163,22 @@
         - w-stay
         - w-interpreter
       why: 영어가 서툰 환자에게 긴 격식어는 통하지 않아요. 응급 상황일수록 짧고 쉬운 말로 해요.
-      ko: 함께 있다
+      ko: 머물다(그대로 있다)
       word: stay
       scenes:
         - who: 환자에게
           icon: me
-          en: The interpreter is coming — stay with me.
+          en: The interpreter is coming — please stay here with me.
           ok: true
         - who: 동료에게
           icon: speech
-          en: Interpreter is five minutes out — can you stay with him?
+          en: Interpreter is five minutes out — can you stay in the room with him?
           ok: true
         - who: 환자에게
           icon: me
-          en: Please remain in your current position until language services arrive.
+          en: Please stay in your current position until language services arrive.
           ok: false
-          fix: Stay here with me — the interpreter is coming.
+          fix: Please stay right here — I'm with you, and the interpreter will be here soon.
   order:
     tag: 대화 흐름
     icon: compass
@@ -20670,11 +20670,11 @@
         - w-sorry
       why: hemodynamically·pressors 같은 임상어는 의료진끼리의 말이에요. 가족에게는, 특히 통역을 거칠 때는 쉬운 말로 분명하게 전해요.
       ko: 위중한
-      word: grave
+      word: critical
       scenes:
         - who: 가족에게
           icon: me
-          en: I'm so sorry — his condition is very grave.
+          en: I'm so sorry — he's in critical condition.
           ok: true
         - who: 의사에게 보고
           icon: monitor
@@ -20682,9 +20682,9 @@
           ok: true
         - who: 가족에게
           icon: me
-          en: He's hemodynamically unstable on two pressors.
+          en: He's critical — hemodynamically unstable on two pressors.
           ok: false
-          fix: I'm so sorry — he is very sick, and his condition is grave.
+          fix: I'm so sorry — he is very sick, and we're doing everything we can.
   order:
     tag: 대화 흐름
     icon: compass
@@ -20918,21 +20918,21 @@
       words:
         - w-consent
         - w-understand
-      why: capacity(의사결정능력)는 의료진이 판단하는 임상·법적 개념이에요. 가족에게는 '지금 스스로 결정하기 어려우셔서'처럼 풀어서 말해요.
+      why: capacity to consent(동의 능력)는 의료진이 판단하는 임상·법적 개념이에요. 가족에게는 '지금 스스로 결정하기 어려우셔서'처럼 풀어서 말해요.
       ko: 동의
       word: consent
       scenes:
         - who: 차트 기록
           icon: board
-          en: Pt unable to verbalize understanding via interpreter; capacity in question.
+          en: Pt unable to give informed consent via interpreter; capacity in question.
           ok: true
         - who: 의사에게
           icon: speech
-          en: Even with the interpreter he couldn't explain it back — can you assess capacity?
+          en: He couldn't explain it back — can you assess capacity to consent?
           ok: true
         - who: 가족에게
           icon: me
-          en: He lacks decision-making capacity.
+          en: He lacks the capacity to consent.
           ok: false
           fix: He can't make this decision on his own right now, so we need your help.
   order:
@@ -21411,7 +21411,7 @@
       words:
         - w-misunderstanding
         - w-clear
-      why: '''misinformation''이라고 단정하면 환자를 탓하는 말로 들려요. 오해일 ''수도 있다''고 열어 두면 대화가 이어져요.'
+      why: '''based on a misunderstanding''이라고 단정하면 환자를 탓하는 말로 들려요. 오해일 ''수도 있다''고 열어 두면 대화가 이어져요.'
       ko: 오해
       word: misunderstanding
       scenes:
@@ -21425,7 +21425,7 @@
           ok: true
         - who: 환자에게
           icon: me
-          en: Your refusal is based on misinformation.
+          en: Your refusal is based on a misunderstanding of the facts.
           ok: false
           fix: I think something may have been misunderstood — can I explain it again?
   order:
@@ -22220,7 +22220,7 @@
           ok: true
         - who: 가족에게
           icon: me
-          en: Visitation is limited to one per patient in treatment areas.
+          en: Visitors are limited to one per patient in treatment areas.
           ok: false
           fix: We allow one visitor at the bedside at a time — the others are welcome to wait here and take turns.
   order:
@@ -22464,7 +22464,7 @@
           ok: true
         - who: 전화 문의에
           icon: speech
-          en: Before I share anything, can I ask how you're related to the patient?
+          en: Before I share anything, can I ask what your relationship is to the patient?
           ok: true
         - who: 대기실 보호자에게
           icon: me
@@ -22700,7 +22700,7 @@
       words:
         - w-explain
         - w-again
-      why: 같은 설명을 되풀이해도 'reiterate'·'labs pending' 같은 인계식 말은 가족에게 벽처럼 들려요. 다시 묻는 가족에게는 질문을 반기고 쉬운 말로 다시 설명하세요.
+      why: 같은 설명이어도 'labs are pending, turnaround' 같은 인계식 말은 가족에게 벽처럼 들려요. 다시 묻는 가족에게는 질문을 반기고 쉬운 말로 다시 설명하세요.
       ko: 설명하다
       word: explain
       scenes:
@@ -22714,9 +22714,9 @@
           ok: true
         - who: 가족에게
           icon: me
-          en: 'To reiterate: labs are pending, turnaround about an hour.'
+          en: Let me explain — labs are pending, turnaround's about an hour.
           ok: false
-          fix: That's a good question — let me explain again. The tests take about an hour.
+          fix: Let me explain it another way — her blood test results take about an hour.
   order:
     tag: 대화 흐름
     icon: compass
@@ -22950,23 +22950,23 @@
       words:
         - w-immediate
         - w-danger
-      why: in extremis(죽음이 임박한)는 의사들이 쓰는 라틴어라 가족은 알아듣지 못하거나 오히려 놀라요.
+      why: decompensation(대상부전) 같은 임상어는 의료진끼리는 정확하지만, 아들에게 '위험'을 말할 때는 알아듣기 어렵고 오히려 불안하게 해요. 지금 안전하다는 것과 그 근거를 쉬운 말로 알려 주세요.
       ko: 위험
       word: danger
       scenes:
         - who: 담당의에게 보고
           icon: stetho
-          en: He's not in extremis — BP is holding.
+          en: He's not in immediate danger — BP is holding.
           ok: true
         - who: 동료에게 인계
           icon: speech
-          en: He's not critical right now.
+          en: No immediate danger right now — he's stable on the monitor.
           ok: true
         - who: 아들에게
           icon: me
-          en: Your dad is not in extremis right now.
+          en: Your dad is not in imminent danger of decompensation.
           ok: false
-          fix: There's no immediate danger right now.
+          fix: Your dad is not in danger right now — his blood pressure is holding steady.
   order:
     tag: 대화 흐름
     icon: compass
@@ -23955,7 +23955,7 @@
         - w-stay
         - w-close
         - w-hold
-      why: 같은 허락이어도 조건을 앞세우면 부모에게는 경고로 들려요. 할 수 있는 역할(손 잡아 주기)을 주면 부모도 아이도 편해져요.
+      why: '''Mom can stay at bedside''는 동료에게 넘기는 인계 말투예요. 부모 앞에서 3인칭으로 말하면 허락받는 사람이 아니라 지켜보는 대상처럼 들려요. ''You''로 직접 말하고, 할 수 있는 역할(손 잡아 주기)을 주세요.'
       ko: 곁에 머물다
       word: stay
       scenes:
@@ -23965,13 +23965,13 @@
           ok: true
         - who: 부모에게
           icon: me
-          en: You can stay close and hold her hand while we work.
+          en: You're welcome to stay — sit right here by her head.
           ok: true
         - who: 부모에게
           icon: me
-          en: You can stay, as long as you don't get in the way.
+          en: Mom can stay at bedside for the IV start.
           ok: false
-          fix: You can stay close — holding her hand really helps her.
+          fix: You can stay right here and hold her hand while we put in the IV.
   order:
     tag: 대화 흐름
     icon: compass
@@ -24204,13 +24204,13 @@
       words:
         - w-practice
         - w-important
-      why: 종교 이름만 물으면 닫힌 질문이 돼요. 무엇이 중요한지 물으면 종교가 없거나 문화적 관습인 경우까지 열어 둘 수 있어요.
+      why: 입원 사정지의 칸 이름을 가족에게 그대로 읽으면 닫힌 확인 질문이 돼요. 무엇이 중요한지 열어 물으면 종교가 없거나 문화적 관습인 경우까지 담을 수 있어요.
       ko: 관습
       word: practice
       scenes:
         - who: 입원 사정 차트
           icon: board
-          en: 'Religious/cultural preferences: family requests prayer at bedside.'
+          en: 'Cultural practices: family requests prayer at bedside.'
           ok: true
         - who: 가족에게
           icon: me
@@ -24218,9 +24218,9 @@
           ok: true
         - who: 가족에게
           icon: me
-          en: What's your religion?
+          en: Cultural practices or religious preferences — any?
           ok: false
-          fix: Please tell me what practices are important to you.
+          fix: Is there anything about your faith or traditions that's important for us to know?
   order:
     tag: 대화 흐름
     icon: compass
@@ -24715,13 +24715,13 @@
       words:
         - w-private
         - w-step
-      why: 나쁜 소식 전달의 첫 단계(SPIKES의 Setting)는 조용하고 사적인 곳으로 옮기는 거예요. 복도에서 '나쁜 소식'부터 말하면 가족은 준비 없이 그 자리에서 충격을 받아요.
+      why: 나쁜 소식이라는 것부터 복도에서 말하면 가족은 준비 없이 충격을 받아요. 먼저 조용한 곳으로 옮기고(SPIKES의 Setting), 소식은 앉은 뒤에 전해요.
       ko: 사적인
       word: private
       scenes:
         - who: 동료에게
           icon: speech
-          en: Can we use the family room? We need to talk with the Lee family.
+          en: Can we use a private room? We need to talk with the Lee family.
           ok: true
         - who: 대기실 가족에게
           icon: me
@@ -24729,9 +24729,9 @@
           ok: true
         - who: 복도에서 가족에게
           icon: me
-          en: Come with me — the doctor has bad news.
+          en: We need a private room — the doctor has bad news about your dad.
           ok: false
-          fix: Let's step into a private room where we can talk.
+          fix: Let's go somewhere quiet where we can sit down. The doctor will join us there.
   order:
     tag: 대화 흐름
     icon: compass
@@ -24971,7 +24971,7 @@
       scenes:
         - who: 동료에게
           icon: speech
-          en: I'm going to call the daughter with an update.
+          en: I'm going to call the daughter with an update on her mother's condition.
           ok: true
         - who: 차트 기록
           icon: board
@@ -24979,7 +24979,7 @@
           ok: true
         - who: 딸에게 전화
           icon: speech
-          en: Calling with an update on the pt — she is hemodynamically stable.
+          en: Calling to update you on the pt's condition — she is hemodynamically stable.
           ok: false
           fix: I'm calling to update you on your mother's condition — first, she's stable.
     - kind: reel
@@ -25259,9 +25259,9 @@
     - kind: context
       words:
         - w-pass
-      why: expired는 차트에 쓰는 말이에요. 가족에게는 유효기간이 끝난 물건처럼 차갑게 들려요.
-      ko: 돌아가시다
-      word: pass away
+      why: '''expired''는 차트와 동료 사이에서 쓰는 말이지만 가족에게는 차갑게 들려요. 가족에게는 먼저 애도를 전하고, 완곡어보다 died처럼 분명한 말로 알린 뒤 곁에 있겠다고 하세요.'
+      ko: 사망하다
+      word: expired
       scenes:
         - who: 차트 기록
           icon: board
@@ -25269,13 +25269,13 @@
           ok: true
         - who: 동료에게
           icon: speech
-          en: Bed 3 passed away at 2:30 — the family's in the quiet room.
+          en: Bed 3 expired at 2:30 — the family's in the quiet room.
           ok: true
         - who: 아내에게
           icon: me
           en: Your husband expired at 2:30.
           ok: false
-          fix: I'm so sorry — your husband died at 2:30.
+          fix: I'm so sorry — your husband died at 2:30. I'll stay with you.
   order:
     tag: 대화 흐름
     icon: compass
@@ -25516,7 +25516,7 @@
       scenes:
         - who: 팀 리더 콜
           icon: siren
-          en: Continue compressions — pulse check in two minutes.
+          en: Continue CPR — pulse check in two minutes.
           ok: true
         - who: 기록 간호사
           icon: board
@@ -26027,7 +26027,7 @@
           ok: true
         - who: 딸에게
           icon: me
-          en: Do you want us to withdraw care?
+          en: Do you want us to withdraw care and go comfort only?
           ok: false
           fix: We'll keep caring for her — the question is whether our goal should be comfort rather than more machines.
     - kind: swap
@@ -26803,7 +26803,7 @@
       scenes:
         - who: 동료에게
           icon: speech
-          en: Can you bring the memory box? The parents want handprints.
+          en: Can you bring the keepsake box? The parents want handprints.
           ok: true
         - who: 부모에게
           icon: me
@@ -26811,9 +26811,9 @@
           ok: true
         - who: 부모에게
           icon: me
-          en: We need to take handprints before transport.
+          en: We need to make a keepsake of handprints before transport.
           ok: false
-          fix: When you're ready, we can make handprints for you to keep — only if you'd like.
+          fix: When you're ready, we can make handprints as a keepsake — only if you'd like.
   order:
     tag: 대화 흐름
     icon: compass
@@ -27077,11 +27077,11 @@
           ok: true
         - who: 동료 간호사에게
           icon: speech
-          en: What's the name and DOB on your chart?
+          en: Read me the name and date of birth on your chart.
           ok: true
         - who: 환자에게
           icon: me
-          en: Name and DOB.
+          en: Name and date of birth.
           ok: false
           fix: Can you tell me your full name and date of birth, please?
   order:
@@ -27668,7 +27668,7 @@
     - kind: context
       words:
         - w-call
-      why: '''not allowed''는 금지 명령처럼 들려요. 이유와 대안(부르면 도와준다)을 같이 말하면 협조를 얻기 쉬워요.'
+      why: '''fall risk''·''ambulating''은 동료끼리의 말이에요. 환자에게는 혼자 일어나지 말고 부르면 도와준다고 쉬운 말로 해요.'
       ko: 부르다·호출하다
       word: call
       scenes:
@@ -27682,9 +27682,9 @@
           ok: true
         - who: 환자에게
           icon: me
-          en: You are not allowed to get out of bed.
+          en: You're a high fall risk, so you need to call before ambulating.
           ok: false
-          fix: Please don't get up on your own — press the call button and I'll help you.
+          fix: Please ring the call button before you get up, and I'll come help you.
   order:
     tag: 대화 흐름
     icon: compass
@@ -27957,7 +27957,7 @@
           ok: true
         - who: 환자에게
           icon: me
-          en: Any other hypersensitivity reactions to report?
+          en: Any other allergies or hypersensitivity reactions to report?
           ok: false
           fix: Are you allergic to anything else — medicines, foods, or latex?
   order:
@@ -28509,7 +28509,7 @@
           ok: true
         - who: 섬망 환자에게
           icon: me
-          en: I already told you three times — stay in bed!
+          en: I already reminded you three times — stay in bed!
           ok: false
           fix: 'Let me remind you again: please stay in bed and call before you stand.'
   order:
@@ -29058,7 +29058,7 @@
           ok: true
         - who: 외상팀 동료에게
           icon: speech
-          en: Trauma alpha is still unidentified — use the temporary ID on everything.
+          en: Unknown male still has no ID — use the temporary name on every label.
           ok: true
         - who: 가족을 찾는 방문객에게
           icon: me
@@ -29878,7 +29878,7 @@
       words:
         - w-restraint
         - w-temporary
-      why: '''tied him down''은 묶어 버렸다는 느낌이라 가족에게 충격을 줘요. 잠시 쓰는 것이고 무엇을 막으려는지를 먼저 말해요.'
+      why: '''per policy''·''line protection''은 기록과 인계의 말이에요. 가족에게는 잠시 쓰는 것이고 무엇을 막으려는지를 쉬운 말로 먼저 알려요.'
       ko: 신체 억제대
       word: restraints
       scenes:
@@ -29892,9 +29892,9 @@
           ok: true
         - who: 가족에게
           icon: me
-          en: We've tied him down so he stops pulling his lines.
+          en: He's in restraints per policy for line protection.
           ok: false
-          fix: This is temporary, only to keep him from pulling his lines.
+          fix: These soft straps are just for now, to keep him from pulling out his IV. We check on him often.
   order:
     tag: 대화 흐름
     icon: compass
@@ -30165,11 +30165,11 @@
           ok: true
         - who: 동료에게
           icon: speech
-          en: Bed 5 is on contact precautions — gown and gloves.
+          en: Bed 5 is in isolation on contact precautions — gown and gloves.
           ok: true
         - who: 가족에게
           icon: me
-          en: He's contagious, so keep your distance.
+          en: He's in isolation, he's contagious, so keep your distance.
           ok: false
           fix: He's in isolation to protect others from infection. I'll show you what to wear before you go in.
   order:
@@ -30433,7 +30433,7 @@
       scenes:
         - who: 환자에게
           icon: me
-          en: I'm going to take out anything in the room that could hurt you — it's to keep you safe.
+          en: I'm going to remove a few things from the room — it's to keep you safe.
           ok: true
         - who: 동료에게
           icon: speech
@@ -30441,9 +30441,9 @@
           ok: true
         - who: 환자에게
           icon: me
-          en: Give me your belt and shoelaces. Now.
+          en: Remove your belt and shoelaces. Now.
           ok: false
-          fix: I'm going to remove anything in the room that could hurt you — we just want to keep you safe.
+          fix: For your safety, we remove belts and shoelaces for everyone here — can I hold on to yours?
   order:
     tag: 대화 흐름
     icon: compass
@@ -30713,7 +30713,7 @@
           ok: true
         - who: 시술팀 전체에
           icon: siren
-          en: We're good, right? Let's just go.
+          en: Time-out done, we're good, right? Let's just go.
           ok: false
           fix: 'Before we start: right chest tube for John Reyes — does everyone agree?'
   order:
@@ -45615,13 +45615,13 @@
           ok: true
         - who: 코드 기록
           icon: board
-          en: 'Rhythm: ventricular fibrillation. Defibrillated at 200 J.'
+          en: 'Rhythm: V-fib. Defibrillated at 200 J.'
           ok: true
         - who: 입회한 보호자에게
           icon: me
           en: He's in V-fib, so we're shocking him.
           ok: false
-          fix: His heart is quivering instead of pumping, so we're using the defibrillator to try to restore a normal beat.
+          fix: His heart is quivering instead of pumping, so we're shocking it to reset the rhythm.
   order:
     tag: 대화 흐름
     icon: compass
@@ -46871,7 +46871,7 @@
           ok: true
         - who: 코드 기록지
           icon: board
-          en: Epinephrine 1 mg IV at 14:02 and 14:06.
+          en: Epi 1 mg IV at 14:02 and 14:06.
           ok: true
         - who: 입회한 보호자에게
           icon: me
@@ -47611,7 +47611,7 @@
       scenes:
         - who: 압박자에게
           icon: speech
-          en: You're leaning — let the chest come all the way up.
+          en: You're leaning — let the chest recoil all the way up.
           ok: true
         - who: 코드 후 디브리핑
           icon: board
@@ -47870,7 +47870,7 @@
           icon: me
           en: He's not dead until he's warm and dead.
           ok: false
-          fix: His body is very cold, and the cold can protect his brain, so we're going to keep going while we warm him up.
+          fix: He's very cold, and cold can protect the brain, so we'll keep going while we warm him.
   order:
     tag: 대화 흐름
     icon: compass
