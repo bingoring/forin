@@ -92,7 +92,7 @@ def sentence_lines(s: dict) -> list[str]:
         b.append("        answer: %s" % qq(str(bl["answer"])))
         b.append("        options:")
         for o in bl["options"]:
-            b.append("          - {en: %s, icon: %s}" % (qq(str(o["en"])), qq(str(o["icon"]))))
+            b.append("          - {en: %s}" % qq(str(o["en"])))  # T8: 선택지 아이콘 폐지
     return b
 
 
