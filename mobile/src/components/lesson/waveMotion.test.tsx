@@ -27,6 +27,10 @@ test('rests at the handoff heights, moves while speaking (each word kicks it), a
   render({ speaking: false, beat: 0 });
   const rest = WAVE.map((h) => h / 24);
   scales(tree.root).forEach((v, k) => expect(v).toBeCloseTo(rest[k]));
+  // one colour — no fixed 'played so far' split (사용자 결정 2026-10-09)
+  const colours = tree.root.findAll((n) => typeof n.type === 'string' && n.props.testID === 'sent-wave-bar')
+    .map((n) => [n.props.style].flat(5).find((x) => x && x.backgroundColor)!.backgroundColor);
+  expect(new Set(colours).size).toBe(1);
 
   render({ speaking: true, beat: 1 });
   advance(300);

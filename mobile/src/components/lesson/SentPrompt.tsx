@@ -27,7 +27,8 @@ import { nb, nbFonts } from '@/theme/nb';
 
 type Result = 'right' | 'wrong' | null;
 
-/** SL:29 — the waveform's bar heights; the first 11 are blue. */
+/** SL:29 — the waveform's bar heights. The handoff paints the first 11 blue as if 61% played; the bars are one
+ *  colour here — the motion shows the voice, a fixed half-way mark looked stuck (사용자 결정 2026-10-09). */
 export const WAVE = [6, 12, 18, 24, 14, 20, 10, 22, 16, 8, 18, 12, 6, 16, 10, 20, 12, 8];
 /** 결정 9: "다시 듣기 · 2회" is a real limit — the first listen, then two more. */
 export const REPLAYS = 2;
@@ -88,7 +89,7 @@ const statusBg = (ok: boolean, bad: boolean, on: boolean, idle: string = nb.pape
 
 // 파형 — 핸드오프(SL:29)는 높이가 고정된 막대 18개. 사용자 결정(2026-10-09): 소리가 나는 동안 움직인다. 소리는 기기 TTS라
 // 음량을 읽을 수 없어서, 말하는 동안 막대가 출렁이고 iOS가 알려 주는 단어 경계(onBoundary)마다 크게 튄다. 끝나면 원래 높이로.
-// 높이는 scaleY로(네이티브 드라이버) — 막대 상자는 24, 정지 높이 h는 h/24 배율이다.
+// 높이는 scaleY로(네이티브 드라이버) — 막대 상자는 24, 정지 높이 h는 h/24 배율이다. 색은 파랑 하나(진행도처럼 보이던 회색 7개를 없앰).
 const WAVE_BOX = 24;
 export function Wave({ voice }: { voice: Voice }) {
   const reduce = useReduceMotion();
@@ -109,7 +110,7 @@ export function Wave({ voice }: { voice: Voice }) {
     <>
       {WAVE.map((h, i) => (
         <Animated.View key={i} testID="sent-wave-bar" style={{
-          width: 4, height: WAVE_BOX, borderRadius: 2, backgroundColor: i < 11 ? nb.blue : 'rgba(62,54,43,.2)',
+          width: 4, height: WAVE_BOX, borderRadius: 2, backgroundColor: nb.blue,
           transform: [{ scaleY: vals[i] }],
         }} />
       ))}
