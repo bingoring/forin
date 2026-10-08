@@ -1,0 +1,425 @@
+{
+ "theme": "er-head-trauma",
+ "situations": [
+  {
+   "title": "두부외상 초기 사정",
+   "tagline": "I hit my head when I fell—I think I blacked out for a second.",
+   "room": "TRAUMA_BAY",
+   "brief": "기전·의식소실·건망 여부를 확인해 두부외상을 초기 사정하세요.",
+   "role": "patient",
+   "skills": [
+    "두부외상 문진",
+    "의식소실 확인",
+    "건망 사정"
+   ],
+   "keyPhrases": [
+    "How did you hit your head?",
+    "Did you lose consciousness at all?",
+    "Do you remember everything right before it happened?"
+   ],
+   "goals": [
+    "수상기전과 의식소실을 확인한다",
+    "건망 여부를 사정한다"
+   ]
+  },
+  {
+   "title": "GCS 측정·재평가",
+   "tagline": "I'm a bit fuzzy, but I can hear you okay.",
+   "room": "TRAUMA_BAY",
+   "brief": "초기 GCS를 기록하고 추세를 재평가하세요.",
+   "role": "patient",
+   "skills": [
+    "GCS 측정",
+    "추세 재평가",
+    "의식 사정"
+   ],
+   "keyPhrases": [
+    "Can you open your eyes and look at me?",
+    "Tell me where you are and what day it is.",
+    "I'm going to recheck this in a few minutes."
+   ],
+   "goals": [
+    "초기 GCS를 정확히 기록한다",
+    "시간 경과에 따른 추세를 재평가한다"
+   ]
+  },
+  {
+   "title": "동공 반응 확인",
+   "tagline": "The light is so bright—is something wrong with my eyes?",
+   "room": "TRAUMA_BAY",
+   "brief": "동공의 크기·대칭·빛반응을 확인해 신경학적 이상을 사정하세요.",
+   "role": "patient",
+   "skills": [
+    "동공 사정",
+    "빛반응 확인",
+    "신경학 평가"
+   ],
+   "keyPhrases": [
+    "I'm shining a light in your eyes—look straight ahead.",
+    "This checks how your pupils respond.",
+    "It'll only take a second, hold still."
+   ],
+   "goals": [
+    "동공 크기·대칭·빛반응을 확인한다",
+    "신경학적 이상 징후를 사정한다"
+   ]
+  },
+  {
+   "title": "두피 열상·혈종 관찰",
+   "tagline": "There's a big bump on my head and it's bleeding a little.",
+   "room": "TRAUMA_BAY",
+   "brief": "두피 열상·혈종을 촉진하고 압박지혈하며 관찰하세요.",
+   "role": "patient",
+   "skills": [
+    "두피 관찰",
+    "압박지혈",
+    "혈종 촉진"
+   ],
+   "keyPhrases": [
+    "I'm going to gently feel your scalp.",
+    "We'll apply pressure to stop the bleeding.",
+    "Tell me if any spot is especially painful."
+   ],
+   "goals": [
+    "두피 열상·혈종을 촉진해 관찰한다",
+    "압박지혈을 시행한다"
+   ]
+  },
+  {
+   "title": "오심·구토 모니터",
+   "tagline": "I feel really nauseous and I just threw up once.",
+   "room": "OBS",
+   "brief": "오심·구토를 뇌압 상승 징후로 보고 모니터링하세요.",
+   "role": "patient",
+   "skills": [
+    "뇌압 징후 감시",
+    "구토 모니터",
+    "증상 사정"
+   ],
+   "keyPhrases": [
+    "How many times have you vomited?",
+    "Is the nausea getting worse?",
+    "We're watching for signs of pressure in your head."
+   ],
+   "goals": [
+    "오심·구토를 뇌압 상승 징후로 감시한다",
+    "증상 변화를 모니터링한다"
+   ]
+  },
+  {
+   "title": "경증 뇌진탕 귀가교육",
+   "tagline": "So I can go home? What should I watch out for?",
+   "room": "OBS",
+   "brief": "관찰 징후와 재내원 기준을 설명하며 경증 뇌진탕 귀가교육을 하세요.",
+   "role": "patient",
+   "skills": [
+    "귀가교육",
+    "재내원 기준 설명",
+    "관찰 지표 안내"
+   ],
+   "keyPhrases": [
+    "Come back if you have worsening headache or vomiting.",
+    "Watch for confusion, drowsiness, or weakness.",
+    "Have someone stay with you tonight."
+   ],
+   "goals": [
+    "재내원 위험 징후를 설명한다",
+    "귀가 후 관찰 지표를 안내한다"
+   ]
+  },
+  {
+   "title": "항응고제 복용 경미 두부외상",
+   "tagline": "I just bumped my head, but I'm on a blood thinner—should I worry?",
+   "room": "OBS",
+   "brief": "지연 출혈 위험을 사정하고 CT 필요성을 설명하세요.",
+   "role": "patient",
+   "skills": [
+    "항응고 문진",
+    "지연 출혈 사정",
+    "CT 설명"
+   ],
+   "keyPhrases": [
+    "Which blood thinner are you taking?",
+    "Even a minor bump can bleed slowly in the brain.",
+    "We recommend a CT scan to be safe."
+   ],
+   "goals": [
+    "항응고제 복용과 지연 출혈 위험을 사정한다",
+    "CT의 필요성을 설명한다"
+   ]
+  },
+  {
+   "title": "고령 낙상 경막하 의심",
+   "tagline": "Dad's been more confused since he fell last week—is that normal?",
+   "room": "OBS",
+   "brief": "서서히 진행·지연 발현하는 경막하 출혈을 의심해 사정하세요.",
+   "role": "family",
+   "skills": [
+    "경막하 의심",
+    "지연 발현 사정",
+    "인지변화 청취"
+   ],
+   "keyPhrases": [
+    "When exactly did he fall?",
+    "Has his confusion been getting worse over days?",
+    "A slow brain bleed can show up like this."
+   ],
+   "goals": [
+    "낙상 이후 인지 변화를 청취한다",
+    "지연 발현 경막하 출혈을 의심한다"
+   ]
+  },
+  {
+   "title": "소아 두부외상 부모 소통",
+   "tagline": "He fell off the couch—he cried but seems okay now, right?",
+   "room": "PEDS",
+   "brief": "학대를 감별하고 관찰 지표를 설명하며 소아 두부외상 부모와 소통하세요.",
+   "role": "family",
+   "skills": [
+    "소아 사정",
+    "학대 감별",
+    "부모 교육"
+   ],
+   "keyPhrases": [
+    "Can you walk me through exactly how he fell?",
+    "Watch for vomiting, unusual sleepiness, or fussiness.",
+    "We'll examine him carefully to be sure."
+   ],
+   "goals": [
+    "수상기전의 일관성을 확인하며 학대를 감별한다",
+    "부모에게 관찰 지표를 설명한다"
+   ]
+  },
+  {
+   "title": "음주 동반 두부외상",
+   "tagline": "I'm fine, just had a few drinks... I don't need any scan.",
+   "room": "TRAUMA_BAY",
+   "brief": "취기와 손상을 감별하고 관찰의 필요성을 설득하세요.",
+   "role": "patient",
+   "skills": [
+    "취기·손상 감별",
+    "관찰 설득",
+    "신경학 사정"
+   ],
+   "keyPhrases": [
+    "How much did you drink tonight?",
+    "I can't tell if it's alcohol or your injury—so we watch you.",
+    "Please stay so we can recheck you."
+   ],
+   "goals": [
+    "취기와 두부손상을 감별한다",
+    "관찰의 필요성을 설득한다"
+   ]
+  },
+  {
+   "title": "두개저 골절 징후",
+   "tagline": "I've got bruising around both eyes and fluid dripping from my nose.",
+   "room": "TRAUMA_BAY",
+   "brief": "너구리눈·battle sign·이루 등 두개저 골절 징후를 사정하세요.",
+   "role": "patient",
+   "skills": [
+    "두개저 골절 사정",
+    "징후 확인",
+    "CSF 유출 감별"
+   ],
+   "keyPhrases": [
+    "I see bruising around your eyes—when did that appear?",
+    "Is there any clear fluid from your nose or ears?",
+    "Please don't blow your nose."
+   ],
+   "goals": [
+    "너구리눈·battle sign·이루를 확인한다",
+    "CSF 유출 가능성을 감별한다"
+   ]
+  },
+  {
+   "title": "뇌진탕후증후군",
+   "tagline": "It's been two weeks and I still get headaches and dizziness.",
+   "room": "OBS",
+   "brief": "지속되는 두통·어지럼 등 뇌진탕후증후군을 사정하고 교육하세요.",
+   "role": "patient",
+   "skills": [
+    "뇌진탕후증후군 사정",
+    "지속 증상 청취",
+    "교육"
+   ],
+   "keyPhrases": [
+    "How long have the headaches been going on?",
+    "Any trouble concentrating or sleeping?",
+    "These symptoms can linger after a concussion."
+   ],
+   "goals": [
+    "지속 두통·어지럼·인지 증상을 청취한다",
+    "뇌진탕후증후군의 경과를 교육한다"
+   ]
+  },
+  {
+   "title": "반복 구토·기면 진행",
+   "tagline": "He keeps throwing up and now he's so hard to wake up.",
+   "room": "TRAUMA_BAY",
+   "brief": "반복 구토·기면 진행을 뇌압 상승으로 보고 재평가하세요.",
+   "role": "family",
+   "skills": [
+    "뇌압 상승 사정",
+    "기면 재평가",
+    "악화 감지"
+   ],
+   "keyPhrases": [
+    "How many times has he vomited now?",
+    "Is he getting harder to wake up?",
+    "This could mean rising pressure—we're rechecking him now."
+   ],
+   "goals": [
+    "반복 구토·기면을 뇌압 상승으로 인지한다",
+    "신속히 재평가하고 알린다"
+   ]
+  },
+  {
+   "title": "언어장벽 두부외상",
+   "tagline": "Head... hit. Sleep medicine... yes. Blood thinner... yes.",
+   "room": "TRAUMA_BAY",
+   "brief": "언어장벽 환자에서 의식소실·항응고 여부를 통역과 몸짓으로 확보하세요.",
+   "role": "patient",
+   "skills": [
+    "언어장벽 대응",
+    "의식소실 확인",
+    "항응고 문진"
+   ],
+   "keyPhrases": [
+    "Did you black out? Yes or no?",
+    "Blood thinner medicine—do you take it?",
+    "I'm getting an interpreter for you."
+   ],
+   "goals": [
+    "통역·몸짓으로 의식소실 여부를 확인한다",
+    "항응고제 복용을 확인한다"
+   ]
+  },
+  {
+   "title": "경막외혈종 명료기 후 악화",
+   "tagline": "I felt totally fine a minute ago—now my head is exploding...",
+   "room": "TRAUMA_BAY",
+   "brief": "명료기 후 급격한 악화(lucid interval)를 인지하고 응급 대응하세요.",
+   "role": "patient",
+   "skills": [
+    "lucid interval 인지",
+    "급성 악화 대응",
+    "신경외과 연계"
+   ],
+   "keyPhrases": [
+    "Your headache is suddenly much worse—we're acting now.",
+    "Stay with me and keep talking to me.",
+    "We're calling neurosurgery immediately."
+   ],
+   "goals": [
+    "명료기 후 급격한 악화를 인지한다",
+    "경막외혈종을 의심해 응급 대응한다"
+   ]
+  },
+  {
+   "title": "뇌탈출 임박(동공 산대)",
+   "tagline": "*one pupil blown, decerebrate posturing*",
+   "room": "TRAUMA_BAY",
+   "brief": "동공 산대·자세이상을 뇌탈출 임박으로 인지하고 응급 감압을 준비하세요.",
+   "role": "patient",
+   "skills": [
+    "뇌탈출 인지",
+    "동공 산대 사정",
+    "응급 감압 준비"
+   ],
+   "keyPhrases": [
+    "One pupil is blown—this is an emergency.",
+    "We're hyperventilating and giving medication to reduce pressure.",
+    "Neurosurgery is coming for emergency decompression."
+   ],
+   "goals": [
+    "동공 산대·자세이상을 뇌탈출로 인지한다",
+    "응급 감압과 신경외과 연계를 준비한다"
+   ]
+  },
+  {
+   "title": "두부외상 삽관·환기",
+   "tagline": "*GCS 6, requires airway protection*",
+   "room": "TRAUMA_BAY",
+   "brief": "기도 보호와 뇌압 조절 균형을 고려하며 두부외상 환자의 삽관·환기를 준비하세요.",
+   "role": "colleague",
+   "skills": [
+    "삽관 준비",
+    "뇌압 조절",
+    "환기 관리"
+   ],
+   "keyPhrases": [
+    "GCS is 6—we need to secure the airway.",
+    "Maintain oxygenation and avoid rises in pressure.",
+    "Target normal CO2 to protect the brain."
+   ],
+   "goals": [
+    "기도 보호를 위해 삽관을 준비한다",
+    "뇌압 조절과 환기 목표를 유지한다"
+   ]
+  },
+  {
+   "title": "관통성 두부손상",
+   "tagline": "There's something embedded in my head—please don't touch it!",
+   "room": "TRAUMA_BAY",
+   "brief": "박힌 물체를 고정하고 신경외과 이송을 조율하며 관통성 두부손상을 관리하세요.",
+   "role": "patient",
+   "skills": [
+    "관통 손상 관리",
+    "물체 고정",
+    "신경외과 이송"
+   ],
+   "keyPhrases": [
+    "We're stabilizing the object and leaving it in place.",
+    "Please keep your head as still as possible.",
+    "Neurosurgery is on the way for you."
+   ],
+   "goals": [
+    "박힌 물체를 고정하고 제거하지 않는다",
+    "신경외과 이송을 신속히 조율한다"
+   ]
+  },
+  {
+   "title": "두부외상 SBAR 인계",
+   "tagline": "Head trauma handoff—GCS trend, pupils, and anticoagulation.",
+   "room": "NURSE_STATION",
+   "brief": "GCS·동공·항응고 정보를 SBAR로 정리해 두부외상 환자를 인계하세요.",
+   "role": "colleague",
+   "skills": [
+    "SBAR 인계",
+    "GCS·동공 보고",
+    "항응고 정리"
+   ],
+   "keyPhrases": [
+    "GCS dropped from 14 to 10 over 30 minutes.",
+    "Right pupil is now sluggish and dilated.",
+    "He's on apixaban; reversal is being considered."
+   ],
+   "goals": [
+    "GCS 추세와 동공 변화를 명확히 인계한다",
+    "항응고 상태와 계획을 전달한다"
+   ]
+  },
+  {
+   "title": "외상성 발작 동반",
+   "tagline": "*seizing after head injury, GCS declining*",
+   "room": "TRAUMA_BAY",
+   "brief": "발작과 뇌압 상승이 동시에 진행되는 외상성 발작에 대응하세요.",
+   "role": "patient",
+   "skills": [
+    "외상성 발작 대응",
+    "뇌압 관리",
+    "기도 보호"
+   ],
+   "keyPhrases": [
+    "We're giving medication to stop the seizure now.",
+    "Protecting the airway and giving oxygen.",
+    "Watching closely for rising brain pressure."
+   ],
+   "goals": [
+    "외상성 발작을 신속히 종료시킨다",
+    "발작과 뇌압 상승을 동시에 관리한다"
+   ]
+  }
+ ]
+}

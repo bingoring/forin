@@ -1,0 +1,90 @@
+- title: 언어·문화 배경 전달
+  s:
+  - {t: "언어 정보", i: speaker, w: "언어와 통역 필요 여부를 한 문장에 붙여 말하면 인수자가 입원 즉시 통역을 연결해요. 미국 병원은 영어가 서툰 환자에게 통역을 제공해야 해요.", d: "in person", k: ["베트남어를 쓰시고, 통역은 필요 없습니다", "영어를 잘하시고, 가족이 통역합니다"], a: "phone", ai: mic, o: [["video", "play"], ["family", "home"], ["private", "lock"]]}
+  - {t: "선호 전달", i: handshake2, w: "prefers는 요구가 아니라 선호라서 가능하면 맞춰 달라는 정도로 전해요. 개인 위생 같은 돌봄에서는 문화나 종교에 따라 성별 선호가 있을 수 있어요.", d: "of any", k: ["가족은 남성 간호사를 선호합니다", "가족은 아무 간호사든 상관없다고 합니다"], a: "female", ai: me, o: [["male", "bell"], ["senior", "star"], ["young", "baby"]]}
+  - {t: "이해 확인", i: magnify, w: "환자가 yes라고만 해도 이해했다는 뜻이 아닐 수 있어요. 통역사를 통해 환자가 자기 말로 되풀이하게 해 확인하는 방법을 teach-back이라고 해요.", d: "later", k: ["가끔 통역사를 통해 이해를 확인해 주세요", "통역사 없이 이해했는지 확인해 주세요"], a: "always", ai: star, o: [["never", "lock"], ["rarely", "redo"], ["sometimes", "calendar"]]}
+  - {t: "통역 금지", i: shield, w: "가족 통역은 내용이 빠지거나 바뀔 수 있고, 환자가 가족 앞에서 말하기 어려운 이야기도 있어요. 그래서 자격 있는 통역사를 쓰는 것이 원칙이에요.", d: "in front of", k: ["아드님에게 통역을 꼭 맡기세요", "아드님에게 서명을 맡기지 마세요"], a: "interpret", ai: speech, o: [["decide", "compass"], ["sign", "pencil"], ["answer", "mic"]]}
+  - {t: "연락처", i: speaker, w: "is already on his chart는 따로 찾을 필요 없이 차트에 있다는 정보를 줘요. 통역 연결 번호가 차트에 있으면 밤 근무자도 바로 연결해요.", d: "this morning", k: ["통역 전화번호는 아직 차트에 없습니다", "통역사는 이미 병실에 와 있습니다"], a: "chart", ai: board, o: [["wristband", "bandage"], ["door", "home"], ["monitor", "monitor"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "언어·문화 배경 전달 4문장 순서"
+    why: "언어와 통역 필요를 먼저 알리고, 통역 연결 번호가 차트에 있음을 말해요. 가족이 돕겠다고 하면 그 번호를 쓰라고 하고, 어느 경우든 통역사를 통해 이해를 확인해요."
+    lines:
+    - {en: "He speaks Vietnamese and needs a phone interpreter.", icon: speaker, ko: "베트남어를 쓰고 전화 통역이 필요해요", note: "언어"}
+    - {en: "The interpreter line number is already on his chart.", icon: board, ko: "통역 전화번호는 이미 차트에 있어요", note: "연락처"}
+    - {en: "If the family offers to help, use that line instead of the son.", icon: shield, ko: "가족이 돕겠다 해도 아들 대신 그 번호를 쓰세요", note: "가족"}
+    - {en: "Either way, always confirm understanding through the interpreter.", icon: magnify, ko: "어느 쪽이든 항상 통역사를 통해 이해를 확인하세요", note: "확인"}
+  sw: {ko: "전화로 통역사를 연결해 드릴게요"}
+- title: 정신과 보류 환자 인계
+  s:
+  - {t: "법적 상태", i: shield, w: "hold는 정신과적 위기로 일정 시간 동안 퇴원이 제한된 법적 상태예요. 72시간 같은 기간과 절차는 주마다 다를 수 있으니 그 병원 규정을 따라요.", d: "at home", k: ["72시간 동안 자유롭게 외출할 수 있습니다", "72시간 뒤에 퇴원할 예정입니다"], a: "hold", ai: lock, o: [["watch", "magnify"], ["review", "board"], ["sedation", "coffee"]]}
+  - {t: "1대1 관찰", i: magnify, w: "one-to-one은 한 사람이 환자 한 명만 지켜본다는 뜻이에요. at all times는 잠깐도 눈을 떼지 않는다는 뜻이에요.", d: "for one hour", k: ["그분은 가끔씩만 관찰하면 됩니다", "그분은 혼자 있기를 원합니다"], a: "requires", ai: star, o: [["refuses", "faceAngry"], ["avoids", "plane"], ["dislikes", "faceWorried"]]}
+  - {t: "위험물 제거", i: scalpel, w: "날카로운 물건과 줄은 자해 도구가 될 수 있어서 정신과 위기 환자 방에서는 치워요. have been removed는 이미 끝난 일을 현재 상태로 알려 줘요.", d: "this morning", k: ["날카로운 물건은 아직 병실에 있습니다", "줄과 가방은 보안팀이 가져갔습니다"], a: "cords", ai: gear, o: [["bags", "home"], ["pillows", "baby"], ["blankets", "bandage"]]}
+  - {t: "병실 점검", i: home, w: "every time은 예외 없이 매번이라는 뜻이에요. 방을 비운 사이 물건이 들어올 수 있어서 돌아올 때마다 다시 확인해요.", d: "after lunch", k: ["병실은 한 번만 점검하면 됩니다", "병실은 나갈 때만 확인해 주세요"], a: "every time", ai: redo, o: [["the first time", "star"], ["the last time", "calendar"], ["one time", "bell"]]}
+  - {t: "보안 협조", i: shield, w: "is aware로 보안팀이 상황을 미리 알고 있다고 알려요. will call은 보안팀이 먼저 연락한다는 뜻이라 인수자가 혼자 막으려 하지 않아도 돼요.", d: "next door", k: ["보안팀은 아직 상황을 모릅니다", "보안팀이 병실 앞에서 지키고 있습니다"], a: "aware", ai: siren, o: [["away", "plane"], ["busy", "gear"], ["ready", "play"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "정신과 보류 환자 4문장 순서"
+    why: "보류 상태가 근거라 먼저 말해요. 그 때문에 1대1 관찰이 필요하고, 관찰하는 동안 병실을 점검하며, 그래도 나가려 하면 보안이 연락한다는 순서예요."
+    lines:
+    - {en: "He's under a seventy-two-hour hold, so he cannot leave.", icon: lock, ko: "72시간 보류라 나갈 수 없어요", note: "보류"}
+    - {en: "Because of that, he needs one-to-one observation at all times.", icon: magnify, ko: "그래서 항상 1대1 관찰이 필요해요", note: "관찰"}
+    - {en: "While you watch him, please recheck the room every time you leave and return.", icon: home, ko: "지켜보는 동안 나갔다 올 때마다 병실을 다시 확인하세요", note: "점검"}
+    - {en: "If he tries to leave anyway, security is aware and will call.", icon: shield, ko: "그래도 나가려 하면 보안팀이 알고 연락할 거예요", note: "보안"}
+  sw: {ko: "72시간 보류 상태라서 지금은 여기 계셔야 해요"}
+- title: 가족 소통 이력 인계
+  s:
+  - {t: "정보 범위", i: board, w: "knows A but not B는 가족이 어디까지 아는지 경계를 정확히 그어 줘요. 어디까지 설명됐는지 알아야 인수자가 실수로 앞서 말하지 않아요.", d: "from him", k: ["따님은 예후는 알지만 진단은 모릅니다", "따님은 진단도 예후도 모두 압니다"], a: "prognosis", ai: chartup, o: [["treatment", "pill"], ["insurance", "lock"], ["history", "calendar"]]}
+  - {t: "미결 면담", i: speech, w: "still needs to는 아직 안 한 일을 넘기는 말이에요. 의사 면담 전에는 간호사가 대신 설명하지 않도록 알려 줘요.", d: "alone", k: ["의사가 아내분과 이미 이야기했습니다", "간호사가 아내분과 이야기해야 합니다"], a: "wife", ai: handshake2, o: [["son", "baby"], ["daughter", "star"], ["husband", "home"]]}
+  - {t: "정서 전달", i: faceAngry, w: "had … earlier로 지금이 아니라 아까 있었던 일로 말해서 낙인을 피해요. be gentle은 그 정보를 어떻게 쓸지까지 알려 줘요.", d: "at night", k: ["아드님이 아까 매우 차분했어요, 평소처럼 대해 주세요", "아드님은 지금 많이 화가 나 있어요, 조심하세요"], a: "gentle", ai: handshake2, o: [["firm", "gear"], ["quick", "play"], ["brief", "redo"]]}
+  - {t: "미전달 정보", i: lock, w: "No one has … yet은 아직 아무도 하지 않았다는 사실을 분명히 해요. 예후는 의사가 먼저 설명하는 것이 일반적이라 인계에서 꼭 짚어요.", d: "today", k: ["가족은 예후를 이미 들었습니다", "의사가 예후를 이미 설명했습니다"], a: "family", ai: home, o: [["doctor", "stetho"], ["nurse", "bandage"], ["patient", "me"]]}
+  - {t: "의사 먼저", i: bell, w: "Let … know before …는 순서를 정해 주는 틀이라 가족에게 먼저 말해 버리는 실수를 막아요. 예후 설명은 의사가 맡는 것이 일반적이에요.", d: "again", k: ["예후를 말한 뒤에 의사에게 알려 주세요", "예후는 아무에게도 말하지 마세요"], a: "before", ai: calendar, o: [["after", "redo"], ["while", "play"], ["unless", "lock"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "가족 소통 이력 4문장 순서"
+    why: "가족이 아는 범위를 먼저 말해요. 그 가운데 예후는 아직 아무도 말하지 않았고, 그래서 의사가 면담해야 하며, 면담 전까지는 의사에게 먼저 알리라는 순서예요."
+    lines:
+    - {en: "The daughter knows the diagnosis but not the prognosis.", icon: board, ko: "따님은 진단은 알지만 예후는 몰라요", note: "범위"}
+    - {en: "No one has mentioned it to the family yet.", icon: lock, ko: "아직 아무도 가족에게 말하지 않았어요", note: "미전달"}
+    - {en: "That's why the doctor still needs to speak with the wife.", icon: speech, ko: "그래서 의사가 아내분과 이야기해야 해요", note: "면담"}
+    - {en: "Until then, let the doctor know before you say anything about it.", icon: bell, ko: "그때까지 말하기 전에 의사에게 먼저 알리세요", note: "당부"}
+  sw: {ko: "아드님이 아까 화가 많이 나셨었어요, 부드럽게 대해 주세요"}
+- title: 기관 간 이송 인계
+  s:
+  - {t: "전원 사유", i: hospital, w: "a higher level of care는 전원 가는 병원이 더 전문적인 치료를 할 수 있다는 뜻이에요. 인계 첫 줄에 이유를 두면 받는 쪽이 준비해요.", d: "from home", k: ["뇌졸중 환자를 퇴원시키려는 것입니다", "화상 치료를 위한 전원입니다"], a: "stroke", ai: bulb, o: [["burn", "siren"], ["cardiac", "stetho"], ["trauma", "bandage"]]}
+  - {t: "발병 시각", i: calendar, w: "뇌졸중은 증상이 시작된 시각에 따라 치료할 수 있는지가 달라져서 전원 인계에서 꼭 전해요. tPA를 줬는지도 함께 알려야 받는 병원이 중복 투여를 피해요.", d: "last week", k: ["증상은 이틀 전에 시작되었고 tPA를 투여했습니다", "증상은 2시간 전에 호전되었습니다"], a: "onset", ai: siren, o: [["relief", "coffee"], ["check", "magnify"], ["review", "board"]]}
+  - {t: "서류 동행", i: board, w: "are traveling with the patient는 서류와 영상이 환자와 함께 이동한다는 뜻이에요. 영상을 같이 보내면 받는 병원이 촬영을 다시 하는 일을 줄일 수 있어요.", d: "to follow", k: ["기록과 영상은 나중에 따로 보내겠습니다", "기록은 환자와 함께 가고 영상은 없습니다"], a: "imaging", ai: magnify, o: [["belongings", "home"], ["medications", "pill"], ["forms", "pencil"]]}
+  - {t: "수용의 확인", i: mic, w: "accepting doctor는 환자를 받겠다고 한 상대 병원 의사예요. 이송 전에 이름을 확인해 두면 도착해서 누구에게 인계할지 헷갈리지 않아요.", d: "of the", k: ["이송하는 의사의 성함을 확인해 주세요", "이송이 끝난 뒤 성함을 확인해 주세요"], a: "accepting", ai: handshake2, o: [["referring", "plane"], ["covering", "shield"], ["former", "redo"]]}
+  - {t: "전원 전 혈압", i: stetho, w: "before the transfer는 측정 시점을 전원 직전으로 정해 줘요. 이송 중 변화를 비교할 기준값이 되어서 받는 쪽이 도착 후 수치를 해석하기 쉬워요.", d: "this morning", k: ["전원 후 마지막 혈압은 안정적이었습니다", "전원 전 마지막 혈압은 떨어지고 있었습니다"], a: "stable", ai: monitor, o: [["unstable", "siren"], ["low", "chevronDown"], ["borderline", "faceWorried"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "기관 간 이송 인계 4문장 순서"
+    why: "전원 이유를 먼저 말하고 발병 시점과 tPA 여부를 이어요. Since then으로 그 뒤의 혈압을 말한 다음, 이송 전에 받는 의사 이름을 확인하라고 마무리해요."
+    lines:
+    - {en: "She's being transferred for a higher level of stroke care.", icon: hospital, ko: "뇌졸중 상급 치료를 위해 전원하는 환자예요", note: "전원"}
+    - {en: "Her symptoms started two hours ago, and she hasn't had tPA.", icon: calendar, ko: "증상은 2시간 전 시작, tPA는 투여 안 했어요", note: "발병"}
+    - {en: "Since then, her blood pressure has stayed stable.", icon: stetho, ko: "그 뒤로 혈압은 안정적이었어요", note: "혈압"}
+    - {en: "Please confirm the accepting doctor's name before transport.", icon: mic, ko: "이송 전에 수용 의사 성함을 확인해 주세요", note: "확인"}
+  ctx: {word: "onset", ko: "발생"}
+- title: 위중 환자 병동 전동
+  s:
+  - {t: "혈압 악화", i: chevronDown, w: "despite fluids는 수액을 줬는데도 혈압이 오르지 않는다는 뜻이에요. 치료에 반응하지 않는다는 사실이 ICU 전동의 가장 큰 근거가 돼요.", d: "after dinner", k: ["수액을 주자 혈압이 올랐습니다", "수액은 아직 시작하지 않았습니다"], a: "dropping", ai: siren, o: [["rising", "chartup"], ["improving", "star"], ["holding", "lock"]]}
+  - {t: "승압제 투여", i: gear, w: "titrating up은 반응을 보면서 용량을 조금씩 올리고 있다는 뜻이에요. 용량이 오르는 중이면 아직 안정되지 않았다는 신호예요.", d: "at home", k: ["노르에피네프린을 끊고 있습니다", "수액을 두 배로 주고 있습니다"], a: "norepinephrine", ai: pill, o: [["heparin", "bandage"], ["propofol", "coffee"], ["nitroglycerin", "bulb"]]}
+  - {t: "ICU 필요", i: siren, w: "right now는 기다릴 수 없다는 긴급도를 전해요. 병상과 집중 관찰을 함께 말하면 받는 쪽이 자리와 인력을 같이 준비해요.", d: "tomorrow", k: ["일반 병동 병상이면 충분합니다", "내일 중환자실 병상이 필요합니다"], a: "close", ai: monitor, o: [["light", "star"], ["brief", "redo"], ["routine", "calendar"]]}
+  - {t: "병상 확인", i: bell, w: "charge nurse는 병상 배정을 조정하는 책임 간호사예요. 연락에서 끝내지 않고 병상 확정까지 하라고 해야 이송 중에 자리가 없어지는 일을 막아요.", d: "right now", k: ["중환자실 의사에게 연락해 주세요", "중환자실 병상 확인은 하지 마세요"], a: "charge", ai: star, o: [["float", "plane"], ["night", "coffee"], ["student", "pencil"]]}
+  - {t: "동행 인계", i: speech, w: "travel with her는 환자가 불안정할 때 간호사가 이송에 동행한다는 뜻이에요. at the door는 도착하자마자 바로 보고하겠다는 뜻이에요.", d: "by phone", k: ["저는 병동에 남아 있겠습니다", "보고는 전화로 드리겠습니다"], a: "travel", ai: plane, o: [["wait", "redo"], ["stay", "home"], ["sit", "chevronDown"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "위중 환자 병동 전동 4문장 순서"
+    why: "혈압이 계속 떨어지는 사실이 먼저예요. 그 때문에 승압제를 쓰고, 그만큼 지원하는데도 ICU가 필요하다고 판단하며, 그 병상을 확인하라고 요청해요."
+    lines:
+    - {en: "Her pressure keeps dropping despite fluids.", icon: chevronDown, ko: "수액을 줘도 혈압이 계속 떨어져요", note: "악화"}
+    - {en: "Because of that, she's on a norepinephrine drip, titrating up.", icon: gear, ko: "그래서 노르에피네프린을 쓰며 올리는 중이에요", note: "투여"}
+    - {en: "With that much support, she needs an ICU bed and close monitoring right now.", icon: siren, ko: "그 정도 지원에도 지금 ICU 병상이 필요해요", note: "ICU"}
+    - {en: "Please call the ICU charge nurse to confirm that bed.", icon: bell, ko: "ICU 책임 간호사에게 그 병상을 확인해 주세요", note: "확인"}
+  ctx: {word: "drip", ko: "지속 정맥주사"}

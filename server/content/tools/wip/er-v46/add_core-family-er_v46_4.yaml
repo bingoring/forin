@@ -1,0 +1,91 @@
+- title: 급성 상실 애도 지지
+  s:
+  - {t: "겸손한 공감", i: faceWorried, w: "I can't imagine …는 당신의 아픔을 다 안다고 하지 않고 겸손하게 공감하는 말이에요. 애도 중인 가족에게는 안다고 말하는 것보다 모른다고 인정하는 편이 더 위로가 돼요.", d: "for you", k: ["저도 똑같은 일을 겪어 봤어요", "이 순간은 곧 지나갈 거예요"], a: "imagine", ai: bulb, o: [["forget", "redo"], ["explain", "speech"], ["measure", "monitor"]]}
+  - {t: "감정 허락", i: me, w: "It's okay to …는 감정에 허락을 주는 말이에요. however you feel로 어떤 감정이든 괜찮다고 해서 울음이든 침묵이든 판단하지 않겠다는 뜻을 전해요.", d: "for you", k: ["울지 않으셔도 괜찮아요", "감정을 가라앉히셔야 해요"], a: "okay", ai: handshake2, o: [["wrong", "faceAngry"], ["rude", "speaker"], ["shameful", "lock"]]}
+  - {t: "재촉 없음", i: board, w: "When you're ready로 시작하면 절차를 재촉하지 않고 가족이 준비될 때를 기다린다는 뜻이 돼요. next steps는 서류·연락처럼 뒤따르는 일을 부드럽게 묶어 부르는 말이에요.", d: "for me", k: ["지금 바로 서류를 작성해야 해요", "준비가 안 되면 안 돼요"], a: "ready", ai: play, o: [["late", "calendar"], ["gone", "plane"], ["sorry", "faceWorried"]]}
+  - {t: "곁에 있기", i: faceWorried, w: "no right words는 완벽한 말은 없다고 먼저 인정해서 말을 찾아야 하는 부담을 덜어요. 뒤의 I'm here with you가 말보다 곁에 있음을 전해요.", d: "for you", k: ["제가 위로가 될 말을 알아요", "곧 의사 선생님이 오실 거예요"], a: "right", ai: star, o: [["many", "chartup"], ["new", "bell"], ["short", "chevronDown"]]}
+  - {t: "재촉 안 함", i: handshake2, w: "no need to …는 하지 않아도 된다는 면제의 표현이에요. 슬픔 속 가족은 결정과 절차를 압박으로 느끼기 쉬워서 서두를 필요가 없다고 직접 말해 줘요.", d: "to me", k: ["지금 바로 결정하셔야 해요", "저는 잠시 후에 올게요"], a: "rush", ai: play, o: [["hide", "lock"], ["cancel", "redo"], ["buy", "board"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "급성 상실 애도 지지 4문장 순서"
+    why: "먼저 상상도 안 된다고 공감하고, 그에 대한 어떤 반응이든 괜찮다고 하고, 마음을 추스를 시간을 주고, 준비되면 도울 수 있다고 해요. in response to that, When you are이 앞 줄을 이어서 순서가 하나예요."
+    lines:
+    - {en: "I can't imagine how hard this moment is.", icon: faceWorried, ko: "이 순간이 얼마나 힘드실지 상상도 안 돼요", note: "공감"}
+    - {en: "However you feel in response to that, it's okay.", icon: me, ko: "그에 대해 어떤 마음이 드셔도 괜찮아요", note: "허락"}
+    - {en: "Take your time getting ready — there's no need to rush.", icon: handshake2, ko: "마음을 추스를 시간을 가지세요, 서두르지 않아도 돼요", note: "시간"}
+    - {en: "When you are, I can help with next steps.", icon: board, ko: "준비되시면 다음 절차를 도와드릴게요", note: "도움"}
+  sw: {ko: "이 순간이 얼마나 힘드실지 상상도 안 돼요"}
+- title: 연명치료 결정 회의
+  s:
+  - {t: "뜻 확인", i: board, w: "Had she ever …?는 지금까지 한 번이라도 있었는지를 묻는 질문이에요. 대리 결정에서는 환자 본인의 뜻이 가장 먼저 확인할 기준이에요.", d: "for him", k: ["어머님은 어떤 약을 드셨나요?", "어머님은 보험이 있으신가요?"], a: "shared", ai: speech, o: [["hidden", "lock"], ["forgotten", "redo"], ["changed", "gear"]]}
+  - {t: "목표 제안", i: compass, w: "rather than은 둘을 견주어 한쪽 방향을 부드럽게 제안해요. can be로 단정하지 않고 가능성으로 열어 두어 가족이 선택할 여지를 남겨요.", d: "for her", k: ["목표는 기계를 더 늘리는 거예요", "목표는 퇴원을 앞당기는 거예요"], a: "comfort", ai: coffee, o: [["speed", "play"], ["profit", "board"], ["noise", "speaker"]]}
+  - {t: "함께 결정", i: shield, w: "There's no wrong choice는 어느 쪽을 골라도 비난하지 않겠다는 신호예요. let's로 결정을 함께 한다고 하면 가족이 결정의 짐을 혼자 지지 않아요.", d: "for you", k: ["틀린 선택을 하시면 안 돼요", "결정은 제가 대신 할게요"], a: "decide", ai: handshake2, o: [["argue", "faceAngry"], ["fight", "siren"], ["hide", "lock"]]}
+  - {t: "환자의 뜻", i: speech, w: "would have wanted는 지금 말할 수 없는 환자가 그때 원했을 것을 짐작하는 말이에요. 가족이 원하는 것이 아니라 환자의 뜻을 묻게 해서 결정의 무게를 덜어 줘요.", d: "for her", k: ["가족분이 원하는 걸 말해 보세요", "어머님이 좋아하시던 음식은요?"], a: "wanted", ai: star, o: [["cooked", "coffee"], ["painted", "pencil"], ["bought", "board"]]}
+  - {t: "가족 인정", i: handshake2, w: "You know her best로 가족이 환자를 가장 잘 아는 사람이라고 먼저 인정해요. 그래서 이어지는 질문이 의료진의 판단이 아니라 환자 중심의 질문이 돼요.", d: "than me", k: ["제가 가장 잘 알아요", "의사 선생님이 정하실 거예요"], a: "best", ai: star, o: [["least", "chevronDown"], ["worst", "faceAngry"], ["less", "chartup"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "연명치료 결정 회의 4문장 순서"
+    why: "환자에게 중요했던 것을 먼저 묻고, 그 답을 바탕으로 목표를 제안하고, 어느 쪽으로 기울든 함께 결정하자고 하고, 결정한 뒤의 일을 안내해요. Based on that, Whichever way you lean, Once we have가 앞 줄을 이어서 순서가 하나예요."
+    lines:
+    - {en: "You know her best, so what mattered most to her?", icon: handshake2, ko: "가장 잘 아시니까, 어머님께 가장 중요했던 게 뭐였을까요?", note: "질문"}
+    - {en: "Thank you. Based on that, our goal can be comfort rather than more machines.", icon: compass, ko: "감사해요, 그걸 바탕으로 목표를 기계보다 편안함에 둘 수 있어요", note: "목표"}
+    - {en: "Whichever way you lean, there's no wrong choice — let's decide together.", icon: shield, ko: "어느 쪽이든 틀린 선택은 없어요, 함께 결정해요", note: "결정"}
+    - {en: "Once we have, I'll update the whole team.", icon: bell, ko: "결정하면 제가 팀 전체에 전달할게요", note: "전달"}
+  ctx: {word: "comfort", ko: "편안함"}
+  sw: {ko: "어머님이라면 무엇을 원하셨을지 함께 이야기해 봐요"}
+- title: 장기기증 대화 연계
+  s:
+  - {t: "애도 먼저", i: me, w: "I'm so sorry for …는 잘못을 인정하는 사과가 아니라 상대의 아픔에 대한 애도예요. 기증 이야기에 앞서 슬픔을 먼저 인정하면 가족이 서두른다고 느끼지 않아요.", d: "of it", k: ["먼저 서류를 확인해 주세요", "먼저 기증에 대해 말씀드릴게요"], a: "facing", ai: faceWorried, o: [["causing", "siren"], ["planning", "calendar"], ["forgetting", "redo"]]}
+  - {t: "전문가 연결", i: bell, w: "When you're ready로 시작해 가족의 속도를 존중해요. a specialist는 기증을 전문으로 다루는 사람을 가리켜서, 간호사가 직접 설득하지 않고 훈련받은 담당자에게 잇는다는 뜻이에요.", d: "for you", k: ["의사 선생님이 지금 수술하세요", "보험 담당자가 설명해요"], a: "specialist", ai: stetho, o: [["reporter", "mic"], ["salesperson", "board"], ["stranger", "lock"]]}
+  - {t: "선택권", i: shield, w: "no pressure로 압박이 없다고 먼저 말하고 entirely로 결정권이 전적으로 가족에게 있다고 강조해요. 기증은 설득이 아니라 선택으로 전해야 해요.", d: "of mine", k: ["의사 선생님이 결정하실 거예요", "기증은 꼭 하셔야 해요"], a: "entirely", ai: handshake2, o: [["partly", "redo"], ["hardly", "chevronDown"], ["rarely", "calendar"]]}
+  - {t: "조심스러운 언급", i: pushpin, w: "sensitive option으로 민감한 주제임을 미리 알려요. gently mention이라고 하면 지금 결정하라는 말이 아니라 조심스럽게 꺼낸다는 태도가 전해져요.", d: "to them", k: ["꼭 하셔야 하는 일이 있어요", "지금 바로 결정해 주세요"], a: "gently", ai: coffee, o: [["loudly", "speaker"], ["quickly", "play"], ["rudely", "faceAngry"]]}
+  - {t: "담당자 안내", i: speech, w: "will은 앞으로 이어질 일을 알리는 약속의 말이에요. 코디네이터가 전부 설명하고 질문에 답한다고 하면 간호사가 모르는 것을 아는 척하지 않아도 돼요.", d: "to him", k: ["제가 모든 걸 설명할게요", "질문은 받을 수 없어요"], a: "coordinator", ai: handshake2, o: [["cashier", "board"], ["driver", "plane"], ["reporter", "mic"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "장기기증 대화 연계 4문장 순서"
+    why: "애도로 시작하고, 준비되면 조심스러운 이야기를 꺼내고, That said로 압박이 없다고 선택권을 알리고, 더 알고 싶다고 선택하면 코디네이터가 설명해요. That said, choose가 앞 줄을 이어서 순서가 하나예요."
+    lines:
+    - {en: "First, I'm so sorry for what you're facing.", icon: me, ko: "먼저, 이런 상황을 겪으시게 되어 정말 죄송합니다", note: "애도"}
+    - {en: "When you're ready, there's a sensitive option I'd like to gently mention.", icon: pushpin, ko: "준비되시면 조심스럽게 말씀드리고 싶은 게 있어요", note: "언급"}
+    - {en: "That said, there's no pressure — it's entirely your family's choice.", icon: shield, ko: "다만 압박은 없고 전적으로 가족분들의 선택이에요", note: "선택권"}
+    - {en: "If you choose to hear more, a donation coordinator will explain everything.", icon: speech, ko: "더 듣기로 하시면 기증 코디네이터가 모두 설명해 드려요", note: "연결"}
+  sw: {ko: "압박은 전혀 없어요, 전적으로 가족분들의 선택이에요"}
+- title: 가족 분노·비난 대응
+  s:
+  - {t: "감정 인정", i: handshake2, w: "I understand …로 감정을 먼저 인정하면 상대가 말을 들을 준비가 돼요. and that's okay로 분노 자체는 잘못이 아니라고 말해 줘요.", d: "at me", k: ["진정하세요", "화낼 일이 아니에요"], a: "angry", ai: faceAngry, o: [["happy", "star"], ["sleepy", "chevronDown"], ["hungry", "coffee"]]}
+  - {t: "경청 의지", i: speech, w: "I want to …로 주어를 나로 해서 듣겠다는 의지를 직접 말해요. everything you need to say는 하고 싶은 말을 끝까지 해도 된다는 허락이에요.", d: "of you", k: ["하실 말씀은 짧게 해 주세요", "제 말부터 들어 주세요"], a: "hear", ai: bell, o: [["stop", "faceAngry"], ["correct", "pencil"], ["forget", "redo"]]}
+  - {t: "자리 권유", i: home, w: "Let's …로 우리가 함께 앉자고 하면 서 있는 사람을 몰아세우는 느낌이 줄어요. so I can explain으로 앉자는 이유를 말해 줘요.", d: "to him", k: ["밖에 나가서 이야기해요", "서서 들어 주세요"], a: "sit", ai: coffee, o: [["calm", "chevronDown"], ["slow", "redo"], ["back", "chevronLeft"]]}
+  - {t: "분노 정당화", i: me, w: "I hear …는 내용보다 감정을 들었다고 확인하는 표현이에요. you have every right는 화낼 권리를 인정해서 화가 정당하다고 받아 줘요.", d: "to me", k: ["화내시는 건 잘못이에요", "목소리를 낮춰 주세요"], a: "anger", ai: faceAngry, o: [["joy", "star"], ["pride", "trophy"], ["fear", "siren"]]}
+  - {t: "끝까지 듣기", i: coffee, w: "Take your time으로 서두르지 않아도 된다고 하고, I'm listening으로 지금 듣고 있다고 현재진행형으로 알려요. all of it은 하나도 빼놓지 않겠다는 약속이에요.", d: "of me", k: ["시간이 없으니 짧게 말씀해 주세요", "나중에 말씀해 주세요"], a: "listening", ai: bell, o: [["leaving", "plane"], ["laughing", "play"], ["shouting", "speaker"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "분노한 가족 응대 4문장 순서"
+    why: "분노를 먼저 인정하고, 앉아서 말하도록 청하고, 서두르지 않고 듣겠다고 하고, 다 들은 뒤에 설명하겠다고 해요. Take your time은 2줄의 청을, Once you're finished는 3줄의 듣는 시간을 이어서 순서가 하나예요."
+    lines:
+    - {en: "I hear your anger — you have every right to it.", icon: me, ko: "화나신 마음 느껴져요, 그럴 자격이 충분히 있으세요", note: "인정"}
+    - {en: "Let's sit down, and tell me everything you need to say.", icon: home, ko: "앉으셔서 하고 싶으신 말씀을 모두 해 주세요", note: "청"}
+    - {en: "Take your time — I'm listening to everything you say.", icon: bell, ko: "천천히 하세요, 하시는 말씀 모두 듣고 있어요", note: "경청"}
+    - {en: "Once you're finished, I'll explain what happened.", icon: speech, ko: "다 말씀하시면 무슨 일이 있었는지 설명할게요", note: "설명"}
+  sw: {ko: "화가 나신 거 이해해요, 하고 싶으신 말씀 전부 듣고 싶어요"}
+- title: 소아 사망 가족 지지
+  s:
+  - {t: "말의 한계", i: baby, w: "no words for …는 위로할 말이 없다는 걸 인정하는 표현이에요. 서둘러 위로하려 하지 않고 말문이 막히는 것이 자연스럽다고 인정해 줘요.", d: "to her", k: ["이런 일은 흔히 있어요", "아이가 곧 깨어날 거예요"], a: "loss", ai: faceWorried, o: [["test", "lab"], ["bill", "board"], ["trip", "plane"]]}
+  - {t: "안을 허락", i: me, w: "You can …은 허락의 모양이라 안아도 되는지 가족이 묻지 않아도 되게 먼저 말해 줘요. for as long as you need로 시간에 제한이 없다고 알려요.", d: "of her", k: ["안아 주실 수는 없어요", "잠깐만 안아 주세요"], a: "can", ai: handshake2, o: [["cannot", "lock"], ["must", "bell"], ["shouldn't", "faceAngry"]]}
+  - {t: "기념물 제안", i: pushpin, w: "if you'd like로 선택을 가족에게 두고 when you're ready로 시점도 가족에게 맡겨요. keepsake는 손도장·발도장처럼 간직할 기념물을 가리켜요.", d: "of her", k: ["기념물은 지금 꼭 만들어야 해요", "기념물은 만들 수 없어요"], a: "keepsake", ai: star, o: [["report", "board"], ["schedule", "calendar"], ["bill", "pencil"]]}
+  - {t: "깊은 애도", i: me, w: "deeply를 더해 sorry의 무게를 키워요. 아이를 잃은 상실에는 평소보다 강한 표현이 맞고, 뒤의 right here가 곁에 있음을 말해요.", d: "for you", k: ["아이는 편안히 갔어요", "이 일은 누구 탓도 아니에요"], a: "sorry", ai: faceWorried, o: [["grateful", "handshake2"], ["tired", "chevronDown"], ["proud", "trophy"]]}
+  - {t: "작별 시간", i: coffee, w: "Take all the time you need는 시간에 쫓기지 않아도 된다는 허락이에요. say goodbye는 작별이라는 말을 피하지 않고 가족이 할 수 있는 일로 알려 줘요.", d: "to them", k: ["작별은 짧게 해 주세요", "작별은 퇴원 후에 하세요"], a: "goodbye", ai: handshake2, o: [["hello", "play"], ["thanks", "star"], ["sorry", "faceWorried"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "소아 사망 가족 지지 4문장 순서"
+    why: "말이 없다고 먼저 인정하고, That's why로 곁에 있겠다고 이어 말하고, 안아도 된다고 알리고, Afterward로 안은 뒤의 기념물을 제안해요. That's why는 1줄의 말 없음을, Afterward는 3줄의 안는 시간을 이어서 순서가 하나예요."
+    lines:
+    - {en: "There are no words for this kind of loss.", icon: baby, ko: "이런 상실에는 어떤 말도 부족해요", note: "인정"}
+    - {en: "That's why I'm right here with you — I am so deeply sorry.", icon: me, ko: "그래서 곁에 있어요, 정말 깊이 애도를 표합니다", note: "곁에"}
+    - {en: "You can hold her for as long as you need.", icon: handshake2, ko: "필요한 만큼 오래 아이를 안고 계셔도 돼요", note: "허락"}
+    - {en: "Afterward, we can make a keepsake if you'd like.", icon: pushpin, ko: "그 뒤에 원하시면 기념물을 만들 수 있어요", note: "제안"}
+  ctx: {word: "keepsake", ko: "기념물"}

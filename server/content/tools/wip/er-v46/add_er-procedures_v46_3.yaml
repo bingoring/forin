@@ -1,0 +1,117 @@
+- title: 도뇨관 삽입 설명
+  s:
+  - {t: "목적 설명", i: lab, w: "This soft tube로 부드러운 관이라는 점을 먼저 말해 거부감을 줄여요. drains는 고인 소변이 관을 따라 빠져나온다는 뜻이에요.", d: "makes the urine", k: ["이 관으로 수액을 드릴 거예요", "이 관은 소변을 막아 줘요"], a: "drains", ai: chevronDown, o: [["fills", "chartup"], ["blocks", "lock"], ["feeds", "pill"]]}
+  - {t: "감염 예방", i: bandage, w: "to prevent infection으로 소독하는 이유를 먼저 밝혀요. 도뇨관은 무균 술기로 넣어야 요로 감염 위험을 줄일 수 있어요.", d: "quickly to", k: ["감염되지 않도록 소독은 생략할게요", "관을 조심스럽게 빼 드릴게요"], a: "prevent", ai: shield, o: [["cause", "siren"], ["spread", "chartup"], ["hide", "lock"]]}
+  - {t: "감각 안내", i: bulb, w: "uncomfortable for a moment처럼 아프다 대신 불편하다고 말하고 기간도 짧다고 알려요. then으로 곧 나아지는 흐름을 보여 줘요.", d: "an hour", k: ["한참 동안 계속 불편할 거예요", "불편한 느낌은 전혀 없을 거예요"], a: "eases", ai: chevronDown, o: [["grows", "chartup"], ["rises", "chevronUp"], ["builds", "gear"]]}
+  - {t: "프라이버시", i: home, w: "keep you covered는 노출을 최소화하겠다는 약속이에요. as much as possible로 처치에 필요한 만큼만 드러낸다고 솔직히 알려요.", d: "warm as much", k: ["필요하면 이불을 걷을게요", "가능한 한 빨리 끝낼게요"], a: "covered", ai: lock, o: [["exposed", "siren"], ["naked", "faceWorried"], ["bare", "faceAngry"]]}
+  - {t: "동의 구하기", i: check, w: "Do I have your okay …?는 동의를 구하는 부드러운 질문이에요. go ahead는 처치를 시작하는 것을 뜻하는 구어 표현이에요.", d: "your bed to", k: ["지금 바로 시작할게요", "소변은 얼마나 나왔나요?"], a: "ahead", ai: chevronRight, o: [["away", "plane"], ["back", "chevronLeft"], ["out", "chevronUp"]]}
+  - {t: "효과 설명", i: pushpin, w: "This will help …는 처치의 효과를 환자의 이익으로 설명해요. empty는 형용사가 아니라 '비워지다'라는 동사로 쓰였어요.", d: "fill slowly", k: ["이렇게 하면 방광이 서서히 차올라요", "이렇게 하면 소변이 안 나오게 돼요"], a: "empty", ai: chevronDown, o: [["fill", "chartup"], ["grow", "star"], ["stretch", "compass"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "도뇨관 삽입 4문장 순서"
+    why: "관이 하는 일을 설명하고, 동의를 구하고, 동의를 받으면 소독하며 이유를 말하고, 그 뒤의 감각을 안내해요. 뒤 줄이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "This soft tube drains the urine that's stuck.", icon: lab, ko: "이 부드러운 관이 고인 소변을 빼 줘요", note: "설명"}
+    - {en: "Do I have your okay to put it in?", icon: check, ko: "넣어도 될까요?", note: "동의"}
+    - {en: "Once you say yes, I'll clean everything carefully to prevent infection.", icon: bandage, ko: "허락하시면 감염 예방을 위해 소독할게요", note: "소독"}
+    - {en: "After that, it's uncomfortable for a moment, then the pressure eases.", icon: bulb, ko: "그 뒤 잠깐 불편하다가 압박이 가라앉아요", note: "감각"}
+  ctx: {word: "okay", ko: "동의"}
+  sw: {ko: "가능한 한 최대한 가려 드릴게요"}
+- title: 검체 라벨·추적
+  s:
+  - {t: "라벨 부착", i: lab, w: "right at your bedside로 라벨을 붙이는 장소가 환자 곁임을 못 박아요. 환자 앞에서 붙여야 다른 환자 검체와 바뀌는 사고를 막을 수 있어요.", d: "room number right at", k: ["각 튜브에 라벨을 간호사실에서 붙일 거예요", "튜브마다 병실 번호를 적고 있어요"], a: "bedside", ai: hospital, o: [["desk", "board"], ["door", "chevronRight"], ["window", "magnify"]]}
+  - {t: "재확인", i: calendar, w: "Can you …?는 명령 대신 부탁의 모양이라 같은 질문을 반복해도 덜 퉁명스러워요. once more가 이미 한 질문을 한 번 더 한다고 미리 알려 줘요.", d: "your room", k: ["병실 번호를 한 번 더 확인해 주시겠어요?", "차트에 서명해 주시겠어요?"], a: "confirm", ai: check, o: [["forget", "redo"], ["change", "gear"], ["hide", "lock"]]}
+  - {t: "이유 설명", i: shield, w: "This makes sure …는 '이렇게 해서 확실히 …되게 한다'는 목적을 말해요. never get mixed up은 다른 환자 결과와 섞이지 않게 한다는 뜻이에요.", d: "often get", k: ["이렇게 하면 결과가 가끔 섞일 수 있어요", "이렇게 하면 결과가 더 빨리 나와요"], a: "never", ai: lock, o: [["always", "redo"], ["often", "chartup"], ["sometimes", "calendar"]]}
+  - {t: "바코드 부착", i: board, w: "its own barcode는 튜브마다 고유한 표식이 있다는 뜻이에요. right now는 나중으로 미루지 않고 지금 한다는 점을 강조해요.", d: "the same barcode", k: ["튜브마다 바코드는 나중에 붙일 거예요", "모든 튜브에 같은 바코드를 붙여요"], a: "right now", ai: play, o: [["next week", "calendar"], ["last year", "redo"], ["someday", "plane"]]}
+  - {t: "이유 설명", i: hospital, w: "so nothing gets …는 '그래서 …되는 일이 없게'라는 목적절이에요. switched는 검체가 다른 환자 것과 바뀌는 사고를 가리켜요.", d: "the station so", k: ["나중에 간호사실에서 라벨을 붙여요", "라벨은 바뀌어도 괜찮아요"], a: "label", ai: pencil, o: [["discard", "redo"], ["delay", "calendar"], ["cancel", "chevronLeft"]]}
+  - {t: "최종 확인", i: check, w: "every label로 하나도 빠뜨리지 않겠다는 약속이에요. before sending으로 보내기 전이 마지막 안전망이라는 순서를 알려요.", d: "label after sending", k: ["검사실로 보낸 뒤에 라벨을 확인할게요", "라벨은 검사실에서 확인할 거예요"], a: "before", ai: calendar, o: [["after", "redo"], ["without", "lock"], ["instead of", "gear"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "검체 라벨 4문장 순서"
+    why: "침상에서 라벨을 붙이며 생년월일을 확인받고, 확인에 감사하며 바코드를 붙이고, 모두 붙은 뒤 보내기 전에 최종 확인해요. 뒤 줄이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "I'm labeling each tube with your name right at your bedside.", icon: lab, ko: "침상에서 바로 이름으로 라벨을 붙여요", note: "라벨"}
+    - {en: "Can you confirm your date of birth while I do that?", icon: calendar, ko: "그동안 생년월일을 확인해 주시겠어요?", note: "확인"}
+    - {en: "Thank you. Now each tube gets its own barcode.", icon: board, ko: "감사해요. 이제 튜브마다 바코드를 붙여요", note: "바코드"}
+    - {en: "Once they all have barcodes, I'll double-check every label before sending them to the lab.", icon: check, ko: "다 붙으면 보내기 전에 라벨을 전부 다시 확인해요", note: "최종"}
+  ctx: {word: "bedside", ko: "침상 곁"}
+- title: 중심정맥관 삽입 보조
+  s:
+  - {t: "자세 요청", i: pushpin, w: "Please keep …은 자세를 유지해 달라는 정중한 부탁이에요. turned to this side처럼 방향을 구체적으로 말해야 환자가 따라 하기 쉬워요.", d: "head tilted to", k: ["머리를 반대쪽으로 돌려 주세요", "머리를 정면으로 들어 주세요"], a: "head", ai: me, o: [["hand", "handshake2"], ["foot", "chevronDown"], ["knee", "compass"]]}
+  - {t: "감각 안내", i: bulb, w: "then pressure로 느낄 순서를 알려 줘서 예상할 수 있게 해요. 마취약이 들어간 뒤에는 아픔 대신 누르는 느낌이 주가 돼요.", d: "bitter medicine", k: ["잠드는 약이 들어가고 나면 압박감이 있어요", "압박감이 먼저 오고 마취약이 들어가요"], a: "feel", ai: me, o: [["hear", "speaker"], ["smell", "coffee"], ["taste", "pill"]]}
+  - {t: "무균 안내", i: bandage, w: "keep everything sterile은 방포가 무균 구역을 만든다고 이유를 알려요. try not to touch them은 금지 대신 협조를 구하는 말투예요.", d: "everything tidy", k: ["방포는 만져서 정리하셔도 돼요", "방포는 곧 치울 거예요"], a: "sterile", ai: shield, o: [["dirty", "faceAngry"], ["messy", "redo"], ["contaminated", "siren"]]}
+  - {t: "모니터 안내", i: monitor, w: "the whole time으로 처치가 끝날 때까지 계속 본다는 뜻을 전해요. 삽입 중 심박·산소포화도 같은 수치를 계속 확인한다는 말이에요.", d: "I'm unplugging your", k: ["내내 보호자 분을 지켜보고 있어요", "모니터는 잠깐만 볼게요"], a: "watching", ai: magnify, o: [["ignoring", "lock"], ["unplugging", "gear"], ["covering", "chevronDown"]]}
+  - {t: "격려", i: star, w: "You're doing great로 현재 상태를 칭찬하고 just a little longer로 남은 시간이 짧다고 알려요. 끝이 보이는 격려가 협조를 이어 줘요.", d: "a long while", k: ["아직 한참 더 걸려요", "이제 완전히 끝났어요"], a: "great", ai: trophy, o: [["terrible", "faceAngry"], ["awful", "siren"], ["horrible", "chevronDown"]]}
+  - {t: "공감", i: faceWorried, w: "I know this is scary로 공포를 인정하고 but we're staying…으로 곁을 지키겠다고 약속해요. 환자를 혼자 두지 않겠다는 말이 불안을 줄여요.", d: ", but we're stepping out", k: ["무서우시면 잠깐 눈을 감고 계세요", "저희는 잠깐 자리를 비울게요"], a: "staying", ai: home, o: [["leaving", "plane"], ["moving", "chevronRight"], ["walking", "compass"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "중심정맥관 삽입 4문장 순서"
+    why: "자세를 잡고, 자세가 잡히면 마취와 압박을 안내하고, 그 모든 과정에서 무균을 지켜 달라고 부탁하고, 끝으로 곁에서 격려해요. 뒤 줄이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Please keep your head turned to this side.", icon: pushpin, ko: "머리를 이쪽으로 돌린 채 유지해 주세요", note: "자세"}
+    - {en: "Once you're in position, you'll feel some numbing medicine, then pressure.", icon: bulb, ko: "자세가 잡히면 마취약, 그다음 압박감이 느껴져요", note: "감각"}
+    - {en: "Through all of that, the drapes keep everything sterile, so try not to touch them.", icon: bandage, ko: "그동안 방포가 무균을 지키니 만지지 말아 주세요", note: "무균"}
+    - {en: "I know it's scary, but you're doing great — just a little longer.", icon: star, ko: "무섭죠, 잘하고 계세요, 조금만 더요", note: "격려"}
+  ctx: {word: "monitor", ko: "모니터"}
+  sw: {ko: "방포를 만지지 마세요"}
+- title: 수혈 반응 발생
+  s:
+  - {t: "즉시 중단", i: siren, w: "right away로 지체 없이 한다는 뜻을 전해요. 수혈 반응이 의심되면 먼저 수혈을 멈추는 것이 첫 대응이에요.", d: "I'm speeding", k: ["지금 수혈 속도를 올릴게요", "수혈을 천천히 계속할게요"], a: "stopping", ai: lock, o: [["starting", "play"], ["speeding", "chartup"], ["raising", "chevronUp"]]}
+  - {t: "증상 확인", i: stetho, w: "Tell me exactly는 모호한 대답 대신 구체적인 증상을 말해 달라는 요청이에요. 무엇을 느끼는지 알아야 상황을 정확히 의료진에게 전할 수 있어요.", d: "felt yesterday", k: ["어제 어땠는지 말씀해 주세요", "느끼시는 건 말씀 안 하셔도 돼요"], a: "exactly", ai: magnify, o: [["vaguely", "bulb"], ["later", "calendar"], ["tomorrow", "plane"]]}
+  - {t: "대응 안내", i: pill, w: "We're …ing는 지금 진행 중인 조치를 알리는 진행형이에요. 수혈 반응이 의심되면 수혈을 멈추고 수액으로 정맥로를 유지하면서 의사에게 알려요.", d: "more blood and calling", k: ["수혈을 더 빠르게 바꾸고 간호사를 부를게요", "수액을 끊고 퇴원 준비를 할게요"], a: "calling", ai: speech, o: [["ignoring", "cross"], ["avoiding", "chevronLeft"], ["skipping", "chevronRight"]]}
+  - {t: "안전 우선", i: shield, w: "comes first는 다른 모든 것보다 우선순위가 높다는 뜻이에요. always를 문장 끝에 덧붙여 이 약속이 예외가 없다는 점을 강조해요.", d: "Your comfort", k: ["환자분의 편안함이 언제나 최우선이에요", "의사 선생님의 일정이 최우선이에요"], a: "first", ai: trophy, o: [["last", "chevronDown"], ["second", "redo"], ["later", "calendar"]]}
+  - {t: "곁을 지킴", i: handshake2, w: "I'm right here로 곁에 있다는 사실을 먼저 알리고 get through this together로 함께 넘기겠다고 말해요. 불안한 환자에게 곁을 지키는 말이 필요해요.", d: "I'm right back", k: ["저는 잠깐 자리를 비울게요", "혼자서 이겨내셔야 해요"], a: "together", ai: star, o: [["alone", "me"], ["apart", "chevronLeft"], ["separately", "gear"]]}
+  - {t: "의사 호출", i: stetho, w: "will be here로 곧 도착한다는 약속을 전하고 in just a minute로 시간을 알려요. 구체적인 시간을 알려 주면 위급한 상황에서도 환자가 덜 불안해요.", d: "be gone", k: ["의사 선생님은 내일 오실 거예요", "의사 선생님이 방금 떠나셨어요"], a: "minute", ai: play, o: [["month", "calendar"], ["year", "star"], ["week", "plane"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "수혈 반응 4문장 순서"
+    why: "먼저 수혈을 멈추고, 그동안 증상을 묻고, 그 내용을 바탕으로 수액 전환과 호출을 알리고, 그때까지 곁을 지켜요. 뒤 줄이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "I'm stopping the blood right away.", icon: siren, ko: "지금 바로 수혈을 멈출게요", note: "중단"}
+    - {en: "While I do, tell me exactly what you're feeling.", icon: stetho, ko: "그동안 느끼시는 걸 정확히 말씀해 주세요", note: "증상"}
+    - {en: "Based on that, we're switching to fluids and calling the doctor.", icon: pill, ko: "그걸 바탕으로 수액으로 바꾸고 의사를 불러요", note: "대응"}
+    - {en: "Until then, I'm right here with you.", icon: handshake2, ko: "그때까지 제가 곁에 있어요", note: "곁에서"}
+  sw: {ko: "몸이 혈액에 반응하고 있을 수 있어요 — 바로 수혈을 멈출게요"}
+- title: 조영제 아나필락시스
+  s:
+  - {t: "상황 설명", i: siren, w: "You're having …은 지금 일어나고 있는 일을 침착하게 알려 주는 진행형이에요. 반응이라고 짧게 말하면 겁을 주지 않으면서 상황을 정직하게 전달해요.", d: "a meeting with", k: ["조영제 검사가 곧 끝나요", "조영제를 더 넣을게요"], a: "reaction", ai: bulb, o: [["seizure", "gear"], ["stroke", "chartup"], ["fever", "monitor"]]}
+  - {t: "약물 안내", i: stetho, w: "to open your airway로 약의 목적을 같은 문장에 붙였어요. 에피네프린은 아나필락시스의 1차 약으로 기도 부종과 혈압 저하에 쓰여요.", d: "to close", k: ["기도를 막으려고 약을 드릴게요", "통증을 줄이려고 약을 드릴게요"], a: "epinephrine", ai: pill, o: [["insulin", "chartup"], ["heparin", "lab"], ["morphine", "bell"]]}
+  - {t: "호흡 안내", i: mic, w: "Focus on my voice는 불안을 가라앉히려 주의를 하나에 모으게 하는 요청이에요. try to로 부담 없이 할 수 있는 만큼 하라는 여지를 줘요.", d: "my hands and", k: ["제 목소리는 듣지 말고 숨을 참으세요", "빠르게 숨을 쉬어 보세요"], a: "slowly", ai: coffee, o: [["quickly", "play"], ["loudly", "speaker"], ["rapidly", "chartup"]]}
+  - {t: "증상 설명", i: bulb, w: "feels tight로 환자의 증상을 말로 먼저 인정하고 but으로 약이 이미 작용 중이라고 이어요. 증상을 알아주는 말이 불안을 줄여 줘요.", d: "Your hands", k: ["목이 편해졌지만 약은 아직 안 들어요", "목은 괜찮지만 약이 천천히 들어요"], a: "tight", ai: lock, o: [["loose", "chevronLeft"], ["wide", "compass"], ["open", "check"]]}
+  - {t: "곁을 지킴", i: handshake2, w: "not leaving your side는 곁에서 떠나지 않겠다는 관용 표현이에요. 위급한 환자에게 혼자가 아니라는 확신을 줘요.", d: "changing your", k: ["제가 잠깐 자리를 비울게요", "제가 어느 편도 들지 않을게요"], a: "leaving", ai: home, o: [["taking", "chevronRight"], ["hurting", "siren"], ["crossing", "cross"]]}
+  - {t: "감시 안내", i: magnify, w: "watching … closely로 수치를 계속 확인한다는 뜻을 전해요. 아나필락시스 때는 산소포화도와 혈압이 급히 떨어질 수 있어 계속 지켜봐요.", d: "height and blood", k: ["체온과 맥박을 가끔 확인할게요", "혈압은 나중에 확인할게요"], a: "oxygen", ai: monitor, o: [["weight", "gear"], ["height", "chevronUp"], ["hair", "me"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "조영제 아나필락시스 4문장 순서"
+    why: "상황을 알리고, 약을 주고, 약이 이미 작용 중이라고 증상을 인정하고, 약이 듣는 동안 호흡을 안내해요. 뒤 줄이 앞 줄의 약을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "You're having a reaction to the contrast.", icon: siren, ko: "조영제에 반응이 나타나고 있어요", note: "상황"}
+    - {en: "We're giving epinephrine to open your airway.", icon: pill, ko: "기도를 열려고 에피네프린을 드려요", note: "약물"}
+    - {en: "Your throat may feel tight, but the medicine is already working.", icon: bulb, ko: "목이 조일 수 있지만 약이 이미 듣고 있어요", note: "증상"}
+    - {en: "While it works, focus on my voice and try to breathe slowly.", icon: mic, ko: "약이 듣는 동안 제 목소리에 집중하고 천천히 숨 쉬세요", note: "호흡"}
+  ctx: {word: "epinephrine", ko: "에피네프린"}
+  sw: {ko: "제 목소리에 집중하시고 천천히 숨을 쉬어 보세요"}
+- title: 골내주사(IO) 응급 확보
+  s:
+  - {t: "상황 설명", i: siren, w: "to give medicine fast로 왜 뼈에 관을 놓는지 이유를 바로 알려요. 정맥을 못 잡을 때 골수강으로 약과 수액을 빠르게 줄 수 있어요(IO).", d: "a cast on your", k: ["다리뼈를 잠깐 검사할게요", "팔 정맥에 관을 놓을게요"], a: "fast", ai: play, o: [["slowly", "chevronDown"], ["later", "calendar"], ["quietly", "mic"]]}
+  - {t: "감각 안내", i: bulb, w: "it means it's working으로 불편한 느낌의 의미를 해석해 줘요. 불편의 이유를 알려 주면 환자가 놀라 움직이는 것을 줄일 수 있어요.", d: "tickling —", k: ["강한 압박감이 느껴지면 알려 주세요", "압박감이 느껴지면 관이 빠진 거예요"], a: "working", ai: gear, o: [["bleeding", "siren"], ["failing", "cross"], ["stopping", "lock"]]}
+  - {t: "의식 유지", i: me, w: "Stay with me는 의식을 놓지 말고 계속 집중하라는 구어 표현이에요. getting fluids into you now로 지금 조치가 진행 중임을 알려요.", d: "fluids out of", k: ["정신 놓으셔도 괜찮아요, 수액은 나중에 넣어요", "수액을 뽑아내고 있어요"], a: "into", ai: chevronRight, o: [["from", "chevronLeft"], ["around", "redo"], ["past", "plane"]]}
+  - {t: "이유 설명", i: magnify, w: "so가 앞의 이유를 결과로 이어 줘요. couldn't find a vein 같은 사실을 솔직히 말하면 환자와 가족이 갑작스러운 방법 변경을 이해해요.", d: "a doctor", k: ["정맥을 이미 찾아서 그대로 쓸게요", "정맥을 찾을 때까지 계속 시도할게요"], a: "another", ai: redo, o: [["the same", "lock"], ["no", "cross"], ["both", "handshake2"]]}
+  - {t: "안심", i: star, w: "I promise는 약속의 형태로 안심시키는 짧은 덧붙임이에요. fast는 이 경로가 약과 수액을 빠르게 전달한다는 사실에 기반해요.", d: ", I doubt it", k: ["이건 느리게 효과가 날 거예요", "이건 효과가 없을 수도 있어요"], a: "fast", ai: play, o: [["slowly", "chevronDown"], ["badly", "cross"], ["rarely", "calendar"]]}
+  - {t: "격려", i: bell, w: "Hang on은 포기하지 말고 조금만 버티라는 구어 표현이에요. help is on the way로 도움이 오고 있다는 사실을 알려 불안을 줄여요.", d: ", help is off", k: ["그냥 눈을 감고 계세요", "도움은 아직 부르지 않았어요"], a: "on", ai: chevronRight, o: [["in", "chevronLeft"], ["at", "pushpin"], ["by", "compass"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "골내주사 4문장 순서"
+    why: "정맥을 못 찾아 뼈로 관을 놓는다고 알리고, 들어가며 느끼는 압박을 안내하고, 들어간 뒤 수액이 들어간다고 알리고, 곧 효과가 난다고 격려해요. 뒤 줄이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "We couldn't find a vein, so we're placing a line in your leg bone.", icon: siren, ko: "정맥을 못 찾아 다리뼈에 관을 놓을게요", note: "상황"}
+    - {en: "You'll feel strong pressure as it goes in.", icon: bulb, ko: "들어갈 때 강한 압박감이 느껴져요", note: "감각"}
+    - {en: "Once it's in, we're getting fluids into you now.", icon: me, ko: "들어가면 바로 수액을 넣어요", note: "수액"}
+    - {en: "Hang on — this will work fast, I promise.", icon: bell, ko: "조금만 버텨요, 빨리 효과가 있을 거예요", note: "격려"}
+  ctx: {word: "bone", ko: "뼈"}

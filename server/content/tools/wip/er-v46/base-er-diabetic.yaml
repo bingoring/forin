@@ -1,0 +1,5753 @@
+theme: er-diabetic
+words:
+- id: w-take
+  en: take
+  ipa: /teɪk/
+  ko: (약을) 복용하다
+  icon: pill
+  example: When did you last take your insulin?
+  exKo: 마지막으로 인슐린을 언제 맞으셨어요?
+  cue: 환자가 스스로 약·인슐린을 쓰는 것을 물을 때 — '마지막으로 언제 ___하셨어요?'
+  tag: 문진
+  distractorsEn:
+  - make
+  - give
+  distractorsKo:
+  - 처방하다
+  - 끊다
+  chips:
+  - - take
+  decoyChips:
+  - tack
+- id: w-insulin
+  en: insulin
+  ipa: /ˈɪnsəlɪn/
+  ko: 인슐린
+  icon: pill
+  example: When did you last take your insulin?
+  exKo: 마지막으로 인슐린을 언제 맞으셨어요?
+  cue: 췌장에서 나와 혈당을 낮추는 호르몬 — 1형 당뇨 환자는 매일 주사한다
+  tag: 인슐린·약
+  distractorsEn:
+  - glucagon
+  - heparin
+  distractorsKo:
+  - 글루카곤
+  - 헤파린
+  chips:
+  - - in
+    - su
+    - lin
+  decoyChips:
+  - un
+  - sul
+- id: w-eat
+  en: eat
+  ipa: /iːt/
+  ko: 먹다
+  icon: board
+  example: When did you last eat?
+  exKo: 마지막으로 언제 드셨어요?
+  cue: 저혈당 원인을 찾을 때 — 인슐린을 맞고 식사를 걸렀는지
+  tag: 문진
+  distractorsEn:
+  - drink
+  - fast
+  distractorsKo:
+  - 마시다
+  - 굶다
+  chips:
+  - - eat
+  decoyChips:
+  - ate
+- id: w-last
+  en: last
+  ipa: /læst/
+  ko: 마지막으로
+  icon: calendar
+  example: When did you last eat?
+  exKo: 마지막으로 언제 드셨어요?
+  cue: 가장 최근의 식사·투약 시점을 물을 때 — 'When did you ___ eat?'
+  tag: 문진
+  distractorsEn:
+  - first
+  - least
+  distractorsKo:
+  - 처음으로
+  - 자주
+  chips:
+  - - last
+  decoyChips:
+  - lost
+- id: w-check
+  en: check
+  ipa: /tʃɛk/
+  ko: 확인하다
+  icon: check
+  example: I'm going to check your blood sugar now.
+  exKo: 지금 혈당을 확인할게요.
+  cue: 혈당·수치·상태를 한 번 살펴볼 때 가장 흔히 쓰는 동사
+  tag: 혈당
+  distractorsEn:
+  - chart
+  - change
+  distractorsKo:
+  - 기록하다
+  - 교체하다
+  chips:
+  - - check
+  decoyChips:
+  - cheek
+- id: w-blood
+  en: blood
+  ipa: /blʌd/
+  ko: 피
+  icon: cross
+  example: I'm going to check your blood sugar now.
+  exKo: 지금 혈당을 확인할게요.
+  cue: 손끝을 찔러 나오는 것 — 혈당·혈액가스·혈압 앞에 붙는 말
+  tag: 혈당
+  distractorsEn:
+  - urine
+  - serum
+  distractorsKo:
+  - 소변
+  - 혈청
+  chips:
+  - - blood
+  decoyChips:
+  - flood
+- id: w-sugar
+  en: sugar
+  ipa: /ˈʃʊɡər/
+  ko: 혈당
+  icon: chartup
+  example: I'm going to check your blood sugar now.
+  exKo: 지금 혈당을 확인할게요.
+  cue: 환자와 간호사가 혈당을 쉽게 부르는 말 — 'My ___ is low.'
+  tag: 혈당
+  distractorsEn:
+  - sodium
+  - salt
+  distractorsKo:
+  - 나트륨
+  - 케톤
+  chips:
+  - - su
+    - gar
+  decoyChips:
+  - sho
+  - ger
+- id: w-type
+  en: type
+  ipa: /taɪp/
+  ko: 종류
+  icon: board
+  example: Can you tell me what type of insulin you take?
+  exKo: 어떤 종류의 인슐린을 쓰시는지 말씀해 주시겠어요?
+  cue: 속효성인지 지속형인지 인슐린을 가를 때 — 'What ___ of insulin?'
+  tag: 인슐린·약
+  distractorsEn:
+  - dose
+  - brand
+  distractorsKo:
+  - 용량
+  - 시간
+  chips:
+  - - type
+  decoyChips:
+  - tape
+- id: w-prick
+  en: prick
+  ipa: /prɪk/
+  ko: 찌르다
+  icon: scalpel
+  example: I'll prick your finger for a quick blood sample.
+  exKo: 손끝을 찔러 혈액을 조금 채취할게요.
+  cue: 손끝 혈당 검사 직전에 환자에게 — 바늘로 살짝
+  tag: 혈당
+  distractorsEn:
+  - pinch
+  - pick
+  distractorsKo:
+  - 꼬집다
+  - 누르다
+  chips:
+  - - prick
+  decoyChips:
+  - brick
+- id: w-sample
+  en: sample
+  ipa: /ˈsæmpəl/
+  ko: 검체
+  icon: lab
+  example: I'll prick your finger for a quick blood sample.
+  exKo: 손끝을 찔러 혈액을 조금 채취할게요.
+  cue: 검사하려고 몸에서 조금 받아 두는 피·소변
+  tag: 혈당
+  distractorsEn:
+  - swab
+  - culture
+  distractorsKo:
+  - 배양
+  - 결과
+  chips:
+  - - sam
+    - ple
+  decoyChips:
+  - sim
+  - pal
+- id: w-feel
+  en: feel
+  ipa: /fiːl/
+  ko: 느끼다
+  icon: bulb
+  example: Are you feeling any symptoms right now?
+  exKo: 지금 어떤 증상이 있으신가요?
+  cue: 환자가 몸으로 겪는 감각을 물을 때 — 'How do you ___?'
+  tag: 문진
+  distractorsEn:
+  - fill
+  - fall
+  distractorsKo:
+  - 보다
+  - 참다
+  chips:
+  - - feel
+  decoyChips:
+  - fell
+- id: w-symptom
+  en: symptom
+  ipa: /ˈsɪmptəm/
+  ko: 증상
+  icon: cross
+  example: Are you feeling any symptoms right now?
+  exKo: 지금 어떤 증상이 있으신가요?
+  cue: 환자가 스스로 느끼고 말하는 이상 — 떨림, 갈증, 어지럼 같은 것
+  tag: 증상
+  distractorsEn:
+  - sign
+  - syndrome
+  distractorsKo:
+  - 징후
+  - 증후군
+  chips:
+  - - symp
+    - tom
+  decoyChips:
+  - sim
+  - tum
+- id: w-shaky
+  en: shaky
+  ipa: /ˈʃeɪki/
+  ko: 떨리는
+  icon: cross
+  example: Do you feel shaky, sweaty, or dizzy?
+  exKo: 떨리거나 땀이 나거나 어지러우신가요?
+  cue: 경증 저혈당의 첫 신호 — 컵을 들면 손이 가만히 있지 않을 때
+  tag: 증상
+  distractorsEn:
+  - shaken
+  - sharp
+  distractorsKo:
+  - 뻣뻣한
+  - 저린
+  chips:
+  - - sha
+    - ky
+  decoyChips:
+  - shak
+  - ey
+- id: w-sweaty
+  en: sweaty
+  ipa: /ˈswɛti/
+  ko: 땀나는
+  icon: cross
+  example: Do you feel shaky, sweaty, or dizzy?
+  exKo: 떨리거나 땀이 나거나 어지러우신가요?
+  cue: 저혈당 때 피부가 식은땀으로 축축할 때
+  tag: 증상
+  distractorsEn:
+  - sweet
+  - swollen
+  distractorsKo:
+  - 건조한
+  - 창백한
+  chips:
+  - - sweat
+    - y
+  decoyChips:
+  - sweet
+  - ie
+- id: w-dizzy
+  en: dizzy
+  ipa: /ˈdɪzi/
+  ko: 어지러운
+  icon: cross
+  example: Do you feel shaky, sweaty, or dizzy?
+  exKo: 떨리거나 땀이 나거나 어지러우신가요?
+  cue: 머리가 빙빙 돌고 균형이 흔들릴 때
+  tag: 증상
+  distractorsEn:
+  - drowsy
+  - dazed
+  distractorsKo:
+  - 졸린
+  - 메스꺼운
+  chips:
+  - - diz
+    - zy
+  decoyChips:
+  - dis
+  - sy
+- id: w-juice
+  en: juice
+  ipa: /dʒuːs/
+  ko: 주스
+  icon: coffee
+  example: Let's have you take some juice or glucose tablets now.
+  exKo: 지금 주스나 포도당 알약을 좀 드시게 할게요.
+  cue: 의식이 있는 경증 저혈당 환자에게 먼저 건네는 달콤한 음료
+  tag: 저혈당
+  distractorsEn:
+  - milk
+  - soda
+  distractorsKo:
+  - 우유
+  - 탄산음료
+  chips:
+  - - juice
+  decoyChips:
+  - juse
+- id: w-glucose
+  en: glucose
+  ipa: /ˈɡluːkoʊs/
+  ko: 포도당
+  icon: pill
+  example: Let's have you take some juice or glucose tablets now.
+  exKo: 지금 주스나 포도당 알약을 좀 드시게 할게요.
+  cue: 혈액 속 당의 정식 이름 — 정제나 정맥 D50으로 준다
+  tag: 저혈당
+  distractorsEn:
+  - glucagon
+  - fructose
+  distractorsKo:
+  - 글루카곤
+  - 과당
+  chips:
+  - - glu
+    - cose
+  decoyChips:
+  - gly
+  - case
+- id: w-tablet
+  en: tablet
+  ipa: /ˈtæblɪt/
+  ko: 알약
+  icon: pill
+  example: Let's have you take some juice or glucose tablets now.
+  exKo: 지금 주스나 포도당 알약을 좀 드시게 할게요.
+  cue: 씹어 먹는 포도당 알 — '포도당 ___ 4개'
+  tag: 저혈당
+  distractorsEn:
+  - capsule
+  - patch
+  distractorsKo:
+  - 캡슐
+  - 패치
+  chips:
+  - - tab
+    - let
+  decoyChips:
+  - tub
+  - lit
+- id: w-recheck
+  en: recheck
+  ipa: /ˌriːˈtʃɛk/
+  ko: 재측정하다
+  icon: check
+  example: We'll recheck your sugar in fifteen minutes.
+  exKo: 십오 분 뒤에 혈당을 다시 잴게요.
+  cue: 당을 먹인 뒤 15분 규칙 — 한 번 더 재 볼 때
+  tag: 혈당
+  distractorsEn:
+  - recharge
+  - record
+  distractorsKo:
+  - 기록하다
+  - 보고하다
+  chips:
+  - - re
+    - check
+  decoyChips:
+  - ri
+  - chick
+- id: w-watch
+  en: watch
+  ipa: /wɑːtʃ/
+  ko: 지켜보다
+  icon: monitor
+  example: We'll keep watching you until you feel normal again.
+  exKo: 정상으로 돌아올 때까지 계속 지켜볼게요.
+  cue: 상태가 돌아올 때까지 곁에서 눈을 떼지 않을 때
+  tag: 치료·감시
+  distractorsEn:
+  - wait
+  - wake
+  distractorsKo:
+  - 기다리다
+  - 깨우다
+  chips:
+  - - watch
+  decoyChips:
+  - wash
+- id: w-normal
+  en: normal
+  ipa: /ˈnɔːrməl/
+  ko: 정상적인
+  icon: chartup
+  example: We'll keep watching you until you feel normal again.
+  exKo: 정상으로 돌아올 때까지 계속 지켜볼게요.
+  cue: 평소 같은 상태, 기준 범위 안 — 'feel ___ again'
+  tag: 혈당
+  distractorsEn:
+  - neutral
+  - natural
+  distractorsKo:
+  - 비정상적인
+  - 드문
+  chips:
+  - - nor
+    - mal
+  decoyChips:
+  - nar
+  - mel
+- id: w-often
+  en: often
+  ipa: /ˈɔːfən/
+  ko: 자주
+  icon: calendar
+  example: How often have you been urinating?
+  exKo: 소변을 얼마나 자주 보셨어요?
+  cue: 다뇨를 물을 때 — 횟수를 묻는 'How ___?'
+  tag: 문진
+  distractorsEn:
+  - long
+  - much
+  distractorsKo:
+  - 오래
+  - 가끔
+  chips:
+  - - of
+    - ten
+  decoyChips:
+  - 'off'
+  - tan
+- id: w-urinate
+  en: urinate
+  ipa: /ˈjʊrɪneɪt/
+  ko: 소변보다
+  icon: board
+  example: How often have you been urinating?
+  exKo: 소변을 얼마나 자주 보셨어요?
+  cue: 다뇨 문진의 공식적인 말 — 환자는 'pee'라고 한다
+  tag: 증상
+  distractorsEn:
+  - ulcerate
+  - hydrate
+  distractorsKo:
+  - 배변하다
+  - 토하다
+  chips:
+  - - u
+    - rin
+    - ate
+  decoyChips:
+  - ur
+  - ine
+- id: w-thirsty
+  en: thirsty
+  ipa: /ˈθɜːrsti/
+  ko: 목마른
+  icon: cross
+  example: Have you been unusually thirsty or tired?
+  exKo: 평소보다 갈증이 나거나 피곤하셨어요?
+  cue: 다갈 — 물을 마셔도 계속 물이 당길 때
+  tag: 증상
+  distractorsEn:
+  - hungry
+  - thrifty
+  distractorsKo:
+  - 배고픈
+  - 메스꺼운
+  chips:
+  - - thirst
+    - y
+  decoyChips:
+  - thirt
+  - ie
+- id: w-tired
+  en: tired
+  ipa: /ˈtaɪərd/
+  ko: 피곤한
+  icon: cross
+  example: Have you been unusually thirsty or tired?
+  exKo: 평소보다 갈증이 나거나 피곤하셨어요?
+  cue: 고혈당 환자가 기운이 없다고 할 때 — 잠을 자도 개운하지 않은
+  tag: 증상
+  distractorsEn:
+  - tied
+  - tight
+  distractorsKo:
+  - 졸린
+  - 불안한
+  chips:
+  - - tired
+  decoyChips:
+  - tried
+- id: w-fluid
+  en: fluid
+  ipa: /ˈfluːɪd/
+  ko: 수분·수액
+  icon: coffee
+  example: Have you been able to keep up with drinking fluids?
+  exKo: 수분 섭취는 충분히 해오셨어요?
+  cue: 마시는 물, 또는 정맥으로 넣는 수액 — 'IV ___s'
+  tag: 치료·감시
+  distractorsEn:
+  - flush
+  - flu
+  distractorsKo:
+  - 혈액
+  - 음식
+  chips:
+  - - flu
+    - id
+  decoyChips:
+  - flo
+  - ud
+- id: w-drink
+  en: drink
+  ipa: /drɪŋk/
+  ko: 마시다
+  icon: coffee
+  example: Have you been able to keep up with drinking fluids?
+  exKo: 수분 섭취는 충분히 해오셨어요?
+  cue: 수분 섭취를 물을 때 — 먹는 것이 아니라 삼키는 물
+  tag: 문진
+  distractorsEn:
+  - eat
+  - drip
+  distractorsKo:
+  - 먹다
+  - 토하다
+  chips:
+  - - drink
+  decoyChips:
+  - drank
+- id: w-history
+  en: history
+  ipa: /ˈhɪstəri/
+  ko: 병력
+  icon: board
+  example: Do you have a history of diabetes in your family?
+  exKo: 가족 중에 당뇨병 병력이 있으신가요?
+  cue: 환자나 가족이 예전에 앓았던 병을 물을 때 — 'family ___'
+  tag: 문진
+  distractorsEn:
+  - record
+  - diagnosis
+  distractorsKo:
+  - 진단
+  - 기록
+  chips:
+  - - his
+    - to
+    - ry
+  decoyChips:
+  - hys
+  - tery
+- id: w-diabetes
+  en: diabetes
+  ipa: /ˌdaɪəˈbiːtiːz/
+  ko: 당뇨병
+  icon: cross
+  example: Do you have a history of diabetes in your family?
+  exKo: 가족 중에 당뇨병 병력이 있으신가요?
+  cue: 혈당이 계속 높은 만성 질환 — 1형·2형·임신성
+  tag: 혈당
+  distractorsEn:
+  - dialysis
+  - diarrhea
+  distractorsKo:
+  - 고혈압
+  - 투석
+  chips:
+  - - di
+    - a
+    - be
+    - tes
+  decoyChips:
+  - dai
+  - bet
+- id: w-ketone
+  en: ketone
+  ipa: /ˈkiːtoʊn/
+  ko: 케톤
+  icon: lab
+  example: We'll check your blood sugar and look for ketones too.
+  exKo: 혈당도 확인하고 케톤도 함께 볼게요.
+  cue: 인슐린이 모자라 지방을 태우면 생기는 산 — 소변·혈액에서 잰다
+  tag: DKA·HHS
+  distractorsEn:
+  - glucose
+  - lactate
+  distractorsKo:
+  - 젖산
+  - 포도당
+  chips:
+  - - ke
+    - tone
+  decoyChips:
+  - ki
+  - tune
+- id: w-show
+  en: show
+  ipa: /ʃoʊ/
+  ko: 보여주다
+  icon: speech
+  example: Can you show me how you usually give your insulin?
+  exKo: 평소 인슐린을 어떻게 놓으시는지 보여주시겠어요?
+  cue: 환자에게 직접 해 보라고 시연을 청할 때 — 'Can you ___ me?'
+  tag: 교육·지지
+  distractorsEn:
+  - tell
+  - teach
+  distractorsKo:
+  - 말하다
+  - 가르치다
+  chips:
+  - - show
+  decoyChips:
+  - shoe
+- id: w-give
+  en: give
+  ipa: /ɡɪv/
+  ko: 투여하다
+  icon: pushpin
+  example: Can you show me how you usually give your insulin?
+  exKo: 평소 인슐린을 어떻게 놓으시는지 보여주시겠어요?
+  cue: 인슐린·수액·포도당을 몸에 넣을 때 — 간호사가 하든 환자가 스스로 하든
+  tag: 인슐린·약
+  distractorsEn:
+  - take
+  - get
+  distractorsKo:
+  - 복용하다
+  - 처방하다
+  chips:
+  - - give
+  decoyChips:
+  - gave
+- id: w-spot
+  en: spot
+  ipa: /spɑːt/
+  ko: (주사) 자리
+  icon: board
+  example: Which spots do you use, and do you rotate them?
+  exKo: 어느 부위를 쓰시고, 돌아가며 놓으시나요?
+  cue: 환자에게 인슐린을 어디에 놓는지 쉬운 말로 물을 때 — 배, 허벅지
+  tag: 인슐린·약
+  distractorsEn:
+  - spit
+  - slot
+  distractorsKo:
+  - 흉터
+  - 멍
+  chips:
+  - - spot
+  decoyChips:
+  - stop
+- id: w-use
+  en: use
+  ipa: /juːz/
+  ko: 사용하다
+  icon: gear
+  example: Which spots do you use, and do you rotate them?
+  exKo: 어느 부위를 쓰시고, 돌아가며 놓으시나요?
+  cue: 펜·기구·주사 자리를 평소 어떻게 쓰는지 물을 때
+  tag: 인슐린·약
+  distractorsEn:
+  - lose
+  - fuse
+  distractorsKo:
+  - 버리다
+  - 바꾸다
+  chips:
+  - - use
+  decoyChips:
+  - us
+- id: w-rotate
+  en: rotate
+  ipa: /ˈroʊteɪt/
+  ko: 돌아가며 하다
+  icon: compass
+  example: Which spots do you use, and do you rotate them?
+  exKo: 어느 부위를 쓰시고, 돌아가며 놓으시나요?
+  cue: 지방비대를 막으려고 주사 자리를 매번 옮길 때
+  tag: 인슐린·약
+  distractorsEn:
+  - relocate
+  - repeat
+  distractorsKo:
+  - 반복하다
+  - 고정하다
+  chips:
+  - - ro
+    - tate
+  decoyChips:
+  - ra
+  - tote
+- id: w-miss
+  en: miss
+  ipa: /mɪs/
+  ko: 놓치다
+  icon: cross
+  example: Have you missed any doses recently?
+  exKo: 최근에 주사를 빠뜨리신 적 있으세요?
+  cue: 인슐린 순응도 — 깜빡하고 한 번 빠뜨렸는지 물을 때
+  tag: 인슐린·약
+  distractorsEn:
+  - mix
+  - mess
+  distractorsKo:
+  - 섞다
+  - 늘리다
+  chips:
+  - - miss
+  decoyChips:
+  - mess
+- id: w-dose
+  en: dose
+  ipa: /doʊs/
+  ko: 용량
+  icon: pill
+  example: Have you missed any doses recently?
+  exKo: 최근에 주사를 빠뜨리신 적 있으세요?
+  cue: 한 번에 넣는 약의 양 — 인슐린은 '단위'로 센다
+  tag: 인슐린·약
+  distractorsEn:
+  - unit
+  - doze
+  distractorsKo:
+  - 농도
+  - 횟수
+  chips:
+  - - dose
+  decoyChips:
+  - doze
+- id: w-inject
+  en: inject
+  ipa: /ɪnˈdʒɛkt/
+  ko: 주사하다
+  icon: scalpel
+  example: Where on your body do you usually inject?
+  exKo: 보통 몸의 어디에 주사하세요?
+  cue: 바늘로 약을 피하에 밀어 넣을 때 — 인슐린 펜의 동작
+  tag: 인슐린·약
+  distractorsEn:
+  - infuse
+  - insert
+  distractorsKo:
+  - 바르다
+  - 삽입하다
+  chips:
+  - - in
+    - ject
+  decoyChips:
+  - en
+  - jest
+- id: w-walk
+  en: walk you through
+  ipa: /ˌwɔːk ju ˈθruː/
+  ko: 차근차근 안내하다
+  icon: compass
+  example: Let me walk you through the steps one more time.
+  exKo: 단계를 한 번 더 안내해 드릴게요.
+  cue: 교육할 때 옆에서 하나씩 짚어 가며 이끌 때 — '___ the steps'
+  tag: 교육·지지
+  distractorsEn:
+  - work you through
+  - walk you out
+  distractorsKo:
+  - 말하다
+  - 서두르다
+  chips:
+  - - walk
+  - - you
+  - - through
+  decoyChips:
+  - wake
+  - threw
+- id: w-step
+  en: step
+  ipa: /stɛp/
+  ko: 단계
+  icon: pushpin
+  example: Let me walk you through the steps one more time.
+  exKo: 단계를 한 번 더 안내해 드릴게요.
+  cue: 교육 순서의 한 칸 — '___ by ___'로 하나씩
+  tag: 교육·지지
+  distractorsEn:
+  - stage
+  - stop
+  distractorsKo:
+  - 시기
+  - 목표
+  chips:
+  - - step
+  decoyChips:
+  - stop
+- id: w-site
+  en: site
+  ipa: /saɪt/
+  ko: 부위
+  icon: board
+  example: Rotating your sites helps prevent skin problems.
+  exKo: 부위를 돌아가며 놓으면 피부 문제를 예방할 수 있어요.
+  cue: 주사·펌프 캐뉼라가 들어가는 몸의 부위를 의료진이 부르는 말
+  tag: 인슐린·약
+  distractorsEn:
+  - side
+  - sight
+  distractorsKo:
+  - 측면
+  - 흉터
+  chips:
+  - - site
+  decoyChips:
+  - side
+- id: w-prevent
+  en: prevent
+  ipa: /prɪˈvɛnt/
+  ko: 예방하다
+  icon: shield
+  example: Rotating your sites helps prevent skin problems.
+  exKo: 부위를 돌아가며 놓으면 피부 문제를 예방할 수 있어요.
+  cue: 문제가 생기기 전에 미리 막을 때
+  tag: 교육·지지
+  distractorsEn:
+  - present
+  - protect
+  distractorsKo:
+  - 치료하다
+  - 유발하다
+  chips:
+  - - pre
+    - vent
+  decoyChips:
+  - pro
+  - vend
+- id: w-skin
+  en: skin
+  ipa: /skɪn/
+  ko: 피부
+  icon: board
+  example: Rotating your sites helps prevent skin problems.
+  exKo: 부위를 돌아가며 놓으면 피부 문제를 예방할 수 있어요.
+  cue: 한 자리에만 주사하면 딱딱해지고 울퉁불퉁해지는 곳
+  tag: 상처·감염
+  distractorsEn:
+  - scar
+  - skim
+  distractorsKo:
+  - 흉터
+  - 근육
+  chips:
+  - - skin
+  decoyChips:
+  - skim
+- id: w-long
+  en: long
+  ipa: /lɔːŋ/
+  ko: 오래
+  icon: calendar
+  example: How long has the sore been there?
+  exKo: 상처가 생긴 지 얼마나 되셨어요?
+  cue: 증상이 이어진 기간을 물을 때 — 'How ___ has it been there?'
+  tag: 문진
+  distractorsEn:
+  - often
+  - far
+  distractorsKo:
+  - 자주
+  - 멀리
+  chips:
+  - - long
+  decoyChips:
+  - lung
+- id: w-sore
+  en: sore
+  ipa: /sɔːr/
+  ko: 헐어서 안 낫는 곳
+  icon: cross
+  example: How long has the sore been there?
+  exKo: 상처가 생긴 지 얼마나 되셨어요?
+  cue: 당뇨 환자 발에 잘 안 낫고 헐어 있는 곳 — 환자가 쉽게 부르는 말
+  tag: 상처·감염
+  distractorsEn:
+  - scar
+  - sole
+  distractorsKo:
+  - 흉터
+  - 굳은살
+  chips:
+  - - sore
+  decoyChips:
+  - sole
+- id: w-redness
+  en: redness
+  ipa: /ˈrɛdnəs/
+  ko: 발적
+  icon: cross
+  example: Is there any redness, warmth, or drainage around it?
+  exKo: 주변에 발적이나 열감, 삼출물이 있나요?
+  cue: 감염 징후 네 가지 중 하나 — 상처 둘레가 붉게 번진 것
+  tag: 상처·감염
+  distractorsEn:
+  - rash
+  - readiness
+  distractorsKo:
+  - 발진
+  - 부종
+  chips:
+  - - red
+    - ness
+  decoyChips:
+  - rad
+  - less
+- id: w-warmth
+  en: warmth
+  ipa: /wɔːrmθ/
+  ko: 열감
+  icon: cross
+  example: Is there any redness, warmth, or drainage around it?
+  exKo: 주변에 발적이나 열감, 삼출물이 있나요?
+  cue: 상처 주변을 손등으로 만졌을 때 뜨끈한 느낌 — 감염 징후
+  tag: 상처·감염
+  distractorsEn:
+  - warning
+  - fever
+  distractorsKo:
+  - 발열
+  - 통증
+  chips:
+  - - warm
+    - th
+  decoyChips:
+  - worm
+  - ing
+- id: w-drainage
+  en: drainage
+  ipa: /ˈdreɪnɪdʒ/
+  ko: 삼출물
+  icon: cross
+  example: Is there any redness, warmth, or drainage around it?
+  exKo: 주변에 발적이나 열감, 삼출물이 있나요?
+  cue: 상처에서 흘러나오는 진물·고름 — 색과 양을 기록한다
+  tag: 상처·감염
+  distractorsEn:
+  - dressing
+  - bleeding
+  distractorsKo:
+  - 드레싱
+  - 출혈
+  chips:
+  - - drain
+    - age
+  decoyChips:
+  - drawn
+  - ing
+- id: w-slow
+  en: slow
+  ipa: /sloʊ/
+  ko: 늦추다
+  icon: board
+  example: High blood sugar can slow healing, so we'll check that too.
+  exKo: 혈당이 높으면 회복이 늦어질 수 있어서 그것도 확인할게요.
+  cue: 고혈당이 상처 회복을 더디게 만들 때 — '___ healing'
+  tag: 상처·감염
+  distractorsEn:
+  - stop
+  - speed
+  distractorsKo:
+  - 멈추다
+  - 앞당기다
+  chips:
+  - - slow
+  decoyChips:
+  - slew
+- id: w-heal
+  en: heal
+  ipa: /hiːl/
+  ko: 낫다
+  icon: bandage
+  example: High blood sugar can slow healing, so we'll check that too.
+  exKo: 혈당이 높으면 회복이 늦어질 수 있어서 그것도 확인할게요.
+  cue: 상처가 아물고 새살이 차오를 때
+  tag: 상처·감염
+  distractorsEn:
+  - heel
+  - seal
+  distractorsKo:
+  - 덧나다
+  - 곪다
+  chips:
+  - - heal
+  decoyChips:
+  - heel
+- id: w-clean
+  en: clean
+  ipa: /kliːn/
+  ko: 세척하다
+  icon: bandage
+  example: We'll clean and dress the wound carefully.
+  exKo: 상처를 조심스럽게 세척하고 드레싱할게요.
+  cue: 드레싱 전에 상처를 생리식염수로 닦아 낼 때
+  tag: 상처·감염
+  distractorsEn:
+  - clear
+  - close
+  distractorsKo:
+  - 말리다
+  - 봉합하다
+  chips:
+  - - clean
+  decoyChips:
+  - clear
+- id: w-dress
+  en: dress
+  ipa: /drɛs/
+  ko: 드레싱하다
+  icon: bandage
+  example: We'll clean and dress the wound carefully.
+  exKo: 상처를 조심스럽게 세척하고 드레싱할게요.
+  cue: 상처를 거즈·패드로 덮어 보호할 때 — '___ the wound'
+  tag: 상처·감염
+  distractorsEn:
+  - press
+  - drain
+  distractorsKo:
+  - 봉합하다
+  - 배액하다
+  chips:
+  - - dress
+  decoyChips:
+  - press
+- id: w-wound
+  en: wound
+  ipa: /wuːnd/
+  ko: 상처
+  icon: bandage
+  example: We'll clean and dress the wound carefully.
+  exKo: 상처를 조심스럽게 세척하고 드레싱할게요.
+  cue: 씻고 드레싱하는 대상 — 의료진이 쓰는 일반적인 말
+  tag: 상처·감염
+  distractorsEn:
+  - bruise
+  - blister
+  distractorsKo:
+  - 흉터
+  - 멍
+  chips:
+  - - wound
+  decoyChips:
+  - wand
+- id: w-control
+  en: control
+  ipa: /kənˈtroʊl/
+  ko: 조절하다
+  icon: gear
+  example: Keeping your sugar controlled helps wounds heal faster.
+  exKo: 혈당을 잘 조절하면 상처가 더 빨리 낫습니다.
+  cue: 혈당을 목표 범위 안에 붙잡아 둘 때 — 'keep it ___led'
+  tag: 혈당
+  distractorsEn:
+  - contain
+  - correct
+  distractorsKo:
+  - 측정하다
+  - 교정하다
+  chips:
+  - - con
+    - trol
+  decoyChips:
+  - com
+  - troll
+- id: w-gas
+  en: gas
+  ipa: /ɡæs/
+  ko: 혈액가스
+  icon: lab
+  example: We're checking your sugar, ketones, and blood gas now.
+  exKo: 지금 혈당과 케톤, 혈액가스를 확인하고 있어요.
+  cue: DKA에서 pH와 중탄산을 보려고 뽑는 검사 — 'blood ___'
+  tag: DKA·HHS
+  distractorsEn:
+  - glucose
+  - count
+  distractorsKo:
+  - 혈구수
+  - 혈당
+  chips:
+  - - gas
+  decoyChips:
+  - gap
+- id: w-start
+  en: start
+  ipa: /stɑːrt/
+  ko: 시작하다
+  icon: pushpin
+  example: We'll start IV fluids and insulin to treat this.
+  exKo: 정맥 수액과 인슐린으로 치료를 시작할게요.
+  cue: 처치를 막 개시할 때 — '___ IV fluids'
+  tag: 치료·감시
+  distractorsEn:
+  - stop
+  - stay
+  distractorsKo:
+  - 멈추다
+  - 유지하다
+  chips:
+  - - start
+  decoyChips:
+  - stare
+- id: w-treat
+  en: treat
+  ipa: /triːt/
+  ko: 치료하다
+  icon: cross
+  example: We'll start IV fluids and insulin to treat this.
+  exKo: 정맥 수액과 인슐린으로 치료를 시작할게요.
+  cue: 병·상태를 낫게 하려고 손을 쓸 때 (동사)
+  tag: 치료·감시
+  distractorsEn:
+  - threat
+  - trace
+  distractorsKo:
+  - 진단하다
+  - 예방하다
+  chips:
+  - - treat
+  decoyChips:
+  - threat
+- id: w-breathe
+  en: breathe
+  ipa: /briːð/
+  ko: 숨쉬다
+  icon: lab
+  example: Are you breathing faster or deeper than usual?
+  exKo: 평소보다 숨을 빠르거나 깊게 쉬시나요?
+  cue: 쿠스마울 호흡을 물을 때 — 동사, 끝에 e가 붙는다
+  tag: DKA·HHS
+  distractorsEn:
+  - wheeze
+  - breed
+  distractorsKo:
+  - 기침하다
+  - 헐떡이다
+  chips:
+  - - breathe
+  decoyChips:
+  - breath
+- id: w-breath
+  en: breath
+  ipa: /brɛθ/
+  ko: 숨
+  icon: lab
+  example: Does your breath smell fruity or sweet?
+  exKo: 숨에서 과일 냄새나 단 냄새가 나나요?
+  cue: DKA 환자의 입김에서 달큰한 냄새가 날 때 — 명사
+  tag: DKA·HHS
+  distractorsEn:
+  - breadth
+  - cough
+  distractorsKo:
+  - 가래
+  - 기침
+  chips:
+  - - breath
+  decoyChips:
+  - breathe
+- id: w-smell
+  en: smell
+  ipa: /smɛl/
+  ko: 냄새나다
+  icon: bulb
+  example: Does your breath smell fruity or sweet?
+  exKo: 숨에서 과일 냄새나 단 냄새가 나나요?
+  cue: 입김에서 무언가가 코에 느껴질 때 — '___ fruity'
+  tag: DKA·HHS
+  distractorsEn:
+  - spell
+  - taste
+  distractorsKo:
+  - 맛이 나다
+  - 보이다
+  chips:
+  - - smell
+  decoyChips:
+  - spell
+- id: w-fruity
+  en: fruity
+  ipa: /ˈfruːti/
+  ko: 과일 냄새 나는
+  icon: coffee
+  example: Does your breath smell fruity or sweet?
+  exKo: 숨에서 과일 냄새나 단 냄새가 나나요?
+  cue: 케톤 때문에 입김이 아세톤처럼 달큰할 때
+  tag: DKA·HHS
+  distractorsEn:
+  - foul
+  - fruitful
+  distractorsKo:
+  - 비린내 나는
+  - 쉰내 나는
+  chips:
+  - - fruit
+    - y
+  decoyChips:
+  - fruct
+  - ie
+- id: w-ready
+  en: ready
+  ipa: /ˈrɛdi/
+  ko: 준비된
+  icon: check
+  example: We're getting everything ready for your treatment now.
+  exKo: 지금 치료를 위해 모든 것을 준비하고 있어요.
+  cue: 치료 물품을 다 갖춰 놓았을 때 — 'get everything ___'
+  tag: 치료·감시
+  distractorsEn:
+  - steady
+  - weary
+  distractorsKo:
+  - 끝난
+  - 안정된
+  chips:
+  - - rea
+    - dy
+  decoyChips:
+  - red
+  - di
+- id: w-treatment
+  en: treatment
+  ipa: /ˈtriːtmənt/
+  ko: 치료
+  icon: cross
+  example: We're getting everything ready for your treatment now.
+  exKo: 지금 치료를 위해 모든 것을 준비하고 있어요.
+  cue: 수액·인슐린처럼 병을 다루는 조치 전체 (명사)
+  tag: 치료·감시
+  distractorsEn:
+  - treaty
+  - trial
+  distractorsKo:
+  - 진단
+  - 검사
+  chips:
+  - - treat
+    - ment
+  decoyChips:
+  - trait
+  - mint
+- id: w-notice
+  en: notice
+  ipa: /ˈnoʊtɪs/
+  ko: 알아차리다
+  icon: magnify
+  example: When did you notice he became confused?
+  exKo: 언제부터 혼란스러워하는 걸 알아차리셨어요?
+  cue: 가족에게 변화를 처음 본 시점을 물을 때 — '언제 ___하셨어요?'
+  tag: 문진
+  distractorsEn:
+  - note
+  - notify
+  distractorsKo:
+  - 알리다
+  - 기억하다
+  chips:
+  - - 'no'
+    - tice
+  decoyChips:
+  - na
+  - tise
+- id: w-confused
+  en: confused
+  ipa: /kənˈfjuːzd/
+  ko: 혼란스러운
+  icon: bulb
+  example: When did you notice he became confused?
+  exKo: 언제부터 혼란스러워하는 걸 알아차리셨어요?
+  cue: 저혈당·HHS로 엉뚱한 말을 하고 시간·장소를 모를 때
+  tag: 의식·신경
+  distractorsEn:
+  - confusing
+  - conscious
+  distractorsKo:
+  - 의식이 없는
+  - 불안한
+  chips:
+  - - con
+    - fused
+  decoyChips:
+  - com
+  - fuzed
+- id: w-vein
+  en: vein
+  ipa: /veɪn/
+  ko: 정맥
+  icon: cross
+  example: We're giving sugar directly into his vein right now.
+  exKo: 지금 정맥으로 바로 포도당을 주고 있어요.
+  cue: D50을 곧장 넣는 혈관 — 팔의 IV가 들어간 곳
+  tag: 치료·감시
+  distractorsEn:
+  - artery
+  - vessel
+  distractorsKo:
+  - 동맥
+  - 근육
+  chips:
+  - - vein
+  decoyChips:
+  - vain
+- id: w-respond
+  en: respond
+  ipa: /rɪˈspɑːnd/
+  ko: 반응하다
+  icon: speech
+  example: Is he responding when you speak to him?
+  exKo: 말을 걸면 반응하시나요?
+  cue: 의식 수준을 가족에게 물을 때 — 말을 걸면 대꾸하는지
+  tag: 의식·신경
+  distractorsEn:
+  - respect
+  - resolve
+  distractorsKo:
+  - 회복하다
+  - 저항하다
+  chips:
+  - - re
+    - spond
+  decoyChips:
+  - ri
+  - spend
+- id: w-condition
+  en: condition
+  ipa: /kənˈdɪʃən/
+  ko: 질환
+  icon: cross
+  example: Does he have any other medical conditions?
+  exKo: 다른 지병이 있으신가요?
+  cue: 당뇨 말고 앓고 있는 병을 물을 때 — 'other medical ___s'
+  tag: 문진
+  distractorsEn:
+  - complication
+  - contraindication
+  distractorsKo:
+  - 합병증
+  - 증상
+  chips:
+  - - con
+    - di
+    - tion
+  decoyChips:
+  - com
+  - sion
+- id: w-overwhelmed
+  en: overwhelmed
+  ipa: /ˌoʊvərˈwɛlmd/
+  ko: 압도된
+  icon: bulb
+  example: This is a lot to take in, and it's okay to feel overwhelmed.
+  exKo: 받아들이기 힘드실 텐데, 압도되는 기분이 드셔도 괜찮아요.
+  cue: 신환 진단을 받은 환자가 감당이 안 된다고 할 때 그 마음을 이름 붙여 줄 때
+  tag: 교육·지지
+  distractorsEn:
+  - overworked
+  - overjoyed
+  distractorsKo:
+  - 안도한
+  - 화가 난
+  chips:
+  - - over
+    - whelm
+    - ed
+  decoyChips:
+  - under
+  - helm
+- id: w-teach
+  en: teach
+  ipa: /tiːtʃ/
+  ko: 가르치다
+  icon: speech
+  example: Your body needs insulin, which we'll teach you to use.
+  exKo: 몸에는 인슐린이 필요하고, 사용법을 알려드릴게요.
+  cue: 자가 주사법을 환자에게 익히게 할 때
+  tag: 교육·지지
+  distractorsEn:
+  - touch
+  - reach
+  distractorsKo:
+  - 배우다
+  - 보여주다
+  chips:
+  - - teach
+  decoyChips:
+  - touch
+- id: w-explain
+  en: explain
+  ipa: /ɪkˈspleɪn/
+  ko: 설명하다
+  icon: speech
+  example: We'll also explain what ketones are and why they matter.
+  exKo: 케톤이 무엇이고 왜 중요한지도 설명해 드릴게요.
+  cue: 어려운 개념을 알아듣게 풀어 말할 때
+  tag: 교육·지지
+  distractorsEn:
+  - explore
+  - express
+  distractorsKo:
+  - 통역하다
+  - 요약하다
+  chips:
+  - - ex
+    - plain
+  decoyChips:
+  - ix
+  - plane
+- id: w-matter
+  en: matter
+  ipa: /ˈmætər/
+  ko: 중요하다
+  icon: bulb
+  example: We'll also explain what ketones are and why they matter.
+  exKo: 케톤이 무엇이고 왜 중요한지도 설명해 드릴게요.
+  cue: 그게 왜 신경 써야 할 일인지 말할 때 — 'why they ___'
+  tag: 교육·지지
+  distractorsEn:
+  - mention
+  - measure
+  distractorsKo:
+  - 위험하다
+  - 변하다
+  chips:
+  - - mat
+    - ter
+  decoyChips:
+  - mad
+  - tar
+- id: w-scared
+  en: scared
+  ipa: /skɛrd/
+  ko: 겁먹은
+  icon: bulb
+  example: It's normal to feel scared right after a new diagnosis.
+  exKo: 새로 진단받으면 겁이 나는 게 당연해요.
+  cue: 새 진단 앞에서 환자가 불안해할 때, 그 감정을 받아 줄 때
+  tag: 교육·지지
+  distractorsEn:
+  - scarred
+  - sacred
+  distractorsKo:
+  - 화가 난
+  - 지친
+  chips:
+  - - scared
+  decoyChips:
+  - scarred
+- id: w-diagnosis
+  en: diagnosis
+  ipa: /ˌdaɪəɡˈnoʊsɪs/
+  ko: 진단
+  icon: board
+  example: It's normal to feel scared right after a new diagnosis.
+  exKo: 새로 진단받으면 겁이 나는 게 당연해요.
+  cue: 의사가 무슨 병인지 확정해 알려 준 것 — 'a new ___'
+  tag: 교육·지지
+  distractorsEn:
+  - prognosis
+  - dialysis
+  distractorsKo:
+  - 예후
+  - 처방
+  chips:
+  - - di
+    - ag
+    - 'no'
+    - sis
+  decoyChips:
+  - pro
+  - gnos
+- id: w-answer
+  en: answer
+  ipa: /ˈænsər/
+  ko: 답하다
+  icon: speech
+  example: I'm here to answer any questions you have.
+  exKo: 궁금하신 점 있으면 뭐든 답해 드릴게요.
+  cue: 환자의 물음에 대꾸해 줄 때 — '___ any questions'
+  tag: 교육·지지
+  distractorsEn:
+  - ask
+  - assure
+  distractorsKo:
+  - 묻다
+  - 기록하다
+  chips:
+  - - an
+    - swer
+  decoyChips:
+  - un
+  - sweat
+- id: w-basic
+  en: basic
+  ipa: /ˈbeɪsɪk/
+  ko: 기초
+  icon: board
+  example: We'll start with the basics and go step by step.
+  exKo: 기초부터 한 단계씩 시작할게요.
+  cue: 신환 교육의 첫걸음 — 가장 기본적인 것들 ('the ___s')
+  tag: 교육·지지
+  distractorsEn:
+  - basal
+  - bias
+  distractorsKo:
+  - 고급
+  - 요점
+  chips:
+  - - ba
+    - sic
+  decoyChips:
+  - bas
+  - al
+- id: w-drowsy
+  en: drowsy
+  ipa: /ˈdraʊzi/
+  ko: 졸린
+  icon: bulb
+  example: How long has she been drowsy and confused?
+  exKo: 언제부터 졸리고 혼란스러워하셨어요?
+  cue: HHS 노인이 깨워도 자꾸 눈이 감길 때 — 의식 저하의 첫 표현
+  tag: 의식·신경
+  distractorsEn:
+  - dizzy
+  - drowned
+  distractorsKo:
+  - 어지러운
+  - 흥분한
+  chips:
+  - - drow
+    - sy
+  decoyChips:
+  - draw
+  - zy
+- id: w-high
+  en: high
+  ipa: /haɪ/
+  ko: 높은
+  icon: chartup
+  example: Her sugar is extremely high with severe dehydration.
+  exKo: 혈당이 매우 높고 탈수도 심하세요.
+  cue: 혈당 수치가 위로 치솟았을 때 — 환자는 'sky-___'라고도 한다
+  tag: 혈당
+  distractorsEn:
+  - low
+  - heavy
+  distractorsKo:
+  - 낮은
+  - 정상적인
+  chips:
+  - - high
+  decoyChips:
+  - hi
+- id: w-dehydration
+  en: dehydration
+  ipa: /ˌdiːhaɪˈdreɪʃən/
+  ko: 탈수
+  icon: cross
+  example: Her sugar is extremely high with severe dehydration.
+  exKo: 혈당이 매우 높고 탈수도 심하세요.
+  cue: 소변으로 물이 빠져나가 몸에 수분이 모자란 상태 — HHS의 핵심
+  tag: DKA·HHS
+  distractorsEn:
+  - hydration
+  - desaturation
+  distractorsKo:
+  - 부종
+  - 수분 과다
+  chips:
+  - - de
+    - hy
+    - dra
+    - tion
+  decoyChips:
+  - di
+  - hi
+- id: w-monitor
+  en: monitor
+  ipa: /ˈmɑːnɪtər/
+  ko: 관찰하다
+  icon: monitor
+  example: We'll give fluids carefully and monitor her closely.
+  exKo: 수액을 조심스럽게 드리면서 계속 지켜볼게요.
+  cue: 기계나 반복 측정으로 상태를 계속 살필 때 (동사)
+  tag: 치료·감시
+  distractorsEn:
+  - mentor
+  - manage
+  distractorsKo:
+  - 치료하다
+  - 기록하다
+  chips:
+  - - mon
+    - i
+    - tor
+  decoyChips:
+  - man
+  - ter
+- id: w-heart
+  en: heart
+  ipa: /hɑːrt/
+  ko: 심장
+  icon: cross
+  example: We'll keep a close eye on her heart and kidneys.
+  exKo: 심장과 신장도 자세히 살펴볼게요.
+  cue: 빠른 수액·칼륨 변화 때 부담이 가는 장기 — 가슴 한가운데서 뛰는 것
+  tag: 치료·감시
+  distractorsEn:
+  - chest
+  - lung
+  distractorsKo:
+  - 폐
+  - 혈관
+  chips:
+  - - heart
+  decoyChips:
+  - hurt
+- id: w-kidney
+  en: kidney
+  ipa: /ˈkɪdni/
+  ko: 신장
+  icon: cross
+  example: We'll keep a close eye on her heart and kidneys.
+  exKo: 심장과 신장도 자세히 살펴볼게요.
+  cue: 탈수로 기능이 떨어지고 크레아티닌이 오르는 장기 — 소변을 만든다
+  tag: 치료·감시
+  distractorsEn:
+  - liver
+  - bladder
+  distractorsKo:
+  - 간
+  - 방광
+  chips:
+  - - kid
+    - ney
+  decoyChips:
+  - kit
+  - nay
+- id: w-change
+  en: change
+  ipa: /tʃeɪndʒ/
+  ko: 교체하다
+  icon: gear
+  example: When did you last change the pump site and reservoir?
+  exKo: 펌프 부위와 저장통을 마지막으로 언제 교체하셨어요?
+  cue: 펌프 부위·저장통을 새것으로 갈 때
+  tag: 인슐린·약
+  distractorsEn:
+  - charge
+  - check
+  distractorsKo:
+  - 확인하다
+  - 채우다
+  chips:
+  - - change
+  decoyChips:
+  - charge
+- id: w-pump
+  en: pump
+  ipa: /pʌmp/
+  ko: 펌프
+  icon: gear
+  example: When did you last change the pump site and reservoir?
+  exKo: 펌프 부위와 저장통을 마지막으로 언제 교체하셨어요?
+  cue: 몸에 달고 다니며 인슐린을 조금씩 계속 넣는 기계
+  tag: 인슐린·약
+  distractorsEn:
+  - pen
+  - port
+  distractorsKo:
+  - 펜
+  - 포트
+  chips:
+  - - pump
+  decoyChips:
+  - plump
+- id: w-reservoir
+  en: reservoir
+  ipa: /ˈrɛzərvwɑːr/
+  ko: 저장통
+  icon: gear
+  example: When did you last change the pump site and reservoir?
+  exKo: 펌프 부위와 저장통을 마지막으로 언제 교체하셨어요?
+  cue: 펌프 안에서 인슐린을 담아 두는 통 — 비면 갈아 끼운다
+  tag: 인슐린·약
+  distractorsEn:
+  - receiver
+  - reservation
+  distractorsKo:
+  - 배터리
+  - 주입관
+  chips:
+  - - res
+    - er
+    - voir
+  decoyChips:
+  - ris
+  - vior
+- id: w-tubing
+  en: tubing
+  ipa: /ˈtuːbɪŋ/
+  ko: 튜브
+  icon: gear
+  example: Let's check whether the tubing is kinked or the site is red.
+  exKo: 튜브가 꺾였는지, 부위가 빨간지 확인해 볼게요.
+  cue: 펌프에서 몸까지 인슐린이 지나가는 가느다란 관
+  tag: 인슐린·약
+  distractorsEn:
+  - cannula
+  - catheter
+  distractorsKo:
+  - 바늘
+  - 배터리
+  chips:
+  - - tub
+    - ing
+  decoyChips:
+  - tube
+  - ion
+- id: w-kinked
+  en: kinked
+  ipa: /kɪŋkt/
+  ko: 꺾인
+  icon: gear
+  example: Let's check whether the tubing is kinked or the site is red.
+  exKo: 튜브가 꺾였는지, 부위가 빨간지 확인해 볼게요.
+  cue: 관이 접혀서 인슐린이 안 흐를 때 — 펌프 고장의 흔한 원인
+  tag: 인슐린·약
+  distractorsEn:
+  - linked
+  - clogged
+  distractorsKo:
+  - 막힌
+  - 새는
+  chips:
+  - - kink
+    - ed
+  decoyChips:
+  - king
+  - ked
+- id: w-red
+  en: red
+  ipa: /rɛd/
+  ko: 빨간
+  icon: cross
+  example: Let's check whether the tubing is kinked or the site is red.
+  exKo: 튜브가 꺾였는지, 부위가 빨간지 확인해 볼게요.
+  cue: 주입 부위가 감염이나 자극으로 붉어졌을 때 (형용사)
+  tag: 상처·감염
+  distractorsEn:
+  - raw
+  - pale
+  distractorsKo:
+  - 부은
+  - 창백한
+  chips:
+  - - red
+  decoyChips:
+  - rid
+- id: w-injection
+  en: injection
+  ipa: /ɪnˈdʒɛkʃən/
+  ko: 주사
+  icon: scalpel
+  example: We may need to give insulin by injection while we sort this out.
+  exKo: 해결될 때까지 인슐린을 주사로 놓아드려야 할 수도 있어요.
+  cue: 펌프 대신 펜이나 주사기로 한 번씩 놓는 것 (명사)
+  tag: 인슐린·약
+  distractorsEn:
+  - infusion
+  - infection
+  distractorsKo:
+  - 흡입
+  - 감염
+  chips:
+  - - in
+    - jec
+    - tion
+  decoyChips:
+  - fec
+  - sion
+- id: w-basal
+  en: basal
+  ipa: /ˈbeɪsəl/
+  ko: 기저의
+  icon: chartup
+  example: What's your current basal rate set at?
+  exKo: 지금 기저율은 얼마로 맞춰져 있어요?
+  cue: 펌프가 식사와 상관없이 하루 종일 깔아 주는 인슐린 — '___ rate'
+  tag: 인슐린·약
+  distractorsEn:
+  - bolus
+  - basic
+  distractorsKo:
+  - 식사 때의
+  - 추가의
+  chips:
+  - - ba
+    - sal
+  decoyChips:
+  - bo
+  - lus
+- id: w-rate
+  en: rate
+  ipa: /reɪt/
+  ko: 속도
+  icon: chartup
+  example: What's your current basal rate set at?
+  exKo: 지금 기저율은 얼마로 맞춰져 있어요?
+  cue: 펌프·수액이 시간당 들어가는 양 — '시간당 몇 단위'
+  tag: 인슐린·약
+  distractorsEn:
+  - ratio
+  - route
+  distractorsKo:
+  - 간격
+  - 경로
+  chips:
+  - - rate
+  decoyChips:
+  - rat
+- id: w-switch
+  en: switch
+  ipa: /swɪtʃ/
+  ko: 바꾸다
+  icon: gear
+  example: We'll switch you to injections until the pump is fixed.
+  exKo: 펌프가 고쳐질 때까지 주사로 바꿔드릴게요.
+  cue: 한 방법에서 다른 방법으로 갈아탈 때 — '___ you to injections'
+  tag: 인슐린·약
+  distractorsEn:
+  - stitch
+  - shift
+  distractorsKo:
+  - 끊다
+  - 섞다
+  chips:
+  - - switch
+  decoyChips:
+  - stitch
+- id: w-fix
+  en: fix
+  ipa: /fɪks/
+  ko: 고치다
+  icon: gear
+  example: We'll switch you to injections until the pump is fixed.
+  exKo: 펌프가 고쳐질 때까지 주사로 바꿔드릴게요.
+  cue: 고장 난 기계가 다시 제대로 돌아가게 할 때
+  tag: 인슐린·약
+  distractorsEn:
+  - fit
+  - mix
+  distractorsKo:
+  - 버리다
+  - 교체하다
+  chips:
+  - - fix
+  decoyChips:
+  - fit
+- id: w-steroid
+  en: steroid
+  ipa: /ˈstɛrɔɪd/
+  ko: 스테로이드
+  icon: pill
+  example: When did you start the steroid medication?
+  exKo: 스테로이드 약을 언제부터 드셨어요?
+  cue: 프레드니손처럼 염증을 가라앉히지만 혈당을 올리는 약
+  tag: 인슐린·약
+  distractorsEn:
+  - sterile
+  - stimulant
+  distractorsKo:
+  - 항생제
+  - 이뇨제
+  chips:
+  - - ster
+    - oid
+  decoyChips:
+  - stir
+  - id
+- id: w-medication
+  en: medication
+  ipa: /ˌmɛdɪˈkeɪʃən/
+  ko: 약물
+  icon: pill
+  example: When did you start the steroid medication?
+  exKo: 스테로이드 약을 언제부터 드셨어요?
+  cue: 의료진이 약을 가리키는 격식 있는 말 — 차트·인계에서 쓴다
+  tag: 인슐린·약
+  distractorsEn:
+  - meditation
+  - indication
+  distractorsKo:
+  - 처방전
+  - 치료
+  chips:
+  - - med
+    - i
+    - ca
+    - tion
+  decoyChips:
+  - mid
+  - di
+- id: w-raise
+  en: raise
+  ipa: /reɪz/
+  ko: 올리다
+  icon: chartup
+  example: Steroids can temporarily raise your blood sugar.
+  exKo: 스테로이드는 일시적으로 혈당을 올릴 수 있어요.
+  cue: 무엇이 혈당을 위로 끌어올릴 때 — 목적어를 받는 동사
+  tag: 혈당
+  distractorsEn:
+  - rise
+  - lower
+  distractorsKo:
+  - 낮추다
+  - 유지하다
+  chips:
+  - - raise
+  decoyChips:
+  - rise
+- id: w-adjust
+  en: adjust
+  ipa: /əˈdʒʌst/
+  ko: 조정하다
+  icon: gear
+  example: We'll monitor your sugar and adjust your treatment.
+  exKo: 혈당을 관찰하면서 치료를 조정할게요.
+  cue: 수치를 보고 용량을 조금씩 맞춰 나갈 때
+  tag: 인슐린·약
+  distractorsEn:
+  - admit
+  - adjourn
+  distractorsKo:
+  - 중단하다
+  - 처방하다
+  chips:
+  - - ad
+    - just
+  decoyChips:
+  - ab
+  - jest
+- id: w-rise
+  en: rise
+  ipa: /raɪz/
+  ko: 상승
+  icon: chartup
+  example: This rise in sugar is usually temporary.
+  exKo: 이번 혈당 상승은 보통 일시적이에요.
+  cue: 혈당 수치가 위로 올라간 것 자체를 가리키는 명사 — 'this ___ in sugar'
+  tag: 혈당
+  distractorsEn:
+  - raise
+  - drop
+  distractorsKo:
+  - 하락
+  - 변동
+  chips:
+  - - rise
+  decoyChips:
+  - raise
+- id: w-infection
+  en: infection
+  ipa: /ɪnˈfɛkʃən/
+  ko: 감염
+  icon: cross
+  example: What infection symptoms have you had, and for how long?
+  exKo: 어떤 감염 증상이 있었고, 얼마나 오래됐어요?
+  cue: 균이 들어와 열·고름을 일으키는 것 — 혈당을 흔드는 흔한 원인
+  tag: 상처·감염
+  distractorsEn:
+  - injection
+  - inflammation
+  distractorsKo:
+  - 염증
+  - 주사
+  chips:
+  - - in
+    - fec
+    - tion
+  decoyChips:
+  - jec
+  - flam
+- id: w-illness
+  en: illness
+  ipa: /ˈɪlnəs/
+  ko: 병
+  icon: cross
+  example: Illness can make your sugars harder to control.
+  exKo: 아프면 혈당 조절이 더 어려워질 수 있어요.
+  cue: 감기·독감처럼 몸이 앓는 것 전반 — 'sick day' 교육의 주제
+  tag: 상처·감염
+  distractorsEn:
+  - wellness
+  - stillness
+  distractorsKo:
+  - 부상
+  - 통증
+  chips:
+  - - ill
+    - ness
+  decoyChips:
+  - well
+  - less
+- id: w-flu
+  en: flu
+  ipa: /fluː/
+  ko: 독감
+  icon: cross
+  example: How long have you had the flu?
+  exKo: 독감을 앓으신 지 얼마나 되셨어요?
+  cue: 열·몸살·기침이 갑자기 오는 바이러스 병 — 겨울에 유행한다
+  tag: 상처·감염
+  distractorsEn:
+  - cold
+  - flush
+  distractorsKo:
+  - 감기
+  - 폐렴
+  chips:
+  - - flu
+  decoyChips:
+  - flew
+- id: w-sick
+  en: sick
+  ipa: /sɪk/
+  ko: 아픈
+  icon: cross
+  example: Keep checking your sugar more often while you're sick.
+  exKo: 아픈 동안에는 혈당을 더 자주 확인하세요.
+  cue: 병을 앓고 있는 동안 — '___ day rules'
+  tag: 상처·감염
+  distractorsEn:
+  - thick
+  - weak
+  distractorsKo:
+  - 피곤한
+  - 약한
+  chips:
+  - - sick
+  decoyChips:
+  - sock
+- id: w-skip
+  en: skip
+  ipa: /skɪp/
+  ko: 거르다
+  icon: cross
+  example: Never skip your insulin, even if you can't eat much.
+  exKo: 잘 못 드시더라도 인슐린은 절대 거르지 마세요.
+  cue: sick day 교육의 핵심 금지 — 못 먹는다고 인슐린을 빼먹는 것
+  tag: 인슐린·약
+  distractorsEn:
+  - slip
+  - stop
+  distractorsKo:
+  - 줄이다
+  - 늦추다
+  chips:
+  - - skip
+  decoyChips:
+  - slip
+- id: w-medicine
+  en: medicine
+  ipa: /ˈmɛdəsən/
+  ko: 약
+  icon: pill
+  example: Which diabetes medicines do you take, and at what times?
+  exKo: 어떤 당뇨약을 드시고, 언제 드세요?
+  cue: 환자와 이야기할 때 약을 가리키는 쉬운 말
+  tag: 인슐린·약
+  distractorsEn:
+  - medic
+  - medium
+  distractorsKo:
+  - 연고
+  - 처방
+  chips:
+  - - med
+    - i
+    - cine
+  decoyChips:
+  - mid
+  - sine
+- id: w-low
+  en: low
+  ipa: /loʊ/
+  ko: 낮은
+  icon: chartup
+  example: Have these low sugars caused you to fall or nearly fall?
+  exKo: 이런 저혈당 때문에 넘어지거나 넘어질 뻔하셨어요?
+  cue: 혈당·칼륨·혈압이 기준 아래로 내려갔을 때 — 'a ___ sugar'
+  tag: 저혈당
+  distractorsEn:
+  - high
+  - slow
+  distractorsKo:
+  - 높은
+  - 정상적인
+  chips:
+  - - low
+  decoyChips:
+  - law
+- id: w-fall
+  en: fall
+  ipa: /fɔːl/
+  ko: 넘어지다
+  icon: board
+  example: Have these low sugars caused you to fall or nearly fall?
+  exKo: 이런 저혈당 때문에 넘어지거나 넘어질 뻔하셨어요?
+  cue: 반복 저혈당 고령자에게 꼭 묻는 안전 문제 — 바닥에 쓰러진 적
+  tag: 저혈당
+  distractorsEn:
+  - fail
+  - faint
+  distractorsKo:
+  - 실신하다
+  - 다치다
+  chips:
+  - - fall
+  decoyChips:
+  - fell
+- id: w-review
+  en: review
+  ipa: /rɪˈvjuː/
+  ko: 재검토하다
+  icon: magnify
+  example: We may need to review and adjust your medications.
+  exKo: 약을 재검토하고 조정해야 할 수도 있어요.
+  cue: 먹는 약 목록을 처음부터 다시 훑어볼 때
+  tag: 인슐린·약
+  distractorsEn:
+  - renew
+  - reveal
+  distractorsKo:
+  - 처방하다
+  - 중단하다
+  chips:
+  - - re
+    - view
+  decoyChips:
+  - ri
+  - vue
+- id: w-faint
+  en: faint
+  ipa: /feɪnt/
+  ko: 실신할 듯한
+  icon: cross
+  example: Did you feel dizzy or faint before you fell?
+  exKo: 넘어지시기 전에 어지럽거나 실신할 것 같으셨어요?
+  cue: 눈앞이 캄캄해지며 곧 쓰러질 것 같은 느낌 (형용사)
+  tag: 증상
+  distractorsEn:
+  - faded
+  - feint
+  distractorsKo:
+  - 졸린
+  - 떨리는
+  chips:
+  - - faint
+  decoyChips:
+  - feint
+- id: w-plan
+  en: plan
+  ipa: /plæn/
+  ko: 계획
+  icon: board
+  example: We'll set up a plan to keep you safer at home.
+  exKo: 집에서 더 안전하게 지내실 계획을 세울게요.
+  cue: 퇴원 전에 무엇을 어떻게 할지 함께 정해 두는 것
+  tag: 교육·지지
+  distractorsEn:
+  - goal
+  - policy
+  distractorsKo:
+  - 목표
+  - 약속
+  chips:
+  - - plan
+  decoyChips:
+  - plane
+- id: w-safe
+  en: safe
+  ipa: /seɪf/
+  ko: 안전한
+  icon: shield
+  example: We'll set up a plan to keep you safer at home.
+  exKo: 집에서 더 안전하게 지내실 계획을 세울게요.
+  cue: 넘어지거나 다칠 위험이 없는 상태 — 'keep you ___r'
+  tag: 교육·지지
+  distractorsEn:
+  - save
+  - sane
+  distractorsKo:
+  - 편안한
+  - 건강한
+  chips:
+  - - safe
+  decoyChips:
+  - save
+- id: w-pregnant
+  en: pregnant
+  ipa: /ˈprɛɡnənt/
+  ko: 임신한
+  icon: baby
+  example: How many weeks pregnant are you?
+  exKo: 임신 몇 주 되셨어요?
+  cue: 배 속에 아기를 가진 상태 — '몇 주 ___?' (형용사)
+  tag: 임신
+  distractorsEn:
+  - prenatal
+  - postpartum
+  distractorsKo:
+  - 산후의
+  - 태아의
+  chips:
+  - - preg
+    - nant
+  decoyChips:
+  - pre
+  - nent
+- id: w-pregnancy
+  en: pregnancy
+  ipa: /ˈprɛɡnənsi/
+  ko: 임신
+  icon: baby
+  example: In pregnancy we aim for tighter sugar targets to protect the baby.
+  exKo: 임신 중에는 아기를 보호하기 위해 혈당 목표를 더 엄격히 잡아요.
+  cue: 아기를 가진 기간 전체 (명사)
+  tag: 임신
+  distractorsEn:
+  - delivery
+  - prevalence
+  distractorsKo:
+  - 분만
+  - 산후
+  chips:
+  - - preg
+    - nan
+    - cy
+  decoyChips:
+  - nen
+  - sy
+- id: w-aim
+  en: aim
+  ipa: /eɪm/
+  ko: 목표로 하다
+  icon: pushpin
+  example: In pregnancy we aim for tighter sugar targets to protect the baby.
+  exKo: 임신 중에는 아기를 보호하기 위해 혈당 목표를 더 엄격히 잡아요.
+  cue: 어느 수치까지 맞추려고 노리는지 말할 때 — 'we ___ for'
+  tag: 임신
+  distractorsEn:
+  - claim
+  - arm
+  distractorsKo:
+  - 피하다
+  - 보고하다
+  chips:
+  - - aim
+  decoyChips:
+  - arm
+- id: w-target
+  en: target
+  ipa: /ˈtɑːrɡɪt/
+  ko: 목표
+  icon: pushpin
+  example: In pregnancy we aim for tighter sugar targets to protect the baby.
+  exKo: 임신 중에는 아기를 보호하기 위해 혈당 목표를 더 엄격히 잡아요.
+  cue: 혈당을 맞추려는 과녁 수치 — '공복 95 이하' 같은 것
+  tag: 임신
+  distractorsEn:
+  - trigger
+  - threshold
+  distractorsKo:
+  - 한계
+  - 평균
+  chips:
+  - - tar
+    - get
+  decoyChips:
+  - tur
+  - gat
+- id: w-protect
+  en: protect
+  ipa: /prəˈtɛkt/
+  ko: 보호하다
+  icon: shield
+  example: In pregnancy we aim for tighter sugar targets to protect the baby.
+  exKo: 임신 중에는 아기를 보호하기 위해 혈당 목표를 더 엄격히 잡아요.
+  cue: 엄마의 혈당 관리로 아기가 해를 입지 않게 할 때
+  tag: 임신
+  distractorsEn:
+  - prevent
+  - project
+  distractorsKo:
+  - 예방하다
+  - 치료하다
+  chips:
+  - - pro
+    - tect
+  decoyChips:
+  - pre
+  - tact
+- id: w-manage
+  en: manage
+  ipa: /ˈmænɪdʒ/
+  ko: 관리하다
+  icon: gear
+  example: We'll also monitor the baby while we manage your sugar.
+  exKo: 혈당을 관리하면서 아기도 함께 살펴볼게요.
+  cue: 혈당을 꾸준히 다루며 안정시켜 나갈 때
+  tag: 혈당
+  distractorsEn:
+  - massage
+  - measure
+  distractorsKo:
+  - 측정하다
+  - 진단하다
+  chips:
+  - - man
+    - age
+  decoyChips:
+  - mess
+  - ege
+- id: w-gestational
+  en: gestational
+  ipa: /dʒɛˈsteɪʃənəl/
+  ko: 임신성의
+  icon: baby
+  example: Have you had gestational diabetes before?
+  exKo: 이전에 임신성 당뇨가 있으셨어요?
+  cue: 임신 중에 처음 생기는 당뇨를 가리키는 말 — '___ diabetes'
+  tag: 임신
+  distractorsEn:
+  - congenital
+  - generational
+  distractorsKo:
+  - 선천성의
+  - 산후의
+  chips:
+  - - ges
+    - ta
+    - tion
+    - al
+  decoyChips:
+  - gen
+  - tia
+- id: w-range
+  en: range
+  ipa: /reɪndʒ/
+  ko: 범위
+  icon: chartup
+  example: Keeping your sugar in range protects you both.
+  exKo: 혈당을 범위 안에 유지하면 두 분 모두에게 좋아요.
+  cue: 혈당이 머물러야 하는 위아래 폭 — 'in ___'
+  tag: 혈당
+  distractorsEn:
+  - rank
+  - ratio
+  distractorsKo:
+  - 평균
+  - 수치
+  chips:
+  - - range
+  decoyChips:
+  - rank
+- id: w-heartbeat
+  en: heartbeat
+  ipa: /ˈhɑːrtbiːt/
+  ko: 심장박동
+  icon: cross
+  example: We'll check on the baby's heartbeat as well.
+  exKo: 아기 심장박동도 확인할게요.
+  cue: 태아 모니터로 듣는 아기의 쿵쿵 소리
+  tag: 임신
+  distractorsEn:
+  - heartburn
+  - headache
+  distractorsKo:
+  - 태동
+  - 맥압
+  chips:
+  - - heart
+    - beat
+  decoyChips:
+  - burn
+  - bit
+- id: w-bring
+  en: bring
+  ipa: /brɪŋ/
+  ko: 데려오다
+  icon: me
+  example: I'll bring an interpreter so we can explain clearly.
+  exKo: 설명을 정확히 드릴 수 있게 통역사를 모셔올게요.
+  cue: 통역사를 병상으로 오게 할 때 — '제가 ___ 할게요'
+  tag: 교육·지지
+  distractorsEn:
+  - brief
+  - break
+  distractorsKo:
+  - 보내다
+  - 기다리다
+  chips:
+  - - bring
+  decoyChips:
+  - brink
+- id: w-interpreter
+  en: interpreter
+  ipa: /ɪnˈtɜːrprɪtər/
+  ko: 통역사
+  icon: speech
+  example: I'll bring an interpreter so we can explain clearly.
+  exKo: 설명을 정확히 드릴 수 있게 통역사를 모셔올게요.
+  cue: 영어가 서툰 환자와 말로 오가는 뜻을 옮겨 주는 사람 — 가족 대신 공식적으로
+  tag: 교육·지지
+  distractorsEn:
+  - translator
+  - interrupter
+  distractorsKo:
+  - 번역가
+  - 보호자
+  chips:
+  - - in
+    - ter
+    - pret
+    - er
+  decoyChips:
+  - rupt
+  - or
+- id: w-clearly
+  en: clearly
+  ipa: /ˈklɪrli/
+  ko: 분명히
+  icon: speech
+  example: I'll bring an interpreter so we can explain clearly.
+  exKo: 설명을 정확히 드릴 수 있게 통역사를 모셔올게요.
+  cue: 상대가 헷갈리지 않게 또렷하게 (부사)
+  tag: 인계·보고
+  distractorsEn:
+  - closely
+  - quickly
+  distractorsKo:
+  - 빠르게
+  - 자세히
+  chips:
+  - - clear
+    - ly
+  decoyChips:
+  - close
+  - li
+- id: w-understand
+  en: understand
+  ipa: /ˌʌndərˈstænd/
+  ko: 이해하다
+  icon: bulb
+  example: Can you show me back so I know you understand?
+  exKo: 이해하신 걸 저에게 다시 보여주시겠어요?
+  cue: 되짚기 교육으로 제대로 알아들었는지 확인할 때
+  tag: 교육·지지
+  distractorsEn:
+  - undertake
+  - underestimate
+  distractorsKo:
+  - 기억하다
+  - 동의하다
+  chips:
+  - - un
+    - der
+    - stand
+  decoyChips:
+  - 'on'
+  - stend
+- id: w-draw
+  en: draw
+  ipa: /drɔː/
+  ko: 뽑다
+  icon: scalpel
+  example: Please show me how you would draw up the dose.
+  exKo: 인슐린을 어떻게 준비하시는지 보여주세요.
+  cue: 바이알에서 주사기로 인슐린을 빨아올릴 때 — '___ up the dose'
+  tag: 인슐린·약
+  distractorsEn:
+  - drain
+  - drip
+  distractorsKo:
+  - 섞다
+  - 흔들다
+  chips:
+  - - draw
+  decoyChips:
+  - drew
+- id: w-potassium
+  en: potassium
+  ipa: /pəˈtæsiəm/
+  ko: 칼륨
+  icon: lab
+  example: Your potassium is low, so we'll correct it before more insulin.
+  exKo: 칼륨이 낮아서 인슐린을 더 넣기 전에 먼저 교정할게요.
+  cue: 인슐린을 주면 세포 안으로 들어가 혈중에서 떨어지는 전해질
+  tag: DKA·HHS
+  distractorsEn:
+  - phosphate
+  - sodium
+  distractorsKo:
+  - 나트륨
+  - 인산
+  chips:
+  - - po
+    - tas
+    - si
+    - um
+  decoyChips:
+  - pho
+  - di
+- id: w-correct
+  en: correct
+  ipa: /kəˈrɛkt/
+  ko: 교정하다
+  icon: gear
+  example: Your potassium is low, so we'll correct it before more insulin.
+  exKo: 칼륨이 낮아서 인슐린을 더 넣기 전에 먼저 교정할게요.
+  cue: 모자란 전해질을 채워 정상으로 되돌릴 때 — '칼륨을 ___하다'
+  tag: DKA·HHS
+  distractorsEn:
+  - collect
+  - control
+  distractorsKo:
+  - 측정하다
+  - 보류하다
+  chips:
+  - - cor
+    - rect
+  decoyChips:
+  - col
+  - lect
+- id: w-rhythm
+  en: rhythm
+  ipa: /ˈrɪðəm/
+  ko: 리듬
+  icon: monitor
+  example: We're watching your heart rhythm closely on the monitor.
+  exKo: 모니터로 심장 리듬을 계속 지켜보고 있어요.
+  cue: 저칼륨 때 모니터에서 파형이 흔들리는지 보는 것 — 'heart ___'
+  tag: DKA·HHS
+  distractorsEn:
+  - rhyme
+  - ritual
+  distractorsKo:
+  - 속도
+  - 혈압
+  chips:
+  - - rhy
+    - thm
+  decoyChips:
+  - ri
+  - thym
+- id: w-tell
+  en: tell
+  ipa: /tɛl/
+  ko: 말하다
+  icon: speech
+  example: Tell me about any muscle weakness or cramping.
+  exKo: 근육이 약해지거나 쥐가 나는지 말씀해 주세요.
+  cue: 환자에게 겪은 것을 이야기해 달라고 청할 때 — '___ me about'
+  tag: 문진
+  distractorsEn:
+  - talk
+  - sell
+  distractorsKo:
+  - 묻다
+  - 듣다
+  chips:
+  - - tell
+  decoyChips:
+  - tall
+- id: w-muscle
+  en: muscle
+  ipa: /ˈmʌsəl/
+  ko: 근육
+  icon: board
+  example: Tell me about any muscle weakness or cramping.
+  exKo: 근육이 약해지거나 쥐가 나는지 말씀해 주세요.
+  cue: 저칼륨 때 힘이 빠지고 쥐가 나는 몸의 조직
+  tag: 증상
+  distractorsEn:
+  - mussel
+  - nerve
+  distractorsKo:
+  - 신경
+  - 관절
+  chips:
+  - - mus
+    - cle
+  decoyChips:
+  - mos
+  - sel
+- id: w-weakness
+  en: weakness
+  ipa: /ˈwiːknəs/
+  ko: 쇠약
+  icon: cross
+  example: Tell me about any muscle weakness or cramping.
+  exKo: 근육이 약해지거나 쥐가 나는지 말씀해 주세요.
+  cue: 팔다리에 힘이 빠진 증상 (명사) — 저칼륨의 신호
+  tag: 증상
+  distractorsEn:
+  - weariness
+  - wetness
+  distractorsKo:
+  - 저림
+  - 경련
+  chips:
+  - - weak
+    - ness
+  decoyChips:
+  - week
+  - less
+- id: w-cramp
+  en: cramp
+  ipa: /kræmp/
+  ko: 쥐가 나다
+  icon: cross
+  example: Tell me about any muscle weakness or cramping.
+  exKo: 근육이 약해지거나 쥐가 나는지 말씀해 주세요.
+  cue: 근육이 갑자기 오그라들며 아플 때 — 종아리에 흔하다
+  tag: 증상
+  distractorsEn:
+  - clamp
+  - crumple
+  distractorsKo:
+  - 저리다
+  - 붓다
+  chips:
+  - - cramp
+  decoyChips:
+  - clamp
+- id: w-weak
+  en: weak
+  ipa: /wiːk/
+  ko: 약한
+  icon: cross
+  example: Are your muscles feeling weak or crampy?
+  exKo: 근육이 약하거나 쥐가 나는 느낌이 있으세요?
+  cue: 힘이 없어 팔다리를 잘 못 드는 상태 (형용사)
+  tag: 증상
+  distractorsEn:
+  - numb
+  - stiff
+  distractorsKo:
+  - 저린
+  - 뻣뻣한
+  chips:
+  - - weak
+  decoyChips:
+  - week
+- id: w-hold
+  en: hold
+  ipa: /hoʊld/
+  ko: 보류하다
+  icon: pushpin
+  example: We'll hold extra insulin until your potassium improves.
+  exKo: 칼륨이 좋아질 때까지 인슐린을 잠시 보류할게요.
+  cue: 지금은 주지 않고 잠시 미뤄 둘 때 — 투약 지시에서 흔한 말
+  tag: 인슐린·약
+  distractorsEn:
+  - load
+  - hole
+  distractorsKo:
+  - 늘리다
+  - 투여하다
+  chips:
+  - - hold
+  decoyChips:
+  - hole
+- id: w-headache
+  en: headache
+  ipa: /ˈhɛdeɪk/
+  ko: 두통
+  icon: cross
+  example: When did the headache and drowsiness start?
+  exKo: 두통과 졸림이 언제부터 시작됐어요?
+  cue: 소아 DKA 치료 중 새로 생기면 뇌부종을 의심하는 증상 — 머리가 아픈 것
+  tag: 의식·신경
+  distractorsEn:
+  - heartache
+  - backache
+  distractorsKo:
+  - 어지럼
+  - 복통
+  chips:
+  - - head
+    - ache
+  decoyChips:
+  - heart
+  - ake
+- id: w-drowsiness
+  en: drowsiness
+  ipa: /ˈdraʊzinəs/
+  ko: 졸음
+  icon: bulb
+  example: When did the headache and drowsiness start?
+  exKo: 두통과 졸림이 언제부터 시작됐어요?
+  cue: 자꾸 잠에 빠져드는 상태 (명사) — 의식 저하의 초기 표현
+  tag: 의식·신경
+  distractorsEn:
+  - dizziness
+  - dryness
+  distractorsKo:
+  - 어지럼
+  - 혼란
+  chips:
+  - - drow
+    - si
+    - ness
+  decoyChips:
+  - diz
+  - zi
+- id: w-neurological
+  en: neurological
+  ipa: /ˌnʊrəˈlɑːdʒɪkəl/
+  ko: 신경학적인
+  icon: monitor
+  example: We're checking his neurological status closely right now.
+  exKo: 지금 신경학적 상태를 자세히 확인하고 있어요.
+  cue: 의식·동공·운동을 묶어 보는 사정의 이름 — '___ checks'
+  tag: 의식·신경
+  distractorsEn:
+  - neurotic
+  - nephrological
+  distractorsKo:
+  - 심리적인
+  - 호흡기의
+  chips:
+  - - neuro
+    - log
+    - ical
+  decoyChips:
+  - nephro
+  - ic
+- id: w-status
+  en: status
+  ipa: /ˈsteɪtəs/
+  ko: 상태
+  icon: chartup
+  example: We're checking his neurological status closely right now.
+  exKo: 지금 신경학적 상태를 자세히 확인하고 있어요.
+  cue: 지금 이 순간의 형편 — 'neuro ___', 'mental ___'
+  tag: 의식·신경
+  distractorsEn:
+  - stature
+  - statue
+  distractorsKo:
+  - 기록
+  - 병력
+  chips:
+  - - sta
+    - tus
+  decoyChips:
+  - stat
+  - ue
+- id: w-act
+  en: act
+  ipa: /ækt/
+  ko: 행동하다
+  icon: pushpin
+  example: We're acting immediately because this can be serious.
+  exKo: 심각할 수 있어서 지금 바로 대응하고 있어요.
+  cue: 지체하지 않고 움직일 때 — '___ immediately', '___ fast'
+  tag: 인계·보고
+  distractorsEn:
+  - add
+  - ask
+  distractorsKo:
+  - 기다리다
+  - 관찰하다
+  chips:
+  - - act
+  decoyChips:
+  - art
+- id: w-serious
+  en: serious
+  ipa: /ˈsɪriəs/
+  ko: 심각한
+  icon: cross
+  example: We're acting immediately because this can be serious.
+  exKo: 심각할 수 있어서 지금 바로 대응하고 있어요.
+  cue: 가벼이 볼 일이 아니라고 보호자에게 무게를 전할 때
+  tag: 인계·보고
+  distractorsEn:
+  - series
+  - curious
+  distractorsKo:
+  - 흔한
+  - 가벼운
+  chips:
+  - - se
+    - ri
+    - ous
+  decoyChips:
+  - sev
+  - ere
+- id: w-sleepy
+  en: sleepy
+  ipa: /ˈsliːpi/
+  ko: 잠이 오는
+  icon: bulb
+  example: Is he more sleepy than he was an hour ago?
+  exKo: 한 시간 전보다 더 졸려 하시나요?
+  cue: 보호자가 아이 상태를 쉽게 말하는 표현 — 자꾸 자려고 한다
+  tag: 의식·신경
+  distractorsEn:
+  - sloppy
+  - sleepless
+  distractorsKo:
+  - 흥분한
+  - 짜증 내는
+  chips:
+  - - sleep
+    - y
+  decoyChips:
+  - slip
+  - ie
+- id: w-pupil
+  en: pupil
+  ipa: /ˈpjuːpəl/
+  ko: 동공
+  icon: magnify
+  example: We're watching his pupils and alertness very closely.
+  exKo: 동공과 의식 상태를 아주 자세히 지켜보고 있어요.
+  cue: 펜라이트를 비춰 크기와 반응을 보는 눈 한가운데 검은 곳
+  tag: 의식·신경
+  distractorsEn:
+  - purple
+  - eyelid
+  distractorsKo:
+  - 눈꺼풀
+  - 홍채
+  chips:
+  - - pu
+    - pil
+  decoyChips:
+  - pur
+  - ple
+- id: w-alertness
+  en: alertness
+  ipa: /əˈlɜːrtnəs/
+  ko: 각성 상태
+  icon: bulb
+  example: We're watching his pupils and alertness very closely.
+  exKo: 동공과 의식 상태를 아주 자세히 지켜보고 있어요.
+  cue: 얼마나 또렷하게 깨어 주변에 반응하는지 (명사)
+  tag: 의식·신경
+  distractorsEn:
+  - alarm
+  - attention
+  distractorsKo:
+  - 경보
+  - 집중력
+  chips:
+  - - a
+    - lert
+    - ness
+  decoyChips:
+  - al
+  - arm
+- id: w-team
+  en: team
+  ipa: /tiːm/
+  ko: 팀
+  icon: me
+  example: The team is responding right away to keep him safe.
+  exKo: 팀이 아이를 안전하게 지키려고 바로 대응하고 있어요.
+  cue: 함께 대응하는 의료진 무리 — 'the surgical ___'
+  tag: 인계·보고
+  distractorsEn:
+  - ream
+  - crew
+  distractorsKo:
+  - 병동
+  - 부서
+  chips:
+  - - team
+  decoyChips:
+  - tame
+- id: w-pressure
+  en: pressure
+  ipa: /ˈprɛʃər/
+  ko: 혈압
+  icon: chartup
+  example: Her pressure is low, so we're giving fluids quickly.
+  exKo: 혈압이 낮아서 수액을 빠르게 드리고 있어요.
+  cue: 의료진이 혈압을 줄여 부르는 말 — 'Her ___ is low.'
+  tag: 치료·감시
+  distractorsEn:
+  - pulse
+  - perfusion
+  distractorsKo:
+  - 맥박
+  - 관류
+  chips:
+  - - pres
+    - sure
+  decoyChips:
+  - press
+  - shure
+- id: w-responsive
+  en: responsive
+  ipa: /rɪˈspɑːnsɪv/
+  ko: 반응하는
+  icon: bulb
+  example: How responsive has she been over the last hour?
+  exKo: 지난 한 시간 동안 반응이 어땠어요?
+  cue: 불렀을 때 눈을 뜨고 대꾸하는 정도 (형용사) — 'barely ___'
+  tag: 의식·신경
+  distractorsEn:
+  - responsible
+  - restless
+  distractorsKo:
+  - 불안한
+  - 혼란스러운
+  chips:
+  - - re
+    - spon
+    - sive
+  decoyChips:
+  - ri
+  - sible
+- id: w-eye
+  en: eye
+  ipa: /aɪ/
+  ko: 눈
+  icon: magnify
+  example: Is she opening her eyes or responding to your voice?
+  exKo: 눈을 뜨거나 목소리에 반응하시나요?
+  cue: 의식 사정에서 '뜨는지'를 보는 곳 — GCS의 첫 항목
+  tag: 의식·신경
+  distractorsEn:
+  - ear
+  - lid
+  distractorsKo:
+  - 귀
+  - 입
+  chips:
+  - - eye
+  decoyChips:
+  - aye
+- id: w-voice
+  en: voice
+  ipa: /vɔɪs/
+  ko: 목소리
+  icon: mic
+  example: Is she opening her eyes or responding to your voice?
+  exKo: 눈을 뜨거나 목소리에 반응하시나요?
+  cue: 불러서 깨우는 자극 — 통증 자극보다 먼저 쓴다
+  tag: 의식·신경
+  distractorsEn:
+  - noise
+  - vice
+  distractorsKo:
+  - 소음
+  - 손길
+  chips:
+  - - voice
+  decoyChips:
+  - vice
+- id: w-trauma
+  en: trauma
+  ipa: /ˈtrɔːmə/
+  ko: 중증외상
+  icon: hospital
+  example: We'll keep monitoring her closely in the trauma bay.
+  exKo: 외상 구역에서 계속 자세히 지켜볼게요.
+  cue: 가장 위급한 환자를 받는 응급실 구역 이름 — '___ bay'
+  tag: 치료·감시
+  distractorsEn:
+  - triage
+  - drama
+  distractorsKo:
+  - 분류
+  - 격리
+  chips:
+  - - trau
+    - ma
+  decoyChips:
+  - dra
+  - ume
+- id: w-awake
+  en: awake
+  ipa: /əˈweɪk/
+  ko: 깨어 있는
+  icon: bulb
+  example: His sugar is up, but he's still not fully awake, so we're investigating.
+  exKo: 혈당은 올랐는데 아직 완전히 깨지 않아서 원인을 찾고 있어요.
+  cue: 눈을 뜨고 또렷이 반응하는 상태 (형용사) — 'fully ___'
+  tag: 의식·신경
+  distractorsEn:
+  - aware
+  - asleep
+  distractorsKo:
+  - 잠든
+  - 혼란스러운
+  chips:
+  - - a
+    - wake
+  decoyChips:
+  - ware
+  - woke
+- id: w-investigate
+  en: investigate
+  ipa: /ɪnˈvɛstɪɡeɪt/
+  ko: 조사하다
+  icon: magnify
+  example: His sugar is up, but he's still not fully awake, so we're investigating.
+  exKo: 혈당은 올랐는데 아직 완전히 깨지 않아서 원인을 찾고 있어요.
+  cue: 예상대로 안 풀릴 때 다른 원인을 캐 볼 때
+  tag: 의식·신경
+  distractorsEn:
+  - instigate
+  - invigorate
+  distractorsKo:
+  - 기다리다
+  - 치료하다
+  chips:
+  - - in
+    - ves
+    - ti
+    - gate
+  decoyChips:
+  - sti
+  - vas
+- id: w-cause
+  en: cause
+  ipa: /kɔːz/
+  ko: 원인
+  icon: magnify
+  example: We're giving more glucose and checking for other causes.
+  exKo: 포도당을 더 드리고 다른 원인도 확인하고 있어요.
+  cue: 왜 이런 일이 생겼는지의 뿌리 — 'other ___s'
+  tag: 의식·신경
+  distractorsEn:
+  - case
+  - course
+  distractorsKo:
+  - 결과
+  - 증상
+  chips:
+  - - cause
+  decoyChips:
+  - case
+- id: w-move
+  en: move
+  ipa: /muːv/
+  ko: 움직이다
+  icon: compass
+  example: Is he opening his eyes or moving at all?
+  exKo: 눈을 뜨거나 조금이라도 움직이시나요?
+  cue: 팔다리가 스스로 움찔하는지 볼 때
+  tag: 의식·신경
+  distractorsEn:
+  - mode
+  - prove
+  distractorsKo:
+  - 말하다
+  - 떨다
+  chips:
+  - - move
+  decoyChips:
+  - mood
+- id: w-wake
+  en: wake
+  ipa: /weɪk/
+  ko: 깨어나다
+  icon: bulb
+  example: We may give another dose of sugar if he doesn't wake up soon.
+  exKo: 곧 깨지 않으면 포도당을 한 번 더 드릴 수 있어요.
+  cue: 잠든 듯한 상태에서 눈을 뜨고 돌아올 때 (동사) — '___ up'
+  tag: 의식·신경
+  distractorsEn:
+  - walk
+  - wait
+  distractorsKo:
+  - 잠들다
+  - 쓰러지다
+  chips:
+  - - wake
+  decoyChips:
+  - woke
+- id: w-foot
+  en: foot
+  ipa: /fʊt/
+  ko: 발
+  icon: bandage
+  example: Your foot infection and fever together are very serious.
+  exKo: 발 감염과 열이 함께 있어서 매우 심각해요.
+  cue: 당뇨 환자에게서 궤양·괴사가 잘 생기는 곳 — 신경병증으로 감각이 무디다
+  tag: 상처·감염
+  distractorsEn:
+  - heel
+  - toe
+  distractorsKo:
+  - 발목
+  - 발가락
+  chips:
+  - - foot
+  decoyChips:
+  - feet
+- id: w-fever
+  en: fever
+  ipa: /ˈfiːvər/
+  ko: 열
+  icon: cross
+  example: Your foot infection and fever together are very serious.
+  exKo: 발 감염과 열이 함께 있어서 매우 심각해요.
+  cue: 체온이 38도를 넘을 때 — 환자는 '불덩이 같다'고 한다
+  tag: 상처·감염
+  distractorsEn:
+  - chill
+  - rash
+  distractorsKo:
+  - 오한
+  - 발진
+  chips:
+  - - fe
+    - ver
+  decoyChips:
+  - fa
+  - vor
+- id: w-antibiotic
+  en: antibiotic
+  ipa: /ˌæntibaɪˈɑːtɪk/
+  ko: 항생제
+  icon: pill
+  example: We're starting antibiotics and fluids right away.
+  exKo: 항생제와 수액을 바로 시작할게요.
+  cue: 패혈증이 의심되면 한 시간 안에 들어가야 하는 균 잡는 약
+  tag: 상처·감염
+  distractorsEn:
+  - antiviral
+  - antibody
+  distractorsKo:
+  - 항바이러스제
+  - 해열제
+  chips:
+  - - anti
+    - bi
+    - ot
+    - ic
+  decoyChips:
+  - vir
+  - al
+- id: w-call
+  en: call
+  ipa: /kɔːl/
+  ko: 연락하다
+  icon: mic
+  example: I'm calling the surgical team with an SBAR report.
+  exKo: SBAR 보고로 외과팀에 연락할게요.
+  cue: 다른 팀을 전화로 불러 협진을 청할 때
+  tag: 인계·보고
+  distractorsEn:
+  - cancel
+  - tell
+  distractorsKo:
+  - 기다리다
+  - 보내다
+  chips:
+  - - call
+  decoyChips:
+  - cell
+- id: w-surgical
+  en: surgical
+  ipa: /ˈsɜːrdʒɪkəl/
+  ko: 외과의
+  icon: scalpel
+  example: I'm calling the surgical team with an SBAR report.
+  exKo: SBAR 보고로 외과팀에 연락할게요.
+  cue: 괴사 조직을 떼어 내야 할 때 부르는 팀의 성격 — 수술을 맡는
+  tag: 인계·보고
+  distractorsEn:
+  - sterile
+  - medical
+  distractorsKo:
+  - 내과의
+  - 감염내과의
+  chips:
+  - - sur
+    - gi
+    - cal
+  decoyChips:
+  - ser
+  - gery
+- id: w-report
+  en: report
+  ipa: /rɪˈpɔːrt/
+  ko: 보고하다
+  icon: speech
+  example: I'm calling the surgical team with an SBAR report.
+  exKo: SBAR 보고로 외과팀에 연락할게요.
+  cue: 상황·배경·사정·요청을 정리해 윗선에 전하는 것
+  tag: 인계·보고
+  distractorsEn:
+  - record
+  - repeat
+  distractorsKo:
+  - 기록하다
+  - 지시하다
+  chips:
+  - - re
+    - port
+  decoyChips:
+  - ri
+  - part
+- id: w-swelling
+  en: swelling
+  ipa: /ˈswɛlɪŋ/
+  ko: 부종
+  icon: cross
+  example: Is the swelling and blackness spreading up your leg?
+  exKo: 부종과 검은 변색이 다리 위로 번지고 있나요?
+  cue: 발·다리가 부어올라 커진 것 (명사)
+  tag: 상처·감염
+  distractorsEn:
+  - sweating
+  - spelling
+  distractorsKo:
+  - 발적
+  - 괴사
+  chips:
+  - - swell
+    - ing
+  decoyChips:
+  - sweat
+  - ling
+- id: w-spread
+  en: spread
+  ipa: /sprɛd/
+  ko: 퍼지다
+  icon: chartup
+  example: Is the swelling and blackness spreading up your leg?
+  exKo: 부종과 검은 변색이 다리 위로 번지고 있나요?
+  cue: 감염·괴사가 점점 위로 넓어질 때 — 경계를 펜으로 표시해 본다
+  tag: 상처·감염
+  distractorsEn:
+  - spray
+  - shred
+  distractorsKo:
+  - 줄어들다
+  - 멈추다
+  chips:
+  - - spread
+  decoyChips:
+  - spray
+- id: w-leg
+  en: leg
+  ipa: /lɛɡ/
+  ko: 다리
+  icon: board
+  example: Is the swelling and blackness spreading up your leg?
+  exKo: 부종과 검은 변색이 다리 위로 번지고 있나요?
+  cue: 발에서 시작한 감염이 번져 올라가는 곳
+  tag: 상처·감염
+  distractorsEn:
+  - arm
+  - thigh
+  distractorsKo:
+  - 팔
+  - 발목
+  chips:
+  - - leg
+  decoyChips:
+  - log
+- id: w-compare
+  en: compare
+  ipa: /kəmˈpɛr/
+  ko: 비교하다
+  icon: chartup
+  example: How does your breathing compare to a few hours ago?
+  exKo: 몇 시간 전과 비교해서 숨쉬기가 어떠세요?
+  cue: 지금 상태를 앞선 때와 나란히 놓고 볼 때
+  tag: 인계·보고
+  distractorsEn:
+  - compete
+  - compile
+  distractorsKo:
+  - 기록하다
+  - 예측하다
+  chips:
+  - - com
+    - pare
+  decoyChips:
+  - con
+  - pair
+- id: w-lab
+  en: lab
+  ipa: /læb/
+  ko: 검사 수치
+  icon: lab
+  example: Your labs still show a wide gap, so I'm updating the doctor.
+  exKo: 검사 수치에서 anion gap이 아직 커서 의사에게 알리고 있어요.
+  cue: 피를 뽑아 나온 결과 수치들을 줄여 부르는 말 — 'your ___s'
+  tag: 인계·보고
+  distractorsEn:
+  - scan
+  - lap
+  distractorsKo:
+  - 영상
+  - 처방
+  chips:
+  - - lab
+  decoyChips:
+  - lap
+- id: w-gap
+  en: gap
+  ipa: /ɡæp/
+  ko: 간극
+  icon: chartup
+  example: Your labs still show a wide gap, so I'm updating the doctor.
+  exKo: 검사 수치에서 anion gap이 아직 커서 의사에게 알리고 있어요.
+  cue: DKA가 풀렸는지 보는 음이온 수치 — 닫혀야 인슐린 점적을 줄인다
+  tag: DKA·HHS
+  distractorsEn:
+  - cap
+  - gas
+  distractorsKo:
+  - 농도
+  - 산도
+  chips:
+  - - gap
+  decoyChips:
+  - gas
+- id: w-update
+  en: update
+  ipa: /ʌpˈdeɪt/
+  ko: 알리다
+  icon: speech
+  example: Your labs still show a wide gap, so I'm updating the doctor.
+  exKo: 검사 수치에서 anion gap이 아직 커서 의사에게 알리고 있어요.
+  cue: 달라진 최신 소식을 의사에게 전할 때
+  tag: 인계·보고
+  distractorsEn:
+  - upgrade
+  - upload
+  distractorsKo:
+  - 부르다
+  - 묻다
+  chips:
+  - - up
+    - date
+  decoyChips:
+  - grade
+  - load
+- id: w-trend
+  en: trend
+  ipa: /trɛnd/
+  ko: 추이
+  icon: chartup
+  example: I'll report your pH and anion gap trend clearly.
+  exKo: pH와 anion gap 추이를 명확히 보고할게요.
+  cue: 수치가 시간에 따라 좋아지는지 나빠지는지의 흐름
+  tag: 인계·보고
+  distractorsEn:
+  - trace
+  - tend
+  distractorsKo:
+  - 평균
+  - 기준
+  chips:
+  - - trend
+  decoyChips:
+  - tend
+situations:
+- title: 혈당 측정·병력 문진
+  sentences:
+  - en: When did you last take your insulin?
+    ko: 마지막으로 인슐린을 언제 맞으셨어요?
+    chunks:
+    - When did you
+    - last take
+    - your insulin
+    - '?'
+    words:
+    - w-take
+    - w-insulin
+    goal: 1
+  - en: When did you last eat?
+    ko: 마지막으로 언제 드셨어요?
+    chunks:
+    - When did you
+    - last
+    - eat
+    - '?'
+    words:
+    - w-last
+    - w-eat
+    goal: 1
+  - en: Can you tell me what type of insulin you take?
+    ko: 어떤 종류의 인슐린을 쓰시는지 말씀해 주시겠어요?
+    chunks:
+    - Can you tell me
+    - what type
+    - of insulin
+    - you take
+    - '?'
+    words:
+    - w-type
+    - w-insulin
+    - w-take
+    goal: 1
+  - en: I'm going to check your blood sugar now.
+    ko: 지금 혈당을 확인할게요.
+    chunks:
+    - I'm going to
+    - check your
+    - blood sugar
+    - now
+    - .
+    words:
+    - w-check
+    - w-blood
+    - w-sugar
+    goal: 2
+  - en: I'll prick your finger for a quick blood sample.
+    ko: 손끝을 찔러 혈액을 조금 채취할게요.
+    chunks:
+    - I'll prick
+    - your finger
+    - for a quick
+    - blood sample
+    - .
+    words:
+    - w-prick
+    - w-blood
+    - w-sample
+    goal: 2
+  - en: Are you feeling any symptoms right now?
+    ko: 지금 어떤 증상이 있으신가요?
+    chunks:
+    - Are you feeling
+    - any symptoms
+    - right now
+    - '?'
+    words:
+    - w-feel
+    - w-symptom
+    goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-prick
+    - w-blood
+    - w-sample
+    pairs:
+    - - prick
+      - your finger
+    - - skip
+      - a meal
+    - - a blood
+      - sample
+    decoys:
+    - dizzy
+    why: 손끝을 바늘로 살짝 찌르는 것은 prick your finger, 끼니를 거른 것은 skip a meal, 검사용 피는 a blood sample이에요.
+  - kind: swap
+    words:
+    - w-check
+    - w-blood
+    - w-sugar
+    who: 환자에게 · 손끝 혈당 측정
+    icon: me
+    before:
+    - 'I''m going to check your '
+    - serum glucose
+    - ' now.'
+    options:
+    - blood sugar
+    - blood glucose level
+    - serum glucose
+    answer: blood sugar
+    notes:
+      blood sugar: 환자가 스스로 쓰는 쉬운 말. 무엇을 재는지 바로 알아듣는다.
+      blood glucose level: 틀린 말은 아니지만 딱딱하다. 차트·의료진끼리에 더 어울린다.
+      serum glucose: 정맥혈을 검사실에서 잰 수치의 이름. 손끝 검사(capillary blood glucose)와는 대상부터 다르다.
+    why: 손끝 혈당을 잴 때 환자에게는 blood sugar라고 해요. 당뇨 환자들도 'my sugar'라고 말해요.
+- title: 저혈당 초기(경증)
+  sentences:
+  - en: Do you feel shaky, sweaty, or dizzy?
+    ko: 떨리거나 땀이 나거나 어지러우신가요?
+    chunks:
+    - Do you feel
+    - shaky, sweaty,
+    - or dizzy
+    - '?'
+    words:
+    - w-feel
+    - w-shaky
+    - w-sweaty
+    - w-dizzy
+    goal: 1
+  - en: How much insulin did you take today?
+    ko: 오늘 인슐린을 얼마나 맞으셨어요?
+    chunks:
+    - How much insulin
+    - did you take
+    - today
+    - '?'
+    words:
+    - w-insulin
+    - w-take
+    goal: 1
+  - en: Let's have you take some juice or glucose tablets now.
+    ko: 지금 주스나 포도당 알약을 좀 드시게 할게요.
+    chunks:
+    - Let's have you
+    - take some juice
+    - or glucose tablets
+    - now
+    - .
+    words:
+    - w-take
+    - w-juice
+    - w-glucose
+    - w-tablet
+    goal: 2
+  - en: We'll recheck your sugar in fifteen minutes.
+    ko: 십오 분 뒤에 혈당을 다시 잴게요.
+    chunks:
+    - We'll recheck
+    - your sugar
+    - in fifteen minutes
+    - .
+    words:
+    - w-recheck
+    - w-sugar
+    goal: 2
+  - en: You might feel better once your sugar comes back up.
+    ko: 혈당이 다시 오르면 나아지실 거예요.
+    chunks:
+    - You might
+    - feel better
+    - once your sugar
+    - comes back up
+    - .
+    words:
+    - w-feel
+    - w-sugar
+    goal: 2
+  - en: We'll keep watching you until you feel normal again.
+    ko: 정상으로 돌아올 때까지 계속 지켜볼게요.
+    chunks:
+    - We'll keep
+    - watching you
+    - until you feel
+    - normal again
+    - .
+    words:
+    - w-watch
+    - w-feel
+    - w-normal
+    goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-shaky
+    - w-sugar
+    cue: Meter reads 64 mg/dL. Patient is shaky but alert, talking, and able to drink on her own.
+    scale:
+    - mild
+    - moderate
+    - severe
+    answerAt: 0
+    why: 스스로 먹고 마실 수 있을 만큼 또렷하면 mild 쪽이에요. ADA는 70 미만을 1단계, 54 미만을 2단계, 남의 도움이 필요한 경우를 3단계(중증)로 나누고, 스스로 처치할 수 있으면 mild라 불러요.
+    example: It's a mild low, and she can drink juice on her own.
+    exKo: 경증 저혈당이라 스스로 주스를 마실 수 있어요.
+  - kind: context
+    words:
+    - w-juice
+    - w-recheck
+    - w-sugar
+    scenes:
+    - who: 차트 기록
+      icon: board
+      en: BG 64, alert. 4 oz juice PO, recheck in 15 min.
+      ok: true
+    - who: 동료에게
+      icon: monitor
+      en: She's 64 and alert — I gave her juice, rechecking in fifteen.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Administer 15 grams of oral carbohydrate; BG recheck in 15 minutes.
+      ok: false
+      fix: Let's have you drink some juice now, and we'll recheck your sugar in fifteen minutes.
+    why: 당 15 g을 먹이고 15분 뒤 다시 재는 '15-15 규칙'은 같아요. 환자에게는 무엇을 마시고 언제 다시 재는지 쉬운 말로, 차트와 동료에게는 수치와 약어로 짧게 말해요.
+- title: 다뇨·다갈 고혈당 주소
+  sentences:
+  - en: How often have you been urinating?
+    ko: 소변을 얼마나 자주 보셨어요?
+    chunks:
+    - How often
+    - have you been
+    - urinating
+    - '?'
+    words:
+    - w-often
+    - w-urinate
+    goal: 1
+  - en: Have you been unusually thirsty or tired?
+    ko: 평소보다 갈증이 나거나 피곤하셨어요?
+    chunks:
+    - Have you been
+    - unusually thirsty
+    - or tired
+    - '?'
+    words:
+    - w-thirsty
+    - w-tired
+    goal: 1
+  - en: Have you been able to keep up with drinking fluids?
+    ko: 수분 섭취는 충분히 해오셨어요?
+    chunks:
+    - Have you been able
+    - to keep up
+    - with drinking
+    - fluids
+    - '?'
+    words:
+    - w-drink
+    - w-fluid
+    goal: 2
+  - en: How many days have you been feeling this way?
+    ko: 며칠째 이러셨어요?
+    chunks:
+    - How many days
+    - have you been
+    - feeling
+    - this way
+    - '?'
+    words:
+    - w-feel
+    goal: 2
+  - en: Do you have a history of diabetes in your family?
+    ko: 가족 중에 당뇨병 병력이 있으신가요?
+    chunks:
+    - Do you have
+    - a history
+    - of diabetes
+    - in your family
+    - '?'
+    words:
+    - w-history
+    - w-diabetes
+    goal: 2
+  - en: We'll check your blood sugar and look for ketones too.
+    ko: 혈당도 확인하고 케톤도 함께 볼게요.
+    chunks:
+    - We'll check
+    - your blood sugar
+    - and look
+    - for ketones too
+    - .
+    words:
+    - w-check
+    - w-blood
+    - w-sugar
+    - w-ketone
+    goal: 1
+  nuance:
+  - kind: slider
+    words:
+    - w-thirsty
+    cue: 'Patient: "I drink water all day and my mouth still feels completely dry."'
+    scale:
+    - a bit thirsty
+    - really thirsty
+    - parched
+    answerAt: 2
+    why: 물을 계속 마셔도 입이 바싹 마르면 parched 쪽이에요. 고혈당으로 소변이 많아지면 물이 빠져나가 갈증이 안 가셔요. 차트에는 polydipsia(다갈)라고 적어요.
+    example: He says his mouth feels parched no matter how much he drinks.
+    exKo: 아무리 마셔도 입이 바싹 마른다고 해요.
+  - kind: swap
+    words:
+    - w-often
+    - w-urinate
+    who: 환자에게 · 다뇨 문진
+    icon: me
+    before:
+    - 'How often have you been '
+    - voiding
+    - '?'
+    options:
+    - urinating
+    - peeing
+    - voiding
+    answer: urinating
+    notes:
+      urinating: 환자에게 무난한 표준어. 격식도 지나치지 않고 뜻도 분명하다.
+      peeing: 환자들이 흔히 쓰는 편한 말이라 틀리지 않지만, 처음 보는 성인 환자에게는 조금 가볍게 들릴 수 있다.
+      voiding: 차트·의료진끼리의 말(voiding q1h). 환자는 무슨 뜻인지 잘 모른다.
+    why: void는 기록할 때의 말이에요. 환자에게는 urinating이 무난하고, 환자가 먼저 pee라고 하면 그 말을 따라 써도 괜찮아요.
+- title: 인슐린 사용법 확인
+  sentences:
+  - en: Can you show me how you usually give your insulin?
+    ko: 평소 인슐린을 어떻게 놓으시는지 보여주시겠어요?
+    chunks:
+    - Can you show me
+    - how you
+    - usually give
+    - your insulin
+    - '?'
+    words:
+    - w-show
+    - w-give
+    - w-insulin
+    goal: 1
+  - en: Which spots do you use, and do you rotate them?
+    ko: 어느 부위를 쓰시고, 돌아가며 놓으시나요?
+    chunks:
+    - Which spots
+    - do you use,
+    - and do you
+    - rotate them
+    - '?'
+    words:
+    - w-spot
+    - w-use
+    - w-rotate
+    goal: 1
+  - en: Have you missed any doses recently?
+    ko: 최근에 주사를 빠뜨리신 적 있으세요?
+    chunks:
+    - Have you missed
+    - any doses
+    - recently
+    - '?'
+    words:
+    - w-miss
+    - w-dose
+    goal: 1
+  - en: Where on your body do you usually inject?
+    ko: 보통 몸의 어디에 주사하세요?
+    chunks:
+    - Where on your body
+    - do you usually
+    - inject
+    - '?'
+    words:
+    - w-inject
+    goal: 1
+  - en: Let me walk you through the steps one more time.
+    ko: 단계를 한 번 더 안내해 드릴게요.
+    chunks:
+    - Let me
+    - walk you through
+    - the steps
+    - one more time
+    - .
+    words:
+    - w-walk
+    - w-step
+    goal: 2
+  - en: Rotating your sites helps prevent skin problems.
+    ko: 부위를 돌아가며 놓으면 피부 문제를 예방할 수 있어요.
+    chunks:
+    - Rotating your sites
+    - helps prevent
+    - skin problems
+    - .
+    words:
+    - w-rotate
+    - w-site
+    - w-prevent
+    - w-skin
+    goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-step
+    - w-skin
+    - w-inject
+    pairs:
+    - - step by
+      - step
+    - - skin
+      - problems
+    - - inject into
+      - your belly
+    decoys:
+    - rotate
+    why: 차근차근은 step by step, 한 자리에만 놓으면 생기는 딱딱한 혹 같은 것은 skin problems, 주사는 inject into 부위로 말해요.
+  - kind: swap
+    words:
+    - w-miss
+    - w-dose
+    who: 환자에게 · 인슐린 순응도 문진
+    icon: me
+    before:
+    - 'Have you '
+    - been noncompliant with
+    - ' any doses recently?'
+    options:
+    - missed
+    - been noncompliant with
+    - failed to take
+    answer: missed
+    notes:
+      missed: 탓하지 않는 중립적인 말. 환자가 솔직하게 대답하기 쉽다.
+      been noncompliant with: 환자를 탓하는 차트 말. 미국당뇨병학회는 noncompliant 같은 말을 피하라고 권한다.
+      failed to take: '''실패했다''로 들려 환자가 방어적이 된다.'
+    why: 순응도를 물을 때는 missed처럼 중립적인 말을 써요. 탓하는 말을 들으면 환자가 빠뜨린 것을 숨기기 쉬워요.
+- title: 발 상처 당뇨 환자
+  sentences:
+  - en: How long has the sore been there?
+    ko: 상처가 생긴 지 얼마나 되셨어요?
+    chunks:
+    - How long
+    - has the sore
+    - been there
+    - '?'
+    words:
+    - w-long
+    - w-sore
+    goal: 1
+  - en: How long have you had diabetes?
+    ko: 당뇨병을 앓으신 지 얼마나 되셨어요?
+    chunks:
+    - How long
+    - have you had
+    - diabetes
+    - '?'
+    words:
+    - w-long
+    - w-diabetes
+    goal: 1
+  - en: Is there any redness, warmth, or drainage around it?
+    ko: 주변에 발적이나 열감, 삼출물이 있나요?
+    chunks:
+    - Is there any
+    - redness, warmth,
+    - or drainage
+    - around it
+    - '?'
+    words:
+    - w-redness
+    - w-warmth
+    - w-drainage
+    goal: 1
+  - en: High blood sugar can slow healing, so we'll check that too.
+    ko: 혈당이 높으면 회복이 늦어질 수 있어서 그것도 확인할게요.
+    chunks:
+    - High blood sugar
+    - can slow healing,
+    - so we'll check
+    - that too
+    - .
+    words:
+    - w-blood
+    - w-sugar
+    - w-slow
+    - w-heal
+    - w-check
+    goal: 2
+  - en: We'll clean and dress the wound carefully.
+    ko: 상처를 조심스럽게 세척하고 드레싱할게요.
+    chunks:
+    - We'll clean
+    - and dress
+    - the wound carefully
+    - .
+    words:
+    - w-clean
+    - w-dress
+    - w-wound
+    goal: 2
+  - en: Keeping your sugar controlled helps wounds heal faster.
+    ko: 혈당을 잘 조절하면 상처가 더 빨리 낫습니다.
+    chunks:
+    - Keeping your sugar
+    - controlled helps
+    - wounds heal faster
+    - .
+    words:
+    - w-sugar
+    - w-control
+    - w-wound
+    - w-heal
+    goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-clean
+    - w-dress
+    - w-wound
+    - w-slow
+    - w-heal
+    - w-control
+    pairs:
+    - - clean and dress
+      - the wound
+    - - slow
+      - healing
+    - - keep your sugar
+      - controlled
+    decoys:
+    - warmth
+    why: 상처는 clean and dress(씻고 덮고), 고혈당은 healing을 slow(더디게) 하고, 혈당은 controlled 상태로 유지해요.
+  - kind: context
+    words:
+    - w-redness
+    - w-drainage
+    - w-sore
+    scenes:
+    - who: 차트 기록
+      icon: board
+      en: Plantar ulcer L foot, 2 cm, surrounding erythema, purulent drainage.
+      ok: true
+    - who: 동료에게
+      icon: monitor
+      en: Left foot ulcer with redness and some pus — can you take a look?
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Is there any erythema or purulent exudate around the ulcer?
+      ok: false
+      fix: Is there any redness, warmth, or drainage around the sore?
+    why: erythema(발적)·purulent exudate(화농성 삼출물)·ulcer(궤양)는 차트와 의료진의 말이에요. 환자에게는 redness·drainage·sore처럼 쉬운 말로 같은 것을 물어요.
+- title: 전형 DKA
+  sentences:
+  - en: Have you missed any insulin doses recently?
+    ko: 최근에 인슐린 주사를 빠뜨리신 적 있으세요?
+    chunks:
+    - Have you missed
+    - any insulin doses
+    - recently
+    - '?'
+    words:
+    - w-miss
+    - w-insulin
+    - w-dose
+    goal: 1
+  - en: Are you breathing faster or deeper than usual?
+    ko: 평소보다 숨을 빠르거나 깊게 쉬시나요?
+    chunks:
+    - Are you breathing
+    - faster or deeper
+    - than usual
+    - '?'
+    words:
+    - w-breathe
+    goal: 1
+  - en: Does your breath smell fruity or sweet?
+    ko: 숨에서 과일 냄새나 단 냄새가 나나요?
+    chunks:
+    - Does your breath
+    - smell fruity
+    - or sweet
+    - '?'
+    words:
+    - w-breath
+    - w-smell
+    - w-fruity
+    goal: 1
+  - en: We're checking your sugar, ketones, and blood gas now.
+    ko: 지금 혈당과 케톤, 혈액가스를 확인하고 있어요.
+    chunks:
+    - We're checking
+    - your sugar,
+    - ketones, and
+    - blood gas now
+    - .
+    words:
+    - w-check
+    - w-sugar
+    - w-ketone
+    - w-blood
+    - w-gas
+    goal: 2
+  - en: We'll start IV fluids and insulin to treat this.
+    ko: 정맥 수액과 인슐린으로 치료를 시작할게요.
+    chunks:
+    - We'll start
+    - IV fluids
+    - and insulin
+    - to treat this
+    - .
+    words:
+    - w-start
+    - w-fluid
+    - w-insulin
+    - w-treat
+    goal: 2
+  - en: We're getting everything ready for your treatment now.
+    ko: 지금 치료를 위해 모든 것을 준비하고 있어요.
+    chunks:
+    - We're getting
+    - everything ready
+    - for your treatment now
+    - .
+    words:
+    - w-ready
+    - w-treatment
+    goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-breath
+    - w-smell
+    - w-fruity
+    - w-gas
+    - w-fluid
+    pairs:
+    - - does your breath smell
+      - fruity
+    - - a blood
+      - gas
+    - - IV
+      - fluids
+    decoys:
+    - tired
+    why: DKA 환자의 숨에서는 케톤(아세톤) 때문에 과일·단 냄새가 나요. 산증의 정도는 blood gas로 보고, 치료는 IV fluids와 인슐린으로 시작해요.
+  - kind: context
+    words:
+    - w-breathe
+    scenes:
+    - who: 차트 기록
+      icon: board
+      en: Kussmaul respirations, fruity breath odor.
+      ok: true
+    - who: 동료에게
+      icon: monitor
+      en: Bed 4 is breathing deep and fast — looks like Kussmaul, probably DKA.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Are you having Kussmaul respirations?
+      ok: false
+      fix: Are you breathing faster or deeper than usual?
+    why: Kussmaul 호흡(깊고 빠른 호흡)은 의료진의 말이에요. 환자에게는 스스로 느끼는 대로 답할 수 있게 faster·deeper처럼 풀어서 물어요.
+- title: 저혈당 의식저하
+  sentences:
+  - en: When did you notice he became confused?
+    ko: 언제부터 혼란스러워하는 걸 알아차리셨어요?
+    chunks:
+    - When did you notice
+    - he became
+    - confused
+    - '?'
+    words:
+    - w-notice
+    - w-confused
+    goal: 1
+  - en: Is he responding when you speak to him?
+    ko: 말을 걸면 반응하시나요?
+    chunks:
+    - Is he responding
+    - when you speak
+    - to him
+    - '?'
+    words:
+    - w-respond
+    goal: 1
+  - en: We're giving sugar directly into his vein right now.
+    ko: 지금 정맥으로 바로 포도당을 주고 있어요.
+    chunks:
+    - We're giving sugar
+    - directly into
+    - his vein
+    - right now
+    - .
+    words:
+    - w-give
+    - w-sugar
+    - w-vein
+    goal: 1
+  - en: His sugar should come back up in a few minutes.
+    ko: 몇 분 안에 혈당이 다시 오를 거예요.
+    chunks:
+    - His sugar
+    - should come back up
+    - in a few
+    - minutes
+    - .
+    words:
+    - w-sugar
+    goal: 1
+  - en: Did he take his insulin without eating?
+    ko: 식사 없이 인슐린을 맞으셨나요?
+    chunks:
+    - Did he take
+    - his insulin
+    - without eating
+    - '?'
+    words:
+    - w-take
+    - w-insulin
+    - w-eat
+    goal: 2
+  - en: Does he have any other medical conditions?
+    ko: 다른 지병이 있으신가요?
+    chunks:
+    - Does he have
+    - any other
+    - medical conditions
+    - '?'
+    words:
+    - w-condition
+    goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-respond
+    cue: 'Family: "He opens his eyes when I call his name, but then he drifts right off again."'
+    scale:
+    - alert
+    - responds to voice
+    - responds to pain
+    - unresponsive
+    answerAt: 1
+    why: AVPU 척도예요. 부르면 눈을 뜨지만 곧 다시 처지면 V(목소리에 반응)예요. 의식이 흐린 저혈당 환자에게는 사레들릴 위험 때문에 입으로 당을 주지 않고, 정맥 포도당이나 글루카곤을 써요.
+    example: He responds to voice, but he isn't fully alert.
+    exKo: 부르면 반응하지만 완전히 또렷하지는 않아요.
+  - kind: swap
+    words:
+    - w-give
+    - w-sugar
+    - w-vein
+    who: 가족에게 · 정맥 포도당 투여
+    icon: me
+    before:
+    - 'We''re giving '
+    - D50
+    - ' directly into his vein right now.'
+    options:
+    - sugar
+    - D50
+    - 50 percent dextrose
+    answer: sugar
+    notes:
+      sugar: 가족이 바로 알아듣는 말. 무엇을, 왜 주는지 전해진다.
+      D50: 의료진끼리 쓰는 약어. 가족에게는 암호처럼 들린다.
+      50 percent dextrose: 정확한 약 이름이지만 가족에게는 다시 설명이 필요하다.
+    why: 가족에게는 약 이름보다 무엇을 하는지가 중요해요. 정맥으로 당을 넣는다고 쉬운 말로 알려요.
+- title: 신환 1형 당뇨 발현
+  sentences:
+  - en: This is a lot to take in, and it's okay to feel overwhelmed.
+    ko: 받아들이기 힘드실 텐데, 압도되는 기분이 드셔도 괜찮아요.
+    chunks:
+    - This is a lot
+    - to take in,
+    - and it's okay
+    - to feel overwhelmed
+    - .
+    words:
+    - w-feel
+    - w-overwhelmed
+    goal: 1
+  - en: It's normal to feel scared right after a new diagnosis.
+    ko: 새로 진단받으면 겁이 나는 게 당연해요.
+    chunks:
+    - It's normal
+    - to feel scared
+    - right after
+    - a new diagnosis
+    - .
+    words:
+    - w-normal
+    - w-feel
+    - w-scared
+    - w-diagnosis
+    goal: 1
+  - en: I'm here to answer any questions you have.
+    ko: 궁금하신 점 있으면 뭐든 답해 드릴게요.
+    chunks:
+    - I'm here
+    - to answer
+    - any questions you have
+    - .
+    words:
+    - w-answer
+    goal: 1
+  - en: Your body needs insulin, which we'll teach you to use.
+    ko: 몸에는 인슐린이 필요하고, 사용법을 알려드릴게요.
+    chunks:
+    - Your body needs
+    - insulin,
+    - which we'll teach you
+    - to use
+    - .
+    words:
+    - w-insulin
+    - w-teach
+    - w-use
+    goal: 2
+  - en: We'll also explain what ketones are and why they matter.
+    ko: 케톤이 무엇이고 왜 중요한지도 설명해 드릴게요.
+    chunks:
+    - We'll also explain
+    - what ketones are
+    - and why
+    - they matter
+    - .
+    words:
+    - w-explain
+    - w-ketone
+    - w-matter
+    goal: 2
+  - en: We'll start with the basics and go step by step.
+    ko: 기초부터 한 단계씩 시작할게요.
+    chunks:
+    - We'll start
+    - with the basics
+    - and go
+    - step by step
+    - .
+    words:
+    - w-start
+    - w-basic
+    - w-step
+    goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-overwhelmed
+    - w-feel
+    cue: 'Patient: "I can''t take any of this in. It''s all just too much at once."'
+    scale:
+    - a bit nervous
+    - worried
+    - overwhelmed
+    answerAt: 2
+    why: '''한꺼번에 너무 많다''고 하면 overwhelmed 쪽이에요. 환자가 느끼는 감정에 이름을 붙여 돌려주면(It''s okay to feel overwhelmed) 이해받는다고 느끼고, 그다음 교육을 받아들이기 쉬워져요.'
+    example: It's okay to feel overwhelmed right now.
+    exKo: 지금 벅차게 느끼시는 건 괜찮아요.
+  - kind: swap
+    words:
+    - w-normal
+    - w-scared
+    - w-diagnosis
+    who: 환자에게 · 진단 직후 정서 지지
+    icon: me
+    before:
+    - 'It''s '
+    - silly
+    - ' to feel scared right after a new diagnosis.'
+    options:
+    - normal
+    - silly
+    - unnecessary
+    answer: normal
+    notes:
+      normal: 감정을 있는 그대로 인정한다. 환자가 혼자가 아니라고 느낀다.
+      silly: 감정을 깎아내린다. 환자가 속마음을 더 말하지 않게 된다.
+      unnecessary: 걱정할 것 없다고 단정해 거짓 안심을 준다. 1형 당뇨는 평생 관리가 필요한 병이다.
+    why: 진단 직후의 두려움은 고치려 하지 말고 먼저 인정해요. '그럴 수 있다'는 말이 교육의 첫걸음이에요.
+- title: HHS 노인
+  sentences:
+  - en: How long has she been drowsy and confused?
+    ko: 언제부터 졸리고 혼란스러워하셨어요?
+    chunks:
+    - How long
+    - has she been
+    - drowsy and confused
+    - '?'
+    words:
+    - w-long
+    - w-drowsy
+    - w-confused
+    goal: 1
+  - en: Her sugar is extremely high with severe dehydration.
+    ko: 혈당이 매우 높고 탈수도 심하세요.
+    chunks:
+    - Her sugar is
+    - extremely high
+    - with severe dehydration
+    - .
+    words:
+    - w-sugar
+    - w-high
+    - w-dehydration
+    goal: 1
+  - en: When did you last see her drink normally?
+    ko: 마지막으로 정상적으로 물을 드신 게 언제예요?
+    chunks:
+    - When did you
+    - last see her
+    - drink normally
+    - '?'
+    words:
+    - w-last
+    - w-drink
+    - w-normal
+    goal: 1
+  - en: Has she been eating or drinking less than usual?
+    ko: 평소보다 덜 드시거나 덜 마셨나요?
+    chunks:
+    - Has she been
+    - eating or
+    - drinking less
+    - than usual
+    - '?'
+    words:
+    - w-eat
+    - w-drink
+    goal: 1
+  - en: We'll give fluids carefully and monitor her closely.
+    ko: 수액을 조심스럽게 드리면서 계속 지켜볼게요.
+    chunks:
+    - We'll give fluids
+    - carefully
+    - and monitor her closely
+    - .
+    words:
+    - w-give
+    - w-fluid
+    - w-monitor
+    goal: 2
+  - en: We'll keep a close eye on her heart and kidneys.
+    ko: 심장과 신장도 자세히 살펴볼게요.
+    chunks:
+    - We'll keep
+    - a close eye
+    - on her
+    - heart and kidneys
+    - .
+    words:
+    - w-heart
+    - w-kidney
+    goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-drowsy
+    cue: 'Family: "She keeps nodding off in the middle of a sentence, but she wakes up if I touch her arm."'
+    scale:
+    - alert
+    - drowsy
+    - unresponsive
+    answerAt: 1
+    why: 말하다가 잠들지만 건드리면 깨면 drowsy 쪽이에요. HHS는 혈당과 삼투압이 오를수록 의식이 더 떨어지므로, 의식 변화를 계속 비교해 봐요.
+    example: She's drowsy but wakes up when I touch her.
+    exKo: 졸려하지만 건드리면 깨요.
+  - kind: context
+    words:
+    - w-sugar
+    - w-high
+    - w-dehydration
+    scenes:
+    - who: 동료에게
+      icon: monitor
+      en: Glucose is over 600 and she's really dry — looks like HHS.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Severe hyperglycemia, dehydration, AMS. HHS suspected.
+      ok: true
+    - who: 가족에게
+      icon: me
+      en: She's in a hyperosmolar hyperglycemic state with profound volume depletion.
+      ok: false
+      fix: Her sugar is extremely high and she's very dehydrated, and that's making her confused.
+    why: hyperosmolar hyperglycemic state·volume depletion은 의료진의 말이에요. 가족에게는 혈당이 아주 높고 탈수가 심하다는 것, 그래서 혼란스러워한다는 것을 쉬운 말로 이어서 말해요.
+- title: 인슐린 펌프 사용자
+  sentences:
+  - en: When did you last change the pump site and reservoir?
+    ko: 펌프 부위와 저장통을 마지막으로 언제 교체하셨어요?
+    chunks:
+    - When did you
+    - last change
+    - the pump site
+    - and reservoir
+    - '?'
+    words:
+    - w-last
+    - w-change
+    - w-pump
+    - w-site
+    - w-reservoir
+    goal: 1
+  - en: Let's check whether the tubing is kinked or the site is red.
+    ko: 튜브가 꺾였는지, 부위가 빨간지 확인해 볼게요.
+    chunks:
+    - Let's check
+    - whether the tubing
+    - is kinked
+    - or the site is red
+    - .
+    words:
+    - w-check
+    - w-tubing
+    - w-kinked
+    - w-site
+    - w-red
+    goal: 1
+  - en: When did your sugar start rising?
+    ko: 혈당이 언제부터 오르기 시작했어요?
+    chunks:
+    - When did
+    - your sugar
+    - start rising
+    - '?'
+    words:
+    - w-sugar
+    - w-start
+    goal: 1
+  - en: What's your current basal rate set at?
+    ko: 지금 기저율은 얼마로 맞춰져 있어요?
+    chunks:
+    - What's your
+    - current basal rate
+    - set at
+    - '?'
+    words:
+    - w-basal
+    - w-rate
+    goal: 1
+  - en: We may need to give insulin by injection while we sort this out.
+    ko: 해결될 때까지 인슐린을 주사로 놓아드려야 할 수도 있어요.
+    chunks:
+    - We may need
+    - to give insulin
+    - by injection
+    - while we sort this out
+    - .
+    words:
+    - w-give
+    - w-insulin
+    - w-injection
+    goal: 2
+  - en: We'll switch you to injections until the pump is fixed.
+    ko: 펌프가 고쳐질 때까지 주사로 바꿔드릴게요.
+    chunks:
+    - We'll switch you
+    - to injections
+    - until the pump
+    - is fixed
+    - .
+    words:
+    - w-switch
+    - w-injection
+    - w-pump
+    - w-fix
+    goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-kinked
+    - w-tubing
+    - w-basal
+    - w-rate
+    - w-red
+    - w-site
+    pairs:
+    - - kinked
+      - tubing
+    - - basal
+      - rate
+    - - a red
+      - site
+    decoys:
+    - thirsty
+    why: 접혀서 인슐린이 안 흐르는 관은 kinked tubing, 펌프가 하루 종일 깔아 주는 양은 basal rate, 주입 부위가 붉어졌으면 a red site예요.
+  - kind: context
+    words:
+    - w-switch
+    - w-injection
+    - w-pump
+    - w-fix
+    scenes:
+    - who: 동료에게
+      icon: monitor
+      en: Pump's not delivering — probably an occlusion. Can we get an order for subQ insulin?
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Insulin pump malfunction; transitioned to SQ insulin per order.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Your CSII has failed, so we're transitioning you to subcutaneous insulin.
+      ok: false
+      fix: Your pump isn't working right, so we'll switch you to insulin shots until it's fixed.
+    why: CSII(지속 피하 인슐린 주입)·subcutaneous는 의료진의 말이에요. 펌프는 속효성 인슐린만 쓰기 때문에 멈추면 몇 시간 만에 DKA로 갈 수 있어서 바로 주사로 바꿔요. 환자에게는 쉬운 말로, 언제까지인지도 함께 말해요.
+- title: 스테로이드 유발 고혈당
+  sentences:
+  - en: When did you start the steroid medication?
+    ko: 스테로이드 약을 언제부터 드셨어요?
+    chunks:
+    - When did you
+    - start the steroid
+    - medication
+    - '?'
+    words:
+    - w-start
+    - w-steroid
+    - w-medication
+    goal: 1
+  - en: What are you taking the steroid for?
+    ko: 스테로이드는 무엇 때문에 드시는 거예요?
+    chunks:
+    - What are you
+    - taking the steroid
+    - for
+    - '?'
+    words:
+    - w-steroid
+    goal: 1
+  - en: Steroids can temporarily raise your blood sugar.
+    ko: 스테로이드는 일시적으로 혈당을 올릴 수 있어요.
+    chunks:
+    - Steroids can
+    - temporarily raise
+    - your blood sugar
+    - .
+    words:
+    - w-steroid
+    - w-raise
+    - w-blood
+    - w-sugar
+    goal: 2
+  - en: This rise in sugar is usually temporary.
+    ko: 이번 혈당 상승은 보통 일시적이에요.
+    chunks:
+    - This rise
+    - in sugar
+    - is usually temporary
+    - .
+    words:
+    - w-rise
+    - w-sugar
+    goal: 2
+  - en: We'll monitor your sugar and adjust your treatment.
+    ko: 혈당을 관찰하면서 치료를 조정할게요.
+    chunks:
+    - We'll monitor
+    - your sugar
+    - and adjust your treatment
+    - .
+    words:
+    - w-monitor
+    - w-sugar
+    - w-adjust
+    - w-treatment
+    goal: 2
+  - en: We may need extra insulin while you're on the steroid.
+    ko: 스테로이드를 드시는 동안 인슐린이 더 필요할 수 있어요.
+    chunks:
+    - We may need
+    - extra insulin
+    - while you're
+    - on the steroid
+    - .
+    words:
+    - w-insulin
+    - w-steroid
+    goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-rise
+    - w-steroid
+    - w-sugar
+    pairs:
+    - - a rise
+      - in sugar
+    - - while you're
+      - on the steroid
+    - - taking it
+      - for your lungs
+    decoys:
+    - at your lungs
+    why: '''~의 상승''은 a rise in, 약을 복용 중인 상태는 on (the steroid), 약을 먹는 목적은 for로 말해요. 한국어로는 조사 하나 차이지만 영어는 전치사가 정해져 있어요.'
+  - kind: swap
+    words:
+    - w-raise
+    - w-steroid
+    - w-sugar
+    who: 환자에게 · 스테로이드와 혈당 설명
+    icon: me
+    before:
+    - 'Steroids can temporarily '
+    - rise
+    - ' your blood sugar.'
+    options:
+    - raise
+    - rise
+    - arise
+    answer: raise
+    notes:
+      raise: 무엇을 '올리다' — 목적어(your blood sugar)를 받는 타동사.
+      rise: 스스로 '오르다' — 목적어를 받지 않는다(Your sugar may rise).
+      arise: '''생기다·일어나다''라는 뜻이라 여기에 맞지 않는다.'
+    why: 스테로이드가 혈당을 올리는 것이니 목적어를 받는 raise예요. 혈당이 주어면 rise를 써요(Your sugar may rise).
+- title: 당뇨+감염 혈당불안정
+  sentences:
+  - en: What infection symptoms have you had, and for how long?
+    ko: 어떤 감염 증상이 있었고, 얼마나 오래됐어요?
+    chunks:
+    - What infection symptoms
+    - have you had,
+    - and for
+    - how long
+    - '?'
+    words:
+    - w-infection
+    - w-symptom
+    - w-long
+    goal: 1
+  - en: How long have you had the flu?
+    ko: 독감을 앓으신 지 얼마나 되셨어요?
+    chunks:
+    - How long
+    - have you had
+    - the flu
+    - '?'
+    words:
+    - w-long
+    - w-flu
+    goal: 1
+  - en: Illness can make your sugars harder to control.
+    ko: 아프면 혈당 조절이 더 어려워질 수 있어요.
+    chunks:
+    - Illness can make
+    - your sugars
+    - harder to control
+    - .
+    words:
+    - w-illness
+    - w-sugar
+    - w-control
+    goal: 2
+  - en: Have you been able to eat, drink, and take your insulin?
+    ko: 먹고 마시고 인슐린도 맞을 수 있으셨어요?
+    chunks:
+    - Have you been able
+    - to eat, drink,
+    - and take
+    - your insulin
+    - '?'
+    words:
+    - w-eat
+    - w-drink
+    - w-take
+    - w-insulin
+    goal: 1
+  - en: Keep checking your sugar more often while you're sick.
+    ko: 아픈 동안에는 혈당을 더 자주 확인하세요.
+    chunks:
+    - Keep checking
+    - your sugar
+    - more often
+    - while you're sick
+    - .
+    words:
+    - w-check
+    - w-sugar
+    - w-often
+    - w-sick
+    goal: 2
+  - en: Never skip your insulin, even if you can't eat much.
+    ko: 잘 못 드시더라도 인슐린은 절대 거르지 마세요.
+    chunks:
+    - Never skip
+    - your insulin,
+    - even if
+    - you can't eat much
+    - .
+    words:
+    - w-skip
+    - w-insulin
+    - w-eat
+    goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-flu
+    - w-sick
+    pairs:
+    - - all over
+      - the place
+    - - come down with
+      - the flu
+    - - a sick-day
+      - plan
+    decoys:
+    - often
+    why: 혈당이 들쭉날쭉한 것은 all over the place(환자가 흔히 쓰는 굳은 표현), 독감에 걸리는 것은 come down with the flu, 아플 때 혈당·인슐린을 어떻게 할지 정해 둔 것은 a sick-day plan이에요.
+  - kind: context
+    words:
+    - w-illness
+    - w-sugar
+    - w-control
+    - w-sick
+    scenes:
+    - who: 차트 기록
+      icon: board
+      en: Intercurrent influenza with labile BG; sick-day plan reviewed.
+      ok: true
+    - who: 동료에게
+      icon: monitor
+      en: He's got the flu and his sugars are all over the place.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Intercurrent illness is causing significant glycemic lability.
+      ok: false
+      fix: Being sick with the flu can make your sugars harder to control.
+    why: intercurrent illness(동반 질환)·glycemic lability(혈당 변동)는 차트의 말이에요. 환자에게는 아프면 혈당이 흔들린다는 것을 쉬운 말로 알려요.
+- title: 저혈당 반복 고령자
+  sentences:
+  - en: Which diabetes medicines do you take, and at what times?
+    ko: 어떤 당뇨약을 드시고, 언제 드세요?
+    chunks:
+    - Which diabetes medicines
+    - do you take,
+    - and at
+    - what times
+    - '?'
+    words:
+    - w-diabetes
+    - w-medicine
+    - w-take
+    goal: 1
+  - en: How many times has this happened this month?
+    ko: 이번 달에 몇 번이나 이런 일이 있었어요?
+    chunks:
+    - How many times
+    - has this happened
+    - this month
+    - '?'
+    words: []
+    goal: 1
+  - en: Have these low sugars caused you to fall or nearly fall?
+    ko: 이런 저혈당 때문에 넘어지거나 넘어질 뻔하셨어요?
+    chunks:
+    - Have these low sugars
+    - caused you
+    - to fall
+    - or nearly fall
+    - '?'
+    words:
+    - w-low
+    - w-sugar
+    - w-fall
+    goal: 2
+  - en: Did you feel dizzy or faint before you fell?
+    ko: 넘어지시기 전에 어지럽거나 실신할 것 같으셨어요?
+    chunks:
+    - Did you feel
+    - dizzy or faint
+    - before you
+    - fell
+    - '?'
+    words:
+    - w-feel
+    - w-dizzy
+    - w-faint
+    - w-fall
+    goal: 2
+  - en: We may need to review and adjust your medications.
+    ko: 약을 재검토하고 조정해야 할 수도 있어요.
+    chunks:
+    - We may need
+    - to review
+    - and adjust
+    - your medications
+    - .
+    words:
+    - w-review
+    - w-adjust
+    - w-medication
+    goal: 1
+  - en: We'll set up a plan to keep you safer at home.
+    ko: 집에서 더 안전하게 지내실 계획을 세울게요.
+    chunks:
+    - We'll set up
+    - a plan
+    - to keep you
+    - safer at home
+    - .
+    words:
+    - w-plan
+    - w-safe
+    goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-faint
+    cue: 'Patient: "Everything went gray and I had to grab the counter, but I didn''t black out."'
+    scale:
+    - lightheaded
+    - faint
+    - unconscious
+    answerAt: 1
+    why: 쓰러질 것 같았지만 의식을 잃지 않았다면 faint(실신할 듯한) 쪽이에요. 실제로 의식을 잃었다면 unconscious(passed out)예요. 차트에서는 near-syncope와 syncope로 갈라 적어요.
+    example: I felt faint and had to sit down.
+    exKo: 쓰러질 것 같아서 앉아야 했어요.
+  - kind: context
+    words:
+    - w-low
+    - w-sugar
+    - w-fall
+    scenes:
+    - who: 차트 기록
+      icon: board
+      en: Recurrent hypoglycemia x3 this month with near-fall.
+      ok: true
+    - who: 동료에게
+      icon: monitor
+      en: That's her third low this month and she almost fell — can pharmacy review her meds?
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: You've had recurrent hypoglycemic episodes with a near-fall.
+      ok: false
+      fix: Your sugar has gone low three times this month, and you almost fell.
+    why: recurrent hypoglycemic episodes는 의료진의 말이에요. 환자에게는 몇 번, 무슨 일이 있었는지 쉬운 말로 되짚어 줘요.
+- title: 임신성/임신 당뇨 위기
+  sentences:
+  - en: How many weeks pregnant are you?
+    ko: 임신 몇 주 되셨어요?
+    chunks:
+    - How many weeks
+    - pregnant
+    - are you
+    - '?'
+    words:
+    - w-pregnant
+    goal: 1
+  - en: Have you had gestational diabetes before?
+    ko: 이전에 임신성 당뇨가 있으셨어요?
+    chunks:
+    - Have you had
+    - gestational diabetes
+    - before
+    - '?'
+    words:
+    - w-gestational
+    - w-diabetes
+    goal: 1
+  - en: In pregnancy we aim for tighter sugar targets to protect the baby.
+    ko: 임신 중에는 아기를 보호하기 위해 혈당 목표를 더 엄격히 잡아요.
+    chunks:
+    - In pregnancy
+    - we aim
+    - for tighter sugar targets
+    - to protect the baby
+    - .
+    words:
+    - w-pregnancy
+    - w-aim
+    - w-sugar
+    - w-target
+    - w-protect
+    goal: 1
+  - en: Keeping your sugar in range protects you both.
+    ko: 혈당을 범위 안에 유지하면 두 분 모두에게 좋아요.
+    chunks:
+    - Keeping your sugar
+    - in range
+    - protects you both
+    - .
+    words:
+    - w-sugar
+    - w-range
+    - w-protect
+    goal: 2
+  - en: We'll also monitor the baby while we manage your sugar.
+    ko: 혈당을 관리하면서 아기도 함께 살펴볼게요.
+    chunks:
+    - We'll also monitor
+    - the baby
+    - while we manage
+    - your sugar
+    - .
+    words:
+    - w-monitor
+    - w-manage
+    - w-sugar
+    goal: 2
+  - en: We'll check on the baby's heartbeat as well.
+    ko: 아기 심장박동도 확인할게요.
+    chunks:
+    - We'll check
+    - on the baby's
+    - heartbeat as well
+    - .
+    words:
+    - w-check
+    - w-heartbeat
+    goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-range
+    - w-target
+    cue: Fasting sugar 92 mg/dL — she's 30 weeks with gestational diabetes.
+    scale:
+    - in range
+    - a little high
+    - very high
+    answerAt: 0
+    why: 임신 중 혈당 목표는 더 빡빡해요 — 공복 95 mg/dL 미만, 식후 1시간 140 미만, 식후 2시간 120 미만(ADA·ACOG). 공복 92면 목표 범위 안이에요.
+    example: Her fasting sugar is in range this morning.
+    exKo: 오늘 아침 공복 혈당은 목표 범위 안이에요.
+  - kind: swap
+    words:
+    - w-monitor
+    - w-manage
+    who: 산모에게 · 태아 감시 설명
+    icon: me
+    before:
+    - 'We''ll also monitor '
+    - fetal well-being
+    - ' while we manage your sugar.'
+    options:
+    - the baby
+    - fetal well-being
+    - the fetus
+    answer: the baby
+    notes:
+      the baby: 산모에게 가장 자연스러운 말. 산모가 걱정하는 대상을 그대로 부른다.
+      fetal well-being: 차트·의료진끼리의 말. 산모에게는 딱딱하고 멀게 들린다.
+      the fetus: 정확하지만 산모에게는 차갑게 들린다.
+    why: 미국 병원에서 간호사는 산모와 이야기할 때 태아를 보통 the baby라고 불러요. fetus·fetal은 기록할 때의 말이에요.
+- title: 당뇨 언어장벽 교육
+  sentences:
+  - en: I'll bring an interpreter so we can explain clearly.
+    ko: 설명을 정확히 드릴 수 있게 통역사를 모셔올게요.
+    chunks:
+    - I'll bring
+    - an interpreter
+    - so we can
+    - explain clearly
+    - .
+    words:
+    - w-bring
+    - w-interpreter
+    - w-explain
+    - w-clearly
+    goal: 1
+  - en: Let me show you step by step how to use the insulin.
+    ko: 인슐린 사용법을 한 단계씩 보여드릴게요.
+    chunks:
+    - Let me show you
+    - step by step
+    - how to use
+    - the insulin
+    - .
+    words:
+    - w-show
+    - w-step
+    - w-use
+    - w-insulin
+    goal: 1
+  - en: Do you have any questions about the insulin?
+    ko: 인슐린에 대해 궁금하신 점 있으세요?
+    chunks:
+    - Do you have
+    - any questions
+    - about the insulin
+    - '?'
+    words:
+    - w-insulin
+    goal: 1
+  - en: Can you show me back so I know you understand?
+    ko: 이해하신 걸 저에게 다시 보여주시겠어요?
+    chunks:
+    - Can you show me
+    - back so I
+    - know you
+    - understand
+    - '?'
+    words:
+    - w-show
+    - w-understand
+    goal: 2
+  - en: Please show me how you would draw up the dose.
+    ko: 인슐린을 어떻게 준비하시는지 보여주세요.
+    chunks:
+    - Please show me
+    - how you would
+    - draw up
+    - the dose
+    - .
+    words:
+    - w-show
+    - w-draw
+    - w-dose
+    goal: 2
+  - en: That's exactly right, you understand this well.
+    ko: 맞아요, 정확히 이해하고 계세요.
+    chunks:
+    - That's exactly right,
+    - you understand
+    - this well
+    - .
+    words:
+    - w-understand
+    goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-draw
+    - w-dose
+    - w-step
+    - w-interpreter
+    pairs:
+    - - draw up
+      - the dose
+    - - step by
+      - step
+    - - a qualified
+      - interpreter
+    decoys:
+    - understand
+    why: 바이알에서 주사기로 약을 뽑는 것은 draw up the dose, 차근차근은 step by step, 자격을 갖춘 의료 통역사는 a qualified interpreter예요 — 미국 연방 규정이 쓰는 말이 qualified예요.
+  - kind: swap
+    words:
+    - w-bring
+    - w-interpreter
+    - w-explain
+    - w-clearly
+    who: 환자에게 · 통역 연결
+    icon: me
+    before:
+    - 'I''ll bring '
+    - your son to translate
+    - ' so we can explain clearly.'
+    options:
+    - an interpreter
+    - your son to translate
+    - a bilingual coworker
+    answer: an interpreter
+    notes:
+      an interpreter: 병원이 무료로 제공하는 자격 있는 의료 통역. 미국 연방 규정(Section 1557)이 병원에 요구한다.
+      your son to translate: 가족 통역은 누락·오역이 잦다. 성인 가족은 무료 통역을 안내받은 환자가 원할 때만, 미성년 자녀는 급박한 위험 상황에서 통역을 바로 구할 수 없을 때만 된다.
+      a bilingual coworker: 말을 할 줄 아는 것과 의료 통역은 다르다. 통역 자격이 확인된 직원이 아니면 맡기지 않는다.
+    why: 인슐린 교육처럼 안전이 걸린 설명에는 자격 있는 통역을 써요. 영어가 서툰 환자에게 미국 병원은 무료 통역을 제공해야 해요.
+- title: DKA 중증 저칼륨
+  sentences:
+  - en: Tell me about any muscle weakness or cramping.
+    ko: 근육이 약해지거나 쥐가 나는지 말씀해 주세요.
+    chunks:
+    - Tell me
+    - about any muscle
+    - weakness or cramping
+    - .
+    words:
+    - w-tell
+    - w-muscle
+    - w-weakness
+    - w-cramp
+    goal: 1
+  - en: Are your muscles feeling weak or crampy?
+    ko: 근육이 약하거나 쥐가 나는 느낌이 있으세요?
+    chunks:
+    - Are your muscles
+    - feeling weak
+    - or crampy
+    - '?'
+    words:
+    - w-muscle
+    - w-feel
+    - w-weak
+    goal: 1
+  - en: Your potassium is low, so we'll correct it before more insulin.
+    ko: 칼륨이 낮아서 인슐린을 더 넣기 전에 먼저 교정할게요.
+    chunks:
+    - Your potassium is low,
+    - so we'll correct it
+    - before more
+    - insulin
+    - .
+    words:
+    - w-potassium
+    - w-low
+    - w-correct
+    - w-insulin
+    goal: 2
+  - en: We're watching your heart rhythm closely on the monitor.
+    ko: 모니터로 심장 리듬을 계속 지켜보고 있어요.
+    chunks:
+    - We're watching
+    - your heart rhythm
+    - closely
+    - on the monitor
+    - .
+    words:
+    - w-watch
+    - w-heart
+    - w-rhythm
+    - w-monitor
+    goal: 2
+  - en: We'll hold extra insulin until your potassium improves.
+    ko: 칼륨이 좋아질 때까지 인슐린을 잠시 보류할게요.
+    chunks:
+    - We'll hold
+    - extra insulin
+    - until your potassium improves
+    - .
+    words:
+    - w-hold
+    - w-insulin
+    - w-potassium
+    goal: 2
+  - en: Any changes on the monitor will tell us right away.
+    ko: 모니터에 변화가 있으면 바로 알려드릴게요.
+    chunks:
+    - Any changes
+    - on the monitor
+    - will tell us
+    - right away
+    - .
+    words:
+    - w-monitor
+    - w-tell
+    goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-weak
+    - w-muscle
+    cue: 'Patient: "I can lift my arms, but they feel heavy and I can''t hold them up for long."'
+    scale:
+    - slightly weak
+    - weak
+    - paralyzed
+    answerAt: 1
+    why: 들 수는 있지만 오래 버티지 못하면 weak 쪽이에요. 저칼륨이 심해지면 마비까지 갈 수 있어서 근력 변화를 계속 확인해요.
+    example: My legs feel weak, and I'm cramping.
+    exKo: 다리에 힘이 없고 쥐가 나요.
+  - kind: context
+    words:
+    - w-potassium
+    - w-low
+    - w-hold
+    - w-insulin
+    scenes:
+    - who: 동료에게
+      icon: monitor
+      en: K is 3.1 — we need to hold the insulin drip and start potassium first.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: K 3.1; insulin held per protocol, KCl infusing, continuous cardiac monitoring.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Your K is 3.1, so we're holding the drip pending repletion.
+      ok: false
+      fix: Your potassium is low, so we'll give you potassium first and hold off on more insulin.
+    why: 인슐린은 칼륨을 세포 안으로 밀어 넣어 혈중 칼륨을 더 떨어뜨려요. 그래서 DKA에서 칼륨이 3.3 mEq/L 미만이면 인슐린을 미루고 칼륨부터 채워요(ADA). 환자에게는 K·repletion 대신 쉬운 말로 순서를 알려요.
+- title: DKA 뇌부종(소아)
+  sentences:
+  - en: When did the headache and drowsiness start?
+    ko: 두통과 졸림이 언제부터 시작됐어요?
+    chunks:
+    - When did
+    - the headache
+    - and drowsiness start
+    - '?'
+    words:
+    - w-headache
+    - w-drowsiness
+    - w-start
+    goal: 1
+  - en: Is he more sleepy than he was an hour ago?
+    ko: 한 시간 전보다 더 졸려 하시나요?
+    chunks:
+    - Is he
+    - more sleepy
+    - than he was
+    - an hour ago
+    - '?'
+    words:
+    - w-sleepy
+    goal: 1
+  - en: We're checking his neurological status closely right now.
+    ko: 지금 신경학적 상태를 자세히 확인하고 있어요.
+    chunks:
+    - We're checking
+    - his neurological status
+    - closely
+    - right now
+    - .
+    words:
+    - w-check
+    - w-neurological
+    - w-status
+    goal: 2
+  - en: We're watching his pupils and alertness very closely.
+    ko: 동공과 의식 상태를 아주 자세히 지켜보고 있어요.
+    chunks:
+    - We're watching
+    - his pupils
+    - and alertness very closely
+    - .
+    words:
+    - w-watch
+    - w-pupil
+    - w-alertness
+    goal: 2
+  - en: We're acting immediately because this can be serious.
+    ko: 심각할 수 있어서 지금 바로 대응하고 있어요.
+    chunks:
+    - We're acting
+    - immediately
+    - because this can be serious
+    - .
+    words:
+    - w-act
+    - w-serious
+    goal: 2
+  - en: The team is responding right away to keep him safe.
+    ko: 팀이 아이를 안전하게 지키려고 바로 대응하고 있어요.
+    chunks:
+    - The team
+    - is responding
+    - right away
+    - to keep him safe
+    - .
+    words:
+    - w-team
+    - w-respond
+    - w-safe
+    goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-sleepy
+    cue: 'Parent: "He was chatting an hour ago. Now he only opens his eyes if I shake him."'
+    scale:
+    - alert
+    - sleepy
+    - hard to wake
+    - unresponsive
+    answerAt: 2
+    why: 흔들어야 겨우 눈을 뜨면 hard to wake 쪽이에요. 소아 DKA 치료 중 새 두통과 함께 의식이 떨어지면 뇌부종의 경고 신호라 바로 의사에게 알려요.
+    example: He's getting hard to wake, and his headache is worse.
+    exKo: 아이가 점점 깨우기 힘들어지고 두통도 심해졌어요.
+  - kind: context
+    words:
+    - w-act
+    scenes:
+    - who: 동료에게
+      icon: monitor
+      en: New headache and he's harder to wake — I'm worried about cerebral edema. Can you get the doctor now?
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: New HA and decreased LOC during DKA treatment; MD notified at bedside.
+      ok: true
+    - who: 보호자에게
+      icon: me
+      en: We suspect cerebral edema secondary to DKA treatment.
+      ok: false
+      fix: We're worried there may be some swelling in his brain, so we're acting right away.
+    why: cerebral edema·secondary to는 의료진의 말이에요. 보호자에게는 '뇌가 붓는 것'처럼 풀어서, 지금 무엇을 하고 있는지를 함께 말해요.
+- title: HHS 쇼크 동반
+  sentences:
+  - en: How responsive has she been over the last hour?
+    ko: 지난 한 시간 동안 반응이 어땠어요?
+    chunks:
+    - How responsive
+    - has she been
+    - over the last
+    - hour
+    - '?'
+    words:
+    - w-responsive
+    goal: 1
+  - en: Is she opening her eyes or responding to your voice?
+    ko: 눈을 뜨거나 목소리에 반응하시나요?
+    chunks:
+    - Is she opening
+    - her eyes
+    - or responding
+    - to your voice
+    - '?'
+    words:
+    - w-eye
+    - w-respond
+    - w-voice
+    goal: 1
+  - en: Her pressure is low, so we're giving fluids quickly.
+    ko: 혈압이 낮아서 수액을 빠르게 드리고 있어요.
+    chunks:
+    - Her pressure
+    - is low,
+    - so we're giving
+    - fluids quickly
+    - .
+    words:
+    - w-pressure
+    - w-low
+    - w-give
+    - w-fluid
+    goal: 2
+  - en: We're giving fluids fast to bring her blood pressure back up.
+    ko: 혈압을 올리려고 수액을 빠르게 드리고 있어요.
+    chunks:
+    - We're giving fluids
+    - fast
+    - to bring her
+    - blood pressure back up
+    - .
+    words:
+    - w-give
+    - w-fluid
+    - w-blood
+    - w-pressure
+    goal: 2
+  - en: We're monitoring her heart and sugar continuously.
+    ko: 심장과 혈당을 계속 관찰하고 있어요.
+    chunks:
+    - We're monitoring
+    - her heart and sugar
+    - continuously
+    - .
+    words:
+    - w-monitor
+    - w-heart
+    - w-sugar
+    goal: 2
+  - en: We'll keep monitoring her closely in the trauma bay.
+    ko: 외상 구역에서 계속 자세히 지켜볼게요.
+    chunks:
+    - We'll keep monitoring
+    - her closely
+    - in the trauma
+    - bay
+    - .
+    words:
+    - w-monitor
+    - w-trauma
+    goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-respond
+    - w-voice
+    - w-eye
+    cue: 'Family: "She doesn''t open her eyes when I talk to her, but she groans and pulls away when the nurse presses on her shoulder."'
+    scale:
+    - alert
+    - responds to voice
+    - responds to pain
+    - unresponsive
+    answerAt: 2
+    why: 말에는 반응이 없고 통증 자극에만 반응하면 AVPU의 P예요. 이 정도면 스스로 기도를 지키지 못할 수 있어서 가까이서 계속 봐요.
+    example: She only responds to pain right now.
+    exKo: 지금은 통증 자극에만 반응해요.
+  - kind: swap
+    words:
+    - w-low
+    - w-pressure
+    - w-give
+    - w-fluid
+    who: 가족에게 · 저혈압과 수액 설명
+    icon: me
+    before:
+    - 'She '
+    - is hypotensive
+    - ', so we''re giving fluids quickly.'
+    options:
+    - has low blood pressure
+    - is hypotensive
+    - is in shock
+    answer: has low blood pressure
+    notes:
+      has low blood pressure: 가족이 바로 알아듣는 말. 왜 수액을 빨리 넣는지가 이어진다.
+      is hypotensive: 의료진끼리의 말. 가족은 무슨 뜻인지 모른다.
+      is in shock: 일반인에게는 '정신적 충격'으로도 들려 뜻이 흐려지고, 설명 없이 들으면 겁부터 난다.
+    why: 가족에게는 수치의 이름보다 무엇이 문제이고 무엇을 하는지를 쉬운 말로 이어서 말해요.
+- title: 저혈당 뇌손상 지연회복
+  sentences:
+  - en: How long ago did you give him the sugar?
+    ko: 포도당을 드린 지 얼마나 됐어요?
+    chunks:
+    - How long ago
+    - did you give
+    - him
+    - the sugar
+    - '?'
+    words:
+    - w-long
+    - w-give
+    - w-sugar
+    goal: 1
+  - en: His sugar is up, but he's still not fully awake, so we're investigating.
+    ko: 혈당은 올랐는데 아직 완전히 깨지 않아서 원인을 찾고 있어요.
+    chunks:
+    - His sugar is up,
+    - but he's still
+    - not fully awake,
+    - so we're investigating
+    - .
+    words:
+    - w-sugar
+    - w-awake
+    - w-investigate
+    goal: 1
+  - en: Is he opening his eyes or moving at all?
+    ko: 눈을 뜨거나 조금이라도 움직이시나요?
+    chunks:
+    - Is he opening
+    - his eyes
+    - or moving
+    - at all
+    - '?'
+    words:
+    - w-eye
+    - w-move
+    goal: 1
+  - en: We're giving more glucose and checking for other causes.
+    ko: 포도당을 더 드리고 다른 원인도 확인하고 있어요.
+    chunks:
+    - We're giving
+    - more glucose
+    - and checking
+    - for other causes
+    - .
+    words:
+    - w-give
+    - w-glucose
+    - w-check
+    - w-cause
+    goal: 2
+  - en: We may give another dose of sugar if he doesn't wake up soon.
+    ko: 곧 깨지 않으면 포도당을 한 번 더 드릴 수 있어요.
+    chunks:
+    - We may give
+    - another dose
+    - of sugar
+    - if he doesn't
+    - wake up soon
+    - .
+    words:
+    - w-give
+    - w-dose
+    - w-sugar
+    - w-wake
+    goal: 2
+  - en: We're also looking for other reasons he's still drowsy.
+    ko: 아직 졸려 하시는 다른 이유도 찾고 있어요.
+    chunks:
+    - We're also looking
+    - for other reasons
+    - he's still
+    - drowsy
+    - .
+    words:
+    - w-drowsy
+    goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-wake
+    - w-cause
+    - w-dose
+    - w-sugar
+    pairs:
+    - - wake
+      - up
+    - - other
+      - causes
+    - - another dose
+      - of sugar
+    decoys:
+    - awake
+    why: 깨어나는 것은 wake up(구동사), 다른 원인은 other causes, 한 번 더 주는 당은 another dose of sugar예요. awake는 '깨어 있는' 상태를 말하는 형용사라 짝이 없어요.
+  - kind: context
+    words:
+    - w-sugar
+    - w-awake
+    - w-cause
+    scenes:
+    - who: 동료에게
+      icon: monitor
+      en: His sugar's 140 now but he's still not waking up — can we look for other causes?
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: BG corrected to 142; persistent AMS, further workup initiated.
+      ok: true
+    - who: 가족에게
+      icon: me
+      en: His BG is corrected, but his AMS persists, so we're expanding the workup.
+      ok: false
+      fix: His sugar is back up, but he's still not fully awake, so we're looking for other causes.
+    why: BG·AMS(의식 변화)·workup은 의료진의 말이에요. 가족에게는 무엇이 나아졌고 무엇이 아직인지, 그래서 무엇을 하는지를 쉬운 말로 말해요.
+- title: 당뇨발 괴사 패혈증
+  sentences:
+  - en: Your foot infection and fever together are very serious.
+    ko: 발 감염과 열이 함께 있어서 매우 심각해요.
+    chunks:
+    - Your foot infection
+    - and fever together
+    - are very
+    - serious
+    - .
+    words:
+    - w-foot
+    - w-infection
+    - w-fever
+    - w-serious
+    goal: 1
+  - en: How long has your foot looked like this?
+    ko: 발이 이렇게 된 지 얼마나 되셨어요?
+    chunks:
+    - How long
+    - has your foot
+    - looked like this
+    - '?'
+    words:
+    - w-long
+    - w-foot
+    goal: 1
+  - en: Is the swelling and blackness spreading up your leg?
+    ko: 부종과 검은 변색이 다리 위로 번지고 있나요?
+    chunks:
+    - Is the swelling
+    - and blackness
+    - spreading up
+    - your leg
+    - '?'
+    words:
+    - w-swelling
+    - w-spread
+    - w-leg
+    goal: 1
+  - en: Your blood sugar, infection, and fever are all connected here.
+    ko: 혈당과 감염, 열이 모두 연관되어 있어요.
+    chunks:
+    - Your blood sugar,
+    - infection,
+    - and fever
+    - are all connected here
+    - .
+    words:
+    - w-blood
+    - w-sugar
+    - w-infection
+    - w-fever
+    goal: 1
+  - en: We're starting antibiotics and fluids right away.
+    ko: 항생제와 수액을 바로 시작할게요.
+    chunks:
+    - We're starting
+    - antibiotics and fluids
+    - right away
+    - .
+    words:
+    - w-start
+    - w-antibiotic
+    - w-fluid
+    goal: 2
+  - en: I'm calling the surgical team with an SBAR report.
+    ko: SBAR 보고로 외과팀에 연락할게요.
+    chunks:
+    - I'm calling
+    - the surgical team
+    - with an SBAR
+    - report
+    - .
+    words:
+    - w-call
+    - w-surgical
+    - w-team
+    - w-report
+    goal: 2
+  - en: I'll give a full report so the surgical team can act fast.
+    ko: 외과팀이 빨리 대응할 수 있게 전체 보고를 드릴게요.
+    chunks:
+    - I'll give
+    - a full report
+    - so the surgical team
+    - can act fast
+    - .
+    words:
+    - w-report
+    - w-surgical
+    - w-team
+    - w-act
+    goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-spread
+    - w-leg
+    - w-start
+    - w-antibiotic
+    - w-report
+    pairs:
+    - - spreading up
+      - your leg
+    - - start
+      - antibiotics
+    - - a full
+      - report
+    decoys:
+    - fever
+    why: 감염이 위로 번지는 것은 spreading up your leg, 항생제는 start, 협진 팀에 하는 SBAR 보고는 a full report예요.
+  - kind: context
+    words:
+    - w-infection
+    - w-serious
+    - w-surgical
+    scenes:
+    - who: 외과에 전화(SBAR)
+      icon: speech
+      en: This is the ER nurse for bed 3 — diabetic with a black, swollen foot, temp 39.2, BP 88/50. I'm worried about sepsis and need surgery to see him now.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Necrotic L foot, febrile 39.2, hypotensive. Surgery consulted.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: You have a necrotizing soft tissue infection with septic physiology.
+      ok: false
+      fix: Your foot infection is very serious and it's affecting your whole body, so the surgical team is coming to see you.
+    why: necrotizing soft tissue infection·septic physiology는 의료진의 말이에요. 환자에게는 얼마나 심각한지와 누가 오는지를 쉬운 말로 알려요.
+- title: DKA 급변 야간 인계
+  sentences:
+  - en: How does your breathing compare to a few hours ago?
+    ko: 몇 시간 전과 비교해서 숨쉬기가 어떠세요?
+    chunks:
+    - How does your
+    - breathing compare
+    - to a few
+    - hours ago
+    - '?'
+    words:
+    - w-breathe
+    - w-compare
+    goal: 1
+  - en: Have you felt more short of breath tonight?
+    ko: 오늘 밤 숨이 더 차셨어요?
+    chunks:
+    - Have you felt
+    - more short
+    - of breath tonight
+    - '?'
+    words:
+    - w-feel
+    - w-breath
+    goal: 1
+  - en: Your labs still show a wide gap, so I'm updating the doctor.
+    ko: 검사 수치에서 anion gap이 아직 커서 의사에게 알리고 있어요.
+    chunks:
+    - Your labs still
+    - show a wide gap,
+    - so I'm updating
+    - the doctor
+    - .
+    words:
+    - w-lab
+    - w-show
+    - w-gap
+    - w-update
+    goal: 1
+  - en: I'll report your pH and anion gap trend clearly.
+    ko: pH와 anion gap 추이를 명확히 보고할게요.
+    chunks:
+    - I'll report
+    - your pH
+    - and anion gap
+    - trend clearly
+    - .
+    words:
+    - w-report
+    - w-gap
+    - w-trend
+    - w-clearly
+    goal: 2
+  - en: I'm giving the on-call doctor a clear update now.
+    ko: 당직 의사에게 명확히 업데이트하고 있어요.
+    chunks:
+    - I'm giving
+    - the on-call doctor
+    - a clear update
+    - now
+    - .
+    words:
+    - w-update
+    goal: 2
+  - en: I'll hand this off clearly so nothing gets missed.
+    ko: 놓치는 것 없이 명확하게 인계할게요.
+    chunks:
+    - I'll hand this off
+    - clearly
+    - so nothing gets
+    - missed
+    - .
+    words:
+    - w-clearly
+    - w-miss
+    goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-breath
+    - w-gap
+    pairs:
+    - - short of
+      - breath
+    - - a wide
+      - gap
+    - - hand this
+      - 'off'
+    decoys:
+    - clearly
+    why: 숨이 찬 것은 short of breath(굳은 표현), 음이온차가 커진 것은 a wide gap, 인계하는 것은 hand off예요.
+  - kind: context
+    words:
+    - w-gap
+    - w-update
+    scenes:
+    - who: 당직의에게 전화
+      icon: speech
+      en: This is the nurse for bed 12, DKA. His gap went from 18 to 24 and he's breathing harder. I'm worried — can you come see him?
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: AG 18 → 24, increased WOB. On-call MD notified.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Your anion gap is widening and your WOB is up.
+      ok: false
+      fix: Your blood tests show the acid is building up again, and you're working harder to breathe, so I'm updating the doctor.
+    why: anion gap·WOB(호흡 일)는 의료진의 말이에요. 음이온차가 다시 벌어지면 케톤산증이 나빠진다는 뜻이라, 환자에게는 무엇이 나빠졌고 무엇을 하는지 쉬운 말로 말해요.

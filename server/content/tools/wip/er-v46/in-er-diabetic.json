@@ -1,0 +1,446 @@
+{
+ "theme": "er-diabetic",
+ "situations": [
+  {
+   "title": "혈당 측정·병력 문진",
+   "tagline": "My sugar has felt off today — I'm diabetic and I take insulin.",
+   "room": "EXAM 1",
+   "brief": "마지막 인슐린·식사와 증상을 문진하고 혈당을 측정하세요.",
+   "role": "patient",
+   "skills": [
+    "혈당 측정",
+    "인슐린·식사 문진",
+    "증상 청취"
+   ],
+   "keyPhrases": [
+    "When did you last take your insulin?",
+    "When did you last eat?",
+    "I'm going to check your blood sugar now."
+   ],
+   "goals": [
+    "마지막 인슐린·식사 시점을 확인한다",
+    "혈당을 측정하고 증상을 사정한다"
+   ]
+  },
+  {
+   "title": "저혈당 초기(경증)",
+   "tagline": "I'm shaky and sweaty — I think my sugar is dropping.",
+   "room": "EXAM 1",
+   "brief": "떨림·발한 등 경증 저혈당을 사정하고 경구 당 섭취를 안내하세요.",
+   "role": "patient",
+   "skills": [
+    "저혈당 증상 사정",
+    "경구 당 투여",
+    "재측정 안내"
+   ],
+   "keyPhrases": [
+    "Do you feel shaky, sweaty, or dizzy?",
+    "Let's have you take some juice or glucose tablets now.",
+    "We'll recheck your sugar in fifteen minutes."
+   ],
+   "goals": [
+    "경증 저혈당 증상을 사정한다",
+    "경구 당 섭취와 재측정을 안내한다"
+   ]
+  },
+  {
+   "title": "다뇨·다갈 고혈당 주소",
+   "tagline": "I've been so thirsty and peeing constantly for the past few days.",
+   "room": "EXAM 2",
+   "brief": "다뇨·다갈 등 고혈당 증상과 수분 섭취를 사정하세요.",
+   "role": "patient",
+   "skills": [
+    "고혈당 증상 사정",
+    "수분 섭취",
+    "병력 청취"
+   ],
+   "keyPhrases": [
+    "How often have you been urinating?",
+    "Have you been unusually thirsty or tired?",
+    "Have you been able to keep up with drinking fluids?"
+   ],
+   "goals": [
+    "다뇨·다갈 등 고혈당 증상을 사정한다",
+    "수분 섭취와 병력을 확인한다"
+   ]
+  },
+  {
+   "title": "인슐린 사용법 확인",
+   "tagline": "I'm not always sure I'm using my insulin pen the right way.",
+   "room": "EXAM 2",
+   "brief": "인슐린 순응도와 주사 부위·방법을 확인하고 교육하세요.",
+   "role": "patient",
+   "skills": [
+    "인슐린 순응도",
+    "주사 부위 확인",
+    "사용법 교육"
+   ],
+   "keyPhrases": [
+    "Can you show me how you usually give your insulin?",
+    "Which spots do you use, and do you rotate them?",
+    "Have you missed any doses recently?"
+   ],
+   "goals": [
+    "인슐린 순응도와 주사 방법을 확인한다",
+    "올바른 사용법을 교육한다"
+   ]
+  },
+  {
+   "title": "발 상처 당뇨 환자",
+   "tagline": "I have a sore on my foot that isn't healing and my sugars run high.",
+   "room": "EXAM 3",
+   "brief": "당뇨발 상처의 감염 징후를 사정하고 혈당 관리와 연계하세요.",
+   "role": "patient",
+   "skills": [
+    "발 상처 사정",
+    "감염 징후",
+    "혈당 연계"
+   ],
+   "keyPhrases": [
+    "How long has the sore been there?",
+    "Is there any redness, warmth, or drainage around it?",
+    "High blood sugar can slow healing, so we'll check that too."
+   ],
+   "goals": [
+    "당뇨발 상처의 감염 징후를 사정한다",
+    "혈당 관리와 연계해 안내한다"
+   ]
+  },
+  {
+   "title": "전형 DKA",
+   "tagline": "I feel awful — deep breathing, nausea, and my breath smells fruity.",
+   "room": "EXAM 4",
+   "brief": "쿠스마울 호흡·과일냄새 등 DKA 징후를 사정하고 인슐린·수액을 준비하세요.",
+   "role": "patient",
+   "skills": [
+    "DKA 징후 사정",
+    "쿠스마울 호흡",
+    "인슐린·수액 준비"
+   ],
+   "keyPhrases": [
+    "Have you missed any insulin doses recently?",
+    "We're checking your sugar, ketones, and blood gas now.",
+    "We'll start IV fluids and insulin to treat this."
+   ],
+   "goals": [
+    "쿠스마울 호흡·케톤 징후를 사정한다",
+    "인슐린·수액 초기 치료를 준비한다"
+   ]
+  },
+  {
+   "title": "저혈당 의식저하",
+   "tagline": "He's confused and barely responding — he's diabetic.",
+   "room": "EXAM 4",
+   "brief": "의식저하 저혈당을 인지하고 D50/글루카곤 투여와 원인 파악을 조율하세요.",
+   "role": "family",
+   "skills": [
+    "의식저하 인지",
+    "D50·글루카곤",
+    "원인 파악"
+   ],
+   "keyPhrases": [
+    "When did you notice he became confused?",
+    "We're giving sugar directly into his vein right now.",
+    "Did he take his insulin without eating?"
+   ],
+   "goals": [
+    "의식저하 저혈당을 인지하고 응급 처치한다",
+    "가족에게서 원인 정보를 파악한다"
+   ]
+  },
+  {
+   "title": "신환 1형 당뇨 발현",
+   "tagline": "They just told me I have type 1 diabetes — I don't understand any of this.",
+   "room": "EXAM 5",
+   "brief": "진단 충격을 지지하고 케톤·인슐린에 대한 기초 교육을 시작하세요.",
+   "role": "patient",
+   "skills": [
+    "진단 지지",
+    "케톤 교육",
+    "인슐린 기초"
+   ],
+   "keyPhrases": [
+    "This is a lot to take in, and it's okay to feel overwhelmed.",
+    "Your body needs insulin, which we'll teach you to use.",
+    "We'll also explain what ketones are and why they matter."
+   ],
+   "goals": [
+    "진단 충격을 정서적으로 지지한다",
+    "케톤·인슐린 기초를 교육한다"
+   ]
+  },
+  {
+   "title": "HHS 노인",
+   "tagline": "My mother is very drowsy and confused, and her sugar is sky-high.",
+   "room": "EXAM 5",
+   "brief": "심한 고혈당·탈수·의식변화의 HHS를 인지하고 수액·모니터링을 조율하세요.",
+   "role": "family",
+   "skills": [
+    "HHS 인지",
+    "탈수·의식변화",
+    "수액·모니터링"
+   ],
+   "keyPhrases": [
+    "How long has she been drowsy and confused?",
+    "Her sugar is extremely high with severe dehydration.",
+    "We'll give fluids carefully and monitor her closely."
+   ],
+   "goals": [
+    "심한 고혈당·탈수·의식변화를 인지한다",
+    "수액·모니터링 계획을 조율한다"
+   ]
+  },
+  {
+   "title": "인슐린 펌프 사용자",
+   "tagline": "My sugar keeps rising — I think something's wrong with my pump.",
+   "room": "EXAM 6",
+   "brief": "인슐린 펌프 오작동과 기저율을 확인하고 대체 인슐린을 고려하세요.",
+   "role": "patient",
+   "skills": [
+    "펌프 점검",
+    "기저율 확인",
+    "대체 인슐린"
+   ],
+   "keyPhrases": [
+    "When did you last change the pump site and reservoir?",
+    "Let's check whether the tubing is kinked or the site is red.",
+    "We may need to give insulin by injection while we sort this out."
+   ],
+   "goals": [
+    "펌프 오작동과 기저율을 확인한다",
+    "대체 인슐린 투여를 고려해 안내한다"
+   ]
+  },
+  {
+   "title": "스테로이드 유발 고혈당",
+   "tagline": "My sugar shot up after I started the steroid pills for my lungs.",
+   "room": "EXAM 6",
+   "brief": "스테로이드 약물력을 확인하고 일시적 고혈당 상승을 사정하세요.",
+   "role": "patient",
+   "skills": [
+    "약물력 확인",
+    "스테로이드 영향",
+    "고혈당 사정"
+   ],
+   "keyPhrases": [
+    "When did you start the steroid medication?",
+    "Steroids can temporarily raise your blood sugar.",
+    "We'll monitor your sugar and adjust your treatment."
+   ],
+   "goals": [
+    "스테로이드 약물력과 시점을 확인한다",
+    "일시적 고혈당 상승을 사정·안내한다"
+   ]
+  },
+  {
+   "title": "당뇨+감염 혈당불안정",
+   "tagline": "I have the flu and my sugars have been all over the place.",
+   "room": "EXAM 7",
+   "brief": "감염에 동반된 스트레스 고혈당과 혈당 불안정을 사정하세요.",
+   "role": "patient",
+   "skills": [
+    "감염·고혈당 사정",
+    "스트레스 고혈당",
+    "병일 관리"
+   ],
+   "keyPhrases": [
+    "What infection symptoms have you had, and for how long?",
+    "Illness can make your sugars harder to control.",
+    "Have you been able to eat, drink, and take your insulin?"
+   ],
+   "goals": [
+    "감염과 스트레스 고혈당을 사정한다",
+    "병일 혈당 관리 원칙을 안내한다"
+   ]
+  },
+  {
+   "title": "저혈당 반복 고령자",
+   "tagline": "This is the third time this month I've gone low and felt faint.",
+   "room": "EXAM 7",
+   "brief": "반복 저혈당의 원인 약물을 재검토하고 낙상 위험을 사정하세요.",
+   "role": "patient",
+   "skills": [
+    "약물 재검토",
+    "반복 저혈당 원인",
+    "낙상 위험"
+   ],
+   "keyPhrases": [
+    "Which diabetes medicines do you take, and at what times?",
+    "Have these low sugars caused you to fall or nearly fall?",
+    "We may need to review and adjust your medications."
+   ],
+   "goals": [
+    "반복 저혈당의 원인 약물을 재검토한다",
+    "낙상 위험을 사정하고 안내한다"
+   ]
+  },
+  {
+   "title": "임신성/임신 당뇨 위기",
+   "tagline": "I'm pregnant with gestational diabetes and my sugar won't come down.",
+   "room": "EXAM 8",
+   "brief": "임신 중 혈당 목표를 고려해 사정하고 태아 안전을 함께 안내하세요.",
+   "role": "patient",
+   "skills": [
+    "임신 혈당 목표",
+    "태아 안전",
+    "혈당 조절"
+   ],
+   "keyPhrases": [
+    "How many weeks pregnant are you?",
+    "In pregnancy we aim for tighter sugar targets to protect the baby.",
+    "We'll also monitor the baby while we manage your sugar."
+   ],
+   "goals": [
+    "임신 중 혈당 목표를 고려해 사정한다",
+    "태아 안전과 혈당 조절을 안내한다"
+   ]
+  },
+  {
+   "title": "당뇨 언어장벽 교육",
+   "tagline": "Insulin... I don't understand. Little English, sorry.",
+   "room": "EXAM 8",
+   "brief": "통역을 활용해 인슐린 자가관리를 단계별로 교육하세요.",
+   "role": "patient",
+   "skills": [
+    "통역 활용",
+    "인슐린 자가관리 교육",
+    "이해 확인"
+   ],
+   "keyPhrases": [
+    "I'll bring an interpreter so we can explain clearly.",
+    "Let me show you step by step how to use the insulin.",
+    "Can you show me back so I know you understand?"
+   ],
+   "goals": [
+    "통역으로 인슐린 자가관리를 교육한다",
+    "되짚기 교육으로 이해를 확인한다"
+   ]
+  },
+  {
+   "title": "DKA 중증 저칼륨",
+   "tagline": "I feel so weak and my muscles are cramping badly.",
+   "room": "TRAUMA 1",
+   "brief": "DKA에서 저칼륨을 인지하고 인슐린 지연·칼륨 보정과 심전도 감시를 조율하세요.",
+   "role": "patient",
+   "skills": [
+    "저칼륨 인지",
+    "칼륨 보정 우선",
+    "심전도 감시"
+   ],
+   "keyPhrases": [
+    "Your potassium is low, so we'll correct it before more insulin.",
+    "We're watching your heart rhythm closely on the monitor.",
+    "Tell me about any muscle weakness or cramping."
+   ],
+   "goals": [
+    "DKA 중 저칼륨을 인지한다",
+    "칼륨 보정 우선과 심전도 감시를 조율한다"
+   ]
+  },
+  {
+   "title": "DKA 뇌부종(소아)",
+   "tagline": "My son was getting better but now he has a bad headache and is sleepy.",
+   "room": "TRAUMA 1",
+   "brief": "소아 DKA 치료 중 뇌부종 악화를 인지하고 신경학적 감시를 강화하세요.",
+   "role": "family",
+   "skills": [
+    "뇌부종 인지",
+    "신경학적 감시",
+    "긴급 대응"
+   ],
+   "keyPhrases": [
+    "When did the headache and drowsiness start?",
+    "We're checking his neurological status closely right now.",
+    "We're acting immediately because this can be serious."
+   ],
+   "goals": [
+    "소아 DKA 중 뇌부종 악화를 인지한다",
+    "신경학적 감시를 강화하고 긴급 대응한다"
+   ]
+  },
+  {
+   "title": "HHS 쇼크 동반",
+   "tagline": "She's barely responsive and her blood pressure keeps dropping.",
+   "room": "TRAUMA 2",
+   "brief": "HHS에 동반된 저혈압·의식 붕괴를 인지하고 수액 소생과 모니터링을 조율하세요.",
+   "role": "family",
+   "skills": [
+    "쇼크 인지",
+    "수액 소생",
+    "집중 모니터링"
+   ],
+   "keyPhrases": [
+    "Her pressure is low, so we're giving fluids quickly.",
+    "How responsive has she been over the last hour?",
+    "We're monitoring her heart and sugar continuously."
+   ],
+   "goals": [
+    "HHS 동반 저혈압·의식 붕괴를 인지한다",
+    "수액 소생과 집중 모니터링을 조율한다"
+   ]
+  },
+  {
+   "title": "저혈당 뇌손상 지연회복",
+   "tagline": "We gave him sugar but he's still not waking up fully.",
+   "room": "TRAUMA 2",
+   "brief": "저혈당 교정 후에도 지연되는 회복을 인지하고 반복 D50·원인 검색을 조율하세요.",
+   "role": "family",
+   "skills": [
+    "지연 회복 인지",
+    "반복 D50",
+    "원인 검색"
+   ],
+   "keyPhrases": [
+    "How long ago did you give him the sugar?",
+    "His sugar is up, but he's still not fully awake, so we're investigating.",
+    "We're giving more glucose and checking for other causes."
+   ],
+   "goals": [
+    "저혈당 교정 후 지연 회복을 인지한다",
+    "반복 D50과 원인 검색을 조율한다"
+   ]
+  },
+  {
+   "title": "당뇨발 괴사 패혈증",
+   "tagline": "My foot is black and swollen and I'm burning up with fever.",
+   "room": "TRAUMA 3",
+   "brief": "혈당·감염·쇼크를 통합 인지하고 SBAR로 외과·중환자 협진을 조율하세요.",
+   "role": "patient",
+   "skills": [
+    "패혈증 통합 인지",
+    "혈당·감염 연계",
+    "SBAR 협진"
+   ],
+   "keyPhrases": [
+    "Your foot infection and fever together are very serious.",
+    "We're starting antibiotics and fluids right away.",
+    "I'm calling the surgical team with an SBAR report."
+   ],
+   "goals": [
+    "혈당·감염·쇼크를 패혈증으로 통합 인지한다",
+    "SBAR로 외과·중환자 협진을 조율한다"
+   ]
+  },
+  {
+   "title": "DKA 급변 야간 인계",
+   "tagline": "My breathing feels heavier and I still feel really sick tonight.",
+   "room": "WARD 1",
+   "brief": "야간 DKA에서 pH·anion gap 추이를 파악해 SBAR로 당직에 신속 인계하세요.",
+   "role": "patient",
+   "skills": [
+    "pH·anion gap 추이",
+    "야간 재평가",
+    "SBAR 인계"
+   ],
+   "keyPhrases": [
+    "How does your breathing compare to a few hours ago?",
+    "Your labs still show a wide gap, so I'm updating the doctor.",
+    "I'll report your pH and anion gap trend clearly."
+   ],
+   "goals": [
+    "야간 DKA의 pH·anion gap 추이를 파악한다",
+    "SBAR로 당직에 신속 인계한다"
+   ]
+  }
+ ]
+}

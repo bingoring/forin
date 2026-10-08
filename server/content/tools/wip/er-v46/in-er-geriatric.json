@@ -1,0 +1,446 @@
+{
+ "theme": "er-geriatric",
+ "situations": [
+  {
+   "title": "노인 낙상 후 문진",
+   "tagline": "I just slipped, that's all. No need to make a fuss.",
+   "room": "EXAM 2",
+   "brief": "낙상 정황·실신 여부·복용약을 차분히 문진하며 축소 진술을 살피세요.",
+   "role": "patient",
+   "skills": [
+    "낙상 문진",
+    "실신 감별",
+    "복용약 확인"
+   ],
+   "keyPhrases": [
+    "Do you remember feeling dizzy or faint before you fell?",
+    "Did you lose consciousness at any point?",
+    "Let's go over the medications you take."
+   ],
+   "goals": [
+    "낙상 정황과 실신 여부를 사정한다",
+    "복용약과 위험 요인을 확인한다"
+   ]
+  },
+  {
+   "title": "다약제 복용력 정리",
+   "tagline": "Oh, I take quite a few pills — I can't remember all of them.",
+   "room": "EXAM 4",
+   "brief": "처방·비처방 약을 목록화하며 노인의 기억을 인내심 있게 도우세요.",
+   "role": "patient",
+   "skills": [
+    "다약제 목록화",
+    "비처방약 확인",
+    "인내심 있는 문진"
+   ],
+   "keyPhrases": [
+    "Do you have a list or the bottles with you?",
+    "Let's include vitamins and anything you buy over the counter.",
+    "Take your time — we'll go one by one."
+   ],
+   "goals": [
+    "처방·비처방 약을 체계적으로 목록화한다",
+    "인내심 있게 노인의 기억을 돕는다"
+   ]
+  },
+  {
+   "title": "청력저하 환자 소통",
+   "tagline": "Speak up, dear — I can't hear a thing you're saying.",
+   "room": "EXAM 1",
+   "brief": "정면·저음·서면을 활용해 청력저하 환자와 명확히 소통하세요.",
+   "role": "patient",
+   "skills": [
+    "청력저하 소통",
+    "저음 발화",
+    "서면 보조"
+   ],
+   "keyPhrases": [
+    "I'll face you and speak slowly — let me know if this is clearer.",
+    "Would it help if I wrote this down for you?",
+    "Just raise your hand if you miss something."
+   ],
+   "goals": [
+    "정면·저음·서면으로 명확히 소통한다",
+    "이해 여부를 반복 확인한다"
+   ]
+  },
+  {
+   "title": "기저 인지기능 확인",
+   "tagline": "My mother is usually sharp, but today she seems off.",
+   "room": "EXAM 3",
+   "brief": "평소 지남력과 인지 기저선을 보호자에게서 확인하세요.",
+   "role": "family",
+   "skills": [
+    "인지 기저선 확인",
+    "보호자 문진",
+    "변화 사정"
+   ],
+   "keyPhrases": [
+    "What is she normally like on a good day?",
+    "When did you first notice this change?",
+    "Your observations help us a lot — thank you."
+   ],
+   "goals": [
+    "평소 인지 기저선을 보호자에게서 확인한다",
+    "급성 변화의 시점을 파악한다"
+   ]
+  },
+  {
+   "title": "활동·일상수행 청취",
+   "tagline": "I used to do everything myself, but lately it's gotten harder.",
+   "room": "EXAM 5",
+   "brief": "ADL을 기반으로 기능 상태와 최근 변화를 청취하세요.",
+   "role": "patient",
+   "skills": [
+    "ADL 사정",
+    "기능 변화 청취",
+    "존중적 문진"
+   ],
+   "keyPhrases": [
+    "Are you able to bathe and dress on your own?",
+    "Has anything changed in what you can do lately?",
+    "There's no shame in needing a little help."
+   ],
+   "goals": [
+    "ADL 기반 기능 상태를 사정한다",
+    "최근 변화와 지원 필요를 파악한다"
+   ]
+  },
+  {
+   "title": "급성 섬망 감별",
+   "tagline": "Who are you? Where am I? I want to go home right now.",
+   "room": "EXAM 6",
+   "brief": "치매와 구분되는 급성 인지 변화를 감별하며 안심시키세요.",
+   "role": "patient",
+   "skills": [
+    "섬망 감별",
+    "급성 변화 사정",
+    "안심 제공"
+   ],
+   "keyPhrases": [
+    "You're in the hospital and you're safe with me.",
+    "This confusion may be new — we're finding out why.",
+    "I'm going to stay close and help you feel calmer."
+   ],
+   "goals": [
+    "급성 섬망과 만성 치매를 감별한다",
+    "안심시키며 원인 규명을 진행한다"
+   ]
+  },
+  {
+   "title": "비전형 감염 표현",
+   "tagline": "She has no fever, but she's confused and just not eating.",
+   "room": "EXAM 2",
+   "brief": "발열 없는 UTI·폐렴 등 비전형 감염 표현을 보호자 정보로 사정하세요.",
+   "role": "family",
+   "skills": [
+    "비전형 감염 사정",
+    "보호자 정보 활용",
+    "감별 진단"
+   ],
+   "keyPhrases": [
+    "In older adults, infections can show up as confusion, not fever.",
+    "Has she had any changes in urination or breathing?",
+    "We'll run tests to find a hidden infection."
+   ],
+   "goals": [
+    "발열 없는 감염 가능성을 사정한다",
+    "보호자 정보로 비전형 표현을 감별한다"
+   ]
+  },
+  {
+   "title": "노인 흉통 비전형",
+   "tagline": "It's not really pain, just a heavy, tired feeling in my chest.",
+   "room": "EXAM 3",
+   "brief": "무증상·비특이 MI 가능성을 놓치지 않도록 비전형 흉통을 사정하세요.",
+   "role": "patient",
+   "skills": [
+    "비전형 흉통 사정",
+    "MI 감별",
+    "진지한 경청"
+   ],
+   "keyPhrases": [
+    "Even without sharp pain, we take this seriously.",
+    "Do you feel more tired or short of breath than usual?",
+    "We'll check your heart to be safe."
+   ],
+   "goals": [
+    "비전형 흉통을 진지하게 사정한다",
+    "무증상 MI 가능성을 감별한다"
+   ]
+  },
+  {
+   "title": "다약제 상호작용 부작용",
+   "tagline": "Ever since the new pill, I've felt dizzy and fallen twice.",
+   "room": "EXAM 4",
+   "brief": "약물 상호작용이 유발한 낙상·혼돈을 사정하고 복약을 재검토하세요.",
+   "role": "patient",
+   "skills": [
+    "약물 부작용 사정",
+    "상호작용 검토",
+    "낙상 위험 관리"
+   ],
+   "keyPhrases": [
+    "When did the dizziness start after the new medication?",
+    "Some medicines can interact and cause these symptoms.",
+    "We'll review everything you take to find the cause."
+   ],
+   "goals": [
+    "약물 상호작용에 의한 부작용을 사정한다",
+    "낙상·혼돈 위험을 관리한다"
+   ]
+  },
+  {
+   "title": "요양시설 이송 정보 부족",
+   "tagline": "The transfer papers don't say much — I hope you can figure it out.",
+   "room": "HALLWAY BED 3",
+   "brief": "불완전한 인계 정보를 보완하기 위해 이송 요원과 보호자에게서 정보를 확보하세요.",
+   "role": "colleague",
+   "skills": [
+    "인계 정보 보완",
+    "정보 확보",
+    "다직역 소통"
+   ],
+   "keyPhrases": [
+    "Do you know her baseline and what happened today?",
+    "Can you help me reach the facility for her records?",
+    "Any medication or allergy info you can share?"
+   ],
+   "goals": [
+    "불완전한 인계 정보를 능동적으로 보완한다",
+    "이송 요원·시설과 협력해 정보를 확보한다"
+   ]
+  },
+  {
+   "title": "학대·방임 의심",
+   "tagline": "I'm fine... I don't want to cause any trouble for anyone.",
+   "room": "EXAM 1",
+   "brief": "영양불량·상처를 비대립적으로 청취하며 노인의 안전을 살피세요.",
+   "role": "patient",
+   "skills": [
+    "노인 학대 사정",
+    "비대립적 청취",
+    "안전 확보"
+   ],
+   "keyPhrases": [
+    "I noticed some things I'd like to understand better.",
+    "You're safe to talk with me — nothing leaves this room without your say.",
+    "My only goal is to make sure you're cared for."
+   ],
+   "goals": [
+    "영양불량·상처를 비대립적으로 사정한다",
+    "노인의 안전과 의사를 존중하며 확보한다"
+   ]
+  },
+  {
+   "title": "진통제 신중 투여",
+   "tagline": "My hip is killing me, but I'm scared the medicine will knock me out.",
+   "room": "EXAM 5",
+   "brief": "신기능과 낙상 위험을 고려해 진통제를 신중히 설명하고 투여하세요.",
+   "role": "patient",
+   "skills": [
+    "노인 진통 관리",
+    "신기능 고려",
+    "낙상 예방"
+   ],
+   "keyPhrases": [
+    "We'll start low and adjust carefully for your kidneys.",
+    "I'll help you avoid feeling too groggy or unsteady.",
+    "Tell me if you feel dizzy at any point."
+   ],
+   "goals": [
+    "신기능·낙상 위험을 고려해 진통을 조절한다",
+    "부작용을 설명하며 안심시킨다"
+   ]
+  },
+  {
+   "title": "보청기·안경 보조기구",
+   "tagline": "I left my hearing aids at home — everything feels so confusing here.",
+   "room": "EXAM 2",
+   "brief": "감각 보조기구를 확보해 지남력과 소통을 개선하세요.",
+   "role": "patient",
+   "skills": [
+    "감각 보조 지원",
+    "지남력 개선",
+    "환경 조정"
+   ],
+   "keyPhrases": [
+    "Let's see if we can get you some help hearing and seeing better.",
+    "I'll speak clearly and stay in your view.",
+    "Having your glasses will help you feel less confused."
+   ],
+   "goals": [
+    "감각 보조기구를 확보하거나 대체한다",
+    "지남력과 소통을 개선한다"
+   ]
+  },
+  {
+   "title": "사전연명의료의향 확인",
+   "tagline": "Dad always said he never wanted to be kept alive on machines.",
+   "room": "EXAM 6",
+   "brief": "POLST/DNR 등 사전의향을 가족과 함께 존중적으로 확인하세요.",
+   "role": "family",
+   "skills": [
+    "사전의향 확인",
+    "가족 소통",
+    "존중적 대화"
+   ],
+   "keyPhrases": [
+    "Do you know if he has a POLST or advance directive?",
+    "What matters most to him about his care?",
+    "We'll honor his wishes as best we can."
+   ],
+   "goals": [
+    "사전의향서 존재와 내용을 확인한다",
+    "가족과 존중적으로 치료 목표를 논의한다"
+   ]
+  },
+  {
+   "title": "노인 패혈증 급속 진행",
+   "tagline": "She's so cold and weak — this came on out of nowhere.",
+   "room": "RESUS 1",
+   "brief": "저체온·저혈압 등 비전형 패혈증을 인지해 신속히 대응하세요.",
+   "role": "family",
+   "skills": [
+    "노인 패혈증 인지",
+    "비전형 징후 사정",
+    "신속 대응"
+   ],
+   "keyPhrases": [
+    "Her low temperature and pressure worry me — we're acting fast.",
+    "In older adults sepsis can look different, and we're on it.",
+    "We're starting treatment right away."
+   ],
+   "goals": [
+    "저체온·저혈압 등 비전형 패혈증을 인지한다",
+    "신속히 대응하며 가족에게 설명한다"
+   ]
+  },
+  {
+   "title": "항응고제 두부외상",
+   "tagline": "It was just a little bump on the head — but she's on blood thinners.",
+   "room": "RESUS 2",
+   "brief": "경미한 낙상이라도 항응고제 복용 시 뇌출혈 위험을 신속히 평가하세요.",
+   "role": "family",
+   "skills": [
+    "두부외상 사정",
+    "항응고제 위험 평가",
+    "신속 영상"
+   ],
+   "keyPhrases": [
+    "Because she's on blood thinners, we take head bumps seriously.",
+    "We'll get a scan right away to rule out bleeding.",
+    "Watch for any drowsiness or confusion — tell me immediately."
+   ],
+   "goals": [
+    "항응고제 복용 하 두부외상 위험을 평가한다",
+    "신속 영상과 관찰 계획을 안내한다"
+   ]
+  },
+  {
+   "title": "급성 섬망+공격성",
+   "tagline": "Get your hands off me! I don't know any of you people!",
+   "room": "RESUS 1",
+   "brief": "공격성을 유발한 섬망의 원인을 규명하며 진정을 관리하세요.",
+   "role": "patient",
+   "skills": [
+    "섬망 원인 규명",
+    "공격성 관리",
+    "진정 조율"
+   ],
+   "keyPhrases": [
+    "You're safe here — I'm not going to hurt you.",
+    "Something's causing this confusion and we're finding it.",
+    "Let's lower the noise so you feel calmer."
+   ],
+   "goals": [
+    "섬망 유발 원인을 규명한다",
+    "공격성을 진정시키며 안전을 유지한다"
+   ]
+  },
+  {
+   "title": "말기 환자 목표 재설정",
+   "tagline": "We don't want him to suffer anymore — what are our options?",
+   "room": "FAMILY ROOM",
+   "brief": "완화 중심의 치료 목표를 가족 회의로 존중적으로 재설정하세요.",
+   "role": "family",
+   "skills": [
+    "치료 목표 재설정",
+    "완화 상담",
+    "가족 회의 진행"
+   ],
+   "keyPhrases": [
+    "Let's talk about what would give him the most comfort.",
+    "There's no wrong choice here — we'll support whatever you decide.",
+    "Comfort care is an active, caring option too."
+   ],
+   "goals": [
+    "완화 중심 목표를 가족과 재설정한다",
+    "존중적 회의로 결정을 지지한다"
+   ]
+  },
+  {
+   "title": "다발성 만성질환 급성 악화",
+   "tagline": "My legs are swollen and I can't catch my breath lying down.",
+   "room": "RESUS 2",
+   "brief": "심부전·신부전 복합 악화를 사정하며 우선순위를 정해 대응하세요.",
+   "role": "patient",
+   "skills": [
+    "복합 악화 사정",
+    "우선순위 결정",
+    "다장기 관리"
+   ],
+   "keyPhrases": [
+    "Your heart and kidneys are both under strain — we're balancing them.",
+    "We'll help your breathing first and go from there.",
+    "Tell me which symptom is bothering you most."
+   ],
+   "goals": [
+    "심·신부전 복합 악화를 사정한다",
+    "우선순위를 정해 안정화한다"
+   ]
+  },
+  {
+   "title": "고관절 골절 통증·수술 대기",
+   "tagline": "The pain is unbearable, and now they say I have to wait for surgery.",
+   "room": "HALLWAY BED 1",
+   "brief": "통증을 조절하고 대기 중 섬망을 예방하며 수술을 안내하세요.",
+   "role": "patient",
+   "skills": [
+    "통증 조절",
+    "섬망 예방",
+    "수술 대기 안내"
+   ],
+   "keyPhrases": [
+    "We'll manage your pain while you wait for surgery.",
+    "Staying oriented and hydrated helps prevent confusion.",
+    "I'll keep checking on you so you're not alone."
+   ],
+   "goals": [
+    "통증을 효과적으로 조절한다",
+    "대기 중 섬망을 예방하며 안내한다"
+   ]
+  },
+  {
+   "title": "요양원 이송 임종 임박",
+   "tagline": "We just want her last moments to be peaceful, surrounded by us.",
+   "room": "FAMILY ROOM",
+   "brief": "편안한 죽음을 지원하며 가족의 임종 준비를 동반하세요.",
+   "role": "family",
+   "skills": [
+    "임종 돌봄",
+    "편안한 죽음 지원",
+    "가족 동반"
+   ],
+   "keyPhrases": [
+    "We'll focus on keeping her comfortable and peaceful.",
+    "You can hold her hand and speak to her — she may still hear you.",
+    "Take all the time you need; we're here for all of you."
+   ],
+   "goals": [
+    "편안한 임종 환경을 조성한다",
+    "가족의 임종 준비를 존엄하게 동반한다"
+   ]
+  }
+ ]
+}

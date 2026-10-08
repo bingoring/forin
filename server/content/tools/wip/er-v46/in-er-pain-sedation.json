@@ -1,0 +1,446 @@
+{
+ "theme": "er-pain-sedation",
+ "situations": [
+  {
+   "title": "통증 척도 초기 사정",
+   "tagline": "Can you tell me how bad the pain is, from zero to ten?",
+   "room": "TRIAGE",
+   "brief": "통증의 강도·부위·양상·악화 요인을 NRS로 처음 사정하세요.",
+   "role": "patient",
+   "skills": [
+    "통증 척도 사정",
+    "부위·양상 질문",
+    "공감적 경청"
+   ],
+   "keyPhrases": [
+    "On a scale of zero to ten, how would you rate your pain right now?",
+    "Can you point to exactly where it hurts?",
+    "Is it a sharp, dull, or burning kind of pain?"
+   ],
+   "goals": [
+    "NRS와 부위·양상·악화 요인을 순서대로 확인한다",
+    "환자가 느끼는 통증을 판단 없이 그대로 받아들인다"
+   ]
+  },
+  {
+   "title": "진통제 투여 전 설명",
+   "tagline": "This medicine will ease your pain in about ten minutes.",
+   "room": "BAY",
+   "brief": "투여할 진통제의 종류·기대 효과·발현 시점을 환자에게 설명하세요.",
+   "role": "patient",
+   "skills": [
+    "약물 설명",
+    "효과·발현 안내",
+    "환자 안심"
+   ],
+   "keyPhrases": [
+    "I'm going to give you something for the pain now.",
+    "It usually starts working in about ten to fifteen minutes.",
+    "Let me know if it makes you feel drowsy or dizzy."
+   ],
+   "goals": [
+    "약물명·효과·발현 시점을 쉬운 말로 전달한다",
+    "예상 부작용을 미리 알려 안심시킨다"
+   ]
+  },
+  {
+   "title": "비약물적 통증 완화",
+   "tagline": "Let's try ice and a better position first.",
+   "room": "BAY",
+   "brief": "냉·온찜질, 체위, 환경 조정 등 비약물적 통증 완화 방법을 안내하세요.",
+   "role": "patient",
+   "skills": [
+    "비약물적 중재",
+    "체위 안내",
+    "환경 조정"
+   ],
+   "keyPhrases": [
+    "Let's put a cold pack on it to bring the swelling down.",
+    "Try keeping the leg raised on this pillow.",
+    "I can dim the lights if that helps you relax."
+   ],
+   "goals": [
+    "냉·온·체위·환경 중 적절한 방법을 제안한다",
+    "약물 외 완화법의 이점을 설명한다"
+   ]
+  },
+  {
+   "title": "알레르기·과거 반응 확인",
+   "tagline": "Have you ever had a bad reaction to a pain medicine?",
+   "room": "TRIAGE",
+   "brief": "마약성 진통제·NSAID에 대한 알레르기와 과거 반응 이력을 확인하세요.",
+   "role": "patient",
+   "skills": [
+    "알레르기 문진",
+    "약물 이력 확인",
+    "안전 확인"
+   ],
+   "keyPhrases": [
+    "Are you allergic to any medications that you know of?",
+    "Have you ever taken morphine or codeine before?",
+    "What kind of reaction did you have last time?"
+   ],
+   "goals": [
+    "마약성·NSAID 알레르기와 과거 반응을 확인한다",
+    "반응의 종류와 심각도를 구체적으로 파악한다"
+   ]
+  },
+  {
+   "title": "통증 재평가 시점 안내",
+   "tagline": "I'll come back in twenty minutes to check your pain again.",
+   "room": "BAY",
+   "brief": "진통제 투여 후 언제 다시 통증을 사정할지 환자에게 안내하세요.",
+   "role": "patient",
+   "skills": [
+    "재평가 안내",
+    "시간 계획 설명",
+    "호출 안내"
+   ],
+   "keyPhrases": [
+    "I'll check back with you in about twenty minutes.",
+    "If the pain gets worse before then, press this call button.",
+    "We'll rate it again to see if the medicine helped."
+   ],
+   "goals": [
+    "투약 후 재사정 시점을 명확히 안내한다",
+    "악화 시 즉시 호출하도록 설명한다"
+   ]
+  },
+  {
+   "title": "오피오이드 요구 환자",
+   "tagline": "I need something stronger — nothing else works for me.",
+   "room": "BAY",
+   "brief": "강한 마약성 진통제를 요구하는 환자와 통증 조절·약물추구 사이 균형을 잡으세요.",
+   "role": "patient",
+   "skills": [
+    "통증 신뢰 구축",
+    "경계 설정",
+    "대안 제시"
+   ],
+   "keyPhrases": [
+    "I hear that your pain is real, and I want to help.",
+    "Let me tell you what the doctor has ordered for you.",
+    "We can also try other ways to bring the pain down."
+   ],
+   "goals": [
+    "통증 호소를 존중하면서 처방 범위를 설명한다",
+    "요구를 비난 없이 다루며 대안을 제시한다"
+   ]
+  },
+  {
+   "title": "만성 통증+급성 악화",
+   "tagline": "My usual dose isn't touching this new pain.",
+   "room": "BAY",
+   "brief": "내성이 있는 만성 통증 환자의 급성 악화를 사정하고 용량 고려를 설명하세요.",
+   "role": "patient",
+   "skills": [
+    "기저 통증 감별",
+    "내성 고려",
+    "급성 변화 사정"
+   ],
+   "keyPhrases": [
+    "How is this pain different from your usual pain?",
+    "Tell me what medicines you already take at home.",
+    "Because of your tolerance, the doctor may adjust the dose."
+   ],
+   "goals": [
+    "만성 기저 통증과 급성 악화를 구분한다",
+    "내성을 고려한 용량 계획을 설명한다"
+   ]
+  },
+  {
+   "title": "절차적 진정 사전 설명",
+   "tagline": "Before we relocate the shoulder, let me explain the sedation.",
+   "room": "BAY",
+   "brief": "절차적 진정을 앞두고 NPO·모니터링·회복 과정을 설명하세요.",
+   "role": "patient",
+   "skills": [
+    "절차적 진정 교육",
+    "NPO 확인",
+    "모니터링 안내"
+   ],
+   "keyPhrases": [
+    "When did you last eat or drink anything?",
+    "We'll keep you on monitors the whole time.",
+    "You'll feel sleepy, and we'll wake you gently afterward."
+   ],
+   "goals": [
+    "NPO 상태·모니터링·회복 과정을 순서대로 설명한다",
+    "진정 중 안전 관찰을 안심시킨다"
+   ]
+  },
+  {
+   "title": "소아 절차 통증",
+   "tagline": "We'll keep your son comfortable during the stitches.",
+   "room": "PEDS",
+   "brief": "열상 봉합 전 진정에 대해 아동의 부모에게 설명하고 동의·안심을 얻으세요.",
+   "role": "family",
+   "skills": [
+    "소아 진정 설명",
+    "부모 안심",
+    "동의 확인"
+   ],
+   "keyPhrases": [
+    "We'll give him a little medicine so he won't feel the stitches.",
+    "You can stay right by his side the whole time.",
+    "Do you have any questions before we begin?"
+   ],
+   "goals": [
+    "진정 목적·과정을 부모에게 쉽게 설명한다",
+    "부모의 걱정을 다루고 동의를 확인한다"
+   ]
+  },
+  {
+   "title": "통증 축소·과장 감별",
+   "tagline": "You say it's fine, but you look uncomfortable.",
+   "room": "BAY",
+   "brief": "문화·표현 차이를 고려해 실제 통증 정도를 감별하며 사정하세요.",
+   "role": "patient",
+   "skills": [
+    "통증 표현 해석",
+    "문화적 감수성",
+    "관찰 사정"
+   ],
+   "keyPhrases": [
+    "It's okay to tell me if it really hurts.",
+    "I notice you're guarding that side — can you show me?",
+    "There's no need to tough it out with me."
+   ],
+   "goals": [
+    "언어·문화적 표현 차이를 고려해 통증을 판단한다",
+    "축소·과장 가능성을 존중하며 재확인한다"
+   ]
+  },
+  {
+   "title": "진통제 거부 환자",
+   "tagline": "I don't want any of those pain drugs.",
+   "room": "BAY",
+   "brief": "진통제를 거부하는 환자의 이유를 탐색하고 대안을 함께 찾으세요.",
+   "role": "patient",
+   "skills": [
+    "거부 이유 탐색",
+    "대안 제시",
+    "자율성 존중"
+   ],
+   "keyPhrases": [
+    "Can you tell me what worries you about the medicine?",
+    "I respect your choice — let's talk about other options.",
+    "We can start with something milder if you prefer."
+   ],
+   "goals": [
+    "거부의 이유를 판단 없이 탐색한다",
+    "환자 선호에 맞는 대안을 제시한다"
+   ]
+  },
+  {
+   "title": "다중 약물 병용 통증",
+   "tagline": "Let's go over everything you take at home.",
+   "room": "BAY",
+   "brief": "여러 약물을 복용 중인 환자의 진정·상호작용 위험을 확인하며 통증을 관리하세요.",
+   "role": "patient",
+   "skills": [
+    "약물 병용 확인",
+    "상호작용 사정",
+    "진정 위험 평가"
+   ],
+   "keyPhrases": [
+    "Can you list the medicines you took today?",
+    "Some of these can make you very sleepy together.",
+    "We'll choose something safe with what you already take."
+   ],
+   "goals": [
+    "복용 중인 약물과 진정 위험을 파악한다",
+    "상호작용을 고려한 통증 조절을 설명한다"
+   ]
+  },
+  {
+   "title": "언어장벽 통증 사정",
+   "tagline": "Point to the face that shows how you feel.",
+   "room": "TRIAGE",
+   "brief": "언어 장벽이 있는 환자에게 얼굴 척도와 통역을 활용해 통증을 사정하세요.",
+   "role": "patient",
+   "skills": [
+    "얼굴 통증 척도",
+    "통역 활용",
+    "비언어적 사정"
+   ],
+   "keyPhrases": [
+    "Let me get an interpreter so we understand each other.",
+    "Point to the face that matches your pain.",
+    "Show me with your hand where it hurts."
+   ],
+   "goals": [
+    "얼굴 척도와 통역으로 통증을 정확히 사정한다",
+    "비언어적 단서를 함께 관찰한다"
+   ]
+  },
+  {
+   "title": "회복 마취 후 관찰",
+   "tagline": "You're waking up now — take a slow, deep breath.",
+   "room": "BAY",
+   "brief": "진정에서 회복 중인 환자의 호흡·의식 회복을 관찰하며 소통하세요.",
+   "role": "patient",
+   "skills": [
+    "회복기 관찰",
+    "의식 확인",
+    "호흡 격려"
+   ],
+   "keyPhrases": [
+    "Can you tell me your name and where you are?",
+    "Take a nice deep breath for me.",
+    "You did great — the procedure is all done."
+   ],
+   "goals": [
+    "의식 수준과 호흡 회복을 단계적으로 확인한다",
+    "환자를 부드럽게 각성시키고 안심시킨다"
+   ]
+  },
+  {
+   "title": "절차적 진정 중 호흡억제",
+   "tagline": "Open your eyes for me — take a big breath.",
+   "room": "RESUS",
+   "brief": "진정 중 호흡억제·저산소가 발생한 환자의 기도를 관리하며 자극·소통하세요.",
+   "role": "patient",
+   "skills": [
+    "기도 관리",
+    "저산소 대응",
+    "각성 자극"
+   ],
+   "keyPhrases": [
+    "I need you to breathe deeply for me right now.",
+    "Open your eyes — squeeze my hand.",
+    "We're giving you extra oxygen to help you breathe."
+   ],
+   "goals": [
+    "호흡억제를 조기에 인지하고 기도를 확보한다",
+    "자극과 산소 공급으로 환자를 각성시킨다"
+   ]
+  },
+  {
+   "title": "오피오이드 과다·날록손",
+   "tagline": "You're safe — we gave you medicine to reverse it.",
+   "room": "RESUS",
+   "brief": "오피오이드 과다복용을 날록손으로 역전한 뒤 각성한 환자와 소통하세요.",
+   "role": "patient",
+   "skills": [
+    "역전제 대응",
+    "각성 후 사정",
+    "금단 관찰"
+   ],
+   "keyPhrases": [
+    "You stopped breathing well, so we gave you a reversal medicine.",
+    "Do you know what you took today?",
+    "You may feel sick or shaky — that will pass."
+   ],
+   "goals": [
+    "역전 후 의식·호흡을 재사정한다",
+    "급성 금단·재악화 가능성을 설명하고 관찰한다"
+   ]
+  },
+  {
+   "title": "난치성 급성 통증",
+   "tagline": "I know nothing has worked yet — we're not giving up.",
+   "room": "BAY",
+   "brief": "여러 약제에도 조절되지 않는 극심한 급성 통증 환자를 지지하며 재계획을 설명하세요.",
+   "role": "patient",
+   "skills": [
+    "난치성 통증 대응",
+    "다중 약제 조율",
+    "위기 지지"
+   ],
+   "keyPhrases": [
+    "I can see this pain is unbearable, and I believe you.",
+    "We're calling the doctor to try a different approach.",
+    "Stay with me — we'll get on top of this together."
+   ],
+   "goals": [
+    "조절 실패를 인정하고 새 계획을 설명한다",
+    "절박한 환자를 정서적으로 지지한다"
+   ]
+  },
+  {
+   "title": "진정 중 아나필락시스",
+   "tagline": "You're having a reaction — we're treating it right now.",
+   "room": "RESUS",
+   "brief": "진정제에 대한 아나필락시스가 발생한 환자를 안심시키며 응급 대응을 알리세요.",
+   "role": "patient",
+   "skills": [
+    "아나필락시스 대응",
+    "기도 감시",
+    "응급 소통"
+   ],
+   "keyPhrases": [
+    "You're having an allergic reaction to the medicine.",
+    "We're giving you epinephrine to help you breathe.",
+    "Try to stay calm — we're right here with you."
+   ],
+   "goals": [
+    "아나필락시스를 즉시 인지하고 응급 처치를 알린다",
+    "호흡 곤란 환자를 침착하게 안심시킨다"
+   ]
+  },
+  {
+   "title": "말기 환자 통증 완화",
+   "tagline": "Our goal now is to keep her comfortable and at peace.",
+   "room": "BAY",
+   "brief": "말기 환자의 완화 진정에 대해 가족과 목표를 확인하며 소통하세요.",
+   "role": "family",
+   "skills": [
+    "완화 진정 설명",
+    "가족 목표 확인",
+    "임종 지지"
+   ],
+   "keyPhrases": [
+    "Our focus now is her comfort, not more tests.",
+    "This medicine will ease her pain and let her rest.",
+    "Let's talk about what matters most to your family."
+   ],
+   "goals": [
+    "완화 진정의 목적을 가족과 공유한다",
+    "가족의 돌봄 목표를 확인하고 존중한다"
+   ]
+  },
+  {
+   "title": "진정 후 급속 각성 흥분",
+   "tagline": "You're in the hospital and you're safe — you're okay.",
+   "room": "BAY",
+   "brief": "진정 회복기에 섬망으로 흥분한 환자를 안전하게 진정시키고 지남력을 도우세요.",
+   "role": "patient",
+   "skills": [
+    "회복기 섬망 대응",
+    "지남력 부여",
+    "안전 확보"
+   ],
+   "keyPhrases": [
+    "You're in the emergency room — you're safe here.",
+    "Let's keep your hands still so you don't hurt yourself.",
+    "I'm your nurse, and I'm staying right here."
+   ],
+   "goals": [
+    "흥분한 환자에게 지남력을 반복 제공한다",
+    "자·타해 없이 안전하게 진정을 유도한다"
+   ]
+  },
+  {
+   "title": "중증 외상 통증 위기",
+   "tagline": "We'll ease the pain without dropping your pressure.",
+   "room": "RESUS",
+   "brief": "혈역학이 불안정한 중증 외상 환자에게 통증·진정을 신중히 조절하며 소통하세요.",
+   "role": "patient",
+   "skills": [
+    "외상 통증 조절",
+    "혈역학 고려",
+    "위기 소통"
+   ],
+   "keyPhrases": [
+    "We're giving you something for the pain, in small amounts.",
+    "Stay with me and keep looking at my eyes.",
+    "We're watching your blood pressure very closely."
+   ],
+   "goals": [
+    "혈압을 고려해 진통·진정을 소량 적정한다",
+    "극심한 통증 속 환자와 접촉을 유지한다"
+   ]
+  }
+ ]
+}

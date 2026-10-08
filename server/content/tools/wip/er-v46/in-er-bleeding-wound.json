@@ -1,0 +1,446 @@
+{
+ "theme": "er-bleeding-wound",
+ "situations": [
+  {
+   "title": "출혈 초기 사정",
+   "tagline": "I cut my hand and it won't stop bleeding.",
+   "room": "FAST TRACK",
+   "brief": "출혈량·부위·박동성을 사정해 심각도를 판단하세요.",
+   "role": "patient",
+   "skills": [
+    "출혈 사정",
+    "박동성 확인",
+    "상처 어휘"
+   ],
+   "keyPhrases": [
+    "How long has it been bleeding and how much have you lost?",
+    "Is the blood steady or does it spurt with your pulse?",
+    "Let me look at the wound and apply pressure."
+   ],
+   "goals": [
+    "출혈량·부위·박동성을 사정한다",
+    "동맥성 여부를 조기에 판별한다"
+   ]
+  },
+  {
+   "title": "직접압박 지혈 설명",
+   "tagline": "Should I be pressing on it this hard?",
+   "room": "FAST TRACK",
+   "brief": "지속 직접압박과 거상으로 지혈하는 방법을 설명하세요.",
+   "role": "patient",
+   "skills": [
+    "직접압박 교육",
+    "거상 지도",
+    "지혈 설명"
+   ],
+   "keyPhrases": [
+    "Press firmly and steadily right on the wound.",
+    "Keep your hand raised above your heart.",
+    "Don't keep lifting the gauze to check—hold the pressure."
+   ],
+   "goals": [
+    "지속 직접압박 방법을 교육한다",
+    "거상과 압박 유지의 중요성을 설명한다"
+   ]
+  },
+  {
+   "title": "상처 세척·평가",
+   "tagline": "There's still dirt in the cut from when I fell.",
+   "room": "MINOR CARE",
+   "brief": "이물·깊이·오염도를 확인하며 상처를 세척·평가하세요.",
+   "role": "patient",
+   "skills": [
+    "상처 세척",
+    "오염도 평가",
+    "이물 확인"
+   ],
+   "keyPhrases": [
+    "We'll rinse the wound to remove dirt and debris.",
+    "I'm checking how deep it is and if anything is inside.",
+    "Tell me if you feel anything still stuck in there."
+   ],
+   "goals": [
+    "이물·깊이·오염도를 사정한다",
+    "충분한 세척으로 감염 위험을 낮춘다"
+   ]
+  },
+  {
+   "title": "파상풍 예방 문진",
+   "tagline": "I honestly don't remember my last tetanus shot.",
+   "room": "MINOR CARE",
+   "brief": "접종력을 문진해 파상풍 예방 필요성을 판단하세요.",
+   "role": "patient",
+   "skills": [
+    "파상풍 문진",
+    "접종력 확인",
+    "예방접종 교육"
+   ],
+   "keyPhrases": [
+    "When was your last tetanus shot, even roughly?",
+    "This type of wound may need a booster to be safe.",
+    "We'll give the vaccine now if you're not up to date."
+   ],
+   "goals": [
+    "파상풍 접종력을 확인한다",
+    "상처 유형에 따른 예방 필요성을 판단한다"
+   ]
+  },
+  {
+   "title": "통증·기전 청취",
+   "tagline": "A rusty piece of metal sliced my leg.",
+   "room": "TRIAGE",
+   "brief": "수상 도구·오염원 등 기전과 통증을 청취하세요.",
+   "role": "patient",
+   "skills": [
+    "수상기전 문진",
+    "오염원 확인",
+    "통증 사정"
+   ],
+   "keyPhrases": [
+    "What caused the cut and was the object dirty or rusty?",
+    "On a scale of zero to ten, how bad is the pain?",
+    "When did this happen?"
+   ],
+   "goals": [
+    "수상 도구·오염원과 발생 시각을 확인한다",
+    "통증 강도와 양상을 사정한다"
+   ]
+  },
+  {
+   "title": "열상 봉합 준비 교육",
+   "tagline": "Are you going to stitch this up? Will it hurt?",
+   "room": "MINOR CARE",
+   "brief": "국소마취와 봉합 후 관리를 환자에게 교육하세요.",
+   "role": "patient",
+   "skills": [
+    "봉합 준비 설명",
+    "국소마취 교육",
+    "봉합 후 관리"
+   ],
+   "keyPhrases": [
+    "We'll numb the area first so the stitches don't hurt.",
+    "Keep the wound clean and dry after we close it.",
+    "You'll come back to have the stitches removed."
+   ],
+   "goals": [
+    "국소마취와 봉합 절차를 설명한다",
+    "봉합 후 관리와 발사 일정을 교육한다"
+   ]
+  },
+  {
+   "title": "항응고제 지속출혈",
+   "tagline": "I'm on warfarin and it just keeps oozing.",
+   "room": "ACUTE ZONE",
+   "brief": "항응고제로 지혈이 지연되는 환자의 역전·검사를 조율하세요.",
+   "role": "patient",
+   "skills": [
+    "항응고제 병력 청취",
+    "지혈 지연 관리",
+    "역전·검사 조율"
+   ],
+   "keyPhrases": [
+    "Which blood thinner do you take and when was your last dose?",
+    "We'll check your clotting labs to guide treatment.",
+    "We may give medicine to help your blood clot."
+   ],
+   "goals": [
+    "항응고제 종류·최근 복용을 확인한다",
+    "응고검사와 역전제 필요성을 조율한다"
+   ]
+  },
+  {
+   "title": "동물 교상 감염관리",
+   "tagline": "A stray dog bit my arm—should I worry about rabies?",
+   "room": "MINOR CARE",
+   "brief": "세척·광견병·항생제로 동물 교상의 감염을 관리하세요.",
+   "role": "patient",
+   "skills": [
+    "교상 세척",
+    "광견병 예방",
+    "항생제 관리"
+   ],
+   "keyPhrases": [
+    "We'll clean the bite thoroughly to lower infection risk.",
+    "Do you know if the dog was vaccinated?",
+    "You may need rabies prevention and antibiotics."
+   ],
+   "goals": [
+    "상처를 충분히 세척하고 감염 위험을 사정한다",
+    "광견병 예방·항생제 필요성을 판단한다"
+   ]
+  },
+  {
+   "title": "사람 교상 특수관리",
+   "tagline": "I got bitten during a fight—it's on my knuckle.",
+   "room": "MINOR CARE",
+   "brief": "감염 위험이 높은 사람 교상을 봉합 지연과 함께 관리하세요.",
+   "role": "patient",
+   "skills": [
+    "사람 교상 관리",
+    "감염 위험 사정",
+    "봉합 지연 판단"
+   ],
+   "keyPhrases": [
+    "Human bites carry a high risk of infection.",
+    "We often leave these wounds open rather than stitch them.",
+    "You'll need antibiotics and close follow-up."
+   ],
+   "goals": [
+    "사람 교상의 높은 감염 위험을 사정한다",
+    "봉합 지연과 항생제·추적을 계획한다"
+   ]
+  },
+  {
+   "title": "이물 잔존 창상",
+   "tagline": "I think there's still a piece of glass in there.",
+   "room": "MINOR CARE",
+   "brief": "영상으로 이물을 확인하고 무리한 제거를 피하도록 관리하세요.",
+   "role": "patient",
+   "skills": [
+    "이물 사정",
+    "영상 확인 조율",
+    "신중한 제거"
+   ],
+   "keyPhrases": [
+    "We'll get an X-ray to see if glass is still inside.",
+    "We won't dig blindly, to avoid causing more damage.",
+    "Please keep the area still until we image it."
+   ],
+   "goals": [
+    "잔존 이물 가능성을 사정하고 영상을 조율한다",
+    "무리한 제거를 피하며 안전하게 관리한다"
+   ]
+  },
+  {
+   "title": "정맥성 다량출혈 지혈",
+   "tagline": "The blood is flowing steadily and it's a lot.",
+   "room": "ACUTE ZONE",
+   "brief": "압박·거상·드레싱으로 정맥성 다량출혈을 지혈하세요.",
+   "role": "patient",
+   "skills": [
+    "정맥성 출혈 지혈",
+    "압박·거상",
+    "드레싱 관리"
+   ],
+   "keyPhrases": [
+    "This is steady venous bleeding, so we'll press and elevate.",
+    "I'm applying a firm pressure dressing now.",
+    "Keep the limb raised to slow the flow."
+   ],
+   "goals": [
+    "정맥성 출혈을 압박·거상으로 지혈한다",
+    "압박 드레싱을 적용·유지한다"
+   ]
+  },
+  {
+   "title": "두피 열상 다량출혈",
+   "tagline": "My head is bleeding so much—it's all over.",
+   "room": "ACUTE ZONE",
+   "brief": "혈관이 풍부한 두피 열상을 압박으로 지혈하세요.",
+   "role": "patient",
+   "skills": [
+    "두피 열상 지혈",
+    "압박 지혈",
+    "상처 사정"
+   ],
+   "keyPhrases": [
+    "Scalp wounds bleed a lot because of rich blood supply.",
+    "I'm pressing firmly on the wound edges to stop it.",
+    "The heavy bleeding looks worse than it usually is."
+   ],
+   "goals": [
+    "두피의 다량 출혈을 압박으로 지혈한다",
+    "창상 깊이와 두개 손상 동반 여부를 사정한다"
+   ]
+  },
+  {
+   "title": "만성 상처(당뇨족) 감염",
+   "tagline": "This sore on my foot smells bad and won't heal.",
+   "room": "EXAM ROOM",
+   "brief": "괴사·냄새·전신 징후로 당뇨족 만성 상처 감염을 사정하세요.",
+   "role": "patient",
+   "skills": [
+    "만성 상처 사정",
+    "감염 징후 확인",
+    "당뇨족 관리"
+   ],
+   "keyPhrases": [
+    "I'm checking the wound for dead tissue and infection.",
+    "Do you have a fever or feel generally unwell?",
+    "How is your blood sugar been controlled lately?"
+   ],
+   "goals": [
+    "괴사·악취·발적 등 국소 감염을 사정한다",
+    "발열 등 전신 감염 징후를 확인한다"
+   ]
+  },
+  {
+   "title": "언어장벽 창상",
+   "tagline": "开水... 割伤... 我不会说英语。",
+   "room": "TRIAGE",
+   "brief": "언어장벽 환자의 기전·접종력·알레르기를 통역과 함께 확인하세요.",
+   "role": "patient",
+   "skills": [
+    "언어장벽 소통",
+    "통역 활용",
+    "접종력·알레르기 확인"
+   ],
+   "keyPhrases": [
+    "I'm getting an interpreter to help us understand each other.",
+    "How did the wound happen, and with what object?",
+    "Are you allergic to any medicines, and is your tetanus current?"
+   ],
+   "goals": [
+    "통역을 통해 수상기전을 확보한다",
+    "접종력·알레르기를 안전하게 확인한다"
+   ]
+  },
+  {
+   "title": "항혈소판제 병용 출혈",
+   "tagline": "I take aspirin and clopidogrel—it keeps bleeding through.",
+   "room": "ACUTE ZONE",
+   "brief": "항혈소판제 병용으로 지혈이 지연되는 상황을 통합적으로 관리하세요.",
+   "role": "patient",
+   "skills": [
+    "항혈소판제 병력 청취",
+    "지혈 지연 관리",
+    "통합 사정"
+   ],
+   "keyPhrases": [
+    "Taking two blood thinners makes bleeding harder to stop.",
+    "Which antiplatelet medicines do you take and when?",
+    "We'll apply firm pressure longer and monitor closely."
+   ],
+   "goals": [
+    "항혈소판제 병용 여부와 용량을 확인한다",
+    "지연되는 지혈을 통합적으로 관리·보고한다"
+   ]
+  },
+  {
+   "title": "동맥성 분출 지혈대",
+   "tagline": "It's spurting out with every heartbeat—help!",
+   "room": "RESUS BAY",
+   "brief": "압박 실패한 동맥성 분출에 지혈대를 적용하고 적용 시각을 기록하세요.",
+   "role": "patient",
+   "skills": [
+    "동맥성 출혈 지혈",
+    "지혈대 적용",
+    "적용 시각 기록"
+   ],
+   "keyPhrases": [
+    "This is arterial bleeding, so we're applying a tourniquet.",
+    "I'm noting the exact time the tourniquet went on.",
+    "It will be tight and painful, but it will save your limb."
+   ],
+   "goals": [
+    "동맥성 분출을 인지하고 지혈대를 적용한다",
+    "적용 시각을 정확히 기록·보고한다"
+   ]
+  },
+  {
+   "title": "실혈성 쇼크 급속진행",
+   "tagline": "I feel freezing and everything is going gray.",
+   "room": "RESUS BAY",
+   "brief": "저혈압·창백을 사정하고 수혈·수술을 신속히 조율하세요.",
+   "role": "patient",
+   "skills": [
+    "실혈성 쇼크 사정",
+    "수혈 조율",
+    "수술 이송 준비"
+   ],
+   "keyPhrases": [
+    "You've lost a lot of blood, so we're giving you a transfusion.",
+    "Your pressure is very low, so we're acting fast.",
+    "We're preparing you for surgery to stop the bleeding."
+   ],
+   "goals": [
+    "저혈압·창백·의식변화 등 쇼크를 사정한다",
+    "대량수혈과 수술 이송을 조율한다"
+   ]
+  },
+  {
+   "title": "경부 창상 기도·혈관 위기",
+   "tagline": "My neck is bleeding and it's getting hard to breathe.",
+   "room": "RESUS BAY",
+   "brief": "경부 창상의 혈종·기도 압박 위기를 인지하고 즉시 대응하세요.",
+   "role": "patient",
+   "skills": [
+    "경부 창상 사정",
+    "기도 압박 인지",
+    "응급 대응"
+   ],
+   "keyPhrases": [
+    "A neck wound can swell and press on your airway.",
+    "We're controlling the bleeding and protecting your airway.",
+    "Tell me right away if breathing gets harder."
+   ],
+   "goals": [
+    "확대되는 혈종과 기도 압박을 인지한다",
+    "지혈과 기도 확보를 동시에 조율한다"
+   ]
+  },
+  {
+   "title": "절단부 대량출혈",
+   "tagline": "My hand was cut off and it's bleeding everywhere.",
+   "room": "RESUS BAY",
+   "brief": "지혈대로 절단부를 지혈하고 절단부 보존·재접합 이송을 조율하세요.",
+   "role": "patient",
+   "skills": [
+    "절단부 지혈",
+    "절단부 보존",
+    "재접합 이송"
+   ],
+   "keyPhrases": [
+    "We're placing a tourniquet to stop the bleeding now.",
+    "We'll preserve the amputated part cool and moist.",
+    "The surgical team is being called for possible reattachment."
+   ],
+   "goals": [
+    "지혈대로 절단부 출혈을 통제한다",
+    "절단부 보존과 재접합 이송을 조율한다"
+   ]
+  },
+  {
+   "title": "위장관 대량출혈 토혈",
+   "tagline": "I keep vomiting blood and I feel so weak.",
+   "room": "RESUS BAY",
+   "brief": "토혈 환자의 흡인 위험을 관리하고 내시경 이송을 조율하세요.",
+   "role": "patient",
+   "skills": [
+    "위장관 출혈 관리",
+    "흡인 예방",
+    "내시경 이송 조율"
+   ],
+   "keyPhrases": [
+    "We'll position you to protect your airway from the blood.",
+    "You're bleeding internally, so we're giving fluids and blood.",
+    "The GI team will do a scope to find and stop the bleeding."
+   ],
+   "goals": [
+    "토혈에 따른 흡인 위험을 예방한다",
+    "수혈과 내시경 이송을 신속히 조율한다"
+   ]
+  },
+  {
+   "title": "출혈 SBAR 인계",
+   "tagline": "Surgery wants a handoff—give me the report.",
+   "room": "RESUS BAY",
+   "brief": "실혈량·지혈·수혈 상태를 SBAR로 정확히 인계하세요.",
+   "role": "colleague",
+   "skills": [
+    "SBAR 인계",
+    "출혈 요약",
+    "팀 소통"
+   ],
+   "keyPhrases": [
+    "This is a 36-year-old with heavy arterial limb bleeding.",
+    "A tourniquet was applied at 14:20 and bleeding is controlled.",
+    "We've given two units of blood and pressure is improving."
+   ],
+   "goals": [
+    "실혈량과 지혈 조치·시각을 SBAR로 요약한다",
+    "수혈량과 활력 추세를 명확히 인계한다"
+   ]
+  }
+ ]
+}

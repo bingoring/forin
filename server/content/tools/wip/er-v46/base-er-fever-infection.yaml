@@ -1,0 +1,7894 @@
+theme: er-fever-infection
+words:
+- id: w-fever
+  en: fever
+  ipa: /ˈfiːvər/
+  ko: 열
+  icon: monitor
+  example: The fever started three days ago.
+  exKo: 열은 사흘 전에 시작됐어요.
+  cue: 체온이 38℃를 넘을 때 — 감염을 의심하는 첫 신호
+  tag: 발열·증상
+  distractorsEn:
+  - flu
+  - chill
+  distractorsKo:
+  - 오한
+  - 독감
+  chips:
+  - - fe
+    - ver
+  decoyChips:
+  - fa
+  - vor
+- id: w-start
+  en: start
+  ipa: /stɑːrt/
+  ko: 시작하다
+  icon: board
+  example: When did the fever start?
+  exKo: 열이 언제 시작됐어요?
+  cue: 증상이 처음 생긴 때를 물을 때 — 'When did it ___?'
+  tag: 문진
+  distractorsEn:
+  - stop
+  - stay
+  distractorsKo:
+  - 멈추다
+  - 계속되다
+  chips:
+  - - start
+  decoyChips:
+  - stare
+- id: w-high
+  en: high
+  ipa: /haɪ/
+  ko: 높은
+  icon: chartup
+  example: How high has your fever gotten?
+  exKo: 열이 얼마나 높이 올랐어요?
+  cue: 최고 체온이 몇 도였는지 물을 때 — 'How ___ has it gotten?'
+  tag: 문진
+  distractorsEn:
+  - low
+  - long
+  distractorsKo:
+  - 낮은
+  - 긴
+  chips:
+  - - high
+  decoyChips:
+  - hight
+- id: w-get
+  en: get
+  ipa: /ɡɛt/
+  ko: (그 상태가) 되다
+  icon: board
+  example: How high has it gotten?
+  exKo: 얼마나 높이 올랐어요?
+  cue: 상태가 어떻게 변했는지 물을 때 — 'Is it ___ting worse?'
+  tag: 문진
+  distractorsEn:
+  - give
+  - set
+  distractorsKo:
+  - 유지하다
+  - 멈추다
+  chips:
+  - - get
+  decoyChips:
+  - got
+- id: w-cough
+  en: cough
+  ipa: /kɔːf/
+  ko: 기침
+  icon: board
+  example: Do you have a cough?
+  exKo: 기침이 있으세요?
+  cue: 호흡기 감염을 선별할 때 가장 먼저 묻는 증상
+  tag: 발열·증상
+  distractorsEn:
+  - sneeze
+  - hiccup
+  distractorsKo:
+  - 재채기
+  - 딸꾹질
+  chips:
+  - - cough
+  decoyChips:
+  - cuff
+- id: w-sore
+  en: sore
+  ipa: /sɔːr/
+  ko: 따가운
+  icon: board
+  example: Do you have a sore throat?
+  exKo: 목이 아프세요?
+  cue: 침을 삼킬 때 목이 아프고 따끔한 증상 — '___ throat'
+  tag: 발열·증상
+  distractorsEn:
+  - sour
+  - stiff
+  distractorsKo:
+  - 시큰한
+  - 뻣뻣한
+  chips:
+  - - sore
+  decoyChips:
+  - soar
+- id: w-throat
+  en: throat
+  ipa: /θroʊt/
+  ko: 목구멍
+  icon: board
+  example: Do you have a sore throat?
+  exKo: 목이 아프세요?
+  cue: 인후염·편도염을 볼 때 — 입 안쪽 깊은 곳
+  tag: 발열·증상
+  distractorsEn:
+  - thorax
+  - tongue
+  distractorsKo:
+  - 흉곽
+  - 혀
+  chips:
+  - - throat
+  decoyChips:
+  - throa
+  - threat
+- id: w-burn
+  en: burn
+  ipa: /bɜːrn/
+  ko: 화끈거리다
+  icon: board
+  example: Do you have burning urine?
+  exKo: 소변볼 때 화끈거리세요?
+  cue: 요로감염 문진 — 소변볼 때 불에 덴 듯 아픈 느낌
+  tag: 발열·증상
+  distractorsEn:
+  - itch
+  - sting
+  distractorsKo:
+  - 가렵다
+  - 저리다
+  chips:
+  - - burn
+  decoyChips:
+  - born
+- id: w-urine
+  en: urine
+  ipa: /ˈjʊrɪn/
+  ko: 소변
+  icon: lab
+  example: Do you have burning urine?
+  exKo: 소변볼 때 화끈거리세요?
+  cue: 요로감염을 확인하려고 받는 검체 — 소변 컵에 담는다
+  tag: 감염원
+  distractorsEn:
+  - sputum
+  - stool
+  distractorsKo:
+  - 가래
+  - 대변
+  chips:
+  - - u
+    - rine
+  decoyChips:
+  - uri
+  - ring
+- id: w-pain
+  en: pain
+  ipa: /peɪn/
+  ko: 통증
+  icon: board
+  example: Do you have any pain?
+  exKo: 어디 아픈 데 있으세요?
+  cue: 감염 부위를 찾을 때 — 어디가 아픈지
+  tag: 발열·증상
+  distractorsEn:
+  - pressure
+  - itch
+  distractorsKo:
+  - 압박감
+  - 가려움
+  chips:
+  - - pain
+  decoyChips:
+  - pane
+- id: w-anything
+  en: anything
+  ipa: /ˈɛniθɪŋ/
+  ko: 무엇이든
+  icon: board
+  example: Has anything made it better or worse?
+  exKo: 뭔가 나아지게 하거나 나빠지게 한 게 있었나요?
+  cue: 완화·악화 요인을 넓게 물을 때 — 'Has ___ made it better?'
+  tag: 문진
+  distractorsEn:
+  - anyone
+  - something
+  distractorsKo:
+  - 누구든
+  - 어디든
+  chips:
+  - - any
+    - thing
+  decoyChips:
+  - every
+  - one
+- id: w-make
+  en: make
+  ipa: /meɪk/
+  ko: 만들다
+  icon: board
+  example: Has anything made it better?
+  exKo: 뭔가 나아지게 한 게 있었나요?
+  cue: 무엇이 증상을 좋게·나쁘게 했는지 물을 때 — 'What ___s it better?'
+  tag: 문진
+  distractorsEn:
+  - take
+  - keep
+  distractorsKo:
+  - 복용하다
+  - 유지하다
+  chips:
+  - - make
+  decoyChips:
+  - made
+- id: w-check
+  en: check
+  ipa: /tʃɛk/
+  ko: 확인하다
+  icon: check
+  example: Did you check your temperature at home?
+  exKo: 집에서 체온을 재 보셨어요?
+  cue: 체온·맥박·수치를 한 번 살펴볼 때 가장 흔히 쓰는 동사
+  tag: 검사
+  distractorsEn:
+  - chart
+  - change
+  distractorsKo:
+  - 기록하다
+  - 교체하다
+  chips:
+  - - check
+  decoyChips:
+  - cheek
+- id: w-temperature
+  en: temperature
+  ipa: /ˈtɛmprətʃər/
+  ko: 체온
+  icon: monitor
+  example: We'll recheck your temperature in an hour.
+  exKo: 한 시간 뒤에 체온을 다시 잴게요.
+  cue: 체온계로 재는 활력징후 — 해열제 뒤에 다시 잰다
+  tag: 바이탈
+  distractorsEn:
+  - temper
+  - pressure
+  distractorsKo:
+  - 혈압
+  - 맥박
+  chips:
+  - - tem
+    - per
+    - a
+    - ture
+  decoyChips:
+  - tempo
+  - rate
+- id: w-take
+  en: take
+  ipa: /teɪk/
+  ko: 복용하다
+  icon: pill
+  example: Did you take any medicine?
+  exKo: 약 드신 것 있어요?
+  cue: 오기 전에 스스로 먹은 해열제를 물을 때 — 'Did you ___ anything?'
+  tag: 문진
+  distractorsEn:
+  - make
+  - give
+  distractorsKo:
+  - 처방하다
+  - 끊다
+  chips:
+  - - take
+  decoyChips:
+  - tack
+- id: w-medicine
+  en: medicine
+  ipa: /ˈmɛdɪsɪn/
+  ko: 약
+  icon: pill
+  example: Did you take any medicine?
+  exKo: 약 드신 것 있어요?
+  cue: 환자와 쉽게 말할 때 쓰는 '먹는 것' — 해열제·감기약 모두
+  tag: 치료
+  distractorsEn:
+  - medic
+  - vaccine
+  distractorsKo:
+  - 백신
+  - 주사
+  chips:
+  - - med
+    - i
+    - cine
+  decoyChips:
+  - medi
+  - sine
+- id: w-bring
+  en: bring
+  ipa: /brɪŋ/
+  ko: 내리다
+  icon: board
+  example: This will bring your fever down.
+  exKo: 이 약이 열을 내려 줄 거예요.
+  cue: 해열제를 설명할 때 — '___ your fever down'
+  tag: 치료
+  distractorsEn:
+  - break
+  - keep
+  distractorsKo:
+  - 올리다
+  - 유지하다
+  chips:
+  - - bring
+  decoyChips:
+  - brink
+- id: w-down
+  en: down
+  ipa: /daʊn/
+  ko: 내려가게
+  icon: board
+  example: This will bring your fever down.
+  exKo: 이 약이 열을 내려 줄 거예요.
+  cue: 열·혈압이 내려가는 방향 — 'bring it ___'
+  tag: 치료
+  distractorsEn:
+  - up
+  - 'off'
+  distractorsKo:
+  - 올라가게
+  - 멈추게
+  chips:
+  - - down
+  decoyChips:
+  - dawn
+- id: w-pulse
+  en: pulse
+  ipa: /pʌls/
+  ko: 맥박
+  icon: stetho
+  example: Let me check your pulse.
+  exKo: 맥박 좀 잴게요.
+  cue: 손목에서 손가락으로 세는 활력징후 — 발열이면 빨라진다
+  tag: 바이탈
+  distractorsEn:
+  - pressure
+  - rhythm
+  distractorsKo:
+  - 혈압
+  - 리듬
+  chips:
+  - - pulse
+  decoyChips:
+  - pulls
+- id: w-breathe
+  en: breathe
+  ipa: /briːð/
+  ko: 숨쉬다
+  icon: stetho
+  example: How is your breathing?
+  exKo: 숨 쉬는 건 어떠세요?
+  cue: 호흡수와 호흡 곤란을 살필 때 — 들이쉬고 내쉬는 동작
+  tag: 바이탈
+  distractorsEn:
+  - swallow
+  - cough
+  distractorsKo:
+  - 삼키다
+  - 기침하다
+  chips:
+  - - breathe
+  decoyChips:
+  - breath
+- id: w-first
+  en: first
+  ipa: /fɜːrst/
+  ko: 먼저
+  icon: board
+  example: Let me check your vitals first.
+  exKo: 활력징후부터 먼저 잴게요.
+  cue: 순서를 알릴 때 — 무엇보다 이것을 앞서 한다
+  tag: 시간·경과
+  distractorsEn:
+  - last
+  - next
+  distractorsKo:
+  - 마지막에
+  - 나중에
+  chips:
+  - - first
+  decoyChips:
+  - fast
+- id: w-ask
+  en: ask
+  ipa: /æsk/
+  ko: 묻다
+  icon: speech
+  example: I'll ask about a few things.
+  exKo: 몇 가지 여쭤볼게요.
+  cue: 문진을 시작하며 양해를 구할 때 — 'I'll ___ about a few things.'
+  tag: 문진
+  distractorsEn:
+  - tell
+  - answer
+  distractorsKo:
+  - 알려 주다
+  - 대답하다
+  chips:
+  - - ask
+  decoyChips:
+  - axe
+- id: w-common
+  en: common
+  ipa: /ˈkɑːmən/
+  ko: 흔한
+  icon: board
+  example: These are common sources of infection.
+  exKo: 이것들이 감염의 흔한 원인이에요.
+  cue: 자주 보는 감염원을 먼저 훑을 때 — 폐·소변·피부
+  tag: 감염원
+  distractorsEn:
+  - rare
+  - unusual
+  distractorsKo:
+  - 드문
+  - 특이한
+  chips:
+  - - com
+    - mon
+  decoyChips:
+  - con
+  - man
+- id: w-source
+  en: source
+  ipa: /sɔːrs/
+  ko: 원인
+  icon: magnify
+  example: We look for sources of infection.
+  exKo: 감염의 원인을 찾아봐요.
+  cue: 열이 어디서 왔는지 — 폐렴인지 요로감염인지 찾는 것
+  tag: 감염원
+  distractorsEn:
+  - sign
+  - course
+  distractorsKo:
+  - 징후
+  - 경과
+  chips:
+  - - source
+  decoyChips:
+  - sauce
+- id: w-infection
+  en: infection
+  ipa: /ɪnˈfɛkʃən/
+  ko: 감염
+  icon: bell
+  example: We're looking for signs of infection.
+  exKo: 감염의 징후를 찾고 있어요.
+  cue: 세균·바이러스가 몸에 들어와 열이 나는 원인
+  tag: 감염원
+  distractorsEn:
+  - inflammation
+  - injection
+  distractorsKo:
+  - 염증
+  - 주사
+  chips:
+  - - in
+    - fec
+    - tion
+  decoyChips:
+  - jec
+  - flam
+- id: w-pee
+  en: pee
+  ipa: /piː/
+  ko: 소변보다
+  icon: lab
+  example: Any pain when you pee?
+  exKo: 소변볼 때 아프세요?
+  cue: 환자에게 쉽게 소변 증상을 물을 때 쓰는 편한 말
+  tag: 감염원
+  distractorsEn:
+  - poop
+  - sweat
+  distractorsKo:
+  - 대변보다
+  - 땀 흘리다
+  chips:
+  - - pee
+  decoyChips:
+  - pea
+- id: w-wound
+  en: wound
+  ipa: /waʊnd/
+  ko: 상처
+  icon: bandage
+  example: Do you have a wound anywhere?
+  exKo: 어디 상처 난 데 있으세요?
+  cue: 피부 감염원을 찾을 때 — 베이거나 긁히거나 수술한 자리
+  tag: 감염원
+  distractorsEn:
+  - bruise
+  - rash
+  distractorsKo:
+  - 멍
+  - 발진
+  chips:
+  - - wound
+  decoyChips:
+  - wand
+- id: w-anywhere
+  en: anywhere
+  ipa: /ˈɛniwɛr/
+  ko: 어디든
+  icon: board
+  example: Do you have a wound anywhere?
+  exKo: 어디 상처 난 데 있으세요?
+  cue: 부위를 가리지 않고 넓게 물을 때 — 'a wound ___?'
+  tag: 문진
+  distractorsEn:
+  - somewhere
+  - everywhere
+  distractorsKo:
+  - 누구든
+  - 언제든
+  chips:
+  - - any
+    - where
+  decoyChips:
+  - every
+  - ware
+- id: w-fast
+  en: fast
+  ipa: /fæst/
+  ko: 빠른
+  icon: board
+  example: Your pulse is a little fast.
+  exKo: 맥박이 조금 빨라요.
+  cue: 열이 나면 맥박이 이렇게 된다 — 빈맥
+  tag: 바이탈
+  distractorsEn:
+  - slow
+  - weak
+  distractorsKo:
+  - 느린
+  - 약한
+  chips:
+  - - fast
+  decoyChips:
+  - first
+- id: w-sound
+  en: sound
+  ipa: /saʊnd/
+  ko: 들리다
+  icon: speaker
+  example: Your breathing sounds fine.
+  exKo: 호흡 소리는 괜찮아요.
+  cue: 청진한 결과를 환자에게 말할 때 — 'Your lungs ___ clear.'
+  tag: 설명·안심
+  distractorsEn:
+  - seem
+  - look
+  distractorsKo:
+  - 보이다
+  - 느끼다
+  chips:
+  - - sound
+  decoyChips:
+  - sand
+- id: w-fine
+  en: fine
+  ipa: /faɪn/
+  ko: 괜찮은
+  icon: board
+  example: Your breathing sounds fine.
+  exKo: 호흡 소리는 괜찮아요.
+  cue: 검사 결과에 문제가 없다고 안심시킬 때
+  tag: 설명·안심
+  distractorsEn:
+  - firm
+  - faint
+  distractorsKo:
+  - 불안정한
+  - 심각한
+  chips:
+  - - fine
+  decoyChips:
+  - fin
+- id: w-look
+  en: look
+  ipa: /lʊk/
+  ko: 살펴보다
+  icon: magnify
+  example: We'll look for signs of infection.
+  exKo: 감염 징후를 살펴볼게요.
+  cue: 눈으로 찾아볼 때 — '___ for signs of infection'
+  tag: 검사
+  distractorsEn:
+  - listen
+  - touch
+  distractorsKo:
+  - 듣다
+  - 만지다
+  chips:
+  - - look
+  decoyChips:
+  - lock
+- id: w-sign
+  en: sign
+  ipa: /saɪn/
+  ko: 징후
+  icon: board
+  example: We'll look for signs of infection.
+  exKo: 감염 징후를 살펴볼게요.
+  cue: 의료진이 관찰로 찾아내는 객관적인 증거 — 발적·열감·부종
+  tag: 발열·증상
+  distractorsEn:
+  - sigh
+  - source
+  distractorsKo:
+  - 원인
+  - 경과
+  chips:
+  - - sign
+  decoyChips:
+  - sine
+- id: w-skin
+  en: skin
+  ipa: /skɪn/
+  ko: 피부
+  icon: board
+  example: We check your skin for infection.
+  exKo: 감염이 있는지 피부를 봐요.
+  cue: 봉와직염·발진을 볼 때 살피는 곳
+  tag: 감염원
+  distractorsEn:
+  - skull
+  - scalp
+  distractorsKo:
+  - 두피
+  - 근육
+  chips:
+  - - skin
+  decoyChips:
+  - scan
+- id: w-lung
+  en: lung
+  ipa: /lʌŋ/
+  ko: 폐
+  icon: stetho
+  example: We check your lungs for infection.
+  exKo: 감염이 있는지 폐를 봐요.
+  cue: 폐렴이 생기는 장기 — 청진기로 소리를 듣는다
+  tag: 감염원
+  distractorsEn:
+  - liver
+  - lump
+  distractorsKo:
+  - 간
+  - 기관지
+  chips:
+  - - lung
+  decoyChips:
+  - lunge
+- id: w-because
+  en: because
+  ipa: /bɪˈkɔːz/
+  ko: 왜냐하면
+  icon: board
+  example: Because of the cough and fever, wear a mask.
+  exKo: 기침과 열이 있으니 마스크를 써 주세요.
+  cue: 마스크를 부탁하며 이유부터 말할 때 — '___ of the cough'
+  tag: 설명·안심
+  distractorsEn:
+  - before
+  - unless
+  distractorsKo:
+  - ~하기 전에
+  - ~하지 않으면
+  chips:
+  - - be
+    - cause
+  decoyChips:
+  - by
+  - case
+- id: w-wear
+  en: wear
+  ipa: /wɛr/
+  ko: 착용하다
+  icon: shield
+  example: I'll have you wear a mask.
+  exKo: 마스크를 써 주시도록 할게요.
+  cue: 마스크·가운·장갑을 몸에 두르는 것
+  tag: 격리
+  distractorsEn:
+  - wash
+  - remove
+  distractorsKo:
+  - 벗다
+  - 씻다
+  chips:
+  - - wear
+  decoyChips:
+  - where
+- id: w-mask
+  en: mask
+  ipa: /mæsk/
+  ko: 마스크
+  icon: shield
+  example: Please wear a mask.
+  exKo: 마스크를 써 주세요.
+  cue: 기침하는 환자에게 입과 코를 가리게 건네는 것
+  tag: 격리
+  distractorsEn:
+  - gown
+  - glove
+  distractorsKo:
+  - 가운
+  - 장갑
+  chips:
+  - - mask
+  decoyChips:
+  - mash
+- id: w-place
+  en: place
+  ipa: /pleɪs/
+  ko: 배치하다
+  icon: board
+  example: We may place you in a separate room.
+  exKo: 별도의 병실로 옮겨 드릴 수 있어요.
+  cue: 환자를 격리실 같은 특정 병실에 들일 때 — '___ you in a room'
+  tag: 격리
+  distractorsEn:
+  - move
+  - keep
+  distractorsKo:
+  - 퇴원시키다
+  - 이송하다
+  chips:
+  - - place
+  decoyChips:
+  - plate
+- id: w-separate
+  en: separate
+  ipa: /ˈsɛpərət/
+  ko: 분리된
+  icon: lock
+  example: We may place you in a separate room.
+  exKo: 별도의 병실로 옮겨 드릴 수 있어요.
+  cue: 다른 환자와 공간을 나눠 쓰지 않는 방
+  tag: 격리
+  distractorsEn:
+  - shared
+  - spare
+  distractorsKo:
+  - 함께 쓰는
+  - 비어 있는
+  chips:
+  - - sep
+    - a
+    - rate
+  decoyChips:
+  - sepa
+  - ret
+- id: w-protect
+  en: protect
+  ipa: /prəˈtɛkt/
+  ko: 보호하다
+  icon: shield
+  example: This helps protect others.
+  exKo: 다른 분들을 보호하는 데 도움이 돼요.
+  cue: 마스크·격리를 부탁하는 이유 — 대기실의 다른 환자를 감염에서 지킨다
+  tag: 격리
+  distractorsEn:
+  - prevent
+  - project
+  distractorsKo:
+  - 감염시키다
+  - 노출시키다
+  chips:
+  - - pro
+    - tect
+  decoyChips:
+  - pre
+  - tact
+- id: w-other
+  en: other
+  ipa: /ˈʌðər/
+  ko: 다른 사람
+  icon: board
+  example: This helps protect others.
+  exKo: 다른 분들을 보호하는 데 도움이 돼요.
+  cue: 격리 이유를 말할 때 — 나 말고 주변의 사람들 ('protect ___s')
+  tag: 격리
+  distractorsEn:
+  - another
+  - rest
+  distractorsKo:
+  - 가족
+  - 자기 자신
+  chips:
+  - - oth
+    - er
+  decoyChips:
+  - uth
+  - ther
+- id: w-around
+  en: around
+  ipa: /əˈraʊnd/
+  ko: 주변에
+  icon: board
+  example: Have you been around anyone sick?
+  exKo: 아픈 사람 곁에 있었던 적 있어요?
+  cue: 접촉력을 물을 때 — 아픈 사람 가까이에 있었는지 ('been ___ anyone sick')
+  tag: 여행력
+  distractorsEn:
+  - across
+  - about
+  distractorsKo:
+  - 멀리
+  - 건너편에
+  chips:
+  - - a
+    - round
+  decoyChips:
+  - ground
+  - o
+- id: w-anyone
+  en: anyone
+  ipa: /ˈɛniwʌn/
+  ko: 누군가
+  icon: board
+  example: Have you been around anyone sick?
+  exKo: 아픈 사람 곁에 있었던 적 있어요?
+  cue: 접촉한 사람을 가리지 않고 물을 때 — 'Has ___ else been sick?'
+  tag: 여행력
+  distractorsEn:
+  - anything
+  - everyone
+  distractorsKo:
+  - 무엇이든
+  - 모두
+  chips:
+  - - any
+    - one
+  decoyChips:
+  - every
+  - won
+- id: w-sick
+  en: sick
+  ipa: /sɪk/
+  ko: 아픈
+  icon: board
+  example: Have you been around anyone sick?
+  exKo: 아픈 사람 곁에 있었던 적 있어요?
+  cue: 환자가 쓰는 쉬운 말 — 감기·독감 등으로 몸이 안 좋은 상태
+  tag: 발열·증상
+  distractorsEn:
+  - sore
+  - weak
+  distractorsKo:
+  - 건강한
+  - 피곤한
+  chips:
+  - - sick
+  decoyChips:
+  - six
+- id: w-travel
+  en: travel
+  ipa: /ˈtrævəl/
+  ko: 여행하다
+  icon: plane
+  example: Have you traveled recently?
+  exKo: 최근에 여행하신 적 있어요?
+  cue: 유입감염을 선별할 때 — 최근 다른 지역·나라에 다녀왔는지
+  tag: 여행력
+  distractorsEn:
+  - transfer
+  - trouble
+  distractorsKo:
+  - 이사하다
+  - 출근하다
+  chips:
+  - - trav
+    - el
+  decoyChips:
+  - trev
+  - al
+- id: w-recently
+  en: recently
+  ipa: /ˈriːsəntli/
+  ko: 최근에
+  icon: calendar
+  example: Have you traveled recently?
+  exKo: 최근에 여행하신 적 있어요?
+  cue: 노출 시점을 좁힐 때 — 지난 몇 주 안에
+  tag: 시간·경과
+  distractorsEn:
+  - currently
+  - usually
+  distractorsKo:
+  - 예전에
+  - 보통
+  chips:
+  - - re
+    - cent
+    - ly
+  decoyChips:
+  - ri
+  - sent
+- id: w-uncomfortable
+  en: uncomfortable
+  ipa: /ʌnˈkʌmftərbəl/
+  ko: 불편한
+  icon: board
+  example: I know the mask feels uncomfortable.
+  exKo: 마스크가 불편하신 거 알아요.
+  cue: 마스크·검사가 거슬린다는 환자의 마음을 먼저 알아줄 때
+  tag: 설명·안심
+  distractorsEn:
+  - unconscious
+  - unstable
+  distractorsKo:
+  - 의식이 없는
+  - 불안정한
+  chips:
+  - - un
+    - com
+    - fort
+    - able
+  decoyChips:
+  - in
+  - ible
+- id: w-feel
+  en: feel
+  ipa: /fiːl/
+  ko: 느끼다
+  icon: board
+  example: I know the mask feels uncomfortable.
+  exKo: 마스크가 불편하신 거 알아요.
+  cue: 몸으로 느끼는 감각을 말할 때 — 'It ___s uncomfortable.'
+  tag: 설명·안심
+  distractorsEn:
+  - fill
+  - fall
+  distractorsKo:
+  - 보이다
+  - 들리다
+  chips:
+  - - feel
+  decoyChips:
+  - fell
+- id: w-help
+  en: help
+  ipa: /hɛlp/
+  ko: 돕다
+  icon: board
+  example: It helps keep everyone safe.
+  exKo: 모두를 안전하게 지키는 데 도움이 돼요.
+  cue: 치료·마스크가 왜 좋은지 설명할 때 — 'It ___s.'
+  tag: 설명·안심
+  distractorsEn:
+  - hurt
+  - hold
+  distractorsKo:
+  - 해치다
+  - 막다
+  chips:
+  - - help
+  decoyChips:
+  - held
+- id: w-keep
+  en: keep
+  ipa: /kiːp/
+  ko: 유지하다
+  icon: board
+  example: It helps keep everyone safe.
+  exKo: 모두를 안전하게 지키는 데 도움이 돼요.
+  cue: 어떤 상태를 계속 이어 가게 할 때 — '___ him comfortable'
+  tag: 설명·안심
+  distractorsEn:
+  - make
+  - leave
+  distractorsKo:
+  - 멈추다
+  - 바꾸다
+  chips:
+  - - keep
+  decoyChips:
+  - kept
+- id: w-safe
+  en: safe
+  ipa: /seɪf/
+  ko: 안전한
+  icon: shield
+  example: It helps keep everyone safe.
+  exKo: 모두를 안전하게 지키는 데 도움이 돼요.
+  cue: 감염 위험 없이 모두가 보호받는 상태
+  tag: 격리
+  distractorsEn:
+  - sane
+  - sick
+  distractorsKo:
+  - 위험한
+  - 오염된
+  chips:
+  - - safe
+  decoyChips:
+  - save
+- id: w-low
+  en: lower
+  ipa: /ˈloʊər/
+  ko: 낮추다
+  icon: board
+  example: This will help lower your fever.
+  exKo: 이 약이 열을 낮추는 데 도움이 될 거예요.
+  cue: 해열제를 설명할 때 — 열을 떨어뜨리는 동사
+  tag: 치료
+  distractorsEn:
+  - raise
+  - loosen
+  distractorsKo:
+  - 올리다
+  - 유지하다
+  chips:
+  - - low
+    - er
+  decoyChips:
+  - lay
+  - or
+- id: w-comfortable
+  en: comfortable
+  ipa: /ˈkʌmftərbəl/
+  ko: 편안한
+  icon: board
+  example: This will make you more comfortable.
+  exKo: 더 편안해지실 거예요.
+  cue: 해열·진통의 목적을 말할 때 — 환자가 한결 덜 괴로운 상태
+  tag: 설명·안심
+  distractorsEn:
+  - comparable
+  - controllable
+  distractorsKo:
+  - 불편한
+  - 괴로운
+  chips:
+  - - com
+    - fort
+    - able
+  decoyChips:
+  - cum
+  - ible
+- id: w-recheck
+  en: recheck
+  ipa: /riːˈtʃɛk/
+  ko: 다시 확인하다
+  icon: check
+  example: We'll recheck your temperature in an hour.
+  exKo: 한 시간 뒤에 체온을 다시 잴게요.
+  cue: 해열제 효과를 보려고 일정 시간 뒤 한 번 더 재는 것
+  tag: 검사
+  distractorsEn:
+  - recharge
+  - reschedule
+  distractorsKo:
+  - 기록하다
+  - 보고하다
+  chips:
+  - - re
+    - check
+  decoyChips:
+  - pre
+  - chuck
+- id: w-drink
+  en: drink
+  ipa: /drɪŋk/
+  ko: 마시다
+  icon: coffee
+  example: Keep drinking fluids.
+  exKo: 수분을 계속 드세요.
+  cue: 탈수를 막으려고 물·음료를 입으로 먹게 할 때
+  tag: 치료
+  distractorsEn:
+  - drain
+  - dribble
+  distractorsKo:
+  - 삼키다
+  - 토하다
+  chips:
+  - - drink
+  decoyChips:
+  - drank
+- id: w-fluid
+  en: fluid
+  ipa: /ˈfluːɪd/
+  ko: 수분
+  icon: board
+  example: Keep drinking fluids.
+  exKo: 수분을 계속 드세요.
+  cue: 열이 나면 빠져나가므로 채워 주는 것 — 입으로도, 정맥으로도
+  tag: 치료
+  distractorsEn:
+  - flood
+  - fluff
+  distractorsKo:
+  - 영양
+  - 전해질
+  chips:
+  - - flu
+    - id
+  decoyChips:
+  - flo
+  - ed
+- id: w-within
+  en: within
+  ipa: /wɪˈðɪn/
+  ko: ~ 이내에
+  icon: calendar
+  example: This will bring your fever down within thirty minutes.
+  exKo: 이 약이 30분 안에 열을 내려 줄 거예요.
+  cue: 시간 목표를 말할 때 — 한 시간을 넘기지 않고 ('___ the hour')
+  tag: 시간·경과
+  distractorsEn:
+  - without
+  - after
+  distractorsKo:
+  - ~ 후에
+  - ~ 없이
+  chips:
+  - - with
+    - in
+  decoyChips:
+  - out
+  - 'on'
+- id: w-before
+  en: before
+  ipa: /bɪˈfɔːr/
+  ko: ~ 전에
+  icon: calendar
+  example: If your fever goes up before then, let us know.
+  exKo: 그 전에 열이 다시 오르면 알려 주세요.
+  cue: 어떤 때보다 앞선 시점 — '___ you came in' '___ then'
+  tag: 시간·경과
+  distractorsEn:
+  - after
+  - until
+  distractorsKo:
+  - ~ 후에
+  - ~할 때까지
+  chips:
+  - - be
+    - fore
+  decoyChips:
+  - for
+  - af
+- id: w-let
+  en: let
+  ipa: /lɛt/
+  ko: ~하게 하다
+  icon: board
+  example: Please let us know.
+  exKo: 알려 주세요.
+  cue: 변화가 있으면 알려 달라고 부탁할 때 — '___ us know'
+  tag: 설명·안심
+  distractorsEn:
+  - make
+  - leave
+  distractorsKo:
+  - 막다
+  - 시키다
+  chips:
+  - - let
+  decoyChips:
+  - lot
+- id: w-back
+  en: back
+  ipa: /bæk/
+  ko: 돌아와서
+  icon: board
+  example: When did you get back?
+  exKo: 언제 돌아오셨어요?
+  cue: 여행에서 돌아온 시점을 물을 때 — 'When did you get ___?'
+  tag: 여행력
+  distractorsEn:
+  - away
+  - out
+  distractorsKo:
+  - 떠나서
+  - 멀리
+  chips:
+  - - back
+  decoyChips:
+  - black
+- id: w-bug
+  en: bug
+  ipa: /bʌɡ/
+  ko: 벌레
+  icon: board
+  example: Did you get any bug bites?
+  exKo: 벌레에 물린 적 있어요?
+  cue: 말라리아·뎅기를 선별할 때 — 모기·진드기 같은 것을 환자가 쉽게 부르는 말
+  tag: 여행력
+  distractorsEn:
+  - pest
+  - bud
+  distractorsKo:
+  - 동물
+  - 세균
+  chips:
+  - - bug
+  decoyChips:
+  - bag
+- id: w-bite
+  en: bite
+  ipa: /baɪt/
+  ko: 물린 자국
+  icon: bandage
+  example: Did you get any bug bites?
+  exKo: 벌레에 물린 적 있어요?
+  cue: 모기·진드기·동물 이빨에 물린 자리
+  tag: 여행력
+  distractorsEn:
+  - sting
+  - scratch
+  distractorsKo:
+  - 쏘인 자국
+  - 긁힌 자국
+  chips:
+  - - bite
+  decoyChips:
+  - bit
+- id: w-eat
+  en: eat
+  ipa: /iːt/
+  ko: 먹다
+  icon: board
+  example: Did you eat anything unusual?
+  exKo: 특이한 음식을 드신 적 있어요?
+  cue: 여행 중 장염·식중독 가능성을 볼 때 — 무엇을 먹었는지
+  tag: 여행력
+  distractorsEn:
+  - drink
+  - heat
+  distractorsKo:
+  - 마시다
+  - 요리하다
+  chips:
+  - - eat
+  decoyChips:
+  - ate
+- id: w-unusual
+  en: unusual
+  ipa: /ʌnˈjuːʒuəl/
+  ko: 특이한
+  icon: board
+  example: Did you eat anything unusual?
+  exKo: 특이한 음식을 드신 적 있어요?
+  cue: 평소 먹지 않던 것 — 날것·길거리 음식·낯선 음식
+  tag: 여행력
+  distractorsEn:
+  - usual
+  - unused
+  distractorsKo:
+  - 흔한
+  - 익숙한
+  chips:
+  - - un
+    - u
+    - su
+    - al
+  decoyChips:
+  - in
+  - sual
+- id: w-country
+  en: country
+  ipa: /ˈkʌntri/
+  ko: 나라
+  icon: plane
+  example: Which countries did you visit?
+  exKo: 어느 나라에 다녀오셨어요?
+  cue: 여행력 — 풍토병 지역인지 보려고 다녀온 곳을 물을 때
+  tag: 여행력
+  distractorsEn:
+  - county
+  - city
+  distractorsKo:
+  - 도시
+  - 지역
+  chips:
+  - - coun
+    - try
+  decoyChips:
+  - count
+  - tree
+- id: w-city
+  en: city
+  ipa: /ˈsɪti/
+  ko: 도시
+  icon: plane
+  example: Which cities did you visit?
+  exKo: 어느 도시에 다녀오셨어요?
+  cue: 여행력 — 같은 나라라도 도심인지 시골인지에 따라 위험이 다르다
+  tag: 여행력
+  distractorsEn:
+  - county
+  - site
+  distractorsKo:
+  - 나라
+  - 시골
+  chips:
+  - - cit
+    - y
+  decoyChips:
+  - sit
+  - ie
+- id: w-visit
+  en: visit
+  ipa: /ˈvɪzɪt/
+  ko: 방문하다
+  icon: plane
+  example: Which cities did you visit on this trip?
+  exKo: 이번 여행에서 어느 도시에 가셨어요?
+  cue: 여행 중 들른 곳을 물을 때 — 'Where did you ___?'
+  tag: 여행력
+  distractorsEn:
+  - vomit
+  - exit
+  distractorsKo:
+  - 머물다
+  - 떠나다
+  chips:
+  - - vis
+    - it
+  decoyChips:
+  - vas
+  - et
+- id: w-trip
+  en: trip
+  ipa: /trɪp/
+  ko: 여행
+  icon: plane
+  example: Which cities did you visit on this trip?
+  exKo: 이번 여행에서 어느 도시에 가셨어요?
+  cue: 다녀온 한 번의 여정 — 'on this ___'
+  tag: 여행력
+  distractorsEn:
+  - tip
+  - drip
+  distractorsKo:
+  - 출장
+  - 이사
+  chips:
+  - - trip
+  decoyChips:
+  - tripe
+- id: w-traveler
+  en: traveler
+  ipa: /ˈtrævələr/
+  ko: 여행자
+  icon: plane
+  example: Travelers sometimes bring infections back.
+  exKo: 여행자들이 가끔 감염을 가져와요.
+  cue: 해외에 다녀온 사람 — 유입감염을 선별하는 대상
+  tag: 여행력
+  distractorsEn:
+  - trader
+  - trainee
+  distractorsKo:
+  - 이민자
+  - 주민
+  chips:
+  - - trav
+    - el
+    - er
+  decoyChips:
+  - trev
+  - or
+- id: w-sometimes
+  en: sometimes
+  ipa: /ˈsʌmtaɪmz/
+  ko: 가끔
+  icon: board
+  example: Travelers sometimes bring infections back.
+  exKo: 여행자들이 가끔 감염을 가져와요.
+  cue: 늘은 아니고 이따금 — 빈도를 부드럽게 말할 때
+  tag: 시간·경과
+  distractorsEn:
+  - sometime
+  - always
+  distractorsKo:
+  - 항상
+  - 절대
+  chips:
+  - - some
+    - times
+  decoyChips:
+  - same
+  - time
+- id: w-abroad
+  en: abroad
+  ipa: /əˈbrɔːd/
+  ko: 해외에서
+  icon: plane
+  example: Travelers sometimes bring infections back from abroad.
+  exKo: 여행자들이 해외에서 가끔 감염을 가져와요.
+  cue: 국경 밖 — 유입감염을 물을 때 다녀온 곳
+  tag: 여행력
+  distractorsEn:
+  - aboard
+  - broad
+  distractorsKo:
+  - 국내에서
+  - 기내에서
+  chips:
+  - - a
+    - broad
+  decoyChips:
+  - board
+  - o
+- id: w-shortness
+  en: shortness of breath
+  ipa: /ˈʃɔːrtnəs əv ˈbrɛθ/
+  ko: 숨참
+  icon: stetho
+  example: Your cough and shortness of breath worry me.
+  exKo: 기침과 숨참이 걱정돼요.
+  cue: 폐렴을 의심하는 증상 — 조금만 움직여도 숨이 찬다
+  tag: 발열·증상
+  distractorsEn:
+  - shallow breathing
+  - chest tightness
+  distractorsKo:
+  - 가슴 통증
+  - 쌕쌕거림
+  chips:
+  - - short
+    - ness
+  - - of
+  - - breath
+  decoyChips:
+  - breast
+  - shor
+- id: w-think
+  en: think
+  ipa: /θɪŋk/
+  ko: 생각하다
+  icon: board
+  example: This makes us think of pneumonia.
+  exKo: 이러면 폐렴을 떠올리게 돼요.
+  cue: 진단을 단정하지 않고 의심을 말할 때 — 'makes us ___ of pneumonia'
+  tag: 설명·안심
+  distractorsEn:
+  - thank
+  - sink
+  distractorsKo:
+  - 확진하다
+  - 배제하다
+  chips:
+  - - think
+  decoyChips:
+  - thank
+- id: w-pneumonia
+  en: pneumonia
+  ipa: /nuːˈmoʊnjə/
+  ko: 폐렴
+  icon: stetho
+  example: This makes us think of pneumonia.
+  exKo: 이러면 폐렴을 떠올리게 돼요.
+  cue: 기침·열·숨참에 흉부 사진으로 확인하는 폐의 감염
+  tag: 감염원
+  distractorsEn:
+  - pneumothorax
+  - bronchitis
+  distractorsKo:
+  - 기흉
+  - 기관지염
+  chips:
+  - - pneu
+    - mo
+    - nia
+  decoyChips:
+  - pnea
+  - tho
+- id: w-chest
+  en: chest
+  ipa: /tʃɛst/
+  ko: 흉부
+  icon: stetho
+  example: We'll get a chest X-ray.
+  exKo: 흉부 엑스레이를 찍을게요.
+  cue: 폐렴을 볼 때 찍는 사진의 부위 — '___ X-ray'
+  tag: 검사
+  distractorsEn:
+  - chin
+  - chess
+  distractorsKo:
+  - 복부
+  - 등
+  chips:
+  - - chest
+  decoyChips:
+  - chess
+- id: w-xray
+  en: X-ray
+  ipa: /ˈɛksreɪ/
+  ko: 엑스레이
+  icon: lab
+  example: We'll get a chest X-ray.
+  exKo: 흉부 엑스레이를 찍을게요.
+  cue: 폐렴을 확인하는 가장 기본 영상 검사 — 방사선 사진
+  tag: 검사
+  distractorsEn:
+  - CT scan
+  - ultrasound
+  distractorsKo:
+  - 초음파
+  - 컴퓨터단층촬영
+  chips:
+  - - X-
+    - ray
+  decoyChips:
+  - Y-
+  - rey
+- id: w-oxygen
+  en: oxygen
+  ipa: /ˈɑːksɪdʒən/
+  ko: 산소
+  icon: monitor
+  example: We'll check your oxygen level.
+  exKo: 산소 수치를 확인할게요.
+  cue: 손끝 센서로 재는 포화도 — 폐렴이면 떨어진다
+  tag: 바이탈
+  distractorsEn:
+  - nitrogen
+  - carbon
+  distractorsKo:
+  - 이산화탄소
+  - 질소
+  chips:
+  - - ox
+    - y
+    - gen
+  decoyChips:
+  - oxi
+  - gin
+- id: w-level
+  en: level
+  ipa: /ˈlɛvəl/
+  ko: 수치
+  icon: monitor
+  example: We'll check your oxygen level.
+  exKo: 산소 수치를 확인할게요.
+  cue: 검사로 잰 값의 높낮이 — 'your oxygen ___'
+  tag: 검사
+  distractorsEn:
+  - label
+  - lever
+  distractorsKo:
+  - 범위
+  - 속도
+  chips:
+  - - lev
+    - el
+  decoyChips:
+  - lav
+  - al
+- id: w-antibiotic
+  en: antibiotics
+  ipa: /ˌæntibaɪˈɑːtɪks/
+  ko: 항생제
+  icon: pill
+  example: We'll start antibiotics promptly.
+  exKo: 폐렴이라면 바로 항생제를 시작할게요.
+  cue: 세균 감염에 쓰는 약 — 패혈증 의심이면 한 시간 안에 시작한다
+  tag: 치료
+  distractorsEn:
+  - antivirals
+  - antibodies
+  distractorsKo:
+  - 항바이러스제
+  - 항체
+  chips:
+  - - an
+    - ti
+    - bi
+    - otics
+  decoyChips:
+  - vi
+  - bodies
+- id: w-promptly
+  en: promptly
+  ipa: /ˈprɑːmptli/
+  ko: 지체 없이
+  icon: board
+  example: We'll start antibiotics promptly.
+  exKo: 폐렴이라면 지체 없이 항생제를 시작할게요.
+  cue: 미루지 않고 곧바로 — 치료 시작을 약속할 때 쓰는 격식 있는 말
+  tag: 긴급도
+  distractorsEn:
+  - properly
+  - partly
+  distractorsKo:
+  - 나중에
+  - 천천히
+  chips:
+  - - prompt
+    - ly
+  decoyChips:
+  - prop
+  - er
+- id: w-deep
+  en: deep
+  ipa: /diːp/
+  ko: 깊은
+  icon: board
+  example: How many days have you had this deep cough?
+  exKo: 이렇게 깊은 기침이 며칠이나 됐어요?
+  cue: 가슴 깊은 곳에서 울리는 기침 — 목이 간질거리는 기침과 다르다
+  tag: 발열·증상
+  distractorsEn:
+  - dry
+  - dull
+  distractorsKo:
+  - 마른
+  - 둔한
+  chips:
+  - - deep
+  decoyChips:
+  - deed
+- id: w-blood
+  en: blood
+  ipa: /blʌd/
+  ko: 혈액
+  icon: lab
+  example: We're checking your blood.
+  exKo: 혈액을 확인하고 있어요.
+  cue: 혈액배양·백혈구 수치를 보려고 뽑는 것
+  tag: 검사
+  distractorsEn:
+  - urine
+  - serum
+  distractorsKo:
+  - 소변
+  - 혈청
+  chips:
+  - - blood
+  decoyChips:
+  - flood
+- id: w-serious
+  en: serious
+  ipa: /ˈsɪriəs/
+  ko: 심각한
+  icon: board
+  example: We're checking how serious this infection is.
+  exKo: 이 감염이 얼마나 심각한지 확인하고 있어요.
+  cue: 감염의 중증도를 말할 때 — 'how ___ this is'
+  tag: 긴급도
+  distractorsEn:
+  - curious
+  - series
+  distractorsKo:
+  - 가벼운
+  - 흔한
+  chips:
+  - - se
+    - ri
+    - ous
+  decoyChips:
+  - sir
+  - ious
+- id: w-older
+  en: older
+  ipa: /ˈoʊldər/
+  ko: 나이 든
+  icon: board
+  example: In older adults, infection can show up as confusion.
+  exKo: 노인분들은 감염이 혼돈으로 나타날 수 있어요.
+  cue: 비전형 발현을 설명할 때 — 연세 드신 분들을 공손하게 부르는 말
+  tag: 감염원
+  distractorsEn:
+  - elder
+  - colder
+  distractorsKo:
+  - 젊은
+  - 어린
+  chips:
+  - - old
+    - er
+  decoyChips:
+  - eld
+  - est
+- id: w-adult
+  en: adults
+  ipa: /əˈdʌlts/
+  ko: 성인
+  icon: board
+  example: In older adults, infection can show up as confusion.
+  exKo: 노인분들은 감염이 혼돈으로 나타날 수 있어요.
+  cue: 소아와 구별해 어른을 가리키는 말 — 'older ___s'
+  tag: 감염원
+  distractorsEn:
+  - adolescents
+  - infants
+  distractorsKo:
+  - 청소년
+  - 영아
+  chips:
+  - - a
+    - dults
+  decoyChips:
+  - adol
+  - ults
+- id: w-show
+  en: show up
+  ipa: /ˌʃoʊ ˈʌp/
+  ko: (증상으로) 나타나다
+  icon: board
+  example: Infection can show up as confusion.
+  exKo: 감염이 혼돈으로 나타날 수 있어요.
+  cue: 노인 감염은 열 대신 섬망처럼 다른 모습으로 드러난다 — '___ as confusion'
+  tag: 발열·증상
+  distractorsEn:
+  - show off
+  - set up
+  distractorsKo:
+  - 숨기다
+  - 사라지다
+  chips:
+  - - show
+  - - up
+  decoyChips:
+  - 'off'
+  - 'on'
+- id: w-confusion
+  en: confusion
+  ipa: /kənˈfjuːʒən/
+  ko: 혼돈
+  icon: board
+  example: Infection can show up as confusion.
+  exKo: 감염이 혼돈으로 나타날 수 있어요.
+  cue: 노인 요로감염의 흔한 첫 모습 — 날짜·장소를 헷갈려 한다
+  tag: 발열·증상
+  distractorsEn:
+  - conclusion
+  - contusion
+  distractorsKo:
+  - 타박상
+  - 경련
+  chips:
+  - - con
+    - fu
+    - sion
+  decoyChips:
+  - tu
+  - clu
+- id: w-change
+  en: change
+  ipa: /tʃeɪndʒ/
+  ko: 변화
+  icon: board
+  example: Has she had any change in urination?
+  exKo: 배뇨에 변화가 있었나요?
+  cue: 평소와 달라진 점을 물을 때 — 'any ___ in urination'
+  tag: 문진
+  distractorsEn:
+  - chance
+  - charge
+  distractorsKo:
+  - 기회
+  - 증가
+  chips:
+  - - change
+  decoyChips:
+  - chance
+- id: w-urination
+  en: urination
+  ipa: /ˌjʊrɪˈneɪʃən/
+  ko: 배뇨
+  icon: lab
+  example: Has she had any change in urination?
+  exKo: 배뇨에 변화가 있었나요?
+  cue: 소변을 보는 행위 — 횟수·통증·색을 물을 때 쓰는 격식 있는 말
+  tag: 감염원
+  distractorsEn:
+  - urine
+  - hydration
+  distractorsKo:
+  - 소변
+  - 수분 공급
+  chips:
+  - - u
+    - ri
+    - na
+    - tion
+  decoyChips:
+  - ine
+  - dra
+- id: w-new
+  en: new
+  ipa: /nuː/
+  ko: 새로운
+  icon: board
+  example: Or is this new for her?
+  exKo: 아니면 처음 있는 일인가요?
+  cue: 원래 있던 증상인지 이번에 생긴 것인지 가를 때
+  tag: 문진
+  distractorsEn:
+  - known
+  - old
+  distractorsKo:
+  - 오래된
+  - 평소의
+  chips:
+  - - new
+  decoyChips:
+  - knew
+- id: w-incontinence
+  en: incontinence
+  ipa: /ɪnˈkɑːntɪnəns/
+  ko: 요실금
+  icon: board
+  example: Has she had any new incontinence?
+  exKo: 새로 요실금이 생겼나요?
+  cue: 노인 요로감염에서 새로 생길 수 있는 증상 — 소변을 참지 못하고 흘린다
+  tag: 감염원
+  distractorsEn:
+  - incompetence
+  - continence
+  distractorsKo:
+  - 요폐
+  - 빈뇨
+  chips:
+  - - in
+    - con
+    - ti
+    - nence
+  decoyChips:
+  - com
+  - nance
+- id: w-seem
+  en: seem
+  ipa: /siːm/
+  ko: ~처럼 보이다
+  icon: board
+  example: Has she seemed more confused than usual?
+  exKo: 평소보다 더 혼란스러워 보이셨나요?
+  cue: 보호자에게 관찰한 인상을 물을 때 — 'Has she ___ed confused?'
+  tag: 문진
+  distractorsEn:
+  - sound
+  - feel
+  distractorsKo:
+  - 들리다
+  - 느끼다
+  chips:
+  - - seem
+  decoyChips:
+  - seam
+- id: w-confused
+  en: confused
+  ipa: /kənˈfjuːzd/
+  ko: 혼란스러운
+  icon: board
+  example: Has she seemed more confused than usual?
+  exKo: 평소보다 더 혼란스러워 보이셨나요?
+  cue: 보호자가 흔히 쓰는 말 — 엄마가 사람을 못 알아보고 헷갈려 한다
+  tag: 발열·증상
+  distractorsEn:
+  - confusing
+  - concerned
+  distractorsKo:
+  - 걱정하는
+  - 졸린
+  chips:
+  - - con
+    - fused
+  decoyChips:
+  - fusing
+  - cerned
+- id: w-usual
+  en: usual
+  ipa: /ˈjuːʒuəl/
+  ko: 평소의
+  icon: board
+  example: Has she seemed more confused than usual?
+  exKo: 평소보다 더 혼란스러워 보이셨나요?
+  cue: 환자의 원래 상태(기저치)와 비교할 때 — 'than ___'
+  tag: 문진
+  distractorsEn:
+  - unusual
+  - visual
+  distractorsKo:
+  - 특이한
+  - 새로운
+  chips:
+  - - u
+    - su
+    - al
+  decoyChips:
+  - un
+  - sual
+- id: w-age
+  en: age
+  ipa: /eɪdʒ/
+  ko: 나이
+  icon: board
+  example: Confusion in her age group is common.
+  exKo: 이 연령대에서는 흔해요.
+  cue: 노인·소아처럼 나이로 나눈 무리 — '___ group'
+  tag: 감염원
+  distractorsEn:
+  - aid
+  - edge
+  distractorsKo:
+  - 성별
+  - 체중
+  chips:
+  - - age
+  decoyChips:
+  - ace
+- id: w-group
+  en: group
+  ipa: /ɡruːp/
+  ko: 집단
+  icon: board
+  example: Confusion in her age group is common.
+  exKo: 이 연령대에서는 흔해요.
+  cue: 같은 특성으로 묶은 사람들 — 'age ___'
+  tag: 감염원
+  distractorsEn:
+  - grip
+  - grade
+  distractorsKo:
+  - 가족
+  - 개인
+  chips:
+  - - group
+  decoyChips:
+  - grape
+- id: w-often
+  en: often
+  ipa: /ˈɔːfən/
+  ko: 자주
+  icon: board
+  example: This is often the first sign of infection.
+  exKo: 이게 흔히 감염의 첫 징후예요.
+  cue: 빈도를 말할 때 — 늘은 아니지만 여러 번
+  tag: 시간·경과
+  distractorsEn:
+  - soften
+  - rarely
+  distractorsKo:
+  - 드물게
+  - 절대
+  chips:
+  - - of
+    - ten
+  decoyChips:
+  - 'off'
+  - tan
+- id: w-mark
+  en: mark
+  ipa: /mɑːrk/
+  ko: 표시하다
+  icon: pushpin
+  example: I'm marking the edge of the redness.
+  exKo: 발적 경계를 표시하고 있어요.
+  cue: 봉와직염 가장자리를 펜으로 그어 두는 것 — 진행을 보려고
+  tag: 검사
+  distractorsEn:
+  - mask
+  - map
+  distractorsKo:
+  - 닦다
+  - 소독하다
+  chips:
+  - - mark
+  decoyChips:
+  - mask
+- id: w-edge
+  en: edge
+  ipa: /ɛdʒ/
+  ko: 경계
+  icon: board
+  example: I'm marking the edge of the redness.
+  exKo: 발적 경계를 표시하고 있어요.
+  cue: 빨간 부위가 끝나는 가장자리 — 여기에 선을 그어 둔다
+  tag: 검사
+  distractorsEn:
+  - ridge
+  - center
+  distractorsKo:
+  - 중심
+  - 표면
+  chips:
+  - - edge
+  decoyChips:
+  - edgy
+- id: w-redness
+  en: redness
+  ipa: /ˈrɛdnəs/
+  ko: 발적
+  icon: board
+  example: I'm marking the edge of the redness.
+  exKo: 발적 경계를 표시하고 있어요.
+  cue: 봉와직염의 피부 소견 — 빨갛게 달아오른 부위
+  tag: 발열·증상
+  distractorsEn:
+  - rawness
+  - rashes
+  distractorsKo:
+  - 부종
+  - 열감
+  chips:
+  - - red
+    - ness
+  decoyChips:
+  - rad
+  - less
+- id: w-spread
+  en: spread
+  ipa: /sprɛd/
+  ko: 퍼지다
+  icon: board
+  example: The infection may be spreading.
+  exKo: 감염이 퍼지고 있을 수 있어요.
+  cue: 발적·감염이 점점 넓어질 때 — 'if it ___s'
+  tag: 발열·증상
+  distractorsEn:
+  - spray
+  - shrink
+  distractorsKo:
+  - 줄어들다
+  - 멈추다
+  chips:
+  - - spread
+  decoyChips:
+  - spred
+  - shred
+- id: w-mean
+  en: mean
+  ipa: /miːn/
+  ko: 의미하다
+  icon: board
+  example: The fever means the infection may be spreading.
+  exKo: 열이 난다는 건 감염이 퍼지고 있을 수 있다는 뜻이에요.
+  cue: 소견이 무엇을 가리키는지 풀어 말할 때 — 'The fever ___s…'
+  tag: 설명·안심
+  distractorsEn:
+  - meet
+  - measure
+  distractorsKo:
+  - 측정하다
+  - 배제하다
+  chips:
+  - - mean
+  decoyChips:
+  - mien
+- id: w-treat
+  en: treat
+  ipa: /triːt/
+  ko: 치료하다
+  icon: pill
+  example: We'll treat it.
+  exKo: 치료할게요.
+  cue: 항생제 등으로 병을 다스리는 것 — 'we'll ___ it'
+  tag: 치료
+  distractorsEn:
+  - test
+  - trace
+  distractorsKo:
+  - 검사하다
+  - 관찰하다
+  chips:
+  - - treat
+  decoyChips:
+  - threat
+- id: w-tell
+  en: tell
+  ipa: /tɛl/
+  ko: 말해주다
+  icon: speech
+  example: Tell me if the pain gets worse.
+  exKo: 통증이 심해지면 말씀해 주세요.
+  cue: 변화를 알려 달라고 부탁할 때 — '___ me if…'
+  tag: 설명·안심
+  distractorsEn:
+  - ask
+  - sell
+  distractorsKo:
+  - 묻다
+  - 숨기다
+  chips:
+  - - tell
+  decoyChips:
+  - till
+- id: w-sudden
+  en: suddenly
+  ipa: /ˈsʌdənli/
+  ko: 갑자기
+  icon: board
+  example: Tell me if the pain suddenly gets worse.
+  exKo: 통증이 갑자기 심해지면 말씀해 주세요.
+  cue: 예고 없이 한순간에 — 괴사성 근막염의 경고 신호를 알려 줄 때
+  tag: 시간·경과
+  distractorsEn:
+  - slowly
+  - sadly
+  distractorsKo:
+  - 서서히
+  - 점점
+  chips:
+  - - sud
+    - den
+    - ly
+  decoyChips:
+  - sad
+  - dly
+- id: w-much
+  en: much
+  ipa: /mʌtʃ/
+  ko: 훨씬
+  icon: board
+  example: The pain suddenly gets much worse.
+  exKo: 통증이 갑자기 훨씬 심해져요.
+  cue: 비교를 강조할 때 — '___ worse'
+  tag: 설명·안심
+  distractorsEn:
+  - many
+  - match
+  distractorsKo:
+  - 조금
+  - 거의
+  chips:
+  - - much
+  decoyChips:
+  - mush
+- id: w-draw
+  en: draw
+  ipa: /drɔː/
+  ko: (혈액을) 채취하다
+  icon: pencil
+  example: We're drawing cultures and starting antibiotics quickly.
+  exKo: 배양검사를 채취하고 항생제를 신속히 시작하고 있어요.
+  cue: 혈액배양을 위해 피를 뽑을 때 — '___ cultures' '___ blood'
+  tag: 검사
+  distractorsEn:
+  - drain
+  - drip
+  distractorsKo:
+  - 주입하다
+  - 배액하다
+  chips:
+  - - draw
+  decoyChips:
+  - drew
+  - drow
+- id: w-line
+  en: line
+  ipa: /laɪn/
+  ko: 선
+  icon: board
+  example: I'll draw a line around the redness.
+  exKo: 발적 주변에 선을 그을게요.
+  cue: 펜으로 발적 가장자리를 따라 긋는 것 — 'draw a ___'
+  tag: 검사
+  distractorsEn:
+  - lane
+  - dot
+  distractorsKo:
+  - 점
+  - 원
+  chips:
+  - - line
+  decoyChips:
+  - lime
+- id: w-watch
+  en: watch
+  ipa: /wɑːtʃ/
+  ko: 지켜보다
+  icon: magnify
+  example: We can watch if it grows.
+  exKo: 커지는지 지켜볼 수 있어요.
+  cue: 변화를 놓치지 않으려고 계속 눈여겨보는 것
+  tag: 검사
+  distractorsEn:
+  - wash
+  - match
+  distractorsKo:
+  - 무시하다
+  - 치료하다
+  chips:
+  - - watch
+  decoyChips:
+  - wash
+- id: w-grow
+  en: grow
+  ipa: /ɡroʊ/
+  ko: 커지다
+  icon: board
+  example: We can watch if it grows.
+  exKo: 커지는지 지켜볼 수 있어요.
+  cue: 발적이 표시한 선을 넘어 넓어질 때
+  tag: 발열·증상
+  distractorsEn:
+  - glow
+  - shrink
+  distractorsKo:
+  - 줄어들다
+  - 옅어지다
+  chips:
+  - - grow
+  decoyChips:
+  - glow
+- id: w-further
+  en: further
+  ipa: /ˈfɜːrðər/
+  ko: 더
+  icon: board
+  example: We'll keep the infection from spreading further.
+  exKo: 감염이 더 퍼지지 않게 할게요.
+  cue: 지금보다 한 걸음 더 — '___ spread'
+  tag: 발열·증상
+  distractorsEn:
+  - faster
+  - sooner
+  distractorsKo:
+  - 덜
+  - 빨리
+  chips:
+  - - fur
+    - ther
+  decoyChips:
+  - far
+  - thor
+- id: w-swab
+  en: swab
+  ipa: /swɑːb/
+  ko: 면봉검사하다
+  icon: lab
+  example: We'll swab you to check for the flu.
+  exKo: 독감 검사를 위해 면봉검사를 할게요.
+  cue: 콧속 깊이 면봉을 넣어 검체를 묻혀 내는 것
+  tag: 검사
+  distractorsEn:
+  - swap
+  - scrub
+  distractorsKo:
+  - 소독하다
+  - 채혈하다
+  chips:
+  - - swab
+  decoyChips:
+  - swap
+- id: w-flu
+  en: flu
+  ipa: /fluː/
+  ko: 독감
+  icon: bell
+  example: We'll swab you to check for the flu.
+  exKo: 독감 검사를 위해 면봉검사를 할게요.
+  cue: 겨울철 고열·몸살·기침을 일으키는 바이러스 감염을 부르는 말
+  tag: 감염원
+  distractorsEn:
+  - cold
+  - strep
+  distractorsKo:
+  - 감기
+  - 폐렴
+  chips:
+  - - flu
+  decoyChips:
+  - flew
+- id: w-positive
+  en: positive
+  ipa: /ˈpɑːzətɪv/
+  ko: 양성인
+  icon: lab
+  example: If it's positive and it's early, an antiviral may help.
+  exKo: 양성이고 초기라면 항바이러스제가 도움이 될 수 있어요.
+  cue: 검사에서 그 병원체가 나왔을 때
+  tag: 검사
+  distractorsEn:
+  - negative
+  - possible
+  distractorsKo:
+  - 음성인
+  - 불확실한
+  chips:
+  - - pos
+    - i
+    - tive
+  decoyChips:
+  - neg
+  - sible
+- id: w-early
+  en: early
+  ipa: /ˈɜːrli/
+  ko: 초기에
+  icon: calendar
+  example: If it's positive and it's early, an antiviral may help.
+  exKo: 양성이고 초기라면 항바이러스제가 도움이 될 수 있어요.
+  cue: 증상이 시작된 지 얼마 안 된 때 — 항바이러스제가 잘 듣는 시기
+  tag: 시간·경과
+  distractorsEn:
+  - late
+  - nearly
+  distractorsKo:
+  - 늦게
+  - 나중에
+  chips:
+  - - ear
+    - ly
+  decoyChips:
+  - air
+  - lie
+- id: w-antiviral
+  en: antiviral
+  ipa: /ˌæntiˈvaɪrəl/
+  ko: 항바이러스제
+  icon: pill
+  example: An antiviral may help.
+  exKo: 항바이러스제가 도움이 될 수 있어요.
+  cue: '독감에 쓰는 약 — 세균이 아니라 바이러스를 겨냥한다 (예: 오셀타미비르)'
+  tag: 치료
+  distractorsEn:
+  - antibiotic
+  - antifungal
+  distractorsKo:
+  - 항생제
+  - 항진균제
+  chips:
+  - - an
+    - ti
+    - vi
+    - ral
+  decoyChips:
+  - bio
+  - tic
+- id: w-work
+  en: work
+  ipa: /wɜːrk/
+  ko: 효과가 있다
+  icon: board
+  example: The antiviral works best early on.
+  exKo: 항바이러스제는 일찍 쓸수록 효과가 좋아요.
+  cue: 약이 효과를 낼 때 — 'It ___s best early.'
+  tag: 치료
+  distractorsEn:
+  - walk
+  - wear
+  distractorsKo:
+  - 부작용이 나다
+  - 실패하다
+  chips:
+  - - work
+  decoyChips:
+  - walk
+- id: w-likely
+  en: likely
+  ipa: /ˈlaɪkli/
+  ko: ~할 것 같은
+  icon: board
+  example: This makes the flu very likely.
+  exKo: 이러면 독감일 가능성이 아주 커요.
+  cue: 진단 가능성이 높다고 말할 때 — 확진은 아니지만 그럴 법하다
+  tag: 설명·안심
+  distractorsEn:
+  - lively
+  - unlikely
+  distractorsKo:
+  - 확실한
+  - 불가능한
+  chips:
+  - - like
+    - ly
+  decoyChips:
+  - life
+  - lee
+- id: w-chemo
+  en: chemo
+  ipa: /ˈkiːmoʊ/
+  ko: 항암치료
+  icon: pill
+  example: With chemo, a fever is an emergency.
+  exKo: 항암치료 중이면 발열은 응급상황이에요.
+  cue: 암 환자가 받는 약물 치료를 줄여 부르는 말 — 면역이 떨어진다
+  tag: 치료
+  distractorsEn:
+  - radiation
+  - dialysis
+  distractorsKo:
+  - 방사선치료
+  - 투석
+  chips:
+  - - che
+    - mo
+  decoyChips:
+  - chem
+  - ma
+- id: w-emergency
+  en: emergency
+  ipa: /ɪˈmɜːrdʒənsi/
+  ko: 응급상황
+  icon: siren
+  example: With chemo, a fever is an emergency.
+  exKo: 항암치료 중이면 발열은 응급상황이에요.
+  cue: 기다리면 안 되고 지금 바로 대응해야 하는 상태
+  tag: 긴급도
+  distractorsEn:
+  - emergence
+  - energy
+  distractorsKo:
+  - 예약 진료
+  - 경과 관찰
+  chips:
+  - - e
+    - mer
+    - gen
+    - cy
+  decoyChips:
+  - gence
+  - ur
+- id: w-act
+  en: act
+  ipa: /ækt/
+  ko: 행동하다
+  icon: board
+  example: We act fast.
+  exKo: 저희가 빠르게 움직여요.
+  cue: 지체 없이 대응에 들어갈 때 — 'we ___ fast'
+  tag: 긴급도
+  distractorsEn:
+  - wait
+  - ask
+  distractorsKo:
+  - 기다리다
+  - 지켜보다
+  chips:
+  - - act
+  decoyChips:
+  - ask
+- id: w-culture
+  en: cultures
+  ipa: /ˈkʌltʃərz/
+  ko: 배양검사
+  icon: lab
+  example: We're drawing cultures.
+  exKo: 배양검사를 채취하고 있어요.
+  cue: 어떤 균인지 키워서 알아보는 검사 — 항생제 전에 채취한다
+  tag: 검사
+  distractorsEn:
+  - sutures
+  - features
+  distractorsKo:
+  - 봉합사
+  - 혈구 수치
+  chips:
+  - - cul
+    - tures
+  decoyChips:
+  - sul
+  - ture
+- id: w-quickly
+  en: quickly
+  ipa: /ˈkwɪkli/
+  ko: 빨리
+  icon: board
+  example: We're starting antibiotics quickly.
+  exKo: 항생제를 빨리 시작하고 있어요.
+  cue: 시간을 끌지 않고 — 면역저하 환자의 발열에서 강조하는 말
+  tag: 긴급도
+  distractorsEn:
+  - quietly
+  - slowly
+  distractorsKo:
+  - 천천히
+  - 조용히
+  chips:
+  - - quick
+    - ly
+  decoyChips:
+  - quiet
+  - lie
+- id: w-while
+  en: while
+  ipa: /waɪl/
+  ko: ~하는 동안
+  icon: board
+  example: We'll keep you protected while you're here.
+  exKo: 여기 계시는 동안 보호해 드릴게요.
+  cue: 머무는 시간 동안 줄곧 — '___ you're here'
+  tag: 시간·경과
+  distractorsEn:
+  - until
+  - unless
+  distractorsKo:
+  - ~할 때까지
+  - ~하지 않으면
+  chips:
+  - - while
+  decoyChips:
+  - whale
+- id: w-here
+  en: here
+  ipa: /hɪr/
+  ko: 여기
+  icon: board
+  example: We'll keep you protected while you're here.
+  exKo: 여기 계시는 동안 보호해 드릴게요.
+  cue: 응급실 이 자리 — 'I need you in ___ now.'
+  tag: 시간·경과
+  distractorsEn:
+  - there
+  - hear
+  distractorsKo:
+  - 저기
+  - 밖에
+  chips:
+  - - here
+  decoyChips:
+  - hear
+- id: w-even
+  en: even
+  ipa: /ˈiːvən/
+  ko: ~조차
+  icon: board
+  example: Even a mild fever can turn serious.
+  exKo: 가벼운 열도 심각해질 수 있어요.
+  cue: 예상 밖을 강조할 때 — 이 정도로 작은 것마저
+  tag: 설명·안심
+  distractorsEn:
+  - ever
+  - only
+  distractorsKo:
+  - 오직
+  - 거의
+  chips:
+  - - e
+    - ven
+  decoyChips:
+  - ev
+  - er
+- id: w-mild
+  en: mild
+  ipa: /maɪld/
+  ko: 가벼운
+  icon: board
+  example: Even a mild fever can turn serious.
+  exKo: 가벼운 열도 심각해질 수 있어요.
+  cue: 심하지 않은 정도 — 미열처럼
+  tag: 긴급도
+  distractorsEn:
+  - mold
+  - severe
+  distractorsKo:
+  - 심한
+  - 급성의
+  chips:
+  - - mild
+  decoyChips:
+  - mold
+- id: w-turn
+  en: turn
+  ipa: /tɜːrn/
+  ko: 바뀌다
+  icon: board
+  example: A mild fever can turn serious very quickly.
+  exKo: 가벼운 열도 아주 빨리 심각해질 수 있어요.
+  cue: 상태가 다른 쪽으로 바뀔 때 — '___ serious'
+  tag: 시간·경과
+  distractorsEn:
+  - tune
+  - return
+  distractorsKo:
+  - 회복하다
+  - 머물다
+  chips:
+  - - turn
+  decoyChips:
+  - tern
+- id: w-right
+  en: right
+  ipa: /raɪt/
+  ko: 맞는
+  icon: board
+  example: Your nurse was right to send you in immediately.
+  exKo: 간호사분이 바로 오시라고 한 게 맞았어요.
+  cue: 환자의 판단을 인정해 줄 때 — 'She was ___ to send you in.'
+  tag: 설명·안심
+  distractorsEn:
+  - wrong
+  - ready
+  distractorsKo:
+  - 틀린
+  - 성급한
+  chips:
+  - - right
+  decoyChips:
+  - write
+- id: w-send
+  en: send
+  ipa: /sɛnd/
+  ko: 보내다
+  icon: board
+  example: Your nurse was right to send you in.
+  exKo: 간호사분이 바로 오시라고 한 게 맞았어요.
+  cue: 다른 곳의 의료진이 환자를 응급실로 가게 할 때 — '___ you in'
+  tag: 설명·안심
+  distractorsEn:
+  - lend
+  - spend
+  distractorsKo:
+  - 데려오다
+  - 받다
+  chips:
+  - - send
+  decoyChips:
+  - sand
+- id: w-immediately
+  en: immediately
+  ipa: /ɪˈmiːdiətli/
+  ko: 즉시
+  icon: board
+  example: Your nurse was right to send you in immediately.
+  exKo: 간호사분이 바로 오시라고 한 게 맞았어요.
+  cue: 조금도 미루지 않고 그 자리에서 — 항생제·격리를 시작할 때
+  tag: 긴급도
+  distractorsEn:
+  - intermediately
+  - eventually
+  distractorsKo:
+  - 결국
+  - 나중에
+  chips:
+  - - im
+    - medi
+    - ate
+    - ly
+  decoyChips:
+  - inter
+  - ual
+- id: w-most
+  en: most
+  ipa: /moʊst/
+  ko: 대부분의
+  icon: board
+  example: Most fever seizures are brief.
+  exKo: 열성경련은 대부분 짧아요.
+  cue: 전부는 아니지만 거의 다 — 보호자를 안심시킬 때
+  tag: 설명·안심
+  distractorsEn:
+  - least
+  - must
+  distractorsKo:
+  - 일부의
+  - 드문
+  chips:
+  - - most
+  decoyChips:
+  - must
+- id: w-seizure
+  en: seizures
+  ipa: /ˈsiːʒərz/
+  ko: 경련
+  icon: bell
+  example: Most fever seizures are brief.
+  exKo: 열성경련은 대부분 짧아요.
+  cue: 고열인 아이가 몸이 굳고 떨리며 의식이 없어지는 것
+  tag: 발열·증상
+  distractorsEn:
+  - spasms
+  - strokes
+  distractorsKo:
+  - 뇌졸중
+  - 실신
+  chips:
+  - - sei
+    - zures
+  decoyChips:
+  - sie
+  - sures
+- id: w-brief
+  en: brief
+  ipa: /briːf/
+  ko: 짧은
+  icon: board
+  example: Most fever seizures are brief.
+  exKo: 열성경련은 대부분 짧아요.
+  cue: 오래 가지 않고 금방 끝나는 — 보호자를 안심시킬 때
+  tag: 설명·안심
+  distractorsEn:
+  - prolonged
+  - belief
+  distractorsKo:
+  - 오래가는
+  - 반복되는
+  chips:
+  - - brief
+  decoyChips:
+  - breef
+- id: w-cause
+  en: cause
+  ipa: /kɔːz/
+  ko: 초래하다
+  icon: board
+  example: Fever seizures don't cause lasting harm.
+  exKo: 열성경련은 오래 남는 해를 끼치지 않아요.
+  cue: 어떤 결과를 일으킬 때 — 'don't ___ harm'
+  tag: 설명·안심
+  distractorsEn:
+  - case
+  - cure
+  distractorsKo:
+  - 막다
+  - 치료하다
+  chips:
+  - - cause
+  decoyChips:
+  - cost
+- id: w-last
+  en: lasting
+  ipa: /ˈlæstɪŋ/
+  ko: 지속적인
+  icon: board
+  example: Fever seizures don't cause lasting harm.
+  exKo: 열성경련은 오래 남는 해를 끼치지 않아요.
+  cue: 한동안 이어지며 남는 — '___ harm' '___ damage'
+  tag: 설명·안심
+  distractorsEn:
+  - latest
+  - lacking
+  distractorsKo:
+  - 일시적인
+  - 최근의
+  chips:
+  - - last
+    - ing
+  decoyChips:
+  - lest
+  - ed
+- id: w-harm
+  en: harm
+  ipa: /hɑːrm/
+  ko: 해
+  icon: board
+  example: Fever seizures don't cause lasting harm.
+  exKo: 열성경련은 오래 남는 해를 끼치지 않아요.
+  cue: 몸에 남는 손상 — 보호자가 가장 두려워하는 것
+  tag: 설명·안심
+  distractorsEn:
+  - arm
+  - help
+  distractorsKo:
+  - 도움
+  - 이득
+  chips:
+  - - harm
+  decoyChips:
+  - arm
+- id: w-offer
+  en: offer
+  ipa: /ˈɔːfər/
+  ko: 권하다
+  icon: board
+  example: Keep offering fluids.
+  exKo: 수분을 계속 권해 주세요.
+  cue: 아이가 마시도록 음료를 계속 건네 볼 때 — 억지로 먹이는 것은 아니다
+  tag: 치료
+  distractorsEn:
+  - order
+  - force
+  distractorsKo:
+  - 강요하다
+  - 금지하다
+  chips:
+  - - of
+    - fer
+  decoyChips:
+  - 'off'
+  - fir
+- id: w-become
+  en: become
+  ipa: /bɪˈkʌm/
+  ko: ~하게 되다
+  icon: board
+  example: Let me know if he becomes hard to wake.
+  exKo: 아이가 깨우기 힘들어지면 알려 주세요.
+  cue: 상태가 어떤 쪽으로 변할 때 — 'if he ___s hard to wake'
+  tag: 시간·경과
+  distractorsEn:
+  - welcome
+  - come
+  distractorsKo:
+  - 남다
+  - 멈추다
+  chips:
+  - - be
+    - come
+  decoyChips:
+  - bee
+  - came
+- id: w-hard
+  en: hard
+  ipa: /hɑːrd/
+  ko: 힘든
+  icon: board
+  example: Let me know if he becomes hard to wake.
+  exKo: 아이가 깨우기 힘들어지면 알려 주세요.
+  cue: 어떤 일이 쉽지 않을 때 — '___ to wake'
+  tag: 발열·증상
+  distractorsEn:
+  - harsh
+  - heavy
+  distractorsKo:
+  - 쉬운
+  - 빠른
+  chips:
+  - - hard
+  decoyChips:
+  - herd
+- id: w-wake
+  en: wake
+  ipa: /weɪk/
+  ko: 깨다
+  icon: board
+  example: Let me know if he becomes hard to wake.
+  exKo: 아이가 깨우기 힘들어지면 알려 주세요.
+  cue: 잠에서 깨어나는 것 — 의식 저하를 보호자에게 쉽게 물을 때
+  tag: 발열·증상
+  distractorsEn:
+  - walk
+  - wait
+  distractorsKo:
+  - 잠들다
+  - 걷다
+  chips:
+  - - wake
+  decoyChips:
+  - woke
+- id: w-scary
+  en: scary
+  ipa: /ˈskɛri/
+  ko: 무서운
+  icon: board
+  example: Seizures like this look scary.
+  exKo: 이런 경련은 무서워 보여요.
+  cue: 보호자의 두려움을 먼저 인정할 때 — 'It looks ___.'
+  tag: 설명·안심
+  distractorsEn:
+  - scared
+  - scarce
+  distractorsKo:
+  - 겁먹은
+  - 드문
+  chips:
+  - - scar
+    - y
+  decoyChips:
+  - scare
+  - ed
+- id: w-usually
+  en: usually
+  ipa: /ˈjuːʒuəli/
+  ko: 보통
+  icon: board
+  example: They usually stop on their own.
+  exKo: 보통 저절로 멈춰요.
+  cue: 대부분의 경우를 말할 때 — 예외가 있을 수 있음을 남긴다
+  tag: 설명·안심
+  distractorsEn:
+  - unusually
+  - visually
+  distractorsKo:
+  - 항상
+  - 드물게
+  chips:
+  - - u
+    - su
+    - al
+    - ly
+  decoyChips:
+  - un
+  - sual
+- id: w-stop
+  en: stop
+  ipa: /stɑːp/
+  ko: 멈추다
+  icon: board
+  example: They usually stop on their own.
+  exKo: 보통 저절로 멈춰요.
+  cue: 경련·출혈이 끝날 때 — 'It ___ped on its own.'
+  tag: 발열·증상
+  distractorsEn:
+  - start
+  - step
+  distractorsKo:
+  - 시작하다
+  - 계속되다
+  chips:
+  - - stop
+  decoyChips:
+  - step
+- id: w-own
+  en: own
+  ipa: /oʊn/
+  ko: 스스로
+  icon: board
+  example: They usually stop on their own.
+  exKo: 보통 저절로 멈춰요.
+  cue: 약 없이 저절로 — 'on their ___'
+  tag: 설명·안심
+  distractorsEn:
+  - one
+  - only
+  distractorsKo:
+  - 함께
+  - 억지로
+  chips:
+  - - own
+  decoyChips:
+  - owe
+- id: w-give
+  en: give
+  ipa: /ɡɪv/
+  ko: 주다
+  icon: board
+  example: Give him small sips of fluid.
+  exKo: 아이에게 수분을 조금씩 주세요.
+  cue: 약·수액·음료를 환자에게 넣어 줄 때 — 의료진끼리는 투여를 뜻한다
+  tag: 치료
+  distractorsEn:
+  - take
+  - hold
+  distractorsKo:
+  - 받다
+  - 멈추다
+  chips:
+  - - give
+  decoyChips:
+  - gave
+- id: w-small
+  en: small
+  ipa: /smɔːl/
+  ko: 작은
+  icon: board
+  example: Give him small sips of fluid.
+  exKo: 아이에게 수분을 조금씩 주세요.
+  cue: 양을 적게 — 토하지 않게 조금씩 먹일 때
+  tag: 치료
+  distractorsEn:
+  - smell
+  - full
+  distractorsKo:
+  - 많은
+  - 차가운
+  chips:
+  - - small
+  decoyChips:
+  - smell
+- id: w-sip
+  en: sips
+  ipa: /sɪps/
+  ko: 한 모금
+  icon: coffee
+  example: Give him small sips of fluid.
+  exKo: 아이에게 수분을 조금씩 주세요.
+  cue: 한 번에 입에 조금 머금는 양 — 'small ___s'
+  tag: 치료
+  distractorsEn:
+  - gulps
+  - drops
+  distractorsKo:
+  - 벌컥벌컥
+  - 한 방울
+  chips:
+  - - sips
+  decoyChips:
+  - ships
+- id: w-every
+  en: every
+  ipa: /ˈɛvri/
+  ko: 매
+  icon: board
+  example: Give him small sips every few minutes.
+  exKo: 몇 분마다 조금씩 주세요.
+  cue: 일정한 간격으로 되풀이할 때 — '___ few minutes'
+  tag: 시간·경과
+  distractorsEn:
+  - any
+  - very
+  distractorsKo:
+  - 한 번만
+  - 가끔
+  chips:
+  - - ev
+    - er
+    - y
+  decoyChips:
+  - av
+  - ery
+- id: w-hydrated
+  en: hydrated
+  ipa: /ˈhaɪdreɪtɪd/
+  ko: 수분을 유지한
+  icon: coffee
+  example: Keep him hydrated.
+  exKo: 아이가 탈수되지 않게 해 주세요.
+  cue: 몸에 수분이 충분한 상태 — 열나는 아이에게 목표로 하는 것
+  tag: 치료
+  distractorsEn:
+  - dehydrated
+  - heated
+  distractorsKo:
+  - 탈수된
+  - 과열된
+  chips:
+  - - hy
+    - drat
+    - ed
+  decoyChips:
+  - de
+  - rat
+- id: w-medication
+  en: medication
+  ipa: /ˌmɛdɪˈkeɪʃən/
+  ko: 처방약
+  icon: pill
+  example: The new medication makes me wonder about the rash.
+  exKo: 새로 드신 약 때문에 발진이 궁금해져요.
+  cue: 새로 처방받아 먹기 시작한 것 — 약물 발진을 의심할 때 묻는다
+  tag: 치료
+  distractorsEn:
+  - meditation
+  - medical
+  distractorsKo:
+  - 예방접종
+  - 영양제
+  chips:
+  - - med
+    - i
+    - ca
+    - tion
+  decoyChips:
+  - ta
+  - medi
+- id: w-wonder
+  en: wonder
+  ipa: /ˈwʌndər/
+  ko: 궁금하다
+  icon: board
+  example: The new medication makes me wonder if the rash is a drug reaction.
+  exKo: 새로 드신 약 때문에 이 발진이 약물 반응은 아닌지 궁금해요.
+  cue: 단정하지 않고 의심을 부드럽게 말할 때 — 'makes me ___ if…'
+  tag: 설명·안심
+  distractorsEn:
+  - wander
+  - worry
+  distractorsKo:
+  - 확신하다
+  - 걱정시키다
+  chips:
+  - - won
+    - der
+  decoyChips:
+  - wan
+  - dor
+- id: w-rash
+  en: rash
+  ipa: /ræʃ/
+  ko: 발진
+  icon: bell
+  example: The rash could be a drug reaction.
+  exKo: 발진은 약물 반응일 수 있어요.
+  cue: 피부에 붉게 돋아난 것 — 감염성인지 약물성인지 가려야 한다
+  tag: 발열·증상
+  distractorsEn:
+  - rush
+  - redness
+  distractorsKo:
+  - 멍
+  - 부종
+  chips:
+  - - rash
+  decoyChips:
+  - rush
+- id: w-drug
+  en: drug
+  ipa: /drʌɡ/
+  ko: 약물
+  icon: pill
+  example: The rash could be a drug reaction.
+  exKo: 발진은 약물 반응일 수 있어요.
+  cue: 몸에 넣는 약을 넓게 이르는 말 — '___ reaction' '___ allergy'
+  tag: 치료
+  distractorsEn:
+  - dose
+  - drip
+  distractorsKo:
+  - 용량
+  - 음식
+  chips:
+  - - drug
+  decoyChips:
+  - drag
+- id: w-reaction
+  en: reaction
+  ipa: /riˈækʃən/
+  ko: 반응
+  icon: board
+  example: The rash could be a drug reaction.
+  exKo: 발진은 약물 반응일 수 있어요.
+  cue: 약·물질에 몸이 대응해 생긴 증상 — 'drug ___'
+  tag: 발열·증상
+  distractorsEn:
+  - relation
+  - infection
+  distractorsKo:
+  - 감염
+  - 내성
+  chips:
+  - - re
+    - ac
+    - tion
+  decoyChips:
+  - la
+  - ri
+- id: w-whether
+  en: whether
+  ipa: /ˈwɛðər/
+  ko: ~인지
+  icon: board
+  example: We'll check whether it blisters.
+  exKo: 물집이 잡히는지 확인할게요.
+  cue: 그런지 아닌지를 살필 때 — 'check ___ it blisters'
+  tag: 설명·안심
+  distractorsEn:
+  - weather
+  - whatever
+  distractorsKo:
+  - 왜
+  - 언제
+  chips:
+  - - wheth
+    - er
+  decoyChips:
+  - weath
+  - ever
+- id: w-blister
+  en: blisters
+  ipa: /ˈblɪstərz/
+  ko: 물집
+  icon: bell
+  example: We'll check whether it blisters.
+  exKo: 물집이 잡히는지 확인할게요.
+  cue: 피부가 들뜨며 액체가 고인 것 — 중증 약물 반응의 경고 신호
+  tag: 발열·증상
+  distractorsEn:
+  - bruises
+  - pustules
+  distractorsKo:
+  - 고름집
+  - 멍
+  chips:
+  - - blis
+    - ters
+  decoyChips:
+  - blus
+  - tors
+- id: w-mouth
+  en: mouth
+  ipa: /maʊθ/
+  ko: 입
+  icon: board
+  example: Do you have any mouth sores?
+  exKo: 입안에 궤양이 있으세요?
+  cue: 점막 침범을 확인할 때 보는 곳 — 입술·혀·볼 안쪽
+  tag: 발열·증상
+  distractorsEn:
+  - mouse
+  - month
+  distractorsKo:
+  - 코
+  - 목구멍
+  chips:
+  - - mouth
+  decoyChips:
+  - mouse
+- id: w-eye
+  en: eye
+  ipa: /aɪ/
+  ko: 눈
+  icon: board
+  example: Do you have any eye irritation?
+  exKo: 눈에 자극감이 있으세요?
+  cue: 점막 침범을 확인할 때 — 충혈·이물감을 묻는 곳
+  tag: 발열·증상
+  distractorsEn:
+  - ear
+  - eyelid
+  distractorsKo:
+  - 귀
+  - 입
+  chips:
+  - - eye
+  decoyChips:
+  - ear
+- id: w-irritation
+  en: irritation
+  ipa: /ˌɪrɪˈteɪʃən/
+  ko: 자극
+  icon: board
+  example: Do you have any eye irritation?
+  exKo: 눈에 자극감이 있으세요?
+  cue: 따갑고 화끈거리는 느낌 — 'eye ___'
+  tag: 발열·증상
+  distractorsEn:
+  - irrigation
+  - imitation
+  distractorsKo:
+  - 세척
+  - 가려움
+  chips:
+  - - ir
+    - ri
+    - ta
+    - tion
+  decoyChips:
+  - ga
+  - im
+- id: w-after
+  en: after
+  ipa: /ˈæftər/
+  ko: ~후에
+  icon: calendar
+  example: Did the rash start before or after the new medication?
+  exKo: 발진이 새 약을 드시기 전에 났나요, 후에 났나요?
+  cue: 시간 순서를 가릴 때 — 약을 먹기 시작한 뒤인지
+  tag: 시간·경과
+  distractorsEn:
+  - before
+  - until
+  distractorsKo:
+  - ~ 전에
+  - ~할 때까지
+  chips:
+  - - af
+    - ter
+  decoyChips:
+  - of
+  - tor
+- id: w-begin
+  en: begin
+  ipa: /bɪˈɡɪn/
+  ko: (약을) 시작하다
+  icon: board
+  example: Did the rash start before or after you began the new medication?
+  exKo: 발진이 새 약을 드시기 전에 났나요, 후에 났나요?
+  cue: 새 약을 언제부터 먹었는지 물을 때 — 복용을 처음 개시한 시점
+  tag: 문진
+  distractorsEn:
+  - bring
+  - finish
+  distractorsKo:
+  - 끊다
+  - 다 먹다
+  chips:
+  - - be
+    - gin
+  decoyChips:
+  - bee
+  - gan
+- id: w-closely
+  en: closely
+  ipa: /ˈkloʊsli/
+  ko: 자세히
+  icon: magnify
+  example: Let's watch closely for blisters.
+  exKo: 물집이 생기는지 자세히 지켜볼게요.
+  cue: 작은 변화도 놓치지 않게 눈을 떼지 않고 — 'watch ___'
+  tag: 검사
+  distractorsEn:
+  - clearly
+  - loosely
+  distractorsKo:
+  - 대충
+  - 가끔
+  chips:
+  - - close
+    - ly
+  decoyChips:
+  - clear
+  - lie
+- id: w-peel
+  en: peel
+  ipa: /piːl/
+  ko: 벗겨지다
+  icon: board
+  example: Let's watch for peeling skin.
+  exKo: 피부가 벗겨지는지 지켜볼게요.
+  cue: 피부 겉층이 얇게 떨어져 나가는 것 — 중증 약물 반응의 경고 신호
+  tag: 발열·증상
+  distractorsEn:
+  - peek
+  - heal
+  distractorsKo:
+  - 가렵다
+  - 붓다
+  chips:
+  - - peel
+  decoyChips:
+  - peal
+  - pill
+- id: w-next
+  en: next
+  ipa: /nɛkst/
+  ko: 다음
+  icon: calendar
+  example: We'll watch closely over the next few hours.
+  exKo: 앞으로 몇 시간 동안 자세히 지켜볼게요.
+  cue: 지금부터 이어지는 시간 — 'over the ___ few hours'
+  tag: 시간·경과
+  distractorsEn:
+  - last
+  - nest
+  distractorsKo:
+  - 지난
+  - 처음
+  chips:
+  - - next
+  decoyChips:
+  - nest
+- id: w-stiff
+  en: stiff
+  ipa: /stɪf/
+  ko: 뻣뻣한
+  icon: board
+  example: The stiff neck with fever concerns me about meningitis.
+  exKo: 목이 뻣뻣한 데 열까지 있으니 수막염이 걱정돼요.
+  cue: 목을 앞으로 숙이기 어려울 만큼 굳은 — 수막자극징후
+  tag: 발열·증상
+  distractorsEn:
+  - sore
+  - swollen
+  distractorsKo:
+  - 부은
+  - 따가운
+  chips:
+  - - stiff
+  decoyChips:
+  - staff
+- id: w-neck
+  en: neck
+  ipa: /nɛk/
+  ko: 목
+  icon: board
+  example: The stiff neck with fever concerns me about meningitis.
+  exKo: 목이 뻣뻣한 데 열까지 있으니 수막염이 걱정돼요.
+  cue: 머리와 몸통을 잇는 곳 — 수막염에서 굳는 부위
+  tag: 발열·증상
+  distractorsEn:
+  - back
+  - knee
+  distractorsKo:
+  - 등
+  - 어깨
+  chips:
+  - - neck
+  decoyChips:
+  - nick
+- id: w-headache
+  en: headache
+  ipa: /ˈhɛdeɪk/
+  ko: 두통
+  icon: board
+  example: The stiff neck with fever and headache concerns me.
+  exKo: 목이 뻣뻣한 데 열, 두통까지 있으니 걱정돼요.
+  cue: 머리가 깨질 듯 아프다는 환자의 호소 — 수막염 3징후 중 하나
+  tag: 발열·증상
+  distractorsEn:
+  - heartache
+  - backache
+  distractorsKo:
+  - 요통
+  - 어지러움
+  chips:
+  - - head
+    - ache
+  decoyChips:
+  - heart
+  - ake
+- id: w-concern
+  en: concern
+  ipa: /kənˈsɜːrn/
+  ko: 우려하게 하다
+  icon: board
+  example: The stiff neck concerns me about meningitis.
+  exKo: 목이 뻣뻣하면 수막염이 우려돼요.
+  cue: 위험한 진단을 의심한다고 차분하게 말할 때 — 'It ___s me.'
+  tag: 설명·안심
+  distractorsEn:
+  - confirm
+  - conclude
+  distractorsKo:
+  - 확인시키다
+  - 안심시키다
+  chips:
+  - - con
+    - cern
+  decoyChips:
+  - firm
+  - clude
+- id: w-meningitis
+  en: meningitis
+  ipa: /ˌmɛnɪnˈdʒaɪtɪs/
+  ko: 수막염
+  icon: stetho
+  example: The stiff neck concerns me about meningitis.
+  exKo: 목이 뻣뻣하면 수막염이 우려돼요.
+  cue: 뇌와 척수를 싼 막의 감염 — 두통·열·경부강직
+  tag: 감염원
+  distractorsEn:
+  - encephalitis
+  - meningioma
+  distractorsKo:
+  - 뇌염
+  - 수막종
+  chips:
+  - - men
+    - in
+    - gi
+    - tis
+  decoyChips:
+  - ioma
+  - gy
+- id: w-need
+  en: need
+  ipa: /niːd/
+  ko: 필요하다
+  icon: board
+  example: We'll need a spinal tap.
+  exKo: 척수천자가 필요해요.
+  cue: 꼭 해야 하는 검사·처치를 알릴 때 — 'We'll ___ a…'
+  tag: 설명·안심
+  distractorsEn:
+  - want
+  - heed
+  distractorsKo:
+  - 원하다
+  - 미루다
+  chips:
+  - - need
+  decoyChips:
+  - knead
+- id: w-spinal
+  en: spinal
+  ipa: /ˈspaɪnəl/
+  ko: 척수의
+  icon: scalpel
+  example: We'll need a spinal tap.
+  exKo: 척수천자가 필요해요.
+  cue: 등뼈 안쪽과 관련된 — '___ tap' '___ cord'
+  tag: 검사
+  distractorsEn:
+  - spiral
+  - spinach
+  distractorsKo:
+  - 흉부의
+  - 복부의
+  chips:
+  - - spi
+    - nal
+  decoyChips:
+  - ral
+  - spy
+- id: w-tap
+  en: tap
+  ipa: /tæp/
+  ko: 천자
+  icon: scalpel
+  example: We'll need a spinal tap.
+  exKo: 척수천자가 필요해요.
+  cue: 바늘로 찔러 체액을 뽑는 시술 — 'spinal ___'
+  tag: 검사
+  distractorsEn:
+  - tape
+  - top
+  distractorsKo:
+  - 봉합
+  - 주사
+  chips:
+  - - tap
+  decoyChips:
+  - tape
+- id: w-brain
+  en: brain
+  ipa: /breɪn/
+  ko: 뇌
+  icon: board
+  example: We'll check the fluid around your brain.
+  exKo: 뇌 주변의 체액을 확인할게요.
+  cue: 수막염에서 막에 싸여 보호받는 기관
+  tag: 감염원
+  distractorsEn:
+  - brawn
+  - drain
+  distractorsKo:
+  - 척추
+  - 심장
+  chips:
+  - - brain
+  decoyChips:
+  - bran
+- id: w-bright
+  en: bright
+  ipa: /braɪt/
+  ko: 밝은
+  icon: bulb
+  example: Does bright light bother your eyes?
+  exKo: 밝은 빛에 눈이 부시세요?
+  cue: 눈부심(광선공포)을 물을 때 — '___ light'
+  tag: 발열·증상
+  distractorsEn:
+  - dim
+  - blight
+  distractorsKo:
+  - 어두운
+  - 흐린
+  chips:
+  - - bright
+  decoyChips:
+  - bite
+- id: w-light
+  en: light
+  ipa: /laɪt/
+  ko: 빛
+  icon: bulb
+  example: Does bright light bother your eyes?
+  exKo: 밝은 빛에 눈이 부시세요?
+  cue: 수막염 환자가 피하려는 것 — 형광등·햇빛
+  tag: 발열·증상
+  distractorsEn:
+  - noise
+  - night
+  distractorsKo:
+  - 소리
+  - 열
+  chips:
+  - - light
+  decoyChips:
+  - lite
+- id: w-bother
+  en: bother
+  ipa: /ˈbɑːðər/
+  ko: 거슬리다
+  icon: board
+  example: Does bright light bother your eyes right now?
+  exKo: 지금 밝은 빛이 눈에 거슬리세요?
+  cue: 무엇이 불편하게 거슬리는지 물을 때 — 'Does it ___ you?'
+  tag: 문진
+  distractorsEn:
+  - brother
+  - bathe
+  distractorsKo:
+  - 편하게 하다
+  - 돕다
+  chips:
+  - - both
+    - er
+  decoyChips:
+  - broth
+  - ther
+- id: w-chin
+  en: chin
+  ipa: /tʃɪn/
+  ko: 턱
+  icon: board
+  example: Can you bring your chin down toward your chest?
+  exKo: 턱을 가슴 쪽으로 내려 보시겠어요?
+  cue: 경부강직을 볼 때 가슴에 닿게 해 보라는 곳
+  tag: 검사
+  distractorsEn:
+  - cheek
+  - shin
+  distractorsKo:
+  - 볼
+  - 이마
+  chips:
+  - - chin
+  decoyChips:
+  - shin
+- id: w-toward
+  en: toward
+  ipa: /tɔːrd/
+  ko: ~쪽으로
+  icon: board
+  example: Can you bring your chin down toward your chest?
+  exKo: 턱을 가슴 쪽으로 내려 보시겠어요?
+  cue: 움직일 방향을 알려 줄 때 — '___ your chest'
+  tag: 검사
+  distractorsEn:
+  - upward
+  - away
+  distractorsKo:
+  - ~에서 멀리
+  - ~ 위로
+  chips:
+  - - to
+    - ward
+  decoyChips:
+  - two
+  - word
+- id: w-test
+  en: test
+  ipa: /tɛst/
+  ko: 검사
+  icon: lab
+  example: This test tells us if there's an infection.
+  exKo: 이 검사로 감염이 있는지 알 수 있어요.
+  cue: 결과를 보려고 하는 검체·영상 확인 — 'a rapid ___'
+  tag: 검사
+  distractorsEn:
+  - treatment
+  - text
+  distractorsKo:
+  - 치료
+  - 처방
+  chips:
+  - - test
+  decoyChips:
+  - text
+- id: w-spine
+  en: spine
+  ipa: /spaɪn/
+  ko: 척추
+  icon: board
+  example: This test tells us if there's an infection around your brain and spine.
+  exKo: 이 검사로 뇌와 척추 주변에 감염이 있는지 알 수 있어요.
+  cue: 등 한가운데를 따라 이어진 뼈 — 요추천자 바늘이 들어가는 곳
+  tag: 감염원
+  distractorsEn:
+  - spleen
+  - shin
+  distractorsKo:
+  - 비장
+  - 골반
+  chips:
+  - - spine
+  decoyChips:
+  - spin
+- id: w-long
+  en: long
+  ipa: /lɔːŋ/
+  ko: 오랜
+  icon: calendar
+  example: A long cough with night sweats can suggest TB.
+  exKo: 오래 끄는 기침에 밤에 땀까지 나면 결핵을 의심할 수 있어요.
+  cue: 몇 주씩 이어진 — 결핵을 의심하게 하는 기침의 특징
+  tag: 시간·경과
+  distractorsEn:
+  - loud
+  - low
+  distractorsKo:
+  - 짧은
+  - 가벼운
+  chips:
+  - - long
+  decoyChips:
+  - lung
+- id: w-sweat
+  en: night sweats
+  ipa: /ˌnaɪt ˈswɛts/
+  ko: 야간 발한
+  icon: board
+  example: A long cough with night sweats can suggest TB.
+  exKo: 오래 끄는 기침에 야간 발한까지 있으면 결핵을 의심할 수 있어요.
+  cue: 자다가 옷과 이불이 젖을 만큼 땀이 나는 것 — 결핵의 전신 증상
+  tag: 발열·증상
+  distractorsEn:
+  - night terrors
+  - hot flashes
+  distractorsKo:
+  - 야경증
+  - 안면홍조
+  chips:
+  - - night
+  - - sweats
+  decoyChips:
+  - knight
+  - sweet
+- id: w-weight
+  en: weight
+  ipa: /weɪt/
+  ko: 체중
+  icon: board
+  example: Weight loss can suggest TB.
+  exKo: 체중이 줄면 결핵을 의심할 수 있어요.
+  cue: 저울로 재는 몸무게 — 이유 없이 줄면 결핵·암을 의심
+  tag: 발열·증상
+  distractorsEn:
+  - height
+  - waist
+  distractorsKo:
+  - 키
+  - 식욕
+  chips:
+  - - weight
+  decoyChips:
+  - wait
+- id: w-loss
+  en: loss
+  ipa: /lɔːs/
+  ko: 감소
+  icon: board
+  example: Weight loss can suggest TB.
+  exKo: 체중이 줄면 결핵을 의심할 수 있어요.
+  cue: 원래 있던 것이 줄어드는 것 — 'weight ___'
+  tag: 발열·증상
+  distractorsEn:
+  - gain
+  - gloss
+  distractorsKo:
+  - 증가
+  - 유지
+  chips:
+  - - loss
+  decoyChips:
+  - lose
+- id: w-suggest
+  en: suggest
+  ipa: /səɡˈdʒɛst/
+  ko: 시사하다
+  icon: board
+  example: Weight loss can suggest TB.
+  exKo: 체중 감소는 결핵을 시사할 수 있어요.
+  cue: 진단을 단정하지 않고 가능성을 가리킬 때 — 'can ___ TB'
+  tag: 설명·안심
+  distractorsEn:
+  - digest
+  - confirm
+  distractorsKo:
+  - 확진하다
+  - 배제하다
+  chips:
+  - - sug
+    - gest
+  decoyChips:
+  - dig
+  - jest
+- id: w-tb
+  en: TB
+  ipa: /ˌtiːˈbiː/
+  ko: 결핵
+  icon: stetho
+  example: Weight loss can suggest TB.
+  exKo: 체중 감소는 결핵을 시사할 수 있어요.
+  cue: 의료진이 짧게 부르는 공기 전파 감염병 — 두 글자 약어
+  tag: 감염원
+  distractorsEn:
+  - TBI
+  - HIV
+  distractorsKo:
+  - 외상성 뇌손상
+  - 사람면역결핍바이러스
+  chips:
+  - - TB
+  decoyChips:
+  - TBI
+- id: w-special
+  en: special
+  ipa: /ˈspɛʃəl/
+  ko: 특별한
+  icon: board
+  example: We'll place you in a special isolation room.
+  exKo: 특별 격리실로 옮겨 드릴게요.
+  cue: 환자에게 음압실을 쉽게 설명할 때 — 보통 병실과 다른 방
+  tag: 격리
+  distractorsEn:
+  - spacious
+  - spatial
+  distractorsKo:
+  - 일반적인
+  - 넓은
+  chips:
+  - - spe
+    - cial
+  decoyChips:
+  - spa
+  - cious
+- id: w-isolation
+  en: isolation
+  ipa: /ˌaɪsəˈleɪʃən/
+  ko: 격리
+  icon: lock
+  example: We'll place you in a special isolation room.
+  exKo: 특별 격리실로 옮겨 드릴게요.
+  cue: 전파를 막으려고 다른 환자와 떼어 두는 조치 — '___ room'
+  tag: 격리
+  distractorsEn:
+  - insulation
+  - inflation
+  distractorsKo:
+  - 보온
+  - 퇴원
+  chips:
+  - - i
+    - so
+    - la
+    - tion
+  decoyChips:
+  - in
+  - su
+- id: w-away
+  en: right away
+  ipa: /ˌraɪt əˈweɪ/
+  ko: 바로
+  icon: board
+  example: We'll place you right away.
+  exKo: 바로 옮겨 드릴게요.
+  cue: 지금 곧, 미루지 않고 — 환자에게 편하게 쓰는 말
+  tag: 긴급도
+  distractorsEn:
+  - right after
+  - far away
+  distractorsKo:
+  - 나중에
+  - 곧 끝나는
+  chips:
+  - - right
+  - - a
+    - way
+  decoyChips:
+  - write
+  - day
+- id: w-sputum
+  en: sputum
+  ipa: /ˈspjuːtəm/
+  ko: 가래
+  icon: lab
+  example: We'll test your sputum.
+  exKo: 가래 검사를 할게요.
+  cue: 기침으로 뱉어 내는 것 — 결핵균을 찾는 검체
+  tag: 검사
+  distractorsEn:
+  - saliva
+  - serum
+  distractorsKo:
+  - 침
+  - 혈청
+  chips:
+  - - spu
+    - tum
+  decoyChips:
+  - spa
+  - tem
+- id: w-tuberculosis
+  en: tuberculosis
+  ipa: /tuːˌbɜːrkjəˈloʊsɪs/
+  ko: 결핵
+  icon: stetho
+  example: We'll test your sputum to check for tuberculosis.
+  exKo: 결핵 확인을 위해 가래 검사를 할게요.
+  cue: 오랜 기침·야간 발한·체중 감소 — 공기로 퍼지는 감염병의 정식 이름
+  tag: 감염원
+  distractorsEn:
+  - tuberous sclerosis
+  - tubercle
+  distractorsKo:
+  - 결절성 경화증
+  - 결절
+  chips:
+  - - tu
+    - ber
+    - cu
+    - losis
+  decoyChips:
+  - tubu
+  - sis
+- id: w-air
+  en: air
+  ipa: /ɛr/
+  ko: 공기
+  icon: board
+  example: The isolation room keeps the air from spreading TB.
+  exKo: 격리실은 공기로 결핵이 퍼지지 않게 막아 줘요.
+  cue: 결핵균이 떠다니며 퍼지는 통로 — 음압실이 밖으로 새지 않게 하는 것
+  tag: 격리
+  distractorsEn:
+  - hair
+  - water
+  distractorsKo:
+  - 물
+  - 피부
+  chips:
+  - - air
+  decoyChips:
+  - ear
+- id: w-malaria
+  en: malaria
+  ipa: /məˈlɛriə/
+  ko: 말라리아
+  icon: stetho
+  example: Fever after travel to a malaria area needs urgent testing.
+  exKo: 말라리아 지역 여행 후 열이 나면 신속한 검사가 필요해요.
+  cue: 모기로 옮는 열대 기생충 감염 — 여행 후 오한·고열
+  tag: 감염원
+  distractorsEn:
+  - melanoma
+  - dengue
+  distractorsKo:
+  - 뎅기열
+  - 장티푸스
+  chips:
+  - - ma
+    - lar
+    - i
+    - a
+  decoyChips:
+  - mela
+  - ria
+- id: w-area
+  en: area
+  ipa: /ˈɛriə/
+  ko: 지역
+  icon: board
+  example: Fever after travel to a malaria area needs urgent testing.
+  exKo: 말라리아 지역 여행 후 열이 나면 신속한 검사가 필요해요.
+  cue: 풍토병이 있는 곳 — 'a malaria ___'
+  tag: 여행력
+  distractorsEn:
+  - era
+  - arena
+  distractorsKo:
+  - 시기
+  - 병원
+  chips:
+  - - ar
+    - e
+    - a
+  decoyChips:
+  - er
+  - ra
+- id: w-urgent
+  en: urgent
+  ipa: /ˈɜːrdʒənt/
+  ko: 긴급한
+  icon: siren
+  example: This needs urgent testing.
+  exKo: 긴급 검사가 필요해요.
+  cue: 기다릴 수 없고 우선해서 해야 하는 — '___ testing'
+  tag: 긴급도
+  distractorsEn:
+  - urging
+  - routine
+  distractorsKo:
+  - 일상적인
+  - 선택적인
+  chips:
+  - - ur
+    - gent
+  decoyChips:
+  - ger
+  - ing
+- id: w-prevention
+  en: prevention
+  ipa: /prɪˈvɛnʃən/
+  ko: 예방
+  icon: shield
+  example: Did you take any malaria prevention pills?
+  exKo: 말라리아 예방약을 드셨어요?
+  cue: 병에 걸리기 전에 막는 것 — 여행 전 먹는 약
+  tag: 치료
+  distractorsEn:
+  - presentation
+  - prescription
+  distractorsKo:
+  - 처방
+  - 치료
+  chips:
+  - - pre
+    - ven
+    - tion
+  decoyChips:
+  - pro
+  - scrip
+- id: w-pill
+  en: pills
+  ipa: /pɪlz/
+  ko: 알약
+  icon: pill
+  example: Did you take any malaria prevention pills?
+  exKo: 말라리아 예방약을 드셨어요?
+  cue: 물과 함께 삼키는 작은 알약 — '___s'
+  tag: 치료
+  distractorsEn:
+  - peels
+  - spills
+  distractorsKo:
+  - 주사
+  - 물약
+  chips:
+  - - pills
+  decoyChips:
+  - peels
+- id: w-finish
+  en: finish
+  ipa: /ˈfɪnɪʃ/
+  ko: 다 먹다
+  icon: board
+  example: Did you take any pills, and finish them?
+  exKo: 약을 끝까지 다 드셨어요?
+  cue: 처방 기간을 끝까지 채웠는지 물을 때 — 여행 뒤에도 먹어야 하는 약
+  tag: 문진
+  distractorsEn:
+  - refill
+  - fetch
+  distractorsKo:
+  - 시작하다
+  - 거르다
+  chips:
+  - - fin
+    - ish
+  decoyChips:
+  - fun
+  - ich
+- id: w-run
+  en: run
+  ipa: /rʌn/
+  ko: (수액을) 흘려 넣다
+  icon: lab
+  example: We need fluids running fast to bring your pressure back up.
+  exKo: 혈압을 다시 올리려고 수액을 빠르게 흘릴게요.
+  cue: 수액이 정맥으로 들어가고 있을 때 — 'fluids ___ning'
+  tag: 치료
+  distractorsEn:
+  - ruin
+  - rinse
+  distractorsKo:
+  - 멈추다
+  - 뽑다
+  chips:
+  - - run
+  decoyChips:
+  - ran
+- id: w-rapid
+  en: rapid
+  ipa: /ˈræpɪd/
+  ko: 신속한
+  icon: lab
+  example: We'll run a rapid blood test.
+  exKo: 신속 혈액검사를 할게요.
+  cue: 결과가 몇십 분 안에 나오는 검사 — '___ test'
+  tag: 검사
+  distractorsEn:
+  - rabid
+  - routine
+  distractorsKo:
+  - 정밀한
+  - 정기적인
+  chips:
+  - - rap
+    - id
+  decoyChips:
+  - rab
+  - ed
+- id: w-sure
+  en: sure
+  ipa: /ʃʊr/
+  ko: 확실한
+  icon: board
+  example: We test to be sure.
+  exKo: 확실히 하려고 검사해요.
+  cue: 추측이 아니라 확인하려고 검사할 때 — 'to be ___'
+  tag: 설명·안심
+  distractorsEn:
+  - shore
+  - sour
+  distractorsKo:
+  - 안전한
+  - 편안한
+  chips:
+  - - sure
+  decoyChips:
+  - shore
+- id: w-exactly
+  en: exactly
+  ipa: /ɪɡˈzæktli/
+  ko: 정확히
+  icon: board
+  example: When exactly did you get back from that trip?
+  exKo: 그 여행에서 정확히 언제 돌아오셨어요?
+  cue: 잠복기를 계산하려고 날짜를 콕 집어 물을 때
+  tag: 문진
+  distractorsEn:
+  - roughly
+  - directly
+  distractorsKo:
+  - 대략
+  - 최근에
+  chips:
+  - - ex
+    - act
+    - ly
+  decoyChips:
+  - ax
+  - lie
+- id: w-neutropenic
+  en: neutropenic
+  ipa: /ˌnjuːtrəˈpiːnɪk/
+  ko: 호중구감소성의
+  icon: stetho
+  example: Neutropenic and now hypotensive — this is septic until proven otherwise.
+  exKo: 호중구감소성인 데다 지금 저혈압까지 — 반증되기 전까진 패혈증이에요.
+  cue: 항암치료 뒤 감염과 싸우는 백혈구(호중구)가 크게 줄어든 환자의 상태
+  tag: 바이탈
+  distractorsEn:
+  - neurogenic
+  - thrombocytopenic
+  distractorsKo:
+  - 신경성의
+  - 혈소판감소성의
+  chips:
+  - - neu
+    - tro
+    - pe
+    - nic
+  decoyChips:
+  - nue
+  - ro
+- id: w-hypotensive
+  en: hypotensive
+  ipa: /ˌhaɪpoʊˈtɛnsɪv/
+  ko: 저혈압의
+  icon: monitor
+  example: Neutropenic and now hypotensive — this is septic until proven otherwise.
+  exKo: 호중구감소성인 데다 지금 저혈압까지 — 반증되기 전까진 패혈증이에요.
+  cue: 혈압이 낮은 상태 — 패혈성 쇼크로 넘어가는 신호
+  tag: 바이탈
+  distractorsEn:
+  - hypertensive
+  - hypoxic
+  distractorsKo:
+  - 고혈압의
+  - 저산소의
+  chips:
+  - - hy
+    - po
+    - ten
+    - sive
+  decoyChips:
+  - per
+  - xic
+- id: w-septic
+  en: septic
+  ipa: /ˈsɛptɪk/
+  ko: 패혈성의
+  icon: siren
+  example: This is septic until proven otherwise.
+  exKo: 반증되기 전까진 패혈증이에요.
+  cue: 감염이 온몸 반응으로 번진 상태를 형용사로 — 'He's ___.'
+  tag: 바이탈
+  distractorsEn:
+  - aseptic
+  - spastic
+  distractorsKo:
+  - 무균의
+  - 감염되지 않은
+  chips:
+  - - sep
+    - tic
+  decoyChips:
+  - scep
+  - a
+- id: w-prove
+  en: until proven otherwise
+  ipa: /ənˈtɪl ˈpruːvən ˈʌðərwaɪz/
+  ko: 반증되기 전까지는
+  icon: board
+  example: This is septic until proven otherwise.
+  exKo: 반증되기 전까진 패혈증이에요.
+  cue: 최악을 먼저 가정하고 움직일 때 — 아니라는 증거가 나올 때까지는
+  tag: 인계
+  distractorsEn:
+  - until ruled in
+  - until further notice
+  distractorsKo:
+  - 확진되고 나서야
+  - 증상이 사라질 때까지
+  chips:
+  - - until
+  - - prov
+    - en
+  - - other
+    - wise
+  decoyChips:
+  - 'on'
+  - less
+- id: w-broad
+  en: broad-spectrum
+  ipa: /ˌbrɔːd ˈspɛktrəm/
+  ko: 광범위한
+  icon: board
+  example: Give broad-spectrum antibiotics within the hour.
+  exKo: 한 시간 안에 광범위 항생제를 주세요.
+  cue: 원인균을 모를 때 여러 균을 한꺼번에 덮는 항생제의 성질
+  tag: 치료
+  distractorsEn:
+  - narrow-spectrum
+  - broad-based
+  distractorsKo:
+  - 좁은 범위의
+  - 국소의
+  chips:
+  - - broad-
+    - spec
+    - trum
+  decoyChips:
+  - narrow-
+  - spect
+- id: w-febrile
+  en: febrile
+  ipa: /ˈfiːbraɪl/
+  ko: 발열성의
+  icon: monitor
+  example: Febrile neutropenia with sepsis — I need fluids running.
+  exKo: 발열성 호중구감소증에 패혈증까지 — 수액이 들어가야 해요.
+  cue: 열이 나는 상태를 뜻하는 임상 형용사 — 차트·인계에서 쓴다
+  tag: 바이탈
+  distractorsEn:
+  - afebrile
+  - feeble
+  distractorsKo:
+  - 열이 없는
+  - 쇠약한
+  chips:
+  - - feb
+    - rile
+  decoyChips:
+  - a
+  - fee
+- id: w-neutropenia
+  en: neutropenia
+  ipa: /ˌnjuːtrəˈpiːniə/
+  ko: 호중구감소증
+  icon: stetho
+  example: Febrile neutropenia with sepsis — I need fluids running.
+  exKo: 발열성 호중구감소증에 패혈증까지 — 수액이 들어가야 해요.
+  cue: 항암치료 뒤 호중구가 크게 줄어든 상태를 가리키는 진단명 — 열이 동반되면 응급
+  tag: 바이탈
+  distractorsEn:
+  - thrombocytopenia
+  - neuropathy
+  distractorsKo:
+  - 혈소판감소증
+  - 신경병증
+  chips:
+  - - neu
+    - tro
+    - pe
+    - nia
+  decoyChips:
+  - ro
+  - pathy
+- id: w-sepsis
+  en: sepsis
+  ipa: /ˈsɛpsɪs/
+  ko: 패혈증
+  icon: siren
+  example: Febrile neutropenia with sepsis — I need fluids running.
+  exKo: 발열성 호중구감소증에 패혈증까지 — 수액이 들어가야 해요.
+  cue: 감염에 대한 몸의 반응이 장기를 해치는 응급 상태 — 병명
+  tag: 바이탈
+  distractorsEn:
+  - asepsis
+  - stenosis
+  distractorsKo:
+  - 무균 상태
+  - 협착증
+  chips:
+  - - sep
+    - sis
+  decoyChips:
+  - a
+  - tic
+- id: w-physician
+  en: physician
+  ipa: /fɪˈzɪʃən/
+  ko: 의사
+  icon: me
+  example: I need fluids running and a physician now.
+  exKo: 수액이 들어가야 하고 의사가 지금 필요해요.
+  cue: 처방하고 진단하는 의료진을 격식 있게 부르는 말
+  tag: 인계
+  distractorsEn:
+  - physicist
+  - physical
+  distractorsKo:
+  - 약사
+  - 물리치료사
+  chips:
+  - - phy
+    - si
+    - cian
+  decoyChips:
+  - cist
+  - cal
+- id: w-dose
+  en: dose
+  ipa: /doʊs/
+  ko: 용량
+  icon: pill
+  example: Give the first antibiotic dose now.
+  exKo: 첫 항생제를 지금 주세요.
+  cue: 한 번에 투여하는 약의 양 — 'first antibiotic ___'
+  tag: 치료
+  distractorsEn:
+  - doze
+  - drug
+  distractorsKo:
+  - 약물
+  - 속도
+  chips:
+  - - dose
+  decoyChips:
+  - doze
+- id: w-wait
+  en: wait
+  ipa: /weɪt/
+  ko: 기다리다
+  icon: board
+  example: Don't wait for the workup.
+  exKo: 검사 결과를 기다리지 마세요.
+  cue: 패혈증 의심이면 결과를 기다리지 말고 항생제부터 — 'Don't ___.'
+  tag: 긴급도
+  distractorsEn:
+  - weigh
+  - want
+  distractorsKo:
+  - 서두르다
+  - 멈추다
+  chips:
+  - - wait
+  decoyChips:
+  - weight
+- id: w-workup
+  en: workup
+  ipa: /ˈwɜːrkʌp/
+  ko: 검사 진행
+  icon: lab
+  example: Don't wait for the workup.
+  exKo: 검사 결과를 기다리지 마세요.
+  cue: 진단을 위한 검사 일체 — 혈액·영상·배양을 묶어 부르는 말
+  tag: 검사
+  distractorsEn:
+  - write-up
+  - checkup
+  distractorsKo:
+  - 인계
+  - 정기 검진
+  chips:
+  - - work
+    - up
+  decoyChips:
+  - walk
+  - op
+- id: w-pressure
+  en: pressure
+  ipa: /ˈprɛʃər/
+  ko: 혈압
+  icon: monitor
+  example: Pressure's dropping — I need you in here now.
+  exKo: 혈압이 떨어지고 있어요 — 지금 와 주셔야 해요.
+  cue: 의료진끼리 혈압을 짧게 부르는 말 — 'His ___ is 85 over 50.'
+  tag: 바이탈
+  distractorsEn:
+  - pulse
+  - pleasure
+  distractorsKo:
+  - 맥박
+  - 호흡수
+  chips:
+  - - pres
+    - sure
+  decoyChips:
+  - pleas
+  - ture
+- id: w-drop
+  en: drop
+  ipa: /drɑːp/
+  ko: 떨어지다
+  icon: board
+  example: Pressure's dropping — I need you in here now.
+  exKo: 혈압이 떨어지고 있어요 — 지금 와 주셔야 해요.
+  cue: 혈압·산소포화도가 내려갈 때 — '___ping fast'
+  tag: 바이탈
+  distractorsEn:
+  - drip
+  - rise
+  distractorsKo:
+  - 오르다
+  - 유지되다
+  chips:
+  - - drop
+  decoyChips:
+  - drip
+- id: w-purple
+  en: purple
+  ipa: /ˈpɜːrpəl/
+  ko: 자주색의
+  icon: board
+  example: Those purple spots with drowsiness are a dangerous sign.
+  exKo: 저 자주색 반점에 졸림까지 있으면 위험한 징후예요.
+  cue: 눌러도 사라지지 않는 반점의 색 — 수막구균혈증의 경고
+  tag: 발열·증상
+  distractorsEn:
+  - pale
+  - pink
+  distractorsKo:
+  - 창백한
+  - 분홍색의
+  chips:
+  - - pur
+    - ple
+  decoyChips:
+  - pir
+  - pel
+- id: w-spot
+  en: spots
+  ipa: /spɑːts/
+  ko: 반점
+  icon: bell
+  example: Those purple spots with drowsiness are a dangerous sign.
+  exKo: 저 자주색 반점에 졸림까지 있으면 위험한 징후예요.
+  cue: 피부에 콕콕 찍힌 작은 자국 — 보호자가 쉽게 부르는 말
+  tag: 발열·증상
+  distractorsEn:
+  - scabs
+  - welts
+  distractorsKo:
+  - 물집
+  - 딱지
+  chips:
+  - - spots
+  decoyChips:
+  - stops
+- id: w-drowsiness
+  en: drowsiness
+  ipa: /ˈdraʊzinəs/
+  ko: 졸림
+  icon: board
+  example: Those purple spots with drowsiness are a dangerous sign.
+  exKo: 저 자주색 반점에 졸림까지 있으면 위험한 징후예요.
+  cue: 자꾸 잠에 빠지려는 의식 저하 — 보호자가 먼저 알아채는 변화
+  tag: 발열·증상
+  distractorsEn:
+  - dizziness
+  - dryness
+  distractorsKo:
+  - 어지러움
+  - 건조함
+  chips:
+  - - drow
+    - si
+    - ness
+  decoyChips:
+  - diz
+  - dry
+- id: w-dangerous
+  en: dangerous
+  ipa: /ˈdeɪndʒərəs/
+  ko: 위험한
+  icon: siren
+  example: Those purple spots with drowsiness are a dangerous sign.
+  exKo: 위험한 징후예요.
+  cue: 지금 바로 대응해야 할 만큼 위협적인 — '___ sign'
+  tag: 긴급도
+  distractorsEn:
+  - dangling
+  - anxious
+  distractorsKo:
+  - 가벼운
+  - 흔한
+  chips:
+  - - dan
+    - ger
+    - ous
+  decoyChips:
+  - dang
+  - ling
+- id: w-isolate
+  en: isolate
+  ipa: /ˈaɪsəleɪt/
+  ko: 격리하다
+  icon: lock
+  example: We're isolating him and protecting close contacts.
+  exKo: 아이를 격리하고 가까이 접촉한 사람들도 보호하고 있어요.
+  cue: 전파를 막으려고 환자를 따로 떼어 두는 동작
+  tag: 격리
+  distractorsEn:
+  - insulate
+  - irrigate
+  distractorsKo:
+  - 퇴원시키다
+  - 소독하다
+  chips:
+  - - i
+    - so
+    - late
+  decoyChips:
+  - in
+  - su
+- id: w-close
+  en: close
+  ipa: /kloʊs/
+  ko: 가까운
+  icon: board
+  example: We'll need to protect close contacts too.
+  exKo: 가까이 접촉한 사람들도 보호해야 해요.
+  cue: 한집에 살거나 침·호흡을 가까이서 나눈 — '___ contacts'
+  tag: 격리
+  distractorsEn:
+  - casual
+  - clear
+  distractorsKo:
+  - 먼
+  - 잠깐의
+  chips:
+  - - close
+  decoyChips:
+  - clothes
+- id: w-contact
+  en: contacts
+  ipa: /ˈkɑːntækts/
+  ko: 접촉자
+  icon: board
+  example: We'll need to protect close contacts too.
+  exKo: 가까이 접촉한 사람들도 보호해야 해요.
+  cue: 환자와 가까이 지내 노출된 사람들 — 예방 항생제 대상
+  tag: 격리
+  distractorsEn:
+  - contracts
+  - contents
+  distractorsKo:
+  - 보호자
+  - 방문객
+  chips:
+  - - con
+    - tacts
+  decoyChips:
+  - tracts
+  - tents
+- id: w-appear
+  en: appear
+  ipa: /əˈpɪr/
+  ko: 나타나다
+  icon: board
+  example: How quickly did the spots spread after they first appeared?
+  exKo: 반점이 처음 나타난 후 얼마나 빨리 퍼졌나요?
+  cue: 없던 것이 눈에 보이기 시작할 때 — 'when they first ___ed'
+  tag: 발열·증상
+  distractorsEn:
+  - appeal
+  - disappear
+  distractorsKo:
+  - 사라지다
+  - 줄어들다
+  chips:
+  - - ap
+    - pear
+  decoyChips:
+  - peal
+  - dis
+- id: w-preventive
+  en: preventive
+  ipa: /prɪˈvɛntɪv/
+  ko: 예방적인
+  icon: shield
+  example: Anyone close to him will need preventive antibiotics too.
+  exKo: 가까이 지낸 사람은 누구든 예방적 항생제가 필요해요.
+  cue: 병에 걸리기 전에 미리 막으려고 쓰는 — 접촉자에게 주는 항생제
+  tag: 치료
+  distractorsEn:
+  - presumptive
+  - preventable
+  distractorsKo:
+  - 치료적인
+  - 추정의
+  chips:
+  - - pre
+    - ven
+    - tive
+  decoyChips:
+  - pro
+  - table
+- id: w-severe
+  en: severe
+  ipa: /sɪˈvɪr/
+  ko: 심한
+  icon: board
+  example: Pain this severe with a fever worries me.
+  exKo: 이렇게 심한 통증에 열까지 있으면 걱정돼요.
+  cue: 통증·증상의 정도가 가장 높은 쪽
+  tag: 긴급도
+  distractorsEn:
+  - several
+  - mild
+  distractorsKo:
+  - 가벼운
+  - 둔한
+  chips:
+  - - se
+    - vere
+  decoyChips:
+  - sev
+  - eral
+- id: w-worry
+  en: worry
+  ipa: /ˈwɜːri/
+  ko: 걱정시키다
+  icon: board
+  example: Pain this severe with a fever worries me about a deep infection.
+  exKo: 이렇게 심한 통증에 발열까지 있으면 깊은 감염이 걱정돼요.
+  cue: 의료진이 소견을 보고 불안한 마음을 솔직히 말할 때 — 'It ___ies me.'
+  tag: 설명·안심
+  distractorsEn:
+  - hurry
+  - wonder
+  distractorsKo:
+  - 궁금하다
+  - 안심시키다
+  chips:
+  - - wor
+    - ry
+  decoyChips:
+  - war
+  - ried
+- id: w-call
+  en: call
+  ipa: /kɔːl/
+  ko: 부르다
+  icon: speech
+  example: We're calling surgery urgently to evaluate you.
+  exKo: 긴급히 외과를 불러 평가받게 할게요.
+  cue: 다른 과·팀에 연락해 오게 할 때 — '___ surgery'
+  tag: 인계
+  distractorsEn:
+  - cancel
+  - tell
+  distractorsKo:
+  - 취소하다
+  - 기다리다
+  chips:
+  - - call
+  decoyChips:
+  - cell
+- id: w-surgery
+  en: surgery
+  ipa: /ˈsɜːrdʒəri/
+  ko: 외과
+  icon: scalpel
+  example: We're calling surgery urgently to evaluate you.
+  exKo: 긴급히 외과를 불러 평가받게 할게요.
+  cue: 괴사 조직을 떼어 내야 할 때 협진을 부르는 과
+  tag: 인계
+  distractorsEn:
+  - urology
+  - sorcery
+  distractorsKo:
+  - 내과
+  - 비뇨의학과
+  chips:
+  - - sur
+    - ger
+    - y
+  decoyChips:
+  - sor
+  - gery
+- id: w-urgently
+  en: urgently
+  ipa: /ˈɜːrdʒəntli/
+  ko: 긴급히
+  icon: siren
+  example: We're calling surgery urgently to evaluate you.
+  exKo: 긴급히 외과를 불러 평가받게 할게요.
+  cue: 최우선으로, 지체 없이 — 협진을 부를 때
+  tag: 긴급도
+  distractorsEn:
+  - routinely
+  - eventually
+  distractorsKo:
+  - 정기적으로
+  - 천천히
+  chips:
+  - - ur
+    - gent
+    - ly
+  decoyChips:
+  - ger
+  - ing
+- id: w-evaluate
+  en: evaluate
+  ipa: /ɪˈvæljueɪt/
+  ko: 평가하다
+  icon: magnify
+  example: We're calling surgery urgently to evaluate you.
+  exKo: 긴급히 외과를 불러 평가받게 할게요.
+  cue: 전문의가 직접 보고 판단하는 것 — 'to ___ you'
+  tag: 검사
+  distractorsEn:
+  - evacuate
+  - elevate
+  distractorsKo:
+  - 대피시키다
+  - 올리다
+  chips:
+  - - e
+    - val
+    - u
+    - ate
+  decoyChips:
+  - vac
+  - lev
+- id: w-strong
+  en: strong
+  ipa: /strɔːŋ/
+  ko: 강한
+  icon: board
+  example: We're starting strong antibiotics and fluids right now.
+  exKo: 강한 항생제와 수액을 지금 바로 시작할게요.
+  cue: 환자에게 광범위·고용량 항생제를 쉽게 설명할 때
+  tag: 치료
+  distractorsEn:
+  - wrong
+  - stiff
+  distractorsKo:
+  - 약한
+  - 순한
+  chips:
+  - - strong
+  decoyChips:
+  - string
+- id: w-alone
+  en: alone
+  ipa: /əˈloʊn/
+  ko: 단독으로
+  icon: board
+  example: This pain is much worse than the redness alone would explain.
+  exKo: 이 통증은 발적만 봐서는 설명이 안 될 만큼 훨씬 심해요.
+  cue: 그것 하나만으로는 — 'the redness ___'
+  tag: 설명·안심
+  distractorsEn:
+  - along
+  - lonely
+  distractorsKo:
+  - 함께
+  - 주로
+  chips:
+  - - a
+    - lone
+  decoyChips:
+  - long
+  - o
+- id: w-explain
+  en: explain
+  ipa: /ɪkˈspleɪn/
+  ko: 설명하다
+  icon: speech
+  example: This pain is much worse than the redness alone would explain.
+  exKo: 이 통증은 발적만 봐서는 설명이 안 될 만큼 훨씬 심해요.
+  cue: 소견이 증상을 설명해 주는지 따질 때 — 'would ___'
+  tag: 설명·안심
+  distractorsEn:
+  - explore
+  - expand
+  distractorsKo:
+  - 감추다
+  - 과장하다
+  chips:
+  - - ex
+    - plain
+  decoyChips:
+  - plane
+  - ix
+- id: w-team
+  en: team
+  ipa: /tiːm/
+  ko: 팀
+  icon: board
+  example: The surgery team needs to see this leg right away.
+  exKo: 외과 팀이 지금 바로 이 다리를 봐야 해요.
+  cue: 함께 대응하는 의료진 무리 — 'the surgery ___' 'get the ___ in here'
+  tag: 인계
+  distractorsEn:
+  - tear
+  - unit
+  distractorsKo:
+  - 환자
+  - 보호자
+  chips:
+  - - team
+  decoyChips:
+  - teem
+- id: w-leg
+  en: leg
+  ipa: /lɛɡ/
+  ko: 다리
+  icon: board
+  example: The surgery team needs to see this leg right away.
+  exKo: 외과 팀이 지금 바로 이 다리를 봐야 해요.
+  cue: 봉와직염·괴사성 근막염이 흔히 생기는 팔다리 중 아래쪽
+  tag: 감염원
+  distractorsEn:
+  - log
+  - arm
+  distractorsKo:
+  - 팔
+  - 발목
+  chips:
+  - - leg
+  decoyChips:
+  - lag
+- id: w-point
+  en: point
+  ipa: /pɔɪnt/
+  ko: 가리키다
+  icon: board
+  example: The rash, fever, and low pressure point to toxic shock.
+  exKo: 발진, 발열, 낮은 혈압이 독성쇼크를 가리켜요.
+  cue: 여러 소견이 한 진단을 향할 때 — '___ to toxic shock'
+  tag: 설명·안심
+  distractorsEn:
+  - paint
+  - print
+  distractorsKo:
+  - 배제하다
+  - 숨기다
+  chips:
+  - - point
+  decoyChips:
+  - pint
+- id: w-toxic
+  en: toxic
+  ipa: /ˈtɑːksɪk/
+  ko: 독성의
+  icon: siren
+  example: The rash, fever, and low pressure point to toxic shock.
+  exKo: 발진, 발열, 낮은 혈압이 독성쇼크를 가리켜요.
+  cue: 균이 만든 독소가 온몸을 해치는 — '___ shock syndrome'
+  tag: 바이탈
+  distractorsEn:
+  - tonic
+  - septic
+  distractorsKo:
+  - 패혈성의
+  - 무해한
+  chips:
+  - - tox
+    - ic
+  decoyChips:
+  - ton
+  - tix
+- id: w-shock
+  en: shock
+  ipa: /ʃɑːk/
+  ko: 쇼크
+  icon: siren
+  example: The rash, fever, and low pressure point to toxic shock.
+  exKo: 발진, 발열, 낮은 혈압이 독성쇼크를 가리켜요.
+  cue: 혈압이 떨어져 장기에 피가 충분히 가지 못하는 상태
+  tag: 바이탈
+  distractorsEn:
+  - stroke
+  - shake
+  distractorsKo:
+  - 뇌졸중
+  - 실신
+  chips:
+  - - shock
+  decoyChips:
+  - shook
+- id: w-pour
+  en: pour
+  ipa: /pɔːr/
+  ko: 쏟아붓다
+  icon: board
+  example: We're pouring in fluids and starting antibiotics now.
+  exKo: 지금 수액을 쏟아붓고 항생제도 시작할게요.
+  cue: 수액을 아주 빠르게 대량으로 넣는 것을 환자에게 생생하게 말할 때 — '___ in fluids'
+  tag: 치료
+  distractorsEn:
+  - pore
+  - pump
+  distractorsKo:
+  - 막다
+  - 조금씩 주다
+  chips:
+  - - pour
+  decoyChips:
+  - poor
+- id: w-recent
+  en: recent
+  ipa: /ˈriːsənt/
+  ko: 최근의
+  icon: calendar
+  example: Have you had any recent wound or surgery?
+  exKo: 최근에 상처나 수술이 있었나요?
+  cue: 얼마 전에 있었던 — 독성쇼크의 감염원을 찾을 때
+  tag: 시간·경과
+  distractorsEn:
+  - decent
+  - resent
+  distractorsKo:
+  - 오래된
+  - 과거의
+  chips:
+  - - re
+    - cent
+  decoyChips:
+  - de
+  - sent
+- id: w-use
+  en: use
+  ipa: /juːz/
+  ko: 사용하다
+  icon: board
+  example: Have you been using tampons?
+  exKo: 탐폰을 쓰고 계셨어요?
+  cue: 어떤 물건·약을 몸에 쓰는지 물을 때 — 'Have you been ___ing…?'
+  tag: 문진
+  distractorsEn:
+  - lose
+  - fuse
+  distractorsKo:
+  - 버리다
+  - 바꾸다
+  chips:
+  - - use
+  decoyChips:
+  - ooze
+- id: w-tampon
+  en: tampons
+  ipa: /ˈtæmpɑːnz/
+  ko: 탐폰
+  icon: board
+  example: Have you been using tampons?
+  exKo: 탐폰을 쓰고 계셨어요?
+  cue: 월경 중 질 안에 넣어 쓰는 위생용품 — 독성쇼크의 알려진 원인
+  tag: 감염원
+  distractorsEn:
+  - pads
+  - liners
+  distractorsKo:
+  - 생리대
+  - 거즈
+  chips:
+  - - tam
+    - pons
+  decoyChips:
+  - tem
+  - pans
+- id: w-dizziness
+  en: dizziness
+  ipa: /ˈdɪzinəs/
+  ko: 어지러움
+  icon: board
+  example: Dizziness with a rash like this can mean your organs are under stress.
+  exKo: 이런 발진에 어지러움까지 있으면 장기가 스트레스를 받고 있다는 뜻일 수 있어요.
+  cue: 머리가 핑 도는 느낌 — 혈압이 떨어질 때 환자가 호소한다
+  tag: 발열·증상
+  distractorsEn:
+  - drowsiness
+  - busyness
+  distractorsKo:
+  - 졸림
+  - 피로
+  chips:
+  - - diz
+    - zi
+    - ness
+  decoyChips:
+  - drow
+  - dis
+- id: w-organ
+  en: organs
+  ipa: /ˈɔːrɡənz/
+  ko: 장기
+  icon: board
+  example: Your organs are under stress.
+  exKo: 장기가 스트레스를 받고 있어요.
+  cue: 심장·콩팥·간처럼 제 일을 하는 몸 안의 기관 — 쇼크에서 손상된다
+  tag: 바이탈
+  distractorsEn:
+  - tissues
+  - vessels
+  distractorsKo:
+  - 조직
+  - 혈관
+  chips:
+  - - or
+    - gans
+  decoyChips:
+  - ur
+  - gins
+- id: w-stress
+  en: stress
+  ipa: /strɛs/
+  ko: 스트레스
+  icon: board
+  example: Your organs are under stress.
+  exKo: 장기가 스트레스를 받고 있어요.
+  cue: 몸이 한계에 가깝게 버티는 부담 — 'under ___'
+  tag: 바이탈
+  distractorsEn:
+  - stretch
+  - rest
+  distractorsKo:
+  - 휴식
+  - 회복
+  chips:
+  - - stress
+  decoyChips:
+  - dress
+- id: w-up
+  en: up
+  ipa: /ʌp/
+  ko: 위로
+  icon: board
+  example: We need fluids running fast to bring your pressure back up.
+  exKo: 혈압을 다시 올리려고 수액을 빠르게 흘릴게요.
+  cue: 혈압이 올라가는 방향 — 'bring it back ___'
+  tag: 바이탈
+  distractorsEn:
+  - down
+  - 'off'
+  distractorsKo:
+  - 아래로
+  - 멀리
+  chips:
+  - - up
+  decoyChips:
+  - 'on'
+- id: w-move
+  en: move
+  ipa: /muːv/
+  ko: 움직이다
+  icon: board
+  example: Your pressure is dropping fast, so we're moving quickly now.
+  exKo: 혈압이 빠르게 떨어지고 있어서 저희도 빠르게 움직이고 있어요.
+  cue: 대응을 서두르고 있다고 환자에게 알릴 때 — 'we're ___ing quickly'
+  tag: 긴급도
+  distractorsEn:
+  - remove
+  - prove
+  distractorsKo:
+  - 기다리다
+  - 멈추다
+  chips:
+  - - move
+  decoyChips:
+  - mauve
+- id: w-wide
+  en: wide open
+  ipa: /ˌwaɪd ˈoʊpən/
+  ko: (수액을) 최대 속도로
+  icon: board
+  example: We're giving fluids wide open.
+  exKo: 수액을 최대 속도로 넣고 있어요.
+  cue: 조절기를 끝까지 열어 수액이 최대로 들어가게 할 때 — 의료진끼리의 말
+  tag: 치료
+  distractorsEn:
+  - wide awake
+  - wide range
+  distractorsKo:
+  - 천천히 떨어지게
+  - 잠가 둔
+  chips:
+  - - wide
+  - - o
+    - pen
+  decoyChips:
+  - wild
+  - pan
+- id: w-stay
+  en: stay
+  ipa: /steɪ/
+  ko: 머물다
+  icon: board
+  example: Stay with me — I'm getting the team in here.
+  exKo: 저와 함께 있어 주세요 — 팀을 여기로 부를게요.
+  cue: 의식이 흐려지는 환자를 붙잡아 둘 때 — '___ with me'
+  tag: 긴급도
+  distractorsEn:
+  - stray
+  - sway
+  distractorsKo:
+  - 떠나다
+  - 잠들다
+  chips:
+  - - stay
+  decoyChips:
+  - stray
+- id: w-ago
+  en: ago
+  ipa: /əˈɡoʊ/
+  ko: (지금부터) ~ 전
+  icon: calendar
+  example: An hour ago you looked stable.
+  exKo: 한 시간 전엔 안정적으로 보이셨어요.
+  cue: 지금을 기준으로 얼마나 거슬러 올라간 때인지 — 'an hour ___'
+  tag: 시간·경과
+  distractorsEn:
+  - later
+  - again
+  distractorsKo:
+  - ~ 후에
+  - 다시
+  chips:
+  - - a
+    - go
+  decoyChips:
+  - e
+  - gone
+- id: w-stable
+  en: stable
+  ipa: /ˈsteɪbəl/
+  ko: 안정적인
+  icon: board
+  example: An hour ago you looked stable.
+  exKo: 한 시간 전엔 안정적으로 보이셨어요.
+  cue: 활력징후가 크게 흔들리지 않는 상태
+  tag: 바이탈
+  distractorsEn:
+  - unstable
+  - table
+  distractorsKo:
+  - 불안정한
+  - 위독한
+  chips:
+  - - sta
+    - ble
+  decoyChips:
+  - stab
+  - bel
+- id: w-activate
+  en: activate
+  ipa: /ˈæktɪveɪt/
+  ko: 가동하다
+  icon: board
+  example: We're activating the sepsis bundle.
+  exKo: 패혈증 번들을 가동하고 있어요.
+  cue: 정해진 대응 절차·팀을 켜서 돌리기 시작할 때
+  tag: 인계
+  distractorsEn:
+  - deactivate
+  - motivate
+  distractorsKo:
+  - 중단하다
+  - 완료하다
+  chips:
+  - - ac
+    - ti
+    - vate
+  decoyChips:
+  - tiv
+  - mo
+- id: w-bundle
+  en: bundle
+  ipa: /ˈbʌndəl/
+  ko: 번들
+  icon: board
+  example: We're activating the sepsis bundle.
+  exKo: 패혈증 번들을 가동하고 있어요.
+  cue: 패혈증에서 한 시간 안에 묶어 시행하는 처치 세트 — 배양·항생제·수액·젖산
+  tag: 인계
+  distractorsEn:
+  - bubble
+  - bandage
+  distractorsKo:
+  - 지침서
+  - 병동
+  chips:
+  - - bun
+    - dle
+  decoyChips:
+  - bub
+  - del
+- id: w-suspect
+  en: suspected
+  ipa: /səˈspɛktɪd/
+  ko: 의심되는
+  icon: magnify
+  example: Suspected meningococcemia — he's on airborne and contact precautions.
+  exKo: 수막구균혈증 의심 — 공기 및 접촉 격리 중입니다.
+  cue: 확진 전이지만 그 진단으로 보고 대응할 때 — 인계의 첫마디
+  tag: 인계
+  distractorsEn:
+  - confirmed
+  - respected
+  distractorsKo:
+  - 확진된
+  - 배제된
+  chips:
+  - - sus
+    - pect
+    - ed
+  decoyChips:
+  - sub
+  - pact
+- id: w-meningococcemia
+  en: meningococcemia
+  ipa: /məˌnɪŋɡoʊkɑkˈsiːmiə/
+  ko: 수막구균혈증
+  icon: stetho
+  example: Suspected meningococcemia — he's on airborne and contact precautions.
+  exKo: 수막구균혈증 의심 — 공기 및 접촉 격리 중입니다.
+  cue: 수막구균이 혈액으로 퍼져 자반·쇼크를 일으키는 병 — 접촉자에게 예방 항생제
+  tag: 감염원
+  distractorsEn:
+  - meningitis
+  - septicemia
+  distractorsKo:
+  - 수막염
+  - 패혈증
+  chips:
+  - - menin
+    - go
+    - coc
+    - cemia
+  decoyChips:
+  - cus
+  - tis
+- id: w-airborne
+  en: airborne
+  ipa: /ˈɛrbɔːrn/
+  ko: 공기매개
+  icon: shield
+  example: TB patients go on airborne precautions in a negative-pressure room.
+  exKo: 결핵 환자는 음압실에서 공기매개 격리를 해요.
+  cue: 공기 중에 떠다니는 아주 작은 입자로 퍼지는 — 결핵·홍역·수두의 격리 방식
+  tag: 격리
+  distractorsEn:
+  - droplet
+  - bloodborne
+  distractorsKo:
+  - 비말
+  - 혈액매개
+  chips:
+  - - air
+    - borne
+  decoyChips:
+  - blood
+  - born
+- id: w-precaution
+  en: precautions
+  ipa: /prɪˈkɔːʃənz/
+  ko: 주의조치
+  icon: shield
+  example: He's on airborne and contact precautions.
+  exKo: 공기 및 접촉 격리 중입니다.
+  cue: 전파 경로에 따라 정한 보호 조치 — 'contact ___s'
+  tag: 격리
+  distractorsEn:
+  - procedures
+  - prescriptions
+  distractorsKo:
+  - 시술
+  - 처방
+  chips:
+  - - pre
+    - cau
+    - tions
+  decoyChips:
+  - pro
+  - cess
+- id: w-systolic
+  en: systolic
+  ipa: /sɪˈstɑːlɪk/
+  ko: 수축기의
+  icon: monitor
+  example: Last pressure eighty-five systolic on fluids.
+  exKo: 마지막 혈압은 수액 중 수축기 85입니다.
+  cue: 혈압 두 숫자 중 위의 것 — 심장이 수축할 때의 압력
+  tag: 바이탈
+  distractorsEn:
+  - diastolic
+  - systemic
+  distractorsKo:
+  - 이완기의
+  - 전신의
+  chips:
+  - - sys
+    - tol
+    - ic
+  decoyChips:
+  - dia
+  - temic
+- id: w-continue
+  en: continue
+  ipa: /kənˈtɪnjuː/
+  ko: 계속하다
+  icon: board
+  example: Please continue isolation.
+  exKo: 격리는 계속 유지해 주세요.
+  cue: 받는 팀에게 지금 하는 조치를 끊지 말라고 부탁할 때
+  tag: 인계
+  distractorsEn:
+  - discontinue
+  - contain
+  distractorsKo:
+  - 중단하다
+  - 시작하다
+  chips:
+  - - con
+    - tin
+    - ue
+  decoyChips:
+  - dis
+  - tain
+- id: w-during
+  en: during
+  ipa: /ˈdʊrɪŋ/
+  ko: ~ 동안
+  icon: board
+  example: Keep him isolated during transport.
+  exKo: 이송하는 동안 격리를 유지해 주세요.
+  cue: 어떤 일이 이어지는 내내 — '___ transport'
+  tag: 시간·경과
+  distractorsEn:
+  - before
+  - after
+  distractorsKo:
+  - ~ 전에
+  - ~ 후에
+  chips:
+  - - dur
+    - ing
+  decoyChips:
+  - dor
+  - in
+- id: w-transport
+  en: transport
+  ipa: /ˈtrænspɔːrt/
+  ko: 이송
+  icon: plane
+  example: Keep him isolated during transport.
+  exKo: 이송하는 동안 격리를 유지해 주세요.
+  cue: 환자를 다른 층·병원으로 옮기는 일
+  tag: 인계
+  distractorsEn:
+  - transfusion
+  - transplant
+  distractorsKo:
+  - 수혈
+  - 이식
+  chips:
+  - - trans
+    - port
+  decoyChips:
+  - plant
+  - fuse
+- id: w-large
+  en: large-bore
+  ipa: /ˌlɑːrdʒ ˈbɔːr/
+  ko: 굵은
+  icon: board
+  example: Two large-bore IVs are in.
+  exKo: 굵은 정맥주사 두 개를 확보했어요.
+  cue: 빠른 수액 주입을 위한 굵은 정맥 카테터 — 16G·18G처럼 게이지 숫자가 작은 것
+  tag: 치료
+  distractorsEn:
+  - small-bore
+  - large-scale
+  distractorsKo:
+  - 가는
+  - 긴
+  chips:
+  - - large-
+    - bore
+  decoyChips:
+  - small-
+  - board
+- id: w-iv
+  en: IVs
+  ipa: /ˌaɪˈviːz/
+  ko: 정맥주사
+  icon: lab
+  example: Two large-bore IVs are in.
+  exKo: 굵은 정맥주사 두 개를 확보했어요.
+  cue: 팔 정맥에 꽂아 둔 수액·약 투여 통로 — 인계 때 개수와 굵기를 말한다
+  tag: 치료
+  distractorsEn:
+  - IMs
+  - IOs
+  distractorsKo:
+  - 근육주사
+  - 골내주사
+  chips:
+  - - IVs
+  decoyChips:
+  - IOs
+- id: w-liter
+  en: liter
+  ipa: /ˈliːtər/
+  ko: 리터
+  icon: lab
+  example: He's had one liter of fluids so far.
+  exKo: 지금까지 수액 1리터를 투여했어요.
+  cue: 수액 양을 세는 단위 — 1000 mL
+  tag: 치료
+  distractorsEn:
+  - meter
+  - litter
+  distractorsKo:
+  - 밀리리터
+  - 봉지
+  chips:
+  - - li
+    - ter
+  decoyChips:
+  - lit
+  - tre
+- id: w-far
+  en: so far
+  ipa: /ˌsoʊ ˈfɑːr/
+  ko: 지금까지
+  icon: board
+  example: He's had one liter of fluids so far.
+  exKo: 지금까지 수액 1리터를 투여했어요.
+  cue: 인계에서 여기까지 한 양을 말할 때 — 'He's had one liter ___.'
+  tag: 인계
+  distractorsEn:
+  - so long
+  - by far
+  distractorsKo:
+  - 앞으로
+  - 처음에
+  chips:
+  - - so
+  - - far
+  decoyChips:
+  - sew
+  - for
+situations:
+- title: 발열 시작·양상 문진
+  sentences:
+  - en: When did the fever start, and how high has it gotten?
+    ko: 열이 언제 시작됐고, 얼마나 높이 올랐나요?
+    chunks:
+    - When did
+    - the fever start
+    - ', and how high'
+    - has it gotten
+    - '?'
+    words:
+    - w-fever
+    - w-start
+    - w-high
+    - w-get
+    goal: 1
+  - en: Do you have a cough, sore throat, burning urine, or any pain?
+    ko: 기침, 목 아픔, 소변 화끈거림, 또는 다른 통증이 있나요?
+    chunks:
+    - Do you have
+    - a cough
+    - ', sore throat'
+    - ', burning urine'
+    - ', or any pain'
+    - '?'
+    words:
+    - w-cough
+    - w-sore
+    - w-throat
+    - w-burn
+    - w-urine
+    - w-pain
+    goal: 2
+  - en: Has anything made it better or worse?
+    ko: 뭔가 나아지게 하거나 나빠지게 한 게 있었나요?
+    chunks:
+    - Has anything
+    - made it
+    - better or worse
+    - '?'
+    words:
+    - w-anything
+    - w-make
+    goal: 1
+  - en: Did you check your temperature at home before you came in?
+    ko: 오시기 전에 집에서 체온을 재보셨어요?
+    chunks:
+    - Did you check
+    - your temperature
+    - at home
+    - before you came in
+    - '?'
+    words:
+    - w-check
+    - w-temperature
+    goal: 1
+  - en: Did you take any medicine to bring the fever down?
+    ko: 열을 내리려고 약을 드셨나요?
+    chunks:
+    - Did you take
+    - any medicine
+    - to bring
+    - the fever down
+    - '?'
+    words:
+    - w-take
+    - w-medicine
+    - w-bring
+    - w-down
+    - w-fever
+    goal: 1
+  nuance:
+  - kind: slider
+    words:
+    - w-fever
+    - w-high
+    cue: 'Patient: "I''ve been burning up — it hit 104 last night."'
+    scale:
+    - low-grade fever
+    - fever
+    - high fever
+    answerAt: 2
+    why: 104°F는 40℃예요. 이만큼 오르면 high fever 쪽이에요. 미국 환자는 체온을 화씨로 말하니 숫자를 바로 섭씨로 옮겨 들을 수 있어야 해요. 38℃를 조금 넘는 정도는 low-grade fever(미열)라고 해요.
+    example: She's had a low-grade fever since yesterday.
+    exKo: 어제부터 미열이 있어요.
+  - kind: swap
+    words:
+    - w-burn
+    - w-urine
+    who: 환자에게 · 요로 증상 문진
+    icon: me
+    before:
+    - 'Do you have any '
+    - dysuria
+    - '?'
+    options:
+    - burning when you urinate
+    - dysuria
+    - urinary symptoms
+    answer: burning when you urinate
+    notes:
+      burning when you urinate: 환자가 느끼는 그대로의 말. 무엇을 묻는지 바로 알아듣는다.
+      dysuria: 배뇨통을 뜻하는 의료진의 말. 차트에는 맞지만 환자는 대개 모른다.
+      urinary symptoms: 너무 넓어서 환자가 무엇을 말해야 할지 모른다.
+    why: 차트에는 dysuria라고 적어도, 환자에게는 느끼는 증상 그대로 물어요. 그래야 '네/아니요'가 정확하게 나와요.
+- title: 활력·감염원 초기 사정
+  sentences:
+  - en: Let me check your temperature, pulse, and breathing first.
+    ko: 체온, 맥박, 호흡을 먼저 확인할게요.
+    chunks:
+    - Let me check
+    - your temperature
+    - ', pulse'
+    - ', and breathing'
+    - first
+    - .
+    words:
+    - w-check
+    - w-temperature
+    - w-pulse
+    - w-breathe
+    - w-first
+    goal: 1
+  - en: I'll ask about a few common sources of infection.
+    ko: 감염의 흔한 원인 몇 가지를 여쭤볼게요.
+    chunks:
+    - I'll ask
+    - about a few
+    - common sources
+    - of infection
+    - .
+    words:
+    - w-ask
+    - w-common
+    - w-source
+    - w-infection
+    goal: 2
+  - en: Any pain when you pee, cough, or a wound anywhere?
+    ko: 소변볼 때, 기침할 때, 또는 어디든 상처에 통증이 있나요?
+    chunks:
+    - Any pain
+    - when you pee
+    - ', cough'
+    - ', or a wound'
+    - anywhere
+    - '?'
+    words:
+    - w-pain
+    - w-pee
+    - w-cough
+    - w-wound
+    - w-anywhere
+    goal: 2
+  - en: Your pulse is a little fast, but your breathing sounds fine.
+    ko: 맥박이 조금 빠르지만, 호흡 소리는 괜찮아요.
+    chunks:
+    - Your pulse is
+    - a little fast
+    - ', but your breathing'
+    - sounds fine
+    - .
+    words:
+    - w-pulse
+    - w-fast
+    - w-breathe
+    - w-sound
+    - w-fine
+    goal: 1
+  - en: We'll look for signs of infection in your urine, skin, or lungs.
+    ko: 소변, 피부, 또는 폐에서 감염의 징후를 찾아볼게요.
+    chunks:
+    - We'll look for
+    - signs of infection
+    - in your urine
+    - ', skin, or lungs'
+    - .
+    words:
+    - w-look
+    - w-sign
+    - w-infection
+    - w-urine
+    - w-skin
+    - w-lung
+    goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-breathe
+    - w-sound
+    - w-fine
+    - w-pain
+    - w-pee
+    - w-look
+    - w-sign
+    - w-infection
+    pairs:
+    - - breathing
+      - sounds fine
+    - - pain when you
+      - pee
+    - - look for signs of
+      - infection
+    decoys:
+    - temperature
+    why: 청진 결과는 breathing sounds fine, 요로 증상은 pain when you pee, 감염원을 찾는 것은 look for signs of infection으로 묶어 말해요.
+  - kind: context
+    words:
+    - w-pulse
+    - w-fast
+    scenes:
+    - who: 차트 기록
+      icon: board
+      en: T 38.9, HR 112, RR 18.
+      ok: true
+    - who: 동료에게
+      icon: monitor
+      en: She's febrile, and her heart rate is 112.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: You're febrile and tachycardic at 112.
+      ok: false
+      fix: Your pulse is a little fast, which is common with a fever.
+    why: 열이 나면 맥박이 빨라지는 것은 흔해요. 같은 사실이라도 febrile·tachycardic은 의료진끼리의 말이고, 환자에게는 쉬운 말로 말하면서 흔한 일이라고 덧붙이면 덜 불안해해요.
+- title: 격리 필요성 판단
+  sentences:
+  - en: Because of the cough and fever, I'll have you wear a mask.
+    ko: 기침과 열이 있으니 마스크를 써 주시도록 할게요.
+    chunks:
+    - Because of the cough
+    - and fever
+    - ', I''ll have you'
+    - wear a mask
+    - .
+    words:
+    - w-because
+    - w-cough
+    - w-fever
+    - w-wear
+    - w-mask
+    goal: 2
+  - en: We may place you in a separate room to protect others.
+    ko: 다른 분들을 보호하려고 별도의 병실로 옮길 수도 있어요.
+    chunks:
+    - We may place you
+    - in a separate room
+    - to protect
+    - others
+    - .
+    words:
+    - w-place
+    - w-separate
+    - w-protect
+    - w-other
+    goal: 2
+  - en: Have you been around anyone sick or traveled recently?
+    ko: 최근에 아픈 사람 곁에 있었거나 여행하셨나요?
+    chunks:
+    - Have you been
+    - around anyone
+    - sick or traveled
+    - recently
+    - '?'
+    words:
+    - w-around
+    - w-anyone
+    - w-sick
+    - w-travel
+    - w-recently
+    goal: 1
+  - en: How long have you had this cough, and is it getting worse?
+    ko: 이 기침이 얼마나 오래됐고, 점점 심해지고 있나요?
+    chunks:
+    - How long
+    - have you had
+    - this cough
+    - ', and is it'
+    - getting worse
+    - '?'
+    words:
+    - w-cough
+    - w-get
+    goal: 1
+  - en: I know the mask feels uncomfortable, but it helps keep everyone safe.
+    ko: 마스크가 불편하신 거 알지만, 모두를 안전하게 지키는 데 도움이 돼요.
+    chunks:
+    - I know
+    - the mask feels
+    - uncomfortable
+    - ', but it helps'
+    - keep everyone safe
+    - .
+    words:
+    - w-mask
+    - w-feel
+    - w-uncomfortable
+    - w-help
+    - w-keep
+    - w-safe
+    goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-wear
+    - w-mask
+    - w-separate
+    - w-protect
+    - w-other
+    pairs:
+    - - wear
+      - a mask
+    - - a separate
+      - room
+    - - protect
+      - others
+    decoys:
+    - sick
+    why: 마스크는 wear, 따로 쓰는 방은 a separate room, 다른 사람을 지키는 것은 protect others예요.
+  - kind: swap
+    words:
+    - w-wear
+    - w-mask
+    - w-because
+    who: 환자에게 · 마스크 요청
+    icon: me
+    before:
+    - 'Because of the cough and fever, I''ll '
+    - make you
+    - ' wear a mask.'
+    options:
+    - have you
+    - make you
+    - force you to
+    answer: have you
+    notes:
+      have you: 할 일을 정중하게 안내하는 말. 미국 간호사가 환자에게 가장 흔히 쓰는 틀이다.
+      make you: 억지로 시키는 느낌이 든다. 환자가 반발하기 쉽다.
+      force you to: 강제로 한다는 뜻이라 위협처럼 들린다.
+    why: I'll have you ~는 환자에게 무엇을 해 달라고 부드럽게 안내하는 말이에요. 같은 부탁이라도 make·force는 명령이나 강요로 들려요.
+- title: 해열제 투여 설명
+  sentences:
+  - en: This will help lower your fever and make you more comfortable.
+    ko: 이 약이 열을 낮추고 더 편안하게 해드릴 거예요.
+    chunks:
+    - This will help
+    - lower your fever
+    - and make you
+    - more comfortable
+    - .
+    words:
+    - w-help
+    - w-low
+    - w-fever
+    - w-make
+    - w-comfortable
+    goal: 1
+  - en: We'll recheck your temperature in about an hour.
+    ko: 한 시간쯤 후에 체온을 다시 재볼게요.
+    chunks:
+    - We'll recheck
+    - your temperature
+    - in about
+    - an hour
+    - .
+    words:
+    - w-recheck
+    - w-temperature
+    goal: 2
+  - en: Keep drinking fluids — that helps too.
+    ko: 수분을 계속 드세요 — 그것도 도움이 돼요.
+    chunks:
+    - Keep drinking fluids
+    - — that helps
+    - too
+    - .
+    words:
+    - w-keep
+    - w-drink
+    - w-fluid
+    - w-help
+    goal: 1
+  - en: This medicine will bring your fever down within thirty minutes or so.
+    ko: 이 약은 삼십 분쯤 안에 열을 내려줄 거예요.
+    chunks:
+    - This medicine will
+    - bring your fever
+    - down
+    - within thirty minutes
+    - or so
+    - .
+    words:
+    - w-medicine
+    - w-bring
+    - w-fever
+    - w-down
+    - w-within
+    goal: 1
+  - en: If your fever goes back up before then, please let us know.
+    ko: 그 전에 열이 다시 오르면 저희에게 알려주세요.
+    chunks:
+    - If your fever
+    - goes back up
+    - before then
+    - ', please let us know'
+    - .
+    words:
+    - w-fever
+    - w-back
+    - w-before
+    - w-let
+    goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-bring
+    - w-down
+    - w-drink
+    - w-fluid
+    - w-make
+    - w-comfortable
+    pairs:
+    - - bring your fever
+      - down
+    - - keep drinking
+      - fluids
+    - - make you more
+      - comfortable
+    decoys:
+    - within
+    why: 열은 bring down(내리다), 수분은 keep drinking fluids(계속 마시다), 해열제의 목적은 make you more comfortable(더 편하게)이라고 말해요.
+  - kind: context
+    words:
+    - w-recheck
+    - w-temperature
+    scenes:
+    - who: 차트 기록
+      icon: board
+      en: Acetaminophen 1 g PO given. Recheck temp in 1 hr.
+      ok: true
+    - who: 동료에게
+      icon: monitor
+      en: I gave her Tylenol — I'll recheck her temp in an hour.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Antipyretic administered; reassess T in sixty minutes.
+      ok: false
+      fix: We'll recheck your temperature in about an hour.
+    why: 해열제를 주고 한 시간쯤 뒤에 체온을 다시 재는 계획은 같아요. 차트와 동료에게는 약 이름과 약어로 짧게, 환자에게는 무엇을 언제 다시 하는지만 쉬운 말로 알려요.
+- title: 여행력·접촉력 문진
+  sentences:
+  - en: Where did you travel, and when did you get back?
+    ko: 어디로 여행하셨고, 언제 돌아오셨어요?
+    chunks:
+    - Where did you travel
+    - ', and when'
+    - did you get
+    - back
+    - '?'
+    words:
+    - w-travel
+    - w-back
+    goal: 1
+  - en: Did you get any bug bites or eat anything unusual?
+    ko: 벌레에 물리거나 특이한 걸 드신 적 있나요?
+    chunks:
+    - Did you get
+    - any bug bites
+    - or eat
+    - anything unusual
+    - '?'
+    words:
+    - w-bug
+    - w-bite
+    - w-eat
+    - w-anything
+    - w-unusual
+    goal: 2
+  - en: Was anyone you traveled with also sick?
+    ko: 함께 여행하신 분 중에 아픈 사람이 있었나요?
+    chunks:
+    - Was anyone
+    - you traveled with
+    - also sick
+    - '?'
+    words:
+    - w-anyone
+    - w-travel
+    - w-sick
+    goal: 1
+  - en: Which countries or cities did you visit on this trip?
+    ko: 이번 여행에서 어느 나라나 도시를 방문하셨어요?
+    chunks:
+    - Which countries
+    - or cities
+    - did you visit
+    - on this trip
+    - '?'
+    words:
+    - w-country
+    - w-city
+    - w-visit
+    - w-trip
+    goal: 1
+  - en: We'll check for infections that travelers sometimes bring back from abroad.
+    ko: 여행자가 해외에서 가끔 가져오는 감염을 확인해볼게요.
+    chunks:
+    - We'll check
+    - for infections
+    - that travelers
+    - sometimes bring back
+    - from abroad
+    - .
+    words:
+    - w-check
+    - w-infection
+    - w-traveler
+    - w-sometimes
+    - w-abroad
+    goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-bug
+    - w-bite
+    - w-visit
+    - w-trip
+    - w-eat
+    - w-unusual
+    pairs:
+    - - bug
+      - bites
+    - - visit on this
+      - trip
+    - - eat anything
+      - unusual
+    decoys:
+    - country
+    why: 모기·진드기에 물린 것은 bug bites, 여행지를 물을 때는 visit on this trip, 음식은 eat anything unusual로 물어요.
+  - kind: context
+    words:
+    - w-travel
+    - w-back
+    scenes:
+    - who: 동료에게
+      icon: monitor
+      en: He got back from Ghana ten days ago.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: 'Travel: Ghana, returned 10 days PTA.'
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Travel hx positive — date of return?
+      ok: false
+      fix: Where did you travel, and when did you get back?
+    why: 돌아온 날짜는 잠복기를 따지는 데 꼭 필요해요. 차트에는 hx(병력)·PTA(내원 전) 같은 약어로 적지만, 환자에게는 완전한 문장으로 물어요.
+- title: 폐렴 의심 발열
+  sentences:
+  - en: Your cough and shortness of breath make us think of pneumonia.
+    ko: 기침과 숨가쁨을 보면 폐렴이 떠올라요.
+    chunks:
+    - Your cough and
+    - shortness of breath
+    - make us think
+    - of pneumonia
+    - .
+    words:
+    - w-cough
+    - w-shortness
+    - w-make
+    - w-think
+    - w-pneumonia
+    goal: 1
+  - en: We'll get a chest X-ray and check your oxygen level.
+    ko: 흉부 엑스레이를 찍고 산소 수치를 확인할게요.
+    chunks:
+    - We'll get
+    - a chest X-ray
+    - and check
+    - your oxygen level
+    - .
+    words:
+    - w-chest
+    - w-xray
+    - w-check
+    - w-oxygen
+    - w-level
+    goal: 2
+  - en: If it's pneumonia, we'll start antibiotics promptly.
+    ko: 폐렴이라면 바로 항생제를 시작할게요.
+    chunks:
+    - If it's pneumonia
+    - ', we''ll start'
+    - antibiotics promptly
+    - .
+    words:
+    - w-pneumonia
+    - w-antibiotic
+    - w-promptly
+    goal: 2
+  - en: How many days have you had this deep cough and fever?
+    ko: 이렇게 깊은 기침과 열이 며칠이나 됐나요?
+    chunks:
+    - How many days
+    - have you had
+    - this deep cough
+    - and fever
+    - '?'
+    words:
+    - w-deep
+    - w-cough
+    - w-fever
+    goal: 1
+  - en: We're also checking your blood to see how serious this infection is.
+    ko: 이 감염이 얼마나 심각한지 보려고 혈액도 확인하고 있어요.
+    chunks:
+    - We're also checking
+    - your blood
+    - to see
+    - how serious
+    - this infection is
+    - .
+    words:
+    - w-check
+    - w-blood
+    - w-serious
+    - w-infection
+    goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-shortness
+    cue: Patient can only get out three or four words before stopping to breathe.
+    scale:
+    - a little winded
+    - short of breath
+    - severely short of breath
+    answerAt: 2
+    why: 몇 단어 말하고 숨을 쉬어야 하면 severely short of breath 쪽이에요. 문장을 끝까지 말하지 못하는 것은 호흡곤란이 심하다는 신호라 바로 알려야 해요.
+    example: He's severely short of breath and can only speak a few words at a time.
+    exKo: 숨이 몹시 차서 한 번에 몇 단어밖에 말하지 못해요.
+  - kind: swap
+    words:
+    - w-chest
+    - w-xray
+    - w-oxygen
+    - w-level
+    who: 환자에게 · 검사 설명
+    icon: me
+    before:
+    - 'We''ll get a '
+    - CXR
+    - ' and check your oxygen level.'
+    options:
+    - chest X-ray
+    - CXR
+    - chest film
+    answer: chest X-ray
+    notes:
+      chest X-ray: 환자도 아는 말. 무엇을 찍는지 바로 알아듣는다.
+      CXR: 차트·오더에 쓰는 약어. 소리 내어 말하면 환자는 못 알아듣는다.
+      chest film: 영상의학과·의료진끼리 쓰는 말이라 환자에게는 낯설다.
+    why: 같은 검사라도 약어는 의료진끼리, 환자에게는 chest X-ray처럼 풀어서 말해요.
+- title: 요로감염 발열 노인
+  sentences:
+  - en: In older adults, a urine infection can show up as confusion.
+    ko: 노인분들은 요로감염이 혼돈으로 나타날 수 있어요.
+    chunks:
+    - In older adults
+    - ', a urine infection'
+    - can show up
+    - as confusion
+    - .
+    words:
+    - w-older
+    - w-adult
+    - w-urine
+    - w-infection
+    - w-show
+    - w-confusion
+    goal: 1
+  - en: We'll check her urine and blood to look for infection.
+    ko: 감염을 찾아보려고 소변과 혈액을 확인할게요.
+    chunks:
+    - We'll check her urine
+    - and blood
+    - to look for
+    - infection
+    - .
+    words:
+    - w-check
+    - w-urine
+    - w-blood
+    - w-look
+    - w-infection
+    goal: 2
+  - en: Has she had any change in urination or new incontinence?
+    ko: 배뇨에 변화가 있거나 새로 요실금이 생겼나요?
+    chunks:
+    - Has she had
+    - any change
+    - in urination
+    - or new incontinence
+    - '?'
+    words:
+    - w-change
+    - w-urination
+    - w-new
+    - w-incontinence
+    goal: 1
+  - en: Has she seemed more confused than usual, or is this new for her?
+    ko: 평소보다 더 혼란스러워 보이셨나요, 아니면 처음 있는 일인가요?
+    chunks:
+    - Has she seemed
+    - more confused
+    - than usual
+    - ', or is this new'
+    - for her
+    - '?'
+    words:
+    - w-seem
+    - w-confused
+    - w-usual
+    - w-new
+    goal: 1
+  - en: Confusion in her age group is often the first sign of a urine infection.
+    ko: 이 연령대에서는 혼돈이 흔히 요로감염의 첫 징후예요.
+    chunks:
+    - Confusion in her age group
+    - is often
+    - the first sign
+    - of a urine infection
+    - .
+    words:
+    - w-confusion
+    - w-age
+    - w-group
+    - w-often
+    - w-first
+    - w-sign
+    - w-urine
+    - w-infection
+    goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-change
+    - w-urination
+    - w-confused
+    - w-usual
+    - w-age
+    - w-group
+    pairs:
+    - - change in
+      - urination
+    - - more confused than
+      - usual
+    - - age
+      - group
+    decoys:
+    - sign
+    why: 배뇨 변화는 change in urination, 평소와 비교할 때는 more confused than usual, 연령대는 age group이에요.
+  - kind: context
+    words:
+    - w-confused
+    - w-usual
+    scenes:
+    - who: 차트 기록
+      icon: board
+      en: Acute AMS; baseline A&Ox3 per daughter.
+      ok: true
+    - who: 동료에게
+      icon: monitor
+      en: She's more confused than her baseline, per her daughter.
+      ok: true
+    - who: 보호자에게
+      icon: me
+      en: Your mother has acute altered mental status.
+      ok: false
+      fix: Your mom seems more confused than usual, and an infection can cause that.
+    why: 평소보다 혼란스러워졌다는 같은 말이에요. 차트에는 AMS(의식 변화)·A&Ox3(사람·장소·시간 인식)로 적고, 보호자에게는 쉬운 말로 말하며 감염이 원인일 수 있다는 것까지 알려 주면 덜 놀라요.
+- title: 봉와직염 발열
+  sentences:
+  - en: I'm marking the edge of the redness to see if it spreads.
+    ko: 발적이 퍼지는지 보려고 경계를 표시하고 있어요.
+    chunks:
+    - I'm marking
+    - the edge
+    - of the redness
+    - to see
+    - if it spreads
+    - .
+    words:
+    - w-mark
+    - w-edge
+    - w-redness
+    - w-spread
+    goal: 1
+  - en: The fever means the infection may be spreading, so we'll treat it.
+    ko: 열이 있는 걸 보면 감염이 퍼지고 있을 수 있어서 치료할게요.
+    chunks:
+    - The fever means
+    - the infection
+    - may be spreading
+    - ', so we''ll treat it'
+    - .
+    words:
+    - w-fever
+    - w-mean
+    - w-infection
+    - w-spread
+    - w-treat
+    goal: 2
+  - en: Tell me if the pain suddenly gets much worse than it looks.
+    ko: 통증이 겉보기보다 갑자기 훨씬 심해지면 말씀해 주세요.
+    chunks:
+    - Tell me
+    - if the pain
+    - suddenly gets
+    - much worse
+    - than it looks
+    - .
+    words:
+    - w-tell
+    - w-pain
+    - w-sudden
+    - w-much
+    goal: 1
+  - en: I'll draw a line around the redness so we can watch if it grows.
+    ko: 커지는지 지켜보려고 발적 주변에 선을 그을게요.
+    chunks:
+    - I'll draw a line
+    - around the redness
+    - so we can watch
+    - if it grows
+    - .
+    words:
+    - w-line
+    - w-around
+    - w-redness
+    - w-watch
+    - w-grow
+    goal: 1
+  - en: We'll start antibiotics now to keep the infection from spreading further.
+    ko: 감염이 더 퍼지지 않게 지금 항생제를 시작할게요.
+    chunks:
+    - We'll start antibiotics
+    - now
+    - to keep the infection
+    - from spreading further
+    - .
+    words:
+    - w-start
+    - w-antibiotic
+    - w-keep
+    - w-infection
+    - w-spread
+    - w-further
+    goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-line
+    - w-spread
+    - w-further
+    - w-start
+    - w-antibiotic
+    pairs:
+    - - draw a
+      - line
+    - - spreading
+      - further
+    - - start
+      - antibiotics
+    decoys:
+    - mild
+    why: 경계는 draw a line(선을 긋다), 더 번지는 것은 spreading further, 치료는 start antibiotics로 말해요.
+  - kind: swap
+    words:
+    - w-mark
+    - w-edge
+    - w-redness
+    who: 환자에게 · 경계 표시 설명
+    icon: me
+    before:
+    - 'I''m marking the edge of the '
+    - erythema
+    - ' to see if it spreads.'
+    options:
+    - redness
+    - erythema
+    - inflammation
+    answer: redness
+    notes:
+      redness: 환자가 눈으로 보는 그대로의 말. 무엇을 표시하는지 바로 안다.
+      erythema: 발적을 뜻하는 의료진의 말. 차트에는 맞지만 환자는 모른다.
+      inflammation: 틀린 말은 아니지만 더 넓은 말이라, 펜으로 긋는 선이 무엇의 경계인지 흐려진다.
+    why: 차트에는 erythema라고 적어도, 환자에게는 보이는 그대로 redness라고 말해요. 선을 넘어 번지면 알려 달라고 부탁하기도 쉬워요.
+- title: 인플루엔자 시즌 선별
+  sentences:
+  - en: We'll swab you to check for the flu.
+    ko: 독감 검사를 위해 면봉검사를 할게요.
+    chunks:
+    - We'll swab
+    - you
+    - to check
+    - for the flu
+    - .
+    words:
+    - w-swab
+    - w-check
+    - w-flu
+    goal: 1
+  - en: If it's positive and it's early, an antiviral may help.
+    ko: 양성이고 초기라면 항바이러스제가 도움이 될 수 있어요.
+    chunks:
+    - If it's positive
+    - and it's early
+    - ', an antiviral'
+    - may help
+    - .
+    words:
+    - w-positive
+    - w-early
+    - w-antiviral
+    - w-help
+    goal: 1
+  - en: Please keep the mask on to protect others while you're here.
+    ko: 여기 계시는 동안 다른 분들을 보호하도록 마스크를 계속 써 주세요.
+    chunks:
+    - Please keep
+    - the mask on
+    - to protect others
+    - while you're here
+    - .
+    words:
+    - w-keep
+    - w-mask
+    - w-protect
+    - w-other
+    - w-while
+    - w-here
+    goal: 2
+  - en: Everyone at your work having the flu makes this very likely.
+    ko: 직장 동료들이 다 독감이라면 이것도 그럴 가능성이 커요.
+    chunks:
+    - Everyone at your work
+    - having the flu
+    - makes this
+    - very likely
+    - .
+    words:
+    - w-flu
+    - w-make
+    - w-likely
+    goal: 1
+  - en: The antiviral works best if we start it within the first two days.
+    ko: 항바이러스제는 처음 이틀 안에 시작하면 효과가 가장 좋아요.
+    chunks:
+    - The antiviral works best
+    - if we start it
+    - within the first
+    - two days
+    - .
+    words:
+    - w-antiviral
+    - w-work
+    - w-start
+    - w-within
+    goal: 1
+  nuance:
+  - kind: pair
+    words:
+    - w-keep
+    - w-mask
+    - w-work
+    - w-early
+    - w-check
+    - w-flu
+    pairs:
+    - - keep the mask
+      - 'on'
+    - - works best
+      - early
+    - - check for
+      - the flu
+    decoys:
+    - positive
+    why: 마스크를 계속 쓰는 것은 keep the mask on, 약이 일찍 쓸 때 잘 듣는 것은 works best early, 검사는 check for the flu예요.
+  - kind: swap
+    words:
+    - w-antiviral
+    - w-help
+    who: 환자에게 · 항바이러스제 설명
+    icon: me
+    before:
+    - 'If it''s positive and it''s early, an antiviral '
+    - will cure it
+    - .
+    options:
+    - may help
+    - will cure it
+    - is a must
+    answer: may help
+    notes:
+      may help: 사실에 맞는 말. 앓는 기간을 줄여 줄 수 있다는 정도로 기대를 맞춘다.
+      will cure it: 과장이다. 약을 먹어도 며칠은 앓을 수 있어 환자가 실망한다.
+      is a must: 건강한 성인 외래 환자에게 꼭 필요한 약은 아니라서 사실과 다르다.
+    why: 독감 항바이러스제(오셀타미비르 등)는 증상 시작 48시간 안에 쓰면 앓는 기간을 하루 남짓 줄여 주는 정도예요. 그래서 may help처럼 기대를 사실에 맞춰 말해요.
+- title: 면역저하 발열
+  sentences:
+  - en: With chemo, a fever is an emergency, so we act fast.
+    ko: 항암치료 중이면 발열은 응급상황이라 저희가 빠르게 움직여요.
+    chunks:
+    - With chemo
+    - ', a fever is'
+    - an emergency
+    - ', so we act fast'
+    - .
+    words:
+    - w-chemo
+    - w-fever
+    - w-emergency
+    - w-act
+    - w-fast
+    goal: 1
+  - en: We're drawing cultures and starting antibiotics quickly.
+    ko: 배양검사를 채취하고 항생제를 신속히 시작하고 있어요.
+    chunks:
+    - We're drawing cultures
+    - and starting
+    - antibiotics quickly
+    - .
+    words:
+    - w-draw
+    - w-culture
+    - w-start
+    - w-antibiotic
+    - w-quickly
+    goal: 2
+  - en: We'll keep you protected from other infections while you're here.
+    ko: 여기 계시는 동안 다른 감염으로부터 보호해 드릴게요.
+    chunks:
+    - We'll keep you
+    - protected
+    - from other infections
+    - while you're here
+    - .
+    words:
+    - w-keep
+    - w-protect
+    - w-other
+    - w-infection
+    - w-while
+    - w-here
+    goal: 2
+  - en: Even a mild fever like this can turn serious very quickly for you.
+    ko: 이런 가벼운 열도 아주 빠르게 심각해질 수 있어요.
+    chunks:
+    - Even a mild fever
+    - like this
+    - can turn serious
+    - very quickly
+    - for you
+    - .
+    words:
+    - w-even
+    - w-mild
+    - w-fever
+    - w-turn
+    - w-serious
+    - w-quickly
+    goal: 1
+  - en: Your nurse was right to send you in immediately.
+    ko: 간호사분이 바로 오시라고 한 게 맞았어요.
+    chunks:
+    - Your nurse was right
+    - to send you
+    - in
+    - immediately
+    - .
+    words:
+    - w-right
+    - w-send
+    - w-immediately
+    goal: 1
+  nuance:
+  - kind: pair
+    words:
+    - w-act
+    - w-fast
+    - w-draw
+    - w-culture
+    - w-even
+    - w-mild
+    - w-fever
+    pairs:
+    - - act
+      - fast
+    - - drawing
+      - cultures
+    - - even a mild
+      - fever
+    decoys:
+    - chemo
+    why: 지체 없이 움직이는 것은 act fast, 배양 채취는 drawing cultures, 가벼운 열마저 위험하다고 강조할 때는 even a mild fever예요.
+  - kind: context
+    words:
+    - w-fever
+    - w-emergency
+    - w-antibiotic
+    - w-quickly
+    scenes:
+    - who: 동료에게
+      icon: monitor
+      en: Chemo patient, T 38.4 — treat as neutropenic fever, antibiotics within the hour.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Febrile, on chemo. BCx drawn, empiric abx started.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: You're presumed febrile neutropenic, so we're initiating empiric abx.
+      ok: false
+      fix: With chemo, a fever is an emergency, so we're starting antibiotics quickly.
+    why: 항암치료 중 열이 나면 결과를 기다리지 않고 한 시간 안에 항생제를 시작해요. 같은 계획이라도 환자에게는 왜 서두르는지와 무엇을 하는지만 쉬운 말로 말해요.
+- title: 소아 고열 보호자
+  sentences:
+  - en: We'll bring the fever down and keep him comfortable.
+    ko: 열을 내리고 편안하게 해드릴게요.
+    chunks:
+    - We'll bring
+    - the fever down
+    - and keep him
+    - comfortable
+    - .
+    words:
+    - w-bring
+    - w-fever
+    - w-down
+    - w-keep
+    - w-comfortable
+    goal: 2
+  - en: Most fever seizures are brief and don't cause lasting harm.
+    ko: 대부분의 열성경련은 짧고 지속적인 해를 남기지 않아요.
+    chunks:
+    - Most fever seizures
+    - are brief
+    - and don't cause
+    - lasting harm
+    - .
+    words:
+    - w-most
+    - w-fever
+    - w-seizure
+    - w-brief
+    - w-cause
+    - w-last
+    - w-harm
+    goal: 1
+  - en: Keep offering fluids, and let me know if he becomes hard to wake.
+    ko: 수분을 계속 권해 주시고, 깨우기 힘들어지면 알려주세요.
+    chunks:
+    - Keep offering fluids
+    - ', and let me know'
+    - if he becomes
+    - hard to wake
+    - .
+    words:
+    - w-keep
+    - w-offer
+    - w-fluid
+    - w-let
+    - w-become
+    - w-hard
+    - w-wake
+    goal: 2
+  - en: Seizures like this look scary, but they usually stop on their own within a minute.
+    ko: 이런 경련은 무서워 보이지만 보통 1분 안에 저절로 멈춰요.
+    chunks:
+    - Seizures like this
+    - look scary
+    - ', but they usually stop'
+    - on their own
+    - within a minute
+    - .
+    words:
+    - w-seizure
+    - w-scary
+    - w-usually
+    - w-stop
+    - w-own
+    - w-within
+    goal: 1
+  - en: Give him small sips of fluid every few minutes to keep him hydrated.
+    ko: 탈수되지 않게 몇 분마다 조금씩 수분을 드리세요.
+    chunks:
+    - Give him small sips
+    - of fluid
+    - every few minutes
+    - to keep him hydrated
+    - .
+    words:
+    - w-give
+    - w-small
+    - w-sip
+    - w-fluid
+    - w-every
+    - w-keep
+    - w-hydrated
+    goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-offer
+    - w-fluid
+    - w-become
+    - w-hard
+    - w-wake
+    - w-fever
+    - w-seizure
+    pairs:
+    - - keep offering
+      - fluids
+    - - becomes hard to
+      - wake
+    - - fever
+      - seizures
+    decoys:
+    - scary
+    why: 마실 것을 계속 건네는 것은 keep offering fluids, 의식이 떨어지는 것은 becomes hard to wake, 열성경련은 보호자에게 fever seizures라고 쉽게 말해요.
+  - kind: context
+    words:
+    - w-seizure
+    - w-brief
+    scenes:
+    - who: 동료에게
+      icon: monitor
+      en: Simple febrile seizure, under a minute, back to baseline.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Generalized seizure <1 min with fever; postictal period resolved.
+      ok: true
+    - who: 보호자에게
+      icon: me
+      en: It was a simple febrile seizure with a brief postictal phase.
+      ok: false
+      fix: It was a fever seizure — it was brief, and he's waking up and acting like himself again.
+    why: 짧았고 이제 회복했다는 같은 말이에요. 보호자에게는 postictal(발작 후) 같은 용어 대신 아이가 다시 제 모습으로 돌아오고 있다는 것을 쉬운 말로 알려 줘요.
+- title: 발열+발진 감별
+  sentences:
+  - en: The new medication makes me wonder if the rash is a drug reaction.
+    ko: 새로 드신 약 때문에 이 발진이 약물 반응은 아닌지 궁금해요.
+    chunks:
+    - The new medication
+    - makes me wonder
+    - if the rash is
+    - a drug reaction
+    - .
+    words:
+    - w-new
+    - w-medication
+    - w-make
+    - w-wonder
+    - w-rash
+    - w-drug
+    - w-reaction
+    goal: 1
+  - en: We'll look at how it's spreading and whether it blisters.
+    ko: 어떻게 퍼지는지, 물집이 잡히는지 살펴볼게요.
+    chunks:
+    - We'll look at
+    - how it's spreading
+    - and whether
+    - it blisters
+    - .
+    words:
+    - w-look
+    - w-spread
+    - w-whether
+    - w-blister
+    goal: 2
+  - en: Do you have any mouth sores or eye irritation?
+    ko: 입안에 궤양이나 눈에 자극이 있나요?
+    chunks:
+    - Do you have
+    - any mouth sores
+    - or eye
+    - irritation
+    - '?'
+    words:
+    - w-mouth
+    - w-eye
+    - w-irritation
+    goal: 2
+  - en: Did the rash start before or after you began the new medication?
+    ko: 발진이 새 약을 드시기 전에 났나요, 후에 났나요?
+    chunks:
+    - Did the rash start
+    - before or after
+    - you began
+    - the new medication
+    - '?'
+    words:
+    - w-rash
+    - w-start
+    - w-before
+    - w-after
+    - w-begin
+    - w-new
+    - w-medication
+    goal: 2
+  - en: Let's watch closely for blisters or peeling skin over the next few hours.
+    ko: 앞으로 몇 시간 동안 물집이나 피부 벗겨짐을 자세히 지켜볼게요.
+    chunks:
+    - Let's watch closely
+    - for blisters
+    - or peeling skin
+    - over the next few hours
+    - .
+    words:
+    - w-watch
+    - w-closely
+    - w-blister
+    - w-peel
+    - w-skin
+    - w-next
+    goal: 1
+  nuance:
+  - kind: slider
+    words:
+    - w-wonder
+    cue: Nurse has only seen the rash and heard about the new pill — nothing has been tested yet.
+    scale:
+    - wonder if
+    - think
+    - am certain
+    answerAt: 0
+    why: 아직 아무것도 확인하지 않았으면 wonder if 쪽이에요. 가능성을 열어 두고 의심만 말하는 가장 조심스러운 표현이라, 간호사가 진단을 앞질러 말하지 않게 해 줘요.
+    example: I wonder if the rash is from the new medication.
+    exKo: 발진이 새 약 때문인지 궁금해요.
+  - kind: pair
+    words:
+    - w-drug
+    - w-reaction
+    - w-mouth
+    - w-peel
+    - w-skin
+    pairs:
+    - - drug
+      - reaction
+    - - mouth
+      - sores
+    - - peeling
+      - skin
+    decoys:
+    - closely
+    why: 약물 때문에 생긴 반응은 drug reaction, 입안이 헌 것은 mouth sores, 피부가 벗겨지는 것은 peeling skin이에요.
+  - kind: context
+    words:
+    - w-medication
+    - w-rash
+    - w-drug
+    - w-reaction
+    scenes:
+    - who: 동료에게
+      icon: monitor
+      en: New rash after starting a new med, plus mouth sores — I'm worried about SJS.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Diffuse rash, onset 5 days after new medication started; oral lesions present.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: You might have Stevens-Johnson syndrome.
+      ok: false
+      fix: Because of your new medication, I wonder if this rash is a drug reaction — we'll watch it closely.
+    why: 같은 걱정이지만, 확인도 안 된 무서운 병명을 환자에게 먼저 꺼내면 겁부터 먹어요. 간호사는 관찰한 것과 걱정을 동료·차트에 분명히 남기고, 환자에게는 무엇을 지켜보는지 차분하게 말해요.
+- title: 수막염 의심 두통·발열
+  sentences:
+  - en: The stiff neck with fever and headache concerns me about meningitis.
+    ko: 뻣뻣한 목에 발열, 두통까지 있으니 수막염이 걱정돼요.
+    chunks:
+    - The stiff neck
+    - with fever and headache
+    - concerns me
+    - about meningitis
+    - .
+    words:
+    - w-stiff
+    - w-neck
+    - w-fever
+    - w-headache
+    - w-concern
+    - w-meningitis
+    goal: 1
+  - en: We'll need a spinal tap to check the fluid around your brain.
+    ko: 뇌 주변 체액을 확인하려고 척수천자가 필요해요.
+    chunks:
+    - We'll need
+    - a spinal tap
+    - to check
+    - the fluid around your brain
+    - .
+    words:
+    - w-need
+    - w-spinal
+    - w-tap
+    - w-check
+    - w-fluid
+    - w-around
+    - w-brain
+    goal: 2
+  - en: Does bright light bother your eyes right now?
+    ko: 지금 밝은 빛이 눈에 거슬리세요?
+    chunks:
+    - Does bright light
+    - bother your eyes
+    - right now
+    - '?'
+    words:
+    - w-bright
+    - w-light
+    - w-bother
+    - w-eye
+    goal: 1
+  - en: Can you bring your chin down toward your chest for me?
+    ko: 턱을 가슴 쪽으로 내려 보시겠어요?
+    chunks:
+    - Can you bring
+    - your chin down
+    - toward your chest
+    - for me
+    - '?'
+    words:
+    - w-bring
+    - w-chin
+    - w-toward
+    - w-chest
+    goal: 1
+  - en: This test tells us if there's an infection around your brain and spine.
+    ko: 이 검사로 뇌와 척추 주변에 감염이 있는지 알 수 있어요.
+    chunks:
+    - This test tells us
+    - if there's an infection
+    - around your brain
+    - and spine
+    - .
+    words:
+    - w-test
+    - w-tell
+    - w-infection
+    - w-around
+    - w-brain
+    - w-spine
+    goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-stiff
+    - w-neck
+    - w-spinal
+    - w-tap
+    - w-bright
+    - w-light
+    pairs:
+    - - stiff
+      - neck
+    - - spinal
+      - tap
+    - - bright
+      - light
+    decoys:
+    - chin
+    why: 목이 굳은 것은 stiff neck, 요추천자는 spinal tap, 눈부심을 물을 때는 bright light예요.
+  - kind: swap
+    words:
+    - w-need
+    - w-spinal
+    - w-tap
+    - w-fluid
+    - w-brain
+    who: 환자에게 · 검사 설명
+    icon: me
+    before:
+    - 'We''ll need to do '
+    - an LP
+    - ' to check the fluid around your brain.'
+    options:
+    - a spinal tap
+    - a lumbar puncture
+    - an LP
+    answer: a spinal tap
+    notes:
+      a spinal tap: 환자에게 익숙한 쉬운 말. 무엇을 하는지 금방 알아듣는다.
+      a lumbar puncture: 정식 명칭. 동의서와 차트에 쓰고, 환자에게 쓸 때는 뜻을 풀어 준다.
+      an LP: 의료진끼리의 약어. 환자는 못 알아듣는다.
+    why: 같은 시술이지만 환자에게는 spinal tap이라고 말하고, 동의서의 lumbar puncture와 같은 것이라고 이어 주면 좋아요.
+- title: 결핵 의심 만성기침
+  sentences:
+  - en: A long cough with night sweats and weight loss can suggest TB.
+    ko: 오랜 기침에 밤에 나는 땀, 체중 감소까지 있으면 결핵을 의심할 수 있어요.
+    chunks:
+    - A long cough
+    - with night sweats
+    - and weight loss
+    - can suggest TB
+    - .
+    words:
+    - w-long
+    - w-cough
+    - w-sweat
+    - w-weight
+    - w-loss
+    - w-suggest
+    - w-tb
+    goal: 1
+  - en: We'll place you in a special isolation room right away.
+    ko: 바로 특별 음압격리실로 옮겨드릴게요.
+    chunks:
+    - We'll place you
+    - in a special
+    - isolation room
+    - right away
+    - .
+    words:
+    - w-place
+    - w-special
+    - w-isolation
+    - w-away
+    goal: 2
+  - en: We'll test your sputum to check for tuberculosis.
+    ko: 결핵 확인을 위해 가래 검사를 할게요.
+    chunks:
+    - We'll test
+    - your sputum
+    - to check
+    - for tuberculosis
+    - .
+    words:
+    - w-test
+    - w-sputum
+    - w-check
+    - w-tuberculosis
+    goal: 2
+  - en: How many weeks have you had this cough and the night sweats?
+    ko: 이 기침과 밤에 나는 땀이 몇 주나 됐나요?
+    chunks:
+    - How many weeks
+    - have you had
+    - this cough
+    - and the night sweats
+    - '?'
+    words:
+    - w-cough
+    - w-sweat
+    goal: 1
+  - en: The isolation room keeps the air from spreading TB to others.
+    ko: 격리실은 공기 중으로 결핵이 다른 사람에게 퍼지지 않게 막아줘요.
+    chunks:
+    - The isolation room
+    - keeps the air
+    - from spreading TB
+    - to others
+    - .
+    words:
+    - w-isolation
+    - w-keep
+    - w-air
+    - w-spread
+    - w-tb
+    - w-other
+    goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-sweat
+    - w-weight
+    - w-loss
+    - w-sputum
+    - w-test
+    pairs:
+    - - night
+      - sweats
+    - - weight
+      - loss
+    - - sputum
+      - test
+    decoys:
+    - tuberculosis
+    why: 자다가 흠뻑 젖는 땀은 night sweats, 몸무게가 주는 것은 weight loss, 가래로 하는 검사는 sputum test예요. 셋 다 결핵을 선별할 때 묻는 말이에요.
+  - kind: context
+    words:
+    - w-place
+    - w-special
+    - w-isolation
+    scenes:
+    - who: 동료에게
+      icon: monitor
+      en: Possible TB — he needs an airborne isolation room now.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Pt placed in AIIR; N95 required for staff.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: You're being placed in an AIIR on airborne precautions.
+      ok: false
+      fix: We'll place you in a special isolation room right away — it keeps the air from spreading to others.
+    why: 결핵 의심 환자는 음압격리실(AIIR, airborne infection isolation room)에 들이고 의료진은 N95를 써요. 같은 조치라도 환자에게는 약어 대신 특별한 방이고 왜 필요한지를 말해요.
+- title: 여행 후 열대열 의심
+  sentences:
+  - en: Fever after travel to a malaria area needs urgent testing.
+    ko: 말라리아 지역 여행 후 열이 나면 신속한 검사가 필요해요.
+    chunks:
+    - Fever after travel
+    - to a malaria area
+    - needs
+    - urgent testing
+    - .
+    words:
+    - w-fever
+    - w-after
+    - w-travel
+    - w-malaria
+    - w-area
+    - w-need
+    - w-urgent
+    - w-test
+    goal: 1
+  - en: Did you take any malaria prevention pills, and finish them?
+    ko: 말라리아 예방약을 드셨고, 끝까지 다 드셨나요?
+    chunks:
+    - Did you take
+    - any malaria prevention
+    - pills
+    - ', and finish them'
+    - '?'
+    words:
+    - w-take
+    - w-malaria
+    - w-prevention
+    - w-pill
+    - w-finish
+    goal: 1
+  - en: We'll run a rapid blood test to check for it now.
+    ko: 지금 신속 혈액검사를 해서 확인해볼게요.
+    chunks:
+    - We'll run
+    - a rapid blood test
+    - to check
+    - for it now
+    - .
+    words:
+    - w-rapid
+    - w-blood
+    - w-test
+    - w-check
+    goal: 2
+  - en: When exactly did you get back from that trip?
+    ko: 그 여행에서 정확히 언제 돌아오셨어요?
+    chunks:
+    - When exactly
+    - did you get
+    - back
+    - from that trip
+    - '?'
+    words:
+    - w-exactly
+    - w-back
+    - w-trip
+    goal: 1
+  - en: Malaria can look like the flu at first, so we test to be sure.
+    ko: 말라리아는 처음엔 독감처럼 보일 수 있어서 확실히 검사해봐요.
+    chunks:
+    - Malaria can look
+    - like the flu
+    - at first
+    - ', so we test'
+    - to be sure
+    - .
+    words:
+    - w-malaria
+    - w-flu
+    - w-first
+    - w-test
+    - w-sure
+    goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-prevention
+    - w-pill
+    - w-rapid
+    - w-blood
+    - w-test
+    - w-back
+    - w-trip
+    pairs:
+    - - prevention
+      - pills
+    - - rapid blood
+      - test
+    - - get back from
+      - that trip
+    decoys:
+    - urgent
+    why: 말라리아 예방약은 prevention pills, 신속 검사는 rapid blood test, 돌아온 날은 get back from that trip으로 물어요.
+  - kind: context
+    words:
+    - w-malaria
+    - w-test
+    - w-rapid
+    - w-blood
+    scenes:
+    - who: 동료에게
+      icon: monitor
+      en: Febrile after travel to a malaria area — she needs smears and a rapid test now.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Travel to endemic area 2 wk ago; malaria RDT and thick/thin smears sent.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Your malaria RDT and thick and thin smears are pending.
+      ok: false
+      fix: We're running a rapid blood test for malaria now, and we'll tell you as soon as it's back.
+    why: 말라리아는 신속항원검사(RDT)와 혈액도말(thick/thin smear)로 확인해요. 같은 내용이라도 환자에게는 검사 이름보다 무엇을 하고 언제 알려 줄지를 말해요.
+- title: 호중구감소성 발열 패혈증
+  sentences:
+  - en: Neutropenic and now hypotensive — this is septic until proven otherwise.
+    ko: 호중구감소성인 데다 지금 저혈압까지 — 반증되기 전까진 패혈증이에요.
+    chunks:
+    - Neutropenic and now
+    - hypotensive
+    - — this is septic
+    - until proven otherwise
+    - .
+    words:
+    - w-neutropenic
+    - w-hypotensive
+    - w-septic
+    - w-prove
+    goal: 1
+  - en: Cultures are drawn; give broad-spectrum antibiotics within the hour.
+    ko: 배양검사는 채취됐고, 한 시간 안에 광범위 항생제를 주세요.
+    chunks:
+    - Cultures are drawn;
+    - give broad-spectrum
+    - antibiotics
+    - within the hour
+    - .
+    words:
+    - w-culture
+    - w-give
+    - w-broad
+    - w-antibiotic
+    - w-within
+    goal: 1
+  - en: Febrile neutropenia with sepsis — I need fluids running and a physician now.
+    ko: 발열성 호중구감소증에 패혈증까지 — 수액을 흘리고 의사가 지금 필요해요.
+    chunks:
+    - Febrile neutropenia
+    - with sepsis
+    - — I need fluids
+    - running
+    - and a physician now
+    - .
+    words:
+    - w-febrile
+    - w-neutropenia
+    - w-sepsis
+    - w-need
+    - w-fluid
+    - w-run
+    - w-physician
+    goal: 2
+  - en: Give the first antibiotic dose now — don't wait for the workup.
+    ko: 첫 항생제 용량을 지금 주세요 — 검사 결과를 기다리지 마세요.
+    chunks:
+    - Give the first
+    - antibiotic dose now
+    - — don't wait
+    - for the workup
+    - .
+    words:
+    - w-first
+    - w-antibiotic
+    - w-dose
+    - w-wait
+    - w-workup
+    goal: 1
+  - en: Pressure's dropping — I need you in here now.
+    ko: 혈압이 떨어지고 있어요 — 지금 와 주셔야 해요.
+    chunks:
+    - Pressure's dropping
+    - — I need you
+    - in here
+    - now
+    - .
+    words:
+    - w-pressure
+    - w-drop
+    - w-need
+    - w-here
+    goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-broad
+    - w-antibiotic
+    - w-febrile
+    - w-neutropenia
+    - w-prove
+    pairs:
+    - - broad-spectrum
+      - antibiotics
+    - - febrile
+      - neutropenia
+    - - until proven
+      - otherwise
+    decoys:
+    - dose
+    why: 원인균을 모를 때 넓게 덮는 항생제는 broad-spectrum antibiotics, 열이 나는 호중구감소증은 febrile neutropenia, 최악을 먼저 가정할 때는 until proven otherwise예요.
+  - kind: swap
+    words:
+    - w-pressure
+    - w-drop
+    - w-need
+    - w-here
+    who: 의사에게 · 긴급 호출
+    icon: siren
+    before:
+    - 'Pressure''s dropping — '
+    - you might want to stop by later
+    - .
+    options:
+    - I need you in here now
+    - you might want to stop by later
+    - just so you know
+    answer: I need you in here now
+    notes:
+      I need you in here now: 무엇이 필요한지 분명한 요청. 듣는 사람이 바로 움직인다.
+      you might want to stop by later: 급하지 않다는 신호가 되어 의사가 늦게 온다.
+      just so you know: 알리기만 하고 요청이 없다. 책임이 흐려진다.
+    why: 위급할 때는 돌려 말하지 않아요. 미국 병원 팀 훈련(TeamSTEPPS)도 걱정을 말한 뒤 무엇이 필요한지를 분명히 요청하라고 가르쳐요.
+- title: 수막구균혈증 진행
+  sentences:
+  - en: Those purple spots with drowsiness are a dangerous sign — we're acting now.
+    ko: 저 자주색 반점에 졸림까지 있으면 위험한 징후예요 — 지금 바로 움직일게요.
+    chunks:
+    - Those purple spots
+    - with drowsiness
+    - are a dangerous sign
+    - — we're acting now
+    - .
+    words:
+    - w-purple
+    - w-spot
+    - w-drowsiness
+    - w-dangerous
+    - w-sign
+    - w-act
+    goal: 1
+  - en: We're giving antibiotics immediately and starting fluids.
+    ko: 항생제를 즉시 드리고 수액도 시작할게요.
+    chunks:
+    - We're giving antibiotics
+    - immediately
+    - and starting
+    - fluids
+    - .
+    words:
+    - w-give
+    - w-antibiotic
+    - w-immediately
+    - w-start
+    - w-fluid
+    goal: 2
+  - en: We're isolating him and will need to protect close contacts too.
+    ko: 그를 격리하고 가까이 접촉한 사람들도 보호해야 해요.
+    chunks:
+    - We're isolating him
+    - and will need
+    - to protect
+    - close contacts too
+    - .
+    words:
+    - w-isolate
+    - w-need
+    - w-protect
+    - w-close
+    - w-contact
+    goal: 2
+  - en: How quickly did the spots spread after they first appeared?
+    ko: 반점이 처음 나타난 후 얼마나 빨리 퍼졌나요?
+    chunks:
+    - How quickly did
+    - the spots spread
+    - after they
+    - first appeared
+    - '?'
+    words:
+    - w-quickly
+    - w-spot
+    - w-spread
+    - w-after
+    - w-first
+    - w-appear
+    goal: 1
+  - en: Anyone who's been close to him will need preventive antibiotics too.
+    ko: 그와 가까이 지낸 사람은 누구든 예방적 항생제가 필요해요.
+    chunks:
+    - Anyone who's been close
+    - to him
+    - will need
+    - preventive antibiotics too
+    - .
+    words:
+    - w-anyone
+    - w-close
+    - w-need
+    - w-preventive
+    - w-antibiotic
+    goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-purple
+    - w-spot
+    - w-isolate
+    - w-preventive
+    - w-antibiotic
+    pairs:
+    - - purple
+      - spots
+    - - isolating
+      - him
+    - - preventive
+      - antibiotics
+    decoys:
+    - drowsiness
+    why: 보호자에게 자반은 purple spots, 격리는 we're isolating him, 가까이 지낸 사람에게 주는 약은 preventive antibiotics라고 말해요.
+  - kind: context
+    words:
+    - w-purple
+    - w-spot
+    - w-dangerous
+    - w-sign
+    - w-act
+    scenes:
+    - who: 동료에게
+      icon: monitor
+      en: Non-blanching purpura and he's drowsy — treat as meningococcemia.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Purpuric rash spreading; pt lethargic. Abx given, isolation initiated.
+      ok: true
+    - who: 보호자에게
+      icon: me
+      en: Your son has non-blanching purpura and altered mental status.
+      ok: false
+      fix: Those purple spots and how drowsy he is are a dangerous sign — we're acting now.
+    why: 눌러도 사라지지 않는 자반과 의식 저하는 수막구균혈증을 의심하게 하는 위험 신호예요. 같은 소견이라도 보호자에게는 보이는 그대로 말하고, 지금 바로 움직이고 있다는 것을 함께 알려요.
+- title: 괴사성 근막염
+  sentences:
+  - en: Pain this severe with a fever worries me about a deep infection.
+    ko: 이렇게 심한 통증에 발열까지 있으면 깊은 감염이 걱정돼요.
+    chunks:
+    - Pain this severe
+    - with a fever
+    - worries me
+    - about a deep infection
+    - .
+    words:
+    - w-pain
+    - w-severe
+    - w-fever
+    - w-worry
+    - w-deep
+    - w-infection
+    goal: 1
+  - en: We're calling surgery urgently to evaluate you.
+    ko: 긴급히 외과를 불러 평가받게 할게요.
+    chunks:
+    - We're calling surgery
+    - urgently
+    - to evaluate you
+    - .
+    words:
+    - w-call
+    - w-surgery
+    - w-urgently
+    - w-evaluate
+    goal: 2
+  - en: We're starting strong antibiotics and fluids right now.
+    ko: 강한 항생제와 수액을 지금 바로 시작할게요.
+    chunks:
+    - We're starting
+    - strong antibiotics
+    - and fluids
+    - right now
+    - .
+    words:
+    - w-start
+    - w-strong
+    - w-antibiotic
+    - w-fluid
+    goal: 2
+  - en: This pain is much worse than the redness alone would explain.
+    ko: 이 통증은 발적만 봐서는 설명이 안 될 만큼 훨씬 심해요.
+    chunks:
+    - This pain is
+    - much worse
+    - than the redness alone
+    - would explain
+    - .
+    words:
+    - w-pain
+    - w-much
+    - w-redness
+    - w-alone
+    - w-explain
+    goal: 1
+  - en: The surgery team needs to see this leg right away, before it spreads further.
+    ko: 외과 팀이 지금 바로 이 다리를 봐야 해요, 더 퍼지기 전에요.
+    chunks:
+    - The surgery team needs
+    - to see this leg
+    - right away
+    - ', before it spreads further'
+    - .
+    words:
+    - w-surgery
+    - w-team
+    - w-need
+    - w-leg
+    - w-away
+    - w-spread
+    - w-further
+    goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-pain
+    - w-severe
+    cue: 'The redness looks mild, but the patient says: "It''s the worst pain of my life — don''t touch it."'
+    scale:
+    - sore
+    - painful
+    - excruciating
+    answerAt: 2
+    why: 평생 가장 심한 통증이라면 excruciating 쪽이에요. 겉으로 보이는 발적은 가벼운데 통증이 이만큼 심하면(pain out of proportion) 괴사성 근막염을 의심하는 경고 신호라 바로 알려야 해요.
+    example: The pain is excruciating and out of proportion to what we see.
+    exKo: 통증이 극심하고 보이는 것에 비해 훨씬 심해요.
+  - kind: context
+    words:
+    - w-call
+    - w-surgery
+    - w-urgently
+    - w-pain
+    scenes:
+    - who: 동료에게
+      icon: monitor
+      en: Pain out of proportion with a fever — I'm worried about nec fasc. Surgery needs to see him now.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Severe pain out of proportion to exam; surgery consulted STAT.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Your pain is out of proportion to exam, so surgery was consulted STAT.
+      ok: false
+      fix: This pain is much worse than the redness alone would explain, so we're calling surgery urgently.
+    why: 외과를 긴급히 부른다는 같은 말이에요. out of proportion·STAT·consulted는 의료진의 말이고, 환자에게는 왜 급한지와 누구를 부르는지를 쉬운 말로 말해요.
+- title: 독성쇼크증후군
+  sentences:
+  - en: The rash, fever, and low pressure point to toxic shock.
+    ko: 발진, 발열, 낮은 혈압이 독성쇼크를 가리켜요.
+    chunks:
+    - The rash
+    - ', fever'
+    - ', and low pressure'
+    - point to toxic shock
+    - .
+    words:
+    - w-rash
+    - w-fever
+    - w-pressure
+    - w-point
+    - w-toxic
+    - w-shock
+    goal: 1
+  - en: We're pouring in fluids and starting antibiotics now.
+    ko: 지금 수액을 쏟아붓고 항생제도 시작할게요.
+    chunks:
+    - We're pouring in fluids
+    - and starting
+    - antibiotics
+    - now
+    - .
+    words:
+    - w-pour
+    - w-fluid
+    - w-start
+    - w-antibiotic
+    goal: 2
+  - en: Have you had any recent wound, surgery, or been using tampons?
+    ko: 최근에 상처, 수술, 또는 탐폰 사용이 있었나요?
+    chunks:
+    - Have you had
+    - any recent wound
+    - ', surgery'
+    - ', or been using tampons'
+    - '?'
+    words:
+    - w-recent
+    - w-wound
+    - w-use
+    - w-tampon
+    goal: 1
+  - en: Dizziness with a rash like this can mean your organs are under stress.
+    ko: 이런 발진에 어지러움까지 있으면 장기가 스트레스를 받고 있다는 뜻일 수 있어요.
+    chunks:
+    - Dizziness with a rash
+    - like this can mean
+    - your organs
+    - are under stress
+    - .
+    words:
+    - w-dizziness
+    - w-rash
+    - w-mean
+    - w-organ
+    - w-stress
+    goal: 1
+  - en: We need fluids running fast to bring your pressure back up.
+    ko: 혈압을 다시 올리려고 수액을 빠르게 흘릴게요.
+    chunks:
+    - We need fluids
+    - running fast
+    - to bring your pressure
+    - back up
+    - .
+    words:
+    - w-need
+    - w-fluid
+    - w-run
+    - w-fast
+    - w-pressure
+    - w-back
+    - w-up
+    goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-dizziness
+    cue: 'Patient: "When I sit up, the room spins and everything starts going gray."'
+    scale:
+    - lightheaded
+    - dizzy
+    - about to pass out
+    answerAt: 2
+    why: 앉기만 해도 눈앞이 잿빛으로 흐려지면 about to pass out 쪽이에요. 곧 쓰러질 것 같다는 말은 혈압이 떨어지고 있다는 신호일 수 있어 바로 활력징후를 재요.
+    example: She says she feels like she's about to pass out when she sits up.
+    exKo: 앉으면 곧 쓰러질 것 같다고 해요.
+  - kind: context
+    words:
+    - w-point
+    - w-toxic
+    - w-shock
+    - w-rash
+    - w-fever
+    - w-pressure
+    scenes:
+    - who: 동료에게
+      icon: monitor
+      en: Diffuse rash, fever, BP 82 over 50 — this points to toxic shock.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Fever, diffuse erythroderma, hypotension; concern for TSS.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: You meet criteria for TSS with multiorgan involvement.
+      ok: false
+      fix: Your rash, fever, and low blood pressure make us think of toxic shock, so we're treating it right now.
+    why: 발진·발열·저혈압이 독성쇼크를 가리킨다는 같은 판단이에요. 환자에게는 criteria·TSS 같은 말 대신 무엇을 보고 그렇게 생각하는지와 지금 치료하고 있다는 것을 말해요.
+- title: 발열 급속악화 쇼크 이행
+  sentences:
+  - en: Your pressure is dropping fast, so we're moving quickly now.
+    ko: 혈압이 빠르게 떨어지고 있어서 저희도 빠르게 움직이고 있어요.
+    chunks:
+    - Your pressure is dropping
+    - fast
+    - ', so we''re moving'
+    - quickly now
+    - .
+    words:
+    - w-pressure
+    - w-drop
+    - w-fast
+    - w-move
+    - w-quickly
+    goal: 1
+  - en: We're giving fluids wide open and antibiotics right away.
+    ko: 수액을 활짝 열어 놓고 항생제도 바로 드릴게요.
+    chunks:
+    - We're giving fluids
+    - wide open
+    - and antibiotics
+    - right away
+    - .
+    words:
+    - w-give
+    - w-fluid
+    - w-wide
+    - w-antibiotic
+    - w-away
+    goal: 2
+  - en: Stay with me — I'm getting the team in here.
+    ko: 저와 함께 있어 주세요 — 팀을 여기로 부를게요.
+    chunks:
+    - Stay with me
+    - — I'm getting
+    - the team
+    - in here
+    - .
+    words:
+    - w-stay
+    - w-team
+    - w-here
+    goal: 2
+  - en: An hour ago you looked stable — now everything is changing fast.
+    ko: 한 시간 전엔 안정적으로 보이셨는데 — 지금은 모든 게 빠르게 변하고 있어요.
+    chunks:
+    - An hour ago
+    - you looked stable
+    - — now everything
+    - is changing fast
+    - .
+    words:
+    - w-ago
+    - w-stable
+    - w-change
+    - w-fast
+    goal: 1
+  - en: We're activating the sepsis bundle and calling the physician right now.
+    ko: 패혈증 번들을 가동하고 지금 바로 의사도 부를게요.
+    chunks:
+    - We're activating
+    - the sepsis bundle
+    - and calling the physician
+    - right now
+    - .
+    words:
+    - w-activate
+    - w-sepsis
+    - w-bundle
+    - w-call
+    - w-physician
+    goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-pressure
+    - w-drop
+    - w-stable
+    cue: 'BP over the last hour: 118/74 → 96/60 → 78/44.'
+    scale:
+    - stable
+    - soft
+    - dropping fast
+    answerAt: 2
+    why: 한 시간 사이에 수축기가 118에서 78로 떨어졌으면 dropping fast예요. soft는 조금 낮은 경계선 혈압을 가리키는 의료진의 구어라, 이만큼 빠르게 떨어질 때 쓰면 급한 정도가 덜 전해져요.
+    example: Her pressure's a little soft, but she's still talking to us.
+    exKo: 혈압이 조금 낮긴 한데 아직 대화는 돼요.
+  - kind: swap
+    words:
+    - w-wide
+    - w-fluid
+    who: 동료에게 · 수액 속도 인계
+    icon: monitor
+    before:
+    - 'She''s hypotensive, and I''ve got a liter of fluids running '
+    - kind of fast
+    - .
+    options:
+    - wide open
+    - kind of fast
+    - at a good clip
+    answer: wide open
+    notes:
+      wide open: 조절기를 끝까지 열어 최대로 들어가고 있다는 뜻. 듣는 사람이 속도를 정확히 안다.
+      kind of fast: 얼마나 빠른지 알 수 없다. 받는 사람이 다시 물어야 한다.
+      at a good clip: '''꽤 빠르게''라는 일상 구어라 속도가 전해지지 않는다.'
+    why: 의료진끼리는 수액 속도를 모호하게 말하지 않아요. wide open은 최대로 열어 두었다는 정해진 말이라, 쇼크로 넘어가는 환자를 인계할 때 그대로 알아듣고 이어 받아요.
+- title: 고위험 감염 이송 인계
+  sentences:
+  - en: Suspected meningococcemia — he's on airborne and contact precautions.
+    ko: 수막구균혈증 의심 — 공기 및 접촉 격리 중입니다.
+    chunks:
+    - Suspected meningococcemia
+    - — he's on
+    - airborne
+    - and contact precautions
+    - .
+    words:
+    - w-suspect
+    - w-meningococcemia
+    - w-airborne
+    - w-contact
+    - w-precaution
+    goal: 1
+  - en: Cultures were drawn and first antibiotic dose given at nineteen-hundred.
+    ko: 배양검사는 채취했고, 첫 항생제는 19시에 투여했습니다.
+    chunks:
+    - Cultures were drawn
+    - and first antibiotic dose
+    - given at
+    - nineteen-hundred
+    - .
+    words:
+    - w-culture
+    - w-first
+    - w-antibiotic
+    - w-dose
+    - w-give
+    goal: 2
+  - en: Last pressure eighty-five systolic on fluids — please continue isolation.
+    ko: 마지막 혈압은 수액 중 수축기 85입니다 — 격리는 계속 유지해 주세요.
+    chunks:
+    - Last pressure
+    - eighty-five systolic
+    - on fluids
+    - — please continue isolation
+    - .
+    words:
+    - w-pressure
+    - w-systolic
+    - w-fluid
+    - w-continue
+    - w-isolation
+    goal: 1
+  - en: He's septic and on precautions — keep him isolated during transport.
+    ko: 패혈증 상태고 격리 중입니다 — 이송하는 동안 격리를 유지해 주세요.
+    chunks:
+    - He's septic
+    - and on precautions
+    - — keep him isolated
+    - during transport
+    - .
+    words:
+    - w-septic
+    - w-precaution
+    - w-keep
+    - w-isolate
+    - w-during
+    - w-transport
+    goal: 1
+  - en: Two large-bore IVs are in, and he's had one liter of fluids so far.
+    ko: 굵은 정맥주사 두 개를 확보했고, 지금까지 수액 1리터를 투여했습니다.
+    chunks:
+    - Two large-bore IVs are in
+    - ', and he''s had'
+    - one liter of fluids
+    - so far
+    - .
+    words:
+    - w-large
+    - w-iv
+    - w-liter
+    - w-fluid
+    - w-far
+    goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-large
+    - w-iv
+    - w-contact
+    - w-precaution
+    - w-liter
+    - w-fluid
+    - w-far
+    pairs:
+    - - large-bore
+      - IVs
+    - - contact
+      - precautions
+    - - one liter of fluids
+      - so far
+    decoys:
+    - systolic
+    why: 굵은 정맥로는 large-bore IVs, 격리 조치는 ___ precautions 꼴로, 지금까지 들어간 양은 one liter of fluids so far로 인계해요.
+  - kind: context
+    words:
+    - w-culture
+    - w-first
+    - w-antibiotic
+    - w-dose
+    - w-give
+    scenes:
+    - who: 받는 간호사에게
+      icon: monitor
+      en: Cultures were drawn, and the first antibiotic dose went in at nineteen-hundred.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: BCx x2 drawn; ceftriaxone 2 g IV given at 1900.
+      ok: true
+    - who: 보호자에게
+      icon: me
+      en: BCx x2 drawn; ceftriaxone 2 g IV at 1900.
+      ok: false
+      fix: We took blood tests to find the germ, and he got his first antibiotic at 7 p.m.
+    why: 배양을 채취하고 첫 항생제를 언제 줬는지는 같은 정보예요. 받는 팀에게는 24시간제 시각까지 정확히, 보호자에게는 약어 없이 무엇을 했는지를 말해요.

@@ -1,0 +1,95 @@
+- title: 오피오이드 요구 환자
+  s:
+  - {t: "공감 표현", i: faceWorried, w: "통증이 진짜라고 먼저 인정하면 약을 요구하는 환자도 방어적으로 되지 않아요. 요구하는 행동을 판단하지 않고 통증을 믿는다는 것을 먼저 전해요.", d: ", but I doubt", k: ["약을 더 드릴 수는 없어요", "의사 선생님이 곧 오세요"], a: "real", ai: check, o: [["imaginary", "bulb"], ["exaggerated", "chartup"], ["fake", "cross"]]}
+  - {t: "처방 설명", i: board, w: "의사가 처방한 내용을 먼저 알려 주면 간호사가 마음대로 정한다는 느낌이 줄어요. 약의 종류와 용량은 처방 범위 안에서만 줄 수 있다는 점도 자연스럽게 전해져요.", d: "what you have", k: ["약을 더 요청하셨다고 기록할게요", "약은 하루 한 번만 나와요"], a: "ordered", ai: pencil, o: [["cancelled", "cross"], ["refused", "lock"], ["stopped", "play"]]}
+  - {t: "대안 제시", i: bulb, w: "also는 약을 거절하는 것이 아니라 약에 더해 다른 방법도 쓴다는 신호예요. 대안에는 비약물적 방법과 비마약성 진통제가 들어갈 수 있어요.", d: "to keep", k: ["약은 더 이상 쓸 수 없어요", "통증은 시간이 지나면 사라져요"], a: "try", ai: play, o: [["avoid", "cross"], ["ignore", "lock"], ["refuse", "faceAngry"]]}
+  - {t: "한계 설명", i: lock, w: "can't 뒤에 한계의 이유(처방된 범위)를 말하고 but으로 돌봄을 이어 가요. 거절 바로 뒤에 포기하지 않는다는 말을 붙이면 방치로 들리지 않아요.", d: "except when", k: ["지금 바로 두 배로 드릴게요", "처방된 약은 이제 다 쓰셨어요"], a: "more", ai: chartup, o: [["less", "chevronDown"], ["faster", "play"], ["earlier", "calendar"]]}
+  - {t: "경험 묻기", i: speech, w: "예전에 효과가 있었던 방법을 물으면 환자가 치료 계획에 참여한다고 느껴요. 환자의 과거 경험은 진통 계획을 세울 때 유용한 정보예요.", d: "at home", k: ["지금 드실 약을 정해 볼게요", "어느 병원에서 처방받으셨어요?"], a: "worked", ai: check, o: [["failed", "cross"], ["changed", "redo"], ["started", "play"]]}
+  - {t: "동반 표현", i: star, w: "on your side는 환자와 간호사를 같은 편으로 놓아 약을 두고 맞서는 구도를 피해요. together는 해결책을 함께 찾겠다는 약속이에요.", d: "on my own", k: ["제가 대신 결정해 드릴게요", "의사 선생님이 해결하실 거예요"], a: "together", ai: handshake2, o: [["alone", "me"], ["later", "calendar"], ["separately", "lock"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "약을 더 원하는 환자 응대 4문장 순서"
+    why: "통증이 진짜라고 먼저 인정하고, 의사가 처방한 내용을 알려요. 그 범위(that)를 넘길 수 없다고 말한 뒤, 그래서(So) 다른 방법을 함께 찾아요. 앞 줄을 가리키는 말이 순서를 고정해요."
+    lines:
+    - {en: "I hear that your pain is real, and I want to help.", icon: faceWorried, ko: "통증이 진짜라는 거 알고, 도와드리고 싶어요", note: "공감"}
+    - {en: "Here's what the doctor ordered for you.", icon: board, ko: "의사 선생님이 처방하신 내용이에요", note: "처방"}
+    - {en: "I can't give more than that, but I'm not giving up on your pain.", icon: lock, ko: "그 이상은 드릴 수 없지만 통증을 포기하진 않아요", note: "한계"}
+    - {en: "So let's talk about what else has worked for you before.", icon: speech, ko: "그러니 예전에 또 뭐가 도움이 됐는지 얘기해요", note: "대안"}
+  ctx: {word: "ask for more", ko: "더 달라고 요청하다"}
+- title: 만성 통증+급성 악화
+  s:
+  - {t: "비교 질문", i: compass, w: "평소 통증과 비교해 묻는 것이 새로 생긴 통증과 원래 통증을 가르는 첫 질문이에요. usual pain을 기준으로 삼으면 만성 통증 환자의 경험을 존중하게 돼요.", d: "similar to", k: ["이 약을 얼마나 오래 드셨어요?", "평소에 어디가 가장 아프세요?"], a: "usual", ai: home, o: [["worst", "faceAngry"], ["first", "star"], ["brief", "calendar"]]}
+  - {t: "복용약 확인", i: pill, w: "집에서 이미 먹는 약을 먼저 물으면 진통제 용량과 약물 상호작용을 판단할 수 있어요. 처방약뿐 아니라 사 먹는 약과 보충제도 함께 묻는 것이 좋아요.", d: "at work", k: ["약을 어디서 구하세요?", "약을 몇 시에 드세요?"], a: "already", ai: check, o: [["never", "cross"], ["rarely", "calendar"], ["hardly", "bell"]]}
+  - {t: "내성 설명", i: stetho, w: "내성은 오래 써서 같은 용량의 효과가 줄어드는 현상으로 중독과 달라요. 쉬운 말로 풀어 주면 환자가 낙인찍힌다고 느끼지 않아요.", d: "must stop", k: ["약을 끊으면 중독돼요", "의사 선생님이 약을 바꾸지 않을 거예요"], a: "adjust", ai: gear, o: [["forget", "cross"], ["hide", "lock"], ["borrow", "handshake2"]]}
+  - {t: "새 통증 확인", i: magnify, w: "날카로운 양상이나 다른 부위는 만성 통증과 구별되는 새 통증의 단서예요. 새롭거나 달라진 통증은 원인이 다를 수 있어 의사에게 알리는 근거가 돼요.", d: "and in the same", k: ["통증이 얼마나 오래 갔어요?", "어떤 약을 드셨어요?"], a: "spot", ai: pushpin, o: [["hospital", "hospital"], ["year", "calendar"], ["language", "speech"]]}
+  - {t: "내성 설명", i: chartup, w: "used to는 예전에는 그랬지만 지금은 아니라는 변화를 말해요. 오래 약을 써 온 몸은 같은 용량에 덜 반응할 수 있다고 쉬운 말로 설명해요.", d: "than I do", k: ["몸이 약에 중독되었어요", "약이 더 이상 필요하지 않아요"], a: "more", ai: chevronUp, o: [["less", "chevronDown"], ["better", "star"], ["cheaper", "coffee"]]}
+  - {t: "관찰 약속", i: monitor, w: "용량을 바꾸는 동안 더 가까이 지켜본다고 알리면 환자가 불안해하지 않아요. 약을 조절할 때는 호흡과 진정 정도를 자주 확인해요.", d: "as we wait", k: ["용량은 제가 직접 정할게요", "모니터는 필요 없어요"], a: "closely", ai: magnify, o: [["rarely", "calendar"], ["briefly", "play"], ["casually", "coffee"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "만성 통증 환자의 급성 악화 4문장 순서"
+    why: "새 통증이 평소와 어떻게 다른지 먼저 묻고, 집에서 먹는 약을 물어요. 그 약 때문에 몸이 더 많은 약이 필요할 수 있다고 설명하고(Because of those), 그래서(That's why) 용량을 조절하며 지켜본다고 해요."
+    lines:
+    - {en: "First, how is this pain different from your usual pain?", icon: compass, ko: "먼저 이번 통증이 평소와 어떻게 다른가요?", note: "비교"}
+    - {en: "Thank you. What medicines do you take at home for that?", icon: pill, ko: "감사해요. 그 통증에 집에서 어떤 약을 드세요?", note: "복용약"}
+    - {en: "Because of those medicines, your body may need more than it used to.", icon: gear, ko: "그 약들 때문에 몸이 예전보다 더 필요할 수 있어요", note: "내성"}
+    - {en: "That's why the doctor may adjust the dose, and we'll watch you closely.", icon: monitor, ko: "그래서 용량을 조절할 수 있고, 가까이서 지켜볼게요", note: "계획"}
+  sw: {ko: "이 약들에 익숙해지셔서 의사 선생님이 용량을 조절하실 수 있어요"}
+- title: 절차적 진정 사전 설명
+  s:
+  - {t: "금식 확인", i: coffee, w: "마지막으로 먹고 마신 시간은 의사가 진정 방법과 시점을 정하는 근거라 꼭 물어요. NPO 같은 약어보다 eat or drink로 풀어 물어야 환자가 정확히 답해요.", d: "Where did you", k: ["마지막으로 약을 드신 게 언제예요?", "마지막으로 화장실에 가신 게 언제예요?"], a: "When", ai: calendar, o: [["Where", "home"], ["How", "gear"], ["Why", "bulb"]]}
+  - {t: "모니터 안내", i: monitor, w: "the whole time으로 시작부터 끝까지 지켜본다고 말하면 환자가 안심해요. 진정 중에는 호흡, 산소포화도, 심박수를 계속 확인해요.", d: "in the hallway", k: ["모니터를 잠깐만 붙일게요", "중간에 모니터를 뗄 거예요"], a: "monitors", ai: stetho, o: [["antibiotics", "pill"], ["crutches", "gear"], ["pillows", "home"]]}
+  - {t: "진정 설명", i: bell, w: "sleepy라고 쉬운 말로 말하면 환자가 어떤 느낌일지 그릴 수 있어요. gently는 깨울 때도 부드럽게 한다는 약속이에요.", d: "you suddenly", k: ["진정 중에는 계속 깨어 계실 거예요", "끝나도 하루 종일 주무실 거예요"], a: "sleepy", ai: faceWorried, o: [["hungry", "coffee"], ["angry", "faceAngry"], ["proud", "trophy"]]}
+  - {t: "용어 설명", i: lab, w: "시술을 위한 진정이라는 이름을 알려 준 뒤 뜻을 풀어 주면 돼요. procedural sedation은 시술 동안 통증과 불안을 줄이려고 쓰는 진정으로, 전신마취와는 달리 환자가 스스로 숨을 쉬는 깊이를 목표로 해요.", d: "or anesthesia", k: ["이걸 전신마취라고 해요", "이건 수면제예요"], a: "procedural", ai: scalpel, o: [["daily", "calendar"], ["manual", "gear"], ["silent", "mic"]]}
+  - {t: "감시 항목", i: stetho, w: "산소포화도와 심박수는 진정 중 가장 기본적인 감시 항목이에요. 쉬운 말로 oxygen and heart rate라고 해서 환자가 무엇을 지켜보는지 알게 해요.", d: "will be changed", k: ["키와 몸무게를 쟀어요", "혈액검사 결과를 계속 볼 거예요"], a: "oxygen", ai: monitor, o: [["diet", "coffee"], ["schedule", "calendar"], ["insurance", "board"]]}
+  - {t: "곁에 머물기", i: hospital, w: "누군가 처음부터 끝까지 곁에 있다고 말하면 진정 중 혼자 남겨지는 두려움이 줄어요. 진정 중에는 환자를 계속 지켜보는 사람을 따로 두는 것이 권고돼요.", d: "from here", k: ["중간에 잠깐 혼자 계실 거예요", "의사 선생님이 대신 오실 거예요"], a: "Someone", ai: handshake2, o: [["Nobody", "cross"], ["Anyone", "me"], ["Everyone", "home"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "진정 전 설명 4문장 순서"
+    why: "마지막 식사 시간부터 확인해요. 그다음 졸리게 하는 약을 주겠다고 알리고, 졸린 동안(While you're sleepy) 모니터를 붙여 둔다고 해요. 마지막은 끝난 뒤(Afterward)의 약속이에요."
+    lines:
+    - {en: "First, when did you last eat or drink anything?", icon: coffee, ko: "먼저 마지막으로 먹거나 마신 게 언제예요?", note: "확인"}
+    - {en: "Thank you. We're going to give you a medicine that makes you sleepy.", icon: pill, ko: "감사해요. 졸리게 하는 약을 드릴 거예요", note: "설명"}
+    - {en: "While you're sleepy, we'll keep you on monitors the whole time.", icon: monitor, ko: "졸려 계시는 동안 내내 모니터를 붙여 둘게요", note: "감시"}
+    - {en: "Afterward, we'll wake you gently, and someone will stay with you.", icon: handshake2, ko: "끝나면 부드럽게 깨우고, 누군가 곁에 있을 거예요", note: "약속"}
+  ctx: {word: "eat or drink", ko: "먹거나 마시다"}
+- title: 소아 절차 통증
+  s:
+  - {t: "약 설명", i: pill, w: "won't feel the stitches로 아이가 아프지 않다는 점을 먼저 말해 부모를 안심시켜요. 국소마취나 진정 같은 방법은 의사가 정하니, 간호사는 부모가 이해하는 말로 목적을 전해요.", d: "so he can feel", k: ["아이가 잠들 때까지 기다릴게요", "봉합 후에 약을 드릴게요"], a: "stitches", ai: scalpel, o: [["bandage", "bandage"], ["cast", "gear"], ["fever", "monitor"]]}
+  - {t: "부모 동석", i: home, w: "부모가 곁에 있을 수 있다고 알려 주면 아이도 부모도 덜 불안해요. 시술 중 보호자가 함께 있을 수 있는지는 병원 지침과 시술 종류에 따라 달라서 가능한 범위로 말해요.", d: "far from", k: ["부모님은 밖에서 기다려 주세요", "잠시 후에 들어오시면 돼요"], a: "can", ai: check, o: [["can't", "cross"], ["won't", "lock"], ["shouldn't", "siren"]]}
+  - {t: "질문 기회", i: speech, w: "시작 전에 질문을 받으면 부모가 모르는 채 시술이 시작되지 않아요. any questions는 예·아니요보다 말문을 열어 주는 질문이에요.", d: "after we finish", k: ["아이가 아침에 뭘 먹었나요?", "아이 몸무게가 얼마나 되나요?"], a: "questions", ai: bulb, o: [["allergies", "shield"], ["insurance", "board"], ["pain", "faceWorried"]]}
+  - {t: "효과 설명", i: coffee, w: "calm and still은 약이 하는 일을 아이의 모습으로 그려 줘서 부모가 이해하기 쉬워요. 가만히 있어야 봉합이 안전하고 정확해서 알려 줘요.", d: "and quickly", k: ["약이 아이를 뛰어다니게 해요", "약이 열을 내려 줘요"], a: "still", ai: pushpin, o: [["loud", "speaker"], ["angry", "faceAngry"], ["scared", "faceWorried"]]}
+  - {t: "공감", i: faceWorried, w: "긴장은 정상이라고 먼저 말하면 부모가 자기 반응을 잘못으로 여기지 않아요. 단계마다 설명한다는 약속은 통제감을 줘요.", d: "It's rare to feel", k: ["긴장하면 시술을 못 해요", "설명 없이 바로 시작할게요"], a: "nervous", ai: bell, o: [["proud", "trophy"], ["bored", "play"], ["hungry", "home"]]}
+  - {t: "회복 안내", i: calendar, w: "soon after we finish로 깨어나는 시점을 알려 주면 부모가 기다리는 동안 덜 불안해요. 깨어나는 속도는 약과 아이에 따라 달라서 정확한 분 대신 soon이라고 말해요.", d: "long after", k: ["아이는 하루 종일 잘 거예요", "시술 중에 깨어 있을 거예요"], a: "finish", ai: check, o: [["arrive", "plane"], ["start", "play"], ["leave", "home"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "아이 봉합 전 설명 4문장 순서"
+    why: "시작 전에 질문부터 받아요. 그다음 아이가 아프지 않도록 약을 준다고 알리고, 그 약(That medicine)이 하는 일을 설명해요. 마지막은 끝난 뒤(After we finish)의 일이에요."
+    lines:
+    - {en: "First, do you have any questions before we begin?", icon: speech, ko: "먼저 시작 전에 궁금한 점 있으세요?", note: "질문"}
+    - {en: "Thank you. We'll give him a little medicine so he won't feel the stitches.", icon: pill, ko: "봉합이 아프지 않게 약을 조금 드릴 거예요", note: "약"}
+    - {en: "That medicine will help him stay calm and still while we work.", icon: coffee, ko: "그 약이 시술하는 동안 차분히 있게 도와줘요", note: "효과"}
+    - {en: "After we finish, he'll wake up soon.", icon: calendar, ko: "끝나면 곧 깨어날 거예요", note: "회복"}
+  sw: {ko: "봉합할 때 아프지 않게 아이에게 약을 조금 드릴 거예요"}
+- title: 통증 축소·과장 감별
+  s:
+  - {t: "솔직 허용", i: handshake2, w: "솔직하게 말해도 된다고 열어 주면 참는 환자가 실제 통증을 말하기 쉬워요. 판단하는 말을 쓰지 않고 말하는 사람의 부담을 덜어 줘요.", d: "if it's easy", k: ["아프다고 말하면 약을 더 드려요", "아프지 않으면 말씀하지 마세요"], a: "really", ai: star, o: [["never", "cross"], ["rarely", "calendar"], ["hardly", "bell"]]}
+  - {t: "관찰 공유", i: magnify, w: "I notice …는 관찰한 사실만 말하고 추측이나 비난을 담지 않아요. 몸을 감싸는 자세(guarding)는 통증의 객관적인 단서라 조용히 확인하는 것이 좋아요.", d: "I wonder if you", k: ["그쪽은 아프지 않은 거죠?", "그쪽에 상처가 있나요?"], a: "notice", ai: monitor, o: [["doubt", "cross"], ["hope", "star"], ["insist", "faceAngry"]]}
+  - {t: "참지 않게", i: coffee, w: "tough it out은 아파도 참고 견딘다는 관용구예요. 나와 있을 땐 참지 않아도 된다고 말하면 소극적인 환자도 통증을 알려요.", d: "to stop it", k: ["저한테 힘들다고 하지 마세요", "통증은 참는 게 좋아요"], a: "tough", ai: trophy, o: [["talk", "speech"], ["work", "gear"], ["fight", "faceAngry"]]}
+  - {t: "다양성 인정", i: speech, w: "사람마다 통증 표현이 다르다고 말하면 조용한 환자도 판단받지 않는다고 느껴요. 통증 사정은 표정이나 말투보다 환자의 보고를 기준으로 해요.", d: "in the same", k: ["모두 같은 방식으로 아파해요", "표현하지 않으면 통증이 아니에요"], a: "different", ai: compass, o: [["similar", "redo"], ["bad", "cross"], ["slow", "play"]]}
+  - {t: "부담 덜기", i: handshake2, w: "용감할 필요 없다고 말하면 아파도 괜찮은 척하던 환자가 부담을 내려놓아요. for me가 의료진을 위해 참을 필요가 없다는 뜻을 분명히 해요.", d: "to feel brave", k: ["용감하면 약을 덜 드려요", "저를 위해 용감해야 해요"], a: "brave", ai: trophy, o: [["late", "calendar"], ["quiet", "mic"], ["rich", "star"]]}
+  - {t: "함께 확인", i: check, w: "함께 놓친 게 없는지 보자고 하면 환자를 의심하는 게 아니라 같이 확인하는 말로 들려요. 통증 점수와 몸의 신호가 어긋날 때 다시 살피는 계기가 돼요.", d: "we're not done", k: ["지금까지 아무 문제도 없어요", "더 이상 확인할 건 없어요"], a: "missing", ai: magnify, o: [["hiding", "lock"], ["adding", "chartup"], ["sharing", "handshake2"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "통증을 숨기는 환자 4문장 순서"
+    why: "솔직해도 괜찮다고 먼저 열어 줘요. 그다음 본 것을 사실로 말하고, 그 상태(that)를 참지 않아도 된다고 해요. 마지막은 놓친 게 없는지 함께 확인하는 말이에요."
+    lines:
+    - {en: "First, it's okay to tell me if it really hurts.", icon: handshake2, ko: "먼저, 정말 아프면 말씀하셔도 괜찮아요", note: "허용"}
+    - {en: "I notice you're guarding your right side.", icon: magnify, ko: "오른쪽을 감싸고 계신 게 보여요", note: "관찰"}
+    - {en: "There's no need to tough that out with me.", icon: coffee, ko: "저한테는 그걸 억지로 참으실 필요 없어요", note: "참지 않게"}
+    - {en: "Let's make sure we're not missing anything about it.", icon: check, ko: "그것에 대해 놓친 게 없는지 확인해봐요", note: "확인"}
+  ctx: {word: "minimize", ko: "통증을 축소하다"}

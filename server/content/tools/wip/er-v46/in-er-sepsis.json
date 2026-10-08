@@ -1,0 +1,446 @@
+{
+ "theme": "er-sepsis",
+ "situations": [
+  {
+   "title": "SIRS/qSOFA 기초 사정",
+   "tagline": "I've been feeling feverish and my heart's been racing — is that bad?",
+   "room": "TRIAGE 1",
+   "brief": "활력 이상 조합을 확인해 조기 패혈증 위험을 선별하세요.",
+   "role": "patient",
+   "skills": [
+    "활력 이상 인지",
+    "조기 위험 선별",
+    "병력 청취"
+   ],
+   "keyPhrases": [
+    "Let me check your temperature, heart rate, and breathing together.",
+    "A few of these being off can be an early warning sign.",
+    "Do you have any pain, cough, or burning when you urinate?"
+   ],
+   "goals": [
+    "활력 이상 조합을 확인한다",
+    "조기 패혈증 위험을 선별한다"
+   ]
+  },
+  {
+   "title": "감염 의심+활력 이상",
+   "tagline": "I've had a fever and now I'm breathing fast and feel really off.",
+   "room": "TREATMENT BAY 5",
+   "brief": "발열·빈맥·빈호흡 조합을 사정하고 초기 대응을 설명하세요.",
+   "role": "patient",
+   "skills": [
+    "활력 조합 사정",
+    "감염원 확인",
+    "초기 대응"
+   ],
+   "keyPhrases": [
+    "Fever with a fast heart rate and breathing needs a closer look.",
+    "We'll check your blood and look for the source of infection.",
+    "Where do you feel most unwell — your chest, belly, or elsewhere?"
+   ],
+   "goals": [
+    "발열·빈맥·빈호흡 조합을 사정한다",
+    "초기 대응 계획을 설명한다"
+   ]
+  },
+  {
+   "title": "배양 채취 설명",
+   "tagline": "Why are you taking so much blood before giving me the antibiotic?",
+   "room": "TREATMENT BAY 3",
+   "brief": "항생제 전 혈액배양 채취의 이유를 알기 쉽게 설명하세요.",
+   "role": "patient",
+   "skills": [
+    "혈액배양 설명",
+    "투여 순서 이해",
+    "교육"
+   ],
+   "keyPhrases": [
+    "We draw blood cultures before antibiotics to find the exact bug.",
+    "That helps us pick the best medicine for your infection.",
+    "It only delays the antibiotic by a few minutes."
+   ],
+   "goals": [
+    "항생제 전 배양 채취의 이유를 설명한다",
+    "투여 순서 원칙을 이해시킨다"
+   ]
+  },
+  {
+   "title": "정맥로·수액 시작 설명",
+   "tagline": "Do I really need all these fluids? My arm already feels cold from it.",
+   "room": "TREATMENT BAY 2",
+   "brief": "초기 소생을 위한 정맥로 확보와 수액의 목적을 설명하세요.",
+   "role": "patient",
+   "skills": [
+    "정맥로 확보 설명",
+    "수액 목적 설명",
+    "안심 제공"
+   ],
+   "keyPhrases": [
+    "These fluids help support your blood pressure and blood flow.",
+    "The cold feeling in your arm is normal and will pass.",
+    "We're giving them quickly because your body needs the support."
+   ],
+   "goals": [
+    "정맥로 확보와 수액의 목적을 설명한다",
+    "환자를 안심시킨다"
+   ]
+  },
+  {
+   "title": "소변량 모니터링 설명",
+   "tagline": "Why do I need this catheter and why are you measuring my urine?",
+   "room": "TREATMENT BAY 4",
+   "brief": "소변량이 관류 지표임을 설명하고 모니터링의 목적을 안내하세요.",
+   "role": "patient",
+   "skills": [
+    "소변량 모니터링 설명",
+    "관류 지표 이해",
+    "교육"
+   ],
+   "keyPhrases": [
+    "Your urine output tells us how well your organs are getting blood.",
+    "Measuring it helps us know if the fluids are working.",
+    "It's an important sign we watch closely in cases like yours."
+   ],
+   "goals": [
+    "소변량이 관류 지표임을 설명한다",
+    "모니터링의 목적을 안내한다"
+   ]
+  },
+  {
+   "title": "패혈증 1시간 번들",
+   "tagline": "I feel like I'm burning up and completely wiped out.",
+   "room": "RESUS BAY",
+   "brief": "배양·항생제·수액·젖산을 1시간 내 시행하며 각 단계를 설명하세요.",
+   "role": "patient",
+   "skills": [
+    "1시간 번들",
+    "젖산 채취",
+    "수액 소생"
+   ],
+   "keyPhrases": [
+    "We're moving fast — cultures, antibiotics, fluids, and a lactate test.",
+    "This lactate level tells us how stressed your body is.",
+    "We're giving fluids now to support your blood pressure."
+   ],
+   "goals": [
+    "1시간 번들 요소를 신속히 시행한다",
+    "각 단계를 환자에게 설명한다"
+   ]
+  },
+  {
+   "title": "젖산 상승 해석",
+   "tagline": "The nurse said my lactate is high — what does that mean for me?",
+   "room": "TREATMENT BAY 1",
+   "brief": "젖산의 의미를 설명하고 재측정과 관류 반응 감시를 안내하세요.",
+   "role": "patient",
+   "skills": [
+    "젖산 해석",
+    "재측정 안내",
+    "관류 감시"
+   ],
+   "keyPhrases": [
+    "A high lactate means your tissues aren't getting enough oxygen.",
+    "After fluids, we'll recheck it to see if it's improving.",
+    "It's one of the main things we track to guide your treatment."
+   ],
+   "goals": [
+    "젖산 상승의 의미를 설명한다",
+    "재측정과 관류 반응 감시를 안내한다"
+   ]
+  },
+  {
+   "title": "노인 비전형 패혈증",
+   "tagline": "Dad's not himself — he's confused and cold, but he says he feels fine.",
+   "room": "TREATMENT BAY 3",
+   "brief": "저체온·섬망 등 비전형 발현을 인지하고 사정을 설명하세요.",
+   "role": "family",
+   "skills": [
+    "비전형 발현 인지",
+    "섬망 사정",
+    "감염원 탐색"
+   ],
+   "keyPhrases": [
+    "In older adults, sepsis can show up as confusion or a low temperature.",
+    "The fact that he's cold and confused is why we're taking this seriously.",
+    "Has he had any recent infection, catheter, or wound?"
+   ],
+   "goals": [
+    "저체온·섬망 등 비전형 발현을 인지한다",
+    "감염원 탐색을 설명한다"
+   ]
+  },
+  {
+   "title": "요로성 패혈증",
+   "tagline": "My back and side hurt and I've had burning pee, and now I'm shaking with fever.",
+   "room": "RESUS BAY",
+   "brief": "감염원 통제와 폐쇄 시 감압 필요성을 사정·설명하세요.",
+   "role": "patient",
+   "skills": [
+    "요로성 패혈증 사정",
+    "감염원 통제",
+    "감압 필요성"
+   ],
+   "keyPhrases": [
+    "The flank pain with a urine infection can lead to a serious infection.",
+    "We'll check if there's a blockage that needs to be drained.",
+    "We're starting fluids and antibiotics now."
+   ],
+   "goals": [
+    "요로성 패혈증을 사정한다",
+    "감염원 통제와 감압 필요성을 설명한다"
+   ]
+  },
+  {
+   "title": "폐렴성 패혈증",
+   "tagline": "My pneumonia's gotten worse — I can barely breathe and I feel like I'm shutting down.",
+   "room": "RESUS BAY",
+   "brief": "호흡부전 진행을 감시하며 패혈증 소생을 병행 설명하세요.",
+   "role": "patient",
+   "skills": [
+    "호흡부전 감시",
+    "산소 지원",
+    "패혈증 소생"
+   ],
+   "keyPhrases": [
+    "Your pneumonia has spread to your whole body, so we're acting fast.",
+    "We're giving oxygen, fluids, and antibiotics right now.",
+    "I'm watching your breathing closely and will support it if needed."
+   ],
+   "goals": [
+    "호흡부전 진행을 감시한다",
+    "패혈증 소생을 병행 설명한다"
+   ]
+  },
+  {
+   "title": "수액반응성 평가",
+   "tagline": "You've given me so much fluid — am I getting any better?",
+   "room": "TREATMENT BAY 1",
+   "brief": "소생 후 재사정으로 수액반응성을 평가하고 설명하세요.",
+   "role": "patient",
+   "skills": [
+    "수액반응성 평가",
+    "재사정",
+    "과부하 감시"
+   ],
+   "keyPhrases": [
+    "After the fluids, I'm rechecking your pressure and how you're breathing.",
+    "This tells us if your body needs more fluid or a different support.",
+    "Let me know if you start to feel short of breath."
+   ],
+   "goals": [
+    "소생 후 수액반응성을 재사정한다",
+    "과부하 징후를 감시하며 설명한다"
+   ]
+  },
+  {
+   "title": "면역저하 잠복 패혈증",
+   "tagline": "I'm on immune-suppressing meds — I just feel a little off, no real fever.",
+   "room": "TREATMENT BAY 3",
+   "brief": "미묘한 조기 신호를 놓치지 않고 사정하며 대응을 설명하세요.",
+   "role": "patient",
+   "skills": [
+    "잠복 감염 인지",
+    "미묘한 신호 사정",
+    "신속 대응"
+   ],
+   "keyPhrases": [
+    "On immune-suppressing medicine, even mild symptoms can be serious.",
+    "We won't wait for a high fever — we'll check thoroughly now.",
+    "We're drawing cultures and watching you closely."
+   ],
+   "goals": [
+    "미묘한 조기 신호를 사정한다",
+    "잠복 패혈증에 신속 대응한다"
+   ]
+  },
+  {
+   "title": "카테터 관련 균혈증",
+   "tagline": "I get dialysis through this line, and now I get chills every time it's used.",
+   "room": "TREATMENT BAY 2",
+   "brief": "라인 관련 균혈증을 의심하고 라인 제거 판단을 설명하세요.",
+   "role": "patient",
+   "skills": [
+    "카테터 감염 인지",
+    "배양 채취",
+    "라인 관리 판단"
+   ],
+   "keyPhrases": [
+    "Chills when your line is used can mean the line is infected.",
+    "We'll draw cultures from the line and from your arm.",
+    "We may need to remove the line to clear the infection."
+   ],
+   "goals": [
+    "카테터 관련 균혈증을 의심한다",
+    "라인 제거 판단을 설명한다"
+   ]
+  },
+  {
+   "title": "산모 패혈증",
+   "tagline": "I'm 32 weeks pregnant with a fever and terrible belly pain — please help my baby.",
+   "room": "RESUS BAY",
+   "brief": "임신 생리를 고려하며 태아 감시와 패혈증 소생을 병행하세요.",
+   "role": "patient",
+   "skills": [
+    "산모 패혈증 사정",
+    "태아 감시",
+    "소생 병행"
+   ],
+   "keyPhrases": [
+    "We're treating your infection and watching your baby at the same time.",
+    "We're starting fluids and antibiotics that are safe in pregnancy.",
+    "We're monitoring your baby's heartbeat continuously."
+   ],
+   "goals": [
+    "임신 생리를 고려해 패혈증을 사정한다",
+    "태아 감시와 소생을 병행한다"
+   ]
+  },
+  {
+   "title": "패혈증 언어장벽 위중",
+   "tagline": "She's very hot, very weak, and her family is frightened.",
+   "room": "RESUS BAY",
+   "brief": "통역과 가족을 병행 활용해 위중한 패혈증 소생을 설명하세요.",
+   "role": "family",
+   "skills": [
+    "통역 활용",
+    "가족 병행 소통",
+    "소생 설명"
+   ],
+   "keyPhrases": [
+    "Through the interpreter — we believe she has a serious infection.",
+    "We're giving fluids and antibiotics urgently, and I'll explain each step.",
+    "Please ask her where she feels pain and when this started."
+   ],
+   "goals": [
+    "통역·가족을 병행해 정보를 확보한다",
+    "위중한 소생 과정을 명확히 설명한다"
+   ]
+  },
+  {
+   "title": "패혈성 쇼크 승압제",
+   "tagline": "His pressure won't come up no matter how much fluid you give.",
+   "room": "RESUS BAY",
+   "brief": "수액 불응 쇼크에 승압제와 중심라인을 준비하며 SBAR로 조율하세요.",
+   "role": "colleague",
+   "skills": [
+    "승압제 개시",
+    "중심라인 준비",
+    "SBAR 조율"
+   ],
+   "keyPhrases": [
+    "Fluid-refractory shock — we need to start norepinephrine now.",
+    "Prepare for central access to run the pressor safely.",
+    "Septic shock, MAP under sixty-five after two liters — I need the physician at bedside."
+   ],
+   "goals": [
+    "수액 불응 쇼크에 승압제를 개시한다",
+    "중심라인 준비와 SBAR 조율을 수행한다"
+   ]
+  },
+  {
+   "title": "다장기부전 진행",
+   "tagline": "Her kidneys and liver numbers are all getting worse.",
+   "room": "RESUS BAY",
+   "brief": "신·간·응고 악화를 사정하고 가족에게 상태를 설명하세요.",
+   "role": "family",
+   "skills": [
+    "다장기부전 사정",
+    "응고 이상 감시",
+    "가족 설명"
+   ],
+   "keyPhrases": [
+    "The infection is now affecting several of her organs.",
+    "We're supporting her kidneys, liver, and blood clotting as best we can.",
+    "This is very serious, and the team is doing everything possible."
+   ],
+   "goals": [
+    "신·간·응고 악화를 사정한다",
+    "가족에게 상태를 명확히 설명한다"
+   ]
+  },
+  {
+   "title": "젖산 지속상승 위기",
+   "tagline": "My hands and feet are going cold and blotchy…",
+   "room": "RESUS BAY",
+   "brief": "지속 상승하는 젖산과 소생 실패를 인지하고 긴급 호출하세요.",
+   "role": "patient",
+   "skills": [
+    "소생 실패 인지",
+    "관류 위기 사정",
+    "긴급 호출"
+   ],
+   "keyPhrases": [
+    "Your lactate is still climbing, which tells me you need more support.",
+    "The mottling of your skin means your circulation is struggling.",
+    "I'm escalating this now and getting the physician back in immediately."
+   ],
+   "goals": [
+    "젖산 지속 상승과 소생 실패를 인지한다",
+    "관류 위기를 긴급 호출한다"
+   ]
+  },
+  {
+   "title": "쇼크 급변 삽관",
+   "tagline": "I… can't… keep breathing on my own…",
+   "room": "RESUS BAY",
+   "brief": "호흡부전 진행을 인지하고 기도확보를 준비하며 팀을 조율하세요.",
+   "role": "patient",
+   "skills": [
+    "호흡부전 인지",
+    "기도확보 준비",
+    "팀 조율"
+   ],
+   "keyPhrases": [
+    "Your breathing is tiring out, so we're going to help you with a tube.",
+    "We're preparing everything to keep you safe during this.",
+    "I'll be right here — try to stay calm and breathe with the oxygen."
+   ],
+   "goals": [
+    "호흡부전 진행을 인지한다",
+    "기도확보를 준비하고 팀을 조율한다"
+   ]
+  },
+  {
+   "title": "패혈증 심정지 전조",
+   "tagline": "His pressure's collapsing and his rate is crashing — arrest is close.",
+   "room": "RESUS BAY",
+   "brief": "관류 붕괴와 심정지 전조를 인지하고 소생 준비를 지휘하세요.",
+   "role": "colleague",
+   "skills": [
+    "심정지 전조 인지",
+    "소생 준비",
+    "팀 지휘"
+   ],
+   "keyPhrases": [
+    "His pressure is collapsing and the rate is dropping — arrest is imminent.",
+    "Get the crash cart here and pads on now.",
+    "Keep the pressor running and prepare for compressions if he loses pulse."
+   ],
+   "goals": [
+    "관류 붕괴와 심정지 전조를 인지한다",
+    "소생 준비를 지휘한다"
+   ]
+  },
+  {
+   "title": "중증 패혈증 ICU 이송",
+   "tagline": "Transferring a septic shock patient to the ICU — need to hand off the bundle.",
+   "room": "RESUS BAY",
+   "brief": "번들 이행 상태와 승압 정보를 정리해 ICU 팀에 SBAR로 인계하세요.",
+   "role": "colleague",
+   "skills": [
+    "ICU 인계",
+    "번들 이행 정리",
+    "승압 정보 전달"
+   ],
+   "keyPhrases": [
+    "Septic shock, source is a urinary infection, bundle completed within the hour.",
+    "He's on norepinephrine at eight, MAP holding at sixty-six.",
+    "Last lactate was four, down from six after resuscitation."
+   ],
+   "goals": [
+    "번들 이행 상태를 정리한다",
+    "승압·젖산 정보를 ICU에 SBAR로 인계한다"
+   ]
+  }
+ ]
+}

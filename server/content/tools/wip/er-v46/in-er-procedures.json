@@ -1,0 +1,446 @@
+{
+ "theme": "er-procedures",
+ "situations": [
+  {
+   "title": "채혈 전 환자 확인",
+   "tagline": "Let's confirm your name and date of birth before I draw blood.",
+   "room": "BAY",
+   "brief": "채혈 전 이름·생년월일로 환자를 2인 확인하고 절차를 안내하세요.",
+   "role": "patient",
+   "skills": [
+    "환자 2인 확인",
+    "채혈 안내",
+    "신원 대조"
+   ],
+   "keyPhrases": [
+    "Can you tell me your full name and date of birth?",
+    "I'm going to draw a small tube of blood.",
+    "You'll feel a quick pinch, then it's over."
+   ],
+   "goals": [
+    "이름·생년월일로 환자를 정확히 확인한다",
+    "채혈 절차와 느낌을 미리 안내한다"
+   ]
+  },
+  {
+   "title": "정맥로 확보 안내",
+   "tagline": "I'm placing a small tube in your vein for your fluids.",
+   "room": "BAY",
+   "brief": "정맥로 삽입 과정과 따끔함을 설명하며 긴장한 환자를 안심시키세요.",
+   "role": "patient",
+   "skills": [
+    "정맥로 설명",
+    "통증 예고",
+    "환자 안심"
+   ],
+   "keyPhrases": [
+    "This little tube lets us give you fluids and medicine.",
+    "You'll feel a sharp pinch for just a second.",
+    "Try to hold your arm nice and still for me."
+   ],
+   "goals": [
+    "정맥로 삽입 목적과 느낌을 설명한다",
+    "바늘을 무서워하는 환자를 안심시킨다"
+   ]
+  },
+  {
+   "title": "소변 검체 채취 안내",
+   "tagline": "We need a clean, mid-stream urine sample.",
+   "room": "BAY",
+   "brief": "중간뇨 청결채취 방법을 환자에게 단계별로 안내하세요.",
+   "role": "patient",
+   "skills": [
+    "검체 채취 교육",
+    "청결법 안내",
+    "사생활 배려"
+   ],
+   "keyPhrases": [
+    "First wipe from front to back with this cloth.",
+    "Start urinating, then catch the middle part in the cup.",
+    "Leave the sample here and I'll take care of it."
+   ],
+   "goals": [
+    "중간뇨 청결채취 방법을 순서대로 설명한다",
+    "환자의 사생활을 배려하며 안내한다"
+   ]
+  },
+  {
+   "title": "심전도 부착 설명",
+   "tagline": "These stickers read your heart — just hold still.",
+   "room": "BAY",
+   "brief": "심전도 전극 부착 과정을 설명하고 움직임 자제를 안내하세요.",
+   "role": "patient",
+   "skills": [
+    "심전도 설명",
+    "협조 유도",
+    "안심 제공"
+   ],
+   "keyPhrases": [
+    "I'm placing these stickers to check your heart.",
+    "It doesn't hurt at all — it just listens.",
+    "Please stay still for about ten seconds."
+   ],
+   "goals": [
+    "심전도 목적과 과정을 쉽게 설명한다",
+    "정확한 측정을 위해 움직임 자제를 유도한다"
+   ]
+  },
+  {
+   "title": "검사 목적 설명",
+   "tagline": "Let me explain why we're running these tests.",
+   "room": "BAY",
+   "brief": "시행할 검사의 필요성과 목적을 설명해 환자를 안심시키세요.",
+   "role": "patient",
+   "skills": [
+    "검사 설명",
+    "필요성 전달",
+    "불안 완화"
+   ],
+   "keyPhrases": [
+    "These tests help us find what's causing your pain.",
+    "It's a routine step to keep you safe.",
+    "I'll let you know as soon as we have results."
+   ],
+   "goals": [
+    "검사의 필요성과 목적을 명확히 전달한다",
+    "검사에 대한 불안을 완화한다"
+   ]
+  },
+  {
+   "title": "어려운 정맥 확보",
+   "tagline": "Your veins are tricky today — let me try another way.",
+   "room": "BAY",
+   "brief": "정맥로 확보에 반복 실패한 상황에서 환자를 안심시키고 대안을 설명하세요.",
+   "role": "patient",
+   "skills": [
+    "실패 상황 소통",
+    "대안 제시",
+    "신뢰 유지"
+   ],
+   "keyPhrases": [
+    "I'm sorry this is taking a few tries.",
+    "Your veins are hard to see, so I'll use a warm pack.",
+    "If needed, I'll ask a colleague who's great at this."
+   ],
+   "goals": [
+    "반복 실패에 대한 불안을 진정시킨다",
+    "온찜질·타 인력 등 대안을 설명한다"
+   ]
+  },
+  {
+   "title": "소아 채혈 협조 유도",
+   "tagline": "We'll make the blood draw quick and easy for him.",
+   "room": "PEDS",
+   "brief": "채혈을 겁내는 아동과 부모를 진정시키며 협조를 유도하세요.",
+   "role": "family",
+   "skills": [
+    "소아 협조 유도",
+    "부모 참여",
+    "놀이적 접근"
+   ],
+   "keyPhrases": [
+    "You can hold him on your lap to keep him calm.",
+    "We'll count to three together and it's done.",
+    "A sticker and a big high-five are waiting after."
+   ],
+   "goals": [
+    "부모를 통해 아동의 협조를 이끈다",
+    "놀이·보상으로 두려움을 줄인다"
+   ]
+  },
+  {
+   "title": "조영제 검사 사전 확인",
+   "tagline": "Before the CT, I need to check a few things.",
+   "room": "BAY",
+   "brief": "조영제 검사 전 알레르기·신기능·금기 사항을 확인하세요.",
+   "role": "patient",
+   "skills": [
+    "조영제 안전 확인",
+    "알레르기 문진",
+    "신기능 확인"
+   ],
+   "keyPhrases": [
+    "Have you ever reacted to contrast dye before?",
+    "Do you have any kidney problems or take metformin?",
+    "The dye may feel warm — that's normal."
+   ],
+   "goals": [
+    "조영제 알레르기·신기능·금기를 확인한다",
+    "검사 중 정상 감각을 미리 안내한다"
+   ]
+  },
+  {
+   "title": "배양검사 무균 채취",
+   "tagline": "We need to draw this without any contamination.",
+   "room": "BAY",
+   "brief": "배양검사 무균 채취의 이유와 협조 사항을 설명하세요.",
+   "role": "patient",
+   "skills": [
+    "무균술 설명",
+    "오염 방지",
+    "협조 유도"
+   ],
+   "keyPhrases": [
+    "I need to clean the site really well first.",
+    "Please try not to touch the area once it's prepped.",
+    "This keeps the sample clean so results are accurate."
+   ],
+   "goals": [
+    "무균 채취의 필요성을 설명한다",
+    "오염 방지를 위한 협조를 유도한다"
+   ]
+  },
+  {
+   "title": "항생제 첫 투여 설명",
+   "tagline": "This is your first dose — tell me right away if you feel odd.",
+   "room": "BAY",
+   "brief": "첫 항생제 투여 전 알레르기를 확인하고 반응 감시를 설명하세요.",
+   "role": "patient",
+   "skills": [
+    "항생제 교육",
+    "알레르기 확인",
+    "반응 감시 안내"
+   ],
+   "keyPhrases": [
+    "Have you had this antibiotic before?",
+    "Tell me right away if you feel itchy or short of breath.",
+    "I'll be watching you closely during the first dose."
+   ],
+   "goals": [
+    "알레르기와 과거 반응을 확인한다",
+    "초기 반응 증상과 감시 계획을 설명한다"
+   ]
+  },
+  {
+   "title": "수혈 전 확인·설명",
+   "tagline": "Let's confirm your blood type before we start.",
+   "room": "BAY",
+   "brief": "수혈 전 혈액형·환자 확인을 하고 반응 관찰 방법을 설명하세요.",
+   "role": "patient",
+   "skills": [
+    "수혈 전 확인",
+    "이중 대조",
+    "반응 관찰 안내"
+   ],
+   "keyPhrases": [
+    "Two of us will double-check your name and blood type.",
+    "Tell me if you feel chills, itching, or back pain.",
+    "The first fifteen minutes we'll watch you very closely."
+   ],
+   "goals": [
+    "혈액형·환자 신원을 이중 확인한다",
+    "수혈 반응 증상과 관찰 계획을 설명한다"
+   ]
+  },
+  {
+   "title": "비위관 삽입 협조",
+   "tagline": "When I say swallow, take a sip and swallow hard.",
+   "room": "BAY",
+   "brief": "비위관 삽입 시 삼킴 유도와 불편감을 설명하며 협조를 이끄세요.",
+   "role": "patient",
+   "skills": [
+    "비위관 삽입 안내",
+    "삼킴 유도",
+    "불편감 관리"
+   ],
+   "keyPhrases": [
+    "This tube goes through your nose into your stomach.",
+    "When I say go, swallow the water to help it down.",
+    "It feels strange, but it won't stop you breathing."
+   ],
+   "goals": [
+    "삼킴 타이밍을 유도해 삽입을 돕는다",
+    "불편감을 예고하고 안심시킨다"
+   ]
+  },
+  {
+   "title": "도뇨관 삽입 설명",
+   "tagline": "This catheter will help drain your bladder.",
+   "room": "BAY",
+   "brief": "도뇨관 삽입 절차와 감염 예방을 설명하고 동의를 확인하세요.",
+   "role": "patient",
+   "skills": [
+    "도뇨관 교육",
+    "감염 예방",
+    "동의 확인"
+   ],
+   "keyPhrases": [
+    "This soft tube drains the urine that's stuck.",
+    "I'll clean everything carefully to prevent infection.",
+    "It's uncomfortable for a moment, then the pressure eases."
+   ],
+   "goals": [
+    "삽입 절차와 감염 예방을 설명한다",
+    "사생활을 배려하며 동의를 확인한다"
+   ]
+  },
+  {
+   "title": "검체 라벨·추적",
+   "tagline": "Let's confirm your name on every one of these labels.",
+   "room": "BAY",
+   "brief": "다검체 채취 시 환자 확인과 정확한 라벨링·추적을 안내하세요.",
+   "role": "patient",
+   "skills": [
+    "검체 라벨링",
+    "환자 확인",
+    "추적 관리"
+   ],
+   "keyPhrases": [
+    "I'm labeling each tube with your name right at your bedside.",
+    "Can you confirm your date of birth once more?",
+    "This makes sure your results never get mixed up."
+   ],
+   "goals": [
+    "침상에서 환자 확인 후 라벨링한다",
+    "다검체의 정확한 추적을 설명한다"
+   ]
+  },
+  {
+   "title": "중심정맥관 삽입 보조",
+   "tagline": "The doctor will place a deeper line — I'm right here.",
+   "room": "RESUS",
+   "brief": "중심정맥관 삽입 중 무균·체위·모니터링을 관리하며 깨어 있는 환자를 안심시키세요.",
+   "role": "patient",
+   "skills": [
+    "중심정맥관 보조",
+    "무균 유지",
+    "체위·모니터링"
+   ],
+   "keyPhrases": [
+    "Please keep your head turned to this side.",
+    "You'll feel some numbing medicine, then pressure.",
+    "The drapes keep everything sterile — try not to touch them."
+   ],
+   "goals": [
+    "무균·체위·모니터링을 유지하며 보조한다",
+    "겁먹은 환자를 침착하게 안심시킨다"
+   ]
+  },
+  {
+   "title": "수혈 반응 발생",
+   "tagline": "I'm stopping the transfusion right now — you're having a reaction.",
+   "room": "BAY",
+   "brief": "급성 수혈 반응이 발생한 환자에게 즉각 중단을 알리고 대응하세요.",
+   "role": "patient",
+   "skills": [
+    "수혈 반응 대응",
+    "즉시 중단",
+    "증상 사정"
+   ],
+   "keyPhrases": [
+    "I'm stopping the blood right away.",
+    "Tell me exactly what you're feeling now.",
+    "We're switching to fluids and calling the doctor."
+   ],
+   "goals": [
+    "반응을 인지하고 즉시 수혈을 중단한다",
+    "증상을 사정하며 환자를 안심시킨다"
+   ]
+  },
+  {
+   "title": "조영제 아나필락시스",
+   "tagline": "You're reacting to the dye — we're acting now.",
+   "room": "RESUS",
+   "brief": "검사 중 발생한 조영제 아나필락시스에 응급 대응하며 환자를 안심시키세요.",
+   "role": "patient",
+   "skills": [
+    "아나필락시스 대응",
+    "기도 감시",
+    "응급 소통"
+   ],
+   "keyPhrases": [
+    "You're having a reaction to the contrast.",
+    "We're giving epinephrine to open your airway.",
+    "Focus on my voice and try to breathe slowly."
+   ],
+   "goals": [
+    "조영제 반응을 즉시 인지하고 대응한다",
+    "호흡 곤란 환자를 침착하게 지지한다"
+   ]
+  },
+  {
+   "title": "골내주사(IO) 응급 확보",
+   "tagline": "We couldn't find a vein, so we're using the bone route.",
+   "room": "RESUS",
+   "brief": "혈관 확보 실패로 골내주사를 시행하는 쇼크 환자에게 신속히 설명하며 대응하세요.",
+   "role": "patient",
+   "skills": [
+    "골내주사 대응",
+    "응급 혈관 확보",
+    "위기 소통"
+   ],
+   "keyPhrases": [
+    "We're placing a line in your leg bone to give medicine fast.",
+    "You'll feel strong pressure — it means it's working.",
+    "Stay with me, we're getting fluids into you now."
+   ],
+   "goals": [
+    "혈관 실패 시 골내 경로를 신속히 확보한다",
+    "위중한 환자에게 짧고 명확히 설명한다"
+   ]
+  },
+  {
+   "title": "응급 약물 오류 방지",
+   "tagline": "Let's double-check this high-risk drug together.",
+   "room": "STATION",
+   "brief": "고위험 약물 투여 전 동료 간호사와 이중확인을 수행하세요.",
+   "role": "colleague",
+   "skills": [
+    "고위험약 이중확인",
+    "소리내어 대조",
+    "오류 예방"
+   ],
+   "keyPhrases": [
+    "Can you verify the drug, dose, and concentration with me?",
+    "Right patient, right route — let's read it aloud.",
+    "I calculated fifteen units; can you confirm?"
+   ],
+   "goals": [
+    "약물·용량·경로를 소리내어 이중확인한다",
+    "불일치 발견 시 즉시 중단·재확인한다"
+   ]
+  },
+  {
+   "title": "흉관 삽입 보조·통증",
+   "tagline": "The doctor is placing a chest tube — I'll manage your pain.",
+   "room": "RESUS",
+   "brief": "흉관 삽입 중 진통·안정을 제공하며 침습적 절차를 겪는 환자를 지지하세요.",
+   "role": "patient",
+   "skills": [
+    "흉관 삽입 보조",
+    "통증 조절",
+    "절차 중 안정"
+   ],
+   "keyPhrases": [
+    "You'll feel numbing medicine, then pushing pressure.",
+    "Squeeze my hand — I'm giving you pain medicine now.",
+    "This tube helps your lung expand and you'll breathe easier."
+   ],
+   "goals": [
+    "삽입 중 진통·안정을 제공한다",
+    "통증에 긴장한 환자와 접촉을 유지한다"
+   ]
+  },
+  {
+   "title": "대량수혈 프로토콜",
+   "tagline": "We're activating massive transfusion — what's the ratio?",
+   "room": "RESUS",
+   "brief": "대량출혈 상황에서 당직의와 다중 혈액제제 투여를 조율하세요.",
+   "role": "colleague",
+   "skills": [
+    "대량수혈 조율",
+    "혈액제제 관리",
+    "팀 소통"
+   ],
+   "keyPhrases": [
+    "I'm hanging the first unit of packed cells now.",
+    "Do you want one-to-one-to-one ratio with plasma and platelets?",
+    "Blood bank has two more coolers on the way."
+   ],
+   "goals": [
+    "혈액제제 비율과 순서를 의사와 조율한다",
+    "투여 현황과 도착 상태를 명확히 보고한다"
+   ]
+  }
+ ]
+}

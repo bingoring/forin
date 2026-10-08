@@ -1,0 +1,446 @@
+{
+ "theme": "er-burn",
+ "situations": [
+  {
+   "title": "화상 초기 사정",
+   "tagline": "I spilled boiling water all over my arm and chest.",
+   "room": "ACUTE ZONE",
+   "brief": "화상의 원인·범위·깊이를 신속히 평가하세요.",
+   "role": "patient",
+   "skills": [
+    "화상 사정",
+    "원인·범위 확인",
+    "화상 어휘"
+   ],
+   "keyPhrases": [
+    "How did the burn happen and what caused it?",
+    "I'm going to look at how large and deep the burn is.",
+    "Let me remove anything covering the burned skin gently."
+   ],
+   "goals": [
+    "화상 원인과 범위·깊이를 신속히 사정한다",
+    "손상 부위와 노출 정도를 파악한다"
+   ]
+  },
+  {
+   "title": "TBSA 9의 법칙 설명",
+   "tagline": "How much of my body actually got burned?",
+   "room": "ACUTE ZONE",
+   "brief": "9의 법칙으로 체표면적을 추정하고 환자에게 설명하세요.",
+   "role": "patient",
+   "skills": [
+    "TBSA 추정",
+    "9의 법칙",
+    "화상 어휘"
+   ],
+   "keyPhrases": [
+    "We estimate how much skin is burned using body regions.",
+    "Each arm counts as about nine percent of your body.",
+    "This helps us decide how much fluid you need."
+   ],
+   "goals": [
+    "9의 법칙으로 TBSA를 추정한다",
+    "추정 목적과 결과를 이해하기 쉽게 설명한다"
+   ]
+  },
+  {
+   "title": "화상 깊이 구분",
+   "tagline": "Some spots hurt a lot but others feel numb—why?",
+   "room": "ACUTE ZONE",
+   "brief": "표재·부분·전층 화상을 통증 차이로 구분해 설명하세요.",
+   "role": "patient",
+   "skills": [
+    "화상 깊이 구분",
+    "통증 양상 사정",
+    "화상 어휘"
+   ],
+   "keyPhrases": [
+    "Deeper burns can actually feel numb because of nerve damage.",
+    "The very painful areas are usually more shallow burns.",
+    "I'm checking each area for depth and sensation."
+   ],
+   "goals": [
+    "표재·부분·전층 화상을 통증으로 구분한다",
+    "깊이 차이와 의미를 설명한다"
+   ]
+  },
+  {
+   "title": "초기 냉각·세척",
+   "tagline": "It's still burning—can you cool it down?",
+   "room": "ACUTE ZONE",
+   "brief": "지속 세척으로 냉각하되 과냉각을 피하도록 관리·설명하세요.",
+   "role": "patient",
+   "skills": [
+    "화상 냉각",
+    "세척 관리",
+    "저체온 예방"
+   ],
+   "keyPhrases": [
+    "We'll rinse the burn with cool water to stop the heat.",
+    "We avoid ice so we don't damage the skin further.",
+    "Tell me if you start feeling cold or shivery."
+   ],
+   "goals": [
+    "지속 세척으로 열손상을 중단시킨다",
+    "과냉각·저체온을 예방하며 관리한다"
+   ]
+  },
+  {
+   "title": "통증 척도·기전 청취",
+   "tagline": "The stove caught fire while I was cooking.",
+   "room": "TRIAGE",
+   "brief": "열원·노출·밀폐공간 등 기전과 통증 척도를 청취하세요.",
+   "role": "patient",
+   "skills": [
+    "수상기전 문진",
+    "통증 척도 사정",
+    "병력 청취"
+   ],
+   "keyPhrases": [
+    "What caused the burn and how long were you exposed?",
+    "Were you in an enclosed, smoky space?",
+    "On a scale of zero to ten, how bad is the pain?"
+   ],
+   "goals": [
+    "열원·노출 시간·밀폐 여부를 확인한다",
+    "통증 강도를 사정하고 흡입 위험을 선별한다"
+   ]
+  },
+  {
+   "title": "흡입 손상 의심",
+   "tagline": "My throat feels tight and my voice sounds strange after the fire.",
+   "room": "RESUS BAY",
+   "brief": "안면 화상·그을음 환자의 기도를 조기에 사정하고 삽관 필요성을 판단하세요.",
+   "role": "patient",
+   "skills": [
+    "흡입 손상 사정",
+    "기도 평가",
+    "화상 어휘"
+   ],
+   "keyPhrases": [
+    "I need to look inside your mouth and throat.",
+    "Has your voice changed or does it hurt to swallow?",
+    "We may need to protect your airway early to be safe."
+   ],
+   "goals": [
+    "그을음·쉰목소리 등 기도 손상 징후를 사정한다",
+    "기도 부종 진행 위험을 조기에 판단·보고한다"
+   ]
+  },
+  {
+   "title": "대면적 화상 수액소생",
+   "tagline": "Why am I getting so much fluid through this IV?",
+   "room": "RESUS BAY",
+   "brief": "Parkland 공식과 소변량 목표로 대면적 화상 수액소생을 관리·설명하세요.",
+   "role": "patient",
+   "skills": [
+    "수액소생",
+    "Parkland 공식",
+    "소변량 감시"
+   ],
+   "keyPhrases": [
+    "Large burns lose fluid, so we replace it carefully.",
+    "We measure your urine to make sure the fluids are enough.",
+    "Tell me if you feel thirsty or very tired."
+   ],
+   "goals": [
+    "Parkland 공식으로 수액량을 산정한다",
+    "소변량 목표로 소생 적정성을 감시한다"
+   ]
+  },
+  {
+   "title": "화학 화상",
+   "tagline": "Some chemical splashed on my skin and it keeps stinging.",
+   "room": "DECON / ISOLATION",
+   "brief": "원인물질을 확인하고 중화 없이 지속 세척으로 화학 화상을 처치하세요.",
+   "role": "patient",
+   "skills": [
+    "화학 화상 처치",
+    "지속 세척",
+    "원인물질 확인"
+   ],
+   "keyPhrases": [
+    "What chemical was it, and do you know its name?",
+    "We'll rinse it with lots of water, not neutralize it.",
+    "Keep rinsing—this removes the chemical from your skin."
+   ],
+   "goals": [
+    "원인물질을 확인하고 오염 의복을 제거한다",
+    "중화하지 않고 지속 세척으로 처치한다"
+   ]
+  },
+  {
+   "title": "전기 화상 심전도 감시",
+   "tagline": "The electric shock threw me back—my heart feels weird.",
+   "room": "RESUS BAY",
+   "brief": "전기 화상 환자의 부정맥을 심전도로 감시하고 입출구 창상을 확인하세요.",
+   "role": "patient",
+   "skills": [
+    "전기 화상 사정",
+    "심전도 감시",
+    "입출구 창상 확인"
+   ],
+   "keyPhrases": [
+    "Electrical burns can affect your heart, so we're monitoring it.",
+    "Let me find the entry and exit wounds on your body.",
+    "Tell me if your heart races or you feel dizzy."
+   ],
+   "goals": [
+    "심전도로 부정맥을 지속 감시한다",
+    "입구·출구 창상과 심부 손상을 사정한다"
+   ]
+  },
+  {
+   "title": "순환성 전층화상",
+   "tagline": "My arm feels really tight and my fingers are tingling.",
+   "room": "RESUS BAY",
+   "brief": "사지를 조이는 전층화상의 압박·순환장애를 사정하고 가피절개를 조율하세요.",
+   "role": "patient",
+   "skills": [
+    "순환성 화상 사정",
+    "원위부 순환",
+    "가피절개 조율"
+   ],
+   "keyPhrases": [
+    "The burn is circling your arm and may cut off circulation.",
+    "I'm checking the pulse and feeling in your fingers.",
+    "We may need to release the pressure with a small cut."
+   ],
+   "goals": [
+    "순환성 화상의 원위부 순환장애를 사정한다",
+    "가피절개 필요성을 판단·조율한다"
+   ]
+  },
+  {
+   "title": "소아 화상 학대 감별",
+   "tagline": "He got burned in the bath—it was just an accident.",
+   "room": "EXAM ROOM",
+   "brief": "소아 화상의 대칭·경계 패턴을 사정해 학대 가능성을 신중히 감별하세요.",
+   "role": "family",
+   "skills": [
+    "소아 화상 사정",
+    "학대 패턴 감별",
+    "보호자 문진"
+   ],
+   "keyPhrases": [
+    "Can you walk me through exactly how the burn happened?",
+    "I'm noting the shape and edges of the burn carefully.",
+    "We check every child's injury to keep them safe."
+   ],
+   "goals": [
+    "대칭·명확한 경계 등 의심 패턴을 사정한다",
+    "기전과 진술 일관성을 비판단적으로 확인한다"
+   ]
+  },
+  {
+   "title": "고령 화상 동반질환",
+   "tagline": "I have diabetes and heart trouble—will this burn be okay?",
+   "room": "ACUTE ZONE",
+   "brief": "얇은 피부와 기저질환을 고려해 고령 화상 환자를 사정하세요.",
+   "role": "patient",
+   "skills": [
+    "고령 화상 사정",
+    "동반질환 고려",
+    "치유 위험 평가"
+   ],
+   "keyPhrases": [
+    "Older skin is thinner, so burns can be deeper than they look.",
+    "Your diabetes may slow healing, so we'll watch it closely.",
+    "What medicines and health problems do you have?"
+   ],
+   "goals": [
+    "얇은 피부로 인한 깊이 과소평가를 방지한다",
+    "동반질환이 치유·소생에 미칠 영향을 사정한다"
+   ]
+  },
+  {
+   "title": "안면·수부 화상 기능",
+   "tagline": "My hands are burned—will I be able to use them again?",
+   "room": "ACUTE ZONE",
+   "brief": "기능 부위(안면·수부) 화상을 사정하고 화상센터 전원을 조율하세요.",
+   "role": "patient",
+   "skills": [
+    "기능 부위 화상 사정",
+    "전원 조율",
+    "화상 어휘"
+   ],
+   "keyPhrases": [
+    "Burns to your hands need special care to keep function.",
+    "We'll refer you to a burn center for the best outcome.",
+    "We'll keep your fingers positioned and covered properly."
+   ],
+   "goals": [
+    "기능 부위 화상의 깊이와 범위를 사정한다",
+    "화상센터 전원 기준에 따라 이송을 조율한다"
+   ]
+  },
+  {
+   "title": "언어장벽 화상",
+   "tagline": "Nóng... axit... không nói được tiếng Anh.",
+   "room": "TRIAGE",
+   "brief": "언어장벽 환자의 원인물질·노출시간을 통역과 함께 확보하세요.",
+   "role": "patient",
+   "skills": [
+    "언어장벽 소통",
+    "통역 활용",
+    "원인물질 확인"
+   ],
+   "keyPhrases": [
+    "I'm getting an interpreter to help us communicate.",
+    "What caused the burn—heat, chemical, or electricity?",
+    "How long was your skin in contact with it?"
+   ],
+   "goals": [
+    "통역을 통해 원인물질과 노출시간을 확보한다",
+    "핵심 병력·알레르기를 안전하게 확인한다"
+   ]
+  },
+  {
+   "title": "화상센터 이송 기준",
+   "tagline": "They said I need to go to a special burn hospital—why?",
+   "room": "ACUTE ZONE",
+   "brief": "전원 기준을 설명하고 이송 전 처치를 완료하세요.",
+   "role": "patient",
+   "skills": [
+    "전원 기준 설명",
+    "이송 전 처치",
+    "화상 어휘"
+   ],
+   "keyPhrases": [
+    "A burn center has specialists for burns like yours.",
+    "Before transfer, we'll cover the burns and manage your pain.",
+    "We'll keep you warm and send your records with you."
+   ],
+   "goals": [
+    "화상센터 이송 기준을 설명한다",
+    "피복·진통·보온 등 이송 전 처치를 완료한다"
+   ]
+  },
+  {
+   "title": "기도 화상 부종 진행",
+   "tagline": "My breathing is getting harder and my throat is swelling.",
+   "room": "RESUS BAY",
+   "brief": "진행하는 기도 부종을 인지하고 조기 삽관을 준비·보조하세요.",
+   "role": "patient",
+   "skills": [
+    "기도 부종 인지",
+    "조기 삽관 준비",
+    "응급 소통"
+   ],
+   "keyPhrases": [
+    "Your airway is swelling, so we need to secure it now.",
+    "We're going to place a breathing tube before it closes.",
+    "Try to stay calm—this will help you breathe safely."
+   ],
+   "goals": [
+    "진행하는 기도 부종·폐쇄 위험을 즉시 인지한다",
+    "조기 삽관을 신속히 준비·보조한다"
+   ]
+  },
+  {
+   "title": "대면적 화상 저혈량 쇼크",
+   "tagline": "I feel so weak and my heart is racing.",
+   "room": "RESUS BAY",
+   "brief": "대면적 화상의 저혈량 쇼크를 대량 수액과 소변량 목표로 관리하세요.",
+   "role": "patient",
+   "skills": [
+    "저혈량 쇼크 관리",
+    "대량 수액",
+    "소변량 감시"
+   ],
+   "keyPhrases": [
+    "Large burns cause heavy fluid loss, so we're giving fluids fast.",
+    "Your urine output tells us if the fluids are working.",
+    "We're watching your pressure and heart rate closely."
+   ],
+   "goals": [
+    "화상성 저혈량 쇼크를 사정한다",
+    "대량 수액과 소변량 목표로 소생을 관리한다"
+   ]
+  },
+  {
+   "title": "일산화탄소/시안 중독",
+   "tagline": "I have a splitting headache and feel confused after the fire.",
+   "room": "RESUS BAY",
+   "brief": "정상 SpO2 함정을 인지하고 고농도 산소로 CO/시안 중독을 처치하세요.",
+   "role": "patient",
+   "skills": [
+    "CO/시안 중독 인지",
+    "SpO2 함정 이해",
+    "고농도 산소"
+   ],
+   "keyPhrases": [
+    "The pulse oximeter can read normal even with this poisoning.",
+    "We're giving you high-flow oxygen right away.",
+    "Confusion and headache after a fire are important warning signs."
+   ],
+   "goals": [
+    "정상 SpO2 함정을 인지하고 중독을 의심한다",
+    "고농도 산소를 적용하고 신속히 보고한다"
+   ]
+  },
+  {
+   "title": "흉부 원주형 화상 환기장애",
+   "tagline": "My chest is so tight I can't take a full breath.",
+   "room": "RESUS BAY",
+   "brief": "흉부를 조이는 원주형 화상의 환기장애를 사정하고 가피절개를 조율하세요.",
+   "role": "patient",
+   "skills": [
+    "흉부 원주형 화상 사정",
+    "환기장애 인지",
+    "가피절개 조율"
+   ],
+   "keyPhrases": [
+    "The burn around your chest is restricting your breathing.",
+    "We may make small cuts in the burned skin to let it expand.",
+    "This will help your chest move so you can breathe."
+   ],
+   "goals": [
+    "흉벽 확장 제한과 환기장애를 사정한다",
+    "흉부 가피절개 필요성을 판단·조율한다"
+   ]
+  },
+  {
+   "title": "전기화상 횡문근융해",
+   "tagline": "My urine looks dark like tea and my muscles ache badly.",
+   "room": "RESUS BAY",
+   "brief": "근붕괴로 인한 고칼륨·신손상 위험을 사정하고 수액·감시를 관리하세요.",
+   "role": "patient",
+   "skills": [
+    "횡문근융해 사정",
+    "고칼륨 감시",
+    "신보호 수액"
+   ],
+   "keyPhrases": [
+    "Dark urine can mean your muscles are breaking down.",
+    "We're giving fluids to protect your kidneys.",
+    "We're watching your potassium and heart rhythm closely."
+   ],
+   "goals": [
+    "근붕괴·암갈색 소변·근육통을 사정한다",
+    "고칼륨·신손상 위험에 수액·감시를 관리한다"
+   ]
+  },
+  {
+   "title": "화상 SBAR 인계",
+   "tagline": "Burn center is on the line—give me the full report.",
+   "room": "RESUS BAY",
+   "brief": "TBSA·수액량·기도 상태를 SBAR로 화상센터에 인계하세요.",
+   "role": "colleague",
+   "skills": [
+    "SBAR 인계",
+    "화상 요약",
+    "팀 소통"
+   ],
+   "keyPhrases": [
+    "This is a 35-year-old with 30 percent TBSA burns.",
+    "We started Parkland fluids and urine output is adequate.",
+    "The airway is patent but we're watching for swelling."
+   ],
+   "goals": [
+    "TBSA·수액량·소변량을 SBAR로 요약한다",
+    "기도 상태와 이송 준비를 명확히 인계한다"
+   ]
+  }
+ ]
+}

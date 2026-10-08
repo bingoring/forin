@@ -1,0 +1,91 @@
+- title: 가족 대기 정보 제공
+  s:
+  - {t: "상태 설명", i: stetho, w: "being examined은 진행형 수동태라 지금 의사가 보고 있다는 뜻이에요. 상태를 먼저 말하면 대기 중인 가족이 가장 궁금해하는 점부터 풀려요.", d: "last night", k: ["수술이 방금 끝났어요", "곧 집에 가실 수 있어요"], a: "stable", ai: chartup, o: [["critical", "siren"], ["unstable", "faceWorried"], ["confused", "bulb"]]}
+  - {t: "대기 안내", i: lab, w: "about으로 시간을 대략으로 말해 여지를 둬요. 검사 결과 시간은 늘 변동이 있어서 정확한 시각보다 대략의 시간이 안전해요.", d: "to go away", k: ["검사는 내일 아침에 시작해요", "결과를 문자로 보내 드릴게요"], a: "an hour", ai: monitor, o: [["a minute", "play"], ["two days", "calendar"], ["a month", "pushpin"]]}
+  - {t: "약속", i: magnify, w: "I'll …은 그 자리에서 정하는 약속의 모양이에요. 시점을 as soon as로 묶으면 가족이 막연히 기다리지 않고 소식 시점을 기대할 수 있어요.", d: "to leave", k: ["여기서 잠깐만 기다려 주세요", "저는 잠시 자리를 비울게요"], a: "as soon as", ai: bell, o: [["as long as", "calendar"], ["even if", "redo"], ["unless", "lock"]]}
+  - {t: "진행 안내", i: board, w: "Let me …는 허락을 구하는 모양이지만 실제로는 정보를 주겠다는 예고라 부드럽게 시작할 수 있어요. update you on은 진행 중인 일의 새 소식을 알려 준다는 관용 표현이에요.", d: "to the lab", k: ["서류에 서명해 주세요", "환자분을 병실로 옮길게요"], a: "update", ai: bell, o: [["quiz", "pencil"], ["lecture", "speaker"], ["coach", "trophy"]]}
+  - {t: "안심", i: handshake2, w: "Try to …는 '하세요'보다 부드러운 권유예요. 쉬라는 말만 하면 가볍게 들려서, 뒤에 실제로 돌보고 있다는 근거를 붙여 안심시켜요.", d: "in a minute", k: ["곧 퇴원하실 거예요", "면회는 지금 안 돼요"], a: "relax", ai: coffee, o: [["worry", "faceWorried"], ["panic", "siren"], ["hurry", "play"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "대기 가족 안내 4문장 순서"
+    why: "먼저 안내를 시작하고 상태를 말한 뒤, 그 검사의 소요 시간을 알리고 결과가 나오면 찾아가겠다고 약속해요. 3줄의 Those tests는 2줄의 검사를, 4줄의 they는 3줄의 검사를 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "First, let me update you on how things are going.", icon: bell, ko: "먼저 진행 상황을 알려드릴게요", note: "안내"}
+    - {en: "He's stable, and the doctor has ordered some tests.", icon: stetho, ko: "안정적이고 의사 선생님이 검사를 지시했어요", note: "상태"}
+    - {en: "Those tests take about an hour to come back.", icon: lab, ko: "그 검사는 결과까지 한 시간쯤 걸려요", note: "시간"}
+    - {en: "I'll come find you as soon as they're back.", icon: compass, ko: "결과가 나오면 바로 찾아뵐게요", note: "약속"}
+  ctx: {word: "stable", ko: "안정된"}
+  sw: {ko: "검사 결과가 나오는 데 한 시간쯤 걸려요"}
+- title: 면회 규정 설명
+  s:
+  - {t: "인원 제한", i: hospital, w: "at a time은 '한 번에'라는 단위를 정해 주는 표현이에요. 규칙을 We allow로 말하면 금지가 아니라 허용되는 범위를 알려 주는 말투가 돼요.", d: "to the bed", k: ["면회는 내일부터 가능해요", "환자분은 지금 주무시고 계세요"], a: "one visitor", ai: me, o: [["two visitors", "handshake2"], ["ten visitors", "siren"], ["no visitors", "lock"]]}
+  - {t: "입실 안내", i: play, w: "shortly는 soon보다 격식 있는 '곧'이에요. a few minutes로 길이를 미리 알리면 가족이 기다리는 동안 마음의 준비를 해요.", d: "the door", k: ["의사 선생님이 곧 오실 거예요", "면회 시간은 이미 끝났어요"], a: "minutes", ai: bell, o: [["hours", "calendar"], ["nights", "home"], ["weeks", "pushpin"]]}
+  - {t: "이유 설명", i: shield, w: "keep + 장소 + 형용사는 그 상태를 유지한다는 구조예요. 규정의 이유를 '모두를 위해'로 말하면 제한이 벌처럼 들리지 않아요.", d: "than before", k: ["이 구역은 오늘 청소 중이에요", "환자분이 곧 이동하실 거예요"], a: "safe", ai: lock, o: [["noisy", "speaker"], ["crowded", "handshake2"], ["dark", "monitor"]]}
+  - {t: "현재 상황", i: bell, w: "Right now는 이 제한이 지금 상황 때문이라는 신호예요. 규칙이 영원하지 않고 상황에 따라 바뀐다고 알리면 가족이 덜 서운해해요.", d: "in the lobby", k: ["지금은 면회가 모두 끝났어요", "두 분이 함께 들어가셔도 돼요"], a: "bedside", ai: stetho, o: [["entrance", "home"], ["front desk", "board"], ["exit", "plane"]]}
+  - {t: "이유 추가", i: faceWorried, w: "It also helps는 앞서 말한 이유에 하나를 더 얹는 모양이에요. 환자의 안정을 이유로 들면 규정이 환자를 위한 것이라는 점이 분명해져요.", d: "of her", k: ["환자분은 아직 깨어나지 않으셨어요", "내일 다시 오셔도 돼요"], a: "rest", ai: coffee, o: [["argue", "faceAngry"], ["work", "gear"], ["shout", "speaker"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "면회 규정 안내 4문장 순서"
+    why: "규칙을 먼저 말하고, That으로 이유를 잇고, With that in mind로 누가 먼저 들어갈지 묻고, 마지막에 남은 분들의 차례를 안내해요. 앞 줄이 뒤 줄의 전제라 순서가 하나예요."
+    lines:
+    - {en: "We allow one visitor at the bedside at a time.", icon: hospital, ko: "한 번에 한 분만 침상 곁에 계실 수 있어요", note: "규칙"}
+    - {en: "That helps us keep the area safe and calm.", icon: shield, ko: "그래야 이 공간이 안전하고 차분해요", note: "이유"}
+    - {en: "With that in mind, who would like to go in first?", icon: speech, ko: "그걸 고려해서 누가 먼저 들어가시겠어요?", note: "질문"}
+    - {en: "The rest of you can wait here, and I'll come get you for your turn.", icon: bell, ko: "나머지 분들은 여기서 기다리시면 차례에 모시러 올게요", note: "안내"}
+  ctx: {word: "visitor", ko: "방문객"}
+- title: 보호자 신원·관계 확인
+  s:
+  - {t: "신원 확인", i: handshake2, w: "Can I …?는 허락을 구하는 질문이라 신상을 묻는 말이 취조처럼 들리지 않아요. 이름과 관계를 한 문장에 묶어 물으면 질문이 짧아져요.", d: "in a row", k: ["신분증을 보여 주시겠어요?", "보험이 어디 것인가요?"], a: "confirm", ai: lock, o: [["change", "gear"], ["publish", "speaker"], ["delete", "chevronDown"]]}
+  - {t: "관계 확인", i: speech, w: "the patient's로 환자를 기준으로 물으면 보호자가 자기 위치를 스스로 말하게 돼요. 예/아니오로 답하는 짧은 질문이라 긴장한 가족도 쉽게 대답해요.", d: "of the doctor", k: ["환자분의 보험증을 가져오셨나요?", "오늘 처음 오셨어요?"], a: "emergency", ai: siren, o: [["billing", "board"], ["insurance", "shield"], ["pharmacy", "pill"]]}
+  - {t: "이유 설명", i: lock, w: "This helps us …로 지금 묻는 이유를 먼저 밝혀요. 이유를 알면 가족이 질문을 의심이 아니라 환자 정보를 지키려는 절차로 받아들여요.", d: "to the bed", k: ["이 정보는 모두에게 공개돼요", "저희가 대신 결정해 드릴게요"], a: "share", ai: speech, o: [["hide", "monitor"], ["keep", "pushpin"], ["delete", "chevronDown"]]}
+  - {t: "관계 질문", i: me, w: "May I ask …?는 Can I …?보다 한 단계 정중한 허락 구하기예요. 가족 관계는 사적인 주제라서 더 조심스럽게 묻는 쪽이 좋아요.", d: "of the patient", k: ["환자분 성함을 알고 계세요?", "어디에 사시는지 알려 주세요"], a: "relationship", ai: handshake2, o: [["reaction", "faceAngry"], ["distance", "compass"], ["reply", "speech"]]}
+  - {t: "배려 안내", i: check, w: "It's okay if …로 모르는 것이 잘못이 아니라고 먼저 말해 줘요. 가족이 확신 없이 답해 틀리는 것보다 기록으로 확인하는 쪽이 정확해요.", d: "of ours", k: ["기억나시는 대로만 적어 드릴게요", "다른 분께 물어봐 주세요"], a: "check", ai: magnify, o: [["update", "pencil"], ["delete", "lock"], ["print", "board"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "보호자 확인 4문장 순서"
+    why: "자기소개로 시작해 관계를 묻고, Thank you로 답을 받은 뒤 확신이 없을 때의 대안을 안내해요. 2줄의 him은 1줄의 환자를, 3줄의 that은 2줄의 대답을 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "Hi, I'm Anna, the nurse taking care of him.", icon: me, ko: "안녕하세요, 환자분을 돌보는 간호사 안나예요", note: "소개"}
+    - {en: "May I ask your relationship to him?", icon: handshake2, ko: "환자분과 어떤 관계이신지 여쭤도 될까요?", note: "관계"}
+    - {en: "Thank you, that helps us know what we can share with you.", icon: lock, ko: "감사해요, 덕분에 어디까지 말씀드릴지 알 수 있어요", note: "이유"}
+    - {en: "If you're not sure about something, I can check our records.", icon: check, ko: "확실하지 않은 건 기록으로 확인해 볼게요", note: "대안"}
+  ctx: {word: "relationship", ko: "관계"}
+- title: 가족 질문 경청
+  s:
+  - {t: "질문 인정", i: bulb, w: "질문을 먼저 good question으로 받아 주면 되묻는 것이 부끄럽지 않아요. 이어서 let me …로 설명을 이어 가겠다고 알려요.", d: "for asking", k: ["그 질문은 의사 선생님께 하세요", "지금은 질문을 받을 수 없어요"], a: "good", ai: star, o: [["bad", "lock"], ["silly", "play"], ["rude", "faceAngry"]]}
+  - {t: "반복 허용", i: redo, w: "It's okay to …로 허락을 직접 말해 주면 가족이 계속 물어도 되는지 눈치 보지 않아요. as many times as you need는 횟수 제한이 없다는 관용 표현이에요.", d: "than usual", k: ["질문은 한 번만 해 주세요", "설명은 이미 끝났어요"], a: "okay", ai: lock, o: [["rude", "faceAngry"], ["wrong", "chevronDown"], ["silly", "play"]]}
+  - {t: "공감", i: me, w: "I can see …는 상대의 감정을 보이는 대로 말해 주는 공감 표현이에요. and that's understandable로 그 감정이 자연스럽다고 인정하면 가족이 방어하지 않아요.", d: "about you", k: ["걱정하지 않으셔도 돼요", "이미 다 설명해 드렸어요"], a: "worried", ai: faceWorried, o: [["bored", "chevronDown"], ["proud", "trophy"], ["jealous", "faceAngry"]]}
+  - {t: "공감", i: faceWorried, w: "I know it's a lot처럼 상대 마음을 짐작해 말하면 지시가 아니라 공감으로 들려요. 그 뒤의 ask me anything이 언제든 물어도 된다는 문을 열어 줘요.", d: "for later", k: ["오늘은 질문하지 않으셔도 돼요", "필요한 건 간호사실에서 받아 가세요"], a: "ask", ai: mic, o: [["give", "handshake2"], ["bring", "coffee"], ["lend", "pushpin"]]}
+  - {t: "경청 약속", i: pushpin, w: "질문을 주어로 세우고 matter(중요하다)로 받으면 질문이 환영받는다는 걸 말 자체로 보여 줘요.", d: "to them", k: ["질문은 한 번에 하나만 해 주세요", "그 질문은 제가 대답할 수 없어요"], a: "matters", ai: star, o: [["bothers", "faceWorried"], ["scares", "siren"], ["annoys", "faceAngry"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "가족 질문 응대 4문장 순서"
+    why: "걱정을 먼저 인정하고, That's why로 질문이 중요하다고 이어 말해요. 3줄의 them은 2줄의 질문을, 4줄의 Each time은 3줄의 묻는 일을 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "I can see you're worried, and that's understandable.", icon: faceWorried, ko: "걱정되시는 게 보여요, 당연해요", note: "공감"}
+    - {en: "That's why every question you have matters to me.", icon: star, ko: "그래서 하시는 모든 질문이 저에게 중요해요", note: "이유"}
+    - {en: "So please ask them as many times as you need.", icon: redo, ko: "그러니 필요한 만큼 몇 번이든 물어보세요", note: "허용"}
+    - {en: "Each time, I'll explain again until it makes sense.", icon: bulb, ko: "그때마다 이해되실 때까지 다시 설명할게요", note: "약속"}
+  ctx: {word: "explain", ko: "설명하다"}
+- title: 환자 상태 기초 전달
+  s:
+  - {t: "상태 안정", i: monitor, w: "vital signs는 체온·맥박·호흡·혈압 같은 기본 측정값을 묶어 부르는 말이에요. 숫자 대신 look good처럼 쉬운 말로 풀어 주면 가족이 이해하기 쉬워요.", d: "at home", k: ["활력징후가 조금 불안정해요", "지금 응급 처치를 하고 있어요"], a: "good", ai: lock, o: [["bad", "redo"], ["weak", "chevronDown"], ["poor", "faceWorried"]]}
+  - {t: "검사 안내", i: lab, w: "We're running은 지금 진행 중인 일을 알려 주는 현재진행형이에요. to find the cause로 검사의 목적을 알리면 가족이 검사를 이유 있는 일로 받아들여요.", d: "of the bed", k: ["검사는 모두 끝났어요", "수술 날짜를 정하고 있어요"], a: "cause", ai: magnify, o: [["room", "home"], ["nurse", "me"], ["doctor", "stetho"]]}
+  - {t: "위험 없음", i: shield, w: "There's no …로 없다는 사실부터 말해 가장 큰 걱정을 먼저 덜어 줘요. immediate는 '당장 닥친'이라는 뜻이라 먼 앞날의 위험까지 장담하지 않는 정확한 말이에요.", d: "in the lab", k: ["위험하니 대기실로 가 주세요", "곧 수술에 들어가야 해요"], a: "immediate", ai: bell, o: [["hidden", "lock"], ["constant", "redo"], ["extra", "pushpin"]]}
+  - {t: "상황 요약", i: board, w: "where … stands는 지금 어느 단계에 와 있는지를 말하는 관용 표현이에요. Here's로 시작하면 이제부터 요약해 주겠다는 신호가 돼요.", d: "of him", k: ["아버님은 방금 걸어서 나가셨어요", "아버님은 지금 수술실로 가세요"], a: "stands", ai: chartup, o: [["sits", "coffee"], ["lies", "home"], ["waits", "calendar"]]}
+  - {t: "추후 안내", i: pushpin, w: "keep you posted는 소식이 생길 때마다 알려 준다는 관용 표현이에요. 약속을 as soon as we know more로 묶어서 모르는 것을 아는 척하지 않아요.", d: "of the news", k: ["내일 아침에 연락드릴게요", "더 알려드릴 소식은 없어요"], a: "posted", ai: bell, o: [["waiting", "calendar"], ["quiet", "mic"], ["busy", "gear"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "환자 상태 전달 4문장 순서"
+    why: "First로 현재 상태를 말하고, 검사를 하는 이유를 알린 뒤, 그 검사들의 결과를 전하고, 상황이 바뀌면 알리겠다고 맺어요. 3줄의 those tests는 2줄을, 4줄의 that은 3줄의 결과를 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "First, here's where your dad stands: he's stable.", icon: board, ko: "먼저 아버님 상태는 안정적이세요", note: "상태"}
+    - {en: "We're running some tests to find the cause.", icon: lab, ko: "원인을 찾으려고 검사를 하고 있어요", note: "검사"}
+    - {en: "So far, nothing in those tests shows immediate danger.", icon: shield, ko: "지금까지 그 검사에서 당장 위험한 건 없어요", note: "결과"}
+    - {en: "If that changes, we'll keep you posted right away.", icon: bell, ko: "달라지면 바로 알려드릴게요", note: "약속"}
+  ctx: {word: "immediate", ko: "즉각적인"}

@@ -1,0 +1,72 @@
+- title: 통역 서비스 요청 안내
+  s:
+  - {t: "서비스 안내", i: speaker, w: "I'm going to …로 하려는 일을 먼저 알리면 환자가 갑작스럽게 느끼지 않아요. 통역은 환자가 요청하기 전에 간호사가 먼저 제안하는 것이 좋아요.", d: "for the doctor", k: ["의사를 부르러 갈게요", "차트를 먼저 확인할게요"], a: "an interpreter", ai: mic, o: ["a pharmacist", "a phlebotomist", "a radiologist"]}
+  - {t: "비용 안심", i: shield, w: "무료라는 말을 덧붙이면 비용 걱정 때문에 통역을 거절하는 일을 막을 수 있어요. 연방 지원을 받는 병원은 통역 서비스를 환자에게 무료로 제공해야 해요.", d: "for a fee", k: ["통역 비용은 나중에 청구돼요", "10분 정도 기다려야 해요"], a: "free", ai: star, o: ["costly", "expensive", "extra"]}
+  - {t: "사용 방법", i: mic, w: "통역사는 전화나 화상으로 연결돼 같은 방에 없어도 돼요. 어떻게 들리게 되는지 미리 알려 주면 낯선 목소리에 놀라지 않아요.", d: "in English", k: ["이 모니터로 영상을 보실 거예요", "통역사가 직접 방에 올 거예요"], a: "phone", ai: speaker, o: ["chart", "badge", "wristband"]}
+  - {t: "연결 확인", i: bell, w: "ready to …는 이미 연결돼서 지금 바로 말해도 된다는 신호예요. 연결됐다고 알려 줘야 환자가 말을 시작해요.", d: "to call back", k: ["통역사가 아직 연결되지 않았어요", "통역사가 10분 뒤에 올 거예요"], a: "ready", ai: gear, o: ["unable", "unwilling", "reluctant"]}
+  - {t: "안심", i: faceWorried, w: "Please don't worry로 먼저 안심시킨 뒤 바로 할 행동을 말하면 기다리는 불안이 줄어요. right now는 지연이 없다는 약속이에요.", d: "if you want", k: ["통역사는 내일 부를게요", "걱정되시면 가족에게 부탁하세요"], a: "right now", ai: bell, o: ["tomorrow morning", "next week", "after lunch"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "통역 연결 안내 순서"
+    why: "먼저 통역을 부르겠다고 알리고, 그것이 무료이고 빠르다고 안심시키고, 연결됐음을 알린 뒤, 통역사에게 말하도록 안내해요. 둘째 줄의 It과 넷째 줄의 them이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "I'm going to get an interpreter on the phone for us.", icon: speaker, ko: "통역사를 전화로 연결할게요", note: "안내"}
+    - {en: "It's free for you, and it only takes a minute to connect.", icon: shield, ko: "무료이고 연결에 1분밖에 안 걸려요", note: "안심"}
+    - {en: "Okay, the interpreter is on the line now.", icon: bell, ko: "자, 통역사가 연결됐어요", note: "연결"}
+    - {en: "Go ahead and tell them what's bothering you.", icon: speech, ko: "불편한 점을 그분께 말씀해 보세요", note: "요청"}
+  ctx: {word: "call", ko: "부르다·호출하다"}
+- title: 기본 의사 확인
+  s:
+  - {t: "통증 확인", i: stetho, w: "단어만 던지는 짧은 질문은 영어가 서툰 환자에게 더 잘 전달돼요. 손가락으로 가리키게 하면 말 대신 몸으로 답할 수 있어요.", d: "Tell me how", k: ["열이 있나요? 몇 도예요?", "숨쉬기 힘든가요? 언제부터요?"], a: "Pain", ai: me, o: ["Fever", "Cough", "Chills"]}
+  - {t: "알레르기", i: pill, w: "Yes or no?를 붙이면 환자가 한두 단어로 답할 수 있어요. 약물 알레르기는 투약 전에 꼭 확인해야 하는 정보예요.", d: "or maybe", k: ["음식 알레르기가 있나요?", "지금 드시는 약이 있나요?"], a: "allergy", ai: shield, o: ["pain", "fever", "cough"]}
+  - {t: "통증 척도", i: chartup, w: "0은 통증 없음, 10은 상상할 수 있는 가장 심한 통증이에요. 숫자를 손가락으로 보여 주게 하면 영어가 서툰 환자도 통증 정도를 표현할 수 있어요.", d: "with your voice", k: ["어디가 아픈지 가리켜 주세요", "언제부터 아팠는지 말해 주세요"], a: "zero to ten", ai: pencil, o: ["one to five", "five to ten", "ten to twenty"]}
+  - {t: "위치 확인", i: magnify, w: "질문은 짧게 하고 손가락 하나로 가리키게 하면 정확한 위치를 알 수 있어요. 말이 통하지 않아도 가리키는 동작은 통해요.", d: "with both hands", k: ["통증이 언제 시작됐나요?", "통증이 어느 정도인가요?"], a: "finger", ai: me, o: ["elbow", "knee", "foot"]}
+  - {t: "알레르기", i: pill, w: "today를 붙여 오늘 방문 기준의 질문임을 분명히 해요. 같은 질문을 순서만 바꿔 다시 물으면 대답이 같은지 확인할 수 있어요.", d: "at home", k: ["지난주에 약을 드셨나요?", "어떤 약이 필요하세요?"], a: "today", ai: calendar, o: ["yesterday", "tomorrow", "last year"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "기본 의사 확인 질문 순서"
+    why: "통증 위치를 먼저 묻고, 그 통증이 얼마나 심한지 묻고, 약을 줄 수 있을 만큼 심하면 알레르기를 묻고, 마지막에 전달을 약속해요. there, that bad, all of that이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Pain? Point to where.", icon: stetho, ko: "통증? 어디인지 가리켜 주세요", note: "위치"}
+    - {en: "How bad is it there? Show me with your fingers.", icon: chartup, ko: "거기가 얼마나 아파요? 손가락으로 보여 주세요", note: "정도"}
+    - {en: "If it's that bad, I may give you medicine. Any allergy?", icon: pill, ko: "그만큼 심하면 약을 드릴 수 있어요. 알레르기 있나요?", note: "알레르기"}
+    - {en: "Thank you. I'll tell the doctor all of that.", icon: star, ko: "고마워요. 의사에게 다 전할게요", note: "전달"}
+  sw: {ko: "약물 알레르기 있나요? 예 아니오?"}
+- title: 통역 통한 동의 확인
+  s:
+  - {t: "검사 설명", i: board, w: "동의 전 설명은 환자가 이해하는 언어로 해야 해요. 통역사를 통하면 설명이 빠짐없이 전달돼요.", d: "to the doctor", k: ["통역사가 검사를 직접 할 거예요", "검사 결과는 내일 나와요"], a: "explain", ai: speech, o: ["give", "send", "take"]}
+  - {t: "이해 확인", i: speech, w: "teach-back은 환자가 들은 내용을 자기 말로 다시 말하게 해서 이해했는지 확인하는 방법이에요. 예·아니오로 답하게 하는 것보다 정확해요.", d: "again slowly", k: ["다시 한번 설명해 드릴게요", "서명해 주세요"], a: "understood", ai: gear, o: ["forgot", "signed", "paid"]}
+  - {t: "동의 확인", i: handshake2, w: "동의는 통역을 거쳐 환자 본인의 입에서 나와야 해요. 가족이 대신 답한 것을 동의로 기록하지 않는 것이 원칙이에요.", d: "for sure", k: ["이 검사는 무료예요", "서명은 나중에 하세요"], a: "Yes or no", ai: bell, o: ["Up or down", "Hot or cold", "Left or right"]}
+  - {t: "절차 설명", i: board, w: "시작하기 전에 단계를 설명하면 환자가 처치 중에 놀라지 않고, 중단을 요청할 기회도 있어요. 사전 설명은 동의 과정의 일부예요.", d: "while you wait", k: ["처치가 끝난 뒤에 설명할 거예요", "각 단계는 제가 직접 할 거예요"], a: "before", ai: pencil, o: ["until", "unless", "although"]}
+  - {t: "질문 권유", i: faceWorried, w: "모르는 것을 말해도 된다고 먼저 허락하면 환자가 부끄러워서 고개만 끄덕이는 일이 줄어요.", d: "or don't", k: ["이해하셨으면 서명해 주세요", "모르면 가족에게 물어보세요"], a: "Please", ai: star, o: ["Never", "Don't", "Seldom"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "통역 동의 확인 순서"
+    why: "통역사가 검사를 설명하고, 단계별로 짚어 주고, 환자가 들은 내용을 다시 말하게 한 뒤, 이해했다면 동의를 묻는 순서예요. They, what they said, all of that이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "The interpreter will explain the test to you first.", icon: board, ko: "먼저 통역사가 검사를 설명해 드릴 거예요", note: "설명"}
+    - {en: "They'll go through it step by step, and you can stop them any time.", icon: speaker, ko: "단계별로 짚어 드리고 언제든 멈추실 수 있어요", note: "절차"}
+    - {en: "Please tell me back what they said.", icon: speech, ko: "그분이 한 말을 다시 말씀해 주세요", note: "복창"}
+    - {en: "If you understand all of that, do you agree to it?", icon: handshake2, ko: "다 이해하셨다면 동의하시나요?", note: "동의"}
+  ctx: {word: "understand", ko: "이해하다"}
+- title: 가족 통역 한계 설명
+  s:
+  - {t: "감사", i: handshake2, w: "먼저 고마움을 표현하면 가족이 거절당했다고 느끼지 않아요. 도우려는 마음을 인정한 뒤에 이유를 설명하는 순서가 좋아요.", d: "for coming", k: ["통역은 가족이 해 주세요", "번역 앱을 쓰고 싶어요"], a: "Thank", ai: star, o: ["Blame", "Warn", "Scold"]}
+  - {t: "이유 설명", i: lock, w: "미국 병원은 의료 통역에 자격을 갖춘 통역사를 쓰도록 요구받아요. 가족은 의학 용어를 빠뜨리거나 바꾸기 쉬워요.", d: "for the form", k: ["의료 용어는 가족이 설명해요", "세부사항은 의사만 알아요"], a: "trained", ai: shield, o: ["cheap", "casual", "quick"]}
+  - {t: "이유 설명", i: shield, w: "정확성과 보호를 함께 말하면 통역사 이용이 가족을 위한 일로 들려요. 가족이 어려운 소식을 직접 옮겨야 하는 부담도 덜어 줘요.", d: "and costs extra", k: ["어머니는 곧 퇴원해요", "통역 비용을 내셔야 해요"], a: "protects", ai: bandage, o: ["scares", "blames", "tires"]}
+  - {t: "병원 방침", i: hospital, w: "always로 예외 없는 병원의 방침임을 알려요. 개인 판단이 아니라 방침이라고 말하면 가족이 덜 서운해해요.", d: "only at night", k: ["가족 통역도 가끔 허용해요", "의료 대화는 의사가 직접 해요"], a: "always", ai: gear, o: ["never", "rarely", "seldom"]}
+  - {t: "부탁", i: speech, w: "고마움으로 시작해 부탁으로 끝내면 거절이 아니라 역할 분담으로 들려요. let은 허락을 구하는 모양이라 명령보다 부드러워요.", d: "so you can rest", k: ["도와주셔서 감사해요, 이제 쉬세요", "통역사가 나가도록 해 주세요"], a: "translate", ai: bell, o: ["interrupt", "leave", "rest"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "가족 통역을 정중히 사양하는 순서"
+    why: "고마움을 먼저 전하고, 의료 내용은 통역사가 맡는다는 이유를 말하고, 그러면 내용이 정확해진다고 설명한 뒤, 가족은 곁에 있어 달라고 부탁해요. though, That way, they가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Thank you for offering to help.", icon: handshake2, ko: "도와주시겠다니 감사해요", note: "감사"}
+    - {en: "For medical details, though, we use a trained interpreter.", icon: lock, ko: "다만 의료 내용은 훈련된 통역사가 맡아요", note: "이유"}
+    - {en: "That way, everything stays accurate, and you can just be family.", icon: shield, ko: "그러면 정확하고, 가족은 가족으로 계실 수 있어요", note: "효과"}
+    - {en: "Would you stay with her while they interpret?", icon: home, ko: "통역하는 동안 어머니 곁에 계시겠어요?", note: "부탁"}
+  sw: {ko: "도와주려는 마음 감사해요 — 저희는 훈련된 통역사를 이용해요"}

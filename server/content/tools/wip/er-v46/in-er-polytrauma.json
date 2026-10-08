@@ -1,0 +1,446 @@
+{
+ "theme": "er-polytrauma",
+ "situations": [
+  {
+   "title": "1차평가 ABCDE 순서",
+   "tagline": "It hurts everywhere—I don't even know what's wrong with me.",
+   "room": "TRAUMA_BAY",
+   "brief": "기도·호흡·순환·의식·노출 순서로 1차평가를 체계적으로 시행하세요.",
+   "role": "patient",
+   "skills": [
+    "ABCDE 사정",
+    "1차평가",
+    "우선순위 판단"
+   ],
+   "keyPhrases": [
+    "Can you tell me your name and what happened?",
+    "Take a deep breath for me—does it hurt to breathe?",
+    "I'm checking you head to toe now."
+   ],
+   "goals": [
+    "ABCDE 순서로 1차평가를 진행한다",
+    "생명 위협을 우선 사정한다"
+   ]
+  },
+  {
+   "title": "경추 보호 설명",
+   "tagline": "My neck is killing me—can I just sit up a little?",
+   "room": "TRAUMA_BAY",
+   "brief": "도수 정렬과 경추 칼라의 필요성을 설명하고 환자 움직임을 통제하세요.",
+   "role": "patient",
+   "skills": [
+    "경추 보호",
+    "도수 정렬 설명",
+    "움직임 통제"
+   ],
+   "keyPhrases": [
+    "Please don't move your neck—hold still for me.",
+    "We're keeping your head in line to protect your spine.",
+    "The collar stays on until we clear your neck."
+   ],
+   "goals": [
+    "경추 보호의 이유를 설명한다",
+    "도수 정렬과 칼라 유지를 안내한다"
+   ]
+  },
+  {
+   "title": "활력·쇼크지수 사정",
+   "tagline": "My heart is racing and I feel really lightheaded.",
+   "room": "TRAUMA_BAY",
+   "brief": "빈맥·저혈압 등 활력징후로 쇼크지수를 사정하세요.",
+   "role": "patient",
+   "skills": [
+    "활력징후 사정",
+    "쇼크지수 계산",
+    "순환 평가"
+   ],
+   "keyPhrases": [
+    "I'm taking your pulse and blood pressure now.",
+    "Do you feel dizzy when you lift your head?",
+    "Your heart rate is high—we're watching you closely."
+   ],
+   "goals": [
+    "빈맥·저혈압을 사정한다",
+    "쇼크지수로 순환 상태를 평가한다"
+   ]
+  },
+  {
+   "title": "통증 부위 신속 확인",
+   "tagline": "It hurts here on my side, and my leg too, I think.",
+   "room": "TRAUMA_BAY",
+   "brief": "AVPU로 의식을 확인하고 통증 부위를 손상 지도화하세요.",
+   "role": "patient",
+   "skills": [
+    "AVPU 사정",
+    "통증 지도화",
+    "손상 부위 확인"
+   ],
+   "keyPhrases": [
+    "Point to exactly where it hurts the most.",
+    "Does it hurt when I press here?",
+    "Any pain in your back or belly?"
+   ],
+   "goals": [
+    "AVPU로 의식 수준을 확인한다",
+    "통증 부위를 손상 지도로 정리한다"
+   ]
+  },
+  {
+   "title": "수상기전(MOI) 청취",
+   "tagline": "The car hit us going pretty fast—I was in the passenger seat.",
+   "room": "TRAUMA_BAY",
+   "brief": "속도·안전벨트·튕김 등 수상기전을 청취해 손상 위험을 예측하세요.",
+   "role": "patient",
+   "skills": [
+    "수상기전 청취",
+    "손상 예측",
+    "문진"
+   ],
+   "keyPhrases": [
+    "How fast was the car going?",
+    "Were you wearing a seatbelt?",
+    "Were you thrown from the vehicle at all?"
+   ],
+   "goals": [
+    "속도·벨트·튕김 여부를 청취한다",
+    "수상기전으로 잠재 손상을 예측한다"
+   ]
+  },
+  {
+   "title": "둔상 다발외상 트리아지",
+   "tagline": "There are two of us hurt—please help my friend first, he's worse.",
+   "room": "TRAUMA_BAY",
+   "brief": "우선순위를 판단하고 역할을 배분하며 둔상 다발외상 트리아지를 조율하세요.",
+   "role": "patient",
+   "skills": [
+    "트리아지",
+    "우선순위 판단",
+    "역할 배분"
+   ],
+   "keyPhrases": [
+    "We're assessing both of you right now.",
+    "Tell me who has trouble breathing or is bleeding heavily.",
+    "The team is dividing up to care for each of you."
+   ],
+   "goals": [
+    "다수 손상자의 우선순위를 판단한다",
+    "팀 역할을 배분한다"
+   ]
+  },
+  {
+   "title": "은닉 출혈 저혈압",
+   "tagline": "I don't have much pain, but I feel weirdly cold and faint.",
+   "room": "TRAUMA_BAY",
+   "brief": "외견이 경미해도 내부출혈에 의한 저혈압 가능성을 사정하세요.",
+   "role": "patient",
+   "skills": [
+    "내부출혈 의심",
+    "저혈압 사정",
+    "잠복 손상 평가"
+   ],
+   "keyPhrases": [
+    "Does your belly feel tender or full anywhere?",
+    "You look pale—we're watching for internal bleeding.",
+    "We're getting scans to look inside."
+   ],
+   "goals": [
+    "외견 경미 뒤의 내부출혈을 의심한다",
+    "저혈압·창백 등 은닉 징후를 사정한다"
+   ]
+  },
+  {
+   "title": "골반 골절 순환 불안정",
+   "tagline": "My hips feel crushed and I'm getting so dizzy.",
+   "room": "TRAUMA_BAY",
+   "brief": "골반 바인더를 적용하고 대량출혈에 대비하며 순환 불안정을 관리하세요.",
+   "role": "patient",
+   "skills": [
+    "골반 골절 대응",
+    "바인더 적용",
+    "대량출혈 대비"
+   ],
+   "keyPhrases": [
+    "We're placing a binder to stabilize your pelvis.",
+    "Please don't move your hips or legs.",
+    "We're preparing blood in case you need it."
+   ],
+   "goals": [
+    "골반 바인더를 적용해 출혈을 통제한다",
+    "순환 불안정에 대비한다"
+   ]
+  },
+  {
+   "title": "항응고제 복용 외상",
+   "tagline": "I only fell a little, but I take blood thinners every day.",
+   "room": "TRAUMA_BAY",
+   "brief": "항응고제 복용자에서 경미한 손상도 출혈 확대 위험이 있음을 사정하세요.",
+   "role": "patient",
+   "skills": [
+    "항응고 문진",
+    "출혈 확대 사정",
+    "위험 평가"
+   ],
+   "keyPhrases": [
+    "Which blood thinner do you take?",
+    "When was your last dose?",
+    "Even a minor injury can bleed more with these."
+   ],
+   "goals": [
+    "항응고제 종류·복용 시각을 확인한다",
+    "출혈 확대 위험을 사정한다"
+   ]
+  },
+  {
+   "title": "관통상 다발",
+   "tagline": "There's something still stuck in my side—don't pull it out!",
+   "room": "TRAUMA_BAY",
+   "brief": "궤적을 파악하고 박힌 물체 제거를 금지하며 관통상을 관리하세요.",
+   "role": "patient",
+   "skills": [
+    "관통상 사정",
+    "박힌 물체 고정",
+    "궤적 파악"
+   ],
+   "keyPhrases": [
+    "We're leaving the object in place and stabilizing it.",
+    "Try to stay very still for me.",
+    "How many times were you struck?"
+   ],
+   "goals": [
+    "관통상 궤적과 개수를 파악한다",
+    "박힌 물체를 고정하고 제거하지 않는다"
+   ]
+  },
+  {
+   "title": "고령 낙상 다발외상",
+   "tagline": "I just slipped in the kitchen, but everything hurts so much.",
+   "room": "TRAUMA_BAY",
+   "brief": "저에너지 손상도 중증일 수 있음을 인지하고 복약력을 사정하세요.",
+   "role": "patient",
+   "skills": [
+    "고령 외상 사정",
+    "복약력 확인",
+    "중증도 판단"
+   ],
+   "keyPhrases": [
+    "Did you hit your head when you fell?",
+    "What medications are you taking?",
+    "Even a small fall can cause serious injury at your age."
+   ],
+   "goals": [
+    "저에너지 낙상의 중증 가능성을 인지한다",
+    "복약력과 손상을 사정한다"
+   ]
+  },
+  {
+   "title": "언어장벽 외상",
+   "tagline": "Pain... here. No English. Allergy... no know.",
+   "room": "TRAUMA_BAY",
+   "brief": "언어장벽 환자에서 통증·알레르기·기왕력을 몸짓과 통역으로 확보하세요.",
+   "role": "patient",
+   "skills": [
+    "언어장벽 대응",
+    "통증 확인",
+    "알레르기 문진"
+   ],
+   "keyPhrases": [
+    "Point to where the pain is worst.",
+    "Any allergy to medicine? Yes or no?",
+    "I'm getting an interpreter for you now."
+   ],
+   "goals": [
+    "통역·몸짓으로 통증 부위를 확보한다",
+    "알레르기·기왕력을 확인한다"
+   ]
+  },
+  {
+   "title": "임신부 외상 1차평가",
+   "tagline": "I'm 28 weeks pregnant—please make sure my baby is okay.",
+   "room": "TRAUMA_BAY",
+   "brief": "좌측위를 취하고 모체와 태아를 함께 사정하며 임신부 외상 1차평가를 시행하세요.",
+   "role": "patient",
+   "skills": [
+    "임신부 외상 사정",
+    "좌측위",
+    "모체·태아 평가"
+   ],
+   "keyPhrases": [
+    "We're tilting you to your left side to help blood flow.",
+    "Any belly pain, bleeding, or contractions?",
+    "We're checking both you and your baby."
+   ],
+   "goals": [
+    "좌측위로 대정맥 압박을 완화한다",
+    "모체와 태아를 함께 사정한다"
+   ]
+  },
+  {
+   "title": "대량수혈 프로토콜 준비 설명",
+   "tagline": "You're giving him how much blood? Is he going to make it?",
+   "room": "TRAUMA_BAY",
+   "brief": "혈액·응고인자 준비를 설명하고 가족을 지지하며 대량수혈 프로토콜을 안내하세요.",
+   "role": "family",
+   "skills": [
+    "대량수혈 설명",
+    "가족 지지",
+    "프로토콜 안내"
+   ],
+   "keyPhrases": [
+    "He's losing a lot of blood, so we're replacing it fast.",
+    "We're giving blood and clotting factors together.",
+    "The team is doing everything they can right now."
+   ],
+   "goals": [
+    "대량수혈 프로토콜의 목적을 설명한다",
+    "불안한 가족을 지지한다"
+   ]
+  },
+  {
+   "title": "저체온 예방",
+   "tagline": "I'm freezing... I can't stop shivering.",
+   "room": "TRAUMA_BAY",
+   "brief": "노출 후 보온으로 저체온을 예방하고 사망 삼징후를 경계하세요.",
+   "role": "patient",
+   "skills": [
+    "저체온 예방",
+    "보온 관리",
+    "삼징후 경계"
+   ],
+   "keyPhrases": [
+    "We're covering you with warm blankets now.",
+    "Keeping you warm helps your blood clot properly.",
+    "Tell me if you keep feeling cold."
+   ],
+   "goals": [
+    "노출 후 신속히 보온한다",
+    "저체온·산증·응고장애 삼징후를 경계한다"
+   ]
+  },
+  {
+   "title": "긴장성 기흉 급속악화",
+   "tagline": "I can't... breathe... my chest... something's wrong...",
+   "room": "TRAUMA_BAY",
+   "brief": "호흡음 소실과 급속 악화를 인지하고 긴장성 기흉의 응급 감압을 준비하세요.",
+   "role": "patient",
+   "skills": [
+    "긴장성 기흉 인지",
+    "감압 준비",
+    "호흡음 사정"
+   ],
+   "keyPhrases": [
+    "Your breath sounds are absent on one side.",
+    "We need to release the pressure in your chest now.",
+    "Stay with me—we're helping you breathe."
+   ],
+   "goals": [
+    "호흡음 소실 등 긴장성 기흉을 인지한다",
+    "응급 흉강 감압을 준비한다"
+   ]
+  },
+  {
+   "title": "출혈성 쇼크 급속진행",
+   "tagline": "*pale, weak pulse, barely responsive*",
+   "room": "TRAUMA_BAY",
+   "brief": "무맥 임박을 인지하고 대량수혈을 가동하며 출혈성 쇼크에 대응하세요.",
+   "role": "patient",
+   "skills": [
+    "출혈성 쇼크 대응",
+    "대량수혈 가동",
+    "순환 유지"
+   ],
+   "keyPhrases": [
+    "We're giving blood as fast as we can.",
+    "Applying pressure to control the bleeding.",
+    "Stay with me—open your eyes if you can."
+   ],
+   "goals": [
+    "무맥 임박을 조기 인지한다",
+    "대량수혈과 지혈로 순환을 유지한다"
+   ]
+  },
+  {
+   "title": "외상성 심정지 대응",
+   "tagline": "*no pulse, CPR in progress*",
+   "room": "TRAUMA_BAY",
+   "brief": "기흉·탐포네이드 등 가역 원인을 동시에 교정하며 외상성 심정지에 대응하세요.",
+   "role": "colleague",
+   "skills": [
+    "외상성 심정지 대응",
+    "가역 원인 교정",
+    "팀 협응"
+   ],
+   "keyPhrases": [
+    "Continue compressions—checking for tension pneumothorax.",
+    "Bilateral chest decompression now.",
+    "Assessing for cardiac tamponade with ultrasound."
+   ],
+   "goals": [
+    "외상성 심정지의 가역 원인을 동시에 교정한다",
+    "팀과 협응해 소생술을 진행한다"
+   ]
+  },
+  {
+   "title": "다발외상 핸드오프",
+   "tagline": "Trauma handoff—injuries, fluids given, and blood products.",
+   "room": "NURSE_STATION",
+   "brief": "손상·수액·혈액 정보를 SBAR로 정리해 다발외상 환자를 핸드오프하세요.",
+   "role": "colleague",
+   "skills": [
+    "SBAR 인계",
+    "손상 정리",
+    "수액·혈액 보고"
+   ],
+   "keyPhrases": [
+    "MVC at highway speed, unrestrained driver.",
+    "Pelvic and femur fractures, binder in place.",
+    "Two units of blood given, BP now stabilizing."
+   ],
+   "goals": [
+    "손상 부위와 처치를 명확히 인계한다",
+    "투여된 수액·혈액과 반응을 전달한다"
+   ]
+  },
+  {
+   "title": "수술실 즉시 이송 조율",
+   "tagline": "They said he needs surgery right now—I don't understand what's happening.",
+   "room": "TRAUMA_BAY",
+   "brief": "개복 판단을 설명하고 가족 동의를 얻으며 수술실 즉시 이송을 조율하세요.",
+   "role": "family",
+   "skills": [
+    "수술 이송 조율",
+    "개복 설명",
+    "가족 동의"
+   ],
+   "keyPhrases": [
+    "He has internal bleeding that needs surgery now.",
+    "We're taking him straight to the operating room.",
+    "I need your consent to proceed immediately."
+   ],
+   "goals": [
+    "개복 필요성을 가족에게 설명한다",
+    "즉시 이송과 동의를 조율한다"
+   ]
+  },
+  {
+   "title": "기도 화상·안면외상 기도위기",
+   "tagline": "My face got burned and my throat feels like it's swelling shut.",
+   "room": "TRAUMA_BAY",
+   "brief": "기도 화상·안면외상에서 조기 삽관 필요성을 사정하고 준비하세요.",
+   "role": "patient",
+   "skills": [
+    "기도 화상 사정",
+    "조기 삽관 판단",
+    "부종 감시"
+   ],
+   "keyPhrases": [
+    "Is it getting harder to breathe or swallow?",
+    "Your airway may swell, so we're securing it early.",
+    "We're preparing to place a breathing tube now."
+   ],
+   "goals": [
+    "기도 화상·부종 진행을 사정한다",
+    "조기 삽관을 판단하고 준비한다"
+   ]
+  }
+ ]
+}

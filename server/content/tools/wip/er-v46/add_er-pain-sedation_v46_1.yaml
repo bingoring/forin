@@ -1,0 +1,96 @@
+- title: 통증 척도 초기 사정
+  s:
+  - {t: "통증 점수", i: chartup, w: "범위(zero to ten)를 먼저 주면 환자가 숫자로 답하기 쉬워요. how would you …는 would 덕분에 지시보다 부드러운 질문이 돼요.", d: "last night", k: ["어디가 아픈지 가리켜 주시겠어요?", "통증이 언제 시작됐나요?"], a: "rate", ai: monitor, o: [["ignore", "cross"], ["treat", "pill"], ["hide", "lock"]]}
+  - {t: "부위 확인", i: magnify, w: "point to는 말로 설명하기 어려운 환자도 손으로 답할 수 있게 해요. exactly를 넣으면 대략이 아니라 한 지점을 짚어 달라는 뜻이 돼요.", d: "at the doctor", k: ["통증이 얼마나 심한가요?", "언제부터 아프셨어요?"], a: "hurts", ai: faceWorried, o: [["heals", "bandage"], ["itches", "bell"], ["bleeds", "siren"]]}
+  - {t: "통증 양상", i: stetho, w: "sharp, dull, burning처럼 보기를 말로 들려 주면 통증을 표현할 단어가 없는 환자도 고르기 쉬워요. 통증의 양상은 원인을 짐작하는 단서가 돼요.", d: "in your leg", k: ["가슴이 답답하세요?", "통증이 얼마나 오래 갔나요?"], a: "burning", ai: siren, o: [["swollen", "bandage"], ["itchy", "bell"], ["dizzy", "faceWorried"]]}
+  - {t: "악화 요인", i: faceWorried, w: "make A worse 틀과 like 뒤의 예시는 환자가 떠올리기 어려운 악화 요인을 짚어 줘요. 움직임이나 기침은 통증이 심해지는 흔한 요인이에요.", d: "like resting", k: ["통증이 언제 시작됐나요?", "어떤 약을 드셨어요?"], a: "worse", ai: chartup, o: [["better", "star"], ["lower", "chevronDown"], ["milder", "coffee"]]}
+  - {t: "신뢰 표현", i: handshake2, w: "I believe you를 먼저 말하면 통증을 의심받을까 하는 걱정이 줄어요. 통증은 환자가 말하는 만큼 있다고 보는 것이 사정의 기본 원칙이에요.", d: "so we'll wait", k: ["통증 점수를 다시 말씀해 주세요", "차트에 기록해 둘게요"], a: "believe", ai: check, o: [["doubt", "cross"], ["blame", "faceAngry"], ["ignore", "lock"]]}
+  - {t: "부담 덜기", i: coffee, w: "정답이 없다고 먼저 말해 주면 환자가 의료진이 원하는 숫자를 맞히려 하지 않아요. 통증 점수는 환자 본인의 보고가 기준이에요.", d: "only a score", k: ["점수가 높으면 약을 더 드려요", "어제 통증은 몇 점이었어요?"], a: "wrong", ai: cross, o: [["high", "chartup"], ["small", "baby"], ["fast", "play"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "통증 첫 사정 4문장 순서"
+    why: "점수를 먼저 묻고, 아픈 곳을 짚게 한 뒤 그곳이 어떤 느낌인지 물어요. 마지막은 모은 정보에 대한 감사와 약속이에요. 뒤 줄이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "First, how would you rate your pain from zero to ten?", icon: chartup, ko: "먼저 통증을 0에서 10으로 매기면요?", note: "점수"}
+    - {en: "Thank you. Can you point to where it is?", icon: magnify, ko: "감사해요. 어디인지 가리켜 주시겠어요?", note: "부위"}
+    - {en: "Does it feel sharp, dull, or burning right there?", icon: stetho, ko: "바로 그곳이 날카롭고 둔하고 타는 듯한가요?", note: "양상"}
+    - {en: "Thank you for telling me all of that, and we'll get this under control.", icon: handshake2, ko: "다 말씀해 주셔서 고마워요, 꼭 조절해 드릴게요", note: "약속"}
+  ctx: {word: "rate", ko: "통증 점수를 매기다"}
+- title: 진통제 투여 전 설명
+  s:
+  - {t: "투여 안내", i: pill, w: "something으로 약 이름은 아직 말하지 않고 목적(for the pain)부터 알려요. 구체적인 이름은 다음 문장에서 이어 말하면 돼요.", d: "for the nurse", k: ["드시기 전에 알레르기를 확인할게요", "30분 뒤에 다시 올게요"], a: "pain", ai: faceWorried, o: [["fever", "monitor"], ["cough", "speaker"], ["allergy", "bell"]]}
+  - {t: "발현 시간", i: calendar, w: "about ten to fifteen minutes처럼 범위로 말하면 정확한 시각을 약속하지 않고도 기대를 줄 수 있어요. 발현 시간은 약과 투여 경로에 따라 달라요.", d: "once a day", k: ["하루에 세 번 드시면 돼요", "이 약은 알약으로 드릴게요"], a: "minutes", ai: monitor, o: [["seconds", "play"], ["hours", "coffee"], ["days", "home"]]}
+  - {t: "부작용 안내", i: bell, w: "Let me know if …는 증상을 보고해 달라는 부탁을 부드럽게 만들어요. 졸림과 어지럼은 진통제의 흔한 부작용이라 미리 알려 두면 환자가 겁먹지 않고 말해요.", d: "if it helps", k: ["약은 30분 뒤에 드릴게요", "통증이 나아졌는지 점수를 말해 주세요"], a: "drowsy", ai: faceWorried, o: [["hungry", "coffee"], ["cheerful", "star"], ["rushed", "plane"]]}
+  - {t: "약 이름", i: lab, w: "약의 종류(pain medicine)를 먼저 말하고 이름을 덧붙이면 낯선 이름도 부담이 덜해요. 투약 전 약 이름을 알려 주는 것은 안전 확인의 일부이기도 해요.", d: "for fever", k: ["이건 항생제예요", "이건 수액이에요"], a: "morphine", ai: pill, o: [["insulin", "gear"], ["heparin", "lock"], ["penicillin", "shield"]]}
+  - {t: "효과 설명", i: shield, w: "take the edge off는 통증을 없앤다는 약속 없이 날카로운 부분을 덜어 준다고 말하는 관용구예요. 기대를 현실적으로 맞춰 줘요.", d: "away from", k: ["바로 일어나 걸으셔도 돼요", "물을 많이 드셔야 해요"], a: "edge", ai: scalpel, o: [["corner", "compass"], ["side", "handshake2"], ["top", "chevronUp"]]}
+  - {t: "안심시키기", i: coffee, w: "졸림이 흔한 반응이라고 먼저 말하면 환자가 약이 잘못됐다고 걱정하지 않아요. so 뒤에 쉬라는 행동을 바로 안내해요.", d: "right away", k: ["졸리면 바로 알려 주세요, 위험해요", "졸려도 일어나 걸어 다니세요"], a: "normal", ai: check, o: [["dangerous", "siren"], ["rare", "star"], ["forbidden", "lock"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "진통제 투여 4문장 순서"
+    why: "투여 전에 확인부터 하고, 확인이 끝났다고 말한 뒤 약을 넣어요. 그다음 효과가 나타날 시간을 알리고, 그 시간에 맞춰 다시 오겠다고 해요. 앞 줄을 가리키는 말(Everything, It, then)이 순서를 고정해요."
+    lines:
+    - {en: "Let me check your wristband and allergies first.", icon: bandage, ko: "손목밴드와 알레르기부터 확인할게요", note: "확인"}
+    - {en: "Everything matches, so I'm putting the medicine in your IV.", icon: pill, ko: "다 맞네요, 수액줄로 약을 넣을게요", note: "투여"}
+    - {en: "It should start working in about ten minutes.", icon: monitor, ko: "10분쯤 지나면 효과가 나타날 거예요", note: "발현"}
+    - {en: "I'll come back then to see how your pain feels.", icon: stetho, ko: "그때 다시 와서 통증이 어떤지 볼게요", note: "재평가"}
+  ctx: {word: "drowsy", ko: "졸린"}
+  sw: {ko: "지금 통증약을 드릴게요"}
+- title: 비약물적 통증 완화
+  s:
+  - {t: "냉찜질", i: bandage, w: "냉찜질은 급성 부기에 흔히 쓰이고, 피부를 보호하려고 얇은 천을 사이에 대고 쓰는 것이 일반적이에요. to bring … down은 목적을 알려 줘요.", d: "to warm up", k: ["다리를 심장보다 높이 올려 주세요", "불을 어둡게 해 드릴게요"], a: "cold", ai: star, o: [["hot", "siren"], ["warm", "coffee"], ["soft", "baby"]]}
+  - {t: "다리 올리기", i: home, w: "다리를 올리면 중력 덕분에 부기가 덜하고 통증 완화에 도움이 돼요. 올리는 높이는 보통 심장보다 높게 안내해요.", d: "on the floor", k: ["지금 바로 일어나 걸어 보세요", "다리에 얼음을 대 드릴게요"], a: "raised", ai: chevronUp, o: [["lowered", "chevronDown"], ["hanging", "pushpin"], ["dropped", "cross"]]}
+  - {t: "환경 조절", i: bulb, w: "밝은 조명은 통증이 있는 환자를 더 예민하게 할 수 있어서 조명을 낮추면 긴장을 푸는 데 도움이 돼요. if that helps는 환자가 선택하게 해 줘요.", d: "when that hurts", k: ["창문을 열어 드릴게요", "TV를 켜 드릴게요"], a: "dim", ai: coffee, o: [["brighten", "star"], ["flash", "siren"], ["turn up", "chartup"]]}
+  - {t: "온기 제공", i: home, w: "might는 효과를 약속하지 않고 가능성만 말해서 부담이 없어요. 따뜻함은 근육 긴장을 풀어 줄 수 있어 요통 같은 통증에 흔히 권해요.", d: "on the floor", k: ["담요는 드릴 수 없어요", "얼음 주머니를 올려 드릴게요"], a: "warm", ai: coffee, o: [["wet", "bandage"], ["itchy", "bell"], ["torn", "scalpel"]]}
+  - {t: "효과 설명", i: check, w: "without more medicine은 약을 쓰지 않는다는 뜻이 아니라 약을 더하지 않아도 된다는 말이에요. 약 없는 방법은 약과 함께 써도 돼요.", d: "with extra", k: ["약을 더 드려야만 줄어요", "이 방법은 효과가 없어요"], a: "lower", ai: chevronDown, o: [["raise", "chevronUp"], ["increase", "chartup"], ["worsen", "faceAngry"]]}
+  - {t: "먼저 시도", i: handshake2, w: "먼저 약 없는 방법을 해 보고 필요하면 더하겠다고 순서를 알려 주면 환자가 거절당했다고 느끼지 않아요. 두 방법은 함께 쓸 수도 있어요.", d: "for later", k: ["약부터 먼저 드릴게요", "이 방법은 효과가 없으니 건너뛸게요"], a: "before", ai: calendar, o: [["after", "redo"], ["unless", "lock"], ["while", "play"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "약 없이 통증 줄이기 4문장 순서"
+    why: "냉찜질을 먼저 대고, 그것을 올려 둔 채 다리를 베개에 올려요. 그다음 그 모든 방법이 도움이 되는지 묻고, 도움이 되면 약을 더하기 전에 계속해요. 앞 줄을 가리키는 말(it, all of that, If it is)로 순서가 하나예요."
+    lines:
+    - {en: "Let's put a cold pack on your leg first.", icon: bandage, ko: "먼저 다리에 냉찜질팩을 대 볼게요", note: "냉찜질"}
+    - {en: "Please keep it raised on this pillow while the pack is on.", icon: home, ko: "팩을 대는 동안 베개 위에 올려 두세요", note: "올리기"}
+    - {en: "Is all of that making your pain feel any better?", icon: stetho, ko: "그 모든 게 통증에 도움이 되나요?", note: "확인"}
+    - {en: "If it is, we'll keep going before we add any medicine.", icon: handshake2, ko: "도움이 되면 약을 더하기 전에 계속해 봐요", note: "계획"}
+  ctx: {word: "raise", ko: "올리다"}
+- title: 알레르기·과거 반응 확인
+  s:
+  - {t: "알레르기 질문", i: shield, w: "알려진 알레르기를 먼저 묻는 것은 투약 전 안전 확인의 기본이에요. that you know of를 덧붙이면 확실하지 않은 환자도 아는 범위에서 부담 없이 답해요.", d: "for any foods", k: ["평소에 드시는 약이 있나요?", "수술을 받으신 적이 있나요?"], a: "allergic", ai: siren, o: [["used", "gear"], ["new", "star"], ["open", "lock"]]}
+  - {t: "복용력", i: calendar, w: "Have you ever + 과거분사는 경험을 묻는 틀이라 정확한 날짜를 기억하지 못해도 답할 수 있어요. 예전 복용 경험은 약 선택에 참고돼요.", d: "last year", k: ["오늘 아침에 약을 드셨나요?", "집에 약이 남아 있나요?"], a: "taken", ai: pill, o: [["seen", "magnify"], ["sold", "star"], ["lost", "lock"]]}
+  - {t: "반응 확인", i: faceWorried, w: "last time으로 과거의 한 번을 짚으면 환자가 기억을 더듬기 쉬워요. 반응의 종류를 알아야 진짜 알레르기인지 부작용인지 가릴 수 있어요.", d: "right now", k: ["지금도 그 약을 드시고 계세요?", "그 약은 누가 처방했나요?"], a: "reaction", ai: siren, o: [["doctor", "stetho"], ["bed", "home"], ["room", "hospital"]]}
+  - {t: "증상 확인", i: stetho, w: "발진과 호흡곤란은 약물 알레르기 반응에서 확인하는 대표 증상이에요. or로 나눠 묻기 때문에 한쪽만 해당해도 대답할 수 있어요.", d: "with a fever", k: ["속이 메스꺼우셨나요?", "어지러워서 쓰러지셨나요?"], a: "breathing", ai: monitor, o: [["sleeping", "coffee"], ["walking", "play"], ["reading", "pencil"]]}
+  - {t: "진통제 알레르기", i: pill, w: "이부프로펜과 아스피린 같은 비스테로이드 소염진통제(NSAID)는 서로 교차 반응할 수 있어서 함께 물어요. 경험을 묻는 Have you ever had …를 그대로 써요.", d: "taken a", k: ["이부프로펜을 하루에 몇 번 드세요?", "두통이 얼마나 자주 있으세요?"], a: "had", ai: check, o: [["made", "gear"], ["seen", "magnify"], ["caught", "bell"]]}
+  - {t: "기록 안내", i: board, w: "차트에 남기면 다음 교대 간호사와 의사도 같은 정보를 보고 그 약을 피할 수 있어요. 기록한다고 말하면 알려 준 정보가 쓰인다는 신뢰가 생겨요.", d: "in the lobby", k: ["처방전은 약국에 보낼게요", "보험 정보를 확인할게요"], a: "knows", ai: bell, o: [["forgets", "cross"], ["guesses", "bulb"], ["ignores", "lock"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "약물 알레르기 확인 4문장 순서"
+    why: "알레르기가 있는지 먼저 묻고, 특정 약을 먹은 적이 있는지 물어요. 그 약을 먹었을 때 무슨 일이 있었는지 이어 묻고, 마지막에 기록하겠다고 해요. it과 that이 앞 줄을 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "First, are you allergic to any medications?", icon: shield, ko: "먼저 약물 알레르기가 있으세요?", note: "알레르기"}
+    - {en: "Have you ever taken morphine before?", icon: pill, ko: "예전에 모르핀을 드신 적 있으세요?", note: "복용력"}
+    - {en: "What happened when you took it?", icon: faceWorried, ko: "드셨을 때 어떤 일이 있었나요?", note: "반응"}
+    - {en: "Thank you, I'll note all of that in your chart.", icon: board, ko: "감사해요, 모두 차트에 적어 둘게요", note: "기록"}
+  sw: {ko: "혹시 약물 알레르기가 있으세요?"}
+- title: 통증 재평가 시점 안내
+  s:
+  - {t: "재방문 안내", i: calendar, w: "in about twenty minutes로 구체적인 시간을 말하면 환자가 기다리는 동안 덜 불안해요. 진통제 뒤 재평가는 병원 지침에 정해진 시간에 해요.", d: "in a week", k: ["약을 지금 바로 드릴게요", "호출 버튼을 눌러 주세요"], a: "minutes", ai: monitor, o: [["hours", "coffee"], ["days", "home"], ["seconds", "play"]]}
+  - {t: "호출 안내", i: bell, w: "재평가 사이에 통증이 심해질 때를 미리 알려 주면 환자가 정해진 시간까지 참지 않아요. 호출 버튼의 위치와 쓰는 법도 함께 보여 줘요.", d: "right after", k: ["약이 안 들으면 의사 선생님께 말할게요", "통증이 줄면 퇴원하세요"], a: "worse", ai: chartup, o: [["better", "star"], ["lower", "chevronDown"], ["milder", "coffee"]]}
+  - {t: "재평가", i: chartup, w: "again으로 처음 점수와 비교할 것임을 알려요. 투약 뒤 통증 점수를 다시 매겨 효과를 확인하는 것이 재평가예요.", d: "if we waited", k: ["약을 한 번 더 드릴게요", "통증 점수는 기록하지 않을게요"], a: "medicine", ai: pill, o: [["doctor", "stetho"], ["family", "home"], ["test", "lab"]]}
+  - {t: "목적 설명", i: lab, w: "점수를 다시 묻는 이유를 설명하면 환자가 같은 질문을 되풀이한다고 느끼지 않아요. 재평가 결과는 약을 더 쓸지 바꿀지 판단하는 근거가 돼요.", d: "the nurse is", k: ["약을 바꿔야 하는지는 의사가 정해요", "통증이 몇 시간 갈지 알 수 있어요"], a: "working", ai: gear, o: [["expired", "calendar"], ["empty", "cross"], ["cold", "coffee"]]}
+  - {t: "참지 않기", i: siren, w: "unbearable까지 기다리지 말라고 말하면 참는 것이 미덕이 아니라는 신호가 돼요. 통증 조절은 심해지기 전에 하는 편이 쉬워요.", d: "if it's bad", k: ["참을 수 있으면 기다려 주세요", "통증이 있으면 간호사실로 오세요"], a: "until", ai: compass, o: [["unless", "lock"], ["after", "calendar"], ["before", "chevronDown"]]}
+  - {t: "부담 덜기", i: handshake2, w: "도움 요청이 폐가 아니라고 먼저 말하면 눈치를 보는 환자도 호출을 눌러요. 통증을 참는 환자를 위한 안심 표현이에요.", d: "for water", k: ["도움을 요청하면 늦어질 수 있어요", "다른 환자분들이 불편해해요"], a: "bothering", ai: bell, o: [["helping", "star"], ["scaring", "faceWorried"], ["blaming", "faceAngry"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "재평가 안내 4문장 순서"
+    why: "다시 오는 시간을 먼저 알려요. 그 시간 전에 심해지면 호출하라고 하고(before then), 호출을 망설이지 않게 한 뒤(it) 돌아와서 통증을 다시 점수로 물어요. then, this, it이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "I'll check back with you in about twenty minutes.", icon: calendar, ko: "20분쯤 뒤에 다시 올게요", note: "재방문"}
+    - {en: "If the pain gets worse before then, press this call button.", icon: bell, ko: "그전에 심해지면 이 호출 버튼을 누르세요", note: "호출"}
+    - {en: "Don't wait until it's unbearable to press it.", icon: siren, ko: "참을 수 없을 때까지 기다리지 말고 누르세요", note: "참지 않기"}
+    - {en: "Once I'm back, we'll rate it again.", icon: chartup, ko: "돌아오면 그 통증을 다시 점수로 매길게요", note: "재평가"}
+  sw: {ko: "필요하실 때 언제든 호출 버튼을 누르세요"}

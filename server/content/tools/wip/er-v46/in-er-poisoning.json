@@ -1,0 +1,446 @@
+{
+ "theme": "er-poisoning",
+ "situations": [
+  {
+   "title": "복용 약물·시간 문진",
+   "tagline": "I took some pills a while ago but I'm not sure how many.",
+   "room": "TRIAGE 2",
+   "brief": "무엇을·얼마나·언제 복용했는지 핵심 3요소를 차분히 확인하세요.",
+   "role": "patient",
+   "skills": [
+    "복용력 문진",
+    "시간선 확인",
+    "비판단적 소통"
+   ],
+   "keyPhrases": [
+    "What exactly did you take, and do you have the bottle with you?",
+    "About how many did you take, and how long ago?",
+    "Did you take anything else along with it?"
+   ],
+   "goals": [
+    "복용 물질·용량·시각을 명확히 파악한다",
+    "환자가 안심하고 사실대로 말하도록 돕는다"
+   ]
+  },
+  {
+   "title": "활성탄 투여 설명",
+   "tagline": "That black liquid looks awful — do I really have to drink it?",
+   "room": "TREATMENT BAY 4",
+   "brief": "활성탄의 적응·금기와 협조 필요성을 이해하기 쉽게 설명하세요.",
+   "role": "patient",
+   "skills": [
+    "투약 설명",
+    "적응·금기 이해",
+    "협조 유도"
+   ],
+   "keyPhrases": [
+    "This charcoal binds the medicine so your body absorbs less of it.",
+    "It's important to drink it now while it can still help.",
+    "Tell me right away if you feel like you might throw up."
+   ],
+   "goals": [
+    "활성탄의 목적과 시급성을 설명한다",
+    "흡인 위험을 줄이도록 협조를 얻는다"
+   ]
+  },
+  {
+   "title": "의도성 여부 초기 사정",
+   "tagline": "It was an accident, I just took too many by mistake.",
+   "room": "TRIAGE 1",
+   "brief": "자·타의 여부를 비판단적으로 부드럽게 사정하세요.",
+   "role": "patient",
+   "skills": [
+    "자살위험 초기사정",
+    "비판단적 접근",
+    "안전 확인"
+   ],
+   "keyPhrases": [
+    "I need to ask — were you trying to hurt yourself?",
+    "You're safe here, and I won't judge you for anything you tell me.",
+    "Have you had thoughts like this before today?"
+   ],
+   "goals": [
+    "의도성을 비판단적으로 확인한다",
+    "즉각적 안전 위험을 선별한다"
+   ]
+  },
+  {
+   "title": "가정 화학물질 노출",
+   "tagline": "I mixed two cleaners and now my throat is burning.",
+   "room": "DECON ROOM",
+   "brief": "제품·노출 경로를 확인하고 독극물센터 자문 절차를 설명하세요.",
+   "role": "patient",
+   "skills": [
+    "노출 경위 문진",
+    "경로 확인",
+    "독극물센터 연계"
+   ],
+   "keyPhrases": [
+    "Which products did you mix, and did you breathe in the fumes?",
+    "Did any of it get in your eyes or on your skin?",
+    "I'm calling Poison Control so we treat this exactly right."
+   ],
+   "goals": [
+    "제품과 노출 경로를 파악한다",
+    "독극물센터 자문 절차를 안내한다"
+   ]
+  },
+  {
+   "title": "소아 우발 섭취",
+   "tagline": "I found her with the pill bottle open — I don't know how many she ate.",
+   "room": "PEDS BAY 3",
+   "brief": "보호자에게서 섭취 물질·추정량·시각을 침착하게 이끌어내세요.",
+   "role": "family",
+   "skills": [
+    "보호자 병력청취",
+    "섭취량 추정",
+    "보호자 진정"
+   ],
+   "keyPhrases": [
+    "How many pills were in the bottle before, and how many are left now?",
+    "About what time did you find her?",
+    "You did the right thing bringing her in quickly."
+   ],
+   "goals": [
+    "섭취 물질과 추정량·시각을 파악한다",
+    "죄책감에 빠진 보호자를 진정시킨다"
+   ]
+  },
+  {
+   "title": "아세트아미노펜 과다",
+   "tagline": "I took a whole bottle of Tylenol last night — I feel fine now though.",
+   "room": "TREATMENT BAY 2",
+   "brief": "섭취 시각 기준 혈중농도와 NAC 치료의 시급성을 설명하세요.",
+   "role": "patient",
+   "skills": [
+    "시간별 농도 해석",
+    "NAC 치료 설명",
+    "간독성 위험 교육"
+   ],
+   "keyPhrases": [
+    "Feeling okay now is normal, but the danger can show up later.",
+    "We'll check your acetaminophen level based on the exact time you took it.",
+    "This antidote called NAC protects your liver, and starting it early matters."
+   ],
+   "goals": [
+    "섭취 시각 기준 농도 평가의 중요성을 설명한다",
+    "무증상기에도 NAC를 지체 없이 시작한다"
+   ]
+  },
+  {
+   "title": "오피오이드 과다",
+   "tagline": "He's barely breathing — I found him blue on the couch.",
+   "room": "RESUS BAY",
+   "brief": "호흡저하를 사정하고 날록손 투여와 재중독 위험을 대응·설명하세요.",
+   "role": "family",
+   "skills": [
+    "호흡저하 사정",
+    "날록손 투여",
+    "재중독 감시"
+   ],
+   "keyPhrases": [
+    "I'm giving him naloxone now to reverse the opioid.",
+    "He may wake up but slip back, so we'll watch him closely.",
+    "What did he take, and do you know how much?"
+   ],
+   "goals": [
+    "호흡저하를 신속히 사정한다",
+    "날록손 투여 후 재중독을 지속 감시한다"
+   ]
+  },
+  {
+   "title": "벤조 과다",
+   "tagline": "She took a bunch of her Xanax and now I can't keep her awake.",
+   "room": "TREATMENT BAY 1",
+   "brief": "진정 수준과 기도를 사정하고 플루마제닐 사용의 주의점을 설명하세요.",
+   "role": "family",
+   "skills": [
+    "진정 사정",
+    "기도 유지",
+    "플루마제닐 주의"
+   ],
+   "keyPhrases": [
+    "I'm going to check how deeply she's sedated and protect her airway.",
+    "We're cautious with the reversal drug because it can trigger seizures.",
+    "Has she taken any other pills or alcohol with this?"
+   ],
+   "goals": [
+    "진정 수준과 기도 안전을 평가한다",
+    "플루마제닐의 위험성을 설명하고 감시한다"
+   ]
+  },
+  {
+   "title": "살리실산 중독",
+   "tagline": "My ears are ringing and I can't stop breathing fast.",
+   "room": "TREATMENT BAY 3",
+   "brief": "이명·과호흡을 인지하고 요 알칼리화의 목적을 설명하세요.",
+   "role": "patient",
+   "skills": [
+    "살리실산 독성 인지",
+    "산-염기 이해",
+    "알칼리화 설명"
+   ],
+   "keyPhrases": [
+    "The ringing in your ears is a clue that the aspirin level is high.",
+    "We'll give you fluids with bicarbonate to help clear it faster.",
+    "How many aspirin did you take, and over how long?"
+   ],
+   "goals": [
+    "이명·과호흡을 살리실산 독성으로 인지한다",
+    "요 알칼리화의 목적을 설명한다"
+   ]
+  },
+  {
+   "title": "TCA 과다",
+   "tagline": "I took all my old antidepressants — my heart feels like it's racing weird.",
+   "room": "RESUS BAY",
+   "brief": "QRS 확대를 감시하고 중탄산 투여와 급변 대비를 설명하세요.",
+   "role": "patient",
+   "skills": [
+    "심전도 감시",
+    "QRS 해석",
+    "급변 대비"
+   ],
+   "keyPhrases": [
+    "We're watching your heart rhythm very closely right now.",
+    "This bicarbonate helps protect your heart from the medication.",
+    "Exactly which pills did you take, and when?"
+   ],
+   "goals": [
+    "QRS 확대 등 심독성을 감시한다",
+    "중탄산 투여와 급변 대비를 설명한다"
+   ]
+  },
+  {
+   "title": "항응고제 과다",
+   "tagline": "I doubled up on my warfarin by mistake and now my gums are bleeding.",
+   "room": "TREATMENT BAY 5",
+   "brief": "출혈 위험을 사정하고 역전제 투여 계획을 설명하세요.",
+   "role": "patient",
+   "skills": [
+    "출혈 위험 사정",
+    "INR 이해",
+    "역전제 설명"
+   ],
+   "keyPhrases": [
+    "We'll check your INR to see how thin your blood is right now.",
+    "There's a reversal medicine we can give if the bleeding gets worse.",
+    "Are you seeing any blood in your urine or stool, or bruising anywhere?"
+   ],
+   "goals": [
+    "활동성 출혈 징후를 사정한다",
+    "역전제 투여 계획을 설명한다"
+   ]
+  },
+  {
+   "title": "자살시도 다약제",
+   "tagline": "I just wanted it all to stop — I took everything in the cabinet.",
+   "room": "TREATMENT BAY 2",
+   "brief": "다약제 섭취를 파악하고 정신과 협진·1:1 관찰을 설명하세요.",
+   "role": "patient",
+   "skills": [
+    "다약제 파악",
+    "정신과 연계",
+    "1:1 안전관찰"
+   ],
+   "keyPhrases": [
+    "I hear how much pain you're in, and I'm staying right here with you.",
+    "Can you tell me each thing you took so we can keep you safe?",
+    "A counselor will come see you, and someone will stay with you the whole time."
+   ],
+   "goals": [
+    "섭취 약물 전체를 파악한다",
+    "정신과 협진과 지속 관찰을 안내한다"
+   ]
+  },
+  {
+   "title": "알코올+약물 혼합",
+   "tagline": "I had a lot to drink and took my sleeping pills too — I feel so out of it.",
+   "room": "TREATMENT BAY 4",
+   "brief": "약물 상호작용을 고려하고 의식 수준을 지속 감시·설명하세요.",
+   "role": "patient",
+   "skills": [
+    "상호작용 평가",
+    "의식 감시",
+    "기도 관리"
+   ],
+   "keyPhrases": [
+    "Alcohol and those pills together can slow your breathing, so we'll watch you closely.",
+    "How much did you drink, and how many pills did you take?",
+    "Stay with me — I'll keep checking on you every few minutes."
+   ],
+   "goals": [
+    "알코올-약물 상호작용을 평가한다",
+    "의식·호흡을 지속 감시한다"
+   ]
+  },
+  {
+   "title": "일산화탄소 중독",
+   "tagline": "The whole family had headaches all morning — the furnace has been acting up.",
+   "room": "TREATMENT BAY 1",
+   "brief": "두통 병력과 SpO2 오판 위험을 설명하고 산소 치료를 시행하세요.",
+   "role": "patient",
+   "skills": [
+    "CO 중독 인지",
+    "SpO2 오판 이해",
+    "산소치료 설명"
+   ],
+   "keyPhrases": [
+    "A regular oxygen reading can look normal even with carbon monoxide, so we use a special test.",
+    "I'm putting you on high-flow oxygen to clear it from your blood.",
+    "Was anyone else in the house feeling sick too?"
+   ],
+   "goals": [
+    "CO 중독을 두통·집단 발생으로 인지한다",
+    "SpO2 오판 위험과 산소치료를 설명한다"
+   ]
+  },
+  {
+   "title": "약물 은폐 환자",
+   "tagline": "I didn't take anything, I just feel dizzy. Why are you asking me all this?",
+   "room": "TRIAGE 2",
+   "brief": "회피적 태도에 대응하며 객관적 단서로 중독 가능성을 사정하세요.",
+   "role": "patient",
+   "skills": [
+    "회피 대응",
+    "객관 단서 관찰",
+    "신뢰 형성"
+   ],
+   "keyPhrases": [
+    "I'm not here to get you in trouble — I just want to keep you safe.",
+    "Some of your signs tell me your body reacted to something. Can we talk about it?",
+    "Whatever you tell me stays between us and your care team."
+   ],
+   "goals": [
+    "회피적 환자와 신뢰를 형성한다",
+    "객관적 징후로 중독 가능성을 평가한다"
+   ]
+  },
+  {
+   "title": "미상 물질 의식불명",
+   "tagline": "Found unresponsive with pinpoint pupils and shallow breathing.",
+   "room": "RESUS BAY",
+   "brief": "톡시드롬 단서를 종합하고 기도확보를 우선하며 팀에 인계하세요.",
+   "role": "colleague",
+   "skills": [
+    "톡시드롬 인지",
+    "기도확보",
+    "SBAR 인계"
+   ],
+   "keyPhrases": [
+    "Pupils are pinpoint and respirations are eight — this looks like a toxidrome.",
+    "I need airway support and naloxone at the bedside now.",
+    "Unknown ingestion, GCS 6, protecting the airway — can you take report?"
+   ],
+   "goals": [
+    "톡시드롬 단서로 원인을 좁힌다",
+    "기도확보를 우선하고 팀에 SBAR로 인계한다"
+   ]
+  },
+  {
+   "title": "유기인계 중독",
+   "tagline": "He was spraying pesticide all day and now he's drooling and shaking.",
+   "room": "DECON ROOM",
+   "brief": "콜린성 위기를 인지하고 아트로핀·PAM 투여를 대응·설명하세요.",
+   "role": "family",
+   "skills": [
+    "콜린성 위기 인지",
+    "아트로핀 투여",
+    "제염"
+   ],
+   "keyPhrases": [
+    "These signs — drooling, sweating, tearing — point to organophosphate poisoning.",
+    "We're giving atropine to dry up his secretions and protect his breathing.",
+    "We need to remove his clothes and wash his skin to stop more from absorbing."
+   ],
+   "goals": [
+    "콜린성 위기를 신속히 인지한다",
+    "아트로핀·PAM 투여와 제염을 시행·설명한다"
+   ]
+  },
+  {
+   "title": "세로토닌 증후군",
+   "tagline": "I added a new pill this week and now I'm burning up and my muscles keep twitching.",
+   "room": "RESUS BAY",
+   "brief": "고열·강직·자율신경 항진을 인지하고 원인 약물과 대응을 설명하세요.",
+   "role": "patient",
+   "skills": [
+    "세로토닌 증후군 인지",
+    "자율신경 감시",
+    "냉각·진정"
+   ],
+   "keyPhrases": [
+    "The twitching and high fever suggest your medications are interacting.",
+    "We're stopping the trigger and cooling you down right away.",
+    "Which new medication or supplement did you start this week?"
+   ],
+   "goals": [
+    "고열·강직·자율신경 항진을 인지한다",
+    "원인 약물 중단과 냉각·진정을 설명한다"
+   ]
+  },
+  {
+   "title": "청산/메탄올 중독",
+   "tagline": "I drank something from an unlabeled bottle in the garage — now I can barely see.",
+   "room": "RESUS BAY",
+   "brief": "해독제와 응급 투석의 필요성을 설명하고 신속히 시행하세요.",
+   "role": "patient",
+   "skills": [
+    "독성 알코올 인지",
+    "해독제 투여",
+    "투석 연계"
+   ],
+   "keyPhrases": [
+    "Trouble seeing after drinking that can mean methanol poisoning.",
+    "There's an antidote we're giving now, and you may need urgent dialysis.",
+    "How much did you drink, and about how long ago?"
+   ],
+   "goals": [
+    "시야 이상을 독성 알코올 중독으로 인지한다",
+    "해독제·응급 투석의 필요성을 설명한다"
+   ]
+  },
+  {
+   "title": "과다복용 심정지 전조",
+   "tagline": "My chest feels weird and my heart is skipping — I took too much of my heart pills.",
+   "room": "RESUS BAY",
+   "brief": "부정맥 전조를 감시하고 소생 대비를 팀에 SBAR로 인계하세요.",
+   "role": "patient",
+   "skills": [
+    "부정맥 감시",
+    "소생 대비",
+    "SBAR 인계"
+   ],
+   "keyPhrases": [
+    "Your rhythm is unstable, so we're preparing everything to support you.",
+    "Stay with me and tell me right away if it gets worse.",
+    "Overdose with widening QRS and bradycardia — I need the crash cart and a physician now."
+   ],
+   "goals": [
+    "부정맥 전조를 조기에 감시한다",
+    "소생 대비와 인계를 SBAR로 수행한다"
+   ]
+  },
+  {
+   "title": "중독 이송 중 급변 인계",
+   "tagline": "Patient was stable at pickup but dropped his pressure en route.",
+   "room": "AMBULANCE BAY",
+   "brief": "섭취물·시간선을 포함해 급변 경위를 받는 팀에 명확히 인계하세요.",
+   "role": "colleague",
+   "skills": [
+    "이송 인계",
+    "시간선 정리",
+    "활력 추이 전달"
+   ],
+   "keyPhrases": [
+    "Ingestion was tricyclics about ninety minutes ago per the family.",
+    "He was talking at pickup but became hypotensive and drowsy en route.",
+    "Last pressure was eighty over forty, and I gave a bicarb bolus."
+   ],
+   "goals": [
+    "섭취물과 시간선을 정확히 전달한다",
+    "이송 중 활력 변화를 인계한다"
+   ]
+  }
+ ]
+}

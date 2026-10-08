@@ -1,0 +1,72 @@
+- title: 문화적 금기 배려
+  s:
+  - {t: "선호 질문", i: me, w: "Would you prefer로 선택권을 주면 요구가 아니라 선호를 묻는 모양이라 환자가 부담 없이 답해요. 종교·문화적 이유로 간호사의 성별을 고르고 싶어 하는 환자가 있어요.", d: "for the doctor", k: ["여성 의사를 부를까요?", "진찰은 지금 시작해요"], a: "prefer", ai: shield, o: ["avoid", "refuse", "fear"]}
+  - {t: "노출 최소화", i: shield, w: "진찰 중에 필요한 부위만 드러내고 나머지는 가려 주면 환자의 프라이버시를 지킬 수 있어요. 말로 알려 주면 환자가 덜 불안해요.", d: "for the exam", k: ["가운은 벗으셔야 해요", "커튼을 열어 둘게요"], a: "covered", ai: bandage, o: ["exposed", "uncovered", "naked"]}
+  - {t: "불편 표현", i: faceWorried, w: "불편하면 말해 달라고 먼저 허락하면 문화적 이유로 참던 환자도 말을 꺼내기 쉬워요.", d: "if you're hungry", k: ["불편하셔도 참아 주세요", "편안하시면 말씀해 주세요"], a: "uncomfortable", ai: bell, o: ["comfortable", "safe", "happy"]}
+  - {t: "대안 제시", i: hospital, w: "가능하다고 말하되 if you prefer로 결정을 환자에게 맡겨요. 병원 사정에 따라 바로 어려울 수 있으면 can find처럼 가능성으로 말해요.", d: "right now", k: ["남성 간호사로 바꿔 드릴 수 있어요", "진찰은 의사가 해요"], a: "if", ai: star, o: ["unless", "because", "although"]}
+  - {t: "프라이버시", i: lock, w: "처음부터 끝까지 가려 준다고 약속하면 환자가 진찰을 받아들이기 쉬워요. 필요한 부위만 단계적으로 노출하는 것이 일반적인 방식이에요.", d: "after the visit", k: ["진찰 전에만 가려 드릴게요", "진찰은 커튼 없이 해요"], a: "during", ai: bell, o: ["without", "unless", "except"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "성별 선호 배려 순서"
+    why: "먼저 여성 간호사를 원하는지 묻고, 원하면 찾아 주겠다고 하고, 어느 쪽이든 가려 주겠다고 약속하고, 불편하면 말해 달라고 해요. one, Either way, that이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Before we start, would you prefer a female nurse for this exam?", icon: me, ko: "시작 전에, 이 진찰은 여성 간호사가 좋으세요?", note: "질문"}
+    - {en: "If so, I can find one for you.", icon: hospital, ko: "그러시면 한 분 찾아 드릴 수 있어요", note: "대안"}
+    - {en: "Either way, we'll keep you covered during the exam.", icon: shield, ko: "어느 쪽이든 진찰 중에 계속 가려 드릴게요", note: "약속"}
+    - {en: "Even with all that, tell me if anything makes you uncomfortable.", icon: faceWorried, ko: "그래도 불편한 게 있으면 말씀해 주세요", note: "당부"}
+  sw: {ko: "이 진찰은 여성 간호사가 하는 걸 선호하세요?"}
+- title: 문해력 저하 환자
+  s:
+  - {t: "소리 내 설명", i: speaker, w: "walk you through it은 처음부터 끝까지 함께 짚어 준다는 표현이에요. 글을 읽기 어려운 환자에게는 서류를 주기보다 소리 내어 설명해요.", d: "in writing", k: ["서류를 읽어 드릴게요", "한 번에 다 설명할게요"], a: "walk", ai: star, o: ["rush", "hurry", "drag"]}
+  - {t: "그림 설명", i: pencil, w: "그림은 글을 몰라도 이해하기 쉬운 도구예요. 간단할수록 환자가 이해하기 쉬워요.", d: "a long form", k: ["긴 설명서를 읽어 드릴게요", "사진을 찍어 드릴게요"], a: "draw", ai: bulb, o: ["erase", "hide", "hang"]}
+  - {t: "속도 조절", i: coffee, w: "서두르지 않는다고 먼저 말하면 환자가 이해하지 못했다고 말할 부담이 줄어요. 속도를 환자가 조절할 수 있게 해요.", d: "if I stop", k: ["서둘러야 해요", "제가 너무 느리면 말씀해 주세요"], a: "fast", ai: compass, o: ["loud", "soft", "wide"]}
+  - {t: "함께 진행", i: pushpin, w: "한 단계씩 함께 간다고 말하고 그림을 곁들이면 말과 시각 자료가 서로를 도와요.", d: "and I'll wait", k: ["그림 없이 말로만 할게요", "한 번에 끝낼게요"], a: "too", ai: star, o: ["first", "later", "again"]}
+  - {t: "안심", i: coffee, w: "이해하는 데 시간이 걸려도 괜찮다고 알려 주면 읽기 어려운 환자가 부끄러워하지 않아요.", d: "to sign this", k: ["서둘러 서명해 주세요", "이해 못 하면 다음에 해요"], a: "Take", ai: faceWorried, o: ["Waste", "Lose", "Kill"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "읽기 어려운 환자에게 설명하는 순서"
+    why: "소리 내어 설명하겠다고 하고, 한 단계씩 그림과 함께 진행하고, 그동안 속도를 조절하게 하고, 마지막에 다시 짚을 것을 묻는 순서예요. each one, While I do that, again이 앞 줄을 가리키고 Last가 마지막을 고정해요."
+    lines:
+    - {en: "I'll explain this out loud, so you won't need to read anything.", icon: speaker, ko: "소리 내어 설명할 테니 읽으실 필요 없어요", note: "방식"}
+    - {en: "I'll go step by step, and I'll draw a picture of each one.", icon: pencil, ko: "한 단계씩 하고, 각각 그림도 그려드릴게요", note: "그림"}
+    - {en: "While I do that, tell me if I go too fast.", icon: coffee, ko: "그러는 동안 제가 너무 빠르면 말씀해 주세요", note: "속도"}
+    - {en: "Last, take your time and ask me to go over anything again.", icon: faceWorried, ko: "마지막으로, 천천히 하시고 다시 짚을 게 있으면 말씀하세요", note: "마무리"}
+  sw: {ko: "제가 소리 내어 설명해 드릴게요, 한 단계씩 같이 할게요"}
+- title: 청각장애 수어 통역
+  s:
+  - {t: "수어 통역", i: handshake2, w: "청각장애 환자에게는 수어 통역을 제공해야 해요. 미국에서는 장애인법(ADA)이 병원에 효과적인 의사소통 수단을 요구해요.", d: "for the family", k: ["필담 도구를 가져올게요", "통역사를 취소할게요"], a: "arranging", ai: bell, o: ["canceling", "refusing", "charging"]}
+  - {t: "표정 사용", i: faceWorried, w: "입 모양과 표정은 청각장애 환자가 말뜻을 파악하는 단서예요. 그래서 마주 보고 말한다고 알려 줘요.", d: "behind me", k: ["저를 등지고 서 주세요", "제 입을 가려 드릴게요"], a: "Face", ai: me, o: ["Ignore", "Leave", "Avoid"]}
+  - {t: "필담 병행", i: pencil, w: "수어 통역이 오기 전에 글로 쓰는 방법을 병행하면 기다리는 동안에도 대화할 수 있어요. 다만 수어가 모국어인 환자는 영어 필담이 어려울 수 있어 통역을 대신하지는 못해요.", d: "on the wall", k: ["글은 쓰지 않을게요", "통역사를 기다리지 마세요"], a: "also", ai: speech, o: ["never", "hardly", "rarely"]}
+  - {t: "통역 안내", i: speech, w: "통역사가 말을 전부 옮긴다고 알려 주면 환자가 놓치는 게 없다고 안심해요. 통역은 간호사가 하는 말 전체를 전달하는 것이 원칙이에요.", d: "for you", k: ["통역사가 가끔 요약할 거예요", "통역사가 글로 써 줄 거예요"], a: "sign", ai: gear, o: ["delete", "forget", "cancel"]}
+  - {t: "필담 병행", i: pencil, w: "if that's easier로 선택을 환자에게 맡겨요. 환자가 편한 방법이 곧 의사소통 수단이에요.", d: "right away", k: ["서류에 서명하세요", "수어는 그만할게요"], a: "easier", ai: bulb, o: ["harder", "slower", "worse"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "수어 통역 준비 순서"
+    why: "수어 통역사를 준비 중이라고 알리고, 기다리는 동안 글로 소통하고, 통역사가 오면 말 전체를 수어로 옮긴다고 하고, 그때도 간호사를 보게 해요. While we wait, Once …here, When they sign이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "I'm arranging a sign language interpreter for you now.", icon: handshake2, ko: "지금 수어 통역사를 준비하고 있어요", note: "준비"}
+    - {en: "While we wait, we can write things down together.", icon: pencil, ko: "기다리는 동안 함께 글로 써서 소통해요", note: "필담"}
+    - {en: "Once the interpreter is here, they'll sign everything I say.", icon: speech, ko: "통역사가 오면 제가 하는 말을 전부 수어로 옮겨요", note: "통역"}
+    - {en: "When they sign, please keep facing me so you can see my expressions.", icon: faceWorried, ko: "수어를 할 때도 제 표정이 보이게 저를 봐 주세요", note: "시선"}
+  ctx: {word: "arrange", ko: "마련하다"}
+- title: 통증 표현 문화차
+  s:
+  - {t: "통증 표현", i: stetho, w: "여기서는 말해도 된다고 안내하면 통증을 참는 것이 미덕인 문화의 환자도 표현하기 쉬워요. 통증은 환자가 직접 말하는 것이 가장 정확한 정보예요.", d: "for you", k: ["통증은 말하지 않는 게 좋아요", "통증은 의사에게만 말하세요"], a: "In here", ai: gear, o: ["Outside", "At home", "Out there"]}
+  - {t: "참지 않기", i: faceWorried, w: "참는 태도를 존중하면서 나에게는 그럴 필요가 없다고 말해요. 통증을 참으면 진통제가 늦어질 수 있어요.", d: "to stay quiet", k: ["더 참아 주세요", "저를 위해 웃어 주세요"], a: "for me", ai: me, o: ["for them", "for him", "for her"]}
+  - {t: "비언어 신호", i: magnify, w: "말과 몸짓이 다를 때는 몸짓을 근거로 다시 묻는 것이 좋아요. 비난하지 않고 질문으로 확인하는 모양이에요.", d: "if you're fine", k: ["웃고 계시니 괜찮으시죠?", "통증이 사라졌나요?"], a: "tensing", ai: coffee, o: ["smiling", "laughing", "sleeping"]}
+  - {t: "허락", i: speech, w: "It's okay to로 허락을 먼저 말하면 환자가 약해 보일까 걱정하지 않아요. 실제 통증은 환자가 느끼는 그대로를 뜻해요.", d: "to hide it", k: ["숫자로만 말씀하세요", "통증은 숨기는 게 좋아요"], a: "okay", ai: star, o: ["rude", "wrong", "bad"]}
+  - {t: "관찰 공유", i: magnify, w: "관찰한 것을 근거로 추측을 말하면 환자가 맞다고 확인하기 쉬워요. 통증을 의심하는 말 대신 눈에 보이는 신호를 말해 줘요.", d: "so you are fine", k: ["긴장하셔서 통증이 없다고 봐요", "환자분이 거짓말하는 것 같아요"], a: "think", ai: bulb, o: ["doubt", "hope", "forget"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "참는 환자의 통증 확인 순서"
+    why: "통증을 말해도 된다고 허락하고, 그 말을 바탕으로 긴장하는 모습을 근거로 다시 묻고, 심하다면 정도를 숫자로 묻고, 도움을 약속해요. With that in mind, If so가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "In here, telling me about your pain helps us help you.", icon: stetho, ko: "여기서는 통증을 말씀해 주시는 게 도움이 돼요", note: "허락"}
+    - {en: "With that in mind, I noticed you're tensing. Is the pain worse than you're saying?", icon: magnify, ko: "그래서 말인데, 긴장하시는 게 보여요. 말씀보다 더 아프세요?", note: "관찰"}
+    - {en: "If so, show me how bad it is, zero to ten.", icon: chartup, ko: "그렇다면 얼마나 심한지 0에서 10으로 보여 주세요", note: "정도"}
+    - {en: "Thank you. I'll talk to the doctor about getting you relief.", icon: bell, ko: "고마워요. 통증을 줄일 방법을 의사와 상의할게요", note: "약속"}
+  sw: {ko: "저를 위해 강한 척하지 않아도 돼요, 정말 얼마나 아픈지 말해 주세요"}
