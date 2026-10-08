@@ -242,7 +242,7 @@ STEP 2 문장 화면은 문장마다 낱장 한 장입니다. 낱장 머리에 *
 | `why` | "왜?" 한 줄 — 이 문장을 **왜 이렇게** 말하는지 | 비우지 말 것. 1~2문장, 사실이어야 함 |
 | `decoy` | 청크 조립 풀에 섞일 **오답 조각 1개** | 이 문장의 청크와 같지 않고, `en` 안에 없는 말 |
 | `distractorsKo` | 듣고 뜻 고르기의 **오답 뜻 2개**(한국어) | 정확히 2개, 서로 다르고 `ko`와 다름 |
-| `blank` | 빈칸 2×2 — `answer`와 선택지 4개(`en`+`icon`) | `answer`는 `en`에 **낱말 경계로 정확히 한 번**, 선택지 4개는 서로 다르고 `answer`를 포함, 저마다 `icon` |
+| `blank` | 빈칸 — `answer`와 선택지 4개(`en`만, **아이콘 없음**) | `answer`는 `en`에 **낱말 경계로 정확히 한 번**, 선택지 4개는 서로 다르고 `answer`를 포함. 선택지에 `icon`을 쓰면 오류 |
 
 ```yaml
 sentences:
@@ -259,10 +259,10 @@ sentences:
     blank:
       answer: "every time"
       options:
-        - {en: "every time", icon: "compass"}
-        - {en: "right now", icon: "star"}
-        - {en: "next week", icon: "calendar"}
-        - {en: "sometimes", icon: "chartup"}
+        - {en: "every time"}
+        - {en: "right now"}
+        - {en: "next week"}
+        - {en: "sometimes"}
   - en: "I know it feels repetitive."
     ko: "반복처럼 느껴지시는 거 알아요."
     chunks: ["I know", "it feels", "repetitive", "."]
@@ -276,10 +276,10 @@ sentences:
     blank:
       answer: "repetitive"
       options:
-        - {en: "repetitive", icon: "compass"}
-        - {en: "important", icon: "star"}
-        - {en: "annoying", icon: "faceAngry"}
-        - {en: "quick", icon: "chartup"}
+        - {en: "repetitive"}
+        - {en: "important"}
+        - {en: "annoying"}
+        - {en: "quick"}
 ```
 
 - **`decoy`는 그럴듯하지만 이 문장에는 안 맞는 조각.** 같은 자리에 올 수 있는 구(`for the doctor` ↔ `for your safety`,
@@ -290,7 +290,7 @@ sentences:
   나오면(`your … your`) 빈칸이 어디인지 모호해지니 다른 말을 고르세요.
 - **빈칸 오답은 같은 품사·같은 자리에 들어갈 말**로(형용사 자리면 형용사 셋). 넣어 읽었을 때 **문법은 맞지만 이
   장면에서는 틀린** 말이 좋습니다. 정답으로도 맞는 오답(`repetitive` ↔ `repeated`)은 안 됩니다.
-  선택지 아이콘은 그 낱말의 느낌을 하나씩(`annoying` → `faceAngry`) — 정답만 눈에 띄는 아이콘을 주지 마세요.
+  선택지에는 아이콘이 없습니다(T8).
 - **`distractorsKo`는 같은 상황에서 실제로 할 법한 다른 말의 뜻**(`지금 약을 드릴게요`). 정답 뜻과 반만 다른 말
   (`손목 밴드를 한 번 확인할게요`)은 듣고 고를 때 정답이 둘이 됩니다.
 - **`why`는 `ko`를 되풀이하지 마세요.** 뜻이 아니라 **말하는 방식의 이유**(어순·완곡·공감·안전)입니다.
@@ -355,11 +355,9 @@ situations:
 
 시험 주제에서 Opus 검토가 낸 81건은 거의 다음 다섯 갈래였습니다. 저작할 때 먼저 피하세요.
 
-1. **정답 아이콘이 문장 아이콘과 같다(46/122).** 낱장 머리 앰버 원은 빈칸 장에서도 그 문장의 `icon`을 그립니다. 같은
-   아이콘이 선택지 하나에만 있으면 답이 보입니다. 정답 선택지에는 **문장 `icon`과 다른** 아이콘을, 넷은 서로 다르게.
-   **`check`·`cross`는 선택지에 쓰지 않습니다** — 낱장이 결과를 ✓/✕로 그리므로 판정 표시로 읽힙니다(파일럿 53개:
-   `check`가 대부분 정답, `cross`가 대부분 오답이라 답이 그대로 보였음).
-   (검사기 V18이 이제 셋 다 잡습니다.)
+1. **빈칸 선택지 아이콘이 답을 드러냈다.** 정답 아이콘이 문장 아이콘과 같거나(46/122), 판정 표시 `check`가 정답·`cross`가
+   오답에 몰렸다(53개). → **T8 사용자 결정으로 선택지 아이콘을 없앴습니다.** 선택지는 STEP 1 고르기처럼 A–D 줄로 그립니다.
+   `options`에는 `en`만 씁니다(`icon`을 쓰면 V18 오류).
 2. **빈칸 오답이 장면과 동떨어졌다(약 45문장).** `painting/sings/haircut/weather`처럼 들어가면 우스운 말은 읽기만 해도
    걸러져 문제가 되지 않습니다. 오답은 **같은 분야에서 틀린 말**로 고르세요:
    - (a) 같은 분야의 **반대·엉뚱한 방향** — `raising`, `lower`, `unlocked`, `clotting`

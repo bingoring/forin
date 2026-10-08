@@ -110,7 +110,9 @@ async function press(node: ReactTestInstance) {
 }
 const pressID = async (root: ReactTestInstance, id: string) => press(byID(root, id)[0]);
 async function pressLabel(root: ReactTestInstance, prefix: string, label: string) {
-  const hit = root.findAll((n) => typeof n.type !== 'string' && String(n.props?.testID ?? '').startsWith(prefix) && texts(n).join('') === label)[0];
+  // a blank option row reads its A–D ring first (T8) — match the label after it
+  const read = (n: ReactTestInstance) => (prefix === 'sent-opt-' && /^[A-D]/.test(texts(n).join('')) && texts(n).length > 1 ? texts(n).slice(1) : texts(n)).join('');
+  const hit = root.findAll((n) => typeof n.type !== 'string' && String(n.props?.testID ?? '').startsWith(prefix) && read(n) === label)[0];
   expect(hit).toBeTruthy();
   await press(hit);
 }
@@ -277,7 +279,7 @@ describe('문장장', () => {
     expect(allText(tree.root)).toContain('이제 알겠어요');
   });
 
-  it('blank (authored): 2×2 icon cards; a wrong pick shows the answer in red in the slot', async () => {
+  it('blank (authored): option rows like STEP 1 pick; a wrong pick shows the answer in red in the slot', async () => {
     const tree = await mount();
     await toSheets(tree);
     for (let k = 0; k < 2; k++) {
@@ -288,7 +290,14 @@ describe('문장장', () => {
     }
     const cur = () => current(tree.root);
     expect(texts(cur())).toEqual(expect.arrayContaining(['공감', '빈칸 채우기', 'I know it feels repetitive. (뜻)', '?']));
-    expect(cur().findAll((n) => n.props?.name === 'compass')).toHaveLength(1);
+    expect(cur().findAll((n) => n.props?.name === 'compass')).toHaveLength(0); // the authored option icon is not drawn
+    // T8 user decision (§7): no icons on the blank's options — stacked rows like STEP 1 pick (A–D ring, mono 14)
+    const optHosts = [0, 1, 2, 3].map((k) => hostID(cur(), `sent-opt-${k}`)[0]);
+    for (const [k, o] of optHosts.entries()) {
+      expect(o.findAll((n) => n.props?.size === 22)).toHaveLength(0);
+      expect(flat(o)).toMatchObject({ flexDirection: 'row', paddingVertical: 10, paddingHorizontal: 12, marginTop: k ? 8 : 0 });
+      expect(texts(o)[0]).toBe(String.fromCharCode(65 + k));
+    }
     await pressLabel(cur(), 'sent-opt-', 'quick');
     expect(texts(byID(cur(), 'sent-blank-text')[0])).toEqual(['quick']);
     await pressID(tree.root, 'sent-check');

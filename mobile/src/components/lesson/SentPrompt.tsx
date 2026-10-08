@@ -189,7 +189,9 @@ function BlankPrompt({ card, answer, onAnswer, result, locked }: {
         { node: slot, key: 'slot' },
         ...(card.after ? [{ text: card.after }] : []),
       ]} />
-      <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 9, marginTop: 12 }}>
+      {/* 핸드오프는 선택지마다 아이콘을 얹은 2×2 카드(SL:69-77)지만, 문장이 있는데 아이콘은 군더더기이고 낱말에 맞는 아이콘도
+          드물다 — 사용자 결정(T8, §7)으로 STEP 1 고르기(WL:56-67)와 같은 세로 줄: A–D 고리 · mono 14 · ±.4° · 결과 ✓/✕. */}
+      <View style={{ marginTop: 12 }}>
         {card.options.map((o, i) => {
           const on = answer === o.en;
           const ok = !!result && o.en === card.answer;
@@ -198,12 +200,15 @@ function BlankPrompt({ card, answer, onAnswer, result, locked }: {
             <Pressable key={o.en} testID={`sent-opt-${i}`} disabled={locked} onPress={() => onAnswer(o.en)}
               accessibilityRole="button" accessibilityState={{ selected: on }}
               style={{
-                flexBasis: '40%', flexGrow: 1, paddingVertical: 10, paddingHorizontal: 8, alignItems: 'center',
+                marginTop: i ? 8 : 0, paddingVertical: 10, paddingHorizontal: 12, flexDirection: 'row', alignItems: 'center', gap: 8,
                 borderWidth: 1.6, borderColor: statusColor(ok, bad, on), backgroundColor: statusBg(ok, bad, on),
-                transform: [{ rotate: `${i % 2 ? 0.8 : -0.8}deg` }],
+                transform: [{ rotate: `${i % 2 ? 0.4 : -0.4}deg` }],
               }}>
-              {!!o.icon && <NbIcon name={o.icon} size={22} />}
-              <Text style={{ fontFamily: nbFonts.monoBold, fontSize: 12.5, color: nb.ink, marginTop: o.icon ? 5 : 0, textAlign: 'center' }}>{o.en}</Text>
+              <View style={{ width: 18, height: 18, borderRadius: 9, borderWidth: 1.5, borderColor: ok ? nb.green : bad ? nb.red : nb.soft, alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                {ok ? <NbIcon name="check" size={12} color={nb.green} /> : bad ? <NbIcon name="cross" size={11} color={nb.red} />
+                  : <Text style={nbText.hand(12, nb.soft)}>{String.fromCharCode(65 + i)}</Text>}
+              </View>
+              <Text style={[nbText.monoBold(14, nb.ink), { flexShrink: 1 }]}>{o.en}</Text>
             </Pressable>
           );
         })}

@@ -135,9 +135,6 @@ func ValidateSentenceV46(i int, s Sentence) []error {
 			if o.En == b.Answer {
 				offered = true
 			}
-			if blank(o.Icon) {
-				bad("blank option %q has no icon", o.En)
-			}
 		}
 		if !offered {
 			bad("blank answer %q is not one of the options", b.Answer)

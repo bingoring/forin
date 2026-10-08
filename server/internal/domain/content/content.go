@@ -330,8 +330,10 @@ type SentenceBlank struct {
 
 // BlankOption is one card of the blank 2×2: the English word and its NbIcon.
 type BlankOption struct {
-	En   string `yaml:"en" json:"en"`
-	Icon string `yaml:"icon" json:"icon"`
+	En string `yaml:"en" json:"en"`
+	// Icon is no longer authored or drawn: the sheet lists the options as rows like STEP 1's pick
+	// (lesson-fidelity-v46 T8, user decision — a sentence needs no picture). Kept so older rows still load.
+	Icon string `yaml:"icon,omitempty" json:"icon,omitempty"`
 }
 
 // SentenceOrder is a situation's order card (결정 8): four short lines in the order the

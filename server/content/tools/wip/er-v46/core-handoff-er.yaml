@@ -2260,13 +2260,9 @@ situations:
       answer: chest
       options:
       - en: chest
-        icon: stetho
       - en: back
-        icon: chevronDown
       - en: head
-        icon: bulb
       - en: throat
-        icon: mic
   - en: 'Background: history of high blood pressure, no cardiac history.'
     ko: '배경: 고혈압 병력이 있고, 심장 병력은 없습니다.'
     chunks:
@@ -2292,13 +2288,9 @@ situations:
       answer: cardiac
       options:
       - en: lung
-        icon: monitor
       - en: cardiac
-        icon: stetho
       - en: kidney
-        icon: lab
       - en: liver
-        icon: pill
   - en: 'Assessment: he''s alert, and his vitals are stable right now.'
     ko: '평가: 의식은 명료하고, 활력징후는 지금 안정적입니다.'
     chunks:
@@ -2324,13 +2316,9 @@ situations:
       answer: stable
       options:
       - en: low
-        icon: chevronDown
       - en: critical
-        icon: faceWorried
       - en: stable
-        icon: compass
       - en: unstable
-        icon: siren
   - en: My recommendation is to keep him on the monitor.
     ko: 제 권고는 계속 모니터로 관찰하는 것입니다.
     chunks:
@@ -2354,13 +2342,9 @@ situations:
       answer: monitor
       options:
       - en: ventilator
-        icon: hospital
       - en: stretcher
-        icon: bandage
       - en: drip
-        icon: pill
       - en: monitor
-        icon: chartup
   - en: 'Sure, let me repeat that: his blood pressure was one forty over ninety.'
     ko: '네, 다시 말씀드릴게요: 혈압은 140에 90이었습니다.'
     chunks:
@@ -2384,13 +2368,9 @@ situations:
       answer: over
       options:
       - en: over
-        icon: compass
       - en: under
-        icon: chevronDown
       - en: above
-        icon: chevronUp
       - en: minus
-        icon: bulb
   - en: Call me right away if his pain score goes above five.
     ko: 통증 점수가 5점을 넘으면 바로 저를 불러 주세요.
     chunks:
@@ -2415,13 +2395,9 @@ situations:
       answer: above
       options:
       - en: down to
-        icon: play
       - en: above
-        icon: chevronUp
       - en: below
-        icon: chevronDown
       - en: under
-        icon: lock
   nuance:
   - kind: pair
     words:
@@ -2508,13 +2484,9 @@ situations:
       answer: stable
       options:
       - en: irregular
-        icon: redo
       - en: stable
-        icon: compass
       - en: unstable
-        icon: siren
       - en: low
-        icon: chevronDown
   - en: Chief complaint is abdominal pain since this morning.
     ko: 주호소는 오늘 아침부터 시작된 복통입니다.
     chunks:
@@ -2538,13 +2510,9 @@ situations:
       answer: abdominal
       options:
       - en: back
-        icon: chevronDown
       - en: throat
-        icon: mic
       - en: abdominal
-        icon: stetho
       - en: chest
-        icon: compass
   - en: We're still waiting on the CT results.
     ko: CT 결과는 아직 기다리는 중입니다.
     chunks:
@@ -2567,13 +2535,9 @@ situations:
       answer: CT
       options:
       - en: MRI
-        icon: monitor
       - en: X-ray
-        icon: scalpel
       - en: ultrasound
-        icon: speaker
       - en: CT
-        icon: magnify
   - en: Please recheck her blood pressure before you chart it.
     ko: 차트에 기록하기 전에 혈압을 다시 확인해 주세요.
     chunks:
@@ -2597,13 +2561,9 @@ situations:
       answer: before
       options:
       - en: before
-        icon: calendar
       - en: after
-        icon: redo
       - en: while
-        icon: play
       - en: once
-        icon: star
   - en: She hasn't needed any pain medicine this shift.
     ko: 이번 근무 동안 진통제는 필요 없었습니다.
     chunks:
@@ -2626,13 +2586,9 @@ situations:
       answer: pain
       options:
       - en: heart
-        icon: stetho
       - en: pain
-        icon: faceWorried
       - en: sleep
-        icon: coffee
       - en: allergy
-        icon: shield
   nuance:
   - kind: pair
     words:
@@ -2716,13 +2672,9 @@ situations:
       answer: due
       options:
       - en: held
-        icon: lock
       - en: skipped
-        icon: compass
       - en: due
-        icon: bell
       - en: late
-        icon: redo
   - en: The urine sample still needs to go to the lab.
     ko: 소변 검체는 아직 검사실로 보내야 합니다.
     chunks:
@@ -2747,13 +2699,9 @@ situations:
       answer: urine
       options:
       - en: blood
-        icon: compass
       - en: stool
-        icon: home
       - en: sputum
-        icon: mic
       - en: urine
-        icon: lab
   - en: Please recheck her blood pressure in an hour.
     ko: 한 시간 뒤에 혈압을 다시 확인해 주세요.
     chunks:
@@ -2776,13 +2724,9 @@ situations:
       answer: an hour
       options:
       - en: an hour
-        icon: calendar
       - en: a day
-        icon: bell
       - en: a week
-        icon: redo
       - en: a minute
-        icon: star
   - en: His last dose of antibiotic was given on time.
     ko: 지난번 항생제 투여는 제시간에 이루어졌습니다.
     chunks:
@@ -2807,13 +2751,9 @@ situations:
       answer: given
       options:
       - en: held
-        icon: lock
       - en: given
-        icon: pill
       - en: ordered
-        icon: board
       - en: charted
-        icon: pencil
   - en: Can you confirm the lab result once it's back?
     ko: 결과가 나오면 확인해 주실 수 있나요?
     chunks:
@@ -2838,13 +2778,9 @@ situations:
       answer: once
       options:
       - en: although
-        icon: faceWorried
       - en: until
-        icon: lock
       - en: once
-        icon: compass
       - en: unless
-        icon: bulb
   nuance:
   - kind: slider
     words:
@@ -2925,13 +2861,9 @@ situations:
       answer: correct
       options:
       - en: ready
-        icon: play
       - en: stable
-        icon: monitor
       - en: awake
-        icon: coffee
       - en: correct
-        icon: compass
   - en: Working diagnosis is dehydration, ruling out infection.
     ko: 현재 진단은 탈수이고, 감염은 배제하는 중입니다.
     chunks:
@@ -2953,13 +2885,9 @@ situations:
       answer: dehydration
       options:
       - en: dehydration
-        icon: coffee
       - en: anemia
-        icon: compass
       - en: stroke
-        icon: faceWorried
       - en: asthma
-        icon: speaker
   - en: Can you read the name band back to me?
     ko: 이름 밴드를 저에게 다시 읽어 주시겠어요?
     chunks:
@@ -2982,13 +2910,9 @@ situations:
       answer: name
       options:
       - en: alert
-        icon: bell
       - en: name
-        icon: board
       - en: allergy
-        icon: shield
       - en: blood
-        icon: compass
   - en: Let's confirm the date of birth on the chart together.
     ko: 차트에 있는 생년월일도 함께 확인해요.
     chunks:
@@ -3012,13 +2936,9 @@ situations:
       answer: together
       options:
       - en: later
-        icon: redo
       - en: twice
-        icon: star
       - en: together
-        icon: handshake2
       - en: alone
-        icon: me
   - en: Her diagnosis and bed number both match the chart.
     ko: 진단명과 병상 번호 모두 차트와 일치합니다.
     chunks:
@@ -3044,13 +2964,9 @@ situations:
       answer: chart
       options:
       - en: monitor
-        icon: chartup
       - en: pharmacy
-        icon: pill
       - en: schedule
-        icon: calendar
       - en: chart
-        icon: board
   - en: I'll wait while you double-check her wristband.
     ko: 손목밴드를 다시 확인하시는 동안 기다릴게요.
     chunks:
@@ -3072,13 +2988,9 @@ situations:
       answer: while
       options:
       - en: while
-        icon: play
       - en: unless
-        icon: compass
       - en: although
-        icon: faceWorried
       - en: because
-        icon: bulb
   nuance:
   - kind: pair
     words:
@@ -3162,13 +3074,9 @@ situations:
       answer: closely
       options:
       - en: closely
-        icon: compass
       - en: briefly
-        icon: redo
       - en: rarely
-        icon: calendar
       - en: loosely
-        icon: lock
   - en: Her pressure has been trending down all afternoon.
     ko: 그분 혈압이 오후 내내 계속 떨어지고 있습니다.
     chunks:
@@ -3191,13 +3099,9 @@ situations:
       answer: afternoon
       options:
       - en: night
-        icon: lock
       - en: afternoon
-        icon: calendar
       - en: morning
-        icon: coffee
       - en: evening
-        icon: home
   - en: If anything changes, call the doctor early.
     ko: 뭔가 변화가 있으면 일찍 의사를 호출하세요.
     chunks:
@@ -3220,13 +3124,9 @@ situations:
       answer: early
       options:
       - en: late
-        icon: calendar
       - en: twice
-        icon: star
       - en: early
-        icon: siren
       - en: later
-        icon: redo
   - en: The other three beds are stable and just waiting for discharge.
     ko: 나머지 세 병상은 안정적이고 퇴원만 기다리고 있습니다.
     chunks:
@@ -3252,13 +3152,9 @@ situations:
       answer: discharge
       options:
       - en: surgery
-        icon: scalpel
       - en: dialysis
-        icon: gear
       - en: admission
-        icon: hospital
       - en: discharge
-        icon: home
   - en: Bed three needs the most attention tonight.
     ko: 오늘 밤은 3번 병상에 가장 주의가 필요합니다.
     chunks:
@@ -3281,13 +3177,9 @@ situations:
       answer: attention
       options:
       - en: attention
-        icon: magnify
       - en: oxygen
-        icon: speaker
       - en: fluids
-        icon: coffee
       - en: medicine
-        icon: pill
   nuance:
   - kind: pair
     words:
@@ -3370,13 +3262,9 @@ situations:
       answer: pneumonia
       options:
       - en: meningitis
-        icon: bulb
       - en: pneumonia
-        icon: stetho
       - en: appendicitis
-        icon: scalpel
       - en: cellulitis
-        icon: bandage
   - en: Last vitals were stable, oxygen at two liters.
     ko: 마지막 활력징후는 안정적이고, 산소는 2리터입니다.
     chunks:
@@ -3400,13 +3288,9 @@ situations:
       answer: oxygen
       options:
       - en: output
-        icon: chevronDown
       - en: drainage
-        icon: bandage
       - en: oxygen
-        icon: speaker
       - en: fluids
-        icon: coffee
   - en: Pending labs are her morning cultures.
     ko: 대기 중인 검사는 아침 배양검사입니다.
     chunks:
@@ -3429,13 +3313,9 @@ situations:
       answer: cultures
       options:
       - en: x-rays
-        icon: magnify
       - en: scans
-        icon: play
       - en: vitals
-        icon: monitor
       - en: cultures
-        icon: pushpin
   - en: She's due for her next antibiotic dose at six.
     ko: 다음 항생제 투여는 6시 예정입니다.
     chunks:
@@ -3460,13 +3340,9 @@ situations:
       answer: six
       options:
       - en: six
-        icon: calendar
       - en: ten
-        icon: redo
       - en: two
-        icon: star
       - en: noon
-        icon: coffee
   - en: Please recheck her oxygen level once she's settled on the floor.
     ko: 병동에 자리 잡으면 산소 수치를 다시 확인해 주세요.
     chunks:
@@ -3491,13 +3367,9 @@ situations:
       answer: level
       options:
       - en: alarm
-        icon: bell
       - en: level
-        icon: chartup
       - en: tank
-        icon: gear
       - en: mask
-        icon: faceWorried
   nuance:
   - kind: slider
     words:
@@ -3579,13 +3451,9 @@ situations:
       answer: pending
       options:
       - en: elevated
-        icon: chartup
       - en: negative
-        icon: compass
       - en: pending
-        icon: bell
       - en: normal
-        icon: bulb
   - en: If it's elevated, the doctor wants to be called.
     ko: 수치가 높으면 의사에게 연락해 달라고 했습니다.
     chunks:
@@ -3609,13 +3477,9 @@ situations:
       answer: elevated
       options:
       - en: normal
-        icon: compass
       - en: pending
-        icon: redo
       - en: negative
-        icon: bulb
       - en: elevated
-        icon: chartup
   - en: The X-ray is done but not yet read.
     ko: 엑스레이는 촬영했지만 아직 판독 전입니다.
     chunks:
@@ -3636,13 +3500,9 @@ situations:
       answer: done
       options:
       - en: done
-        icon: compass
       - en: ordered
-        icon: board
       - en: scheduled
-        icon: calendar
       - en: canceled
-        icon: bulb
   - en: His pain score has stayed the same since the last check.
     ko: 마지막 확인 이후 통증 점수는 그대로입니다.
     chunks:
@@ -3666,13 +3526,9 @@ situations:
       answer: since
       options:
       - en: during
-        icon: play
       - en: since
-        icon: calendar
       - en: until
-        icon: lock
       - en: before
-        icon: redo
   - en: Please confirm the troponin result as soon as it's back.
     ko: 트로포닌 결과가 나오는 대로 확인해 주세요.
     chunks:
@@ -3696,13 +3552,9 @@ situations:
       answer: confirm
       options:
       - en: order
-        icon: board
       - en: cancel
-        icon: compass
       - en: confirm
-        icon: bulb
       - en: repeat
-        icon: redo
   nuance:
   - kind: slider
     words:
@@ -3784,13 +3636,9 @@ situations:
       answer: borderline
       options:
       - en: high
-        icon: chartup
       - en: normal
-        icon: compass
       - en: stable
-        icon: monitor
       - en: borderline
-        icon: faceWorried
   - en: If systolic drops below ninety, start the fluid bolus.
     ko: 수축기 혈압이 90 아래로 떨어지면 수액을 빠르게 주입하세요.
     chunks:
@@ -3813,13 +3661,9 @@ situations:
       answer: systolic
       options:
       - en: systolic
-        icon: chartup
       - en: diastolic
-        icon: monitor
       - en: pulse
-        icon: stetho
       - en: temperature
-        icon: faceWorried
   - en: The doctor is aware and wants a call for any change.
     ko: 의사도 알고 있고, 변화가 있으면 연락을 원합니다.
     chunks:
@@ -3843,13 +3687,9 @@ situations:
       answer: aware
       options:
       - en: unsure
-        icon: compass
       - en: aware
-        icon: bulb
       - en: away
-        icon: plane
       - en: unaware
-        icon: faceWorried
   - en: Watch her closely — she could turn quickly.
     ko: 그분을 주의 깊게 봐 주세요, 빠르게 악화될 수 있습니다.
     chunks:
@@ -3871,13 +3711,9 @@ situations:
       answer: closely
       options:
       - en: rarely
-        icon: calendar
       - en: loosely
-        icon: lock
       - en: closely
-        icon: compass
       - en: briefly
-        icon: redo
   - en: Her monitor alarm has gone off twice this hour.
     ko: 이번 한 시간 동안 모니터 경보가 두 번 울렸습니다.
     chunks:
@@ -3900,13 +3736,9 @@ situations:
       answer: twice
       options:
       - en: once
-        icon: redo
       - en: four times
-        icon: star
       - en: three times
-        icon: calendar
       - en: twice
-        icon: siren
   nuance:
   - kind: slider
     words:
@@ -3985,13 +3817,9 @@ situations:
       answer: sickest
       options:
       - en: sickest
-        icon: siren
       - en: newest
-        icon: star
       - en: oldest
-        icon: calendar
       - en: quietest
-        icon: speaker
   - en: Bed one is stable and just waiting for discharge.
     ko: 1번 병상은 안정적이고 퇴원만 기다리고 있습니다.
     chunks:
@@ -4017,13 +3845,9 @@ situations:
       answer: stable
       options:
       - en: pending
-        icon: redo
       - en: stable
-        icon: compass
       - en: unstable
-        icon: siren
       - en: critical
-        icon: faceWorried
   - en: Bed three is the one that needs the most attention.
     ko: 3번 병상이 가장 주의가 필요한 환자입니다.
     chunks:
@@ -4047,13 +3871,9 @@ situations:
       answer: attention
       options:
       - en: fluids
-        icon: coffee
       - en: medicine
-        icon: pill
       - en: attention
-        icon: magnify
       - en: oxygen
-        icon: speaker
   - en: Bed two just needs her antibiotic dose at noon.
     ko: 2번 병상은 정오에 항생제만 투여하면 됩니다.
     chunks:
@@ -4079,13 +3899,9 @@ situations:
       answer: noon
       options:
       - en: night
-        icon: lock
       - en: midnight
-        icon: home
       - en: dawn
-        icon: bulb
       - en: noon
-        icon: calendar
   - en: I'll give you the full report on each bed in order.
     ko: 각 병상에 대해 순서대로 전체 보고를 드릴게요.
     chunks:
@@ -4109,13 +3925,9 @@ situations:
       answer: full
       options:
       - en: full
-        icon: board
       - en: short
-        icon: redo
       - en: quick
-        icon: play
       - en: final
-        icon: star
   nuance:
   - kind: pair
     words:
@@ -4199,13 +4011,9 @@ situations:
       answer: allergies
       options:
       - en: diagnoses
-        icon: board
       - en: allergies
-        icon: shield
       - en: surgeries
-        icon: scalpel
       - en: medications
-        icon: pill
   - en: Was the pain medicine actually given, or just ordered?
     ko: 진통제는 실제로 투여됐나요, 아니면 처방만 됐나요?
     chunks:
@@ -4231,13 +4039,9 @@ situations:
       answer: ordered
       options:
       - en: charted
-        icon: pencil
       - en: delayed
-        icon: redo
       - en: ordered
-        icon: board
       - en: refused
-        icon: compass
   - en: Let me confirm the last vitals time before you go.
     ko: 가시기 전에 마지막 활력징후 시각을 확인할게요.
     chunks:
@@ -4261,13 +4065,9 @@ situations:
       answer: before
       options:
       - en: after
-        icon: redo
       - en: until
-        icon: lock
       - en: unless
-        icon: compass
       - en: before
-        icon: calendar
   - en: Did the doctor already see her, or is that still pending?
     ko: 의사가 이미 봤나요, 아니면 아직 대기 중인가요?
     chunks:
@@ -4290,13 +4090,9 @@ situations:
       answer: doctor
       options:
       - en: doctor
-        icon: stetho
       - en: nurse
-        icon: bandage
       - en: resident
-        icon: scalpel
       - en: pharmacist
-        icon: pill
   - en: I'll go check the chart now so we don't miss anything.
     ko: 놓치는 게 없도록 지금 차트를 확인하러 갈게요.
     chunks:
@@ -4319,13 +4115,9 @@ situations:
       answer: miss
       options:
       - en: change
-        icon: redo
       - en: miss
-        icon: magnify
       - en: mix
-        icon: gear
       - en: hide
-        icon: lock
   nuance:
   - kind: pair
     words:
@@ -4410,13 +4202,9 @@ situations:
       answer: phone
       options:
       - en: family
-        icon: home
       - en: private
-        icon: lock
       - en: phone
-        icon: mic
       - en: video
-        icon: play
   - en: The family prefers a female nurse for personal care.
     ko: 가족은 개인 간호에 여성 간호사를 선호합니다.
     chunks:
@@ -4441,13 +4229,9 @@ situations:
       answer: female
       options:
       - en: male
-        icon: bell
       - en: senior
-        icon: star
       - en: young
-        icon: baby
       - en: female
-        icon: me
   - en: Please always confirm understanding through the interpreter.
     ko: 항상 통역사를 통해 이해했는지 확인해 주세요.
     chunks:
@@ -4471,13 +4255,9 @@ situations:
       answer: always
       options:
       - en: always
-        icon: star
       - en: never
-        icon: lock
       - en: rarely
-        icon: redo
       - en: sometimes
-        icon: calendar
   - en: Don't rely on the son to interpret for him.
     ko: 아드님에게 통역을 맡기지 마세요.
     chunks:
@@ -4500,13 +4280,9 @@ situations:
       answer: interpret
       options:
       - en: answer
-        icon: mic
       - en: interpret
-        icon: speech
       - en: decide
-        icon: compass
       - en: sign
-        icon: pencil
   - en: The interpreter line number is already on his chart.
     ko: 통역 전화번호는 이미 차트에 적혀 있습니다.
     chunks:
@@ -4530,13 +4306,9 @@ situations:
       answer: chart
       options:
       - en: door
-        icon: home
       - en: monitor
-        icon: monitor
       - en: chart
-        icon: board
       - en: wristband
-        icon: bandage
   nuance:
   - kind: pair
     words:
@@ -4620,13 +4392,9 @@ situations:
       answer: hold
       options:
       - en: watch
-        icon: magnify
       - en: review
-        icon: board
       - en: sedation
-        icon: coffee
       - en: hold
-        icon: lock
   - en: He requires one-to-one observation at all times.
     ko: 항상 1대1 관찰이 필요합니다.
     chunks:
@@ -4648,13 +4416,9 @@ situations:
       answer: requires
       options:
       - en: requires
-        icon: star
       - en: refuses
-        icon: faceAngry
       - en: avoids
-        icon: plane
       - en: dislikes
-        icon: faceWorried
   - en: All sharps and cords have been removed from the room.
     ko: 날카로운 물건과 줄은 모두 병실에서 치웠습니다.
     chunks:
@@ -4679,13 +4443,9 @@ situations:
       answer: cords
       options:
       - en: blankets
-        icon: bandage
       - en: cords
-        icon: gear
       - en: bags
-        icon: home
       - en: pillows
-        icon: baby
   - en: Please recheck the room every time you leave and return.
     ko: 나갔다 돌아올 때마다 병실을 다시 확인해 주세요.
     chunks:
@@ -4709,13 +4469,9 @@ situations:
       answer: every time
       options:
       - en: the last time
-        icon: calendar
       - en: one time
-        icon: bell
       - en: every time
-        icon: redo
       - en: the first time
-        icon: star
   - en: Security is aware and will call if he tries to leave.
     ko: 보안팀도 알고 있고, 나가려 하면 연락할 것입니다.
     chunks:
@@ -4739,13 +4495,9 @@ situations:
       answer: aware
       options:
       - en: away
-        icon: plane
       - en: busy
-        icon: gear
       - en: ready
-        icon: play
       - en: aware
-        icon: siren
   nuance:
   - kind: pair
     words:
@@ -4830,13 +4582,9 @@ situations:
       answer: prognosis
       options:
       - en: prognosis
-        icon: chartup
       - en: treatment
-        icon: pill
       - en: insurance
-        icon: lock
       - en: history
-        icon: calendar
   - en: The doctor still needs to speak with the wife.
     ko: 의사가 아직 아내분과 이야기해야 합니다.
     chunks:
@@ -4860,13 +4608,9 @@ situations:
       answer: wife
       options:
       - en: husband
-        icon: home
       - en: wife
-        icon: handshake2
       - en: son
-        icon: baby
       - en: daughter
-        icon: star
   - en: The son had a lot of anger earlier — be gentle.
     ko: 아드님이 아까 화가 많이 나셨었어요, 부드럽게 대해 주세요.
     chunks:
@@ -4891,13 +4635,9 @@ situations:
       answer: gentle
       options:
       - en: quick
-        icon: play
       - en: brief
-        icon: redo
       - en: gentle
-        icon: handshake2
       - en: firm
-        icon: gear
   - en: No one has mentioned the prognosis to the family yet.
     ko: 아직 가족에게 예후를 언급한 사람은 없습니다.
     chunks:
@@ -4921,13 +4661,9 @@ situations:
       answer: family
       options:
       - en: doctor
-        icon: stetho
       - en: nurse
-        icon: bandage
       - en: patient
-        icon: me
       - en: family
-        icon: home
   - en: Let the doctor know before you say anything about the prognosis.
     ko: 예후에 대해 말하기 전에 의사에게 먼저 알려 주세요.
     chunks:
@@ -4950,13 +4686,9 @@ situations:
       answer: before
       options:
       - en: before
-        icon: calendar
       - en: after
-        icon: redo
       - en: while
-        icon: play
       - en: unless
-        icon: lock
   nuance:
   - kind: pair
     words:
@@ -5044,13 +4776,9 @@ situations:
       answer: stroke
       options:
       - en: trauma
-        icon: bandage
       - en: stroke
-        icon: bulb
       - en: burn
-        icon: siren
       - en: cardiac
-        icon: stetho
   - en: Symptom onset was two hours ago, tPA not given.
     ko: 증상 발생은 2시간 전이고, tPA는 투여하지 않았습니다.
     chunks:
@@ -5075,13 +4803,9 @@ situations:
       answer: onset
       options:
       - en: check
-        icon: magnify
       - en: review
-        icon: board
       - en: onset
-        icon: siren
       - en: relief
-        icon: coffee
   - en: All records and imaging are traveling with the patient.
     ko: 모든 기록과 영상 자료는 환자와 함께 이동합니다.
     chunks:
@@ -5106,13 +4830,9 @@ situations:
       answer: imaging
       options:
       - en: belongings
-        icon: home
       - en: medications
-        icon: pill
       - en: forms
-        icon: pencil
       - en: imaging
-        icon: magnify
   - en: Please confirm the accepting doctor's name before transport.
     ko: 이송 전에 수용 의사 성함을 확인해 주세요.
     chunks:
@@ -5134,13 +4854,9 @@ situations:
       answer: accepting
       options:
       - en: accepting
-        icon: handshake2
       - en: referring
-        icon: plane
       - en: covering
-        icon: shield
       - en: former
-        icon: redo
   - en: Her last blood pressure was stable before the transfer.
     ko: 전원 전 마지막 혈압은 안정적이었습니다.
     chunks:
@@ -5165,13 +4881,9 @@ situations:
       answer: stable
       options:
       - en: borderline
-        icon: faceWorried
       - en: stable
-        icon: monitor
       - en: unstable
-        icon: siren
       - en: low
-        icon: chevronDown
   nuance:
   - kind: pair
     words:
@@ -5255,13 +4967,9 @@ situations:
       answer: dropping
       options:
       - en: improving
-        icon: star
       - en: holding
-        icon: lock
       - en: dropping
-        icon: siren
       - en: rising
-        icon: chartup
   - en: She's on a norepinephrine drip, titrating up.
     ko: 노르에피네프린을 투여 중이고, 용량을 올리고 있습니다.
     chunks:
@@ -5285,13 +4993,9 @@ situations:
       answer: norepinephrine
       options:
       - en: heparin
-        icon: bandage
       - en: propofol
-        icon: coffee
       - en: nitroglycerin
-        icon: bulb
       - en: norepinephrine
-        icon: pill
   - en: She needs an ICU bed and close monitoring right now.
     ko: 지금 바로 중환자실 병상과 집중 관찰이 필요합니다.
     chunks:
@@ -5317,13 +5021,9 @@ situations:
       answer: close
       options:
       - en: close
-        icon: monitor
       - en: light
-        icon: star
       - en: brief
-        icon: redo
       - en: routine
-        icon: calendar
   - en: Please call the ICU charge nurse and confirm a bed.
     ko: 중환자실 책임 간호사에게 연락해서 병상을 확인해 주세요.
     chunks:
@@ -5349,13 +5049,9 @@ situations:
       answer: charge
       options:
       - en: student
-        icon: pencil
       - en: charge
-        icon: star
       - en: float
-        icon: plane
       - en: night
-        icon: coffee
   - en: I'll travel with her and give report at the door.
     ko: 제가 함께 이동해서 문 앞에서 인계하겠습니다.
     chunks:
@@ -5379,13 +5075,9 @@ situations:
       answer: travel
       options:
       - en: stay
-        icon: home
       - en: sit
-        icon: chevronDown
       - en: travel
-        icon: plane
       - en: wait
-        icon: redo
   nuance:
   - kind: pair
     words:
@@ -5470,13 +5162,9 @@ situations:
       answer: post-cardiac-arrest
       options:
       - en: post-surgical
-        icon: scalpel
       - en: post-stroke
-        icon: bulb
       - en: pre-operative
-        icon: calendar
       - en: post-cardiac-arrest
-        icon: stetho
   - en: 'Background: down time was about eight minutes with two shocks.'
     ko: '배경: 정지 시간은 약 8분이었고, 제세동은 두 번 있었습니다.'
     chunks:
@@ -5501,13 +5189,9 @@ situations:
       answer: eight
       options:
       - en: eight
-        icon: calendar
       - en: two
-        icon: play
       - en: twelve
-        icon: redo
       - en: twenty
-        icon: lock
   - en: Right now he's on a norepinephrine drip and intubated.
     ko: 지금은 노르에피네프린을 투여 중이고 삽관된 상태입니다.
     chunks:
@@ -5532,13 +5216,9 @@ situations:
       answer: intubated
       options:
       - en: awake
-        icon: star
       - en: intubated
-        icon: speaker
       - en: extubated
-        icon: redo
       - en: sedated
-        icon: coffee
   - en: His pressure has been stable since the last shock.
     ko: 마지막 제세동 이후 혈압은 안정적이었습니다.
     chunks:
@@ -5563,13 +5243,9 @@ situations:
       answer: stable
       options:
       - en: low
-        icon: chevronDown
       - en: falling
-        icon: redo
       - en: stable
-        icon: shield
       - en: unstable
-        icon: siren
   - en: Can you confirm his last recorded blood pressure for me?
     ko: 마지막으로 기록된 혈압을 확인해 주시겠어요?
     chunks:
@@ -5594,13 +5270,9 @@ situations:
       answer: pressure
       options:
       - en: sugar
-        icon: coffee
       - en: count
-        icon: lab
       - en: type
-        icon: pushpin
       - en: pressure
-        icon: monitor
   nuance:
   - kind: pair
     words:
@@ -5685,13 +5357,9 @@ situations:
       answer: status
       options:
       - en: status
-        icon: monitor
       - en: plan
-        icon: compass
       - en: order
-        icon: board
       - en: room
-        icon: home
   - en: His oxygen just dropped to eighty-five percent.
     ko: 산소포화도가 85퍼센트로 방금 떨어졌습니다.
     chunks:
@@ -5715,13 +5383,9 @@ situations:
       answer: dropped
       options:
       - en: jumped
-        icon: play
       - en: dropped
-        icon: siren
       - en: rose
-        icon: chartup
       - en: climbed
-        icon: chevronUp
   - en: Let's both go see him and reassess together.
     ko: 같이 가서 그분을 다시 사정해요.
     chunks:
@@ -5743,13 +5407,9 @@ situations:
       answer: see
       options:
       - en: tell
-        icon: speech
       - en: show
-        icon: board
       - en: see
-        icon: magnify
       - en: call
-        icon: bell
   - en: Call the doctor now — this can't wait.
     ko: 지금 바로 의사를 호출하세요, 기다릴 수 없습니다.
     chunks:
@@ -5772,13 +5432,9 @@ situations:
       answer: now
       options:
       - en: later
-        icon: redo
       - en: tomorrow
-        icon: calendar
       - en: tonight
-        icon: lock
       - en: now
-        icon: bell
   - en: His monitor is showing the drop in oxygen right now.
     ko: 모니터에 지금 산소 수치 하락이 나타나고 있습니다.
     chunks:
@@ -5803,13 +5459,9 @@ situations:
       answer: drop
       options:
       - en: drop
-        icon: chevronDown
       - en: rise
-        icon: chartup
       - en: increase
-        icon: chevronUp
       - en: peak
-        icon: trophy
   nuance:
   - kind: slider
     words:
@@ -5891,13 +5543,9 @@ situations:
       answer: medication
       options:
       - en: visitor
-        icon: home
       - en: medication
-        icon: pill
       - en: allergy
-        icon: shield
       - en: problem
-        icon: faceWorried
   - en: Can you confirm when the last dose was given?
     ko: 마지막 투여 시각을 확인해 주시겠어요?
     chunks:
@@ -5922,13 +5570,9 @@ situations:
       answer: dose
       options:
       - en: bath
-        icon: bandage
       - en: tray
-        icon: board
       - en: dose
-        icon: pill
       - en: meal
-        icon: coffee
   - en: I'll reassess from scratch to be safe.
     ko: 안전을 위해 처음부터 다시 사정하겠습니다.
     chunks:
@@ -5952,13 +5596,9 @@ situations:
       answer: scratch
       options:
       - en: memory
-        icon: bulb
       - en: home
-        icon: home
       - en: there
-        icon: compass
       - en: scratch
-        icon: pencil
   - en: The report we got didn't mention any allergies.
     ko: 받은 보고에는 알레르기 언급이 없었습니다.
     chunks:
@@ -5982,13 +5622,9 @@ situations:
       answer: allergies
       options:
       - en: allergies
-        icon: shield
       - en: vitals
-        icon: monitor
       - en: diagnosis
-        icon: stetho
       - en: medications
-        icon: pill
   - en: Please confirm her vitals time so I can chart it correctly.
     ko: 차트에 정확히 기록하도록 활력징후 시각을 확인해 주세요.
     chunks:
@@ -6012,13 +5648,9 @@ situations:
       answer: correctly
       options:
       - en: twice
-        icon: calendar
       - en: correctly
-        icon: star
       - en: later
-        icon: redo
       - en: quickly
-        icon: play
   nuance:
   - kind: pair
     words:
@@ -6106,13 +5738,9 @@ situations:
       answer: controlled
       options:
       - en: worse
-        icon: chevronDown
       - en: new
-        icon: star
       - en: controlled
-        icon: shield
       - en: severe
-        icon: faceAngry
   - en: Social work is arranging safe discharge to a shelter.
     ko: 사회복지팀이 보호소로의 안전한 퇴원을 주선하고 있습니다.
     chunks:
@@ -6139,13 +5767,9 @@ situations:
       answer: arranging
       options:
       - en: refusing
-        icon: faceAngry
       - en: avoiding
-        icon: plane
       - en: canceling
-        icon: lock
       - en: arranging
-        icon: handshake2
   - en: Let's agree who follows up on each item.
     ko: 각 항목을 누가 후속 처리할지 합의해요.
     chunks:
@@ -6169,13 +5793,9 @@ situations:
       answer: agree
       options:
       - en: agree
-        icon: handshake2
       - en: forget
-        icon: lock
       - en: argue
-        icon: faceAngry
       - en: guess
-        icon: bulb
   - en: The doctor still needs to confirm the discharge plan.
     ko: 의사는 아직 퇴원 계획을 확인해야 합니다.
     chunks:
@@ -6199,13 +5819,9 @@ situations:
       answer: confirm
       options:
       - en: delay
-        icon: calendar
       - en: confirm
-        icon: bell
       - en: sign
-        icon: pencil
       - en: cancel
-        icon: redo
   - en: Her family knows about the shelter plan already.
     ko: 가족은 이미 보호소 계획을 알고 있습니다.
     chunks:
@@ -6227,13 +5843,9 @@ situations:
       answer: shelter
       options:
       - en: therapy
-        icon: pill
       - en: insurance
-        icon: board
       - en: shelter
-        icon: home
       - en: surgery
-        icon: scalpel
   nuance:
   - kind: slider
     words:
@@ -6319,13 +5931,9 @@ situations:
       answer: yellows
       options:
       - en: blacks
-        icon: lock
       - en: blues
-        icon: bell
       - en: whites
-        icon: home
       - en: yellows
-        icon: star
   - en: The reds are in bays one through three, most critical first.
     ko: 적색 환자는 1번부터 3번 구역에 있고, 가장 위중한 순서입니다.
     chunks:
@@ -6350,13 +5958,9 @@ situations:
       answer: critical
       options:
       - en: critical
-        icon: siren
       - en: recent
-        icon: calendar
       - en: stable
-        icon: monitor
       - en: quiet
-        icon: speaker
   - en: Reassess yellows every fifteen minutes for changes.
     ko: 황색 환자는 15분마다 변화를 재사정하세요.
     chunks:
@@ -6380,13 +5984,9 @@ situations:
       answer: fifteen
       options:
       - en: sixty
-        icon: lock
       - en: fifteen
-        icon: calendar
       - en: five
-        icon: star
       - en: thirty
-        icon: play
   - en: Greens can wait in the hallway until we call them.
     ko: 녹색 환자는 호출할 때까지 복도에서 기다릴 수 있습니다.
     chunks:
@@ -6411,13 +6011,9 @@ situations:
       answer: hallway
       options:
       - en: cafeteria
-        icon: coffee
       - en: parking lot
-        icon: plane
       - en: hallway
-        icon: compass
       - en: lobby
-        icon: hospital
   - en: Here are the triage tags for every bed in this bay.
     ko: 이 구역 모든 병상에 대한 중증도 분류 태그입니다.
     chunks:
@@ -6442,13 +6038,9 @@ situations:
       answer: triage
       options:
       - en: visitor
-        icon: me
       - en: billing
-        icon: calendar
       - en: allergy
-        icon: shield
       - en: triage
-        icon: siren
   nuance:
   - kind: slider
     words:

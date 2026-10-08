@@ -58,7 +58,7 @@
 - title: 회복 마취 후 관찰
   s:
   - {t: "지남력 확인", i: speech, w: "이름과 장소를 묻는 것은 마취에서 깨어난 환자의 지남력(의식과 방향 감각)을 확인하는 기본 질문이에요. 짧고 천천히 말해야 졸린 환자도 따라와요.", d: "your phone", k: ["어디가 아픈지 말씀해 주세요", "약을 언제 드셨는지 말씀해 주세요"], a: "name", ai: me, o: [["address", "home"], ["weight", "chartup"], ["diet", "coffee"]]}
-  - {t: "호흡 요청", i: monitor, w: "nice deep breath는 환자가 숨을 스스로 깊게 쉬는지 확인하는 간단한 요청이에요. for me를 붙이면 지시가 아니라 부탁처럼 들려 졸린 환자가 따라 하기 쉬워요.", d: "long sigh", k: ["숨을 참고 계세요", "입을 크게 벌려 주세요"], a: "deep", ai: chartup, o: [["shallow", "chevronUp"], ["short", "play"], ["tiny", "baby"]]}
+  - {t: "호흡 요청", i: monitor, w: "nice deep breath는 환자가 숨을 스스로 깊게 쉬는지 확인하는 간단한 요청이에요. for me를 붙이면 지시가 아니라 부탁처럼 들려 졸린 환자가 따라 하기 쉬워요.", d: "long sigh", k: ["숨을 참고 계세요", "입을 크게 벌려 주세요"], a: "deep", ai: chartup, o: [["shallow", "chevronUp"], ["weak", "play"], ["tiny", "baby"]]}
   - {t: "격려", i: trophy, w: "You did great로 환자를 칭찬하면서 all done으로 끝났음을 분명히 알려요. 깨어나는 환자에게는 3인칭 보고 말투 대신 you로 직접 말해요.", d: "visit is", k: ["시술이 이제 막 시작됐어요", "시술이 아직 절반 남았어요"], a: "procedure", ai: scalpel, o: [["paperwork", "board"], ["dinner", "coffee"], ["meeting", "speech"]]}
   - {t: "지남력 확인", i: compass, w: "날짜를 묻는 것은 마취에서 깨어난 환자의 지남력을 보는 질문이에요. 답이 흐리면 아직 약기운이 남아 있다는 신호라 계속 지켜봐요.", d: "how old", k: ["지금 몇 시인지 아세요?", "오늘 날씨를 아세요?"], a: "day", ai: calendar, o: [["color", "star"], ["size", "chevronUp"], ["weight", "gear"]]}
   - {t: "호흡 설명", i: stetho, w: "much better now로 이전과 비교해 좋아졌다고 알려 주면 환자가 안심해요. 호흡 상태를 말로 알려 주는 것은 회복 중 환자에게 중요한 피드백이에요.", d: "much worse", k: ["호흡이 아직 불안정해요", "호흡 소리가 시끄러워요"], a: "better", ai: star, o: [["worse", "faceWorried"], ["heavier", "chevronDown"], ["faster", "play"]]}

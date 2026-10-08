@@ -65,11 +65,10 @@ func TestValidateSentenceV46_rejects(t *testing.T) {
 			s.Blank.Answer = "it"
 			s.Blank.Options[0].En = "it"
 		},
-		"blank three options":       func(s *Sentence) { s.Blank.Options = s.Blank.Options[:3] },
-		"blank answer not offered":  func(s *Sentence) { s.Blank.Options[0].En = "boring" },
-		"blank options repeat":      func(s *Sentence) { s.Blank.Options[2].En = "Important" },
-		"blank option without icon": func(s *Sentence) { s.Blank.Options[3].Icon = "" },
-		"blank option empty":        func(s *Sentence) { s.Blank.Options[3].En = " " },
+		"blank three options":      func(s *Sentence) { s.Blank.Options = s.Blank.Options[:3] },
+		"blank answer not offered": func(s *Sentence) { s.Blank.Options[0].En = "boring" },
+		"blank options repeat":     func(s *Sentence) { s.Blank.Options[2].En = "Important" },
+		"blank option empty":       func(s *Sentence) { s.Blank.Options[3].En = " " },
 	} {
 		s := v46Sentence()
 		s.DistractorsKo = append([]string(nil), s.DistractorsKo...)
@@ -174,5 +173,19 @@ func TestValidateBundleLessons_v46(t *testing.T) {
 	orphan := &Bundle{Scenarios: []Scenario{{ID: "S1", Theme: "t", Order: v46Order()}}}
 	if errs := ValidateBundleLessons(orphan); !hasErr(errs, "V19") {
 		t.Fatalf("order without sentences: %v", errs)
+	}
+}
+
+// T8 user decision: blank options carry no icon — the sheet draws them as pick rows.
+func TestBlankOptionsNeedNoIcon(t *testing.T) {
+	s := v46Sentence()
+	b := *s.Blank
+	b.Options = append([]BlankOption(nil), b.Options...)
+	for i := range b.Options {
+		b.Options[i].Icon = ""
+	}
+	s.Blank = &b
+	if errs := ValidateSentenceV46(0, s); len(errs) != 0 {
+		t.Fatalf("icon-less options rejected: %v", errs)
 	}
 }
