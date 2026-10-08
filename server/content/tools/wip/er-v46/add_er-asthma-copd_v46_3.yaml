@@ -1,0 +1,76 @@
+- title: 약물 순응 실패 반복 악화
+  s:
+  - {t: "사용 빈도", i: calendar, w: "'actually'가 '처방대로가 아니라 실제로'라는 뜻을 넣어 비난 없이 현실을 물어요. 조절제 사용 빈도를 정확히 알아야 악화가 약 부족 때문인지 사용 방식 때문인지 가려내요.", d: "per day", k: ["흡입기를 어디에 보관하세요?", "처방받은 약은 몇 개예요?"], a: "use", o: ["refill", "clean", "forget"]}
+  - {t: "위험 설명", i: bulb, w: "'leads to …'로 행동과 결과를 직접 이으면 이유가 분명해져요. 구조 흡입기만 쓰면 기도의 염증이 조절되지 않아 악화가 잦아질 수 있어요.", d: "can help", k: ["흡입기는 사용 후에 닦아 두세요", "약 양이 줄었는지 확인해요"], a: "rescue", o: ["controller", "spare", "nasal"]}
+  - {t: "방해 요인", i: me, w: "'What makes it hard to …?'는 '왜 안 하세요'와 달리 환자를 탓하지 않고 걸림돌을 묻는 방식이에요. 비난 없이 묻는 것이 약 순응 상담의 첫걸음이에요.", d: "for you", k: ["약값이 얼마나 드나요?", "약이 어디서 처방됐나요?"], a: "daily", o: ["weekly", "new", "extra"]}
+  - {t: "소진 확인", i: bell, w: "'run out of …'는 '다 떨어지다'라는 구동사예요. 재조제 전에 약이 떨어진다면 처방 용량이나 재조제 시점에 문제가 있다는 단서예요.", d: "by mistake", k: ["약이 남은 채로 버리신 적 있으세요?", "약국이 집에서 멀어요?"], a: "before", o: ["after", "until", "without"]}
+  - {t: "원인 탐색", i: magnify, w: "'A, B, or just C?'로 가능한 이유를 먼저 늘어놓으면 환자가 부끄러워하지 않고 해당하는 것을 골라요. 비용·부작용·건망증은 조절제를 거르는 흔한 이유예요.", d: "or maybe", k: ["흡입기가 너무 커서 불편하세요?", "약을 누가 챙겨 주나요?"], a: "side effects", o: ["rules", "doctors", "pharmacies"]}
+  - {t: "해결 제안", i: pushpin, w: "'Let's …'로 같이 해 보자고 제안하면 환자가 지시받는 느낌이 줄어요. 양치처럼 매일 하는 일에 약을 연결하면 기억하기 쉬워요.", d: "once a month", k: ["약통을 새로 드릴게요", "다음 진료 때 같이 보죠"], a: "set", o: ["skip", "cancel", "forget"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "조절제 순응 상담 4문장 순서"
+    why: "사용 빈도를 먼저 묻고, 거르는 경우의 걸림돌을 묻고, 가능한 이유를 나열해 고르게 한 뒤, 그 이유를 풀 해결책으로 닫아요. 'If you skip it'·'that'·'For that reason'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "How often do you actually use your controller inhaler?", icon: calendar, ko: "조절제 흡입기를 실제로 얼마나 자주 쓰세요?", note: "빈도"}
+    - {en: "If you skip it, what makes it hard to take the daily one?", icon: me, ko: "거르신다면 매일 쓰는 걸 힘들게 만드는 게 뭐예요?", note: "걸림돌"}
+    - {en: "Is that because of the cost, the side effects, or just forgetting?", icon: magnify, ko: "비용 때문인가요, 부작용 때문인가요, 아니면 그냥 잊어서인가요?", note: "원인"}
+    - {en: "For that reason, let's set a daily time so it's easier to remember.", icon: pushpin, ko: "그래서 기억하기 쉽도록 매일 정한 시간을 둬요", note: "해결"}
+  ctx: {word: "controller", ko: "조절제"}
+- title: 소아·청소년 천식 보호자
+  s:
+  - {t: "유발요인", i: bulb, w: "'Common … are'로 목록을 한 번에 전하면 보호자가 집에서 피할 것을 바로 떠올려요. 연기·먼지·반려동물·감기는 소아 천식의 흔한 유발요인이에요.", d: "such as", k: ["이 약은 학교에도 두세요", "열이 나면 바로 알려 주세요"], a: "colds", o: ["vitamins", "vaccines", "naps"]}
+  - {t: "위험 징후", i: siren, w: "'Watch for …'로 지켜볼 징후를 나열하면 보호자가 집에서도 응급 여부를 판단할 수 있어요. 빠른 호흡·갈비뼈 당김·파란 입술은 아이가 숨쉬기 힘들다는 위험 징후예요.", d: "runny nose", k: ["열이 나면 해열제를 먹이세요", "기침이 심하면 물을 먹이세요"], a: "blue", o: ["red", "dry", "swollen"]}
+  - {t: "응급 대처", i: pill, w: "'Give … and come back if …'는 먼저 할 일과 조건부 행동을 한 문장에 묶었어요. 구조 흡입기로 나아지지 않으면 다시 오라고 안내하는 것이 가정 관리의 기본이에요.", d: "and wait", k: ["흡입기는 학교에도 두세요", "약은 아이가 직접 쓰게 하세요"], a: "Give", o: ["Share", "Lock", "Hide"]}
+  - {t: "증상 패턴", i: me, w: "'more at night or around …'로 때와 장소를 짚어 물으면 증상이 나타나는 패턴이 드러나요. 밤이나 반려동물 곁에서 심해지면 유발요인을 가려내는 단서가 돼요.", d: "at school", k: ["아이가 운동할 때 숨이 차나요?", "학교에서 흡입기를 쓰나요?"], a: "wheeze", o: ["sneeze", "vomit", "snore"]}
+  - {t: "휴대 안내", i: home, w: "'at all times'는 예외 없이 항상이라는 뜻이라 급할 때 곁에 있어야 하는 약임을 강조해요. 구조 흡입기와 스페이서는 아이가 어디에 있든 바로 쓸 수 있어야 해요.", d: "most days", k: ["약은 서늘한 곳에 두세요", "스페이서는 일주일에 한 번 씻으세요"], a: "with you", o: ["at home", "in the car", "in a drawer"]}
+  - {t: "응급 기준", i: siren, w: "'If … or …, call …'로 조건과 행동을 짝지어 주면 보호자가 당황하지 않고 따라 할 수 있어요. 입술이 파래지거나 말을 못 하면 외래 연락이 아니라 바로 응급 신고가 맞아요.", d: "in an hour", k: ["다음 진료일에 알려 주세요", "기침약을 먹이세요"], a: "911", o: ["the doctor", "his teacher", "the pharmacy"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "소아 천식 보호자 교육 4문장 순서"
+    why: "유발요인을 먼저 알리고, 그것이 닥칠 때 볼 징후를 말하고, 그 징후가 보이면 할 일을 알린 뒤, 그래도 나빠지면 응급 신고로 닫아요. 'those'·'that'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Common triggers are smoke, dust, pets, and colds.", icon: bulb, ko: "흔한 유발요인은 연기, 먼지, 반려동물, 감기예요", note: "유발"}
+    - {en: "When one of those hits, watch for fast breathing, ribs pulling in, or blue lips.", icon: siren, ko: "그중 하나가 닥치면 빠른 호흡, 갈비뼈 당김, 파란 입술을 살피세요", note: "징후"}
+    - {en: "If you see that, give the rescue inhaler and come back if it doesn't help.", icon: pill, ko: "그게 보이면 구조 흡입기를 주고 안 들으면 다시 오세요", note: "대처"}
+    - {en: "If it gets worse after that and his lips turn blue, call 911 right away.", icon: siren, ko: "그 뒤에 더 나빠지고 입술이 파래지면 바로 911에 전화하세요", note: "신고"}
+  sw: {ko: "빠른 호흡, 갈비뼈가 당겨지는 것, 입술이 파래지는 걸 살펴보세요"}
+- title: 심부전 동반 호흡곤란 감별
+  s:
+  - {t: "자세 문진", i: me, w: "'Is it worse when …?'으로 악화되는 조건을 짚어 물어요. 누울 때나 밤에 심해지는 호흡곤란은 심부전을 의심하게 하는 단서예요.", d: "in the morning", k: ["운동하면 가슴이 아파요?", "낮에도 기침을 하세요?"], a: "lie flat", o: ["exercise", "eat", "laugh"]}
+  - {t: "부종·체중", i: chartup, w: "'have been …ing'는 최근부터 이어진 변화를 묻는 현재완료진행이에요. 발목 부종과 체중 증가는 몸에 수분이 쌓이는 심부전 악화의 단서예요.", d: "this month", k: ["소변을 보는 횟수가 줄었나요?", "붓기가 아침에 더 심한가요?"], a: "weight", o: ["appetite", "temperature", "pulse"]}
+  - {t: "검사 안내", i: stetho, w: "'to tell … apart'는 두 가지 가능성을 구별하려고 한다는 목적을 말해 줘요. 심장과 폐 소리를 함께 들으면 폐 질환과 심부전의 소견을 가려내는 데 도움이 돼요.", d: "to rule out", k: ["혈압부터 재 볼게요", "피를 뽑아서 검사할게요"], a: "heart", o: ["belly", "back", "throat"]}
+  - {t: "누움 비교", i: bell, w: "'more … than …'으로 두 자세를 비교해 물으면 환자가 차이를 말하기 쉬워요. 누우면 더 숨찬 기좌호흡은 심부전을 시사하는 흔한 증상이에요.", d: "than before", k: ["베개를 몇 개 쓰세요?", "평소 몇 시에 주무세요?"], a: "lying down", o: ["walking", "eating", "talking"]}
+  - {t: "약 변경", i: pill, w: "'A or B changed?'처럼 가능한 원인 둘을 함께 짚으면 약 변경이 원인인지 빨리 가려내요. 베타차단제 같은 심장약이 바뀌면 천식 증상이 달라질 수 있어요.", d: "last year", k: ["약을 어디서 받으세요?", "약 이름을 적어 오셨나요?"], a: "heart medicine", o: ["blood thinner", "sleeping pill", "allergy medicine"]}
+  - {t: "검사 계획", i: lab, w: "'to see which one …'으로 검사의 목적을 말해 환자가 왜 찍는지 이해해요. 흉부 엑스레이는 폐의 염증, 심장 크기, 폐에 찬 물을 한 번에 보여 줘요.", d: "right now", k: ["촬영하는 동안 숨을 참아 주세요", "금속 장신구는 빼 주세요"], a: "chest X-ray", o: ["blood test", "urine test", "CT scan"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "심부전 감별 문진 4문장 순서"
+    why: "눕는 자세의 영향을 먼저 묻고, 그 답을 받아 부종과 체중을 묻고, 그 답들로 청진을 알리고, 그 뒤 엑스레이를 안내해요. 'If it is'·'those answers'·'After that'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Is it worse when you lie flat or at night?", icon: me, ko: "평평하게 눕거나 밤에 더 심해지나요?", note: "자세"}
+    - {en: "If it is, have your ankles been swelling or your weight going up?", icon: chartup, ko: "그렇다면 발목이 붓거나 체중이 늘고 있었나요?", note: "부종"}
+    - {en: "With those answers, we'll listen to your heart and lungs to tell them apart.", icon: stetho, ko: "그 답들을 바탕으로 심장과 폐 소리를 들어 구별해 볼게요", note: "청진"}
+    - {en: "After that, we'll get a chest X-ray to see which one is causing this.", icon: lab, ko: "그 뒤에 무엇 때문인지 보려고 흉부 엑스레이를 찍을 거예요", note: "검사"}
+  ctx: {word: "orthopnea", ko: "기좌호흡"}
+- title: 중증 발작 급속 악화
+  s:
+  - {t: "치료 알림", i: siren, w: "'We're giving …'은 지금 하고 있는 일을 알리는 진행형이에요. 중증 천식 발작에는 지속 흡입 치료에 정맥 마그네슘을 더하기도 해요.", d: "after lunch", k: ["지금 수혈을 시작했어요", "지금 수술실로 옮겨요"], a: "magnesium", o: ["calcium", "insulin", "aspirin"]}
+  - {t: "곁 지키기", i: handshake2, w: "'Stay with me'는 곁에 있겠다는 뜻이라 위급할 때 환자를 붙잡아 줘요. 의식이 흐려지는 환자에게는 짧고 분명한 말로 계속 연결해 줘요.", d: "Hold on", k: ["눈을 감고 쉬세요", "가족분께 연락할게요"], a: "Stay", o: ["Look", "Talk", "Sit"]}
+  - {t: "상황 안내", i: faceWorried, w: "'If … doesn't …, we may …'는 아직 결정이 아닌 조건부 계획을 부드럽게 말하는 틀이에요. 호전이 없으면 기계로 호흡을 대신해 주는 삽관을 쓸 수 있다는 점을 미리 알려요.", d: "right away", k: ["이게 끝나면 바로 퇴원해요", "이 약은 곧 끝나요"], a: "breathe for you", o: ["cough for you", "talk for you", "walk for you"]}
+  - {t: "의식 확인", i: speaker, w: "'Nod if …'로 말을 못 하는 환자도 답할 수 있게 해요. 숨이 찬 환자의 의식이 유지되는지 간단히 확인할 수 있어요.", d: "twice", k: ["제 손을 꼭 잡으세요", "눈을 크게 뜨세요"], a: "hear", o: ["see", "feel", "follow"]}
+  - {t: "상태 전달", i: magnify, w: "'look blue'처럼 보이는 그대로 말하면 진단을 단정하지 않고 사실만 전해요. 입술과 손끝이 파래지는 청색증은 산소가 부족하다는 눈에 보이는 징후예요.", d: "feel cold", k: ["손끝이 많이 차가워요", "손에서 땀이 나고 있어요"], a: "fingertips", o: ["toes", "earlobes", "eyelids"]}
+  - {t: "지원 요청", i: siren, w: "'calling for backup'은 도움을 요청 중이라는 진행 상황을 알려요. 환자가 혼자가 아니고 필요하면 기도 확보까지 준비한다는 신호예요.", d: "waiting for", k: ["지금 의사가 퇴근했어요", "검사 결과를 기다리고 있어요"], a: "help", o: ["make", "let", "watch"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "중증 발작 환자에게 알리는 4문장 순서"
+    why: "먼저 지금 하는 치료를 알리고, 그럼에도 입술이 파랗다고 전하고, 호전이 없을 때의 계획을 말한 뒤, 그래서 지원을 부른다고 닫아요. 'Even with that'·'this'·'That's why'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "We're giving continuous treatments and magnesium now.", icon: siren, ko: "지금 지속적인 치료와 마그네슘을 드리고 있어요", note: "치료"}
+    - {en: "Even with that, your lips and fingertips still look blue.", icon: magnify, ko: "그래도 입술과 손끝이 여전히 파래 보여요", note: "상태"}
+    - {en: "If this doesn't turn around, we may need to breathe for you.", icon: faceWorried, ko: "이게 호전되지 않으면 저희가 대신 숨을 쉬어 드려야 할 수도 있어요", note: "계획"}
+    - {en: "That's why we're calling for backup and getting ready to help you breathe.", icon: siren, ko: "그래서 지원 인력을 부르고 숨쉬는 걸 도울 준비를 하고 있어요", note: "지원"}
+  sw: {ko: "이게 호전되지 않으면 저희가 대신 숨을 쉬어 드려야 할 수도 있어요"}

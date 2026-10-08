@@ -32461,6 +32461,20 @@
         - w-pain
         - w-start
       goal: 1
+      tag: 발병 시점
+      icon: calendar
+      why: OPQRST의 O(발병)를 묻는 첫 질문이에요. first를 넣으면 지금 아픈 것이 아니라 맨 처음 시작된 순간을 묻게 돼요.
+      decoy: first stop
+      distractorsKo:
+        - 가슴 통증이 얼마나 오래 갔나요?
+        - 통증이 어디로 퍼지나요?
+      blank:
+        answer: start
+        options:
+            - en: start
+            - en: stop
+            - en: spread
+            - en: change
     - en: What were you doing when it began?
       ko: 통증이 시작됐을 때 뭘 하고 계셨어요?
       chunks:
@@ -32471,6 +32485,20 @@
       words:
         - w-begin
       goal: 2
+      tag: 발병 상황
+      icon: me
+      why: when it began은 통증이 시작된 그 순간의 활동을 묻는 틀이에요. 걷던 중인지 쉬던 중인지에 따라 원인을 가리는 단서가 달라져요.
+      decoy: ended
+      distractorsKo:
+        - 언제 마지막으로 식사하셨어요?
+        - 그때 혼자 계셨어요?
+      blank:
+        answer: began
+        options:
+            - en: returned
+            - en: began
+            - en: stopped
+            - en: worsened
     - en: Does anything make it better or worse?
       ko: 무엇을 하면 좋아지거나 나빠지나요?
       chunks:
@@ -32482,6 +32510,20 @@
         - w-better
         - w-worse
       goal: 1
+      tag: 완화·악화
+      icon: chartup
+      why: OPQRST의 P(유발·완화 요인)를 묻는 질문이에요. better와 worse를 한 문장에 묶으면 환자가 두 방향을 모두 떠올려 답해요.
+      decoy: the same
+      distractorsKo:
+        - 통증이 어디로 퍼지나요?
+        - 그때 숨은 쉬기 편했나요?
+      blank:
+        answer: better or worse
+        options:
+            - en: longer or shorter
+            - en: higher or lower
+            - en: better or worse
+            - en: faster or slower
     - en: Can you describe what the pain feels like?
       ko: 통증이 어떤 느낌인지 설명해 주시겠어요?
       chunks:
@@ -32494,6 +32536,20 @@
         - w-describe
         - w-feel
       goal: 1
+      tag: 양상 문진
+      icon: speech
+      why: what the pain feels like는 환자가 직접 비유를 꺼내게 하는 열린 질문이에요. 압박감이나 찌르는 느낌처럼 환자의 말이 원인을 가리는 단서가 돼요.
+      decoy: how long
+      distractorsKo:
+        - 통증이 어디에서 시작됐는지 말씀해 주시겠어요?
+        - 통증 점수를 말씀해 주시겠어요?
+      blank:
+        answer: describe
+        options:
+            - en: remember
+            - en: imagine
+            - en: record
+            - en: describe
     - en: On a scale of one to ten, how bad is the pain right now?
       ko: 1부터 10까지 중에서, 지금 통증이 얼마나 심한가요?
       chunks:
@@ -32506,6 +32562,20 @@
         - w-pain
         - w-scale
       goal: 1
+      tag: 통증 점수
+      icon: chartup
+      why: scale of one to ten은 통증을 숫자로 말하게 해서 나중에 변화를 비교할 수 있게 해요. right now는 지금 이 순간의 점수를 묻는 표시예요.
+      decoy: at its worst
+      distractorsKo:
+        - 통증이 얼마나 오래 이어졌나요?
+        - 통증이 어디까지 퍼졌나요?
+      blank:
+        answer: one to ten
+        options:
+            - en: one to ten
+            - en: one to five
+            - en: zero to five
+            - en: one to twenty
     - en: Has anything like this happened before?
       ko: 이런 적이 예전에도 있었나요?
       chunks:
@@ -32517,6 +32587,20 @@
         - w-happen
         - w-before
       goal: 1
+      tag: 과거력
+      icon: board
+      why: like this는 지금과 같은 증상을 가리켜서 비슷한 흉통이 예전에 있었는지 병력을 끌어내요. before 하나로 한 번이라도 있었던 일을 모두 묻는 열린 질문이에요.
+      decoy: since then
+      distractorsKo:
+        - 평소에 드시는 약이 있나요?
+        - 가족 중에 심장병이 있는 분이 있나요?
+      blank:
+        answer: before
+        options:
+            - en: often
+            - en: before
+            - en: recently
+            - en: twice
   nuance:
     - kind: slider
       words:
@@ -32537,6 +32621,7 @@
         - w-pain
         - w-feel
       why: 양상을 물을 때는 describe로 환자가 스스로 말하게 해요. characterize는 기록할 때의 말이에요.
+      ko: 통증이 어떤 느낌인지 설명해 주시겠어요?
       who: 환자에게 · 통증 양상 문진
       icon: me
       before:
@@ -32557,6 +32642,8 @@
         - w-start
         - w-pain
       why: onset·PTA는 차트와 의료진끼리의 말이에요. 환자에게는 start처럼 쉬운 동사로 물어야 바로 대답해요.
+      ko: 시작되다
+      word: start
       scenes:
         - who: 환자에게
           icon: me
@@ -32571,6 +32658,28 @@
           en: What was the time of onset of your symptoms?
           ok: false
           fix: When did the pain first start?
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 흉통 초기 문진 4문장 순서
+    why: 발병 시점을 먼저 묻고, 시작될 때 하던 일을 묻고, 그 활동 중에 달라진 점을 물은 뒤, 마지막에 지금 점수를 받아요. 뒤 줄이 앞 줄의 답을 가리켜서 순서가 하나예요.
+    lines:
+        - en: When did the chest pain first start?
+          icon: calendar
+          ko: 가슴 통증이 언제 처음 시작됐나요?
+          note: 발병
+        - en: What were you doing when it began?
+          icon: me
+          ko: 시작됐을 때 뭘 하고 계셨어요?
+          note: 활동
+        - en: While you were doing that, did anything make it better or worse?
+          icon: chartup
+          ko: 그러는 동안 좋아지거나 나빠진 게 있었나요?
+          note: 변화
+        - en: Whatever helped or made it worse, how bad is it right now?
+          icon: speech
+          ko: 뭐가 됐든, 지금은 얼마나 심한가요?
+          note: 점수
 - id: SCN-ER-00223
   profession: ""
   eventId: EVT-ER-00110
@@ -32643,6 +32752,20 @@
         - w-bp
         - w-rate
       goal: 1
+      tag: 측정 안내
+      icon: monitor
+      why: I'm going to …로 곧 할 일을 먼저 알리면 환자가 놀라지 않아요. 혈압과 맥박은 흉통 환자가 오면 초기에 확인하는 활력징후예요.
+      decoy: your weight
+      distractorsKo:
+        - 지금 체온을 재 볼게요
+        - 지금 소변 검사를 할게요
+      blank:
+        answer: check
+        options:
+            - en: change
+            - en: check
+            - en: lower
+            - en: treat
     - en: Have you had any shortness of breath or sweating?
       ko: 숨이 차거나 땀이 나는 증상이 있었나요?
       chunks:
@@ -32655,6 +32778,20 @@
         - w-breath
         - w-sweat
       goal: 1
+      tag: 동반 증상
+      icon: stetho
+      why: any로 묻는 것은 하나라도 있었는지 열어 둔 질문이에요. 숨참과 식은땀은 흉통에 흔히 동반되는 증상이라 함께 물어요.
+      decoy: or fever
+      distractorsKo:
+        - 열이나 오한이 있었나요?
+        - 다리가 붓거나 저린 적이 있었나요?
+      blank:
+        answer: sweating
+        options:
+            - en: vomiting
+            - en: fainting
+            - en: sweating
+            - en: coughing
     - en: Let me put this clip on your finger to check your oxygen.
       ko: 손가락에 이 클립을 끼워서 산소포화도를 확인할게요.
       chunks:
@@ -32670,6 +32807,20 @@
         - w-check
         - w-oxygen
       goal: 1
+      tag: 기기 안내
+      icon: gear
+      why: Let me …는 허락을 구하듯 부드럽게 알리는 말투예요. 손가락 클립(맥박산소측정기)은 아프지 않다고 덧붙이면 환자가 더 안심해요.
+      decoy: on your wrist
+      distractorsKo:
+        - 이 팔찌를 손목에 채울게요
+        - 손가락에서 피를 조금 뽑을게요
+      blank:
+        answer: finger
+        options:
+            - en: wrist
+            - en: arm
+            - en: chest
+            - en: finger
     - en: Your heart rate and blood pressure tell me this needs urgent attention.
       ko: 맥박과 혈압을 보니 즉각적인 조치가 필요해 보여요.
       chunks:
@@ -32683,6 +32834,20 @@
         - w-rate
         - w-bp
       goal: 2
+      tag: 상태 설명
+      icon: siren
+      why: 숫자를 근거로 대면 왜 서두르는지가 객관적으로 전달돼요. urgent attention은 겁을 주지 않으면서 서두르는 이유를 밝히는 표현이에요.
+      decoy: a short rest
+      distractorsKo:
+        - 맥박과 혈압은 모두 정상이에요
+        - 혈압약을 먼저 드셔야 해요
+      blank:
+        answer: urgent
+        options:
+            - en: urgent
+            - en: routine
+            - en: minor
+            - en: occasional
     - en: I'm placing you in a higher priority so the doctor can see you sooner.
       ko: 우선순위를 높여서 의사가 더 빨리 봐드릴 수 있게 할게요.
       chunks:
@@ -32695,6 +32860,20 @@
       words:
         - w-priority
       goal: 2
+      tag: 우선순위
+      icon: bell
+      why: so로 이유를 바로 붙이면 왜 나만 먼저 보나 하는 의문이 없어요. 미국 응급실은 중증도 분류(ESI)로 진료 순서를 정해요.
+      decoy: later
+      distractorsKo:
+        - 의사가 곧 오지 않을 수도 있어요
+        - 대기실에서 기다려 주세요
+      blank:
+        answer: higher
+        options:
+            - en: different
+            - en: higher
+            - en: lower
+            - en: fixed
   nuance:
     - kind: pair
       words:
@@ -32716,6 +32895,8 @@
       words:
         - w-priority
       why: ESI 등급과 'roomed'는 의료진끼리의 말이에요. 환자에게는 우선순위를 올렸다는 것과 그 이유(더 빨리 진료)를 쉬운 말로 알려요.
+      ko: 우선순위
+      word: priority
       scenes:
         - who: 동료에게
           icon: monitor
@@ -32727,9 +32908,31 @@
           ok: true
         - who: 환자에게
           icon: me
-          en: You're an ESI 2, so you'll be roomed immediately.
+          en: You're a high priority, so you'll be roomed immediately — you're an ESI 2.
           ok: false
           fix: I'm placing you in a higher priority so the doctor can see you sooner.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 흉통 활력 확인 4문장 순서
+    why: 혈압과 맥박을 먼저 알리고, 그 사이 산소를 재고, 나온 수치를 근거로 위급함을 말한 뒤, 그래서 순서를 올린다고 알려요. 뒤 줄이 앞 줄의 수치와 이유를 가리켜서 순서가 하나예요.
+    lines:
+        - en: I'm going to check your blood pressure and heart rate first.
+          icon: monitor
+          ko: 먼저 혈압과 맥박을 확인할게요
+          note: 측정
+        - en: While I do that, let me put this clip on your finger to check your oxygen.
+          icon: gear
+          ko: 그동안 산소를 보게 손가락에 클립을 끼울게요
+          note: 산소
+        - en: Those readings, oxygen included, tell me this needs urgent attention.
+          icon: siren
+          ko: 산소까지 포함한 수치를 보니 급해 보여요
+          note: 판단
+        - en: Because of that, I'm moving you up so the doctor sees you sooner.
+          icon: bell
+          ko: 그래서 의사가 더 빨리 보게 순서를 올려요
+          note: 우선
 - id: SCN-ER-00224
   profession: ""
   eventId: EVT-ER-00110
@@ -32803,6 +33006,20 @@
         - w-record
         - w-activity
       goal: 1
+      tag: 검사 안내
+      icon: monitor
+      why: just가 검사를 작게 보이게 하고, 뒤에 it's painless를 바로 붙여 환자의 걱정을 먼저 덜어요. ECG는 몸에 전기를 내보내지 않고 심장의 신호만 읽어요.
+      decoy: just changes
+      distractorsKo:
+        - 이 검사는 피를 조금 뽑는 거예요
+        - 이 검사는 심장을 사진으로 찍어요
+      blank:
+        answer: records
+        options:
+            - en: stops
+            - en: controls
+            - en: records
+            - en: changes
     - en: You'll feel a few sticky pads, but no shocks at all.
       ko: 끈끈한 패드 몇 개가 느껴질 텐데, 전기 충격은 전혀 없어요.
       chunks:
@@ -32816,6 +33033,20 @@
         - w-pad
         - w-shock
       goal: 2
+      tag: 안심 설명
+      icon: shield
+      why: but 앞에서는 느낄 것을, 뒤에서는 느끼지 않을 것을 말하는 틀이에요. 전기 패드라는 말에서 충격을 떠올리기 쉬워서 no shocks를 분명히 말해 줘요.
+      decoy: a cold gel
+      distractorsKo:
+        - 패드 몇 개가 차갑게 느껴질 거예요
+        - 약한 전기 충격이 한두 번 있을 거예요
+      blank:
+        answer: sticky
+        options:
+            - en: cold
+            - en: heavy
+            - en: sharp
+            - en: sticky
     - en: Please try to stay still and relaxed for about ten seconds.
       ko: 약 10초 동안 가만히 편안하게 계셔 주세요.
       chunks:
@@ -32829,6 +33060,20 @@
         - w-still
         - w-relax
       goal: 2
+      tag: 협조 요청
+      icon: me
+      why: Please try to …는 부탁처럼 들려서 환자가 협조하기 쉬워요. 움직이거나 말하면 심전도 파형에 잡음이 생겨서 가만히 있어 달라고 해요.
+      decoy: and breathe deeply
+      distractorsKo:
+        - 약 10초 동안 크게 숨을 쉬어 주세요
+        - 약 10분 동안 누워 계셔 주세요
+      blank:
+        answer: still
+        options:
+            - en: still
+            - en: flat
+            - en: awake
+            - en: warm
     - en: Let me know right away if you feel any discomfort.
       ko: 불편하시면 바로 말씀해 주세요.
       chunks:
@@ -32841,6 +33086,20 @@
         - w-feel
         - w-discomfort
       goal: 2
+      tag: 알림 요청
+      icon: bell
+      why: Let me know는 간호사가 환자에게 알려 달라고 청하는 정중한 틀이에요. right away는 불편이 생기는 즉시 알려 달라는 뜻이라 환자가 참지 않게 해요.
+      decoy: later today
+      distractorsKo:
+        - 검사 중에는 말씀을 잠시 멈춰 주세요
+        - 검사가 끝나면 알려 드릴게요
+      blank:
+        answer: right away
+        options:
+            - en: after the test
+            - en: right away
+            - en: at the end
+            - en: next time
     - en: We'll have the results ready for the doctor in just a few minutes.
       ko: 몇 분 안에 의사 선생님께 드릴 결과가 준비될 거예요.
       chunks:
@@ -32853,6 +33112,20 @@
         - w-result
         - w-ready
       goal: 1
+      tag: 소요 안내
+      icon: chartup
+      why: in just a few minutes처럼 시간을 짧고 구체적으로 말하면 기다리는 불안이 줄어요. 결과는 환자에게 바로 해석해 주지 않고 의사가 확인해요.
+      decoy: in a few hours
+      distractorsKo:
+        - 결과는 며칠 뒤에 나올 거예요
+        - 결과를 지금 바로 설명해 드릴게요
+      blank:
+        answer: results
+        options:
+            - en: forms
+            - en: bills
+            - en: results
+            - en: pads
   nuance:
     - kind: slider
       words:
@@ -32873,6 +33146,7 @@
         - w-shock
         - w-feel
       why: 전극을 붙이며 안심시킬 때는 sticky pads처럼 쉬운 말로, 전기가 흐르지 않는다는 것을 함께 말해요.
+      ko: 끈끈한 패드 몇 개가 느껴질 텐데, 전기 충격은 전혀 없어요
       who: 환자에게 · 12유도 전극 부착
       icon: me
       before:
@@ -32888,6 +33162,28 @@
         electrodes: 정확한 말이지만 '전기'가 들어간 의료진 용어라, 감전을 걱정하는 환자에게는 오히려 불안을 키운다.
         leads: 의료진끼리 쓰는 말(전선, 또는 심전도의 유도)이라 환자에게는 낯설다.
         pads: 환자가 바로 그림을 떠올리는 쉬운 말. 무엇이 몸에 붙는지 알 수 있다.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 심전도 설명 4문장 순서
+    why: 검사가 무엇인지 먼저 말하고, 그러기 위해 패드를 붙인다고 알리고, 붙인 뒤 가만히 있기를 청하고, 그 열 초 뒤의 결과 전달로 마무리해요. 뒤 줄이 앞 줄을 가리켜서 순서가 하나예요.
+    lines:
+        - en: This test only records your heart's electrical activity, so it doesn't hurt.
+          icon: monitor
+          ko: 이 검사는 심장 전기 활동만 기록해서 아프지 않아요
+          note: 설명
+        - en: To do that, I'll place a few sticky pads on your chest.
+          icon: gear
+          ko: 그러려고 가슴에 끈끈한 패드를 붙일게요
+          note: 부착
+        - en: Once they're on, please stay still for about ten seconds.
+          icon: me
+          ko: 붙이고 나면 약 10초간 가만히 계셔 주세요
+          note: 요청
+        - en: After those ten seconds, the results go to the doctor within minutes.
+          icon: chartup
+          ko: 그 10초 뒤 몇 분 안에 결과가 의사에게 가요
+          note: 결과
 - id: SCN-ER-00225
   profession: ""
   eventId: EVT-ER-00110
@@ -32961,6 +33257,20 @@
         - w-lie
         - w-meal
       goal: 1
+      tag: 악화 요인
+      icon: chartup
+      why: lie down과 after meals는 역류성 통증이 흔히 심해지는 두 상황이에요. 상황을 구체적으로 짚어 주면 환자가 해당되는지 바로 답해요.
+      decoy: or when you walk
+      distractorsKo:
+        - 움직이거나 걸을 때 더 심해지나요?
+        - 누우면 화끈거림이 덜해지나요?
+      blank:
+        answer: lie down
+        options:
+            - en: stand up
+            - en: sit up
+            - en: walk
+            - en: lie down
     - en: Do you taste anything sour in your mouth?
       ko: 입에서 신맛이 느껴지시나요?
       chunks:
@@ -32972,6 +33282,20 @@
         - w-taste
         - w-sour
       goal: 1
+      tag: 역류 증상
+      icon: me
+      why: taste anything sour처럼 감각을 구체적으로 물으면 환자가 위산이 올라오는 느낌을 쉽게 떠올려요. 신맛은 역류의 단서 중 하나예요.
+      decoy: in your nose
+      distractorsKo:
+        - 목이 자주 아프세요?
+        - 입이 자주 마르시나요?
+      blank:
+        answer: sour
+        options:
+            - en: sour
+            - en: sweet
+            - en: spicy
+            - en: minty
     - en: We still need to rule out your heart before we assume it's reflux.
       ko: 역류라고 생각하기 전에 먼저 심장 문제를 배제해야 해요.
       chunks:
@@ -32987,6 +33311,20 @@
         - w-rule
         - w-before
       goal: 2
+      tag: 심장 먼저
+      icon: stetho
+      why: rule out은 아닌지 확인해 배제한다는 뜻이에요. 증상이 역류처럼 들려도 흉통은 심장부터 배제하는 것이 응급실의 기본 순서예요.
+      decoy: after we assume
+      distractorsKo:
+        - 심장 문제는 아니라고 보셔도 돼요
+        - 역류 약을 먼저 드시고 지켜볼게요
+      blank:
+        answer: reflux
+        options:
+            - en: pneumonia
+            - en: reflux
+            - en: anxiety
+            - en: a strain
     - en: Is the pain more like burning than pressure or squeezing?
       ko: 통증이 압박감이나 조이는 느낌보다 화끈거리는 느낌에 더 가까운가요?
       chunks:
@@ -33001,6 +33339,20 @@
         - w-pressure
         - w-squeeze
       goal: 1
+      tag: 양상 구분
+      icon: speech
+      why: burning, pressure, squeezing처럼 느낌 단어를 보기로 주면 환자가 고르기 쉬워요. 압박감과 조임은 심장 쪽을, 화끈거림은 역류 쪽을 떠올리게 하지만 이것만으로 단정하지는 않아요.
+      decoy: than stabbing
+      distractorsKo:
+        - 통증이 가슴 왼쪽에 있나요?
+        - 통증이 숨 쉴 때 더 심해지나요?
+      blank:
+        answer: burning
+        options:
+            - en: tingling
+            - en: itching
+            - en: burning
+            - en: stabbing
     - en: Have you taken any antacids, and did they help at all?
       ko: 제산제를 드셔보셨어요? 도움이 좀 됐나요?
       chunks:
@@ -33013,6 +33365,20 @@
         - w-antacid
         - w-help
       goal: 2
+      tag: 약 복용력
+      icon: pill
+      why: 도움이 됐는지를 같이 물으면 약 이름뿐 아니라 효과까지 알 수 있어요. 제산제로 나아졌다고 해서 심장 원인이 배제되지는 않아요.
+      decoy: any painkillers
+      distractorsKo:
+        - 지금 제산제를 한 알 드릴까요?
+        - 제산제 알레르기가 있으신가요?
+      blank:
+        answer: antacids
+        options:
+            - en: laxatives
+            - en: antibiotics
+            - en: sedatives
+            - en: antacids
   nuance:
     - kind: pair
       words:
@@ -33036,6 +33402,8 @@
         - w-meal
         - w-worse
       why: retrosternal(흉골 뒤)·postprandial(식후)은 차트 말이에요. 환자에게는 breastbone·after you eat처럼 쉬운 말로 같은 것을 물어요.
+      ko: 화끈거림
+      word: burning
       scenes:
         - who: 환자에게
           icon: me
@@ -33050,6 +33418,28 @@
           en: Is the pain retrosternal, and is it worse postprandially?
           ok: false
           fix: Is the burning behind your breastbone, and does it get worse after you eat?
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 역류성 흉통 감별 4문장 순서
+    why: 통증이 어떤 느낌인지 먼저 묻고, 화끈거림이라면 언제 심해지는지 묻고, 그렇게 심해질 때 제산제를 썼는지 묻고, 마지막에 그래도 심장부터 확인한다고 말해요. 뒤 줄이 앞 줄의 답을 이어받아 순서가 하나예요.
+    lines:
+        - en: Is the pain more like burning than pressure or squeezing?
+          icon: speech
+          ko: 압박감이나 조임보다 화끈거림에 가까운가요?
+          note: 양상
+        - en: If it's burning, does it get worse when you lie down or after meals?
+          icon: bulb
+          ko: 화끈거린다면 눕거나 식사 후에 심해지나요?
+          note: 악화
+        - en: When it gets worse like that, have you taken antacids, and did they help?
+          icon: pill
+          ko: 그렇게 심해질 때 제산제를 드셨고 도움이 됐나요?
+          note: 약
+        - en: Even if they helped, we still need to rule out your heart first.
+          icon: stetho
+          ko: 도움이 됐어도 먼저 심장을 배제해야 해요
+          note: 확인
 - id: SCN-ER-00226
   profession: ""
   eventId: EVT-ER-00110
@@ -33122,6 +33512,20 @@
         - w-press
         - w-spot
       goal: 1
+      tag: 압통 확인
+      icon: pushpin
+      why: when I press on this spot처럼 간호사의 행동을 말로 먼저 알리면 환자가 놀라지 않아요. 누르면 아픈 것은 근골격계 통증의 단서지만 그것만으로 심장을 배제하지는 않아요.
+      decoy: when I listen
+      distractorsKo:
+        - 이 부위를 만져도 안 아프신가요?
+        - 이 부위가 따뜻하게 느껴지시나요?
+      blank:
+        answer: hurt
+        options:
+            - en: hurt
+            - en: itch
+            - en: swell
+            - en: bleed
     - en: Did you lift or strain anything recently?
       ko: 최근에 무거운 걸 들거나 무리하신 적 있나요?
       chunks:
@@ -33134,6 +33538,20 @@
         - w-strain
         - w-recently
       goal: 2
+      tag: 활동 문진
+      icon: gear
+      why: lift와 strain을 함께 묻는 것은 근육을 쓴 일이 있었는지 폭넓게 찾는 질문이에요. recently가 있어서 최근 며칠로 범위가 좁혀져요.
+      decoy: or fall
+      distractorsKo:
+        - 최근에 넘어지거나 부딪히셨나요?
+        - 최근에 약을 새로 드셨나요?
+      blank:
+        answer: lift
+        options:
+            - en: cut
+            - en: lift
+            - en: drop
+            - en: break
     - en: Does the pain change when you take a deep breath or twist?
       ko: 숨을 깊이 쉬거나 몸을 비틀 때 통증이 달라지나요?
       chunks:
@@ -33148,6 +33566,20 @@
         - w-breath
         - w-twist
       goal: 1
+      tag: 동작 변화
+      icon: chartup
+      why: 숨을 깊이 쉬거나 몸을 비틀 때 통증이 변하면 근육이나 늑골 쪽 통증일 수 있어요. 다만 폐나 심낭 원인도 숨 쉴 때 아파서 이것만으로 단정하지는 않아요.
+      decoy: or sit up
+      distractorsKo:
+        - 숨을 참으면 통증이 사라지나요?
+        - 누워 있을 때만 통증이 생기나요?
+      blank:
+        answer: twist
+        options:
+            - en: cough
+            - en: sneeze
+            - en: twist
+            - en: swallow
     - en: Can you point to exactly where it hurts the most?
       ko: 정확히 어디가 제일 아프신지 짚어주시겠어요?
       chunks:
@@ -33160,6 +33592,20 @@
         - w-point
         - w-hurt
       goal: 1
+      tag: 위치 확인
+      icon: pushpin
+      why: point to를 쓰면 말로 설명하기 어려운 환자도 손가락으로 답할 수 있어요. 한 점을 짚는 통증은 넓게 퍼진 통증과 원인이 달라서 구별에 도움이 돼요.
+      decoy: how long
+      distractorsKo:
+        - 통증이 얼마나 오래가는지 말씀해 주시겠어요?
+        - 통증이 언제 시작됐는지 말씀해 주시겠어요?
+      blank:
+        answer: most
+        options:
+            - en: least
+            - en: first
+            - en: longest
+            - en: most
     - en: This kind of pain usually isn't dangerous, but we'll still confirm with tests.
       ko: 이런 통증은 대체로 위험하지 않지만, 그래도 검사로 확인할게요.
       chunks:
@@ -33174,6 +33620,20 @@
         - w-confirm
         - w-test
       goal: 2
+      tag: 안심과 확인
+      icon: shield
+      why: usually로 단정을 피하고 but we'll still …로 확인하겠다고 남겨요. 환자를 안심시키되 심장 검사를 건너뛰겠다는 약속은 하지 않는 말이에요.
+      decoy: so we'll skip
+      distractorsKo:
+        - 이런 통증은 매우 위험할 수 있어요
+        - 검사 없이 집에 가셔도 돼요
+      blank:
+        answer: tests
+        options:
+            - en: tests
+            - en: questions
+            - en: medicine
+            - en: your doctor
   nuance:
     - kind: pair
       words:
@@ -33197,6 +33657,8 @@
         - w-press
         - w-confirm
       why: reproducible on palpation(촉진 시 재현)은 의료진 말이에요. 환자에게는 '누르면 아프다'로 풀어 말하고, 그래도 심장은 검사로 확인한다는 것을 빼지 않아요 — 누르면 아프다는 것만으로 심장 원인이 배제되지는 않아요.
+      ko: 누르다
+      word: press
       scenes:
         - who: 환자에게
           icon: me
@@ -33211,6 +33673,28 @@
           en: Your pain is reproducible on palpation, consistent with costochondritis.
           ok: false
           fix: It hurts when I press here, which often means it's coming from the chest wall — but we'll still check your heart.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 근골격계 흉통 감별 4문장 순서
+    why: 아픈 곳을 먼저 짚게 하고, 바로 그 자리를 눌러 반응을 보고, 눌러서 아프다면 무리한 일이 있었는지 묻고, 그랬다고 답하면 위험이 낮아 보여도 검사는 한다고 맺어요. 뒤 줄이 앞 줄의 답을 가리켜서 순서가 하나예요.
+    lines:
+        - en: Can you point to where it hurts the most?
+          icon: pushpin
+          ko: 어디가 제일 아픈지 짚어주시겠어요?
+          note: 위치
+        - en: Does it hurt more when I press right there?
+          icon: gear
+          ko: 바로 거기를 누르면 더 아프신가요?
+          note: 압통
+        - en: If pressing makes it worse, did you lift or strain anything recently?
+          icon: chartup
+          ko: 누르면 더하다면 최근 무리한 적 있나요?
+          note: 활동
+        - en: If you did, this pain usually isn't dangerous, but we'll still run tests.
+          icon: shield
+          ko: 그랬다면 이 통증은 대체로 위험하지 않지만 검사는 해요
+          note: 확인
 - id: SCN-ER-00227
   profession: ""
   eventId: EVT-ER-00110
@@ -33284,6 +33768,20 @@
         - w-jaw
         - w-back
       goal: 1
+      tag: 방사통
+      icon: magnify
+      why: spread to로 통증이 퍼지는 방향을 묻고 팔·턱·등을 보기로 들어 환자가 바로 답하게 해요. 이 부위로 퍼지는 통증은 심장 원인에서 흔한 양상이에요.
+      decoy: to your leg
+      distractorsKo:
+        - 통증이 숨 쉴 때만 심해지나요?
+        - 통증이 누울 때 심해지나요?
+      blank:
+        answer: arm
+        options:
+            - en: foot
+            - en: arm
+            - en: hip
+            - en: knee
     - en: We're getting an ECG right now and calling the doctor.
       ko: 지금 바로 심전도를 찍고 의사 선생님을 부를게요.
       chunks:
@@ -33296,6 +33794,20 @@
         - w-ecg
         - w-call
       goal: 2
+      tag: 즉시 조치
+      icon: siren
+      why: right now는 지체 없이 하고 있다는 신호예요. 흉통 환자는 도착 후 10분 안에 심전도를 찍는 것이 목표(미국심장협회·미국심장학회(AHA/ACC) 지침)이고, 환자에게도 그 서두름을 알려 줘요.
+      decoy: in an hour
+      distractorsKo:
+        - 잠시 후에 혈액 검사를 할게요
+        - 먼저 피검사를 하고 기다려 볼게요
+      blank:
+        answer: ECG
+        options:
+            - en: MRI
+            - en: ultrasound
+            - en: ECG
+            - en: X-ray
     - en: You're sweating and pale — stay with me, help is coming.
       ko: 땀이 나고 창백하세요 — 저와 함께 있어요, 도움이 오고 있어요.
       chunks:
@@ -33310,6 +33822,20 @@
         - w-stay
         - w-help
       goal: 1
+      tag: 상태 설명
+      icon: faceWorried
+      why: 상태를 짧게 말해 주고 stay with me로 곁에 있겠다고 하면 환자가 혼자라고 느끼지 않아요. help is coming으로 도움이 오는 중임을 알려요.
+      decoy: and flushed
+      distractorsKo:
+        - 안색이 좋아 보여요 — 걱정하지 마세요
+        - 땀이 나시네요 — 일어나 앉으세요
+      blank:
+        answer: pale
+        options:
+            - en: flushed
+            - en: yellow
+            - en: swollen
+            - en: pale
     - en: This could be your heart, so we need to act fast.
       ko: 심장 문제일 수 있어서 빠르게 대처해야 해요.
       chunks:
@@ -33323,6 +33849,20 @@
         - w-act
         - w-fast
       goal: 2
+      tag: 이유 설명
+      icon: bulb
+      why: could be로 가능성을 말하고 so로 서두르는 이유를 이어요. 확정이 아닌 가능성이라는 틀이라 겁을 덜 주면서 긴박함을 전해요.
+      decoy: to wait here
+      distractorsKo:
+        - 통증이 언제 시작됐는지 다시 여쭤볼게요
+        - 심전도 결과가 나오면 설명해 드릴게요
+      blank:
+        answer: fast
+        options:
+            - en: fast
+            - en: slowly
+            - en: later
+            - en: alone
     - en: Try to stay calm — the team is on its way.
       ko: 침착하게 계세요 — 팀이 곧 도착할 거예요.
       chunks:
@@ -33335,6 +33875,20 @@
         - w-calm
         - w-team
       goal: 2
+      tag: 침착 유도
+      icon: me
+      why: Try to …는 명령 대신 노력해 보라는 부탁이라 부드러워요. the team is on its way로 도움이 오는 중이라는 근거를 줘서 침착하라는 말이 공허하지 않아요.
+      decoy: break
+      distractorsKo:
+        - 숨을 천천히 깊게 쉬어 보세요
+        - 가족분께 연락해 드릴까요?
+      blank:
+        answer: calm
+        options:
+            - en: alone
+            - en: calm
+            - en: awake
+            - en: upright
   nuance:
     - kind: slider
       words:
@@ -33354,6 +33908,8 @@
         - w-call
         - w-heart
       why: STEMI·stat·paging the attending은 의료진끼리의 말이에요. 환자에게는 같은 급함을 쉬운 말로 — 무엇을, 왜 서두르는지 알려 줘요.
+      ko: 심전도
+      word: ECG
       scenes:
         - who: 환자에게
           icon: me
@@ -33368,6 +33924,28 @@
           en: Possible STEMI — stat ECG, and I'm paging the attending.
           ok: false
           fix: This could be your heart, so we're getting a quick heart test and the doctor right now.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: STEMI 의심 신속 대응 4문장 순서
+    why: 퍼지는 통증을 먼저 확인하고, 그 양상이 심장일 수 있다며 심전도를 알리고, 심전도를 찍는 동안 가만히 있기를 청하고, 그대로 있으라며 팀이 오는 중임을 알려요. 뒤 줄이 앞 줄을 가리켜서 순서가 하나예요.
+    lines:
+        - en: Does the pain spread to your arm, jaw, or back?
+          icon: magnify
+          ko: 통증이 팔, 턱, 등으로 퍼지나요?
+          note: 확인
+        - en: That could be your heart, so we're getting an ECG right now.
+          icon: siren
+          ko: 심장일 수 있어서 지금 바로 심전도를 찍어요
+          note: 조치
+        - en: While we do that, try to stay still and calm.
+          icon: me
+          ko: 찍는 동안 가만히 침착하게 계세요
+          note: 요청
+        - en: Good, just stay like that — the team is on its way.
+          icon: bell
+          ko: 좋아요, 그대로 계세요 — 팀이 오고 있어요
+          note: 안심
 - id: SCN-ER-00228
   profession: ""
   eventId: EVT-ER-00110
@@ -33440,6 +34018,20 @@
         - w-tired
         - w-breath
       goal: 1
+      tag: 비전형 증상
+      icon: me
+      why: unusually로 평소와 다른지를 물어 환자가 비교해 답하게 해요. 피로·땀·숨참은 여성이나 당뇨 환자에게서 흉통 대신 나타나는 심장 증상일 수 있어요.
+      decoy: ', or hungry'
+      distractorsKo:
+        - 최근에 체중이 갑자기 줄었나요?
+        - 최근에 열이 나고 기침을 했나요?
+      blank:
+        answer: tired
+        options:
+            - en: hungry
+            - en: cold
+            - en: tired
+            - en: thirsty
     - en: Even without chest pain, these symptoms can come from the heart.
       ko: 가슴 통증이 없어도 이런 증상이 심장에서 올 수 있어요.
       chunks:
@@ -33454,6 +34046,20 @@
         - w-symptom
         - w-heart
       goal: 1
+      tag: 인식 전환
+      icon: bulb
+      why: Even without …로 가슴이 안 아프면 심장은 아니라는 생각을 부드럽게 바꿔 줘요. 여성과 당뇨 환자는 전형적인 가슴 통증 없이 심근경색이 오는 경우가 있어요.
+      decoy: from the lungs
+      distractorsKo:
+        - 이 증상은 혈당 때문일 수도 있어요
+        - 이 증상은 대부분 위에서 와요
+      blank:
+        answer: heart
+        options:
+            - en: stomach
+            - en: back
+            - en: brain
+            - en: heart
     - en: Because you have diabetes, I want to check your heart to be safe.
       ko: 당뇨가 있으시니 안전을 위해 심장을 확인하고 싶어요.
       chunks:
@@ -33468,6 +34074,20 @@
         - w-heart
         - w-safe
       goal: 2
+      tag: 이유 설명
+      icon: shield
+      why: Because you …로 환자 자신의 사정을 이유로 들면 검사가 의심이 아니라 맞춤 안전 조치로 들려요. 당뇨는 통증을 전하는 신경을 무디게 할 수 있어요.
+      decoy: to be quick
+      distractorsKo:
+        - 당뇨약을 오늘 드셨는지 확인하고 싶어요
+        - 당뇨 때문에 혈당을 먼저 재고 싶어요
+      blank:
+        answer: diabetes
+        options:
+            - en: diabetes
+            - en: asthma
+            - en: arthritis
+            - en: anemia
     - en: Women with diabetes don't always feel typical chest pain.
       ko: 당뇨가 있는 여성분들은 전형적인 가슴 통증을 항상 느끼지는 않아요.
       chunks:
@@ -33482,6 +34102,20 @@
         - w-chest
         - w-pain
       goal: 2
+      tag: 배경 설명
+      icon: board
+      why: don't always는 단정 대신 가능성을 말해서 환자를 놀라게 하지 않아요. 당뇨는 통증을 전달하는 신경을 무디게 해서 흉통이 덜 느껴질 수 있어요.
+      decoy: feel severe
+      distractorsKo:
+        - 당뇨가 있으면 상처가 잘 안 나을 수 있어요
+        - 여성분들은 심장병이 늦게 오는 편이에요
+      blank:
+        answer: diabetes
+        options:
+            - en: asthma
+            - en: diabetes
+            - en: migraines
+            - en: allergies
     - en: Let's get an ECG and some blood work just to be thorough.
       ko: 철저히 확인하기 위해 심전도와 혈액 검사도 할게요.
       chunks:
@@ -33495,6 +34129,20 @@
         - w-blood
         - w-thorough
       goal: 1
+      tag: 검사 안내
+      icon: lab
+      why: Let's …는 우리 함께 하자는 틀이라 환자도 과정의 일부로 느껴요. just to be thorough는 의심이 아니라 빠짐없이 확인하려는 것이라고 말해 줘요.
+      decoy: an X-ray
+      distractorsKo:
+        - 결과가 나오면 의사 선생님이 설명해 주실 거예요
+        - 검사 전에 혈당부터 재 볼게요
+      blank:
+        answer: thorough
+        options:
+            - en: brief
+            - en: polite
+            - en: thorough
+            - en: quick
   nuance:
     - kind: slider
       words:
@@ -33514,6 +34162,7 @@
         - w-heart
         - w-pain
       why: 환자에게는 symptoms라고 해야 '가슴이 안 아파도 심장일 수 있다'는 말이 바로 전달돼요.
+      ko: 가슴 통증이 없어도 이런 증상이 심장에서 올 수 있어요
       who: 환자에게 · 비전형 증상 설명
       icon: me
       before:
@@ -33529,6 +34178,28 @@
         anginal equivalents: 흉통 대신 나타나는 호흡곤란·피로 같은 증상을 가리키는 의학 용어. 정확하지만 환자는 모른다.
         complaints: chief complaint처럼 차트에 쓰는 말이라, 환자에게는 '불평'으로 들릴 수 있다.
         symptoms: 환자도 알아듣는 말. 피로·메스꺼움·숨참을 한데 묶어 부를 수 있다.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 비전형 흉통 설명 4문장 순서
+    why: 증상을 먼저 묻고, 그 증상도 심장에서 올 수 있다고 알리고, 그 말이 맞는 환자군을 근거로 확인을 청하고, 그래서 어떤 검사를 하는지 말해요. 뒤 줄이 앞 줄의 내용을 가리켜서 순서가 하나예요.
+    lines:
+        - en: Have you felt unusually tired, sweaty, or short of breath?
+          icon: me
+          ko: 평소와 달리 피곤하거나 땀이 나거나 숨이 찼나요?
+          note: 문진
+        - en: Even without chest pain, those symptoms can come from the heart.
+          icon: bulb
+          ko: 가슴이 안 아파도 그런 증상은 심장에서 올 수 있어요
+          note: 설명
+        - en: Since that's true for many women with diabetes, I'd like to check your heart.
+          icon: shield
+          ko: 당뇨가 있는 여성에게 흔해서 심장을 확인하고 싶어요
+          note: 근거
+        - en: To do that, let's start with an ECG and some blood work.
+          icon: lab
+          ko: 그러려면 심전도와 혈액 검사부터 해요
+          note: 검사
 - id: SCN-ER-00229
   profession: ""
   eventId: EVT-ER-00110
@@ -33599,6 +34270,20 @@
       words:
         - w-breathe
       goal: 2
+      tag: 곁에 있음
+      icon: me
+      why: I'm right here로 곁에 있음을 먼저 알리면 불안이 가라앉기 시작해요. with me로 함께 호흡을 맞추게 하면 지시가 동행으로 들려요.
+      decoy: very fast
+      distractorsKo:
+        - 제가 잠깐 자리를 비울게요
+        - 잠깐 앉아서 기다려 주세요
+      blank:
+        answer: slowly
+        options:
+            - en: quickly
+            - en: loudly
+            - en: hard
+            - en: slowly
     - en: Have you ever had panic attacks like this before?
       ko: 예전에도 이런 공황발작을 겪으신 적 있나요?
       chunks:
@@ -33612,6 +34297,20 @@
         - w-attack
         - w-before
       goal: 1
+      tag: 과거력
+      icon: board
+      why: like this before로 지금과 비슷한 일이 예전에도 있었는지 물어요. 예전에 같은 증상으로 진단받은 적이 있어도 이번 흉통은 심장부터 확인해요.
+      decoy: this week
+      distractorsKo:
+        - 예전에도 이런 가슴 통증으로 입원하셨나요?
+        - 공황발작 약을 지금 드시고 계신가요?
+      blank:
+        answer: panic
+        options:
+            - en: panic
+            - en: asthma
+            - en: heart
+            - en: migraine
     - en: We'll still check your heart to make sure everything is okay.
       ko: 그래도 다 괜찮은지 확인하려고 심장은 계속 체크할게요.
       chunks:
@@ -33625,6 +34324,20 @@
         - w-heart
         - w-okay
       goal: 2
+      tag: 계속 확인
+      icon: stetho
+      why: still이 불안이라 짐작돼도 확인은 계속한다는 뜻을 더해요. make sure everything is okay는 검사의 목적을 안심으로 말해 줘요.
+      decoy: to leave early
+      distractorsKo:
+        - 불안할 때 드시는 약이 있으세요?
+        - 집에 가서 쉬시면 다 괜찮아질 거예요
+      blank:
+        answer: check
+        options:
+            - en: treat
+            - en: check
+            - en: fix
+            - en: calm
     - en: Your heart rhythm looks normal so far, which is a good sign.
       ko: 지금까지 심장 리듬이 정상으로 보이는데, 좋은 신호예요.
       chunks:
@@ -33639,6 +34352,20 @@
         - w-normal
         - w-sign
       goal: 2
+      tag: 경과 안심
+      icon: chartup
+      why: so far로 지금까지는이라고 한정해 아직 검사가 끝나지 않았음을 남겨요. which is a good sign은 앞 내용을 한마디로 받아 안심을 전해요.
+      decoy: looks irregular
+      distractorsKo:
+        - 심장 리듬이 불규칙해서 걱정돼요
+        - 심장 리듬 검사는 아직 시작하지 않았어요
+      blank:
+        answer: normal
+        options:
+            - en: fast
+            - en: slow
+            - en: normal
+            - en: irregular
     - en: Panic can feel exactly like a heart problem, so we check both.
       ko: 공황이 심장 문제처럼 느껴질 수 있어서 둘 다 확인해요.
       chunks:
@@ -33653,6 +34380,20 @@
         - w-heart
         - w-problem
       goal: 1
+      tag: 이유 설명
+      icon: bulb
+      why: exactly like로 둘이 구별하기 어렵다는 점을 인정하면 환자가 내 탓이라고 느끼지 않아요. so we check both는 검사의 이유를 한 줄로 말해 줘요.
+      decoy: ', so we wait'
+      distractorsKo:
+        - 공황 증상은 보통 몇 분 안에 가라앉아요
+        - 심장 검사 결과는 의사 선생님이 설명해 주실 거예요
+      blank:
+        answer: both
+        options:
+            - en: neither
+            - en: one
+            - en: nothing
+            - en: both
   nuance:
     - kind: slider
       words:
@@ -33673,6 +34414,8 @@
         - w-sign
         - w-heart
       why: sinus rhythm·ST changes는 의료진 말이에요. 환자에게는 쉬운 말로 전하되 'so far'를 붙여 아직 검사가 끝나지 않았다는 것을 남겨요 — 첫 심전도가 정상이어도 심장 원인이 배제된 것은 아니에요.
+      ko: 리듬
+      word: rhythm
       scenes:
         - who: 환자에게
           icon: me
@@ -33687,6 +34430,28 @@
           en: You're in normal sinus rhythm with no acute ST changes.
           ok: false
           fix: Your heart rhythm looks normal so far, which is a good sign.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 불안성 흉통 응대 4문장 순서
+    why: 곁에서 숨을 맞추게 하고, 숨 쉬는 동안 공황 이력을 묻고, 답이 무엇이든 심장은 확인한다고 말하고, 확인하는 동안 지금까지의 리듬이 정상이라고 알려요. 뒤 줄이 앞 줄을 가리켜서 순서가 하나예요.
+    lines:
+        - en: I'm right here with you — try to breathe slowly with me.
+          icon: me
+          ko: 제가 여기 있어요 — 천천히 같이 숨 쉬어요
+          note: 곁에
+        - en: 'While you breathe, I''ll ask: have you had panic attacks like this before?'
+          icon: board
+          ko: 숨 쉬는 동안 여쭤볼게요, 이런 공황발작이 예전에 있었나요?
+          note: 과거력
+        - en: Whatever the answer, we'll still check your heart to make sure everything is okay.
+          icon: stetho
+          ko: 답이 뭐든 심장은 확인할게요
+          note: 확인
+        - en: As we check, your heart rhythm looks normal so far, which is a good sign.
+          icon: chartup
+          ko: 확인하는 동안 지금까지 리듬이 정상이라 좋은 신호예요
+          note: 경과
 - id: SCN-ER-00230
   profession: ""
   eventId: EVT-ER-00110
@@ -33760,6 +34525,20 @@
         - w-matter
         - w-show
       goal: 1
+      tag: 증상 중요성
+      icon: bulb
+      why: Even mild로 작아도 말해 달라고 먼저 알려서 증상을 축소하는 환자의 부담을 덜어요. show me where는 말 대신 손으로 보여 줘도 되는 질문이에요.
+      decoy: Only severe
+      distractorsKo:
+        - 통증이 몇 점인지 말씀해 주시겠어요?
+        - 그 느낌이 언제 시작됐는지 말씀해 주시겠어요?
+      blank:
+        answer: mild
+        options:
+            - en: mild
+            - en: severe
+            - en: sudden
+            - en: constant
     - en: Have you had any sweating, nausea, or arm discomfort?
       ko: 땀이 나거나 메스껍거나 팔 불편감이 있었나요?
       chunks:
@@ -33773,6 +34552,20 @@
         - w-nausea
         - w-discomfort
       goal: 1
+      tag: 동반 증상
+      icon: stetho
+      why: 하나씩 보기를 주면 그건 별거 아니라서라며 빼는 환자도 답해요. 식은땀·메스꺼움·팔 불편감은 심근경색에서 흔히 동반되는 증상이에요.
+      decoy: ', or leg cramps'
+      distractorsKo:
+        - 최근에 열이 나거나 기침이 있었나요?
+        - 다리가 붓거나 저린 적이 있었나요?
+      blank:
+        answer: nausea
+        options:
+            - en: rash
+            - en: nausea
+            - en: cough
+            - en: itching
     - en: It's my job to take this seriously, so please tell me everything.
       ko: 이걸 진지하게 받아들이는 게 제 일이니 다 말씀해 주세요.
       chunks:
@@ -33785,6 +34578,20 @@
         - w-job
         - w-tell
       goal: 2
+      tag: 신뢰 형성
+      icon: handshake2
+      why: It's my job to …는 환자가 과장하는 게 아니라는 뜻을 간호사의 책임으로 말해요. 축소하지 않고 말해도 괜찮다는 허락이 돼요.
+      decoy: to take a break
+      distractorsKo:
+        - 언제부터 그러셨는지 말씀해 주세요
+        - 보호자분도 같이 들어오셔도 돼요
+      blank:
+        answer: everything
+        options:
+            - en: your name
+            - en: the time
+            - en: everything
+            - en: the date
     - en: You don't need to downplay it — every detail helps me help you.
       ko: 축소해서 말씀 안 하셔도 돼요 — 사소한 것 하나하나가 도와드리는 데 도움이 돼요.
       chunks:
@@ -33797,6 +34604,20 @@
         - w-detail
         - w-help
       goal: 2
+      tag: 공감과 격려
+      icon: shield
+      why: downplay를 환자 탓이 아니라 don't need to로 부드럽게 풀어 줘요. every detail helps me help you는 말하는 일이 환자 자신에게 도움이 된다고 이어 줘요.
+      decoy: every visit
+      distractorsKo:
+        - 천천히 하나씩 말씀하셔도 돼요
+        - 지금 드시는 약을 모두 알려 주세요
+      blank:
+        answer: detail
+        options:
+            - en: test
+            - en: visit
+            - en: medicine
+            - en: detail
     - en: Sometimes small symptoms turn out to be important, so let's check them all.
       ko: 작은 증상도 중요할 수 있으니 다 확인해봐요.
       chunks:
@@ -33810,6 +34631,20 @@
         - w-important
         - w-check
       goal: 1
+      tag: 이유 설명
+      icon: bulb
+      why: Sometimes로 모든 경우가 아니라 그럴 때도 있다고 말해 겁을 주지 않아요. turn out to be는 처음엔 몰랐다가 나중에 드러난다는 뜻이에요.
+      decoy: to be nothing
+      distractorsKo:
+        - 작은 증상이 언제부터였는지 여쭤볼게요
+        - 증상을 적어 두시면 도움이 돼요
+      blank:
+        answer: small
+        options:
+            - en: small
+            - en: strange
+            - en: rare
+            - en: old
   nuance:
     - kind: slider
       words:
@@ -33830,6 +34665,8 @@
         - w-help
         - w-symptom
       why: minimizing은 의료진이 환자의 태도를 전하거나 기록할 때 쓰는 말이에요. 환자 본인에게 하면 탓하는 것처럼 들려서, 말해도 괜찮다는 쪽으로 바꿔 말해요.
+      ko: 세부사항
+      word: detail
       scenes:
         - who: 환자에게
           icon: me
@@ -33844,6 +34681,28 @@
           en: You're minimizing your symptoms.
           ok: false
           fix: You don't need to downplay it — every detail helps me help you.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 증상 축소 환자 응대 4문장 순서
+    why: 작은 조임도 중요하다며 위치를 묻고, 위치를 짚은 증상에 동반된 것을 묻고, 작아 보여도 말해 달라고 청하고, 그래서 전부 확인한다고 맺어요. 뒤 줄이 앞 줄의 답을 가리켜서 순서가 하나예요.
+    lines:
+        - en: Even mild tightness matters — can you show me exactly where?
+          icon: bulb
+          ko: 가벼운 조임도 중요해요 — 정확히 어디예요?
+          note: 위치
+        - en: Thank you. Have you had any sweating, nausea, or arm discomfort with it?
+          icon: stetho
+          ko: 고마워요. 그것과 함께 땀, 메스꺼움, 팔 불편감이 있었나요?
+          note: 동반
+        - en: Even if those seem small, please tell me about them — every detail helps.
+          icon: handshake2
+          ko: 작아 보여도 말씀해 주세요 — 하나하나 도움이 돼요
+          note: 격려
+        - en: That's why we'll check all of it, even the small things.
+          icon: shield
+          ko: 그래서 작은 것까지 전부 확인할게요
+          note: 확인
 - id: SCN-ER-00231
   profession: ""
   eventId: EVT-ER-00111
@@ -33918,6 +34777,20 @@
         - w-heart
         - w-event
       goal: 1
+      tag: 이전과 비교
+      icon: compass
+      why: the same as로 지금과 예전을 직접 견줘 답하게 해요. 예전 통증과 같은지 다른지에 따라 의료진이 가능성을 좁혀요.
+      decoy: as your next
+      distractorsKo:
+        - 이 통증이 처음 겪는 거예요?
+        - 예전에 심장 수술을 받으셨어요?
+      blank:
+        answer: event
+        options:
+            - en: stay
+            - en: event
+            - en: surgery
+            - en: checkup
     - en: Which medications and stents have you had before?
       ko: 어떤 약과 스텐트를 이전에 하셨었나요?
       chunks:
@@ -33930,6 +34803,20 @@
         - w-stent
         - w-before
       goal: 2
+      tag: 치료 이력
+      icon: pill
+      why: Which로 목록을 직접 말하게 해서 예·아니오보다 많은 정보를 얻어요. 약과 스텐트 이력은 지금 쓸 수 있는 치료를 정하는 데 필요해요.
+      decoy: and allergies
+      distractorsKo:
+        - 어떤 약을 알레르기 때문에 못 드세요?
+        - 스텐트 시술을 어느 병원에서 받으셨나요?
+      blank:
+        answer: stents
+        options:
+            - en: vaccines
+            - en: injuries
+            - en: stents
+            - en: allergies
     - en: Have you been taking your heart medicines as prescribed?
       ko: 심장약을 처방대로 복용하고 계셨나요?
       chunks:
@@ -33944,6 +34831,20 @@
         - w-medicine
         - w-prescribe
       goal: 2
+      tag: 복약 확인
+      icon: pill
+      why: as prescribed는 처방대로를 판단 없이 묻는 표현이에요. 약을 빠뜨린 날이 있었는지 알아야 지금 증상과 연결할 수 있어요.
+      decoy: when you can
+      distractorsKo:
+        - 심장약을 새로 처방받으셨나요?
+        - 심장약을 어디서 사셨나요?
+      blank:
+        answer: heart
+        options:
+            - en: thyroid
+            - en: allergy
+            - en: stomach
+            - en: heart
     - en: Compared to last time, does this feel stronger or weaker?
       ko: 지난번과 비교했을 때 더 심한가요, 아니면 덜한가요?
       chunks:
@@ -33956,6 +34857,20 @@
         - w-compare
         - w-feel
       goal: 1
+      tag: 강도 비교
+      icon: chartup
+      why: Compared to last time은 기준을 지난번으로 정해 줘서 환자가 비교하기 쉬워요. stronger or weaker는 두 방향을 모두 보기로 줘서 한쪽으로 유도하지 않아요.
+      decoy: Before that
+      distractorsKo:
+        - 지난번과 똑같은 약을 드셨나요?
+        - 지난번은 언제였는지 기억하시나요?
+      blank:
+        answer: stronger
+        options:
+            - en: stronger
+            - en: lighter
+            - en: colder
+            - en: slower
     - en: I'll let the cardiology team know about your history right away.
       ko: 심장내과 팀에 바로 병력을 알릴게요.
       chunks:
@@ -33968,6 +34883,20 @@
         - w-team
         - w-history
       goal: 1
+      tag: 공유 안내
+      icon: speech
+      why: I'll let … know는 간호사가 직접 전달하겠다는 약속이에요. 이전 병력을 심장내과가 미리 알면 치료 결정이 빨라져요.
+      decoy: next week
+      distractorsKo:
+        - 심장내과 팀이 이미 병력을 알고 있어요
+        - 예전 진료 기록을 받아 볼게요
+      blank:
+        answer: cardiology
+        options:
+            - en: dietary
+            - en: cardiology
+            - en: radiology
+            - en: pharmacy
   nuance:
     - kind: pair
       words:
@@ -33992,6 +34921,8 @@
         - w-take
         - w-prescribe
       why: noncompliant는 환자 탓으로 들리는 말이라 미국 병원에서도 adherence(복약 순응)라는 말로 바꿔 쓰는 추세예요. 환자에게는 판단 없이 '매일 드실 수 있었는지' 물으면 솔직한 답이 나와요.
+      ko: 약
+      word: medicine
       scenes:
         - who: 환자에게
           icon: me
@@ -34006,6 +34937,28 @@
           en: Have you been noncompliant with your medications?
           ok: false
           fix: Have you been able to take your heart medicines every day?
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 재발 환자 재평가 4문장 순서
+    why: 지금 통증이 예전과 같은지 먼저 묻고, 같든 다르든 약과 스텐트 이력을 묻고, 그 약을 처방대로 먹었는지 묻고, 마지막에 병력을 팀에 전한다고 맺어요. 뒤 줄이 앞 줄의 답을 가리켜서 순서가 하나예요.
+    lines:
+        - en: Is this pain the same as your previous heart event?
+          icon: compass
+          ko: 이 통증이 예전 심장 발작 때와 같나요?
+          note: 비교
+        - en: Either way, which medications and stents have you had before?
+          icon: pill
+          ko: 어느 쪽이든 이전에 어떤 약을 드시고 어떤 스텐트를 넣으셨나요?
+          note: 이력
+        - en: Have you been taking those medicines as prescribed?
+          icon: board
+          ko: 그 약들을 처방대로 드셨나요?
+          note: 복약
+        - en: Thank you — I'll tell the cardiology team about your medicines and history right away.
+          icon: speech
+          ko: 고마워요 — 약과 병력을 바로 심장내과에 알릴게요
+          note: 공유
 - id: SCN-ER-00232
   profession: ""
   eventId: EVT-ER-00111
@@ -34076,6 +35029,20 @@
         - w-pain
         - w-point
       goal: 1
+      tag: 쉬운 영어
+      icon: pushpin
+      why: 단어를 줄이고 한 번에 하나만 물어 영어가 서툰 환자도 알아들어요. Point는 말 대신 손으로 답하게 하는 몸짓 질문이에요.
+      decoy: ', slowly'
+      distractorsKo:
+        - 여기 앉아 보세요
+        - 이름을 말해 주세요
+      blank:
+        answer: Point
+        options:
+            - en: Sit
+            - en: Smile
+            - en: Point
+            - en: Wait
     - en: Pain now — one to ten? Show me with fingers.
       ko: 아파요, 지금? 1부터 10까지 손가락으로 보여주세요.
       chunks:
@@ -34089,6 +35056,20 @@
         - w-show
         - w-finger
       goal: 1
+      tag: 통증 점수
+      icon: chartup
+      why: 숫자와 손가락으로 답하게 하면 통역 없이도 통증 점수를 받아요. 문장을 짧게 끊어 말하는 것이 이 환자에게는 더 잘 통해요.
+      decoy: with words
+      distractorsKo:
+        - 1부터 10까지 소리 내어 세어 보세요
+        - 지금 숨을 크게 쉬어 보세요
+      blank:
+        answer: fingers
+        options:
+            - en: words
+            - en: eyes
+            - en: paper
+            - en: fingers
     - en: An interpreter is coming. You are safe, we will help.
       ko: 통역사가 오고 있어요. 안전해요, 저희가 도와드릴게요.
       chunks:
@@ -34102,6 +35083,20 @@
         - w-safe
         - w-help
       goal: 2
+      tag: 통역 안내
+      icon: speaker
+      why: interpreter가 곧 온다고 먼저 알리면 말이 안 통해도 곧 해결된다는 걸 환자가 알아요. 영어가 서툰 환자에게는 가족 대신 훈련된 통역사를 쓰는 것이 원칙이에요.
+      decoy: is leaving
+      distractorsKo:
+        - 가족분이 통역해 주실 거예요
+        - 통역사는 없어요, 직접 말씀하세요
+      blank:
+        answer: interpreter
+        options:
+            - en: interpreter
+            - en: orderly
+            - en: intern
+            - en: EMT
     - en: Nurse here. I check you now, okay?
       ko: 간호사예요. 지금 확인할게요, 괜찮으시죠?
       chunks:
@@ -34113,6 +35108,20 @@
       words:
         - w-check
       goal: 1
+      tag: 짧은 허락
+      icon: handshake2
+      why: okay?로 끝내면 환자가 고개로만 답해도 허락을 받아요. 관사·be동사·조동사를 뺀 짧은 문장이 영어가 서툰 환자에게 더 잘 전달돼요.
+      decoy: . I call you
+      distractorsKo:
+        - 간호사예요. 이름을 말해 주세요
+        - 간호사예요. 나중에 확인할게요
+      blank:
+        answer: Nurse
+        options:
+            - en: Guard
+            - en: Nurse
+            - en: Doctor
+            - en: Technician
     - en: Breathe slow. Good. You are okay.
       ko: 천천히 숨 쉬세요. 좋아요. 괜찮아요.
       chunks:
@@ -34124,6 +35133,20 @@
         - w-okay
         - w-breathe
       goal: 2
+      tag: 안정 유도
+      icon: me
+      why: 짧은 지시 뒤에 Good으로 바로 반응해 주면 말이 통하지 않아도 잘하고 있다는 신호가 돼요. You are okay는 지금 괜찮다는 안심의 말이에요.
+      decoy: Hold it
+      distractorsKo:
+        - 숨을 참고 계세요
+        - 빨리 숨 쉬세요. 좋아요
+      blank:
+        answer: slow
+        options:
+            - en: hard
+            - en: loud
+            - en: slow
+            - en: fast
   nuance:
     - kind: slider
       words:
@@ -34143,6 +35166,7 @@
       words:
         - w-interpreter
       why: 미국 병원에서 말을 옮기는 사람은 interpreter예요. 전화·화상 통역도 같은 말로 불러요.
+      ko: 지금 통역사가 전화로 연결되어 있어요
       who: 환자에게 · 통역 안내
       icon: me
       before:
@@ -34163,6 +35187,8 @@
         - w-pain
         - w-point
       why: 영어가 서툰 환자에게 길고 격식 있는 문장은 뜻이 같아도 전달되지 않아요. 짧은 단어와 몸짓으로 묻는 것이 이 자리에 맞아요.
+      ko: 가리키다
+      word: point
       scenes:
         - who: 환자에게
           icon: me
@@ -34177,6 +35203,28 @@
           en: Could you please indicate the precise location of your discomfort?
           ok: false
           fix: Pain here? Point for me, please.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 언어장벽 흉통 응대 4문장 순서
+    why: 먼저 간호사임을 밝히고 확인을 허락받고, 아픈 곳을 짚게 하고, 그 통증을 손가락으로 점수 매기게 한 뒤, 그 숫자를 받았다며 통역사가 온다고 알려요. 뒤 줄이 앞 줄의 답을 가리켜서 순서가 하나예요.
+    lines:
+        - en: Nurse here. I check you now, okay?
+          icon: handshake2
+          ko: 간호사예요. 지금 확인할게요, 괜찮죠?
+          note: 허락
+        - en: Where is the pain? Point for me, please.
+          icon: pushpin
+          ko: 어디가 아파요? 짚어주세요
+          note: 위치
+        - en: That pain — one to ten? Show me with fingers.
+          icon: chartup
+          ko: 그 통증은 1부터 10 중 몇이에요?
+          note: 점수
+        - en: I see that number. An interpreter is coming to help more.
+          icon: speaker
+          ko: 그 숫자 알겠어요. 통역사가 더 도우러 와요
+          note: 통역
 - id: SCN-ER-00233
   profession: ""
   eventId: EVT-ER-00111
@@ -34251,6 +35299,20 @@
         - w-heart
         - w-vessel
       goal: 1
+      tag: 약 설명
+      icon: pill
+      why: goes under your tongue으로 삼키지 않고 혀 밑에서 녹인다는 사용법을 먼저 알려요. 니트로글리세린 설하정은 혈관을 넓혀 심장의 부담을 줄이는 약이에요.
+      decoy: to swallow
+      distractorsKo:
+        - 이 알약은 물과 함께 삼켜요
+        - 이 알약은 통증을 완전히 없애 줘요
+      blank:
+        answer: tongue
+        options:
+            - en: arm
+            - en: skin
+            - en: lip
+            - en: tongue
     - en: It may cause a headache or make you feel lightheaded.
       ko: 두통이 생기거나 어지러움을 느낄 수 있어요.
       chunks:
@@ -34265,6 +35327,20 @@
         - w-feel
         - w-lightheaded
       goal: 1
+      tag: 부작용 안내
+      icon: bell
+      why: may로 가능성을 말하면 겁을 주지 않으면서 미리 알릴 수 있어요. 혈관이 넓어지면서 두통이나 머리가 핑 도는 느낌이 흔한 부작용이에요.
+      decoy: or a rash
+      distractorsKo:
+        - 혀 밑이 조금 따끔할 수 있어요
+        - 배가 아프거나 설사가 날 수 있어요
+      blank:
+        answer: headache
+        options:
+            - en: headache
+            - en: rash
+            - en: cough
+            - en: fever
     - en: Tell me right away if the pain changes or you feel dizzy.
       ko: 통증이 달라지거나 어지러우면 바로 말씀해 주세요.
       chunks:
@@ -34279,6 +35355,20 @@
         - w-feel
         - w-dizzy
       goal: 2
+      tag: 보고 요청
+      icon: speech
+      why: right away로 증상이 바뀌면 즉시 알려 달라고 해요. 투여 후 통증과 어지러움의 변화는 계속 평가해야 하는 신호예요.
+      decoy: tomorrow
+      distractorsKo:
+        - 5분 뒤에 통증을 다시 여쭤볼게요
+        - 약을 드신 지 몇 분 됐는지 말씀해 주세요
+      blank:
+        answer: dizzy
+        options:
+            - en: cold
+            - en: dizzy
+            - en: hungry
+            - en: thirsty
     - en: Are you okay with taking this medicine now?
       ko: 지금 이 약을 드시는 것에 동의하세요?
       chunks:
@@ -34291,6 +35381,20 @@
         - w-take
         - w-medicine
       goal: 2
+      tag: 동의 확인
+      icon: handshake2
+      why: Are you okay with …?는 지시가 아니라 환자의 동의를 묻는 틀이에요. 약 이름과 이유를 알려 준 뒤 동의를 받으면 환자가 치료에 참여한다고 느껴요.
+      decoy: before taking
+      distractorsKo:
+        - 이 약을 언제 드셨나요?
+        - 이 약에 알레르기가 있으세요?
+      blank:
+        answer: taking
+        options:
+            - en: stopping
+            - en: refusing
+            - en: taking
+            - en: giving
     - en: I'll keep checking your blood pressure closely after you take it.
       ko: 약을 드신 후에는 혈압을 계속 자주 확인할게요.
       chunks:
@@ -34304,6 +35408,20 @@
         - w-bp
         - w-take
       goal: 2
+      tag: 경과 관찰
+      icon: monitor
+      why: keep checking은 한 번이 아니라 계속 본다는 뜻이에요. 이 약은 혈압을 낮출 수 있어서 투여 후 혈압을 자주 확인해요.
+      decoy: while you sleep
+      distractorsKo:
+        - 약을 드신 뒤에는 잠시 누워 계세요
+        - 5분 뒤에 통증 점수를 다시 여쭤볼게요
+      blank:
+        answer: closely
+        options:
+            - en: rarely
+            - en: quickly
+            - en: quietly
+            - en: closely
   nuance:
     - kind: pair
       words:
@@ -34327,6 +35445,7 @@
         - w-cause
         - w-feel
       why: 부작용은 환자가 느낄 감각으로 말해야 알아채고 알려 줄 수 있어요.
+      ko: 두통이 생기거나 머리가 핑 도는 느낌이 들 수 있어요
       who: 환자에게 · 부작용 설명
       icon: me
       before:
@@ -34342,6 +35461,28 @@
         hypotensive: 혈압 수치를 가리키는 의료진 말이라 환자가 '느끼는' 것이 아니다.
         lightheaded: 환자가 직접 느끼는 감각(머리가 핑 도는)을 쉬운 말로 알려 준다.
         syncopal: 실신한·실신할 듯한 상태를 가리키는 의학 용어. 환자는 알아듣지 못한다.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 니트로글리세린 설명 4문장 순서
+    why: 약과 쓰는 법을 알리고, 생길 수 있는 불편을 미리 말한 뒤, 그 두통을 알고도 괜찮은지 동의를 받고, 동의하면 투여 후 혈압을 계속 잰다고 맺어요. 뒤 줄이 앞 줄을 가리켜서 순서가 하나예요.
+    lines:
+        - en: This tablet goes under your tongue to relax your heart's vessels.
+          icon: pill
+          ko: 이 알약은 혀 밑에 두어 심장 혈관을 이완시켜요
+          note: 설명
+        - en: It may cause a headache or make you feel lightheaded.
+          icon: bell
+          ko: 두통이나 어지러움이 생길 수 있어요
+          note: 부작용
+        - en: Knowing about the headache, are you okay with taking it now?
+          icon: handshake2
+          ko: 그 두통을 아시고, 지금 드셔도 괜찮으세요?
+          note: 동의
+        - en: If so, I'll keep checking your blood pressure after you take it.
+          icon: monitor
+          ko: 그렇다면 드신 뒤 혈압을 계속 확인할게요
+          note: 관찰
 - id: SCN-ER-00234
   profession: ""
   eventId: EVT-ER-00111
@@ -34413,6 +35554,20 @@
         - w-monitor
         - w-team
       goal: 1
+      tag: 현재 상태
+      icon: monitor
+      why: being monitored는 지금 진행 중인 일을 수동태로 말해 가족에게 누군가 지켜보고 있다는 안도를 줘요. 가족에게는 의학 용어 없이 지금 일어나는 일부터 알려요.
+      decoy: by himself
+      distractorsKo:
+        - 남편분은 지금 검사실에 가 계세요
+        - 남편분 검사 결과가 모두 나왔어요
+      blank:
+        answer: husband
+        options:
+            - en: husband
+            - en: wife
+            - en: son
+            - en: mother
     - en: We're running tests on his heart and I'll update you as we learn more.
       ko: 심장 검사를 진행 중이고, 더 알게 되면 계속 알려드릴게요.
       chunks:
@@ -34427,6 +35582,20 @@
         - w-update
         - w-learn
       goal: 1
+      tag: 진행·약속
+      icon: lab
+      why: I'll update you as we learn more는 결과가 나오는 대로 알려 주겠다는 약속이에요. 가족이 기다리는 동안 소식이 올 거라는 것을 알면 불안이 줄어요.
+      decoy: on his lungs
+      distractorsKo:
+        - 심장 검사는 모두 끝났어요
+        - 결과를 알아도 알려드리기 어려워요
+      blank:
+        answer: update
+        options:
+            - en: test
+            - en: update
+            - en: admit
+            - en: discharge
     - en: I know this is frightening — is there anything I can get for you?
       ko: 무서우실 거예요 — 필요하신 게 있으면 가져다드릴까요?
       chunks:
@@ -34439,6 +35608,20 @@
       words:
         - w-frighten
       goal: 2
+      tag: 공감과 도움
+      icon: faceWorried
+      why: I know this is …로 먼저 감정을 인정하고, 이어서 구체적인 도움을 제안해요. 가족에게는 물, 의자, 전화처럼 지금 해 줄 수 있는 일을 묻는 것이 도움이 돼요.
+      decoy: for him
+      distractorsKo:
+        - 남편분 드시는 약을 알려 주시겠어요?
+        - 여기서 기다리지 말고 집에 가세요
+      blank:
+        answer: frightening
+        options:
+            - en: routine
+            - en: boring
+            - en: frightening
+            - en: simple
     - en: You're welcome to wait here, and I'll come find you with any news.
       ko: 여기서 기다리셔도 되고, 소식 있으면 제가 와서 알려드릴게요.
       chunks:
@@ -34452,6 +35635,20 @@
         - w-find
         - w-news
       goal: 2
+      tag: 대기 안내
+      icon: home
+      why: You're welcome to …는 허락과 환영을 함께 담아 여기 계셔도 된다고 말하는 틀이에요. come find you는 가족이 기다리는 자리로 직접 찾아가겠다는 약속이에요.
+      decoy: to leave now
+      distractorsKo:
+        - 연락처를 남겨 주시면 전화드릴게요
+        - 대기실은 복도 끝에 있어요
+      blank:
+        answer: wait
+        options:
+            - en: sleep
+            - en: eat
+            - en: park
+            - en: wait
     - en: He's stable at the moment, and the doctors are taking good care of him.
       ko: 지금은 안정된 상태고, 의사 선생님들이 잘 돌봐주고 계세요.
       chunks:
@@ -34465,6 +35662,20 @@
         - w-stable
         - w-care
       goal: 2
+      tag: 안심 전달
+      icon: shield
+      why: at the moment로 지금은이라고 한정해 사실을 넘어서는 약속을 하지 않아요. taking good care는 의료진이 돌보고 있다는 것을 쉬운 말로 알려요.
+      decoy: He's leaving
+      distractorsKo:
+        - 지금은 매우 위험한 상태예요
+        - 의사 선생님들이 아직 오지 않았어요
+      blank:
+        answer: stable
+        options:
+            - en: stable
+            - en: cured
+            - en: discharged
+            - en: asleep
   nuance:
     - kind: pair
       words:
@@ -34487,6 +35698,7 @@
         - w-stable
         - w-care
       why: 보호자에게는 stable처럼 쉬우면서 사실을 넘지 않는 말로, 'at the moment'로 지금의 상태라는 것을 남겨요.
+      ko: 지금은 안정된 상태이고, 의사 선생님들이 잘 돌봐주고 있어요
       who: 보호자에게 · 현재 상태 설명
       icon: me
       before:
@@ -34502,6 +35714,28 @@
         hemodynamically stable: 의료진끼리의 말. 보호자에게는 어렵다.
         stable: 보호자도 알아듣고, 지금 상태를 사실대로 전한다.
         totally fine: 아직 검사 중인데 문제없다고 약속하는 것처럼 들린다.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 가족 설명 4문장 순서
+    why: 지금 누가 지켜보는지 먼저 알리고, 그 일의 일부로 검사 중임을 말하고, 결과가 나올 때까지 기다려도 된다고 안내하고, 기다리는 그 자리로 소식을 가져가겠다고 맺어요. 뒤 줄이 앞 줄을 가리켜서 순서가 하나예요.
+    lines:
+        - en: Your husband is being closely monitored by our heart team right now.
+          icon: monitor
+          ko: 남편분은 지금 심장팀이 지켜보고 있어요
+          note: 상태
+        - en: As part of that, we're running tests on his heart.
+          icon: lab
+          ko: 그 일환으로 심장 검사를 하고 있어요
+          note: 검사
+        - en: Until the results are in, you're welcome to wait here.
+          icon: home
+          ko: 결과가 나올 때까지 여기서 기다리셔도 돼요
+          note: 대기
+        - en: I'll come find you there as soon as I have news.
+          icon: speech
+          ko: 소식이 있으면 바로 그 자리로 찾아갈게요
+          note: 약속
 - id: SCN-ER-00235
   profession: ""
   eventId: EVT-ER-00111
@@ -34575,6 +35809,20 @@
         - w-help
         - w-treat
       goal: 1
+      tag: 비밀 보장
+      icon: lock
+      why: stays confidential로 비밀이 지켜진다는 것을 먼저 말해야 환자가 솔직하게 말해요. 치료가 안전해지려면 환자가 쓴 물질을 정확히 알아야 한다는 이유도 함께 줘요.
+      decoy: gets reported
+      distractorsKo:
+        - 말씀하신 건 경찰에게 바로 전달돼요
+        - 말씀하지 않으셔도 치료는 똑같아요
+      blank:
+        answer: confidential
+        options:
+            - en: public
+            - en: confidential
+            - en: shared
+            - en: unchanged
     - en: What did you use, and about what time was that?
       ko: 무엇을 사용하셨고, 대략 몇 시쯤이었나요?
       chunks:
@@ -34586,6 +35834,20 @@
       words:
         - w-use
       goal: 2
+      tag: 물질·시간
+      icon: calendar
+      why: use처럼 중립적인 동사를 쓰면 환자가 비난받는다고 느끼지 않아요. 무엇을 언제 썼는지는 약 선택과 관찰 계획에 직접 필요해요.
+      decoy: and how much
+      distractorsKo:
+        - 마지막으로 식사하신 게 몇 시였나요?
+        - 통증이 몇 시에 시작됐나요?
+      blank:
+        answer: use
+        options:
+            - en: eat
+            - en: drink
+            - en: use
+            - en: buy
     - en: This information matters because some treatments could be unsafe otherwise.
       ko: 이 정보가 중요한 이유는 일부 치료가 위험할 수 있어서예요.
       chunks:
@@ -34600,6 +35862,20 @@
         - w-treatment
         - w-unsafe
       goal: 2
+      tag: 이유 설명
+      icon: bulb
+      why: because로 왜 묻는지 이유를 밝히면 캐묻는 것처럼 들리지 않아요. 환자의 상태나 사용한 물질에 따라 일부 치료가 위험할 수 있어서 정확한 정보가 필요해요.
+      decoy: could be free
+      distractorsKo:
+        - 이 정보는 서류에만 필요해요
+        - 어떤 치료든 똑같이 안전해요
+      blank:
+        answer: information
+        options:
+            - en: paperwork
+            - en: insurance
+            - en: billing
+            - en: information
     - en: I'm not here to judge you — I just need the full picture.
       ko: 판단하려는 게 아니에요 — 전체 상황을 알아야 해서요.
       chunks:
@@ -34612,6 +35888,20 @@
         - w-judge
         - w-need
       goal: 1
+      tag: 비판단
+      icon: handshake2
+      why: I'm not here to judge you는 환자가 가장 걱정하는 판단 여부를 직접 풀어 주는 말이에요. the full picture는 치료에 필요한 전체 상황을 가리키는 관용 표현이에요.
+      decoy: to blame you
+      distractorsKo:
+        - 사실대로 말하지 않으면 치료할 수 없어요
+        - 저는 환자분의 행동이 옳은지 판단하러 왔어요
+      blank:
+        answer: picture
+        options:
+            - en: picture
+            - en: list
+            - en: form
+            - en: record
     - en: Certain heart medicines can be dangerous if you've used cocaine recently.
       ko: 코카인을 최근에 쓰셨다면 특정 심장약이 위험할 수 있어요.
       chunks:
@@ -34626,11 +35916,26 @@
         - w-dangerous
         - w-cocaine
       goal: 2
+      tag: 위험 설명
+      icon: pill
+      why: if 조건으로 위험이 생기는 경우를 정확히 짚어요. 코카인을 쓴 직후에는 약 선택에 주의가 필요해서 의료진이 사용 여부를 확인해요.
+      decoy: if you've eaten
+      distractorsKo:
+        - 다른 약이나 술도 함께 드셨나요?
+        - 소변 검사로 확인할 수도 있어요
+      blank:
+        answer: dangerous
+        options:
+            - en: unnecessary
+            - en: dangerous
+            - en: harmless
+            - en: useless
   nuance:
     - kind: swap
       words:
         - w-use
       why: 약물 사용력을 물을 때는 use처럼 중립적인 말을 써야 환자가 솔직하게 말해요.
+      ko: 무엇을 사용하셨고, 대략 몇 시쯤이었나요?
       who: 환자에게 · 약물 사용력 문진
       icon: me
       before:
@@ -34661,6 +35966,28 @@
           - treat you safely
       decoys:
         - cocaine
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 물질 사용 문진 4문장 순서
+    why: 비밀 보장과 비판하지 않겠다는 약속을 먼저 하고, 무엇을 언제 썼는지 묻고, 받은 답이 왜 중요한지 설명하고, 위험할 수 있는 그 치료들을 안전하게 하려고 의사에게 알린다고 맺어요. 뒤 줄이 앞 줄의 답과 이유를 가리켜서 순서가 하나예요.
+    lines:
+        - en: Everything you tell me stays confidential, and I'm not here to judge you.
+          icon: lock
+          ko: 말씀하신 건 비밀이고, 판단하려는 게 아니에요
+          note: 약속
+        - en: What did you use, and about what time was that?
+          icon: calendar
+          ko: 무엇을 사용했고 대략 몇 시였나요?
+          note: 문진
+        - en: Thank you. That matters, because some treatments could be unsafe otherwise.
+          icon: bulb
+          ko: 고마워요. 그게 중요한 건 일부 치료가 위험할 수 있어서예요
+          note: 이유
+        - en: To keep those treatments safe, I'll tell the doctor right away.
+          icon: pill
+          ko: 그 치료들을 안전하게 하려고 바로 의사에게 알릴게요
+          note: 조치
 - id: SCN-ER-00236
   profession: ""
   eventId: EVT-ER-00111
@@ -34733,6 +36060,20 @@
         - w-face
         - w-hear
       goal: 1
+      tag: 소통 방법
+      icon: speaker
+      why: face you는 입 모양을 볼 수 있게 해 주는 방법이에요. 청력이 떨어진 환자에게는 크게 말하는 것보다 천천히, 얼굴을 보며 말하는 것이 더 잘 전달돼요.
+      decoy: and shout
+      distractorsKo:
+        - 보청기를 가져오셨나요?
+        - 가족분이 대신 답해 주셔도 돼요
+      blank:
+        answer: slowly
+        options:
+            - en: loudly
+            - en: quietly
+            - en: slowly
+            - en: quickly
     - en: Can you point to where the pain is?
       ko: 통증이 어디 있는지 짚어주시겠어요?
       chunks:
@@ -34744,6 +36085,20 @@
         - w-point
         - w-pain
       goal: 2
+      tag: 손짓 답변
+      icon: pushpin
+      why: point to를 쓰면 잘 안 들려도 몸짓으로 대답할 수 있어요. 질문을 짧고 구체적으로 만들면 청력이 떨어진 환자도 놓치지 않아요.
+      decoy: it itches
+      distractorsKo:
+        - 통증이 언제 시작됐는지 말씀해 주시겠어요?
+        - 통증이 얼마나 심한지 말씀해 주시겠어요?
+      blank:
+        answer: point
+        options:
+            - en: reach
+            - en: walk
+            - en: look
+            - en: point
     - en: Would it help if I wrote my questions down for you?
       ko: 질문을 적어서 보여드리면 도움이 될까요?
       chunks:
@@ -34757,6 +36112,20 @@
         - w-write
         - w-question
       goal: 1
+      tag: 필담 제안
+      icon: pencil
+      why: Would it help if …?는 환자에게 선택권을 주는 제안이에요. 글로 보여 주면 소리만으로는 놓치기 쉬운 질문도 정확히 전달돼요.
+      decoy: my answers down
+      distractorsKo:
+        - 제가 질문을 크게 읽어 드릴까요?
+        - 질문에 답을 적어 주셔야 해요
+      blank:
+        answer: questions
+        options:
+            - en: questions
+            - en: answers
+            - en: orders
+            - en: names
     - en: Let's move somewhere a little quieter so you can hear better.
       ko: 더 조용한 곳으로 옮기면 더 잘 들리실 거예요.
       chunks:
@@ -34770,6 +36139,20 @@
         - w-hear
         - w-better
       goal: 1
+      tag: 환경 조정
+      icon: home
+      why: Let's …로 같이 움직이자고 제안하면 환자가 불편해하지 않아요. 소음을 줄이는 것도 청력이 떨어진 환자와 소통하는 방법이에요.
+      decoy: a little louder
+      distractorsKo:
+        - 보청기를 끼워 드릴까요?
+        - 여기서 조금 더 크게 말씀드릴게요
+      blank:
+        answer: quieter
+        options:
+            - en: busier
+            - en: quieter
+            - en: louder
+            - en: darker
     - en: I'll write down your answers so we don't miss anything important.
       ko: 중요한 걸 놓치지 않게 답변을 적어둘게요.
       chunks:
@@ -34784,6 +36167,20 @@
         - w-miss
         - w-important
       goal: 2
+      tag: 기록 약속
+      icon: pencil
+      why: so we don't …로 적는 이유를 우리가 놓치지 않기 위해서라고 말해요. 환자를 탓하지 않고 함께 하는 일로 들려요.
+      decoy: your name
+      distractorsKo:
+        - 답을 종이에 적어 주시겠어요?
+        - 가족분께도 설명해 드릴게요
+      blank:
+        answer: important
+        options:
+            - en: minor
+            - en: unusual
+            - en: important
+            - en: extra
   nuance:
     - kind: pair
       words:
@@ -34805,6 +36202,7 @@
         - w-speak
         - w-hear
       why: 잘 못 듣는 환자에게는 크게가 아니라 천천히, 또렷하게, 얼굴을 보며 말해요.
+      ko: 잘 들리시도록 천천히, 또렷하게 말씀드릴게요
       who: 환자에게 · 청력 저하
       icon: me
       before:
@@ -34820,6 +36218,28 @@
         shout: 소리를 지르면 말소리가 일그러져 오히려 알아듣기 어렵고, 화난 것처럼 들린다.
         speak slowly and clearly: 마주 보고 천천히 또렷하게 말하는 것이 청력 저하 환자에게 가장 잘 들린다.
         whisper: 청력이 떨어진 환자에게는 들리지 않는다.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 청력 저하 환자 응대 4문장 순서
+    why: 말하는 방법을 먼저 정하고, 말 대신 짚어서 답하게 하고, 짚기 어려우면 글로 쓰자고 제안하고, 어느 쪽이든 답을 적어 두겠다고 맺어요. 뒤 줄이 앞 줄의 방법을 가리켜서 순서가 하나예요.
+    lines:
+        - en: I'll speak slowly and face you — let me know if you can hear me.
+          icon: speaker
+          ko: 천천히, 얼굴을 보며 말할게요 — 들리면 알려주세요
+          note: 방법
+        - en: Good. Can you point to where the pain is?
+          icon: pushpin
+          ko: 좋아요. 통증이 어디인지 짚어주시겠어요?
+          note: 위치
+        - en: If pointing is hard, would it help if I wrote my questions down?
+          icon: pencil
+          ko: 짚기 힘드시면 질문을 적어 드릴까요?
+          note: 필담
+        - en: Either way, I'll write down your answers so we don't miss anything.
+          icon: board
+          ko: 어느 쪽이든 답을 적어 놓칠 게 없게 할게요
+          note: 기록
 - id: SCN-ER-00237
   profession: ""
   eventId: EVT-ER-00111
@@ -34893,6 +36313,20 @@
         - w-rip
         - w-back
       goal: 1
+      tag: 양상·방사
+      icon: magnify
+      why: tearing과 ripping은 환자가 고르기 쉬운 느낌 단어예요. 갑자기 찢어지는 통증이 등으로 뻗는 것은 대동맥 박리를 의심하게 하는 단서예요.
+      decoy: or pressing
+      distractorsKo:
+        - 통증이 숨 쉴 때만 심해지나요?
+        - 통증이 음식을 먹으면 심해지나요?
+      blank:
+        answer: back
+        options:
+            - en: leg
+            - en: head
+            - en: stomach
+            - en: back
     - en: I need to check the blood pressure in both of your arms.
       ko: 양쪽 팔의 혈압을 확인해야 해요.
       chunks:
@@ -34905,6 +36339,20 @@
         - w-check
         - w-bp
       goal: 2
+      tag: 양팔 혈압
+      icon: monitor
+      why: both of your arms로 이유 없이 양팔을 재는 게 아님을 알려요. 양팔의 혈압 차이가 큰 것은 대동맥 박리에서 볼 수 있는 소견이에요. 다만 차이가 없다고 박리가 배제되지는 않아요.
+      decoy: in one
+      distractorsKo:
+        - 한쪽 팔의 혈압만 확인할게요
+        - 양쪽 다리의 맥박을 확인할게요
+      blank:
+        answer: arms
+        options:
+            - en: arms
+            - en: legs
+            - en: hands
+            - en: feet
     - en: I'm getting the doctor immediately — try to stay still.
       ko: 지금 바로 의사 선생님을 부를게요 — 가만히 계세요.
       chunks:
@@ -34917,6 +36365,20 @@
         - w-stay
         - w-still
       goal: 2
+      tag: 즉시 조치
+      icon: siren
+      why: immediately는 지금 바로 한다는 가장 강한 시간 표현이에요. 가만히 있으라는 요청은 짧게 하면 더 잘 따라요.
+      decoy: in a while
+      distractorsKo:
+        - 통증이 몇 점인지 말씀해 주세요
+        - 가족분께 연락해 드릴게요
+      blank:
+        answer: still
+        options:
+            - en: alone
+            - en: still
+            - en: awake
+            - en: upset
     - en: This kind of pain needs a scan of your chest and belly right away.
       ko: 이런 통증은 바로 가슴과 배 스캔이 필요해요.
       chunks:
@@ -34931,6 +36393,20 @@
         - w-chest
         - w-belly
       goal: 1
+      tag: 검사 필요
+      icon: magnify
+      why: needs a scan으로 필요한 검사를 분명히 말하고 right away로 서두르는 이유를 줘요. 대동맥 박리는 CT 같은 영상으로 확인해요.
+      decoy: needs rest
+      distractorsKo:
+        - 이런 통증은 집에서 쉬면 돼요
+        - 가슴과 배를 만져서 확인할게요
+      blank:
+        answer: chest
+        options:
+            - en: head
+            - en: back
+            - en: chest
+            - en: neck
     - en: Try not to move too much until we know what's going on.
       ko: 무슨 상황인지 알 때까지 너무 많이 움직이지 마세요.
       chunks:
@@ -34942,6 +36418,20 @@
       words:
         - w-move
       goal: 2
+      tag: 움직임 제한
+      icon: lock
+      why: Try not to …는 금지가 아니라 부탁이라 환자가 불안해하지 않아요. until we know what's going on은 언제까지인지 끝을 말해 줘요.
+      decoy: to leave
+      distractorsKo:
+        - 검사 전까지는 아무것도 드시지 마세요
+        - 옆으로 누워 계셔도 돼요
+      blank:
+        answer: move
+        options:
+            - en: talk
+            - en: eat
+            - en: sleep
+            - en: move
   nuance:
     - kind: pair
       words:
@@ -34965,6 +36455,8 @@
         - w-back
         - w-pain
       why: radiate·interscapular(견갑골 사이)는 의료진 말이에요. 환자에게는 go into your back, between your shoulder blades처럼 몸의 위치를 쉬운 말로 물어요.
+      ko: 찢어지다
+      word: tear
       scenes:
         - who: 환자에게
           icon: me
@@ -34979,6 +36471,28 @@
           en: Does the pain radiate to your interscapular region?
           ok: false
           fix: Does the pain go into your back, between your shoulder blades?
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 대동맥 박리 의심 4문장 순서
+    why: 통증 양상을 먼저 묻고, 그렇다면 양팔 혈압을 재고, 그 수치와 상관없이 바로 의사를 부르고, 의사가 올 때까지 움직이지 말라고 맺어요. 뒤 줄이 앞 줄의 결과를 가리켜서 순서가 하나예요.
+    lines:
+        - en: Is the pain tearing or ripping, and does it go into your back?
+          icon: magnify
+          ko: 찢어지는 느낌이고 등으로 뻗나요?
+          note: 양상
+        - en: If it is, I need to check the blood pressure in both of your arms.
+          icon: monitor
+          ko: 그렇다면 양팔의 혈압을 재야 해요
+          note: 혈압
+        - en: Whatever those numbers show, I'm getting the doctor immediately.
+          icon: siren
+          ko: 그 수치가 어떻든 바로 의사를 부를게요
+          note: 호출
+        - en: Until the doctor arrives, try not to move too much.
+          icon: lock
+          ko: 의사가 올 때까지 너무 움직이지 마세요
+          note: 안정
 - id: SCN-ER-00238
   profession: ""
   eventId: EVT-ER-00111
@@ -35051,6 +36565,20 @@
         - w-worse
         - w-breathe
       goal: 1
+      tag: 호흡 관련 통증
+      icon: stetho
+      why: breathe in deeply로 호흡과 통증의 관계를 물어요. 숨 쉴 때 심해지는 날카로운 통증은 폐나 흉막 쪽 원인에서 흔해요.
+      decoy: when you cough
+      distractorsKo:
+        - 숨을 쉬면 통증이 가라앉나요?
+        - 움직일 때마다 통증이 심해지나요?
+      blank:
+        answer: worse
+        options:
+            - en: worse
+            - en: better
+            - en: longer
+            - en: lighter
     - en: Have you had any long flights, surgery, or leg swelling recently?
       ko: 최근에 장거리 비행이나 수술, 다리 붓기가 있었나요?
       chunks:
@@ -35066,6 +36594,20 @@
         - w-swell
         - w-recently
       goal: 2
+      tag: 위험 요인
+      icon: plane
+      why: 비행·수술·다리 붓기는 폐색전의 위험 요인을 물을 때 쓰는 대표 보기예요. 하나씩 말해 주면 환자가 그것도 상관있나 하고 빼먹지 않아요.
+      decoy: ', or a fall'
+      distractorsKo:
+        - 최근에 감기나 기침이 있었나요?
+        - 최근에 새 약을 시작하셨나요?
+      blank:
+        answer: flights
+        options:
+            - en: shifts
+            - en: flights
+            - en: walks
+            - en: visits
     - en: I'm going to check your oxygen level right away.
       ko: 지금 바로 산소포화도를 확인할게요.
       chunks:
@@ -35078,6 +36620,20 @@
         - w-check
         - w-oxygen
       goal: 1
+      tag: 산소 확인
+      icon: monitor
+      why: oxygen level은 산소포화도를 환자에게 쉽게 말하는 표현이에요. 숨이 차거나 갑자기 아프면 산소 수치를 일찍 확인해요.
+      decoy: your weight
+      distractorsKo:
+        - 산소 마스크를 벗겨 드릴게요
+        - 나중에 산소를 확인할게요
+      blank:
+        answer: oxygen
+        options:
+            - en: pain
+            - en: stress
+            - en: oxygen
+            - en: sugar
     - en: Sudden shortness of breath after travel can be a warning sign.
       ko: 여행 후 갑자기 숨이 차는 건 경고 신호일 수 있어요.
       chunks:
@@ -35091,6 +36647,20 @@
         - w-travel
         - w-sign
       goal: 1
+      tag: 경고 신호
+      icon: bell
+      why: can be로 가능성만 말하고 warning sign으로 놓치면 안 되는 신호임을 알려요. 장거리 이동 뒤 갑자기 숨이 차면 폐색전을 의심해요.
+      decoy: after dinner
+      distractorsKo:
+        - 최근에 다리가 붓거나 아프셨나요?
+        - 숨이 차면 바로 말씀해 주세요
+      blank:
+        answer: Sudden
+        options:
+            - en: Slow
+            - en: Mild
+            - en: Constant
+            - en: Sudden
     - en: We'll get a scan to look closely at your lungs.
       ko: 폐를 자세히 보기 위해 스캔을 할게요.
       chunks:
@@ -35103,6 +36673,20 @@
         - w-scan
         - w-lung
       goal: 2
+      tag: 검사 설명
+      icon: lab
+      why: to look closely at …으로 검사의 목적을 보는 일로 풀어 말하면 환자가 쉽게 이해해요. scan은 환자에게 CT 같은 영상 검사를 부드럽게 부르는 말이에요.
+      decoy: at your teeth
+      distractorsKo:
+        - 폐 소리를 청진기로 들어 볼게요
+        - 폐를 수술로 자세히 볼게요
+      blank:
+        answer: lungs
+        options:
+            - en: lungs
+            - en: kidneys
+            - en: liver
+            - en: bones
   nuance:
     - kind: slider
       words:
@@ -35136,6 +36720,7 @@
         - w-scan
         - w-lung
       why: 환자에게는 scan이라고 하고, 무엇을 보려는지(lungs)를 함께 말해요.
+      ko: 폐를 자세히 보려고 스캔을 할게요
       who: 환자에게 · 검사 안내
       icon: me
       before:
@@ -35151,6 +36736,28 @@
         CTPA: 정확한 검사 이름(CT 폐동맥 조영술)이지만 약어라 환자는 모른다.
         pulmonary angiogram: 의료진 용어라 환자에게는 어렵고 무겁게 들린다.
         scan: 환자에게 쉬운 말. 무엇을 하는지 바로 그려진다.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 폐색전 의심 흉통 4문장 순서
+    why: 숨 쉴 때의 통증을 먼저 묻고, 답하는 동안 바로 산소포화도를 재고, 그 수치가 나오는 동안 비행·수술·다리 붓기 같은 위험 요인이 있었는지 묻고, 있었다면 경고 신호일 수 있어 폐 스캔을 한다고 맺어요. 뒤 줄이 앞 줄을 가리켜서 순서가 하나예요.
+    lines:
+        - en: Does the pain get worse when you breathe in deeply?
+          icon: stetho
+          ko: 숨을 깊이 들이쉴 때 통증이 심해지나요?
+          note: 호흡
+        - en: While you answer, I'll check your oxygen level right away.
+          icon: monitor
+          ko: 답하시는 동안 바로 산소포화도를 확인할게요
+          note: 산소
+        - en: While that reading comes in, have you had any long flights, surgery, or leg swelling recently?
+          icon: plane
+          ko: 그 수치가 나오는 동안, 최근에 장거리 비행, 수술, 다리 붓기가 있었나요?
+          note: 위험
+        - en: If you have, that can be a warning sign, so we'll get a scan of your lungs.
+          icon: bell
+          ko: 그랬다면 경고 신호일 수 있어서 폐 스캔을 할게요
+          note: 경고
 - id: SCN-ER-00239
   profession: ""
   eventId: EVT-ER-00111
@@ -35224,6 +36831,20 @@
         - w-pain
         - w-better
       goal: 1
+      tag: 자세 변화
+      icon: me
+      why: 자세를 구체적으로 말해 주면 환자가 직접 해 보지 않아도 떠올려 답해요. 앞으로 숙이면 나아지는 통증은 심낭염을 의심하게 하는 단서예요.
+      decoy: lying down
+      distractorsKo:
+        - 누우면 통증이 나아지나요?
+        - 숨을 쉬면 통증이 나아지나요?
+      blank:
+        answer: forward
+        options:
+            - en: left
+            - en: forward
+            - en: backward
+            - en: sideways
     - en: Is the pain worse when you lie down or breathe in?
       ko: 누우시거나 숨을 들이쉴 때 통증이 더 심해지나요?
       chunks:
@@ -35238,6 +36859,20 @@
         - w-lie
         - w-breathe
       goal: 1
+      tag: 악화 요인
+      icon: chartup
+      why: worse로 한쪽 방향만 물어 환자가 비교하기 쉬워요. 누울 때나 숨 들이쉴 때 심해지는 통증은 심낭염에서 흔한 양상이에요.
+      decoy: or stand up
+      distractorsKo:
+        - 앉아 있을 때만 통증이 심해지나요?
+        - 음식을 먹을 때 통증이 심해지나요?
+      blank:
+        answer: lie down
+        options:
+            - en: walk
+            - en: sit up
+            - en: lie down
+            - en: stand up
     - en: Have you had a recent fever or viral illness?
       ko: 최근에 열이 나거나 바이러스성 질환을 앓으셨나요?
       chunks:
@@ -35251,6 +36886,20 @@
         - w-viral
         - w-illness
       goal: 2
+      tag: 선행 감염
+      icon: stetho
+      why: recent로 최근 몇 주를 짚어 물어요. 심낭염은 바이러스 감염 뒤에 흔히 와서 열이나 감기 증상이 있었는지 확인해요.
+      decoy: or a fall
+      distractorsKo:
+        - 최근에 다친 적이 있었나요?
+        - 최근에 새 약을 시작하셨나요?
+      blank:
+        answer: fever
+        options:
+            - en: rash
+            - en: fall
+            - en: injury
+            - en: fever
     - en: This sharp, positional pain can point to inflammation around the heart.
       ko: 이렇게 날카롭고 자세에 따라 변하는 통증은 심장 주변 염증을 시사할 수 있어요.
       chunks:
@@ -35265,6 +36914,20 @@
         - w-inflammation
         - w-heart
       goal: 1
+      tag: 원인 설명
+      icon: bulb
+      why: can point to로 가능성만 짚어 말해요. positional은 자세에 따라 변하는 통증을 가리키는 말이라 환자의 답을 다시 정리해 줘요.
+      decoy: a broken rib
+      distractorsKo:
+        - 이 통증은 뼈가 부러졌다는 뜻이에요
+        - 이 통증은 위 때문이에요
+      blank:
+        answer: sharp
+        options:
+            - en: sharp
+            - en: dull
+            - en: mild
+            - en: steady
     - en: Let's listen to your heart closely for any unusual sounds.
       ko: 특이한 소리가 있는지 심장을 자세히 들어볼게요.
       chunks:
@@ -35278,6 +36941,20 @@
         - w-heart
         - w-sound
       goal: 2
+      tag: 청진 안내
+      icon: stetho
+      why: Let's …로 같이 하는 일처럼 말해 부담을 줄여요. 심낭염에서는 심장 주변이 마찰되는 소리를 청진으로 확인해요.
+      decoy: to your lungs
+      distractorsKo:
+        - 숨을 잠깐 참아 주세요
+        - 폐 소리도 같이 들어볼게요
+      blank:
+        answer: unusual
+        options:
+            - en: pleasant
+            - en: unusual
+            - en: loud
+            - en: normal
   nuance:
     - kind: pair
       words:
@@ -35303,6 +36980,8 @@
         - w-pain
         - w-heart
       why: presentation·pericarditis는 의료진끼리의 말이에요. 환자에게는 '심장 주위의 염증'처럼 무엇이 문제일 수 있는지 쉬운 말로 알려요.
+      ko: 염증
+      word: inflammation
       scenes:
         - who: 환자에게
           icon: me
@@ -35317,6 +36996,28 @@
           en: Your presentation is consistent with pericarditis.
           ok: false
           fix: This sharp pain that changes with position can point to inflammation around the heart.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 심낭염 의심 문진 4문장 순서
+    why: 자세에 따라 달라지는지 먼저 묻고, 그렇다면 눕거나 숨 쉴 때 더 심한지 묻고, 그런 양상과 함께 최근 열이나 감염이 있었는지 묻고, 있었다면 심장 주변 염증일 수 있다고 설명해요. 뒤 줄이 앞 줄의 답을 가리켜서 순서가 하나예요.
+    lines:
+        - en: Does sitting up and leaning forward make the pain better?
+          icon: me
+          ko: 앉아서 앞으로 숙이면 통증이 나아지나요?
+          note: 자세
+        - en: If it does, is it worse when you lie down or breathe in?
+          icon: chartup
+          ko: 그렇다면 눕거나 숨 쉴 때 더 심한가요?
+          note: 악화
+        - en: With that pattern, have you had a recent fever or viral illness?
+          icon: stetho
+          ko: 그런 양상이라면 최근 열이나 바이러스 질환이 있었나요?
+          note: 감염
+        - en: If you have, this sharp, positional pain can point to inflammation around the heart.
+          icon: bulb
+          ko: 그랬다면 이 날카롭고 자세에 따라 변하는 통증은 심장 주변 염증일 수 있어요
+          note: 설명
 - id: SCN-ER-00240
   profession: ""
   eventId: EVT-ER-00111
@@ -35390,6 +37091,20 @@
         - w-artery
         - w-block
       goal: 1
+      tag: 이송 안내
+      icon: hospital
+      why: to open the blocked artery로 이동의 목적을 한 문장에 담아요. 심도자실에서는 막힌 관상동맥을 열어 혈류를 되돌리는 시술을 해요.
+      decoy: to X-ray
+      distractorsKo:
+        - 심도자실로 가서 검사 결과를 기다릴 거예요
+        - 수술실로 가서 심장을 열 거예요
+      blank:
+        answer: artery
+        options:
+            - en: valve
+            - en: airway
+            - en: artery
+            - en: vein
     - en: The team will keep you monitored the whole way there.
       ko: 이동하는 내내 팀이 계속 지켜볼 거예요.
       chunks:
@@ -35402,6 +37117,20 @@
         - w-team
         - w-monitor
       goal: 2
+      tag: 이송 중 관찰
+      icon: monitor
+      why: the whole way there로 이동 중에도 관찰이 끊기지 않는다고 알려요. 불안정한 환자는 이송 중에도 모니터를 단 채로 가요.
+      decoy: part of the way
+      distractorsKo:
+        - 이동 중에는 모니터를 잠시 뺄 거예요
+        - 이동하는 동안 혼자 계셔야 해요
+      blank:
+        answer: monitored
+        options:
+            - en: informed
+            - en: warm
+            - en: calm
+            - en: monitored
     - en: You may feel some pressure, but tell us about any new pain.
       ko: 압박감이 느껴질 수 있는데, 새로운 통증이 있으면 말씀해 주세요.
       chunks:
@@ -35416,6 +37145,20 @@
         - w-tell
         - w-pain
       goal: 2
+      tag: 예상 증상
+      icon: bell
+      why: You may feel …, but …으로 느낄 수 있는 것과 꼭 알릴 것을 나눠 말해요. 시술 전후에는 압박감이 있을 수 있어도 새로운 통증은 알려야 해요.
+      decoy: some cold
+      distractorsKo:
+        - 시술 중에는 깨어 계실 수 있어요
+        - 아무것도 느끼지 못하실 거예요
+      blank:
+        answer: pressure
+        options:
+            - en: pressure
+            - en: itching
+            - en: hunger
+            - en: thirst
     - en: This procedure should relieve your chest pain quickly.
       ko: 이 시술로 가슴 통증이 빨리 나아질 거예요.
       chunks:
@@ -35429,6 +37172,20 @@
         - w-chest
         - w-pain
       goal: 1
+      tag: 기대 안내
+      icon: star
+      why: should로 확정하지 않고 기대를 말해요. 막힌 혈관이 열리면 통증이 줄어드는 경우가 많지만 모두에게 똑같지는 않아요.
+      decoy: will cause
+      distractorsKo:
+        - 이 시술은 통증을 더 심하게 할 거예요
+        - 이 시술은 몇 주 뒤에 효과가 나요
+      blank:
+        answer: relieve
+        options:
+            - en: mask
+            - en: relieve
+            - en: worsen
+            - en: trigger
     - en: Everything is set up and ready — try to stay relaxed for me.
       ko: 다 준비됐어요 — 편안하게 계세요.
       chunks:
@@ -35442,6 +37199,20 @@
         - w-stay
         - w-relax
       goal: 2
+      tag: 준비 완료
+      icon: check
+      why: Everything is set up으로 준비가 끝났다는 걸 먼저 알려 환자가 마음을 놓아요. for me를 붙이면 지시가 부탁처럼 부드럽게 들려요.
+      decoy: and waiting
+      distractorsKo:
+        - 가족분께는 제가 알려 드릴게요
+        - 시술은 한 시간쯤 걸려요
+      blank:
+        answer: ready
+        options:
+            - en: finished
+            - en: closed
+            - en: ready
+            - en: late
   nuance:
     - kind: slider
       words:
@@ -35464,6 +37235,7 @@
         - w-open
         - w-cathlab
       why: 환자에게는 blocked artery라고 해야 왜 지금 가는지가 한 번에 전달돼요.
+      ko: 막힌 동맥을 열려고 심도자실로 모시고 갈게요
       who: 환자에게 · 심도자실 이송 설명
       icon: me
       before:
@@ -35479,6 +37251,28 @@
         blocked: 환자가 바로 알아듣는 말. 막힌 것을 뚫는다는 목적이 분명해진다.
         occluded: '''폐색된''이라는 의학 용어. 뜻은 같지만 환자에게는 어렵다.'
         stenotic: '''좁아진''이라는 뜻의 의학 용어. 어렵고 뜻도 ''완전히 막힘''과 다르다.'
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 심도자실 이송 4문장 순서
+    why: 어디로 왜 가는지 먼저 알리고, 가는 길에 지켜본다고 말하고, 도착하면 느낄 수 있는 것을 알리고, 끝난 뒤 통증이 줄어들 것이라고 맺어요. 뒤 줄이 앞 줄의 시점을 가리켜서 순서가 하나예요.
+    lines:
+        - en: We're taking you to the cath lab to open the blocked artery.
+          icon: hospital
+          ko: 막힌 동맥을 열려고 심도자실로 모실게요
+          note: 이송
+        - en: On the way, the team will keep you monitored the whole time.
+          icon: monitor
+          ko: 가는 길 내내 팀이 계속 지켜볼 거예요
+          note: 관찰
+        - en: Once we get there, you may feel some pressure, but tell us about any new pain.
+          icon: bell
+          ko: 도착하면 압박감이 있을 수 있지만 새 통증은 알려주세요
+          note: 안내
+        - en: When it's over, your chest pain should ease quickly.
+          icon: trophy
+          ko: 끝나면 가슴 통증이 빨리 가라앉을 거예요
+          note: 기대
 - id: SCN-ER-00241
   profession: ""
   eventId: EVT-ER-00111
@@ -35551,6 +37345,20 @@
         - w-hear
         - w-voice
       goal: 1
+      tag: 의식 확인
+      icon: speaker
+      why: Stay with me는 의식을 붙잡아 달라는 짧은 요청이에요. 목소리가 들리는지 물어 반응이 있는지 바로 확인해요.
+      decoy: my hand
+      distractorsKo:
+        - 제 손을 꽉 잡아 보세요
+        - 제가 잠깐 자리를 비울게요
+      blank:
+        answer: voice
+        options:
+            - en: name
+            - en: footsteps
+            - en: message
+            - en: voice
     - en: I'm calling for help right now, don't close your eyes.
       ko: 지금 바로 도움을 부를게요, 눈을 감지 마세요.
       chunks:
@@ -35564,6 +37372,20 @@
         - w-help
         - w-close
       goal: 2
+      tag: 도움 요청
+      icon: siren
+      why: calling for help right now로 지금 도움을 부르고 있다고 알려서 환자가 혼자라고 느끼지 않아요. don't close your eyes는 의식을 유지하게 하는 짧은 지시예요.
+      decoy: in a bit
+      distractorsKo:
+        - 눈을 편히 감고 쉬세요
+        - 산소를 조금 더 올릴게요
+      blank:
+        answer: eyes
+        options:
+            - en: eyes
+            - en: mouth
+            - en: hands
+            - en: ears
     - en: We're going to take care of you — the team is coming.
       ko: 저희가 잘 돌봐드릴게요 — 팀이 오고 있어요.
       chunks:
@@ -35576,6 +37398,20 @@
         - w-care
         - w-team
       goal: 2
+      tag: 안심
+      icon: shield
+      why: We're going to …는 곧 하는 일을 we로 말해 팀이 함께한다는 느낌을 줘요. take care of you는 환자를 책임지고 돌보겠다는 관용 표현이에요.
+      decoy: to check on
+      distractorsKo:
+        - 산소 마스크를 씌워 드릴게요
+        - 가슴이 지금 얼마나 아프세요?
+      blank:
+        answer: coming
+        options:
+            - en: late
+            - en: coming
+            - en: leaving
+            - en: sleeping
     - en: Your color is changing, so we're moving fast.
       ko: 안색이 변하고 있어서 저희도 빨리 움직이고 있어요.
       chunks:
@@ -35587,6 +37423,20 @@
         - w-change
         - w-fast
       goal: 1
+      tag: 상태 설명
+      icon: faceWorried
+      why: 상태를 사실대로 짧게 말하고 so로 서두르는 이유를 바로 이어요. we're moving fast는 환자 때문이 아니라 상황 때문이라는 뜻으로 들려요.
+      decoy: ', so we''re waiting'
+      distractorsKo:
+        - 혈압이 떨어지고 있어서 산소를 올릴게요
+        - 안색은 그대로지만 서두를게요
+      blank:
+        answer: fast
+        options:
+            - en: later
+            - en: alone
+            - en: fast
+            - en: slowly
     - en: Keep talking to me — tell me your name.
       ko: 계속 말씀해 보세요 — 성함을 말씀해 주세요.
       chunks:
@@ -35599,6 +37449,20 @@
         - w-talk
         - w-tell
       goal: 1
+      tag: 반응 유지
+      icon: speech
+      why: Keep talking to me는 말하는 동안 의식이 유지되는지 확인하는 방법이에요. 이름처럼 쉬운 질문을 주면 환자가 답하기 쉬워요.
+      decoy: your address
+      distractorsKo:
+        - 말씀하지 말고 가만히 계세요
+        - 오늘이 무슨 요일인지 말씀해 보세요
+      blank:
+        answer: name
+        options:
+            - en: age
+            - en: address
+            - en: phone number
+            - en: name
   nuance:
     - kind: slider
       words:
@@ -35619,6 +37483,8 @@
         - w-help
         - w-stay
       why: decompensating·escalating은 의료진끼리의 말이에요. 의식이 흐려지는 환자에게는 짧고 쉬운 말로 곁에 있다는 것과 도움을 부른다는 것을 알려요.
+      ko: 부르다
+      word: call
       scenes:
         - who: 환자에게
           icon: me
@@ -35633,6 +37499,28 @@
           en: You're decompensating, so I'm escalating now.
           ok: false
           fix: Stay with me — I'm calling for help right now.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 급속 악화 환자 응대 4문장 순서
+    why: 의식을 먼저 확인하고, 바로 도움을 부른다고 알리고, 기다리는 동안 이름을 말하게 해 의식을 이어 가고, 팀이 도착했음을 알려요. 뒤 줄이 앞 줄의 답을 가리켜서 순서가 하나예요.
+    lines:
+        - en: Stay with me — can you hear my voice?
+          icon: speaker
+          ko: 정신 놓지 마세요 — 제 목소리 들리세요?
+          note: 확인
+        - en: Good. I'm calling for help right now, so don't close your eyes.
+          icon: siren
+          ko: 좋아요. 지금 도움을 부를 테니 눈을 감지 마세요
+          note: 호출
+        - en: While we wait, keep talking to me — tell me your name.
+          icon: speech
+          ko: 기다리는 동안 말씀해 보세요 — 성함을 알려주세요
+          note: 유지
+        - en: Thank you. The team is here now, and we're going to take care of you.
+          icon: shield
+          ko: 고마워요. 팀이 왔고 저희가 돌봐드릴게요
+          note: 안심
 - id: SCN-ER-00242
   profession: ""
   eventId: EVT-ER-00111
@@ -35707,6 +37595,20 @@
         - w-better
         - w-worse
       goal: 1
+      tag: 변화 비교
+      icon: chartup
+      why: compare to earlier로 기준을 아까로 잡아 주고, same·better·worse를 보기로 줘서 대답하기 쉬워요. 같은 말투로 반복해 물으면 변화를 추적할 수 있어요.
+      decoy: ', bigger, or smaller'
+      distractorsKo:
+        - 이 통증은 아까부터 계속 같은 곳에 있나요?
+        - 이 통증이 처음 시작된 건 언제인가요?
+      blank:
+        answer: compare
+        options:
+            - en: compare
+            - en: react
+            - en: belong
+            - en: return
     - en: I'm rechecking your vitals and getting a repeat ECG.
       ko: 활력징후를 다시 확인하고 심전도도 다시 찍을게요.
       chunks:
@@ -35720,6 +37622,20 @@
         - w-vital
         - w-ecg
       goal: 1
+      tag: 재측정
+      icon: monitor
+      why: re-와 repeat로 다시 한다는 것을 분명히 해요. 통증이 바뀌면 활력징후와 심전도를 다시 확인하는 것이 기본이에요.
+      decoy: a chest X-ray
+      distractorsKo:
+        - 활력징후는 한 번만 확인할게요
+        - 혈액 검사를 한 번 더 할게요
+      blank:
+        answer: vitals
+        options:
+            - en: labs
+            - en: vitals
+            - en: charts
+            - en: orders
     - en: I'll update the doctor right away about this change.
       ko: 이 변화에 대해 바로 의사 선생님께 알릴게요.
       chunks:
@@ -35732,6 +37648,20 @@
         - w-update
         - w-change
       goal: 2
+      tag: 의사 보고
+      icon: speech
+      why: update the doctor는 상태가 달라졌음을 의사에게 알리는 간호사의 기본 행동이에요. right away와 this change를 함께 말해 무엇을 왜 알리는지 환자도 알게 해요.
+      decoy: later today
+      distractorsKo:
+        - 통증 약을 지금 더 드릴게요
+        - 이 변화는 일단 기록만 해 둘게요
+      blank:
+        answer: doctor
+        options:
+            - en: dietitian
+            - en: chaplain
+            - en: doctor
+            - en: pharmacist
     - en: You did the right thing by telling me it's back.
       ko: 다시 아프다고 말씀해주신 게 잘하신 거예요.
       chunks:
@@ -35743,6 +37673,20 @@
       words:
         - w-tell
       goal: 1
+      tag: 칭찬
+      icon: star
+      why: You did the right thing은 환자의 행동을 인정하는 말이에요. 증상이 다시 생기면 바로 알리도록 격려해야 다음에도 숨기지 않아요.
+      decoy: by waiting
+      distractorsKo:
+        - 통증이 몇 점인지 다시 말씀해 주세요
+        - 다음에도 아프면 이 버튼을 눌러 주세요
+      blank:
+        answer: right
+        options:
+            - en: wrong
+            - en: hard
+            - en: last
+            - en: right
     - en: Let's see if this new pain responds to your medicine.
       ko: 이 새로운 통증이 약에 반응하는지 봅시다.
       chunks:
@@ -35756,6 +37700,20 @@
         - w-respond
         - w-medicine
       goal: 1
+      tag: 치료 반응
+      icon: pill
+      why: responds to는 약에 몸이 반응하는지 본다는 뜻이에요. new pain처럼 달라진 점을 짚어 말하면 환자도 무엇을 지켜보는지 알아요.
+      decoy: to your sleep
+      distractorsKo:
+        - 이 통증이 약 때문에 생겼는지 볼게요
+        - 약을 더 드리면 통증이 사라질 거예요
+      blank:
+        answer: new
+        options:
+            - en: new
+            - en: old
+            - en: mild
+            - en: sharp
   nuance:
     - kind: slider
       words:
@@ -35777,10 +37735,12 @@
         - w-change
         - w-ecg
       why: SBAR·차트 말투는 의료진끼리 주고받는 말이에요. 환자에게는 같은 내용을 '바로 의사에게 알리겠다'는 쉬운 말로 전해요.
+      ko: 알려주다
+      word: update
       scenes:
         - who: 의사에게
           icon: monitor
-          en: Bed 3, NSTEMI — chest pain is back at seven out of ten; repeat ECG is done. Can you come see her?
+          en: Bed 3, NSTEMI — chest pain is back at seven out of ten; repeat ECG is done. Quick update — can you come see her?
           ok: true
         - who: 차트 기록
           icon: board
@@ -35788,9 +37748,31 @@
           ok: true
         - who: 환자에게
           icon: me
-          en: Recurrent CP, repeat ECG done — escalating to the MD.
+          en: Updating the MD — recurrent CP, repeat ECG done.
           ok: false
           fix: I'll update the doctor right away about this change.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: NSTEMI 통증 재발 응대 4문장 순서
+    why: 아까와 비교해 묻고, 다시 아프다는 답을 근거로 재측정을 하고, 그 검사가 진행되는 동안 의사에게 알리고, 의사가 확인한 뒤 약에 반응하는지 지켜본다고 맺어요. 뒤 줄이 앞 줄을 가리켜서 순서가 하나예요.
+    lines:
+        - en: How does this pain compare to earlier — same, better, or worse?
+          icon: chartup
+          ko: 이 통증이 아까와 어떤가요 — 같나요, 나아졌나요, 나빠졌나요?
+          note: 비교
+        - en: Since it's back, I'm rechecking your vitals and getting a repeat ECG.
+          icon: monitor
+          ko: 다시 아프시니 활력징후와 심전도를 다시 확인해요
+          note: 재측정
+        - en: While those are going, I'll update the doctor right away about this change.
+          icon: speech
+          ko: 그동안 이 변화를 바로 의사에게 알릴게요
+          note: 보고
+        - en: After the doctor weighs in, let's see if this new pain responds to your medicine.
+          icon: pill
+          ko: 의사가 판단한 뒤 새 통증이 약에 반응하는지 봐요
+          note: 반응
 - id: SCN-ER-00243
   profession: ""
   eventId: EVT-ER-00111
@@ -35863,6 +37845,20 @@
         - w-rest
         - w-asleep
       goal: 1
+      tag: 안정 시 발생
+      icon: me
+      why: while you were resting or asleep로 쉬는 중에 시작됐는지 보기를 줘요. 쉬고 있을 때 생기는 흉통은 불안정 협심증의 특징 중 하나라 꼭 물어요.
+      decoy: or walking
+      distractorsKo:
+        - 달리거나 운동하는 중에 통증이 시작됐나요?
+        - 식사한 직후에 통증이 시작됐나요?
+      blank:
+        answer: resting
+        options:
+            - en: exercising
+            - en: resting
+            - en: running
+            - en: working
     - en: Is this happening more often or lasting longer than before?
       ko: 이게 더 자주 일어나거나 예전보다 더 오래 가나요?
       chunks:
@@ -35877,6 +37873,20 @@
         - w-last
         - w-before
       goal: 2
+      tag: 빈도·지속
+      icon: chartup
+      why: more often과 lasting longer로 횟수와 길이를 따로 짚어요. 전보다 잦아지거나 길어지는 것은 불안정 협심증을 의심하게 하는 중요한 변화예요.
+      decoy: less often
+      distractorsKo:
+        - 이럴 때 니트로를 드셔 보셨나요?
+        - 이게 처음 일어난 건 언제인가요?
+      blank:
+        answer: often
+        options:
+            - en: slowly
+            - en: quietly
+            - en: often
+            - en: gently
     - en: I'm going to reassess you and let the team know right now.
       ko: 지금 바로 다시 사정하고 팀에 알릴게요.
       chunks:
@@ -35889,6 +37899,20 @@
         - w-reassess
         - w-team
       goal: 2
+      tag: 재평가·보고
+      icon: bell
+      why: reassess는 상태를 다시 살펴본다는 뜻이에요. let the team know로 직접 알리겠다고 하면 환자가 방치되지 않는다고 느껴요.
+      decoy: and send
+      distractorsKo:
+        - 지금 바로 심전도를 다시 찍을게요
+        - 통증 약을 먼저 드릴게요
+      blank:
+        answer: reassess
+        options:
+            - en: discharge
+            - en: transfer
+            - en: release
+            - en: reassess
     - en: Waking up from sleep with chest pain is an important warning sign.
       ko: 잠을 자다 가슴 통증으로 깨는 건 중요한 경고 신호예요.
       chunks:
@@ -35904,6 +37928,20 @@
         - w-important
         - w-sign
       goal: 1
+      tag: 경고 신호
+      icon: bell
+      why: important warning sign은 놓치면 안 되는 단서라는 뜻이에요. 자다가 가슴 통증으로 깨는 것은 불안정 협심증을 포함해 심장 원인을 의심하게 해요.
+      decoy: is a minor problem
+      distractorsKo:
+        - 잠은 평소에 잘 주무시나요?
+        - 자다가 깨는 건 위가 아파서예요
+      blank:
+        answer: important
+        options:
+            - en: important
+            - en: unusual
+            - en: obvious
+            - en: extra
     - en: Let's compare tonight's episode with the ones you had earlier.
       ko: 오늘 밤 통증을 예전에 있었던 것과 비교해볼게요.
       chunks:
@@ -35916,6 +37954,20 @@
         - w-compare
         - w-episode
       goal: 2
+      tag: 비교 제안
+      icon: compass
+      why: compare A with B는 두 가지를 나란히 놓고 본다는 뜻이에요. 오늘 밤 통증을 이전 통증과 견주면 얼마나 달라졌는지 알 수 있어요.
+      decoy: from the ones
+      distractorsKo:
+        - 오늘 밤 통증이 몇 시에 시작됐나요?
+        - 예전 통증 때 드신 약을 알려 주세요
+      blank:
+        answer: episode
+        options:
+            - en: dose
+            - en: episode
+            - en: test
+            - en: visit
   nuance:
     - kind: slider
       words:
@@ -35959,6 +38011,28 @@
         - 횟수를 셈
         - 환자에겐 낯섦
         - 차트에 잘 맞음
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 야간 재발 협심증 4문장 순서
+    why: 쉬는 중에 시작됐는지 먼저 묻고, 어느 쪽이든 더 잦거나 길어졌는지 묻고, 안정 시 흉통이니 바로 재평가와 팀 보고를 알리고, 팀이 오면 오늘 밤 통증을 이전과 견준다고 맺어요. 뒤 줄이 앞 줄의 답을 가리켜서 순서가 하나예요.
+    lines:
+        - en: Did the pain come on while you were resting or asleep?
+          icon: me
+          ko: 쉬거나 자는 중에 통증이 시작됐나요?
+          note: 발생
+        - en: Either way, has it been happening more often or lasting longer than before?
+          icon: chartup
+          ko: 어느 쪽이든 더 자주 일어나거나 예전보다 오래 가나요?
+          note: 변화
+        - en: With pain at rest, I'm going to reassess you and let the team know right now.
+          icon: bell
+          ko: 안정 시 통증이니 지금 바로 다시 평가하고 팀에 알릴게요
+          note: 보고
+        - en: Once the team is here, let's compare tonight's episode with the earlier ones.
+          icon: compass
+          ko: 팀이 오면 오늘 밤 통증을 이전 통증과 비교해요
+          note: 비교
 - id: SCN-ER-00244
   profession: ""
   eventId: EVT-ER-00112

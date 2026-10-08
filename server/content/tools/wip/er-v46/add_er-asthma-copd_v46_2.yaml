@@ -1,0 +1,114 @@
+- title: COPD 악화 유발 감염 감별
+  s:
+  - {t: "가래 문진", i: magnify, w: "'color or amount'로 두 가지 기준을 주면 환자가 변화를 구체적으로 떠올려요. 가래가 누렇게 변하거나 늘면 세균 감염이 악화의 원인일 수 있다고 생각해요.", d: "since Monday", k: ["기침은 언제부터 시작됐나요?", "가래를 뱉을 때 아프세요?"], a: "phlegm", o: ["urine", "stool", "saliva"]}
+  - {t: "감염 증상", i: faceWorried, w: "'fever or chills'처럼 같은 계열 증상을 묶어 물으면 하나라도 해당하는 환자가 바로 답해요. 발열은 악화의 원인이 감염일 수 있다는 단서예요.", d: "all week", k: ["가슴이 두근거리는 느낌이 있나요?", "콧물이 나거나 코가 막혔나요?"], a: "chills", o: ["rash", "cramps", "headache"]}
+  - {t: "심부전 단서", i: me, w: "'Any …?'처럼 문장을 줄여 물으면 증상 목록을 빠르게 훑기 좋아요. 다리 부종과 누울 때의 숨참은 심부전이 악화와 겹쳤는지 가리는 단서예요.", d: "after dinner", k: ["어지러워서 넘어진 적 있으세요?", "소변이 줄었나요?"], a: "lying flat", o: ["walking", "swallowing", "urinating"]}
+  - {t: "확인 질문", i: speech, w: "'— is that right?'를 붙이면 내 관찰을 단정하지 않고 환자에게 확인받는 말투가 돼요. 기침이 달라졌다는 것은 감염이나 악화의 단서예요.", d: "last week", k: ["기침할 때 가슴이 아픈가요?", "기침약을 드셔 본 적 있나요?"], a: "worse", o: ["milder", "softer", "weaker"]}
+  - {t: "호흡곤란", i: stetho, w: "'more … than usual'은 평소와의 차이를 묻는 비교 표현이에요. 환자 자신의 평소 수준과 견줘야 악화를 놓치지 않아요.", d: "than ever", k: ["걸을 때 다리가 아프세요?", "계단을 오를 때 가슴이 조이나요?"], a: "winded", o: ["tired", "dizzy", "sore"]}
+  - {t: "동반 증상", i: bell, w: "'that came on with …'로 이번 악화와 같은 시기에 시작됐는지로 범위를 좁혀요. 가슴 통증이나 부종이 함께 생기면 폐렴·심부전 같은 다른 원인을 따져 봐요.", d: "last year", k: ["이번 악화 전에 새 약을 시작하셨나요?", "최근에 비행기를 타신 적 있나요?"], a: "chest pain", o: ["rash", "bleeding", "nausea"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "감염 감별 문진 4문장 순서"
+    why: "가래 변화를 먼저 묻고, 그 답을 받아 열·오한을 묻고, 숨참을 확인한 뒤, 악화 정도가 심해진 시점의 가슴 통증으로 닫아요. 'If it has'·'that'·'that bad'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Has the color or amount of your phlegm changed?", icon: magnify, ko: "가래의 색이나 양이 변했나요?", note: "가래"}
+    - {en: "If it has, have you also had a fever or chills?", icon: faceWorried, ko: "변했다면 열이나 오한도 있으셨어요?", note: "열"}
+    - {en: "Is that why you're more winded than usual when you walk?", icon: stetho, ko: "그래서 걸을 때 평소보다 더 숨이 차세요?", note: "숨참"}
+    - {en: "As it got that bad, did you notice any chest pain or swelling?", icon: bell, ko: "그렇게 심해지면서 가슴 통증이나 붓기를 느끼셨어요?", note: "동반"}
+  sw: {ko: "가래의 색이나 양이 변했나요?"}
+- title: 스테로이드 시작 설명
+  s:
+  - {t: "약 효과", i: pill, w: "'A short course of …'처럼 '짧은 기간'을 앞세우면 환자가 오래 먹는 약으로 오해하지 않아요. 스테로이드는 기도의 염증과 붓기를 줄여 숨쉬기를 돕는 약이에요.", d: "high dose", k: ["이 약은 가래를 묽게 해요", "이 약은 세균을 죽여요"], a: "calms", o: ["causes", "increases", "spreads"]}
+  - {t: "복용 기간", i: calendar, w: "'about five days'로 기간을 숫자로 못 박고 not long term으로 장기 복용 걱정을 덜어요. 천식·COPD 악화에 쓰는 스테로이드는 대개 5일 안팎의 짧은 기간이에요.", d: "every other", k: ["하루에 세 번 드세요", "식사와 상관없이 드세요"], a: "days", o: ["weeks", "months", "years"]}
+  - {t: "치료 효과", i: chartup, w: "'It helps you …'와 'prevents …'처럼 이점 둘을 and로 이어 약의 효과를 한 문장에 말해요. 악화 때 스테로이드를 쓰면 회복이 빨라지고 곧바로 다시 나빠지는 일을 줄일 수 있어요.", d: "at night", k: ["이 약은 졸음을 일으킬 수 있어요", "이 약은 냉장 보관하세요"], a: "recover", o: ["walk", "sleep", "eat"]}
+  - {t: "부작용", i: bell, w: "'can …'으로 가능성만 말해 과장하지 않으면서 미리 알려요. 스테로이드는 혈당을 올릴 수 있어서 당뇨가 있는 환자는 며칠간 혈당을 더 자주 확인해요.", d: "slightly", k: ["속이 쓰릴 수 있으니 음식과 같이 드세요", "잠이 잘 안 올 수 있어요"], a: "raise", o: ["lower", "drop", "cut"]}
+  - {t: "복용 경험", i: pill, w: "'Have you … before, and did they …?'는 과거 경험과 그때의 반응을 한 문장에 묻는 틀이에요. 이전에 속이 쓰렸다면 음식과 함께 먹도록 안내할 수 있어요.", d: "last month", k: ["스테로이드 알레르기가 있으세요?", "지금 다른 약도 드시나요?"], a: "stomach", o: ["sleep", "mood", "heart"]}
+  - {t: "안심", i: shield, w: "'won't …'로 단정해 말하면 환자가 안심해요. 그만큼 근거가 있어야 하는데, 짧게 쓰는 스테로이드는 오래 쓸 때와 위험의 종류와 크기가 달라요.", d: "very rarely", k: ["처방전은 약국에서 받으세요", "집에서는 정해진 시간에 드세요"], a: "short", o: ["long", "daily", "new"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "스테로이드 시작 설명 4문장 순서"
+    why: "약이 하는 일과 기간을 먼저 알리고, 부작용을 덧붙인 뒤, 그 모든 것을 근거로 장기 사용과 다르다고 안심시켜요. 'those'·'That'·'all of that'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "A short course of steroids calms the swelling in your airways.", icon: pill, ko: "짧은 기간의 스테로이드가 기도의 붓기를 가라앉혀요", note: "효과"}
+    - {en: "It helps you recover faster, and you'll take them for about five days.", icon: calendar, ko: "더 빨리 회복하게 돕고 약 5일 드실 거예요", note: "기간"}
+    - {en: "That includes a small rise in blood sugar for a few days.", icon: bell, ko: "그 며칠 동안 혈당이 조금 오르는 것도 포함돼요", note: "부작용"}
+    - {en: "After all of that, you'll be off them, so it won't cause the same problems as long-term use.", icon: shield, ko: "그 모든 뒤에 끊을 거라 장기 사용과 같은 문제는 없어요", note: "안심"}
+  ctx: {word: "steroids", ko: "스테로이드"}
+- title: 말하기 힘든 호흡곤란 중증도
+  s:
+  - {t: "소통 안내", i: speech, w: "'don't try to …'로 하지 말아야 할 일을 분명히 말해 환자의 힘을 아껴 줘요. 숨이 찰 때의 말하기는 호흡 부담을 더하니 고개로 답하게 하면 상태를 계속 볼 수 있어요.", d: "if you can", k: ["손가락으로 아픈 곳을 가리키세요", "눈을 감고 천천히 쉬세요"], a: "nod", o: ["wave", "point", "blink"]}
+  - {t: "관찰 전달", i: magnify, w: "'I can see …'로 내가 눈으로 확인한 것을 말해 환자가 상태를 이해받는다고 느끼게 해요. 목 근육까지 쓰는 것은 숨쉬기가 많이 힘들다는 눈에 보이는 징후예요.", d: "pulling on", k: ["입술이 파랗게 보이지는 않아요", "가슴에서 쌕쌕 소리가 들려요"], a: "neck", o: ["arm", "leg", "hand"]}
+  - {t: "치료 시작", i: siren, w: "'We're starting …'은 지금 시작하는 일을 알리는 진행형이라 환자가 곧 치료가 시작됨을 알아요. 중증 발작에는 약 흡입을 간격 없이 이어서 하는 지속 치료를 써요.", d: "in an hour", k: ["산소 마스크를 먼저 씌울게요", "혈액 검사는 나중에 할게요"], a: "continuous", o: ["oral", "extra", "new"]}
+  - {t: "상태 확인", i: check, w: "'Nod if …'로 말하지 않고도 예/아니오로 답할 수 있게 해요. 말이 힘든 환자는 끄덕임으로 숨이 괜찮은지 바로 알려 줄 수 있어요.", d: "twice", k: ["아프면 손을 들어 주세요", "불편하면 벨을 눌러 주세요"], a: "breathe", o: ["speak", "swallow", "sit"]}
+  - {t: "격려", i: handshake2, w: "'that's okay'로 짧게 허락해 주면 말하기 힘든 환자가 압박감을 덜어요. 한 단어씩만 말해도 되게 하면 소통 부담을 줄이면서 상태를 계속 들을 수 있어요.", d: "slowly", k: ["이름만 말씀해 주세요", "어디가 제일 아픈지만 가리키세요"], a: "word", o: ["sentence", "question", "page"]}
+  - {t: "치료 목적", i: pill, w: "'to help you …'로 약의 목적을 환자의 이익으로 말하면 불안이 줄어요. 호흡곤란 환자에게는 약 이름보다 숨쉬기가 편해진다는 결과가 먼저 전해져야 해요.", d: "right away", k: ["약이 졸리게 할 수 있어요", "수액도 같이 맞을 거예요"], a: "breathe", o: ["sleep", "relax", "move"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "말하기 힘든 환자 응대 4문장 순서"
+    why: "먼저 말 대신 고개로 답하게 하고, 눈에 보이는 상태를 전한 뒤, 그래서 약을 주는 이유를 말하고, 약이 듣기 시작하면 확인을 요청해요. 'That's why'·'that medicine'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "First, just nod or shake your head — don't try to talk.", icon: speech, ko: "먼저 고개만 끄덕이거나 저으세요 — 말하려 하지 마세요", note: "안내"}
+    - {en: "I can see you're using your neck muscles to breathe.", icon: magnify, ko: "목 근육까지 써서 숨 쉬시는 게 보여요", note: "관찰"}
+    - {en: "That's why we're giving you medicine to help you breathe easier.", icon: pill, ko: "그래서 숨쉬기 편해지도록 약을 드리는 거예요", note: "치료"}
+    - {en: "Once that medicine starts working, nod if you can breathe okay.", icon: check, ko: "그 약이 듣기 시작하면 숨쉬기 괜찮으면 끄덕이세요", note: "확인"}
+  ctx: {word: "accessory muscle", ko: "보조근"}
+- title: COPD 산소 목표 88–92%
+  s:
+  - {t: "산소 목표", i: chartup, w: "'we aim for …'처럼 목표 범위를 숫자로 말하면 환자가 왜 최대로 주지 않는지 이해해요. COPD 환자는 보통 산소포화도 88~92%를 목표로 해요.", d: "at least", k: ["산소 줄이 꼬이지 않게 정리할게요", "코 튜브가 불편하면 말씀하세요"], a: "COPD", o: ["asthma", "pneumonia", "sepsis"]}
+  - {t: "이유 설명", i: bulb, w: "'can …'은 가능성을 풀어 말하는 틀이에요. COPD 환자는 산소를 너무 많이 받으면 호흡 자극이 줄어 이산화탄소가 쌓일 수 있어요.", d: "slowly", k: ["산소는 코로 들이쉬는 게 좋아요", "산소 때문에 코가 마를 수 있어요"], a: "carbon dioxide", o: ["fluid", "mucus", "heat"]}
+  - {t: "조절 약속", i: gear, w: "'I'll …'은 지금 내가 하겠다는 약속의 형태예요. titrate는 반응을 보며 산소 유량을 조금씩 올리고 내리는 것을 뜻해요.", d: "all night", k: ["산소 줄을 귀 뒤로 고정할게요", "산소 수치를 계속 지켜볼게요"], a: "carefully", o: ["quickly", "fully", "blindly"]}
+  - {t: "안심 설명", i: check, w: "'actually'는 환자의 예상과 다른 사실을 부드럽게 바로잡는 표현이에요. 환자가 산소를 더 달라고 해도 목표 범위 안이면 지금 수치가 적당하다고 설명해요.", d: "not really", k: ["산소 기계를 바꿔 드릴게요", "마스크가 불편하면 말씀하세요"], a: "fine", o: ["low", "critical", "dangerous"]}
+  - {t: "오해 바로잡기", i: bulb, w: "'could …'로 가능성을 말하되 actually가 '더 많이 주면 낫다'는 믿음을 부드럽게 뒤집어요. COPD에서는 산소를 목표보다 높이면 이산화탄소 저류가 심해질 수 있어요.", d: "going lower", k: ["마스크를 코 튜브로 바꿔 드릴게요", "베개를 높여 드릴게요"], a: "worse", o: ["easier", "better", "deeper"]}
+  - {t: "의식 확인", i: magnify, w: "'more … than usual'로 평소와의 변화를 묻는 비교 표현이에요. 졸음이나 혼돈은 이산화탄소가 쌓이고 있다는 이른 신호라 꼭 물어요.", d: "than before", k: ["머리가 아프거나 어지러우세요?", "숨 쉬는 게 더 힘들어졌나요?"], a: "confused", o: ["dizzy", "anxious", "nauseated"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "COPD 산소 목표 설명 4문장 순서"
+    why: "목표 범위를 먼저 알리고, 그 이유를 설명하고, 그래서 조절하겠다고 말한 뒤, 조절하는 동안 확인할 증상을 안내해요. 'That's because'·'So'·'do that'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "For COPD, we aim for 88 to 92 percent, not higher.", icon: chartup, ko: "COPD에서는 88에서 92퍼센트를 목표로 하고, 그 이상은 아니에요", note: "목표"}
+    - {en: "That's because too much oxygen can build up carbon dioxide for you.", icon: bulb, ko: "산소가 너무 많으면 이산화탄소가 쌓일 수 있기 때문이에요", note: "이유"}
+    - {en: "So I'll titrate it carefully to keep you in that safe range.", icon: gear, ko: "그래서 안전한 범위에 있도록 신중하게 조절할게요", note: "조절"}
+    - {en: "While we do that, tell me if you feel more drowsy or confused than usual.", icon: magnify, ko: "그러는 동안 평소보다 졸리거나 혼란스러우면 말씀해 주세요", note: "확인"}
+  ctx: {word: "CO2", ko: "이산화탄소"}
+- title: 흡연 중단 상담 연계
+  s:
+  - {t: "금연 권유", i: bulb, w: "'could be a good moment …'는 강요 대신 가능성으로 제안하는 완곡한 말이에요. 악화로 힘들었던 직후는 금연 동기가 높아지는 때라 권하기 좋아요.", d: "to start", k: ["이번 악화는 감기 때문이었을 수 있어요", "오늘 밤은 병원에서 지내셔야 해요"], a: "for good", o: ["for now", "for a week", "for fun"]}
+  - {t: "도움 안내", i: handshake2, w: "'There are …'로 선택지가 있다는 사실을 먼저 알리면 금연이 혼자 견디는 일이 아니라고 느껴요. 금연 약물과 상담을 함께 쓰면 성공률이 올라가요.", d: "only a few", k: ["금연 앱도 무료로 받으실 수 있어요", "가족도 같이 상담을 받을 수 있어요"], a: "medications", o: ["vitamins", "antibiotics", "vaccines"]}
+  - {t: "연계 제안", i: handshake2, w: "'Would you like me to …?'는 환자의 의사를 먼저 묻는 제안형이라 밀어붙이는 느낌이 없어요. 금연 프로그램 연결은 환자가 동의한 뒤 진행해요.", d: "force you", k: ["금연 구역 안내문을 드릴까요?", "퇴원 후 진료를 예약해 드릴까요?"], a: "quit program", o: ["social worker", "dietitian", "pharmacist"]}
+  - {t: "시도 경험", i: pill, w: "'Have you tried …?'는 지금까지의 시도를 묻는 현재완료이고 like …로 예를 들어 주면 환자가 구체적으로 떠올려요. 이전에 써 본 방법과 실패한 이유를 알아야 더 맞는 도움을 줄 수 있어요.", d: "last time", k: ["담배를 처음 피운 게 몇 살이세요?", "집에 흡연자가 또 있나요?"], a: "gum", o: ["candy", "mints", "tea"]}
+  - {t: "어려움 파악", i: me, w: "'What usually makes it hardest …?'는 비난 없이 어려운 순간을 환자의 말로 끌어내요. 어떤 상황에서 흔들리는지 알아야 그 순간에 대처할 계획을 같이 세울 수 있어요.", d: "last week", k: ["지금 끊은 지 얼마나 되셨어요?", "끊고 나서 몸이 달라진 게 있나요?"], a: "hardest", o: ["easiest", "quickest", "nicest"]}
+  - {t: "자원 안내", i: speaker, w: "'I can also …'의 also로 앞의 도움에 더해 줄 수 있는 것을 덧붙여요. 전화 금연 상담(quitline)은 무료로 쓸 수 있는 자원이라 환자가 부담 없이 시작해요.", d: "only once", k: ["상담사는 병원에 상주해요", "약은 약국에서 받으세요"], a: "free", o: ["paid", "private", "secret"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "금연 상담 연계 4문장 순서"
+    why: "계기를 먼저 말해 문을 열고, 그에 열려 있다면 과거 시도를 묻고, 그 답에 따라 어려움을 묻고, 어느 쪽이든 프로그램 연결을 제안해요. 'that'·'If so'·'Either way'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "This flare-up could be a good moment to quit for good.", icon: bulb, ko: "이번 악화가 완전히 끊을 좋은 계기가 될 수 있어요", note: "계기"}
+    - {en: "If you're open to that, have you tried quitting before, like patches or gum?", icon: pill, ko: "마음이 있으시다면 패치나 껌 같은 걸로 끊어 보신 적 있어요?", note: "경험"}
+    - {en: "If so, what usually made it hardest for you to stay quit?", icon: me, ko: "그렇다면 끊은 상태를 유지하기 가장 힘들었던 게 뭐였어요?", note: "어려움"}
+    - {en: "Either way, would you like me to connect you with a quit program?", icon: handshake2, ko: "어느 쪽이든 금연 프로그램과 연결해 드릴까요?", note: "연계"}
+  sw: {ko: "금연 프로그램과 연결해 드릴까요?"}
+- title: 언어장벽 악화 핵심
+  s:
+  - {t: "예/아니오", i: pill, w: "문장을 줄이고 'Yes or no?'로 답을 둘로 좁히면 영어가 서툰 환자도 바로 대답할 수 있어요. 통역사가 오기 전에도 핵심 정보를 먼저 확인할 수 있어요.", d: "How often", k: ["흡입기를 가져오셨어요?", "흡입기 이름을 아세요?"], a: "inhaler", o: ["nebulizer", "oxygen", "spacer"]}
+  - {t: "예/아니오", i: faceWorried, w: "단어 하나로 짧게 물으면 번역이 쉽고 환자도 같은 단어로 답할 수 있어요. 열이 있는지는 악화의 원인이 감염인지 가리는 핵심 질문이에요.", d: "Today", k: ["열이 며칠째인가요?", "체온을 재 볼게요"], a: "Fever", o: ["Chills", "Cough", "Vomiting"]}
+  - {t: "알레르기", i: bell, w: "'Allergy to …?'로 짧게 물으면 환자가 yes/no만 해도 알레르기를 확인할 수 있어요. 통역이 오는 중이라고 알리면 환자가 기다리는 동안 덜 불안해요.", d: "a lot", k: ["약을 지금 바로 드릴게요", "통역사를 바꿔 드릴게요"], a: "medicine", o: ["food", "latex", "bee stings"]}
+  - {t: "통증 확인", i: stetho, w: "'Any pain in …?'는 부위만 바꿔 쓸 수 있는 짧은 틀이에요. 천식·COPD 악화에서 가슴 통증은 다른 원인을 가려야 한다는 경고가 될 수 있어요.", d: "tonight", k: ["배가 아프세요?", "숨 쉴 때 통증이 있나요?"], a: "chest", o: ["head", "back", "leg"]}
+  - {t: "메스꺼움", i: faceWorried, w: "'sick to your stomach'은 메스꺼움을 쉬운 말로 묻는 표현이에요. 약을 쓰기 전에 메스꺼움이 있는지 알면 치료 계획에 도움이 돼요.", d: "Maybe", k: ["토하셨어요?", "설사가 있으세요?"], a: "Yes or no", o: ["Right or left", "Day or night", "Now or later"]}
+  - {t: "안심", i: handshake2, w: "'Stay with me'는 곁에 있겠다는 뜻이라 말이 통하지 않을 때 환자를 안정시켜요. 통역사가 오는 중이라는 말에 시간 감각(soon)을 더하면 불안이 줄어요.", d: "Wait here", k: ["가족분께 전화할게요", "잠시 후 의사가 와요"], a: "Stay with me", o: ["Look at me", "Squeeze my hand", "Count with me"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "통역 대기 중 핵심 확인 4문장 순서"
+    why: "예/아니오로 사용 여부를 묻고, 그 답을 받아 횟수를 묻고, 많다는 반응 뒤에 가슴 통증을 확인한 뒤, 통역사가 올 때까지 곁에 있겠다고 닫아요. 'it'·'That's a lot'·'all of that'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Used your inhaler today? Yes or no?", icon: pill, ko: "오늘 흡입기 쓰셨어요? 예, 아니오?", note: "사용"}
+    - {en: "Okay, how many times did you use it?", icon: pill, ko: "알겠어요, 몇 번 쓰셨어요?", note: "횟수"}
+    - {en: "That's a lot, so any pain in your chest?", icon: stetho, ko: "많이 쓰셨네요, 가슴에 통증 있으세요?", note: "통증"}
+    - {en: "Thank you. An interpreter is coming soon to help with all of that.", icon: handshake2, ko: "고마워요. 통역사가 곧 와서 그 모든 걸 도울 거예요", note: "안심"}
+  sw: {ko: "약 알레르기 있으세요? 통역사가 곧 와요."}
