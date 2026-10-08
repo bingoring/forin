@@ -335,23 +335,25 @@ export function useNbSwipeOut() {
  */
 export function useNbColorTransition(color: string, timing: { duration: number; easing: EasingFunction } = NB_BAR_TRANSITION) {
   const rm = useReduceMotion();
-  const [v] = useState(() => new Animated.Value(1));
-  const [pair, setPair] = useState<[string, string]>([color, color]);
-  if (pair[1] !== color) {
-    // Reset HERE, not in the effect: between this render's commit and its effect the style
-    // would read v = 1 against the new pair and paint the target colour for a frame.
-    v.setValue(0);
-    setPair([pair[1], color]);
+  const [st, setSt] = useState(() => ({ from: color, to: color, v: new Animated.Value(1) }));
+  let cur = st;
+  if (st.to !== color) {
+    // Decided HERE, not in the effect: between this render's commit and its effect the style
+    // would read the old value against the new pair and paint the target colour for a frame.
+    // A fresh value at 0 rather than `setValue(0)` on the one the view is bound to — that would
+    // update the mounted Animated view in the middle of this render (React warns, T3).
+    cur = { from: st.to, to: color, v: new Animated.Value(0) };
+    setSt(cur);
   }
   useEffect(() => {
-    if (pair[0] === pair[1]) return;
-    if (rm) { v.setValue(1); return; }
-    const a = Animated.timing(v, { toValue: 1, duration: timing.duration, easing: timing.easing, useNativeDriver: false });
+    if (st.from === st.to) return;
+    if (rm) { st.v.setValue(1); return; }
+    const a = Animated.timing(st.v, { toValue: 1, duration: timing.duration, easing: timing.easing, useNativeDriver: false });
     a.start();
     return () => a.stop();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pair]);
-  return v.interpolate({ inputRange: [0, 1], outputRange: pair });
+  }, [st]);
+  return cur.v.interpolate({ inputRange: [0, 1], outputRange: [cur.from, cur.to] });
 }
 
 /**
