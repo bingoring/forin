@@ -107361,31 +107361,103 @@
       chunks: ["Let me check", "your temperature,", "heart rate,", "and breathing", "together", "."]
       words: [w-check, w-temperature, w-heart, w-rate, w-breathe, w-together]
       goal: 1
+      tag: "활력 측정"
+      icon: "monitor"
+      why: "Let me…는 측정을 하기 전에 먼저 알리는 말투라 환자가 갑작스럽게 느끼지 않아요. 체온·심박수·호흡수는 SIRS 선별에서 가장 먼저 보는 활력징후예요."
+      decoy: "in the hall"
+      distractorsKo: ["가슴 소리를 먼저 들어 볼게요", "지금 손목밴드를 확인할게요"]
+      blank:
+        answer: "temperature"
+        options:
+          - {en: "temperature"}
+          - {en: "weight"}
+          - {en: "height"}
+          - {en: "vision"}
     - en: "A few of these being off can be an early warning sign."
       ko: "몇 가지가 어긋나 있으면 조기 경고 신호일 수 있어요."
       chunks: ["A few of these", "being off", "can be", "an early", "warning sign", "."]
       words: [w-few, w-off, w-early, w-warning, w-sign]
       goal: 2
+      tag: "조기 경고"
+      icon: "bell"
+      why: "can으로 가능성만 말해 겁을 주지 않으면서, early가 지금 살펴보는 이유를 줘요. 수치 하나가 아니라 여러 개가 함께 벗어날 때 패혈증을 의심해요."
+      decoy: "right now"
+      distractorsKo: ["혈액 검사 결과가 곧 나올 거예요", "숨이 차면 바로 알려 주세요"]
+      blank:
+        answer: "early"
+        options:
+          - {en: "obvious"}
+          - {en: "early"}
+          - {en: "unusual"}
+          - {en: "isolated"}
     - en: "Do you have any pain, cough, or burning when you urinate?"
       ko: "통증이나 기침, 소변볼 때 화끈거림이 있나요?"
       chunks: ["Do you have", "any pain,", "cough,", "or burning", "when you urinate", "?"]
       words: [w-pain, w-cough, w-burn, w-urinate]
       goal: 1
+      tag: "증상 문진"
+      icon: "speech"
+      why: "pain·cough·burning을 or로 이어 폐·요로·그 밖의 감염 부위를 한 번에 훑어요. 소변 볼 때 화끈거림은 요로감염의 대표 증상이에요."
+      decoy: "yesterday"
+      distractorsKo: ["언제부터 열이 났나요?", "어제 소변을 얼마나 보셨어요?"]
+      blank:
+        answer: "urinate"
+        options:
+          - {en: "breathe"}
+          - {en: "eat"}
+          - {en: "urinate"}
+          - {en: "swallow"}
     - en: "Your heart rate is a little fast right now."
       ko: "지금 심박수가 조금 빨라요."
       chunks: ["Your heart rate", "is a little", "fast", "right now", "."]
       words: [w-heart, w-rate, w-fast]
       goal: 1
+      tag: "수치 설명"
+      icon: "chartup"
+      why: "a little로 수치를 낮춰 말해 환자가 놀라지 않게 하고, right now로 지금 값일 뿐 바뀔 수 있음을 알려요. 심박수가 분당 90을 넘으면 SIRS 기준에 해당해요."
+      decoy: "in the room"
+      distractorsKo: ["혈압은 정상 범위예요", "체온을 한 번 더 잴게요"]
+      blank:
+        answer: "fast"
+        options:
+          - {en: "slow"}
+          - {en: "low"}
+          - {en: "irregular"}
+          - {en: "fast"}
     - en: "I'm also checking how fast you're breathing."
       ko: "숨이 얼마나 빠른지도 같이 확인하고 있어요."
       chunks: ["I'm also checking", "how fast", "you're breathing", "."]
       words: [w-check, w-fast, w-breathe]
       goal: 1
+      tag: "호흡 확인"
+      icon: "stetho"
+      why: "also가 앞서 말한 심박수에 이어 하나 더 본다고 알려 주고, how fast로 호흡수를 센다는 것을 환자 말로 풀어요. 호흡수는 SIRS와 qSOFA가 둘 다 보는 항목이에요."
+      decoy: "twice"
+      distractorsKo: ["지금 산소를 연결할게요", "소변은 언제 보셨어요?"]
+      blank:
+        answer: "breathing"
+        options:
+          - {en: "breathing"}
+          - {en: "eating"}
+          - {en: "walking"}
+          - {en: "swallowing"}
     - en: "These vital signs together help me catch a possible infection early."
       ko: "이 활력징후들을 함께 보면 가능한 감염을 조기에 발견할 수 있어요."
       chunks: ["These vital signs", "together help me", "catch a possible", "infection early", "."]
       words: [w-vital, w-sign, w-together, w-catch, w-possible, w-infection, w-early]
       goal: 2
+      tag: "조기 발견"
+      icon: "magnify"
+      why: "together로 수치 하나가 아니라 묶음으로 본다는 점을 짚고, possible로 확진이 아니라 가능성임을 분명히 해요. 패혈증은 늦을수록 치료가 어려워져서 일찍 잡는 것이 핵심이에요."
+      decoy: "for sure"
+      distractorsKo: ["항생제는 한 시간 안에 시작할 거예요", "체온이 다시 정상으로 돌아왔어요"]
+      blank:
+        answer: "infection"
+        options:
+          - {en: "allergy"}
+          - {en: "infection"}
+          - {en: "injury"}
+          - {en: "fracture"}
   nuance:
   - kind: slider
     words:
@@ -107422,6 +107494,30 @@
       ok: false
       fix: A few of your numbers are off, which can be an early warning sign of infection, so we're checking closely.
     why: SIRS 기준·스크린 양성은 의료진끼리의 말이에요. 환자에게는 '몇 가지 수치가 벗어나 있고, 감염의 조기 경고 신호일 수 있다'처럼 풀어서 말해요.
+    word: sepsis
+    ko: 패혈증
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 기초 사정 설명 4문장 순서
+    why: 측정을 알리고, 'the numbers'가 그 측정을 가리키며 결과를 말하고, 'like that'이 그 결과를 가리켜 의미를 설명하고, 'that warning sign'이 그 의미를 가리켜 의사에게 알린다고 해요. 'the numbers'·'like that'·'that warning sign'이 앞 줄을 가리켜 순서가 하나예요. 감염이 의심되고 기준에 해당하면 다시 재는 데서 그치지 않고 알려요.
+    lines:
+    - en: I'd like to check your temperature, heart rate, and breathing together.
+      icon: monitor
+      ko: 체온, 심박수, 호흡을 함께 확인하고 싶어요
+      note: 측정
+    - en: Okay, the numbers show a fast heart rate and a raised temperature.
+      icon: chartup
+      ko: 수치를 보니 심박수가 빠르고 체온이 올랐어요
+      note: 결과
+    - en: A few numbers being off like that can be an early warning sign.
+      icon: bell
+      ko: 그렇게 몇 가지가 어긋나 있으면 조기 경고 신호일 수 있어요
+      note: 의미
+    - en: So because of that warning sign, I'm letting the doctor know right now.
+      icon: speech
+      ko: 그 경고 신호 때문에 지금 바로 의사에게 알릴게요
+      note: 보고
 
 - theme: er-sepsis
   title: 감염 의심+활력 이상
@@ -107446,31 +107542,103 @@
       chunks: ["Fever with", "a fast heart rate", "and breathing", "needs a closer look", "."]
       words: [w-fever, w-fast, w-heart, w-rate, w-breathe, w-look]
       goal: 1
+      tag: "열+빠른 맥"
+      icon: "monitor"
+      why: "with로 열·빠른 심박·빠른 호흡을 한 묶음으로 말하고, closer look으로 다음 단계가 필요하다는 신호를 줘요. 열 하나일 때보다 여러 징후가 함께일 때 패혈증 가능성을 더 따져요."
+      decoy: "a slow heart rate"
+      distractorsKo: ["가슴 사진을 찍을 거예요", "지금은 금식하셔야 해요"]
+      blank:
+        answer: "Fever"
+        options:
+          - {en: "Headache"}
+          - {en: "Fever"}
+          - {en: "Cough"}
+          - {en: "Bruising"}
     - en: "We'll check your blood and look for the source of infection."
       ko: "혈액을 확인하고 감염원을 찾아볼게요."
       chunks: ["We'll check", "your blood", "and look for", "the source of infection", "."]
       words: [w-check, w-blood, w-look, w-source, w-infection]
       goal: 2
+      tag: "원인 찾기"
+      icon: "magnify"
+      why: "We'll로 검사를 계획으로 알리고, blood와 source를 한 문장에 묶어 피 검사와 원인 찾기가 한 흐름임을 보여 줘요. 패혈증 치료는 감염 부위를 찾아 잡는 것이 핵심이에요."
+      decoy: "your urine"
+      distractorsKo: ["어디가 가장 아픈지 짚어 보세요", "열은 한 시간 뒤에 다시 잴게요"]
+      blank:
+        answer: "source"
+        options:
+          - {en: "history"}
+          - {en: "number"}
+          - {en: "source"}
+          - {en: "spread"}
     - en: "Where do you feel most unwell — your chest, belly, or elsewhere?"
       ko: "가슴, 배, 아니면 다른 곳 중 어디가 가장 안 좋으세요?"
       chunks: ["Where do you feel", "most unwell", "— your chest,", "belly,", "or elsewhere", "?"]
       words: [w-feel, w-chest, w-belly]
       goal: 1
+      tag: "불편 부위"
+      icon: "faceWorried"
+      why: "most unwell은 아프다는 한 가지 증상 대신 전반적으로 안 좋은 곳을 묻는 말이라, 증상을 정리하지 못한 환자도 답하기 쉬워요. 가슴·배·elsewhere로 폐·복부·그 밖의 감염 부위를 짚어요."
+      decoy: "since morning"
+      distractorsKo: ["열이 난 지 얼마나 됐나요?", "어젯밤에 약을 드셨나요?"]
+      blank:
+        answer: "belly"
+        options:
+          - {en: "back"}
+          - {en: "throat"}
+          - {en: "head"}
+          - {en: "belly"}
     - en: "Your temperature is up and your heart is racing a bit."
       ko: "체온이 올랐고 심장도 조금 빠르게 뛰고 있어요."
       chunks: ["Your temperature", "is up", "and your heart", "is racing a bit", "."]
       words: [w-temperature, w-heart, w-race]
       goal: 1
+      tag: "수치 설명"
+      icon: "chartup"
+      why: "up과 racing으로 수치가 평소보다 오르고 빠르다는 것을 그림처럼 말하고, a bit으로 무겁지 않게 해요. 체온과 심박이 함께 오르는 것은 감염에 대한 몸의 흔한 반응이에요."
+      decoy: "all day"
+      distractorsKo: ["혈압은 아직 괜찮은 편이에요", "배가 아프면 말씀해 주세요"]
+      blank:
+        answer: "racing"
+        options:
+          - {en: "racing"}
+          - {en: "resting"}
+          - {en: "slowing"}
+          - {en: "healing"}
     - en: "We're drawing blood to find out what's causing this."
       ko: "이 원인을 찾기 위해 혈액을 채취하고 있어요."
       chunks: ["We're drawing", "blood", "to find out", "what's causing this", "."]
       words: [w-draw, w-blood, w-find, w-cause]
       goal: 2
+      tag: "채혈 이유"
+      icon: "lab"
+      why: "to find out으로 채혈의 목적을 문장 안에 넣어 주사 바늘이 왜 필요한지 바로 알려 줘요. 이유를 들은 환자는 검사에 협조하기 쉬워요."
+      decoy: "in the room"
+      distractorsKo: ["팔이 따끔할 수 있어요", "결과는 곧 알려 드릴게요"]
+      blank:
+        answer: "drawing"
+        options:
+          - {en: "moving"}
+          - {en: "drawing"}
+          - {en: "giving"}
+          - {en: "saving"}
     - en: "Tell me if the pain gets worse in your chest or belly."
       ko: "가슴이나 배 통증이 심해지면 말씀해 주세요."
       chunks: ["Tell me", "if the pain", "gets worse", "in your chest or belly", "."]
       words: [w-tell, w-pain, w-chest, w-belly]
       goal: 1
+      tag: "악화 보고"
+      icon: "bell"
+      why: "Tell me if…는 명령이 아니라 변화를 알려 달라는 부탁이라 환자가 보고하는 역할을 맡아요. 통증이 달라지면 처치 계획이 바뀔 수 있어서 바로 알려 달라고 해요."
+      decoy: "if you want"
+      distractorsKo: ["지금 통증이 몇 점인가요?", "통증이 시작된 때를 말해 주세요"]
+      blank:
+        answer: "worse"
+        options:
+          - {en: "smaller"}
+          - {en: "lighter"}
+          - {en: "worse"}
+          - {en: "better"}
   nuance:
   - kind: pair
     words:
@@ -107498,7 +107666,7 @@
     scenes:
     - who: 차트 기록
       icon: board
-      en: T 38.9, HR 118, RR 26.
+      en: Febrile 38.9, tachycardic at 118, tachypneic at 26.
       ok: true
     - who: 의사에게 보고
       icon: speech
@@ -107510,6 +107678,30 @@
       ok: false
       fix: You have a fever, your heart is beating fast, and you're breathing fast.
     why: febrile·tachycardic·tachypneic은 의료진끼리 쓰는 임상어예요. 환자에게는 fever, heart beating fast, breathing fast처럼 쉬운 말로 풀어요.
+    word: tachycardic
+    ko: 빈맥인
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 감염 의심 설명 4문장 순서
+    why: 열과 빠른 맥을 알리며 더 보겠다고 하고, 'that'이 그것을 가리키며 원인을 묻고, 'Thanks'가 그 대답을 받아 채혈을 알리고, 'too'가 간호사의 처치에 더해 환자가 도울 일을 말해요. 'that'·'Thanks'·'too'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: You have a fever and a fast heart rate, so I want to look closer.
+      icon: monitor
+      ko: 열이 있고 심박수가 빨라서 더 자세히 보려고 해요
+      note: 설명
+    - en: To find out why, where do you feel the worst — chest, belly, or elsewhere?
+      icon: magnify
+      ko: 이유를 찾으려는데 가슴, 배, 다른 곳 중 어디가 가장 안 좋으세요?
+      note: 문진
+    - en: Thanks. A blood test will tell us more, so we'll draw some now.
+      icon: lab
+      ko: 고마워요. 혈액 검사로 더 알 수 있어서 지금 채혈할게요
+      note: 채혈
+    - en: You can help too — tell me right away if the pain gets worse.
+      icon: bell
+      ko: 도와주실 수도 있어요 — 통증이 심해지면 바로 말씀해 주세요
+      note: 협조
 
 - theme: er-sepsis
   title: 배양 채취 설명
@@ -107534,31 +107726,103 @@
       chunks: ["We draw", "blood cultures", "before antibiotics", "to find", "the exact bug", "."]
       words: [w-draw, w-blood, w-culture, w-antibiotic, w-find, w-exact, w-bug]
       goal: 1
+      tag: "배양 목적"
+      icon: "lab"
+      why: "before antibiotics를 앞쪽에 두어 순서(배양이 먼저)를 강조하고, to find…로 목적을 붙였어요. 항생제를 먼저 쓰면 배양에서 균이 안 자랄 수 있어서 가능한 한 항생제 전에 채취해요."
+      decoy: "in the room"
+      distractorsKo: ["소변도 따로 받을 거예요", "팔이 따끔할 수 있어요"]
+      blank:
+        answer: "exact"
+        options:
+          - {en: "only"}
+          - {en: "first"}
+          - {en: "exact"}
+          - {en: "same"}
     - en: "That helps us pick the best medicine for your infection."
       ko: "그래야 감염에 가장 잘 맞는 약을 고를 수 있어요."
       chunks: ["That helps us", "pick the best", "medicine", "for your infection", "."]
       words: [w-help, w-pick, w-medicine, w-infection]
       goal: 2
+      tag: "검사 효과"
+      icon: "pill"
+      why: "That이 앞 문장의 배양을 가리켜 '그래서 필요하다'로 이어 줘요. 어떤 균인지, 어느 항생제가 듣는지 알면 약을 더 정확히 고를 수 있어요."
+      decoy: "for the pain"
+      distractorsKo: ["결과는 보통 며칠 걸려요", "팔을 가만히 두세요"]
+      blank:
+        answer: "best"
+        options:
+          - {en: "cheapest"}
+          - {en: "newest"}
+          - {en: "only"}
+          - {en: "best"}
     - en: "It only delays the antibiotic by a few minutes."
       ko: "항생제 투여를 단 몇 분만 늦출 뿐이에요."
       chunks: ["It only delays", "the antibiotic", "by a few", "minutes", "."]
       words: [w-delay, w-antibiotic, w-few]
       goal: 1
+      tag: "지연 안심"
+      icon: "bell"
+      why: "only로 늦어지는 폭이 작다는 것을 먼저 말하고 by a few minutes로 크기를 줘서, 왜 바로 안 주느냐는 불안을 덜어요. 패혈증 항생제는 가능한 한 빨리 시작해야 해서 채취는 그 흐름 안에서 짧게 해요."
+      decoy: "for the lab"
+      distractorsKo: ["팔을 곧게 펴 주세요", "혈액 채취는 곧 끝나요"]
+      blank:
+        answer: "antibiotic"
+        options:
+          - {en: "antibiotic"}
+          - {en: "scan"}
+          - {en: "meal"}
+          - {en: "visit"}
     - en: "We take the cultures first, then start the antibiotic right after."
       ko: "먼저 배양을 채취하고 바로 이어서 항생제를 시작해요."
       chunks: ["We take", "the cultures first,", "then start", "the antibiotic right after", "."]
       words: [w-take, w-culture, w-start, w-antibiotic]
       goal: 1
+      tag: "순서 안내"
+      icon: "calendar"
+      why: "first와 then으로 두 단계를 차례로 말하고 right after로 항생제가 곧 이어진다는 점을 분명히 해요. 배양이 먼저인 이유는 항생제가 들어가면 균이 덜 자랄 수 있어서예요."
+      decoy: "in the lab"
+      distractorsKo: ["지금 알레르기 약부터 확인할게요", "결과는 내일 알려 드릴게요"]
+      blank:
+        answer: "take"
+        options:
+          - {en: "count"}
+          - {en: "take"}
+          - {en: "wash"}
+          - {en: "sign"}
     - en: "The blood culture shows exactly which germ is causing this."
       ko: "혈액배양은 정확히 어떤 균이 원인인지 보여줘요."
       chunks: ["The blood culture", "shows exactly", "which germ", "is causing this", "."]
       words: [w-blood, w-culture, w-exact, w-germ, w-cause]
       goal: 2
+      tag: "결과 의미"
+      icon: "lab"
+      why: "exactly which로 막연한 감염이 아니라 정확한 균을 알려 준다는 점을 강조해요. 혈액배양에서 자란 균과 그 균에 듣는 항생제를 알면 치료를 맞춰 조정해요."
+      decoy: "last week"
+      distractorsKo: ["결과 나오기 전에 치료는 시작할 거예요", "혈액 검체는 검사실로 보내요"]
+      blank:
+        answer: "germ"
+        options:
+          - {en: "allergy"}
+          - {en: "injury"}
+          - {en: "germ"}
+          - {en: "drug"}
     - en: "Once we know the exact bug, we can choose the right antibiotic."
       ko: "정확한 균을 알면 맞는 항생제를 고를 수 있어요."
       chunks: ["Once we know", "the exact bug,", "we can choose", "the right antibiotic", "."]
       words: [w-exact, w-bug, w-choose, w-antibiotic]
       goal: 2
+      tag: "항생제 선택"
+      icon: "pill"
+      why: "Once로 균을 알게 되는 때를 조건 삼아 선택이 따라온다는 인과를 보여 줘요. 처음에는 넓게 듣는 항생제로 시작하고, 균이 확인되면 맞는 약으로 좁혀 가요."
+      decoy: "by hand"
+      distractorsKo: ["배양 결과는 의사가 설명해 줄 거예요", "항생제 알레르기가 있으면 말씀해 주세요"]
+      blank:
+        answer: "Once"
+        options:
+          - {en: "Although"}
+          - {en: "Unless"}
+          - {en: "Until"}
+          - {en: "Once"}
   nuance:
   - kind: slider
     words:
@@ -107595,6 +107859,29 @@
       pathogen: 정확한 의학 용어지만 환자에게는 어렵고 딱딱하다.
       organism: 검사실·차트의 말. 환자에게는 낯설게 들린다.
     why: 같은 균이라도 환자에게는 bug처럼 쉬운 말로, 검사 결과를 논할 때는 organism·pathogen으로 말해요.
+    ko: 정확한 균을 찾으려고 항생제 전에 혈액배양을 채취해요
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 배양 채취 설명 4문장 순서
+    why: 채혈을 알리고, 'which germ'이 그 배양이 보여 줄 것을 말하고, 'that answer'가 그 답을 가리켜 지연이 짧다고 안심시키고, 'Beyond that short delay'가 그 지연을 받아 얻는 이점을 말해요. 'that answer'·'that short delay'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: I need to draw some blood for cultures before your antibiotic.
+      icon: lab
+      ko: 항생제 전에 배양용 혈액을 채취해야 해요
+      note: 채혈
+    - en: The cultures will show exactly which germ is causing your infection.
+      icon: magnify
+      ko: 배양으로 어떤 균이 감염을 일으키는지 정확히 알 수 있어요
+      note: 목적
+    - en: Getting that answer only delays the antibiotic by a few minutes.
+      icon: bell
+      ko: 그 답을 얻느라 항생제가 몇 분 늦어질 뿐이에요
+      note: 안심
+    - en: Beyond that short delay, knowing the germ lets us choose the best medicine for you.
+      icon: pill
+      ko: 그 짧은 지연 말고도 균을 알면 가장 맞는 약을 고를 수 있어요
+      note: 이점
 
 - theme: er-sepsis
   title: 정맥로·수액 시작 설명
@@ -107619,31 +107906,103 @@
       chunks: ["These fluids", "help support", "your blood pressure", "and blood flow", "."]
       words: [w-fluid, w-help, w-support, w-blood, w-pressure, w-flow]
       goal: 1
+      tag: "수액 목적"
+      icon: "monitor"
+      why: "help support는 수액이 치료의 전부가 아니라 돕는 역할이라고 겸손하게 말해요. 패혈증에서는 혈관이 늘어지고 새서 혈압이 떨어지는데, 수액이 혈액량을 채워 혈압과 혈류를 받쳐요."
+      decoy: "for pain"
+      distractorsKo: ["이 약은 열을 내려 줘요", "팔을 움직이지 마세요"]
+      blank:
+        answer: "pressure"
+        options:
+          - {en: "type"}
+          - {en: "test"}
+          - {en: "count"}
+          - {en: "pressure"}
     - en: "The cold feeling in your arm is normal and will pass."
       ko: "팔에 느껴지는 차가운 느낌은 정상이고 곧 지나갈 거예요."
       chunks: ["The cold feeling", "in your arm", "is normal", "and will pass", "."]
       words: [w-cold, w-feel, w-arm, w-normal, w-pass]
       goal: 2
+      tag: "불편 안심"
+      icon: "faceWorried"
+      why: "normal과 will pass 두 말로 지금 느낌이 위험하지 않고 곧 지난다고 짧게 안심시켜요. 수액이 체온보다 차서 팔에 찬 느낌이 날 수 있어요. 다만 따갑거나 부으면 새는 신호일 수 있어서 따로 알려 달라고 해요."
+      decoy: "at night"
+      distractorsKo: ["팔에 힘을 빼고 계세요", "수액 속도는 의사가 정했어요"]
+      blank:
+        answer: "pass"
+        options:
+          - {en: "pass"}
+          - {en: "last"}
+          - {en: "stay"}
+          - {en: "return"}
     - en: "We're giving them quickly because your body needs the support."
       ko: "몸이 지지가 필요해서 수액을 빠르게 주고 있어요."
       chunks: ["We're giving", "them quickly", "because your body", "needs the support", "."]
       words: [w-give, w-quick, w-need, w-support]
       goal: 1
+      tag: "속도 이유"
+      icon: "bell"
+      why: "because로 빨리 주는 이유를 바로 붙여 환자가 왜 서두르는지 알게 해요. 패혈증에서 저관류가 있으면 초기 몇 시간 안에 충분한 양을 빨리 주는 것이 권고돼요."
+      decoy: "by hand"
+      distractorsKo: ["수액 주머니를 새로 바꿀게요", "팔에 찬 느낌이 있을 수 있어요"]
+      blank:
+        answer: "because"
+        options:
+          - {en: "until"}
+          - {en: "because"}
+          - {en: "although"}
+          - {en: "unless"}
     - en: "This IV line lets us give fluids straight into your blood."
       ko: "이 정맥로로 수액을 혈액에 바로 줄 수 있어요."
       chunks: ["This IV line", "lets us", "give fluids", "straight into your blood", "."]
       words: [w-line, w-give, w-fluid, w-blood]
       goal: 1
+      tag: "정맥로 설명"
+      icon: "pill"
+      why: "lets us…는 장치가 무엇을 가능하게 하는지로 설명하는 말이라 낯선 도구의 부담이 줄어요. straight into your blood로 수액과 약이 정맥으로 바로 들어가 빠르게 작용한다는 점을 짚어요."
+      decoy: "into the bag"
+      distractorsKo: ["알레르기 밴드를 채울게요", "소변 줄은 나중에 설명할게요"]
+      blank:
+        answer: "straight"
+        options:
+          - {en: "slowly"}
+          - {en: "partly"}
+          - {en: "straight"}
+          - {en: "gently"}
     - en: "Tell me right away if you feel short of breath."
       ko: "숨이 차면 바로 말씀해 주세요."
       chunks: ["Tell me", "right away", "if you feel", "short of breath", "."]
       words: [w-tell, w-feel, w-short]
       goal: 2
+      tag: "호흡곤란 보고"
+      icon: "siren"
+      why: "right away로 기다리지 말고 곧바로 말해 달라고 분명히 해요. 수액을 빨리 많이 주면 폐에 물이 찰 수 있어서, 숨이 차다는 말은 수액 속도를 다시 따지게 하는 중요한 신호예요."
+      decoy: "a little thirsty"
+      distractorsKo: ["팔이 붓거나 따가우면 알려 주세요", "어지러우면 일어나지 마세요"]
+      blank:
+        answer: "short"
+        options:
+          - {en: "full"}
+          - {en: "free"}
+          - {en: "empty"}
+          - {en: "short"}
     - en: "You're safe here, and we'll watch you closely."
       ko: "여기서는 안전하고, 저희가 계속 지켜볼게요."
       chunks: ["You're safe", "here,", "and we'll watch you", "closely", "."]
       words: [w-watch, w-close]
       goal: 2
+      tag: "안심 전달"
+      icon: "shield"
+      why: "You're safe here로 먼저 안전을 말하고, we'll watch you closely로 곁에서 지켜본다는 행동을 약속해요. 말뿐인 안심이 아니라 계속 살핀다는 사실을 덧붙여 신뢰를 줘요."
+      decoy: "by yourself"
+      distractorsKo: ["곧 의사가 설명해 줄 거예요", "가족에게 연락해 둘게요"]
+      blank:
+        answer: "safe"
+        options:
+          - {en: "safe"}
+          - {en: "alone"}
+          - {en: "stuck"}
+          - {en: "done"}
   nuance:
   - kind: slider
     words:
@@ -107681,6 +108040,29 @@
       it's just routine: 빠르게 주는 진짜 이유를 감춘다. 나중에 사실을 알면 신뢰를 잃는다.
       you're in septic shock: 확정되지 않은 무거운 진단명을 불쑥 꺼내 불안만 키운다.
     why: 수액을 빨리 주는 이유는 숨기지도 부풀리지도 않고, 몸이 지금 도움이 필요하다고 말해요.
+    ko: 몸이 도움이 필요해서 수액을 빠르게 드리고 있어요
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 수액 시작 설명 4문장 순서
+    why: 정맥로로 수액을 준다고 알리고, 'These fluids'가 그 수액을 가리켜 목적과 속도를 말하고, 'As they run'이 수액을 가리켜 찬 느낌을 안심시키고, 'Other than that'이 그 느낌을 가리켜 따로 알려야 할 증상을 말해요. 'These fluids'·'they'·'that'이 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: I'm putting an IV line in your arm so we can give you fluids.
+      icon: pill
+      ko: 수액을 드리려고 팔에 정맥로를 넣을게요
+      note: 정맥로
+    - en: These fluids support your blood pressure, which is why we're giving them quickly.
+      icon: monitor
+      ko: 이 수액은 혈압을 받쳐 줘서 빠르게 드리는 거예요
+      note: 이유
+    - en: As they run, your arm may feel cold — that's normal and will pass.
+      icon: faceWorried
+      ko: 들어가는 동안 팔이 차게 느껴질 수 있는데 정상이고 곧 지나가요
+      note: 안심
+    - en: Other than that, tell me right away if you feel short of breath.
+      icon: bell
+      ko: 그것 말고 숨이 차면 바로 말씀해 주세요
+      note: 보고
 
 - theme: er-sepsis
   title: 소변량 모니터링 설명
@@ -107705,31 +108087,103 @@
       chunks: ["Your urine output", "tells us", "how well", "your organs are getting blood", "."]
       words: [w-urine, w-output, w-tell, w-organ, w-get, w-blood]
       goal: 1
+      tag: "소변량 의미"
+      icon: "lab"
+      why: "tells us로 수치가 알려 주는 내용을 말해 지켜보는 이유를 환자 눈높이로 풀어요. 장기에 혈액이 충분히 가야 신장이 소변을 만들어서, 소변량이 장기로 가는 혈류의 지표가 돼요."
+      decoy: "your lungs are getting air"
+      distractorsKo: ["소변 색이 진해지면 알려 주세요", "수분은 정맥으로 드리고 있어요"]
+      blank:
+        answer: "output"
+        options:
+          - {en: "output"}
+          - {en: "culture"}
+          - {en: "sample"}
+          - {en: "smell"}
     - en: "Measuring it helps us know if the fluids are working."
       ko: "소변량을 재면 수액이 효과가 있는지 알 수 있어요."
       chunks: ["Measuring it", "helps us know", "if the fluids", "are working", "."]
       words: [w-measure, w-help, w-fluid, w-work]
       goal: 2
+      tag: "측정 이유"
+      icon: "monitor"
+      why: "helps us know로 측정이 우리를 돕는 도구라는 틀을 만들어 번거로운 측정에도 협조하게 해요. 수액 뒤 소변량이 늘면 장기로 가는 혈류가 나아지고 있다는 뜻이에요."
+      decoy: "at night"
+      distractorsKo: ["소변 색도 같이 볼게요", "주머니는 침대 아래에 걸어 둘게요"]
+      blank:
+        answer: "working"
+        options:
+          - {en: "cold"}
+          - {en: "working"}
+          - {en: "leaking"}
+          - {en: "empty"}
     - en: "It's an important sign we watch closely in cases like yours."
       ko: "이런 경우 저희가 계속 지켜보는 중요한 징후예요."
       chunks: ["It's an important", "sign", "we watch closely", "in cases like yours", "."]
       words: [w-important, w-sign, w-watch, w-close]
       goal: 1
+      tag: "중요성 설명"
+      icon: "bell"
+      why: "important와 closely가 함께 환자에게 이 수치가 가볍지 않다고 알려 줘요. in cases like yours는 환자 개인의 문제가 아니라 같은 상태에서 흔한 확인이라 불안을 덜어요."
+      decoy: "for you only"
+      distractorsKo: ["소변을 보고 싶으면 호출 버튼을 눌러 주세요", "의사에게 수치를 알려 둘게요"]
+      blank:
+        answer: "important"
+        options:
+          - {en: "optional"}
+          - {en: "unimportant"}
+          - {en: "important"}
+          - {en: "unusual"}
     - en: "This catheter lets us measure exactly how much urine you make."
       ko: "이 카테터로 소변량을 정확히 측정할 수 있어요."
       chunks: ["This catheter", "lets us measure", "exactly how much urine", "you make", "."]
       words: [w-catheter, w-measure, w-exact, w-urine, w-make]
       goal: 1
+      tag: "카테터 설명"
+      icon: "gear"
+      why: "This catheter가 주어라 도구가 일을 대신한다는 구조여서, 환자가 불편한 줄을 이유와 함께 받아들이게 해요. 방광에 넣는 도뇨관은 시간당 소변량을 정확히 재는 데 써요."
+      decoy: "by hand"
+      distractorsKo: ["줄이 당기면 바로 말씀해 주세요", "소변 검사는 따로 보낼게요"]
+      blank:
+        answer: "catheter"
+        options:
+          - {en: "bandage"}
+          - {en: "mask"}
+          - {en: "tablet"}
+          - {en: "catheter"}
     - en: "We check the amount every hour to watch your kidneys."
       ko: "신장 상태를 보려고 매시간 양을 확인해요."
       chunks: ["We check", "the amount", "every hour", "to watch your kidneys", "."]
       words: [w-check, w-amount, w-watch, w-kidney]
       goal: 2
+      tag: "매시간 확인"
+      icon: "calendar"
+      why: "every hour로 확인 간격을 정확히 말해 간호사가 자주 오는 이유를 알게 해요. 패혈증에서는 시간당 소변량이 신장으로 가는 혈류를 일찍 보여 줘서 자주 확인해요."
+      decoy: "by the window"
+      distractorsKo: ["소변 주머니는 제가 비울게요", "양이 적으면 의사에게 알릴게요"]
+      blank:
+        answer: "kidneys"
+        options:
+          - {en: "kidneys"}
+          - {en: "lungs"}
+          - {en: "heart"}
+          - {en: "liver"}
     - en: "A good urine output is a sign the fluids are helping your body."
       ko: "소변량이 좋으면 수액이 몸에 도움이 되고 있다는 신호예요."
       chunks: ["A good urine output", "is a sign", "the fluids are helping", "your body", "."]
       words: [w-urine, w-output, w-sign, w-fluid, w-help]
       goal: 2
+      tag: "호전 신호"
+      icon: "check"
+      why: "a sign으로 소변량이 좋아지는 것을 호전의 증거로 이어 환자에게 기대를 줘요. 다만 수치 하나만 보지 않고 혈압·젖산과 함께 판단해요."
+      decoy: "the fluids are finished"
+      distractorsKo: ["수액은 계속 들어갈 거예요", "소변 색도 계속 볼게요"]
+      blank:
+        answer: "good"
+        options:
+          - {en: "weak"}
+          - {en: "good"}
+          - {en: "bad"}
+          - {en: "tiny"}
   nuance:
   - kind: pair
     words:
@@ -107756,7 +108210,7 @@
     scenes:
     - who: 차트 기록
       icon: board
-      en: UOP 20 mL/hr x 2 hrs, below 0.5 mL/kg/hr goal.
+      en: Urine output 20 mL/hr x 2 hrs, below 0.5 mL/kg/hr goal.
       ok: true
     - who: 의사에게 보고
       icon: speech
@@ -107764,10 +108218,34 @@
       ok: true
     - who: 환자에게
       icon: me
-      en: Your UOP is below 0.5 mL/kg/hr.
+      en: Your urine output is below 0.5 mL/kg/hr.
       ok: false
       fix: You're making less urine than we'd like, so we're watching your kidneys closely.
-    why: UOP·mL/kg/hr는 차트와 의료진끼리의 말이에요(흔한 목표는 시간당 체중 1 kg마다 0.5 mL 이상). 환자에게는 '소변이 바라는 만큼 나오지 않는다'고 풀어요.
+    why: mL/kg/hr 같은 수치는 차트와 의료진끼리의 말이에요(흔한 목표는 시간당 체중 1 kg마다 0.5 mL 이상). 환자에게는 '소변이 바라는 만큼 나오지 않는다'고 풀어요.
+    word: urine output
+    ko: 소변량
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 소변량 모니터링 4문장 순서
+    why: 측정하겠다고 하고, 'that'이 그 측정을 가리키며 카테터와 간격을 말하고, 'That hourly number'가 그 간격을 가리켜 의미를 말하고, 'those organs'가 그 의미 속 장기를 가리켜 호전 기준을 말해요. 'that'·'That hourly number'·'those organs'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: I'd like to measure exactly how much urine you make.
+      icon: lab
+      ko: 소변이 얼마나 나오는지 정확히 재고 싶어요
+      note: 측정
+    - en: A small catheter will do that for us, and we'll check the amount every hour.
+      icon: gear
+      ko: 작은 카테터가 그걸 해 주고 매시간 양을 확인할 거예요
+      note: 방법
+    - en: That hourly number tells us how well your organs are getting blood.
+      icon: monitor
+      ko: 그 시간당 수치로 장기에 혈액이 얼마나 가는지 알 수 있어요
+      note: 의미
+    - en: A good number means those organs are doing well and the treatment is helping.
+      icon: check
+      ko: 수치가 좋으면 그 장기들이 잘 버티고 치료가 도움이 되고 있다는 뜻이에요
+      note: 호전
 
 - theme: er-sepsis
   title: 패혈증 1시간 번들
@@ -107792,31 +108270,103 @@
       chunks: ["We're moving fast", "— cultures,", "antibiotics,", "fluids,", "and a lactate test", "."]
       words: [w-move, w-fast, w-culture, w-antibiotic, w-fluid, w-lactate, w-test]
       goal: 1
+      tag: "번들 안내"
+      icon: "siren"
+      why: "대시 뒤에 네 가지를 나열해 환자가 한 번에 전체 그림을 보게 해요. 패혈증 번들은 젖산 측정, 혈액배양, 항생제, 수액이 핵심이에요. 수액 뒤에도 혈압이 낮으면 승압제까지가 1시간 번들이에요."
+      decoy: "in the hall"
+      distractorsKo: ["가족에게 연락해 드릴까요?", "팔을 가만히 두세요"]
+      blank:
+        answer: "lactate"
+        options:
+          - {en: "stool"}
+          - {en: "lactate"}
+          - {en: "urine"}
+          - {en: "pregnancy"}
     - en: "This lactate level tells us how stressed your body is."
       ko: "이 젖산 수치가 몸이 얼마나 스트레스를 받았는지 알려줘요."
       chunks: ["This lactate level", "tells us", "how stressed", "your body is", "."]
       words: [w-lactate, w-level, w-tell, w-stress]
       goal: 2
+      tag: "젖산 설명"
+      icon: "lab"
+      why: "level이 수치임을 알리고 tells us로 그 수치가 알려 주는 것(몸이 받는 스트레스)을 환자 말로 풀어요. 젖산은 조직에 산소가 모자랄 때 올라가는 대표 지표예요."
+      decoy: "this morning"
+      distractorsKo: ["혈액은 한 번에 채취했어요", "수치가 나오면 알려 드릴게요"]
+      blank:
+        answer: "lactate"
+        options:
+          - {en: "sodium"}
+          - {en: "potassium"}
+          - {en: "lactate"}
+          - {en: "calcium"}
     - en: "We're giving fluids now to support your blood pressure."
       ko: "혈압을 지지하려고 지금 수액을 주고 있어요."
       chunks: ["We're giving", "fluids now", "to support", "your blood pressure", "."]
       words: [w-give, w-fluid, w-support, w-blood, w-pressure]
       goal: 1
+      tag: "수액 시작"
+      icon: "monitor"
+      why: "now로 지금 시작한다는 점을 분명히 하고 to support로 목적을 붙여요. 패혈증으로 혈압이 낮을 때는 진단 직후 수액을 빠르게 시작하는 것이 번들의 일부예요."
+      decoy: "to check"
+      distractorsKo: ["혈압도 계속 확인할게요", "팔이 따끔할 수 있어요"]
+      blank:
+        answer: "support"
+        options:
+          - {en: "check"}
+          - {en: "measure"}
+          - {en: "record"}
+          - {en: "support"}
     - en: "We have one hour to get all four of these done."
       ko: "이 네 가지를 한 시간 안에 다 끝내야 해요."
       chunks: ["We have one hour", "to get", "all four of these", "done", "."]
       words: [w-get, w-done]
       goal: 1
+      tag: "시간 안내"
+      icon: "calendar"
+      why: "one hour로 제한 시간을 숫자로 말해 왜 서두르는지 설명해요. 패혈증 번들은 패혈증을 알아본 시점부터 한 시간 안에 시작하는 것을 목표로 해요."
+      decoy: "all the paperwork"
+      distractorsKo: ["이 중 한 가지는 이미 끝났어요", "가족분도 곧 오실 거예요"]
+      blank:
+        answer: "four"
+        options:
+          - {en: "four"}
+          - {en: "six"}
+          - {en: "three"}
+          - {en: "five"}
     - en: "Each step moves you closer to being stable."
       ko: "한 단계씩 안정된 상태에 가까워지는 거예요."
       chunks: ["Each step", "moves you", "closer", "to being stable", "."]
       words: [w-step, w-move, w-stable]
       goal: 2
+      tag: "경과 안내"
+      icon: "chartup"
+      why: "Each step으로 큰 일이 작은 단계들로 나뉜다고 말해 압도감을 줄여요. moves you closer는 지금 몸이 어느 방향으로 가는지 보여 줘서 기다림에 의미를 줘요."
+      decoy: "by tonight"
+      distractorsKo: ["단계마다 결과를 알려 드릴게요", "가족분께도 상황을 전할게요"]
+      blank:
+        answer: "stable"
+        options:
+          - {en: "cured"}
+          - {en: "stable"}
+          - {en: "discharged"}
+          - {en: "awake"}
     - en: "I'll explain each part as we go."
       ko: "진행하면서 각 부분을 설명해 드릴게요."
       chunks: ["I'll explain", "each part", "as we go", "."]
       words: [w-explain, w-part]
       goal: 2
+      tag: "설명 약속"
+      icon: "speech"
+      why: "as we go로 한 번에 몰아서가 아니라 진행하는 동안 그때그때 설명하겠다고 해요. 처치가 빠르게 이어질 때 환자는 영문을 모르는 불안이 커서, 짧게라도 이유를 말해 주면 신뢰가 지켜져요."
+      decoy: "on the phone"
+      distractorsKo: ["서명은 나중에 받을게요", "지금 질문 있으세요?"]
+      blank:
+        answer: "I'll"
+        options:
+          - {en: "It'll"}
+          - {en: "That'll"}
+          - {en: "I'll"}
+          - {en: "You'll"}
   nuance:
   - kind: slider
     words:
@@ -107847,8 +108397,32 @@
       icon: me
       en: We're starting your hour-1 bundle.
       ok: false
-      fix: We have one hour to get four important things done, and I'll explain each step.
-    why: hour-1 bundle은 의료진끼리 쓰는 말이에요. 환자에게는 '한 시간 안에 중요한 것 네 가지를 한다, 하나씩 설명하겠다'고 풀어야 빨라진 처치에 덜 놀라요.
+      fix: We'll start four important things within the hour, and I'll explain each step.
+    why: hour-1 bundle은 의료진끼리 쓰는 말이에요. 환자에게는 '한 시간 안에 중요한 것 네 가지를 시작한다, 하나씩 설명하겠다'고 풀어야 빨라진 처치에 덜 놀라요.
+    word: bundle
+    ko: 처치 묶음
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 1시간 번들 설명 4문장 순서
+    why: 심각하다는 것을 알리고, 'four things'로 한 시간 안에 시작할 일을 말하고, 'Each one'이 그 네 가지를 가리켜 의미를 말하고, 'When it does'가 그 '많게 느껴짐'을 받아 설명을 약속해요. 'Each one'·'When it does'가 앞 줄을 가리켜 순서가 하나예요. 혈압이 계속 낮으면 승압제가 더해져요.
+    lines:
+    - en: Your infection is serious, so we need to move fast.
+      icon: siren
+      ko: 감염이 심각해서 빠르게 움직여야 해요
+      note: 상황
+    - en: 'Within the hour, we''ll start four things: cultures, antibiotics, fluids, and a lactate test.'
+      icon: calendar
+      ko: 한 시간 안에 배양, 항생제, 수액, 젖산 검사 네 가지를 시작할 거예요
+      note: 계획
+    - en: Each one moves you closer to being stable, even if it feels like a lot.
+      icon: chartup
+      ko: 하나하나가 안정에 가까워지게 해요, 많게 느껴지더라도요
+      note: 의미
+    - en: When it does, tell me, and I'll explain each part as we go.
+      icon: speech
+      ko: 그럴 때는 말씀해 주세요, 진행하면서 각 부분을 설명해 드릴게요
+      note: 약속
 
 - theme: er-sepsis
   title: 젖산 상승 해석
@@ -107873,31 +108447,103 @@
       chunks: ["A high lactate", "means your tissues", "aren't getting enough", "oxygen", "."]
       words: [w-high, w-lactate, w-mean, w-tissue, w-get, w-enough, w-oxygen]
       goal: 1
+      tag: "젖산 의미"
+      icon: "lab"
+      why: "means로 수치를 곧바로 뜻으로 풀고 tissues·oxygen으로 환자가 그릴 수 있는 말을 써요. 조직에 산소가 모자라면 산소 없이 에너지를 만들면서 젖산이 쌓여요."
+      decoy: "means your skin"
+      distractorsKo: ["숨을 천천히 쉬어 보세요", "수액을 맞은 뒤에 다시 잴 거예요"]
+      blank:
+        answer: "oxygen"
+        options:
+          - {en: "protein"}
+          - {en: "salt"}
+          - {en: "oxygen"}
+          - {en: "sugar"}
     - en: "After fluids, we'll recheck it to see if it's improving."
       ko: "수액을 준 뒤 좋아지고 있는지 다시 확인할게요."
       chunks: ["After fluids,", "we'll recheck it", "to see", "if it's improving", "."]
       words: [w-fluid, w-recheck, w-improve]
       goal: 2
+      tag: "재측정 예고"
+      icon: "calendar"
+      why: "After fluids로 기준 시점을 먼저 말하고 we'll recheck로 앞으로 일어날 일을 약속해요. 처음 젖산이 높았으면(2 mmol/L 넘게) 소생 처치 뒤 다시 재서 내려가는지 확인해요."
+      decoy: "next door"
+      distractorsKo: ["두 번째 채혈은 아프지 않게 할게요", "결과는 의사가 먼저 보고 알려 줄 거예요"]
+      blank:
+        answer: "After"
+        options:
+          - {en: "Before"}
+          - {en: "During"}
+          - {en: "Besides"}
+          - {en: "After"}
     - en: "It's one of the main things we track to guide your treatment."
       ko: "치료 방향을 잡기 위해 계속 추적하는 중요한 것 중 하나예요."
       chunks: ["It's one of the main things", "we track", "to guide", "your treatment", "."]
       words: [w-track, w-guide, w-treatment]
       goal: 2
+      tag: "추적 이유"
+      icon: "chartup"
+      why: "one of the main things라고 해서 이 수치가 유일한 기준이 아니라 여러 지표 중 핵심이라는 균형을 지켜요. 젖산은 혈압·소변량과 함께 치료 방향을 고르는 데 쓰여요."
+      decoy: "in bed"
+      distractorsKo: ["다른 수치도 같이 볼게요", "이 검사는 아프지 않아요"]
+      blank:
+        answer: "main"
+        options:
+          - {en: "main"}
+          - {en: "smallest"}
+          - {en: "oldest"}
+          - {en: "newest"}
     - en: "The higher the number, the more stress your body is under."
       ko: "수치가 높을수록 몸이 받는 스트레스도 커요."
       chunks: ["The higher", "the number,", "the more stress", "your body is under", "."]
       words: [w-high, w-number, w-stress]
       goal: 1
+      tag: "수치 해석"
+      icon: "chartup"
+      why: "The higher…, the more… 구조는 수치와 정도가 함께 움직인다는 관계를 한 번에 보여 줘요. 젖산이 높을수록 조직에 산소가 더 모자라서 더 적극적으로 치료해요."
+      decoy: "than usual"
+      distractorsKo: ["수치는 계속 달라질 수 있어요", "의사가 곧 설명해 줄 거예요"]
+      blank:
+        answer: "number"
+        options:
+          - {en: "age"}
+          - {en: "number"}
+          - {en: "weight"}
+          - {en: "height"}
     - en: "We'll draw it again in a couple hours to check your progress."
       ko: "몇 시간 뒤 다시 채취해서 경과를 확인할게요."
       chunks: ["We'll draw it again", "in a couple hours", "to check", "your progress", "."]
       words: [w-draw, w-check, w-progress]
       goal: 2
+      tag: "재채혈 예고"
+      icon: "calendar"
+      why: "in a couple hours로 시간을 대략으로 말해 정확한 약속보다 부담이 덜해요. again으로 같은 검사를 한 번 더 한다고 알려 반복 채혈에 놀라지 않게 해요. 간격은 병원 프로토콜을 따라요."
+      decoy: "this morning"
+      distractorsKo: ["수치가 변하면 바로 알려 드릴게요", "결과는 의사가 확인해요"]
+      blank:
+        answer: "progress"
+        options:
+          - {en: "mood"}
+          - {en: "balance"}
+          - {en: "progress"}
+          - {en: "weight"}
     - en: "A dropping lactate is a good sign you're responding to treatment."
       ko: "젖산이 떨어지는 건 치료에 반응하고 있다는 좋은 신호예요."
       chunks: ["A dropping lactate", "is a good sign", "you're responding", "to treatment", "."]
       words: [w-drop, w-lactate, w-sign, w-respond, w-treatment]
       goal: 2
+      tag: "호전 신호"
+      icon: "check"
+      why: "A dropping lactate가 주어로 변화의 방향을 먼저 말하고 good sign으로 평가를 붙여요. 소생 뒤 젖산이 내려가는 것은 조직의 산소 공급이 나아진다는 신호지만, 다른 활력징후와 함께 판단해요."
+      decoy: "by the bed"
+      distractorsKo: ["다음 채혈은 두 시간 뒤예요", "아직 치료는 계속돼요"]
+      blank:
+        answer: "good"
+        options:
+          - {en: "rare"}
+          - {en: "small"}
+          - {en: "strange"}
+          - {en: "good"}
   nuance:
   - kind: slider
     words:
@@ -107935,6 +108581,29 @@
       you have lactic acidosis: 의학 용어라 환자는 뜻을 모른다. 설명이 아니라 진단명만 던진 말이 된다.
       your muscles are just tired: 운동 뒤 근육 피로와 섞은 설명이라, 지금 상태가 얼마나 무거운지 전해지지 않는다.
     why: 젖산은 환자에게 '조직에 산소가 충분히 가지 않는다'는 신호로 풀어 말해요. 그래야 수액과 재측정의 이유가 이어져요.
+    ko: 젖산이 높다는 건 조직에 산소가 충분히 가지 않는다는 뜻이에요
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 젖산 수치 설명 4문장 순서
+    why: 수치가 높다고 알리고, 'It'이 그 수치를 가리켜 의미를 말하고, 'That's why'가 그 의미를 이유로 받아 수액과 재채혈을 말하고, 'that test'가 그 재검을 가리켜 호전 기준을 말해요. 'It'·'That's why'·'that test'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: Your lactate level came back high, and I want to explain what that means.
+      icon: lab
+      ko: 젖산 수치가 높게 나와서 그 뜻을 설명하고 싶어요
+      note: 결과
+    - en: It means some of your tissues aren't getting enough oxygen.
+      icon: stetho
+      ko: 일부 조직에 산소가 충분히 가지 않는다는 뜻이에요
+      note: 의미
+    - en: That's why we're giving fluids and will draw the test again.
+      icon: monitor
+      ko: 그래서 수액을 드리고 검사를 다시 채혈할 거예요
+      note: 이유
+    - en: A dropping number on that test is a good sign you're responding to treatment.
+      icon: check
+      ko: 그 검사에서 수치가 내려가면 치료에 반응한다는 좋은 신호예요
+      note: 호전
 
 - theme: er-sepsis
   title: 노인 비전형 패혈증
@@ -107959,31 +108628,103 @@
       chunks: ["In older adults,", "sepsis can show up", "as confusion", "or a low temperature", "."]
       words: [w-old, w-adult, w-sepsis, w-show, w-low, w-temperature]
       goal: 1
+      tag: "비전형 증상"
+      icon: "bell"
+      why: "In older adults로 대상을 먼저 한정하고 can으로 가능성만 말해, 모든 노인이 그렇다는 뜻이 아님을 지켜요. 노인은 열 대신 혼란이나 저체온으로 나타날 수 있어 선별을 놓치기 쉬워요."
+      decoy: "in babies"
+      distractorsKo: ["평소 드시는 약 목록이 있나요?", "식사는 잘 하셨나요?"]
+      blank:
+        answer: "sepsis"
+        options:
+          - {en: "asthma"}
+          - {en: "arthritis"}
+          - {en: "eczema"}
+          - {en: "sepsis"}
     - en: "The fact that he's cold and confused is why we're taking this seriously."
       ko: "몸이 차고 혼란스러워하시는 게 저희가 이걸 심각하게 보는 이유예요."
       chunks: ["The fact", "that he's cold and confused", "is why we're taking this", "seriously", "."]
       words: [w-fact, w-cold, w-confuse, w-serious]
       goal: 1
+      tag: "심각성 설명"
+      icon: "faceWorried"
+      why: "The fact that…으로 이유를 사실로 짚고, 가족이 직접 본 증상(차갑고 혼란스러움)을 그대로 말해 같은 것을 보고 있음을 보여 줘요. 평소와 달라졌다는 가족의 말은 노인 패혈증을 가려내는 중요한 단서예요."
+      decoy: "for sure"
+      distractorsKo: ["오늘 드신 약을 확인해도 될까요?", "혼자 일어나시지 않게 도와드릴게요"]
+      blank:
+        answer: "confused"
+        options:
+          - {en: "confused"}
+          - {en: "pale"}
+          - {en: "shaky"}
+          - {en: "sweaty"}
     - en: "Has he had any recent infection, catheter, or wound?"
       ko: "최근에 감염이나 카테터, 상처가 있었나요?"
       chunks: ["Has he had", "any recent infection,", "catheter,", "or wound", "?"]
       words: [w-recent, w-infection, w-catheter, w-wound]
       goal: 2
+      tag: "감염 병력"
+      icon: "speech"
+      why: "Has he had any…로 최근에 한 번이라도 있었는지 묻는 현재완료 질문이에요. 감염·카테터·상처는 패혈증의 대표적인 감염원 후보라 한 번에 묶어 물어요."
+      decoy: "yesterday"
+      distractorsKo: ["평소에도 이렇게 혼란스러워하셨나요?", "최근에 드시는 약이 바뀌었나요?"]
+      blank:
+        answer: "wound"
+        options:
+          - {en: "vaccine"}
+          - {en: "wound"}
+          - {en: "allergy"}
+          - {en: "fracture"}
     - en: "Older patients don't always run a fever, even with a serious infection."
       ko: "노인은 심각한 감염이 있어도 열이 늘 나지는 않아요."
       chunks: ["Older patients", "don't always run", "a fever,", "even with a serious infection", "."]
       words: [w-old, w-fever, w-serious, w-infection, w-runfever]
       goal: 1
+      tag: "발열 예외"
+      icon: "bell"
+      why: "don't always로 열이 없다고 안심하면 안 된다는 요지를 부드럽게 말해요. 노인이나 면역이 약한 사람은 심한 감염에도 열이 안 날 수 있어요."
+      decoy: "in the past"
+      distractorsKo: ["평소 체온이 어떻게 되세요?", "체온을 다시 한번 재 볼게요"]
+      blank:
+        answer: "even"
+        options:
+          - {en: "also"}
+          - {en: "except"}
+          - {en: "even"}
+          - {en: "only"}
     - en: "Confusion like this can be an early sign of something serious."
       ko: "이런 혼란은 심각한 상태의 조기 신호일 수 있어요."
       chunks: ["Confusion like this", "can be", "an early sign", "of something serious", "."]
       words: [w-early, w-sign, w-serious]
       goal: 1
+      tag: "혼란 신호"
+      icon: "bell"
+      why: "can be로 단정하지 않고 가능성만 말해 가족이 겁먹지 않게 하면서, early sign으로 지금 확인하는 이유를 알려요. 갑자기 평소와 다르게 혼란스러운 것은 감염 때문에 생기는 급성 혼돈(섬망)일 수 있어요."
+      decoy: "at the desk"
+      distractorsKo: ["가족분이 곁에 계셔 주세요", "지금 계신 곳이 어디인지 여쭤볼게요"]
+      blank:
+        answer: "Confusion"
+        options:
+          - {en: "Dizziness"}
+          - {en: "Tiredness"}
+          - {en: "Weakness"}
+          - {en: "Confusion"}
     - en: "Any falls, new medicines, or trouble with his catheter recently?"
       ko: "최근에 낙상이나 새 약, 카테터 문제가 있었나요?"
       chunks: ["Any falls,", "new medicines,", "or trouble", "with his catheter recently", "?"]
       words: [w-fall, w-new, w-medicine, w-catheter, w-recent]
       goal: 2
+      tag: "최근 변화"
+      icon: "magnify"
+      why: "Any…?로 동사를 줄이고 항목만 늘어놓아 보호자가 짧게 답하게 해요. 낙상·새 약·카테터 문제는 혼란의 흔한 원인이라 감염과 함께 확인해요."
+      decoy: "last year"
+      distractorsKo: ["평소 걸음은 괜찮으셨나요?", "잠은 잘 주무셨나요?"]
+      blank:
+        answer: "falls"
+        options:
+          - {en: "falls"}
+          - {en: "fevers"}
+          - {en: "coughs"}
+          - {en: "rashes"}
   nuance:
   - kind: slider
     words:
@@ -108019,6 +108760,7 @@
       old people: 뜻은 같지만 직설적이라 아버지를 낮춰 부르는 것처럼 들릴 수 있다.
       the elderly: 예전 글에 흔하지만, 요즘 미국 의학 문체 지침은 older adults를 권한다. 사람을 한 무리로 묶는 느낌이 든다.
     why: AMA·AP 문체 지침은 elderly보다 older adults를 권해요. 같은 뜻이라도 보호자 앞에서는 존중이 담긴 말을 골라요.
+    ko: 고령 환자분들은 패혈증이 혼란이나 저체온으로 나타날 수 있어요
   - kind: context
     words:
     - w-confuse
@@ -108031,7 +108773,7 @@
       ok: true
     - who: 의사에게 보고
       icon: speech
-      en: He's acutely confused — his daughter says he's normally fully oriented — and he's hypothermic at 35.6.
+      en: He's acutely confused — his daughter says his baseline is fully oriented — and he's hypothermic at 35.6.
       ok: true
     - who: 보호자에게
       icon: me
@@ -108039,6 +108781,30 @@
       ok: false
       fix: He's more confused than usual, and that can be an early sign of infection.
     why: delirium·altered from baseline은 의료진끼리의 말이에요. 보호자에게는 '평소보다 더 혼란스러워하시고, 그게 감염의 조기 신호일 수 있다'고 풀어요.
+    word: baseline
+    ko: 평소 상태
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 노인 패혈증 설명 4문장 순서
+    why: 혼란이 평소보다 심하다고 알리고, 'That's because'가 그 걱정을 이유로 받아 비전형 증상을 설명하고, 'that sepsis'가 그 설명 속 패혈증을 가리켜 병력을 묻고, 'Thank you'가 그 대답을 받아 다음 행동을 말해요. 'That's because'·'that sepsis'·'Thank you'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: Your father is much more confused than usual, and that worries us.
+      icon: faceWorried
+      ko: 아버님이 평소보다 많이 혼란스러워하셔서 걱정돼요
+      note: 걱정
+    - en: That's because in older adults, sepsis can show up as confusion instead of fever.
+      icon: bell
+      ko: 노인은 패혈증이 열 대신 혼란으로 나타날 수 있어서예요
+      note: 이유
+    - en: To find where that sepsis started, has he had a recent catheter problem or wound?
+      icon: speech
+      ko: 그 패혈증이 어디서 시작됐는지 찾으려는데 최근 카테터 문제나 상처가 있었나요?
+      note: 병력
+    - en: Thank you. We'll look for an infection now and keep a close eye on him.
+      icon: monitor
+      ko: 고마워요. 지금 감염을 찾아보고 곁에서 계속 지켜볼게요
+      note: 계획
 
 - theme: er-sepsis
   title: 요로성 패혈증
@@ -108063,31 +108829,103 @@
       chunks: ["The flank pain", "with a urine infection", "can lead", "to a serious infection", "."]
       words: [w-flank, w-pain, w-urine, w-infection, w-lead, w-serious]
       goal: 1
+      tag: "옆구리 통증"
+      icon: "bell"
+      why: "with로 통증과 요로감염을 한 묶음으로 보고 can lead로 진행 가능성을 짚어요. 옆구리 통증은 요로감염이 신장까지 올라갔다는 단서일 수 있어요."
+      decoy: "in your leg"
+      distractorsKo: ["소변 색이 어떤가요?", "열은 언제부터 났나요?"]
+      blank:
+        answer: "flank"
+        options:
+          - {en: "flank"}
+          - {en: "ankle"}
+          - {en: "elbow"}
+          - {en: "wrist"}
     - en: "We'll check if there's a blockage that needs to be drained."
       ko: "막힌 곳이 있어서 배액이 필요한지 확인할게요."
       chunks: ["We'll check", "if there's a blockage", "that needs to be", "drained", "."]
       words: [w-check, w-block, w-need, w-drain]
       goal: 2
+      tag: "막힘 확인"
+      icon: "magnify"
+      why: "We'll check if로 확인할 일과 그 이유를 한 문장에 담아요. 요로가 돌 등으로 막히면 감염된 소변이 갇혀서 항생제만으로는 부족해 배액이 필요할 수 있어요."
+      decoy: "if there's a leak"
+      distractorsKo: ["소변 줄을 넣을 수도 있어요", "검사실에서 소변을 확인하고 있어요"]
+      blank:
+        answer: "blockage"
+        options:
+          - {en: "fracture"}
+          - {en: "blockage"}
+          - {en: "rash"}
+          - {en: "bruise"}
     - en: "We're starting fluids and antibiotics now."
       ko: "지금 수액과 항생제를 시작할게요."
       chunks: ["We're starting", "fluids and antibiotics", "now", "."]
       words: [w-start, w-fluid, w-antibiotic]
       goal: 2
+      tag: "치료 시작"
+      icon: "pill"
+      why: "now로 지금 시작한다고 분명히 해서 환자가 아직 기다리는 중인지 헷갈리지 않게 해요. 패혈증은 수액과 항생제를 한 시간 안에 시작하는 것이 핵심이에요."
+      decoy: "tests and scans"
+      distractorsKo: ["항생제 알레르기가 있으신지 다시 확인할게요", "팔이 따끔할 수 있어요"]
+      blank:
+        answer: "fluids"
+        options:
+          - {en: "oxygen"}
+          - {en: "Tylenol"}
+          - {en: "fluids"}
+          - {en: "pain medicine"}
     - en: "Your back and side pain with fever points to a kidney infection."
       ko: "등과 옆구리 통증에 열까지 있으면 신장 감염을 가리켜요."
       chunks: ["Your back and side pain", "with fever", "points to", "a kidney infection", "."]
       words: [w-back, w-side, w-pain, w-fever, w-point, w-kidney, w-infection]
       goal: 1
+      tag: "원인 짚기"
+      icon: "magnify"
+      why: "points to로 단정하지 않고 가리킨다고만 말해 아직 추정임을 지켜요. 등·옆구리 통증에 열이 겹치면 신우신염(신장 감염)을 가장 먼저 떠올려요."
+      decoy: "a skin rash"
+      distractorsKo: ["소변을 볼 때 아프세요?", "어느 쪽이 더 아픈가요?"]
+      blank:
+        answer: "kidney"
+        options:
+          - {en: "lung"}
+          - {en: "skin"}
+          - {en: "throat"}
+          - {en: "kidney"}
     - en: "If there's a blockage, we may need to drain it to control the infection."
       ko: "막힘이 있으면 감염을 조절하기 위해 배액이 필요할 수 있어요."
       chunks: ["If there's a blockage,", "we may need to drain it", "to control", "the infection", "."]
       words: [w-block, w-need, w-drain, w-control, w-infection]
       goal: 2
+      tag: "배액 이유"
+      icon: "scalpel"
+      why: "If로 막힘이 있을 때만 하는 처치라고 조건을 걸고 may로 아직 결정이 아님을 말해요. 막힌 곳의 감염된 소변을 빼내는 배액은 의사가 결정하고, 간호사는 이유를 환자 말로 설명해요."
+      decoy: "by mouth"
+      distractorsKo: ["영상 검사에서 확인할 수 있어요", "시술은 의사가 설명해 줄 거예요"]
+      blank:
+        answer: "drain"
+        options:
+          - {en: "drain"}
+          - {en: "scan"}
+          - {en: "numb"}
+          - {en: "test"}
     - en: "Antibiotics and fluids go in right away to fight the infection."
       ko: "감염과 싸우기 위해 항생제와 수액을 바로 투여해요."
       chunks: ["Antibiotics and fluids", "go in right away", "to fight", "the infection", "."]
       words: [w-antibiotic, w-fluid, w-fight, w-infection]
       goal: 2
+      tag: "즉시 투여"
+      icon: "pill"
+      why: "right away로 지체 없이 투여한다고 분명히 해서 환자가 기다리는 불안을 덜어요. to fight로 목적을 붙여 약과 수액이 하는 일을 한 문장에 묶어요."
+      decoy: "by hand"
+      distractorsKo: ["검사 결과는 곧 나올 거예요", "혈압은 계속 볼게요"]
+      blank:
+        answer: "Antibiotics"
+        options:
+          - {en: "Vitamins"}
+          - {en: "Antibiotics"}
+          - {en: "Painkillers"}
+          - {en: "Antacids"}
   nuance:
   - kind: slider
     words:
@@ -108126,6 +108964,29 @@
       achieve source control: 의료진끼리 쓰는 말(source control). 환자는 무엇을 한다는 건지 모른다.
       stop the pain: 통증이 줄 수는 있지만 배액의 목적은 감염원 제거다. 목적을 잘못 전한다.
     why: source control은 의료진의 말이에요. 환자에게는 '감염을 잡으려고 막힌 곳을 빼낸다'고 말해요.
+    ko: 막힌 곳이 있으면 감염을 잡으려고 빼내야 할 수 있어요
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 요로성 패혈증 설명 4문장 순서
+    why: 원인을 짚고, 'it'이 그 감염을 가리켜 즉시 치료를 알리고, 'Along with that'이 그 치료를 가리켜 막힘 확인을 더하고, 'one'이 그 막힘을 가리켜 배액 가능성을 말해요. 'it'·'Along with that'·'one'이 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: Your back and side pain with a fever points to a kidney infection.
+      icon: magnify
+      ko: 등과 옆구리 통증에 열이 있어서 신장 감염을 의심해요
+      note: 원인
+    - en: We're starting fluids and antibiotics right away to fight it.
+      icon: pill
+      ko: 그걸 잡으려고 수액과 항생제를 바로 시작할게요
+      note: 치료
+    - en: Along with that, we'll check for a blockage that could keep the infection from clearing.
+      icon: magnify
+      ko: 그와 함께 감염이 가라앉지 못하게 하는 막힘이 있는지 확인할게요
+      note: 확인
+    - en: If we find one, we may need to drain it.
+      icon: scalpel
+      ko: 막힘을 찾으면 빼내야 할 수 있어요
+      note: 배액
 
 - theme: er-sepsis
   title: 폐렴성 패혈증
@@ -108150,31 +109011,103 @@
       chunks: ["Your pneumonia has spread", "to your whole body,", "so we're acting", "fast", "."]
       words: [w-pneumonia, w-spread, w-whole, w-act, w-fast]
       goal: 1
+      tag: "상태 설명"
+      icon: "stetho"
+      why: "has spread로 이미 일어난 일을 말하고 so we're acting fast로 그래서 하는 행동을 바로 이어요. 폐렴 같은 감염에 몸이 지나치게 반응해 온몸의 장기가 영향을 받는 것이 패혈증이라 빠른 치료가 필요해요."
+      decoy: "in the lungs"
+      distractorsKo: ["폐 사진을 다시 찍을 거예요", "기침은 언제부터 심해졌나요?"]
+      blank:
+        answer: "so"
+        options:
+          - {en: "although"}
+          - {en: "so"}
+          - {en: "but"}
+          - {en: "because"}
     - en: "We're giving oxygen, fluids, and antibiotics right now."
       ko: "지금 산소, 수액, 항생제를 함께 주고 있어요."
       chunks: ["We're giving", "oxygen, fluids,", "and antibiotics", "right now", "."]
       words: [w-give, w-oxygen, w-fluid, w-antibiotic]
       goal: 2
+      tag: "지금 치료"
+      icon: "pill"
+      why: "oxygen·fluids·antibiotics를 나열해 한꺼번에 하는 일을 보여 주고 right now로 지금 한다고 안심시켜요. 폐렴성 패혈증은 산소, 수액, 항생제가 함께 가요."
+      decoy: "in the room"
+      distractorsKo: ["가래를 검사실로 보낼 거예요", "호흡기 치료사가 곧 올 거예요"]
+      blank:
+        answer: "oxygen"
+        options:
+          - {en: "Tylenol"}
+          - {en: "cough medicine"}
+          - {en: "oxygen"}
+          - {en: "breathing treatments"}
     - en: "I'm watching your breathing closely and will support it if needed."
       ko: "호흡을 계속 지켜보고 필요하면 도와드릴게요."
       chunks: ["I'm watching your breathing", "closely", "and will support it", "if needed", "."]
       words: [w-watch, w-breathe, w-close, w-support, w-need]
       goal: 1
+      tag: "호흡 감시"
+      icon: "stetho"
+      why: "closely로 계속 지켜본다고 약속하고 if needed로 필요할 때 개입하겠다고 해서 환자가 혼자 버티지 않아도 됨을 알려요. 폐렴 환자는 호흡이 지치면 산소나 호흡 보조를 늘려야 할 수 있어요."
+      decoy: "by yourself"
+      distractorsKo: ["기침을 깊게 해 보세요", "누워 있기 힘들면 말씀해 주세요"]
+      blank:
+        answer: "I'm"
+        options:
+          - {en: "You're"}
+          - {en: "It's"}
+          - {en: "That's"}
+          - {en: "I'm"}
     - en: "Your oxygen level is lower than we'd like right now."
       ko: "지금 산소 수치가 원하는 것보다 낮아요."
       chunks: ["Your oxygen level", "is lower", "than we'd like", "right now", "."]
       words: [w-oxygen, w-level, w-low]
       goal: 1
+      tag: "산소 수치"
+      icon: "monitor"
+      why: "lower than we'd like는 정상보다 낮다는 말을 우리가 바라는 수준이라는 기준으로 감싸, 환자를 겁주거나 탓하지 않고 사실을 전해요. 패혈증 폐렴은 산소포화도가 떨어지기 쉬워서 산소를 줘요."
+      decoy: "in the room"
+      distractorsKo: ["산소 마스크를 벗지 마세요", "숨을 크게 쉬어 보세요"]
+      blank:
+        answer: "oxygen"
+        options:
+          - {en: "oxygen"}
+          - {en: "sodium"}
+          - {en: "potassium"}
+          - {en: "glucose"}
     - en: "We're treating the infection and helping your lungs at the same time."
       ko: "감염을 치료하면서 폐도 동시에 돕고 있어요."
       chunks: ["We're treating", "the infection", "and helping your lungs", "at the same time", "."]
       words: [w-treat, w-infection, w-help, w-lung]
       goal: 2
+      tag: "동시 치료"
+      icon: "stetho"
+      why: "at the same time으로 두 가지를 동시에 한다고 말해, 하나를 하느라 다른 것을 미룬다는 걱정을 덜어요. 감염을 잡는 치료(항생제)와 폐를 돕는 지지(산소 등)가 함께 가요."
+      decoy: "one by one"
+      distractorsKo: ["가슴 소리를 들어 볼게요", "소변량을 확인할게요"]
+      blank:
+        answer: "lungs"
+        options:
+          - {en: "kidneys"}
+          - {en: "lungs"}
+          - {en: "heart"}
+          - {en: "liver"}
     - en: "Tell me right away if breathing gets harder."
       ko: "숨쉬기가 더 힘들어지면 바로 말씀해 주세요."
       chunks: ["Tell me right away", "if breathing", "gets harder", "."]
       words: [w-tell, w-breathe, w-hard]
       goal: 1
+      tag: "악화 보고"
+      icon: "siren"
+      why: "right away로 곧바로 말하라고 하고 if breathing gets harder로 환자가 직접 느끼는 변화를 기준으로 줘요. 숨쉬기가 힘들어지는 것은 산소·호흡 보조를 늘려야 한다는 중요한 신호예요."
+      decoy: "gets louder"
+      distractorsKo: ["가래가 나오면 뱉어 주세요", "기침은 참지 마세요"]
+      blank:
+        answer: "harder"
+        options:
+          - {en: "lighter"}
+          - {en: "calmer"}
+          - {en: "harder"}
+          - {en: "easier"}
   nuance:
   - kind: slider
     words:
@@ -108211,6 +109144,29 @@
       you become hypoxic: 임상어인 데다, 저산소는 환자가 스스로 알아챌 수 있는 것이 아니다.
       you feel a bit tired: 너무 막연하고 가벼워, 정작 알려야 할 호흡 악화를 놓친다.
     why: 환자에게 알려 달라고 할 때는 환자가 직접 느낄 수 있는 변화로 말해요.
+    ko: 숨쉬기가 더 힘들어지면 바로 말씀해 주세요
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 폐렴성 패혈증 설명 4문장 순서
+    why: 상태를 알리고, 'That's why'가 그 상태를 이유로 받아 치료를 말하고, 'Along with that'이 그 치료를 가리켜 호흡 감시를 더하고, 'keep watch'가 그 감시를 이어받아 환자가 도울 일을 부탁해요. 'That's why'·'Along with that'·'keep watch'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: Your pneumonia has spread, and your oxygen level is lower than we'd like.
+      icon: stetho
+      ko: 폐렴이 퍼졌고 산소 수치도 바라는 것보다 낮아요
+      note: 상태
+    - en: That's why we're giving oxygen, fluids, and antibiotics right now.
+      icon: pill
+      ko: 그래서 지금 산소, 수액, 항생제를 드리고 있어요
+      note: 치료
+    - en: Along with that, I'm watching your breathing closely and will support it as needed.
+      icon: monitor
+      ko: 그와 함께 호흡을 계속 지켜보고 필요하면 도와드릴게요
+      note: 감시
+    - en: You can help me keep watch — tell me right away if breathing gets harder.
+      icon: siren
+      ko: 계속 지켜보는 걸 도와주세요 — 숨쉬기가 더 힘들어지면 바로 말씀해 주세요
+      note: 협조
 
 - theme: er-sepsis
   title: 수액반응성 평가
@@ -108235,31 +109191,103 @@
       chunks: ["After the fluids,", "I'm rechecking your pressure", "and how you're", "breathing", "."]
       words: [w-fluid, w-recheck, w-pressure, w-breathe]
       goal: 1
+      tag: "재평가"
+      icon: "monitor"
+      why: "After the fluids로 기준 시점을 먼저 말해 지금 하는 확인이 수액에 대한 반응을 보는 것임을 알려요. 혈압과 호흡을 함께 보는 이유는 혈압이 오르는지와 폐에 물이 차지 않는지를 동시에 알아야 해서예요."
+      decoy: "I'm adjusting your bed"
+      distractorsKo: ["소변량도 같이 볼게요", "팔에 부기가 없는지 볼게요"]
+      blank:
+        answer: "how"
+        options:
+          - {en: "where"}
+          - {en: "why"}
+          - {en: "how"}
+          - {en: "when"}
     - en: "This tells us if your body needs more fluid or a different support."
       ko: "이걸 보면 몸에 수액이 더 필요한지 다른 지지가 필요한지 알 수 있어요."
       chunks: ["This tells us", "if your body needs", "more fluid", "or a different support", "."]
       words: [w-tell, w-need, w-fluid, w-different, w-support]
       goal: 1
+      tag: "다음 결정"
+      icon: "compass"
+      why: "if…or…로 결과에 따라 갈리는 두 갈래를 보여 줘 재평가가 다음 결정을 위한 것임을 알려요. 수액으로 혈압이 오르지 않으면 승압제 같은 다른 지지가 필요할 수 있어요."
+      decoy: "less fluid"
+      distractorsKo: ["결과는 의사에게 바로 전할게요", "수액 속도는 의사가 정해요"]
+      blank:
+        answer: "fluid"
+        options:
+          - {en: "oxygen"}
+          - {en: "rest"}
+          - {en: "blood"}
+          - {en: "fluid"}
     - en: "Let me know if you start to feel short of breath."
       ko: "숨이 차기 시작하면 알려 주세요."
       chunks: ["Let me know", "if you start", "to feel", "short of breath", "."]
       words: [w-start, w-feel, w-short]
       goal: 2
+      tag: "숨참 보고"
+      icon: "bell"
+      why: "Let me know는 명령이 아니라 부탁이라 환자가 보고하는 일을 편하게 맡아요. start to로 심해지기 전 처음 느낌부터 알려 달라는 뜻을 담아요. 수액이 많이 들어가면 폐에 물이 찰 수 있어서 처음 징후가 중요해요."
+      decoy: "dizzy or faint"
+      distractorsKo: ["팔에 통증이 생기면 알려 주세요", "다리를 올려 드릴게요"]
+      blank:
+        answer: "start"
+        options:
+          - {en: "start"}
+          - {en: "stop"}
+          - {en: "try"}
+          - {en: "fail"}
     - en: "Your blood pressure came up a little after that last bag of fluids."
       ko: "마지막 수액 한 팩 뒤로 혈압이 조금 올랐어요."
       chunks: ["Your blood pressure came up", "a little", "after that last bag", "of fluids", "."]
       words: [w-blood, w-pressure, w-come, w-fluid]
       goal: 1
+      tag: "경과 설명"
+      icon: "chartup"
+      why: "came up a little로 좋아진 정도를 과장하지 않고 정확히 말해요. after that last bag of fluids로 변화의 원인 후보(수액)를 짚어 반응이 있음을 알려요."
+      decoy: "last week"
+      distractorsKo: ["아직 안심하기엔 일러요", "수액은 의사가 정한 만큼 들어갈 거예요"]
+      blank:
+        answer: "up"
+        options:
+          - {en: "off"}
+          - {en: "up"}
+          - {en: "down"}
+          - {en: "out"}
     - en: "Too much fluid can make it harder to breathe, so I'm watching closely."
       ko: "수액이 너무 많으면 숨쉬기가 힘들어질 수 있어서 계속 지켜보고 있어요."
       chunks: ["Too much fluid", "can make it harder", "to breathe,", "so I'm watching closely", "."]
       words: [w-fluid, w-make, w-hard, w-breathe, w-watch, w-close]
       goal: 2
+      tag: "과다 주의"
+      icon: "bell"
+      why: "Too much fluid can…으로 수액이 많을수록 좋은 것은 아니라는 균형을 말하고 so I'm watching으로 그래서 하는 행동을 이어요. 패혈증에서 수액을 많이 주면 폐에 물이 차 호흡이 힘들어질 수 있어요."
+      decoy: "so I'm closing the door"
+      distractorsKo: ["다리를 올려 드릴게요", "수액 속도를 의사에게 확인할게요"]
+      blank:
+        answer: "breathe"
+        options:
+          - {en: "taste"}
+          - {en: "chew"}
+          - {en: "breathe"}
+          - {en: "swallow"}
     - en: "Swelling in your legs or feeling more short of breath can mean too much fluid."
       ko: "다리가 붓거나 숨이 더 차면 수액이 과할 수 있다는 뜻이에요."
       chunks: ["Swelling in your legs", "or feeling more short of breath", "can mean", "too much fluid", "."]
       words: [w-swell, w-leg, w-short, w-mean, w-fluid]
       goal: 2
+      tag: "과다 신호"
+      icon: "faceWorried"
+      why: "Swelling…or feeling…으로 환자가 직접 알아챌 수 있는 두 신호를 주어로 삼고 can mean으로 가능성만 말해요. 다리 부종과 호흡곤란 악화는 수액이 과할 때 나타나는 대표 신호예요."
+      decoy: "by the bed"
+      distractorsKo: ["다리를 심장보다 높이 올려 두세요", "양말이 꽉 끼면 말씀해 주세요"]
+      blank:
+        answer: "mean"
+        options:
+          - {en: "cure"}
+          - {en: "prevent"}
+          - {en: "fix"}
+          - {en: "mean"}
   nuance:
   - kind: slider
     words:
@@ -108298,6 +109326,30 @@
       ok: false
       fix: Your legs are a little swollen, so I'm watching your breathing closely.
     why: crackles·pitting edema는 차트와 보고의 말이에요. 환자에게는 다리가 부었다는 것과 그래서 호흡을 지켜본다는 것을 쉬운 말로 전해요.
+    word: edema
+    ko: 부종
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 수액 반응 평가 4문장 순서
+    why: 재확인을 알리고, 'Your pressure'가 그 확인의 결과를 말하고, 'Fluids that help'가 그 결과 속 '수액이 돕는다'를 받아 과다의 위험을 말하고, 'of that'이 그 위험을 가리켜 신호를 말해요. 'Your pressure'·'Fluids that help'·'of that'이 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: After the fluids, I'm rechecking your blood pressure and how you're breathing.
+      icon: monitor
+      ko: 수액을 준 뒤 혈압과 호흡을 다시 확인하고 있어요
+      note: 재확인
+    - en: Your pressure came up a little, which tells us the fluids are helping.
+      icon: chartup
+      ko: 혈압이 조금 올라서 수액이 도움이 되고 있다는 걸 알 수 있어요
+      note: 결과
+    - en: Fluids that help can still cause trouble in excess, so I'm watching closely.
+      icon: bell
+      ko: 도움이 되는 수액도 과하면 문제가 될 수 있어서 계속 지켜보고 있어요
+      note: 주의
+    - en: Leg swelling or worse breathing would be signs of that, so tell me right away.
+      icon: siren
+      ko: 다리가 붓거나 숨쉬기가 더 힘들면 그 신호라서 바로 말씀해 주세요
+      note: 신호
 
 - theme: er-sepsis
   title: 면역저하 잠복 패혈증
@@ -108322,31 +109374,103 @@
       chunks: ["On immune-suppressing medicine,", "even mild symptoms", "can be", "serious", "."]
       words: [w-immune, w-suppress, w-medicine, w-mild, w-symptom, w-serious]
       goal: 1
+      tag: "면역저하 주의"
+      icon: "shield"
+      why: "even mild symptoms로 가벼운 증상도 가볍게 넘기지 않겠다는 기준을 먼저 알려요. 면역억제제를 쓰면 감염이 있어도 열이나 염증 반응이 약하게 나타나 위험을 놓치기 쉬워요."
+      decoy: "in the past"
+      distractorsKo: ["복용 중인 약을 모두 알려 주세요", "마지막으로 약 드신 때를 말씀해 주세요"]
+      blank:
+        answer: "mild"
+        options:
+          - {en: "brief"}
+          - {en: "strange"}
+          - {en: "sudden"}
+          - {en: "mild"}
     - en: "We won't wait for a high fever — we'll check thoroughly now."
       ko: "고열이 날 때까지 기다리지 않고 지금 철저히 확인할게요."
       chunks: ["We won't wait", "for a high fever", "— we'll check", "thoroughly now", "."]
       words: [w-wait, w-high, w-fever, w-check, w-thorough]
       goal: 2
+      tag: "기다리지 않음"
+      icon: "bell"
+      why: "won't wait와 we'll check now를 대비시켜 고열이 날 때까지 기다리지 않는다는 결정을 분명히 해요. 면역이 억제된 환자는 열이 늦거나 약해서, 열이 없어도 일찍 철저히 확인해요."
+      decoy: "in the lab"
+      distractorsKo: ["최근 항암이나 이식 이력을 말씀해 주세요", "복용 중인 약을 다시 확인할게요"]
+      blank:
+        answer: "thoroughly"
+        options:
+          - {en: "thoroughly"}
+          - {en: "slowly"}
+          - {en: "partly"}
+          - {en: "lightly"}
     - en: "We're drawing cultures and watching you closely."
       ko: "배양을 채취하고 계속 지켜볼게요."
       chunks: ["We're drawing", "cultures and watching you", "closely", "."]
       words: [w-draw, w-culture, w-watch, w-close]
       goal: 2
+      tag: "배양+감시"
+      icon: "lab"
+      why: "cultures와 watching you closely를 and로 이어 검사와 지켜보기를 함께 한다고 알려요. 면역이 억제된 환자는 증상만으로 판단하기 어려워 배양으로 감염을 확인하면서 상태를 계속 살펴요."
+      decoy: "at the door"
+      distractorsKo: ["상처가 있으면 보여 주세요", "오늘 열이 몇 도까지 올랐나요?"]
+      blank:
+        answer: "cultures"
+        options:
+          - {en: "labs"}
+          - {en: "cultures"}
+          - {en: "a lactate"}
+          - {en: "a blood gas"}
     - en: "A slightly faster heart rate might be the only clue you have."
       ko: "조금 빨라진 심박수가 유일한 단서일 수 있어요."
       chunks: ["A slightly faster heart rate", "might be", "the only clue", "you have", "."]
       words: [w-fast, w-heart, w-rate, w-clue]
       goal: 1
+      tag: "미세 단서"
+      icon: "monitor"
+      why: "slightly와 only clue로 아주 작은 변화가 유일한 신호일 수 있다는 점을 한 문장에 넣어요. 면역억제 환자는 열 대신 약간 빨라진 심박수가 첫 신호인 경우가 있어요."
+      decoy: "last year"
+      distractorsKo: ["열은 없지만 계속 지켜볼게요", "심장 모니터를 붙일게요"]
+      blank:
+        answer: "faster"
+        options:
+          - {en: "lower"}
+          - {en: "weaker"}
+          - {en: "faster"}
+          - {en: "slower"}
     - en: "Because your immune system is suppressed, we act early rather than wait."
       ko: "면역이 억제된 상태라 기다리기보다 일찍 대응해요."
       chunks: ["Because your immune system", "is suppressed,", "we act early", "rather than wait", "."]
       words: [w-immune, w-suppress, w-act, w-early, w-wait]
       goal: 2
+      tag: "조기 대응"
+      icon: "shield"
+      why: "Because로 이유를 먼저 말하고 we act early rather than wait로 결정을 붙여, 서두르는 것이 과잉이 아니라 이유 있는 선택임을 보여 줘요. 면역이 억제된 환자는 빨리 나빠질 수 있어서 근거가 다 모이기 전에 움직여요."
+      decoy: "rather than shout"
+      distractorsKo: ["약 복용은 의사와 상의해 정해요", "검사 결과는 곧 알려 드릴게요"]
+      blank:
+        answer: "immune"
+        options:
+          - {en: "digestive"}
+          - {en: "skeletal"}
+          - {en: "muscular"}
+          - {en: "immune"}
     - en: "Even without a fever, your body may be fighting a serious infection."
       ko: "열이 없어도 몸은 심각한 감염과 싸우고 있을 수 있어요."
       chunks: ["Even without", "a fever,", "your body may be", "fighting a serious infection", "."]
       words: [w-fever, w-fight, w-serious, w-infection]
       goal: 1
+      tag: "무열 가능성"
+      icon: "faceWorried"
+      why: "Even without로 열이 없어도라는 예외를 먼저 말해, 열이 없으면 안전하다는 흔한 오해를 바로잡아요. may로 가능성만 말해 겁은 덜 주면서 경계는 풀지 않게 해요."
+      decoy: "by the bed"
+      distractorsKo: ["체온은 한 시간마다 잴게요", "피검사 결과를 기다리고 있어요"]
+      blank:
+        answer: "Even"
+        options:
+          - {en: "Even"}
+          - {en: "Only"}
+          - {en: "Just"}
+          - {en: "Also"}
   nuance:
   - kind: slider
     words:
@@ -108384,6 +109508,29 @@
       let's see how you feel tomorrow: 앞말과 어긋난다. 면역억제 환자는 증상이 약해도 빨리 나빠질 수 있어 미루면 안 된다.
       you're probably fine: 근거 없는 안심. 환자가 다음 증상을 가볍게 여기게 만든다.
     why: 면역억제 환자에게는 '기다리지 않고 지금 철저히 본다'고 분명히 말해요.
+    ko: 고열이 날 때까지 기다리지 않고 지금 철저히 확인할게요
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 면역저하 환자 설명 4문장 순서
+    why: 위험을 알리고, 'That's why'가 그것을 이유로 받아 기다리지 않겠다고 하고, 'Instead'가 그 '기다림'의 반대로 지금 하는 일을 말하고, 'that'이 그 행동을 가리켜 이유를 덧붙여요. 'That's why'·'Instead'·'that'이 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: You're on medicine that weakens your immune system, so even mild symptoms can be serious.
+      icon: shield
+      ko: 면역을 약하게 하는 약을 드시고 있어서 가벼운 증상도 심각할 수 있어요
+      note: 위험
+    - en: That's why we won't wait for a high fever before we start checking.
+      icon: bell
+      ko: 그래서 고열이 날 때까지 기다리지 않고 확인을 시작할 거예요
+      note: 결정
+    - en: Instead, we're drawing cultures and watching you closely.
+      icon: lab
+      ko: 대신 배양을 채취하고 계속 지켜볼게요
+      note: 행동
+    - en: We do that because even with no fever, you may be fighting a serious infection.
+      icon: faceWorried
+      ko: 열이 없어도 심각한 감염과 싸우고 있을 수 있어서 그렇게 해요
+      note: 이유
 
 - theme: er-sepsis
   title: 카테터 관련 균혈증
@@ -108408,31 +109555,103 @@
       chunks: ["Chills when your line", "is used", "can mean", "the line is infected", "."]
       words: [w-chill, w-line, w-use, w-mean, w-infect]
       goal: 1
+      tag: "오한 단서"
+      icon: "bell"
+      why: "when your line is used로 증상이 생기는 때를 짚어 라인과 증상 사이의 연결을 보여 줘요. 투석이나 라인 사용 직후의 오한은 카테터 안쪽의 균이 혈류로 들어갔다는 흔한 신호예요."
+      decoy: "the line is loose"
+      distractorsKo: ["라인 주변이 아프신가요?", "오한은 하루에 몇 번 오나요?"]
+      blank:
+        answer: "Chills"
+        options:
+          - {en: "Chills"}
+          - {en: "Cramps"}
+          - {en: "Itching"}
+          - {en: "Nausea"}
     - en: "We'll draw cultures from the line and from your arm."
       ko: "라인과 팔 양쪽에서 배양을 채취할게요."
       chunks: ["We'll draw", "cultures", "from the line", "and from your arm", "."]
       words: [w-draw, w-culture, w-line, w-arm]
       goal: 2
+      tag: "양쪽 채취"
+      icon: "lab"
+      why: "from the line and from your arm으로 두 곳에서 따로 채취한다고 말해요. 라인과 말초 정맥에서 함께 뽑아 비교하면 라인이 감염원인지 가려내는 데 도움이 돼요."
+      decoy: "by phone"
+      distractorsKo: ["채혈은 두 번 따끔할 수 있어요", "라인은 소독하고 쓸게요"]
+      blank:
+        answer: "cultures"
+        options:
+          - {en: "a CBC"}
+          - {en: "cultures"}
+          - {en: "a lactate"}
+          - {en: "electrolytes"}
     - en: "We may need to remove the line to clear the infection."
       ko: "감염을 없애려면 라인을 제거해야 할 수도 있어요."
       chunks: ["We may need", "to remove the line", "to clear", "the infection", "."]
       words: [w-need, w-remove, w-line, w-clear, w-infection]
       goal: 2
+      tag: "라인 제거"
+      icon: "scalpel"
+      why: "may need to로 아직 결정이 아니라 가능성임을 분명히 해요. 카테터 안에 균이 막을 만들어 붙으면 항생제만으로는 없어지지 않아서 라인을 빼야 할 수 있어요."
+      decoy: "to remove the dressing"
+      distractorsKo: ["드레싱을 새로 바꿀게요", "새 라인은 다른 곳에 넣을 수 있어요"]
+      blank:
+        answer: "remove"
+        options:
+          - {en: "paint"}
+          - {en: "shorten"}
+          - {en: "remove"}
+          - {en: "cover"}
     - en: "Fever and chills right after dialysis often point to the line."
       ko: "투석 직후 열과 오한이 있으면 라인을 의심해요."
       chunks: ["Fever and chills", "right after dialysis", "often point to", "the line", "."]
       words: [w-fever, w-chill, w-point, w-line]
       goal: 1
+      tag: "투석 직후"
+      icon: "calendar"
+      why: "right after로 시점을 붙여 증상과 투석 사이의 연결을 보여 줘요. 투석 카테터로 균이 혈류에 들어가 투석 중이나 직후에 열과 오한이 오는 일이 흔해요."
+      decoy: "last week"
+      distractorsKo: ["출구 부위를 한번 볼게요", "열은 투석 중에도 났나요?"]
+      blank:
+        answer: "dialysis"
+        options:
+          - {en: "a transfusion"}
+          - {en: "surgery"}
+          - {en: "an X-ray"}
+          - {en: "dialysis"}
     - en: "Redness or pain around the line site is also a warning sign."
       ko: "라인 주변 발적이나 통증도 경고 신호예요."
       chunks: ["Redness or pain", "around the line site", "is also", "a warning sign", "."]
       words: [w-red, w-pain, w-line, w-warning, w-sign]
       goal: 1
+      tag: "라인 부위"
+      icon: "faceWorried"
+      why: "also로 앞서 말한 열·오한에 더해 한 가지 더 있다고 알려요. 카테터가 나오는 피부 부위의 발적·통증·분비물은 출구 부위 감염의 전형적인 신호예요."
+      decoy: "this morning"
+      distractorsKo: ["그 부위는 만지지 말아 주세요", "드레싱은 제가 갈아 드릴게요"]
+      blank:
+        answer: "Redness"
+        options:
+          - {en: "Redness"}
+          - {en: "Bruising"}
+          - {en: "Itching"}
+          - {en: "Dryness"}
     - en: "Once the line is out, the infection usually starts to clear."
       ko: "라인을 빼면 감염은 보통 가라앉기 시작해요."
       chunks: ["Once the line is out,", "the infection", "usually starts", "to clear", "."]
       words: [w-line, w-infection, w-start, w-clear]
       goal: 2
+      tag: "제거 후 경과"
+      icon: "calendar"
+      why: "Once로 라인이 빠진 뒤에 일어날 일을 말하고 usually로 예외가 있음을 남겨 약속을 과장하지 않아요. 감염원이던 카테터를 빼고 항생제를 쓰면 대개 경과가 좋아져요."
+      decoy: "at the desk"
+      distractorsKo: ["항생제는 계속 필요할 수 있어요", "열이 내리는지 지켜볼게요"]
+      blank:
+        answer: "out"
+        options:
+          - {en: "in"}
+          - {en: "out"}
+          - {en: "taped"}
+          - {en: "open"}
   nuance:
   - kind: slider
     words:
@@ -108470,6 +109689,30 @@
       ok: false
       fix: We took blood from your line and from your arm to check if the line is infected.
     why: paired cultures·peripheral venipuncture는 의료진끼리의 말이에요. 환자에게는 '라인과 팔에서 피를 뽑아 라인 감염인지 본다'고 말해요.
+    word: peripheral
+    ko: 말초
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 카테터 균혈증 설명 4문장 순서
+    why: 증상과 라인의 연결을 알리고, 'that'이 그 의심을 가리켜 배양을 채취한 뒤 바로 항생제를 시작한다고 하고, 'those cultures'가 그 배양을 가리켜 라인이 원인이면 제거 가능성을 말하고, 'it's out'이 그 제거를 가리켜 그 뒤 경과를 말해요. 'those cultures'·'it'·'it's out'이 앞 줄을 가리켜 순서가 하나예요. 항생제는 배양 직후 바로 시작해요.
+    lines:
+    - en: You have chills and fever right after dialysis, which often points to the line.
+      icon: calendar
+      ko: 투석 직후 오한과 열이 있어서 라인을 의심해요
+      note: 의심
+    - en: We'll check that with cultures from the line and your arm, then start antibiotics now.
+      icon: lab
+      ko: 그걸 확인하려고 라인과 팔에서 배양을 채취하고 바로 항생제를 시작할게요
+      note: 검사
+    - en: If those cultures show the line is the source, we may need to remove it.
+      icon: scalpel
+      ko: 그 배양에서 라인이 원인으로 나오면 제거해야 할 수 있어요
+      note: 제거
+    - en: Once it's out, the infection usually starts to clear.
+      icon: check
+      ko: 라인을 빼고 나면 감염은 보통 가라앉기 시작해요
+      note: 경과
 
 - theme: er-sepsis
   title: 산모 패혈증
@@ -108494,31 +109737,103 @@
       chunks: ["We're treating", "your infection", "and watching your baby", "at the same time", "."]
       words: [w-treat, w-infection, w-watch]
       goal: 1
+      tag: "동시 관리"
+      icon: "baby"
+      why: "treating과 watching을 and로 이어 산모와 아기를 둘 다 본다고 한 문장에 말해요. 임신 중 패혈증은 산모를 치료하는 것이 곧 태아를 지키는 길이어서 둘을 함께 살펴요."
+      decoy: "by yourself"
+      distractorsKo: ["진통이 있으면 바로 말씀해 주세요", "아기 심장 소리를 들려 드릴게요"]
+      blank:
+        answer: "same"
+        options:
+          - {en: "last"}
+          - {en: "same"}
+          - {en: "next"}
+          - {en: "other"}
     - en: "We're starting fluids and antibiotics that are safe in pregnancy."
       ko: "임신 중에도 안전한 수액과 항생제를 시작할게요."
       chunks: ["We're starting fluids", "and antibiotics", "that are safe", "in pregnancy", "."]
       words: [w-start, w-fluid, w-antibiotic, w-pregnant]
       goal: 2
+      tag: "임신 안전"
+      icon: "shield"
+      why: "that are safe in pregnancy로 약이 안전하다는 점을 수식으로 붙여 산모의 가장 큰 걱정(아기에게 해로울까)에 먼저 답해요. 임신 중 패혈증도 항생제를 미루지 않고 임신에 안전한 계열로 골라 바로 시작해요."
+      decoy: "that are cheap"
+      distractorsKo: ["수액은 팔로 들어가요", "알레르기가 있는지 확인할게요"]
+      blank:
+        answer: "pregnancy"
+        options:
+          - {en: "children"}
+          - {en: "infants"}
+          - {en: "pregnancy"}
+          - {en: "older adults"}
     - en: "We're monitoring your baby's heartbeat continuously."
       ko: "아기의 심장박동을 계속 감시하고 있어요."
       chunks: ["We're monitoring", "your baby's heartbeat", "continuously", "."]
       words: [w-monitor, w-heartbeat, w-continuous]
       goal: 2
+      tag: "태아 감시"
+      icon: "monitor"
+      why: "continuously로 중간중간이 아니라 끊김 없이 본다고 분명히 말해요. 산모가 아프면 태아도 영향을 받아 산소가 모자랄 수 있어서 태아 심박동을 지속적으로 확인해요."
+      decoy: "your baby's weight"
+      distractorsKo: ["아기 움직임을 세어 보세요", "진통 간격을 알려 주세요"]
+      blank:
+        answer: "heartbeat"
+        options:
+          - {en: "movements"}
+          - {en: "position"}
+          - {en: "growth"}
+          - {en: "heartbeat"}
     - en: "Your fever and fast heart rate need quick treatment for both of you."
       ko: "열과 빠른 심박수 모두 두 분을 위해 빠른 치료가 필요해요."
       chunks: ["Your fever", "and fast heart rate", "need quick treatment", "for both of you", "."]
       words: [w-fever, w-fast, w-heart, w-rate, w-need, w-quick, w-treatment]
       goal: 1
+      tag: "빠른 치료"
+      icon: "siren"
+      why: "both of you로 산모와 아기 모두에게 해당한다고 말해 치료가 산모만을 위한 것이 아님을 알려요. 산모의 열과 빠른 맥은 태아에게 가는 산소를 줄일 수 있어서 빠른 치료가 둘 다를 지켜요."
+      decoy: "and low blood sugar"
+      distractorsKo: ["아기 상태를 계속 볼게요", "의사가 곧 올 거예요"]
+      blank:
+        answer: "fever"
+        options:
+          - {en: "fever"}
+          - {en: "rash"}
+          - {en: "bruise"}
+          - {en: "cough"}
     - en: "Tell me if you feel the baby moving less than usual."
       ko: "아기가 평소보다 덜 움직인다고 느끼면 말씀해 주세요."
       chunks: ["Tell me", "if you feel", "the baby moving", "less than usual", "."]
       words: [w-tell, w-feel, w-move, w-little, w-usual]
       goal: 1
+      tag: "태동 보고"
+      icon: "baby"
+      why: "less than usual로 평소 대비 변화를 기준으로 삼아 산모가 자기 아기의 평소 움직임을 기준으로 판단하게 해요. 태동이 줄면 태아 상태가 나빠졌다는 신호일 수 있어서 바로 알려야 해요."
+      decoy: "more than usual"
+      distractorsKo: ["진통 간격을 재 주세요", "배가 단단해지면 말씀해 주세요"]
+      blank:
+        answer: "less"
+        options:
+          - {en: "harder"}
+          - {en: "less"}
+          - {en: "more"}
+          - {en: "faster"}
     - en: "The medicines we're giving are chosen to be safe for your baby."
       ko: "저희가 드리는 약들은 아기에게 안전하도록 고른 거예요."
       chunks: ["The medicines we're giving", "are chosen", "to be safe", "for your baby", "."]
       words: [w-medicine, w-give, w-choose]
       goal: 2
+      tag: "약 안전성"
+      icon: "pill"
+      why: "are chosen으로 행위자를 앞세우지 않고 선택이 이루어졌다는 수동태라, 우연이 아니라 신중하게 골랐다는 느낌을 줘요. 임신 중에는 태아 위험이 적은 약을 우선해 고르고 의사·약사가 확인해요."
+      decoy: "by chance"
+      distractorsKo: ["약 이름이 궁금하면 말씀해 주세요", "의사가 약을 하나씩 설명할 거예요"]
+      blank:
+        answer: "safe"
+        options:
+          - {en: "strong"}
+          - {en: "cheap"}
+          - {en: "safe"}
+          - {en: "quick"}
   nuance:
   - kind: swap
     words:
@@ -108541,6 +109856,7 @@
       FHR: fetal heart rate의 약어. 의료진끼리 쓰는 말이라 산모는 모른다.
       fetal tracing: 모니터 기록지를 가리키는 의료진의 말. 산모에게는 낯설다.
     why: 같은 태아 감시라도 산모에게는 '아기 심장박동'처럼 쉬운 말로 말해요.
+    ko: 아기의 심장박동을 계속 확인하고 있어요
   - kind: slider
     words:
     - w-move
@@ -108556,6 +109872,28 @@
     why: 평소보다 태동이 줄었다는 건 바로 알려야 할 변화예요. 열과 빠른 맥이 있는 산모라면 태아 심박 감시를 곧바로 함께 확인해요.
     example: Tell me if you feel the baby moving less than usual.
     exKo: 아기가 평소보다 덜 움직인다고 느끼면 말씀해 주세요.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 산모 패혈증 설명 4문장 순서
+    why: 감염이 둘 다에게 영향을 준다고 알리고, 'That's why'가 그것을 이유로 받아 안전한 치료를 말하고, 'those'가 그 치료를 가리켜 태아 감시를 더하고, 'the monitor'가 그 감시를 가리켜 태동 보고를 부탁해요. 'That's why'·'Along with those'·'the monitor'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: You have an infection, and it's affecting both you and your baby.
+      icon: baby
+      ko: 감염이 있고 산모님과 아기 모두에게 영향을 주고 있어요
+      note: 상황
+    - en: That's why we're starting fluids and antibiotics that are safe in pregnancy.
+      icon: shield
+      ko: 그래서 임신 중에 안전한 수액과 항생제를 시작할게요
+      note: 치료
+    - en: Along with those, we're monitoring your baby's heartbeat continuously.
+      icon: monitor
+      ko: 그와 함께 아기 심장박동을 계속 확인하고 있어요
+      note: 감시
+    - en: Tell me if the baby moves less than usual, even if the monitor looks fine.
+      icon: bell
+      ko: 모니터가 괜찮아 보여도 아기가 평소보다 덜 움직이면 말씀해 주세요
+      note: 보고
 
 - theme: er-sepsis
   title: 패혈증 언어장벽 위중
@@ -108580,31 +109918,103 @@
       chunks: ["Through the interpreter", "— we believe", "she has", "a serious infection", "."]
       words: [w-interpreter, w-believe, w-serious, w-infection]
       goal: 1
+      tag: "통역 전달"
+      icon: "speech"
+      why: "believe로 확진 전의 판단임을 정직하게 말하면서 serious로 긴급성은 분명히 해요. 통역을 쓸 때도 통역사가 아니라 가족을 보며 직접 말해요."
+      decoy: "by phone"
+      distractorsKo: ["통역사를 전화로 연결할게요", "성함 철자를 확인해 주세요"]
+      blank:
+        answer: "infection"
+        options:
+          - {en: "bruise"}
+          - {en: "blister"}
+          - {en: "infection"}
+          - {en: "burn"}
     - en: "We're giving fluids and antibiotics urgently, and I'll explain each step."
       ko: "수액과 항생제를 긴급하게 드리고 있고, 각 단계를 설명해 드릴게요."
       chunks: ["We're giving fluids", "and antibiotics urgently,", "and I'll explain", "each step", "."]
       words: [w-give, w-fluid, w-antibiotic, w-urgent, w-explain, w-step]
       goal: 2
+      tag: "긴급 설명"
+      icon: "bell"
+      why: "urgently와 I'll explain으로 급하게 움직이지만 설명은 빼놓지 않겠다고 한 문장에 담아요. 통역을 쓰는 환자와 가족은 상황을 모른 채 처치를 받기 쉬워서 단계마다 설명하겠다고 먼저 약속해요."
+      decoy: "in the hall"
+      distractorsKo: ["가족분께 설명서를 드릴게요", "서명은 통역사와 함께 받을게요"]
+      blank:
+        answer: "urgently"
+        options:
+          - {en: "quietly"}
+          - {en: "politely"}
+          - {en: "cheerfully"}
+          - {en: "urgently"}
     - en: "Please ask her where she feels pain and when this started."
       ko: "어디가 아프고 언제부터 시작됐는지 여쭤봐 주세요."
       chunks: ["Please ask her", "where she feels", "pain", "and when this started", "."]
       words: [w-ask, w-feel, w-pain, w-start]
       goal: 1
+      tag: "통역 요청"
+      icon: "speech"
+      why: "where와 when 두 질문을 짧게 나눠 통역에서 뜻이 덜 흐려져요. 다만 미국 병원 표준은 통역사에게 'ask her'로 넘기기보다 환자를 보며 'Where do you feel pain?'처럼 직접 묻는 거예요."
+      decoy: "for me"
+      distractorsKo: ["보호자분 연락처를 물어봐 주세요", "병원에 오기 전 무엇을 드셨는지 물어봐 주세요"]
+      blank:
+        answer: "feels"
+        options:
+          - {en: "feels"}
+          - {en: "sees"}
+          - {en: "hears"}
+          - {en: "tastes"}
     - en: "Ask the interpreter to find out if she has any allergies."
       ko: "알레르기가 있는지 통역을 통해 확인해 주세요."
       chunks: ["Ask the interpreter", "to find out", "if she has", "any allergies", "."]
       words: [w-ask, w-interpreter, w-find, w-allergy]
       goal: 1
+      tag: "알레르기 확인"
+      icon: "shield"
+      why: "Ask the interpreter to…로 통역사를 거쳐 물어보는 순서를 분명히 하고 find out if로 예/아니오로 답할 수 있는 질문으로 만들어요. 항생제를 쓰기 전에는 알레르기 확인이 기본 안전 확인이에요."
+      decoy: "any questions"
+      distractorsKo: ["환자분이 쓰는 언어를 한 번 더 확인해 주세요", "글을 읽을 수 있는지도 물어봐 주세요"]
+      blank:
+        answer: "allergies"
+        options:
+          - {en: "implants"}
+          - {en: "allergies"}
+          - {en: "children"}
+          - {en: "insurance"}
     - en: "I'll explain through the interpreter before we start each new step."
       ko: "새 단계를 시작하기 전에 통역을 통해 설명할게요."
       chunks: ["I'll explain", "through the interpreter", "before we start", "each new step", "."]
       words: [w-explain, w-interpreter, w-start, w-new, w-step]
       goal: 2
+      tag: "단계 전 설명"
+      icon: "speech"
+      why: "before로 새 처치 전에 통역을 거쳐 먼저 설명한다는 순서를 약속해요. 통역은 시간이 더 걸려서 한 번에 한 가지씩 짧게 전하는 것이 좋아요."
+      decoy: "on the phone"
+      distractorsKo: ["통역사가 곧 도착할 거예요", "환자분이 이해했는지 확인해 주세요"]
+      blank:
+        answer: "new"
+        options:
+          - {en: "tiny"}
+          - {en: "quiet"}
+          - {en: "new"}
+          - {en: "old"}
     - en: "We're moving quickly because her infection is very serious."
       ko: "감염이 매우 심각해서 빠르게 움직이고 있어요."
       chunks: ["We're moving", "quickly", "because her infection", "is very serious", "."]
       words: [w-move, w-quick, w-infection, w-serious]
       goal: 2
+      tag: "긴급 이유"
+      icon: "siren"
+      why: "because로 서두르는 이유를 바로 밝혀 가족이 놀라거나 오해하지 않게 해요. very serious로 심각도를 숨기지 않으면서 설명은 짧고 담담하게 해요."
+      decoy: "for lunch"
+      distractorsKo: ["다른 가족분도 곧 부를게요", "의사가 곧 설명해 줄 거예요"]
+      blank:
+        answer: "serious"
+        options:
+          - {en: "common"}
+          - {en: "new"}
+          - {en: "strange"}
+          - {en: "serious"}
   nuance:
   - kind: slider
     words:
@@ -108637,10 +110047,34 @@
       ok: true
     - who: 통역을 거쳐 가족에게
       icon: me
-      en: She's got a nasty bug, but hang in there.
+      en: She's septic from a urinary source, but hang in there.
       ok: false
       fix: We believe she has a serious infection, and we are treating it now.
-    why: 통역을 거칠 때는 관용어·속어(nasty bug, hang in there)를 피하고 짧고 분명한 문장으로 말해요. 관용어는 다른 언어로 그대로 옮겨지지 않아 뜻이 흐려지거나 가볍게 들려요.
+    why: septic·urinary source 같은 임상 줄임말과 hang in there 같은 관용어는 통역에서 그대로 옮겨지지 않아요. 가족에게는 짧고 분명한 말로 해요.
+    word: urinary source
+    ko: 요로 감염원
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 통역 환자 설명 4문장 순서
+    why: '''That''s why''가 1번 줄을 받고, ''the antibiotic''이 2번 줄을 가리키고, ''Thank you''가 알레르기 대답을 받아요. 통역을 써도 통역사가 아니라 환자를 보고 1인칭으로 말해요.'
+    lines:
+    - en: We believe you have a serious infection.
+      icon: speech
+      ko: 심각한 감염이 있다고 생각해요
+      note: 전달
+    - en: That's why we're starting fluids and antibiotics now, and I'll explain each step.
+      icon: bell
+      ko: 그래서 수액과 항생제를 지금 시작하고, 각 단계를 설명할게요
+      note: 약속
+    - en: Before I give you the antibiotic, do you have any allergies?
+      icon: shield
+      ko: 항생제를 드리기 전에 알레르기가 있으신가요?
+      note: 알레르기
+    - en: Thank you. Now, where do you feel pain, and when did this start?
+      icon: speech
+      ko: 고마워요. 이제 어디가 아프고 언제 시작됐는지 말씀해 주세요
+      note: 증상
 
 - theme: er-sepsis
   title: 패혈성 쇼크 승압제
@@ -108665,31 +110099,103 @@
       chunks: ["Fluid-refractory shock", "— we need", "to start norepinephrine", "now", "."]
       words: [w-fluid, w-refractory, w-shock, w-need, w-start, w-norepinephrine]
       goal: 1
+      tag: "승압제 시작"
+      icon: "siren"
+      why: "Fluid-refractory shock으로 상태를 먼저 말하고 we need to start…로 요청을 붙여, SBAR의 평가와 요청이 한 문장에 담겨요. 수액에도 혈압이 오르지 않으면(수액 불응) 노르에피네프린 같은 승압제를 시작해요."
+      decoy: "in the hall"
+      distractorsKo: ["중심라인 키트를 가져올게요", "혈액배양은 이미 나갔습니다"]
+      blank:
+        answer: "shock"
+        options:
+          - {en: "pain"}
+          - {en: "nausea"}
+          - {en: "itching"}
+          - {en: "shock"}
     - en: "Prepare for central access to run the pressor safely."
       ko: "승압제를 안전하게 쓰려면 중심라인을 준비해 주세요."
       chunks: ["Prepare for central access", "to run", "the pressor", "safely", "."]
       words: [w-prepare, w-central, w-access, w-run, w-pressor]
       goal: 2
+      tag: "중심라인 준비"
+      icon: "pill"
+      why: "Prepare for…로 앞으로 필요한 것을 미리 준비하라는 지시예요. safely로 이유를 덧붙여요. 승압제는 말초로 오래 주면 혈관 밖으로 새어 조직이 상할 수 있어서 중심 정맥로가 더 안전해요. 다만 중심라인을 기다리느라 승압제를 미루지는 않아요 — 그동안은 굵은 말초정맥으로 먼저 시작해요(SSC 2021)."
+      decoy: "for lunch"
+      distractorsKo: ["가족에게 상황을 알려 주세요", "동의서를 가져와 주세요"]
+      blank:
+        answer: "pressor"
+        options:
+          - {en: "pressor"}
+          - {en: "antibiotic"}
+          - {en: "saline"}
+          - {en: "blood"}
     - en: "Septic shock, MAP under sixty-five after two liters — I need the physician at bedside."
       ko: "패혈성 쇼크, 2리터 수액 뒤에도 MAP이 65 미만입니다 — 의사가 침상 곁에 필요해요."
       chunks: ["Septic shock,", "MAP under sixty-five", "after two liters", "— I need", "the physician at bedside", "."]
       words: [w-septic, w-shock, w-map, w-liter, w-need, w-physician, w-bedside]
       goal: 2
+      tag: "SBAR 요청"
+      icon: "speech"
+      why: "Septic shock, MAP under sixty-five로 상황과 평가를 숫자로 먼저 말하고, 마지막 I need…로 SBAR의 R(요청)을 분명히 해요. 수액 뒤에도 MAP이 65 미만이면 승압제를 시작하는 기준이에요."
+      decoy: "by phone"
+      distractorsKo: ["혈액배양은 이미 나갔습니다", "젖산은 4로 나왔습니다"]
+      blank:
+        answer: "physician"
+        options:
+          - {en: "porter"}
+          - {en: "physician"}
+          - {en: "dietitian"}
+          - {en: "chaplain"}
     - en: "Two liters in and pressure still low — starting the pressor."
       ko: "2리터가 들어갔는데도 혈압이 여전히 낮습니다 — 승압제를 시작할게요."
       chunks: ["Two liters in", "and pressure", "still low", "— starting the pressor", "."]
       words: [w-liter, w-pressure, w-low, w-start, w-pressor]
       goal: 1
+      tag: "보고 한 줄"
+      icon: "monitor"
+      why: "수액 양과 반응을 먼저 말하고 대시 뒤에 하는 일을 붙여, 한 문장에 상태에서 행동까지 담아요. 충분한 수액(대개 체중 1 kg당 30 mL)을 준 뒤에도 MAP이 65 미만이면 승압제로 넘어가요. 수액 도중이라도 혈압이 너무 낮으면 미루지 않아요."
+      decoy: "still high"
+      distractorsKo: ["동의서에 서명받았습니다", "중심라인 준비해 주세요"]
+      blank:
+        answer: "pressor"
+        options:
+          - {en: "monitor"}
+          - {en: "warmer"}
+          - {en: "pressor"}
+          - {en: "timer"}
     - en: "I'll get the central line tray ready while you call the doctor."
       ko: "선생님이 전화하시는 동안 저는 중심라인 트레이를 준비할게요."
       chunks: ["I'll get", "the central line tray ready", "while you call", "the doctor", "."]
       words: [w-get, w-central, w-line, w-ready, w-call]
       goal: 2
+      tag: "역할 분담"
+      icon: "board"
+      why: "I'll…while you…로 두 사람이 동시에 할 일을 나눠 말해 시간을 아껴요. 중심라인 트레이를 미리 준비해 두면 의사가 오자마자 삽입을 시작할 수 있어요."
+      decoy: "in the room"
+      distractorsKo: ["말초라인 부위를 확인할게요", "승압제 펌프를 세팅할게요"]
+      blank:
+        answer: "tray"
+        options:
+          - {en: "consent"}
+          - {en: "dressing"}
+          - {en: "X-ray"}
+          - {en: "tray"}
     - en: "Pressor's running through the peripheral line until central access is in."
       ko: "중심라인이 들어갈 때까지 말초라인으로 승압제를 주고 있어요."
       chunks: ["Pressor's running", "through the peripheral line", "until central access", "is in", "."]
       words: [w-pressor, w-run, w-line, w-central, w-access]
       goal: 2
+      tag: "임시 경로"
+      icon: "pill"
+      why: "until로 임시 조치가 언제까지인지 끝을 정해 둬서 말초 투여가 계속되는 방법이 아니라 다리 역할임을 분명히 해요. 말초로 승압제를 먼저 시작하고 미루지 않는 것이 권고돼요(SSC 2021). 그동안 주사 부위가 새는지 자주 살펴요."
+      decoy: "in the hall"
+      distractorsKo: ["말초라인 부위는 자주 확인할게요", "중심라인 동의서는 받았어요"]
+      blank:
+        answer: "central"
+        options:
+          - {en: "central"}
+          - {en: "arterial"}
+          - {en: "dialysis"}
+          - {en: "IO"}
   nuance:
   - kind: pair
     words:
@@ -108732,6 +110238,29 @@
       whenever they're free: 급하지 않은 일처럼 들려, 수액 불응 쇼크의 무게가 전해지지 않는다.
       to call me back: 전화 회신만으로는 중심라인·승압제 결정을 침상에서 바로 내리기 어렵다.
     why: SBAR의 마지막 R(요청)은 무엇을, 언제까지 원하는지 구체적으로 말해요. 수액 불응 쇼크라면 '지금 침상으로'예요.
+    ko: 패혈성 쇼크, 2리터 수액 뒤에도 MAP이 65 미만이에요 — 의사가 침상 곁에 필요해요
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 승압제 시작 보고 4문장 순서
+    why: 상황을 보고하고, 'That's'가 그 상황을 가리켜 쇼크를 알리며 승압제 처방을 위해 의사를 요청하고, 'that order'가 그 처방을 받아 말초로 바로 시작하고, 'the pressor'가 그 승압제를 가리켜 중심라인이 들어오면 옮긴다고 말해요. 승압제는 처방이 있어야 시작하니 평가·요청이 먼저예요. 시작은 중심라인을 기다리지 않고 말초로 해요.
+    lines:
+    - en: Two liters in and her MAP is still under sixty-five.
+      icon: monitor
+      ko: 2리터가 들어갔는데 MAP이 여전히 65 미만이에요
+      note: 상황
+    - en: That's septic shock — I need the physician at bedside for a pressor order.
+      icon: speech
+      ko: 패혈성 쇼크예요 — 승압제 처방을 위해 의사가 침상 곁에 필요해요
+      note: 요청
+    - en: With that order, I'll start norepinephrine in her peripheral IV right away.
+      icon: pill
+      ko: 그 처방이 나오면 말초 정맥로로 바로 노르에피네프린을 시작할게요
+      note: 시작
+    - en: Once the central line is in, I'll move the pressor over to it.
+      icon: pill
+      ko: 중심라인이 들어가면 승압제를 그쪽으로 옮길게요
+      note: 이동
 
 - theme: er-sepsis
   title: 다장기부전 진행
@@ -108756,31 +110285,103 @@
       chunks: ["The infection", "is now", "affecting several", "of her organs", "."]
       words: [w-infection, w-affect, w-several, w-organ]
       goal: 1
+      tag: "장기 영향"
+      icon: "bell"
+      why: "is now affecting으로 지금 진행 중인 일을 말하고 several of her organs로 범위를 구체적으로 알려요. 가족에게 여러 장기라는 틀을 먼저 주면 이어지는 설명(신장·간·응고)이 쉽게 들려요."
+      decoy: "of her medicines"
+      distractorsKo: ["의사가 곧 자세히 설명할 거예요", "잠시 앉아서 들으셔도 돼요"]
+      blank:
+        answer: "organs"
+        options:
+          - {en: "organs"}
+          - {en: "joints"}
+          - {en: "muscles"}
+          - {en: "bones"}
     - en: "We're supporting her kidneys, liver, and blood clotting as best we can."
       ko: "신장과 간, 혈액응고를 저희가 할 수 있는 만큼 지지하고 있어요."
       chunks: ["We're supporting her kidneys,", "liver,", "and blood clotting", "as best we can", "."]
       words: [w-support, w-kidney, w-blood, w-clot]
       goal: 1
+      tag: "장기 지지"
+      icon: "shield"
+      why: "as best we can로 할 수 있는 최선을 다한다고 말하되 결과를 약속하지 않아요. 다장기부전에서는 투석·승압제·수혈 등으로 각 장기의 기능을 대신 받쳐 주는 것이 치료의 핵심이에요."
+      decoy: "and blood sugar"
+      distractorsKo: ["신장 투석이 필요할 수도 있어요", "간 수치는 계속 확인해요"]
+      blank:
+        answer: "clotting"
+        options:
+          - {en: "donor"}
+          - {en: "clotting"}
+          - {en: "type"}
+          - {en: "bank"}
     - en: "This is very serious, and the team is doing everything possible."
       ko: "매우 심각한 상황이고, 저희 팀이 할 수 있는 모든 걸 하고 있어요."
       chunks: ["This is very serious,", "and the team", "is doing everything", "possible", "."]
       words: [w-serious, w-team, w-everything, w-possible]
       goal: 2
+      tag: "솔직한 전달"
+      icon: "faceWorried"
+      why: "very serious로 심각도를 숨기지 않고 말한 뒤 doing everything possible로 곁에 있다는 신호를 줘요. 위중한 상황의 가족에게는 현실을 흐리지 않되 함께한다는 말을 같이 건네요."
+      decoy: "and the visitors"
+      distractorsKo: ["기다리는 동안 앉을 곳을 안내해 드릴게요", "원하시면 원목 담당자를 부를 수 있어요"]
+      blank:
+        answer: "team"
+        options:
+          - {en: "family"}
+          - {en: "chaplain"}
+          - {en: "team"}
+          - {en: "lab"}
     - en: "Her kidney numbers and liver numbers are both getting worse."
       ko: "신장 수치와 간 수치가 둘 다 나빠지고 있어요."
       chunks: ["Her kidney numbers", "and liver numbers", "are both", "getting worse", "."]
       words: [w-kidney, w-number, w-get]
       goal: 1
+      tag: "수치 악화"
+      icon: "chartup"
+      why: "numbers로 크레아티닌·간효소 같은 검사값을 가족이 알아듣는 말로 묶고 getting worse로 방향만 솔직하게 말해요. 신장과 간 수치가 함께 나빠지는 것은 장기 손상이 진행 중이라는 뜻이에요."
+      decoy: "and sugar numbers"
+      distractorsKo: ["수치가 바뀌면 다시 알려 드릴게요", "검사는 계속 반복할 거예요"]
+      blank:
+        answer: "kidney"
+        options:
+          - {en: "skin"}
+          - {en: "bone"}
+          - {en: "eye"}
+          - {en: "kidney"}
     - en: "Her blood isn't clotting as well as it should right now."
       ko: "지금 혈액응고가 정상만큼 잘 되지 않고 있어요."
       chunks: ["Her blood isn't", "clotting", "as well as it should", "right now", "."]
       words: [w-blood, w-clot]
       goal: 1
+      tag: "응고 설명"
+      icon: "lab"
+      why: "isn't clotting as well as it should로 정상이 아니라는 사실을 부정문으로 부드럽게 말해요. 패혈증이 심하면 응고 체계가 흐트러져(DIC) 피가 잘 안 굳거나 곳곳에 응고가 생길 수 있어요."
+      decoy: "for lunch"
+      distractorsKo: ["멍이나 출혈이 보이면 알려 주세요", "피검사를 더 할 수 있어요"]
+      blank:
+        answer: "clotting"
+        options:
+          - {en: "clotting"}
+          - {en: "flowing"}
+          - {en: "circulating"}
+          - {en: "moving"}
     - en: "We'll keep explaining every change as it happens."
       ko: "변화가 있을 때마다 계속 설명해 드릴게요."
       chunks: ["We'll keep explaining", "every change", "as it happens", "."]
       words: [w-explain, w-change, w-happen]
       goal: 2
+      tag: "소통 약속"
+      icon: "speech"
+      why: "keep explaining으로 한 번이 아니라 계속 설명한다고 약속하고 as it happens로 변화가 생기는 대로 알리겠다고 해요. 위중한 환자의 가족은 소식을 모르는 시간이 가장 힘들어서 소식을 끊지 않겠다는 약속이 큰 위안이 돼요."
+      decoy: "at night"
+      distractorsKo: ["면회 시간은 정해져 있어요", "연락 가능한 번호를 한 번 더 알려 주세요"]
+      blank:
+        answer: "explaining"
+        options:
+          - {en: "recording"}
+          - {en: "explaining"}
+          - {en: "checking"}
+          - {en: "watching"}
   nuance:
   - kind: slider
     words:
@@ -108806,7 +110407,7 @@
     scenes:
     - who: 차트 기록
       icon: board
-      en: AKI (Cr 3.1), shock liver, evolving DIC — MODS.
+      en: AKI (Cr 3.1), shock liver, evolving DIC — multi-organ failure.
       ok: true
     - who: ICU 의사에게
       icon: speech
@@ -108814,10 +110415,12 @@
       ok: true
     - who: 가족에게
       icon: me
-      en: She has MODS with AKI, shock liver, and DIC.
+      en: She has multi-organ failure with AKI, shock liver, and DIC.
       ok: false
       fix: The infection is now affecting several of her organs — her kidneys, her liver, and her blood's ability to clot.
-    why: MODS·AKI·DIC는 의료진끼리의 약어예요. 가족에게는 어떤 장기가 영향을 받는지 쉬운 말로 하나씩 짚어요.
+    why: AKI·shock liver·DIC 같은 약어를 늘어놓는 것은 차트와 의료진끼리의 말이에요. 가족에게는 어떤 장기가 영향을 받는지 쉬운 말로 하나씩 짚어요.
+    word: organ failure
+    ko: 장기부전
   - kind: swap
     words:
     - w-blood
@@ -108838,6 +110441,29 @@
       coagulating: 맞는 말이지만 의학 용어라 가족에게는 딱딱하다.
       thickening: 뜻이 다르다. 피가 진해진다는 말로 들려 오해를 부른다.
     why: 같은 응고 이상이라도 가족에게는 clotting처럼 쉬운 말로 말해요.
+    ko: 지금 환자분의 피가 정상만큼 잘 응고되지 않고 있어요
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 다장기부전 가족 설명 4문장 순서
+    why: 먼저 솔직하게 상황을 알리고, 'numbers'가 그 상황을 구체적으로 보이고, 'those organs'가 그 장기들을 가리켜 중증도와 대응을 말하고, 'that's a lot to hear'가 그 무거운 말을 받아 소통을 약속해요. 'those organs'·'that's a lot to hear'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: 'I''ll be honest: her infection is now affecting several of her organs.'
+      icon: faceWorried
+      ko: 솔직하게 말씀드릴게요, 감염이 이제 여러 장기에 영향을 주고 있어요
+      note: 상황
+    - en: Her kidney and liver numbers are getting worse, and her blood isn't clotting well.
+      icon: chartup
+      ko: 신장 수치와 간 수치가 나빠지고 있고 피도 정상만큼 잘 응고되지 않아요
+      note: 수치
+    - en: This is very serious, and the team is doing everything possible to support those organs.
+      icon: shield
+      ko: 매우 심각하고, 저희 팀이 그 장기들을 지지하려고 할 수 있는 모든 걸 하고 있어요
+      note: 대응
+    - en: I know that's a lot to hear, and we'll keep explaining every change.
+      icon: speech
+      ko: 듣기 힘드실 거 알아요, 변화마다 계속 설명해 드릴게요
+      note: 공감
 
 - theme: er-sepsis
   title: 젖산 지속상승 위기
@@ -108862,31 +110488,103 @@
       chunks: ["Your lactate is still climbing,", "which tells me", "you need", "more support", "."]
       words: [w-lactate, w-climb, w-tell, w-need, w-support]
       goal: 1
+      tag: "수치 상승"
+      icon: "chartup"
+      why: "still로 이미 수액을 줬는데도 계속이라는 뜻을 넣고 which tells me로 그 수치가 알려 주는 판단(지지가 더 필요함)을 이어요. 수액 후에도 젖산이 계속 오르면 소생이 충분치 않다는 신호예요."
+      decoy: "more visitors"
+      distractorsKo: ["의사를 곧 다시 부를게요", "젖산을 한 번 더 확인할게요"]
+      blank:
+        answer: "lactate"
+        options:
+          - {en: "potassium"}
+          - {en: "lactate"}
+          - {en: "sugar"}
+          - {en: "temperature"}
     - en: "The mottling of your skin means your circulation is struggling."
       ko: "피부에 얼룩덜룩한 게 생긴 건 순환이 힘겨워하고 있다는 뜻이에요."
       chunks: ["The mottling", "of your skin", "means your circulation", "is struggling", "."]
       words: [w-mottle, w-skin, w-mean, w-circulation, w-struggle]
       goal: 1
+      tag: "피부 얼룩"
+      icon: "faceWorried"
+      why: "means로 눈에 보이는 징후를 곧바로 뜻으로 풀어 환자가 이유를 이해하게 해요. 피부가 얼룩덜룩해지는 것은 혈액이 피부까지 충분히 못 가는 쇼크의 신호예요."
+      decoy: "this morning"
+      distractorsKo: ["피부를 만지지 마세요", "손발을 따뜻하게 덮어 드릴게요"]
+      blank:
+        answer: "circulation"
+        options:
+          - {en: "vision"}
+          - {en: "memory"}
+          - {en: "circulation"}
+          - {en: "digestion"}
     - en: "I'm escalating this now and getting the physician back in immediately."
       ko: "지금 이걸 상급 보고하고 의사를 즉시 다시 부를게요."
       chunks: ["I'm escalating this now", "and getting the physician", "back in", "immediately", "."]
       words: [w-escalate, w-get, w-physician, w-immediate]
       goal: 2
+      tag: "즉시 상급 보고"
+      icon: "siren"
+      why: "escalating과 immediately로 윗선에 올린다는 행동과 지체 없음이라는 속도를 한 문장에 담아요. 소생에 반응하지 않을 때는 기다리지 않고 바로 의사를 다시 불러요."
+      decoy: "and getting the pharmacist"
+      distractorsKo: ["의사가 오면 상황을 바로 설명할게요", "가족분께도 연락할게요"]
+      blank:
+        answer: "escalating"
+        options:
+          - {en: "documenting"}
+          - {en: "watching"}
+          - {en: "rechecking"}
+          - {en: "escalating"}
     - en: "Your hands and feet are going cold and blotchy."
       ko: "손발이 차가워지고 얼룩덜룩해지고 있어요."
       chunks: ["Your hands", "and feet", "are going cold", "and blotchy", "."]
       words: [w-cold, w-blotchy]
       goal: 1
+      tag: "손발 변화"
+      icon: "faceWorried"
+      why: "are going cold and blotchy로 지금 환자 몸에 일어나고 있는 변화를 환자 자신의 말로 그대로 짚어요. 쇼크에서는 몸이 중요한 장기로 피를 모으느라 손발이 차고 얼룩덜룩해져요."
+      decoy: "all day"
+      distractorsKo: ["손발을 담요로 덮어 드릴게요", "발 색이 변하면 알려 주세요"]
+      blank:
+        answer: "hands"
+        options:
+          - {en: "hands"}
+          - {en: "knees"}
+          - {en: "lips"}
+          - {en: "ears"}
     - en: "I'm calling the physician back now — this isn't improving."
       ko: "지금 의사를 다시 부를게요 — 좋아지지 않고 있어요."
       chunks: ["I'm calling", "the physician", "back now", "— this isn't improving", "."]
       words: [w-call, w-physician, w-improve]
       goal: 2
+      tag: "의사 재호출"
+      icon: "siren"
+      why: "now로 지금 부른다고 분명히 하고 대시 뒤에 이유(좋아지지 않음)를 붙여, 호출이 과잉 반응이 아니라 근거 있는 행동임을 보여 줘요. 치료에 반응하지 않으면 지체 없이 의사를 다시 불러요."
+      decoy: "by yourself"
+      distractorsKo: ["의사가 오면 바로 보고할게요", "가족분도 곧 부를게요"]
+      blank:
+        answer: "calling"
+        options:
+          - {en: "visiting"}
+          - {en: "calling"}
+          - {en: "thanking"}
+          - {en: "hiring"}
     - en: "A lactate that keeps rising means the fluids alone aren't enough."
       ko: "젖산이 계속 오른다는 건 수액만으로는 부족하다는 뜻이에요."
       chunks: ["A lactate", "that keeps rising", "means the fluids", "alone aren't enough", "."]
       words: [w-lactate, w-rise, w-mean, w-fluid, w-enough]
       goal: 2
+      tag: "추가 지지"
+      icon: "bell"
+      why: "alone으로 수액이 틀렸다는 말이 아니라 수액만으로는 모자란다는 말로 이어요. 젖산이 계속 오르는 것은 수액만으로 쇼크가 풀리지 않는다는 신호라, 승압제 등 다른 처치를 의사와 정해요."
+      decoy: "that keeps changing"
+      distractorsKo: ["다음 단계는 의사가 정할 거예요", "소변량도 같이 확인할게요"]
+      blank:
+        answer: "fluids"
+        options:
+          - {en: "antibiotics"}
+          - {en: "oxygen"}
+          - {en: "fluids"}
+          - {en: "blood tests"}
   nuance:
   - kind: slider
     words:
@@ -108922,7 +110620,9 @@
       en: You have mottling to bilateral knees with a cap refill of five seconds.
       ok: false
       fix: Your skin is getting blotchy and cold, which means your circulation is struggling.
-    why: 차트와 보고에는 범위와 수치(무릎까지, 모세혈관 재충전 5초)를 정확히 적지만, 환자에게는 피부가 얼룩덜룩하고 차가워진다는 것과 그 뜻을 쉬운 말로 전해요. mottling이라는 말을 쓰더라도 '순환이 힘겹다'고 바로 풀어 주면 되고, 환자에게 틀린 건 '무릎까지·5초' 같은 범위와 수치를 그대로 말한 것이에요.
+    why: mottling·bilateral knees·cap refill 5초는 차트와 보고의 말이에요. 환자에게는 '피부가 얼룩덜룩하고 차가워진다, 순환이 힘겹다'고 쉬운 말로 풀어요.
+    word: mottling
+    ko: 피부 얼룩
   - kind: swap
     words:
     - w-call
@@ -108944,6 +110644,29 @@
       sometime soon: 언제인지 흐려서 급한 상황이 급하게 들리지 않는다.
       after the next bag: 젖산이 오르는데 수액만 더 주며 기다리는 건 소생 실패를 놓치는 길이다.
     why: 젖산이 계속 오르고 피부가 얼룩덜룩해지면 '지금' 의사를 다시 불러요.
+    ko: 지금 의사를 다시 부를게요 — 좋아지지 않고 있어요
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 젖산 지속 상승 설명 4문장 순서
+    why: 수치를 알리고, 'that'이 그 판단을 가리켜 피부 변화를 연결하고, 'this'가 그 상황을 가리켜 의사 호출을 알리고, 'They'가 그 의사를 가리켜 다음 설명을 말해요. 'that'·'this'·'They'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: Your lactate is still climbing, which tells me you need more support.
+      icon: chartup
+      ko: 젖산이 계속 올라서 지지가 더 필요하다는 뜻이에요
+      note: 수치
+    - en: The cold, blotchy skin on your hands and feet fits with that.
+      icon: faceWorried
+      ko: 손발의 차고 얼룩덜룩한 피부도 그것과 맞아요
+      note: 징후
+    - en: I'm calling the physician back now because none of this is improving.
+      icon: siren
+      ko: 이 중 어느 것도 좋아지지 않아서 지금 의사를 다시 부를게요
+      note: 호출
+    - en: They'll talk with you about what comes next, and I'll explain it as we go.
+      icon: speech
+      ko: 그분이 다음 계획을 말씀드리고 저는 진행하며 설명해 드릴게요
+      note: 안내
 
 - theme: er-sepsis
   title: 쇼크 급변 삽관
@@ -108968,31 +110691,103 @@
       chunks: ["Your breathing is tiring out,", "so we're going", "to help you", "with a tube", "."]
       words: [w-breathe, w-tire, w-help, w-tube]
       goal: 1
+      tag: "삽관 안내"
+      icon: "stetho"
+      why: "is tiring out으로 환자의 호흡이 지쳐 간다는 사실을 환자도 알아듣는 말로 말하고 so로 그래서 하는 일을 이어요. 호흡근이 지치면 호흡이 멈추기 전에 기관 튜브로 호흡을 도와요."
+      decoy: "by yourself"
+      distractorsKo: ["가족에게 곧 연락할게요", "입 안을 한번 볼게요"]
+      blank:
+        answer: "tube"
+        options:
+          - {en: "mask"}
+          - {en: "nebulizer"}
+          - {en: "tube"}
+          - {en: "nasal cannula"}
     - en: "We're preparing everything to keep you safe during this."
       ko: "이 과정 동안 안전하게 지키려고 모든 걸 준비하고 있어요."
       chunks: ["We're preparing", "everything", "to keep you safe", "during this", "."]
       words: [w-prepare, w-everything, w-keep]
       goal: 2
+      tag: "준비 안심"
+      icon: "shield"
+      why: "everything과 keep you safe로 빠짐없이 준비하고 안전을 지킨다는 약속을 담아요. 삽관 중에는 산소와 혈압이 떨어질 수 있어서 약과 장비를 다 갖춰 놓고 시작해요."
+      decoy: "in the hall"
+      distractorsKo: ["마지막으로 드신 때를 여쭤볼게요", "알레르기가 있는지 다시 확인할게요"]
+      blank:
+        answer: "preparing"
+        options:
+          - {en: "checking"}
+          - {en: "cleaning"}
+          - {en: "moving"}
+          - {en: "preparing"}
     - en: "I'll be right here — try to stay calm and breathe with the oxygen."
       ko: "제가 바로 옆에 있을게요 — 차분히 계시고 산소와 함께 숨 쉬어 보세요."
       chunks: ["I'll be right here", "— try to stay calm", "and breathe", "with the oxygen", "."]
       words: [w-stay, w-calm, w-breathe, w-oxygen]
       goal: 2
+      tag: "곁 지키기"
+      icon: "me"
+      why: "I'll be right here로 곁에 있겠다는 약속을 먼저 하고 대시 뒤에 환자가 할 수 있는 일을 짧게 줘요. 숨이 가쁜 환자에게는 한 번에 한두 가지 짧은 지시가 더 잘 전달돼요."
+      decoy: "next door"
+      distractorsKo: ["입을 크게 벌려 보세요", "팔의 힘을 빼 주세요"]
+      blank:
+        answer: "calm"
+        options:
+          - {en: "calm"}
+          - {en: "awake"}
+          - {en: "upright"}
+          - {en: "seated"}
     - en: "You're working very hard to breathe right now."
       ko: "지금 숨쉬려고 정말 애쓰고 계세요."
       chunks: ["You're working very hard", "to breathe", "right now", "."]
       words: [w-work, w-hard, w-breathe]
       goal: 1
+      tag: "노력 공감"
+      icon: "faceWorried"
+      why: "working very hard로 환자가 지금 애쓰고 있다는 사실을 인정해 주는 공감이에요. 호흡이 힘든 환자는 자기 몸이 얼마나 지쳤는지 말로 확인받으면 삽관 같은 도움을 더 쉽게 받아들여요."
+      decoy: "all day"
+      distractorsKo: ["힘드시면 고개를 끄덕여 주세요", "말하지 않으셔도 괜찮아요"]
+      blank:
+        answer: "hard"
+        options:
+          - {en: "slowly"}
+          - {en: "hard"}
+          - {en: "quietly"}
+          - {en: "gently"}
     - en: "The doctor and team are getting ready to place the tube."
       ko: "의사와 팀이 튜브를 넣을 준비를 하고 있어요."
       chunks: ["The doctor", "and team", "are getting ready", "to place the tube", "."]
       words: [w-team, w-get, w-ready, w-place, w-tube]
       goal: 2
+      tag: "준비 상황"
+      icon: "hospital"
+      why: "are getting ready로 아직 시작 전이고 곧 한다는 진행 단계를 알려요. 삽관은 의사나 호흡 전문 팀이 하고, 간호사는 약·장비·환자 자세를 준비하며 환자에게 상황을 설명해요."
+      decoy: "by hand"
+      distractorsKo: ["튜브는 입으로 들어가요", "넣는 동안 잠들게 해 드릴 거예요"]
+      blank:
+        answer: "team"
+        options:
+          - {en: "visitors"}
+          - {en: "driver"}
+          - {en: "team"}
+          - {en: "family"}
     - en: "Your oxygen level keeps dropping even with the mask on."
       ko: "마스크를 쓰고 있어도 산소 수치가 계속 떨어지고 있어요."
       chunks: ["Your oxygen level", "keeps dropping", "even with", "the mask on", "."]
       words: [w-oxygen, w-level, w-drop, w-mask]
       goal: 1
+      tag: "산소 저하"
+      icon: "monitor"
+      why: "keeps dropping과 even with로 마스크를 써도 나아지지 않는다는 점을 짚어 삽관이 필요한 이유를 환자가 납득하게 해요. 산소를 줘도 포화도가 계속 떨어지면 기계로 호흡을 대신해야 해요."
+      decoy: "the lights on"
+      distractorsKo: ["산소 마스크는 그대로 쓰고 계세요", "숨이 차시면 고개를 끄덕여 주세요"]
+      blank:
+        answer: "mask"
+        options:
+          - {en: "gown"}
+          - {en: "cap"}
+          - {en: "glasses"}
+          - {en: "mask"}
   nuance:
   - kind: slider
     words:
@@ -109029,6 +110824,29 @@
       intubate you: 의료진의 말. 숨이 가쁜 환자가 뜻을 되묻기 어렵다.
       put you on life support: 틀린 말은 아니지만 생명이 끝나 간다는 말로 들려 공포를 키운다.
     why: 숨이 가쁜 환자에게는 짧고 쉬운 말로, 무엇을 왜 하는지만 전해요.
+    ko: 숨 쉬는 걸 돕기 위해 호흡용 튜브를 넣을 거예요
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 삽관 설명 4문장 순서
+    why: 산소가 떨어진다는 사실을 알리고, 'That's why'가 그 사실을 이유로 받아 삽관 준비를 말하고, 'for it'이 그 삽관을 가리켜 잠들게 하는 약을 알리고, 'the medicine'이 그 약을 가리켜 곁에 있겠다고 해요. 'That's why'·'for it'·'the medicine'이 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: Your oxygen level keeps dropping even with the mask, and you're working hard to breathe.
+      icon: monitor
+      ko: 마스크를 써도 산소 수치가 계속 떨어지고 숨쉬려고 정말 애쓰고 계세요
+      note: 상황
+    - en: That's why the doctor and team are getting ready to place a breathing tube.
+      icon: hospital
+      ko: 그래서 의사와 팀이 호흡 튜브를 넣을 준비를 하고 있어요
+      note: 삽관
+    - en: We'll give you medicine so you're asleep and comfortable for it.
+      icon: pill
+      ko: 그 과정을 편하게 받도록 잠드는 약을 드릴 거예요
+      note: 진정
+    - en: As the medicine takes effect, I'll be right here — try to stay calm.
+      icon: me
+      ko: 약이 듣는 동안 곁에 있을게요, 차분히 계세요
+      note: 곁
 
 - theme: er-sepsis
   title: 패혈증 심정지 전조
@@ -109053,31 +110871,103 @@
       chunks: ["His pressure", "is collapsing", "and the rate is dropping", "— arrest is imminent", "."]
       words: [w-pressure, w-collapse, w-rate, w-drop, w-arrest, w-imminent]
       goal: 1
+      tag: "임박 보고"
+      icon: "siren"
+      why: "pressure와 rate의 변화를 현재진행형으로 짧게 말하고 arrest is imminent로 판단을 덧붙여 팀이 바로 준비하게 해요. 패혈성 쇼크에서 혈압이 무너지고 맥박이 떨어지는 것은 심정지 직전의 신호예요."
+      decoy: "— the shift is ending"
+      distractorsKo: ["보호자에게 연락해 주세요", "방금 활력징후를 다시 재겠습니다"]
+      blank:
+        answer: "pressure"
+        options:
+          - {en: "temperature"}
+          - {en: "oxygen"}
+          - {en: "breathing"}
+          - {en: "pressure"}
     - en: "Get the crash cart here and pads on now."
       ko: "크래시카트를 여기로 가져오고 지금 패드를 붙여 주세요."
       chunks: ["Get the crash cart", "here", "and pads on", "now", "."]
       words: [w-get, w-crash, w-cart, w-pad]
       goal: 2
+      tag: "지시 한 줄"
+      icon: "siren"
+      why: "Get…here and…on now로 두 가지 할 일을 명령형으로 연달아 짧게 줘요. 위급할 때는 공손한 장식 없이 동사로 시작해 한 번에 알아듣게 해요. 패드는 심정지가 오면 곧바로 쓰도록 미리 붙여 둬요."
+      decoy: "at the desk"
+      distractorsKo: ["모니터 알람 소리를 키울게요", "환자 옷은 나중에 정리해요"]
+      blank:
+        answer: "pads"
+        options:
+          - {en: "pads"}
+          - {en: "gloves"}
+          - {en: "masks"}
+          - {en: "gowns"}
     - en: "Keep the pressor running and prepare for compressions if he loses pulse."
       ko: "승압제는 계속 주면서 맥박이 없어지면 압박 준비를 해 주세요."
       chunks: ["Keep the pressor", "running", "and prepare for compressions", "if he loses pulse", "."]
       words: [w-keep, w-pressor, w-run, w-prepare, w-compress, w-lose, w-pulse]
       goal: 2
+      tag: "승압제 유지"
+      icon: "pill"
+      why: "Keep…and prepare…로 이미 하고 있는 일은 유지하고 새로 준비할 일을 한 문장에 나눠 지시해요. 맥박이 사라지면 곧바로 압박을 시작할 수 있게, 그 전에 팀원이 위치와 역할을 정해 둬요."
+      decoy: "if he wakes up"
+      distractorsKo: ["제세동기를 가져와 주세요", "환자 침대를 평평하게 눕혀 주세요"]
+      blank:
+        answer: "pressor"
+        options:
+          - {en: "suction"}
+          - {en: "pressor"}
+          - {en: "monitor"}
+          - {en: "warmer"}
     - en: "Pulse is thready and pressure keeps dropping fast."
       ko: "맥박이 약하고 혈압이 빠르게 계속 떨어지고 있어요."
       chunks: ["Pulse is thready", "and pressure", "keeps dropping", "fast", "."]
       words: [w-pulse, w-pressure, w-drop, w-fast]
       goal: 1
+      tag: "맥박 상태"
+      icon: "monitor"
+      why: "thready로 맥박이 가늘고 약하다는 임상어를 쓰고 keeps dropping fast로 방향과 속도를 덧붙여 팀이 긴박함을 같이 느끼게 해요. thready는 쇼크 때 맥박을 묘사하는 흔한 말이에요."
+      decoy: "keeps ringing"
+      distractorsKo: ["혈압을 한 번 더 재겠습니다", "모니터 알람은 켜 두겠습니다"]
+      blank:
+        answer: "thready"
+        options:
+          - {en: "bounding"}
+          - {en: "strong"}
+          - {en: "thready"}
+          - {en: "regular"}
     - en: "Call the code now and bring the defibrillator to bedside."
       ko: "지금 코드를 부르고 제세동기를 침상으로 가져와 주세요."
       chunks: ["Call the code now", "and bring", "the defibrillator", "to bedside", "."]
       words: [w-call, w-bring, w-bedside]
       goal: 2
+      tag: "코드 호출"
+      icon: "siren"
+      why: "Call the code now와 bring…to bedside를 and로 이어 두 지시를 한 호흡에 줘요. 심정지가 임박하면 코드를 부르고 제세동기를 침상 곁에 두어 첫 충격까지의 시간을 줄여요."
+      decoy: "at the desk"
+      distractorsKo: ["가족분을 대기실로 모셔 주세요", "기록은 제가 맡겠습니다"]
+      blank:
+        answer: "defibrillator"
+        options:
+          - {en: "thermometer"}
+          - {en: "scale"}
+          - {en: "walker"}
+          - {en: "defibrillator"}
     - en: "Stay on the pressor and watch the monitor closely for arrest."
       ko: "승압제는 유지하면서 심정지 징후를 모니터로 계속 지켜봐 주세요."
       chunks: ["Stay on the pressor", "and watch the monitor", "closely", "for arrest", "."]
       words: [w-stay, w-pressor, w-watch, w-monitor, w-close, w-arrest]
       goal: 1
+      tag: "감시 지시"
+      icon: "monitor"
+      why: "Stay on…and watch…로 지금 맡은 일에서 눈을 떼지 말라는 지시예요. closely와 for arrest로 무엇을 찾는지 분명히 해서 심정지 리듬이 오면 곧바로 알리게 해요."
+      decoy: "at the desk"
+      distractorsKo: ["승압제 속도는 제가 올릴게요", "패드는 이미 붙였어요"]
+      blank:
+        answer: "monitor"
+        options:
+          - {en: "monitor"}
+          - {en: "pump"}
+          - {en: "IV site"}
+          - {en: "clock"}
   nuance:
   - kind: pair
     words:
@@ -109117,6 +111007,29 @@
       can someone get the crash cart: '''someone''에게 맡기면 서로 미루다 아무도 움직이지 않을 수 있다.'
       the crash cart might be needed: 지시인지 의견인지 흐려서, 들은 사람이 움직여야 하는지 모른다.
     why: 위기 상황의 지시는 이름을 불러 한 사람에게, 짧고 분명하게 해요(closed-loop communication).
+    ko: 사라, 크래시카트를 여기로 가져와요 — 지금
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 심정지 임박 지시 4문장 순서
+    why: 임박을 보고하고, 'code'가 그 임박에 따른 호출과 제세동기를 지시하고, 'it'이 그 제세동기를 가리켜 도착하면 패드를 붙이라고 하고, 'With the pads on'이 그 패드를 가리켜 유지·감시를 지시해요. 'it'·'With the pads on'이 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: His pressure is collapsing and the rate is dropping — arrest is imminent.
+      icon: siren
+      ko: 혈압이 무너지고 맥박이 떨어지고 있어요 — 심정지가 임박했어요
+      note: 보고
+    - en: Call the code now and bring the defibrillator to bedside.
+      icon: siren
+      ko: 지금 코드를 부르고 제세동기를 침상으로 가져와 주세요
+      note: 호출
+    - en: When it gets here, put the pads on him right away.
+      icon: siren
+      ko: 도착하면 바로 패드를 붙여 주세요
+      note: 패드
+    - en: With the pads on, stay on the pressor and watch the monitor for arrest.
+      icon: monitor
+      ko: 패드를 붙인 뒤에도 승압제를 유지하고 모니터로 심정지를 지켜봐 주세요
+      note: 감시
 
 - theme: er-sepsis
   title: 중증 패혈증 ICU 이송
@@ -109141,31 +111054,103 @@
       chunks: ["Septic shock,", "source is", "a urinary infection,", "bundle completed", "within the hour", "."]
       words: [w-septic, w-shock, w-source, w-urinary, w-infection, w-bundle, w-complete]
       goal: 1
+      tag: "SBAR 요약"
+      icon: "board"
+      why: "환자 상태, 원인, 처치 완료 순으로 쉼표로 끊어 한 줄에 요약해요. 인계에서는 진단·감염원·번들 완료 여부가 받는 쪽이 가장 먼저 알아야 하는 정보예요."
+      decoy: "a lung infection"
+      distractorsKo: ["가족에게 상황을 설명했습니다", "알레르기는 확인되지 않았습니다"]
+      blank:
+        answer: "urinary"
+        options:
+          - {en: "urinary"}
+          - {en: "respiratory"}
+          - {en: "skin"}
+          - {en: "wound"}
     - en: "He's on norepinephrine at eight, MAP holding at sixty-six."
       ko: "노르에피네프린 8로 투여 중이고, MAP은 66으로 유지되고 있습니다."
       chunks: ["He's on norepinephrine", "at eight,", "MAP holding", "at sixty-six", "."]
       words: [w-norepinephrine, w-map, w-hold]
       goal: 2
+      tag: "승압제·MAP"
+      icon: "monitor"
+      why: "승압제 이름과 속도, 그 결과 MAP을 한 문장에 이어 말해 받는 쪽이 용량과 반응을 함께 알게 해요. holding은 승압제를 쓰면서 그 값이 유지된다는 정확한 인계 표현이에요."
+      decoy: "since noon"
+      distractorsKo: ["마지막 활력징후는 방금 쟀습니다", "소변량도 같이 말씀드리겠습니다"]
+      blank:
+        answer: "MAP"
+        options:
+          - {en: "ECG"}
+          - {en: "MAP"}
+          - {en: "NPO"}
+          - {en: "ICU"}
     - en: "Last lactate was four, down from six after resuscitation."
       ko: "마지막 젖산은 4로, 소생 후 6에서 내려왔습니다."
       chunks: ["Last lactate", "was four,", "down from six", "after resuscitation", "."]
       words: [w-lactate, w-down, w-resuscitation]
       goal: 2
+      tag: "젖산 추이"
+      icon: "chartup"
+      why: "수치 하나가 아니라 이전 값과 비교하는 down from six로 변화의 방향까지 전해요. 인계에서는 현재값만이 아니라 추이가 있어야 받는 쪽이 좋아지는지 판단해요."
+      decoy: "after the scan"
+      distractorsKo: ["다음 젖산 재검은 오더가 나 있습니다", "젖산은 정맥혈로 쟀습니다"]
+      blank:
+        answer: "resuscitation"
+        options:
+          - {en: "intubation"}
+          - {en: "dialysis"}
+          - {en: "resuscitation"}
+          - {en: "surgery"}
     - en: "Cultures, antibiotics, and fluids are all done within the hour."
       ko: "배양, 항생제, 수액 모두 한 시간 안에 끝냈습니다."
       chunks: ["Cultures, antibiotics,", "and fluids", "are all done", "within the hour", "."]
       words: [w-culture, w-antibiotic, w-fluid, w-done]
       goal: 1
+      tag: "번들 완료"
+      icon: "check"
+      why: "세 가지를 쉼표로 나열하고 all done으로 빠진 것이 없음을 분명히 해요. within the hour로 번들 시간 기준을 지켰다는 점도 받는 쪽에 알려요."
+      decoy: "by hand"
+      distractorsKo: ["배양 결과는 아직 나오지 않았습니다", "항생제 종류는 차트에 있습니다"]
+      blank:
+        answer: "Cultures"
+        options:
+          - {en: "Labs"}
+          - {en: "X-rays"}
+          - {en: "Consents"}
+          - {en: "Cultures"}
     - en: "Pressure's stable on the current pressor dose, no changes in the last hour."
       ko: "현재 승압제 용량에서 혈압은 안정적이고, 지난 한 시간 변화는 없습니다."
       chunks: ["Pressure's stable", "on the current pressor dose,", "no changes", "in the last hour", "."]
       words: [w-pressure, w-stable, w-pressor, w-change]
       goal: 2
+      tag: "혈압 안정"
+      icon: "monitor"
+      why: "stable on…으로 어떤 조건에서 안정인지 같이 말해 승압제 덕분에 안정이라는 점을 숨기지 않아요. no changes in the last hour로 최근 한 시간 동안 용량 변화가 없었음을 알려 받는 쪽이 추이를 믿을 수 있게 해요."
+      decoy: "in the last day"
+      distractorsKo: ["중심라인 위치는 X선으로 확인했습니다", "혈압은 5분마다 재고 있습니다"]
+      blank:
+        answer: "dose"
+        options:
+          - {en: "dose"}
+          - {en: "pump"}
+          - {en: "bag"}
+          - {en: "line"}
     - en: "He's alert, urine output is improving, ready for report to ICU."
       ko: "의식은 또렷하고 소변량도 좋아지고 있어 ICU 인계 준비가 됐습니다."
       chunks: ["He's alert,", "urine output is improving,", "ready for report", "to ICU", "."]
       words: [w-alert, w-urine, w-output, w-improve, w-ready]
       goal: 1
+      tag: "인계 준비"
+      icon: "check"
+      why: "alert와 improving으로 현재 상태와 추세를 짧은 낱말로 묶고 ready for report로 인계 준비가 끝났음을 알려요. 의식이 또렷하고 소변량이 늘면 장기로 가는 혈류가 나아지고 있다는 뜻이에요."
+      decoy: "by hand"
+      distractorsKo: ["보호자는 중환자실 앞에서 기다립니다", "이송 장비는 준비됐습니다"]
+      blank:
+        answer: "ready"
+        options:
+          - {en: "empty"}
+          - {en: "ready"}
+          - {en: "late"}
+          - {en: "open"}
   nuance:
   - kind: pair
     words:
@@ -109206,6 +111191,29 @@
       is fine: 승압제가 필요한 쇼크 환자에게 '괜찮다'는 판단을 붙여, 받는 쪽이 상태를 가볍게 본다.
       dropping: 사실과 다르다. 수치가 내려가고 있다는 뜻이 되어 ICU가 다른 판단을 한다.
     why: 인계에서는 판단(fine)이 아니라 상태(holding at 66)를 말해요. 받는 쪽이 스스로 판단할 수 있게요.
+    ko: 노르에피네프린 8로 투여 중이고, MAP은 66으로 유지되고 있어요
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: ICU 인계 SBAR 4문장 순서
+    why: 진단·원인·번들을 요약하고, 'his MAP'이 그 환자의 승압제와 값을 말하고, 'that dose'가 그 용량을 가리켜 안정을 말하고, 'like that'이 그 안정을 가리켜 인계 준비를 말해요. 'that dose'·'like that'이 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: Septic shock, source is a urinary infection, bundle completed within the hour.
+      icon: board
+      ko: 패혈성 쇼크, 원인은 요로감염, 번들은 한 시간 안에 완료했습니다
+      note: 상황
+    - en: He's on norepinephrine at eight, and his MAP is holding at sixty-six.
+      icon: monitor
+      ko: 노르에피네프린 8로 투여 중이고 MAP은 66으로 유지되고 있습니다
+      note: 경과
+    - en: Pressure's stable on that dose, with no changes in the last hour.
+      icon: chartup
+      ko: 그 용량에서 혈압은 안정적이고 지난 한 시간 변화는 없습니다
+      note: 안정
+    - en: With pressure holding like that, he's alert, urine output's improving — ready for report.
+      icon: check
+      ko: 혈압이 그렇게 유지되어 의식이 또렷하고 소변량도 좋아져 인계 준비가 됐습니다
+      note: 인계
 
 # ######## source: cluster-psych-special.yaml ########
 - theme: er-psych
