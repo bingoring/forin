@@ -168,7 +168,7 @@
       ok: true
     - who: 환자에게
       icon: me
-      en: Please quantify your pain on the NRS.
+      en: Please rate your pain on the NRS.
       ok: false
       fix: How bad is your pain, from zero to ten?
     why: NRS 같은 약어와 quantify 같은 딱딱한 동사는 의료진 말이에요. 환자에게는 '0부터 10까지'로 풀어 묻고, 차트에는 'rates pain 8/10'처럼 짧게 적어요.
@@ -366,7 +366,7 @@
       ok: true
     - who: 환자에게
       icon: me
-      en: This medicine may cause CNS depression.
+      en: This causes CNS depression, so you may get drowsy.
       ok: false
       fix: This medicine may make you feel a little sleepy.
     why: CNS depression은 의료진 용어라 환자는 못 알아듣거나 '우울증'으로 오해해 겁을 먹을 수 있어요. 환자에게는 drowsy·sleepy로 말해요.
@@ -539,7 +539,7 @@
     scenes:
     - who: 차트 기록
       icon: board
-      en: RLE elevated on pillow; cold pack applied.
+      en: RLE raised on pillow; cold pack applied.
       ok: true
     - who: 환자에게
       icon: me
@@ -547,7 +547,7 @@
       ok: true
     - who: 환자에게
       icon: me
-      en: Maintain elevation of the affected extremity.
+      en: Maintain the affected extremity in a raised position.
       ok: false
       fix: Keep your leg up on the pillow, a little higher than your heart.
     why: elevation·extremity는 차트와 의료진 사이의 말이에요. 환자에게는 leg·raise·up 같은 쉬운 말로 무엇을 할지 알려 줘요.
@@ -1085,7 +1085,7 @@
       ok: true
     - who: 차트 기록
       icon: board
-      en: Pt is drug-seeking, demanding narcotics.
+      en: Pt keeps asking for more — drug-seeking, demanding narcotics.
       ok: false
       fix: Pt requesting additional analgesia; reports pain 9/10 despite morphine 4 mg IV.
     why: '''drug-seeking''·''demanding''은 판단이 담긴 낙인 표현이라 차트에 쓰지 않도록 교육해요. 요청 내용, 통증 점수, 투여량처럼 관찰한 사실만 적어요.'
@@ -1439,16 +1439,16 @@
       ok: true
     - who: 환자에게
       icon: me
-      en: When did you last eat or drink anything?
+      en: NPO means nothing to eat or drink. When did you last have anything?
       ok: true
     - who: 환자에게
       icon: me
       en: Have you been NPO?
       ok: false
       fix: Have you had anything to eat or drink since midnight?
-    why: NPO(nil per os, 금식)는 의료진 약어라 환자는 모를 수 있어요. 환자에게는 eat·drink로 풀어서 물어요.
-    word: eat or drink
-    ko: 먹거나 마시다
+    why: NPO(nil per os, 금식)는 의료진 약어라 설명 없이 환자에게 쓰면 모를 수 있어요. 환자에게는 eat·drink로 풀어서 물어요.
+    word: NPO
+    ko: 금식
   order:
     tag: 대화 흐름
     icon: compass
@@ -1797,7 +1797,7 @@
       ok: true
     - who: 차트 기록
       icon: board
-      en: Pt rates pain 3/10; grimacing and guarding RLQ.
+      en: 'Pt minimizing pain: rates 3/10 while grimacing and guarding RLQ.'
       ok: true
     - who: 환자에게
       icon: me
@@ -2159,13 +2159,13 @@
       ok: true
     - who: 의사에게 보고
       icon: speech
-      en: She takes a benzo at home — I'm worried about respiratory depression with the opioid.
+      en: She takes a benzo at home — the opioid could slow her breathing, so I'm worried.
       ok: true
     - who: 환자에게
       icon: me
-      en: Concurrent benzodiazepine use increases your risk of respiratory depression.
+      en: Concurrent benzodiazepine use may slow your respiratory drive, risking respiratory depression.
       ok: false
-      fix: Taking your anxiety pill with pain medicine can slow your breathing.
+      fix: Your anxiety pill plus this pain medicine can slow your breathing, so I'll check on you often.
     why: benzodiazepine·respiratory depression은 의료진끼리 쓰는 말이에요. 환자에게는 자기 약을 쉬운 이름으로 부르고 'slow your breathing'이라고 해요.
     word: slow
     ko: 느려지게 하다
@@ -2523,7 +2523,7 @@
       icon: me
       en: The patient tolerated the procedure well.
       ok: false
-      fix: You did great — it's all done, and everything went well.
+      fix: Everything went well — you're waking up now, and I'm right here.
     why: '''tolerated the procedure well''은 차트·인계 표현이에요. 깨어나는 환자 앞에서 3인칭 ''the patient''로 말하면 차갑고 혼란스럽게 들려요.'
     word: procedure
     ko: 시술
@@ -2697,7 +2697,7 @@
       ok: true
     - who: 차트 기록
       icon: board
-      en: SpO2 84% during sedation; jaw thrust and BVM, RT at bedside.
+      en: Sats 84% during sedation; jaw thrust and BVM, RT at bedside.
       ok: true
     - who: 환자에게
       icon: me
@@ -3239,7 +3239,7 @@
       ok: false
       fix: We're giving you a shot of epinephrine to help you breathe.
     why: 짧은 명령형 'epi 0.5 IM'은 팀 콜아웃이에요. 환자에게는 무엇을 왜 하는지 문장으로 말해 안심시켜요.
-    word: epinephrine
+    word: epi
     ko: 에피네프린
   order:
     tag: 대화 흐름
@@ -3615,15 +3615,15 @@
     scenes:
     - who: 인계
       icon: speech
-      en: He's emerging from ketamine — agitated and confused, so keep the room quiet.
+      en: He's emerging from ketamine — agitated, some confusion, so keep the room quiet.
       ok: true
     - who: 차트 기록
       icon: board
-      en: Emergence agitation post-sedation; pt reoriented, bed alarm on.
+      en: Emergence agitation with confusion post-sedation; pt reoriented, bed alarm on.
       ok: true
     - who: 환자에게
       icon: me
-      en: You're having an emergence reaction.
+      en: You're having an emergence reaction with confusion.
       ok: false
       fix: You're waking up from sedation, and some confusion is normal.
     why: emergence reaction은 의료진끼리 쓰는 말이에요. 환자에게는 지금 무슨 일인지(깨어나는 중, 혼란은 정상) 쉬운 말로 알려 안심시켜요.
@@ -3826,10 +3826,10 @@
       ok: true
     - who: 환자에게
       icon: me
-      en: You're hypotensive, so I'm titrating your fentanyl.
+      en: Your BP's soft, so I'm titrating the fentanyl.
       ok: false
       fix: Your blood pressure is low, so we're giving you pain medicine in small amounts.
-    why: hypotensive·titrate는 의료진 말이에요. 환자에게는 'blood pressure is low', 'small amounts'로 풀어서 말해요.
+    why: soft(혈압이 낮다는 의료진 은어)·titrate는 의료진 말이에요. 환자에게는 'blood pressure is low', 'small amounts'로 풀어서 말해요.
     word: BP
     ko: 혈압
   order:
@@ -21562,14 +21562,14 @@
       ok: true
     - who: 차트 기록
       icon: board
-      en: Onset of CP approx. 1 hr PTA, at rest.
+      en: CP started approx. 1 hr PTA, at rest.
       ok: true
     - who: 환자에게
       icon: me
-      en: What was the time of onset of your symptoms?
+      en: Did symptoms start at rest or on exertion, and how long PTA?
       ok: false
-      fix: When did the pain first start?
-    why: onset·PTA는 차트와 의료진끼리의 말이에요. 환자에게는 start처럼 쉬운 동사로 물어야 바로 대답해요.
+      fix: Were you resting or active when it started, and how long ago was that?
+    why: PTA(병원 도착 전)·on exertion 같은 말은 차트와 의료진끼리의 말이에요. 환자에게는 '쉬고 있었는지, 움직이고 있었는지, 얼마나 전인지'를 쉬운 말로 물어요.
     word: start
     ko: 시작되다
   order:
@@ -21721,17 +21721,17 @@
     scenes:
     - who: 동료에게
       icon: monitor
-      en: Chest pain, tachy at 118 — she's an ESI 2, needs a bed now.
+      en: Chest pain, tachy at 118 — she's a high priority, needs a bed now.
       ok: true
     - who: 차트 기록
       icon: board
-      en: 'Triage: ESI 2, CP with tachycardia.'
+      en: 'Triage: high priority (ESI 2), CP with tachycardia.'
       ok: true
     - who: 환자에게
       icon: me
       en: You're a high priority, so you'll be roomed immediately — you're an ESI 2.
       ok: false
-      fix: I'm placing you in a higher priority so the doctor can see you sooner.
+      fix: I'm moving you up the list so the doctor can see you sooner.
     why: ESI 등급과 'roomed'는 의료진끼리의 말이에요. 환자에게는 우선순위를 올렸다는 것과 그 이유(더 빨리 진료)를 쉬운 말로 알려요.
     word: priority
     ko: 우선순위
@@ -22054,7 +22054,7 @@
       ok: true
     - who: 환자에게
       icon: me
-      en: Is the pain retrosternal, and is it worse postprandially?
+      en: Is the burning retrosternal, and is it worse postprandially?
       ok: false
       fix: Is the burning behind your breastbone, and does it get worse after you eat?
     why: retrosternal(흉골 뒤)·postprandial(식후)은 차트 말이에요. 환자에게는 breastbone·after you eat처럼 쉬운 말로 같은 것을 물어요.
@@ -22210,15 +22210,15 @@
     scenes:
     - who: 환자에게
       icon: me
-      en: It hurts when I press here, so it may be coming from your chest wall — but we'll still confirm with tests.
+      en: Does it hurt more when I press here?
       ok: true
     - who: 동료에게
       icon: monitor
-      en: Pain's reproducible on palpation — could be costochondritis, but the ECG and labs are still pending.
+      en: Pain reproduces when I press on the sternum — maybe costochondritis, but ECG's still pending.
       ok: true
     - who: 환자에게
       icon: me
-      en: Your pain is reproducible on palpation, consistent with costochondritis.
+      en: Pressing on your sternum reproduces the pain, consistent with costochondritis.
       ok: false
       fix: It hurts when I press here, which often means it's coming from the chest wall — but we'll still check your heart.
     why: reproducible on palpation(촉진 시 재현)은 의료진 말이에요. 환자에게는 '누르면 아프다'로 풀어 말하고, 그래도 심장은 검사로 확인한다는 것을 빼지 않아요 — 누르면 아프다는 것만으로 심장 원인이 배제되지는 않아요.
@@ -22381,7 +22381,7 @@
       icon: me
       en: Possible STEMI — stat ECG, and I'm paging the attending.
       ok: false
-      fix: This could be your heart, so we're getting a quick heart test and the doctor right now.
+      fix: We're checking your heart right now, and the doctor is on the way.
     why: STEMI·stat·paging the attending은 의료진끼리의 말이에요. 환자에게는 같은 급함을 쉬운 말로 — 무엇을, 왜 서두르는지 알려 줘요.
     word: ECG
     ko: 심전도
@@ -22696,13 +22696,13 @@
       ok: true
     - who: 동료에게
       icon: monitor
-      en: Sinus on the monitor, first ECG unremarkable — troponin's pending.
+      en: Sinus rhythm on the monitor, first ECG unremarkable — troponin's pending.
       ok: true
     - who: 환자에게
       icon: me
       en: You're in normal sinus rhythm with no acute ST changes.
       ok: false
-      fix: Your heart rhythm looks normal so far, which is a good sign.
+      fix: Your heartbeat looks steady so far — that's good, but we're still checking.
     why: sinus rhythm·ST changes는 의료진 말이에요. 환자에게는 쉬운 말로 전하되 'so far'를 붙여 아직 검사가 끝나지 않았다는 것을 남겨요 — 첫 심전도가 정상이어도 심장 원인이 배제된 것은 아니에요.
     word: rhythm
     ko: 리듬
@@ -22857,13 +22857,13 @@
       ok: true
     - who: 동료에게
       icon: monitor
-      en: She's minimizing her symptoms, but she's diaphoretic — I'm not letting this go.
+      en: She's giving me few details and minimizing, but she's diaphoretic — I'm not letting this go.
       ok: true
     - who: 환자에게
       icon: me
-      en: You're minimizing your symptoms.
+      en: You're minimizing your symptoms and leaving out details.
       ok: false
-      fix: You don't need to downplay it — every detail helps me help you.
+      fix: Please tell me everything you're feeling — even the small stuff matters.
     why: minimizing은 의료진이 환자의 태도를 전하거나 기록할 때 쓰는 말이에요. 환자 본인에게 하면 탓하는 것처럼 들려서, 말해도 괜찮다는 쪽으로 바꿔 말해요.
     word: detail
     ko: 세부사항
@@ -23022,11 +23022,11 @@
       ok: true
     - who: 차트 기록
       icon: board
-      en: Reports missing antiplatelet doses x 1 week.
+      en: Reports missing antiplatelet medicine x 1 week.
       ok: true
     - who: 환자에게
       icon: me
-      en: Have you been noncompliant with your medications?
+      en: Have you been noncompliant with your medicines?
       ok: false
       fix: Have you been able to take your heart medicines every day?
     why: noncompliant는 환자 탓으로 들리는 말이라 미국 병원에서도 adherence(복약 순응)라는 말로 바꿔 쓰는 추세예요. 환자에게는 판단 없이 '매일 드실 수 있었는지' 물으면 솔직한 답이 나와요.
@@ -23207,9 +23207,9 @@
       ok: true
     - who: 환자에게
       icon: me
-      en: Could you please indicate the precise location of your discomfort?
+      en: Could you please point to the precise location of your discomfort?
       ok: false
-      fix: Pain here? Point for me, please.
+      fix: Show me — where does it hurt?
     why: 영어가 서툰 환자에게 길고 격식 있는 문장은 뜻이 같아도 전달되지 않아요. 짧은 단어와 몸짓으로 묻는 것이 이 자리에 맞아요.
     word: point
     ko: 가리키다
@@ -24021,7 +24021,7 @@
       ok: true
     - who: 환자에게
       icon: me
-      en: Does the pain radiate to your interscapular region?
+      en: Does the tearing pain radiate to your interscapular region?
       ok: false
       fix: Does the pain go into your back, between your shoulder blades?
     why: radiate·interscapular(견갑골 사이)는 의료진 말이에요. 환자에게는 go into your back, between your shoulder blades처럼 몸의 위치를 쉬운 말로 물어요.
@@ -24357,13 +24357,13 @@
       ok: true
     - who: 동료에게
       icon: monitor
-      en: Sharp, positional CP, better leaning forward — could be pericarditis.
+      en: Sharp, positional CP, better leaning forward — inflammation, could be pericarditis.
       ok: true
     - who: 환자에게
       icon: me
-      en: Your presentation is consistent with pericarditis.
+      en: Your presentation is consistent with pericardial inflammation.
       ok: false
-      fix: This sharp pain that changes with position can point to inflammation around the heart.
+      fix: The lining around your heart may be irritated — that can cause this kind of sharp pain.
     why: presentation·pericarditis는 의료진끼리의 말이에요. 환자에게는 '심장 주위의 염증'처럼 무엇이 문제일 수 있는지 쉬운 말로 알려요.
     word: inflammation
     ko: 염증
@@ -24681,14 +24681,14 @@
       ok: true
     - who: 동료에게
       icon: siren
-      en: I need help in bed 6 now — he's going gray!
+      en: Call a rapid response to bed 6 now — he's going gray!
       ok: true
     - who: 환자에게
       icon: me
-      en: You're decompensating, so I'm escalating now.
+      en: You're decompensating, so I'm calling a rapid response.
       ok: false
-      fix: Stay with me — I'm calling for help right now.
-    why: decompensating·escalating은 의료진끼리의 말이에요. 의식이 흐려지는 환자에게는 짧고 쉬운 말로 곁에 있다는 것과 도움을 부른다는 것을 알려요.
+      fix: I'm right here with you — more help is coming right now.
+    why: decompensating·rapid response는 의료진끼리의 말이에요. 의식이 흐려지는 환자에게는 짧고 쉬운 말로 곁에 있다는 것과 도움이 온다는 것을 알려요.
     word: call
     ko: 부르다
   order:
@@ -24839,11 +24839,11 @@
     scenes:
     - who: 의사에게
       icon: monitor
-      en: Bed 3, NSTEMI — chest pain is back at seven out of ten; repeat ECG is done. Quick update — can you come see her?
+      en: Quick update on bed 3 — chest pain's back at 7/10, repeat ECG done.
       ok: true
     - who: 차트 기록
       icon: board
-      en: Recurrent CP 7/10, repeat ECG obtained, MD notified.
+      en: Recurrent CP 7/10, repeat ECG obtained, MD updated.
       ok: true
     - who: 환자에게
       icon: me
@@ -25363,18 +25363,18 @@
     scenes:
     - who: 환자에게
       icon: me
-      en: These stickers just read your heart's rhythm — they don't hurt.
+      en: These electrodes are just stickers that read your heart's rhythm — they don't hurt.
       ok: true
     - who: 동료에게
       icon: monitor
-      en: Leads are on, and she's on the monitor in sinus.
+      en: Electrodes are on, and she's on the monitor in sinus.
       ok: true
     - who: 환자에게
       icon: me
       en: I'm applying electrodes for continuous telemetry.
       ok: false
       fix: I'm putting some stickers on so we can watch your heart.
-    why: electrode·telemetry는 의료진끼리의 말이에요. 환자에게는 stickers처럼 쉬운 말로, 무엇을 하는지 알려 줘요.
+    why: electrode·telemetry는 의료진끼리의 말이에요. 환자에게는 electrodes가 몸에 붙이는 stickers라고 풀어 주어야 하고, 설명 없이 쓰면 무슨 일인지 몰라 불안해해요.
     word: electrode
     ko: 전극
   order:
@@ -25718,7 +25718,7 @@
     scenes:
     - who: 환자에게
       icon: me
-      en: Are you taking any supplements, cold medicine, or diet pills?
+      en: Any OTC medicine — like cold pills, diet pills, or supplements?
       ok: true
     - who: 차트 기록
       icon: board
@@ -25729,7 +25729,7 @@
       en: Are you on any OTC sympathomimetics?
       ok: false
       fix: Are you taking any cold medicine or diet pills?
-    why: sympathomimetic(교감신경 흥분제)이나 OTC는 의료진 말이에요. 환자에게는 감기약·다이어트 약처럼 구체적인 이름으로 물어야 답할 수 있어요.
+    why: sympathomimetic(교감신경 흥분제)은 의료진 말이에요. OTC는 환자도 아는 말이지만, 감기약·다이어트 약처럼 구체적인 예를 들어야 빠짐없이 답해요.
     word: OTC
     ko: 일반의약품
   order:
@@ -26077,7 +26077,7 @@
     scenes:
     - who: 환자에게
       icon: me
-      en: Are you currently taking a blood thinner like warfarin?
+      en: Are you anticoagulated — on a blood thinner like warfarin?
       ok: true
     - who: 의료진 인계
       icon: monitor
@@ -26088,7 +26088,7 @@
       en: Are you currently anticoagulated?
       ok: false
       fix: Are you taking a blood thinner, like warfarin or Eliquis?
-    why: anticoagulated는 의료진 말이에요. 환자들은 blood thinner라고 부르고, 약 이름을 예로 들어 주면 더 잘 답해요.
+    why: anticoagulated는 의료진 말이에요. 환자에게는 blood thinner라고 풀어 주고 warfarin 같은 약 이름을 예로 들면 더 잘 답해요.
     word: anticoagulated
     ko: 항응고 중인
   order:
@@ -26432,7 +26432,7 @@
     scenes:
     - who: 환자에게
       icon: me
-      en: Have you actually passed out or just felt close to it?
+      en: Have you had any episodes where you actually passed out, or just felt close to it?
       ok: true
     - who: 차트 기록
       icon: board
@@ -26443,9 +26443,9 @@
       en: Have you had any syncopal episodes?
       ok: false
       fix: Have you actually passed out or blacked out?
-    why: syncope는 의료진 말이에요. 환자에게는 pass out·black out처럼 일상어로 물어요.
-    word: syncopal
-    ko: 실신의
+    why: syncopal은 의료진 말이에요. 환자에게는 pass out·black out처럼 일상어로 물어야 무엇을 묻는지 알아들어요.
+    word: episode
+    ko: (증상이 있었던) 한 번
   order:
     tag: 대화 흐름
     icon: compass
@@ -27508,7 +27508,7 @@
     scenes:
     - who: 환자에게
       icon: me
-      en: When was your device last checked?
+      en: A device interrogation is just a quick check — when was yours last done?
       ok: true
     - who: 동료에게
       icon: monitor
@@ -27519,7 +27519,7 @@
       en: When was your last device interrogation?
       ok: false
       fix: When was your pacemaker last checked?
-    why: interrogation은 장치 점검을 뜻하는 의료진 용어인데, 환자에게는 '심문'으로 들려요. 환자에게는 checked라고 해요.
+    why: interrogation은 장치 점검을 뜻하는 의료진 용어인데, 설명 없이 환자에게 쓰면 '심문'처럼 들려요. '그냥 점검'이라고 풀어 주면 괜찮아요.
     word: interrogation
     ko: 장치 점검
   order:
@@ -28226,18 +28226,18 @@
     scenes:
     - who: 동료에게
       icon: monitor
-      en: Heads up — bed 4 has WPW, so no AV nodal blockers.
+      en: Flag bed 4 — WPW, so no AV nodal blockers.
       ok: true
     - who: 환자에게
       icon: me
-      en: I'm making sure everyone on the team knows about your WPW right away.
+      en: I'm flagging your WPW right away so the whole team knows.
       ok: true
     - who: 환자에게
       icon: me
       en: I'm flagging you to the team as a contraindication risk.
       ok: false
       fix: I'm letting the whole team know about your WPW so we choose the safest medicine.
-    why: contraindication(금기)은 의료진끼리의 말이에요. 환자에게는 무엇을 왜 알리는지 쉬운 말로 — 환자 자신을 '위험 요소'처럼 부르지 않게요.
+    why: flag는 의료진끼리 흔히 쓰는 말이에요. 하지만 환자 자신을 contraindication risk(금기 위험)처럼 부르면 차갑게 들려요. 환자에게는 무엇을 왜 알리는지 쉬운 말로 해요.
     word: flag
     ko: 알리다
   order:
@@ -28598,7 +28598,7 @@
       icon: me
       en: I'm drawing up two grams of mag sulfate for your prolonged QT.
       ok: false
-      fix: I'm drawing up some magnesium to protect your heart rhythm.
+      fix: This is magnesium — it helps keep your heartbeat steady.
     why: 약어(mag)와 용량·경로는 의료진끼리 주고받는 말이에요. 환자에게는 무엇을 왜 주는지로 말해요.
     word: mag
     ko: 마그네슘
@@ -36304,7 +36304,7 @@
       ok: true
     - who: 의사에게
       icon: monitor
-      en: Sats are 91 on room air.
+      en: SpO2 is 91 on room air.
       ok: true
     - who: 환자에게
       icon: me
@@ -36785,7 +36785,7 @@
     scenes:
     - who: 환자에게
       icon: me
-      en: Is the cough bringing anything up?
+      en: Is your cough productive — are you bringing anything up?
       ok: true
     - who: 차트 기록
       icon: board
@@ -36796,9 +36796,9 @@
       en: Is your cough productive?
       ok: false
       fix: Are you coughing anything up?
-    why: productive cough는 가래가 나오는 기침을 뜻하는 의료 용어예요. 환자는 '생산적'이라는 일상 뜻으로 알아듣기 쉬워서 쉬운 말로 물어요.
-    word: bring up
-    ko: 뱉어 내다
+    why: productive cough는 가래가 나오는 기침을 뜻하는 의료 용어예요. 환자는 '생산적'이라는 일상 뜻으로 알아듣기 쉬우니, 설명 없이 쓰지 말고 가래를 뱉는지 쉬운 말로 물어요.
+    word: productive
+    ko: 가래가 나오는
   order:
     tag: 대화 흐름
     icon: compass
@@ -37123,16 +37123,16 @@
       ok: true
     - who: 차트 기록
       icon: board
-      en: Productive cough with purulent green sputum.
+      en: Coughing up purulent green sputum.
       ok: true
     - who: 환자에게
       icon: me
-      en: Is your sputum purulent?
+      en: Are you coughing up purulent sputum?
       ok: false
-      fix: What color is it — clear, yellow, or green?
+      fix: Is the phlegm clear, yellow, or green?
     why: purulent·sputum은 차트에 쓰는 말이에요. 환자에게는 phlegm이나 mucus라고 하고, 색깔로 물어요.
-    word: phlegm
-    ko: 가래
+    word: cough up
+    ko: 기침해서 뱉다
   order:
     tag: 대화 흐름
     icon: compass
@@ -37447,11 +37447,11 @@
       ok: true
     - who: 의사에게
       icon: monitor
-      en: BiPAP is on at 10 over 5.
+      en: BiPAP is pushing 10 over 5.
       ok: true
     - who: 환자에게
       icon: me
-      en: Your IPAP is 10 and your EPAP is 5.
+      en: The machine is pushing an IPAP of 10 and an EPAP of 5.
       ok: false
       fix: The mask gives you a push of air when you breathe in, and a little when you breathe out.
     why: IPAP·EPAP 같은 설정 수치는 의료진끼리의 말이에요. 환자에게는 공기가 숨을 도와준다는 느낌으로 설명해요.
@@ -38111,7 +38111,7 @@
       ok: true
     - who: 환자에게
       icon: me
-      en: Your forced vital capacity is declining.
+      en: Your forced vital capacity is declining as your muscles weaken.
       ok: false
       fix: The muscles that help you breathe are getting weaker, so we're watching them closely.
     why: 폐활량(FVC)이나 흡기력(NIF) 같은 수치는 의료진끼리의 말이에요. 환자에게는 숨 쉬는 근육이 약해지고 있어 가까이 지켜본다고 말해요.
@@ -38432,7 +38432,7 @@
     scenes:
     - who: 차트 기록
       icon: board
-      en: No acute cardiopulmonary process identified.
+      en: Exam reassuring; no acute cardiopulmonary process identified.
       ok: true
     - who: 의사에게
       icon: monitor
@@ -38440,7 +38440,7 @@
       ok: true
     - who: 환자에게
       icon: me
-      en: Your workup is negative for organic pathology.
+      en: 'Your workup is reassuring: negative for organic pathology.'
       ok: false
       fix: Your oxygen and lung exam look reassuring.
     why: organic pathology 같은 말은 의료진끼리의 표현이에요. 환자에게는 검사 결과가 안심할 만하다고 쉬운 말로 전해요.
@@ -38762,11 +38762,11 @@
       ok: true
     - who: 차트 기록
       icon: board
-      en: Preoxygenated to SpO2 98% prior to induction.
+      en: Preoxygenated, sats 98% prior to induction.
       ok: true
     - who: 팀 콜아웃
       icon: speaker
-      en: I would like to inform everyone that the oxygen saturation is currently ninety-eight percent.
+      en: I would like to inform everyone that the sats are currently ninety-eight percent.
       ok: false
       fix: Sats are 98 — good to go.
     why: 삽관 순간의 콜아웃은 짧고 크게, 팀이 쓰는 줄임말(sats)로 해요. 긴 문장은 중요한 정보를 늦춰요.
@@ -39099,7 +39099,7 @@
       ok: false
       fix: This is a shot in your thigh to bring the swelling down.
     why: IM·epi·angioedema는 의료진끼리의 줄임말과 진단명이에요. 환자에게는 무엇을 왜 하는지 쉬운 말로 알려요.
-    word: epinephrine
+    word: epi
     ko: 에피네프린
   order:
     tag: 대화 흐름
@@ -41362,7 +41362,7 @@
     scenes:
     - who: 환자에게
       icon: me
-      en: Too much oxygen can build up carbon dioxide for you.
+      en: Too much oxygen can let CO2 build up in your blood.
       ok: true
     - who: 의사에게
       icon: monitor
@@ -41372,7 +41372,7 @@
       icon: me
       en: You're a CO2 retainer, so hyperoxia could worsen your hypercapnia.
       ok: false
-      fix: Too much oxygen can make carbon dioxide build up in your blood.
+      fix: Your body tends to hold on to carbon dioxide, so we keep your oxygen a little lower on purpose.
     why: CO2 retainer·hyperoxia·hypercapnia는 의료진끼리의 말이에요. 환자에게는 '산소가 너무 많으면 이산화탄소가 쌓인다'로 풀어 말해요.
     word: CO2
     ko: 이산화탄소
@@ -42264,20 +42264,20 @@
     scenes:
     - who: 환자에게
       icon: me
-      en: Is it worse when you lie flat?
+      en: Can you lie flat to sleep, or do you need extra pillows?
       ok: true
     - who: 차트 기록
       icon: board
-      en: Reports orthopnea, sleeps on three pillows.
+      en: Orthopnea — unable to lie flat, sleeps on three pillows.
       ok: true
     - who: 환자에게
       icon: me
-      en: Do you have orthopnea?
+      en: Do you have orthopnea, or can you lie flat?
       ok: false
       fix: Do you get more short of breath when you lie flat?
-    why: orthopnea(기좌호흡)는 차트의 말이에요. 환자에게는 '누우면 숨이 더 차요?'처럼 증상으로 물어요.
-    word: orthopnea
-    ko: 기좌호흡
+    why: orthopnea(기좌호흡)는 차트의 말이에요. 환자에게는 '누우면 숨이 더 차요?'처럼 증상으로 풀어 물어야 알아들어요.
+    word: lie flat
+    ko: 똑바로 눕다
   order:
     tag: 대화 흐름
     icon: compass
