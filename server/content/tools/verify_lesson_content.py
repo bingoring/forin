@@ -1030,8 +1030,12 @@ def check_nuance(items: list, used: set[str], required: bool) -> list[tuple[str,
             if has_word:
                 # 핸드오프 CTX(deteriorate): 같은 말이 세 장면 모두에 나오고, 어색한 장면은 그 말이 듣는 사람에게 맞지 않는 곳이다.
                 # 어색한 표현 자체를 word로 고르면 제목 "{word}가 어색한 장면은?"이 답을 말해 버린다(T8, polytrauma·seizure).
-                stem = re.sub(r"(e|es|s|ed|ing)$", "", str(n.get("word")).strip().lower()) or str(n.get("word")).lower()
-                miss = [j for j, sc in enumerate(n.get("scenes") or []) if stem not in str(sc.get("en") or "").lower()]
+                # 낱말마다 어간(활용 어미를 뗀 것)이 장면에 있는지 본다 — pass away ↔ passed away, deteriorate ↔ deteriorating.
+                stems = [re.sub(r"(e|es|s|ed|ing)$", "", t) or t for t in re.findall(r"[a-z0-9]+", str(n.get("word")).lower())]
+                def _has(en: str) -> bool:
+                    toks = re.findall(r"[a-z0-9]+", en.lower())
+                    return all(any(tk.startswith(st) or (len(st) >= 4 and st in tk) for tk in toks) for st in stems)
+                miss = [j for j, sc in enumerate(n.get("scenes") or []) if not _has(str(sc.get("en") or ""))]
                 if miss:
                     out.append(("W14", f"nuance[{i}] context: word {n.get('word')!r} is missing from scene(s) {miss} — the word should be in all three scenes, the odd one using it for the wrong listener"))
         elif kind == "swap" and "ko" in n and not _filled(n.get("ko")):

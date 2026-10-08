@@ -1,0 +1,23 @@
+from _ctx_common import run
+run("core-language-er", {
+ "call": {"scenes": {1: {"en": "Can you call the Spanish interpreter for bed 4?"},
+                      2: {"en": "I will now call language access services and initiate a request.",
+                          "fix": "I'm calling an interpreter now so we can talk."}},
+   "why": "language access services는 병원 행정 부서 이름이에요. 환자에게는 딱딱하고 낯설어서, '통역사를 불러 드릴게요'처럼 무엇을 해 주는지 쉬운 말로 해요."},
+ "understand": {"scenes": {0: {"en": "Please tell me in your own words what you understand."}}},
+ "find": {"scenes": {1: {"en": "Still trying to find a Mam interpreter — 40 minutes out."},
+                      2: {"en": "ETA to find an interpreter is 40 minutes, pending vendor availability.",
+                          "fix": "It may take a little longer to find one, and I'll wait with you."}}},
+ "arrange": {"scenes": {0: {"en": "I'm arranging a sign language interpreter — we'll write notes until then."},
+                         2: {"fix": "I'm arranging a sign language interpreter for you now. Please wait."}}},
+ "stay": {"scenes": {2: {"en": "Please stay in your current position until language services arrive."}}},
+ "grave": {"scenes": {1: {"en": "Bed 6's prognosis is grave — MAP 55 on two pressors."},
+                       2: {"en": "His prognosis is grave — he's hemodynamically unstable on two pressors."}},
+   "why": "prognosis·hemodynamically·pressors 같은 임상어는 의료진끼리의 말이에요. 가족에게는, 특히 통역을 거칠 때는 쉬운 말로 분명하게 전해요."},
+ "consent": {"scenes": {0: {"en": "Pt unable to give informed consent via interpreter; capacity in question."},
+                         1: {"en": "He couldn't explain it back — can you assess capacity to consent?"},
+                         2: {"en": "He lacks the capacity to consent."}},
+   "why": "capacity to consent(동의 능력)는 의료진이 판단하는 임상·법적 개념이에요. 가족에게는 '지금 스스로 결정하기 어려우셔서'처럼 풀어서 말해요."},
+ "misunderstanding": {"scenes": {2: {"en": "Your refusal is based on a misunderstanding of the facts."}},
+   "why": "'based on a misunderstanding'이라고 단정하면 환자를 탓하는 말로 들려요. 오해일 '수도 있다'고 열어 두면 대화가 이어져요."},
+})
