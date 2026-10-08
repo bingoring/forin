@@ -1,0 +1,584 @@
+- title: 노출 환경·시간 문진
+  s:
+  - t: 노출 시간
+    i: magnify
+    w: How long으로 시간을 먼저 열어 묻고, 뒤에 물 섭취를 한 문장으로 이어 물어요. 노출 시간과 수분 섭취는 더위로 인한 탈수와 열 손상 정도를 가늠하는 단서예요.
+    d: in the shade
+    k:
+    - 언제부터 어지러우셨어요?
+    - 지금 체온을 재 볼게요.
+    a: heat
+    o:
+    - cold
+    - rain
+    - wind
+  - t: 증상 시작
+    i: calendar
+    w: start feeling으로 증상이 처음 시작된 시점을 물어요. 노출 시간과 증상이 나타난 시점을 맞춰 보면 더위와의 연관을 가늠하기 쉬워요.
+    d: since last week
+    k:
+    - 어디가 가장 불편하세요?
+    - 물은 좀 드셨어요?
+    a: When
+    o:
+    - Where
+    - Why
+    - How
+  - t: 그늘·휴식
+    i: home
+    w: able to find로 찾을 수 있었는지 여건을 물어요. 쉬지 않았다고 탓하는 말이 아니라 상황을 묻는 말이라 편하게 답해요. 그늘과 휴식은 열 노출을 줄이는 기본 조건이에요.
+    d: in the car
+    k:
+    - 점심은 드셨어요?
+    - 드시는 약이 있으세요?
+    a: shade
+    o:
+    - sun
+    - ice
+    - food
+  - t: 장소·기간
+    i: pushpin
+    w: Tell me로 질문 대신 요청의 형태라 환자가 자유롭게 풀어 말해요. 장소와 기간을 한 문장에 묶어 실내외와 햇빛 노출 여부, 시간을 한꺼번에 파악해요.
+    d: on that day
+    k:
+    - 증상은 지금도 계속되나요?
+    - 같이 계셨던 분이 있나요?
+    a: where
+    o:
+    - who
+    - why
+    - how
+  - t: 물 소지
+    i: coffee
+    w: with you out there로 그 자리에 갖고 있었는지를 구체적으로 물어요. 마신 양이 아니라 접근 여건을 물어서 탓하는 느낌이 줄어요.
+    d: in your car
+    k:
+    - 지금도 목이 마르세요?
+    - 술은 드셨어요?
+    a: water
+    o:
+    - food
+    - ice
+    - medicine
+  - t: 활력징후
+    i: stetho
+    w: I'm going to로 곧 할 일을 미리 알려요. 하는 일을 먼저 말해 주면 환자의 불안이 줄고 협조가 쉬워져요. 체온과 맥박은 더위 노출 환자를 살필 때 기본이 되는 수치예요.
+    d: for you
+    k:
+    - 지금 물을 드릴게요.
+    - 그늘로 모셔 드릴게요.
+    a: temperature
+    o:
+    - weight
+    - height
+    - hearing
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 더위 노출 문진 4문장 순서
+    why: 노출 시간으로 시작해 증상이 시작된 때를 묻고, 도움이 된 것을 이어 물은 뒤 그것을 감안해 체온과 맥박을 재요. 'out there'·'it'·'whatever helped'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: How long were you out in the heat today?
+      icon: calendar
+      ko: 오늘 더운 데 얼마나 오래 계셨어요?
+      note: 노출
+    - en: When did you start feeling dizzy or sick out there?
+      icon: magnify
+      ko: 거기서 언제부터 어지럽거나 메스꺼우셨어요?
+      note: 시작
+    - en: Did anything help with it, like shade, rest or water?
+      icon: coffee
+      ko: 그늘, 휴식, 물처럼 도움이 된 게 있었어요?
+      note: 대처
+    - en: With whatever helped in mind, I'm going to check your temperature and pulse now.
+      icon: stetho
+      ko: 도움이 된 것을 감안해서 체온과 맥박을 재 볼게요
+      note: 측정
+  sw:
+    ko: 더운 데 얼마나 오래 계셨어요?
+- title: 경증 열탈진 사정
+  s:
+  - t: 징후 설명
+    i: stetho
+    w: 증상을 병명과 연결해 알려요. 땀과 어지럼이 징후라고 말하면 환자가 지금 느끼는 것이 무엇 때문인지 이해하고 안심해요.
+    d: of an allergy
+    k:
+    - 지금 몸을 식혀 드릴게요.
+    - 더운 데 얼마나 계셨어요?
+    a: signs
+    o:
+    - causes
+    - cures
+    - tests
+  - t: 처치 설명
+    i: coffee
+    w: We're로 지금 하는 일을 진행형으로 알려요. 식히는 일과 마실 것을 한 문장에 묶으면 환자가 무엇을 하는지 한 번에 이해하고 협조하기 쉬워요.
+    d: with ice
+    k:
+    - 혈압을 재 볼게요.
+    - 지금 어지러우세요?
+    a: cooling
+    o:
+    - calming
+    - slowing
+    - settling
+  - t: 위험 징후
+    i: siren
+    w: if로 환자가 스스로 알아차릴 신호를 구체적으로 알려요. 혼란이나 땀이 멎는 것은 열탈진이 더 심한 열 손상으로 넘어가는 경고라서 바로 말해 달라고 해요.
+    d: right away
+    k:
+    - 물을 천천히 드세요.
+    - 얼마나 오래 계셨어요?
+    a: serious
+    o:
+    - common
+    - normal
+    - helpful
+  - t: 제안
+    i: handshake2
+    w: Let's로 함께 하자는 제안처럼 말해서 간호사가 일방적으로 하는 처치가 아니라 같이 하는 일로 들려요. 물과 시원한 수건은 바로 해 줄 수 있는 작고 구체적인 처치예요.
+    d: a bucket
+    k:
+    - 어지러우시면 앉으세요.
+    - 체온을 확인할게요.
+    a: water
+    o:
+    - coffee
+    - soda
+    - tea
+  - t: 노출 시간
+    i: calendar
+    w: How long…today로 오늘 하루 중 더위에 있던 시간을 물어요. 노출 시간은 증상의 원인과 정도를 가늠하는 단서예요.
+    d: in the shade
+    k:
+    - 언제부터 어지러우셨어요?
+    - 물은 얼마나 드셨어요?
+    a: long
+    o:
+    - far
+    - often
+    - much
+  - t: 결과 설명
+    i: monitor
+    w: but으로 신경 쓸 점(맥박)과 안심되는 점(체온)을 나눠 말해요. 좋은 소식과 지켜볼 점을 함께 알려 주면 환자가 결과를 균형 있게 이해해요.
+    d: is dropping
+    k:
+    - 혈압도 조금 높아요.
+    - 숨이 차시나요?
+    a: fast
+    o:
+    - slow
+    - low
+    - weak
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 열탈진 설명과 안내 4문장 순서
+    why: 원인을 말하고, 그래서 나타난 증상과 병명을 잇고, 해결을 알린 뒤 위험 징후로 마무리해요. 'That's why'·'it'·'all that'이 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: Your body got too hot out there today.
+      icon: faceWorried
+      ko: 오늘 밖에서 몸이 너무 뜨거워졌어요
+      note: 원인
+    - en: That's why you're sweaty and lightheaded — it's heat exhaustion.
+      icon: magnify
+      ko: 그래서 땀이 나고 어지러운 거예요, 열탈진이에요
+      note: 설명
+    - en: To fix it, we're cooling you down and giving you fluids to drink.
+      icon: coffee
+      ko: 해결하려고 식혀 드리고 마실 것을 드려요
+      note: 처치
+    - en: Alongside all that, tell me if you get confused or stop sweating.
+      icon: siren
+      ko: 그와 함께 혼란스럽거나 땀이 멈추면 말씀해 주세요
+      note: 경고
+- title: 경증 저체온 초기
+  s:
+  - t: 떨림 설명
+    i: me
+    w: means로 증상의 이유를 풀어 줘요. 떨림이 몸이 스스로 열을 만들려는 반응이라고 설명하면 환자가 겁먹지 않고 보온 치료를 받아들여요.
+    d: has stopped
+    k:
+    - 언제부터 젖어 있었어요?
+    - 담요를 덮어 드릴게요.
+    a: shivering
+    o:
+    - coughing
+    - sweating
+    - itching
+  - t: 보온 조치
+    i: bandage
+    w: out of…and into…로 옷을 벗고 담요로 감싸는 두 동작을 한 문장에 순서대로 알려요. 젖은 옷은 체온을 계속 빼앗아서 먼저 벗겨요.
+    d: and onto a chair
+    k:
+    - 언제부터 떨리셨어요?
+    - 체온을 재 볼게요.
+    a: wet
+    o:
+    - dry
+    - dirty
+    - tight
+  - t: 노출 시간
+    i: calendar
+    w: How long…and wet으로 시간과 조건(추위·젖음)을 한 번에 물어요. 추위에 있던 시간과 젖은 정도가 저체온 위험을 크게 좌우해요.
+    d: in the snow
+    k:
+    - 지금 어디가 가장 추우세요?
+    - 옷은 언제 갈아입으셨어요?
+    a: long
+    o:
+    - far
+    - often
+    - much
+  - t: 상태 확인
+    i: speech
+    w: Can you…?로 환자가 직접 말하게 해서 지금 상태를 풀어서 듣고, 말투와 의식도 함께 살펴요. 저체온에서는 의식과 말투의 변화도 중요한 단서예요.
+    d: about earlier
+    k:
+    - 얼마나 오래 밖에 계셨어요?
+    - 체온을 다시 잴게요.
+    a: feeling
+    o:
+    - thinking
+    - moving
+    - sleeping
+  - t: 증상 설명
+    i: speech
+    w: that can happen with the cold로 말이 뭉개지는 것이 환자의 탓이 아니라 추위의 영향일 수 있다고 이유를 붙여요. 저체온에서는 말이 느려지고 뭉개질 수 있어요.
+    d: in the dark
+    k:
+    - 어디가 가장 춥나요?
+    - 드시는 약은 있나요?
+    a: slurred
+    o:
+    - loud
+    - rushed
+    - harsh
+  - t: 체온 감시
+    i: monitor
+    w: keep checking으로 한 번이 아니라 계속 확인한다고 알려요. 몸이 따뜻해지는 동안 체온이 오르는 정도를 반복해서 봐야 해서 미리 말해 두면 자주 재도 놀라지 않아요.
+    d: every year
+    k:
+    - 젖은 옷은 벗으셨나요?
+    - 지금 다리가 떨리세요?
+    a: temperature
+    o:
+    - weight
+    - hearing
+    - vision
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 초기 저체온 보온 4문장 순서
+    why: 떨림의 뜻을 말하고, 돕는 조치를 알리고, 담요 속 상태를 묻고, 계속 체온을 보겠다고 마무리해요. 'it'·'the blankets'·'Whatever you tell me'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: That shivering means your body is trying to warm itself.
+      icon: me
+      ko: 그 떨림은 몸이 스스로 따뜻해지려는 거예요
+      note: 설명
+    - en: We're helping it by getting you out of these wet clothes and into warm blankets.
+      icon: bandage
+      ko: 젖은 옷을 벗고 따뜻한 담요로 감싸서 도와드릴게요
+      note: 조치
+    - en: Can you tell me how you feel with the blankets on?
+      icon: speech
+      ko: 담요를 덮고 어떤 느낌인지 말씀해 주시겠어요?
+      note: 확인
+    - en: Whatever you tell me, we'll keep checking your temperature as you warm up.
+      icon: monitor
+      ko: 어떻게 말씀하셔도 따뜻해지는 동안 체온을 계속 확인할게요
+      note: 감시
+  sw:
+    ko: 말이 조금 뭉개지는데, 추위 때문에 그럴 수 있어요.
+- title: 일광화상 처치 설명
+  s:
+  - t: 처치 설명
+    i: bandage
+    w: We'll로 이어서 할 두 가지(식히기, 통증 약)를 한 문장에 묶어요. 일광화상은 피부를 식히고 통증을 줄이는 것이 먼저라 무엇을 해 줄지 알려 줘요.
+    d: with soap
+    k:
+    - 물집은 터뜨리지 마세요.
+    - 물을 많이 드세요.
+    a: pain
+    o:
+    - cough
+    - nausea
+    - cold
+  - t: 수분 안내
+    i: coffee
+    w: since로 물을 마셔야 하는 이유를 바로 붙여요. 일광화상은 몸의 수분을 피부 쪽으로 끌어 쓰게 해서 마르기 쉬워, 이유를 알려 주면 환자가 지시를 더 잘 따라요.
+    d: every day
+    k:
+    - 열이 나는지 지켜보세요.
+    - 얼음은 직접 대지 마세요.
+    a: since
+    o:
+    - although
+    - unless
+    - until
+  - t: 주의 사항
+    i: siren
+    w: Watch for…and don't…로 지켜볼 것과 하지 말 것을 한 문장에 나눠 말해요. 터진 물집은 감염 경로가 될 수 있어 터뜨리지 말라고 구체적으로 짚어 줘요.
+    d: at night
+    k:
+    - 알로에를 발라 보세요.
+    - 시원한 물을 드세요.
+    a: fever
+    o:
+    - cough
+    - cold
+    - stomachache
+  - t: 상태 공감
+    i: faceWorried
+    w: look pretty로 단정하지 않고 보이는 대로 말해요. tender를 덧붙이면 상태를 확인하면서 아프겠다는 공감도 함께 전해요.
+    d: very hot
+    k:
+    - 어깨를 보여 주시겠어요?
+    - 화상은 처음이세요?
+    a: sunburned
+    o:
+    - bruised
+    - scratched
+    - chilled
+  - t: 피부 관리
+    i: shield
+    w: Try not to로 금지를 명령이 아니라 권유로 말해 환자가 거부감 없이 받아들여요. 긁거나 문지르면 이미 상한 피부가 더 벗겨지고 감염되기 쉬워요.
+    d: to cover
+    k:
+    - 시원한 찜질을 해 보세요.
+    - 연고는 얇게 바르세요.
+    a: scratch
+    o:
+    - shave
+    - stretch
+    - soak
+  - t: 통증 조절
+    i: pill
+    w: can help로 효과를 단정하지 않고 도움이 될 수 있다고 말해요. 알로에와 차가운 찜질은 일광화상의 통증과 열감을 줄이는 흔한 방법이에요.
+    d: at bedtime
+    k:
+    - 얼음은 직접 대지 마세요.
+    - 물을 많이 드세요.
+    a: cool
+    o:
+    - thick
+    - dry
+    - heavy
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 일광화상 안내 4문장 순서
+    why: 상태를 말하고, 그것을 덜어 줄 처치를 알린 뒤, 집에서 할 일과 지켜볼 일을 이어요. 'that'·'the same pain'·'all of that'이 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: Your shoulders look pretty sunburned and tender.
+      icon: faceWorried
+      ko: 어깨가 꽤 심하게 타고 아프시겠어요
+      note: 관찰
+    - en: To ease that, we'll cool the skin and give you something for the pain.
+      icon: bandage
+      ko: 덜어 드리려고 피부를 식히고 통증 약을 드릴게요
+      note: 처치
+    - en: At home, aloe or a cool compress can keep helping with the same pain.
+      icon: pill
+      ko: 집에서도 알로에나 시원한 찜질이 같은 통증에 계속 도움이 돼요
+      note: 집에서
+    - en: On top of aloe or a compress, watch for blisters or a fever, and don't pop them.
+      icon: siren
+      ko: 알로에나 찜질 말고도 물집이나 열을 지켜보시고 터뜨리지 마세요
+      note: 주의
+- title: 탈수 수분보충 교육
+  s:
+  - t: 경구 시작
+    i: coffee
+    w: Since…로 지금 가능한 이유(수분을 받아들임)를 먼저 붙여요. 토하지 않고 마시면 먼저 입으로 보충하고, 못 마실 때 정맥으로 넘어가는 순서예요.
+    d: with the IV
+    k:
+    - 구토는 몇 번 하셨어요?
+    - 소변은 보셨어요?
+    a: start
+    o:
+    - stop
+    - wait
+    - finish
+  - t: 대안 안내
+    i: pill
+    w: If로 조건과 다음 단계를 함께 알려요. 마시기가 안 되면 정맥으로 넘어간다고 미리 말하면 환자가 마시기를 시도하면서도 안심해요.
+    d: by mouth
+    k:
+    - 오늘 소변을 보셨나요?
+    - 어지러우세요?
+    a: through
+    o:
+    - around
+    - behind
+    - beside
+  - t: 마시는 법
+    i: coffee
+    w: better than으로 두 방법을 비교해 왜 조금씩인지 보여 줘요. 한꺼번에 많이 마시면 위를 자극해 토하기 쉬워서 조금씩 자주가 낫다고 안내해요.
+    d: every day
+    k:
+    - 빨대로 드셔 보세요.
+    - 얼음을 드릴게요.
+    a: sips
+    o:
+    - gulps
+    - bites
+    - breaths
+  - t: 상태 관찰
+    i: faceWorried
+    w: You look…로 보이는 대로 말해 환자가 살펴지고 있다고 느껴요. 힘이 없고 목이 마른 것은 탈수에서 흔한 모습이에요.
+    d: very calm
+    k:
+    - 얼마나 못 드셨어요?
+    - 설사는 하루에 몇 번 하세요?
+    a: thirsty
+    o:
+    - hungry
+    - sleepy
+    - nervous
+  - t: 진찰 안내
+    i: stetho
+    w: with a quick exam으로 짧은 진찰이라고 미리 알려요. 탈수 정도는 입안 점막, 피부 탄력, 맥박 같은 진찰로 가늠해요.
+    d: with a scan
+    k:
+    - 혈압을 먼저 재 볼게요.
+    - 물을 드릴게요.
+    a: quick
+    o:
+    - long
+    - full
+    - hard
+  - t: 이유 설명
+    i: bulb
+    w: easier on…than으로 이유를 비교해요. 작게 마시는 쪽이 위에 부담이 덜해서 메스꺼운 환자에게 설득력이 있어요.
+    d: on your throat
+    k:
+    - 토할 것 같으면 말씀하세요.
+    - 천천히 드세요.
+    a: easier
+    o:
+    - harder
+    - rougher
+    - faster
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 탈수 수분보충 4문장 순서
+    why: 상태를 보고, 진찰하고, 진찰 결과를 바탕으로 입으로 마시기를 시작한 뒤, 부족할 때의 대안을 말해요. 'that exam'·'those sips'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: You look pretty weak and thirsty right now.
+      icon: faceWorried
+      ko: 지금 많이 힘없고 목말라 보이세요
+      note: 관찰
+    - en: Let's check how dehydrated you are with a quick exam.
+      icon: stetho
+      ko: 간단히 진찰해서 얼마나 탈수됐는지 확인해 볼게요
+      note: 진찰
+    - en: Based on that exam, let's start with small sips of fluid.
+      icon: coffee
+      ko: 진찰 결과로 수분을 조금씩 마시는 것부터 시작해요
+      note: 경구
+    - en: If those sips aren't enough, we'll give you fluids through an IV.
+      icon: pill
+      ko: 그걸로 부족하면 정맥주사로 수분을 드릴게요
+      note: 대안
+  sw:
+    ko: 몇 분마다 조금씩 마셔 보세요.
+- title: 열사병
+  s:
+  - t: 상태 설명
+    i: siren
+    w: dangerously high로 위험하다는 사실을 숨기지 않고 짧게 말해요. 이어서 we're cooling you fast로 지금 대처 중이라고 함께 알려야 혼란한 환자도 겁먹지 않고 협조해요.
+    d: for a while
+    k:
+    - 제 손을 꽉 쥐어 보세요.
+    - 성함이 어떻게 되세요?
+    a: dangerously
+    o:
+    - slightly
+    - usually
+    - hardly
+  - t: 냉각 설명
+    i: bandage
+    w: to bring it down으로 목적을 붙여 두 가지 처치가 하나의 목표라는 것이 보여요. 열사병에서는 체온을 빨리 내리는 것이 가장 중요해서 짧게 알려요.
+    d: a few seconds
+    k:
+    - 눈을 떠 보세요.
+    - 숨을 크게 쉬어 보세요.
+    a: misting
+    o:
+    - turning
+    - lifting
+    - weighing
+  - t: 의식 확인
+    i: me
+    w: name과 where you are 두 가지를 한 문장에 묻는 것은 의식과 지남력을 가볍게 확인하는 방법이에요. 열사병에서는 의식 변화가 핵심 징후라 대답이 또렷한지 보면서 자극하지 않는 말투로 물어요.
+    d: last night
+    k:
+    - 체온을 다시 잴게요.
+    - 어디가 가장 아프세요?
+    a: where
+    o:
+    - why
+    - when
+    - how
+  - t: 반응 확인
+    i: handshake2
+    w: Can you…for me?로 지시가 아니라 부탁의 형태라 혼란한 환자도 덜 놀라요. 손을 쥐게 하면 반응과 근력, 의식 상태를 한 번에 볼 수 있어요.
+    d: your own
+    k:
+    - 제 말이 들리세요?
+    - 다리를 움직여 보세요.
+    a: squeeze
+    o:
+    - shake
+    - raise
+    - wave
+  - t: 안심
+    i: shield
+    w: We're going to로 곧 일어날 일을 미리 알려요. 혼란스러운 환자에게는 짧게 반복해서 말해 주는 것이 도움이 돼요.
+    d: to you
+    k:
+    - 성함을 말씀해 주세요.
+    - 숨이 차세요?
+    a: temperature
+    o:
+    - weight
+    - voice
+    - cholesterol
+  - t: 안심
+    i: handshake2
+    w: Stay with me는 의식을 놓지 말고 이어 가자는 말이에요. 대시 뒤에 짧은 안심을 붙이는데, 의식이 흐린 환자는 긴 설명보다 짧은 말과 목소리 톤에 반응해요.
+    d: Sit up now
+    k:
+    - 체온이 아주 높아요.
+    - 지금 식혀 드리고 있어요.
+    a: Stay
+    o:
+    - Walk
+    - Leave
+    - Move
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 열사병 응대 4문장 순서
+    why: 상태와 냉각을 말하고, 그 상태에서 의식을 확인한 뒤, 묻는 이유를 알려요. 'it'·'those packs'·'asking'이 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: Your body temperature is dangerously high, and we're cooling you fast.
+      icon: siren
+      ko: 체온이 위험할 정도로 높아서 빠르게 식히고 있어요
+      note: 상태
+    - en: We're putting cool packs and misting you to bring it down.
+      icon: bandage
+      ko: 체온을 낮추려고 찜질팩을 대고 분무를 하고 있어요
+      note: 냉각
+    - en: With those packs on, stay with me — can you tell me your name and where you are?
+      icon: me
+      ko: 팩을 댄 채로 정신 놓지 말고 성함과 어디인지 말해 주세요
+      note: 의식
+    - en: I'm asking because confusion can be a sign the heat is affecting you.
+      icon: faceWorried
+      ko: 혼란은 더위가 몸에 영향을 준다는 신호일 수 있어서 묻는 거예요
+      note: 이유
+  sw:
+    ko: 빠르게 식혀 드리고 있어요, 괜찮아지실 거예요.

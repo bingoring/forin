@@ -1,0 +1,582 @@
+- title: 중등도 저체온
+  s:
+  - t: 위험 징후
+    i: siren
+    w: When…으로 일반 규칙(떨림이 멎으면)을 말한 뒤 this is serious로 결론을 붙여요. 중등도 이상 저체온에서는 열을 만들던 떨림이 멎기도 하는데, 좋아진 신호가 아니라 더 위험한 신호예요.
+    d: has gone away
+    k:
+    - 체온을 다시 재 볼게요.
+    - 언제 발견되셨나요?
+    a: serious
+    o:
+    - normal
+    - minor
+    - fine
+  - t: 재가온
+    i: bandage
+    w: actively는 몸이 스스로 데워지길 기다리는 것이 아니라 담요와 수액 같은 열을 더해 직접 데운다는 뜻이에요. 가족에게도 지켜만 보는 게 아니라 적극 치료한다는 느낌을 줘요.
+    d: since morning
+    k:
+    - 심장 리듬을 확인할게요.
+    - 움직임을 최소로 할게요.
+    a: actively
+    o:
+    - passively
+    - quietly
+    - rarely
+  - t: 이동 주의
+    i: shield
+    w: to avoid…로 부드럽게 옮기는 이유를 붙여요. 심한 저체온의 심장은 움직임과 충격에 예민해서 부정맥이 생기기 쉬워요.
+    d: the whole time
+    k:
+    - 담요를 더 가져올게요.
+    - 맥박이 약하게 잡혀요.
+    a: heart
+    o:
+    - lungs
+    - kidneys
+    - liver
+  - t: 변화 설명
+    i: faceWorried
+    w: we expect that으로 지금 상태를 말한 뒤 기대하는 경과를 덧붙여요. 확정이 아니라 예상이라고 표현하면 가족이 과한 기대나 불안 없이 상태를 따라가요.
+    d: as the day goes
+    k:
+    - 언제부터 이랬는지 아세요?
+    - 드시던 약이 있나요?
+    a: improve
+    o:
+    - continue
+    - worsen
+    - spread
+  - t: 모니터링
+    i: monitor
+    w: while we로 재가온 중에도 지켜본다고 말해요. 저체온에서는 재가온하는 동안에도 심장 리듬이 변할 수 있어서 계속 모니터로 봐요.
+    d: once a day
+    k:
+    - 체온을 다시 재 볼게요.
+    - 가족분께 설명해 드릴게요.
+    a: closely
+    o:
+    - rarely
+    - briefly
+    - loosely
+  - t: 금지 안내
+    i: lock
+    w: Try not to로 금지를 부드럽게 말해요. 차가운 팔다리를 문지르거나 주무르는 것은 저체온 환자에게 권하지 않아서, 보호자가 도우려다 하기 쉬워 먼저 짚어 말해요.
+    d: his chest
+    k:
+    - 담요를 덮어 둘게요.
+    - 체온을 재 볼게요.
+    a: massage
+    o:
+    - shake
+    - bend
+    - squeeze
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 중등도 저체온 가족 안내 4문장 순서
+    why: 왜 위험한지를 말하고, 그래서 하는 치료를 알리고, 피할 일을 덧붙인 뒤, 심장 리듬 감시로 마무리해요. 'That's why'·'that'·'leaving his limbs alone'이 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: When shivering stops, the cold has gone deeper — this is serious.
+      icon: siren
+      ko: 떨림이 멎으면 추위가 더 깊이 들어간 거예요, 심각해요
+      note: 위험
+    - en: That's why we're actively warming him with heated blankets and warm fluids.
+      icon: bandage
+      ko: 그래서 가온 담요와 따뜻한 수액으로 적극적으로 데우고 있어요
+      note: 치료
+    - en: To help with that, try not to rub or massage his arms and legs.
+      icon: lock
+      ko: 도우시려면 팔다리를 문지르거나 주무르지 마세요
+      note: 금지
+    - en: Along with leaving his limbs alone, we'll watch his heart rhythm closely.
+      icon: monitor
+      ko: 팔다리를 가만히 두는 것과 함께 심장 리듬을 계속 볼게요
+      note: 감시
+- title: 동상 손발
+  s:
+  - t: 재가온 설명
+    i: bandage
+    w: and the throbbing is expected로 아플 수 있다는 것을 미리 알려요. 언 손가락이 녹으면서 욱신거리는 건 흔해서, 예상된다고 말해 두면 환자가 이상 신호로 오해하지 않아요.
+    d: in a bag
+    k:
+    - 감각이 돌아오면 알려 주세요.
+    - 손가락을 움직여 보세요.
+    a: expected
+    o:
+    - unusual
+    - rare
+    - harmful
+  - t: 금지 안내
+    i: lock
+    w: Don't…— that…으로 금지와 이유를 한 문장에 붙여요. 언 조직은 쉽게 상하고 문지르면 더 다칠 수 있어서, 이유를 알면 환자가 지시를 따라요.
+    d: for now
+    k:
+    - 따뜻한 물에 담가 드릴게요.
+    - 손가락을 움직여 보세요.
+    a: tissue
+    o:
+    - nail
+    - hair
+    - joint
+  - t: 경과 관찰
+    i: magnify
+    w: watch for와 check how로 무엇을 보는지 구체적으로 알려요. 재가온 뒤 물집이 생기는지와 피부색이 돌아오는 정도는 동상의 깊이와 회복을 가늠하는 단서예요.
+    d: after a week
+    k:
+    - 감각은 있나요?
+    - 물집은 터뜨리지 마세요.
+    a: color
+    o:
+    - size
+    - shape
+    - smell
+  - t: 이유 설명
+    i: bulb
+    w: so로 원인을 먼저 말하고 해야 할 일을 이어요. 병명을 먼저 알려 주면 왜 따뜻한 물에 담그는지 환자가 납득해요.
+    d: since last week
+    k:
+    - 언제부터 감각이 없으셨어요?
+    - 다른 부위도 시리세요?
+    a: frostbite
+    o:
+    - sunburn
+    - bruising
+    - itching
+  - t: 증상 보고
+    i: bell
+    w: Tell me when으로 감각이 돌아오는 시점을 환자가 직접 알리게 해요. 동상 부위는 처음엔 감각이 없다가 녹으면서 따끔거리고 아프기 시작해서, 그 시점이 회복 신호예요.
+    d: if it hurts
+    k:
+    - 지금 손가락 색이 어때요?
+    - 물집이 생겼나요?
+    a: tingling
+    o:
+    - hunger
+    - thirst
+    - nausea
+  - t: 거상 설명
+    i: pushpin
+    w: to help the swelling으로 손을 올리는 이유를 붙여요. 손을 높이 올려 두면 붓기를 줄이는 데 도움이 된다고 알려요.
+    d: in a cast
+    k:
+    - 따뜻한 담요를 덮을게요.
+    - 손가락을 움직여 보세요.
+    a: elevated
+    o:
+    - lowered
+    - crossed
+    - clenched
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 동상 재가온 안내 4문장 순서
+    why: 병명과 해야 할 일을 말하고, 재가온 방법과 아픔을 알리고, 느낌을 알려 달라 하고, 지켜볼 것으로 마무리해요. 'that'·'the warm water'·'what you tell me'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: Your fingers had frostbite, so we need to rewarm them.
+      icon: bulb
+      ko: 손가락에 동상을 입어서 재가온해야 해요
+      note: 이유
+    - en: We're doing that in warm water, and the throbbing is expected.
+      icon: bandage
+      ko: 따뜻한 물에서 하고 있고, 욱신거리는 건 예상되는 거예요
+      note: 방법
+    - en: Tell me when you start to feel any tingling or pain from the warm water.
+      icon: bell
+      ko: 따뜻한 물 때문에 따끔거리거나 아프면 말씀해 주세요
+      note: 보고
+    - en: Together with what you tell me, we'll watch for blisters and check the color.
+      icon: magnify
+      ko: 말씀해 주시는 것과 함께 물집과 색깔을 지켜볼게요
+      note: 관찰
+  sw:
+    ko: 따뜻한 물에 손가락을 재가온하고 있어요.
+- title: 노인 여름 탈수 혼돈
+  s:
+  - t: 원인 설명
+    i: bulb
+    w: can cause로 가능한 원인으로 말해요. 노인은 갈증을 덜 느끼고 수분 조절이 약해 탈수가 혼란으로 먼저 드러나기도 해서, 혼란을 보호자에게 이유와 함께 알려 줘요.
+    d: in younger kids
+    k:
+    - 언제부터 혼란스러워 보였나요?
+    - 약은 드시고 있나요?
+    a: cause
+    o:
+    - prevent
+    - treat
+    - cure
+  - t: 검사·보충
+    i: lab
+    w: check와 rehydrate를 and로 묶어 두 단계를 알려요. 노인은 수액을 너무 빨리 넣으면 부담이 될 수 있어서 carefully라고 말해야 가족이 안심해요.
+    d: at home
+    k:
+    - 언제부터 이러셨어요?
+    - 가족력이 있나요?
+    a: electrolytes
+    o:
+    - allergies
+    - hearing
+    - weight
+  - t: 증상 문진
+    i: magnify
+    w: Has she been…ing less로 최근의 변화를 묻는 현재완료진행 형태예요. 소변량 감소와 일어설 때 어지럼은 탈수의 흔한 단서라서 보호자가 알아챈 변화를 열어 물어요.
+    d: last night
+    k:
+    - 지난주에 넘어지셨나요?
+    - 평소 약을 드시나요?
+    a: urinating
+    o:
+    - coughing
+    - snoring
+    - blinking
+  - t: 섭취량
+    i: coffee
+    w: How much…the past few days로 양과 기간을 열린 질문으로 물어요. 며칠 동안 먹고 마신 양이 줄었는지가 탈수와 혼란의 원인을 찾는 핵심 단서예요.
+    d: since breakfast
+    k:
+    - 소변을 보셨나요?
+    - 약을 드시고 있나요?
+    a: drinking
+    o:
+    - sleeping
+    - walking
+    - talking
+  - t: 위험 설명
+    i: faceWorried
+    w: can get confused quickly로 빠르게 일어날 수 있음을 알려요. 노인은 가벼운 탈수에서도 혼란이 오기 쉬워서 평소와 다른 행동을 보호자가 일찍 알아차리는 게 중요해요.
+    d: after dinner
+    k:
+    - 방금 혼란이 시작됐나요?
+    - 혈압약을 드시나요?
+    a: quickly
+    o:
+    - slowly
+    - rarely
+    - hardly
+  - t: 경과 관찰
+    i: monitor
+    w: keep a close eye on으로 계속 지켜본다고 알려요. 수액이 들어가는 동안 혼란 정도, 숨참, 소변량을 보고 속도를 맞춰 가요.
+    d: for tonight
+    k:
+    - 곧 의사가 올 거예요.
+    - 잠시 일어나지 마세요.
+    a: eye
+    o:
+    - ear
+    - hand
+    - hair
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 노인 탈수 혼란 문진 4문장 순서
+    why: 원인을 설명하고, 먹고 마신 양을 묻고, 소변과 어지럼을 이어 묻고, 모은 답으로 검사와 보충을 알려요. 'That's why'·'that intake'·'those answers'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: Dehydration in the heat can cause confusion in older adults.
+      icon: bulb
+      ko: 더위 속 탈수는 노인분에게 혼란을 일으킬 수 있어요
+      note: 원인
+    - en: That's why I need to know how much she's eaten and drunk lately.
+      icon: coffee
+      ko: 그래서 요즘 얼마나 드셨는지 알아야 해요
+      note: 섭취
+    - en: With that intake in mind, has she been urinating less or feeling dizzy when standing?
+      icon: magnify
+      ko: 그 양을 감안해서, 소변이 줄거나 설 때 어지러워하셨나요?
+      note: 증상
+    - en: With all of those answers, we'll check her electrolytes and rehydrate her carefully.
+      icon: lab
+      ko: 그 답들로 전해질을 확인하고 조심스럽게 수분을 보충할게요
+      note: 처치
+- title: 운동성 열손상 선수
+  s:
+  - t: 체온 측정
+    i: monitor
+    w: core temperature라고 정확히 말해야 환자가 몸속 온도를 재는 중임을 알아요. 운동 중 열손상에서는 입·귀·이마 체온이 부정확해서 심부 체온으로 확인해요.
+    d: by hand
+    k:
+    - 경련은 언제 시작됐어요?
+    - 어디가 가장 아프세요?
+    a: probe
+    o:
+    - scale
+    - mask
+    - brush
+  - t: 냉각 설명
+    i: bandage
+    w: to bring it down fast로 빠르게 식히는 이유와 속도를 말해요. 운동 중 열사병은 체온을 빨리 떨어뜨릴수록 결과가 좋아서 얼음물 침수를 먼저 써요.
+    d: in a minute
+    k:
+    - 얼음물에 들어가도 괜찮으세요?
+    - 지금 어지러우세요?
+    a: immersion
+    o:
+    - injection
+    - massage
+    - blanket
+  - t: 경위 문진
+    i: calendar
+    w: 두 질문을 and로 이어 달린 시간과 증상 시작 시점을 함께 물어요. 운동 시간과 경련이 시작된 때를 맞춰 보면 열 손상 정도를 가늠하기 쉬워요.
+    d: at the gym
+    k:
+    - 오늘 물은 얼마나 드셨어요?
+    - 지금도 쥐가 나세요?
+    a: running
+    o:
+    - sleeping
+    - driving
+    - waiting
+  - t: 시점 확인
+    i: pushpin
+    w: exactly로 정확한 시점을 물어요. 쓰러진 시각은 의식 변화가 언제 있었는지 가늠하는 단서이고, 열사병 판단에도 쓰여요.
+    d: before the start
+    k:
+    - 몇 킬로미터를 달리셨어요?
+    - 쓰러질 때 머리를 다치셨어요?
+    a: collapsed
+    o:
+    - finished
+    - stopped
+    - slowed
+  - t: 수액 설명
+    i: pill
+    w: to help with로 수액의 목적을 말해요. 수액은 땀으로 잃은 수분을 채우고 근육 경련을 줄이는 데 도움이 돼요.
+    d: after the race
+    k:
+    - 땀은 많이 났어요?
+    - 소변은 보셨어요?
+    a: cramping
+    o:
+    - coughing
+    - itching
+    - hiccups
+  - t: 경과 안내
+    i: chartup
+    w: coming down well로 좋은 경과를 구체적으로 알려요. 냉각 중에 체온이 내려가는 것을 확인해서 말해 주면 환자가 치료가 듣는다고 안심해요.
+    d: since morning
+    k:
+    - 체온을 한 번 더 재 볼게요.
+    - 어지러우면 말씀하세요.
+    a: well
+    o:
+    - badly
+    - poorly
+    - barely
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 운동성 열손상 응대 4문장 순서
+    why: 체온을 재고, 식히고, 내려가는 것을 알린 뒤, 경위를 묻습니다. 'it'·'the cooling'·'That's good news'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: We're checking your core temperature with a special probe.
+      icon: monitor
+      ko: 특수 탐침으로 심부 체온을 확인하고 있어요
+      note: 측정
+    - en: We're cooling you with an ice-water immersion to bring it down fast.
+      icon: bandage
+      ko: 얼음물 침수로 빠르게 체온을 낮추고 있어요
+      note: 냉각
+    - en: Your temperature is coming down well with the cooling.
+      icon: chartup
+      ko: 냉각으로 체온이 잘 내려가고 있어요
+      note: 경과
+    - en: That's good news — how long were you running, and when did the cramps start?
+      icon: calendar
+      ko: 다행이에요, 얼마나 오래 달리셨고 언제부터 경련이 있었어요?
+      note: 문진
+  sw:
+    ko: 체온을 빨리 내리려고 얼음물 욕조에 들어가게 할게요.
+- title: 저체온+음주 노숙
+  s:
+  - t: 안심 설명
+    i: handshake2
+    w: colder than you feel로 환자가 느끼는 것과 실제 체온의 차이를 부드럽게 알려요. 추위와 술이 겹치면 몸이 차가운 걸 못 느끼기도 해서, 판단 없이 사실을 전하고 let's로 바로 돕겠다고 이어요.
+    d: this morning
+    k:
+    - 성함이 어떻게 되세요?
+    - 가족에게 연락할까요?
+    a: colder
+    o:
+    - warmer
+    - older
+    - quieter
+  - t: 비판 안 함
+    i: handshake2
+    w: I'm not judging you로 먼저 평가하지 않는다고 말해요. 음주나 노숙 환자는 평가받는다고 느끼면 입을 닫기 쉬워서, 판단하지 않는다는 말이 신뢰를 만들어요.
+    d: to be honest
+    k:
+    - 담요를 가져올게요.
+    - 술은 얼마나 드셨어요?
+    a: judging
+    o:
+    - testing
+    - teaching
+    - ignoring
+  - t: 섭취 문진
+    i: coffee
+    w: last는 가장 최근이라 마지막 식사·음료 시점을 정확히 물어요. 먹지 못한 시간이 길면 저혈당과 탈수 위험이 있어서 체온과 함께 확인해요.
+    d: yesterday
+    k:
+    - 오늘 밤 어디서 주무셨어요?
+    - 드시는 약이 있나요?
+    a: eat
+    o:
+    - sleep
+    - bathe
+    - walk
+  - t: 안심
+    i: shield
+    w: It's okay로 긴장을 풀고, we just want to…로 목적을 안전 확인으로 한정해요. 환자가 단속이나 신고로 오해하지 않도록 목적을 분명히 말해요.
+    d: for a week
+    k:
+    - 오늘 밤 갈 곳이 있나요?
+    - 사회복지사를 불러 드릴게요.
+    a: safe
+    o:
+    - late
+    - busy
+    - loud
+  - t: 음주 문진
+    i: lab
+    w: including alcohol로 술도 말해야 한다는 것을 판단 없이 열어요. 술은 저체온 위험을 키우고 경과를 보는 데 영향을 줘서 꼭 물어야 해요.
+    d: this week
+    k:
+    - 마지막 식사는 언제였나요?
+    - 드시는 약이 있나요?
+    a: including
+    o:
+    - except
+    - without
+    - excluding
+  - t: 보온 조치
+    i: bandage
+    w: Let's로 함께 하는 일처럼 부드럽게 말해요. 젖은 옷은 열을 계속 빼앗아서 가장 먼저 벗기고 따뜻하게 해요.
+    d: and keep them
+    k:
+    - 체온을 재 볼게요.
+    - 성함을 말씀해 주시겠어요?
+    a: wet
+    o:
+    - dry
+    - tight
+    - dirty
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 저체온 노숙 환자 응대 4문장 순서
+    why: 상태와 목표를 말하고, 그 방법을 알리고, 판단 없이 음주를 묻고, 안심으로 마무리해요. 'that'·'Whatever you tell me'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: You're colder than you feel, so let's get you warm and safe.
+      icon: handshake2
+      ko: 느끼시는 것보다 체온이 낮으니 따뜻하고 안전하게 해 드릴게요
+      note: 목표
+    - en: To do that, let's get those cold, wet clothes off.
+      icon: bandage
+      ko: 그러려면 차갑고 젖은 옷부터 벗길게요
+      note: 조치
+    - en: I'm not judging you — have you had anything to drink today, including alcohol?
+      icon: lab
+      ko: 판단하려는 게 아니에요, 오늘 술 포함해서 마신 게 있으세요?
+      note: 문진
+    - en: Whatever you tell me, it's okay — we just want to make sure you're safe tonight.
+      icon: shield
+      ko: 뭐라고 하셔도 괜찮아요, 오늘 밤 안전하신지만 확인하고 싶어요
+      note: 안심
+  sw:
+    ko: 오늘 술을 포함해서 뭔가 마신 게 있으세요?
+- title: 익수 후 저체온
+  s:
+  - t: 호흡 관찰
+    i: stetho
+    w: since로 지켜보는 이유를 바로 붙여요. 물을 들이마시면 폐에 영향을 줘서 처음엔 괜찮아 보여도 나중에 숨이 나빠질 수 있어 계속 봐요.
+    d: for a day
+    k:
+    - 언제 물에서 꺼냈어요?
+    - 기침은 하나요?
+    a: closely
+    o:
+    - rarely
+    - briefly
+    - loosely
+  - t: 동시 진행
+    i: bandage
+    w: At the same time으로 두 가지를 동시에 한다고 알려요. 익수 환자는 호흡 관찰과 체온 올리기를 같이 해야 해서 하나가 끝나길 기다리지 않는다는 뜻이에요.
+    d: in the car
+    k:
+    - 폐 소리를 들어 볼게요.
+    - 물을 얼마나 마셨어요?
+    a: warming
+    o:
+    - scanning
+    - weighing
+    - drying
+  - t: 경위 문진
+    i: calendar
+    w: go under는 물속에 잠겼는지를 쉬운 말로 물어요. 보호자가 submerged 같은 말을 몰라도 답할 수 있고, 잠긴 여부는 폐 상태를 가늠하는 단서예요.
+    d: on the boat
+    k:
+    - 누가 물에서 꺼냈어요?
+    - 숨은 쉬고 있었어요?
+    a: under
+    o:
+    - out
+    - up
+    - away
+  - t: 상태 설명
+    i: faceWorried
+    w: so로 관찰하는 이유가 기침이라고 인과를 붙여요. 물에 빠진 뒤 기침이 많으면 폐에 물이나 자극이 있다는 신호일 수 있어서 호흡을 더 가까이 봐요.
+    d: since noon
+    k:
+    - 언제 기침이 시작됐어요?
+    - 체온을 다시 잴게요.
+    a: coughing
+    o:
+    - sneezing
+    - shouting
+    - sweating
+  - t: 경위 설명
+    i: pushpin
+    w: a few minutes ago로 시간을 어림으로 전해요. 물에서 나온 뒤 경과 시간은 저체온 정도와 치료를 정하는 단서라서 가족에게도 시점을 알려요.
+    d: a long time
+    k:
+    - 물에서 얼마나 있었어요?
+    - 숨을 쉬었어요?
+    a: ago
+    o:
+    - later
+    - away
+    - early
+  - t: 검사 안내
+    i: stetho
+    w: and로 듣기와 재기 두 가지 확인을 묶어 알려요. 익수 후에는 폐 소리와 산소 수치가 숨의 상태를 가장 빨리 보여 줘요.
+    d: by hand
+    k:
+    - 체온을 다시 재 볼게요.
+    - 가슴 사진을 찍을게요.
+    a: oxygen
+    o:
+    - noise
+    - light
+    - volume
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 익수 환자 보호자 안내 4문장 순서
+    why: 구조 시점을 알리고, 물속에 있던 시간을 묻고, 답에 상관없이 하는 처치를 알린 뒤, 폐 검사를 이어요. 'it'·'Whatever the answer'·'Besides that'이 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: We pulled him out of the ice water a few minutes ago.
+      icon: pushpin
+      ko: 몇 분 전에 얼음물에서 끌어냈어요
+      note: 경위
+    - en: How long was he in it, and did he go under?
+      icon: calendar
+      ko: 거기에 얼마나 있었고 물속에 잠긴 적 있어요?
+      note: 문진
+    - en: Whatever the answer, we're warming him and watching his breathing closely.
+      icon: bandage
+      ko: 답이 무엇이든 데우면서 호흡을 계속 지켜봐요
+      note: 처치
+    - en: Besides that, we'll check his oxygen and listen to his lungs, which water can affect.
+      icon: stetho
+      ko: 그 밖에 산소를 확인하고 폐 소리를 들을게요, 물은 폐에 영향을 줄 수 있어요
+      note: 검사
