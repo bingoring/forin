@@ -56,7 +56,7 @@
 > (예: drowsy 제목인데 어색한 장면은 "CNS depression") → 장면 `en`·`fix`를 고쳐 핸드오프대로. 검사기 W14(경고), 저작 지시 9번. 합친 13주제는 별도 정비 패스.
 > **C5 장면 정비 완료(2026-10-08)**: 합쳐 둔 13주제를 세 묶음(A·B·C)으로 Sonnet 수정 → Opus 검토(고칠 것 16·24·19) → Sonnet 반영, ER 정본 **W14 0건**.
 > 그 뒤 새 주제는 저작 단계에서 바로 정비. 검사기 W14는 낱말별 어간 비교(pass away↔passed away, verify↔verified, warm↔rewarming).
-> **합친 ER 주제 21/35**(+burn·abdominal·bleeding-wound·ortho-trauma). 검토 중 gi-bleed, 저작 중 genitourinary·diabetic·poisoning·anaphylaxis, 남은 10.
+> **합친 ER 주제 26/35**(+gi-bleed·diabetic·genitourinary·anaphylaxis·poisoning). 수정 중 environmental, 검토 중 alcohol-withdrawal·fever-infection·psych·sepsis, 남은 4(deescalation·peds·geriatric·obgyn).
 > 결정 대기 추가(v44 문장): head-trauma 18.3 "Left pupil remains reactive and equal"(우측 산대와 모순), bleeding-wound 12.2 비문 "How is your blood sugar been controlled", polytrauma 15.4 긴장성 기흉 압력 방향.
 > **결정 대기 — v44 문장 사실 오류(결정 11, 검토가 보고만 함)**: arrest 16.2 keyPhrase `high on the sternum`(2015 이후 임산부도 일반 위치),
 > arrest 10.3 "한 라운드에 에피 두 번", arrest 20.3 출혈 잡힐 때까지 압박 보류, procedures 9.4 항생제 시험 용량·5.5 정맥 시도 무제한·18.2 이중 확인,
