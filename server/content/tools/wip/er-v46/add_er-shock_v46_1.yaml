@@ -20,9 +20,9 @@
   s:
   - {t: "증상 문진", i: me, w: "only when으로 범위를 좁혀 물으면 일어설 때 생기는 증상인지 가려내기 쉬워요. 자세를 바꿀 때만 어지러우면 기립성 저혈압을 의심해 볼 수 있어요.", d: "lie down", k: ["어지러울 때 귀에서 소리가 나나요?", "어지러울 때 구역질도 나나요?"], a: "dizzy", o: ["nauseous", "shaky", "sweaty"]}
   - {t: "수분 섭취", i: coffee, w: "How much …?로 양을 열어 묻고 today로 기간을 좁혀요. 수분 섭취가 적었는지는 기립성 저혈압의 흔한 원인 중 하나를 가려내는 질문이에요.", d: "since lunch", k: ["커피나 술을 드셨나요?", "마지막으로 소변을 본 게 언제인가요?"], a: "drink", o: ["eat", "sleep", "walk"]}
-  - {t: "절차 안내", i: monitor, w: "lying down and standing처럼 두 자세를 나란히 말하면 환자가 누웠다 일어서는 순서를 미리 알아요. 자세를 바꿔 가며 재는 것이 기립성 저혈압을 확인하는 방법이에요.", d: "while sitting", k: ["재기 전에 소변을 보고 오세요", "혈압약 먹은 시간을 적어 둘게요"], a: "lying", o: ["sitting", "leaning", "kneeling"]}
+  - {t: "절차 안내", i: monitor, w: "lying down and standing처럼 두 자세를 나란히 말하면 환자가 누웠다 일어서는 순서를 미리 알아요. 자세를 바꿔 가며 재는 것이 기립성 저혈압을 확인하는 방법이에요.", d: "while sitting", k: ["재기 전에 소변을 보고 오세요", "혈압약 먹은 시간을 적어 둘게요"], a: "lying", o: ["sitting", "bending", "kneeling"]}
   - {t: "낙상 확인", i: shield, w: "Have you had any …?는 지금까지 겪은 경험을 묻는 현재완료라 최근 일로 한정하지 않아요. 어지러움으로 넘어진 적이 있다면 머리를 다쳤는지 이어서 확인해야 해요.", d: "at night", k: ["어지러울 때 곁에 누가 있었나요?", "지팡이나 보행기를 쓰시나요?"], a: "falls", o: ["bumps", "trips", "cuts"]}
-  - {t: "예방 교육", i: bulb, w: "can help …로 가능성만 말해 과한 약속을 피해요. 자세를 천천히 바꾸면 혈압이 따라올 시간을 벌어 어지러움을 줄일 수 있어요.", d: "all at once", k: ["혼자 화장실에 가지 말고 벨을 눌러 주세요", "미끄럽지 않은 신발을 신으세요"], a: "slowly", o: ["quickly", "fully", "twice"]}
+  - {t: "예방 교육", i: bulb, w: "can help …로 가능성만 말해 과한 약속을 피해요. 자세를 천천히 바꾸면 혈압이 따라올 시간을 벌어 어지러움을 줄일 수 있어요.", d: "all at once", k: ["혼자 화장실에 가지 말고 벨을 눌러 주세요", "미끄럽지 않은 신발을 신으세요"], a: "slowly", o: ["quickly", "fully", "alone"]}
   order:
     tag: "대화 흐름"
     icon: compass
@@ -57,7 +57,7 @@
   - {t: "원인 설명", i: bulb, w: "Losing that much fluid가 주어라 '잃은 양'이 원인이라는 점이 먼저 보여요. can으로 가능성을 말해 겁주지 않으면서 이유를 알려요.", d: "the next day", k: ["수분이 많이 빠지면 소변이 진해져요", "수분이 많이 빠지면 열이 날 수 있어요"], a: "lower", o: ["raise", "hold", "lift"]}
   - {t: "치료 안내", i: bandage, w: "catch you up은 모자란 만큼 따라잡는다는 구어체라 수액으로 채운다는 말을 쉽게 풀어 줘요. through your vein으로 경로를 알려 주면 정맥으로 들어간다는 것도 미리 알아요.", d: "to your doctor", k: ["입으로 먹는 약부터 시작할게요", "수혈이 필요한지 먼저 볼게요"], a: "vein", o: ["skin", "mouth", "muscle"]}
   - {t: "경구 안내", i: coffee, w: "Once …로 조건을 먼저 말하면 환자가 언제 마실 수 있는지 기준을 알아요. 구토 뒤에는 한꺼번에 많이 마시면 다시 토할 수 있어서 조금씩 시도해요.", d: "all at once", k: ["나아지면 바로 식사하실 수 있어요", "나아지면 오늘 퇴원하실 수 있어요"], a: "sips", o: ["gulps", "bites", "spoons"]}
-  - {t: "원인 설명", i: bulb, w: "can make you …로 원인과 결과를 이어 줘요. 구토가 이틀 이어지면 몸에서 수분이 빠져나가는 데다 마시기도 어려워 탈수가 되기 쉬워요.", d: "since lunch", k: ["이틀 동안 못 드시면 영양이 부족해질 수 있어요", "이틀 토하셨으니 위에 염증이 생겼을 수 있어요"], a: "lose", o: ["gain", "save", "burn"]}
+  - {t: "원인 설명", i: bulb, w: "can make you …로 원인과 결과를 이어 줘요. 구토가 이틀 이어지면 몸에서 수분이 빠져나가는 데다 마시기도 어려워 탈수가 되기 쉬워요.", d: "since lunch", k: ["이틀 동안 못 드시면 영양이 부족해질 수 있어요", "이틀 토하셨으니 위에 염증이 생겼을 수 있어요"], a: "fluid", o: ["blood", "weight", "energy"]}
   - {t: "경과 관찰", i: monitor, w: "watch how much …로 마시는 양을 지켜본다고 하면 감시가 아니라 돌봄으로 들려요. 섭취량 기록은 수액 보충이 충분한지 판단하는 근거가 돼요.", d: "from a bottle", k: ["화장실에 가실 때는 벨을 눌러 주세요", "토할 것 같으면 바로 말씀해 주세요"], a: "slowly", o: ["quickly", "daily", "twice"]}
   order:
     tag: "대화 흐름"
@@ -92,7 +92,7 @@
   s:
   - {t: "출혈 문진", i: magnify, w: "black or bloody로 눈에 보이는 두 모습을 직접 말해 환자가 쉽게 떠올려요. 검은 변은 위·식도 쪽 출혈을, 붉은 피는 아래쪽 출혈을 시사해요.", d: "after eating", k: ["변을 볼 때 통증이 있으세요?", "최근에 설사를 하셨나요?"], a: "bloody", o: ["loose", "hard", "greasy"]}
   - {t: "복약 확인", i: pill, w: "any를 붙이면 처방약과 약국에서 산 약을 모두 떠올리게 해요. 항응고제는 출혈을 오래 지속시킬 수 있어서 출혈 환자에게 가장 먼저 확인해요.", d: "every day", k: ["평소에 드시는 혈압약이 있나요?", "최근에 새로 시작한 약이 있나요?"], a: "taking", o: ["missing", "skipping", "stopping"]}
-  - {t: "준비 안내", i: bandage, w: "We're getting …ready는 이미 준비에 들어갔다는 진행형이라 환자가 안심해요. 출혈로 인한 쇼크에서는 수액과 함께 수혈을 준비하는 것이 기본 대응이에요.", d: "for the test", k: ["산소부터 연결하고 있어요", "혈액검사부터 하고 있어요"], a: "ready", o: ["clean", "warm", "labeled"]}
+  - {t: "준비 안내", i: bandage, w: "We're getting …ready는 이미 준비에 들어갔다는 진행형이라 환자가 안심해요. 출혈로 인한 쇼크에서는 수액과 함께 수혈을 준비하는 것이 기본 대응이에요.", d: "for the test", k: ["산소부터 연결하고 있어요", "혈액검사부터 하고 있어요"], a: "ready", o: ["typed", "warm", "labeled"]}
   - {t: "출혈원 확인", i: magnify, w: "명사만 나열한 짧은 문진이라 환자가 하나씩 떠올려 답해요. 최근 수술·부상·질 출혈은 출혈원을 좁히는 세 갈래라 한 번에 물어요.", d: "last week", k: ["최근에 임신했을 가능성이 있으세요?", "최근에 치과 치료를 받으셨나요?"], a: "injury", o: ["fever", "rash", "cough"]}
   - {t: "준비 안내", i: lab, w: "in case you need it은 필요하다고 확정한 것이 아니라서 불안을 덜어요. 수혈용 혈액은 적합성 검사에 시간이 걸려서 필요해지기 전에 미리 준비해요.", d: "to be safe", k: ["결과가 나오면 바로 수혈을 시작할게요", "수혈 동의서를 가져올게요"], a: "draw", o: ["order", "review", "send"]}
   order:

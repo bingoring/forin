@@ -1,0 +1,114 @@
+- title: 천식 악화 초기 문진
+  s:
+  - {t: "유발인자", i: magnify, w: "What set off …?처럼 의문사를 주어로 두면 원인을 한 번에 묻는 질문이 돼요. 유발인자를 알아야 같은 악화를 막는 교육으로 이어갈 수 있어요.", d: "at night", k: ["증상이 시작된 지 얼마나 됐나요?", "평소 쓰시는 약이 뭔가요?"], a: "set off", o: ["calmed down", "relieved", "cured"]}
+  - {t: "횟수 문진", i: pill, w: "How many times …?는 횟수를 숫자로 답하게 해서 '조금 썼다' 같은 모호한 대답을 피해요. 구조 흡입기를 자주 쓸수록 천식이 조절되지 않았다는 단서가 돼요.", d: "per week", k: ["흡입기를 어떻게 쓰는지 보여 주시겠어요?", "흡입기를 마지막으로 바꾼 게 언제예요?"], a: "rescue", o: ["controller", "steroid", "spare"]}
+  - {t: "조절제 확인", i: pill, w: "Do you take …?는 습관적으로 쓰는 약을 묻는 현재형이에요. 매일 쓰는 조절제가 있는지가 구조 흡입기만 쓰는 환자와 가르는 첫 질문이에요.", d: "as needed", k: ["흡입기를 쓸 때 숨이 차지 않나요?", "알레르기 약은 드시나요?"], a: "controller", o: ["rescue", "nasal", "emergency"]}
+  - {t: "과거력", i: calendar, w: "Have you had …?는 지금까지의 경험을 묻는 현재완료예요. 비슷한 악화를 겪은 이력은 이번 발작이 얼마나 심할지 가늠하는 단서가 돼요.", d: "last night", k: ["지금 쌕쌕거림이 들리세요?", "가슴이 조이는 느낌이 있나요?"], a: "flare-up", o: ["infection", "cough", "fever"]}
+  - {t: "유발인자", i: magnify, w: "usually를 넣으면 한 번이 아니라 되풀이되는 패턴을 묻게 돼요. 연기나 찬 공기 같은 환경 요인은 피할 수 있어서 교육으로 이어져요.", d: "every day", k: ["약을 쓰면 바로 나아지나요?", "밤에 기침으로 깨시나요?"], a: "smoke", o: ["pollen", "mold", "dust"]}
+  - {t: "조절 정도", i: chartup, w: "How well …?는 정도를 열어 묻는 의문문이라 예/아니오보다 환자 스스로의 평가를 끌어내요. 최근 조절 상태는 장기 관리 약이 충분했는지 보는 근거가 돼요.", d: "so far", k: ["지난달 병원에 몇 번 가셨어요?", "밤에 얼마나 자주 깨세요?"], a: "asthma", o: ["diabetes", "blood pressure", "allergy"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "천식 악화 초기 문진 4문장 순서"
+    why: "먼저 무엇이 유발했는지 듣고, 그 일 뒤의 구조 흡입기 사용량을 묻고, 그 사용량을 근거로 조절제 복용을 확인한 뒤, 의사에게 전한다고 닫아요. 'that happened'·'that many puffs'·'all of that'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Tell me what set off your asthma this time.", icon: magnify, ko: "이번에 무엇이 천식을 유발했는지 말씀해 주세요", note: "유발"}
+    - {en: "After that happened, how many puffs of your rescue inhaler did you take?", icon: pill, ko: "그 일 뒤에 구조 흡입기를 몇 번 쓰셨어요?", note: "사용량"}
+    - {en: "With that many puffs, I need to know if you also take a daily controller.", icon: calendar, ko: "그만큼 쓰셨다면 매일 쓰는 조절제도 있는지 알아야 해요", note: "조절제"}
+    - {en: "Thanks, I'll tell the doctor all of that so they can plan your treatment.", icon: speech, ko: "고마워요, 그 모든 걸 의사에게 전해 치료를 계획하게 할게요", note: "보고"}
+  sw: {ko: "이번에는 무엇이 천식을 일으켰나요?"}
+- title: 최고호기유속(PEF) 측정 설명
+  s:
+  - {t: "측정 방법", i: stetho, w: "'as hard and fast as you can'은 as … as로 최대치를 요청하는 틀이에요. PEF는 최대한 세게 불어야 의미 있는 수치가 나와요.", d: "as slowly as", k: ["튜브를 입에 물고 평소처럼 숨 쉬세요", "숨을 참고 열까지 세세요"], a: "blow out", o: ["breathe in", "cough", "gasp"]}
+  - {t: "측정 횟수", i: redo, w: "'take the best number'는 세 번 가운데 가장 높은 값을 기록한다는 뜻이에요. PEF는 협조에 따라 값이 달라져서 최고값을 기준으로 삼아요.", d: "on average", k: ["측정하는 동안 눈을 감으세요", "불 때마다 튜브를 새것으로 바꿀게요"], a: "best", o: ["average", "lowest", "first"]}
+  - {t: "의미 설명", i: bulb, w: "how + 형용사를 명사절로 쓰면 수치가 무엇을 재는지 쉬운 말로 풀 수 있어요. PEF는 기도가 얼마나 열려 있는지를 간접적으로 보여 줘요.", d: "how big", k: ["이건 혈액 속 산소가 얼마인지 보여줘요", "이건 폐에 물이 찼는지 알려줘요"], a: "airways", o: ["sinuses", "nostrils", "veins"]}
+  - {t: "기준치 문진", i: chartup, w: "'your usual …'은 평소 기준을 묻는 말이에요. 집에서 재 둔 평소 수치가 있어야 오늘 값을 환자 자신의 기준과 견줄 수 있어요.", d: "last night", k: ["오늘 몇 시에 측정하셨어요?", "이 튜브는 처음 써 보세요?"], a: "peak flow", o: ["blood pressure", "blood sugar", "oxygen"]}
+  - {t: "자세 안내", i: mic, w: "Seal … around는 공기가 새지 않게 입을 대라는 구체적인 동작이에요. 입술 사이로 공기가 새면 수치가 실제보다 낮게 나올 수 있어요.", d: "inside the", k: ["혀로 튜브 구멍을 막지 마세요", "재기 전에 물을 한 모금 드세요"], a: "tube", o: ["spacer", "straw", "cup"]}
+  - {t: "기준 설정", i: pushpin, w: "will be …로 앞일을 안내해 오늘 값이 비교의 출발점이라는 걸 알려요. 치료 뒤 수치를 이 기준과 견주어 반응을 판단해요.", d: "last visit", k: ["오늘 수치는 저희만 알고 있을게요", "수치는 집에서 다시 재셔야 해요"], a: "baseline", o: ["goal", "limit", "average"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "최고호기유속 측정 4문장 순서"
+    why: "측정 방법을 먼저 알리고, 반복해서 최고값을 잡고, 그 수치의 의미를 설명한 뒤, 치료 후 비교로 닫아요. 'that'·'That best number'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "First, take a deep breath in and blow out as hard and fast as you can.", icon: mic, ko: "먼저 깊이 들이쉬고 최대한 세고 빠르게 불어 내세요", note: "방법"}
+    - {en: "We'll do that two more times, so I can take your best number.", icon: redo, ko: "두 번 더 해서 가장 좋은 수치를 쓸게요", note: "반복"}
+    - {en: "That best number shows how open your airways are right now.", icon: bulb, ko: "그 최고 수치가 지금 기도가 얼마나 열려 있는지 보여줘요", note: "의미"}
+    - {en: "After your treatment, we'll blow again and compare with that reading.", icon: chartup, ko: "치료 뒤에 다시 불어서 그 수치와 비교할게요", note: "비교"}
+  ctx: {word: "PEF", ko: "최고호기유속"}
+- title: 흡입기 사용법 확인·교육
+  s:
+  - {t: "시연", i: play, w: "'like this'는 말로 길게 설명하는 대신 직접 보여 주며 쓰는 표현이에요. 스페이서는 약이 입안에 남지 않고 폐로 더 잘 들어가게 도와줘요.", d: "with water", k: ["뚜껑을 닫고 보관하세요", "입에 넣기 전에 한 번 헹구세요"], a: "spacer", o: ["nebulizer", "tube", "cap"]}
+  - {t: "흡입 순서", i: redo, w: "Press once, then …처럼 then으로 동작을 순서대로 이으면 환자가 따라 하기 쉬워요. 천천히 들이쉬고 숨을 참아야 약이 기도 깊숙이 닿아요.", d: "right after", k: ["사용 후에는 입을 헹구세요", "한 번 더 누르기 전에 일 분 기다리세요"], a: "slowly", o: ["quickly", "forcefully", "shallowly"]}
+  - {t: "방법 확인", i: magnify, w: "Let's have you …는 제안하듯 환자에게 해 보게 하는 완곡한 표현이에요. 직접 해 보게 하면 말로 묻는 것보다 잘못된 습관을 정확히 찾아낼 수 있어요.", d: "next time", k: ["약 이름이 라벨과 맞는지 볼게요", "남은 횟수를 같이 확인해요"], a: "show", o: ["tell", "hand", "teach"]}
+  - {t: "사용 확인", i: home, w: "'Do you … at home?'은 습관을 묻는 현재형이라 병원이 아니라 집에서의 실제 사용을 가려내요. 스페이서를 쓰지 않으면 약이 입과 목에 많이 남을 수 있어요.", d: "every time", k: ["흡입기는 언제 처음 받으셨어요?", "흡입기 라벨을 보여 주시겠어요?"], a: "inhaler", o: ["nebulizer", "mask", "machine"]}
+  - {t: "순서 안내", i: redo, w: "before로 두 동작의 순서를 못 박아요. 먼저 숨을 비워야 약을 누른 뒤 들이쉴 공간이 생겨요.", d: "partly", k: ["누르기 전에 흡입기를 흔드세요", "누른 뒤에는 바로 헹구세요"], a: "before", o: ["after", "while", "until"]}
+  - {t: "칭찬", i: star, w: "You did that well처럼 잘한 부분을 구체적으로 말하면 환자가 어떤 동작을 유지해야 하는지 알아요. 교육 뒤의 칭찬은 올바른 습관을 굳히는 데 도움이 돼요.", d: "a little", k: ["이 약은 하루에 두 번 쓰세요", "다음 진료는 다음 주예요"], a: "timing", o: ["grip", "posture", "aim"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "흡입기 사용법 교육 4문장 순서"
+    why: "장치를 준비시킨 뒤, 숨 내쉬기-누르기-들이쉬기를 한 번에 안내하고, 숨 참기를 보며, 마지막에 칭찬으로 닫아요. 'Once it's on'·'that breath'·'that'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "First, shake the inhaler and attach it to the spacer like this.", icon: play, ko: "먼저 흡입기를 흔들어 이렇게 스페이서에 끼우세요", note: "준비"}
+    - {en: "Once it's on, breathe out fully, press once, and breathe in slowly.", icon: redo, ko: "끼웠으면 숨을 완전히 내쉬고 한 번 누르고 천천히 들이쉬세요", note: "흡입"}
+    - {en: "Hold that breath for ten seconds while I watch your technique.", icon: magnify, ko: "제가 방법을 보는 동안 그 숨을 10초 참으세요", note: "참기"}
+    - {en: "You did that well, and your timing was right.", icon: star, ko: "잘 하셨어요, 타이밍도 정확했어요", note: "칭찬"}
+  sw: {ko: "제가 사용법을 확인할 수 있게 직접 해 보세요"}
+- title: 네뷸라이저 치료 설명
+  s:
+  - {t: "약 설명", i: pill, w: "'that opens up …'처럼 관계절로 약이 하는 일을 붙이면 약 이름을 몰라도 목적이 전해져요. 기관지확장제는 좁아진 기도를 넓혀 숨쉬기를 편하게 해 줘요.", d: "that cures", k: ["이 약은 열을 내려 줘요", "이 약은 통증을 줄여 줘요"], a: "opens up", o: ["dries out", "tightens", "numbs"]}
+  - {t: "사용 방법", i: mic, w: "Breathe normally처럼 부사 하나로 억지로 크게 들이쉴 필요가 없다고 알려 줘요. 네뷸라이저는 평소 호흡만으로도 약이 폐로 들어가게 만든 장치예요.", d: "as hard as", k: ["끝나면 입을 헹구세요", "치료 중에 가슴이 답답하면 알려 주세요"], a: "normally", o: ["quickly", "loudly", "shallowly"]}
+  - {t: "부작용", i: faceWorried, w: "'It may …'의 may로 부작용이 생길 수도 있다는 가능성만 말해요. 살부타몰 같은 약은 심장이 빨라지고 손이 떨리는 흔한 부작용이 있어요.", d: "will definitely", k: ["약을 쓰면 졸릴 수 있어요", "두드러기가 날 수 있어요"], a: "shake", o: ["swell", "itch", "burn"]}
+  - {t: "경험 확인", i: me, w: "'A, or B?'로 두 가능성을 함께 내밀면 환자가 편하게 답해요. 처음인 환자에게는 장비와 과정을 더 자세히 설명해야 해요.", d: "last year", k: ["어떤 약을 쓰는지 아세요?", "마스크가 편하신가요?"], a: "nebulizer", o: ["spacer", "mask", "vaporizer"]}
+  - {t: "약 이름", i: pill, w: "'is called …'로 이름을 먼저 알리고 and it helps …로 역할을 잇대면 환자가 이름과 목적을 함께 기억해요. 미국에서는 살부타몰을 albuterol이라 불러요.", d: "for a cough", k: ["이 약은 약국에서 따로 사야 해요", "이 약은 식후에 드세요"], a: "albuterol", o: ["prednisone", "ibuprofen", "insulin"]}
+  - {t: "안심", i: shield, w: "usually … soon으로 대부분 곧 가라앉는다는 흐름을 알려 환자를 안심시켜요. 증상이 계속되면 알려 달라고 덧붙이는 것이 안전해요.", d: "never really", k: ["치료는 십오 분쯤 걸려요", "끝나면 다시 숨소리를 들어 볼게요"], a: "calm down", o: ["get worse", "build up", "spread"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "네뷸라이저 치료 설명 4문장 순서"
+    why: "경험 유무를 먼저 묻고, 약의 목적을 설명하고, 사용법과 부작용을 알린 뒤, 곧 가라앉는다고 안심시켜요. 'In that case'·'That shaking'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Have you used a nebulizer before, or is this your first time?", icon: me, ko: "전에 네뷸라이저를 써 보셨어요, 아니면 처음이세요?", note: "경험"}
+    - {en: "In that case, this mist is a medicine that opens up your airways.", icon: pill, ko: "그렇다면 이 분무액은 기도를 열어주는 약이에요", note: "설명"}
+    - {en: "Just breathe normally through the mask, and it may make your hands shake a little.", icon: mic, ko: "마스크로 평소처럼 숨 쉬세요, 손이 조금 떨릴 수 있어요", note: "방법"}
+    - {en: "That shaking usually calms down soon after the treatment is done.", icon: shield, ko: "그 떨림은 보통 치료가 끝나고 곧 가라앉아요", note: "안심"}
+  ctx: {word: "albuterol", ko: "살부타몰"}
+- title: COPD 기저질환 병력
+  s:
+  - {t: "산소 사용", i: hospital, w: "'How long …, and at what flow?'처럼 기간과 유량을 한 문장에 묻으면 가정 산소 상태를 한 번에 파악해요. 평소 유량(L/min)은 지금 산소를 조절할 때 기준이 돼요.", d: "last week", k: ["산소통은 누가 갈아 주세요?", "산소 줄에 걸려 넘어진 적 있으세요?"], a: "How long", o: ["How often", "How much", "How far"]}
+  - {t: "흡연력", i: magnify, w: "'Do you still …, or when did you …?'로 현재와 과거를 함께 물으면 끊은 사람도 부담 없이 답해요. 흡연력은 COPD 악화 위험과 치료 계획의 기본 정보예요.", d: "since then", k: ["담배는 하루에 몇 갑 피우세요?", "전자담배를 쓰세요?"], a: "smoke", o: ["drink", "gamble", "run"]}
+  - {t: "입원 빈도", i: hospital, w: "'end up in …'은 계획한 건 아닌데 결국 그렇게 된다는 뉘앙스예요. 악화로 입원한 빈도는 COPD가 얼마나 불안정한지 보여 주는 기준이에요.", d: "on weekends", k: ["입원하면 보통 며칠 계세요?", "주치의는 누구세요?"], a: "flare-ups", o: ["checkups", "surgeries", "falls"]}
+  - {t: "병력 기간", i: calendar, w: "'How many years …?'는 숫자로 답하게 해서 병이 얼마나 오래됐는지 분명히 해요. 오래된 COPD일수록 평소 폐 기능이 많이 떨어져 있을 수 있어요.", d: "in total", k: ["COPD 진단은 어느 병원에서 받으셨어요?", "가족 중에 폐 질환이 있으세요?"], a: "COPD", o: ["asthma", "diabetes", "hypertension"]}
+  - {t: "산소 시간", i: calendar, w: "'all day, or just sometimes'처럼 양 극단을 보여 주며 물으면 환자가 자기 패턴에 가까운 쪽을 고르기 쉬워요. 산소를 쓰는 시간은 질병의 중증도를 가늠하는 단서예요.", d: "once a week", k: ["산소 유량은 얼마로 맞추세요?", "산소를 끄고 잠드신 적 있어요?"], a: "all day", o: ["at night", "indoors", "outdoors"]}
+  - {t: "재입원 확인", i: hospital, w: "Have you needed …?는 지금까지의 필요를 묻는 현재완료예요. 한 해에 여러 번 입원했다면 악화가 잦은 환자로 보고 치료 계획에 반영해요.", d: "twice a day", k: ["이번이 입원은 처음이세요?", "퇴원 후 집에서 산소를 쓰셨어요?"], a: "the hospital", o: ["steroids", "antibiotics", "oxygen"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "COPD 병력 청취 4문장 순서"
+    why: "병이 얼마나 됐고 산소를 쓰는지 묻고, 산소 사용 방식을 이어서 묻고, 그 산소 곁의 흡연을 확인한 뒤, 입원 빈도로 마무리해요. 'If you are'·'that oxygen'·'all of that'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "How long have you had COPD, and are you on home oxygen?", icon: calendar, ko: "COPD를 앓은 지 얼마나 됐고 가정 산소를 쓰세요?", note: "병력"}
+    - {en: "If you are, do you use it all day, or just sometimes?", icon: hospital, ko: "쓰신다면 하루 종일 쓰세요, 가끔만 쓰세요?", note: "사용"}
+    - {en: "On that oxygen, do you still smoke, or when did you quit?", icon: magnify, ko: "그 산소를 쓰면서 지금도 담배를 피우세요, 언제 끊으셨어요?", note: "흡연"}
+    - {en: "With all of that in mind, how often do you end up in the hospital?", icon: hospital, ko: "그 모두를 생각하면 병원에는 얼마나 자주 오세요?", note: "입원"}
+  sw: {ko: "지금도 담배를 피우세요, 아니면 언제 끊으셨어요?"}
+- title: 중등도 발작 반응 사정
+  s:
+  - {t: "재측정", i: redo, w: "Let's …는 같이 하자는 말투라 환자 부담을 덜어요. 치료 뒤 재측정은 약이 실제로 기도를 열었는지 수치로 확인하는 방법이에요.", d: "twice more", k: ["치료를 하나 더 시작할게요", "흡입기를 바꿔 드릴게요"], a: "peak flow", o: ["oxygen level", "lung sounds", "pulse"]}
+  - {t: "말하기 사정", i: speech, w: "Is it easier to …?로 느낌을 묻되 '완전한 문장'이라는 기준을 주면 대답이 구체적이에요. 한 번에 문장으로 말할 수 있는지는 천식 발작의 중증도를 가르는 기준이에요.", d: "on the phone", k: ["지금도 기침이 계속 나오세요?", "가슴이 아직 쌕쌕거리나요?"], a: "full sentences", o: ["whispers", "short phrases", "one-word answers"]}
+  - {t: "경과 안내", i: chartup, w: "that's a good sign으로 수치의 의미를 바로 풀어 주면 환자가 숫자만 보고 불안해하지 않아요. 치료 뒤 수치가 오르면 약에 반응하고 있다는 신호예요.", d: "for now", k: ["수치는 퇴원 때 다시 알려드릴게요", "의사가 수치를 곧 보러 올 거예요"], a: "improving", o: ["dropping", "falling", "slipping"]}
+  - {t: "증상 변화", i: me, w: "any different처럼 any를 쓰면 좋아졌는지 나빠졌는지 방향을 정하지 않고 열어 물어요. 좋아졌다고 유도하지 않아야 환자의 실제 느낌을 정확히 들을 수 있어요.", d: "this morning", k: ["치료받는 동안 어지러우셨나요?", "다음 치료는 한 시간 뒤예요"], a: "treatments", o: ["oxygen", "injection", "breathing test"]}
+  - {t: "호흡 확인", i: stetho, w: "Can you …?는 부탁하는 정중한 의문문이에요. 한 호흡에 다섯까지 세어 보게 하면 숨이 얼마나 이어지는지 말하기로 간단히 가늠할 수 있어요.", d: "out loud", k: ["일어서서 걸어 보시겠어요?", "입을 크게 벌려 보시겠어요?"], a: "five", o: ["ten", "three", "twenty"]}
+  - {t: "다음 계획", i: compass, w: "'If … keeps …ing, we can …'는 조건에 따라 다음 단계를 미리 알리는 틀이에요. 반응이 좋으면 치료 간격을 늘려 가는 식으로 단계적으로 줄여요.", d: "right away", k: ["수치가 좋아지면 오늘 퇴원하실 수 있어요", "수치가 그대로면 약을 바꿔 볼게요"], a: "space out", o: ["speed up", "double", "repeat"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "치료 후 반응 사정 4문장 순서"
+    why: "재측정을 알리고, 그 수치가 나아졌다고 전하고, 숨 이어짐을 확인한 뒤, 그에 따른 다음 계획을 말해요. 'That reading'·'Since it's up'·'do that'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Let's recheck your peak flow after these treatments.", icon: redo, ko: "이번 치료 후에 최고호기유속을 다시 재볼게요", note: "재측정"}
+    - {en: "That reading is better than before — that's a good sign.", icon: chartup, ko: "그 수치가 전보다 좋아요 — 좋은 신호예요", note: "결과"}
+    - {en: "Since it's up, can you take a full breath and count to five for me?", icon: stetho, ko: "올랐으니 숨을 크게 들이쉬고 다섯까지 세어 보시겠어요?", note: "확인"}
+    - {en: "If you can do that comfortably, we can space out the treatments.", icon: compass, ko: "편하게 하실 수 있으면 치료 간격을 늘릴 수 있어요", note: "계획"}
+  ctx: {word: "peak flow", ko: "최고호기유속"}
