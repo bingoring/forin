@@ -33,6 +33,7 @@
     - {en: "It's painless, and it only needs to stay on for a minute.", icon: shield, ko: "아프지 않고, 1분만 끼우고 있으면 돼요", note: "안심"}
     - {en: "While it reads, I'll also count your breaths for that minute.", icon: stetho, ko: "재는 동안 그 1분 동안 숨 쉬는 횟수도 셀게요", note: "호흡수"}
     - {en: "Once we have both numbers, if the oxygen is low, we'll give you some.", icon: pill, ko: "두 수치가 나오면 산소가 낮을 때 산소를 드릴게요", note: "조치"}
+  ctx: {word: "oxygen level", ko: "산소 수치"}
 - title: 비강 캐뉼라 산소 적용
   s:
   - {t: "착용 안내", i: me, w: "prongs·inside your nose처럼 어디에 무엇이 닿는지 미리 말해 주면 코에 뭔가 들어간다는 불안이 줄어요. 비강 캐뉼라는 짧은 갈래 두 개가 콧구멍 입구에 놓여요.", d: "behind your ears", k: ["줄은 귀 뒤로 걸어 드릴게요", "마스크를 얼굴에 씌워 드릴게요"], a: "inside", o: ["around", "above", "beside"]}
@@ -72,8 +73,8 @@
 - title: 상기도 감염성 호흡곤란 문진
   s:
   - {t: "열 문진", i: stetho, w: "How high …?는 정도를 물어서 환자가 숫자나 느낌으로 답하게 해요. 열의 높이는 감염이 얼마나 심한지 가늠하는 단서가 돼요.", d: "since morning", k: ["열이 언제부터 있었나요?", "열이 날 때 약을 드셨나요?"], a: "high", o: ["long", "low", "often"]}
-  - {t: "가래 문진", i: bulb, w: "bring up은 가래를 기침으로 올려 낸다는 쉬운 구동사예요. anything으로 넓게 물으면 환자가 색이나 양을 따로 몰라도 있는지 없는지는 답할 수 있어요.", d: "any blood", k: ["가래 색이 어떤가요?", "기침이 밤에 더 심한가요?"], a: "cough", o: ["fever", "pain", "chest"]}
-  - {t: "열 확인", i: monitor, w: "at home을 붙이면 병원에서 잰 것이 아니라 집에서 느낀 열을 묻게 돼요. 열은 체온계로 잰 숫자가 없어도 몸으로 느낀 것을 먼저 물어요.", d: "at work", k: ["집에서 체온을 재 보셨어요?", "열이 났을 때 약을 드셨나요?"], a: "fever", o: ["chills", "rash", "pain"]}
+  - {t: "가래 문진", i: bulb, w: "bring up은 가래를 기침으로 올려 낸다는 쉬운 구동사예요. anything으로 넓게 물으면 환자가 색이나 양을 따로 몰라도 있는지 없는지는 답할 수 있어요.", d: "any blood", k: ["가래 색이 어떤가요?", "기침이 밤에 더 심한가요?"], a: "cough", o: ["fever", "pain", "medicine"]}
+  - {t: "열 확인", i: monitor, w: "at home을 붙이면 병원에서 잰 것이 아니라 집에서 느낀 열을 묻게 돼요. 열은 체온계로 잰 숫자가 없어도 몸으로 느낀 것을 먼저 물어요.", d: "at work", k: ["집에서 체온을 재 보셨어요?", "열이 났을 때 약을 드셨나요?"], a: "fever", o: ["headache", "rash", "pain"]}
   - {t: "목 증상", i: me, w: "hurt or feel swollen처럼 두 증상을 묶어 물으면 환자가 둘 중 하나만 있어도 답할 수 있어요. 목이 붓는 느낌은 기도가 좁아질 수 있다는 단서라 따로 확인해요.", d: "or feel dry", k: ["목소리가 변했나요?", "귀도 아프신가요?"], a: "throat", o: ["ear", "jaw", "tooth"]}
   - {t: "호흡 영향", i: faceWorried, w: "make it hard to breathe로 기침이 호흡에 미치는 영향을 한 번에 묻고, 예·아니오로 답하게 해요. 기침 때문에 숨이 막히는 정도를 가늠하는 질문이에요.", d: "at night", k: ["기침 때문에 잠을 못 주무시나요?", "기침할 때 가슴이 아픈가요?"], a: "hard", o: ["easy", "painful", "safe"]}
   order:
@@ -91,7 +92,7 @@
   s:
   - {t: "자세 안내", i: me, w: "Let's …로 같이 한다는 말투를 쓰고 to help you breathe로 이유를 붙여요. 폐부종이 의심되는 숨찬 환자는 눕히지 않고 상체를 세워 앉혀요.", d: "to help you sleep", k: ["팔을 베개 위에 올려 드릴게요", "산소를 먼저 드릴게요"], a: "upright", o: ["sideways", "forward", "still"]}
   - {t: "걱정 공유", i: faceWorried, w: "worries me처럼 간호사의 걱정을 솔직히 말하면 지시가 아니라 이유가 전해져요. 분홍빛 거품 가래는 폐부종에서 알려진 소견이에요.", d: "about your heart", k: ["지금 가슴이 아프신가요?", "폐렴일 수도 있어서 걱정돼요"], a: "frothy", o: ["dry", "loud", "weak"]}
-  - {t: "처치 안내", i: stetho, w: "지금 하는 일을 진행형으로 알려 주면 급한 상황에서도 환자가 무슨 일인지 알 수 있어요. 폐 소리를 듣는 것과 산소 연결은 같이 시작해요.", d: "your pulse", k: ["혈압을 재고 약을 준비하고 있어요", "심전도를 붙이고 있어요"], a: "lungs", o: ["heart", "back", "belly"]}
+  - {t: "처치 안내", i: stetho, w: "지금 하는 일을 진행형으로 알려 주면 급한 상황에서도 환자가 무슨 일인지 알 수 있어요. 폐 소리를 듣는 것과 산소 연결은 같이 시작해요.", d: "your pulse", k: ["혈압을 재고 약을 준비하고 있어요", "심전도를 붙이고 있어요"], a: "lungs", o: ["heart", "stomach", "pulse"]}
   - {t: "자세 주의", i: shield, w: "Try not to …로 금지 대신 노력해 보라고 부드럽게 말해요. 폐부종 환자는 누우면 폐로 체액이 더 몰려 숨이 더 차요.", d: "on your side", k: ["다리를 침대 아래로 내려도 돼요", "지금은 아무것도 드시지 마세요"], a: "flat", o: ["still", "low", "long"]}
   - {t: "과거력", i: calendar, w: "before를 붙이면 지금이 아니라 이전의 경험을 묻는 질문이 돼요. 이전에도 분홍빛 거품 가래가 나왔다면 폐부종이 반복됐을 수 있어요.", d: "this week", k: ["밤에 숨이 차서 깬 적 있나요?", "기침 때문에 잠을 설치시나요?"], a: "pink", o: ["yellow", "dark", "clear"]}
   order:
@@ -103,5 +104,5 @@
     - {en: "Let's sit you upright to help you breathe.", icon: me, ko: "숨쉬기 편하게 앉혀 드릴게요", note: "자세"}
     - {en: "Now that you're sitting up, I'm listening to your lungs.", icon: stetho, ko: "앉으셨으니 폐 소리를 듣고 있어요", note: "청진"}
     - {en: "While I listen, have you ever coughed up anything pink or frothy?", icon: calendar, ko: "듣는 동안, 분홍빛이나 거품 섞인 기침을 한 적이 있나요?", note: "문진"}
-    - {en: "If so, that fluid is why I'm getting oxygen on you.", icon: faceWorried, ko: "그렇다면 그 물이 산소를 연결하는 이유예요", note: "이유"}
+    - {en: "If so, it may be fluid in your lungs, so I'm getting oxygen on you.", icon: faceWorried, ko: "그렇다면 폐에 물이 찬 것일 수 있어서 산소를 연결하고 있어요", note: "이유"}
   sw: {ko: "폐에 물이 찬 것 같아 걱정돼요 — 그래서 앉혀 드리는 거예요"}

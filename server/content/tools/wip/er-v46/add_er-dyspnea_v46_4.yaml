@@ -1,0 +1,72 @@
+- title: 후두부종 아나필락시스 기도
+  s:
+  - {t: "투약 지시", i: speaker, w: "투여 경로(IM)와 약 이름을 먼저 말하고 now로 시급함을 알려요. 아나필락시스의 1차 치료는 근육주사 에피네프린이에요.", d: "her skin is red", k: ["지금 알부테롤을 주세요", "지금 산소를 올려 주세요"], a: "closing", o: ["opening", "healing", "draining"]}
+  - {t: "상태 보고", i: stetho, w: "부위와 속도를 짧게 말해 팀이 얼마나 급한지 알게 해요. 입술·혀·목 부종은 기도가 막힐 수 있는 신호예요.", d: "and turning red", k: ["입술이 파래지고 있습니다", "혀도 부어오르고 있습니다"], a: "lips", o: ["eyes", "hands", "ankles"]}
+  - {t: "협진 요청", i: speaker, w: "Call for로 무엇을 부르는지를 두 가지 이름으로 짧게 말해요. 부종이 심한 환자의 기도는 마취과나 이비인후과 같은 기도 전문 인력이 필요할 수 있어요.", d: "and the crash cart", k: ["마취과에 전화해 주세요", "혈액은행에 연락해 주세요"], a: "ENT", o: ["pharmacy", "radiology", "cardiology"]}
+  - {t: "장비 지시", i: bandage, w: "open at the bedside로 장비를 옆에 열어 두라고 해서 기도가 막히면 곧바로 쓸 수 있게 해요. 기도가 완전히 막히는 최후의 경우를 대비해 외과적 기도 세트를 준비해요.", d: "in the hallway", k: ["기관삽관 세트를 열어 두세요", "기관절개관을 교체해 주세요"], a: "surgical", o: ["spare", "pediatric", "portable"]}
+  - {t: "재투여 준비", i: pill, w: "ready to give again if needed로 재투여를 미리 준비해 두라고 해요. 증상이 계속되면 에피네프린을 처방에 따라 반복해서 줄 수 있어요.", d: "before the ambulance", k: ["에피네프린 용량을 확인해 주세요", "에피네프린 첫 투여 시간을 기록해 주세요"], a: "again", o: ["slowly", "first", "twice"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "후두부종 대응 4문장 순서"
+    why: "먼저 에피네프린을 주고, 약이 들어간 뒤 기도 카트와 이비인후과를 부르고, 카트가 도착하면 외과적 기도 세트를 열어 두고, 그래도 입술이 계속 붓는다면 재투여를 준비합니다. 'it goes in'·'the cart'·'once the kit is open'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Give IM epinephrine now — her airway is closing.", icon: pill, ko: "지금 근육주사로 에피네프린 주세요 — 기도가 막히고 있습니다", note: "투약"}
+    - {en: "After it goes in, call for the difficult airway cart and ENT.", icon: speaker, ko: "들어간 뒤에 어려운 기도 카트와 이비인후과를 불러주세요", note: "호출"}
+    - {en: "When the cart arrives, have a surgical airway kit open at the bedside.", icon: bandage, ko: "카트가 오면 외과적 기도 세트를 침상에 열어 두세요", note: "준비"}
+    - {en: "If her lips keep swelling once the kit is open, get epinephrine ready to give again.", icon: stetho, ko: "세트를 열어도 입술이 계속 붓는다면 에피네프린을 다시 줄 준비를 하세요", note: "재투여"}
+  ctx: {word: "epinephrine", ko: "에피네프린"}
+- title: 삽관 후 갑작스런 악화(DOPE)
+  s:
+  - {t: "점검 지시", i: board, w: "DOPE는 삽관 환자가 갑자기 나빠질 때 원인을 순서대로 떠올리는 약어예요. 위치 이탈, 폐쇄, 기흉, 장비의 머리글자를 따요.", d: "ABCDE", k: ["흡인부터 하겠습니다", "기관삽관 튜브를 교체하겠습니다"], a: "equipment", o: ["edema", "embolism", "effusion"]}
+  - {t: "위치 확인", i: magnify, w: "first로 점검의 첫 항목을 분명히 하고 질문으로 확인해요. 튜브가 빠지거나 한쪽 폐로 들어가면 갑자기 나빠질 수 있어서 위치부터 봐요.", d: "in the bag", k: ["이산화탄소 파형이 보이나요?", "흡인 카테터를 넣어 보세요"], a: "first", o: ["last", "only", "again"]}
+  - {t: "폐쇄 점검", i: stetho, w: "for a plug로 무엇을 찾는지를 함께 말해요. 분비물이나 피가 튜브를 막으면 흡인으로 뚫어 볼 수 있어요.", d: "tube size", k: ["튜브가 새는지 확인하세요", "인공호흡기 알람을 확인하세요"], a: "plug", o: ["leak", "bubble", "drip"]}
+  - {t: "청진 지시", i: stetho, w: "equal breath sounds는 양쪽 폐에서 같은 소리가 나는지를 뜻해요. 한쪽 소리가 작으면 기흉이나 튜브가 한쪽으로 들어간 것을 의심해요.", d: "the monitor", k: ["가슴 엑스레이를 요청하세요", "마스크로 백을 짜 주세요"], a: "equal", o: ["loud", "wet", "soft"]}
+  - {t: "호전 보고", i: chartup, w: "climbing again으로 수치가 다시 오르는 것을 보고해요. 조치가 효과가 있었는지를 팀이 알 수 있게 짧게 말해요.", d: "slowly", k: ["모니터 알람이 멈췄습니다", "혈압이 올라가고 있습니다"], a: "climbing", o: ["dropping", "stuck", "flat"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "DOPE 점검 4문장 순서"
+    why: "DOPE 전체를 먼저 말하고, 첫 항목인 위치를 확인하고, 제자리에 있으면 흡인으로 막힘을 점검하고, 그 조치가 효과가 있었는지 보고합니다. 'Displacement first'·'If it is'·'That worked'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Run through DOPE — displacement, obstruction, pneumothorax, equipment.", icon: board, ko: "DOPE로 점검하겠습니다 — 위치 이탈, 폐쇄, 기흉, 장비", note: "점검"}
+    - {en: "Displacement first — is the tube still in place?", icon: magnify, ko: "위치부터요 — 튜브가 제자리에 그대로 있나요?", note: "위치"}
+    - {en: "If it is, suction for a plug.", icon: stetho, ko: "그렇다면 막힌 곳이 있는지 흡인하세요", note: "흡인"}
+    - {en: "That worked — sats are climbing again.", icon: chartup, ko: "효과가 있었어요 — 산소포화도가 다시 올라가고 있습니다", note: "호전"}
+  sw: {ko: "튜브 위치를 확인해 주세요"}
+- title: 대량 객혈 기도확보
+  s:
+  - {t: "흡인 지시", i: speaker, w: "continuously로 한 번이 아니라 계속하라고 분명히 말해요. 객혈 환자는 피가 기도를 막지 않도록 흡인을 이어 가요.", d: "to measure the blood", k: ["흡인 카테터를 더 큰 것으로 바꾸세요", "출혈량을 재 주세요"], a: "continuously", o: ["rarely", "once", "briefly"]}
+  - {t: "상태 보고", i: stetho, w: "bleeding a lot은 출혈이 많다는 것을 환자가 아닌 팀에게 짧게 말하는 표현이에요. 보고 뒤에 바로 할 일(suction again)을 붙여 팀이 움직이게 해요.", d: "and tell me", k: ["출혈량을 기록하세요", "혈액은행에 연락하세요"], a: "again", o: ["later", "first", "slowly"]}
+  - {t: "측위 지시", i: me, w: "bleeding side down은 출혈하는 폐를 아래로 눕혀서 피가 건강한 폐로 흘러가지 않게 하는 자세예요. 어느 쪽인지를 분명히 말해야 팀이 같은 방향으로 눕혀요.", d: "on his back", k: ["침대를 평평하게 눕혀 주세요", "가슴 엑스레이를 위해 앉혀 주세요"], a: "down", o: ["up", "forward", "away"]}
+  - {t: "보호 지시", i: shield, w: "good lung은 출혈하지 않는 쪽 폐를 가리켜요. 그쪽이 위로 가게 눕히면 피가 건강한 폐로 흘러가는 것을 막아요.", d: "underneath", k: ["양쪽 폐 소리를 들어 보세요", "좋은 쪽 팔에 정맥로를 잡아 주세요"], a: "good", o: ["bad", "weak", "sick"]}
+  - {t: "삽관 준비", i: bulb, w: "Prepare to로 지금 하지 않아도 바로 할 수 있게 준비하라는 지시를 해요. 출혈이 멈추지 않으면 기도를 확보하려고 삽관을 하고 도움을 요청해요.", d: "and wait for labs", k: ["기관지 내시경 준비를 하세요", "혈액은행에 지금 연락하세요"], a: "intubate", o: ["extubate", "transfer", "sedate"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "객혈 대응 4문장 순서"
+    why: "많은 출혈과 흡인을 먼저 지시하고, 흡인하는 동안 측위를 잡고, 그 자세가 건강한 폐를 보호한다고 알리고, 그럼에도 출혈이 이어지면 삽관을 준비합니다. 'While you suction'·'That'·'even then'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "He's bleeding a lot — suction again.", icon: stetho, ko: "출혈이 많습니다 — 다시 흡인하세요", note: "흡인"}
+    - {en: "While you suction, position him with the bleeding side down.", icon: me, ko: "흡인하는 동안 출혈 쪽이 아래로 가게 눕혀주세요", note: "측위"}
+    - {en: "That keeps the good lung on top, so protect it.", icon: shield, ko: "그러면 건강한 폐가 위로 가니 그걸 지켜주세요", note: "보호"}
+    - {en: "If he keeps bleeding even then, prepare to intubate and call for help now.", icon: bulb, ko: "그래도 계속 출혈하면 삽관 준비하고 지금 도움을 요청하세요", note: "삽관"}
+  sw: {ko: "출혈 쪽이 아래로 가게 눕혀주세요"}
+- title: 기관절개 튜브 폐쇄·이탈
+  s:
+  - {t: "처치 설명", i: stetho, w: "지금 하는 일을 진행형으로 말하고 to clear any blockage로 이유를 붙여요. 기관절개관이 분비물로 막히면 흡인으로 뚫어 볼 수 있어요.", d: "any leak", k: ["기관절개관 주변 피부를 닦고 있어요", "기관절개관 끈을 바꾸고 있어요"], a: "suctioning", o: ["tying", "covering", "turning"]}
+  - {t: "공기 확인", i: me, w: "Can you feel …?로 환자의 느낌을 물어 튜브로 공기가 통하는지 확인해요. 공기가 느껴지지 않으면 튜브가 막히거나 빠졌을 수 있어요.", d: "stuck inside", k: ["기침할 때 공기가 새는 소리가 나나요?", "숨 쉴 때 소리가 나나요?"], a: "air", o: ["fluid", "water", "heat"]}
+  - {t: "교체 계획", i: bandage, w: "If it's out of place처럼 조건과 조치를 같이 말해요. 튜브가 빠졌거나 막혀서 해결이 안 되면 새 튜브로 바꿔요.", d: "in the morning", k: ["빠졌으면 먼저 산소를 입에 대 드릴게요", "빠졌으면 엑스레이를 찍어 볼게요"], a: "change", o: ["clamp", "cap", "repair"]}
+  - {t: "안심 안내", i: shield, w: "stay calm 뒤에 we're giving you oxygen now를 붙여 지금 조치 중이라는 사실로 안심시켜요. 환자가 당황하면 숨이 더 가빠질 수 있어요.", d: "and breathe slowly", k: ["입으로 숨을 천천히 쉬어 보세요", "손을 들어서 신호해 주세요"], a: "oxygen", o: ["fluids", "medicine", "water"]}
+  - {t: "준비 안내", i: monitor, w: "in a moment로 곧 준비된다고 알려 환자가 기다릴 수 있게 해요. 기관절개관이 빠지면 교체할 새 튜브를 바로 쓸 수 있게 준비해요.", d: "in a day", k: ["튜브 끈도 새로 준비할게요", "의사 선생님이 곧 오실 거예요"], a: "new", o: ["used", "bigger", "smaller"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "기관절개관 폐쇄 4문장 순서"
+    why: "막힌 곳을 흡인한다고 알리고, 흡인한 뒤 공기가 통하는지 묻고, 여전히 어긋나 있으면 교체한다고 알리고, 교체할 때까지 산소로 안심시킵니다. 'it'·'still'·'Until then'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "I'm suctioning your trach to clear any blockage.", icon: stetho, ko: "막힌 곳을 없애려고 기관절개관을 흡인하고 있어요", note: "흡인"}
+    - {en: "Can you feel air moving through it now?", icon: me, ko: "이제 공기가 통해서 느껴지세요?", note: "확인"}
+    - {en: "If it's still out of place, we'll change the tube right away.", icon: bandage, ko: "아직도 어긋나 있으면 바로 튜브를 교체할게요", note: "교체"}
+    - {en: "Until then, try to stay calm — we're giving you oxygen.", icon: shield, ko: "그때까지 침착하게 계세요 — 산소를 드리고 있어요", note: "안심"}
+  ctx: {word: "trach", ko: "기관절개관"}
