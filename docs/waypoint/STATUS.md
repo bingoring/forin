@@ -57,6 +57,7 @@
 > **C5 장면 정비 완료(2026-10-08)**: 합쳐 둔 13주제를 세 묶음(A·B·C)으로 Sonnet 수정 → Opus 검토(고칠 것 16·24·19) → Sonnet 반영, ER 정본 **W14 0건**.
 > 그 뒤 새 주제는 저작 단계에서 바로 정비. 검사기 W14는 낱말별 어간 비교(pass away↔passed away, verify↔verified, warm↔rewarming).
 > **합친 ER 주제 26/35**(+gi-bleed·diabetic·genitourinary·anaphylaxis·poisoning). 수정 중 environmental, 검토 중 alcohol-withdrawal·fever-infection·psych·sepsis, 남은 4(deescalation·peds·geriatric·obgyn).
+> 결정 대기 추가(v44 문장, 중요): fever-infection 20.0 keyPhrase "airborne and contact precautions" — 수막구균은 **비말(droplet)** 격리(CDC). 고치면 keyPhrase·chunks·w-contact→w-droplet·S20 pair 함께. 같은 주제 10.3 "within a minute"(열성경련 과장된 안심), anaphylaxis 20.0/20.3 시각 모순, psych 1.1 자해↔자살 질문.
 > 결정 대기 추가(v44 문장): head-trauma 18.3 "Left pupil remains reactive and equal"(우측 산대와 모순), bleeding-wound 12.2 비문 "How is your blood sugar been controlled", polytrauma 15.4 긴장성 기흉 압력 방향.
 > **결정 대기 — v44 문장 사실 오류(결정 11, 검토가 보고만 함)**: arrest 16.2 keyPhrase `high on the sternum`(2015 이후 임산부도 일반 위치),
 > arrest 10.3 "한 라운드에 에피 두 번", arrest 20.3 출혈 잡힐 때까지 압박 보류, procedures 9.4 항생제 시험 용량·5.5 정맥 시도 무제한·18.2 이중 확인,
