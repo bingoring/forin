@@ -39,6 +39,11 @@ export function faceOf(source: string): CardFace {
   if (source === 'nuance') {
     return { strike: false, promptKey: 'lab.faceNuancePrompt', badgeIcon: 'bulb', correction: false };
   }
+  // 'sentence' is a STEP 2 sentence the learner marked 아직 헷갈려요 (lesson-fidelity-v46 R5): front is
+  // the meaning, back the sentence — the suggestion face, as for a word. Not said wrong.
+  if (source === 'sentence') {
+    return { strike: false, promptKey: 'lab.faceSentencePrompt', badgeIcon: 'bulb', correction: false };
+  }
   // Anything else is treated as a correction, including sources this build has not seen:
   // a card whose origin is unknown is more safely shown as "you said this" than as advice
   // the learner never received.

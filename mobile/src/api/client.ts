@@ -894,6 +894,13 @@ export const api = {
     return data as { cardId?: string; created: boolean };
   },
 
+  /** Files a STEP 2 sentence the learner marked 아직 헷갈려요 into the review notes (lesson-fidelity-v46 R5).
+   *  `en` must be one of the lesson's sentences, or its order card's lines run together; one card per sentence. */
+  async confusedSentence(scenarioId: string, en: string): Promise<{ cardId?: string; created: boolean }> {
+    const { data } = await http.post(`/me/lesson/${scenarioId}/sentences/confused`, { en });
+    return data as { cardId?: string; created: boolean };
+  },
+
   /** Files the 감상 the learner picked at the end of a reel into the review notes (spec 2-9 §11-8).
    *  `feel` must be one of that reel's `feels`; one card per word. */
   async reelFeel(scenarioId: string, feel: string): Promise<{ cardId?: string; created: boolean }> {

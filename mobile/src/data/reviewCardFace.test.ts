@@ -41,3 +41,12 @@ test('a reel 감상 card is a suggestion, not a correction', () => {
   expect(f.correction).toBe(false);
   expect(f.promptKey).toBe('lab.faceNuancePrompt');
 });
+
+// STEP 2 문장 '아직 헷갈려요'(lesson-fidelity-v46 R5) — 단어처럼 제안 면, 취소선 없음.
+test('a confused STEP 2 sentence is drawn as advice, never as something said wrong', () => {
+  const f = faceOf('sentence');
+  expect(f.strike).toBe(false);
+  expect(f.correction).toBe(false);
+  expect(f.badgeIcon).toBe('bulb');
+  expect(f.promptKey).toBe('lab.faceSentencePrompt');
+});

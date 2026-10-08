@@ -1,53 +1,35 @@
-// STEP 2 문장 — lesson-four-steps-v44 I (handoff v44 LessonSentences·SentBlank·SentOrder·
-// SentListen·SentenceDone, v45 ImmersionReel·ContextMatch·SwapOne).
+// STEP 2 문장 — lesson-fidelity-v46 T4 (Build Spec §L, 결정 2).
 //
-// The deck is data/sentenceDrill: the reel warm-up, the sentences (the ones using a word
-// missed in STEP 1 first) with a rotated exercise each, one order card, then the STEP 2
-// nuance drills. Every card is answered, checked and explained on the same sheet; the
-// reel is read, not answered. The last card shows the PASSED page, and its CTA records
-// STEP 2 and goes straight into STEP 3 — the guided dialogue.
+// 핸드오프 아트보드 순서대로 화면을 나눈다: 릴(C0, forin-notebook-lesson-nuance.jsx ImmersionReel) →
+// 문장장(forin-notebook-lesson-sent-live.jsx SentStudyLive, 끝에 DONE 장) → 같은 뜻 다른 장면(C5 ContextMatch) →
+// 한 단어 바꾸기(C6 SwapOne) → 완료(C' forin-notebook-lesson.jsx LessonSentenceDone). 한 라우트 안의 단계다 —
+// 뒤로 가기(나가기)는 어느 단계에서든 허브로. 없는 화면은 건너뛴다(R3): 릴이 없는 상황은 문장장부터,
+// C5·C6 항목이 없으면 그 화면 없이.
+//
+// 학습 기록은 v44 그대로(R5): 문장장은 STEP 1에서 틀린 단어가 든 문장부터, 완료 화면의 CTA가 STEP 2를
+// 기록하고 가이드 대화(STEP 3)로 간다. 문장 '아직 헷갈려요'는 교정노트에 한 장, 릴의 감상은 하나.
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { ActivityIndicator, Pressable, ScrollView, Text, View } from 'react-native';
+import { ActivityIndicator, Text, View } from 'react-native';
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
-import { StepTrack } from '@/components/lesson/StepTrack';
-import { SentPrompt, SentReveal } from '@/components/lesson/SentPrompt';
-import { NbIcon } from '@/components/nb/NbIcon';
-import { NbButton, NbPaper, NbStamp, NbTag, nbText } from '@/components/nb/NbUI';
-import { api, type LessonDetail, type LessonStepView } from '@/api/client';
-import { buildDrillDeck, hasDrillAnswer, isDrillRight, type DrillAnswer, type DrillCard } from '@/data/sentenceDrill';
+import { NbSheet, nbText } from '@/components/nb/NbUI';
+import { SentReel } from '@/components/lesson/SentReel';
+import { SentSheets } from '@/components/lesson/SentSheets';
+import { SentContext } from '@/components/lesson/SentContext';
+import { SentSwap } from '@/components/lesson/SentSwap';
+import { SentPassed } from '@/components/lesson/SentPassed';
+import { api, type LessonDetail } from '@/api/client';
+import { buildSheets, sheetLine, shortTitle, step2Phases, type SheetCard } from '@/data/sentenceDrill';
+import { deptNbIcon } from '@/data/campus';
 import { TOP_INSET, nb } from '@/theme/nb';
 import { useT } from '@/i18n';
 import { TASK_SCREEN } from '@/theme/transitions';
-
-/** This step drawn current; the step the server had as next is not current too. */
-function onThisStep(steps: LessonStepView[]): LessonStepView[] {
-  return steps.map((s) => {
-    if (s.kind === 'sentences') return s.state === 'done' ? s : { ...s, state: 'now' };
-    return s.state === 'now' ? { ...s, state: 'lock' } : s;
-  });
-}
-
-/** The instruction line's catalog key for a card. A key, not a string: translating
- *  here, outside the component, would be cached once (useT.test). */
-function askKey(card: DrillCard): string {
-  switch (card.kind) {
-    case 'sentence': return card.type === 'listen' ? 'sent.listenAsk' : card.type === 'chunks' ? 'sent.chunksAsk' : 'sent.blankAsk';
-    case 'order': return 'sent.orderAsk';
-    case 'reel': return 'sent.reelAsk';
-    case 'context': return 'sent.contextAsk';
-    case 'swap': return 'sent.swapAsk';
-  }
-}
 
 export default function LessonSentencesRoute() {
   const t = useT();
   const router = useRouter();
   const { id } = useLocalSearchParams<{ id: string }>();
   const [lesson, setLesson] = useState<LessonDetail | null>(null);
-  const [idx, setIdx] = useState(0);
-  const [answer, setAnswer] = useState<DrillAnswer | null>(null);
-  const [result, setResult] = useState<'right' | 'wrong' | null>(null);
-  const [reelAt, setReelAt] = useState(0);
+  const [at, setAt] = useState(0);
   const finishing = useRef(false);
 
   useEffect(() => {
@@ -56,39 +38,32 @@ export default function LessonSentencesRoute() {
     return () => { alive = false; };
   }, [id]);
 
-  const deck = useMemo(() => (lesson ? buildDrillDeck(lesson.sentences, lesson.nuance ?? []) : []), [lesson]);
-  const done = deck.length > 0 && idx >= deck.length;
-  const card = deck[idx];
-  const reelScenes = card?.kind === 'reel' ? (card.item.scenes ?? []).length : 0;
-  // 감상 칩(스펙 2-9 §11-8): 칩이 있는 릴은 마지막 장면 다음에 감상 카드가 한 장 더 있고
-  // (reelAt === 장면 수), 칩을 하나 골라야 끝난다. 칩이 없는 옛 콘텐츠는 장면만 보면 끝난다.
-  const reelHasFeels = card?.kind === 'reel' && (card.item.feels ?? []).length > 0;
+  const phases = useMemo(() => (lesson ? step2Phases(lesson) : []), [lesson]);
+  const sheets = useMemo<SheetCard[]>(() => (lesson ? buildSheets(lesson.sentences, lesson.words, lesson.order) : []), [lesson]);
+  const phase = phases[at];
+  const drillTotal = phases.filter((p) => p.kind === 'context' || p.kind === 'swap').length;
+  const next = () => setAt((a) => Math.min(a + 1, phases.length - 1));
+  const exit = () => router.back();
+
+  // 감상 하나(스펙 2-9 §11-8): 화면의 선택은 바꿀 수 있고(핸드오프 NU:107), 노트에는 처음 고른 것 한 번.
   const [feel, setFeel] = useState<string | null>(null);
   const [feelSave, setFeelSave] = useState<'idle' | 'saved' | 'failed'>('idle');
-  const reelFinished = card?.kind === 'reel' && (reelHasFeels ? feel != null : reelAt >= reelScenes - 1);
+  const feelSent = useRef(false);
   const pickFeel = (f: string) => {
-    if (feel != null) return; // 감상은 하나 — 다시 눌러도 다시 저장하지 않는다
     setFeel(f);
+    if (feelSent.current) return;
+    feelSent.current = true;
     // 저장이 실패해도 해설은 보이고 넘어갈 수 있다 — 감상은 학습을 막을 이유가 아니다. 실패는 알린다.
     api.reelFeel(id, f).then(() => setFeelSave('saved')).catch(() => setFeelSave('failed'));
   };
 
-  const check = () => {
-    if (!card || !lesson || result || !hasDrillAnswer(card, answer)) return;
-    setResult(isDrillRight(card, answer, lesson.words, lesson.sentences) ? 'right' : 'wrong');
-  };
-  const next = () => {
-    setIdx(idx + 1);
-    setAnswer(null);
-    setResult(null);
-    setReelAt(0);
-    setFeel(null);
-    setFeelSave('idle');
-  };
   const repeat = (text: string) => router.push({
     pathname: '/pronunciation/[sentenceKey]',
     params: { sentenceKey: text.slice(0, 40), referenceText: text, origin: 'lesson', scenarioId: id },
   });
+  // Filed in the background: the next sheet must not wait on the review notes (words.tsx 같은 규칙).
+  const confused = (card: SheetCard) => { void api.confusedSentence(id, sheetLine(card)).catch(() => {}); };
+
   // Only on success — see words.tsx: a silent failure would leave STEP 2 undone.
   const [saveFailed, setSaveFailed] = useState(false);
   const finish = async () => {
@@ -105,89 +80,26 @@ export default function LessonSentencesRoute() {
     }
   };
 
-  const repeatText = card?.kind === 'sentence' ? card.sentence.en : null;
-
+  const name = lesson ? shortTitle(lesson.situation.title) : '';
   return (
-    <View style={{ flex: 1, backgroundColor: nb.cream, paddingTop: TOP_INSET }}>
+    <NbSheet style={{ paddingTop: TOP_INSET }}>
       <Stack.Screen options={TASK_SCREEN} />
-      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, paddingHorizontal: 20 }}>
-        <Pressable onPress={() => router.back()} hitSlop={10}>
-          <NbPaper rot={-1} style={{ width: 32, height: 32, alignItems: 'center', justifyContent: 'center' }}>
-            <NbIcon name="chevronLeft" size={16} />
-          </NbPaper>
-        </Pressable>
-        <View style={{ flex: 1, minWidth: 0 }}>
-          <Text numberOfLines={1} style={nbText.hand(21)}>{t('sent.title')}</Text>
-          {!!lesson && <Text numberOfLines={1} style={[nbText.body(10.5, nb.soft), { marginTop: 1 }]}>{lesson.situation.title}</Text>}
-        </View>
-        {deck.length > 0 && !done && <NbTag color={nb.blue} fill>{`${idx + 1} / ${deck.length}`}</NbTag>}
-      </View>
-
       {!lesson ? (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}><ActivityIndicator color={nb.ink} /></View>
-      ) : deck.length === 0 ? (
+      ) : !lesson.sentences.length ? (
         <Text style={[nbText.hand(16, nb.soft), { textAlign: 'center', marginTop: 40 }]}>{t('lesson.hub.emptyNote')}</Text>
+      ) : phase?.kind === 'reel' ? (
+        <SentReel item={phase.item} feel={feel} feelSave={feelSave} onFeel={pickFeel} onStart={next} onExit={exit} />
+      ) : phase?.kind === 'sheets' ? (
+        <SentSheets sheets={sheets} name={name} fallbackIcon={deptNbIcon(lesson.situation.id)}
+          onConfused={confused} onRepeat={repeat} onDone={next} onExit={exit} />
+      ) : phase?.kind === 'context' ? (
+        <SentContext key={`c${at}`} item={phase.item} k={phase.k} total={drillTotal} onRepeat={repeat} onNext={next} onExit={exit} />
+      ) : phase?.kind === 'swap' ? (
+        <SentSwap key={`s${at}`} item={phase.item} k={phase.k} total={drillTotal} onRepeat={repeat} onNext={next} onExit={exit} />
       ) : (
-        <>
-          <View style={{ marginTop: 10 }}><StepTrack steps={onThisStep(lesson.steps)} /></View>
-          <ScrollView style={{ flex: 1, marginTop: 12 }} contentContainerStyle={{ paddingHorizontal: 20, paddingBottom: 150 }} showsVerticalScrollIndicator={false}>
-            {!done && card && (
-              <View testID="sent-sheet" style={{ backgroundColor: nb.paper, borderWidth: 1, borderColor: nb.paperEdge, padding: 16 }}>
-                <Text testID="sent-type" style={nbText.hand(12.5, nb.soft)}>
-                  {t(`sent.type.${card.kind === 'sentence' ? card.type : card.kind}`)}
-                </Text>
-                <Text style={[nbText.hand(18), { marginTop: 6 }]}>{t(askKey(card))}</Text>
-                <SentPrompt card={card} all={lesson.sentences} words={lesson.words} answer={answer} onAnswer={setAnswer}
-                  result={result} reelAt={reelAt} onReelNext={() => setReelAt((r) => Math.min(r + 1, reelHasFeels ? reelScenes : reelScenes - 1))}
-                  feel={feel} feelSave={feelSave} onFeel={pickFeel} />
-                {!!result && <SentReveal card={card} result={result} />}
-              </View>
-            )}
-            {done && (
-              <View testID="sent-done" style={{ alignItems: 'center', paddingTop: 12 }}>
-                <NbStamp color={nb.green} size={92} top="STEP 2" bottom="PASSED" />
-                <Text style={[nbText.hand(21), { marginTop: 14 }]}>{t('sent.passed', { n: lesson.sentences.length })}</Text>
-                <View style={{ alignSelf: 'stretch', marginTop: 12 }}>
-                  {lesson.sentences.map((s, i) => (
-                    <NbPaper key={i} rot={i % 2 ? 0.4 : -0.4} style={{ marginTop: 8, paddingVertical: 8, paddingHorizontal: 11, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-                      <Text style={[nbText.body(12.5), { flex: 1 }]}>{s.en}</Text>
-                      <Pressable onPress={() => repeat(s.en)} hitSlop={8}><NbIcon name="mic" size={17} /></Pressable>
-                    </NbPaper>
-                  ))}
-                </View>
-              </View>
-            )}
-          </ScrollView>
-
-          <View style={{ position: 'absolute', left: 20, right: 20, bottom: 30 }}>
-            {done ? (
-              <View testID="sent-to-step3">
-                {saveFailed && <Text testID="lesson-save-failed" style={[nbText.hand(14, nb.red), { textAlign: 'center', marginBottom: 8 }]}>{t('lesson.saveFailed')}</Text>}
-                <NbButton variant="ink" size="lg" full icon="speech" iconColor={nb.paper} onPress={finish}>{t('sent.toStep3')}</NbButton>
-              </View>
-            ) : card?.kind === 'reel' ? (
-              <View testID="sent-next" style={{ opacity: reelFinished ? 1 : 0.4 }}>
-                <NbButton variant="ink" size="lg" full icon="chevronRight" iconColor={nb.paper} onPress={() => reelFinished && next()}>{t('sent.next')}</NbButton>
-              </View>
-            ) : !result ? (
-              <View testID="sent-check" style={{ opacity: card && hasDrillAnswer(card, answer) ? 1 : 0.4 }}>
-                <NbButton variant="ink" size="lg" full icon="pencil" iconColor={nb.paper} onPress={check}>{t('recall.check')}</NbButton>
-              </View>
-            ) : (
-              <View style={{ flexDirection: 'row', gap: 12 }}>
-                {!!repeatText && (
-                  <View testID="sent-repeat" style={{ flex: 1 }}>
-                    <NbButton variant="paper" size="lg" full icon="mic" onPress={() => repeat(repeatText)}>{t('sent.repeat')}</NbButton>
-                  </View>
-                )}
-                <View testID="sent-next" style={{ flex: 1 }}>
-                  <NbButton variant="ink" size="lg" full icon="chevronRight" iconColor={nb.paper} onPress={next}>{t('sent.next')}</NbButton>
-                </View>
-              </View>
-            )}
-          </View>
-        </>
+        <SentPassed sentences={lesson.sentences} situation={lesson.situation.title} onExit={exit} onRepeat={repeat} onFinish={finish} saveFailed={saveFailed} />
       )}
-    </View>
+    </NbSheet>
   );
 }

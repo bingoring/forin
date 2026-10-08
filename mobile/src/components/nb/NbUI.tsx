@@ -553,9 +553,8 @@ export function NbMark({ textStyle, children }: {
   );
 }
 
-/** For a marker inside a longer run of mixed text: the same wash as NbMark, weaker so it
- *  does not read as a block when several sit in one paragraph. */
-export const markInline: TextStyle = { backgroundColor: 'rgba(249,227,123,.55)' };
+// A marker on a few words inside a longer line is NbInline (./NbInline): a Text background
+// would flood the whole line box, where the handoff's `<mark>` paints only its lower 45%.
 
 /** A dashed memo box — tips, rules, warnings. */
 export function NbMemo({ color = nb.blue, textColor, rot = -0.3, style, children }: {
