@@ -2192,8 +2192,8 @@ words:
   ipa: /rɪˈliːv/
   ko: 완화하다
   icon: shield
-  example: We may need to cut the tight, burned skin to relieve the pressure.
-  exKo: 압력을 완화하려고 조여 있는 화상 피부를 절개해야 할 수도 있어요.
+  example: Once we relieve the pressure, blood can reach your fingers again.
+  exKo: 압력을 풀면 손가락까지 피가 다시 통할 수 있어요.
   cue: 조이는 압력·통증을 덜어 줄 때
   tag: 순환·절개
   distractorsEn:
@@ -6191,26 +6191,23 @@ situations:
       - en: pink
       - en: warm
       - en: normal
-  - en: We may need to cut the tight, burned skin to relieve the pressure.
-    ko: 압력을 완화하려고 조여 있는 화상 피부를 절개해야 할 수도 있어요.
+  - en: Once we relieve the pressure, blood can reach your fingers again.
+    ko: 압력을 풀면 손가락까지 피가 다시 통할 수 있어요.
     chunks:
-    - We may need
-    - to cut
-    - the tight, burned skin
-    - to relieve the pressure
+    - Once we relieve
+    - the pressure,
+    - blood can reach
+    - your fingers again
     - .
     words:
-    - w-need
-    - w-cut
-    - w-tight
-    - w-burn
-    - w-skin
     - w-relieve
     - w-pressure
+    - w-blood
+    - w-finger
     goal: 2
-    tag: 시술 안내
-    icon: scalpel
-    why: to relieve로 절개의 목적을 밝혀 두려움을 줄여요. 압력이 풀리면 눌려 있던 혈관으로 피가 다시 흐를 수 있어요.
+    tag: 기대 효과
+    icon: bulb
+    why: Once we…로 처치 뒤에 올 좋은 변화를 알려 절개를 앞둔 두려움을 줄여요. 가피의 압력이 풀리면 눌려 있던 혈관으로 손가락까지 피가 다시 흘러요.
     decoy: to dry the skin
     distractorsKo:
     - 절개 전에 동의서를 먼저 받을 거예요
@@ -7821,34 +7818,35 @@ situations:
       - en: saliva
       - en: skin
       - en: hair
-  - en: A normal number does not mean you're safe yet.
-    ko: 정상 수치가 아직 안전하다는 뜻은 아니에요.
+  - en: This oxygen helps clear the poison from your blood faster.
+    ko: 이 산소가 혈액 속 독성 물질을 더 빨리 없애 줘요.
     chunks:
-    - A normal number
-    - does not mean
-    - you're safe
-    - yet
+    - This oxygen
+    - helps clear
+    - the poison
+    - from your blood faster
     - .
     words:
-    - w-normal
-    - w-number
-    - w-mean
-    - w-safe
+    - w-oxygen
+    - w-help
+    - w-poison
+    - w-blood
+    - w-fast
     goal: 1
-    tag: 수치 해석
-    icon: monitor
-    why: does not mean으로 정상 수치에 안심하지 않게 못 박아요. 일산화탄소가 붙은 헤모글로빈도 산소처럼 읽혀 포화도가 높게 나올 수 있어서 증상과 혈액 검사로 확인해요.
-    decoy: when you sleep
+    tag: 산소 효과
+    icon: bulb
+    why: helps clear로 산소를 주는 이유를 쉬운 말로 알려요. 고농도 산소는 헤모글로빈에 붙은 일산화탄소가 떨어져 나가는 시간을 크게 줄여요.
+    decoy: to the doctor
     distractorsKo:
     - 산소 수치는 계속 지켜볼게요
     - 가족에게 중독 사실을 알려 드릴게요
     blank:
-      answer: safe
+      answer: clear
       options:
-      - en: safe
-      - en: sick
-      - en: ready
-      - en: alone
+      - en: clear
+      - en: add
+      - en: hide
+      - en: store
   nuance:
   - kind: slider
     words:
@@ -8022,37 +8020,32 @@ situations:
       - en: tight
       - en: loose
       - en: empty
-  - en: We may need to cut the tight skin so your chest can expand.
-    ko: 가슴이 팽창하도록 조여 있는 피부를 절개해야 할 수도 있어요.
+  - en: We'll keep checking how well your chest rises.
+    ko: 가슴이 얼마나 잘 올라오는지 계속 확인할게요.
     chunks:
-    - We may need
-    - to cut
-    - the tight skin
-    - so your chest
-    - can expand
+    - We'll keep checking
+    - how well
+    - your chest rises
     - .
     words:
-    - w-need
-    - w-cut
-    - w-tight
-    - w-skin
+    - w-keep
+    - w-check
     - w-chest
-    - w-expand
     goal: 2
-    tag: 절개 필요성
-    icon: scalpel
-    why: may need로 아직 확정이 아닌 일을, so…로 그 목적과 함께 말해요. 환기가 나아지지 않으면 의사가 가슴 둘레의 가피를 길게 절개해 호흡 운동을 되살려요.
-    decoy: so your arm
+    tag: 관찰 약속
+    icon: magnify
+    why: keep checking으로 계속 지켜본다고 약속해요. 가슴 둘레 가피가 조이면 숨 쉴 때 가슴이 덜 올라와서 절개 전후로 가슴 움직임과 산소 수치를 계속 봐요.
+    decoy: your arm
     distractorsKo:
     - 의사 선생님이 절개 부위를 설명해 드릴 거예요
     - 절개 부위는 거즈로 덮을 거예요
     blank:
-      answer: expand
+      answer: rises
       options:
-      - en: stop
-      - en: sink
-      - en: expand
-      - en: shrink
+      - en: rises
+      - en: sinks
+      - en: shrinks
+      - en: sleeps
   nuance:
   - kind: pair
     words:

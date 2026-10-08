@@ -43,9 +43,10 @@ t=f.sent(9,T(9),3,'I want to double-check a few things before you go home.','자
   why='with you first로 확인이 먼저라는 순서를 말해요. 자살 위험을 부정하는 환자도 위험을 다시 확인하고, 퇴원 결정은 평가 뒤에 의사가 해요.')
 W['w-thought']['cue']=W['w-thought']['cue'].replace('hurting yourself','ending your life').replace('자해를 떠올린 적이 있는지','삶을 끝낼 생각을 한 적이 있는지')
 for wid in getattr(f,'needs',[]):
-    if wid=='w-hurt': continue
+    if wid in('w-hurt','w-watch'): continue
     for s in S:
         hit=[x for x in s['sentences'] if wid in x['words'] and x['en']!=W[wid]['example']]
         if hit: W[wid]['example']=hit[0]['en']; W[wid]['exKo']=hit[0]['ko']; f.wwhy=getattr(f,'wwhy',{}); f.wwhy[wid]='예문이 문장 en과 같았으나 그 문장이 바뀌어 단어가 빠져, 이 낱말이 든 다른 문장으로 바꿈'; print('  ->',wid,hit[0]['en']); break
+f.rm_word('w-watch','13.5에서 watch를 버리고 S13 context 카드의 태그도 뺐더니 쓰는 곳이 없어짐(예문도 옛 13.5 문장)')
 f.word('w-hurt','단독 예문이 바뀐 1.1 문장이라 hurt가 든 다른 문장(수단 접근 질문)으로 바꿈',example='Do you have access to anything you could use to hurt yourself?',exKo='자해에 쓸 만한 것에 접근할 수 있나요?')
 f.finish()

@@ -6573,7 +6573,7 @@ situations:
     tag: 통증 양상
     icon: faceWorried
     why: tearing or ripping처럼 찢어지는 느낌을 그대로 보기로 주면 환자가 비슷한 말을 찾기 쉬워요. 갑작스러운 찢어지는 통증은 대동맥 문제의 위험 신호예요.
-    decoy: in your leg
+    decoy: is it sharp
     distractorsKo:
     - 배에서 뭔가 뛰는 게 느껴지나요?
     - 어디가 가장 아파요?
@@ -7008,7 +7008,7 @@ situations:
     tag: 자세 안내
     icon: check
     why: to reduce the pain으로 가만히 있는 이유를 붙여요. 움직이면 복막이 자극되어 더 아프니 가만히 있게 하되, 무릎을 굽히는 등 환자가 편한 자세를 쓰게 해요.
-    decoy: in the hallway
+    decoy: to the pain
     distractorsKo:
     - 수술실을 준비하고 있어요
     - 금식을 유지하세요
@@ -7017,12 +7017,12 @@ situations:
       options:
       - en: comfortable
       - en: awake
-      - en: warm
+      - en: busy
       - en: thirsty
-  - en: I'm calling the surgeon right now to come see you.
+  - en: We're calling the surgeon right now to come see you.
     ko: 지금 바로 외과 선생님이 와서 봐 주시도록 연락하고 있어요.
     chunks:
-    - I'm calling
+    - We're calling
     - the surgeon
     - right now
     - to come see you
@@ -7033,8 +7033,8 @@ situations:
     goal: 2
     tag: 외과 호출
     icon: speech
-    why: calling the surgeon right now로 지금 누구를 부르는지 알려요. 환자 앞에서 누구를 왜 부르는지 말하면 방치되지 않는다고 느껴요. SBAR 같은 보고 틀 이름은 의료진끼리 쓰는 말이라 환자에게는 풀어서 말해요.
-    decoy: tomorrow
+    why: We're calling the surgeon right now로 팀이 지금 누구를 부르는지 알려요. 환자 앞에서 누구를 왜 부르는지 말하면 방치되지 않는다고 느껴요. SBAR 같은 보고 틀 이름은 의료진끼리 쓰는 말이라 환자에게는 풀어서 말해요.
+    decoy: tomorrow's
     distractorsKo:
     - 움직이지 말고 가만히 계세요
     - 열이 있는지 확인할게요
@@ -7094,7 +7094,7 @@ situations:
     decoy: on the unit
     distractorsKo:
     - 지금은 아무것도 드시지 마세요
-    - SBAR로 보고했어요
+    - 외과 선생님께 연락했어요
     blank:
       answer: operate
       options:
@@ -7113,7 +7113,7 @@ situations:
     - - come
       - see you
     decoys:
-    - to the surgeon
+    - seeing you
     why: call은 전치사 없이 the surgeon을 바로 받아요. 'come see you'는 와서 환자를 봐 달라는 뜻으로, 의사를 부를 때 목적을 함께 말해요.
   - kind: swap
     words:
@@ -7148,7 +7148,7 @@ situations:
       icon: stetho
       ko: 배가 아주 딱딱해요, 이건 심각한 징후예요
       note: 소견
-    - en: Because of that sign, I'm calling the surgeon right now.
+    - en: Because of that sign, we're calling the surgeon right now.
       icon: speech
       ko: 그 징후 때문에 지금 바로 외과 선생님을 부를게요
       note: 호출

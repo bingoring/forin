@@ -3062,7 +3062,7 @@ situations:
     tag: 난간 안내
     icon: lock
     why: whenever로 난간을 올려 두는 시점을 분명히 말해요. 올리는 것은 위쪽 난간이고, 난간 전부를 늘 올려 두면 억제대로 간주될 수 있어요.
-    decoy: until I'm
+    decoy: whatever I'm
     distractorsKo:
     - 난간은 제가 나갈 때 내릴게요
     - 침대 난간은 만지지 마세요
@@ -3072,7 +3072,7 @@ situations:
       - en: open
       - en: loose
       - en: up
-      - en: down
+      - en: clean
   - en: Press the call button anytime you need help — don't try to get up alone.
     ko: 도움이 필요하면 언제든 호출벨을 누르시고, 혼자 일어나지 마세요.
     chunks:
@@ -5597,11 +5597,11 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 시술 전 타임아웃 4단계
-    why: 환자(이름·생년)와 시술을 먼저 말하고, 동의서와 표시를 보고한 뒤, 그 모두 중 하나라도 어긋나면 멈춘다는 규칙을 말하고(any of that이 앞 줄을 받아), 마지막으로 모두의 동의를 받아 시작해요.
+    why: 환자(이름·생년월일)와 시술을 먼저 말하고, 동의서와 표시를 보고한 뒤, 그 모두 중 하나라도 어긋나면 멈춘다는 규칙을 말하고(any of that이 앞 줄을 받아), 마지막으로 모두의 동의를 받아 시작해요.
     lines:
-    - en: 'Time-out: John Reyes, born in 1962, right chest tube.'
+    - en: 'Time-out: John Reyes, born March 3, 1962, right chest tube.'
       icon: siren
-      ko: 타임아웃, 존 레예스 씨, 1962년생, 오른쪽 흉관이에요
+      ko: 타임아웃, 존 레예스 씨, 1962년 3월 3일생, 오른쪽 흉관이에요
       note: 환자
     - en: Consent is signed and the site is marked.
       icon: pencil
@@ -5632,7 +5632,7 @@ situations:
     tag: 변화 보고
     icon: monitor
     why: up과 dropping으로 수치가 움직이는 방향을 먼저 말해요. 심박은 오르고 혈압은 떨어지는 조합은 상태가 나빠지는 신호로 흔히 쓰는 경고예요.
-    decoy: is stable
+    decoy: are stable
     distractorsKo:
     - 심박도 혈압도 안정적이에요
     - 열이 오르고 있어요
@@ -6604,14 +6604,14 @@ situations:
     tag: 침대 이송
     icon: bandage
     why: move … on the bed together는 침대째 함께 옮긴다는 말이에요. 삽관 환자는 튜브와 장비가 붙어 있어서 여러 명이 맞춰 움직여야 해요.
-    decoy: on the stairs
+    decoy: stairs together
     distractorsKo:
     - 저 혼자 업고 나갈게요
     - 삽관 환자는 걸어서 나가요
     blank:
       answer: move
       options:
-      - en: leave
+      - en: weigh
       - en: wake
       - en: move
       - en: bathe
