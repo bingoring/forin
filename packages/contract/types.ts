@@ -2953,6 +2953,11 @@ export interface components {
             deptColor?: string;
             /** @description 1..3 */
             difficulty?: number;
+            /**
+             * @description Line is the hub's one line with one [[highlighted]] span (lesson-fidelity-v46 T6,
+             *     hubline.go). Optional — the hub falls back to Brief, unmarked.
+             */
+            line?: string;
             /** @description met computed client-side vs /me */
             reqs?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_content.Req"][];
             rewards?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_content.Reward"][];

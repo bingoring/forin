@@ -45,6 +45,11 @@ components:
         difficulty:
           description: 1..3
           type: integer
+        line:
+          description: |-
+            Line is the hub's one line with one [[highlighted]] span (lesson-fidelity-v46 T6,
+            hubline.go). Optional — the hub falls back to Brief, unmarked.
+          type: string
         reqs:
           description: met computed client-side vs /me
           items:

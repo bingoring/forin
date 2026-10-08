@@ -395,6 +395,10 @@ type Briefing struct {
 	// tagging (hint mode marks these key phrases as reputation-risky).
 	Chart        *ScenarioChart `yaml:"chart" json:"chart,omitempty"`
 	RiskyPhrases []string       `yaml:"riskyPhrases" json:"riskyPhrases,omitempty"`
+
+	// Line is the hub's one line with one [[highlighted]] span (lesson-fidelity-v46 T6,
+	// hubline.go). Optional — the hub falls back to Brief, unmarked.
+	Line string `yaml:"line,omitempty" json:"line,omitempty"`
 }
 
 // ScenarioChart — bedside quick-reference shown in the dialogue QUICK INFO dock.
