@@ -336,3 +336,114 @@ changes:
   fields:
   - ko
   why: 태그된 문장 'what's causing your pain'은 동사 — 명사 '원인'만으로는 어긋난다
+- kind: sentence
+  situation: 항생제 첫 투여 설명
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'v46 검토 결정 11 예외: 첫 항생제를 시험 용량으로 소개하는 말은 미국 관행과 어긋나 호출 버튼 안내로 바꿈'
+- kind: sentence
+  situation: 어려운 정맥 확보
+  index: 5
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'v46 검토 결정 11 예외: 끝까지 멈추지 않겠다는 말은 시도 횟수 제한(INS)·5.2와 어긋나 한 번 더 시도하고 도움을 받겠다는 말로 바꿈'
+- kind: sentence
+  situation: 응급 약물 오류 방지
+  index: 2
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'v46 검토 결정 11 예외: 값을 먼저 말하면 독립 이중 확인이 아니라 각자 따로 계산한 뒤 맞춰 보자는 말로 바꿈'
+- kind: sentence
+  situation: 대량수혈 프로토콜
+  index: 1
+  fields:
+  - en
+  - chunks
+  why: 'v46 검토 결정 11 예외: `one-to-one-to-one ratio` 앞에 관사 a가 빠짐'
+- kind: sentence
+  situation: 비위관 삽입 협조
+  index: 2
+  fields:
+  - en
+  - chunks
+  why: 'v46 검토 결정 11 예외: 미국 영어는 stop you from breathing'
+- kind: sentence
+  situation: 소아 채혈 협조 유도
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  why: 'v46 검토 결정 11 예외: 결과를 장담하는 말을 should로 낮춰 같은 상황 swap(거짓 약속은 신뢰를 잃는다)과 맞춤'
+- kind: sentence
+  situation: 골내주사(IO) 응급 확보
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'v46 검토 결정 11 예외: 결과를 약속하는 말(I promise) 대신 예상과 곁에 있음을 말함'
+- kind: word-remove
+  id: w-promise
+  why: 'v46 검토 결정 11 예외: 17.4에서 I promise를 버려 쓰는 곳이 없어짐'
+- kind: sentence
+  situation: 채혈 전 환자 확인
+  index: 0
+  fields:
+  - ko
+  why: 'v46 검토 결정 11 예외: `이름과 생년월일을 전부`가 부자연스러움'
+- kind: sentence
+  situation: 항생제 첫 투여 설명
+  index: 0
+  fields:
+  - ko
+  why: 'v46 검토 결정 11 예외: 정맥 항생제라 `복용해 보신`이 어긋남'
+- kind: sentence
+  situation: 채혈 전 환자 확인
+  index: 4
+  fields:
+  - chunks
+  why: 'v46 검토 결정 11 예외: 구를 끊는 청크(`just to / be safe`, `a big / high-five are / waiting after`, `the site really / well first`)를 구 경계로 다시 나눔'
+- kind: sentence
+  situation: 소아 채혈 협조 유도
+  index: 2
+  fields:
+  - chunks
+  why: 'v46 검토 결정 11 예외: 구를 끊는 청크(`just to / be safe`, `a big / high-five are / waiting after`, `the site really / well first`)를 구 경계로 다시 나눔'
+- kind: sentence
+  situation: 배양검사 무균 채취
+  index: 0
+  fields:
+  - chunks
+  why: 'v46 검토 결정 11 예외: 구를 끊는 청크(`just to / be safe`, `a big / high-five are / waiting after`, `the site really / well first`)를 구 경계로 다시 나눔'
+- kind: word
+  id: w-stop
+  fields:
+  - example
+  why: 'v46 검토 결정 11 예외: 단독 예문이 포기하지 않겠다는 5.5의 옛 약속이라 수혈 반응 때 멈추는 예문으로 바꿈'
+- kind: word
+  id: w-breathe
+  fields:
+  - example
+  why: 'v46 검토 결정 11 예외: 단독 예문을 11.2와 같은 미국식 `from breathing`으로 맞춤'
+- kind: word
+  id: w-calculate
+  fields:
+  - example
+  why: 'v46 검토 결정 11 예외: 단독 예문이 값을 먼저 말하는 옛 18.2라 새 18.2 문장으로 맞춤'
+- kind: word
+  id: w-unit
+  fields:
+  - example
+  why: 'v46 검토 결정 11 예외: 단독 예문이 값을 먼저 말하는 옛 18.2라 새 18.2 문장으로 맞춤'

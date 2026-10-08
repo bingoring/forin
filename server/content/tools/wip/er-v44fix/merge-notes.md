@@ -1,0 +1,3 @@
+- anaphylaxis 7.2: 정본 상황 tagline/brief 수정 필요(base 범위 밖) — 합칠 때 처리
+- head-trauma S14·S15 상황 role이 patient로 잘못됨(정본 시드 필드) — 합칠 때 확인
+- G3(burn·chest-abd-trauma·chestpain·diabetic·dyspnea)는 base 상황에 keyPhrases 키를 넣음 — merge가 무시/반영하는지 확인. w-small word-remove(burn 은행만)

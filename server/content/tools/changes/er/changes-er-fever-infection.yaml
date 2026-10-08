@@ -672,3 +672,95 @@ changes:
   fields:
   - words
   why: w-work(효과가 있다)와 다른 뜻(직장)의 work — 태그를 뺐다
+- kind: sentence
+  situation: 고위험 감염 이송 인계
+  index: 0
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'v46 검토 결정 11 예외: 수막구균혈증은 비말 격리(CDC)인데 공기·접촉 격리로 적혀 있었다'
+- kind: word
+  id: w-suspect
+  fields:
+  - example
+  why: 'v46 검토 결정 11 예외: 예문이 21.0 문장과 같아 새 en·ko로 맞춤'
+- kind: word
+  id: w-meningococcemia
+  fields:
+  - example
+  why: 'v46 검토 결정 11 예외: 예문이 21.0 문장과 같아 새 en·ko로 맞춤'
+- kind: word
+  id: w-precaution
+  fields:
+  - example
+  why: 'v46 검토 결정 11 예외: 예문의 격리 종류가 21.0과 어긋나 비말 격리로 맞춤'
+- kind: word-remove
+  id: w-airborne
+  why: 'v46 검토 결정 11 예외: 수막구균 격리를 비말로 고치면서 21.0 말고는 쓰는 곳이 없어 은행에서 뺌'
+- kind: word-add
+  id: w-droplet
+  why: 'v46 검토 결정 11 예외: 21.0 격리 종류를 비말로 고치며 새 단어 추가'
+- kind: sentence
+  situation: 소아 고열 보호자
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  why: 'v46 검토 결정 11 예외: `within a minute`은 과장된 안심(열성경련은 대개 몇 분 안)'
+- kind: sentence
+  situation: 해열제 투여 설명
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  why: 'v46 검토 결정 11 예외: 아세트아미노펜 효과는 30~60분이라 30분은 짧음'
+- kind: word
+  id: w-within
+  fields:
+  - example
+  why: 'v46 검토 결정 11 예외: 예문의 30분도 같이 맞춤'
+- kind: sentence
+  situation: 호중구감소성 발열 패혈증
+  index: 2
+  fields:
+  - ko
+  why: 'v46 검토 결정 11 예외: "수액을 흘리고"는 한국어로 어색'
+- kind: sentence
+  situation: 독성쇼크증후군
+  index: 4
+  fields:
+  - ko
+  why: 'v46 검토 결정 11 예외: "수액을 빠르게 흘릴게요"는 한국어로 어색'
+- kind: sentence
+  situation: 인플루엔자 시즌 선별
+  index: 3
+  fields:
+  - ko
+  why: 'v46 검토 결정 11 예외: "이것도 그럴 가능성이 커요"는 어색'
+- kind: sentence
+  situation: 수막염 의심 두통·발열
+  index: 0
+  fields:
+  - en
+  - chunks
+  - words
+  why: 'v46 검토 결정 11 예외: `concerns me about`은 자연스러운 영어가 아니라 `makes me worried about`로'
+- kind: sentence
+  situation: 괴사성 근막염
+  index: 0
+  fields:
+  - en
+  - chunks
+  why: 'v46 검토 결정 11 예외: `worries me about`은 자연스러운 영어가 아니라 `makes me worried about`로'
+- kind: word
+  id: w-worry
+  fields:
+  - example
+  why: 'v46 검토 결정 11 예외: 예문이 17.0 en과 같아 새 en으로 맞춤'
+- kind: word-remove
+  id: w-concern
+  why: 'v46 검토 결정 11 예외: 12.0이 `concerns me`를 버려 쓰는 곳이 없어짐; 12.0은 w-worry 태그로 바꿈'

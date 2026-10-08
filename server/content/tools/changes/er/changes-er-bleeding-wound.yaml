@@ -479,3 +479,43 @@ changes:
   fields:
   - chunks
   why: 구 경계대로 chunks를 다시 끊었다(대명사 목적어·복합명사·전치사구를 가르지 않게)
+- kind: sentence
+  situation: 만성 상처(당뇨족) 감염
+  index: 2
+  fields:
+  - en
+  - chunks
+  why: 'v46 검토 결정 11 예외: 비문 "How is … been controlled"를 현재완료 "How has … been controlled"로'
+- kind: sentence
+  situation: 두피 열상 다량출혈
+  index: 2
+  fields:
+  - ko
+  why: 'v46 검토 결정 11 예외: ko가 같은 말을 되풀이해("심해 보이지만 … 더 심해 보여요") 자연스럽게'
+- kind: word
+  id: w-vital
+  fields:
+  - example
+  why: 'v46 검토 결정 11 예외: 예문 문장 en을 바꿨으므로 example도 새 문장으로'
+- kind: word
+  id: w-stable
+  fields:
+  - example
+  why: 'v46 검토 결정 11 예외: 예문 문장 en을 바꿨으므로 example도 새 문장으로'
+- kind: word
+  id: w-warm
+  fields:
+  - example
+  why: 'v46 검토 결정 11 예외: 예문 문장 en을 바꿨으므로 example도 새 문장으로'
+- kind: sentence
+  situation: 출혈 SBAR 인계
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'v46 검토 결정 11 예외: 지혈대가 감긴 인계에서 "the limb is warm"은 지혈대가 덜 조였다는 신호로 읽혀 "지혈대가 유지되고 있다"로'
+- kind: word-remove
+  id: w-warm
+  why: 'v46 검토 결정 11 예외: 20.4에서 "the limb is warm"을 빼 어느 문장도 태그하지 않게 됨(미사용 단어)'

@@ -572,3 +572,39 @@ changes:
   fields:
   - ko
   why: 분무는 행위 — 문장의 mist는 마스크에서 나오는 약 안개(분무액)
+- kind: word
+  id: w-side
+  fields:
+  - example
+  why: 'v46 검토 결정 11 예외: 예문 문장 en을 바꿨으므로 example도 새 문장으로'
+- kind: sentence
+  situation: 긴장성 기흉 합병 COPD
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'v46 검토 결정 11 예외: 산소포화도는 한쪽 폐의 값이 아니라 "on that side"를 뺌'
+- kind: word-remove
+  id: w-side
+  why: 'v46 검토 결정 11 예외: "on that side"를 뺐고 다른 문장이 태그하지 않아 은행에서 지움'
+- kind: word
+  id: w-background
+  fields:
+  - example
+  why: 'v46 검토 결정 11 예외: 예문 문장 en을 바꿨으므로 example도 새 문장으로'
+- kind: word
+  id: w-known
+  fields:
+  - example
+  why: 'v46 검토 결정 11 예외: 예문 문장 en을 바꿨으므로 example도 새 문장으로'
+- kind: sentence
+  situation: 임박 호흡정지 SBAR 이송
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'v46 검토 결정 11 예외: 20.0 "severe COPD flare"와 다른 환자(천식)를 가리켜, 같은 COPD 환자의 배경으로 바꿈'

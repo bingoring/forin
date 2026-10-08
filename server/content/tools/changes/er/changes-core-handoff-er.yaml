@@ -344,3 +344,32 @@ changes:
   fields:
   - words
   why: '''check the chart''에 은행 단어 w-chart가 있는데 태그가 없었다'
+- kind: sentence
+  situation: 환자 정보 재확인
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'v46 검토 결정 11 예외: 병상 번호를 확인 항목으로 보여 줌(NPSG.01.01.01은 이름·생년월일) — 이름과 생년월일로 바로잡음'
+- kind: word
+  id: w-match
+  fields:
+  - example
+  - exKo
+  why: 'v46 검토 결정 11 예외: example를 바뀐 문장 en에 맞춤'
+- kind: sentence
+  situation: 환자 정보 재확인
+  index: 2
+  fields:
+  - en
+  - ko
+  - chunks
+  why: 'v46 검토 결정 11 예외: 미국 병원은 name band보다 ID band·wristband를 더 흔히 씀 (keyPhrase 문장이라 상황 keyPhrases도 바꿈)'
+- kind: word
+  id: w-band
+  fields:
+  - example
+  - exKo
+  why: 'v46 검토 결정 11 예외: name band를 ID band로 바꿔 예문·exKo도 맞춤'

@@ -632,4 +632,16 @@ changes:
   index: 3
   fields:
   - ko
-  why: "ER 마무리 스윕: keep water down 은 '삼키고 유지'가 아니라 '토하지 않고 넘기다'."
+  why: 'ER 마무리 스윕: keep water down 은 ''삼키고 유지''가 아니라 ''토하지 않고 넘기다''.'
+- kind: sentence
+  situation: 남성 요폐(전립선)
+  index: 2
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'v46 검토 결정 11 예외: 요폐(배뇨 전) 장면의 방광 스캔은 남은 양(left)이 아니라 방광에 찬 양을 재므로 `left`를 `inside your bladder`로'
+- kind: word-remove
+  id: w-left
+  why: 'v46 검토 결정 11 예외: 8.3이 `left`를 버려 쓰는 곳이 없어짐(남은 양=잔뇨는 이 장면의 뜻이 아님)'

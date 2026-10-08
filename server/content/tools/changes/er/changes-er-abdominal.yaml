@@ -366,4 +366,91 @@ changes:
   index: 1
   fields:
   - ko
-  why: "ER 마무리 스윕: 'Stay with me'를 '곁에 있어 주세요'로 옮겨 역할이 뒤집혀 있었다 — '정신 놓지 마세요'."
+  why: 'ER 마무리 스윕: ''Stay with me''를 ''곁에 있어 주세요''로 옮겨 역할이 뒤집혀 있었다 — ''정신 놓지 마세요''.'
+- kind: sentence
+  situation: 장간막 허혈
+  index: 0
+  fields:
+  - ko
+  why: 'v46 검토 결정 11 예외: "그게 저희를 걱정시켜요"는 번역투 — "그래서 걱정이 돼요"'
+- kind: word
+  id: w-much
+  fields:
+  - exKo
+  why: 'v46 검토 결정 11 예외: exKo를 바뀐 문장 ko에 맞춤'
+- kind: word
+  id: w-exam
+  fields:
+  - exKo
+  why: 'v46 검토 결정 11 예외: exKo를 바뀐 문장 ko에 맞춤'
+- kind: word
+  id: w-concern
+  fields:
+  - exKo
+  why: 'v46 검토 결정 11 예외: exKo를 바뀐 문장 ko에 맞춤'
+- kind: word-remove
+  id: w-quality
+  why: 'v46 검토 결정 11 예외: in quality가 문장에서 빠져 은행에서 뺌'
+- kind: sentence
+  situation: 대동맥류 파열(찢는 통증)
+  index: 0
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'v46 검토 결정 11 예외: 환자에게 하는 문장인데 ''in quality''는 의료진 말투 — 쉬운 말로 (keyPhrase 문장이라 상황 keyPhrases도 바꿈)'
+- kind: word
+  id: w-tear
+  fields:
+  - example
+  - exKo
+  why: 'v46 검토 결정 11 예외: example를 바뀐 문장 en에 맞춤'
+- kind: word
+  id: w-rip
+  fields:
+  - example
+  - exKo
+  why: 'v46 검토 결정 11 예외: example를 바뀐 문장 en에 맞춤'
+- kind: word-remove
+  id: w-flat
+  why: 'v46 검토 결정 11 예외: flat이 문장에서 빠져 은행에서 뺌(복막염 환자는 무릎을 굽힌 자세를 편해하는 경우가 많음)'
+- kind: word-add
+  id: w-comfortable
+  why: 'v46 검토 결정 11 예외: flat을 대신해 편한 자세로 가만히 있게 한다는 새 문장의 핵심 낱말'
+- kind: word-remove
+  id: w-sbar
+  why: 'v46 검토 결정 11 예외: 환자에게 보고 틀 이름(SBAR)을 말하는 문장을 고쳐 은행에서 뺌'
+- kind: word-remove
+  id: w-report
+  why: 'v46 검토 결정 11 예외: 환자에게 보고 틀 이름(SBAR)을 말하는 문장을 고쳐 은행에서 뺌'
+- kind: sentence
+  situation: 천공성 궤양(판자복부)
+  index: 1
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'v46 검토 결정 11 예외: 복막염 환자는 무릎을 굽힌 자세를 편해하는 경우가 많아 flat이 맞지 않음(still이 핵심) — 편한 자세로 가만히 (keyPhrase 문장이라 상황 keyPhrases도 바꿈)'
+- kind: word
+  id: w-still
+  fields:
+  - example
+  - exKo
+  why: 'v46 검토 결정 11 예외: example를 바뀐 문장 en에 맞춤'
+- kind: word
+  id: w-reduce
+  fields:
+  - example
+  - exKo
+  why: 'v46 검토 결정 11 예외: example를 바뀐 문장 en에 맞춤'
+- kind: sentence
+  situation: 천공성 궤양(판자복부)
+  index: 2
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'v46 검토 결정 11 예외: 환자에게 보고 틀 이름(SBAR)을 말하는 것이 어색(why도 이 문장을 본보기로 삼음) — 외과를 부르는 일을 쉬운 말로 (keyPhrase 문장이라 상황 keyPhrases도 바꿈)'

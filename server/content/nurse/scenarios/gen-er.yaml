@@ -477,25 +477,25 @@
             - en: edge
             - en: corner
             - en: side
-    - en: If you feel drowsy, that's normal, so just rest a bit.
-      ko: 졸리시면 정상이니까 잠시 쉬세요.
+    - en: If you feel a little drowsy, that's normal, but tell me if it gets hard to stay awake.
+      ko: 조금 졸린 건 정상이지만, 깨어 있기 힘들어지면 알려 주세요.
       chunks:
-        - If you feel drowsy
+        - If you feel a little drowsy
         - ', that''s normal'
-        - ', so just rest'
-        - a bit
+        - ', but tell me'
+        - if it gets hard
+        - to stay awake
         - .
       words:
         - w-drowsy
         - w-normal
-        - w-rest
       goal: 2
       tag: 안심시키기
-      icon: coffee
-      why: 졸림이 흔한 반응이라고 먼저 말하면 환자가 약이 잘못됐다고 걱정하지 않아요. 다만 깨우기 힘들 만큼 졸리면 호흡이 느려지는 신호라, 간호사가 진정 정도를 계속 확인해요.
+      icon: bell
+      why: 졸림이 흔한 반응이라고 먼저 말해 안심시키되, 깨어 있기 힘들 만큼 졸리면 호흡이 느려지는 신호라 알려 달라고 덧붙여요. 간호사는 진정 정도를 계속 확인해요.
       decoy: right away
       distractorsKo:
-        - 졸리면 바로 알려 주세요, 위험해요
+        - 졸리면 약을 바로 중단할게요
         - 졸려도 일어나 걸어 다니세요
       blank:
         answer: normal
@@ -1810,13 +1810,13 @@
             - en: stop
             - en: skip
             - en: check
-    - en: Is this new pain sharp, or in a different spot?
-      ko: 이번 통증은 날카로운가요, 아니면 다른 부위인가요?
+    - en: Is this new pain sharp, and is it in a different spot?
+      ko: 이번 통증은 날카로운가요? 그리고 다른 부위인가요?
       chunks:
         - Is this new pain
         - sharp
-        - ', or in a different'
-        - spot
+        - ', and is it'
+        - in a different spot
         - '?'
       words:
         - w-sharp
@@ -1824,7 +1824,7 @@
       goal: 1
       tag: 새 통증 확인
       icon: magnify
-      why: 평소와 다른 양상이나 다른 부위는 새로 생긴 통증일 수 있다는 단서예요. 새롭거나 달라진 통증은 원인이 다를 수 있어 의사에게 알리는 근거가 돼요.
+      why: 양상(날카로운지)과 위치(다른 부위인지)를 따로 물어 새로 생긴 통증인지 가려요. 새롭거나 달라진 통증은 원인이 다를 수 있어 의사에게 알리는 근거가 돼요.
       decoy: and in the same
       distractorsKo:
         - 통증이 얼마나 오래 갔어요?
@@ -3721,7 +3721,7 @@
             - en: X-ray
             - en: procedure
     - en: Do you know what day it is?
-      ko: 오늘이 며칠인지 아세요?
+      ko: 오늘이 무슨 요일인지 아세요?
       chunks:
         - Do you know
         - what day
@@ -3732,7 +3732,7 @@
       goal: 1
       tag: 지남력 확인
       icon: compass
-      why: 날짜를 묻는 것은 마취에서 깨어난 환자의 지남력을 보는 질문이에요. 답이 흐리면 아직 약기운이 남아 있다는 신호라 계속 지켜봐요.
+      why: 오늘이 무슨 요일인지 묻는 것은 마취에서 깨어난 환자의 지남력을 보는 질문이에요. 답이 흐리면 아직 약기운이 남아 있다는 신호라 계속 지켜봐요.
       decoy: how old
       distractorsKo:
         - 지금 몇 시인지 아세요?
@@ -3832,7 +3832,7 @@
     tag: 대화 흐름
     icon: compass
     ko: 마취에서 깨어난 환자 4문장 순서
-    why: 끝났다는 말로 안심시킨 뒤 장소를 물어요. 답을 확인한 뒤(That's right, the hospital) 날짜를 물어요. 마지막은 대답에 이어(Good) 호흡이 좋아졌다고 알려요.
+    why: 끝났다는 말로 안심시킨 뒤 장소를 물어요. 답을 확인한 뒤(That's right, the hospital) 요일을 물어요. 마지막은 대답에 이어(Good) 호흡이 좋아졌다고 알려요.
     lines:
         - en: You did great — the procedure is all done.
           icon: trophy
@@ -3844,7 +3844,7 @@
           note: 장소
         - en: That's right, the hospital. Do you know what day it is?
           icon: compass
-          ko: 맞아요, 병원이에요. 오늘이 며칠인지 아세요?
+          ko: 맞아요, 병원이에요. 오늘이 무슨 요일인지 아세요?
           note: 날짜
         - en: Good, your breathing looks much better now.
           icon: stetho
@@ -4286,32 +4286,32 @@
             - en: slower
             - en: sooner
             - en: later
-    - en: Your pain may come back once the medicine wears off.
-      ko: 약효가 사라지면 통증이 다시 돌아올 수 있어요.
+    - en: Your pain may come back now that the opioid is blocked.
+      ko: 마약성 진통제가 차단된 상태라 통증이 다시 올 수 있어요.
       chunks:
-        - Your pain may come
-        - back once
-        - the medicine
-        - wears off
+        - Your pain
+        - may come back
+        - now that
+        - the opioid is blocked
         - .
       words:
         - w-pain
-        - w-wear_off
+        - w-opioid
       goal: 2
       tag: 통증 재발
       icon: chartup
-      why: 역전제는 진통 효과까지 되돌리므로 통증이 다시 올 수 있어요. 미리 알리면 통증이 돌아와도 약이 잘못된 게 아니라고 이해해요.
+      why: 날록손이 오피오이드를 막는 동안에는 오피오이드의 진통 효과도 함께 막혀서 통증이 다시 올 수 있어요. 미리 알리면 통증이 돌아와도 약이 잘못된 게 아니라고 이해해요.
       decoy: away when
       distractorsKo:
         - 통증은 이제 다시 안 올 거예요
         - 약이 오래 남아서 통증이 없을 거예요
       blank:
-        answer: once
+        answer: opioid
         options:
-            - en: unless
-            - en: before
-            - en: although
-            - en: once
+            - en: opioid
+            - en: antibiotic
+            - en: steroid
+            - en: vitamin
     - en: We'll stay close and watch you for a few hours.
       ko: 몇 시간 동안 가까이서 지켜볼게요.
       chunks:
@@ -96635,13 +96635,13 @@
             - en: texture
             - en: temperature
             - en: thickness
-    - en: Squeeze my fingers as hard as you can on both hands.
+    - en: Squeeze my fingers as hard as you can with both hands.
       ko: 양손으로 제 손가락을 최대한 세게 쥐어 보세요.
       chunks:
         - Squeeze my fingers
         - as hard as
         - you can
-        - on both hands
+        - with both hands
         - .
       words:
         - w-squeeze
@@ -96650,8 +96650,8 @@
       goal: 1
       tag: 근력 확인
       icon: me
-      why: as hard as you can는 최대한이라는 기준을 줘서 양손의 힘을 같은 조건에서 비교할 수 있어요. on both hands로 좌우를 모두 시키는 것도 비교를 위해서예요.
-      decoy: for a long time
+      why: as hard as you can는 최대한이라는 기준을 줘서 양손의 힘을 같은 조건에서 비교할 수 있어요. with both hands로 좌우를 모두 시키는 것도 비교를 위해서예요.
+      decoy: with both hand
       distractorsKo:
         - 손끝이 차가운지 만져 볼게요
         - 숨을 깊게 쉬어 보세요
@@ -98531,7 +98531,7 @@
   keyPhrases:
     - We're keeping the finger cool and moist to protect it.
     - The specialist may be able to reattach it.
-    - We'll control your bleeding while we prepare transfer.
+    - We'll control your bleeding while we prepare for the transfer.
   acuity: urgent
   steps: []
   briefing:
@@ -98618,13 +98618,13 @@
             - en: photograph
             - en: reattach
             - en: wash
-    - en: We'll control your bleeding while we prepare transfer.
+    - en: We'll control your bleeding while we prepare for the transfer.
       ko: 이송을 준비하는 동안 출혈을 조절할게요.
       chunks:
         - We'll control
         - your bleeding
         - while we prepare
-        - transfer
+        - for the transfer
         - .
       words:
         - w-control
@@ -98634,8 +98634,8 @@
       goal: 2
       tag: 출혈 조절
       icon: bandage
-      why: while we prepare transfer로 이송 준비와 지혈이 함께 진행된다고 알려 줘요. 이송을 기다리는 사이에도 출혈 조절이 가장 먼저예요.
-      decoy: after the call
+      why: while we prepare for the transfer로 이송 준비와 지혈이 함께 진행된다고 알려 줘요. 이송을 기다리는 사이에도 출혈 조절이 가장 먼저예요.
+      decoy: prepare transfer
       distractorsKo:
         - 손가락은 따로 보관할게요
         - 전문의에게 곧 전화할게요
@@ -99450,7 +99450,7 @@
             - en: clean
             - en: weak
     - en: We'll order scans to see why this bone is weak.
-      ko: 왜 뼈가 약한지 보기 위해 검사를 지시할게요.
+      ko: 왜 뼈가 약한지 보기 위해 검사를 할 거예요.
       chunks:
         - We'll order scans
         - to see
@@ -137241,13 +137241,13 @@
             - en: stand
             - en: wake
             - en: throw
-    - en: I know this tastes bad, but it will help clean out the poison.
-      ko: 맛이 안 좋다는 거 알아요, 하지만 독을 씻어내는 데 도움이 될 거예요.
+    - en: I know this tastes bad, but it will help soak up the poison.
+      ko: 맛이 안 좋다는 거 알아요, 하지만 독을 빨아들이는 데 도움이 될 거예요.
       chunks:
         - I know
         - this tastes bad,
         - but it will help
-        - clean out the poison
+        - soak up the poison
         - .
       words:
         - w-taste
@@ -137707,8 +137707,8 @@
       chunks:
         - Which products
         - did you mix,
-        - and did you breathe
-        - in the fumes
+        - and did you
+        - breathe in the fumes
         - '?'
       words:
         - w-product
@@ -140835,8 +140835,8 @@
         - tell me
         - your body reacted
         - to something
-        - . Can we talk
-        - about it
+        - .
+        - Can we talk about it
         - '?'
       words:
         - w-sign
@@ -141082,7 +141082,7 @@
   theme: er-poisoning
   sentences:
     - en: Pupils are pinpoint and respirations are eight — this looks like a toxidrome.
-      ko: 동공이 점같이 작고 호흡수는 8회예요 — 톡시드롬 같아요.
+      ko: 동공이 점같이 작고 호흡수는 8회예요 — 중독 증후군(톡시드롬) 같아요.
       chunks:
         - Pupils are pinpoint
         - and respirations are eight
@@ -141291,7 +141291,7 @@
           note: 보고
         - en: That looks like a toxidrome, so I'm protecting the airway.
           icon: shield
-          ko: 톡시드롬 같아서 기도를 보호하고 있어요
+          ko: 중독 증후군(톡시드롬) 같아서 기도를 보호하고 있어요
           note: 판단
         - en: With the airway protected, I need naloxone at the bedside now.
           icon: siren
@@ -141739,10 +141739,10 @@
     - en: Your muscles are stiff and your body temperature is very high.
       ko: 근육이 뻣뻣하고 체온이 아주 높아요.
       chunks:
-        - Your muscles are stiff
-        - and your body
-        - temperature is
-        - very high
+        - Your muscles
+        - are stiff
+        - and your body temperature
+        - is very high
         - .
       words:
         - w-muscle
@@ -141764,13 +141764,13 @@
             - en: soft
             - en: loose
             - en: relaxed
-    - en: We're giving cooling and medication to calm your body down.
-      ko: 몸을 진정시키도록 냉각과 약물을 드릴게요.
+    - en: We're cooling you and giving medication to calm your body down.
+      ko: 열을 식히고, 몸을 진정시키도록 약을 드릴게요.
       chunks:
-        - We're giving cooling
-        - and medication
-        - to calm your body
-        - down
+        - We're cooling you
+        - and giving medication
+        - to calm
+        - your body down
         - .
       words:
         - w-give
@@ -141788,10 +141788,10 @@
       blank:
         answer: cooling
         options:
-            - en: oxygen
             - en: cooling
-            - en: nutrition
-            - en: counseling
+            - en: weighing
+            - en: scanning
+            - en: feeding
     - en: We'll stop every medication that could be the trigger.
       ko: 유발 원인이 될 수 있는 약물은 전부 중단할게요.
       chunks:
@@ -142073,22 +142073,22 @@
             - en: expires
             - en: works
             - en: fails
-    - en: We're moving fast because your vision and kidneys are both at risk.
-      ko: 시력과 신장이 둘 다 위험해서 빠르게 움직이고 있어요.
+    - en: We're moving fast because your vision and your blood's acid level are both at risk.
+      ko: 시력과 혈액의 산성도가 둘 다 위험해서 빠르게 움직이고 있어요.
       chunks:
         - We're moving fast
         - because your vision
-        - and kidneys
+        - and your blood's acid level
         - are both at risk
         - .
       words:
         - w-fast
         - w-vision
-        - w-kidney
+        - w-acid
       goal: 1
       tag: 이유 설명
       icon: siren
-      why: because로 서두르는 이유를 바로 대요. 메탄올 중독은 시신경 손상과 산증이 중요하고, 빠른 처치가 영구적인 시력 손상을 줄이는 데 도움이 돼요.
+      why: because로 서두르는 이유를 바로 대요. 메탄올 중독은 시신경 손상과 혈액이 산성으로 기우는 대사성 산증이 중요하고, 빠른 처치가 영구적인 시력 손상을 줄이는 데 도움이 돼요.
       decoy: after lunch
       distractorsKo:
         - 투석실에 연락해 둘게요
@@ -142565,7 +142565,7 @@
             - en: unresponsive
             - en: seizing
     - en: Last pressure was eighty over forty, and I gave a bicarb bolus.
-      ko: 마지막 혈압은 80에 40이었고, 중탄산제 볼루스를 드렸습니다.
+      ko: 마지막 혈압은 80에 40이었고, 중탄산제 볼루스를 투여했습니다.
       chunks:
         - Last pressure was
         - eighty over forty,
@@ -142584,7 +142584,7 @@
       decoy: an hour ago
       distractorsKo:
         - 이송 중 수액이 1 L 들어갔습니다
-        - 마지막 맥박은 40이었고 아트로핀을 드렸습니다
+        - 마지막 맥박은 40이었고 아트로핀을 투여했습니다
       blank:
         answer: gave
         options:
@@ -142726,7 +142726,7 @@
           note: 경과
         - en: For that low pressure, eighty over forty, I gave a bicarb bolus.
           icon: chartup
-          ko: 그 낮은 혈압, 80에 40에 중탄산제 볼루스를 드렸습니다
+          ko: 그 낮은 혈압, 80에 40에 중탄산제 볼루스를 투여했습니다
           note: 수치
         - en: Can you take over airway and pressure so I can finish report?
           icon: speech
@@ -183759,13 +183759,13 @@
             - en: quietly
             - en: naturally
             - en: suddenly
-    - en: I'll double-check her numbers against the chart for her age.
+    - en: I'll double-check his numbers against the chart for his age.
       ko: 나이에 맞는 표와 수치를 다시 한번 대조해 볼게요.
       chunks:
         - I'll double-check
-        - her numbers
+        - his numbers
         - against the chart
-        - for her age
+        - for his age
         - .
       words:
         - w-doublecheck
@@ -185724,13 +185724,13 @@
             - en: private
             - en: routine
             - en: rare
-    - en: My job right now is to keep him safe, nothing more.
-      ko: 지금 제 역할은 오직 아이를 안전하게 지키는 것뿐이에요.
+    - en: My job right now is to keep him safe.
+      ko: 지금 제 역할은 아이를 안전하게 지키는 거예요.
       chunks:
-        - My job right now
-        - is to keep him
-        - safe
-        - ', nothing more'
+        - My job
+        - right now
+        - is to
+        - keep him safe
         - .
       words:
         - w-job
@@ -185739,7 +185739,7 @@
       tag: 역할 설명
       icon: shield
       why: My job…is to keep him safe로 지금 하는 일을 아이 보호에 모아요. 수사나 판단은 간호사 몫이 아니지만, 학대가 의심되면 간호사는 법에 따른 의무 신고자예요 — 신고도 아이를 지키는 일의 일부예요.
-      decoy: at the desk
+      decoy: keeps him safe
       distractorsKo:
         - 아이를 여기 눕혀 주시겠어요?
         - 필요한 건 말씀해 주세요
@@ -187542,6 +187542,7 @@
       words:
         - w-sorry
         - w-survive
+        - w-everything
       goal: 1
       tag: 사망 고지
       icon: handshake2
@@ -187607,32 +187608,30 @@
             - en: late
             - en: wrong
             - en: alone
-    - en: This is not something you caused or could have prevented.
-      ko: 이건 부모님이 일으켰거나 막을 수 있었던 일이 아니에요.
+    - en: This is not your fault.
+      ko: 부모님 잘못이 아니에요.
       chunks:
-        - This is not
-        - something you caused
-        - or could
-        - have prevented
+        - This is
+        - not
+        - your fault
         - .
       words:
-        - w-cause
-        - w-prevent
+        - w-fault
       goal: 1
       tag: 자책 덜기
       icon: handshake2
-      why: not something you caused로 부모의 죄책감을 덜어요. 다만 원인 불명의 영아 사망은 검시관 조사가 끝나야 원인이 정해지니, 원인을 단정하는 말은 하지 않고 탓하지 않는 데 집중해요.
+      why: This is not your fault로 부모의 죄책감을 덜어요. 원인 불명의 영아 사망은 검시관 조사가 끝나야 원인이 정해지니, '막을 수 없었다' 같은 원인 단정은 하지 않고 탓하지 않는 말에 집중해요.
       decoy: at night
       distractorsKo:
         - 아이가 어떤 모습으로 발견됐는지 기억하시나요?
         - 집에 다른 가족이 있나요?
       blank:
-        answer: caused
+        answer: fault
         options:
-            - en: caused
-            - en: missed
-            - en: ignored
-            - en: expected
+            - en: fault
+            - en: choice
+            - en: turn
+            - en: plan
     - en: Would you like a chaplain or someone else here with you?
       ko: 원목이나 다른 누군가가 곁에 있었으면 하시나요?
       chunks:
@@ -187687,14 +187686,14 @@
     - kind: pair
       words:
         - w-sorry
-        - w-prevent
+        - w-fault
         - w-alltime
-      why: 사망을 알리며 건네는 첫마디는 I'm so sorry, 부모의 죄책감을 덜 때는 nothing you could have prevented, 서두르지 않게 할 때는 take all the time you need예요.
+      why: 사망을 알리며 건네는 첫마디는 I'm so sorry, 부모의 죄책감을 덜 때는 this isn't your fault, 서두르지 않게 할 때는 take all the time you need예요.
       pairs:
         - - I'm so
           - sorry
-        - - nothing you could have
-          - prevented
+        - - this isn't
+          - your fault
         - - take all the time
           - you need
       decoys:
@@ -187730,9 +187729,9 @@
           icon: handshake2
           ko: 정말 유감입니다 — 최선을 다했지만 아이는 살아나지 못했어요
           note: 고지
-        - en: This is not something you caused or could have prevented.
+        - en: This is not your fault.
           icon: handshake2
-          ko: 이건 부모님이 일으켰거나 막을 수 있었던 일이 아니에요
+          ko: 부모님 잘못이 아니에요
           note: 자책 덜기
         - en: You can hold her for as long as you'd like.
           icon: me
@@ -195549,9 +195548,9 @@
       ko: 지난 임신 때 있었던 문제에 대해 말씀해 주세요.
       chunks:
         - Tell me
-        - about the issues
-        - in your
-        - last pregnancy
+        - about
+        - the issues
+        - in your last pregnancy
         - .
       words:
         - w-last
@@ -196143,31 +196142,33 @@
             - en: briefly
             - en: loudly
             - en: formally
-    - en: Based on what I'm seeing, I believe you're having a miscarriage.
-      ko: 지금 보이는 상황을 봤을 때, 유산이 진행되고 있는 것 같아요.
+    - en: I'm worried this may be a miscarriage — the doctor will talk with you about it.
+      ko: 유산일 수 있어서 걱정돼요 — 의사 선생님이 그 부분을 자세히 말씀해 주실 거예요.
       chunks:
-        - Based on what I'm seeing
-        - ', I believe'
-        - you're having
+        - I'm worried
+        - this may be
         - a miscarriage
+        - — the doctor
+        - will talk with you
+        - about it
         - .
       words:
         - w-miscarriage
       goal: 1
-      tag: 설명 근거
+      tag: 의사 연결
       icon: stetho
-      why: Based on…으로 근거를 먼저 말하고 I believe로 단정을 피해요. 유산 진단과 고지는 보통 의사가 하므로, 간호사는 의사가 설명한 내용을 이어 받거나 함께 있을 때 이렇게 말해요.
+      why: I'm worried this may be…로 확진이 아니라 걱정으로 전하고, the doctor will talk with you로 진단 설명은 의사가 한다고 이어요. 유산 진단과 고지는 보통 의사가 하므로, 간호사는 이렇게 틀을 잡아요.
       decoy: in the chart
       distractorsKo:
-        - 의사 선생님이 곧 초음파 결과를 설명해 드릴 거예요
+        - 출혈량을 패드로 확인할게요
         - 혈압을 한 번 더 재 볼게요
       blank:
-        answer: seeing
+        answer: doctor
         options:
-            - en: counting
-            - en: seeing
-            - en: hearing
-            - en: reading
+            - en: doctor
+            - en: pharmacist
+            - en: dietitian
+            - en: transporter
     - en: Can you tell me how much tissue or blood you've passed?
       ko: 조직이나 혈액을 얼마나 배출하셨는지 말씀해 주시겠어요?
       chunks:
@@ -196199,8 +196200,8 @@
       ko: 이걸 막을 방법은 없었어요.
       chunks:
         - There was
-        - nothing you could
-        - have done
+        - nothing
+        - you could have done
         - to prevent this
         - .
       words:
@@ -196261,13 +196262,13 @@
       words:
         - w-miscarriage
       why: 차트의 SAB(spontaneous abortion)와 달리 환자에게는 miscarriage라고 말해요. 같은 일을 가리켜도 듣는 사람의 상처가 달라요.
-      ko: 지금 보이는 상황을 봤을 때, 유산이 진행되고 있는 것 같아요
-      who: 환자에게 · 진단 전달
+      ko: 유산일 수 있어서 걱정돼요 — 의사 선생님이 그 부분을 자세히 말씀해 주실 거예요.
+      who: 환자에게 · 유산 가능성 전달
       icon: me
       before:
-        - 'Based on what I''m seeing, I believe you''re having '
+        - 'I''m worried this may be '
         - a spontaneous abortion
-        - .
+        - ' — the doctor will talk with you about it.'
       options:
         - a miscarriage
         - a spontaneous abortion
@@ -196708,12 +196709,12 @@
             - en: direction
             - en: pace
             - en: schedule
-    - en: Would you like to have an exam and collect evidence, or not?
-      ko: 검사를 받고 증거를 채취하고 싶으신가요, 아니면 원치 않으시나요?
+    - en: Would you like an exam and evidence collection, or not?
+      ko: 검사와 증거 채취를 원하시나요, 아니면 원치 않으시나요?
       chunks:
         - Would you like
-        - to have an exam
-        - and collect evidence
+        - an exam
+        - and evidence collection
         - ', or not'
         - '?'
       words:
@@ -197316,9 +197317,9 @@
     - en: Can you tell me about your pregnancies through the interpreter?
       ko: 통역을 통해 이전 임신에 대해 말씀해 주시겠어요?
       chunks:
-        - Can you tell me
-        - about your
-        - pregnancies
+        - Can you
+        - tell me
+        - about your pregnancies
         - through the interpreter
         - '?'
       words:
@@ -198537,7 +198538,7 @@
     - 의학용어 과용 금지
   keyPhrases:
     - Your blood pressure is high, and we're treating it now.
-    - Tell me right away if you feel a seizure coming or more headache.
+    - Tell me right away if your headache gets worse or your vision changes.
     - We're keeping the room calm and quiet to protect you.
   acuity: critical
   steps: []
@@ -198599,33 +198600,31 @@
             - en: normal
             - en: steady
             - en: high
-    - en: Tell me right away if you feel a seizure coming or more headache.
-      ko: 경련이 올 것 같거나 두통이 심해지면 바로 말씀해 주세요.
+    - en: Tell me right away if your headache gets worse or your vision changes.
+      ko: 두통이 심해지거나 시야가 달라지면 바로 말씀해 주세요.
       chunks:
-        - Tell me right away
-        - if you feel
-        - a seizure coming
-        - or more headache
+        - Tell me
+        - right away
+        - if your headache gets worse
+        - or your vision changes
         - .
       words:
-        - w-feel
-        - w-seizure
         - w-headache
       goal: 2
       tag: 즉시 알림
       icon: bell
-      why: right away와 if절로 어떤 증상이 생기면 곧바로 부르라는 기준을 줘요. 심한 두통은 경련이 오기 전 신호일 수 있어서 놓치지 않게 해요.
+      why: right away와 if절로 어떤 증상이 생기면 곧바로 부르라는 기준을 줘요. 두통이 심해지거나 시야가 달라지는 것은 자간전증이 나빠지는 신호일 수 있어 놓치지 않게 해요.
       decoy: or any itching
       distractorsKo:
         - 산소 수치를 확인할게요
         - 혈압을 한 번 더 재 볼게요
       blank:
-        answer: headache
+        answer: worse
         options:
-            - en: headache
-            - en: dizziness
-            - en: nausea
-            - en: swelling
+            - en: worse
+            - en: better
+            - en: milder
+            - en: shorter
     - en: We're keeping the room calm and quiet to protect you.
       ko: 당신을 보호하기 위해 방을 차분하고 조용하게 유지할게요.
       chunks:
@@ -199153,9 +199152,9 @@
     - en: Stay with me — keep your eyes on me.
       ko: 정신 놓지 마세요 — 저를 계속 봐 주세요.
       chunks:
-        - Stay with
-        - me
-        - — keep your eyes
+        - Stay with me
+        - — keep
+        - your eyes
         - on me
         - .
       words:
@@ -199431,10 +199430,9 @@
     - en: Stay with me — we're on top of this.
       ko: 정신 놓지 마세요 — 저희가 잘 대응하고 있어요.
       chunks:
-        - Stay with
-        - me
-        - — we're on top
-        - of this
+        - Stay with me
+        - — we're
+        - on top of this
         - .
       words:
         - w-stay
@@ -199799,18 +199797,18 @@
         - 의사 선생님이 같이 설명드릴 거예요
         - 남편분께 연락해 드릴까요?
       blank:
-        answer: has died
+        answer: sorry
         options:
-            - en: has passed
-            - en: is gone
-            - en: is lost
-            - en: has died
+            - en: sorry
+            - en: sure
+            - en: tired
+            - en: busy
     - en: There was nothing you could have done to cause this.
-      ko: 이건 당신이 어떻게 해도 막을 수 없었던 일이에요.
+      ko: 당신이 한 어떤 일도 이 일의 원인이 아니에요.
       chunks:
         - There was
-        - nothing you could
-        - have done
+        - nothing
+        - you could have done
         - to cause this
         - .
       words:
@@ -199819,7 +199817,7 @@
       tag: 죄책감 덜기
       icon: shield
       why: could have done으로 지난 일을 돌아보며 자책하는 마음에 답해요. 부모가 자신을 탓하는 말을 하기 전에 먼저 꺼내 주면 자책이 깊어지는 것을 줄일 수 있어요.
-      decoy: to explain this
+      decoy: caused this
       distractorsKo:
         - 조용한 방으로 옮겨 드릴게요
         - 가족분께 연락해 드릴까요?
