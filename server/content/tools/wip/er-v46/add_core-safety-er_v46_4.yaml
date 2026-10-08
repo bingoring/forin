@@ -1,0 +1,76 @@
+- title: 자살 위험 환경 안전
+  s:
+  - {t: "환경 안전", i: shield, w: "-ing로 지금 하고 있다고 알리면 환자가 몰래 조치당하는 기분이 들지 않아요. for you를 붙이면 조치가 환자를 위한 것이라는 뜻이 전해져요.", d: "for visitors", k: ["방을 비워 드릴게요", "이 방은 안전하지 않아요"], a: "safe", ai: shield, o: [["noisy", "speaker"], ["messy", "pushpin"], ["crowded", "home"]]}
+  - {t: "상시 관찰", i: me, w: "at all times는 한순간도 빠짐없이라는 표현이에요. 자살 위험이 있는 환자는 곁을 지키며 상시 관찰하고, 그 사실을 환자에게 분명히 알려요.", d: "from time to time", k: ["가끔 누군가 들를 거예요", "혼자 계셔도 돼요"], a: "stay", ai: me, o: [["argue", "faceAngry"], ["shout", "speaker"], ["whisper", "mic"]]}
+  - {t: "낙인 줄이기", i: handshake2, w: "not in trouble로 벌을 받는 상황이 아니라고 먼저 말해 줘요. 환자가 숨기지 않고 말하게 하려면 비난으로 들리지 않아야 해요.", d: "you're guilty", k: ["규칙을 어겨서 오신 거예요", "저희는 도와드릴 수 없어요"], a: "help", ai: handshake2, o: [["punish", "cross"], ["blame", "faceAngry"], ["judge", "scalpel"]]}
+  - {t: "위험물 제거", i: shield, w: "I'm going to …로 하려는 일을 미리 알려요. 끈·날카로운 물건처럼 자해에 쓸 수 있는 것을 치우는 것이 환경 안전의 기본이고, 이유를 함께 말하면 소지품을 빼앗기는 느낌이 줄어요.", d: "add anything", k: ["방의 위험한 물건은 그대로 둘게요", "물건은 모두 가져가셔도 돼요"], a: "remove", ai: scalpel, o: [["add", "pencil"], ["paint", "bulb"], ["wash", "bandage"]]}
+  - {t: "가까이", i: stetho, w: "close by는 가까이에 있다는 부사구예요. 자주 확인한다는 말과 항상 곁에 사람이 있다는 말을 함께 하면 환자가 혼자 남겨진 느낌이 덜해요.", d: "far away", k: ["가끔만 확인할게요", "곁에는 아무도 없을 거예요"], a: "always", ai: lock, o: [["never", "cross"], ["rarely", "calendar"], ["sometimes", "chartup"]]}
+  - {t: "안심·요청", i: handshake2, w: "just want는 다른 의도가 없다는 뜻을 담아요. 도움을 청해도 된다는 말로 마무리하면 환자가 말문을 열 여지가 생겨요.", d: "to watch you", k: ["도움을 청하면 안 돼요", "저희는 안전을 걱정하지 않아요"], a: "always", ai: lock, o: [["never", "cross"], ["rarely", "calendar"], ["barely", "chevronDown"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "자살 위험 환자 안전 안내 순서"
+    why: "먼저 벌이 아니라고 안심시키고(So가 이어받아) 위험물을 치우는 이유를 말하고, 곁을 지킨다고 약속하고, 마지막으로 언제든 도움을 청하라고 해요."
+    lines:
+    - {en: "You're not in trouble — we just want to help.", icon: handshake2, ko: "곤란한 상황이 아니에요, 돕고 싶을 뿐이에요", note: "안심"}
+    - {en: "So I'm going to remove anything in the room that could hurt you.", icon: shield, ko: "그래서 다칠 수 있는 물건은 치울게요", note: "조치"}
+    - {en: "And someone will stay with you at all times.", icon: me, ko: "그리고 항상 누군가 곁에 있을 거예요", note: "약속"}
+    - {en: "You can always ask me for help.", icon: speech, ko: "언제든 도움을 요청하세요", note: "마무리"}
+  ctx: {word: "remove", ko: "치우다"}
+- title: 오환자 시술 방지
+  s:
+  - {t: "타임아웃", i: siren, w: "Time-out은 시술 직전에 팀 전체가 멈춰 환자·시술·부위를 소리 내어 확인하는 절차예요. 이름과 생년월일을 큰 소리로 말해 모두가 같은 환자를 보고 있는지 맞춰요.", d: "Coffee break", k: ["존 레예스 씨는 퇴원했어요", "시술은 이미 끝났어요"], a: "John Reyes", ai: me, o: [["Maria Lopez", "baby"], ["Peter Chen", "star"], ["Anna Kim", "star"]]}
+  - {t: "시술 확인", i: scalpel, w: "시술 이름에 right를 붙여 부위의 좌우를 소리 내어 확인해요. everyone agree?로 모두 같은 생각인지 묻는 것이 팀 확인의 핵심이에요.", d: "a left chest tube", k: ["왼쪽 흉관을 넣을 거예요", "시술은 취소됐어요"], a: "right", ai: scalpel, o: [["left", "chevronLeft"], ["small", "pushpin"], ["new", "star"]]}
+  - {t: "사전 점검", i: pencil, w: "is signed·is marked처럼 과거분사로 이미 끝난 상태를 짧게 보고해요. 동의서와 시술 부위 표시는 오환자·오부위 시술을 막는 사전 확인 항목이에요.", d: "is missing", k: ["동의서가 아직 없어요", "부위는 표시되지 않았어요"], a: "marked", ai: pencil, o: [["erased", "cross"], ["hidden", "lock"], ["wrapped", "bandage"]]}
+  - {t: "시작 전 확인", i: check, w: "Before we start로 시술 전이라는 시점을 분명히 해요. let's …together라고 하면 한 사람의 착각을 다른 사람이 걸러 줄 수 있어요.", d: "after we finish", k: ["시술이 끝난 뒤에 이름을 확인해요", "이름은 확인하지 않아도 돼요"], a: "together", ai: handshake2, o: [["alone", "me"], ["later", "calendar"], ["quickly", "plane"]]}
+  - {t: "중단 기준", i: siren, w: "If anything doesn't match는 하나라도 어긋나면이라는 뜻이에요. right there는 지금 그 자리에서라는 강조예요. 불일치에서 멈추는 것이 time-out의 핵심 규칙이에요.", d: "we go ahead", k: ["일치하지 않아도 계속해요", "그 자리에서 시작해요"], a: "stop", ai: cross, o: [["start", "chevronRight"], ["laugh", "star"], ["sing", "mic"]]}
+  - {t: "팀 합의", i: handshake2, w: "must는 선택이 아니라 필수라는 뜻이에요. 의문이 있는 사람은 누구든 이 단계에서 말할 수 있어야 해서 팀 전원의 동의를 요구해요.", d: "can disagree", k: ["한 명만 동의하면 시작해요", "동의는 나중에 받아도 돼요"], a: "must", ai: check, o: [["may", "bulb"], ["might", "compass"], ["can", "gear"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "시술 전 타임아웃 4단계"
+    why: "환자와 시술을 먼저 말하고, 동의서와 표시를 보고한 뒤, 어긋나면 멈춘다는 규칙을 말하고, 마지막으로 모두의 동의를 받아 시작해요."
+    lines:
+    - {en: "Time-out: this is John Reyes, we're doing a right chest tube.", icon: siren, ko: "타임아웃, 존 레예스 씨 오른쪽 흉관이에요", note: "환자"}
+    - {en: "Consent is signed and the site is marked.", icon: pencil, ko: "동의서는 서명됐고 부위는 표시됐어요", note: "점검"}
+    - {en: "If anything we just said doesn't match, we stop right there.", icon: cross, ko: "방금 말한 것 중 어긋나면 그 자리에서 멈춰요", note: "규칙"}
+    - {en: "Everyone agree? Then we begin.", icon: handshake2, ko: "모두 동의하세요? 그럼 시작해요", note: "합의"}
+  ctx: {word: "time-out", ko: "타임아웃"}
+- title: 급변 환자 조기 경고
+  s:
+  - {t: "변화 보고", i: monitor, w: "up과 dropping으로 수치가 움직이는 방향을 먼저 말해요. 심박은 오르고 혈압은 떨어지는 조합은 상태가 나빠지는 신호로 흔히 쓰는 경고예요.", d: "is stable", k: ["심박도 혈압도 안정적이에요", "열이 오르고 있어요"], a: "dropping", ai: chevronDown, o: [["rising", "chevronUp"], ["steady", "monitor"], ["flat", "bandage"]]}
+  - {t: "이상 징후", i: monitor, w: "수치 하나(thirty)와 의식 변화(confused)를 and로 이어 말해요. 호흡이 빠르고 의식이 흐려지는 것은 급변을 알리는 대표적인 징후예요.", d: "she's calm", k: ["호흡수는 열두 번이에요", "환자가 잠들었어요"], a: "confused", ai: faceWorried, o: [["calm", "star"], ["sleepy", "coffee"], ["happy", "trophy"]]}
+  - {t: "신속 대응", i: siren, w: "I need eyes on her는 지금 와서 직접 봐 달라는 간결한 요청이에요. rapid response는 환자가 빠르게 나빠질 때 부르는 팀이에요.", d: "I need coffee", k: ["잠시 후에 봐 주세요", "천천히 오셔도 돼요"], a: "now", ai: siren, o: [["later", "calendar"], ["tomorrow", "plane"], ["someday", "star"]]}
+  - {t: "추이 설명", i: chartup, w: "getting worse는 변화의 방향을, fast는 속도를 말해요. so로 그래서 하는 행동을 이어 말하면 팀이 판단할 근거가 생겨요.", d: "getting better", k: ["활력징후는 좋아지고 있어요", "지켜보지 않아도 돼요"], a: "worse", ai: chevronDown, o: [["better", "chevronUp"], ["calmer", "star"], ["stronger", "trophy"]]}
+  - {t: "호출", i: bell, w: "before she gets worse로 호출 이유를 악화 이전으로 정해요. 걱정되면 기준을 다 채우기 전에 부르는 것이 신속대응 호출의 취지예요.", d: "after she recovers", k: ["회복되면 팀을 부를게요", "의사를 한 번 기다릴게요"], a: "before", ai: calendar, o: [["after", "chevronRight"], ["unless", "cross"], ["although", "speech"]]}
+  - {t: "보고 정리", i: board, w: "콜론 뒤에 보고 항목을 세 가지로 나열해 순서를 잡아요. vitals·symptoms·what changed는 도착한 팀이 가장 먼저 알고 싶은 내용이에요.", d: "a long story", k: ["자세한 이야기는 나중에 할게요", "활력징후만 말씀드릴게요"], a: "clear", ai: check, o: [["vague", "bulb"], ["secret", "lock"], ["funny", "star"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "급변 환자 신속대응 순서"
+    why: "수치의 변화를 먼저 알리고, Also로 이어 증상을 말하고, 신속대응을 요청한 뒤, 팀이 도착하면 정리해서 보고해요."
+    lines:
+    - {en: "Her heart rate is up and pressure is dropping.", icon: monitor, ko: "심박수는 오르고 혈압은 떨어져요", note: "수치"}
+    - {en: "Also, respiratory rate is thirty and she's confused.", icon: faceWorried, ko: "또 호흡수는 30이고 의식이 혼란스러워요", note: "증상"}
+    - {en: "I need eyes on her now — this is a rapid response.", icon: siren, ko: "지금 봐주세요, 신속대응이에요", note: "호출"}
+    - {en: "When the team arrives, I'll give a clear report.", icon: board, ko: "팀이 오면 명확하게 보고할게요", note: "보고"}
+  sw: {ko: "활력징후가 나빠지고 있어요 — 심박수 130, 혈압 86/50"}
+- title: 다환자 혼동 위기
+  s:
+  - {t: "유사 이름", i: bandage, w: "similar names는 이름이 비슷하다는 뜻이에요. 이름만으로 구분하기 어려운 상황이라 밴드를 다시 확인하자고 제안해요.", d: "let's skip", k: ["두 환자 이름이 정확히 같아요", "밴드는 확인하지 않아도 돼요"], a: "similar", ai: bandage, o: [["strange", "faceWorried"], ["famous", "star"], ["funny", "faceAngry"]]}
+  - {t: "번호 확인", i: board, w: "not just the name은 이름 말고도 하나 더 확인하라는 말이에요. 의무기록번호(MRN)는 환자마다 고유해서 이름이 비슷해도 구분돼요.", d: "the room number", k: ["이름만 확인해 주세요", "병실 번호를 말씀해 주세요"], a: "Confirm", ai: check, o: [["Forget", "bulb"], ["Skip", "cross"], ["Hide", "lock"]]}
+  - {t: "속도 늦추기", i: check, w: "slow down은 속도를 줄이자는 말이에요. for ten seconds처럼 짧은 시간을 정해 말하면 바쁜 상황에서도 멈추는 부담이 작아요.", d: "hurry up", k: ["10분 동안 쉬어요", "더 빨리 처리해요"], a: "slow down", ai: chevronDown, o: [["speed up", "chevronUp"], ["rush ahead", "plane"], ["jump in", "trophy"]]}
+  - {t: "혼잡 대응", i: siren, w: "crowded는 사람이 붐빈다는 뜻이에요. so로 혼잡의 결과로 다시 확인하자고 이어요. 붐빌 때는 사람이 헷갈리기 쉬워서 행동 전에 누가 누구인지 다시 맞춰요.", d: "after we eat", k: ["붐비지 않으니 서두르죠", "확인은 행동한 뒤에 해요"], a: "crowded", ai: siren, o: [["empty", "home"], ["quiet", "speaker"], ["early", "calendar"]]}
+  - {t: "번호 원칙", i: lock, w: "Always와 never를 나란히 써서 해야 할 것과 하면 안 되는 것을 한 문장에 담아요. rely on은 '…에 의지하다'예요.", d: "often trust", k: ["이름만 믿으면 충분해요", "기록번호는 말하지 마세요"], a: "never", ai: cross, o: [["often", "calendar"], ["usually", "chartup"], ["sometimes", "pushpin"]]}
+  - {t: "매번 확인", i: bandage, w: "every single time은 every time보다 강한 강조예요. 비슷한 이름이 있을 때 한 번의 생략이 오인으로 이어질 수 있어서 예외를 두지 않아요.", d: "just once", k: ["하루에 한 번만 확인해요", "밴드는 한 번 보면 충분해요"], a: "every single time", ai: bandage, o: [["once in a while", "calendar"], ["now and then", "chartup"], ["once a day", "monitor"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "비슷한 이름 환자 확인 순서"
+    why: "혼잡과 비슷한 이름이라는 문제를 먼저 말하고, So로 속도를 늦추자고 제안한 뒤, 기록번호 확인을 요청하고, Then으로 밴드 확인까지 이어요."
+    lines:
+    - {en: "It's crowded right now, and two patients have similar names.", icon: siren, ko: "지금 혼잡하고 두 환자 이름이 비슷해요", note: "문제"}
+    - {en: "So let's slow down for ten seconds.", icon: check, ko: "그러니 10초만 천천히 해요", note: "제안"}
+    - {en: "Confirm the medical record number, not just the name.", icon: board, ko: "이름만이 아니라 기록번호를 확인해요", note: "번호"}
+    - {en: "Then check the wristband before we act.", icon: bandage, ko: "그다음 행동 전에 밴드를 확인해요", note: "밴드"}
+  ctx: {word: "MRN", ko: "의무기록번호"}
