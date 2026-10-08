@@ -115079,26 +115079,86 @@
       chunks: ["I'm sorry", "for the long wait", "— let me explain", "what's happening", "."]
       words: [w-sorry, w-long, w-wait, w-explain, w-happen]
       goal: 1
+      tag: "사과·설명"
+      icon: "faceWorried"
+      why: "사과를 먼저 하고 let me explain으로 설명을 약속하면 변명이 아니라 정보 공유로 들려요. 환자는 이유를 모를 때 더 화나기 쉬워요."
+      decoy: "for the noise"
+      distractorsKo: ["물이나 담요가 필요하세요?", "의사 선생님께 바로 전달할게요."]
+      blank:
+        answer: "wait"
+        options:
+          - {en: "visit"}
+          - {en: "wait"}
+          - {en: "shift"}
+          - {en: "drive"}
     - en: "Patients with life-threatening issues are seen first."
       ko: "생명이 위독한 환자분들이 먼저 진료를 받으세요."
       chunks: ["Patients with", "life-threatening issues", "are seen", "first", "."]
       words: [w-first]
       goal: 1
+      tag: "우선순위"
+      icon: "siren"
+      why: "대기 순서가 도착 순이 아니라 위급한 정도 순이라는 사실을 그대로 알려요. 누구를 탓하지 않고 체계를 설명하는 문장이에요."
+      decoy: "in arrival order"
+      distractorsKo: ["보험 정보를 확인할게요.", "화장실은 복도 끝에 있어요."]
+      blank:
+        answer: "life-threatening"
+        options:
+          - {en: "chronic"}
+          - {en: "life-threatening"}
+          - {en: "minor"}
+          - {en: "routine"}
     - en: "I'll check on your place in line and update you shortly."
       ko: "순서를 확인하고 곧 알려드릴게요."
       chunks: ["I'll check", "on your place", "in line", "and update you", "shortly", "."]
       words: [w-check, w-place, w-line, w-update, w-shortly]
       goal: 2
+      tag: "순서 확인"
+      icon: "magnify"
+      why: "check on으로 직접 알아보겠다는 약속과 update you로 내가 다시 알려 주겠다는 약속을 한 문장에 담아요. 환자가 다시 물으러 오지 않아도 돼요."
+      decoy: "and move you"
+      distractorsKo: ["접수 번호를 다시 알려 주세요.", "차트에 메모를 남길게요."]
+      blank:
+        answer: "update"
+        options:
+          - {en: "triage"}
+          - {en: "register"}
+          - {en: "move"}
+          - {en: "update"}
     - en: "I know three hours can feel like forever."
       ko: "세 시간이 정말 길게 느껴지실 거예요."
       chunks: ["I know", "three hours", "can feel", "like forever", "."]
       words: [w-feel]
       goal: 2
+      tag: "공감"
+      icon: "faceWorried"
+      why: "I know로 환자의 느낌을 먼저 인정해요. forever라는 환자 쪽 표현을 반박하지 않고 그대로 받아 주면 방어하는 말로 들리지 않아요."
+      decoy: "like a minute"
+      distractorsKo: ["진료비는 나중에 안내해 드릴게요.", "제가 직접 모시고 갈게요."]
+      blank:
+        answer: "forever"
+        options:
+          - {en: "a moment"}
+          - {en: "nothing"}
+          - {en: "a break"}
+          - {en: "forever"}
     - en: "I'll come find you as soon as I have news."
       ko: "소식이 있으면 바로 찾아뵐게요."
       chunks: ["I'll come", "find you", "as soon as", "I have news", "."]
       words: [w-find, w-news]
       goal: 2
+      tag: "약속"
+      icon: "bell"
+      why: "come find you는 환자가 와서 묻게 하지 않고 내가 찾아가겠다는 약속이라 기다리는 부담을 덜어요. as soon as로 시점을 소식이 생기는 때에 맞추면 지키지 못할 시각을 말하지 않아도 돼요."
+      decoy: "when you leave"
+      distractorsKo: ["담요 하나 가져다 드릴게요.", "대기실 TV를 켜 드릴게요."]
+      blank:
+        answer: "as soon as"
+        options:
+          - {en: "as soon as"}
+          - {en: "unless"}
+          - {en: "although"}
+          - {en: "even if"}
   nuance:
   - kind: slider
     words:
@@ -115133,6 +115193,29 @@
       triaged by acuity: 의료진끼리의 말. 환자는 acuity가 무슨 뜻인지 모른다.
       more important than you: 환자 자신을 덜 중요한 사람으로 만드는 말로 들려 불만을 키운다.
     why: 같은 트리아지 설명도 환자에게는 '위급한 분이 먼저 진료받는다'처럼 기준만 쉽게 말해요.
+    ko: 생명이 위독한 환자분들이 먼저 진료를 받으세요.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 대기 지연 불만 응대 4문장 순서
+    why: 사과가 먼저, 대기가 긴 이유가 그 뒤를 받고('That's because'), 이유를 알린 상태에서 순서를 확인하고('With that in mind'), 확인한 결과를 직접 알려 주는('Whatever I find out') 흐름이에요.
+    lines:
+    - en: I'm sorry the wait has been so long.
+      icon: faceWorried
+      ko: 오래 기다리게 해서 죄송해요
+      note: 사과
+    - en: That's because the sickest patients are seen first.
+      icon: siren
+      ko: 가장 위급한 분들이 먼저 진료를 받기 때문이에요
+      note: 이유
+    - en: With that in mind, I'll check on your place in line.
+      icon: magnify
+      ko: 그걸 감안해서 대기 순서를 확인할게요
+      note: 확인
+    - en: Whatever I find out, I'll come tell you myself.
+      icon: bell
+      ko: 무엇을 알게 되든 제가 직접 알려 드릴게요
+      note: 보고
 
 - theme: er-deescalation
   title: 목소리 높아지는 초기 신호
@@ -115157,26 +115240,86 @@
       chunks: ["You're right", "to be frustrated", "— I'm listening", "."]
       words: [w-frustrated, w-listen]
       goal: 2
+      tag: "공감"
+      icon: "faceWorried"
+      why: "상대의 감정이 맞다고 먼저 인정하고 I'm listening으로 듣겠다고 하면 반박이 아니라 경청으로 들려요. 진정하라는 말이 오히려 화를 키우는 것과 반대 방향이에요."
+      decoy: "to be tired"
+      distractorsKo: ["잠깐 앉아서 기다려 주세요.", "혈압부터 재겠습니다."]
+      blank:
+        answer: "listening"
+        options:
+          - {en: "timing"}
+          - {en: "listening"}
+          - {en: "charting"}
+          - {en: "rushing"}
     - en: "Let's talk this through, I've got time for you."
       ko: "차근차근 이야기해요, 시간은 충분해요."
       chunks: ["Let's talk", "this through", ", I've got", "time for you", "."]
       words: [w-talk, w-got]
       goal: 2
+      tag: "시간 약속"
+      icon: "calendar"
+      why: "Let's로 같이 하는 대화임을 알리고 I've got time으로 서두르지 않겠다고 해요. 서두르는 기색이 보이면 환자는 무시당한다고 느끼기 쉬워요."
+      decoy: "this away"
+      distractorsKo: ["잠깐 혈압을 재 볼게요.", "조용한 방으로 안내할게요."]
+      blank:
+        answer: "talk"
+        options:
+          - {en: "push"}
+          - {en: "hurry"}
+          - {en: "talk"}
+          - {en: "rush"}
     - en: "Tell me what would help right now."
       ko: "지금 뭐가 도움이 될지 말씀해 주세요."
       chunks: ["Tell me", "what would help", "right now", "."]
       words: [w-tell, w-help, w-right]
       goal: 2
+      tag: "요구 묻기"
+      icon: "mic"
+      why: "Tell me로 열린 질문을 하면 환자가 통제감을 되찾아요. right now가 지금 당장 할 수 있는 일에 초점을 맞춰 줘요."
+      decoy: "where it hurts"
+      distractorsKo: ["이쪽 의자에 앉으세요.", "제가 다른 간호사를 불러올게요."]
+      blank:
+        answer: "help"
+        options:
+          - {en: "upset"}
+          - {en: "scare"}
+          - {en: "help"}
+          - {en: "bother"}
     - en: "I'm going to sit down so we're at the same level."
       ko: "눈높이를 맞추려고 제가 앉을게요."
       chunks: ["I'm going", "to sit down", "so we're at", "the same level", "."]
       words: [w-sit, w-down, w-same, w-level]
       goal: 1
+      tag: "눈높이"
+      icon: "me"
+      why: "서서 내려다보면 위압적으로 느껴질 수 있어서 앉아서 눈높이를 맞춰요. 몸으로 보여 주는 비언어적 진정 신호예요."
+      decoy: "the lower level"
+      distractorsKo: ["제가 의사를 불러올게요.", "혈압 먼저 재 볼게요."]
+      blank:
+        answer: "same"
+        options:
+          - {en: "same"}
+          - {en: "higher"}
+          - {en: "lower"}
+          - {en: "different"}
     - en: "Let's slow down and breathe together for a second."
       ko: "잠깐 천천히 함께 숨을 쉬어봐요."
       chunks: ["Let's slow down", "and breathe", "together for", "a second", "."]
       words: [w-slow, w-together, w-second, w-breathe]
       goal: 1
+      tag: "호흡 제안"
+      icon: "me"
+      why: "Let's … together로 환자에게 시키지 않고 함께 하자고 제안해요. 천천히 숨 쉬는 것은 긴장을 가라앉히는 데 도움이 돼요."
+      decoy: "apart for"
+      distractorsKo: ["이쪽에서 잠깐 기다려 주세요.", "물을 좀 가져다 드릴게요."]
+      blank:
+        answer: "together"
+        options:
+          - {en: "apart"}
+          - {en: "together"}
+          - {en: "alone"}
+          - {en: "separately"}
   nuance:
   - kind: slider
     words:
@@ -115210,6 +115353,29 @@
       I hear you: 감정을 먼저 인정하는 말. 격화를 낮추는 첫걸음이다.
       Relax: 같은 명령이라 같은 역효과가 난다.
     why: '"Don''t tell me to calm down!"이 바로 그 반응이에요. 진정은 명령이 아니라 경청과 느린 말투로 이끌어요.'
+    ko: 무슨 말씀인지 알겠어요, 듣고 있어요.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 목소리가 높아지는 환자 응대 4문장 순서
+    why: 감정을 인정하는 말이 먼저, 그 말이 진심임을 앉아서 보여 주고('To show I mean it'), 앉은 자리에서('From down here') 필요한 것을 묻고, 들은 내용을 받아('Whatever you tell me') 시간을 약속해요.
+    lines:
+    - en: You're right to be frustrated — I'm listening.
+      icon: faceWorried
+      ko: 답답하실 만해요, 듣고 있어요
+      note: 공감
+    - en: To show I mean it, I'm sitting down so we're at the same level.
+      icon: me
+      ko: 진심이라는 걸 보이려고 눈높이를 맞춰 앉을게요
+      note: 자세
+    - en: From down here, tell me what would help right now.
+      icon: mic
+      ko: 앉은 자리에서 지금 뭐가 도움이 될지 말씀해 주세요
+      note: 질문
+    - en: Whatever you tell me, I've got time to talk it through.
+      icon: calendar
+      ko: 무슨 말씀이든 차근차근 이야기할 시간이 있어요
+      note: 약속
 
 - theme: er-deescalation
   title: 공간·개인영역 확보
@@ -115234,26 +115400,86 @@
       chunks: ["I'll give you", "some space", "— is this", "better", "?"]
       words: [w-give, w-space, w-better]
       goal: 2
+      tag: "공간 주기"
+      icon: "me"
+      why: "물러서서 공간을 주고 is this better?로 바로 확인해요. 환자가 편한 거리를 스스로 정하게 하는 질문이에요."
+      decoy: "some time"
+      distractorsKo: ["이쪽으로 앉으세요.", "혈압을 재 볼게요."]
+      blank:
+        answer: "space"
+        options:
+          - {en: "space"}
+          - {en: "time"}
+          - {en: "water"}
+          - {en: "privacy"}
     - en: "You can move wherever feels comfortable to you."
       ko: "편하게 느껴지는 곳으로 움직이셔도 돼요."
       chunks: ["You can move", "wherever feels", "comfortable to you", "."]
       words: [w-move, w-comfortable]
       goal: 2
+      tag: "선택권"
+      icon: "me"
+      why: "You can으로 환자에게 선택권을 줘요. 움직여도 된다고 허락하면 갇혔다는 느낌이 줄어요."
+      decoy: "crowded to you"
+      distractorsKo: ["침대에 누워 주세요.", "물 한 잔 드릴까요?"]
+      blank:
+        answer: "comfortable"
+        options:
+          - {en: "crowded"}
+          - {en: "cramped"}
+          - {en: "tight"}
+          - {en: "comfortable"}
     - en: "I'm not here to crowd you, just to help."
       ko: "압박하려는 게 아니라 그저 도우려는 거예요."
       chunks: ["I'm not here", "to crowd you", ", just to", "help", "."]
       words: [w-here, w-crowd, w-help]
       goal: 2
+      tag: "의도 설명"
+      icon: "handshake2"
+      why: "not … just로 압박이 아니라 도움이 목적임을 분명히 해요. 위협으로 느끼는 환자에게는 의도를 말로 알려 주는 것이 안전감을 줘요."
+      decoy: ", just to hurry"
+      distractorsKo: ["불을 조금 줄여 드릴까요?", "제가 보호자분께 알릴게요."]
+      blank:
+        answer: "help"
+        options:
+          - {en: "help"}
+          - {en: "watch"}
+          - {en: "stare"}
+          - {en: "hurry"}
     - en: "I'm going to stand by the door, not block it."
       ko: "문을 막지 않고 문 옆에 서 있을게요."
       chunks: ["I'm going", "to stand by", "the door", ", not block it", "."]
       words: [w-stand, w-door, w-block]
       goal: 1
+      tag: "출구 확보"
+      icon: "shield"
+      why: "문 옆에 서서 출구를 비워 두면 환자가 갇혔다고 느끼지 않아요. 직원이 문을 막지 않아야 필요할 때 누구든 나갈 수 있어요."
+      decoy: "by the window"
+      distractorsKo: ["필요하시면 커튼을 칠게요.", "보호자분께 연락할게요."]
+      blank:
+        answer: "block"
+        options:
+          - {en: "block"}
+          - {en: "open"}
+          - {en: "lock"}
+          - {en: "close"}
     - en: "Let me know if you want more room to breathe."
       ko: "숨 쉴 공간이 더 필요하면 말씀해 주세요."
       chunks: ["Let me know", "if you want", "more room", "to breathe", "."]
       words: [w-want, w-more, w-breathe]
       goal: 1
+      tag: "요청 안내"
+      icon: "speech"
+      why: "Let me know로 환자가 원할 때 말하게 해요. 더 물러서겠다는 약속을 먼저 해 두면 환자가 거리를 정할 수 있어요."
+      decoy: "more time"
+      distractorsKo: ["담요를 가져다 드릴까요?", "불을 좀 줄여 드릴까요?"]
+      blank:
+        answer: "room"
+        options:
+          - {en: "time"}
+          - {en: "room"}
+          - {en: "blankets"}
+          - {en: "water"}
   nuance:
   - kind: pair
     words:
@@ -115283,7 +115509,7 @@
       ok: true
     - who: 보안 요원에게
       icon: shield
-      en: Let's give him some room and stay near the door.
+      en: Let's give him some space and stay near the door.
       ok: true
     - who: 차트 기록
       icon: board
@@ -115291,6 +115517,30 @@
       ok: false
       fix: Pt requested more personal space; staff stepped back, exit kept clear.
     why: 환자에게는 말을 걸듯이, 차트에는 대화체가 아니라 무엇을 관찰하고 어떻게 조치했는지를 객관적으로 적어요.
+    word: space
+    ko: 공간
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 개인 공간 확보 4문장 순서
+    why: 물러서서 공간을 주고, 괜찮은지 묻고('Does that feel better'), 어느 쪽이든('Whichever it is') 움직일 자유를 알리고, 환자가 어디로 움직여도('Even if you move') 문을 막지 않겠다고 약속해요.
+    lines:
+    - en: I'm going to step back and give you some room.
+      icon: me
+      ko: 뒤로 물러서서 공간을 드릴게요
+      note: 공간
+    - en: Does that feel better, or do you want more?
+      icon: faceWorried
+      ko: 이러면 좀 나으세요, 더 필요하세요?
+      note: 확인
+    - en: Whichever it is, you're free to move wherever feels comfortable.
+      icon: me
+      ko: 어느 쪽이든 편한 곳으로 움직이셔도 돼요
+      note: 선택
+    - en: Even if you move toward the door, I won't get in your way.
+      icon: shield
+      ko: 문 쪽으로 가셔도 제가 막지 않을게요
+      note: 출구
 
 - theme: er-deescalation
   title: 요구 반복 환자 경청
@@ -115315,26 +115565,86 @@
       chunks: ["Let me make sure", "I understand", "what you really", "need", "."]
       words: [w-make, w-sure, w-understand, w-really, w-need]
       goal: 1
+      tag: "이해 확인"
+      icon: "magnify"
+      why: "make sure로 내가 이해한 것이 맞는지 확인하겠다고 해요. 짐작하지 않고 확인하면 같은 말을 되풀이해야 했던 환자의 피로가 줄어요."
+      decoy: "you understand"
+      distractorsKo: ["다시 접수 창구로 가 주세요.", "담당 선생님께 전달해 둘게요."]
+      blank:
+        answer: "understand"
+        options:
+          - {en: "repeat"}
+          - {en: "check"}
+          - {en: "understand"}
+          - {en: "order"}
     - en: "I hear you've had to repeat yourself — that's frustrating."
       ko: "몇 번씩 반복하셔야 했다는 거 들었어요, 답답하셨을 거예요."
       chunks: ["I hear", "you've had to repeat", "yourself", "— that's frustrating", "."]
       words: [w-hear, w-repeat, w-frustrating]
       goal: 1
+      tag: "공감"
+      icon: "faceWorried"
+      why: "I hear로 환자가 한 말을 들었다고 알리고 반복해야 했던 불편을 frustrating으로 이름 붙여 줘요. 불편의 원인이 환자가 아니라 과정에 있다고 보여 줘요."
+      decoy: "— that's on us"
+      distractorsKo: ["진료비 안내를 드릴게요.", "보호자분께 전화할게요."]
+      blank:
+        answer: "frustrating"
+        options:
+          - {en: "frustrating"}
+          - {en: "unusual"}
+          - {en: "understandable"}
+          - {en: "normal"}
     - en: "Here's what I can do right now for you."
       ko: "지금 당장 해드릴 수 있는 건 이거예요."
       chunks: ["Here's what", "I can do", "right now", "for you", "."]
       words: [w-do, w-right]
       goal: 2
+      tag: "가능한 조치"
+      icon: "check"
+      why: "what I can do로 못 하는 일이 아니라 할 수 있는 일에 초점을 맞춰요. right now가 곧바로 행동으로 이어진다는 느낌을 줘요."
+      decoy: "about the wait"
+      distractorsKo: ["성함과 생년월일을 확인할게요.", "다른 부서에 전화해 볼게요."]
+      blank:
+        answer: "do"
+        options:
+          - {en: "say"}
+          - {en: "do"}
+          - {en: "check"}
+          - {en: "sign"}
     - en: "Tell me again, and I'll write it down this time."
       ko: "다시 말씀해 주시면 이번엔 적어둘게요."
       chunks: ["Tell me again", ", and I'll write", "it down", "this time", "."]
       words: [w-tell, w-again, w-write, w-down]
       goal: 2
+      tag: "기록 약속"
+      icon: "pencil"
+      why: "this time이 지난번과 다르게 하겠다는 약속이고 write it down이 그 약속을 눈에 보이게 해 줘요. 같은 말을 또 하게 한 데 대한 보상이에요."
+      decoy: "it over"
+      distractorsKo: ["이쪽에 서명해 주세요.", "지금 바로 의사를 불러올게요."]
+      blank:
+        answer: "write"
+        options:
+          - {en: "keep"}
+          - {en: "shut"}
+          - {en: "write"}
+          - {en: "turn"}
     - en: "I don't want you to have to ask twice."
       ko: "두 번 물어보시게 하고 싶지 않아요."
       chunks: ["I don't want", "you to have", "to ask", "twice", "."]
       words: [w-want, w-ask, w-twice]
       goal: 2
+      tag: "재요청 방지"
+      icon: "shield"
+      why: "I don't want you to로 환자가 겪은 불편을 내 책임으로 가져와요. 두 번 묻게 하지 않겠다는 약속이 신뢰를 조금씩 쌓아요."
+      decoy: "secretly"
+      distractorsKo: ["제가 담당 간호사에게 전달할게요.", "접수 번호를 알려 주세요."]
+      blank:
+        answer: "twice"
+        options:
+          - {en: "rudely"}
+          - {en: "secretly"}
+          - {en: "slowly"}
+          - {en: "twice"}
   nuance:
   - kind: slider
     words:
@@ -115371,6 +115681,29 @@
       clarify your chief complaint: chief complaint는 차트·의료진 용어. 환자는 문진표 취급을 받는다고 느낀다.
       get this straight once and for all: once and for all에 짜증이 묻어 '이번이 마지막'처럼 들린다.
     why: 반복 요구 뒤에는 '안 들어 준다'는 느낌이 있어요. 되짚을 때는 환자 쪽 말로 해요.
+    ko: 필요하신 게 뭔지 제가 제대로 이해했는지 확인할게요.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 같은 요구를 반복한 환자 경청 4문장 순서
+    why: 공감이 먼저, 그 불편을 고치겠다며('Let's fix that') 듣고 적고, 적은 것을 되읽어('it') 확인하고, 그 내용을 근거로('Based on that') 지금 할 수 있는 일을 말해요.
+    lines:
+    - en: I hear you've had to repeat yourself — that's frustrating.
+      icon: faceWorried
+      ko: 여러 번 말씀하셔야 했다니 답답하셨겠어요
+      note: 공감
+    - en: 'Let''s fix that: tell me what you need and I''ll write it down.'
+      icon: pencil
+      ko: 바로잡을게요, 필요한 걸 말씀하시면 적을게요
+      note: 기록
+    - en: I'll read it back to you so you know I've got it right.
+      icon: check
+      ko: 제대로 이해했는지 다시 읽어 드릴게요
+      note: 확인
+    - en: Based on that, here's what I can do for you right now.
+      icon: bell
+      ko: 그걸 바탕으로 지금 해 드릴 수 있는 걸 말씀드릴게요
+      note: 조치
 
 - theme: er-deescalation
   title: 통증·불편 기인 초조
@@ -115395,26 +115728,86 @@
       chunks: ["Let's get", "your pain", "under control", "first", "."]
       words: [w-get, w-pain, w-control, w-first]
       goal: 1
+      tag: "통증 조절"
+      icon: "pill"
+      why: "Let's로 같이 해결하자고 하고 first로 통증이 우선순위임을 알려요. 아픈 환자가 화를 내는 것은 통증의 표현일 수 있어요."
+      decoy: "your fever"
+      distractorsKo: ["침대 난간을 올릴게요.", "알레르기가 있으신지 볼게요."]
+      blank:
+        answer: "pain"
+        options:
+          - {en: "pain"}
+          - {en: "bleeding"}
+          - {en: "fever"}
+          - {en: "nausea"}
     - en: "On a scale of zero to ten, how bad is it right now?"
       ko: "0에서 10까지 중에, 지금 얼마나 아프세요?"
       chunks: ["On a scale", "of zero to ten", ", how bad is it", "right now", "?"]
       words: [w-scale, w-right]
       goal: 1
+      tag: "통증 점수"
+      icon: "chartup"
+      why: "0~10 숫자 척도는 환자의 통증을 같은 기준으로 확인하는 널리 쓰이는 방법이에요. 숫자로 답하게 하면 짧게 대답할 수 있어서 격한 환자도 말하기 쉬워요."
+      decoy: ", how long is it"
+      distractorsKo: ["어디가 가장 아프세요?", "언제부터 아프기 시작했어요?"]
+      blank:
+        answer: "how bad"
+        options:
+          - {en: "how far"}
+          - {en: "how bad"}
+          - {en: "how often"}
+          - {en: "how long"}
     - en: "I'm getting something for you right away."
       ko: "바로 뭔가 가져다드릴게요."
       chunks: ["I'm getting", "something for you", "right away", "."]
       words: [w-get, w-something, w-right, w-away]
       goal: 1
+      tag: "즉각 조치"
+      icon: "pill"
+      why: "something이라고 하면 무엇을 가져올지 정해지기 전에도 쓸 수 있고, right away가 지금 움직이고 있다는 신호를 줘요."
+      decoy: "next week"
+      distractorsKo: ["혈압을 한 번 재 볼게요.", "침대를 조금 올릴게요."]
+      blank:
+        answer: "something"
+        options:
+          - {en: "someone"}
+          - {en: "a doctor"}
+          - {en: "something"}
+          - {en: "the charge nurse"}
     - en: "I know pain like this is hard to sit with."
       ko: "이런 통증은 견디기 힘들다는 거 알아요."
       chunks: ["I know", "pain like this", "is hard", "to sit with", "."]
       words: [w-pain, w-hard, w-sit]
       goal: 2
+      tag: "공감"
+      icon: "faceWorried"
+      why: "hard to sit with는 참기 힘든 고통을 인정하는 표현이라, 아프다고 화내는 환자의 감정을 있는 그대로 받아 줘요."
+      decoy: "waiting like this"
+      distractorsKo: ["숨을 깊게 쉬어 보세요.", "얼음찜질을 해 볼게요."]
+      blank:
+        answer: "hard"
+        options:
+          - {en: "hard"}
+          - {en: "strange"}
+          - {en: "scary"}
+          - {en: "new"}
     - en: "Let's find a position that hurts less."
       ko: "덜 아픈 자세를 찾아봐요."
       chunks: ["Let's find", "a position", "that hurts less", "."]
       words: [w-find, w-position, w-hurt, w-less]
       goal: 2
+      tag: "자세 조절"
+      icon: "me"
+      why: "Let's find로 같이 찾자고 하고 hurts less로 통증을 없애겠다는 과한 약속 대신 현실적인 목표를 말해요. 덜 아픈 자세는 환자마다 달라요."
+      decoy: "that hurts more"
+      distractorsKo: ["약 이름을 말씀해 주세요.", "차트에 적어 둘게요."]
+      blank:
+        answer: "less"
+        options:
+          - {en: "less"}
+          - {en: "more"}
+          - {en: "worse"}
+          - {en: "longer"}
   nuance:
   - kind: slider
     words:
@@ -115451,6 +115844,29 @@
       calm you down: 원인이 아니라 환자의 행동만 문제 삼는 것처럼 들린다.
       sedate you: 진정제를 먼저 떠올리게 해 겁을 주고, 원인 해결도 아니다.
     why: 통증 때문에 가만히 못 있는 환자에게는 통증부터 해결하겠다고 말하는 것이 가장 빠른 진정이에요.
+    ko: 먼저 통증부터 조절해 봐요.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 통증으로 초조한 환자 응대 4문장 순서
+    why: 공감이 먼저, 그 통증에 대해('To help with it') 정도를 묻고, 숫자가 얼마든('Whatever the number') 바로 조치하고, 그것을 기다리는 동안('While you wait for it') 자세를 찾아요.
+    lines:
+    - en: I know pain like this is hard to sit with.
+      icon: faceWorried
+      ko: 이런 통증은 견디기 힘들다는 거 알아요
+      note: 공감
+    - en: To help with it, tell me how bad it is, from zero to ten.
+      icon: chartup
+      ko: 도와드리려고 그러는데, 0에서 10까지 얼마나 아프세요?
+      note: 정도
+    - en: Whatever the number, I'm getting something for you right away.
+      icon: pill
+      ko: 숫자가 얼마든 바로 뭔가 가져다 드릴게요
+      note: 조치
+    - en: While you wait for it, let's find a position that hurts less.
+      icon: me
+      ko: 그동안 덜 아픈 자세를 찾아봐요
+      note: 자세
 
 - theme: er-deescalation
   title: 알코올 취기 공격성
@@ -115475,26 +115891,86 @@
       chunks: ["Nobody's judging you", "here", "— I just want", "to help", "."]
       words: [w-judge, w-here, w-want, w-help]
       goal: 1
+      tag: "비난 안 함"
+      icon: "handshake2"
+      why: "Nobody's judging은 술에 대한 낙인을 먼저 내려놓겠다는 말이에요. 비난받는다고 느끼면 방어적으로 더 격해지기 쉬워요."
+      decoy: "Nobody's weighing you"
+      distractorsKo: ["술을 얼마나 드셨는지 알려 주세요.", "여기 침대에 누워 주세요."]
+      blank:
+        answer: "help"
+        options:
+          - {en: "talk"}
+          - {en: "ask"}
+          - {en: "check"}
+          - {en: "help"}
     - en: "Let's keep it calm; I'm on your side."
       ko: "차분히 있어요, 저는 당신 편이에요."
       chunks: ["Let's keep it calm;", "I'm on", "your side", "."]
       words: [w-keep, w-calm, w-side]
       goal: 1
+      tag: "같은 편"
+      icon: "handshake2"
+      why: "Let's로 함께 하자고 하고 on your side로 적이 아니라 편임을 말해요. 취한 환자는 위협을 쉽게 느끼므로 편이라는 말을 직접 해 줘요."
+      decoy: "your case"
+      distractorsKo: ["지금 혈당을 재 볼게요.", "옷을 갈아입으셔야 해요."]
+      blank:
+        answer: "side"
+        options:
+          - {en: "back"}
+          - {en: "nerves"}
+          - {en: "side"}
+          - {en: "case"}
     - en: "How about we sit down and talk this out?"
       ko: "앉아서 이야기로 풀어보는 게 어때요?"
       chunks: ["How about", "we sit down", "and talk", "this out", "?"]
       words: [w-sit, w-down, w-talk, w-out]
       goal: 2
+      tag: "제안"
+      icon: "speech"
+      why: "How about we는 명령이 아니라 제안이라 거절하기 쉬워요. 앉자는 제안은 서 있을 때보다 긴장을 낮추는 자세를 권하는 거예요."
+      decoy: "we lie down"
+      distractorsKo: ["술은 얼마나 드셨어요?", "보호자분께 전화할까요?"]
+      blank:
+        answer: "sit"
+        options:
+          - {en: "lie"}
+          - {en: "calm"}
+          - {en: "sit"}
+          - {en: "settle"}
     - en: "I hear you, and I'm not here to fight."
       ko: "말씀 듣고 있어요, 싸우려는 게 아니에요."
       chunks: ["I hear you", ", and I'm", "not here", "to fight", "."]
       words: [w-hear, w-here, w-fight]
       goal: 1
+      tag: "안심"
+      icon: "handshake2"
+      why: "I hear you로 먼저 듣는다는 신호를 주고 not here to fight로 싸울 뜻이 없음을 말로 분명히 해요. 시비가 붙은 환자에게는 대립 구도부터 풀어 줘요."
+      decoy: "to judge"
+      distractorsKo: ["지금 체온을 재도 될까요?", "병실로 모셔 드릴게요."]
+      blank:
+        answer: "fight"
+        options:
+          - {en: "fight"}
+          - {en: "judge"}
+          - {en: "lecture"}
+          - {en: "rush"}
     - en: "Let's slow things down together."
       ko: "함께 천천히 진정해봐요."
       chunks: ["Let's slow", "things down", "together", "."]
       words: [w-slow, w-together]
       goal: 2
+      tag: "속도 늦추기"
+      icon: "redo"
+      why: "Let's … together로 같이 속도를 늦추자고 하면 환자를 지적하지 않고도 격앙된 분위기를 가라앉힐 수 있어요. things라고 하면 환자 탓이 아니라 상황 전체를 가리켜요."
+      decoy: "apart"
+      distractorsKo: ["물 좀 드시겠어요?", "담요를 가져다 드릴게요."]
+      blank:
+        answer: "together"
+        options:
+          - {en: "apart"}
+          - {en: "together"}
+          - {en: "alone"}
+          - {en: "separately"}
   nuance:
   - kind: slider
     words:
@@ -115528,6 +116004,29 @@
       blaming you for drinking: 부정하는 말인데도 음주를 콕 집어 꺼내 방어하게 만든다.
       lecturing you: 뜻은 비슷하지만 '훈계'를 먼저 떠올리게 한다.
     why: 취한 환자에게는 자극을 줄이는 게 먼저예요. 'Nobody's judging you'는 비판 없이 대화를 여는 흔한 말이에요.
+    ko: 여기서 아무도 당신을 비난하지 않아요, 그저 돕고 싶어요.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 취한 공격적 환자 응대 4문장 순서
+    why: 싸우러 온 것이 아님을 먼저 말하고, 그 때문에('Because of that') 속도를 늦추자고 하고, 그러려면('To do that') 앉아서 이야기하자고 제안하고, 어느 쪽이든('Either way') 편이라고 마무리해요.
+    lines:
+    - en: I hear you, and I'm not here to fight.
+      icon: handshake2
+      ko: 말씀 듣고 있어요, 싸우러 온 게 아니에요
+      note: 안심
+    - en: Because of that, let's slow things down together.
+      icon: redo
+      ko: 그러니 같이 천천히 가요
+      note: 속도
+    - en: To do that, how about we sit down and talk this out?
+      icon: speech
+      ko: 그러려면 앉아서 이야기로 풀어 보는 게 어때요?
+      note: 제안
+    - en: Either way, I'm on your side.
+      icon: handshake2
+      ko: 어느 쪽이든 저는 당신 편이에요
+      note: 편
 
 - theme: er-deescalation
   title: 치매 초조 행동
@@ -115552,26 +116051,86 @@
       chunks: ["You're safe here", ", and I'm going", "to stay", "with you", "."]
       words: [w-safe, w-here, w-stay]
       goal: 1
+      tag: "안전 안내"
+      icon: "shield"
+      why: "낯선 곳에서 불안해하는 치매 환자에게는 안전하다는 말과 곁에 있겠다는 약속을 함께 해요. 짧은 문장으로 같은 말을 되풀이해도 괜찮아요."
+      decoy: "You're safe with her"
+      distractorsKo: ["따님께 전화해 드릴게요.", "점심 드실 시간이에요."]
+      blank:
+        answer: "here"
+        options:
+          - {en: "now"}
+          - {en: "tonight"}
+          - {en: "today"}
+          - {en: "here"}
     - en: "Your daughter is on her way to see you."
       ko: "따님이 지금 오고 계세요."
       chunks: ["Your daughter is", "on her way", "to see", "you", "."]
       words: [w-daughter, w-way]
       goal: 2
+      tag: "가족 소식"
+      icon: "bell"
+      why: "보호자 소식을 구체적으로 알려 주면 안심이 돼요. on her way로 곧 온다는 사실만 말하며, 실제로 오고 있을 때에만 하는 말이에요."
+      decoy: "on her own"
+      distractorsKo: ["어디가 아프세요?", "아침 약을 드릴게요."]
+      blank:
+        answer: "way"
+        options:
+          - {en: "own"}
+          - {en: "back"}
+          - {en: "list"}
+          - {en: "way"}
     - en: "Let's look at these photos together for a moment."
       ko: "잠깐 이 사진들을 함께 봐요."
       chunks: ["Let's look", "at these photos", "together", "for a moment", "."]
       words: [w-look, w-photo, w-together, w-moment]
       goal: 2
+      tag: "사진 보기"
+      icon: "star"
+      why: "사진은 기억에 닿기 쉬운 주제라 불안한 환자의 주의를 부드럽게 돌려 줘요. for a moment로 부담 없이 잠깐만 해 보자고 제안해요."
+      decoy: "at these cards"
+      distractorsKo: ["약을 같이 드실까요?", "화장실에 가고 싶으세요?"]
+      blank:
+        answer: "photos"
+        options:
+          - {en: "charts"}
+          - {en: "forms"}
+          - {en: "photos"}
+          - {en: "letters"}
     - en: "You're safe with me, and I'm right beside you."
       ko: "저와 함께 있으니 안전해요, 제가 바로 곁에 있어요."
       chunks: ["You're safe", "with me", ",", "and I'm", "right beside you", "."]
       words: [w-safe, w-right, w-beside]
       goal: 1
+      tag: "곁에 있기"
+      icon: "handshake2"
+      why: "safe와 beside you를 짧은 문장으로 반복해 줘요. 치매 환자에게는 복잡한 설명보다 짧고 따뜻한 말이 더 잘 전달돼요."
+      decoy: "without me"
+      distractorsKo: ["잠깐 팔을 걷어 주세요.", "따뜻한 담요를 드릴게요."]
+      blank:
+        answer: "beside"
+        options:
+          - {en: "beside"}
+          - {en: "behind"}
+          - {en: "across from"}
+          - {en: "in front of"}
     - en: "Let's talk about your family for a while."
       ko: "잠시 가족 이야기를 나눠봐요."
       chunks: ["Let's talk", "about your family", "for a while", "."]
       words: [w-talk, w-while]
       goal: 2
+      tag: "화제 전환"
+      icon: "speech"
+      why: "가족 이야기는 오래된 기억과 이어져 편안함을 줄 수 있어요. Let's로 같이 하자고 하고 for a while로 잠시만 해 보자고 가볍게 제안해요."
+      decoy: "about your medicines"
+      distractorsKo: ["오늘 약은 다 드셨어요?", "팔찌를 확인할게요."]
+      blank:
+        answer: "family"
+        options:
+          - {en: "diagnosis"}
+          - {en: "surgery"}
+          - {en: "medicines"}
+          - {en: "family"}
   nuance:
   - kind: pair
     words:
@@ -115610,6 +116169,29 @@
       I know this place feels strange: 낯선 느낌을 인정하고 안전으로 잇는다.
       You have dementia: 진단명을 들이미는 말은 안심이 아니라 충격이나 모욕으로 들린다.
     why: 치매 환자의 초조에는 틀린 것을 바로잡기보다 감정을 인정하고 안심시키는 말이 먼저예요.
+    ko: 이곳이 낯설게 느껴지실 거예요, 하지만 여기서는 안전하고 제가 곁에 있을게요.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 불안한 치매 환자 응대 4문장 순서
+    why: 안전하고 곁에 있다는 말이 먼저, 나 혼자만이 아니라('I'm not the only one') 가족이 오고 있음을 알리고, 그 가족('her')의 사진을 같이 보고, 사진 속 사람들('them') 이야기를 나눠요.
+    lines:
+    - en: You're safe here, and I'm going to stay with you.
+      icon: shield
+      ko: 여기서는 안전해요, 제가 곁에 있을게요
+      note: 안심
+    - en: I'm not the only one — your daughter is on her way to see you.
+      icon: bell
+      ko: 저만 있는 게 아니에요, 따님이 지금 오고 계세요
+      note: 소식
+    - en: Let's look at some photos of her together.
+      icon: star
+      ko: 따님 사진을 함께 봐요
+      note: 사진
+    - en: Tell me about the people in them.
+      icon: speech
+      ko: 사진 속 사람들 이야기를 들려 주세요
+      note: 대화
 
 - theme: er-deescalation
   title: 마약 갈망·요구 환자
@@ -115634,26 +116216,86 @@
       chunks: ["I believe", "your pain is real", ", and I want", "to treat it safely", "."]
       words: [w-believe, w-pain, w-real, w-want, w-treat, w-safely]
       goal: 1
+      tag: "믿음 표현"
+      icon: "faceWorried"
+      why: "통증이 진짜라고 먼저 믿어 준 뒤 safely로 치료 방향을 말해요. 약을 요구하는 환자를 의심부터 하면 갈등이 커지기 쉬워서 믿음과 안전을 한 문장에 함께 담아요."
+      decoy: "to treat it quickly"
+      distractorsKo: ["약 알레르기가 있으세요?", "오늘 몇 시에 오셨어요?"]
+      blank:
+        answer: "safely"
+        options:
+          - {en: "quickly"}
+          - {en: "gently"}
+          - {en: "safely"}
+          - {en: "fully"}
     - en: "I can't give you that, but here's what I can offer."
       ko: "그건 드릴 수 없지만, 대신 이걸 제안드릴 수 있어요."
       chunks: ["I can't give you that", ", but here's", "what I can", "offer", "."]
       words: [w-give, w-offer]
       goal: 1
+      tag: "거절+대안"
+      icon: "handshake2"
+      why: "못 하는 일을 말한 뒤 바로 but으로 할 수 있는 일을 이어 줘요. 거절만 하면 대화가 끊기지만 대안을 같이 말하면 환자가 외면당한다고 느끼지 않아요."
+      decoy: "I can't promise that"
+      distractorsKo: ["통증 점수를 알려 주세요.", "처방전은 어느 약국이세요?"]
+      blank:
+        answer: "offer"
+        options:
+          - {en: "prescribe"}
+          - {en: "offer"}
+          - {en: "order"}
+          - {en: "promise"}
     - en: "Let's focus on what will actually help you feel better."
       ko: "실제로 도움이 될 것에 집중해봐요."
       chunks: ["Let's focus", "on what will", "actually help", "you feel better", "."]
       words: [w-focus, w-actually, w-help, w-feel, w-better]
       goal: 2
+      tag: "목표 전환"
+      icon: "compass"
+      why: "Let's focus on으로 약 이름을 두고 다투는 대화에서 나아지는 것이라는 공동 목표로 옮겨요. actually는 실제로 효과가 있는 방법을 찾겠다는 뜻이에요."
+      decoy: "Let's comment"
+      distractorsKo: ["가족분께 전화할까요?", "접수 서류에 서명해 주세요."]
+      blank:
+        answer: "focus"
+        options:
+          - {en: "speculate"}
+          - {en: "focus"}
+          - {en: "comment"}
+          - {en: "elaborate"}
     - en: "I hear that you're hurting, and I'm not judging you."
       ko: "많이 아프신 거 알아요, 비난하려는 게 아니에요."
       chunks: ["I hear", "that you're hurting", ", and I'm not", "judging you", "."]
       words: [w-hear, w-hurt, w-judge]
       goal: 1
+      tag: "비난 안 함"
+      icon: "faceWorried"
+      why: "I hear that you're hurting은 환자의 고통을 인정하는 말이에요. not judging은 약을 요구하는 환자가 가장 두려워하는 낙인을 먼저 내려놓겠다는 말이에요."
+      decoy: "that you're sleeping"
+      distractorsKo: ["지금 통증이 어디쯤이세요?", "제가 의사 선생님께 말씀드릴게요."]
+      blank:
+        answer: "hurting"
+        options:
+          - {en: "healing"}
+          - {en: "sleeping"}
+          - {en: "hurting"}
+          - {en: "improving"}
     - en: "Let's talk about what else might work for you."
       ko: "당신에게 효과가 있을 다른 방법을 이야기해봐요."
       chunks: ["Let's talk", "about what", "else might work", "for you", "."]
       words: [w-talk, w-else, w-work]
       goal: 2
+      tag: "대안 탐색"
+      icon: "speech"
+      why: "what else로 이미 거절된 한 가지 말고 다른 선택지를 같이 찾자고 해요. might로 효과를 장담하지 않으면서 가능성을 열어 줘요."
+      decoy: "else might hurt"
+      distractorsKo: ["약을 드시는 시간은 언제예요?", "지난번에도 같은 통증이었어요?"]
+      blank:
+        answer: "work"
+        options:
+          - {en: "hurt"}
+          - {en: "fail"}
+          - {en: "shake"}
+          - {en: "work"}
   nuance:
   - kind: slider
     words:
@@ -115690,6 +116332,29 @@
       You say you're in pain: '''말로는 그렇다''는 의심이 묻어 방어하게 만든다.'
       You seem to be drug-seeking: 의료진 사이에서도 낙인이 되는 말. 환자 앞에서 쓰면 대화가 끝난다.
     why: 한계를 긋기 전에 통증부터 인정해야 한계가 벌이 아니라 안전을 위한 것으로 들려요.
+    ko: 통증이 진짜라고 믿어요, 안전하게 치료해 드리고 싶어요.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 마약성 진통제를 요구하는 환자 응대 4문장 순서
+    why: 아픔을 인정하는 말이 먼저, 그 통증('that pain')이 진짜라고 믿고 안전하게 치료하겠다는 말이 이를 받고, 그 안전 때문에('Treating it safely') 요구한 약은 줄 수 없다는 것과 줄 수 있는 것을 말하고, 대안을('what else') 같이 찾아요.
+    lines:
+    - en: I hear that you're hurting, and I'm not judging you.
+      icon: faceWorried
+      ko: 많이 아프신 거 알아요, 비난하는 게 아니에요
+      note: 공감
+    - en: I believe that pain is real, and I want to treat it safely.
+      icon: shield
+      ko: 그 통증이 진짜라고 믿고 안전하게 치료하고 싶어요
+      note: 믿음
+    - en: Treating it safely means I can't give you that, but here's what I can offer.
+      icon: handshake2
+      ko: 안전하게 치료하려면 그 약은 드릴 수 없지만 대신 이걸 드릴 수 있어요
+      note: 대안
+    - en: Let's talk about what else might work for you.
+      icon: speech
+      ko: 또 어떤 게 맞을지 이야기해 봐요
+      note: 탐색
 
 - theme: er-deescalation
   title: 대기실 다인 긴장 확산
@@ -115714,26 +116379,86 @@
       chunks: ["Let's step", "over here", "where we can", "talk privately", "."]
       words: [w-step, w-here, w-talk, w-privately]
       goal: 1
+      tag: "장소 이동"
+      icon: "compass"
+      why: "여러 사람 앞에서는 체면 때문에 더 격해지기 쉬워서 조용한 곳으로 옮기자고 제안해요. Let's로 같이 가자고 하면 끌려가는 느낌이 줄어요."
+      decoy: "talk publicly"
+      distractorsKo: ["이쪽 의자에 앉아 주세요.", "잠깐 신분증을 보여 주세요."]
+      blank:
+        answer: "privately"
+        options:
+          - {en: "privately"}
+          - {en: "publicly"}
+          - {en: "loudly"}
+          - {en: "angrily"}
     - en: "I want to hear your concern one-on-one."
       ko: "일대일로 걱정되시는 부분을 듣고 싶어요."
       chunks: ["I want", "to hear", "your concern one-on-one", "."]
       words: [w-want, w-hear, w-concern]
       goal: 1
+      tag: "일대일"
+      icon: "speech"
+      why: "one-on-one은 둘이서만 듣겠다는 뜻이라 사람들 앞에서 말하기 부담스러운 환자의 체면을 지켜 줘요."
+      decoy: "in public"
+      distractorsKo: ["번호표를 받아 가세요.", "물을 드릴까요?"]
+      blank:
+        answer: "one-on-one"
+        options:
+          - {en: "in groups"}
+          - {en: "one-on-one"}
+          - {en: "in public"}
+          - {en: "all at once"}
     - en: "I'll address this, but let's keep it calm for everyone."
       ko: "이 문제는 제가 처리할게요, 모두를 위해 차분하게 있어요."
       chunks: ["I'll address this", ", but let's keep", "it calm", "for everyone", "."]
       words: [w-address, w-keep, w-calm, w-everyone]
       goal: 2
+      tag: "해결 약속"
+      icon: "shield"
+      why: "I'll address this로 불만을 직접 처리하겠다고 약속한 뒤 for everyone으로 차분함이 모두를 위한 것이라고 말해요. 환자만 지적하는 말로 들리지 않아요."
+      decoy: "I'll explain this"
+      distractorsKo: ["다른 환자분들도 곧 안내해 드릴게요.", "접수 번호를 불러 드릴게요."]
+      blank:
+        answer: "address"
+        options:
+          - {en: "explain"}
+          - {en: "mention"}
+          - {en: "document"}
+          - {en: "address"}
     - en: "Let's move away from the crowd so we can hear each other."
       ko: "사람들과 좀 떨어져서 서로 이야기를 들어봐요."
       chunks: ["Let's move away", "from the crowd", "so we can", "hear each other", "."]
       words: [w-move, w-hear]
       goal: 1
+      tag: "거리 두기"
+      icon: "compass"
+      why: "사람이 많은 곳에서는 서로 말이 안 들려서 더 큰 소리로 말하게 돼요. 군중에서 떨어지자고 하면 목소리가 낮아지고 대화에 집중할 수 있어요."
+      decoy: "from the TV"
+      distractorsKo: ["번호표를 새로 뽑아 오세요.", "접수 창구가 저쪽이에요."]
+      blank:
+        answer: "away from"
+        options:
+          - {en: "toward"}
+          - {en: "around"}
+          - {en: "behind"}
+          - {en: "away from"}
     - en: "I don't want this to get bigger than it needs to be."
       ko: "이 일이 필요 이상으로 커지지 않았으면 해요."
       chunks: ["I don't want", "this to get bigger", "than it needs", "to be", "."]
       words: [w-want, w-get, w-need]
       goal: 2
+      tag: "확산 방지"
+      icon: "bell"
+      why: "I don't want this to로 환자를 탓하지 않고 내 바람으로 말해요. bigger than it needs to be는 문제의 크기를 줄이자는 뜻이라 서로 체면을 지킬 수 있어요."
+      decoy: "get smaller"
+      distractorsKo: ["대기 번호를 다시 알려 드릴게요.", "다른 분들께도 안내해 드릴게요."]
+      blank:
+        answer: "bigger"
+        options:
+          - {en: "bigger"}
+          - {en: "smaller"}
+          - {en: "quieter"}
+          - {en: "calmer"}
   nuance:
   - kind: slider
     words:
@@ -115769,6 +116494,29 @@
       in front of everyone: 관객이 있으면 물러서기 어려워져 긴장이 대기실 전체로 번진다.
       without an audience: 뜻은 같지만 '보여 주려고 소란 피운다'는 비난으로 들릴 수 있다.
     why: 대기실의 긴장은 관객이 있을 때 커져요. 격앙된 한 사람을 따로 모시는 것이 확산을 막는 첫 조치예요.
+    ko: 따로 이야기할 수 있는 곳으로 옮겨 봐요.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 대기실 긴장 완화 4문장 순서
+    why: 따로 이야기할 곳으로 옮기자고 하고, 그곳에서('Over here') 일대일로 듣겠다고 하고, 불만이 무엇이든('Whatever it is') 처리하되 차분하게 하자고 하고, 그렇게 차분히 있으면('Keeping it calm') 일이 커지지 않는다고 마무리해요.
+    lines:
+    - en: Let's step over here where we can talk privately.
+      icon: compass
+      ko: 따로 이야기할 수 있는 곳으로 옮겨 봐요
+      note: 이동
+    - en: Over here, I want to hear your concern one-on-one.
+      icon: speech
+      ko: 이쪽에서 일대일로 걱정되시는 점을 듣고 싶어요
+      note: 경청
+    - en: Whatever it is, I'll address it, but let's keep it calm for everyone.
+      icon: shield
+      ko: 무엇이든 제가 처리할게요, 모두를 위해 차분히 해요
+      note: 약속
+    - en: Keeping it calm means this won't get bigger than it needs to be.
+      icon: bell
+      ko: 차분히 있으면 필요 이상으로 커지지 않아요
+      note: 이유
 
 - theme: er-deescalation
   title: 언어폭력 대상 직원 보호
@@ -115793,26 +116541,86 @@
       chunks: ["I want to help you", ", and I need", "us to speak", "respectfully", "."]
       words: [w-want, w-help, w-need, w-speak, w-respectfully]
       goal: 1
+      tag: "존중 요청"
+      icon: "handshake2"
+      why: "I want to help you로 먼저 도울 뜻을 밝히고 I need us to로 요청해요. us를 써서 환자만 지적하지 않고 대화 방식을 함께 지키자는 말로 만들어요."
+      decoy: "angrily"
+      distractorsKo: ["지금 혈압을 재도 될까요?", "의사 선생님이 곧 오실 거예요."]
+      blank:
+        answer: "respectfully"
+        options:
+          - {en: "rudely"}
+          - {en: "respectfully"}
+          - {en: "angrily"}
+          - {en: "loudly"}
     - en: "I won't accept being spoken to that way, but I'm still here for you."
       ko: "그런 식으로 말씀하시는 건 받아들일 수 없지만, 그래도 곁에 있을게요."
       chunks: ["I won't accept", "being spoken to", "that way", ", but I'm still", "here for you", "."]
       words: [w-accept, w-speak, w-way, w-still, w-here]
       goal: 1
+      tag: "경계 설정"
+      icon: "shield"
+      why: "받아들일 수 없는 행동은 분명히 말하되 but I'm still here for you로 환자를 돌보겠다는 뜻은 그대로 유지해요. 경계와 돌봄을 한 문장에 함께 담는 방법이에요."
+      decoy: "I won't mind"
+      distractorsKo: ["보호자분께 연락드릴게요.", "차트에 기록해 둘게요."]
+      blank:
+        answer: "accept"
+        options:
+          - {en: "regret"}
+          - {en: "deny"}
+          - {en: "mind"}
+          - {en: "accept"}
     - en: "Let's reset and figure this out together."
       ko: "처음부터 다시 함께 풀어봐요."
       chunks: ["Let's reset", "and figure", "this out together", "."]
       words: [w-reset, w-figure, w-out, w-together]
       goal: 2
+      tag: "재시작"
+      icon: "redo"
+      why: "reset은 앞의 말다툼을 없던 것으로 하고 다시 시작하자는 초대예요. Let's … together로 같은 편이 되어 문제를 풀자고 해요."
+      decoy: "this out alone"
+      distractorsKo: ["신분증을 다시 보여 주세요.", "진료 순서를 확인할게요."]
+      blank:
+        answer: "together"
+        options:
+          - {en: "alone"}
+          - {en: "separately"}
+          - {en: "apart"}
+          - {en: "together"}
     - en: "I'm on your team, but I need respect too."
       ko: "저는 당신 편이에요, 그래도 존중은 필요해요."
       chunks: ["I'm on", "your team", ", but I need", "respect too", "."]
       words: [w-team, w-need, w-respect]
       goal: 1
+      tag: "상호 존중"
+      icon: "handshake2"
+      why: "on your team으로 같은 편임을 말하고 but I need respect too로 직원도 존중받아야 한다고 분명히 해요. 한쪽만 참는 관계가 아니라 서로 존중하는 관계로 말해요."
+      decoy: "your list"
+      distractorsKo: ["의사 선생님께 말씀드릴게요.", "서류에 서명해 주세요."]
+      blank:
+        answer: "team"
+        options:
+          - {en: "team"}
+          - {en: "shift"}
+          - {en: "unit"}
+          - {en: "floor"}
     - en: "Let's start over and try this again."
       ko: "처음부터 다시 시도해봐요."
       chunks: ["Let's start", "over and", "try this again", "."]
       words: [w-start, w-try, w-again]
       goal: 2
+      tag: "다시 시작"
+      icon: "redo"
+      why: "start over는 방금의 말투를 없던 것으로 하고 다시 시작하자는 제안이에요. Let's로 환자만 바꾸라는 말이 아니라 둘 다 새로 시작하자고 해요."
+      decoy: "try this alone"
+      distractorsKo: ["이름과 생년월일을 알려 주세요.", "물을 드릴까요?"]
+      blank:
+        answer: "again"
+        options:
+          - {en: "silently"}
+          - {en: "again"}
+          - {en: "alone"}
+          - {en: "separately"}
   nuance:
   - kind: slider
     words:
@@ -115848,6 +116656,29 @@
       nicely: 아이를 타이르는 말처럼 들려 깔보는 느낌을 준다.
       like a normal person: 모욕으로 들려 되받아치게 만든다.
     why: 경계는 비난 없이, 기대하는 행동을 구체적인 말로 세워요.
+    ko: 도와드리고 싶어요, 서로 정중하게 말씀해 주시면 좋겠어요.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 폭언하는 환자에게 존중 요청 4문장 순서
+    why: 같은 편이고 돕고 싶다는 말이 먼저, 그러려면('To do that') 서로 존중해 달라고 요청하고, 그런 말투는 존중이 아니라고('respectful') 경계를 말하되 곁에 있겠다고 하고, 그 말을 정리하며('With that said') 다시 시작하자고 해요.
+    lines:
+    - en: I'm on your team, and I want to help you.
+      icon: handshake2
+      ko: 저는 당신 편이고 도와드리고 싶어요
+      note: 편
+    - en: To do that, I need us to speak respectfully.
+      icon: speech
+      ko: 그러려면 서로 정중하게 말씀해 주셔야 해요
+      note: 요청
+    - en: That way of speaking isn't respectful — I won't accept it, but I'm still here.
+      icon: shield
+      ko: 그런 말투는 정중하지 않아요, 받아들일 수 없지만 곁에 있을게요
+      note: 경계
+    - en: With that said, let's reset and figure this out together.
+      icon: redo
+      ko: 그렇게 정리하고 처음부터 함께 풀어 봐요
+      note: 재시작
 
 - theme: er-deescalation
   title: 문화·인종 관련 불신
@@ -115872,26 +116703,86 @@
       chunks: ["I hear you", ", and I want", "to make sure", "you're treated", "with respect here", "."]
       words: [w-hear, w-want, w-make, w-sure, w-treat, w-respect, w-here]
       goal: 1
+      tag: "존중 약속"
+      icon: "handshake2"
+      why: "I hear you로 먼저 듣고 treated with respect로 환자가 존중받도록 직접 챙기겠다고 말해요. 불신을 반박하지 않고 받아들이는 첫 문장이에요."
+      decoy: "with pity here"
+      distractorsKo: ["어떤 점이 가장 불편하셨어요?", "통역이 필요하신가요?"]
+      blank:
+        answer: "respect"
+        options:
+          - {en: "speed"}
+          - {en: "respect"}
+          - {en: "privacy"}
+          - {en: "patience"}
     - en: "Your concern is valid, and I'll do my best for you."
       ko: "그 우려는 타당해요, 최선을 다할게요."
       chunks: ["Your concern is valid", ", and I'll do", "my best", "for you", "."]
       words: [w-concern, w-valid, w-do, w-best]
       goal: 2
+      tag: "우려 인정"
+      icon: "check"
+      why: "valid는 환자의 우려가 이유 있는 것으로 인정한다는 뜻이에요. 해명이나 반박보다 인정이 먼저 와야 신뢰를 쌓기 시작할 수 있어요."
+      decoy: "Your concern is private"
+      distractorsKo: ["성함이 어떻게 되세요?", "진료실은 이쪽이에요."]
+      blank:
+        answer: "valid"
+        options:
+          - {en: "private"}
+          - {en: "temporary"}
+          - {en: "visible"}
+          - {en: "valid"}
     - en: "Tell me what would help you feel more comfortable."
       ko: "뭐가 더 편안하게 느껴지실지 말씀해 주세요."
       chunks: ["Tell me", "what would help", "you feel", "more comfortable", "."]
       words: [w-tell, w-help, w-feel, w-more, w-comfortable]
       goal: 2
+      tag: "선호 묻기"
+      icon: "mic"
+      why: "Tell me로 열린 질문을 하면 환자가 필요한 것을 직접 정할 수 있어요. 불신이 있을 때는 어떻게 하면 편한지를 먼저 묻는 것이 존중을 보여 줘요."
+      decoy: "more nervous"
+      distractorsKo: ["어디가 가장 아프세요?", "보험 정보를 알려 주세요."]
+      blank:
+        answer: "comfortable"
+        options:
+          - {en: "comfortable"}
+          - {en: "nervous"}
+          - {en: "rushed"}
+          - {en: "tired"}
     - en: "I take what you're telling me seriously."
       ko: "말씀하시는 걸 진지하게 받아들이고 있어요."
       chunks: ["I take", "what you're telling me", "seriously", "."]
       words: [w-take, w-tell, w-seriously]
       goal: 1
+      tag: "진지한 수용"
+      icon: "check"
+      why: "take … seriously는 말씀을 가볍게 넘기지 않는다는 뜻이에요. 무시당해 본 경험이 있는 환자에게는 이 한마디가 신뢰의 시작이 될 수 있어요."
+      decoy: "casually"
+      distractorsKo: ["제가 차트에 적어 둘게요.", "의사 선생님을 불러올게요."]
+      blank:
+        answer: "seriously"
+        options:
+          - {en: "reluctantly"}
+          - {en: "seriously"}
+          - {en: "lightly"}
+          - {en: "casually"}
     - en: "Let's talk about what would build your trust in us."
       ko: "저희를 신뢰하시는 데 뭐가 도움이 될지 이야기해봐요."
       chunks: ["Let's talk", "about what", "would build", "your trust in us", "."]
       words: [w-talk, w-build, w-trust]
       goal: 2
+      tag: "신뢰 형성"
+      icon: "handshake2"
+      why: "build your trust는 신뢰를 요구하는 대신 쌓아 가는 과정으로 말해요. what would로 환자가 원하는 방법을 직접 말하게 해요."
+      decoy: "your doubt in us"
+      distractorsKo: ["생년월일을 말씀해 주세요.", "팔찌를 확인할게요."]
+      blank:
+        answer: "trust"
+        options:
+          - {en: "anger"}
+          - {en: "fear"}
+          - {en: "trust"}
+          - {en: "doubt"}
   nuance:
   - kind: slider
     words:
@@ -115928,6 +116819,29 @@
       I'm sorry you feel that way: 영어에서 대표적인 '사과 아닌 사과'. 잘못을 상대의 감정 탓으로 돌리는 말로 들린다.
       That's not how we do things here: 환자의 경험을 부정해 방어성을 키운다.
     why: 불신을 들었을 때는 해명보다 인정이 먼저예요. 인정해야 다음 말을 들어 줘요.
+    ko: 그 우려는 타당해요, 최선을 다할게요.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 불신하는 환자 응대 4문장 순서
+    why: 존중받도록 하겠다는 말이 먼저, 그 존중('Respect')의 시작으로 우려를 인정하고, 최선을 다하려면('To do my best') 편안한 조건을 묻고, 들은 말에서('From what you tell me') 신뢰를 쌓을 방법을 이야기해요.
+    lines:
+    - en: I hear you, and I want to make sure you're treated with respect here.
+      icon: handshake2
+      ko: 말씀 듣고 있어요, 여기서 존중받으시도록 챙길게요
+      note: 존중
+    - en: Respect starts with saying your concern is valid — I'll do my best.
+      icon: check
+      ko: 존중은 우려가 타당하다고 말하는 데서 시작돼요, 최선을 다할게요
+      note: 인정
+    - en: To do my best for you, tell me what would help you feel more comfortable.
+      icon: mic
+      ko: 최선을 다하려면 뭐가 편안하실지 말씀해 주세요
+      note: 질문
+    - en: From what you tell me, let's talk about what would build your trust in us.
+      icon: handshake2
+      ko: 말씀하신 걸 토대로 신뢰를 쌓을 방법을 이야기해 봐요
+      note: 신뢰
 
 - theme: er-deescalation
   title: 보호자발 공격성
@@ -115952,26 +116866,86 @@
       chunks: ["I can see", "how much you love", "your son", "— we want", "the same thing", "."]
       words: [w-love, w-son, w-want, w-same, w-thing]
       goal: 1
+      tag: "공감"
+      icon: "faceWorried"
+      why: "I can see로 보호자의 감정이 아이를 향한 사랑에서 나온다고 인정해요. we want the same thing은 서로 같은 편이라는 점을 말해요."
+      decoy: "the opposite thing"
+      distractorsKo: ["아이 이름과 생년월일을 확인할게요.", "아이의 몸무게를 재 볼게요."]
+      blank:
+        answer: "same"
+        options:
+          - {en: "opposite"}
+          - {en: "different"}
+          - {en: "separate"}
+          - {en: "same"}
     - en: "Let me tell you exactly what we're doing for him."
       ko: "아이를 위해 저희가 정확히 뭘 하고 있는지 말씀드릴게요."
       chunks: ["Let me tell you", "exactly what", "we're doing", "for him", "."]
       words: [w-tell, w-exactly, w-do]
       goal: 2
+      tag: "진행 설명"
+      icon: "speech"
+      why: "보호자가 불안한 것은 무슨 일이 일어나는지 모를 때가 많아요. exactly로 구체적으로 알려 주겠다고 하면 모른다는 불안이 줄어요."
+      decoy: "vaguely what"
+      distractorsKo: ["아이를 병실로 옮길게요.", "보호자분 성함을 알려 주세요."]
+      blank:
+        answer: "exactly"
+        options:
+          - {en: "exactly"}
+          - {en: "vaguely"}
+          - {en: "secretly"}
+          - {en: "sadly"}
     - en: "I need us to stay calm so I can care for him well."
       ko: "제가 아이를 잘 돌볼 수 있도록 차분하게 있어 주세요."
       chunks: ["I need us", "to stay calm", "so I can", "care for him well", "."]
       words: [w-need, w-stay, w-calm, w-care, w-well]
       goal: 2
+      tag: "협조 요청"
+      icon: "shield"
+      why: "I need us to는 보호자만 지적하지 않고 함께 하자는 말이고 so I can care for him well은 차분해야 하는 이유를 아이의 치료에 연결해 줘요."
+      decoy: "unless I can"
+      distractorsKo: ["아이 약 알레르기가 있나요?", "보호자 팔찌를 채워 드릴게요."]
+      blank:
+        answer: "calm"
+        options:
+          - {en: "back"}
+          - {en: "outside"}
+          - {en: "close"}
+          - {en: "calm"}
     - en: "Your anger makes sense, but yelling scares him."
       ko: "화나신 마음은 이해해요, 하지만 소리치시면 아이가 무서워해요."
       chunks: ["Your anger makes sense", ", but yelling", "scares him", "."]
       words: [w-anger, w-sense, w-yell, w-scare]
       goal: 1
+      tag: "감정·행동 구분"
+      icon: "faceWorried"
+      why: "Your anger makes sense로 감정은 인정하고 but yelling으로 문제가 되는 것은 소리치는 행동이라고 구분해요. 아이가 무서워한다는 이유를 말하면 비난이 아니라 아이를 위한 부탁으로 들려요."
+      decoy: "calms him"
+      distractorsKo: ["아이 이름을 확인할게요.", "의사 선생님께 바로 알릴게요."]
+      blank:
+        answer: "scares"
+        options:
+          - {en: "helps"}
+          - {en: "comforts"}
+          - {en: "scares"}
+          - {en: "calms"}
     - en: "Let's work together so he gets the best care."
       ko: "아이가 최선의 치료를 받도록 함께 협력해봐요."
       chunks: ["Let's work together", "so he gets", "the best", "care", "."]
       words: [w-work, w-together, w-get, w-best, w-care]
       goal: 2
+      tag: "협력 제안"
+      icon: "handshake2"
+      why: "Let's work together로 보호자를 같은 팀으로 초대해요. so he gets the best care는 목표를 아이의 치료로 모아 줘요."
+      decoy: "so he skips"
+      distractorsKo: ["아이 몸무게를 재 볼게요.", "서류에 서명해 주세요."]
+      blank:
+        answer: "gets"
+        options:
+          - {en: "misses"}
+          - {en: "skips"}
+          - {en: "avoids"}
+          - {en: "gets"}
   nuance:
   - kind: pair
     words:
@@ -116013,6 +116987,29 @@
       you need to calm down: 명령이라 오히려 반발을 산다.
       you're being ridiculous: 모욕으로 들려 공격성을 키운다.
     why: 보호자의 분노 밑에는 아이를 향한 걱정이 있어요. 그 걱정에 기대어 행동을 바꿀 이유를 줘요.
+    ko: 화나신 마음은 이해해요, 하지만 소리치시면 아이가 무서워해요.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 화난 보호자 응대 4문장 순서
+    why: 아이를 향한 마음을 인정하는 말이 먼저, 그 때문에('Because of that') 화나는 것은 이해하되 소리치면 아이가 무서워한다고 말하고, 소리 대신('Instead of yelling') 하고 있는 일을 알리고, 그 계획을('the plan') 알았으니 차분하게 협조해 달라고 해요.
+    lines:
+    - en: I can see how much you love your son.
+      icon: faceWorried
+      ko: 아드님을 얼마나 사랑하시는지 느껴져요
+      note: 공감
+    - en: Because of that, your anger makes sense, but yelling scares him.
+      icon: faceWorried
+      ko: 그러니 화나는 게 이해돼요, 하지만 소리치면 아이가 무서워해요
+      note: 설명
+    - en: Instead of yelling, let me tell you exactly what we're doing for him.
+      icon: speech
+      ko: 소리 대신 저희가 하고 있는 일을 정확히 말씀드릴게요
+      note: 안내
+    - en: Now that you know the plan, let's stay calm so I can care for him.
+      icon: shield
+      ko: 이제 계획을 아셨으니 제가 아이를 돌볼 수 있도록 차분히 있어요
+      note: 협조
 
 - theme: er-deescalation
   title: 정신질환+초조 복합
@@ -116037,26 +117034,86 @@
       chunks: ["No one here", "is against you", "— I want", "to help you", "feel safe", "."]
       words: [w-here, w-against, w-want, w-help, w-feel, w-safe]
       goal: 1
+      tag: "안전 안내"
+      icon: "shield"
+      why: "편집적 의심이 있는 환자와는 그 생각을 반박하지 않고 지금 여기서 안전하다는 사실을 먼저 말해 줘요. No one here로 범위를 이 공간으로 좁히면 지키지 못할 약속이 되지 않아요."
+      decoy: "is around you"
+      distractorsKo: ["지금 혈압을 재 볼게요.", "담당 의사가 곧 올 거예요."]
+      blank:
+        answer: "safe"
+        options:
+          - {en: "calm"}
+          - {en: "safe"}
+          - {en: "better"}
+          - {en: "heard"}
     - en: "I'll keep everything out in the open so you can see."
       ko: "다 보이도록 숨김없이 할게요."
       chunks: ["I'll keep everything", "out in", "the open", "so you can see", "."]
       words: [w-keep, w-everything, w-open]
       goal: 1
+      tag: "투명하게"
+      icon: "magnify"
+      why: "숨기는 것 없이 눈에 보이게 하겠다는 약속이라, 감시당하거나 속는다고 느끼는 환자의 불신을 줄여요. so you can see로 환자가 직접 확인할 수 있게 해요."
+      decoy: "so you can rest"
+      distractorsKo: ["필요한 건 제가 다 해 드릴게요.", "가족분께 연락해 드릴까요?"]
+      blank:
+        answer: "see"
+        options:
+          - {en: "sign"}
+          - {en: "see"}
+          - {en: "rest"}
+          - {en: "wait"}
     - en: "You're in charge of what we talk about."
       ko: "무엇을 이야기할지는 당신이 정하는 거예요."
       chunks: ["You're in charge", "of what we", "talk about", "."]
       words: [w-charge, w-talk]
       goal: 2
+      tag: "선택권"
+      icon: "star"
+      why: "대화 주제를 환자가 정하게 하면 통제감이 돌아와요. 통제당한다고 느끼는 환자에게 작은 선택권을 주는 방법이에요."
+      decoy: "You're in favor"
+      distractorsKo: ["이쪽에 앉아 주세요.", "불이 너무 밝으면 말씀해 주세요."]
+      blank:
+        answer: "charge"
+        options:
+          - {en: "need"}
+          - {en: "doubt"}
+          - {en: "charge"}
+          - {en: "favor"}
     - en: "I'll tell you everything before I do it."
       ko: "하기 전에 무엇이든 미리 말씀드릴게요."
       chunks: ["I'll tell you", "everything before", "I do it", "."]
       words: [w-tell, w-everything, w-before, w-do]
       goal: 1
+      tag: "사전 설명"
+      icon: "speech"
+      why: "무엇을 할지 미리 말해 주면 갑작스러운 접촉이나 처치에 대한 불안과 의심이 줄어요. everything이라고 약속하면 환자가 예측할 수 있어요."
+      decoy: "I leave"
+      distractorsKo: ["손목을 잠깐 볼게요.", "혈압계를 팔에 감을게요."]
+      blank:
+        answer: "before"
+        options:
+          - {en: "while"}
+          - {en: "as"}
+          - {en: "before"}
+          - {en: "when"}
     - en: "You can ask me to stop at any time."
       ko: "언제든 멈춰달라고 말씀하셔도 돼요."
       chunks: ["You can ask", "me to stop", "at any", "time", "."]
       words: [w-ask, w-stop]
       goal: 2
+      tag: "중단 권리"
+      icon: "check"
+      why: "언제든 멈추라고 말할 수 있다는 것을 알려 주면 환자의 통제감이 유지돼요. at any time이 그 약속의 범위를 분명히 해 줘요."
+      decoy: "me to sign"
+      distractorsKo: ["가운을 입혀 드릴게요.", "불을 조금 낮출까요?"]
+      blank:
+        answer: "stop"
+        options:
+          - {en: "leave"}
+          - {en: "repeat"}
+          - {en: "stop"}
+          - {en: "explain"}
   nuance:
   - kind: slider
     words:
@@ -116087,10 +117144,34 @@
       ok: true
     - who: 환자에게
       icon: me
-      en: I'll notify you prior to each intervention.
+      en: I'll notify you before each intervention.
       ok: false
       fix: I'll let you know before I do anything.
     why: 편집 사고가 있는 환자에게는 무엇을 할지 쉬운 말로 미리 알려요. 알아듣지 못하는 의학 용어는 숨기는 게 있다는 의심을 키울 수 있어요.
+    word: before
+    ko: ~하기 전에
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 의심이 많은 초조한 환자 응대 4문장 순서
+    why: 안전하다는 말이 먼저, 안전하게 느끼도록('To help you feel safe') 모든 것을 보이게 하고, 무엇이든 하기 전에 그게 뭔지 알리겠다고 약속하고('Before I do anything'), 그렇게 알린 것('anything I've told you about')은 언제든 멈추게 할 수 있다고 마무리해요.
+    lines:
+    - en: No one here is against you — I want to help you feel safe.
+      icon: shield
+      ko: 여기 누구도 당신에게 반대하지 않아요, 안전하게 느끼시도록 돕고 싶어요
+      note: 안전
+    - en: To help you feel safe, I'll keep everything out in the open.
+      icon: magnify
+      ko: 안전하게 느끼시도록 다 보이게 할게요
+      note: 투명
+    - en: Before I do anything, I'll tell you what it is.
+      icon: speech
+      ko: 무엇이든 하기 전에 그게 뭔지 말씀드릴게요
+      note: 사전
+    - en: You can ask me to stop anything I've told you about at any time.
+      icon: check
+      ko: 말씀드린 건 무엇이든 언제든 멈춰 달라고 하셔도 돼요
+      note: 중단
 
 - theme: er-deescalation
   title: 무기 소지 의심
@@ -116115,26 +117196,86 @@
       chunks: ["I'm keeping", "my distance", "— I don't want", "anyone to get hurt", "."]
       words: [w-keep, w-distance, w-want, w-anyone, w-get, w-hurt]
       goal: 1
+      tag: "거리 유지"
+      icon: "shield"
+      why: "무기가 의심될 때는 환자와 안전한 거리를 지키는 것이 기본이에요. I'm keeping my distance로 거리를 두는 이유가 위협이 아니라 모두의 안전임을 말해 줘요."
+      decoy: "my silence"
+      distractorsKo: ["이름을 말씀해 주시겠어요?", "여기 앉으셔도 돼요."]
+      blank:
+        answer: "distance"
+        options:
+          - {en: "balance"}
+          - {en: "distance"}
+          - {en: "silence"}
+          - {en: "promise"}
     - en: "Can you tell me what's making you feel unsafe right now?"
       ko: "지금 뭐가 불안하게 만드는지 말씀해 주시겠어요?"
       chunks: ["Can you tell me", "what's making you", "feel unsafe", "right now", "?"]
       words: [w-tell, w-make, w-feel, w-unsafe, w-right]
       goal: 1
+      tag: "불안 원인"
+      icon: "magnify"
+      why: "무엇이 불안하게 하는지 열린 질문으로 물으면 위협 대신 대화로 주의를 돌릴 수 있어요. what's making you가 사람이 아니라 상황을 원인으로 가리켜 줘요."
+      decoy: "feel sleepy"
+      distractorsKo: ["지금 물을 드릴까요?", "누구와 같이 오셨어요?"]
+      blank:
+        answer: "unsafe"
+        options:
+          - {en: "angry"}
+          - {en: "sick"}
+          - {en: "dizzy"}
+          - {en: "unsafe"}
     - en: "Let's talk, and I'll listen to whatever you need to say."
       ko: "이야기해요, 무슨 말씀이든 들을게요."
       chunks: ["Let's talk", ", and I'll listen", "to whatever", "you need to say", "."]
       words: [w-talk, w-listen, w-whatever, w-need, w-say]
       goal: 2
+      tag: "경청"
+      icon: "speech"
+      why: "whatever you need to say로 어떤 말도 해도 된다고 열어 주면 말로 풀 여지가 생겨요. I'll listen은 약속이므로 중간에 끊지 않아요."
+      decoy: ", and I'll object"
+      distractorsKo: ["지금 어디가 불편하세요?", "물 한 잔 드릴까요?"]
+      blank:
+        answer: "listen"
+        options:
+          - {en: "listen"}
+          - {en: "reply"}
+          - {en: "respond"}
+          - {en: "react"}
     - en: "I'm not going to move closer unless you say it's okay."
       ko: "괜찮다고 하시지 않으면 더 가까이 가지 않을게요."
       chunks: ["I'm not going", "to move closer", "unless you say", "it's okay", "."]
       words: [w-move, w-close, w-unless, w-say, w-okay]
       goal: 1
+      tag: "접근 허락"
+      icon: "lock"
+      why: "환자가 괜찮다고 하기 전에는 다가가지 않겠다고 약속하면 위협을 덜 느껴요. unless로 거리를 환자가 정하게 해 줘요."
+      decoy: "although you say"
+      distractorsKo: ["보안팀이 곧 와요.", "다른 분들은 잠깐 나가 계시도록 할게요."]
+      blank:
+        answer: "unless"
+        options:
+          - {en: "unless"}
+          - {en: "wherever"}
+          - {en: "although"}
+          - {en: "because"}
     - en: "Security is close by, and I'm staying calm."
       ko: "보안팀이 가까이 있어요, 저는 차분히 있을게요."
       chunks: ["Security is close by", ", and I'm", "staying calm", "."]
       words: [w-security, w-close, w-stay, w-calm]
       goal: 2
+      tag: "지원 알림"
+      icon: "siren"
+      why: "보안팀이 가까이 있다는 사실을 위협이 아닌 담담한 어조로 알려요. I'm staying calm으로 내가 침착하다는 것을 함께 보여 줘요."
+      decoy: "The doctor is close by"
+      distractorsKo: ["의자에 앉으시겠어요?", "담요를 드릴까요?"]
+      blank:
+        answer: "close by"
+        options:
+          - {en: "on call"}
+          - {en: "close by"}
+          - {en: "on break"}
+          - {en: "off duty"}
   nuance:
   - kind: slider
     words:
@@ -116171,6 +117312,29 @@
       if you calm down: 조건이 명령처럼 들리고, 뒤집으면 '진정 안 하면 다가간다'는 위협이 된다.
       no matter what: 강한 약속이지만 상황이 바뀌면 지킬 수 없을 수 있다.
     why: 위협을 느끼는 환자에게는 통제감을 돌려주는 말이 긴장을 낮춰요.
+    ko: 괜찮다고 하시지 않으면 더 가까이 가지 않을게요.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 무기가 의심되는 환자와의 대화 4문장 순서
+    why: 모두의 안전을 위해 거리를 두는 말이 먼저, 같은 이유로('For the same reason') 보안이 가까이 있음을 알리고, 그 상태에서('With that in place') 불안의 원인을 묻고, 무엇이든('Whatever it is') 듣되 허락 없이 다가가지 않겠다고 약속해요.
+    lines:
+    - en: I'm keeping my distance — I don't want anyone to get hurt.
+      icon: shield
+      ko: 거리를 두고 있어요, 아무도 다치지 않았으면 해요
+      note: 거리
+    - en: For the same reason, security is close by, and I'm staying calm.
+      icon: siren
+      ko: 같은 이유로 보안팀이 가까이 있고 저는 차분히 있어요
+      note: 지원
+    - en: With that in place, can you tell me what's making you feel unsafe right now?
+      icon: magnify
+      ko: 그렇게 해 두었으니 지금 뭐가 불안하게 하는지 말씀해 주시겠어요?
+      note: 질문
+    - en: Whatever it is, I'll listen, and I won't move closer unless you say it's okay.
+      icon: speech
+      ko: 무엇이든 듣고, 괜찮다고 하시기 전에는 다가가지 않을게요
+      note: 약속
 
 - theme: er-deescalation
   title: 신체 공격 임박 코드
@@ -116195,26 +117359,86 @@
       chunks: ["I don't want", "to restrain you", "— help me", "keep this calm", "."]
       words: [w-want, w-restrain, w-help, w-keep, w-calm]
       goal: 1
+      tag: "억제 회피"
+      icon: "handshake2"
+      why: "억제는 최후의 수단이라는 점을 I don't want to로 먼저 말해요. help me로 환자에게 선택지를 줘서 스스로 진정할 기회를 줘요."
+      decoy: "keep this tense"
+      distractorsKo: ["물이라도 드릴까요?", "잠깐 앉으실래요?"]
+      blank:
+        answer: "calm"
+        options:
+          - {en: "tense"}
+          - {en: "angry"}
+          - {en: "calm"}
+          - {en: "loud"}
     - en: "Tell me what you need and I'll try to make it happen."
       ko: "필요하신 걸 말씀해 주시면 이루어지도록 해볼게요."
       chunks: ["Tell me", "what you need", "and I'll try", "to make it happen", "."]
       words: [w-tell, w-need, w-try, w-make, w-happen]
       goal: 1
+      tag: "요구 묻기"
+      icon: "mic"
+      why: "필요한 것을 말하게 하면 환자가 소리치는 대신 말로 표현할 길이 열려요. try to로 이루어질 수 있는 만큼만 약속해서 지키지 못할 말을 피해요."
+      decoy: "and I'll refuse"
+      distractorsKo: ["담요가 필요하세요?", "화장실에 가시겠어요?"]
+      blank:
+        answer: "try"
+        options:
+          - {en: "refuse"}
+          - {en: "pretend"}
+          - {en: "hesitate"}
+          - {en: "try"}
     - en: "We're going to keep everyone safe, including you."
       ko: "당신을 포함해서 모두를 안전하게 지킬 거예요."
       chunks: ["We're going", "to keep everyone safe", ", including you", "."]
       words: [w-keep, w-everyone, w-safe, w-including]
       goal: 2
+      tag: "모두의 안전"
+      icon: "shield"
+      why: "including you로 환자도 지켜야 할 사람에 포함된다고 말해, 억제나 보안 출동이 처벌이 아니라 안전을 위한 것임을 알려요."
+      decoy: "to keep everyone busy"
+      distractorsKo: ["지금 어디가 불편하세요?", "보호자께 연락드릴까요?"]
+      blank:
+        answer: "safe"
+        options:
+          - {en: "safe"}
+          - {en: "busy"}
+          - {en: "late"}
+          - {en: "warm"}
     - en: "My team is right outside if we need them."
       ko: "필요하면 저희 팀이 바로 바깥에 있어요."
       chunks: ["My team is", "right outside", "if we need", "them", "."]
       words: [w-team, w-right, w-outside, w-need]
       goal: 2
+      tag: "지원 알림"
+      icon: "siren"
+      why: "팀이 가까이 있다는 사실을 we need them이라는 담담한 말로 전해요. 위협하려는 말이 아니라 안전장치를 알려 주는 말이에요."
+      decoy: "right upstairs"
+      distractorsKo: ["지금 혈압을 재 볼게요.", "같이 심호흡해 볼까요?"]
+      blank:
+        answer: "outside"
+        options:
+          - {en: "upstairs"}
+          - {en: "downstairs"}
+          - {en: "outside"}
+          - {en: "next door"}
     - en: "I still want to work this out with you first."
       ko: "그래도 먼저 당신과 함께 풀어보고 싶어요."
       chunks: ["I still want", "to work this out", "with you", "first", "."]
       words: [w-still, w-want, w-out, w-first]
       goal: 1
+      tag: "먼저 대화"
+      icon: "speech"
+      why: "still로 상황이 격해져도 대화를 포기하지 않았다는 뜻을 전해요. first로 말로 푸는 것이 첫 선택이라고 알려요."
+      decoy: "with you last"
+      distractorsKo: ["의사 선생님이 곧 오세요.", "심호흡을 해 볼까요?"]
+      blank:
+        answer: "first"
+        options:
+          - {en: "later"}
+          - {en: "afterward"}
+          - {en: "first"}
+          - {en: "last"}
   nuance:
   - kind: slider
     words:
@@ -116241,14 +117465,38 @@
       ok: true
     - who: 동료에게
       icon: siren
-      en: Stay right outside the room — come in if I call you.
+      en: Stay right outside the open door, where I can see you.
       ok: true
     - who: 환자에게
       icon: me
       en: Security is staged outside in case you become combative.
       ok: false
       fix: There are more staff right outside if we need them.
-    why: 지원 인력이 가까이 있다는 사실은 같아도, 환자를 'combative'로 규정하며 말하면 위협으로 들려 더 격해질 수 있어요. 환자에게는 '우리'를 주어로 담담하게 말해요.
+    why: 지원 인력이 가까이 있다는 사실은 같아도, 환자를 'combative'로 규정하며 말하면 위협으로 들려 더 격해질 수 있어요. 환자에게는 '우리'를 주어로 담담하게 말해요. 말은 한 사람이 이끌되 팀은 문이 열린 채 보이는 곳에 있어요.
+    word: outside
+    ko: 바깥에
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 공격이 임박한 환자와의 대화 4문장 순서
+    why: 말로 푸는 것이 첫 선택이라는 말이 먼저, 그렇게 하려고('So') 필요한 것을 묻고, 환자가 말하는 것('What you tell me')을 따르되 팀이 열린 문 바로 바깥에 가까이 있음을 알리고, 어느 쪽이든('Either way') 모두의 안전을 말해요. 말은 한 사람이 이끌되 팀은 문이 열린 채 보이는 곳에 있어요.
+    lines:
+    - en: I still want to work this out with you first.
+      icon: speech
+      ko: 그래도 먼저 당신과 함께 풀어 보고 싶어요
+      note: 대화
+    - en: So tell me what you need, and I'll try to make it happen.
+      icon: mic
+      ko: 그러니 필요한 걸 말씀해 주세요, 이루어지게 해 볼게요
+      note: 요구
+    - en: What you tell me guides us, and my team is just outside the open door.
+      icon: siren
+      ko: 말씀하시는 걸 따를 거고, 팀은 열린 문 바로 바깥에 있어요
+      note: 지원
+    - en: Either way, we're going to keep everyone safe, including you.
+      icon: shield
+      ko: 어느 쪽이든 당신을 포함해 모두를 안전하게 지킬 거예요
+      note: 안전
 
 - theme: er-deescalation
   title: 억제 후 후속 소통
@@ -116273,26 +117521,86 @@
       chunks: ["I'm sorry", "that was scary", "— we only did it", "to keep you safe", "."]
       words: [w-sorry, w-scary, w-only, w-keep, w-safe]
       goal: 1
+      tag: "사과·이유"
+      icon: "faceWorried"
+      why: "무서웠던 감정을 먼저 인정하고 억제한 이유를 안전 하나로 짧게 설명해요. 억제가 끝난 뒤에는 환자에게 무슨 일이 있었고 왜 그랬는지 설명하는 것이 기본이에요."
+      decoy: "— we only wrote it"
+      distractorsKo: ["지금 팔 상태를 확인할게요.", "물을 드실래요?"]
+      blank:
+        answer: "did"
+        options:
+          - {en: "said"}
+          - {en: "wrote"}
+          - {en: "sent"}
+          - {en: "did"}
     - en: "Let me explain what happened and answer your questions."
       ko: "무슨 일이 있었는지 설명하고 궁금하신 걸 답해드릴게요."
       chunks: ["Let me explain", "what happened", "and answer", "your questions", "."]
       words: [w-explain, w-happen, w-answer, w-question]
       goal: 2
+      tag: "설명"
+      icon: "speech"
+      why: "일어난 일을 설명하고 질문에 답하는 것은 환자의 존엄을 지키는 첫걸음이에요. answer your questions로 환자가 묻는 것을 허락해요."
+      decoy: "your family"
+      distractorsKo: ["손목 색을 확인할게요.", "침대 높이를 맞춰 드릴게요."]
+      blank:
+        answer: "questions"
+        options:
+          - {en: "forms"}
+          - {en: "orders"}
+          - {en: "family"}
+          - {en: "questions"}
     - en: "Now that things are calmer, how are you feeling?"
       ko: "이제 좀 진정되셨는데, 기분은 어떠세요?"
       chunks: ["Now that things", "are calmer", ", how are you", "feeling", "?"]
       words: [w-thing, w-calm, w-feel]
       goal: 1
+      tag: "상태 확인"
+      icon: "faceWorried"
+      why: "진정된 뒤 먼저 감정을 묻는 질문이라 환자가 억제 경험을 말로 풀 기회가 돼요. Now that으로 상황이 달라졌음을 알려 줘요."
+      decoy: "are busier"
+      distractorsKo: ["손목 밴드를 다시 확인할게요.", "이제 잠시 쉬세요."]
+      blank:
+        answer: "calmer"
+        options:
+          - {en: "busier"}
+          - {en: "calmer"}
+          - {en: "louder"}
+          - {en: "tenser"}
     - en: "You still have a say in what happens next."
       ko: "앞으로 어떻게 할지는 여전히 당신 뜻이 반영돼요."
       chunks: ["You still have", "a say", "in what happens", "next", "."]
       words: [w-still, w-say, w-happen, w-next]
       goal: 2
+      tag: "선택권"
+      icon: "star"
+      why: "have a say는 결정에 의견을 낼 권리가 있다는 뜻이에요. 억제 후에도 환자는 다음 치료에 의견을 낼 수 있다고 알려 통제감을 돌려줘요."
+      decoy: "a doubt"
+      distractorsKo: ["지금 어디가 불편하세요?", "담요를 드릴까요?"]
+      blank:
+        answer: "say"
+        options:
+          - {en: "say"}
+          - {en: "doubt"}
+          - {en: "shift"}
+          - {en: "test"}
     - en: "I'm here, and I'm listening now."
       ko: "저는 여기 있고, 지금 듣고 있어요."
       chunks: ["I'm here", ", and I'm", "listening now", "."]
       words: [w-here, w-listen]
       goal: 1
+      tag: "곁에 있기"
+      icon: "bell"
+      why: "I'm here로 곁에 있다고 말하고 I'm listening으로 듣겠다고 해요. 억제 후 환자는 자신의 이야기를 들어 줄 사람이 필요해요."
+      decoy: "charting now"
+      distractorsKo: ["약 이름을 말씀드릴게요.", "보호자께 연락드릴게요."]
+      blank:
+        answer: "listening"
+        options:
+          - {en: "listening"}
+          - {en: "charting"}
+          - {en: "typing"}
+          - {en: "waiting"}
   nuance:
   - kind: pair
     words:
@@ -116334,6 +117642,29 @@
       because you wouldn't listen: 벌처럼 들린다. 억제는 벌이나 훈육의 수단이 아니다.
       as a precaution: 모호해서 무엇을 막으려 했는지 설명이 되지 않는다.
     why: 억제 뒤의 대화는 감정을 인정하고, 이유를 솔직하게 설명하는 데서 시작해요.
+    ko: 무서우셨을 텐데 죄송해요, 안전을 위해서만 그렇게 한 거예요.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 억제 후 환자와의 대화 4문장 순서
+    why: 무서웠던 마음에 사과하며 이유를 말하는 것이 먼저, 그 일을 이해시키려고('To make sense of it') 설명하고 질문에 답하고, 듣고 나서('Hearing all that') 기분을 묻고, 기분이 어떻든('However you feel') 다음 일에 의견을 낼 수 있다고 알려요.
+    lines:
+    - en: I'm sorry that was scary — we only did it to keep you safe.
+      icon: faceWorried
+      ko: 무서우셨겠어요, 안전을 위해서만 한 거예요
+      note: 사과
+    - en: To make sense of it, let me explain what happened and answer your questions.
+      icon: speech
+      ko: 이해하시도록 무슨 일이었는지 설명하고 질문에 답할게요
+      note: 설명
+    - en: Hearing all that, how are you feeling?
+      icon: faceWorried
+      ko: 다 들으시니 기분이 어떠세요?
+      note: 기분
+    - en: However you feel, you still have a say in what happens next.
+      icon: star
+      ko: 기분이 어떻든 다음 일에는 여전히 뜻을 말할 수 있어요
+      note: 선택
 
 - theme: er-deescalation
   title: 흥분성 섬망(ExDS)
@@ -116358,26 +117689,86 @@
       chunks: ["You're overheating", "— we're going", "to cool you", "down fast", "."]
       words: [w-overheat, w-cool, w-down, w-fast]
       goal: 1
+      tag: "체온 설명"
+      icon: "stetho"
+      why: "혼란스러운 환자에게는 hyperthermic 같은 의학 용어 대신 overheating처럼 짧고 쉬운 말로 무슨 일인지 알려요. we're going to로 곧 할 처치를 미리 말해 줘요."
+      decoy: "You're dehydrated"
+      distractorsKo: ["산소를 씌워 드릴게요.", "지금 혈압을 잴게요."]
+      blank:
+        answer: "overheating"
+        options:
+          - {en: "dehydrated"}
+          - {en: "overheating"}
+          - {en: "shaking"}
+          - {en: "confused"}
     - en: "Stay with me, we're getting you help right now."
       ko: "정신 놓지 마세요, 지금 바로 도움을 드릴게요."
       chunks: ["Stay with me", ", we're getting you", "help", "right now", "."]
       words: [w-stay, w-get, w-help, w-right]
       goal: 2
+      tag: "의식 유지"
+      icon: "bell"
+      why: "Stay with me는 의식이 흐려지는 환자에게 계속 반응하게 하는 짧은 말이에요. right now로 도움이 이미 오고 있다고 알려요."
+      decoy: "Stay with him"
+      distractorsKo: ["약 이름을 말씀해 주세요.", "다리를 펴 보세요."]
+      blank:
+        answer: "me"
+        options:
+          - {en: "them"}
+          - {en: "me"}
+          - {en: "him"}
+          - {en: "her"}
     - en: "I'm right here; we've got you."
       ko: "저 바로 여기 있어요, 저희가 지켜드릴게요."
       chunks: ["I'm right here;", "we've got", "you", "."]
       words: [w-right, w-here, w-got]
       goal: 2
+      tag: "곁에 있음"
+      icon: "handshake2"
+      why: "혼란스럽고 흥분한 환자에게는 짧은 문장 두 개로 곁에 있다고 말해요. we've got you는 팀이 환자를 지탱하고 있다는 안심을 줘요."
+      decoy: "we've called"
+      distractorsKo: ["눈을 떠 보세요.", "이름이 뭐예요?"]
+      blank:
+        answer: "got"
+        options:
+          - {en: "paged"}
+          - {en: "got"}
+          - {en: "called"}
+          - {en: "moved"}
     - en: "Your body is working very hard right now."
       ko: "지금 몸이 아주 힘들게 애쓰고 있어요."
       chunks: ["Your body is working", "very hard", "right now", "."]
       words: [w-work, w-hard, w-right]
       goal: 1
+      tag: "상태 설명"
+      icon: "stetho"
+      why: "무슨 일이 일어나는지를 환자 탓이 아니라 몸의 반응으로 설명해요. working very hard는 어려운 말 없이 몸이 지금 과하게 애쓰고 있다는 뜻이에요."
+      decoy: "very slowly"
+      distractorsKo: ["가슴에 전극을 붙일게요.", "정맥에 주사를 놓을게요."]
+      blank:
+        answer: "hard"
+        options:
+          - {en: "slowly"}
+          - {en: "quietly"}
+          - {en: "gently"}
+          - {en: "hard"}
     - en: "We're checking your temperature again."
       ko: "체온을 다시 확인하고 있어요."
       chunks: ["We're checking", "your temperature", "again", "."]
       words: [w-check, w-temperature, w-again]
       goal: 1
+      tag: "체온 재측정"
+      icon: "monitor"
+      why: "무엇을 하는지 현재 진행형으로 알려 주는 것이 환자의 불안을 줄여요. again으로 체온을 반복해서 확인하고 있음을 전해요."
+      decoy: "your heart rate"
+      distractorsKo: ["눈을 떠 보세요.", "제 목소리가 들리세요?"]
+      blank:
+        answer: "temperature"
+        options:
+          - {en: "heart rate"}
+          - {en: "oxygen"}
+          - {en: "temperature"}
+          - {en: "sugar"}
   nuance:
   - kind: slider
     words:
@@ -116400,7 +117791,7 @@
     scenes:
     - who: 의사에게 보고
       icon: monitor
-      en: Temp is 40.5 and climbing — he's hyperthermic.
+      en: Temp is 40.5 and climbing — he's hyperthermic; I'm starting active cooling.
       ok: true
     - who: 환자에게
       icon: me
@@ -116408,10 +117799,34 @@
       ok: true
     - who: 환자에게
       icon: me
-      en: Your core temp is 40.5 — you're hyperthermic.
+      en: Your core temp is 40.5 — you're hyperthermic, so we're cooling you.
       ok: false
       fix: Your body is too hot — we're cooling you down right now.
-    why: 몸이 과열됐다는 같은 사실도 의료진에게는 hyperthermic, 혼란스러운 환자에게는 overheating·too hot처럼 짧고 쉬운 말로 해요.
+    why: 몸을 식힌다는 같은 처치도 의료진에게는 hyperthermic 같은 정확한 말로, 혼란스러운 환자에게는 overheating·too hot처럼 짧고 쉬운 말로 알려요.
+    word: cool
+    ko: 식히다
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 고열로 흥분한 환자 응대 4문장 순서
+    why: 무슨 일인지 알리고 식히겠다는 말이 먼저, 식히는 것이 듣는지('the cooling') 보려고 체온을 다시 재고, 그 체온('That temperature')이 몸에 큰 부담이라고 설명하고, 어떤 느낌이든('Whatever you feel') 곁에 있다고 말해요.
+    lines:
+    - en: You're overheating — we're going to cool you down fast.
+      icon: stetho
+      ko: 체온이 너무 올라갔어요, 빨리 식혀 드릴게요
+      note: 설명
+    - en: We're checking your temperature again to see how the cooling is working.
+      icon: monitor
+      ko: 식히는 게 잘 되는지 체온을 다시 재고 있어요
+      note: 측정
+    - en: That temperature is a lot for your body — it's working very hard.
+      icon: stetho
+      ko: 그 체온은 몸에 큰 부담이에요, 아주 힘들게 애쓰고 있어요
+      note: 이유
+    - en: Whatever you feel, I'm right here; we've got you.
+      icon: handshake2
+      ko: 뭘 느끼시든 저 바로 여기 있어요, 저희가 지켜드릴게요
+      note: 곁
 
 - theme: er-deescalation
   title: 집단 폭력·다중 위협
@@ -116436,26 +117851,86 @@
       chunks: ["I need everyone", "to separate", "so no one", "gets hurt", "."]
       words: [w-need, w-everyone, w-separate, w-get, w-hurt]
       goal: 1
+      tag: "분리 요청"
+      icon: "shield"
+      why: "I need everyone to로 한 사람을 지적하지 않고 모두에게 같은 요청을 해요. so no one gets hurt로 이유를 말하면 명령이 아니라 안전을 위한 부탁으로 들려요."
+      decoy: "to gather"
+      distractorsKo: ["이쪽 의자에 앉아 주세요.", "물을 드릴게요."]
+      blank:
+        answer: "separate"
+        options:
+          - {en: "cluster"}
+          - {en: "separate"}
+          - {en: "gather"}
+          - {en: "merge"}
     - en: "Let's take this one group at a time — you first."
       ko: "한 번에 한 그룹씩 처리할게요, 먼저 이쪽부터요."
       chunks: ["Let's take this", "one group", "at a time", "— you first", "."]
       words: [w-group, w-first]
       goal: 1
+      tag: "순서 정하기"
+      icon: "compass"
+      why: "한꺼번에 말하면 더 격해지기 쉬워서 한 그룹씩 차례로 듣겠다고 해요. you first로 먼저 말할 사람을 정해 줘서 차례가 분명해져요."
+      decoy: "in a hurry"
+      distractorsKo: ["이쪽으로 오세요.", "이름을 알려 주세요."]
+      blank:
+        answer: "at a time"
+        options:
+          - {en: "in a crowd"}
+          - {en: "all together"}
+          - {en: "at a time"}
+          - {en: "in a hurry"}
     - en: "Security is here to keep everyone safe, including you."
       ko: "보안팀이 당신을 포함해 모두를 안전하게 지키러 왔어요."
       chunks: ["Security is here", "to keep everyone", "safe", ", including you", "."]
       words: [w-security, w-here, w-keep, w-everyone, w-safe, w-including]
       goal: 2
+      tag: "보안 설명"
+      icon: "siren"
+      why: "보안 인력이 보이면 위협으로 느낄 수 있어서 처벌이 아니라 안전을 위해 왔다고 목적을 말로 알려요. including you로 환자와 보호자도 포함해요."
+      decoy: ", regarding you"
+      distractorsKo: ["침대 번호를 확인할게요.", "가족분들은 이쪽으로 오세요."]
+      blank:
+        answer: "including"
+        options:
+          - {en: "regarding"}
+          - {en: "following"}
+          - {en: "concerning"}
+          - {en: "including"}
     - en: "I'm going to ask you to step back for now."
       ko: "지금은 잠시 뒤로 물러나 주시겠어요."
       chunks: ["I'm going", "to ask you", "to step back", "for now", "."]
       words: [w-ask, w-step, w-back]
       goal: 1
+      tag: "물러나기"
+      icon: "shield"
+      why: "I'm going to ask로 명령 대신 요청의 형태를 쓰고 for now로 잠시만이라는 단서를 붙여요. 서로 거리가 생기면 몸싸움 위험이 줄어요."
+      decoy: "to sit down"
+      distractorsKo: ["서류에 서명해 주세요.", "보호자 팔찌를 받아 가세요."]
+      blank:
+        answer: "back"
+        options:
+          - {en: "back"}
+          - {en: "aside"}
+          - {en: "down"}
+          - {en: "out"}
     - en: "We'll sort this out safely, one person at a time."
       ko: "한 사람씩 안전하게 해결해나갈게요."
       chunks: ["We'll sort this out", "safely", ", one person", "at a time", "."]
       words: [w-sort, w-out, w-safely, w-person]
       goal: 2
+      tag: "순차 해결"
+      icon: "handshake2"
+      why: "one person at a time은 여러 사람이 한꺼번에 말하는 상황을 하나씩 풀겠다는 약속이에요. safely로 해결 방식의 기준을 안전에 둬요."
+      decoy: "angrily"
+      distractorsKo: ["다치신 분 있으세요?", "서류를 가져올게요."]
+      blank:
+        answer: "safely"
+        options:
+          - {en: "angrily"}
+          - {en: "safely"}
+          - {en: "loudly"}
+          - {en: "hastily"}
   nuance:
   - kind: pair
     words:
@@ -116493,6 +117968,30 @@
       ok: false
       fix: Two visitor groups in verbal altercation; separated with security assist, no injuries.
     why: 현장에서는 짧은 지시로, 동료에게는 요청으로, 차트에는 무슨 일이 있었고 어떻게 조치했는지를 객관적으로 적어요.
+    word: separate
+    ko: 분리하다
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 여러 사람이 얽힌 갈등 개입 4문장 순서
+    why: 떨어지라는 요청이 먼저, 그 이유로('That's why') 보안이 와 있음을 알리고, 보안이 있으니('With security here') 물러서 달라고 하고, 생긴 공간에서('With that space') 한 사람씩 해결해요.
+    lines:
+    - en: I need everyone to separate so no one gets hurt.
+      icon: shield
+      ko: 아무도 다치지 않도록 모두 떨어져 주세요
+      note: 분리
+    - en: 'That''s why security is here: to keep everyone safe, including you.'
+      icon: siren
+      ko: 그래서 보안팀이 왔어요, 당신을 포함해 모두를 위해서예요
+      note: 보안
+    - en: With security here, I'm going to ask you to step back for now.
+      icon: shield
+      ko: 보안팀이 있으니 잠시 뒤로 물러나 달라고 부탁드릴게요
+      note: 요청
+    - en: With that space, we'll sort this out safely, one person at a time.
+      icon: handshake2
+      ko: 그렇게 생긴 공간에서 한 사람씩 안전하게 풀어 가요
+      note: 해결
 
 - theme: er-deescalation
   title: 진정제 투여 후 감시
@@ -116517,26 +118016,86 @@
       chunks: ["I'm going", "to keep checking", "on you", "while you rest", "."]
       words: [w-keep, w-check, w-while, w-rest]
       goal: 1
+      tag: "계속 확인"
+      icon: "monitor"
+      why: "진정제를 맞은 환자는 쉬는 동안에도 호흡과 의식을 계속 확인해야 해요. keep checking으로 쉬게 두고 방치하지 않는다고 알려요."
+      decoy: "while you wait"
+      distractorsKo: ["손을 한 번 꼭 쥐어 보세요.", "이름이 뭐예요?"]
+      blank:
+        answer: "rest"
+        options:
+          - {en: "wait"}
+          - {en: "rest"}
+          - {en: "talk"}
+          - {en: "read"}
     - en: "Can you open your eyes for me for a second?"
       ko: "잠깐 눈을 떠 주시겠어요?"
       chunks: ["Can you open", "your eyes", "for me", "for a second", "?"]
       words: [w-open, w-eye, w-second]
       goal: 2
+      tag: "의식 확인"
+      icon: "magnify"
+      why: "눈을 떠 보라는 가장 간단한 요청이라 진정제 뒤 의식 수준과 반응을 바로 확인할 수 있어요. for me로 요청을 부드럽게 해요."
+      decoy: "your mouth"
+      distractorsKo: ["제 손을 한 번 꼭 쥐어 보세요.", "이름이 뭐예요?"]
+      blank:
+        answer: "eyes"
+        options:
+          - {en: "mouth"}
+          - {en: "hand"}
+          - {en: "fist"}
+          - {en: "eyes"}
     - en: "Take slow, deep breaths — I'm watching over you."
       ko: "천천히 깊게 숨 쉬세요, 제가 계속 지켜보고 있어요."
       chunks: ["Take slow", ", deep breaths", "— I'm watching", "over you", "."]
       words: [w-slow, w-deep, w-breath, w-watch]
       goal: 1
+      tag: "호흡 안내"
+      icon: "stetho"
+      why: "천천히 깊게 쉬라는 요청과 I'm watching over you로 계속 지켜보고 있다는 안심을 함께 줘요. 진정제 뒤에는 호흡 상태를 계속 지켜보는 것이 안전 감시의 핵심이에요."
+      decoy: ", deep steps"
+      distractorsKo: ["지금 손가락에 센서를 끼울게요.", "혈압을 한 번 더 잴게요."]
+      blank:
+        answer: "breaths"
+        options:
+          - {en: "breaths"}
+          - {en: "steps"}
+          - {en: "notes"}
+          - {en: "turns"}
     - en: "Your breathing looks good right now."
       ko: "지금 호흡이 좋아 보여요."
       chunks: ["Your breathing", "looks good", "right now", "."]
       words: [w-look, w-right, w-breathe]
       goal: 1
+      tag: "호흡 안심"
+      icon: "stetho"
+      why: "looks good은 지금 관찰한 사실만 말하는 안심이에요. 진정제 뒤에는 상태가 바뀔 수 있어서 right now로 현재 시점에 한정하고 앞으로도 괜찮다는 약속은 하지 않아요."
+      decoy: "Your color"
+      distractorsKo: ["혈압을 재 볼게요.", "눈을 떠 보시겠어요?"]
+      blank:
+        answer: "breathing"
+        options:
+          - {en: "breathing"}
+          - {en: "color"}
+          - {en: "pulse"}
+          - {en: "oxygen"}
     - en: "I'll be right here if you need anything."
       ko: "필요한 게 있으면 바로 여기 있을게요."
       chunks: ["I'll be right here", "if you need", "anything", "."]
       words: [w-right, w-here, w-need, w-anything]
       goal: 2
+      tag: "곁에 있음"
+      icon: "bell"
+      why: "right here로 환자 곁에 있다고 알려서 쉬는 동안의 불안을 줄여요. if you need anything으로 도움이 필요하면 부르라는 문을 열어 줘요."
+      decoy: "if you hear"
+      distractorsKo: ["혈압을 한 번 더 잴게요.", "침대 높이를 조절할게요."]
+      blank:
+        answer: "need"
+        options:
+          - {en: "need"}
+          - {en: "hear"}
+          - {en: "see"}
+          - {en: "feel"}
   nuance:
   - kind: slider
     words:
@@ -116572,6 +118131,29 @@
       is within normal limits: 차트와 의료진끼리 쓰는 표현(WNL). 환자에게는 딱딱하게 들린다.
       is probably okay: probably가 확신 없는 말로 들려 오히려 불안을 준다.
     why: 같은 재사정 결과도 환자에게는 쉬운 말로, 차트에는 정확한 표현으로 남겨요.
+    ko: 지금 호흡이 좋아 보여요.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 진정제를 맞은 환자 감시 4문장 순서
+    why: 계속 확인하겠다는 말이 먼저, 그 확인의 일부로('That means') 호흡을 지켜보며 천천히 숨 쉬게 하고, 지켜본 호흡을 알리고('looks good'), 그 상태는 달라질 수 있다('That can change')며 곁에 있겠다고 말해요.
+    lines:
+    - en: I'm going to keep checking on you while you rest.
+      icon: monitor
+      ko: 쉬시는 동안 계속 상태를 확인할게요
+      note: 확인
+    - en: That means watching your breathing, so take slow, deep breaths for me.
+      icon: stetho
+      ko: 호흡을 지켜본다는 뜻이니 천천히 깊게 숨 쉬어 주세요
+      note: 호흡
+    - en: Your breathing looks good right now, and I'll keep watching it.
+      icon: stetho
+      ko: 지금 호흡이 좋아 보여요, 계속 지켜볼게요
+      note: 관찰
+    - en: That can change, so I'll stay right here with you.
+      icon: bell
+      ko: 그건 달라질 수 있으니 바로 곁에 있을게요
+      note: 곁
 
 - theme: er-peds
   title: 소아 발열 초기 문진
@@ -122083,26 +123665,86 @@
       chunks: ["I hear", "that you're frustrated", "— help me", "understand what happened", "."]
       words: [w-hear, w-frustrated, w-help, w-understand, w-happen]
       goal: 1
+      tag: "공감·경청"
+      icon: "faceWorried"
+      why: "I hear로 감정을 먼저 받고 help me understand로 환자가 이야기하게 해요. 떠나려는 이유를 알아야 풀 수 있는 문제인지 보이기 때문이에요."
+      decoy: "that you're pleased"
+      distractorsKo: ["지금 통증은 어떠세요?", "물 한 잔 드릴까요?"]
+      blank:
+        answer: "frustrated"
+        options:
+          - {en: "satisfied"}
+          - {en: "pleased"}
+          - {en: "relieved"}
+          - {en: "frustrated"}
     - en: "I can't hold you here, but I want you to know what the risks are."
       ko: "여기 붙잡아 둘 수는 없지만, 위험이 뭔지는 아셨으면 해요."
       chunks: ["I can't hold you", "here", ", but I want", "you to know", "what the risks are", "."]
       words: [w-hold, w-here, w-want, w-risk]
       goal: 2
+      tag: "권리 인정"
+      icon: "shield"
+      why: "환자가 떠날 권리가 있다는 사실을 숨기지 않고 말하면서, 떠나기 전에 위험은 알려 주겠다고 해요. 판단 능력이 있는 환자를 억지로 붙잡을 수 없다는 원칙에 맞아요."
+      decoy: "what the rules are"
+      distractorsKo: ["기다리는 시간을 확인해 볼게요.", "담당 의사를 불러올게요."]
+      blank:
+        answer: "risks"
+        options:
+          - {en: "rules"}
+          - {en: "steps"}
+          - {en: "risks"}
+          - {en: "options"}
     - en: "If you decide to stay, I'll make the wait as short as I can."
       ko: "남기로 결정하시면, 기다리는 시간을 최대한 짧게 해드릴게요."
       chunks: ["If you decide", "to stay", ", I'll make", "the wait", "as short as I can", "."]
       words: [w-decide, w-stay, w-make, w-wait, w-short]
       goal: 2
+      tag: "남을 때 제안"
+      icon: "calendar"
+      why: "If you decide로 선택은 환자 몫임을 분명히 하면서 남으면 할 수 있는 일을 구체적으로 약속해요. as short as I can은 지킬 수 있는 만큼만 약속하는 표현이에요."
+      decoy: "to leave"
+      distractorsKo: ["서류에 서명해 주세요.", "환자분 팔찌를 확인할게요."]
+      blank:
+        answer: "stay"
+        options:
+          - {en: "leave"}
+          - {en: "stay"}
+          - {en: "sign"}
+          - {en: "call"}
     - en: "I'd rather you stay, but it's still your choice."
       ko: "저는 남아주셨으면 하지만, 그래도 결정은 당신 몫이에요."
       chunks: ["I'd rather", "you stay", ", but it's still", "your choice", "."]
       words: [w-rather, w-stay, w-still, w-choice]
       goal: 2
+      tag: "의사 존중"
+      icon: "handshake2"
+      why: "I'd rather로 남아 주길 바라는 내 마음을 솔직하게 말하고 it's still your choice로 결정권이 환자에게 있음을 되새겨요. 설득과 존중이 함께 가요."
+      decoy: "your turn"
+      distractorsKo: ["지금 통증은 어떠세요?", "차트를 확인할게요."]
+      blank:
+        answer: "choice"
+        options:
+          - {en: "turn"}
+          - {en: "room"}
+          - {en: "choice"}
+          - {en: "chart"}
     - en: "Let me explain the risks one more time."
       ko: "위험을 한 번 더 설명해 드릴게요."
       chunks: ["Let me explain", "the risks", "one more time", "."]
       words: [w-explain, w-risk, w-more]
       goal: 2
+      tag: "위험 재설명"
+      icon: "board"
+      why: "위험을 한 번 더 설명하는 것은 이해했는지 확인하는 기회예요. Let me로 허락을 구하는 형태라 강요처럼 들리지 않아요."
+      decoy: "the results"
+      distractorsKo: ["지금 어디가 불편하세요?", "차트에 적어 둘게요."]
+      blank:
+        answer: "risks"
+        options:
+          - {en: "rules"}
+          - {en: "results"}
+          - {en: "options"}
+          - {en: "risks"}
   nuance:
   - kind: slider
     words:
@@ -122138,3 +123780,26 @@
       You're not allowed to leave: 사실이 아니다. 판단 능력이 있는 성인을 본인 뜻에 반해 붙잡아 둘 수 없다.
       You'll die if you go: 겁을 주는 말. 위험은 과장 없이 구체적으로 설명한다.
     why: 자의 퇴원 대화는 선택권을 인정하는 데서 시작해야 위험 설명을 들어 줘요.
+    ko: 여기 붙잡아 둘 수는 없지만, 위험이 뭔지는 아셨으면 해요.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 퇴원하겠다는 환자 응대 4문장 순서
+    why: 무슨 일이 있었는지 듣는 것이 먼저, 어떤 일이었든('Whatever happened') 붙잡을 수 없지만 남아 주길 바란다고 말하고, 그 선택을 분명히 하려고('To make that choice clear') 위험을 설명하고, 설명 뒤 남기로 하면('after that') 할 일을 약속해요.
+    lines:
+    - en: I hear that you're frustrated — help me understand what happened.
+      icon: faceWorried
+      ko: 답답하신 거 들려요, 무슨 일이 있었는지 알려 주세요
+      note: 경청
+    - en: Whatever happened, I can't hold you, but I'd rather you stay — it's your choice.
+      icon: shield
+      ko: 무슨 일이 있었든 붙잡을 수는 없지만 남아 주셨으면 하고, 결정은 당신 몫이에요
+      note: 존중
+    - en: To make that choice clear, let me explain the risks one more time.
+      icon: board
+      ko: 그 선택이 분명하도록 위험을 한 번 더 설명할게요
+      note: 설명
+    - en: If you stay after that, I'll make the wait as short as I can.
+      icon: calendar
+      ko: 그 뒤 남기로 하시면 기다림을 최대한 줄일게요
+      note: 약속

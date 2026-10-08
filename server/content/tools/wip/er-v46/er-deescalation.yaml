@@ -3284,10 +3284,10 @@ situations:
     blank:
       answer: wait
       options:
-      - en: wait
       - en: visit
+      - en: wait
       - en: shift
-      - en: bill
+      - en: drive
   - en: Patients with life-threatening issues are seen first.
     ko: 생명이 위독한 환자분들이 먼저 진료를 받으세요.
     chunks:
@@ -3331,18 +3331,18 @@ situations:
     goal: 2
     tag: 순서 확인
     icon: magnify
-    why: check on으로 직접 알아보겠다는 약속과 update you로 다시 알려 주겠다는 약속을 한 문장에 담아요. 막연한 soon 대신 shortly를 써서 곧 소식이 온다는 기대를 줘요.
-    decoy: and charge you
+    why: check on으로 직접 알아보겠다는 약속과 update you로 내가 다시 알려 주겠다는 약속을 한 문장에 담아요. 환자가 다시 물으러 오지 않아도 돼요.
+    decoy: and move you
     distractorsKo:
     - 접수 번호를 다시 알려 주세요.
     - 차트에 메모를 남길게요.
     blank:
       answer: update
       options:
-      - en: bill
-      - en: charge
+      - en: triage
+      - en: register
+      - en: move
       - en: update
-      - en: discharge
   - en: I know three hours can feel like forever.
     ko: 세 시간이 정말 길게 느껴지실 거예요.
     chunks:
@@ -3433,15 +3433,15 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 대기 지연 불만 응대 4문장 순서
-    why: 사과가 먼저, 이유가 그 뒤를 받고('That's why'), 이유를 알린 상태에서 순서를 확인하고('With that in mind'), 확인한 결과를 직접 알려 주는('Whatever I find out') 흐름이에요.
+    why: 사과가 먼저, 대기가 긴 이유가 그 뒤를 받고('That's because'), 이유를 알린 상태에서 순서를 확인하고('With that in mind'), 확인한 결과를 직접 알려 주는('Whatever I find out') 흐름이에요.
     lines:
     - en: I'm sorry the wait has been so long.
       icon: faceWorried
       ko: 오래 기다리게 해서 죄송해요
       note: 사과
-    - en: 'That''s why: the sickest patients are seen first.'
+    - en: That's because the sickest patients are seen first.
       icon: siren
-      ko: 그래서예요, 가장 위급한 분들이 먼저 진료를 받아요
+      ko: 가장 위급한 분들이 먼저 진료를 받기 때문이에요
       note: 이유
     - en: With that in mind, I'll check on your place in line.
       icon: magnify
@@ -3467,7 +3467,7 @@ situations:
     tag: 공감
     icon: faceWorried
     why: 상대의 감정이 맞다고 먼저 인정하고 I'm listening으로 듣겠다고 하면 반박이 아니라 경청으로 들려요. 진정하라는 말이 오히려 화를 키우는 것과 반대 방향이에요.
-    decoy: — I'm leaving
+    decoy: to be tired
     distractorsKo:
     - 잠깐 앉아서 기다려 주세요.
     - 혈압부터 재겠습니다.
@@ -3519,17 +3519,17 @@ situations:
     tag: 요구 묻기
     icon: mic
     why: Tell me로 열린 질문을 하면 환자가 통제감을 되찾아요. right now가 지금 당장 할 수 있는 일에 초점을 맞춰 줘요.
-    decoy: what would hurt
+    decoy: where it hurts
     distractorsKo:
     - 이쪽 의자에 앉으세요.
     - 제가 다른 간호사를 불러올게요.
     blank:
       answer: help
       options:
-      - en: hurt
-      - en: delay
-      - en: annoy
+      - en: upset
+      - en: scare
       - en: help
+      - en: bother
   - en: I'm going to sit down so we're at the same level.
     ko: 눈높이를 맞추려고 제가 앉을게요.
     chunks:
@@ -3660,17 +3660,17 @@ situations:
     tag: 공간 주기
     icon: me
     why: 물러서서 공간을 주고 is this better?로 바로 확인해요. 환자가 편한 거리를 스스로 정하게 하는 질문이에요.
-    decoy: some forms
+    decoy: some time
     distractorsKo:
     - 이쪽으로 앉으세요.
     - 혈압을 재 볼게요.
     blank:
-      answer: some
+      answer: space
       options:
-      - en: less
-      - en: little
-      - en: some
-      - en: 'no'
+      - en: space
+      - en: time
+      - en: water
+      - en: privacy
   - en: You can move wherever feels comfortable to you.
     ko: 편하게 느껴지는 곳으로 움직이셔도 돼요.
     chunks:
@@ -3714,7 +3714,7 @@ situations:
     why: not … just로 압박이 아니라 도움이 목적임을 분명히 해요. 위협으로 느끼는 환자에게는 의도를 말로 알려 주는 것이 안전감을 줘요.
     decoy: ', just to hurry'
     distractorsKo:
-    - 도움이 필요하면 불러 주세요.
+    - 불을 조금 줄여 드릴까요?
     - 제가 보호자분께 알릴게요.
     blank:
       answer: help
@@ -3739,17 +3739,17 @@ situations:
     tag: 출구 확보
     icon: shield
     why: 문 옆에 서서 출구를 비워 두면 환자가 갇혔다고 느끼지 않아요. 직원이 문을 막지 않아야 필요할 때 누구든 나갈 수 있어요.
-    decoy: ', and block it'
+    decoy: by the window
     distractorsKo:
     - 필요하시면 커튼을 칠게요.
     - 보호자분께 연락할게요.
     blank:
-      answer: not
+      answer: block
       options:
-      - en: just to
-      - en: not
-      - en: and
-      - en: to
+      - en: block
+      - en: open
+      - en: lock
+      - en: close
   - en: Let me know if you want more room to breathe.
     ko: 숨 쉴 공간이 더 필요하면 말씀해 주세요.
     chunks:
@@ -3766,17 +3766,17 @@ situations:
     tag: 요청 안내
     icon: speech
     why: Let me know로 환자가 원할 때 말하게 해요. 더 물러서겠다는 약속을 먼저 해 두면 환자가 거리를 정할 수 있어요.
-    decoy: more tests
+    decoy: more time
     distractorsKo:
     - 담요를 가져다 드릴까요?
     - 불을 좀 줄여 드릴까요?
     blank:
       answer: room
       options:
-      - en: blankets
-      - en: tests
+      - en: time
       - en: room
-      - en: pills
+      - en: blankets
+      - en: water
   nuance:
   - kind: pair
     words:
@@ -3858,17 +3858,17 @@ situations:
     tag: 이해 확인
     icon: magnify
     why: make sure로 내가 이해한 것이 맞는지 확인하겠다고 해요. 짐작하지 않고 확인하면 같은 말을 되풀이해야 했던 환자의 피로가 줄어요.
-    decoy: I forget
+    decoy: you understand
     distractorsKo:
     - 다시 접수 창구로 가 주세요.
     - 담당 선생님께 전달해 둘게요.
     blank:
       answer: understand
       options:
-      - en: forget
-      - en: dismiss
-      - en: ignore
+      - en: repeat
+      - en: check
       - en: understand
+      - en: order
   - en: I hear you've had to repeat yourself — that's frustrating.
     ko: 몇 번씩 반복하셔야 했다는 거 들었어요, 답답하셨을 거예요.
     chunks:
@@ -3885,7 +3885,7 @@ situations:
     tag: 공감
     icon: faceWorried
     why: I hear로 환자가 한 말을 들었다고 알리고 반복해야 했던 불편을 frustrating으로 이름 붙여 줘요. 불편의 원인이 환자가 아니라 과정에 있다고 보여 줘요.
-    decoy: — that's amusing
+    decoy: — that's on us
     distractorsKo:
     - 진료비 안내를 드릴게요.
     - 보호자분께 전화할게요.
@@ -3893,9 +3893,9 @@ situations:
       answer: frustrating
       options:
       - en: frustrating
-      - en: amusing
       - en: unusual
-      - en: convenient
+      - en: understandable
+      - en: normal
   - en: Here's what I can do right now for you.
     ko: 지금 당장 해드릴 수 있는 건 이거예요.
     chunks:
@@ -3911,17 +3911,17 @@ situations:
     tag: 가능한 조치
     icon: check
     why: what I can do로 못 하는 일이 아니라 할 수 있는 일에 초점을 맞춰요. right now가 곧바로 행동으로 이어진다는 느낌을 줘요.
-    decoy: against you
+    decoy: about the wait
     distractorsKo:
     - 성함과 생년월일을 확인할게요.
     - 다른 부서에 전화해 볼게요.
     blank:
-      answer: for
+      answer: do
       options:
-      - en: about
-      - en: for
-      - en: against
-      - en: without
+      - en: say
+      - en: do
+      - en: check
+      - en: sign
   - en: Tell me again, and I'll write it down this time.
     ko: 다시 말씀해 주시면 이번엔 적어둘게요.
     chunks:
@@ -4113,12 +4113,12 @@ situations:
     - 혈압을 한 번 재 볼게요.
     - 침대를 조금 올릴게요.
     blank:
-      answer: right away
+      answer: something
       options:
-      - en: by Friday
-      - en: someday
-      - en: right away
-      - en: next week
+      - en: someone
+      - en: a doctor
+      - en: something
+      - en: the charge nurse
   - en: I know pain like this is hard to sit with.
     ko: 이런 통증은 견디기 힘들다는 거 알아요.
     chunks:
@@ -4135,17 +4135,17 @@ situations:
     tag: 공감
     icon: faceWorried
     why: hard to sit with는 참기 힘든 고통을 인정하는 표현이라, 아프다고 화내는 환자의 감정을 있는 그대로 받아 줘요.
-    decoy: is easy
+    decoy: waiting like this
     distractorsKo:
     - 숨을 깊게 쉬어 보세요.
     - 얼음찜질을 해 볼게요.
     blank:
       answer: hard
       options:
-      - en: easy
-      - en: pleasant
-      - en: comfortable
       - en: hard
+      - en: strange
+      - en: scary
+      - en: new
   - en: Let's find a position that hurts less.
     ko: 덜 아픈 자세를 찾아봐요.
     chunks:
@@ -4214,7 +4214,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 통증으로 초조한 환자 응대 4문장 순서
-    why: 공감이 먼저, 그 통증에 대해('To help with it') 정도를 묻고, 숫자가 얼마든('Whatever the number') 바로 조치하고, 그와 함께('Along with that') 자세를 찾아요.
+    why: 공감이 먼저, 그 통증에 대해('To help with it') 정도를 묻고, 숫자가 얼마든('Whatever the number') 바로 조치하고, 그것을 기다리는 동안('While you wait for it') 자세를 찾아요.
     lines:
     - en: I know pain like this is hard to sit with.
       icon: faceWorried
@@ -4228,9 +4228,9 @@ situations:
       icon: pill
       ko: 숫자가 얼마든 바로 뭔가 가져다 드릴게요
       note: 조치
-    - en: Along with that, let's find a position that hurts less.
+    - en: While you wait for it, let's find a position that hurts less.
       icon: me
-      ko: 그와 함께 덜 아픈 자세를 찾아봐요
+      ko: 그동안 덜 아픈 자세를 찾아봐요
       note: 자세
 - title: 알코올 취기 공격성
   sentences:
@@ -4256,12 +4256,12 @@ situations:
     - 술을 얼마나 드셨는지 알려 주세요.
     - 여기 침대에 누워 주세요.
     blank:
-      answer: judging
+      answer: help
       options:
-      - en: feeding
-      - en: judging
-      - en: weighing
-      - en: billing
+      - en: talk
+      - en: ask
+      - en: check
+      - en: help
   - en: Let's keep it calm; I'm on your side.
     ko: 차분히 있어요, 저는 당신 편이에요.
     chunks:
@@ -4305,17 +4305,17 @@ situations:
     tag: 제안
     icon: speech
     why: How about we는 명령이 아니라 제안이라 거절하기 쉬워요. 앉자는 제안은 서 있을 때보다 긴장을 낮추는 자세를 권하는 거예요.
-    decoy: we jump down
+    decoy: we lie down
     distractorsKo:
     - 술은 얼마나 드셨어요?
     - 보호자분께 전화할까요?
     blank:
       answer: sit
       options:
-      - en: rush
-      - en: hurry
-      - en: race
+      - en: lie
+      - en: calm
       - en: sit
+      - en: settle
   - en: I hear you, and I'm not here to fight.
     ko: 말씀 듣고 있어요, 싸우려는 게 아니에요.
     chunks:
@@ -4332,7 +4332,7 @@ situations:
     tag: 안심
     icon: handshake2
     why: I hear you로 먼저 듣는다는 신호를 주고 not here to fight로 싸울 뜻이 없음을 말로 분명히 해요. 시비가 붙은 환자에게는 대립 구도부터 풀어 줘요.
-    decoy: to pay
+    decoy: to judge
     distractorsKo:
     - 지금 체온을 재도 될까요?
     - 병실로 모셔 드릴게요.
@@ -4340,9 +4340,9 @@ situations:
       answer: fight
       options:
       - en: fight
-      - en: pay
-      - en: sleep
-      - en: shop
+      - en: judge
+      - en: lecture
+      - en: rush
   - en: Let's slow things down together.
     ko: 함께 천천히 진정해봐요.
     chunks:
@@ -4442,17 +4442,17 @@ situations:
     tag: 안전 안내
     icon: shield
     why: 낯선 곳에서 불안해하는 치매 환자에게는 안전하다는 말과 곁에 있겠다는 약속을 함께 해요. 짧은 문장으로 같은 말을 되풀이해도 괜찮아요.
-    decoy: You're safe outside
+    decoy: You're safe with her
     distractorsKo:
     - 따님께 전화해 드릴게요.
     - 점심 드실 시간이에요.
     blank:
       answer: here
       options:
-      - en: upstairs
-      - en: downtown
+      - en: now
+      - en: tonight
+      - en: today
       - en: here
-      - en: outside
   - en: Your daughter is on her way to see you.
     ko: 따님이 지금 오고 계세요.
     chunks:
@@ -4496,17 +4496,17 @@ situations:
     tag: 사진 보기
     icon: star
     why: 사진은 기억에 닿기 쉬운 주제라 불안한 환자의 주의를 부드럽게 돌려 줘요. for a moment로 부담 없이 잠깐만 해 보자고 제안해요.
-    decoy: at these bills
+    decoy: at these cards
     distractorsKo:
     - 약을 같이 드실까요?
     - 화장실에 가고 싶으세요?
     blank:
       answer: photos
       options:
-      - en: photos
       - en: charts
       - en: forms
-      - en: bills
+      - en: photos
+      - en: letters
   - en: You're safe with me, and I'm right beside you.
     ko: 저와 함께 있으니 안전해요, 제가 바로 곁에 있어요.
     chunks:
@@ -4529,12 +4529,12 @@ situations:
     - 잠깐 팔을 걷어 주세요.
     - 따뜻한 담요를 드릴게요.
     blank:
-      answer: with
+      answer: beside
       options:
-      - en: despite
-      - en: with
-      - en: without
-      - en: against
+      - en: beside
+      - en: behind
+      - en: across from
+      - en: in front of
   - en: Let's talk about your family for a while.
     ko: 잠시 가족 이야기를 나눠봐요.
     chunks:
@@ -4549,17 +4549,17 @@ situations:
     tag: 화제 전환
     icon: speech
     why: 가족 이야기는 오래된 기억과 이어져 편안함을 줄 수 있어요. Let's로 같이 하자고 하고 for a while로 잠시만 해 보자고 가볍게 제안해요.
-    decoy: about your insurance
+    decoy: about your medicines
     distractorsKo:
     - 오늘 약은 다 드셨어요?
     - 팔찌를 확인할게요.
     blank:
       answer: family
       options:
-      - en: insurance
       - en: diagnosis
-      - en: family
       - en: surgery
+      - en: medicines
+      - en: family
   nuance:
   - kind: pair
     words:
@@ -4603,15 +4603,15 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 불안한 치매 환자 응대 4문장 순서
-    why: 안전하고 곁에 있다는 말이 먼저, 나 말고도('Besides me') 가족이 오고 있음을 알리고, 그 가족('her')의 사진을 같이 보고, 사진 속 사람들('them') 이야기를 나눠요.
+    why: 안전하고 곁에 있다는 말이 먼저, 나 혼자만이 아니라('I'm not the only one') 가족이 오고 있음을 알리고, 그 가족('her')의 사진을 같이 보고, 사진 속 사람들('them') 이야기를 나눠요.
     lines:
     - en: You're safe here, and I'm going to stay with you.
       icon: shield
       ko: 여기서는 안전해요, 제가 곁에 있을게요
       note: 안심
-    - en: Besides me, your daughter is on her way to see you.
+    - en: I'm not the only one — your daughter is on her way to see you.
       icon: bell
-      ko: 저 말고도 따님이 지금 오고 계세요
+      ko: 저만 있는 게 아니에요, 따님이 지금 오고 계세요
       note: 소식
     - en: Let's look at some photos of her together.
       icon: star
@@ -4642,17 +4642,17 @@ situations:
     tag: 믿음 표현
     icon: faceWorried
     why: 통증이 진짜라고 먼저 믿어 준 뒤 safely로 치료 방향을 말해요. 약을 요구하는 환자를 의심부터 하면 갈등이 커지기 쉬워서 믿음과 안전을 한 문장에 함께 담아요.
-    decoy: to treat it secretly
+    decoy: to treat it quickly
     distractorsKo:
     - 약 알레르기가 있으세요?
     - 오늘 몇 시에 오셨어요?
     blank:
       answer: safely
       options:
-      - en: secretly
-      - en: reluctantly
-      - en: suddenly
+      - en: quickly
+      - en: gently
       - en: safely
+      - en: fully
   - en: I can't give you that, but here's what I can offer.
     ko: 그건 드릴 수 없지만, 대신 이걸 제안드릴 수 있어요.
     chunks:
@@ -4668,17 +4668,17 @@ situations:
     tag: 거절+대안
     icon: handshake2
     why: 못 하는 일을 말한 뒤 바로 but으로 할 수 있는 일을 이어 줘요. 거절만 하면 대화가 끊기지만 대안을 같이 말하면 환자가 외면당한다고 느끼지 않아요.
-    decoy: I will give you that
+    decoy: I can't promise that
     distractorsKo:
     - 통증 점수를 알려 주세요.
     - 처방전은 어느 약국이세요?
     blank:
-      answer: can't
+      answer: offer
       options:
-      - en: can't
-      - en: can
-      - en: will
-      - en: must
+      - en: prescribe
+      - en: offer
+      - en: order
+      - en: promise
   - en: Let's focus on what will actually help you feel better.
     ko: 실제로 도움이 될 것에 집중해봐요.
     chunks:
@@ -4803,19 +4803,19 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 마약성 진통제를 요구하는 환자 응대 4문장 순서
-    why: 아픔을 인정하는 말이 먼저, 통증이 진짜라고 믿고 안전하게 치료하겠다는 말이 이를 받고('Beyond that'), 그 안전 때문에('Treating it safely') 줄 수 없는 것과 줄 수 있는 것을 말하고, 대안을('what else') 같이 찾아요.
+    why: 아픔을 인정하는 말이 먼저, 그 통증('that pain')이 진짜라고 믿고 안전하게 치료하겠다는 말이 이를 받고, 그 안전 때문에('Treating it safely') 요구한 약은 줄 수 없다는 것과 줄 수 있는 것을 말하고, 대안을('what else') 같이 찾아요.
     lines:
     - en: I hear that you're hurting, and I'm not judging you.
       icon: faceWorried
       ko: 많이 아프신 거 알아요, 비난하는 게 아니에요
       note: 공감
-    - en: Beyond that, I believe your pain is real, and I want to treat it safely.
+    - en: I believe that pain is real, and I want to treat it safely.
       icon: shield
-      ko: 그뿐 아니라 통증이 진짜라고 믿고 안전하게 치료하고 싶어요
+      ko: 그 통증이 진짜라고 믿고 안전하게 치료하고 싶어요
       note: 믿음
     - en: Treating it safely means I can't give you that, but here's what I can offer.
       icon: handshake2
-      ko: 안전하게 치료하려면 그건 드릴 수 없지만 대신 이걸 드릴 수 있어요
+      ko: 안전하게 치료하려면 그 약은 드릴 수 없지만 대신 이걸 드릴 수 있어요
       note: 대안
     - en: Let's talk about what else might work for you.
       icon: speech
@@ -4894,17 +4894,17 @@ situations:
     tag: 해결 약속
     icon: shield
     why: I'll address this로 불만을 직접 처리하겠다고 약속한 뒤 for everyone으로 차분함이 모두를 위한 것이라고 말해요. 환자만 지적하는 말로 들리지 않아요.
-    decoy: I'll ignore this
+    decoy: I'll explain this
     distractorsKo:
     - 다른 환자분들도 곧 안내해 드릴게요.
     - 접수 번호를 불러 드릴게요.
     blank:
       answer: address
       options:
-      - en: skip
-      - en: forget
+      - en: explain
+      - en: mention
+      - en: document
       - en: address
-      - en: ignore
   - en: Let's move away from the crowd so we can hear each other.
     ko: 사람들과 좀 떨어져서 서로 이야기를 들어봐요.
     chunks:
@@ -4920,16 +4920,16 @@ situations:
     tag: 거리 두기
     icon: compass
     why: 사람이 많은 곳에서는 서로 말이 안 들려서 더 큰 소리로 말하게 돼요. 군중에서 떨어지자고 하면 목소리가 낮아지고 대화에 집중할 수 있어요.
-    decoy: closer to the crowd
+    decoy: from the TV
     distractorsKo:
     - 번호표를 새로 뽑아 오세요.
     - 접수 창구가 저쪽이에요.
     blank:
       answer: away from
       options:
-      - en: closer to
-      - en: into
       - en: toward
+      - en: around
+      - en: behind
       - en: away from
   - en: I don't want this to get bigger than it needs to be.
     ko: 이 일이 필요 이상으로 커지지 않았으면 해요.
@@ -4998,7 +4998,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 대기실 긴장 완화 4문장 순서
-    why: 따로 이야기할 곳으로 옮기자고 하고, 그곳에서('Over here') 일대일로 듣겠다고 하고, 불만이 무엇이든('Whatever it is') 처리하되 차분하게 하자고 하고, 그렇게 해서('That way') 일이 커지지 않게 해요.
+    why: 따로 이야기할 곳으로 옮기자고 하고, 그곳에서('Over here') 일대일로 듣겠다고 하고, 불만이 무엇이든('Whatever it is') 처리하되 차분하게 하자고 하고, 그렇게 차분히 있으면('Keeping it calm') 일이 커지지 않는다고 마무리해요.
     lines:
     - en: Let's step over here where we can talk privately.
       icon: compass
@@ -5012,9 +5012,9 @@ situations:
       icon: shield
       ko: 무엇이든 제가 처리할게요, 모두를 위해 차분히 해요
       note: 약속
-    - en: That way, it won't get bigger than it needs to be.
+    - en: Keeping it calm means this won't get bigger than it needs to be.
       icon: bell
-      ko: 그래야 필요 이상으로 커지지 않아요
+      ko: 차분히 있으면 필요 이상으로 커지지 않아요
       note: 이유
 - title: 언어폭력 대상 직원 보호
   sentences:
@@ -5066,7 +5066,7 @@ situations:
     tag: 경계 설정
     icon: shield
     why: 받아들일 수 없는 행동은 분명히 말하되 but I'm still here for you로 환자를 돌보겠다는 뜻은 그대로 유지해요. 경계와 돌봄을 한 문장에 함께 담는 방법이에요.
-    decoy: I won't forget
+    decoy: I won't mind
     distractorsKo:
     - 보호자분께 연락드릴게요.
     - 차트에 기록해 둘게요.
@@ -5075,8 +5075,8 @@ situations:
       options:
       - en: regret
       - en: deny
+      - en: mind
       - en: accept
-      - en: forget
   - en: Let's reset and figure this out together.
     ko: 처음부터 다시 함께 풀어봐요.
     chunks:
@@ -5128,9 +5128,9 @@ situations:
       answer: team
       options:
       - en: team
-      - en: list
+      - en: shift
+      - en: unit
       - en: floor
-      - en: clock
   - en: Let's start over and try this again.
     ko: 처음부터 다시 시도해봐요.
     chunks:
@@ -5197,7 +5197,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 폭언하는 환자에게 존중 요청 4문장 순서
-    why: 같은 편이고 돕고 싶다는 말이 먼저, 그러려면('To do that') 서로 존중해 달라고 요청하고, 그런 말투는 받아들일 수 없지만 곁에 있다고 경계를 말하고, 그 말을 정리하며('With that said') 다시 시작하자고 해요.
+    why: 같은 편이고 돕고 싶다는 말이 먼저, 그러려면('To do that') 서로 존중해 달라고 요청하고, 그런 말투는 존중이 아니라고('respectful') 경계를 말하되 곁에 있겠다고 하고, 그 말을 정리하며('With that said') 다시 시작하자고 해요.
     lines:
     - en: I'm on your team, and I want to help you.
       icon: handshake2
@@ -5207,9 +5207,9 @@ situations:
       icon: speech
       ko: 그러려면 서로 정중하게 말씀해 주셔야 해요
       note: 요청
-    - en: I won't accept being spoken to that way, but I'm still here for you.
+    - en: That way of speaking isn't respectful — I won't accept it, but I'm still here.
       icon: shield
-      ko: 그런 식의 말은 받아들일 수 없지만 곁에 있을게요
+      ko: 그런 말투는 정중하지 않아요, 받아들일 수 없지만 곁에 있을게요
       note: 경계
     - en: With that said, let's reset and figure this out together.
       icon: redo
@@ -5245,10 +5245,10 @@ situations:
     blank:
       answer: respect
       options:
-      - en: haste
-      - en: pity
+      - en: speed
       - en: respect
-      - en: caution
+      - en: privacy
+      - en: patience
   - en: Your concern is valid, and I'll do my best for you.
     ko: 그 우려는 타당해요, 최선을 다할게요.
     chunks:
@@ -5400,15 +5400,15 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 불신하는 환자 응대 4문장 순서
-    why: 존중받도록 하겠다는 말이 먼저, 그 말에 포함해('That includes') 우려를 인정하고, 최선을 다하려면('To do my best') 편안한 조건을 묻고, 들은 말에서('From what you tell me') 신뢰를 쌓을 방법을 이야기해요.
+    why: 존중받도록 하겠다는 말이 먼저, 그 존중('Respect')의 시작으로 우려를 인정하고, 최선을 다하려면('To do my best') 편안한 조건을 묻고, 들은 말에서('From what you tell me') 신뢰를 쌓을 방법을 이야기해요.
     lines:
     - en: I hear you, and I want to make sure you're treated with respect here.
       icon: handshake2
       ko: 말씀 듣고 있어요, 여기서 존중받으시도록 챙길게요
       note: 존중
-    - en: 'That includes your concern: it''s valid, and I''ll do my best for you.'
+    - en: Respect starts with saying your concern is valid — I'll do my best.
       icon: check
-      ko: 우려도 그에 포함돼요, 타당하고 최선을 다할게요
+      ko: 존중은 우려가 타당하다고 말하는 데서 시작돼요, 최선을 다할게요
       note: 인정
     - en: To do my best for you, tell me what would help you feel more comfortable.
       icon: mic
@@ -5500,12 +5500,12 @@ situations:
     - 아이 약 알레르기가 있나요?
     - 보호자 팔찌를 채워 드릴게요.
     blank:
-      answer: so
+      answer: calm
       options:
-      - en: whether
-      - en: so
-      - en: unless
-      - en: although
+      - en: back
+      - en: outside
+      - en: close
+      - en: calm
   - en: Your anger makes sense, but yelling scares him.
     ko: 화나신 마음은 이해해요, 하지만 소리치시면 아이가 무서워해요.
     chunks:
@@ -5608,7 +5608,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 화난 보호자 응대 4문장 순서
-    why: 아이를 향한 마음을 인정하는 말이 먼저, 그 때문에('Because of that') 화나는 것은 이해하되 소리치면 아이가 무서워한다고 말하고, 소리 대신('Instead of yelling') 하고 있는 일을 알리고, 그 설명을 바탕으로('With that in mind') 차분하게 협조해 달라고 해요.
+    why: 아이를 향한 마음을 인정하는 말이 먼저, 그 때문에('Because of that') 화나는 것은 이해하되 소리치면 아이가 무서워한다고 말하고, 소리 대신('Instead of yelling') 하고 있는 일을 알리고, 그 계획을('the plan') 알았으니 차분하게 협조해 달라고 해요.
     lines:
     - en: I can see how much you love your son.
       icon: faceWorried
@@ -5622,9 +5622,9 @@ situations:
       icon: speech
       ko: 소리 대신 저희가 하고 있는 일을 정확히 말씀드릴게요
       note: 안내
-    - en: With that in mind, let's stay calm so I can care for him well.
+    - en: Now that you know the plan, let's stay calm so I can care for him.
       icon: shield
-      ko: 그걸 감안해서 제가 잘 돌볼 수 있도록 차분히 있어요
+      ko: 이제 계획을 아셨으니 제가 아이를 돌볼 수 있도록 차분히 있어요
       note: 협조
 - title: 정신질환+초조 복합
   sentences:
@@ -5653,12 +5653,12 @@ situations:
     - 지금 혈압을 재 볼게요.
     - 담당 의사가 곧 올 거예요.
     blank:
-      answer: against
+      answer: safe
       options:
-      - en: against
-      - en: around
-      - en: opposite
-      - en: over
+      - en: calm
+      - en: safe
+      - en: better
+      - en: heard
   - en: I'll keep everything out in the open so you can see.
     ko: 다 보이도록 숨김없이 할게요.
     chunks:
@@ -5675,17 +5675,17 @@ situations:
     tag: 투명하게
     icon: magnify
     why: 숨기는 것 없이 눈에 보이게 하겠다는 약속이라, 감시당하거나 속는다고 느끼는 환자의 불신을 줄여요. so you can see로 환자가 직접 확인할 수 있게 해요.
-    decoy: so you can pay
+    decoy: so you can rest
     distractorsKo:
     - 필요한 건 제가 다 해 드릴게요.
     - 가족분께 연락해 드릴까요?
     blank:
       answer: see
       options:
-      - en: shop
+      - en: sign
       - en: see
-      - en: pay
-      - en: vote
+      - en: rest
+      - en: wait
   - en: You're in charge of what we talk about.
     ko: 무엇을 이야기할지는 당신이 정하는 거예요.
     chunks:
@@ -5727,17 +5727,17 @@ situations:
     tag: 사전 설명
     icon: speech
     why: 무엇을 할지 미리 말해 주면 갑작스러운 접촉이나 처치에 대한 불안과 의심이 줄어요. everything이라고 약속하면 환자가 예측할 수 있어요.
-    decoy: everything after
+    decoy: I leave
     distractorsKo:
     - 손목을 잠깐 볼게요.
     - 혈압계를 팔에 감을게요.
     blank:
       answer: before
       options:
-      - en: after
-      - en: unless
-      - en: until
+      - en: while
+      - en: as
       - en: before
+      - en: when
   - en: You can ask me to stop at any time.
     ko: 언제든 멈춰달라고 말씀하셔도 돼요.
     chunks:
@@ -5760,10 +5760,10 @@ situations:
     blank:
       answer: stop
       options:
+      - en: leave
+      - en: repeat
       - en: stop
-      - en: sign
-      - en: pay
-      - en: guess
+      - en: explain
   nuance:
   - kind: slider
     words:
@@ -5804,7 +5804,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 의심이 많은 초조한 환자 응대 4문장 순서
-    why: 안전하다는 말이 먼저, 안전하게 느끼도록('To help you feel safe') 모든 것을 보이게 하고, 그와 함께('Along with that') 하기 전에 알리겠다고 약속하고, 무엇이든('Whatever it is') 멈추라고 할 수 있다고 마무리해요.
+    why: 안전하다는 말이 먼저, 안전하게 느끼도록('To help you feel safe') 모든 것을 보이게 하고, 무엇이든 하기 전에 그게 뭔지 알리겠다고 약속하고('Before I do anything'), 그렇게 알린 것('anything I've told you about')은 언제든 멈추게 할 수 있다고 마무리해요.
     lines:
     - en: No one here is against you — I want to help you feel safe.
       icon: shield
@@ -5814,13 +5814,13 @@ situations:
       icon: magnify
       ko: 안전하게 느끼시도록 다 보이게 할게요
       note: 투명
-    - en: Along with that, anything I do, I'll tell you about it before I do it.
+    - en: Before I do anything, I'll tell you what it is.
       icon: speech
-      ko: 그와 함께 무엇이든 하기 전에 미리 말씀드릴게요
+      ko: 무엇이든 하기 전에 그게 뭔지 말씀드릴게요
       note: 사전
-    - en: Whatever it is, you can ask me to stop at any time.
+    - en: You can ask me to stop anything I've told you about at any time.
       icon: check
-      ko: 무엇이든 언제든 멈춰 달라고 하셔도 돼요
+      ko: 말씀드린 건 무엇이든 언제든 멈춰 달라고 하셔도 돼요
       note: 중단
 - title: 무기 소지 의심
   sentences:
@@ -5879,10 +5879,10 @@ situations:
     blank:
       answer: unsafe
       options:
-      - en: sleepy
-      - en: ready
+      - en: angry
+      - en: sick
+      - en: dizzy
       - en: unsafe
-      - en: hungry
   - en: Let's talk, and I'll listen to whatever you need to say.
     ko: 이야기해요, 무슨 말씀이든 들을게요.
     chunks:
@@ -5908,10 +5908,10 @@ situations:
     blank:
       answer: listen
       options:
-      - en: point
-      - en: bow
-      - en: stoop
       - en: listen
+      - en: reply
+      - en: respond
+      - en: react
   - en: I'm not going to move closer unless you say it's okay.
     ko: 괜찮다고 하시지 않으면 더 가까이 가지 않을게요.
     chunks:
@@ -5932,8 +5932,8 @@ situations:
     why: 환자가 괜찮다고 하기 전에는 다가가지 않겠다고 약속하면 위협을 덜 느껴요. unless로 거리를 환자가 정하게 해 줘요.
     decoy: although you say
     distractorsKo:
-    - 물이라도 드릴까요?
-    - 의자를 가져다 드릴까요?
+    - 보안팀이 곧 와요.
+    - 다른 분들은 잠깐 나가 계시도록 할게요.
     blank:
       answer: unless
       options:
@@ -5957,17 +5957,17 @@ situations:
     tag: 지원 알림
     icon: siren
     why: 보안팀이 가까이 있다는 사실을 위협이 아닌 담담한 어조로 알려요. I'm staying calm으로 내가 침착하다는 것을 함께 보여 줘요.
-    decoy: Dietary is close by
+    decoy: The doctor is close by
     distractorsKo:
     - 의자에 앉으시겠어요?
     - 담요를 드릴까요?
     blank:
-      answer: Security
+      answer: close by
       options:
-      - en: Dietary
-      - en: Security
-      - en: Billing
-      - en: Parking
+      - en: on call
+      - en: close by
+      - en: on break
+      - en: off duty
   nuance:
   - kind: slider
     words:
@@ -6131,17 +6131,17 @@ situations:
     tag: 지원 알림
     icon: siren
     why: 팀이 가까이 있다는 사실을 we need them이라는 담담한 말로 전해요. 위협하려는 말이 아니라 안전장치를 알려 주는 말이에요.
-    decoy: right downtown
+    decoy: right upstairs
     distractorsKo:
     - 지금 혈압을 재 볼게요.
     - 같이 심호흡해 볼까요?
     blank:
       answer: outside
       options:
-      - en: offshore
+      - en: upstairs
+      - en: downstairs
       - en: outside
-      - en: downtown
-      - en: abroad
+      - en: next door
   - en: I still want to work this out with you first.
     ko: 그래도 먼저 당신과 함께 풀어보고 싶어요.
     chunks:
@@ -6196,21 +6196,21 @@ situations:
       ok: true
     - who: 동료에게
       icon: siren
-      en: Stay right outside the room — come in if I call you.
+      en: Stay right outside the open door, where I can see you.
       ok: true
     - who: 환자에게
       icon: me
       en: Security is staged outside in case you become combative.
       ok: false
       fix: There are more staff right outside if we need them.
-    why: 지원 인력이 가까이 있다는 사실은 같아도, 환자를 'combative'로 규정하며 말하면 위협으로 들려 더 격해질 수 있어요. 환자에게는 '우리'를 주어로 담담하게 말해요.
+    why: 지원 인력이 가까이 있다는 사실은 같아도, 환자를 'combative'로 규정하며 말하면 위협으로 들려 더 격해질 수 있어요. 환자에게는 '우리'를 주어로 담담하게 말해요. 말은 한 사람이 이끌되 팀은 문이 열린 채 보이는 곳에 있어요.
     word: outside
     ko: 바깥에
   order:
     tag: 대화 흐름
     icon: compass
     ko: 공격이 임박한 환자와의 대화 4문장 순서
-    why: 말로 푸는 것이 첫 선택이라는 말이 먼저, 그렇게 하려고('So') 필요한 것을 묻고, 그 방식으로('this way') 해 보되 팀이 가까이 있음을 알리고, 어느 쪽이든('Either way') 모두의 안전을 말해요.
+    why: 말로 푸는 것이 첫 선택이라는 말이 먼저, 그렇게 하려고('So') 필요한 것을 묻고, 환자가 말하는 것('What you tell me')을 따르되 팀이 열린 문 바로 바깥에 가까이 있음을 알리고, 어느 쪽이든('Either way') 모두의 안전을 말해요. 말은 한 사람이 이끌되 팀은 문이 열린 채 보이는 곳에 있어요.
     lines:
     - en: I still want to work this out with you first.
       icon: speech
@@ -6220,9 +6220,9 @@ situations:
       icon: mic
       ko: 그러니 필요한 걸 말씀해 주세요, 이루어지게 해 볼게요
       note: 요구
-    - en: My team is right outside if we need them, but let's try this way.
+    - en: What you tell me guides us, and my team is just outside the open door.
       icon: siren
-      ko: 팀이 바로 바깥에 있지만 이 방식으로 해 봐요
+      ko: 말씀하시는 걸 따를 거고, 팀은 열린 문 바로 바깥에 있어요
       note: 지원
     - en: Either way, we're going to keep everyone safe, including you.
       icon: shield
@@ -6276,17 +6276,17 @@ situations:
     tag: 설명
     icon: speech
     why: 일어난 일을 설명하고 질문에 답하는 것은 환자의 존엄을 지키는 첫걸음이에요. answer your questions로 환자가 묻는 것을 허락해요.
-    decoy: your bills
+    decoy: your family
     distractorsKo:
     - 손목 색을 확인할게요.
     - 침대 높이를 맞춰 드릴게요.
     blank:
       answer: questions
       options:
-      - en: questions
-      - en: bills
       - en: forms
       - en: orders
+      - en: family
+      - en: questions
   - en: Now that things are calmer, how are you feeling?
     ko: 이제 좀 진정되셨는데, 기분은 어떠세요?
     chunks:
@@ -6338,10 +6338,10 @@ situations:
     blank:
       answer: say
       options:
-      - en: debt
-      - en: shift
       - en: say
       - en: doubt
+      - en: shift
+      - en: test
   - en: I'm here, and I'm listening now.
     ko: 저는 여기 있고, 지금 듣고 있어요.
     chunks:
@@ -6356,17 +6356,17 @@ situations:
     tag: 곁에 있기
     icon: bell
     why: I'm here로 곁에 있다고 말하고 I'm listening으로 듣겠다고 해요. 억제 후 환자는 자신의 이야기를 들어 줄 사람이 필요해요.
-    decoy: leaving now
+    decoy: charting now
     distractorsKo:
     - 약 이름을 말씀드릴게요.
     - 보호자께 연락드릴게요.
     blank:
       answer: listening
       options:
-      - en: leaving
-      - en: charting
-      - en: rushing
       - en: listening
+      - en: charting
+      - en: typing
+      - en: waiting
   nuance:
   - kind: pair
     words:
@@ -6450,17 +6450,17 @@ situations:
     tag: 체온 설명
     icon: stetho
     why: 혼란스러운 환자에게는 hyperthermic 같은 의학 용어 대신 overheating처럼 짧고 쉬운 말로 무슨 일인지 알려요. we're going to로 곧 할 처치를 미리 말해 줘요.
-    decoy: You're freezing
+    decoy: You're dehydrated
     distractorsKo:
     - 산소를 씌워 드릴게요.
     - 지금 혈압을 잴게요.
     blank:
       answer: overheating
       options:
+      - en: dehydrated
       - en: overheating
-      - en: freezing
       - en: shaking
-      - en: sleeping
+      - en: confused
   - en: Stay with me, we're getting you help right now.
     ko: 정신 놓지 마세요, 지금 바로 도움을 드릴게요.
     chunks:
@@ -6504,17 +6504,17 @@ situations:
     tag: 곁에 있음
     icon: handshake2
     why: 혼란스럽고 흥분한 환자에게는 짧은 문장 두 개로 곁에 있다고 말해요. we've got you는 팀이 환자를 지탱하고 있다는 안심을 줘요.
-    decoy: we've paid
+    decoy: we've called
     distractorsKo:
     - 눈을 떠 보세요.
     - 이름이 뭐예요?
     blank:
       answer: got
       options:
-      - en: passed
-      - en: paid
+      - en: paged
       - en: got
-      - en: met
+      - en: called
+      - en: moved
   - en: Your body is working very hard right now.
     ko: 지금 몸이 아주 힘들게 애쓰고 있어요.
     chunks:
@@ -6556,17 +6556,17 @@ situations:
     tag: 체온 재측정
     icon: monitor
     why: 무엇을 하는지 현재 진행형으로 알려 주는 것이 환자의 불안을 줄여요. again으로 체온을 반복해서 확인하고 있음을 전해요.
-    decoy: your height
+    decoy: your heart rate
     distractorsKo:
     - 눈을 떠 보세요.
     - 제 목소리가 들리세요?
     blank:
       answer: temperature
       options:
+      - en: heart rate
+      - en: oxygen
       - en: temperature
-      - en: height
-      - en: weight
-      - en: hearing
+      - en: sugar
   nuance:
   - kind: slider
     words:
@@ -6589,7 +6589,7 @@ situations:
     scenes:
     - who: 의사에게 보고
       icon: monitor
-      en: Temp is 40.5 and climbing — he's hyperthermic, start cooling now.
+      en: Temp is 40.5 and climbing — he's hyperthermic; I'm starting active cooling.
       ok: true
     - who: 환자에게
       icon: me
@@ -6607,7 +6607,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 고열로 흥분한 환자 응대 4문장 순서
-    why: 무슨 일인지 알리고 식히겠다는 말이 먼저, 식히는 것이 듣는지('the cooling') 보려고 체온을 다시 재고, 그것을 몸이 애쓰는 일('That')로 설명하고, 어떤 느낌이든('Whatever you feel') 곁에 있다고 말해요.
+    why: 무슨 일인지 알리고 식히겠다는 말이 먼저, 식히는 것이 듣는지('the cooling') 보려고 체온을 다시 재고, 그 체온('That temperature')이 몸에 큰 부담이라고 설명하고, 어떤 느낌이든('Whatever you feel') 곁에 있다고 말해요.
     lines:
     - en: You're overheating — we're going to cool you down fast.
       icon: stetho
@@ -6617,9 +6617,9 @@ situations:
       icon: monitor
       ko: 식히는 게 잘 되는지 체온을 다시 재고 있어요
       note: 측정
-    - en: That's a lot for your body — it's working very hard right now.
+    - en: That temperature is a lot for your body — it's working very hard.
       icon: stetho
-      ko: 몸에는 큰 부담이에요, 지금 아주 힘들게 애쓰고 있어요
+      ko: 그 체온은 몸에 큰 부담이에요, 아주 힘들게 애쓰고 있어요
       note: 이유
     - en: Whatever you feel, I'm right here; we've got you.
       icon: handshake2
@@ -6728,7 +6728,7 @@ situations:
     tag: 물러나기
     icon: shield
     why: I'm going to ask로 명령 대신 요청의 형태를 쓰고 for now로 잠시만이라는 단서를 붙여요. 서로 거리가 생기면 몸싸움 위험이 줄어요.
-    decoy: to step forward
+    decoy: to sit down
     distractorsKo:
     - 서류에 서명해 주세요.
     - 보호자 팔찌를 받아 가세요.
@@ -6736,9 +6736,9 @@ situations:
       answer: back
       options:
       - en: back
-      - en: forward
-      - en: closer
-      - en: in
+      - en: aside
+      - en: down
+      - en: out
   - en: We'll sort this out safely, one person at a time.
     ko: 한 사람씩 안전하게 해결해나갈게요.
     chunks:
@@ -6758,7 +6758,7 @@ situations:
     why: one person at a time은 여러 사람이 한꺼번에 말하는 상황을 하나씩 풀겠다는 약속이에요. safely로 해결 방식의 기준을 안전에 둬요.
     decoy: angrily
     distractorsKo:
-    - 이름을 한 명씩 말씀해 주세요.
+    - 다치신 분 있으세요?
     - 서류를 가져올게요.
     blank:
       answer: safely
@@ -6847,17 +6847,17 @@ situations:
     tag: 계속 확인
     icon: monitor
     why: 진정제를 맞은 환자는 쉬는 동안에도 호흡과 의식을 계속 확인해야 해요. keep checking으로 쉬게 두고 방치하지 않는다고 알려요.
-    decoy: while you walk
+    decoy: while you wait
     distractorsKo:
     - 손을 한 번 꼭 쥐어 보세요.
     - 이름이 뭐예요?
     blank:
       answer: rest
       options:
-      - en: walk
-      - en: stand
+      - en: wait
       - en: rest
-      - en: eat
+      - en: talk
+      - en: read
   - en: Can you open your eyes for me for a second?
     ko: 잠깐 눈을 떠 주시겠어요?
     chunks:
@@ -6874,16 +6874,16 @@ situations:
     tag: 의식 확인
     icon: magnify
     why: 눈을 떠 보라는 가장 간단한 요청이라 진정제 뒤 의식 수준과 반응을 바로 확인할 수 있어요. for me로 요청을 부드럽게 해요.
-    decoy: your bag
+    decoy: your mouth
     distractorsKo:
     - 제 손을 한 번 꼭 쥐어 보세요.
     - 이름이 뭐예요?
     blank:
       answer: eyes
       options:
-      - en: bag
-      - en: door
-      - en: window
+      - en: mouth
+      - en: hand
+      - en: fist
       - en: eyes
   - en: Take slow, deep breaths — I'm watching over you.
     ko: 천천히 깊게 숨 쉬세요, 제가 계속 지켜보고 있어요.
@@ -6928,17 +6928,17 @@ situations:
     tag: 호흡 안심
     icon: stetho
     why: looks good은 지금 관찰한 사실만 말하는 안심이에요. 진정제 뒤에는 상태가 바뀔 수 있어서 right now로 현재 시점에 한정하고 앞으로도 괜찮다는 약속은 하지 않아요.
-    decoy: Your hair
+    decoy: Your color
     distractorsKo:
     - 혈압을 재 볼게요.
     - 눈을 떠 보시겠어요?
     blank:
       answer: breathing
       options:
-      - en: watch
       - en: breathing
-      - en: hair
-      - en: shirt
+      - en: color
+      - en: pulse
+      - en: oxygen
   - en: I'll be right here if you need anything.
     ko: 필요한 게 있으면 바로 여기 있을게요.
     chunks:
@@ -6955,17 +6955,17 @@ situations:
     tag: 곁에 있음
     icon: bell
     why: right here로 환자 곁에 있다고 알려서 쉬는 동안의 불안을 줄여요. if you need anything으로 도움이 필요하면 부르라는 문을 열어 줘요.
-    decoy: right upstairs
+    decoy: if you hear
     distractorsKo:
     - 혈압을 한 번 더 잴게요.
     - 침대 높이를 조절할게요.
     blank:
-      answer: here
+      answer: need
       options:
-      - en: downstairs
-      - en: outside
-      - en: here
-      - en: upstairs
+      - en: need
+      - en: hear
+      - en: see
+      - en: feel
   nuance:
   - kind: slider
     words:
@@ -7006,7 +7006,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 진정제를 맞은 환자 감시 4문장 순서
-    why: 계속 확인하겠다는 말이 먼저, 그 확인의 일부로('That means') 호흡을 지켜보며 천천히 숨 쉬게 하고, 지켜본 호흡을 알리고('looks good'), 무엇이 달라지든('Whatever changes') 곁에 있다고 말해요.
+    why: 계속 확인하겠다는 말이 먼저, 그 확인의 일부로('That means') 호흡을 지켜보며 천천히 숨 쉬게 하고, 지켜본 호흡을 알리고('looks good'), 그 상태는 달라질 수 있다('That can change')며 곁에 있겠다고 말해요.
     lines:
     - en: I'm going to keep checking on you while you rest.
       icon: monitor
@@ -7020,9 +7020,9 @@ situations:
       icon: stetho
       ko: 지금 호흡이 좋아 보여요, 계속 지켜볼게요
       note: 관찰
-    - en: Whatever changes, I'll be right here if you need anything.
+    - en: That can change, so I'll stay right here with you.
       icon: bell
-      ko: 무엇이 달라지든 필요하시면 바로 여기 있을게요
+      ko: 그건 달라질 수 있으니 바로 곁에 있을게요
       note: 곁
 - title: 자의 퇴원(AMA) 갈등 완화
   sentences:
@@ -7073,17 +7073,17 @@ situations:
     tag: 권리 인정
     icon: shield
     why: 환자가 떠날 권리가 있다는 사실을 숨기지 않고 말하면서, 떠나기 전에 위험은 알려 주겠다고 해요. 판단 능력이 있는 환자를 억지로 붙잡을 수 없다는 원칙에 맞아요.
-    decoy: what the prices are
+    decoy: what the rules are
     distractorsKo:
     - 기다리는 시간을 확인해 볼게요.
     - 담당 의사를 불러올게요.
     blank:
-      answer: know
+      answer: risks
       options:
-      - en: know
-      - en: forget
-      - en: ignore
-      - en: doubt
+      - en: rules
+      - en: steps
+      - en: risks
+      - en: options
   - en: If you decide to stay, I'll make the wait as short as I can.
     ko: 남기로 결정하시면, 기다리는 시간을 최대한 짧게 해드릴게요.
     chunks:
@@ -7110,10 +7110,10 @@ situations:
     blank:
       answer: stay
       options:
-      - en: shop
-      - en: stay
       - en: leave
-      - en: pay
+      - en: stay
+      - en: sign
+      - en: call
   - en: I'd rather you stay, but it's still your choice.
     ko: 저는 남아주셨으면 하지만, 그래도 결정은 당신 몫이에요.
     chunks:
@@ -7131,17 +7131,17 @@ situations:
     tag: 의사 존중
     icon: handshake2
     why: I'd rather로 남아 주길 바라는 내 마음을 솔직하게 말하고 it's still your choice로 결정권이 환자에게 있음을 되새겨요. 설득과 존중이 함께 가요.
-    decoy: your bill
+    decoy: your turn
     distractorsKo:
     - 지금 통증은 어떠세요?
     - 차트를 확인할게요.
     blank:
       answer: choice
       options:
-      - en: chart
-      - en: name
+      - en: turn
+      - en: room
       - en: choice
-      - en: bill
+      - en: chart
   - en: Let me explain the risks one more time.
     ko: 위험을 한 번 더 설명해 드릴게요.
     chunks:
@@ -7157,16 +7157,16 @@ situations:
     tag: 위험 재설명
     icon: board
     why: 위험을 한 번 더 설명하는 것은 이해했는지 확인하는 기회예요. Let me로 허락을 구하는 형태라 강요처럼 들리지 않아요.
-    decoy: the songs
+    decoy: the results
     distractorsKo:
     - 지금 어디가 불편하세요?
     - 차트에 적어 둘게요.
     blank:
       answer: risks
       options:
-      - en: colors
-      - en: songs
-      - en: jokes
+      - en: rules
+      - en: results
+      - en: options
       - en: risks
   nuance:
   - kind: slider
