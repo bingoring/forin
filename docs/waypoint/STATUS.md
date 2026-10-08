@@ -50,6 +50,11 @@
 > `e1c9cd4`) 뒤 바탕 34개 뽑기. 저작 끝 3(core-language·family·handoff, `5058519`) → Opus 검토 중, 저작 중 2(pain-sedation·procedures).
 > 저작자 공통 보고였던 '선택지 아이콘이 낱말과 안 맞음'은 **사용자 결정으로 빈칸 선택지 아이콘 폐지**(STEP 1 고르기 줄, `cdf7b75`)로 해소.
 > **합친 주제 4/35**: core-safety·family·handoff·language(`c892fd1`·`4a66b73`·`7675c78`). 검토 중 2(pain-sedation·procedures), 저작 중 3(chestpain·arrhythmia·arrest).
+> **합친 주제 8/35**(+pain-sedation·procedures·chestpain·arrhythmia). 수정 중 4(arrest·shock·asthma-copd·dyspnea), 검토 중 1(stroke). 저작 지시에
+> 자기 점검 8~10(distractorsKo 뒤집기·context word 장면 부재·order 조건부)을 필수로 추가 — 뒤 주제 검토에서 줄었는지 볼 것(dyspnea·asthma에서 distractorsKo는 개선).
+> **결정 대기 — v44 문장 사실 오류(결정 11, 검토가 보고만 함)**: arrest 16.2 keyPhrase `high on the sternum`(2015 이후 임산부도 일반 위치),
+> arrest 10.3 "한 라운드에 에피 두 번", arrest 20.3 출혈 잡힐 때까지 압박 보류, procedures 9.4 항생제 시험 용량·5.5 정맥 시도 무제한·18.2 이중 확인,
+> arrhythmia 15.2 "진정 중 충격을 느낌", asthma 20.0↔20.3 다른 환자, pain-sedation 15.4 날록손.
 > 결정 대기 추가: core-family S17 장기기증 흐름(병상 간호사가 먼저 꺼냄 — 미국은 OPO 통보 뒤 OPO·지정 요청자가 청함, keyPhrase 설계라 v44 문장은 그대로, why·order만 고침).
 >
 > 🏁 **서가 건물 간지(v45) — 완료, Build Spec `IMPLEMENTED` (2026-10-07).** 핸드오프 v45가 서가를 건물 인덱스 탭
