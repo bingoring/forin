@@ -63,7 +63,9 @@
 > 뜻은 분명히 다르게, 뒤집기·부정 금지, **안전 시험**(그대로 하면 다치는 용량·부위·경로·약·시점·잘못된 안심 금지 — 처치 지시문은 안전한 옆 단계로).
 > 단어 보기·빈칸 선택지는 길이 기준만 더함(W16·W17 경고). 범위: ER 문장 distractorsKo **전부 재저작** + 길이로 걸린 단어 보기·빈칸.
 > 지시서·TASK·REVIEW 갱신(예전 "같은 상황의 다른 말" 규칙 대체). 파형은 한 색으로(`3f2601b`).
+> **범위(사용자 결정 2026-10-09, 주간 토큰 사정):** 이번 주는 25주제(5묶음 — core 4·abdominal·alcohol-withdrawal·anaphylaxis·arrest·arrhythmia·asthma-copd·bleeding-wound·burn·chest-abd-trauma·chestpain·deescalation·diabetic·dyspnea·environmental·fever-infection·genitourinary·geriatric·gi-bleed·head-trauma·obgyn·ortho-trauma)만 저작·Opus 검토·반영. **남은 10주제(pain-sedation·peds·poisoning·polytrauma·procedures·psych·seizure-loc·sepsis·shock·stroke)는 다음 주** — 그때까지 정본 검사에 이 주제들의 V20이 남는다. 표본: Sonnet 저작은 길이·들리는 자리는 좋으나 안전 시험을 놓침(911 빠진 오답 등) → Opus 검토 생략 불가.
 > **TODO (2026-10-09 점검 — 남은 일):**
+> - [ ] **오답 보기 재저작 남은 10주제**(위 '범위') — `wip/er-dk/` 같은 지시서로.
 > - [ ] **`briefing.line` ER 저작** — T6 화면·검사(`ValidateHubLine`)는 있으나 ER 751상황 모두 비어 있음(허브는 brief 문단을 형광펜 없이). 지시서에 넣고 결정 14 파이프라인으로 저작. **T5 체크는 이 저작 전이라 잘못 체크됨** — 저작 후 다시 체크.
 > - [ ] T7 시뮬레이터 확인 목록 중 미확인: D 마이크 홀드 녹음, 키보드 올라올 때 무대·카드, 그래버 끌기와 크기 기억, iPhone SE(667) 레일 위치.
 > - [ ] Android 실기 확인(층 순서·그림자·T1 편차 3·4) — 한 번도 안 함.
