@@ -8,8 +8,9 @@ jest.mock('expo-secure-store', () => ({
   getItemAsync: async () => null, setItemAsync: async () => {}, deleteItemAsync: async () => {},
 }));
 jest.mock('@/lib/sfx', () => ({ playSfx: () => {}, primeSfx: () => {}, loadSfxPreference: async () => {} }));
-jest.mock('expo-speech', () => ({ speak: (text: string) => { mockSpoken.push(text); }, stop: () => {} }));
+jest.mock('expo-speech', () => ({ speak: (text: string, opts?: Record<string, () => void>) => { mockSpoken.push(text); mockSpeech.opts = opts ?? {}; }, stop: () => {} }));
 const mockSpoken: string[] = [];
+const mockSpeech: { opts: Record<string, () => void> } = { opts: {} };
 const mockCalls: string[] = [];
 let mockFeelFails = false;
 /** 'full' — every v46 field authored · 'bare' — v45 content: no reel, no order, no nuance drills, no v46 fields. */
@@ -83,7 +84,7 @@ jest.mock('expo-router', () => {
   };
 });
 
-import { AccessibilityInfo } from 'react-native';
+import { AccessibilityInfo, ScrollView } from 'react-native';
 import { act, create, type ReactTestInstance } from 'react-test-renderer';
 import LessonSentences from '@/app/scenario/[id]/sentences';
 import { trackMounts } from '../testing/mountRegistry';
@@ -224,7 +225,18 @@ describe('문장장', () => {
     const cur = current(tree.root);
     expect(texts(cur)).toEqual(expect.arrayContaining(['척도 안내', '듣고 뜻 고르기', '1 / 6', '이 문장의 뜻은?', 'A', 'B', 'C']));
     expect(hostID(cur, 'sent-wave-bar')).toHaveLength(18);
-    for (let k = 0; k < 3; k++) await pressID(current(tree.root), 'sheet-icon-press');
+    // check / judge sit at the bottom (handoff 98 → 34) and the binder ends above them (182 → 118) — 사용자 결정 2026-10-09
+    expect(flat(hostID(tree.root, 'sent-actions')[0])).toMatchObject({ position: 'absolute', bottom: 34 });
+    expect(tree.root.findAll((n) => n.type === ScrollView && flat(n).position === 'absolute').map((n) => flat(n).bottom)).toContain(118);
+    // the waveform rests at the handoff heights (SL:29); with reduced motion (this suite) it stays still while
+    // the voice speaks — the moving bars are in waveMotion.test.tsx (사용자 결정 2026-10-09)
+    const scales = () => hostID(current(tree.root), 'sent-wave-bar').map((n) => (flat(n).transform as { scaleY: number }[])[0].scaleY);
+    const rest = scales();
+    expect(rest[3]).toBeCloseTo(24 / 24);
+    await pressID(current(tree.root), 'sheet-icon-press');
+    await act(async () => { mockSpeech.opts.onStart?.(); mockSpeech.opts.onBoundary?.(); });
+    expect(scales()).toEqual(rest);
+    for (let k = 0; k < 2; k++) await pressID(current(tree.root), 'sheet-icon-press');
     expect(mockSpoken.filter((s) => s === 'Use this scale.')).toHaveLength(3);
     // the first listen and two replays — then the speaker does nothing
     expect(byID(current(tree.root), 'sheet-icon-press')[0].props.onPress).toBeUndefined();

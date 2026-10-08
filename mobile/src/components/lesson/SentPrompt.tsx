@@ -13,11 +13,12 @@
 //   SL:239-256  판정 버튼 — 아직 헷갈려요(앰버, 왼쪽 뜯김) / 외웠어요·이제 알겠어요(초록, 오른쪽 뜯김)
 //
 // 글리프(✎ ✓ ✕)는 NbIcon으로 그린다(결정 4). 문구는 화면이 넘긴 번역(i18n)이다.
-import { Pressable, Text, View } from 'react-native';
+import { useEffect, useRef } from 'react';
+import { Animated, Pressable, Text, View } from 'react-native';
 import { NbIcon } from '@/components/nb/NbIcon';
 import { NbInline } from '@/components/nb/NbInline';
 import { NbDoubleRing, NbMark, NbPaper, nbText } from '@/components/nb/NbUI';
-import { NbEnter } from '@/components/nb/nbMotion';
+import { NbEnter, useReduceMotion } from '@/components/nb/nbMotion';
 import { SheetIconCircle } from '@/components/lesson/SheetStack';
 import { BAD_BG, ChipShadow, DashRule, FAINT, Hatch, OK_BG, Step2Stamp } from '@/components/lesson/SentParts';
 import { sheetKo, sheetLine, sheetWhy, type SheetAnswer, type SheetCard } from '@/data/sentenceDrill';
@@ -33,8 +34,12 @@ export const REPLAYS = 2;
 
 const ABC = ['A', 'B', 'C', 'D'];
 
+/** What the voice is doing while a sheet's sentence is read out (expo-speech callbacks). */
+export type Voice = { speaking: boolean; beat: number };
+const SILENT: Voice = { speaking: false, beat: 0 };
+
 /** The prompt half of a sheet: its head and the answer widget. */
-export function SentSheetBody({ card, icon, answer, onAnswer, result, plays, onPlay, interactive }: {
+export function SentSheetBody({ card, icon, answer, onAnswer, result, plays, onPlay, interactive, voice = SILENT }: {
   card: SheetCard;
   /** The amber circle's icon (R3: the sentence's, else the department's). */
   icon: string;
@@ -46,6 +51,8 @@ export function SentSheetBody({ card, icon, answer, onAnswer, result, plays, onP
   onPlay: () => void;
   /** false on the dim sheet underneath and the torn copy. */
   interactive: boolean;
+  /** listen: the waveform moves while the sentence is spoken. */
+  voice?: Voice;
 }) {
   const t = useT();
   const listen = card.kind === 'sentence' && card.type === 'listen';
@@ -68,7 +75,7 @@ export function SentSheetBody({ card, icon, answer, onAnswer, result, plays, onP
       {card.kind === 'order'
         ? <OrderPrompt card={card} seq={(answer as number[] | null) ?? []} onAnswer={onAnswer} result={result} locked={locked} />
         : card.type === 'listen'
-          ? <ListenPrompt card={card} answer={answer as string | null} onAnswer={onAnswer} result={result} locked={locked} plays={plays} onPlay={canPlay ? onPlay : undefined} />
+          ? <ListenPrompt card={card} answer={answer as string | null} onAnswer={onAnswer} result={result} locked={locked} plays={plays} onPlay={canPlay ? onPlay : undefined} voice={voice} />
           : card.type === 'build'
             ? <BuildPrompt card={card} built={(answer as number[] | null) ?? []} onAnswer={onAnswer} result={result} locked={locked} />
             : <BlankPrompt card={card} answer={answer as string | null} onAnswer={onAnswer} result={result} locked={locked} />}
@@ -79,16 +86,47 @@ export function SentSheetBody({ card, icon, answer, onAnswer, result, plays, onP
 const statusColor = (ok: boolean, bad: boolean, on: boolean, idle = FAINT) => (ok ? nb.green : bad ? nb.red : on ? nb.ink : idle);
 const statusBg = (ok: boolean, bad: boolean, on: boolean, idle: string = nb.paper) => (ok ? OK_BG : bad ? BAD_BG : on ? nb.paper : idle);
 
-function ListenPrompt({ card, answer, onAnswer, result, locked, plays, onPlay }: {
+// 파형 — 핸드오프(SL:29)는 높이가 고정된 막대 18개. 사용자 결정(2026-10-09): 소리가 나는 동안 움직인다. 소리는 기기 TTS라
+// 음량을 읽을 수 없어서, 말하는 동안 막대가 출렁이고 iOS가 알려 주는 단어 경계(onBoundary)마다 크게 튄다. 끝나면 원래 높이로.
+// 높이는 scaleY로(네이티브 드라이버) — 막대 상자는 24, 정지 높이 h는 h/24 배율이다.
+const WAVE_BOX = 24;
+export function Wave({ voice }: { voice: Voice }) {
+  const reduce = useReduceMotion();
+  const vals = useRef(WAVE.map((h) => new Animated.Value(h / WAVE_BOX))).current;
+  useEffect(() => {
+    const to = (heights: number[], ms: number) =>
+      Animated.parallel(vals.map((v, i) => Animated.timing(v, { toValue: heights[i] / WAVE_BOX, duration: ms, useNativeDriver: true }))).start();
+    if (!voice.speaking || reduce) {
+      to(WAVE, 180);
+      return undefined;
+    }
+    const kick = (big: boolean) => to(WAVE.map(() => 4 + Math.random() * (big ? 20 : 12)), big ? 90 : 140);
+    kick(true);
+    const id = setInterval(() => kick(false), 140);
+    return () => clearInterval(id);
+  }, [voice.speaking, voice.beat, reduce, vals]);
+  return (
+    <>
+      {WAVE.map((h, i) => (
+        <Animated.View key={i} testID="sent-wave-bar" style={{
+          width: 4, height: WAVE_BOX, borderRadius: 2, backgroundColor: i < 11 ? nb.blue : 'rgba(62,54,43,.2)',
+          transform: [{ scaleY: vals[i] }],
+        }} />
+      ))}
+    </>
+  );
+}
+
+function ListenPrompt({ card, answer, onAnswer, result, locked, plays, onPlay, voice }: {
   card: Extract<SheetCard, { type: 'listen' }>; answer: string | null; onAnswer: (a: string) => void; result: Result; locked: boolean;
-  plays: number; onPlay?: () => void;
+  plays: number; onPlay?: () => void; voice: Voice;
 }) {
   const t = useT();
   const left = Math.max(0, REPLAYS - Math.max(0, plays - 1));
   return (
     <View style={{ marginTop: 12 }}>
       <Pressable testID="sent-replay" onPress={onPlay} disabled={!onPlay} style={{ flexDirection: 'row', alignItems: 'center', gap: 3, height: 26, paddingHorizontal: 6 }}>
-        {WAVE.map((h, i) => <View key={i} testID="sent-wave-bar" style={{ width: 4, height: h, borderRadius: 2, backgroundColor: i < 11 ? nb.blue : 'rgba(62,54,43,.2)' }} />)}
+        <Wave voice={voice} />
         <View style={{ flex: 1 }} />
         <Text testID="sent-replay-left" numberOfLines={1} style={[nbText.hand(12, nb.soft), { flexShrink: 0 }]}>{t('sent.replay', { n: left })}</Text>
       </Pressable>

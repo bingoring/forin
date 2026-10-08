@@ -3,7 +3,7 @@
 // 정본(R1): design-handoff_v46/reference/forin-notebook-lesson-words-live.jsx (WL) WordStudyLive
 //   L259–271  page: ruled 28 · header (‹ 나가기 · green STEP 1 tag) · progress (±.7°, colour .3s) · headline
 //   L273–305  the binder (SheetStack) at left/right 24 · top 172 · bottom 182
-//   L307–335  the buttons: check / judge at bottom 98, "STEP 2 · 문장 학습으로 ›" always at bottom 34
+//   L307–335  the buttons: check / judge (handoff bottom 98 → 34, 사용자 결정), "STEP 2 · 문장 학습으로 ›" at 34 once done
 // Audit: lesson-fidelity-v46/audit/audit-step1-words.md (every row). Build Spec §3: no StepTrack on a
 // STEP screen (결정 1); glyphs are NbIcons (결정 4).
 //
@@ -36,8 +36,12 @@ type Outcome = 'right' | 'wrong';
 const HANDOFF_STATUS = 44;
 const AREA_TOP = TOP_INSET - HANDOFF_STATUS + SHEET.area.top;
 /** WL L308 · L333 */
-const ACTIONS_BOTTOM = 98;
+// 핸드오프는 확인/판정 버튼을 bottom 98에, "STEP 2 · 문장 학습으로 ›"를 34에 늘(진행 중엔 점선 .5) 둔다. 사용자 결정
+// (2026-10-09): 문장장과 같게 다음 단계 버튼은 다 끝났을 때만 보이고, 확인/판정 버튼은 맨 아래(34)로 내린다.
+// 묶음 아래 끝도 같이 내린다(핸드오프 182 = 98 + 버튼 52 + 32 → 34 + 52 + 32 = 118).
+const ACTIONS_BOTTOM = 34;
 const STEP2_BOTTOM = 34;
+const AREA_BOTTOM = ACTIONS_BOTTOM + 84;
 
 /** One progress segment — WL L268: 5 tall, r2, tilted ±.7°, `transition: background .3s`. */
 function Segment({ k, color }: { k: number; color: string }) {
@@ -238,7 +242,7 @@ export default function LessonWordsRoute() {
             renderDone={renderDone}
             onAdvance={advance}
             top={Math.max(AREA_TOP, headBottom)}
-            bottom={SHEET.area.bottom}
+            bottom={AREA_BOTTOM}
           />
 
           <View testID="recall-actions" style={{ position: 'absolute', left: 24, right: 24, bottom: ACTIONS_BOTTOM }}>
@@ -267,8 +271,8 @@ export default function LessonWordsRoute() {
             )}
           </View>
 
-          {/* Always there (WL L333–334): dashed at .5 until the deck is done, then ink. */}
-          <View testID="recall-step2-slot" style={{ position: 'absolute', left: 24, right: 24, bottom: STEP2_BOTTOM }}>
+          {/* WL L333–334 draws it always (dashed .5 until done); here only once the deck is done (see ACTIONS_BOTTOM). */}
+          {(done || saveFailed) && <View testID="recall-step2-slot" style={{ position: 'absolute', left: 24, right: 24, bottom: STEP2_BOTTOM }}>
             {saveFailed && <Text testID="lesson-save-failed" style={[nbText.hand(14, nb.red), { textAlign: 'center', marginBottom: 8 }]}>{t('lesson.saveFailed')}</Text>}
             <View testID="recall-to-step2">
               <NbButton
@@ -279,7 +283,7 @@ export default function LessonWordsRoute() {
                 {t('recall.toStep2')}
               </NbButton>
             </View>
-          </View>
+          </View>}
         </>
       )}
     </NbSheet>

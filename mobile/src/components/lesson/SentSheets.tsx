@@ -5,7 +5,7 @@
 //   SL:200-231 낱장 묶음(SheetStack) — 현재 장 · 아래 다음 장 · 뜯김 · DONE 장
 //   SL:170-176 확인 — 맞으면 바로 맞힘, 틀리면 흔들림(nb-shake) + 헷갈림
 //   SL:177-181 판정 — 아직 헷갈려요(왼쪽 뜯김) / 외웠어요·이제 알겠어요(오른쪽 뜯김), 620ms 뒤 다음 장
-//   SL:233-260 아래 — 확인하기/판정 버튼(bottom 98) · 다음 화면 버튼(bottom 34). 핸드오프는 이 버튼을 진행 중에도
+//   SL:233-260 아래 — 확인하기/판정 버튼(핸드오프 bottom 98 → 34, 사용자 결정) · 다음 화면 버튼(bottom 34). 핸드오프는 이 버튼을 진행 중에도
 //              점선 .5로 늘 보이지만, 눌러도 아무 일이 없어서 DONE 장에서만 잉크로 보인다(T8 사용자 결정 — §7).
 //
 // 헷갈림(빨강 칸 · "틀림 → 노트")은 틀린 장과 '아직 헷갈려요'를 누른 장이다. 노트에 남기는 것은 단어장과
@@ -15,13 +15,17 @@ import { View } from 'react-native';
 import * as Speech from 'expo-speech';
 import { NbButton } from '@/components/nb/NbUI';
 import { LessonSheet, SheetStack, type SheetMode, type SheetStackHandle } from '@/components/lesson/SheetStack';
-import { JudgeButtons, REPLAYS, SentDoneSheet, SentReveal, SentSheetBody } from '@/components/lesson/SentPrompt';
+import { JudgeButtons, REPLAYS, SentDoneSheet, SentReveal, SentSheetBody, type Voice } from '@/components/lesson/SentPrompt';
 import { BAR_TODO, HeadCount, Step2Bar, Step2Head, Step2Title, frameTop } from '@/components/lesson/SentParts';
 import { hasSheetAnswer, isSheetRight, sheetLine, type SheetAnswer, type SheetCard } from '@/data/sentenceDrill';
 import { useT } from '@/i18n';
 import { nb } from '@/theme/nb';
 
 const say = (en: string) => Speech.speak(en, { language: 'en-US', rate: 0.9 });
+// 핸드오프는 확인/판정 버튼을 bottom 98에, 다음 화면 버튼을 34에 둔다. 다음 화면 버튼은 DONE 장에서만 보이므로(T8 결정)
+// 진행 중에는 98 아래가 비었다 — 사용자 결정(2026-10-09)으로 확인/판정 버튼을 맨 아래(34)로 내리고, 묶음 아래 끝도
+// 같이 내린다(핸드오프 182 = 98 + 버튼 52 + 32 → 34 + 52 + 32 = 118).
+const ACTIONS_BOTTOM = 34;
 
 export function SentSheets({ sheets, name, fallbackIcon, onConfused, onRepeat, onDone, onExit }: {
   sheets: SheetCard[];
@@ -41,6 +45,7 @@ export function SentSheets({ sheets, name, fallbackIcon, onConfused, onRepeat, o
   const [answer, setAnswer] = useState<SheetAnswer | null>(null);
   const [result, setResult] = useState<'right' | 'wrong' | null>(null);
   const [plays, setPlays] = useState(0);
+  const [voice, setVoice] = useState<Voice>({ speaking: false, beat: 0 });
   const [fuzzy, setFuzzy] = useState<number[]>([]);
   const [known, setKnown] = useState<number[]>([]);
   const done = i >= N;
@@ -71,11 +76,19 @@ export function SentSheets({ sheets, name, fallbackIcon, onConfused, onRepeat, o
     setAnswer(null);
     setResult(null);
     setPlays(0);
+    Speech.stop();
+    setVoice({ speaking: false, beat: 0 });
   };
   const play = (c: SheetCard) => {
     if (plays > REPLAYS) return;
     setPlays((p) => p + 1);
-    say(sheetLine(c));
+    const quiet = () => setVoice((v) => ({ ...v, speaking: false }));
+    Speech.speak(sheetLine(c), {
+      language: 'en-US', rate: 0.9,
+      onStart: () => setVoice((v) => ({ speaking: true, beat: v.beat + 1 })),
+      onBoundary: () => setVoice((v) => ({ speaking: true, beat: v.beat + 1 })),
+      onDone: quiet, onStopped: quiet, onError: quiet,
+    });
   };
 
   const renderSheet = (k: number, mode: SheetMode) => {
@@ -90,7 +103,8 @@ export function SentSheets({ sheets, name, fallbackIcon, onConfused, onRepeat, o
       <LessonSheet testID={`sent-sheet-${k}-${mode}`} dim={mode === 'next'} tag={tag || name}
         typeLabel={r ? t('sent.explained', { type: typeName }) : typeName} n={k + 1} total={N}>
         <SentSheetBody card={c} icon={icon} answer={live ? answer : null} onAnswer={setAnswer} result={r}
-          plays={live ? plays : 0} onPlay={() => play(c)} interactive={mode === 'current'} />
+          plays={live ? plays : 0} onPlay={() => play(c)} interactive={mode === 'current'}
+          voice={mode === 'current' ? voice : undefined} />
         {!!r && <SentReveal card={c} result={r} onSay={() => say(sheetLine(c))} onRepeat={() => onRepeat(sheetLine(c))} />}
       </LessonSheet>
     );
@@ -104,11 +118,11 @@ export function SentSheets({ sheets, name, fallbackIcon, onConfused, onRepeat, o
         <Step2Title text={t('sent.sheetTitle', { name })} />
       </View>
 
-      <SheetStack ref={stack} index={i} total={N} done={done} top={frameTop(172)} bottom={182}
+      <SheetStack ref={stack} index={i} total={N} done={done} top={frameTop(172)} bottom={ACTIONS_BOTTOM + 84}
         renderSheet={renderSheet} onAdvance={advance}
         renderDone={() => <SentDoneSheet known={known.length} fuzzy={fuzzy.length} />} />
 
-      <View style={{ position: 'absolute', left: 24, right: 24, bottom: 98 }}>
+      <View testID="sent-actions" style={{ position: 'absolute', left: 24, right: 24, bottom: ACTIONS_BOTTOM }}>
         {!done && !result && (
           <View testID="sent-check" style={{ opacity: card && hasSheetAnswer(card, answer) ? 1 : 0.4 }}>
             <NbButton variant="ink" size="lg" full icon="pencil" iconColor={nb.paper} onPress={check}>{t('recall.check')}</NbButton>

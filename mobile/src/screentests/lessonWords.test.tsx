@@ -165,11 +165,13 @@ test('the headline: situation, then the marked run; the nuance headline marks �
   expect(texts(nuance)).toContain('뉘앙스');
 });
 
-test('the binder sits in the handoff box: top 172 below a 44 status bar (here TOP_INSET), bottom 182; buttons at 98 and 34', async () => {
+test('the binder sits in the handoff box: top 172 below a 44 status bar (here TOP_INSET); the buttons sit at the bottom (34) and the binder ends above them (118)', async () => {
+  // 사용자 결정(2026-10-09): handoff 98 → 34, binder bottom 182 → 118, since the step button shows only once done.
   const tree = await mount();
   const area = tree.root.findAll((n) => n.type === ScrollView && flat(n).position === 'absolute')[0];
-  expect(flat(area)).toMatchObject({ top: 180, bottom: 182, left: 24, right: 24 });
-  expect(flat(hostID(tree.root, 'recall-actions')[0])).toMatchObject({ position: 'absolute', left: 24, right: 24, bottom: 98 });
+  expect(flat(area)).toMatchObject({ top: 180, bottom: 118, left: 24, right: 24 });
+  expect(flat(hostID(tree.root, 'recall-actions')[0])).toMatchObject({ position: 'absolute', left: 24, right: 24, bottom: 34 });
+  await finishDeck(tree);
   expect(flat(hostID(tree.root, 'recall-step2-slot')[0])).toMatchObject({ position: 'absolute', left: 24, right: 24, bottom: 34 });
 });
 
@@ -417,15 +419,14 @@ async function finishDeck(tree: ReturnType<typeof create>) {
   await judge(tree.root, 'recall-known');
 }
 
-test('STEP 2 · 문장 학습으로 is always there: dashed at .5 and inert before the end, ink after', async () => {
+test('STEP 2 · 문장 학습으로 shows only once the deck is done, in ink (사용자 결정 2026-10-09 — the sentence sheets do the same)', async () => {
   const tree = await mount();
   const slot = () => byID(tree.root, 'recall-to-step2')[0];
+  expect(byID(tree.root, 'recall-to-step2')).toHaveLength(0);
+  await finishDeck(tree);
   expect(texts(slot())).toContain('STEP 2 · 문장 학습으로');
   expect(icons(slot(), 'chevronRight')).toHaveLength(1);
-  expect([slot(), ...slot().findAll(() => true)].some((n) => typeof n.props?.onPress === 'function')).toBe(false);
-  expect(slot().findAll((n) => typeof n.type === 'string' && !!n.props.style && flat(n).opacity === 0.5).length).toBeGreaterThan(0);
-  expect(slot().findAll((n) => typeof n.type === 'string' && !!n.props.style && flat(n).borderStyle === 'dashed').length).toBeGreaterThan(0);
-  await finishDeck(tree);
+  expect(slot().findAll((n) => typeof n.type === 'string' && !!n.props.style && flat(n).borderStyle === 'dashed')).toHaveLength(0);
   expect([slot(), ...slot().findAll(() => true)].some((n) => typeof n.props?.onPress === 'function')).toBe(true);
 });
 
