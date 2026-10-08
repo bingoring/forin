@@ -4149,31 +4149,31 @@ situations:
       en: I'm going to palpate your abdomen.
       ok: false
       fix: I'm going to gently press on your belly in a few spots.
-    why: palpate·abdomen은 차트와 의료진 사이의 말이에요. 아파서 긴장한 환자에게는 press on your belly처럼 쉬운 말이 덜 무섭게 들려요.
+    why: palpate는 차트와 의료진 사이의 동사예요. 환자에게는 같은 abdomen이라도 press on처럼 쉬운 동사로 말하고, belly라고 하면 더 편하게 들려요.
     word: abdomen
     ko: 복부
   order:
     tag: 대화 흐름
     icon: compass
     ko: 복부 사정 4문장 순서
-    why: 누르겠다고 알리고, 누른 곳 중에 아픈 곳을 말하게 한 뒤, 그 답을 바탕으로 벨트 자국을 보고, 그 자국이 알려 주는 것을 설명해요. 'any of them'·'That'·'it'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 먼저 벨트 자국을 보고, 그 자국의 뜻을 말한 뒤, 누르겠다고 알리고, 누른 곳 중 아픈 곳을 말하게 해요. 'that mark'·'any of them'이 앞 줄을 가리켜 순서가 하나예요.
     lines:
-    - en: I'm going to gently press on your belly in a few spots.
+    - en: Can I see where the seatbelt crossed your body?
+      icon: shield
+      ko: 안전벨트가 지나간 자리를 봐도 될까요?
+      note: 허락
+    - en: Thanks—that mark can tell us how hard the impact was.
+      icon: bulb
+      ko: 고마워요, 그 자국을 보면 충격이 얼마나 셌는지 알 수 있어요
+      note: 설명
+    - en: Around that mark, I'm going to gently press on your belly in a few spots.
       icon: magnify
-      ko: 배 몇 군데를 살살 눌러볼게요
+      ko: 그 자국 둘레 배 몇 군데를 살살 눌러볼게요
       note: 안내
     - en: Tell me if any of them feels tender or hard.
       icon: bell
       ko: 그중 아프거나 딱딱한 곳이 있으면 말씀해 주세요
       note: 보고
-    - en: That tells me where to look, so can I see where the seatbelt crossed your body?
-      icon: shield
-      ko: 어디를 봐야 할지 알 수 있어요, 안전벨트가 지나간 자리를 봐도 될까요?
-      note: 허락
-    - en: Whatever mark it left can tell us how hard the impact was.
-      icon: bulb
-      ko: 그게 남긴 자국이 충격이 얼마나 셌는지 알려 줘요
-      note: 설명
 - title: 활력·쇼크 징후 감시
   sentences:
   - en: I'm checking your blood pressure and heart rate closely.
@@ -4329,7 +4329,7 @@ situations:
     tag: 변화 보고
     icon: speech
     why: if anything changes는 달라지는 점이 있으면 알린다는 약속이에요. 환자 곁에서 계속 보며 변화를 팀에 전하는 것이 간호사의 몫이에요.
-    decoy: right now
+    decoy: tomorrow
     distractorsKo:
     - 필요하면 가족에게 연락할게요
     - 검사 결과가 나오면 설명해 드릴게요
@@ -4378,7 +4378,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 쇼크 징후 감시 4문장 순서
-    why: 측정을 알리고, 그 수치를 전한 뒤, 그에 따른 증상을 묻고, 마지막에 변화를 팀에 알리겠다고 닫아요. 'Those numbers'·'with that'·'Whatever you tell me'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 측정을 알리고, 그 수치를 전한 뒤, 증상을 묻고, 수치와 증상을 묶어 바로 팀에 알려요. 'Those numbers'·'with that'·'how you feel'이 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: I'm checking your blood pressure and heart rate closely.
       icon: monitor
@@ -4392,9 +4392,9 @@ situations:
       icon: faceWorried
       ko: 그래서 어지럽거나 기절할 것 같으세요?
       note: 문진
-    - en: Whatever you tell me, I'll let the team know if anything changes.
+    - en: With those numbers and how you feel, I'm letting the team know right now.
       icon: speech
-      ko: 뭐든 말씀해 주세요, 변화가 있으면 팀에 알릴게요
+      ko: 그 수치와 지금 느낌을 보고 바로 팀에 알릴게요
       note: 보고
 - title: 통증 척도·부위 청취
   sentences:
@@ -4527,10 +4527,10 @@ situations:
     blank:
       answer: aching
       options:
-      - en: itching
-      - en: swelling
-      - en: bleeding
+      - en: stinging
       - en: aching
+      - en: cramping
+      - en: tingling
   - en: Tell me if the pain moves anywhere else.
     ko: 통증이 다른 곳으로 옮겨가면 말씀해 주세요.
     chunks:
@@ -4642,7 +4642,7 @@ situations:
       - en: happened
       - en: stopped
       - en: ended
-      - en: cost
+      - en: continued
   - en: How fast were the cars going?
     ko: 차들이 얼마나 빨리 달리고 있었나요?
     chunks:
@@ -4748,7 +4748,7 @@ situations:
       - en: direction
       - en: lane
       - en: street
-      - en: speed
+      - en: exit
   - en: That kind of impact can injure organs we can't see.
     ko: 그런 충격은 눈에 안 보이는 장기를 다치게 할 수 있어요.
     chunks:
@@ -4805,7 +4805,7 @@ situations:
       ok: true
     - who: 인계
       icon: speech
-      en: Restrained driver, MVC, side impact injury.
+      en: Restrained driver, side-impact MVC, L chest injury.
       ok: true
     - who: 환자에게
       icon: me
@@ -4866,10 +4866,10 @@ situations:
     blank:
       answer: manage
       options:
-      - en: forget
+      - en: measure
+      - en: record
+      - en: describe
       - en: manage
-      - en: ignore
-      - en: hide
   - en: Your oxygen level is a bit low because the pain limits your breathing.
     ko: 통증 때문에 숨을 깊이 못 쉬어서 산소 수치가 조금 낮아요.
     chunks:
@@ -4896,10 +4896,10 @@ situations:
     blank:
       answer: limits
       options:
-      - en: deepens
-      - en: fixes
       - en: limits
-      - en: improves
+      - en: speeds
+      - en: slows
+      - en: shakes
   - en: I'm going to listen to your lungs again.
     ko: 폐 소리를 다시 들어볼게요.
     chunks:
@@ -5057,7 +5057,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 늑골골절 호흡 안내 4문장 순서
-    why: 골절이 숨을 아프게 하고 통증을 관리하겠다고 말한 뒤, 그것과 함께 심호흡을 권하고, 그 호흡의 효과를 설명하고, 폐가 열린 동안 다시 듣겠다고 해요. 'With that'·'Those breaths'·'they'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 골절이 숨을 아프게 하고 통증을 관리하겠다고 말한 뒤, 그것과 함께 심호흡을 권하고, 그 호흡의 효과를 설명하고, 폐가 펴지는지 다시 들어 확인해요. 'With that'·'Those breaths'·'they'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: The rib fractures make breathing painful, so we'll manage the pain.
       icon: pill
@@ -5071,9 +5071,9 @@ situations:
       icon: bulb
       ko: 그 호흡이 폐가 펴진 상태를 유지하게 도와줘요
       note: 효과
-    - en: While they stay open, I'm going to listen to your lungs again.
+    - en: To check that they're opening up, I'm going to listen to your lungs again.
       icon: stetho
-      ko: 펴져 있는 동안 폐 소리를 다시 들어볼게요
+      ko: 폐가 펴지는지 확인하려고 폐 소리를 다시 들어볼게요
       note: 청진
 - title: 폐좌상 지연성 악화
   sentences:
@@ -5152,12 +5152,12 @@ situations:
     - 지금 숨이 얼마나 차세요?
     - 기침이 나오나요?
     blank:
-      answer: earlier
+      answer: breathing
       options:
-      - en: earlier
-      - en: tomorrow
-      - en: later
-      - en: tonight
+      - en: breathing
+      - en: sleeping
+      - en: appetite
+      - en: voice
   - en: We're going to give you oxygen and watch you closely.
     ko: 산소를 드리고 자세히 지켜볼게요.
     chunks:
@@ -5237,9 +5237,9 @@ situations:
     blank:
       answer: recheck
       options:
-      - en: skip
-      - en: cancel
-      - en: forget
+      - en: record
+      - en: report
+      - en: chart
       - en: recheck
   nuance:
   - kind: slider
@@ -5281,20 +5281,20 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 폐좌상 악화 대응 4문장 순서
-    why: 수치가 떨어졌다고 알리고, 그런 일이 폐 좌상에서 흔하다고 설명한 뒤, 더 나빠지지 않게 마스크를 씌우고, 씌운 뒤 다시 확인한다고 해요. 'That'·'it'·'the mask'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 수치가 떨어졌다고 알리고, 폐 좌상이 그럴 수 있고 나빠질 수 있다고 설명한 뒤, 그 위험 때문에 마스크를 씌우고 의사에게 알리고, 씌운 뒤 다시 확인한다고 해요. 'that'·'that risk'·'the mask'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Your oxygen level has dropped since you arrived.
       icon: monitor
       ko: 도착하신 뒤로 산소 수치가 떨어졌어요
       note: 수치
-    - en: That's common with a bruised lung, and it can get worse over the next few hours.
+    - en: A bruised lung can do that, and it may get worse over the next few hours.
       icon: bulb
-      ko: 폐 좌상에서는 흔한 일이고 앞으로 몇 시간 동안 더 나빠질 수 있어요
+      ko: 폐 좌상은 그럴 수 있고 앞으로 몇 시간 동안 더 나빠질 수 있어요
       note: 설명
-    - en: To keep it from getting worse, I'm putting this mask on you.
+    - en: Because of that risk, I'm putting this mask on you and letting the doctor know.
       icon: hospital
-      ko: 더 나빠지지 않도록 이 마스크를 씌워 드릴게요
-      note: 마스크
+      ko: 그 위험 때문에 이 마스크를 씌우고 의사 선생님께 알릴게요
+      note: 조치
     - en: Once the mask is on, I'll recheck your oxygen level in a few minutes.
       icon: redo
       ko: 마스크를 쓰시면 몇 분 뒤에 산소 수치를 다시 확인할게요
@@ -5452,7 +5452,7 @@ situations:
     goal: 2
     tag: 즉시 보고
     icon: speech
-    why: right away로 기다리지 않고 바로 알린다고 말해요. 혈압이 떨어지는 외상 환자의 변화는 모든 환자에게 즉시 보고해야 하는 소견이에요.
+    why: right away로 기다리지 않고 바로 알린다고 말해요. 외상 환자의 혈압이 떨어지면 기다리지 않고 바로 알려야 해요.
     decoy: later today
     distractorsKo:
     - 의사 선생님이 곧 오실 거예요
@@ -5577,12 +5577,12 @@ situations:
     - 여기가 어제부터 아팠나요?
     - 이쪽으로 누우면 편한가요?
     blank:
-      answer: side
+      answer: right
       options:
-      - en: foot
-      - en: side
-      - en: leg
-      - en: arm
+      - en: left
+      - en: right
+      - en: other
+      - en: far
   - en: I'm watching for any guarding when I touch your belly.
     ko: 배를 만질 때 방어 반응이 있는지 살펴보고 있어요.
     chunks:
@@ -5607,8 +5607,8 @@ situations:
     blank:
       answer: guarding
       options:
-      - en: itching
-      - en: coughing
+      - en: bruising
+      - en: swelling
       - en: guarding
       - en: bleeding
   - en: Your blood pressure is trending down, so we'll watch closely.
@@ -5667,9 +5667,9 @@ situations:
       answer: faint
       options:
       - en: faint
-      - en: hungry
-      - en: sleepy
-      - en: thirsty
+      - en: cold
+      - en: itchy
+      - en: full
   - en: We're keeping a close eye on your vital signs.
     ko: 활력징후를 계속 자세히 지켜보고 있어요.
     chunks:
@@ -5686,7 +5686,7 @@ situations:
     why: keep a close eye on은 계속 눈을 떼지 않고 지켜본다는 관용구예요. 이 환자는 수치가 달라질 수 있어 활력징후를 반복해서 살펴요.
     decoy: from the door
     distractorsKo:
-    - 활력징후는 15분마다 잴게요
+    - 팔에 혈압 커프를 감아 둘게요
     - 측정한 수치는 차트에 적을게요
     blank:
       answer: close
@@ -5736,7 +5736,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 간손상 의심 사정 4문장 순서
-    why: 만질 위치를 알리고, 그쪽을 누를 때 더 아픈지 묻고, 대답하는 동안 방어 반응을 살핀 뒤, 그 모든 것을 바탕으로 활력징후를 지켜본다고 해요. 'that side'·'While you tell me'·'all of that'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 만질 위치를 알리고, 그쪽을 누를 때 더 아픈지 묻고, 대답하는 동안 방어 반응을 살핀 뒤, 무엇이 나오든 활력징후를 지켜본다고 해요. 'that side'·'While you tell me'·'Whatever I find'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: I'm going to feel under your right rib cage.
       icon: magnify
@@ -5750,9 +5750,9 @@ situations:
       icon: magnify
       ko: 말씀하시는 동안 배를 만질 때 방어 반응이 있는지 살필게요
       note: 관찰
-    - en: Based on all of that, we'll keep a close eye on your vital signs.
+    - en: Whatever I find, we'll keep a close eye on your vital signs.
       icon: monitor
-      ko: 그 모든 걸 바탕으로 활력징후를 계속 자세히 지켜볼게요
+      ko: 무엇이 나오든 활력징후를 계속 자세히 지켜볼게요
       note: 감시
 - title: 안전벨트 증후군
   sentences:
@@ -5949,7 +5949,7 @@ situations:
       ok: true
     - who: 환자에게
       icon: me
-      en: You're being admitted to be observed with serial abdominal exams.
+      en: We'll observe you with serial abdominal exams.
       ok: false
       fix: We're going to keep you here a while longer and check your belly again.
     why: serial abdominal exams는 계획을 적는 말이라 환자에게는 뜻이 와닿지 않아요. 여러 번 다시 살펴본다고 풀어 줘요.
@@ -5959,23 +5959,23 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 안전벨트 자국 설명 4문장 순서
-    why: 자국의 의미를 말하고, 그것이 장 손상을 뜻할 수도 있다고 설명한 뒤, 그것을 찾으려 영상 검사를 하고, 영상이 깨끗해도 늦게 나타날 수 있어 관찰한다고 해요. 'It'·'that'·'clear images'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 자국의 의미를 말하고, 그 손상을 찾으려 영상 검사를 하고, 영상이 깨끗해도 장 손상은 늦게 나타날 수 있다고 설명한 뒤, 그 때문에 관찰한다고 해요. 'that'·'clear images'·'Because of that'이 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: That seatbelt mark tells us to check for deeper injury.
       icon: bulb
       ko: 그 안전벨트 자국은 더 깊은 손상을 확인해야 한다는 뜻이에요
       note: 자국
-    - en: It can even mean the bowel was injured.
-      icon: bulb
-      ko: 심하면 장을 다쳤다는 뜻일 수도 있어요
-      note: 가능성
     - en: To look for that, we'll take images of what's underneath.
       icon: magnify
       ko: 그걸 찾으려고 안쪽 영상 검사를 할게요
       note: 검사
-    - en: Even with clear images, it can show up hours later, so we'll observe you.
+    - en: Even with clear images, a bowel injury can show up hours later.
+      icon: bulb
+      ko: 영상이 깨끗해도 장 손상은 몇 시간 뒤 나타날 수 있어요
+      note: 지연
+    - en: Because of that, we'll observe you here a while longer.
       icon: monitor
-      ko: 영상이 깨끗해도 몇 시간 뒤 나타날 수 있어서 관찰할게요
+      ko: 그래서 여기서 좀 더 관찰할게요
       note: 관찰
 - title: 항응고제 흉복부 둔상
   sentences:
@@ -6114,10 +6114,10 @@ situations:
     blank:
       answer: repeat
       options:
-      - en: hide
-      - en: skip
+      - en: review
+      - en: print
       - en: repeat
-      - en: cancel
+      - en: send
   - en: Any new bruising or dizziness, tell us right away.
     ko: 새로 멍이 들거나 어지러우면 바로 말씀해 주세요.
     chunks:
@@ -6140,9 +6140,9 @@ situations:
     blank:
       answer: dizziness
       options:
-      - en: itching
-      - en: hunger
-      - en: thirst
+      - en: nausea
+      - en: numbness
+      - en: fever
       - en: dizziness
   nuance:
   - kind: pair
@@ -6187,7 +6187,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 항응고제 복용 사정 4문장 순서
-    why: 약 때문에 출혈이 쉽다고 알리고, 어떤 약이고 마지막 복용이 언제인지 묻고, 그 약을 하루 몇 번 먹는지 물은 뒤, 그 정보를 가지고 더 오래 지켜보겠다고 해요. 'Which one'·'that one'·'that in mind'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 약 때문에 출혈이 쉽다고 알리고, 어떤 약이고 마지막 복용이 언제인지 묻고, 그 약을 하루 몇 번 먹는지 물은 뒤, 그 정보를 가지고 더 오래 지켜보겠다고 해요. 'Which one'·'the one you just named'·'that in mind'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Because you take a blood thinner, bleeding can spread more easily.
       icon: bulb
@@ -6197,9 +6197,9 @@ situations:
       icon: pill
       ko: 어떤 약이고 마지막 복용은 언제였나요?
       note: 약 확인
-    - en: How many times a day do you take that one?
+    - en: How many times a day do you take the one you just named?
       icon: calendar
-      ko: 그 약을 하루에 몇 번 드세요?
+      ko: 방금 말씀하신 약은 하루에 몇 번 드세요?
       note: 횟수
     - en: With that in mind, we'll watch you longer and repeat your labs to be safe.
       icon: monitor
@@ -6303,7 +6303,7 @@ situations:
     goal: 2
     tag: 드레싱 안내
     icon: bandage
-    why: a moist sterile dressing으로 무엇으로 덮는지 구체적으로 말해요. 멸균 드레싱은 오염을 막고 젖은 드레싱은 조직이 마르는 것을 막아 줘요.
+    why: a moist sterile dressing으로 무엇으로 덮는지 구체적으로 말해요. 멸균 드레싱은 오염을 막고, 젖은 드레싱은 밖으로 나온 장기가 마르지 않게 해 줘요.
     decoy: with a towel
     distractorsKo:
     - 상처 크기를 재서 기록해 둘게요
@@ -6334,7 +6334,7 @@ situations:
     why: until surgery로 이 처치가 임시라는 점을 알려요. 수술로 제대로 치료하기 전까지 조직이 마르거나 오염되지 않게 지켜 줘요.
     decoy: from the cold
     distractorsKo:
-    - 수술 전까지 드레싱은 열지 않을 거예요
+    - 수술 동의서는 의사 선생님이 받으실 거예요
     - 수술 준비는 다른 팀이 해요
     blank:
       answer: protect
@@ -6365,12 +6365,12 @@ situations:
     - 숨은 편하게 쉬세요
     - 통증이 심하면 바로 말씀해 주세요
     blank:
-      answer: worse
+      answer: still
       options:
-      - en: worse
-      - en: better
-      - en: smaller
-      - en: clearer
+      - en: up
+      - en: awake
+      - en: still
+      - en: warm
   nuance:
   - kind: pair
     words:
@@ -6486,10 +6486,10 @@ situations:
     blank:
       answer: cramping
       options:
-      - en: itching
+      - en: vomiting
       - en: cramping
-      - en: coughing
-      - en: sneezing
+      - en: swelling
+      - en: fever
   - en: Any bright red bleeding or fluid leaking?
     ko: 선홍색 출혈이나 양수가 새는 느낌이 있나요?
     chunks:
@@ -6681,10 +6681,10 @@ situations:
     blank:
       answer: understand
       options:
-      - en: forgive
+      - en: trust
+      - en: hear
+      - en: reach
       - en: understand
-      - en: greet
-      - en: thank
   - en: Point to where it hurts and hold up fingers for how bad.
     ko: 아픈 곳을 가리키고 얼마나 아픈지 손가락으로 보여 주세요.
     chunks:
@@ -6710,10 +6710,10 @@ situations:
     blank:
       answer: bad
       options:
-      - en: far
-      - en: tall
       - en: bad
-      - en: old
+      - en: long
+      - en: often
+      - en: soon
   - en: One finger means mild, ten fingers means severe.
     ko: 손가락 하나는 약함, 열 개는 심함을 뜻해요.
     chunks:
@@ -6862,7 +6862,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 통역 연결 후 문진 4문장 순서
-    why: 통역사를 부른다고 알리고, 연결될 때까지 몸짓으로 답하게 하고, 그 손가락 약속을 정한 뒤, 아픈 정도를 알았으니 병력을 물어요. 'they'·'fingers'·'how bad it is'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 통역사를 부른다고 알리고, 연결될 때까지 몸짓으로 답하게 하고, 그 손가락 약속을 정한 뒤, 병력은 통역사가 묻는다고 해요. 'they'·'the fingers'·'that scale'이 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: I'm getting an interpreter so we understand each other.
       icon: speech
@@ -6872,13 +6872,13 @@ situations:
       icon: pushpin
       ko: 연결될 때까지 아픈 곳을 가리키고 손가락으로 얼마나 아픈지 보여 주세요
       note: 몸짓
-    - en: One finger means mild, ten fingers means severe.
+    - en: For the fingers, one means mild and ten means severe.
       icon: chartup
-      ko: 손가락 하나는 약함, 열 개는 심함을 뜻해요
+      ko: 손가락은 하나가 약함, 열 개가 심함을 뜻해요
       note: 약속
-    - en: Now that I know how bad it is, do you have any medical problems or take any medicines?
+    - en: With that scale done, the interpreter will ask about your history and medicines.
       icon: pill
-      ko: 얼마나 아픈지 알았으니 지병이나 드시는 약이 있나요?
+      ko: 그 척도를 정했으니 통역사가 병력과 드시는 약을 물어볼 거예요
       note: 병력
 - title: 흉관 삽입 준비 설명
   sentences:
@@ -6932,7 +6932,7 @@ situations:
     why: will help처럼 도움이 된다고 말해 과한 약속을 피해요. 관으로 공기나 피를 계속 빼 주면 폐가 다시 눌리지 않고 펴진 채 유지돼요.
     decoy: all day
     distractorsKo:
-    - 관을 넣으면 숨쉬기가 편해질 거예요
+    - 관을 넣은 뒤 가슴 사진을 다시 찍어요
     - 관은 며칠간 둘 수 있어요
     blank:
       answer: open
@@ -7044,9 +7044,9 @@ situations:
     blank:
       answer: stay
       options:
-      - en: leave
-      - en: hide
-      - en: run
+      - en: work
+      - en: look
+      - en: check
       - en: stay
   nuance:
   - kind: pair
@@ -7218,10 +7218,10 @@ situations:
     blank:
       answer: release
       options:
-      - en: raise
-      - en: hide
       - en: release
-      - en: increase
+      - en: measure
+      - en: check
+      - en: record
   - en: We need to put a needle in to relieve the pressure fast.
     ko: 압력을 빨리 풀려면 바늘을 넣어야 해요.
     chunks:
@@ -7310,11 +7310,11 @@ situations:
       ok: true
     - who: 의사에게
       icon: speech
-      en: Absent breath sounds on the left lung, trachea deviated—looks like a tension pneumo.
+      en: Absent breath sounds over the left lung, trachea deviated—looks like a tension pneumo.
       ok: true
     - who: 환자에게
       icon: me
-      en: Your lung has a tension pneumothorax.
+      en: Your lung collapsed from a tension pneumothorax.
       ok: false
       fix: Air is pressing on your lung, and we're fixing it right now.
     why: tension pneumothorax는 의료진끼리 쓰는 진단명이에요. 숨이 막혀 공포에 질린 환자에게는 무슨 일이 생겼고 지금 무엇을 하는지 쉬운 말로 알려요.
@@ -7396,10 +7396,10 @@ situations:
     blank:
       answer: blood
       options:
-      - en: water
+      - en: air
       - en: blood
-      - en: urine
-      - en: sweat
+      - en: fluid
+      - en: pus
   - en: Your blood pressure keeps dropping despite the fluids.
     ko: 수액을 드려도 혈압이 계속 떨어지고 있어요.
     chunks:
@@ -7452,8 +7452,8 @@ situations:
       answer: surgical
       options:
       - en: nursing
-      - en: dental
-      - en: billing
+      - en: imaging
+      - en: transport
       - en: surgical
   - en: We're watching your drainage and pressure every minute.
     ko: 배액량과 혈압을 매분 지켜보고 있어요.
@@ -7472,15 +7472,15 @@ situations:
     why: every minute으로 확인 간격을 구체적으로 말해요. 출혈 환자는 배액량과 혈압이 빠르게 변할 수 있어 쉬지 않고 봐요.
     decoy: from the door
     distractorsKo:
-    - 배액통은 비울 때 양을 기록할게요
-    - 혈압은 모니터로 계속 보고 있어요
+    - 배액통 눈금에 지금 양을 표시해 둘게요
+    - 흉관이 꺾이지 않았는지 확인할게요
     blank:
-      answer: minute
+      answer: drainage
       options:
-      - en: minute
-      - en: hour
-      - en: shift
-      - en: day
+      - en: drainage
+      - en: dressing
+      - en: breathing
+      - en: diet
   - en: We're giving you more blood to replace what you're losing.
     ko: 잃고 계신 만큼 피를 더 드리고 있어요.
     chunks:
@@ -7506,10 +7506,10 @@ situations:
     blank:
       answer: replace
       options:
-      - en: avoid
+      - en: measure
       - en: replace
-      - en: hide
-      - en: ignore
+      - en: count
+      - en: check
   nuance:
   - kind: pair
     words:
@@ -7705,10 +7705,10 @@ situations:
     blank:
       answer: preparing
       options:
-      - en: declining
+      - en: waiting
+      - en: trying
+      - en: asking
       - en: preparing
-      - en: refusing
-      - en: forgetting
   - en: We need a needle to drain the fluid around your heart.
     ko: 심장 주위 액체를 빼내려면 바늘이 필요해요.
     chunks:
@@ -7727,7 +7727,7 @@ situations:
     goal: 2
     tag: 처치 설명
     icon: bandage
-    why: to drain으로 바늘이 필요한 이유를 알려요. 심낭에 찬 액체를 바늘로 빼내는 심낭천자는 의사가 해요.
+    why: to drain으로 바늘이 필요한 이유를 알려요. 심낭에 찬 액체를 바늘로 빼내는 심낭천자는 의사가 해요. 외상의 심낭압전에서 바늘 천자는 수술 전까지의 임시 처치예요.
     decoy: in your arm
     distractorsKo:
     - 이 바늘은 의사 선생님이 넣어요
@@ -7769,7 +7769,7 @@ situations:
       ok: true
     - who: 환자에게
       icon: me
-      en: Your heart shows Beck's triad.
+      en: You have Beck's triad—muffled heart sounds, JVD, and hypotension.
       ok: false
       fix: Fluid is pressing on your heart and your blood pressure is very low, so we're acting now.
     why: Beck's triad는 의료진끼리 쓰는 이름이에요. 환자에게는 지금 무엇을 하고 있는지만 짧게 알려요.
@@ -7779,7 +7779,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 탐포네이드 징후 설명 4문장 순서
-    why: 목 정맥과 혈압을 말하고, 거기에 심음 변화를 보태고, 세 소견이 뜻하는 것을 설명한 뒤, 그 때문에 처치를 준비한다고 해요. 'On top of that'·'These three signs'·'that'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 목 정맥과 혈압을 말하고, 거기에 심음 변화를 보태고, 세 소견이 뜻하는 것을 설명한 뒤, 그 액체를 빼야 하니 바로 의사에게 알려요. 'On top of that'·'These three signs'·'that fluid'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Your neck veins are full and your pressure is very low.
       icon: magnify
@@ -7793,10 +7793,10 @@ situations:
       icon: bulb
       ko: 이 세 가지는 액체가 심장의 펌프질을 방해할 수 있다는 뜻이에요
       note: 설명
-    - en: Because of that, we're preparing to relieve the pressure around your heart.
-      icon: hospital
-      ko: 그래서 심장 주위 압력을 풀어드릴 준비를 하고 있어요
-      note: 준비
+    - en: Since that fluid needs to be drained, I'm calling the doctor right now.
+      icon: speech
+      ko: 그 액체를 빼야 하니 지금 바로 의사 선생님을 부를게요
+      note: 보고
 - title: 복강내 대량출혈 쇼크
   sentences:
   - en: Your belly is filling with blood and your pressure is dropping.
@@ -7848,7 +7848,7 @@ situations:
     decoy: on one side
     distractorsKo:
     - 배를 만질 때 많이 아프세요?
-    - 배가 불러 오는 느낌이 있어요?
+    - 소변은 언제 마지막으로 보셨어요?
     blank:
       answer: tight
       options:
@@ -7882,8 +7882,8 @@ situations:
       options:
       - en: faster
       - en: slower
-      - en: safer
-      - en: better
+      - en: later
+      - en: longer
   - en: You need surgery right away to stop the bleeding.
     ko: 출혈을 멈추려면 지금 바로 수술이 필요해요.
     chunks:
@@ -7899,7 +7899,7 @@ situations:
     - w-bleed
     goal: 2
     tag: 수술 필요
-    icon: hospital
+    icon: scalpel
     why: right away로 기다릴 시간이 없다고 분명히 말해요. 배 안 출혈이 계속되면 약이나 수혈만으로는 멈추지 않아 수술로 출혈 부위를 막아야 해요.
     decoy: next week
     distractorsKo:
@@ -7963,8 +7963,8 @@ situations:
       answer: waiting
       options:
       - en: leaving
-      - en: resting
-      - en: eating
+      - en: charting
+      - en: calling
       - en: waiting
   nuance:
   - kind: pair
@@ -8010,7 +8010,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 복강내 출혈 쇼크 안내 4문장 순서
-    why: 지금 일어나는 일을 말하고, 그래서 수술이 필요하다고 설명한 뒤, 수술팀이 대기 중이라고 알리고, 팀이 기다리니 수혈하며 수술실로 옮긴다고 해요. 'That'·'For that'·'they're waiting'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 지금 일어나는 일을 말하고, 그래서 수술이 필요하다고 설명한 뒤, 수술팀이 대기 중이라고 알리고, 팀이 기다리니 지금 옮기고 수혈은 가는 내내 이어 간다고 해요. 'That'·'For that'·'they're waiting'이 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Your belly is filling with blood and your pressure is dropping.
       icon: siren
@@ -8024,9 +8024,9 @@ situations:
       icon: siren
       ko: 그를 위해 수술팀은 이미 준비하고 기다리고 있어요
       note: 대기
-    - en: Since they're waiting, we're giving you blood and moving you to the OR now.
+    - en: Since they're waiting, we're moving you to the OR now, blood still running.
       icon: hospital
-      ko: 팀이 기다리니 수혈하면서 지금 바로 수술실로 이동할게요
+      ko: 팀이 기다리니 지금 수술실로 옮길게요, 수혈은 계속돼요
       note: 이동
 - title: 연가양 흉부(flail chest)
   sentences:
@@ -8138,10 +8138,10 @@ situations:
     blank:
       answer: pain
       options:
-      - en: hunger
-      - en: thirst
       - en: pain
+      - en: cough
       - en: fever
+      - en: blood sugar
   - en: You may need help from a ventilator to breathe well.
     ko: 잘 숨쉬려면 인공호흡기의 도움이 필요할 수 있어요.
     chunks:
@@ -8162,7 +8162,7 @@ situations:
     decoy: from home
     distractorsKo:
     - 그 전에 산소부터 최대한 드릴게요
-    - 호흡기가 필요하면 먼저 설명드릴게요
+    - 지금은 산소 마스크로 지켜볼게요
     blank:
       answer: ventilator
       options:
@@ -8241,7 +8241,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 연가양 흉부 설명 4문장 순서
-    why: 갈비뼈 일부가 따로 움직인다고 알리고, 그 부분이 반대로 움직인다고 짚은 뒤, 그 때문에 숨이 얕아졌다고 하고, 얕은 호흡을 돕겠다고 말해요. 'That part'·'Because of that'·'shallow breathing'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 갈비뼈 일부가 따로 움직인다고 알리고, 그 부분이 반대로 움직인다고 짚은 뒤, 그렇게 꺼져서 숨이 얕아졌다고 하고, 그 숨을 깊게 하려고 돕겠다고 말해요. 'That part'·'Sinking in like that'·'those breaths'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: A section of your ribs is moving separately when you breathe.
       icon: magnify
@@ -8251,13 +8251,13 @@ situations:
       icon: magnify
       ko: 그 부분은 숨을 들이쉴 때 반대로 움직여요
       note: 역설
-    - en: Because of that, your breathing looks more shallow than before.
+    - en: Sinking in like that is making your breathing shallow.
       icon: monitor
-      ko: 그래서 숨쉬기가 아까보다 얕아 보여요
+      ko: 그렇게 안으로 꺼져서 숨이 얕아지고 있어요
       note: 결과
-    - en: For your shallow breathing, we'll support it and control your pain.
+    - en: To make those breaths deeper, we'll support your breathing and control your pain.
       icon: hospital
-      ko: 얕은 호흡은 도와드리고 통증도 조절해 드릴게요
+      ko: 그 숨을 더 깊게 하려고 호흡을 도와드리고 통증도 조절해 드릴게요
       note: 치료
 - title: 흉복부외상 SBAR 인계
   sentences:
@@ -8310,12 +8310,12 @@ situations:
     - 가장 아픈 곳은 가슴입니다
     - 구급차로 사고 직후에 왔습니다
     blank:
-      answer: car
+      answer: abdomen
       options:
-      - en: train
-      - en: car
-      - en: bike
-      - en: horse
+      - en: pelvis
+      - en: abdomen
+      - en: spine
+      - en: skull
   - en: We placed a chest tube for the hemothorax.
     ko: 혈흉으로 흉관을 삽입했습니다.
     chunks:
@@ -8395,9 +8395,9 @@ situations:
       answer: units
       options:
       - en: units
-      - en: pills
-      - en: tablets
-      - en: grams
+      - en: liters
+      - en: doses
+      - en: milligrams
   - en: He needs the OR now to control the bleeding.
     ko: 출혈 조절을 위해 지금 수술실이 필요합니다.
     chunks:
@@ -8455,7 +8455,7 @@ situations:
       ok: true
     - who: 차트 기록
       icon: board
-      en: Pt s/p MVC (car crash), restrained driver.
+      en: Pt s/p MVC, restrained driver, car vs. car, side impact.
       ok: true
     - who: 외상외과 의사에게
       icon: speech
@@ -8469,7 +8469,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: SBAR 인계 4문장 순서
-    why: S로 환자와 문제를 말하고, B로 사고와 한 처치를 말하고, A로 배액량 추이를 말한 뒤, R로 수술실을 요청해요. 'It'·'Since then'·'that output'이 앞 줄을 가리켜 순서가 하나예요.
+    why: S로 환자와 문제를 말하고, B로 사고와 한 처치를 말하고, A로 배액량 추이와 수혈에도 떨어지는 혈압을 말한 뒤, R로 수술실을 요청해요. 'It'·'Since then'·'all of that'이 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: This is a 40-year-old with blunt chest and abdominal trauma.
       icon: speech
@@ -8479,11 +8479,11 @@ situations:
       icon: bulb
       ko: 교통사고였고 혈흉으로 흉관을 삽입했습니다
       note: 배경
-    - en: Since then, chest tube output is 400 milliliters and rising.
+    - en: Since then, output is 400 mL and rising, with BP dropping despite two units.
       icon: chartup
-      ko: 그 뒤로 흉관 배액량이 400밀리리터이고 증가 중입니다
+      ko: 그 뒤로 배액량은 400 mL이고 늘고 있고, 혈액 두 단위에도 혈압이 떨어지고 있습니다
       note: 평가
-    - en: With that output, he needs the OR now to control the bleeding.
+    - en: With all of that, he needs the OR now to control the bleeding.
       icon: siren
-      ko: 그 배액량으로 출혈 조절을 위해 지금 수술실이 필요합니다
+      ko: 이 모든 걸 보면 출혈 조절을 위해 지금 수술실이 필요합니다
       note: 요청
