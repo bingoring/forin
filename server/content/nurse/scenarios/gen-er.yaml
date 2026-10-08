@@ -96286,6 +96286,20 @@
         - w-check
         - w-arm
       goal: 1
+      tag: 진찰 안내
+      icon: magnify
+      why: look at and gently check로 보는 것과 만지는 것을 나눠 말하면, 아픈 팔에 손이 닿는 순간을 환자가 미리 알아요. gently는 만지는 방식을 먼저 약속하는 말이에요.
+      decoy: after the x-ray
+      distractorsKo:
+        - 손목 맥박부터 짚어 볼게요
+        - 팔에 부목을 대 드릴게요
+      blank:
+        answer: gently
+        options:
+            - en: gently
+            - en: roughly
+            - en: hastily
+            - en: suddenly
     - en: Is there any open cut or just swelling and bruising?
       ko: 벌어진 상처가 있나요, 아니면 붓고 멍만 든 건가요?
       chunks:
@@ -96300,6 +96314,20 @@
         - w-swell
         - w-bruise
       goal: 1
+      tag: 상처 확인
+      icon: bandage
+      why: any open cut or just …로 두 갈래를 주면 환자가 보이는 대로 고를 수 있어요. 피부가 열려 있는지는 감염 위험과 치료 방향을 가르는 첫 구분이에요.
+      decoy: at the elbow
+      distractorsKo:
+        - 어디에 부딪히셨는지 말씀해 주세요
+        - 붓기가 언제부터 시작됐나요?
+      blank:
+        answer: open
+        options:
+            - en: healed
+            - en: open
+            - en: closed
+            - en: sealed
     - en: Tell me where it's most tender when I touch.
       ko: 제가 만졌을 때 가장 아픈 곳을 말씀해 주세요.
       chunks:
@@ -96312,6 +96340,20 @@
         - w-tender
         - w-touch
       goal: 1
+      tag: 압통 확인
+      icon: pushpin
+      why: when I touch로 만지는 순간을 짚어 주면 환자가 가만히 있다가 아픈 곳에서 바로 알릴 수 있어요. tender는 누르거나 만질 때 아픈 것을 가리켜요.
+      decoy: after you stand
+      distractorsKo:
+        - 팔을 한번 들어 보세요
+        - 통증이 몇 점인가요?
+      blank:
+        answer: tender
+        options:
+            - en: itchy
+            - en: stiff
+            - en: tender
+            - en: sticky
     - en: Can you show me exactly where it hurts the most?
       ko: 가장 아픈 곳을 정확히 짚어 주시겠어요?
       chunks:
@@ -96325,6 +96367,20 @@
         - w-hurt
         - w-most
       goal: 2
+      tag: 위치 짚기
+      icon: pushpin
+      why: show me exactly로 말로 설명하기 힘든 통증 위치를 손가락으로 답하게 해요. Can you …?는 지시보다 부드러운 부탁이라 아픈 환자도 거부감이 적어요.
+      decoy: with your good hand
+      distractorsKo:
+        - 손가락을 움직여 보시겠어요?
+        - 언제부터 아팠는지 말씀해 주세요
+      blank:
+        answer: hurts
+        options:
+            - en: itches
+            - en: bleeds
+            - en: swells
+            - en: hurts
     - en: Your arm looks a little deformed compared to the other side.
       ko: 반대쪽과 비교하면 팔이 조금 변형되어 보여요.
       chunks:
@@ -96340,6 +96396,20 @@
         - w-compare
         - w-side
       goal: 2
+      tag: 변형 설명
+      icon: magnify
+      why: compared to the other side로 비교 기준을 말해 주면 변형이 막연한 겁이 아니라 반대쪽과 다르다는 관찰로 들려요. a little로 수위를 낮춰 환자가 놀라지 않게 해요.
+      decoy: since this morning
+      distractorsKo:
+        - 반대쪽 팔도 볼게요
+        - 팔을 움직이지 마세요
+      blank:
+        answer: deformed
+        options:
+            - en: deformed
+            - en: healed
+            - en: rested
+            - en: cleaned
   nuance:
     - kind: slider
       words:
@@ -96360,6 +96430,8 @@
         - w-swell
         - w-bruise
       why: edema(부종)·ecchymosis(반상출혈)는 차트와 의료진끼리 쓰는 말이에요. 환자에게는 swelling·bruising이라고 해야 바로 알아듣고 대답해요.
+      ko: 상처
+      word: wound
       scenes:
         - who: 차트 기록
           icon: board
@@ -96374,6 +96446,28 @@
           en: Is there any open wound, or just edema and ecchymosis?
           ok: false
           fix: Is there any open cut, or just swelling and bruising?
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 사지 손상 사정 4문장 순서
+    why: 눈으로 보겠다고 먼저 알리고, 그 사이 아픈 곳을 가리키게 한 뒤, 그 지점 주변을 만지며 압통을 묻고, 마지막에 찾은 것을 기록한다고 마무리해요. 'do that'·'that spot'·'everything we found'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+        - en: I'm going to look at your arm first, and I'll be gentle.
+          icon: magnify
+          ko: 먼저 팔을 살펴볼게요, 살살 할게요
+          note: 안내
+        - en: As I do that, point to the spot that hurts the most.
+          icon: pushpin
+          ko: 그러는 동안 가장 아픈 곳을 가리켜 주세요
+          note: 위치
+        - en: Now I'll gently touch around that spot, so tell me where it's most tender.
+          icon: me
+          ko: 이제 그 지점 주변을 살살 만질게요, 가장 아픈 곳을 말씀해 주세요
+          note: 압통
+        - en: Thanks, I'll write down everything we found for the doctor.
+          icon: pencil
+          ko: 고마워요, 확인한 것을 모두 의사 선생님께 드릴 기록에 적을게요
+          note: 기록
 - id: SCN-ER-00460
   profession: ""
   eventId: EVT-ER-00128
@@ -96445,6 +96539,20 @@
         - w-touch
         - w-finger
       goal: 1
+      tag: 감각 확인
+      icon: me
+      why: feel me touching처럼 환자가 느끼는 것을 주어로 물어서, 눈을 감고 있어도 대답할 수 있어요. 감각이 있는지는 신경이 손상됐는지 보는 확인이에요.
+      decoy: on your shoulder
+      distractorsKo:
+        - 손가락 색깔이 어떤가요?
+        - 손가락을 꼼지락거려 보세요
+      blank:
+        answer: feel
+        options:
+            - en: imagine
+            - en: feel
+            - en: see
+            - en: hear
     - en: Wiggle your fingers and toes for me if you can.
       ko: 가능하면 손가락과 발가락을 꼼지락거려 보세요.
       chunks:
@@ -96458,6 +96566,20 @@
         - w-finger
         - w-toe
       goal: 1
+      tag: 운동 확인
+      icon: me
+      why: for me는 부탁하는 말투고 if you can은 아프면 무리하지 않아도 된다는 여지를 줘요. 손가락과 발가락이 움직이는지는 신경과 근육이 살아 있는지 보는 확인이에요.
+      decoy: one at a time
+      distractorsKo:
+        - 제 손을 힘껏 잡아 보세요
+        - 손가락이 저린가요?
+      blank:
+        answer: Wiggle
+        options:
+            - en: Tap
+            - en: Fold
+            - en: Wiggle
+            - en: Wave
     - en: I'm checking the pulse below your injury.
       ko: 손상 부위 아래쪽 맥박을 확인하고 있어요.
       chunks:
@@ -96471,6 +96593,20 @@
         - w-below
         - w-injury
       goal: 1
+      tag: 맥박 확인
+      icon: stetho
+      why: below your injury로 어디를 짚는지 말해 줘요. 손상 아래쪽 맥박은 혈류가 이어지는지 보는 기본 확인이라, 이유 없이 손목을 잡는 것처럼 느끼지 않게 해요.
+      decoy: above your shoulder
+      distractorsKo:
+        - 발가락 색깔을 보고 있어요
+        - 손목을 움직이지 마세요
+      blank:
+        answer: pulse
+        options:
+            - en: pressure
+            - en: temperature
+            - en: size
+            - en: pulse
     - en: Tell me if your skin color looks different from the other side.
       ko: 피부색이 반대쪽과 다르게 보이면 말씀해 주세요.
       chunks:
@@ -96485,6 +96621,20 @@
         - w-different
         - w-side
       goal: 2
+      tag: 색 확인
+      icon: magnify
+      why: from the other side로 반대쪽을 기준 삼게 해서, 환자가 다르다는 것을 스스로 판단할 수 있어요. 창백하거나 푸르스름한 색은 혈류가 줄었다는 단서예요.
+      decoy: since this morning
+      distractorsKo:
+        - 손가락을 꼼지락거려 보세요
+        - 어디가 가장 아픈가요?
+      blank:
+        answer: color
+        options:
+            - en: color
+            - en: texture
+            - en: temperature
+            - en: thickness
     - en: Squeeze my fingers as hard as you can on both hands.
       ko: 양손으로 제 손가락을 최대한 세게 쥐어 보세요.
       chunks:
@@ -96498,6 +96648,20 @@
         - w-finger
         - w-hard
       goal: 1
+      tag: 근력 확인
+      icon: me
+      why: as hard as you can는 최대한이라는 기준을 줘서 양손의 힘을 같은 조건에서 비교할 수 있어요. on both hands로 좌우를 모두 시키는 것도 비교를 위해서예요.
+      decoy: for a long time
+      distractorsKo:
+        - 손끝이 차가운지 만져 볼게요
+        - 숨을 깊게 쉬어 보세요
+      blank:
+        answer: Squeeze
+        options:
+            - en: Push
+            - en: Squeeze
+            - en: Pull
+            - en: Tap
   nuance:
     - kind: slider
       words:
@@ -96519,6 +96683,8 @@
         - w-below
         - w-injury
       why: CMS(circulation·motor·sensation)와 distal은 의료진끼리 쓰는 말이에요. 환자에게는 무엇을 보는지(pulse, feeling)와 어디를 보는지(below your injury)를 쉬운 말로 풀어 줘요.
+      ko: 손상
+      word: injury
       scenes:
         - who: 차트 기록
           icon: board
@@ -96533,6 +96699,28 @@
           en: I'm checking your CMS distal to the injury.
           ok: false
           fix: I'm checking the pulse and feeling below your injury.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 5P 확인 4문장 순서
+    why: 무엇을 확인할지 먼저 알리고, 만지는 감각을 묻고, 'them'으로 이어서 손가락을 움직이게 한 뒤, 마지막에 'all of that'으로 반대쪽과 비교한다고 닫아요. 'them'·'all that'이 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+        - en: I'm going to check a few things in your hand, starting with the pulse.
+          icon: stetho
+          ko: 맥박부터 손의 몇 가지를 확인할게요
+          note: 안내
+        - en: Tell me if you feel my touch on your fingers.
+          icon: me
+          ko: 손가락에 제 손길이 느껴지면 말씀해 주세요
+          note: 감각
+        - en: Good, now wiggle them for me as best you can.
+          icon: me
+          ko: 좋아요, 이제 그 손가락들을 최대한 꼼지락거려 보세요
+          note: 운동
+        - en: Thanks, I'll compare all of that with your other hand.
+          icon: magnify
+          ko: 고마워요, 그 모든 걸 반대쪽 손과 비교할게요
+          note: 비교
 - id: SCN-ER-00461
   profession: ""
   eventId: EVT-ER-00128
@@ -96606,6 +96794,20 @@
         - w-still
         - w-heal
       goal: 1
+      tag: 이유 설명
+      icon: bandage
+      why: so it can heal로 부목의 이유를 먼저 말해 주면 움직이지 말라는 지시가 납득돼요. 뼈가 움직이지 않아야 제자리에서 붙는다는 설명이라 환자 협조를 이끌어요.
+      decoy: while you walk
+      distractorsKo:
+        - 부목 위에 얼음을 올릴게요
+        - 다리를 높이 올려 주세요
+      blank:
+        answer: still
+        options:
+            - en: dry
+            - en: wide
+            - en: still
+            - en: loose
     - en: Please don't move or put weight on this leg.
       ko: 이 다리는 움직이거나 체중을 싣지 마세요.
       chunks:
@@ -96619,6 +96821,20 @@
         - w-weight
         - w-leg
       goal: 1
+      tag: 활동 제한
+      icon: lock
+      why: move or put weight on으로 움직임과 체중 싣기를 나눠 말해, 앉아서 다리를 흔드는 것도 안 된다는 범위를 분명히 해요. Please로 금지 지시를 부드럽게 시작해요.
+      decoy: until tomorrow
+      distractorsKo:
+        - 다리를 심장보다 높게 올려 두세요
+        - 다리가 저리면 바로 말씀해 주세요
+      blank:
+        answer: weight
+        options:
+            - en: ice
+            - en: lotion
+            - en: tape
+            - en: weight
     - en: Tell me if the splint feels too tight or numb.
       ko: 부목이 너무 조이거나 저리면 말씀해 주세요.
       chunks:
@@ -96632,6 +96848,20 @@
         - w-tight
         - w-numb
       goal: 2
+      tag: 경고 증상
+      icon: bell
+      why: feels too tight or numb로 환자가 느끼는 증상을 그대로 말하게 해요. 부목이 너무 조이면 혈류가 줄 수 있어서 환자가 직접 알려야 빨리 풀 수 있어요.
+      decoy: after you sleep
+      distractorsKo:
+        - 부목은 며칠 뒤에 풀 거예요
+        - 통증이 0에서 10 중 몇 점이에요?
+      blank:
+        answer: tight
+        options:
+            - en: tight
+            - en: heavy
+            - en: hot
+            - en: wet
     - en: We'll check your toes for color and warmth every hour.
       ko: 한 시간마다 발가락 색과 온기를 확인할게요.
       chunks:
@@ -96646,6 +96876,20 @@
         - w-color
         - w-warmth
       goal: 2
+      tag: 순환 확인
+      icon: monitor
+      why: every hour로 확인 주기를 약속해 두면 환자가 기다리며 불안해하지 않아요. 색과 온기는 부목 아래쪽으로 혈류가 가는지 보는 단서예요.
+      decoy: with ice
+      distractorsKo:
+        - 발가락 움직임을 볼게요
+        - 부목 아래 붕대를 갈아 드릴게요
+      blank:
+        answer: color
+        options:
+            - en: movement
+            - en: color
+            - en: swelling
+            - en: length
     - en: Keep this leg raised and try not to put weight on it at home.
       ko: 집에서도 이 다리를 들어올리고 체중을 싣지 않도록 하세요.
       chunks:
@@ -96660,6 +96904,20 @@
         - w-raise
         - w-weight
       goal: 1
+      tag: 퇴원 교육
+      icon: home
+      why: at home을 끝에 붙여 병원 밖에서도 이어 가야 한다는 점을 분명히 해요. 다리를 올려 두면 붓기가 줄어 부목 안이 덜 조여요.
+      decoy: on the stairs
+      distractorsKo:
+        - 내일 다시 와서 부목을 확인하세요
+        - 샤워할 때는 부목을 덮으세요
+      blank:
+        answer: raised
+        options:
+            - en: crossed
+            - en: hanging
+            - en: raised
+            - en: bent
   nuance:
     - kind: pair
       words:
@@ -96682,6 +96940,7 @@
         - w-numb
         - w-toe
       why: 부목이 너무 조이면 저림과 감각 소실이 먼저 나타나요. 환자가 스스로 알아차리고 말할 수 있게 증상을 쉬운 말로 짚어 줘요.
+      ko: 발가락이 찌릿하거나 저리면 바로 말씀해 주세요.
       who: 환자에게 · 부목 경고 징후
       icon: me
       before:
@@ -96697,6 +96956,28 @@
         a bit funny: 쉽지만 너무 흐려서 저림·감각 소실을 알려야 한다는 뜻이 전해지지 않는다.
         paresthetic: 의학 용어(이상감각). 차트에는 맞지만 환자는 무슨 뜻인지 모른다.
         tingly or numb: 환자가 알아듣는 쉬운 말이고, 무엇을 느끼면 알려야 하는지가 분명하다.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 부목 설명 4문장 순서
+    why: 부목을 댄다고 알리고, 'It'으로 이유와 체중 제한을 말한 뒤, 'Even with no weight on it'으로 체중을 싣지 않아도 생길 수 있는 경고 증상을 알리고, 마지막에 'Either way'로 매시간 확인을 약속해요. 'It'·'no weight'·'Either way'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+        - en: I'm going to put a splint on your leg now.
+          icon: bandage
+          ko: 지금 다리에 부목을 댈게요
+          note: 안내
+        - en: It keeps the bone still, so please don't put weight on it.
+          icon: shield
+          ko: 뼈를 가만히 잡아 주니 체중을 싣지 마세요
+          note: 이유
+        - en: Even with no weight on it, tell me if it feels too tight or numb.
+          icon: bell
+          ko: 체중을 싣지 않아도 너무 조이거나 저리면 말씀해 주세요
+          note: 경고
+        - en: Either way, I'll check your toes every hour.
+          icon: monitor
+          ko: 어느 쪽이든 한 시간마다 발가락을 확인할게요
+          note: 확인
 - id: SCN-ER-00462
   profession: ""
   eventId: EVT-ER-00128
@@ -96768,6 +97049,20 @@
         - w-injury
         - w-happen
       goal: 1
+      tag: 기전 질문
+      icon: magnify
+      why: exactly를 끝에 붙여 대충 말고 자세히 말해 달라는 뜻을 전해요. 어떻게 다쳤는지에 따라 함께 다쳤을 수 있는 곳이 달라서 첫 질문으로 물어요.
+      decoy: at work
+      distractorsKo:
+        - 지금 통증이 몇 점이에요?
+        - 마지막으로 드신 게 언제예요?
+      blank:
+        answer: happen
+        options:
+            - en: heal
+            - en: spread
+            - en: change
+            - en: happen
     - en: On a scale of zero to ten, how bad is the pain?
       ko: 0에서 10까지 중에 통증이 얼마나 심하세요?
       chunks:
@@ -96780,6 +97075,20 @@
         - w-scale
         - w-pain
       goal: 2
+      tag: 통증 점수
+      icon: chartup
+      why: zero to ten으로 범위를 정해 줘서 숫자로 답하기 쉬워요. 같은 숫자를 나중에 다시 물으면 진통제가 듣는지 비교할 수 있어요.
+      decoy: at rest
+      distractorsKo:
+        - 통증이 언제 시작됐나요?
+        - 어디가 제일 아픈지 짚어 주세요
+      blank:
+        answer: scale
+        options:
+            - en: scale
+            - en: map
+            - en: list
+            - en: chart
     - en: Is the pain sharp, throbbing, or dull?
       ko: 통증이 날카로운가요, 욱신거리나요, 아니면 둔한가요?
       chunks:
@@ -96793,6 +97102,20 @@
         - w-throb
         - w-dull
       goal: 2
+      tag: 통증 양상
+      icon: faceWorried
+      why: 보기를 직접 주면 통증을 말로 설명하기 어려운 환자도 고르기만 하면 돼요. 날카로운 통증과 욱신거리는 통증은 원인이 달라서 구별해서 물어요.
+      decoy: or itchy
+      distractorsKo:
+        - 통증이 가슴 쪽으로 퍼지나요?
+        - 통증이 언제 가장 심한가요?
+      blank:
+        answer: throbbing
+        options:
+            - en: freezing
+            - en: throbbing
+            - en: itching
+            - en: tingling
     - en: Did you fall, or did something heavy land on it?
       ko: 넘어지셨나요, 아니면 무거운 것이 떨어졌나요?
       chunks:
@@ -96806,6 +97129,20 @@
         - w-heavy
         - w-land
       goal: 1
+      tag: 기전 선택
+      icon: compass
+      why: fall과 something heavy land on it, 두 가지 가능성을 보여 줘서 네/아니오보다 구체적으로 답하게 해요. 넘어졌는지 눌렸는지에 따라 함께 다친 곳이 달라져요.
+      decoy: or did you jump
+      distractorsKo:
+        - 얼마나 높은 곳이었어요?
+        - 누가 같이 있었나요?
+      blank:
+        answer: heavy
+        options:
+            - en: sharp
+            - en: soft
+            - en: heavy
+            - en: small
     - en: Tell me exactly how high you fell from.
       ko: 정확히 얼마나 높은 곳에서 떨어졌는지 말씀해 주세요.
       chunks:
@@ -96818,6 +97155,20 @@
         - w-high
         - w-fall
       goal: 1
+      tag: 높이 확인
+      icon: pushpin
+      why: Tell me 뒤에 질문을 넣을 때는 how high you fell from처럼 평서문 어순으로 써요. 떨어진 높이는 부상 정도를 가늠하는 기준이에요.
+      decoy: last night
+      distractorsKo:
+        - 얼마나 아픈지 말씀해 주세요
+        - 어디를 먼저 다쳤는지 알려 주세요
+      blank:
+        answer: fell
+        options:
+            - en: jumped
+            - en: climbed
+            - en: slipped
+            - en: fell
   nuance:
     - kind: slider
       words:
@@ -96838,7 +97189,9 @@
         - w-high
         - w-happen
         - w-injury
-      why: mechanism of injury(MOI)와 FOOSH(fall on outstretched hand)는 의료진끼리 쓰는 말이에요. 환자에게는 어떻게 다쳤는지 쉽게 묻고, 들은 내용을 차트에 기전으로 옮겨 적어요.
+      why: mechanism, landing position 같은 말은 차트와 의료진끼리 쓰는 말이에요. 환자에게는 어떻게 넘어졌고 무엇 위로 떨어졌는지 쉬운 말로 물어요. FOOSH는 fall on outstretched hand의 차트 약어예요.
+      ko: 낙상
+      word: fall
       scenes:
         - who: 차트 기록
           icon: board
@@ -96846,13 +97199,35 @@
           ok: true
         - who: 의사에게 보고
           icon: speech
-          en: He fell about six feet off a ladder and landed on an outstretched hand.
+          en: He had a fall off a ladder, about six feet, and landed on an outstretched hand.
           ok: true
         - who: 환자에게
           icon: me
-          en: What was your mechanism of injury?
+          en: 'Describe the mechanism of your fall: height, surface, and landing position.'
           ok: false
-          fix: How did the injury happen exactly?
+          fix: Can you tell me how you fell and what you landed on?
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 기전·통증 청취 4문장 순서
+    why: 통증 점수를 먼저 묻고, 'that pain'으로 그 통증이 어떻게 생겼는지 넘어졌는지 물체가 떨어졌는지 묻고, 'Whichever it was'로 높이나 무게를 묻고, 'That much force'로 함께 다쳤을 수 있는 다른 곳을 물어요. 'that pain'·'Whichever it was'·'That much force'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+        - en: On a scale of zero to ten, how bad is the pain?
+          icon: chartup
+          ko: 0에서 10 중 통증이 얼마나 심하세요?
+          note: 통증
+        - en: To understand that pain, did you fall, or did something land on it?
+          icon: compass
+          ko: 그 통증을 알려면, 넘어지셨나요 아니면 뭔가 떨어졌나요?
+          note: 기전
+        - en: Whichever it was, tell me exactly how high or how heavy.
+          icon: pushpin
+          ko: 어느 쪽이든 정확히 얼마나 높거나 무거웠는지 말씀해 주세요
+          note: 정도
+        - en: That much force can injure other spots too—does anything else hurt?
+          icon: cross
+          ko: 그 정도 힘이면 다른 곳도 다칠 수 있어요, 다른 데 아픈 곳은요?
+          note: 동반 손상
 - id: SCN-ER-00463
   profession: ""
   eventId: EVT-ER-00128
@@ -96926,6 +97301,20 @@
         - w-heart
         - w-rest
       goal: 1
+      tag: 거상 교육
+      icon: home
+      why: above your heart로 높이의 기준을 심장으로 주면 몇 센티를 올려야 하는지 몰라도 따라 할 수 있어요. 다친 곳을 심장보다 높이면 붓기가 빠지는 데 도움이 돼요.
+      decoy: when walking
+      distractorsKo:
+        - 붕대는 너무 조이지 않게 감으세요
+        - 얼음은 천으로 싸서 대세요
+      blank:
+        answer: raised
+        options:
+            - en: raised
+            - en: lowered
+            - en: bent
+            - en: dangling
     - en: Use ice for twenty minutes at a time, a few times a day.
       ko: 한 번에 20분씩 하루에 몇 번 얼음찜질을 하세요.
       chunks:
@@ -96938,6 +97327,20 @@
       words:
         - w-ice
       goal: 1
+      tag: 냉찜질
+      icon: bandage
+      why: at a time과 a few times a day로 한 번의 길이와 하루 횟수를 따로 알려 줘요. 얼음을 너무 오래 대면 피부가 상할 수 있어서 시간을 정해 줘요.
+      decoy: right after you eat
+      distractorsKo:
+        - 아플 때 진통제를 드세요
+        - 다리를 심장보다 높이 올리세요
+      blank:
+        answer: ice
+        options:
+            - en: heat
+            - en: ice
+            - en: a brace
+            - en: ointment
     - en: Come back if the swelling or pain gets much worse.
       ko: 붓기나 통증이 훨씬 심해지면 다시 오세요.
       chunks:
@@ -96951,6 +97354,20 @@
         - w-pain
         - w-worse
       goal: 2
+      tag: 재방문 기준
+      icon: bell
+      why: much worse로 조금 불편한 정도가 아니라 눈에 띄게 나빠졌을 때가 기준이라고 선을 그어 줘요. 언제 다시 와야 하는지를 아는 것은 퇴원 교육에서 중요해요.
+      decoy: in the morning
+      distractorsKo:
+        - 내일 아침에 다시 확인해 드릴게요
+        - 붓기가 가라앉으면 알려 주세요
+      blank:
+        answer: worse
+        options:
+            - en: lighter
+            - en: smaller
+            - en: worse
+            - en: better
     - en: Wrap it with a bandage, but not too tight.
       ko: 붕대로 감싸시되 너무 조이지는 마세요.
       chunks:
@@ -96964,6 +97381,20 @@
         - w-bandage
         - w-tight
       goal: 1
+      tag: 압박 붕대
+      icon: bandage
+      why: but not too tight를 덧붙여 조임의 상한을 알려 줘요. 너무 조이면 아래쪽으로 피가 덜 가서 저리거나 붓거나 창백해질 수 있어요.
+      decoy: every hour
+      distractorsKo:
+        - 붕대 위에 얼음을 올리세요
+        - 붕대가 젖으면 바로 갈아 주세요
+      blank:
+        answer: tight
+        options:
+            - en: hot
+            - en: wet
+            - en: wide
+            - en: tight
     - en: Try to stay off your foot and rest it as much as you can.
       ko: 발을 딛지 말고 최대한 쉬게 해 주세요.
       chunks:
@@ -96977,6 +97408,20 @@
         - w-foot
         - w-rest
       goal: 1
+      tag: 휴식 교육
+      icon: home
+      why: stay off는 딛지 않는다를 짧게 말한 구어체예요. as much as you can는 완벽하지 않아도 최대한 하라는 말이라 환자가 부담 없이 따라와요.
+      decoy: for a week
+      distractorsKo:
+        - 발을 높이 올리고 계세요
+        - 내일 외래에 오세요
+      blank:
+        answer: rest
+        options:
+            - en: rest
+            - en: stretch
+            - en: massage
+            - en: exercise
   nuance:
     - kind: slider
       words:
@@ -96995,11 +97440,13 @@
     - kind: context
       words:
         - w-ice
-      why: cryotherapy(냉요법)와 TID·QID(하루 세 번·네 번) 같은 약어는 차트에나 쓰는 말이에요. 환자 교육에는 ice, a few times a day처럼 쉬운 말로 풀어요.
+      why: TID·QID 같은 약어는 차트에나 쓰는 말이에요. 환자 교육에는 하루에 몇 번, 한 번에 몇 분인지를 쉬운 말로 풀어요.
+      ko: 얼음
+      word: ice
       scenes:
         - who: 퇴원 지시 기록
           icon: board
-          en: Cryotherapy 20 min TID–QID; elevate; ACE wrap.
+          en: Ice 20 min TID-QID; elevate; ACE wrap.
           ok: true
         - who: 환자에게
           icon: me
@@ -97007,9 +97454,31 @@
           ok: true
         - who: 환자에게
           icon: me
-          en: Apply cryotherapy for 20 minutes TID to QID.
+          en: Apply ice for 20 minutes TID to QID.
           ok: false
-          fix: Put ice on it for twenty minutes at a time, a few times a day.
+          fix: Put an ice pack on it for twenty minutes, then take it off for a while, a few times a day.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 발목 손상 교육 4문장 순서
+    why: 며칠 동안 딛지 말라고 시작하고, 'While you're resting it'으로 쉬는 동안 발목을 올리라고 하고, 'With it up'으로 올린 채 얼음을 대라고 하고, 'Between icing sessions'로 얼음 사이에 붕대를 감는다고 이어요. 휴식·거상·냉찜질·압박이 앞 줄을 가리키는 말로 묶여 순서가 하나예요.
+    lines:
+        - en: For the next few days, stay off your foot as much as you can.
+          icon: home
+          ko: 며칠 동안 최대한 딛지 마세요
+          note: 휴식
+        - en: While you're resting it, keep the ankle up above your heart.
+          icon: home
+          ko: 쉬는 동안 발목을 심장보다 높이 두세요
+          note: 거상
+        - en: With it up, ice it for twenty minutes at a time.
+          icon: bandage
+          ko: 올린 채로 한 번에 20분씩 얼음을 대세요
+          note: 냉찜질
+        - en: Between icing sessions, keep it wrapped, but not too tight.
+          icon: bandage
+          ko: 얼음찜질 사이에는 붕대를 감되 너무 조이지 않게 하세요
+          note: 압박
 - id: SCN-ER-00464
   profession: ""
   eventId: EVT-ER-00128
@@ -97083,6 +97552,20 @@
         - w-sterile
         - w-dress
       goal: 1
+      tag: 상처 덮기
+      icon: bandage
+      why: right away는 열린 상처를 오래 드러내 두지 않겠다는 약속이에요. 멸균 드레싱은 개방골절의 오염을 줄이기 위해 가장 먼저 하는 조치 중 하나예요.
+      decoy: with a towel
+      distractorsKo:
+        - 상처 크기를 재 볼게요
+        - 항생제 알레르기가 있나요?
+      blank:
+        answer: sterile
+        options:
+            - en: stiff
+            - en: sterile
+            - en: dirty
+            - en: tight
     - en: You'll get antibiotics to prevent infection.
       ko: 감염을 예방하기 위해 항생제를 맞으실 거예요.
       chunks:
@@ -97097,6 +97580,20 @@
         - w-prevent
         - w-infect
       goal: 2
+      tag: 예방 설명
+      icon: pill
+      why: to prevent infection으로 항생제를 주는 목적을 말해 줘요. 개방골절은 감염 위험이 커서 항생제를 되도록 일찍 시작해요.
+      decoy: for the pain
+      distractorsKo:
+        - 진통제를 정맥으로 드릴게요
+        - 수액을 연결하고 있어요
+      blank:
+        answer: prevent
+        options:
+            - en: treat
+            - en: spread
+            - en: prevent
+            - en: cause
     - en: When was your last tetanus shot?
       ko: 마지막 파상풍 주사는 언제 맞으셨나요?
       chunks:
@@ -97109,6 +97606,20 @@
         - w-tetanus
         - w-shot
       goal: 1
+      tag: 접종 확인
+      icon: calendar
+      why: When was your last …?로 정확한 날짜가 아니라 대략의 시기를 떠올리게 해요. 오염된 상처는 마지막 파상풍 접종이 5년을 넘었으면 추가 접종을 고려해요.
+      decoy: at school
+      distractorsKo:
+        - 어떻게 다치셨는지 말씀해 주세요
+        - 알레르기가 있는 약이 있나요?
+      blank:
+        answer: shot
+        options:
+            - en: test
+            - en: scan
+            - en: visit
+            - en: shot
     - en: We can see the bone, so we need to clean the wound well.
       ko: 뼈가 보여서 상처를 잘 세척해야 해요.
       chunks:
@@ -97124,6 +97635,20 @@
         - w-clean
         - w-wound
       goal: 1
+      tag: 세척 이유
+      icon: magnify
+      why: We can see the bone이라는 이유를 앞에 두고 so로 이어, 철저히 씻는 것이 왜 필요한지 이해시켜요. 개방골절은 오염된 상처라 세척이 중요해요.
+      decoy: with your hand
+      distractorsKo:
+        - 지금 바로 수술장으로 가요
+        - 뼈를 만지지 마세요
+      blank:
+        answer: clean
+        options:
+            - en: clean
+            - en: sew
+            - en: scratch
+            - en: measure
     - en: The doctor will look at the bone before we close the skin.
       ko: 피부를 닫기 전에 의사 선생님이 뼈를 살펴보실 거예요.
       chunks:
@@ -97138,6 +97663,20 @@
         - w-close
         - w-skin
       goal: 1
+      tag: 진료 순서
+      icon: scalpel
+      why: before we close the skin으로 다음 단계를 알려 주면, 상처가 왜 아직 열려 있는지 환자가 이해해요. 개방골절은 씻어 내고 오염된 조직을 정리한 뒤에 닫아요.
+      decoy: after the x-ray
+      distractorsKo:
+        - 엑스레이를 먼저 찍을게요
+        - 상처는 이미 소독했어요
+      blank:
+        answer: close
+        options:
+            - en: press
+            - en: close
+            - en: open
+            - en: stretch
   nuance:
     - kind: slider
       words:
@@ -97157,11 +97696,13 @@
         - w-tetanus
         - w-shot
         - w-last
-      why: Td·Tdap·immunization status는 의료진의 말이에요. 환자에게는 tetanus shot이라고 물어야 기억을 떠올려요. 개방골절처럼 오염된 상처는 마지막 접종이 5년을 넘었으면 추가 접종을 고려해요.
+      why: immunization status는 의료진과 차트의 말이에요. 환자에게는 tetanus shot을 언제 맞았는지 물어야 기억을 떠올려요. 오염된 상처는 마지막 접종이 5년을 넘었으면 추가 접종을 고려해요.
+      ko: 파상풍
+      word: tetanus
       scenes:
         - who: 차트 기록
           icon: board
-          en: Last Td > 10 yrs ago; Tdap given 1415.
+          en: 'Tetanus: last Td > 10 yrs ago; Tdap given 1415.'
           ok: true
         - who: 동료 간호사에게
           icon: speech
@@ -97169,9 +97710,31 @@
           ok: true
         - who: 환자에게
           icon: me
-          en: What's your Td immunization status?
+          en: What's your tetanus immunization status?
           ok: false
           fix: When was your last tetanus shot?
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 개방골절 감염 예방 4문장 순서
+    why: 뼈가 보여서 바로 덮는다고 알리고, 'Even covered'로 덮어도 감염될 수 있어 항생제를 준다고 이어, 'That same infection risk'로 같은 위험 때문에 파상풍 접종을 묻고, 'With all that done'으로 의사가 뼈를 본다고 이어요. 'Even covered'·'That same infection risk'·'all that'이 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+        - en: We can see the bone, so I'm covering the wound with a sterile dressing now.
+          icon: bandage
+          ko: 뼈가 보여서 지금 멸균 드레싱으로 상처를 덮고 있어요
+          note: 덮기
+        - en: Even covered, it can get infected, so you'll get antibiotics.
+          icon: pill
+          ko: 덮어도 감염될 수 있어서 항생제를 맞으실 거예요
+          note: 예방
+        - en: 'That same infection risk is why I ask: when was your last tetanus shot?'
+          icon: calendar
+          ko: 같은 감염 위험 때문에 여쭤요, 마지막 파상풍 주사는 언제였나요?
+          note: 접종
+        - en: With all that done, the doctor will check the bone before we close the skin.
+          icon: scalpel
+          ko: 그게 다 끝나면 피부를 닫기 전에 의사가 뼈를 확인할 거예요
+          note: 진료
 - id: SCN-ER-00465
   profession: ""
   eventId: EVT-ER-00129
@@ -97247,6 +97810,20 @@
         - w-act
         - w-quick
       goal: 1
+      tag: 긴급 알림
+      icon: siren
+      why: so로 이유와 행동을 이어서, 서두르는 것이 불안한 선언이 아니라 설명으로 들려요. 골절 아래쪽 맥박이 없으면 혈류가 막혔을 수 있다는 신호라 시간이 중요해요.
+      decoy: like before
+      distractorsKo:
+        - 발에 얼음을 대 드릴게요
+        - 발가락이 움직이는지 볼게요
+      blank:
+        answer: act
+        options:
+            - en: rest
+            - en: stop
+            - en: act
+            - en: wait
     - en: The bone may be pressing on a blood vessel.
       ko: 뼈가 혈관을 누르고 있을 수 있어요.
       chunks:
@@ -97261,6 +97838,20 @@
         - w-blood
         - w-vessel
       goal: 2
+      tag: 원인 설명
+      icon: bulb
+      why: may be로 아직 확정이 아닌 가능성이라는 것을 알려 줘요. 부러진 뼈 끝이 혈관을 누르면 그 아래쪽으로 가는 혈류가 줄 수 있어요.
+      decoy: behind the knee
+      distractorsKo:
+        - 혈관에 주사를 놓을게요
+        - 피가 많이 나고 있어요
+      blank:
+        answer: pressing
+        options:
+            - en: tapping
+            - en: sliding
+            - en: rubbing
+            - en: pressing
     - en: We're going to realign it to restore blood flow.
       ko: 혈류를 되살리기 위해 뼈를 재정렬할 거예요.
       chunks:
@@ -97275,6 +97866,20 @@
         - w-blood
         - w-flow
       goal: 2
+      tag: 치료 계획
+      icon: play
+      why: to restore blood flow로 치료의 목적을 말해 줘요. 뼈를 제자리로 맞추면 눌려 있던 혈관이 풀려 혈류가 돌아올 수 있어요.
+      decoy: by tomorrow
+      distractorsKo:
+        - 진통제를 먼저 놓을게요
+        - 발에 맥박이 있는지 다시 볼게요
+      blank:
+        answer: restore
+        options:
+            - en: restore
+            - en: stop
+            - en: reduce
+            - en: block
     - en: Your foot feels cold, and the color looks pale.
       ko: 발이 차갑고 색깔도 창백해 보여요.
       chunks:
@@ -97289,6 +97894,20 @@
         - w-color
         - w-pale
       goal: 1
+      tag: 소견 설명
+      icon: faceWorried
+      why: feels cold과 looks pale처럼 느낌과 보이는 것을 나눠 말하면 환자가 같은 변화를 스스로 확인해 볼 수 있어요. 차갑고 창백한 발은 혈류가 모자라다는 단서예요.
+      decoy: from the knee
+      distractorsKo:
+        - 발이 많이 부어 있어요
+        - 발가락이 따뜻한지 만져 볼게요
+      blank:
+        answer: pale
+        options:
+            - en: green
+            - en: pale
+            - en: dark
+            - en: bright
     - en: We'll numb the area and move quickly to fix the bone.
       ko: 부위를 마취하고 빨리 뼈를 맞출게요.
       chunks:
@@ -97305,6 +97924,20 @@
         - w-fix
         - w-bone
       goal: 2
+      tag: 시술 안내
+      icon: pill
+      why: numb the area로 먼저 통증을 막는다고 알려 주면 환자가 시술을 덜 두려워해요. move quickly로 시간이 중요하다는 급함도 함께 전해요.
+      decoy: after dinner
+      distractorsKo:
+        - 수술실로 이동할 거예요
+        - 다리를 움직이지 마세요
+      blank:
+        answer: numb
+        options:
+            - en: wrap
+            - en: mark
+            - en: numb
+            - en: wash
   nuance:
     - kind: slider
       words:
@@ -97327,6 +97960,7 @@
         - w-flow
         - w-blood
       why: 맥박이 없는 골절은 서둘러 정복해야 하지만, 환자에게는 쉬운 말로 무엇을 할지 먼저 알려 줘야 협조를 얻을 수 있어요.
+      ko: 혈액이 다시 흐르도록 뼈를 곧게 맞출 거예요.
       who: 환자에게 · 긴급 정복 설명
       icon: me
       before:
@@ -97342,6 +97976,28 @@
         perform a closed reduction: 의료진의 말(도수 정복). 차트와 동의서에는 맞지만 환자는 알아듣기 어렵다.
         straighten the bone: 환자가 바로 알아듣는 쉬운 말. 무엇을 왜 하는지가 한 번에 전해진다.
         yank it back: 거칠게 확 잡아당긴다는 느낌이라 겁을 준다.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 맥박 소실 설명 4문장 순서
+    why: 맥박이 없다고 알리고 바로 의사에게 알린다고 말한 뒤, 'That'으로 이유를, 'To fix that'으로 치료를, 'Afterward'로 다시 확인할 것을 말해요. 'That'·'To fix that'·'Afterward'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+        - en: I can't feel a pulse in your foot, so I'm telling the doctor right now.
+          icon: siren
+          ko: 발에서 맥박이 안 느껴져서 지금 바로 의사 선생님께 알리고 있어요
+          note: 알림
+        - en: That tells us the bone may be pressing on a blood vessel.
+          icon: bulb
+          ko: 그건 뼈가 혈관을 누르고 있을 수 있다는 뜻이에요
+          note: 이유
+        - en: To fix that, we'll numb the area and realign the bone.
+          icon: play
+          ko: 그걸 해결하려고 부위를 마취하고 뼈를 맞출 거예요
+          note: 치료
+        - en: Afterward, I'll check the pulse in your foot again.
+          icon: stetho
+          ko: 끝난 뒤 발의 맥박을 다시 확인할게요
+          note: 재확인
 - id: SCN-ER-00466
   profession: ""
   eventId: EVT-ER-00129
@@ -97416,6 +98072,20 @@
         - w-put
         - w-back
       goal: 1
+      tag: 진정 안내
+      icon: pill
+      why: before putting it back으로 순서를 말해 줘요. 약이 먼저고 맞추는 것은 그다음이에요. 근육이 풀려야 어긋난 관절이 더 수월하게 들어가요.
+      decoy: after you eat
+      distractorsKo:
+        - 어깨에 얼음을 대 드릴게요
+        - 엑스레이를 한 장 더 찍을게요
+      blank:
+        answer: relax
+        options:
+            - en: heal
+            - en: stand
+            - en: cough
+            - en: relax
     - en: After we reset it, I'll recheck your pulse and feeling.
       ko: 다시 맞춘 뒤에 맥박과 감각을 다시 확인할게요.
       chunks:
@@ -97430,6 +98100,20 @@
         - w-pulse
         - w-feel
       goal: 2
+      tag: 재확인 안내
+      icon: stetho
+      why: After we reset it으로 시점을 먼저 말해 주면, 맞춘 뒤에 맥박과 감각을 또 보는 것이 순서의 일부라고 알아요. 정복 뒤에는 신경과 혈관이 괜찮은지 다시 확인해요.
+      decoy: before the x-ray
+      distractorsKo:
+        - 팔을 쓰지 말고 가만히 계세요
+        - 정복 뒤에는 팔걸이를 하실 거예요
+      blank:
+        answer: pulse
+        options:
+            - en: pulse
+            - en: weight
+            - en: height
+            - en: grip
     - en: Try to stay relaxed—tensing makes it harder.
       ko: 힘을 주면 더 힘드니 긴장을 풀어 보세요.
       chunks:
@@ -97442,6 +98126,20 @@
         - w-relax
         - w-tense
       goal: 1
+      tag: 협조 요청
+      icon: me
+      why: Try to로 부탁하고 뒤에 이유를 붙여, 힘을 빼라는 말이 잔소리가 아니라 도움이 되는 말로 들려요. 근육에 힘이 들어가면 관절이 제자리로 들어가기 어려워요.
+      decoy: while we count
+      distractorsKo:
+        - 이 약은 졸릴 수 있어요
+        - 어깨를 돌리지 마세요
+      blank:
+        answer: tensing
+        options:
+            - en: waiting
+            - en: tensing
+            - en: relaxing
+            - en: breathing
     - en: Your shoulder should slide back into place in a moment.
       ko: 곧 어깨가 제자리로 미끄러져 들어갈 거예요.
       chunks:
@@ -97456,6 +98154,20 @@
         - w-place
         - w-moment
       goal: 1
+      tag: 진행 안내
+      icon: compass
+      why: should는 확신하는 기대를 말해요. in a moment로 곧 끝난다고 알리면 긴장한 환자가 마음의 준비를 해요.
+      decoy: on its own
+      distractorsKo:
+        - 어깨를 위로 들어 보세요
+        - 지금 약이 들어가고 있어요
+      blank:
+        answer: slide
+        options:
+            - en: twist
+            - en: roll
+            - en: slide
+            - en: jump
     - en: Once you're sleepy, you won't remember the reset.
       ko: 졸리게 되면 다시 맞추는 것을 기억하지 못하실 거예요.
       chunks:
@@ -97468,6 +98180,20 @@
         - w-remember
         - w-reset
       goal: 1
+      tag: 기억 안내
+      icon: bell
+      why: won't remember로 진정 중에는 그 순간이 기억나지 않을 수 있다고 미리 알려 줘요. 환자가 걱정을 덜고 진정에 들어가도록 돕는 말이에요.
+      decoy: after the x-ray
+      distractorsKo:
+        - 어깨가 많이 부어 있어요
+        - 다시 맞출 때 아플 수 있어요
+      blank:
+        answer: remember
+        options:
+            - en: enjoy
+            - en: ignore
+            - en: describe
+            - en: remember
   nuance:
     - kind: slider
       words:
@@ -97490,6 +98216,8 @@
         - w-back
         - w-place
       why: 정형외과에서 reduce는 '제자리로 맞추다'지만 환자에게는 '줄이다'로 들려 헷갈려요. 환자에게는 put it back in place처럼 쉬운 말로 말해요.
+      ko: 정복하다
+      word: reduce
       scenes:
         - who: 차트 기록
           icon: board
@@ -97504,6 +98232,28 @@
           en: We'll reduce your dislocation once you're sedated.
           ok: false
           fix: We'll give you medicine to relax, then put your shoulder back in place.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 탈구 정복 준비 4문장 순서
+    why: 약을 먼저 준다고 알리고, 'it works'로 약이 듣는 동안 긴장을 풀게 하고, 'With that'으로 어깨가 들어가는 것을, 'Afterward'로 맥박·감각 재확인을 말해요. 'it works'·'With that'·'Afterward'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+        - en: We'll give you medicine first so you can relax.
+          icon: pill
+          ko: 먼저 긴장을 풀어드릴 약을 드릴게요
+          note: 약
+        - en: Try to stay as relaxed as you can while it works.
+          icon: me
+          ko: 약이 듣는 동안 최대한 편안하게 계세요
+          note: 협조
+        - en: With that, your shoulder should slide back into place.
+          icon: compass
+          ko: 그러면 어깨가 제자리로 들어갈 거예요
+          note: 정복
+        - en: Afterward, I'll recheck your pulse and feeling in that arm.
+          icon: stetho
+          ko: 끝난 뒤 그 팔의 맥박과 감각을 다시 확인할게요
+          note: 재확인
 - id: SCN-ER-00467
   profession: ""
   eventId: EVT-ER-00129
@@ -97577,6 +98327,20 @@
         - w-wait
         - w-surgery
       goal: 1
+      tag: 통증 관리
+      icon: pill
+      why: while you wait for surgery로 수술을 기다리는 시간에도 통증을 관리한다고 약속해요. 고관절 골절은 많이 아프고 수술 전 대기가 있을 수 있어서 환자와 가족이 먼저 궁금해하는 부분이에요.
+      decoy: at home
+      distractorsKo:
+        - 수술은 내일 아침이에요
+        - 지금은 금식 중이에요
+      blank:
+        answer: manage
+        options:
+            - en: manage
+            - en: check
+            - en: record
+            - en: ask about
     - en: Do you know where you are and what day it is?
       ko: 여기가 어디인지, 오늘이 무슨 요일인지 아세요?
       chunks:
@@ -97587,6 +98351,20 @@
         - '?'
       words: []
       goal: 2
+      tag: 지남력 확인
+      icon: compass
+      why: where you are and what day it is로 장소와 요일을 물어 정신이 또렷한지 가볍게 확인해요. 고령 환자는 낙상이나 입원 뒤 갑자기 혼란스러워질 수 있어서 처음에 기준을 잡아 둬요.
+      decoy: in this room
+      distractorsKo:
+        - 성함과 생년월일을 말씀해 주세요
+        - 지금 가장 아픈 곳이 어디예요?
+      blank:
+        answer: where
+        options:
+            - en: when
+            - en: where
+            - en: why
+            - en: how
     - en: We'll keep you oriented and comfortable tonight.
       ko: 오늘 밤은 지남력을 유지하고 편안하게 해드릴게요.
       chunks:
@@ -97601,6 +98379,20 @@
         - w-comfortable
         - w-tonight
       goal: 2
+      tag: 안심시키기
+      icon: shield
+      why: keep you oriented and comfortable로 환자가 해야 할 일이 아니라 간호사가 해 줄 일을 주어로 말해요. 고령 환자는 낯선 병원 환경에서 혼란스러워질 수 있어서 시간과 장소를 알려 주고 편하게 해 드려요.
+      decoy: next week
+      distractorsKo:
+        - 보호자분께 전화해 드릴게요
+        - 저녁은 금식이에요
+      blank:
+        answer: oriented
+        options:
+            - en: sedated
+            - en: awake
+            - en: oriented
+            - en: quiet
     - en: Your hip is broken, so we can't let you stand on it.
       ko: 고관절이 부러져서 그 다리로 서게 할 수 없어요.
       chunks:
@@ -97614,6 +98406,20 @@
         - w-break
         - w-stand
       goal: 1
+      tag: 활동 제한
+      icon: lock
+      why: Your hip is broken이라는 사실을 먼저 말하고 so로 서지 못하게 하는 이유를 이어요. 이유 없이 서지 말라고 하면 고령 환자가 일어나려 할 수 있어서 이유를 같이 말해요.
+      decoy: without help
+      distractorsKo:
+        - 엉덩이에 얼음을 대 드릴게요
+        - 누워서 다리를 곧게 펴 보세요
+      blank:
+        answer: stand
+        options:
+            - en: kneel
+            - en: lean
+            - en: sit
+            - en: stand
     - en: We're keeping you comfortable and checking on you often.
       ko: 편안하게 해드리면서 자주 살펴볼게요.
       chunks:
@@ -97628,6 +98434,20 @@
         - w-check
         - w-often
       goal: 1
+      tag: 자주 확인
+      icon: bell
+      why: checking on you often으로 혼자 두지 않겠다는 약속을 해요. 낯선 병원에서 아픈 고령 환자는 불안하기 쉬워서 확인 주기를 알려 주는 것만으로도 안심이 돼요.
+      decoy: all night
+      distractorsKo:
+        - 수술 전에 금식해 주세요
+        - 가족분께 연락드릴게요
+      blank:
+        answer: often
+        options:
+            - en: often
+            - en: rarely
+            - en: later
+            - en: once
   nuance:
     - kind: pair
       words:
@@ -97647,6 +98467,7 @@
       words:
         - w-orient
       why: 지남력은 '예/아니오'가 아니라 환자가 직접 말하게 물어야 가려져요. 결과는 차트에 A&O×3처럼 적어요.
+      ko: 지금 어디 계신지 말씀해 주시겠어요?
       who: 고령 환자에게 · 지남력 확인
       icon: me
       before:
@@ -97662,6 +98483,28 @@
         Are you oriented times three?: 의료진끼리의 말(A&O×3). 환자는 무엇을 묻는지 모른다.
         Can you tell me where you are right now?: 열린 질문이라 환자가 스스로 답해야 해서 실제 지남력이 드러난다.
         You know where you are, don't you?: 답을 유도하는 질문이라 '네'만 해도 넘어가서 섬망을 놓칠 수 있다.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 고관절 골절 고령 환자 4문장 순서
+    why: 골절이라는 사실을 먼저 말하고, 'Because of that'으로 서지 못하는 이유를, 'With that in mind'로 통증 관리와 자주 확인을, 'Each time we check'로 확인할 때마다 장소와 요일을 알려 혼란을 막는다고 이어요. 'Because of that'·'With that in mind'·'we check'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+        - en: 'First, let me tell you what we found: your hip is broken.'
+          icon: board
+          ko: 먼저 확인한 걸 말씀드릴게요, 고관절이 부러졌어요
+          note: 상태
+        - en: Because of that, we can't let you stand on it.
+          icon: lock
+          ko: 그래서 그 다리로 서게 할 수는 없어요
+          note: 이유
+        - en: With that in mind, we'll manage your pain and check on you often.
+          icon: pill
+          ko: 그걸 감안해서 통증을 관리하고 자주 살펴볼게요
+          note: 관리
+        - en: Each time we check, we'll remind you where you are and what day it is.
+          icon: shield
+          ko: 살펴볼 때마다 여기가 어디고 오늘이 무슨 요일인지 알려 드릴게요
+          note: 안심
 - id: SCN-ER-00468
   profession: ""
   eventId: EVT-ER-00129
@@ -97736,6 +98579,20 @@
         - w-moist
         - w-protect
       goal: 1
+      tag: 보존 안내
+      icon: bandage
+      why: cool and moist로 차갑고 촉촉하게 보관한다고 말해, 손가락이 어떻게 다뤄지는지 환자가 알 수 있어요. 절단된 부분은 마르지 않도록 젖은 거즈로 싸서 차게 보관해요.
+      decoy: with a towel
+      distractorsKo:
+        - 손가락에 압박 붕대를 감고 있어요
+        - 전문의가 곧 도착해요
+      blank:
+        answer: moist
+        options:
+            - en: dusty
+            - en: moist
+            - en: dry
+            - en: hot
     - en: The specialist may be able to reattach it.
       ko: 전문의가 재접합할 수 있을 거예요.
       chunks:
@@ -97747,6 +98604,20 @@
         - w-specialist
         - w-reattach
       goal: 2
+      tag: 재접합 설명
+      icon: scalpel
+      why: may be able to로 가능성만 말하고 약속하지 않아요. 재접합이 가능한지는 전문의가 절단 상태를 보고 판단해서 간호사가 단정하지 않아요.
+      decoy: this afternoon
+      distractorsKo:
+        - 이송은 구급차로 할 거예요
+        - 출혈은 지금 조절 중이에요
+      blank:
+        answer: reattach
+        options:
+            - en: measure
+            - en: photograph
+            - en: reattach
+            - en: wash
     - en: We'll control your bleeding while we prepare transfer.
       ko: 이송을 준비하는 동안 출혈을 조절할게요.
       chunks:
@@ -97761,6 +98632,20 @@
         - w-prepare
         - w-transfer
       goal: 2
+      tag: 출혈 조절
+      icon: bandage
+      why: while we prepare transfer로 이송 준비와 지혈이 함께 진행된다고 알려 줘요. 이송을 기다리는 사이에도 출혈 조절이 가장 먼저예요.
+      decoy: after the call
+      distractorsKo:
+        - 손가락은 따로 보관할게요
+        - 전문의에게 곧 전화할게요
+      blank:
+        answer: control
+        options:
+            - en: check
+            - en: watch
+            - en: report
+            - en: control
     - en: Please don't put the finger directly on ice.
       ko: 손가락을 얼음에 직접 닿게 하지 마세요.
       chunks:
@@ -97774,6 +98659,20 @@
         - w-directly
         - w-ice
       goal: 1
+      tag: 보관 주의
+      icon: lock
+      why: directly를 넣어 얼음에 바로 닿지 않게 하라는 점을 짚어요. 절단 부위는 젖은 거즈로 싸서 밀봉 봉투에 넣고, 그 봉투를 얼음 위에 둬요 — 얼음에 바로 닿으면 조직이 얼어 상해요.
+      decoy: in water
+      distractorsKo:
+        - 손가락은 젖은 거즈로 감싸 주세요
+        - 손가락을 비닐봉지에 넣어 주세요
+      blank:
+        answer: directly
+        options:
+            - en: directly
+            - en: gently
+            - en: quickly
+            - en: slowly
     - en: We're calling the hand surgeon now to arrange the transfer.
       ko: 이송을 준비하려고 지금 손 외과의에게 전화하고 있어요.
       chunks:
@@ -97788,6 +98687,20 @@
         - w-arrange
         - w-transfer
       goal: 2
+      tag: 이송 연락
+      icon: speech
+      why: now를 넣어 지금 연락 중이라는 사실을 알려 줘요. 절단 손상은 재접합할 수 있는 시간이 한정돼서 전문의 연락과 이송을 서둘러요.
+      decoy: tomorrow morning
+      distractorsKo:
+        - 이송 중에도 출혈을 계속 볼게요
+        - 보호자분께 연락드릴게요
+      blank:
+        answer: calling
+        options:
+            - en: thanking
+            - en: calling
+            - en: writing
+            - en: visiting
   nuance:
     - kind: pair
       words:
@@ -97811,6 +98724,7 @@
         - w-ice
         - w-put
       why: 절단부는 차갑게 보존하되 물에 잠기거나 얼음에 직접 닿지 않게 해요. 보호자가 스스로 하려 할 때 이렇게 정확히 알려 줘요.
+      ko: 손가락은 밀봉한 비닐봉지에 담아 얼음 위에 올려 주세요.
       who: 보호자에게 · 절단부 보존 안내
       icon: me
       before:
@@ -97826,6 +98740,28 @@
         directly on the ice: 얼음에 바로 닿으면 동상처럼 조직이 상한다.
         in a sealed bag on ice: 표준 방법. 적신 거즈로 싸서 밀봉 봉투에 넣고, 그 봉투를 얼음물에 둔다.
         straight into a cup of ice water: 절단부가 물에 직접 잠기면 조직이 불어 재접합이 어려워진다.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 손가락 절단 이송 4문장 순서
+    why: 전문의를 먼저 부르고, 'They'로 재접합할 수 있을지도 몰라 손가락을 차갑고 촉촉하게 보관한다고 이어, 'For that reason'으로 얼음에 직접 두지 않게 하고, 'Through all of this'로 출혈 조절을 이어 간다고 마무리해요. 앞 줄을 가리키는 말이 순서를 정해 줘요.
+    lines:
+        - en: I'm calling the hand surgeon now to arrange the transfer.
+          icon: speech
+          ko: 이송을 준비하려고 지금 손 외과의에게 전화하고 있어요
+          note: 연락
+        - en: They may be able to reattach it, so we're keeping the finger cool and moist.
+          icon: bandage
+          ko: 재접합할 수 있을지도 몰라서 손가락을 시원하고 촉촉하게 보관하고 있어요
+          note: 보관
+        - en: For that reason, please don't put the finger directly on ice.
+          icon: lock
+          ko: 그래서 손가락을 얼음에 직접 닿게 하지 마세요
+          note: 주의
+        - en: Through all of this, we'll keep controlling your bleeding.
+          icon: bandage
+          ko: 그러는 내내 출혈을 계속 조절할게요
+          note: 지혈
 - id: SCN-ER-00469
   profession: ""
   eventId: EVT-ER-00129
@@ -97899,6 +98835,20 @@
         - w-swell
         - w-grow
       goal: 2
+      tag: 이유 설명
+      icon: pill
+      why: Because로 이유를 앞에 두어 왜 붓기를 더 조심하는지 먼저 이해시켜요. 혈액 희석제를 먹으면 출혈이 잘 멎지 않아 같은 손상에도 붓기와 멍이 커질 수 있어요.
+      decoy: last week
+      distractorsKo:
+        - 약 이름을 알려 주시겠어요?
+        - 붓기에 얼음을 대 드릴게요
+      blank:
+        answer: grow
+        options:
+            - en: vanish
+            - en: freeze
+            - en: grow
+            - en: shrink
     - en: Which blood thinner do you take and when was the last dose?
       ko: 어떤 혈액 희석제를 드시고, 마지막 복용은 언제였나요?
       chunks:
@@ -97913,6 +98863,20 @@
         - w-last
         - w-dose
       goal: 1
+      tag: 복용약 확인
+      icon: pill
+      why: 두 질문을 and로 이어 약 이름과 마지막 복용 시각을 한 번에 물어요. 마지막 복용 시각은 약 효과가 얼마나 남았는지 가늠하는 기준이에요.
+      decoy: for the pain
+      distractorsKo:
+        - 어제 피검사를 하셨나요?
+        - 혈압약도 드시나요?
+      blank:
+        answer: dose
+        options:
+            - en: refill
+            - en: visit
+            - en: test
+            - en: dose
     - en: We'll check the limb often for tightness and color.
       ko: 사지를 자주 확인해서 조임과 색깔을 볼게요.
       chunks:
@@ -97928,6 +98892,20 @@
         - w-tightness
         - w-color
       goal: 2
+      tag: 자주 확인
+      icon: monitor
+      why: often으로 확인이 잦다는 것을 알려 줘요. 혈액 희석제를 먹으면 팔다리 안에서 출혈이 늘어 조직이 팽팽해질 수 있어서 조임과 색을 자주 봐요.
+      decoy: after dinner
+      distractorsKo:
+        - 약은 의사 선생님과 먼저 상의할게요
+        - 팔을 심장보다 높이 올릴게요
+      blank:
+        answer: tightness
+        options:
+            - en: tightness
+            - en: dryness
+            - en: numbness
+            - en: wetness
     - en: The bruise is spreading and looks very dark.
       ko: 멍이 퍼지고 있고 색이 아주 짙어 보여요.
       chunks:
@@ -97941,6 +98919,20 @@
         - w-look
         - w-dark
       goal: 2
+      tag: 소견 설명
+      icon: faceWorried
+      why: spreading과 very dark로 멍이 변하는 방향을 그대로 말해 줘요. 혈액 희석제를 먹는 환자에게 번지는 멍은 안쪽 출혈이 늘고 있다는 단서일 수 있어요.
+      decoy: since you came in
+      distractorsKo:
+        - 의사 선생님께 멍을 보여 드릴게요
+        - 멍 크기를 펜으로 표시해 둘게요
+      blank:
+        answer: spreading
+        options:
+            - en: healing
+            - en: spreading
+            - en: fading
+            - en: shrinking
     - en: Tell us right away if the pain or swelling gets worse.
       ko: 통증이나 붓기가 심해지면 바로 알려주세요.
       chunks:
@@ -97954,6 +98946,20 @@
         - w-swell
         - w-worse
       goal: 2
+      tag: 악화 보고
+      icon: bell
+      why: right away로 기다리지 말고 바로 알리라고 해요. 혈액 희석제를 먹는 환자는 출혈이 늘어 붓기와 통증이 빨리 심해질 수 있어서 바로 알려야 해요.
+      decoy: in the morning
+      distractorsKo:
+        - 얼음은 천으로 싸서 대세요
+        - 팔을 높이 올려 두세요
+      blank:
+        answer: worse
+        options:
+            - en: fainter
+            - en: flatter
+            - en: worse
+            - en: milder
   nuance:
     - kind: slider
       words:
@@ -97973,6 +98979,7 @@
         - w-thinner
         - w-take
       why: 항응고제 복용 여부는 출혈 위험을 가르는 질문이라, 환자가 확실히 알아듣는 blood thinner로 묻고 약 이름과 마지막 복용 시각을 이어서 물어요.
+      ko: 혹시 혈액 희석제를 드시나요?
       who: 환자에게 · 복용약 확인
       icon: me
       before:
@@ -97988,6 +98995,28 @@
         anticoagulants: 의료진의 말. 환자가 자기 약과 연결하지 못할 수 있다.
         blood pills: 뜻이 흐려 혈압약·철분제로도 들린다.
         blood thinners: 미국 환자들이 실제로 쓰는 말. 와파린·엘리퀴스 같은 약 이름을 함께 물으면 더 정확하다.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 항응고제 골절 4문장 순서
+    why: 복용 중인 약과 마지막 복용 시각을 먼저 묻고, 'That'으로 그 약 때문에 붓기가 커질 수 있다고 이유를 말하고, 'Because it can grow'로 그 붓기가 커질 수 있어서 자주 확인하겠다고 하고, 'Between our checks'로 그 사이에 악화되면 알리라고 해요. 앞 줄을 가리키는 말이 순서를 정해 줘요.
+    lines:
+        - en: You take a blood thinner—which one, and when did you last take it?
+          icon: pill
+          ko: 혈액 희석제를 드시는데, 어떤 약이고 마지막으로 언제 드셨나요?
+          note: 문진
+        - en: That matters because the swelling can grow faster with it.
+          icon: bulb
+          ko: 그 약 때문에 붓기가 더 빨리 커질 수 있어서 중요해요
+          note: 이유
+        - en: Because it can grow, we'll check the limb often for tightness and color.
+          icon: monitor
+          ko: 붓기가 커질 수 있어서 사지를 자주 확인해 조임과 색을 볼게요
+          note: 확인
+        - en: Between our checks, tell us right away if the pain or swelling gets worse.
+          icon: bell
+          ko: 확인하는 사이에도 통증이나 붓기가 심해지면 바로 알려 주세요
+          note: 보고
 - id: SCN-ER-00470
   profession: ""
   eventId: EVT-ER-00129
@@ -98064,6 +99093,20 @@
         - w-watch
         - w-closely
       goal: 1
+      tag: 위치 설명
+      icon: bulb
+      why: so로 위치(growth plate 근처)와 지켜보는 이유를 이어요. 성장판은 뼈 끝에서 뼈가 자라는 부분이라 이곳을 다치면 성장에 영향을 줄 수 있어 경과를 살펴요.
+      decoy: after the cast
+      distractorsKo:
+        - 엑스레이는 한 장 더 찍을 거예요
+        - 깁스를 하고 갈 거예요
+      blank:
+        answer: near
+        options:
+            - en: behind
+            - en: inside
+            - en: under
+            - en: near
     - en: Most heal well, but follow-up is important for growth.
       ko: 대부분 잘 낫지만, 성장을 위해 추적 관찰이 중요해요.
       chunks:
@@ -98078,6 +99121,20 @@
         - w-important
         - w-growth
       goal: 1
+      tag: 경과 설명
+      icon: calendar
+      why: Most heal well로 안심을 주고 but으로 추적 관찰이 중요하다는 점을 이어요. 성장판 손상은 나중에 성장이 틀어지는지 확인해야 해서 외래 방문을 지키도록 말해요.
+      decoy: next month
+      distractorsKo:
+        - 아이는 오늘 집에 갈 수 있어요
+        - 깁스는 한 달 뒤에 풀어요
+      blank:
+        answer: important
+        options:
+            - en: important
+            - en: optional
+            - en: painful
+            - en: simple
     - en: The specialist will check the alignment over time.
       ko: 전문의가 시간을 두고 정렬 상태를 확인할 거예요.
       chunks:
@@ -98091,6 +99148,20 @@
         - w-check
         - w-align
       goal: 2
+      tag: 추적 계획
+      icon: stetho
+      why: over time으로 한 번이 아니라 시간을 두고 반복해서 본다고 알려 줘요. 정렬이 틀어지면 자라면서 모양이 변할 수 있어 간격을 두고 확인해요.
+      decoy: this afternoon
+      distractorsKo:
+        - 엑스레이 결과를 보고 알려 드릴게요
+        - 진통제는 약국에서 사세요
+      blank:
+        answer: alignment
+        options:
+            - en: temperature
+            - en: alignment
+            - en: weight
+            - en: color
     - en: It's normal to worry, but the plate often heals well.
       ko: 걱정되는 게 당연하지만, 성장판은 대개 잘 낫습니다.
       chunks:
@@ -98106,6 +99177,20 @@
         - w-often
         - w-heal
       goal: 1
+      tag: 보호자 공감
+      icon: faceWorried
+      why: It's normal to worry로 걱정을 먼저 인정한 뒤 but으로 희망을 줘요. 공감이 먼저 나와야 뒤의 안심이 변명처럼 들리지 않아요.
+      decoy: for your son
+      distractorsKo:
+        - 아이가 울어도 괜찮아요
+        - 얼음찜질을 해 주세요
+      blank:
+        answer: worry
+        options:
+            - en: cry
+            - en: ask
+            - en: worry
+            - en: wait
     - en: We'll take an x-ray now and another one at the follow-up visit.
       ko: 지금 엑스레이를 찍고 추적 관찰 때 한 번 더 찍을 거예요.
       chunks:
@@ -98119,6 +99204,20 @@
         - w-followup
         - w-visit
       goal: 2
+      tag: 검사 안내
+      icon: monitor
+      why: now와 at the follow-up visit으로 엑스레이를 찍는 시점을 둘로 나눠 말해, 경과를 보려고 한 번 더 찍는다는 것을 알려 줘요.
+      decoy: at home
+      distractorsKo:
+        - 오늘 깁스를 풀 거예요
+        - 약은 하루에 세 번 드세요
+      blank:
+        answer: x-ray
+        options:
+            - en: ultrasound
+            - en: MRI
+            - en: exam
+            - en: x-ray
   nuance:
     - kind: slider
       words:
@@ -98139,11 +99238,13 @@
         - w-growth
         - w-plate
         - w-followup
-      why: Salter-Harris 분류와 physeal(성장판의)은 의료진의 말이에요. 보호자에게는 growth plate라고 풀고, 왜 다시 봐야 하는지를 함께 말해요.
+      why: Salter-Harris II 같은 분류명은 차트와 의료진끼리 쓰는 말이에요. 보호자에게는 growth plate가 무엇인지, 왜 다시 보는지를 쉬운 말로 풀어 줘요.
+      ko: 성장판
+      word: growth plate
       scenes:
         - who: 차트 기록
           icon: board
-          en: Salter-Harris II fx, distal radius; ortho f/u 1 wk.
+          en: Salter-Harris II fx through the growth plate, distal radius; ortho f/u 1 wk.
           ok: true
         - who: 동료 간호사에게
           icon: speech
@@ -98151,9 +99252,31 @@
           ok: true
         - who: 보호자에게
           icon: me
-          en: Your son has a Salter-Harris II physeal fracture.
+          en: Your son has a Salter-Harris II fracture through the growth plate.
           ok: false
           fix: The break goes through the growth plate, so a bone specialist will check it again next week.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 소아 성장판 손상 4문장 순서
+    why: 성장판 근처라는 설명으로 시작하고, '"growth plate"'를 가리켜 걱정을 인정하고 안심을 주고, 'To keep it healing that well'로 엑스레이 계획을 말한 뒤, 'that follow-up'으로 추적 방문을 거르지 말라고 마무리해요. 앞 줄을 가리키는 말이 순서를 정해 줘요.
+    lines:
+        - en: This injury is near the growth plate, so we're going to watch it closely.
+          icon: bulb
+          ko: 이 손상이 성장판 근처라 자세히 지켜볼 거예요
+          note: 설명
+        - en: Hearing "growth plate" can sound scary, but the plate often heals well.
+          icon: faceWorried
+          ko: 성장판이라는 말이 무섭게 들릴 수 있지만 대개 잘 나아요
+          note: 공감
+        - en: To keep it healing that well, we'll take an x-ray now and another at follow-up.
+          icon: monitor
+          ko: 그만큼 잘 낫도록 지금 엑스레이를 찍고 추적 때 한 번 더 찍을 거예요
+          note: 계획
+        - en: Please don't skip that follow-up visit—it matters for growth.
+          icon: calendar
+          ko: 그 추적 방문은 꼭 오세요, 성장에 중요해요
+          note: 당부
 - id: SCN-ER-00471
   profession: ""
   eventId: EVT-ER-00129
@@ -98228,6 +99351,20 @@
         - w-force
         - w-unusual
       goal: 1
+      tag: 소견 설명
+      icon: bulb
+      why: which is unusual로 앞 내용을 한 번 더 평가해서, 왜 추가 질문을 하는지 이유를 깔아 줘요. 약한 힘에 부러진 뼈는 뼈가 원래 약해져 있는지 살펴보게 해요.
+      decoy: last week
+      distractorsKo:
+        - 어떻게 다치셨는지 말씀해 주세요
+        - 엑스레이를 한 장 더 찍을게요
+      blank:
+        answer: unusual
+        options:
+            - en: unusual
+            - en: normal
+            - en: expected
+            - en: routine
     - en: Do you have any history of cancer or bone disease?
       ko: 암이나 뼈 질환의 병력이 있으신가요?
       chunks:
@@ -98242,6 +99379,20 @@
         - w-bone
         - w-disease
       goal: 2
+      tag: 병력 확인
+      icon: board
+      why: any history of로 지금 병이 있는지뿐 아니라 과거까지 포함해 물어요. 암이나 뼈 질환은 뼈가 약해져서 약한 힘에도 부러지는 원인이 될 수 있어요.
+      decoy: last year
+      distractorsKo:
+        - 지금 드시는 약이 있나요?
+        - 최근에 넘어지신 적이 있나요?
+      blank:
+        answer: history
+        options:
+            - en: fear
+            - en: history
+            - en: habit
+            - en: plan
     - en: Have you had unexplained pain or weight loss recently?
       ko: 최근에 원인 모를 통증이나 체중 감소가 있었나요?
       chunks:
@@ -98256,6 +99407,20 @@
         - w-loss
         - w-recently
       goal: 2
+      tag: 증상 문진
+      icon: faceWorried
+      why: unexplained로 이유가 분명하지 않은 통증이나 체중 감소를 묻고 있다는 점을 짚어 줘요. 이유 없는 체중 감소와 통증은 뼈 약화의 원인을 찾을 때 묻는 증상이에요.
+      decoy: since this morning
+      distractorsKo:
+        - 최근에 열이 났나요?
+        - 암 진단을 받으신 적이 있나요?
+      blank:
+        answer: weight
+        options:
+            - en: sleep
+            - en: hearing
+            - en: weight
+            - en: hair
     - en: A bone this weak can break without a big fall.
       ko: 이렇게 약한 뼈는 크게 넘어지지 않아도 부러질 수 있어요.
       chunks:
@@ -98270,6 +99435,20 @@
         - w-break
         - w-fall
       goal: 1
+      tag: 이유 설명
+      icon: bulb
+      why: this weak으로 이 환자의 뼈 상태를 가리켜, 사고가 작아도 부러질 수 있다는 설명이 자기 이야기로 들려요. 뼈가 약해진 이유는 검사로 찾아봐요.
+      decoy: when you walk
+      distractorsKo:
+        - 골절 부위에 부목을 댈게요
+        - 최근 엑스레이를 찍으셨나요?
+      blank:
+        answer: weak
+        options:
+            - en: strong
+            - en: thick
+            - en: clean
+            - en: weak
     - en: We'll order scans to see why this bone is weak.
       ko: 왜 뼈가 약한지 보기 위해 검사를 지시할게요.
       chunks:
@@ -98284,6 +99463,20 @@
         - w-bone
         - w-weak
       goal: 1
+      tag: 검사 안내
+      icon: monitor
+      why: to see why로 검사를 하는 이유를 말해 줘요. 병적 골절이 의심되면 뼈가 왜 약한지 영상으로 찾아봐요.
+      decoy: this evening
+      distractorsKo:
+        - 결과는 정형외과에서 설명해 드릴 거예요
+        - 약은 이따가 드릴게요
+      blank:
+        answer: scans
+        options:
+            - en: scans
+            - en: casts
+            - en: crutches
+            - en: splints
   nuance:
     - kind: slider
       words:
@@ -98304,11 +99497,13 @@
         - w-cancer
         - w-history
         - w-disease
-      why: hx(병력)·CA(암)는 차트 약어예요. 환자에게는 cancer를 그대로 말해 물어야 정확한 답이 나와요.
+      why: bone mets(뼈 전이) 같은 말은 의료진끼리 쓰는 말이고 환자에게는 겁을 줘요. 환자에게는 cancer를 그대로, 치료받은 적이 있는지처럼 담담하게 물어요.
+      ko: 암
+      word: cancer
       scenes:
         - who: 차트 기록
           icon: board
-          en: 'PMH: breast CA, s/p mastectomy 2019.'
+          en: 'PMH: breast cancer, s/p mastectomy 2019.'
           ok: true
         - who: 의사에게 보고
           icon: speech
@@ -98316,9 +99511,31 @@
           ok: true
         - who: 환자에게
           icon: me
-          en: Any hx of CA?
+          en: Any history of cancer, or known bone mets?
           ok: false
           fix: Have you ever been treated for cancer?
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 병적 골절 의심 4문장 순서
+    why: 약한 힘에 부러졌다는 소견으로 시작하고, 'Because of that'으로 병력을 묻고, 'a diagnosis like that'으로 이어 증상을 묻고, 'Whatever you tell me'로 어떤 답이어도 검사를 한다고 마무리해요. 앞 줄을 가리키는 말이 순서를 정해 줘요.
+    lines:
+        - en: This break happened with very little force, which is unusual.
+          icon: bulb
+          ko: 이 골절은 아주 약한 힘에 생겼는데 이례적이에요
+          note: 소견
+        - en: Because of that, do you have any history of cancer or bone disease?
+          icon: board
+          ko: 그래서 암이나 뼈 질환 병력이 있으신가요?
+          note: 병력
+        - en: Even without a diagnosis like that, have you had unexplained pain or weight loss lately?
+          icon: faceWorried
+          ko: 그런 진단이 없더라도 최근 원인 모를 통증이나 체중 감소가 있었나요?
+          note: 증상
+        - en: Whatever you tell me, we'll order scans to see why this bone is weak.
+          icon: monitor
+          ko: 어떻게 답하셔도 왜 뼈가 약한지 보려고 검사를 할 거예요
+          note: 검사
 - id: SCN-ER-00472
   profession: ""
   eventId: EVT-ER-00129
@@ -98390,6 +99607,20 @@
         - w-interpreter
         - w-understand
       goal: 1
+      tag: 통역 안내
+      icon: speaker
+      why: so we understand each other로 통역사를 부르는 이유를 서로를 위한 것으로 말해요. 가족이나 지인보다 의료 통역사를 쓰는 편이 정확하게 전달돼요.
+      decoy: after lunch
+      distractorsKo:
+        - 의사 선생님을 모셔 올게요
+        - 엑스레이를 찍으러 가요
+      blank:
+        answer: interpreter
+        options:
+            - en: aide
+            - en: interpreter
+            - en: orderly
+            - en: EMT
     - en: Are you allergic to any medicines?
       ko: 혹시 알레르기가 있는 약이 있나요?
       chunks:
@@ -98401,6 +99632,20 @@
         - w-allergic
         - w-medicine
       goal: 2
+      tag: 알레르기
+      icon: pill
+      why: Are you allergic to any …?로 짧게 물어, 통역을 거쳐도 의미가 흐려지지 않게 해요. 약 알레르기는 어떤 약을 쓸지 정하기 전에 꼭 확인해요.
+      decoy: in the past
+      distractorsKo:
+        - 어디가 가장 아프세요?
+        - 지금 드시는 약이 있나요?
+      blank:
+        answer: medicines
+        options:
+            - en: insects
+            - en: pets
+            - en: medicines
+            - en: foods
     - en: Point to where it hurts and show me how bad.
       ko: 아픈 곳을 가리키고 얼마나 아픈지 보여주세요.
       chunks:
@@ -98414,6 +99659,20 @@
         - w-hurt
         - w-show
       goal: 1
+      tag: 손짓 요청
+      icon: pushpin
+      why: Point처럼 동작 동사로 시작하면 말이 통하지 않아도 몸짓으로 답할 수 있어요. show me how bad로 정도도 손가락 숫자나 표정으로 보여 달라고 해요.
+      decoy: on the paper
+      distractorsKo:
+        - 통역사가 오면 다시 여쭤볼게요
+        - 통증이 언제 시작됐는지 알려 주세요
+      blank:
+        answer: Point
+        options:
+            - en: Move
+            - en: Turn
+            - en: Look
+            - en: Point
     - en: Nod if you understand what I'm asking.
       ko: 제가 묻는 것을 이해하시면 고개를 끄덕여 주세요.
       chunks:
@@ -98425,6 +99684,20 @@
         - w-nod
         - w-understand
       goal: 1
+      tag: 이해 확인
+      icon: me
+      why: Nod처럼 말 대신 고개로 답하게 해서 이해했는지 가볍게 확인해요. what I'm asking으로 질문의 내용을 이해했는지를 확인한다는 점을 알려 줘요.
+      decoy: when you're ready
+      distractorsKo:
+        - 성함을 말씀해 주세요
+        - 통역사가 곧 도착해요
+      blank:
+        answer: Nod
+        options:
+            - en: Nod
+            - en: Wave
+            - en: Blink
+            - en: Point
     - en: The interpreter will help us check your pain and history.
       ko: 통역사가 통증과 병력을 확인하는 걸 도와줄 거예요.
       chunks:
@@ -98439,6 +99712,20 @@
         - w-pain
         - w-history
       goal: 2
+      tag: 통역 역할
+      icon: speaker
+      why: help us check은 통역사가 확인을 대신한다는 뜻이 아니에요. 확인하는 사람은 간호사이고, 통역사는 통증과 병력처럼 정확해야 하는 말을 그대로 옮겨 줘요.
+      decoy: at the desk
+      distractorsKo:
+        - 의사 선생님이 곧 오실 거예요
+        - 통증약은 곧 드릴게요
+      blank:
+        answer: interpreter
+        options:
+            - en: driver
+            - en: interpreter
+            - en: receptionist
+            - en: janitor
   nuance:
     - kind: slider
       words:
@@ -98458,20 +99745,44 @@
         - w-interpreter
         - w-understand
       why: 의료 통역을 쓸 때는 통역사가 아니라 환자를 보고 1인칭으로 말해요. 'Tell her…'처럼 통역사에게 말하면 환자가 대화에서 밀려나요.
+      ko: 알레르기
+      word: allergies
       scenes:
         - who: 차트 기록
           icon: board
-          en: Pt Indonesian-speaking; video interpreter used, ID 4471.
+          en: Pt Indonesian-speaking; allergies reviewed via video interpreter, ID 4471.
           ok: true
         - who: 동료 간호사에게
           icon: speech
-          en: She speaks Indonesian, so I'm getting a video interpreter.
+          en: She speaks Indonesian, so I'm getting a video interpreter to check her allergies.
           ok: true
         - who: 통역을 통해 환자에게
           icon: mic
           en: Tell her I need to know if she's allergic to anything.
           ok: false
           fix: Are you allergic to any medicines?
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 언어장벽 골절 4문장 순서
+    why: 통역사를 부른다고 알리고, 'They'로 통역사가 올 때까지 손으로 아픈 곳을 가리키게 하고, 'that spot'으로 확인하고, 'Once they're here'로 통역사가 오면 나머지 통증과 병력을 이어서 확인한다고 마무리해요. 앞 줄을 가리키는 말이 순서를 정해 줘요.
+    lines:
+        - en: I'll get an interpreter so we understand each other.
+          icon: speaker
+          ko: 서로 이해할 수 있도록 통역사를 부를게요
+          note: 통역
+        - en: They'll be here soon, so point to where it hurts and show me how bad.
+          icon: pushpin
+          ko: 곧 오실 테니 아픈 곳을 가리키고 얼마나 아픈지 보여 주세요
+          note: 손짓
+        - en: Nod if that spot is where it hurts the most.
+          icon: me
+          ko: 그곳이 가장 아픈 곳이면 고개를 끄덕여 주세요
+          note: 확인
+        - en: Once they're here, they'll help us check the rest of your pain and history.
+          icon: speaker
+          ko: 통역사가 오면 나머지 통증과 병력을 함께 확인할 거예요
+          note: 마무리
 - id: SCN-ER-00473
   profession: ""
   eventId: EVT-ER-00129
@@ -98546,6 +99857,20 @@
         - w-reduce
         - w-swell
       goal: 1
+      tag: 깁스 관리
+      icon: bandage
+      why: dry and elevated로 두 가지 관리를 한 번에 말하고 to reduce swelling으로 이유를 붙여요. 깁스를 높이 두면 붓기가 줄고, 깁스가 젖으면 안쪽 피부가 상할 수 있어요.
+      decoy: at night
+      distractorsKo:
+        - 깁스 속을 긁지 마세요
+        - 샤워할 때 비닐로 덮으세요
+      blank:
+        answer: elevated
+        options:
+            - en: lowered
+            - en: covered
+            - en: elevated
+            - en: warm
     - en: Come back if your fingers turn pale, numb, or very painful.
       ko: 손가락이 창백해지거나 저리거나 많이 아프면 다시 오세요.
       chunks:
@@ -98561,6 +99886,20 @@
         - w-numb
         - w-painful
       goal: 2
+      tag: 재방문 기준
+      icon: bell
+      why: pale, numb, or very painful로 눈에 띄는 증상을 직접 말해 줘서 환자가 무엇을 봐야 하는지 알아요. 깁스가 너무 조이면 손가락의 혈류와 감각이 변할 수 있어요.
+      decoy: after a week
+      distractorsKo:
+        - 깁스가 젖으면 말씀해 주세요
+        - 내일 정형외과 외래에 오세요
+      blank:
+        answer: fingers
+        options:
+            - en: toes
+            - en: elbows
+            - en: nails
+            - en: fingers
     - en: Never push anything inside the cast to scratch.
       ko: 긁으려고 깁스 안에 아무것도 넣지 마세요.
       chunks:
@@ -98574,6 +99913,20 @@
         - w-cast
         - w-scratch
       goal: 1
+      tag: 금지 사항
+      icon: lock
+      why: Never로 예외 없이 하지 말라고 못 박고, 금지할 행동을 구체적으로 말해요. 깁스 속에 물건을 넣으면 피부에 상처가 나 감염될 수 있어요.
+      decoy: at the edge
+      distractorsKo:
+        - 가려우면 찬 바람을 불어 넣으세요
+        - 깁스 가장자리는 부드러운 천으로 덮어 두세요
+      blank:
+        answer: push
+        options:
+            - en: push
+            - en: pour
+            - en: drop
+            - en: spray
     - en: Keep the cast covered and dry when you shower.
       ko: 샤워할 때는 깁스를 덮어서 마르게 유지하세요.
       chunks:
@@ -98588,6 +99941,20 @@
         - w-dry
         - w-shower
       goal: 1
+      tag: 샤워 교육
+      icon: home
+      why: covered and dry로 샤워할 때 필요한 상태를 두 단어로 말해요. 깁스가 젖으면 속의 패드가 오래 젖어 피부가 짓무를 수 있어요.
+      decoy: every day
+      distractorsKo:
+        - 샤워 후 깁스 안쪽이 젖었는지 보세요
+        - 샤워 후에는 팔을 높이 두세요
+      blank:
+        answer: covered
+        options:
+            - en: lowered
+            - en: covered
+            - en: exposed
+            - en: hidden
     - en: You can move your fingers gently to keep them from getting stiff.
       ko: 뻣뻣해지지 않도록 손가락을 부드럽게 움직여 주세요.
       chunks:
@@ -98602,6 +99969,20 @@
         - w-gently
         - w-stiff
       goal: 1
+      tag: 손가락 운동
+      icon: me
+      why: You can으로 허락하는 형태라 움직여도 된다는 안심을 줘요. gently는 무리하지 않는 정도를 알려 줘요. 손가락을 움직이면 뻣뻣해지는 것을 막는 데 도움이 돼요.
+      decoy: all day
+      distractorsKo:
+        - 손가락을 세게 쥐어 보세요
+        - 손가락 색깔을 매일 확인하세요
+      blank:
+        answer: stiff
+        options:
+            - en: cold
+            - en: numb
+            - en: stiff
+            - en: dirty
   nuance:
     - kind: slider
       words:
@@ -98623,6 +100004,7 @@
         - w-inside
         - w-push
       why: 깁스 안은 들여다볼 수 없어서 상처가 나도 늦게 발견돼요. 가려울 때 할 수 있는 안전한 방법을 함께 알려 줘요.
+      ko: 가려우면 헤어드라이어로 찬바람을 불어 넣으세요.
       who: 환자에게 · 깁스 속 가려움
       icon: me
       before:
@@ -98638,6 +100020,28 @@
         blow cool air in with a hair dryer: 흔히 권하는 방법. 차가운 바람으로만 쓰게 한다.
         pour some lotion in: 깁스 속에서 피부가 짓무르고 자극이 생긴다.
         slide a hanger inside: 피부가 긁혀 상처가 나고, 깁스 속이라 감염돼도 보이지 않는다.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 깁스 후 교육 4문장 순서
+    why: 깁스를 했으니 집에서 관리하는 법을 알려 준다고 시작하고, 'it'으로 마르게 높이 두라고 하고, 'Along with that'으로 손가락 운동을, 'they'로 그 손가락이 이상해지면 오라고 마무리해요. 앞 줄을 가리키는 말이 순서를 정해 줘요.
+    lines:
+        - en: Your cast is on, so let's go over how to care for it at home.
+          icon: home
+          ko: 깁스를 했으니 집에서 관리하는 법을 알려 드릴게요
+          note: 안내
+        - en: Keep it dry and elevated to reduce swelling.
+          icon: bandage
+          ko: 붓기를 줄이려면 깁스를 마르게 하고 높이 두세요
+          note: 관리
+        - en: Along with that, you can move your fingers gently to keep them from getting stiff.
+          icon: me
+          ko: 그와 함께 손가락을 살살 움직여 뻣뻣해지지 않게 하세요
+          note: 운동
+        - en: Come back if they turn pale, numb, or very painful.
+          icon: bell
+          ko: 손가락이 창백해지거나 저리거나 많이 아프면 다시 오세요
+          note: 재방문
 - id: SCN-ER-00474
   profession: ""
   eventId: EVT-ER-00129
@@ -98712,6 +100116,20 @@
         - w-warning
         - w-sign
       goal: 1
+      tag: 경고 징후
+      icon: siren
+      why: serious warning sign으로 이 증상을 가볍게 넘기지 않는다고 분명히 해요. 손상에 비해 지나치게 심한 통증은 구획증후군을 의심하게 하는 대표적인 징후예요.
+      decoy: in the leg
+      distractorsKo:
+        - 손가락이 저린가요?
+        - 다리를 높이 올려 주세요
+      blank:
+        answer: serious
+        options:
+            - en: rare
+            - en: minor
+            - en: random
+            - en: serious
     - en: Does it hurt more when I stretch your fingers or toes?
       ko: 제가 손가락이나 발가락을 쭉 펴면 더 아프세요?
       chunks:
@@ -98727,6 +100145,20 @@
         - w-finger
         - w-toe
       goal: 1
+      tag: 신전 통증
+      icon: faceWorried
+      why: hurt more when I stretch로 언제 더 아픈지를 조건으로 물어요. 근육을 수동으로 늘릴 때 통증이 커지는 것은 구획증후군의 단서예요.
+      decoy: after you eat
+      distractorsKo:
+        - 손가락 색깔이 어떤가요?
+        - 손끝이 차갑게 느껴지세요?
+      blank:
+        answer: stretch
+        options:
+            - en: stretch
+            - en: freeze
+            - en: cover
+            - en: wash
     - en: We need surgery soon to relieve the pressure.
       ko: 압박을 풀기 위해 곧 수술이 필요해요.
       chunks:
@@ -98741,6 +100173,20 @@
         - w-relieve
         - w-pressure
       goal: 2
+      tag: 수술 설명
+      icon: scalpel
+      why: to relieve the pressure로 수술의 목적을 말해 줘요. 구획증후군은 근육을 감싼 공간의 압력을 풀어 주는 수술이 필요할 수 있어요.
+      decoy: next week
+      distractorsKo:
+        - 압력을 먼저 재 볼게요
+        - 정형외과 의사가 곧 올 거예요
+      blank:
+        answer: relieve
+        options:
+            - en: create
+            - en: relieve
+            - en: raise
+            - en: increase
     - en: This pain is much worse than we'd expect from the injury.
       ko: 이 손상치고는 통증이 예상보다 훨씬 심해요.
       chunks:
@@ -98755,6 +100201,20 @@
         - w-expect
         - w-injury
       goal: 1
+      tag: 통증 평가
+      icon: bulb
+      why: than we'd expect from the injury로 손상 크기에 비해 통증이 과하다는 비교를 말해요. 손상에 비해 심한 통증은 구획증후군을 의심하게 해서 의사에게 알리는 근거가 돼요.
+      decoy: at rest
+      distractorsKo:
+        - 통증이 가라앉으면 알려 주세요
+        - 진통제를 먼저 드릴게요
+      blank:
+        answer: worse
+        options:
+            - en: gentler
+            - en: quieter
+            - en: worse
+            - en: calmer
     - en: The muscle feels very tight and hard to the touch.
       ko: 만져보면 근육이 아주 팽팽하고 딱딱해요.
       chunks:
@@ -98768,6 +100228,20 @@
         - w-tight
         - w-touch
       goal: 1
+      tag: 소견 설명
+      icon: magnify
+      why: feels very tight and hard to the touch로 만져서 느낀 것을 그대로 말해요. 팽팽하고 딱딱한 근육은 근막 안 압력이 올라가 있다는 단서예요.
+      decoy: on the surface
+      distractorsKo:
+        - 다리가 많이 부어 있어요
+        - 발가락이 움직이는지 볼게요
+      blank:
+        answer: tight
+        options:
+            - en: loose
+            - en: soft
+            - en: thin
+            - en: tight
   nuance:
     - kind: slider
       words:
@@ -98790,20 +100264,44 @@
         - w-surgery
         - w-soon
       why: fasciotomy(근막절개술)와 emergent는 의료진의 말이에요. 환자에게는 무엇을(surgery) 왜 하는지(relieve the pressure) 쉬운 말로 말해요.
+      ko: 근막절개술
+      word: fasciotomy
       scenes:
         - who: 정형외과 콜
           icon: speech
-          en: I'm concerned about compartment syndrome — pain with passive stretch, and the calf is tense.
+          en: Calf is tense with pain on passive stretch—can you evaluate her for a fasciotomy?
           ok: true
         - who: 차트 기록
           icon: board
-          en: Pain w/ passive stretch, compartments tense; ortho notified 2140.
+          en: Pain w/ passive stretch, compartments tense; ortho notified 2140, plan fasciotomy.
           ok: true
         - who: 환자에게
           icon: me
           en: You need an emergent fasciotomy.
           ok: false
           fix: We need surgery soon to relieve the pressure in your leg.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 구획증후군 4문장 순서
+    why: 통증이 손상에 비해 심하다는 관찰로 시작하고, 'That'으로 심각한 징후라서 지금 의사를 부른다고 하고, 'the doctor'로 수술 가능성을 말하고, 'Last'로 근육을 계속 확인한다고 닫아요. 의사 호출은 두 번째 줄에서 기다리지 않고 바로 이뤄져요.
+    lines:
+        - en: This pain is much worse than we'd expect from the injury.
+          icon: bulb
+          ko: 이 손상치고는 통증이 예상보다 훨씬 심해요
+          note: 관찰
+        - en: That's a serious warning sign, so I'm calling the doctor right now.
+          icon: siren
+          ko: 그건 심각한 경고 징후라서 지금 바로 의사 선생님을 부르고 있어요
+          note: 호출
+        - en: When the doctor arrives, the plan may be surgery soon to relieve the pressure.
+          icon: scalpel
+          ko: 의사 선생님이 오시면 압력을 풀기 위해 곧 수술하자고 할 수 있어요
+          note: 계획
+        - en: Last, I'll keep checking whether the muscle feels very tight and hard to the touch.
+          icon: magnify
+          ko: 마지막으로 근육이 아주 팽팽하고 딱딱한지 계속 확인할게요
+          note: 관찰
 - id: SCN-ER-00475
   profession: ""
   eventId: EVT-ER-00129
@@ -98879,6 +100377,20 @@
         - w-slow
         - w-bleed
       goal: 1
+      tag: 고정 안내
+      icon: bandage
+      why: to stabilize ... and slow bleeding으로 바인더의 목적 두 가지를 말해요. 골반 바인더는 골반을 모아 주어 안쪽 출혈을 줄이는 데 도움이 돼요.
+      decoy: around your knees
+      distractorsKo:
+        - 지금 수혈을 시작할게요
+        - 골반을 만져 볼게요
+      blank:
+        answer: stabilize
+        options:
+            - en: stabilize
+            - en: measure
+            - en: clean
+            - en: lift
     - en: You may be bleeding internally, so we're giving you blood.
       ko: 내부 출혈이 있을 수 있어서 수혈을 해드리고 있어요.
       chunks:
@@ -98893,6 +100405,20 @@
         - w-give
         - w-blood
       goal: 2
+      tag: 수혈 설명
+      icon: pill
+      why: may be로 아직 확인 전이지만 가능성이 높아 수혈한다고 말해요. 골반 골절은 몸속으로 피가 많이 날 수 있어 겉으로 안 보여도 미리 대비해요.
+      decoy: in your leg
+      distractorsKo:
+        - 수액을 빠르게 넣고 있어요
+        - 혈압을 다시 재 볼게요
+      blank:
+        answer: internally
+        options:
+            - en: externally
+            - en: internally
+            - en: slowly
+            - en: again
     - en: Try to stay still while we stabilize you.
       ko: 고정하는 동안 최대한 가만히 계셔 주세요.
       chunks:
@@ -98905,6 +100431,20 @@
         - w-still
         - w-stabilize
       goal: 1
+      tag: 협조 요청
+      icon: me
+      why: Try to로 부탁하는 말투를 써서, 아파서 움직이는 환자에게도 잔소리처럼 들리지 않아요. 골반이 부러졌을 때는 움직이면 출혈이 늘 수 있어서 가만히 있게 해요.
+      decoy: on your side
+      distractorsKo:
+        - 숨을 천천히 쉬어 보세요
+        - 팔을 올려 주세요
+      blank:
+        answer: still
+        options:
+            - en: away
+            - en: seated
+            - en: still
+            - en: upright
     - en: Your blood pressure is dropping, so we're moving quickly.
       ko: 혈압이 떨어지고 있어서 빠르게 움직이고 있어요.
       chunks:
@@ -98920,6 +100460,20 @@
         - w-move
         - w-quick
       goal: 2
+      tag: 상태 설명
+      icon: monitor
+      why: dropping과 moving quickly를 so로 이어 상태가 나빠지니 서두른다는 이유를 알려 줘요. 혈압이 떨어지는 것은 출혈로 혈액량이 줄었다는 신호일 수 있어요.
+      decoy: since you arrived
+      distractorsKo:
+        - 혈액 검사 결과가 나왔어요
+        - 혈압을 한 번 더 잴게요
+      blank:
+        answer: dropping
+        options:
+            - en: rising
+            - en: climbing
+            - en: improving
+            - en: dropping
     - en: We're giving you fluids and blood to keep your pressure up.
       ko: 혈압을 유지하기 위해 수액과 혈액을 드리고 있어요.
       chunks:
@@ -98935,6 +100489,20 @@
         - w-keep
         - w-pressure
       goal: 2
+      tag: 치료 설명
+      icon: pill
+      why: to keep your pressure up으로 수액과 혈액을 주는 목적을 말해요. 출혈로 혈압이 떨어질 때는 줄어든 혈액량을 채워서 혈압을 유지해요.
+      decoy: through your arm
+      distractorsKo:
+        - 진통제를 천천히 놓을게요
+        - 산소를 더 높여 드릴게요
+      blank:
+        answer: fluids
+        options:
+            - en: fluids
+            - en: oxygen
+            - en: pills
+            - en: painkillers
   nuance:
     - kind: slider
       words:
@@ -98956,6 +100524,7 @@
         - w-stabilize
         - w-pelvis
       why: 바인더는 골반을 둘러 조여 벌어진 골반을 모아 출혈을 줄여요. 환자에게는 binder라고 하고 무엇을 위해 조이는지를 붙여 말해요.
+      ko: 골반을 붙잡아 주고 출혈을 늦추기 위해 바인더를 채우고 있어요.
       who: 환자에게 · 골반 바인더 설명
       icon: me
       before:
@@ -98971,6 +100540,28 @@
         belt: 쉽지만 옷 벨트처럼 가볍게 들려, 왜 세게 조이는지가 전해지지 않는다.
         binder: 쉽고 정확한 말. 뒤에 붙는 설명(골반을 모아 출혈을 줄인다)과 함께 전해진다.
         pelvic circumferential compression device: 정식 명칭이지만 길고 딱딱해 환자는 알아듣기 어렵다.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 골반골절 불안정 4문장 순서
+    why: 혈압이 떨어져 서두른다고 알리고, 'The reason'으로 내부 출혈 가능성을 말하고, 'To slow that bleeding'으로 그 출혈을 늦추려 바인더를 적용한다고 하고, 'all of this'로 가만히 있어 달라고 부탁해요. 앞 줄을 가리키는 말이 순서를 정해 줘요.
+    lines:
+        - en: Your blood pressure is dropping, so we're moving quickly.
+          icon: monitor
+          ko: 혈압이 떨어지고 있어서 빠르게 움직이고 있어요
+          note: 상황
+        - en: The reason is that you may be bleeding internally.
+          icon: bulb
+          ko: 이유는 내부 출혈이 있을 수 있어서예요
+          note: 이유
+        - en: To slow that bleeding, we're placing a binder around your pelvis.
+          icon: bandage
+          ko: 그 출혈을 늦추려고 골반에 바인더를 두르고 있어요
+          note: 처치
+        - en: For all of this to work, try to stay still while we stabilize you.
+          icon: me
+          ko: 이게 다 잘되려면 고정하는 동안 가만히 계셔 주세요
+          note: 협조
 - id: SCN-ER-00476
   profession: ""
   eventId: EVT-ER-00129
@@ -99043,6 +100634,20 @@
         - w-fracture
         - w-concern
       goal: 1
+      tag: 우려 설명
+      icon: faceWorried
+      why: concerns us처럼 we를 주어로 해서 환자 탓이 아니라 팀이 걱정한다고 말해요. 큰 뼈 골절 뒤 새로 생긴 호흡곤란은 폐와 관련된 문제를 의심하게 해서 바로 확인해요.
+      decoy: since breakfast
+      distractorsKo:
+        - 산소 마스크를 씌워 드릴게요
+        - 가슴에 통증이 있으세요?
+      blank:
+        answer: shortness
+        options:
+            - en: slowness
+            - en: shortness
+            - en: dryness
+            - en: fullness
     - en: I'm checking your oxygen and looking for a rash.
       ko: 산소 수치를 확인하고 발진이 있는지 보고 있어요.
       chunks:
@@ -99057,6 +100662,20 @@
         - w-look
         - w-rash
       goal: 1
+      tag: 산소·발진
+      icon: monitor
+      why: 두 동작을 and로 이어 말해서 지금 무엇을 하는지 환자가 따라갈 수 있어요. 큰 뼈 골절 뒤에는 지방색전을 의심해 산소 수치와 가슴 부위의 점상 발진을 살펴요.
+      decoy: on your legs
+      distractorsKo:
+        - 가슴 사진을 찍으러 갈 거예요
+        - 심전도를 붙일게요
+      blank:
+        answer: oxygen
+        options:
+            - en: pulse
+            - en: temperature
+            - en: oxygen
+            - en: blood sugar
     - en: We're giving you oxygen and monitoring you closely.
       ko: 산소를 드리고 자세히 관찰하고 있어요.
       chunks:
@@ -99071,6 +100690,20 @@
         - w-monitor
         - w-closely
       goal: 2
+      tag: 치료 안내
+      icon: monitor
+      why: giving과 monitoring을 and로 이어 지금 하는 일을 한 번에 알려요. closely로 지켜보는 강도도 전해서 환자가 혼자 두지 않는다고 느껴요.
+      decoy: at the desk
+      distractorsKo:
+        - 다리를 움직이지 않게 고정할게요
+        - 수액을 놓을게요
+      blank:
+        answer: monitoring
+        options:
+            - en: weighing
+            - en: feeding
+            - en: washing
+            - en: monitoring
     - en: Tell me if you feel confused or more short of breath.
       ko: 혼란스럽거나 숨이 더 차면 말씀해 주세요.
       chunks:
@@ -99084,6 +100717,20 @@
         - w-confuse
         - w-short
       goal: 1
+      tag: 증상 보고
+      icon: bell
+      why: Tell me if로 증상을 알려 달라고 하고 confused를 함께 넣어, 숨찬 것뿐 아니라 정신이 흐려지는 것도 알리게 해요. 지방색전은 호흡 증상과 함께 혼란이 올 수 있어요.
+      decoy: after you rest
+      distractorsKo:
+        - 가슴이 아프면 알려 주세요
+        - 어지러우면 앉아 계세요
+      blank:
+        answer: confused
+        options:
+            - en: confused
+            - en: dizzy
+            - en: nauseous
+            - en: cold
     - en: We're watching your oxygen closely after this kind of break.
       ko: 이런 골절 후에는 산소 수치를 자세히 지켜봐요.
       chunks:
@@ -99098,6 +100745,20 @@
         - w-closely
         - w-break
       goal: 2
+      tag: 관찰 이유
+      icon: monitor
+      why: after this kind of break로 왜 이 환자를 유독 자세히 보는지 이유를 밝혀요. 큰 뼈 골절 뒤에는 산소 수치가 떨어질 수 있어서 지켜봐요.
+      decoy: this week
+      distractorsKo:
+        - 다리를 움직이지 마세요
+        - 산소 마스크가 불편하면 말씀해 주세요
+      blank:
+        answer: watching
+        options:
+            - en: raising
+            - en: watching
+            - en: lowering
+            - en: blocking
   nuance:
     - kind: pair
       words:
@@ -99119,6 +100780,8 @@
         - w-short
         - w-confuse
       why: dyspnea(호흡곤란)는 차트와 의료진의 말이에요. 환자에게는 short of breath로 물어야 바로 알아듣고 대답해요.
+      ko: 호흡곤란
+      word: dyspnea
       scenes:
         - who: 차트 기록
           icon: board
@@ -99126,13 +100789,35 @@
           ok: true
         - who: 의사에게 보고
           icon: speech
-          en: He's newly short of breath, satting 88 on room air, with petechiae across his chest.
+          en: He has new dyspnea, satting 88 on room air, with petechiae across his chest.
           ok: true
         - who: 환자에게
           icon: me
           en: Are you experiencing any dyspnea?
           ok: false
           fix: Are you feeling more short of breath?
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 지방색전 의심 4문장 순서
+    why: 새로 생긴 호흡곤란이 걱정이라고 알리고, 'Because of that'으로 산소와 발진을 확인하고, 'the results'로 결과와 상관없이 산소와 관찰을 한다고 하고, 'Last'로 증상을 알려 달라고 해요. 앞 줄을 가리키는 말이 순서를 정해 줘요.
+    lines:
+        - en: New shortness of breath after this fracture concerns us.
+          icon: faceWorried
+          ko: 골절 후 새로 생긴 호흡곤란이 걱정돼요
+          note: 우려
+        - en: Because of that, I'm checking your oxygen and looking for a rash.
+          icon: monitor
+          ko: 그래서 산소 수치를 확인하고 발진이 있는지 보고 있어요
+          note: 확인
+        - en: Whatever the results show, we're giving you oxygen and monitoring you closely.
+          icon: monitor
+          ko: 결과가 어떻든 산소를 드리고 자세히 관찰할 거예요
+          note: 처치
+        - en: Last, tell me if you feel confused or more short of breath.
+          icon: bell
+          ko: 마지막으로 혼란스럽거나 숨이 더 차면 말씀해 주세요
+          note: 보고
 - id: SCN-ER-00477
   profession: ""
   eventId: EVT-ER-00129
@@ -99208,6 +100893,20 @@
         - w-blood
         - w-loss
       goal: 1
+      tag: 위험 설명
+      icon: bulb
+      why: can hide로 겉으로 안 보여도 안에서 피가 날 수 있다고 알려 줘요. 대퇴골 같은 긴 뼈가 부러지면 다리 안쪽으로 피가 많이 날 수 있어 활력징후를 자주 봐요.
+      decoy: in your arm
+      distractorsKo:
+        - 다리에 부목을 댈게요
+        - 혈압이 낮아요
+      blank:
+        answer: long
+        options:
+            - en: thin
+            - en: soft
+            - en: long
+            - en: small
     - en: Your pressure is low, so we're starting a transfusion.
       ko: 혈압이 낮아서 수혈을 시작하고 있어요.
       chunks:
@@ -99222,6 +100921,20 @@
         - w-start
         - w-transfusion
       goal: 2
+      tag: 수혈 안내
+      icon: pill
+      why: Your pressure is low를 이유로 먼저 말하고 so로 수혈이라는 조치를 이어요. 혈압이 낮을 때 수혈은 줄어든 혈액량을 채우기 위한 거예요.
+      decoy: in the morning
+      distractorsKo:
+        - 수액을 더 빠르게 넣을게요
+        - 혈액형을 한 번 더 확인할게요
+      blank:
+        answer: transfusion
+        options:
+            - en: biopsy
+            - en: ventilator
+            - en: scan
+            - en: transfusion
     - en: We'll splint your legs and keep you warm.
       ko: 다리를 부목으로 고정하고 따뜻하게 유지할게요.
       chunks:
@@ -99236,6 +100949,20 @@
         - w-keep
         - w-warm
       goal: 2
+      tag: 보온·고정
+      icon: bandage
+      why: splint와 keep you warm 두 가지를 and로 이어 앞으로 할 일을 알려요. 다발 골절 환자는 출혈로 체온이 내려가기 쉬워서 보온도 같이 해요.
+      decoy: in the hallway
+      distractorsKo:
+        - 다리를 심장보다 높이 올릴게요
+        - 피를 더 가져올게요
+      blank:
+        answer: splint
+        options:
+            - en: splint
+            - en: massage
+            - en: measure
+            - en: elevate
     - en: Both your legs are broken, so we're moving carefully.
       ko: 양쪽 다리가 다 부러져서 조심스럽게 움직이고 있어요.
       chunks:
@@ -99250,6 +100977,20 @@
         - w-move
         - w-careful
       goal: 1
+      tag: 이동 안내
+      icon: lock
+      why: so로 양쪽 다리가 부러졌다는 이유에 이어 조심스럽게 움직인다고 알려요. 부러진 뼈가 움직이면 통증과 출혈이 늘 수 있어서 신중하게 옮겨요.
+      decoy: to the scan
+      distractorsKo:
+        - 지금 바로 CT실로 갈 거예요
+        - 다리가 많이 부어 있어요
+      blank:
+        answer: carefully
+        options:
+            - en: casually
+            - en: carefully
+            - en: carelessly
+            - en: roughly
     - en: We're giving you blood quickly because you're losing a lot.
       ko: 피를 많이 잃고 계셔서 빠르게 수혈하고 있어요.
       chunks:
@@ -99264,6 +101005,20 @@
         - w-quick
         - w-lose
       goal: 2
+      tag: 수혈 이유
+      icon: pill
+      why: because 뒤에 이유를 붙여 빠르게 주는 까닭을 알려요. 출혈이 많은 환자는 잃은 만큼 빨리 채워야 해서 속도를 서둘러요.
+      decoy: through your leg
+      distractorsKo:
+        - 혈액이 더 필요한지 피검사를 할게요
+        - 다리를 가만히 두세요
+      blank:
+        answer: losing
+        options:
+            - en: saving
+            - en: gaining
+            - en: losing
+            - en: clotting
   nuance:
     - kind: slider
       words:
@@ -99286,6 +101041,7 @@
         - w-blood
         - w-give
       why: MTP는 팀끼리 쓰는 말이에요. 환자에게는 피를 넣어 드린다고 쉽게 말하고, 곁에서 무엇을 하는지 알려 안심시켜요.
+      ko: 피를 많이 잃으셔서 혈액을 드리고 있어요.
       who: 환자에게 · 수혈 설명
       icon: me
       before:
@@ -99301,6 +101057,28 @@
         activating the massive transfusion protocol: 팀에게 하는 말(MTP 발동). 환자에게는 뜻도 안 통하고 겁만 준다.
         giving you blood: 환자가 바로 알아듣는 쉬운 말. 무엇을 왜 하는지가 전해진다.
         topping you up: 기름 채우듯 가볍게 들려 상황의 무게를 흐린다.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 다발 골절 출혈성 쇼크 4문장 순서
+    why: 긴 뼈 골절이 출혈을 숨긴다는 설명으로 시작하고, "That's why"로 혈압이 낮아 빠르게 수혈한다고 이어, 'the blood'로 부목과 보온을 말하고, 'With the splints on'으로 부목을 댄 채 조심스럽게 옮긴다고 닫아요. 앞 줄을 가리키는 말이 순서를 정해 줘요.
+    lines:
+        - en: Broken long bones can hide a lot of blood loss.
+          icon: bulb
+          ko: 긴 뼈가 부러지면 많은 출혈이 겉으로 안 보일 수 있어요
+          note: 설명
+        - en: That's why your pressure is low, and we're giving you blood quickly.
+          icon: pill
+          ko: 그래서 혈압이 낮고, 그래서 빠르게 수혈하고 있어요
+          note: 수혈
+        - en: Along with the blood, we'll splint your legs and keep you warm.
+          icon: bandage
+          ko: 수혈과 함께 다리를 부목으로 고정하고 따뜻하게 유지할게요
+          note: 처치
+        - en: With the splints on, we'll move you carefully so the bones stay still.
+          icon: lock
+          ko: 부목을 댄 채로 뼈가 움직이지 않게 조심히 옮길게요
+          note: 이동
 - id: SCN-ER-00478
   profession: ""
   eventId: EVT-ER-00130
@@ -99374,6 +101152,20 @@
         - w-fracture
         - w-wound
       goal: 1
+      tag: 상황 보고
+      icon: board
+      why: SBAR의 첫머리로 무슨 손상인지 한 문장에 말해요. open, tibia, five-centimeter처럼 종류·부위·크기를 한 번에 알려요.
+      decoy: from a fall
+      distractorsKo:
+        - 항생제는 이미 투여했습니다
+        - 혈압은 안정적입니다
+      blank:
+        answer: open
+        options:
+            - en: old
+            - en: unhealed
+            - en: infected
+            - en: open
     - en: Distal pulse is intact and sensation is normal.
       ko: 원위부 맥박은 정상이고 감각도 정상입니다.
       chunks:
@@ -99389,6 +101181,20 @@
         - w-sensation
         - w-normal
       goal: 1
+      tag: 신경혈관
+      icon: stetho
+      why: Distal pulse와 sensation을 한 문장에 묶어 신경혈관 상태를 간결하게 보고해요. 받는 사람이 손상 아래쪽 순환과 감각이 유지되는지 바로 알 수 있어요.
+      decoy: on the left
+      distractorsKo:
+        - 발가락 색은 분홍색입니다
+        - 통증 점수는 3점입니다
+      blank:
+        answer: intact
+        options:
+            - en: intact
+            - en: absent
+            - en: weak
+            - en: lost
     - en: Tetanus is updated and antibiotics were given at ten past.
       ko: 파상풍은 갱신됐고 항생제는 10분에 투여했습니다.
       chunks:
@@ -99403,6 +101209,20 @@
         - w-antibiotic
         - w-give
       goal: 2
+      tag: 예방 보고
+      icon: pill
+      why: updated와 were given으로 한 일을 짧게 보고해요. at ten past처럼 시각을 말해 주면 인계받는 사람이 다음 투약 시점을 가늠할 수 있어요.
+      decoy: by the doctor
+      distractorsKo:
+        - 상처는 세척했습니다
+        - 수술 동의서는 받았습니다
+      blank:
+        answer: antibiotics
+        options:
+            - en: vitamins
+            - en: antibiotics
+            - en: fluids
+            - en: analgesics
     - en: Wound is clean, dressed, and splinted for transport.
       ko: 상처는 세척, 드레싱했고 이송을 위해 부목했습니다.
       chunks:
@@ -99416,6 +101236,20 @@
         - w-splint
         - w-transport
       goal: 1
+      tag: 처치 보고
+      icon: bandage
+      why: clean, dressed, splinted로 처치를 세 단어로 나열해 한눈에 보게 해요. for transport로 이송에 맞춰 준비했다는 목적까지 알려요.
+      decoy: by the bed
+      distractorsKo:
+        - 항생제는 투여했습니다
+        - 다른 손상은 없습니다
+      blank:
+        answer: splinted
+        options:
+            - en: glued
+            - en: stapled
+            - en: splinted
+            - en: sutured
     - en: No other injuries noted, and pain is controlled.
       ko: 다른 손상은 없고 통증은 조절되고 있습니다.
       chunks:
@@ -99429,6 +101263,20 @@
         - w-pain
         - w-control
       goal: 1
+      tag: 마무리
+      icon: check
+      why: noted로 확인한 범위 안에서만 말해서 다른 손상이 전혀 없다고 단정하지 않아요. pain is controlled로 마지막에 통증 상태를 알려 인계를 닫아요.
+      decoy: since arrival
+      distractorsKo:
+        - 상처는 세척하고 드레싱했습니다
+        - 원위부 맥박은 정상입니다
+      blank:
+        answer: controlled
+        options:
+            - en: worsening
+            - en: severe
+            - en: spreading
+            - en: controlled
   nuance:
     - kind: slider
       words:
@@ -99452,6 +101300,8 @@
         - w-intact
         - w-sensation
       why: distal·neurovascular status는 인계와 차트의 말이에요. 환자에게는 발의 맥박과 감각이 괜찮다고 쉬운 말로 알려 줘요.
+      ko: 이상 없다
+      word: intact
       scenes:
         - who: 정형외과에 인계
           icon: speech
@@ -99466,6 +101316,28 @@
           en: Your distal neurovascular status is intact.
           ok: false
           fix: The pulse and feeling in your foot are normal.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 개방골절 SBAR 인계 4문장 순서
+    why: 어떤 손상인지 먼저 말하고, 'On that leg'로 그 다리의 신경혈관 상태를, 'With pulses confirmed'로 맥박 확인 뒤 부목과 드레싱을 했다고, 'Before that splint'로 개방골절이라 부목 전에 파상풍과 항생제를 먼저 했다고 보고해요. 앞 줄을 가리키는 말이 순서를 정해 줘요.
+    lines:
+        - en: This is an open tibia fracture with a five-centimeter wound.
+          icon: board
+          ko: 5센티미터 상처를 동반한 개방 경골 골절입니다
+          note: 상황
+        - en: On that leg, distal pulse is intact and sensation is normal.
+          icon: stetho
+          ko: 그 다리의 원위부 맥박은 정상이고 감각도 정상입니다
+          note: 사정
+        - en: With pulses confirmed, the leg is splinted and the wound dressed for transport.
+          icon: bandage
+          ko: 맥박을 확인하고 이송을 위해 다리를 부목하고 상처를 드레싱했습니다
+          note: 상태
+        - en: Before that splint went on, tetanus was updated and antibiotics were given at ten past.
+          icon: pill
+          ko: 그 부목을 대기 전에 파상풍을 갱신했고 항생제는 10분에 투여했습니다
+          note: 처치
 - id: SCN-ER-00479
   profession: ""
   eventId: EVT-ER-00130
@@ -99539,6 +101411,20 @@
         - w-bleed
         - w-note
       goal: 1
+      tag: 지혈대 설명
+      icon: bandage
+      why: stops와 noted the time 두 가지를 and로 이어 효과와 기록을 한 번에 알려요. 지혈대는 채운 시각을 꼭 적어 두어야 얼마나 오래 있었는지 알 수 있어요.
+      decoy: on the leg
+      distractorsKo:
+        - 출혈은 아직 조금 있어요
+        - 수술실에서 풀 거예요
+      blank:
+        answer: noted
+        options:
+            - en: noted
+            - en: forgot
+            - en: skipped
+            - en: lost
     - en: We won't loosen it until it's safe to do so.
       ko: 안전해질 때까지는 느슨하게 하지 않을 거예요.
       chunks:
@@ -99551,6 +101437,20 @@
         - w-loosen
         - w-safe
       goal: 2
+      tag: 유지 약속
+      icon: lock
+      why: won't loosen it until로 임의로 풀지 않겠다고 약속해요. 지혈대는 정해진 시점에 안전하게 풀 때까지 그대로 두는 것이 원칙이에요.
+      decoy: after dinner
+      distractorsKo:
+        - 지혈대 아래 피부를 확인할게요
+        - 출혈이 멈췄는지 볼게요
+      blank:
+        answer: loosen
+        options:
+            - en: cover
+            - en: loosen
+            - en: tighten
+            - en: tie
     - en: Tell me if the pain or numbness changes.
       ko: 통증이나 저림이 달라지면 말씀해 주세요.
       chunks:
@@ -99564,6 +101464,20 @@
         - w-numbness
         - w-change
       goal: 2
+      tag: 변화 보고
+      icon: bell
+      why: if the pain or numbness changes로 통증과 저림의 변화를 알려 달라고 해요. 지혈대를 찬 팔다리는 감각이 변할 수 있어서 변화를 바로 알려야 해요.
+      decoy: in your hand
+      distractorsKo:
+        - 손가락이 움직이는지 볼게요
+        - 얼음을 대 드릴게요
+      blank:
+        answer: numbness
+        options:
+            - en: tiredness
+            - en: dryness
+            - en: numbness
+            - en: itchiness
     - en: We wrote down the exact time we put the tourniquet on.
       ko: 지혈대를 채운 정확한 시각을 적어 두었어요.
       chunks:
@@ -99577,6 +101491,20 @@
         - w-put
         - w-tourniquet
       goal: 1
+      tag: 시각 기록
+      icon: pencil
+      why: the exact time으로 정확한 시각을 적었다고 말해요. 지혈대를 채운 시각은 얼마나 오래 있었는지 판단하는 기준이라 인계 때 꼭 전해요.
+      decoy: for the lab
+      distractorsKo:
+        - 지혈대는 의사 선생님이 풀 거예요
+        - 지혈대 아래쪽 피부색을 볼게요
+      blank:
+        answer: exact
+        options:
+            - en: wrong
+            - en: late
+            - en: first
+            - en: exact
     - en: Once it's safe, we'll slowly release the tourniquet and watch your leg.
       ko: 안전해지면 천천히 지혈대를 풀면서 다리를 지켜볼게요.
       chunks:
@@ -99592,6 +101520,20 @@
         - w-watch
         - w-leg
       goal: 2
+      tag: 해제 안내
+      icon: monitor
+      why: Once it's safe로 풀 시점이 안전해진 뒤라는 조건을 알려 줘요. watch your leg로 푼 뒤에도 계속 지켜본다고 말해 안심시켜요.
+      decoy: this evening
+      distractorsKo:
+        - 지혈대 부위를 계속 확인할게요
+        - 다리를 가만히 두세요
+      blank:
+        answer: release
+        options:
+            - en: release
+            - en: tighten
+            - en: cover
+            - en: tie
   nuance:
     - kind: slider
       words:
@@ -99613,6 +101555,7 @@
         - w-loosen
         - w-safe
       why: 지혈대는 한번 채우면 출혈이 확실히 잡힐 때까지 그대로 두고, 채운 시각을 기록해 인계해요. 주기적으로 푸는 것은 예전 관행이에요.
+      ko: 외과의가 출혈을 잡을 때까지 그대로 둘 거예요.
       who: 환자에게 · 지혈대 설명
       icon: me
       before:
@@ -99628,6 +101571,28 @@
         leave it on until the surgeon controls the bleeding: 현재 기준. 채운 시각을 적고, 수술 등으로 출혈이 잡힐 때까지 그대로 둔다.
         loosen it every fifteen minutes: 예전 관행. 풀 때마다 다시 피가 나 실혈이 늘어난다.
         take it off once the bleeding slows: 출혈이 줄어 보여도 풀면 다시 출혈할 수 있다. 푸는 것은 의료진이 판단한다.
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 지혈대 관리 4문장 순서
+    why: 지혈 효과와 시각 기록을 알리고, 'it'으로 안전해질 때까지 풀지 않겠다고 말하고, 'Throughout that'으로 그동안 통증이나 저림 변화를 알려 달라고 하고, 'Last'로 풀 때 지켜본다고 닫아요. 앞 줄을 가리키는 말이 순서를 정해 줘요.
+    lines:
+        - en: The tourniquet stops the bleeding, and we noted the time.
+          icon: bandage
+          ko: 지혈대가 출혈을 멈췄고 시각을 기록했어요
+          note: 설명
+        - en: We won't loosen it until it's safe to do so.
+          icon: lock
+          ko: 안전해질 때까지는 느슨하게 하지 않을 거예요
+          note: 유지
+        - en: Throughout that, tell me if the pain or numbness changes.
+          icon: bell
+          ko: 그동안 통증이나 저림이 달라지면 말씀해 주세요
+          note: 보고
+        - en: Last, once it's safe, we'll release the tourniquet and watch your leg.
+          icon: monitor
+          ko: 마지막으로 안전해지면 지혈대를 풀고 다리를 지켜볼게요
+          note: 해제
 - id: SCN-ER-00480
   profession: ""
   eventId: EVT-ER-00130
