@@ -95,6 +95,9 @@ export const SheetStack = forwardRef<SheetStackHandle, {
   const advanceRef = useRef(onAdvance);
   advanceRef.current = onAdvance;
   const shake = useNbShake();
+  // 아래 깔린 다음 장은 현재 장 높이로 자른다(T8 사용자 결정 — §7). 핸드오프는 다음 장이 더 길면 현재 장 아래로
+  // 비어져 나오는데, 가장자리만 보이도록 현재 장이 잰 높이를 다음 장 층의 높이로 쓴다.
+  const [curH, setCurH] = useState<number | null>(null);
 
   useImperativeHandle(ref, () => ({
     tear: (dir, onTorn) => {
@@ -135,12 +138,14 @@ export const SheetStack = forwardRef<SheetStackHandle, {
         ))}
         {index > 0 && <Stub key={`stub${index}`} />}
         {hasNext && (
-          <View testID="sheet-next-layer" pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, top: 0 }}>
+          <View testID="sheet-next-layer" pointerEvents="none"
+            style={[{ position: 'absolute', left: 0, right: 0, top: 0 }, curH != null && { height: curH, overflow: 'hidden' }]}>
             {renderSheet(index + 1, 'next')}
           </View>
         )}
         {!done && !tearing && (
-          <Animated.View testID="sheet-current-layer" style={[{ position: 'relative', zIndex: 3 }, shake.style]}>
+          <Animated.View testID="sheet-current-layer" style={[{ position: 'relative', zIndex: 3 }, shake.style]}
+            onLayout={(e) => setCurH(e.nativeEvent.layout.height)}>
             <NbEnter key={`cur${index}`} testID="sheet-current-rise" kind="rise">
               {renderSheet(index, 'current')}
             </NbEnter>

@@ -5,7 +5,8 @@
 //   SL:200-231 낱장 묶음(SheetStack) — 현재 장 · 아래 다음 장 · 뜯김 · DONE 장
 //   SL:170-176 확인 — 맞으면 바로 맞힘, 틀리면 흔들림(nb-shake) + 헷갈림
 //   SL:177-181 판정 — 아직 헷갈려요(왼쪽 뜯김) / 외웠어요·이제 알겠어요(오른쪽 뜯김), 620ms 뒤 다음 장
-//   SL:233-260 아래 — 확인하기/판정 버튼(bottom 98) · 늘 보이는 다음 화면 버튼(bottom 34, 진행 중 점선 .5 → 끝나면 잉크)
+//   SL:233-260 아래 — 확인하기/판정 버튼(bottom 98) · 다음 화면 버튼(bottom 34). 핸드오프는 이 버튼을 진행 중에도
+//              점선 .5로 늘 보이지만, 눌러도 아무 일이 없어서 DONE 장에서만 잉크로 보인다(T8 사용자 결정 — §7).
 //
 // 헷갈림(빨강 칸 · "틀림 → 노트")은 틀린 장과 '아직 헷갈려요'를 누른 장이다. 노트에 남기는 것은 단어장과
 // 같은 규칙으로 '아직 헷갈려요'를 누른 문장(R5) — 화면이 onConfused로 서버에 보낸다.
@@ -115,12 +116,13 @@ export function SentSheets({ sheets, name, fallbackIcon, onConfused, onRepeat, o
         )}
         {!done && !!result && <JudgeButtons result={result} onFuzzy={() => judge('left')} onKnown={() => judge('right')} />}
       </View>
-      <View testID="sent-sheets-next" style={{ position: 'absolute', left: 24, right: 24, bottom: 34, opacity: done ? 1 : 0.5 }}>
-        <NbButton variant={done ? 'ink' : 'dashed'} size="lg" full icon="speech" iconRight="chevronRight" iconColor={done ? nb.paper : undefined}
-          onPress={() => done && onDone()}>
-          {t('sent.next')}
-        </NbButton>
-      </View>
+      {done && (
+        <View testID="sent-sheets-next" style={{ position: 'absolute', left: 24, right: 24, bottom: 34 }}>
+          <NbButton variant="ink" size="lg" full icon="speech" iconRight="chevronRight" iconColor={nb.paper} onPress={onDone}>
+            {t('sent.next')}
+          </NbButton>
+        </View>
+      )}
     </View>
   );
 }

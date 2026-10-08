@@ -212,8 +212,8 @@ describe('문장장', () => {
     expect(texts(byID(tree.root, 'sent-count')[0])).toEqual(['1 / 6']);
     expect(barColors(tree.root)).toHaveLength(6);
     expect(texts(hostID(tree.root, 'sent-title')[0]).join('')).toBe('통증 척도 초기 사정 — 뜻을 보고 문장을 만들어보세요');
-    // the CTA to what follows is always there — dashed until the pad is done
-    expect(opacityOf(tree.root, 'sent-sheets-next')).toBe(0.5);
+    // T8 user decision (§7): no CTA under the sheets until the pad is done — it did nothing before DONE
+    expect(byID(tree.root, 'sent-sheets-next')).toHaveLength(0);
   });
 
   it('listen: the speaker circle plays, two replays and no more; A/B/C; the review sentence first', async () => {
@@ -339,7 +339,7 @@ describe('DONE 장 → C5 → C6 → C\'', () => {
     expect(right + wrong).toBe(6);
     expect(wrong).toBeGreaterThanOrEqual(1); // the 헷갈려요 on the blank
     expect(texts(byID(tree.root, 'sent-count')[0])).toEqual(['6 / 6']);
-    expect(opacityOf(tree.root, 'sent-sheets-next')).toBe(1);
+    expect(byID(tree.root, 'sent-sheets-next')).toHaveLength(1);
   });
 
   it('C5: word + ko head, memo, rings, the fix marked after the arrow, the stamp in the card', async () => {

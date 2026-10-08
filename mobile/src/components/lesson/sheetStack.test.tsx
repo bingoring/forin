@@ -128,6 +128,9 @@ test('the next sheet lies under the current one, dimmed and without a shadow', (
   expect(flat(nextLayer)).toMatchObject({ position: 'absolute', left: 0, right: 0, top: 0 });
   const curLayer = byId(tree.root, 'sheet-current-layer')[0];
   expect(flat(curLayer)).toMatchObject({ position: 'relative', zIndex: 3 });
+  // T8 사용자 결정(§7): 다음 장은 현재 장이 잰 높이로 잘려, 더 길어도 현재 장 아래로 비어져 나오지 않는다.
+  act(() => { curLayer.props.onLayout({ nativeEvent: { layout: { x: 0, y: 0, width: 330, height: 318 } } }); });
+  expect(flat(byId(tree.root, 'sheet-next-layer')[0])).toMatchObject({ height: 318, overflow: 'hidden' });
   // The last sheet has nothing under it.
   const last = mount(<Deck stack={createRef<SheetStackHandle>()} start={3} />);
   expect(byId(last.root, 'sheet-next-layer')).toHaveLength(0);
