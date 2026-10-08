@@ -390,6 +390,8 @@ situations:
   활력이 떨어지는데 "마취를 더", 목에 "감은 붕대는 풀지 마세요"처럼 하면 안 되는 처치는 오답으로도 쓰지 마세요(gi-bleed·bleeding-wound 검토).
   빈칸 선택지와 decoy도 같습니다 — 저혈당에 `insulin`, 의식 저하 환자에게 입으로 당, 저칼륨인데 인슐린 `start`, 조립하면 "Please delay your insulin"·
   패혈증 항생제를 `tomorrow morning`이 되는 decoy(diabetic 검토).
+- **decoy를 반대말로 만들기** — "block it", "I'm leaving", "after I do it"처럼 정답의 반대를 decoy로 쓰면 조립했을 때 그대로 위험한 지시가
+  됩니다(deescalation 검토 19개). decoy는 같은 분야의 다른 대상·장소·도구 조각으로 고르세요.
 - **앞 질문의 답을 '예'로 전제한 order 줄** — "keep it up"처럼 환자가 아직 답하지 않은 내용을 전제하면 대화가 어긋납니다.
 
 ### 흔한 실수 (V18·V19가 잡는 것)

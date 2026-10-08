@@ -1,0 +1,110 @@
+- title: 항응고제 두부외상
+  s:
+  - {t: 이유 설명, i: shield, w: "Because로 이유를 먼저 말해 가족이 왜 이렇게 서두르는지 이해하게 해요. 혈액 희석제를 먹으면 가벼운 머리 부딪힘도 두개내출혈이 생길 수 있어요.", d: "at the clinic", k: ["어머니가 머리를 어디에 부딪히셨나요?", "마지막으로 약을 드신 시각이 언제인가요?"], a: "head bumps", o: ["hangnails", "sunburns", "blisters"]}
+  - {t: 검사 안내, i: lab, w: "rule out bleeding으로 출혈이 없는지 확인하려는 검사라고 목적을 말해요. 항응고제를 먹는 환자가 머리를 다치면 출혈 여부를 빨리 영상으로 확인하는 것이 중요해요.", d: "for the family", k: ["영상 검사실로 이동할게요", "보호자분은 여기서 기다려 주세요"], a: "bleeding", o: ["allergies", "hunger", "thirst"]}
+  - {t: 관찰 요청, i: bell, w: "any drowsiness or confusion으로 졸림과 혼란이라는 구체적인 변화를 짚어 주고 tell me immediately로 바로 알리라고 해요. 두부외상 뒤의 의식 변화는 출혈의 신호일 수 있어요.", d: "at the desk", k: ["두통이 심해지면 알려 주세요", "구토가 나면 알려 주세요"], a: "drowsiness", o: ["hiccups", "itching", "sneezing"]}
+  - {t: 이유 설명, i: bulb, w: "Even a small bump으로 작은 충격도 위험할 수 있다고 알려 가족이 과하다고 느끼지 않게 해요. 항응고제를 먹으면 피가 잘 멎지 않아 작은 충격에도 출혈이 커질 수 있어요.", d: "from the shower", k: ["머리를 부딪히신 시각을 아시나요?", "의식을 잃은 적이 있나요?"], a: "blood thinners", o: ["vitamins", "cough syrup", "nasal spray"]}
+  - {t: 관찰 안내, i: monitor, w: "closely와 the next few hours로 얼마나 자세히, 얼마 동안 지켜볼지를 구체적으로 알려요. 두부외상 뒤 출혈은 시간이 지나서 드러나기도 해서 일정 시간 지켜봐요.", d: "in the lobby", k: ["머리 사진 결과를 곧 알려 드릴게요", "환자분 베개를 높여 드릴게요"], a: "monitor", o: ["transport", "bathe", "feed"]}
+  - {t: 관찰 요청, i: bell, w: "if she seems more confused로 가족이 볼 수 있는 모습으로 기준을 줘요. 가족은 환자를 가장 잘 알아 작은 변화를 먼저 알아채기도 해서 요청해 두는 거예요.", d: "to the doctor", k: ["물이 필요하시면 말씀해 주세요", "통증이 심해지면 말씀해 주세요"], a: "confused", o: ["thirsty", "bored", "hungry"]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 두부외상 가족 안내 4문장 순서
+    why: 이유를 먼저 말하고, 그래서 영상 검사를 한다고 알리고, 검사 결과와 상관없이 변화를 알려 달라 하고, 저희도 지켜본다고 마무리합니다. "That's why"·'the scan'·'this'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - {en: "Because she's on blood thinners, we take head bumps seriously.", icon: shield, ko: "혈액 희석제를 복용 중이시라 머리 부딪힘도 심각하게 받아들여요", note: 이유}
+    - {en: "That's why we'll get a scan right away to rule out bleeding.", icon: lab, ko: "그래서 출혈이 없는지 바로 영상 촬영을 할게요", note: 검사}
+    - {en: "Whatever the scan shows, watch for any drowsiness or confusion — tell me immediately.", icon: bell, ko: "촬영 결과와 상관없이 졸리거나 혼란스러운 모습이 보이면 바로 알려 주세요", note: 요청}
+    - {en: "You're not doing this alone: we'll monitor her closely for the next few hours.", icon: monitor, ko: "혼자 지켜보시는 게 아니에요, 앞으로 몇 시간 동안 저희도 가까이서 지켜볼게요", note: 관찰}
+- title: 급성 섬망+공격성
+  s:
+  - {t: 안심시키기, i: shield, w: "섬망으로 겁먹은 환자는 위협을 느껴 공격적이 되곤 해서 안전하다는 말과 해치지 않겠다는 말을 분명히 해요. 짧은 문장 두 개로 말해 혼란 중에도 알아듣기 쉬워요.", d: "at the door", k: ["제가 누군지 말씀드릴게요", "물을 좀 드릴까요?"], a: "safe", o: ["ready", "welcome", "covered"]}
+  - {t: 이유 설명, i: bulb, w: "Something's causing으로 혼란에 원인이 있다고 말해 환자 탓이 아니라고 알려요. 섬망은 감염·약·탈수 같은 원인으로 생기는 급성 혼란이라 원인을 찾아 해결하는 것이 치료예요.", d: "by the bed", k: ["지금 어디가 불편하세요?", "가족분께 연락드릴까요?"], a: "confusion", o: ["rash", "cough", "headache"]}
+  - {t: 환경 조성, i: bulb, w: "so you feel calmer로 소음을 줄이는 이유를 환자 입장에서 말해요. 소음과 자극을 줄이는 것은 섬망 환자를 위한 기본적인 비약물 간호예요.", d: "with a pillow", k: ["TV를 켜 드릴까요?", "베개를 바로 해 드릴게요"], a: "noise", o: ["price", "rent", "tax"]}
+  - {t: 검사 안내, i: lab, w: "your blood and body로 혈액 검사와 신체 사정을 쉬운 말로 풀어 말해요. 섬망은 감염·전해질 이상·약물 등 원인을 찾는 것이 핵심이라 검사 목적을 알려요.", d: "in the lab", k: ["소변 검사도 할게요", "가족분께 병력을 물어볼게요"], a: "causing", o: ["curing", "blocking", "hiding"]}
+  - {t: 안전 약속, i: shield, w: "I won't hold you down으로 먼저 강제로 붙잡지 않겠다고 약속하고 unless it keeps you safe로 안전이 위험할 때만이라는 예외를 정직하게 말해요. 병원 지침은 억제보다 덜 제한적인 방법을 먼저 쓰도록 해요.", d: "at the door", k: ["제가 옆에 앉아 있을게요", "필요하면 도와줄 사람을 부를게요"], a: "safe", o: ["warm", "busy", "awake"]}
+  - {t: 환경 조성, i: bulb, w: "dim the lights와 keep things calm으로 불빛과 분위기 두 가지를 같이 말해요. 자극을 줄이는 것은 섬망 환자의 불안과 흥분을 가라앉히는 데 도움이 되는 비약물 방법이에요.", d: "on the ceiling", k: ["커튼을 닫아 드릴까요?", "담요를 덮어 드릴까요?"], a: "dim", o: ["flood", "flash", "clean"]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 섬망 환자 진정 4문장 순서
+    why: 안전하다고 먼저 알리고, 원인을 찾고 있다고 설명하고, 결과가 어떻든 조명과 소음을 줄이고, 그것이 우선이며 붙잡는 건 안전이 걸릴 때뿐이라고 말합니다. 'it'·'Whatever we find'·'Those steps'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - {en: "You're safe here — I'm not going to hurt you.", icon: shield, ko: "여기서는 안전해요, 제가 다치게 하지 않을게요", note: 안심}
+    - {en: "Something's causing this confusion, and we're finding it.", icon: bulb, ko: "이 혼란을 일으키는 원인이 있고 저희가 찾고 있어요", note: 원인}
+    - {en: "Whatever we find, let's dim the lights and lower the noise so you feel calmer.", icon: bulb, ko: "원인이 무엇이든 조명을 낮추고 소음을 줄여 편안해지시게 할게요", note: 환경}
+    - {en: "Those steps come first — I won't hold you down unless it keeps you safe.", icon: handshake2, ko: "그런 방법이 먼저예요, 안전을 지키기 위해서가 아니면 붙잡지 않을게요", note: 약속}
+  sw: {ko: "여기는 안전해요, 해치지 않을 거예요."}
+- title: 말기 환자 목표 재설정
+  s:
+  - {t: 목표 대화, i: speech, w: "Let's talk about으로 결정을 내리라고 요구하지 않고 대화를 함께 시작하자고 제안해요. most comfort로 치료가 아니라 편안함이라는 기준을 부드럽게 꺼내요.", d: "in the family room", k: ["그분의 병명을 다시 설명드릴게요", "지금 검사를 더 진행할게요"], a: "comfort", o: ["income", "exercise", "weight"]}
+  - {t: 지지 표현, i: handshake2, w: "no wrong choice로 가족이 어떤 결정을 해도 비난받지 않는다고 먼저 안심시켜요. 가족은 결정이 잘못일까 봐 죄책감을 느끼기 쉬워서 이렇게 말해 줘요.", d: "in this room", k: ["시간이 필요하시면 천천히 생각하셔도 돼요", "다른 가족분과 함께 이야기하셔도 돼요"], a: "wrong", o: ["easy", "quick", "cheap"]}
+  - {t: 개념 설명, i: bulb, w: "active, caring으로 완화 돌봄이 포기가 아니라 적극적인 돌봄이라고 다시 정의해요. 가족이 아무것도 안 하는 것으로 오해하기 쉬워서 이렇게 짚어 줘요.", d: "at the end", k: ["완화 돌봄은 통증 관리도 포함해요", "호스피스 팀을 연결해 드릴 수 있어요"], a: "Comfort", o: ["Routine", "Extra", "Private"]}
+  - {t: 가치 질문, i: star, w: "at this stage of his illness로 질문을 병의 현재 단계에 맞춰 줘요. 병이 진행될수록 중요한 것이 달라질 수 있어서 지금의 우선순위를 물어요.", d: "in his room", k: ["그분이 평소 어떤 일을 하셨는지 말씀해 주세요", "가족분들 중 누가 결정을 맡으시나요?"], a: "illness", o: ["career", "marriage", "retirement"]}
+  - {t: 선택지 설명, i: compass, w: "instead of aggressive treatment로 무엇을 멈출 수 있는지 구체적으로 말해요. 치료를 모두 포기하는 것이 아니라 공격적인 치료 대신 편안함에 초점을 둘 수 있다는 의미예요.", d: "in the hospital", k: ["그 선택은 언제든 다시 바꿀 수 있어요", "그분의 통증은 계속 관리할게요"], a: "aggressive", o: ["experimental", "expensive", "outpatient"]}
+  - {t: 지지 표현, i: handshake2, w: "Whatever you decide로 어떤 결정이든 지지한다고 전제를 먼저 말해요. fully로 지지가 말뿐이 아니라 끝까지 이어진다고 약속해요.", d: "in this room", k: ["결정을 서두르지 않으셔도 돼요", "다른 가족분들께도 말씀드릴게요"], a: "family", o: ["landlord", "lawyer", "insurer"]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 목표 재설정 대화 4문장 순서
+    why: 편안함 이야기를 열고, 그런 돌봄이 적극적인 선택이라고 설명하고, 그것을 놓고 그분께 중요한 것을 묻고, 어떤 결정이든 지지한다고 마무리합니다. 'That kind'·'Thinking about that'·'after that'이 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - {en: "Let's talk about what would give him the most comfort.", icon: speech, ko: "그분께 가장 편안함을 줄 수 있는 방법을 함께 이야기해볼게요", note: 시작}
+    - {en: "That kind of comfort care is an active, caring option.", icon: bulb, ko: "그런 완화 돌봄은 적극적이고 정성스러운 선택지예요", note: 설명}
+    - {en: "Thinking about that, what matters most to him at this stage of his illness?", icon: star, ko: "그걸 생각하면 이 단계에서 그분께 가장 중요한 게 뭘까요?", note: 가치}
+    - {en: "Whatever you decide after that, we'll support your family fully.", icon: handshake2, ko: "그다음 어떤 결정을 하시든 가족분들을 온전히 지지해드릴게요", note: 지지}
+  sw: {ko: "도움이 되지 않는 치료는 멈추고 그분의 편안함에 집중할 거예요."}
+- title: 다발성 만성질환 급성 악화
+  s:
+  - {t: 상태 설명, i: stetho, w: "under strain으로 장기가 힘들어하는 상태를 일상어로 말해요. 심장과 신장은 서로 영향을 줘서 한쪽 치료가 다른 쪽에 부담이 될 수 있어 균형을 맞춘다고 알려요.", d: "in the lab", k: ["가족분께 상태를 설명드릴게요", "소변량을 재 볼게요"], a: "kidneys", o: ["eyes", "skin", "bones"]}
+  - {t: 우선순위, i: stetho, w: "first로 가장 급한 것부터 한다는 우선순위를 알려요. and go from there는 그다음 단계는 상태를 보며 정하겠다는 열린 약속이에요.", d: "in bed", k: ["숨이 차면 바로 말씀해 주세요", "산소 수치를 한 번 더 볼게요"], a: "breathing", o: ["diet", "mood", "vision"]}
+  - {t: 증상 선택, i: speech, w: "which symptom is bothering you most로 환자가 가장 힘든 증상을 직접 고르게 해요. 증상이 여러 개면 환자의 우선순위가 치료 순서를 정하는 데 도움이 돼요.", d: "in the bed", k: ["어느 쪽 다리가 더 부으셨나요?", "숨이 찬 건 언제부터인가요?"], a: "symptom", o: ["pillow", "blanket", "noise"]}
+  - {t: 이유 설명, i: bulb, w: "because로 다리가 붓는 이유를 심장과 이어 설명해요. 심장이 피를 잘 내보내지 못하면 체액이 다리에 고여 붓는다는 것을 쉬운 말로 풀어요.", d: "in the morning", k: ["다리를 올리고 계시면 편하실 거예요", "소금 섭취를 줄이셔야 해요"], a: "swollen", o: ["itchy", "stiff", "dry"]}
+  - {t: 치료 안내, i: pill, w: "at the same time으로 호흡과 심장을 함께 치료한다고 알려요. 한쪽을 치료하느라 다른 쪽을 미루지 않는다는 뜻이라 환자가 안심해요.", d: "one by one", k: ["호흡 치료 후 결과를 알려 드릴게요", "이뇨제 반응을 지켜볼게요"], a: "heart", o: ["teeth", "vision", "diet"]}
+  - {t: 함께 결정, i: compass, w: "together로 어느 문제부터 다룰지 환자와 함께 정한다는 점을 말해요. 만성질환이 여러 개면 한쪽 치료가 다른 쪽에 영향을 줘서 환자의 우선순위를 듣는 것이 중요해요.", d: "in the hospital", k: ["결정은 의사와 함께 내릴 거예요", "가족과 먼저 상의해 보시겠어요?"], a: "problem", o: ["symptom", "chart", "bill"]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 만성질환 악화 설명 4문장 순서
+    why: 장기가 힘든 상태를 알리고, 다리가 붓는 이유를 잇고, 호흡과 심장을 함께 치료한다고 알리고, 가장 힘든 증상을 알려 달라고 합니다. "That's why"·'adjust from there'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - {en: "Your heart and kidneys are both under strain — we're balancing them.", icon: stetho, ko: "심장과 신장 모두 부담을 받고 있어서 저희가 균형을 맞추고 있어요", note: 상태}
+    - {en: "That's why your legs are swollen: your heart isn't pumping well.", icon: bulb, ko: "그래서 다리가 부으신 거예요, 심장이 잘 뛰지 못하고 있어요", note: 이유}
+    - {en: "We'll treat your breathing and your heart at the same time.", icon: pill, ko: "호흡이랑 심장을 동시에 치료할게요", note: 치료}
+    - {en: "Tell me which symptom bothers you most, and we'll adjust from there.", icon: speech, ko: "어떤 증상이 가장 힘드신지 알려 주시면 거기에 맞춰 조정할게요", note: 요청}
+- title: 고관절 골절 통증·수술 대기
+  s:
+  - {t: 통증 관리, i: pill, w: "manage your pain으로 통증을 줄이는 것이 목표임을 알려요. 고관절 골절은 수술 전까지 통증이 심해서 미리 약속해 두면 환자가 덜 두려워해요.", d: "at the hospital", k: ["통증이 얼마나 심한지 말씀해 주세요", "다리를 움직이지 않게 도와드릴게요"], a: "pain", o: ["diet", "schedule", "paperwork"]}
+  - {t: 섬망 예방, i: bulb, w: "oriented and hydrated처럼 두 가지를 나열해 환자가 할 수 있는 일을 알려요. 고관절 골절 환자는 수술 전후에 섬망이 흔해서 지남력 유지와 수분 보충이 예방에 도움이 돼요.", d: "before lunch", k: ["수술 전에 물을 드셔도 되는지 확인해 볼게요", "가족분께 안경을 가져와 달라고 부탁해 주세요"], a: "hydrated", o: ["vaccinated", "insured", "employed"]}
+  - {t: 곁에 있기, i: handshake2, w: "keep checking on you로 자주 살피러 오겠다고 약속하고 so you're not alone으로 그 이유를 말해요. 혼자 있다는 느낌은 노인의 불안과 혼란을 키울 수 있어요.", d: "at the door", k: ["벨을 누르시면 바로 올게요", "가족분께 연락해 둘게요"], a: "alone", o: ["thirsty", "hungry", "lost"]}
+  - {t: 계획 설명, i: scalpel, w: "but으로 수술이 필요하다는 나쁜 소식 뒤에 그동안 편안하게 지내도록 하겠다는 약속을 붙여요. until then으로 수술까지의 시간에 대한 돌봄을 구체적으로 말해요.", d: "in a cast", k: ["수술 전에 금식이 필요한지 확인할게요", "마취과 의사가 곧 설명할 거예요"], a: "hip", o: ["wrist", "ankle", "shoulder"]}
+  - {t: 수분 안내, i: coffee, w: "to help stay hydrated로 물을 마시는 목적을 먼저 밝혀 지시가 아니라 도움이 되는 제안으로 들려요. 단, 수술 전 금식 지침은 병원과 마취팀마다 달라서 마시기 전에 지시를 확인해요.", d: "after surgery", k: ["소변은 잘 나오시나요?", "입이 마르신가요?"], a: "Drink", o: ["Pour", "Spill", "Splash"]}
+  - {t: 지남력 유지, i: compass, w: "oriented는 날짜와 있는 곳을 아는 상태를 가리켜요. moving은 무리하게 움직인다는 뜻이 아니라 골절 부위는 보호하면서 말을 걸고 눈과 손을 쓰도록 이끈다는 정도로 이해해요.", d: "at the window", k: ["다리는 움직이지 않게 지켜 드릴게요", "자세를 바꿔 드릴까요?"], a: "oriented", o: ["entertained", "dressed", "shaved"]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 수술 대기 안내 4문장 순서
+    why: 수술이 필요하지만 편안하게 지내게 하겠다고 말하고, 그 편안함의 한 부분으로 통증 관리를, 다른 부분으로 맑은 정신을, 마지막으로 곁에 있겠다고 합니다. 'that comfort'·'Another part'·'that'이 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - {en: "Your hip fracture needs surgery, but we'll keep you comfortable until then.", icon: scalpel, ko: "고관절 골절이라 수술이 필요하지만 그때까지 편안하게 지내시도록 도와드릴게요", note: 계획}
+    - {en: "One part of that comfort is managing your pain.", icon: pill, ko: "그 편안함의 한 부분이 통증 관리예요", note: 통증}
+    - {en: "Another part is a clear head — staying oriented and hydrated helps prevent confusion.", icon: bulb, ko: "또 한 부분은 맑은 정신이에요, 지남력을 유지하고 수분을 섭취하면 혼돈 예방에 도움이 돼요", note: 정신}
+    - {en: "To help with that, I'll keep checking on you so you're not alone.", icon: handshake2, ko: "그러려고 혼자 계시지 않도록 계속 살펴보러 올게요", note: 곁에}
+- title: 요양원 이송 임종 임박
+  s:
+  - {t: 안심, i: handshake2, w: "keeping her comfortable and peaceful로 치료 목표가 편안함임을 일상어로 말해요. 임종이 가까운 환자의 가족에게는 무엇을 하는지 구체적으로 알려 주는 것이 도움이 돼요.", d: "in her room", k: ["가족분들께 필요한 게 있는지 말씀해 주세요", "어르신이 불편해하시는지 계속 살펴볼게요"], a: "comfortable", o: ["active", "awake", "alert"]}
+  - {t: 가족 안내, i: handshake2, w: "You can으로 가족이 해도 되는 일을 허락하듯 알려요. 임종이 가까워도 청각은 마지막까지 남을 수 있다고 알려져 있어 말을 건네도 된다고 안내해요.", d: "from the door", k: ["그분 입술을 촉촉하게 해 드릴 수 있어요", "그분이 불편해 보이면 알려 주세요"], a: "hold", o: ["wash", "carry", "dress"]}
+  - {t: 시간 허락, i: handshake2, w: "Take all the time you need로 서두르지 않아도 된다고 허락하고, we're here for all of you로 환자뿐 아니라 가족 모두를 돌본다고 알려요.", d: "in the room", k: ["가족분들은 식사를 하고 오셔도 돼요", "필요하시면 목사님을 불러 드릴게요"], a: "Take", o: ["Waste", "Lose", "Steal"]}
+  - {t: 환경 조성, i: bulb, w: "keep the room calm과 dim the lights로 방 분위기와 조명을 함께 조절한다고 알려요. 임종이 가까운 환자와 가족에게 조용하고 차분한 환경을 만들어 주는 것이 도움이 돼요.", d: "with the TV on", k: ["창문을 열어 둘까요?", "음악을 틀어 드릴까요?"], a: "dim", o: ["flood", "flash", "clean"]}
+  - {t: 작별 안내, i: handshake2, w: "whatever way feels right to you로 작별의 방식에 정답이 없다고 말해요. 가족마다 다른 방식으로 작별하고 싶어 해서 선택권을 돌려줘요.", d: "on the phone", k: ["그분께 하고 싶은 말씀을 편하게 하세요", "다른 가족분들도 오시게 연락해 드릴까요?"], a: "goodbye", o: ["thanks", "sorry", "hello"]}
+  - {t: 통증 조절, i: pill, w: "free of pain으로 통증이 없도록 하겠다는 목표를 구체적으로 말해요. 통증 조절은 임종기 가족이 걱정하는 부분 중 하나라 분명히 약속해요.", d: "in the end", k: ["가족분들께 따뜻한 음료를 가져다 드릴게요", "입이 마르지 않게 해 드릴게요"], a: "pain", o: ["noise", "drafts", "glare"]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 임종 가족 안내 4문장 순서
+    why: 편안함이 목표라고 알리고, 그 일환으로 통증이 없게 하겠다고 말하고, 가족이 곁에서 할 수 있는 일을 알리고, 작별 방식에 정답이 없다고 말합니다. 'that'·'at peace'·'to her'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - {en: "We'll focus on keeping her comfortable and peaceful.", icon: handshake2, ko: "편안하고 평온하게 지내실 수 있도록 초점을 맞출게요", note: 목표}
+    - {en: "Part of that is making sure she stays free of pain.", icon: pill, ko: "그 일환으로 통증 없이 지내시도록 해드릴게요", note: 통증}
+    - {en: "You can help her feel at peace: hold her hand and speak to her — she may still hear you.", icon: handshake2, ko: "손을 잡고 말을 건네 평온하게 해 주셔도 돼요, 아직 들리실 수 있어요", note: 곁에}
+    - {en: "Whatever you say to her, it's okay to say goodbye in whatever way feels right to you.", icon: star, ko: "그분께 무슨 말을 하시든 어떤 방식으로든 편하게 작별 인사를 하셔도 괜찮아요", note: 작별}
