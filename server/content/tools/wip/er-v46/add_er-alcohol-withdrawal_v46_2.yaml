@@ -1,0 +1,112 @@
+- title: 금단 발작
+  sw: {ko: "발작이 있었어요 — 지금은 안전해요"}
+  s:
+  - {t: "상황 설명", i: faceWorried, w: "일어난 일을 쉬운 말로 먼저 알리고 곧바로 '안전하다'로 닫으면 놀란 환자가 진정돼요. 발작 직후 환자는 혼란스러워서 짧게 말해 주는 게 좋아요.", d: "from the fall", k: ["또 일어날 수 있어서 지켜볼게요", "마지막으로 기억나는 걸 말해 주세요"], a: "seizure", o: ["nosebleed", "rash", "cough"]}
+  - {t: "재발 대비", i: monitor, w: "another one으로 재발 가능성을 솔직히 말하면서 watch closely로 대비하고 있다고 이어요. 금단 발작은 짧은 시간 안에 반복되기도 해요.", d: "because it's late", k: ["지금은 안전해요", "난간을 올릴게요"], a: "closely", o: ["briefly", "casually", "privately"]}
+  - {t: "안전 조치", i: shield, w: "하는 일 두 가지(난간·곁에 머묾)를 말하면 환자가 지금 보호받고 있다는 걸 알아요. 난간은 병원 지침에 따라 올려서 부딪힘과 낙상을 막아요.", d: "and dimming the lights", k: ["지금은 안전해요", "발작이 멈췄어요"], a: "rails", o: ["curtain", "blanket", "tray"]}
+  - {t: "기억 확인", i: speech, w: "the last thing you remember로 열린 질문을 하면 발작 전후 기억이 비어 있는지 알 수 있어요. 발작 전의 기억은 원인과 의식 상태를 가늠하는 단서예요.", d: "before dinner", k: ["지금은 안전해요", "난간을 올려 둘게요"], a: "remember", o: ["imagine", "believe", "expect"]}
+  - {t: "재발 설명", i: stetho, w: "재발 가능성을 말하고 so로 지켜보는 이유를 연결해요. 환자가 왜 계속 곁에 있는지 이해해요.", d: "so I'm taking notes", k: ["발작이 멈췄어요", "발작 전에 기억나는 걸 말해 주세요"], a: "Seizures", o: ["Rashes", "Allergies", "Fractures"]}
+  - {t: "안심", i: check, w: "has stopped로 발작이 끝났다는 사실을 현재완료로 알려요. 지금 상태를 먼저 말해 주면 놀란 환자가 가장 궁금한 것이 풀려요.", d: "— the test has started", k: ["금단으로 발작이 있었어요", "또 일어날 수 있어요"], a: "stopped", o: ["started", "returned", "worsened"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "발작 직후 4문장 순서"
+    why: "일어난 일과 안전을 먼저 알리고, 보호 조치를 말하고, 그 조치를 한 뒤 발작 전 기억을 묻고, 어떤 대답이든 재발에 대비해 계속 지켜본다고 닫아요. 'With that done'·'Whatever you can remember'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "You had a seizure from the withdrawal, and it has stopped — you're safe now.", icon: faceWorried, ko: "금단으로 발작이 있었고 이제 멈췄어요 — 안전해요", note: "안심"}
+    - {en: "I'm keeping the rails up and staying nearby to protect you.", icon: shield, ko: "난간을 올리고 가까이서 지켜드릴게요", note: "조치"}
+    - {en: "With that done, can you tell me the last thing you remember before the seizure?", icon: speech, ko: "그렇게 해 뒀으니, 발작 전 마지막으로 기억나는 게 뭔지 말씀해 주실래요?", note: "기억"}
+    - {en: "Whatever you can remember, another seizure can happen, so I'll keep watching closely.", icon: monitor, ko: "기억나는 게 무엇이든 또 발작할 수 있어서 계속 자세히 지켜볼게요", note: "관찰"}
+- title: 알코올성 환각증
+  s:
+  - {t: "공감·안심", i: faceWorried, w: "환자의 경험은 인정하고 내 눈에 보이는 것은 사실대로 말하면 거짓 동조도 무시도 아니에요. 환각을 정면으로 부정하면 환자가 방어적이 돼요.", d: "but I'm running late", k: ["여긴 병원이고 제가 옆에 있어요", "약이 곧 도와줄 거예요"], a: "real", o: ["small", "close", "dark"]}
+  - {t: "원인 설명", i: pill, w: "환각이 금단에서 올 수 있다고 알려 주면 환자가 자신이 이상해진 게 아니라고 이해해요. 약이 도울 거라는 말로 희망도 함께 줘요.", d: "with a cold", k: ["제 목소리에 집중하세요", "여기 병원에서 안전해요"], a: "medication", o: ["music", "visitors", "sunlight"]}
+  - {t: "현실 감각", i: speech, w: "my voice처럼 붙잡을 한 가지를 주고 장소를 알려 주면 혼란스러운 환자가 현실에 닻을 내려요. 짧은 문장으로 반복해 줘요.", d: "Listen to the radio", k: ["저는 거미가 안 보여요", "지금 뭐가 보이는지 말해 주세요"], a: "hospital", o: ["bedroom", "kitchen", "garden"]}
+  - {t: "환각 확인", i: magnify, w: "exactly what으로 구체적으로 물으면 환각의 내용과 강도를 알 수 있어요. 현실과 어긋난 시각 경험은 CIWA에서 점수가 되는 항목이에요.", d: "what you're eating", k: ["여긴 병원이에요", "약이 곧 도와줄 거예요"], a: "exactly", o: ["barely", "hardly", "secretly"]}
+  - {t: "안전 확인", i: shield, w: "with me로 혼자가 아니라고 말해 주면 위협을 느끼는 환자가 안정돼요. 같은 말을 짧게 반복해도 괜찮아요.", d: "at your house", k: ["제 목소리에 집중하세요", "약이 환각을 진정시켜 줄 거예요"], a: "safe", o: ["late", "lost", "busy"]}
+  - {t: "치료 기대", i: pill, w: "should와 soon으로 효과를 약속하지 않고 기대만 말해요. 사람마다 듣는 시간이 달라서 단정하지 않는 게 안전해요.", d: "help fix the headache", k: ["거미는 안 보여요", "여기 병원이에요"], a: "hallucinations", o: ["headaches", "allergies", "noises"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "환각 환자 4문장 순서"
+    why: "환자의 경험을 인정하고, 그래도 지금 병원에 안전하게 있다고 현실을 붙들어 주고, 그런 상태에서 무엇이 보이는지 묻고, 그 내용이 무엇이든 약이 진정시켜 줄 거라고 닫아요. 'Even so'·'With me here'·'Whatever it is'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "I know they look real to you, but I don't see spiders.", icon: faceWorried, ko: "진짜처럼 보이는 건 알지만 저는 거미가 안 보여요", note: "공감"}
+    - {en: "Even so, focus on my voice — you're in the hospital and I'm right here.", icon: speech, ko: "그래도 제 목소리에 집중하세요 — 여긴 병원이고 제가 바로 옆에 있어요", note: "현실"}
+    - {en: "With me here, can you tell me exactly what you're seeing right now?", icon: magnify, ko: "제가 옆에 있으니, 지금 정확히 뭐가 보이는지 말씀해 주실래요?", note: "확인"}
+    - {en: "Whatever it is, this medication should help calm it soon.", icon: pill, ko: "그게 무엇이든 이 약이 곧 진정시켜 줄 거예요", note: "치료"}
+- title: 베르니케 의심
+  sw: {ko: "걸으려 하면 불안정해 보여요"}
+  s:
+  - {t: "소견 보고", i: stetho, w: "세 징후(눈·혼돈·걸음)를 한 문장에 묶어 한 원인을 가리킨다고 말해요. 안구 운동 이상·혼돈·보행 불안정은 베르니케 뇌병증의 전형적인 세 징후예요.", d: "an ear infection", k: ["지금 바로 티아민을 드려요", "얼마나 오래 혼란스러웠나요?"], a: "deficiency", o: ["infection", "allergy", "overdose"]}
+  - {t: "즉시 투여", i: bell, w: "right away로 지체 없이 한다고 알려요. 의심되면 확진을 기다리지 않고 바로 고용량 티아민을 주는 것이 표준 대응이에요.", d: "to lower the fever", k: ["걸음이 불안정해 보여요", "언제부터 혼란스러웠나요?"], a: "thiamine", o: ["oxygen", "saline", "naloxone"]}
+  - {t: "경과 문진", i: calendar, w: "How long으로 시작 시점을 묻고 식사 여부를 함께 물어요. 혼돈의 시작과 영양 상태는 티아민 결핍 가능성을 가늠하는 단서예요.", d: "been sleeping", k: ["안구 움직임을 보고 있어요", "티아민을 바로 드려요"], a: "confused", o: ["calm", "angry", "quiet"]}
+  - {t: "보행 설명", i: faceWorried, w: "seems로 보이는 대로만 말하고 병명은 쓰지 않아서 보호자도 알아들어요. 걸음이 불안정한 것은 티아민 결핍 징후 중 하나라 꼭 짚어요.", d: "when he sits down", k: ["안구 움직임이 이상한지 보고 있어요", "혼란은 언제부터였나요?"], a: "unsteady", o: ["steady", "cheerful", "hungry"]}
+  - {t: "안구 관찰", i: magnify, w: "무엇을 보는지 말해 두면 보호자에게 관찰의 이유가 전달돼요. 눈이 흔들리거나 움직임이 이상한 것은 베르니케의 단서라 계속 살펴요.", d: "his food intake", k: ["걸으려 하면 불안정해 보여요", "언제부터 혼란스러웠나요?"], a: "unusual", o: ["normal", "familiar", "funny"]}
+  - {t: "응급 대응", i: siren, w: "as an emergency로 긴급도를 분명히 말하면 보호자가 서두르는 이유를 이해해요. 베르니케가 의심되면 확인 전이라도 지체 없이 티아민을 줘요.", d: "as a routine check", k: ["안구 움직임을 보고 있어요", "식사는 하셨나요?"], a: "emergency", o: ["accident", "exam", "upgrade"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "베르니케 의심 4문장 순서"
+    why: "세 징후가 티아민 결핍을 가리킨다고 알리고, 그 때문에 응급으로 보고 바로 티아민을 주고, 반응을 보려고 눈을 지켜보고, 그 관찰과 함께 시작 시점과 식사를 묻는 순서예요. 'Because of that'·'it'·'Alongside that'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "The eye movements, confusion, and unsteady walk all point to a thiamine deficiency.", icon: stetho, ko: "안구 움직임, 혼돈, 불안정한 걸음 모두 티아민 결핍을 가리켜요", note: "소견"}
+    - {en: "Because of that, we're treating this as an emergency and giving thiamine right now.", icon: siren, ko: "그래서 응급으로 보고 지금 바로 티아민을 드리고 있어요", note: "치료"}
+    - {en: "To see how he responds to it, I'm watching his eye movements closely.", icon: magnify, ko: "반응을 보려고 안구 움직임을 자세히 지켜보고 있어요", note: "관찰"}
+    - {en: "Alongside that watching, how long has he been confused, and has he been eating?", icon: calendar, ko: "그렇게 지켜보면서, 언제부터 혼란스러웠고 식사는 하셨어요?", note: "문진"}
+- title: 만성 음주 전해질 이상
+  s:
+  - {t: "원인 설명", i: stetho, w: "두근거린다는 호소에 that fluttering으로 이어서 원인을 말해 주면 증상이 설명돼요. 과음은 마그네슘과 칼륨이 떨어지는 흔한 원인이라 심장 리듬에 영향을 줘요.", d: "causing that headache", k: ["수치를 확인하고 보충해요", "심장 리듬을 지켜보고 있어요"], a: "drop", o: ["raise", "boost", "double"]}
+  - {t: "보충 안내", i: lab, w: "먼저 수치를 확인하고 그 결과에 따라 보충한다고 순서를 말해 줘요. 낮은 전해질은 정맥(IV)으로 채우는 경우가 많아요.", d: "at the pharmacy", k: ["심장 리듬을 지켜보고 있어요", "과음은 칼륨을 떨어뜨려요"], a: "replace", o: ["remove", "hide", "avoid"]}
+  - {t: "모니터링", i: monitor, w: "while we correct these로 교정하는 동안에도 심장을 본다고 알려요. 칼륨·마그네슘을 교정할 때는 심장 감시를 함께 하는 것이 일반적이에요.", d: "while we wait in line", k: ["낮은 건 IV로 보충해요", "심장이 두근거릴 수 있어요"], a: "heart rhythm", o: ["appetite", "posture", "vision"]}
+  - {t: "증상 설명", i: faceWorried, w: "feel like로 환자가 느끼는 감각을 그대로 말하면 의학 용어 없이도 이해돼요. 마그네슘·칼륨이 낮으면 심장 박동이 불규칙해져 두근거릴 수 있어요.", d: "feel like it's growing", k: ["수치를 교정하는 동안 지켜봐요", "과음이 수치를 떨어뜨려요"], a: "fluttering", o: ["freezing", "shrinking", "glowing"]}
+  - {t: "재검 안내", i: redo, w: "again으로 보충한 뒤 다시 확인한다고 말해 두면 수치가 제대로 올랐는지 보는 절차가 환자에게 보여요.", d: "and call your family", k: ["심장 리듬을 지켜보고 있어요", "과음이 마그네슘을 떨어뜨려요"], a: "low", o: ["high", "normal", "fine"]}
+  - {t: "결과 안내", i: check, w: "now that으로 원인(교정)과 결과(안정)를 이어서 환자가 치료의 효과를 느껴요.", d: "now that you've had lunch", k: ["낮은 건 IV로 보충해요", "과음이 수치를 떨어뜨려요"], a: "steady", o: ["irregular", "racing", "fluttering"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "전해질 이상 4문장 순서"
+    why: "과음이 두근거림의 원인이라고 설명하고, 그걸 바로잡으려고 수치를 확인해 IV로 보충하고, 그 반응을 보려고 모니터로 리듬을 보고, 보충이 끝나면 다시 확인한다고 닫아요. 'To fix that'·'that'·'the replacement'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Heavy drinking can drop your magnesium and potassium, which is causing that fluttering.", icon: stetho, ko: "과음은 마그네슘과 칼륨을 떨어뜨려 그 두근거림을 일으킬 수 있어요", note: "원인"}
+    - {en: "To fix that, we'll check your levels and replace what's low through your IV.", icon: lab, ko: "그걸 바로잡으려고 수치를 확인해서 낮은 건 IV로 보충할게요", note: "보충"}
+    - {en: "To see how your heart responds to that, we're watching your rhythm on the monitor.", icon: monitor, ko: "심장이 어떻게 반응하는지 보려고 모니터로 리듬을 지켜보고 있어요", note: "감시"}
+    - {en: "When the replacement is finished, we'll check your levels again.", icon: redo, ko: "보충이 끝나면 수치를 다시 확인할게요", note: "재검"}
+- title: 금단+외상
+  sw: {ko: "떨리는 중에 넘어지면 아직 느끼지 못하는 부상이 생길 수 있어요"}
+  s:
+  - {t: "부상 가능성", i: faceWorried, w: "might not feel yet으로 아직 아프지 않아도 부상이 있을 수 있다고 알려 검사를 받아들이게 해요. 통증은 시간이 지나서야 느껴지기도 해서 증상이 없어도 확인해요.", d: "you can already see", k: ["머리를 부딪히셨어요?", "몸을 꼼꼼히 확인할게요"], a: "shaking", o: ["sleeping", "eating", "singing"]}
+  - {t: "정밀 사정", i: magnify, w: "to be safe로 이유를 붙이면 몸을 살피는 것이 환자에게 낯설지 않아요. 넘어진 환자는 머리와 몸 전체를 빠짐없이 확인해요.", d: "to be fair", k: ["넘어진 게 또렷이 기억나세요?", "금단은 같이 관리할게요"], a: "carefully", o: ["casually", "loudly", "rarely"]}
+  - {t: "외상 문진", i: speech, w: "머리를 부딪혔는지와 넘어진 걸 기억하는지를 한 문장에 묻고 있어요. 머리 부상 가능성이 있을 때는 기억이 흐린 정도가 의식을 잃었는지 가늠하는 단서예요.", d: "the weather clearly", k: ["넘어지면 부상이 생길 수 있어요", "몸을 꼼꼼히 확인할게요"], a: "hit", o: ["wash", "cover", "shave"]}
+  - {t: "지연 증상", i: bell, w: "Sometimes로 항상은 아니지만 있을 수 있다고 말해 겁을 주지 않고 경계를 알려요. 부상은 시간이 지나 붓거나 아파서 알게 되기도 해요.", d: "you can treat at home", k: ["머리를 부딪히셨어요?", "전신을 확인할게요"], a: "notice", o: ["forget", "regret", "enjoy"]}
+  - {t: "신체 사정", i: stetho, w: "for any bruises로 찾는 대상을 말하면 환자가 몸을 보여 주기 쉬워요. 멍과 부기는 넘어진 뒤 확인하는 기본 소견이에요.", d: "for any jewelry", k: ["머리를 부딪히셨나요?", "금단을 관리하면서 살펴요"], a: "bruises", o: ["allergies", "jewelry", "stains"]}
+  - {t: "동시 진행", i: gear, w: "금단 치료와 부상 확인을 함께 한다고 말하면 한쪽이 미뤄질까 하는 걱정을 덜어요. 금단은 시간이 지나며 심해질 수 있어서 부상을 찾는 동안에도 멈추지 않아요.", d: "while we wait for lunch", k: ["넘어지면 부상이 생겨요", "멍이 있는지 보고 있어요"], a: "withdrawal", o: ["paperwork", "billing", "laundry"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "금단 중 낙상 4문장 순서"
+    why: "넘어지면 숨은 부상이 생길 수 있다고 알리고, 그 점을 근거로 머리를 부딪혔는지 기억을 묻고, 어떤 대답이든 머리와 몸을 꼼꼼히 확인하고, 그 확인과 함께 금단도 같이 관리한다고 닫아요. 'Because of that'·'Whatever you remember'·'that check'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "A fall while shaking can cause injuries you might not feel yet.", icon: faceWorried, ko: "떨리는 중에 넘어지면 아직 못 느끼는 부상이 생길 수 있어요", note: "경고"}
+    - {en: "Because of that, did you hit your head, and do you remember the fall clearly?", icon: speech, ko: "그래서 머리를 부딪히셨는지, 넘어진 게 또렷이 기억나는지 여쭤볼게요", note: "문진"}
+    - {en: "Whatever you remember, I'm checking your head and body carefully for any bruises or injuries.", icon: stetho, ko: "기억이 어떻든 머리와 몸에 멍이나 부상이 없는지 꼼꼼히 확인하고 있어요", note: "사정"}
+    - {en: "We'll manage your withdrawal along with that check, so neither one waits.", icon: gear, ko: "그 확인과 함께 금단도 관리할 거라 어느 쪽도 미뤄지지 않아요", note: "병행"}
+- title: 반복 재원 환자
+  sw: {ko: "준비되시면 도와줄 수 있는 분들과 연결해 드릴 수 있어요"}
+  s:
+  - {t: "환영", i: handshake2, w: "I'm glad you came in으로 방문 자체를 반기면 재방문 환자가 판단받는다는 느낌이 줄어요. 반복 방문 환자는 낙인을 느끼기 쉬워 첫 문장이 신뢰를 좌우해요.", d: "I'm told you came in", k: ["준비되면 도와줄 분들을 연결해요", "전에도 오셨던 거 알아요"], a: "properly", o: ["lightly", "briefly", "privately"]}
+  - {t: "자원 연계", i: handshake2, w: "When you're ready로 결정 시점을 환자에게 맡기면 재촉이 아니라 선택지로 들려요. 지금 끊을 마음이 없어도 도움을 연결할 수 있다고 알려 두면 다음 방문이 쉬워져요.", d: "who can cook", k: ["부담 갖지 마세요", "전에도 오신 거 알아요"], a: "ready", o: ["tired", "hungry", "angry"]}
+  - {t: "부담 덜기", i: bell, w: "No pressure로 시작하면 압박이 없다는 신호가 먼저 가요. 열린 문 비유는 영어권 상담에서 흔한 완곡한 표현이에요.", d: "— but that form", k: ["준비되면 연결해 드릴게요", "오늘 제대로 돌봐 드릴게요"], a: "open", o: ["wooden", "heavy", "narrow"]}
+  - {t: "판단 안 함", i: faceWorried, w: "but I still want으로 재방문을 인정하면서도 돌봄은 그대로라고 이어요. 재방문을 문제 삼으면 환자가 다시 오기를 꺼려요.", d: "so I'll be quick", k: ["원할 때 언제든 다시 오세요", "도와줄 분들과 연결해 드려요"], a: "here", o: ["home", "upstairs", "abroad"]}
+  - {t: "지역 자원", i: home, w: "in the community로 병원 밖에도 도움이 있다고 알리면 환자가 병원에만 기대야 한다고 느끼지 않아요. 지역의 지원은 퇴원 뒤 이어지는 도움에 중요해요.", d: "in the gift shop", k: ["원할 때 언제든 다시 오세요", "오늘 제대로 돌봐 드릴게요"], a: "community", o: ["cafeteria", "lobby", "basement"]}
+  - {t: "재방문 환영", i: handshake2, w: "stays open으로 한 번 말하고 끝나는 게 아니라 계속 열려 있다고 확인해 줘요. 다시 와도 된다고 느껴야 위기 때 주저하지 않고 와요.", d: "after lunch", k: ["준비되면 연결해 드려요", "전에 오신 거 알아요"], a: "come back", o: ["look back", "step back", "fall back"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "반복 재원 환자 4문장 순서"
+    why: "방문을 반기며 시작하고, 그 마음이 이전 방문과 상관없다고 잇고, 오늘 돌봄 너머로 준비되면 도움을 연결할 수 있다고 제안하고, 그 제안은 부담 없이 열려 있다고 닫아요. 'That's true'·'Beyond today's care'·'that offer'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "I'm glad you came in — let's take care of you properly today.", icon: handshake2, ko: "와 주셔서 다행이에요 — 오늘 제대로 돌봐 드릴게요", note: "환영"}
+    - {en: "That's true even though you've been here before.", icon: faceWorried, ko: "전에 오신 적이 있어도 마찬가지예요", note: "공감"}
+    - {en: "Beyond today's care, when you're ready, I can connect you with people who can help.", icon: home, ko: "오늘의 돌봄 너머로, 준비되시면 도와줄 분들과 연결해 드릴 수 있어요", note: "연계"}
+    - {en: "No pressure — that offer stays open whenever you want to come back.", icon: bell, ko: "부담 갖지 마세요 — 그 제안은 다시 오고 싶으실 때 언제든 열려 있어요", note: "열어 둠"}

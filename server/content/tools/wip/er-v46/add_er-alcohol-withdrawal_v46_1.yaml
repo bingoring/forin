@@ -1,0 +1,111 @@
+- title: 음주력·마지막 음주 문진
+  sw: {ko: "저는 판단하려는 게 아니에요 — 안전하게 봐드리려는 거예요"}
+  s:
+  - {t: "이유 설명", i: board, w: "질문의 목적을 먼저 말하면 추궁이 아니라 돌봄으로 들려요. 음주량은 금단 위험과 처치를 가늠하는 기본 정보예요.", d: "for the record", k: ["마지막으로 드신 게 언제예요?", "판단하려는 게 아니에요"], a: "how much", o: ["how long", "how fast", "how soon"]}
+  - {t: "시점 질문", i: calendar, w: "마지막 음주 시각을 묻는 이유를 바로 붙이면 환자가 숨기지 않고 답해요. 금단은 마지막 음주 후 시간이 흐르며 나타나서 그 시각이 기준이에요.", d: "your first drink", k: ["하루에 보통 몇 잔 드세요?", "모든 분께 여쭤보는 질문이에요"], a: "watch", o: ["wait", "hope", "ask"]}
+  - {t: "비난 아님", i: handshake2, w: "비난하려는 게 아니라고 먼저 선을 그으면 환자가 방어를 풀어요. 이어서 목적이 안전이라고 밝히면 솔직한 답을 끌어내기 쉬워요.", d: "to quiz you", k: ["지금 증상이 심해지면 알려 주세요", "술은 얼마나 드셨어요?"], a: "safe", o: ["sober", "quiet", "still"]}
+  - {t: "음주량 질문", i: speech, w: "how many drinks처럼 잔 수로 물으면 '좀 마셔요' 같은 막연한 대답보다 정확한 양을 얻어요.", d: "how many hours", k: ["마지막 음주가 언제였나요?", "혼자 지목됐다고 느끼지 마세요"], a: "in a day", o: ["in a week", "in a month", "in an hour"]}
+  - {t: "낙인 방지", i: handshake2, w: "모든 환자에게 묻는다고 밝히면 자기만 의심받는다는 느낌이 줄어요. 음주 문진은 낙인감을 덜어 주는 말투가 중요해요.", d: "feel left out", k: ["술 마신 지 며칠 됐어요?", "언제부터 떨리기 시작했어요?"], a: "everyone", o: ["someone", "nobody", "anyone"]}
+  - {t: "경과 확인", i: calendar, w: "며칠이 지났는지 세어 보면 금단이 시작될 시점을 지났는지 가늠돼요. 금단은 마지막 음주 후 대개 6~24시간 안에 시작해요.", d: "since you arrived", k: ["하루에 몇 잔 드세요?", "보통 얼마나 드세요?"], a: "last", o: ["first", "next", "only"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "음주 문진 4문장 순서"
+    why: "문진을 열며 비난이 아니라고 밝히고, 하루 음주량을 묻고, 그 양을 받아 마지막 음주 시각을 묻고, 그 시각이 무엇을 지켜볼지 정한다고 닫아요. 'that amount'·'that time'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "I'm going to ask you a few questions about drinking — I'm not here to judge.", icon: handshake2, ko: "음주에 대해 몇 가지 여쭤볼게요 — 판단하려는 게 아니에요", note: "안심"}
+    - {en: "How many drinks do you usually have in a day?", icon: speech, ko: "하루에 보통 몇 잔 드세요?", note: "음주량"}
+    - {en: "Thank you — with that amount in mind, when was your last drink?", icon: calendar, ko: "감사해요 — 그 양을 생각하면 마지막으로 드신 건 언제예요?", note: "시점"}
+    - {en: "Knowing that time helps us decide what to watch for.", icon: magnify, ko: "그 시각을 알면 무엇을 지켜볼지 정하는 데 도움이 돼요", note: "이유"}
+- title: 금단 초기 증상 사정
+  s:
+  - {t: "징후 설명", i: stetho, w: "떨림과 발한을 '초기 징후'라고 이름 붙여 주면 환자가 자기 몸의 변화를 이해해요. 손떨림과 발한은 금단에서 먼저 나타나는 증상에 속해요.", d: "of a bad cold", k: ["지금 숨쉬기 편하세요?", "언제 마지막으로 드셨어요?"], a: "early", o: ["late", "rare", "final"]}
+  - {t: "척도 소개", i: board, w: "도구 이름(CIWA)과 목적(상태 추적)을 한 문장에 넣으면 반복 질문이 이유 있는 절차로 들려요.", d: "to ask your family", k: ["손이 떨리는 걸 보여 주세요", "마지막 음주는 언제였어요?"], a: "checklist", o: ["thermometer", "bracelet", "brochure"]}
+  - {t: "시점 확인", i: calendar, w: "When did you로 시점을 묻고 last를 붙여 가장 최근 한 잔을 특정해요. 금단은 마지막 음주 이후 시간표대로 진행돼서 이 시각이 기준이에요.", d: "your favorite drink", k: ["지금 땀이 많이 나세요?", "체크리스트로 점수를 적을게요"], a: "last", o: ["favorite", "next", "only"]}
+  - {t: "증상 확인", i: faceWorried, w: "눈에 보이는 증상을 지금 시제로 말해 주면 환자가 확인하고 동의하기 쉬워요. 떨림과 발한은 CIWA 항목이라 그대로 점수에 쓰여요.", d: "in your sleep", k: ["마지막으로 드신 게 언제예요?", "체크리스트로 상태를 추적할게요"], a: "sweating", o: ["itching", "coughing", "vomiting"]}
+  - {t: "안심 설명", i: shield, w: "common을 넣어 흔한 반응이라고 알리면 환자가 겁먹지 않고 협조해요. '몸이 알코올을 찾는다'는 말은 금단을 쉬운 말로 풀어 줘요.", d: "when you get tired", k: ["지금 의사를 부를게요", "자주 와서 확인할게요"], a: "common", o: ["rare", "unusual", "hidden"]}
+  - {t: "평가 예고", i: pencil, w: "자주 확인하고 점수를 적겠다고 미리 알리면 반복 사정이 낯설지 않아요. 점수는 투약을 정하는 근거라 그때그때 적어요.", d: "and call your family", k: ["이건 알코올 금단 초기 징후예요", "마지막 음주가 언제인가요?"], a: "checklist", o: ["wristband", "thermometer", "receipt"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "금단 초기 사정 4문장 순서"
+    why: "마지막 음주 시각을 먼저 묻고, 그 시간표에 비추어 떨림·발한이 금단 초기라고 설명하고, 그것을 추적할 도구를 소개한 뒤, 그 도구로 자주 점수를 적겠다고 해요. 'that timing'·'it'·'that checklist'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "When did you have your last drink?", icon: calendar, ko: "마지막으로 언제 드셨어요?", note: "시점"}
+    - {en: "With that timing, your shaking and sweating fit early alcohol withdrawal.", icon: stetho, ko: "그 시점으로 보면 떨림과 땀은 알코올 금단 초기에 맞아요", note: "설명"}
+    - {en: "To track it, we'll use a checklist called CIWA.", icon: board, ko: "그걸 추적하려고 CIWA라는 체크리스트를 쓸 거예요", note: "도구"}
+    - {en: "I'll check on you often and mark your score on that checklist each time.", icon: pencil, ko: "자주 와서 그 체크리스트에 매번 점수를 적을게요", note: "예고"}
+- title: CIWA 척도 설명
+  sw: {ko: "한 시간마다 와서 상태를 확인할게요"}
+  s:
+  - {t: "이유 설명", i: monitor, w: "자주 보는 이유를 so we catch…로 붙이면 환자가 귀찮은 점검이 아니라 안전장치로 받아들여요. 금단은 시간이 지나며 빠르게 나빠질 수 있어서 자주 다시 봐요.", d: "so we save time", k: ["솔직하게 답해 주세요", "약을 딱 맞게 드릴게요"], a: "early", o: ["late", "daily", "again"]}
+  - {t: "질문 항목", i: speech, w: "매번 같은 항목을 같은 방식으로 물으면 점수를 시간에 따라 비교할 수 있어요. 떨림·발한·기분은 CIWA가 묻는 대표 항목이에요.", d: "once a day", k: ["자주 확인하러 올게요", "지금 약을 드릴게요"], a: "ask", o: ["worry", "wonder", "guess"]}
+  - {t: "협조 요청", i: pill, w: "솔직한 답이 곧 약의 양을 정하는 근거라고 이어 주면 환자가 숨길 이유가 줄어요. 점수에 맞춰 약을 주는 방식이라 답이 정확해야 해요.", d: "of paperwork", k: ["자주 확인하러 올게요", "떨리는지 여쭤볼게요"], a: "honest", o: ["quick", "brief", "polite"]}
+  - {t: "재확인 안내", i: bell, w: "even when으로 괜찮아 보여도 계속 본다고 말해 두면 '왜 또 오냐'는 느낌을 막아요. 금단은 괜찮아 보이다가도 빠르게 심해질 수 있어요.", d: "while you eat", k: ["솔직하게 답해 주세요", "점수에 맞춰 약을 드려요"], a: "check on", o: ["wait for", "ask for", "pay for"]}
+  - {t: "솔직 요청", i: speech, w: "even if it feels embarrassing으로 민망함을 먼저 인정하면 환자가 덜 방어적이 돼요. 음주량 같은 민감한 답일수록 정확해야 약을 맞게 줘요.", d: "even if you are tired", k: ["자주 확인하러 올게요", "떨림이 있는지 볼게요"], a: "embarrassing", o: ["boring", "confusing", "surprising"]}
+  - {t: "약 용량", i: pill, w: "그 답이 투약 때마다 쓰인다고 연결해 주면 반복 질문의 가치가 분명해져요. 증상 점수에 맞춰 약을 주는 방식이라 매번 새 점수가 필요해요.", d: "of luck", k: ["괜찮아 보여도 자주 와요", "솔직하게 답해 주세요"], a: "medicine", o: ["oxygen", "fluid", "exercise"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "CIWA 설명 4문장 순서"
+    why: "자주 확인하겠다고 알리고, 그때마다 묻는 항목을 말하고, 그 질문에 대한 솔직한 답이 약의 양을 정한다고 이으며, 그러니 민망해도 솔직히 답해 달라고 닫아요. 'Each time'·'those questions'·'Because of that'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "I'll be checking on you often so we can catch any worsening early.", icon: monitor, ko: "악화를 일찍 알아챌 수 있도록 자주 확인할게요", note: "이유"}
+    - {en: "Each time, I'll ask about your shaking, sweating, and how you feel.", icon: speech, ko: "그때마다 떨림, 땀, 기분을 여쭤볼게요", note: "항목"}
+    - {en: "Your honest answers to those questions tell us how much medicine you need.", icon: pill, ko: "그 질문에 솔직히 답해 주시면 약이 얼마나 필요한지 알 수 있어요", note: "근거"}
+    - {en: "Because of that, please answer honestly, even if it feels embarrassing.", icon: handshake2, ko: "그래서 민망하더라도 솔직하게 답해 주세요", note: "요청"}
+- title: 티아민 투여 설명
+  sw: {ko: "이건 뇌를 지켜 주는 비타민이에요"}
+  s:
+  - {t: "약 소개", i: pill, w: "낯선 약 이름에 앞서 '비타민'이라고 하면 덜 무서워요. 오래 술을 마신 사람은 티아민이 모자라기 쉬워서 뇌와 신경을 지키려고 줘요.", d: "protects your skin", k: ["당분보다 먼저 드려요", "정기적으로 술을 드시는 분께 흔해요"], a: "brain", o: ["skin", "lungs", "bones"]}
+  - {t: "투여 순서", i: bell, w: "before any sugar로 순서를 못 박아요. 티아민이 모자란 상태에서 포도당이 먼저 들어가면 뇌 문제가 악화될 수 있어서 티아민을 먼저 줘요.", d: "to help you sleep", k: ["티아민은 뇌를 보호해요", "마지막으로 언제 드셨어요?"], a: "serious", o: ["minor", "mild", "small"]}
+  - {t: "대상 설명", i: board, w: "common and important로 흔하고 필요한 일이라고 하면 환자가 낙인 대신 처치로 받아들여요. 술을 자주 마시면 영양 흡수가 떨어져 티아민이 모자라기 쉬워요.", d: "for people who exercise", k: ["당분보다 먼저 드려요", "뇌 손상을 막아 줘요"], a: "regularly", o: ["rarely", "lightly", "slowly"]}
+  - {t: "효과 설명", i: shield, w: "lasting으로 오래 남는 손상이라고 짚으면 왜 서둘러 주는지 설명돼요. 티아민 결핍으로 생긴 뇌 손상은 치료가 늦으면 남을 수 있어요.", d: "from the noise", k: ["술을 드시는 분께 흔한 일이에요", "당분보다 먼저 드려요"], a: "damage", o: ["pain", "bleeding", "swelling"]}
+  - {t: "순서 원칙", i: bell, w: "always를 넣어 예외 없는 원칙이라고 알려요. 알코올 관련 환자에게는 포도당 수액보다 티아민을 먼저 주는 것이 표준 순서예요.", d: "before any meal", k: ["심각한 문제를 막으려고 드려요", "뇌와 신경을 보호해요"], a: "thiamine", o: ["oxygen", "saline", "albumin"]}
+  - {t: "위험 설명", i: faceWorried, w: "if it's missed로 결핍을 놓치면 어떻게 되는지 보여 줘요. 티아민 결핍을 놓치면 심한 뇌병증으로 이어질 수 있어서 서두르는 이유를 설명해요.", d: "if it's expired", k: ["당분보다 먼저 드려요", "정기적으로 술을 드시면 흔해요"], a: "cause", o: ["prevent", "treat", "calm"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "티아민 설명 4문장 순서"
+    why: "약이 무엇인지 먼저 소개하고, 왜 이 환자에게 흔한지 설명하고, 그래서 당분보다 먼저 준다고 이은 뒤, 그 순서가 손상을 막는다고 닫아요. 'it'·'That's why'·'that order'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "This is a vitamin called thiamine, and it protects your brain and nerves.", icon: pill, ko: "티아민이라는 비타민인데 뇌와 신경을 보호해요", note: "소개"}
+    - {en: "People who drink regularly often run low on it, so this is common.", icon: board, ko: "정기적으로 술을 드시는 분은 이게 모자라기 쉬워서 흔한 일이에요", note: "이유"}
+    - {en: "That's why we give it before any sugar or glucose fluids.", icon: bell, ko: "그래서 당분이나 포도당 수액보다 먼저 드려요", note: "순서"}
+    - {en: "Giving it in that order helps prevent lasting brain damage.", icon: shield, ko: "그 순서로 드리면 오래가는 뇌 손상을 막는 데 도움이 돼요", note: "효과"}
+- title: 만취 관찰 환자
+  s:
+  - {t: "자세 안내", i: shield, w: "하는 일과 이유를 함께 말하면 환자가 몸을 맡겨요. 졸린 환자는 침대 머리를 올리면 토한 것이 기도로 들어갈 위험을 줄이는 데 도움이 돼요.", d: "to protect your privacy", k: ["침대에서 내려오지 마세요", "십오 분마다 확인할게요"], a: "breathing", o: ["privacy", "hearing", "vision"]}
+  - {t: "낙상 예방", i: shield, w: "금지만 말하지 않고 이유를 덧붙이면 환자가 따르기 쉬워요. 취했거나 졸린 환자는 균형을 잃어 낙상 위험이 커요.", d: "to worry", k: ["지금 숨쉬는 걸 지켜보고 있어요", "침대 머리를 올릴게요"], a: "fall", o: ["wake", "cough", "shiver"]}
+  - {t: "자주 확인", i: monitor, w: "to make sure you're okay로 목적을 말하면 반복 확인이 감시가 아니라 돌봄이 돼요. 의식이 떨어진 환자는 자주 봐야 변화를 놓치지 않아요.", d: "to see if you're hungry", k: ["침대에 계셔 주세요", "지금 숨쉬는 걸 보고 있어요"], a: "okay", o: ["hungry", "thirsty", "lonely"]}
+  - {t: "상태 관찰", i: stetho, w: "right now로 지금 하는 일을 알려 주면 환자가 안심해요. 취한 환자는 졸리면서 기도와 호흡이 가장 먼저 위험해져서 거기부터 봐요.", d: "your appetite", k: ["침대에서 일어나지 마세요", "십오 분마다 확인할게요"], a: "closely", o: ["lightly", "quietly", "briefly"]}
+  - {t: "호출 요청", i: bell, w: "on your own으로 혼자 일어나지 말고 부르라는 뜻을 분명히 해요. 이유를 '넘어질 수 있어요'로 붙이면 지시가 아니라 걱정으로 들려요.", d: "in a hurry", k: ["침대 머리를 올릴게요", "괜찮으신지 확인할게요"], a: "own", o: ["phone", "time", "side"]}
+  - {t: "확인 간격", i: monitor, w: "숫자로 간격을 말하면 환자가 언제 다시 올지 알아서 불안이 줄어요. until you're more awake로 끝나는 시점도 함께 알려요.", d: "until you're discharged", k: ["혼자 일어나지 마세요", "침대 머리를 올려 둘게요"], a: "fifteen", o: ["five", "fifty", "forty"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "만취 환자 관찰 4문장 순서"
+    why: "침대 머리를 올리는 이유를 알리고, 그 자세로 침대에 머물러 달라고 부탁하고, 머무는 동안 자주 확인하겠다고 하며, 그 확인을 십오 분마다 이어 간다고 닫아요. 'like that'·'staying there'·'keep'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "I'm going to keep the head of your bed up to protect your breathing.", icon: shield, ko: "숨쉬기를 지키려고 침대 머리를 올려 둘게요", note: "자세"}
+    - {en: "With your head up like that, please stay in bed — I don't want you to fall.", icon: bell, ko: "그렇게 머리를 올린 채 침대에 계셔 주세요 — 넘어지시면 안 돼요", note: "요청"}
+    - {en: "Because you'll be staying right there, I'll be checking on you often to make sure you're okay.", icon: monitor, ko: "거기 계실 거라서 괜찮으신지 자주 와서 확인할게요", note: "확인"}
+    - {en: "I'll keep checking every fifteen minutes to see how awake you're getting.", icon: calendar, ko: "얼마나 깨어나시는지 보려고 십오 분마다 계속 확인할게요", note: "간격"}
+- title: 중등도 금단
+  s:
+  - {t: "투약 이유", i: pill, w: "so로 점수와 약을 인과로 묶어 주면 약이 왜 나오는지 바로 이해돼요. 금단 점수가 높을 때 증상을 가라앉히는 약을 쓰는 것이 일반적인 방식이에요.", d: "to check your sugar", k: ["확인할 때마다 용량을 조절해요", "보이지 않는 게 보이면 말해 주세요"], a: "high", o: ["low", "normal", "stable"]}
+  - {t: "용량 조절", i: gear, w: "based on으로 용량이 정해진 값이 아니라 상태에 맞춰 달라진다고 알려요. 금단 약은 증상에 맞춰 조절하는 방식이라 매번 확인해요.", d: "based on the clock", k: ["점수가 높아서 약을 드릴게요", "증상이 더 심해지는지 보고 있어요"], a: "dose", o: ["label", "price", "color"]}
+  - {t: "환각 보고", i: bell, w: "see or feel로 눈에 보이는 것뿐 아니라 피부 감각도 포함해 말해 두면 환자가 말하기 쉬워요. 없는 것이 보이거나 느껴지는 증상은 금단이 심해졌다는 신호예요.", d: "that you remember", k: ["점수가 높으면 약이 더 필요해요", "이 약이 떨림을 도와줄 거예요"], a: "feel", o: ["taste", "smell", "count"]}
+  - {t: "점수 의미", i: chartup, w: "숫자만 말하면 환자에게는 의미가 없어서, 그 숫자가 치료 계획에 무슨 뜻인지를 붙여 줘요.", d: "a longer stay", k: ["확인할 때마다 용량을 맞춰요", "증상이 심해지는지 지켜봐요"], a: "high", o: ["low", "small", "short"]}
+  - {t: "경과 관찰", i: magnify, w: "무엇을 보는지(악화 여부)를 밝히면 관찰이 위협이 아니라 안전장치로 들려요. 금단 증상은 투약 후에도 변하니 계속 지켜봐요.", d: "if your family calls", k: ["점수가 높아서 약을 드려요", "없는 게 보이면 말해 주세요"], a: "closely", o: ["quietly", "secretly", "briefly"]}
+  - {t: "약 효과", i: pill, w: "약이 몸에 하는 일을 눈에 보이는 증상(떨림)으로 말하면 환자가 효과를 기대하고 협조해요.", d: "and help the cough", k: ["점수가 높아서 약을 드려요", "용량은 상태에 맞춰 조절해요"], a: "calm", o: ["wake", "warm", "cool"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "중등도 금단 4문장 순서"
+    why: "점수가 높아 약을 준다고 이유를 밝히고, 그 약이 진정시키는 효과를 알리고, 그 진정 정도가 사람마다 달라 확인할 때마다 용량을 맞춘다고 하며, 그 변화 속에서 없는 것이 보이면 알려 달라고 닫아요. 'It'·'that calming'·'like that'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Your withdrawal score is high, so I'm giving you medication to calm it.", icon: pill, ko: "금단 점수가 높아서 진정시킬 약을 드릴게요", note: "이유"}
+    - {en: "It will calm your body and help the shaking.", icon: pill, ko: "몸을 진정시키고 떨림을 도와줄 거예요", note: "효과"}
+    - {en: "Because that calming differs from person to person, we adjust the dose each time I check.", icon: gear, ko: "그 진정 정도는 사람마다 달라서 확인할 때마다 용량을 맞춰요", note: "조절"}
+    - {en: "With the dose changing like that, tell me right away if you see or feel things that aren't there.", icon: bell, ko: "용량이 그렇게 바뀌니, 없는 게 보이거나 느껴지면 바로 말씀해 주세요", note: "요청"}

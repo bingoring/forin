@@ -1,0 +1,97 @@
+- title: 자살 시도 후 거부 환자
+  s:
+  - {t: "위험 확인", i: shield, w: "I hear you want to…로 환자의 요구를 먼저 정확히 되받아 줘요. let me make sure…로 반박하지 않고 이해했는지 확인하겠다고 해서 실랑이가 아니라 대화로 들리게 해요.", d: "to the doctor", k: ["가족에게 연락해 드릴까요?", "의사 선생님을 불러 드릴게요"], a: "leave", o: ["sleep", "eat", "shower"]}
+  - {t: "역할 설명", i: shield, w: "my job is로 개인 감정이 아니라 역할임을 밝혀서 환자를 비난하는 말로 들리지 않게 해요. even when it's hard로 환자가 원하지 않는 것도 알고 있다고 인정해요.", d: "for the doctor", k: ["집에 가고 싶은 이유를 말씀해 주시겠어요?", "집에는 누가 계세요?"], a: "even", o: ["only", "just", "except"]}
+  - {t: "예상 묻기", i: speech, w: "what you think will happen으로 환자의 생각을 직접 말하게 해요. 환자가 결과를 어떻게 이해하는지 들으면 위험을 이해했는지를 가늠할 수 있어서, 이 내용을 의사에게 그대로 전할 수 있어요.", d: "at the hospital", k: ["집에는 누가 계세요?", "집까지는 어떻게 가실 거예요?"], a: "happen", o: ["cost", "bleed", "break"]}
+  - {t: "판단력 확인", i: magnify, w: "I need to understand로 확인이 필요한 사람이 간호사 자신이라고 말해요. can think clearly about this decision으로 평가 대상이 환자의 인격이 아니라 이 결정에 대한 이해임을 밝혀요.", d: "for you", k: ["지금 어디에 계신지 아세요?", "지금 드시는 약이 있으세요?"], a: "clearly", o: ["loudly", "quickly", "politely"]}
+  - {t: "공감 후 한계", i: handshake2, w: "I know you want…but으로 환자의 바람을 인정한 뒤 역할로 한계를 설명해요. right now로 이 상태가 영구적이 아님을 알려, 기한 없는 통제로 들리지 않게 해요.", d: "with your family", k: ["불편한 점은 말씀해 주세요", "잠깐 앉아서 쉬세요"], a: "safe", o: ["warm", "dry", "clean"]}
+  - {t: "위험 진지함", i: shield, w: "Even if…로 환자가 부당하다고 느끼는 것을 인정하고 I have to로 선택의 여지가 없는 역할이라고 말해요. take the risks seriously는 위험을 가볍게 넘기지 않는다는 뜻이에요.", d: "for you", k: ["의사 선생님과 같이 이야기해 봐요", "원하시면 가족분을 불러 드릴게요"], a: "seriously", o: ["slowly", "privately", "cheaply"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "퇴원 거부 환자 4문장 순서"
+    why: "떠나고 싶다는 말을 받아 주며 위험 이해를 확인하겠다고 하고, 집에 가면 어떻게 될 것 같은지 묻고, 그 대답에 따라 결정을 명확히 생각할 수 있는지 살피고, 부당하게 느껴져도 안전이 역할이라고 닫아요. 'From that'과 'all this'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "I hear you want to leave — let me make sure you understand the risks.", icon: shield, ko: "떠나고 싶으신 거 들었어요 — 위험을 이해하시는지 확인할게요", note: "수용"}
+    - {en: "Can you tell me what you think will happen if you go home?", icon: speech, ko: "집에 가면 어떤 일이 생길 거라고 생각하시나요?", note: "질문"}
+    - {en: "From that, I need to understand if you can think clearly about this decision.", icon: magnify, ko: "그걸 바탕으로 이 결정을 명확히 생각할 수 있는지 이해해야 해요", note: "확인"}
+    - {en: "Even if all this feels unfair, it's my job to keep you safe.", icon: handshake2, ko: "이 모든 게 부당하게 느껴져도 안전을 지키는 게 제 역할이에요", note: "한계"}
+  ctx:
+    word: "capacity"
+    ko: "의사결정 능력"
+- title: 정신과 병상 대기(boarding)
+  s:
+  - {t: "공감", i: faceWorried, w: "for both of you로 환자뿐 아니라 곁에서 기다리는 가족도 함께 지쳤다고 짚어요. 정신과 병상 대기는 며칠이 걸리기도 해서 기다림 자체를 먼저 인정해요.", d: "at night", k: ["필요한 게 있으면 말씀해 주세요", "커피 한 잔 가져다 드릴까요?"], a: "exhausting", o: ["noisy", "expensive", "confusing"]}
+  - {t: "상황 설명", i: bell, w: "Beds are limited로 사실을 먼저 말하고 every shift로 지금 하고 있는 일을 반복 주기와 함께 알려요. 시간을 약속하지 않고 하는 일을 말하면 신뢰를 지킬 수 있어요.", d: "at the desk", k: ["담당 의사 선생님께 상황을 전할게요", "대기 중인 병원 목록을 확인할게요"], a: "openings", o: ["errors", "leaks", "visitors"]}
+  - {t: "투명한 안내", i: speech, w: "Let me로 설명할 허락을 구하듯 부드럽게 시작하고 exactly로 막연한 안심이 아니라 구체적인 내용을 알려요. 기다리는 동안 무엇이 이뤄지는지 알면 방치됐다는 느낌이 줄어요.", d: "for you", k: ["필요한 건 언제든 말씀하세요", "오늘 담당 간호사는 저예요"], a: "exactly", o: ["partly", "secretly", "lightly"]}
+  - {t: "공감", i: faceWorried, w: "I understand how…must feel로 '짐작하건대'를 뜻하는 must를 써서 단정하지 않고 헤아려요. 기다림이 길어질수록 화가 나기 쉬워서 감정을 먼저 인정해요.", d: "for you", k: ["식사는 하셨어요?", "화장실은 이쪽이에요"], a: "frustrating", o: ["rewarding", "relaxing", "thrilling"]}
+  - {t: "소식 약속", i: bell, w: "As soon as로 시점을 시계가 아니라 사건에 묶어 약속해요. 병상이 언제 날지는 알 수 없어서 시간을 약속하지 않고, 소식이 생기면 바로 알린다는 지킬 수 있는 약속을 해요.", d: "from the desk", k: ["병상이 나면 의사 선생님이 먼저 확인해요", "그때까지 기다리실 곳을 안내할게요"], a: "first", o: ["second", "last", "next"]}
+  - {t: "노력 알림", i: handshake2, w: "everything possible로 노력의 범위를 말하되 결과는 약속하지 않아요. get a bed for both of you로 환자와 가족 모두를 목표에 넣어요.", d: "in the lobby", k: ["병상이 나기 전까지는 이곳에 계실 거예요", "소식이 있으면 바로 알려 드릴게요"], a: "possible", o: ["comfortable", "affordable", "optional"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "병상 대기 안내 4문장 순서"
+    why: "기다림의 피로를 먼저 인정하고, 그것에 대해 지금 무엇을 하고 있는지 알리겠다고 하고, 병상이 제한적이라는 사실과 확인 주기를 말하고, 병상이 나면 가장 먼저 알린다고 닫아요. 'about it'·'Here it is'·'a bed opens'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "I know this wait has been exhausting for both of you.", icon: faceWorried, ko: "이 기다림이 두 분 모두에게 지치는 일이었다는 거 알아요", note: "공감"}
+    - {en: "Let me tell you exactly what we're doing about it.", icon: speech, ko: "그것에 대해 저희가 하는 일을 정확히 말씀드릴게요", note: "예고"}
+    - {en: "Here it is: beds are limited, and I'm checking for openings every shift.", icon: bell, ko: "병상이 제한적이라 매 근무마다 빈자리를 확인하고 있어요", note: "사실"}
+    - {en: "As soon as a bed opens, you'll be the first to know.", icon: bell, ko: "병상이 나는 대로 가장 먼저 알려드릴게요", note: "약속"}
+  sw: {ko: "솔직히 병상이 제한적이라서, 매 근무마다 빈자리를 확인하고 있어요"}
+- title: 살인 사고·타해 위협
+  s:
+  - {t: "분노 인정", i: faceWorried, w: "It sounds like로 단정하지 않고 들은 것을 되비춰요. carrying a lot of anger는 분노를 환자의 인격이 아니라 짊어진 짐으로 표현해서 방어를 줄이고 이야기를 열어요.", d: "at work", k: ["오늘 어디서 오셨어요?", "집에는 누구랑 지내세요?"], a: "carrying", o: ["wearing", "buying", "cooking"]}
+  - {t: "계획 확인", i: magnify, w: "specific plan or person으로 계획과 대상 두 가지를 한 번에 물어요. 타해 위험 평가는 구체적인 계획·대상·수단이 있는지가 핵심이라 막연한 생각과 구분해요.", d: "for dinner", k: ["지금 몸 어디가 아프세요?", "최근에 잠은 주무셨어요?"], a: "specific", o: ["written", "medical", "financial"]}
+  - {t: "위협 진지함", i: shield, w: "I have to로 선택이 아닌 의무라고 말하고 including you로 환자 자신도 보호 대상임을 밝혀요. 위협을 진지하게 다루는 것은 벌이 아니라 안전을 위한 일이라는 뜻이에요.", d: "at night", k: ["지금 가족에게 연락할 수 있어요", "의사 선생님이 곧 오셔서 이야기할 거예요"], a: "including", o: ["excluding", "avoiding", "forgetting"]}
+  - {t: "구체 질문", i: magnify, w: "exactly what…to do로 막연한 분노 표현과 실제 계획을 구분해요. 타해 위협 평가에서 정확한 계획이 있는지 확인하는 질문이고, 답은 의사와 팀에 그대로 전달해요.", d: "with him", k: ["그 사람과는 어떤 관계예요?", "최근에 그 사람을 만나셨어요?"], a: "exactly", o: ["vaguely", "loosely", "lazily"]}
+  - {t: "공유 고지", i: bell, w: "Because of this threat로 이유를 먼저 말해요. I have to로 약속이 아니라 의무라고 해서 비밀을 지켜 줄 수 없다는 한계를 정직하게 알려요.", d: "at home", k: ["이 내용은 의사 선생님도 확인하실 거예요", "이 이야기는 환자분 차트에 남아요"], a: "threat", o: ["delay", "noise", "weather"]}
+  - {t: "대상 확인", i: speech, w: "makes sense로 감정을 이해한다고 먼저 말하고 but I still need to로 필요한 질문은 포기하지 않아요. 감정을 인정해도 위험 평가를 위한 질문은 해야 해서 두 가지를 한 문장에 담아요.", d: "to him", k: ["그분 이름을 알려 주시겠어요?", "지금도 그 사람에게 화가 나세요?"], a: "ask", o: ["guess", "hide", "forget"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "타해 위협 면담 4문장 순서"
+    why: "분노를 먼저 인정하고, 그 분노가 향한 계획이나 사람이 있는지 묻고, 무엇이든 위협은 진지하게 다룬다고 밝히고, 그 때문에 팀에 알려야 한다고 닫아요. 'Whatever you tell me'와 'Taking threats seriously'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "It sounds like you're carrying a lot of anger — can we talk about it?", icon: faceWorried, ko: "많은 분노를 안고 계신 것 같아요 — 그것에 대해 이야기해볼까요?", note: "공감"}
+    - {en: "Your anger makes sense; do you have a specific plan or person in mind?", icon: magnify, ko: "화가 나는 건 이해돼요, 구체적인 계획이나 사람이 있나요?", note: "확인"}
+    - {en: "Whatever you tell me, I take threats seriously to keep everyone safe, including you.", icon: shield, ko: "무슨 말씀이든 당신을 포함해 모두의 안전을 위해 위협을 진지하게 받아들여야 해요", note: "진지"}
+    - {en: "Taking threats seriously means I must tell a few other people on the team.", icon: bell, ko: "위협을 진지하게 다루려면 팀의 다른 몇 사람에게 알려야 해요", note: "공유"}
+  sw: {ko: "말씀하신 내용 때문에, 팀의 다른 몇 사람에게 알려야 해요"}
+- title: 긴장증(catatonia) 의심
+  s:
+  - {t: "설명 약속", i: speech, w: "I'm going to explain everything I do로 하는 모든 일을 미리 말하겠다고 약속해요. 긴장증 환자는 반응하지 못해도 주변을 듣고 있을 수 있어서 말없이 몸을 만지면 겁을 줄 수 있어요.", d: "to the doctor", k: ["물을 입술에 적셔 드릴게요", "자세를 바꿔 드릴게요"], a: "respond", o: ["vote", "travel", "pay"]}
+  - {t: "안심", i: shield, w: "I'm here with you로 곁에 있다는 사실을, you're safe로 환자 상태를 짧게 말해요. 반응이 없는 환자에게는 긴 문장보다 짧고 천천히 말하는 문장이 좋아요.", d: "for now", k: ["불을 조금 낮출게요", "이불을 덮어 드릴게요"], a: "safe", o: ["tired", "hungry", "cold"]}
+  - {t: "부드러운 확인", i: stetho, w: "gently로 확인하는 방식을, to understand로 목적을 말해요. 반응이 없는 환자의 몸을 만질 때 부드럽게 하는 것이 중요하고, 목적을 말해 주면 환자가 놀라지 않아요.", d: "for you", k: ["이름을 불러 볼게요", "혈압부터 재 볼게요"], a: "gently", o: ["quickly", "loudly", "proudly"]}
+  - {t: "눈 살핌", i: magnify, w: "I'm going to로 곧 할 일을 알리고 and로 두 가지를 이어요. 눈과 몸의 반응을 보는 것은 의식 수준과 신경학적 원인을 가리는 기본 사정이에요.", d: "with the doctor", k: ["체온부터 잴게요", "이불을 정리해 드릴게요"], a: "eyes", o: ["teeth", "nails", "feet"]}
+  - {t: "듣고 있음", i: speech, w: "may not be able to…but I'm still으로 환자가 대답할 수 없는 현실을 인정하되 계속 듣고 있다고 이어요. 긴장증은 말하지 못해도 주변을 인식하는 경우가 있어서 대화를 계속해요.", d: "for now", k: ["손을 편하게 두세요", "원하시면 불을 낮출게요"], a: "listening", o: ["writing", "charting", "guessing"]}
+  - {t: "원인 배제", i: lab, w: "rule out other causes로 다른 원인을 하나씩 지워 간다고 말해요. 긴장증처럼 보여도 감염·약물·대사 이상이 원인일 수 있어서 몸 상태를 먼저 확인해요.", d: "at home", k: ["약 복용 기록을 확인할게요", "보호자분께 병력을 여쭤볼게요"], a: "rule out", o: ["cover up", "hand over", "fill in"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "긴장증 의심 환자 4문장 순서"
+    why: "곁에 있고 안전하다고 먼저 알리고, 대답을 못해도 하는 일을 다 설명하겠다고 하고, 말한 대로 눈과 몸의 반응을 살피고, 그것이 다른 원인을 배제하는 방법이라고 닫아요. 'As I said'와 'That helps'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "I'm here with you and you're safe.", icon: shield, ko: "곁에 있고 당신은 안전해요", note: "안심"}
+    - {en: "So I'm going to explain everything I do, even if you can't respond.", icon: speech, ko: "그래서 대답하지 못하셔도 제가 하는 모든 걸 설명해 드릴게요", note: "설명"}
+    - {en: "As I said, I'll look at your eyes and check how your body responds.", icon: magnify, ko: "말씀드린 대로 눈을 살펴보고 몸의 반응을 확인할게요", note: "사정"}
+    - {en: "That helps us rule out other causes, and I'm still listening.", icon: lab, ko: "다른 원인을 배제하는 데 도움이 되고, 저는 계속 듣고 있어요", note: "배제"}
+  sw: {ko: "박 여사님, 지금 눈을 살펴볼게요"}
+- title: 이송 중 급속 악화
+  s:
+  - {t: "변화 감지", i: bell, w: "Something's changed로 환자의 변화를 알아챘다고 먼저 말해요. talk to me로 열린 질문을 해서 환자가 직접 설명하게 하고, 그 말이 위험 판단의 단서가 돼요.", d: "in the hallway", k: ["이송은 몇 분 더 걸려요", "엘리베이터는 곧 와요"], a: "changed", o: ["arrived", "ended", "opened"]}
+  - {t: "곁에 머묾", i: shield, w: "You're not alone으로 환자의 두려움(혼자 남음)을 먼저 말로 지워요. I'm staying right here로 구체적인 행동을 약속해서, 자해 위험이 다시 보이는 환자를 혼자 두지 않아요.", d: "at home", k: ["복도 불이 눈부시면 말씀해 주세요", "담요를 가져다 드릴까요?"], a: "hallway", o: ["kitchen", "garage", "classroom"]}
+  - {t: "안전한 장소", i: shield, w: "Let's get you로 함께 움직이자는 제안으로 시작하고 safer라는 비교급으로 지금보다 나은 곳이라고 알려요. 이송 중 악화되면 사람이 있고 도움을 구하기 쉬운 곳으로 먼저 옮겨요.", d: "for the night", k: ["휠체어에 앉으시겠어요?", "담요를 덮어 드릴게요"], a: "safer", o: ["busier", "colder", "brighter"]}
+  - {t: "정확히 묻기", i: magnify, w: "exactly what changed로 막연한 '괜찮아요?'가 아니라 무엇이 달라졌는지 구체적으로 물어요. in the last few minutes로 시간 범위를 좁혀서 갑작스러운 악화가 언제 시작됐는지 파악해요.", d: "at the desk", k: ["어디가 가장 아프세요?", "숨은 편하게 쉬어지세요?"], a: "exactly", o: ["vaguely", "carelessly", "casually"]}
+  - {t: "혼자 두지 않음", i: shield, w: "I'm not leaving you alone으로 부정문을 써서 약속을 강하게 해요. until로 곁을 지키는 기간을 더 안전한 곳에 도착할 때까지로 분명히 해요.", d: "at home", k: ["도움이 곧 올 거예요", "이쪽으로 같이 가요"], a: "safer", o: ["warmer", "drier", "cleaner"]}
+  - {t: "신속 대응", i: siren, w: "move quickly로 지금은 서두를 때라고 말해요. 이송 중에 악화되면 원인을 파악하는 일과 안전한 곳으로 옮기는 일을 동시에 해야 해서 한 문장에 묶어 말해요.", d: "at the desk", k: ["도움을 요청하고 있어요", "휠체어를 가져올게요"], a: "quickly", o: ["slowly", "randomly", "reluctantly"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "이송 중 악화 4문장 순서"
+    why: "변화를 알아챘다고 묻고, 어떤 상황이든 곁에 있겠다고 하고, 더 안전한 곳으로 옮기자고 하고, 그곳으로 가는 길에도 혼자 두지 않는다고 닫아요. 'Whatever it is'와 'there'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Something's changed — talk to me about what's going on right now.", icon: bell, ko: "뭔가 달라졌네요 — 지금 무슨 일인지 말해 주세요", note: "질문"}
+    - {en: "Whatever it is, you're not alone in this hallway; I'm staying right here.", icon: shield, ko: "무슨 일이든 이 복도에서 혼자가 아니에요, 제가 바로 여기 있을게요", note: "곁에"}
+    - {en: "Let's get you somewhere safer while we sort this out.", icon: shield, ko: "이걸 해결하는 동안 더 안전한 곳으로 모실게요", note: "이동"}
+    - {en: "I won't leave you alone on the way there.", icon: shield, ko: "거기까지 가는 길에도 혼자 두지 않을게요", note: "약속"}
+  sw: {ko: "잘 들으세요, 제가 바로 여기 곁에 있을게요 — 더 안전한 곳으로 모시는 동안에요"}

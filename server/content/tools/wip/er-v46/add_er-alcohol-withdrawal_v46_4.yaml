@@ -1,0 +1,55 @@
+- title: 금단+패혈증 감별
+  s:
+  - {t: "감별 설명", i: faceWorried, w: "not just로 금단만이 아닐 수 있다고 열어 두면 환자가 다른 가능성도 받아들여요. 금단에서도 열이 날 수 있지만 열이 높으면 감염부터 의심해서 원인을 찾아요.", d: "not just the weather", k: ["혈액 배양검사를 채취하고 있어요", "기침이나 통증이 있으세요?"], a: "infection", o: ["allergy", "ulcer", "injury"]}
+  - {t: "검사 설명", i: lab, w: "looking for a source로 원인을 찾는 중이라고 말하고 하는 일을 이어 말해요. 감염이 의심되면 항생제 전에 배양검사를 채취해 원인균을 찾아요.", d: "the curtains", k: ["고열은 감염을 가리킬 수 있어요", "기침이 있었나요?"], a: "looking", o: ["waiting", "hoping", "asking"]}
+  - {t: "증상 문진", i: speech, w: "기침·배뇨 증상·통증을 한 번에 나열해 물으면 환자가 해당되는 것만 골라 답해요. 폐·요로 등 어느 쪽 감염인지 찾는 질문이에요.", d: ", or any itching anywhere", k: ["열은 금단만이 아닐 수 있어요", "혈액 배양검사를 채취해요"], a: "cough", o: ["rash", "headache", "nosebleed"]}
+  - {t: "열의 의미", i: chartup, w: "rather than … alone으로 금단 하나만으로는 설명이 안 될 수 있다고 말해요. 열이 높으면 금단 말고 다른 원인도 같이 찾는 것이 안전해요.", d: "rather than boredom", k: ["감염 원인을 찾으려고 혈액 검사해요", "기침이나 통증이 있으세요?"], a: "infection", o: ["allergies", "bruises", "fractures"]}
+  - {t: "검사 목적", i: lab, w: "to look for로 검사의 목적을 붙여 환자가 왜 피를 뽑는지 알아요. 배양은 열의 원인이 되는 균을 찾는 검사예요.", d: "to look for your glasses", k: ["고열은 감염을 뜻할 수 있어요", "기침이나 통증을 말해 주세요"], a: "infection", o: ["bleeding", "pain", "swelling"]}
+  - {t: "증상 안내", i: bell, w: "when you cough or urinate로 증상이 나타나는 상황을 구체적으로 알려 줘요. 기침이나 소변볼 때의 통증은 폐나 요로 감염의 단서예요.", d: "when you read or write", k: ["혈액 배양검사를 채취해요", "열은 감염일 수 있어요"], a: "pain", o: ["hunger", "thirst", "noise"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "금단과 감염 감별 4문장 순서"
+    why: "열이 금단만이 아닐 수 있다고 알리고, 그 가능성을 가리려고 증상을 묻고, 대답이 무엇이든 혈액 배양을 채취한다고 말하고, 앞으로의 증상은 바로 알려 달라고 닫아요. 'To find out'·'Whatever you tell me'·'From here on'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "A fever with the shakes could mean an infection, not just withdrawal.", icon: faceWorried, ko: "열과 떨림은 금단이 아니라 감염을 뜻할 수도 있어요", note: "설명"}
+    - {en: "To find out, have you had a cough, burning urine, or any pain anywhere?", icon: speech, ko: "알아보려고 여쭤볼게요, 기침이나 소변 볼 때 화끈거림, 어디든 통증이 있으세요?", note: "문진"}
+    - {en: "Whatever you tell me, we're drawing blood cultures to look for the source of infection.", icon: lab, ko: "뭐라고 하셔도 감염 원인을 찾으려고 혈액 배양검사를 채취하고 있어요", note: "검사"}
+    - {en: "From here on, tell me if you feel any pain when you cough or urinate.", icon: bell, ko: "지금부터는 기침하거나 소변볼 때 통증이 있으면 말씀해 주세요", note: "요청"}
+- title: DT 심혈관 위기
+  sw: {ko: "심박수와 혈압이 다시 치솟고 있어요"}
+  s:
+  - {t: "상태 보고", i: monitor, w: "spiking은 급하게 치솟는 변화를 담은 동사라 숫자 없이도 속도가 전해져요. 진전섬망에서는 자율신경이 과하게 흥분해 심박수와 혈압이 함께 올라요.", d: "is steadying", k: ["진정을 늘려야 해요", "연속 감시를 계속하세요"], a: "dangerously", o: ["slightly", "gently", "calmly"]}
+  - {t: "진정 조절", i: pill, w: "the storm은 자율신경 폭풍의 비유로, 의료진끼리 빨리 통하는 말이에요. 약으로 과흥분을 가라앉히려고 진정을 늘리는 것이 진전섬망 치료의 중심이에요.", d: "to control the traffic", k: ["연속 감시를 계속하세요", "심박수와 혈압이 다시 올랐어요"], a: "storm", o: ["crowd", "queue", "budget"]}
+  - {t: "감시·호출", i: monitor, w: "Keep him on …은 이미 하고 있는 감시를 유지하라는 지시고, call … back in은 의사를 다시 불러 달라는 말이에요.", d: "and call the pharmacy back in", k: ["진정을 늘려야 해요", "자율신경 폭풍이에요"], a: "physician", o: ["pharmacist", "chaplain", "janitor"]}
+  - {t: "재상승 보고", i: siren, w: "again으로 한 번 내려갔다가 다시 오른다는 경과를 알려요. this is …로 원인을 이름 붙이면 듣는 사람이 바로 상황을 파악해요.", d: "— this is the lunch rush", k: ["진정을 늘려야 해요", "의사를 다시 불러 주세요"], a: "again", o: ["slowly", "quietly", "politely"]}
+  - {t: "진정 요청", i: pill, w: "We need to로 팀이 함께 한다는 느낌을 주며 요청해요. 목적(control this)을 붙이면 왜 늘리는지 분명해요.", d: "to cancel this", k: ["감시를 계속하고 의사를 부르세요", "심박수가 다시 올라요"], a: "control", o: ["count", "copy", "cancel"]}
+  - {t: "감시·호출", i: bell, w: "going은 이미 하는 감시를 끊지 말라는 뜻이고, now로 호출은 지금 하라고 못 박아요.", d: "and call the pharmacy now", k: ["진정을 늘려야 해요", "자율신경 폭풍이에요"], a: "physician", o: ["dietitian", "receptionist", "interpreter"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "DT 심혈관 위기 4문장 순서"
+    why: "수치가 다시 치솟는 것을 알리고, 그걸 조절하려고 진정을 늘려야 한다고 이으며, 진정이 호흡을 늦출 수 있으니 연속 감시를 유지하고, 감시가 보여 주는 것을 의사에게 알리며 다시 부르는 순서예요. 'it'·'that'·'the monitor'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "His heart rate and pressure are spiking again — this is the autonomic storm.", icon: siren, ko: "심박수와 혈압이 다시 치솟고 있어요 — 자율신경 폭풍이에요", note: "보고"}
+    - {en: "To control it, we need to increase sedation.", icon: pill, ko: "그걸 조절하려고 진정을 늘려야 해요", note: "요청"}
+    - {en: "Since more sedation can slow his breathing, keep him on continuous monitoring.", icon: monitor, ko: "진정이 더해지면 호흡이 느려질 수 있으니 계속 감시를 이어 가세요", note: "감시"}
+    - {en: "Call the physician back in now, and tell them what the monitor shows.", icon: bell, ko: "지금 의사를 다시 불러서 모니터가 보여 주는 걸 알려 주세요", note: "호출"}
+- title: 중증 금단 야간 급변 인계
+  s:
+  - {t: "변화 보고", i: chartup, w: "Severe withdrawal로 결론부터 말하고 숫자 변화를 이어요. 인계에서는 수치의 시작과 끝(from … to)을 같이 말해야 추세가 전해져요.", d: "all weekend", k: ["벤조를 세 번 투여했어요", "환각을 보고 떨고 있어요"], a: "climbed", o: ["dropped", "fell", "slipped"]}
+  - {t: "투약 보고", i: pill, w: "횟수와 반응을 한 줄에 담아 '약이 잘 듣지 않는다'는 판단 근거를 줘요. minimal response는 점수가 거의 내려오지 않았다는 인계용 표현이에요.", d: "with minimal paperwork", k: ["CIWA가 밤새 올랐어요", "환각이 있어서 재평가가 필요해요"], a: "minimal", o: ["excellent", "complete", "rapid"]}
+  - {t: "재평가 요청", i: bell, w: "현재 상태를 두 단어로 요약하고 I need him reassessed now로 요청을 분명히 해요. 환각과 떨림은 CIWA가 올라갈 때의 위험 신호예요.", d: "I need him weighed", k: ["밤새 점수가 올랐어요", "벤조 반응이 적어요"], a: "tremulous", o: ["hungry", "talkative", "cheerful"]}
+  - {t: "추세 보고", i: chartup, w: "has been climbing으로 지금도 이어지는 추세를 현재완료진행형으로 말해요. 한 시점의 점수보다 오르는 흐름이 악화의 신호예요.", d: "has been posted online", k: ["벤조를 세 번 투여했어요", "재평가가 필요해요"], a: "steadily", o: ["rarely", "briefly", "quietly"]}
+  - {t: "투약 반응", i: pill, w: "only가 기대보다 적다는 뉘앙스를 더해 반응이 부족하다는 걸 강조해요. 투여 횟수와 반응을 같이 말해야 다음 처치를 정할 수 있어요.", d: "with only a mild cough", k: ["CIWA 점수가 계속 올라요", "환각이 있어 재평가가 필요해요"], a: "benzo", o: ["saline", "oxygen", "vitamin"]}
+  - {t: "재평가 이유", i: monitor, w: "because로 요청의 근거를 뒤에 붙이면 받는 사람이 우선순위를 납득해요. 환각과 떨림이 있으면 단계 상향 여부를 정해야 해요.", d: "because he's sleeping soundly", k: ["밤새 점수가 올랐어요", "벤조 반응이 거의 없어요"], a: "reassessed", o: ["weighed", "bathed", "shaved"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "야간 급변 인계 4문장 순서"
+    why: "밤새 점수가 오른 것을 먼저 보고하고, 그 상승 이후의 투약과 반응을 말하고, 그래도 환각과 떨림이 나타났다고 잇고, 그 상태를 근거로 재평가를 요청해요. 'Since the climb'·'Despite that'·'Given that'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Severe withdrawal, CIWA climbed from twelve to twenty-two overnight.", icon: chartup, ko: "중증 금단이고, CIWA가 밤새 12에서 22로 올랐어요", note: "추세"}
+    - {en: "Since the climb, he's had three benzo doses with minimal response.", icon: pill, ko: "오른 뒤로 벤조를 세 번 투여했는데 반응이 최소한이에요", note: "투약"}
+    - {en: "Despite that, he's now hallucinating and tremulous.", icon: faceWorried, ko: "그런데도 지금 환각을 보고 떨고 있어요", note: "현재"}
+    - {en: "Given that, I need him reassessed now.", icon: bell, ko: "그래서 지금 재평가가 필요해요", note: "요청"}
