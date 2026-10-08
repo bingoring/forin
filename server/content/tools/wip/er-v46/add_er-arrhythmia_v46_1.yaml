@@ -1,0 +1,114 @@
+- title: 심계항진 초기 문진
+  s:
+  - {t: "발병 시점", i: calendar, w: "when 절로 시작 시점을 물으면 환자가 시간 순서로 떠올려 답하기 쉬워요. 병력 청취는 언제부터 시작됐는지 묻는 것이 기본이에요.", d: "after you ate", k: ["어디가 아프신지 말씀해 주시겠어요?", "약을 드신 적 있는지 말씀해 주시겠어요?"], a: "started", o: ["ended", "slowed", "worsened"]}
+  - {t: "유발요인", i: bulb, w: "bring it on은 증상을 불러일으킨다는 구동사예요. 두 동사를 한 질문에 묶어 유발 요인과 악화 요인을 한꺼번에 물을 수 있어요.", d: "go away", k: ["숨이 차거나 어지러운가요?", "이런 일이 전에도 있었나요?"], a: "worse", o: ["better", "shorter", "slower"]}
+  - {t: "지속 시간", i: calendar, w: "How long …?은 지속 시간을 묻는 기본 틀이에요. episode는 증상이 한 번 왔다 가는 단위라 '한 번 그럴 때'를 간단히 물을 수 있어요.", d: "per day", k: ["하루에 몇 번 그러세요?", "그럴 때 무엇을 하고 계셨나요?"], a: "episode", o: ["dose", "visit", "shift"]}
+  - {t: "양상 확인", i: stetho, w: "fast, slow, or irregular처럼 보기를 직접 주면 환자가 두근거림을 말로 설명하기 쉬워요. 빠르기와 규칙성은 부정맥 문진의 핵심이에요.", d: "hot, cold, or wet", k: ["두근거릴 때 가슴이 아프신가요?", "두근거릴 때 어지러우신가요?"], a: "irregular", o: ["strong", "weak", "hard"]}
+  - {t: "공감", i: faceWorried, w: "I know …로 먼저 환자의 감정을 인정하면 설명보다 공감으로 들려요. let's는 간호사가 같은 편이라는 신호예요.", d: "by yourself", k: ["약을 먼저 드시는 게 좋겠어요", "검사 결과는 곧 나올 거예요"], a: "scary", o: ["strange", "tiring", "painful"]}
+  - {t: "횟수 확인", i: chartup, w: "once today or several times처럼 두 갈래를 주면 환자가 '한 번' 또는 '여러 번'으로 간단히 답할 수 있어요. 횟수와 빈도는 증상을 가늠하는 단서예요.", d: "for hours", k: ["두근거림이 몇 분이나 이어졌나요?", "누울 때만 두근거리나요?"], a: "once", o: ["twice", "again", "early"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "두근거림 문진 4문장 순서"
+    why: "시작 시점을 먼저 묻고, 그 뒤로 다시 왔는지, 한 번에 얼마나 가는지, 무엇이 유발하는지로 좁혀 갑니다. 'since then'·'each time it comes back'·'that long'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Can you tell me when the fluttering started?", icon: calendar, ko: "언제부터 두근거림이 시작됐는지 말씀해 주시겠어요?", note: "시작"}
+    - {en: "Thank you. And has it come back since then?", icon: redo, ko: "감사해요. 그 뒤로 다시 왔나요?", note: "재발"}
+    - {en: "Each time it comes back, how long does it last?", icon: chartup, ko: "다시 올 때마다 얼마나 지속되나요?", note: "지속"}
+    - {en: "If it lasts that long, does anything seem to bring it on?", icon: bulb, ko: "그 정도 지속된다면, 무언가가 유발하는 것 같나요?", note: "유발"}
+  sw: {ko: "한 번 그럴 때 보통 얼마나 지속되나요?"}
+- title: 활력·리듬 확인 설명
+  s:
+  - {t: "절차 안내", i: monitor, w: "I'm going to …로 할 일을 미리 알리면 환자가 놀라지 않아요. and로 이어질 두 가지를 한 번에 알려 줘요.", d: "to your doctor", k: ["체온을 재고 소변 검사를 할게요", "혈압약을 먼저 드릴게요"], a: "pulse", o: ["temperature", "weight", "height"]}
+  - {t: "안심 설명", i: bandage, w: "just가 스티커의 역할을 '읽기만 한다'로 좁혀 불안을 줄여요. they don't hurt를 붙이면 환자가 가장 궁금해하는 통증 걱정에 바로 답해요.", d: "your blood sugar", k: ["이 선은 전기가 흘러서 따끔해요", "이 스티커는 혈압을 재 줘요"], a: "read", o: ["change", "slow", "treat"]}
+  - {t: "협조 요청", i: me, w: "Try to …와 for me가 지시를 부탁처럼 부드럽게 만들어요. 팔에 힘이 들어가 있으면 맥박을 짚기 어려워서 힘을 빼 달라고 해요.", d: "up high", k: ["팔을 위로 쭉 들어 주세요", "숨을 크게 들이쉬어 주세요"], a: "relax", o: ["lift", "bend", "straighten"]}
+  - {t: "연결 설명", i: monitor, w: "so we can …은 연결의 목적을 '우리가 ~할 수 있게'로 알려 줘요. 목적을 알면 몸에 선이 붙는 낯선 느낌이 덜 무서워요.", d: "to your bed", k: ["이 전선은 전기를 내보내 심장을 치료해요", "이 전선으로 약이 들어가요"], a: "monitor", o: ["ventilator", "scale", "thermometer"]}
+  - {t: "오해 풀기", i: shield, w: "won't shock you처럼 걱정을 먼저 부정해 주면 환자의 두려움이 바로 풀려요. 모니터는 보기만 하는 장비이고 치료는 별도의 장비로 한다는 점도 분명히 해요.", d: "it treats too", k: ["모니터가 전기로 심장을 치료해요", "모니터를 끄면 아프지 않아요"], a: "shock", o: ["burn", "scare", "bother"]}
+  - {t: "측정 이유", i: stetho, w: "to be accurate는 오래 재는 이유를 짧게 밝혀요. 맥박이 불규칙할 때는 짧게 세는 것보다 1분 동안 세는 편이 정확해요.", d: "to save time", k: ["15초만 세고 곱할게요", "지금 혈압을 재 볼게요"], a: "accurate", o: ["quick", "gentle", "polite"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "모니터 부착 4문장 순서"
+    why: "스티커를 붙인다고 알리고, 그것이 모니터에 연결된다고 설명한 뒤, 작동하는 동안 협조를 구하고 마지막에 결과를 알려 줍니다. They·it·that이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "I'm going to put a few stickers on your chest to watch your heart.", icon: bandage, ko: "심장을 보려고 가슴에 스티커를 몇 개 붙일게요", note: "부착"}
+    - {en: "They connect to the monitor, so we can see your rhythm on the screen.", icon: monitor, ko: "모니터에 연결돼서 화면으로 리듬을 볼 수 있어요", note: "설명"}
+    - {en: "While it's running, please keep your arm relaxed so I can count your pulse.", icon: me, ko: "작동하는 동안 팔에 힘을 빼 주세요, 맥박을 셀게요", note: "요청"}
+    - {en: "Thanks, that helps. I'll tell you what the rhythm shows.", icon: speech, ko: "고마워요, 도움이 돼요. 리듬이 어떤지 알려 드릴게요", note: "마무리"}
+  ctx: {word: "sticker", ko: "스티커 패드"}
+- title: 12유도 심전도 준비
+  s:
+  - {t: "부착 안내", i: bandage, w: "I'll place …로 곧 할 일을 먼저 말하고 위치를 가슴·팔·다리로 나눠 알려 줘요. 12유도 심전도는 전극 10개로 12개의 시점을 만들어요.", d: "on your back", k: ["가슴에 큰 패드를 한 개만 붙일게요", "팔에 혈압 커프를 감을게요"], a: "ten", o: ["two", "four", "twelve"]}
+  - {t: "움직임 통제", i: me, w: "Please …로 부탁하는 모양을 쓰고 about ten seconds로 끝이 가깝다는 걸 알려요. 움직이면 심전도 기록에 잡음이 생겨 판독이 어려워져요.", d: "for a minute", k: ["숨을 크게 들이쉬고 참아 주세요", "옆으로 돌아누워 주세요"], a: "still", o: ["tight", "high", "close"]}
+  - {t: "검사 설명", i: magnify, w: "records처럼 기계가 '기록만 한다'는 동사를 쓰면 치료나 충격이 아니라는 안심이 돼요. 열두 개의 각도는 12유도라는 이름의 뜻을 쉽게 푼 말이에요.", d: "from one place", k: ["이건 심장에 약을 전해 주는 거예요", "이건 폐 소리를 듣는 거예요"], a: "records", o: ["treats", "shocks", "slows"]}
+  - {t: "배려 안내", i: home, w: "You can …로 먼저 허락해 주면 환자의 노출 걱정이 줄어요. just와 a little이 해야 할 일을 작게 줄여 줘요.", d: "put it away", k: ["셔츠를 모두 벗어 주세요", "가운으로 갈아입으셔야 해요"], a: "untuck", o: ["unzip", "fold", "iron"]}
+  - {t: "협조 요청", i: speaker, w: "Try not to …는 금지 대신 '노력해 보세요'로 부드럽게 말해요. 말하거나 움직이면 근육의 움직임이 기록에 잡혀 심장 신호가 흐려질 수 있어요.", d: "or look away", k: ["기계가 끝날 때까지 눈을 감아 주세요", "기록하는 동안 숨을 참아 주세요"], a: "talk", o: ["eat", "drink", "stand"]}
+  - {t: "소요 안내", i: play, w: "only가 시간을 작게 보이게 하고 then you're done이 끝을 분명히 알려 줘요. 짧다는 것을 숫자로 말하면 막연한 불안이 줄어요.", d: "for an hour", k: ["30분쯤 걸릴 수 있어요", "검사는 두 번 해야 해요"], a: "takes", o: ["costs", "hurts", "weighs"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "12유도 심전도 4문장 순서"
+    why: "스티커를 붙이고, 붙은 뒤 가만히 있게 하고, 기록이 시작되면 그대로 유지하게 하고, 끝났음을 알립니다. 'Once they're on'·'hold that'이 앞 줄에 기대어 순서가 하나예요."
+    lines:
+    - {en: "I'll put ten small stickers on your chest, arms, and legs.", icon: bandage, ko: "가슴, 팔, 다리에 작은 스티커 열 개를 붙일게요", note: "부착"}
+    - {en: "Once they're on, please hold as still as you can.", icon: me, ko: "다 붙이면 최대한 가만히 계세요", note: "요청"}
+    - {en: "Good, hold that — the machine is recording now.", icon: monitor, ko: "좋아요, 그대로요 — 지금 기록 중이에요", note: "기록"}
+    - {en: "All done. You can relax, and I'll take the stickers off.", icon: check, ko: "다 됐어요. 편히 계세요, 스티커를 떼 드릴게요", note: "종료"}
+  sw: {ko: "가슴, 팔, 다리에 작은 스티커를 붙일게요"}
+- title: 카페인·자극제 관련 심계항진
+  s:
+  - {t: "섭취량 확인", i: coffee, w: "How much …?는 양을 묻는 기본 틀이고 usually가 평소 기준으로 말해 달라는 뜻을 더해요. 카페인은 심박을 빠르게 할 수 있는 흔한 요인이에요.", d: "last night", k: ["하루에 물을 몇 잔 드세요?", "커피는 언제 마지막으로 드셨어요?"], a: "caffeine", o: ["alcohol", "nicotine", "sodium"]}
+  - {t: "복용 약 확인", i: pill, w: "any를 쓰면 하나라도 있는지 넓게 물어 환자가 빠뜨린 약을 떠올리게 해요. 감기약과 다이어트 약, 보충제에는 심박을 올리는 성분이 든 것이 있어요.", d: "pain relievers", k: ["약 알레르기가 있으신가요?", "어제 술을 드셨나요?"], a: "diet", o: ["sleep", "allergy", "pain"]}
+  - {t: "경과 설명", i: bulb, w: "often이 단정 대신 '대개'라는 가능성으로 말해 줘요. wear off는 약이나 자극제의 효과가 서서히 사라진다는 구동사예요.", d: "once you sleep", k: ["약을 끊으면 바로 괜찮아져요", "두근거림은 보통 계속 심해져요"], a: "stimulant", o: ["sedative", "painkiller", "antibiotic"]}
+  - {t: "범위 설명", i: coffee, w: "count as는 '~로 친다'는 뜻이라 환자가 카페인으로 생각하지 못한 음료도 포함시켜요. 에너지 드링크에는 카페인이 많이 든 제품이 흔해요.", d: "mean no", k: ["커피는 심장에 전혀 영향이 없어요", "물은 얼마나 드시는지 알려 주세요"], a: "count", o: ["taste", "cost", "sound"]}
+  - {t: "다음 계획", i: chartup, w: "Let's …는 간호사와 환자가 함께 하는 계획으로 들려요. see if로 결과를 지켜보자고 하면 강요가 아니라 시도로 받아들여요.", d: "and go home", k: ["약을 바꿔 보고 지켜봐요", "내일 다시 검사해 봐요"], a: "cut", o: ["go", "come", "step"]}
+  - {t: "회복 설명", i: stetho, w: "Once …는 조건이 끝나는 때를 가리켜 환자가 기다릴 시점을 알려 줘요. should는 단정하지 않고 '그럴 것'이라는 예상으로 말해요.", d: "as soon as", k: ["커피를 마시면 심박수가 내려가요", "자극제는 몸에 오래 남아요"], a: "clears", o: ["enters", "fills", "reaches"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "카페인 문진 4문장 순서"
+    why: "카페인 양을 묻고, 그 위에 다른 약을 묻고, 두 가지를 묶어 줄이자고 제안하고, 줄이면 어떻게 되는지 말합니다. 'on top of that'·'Both of those'·'that'이 앞 줄을 받아서 순서가 하나예요."
+    lines:
+    - {en: "How much caffeine do you usually have in a day?", icon: coffee, ko: "하루에 카페인을 보통 얼마나 드세요?", note: "섭취량"}
+    - {en: "Thanks. Are you taking any cold medicine or diet pills on top of that?", icon: pill, ko: "고마워요. 그 외에 감기약이나 다이어트 약도 드시나요?", note: "복용 약"}
+    - {en: "Both of those can speed up your heart, so let's cut back.", icon: chartup, ko: "둘 다 심장을 빠르게 할 수 있으니 줄여 봐요", note: "제안"}
+    - {en: "If you do that, your heart rate should settle back down.", icon: stetho, ko: "그렇게 하시면 심박수가 다시 가라앉을 거예요", note: "전망"}
+  ctx: {word: "pill", ko: "알약"}
+- title: 양성 조기박동 안심 교육
+  s:
+  - {t: "안심 설명", i: shield, w: "common과 harmless를 나란히 쓰면 '흔하고 해롭지 않다'가 한 번에 전달돼요. usually가 예외의 여지를 남겨서 과장 없이 안심시켜요.", d: "and very rare", k: ["이 박동은 위험해서 입원해야 해요", "이 박동은 약으로 바로 멈춰야 해요"], a: "harmless", o: ["dangerous", "painful", "serious"]}
+  - {t: "복귀 기준", i: siren, w: "Come back if …로 다시 와야 할 상황을 구체적으로 세 가지 알려 줘요. 실신이나 가슴 통증은 단순한 조기박동 이상의 문제일 수 있어 다시 평가가 필요해요.", d: "if you eat", k: ["커피는 하루 한 잔만 드세요", "다음 주에 검사를 예약하세요"], a: "chest", o: ["back", "ear", "tooth"]}
+  - {t: "생활 조언", i: coffee, w: "often helps a lot처럼 효과를 '자주, 꽤'로 말해 확실한 약속은 피해요. 카페인과 스트레스는 박동을 더 잘 느끼게 하는 흔한 요인이에요.", d: "on salt and rest", k: ["운동을 더 많이 하면 도움이 돼요", "약을 늘리면 도움이 돼요"], a: "caffeine", o: ["salt", "sugar", "exercise"]}
+  - {t: "원인 설명", i: bulb, w: "sometimes가 '가끔'을 말해 늘 있는 이상이 아님을 알려 줘요. 조기박동은 심장의 전기 신호가 박자보다 일찍 나오는 것이라 여분의 박동처럼 느껴져요.", d: "every day", k: ["심장 판막이 닫히지 않는 거예요", "피가 부족해서 생긴 거예요"], a: "electrical", o: ["nervous", "circulatory", "breathing"]}
+  - {t: "추가 안내", i: bell, w: "not dangerous but …로 안심을 먼저 주고 조건을 덧붙이면 방심시키지 않으면서 안심시켜요. 평소와 다른 느낌은 다시 평가해야 하는 신호예요.", d: "if it stops", k: ["위험하니 집에 가시면 안 돼요", "느낌이 같으면 다시 오세요"], a: "different", o: ["familiar", "better", "mild"]}
+  - {t: "생활 조언", i: star, w: "can은 '그럴 수 있다'는 가능성의 말이라 효과를 과장하지 않아요. 수면과 스트레스 관리는 조기박동을 줄이는 데 도움이 될 수 있는 일반적인 생활 습관이에요.", d: "or skipping sleep", k: ["충분히 자면 약이 필요 없어요", "커피를 마시면 박동이 줄어요"], a: "reduce", o: ["cause", "hide", "copy"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "조기박동 안심 교육 4문장 순서"
+    why: "먼저 해롭지 않다고 안심시키고, 원인을 설명하고, 그 원인을 알면 도움이 되는 생활 조언을 하고, 마지막에 다시 와야 할 때를 알립니다. 'They'·'Knowing that'·'what we've talked about'이 앞 줄을 가리켜요."
+    lines:
+    - {en: "The extra beats you're feeling are common and usually harmless.", icon: shield, ko: "느끼시는 추가 박동은 흔하고 대개 무해해요", note: "안심"}
+    - {en: "They happen when your heart's electrical signal fires a little early.", icon: bulb, ko: "심장의 전기 신호가 조금 일찍 나올 때 생겨요", note: "원인"}
+    - {en: "Knowing that, cutting back on caffeine and stress often helps.", icon: coffee, ko: "그걸 알면, 카페인과 스트레스를 줄이는 게 대체로 도움이 돼요", note: "조언"}
+    - {en: "But if it ever feels different from what we've talked about, please come back.", icon: siren, ko: "다만 지금 말씀드린 것과 다르게 느껴지면 꼭 다시 오세요", note: "복귀"}
+  sw: {ko: "이런 추가 박동은 흔하고 대개 무해해요"}
+- title: 신규 심방세동 빠른 심실반응
+  s:
+  - {t: "모니터 부착", i: monitor, w: "I'm going to …로 곧 할 일을 알리고 now로 지금 시작한다는 것을 분명히 해요. 새로 심방세동이 의심되면 리듬을 계속 지켜보는 것이 먼저예요.", d: "in the room", k: ["지금 심전도 결과를 보여 드릴게요", "지금 정맥주사를 놓을게요"], a: "heart", o: ["oxygen", "fetal", "glucose"]}
+  - {t: "병력 확인", i: stetho, w: "Have you ever been told …?는 의사에게 들은 적이 있는지 물어 환자가 진단명을 몰라도 들은 말로 답할 수 있게 해요. 예전에 불규칙한 심장 소견이 있었는지는 중요한 단서예요.", d: "last year", k: ["심장약을 드신 적이 있나요?", "가족 중에 심장병이 있나요?"], a: "irregularly", o: ["slowly", "loudly", "strongly"]}
+  - {t: "현재 증상", i: faceWorried, w: "right now가 지금 이 순간의 증상을 묻는다는 점을 분명히 해요. 어지럼이나 숨참은 심장이 너무 빠르게 뛸 때 나타날 수 있는 증상이라 먼저 확인해요.", d: "last night", k: ["가슴이 아프거나 답답하신가요?", "팔다리가 저리거나 약하신가요?"], a: "dizzy", o: ["thirsty", "hungry", "sleepy"]}
+  - {t: "과거력", i: board, w: "ever와 before로 지금까지 전체 기간을 묻고 있어요. 뇌졸중이나 혈전 이력은 심방세동 환자의 혈전 위험을 가늠하는 중요한 정보예요.", d: "this morning", k: ["예전에 심장 수술을 받으셨나요?", "예전에 폐렴을 앓으신 적이 있나요?"], a: "stroke", o: ["seizure", "fracture", "ulcer"]}
+  - {t: "복용 약", i: pill, w: "like warfarin처럼 예를 들면 환자가 약 이름을 몰라도 알아듣기 쉬워요. 와파린 같은 항응고제를 먹는지는 혈전 예방과 이후 치료 선택에 영향을 줘요.", d: "such as Tylenol", k: ["지금 인슐린을 맞고 계신가요?", "최근 수술을 받으셨나요?"], a: "warfarin", o: ["insulin", "metformin", "albuterol"]}
+  - {t: "이유 설명", i: shield, w: "so로 이유와 조치를 연결해 왜 자세히 보는지 알려 줘요. 심방세동에서는 심방이 제대로 수축하지 못해 피가 고여 혈전이 생길 위험이 높아져요.", d: "and calms", k: ["이 리듬은 곧 저절로 사라져요", "이 리듬은 혈압을 크게 낮춰요"], a: "raises", o: ["lowers", "removes", "hides"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "심방세동 환자 문진 4문장 순서"
+    why: "모니터를 붙이고, 화면의 리듬을 근거로 증상을 묻고, 답에 감사한 뒤 항응고제를 묻고, 그 답이 중요한 이유를 설명합니다. 'here'·'Thanks for telling me'·'That matters'가 앞 줄에 기대어 순서가 하나예요."
+    lines:
+    - {en: "I'm going to put you on the heart monitor now.", icon: monitor, ko: "지금 심장 모니터를 붙여드릴게요", note: "부착"}
+    - {en: "I can see an irregular rhythm here — are you dizzy or short of breath?", icon: faceWorried, ko: "여기 불규칙한 리듬이 보여요 — 어지럽거나 숨이 차세요?", note: "증상"}
+    - {en: "Thanks for telling me. Are you taking a blood thinner like warfarin?", icon: pill, ko: "말씀 고마워요. 와파린 같은 혈액 희석제를 드시나요?", note: "복용 약"}
+    - {en: "That matters, because this kind of rhythm raises your risk of clots.", icon: shield, ko: "중요한 질문이에요, 이런 리듬은 혈전 위험을 높이거든요", note: "이유"}
+  ctx: {word: "blood thinner", ko: "혈액 희석제"}
