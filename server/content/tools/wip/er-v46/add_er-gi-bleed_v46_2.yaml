@@ -1,0 +1,275 @@
+- title: 소화성 궤양 토혈
+  s:
+  - t: 소견 설명
+    i: magnify
+    w: suggests로 단정하지 않고 시사한다고 말해 확진 전의 소견임을 밝혀요. 위에서 난 피가 위산과 섞이면 검갈색 알갱이처럼 보여 상부 위장관 출혈을 의심하게 해요.
+    d: from earlier
+    k: [위산이 많이 나온다는 뜻이에요, 커피를 줄이라는 뜻이에요]
+    a: suggests
+    o: [prevents, hides, removes]
+  - t: 과거력 문진
+    i: board
+    w: heartburn or ulcer problems처럼 환자가 아는 말(속쓰림)과 병명(궤양)을 함께 줘요. 속쓰림은 궤양 병력이라고 생각하지 않고 지나치기 쉬워서 쉬운 말을 앞세워요.
+    d: last year
+    k: ['속쓰림이 있을 때 뭘 드셨나요?', '궤양 수술을 받으신 적이 있나요?']
+    a: before
+    o: [tomorrow, soon, later]
+  - t: 치료 계획
+    i: pill
+    w: IV acid-reducing medicine으로 약의 종류를 쉬운 말로 풀고 plan for로 다음 단계를 함께 알려 줘요. 위산을 줄이면 궤양 출혈이 멎는 데 도움이 되고, 내시경으로 직접 확인해 치료해요.
+    d: at home
+    k: [먹는 제산제를 드릴게요, 수술 일정을 잡을게요]
+    a: start
+    o: [stop, skip, avoid]
+  - t: 유발 요인
+    i: faceWorried
+    w: after eating spicy food처럼 구체적인 상황을 주면 환자가 자기 경험에 대입해 답하기 쉬워요. 식후 속쓰림은 위산이 올라오는 흔한 증상이고 궤양에서도 나타날 수 있어요.
+    d: at night
+    k: ['속쓰림 때문에 잠을 설치세요?', '속쓰림에 먹는 약이 있나요?']
+    a: spicy
+    o: [bland, cold, salty]
+  - t: 치료력 문진
+    i: board
+    w: ever been treated에서 ever로 평생 경험을 묻고 before로 과거임을 한 번 더 짚어요. 궤양 치료력이 있으면 재발이나 헬리코박터 감염 가능성을 이어서 물을 수 있어요.
+    d: last month
+    k: ['위 수술을 받으신 적이 있나요?', '위내시경을 받으신 적이 있나요?']
+    a: stomach
+    o: [skin, mouth, leg]
+  - t: 약 효과
+    i: pill
+    w: will lower the acid로 약이 하는 일을 한 가지만 쉬운 말로 말해요. 위산이 줄면 상처가 덜 자극돼 궤양이 아물고 출혈이 멎는 데 도움이 돼요.
+    d: from your throat
+    k: [이 약이 통증을 바로 없애 줘요, 이 약이 구토를 막아 줘요]
+    a: lower
+    o: [raise, hide, spill]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 궤양 출혈 설명 4문장 순서
+    why: 소견을 알리고, 이전 병력을 묻고, 답과 관계없이 쓸 약을 알린 뒤, 약과 내시경의 역할로 닫아요. 'before this'·'Either way'·'That medicine'이 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - {en: The coffee-ground look suggests bleeding in your stomach., icon: magnify, ko: 커피 찌꺼기 같은 모습은 위에서 출혈이 있다는 뜻일 수 있어요, note: 소견}
+    - {en: 'Have you had heartburn or ulcer problems before this?', icon: board, ko: '이전에 속쓰림이나 궤양 문제가 있으셨나요?', note: 병력}
+    - {en: 'Either way, we''ll start an IV medicine that lowers the acid in your stomach.', icon: pill, ko: 어느 쪽이든 위산을 낮추는 정맥주사 약을 시작할게요, note: 치료}
+    - {en: 'That medicine helps, and an endoscopy will show us where it''s coming from.', icon: magnify, ko: 그 약이 도움이 되고 내시경으로 어디서 나오는지 볼 거예요, note: 내시경}
+  sw: {ko: 위산을 줄이는 약을 정맥으로 시작하고 내시경을 계획할게요}
+- title: 하부 GI 대량 혈변
+  s:
+  - t: 횟수·양
+    i: cross
+    w: how many times와 how much each time으로 횟수와 한 번당 양을 따로 물어요. 총량이 많아도 횟수만 말하는 환자가 있어서 두 가지를 모두 물어야 정도를 알아요.
+    d: this week
+    k: ['변을 볼 때 얼마나 아팠나요?', '마지막으로 변을 본 게 언제인가요?']
+    a: blood
+    o: [gas, urine, stool]
+  - t: 혈변 양상
+    i: magnify
+    w: bright red or mixed in에서 선홍색인지, 변에 섞여 있는지를 가르면 출혈 위치의 단서가 돼요. 선홍색 혈변은 대개 대장 아래쪽을 가리키지만 위쪽의 대량 출혈도 선홍색으로 나올 수 있어요.
+    d: from above
+    k: ['피가 휴지에만 묻나요?', '변 색이 검은색이었나요?']
+    a: bright
+    o: [pale, dull, thin]
+  - t: 검사 안내
+    i: lab
+    w: likely로 아직 정해진 건 아니라는 점을 담고 to find the source로 검사 목적을 알려요. 대장내시경은 하부 출혈의 원인을 직접 보고 필요하면 그 자리에서 치료도 할 수 있어요.
+    d: at home
+    k: [피검사를 먼저 해 볼게요, 대장 사진을 먼저 찍어 볼게요]
+    a: colonoscopy
+    o: [surgery, biopsy, transfusion]
+  - t: 혈변 양상
+    i: stetho
+    w: with the stool or by itself로 두 경우를 나란히 주면 환자가 지켜본 대로 고를 수 있어요. 변과 따로 피만 나오면 항문 가까운 곳, 변에 섞여 있으면 더 안쪽을 생각하는 단서예요.
+    d: all at once
+    k: ['변을 볼 때 휴지에 피가 묻나요?', '피가 나올 때 통증이 있나요?']
+    a: stool
+    o: [urine, vomit, mucus]
+  - t: 검사 안내
+    i: monitor
+    w: check와 watch를 나란히 써서 한 번 재는 일과 계속 지켜보는 일을 구분해 알려요. 하부 출혈도 혈압과 맥박이 변하면 출혈이 많다는 신호라 활력징후를 이어서 봐요.
+    d: by phone
+    k: [산소 치료부터 시작할게요, 소변 검사를 먼저 할게요]
+    a: watch
+    o: [ignore, hide, skip]
+  - t: 목적 설명
+    i: magnify
+    w: help the doctor …로 환자가 아니라 의사가 하는 일을 말해 환자가 할 일이 없다는 인상을 줘요. where the bleeding is coming from은 이 검사가 찾는 대상을 구체적으로 알려 줘요.
+    d: in your arm
+    k: [대장내시경은 오늘 밤에 할 거예요, 대장내시경 결과는 바로 나와요]
+    a: where
+    o: [when, how, who]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 하부 출혈 설명 4문장 순서
+    why: 횟수와 양을 묻고, 그 피의 모양을 묻고, 답을 근거로 검사를 알린 뒤, 그 검사와 함께 하는 감시를 알려요. 'that blood'·'Based on your answers'·'that test'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - {en: 'How many times have you passed blood, and how much each time?', icon: cross, ko: '몇 번, 매번 얼마나 피를 보셨나요?', note: 횟수}
+    - {en: 'Is that blood bright red, or is it mixed in with the stool?', icon: magnify, ko: '그 피가 선홍색인가요, 아니면 변에 섞여 있나요?', note: 양상}
+    - {en: 'Based on your answers, you''ll likely need a colonoscopy to find the source.', icon: lab, ko: 답을 바탕으로 원인을 찾으려고 대장내시경이 필요할 것 같아요, note: 검사}
+    - {en: 'Along with that test, we''ll check your blood count and watch your vital signs.', icon: monitor, ko: 그 검사와 함께 혈액 수치를 확인하고 활력징후를 지켜볼게요, note: 감시}
+  sw: {ko: 원인을 찾기 위해 대장내시경이 필요할 것 같아요}
+- title: 와파린 과다 출혈
+  s:
+  - t: INR 확인
+    i: lab
+    w: have your INR checked처럼 have + 목적어 + 과거분사로 검사받은 일을 물어요. 와파린은 INR로 용량을 조절하고 마지막 검사 시기와 값이 출혈 위험을 가늠하는 기준이 돼요.
+    d: at home
+    k: ['INR 수치가 얼마였나요?', 'INR 검사를 누가 해 주셨나요?']
+    a: last
+    o: [first, next, just]
+  - t: 용량 문진
+    i: pill
+    w: How much … each day로 하루 용량을 구체적인 양으로 끌어내요. 와파린은 알약 색과 mg이 다양해서 환자가 정확한 용량을 모르면 약병이나 약 목록을 같이 확인해요.
+    d: with food
+    k: ['와파린을 얼마나 오래 드셨나요?', '와파린을 마지막으로 드신 게 언제예요?']
+    a: take
+    o: [double, refuse, spill]
+  - t: 치료 안내
+    i: pill
+    w: reverse the blood thinner로 약의 효과를 되돌린다고 환자 말로 풀어요. 항응고제 출혈에서는 약 효과를 되돌리고 출혈을 멈추는 것이 치료의 중심이에요.
+    d: at once
+    k: [진통제를 먼저 드릴게요, 수액부터 놓을게요]
+    a: reverse
+    o: [increase, repeat, refill]
+  - t: 용량 변경
+    i: calendar
+    w: recently로 최근의 변화를 짚어 물어요. 용량이나 다른 약·음식이 바뀐 직후에는 INR이 크게 오를 수 있어서 변경 시점을 꼭 확인해요.
+    d: last year
+    k: ['와파린 말고 다른 항응고제로 바꿨나요?', '와파린을 중간에 빼먹은 적 있나요?']
+    a: dose
+    o: [brand, schedule, pharmacy]
+  - t: 치료 안내
+    i: pill
+    w: to help reverse로 비타민K가 효과를 되돌리는 데 도움을 준다고 가능성으로 말해요. 비타민K는 효과가 나타나기까지 몇 시간이 걸려서 출혈이 심하면 다른 약과 함께 쓸 수 있어요.
+    d: in the morning
+    k: [비타민 C를 드릴게요, 철분제를 드릴게요]
+    a: effect
+    o: [color, taste, price]
+  - t: 재검사 안내
+    i: lab
+    w: need to be checked again으로 재검사가 한 번으로 끝나지 않는다고 알려요. 역전 치료 뒤 INR과 혈액 수치를 다시 확인해 약이 듣는지, 출혈이 멎었는지 봐요.
+    d: at home
+    k: [검사 결과는 의사 선생님이 설명할 거예요, 치료 후에 식사가 가능한지 알려 드릴게요]
+    a: after
+    o: [before, during, without]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 와파린 출혈 설명 4문장 순서
+    why: 마지막 INR을 묻고, 그때의 용량을 묻고, 그 용량과 출혈을 근거로 치료를 알리고, 치료 효과 확인을 알려요. 'At that time'·'that dose'·'that worked'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - {en: 'When did you last have your INR checked?', icon: lab, ko: '마지막으로 INR을 언제 확인하셨나요?', note: INR}
+    - {en: 'At that time, how much warfarin were you taking each day?', icon: pill, ko: '그때 하루에 와파린을 얼마나 드셨나요?', note: 용량}
+    - {en: 'With that dose and your bleeding, we''ll give vitamin K to help reverse the effect.', icon: pill, ko: 그 용량과 출혈 때문에 효과를 되돌리도록 비타민K를 드릴게요, note: 치료}
+    - {en: We'll check your blood again to see how well that worked., icon: lab, ko: 그게 얼마나 잘 들었는지 혈액을 다시 확인할게요, note: 재검사}
+  sw: {ko: 지금 INR이 있어야 할 수치보다 높아요}
+- title: 수혈 동의·부작용 설명
+  s:
+  - t: 목적 설명
+    i: chartup
+    w: replaces … you've lost로 잃은 것을 채운다고 풀어 말해 수혈이 왜 필요한지 환자가 이해해요. to keep you safe는 처치의 목적을 안전으로 묶어 불안을 낮춰요.
+    d: for weeks
+    k: [수혈 전에 혈액형을 확인해요, 수혈 동의서에 서명해 주세요]
+    a: replaces
+    o: [removes, hides, wastes]
+  - t: 증상 보고
+    i: bell
+    w: feel chills, itching, or trouble breathing처럼 환자가 느끼는 말로 신호를 알려 줘요. 오한·가려움·호흡곤란은 수혈 반응에서 환자가 먼저 알아차리는 대표 증상이고, 생기면 수혈을 먼저 멈추고 평가해요.
+    d: after dinner
+    k: [약이 다 들어가면 알려 주세요, 수혈 팩이 비면 알려 주세요]
+    a: Tell
+    o: [Ask, Text, Show]
+  - t: 관찰 안내
+    i: monitor
+    w: closely로 지켜본다고 하면 감시가 아니라 돌봄으로 들려요. 수혈 반응은 시작 초기에 생기는 경우가 많아 그 시간에 더 자주 살펴요.
+    d: all night
+    k: [팔에 힘을 빼고 계셔 주세요, 불을 조금 낮춰 둘게요]
+    a: closely
+    o: [seldom, vaguely, loosely]
+  - t: 안전성 설명
+    i: shield
+    w: generally very safe, but …으로 안전하다는 사실과 위험이 있다는 사실을 함께 말해요. 동의를 구할 때는 위험을 숨기지 않으면서 겁주지 않는 균형이 필요해요.
+    d: in a week
+    k: [보통 몇 시간 걸려요, 주로 팔에서 해요]
+    a: generally
+    o: [rarely, barely, hardly]
+  - t: 변화 보고
+    i: bell
+    w: any different로 구체적인 증상을 몰라도 평소와 다르면 말하라고 해요. 수혈 반응은 사소해 보이는 변화로 시작할 수 있어서 환자가 판단하지 않고 알리게 해요.
+    d: next week
+    k: [아프면 진통제를 드릴게요, 불편하면 수혈 속도를 늦출 수 있어요]
+    a: immediately
+    o: [tomorrow, eventually, sometime]
+  - t: 활력 확인
+    i: stetho
+    w: temperature and pulse로 무엇을 확인할지 짚어 주면 환자가 재는 이유를 알아요. 수혈 반응의 첫 신호는 열과 맥박 변화인 경우가 많아 시작 전 수치와 비교해 판단해요.
+    d: at home
+    k: [수혈이 끝나면 팔을 소독할게요, 수혈 전에 알레르기를 확인할게요]
+    a: temperature
+    o: [height, weight, address]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 수혈 설명 4문장 순서
+    why: 수혈의 목적을 알리고, 안전하지만 반응이 있을 수 있다고 말하고, 그래서 하는 확인을 알린 뒤, 환자가 할 일로 닫아요. 'It'·'That's why'·'You can help'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - {en: A transfusion replaces the blood you've lost to keep you safe., icon: chartup, ko: 수혈은 잃으신 피를 채워서 안전하게 지켜줘요, note: 목적}
+    - {en: 'It is generally very safe, but reactions can happen.', icon: shield, ko: 대체로 아주 안전하지만 반응이 생길 수 있어요, note: 위험}
+    - {en: That's why I'll check your temperature and pulse often and watch you closely., icon: stetho, ko: 그래서 체온과 맥박을 자주 확인하고 자세히 지켜볼 거예요, note: 확인}
+    - {en: 'You can help: tell me right away if you feel chills, itching, or trouble breathing.', icon: bell, ko: '도와주실 수도 있어요, 오한, 가려움, 숨쉬기 곤란이 느껴지면 바로 말씀해 주세요', note: 요청}
+  sw: {ko: 오한이 느껴지면 바로 말씀해 주세요}
+- title: Mallory-Weiss(반복 구토 후)
+  s:
+  - t: 순서 문진
+    i: calendar
+    w: before you noticed the blood로 두 사건의 선후를 묻는 형태예요. 심한 구토를 거듭한 끝에 피가 나왔다면 식도와 위 경계의 점막이 찢어진 Mallory-Weiss를 생각해요.
+    d: last night
+    k: ['구토가 피 때문에 멈췄나요?', '피를 닦아 내신 적이 있나요?']
+    a: before
+    o: [after, while, since]
+  - t: 구토 횟수
+    i: faceWorried
+    w: had vomited로 피를 알아차리기 전 과거의 구토 횟수를 묻고 beforehand로 시점을 못 박아요. 피가 나오기 전에 구토를 반복했는지가 감별의 핵심 단서예요.
+    d: in a row
+    k: ['구토하기 전에 무엇을 드셨나요?', '구토가 몇 시간째 계속되나요?']
+    a: beforehand
+    o: [afterwards, later, tomorrow]
+  - t: 음주 문진
+    i: me
+    w: recently로 최근 음주를 짚어 물어요. 과음 뒤의 반복 구토는 Mallory-Weiss의 흔한 배경이라서 탓하는 투가 아니게 담담하게 물어요.
+    d: at night
+    k: ['술을 마신 뒤에 토하셨나요?', '술을 얼마나 오래 드셨나요?']
+    a: alcohol
+    o: [coffee, water, juice]
+  - t: 선후 확인
+    i: compass
+    w: the vomiting or the blood로 두 선택지를 나란히 줘 환자가 순서만 고르면 돼요. 구토가 먼저였다면 구토 중 압력이 올라 점막이 찢어졌을 가능성을 떠올려요.
+    d: again
+    k: ['둘이 같이 나왔나요?', '어느 쪽이 더 많았나요?']
+    a: first
+    o: [last, second, next]
+  - t: 초기 구토
+    i: cross
+    w: the first few times로 맨 처음 몇 번을 짚어 물어요. 처음엔 음식물만 나오다가 반복 끝에 피가 나오면 구토로 인한 점막 손상을 시사해요.
+    d: this morning
+    k: ['처음 토하셨을 때 음식이 섞였나요?', '처음 토하신 게 언제였나요?']
+    a: blood
+    o: [food, bile, mucus]
+  - t: 음주량 문진
+    i: me
+    w: How much … in a week로 정해진 기간당 양을 물으면 환자가 숫자로 답하기 쉬워요. 평소 음주량은 간경변이나 위염 같은 다른 출혈 원인을 가늠하는 데도 쓰여요.
+    d: at night
+    k: ['술을 몇 년째 드셨나요?', '술을 끊으신 적이 있나요?']
+    a: usually
+    o: [never, hardly, seldom]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 반복 구토 후 출혈 문진 4문장 순서
+    why: 선후를 묻고, 앞선 구토 횟수를 묻고, 처음 몇 번에 피가 있었는지 묻고, 음주를 묻습니다. 'before that'·'those times'·'all of that'이 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - {en: 'Did the vomiting come before you noticed the blood?', icon: calendar, ko: '피를 알아차리기 전에 구토가 있었나요?', note: 선후}
+    - {en: 'How many times had you vomited before that?', icon: faceWorried, ko: '그 전에 몇 번 구토하셨나요?', note: 횟수}
+    - {en: 'Was there any blood the first few of those times?', icon: cross, ko: '그 중 처음 몇 번에 피가 있었나요?', note: 초기}
+    - {en: 'With all of that in mind, have you been drinking alcohol recently?', icon: me, ko: '그 모든 걸 감안해서, 최근에 술을 드셨나요?', note: 음주}
+  sw: {ko: '피를 알아차리기 전에 구토가 있었나요?'}

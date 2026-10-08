@@ -1,0 +1,330 @@
+- title: 상부 vs 하부 출혈 문진
+  s:
+  - t: 토혈 확인
+    i: coffee
+    w: any blood or something that…으로 확실한 피가 아니어도 비슷한 것까지 열어 물어요. 환자는 검은 토물을 피라고 생각하지 못할 수 있어서 모양을 비유로 짚어 줘요.
+    d: in the toilet
+    k: ['토하기 전에 무엇을 드셨나요?', '토하신 게 몇 번이었나요?']
+    a: coffee grounds
+    o: [coffee beans, tea leaves, black pepper]
+  - t: 변 색 문진
+    i: magnify
+    w: black and tarry, or bright red처럼 두 모습을 나란히 보여 주면 환자가 어느 쪽에 가까운지 고르기 쉬워요. 검고 끈적한 변은 위쪽, 선홍색은 아래쪽 출혈을 시사하는 단서예요.
+    d: and watery
+    k: ['변을 볼 때 통증이 있나요?', '하루에 변을 몇 번 보세요?']
+    a: tarry
+    o: [watery, chalky, lumpy]
+  - t: 시작 시점
+    i: calendar
+    w: first를 넣으면 지금 보이는 것이 아니라 처음 눈치챈 때를 묻는 거라 출혈이 언제 시작됐는지 시간 순서가 잡혀요. 발현 시점은 갑자기 생겼는지 서서히 진행됐는지 가르는 단서예요.
+    d: in bed
+    k: ['이게 얼마나 심한가요?', '전에도 이런 적이 있었나요?']
+    a: When
+    o: [Where, Why, Who]
+  - t: 양 추정
+    i: chartup
+    w: do you think로 정확한 양이 아니라 짐작을 구해요. 환자는 부피를 재지 못하니 어림짐작이라도 괜찮다고 해야 부담 없이 답해요.
+    d: last night
+    k: ['피가 어디서 나오는 것 같나요?', '토한 걸 본 분이 있나요?']
+    a: brought
+    o: [held, kept, carried]
+  - t: 출혈 위치
+    i: stetho
+    w: above or below로 위·아래 두 갈래를 먼저 알려 주면 환자가 왜 색과 시점을 캐묻는지 이해해요. 위쪽은 식도·위·십이지장, 아래쪽은 대장·직장 쪽 출혈을 뜻해요.
+    d: right now
+    k: [출혈량을 재야 해요, 출혈이 멈췄는지 알아야 해요]
+    a: below
+    o: [beyond, behind, within]
+  - t: 색 설명
+    i: magnify
+    w: exact로 정확한 색을 짚어 물으면 선홍색, 검붉은색, 커피 찌꺼기색 같은 구분이 나와요. 색은 출혈의 위치와 시점을 가르는 단서라서 환자가 말로 옮기기 쉽게 열어서 물어요.
+    d: in a cup
+    k: ['토한 것에서 냄새가 났나요?', '토한 것을 보관해 두셨나요?']
+    a: exact
+    o: [usual, favorite, normal]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 출혈 양상 문진 4문장 순서
+    why: 토혈부터 묻고, 그 양과 색을 이어 묻고, 변도 같은 방식으로 묻고, 모은 답으로 위·아래를 가립니다. 'that'·'Same question'·'all of that'이 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - {en: 'Did you vomit any blood, or anything that looked dark?', icon: coffee, ko: '피나 검어 보이는 걸 토하셨나요?', note: 토혈}
+    - {en: 'How much of that was there, and what color was it?', icon: chartup, ko: '그게 얼마나 있었고 무슨 색이었나요?', note: 양·색}
+    - {en: 'Same question for your stools: were they black and tarry, or bright red?', icon: magnify, ko: '변도 같은 질문이에요, 검고 끈적했나요, 선홍색이었나요?', note: 변}
+    - {en: I need all of that to tell if the bleeding is from above or below., icon: stetho, ko: 그 모두로 출혈이 위쪽인지 아래쪽인지 가려야 해요, note: 판단}
+  sw: {ko: '검고 끈적한 변을 본 적이 있으세요?'}
+- title: 활력·기립성 저혈압
+  s:
+  - t: 어지럼 문진
+    i: me
+    w: when you stand up으로 자세와 증상을 묶어 물어야 환자가 일어설 때만 그런지 알려 줘요. 일어설 때의 어지럼은 몸속 혈액량이 줄었을 때 나타나는 흔한 단서예요.
+    d: while you walk
+    k: ['서 있을 때 가슴이 답답한가요?', '누워 있을 때도 어지러운가요?']
+    a: feel
+    o: [look, sound, taste]
+  - t: 실신 확인
+    i: faceWorried
+    w: fainted or nearly passed out으로 완전한 실신과 거의 쓰러질 뻔한 경우를 함께 물어요. 환자는 의식을 잃지 않았다는 이유로 어지럼을 말하지 않기도 해서 두 경우를 다 열어 줘요.
+    d: in the hallway
+    k: ['넘어져서 머리를 부딪혔나요?', '가슴이 두근거린 적 있나요?']
+    a: fainted
+    o: [tripped, stumbled, dropped]
+  - t: 절차 안내
+    i: monitor
+    w: lying down and standing up처럼 두 자세를 나란히 말하면 환자가 누웠다 일어서는 순서를 미리 알고 협조해요. 자세를 바꿔 가며 재는 것이 혈량 변화를 확인하는 방법이에요.
+    d: after lunch
+    k: [측정 전에 잠시 앉아 쉬세요, 혈압 재는 동안 팔을 심장 높이로 두세요]
+    a: check
+    o: [lower, treat, raise]
+  - t: 낙상 확인
+    i: shield
+    w: almost fall로 실제로 넘어지진 않았어도 위험했던 순간을 물어요. 넘어질 뻔한 일은 어지럼이 얼마나 심한지, 앞으로 낙상 예방이 필요한지 보여 주는 단서예요.
+    d: at home
+    k: ['어지러울 때 구토하셨나요?', '어지러움이 얼마나 오래갔나요?']
+    a: almost
+    o: [never, barely, hardly]
+  - t: 출혈량 추정
+    i: chartup
+    w: do you think로 정확한 양이 아니라 짐작을 구하고 so far로 지금까지의 누적을 물어요. 환자의 짐작은 부정확해도 출혈이 얼마나 오래 이어졌는지 가늠하는 데 도움이 돼요.
+    d: at home
+    k: ['지금까지 수액을 얼마나 맞았나요?', '피를 마지막으로 뽑은 게 언제인가요?']
+    a: lost
+    o: [gained, tested, stored]
+  - t: 경과 관찰
+    i: monitor
+    w: closely와 for a while로 얼마나 자주, 얼마나 오래 볼지 알려 줘요. 출혈이 있는 환자는 혈압이 갑자기 떨어질 수 있어서 한 번 재고 끝내지 않고 이어서 확인해요.
+    d: every day
+    k: [소변량을 같이 기록할게요, 체온도 같이 잴게요]
+    a: closely
+    o: [rarely, briefly, casually]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 기립성 활력 사정 4문장 순서
+    why: 누운 채로 먼저 재고, 선 채로 다시 재고, 그때의 증상을 묻고, 수치와 증상을 함께 봅니다. 'again'·'that'·'those numbers'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - {en: 'First, I''ll check your blood pressure while you lie flat.', icon: monitor, ko: 먼저 누운 채로 혈압을 잴게요, note: 측정}
+    - {en: 'Now stand up slowly, and I''ll check it again.', icon: me, ko: '이제 천천히 일어서세요, 다시 잴게요', note: 재측정}
+    - {en: Tell me right away if that makes you dizzy or lightheaded., icon: faceWorried, ko: 그래서 어지럽거나 머리가 띵하면 바로 말씀해 주세요, note: 증상}
+    - {en: We'll compare those numbers and your symptoms to estimate how much blood you've lost., icon: chartup, ko: 그 수치와 증상을 비교해 피를 얼마나 잃었는지 볼게요, note: 평가}
+  sw: {ko: 지금 누운 상태와 선 상태에서 혈압을 확인할게요}
+- title: NSAID·항응고제 복용력
+  s:
+  - t: 복용약 문진
+    i: pill
+    w: last dose를 함께 물으면 마지막 복용 시각을 알 수 있어요. 시각에 따라 약 효과가 얼마나 남았는지 가늠해 출혈이 있을 때 쓸 치료를 정하는 데 도움이 돼요.
+    d: each morning
+    k: ['그 약을 처음 시작한 게 언제인가요?', '그 약 때문에 불편한 적이 있나요?']
+    a: dose
+    o: [meal, scan, fall]
+  - t: 복용 빈도
+    i: calendar
+    w: How often …?으로 빈도를 열어 물으면 가끔 먹은 사람과 매일 먹은 사람이 구분돼요. 이부프로펜 같은 소염진통제는 위 점막을 상하게 해 위장관 출혈의 흔한 위험 요인이에요.
+    d: by mouth
+    k: ['진통제를 언제 처음 드셨나요?', '진통제를 누가 처방했나요?']
+    a: take
+    o: [wear, hear, drop]
+  - t: 상용 확인
+    i: pill
+    w: regularly로 가끔이 아니라 습관적인 복용을 가려 물어요. 저용량 아스피린을 매일 먹는 환자는 약으로 생각하지 않고 빠뜨리기 쉬워서 이름을 짚어 물어요.
+    d: at night
+    k: ['아스피린 알레르기가 있으세요?', '아스피린을 오늘 드셨나요?']
+    a: regularly
+    o: [rarely, suddenly, recently]
+  - t: 복용 패턴
+    i: calendar
+    w: every day or only sometimes처럼 두 극단을 나란히 주면 환자가 자기 습관을 쉽게 고르고, 가끔 먹는 약도 빠뜨리지 않고 말하게 돼요.
+    d: at bedtime
+    k: ['약을 식사와 함께 드시나요?', '약은 누가 챙겨 주시나요?']
+    a: taking
+    o: [making, wearing, drawing]
+  - t: 위험 설명
+    i: shield
+    w: can으로 가능성을 말해 겁주지 않으면서 이유를 알려요. 소염진통제·항혈소판제·항응고제는 각각 다른 방식으로 출혈 위험을 높일 수 있어요.
+    d: for sure
+    k: [이 약들은 졸음을 일으킬 수 있어요, 이 약들은 식욕을 떨어뜨릴 수 있어요]
+    a: raise
+    o: [lower, remove, avoid]
+  - t: 중단 안내
+    i: bell
+    w: may need to로 아직 결정이 아니라 가능성이라는 점을, for now로 일시적이라는 점을 알려요. 어느 약을 멈출지는 처방한 의사와 상의해 정해요.
+    d: forever
+    k: [이 약들을 두 배로 드셔야 해요, 이 약들을 식사 후에 드세요]
+    a: stop
+    o: [double, refill, share]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 복용약 문진 4문장 순서
+    why: 항응고제와 마지막 복용을 먼저 묻고, 그 밖의 약을 묻고, 그 약들의 위험을 설명한 뒤, 중단을 알립니다. 'Besides that'·'those medicines'·'them'이 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - {en: 'Which blood thinner do you take, and when was your last dose?', icon: pill, ko: '어떤 항응고제를 드시고 마지막 복용은 언제였나요?', note: 항응고제}
+    - {en: 'Besides that, do you take pain relievers like ibuprofen or aspirin?', icon: pill, ko: '그 밖에 이부프로펜이나 아스피린 같은 진통제를 드세요?', note: 진통제}
+    - {en: Some of those medicines can raise your risk of bleeding., icon: shield, ko: 그 약 중 일부는 출혈 위험을 높일 수 있어요, note: 위험}
+    - {en: So we may need to stop one of them for now., icon: bell, ko: 그래서 그중 하나를 당분간 중단해야 할 수도 있어요, note: 중단}
+  sw: {ko: '어떤 혈액 희석제를 드세요?'}
+- title: 흑색변 주소 노인
+  s:
+  - t: 기간 문진
+    i: calendar
+    w: How many days로 지속 기간을 구체적인 숫자로 끌어내요. 검은 변이 며칠 이어졌는지는 출혈이 얼마나 계속됐는지 가늠하는 단서예요.
+    d: in a row
+    k: ['변을 하루에 몇 번 보세요?', '변을 마지막으로 본 게 언제인가요?']
+    a: black
+    o: [pale, green, yellow]
+  - t: 증상 문진
+    i: faceWorried
+    w: more … than usual로 평소와 비교하게 하면 서서히 진행된 변화를 알아차려요. 출혈이 오래 이어지면 빈혈로 피곤하고 숨이 찰 수 있어요.
+    d: at night
+    k: ['숨 쉴 때 가슴이 아프신가요?', '기침이 평소보다 심해졌나요?']
+    a: more
+    o: [less, very, so]
+  - t: 복통 문진
+    i: stetho
+    w: along with this로 검은 변과 함께 온 증상인지 묶어서 물어요. 위 궤양이 원인이면 명치 통증이 함께 올 수 있지만, 통증 없이 출혈하는 경우도 많아요.
+    d: on one side
+    k: ['배를 눌러 볼 때 아프신가요?', '배가 부풀어 오른 것 같으세요?']
+    a: belly
+    o: [chest, back, knee]
+  - t: 변화 확인
+    i: compass
+    w: at all을 붙이면 조금이라도 달라졌으면 말해 달라는 뜻이라 사소한 변화도 털어놓게 해요. 색이 더 어두워지거나 양이 늘면 출혈이 이어진다는 단서예요.
+    d: since lunch
+    k: ['변이 묽어졌나요?', '변을 볼 때 힘이 드나요?']
+    a: color
+    o: [smell, shape, texture]
+  - t: 기력 문진
+    i: me
+    w: weak or more tired처럼 두 증상을 함께 주면 기운이 없는 정도를 환자가 고르기 쉬워요. 출혈이 이어져 빈혈이 되면 체력이 떨어질 수 있어요.
+    d: at night
+    k: ['힘이 없을 때 숨이 차나요?', '기운이 없을 때 어지러운가요?']
+    a: weak
+    o: [strong, calm, happy]
+  - t: 검사 안내
+    i: lab
+    w: to look for로 검사 목적을 밝히면 채혈이 왜 필요한지 환자가 알아요. 출혈 직후에는 수치가 아직 떨어지지 않았을 수 있어서 시간을 두고 반복해 확인하기도 해요.
+    d: in the lab
+    k: [엑스레이로 빈혈을 확인할게요, 소변검사로 감염을 확인할게요]
+    a: anemia
+    o: [diabetes, fractures, sprains]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 흑색변 노인 문진 4문장 순서
+    why: 며칠째인지 먼저 묻고, 그 기간 동안의 증상을 묻고, 그 증상 말고 함께 온 것을 묻고, 그 답을 근거로 검사를 알립니다. 'Over that time'·'Besides the tiredness'·'Based on all that'이 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - {en: 'How many days have your stools looked black?', icon: calendar, ko: '며칠째 변이 검게 보이세요?', note: 기간}
+    - {en: 'Over that time, have you felt more tired or short of breath than usual?', icon: faceWorried, ko: '그 기간에 평소보다 피곤하거나 숨이 찼나요?', note: 증상}
+    - {en: 'Besides the tiredness, has anything else come along, like belly pain?', icon: stetho, ko: '피곤함 말고 배가 아프다거나 다른 일이 있었나요?', note: 동반}
+    - {en: 'Based on all that, we''ll check your blood count for anemia.', icon: lab, ko: 그 모두를 바탕으로 빈혈이 있는지 혈액 수치를 확인할게요, note: 검사}
+  sw: {ko: 빈혈이 있는지 혈액 수치를 확인할게요}
+- title: 대량 정맥로 확보 설명
+  s:
+  - t: 목적 설명
+    i: bandage
+    w: in case로 지금 꼭 쓴다는 확정이 아니라 대비라는 점을 알려요. 굵은 정맥로 두 개는 수액과 혈액을 빠르게 넣을 길을 미리 확보해 두는 거예요.
+    d: for tests
+    k: [정맥로를 넣기 전에 소독할게요, 정맥로 자리는 팔꿈치 안쪽이에요]
+    a: quickly
+    o: [rarely, gently, slowly]
+  - t: 감각 예고
+    i: bell
+    w: may feel로 가능성을 말하고 but it will be over fast로 곧 끝난다고 이어 주면 불안이 줄어요. 짧게 끝난다는 것만 약속해서 과한 장담을 피해요.
+    d: right here
+    k: [바늘을 넣는 동안 움직이지 마세요, 팔에 멍이 들 수 있어요]
+    a: pinch
+    o: [burn, bruise, cramp]
+  - t: 안심 설명
+    i: shield
+    w: as … as possible은 한계 안에서 최선을 다한다는 말이라 과한 약속 없이 안심시켜요. safely와 quickly를 함께 말해 빠르게 하되 안전을 놓치지 않겠다고 전해요.
+    d: for sure
+    k: [대기 시간이 줄어서 빨리 끝나요, 팔을 편하게 두시면 돼요]
+    a: treat
+    o: [scan, test, move]
+  - t: 정맥로 안내
+    i: bandage
+    w: One … in each …로 몇 개를 어디에 놓을지 구체적으로 말하면 환자가 양팔을 쓰게 될 줄 미리 알아요. 팔 둘에 나누면 두 길로 동시에 수액과 혈액을 넣을 수 있어요.
+    d: on your back
+    k: [두 팔에 압박대를 감을게요, 팔을 심장보다 낮게 두세요]
+    a: arm
+    o: [leg, foot, hip]
+  - t: 시간 안내
+    i: calendar
+    w: only a second로 짧다는 점을 못 박아 환자가 견딜 만하다고 느끼게 해요. 정확한 시간을 재서 하는 말이 아니라 금방 지나간다는 느낌을 전하는 말이에요.
+    d: in your vein
+    k: [바늘 자국에 밴드를 붙일게요, 바늘을 빼고 눌러 드릴게요]
+    a: needle
+    o: [cuff, tourniquet, strap]
+  - t: 곁을 지킴
+    i: handshake2
+    w: right here와 the whole time으로 곁에 머문다는 약속을 장소와 시간으로 못 박아요. 바늘 앞의 불안은 혼자 있다는 느낌에서 커지기 쉬워서 함께 있다고 말해 줘요.
+    d: for you
+    k: [필요한 물품을 가져올게요, 가족분께 연락해 드릴게요]
+    a: stay
+    o: [leave, hide, ride]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 굵은 정맥로 설명 4문장 순서
+    why: 무엇을 할지 알리고, 왜 하는지 설명하고, 느낌을 예고한 뒤 곁에 있겠다고 닫아요. 'That way'·'it'·'that pinch'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - {en: 'We need to put in two large IVs, one in each arm.', icon: bandage, ko: 큰 정맥로를 팔마다 하나씩 두 개 넣어야 해요, note: 안내}
+    - {en: 'That way, we can give you fluids or blood quickly if you need them.', icon: chartup, ko: 그러면 필요할 때 수액이나 혈액을 빠르게 드릴 수 있어요, note: 이유}
+    - {en: 'You may feel a pinch, but it should be over fast.', icon: bell, ko: 따끔할 수 있지만 금방 끝날 거예요, note: 예고}
+    - {en: I'll stay right here with you through that pinch and all of it., icon: handshake2, ko: 그 따끔함과 모든 과정 내내 여기 함께 있을게요, note: 안심}
+  sw: {ko: 혈액이 급히 필요할 경우를 대비해 큰 정맥로 두 개가 필요해요}
+- title: 정맥류 출혈(간경변)
+  s:
+  - t: 병력 문진
+    i: board
+    w: history of …로 과거 병력을 묻고 liver disease or cirrhosis로 넓은 말과 구체적인 말을 함께 줘요. 간경변이 있으면 식도 정맥류가 생기는 경우가 있어 토혈 환자에게 꼭 확인해요.
+    d: in your family
+    k: ['간 수치를 마지막으로 확인한 게 언제인가요?', '간 이식을 받으신 적 있나요?']
+    a: liver
+    o: [lung, kidney, heart]
+  - t: 토혈량 문진
+    i: cross
+    w: and when을 붙여 양과 시점을 한 번에 묻어요. 정맥류 출혈은 한 번에 많은 양이 나오는 경우가 있어 양과 시점이 상태의 위중함을 가늠하는 단서예요.
+    d: last night
+    k: ['피를 토하기 전에 무엇을 드셨나요?', '토한 뒤 어지러움이 있었나요?']
+    a: when
+    o: [where, why, which]
+  - t: 치료 계획
+    i: pill
+    w: to reduce … and prepare for로 약의 목적과 다음 단계를 한 문장에 담아요. 정맥류 출혈은 약으로 출혈을 줄이면서 내시경으로 직접 확인하고 치료하는 것이 일반적인 흐름이에요.
+    d: after lunch
+    k: [수액부터 놓을게요, 내시경 동의서를 먼저 받을게요]
+    a: reduce
+    o: [cause, double, hide]
+  - t: 음주력 문진
+    i: me
+    w: heavily와 in the past를 함께 묻는 건 지금은 안 마셔도 과거 음주가 간 손상의 원인일 수 있기 때문이에요. 탓하는 말투가 되지 않게 담담하게 묻는 것이 좋아요.
+    d: in a week
+    k: ['최근에 약을 같이 드셨나요?', '마지막으로 술을 드신 게 언제인가요?']
+    a: alcohol
+    o: [coffee, soda, water]
+  - t: 약 효과 설명
+    i: pill
+    w: help …로 효과를 도움으로 말해 과한 약속을 피해요. 간경변에서는 정맥 압력이 올라 정맥류가 터지기 쉬워서 그 압력을 낮추는 약을 써요.
+    d: around your heart
+    k: [이 약은 통증을 줄여 줘요, 이 약은 구토를 막아 줘요]
+    a: lower
+    o: [raise, hold, check]
+  - t: 내시경 설명
+    i: magnify
+    w: small camera로 내시경을 환자가 아는 사물에 빗대 설명해요. 이름이 낯설어도 카메라라고 하면 무엇을 하는지 바로 그려져요.
+    d: from outside
+    k: [위에 넣을 관은 의사 선생님이 설명해 드릴 거예요, 검사 결과는 의사 선생님이 보여 줄 거예요]
+    a: inside
+    o: [outside, behind, above]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 정맥류 출혈 설명 4문장 순서
+    why: 간 병력을 먼저 확인하고, 그에 맞는 약을 알리고, 내시경을 설명한 뒤 둘의 역할을 묶어요. 'that history'·'that medicine'·'Both of those'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - {en: 'Do you have a history of liver disease or cirrhosis?', icon: board, ko: '간질환이나 간경변 병력이 있으세요?', note: 병력}
+    - {en: 'With that history, we''ll start a medicine to lower the pressure in your veins.', icon: pill, ko: 그 병력이 있으니 정맥 압력을 낮추는 약을 시작할게요, note: 약}
+    - {en: 'Along with that medicine, the doctor will look inside your stomach with a small camera.', icon: magnify, ko: 그 약과 함께 의사 선생님이 작은 카메라로 위 안쪽을 볼 거예요, note: 내시경}
+    - {en: 'Both of those help stop the bleeding, so we''ll watch you closely.', icon: monitor, ko: 그 둘 다 출혈을 멈추는 데 도움이 되니 자세히 지켜볼게요, note: 관찰}
+  sw: {ko: 의사 선생님이 위 안쪽을 보려고 내시경을 할 거예요}
