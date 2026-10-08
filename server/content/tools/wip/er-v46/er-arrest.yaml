@@ -3457,15 +3457,15 @@ situations:
     why: Check로 시작하는 짧은 명령이라 코드 상황에서 가장 빨리 전달돼요. 시간을 for ten seconds로 못 박으면 확인이 길어지지 않아요.
     decoy: on the monitor
     distractorsKo:
-    - 30초 동안 호흡만 확인해 주세요
+    - 모니터 패드를 먼저 붙여 주세요
     - 2분 뒤에 맥박을 다시 확인해 주세요
     blank:
-      answer: ten
+      answer: breathing
       options:
-      - en: thirty
-      - en: sixty
-      - en: two
-      - en: ten
+      - en: breathing
+      - en: bleeding
+      - en: swelling
+      - en: sweating
   - en: This is a cardiac arrest — call the code now.
     ko: 심정지예요 — 지금 코드를 불러 주세요.
     chunks:
@@ -3526,8 +3526,8 @@ situations:
       ok: false
       fix: His heart has stopped. Our team is starting CPR right now.
     why: code는 병원 안에서 쓰는 호출 이름이라 의료진끼리는 가장 빠른 말이에요. 보호자는 뜻을 모를 수 있으니, 무슨 일이 일어났고 무엇을 하는지를 쉬운 말로 알려요.
-    word: call
-    ko: 부르다·호출하다
+    word: code
+    ko: 코드(응급 호출)
   order:
     tag: 대화 흐름
     icon: compass
@@ -3649,7 +3649,7 @@ situations:
     decoy: to the family
     distractorsKo:
     - 이름과 생년월일을 확인해 주세요
-    - 역할은 나중에 정해 드릴게요
+    - 압박은 2분마다 교대해 주세요
     blank:
       answer: role
       options:
@@ -3789,8 +3789,8 @@ situations:
     why: Aim for는 지켜야 할 목표 수치를 알릴 때 쓰는 말이에요. 미국 심폐소생 지침은 깊이 최소 2인치(5cm), 속도 분당 100~120회예요.
     decoy: an hour
     distractorsKo:
-    - 손가락 한 마디 깊이로 천천히 누르세요
-    - 분당 30회씩 가볍게 누르세요
+    - 압박 사이에 가슴이 다 올라오게 하세요
+    - 30번 누르고 두 번 불어 넣어요
     blank:
       answer: deep
       options:
@@ -3817,8 +3817,8 @@ situations:
     why: Let's …는 함께 하자는 제안이라 압박자에게 지적처럼 들리지 않아요. 압박은 힘들어서 보통 2분마다 교대해요.
     decoy: to save time
     distractorsKo:
-    - 압박은 계속하고 교대는 하지 않을게요
-    - 지금 바로 압박을 멈추고 쉬어요
+    - 다음 리듬 확인 때 에피네프린을 줄게요
+    - 압박이 얕아지고 있어요 — 더 깊게 눌러요
     blank:
       answer: cycle
       options:
@@ -3870,8 +3870,8 @@ situations:
     why: every time으로 한 번도 얕아지면 안 된다고 강조해요. 압박 깊이는 지치면 얕아지기 쉬워서 반복해서 일러 줘요.
     decoy: once in a while
     distractorsKo:
-    - 매번 최대 2인치 깊이로 눌러 주세요
-    - 가끔씩 깊게 눌러 주세요
+    - 분당 100~120회 속도를 지켜 주세요
+    - 손을 가슴 중앙에 두세요
     blank:
       answer: at least
       options:
@@ -3905,11 +3905,11 @@ situations:
       ok: true
     - who: 리더에게 보고
       icon: monitor
-      en: Compression rate is about 90, below target.
+      en: Pushing at about 90 a minute — below target.
       ok: true
     - who: 한창 압박 중인 동료에게
       icon: speech
-      en: Excuse me, would you mind possibly speeding up a little?
+      en: Excuse me, would you mind possibly pushing a little faster?
       ok: false
       fix: Faster — aim for 100 to 120.
     why: 압박 중 코칭은 짧고 분명해야 해요. 시끄러운 코드에서 길게 돌려 말하면 지시로 들리지 않아요. 무례한 게 아니라, 모두가 그렇게 말하는 자리예요.
@@ -3986,7 +3986,7 @@ situations:
     decoy: a one-handed grip
     distractorsKo:
     - 마스크를 잠시 떼어 주세요
-    - 백은 제가 아니라 당신이 짜세요
+    - 마스크를 한 치수 큰 걸로 바꿔요
     blank:
       answer: bag
       options:
@@ -4010,9 +4010,9 @@ situations:
     tag: 환기 확인
     icon: magnify
     why: chest rise는 공기가 폐로 들어가는지 눈으로 보는 가장 간단한 확인이에요. with each breath로 한 번 한 번 확인하라는 뜻을 담아요.
-    decoy: in the morning
+    decoy: the stomach to rise
     distractorsKo:
-    - 가슴이 내려가는 속도를 재 보세요
+    - 흡인기를 켜 둬 주세요
     - 숨을 한 번 넣고 잠시 기다려 보세요
     blank:
       answer: rise
@@ -4040,8 +4040,8 @@ situations:
     why: 천천히 짜는 것은 과환기를 막는 요령이에요. 세게 빨리 넣으면 공기가 위로 들어가 위가 부풀 수 있어요.
     decoy: fall
     distractorsKo:
-    - 백을 세게 빠르게 짜서 가슴을 올려 주세요
-    - 백을 내려놓고 가슴을 눌러 주세요
+    - 산소를 15리터로 연결해 주세요
+    - 입안에 이물질이 있는지 봐 주세요
     blank:
       answer: slowly
       options:
@@ -4066,7 +4066,7 @@ situations:
     why: if 절로 문제가 생기는 조건을 먼저 말해 둬요. 마스크가 새면 머리 자세와 밀착을 다시 잡는 것이 첫 대응이에요.
     decoy: twice
     distractorsKo:
-    - 밀착이 새도 계속 짜 주세요
+    - 입인두 기도기를 넣어 볼게요
     - 밀착이 새면 압박을 멈춰 주세요
     blank:
       answer: leaking
@@ -4150,10 +4150,10 @@ situations:
     tag: 패드 위치
     icon: pushpin
     why: right of와 below로 두 위치를 방향 말로 짚어요. 성인의 표준 위치는 오른쪽 가슴 위쪽 흉골 옆과 왼쪽 겨드랑이 아래 옆구리예요.
-    decoy: the right knee
+    decoy: the right armpit
     distractorsKo:
-    - 패드를 배 위에 나란히 붙여 주세요
-    - 패드를 팔과 다리에 붙여 주세요
+    - 패드를 앞뒤로 붙여도 돼요
+    - 가슴 털이 많으면 먼저 밀어 주세요
     blank:
       answer: sternum
       options:
@@ -4201,15 +4201,15 @@ situations:
     why: Make sure …는 직접 확인하라고 시키는 말이고, no one은 단 한 사람도 없다는 뜻이에요. 방전 전에 침대나 환자에 닿은 사람이 있으면 그 사람도 충격을 받을 수 있어요.
     decoy: or the floor
     distractorsKo:
-    - 침대와 환자를 꼭 붙잡아 주세요
-    - 침대 난간을 모두 올려 주세요
+    - 산소는 침대에서 떨어뜨려 두세요
+    - 충전하는 동안 압박을 계속하세요
     blank:
       answer: no one
       options:
-      - en: someone
-      - en: somebody
-      - en: no one
+      - en: the family
       - en: everyone
+      - en: someone
+      - en: no one
   - en: Check that the pads are sticking to the skin.
     ko: 패드가 피부에 잘 붙어 있는지 확인하세요.
     chunks:
@@ -4229,7 +4229,7 @@ situations:
     decoy: that the wheels
     distractorsKo:
     - 패드를 떼고 피부를 닦아 주세요
-    - 패드 위에 거즈를 덮어 주세요
+    - 약 패치가 있으면 먼저 떼어 주세요
     blank:
       answer: skin
       options:
@@ -4254,8 +4254,8 @@ situations:
     why: before you …로 순서를 못 박아요. 모두 떨어졌는지 확인하는 일이 방전보다 먼저예요. deliver the shock은 제세동기 버튼을 눌러 충격을 준다는 뜻이에요.
     decoy: after you charge
     distractorsKo:
-    - 충격을 준 뒤에 모두 물러나세요
-    - 충격을 주기 전에 패드를 떼세요
+    - 200줄로 충전할게요
+    - 방전 후 바로 압박을 재개해요
     blank:
       answer: deliver
       options:
@@ -4301,16 +4301,16 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 패드 부착부터 방전까지 4문장 순서
-    why: 패드를 붙이고, 피부에 붙었는지 보고 충전하고, 충전된 뒤 접촉을 확인하고, 마지막에 클리어를 외치며 방전해요. they, it's charged가 앞 줄을 가리키고 방전은 마지막 줄이라 순서가 하나예요.
+    why: 패드를 붙이고, 잘 붙었는지 보며 리듬이 심실세동임을 읽고 충전하고, 충전된 뒤 접촉을 확인하고, 마지막에 클리어를 외치며 방전해요. They're는 앞 줄의 패드를, Now that it's charged는 충전을 가리키고 방전은 마지막 줄이라 순서가 하나예요.
     lines:
     - en: Place the pads right of the sternum and below the left armpit.
       icon: pushpin
       ko: 패드를 흉골 오른쪽과 왼쪽 겨드랑이 아래에 붙여요
       note: 부착
-    - en: Check that they're sticking to the skin, then I'll charge.
-      icon: check
-      ko: 피부에 잘 붙었는지 보고 충전할게요
-      note: 확인
+    - en: They're sticking well — that's V-fib, so I'm charging now.
+      icon: monitor
+      ko: 잘 붙었어요 — 심실세동이니 지금 충전할게요
+      note: 리듬
     - en: Now that it's charged, make sure no one is touching the bed.
       icon: shield
       ko: 충전됐으니 아무도 침대를 안 만지는지 확인해요
@@ -4366,7 +4366,7 @@ situations:
     decoy: — pace at 70
     distractorsKo:
     - 무수축이에요 — 압박을 계속하세요
-    - 심실세동이에요 — 압박을 멈추지 마세요
+    - 아미오다론 300을 준비해 주세요
     blank:
       answer: V-fib
       options:
@@ -4393,15 +4393,15 @@ situations:
     why: 충격 직후에는 맥박을 확인하느라 시간을 쓰지 않고 곧바로 압박을 이어 가요. resume은 멈췄던 일을 다시 이어 간다는 뜻이에요.
     decoy: ', stop'
     distractorsKo:
-    - 충격을 주지 않았어요, 압박을 멈추세요
-    - 방전됐어요, 맥박을 먼저 확인하세요
+    - 에피네프린 1mg 들어갔어요
+    - 2분 뒤에 리듬을 다시 볼게요
     blank:
-      answer: immediately
+      answer: Shock
       options:
-      - en: later
-      - en: eventually
-      - en: tomorrow
-      - en: immediately
+      - en: Dose
+      - en: Breath
+      - en: Epi
+      - en: Shock
   - en: This rhythm is shockable, so charge to 200 now.
     ko: 이 리듬은 제세동이 가능하니 200으로 충전하세요.
     chunks:
@@ -4448,7 +4448,7 @@ situations:
     decoy: the shock is charged
     distractorsKo:
     - 충전되는 즉시 압박을 멈추세요
-    - 방전된 뒤 2분 쉬고 압박하세요
+    - 다음 리듬 확인 때 압박자를 바꿔요
     blank:
       answer: Resume
       options:
@@ -4560,7 +4560,7 @@ situations:
     why: Give로 시작하는 짧은 명령에 약 이름, 용량 순으로 말해요. 심정지에서 에피네프린은 1mg을 정맥이나 골내로 3~5분마다 줘요.
     decoy: later
     distractorsKo:
-    - 에피네프린은 아직 주지 마세요
+    - 투여 시각을 기록해 주세요
     - 아미오다론 300밀리그램을 지금 주세요
     blank:
       answer: milligram
@@ -4586,15 +4586,15 @@ situations:
     why: Continue …and reassess …로 지금 할 일과 다음 확인 시점을 함께 말해요. CPR은 보통 2분 단위로 돌고 그때 리듬을 다시 봐요.
     decoy: in two hours
     distractorsKo:
-    - CPR을 멈추고 10분 뒤에 재평가하세요
-    - CPR은 충분하니 바로 이송하세요
+    - 에피네프린 다음 투여는 3분 뒤예요
+    - H와 T를 하나씩 짚어 봐요
     blank:
-      answer: two
+      answer: reassess
       options:
-      - en: two
-      - en: ten
-      - en: twenty
-      - en: thirty
+      - en: intubate
+      - en: sedate
+      - en: reassess
+      - en: transfer
   - en: There's no pulse even though the monitor shows a rhythm.
     ko: 모니터에는 리듬이 보이지만 맥박은 없어요.
     chunks:
@@ -4639,8 +4639,8 @@ situations:
     why: every …minutes로 반복 간격을 말해요. 에피네프린은 3~5분 간격이라서 투여 시각 기록이 중요해요.
     decoy: hours
     distractorsKo:
-    - 에피네프린은 한 번만 주고 멈추세요
-    - 에피네프린은 30분마다 주세요
+    - 다음 투여 시각을 알려 주세요
+    - 정맥로가 잘 들어가는지 확인해 주세요
     blank:
       answer: every
       options:
@@ -4687,7 +4687,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 무수축·PEA 대응 4문장 순서
-    why: 제세동이 안 되는 리듬이라고 판단한 뒤 압박을 이어 가며 에피네프린을 주고, 두 분 뒤 재평가하고, 여전히 그 리듬이면 투약을 이어 가요. While they push, With the epinephrine in, still not shockable의 it이 앞 줄을 가리켜 순서가 하나예요.
+    why: 제세동이 안 되는 리듬이라고 판단한 뒤 압박을 이어 가며 에피네프린을 주고, 2분 뒤 재평가하고, 그 확인에서도 여전히 그 리듬이면 에피네프린을 3~5분 간격으로 이어 가요. While they push, With the epinephrine in, that check가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: This rhythm isn't shockable — keep compressions going.
       icon: monitor
@@ -4701,9 +4701,9 @@ situations:
       icon: redo
       ko: 에피네프린을 넣고 2분 뒤에 리듬을 재평가해요
       note: 재평가
-    - en: If it's still not shockable, keep giving it every three to five minutes.
+    - en: If that check is still not shockable, give epinephrine every three to five minutes.
       icon: bell
-      ko: 여전히 제세동이 안 되면 3~5분마다 계속 줘요
+      ko: 그 확인에서도 여전히 제세동이 안 되면 3~5분마다 에피네프린을 줘요
       note: 간격
 - title: 가역적 원인(H's&T's) 점검
   sentences:
@@ -4801,10 +4801,10 @@ situations:
     tag: 검사 제안
     icon: lab
     why: We should …는 지시 대신 팀의 할 일로 제안하는 말이에요. 칼륨 이상은 가역적 원인이라 수치를 빨리 알아야 해요.
-    decoy: next week
+    decoy: his glucose level
     distractorsKo:
     - 그의 칼륨 약을 바로 줘야 해요
-    - 그의 나트륨 수치를 내일 확인해요
+    - 혈당도 같이 재 주세요
     blank:
       answer: level
       options:
@@ -4829,7 +4829,7 @@ situations:
     why: Ask … about …은 누구에게 무엇을 물을지 한 문장에 담아요. 환자가 말할 수 없으면 가족이 병력을 알려 주는 중요한 정보원이에요.
     decoy: of food allergy
     distractorsKo:
-    - 가족에게 혈전약을 주라고 하세요
+    - 가족에게 복용 중인 약을 여쭤봐 주세요
     - 가족을 대기실로 모셔 주세요
     blank:
       answer: family
@@ -4946,7 +4946,7 @@ situations:
     decoy: poorly
     distractorsKo:
     - 골내로가 안 들어가서 팔에 다시 시도할게요
-    - 골내로는 들어갔는데 아직 안 흘러요
+    - 골내로에 가압백을 연결할게요
     blank:
       answer: tibia
       options:
@@ -4973,14 +4973,14 @@ situations:
     decoy: ', not ready'
     distractorsKo:
     - 라인이 막혔어요, 다시 잡을게요
-    - 라인은 됐고, 수액만 준비됐어요
+    - 에피네프린 지금 들어가요
     blank:
       answer: medications
       options:
-      - en: recovery
-      - en: discharge
+      - en: labs
       - en: medications
-      - en: surgery
+      - en: blood
+      - en: fluids
   - en: Try one more IV before we switch to an IO.
     ko: 골내로로 바꾸기 전에 정맥주사를 한 번 더 시도해요.
     chunks:
@@ -5025,8 +5025,8 @@ situations:
     why: before …ing로 순서를 말해요. 골내로는 생리식염수를 밀어 넣어 흐름을 확인한 뒤에 약을 줘야 약이 잘 들어가요.
     decoy: without giving
     distractorsKo:
-    - 약을 준 뒤에 정맥 라인을 빼세요
-    - 골내로 라인은 흘려보내지 마세요
+    - 골내로 위치와 시각을 기록해 주세요
+    - 다리를 움직이지 않게 잡아 주세요
     blank:
       answer: Flush
       options:
@@ -5076,23 +5076,23 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 골내로 확보 4문장 순서
-    why: 정맥 시도가 실패해 골내로로 전환하고, 들어간 위치를 보고하고, 확보를 알린 뒤, 첫 약을 주기 전 다시 흘려보내요. Okay, Since access is secured의 again이 앞 줄을 가리켜 순서가 하나예요.
+    why: 정맥 시도가 실패해 골내로로 바꾸고, 정강뼈에 들어간 것을 보고하며 흘려보내고, 잘 흘렀으니 확보를 알린 뒤, 그 라인으로 첫 약을 밀어 넣고 바로 흘려요. flushing it, That flushed well, that line이 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Two IV attempts failed — switching to an IO now.
       icon: redo
       ko: 정맥 시도 두 번 실패 — 지금 골내로로 바꿔요
       note: 전환
-    - en: Okay, the IO is in the tibia and flushing well.
+    - en: Okay, the IO is in the tibia — flushing it now.
       icon: check
-      ko: 자, 골내로가 정강뼈에 들어갔고 잘 흘러요
-      note: 보고
-    - en: Access is secured — ready for medications.
+      ko: 자, 골내로가 정강뼈에 들어갔어요 — 지금 흘려보내요
+      note: 흘림
+    - en: That flushed well, so access is secured — ready for medications.
       icon: bell
-      ko: 확보됐어요 — 투약 준비됐어요
+      ko: 잘 흘렀으니 확보됐어요 — 투약 준비됐어요
       note: 확보
-    - en: Since access is secured, flush the IO line again before the first medication.
-      icon: lab
-      ko: 확보됐으니 첫 약을 주기 전에 라인을 다시 흘려요
+    - en: Push the epi through that line and flush right after.
+      icon: pill
+      ko: 그 라인으로 에피를 밀어 넣고 바로 이어서 흘려요
       note: 투약
 - title: ROSC 후 초기 안정화
   sentences:
@@ -5115,7 +5115,7 @@ situations:
     decoy: of lab tubes
     distractorsKo:
     - 자발순환이 아직 없어요 — 압박을 계속하세요
-    - 자발순환이 돌아왔어요 — 모니터를 모두 떼세요
+    - 산소포화도는 92~98%를 목표로 해요
     blank:
       answer: vitals
       options:
@@ -5143,14 +5143,14 @@ situations:
     decoy: the sugar below 90
     distractorsKo:
     - 수축기혈압이 90 아래로 떨어졌어요
-    - 기도 삽관을 지금 제거해요
+    - 체온 관리를 준비해 주세요
     blank:
       answer: above
       options:
-      - en: under
-      - en: beneath
+      - en: at
       - en: above
       - en: below
+      - en: near
   - en: Get a twelve-lead and prepare to move to the ICU.
     ko: 12유도를 찍고 중환자실로 옮길 준비를 하세요.
     chunks:
@@ -5168,16 +5168,16 @@ situations:
     tag: 다음 단계
     icon: hospital
     why: Get …과 prepare …를 and로 이어 할 일 두 가지를 한 번에 시켜요. ROSC 후에는 12유도 심전도로 원인을 찾고 중환자실로 옮겨요.
-    decoy: to the roof
+    decoy: to the floor
     distractorsKo:
-    - 활력징후를 재고 퇴원을 준비하세요
-    - 혈액검사를 하고 병동으로 옮길 준비를 하세요
+    - 심장내과에 연락해 주세요
+    - 보호자에게 소식을 전해 주세요
     blank:
       answer: ICU
       options:
-      - en: pharmacy
-      - en: lobby
-      - en: nursery
+      - en: OR
+      - en: floor
+      - en: PACU
       - en: ICU
   - en: His pulse is back, but keep watching the monitor closely.
     ko: 맥박은 돌아왔지만 모니터를 계속 잘 지켜보세요.
@@ -5198,14 +5198,14 @@ situations:
     decoy: his chart
     distractorsKo:
     - 맥박이 없으니 압박을 계속하세요
-    - 맥박이 돌아왔으니 모니터는 꺼도 돼요
+    - 수축기혈압이 85예요
     blank:
-      answer: closely
+      answer: monitor
       options:
-      - en: closely
-      - en: rarely
-      - en: briefly
-      - en: lightly
+      - en: monitor
+      - en: clock
+      - en: door
+      - en: chart
   - en: Get vitals again and prepare him for transfer to the ICU.
     ko: 활력징후를 다시 재고 중환자실 이송을 준비하세요.
     chunks:
@@ -5220,12 +5220,12 @@ situations:
     - w-icu
     goal: 2
     tag: 이송 준비
-    icon: plane
+    icon: hospital
     why: again으로 이전 측정과 비교해 보겠다는 뜻을 담아요. 이송 전 마지막 활력징후는 인계에서 변화를 보여 주는 기준이 돼요.
-    decoy: to the lobby
+    decoy: to the OR
     distractorsKo:
-    - 활력징후는 생략하고 바로 이송하세요
-    - 활력징후를 재고 환자를 퇴원시키세요
+    - 이송용 모니터와 산소를 챙겨 주세요
+    - 중환자실에 인계 전화를 해 주세요
     blank:
       answer: vitals
       options:
@@ -5270,7 +5270,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: ROSC 직후 4문장 순서
-    why: ROSC를 알리고 활력징후를 다시 재고, 맥박이 돌아왔어도 지켜보며 혈압 목표를 잡은 뒤, 혈압이 유지되면 이송을 준비해요. His pulse is back, While you watch it, Once the pressure holds가 앞 줄을 가리켜 순서가 하나예요.
+    why: ROSC를 알리고 활력징후를 다시 재고, 맥박이 돌아왔어도 지켜보며 혈압 목표를 잡은 뒤, 12유도를 찍고 이송을 준비해요. His pulse is back, While you watch it, With that target set이 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: We have ROSC — recheck a full set of vitals.
       icon: star
@@ -5284,9 +5284,9 @@ situations:
       icon: chartup
       ko: 지켜보면서 수축기혈압을 90 이상으로 유지해요
       note: 목표
-    - en: Once the pressure holds, get a twelve-lead and prepare to move to the ICU.
+    - en: With that target set, get a twelve-lead now and prepare to move to the ICU.
       icon: hospital
-      ko: 혈압이 유지되면 12유도를 찍고 중환자실 이송을 준비해요
+      ko: 목표를 정했으니 지금 12유도를 찍고 중환자실 이송을 준비해요
       note: 이송
 - title: 소생 중 SBAR 리더 보고
   sentences:
@@ -5308,7 +5308,7 @@ situations:
     why: SBAR의 상황(S)에 해당하는 한 줄로, 동사 없이 숫자만 짧게 말해요. down은 쓰러진 뒤 흐른 시간, round는 CPR 한 주기(보통 2분)예요.
     decoy: of fluids
     distractorsKo:
-    - 다운타임은 알 수 없고, CPR은 아직 시작 안 했어요
+    - 정맥로는 오른팔에 있어요
     - 다운타임 약 2분, CPR은 한 라운드 했어요
     blank:
       answer: eight
@@ -5367,7 +5367,7 @@ situations:
     decoy: anymore
     distractorsKo:
     - 현재 리듬은 정상 동성이고, 자발순환이 돌아왔어요
-    - 현재 리듬은 무수축이고, 충격이 필요해요
+    - 무수축이고, 압박 중이에요
     blank:
       answer: still
       options:
@@ -5391,9 +5391,9 @@ situations:
     tag: 투약 횟수
     icon: pill
     why: We've given …은 현재완료로 지금까지 쌓인 횟수를 말해요. so far로 지금까지의 합계라는 점을 분명히 해요.
-    decoy: last night
+    decoy: in the field
     distractorsKo:
-    - 이번 라운드에서 에피는 한 번도 안 줬어요
+    - 다음 에피는 1분 뒤예요
     - 이번 라운드에서 충격을 두 번 줬어요
     blank:
       answer: given
@@ -5420,7 +5420,7 @@ situations:
     why: Let … know는 누군가에게 알려 주라는 흔한 지시 틀이에요. 코드 리더는 리듬과 경과 시간으로 다음 처치를 정해요.
     decoy: the room number
     distractorsKo:
-    - 리더에게 알리지 말고 기록만 해 주세요
+    - 기록자에게 시각을 확인해 주세요
     - 리더에게 가족이 와 있다고 알려 주세요
     blank:
       answer: leader
@@ -5467,7 +5467,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 소생 중 리더 보고 4문장 순서
-    why: 경과 시간으로 시작해 그동안 한 처치를 말하고, 현재 상태를 알린 뒤 다음 판단을 요청해요. In that time, After all of that, Given all that이 앞 줄을 가리켜 순서가 하나예요.
+    why: 경과 시간으로 시작해 그동안 한 처치를 말하고, 현재 상태를 알린 뒤 다음 판단을 요청해요. In that time, After those shocks, Given all that이 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Down about eight minutes, three rounds of CPR so far.
       icon: monitor
@@ -5477,9 +5477,9 @@ situations:
       icon: pill
       ko: 그동안 충격 두 번, 에피 두 번 줬어요
       note: 처치
-    - en: After all of that, rhythm is still V-fib, no ROSC yet.
+    - en: After those shocks, rhythm is still V-fib, no ROSC yet.
       icon: chartup
-      ko: 그러고도 리듬은 여전히 심실세동, 자발순환은 아직 없어요
+      ko: 그 충격 뒤에도 리듬은 여전히 심실세동, 자발순환은 아직 없어요
       note: 현재
     - en: Given all that, what's your next step?
       icon: speech
@@ -5527,17 +5527,17 @@ situations:
     tag: 곁에 있기
     icon: speech
     why: I'll …은 곧 하겠다는 약속의 말이라 가족이 혼자가 아니라고 느껴요. stay with you는 자리를 지키겠다는 뜻이에요.
-    decoy: what's for lunch
+    decoy: where to wait
     distractorsKo:
     - 제가 잠시 자리를 비울게요
     - 상황은 의사가 나중에 설명할 거예요
     blank:
       answer: explain
       options:
+      - en: follow
+      - en: watch
+      - en: hear
       - en: explain
-      - en: ignore
-      - en: cancel
-      - en: hide
   - en: You can stand here where he can hear your voice.
     ko: 여기 서 계시면 그가 목소리를 들을 수 있어요.
     chunks:
@@ -5583,7 +5583,7 @@ situations:
     decoy: is resting
     distractorsKo:
     - 걱정 마세요, 아무 문제 없어요
-    - 무서우시겠지만 팀은 지금 쉬고 있어요
+    - 의자를 가져다 드릴게요
     blank:
       answer: frightening
       options:
@@ -5613,9 +5613,9 @@ situations:
     blank:
       answer: keep
       options:
+      - en: start
+      - en: try
       - en: stop
-      - en: avoid
-      - en: refuse
       - en: keep
   nuance:
   - kind: slider
@@ -5655,7 +5655,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 입회 가족에게 하는 4문장 순서
-    why: 먼저 감정을 인정하고 곁에 있겠다고 말하고, 서 있을 자리를 알려 주고, 눈앞의 처치를 설명한 뒤 계속 알리겠다고 약속해요. While I'm here, From where you're standing, all of that이 앞 줄을 가리켜 순서가 하나예요.
+    why: 먼저 감정을 인정하고 곁에 있겠다고 말하고, 서 있을 자리를 알려 주고, 그 자리에서 보이는 처치를 설명한 뒤 계속 알리겠다고 약속해요. While I'm here, From that spot, all of that이 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: I know this is frightening, so I'll stay with you.
       icon: faceWorried
@@ -5665,9 +5665,9 @@ situations:
       icon: speaker
       ko: 제가 있는 동안 목소리가 들리는 곳에 서 계세요
       note: 위치
-    - en: From where you're standing, you can see the team doing everything they can for him.
+    - en: From that spot, you can see the team doing everything they can for him.
       icon: handshake2
-      ko: 서 계신 곳에서 팀이 최선을 다하는 게 보여요
+      ko: 그 자리에서 팀이 최선을 다하는 게 보여요
       note: 안심
     - en: I'll keep explaining all of that as it happens.
       icon: speech
@@ -5689,7 +5689,7 @@ situations:
     goal: 1
     tag: 다운타임
     icon: calendar
-    why: What was …?는 이미 지나간 일을 묻는 과거 시제 질문이에요. down time은 쓰러진 뒤 CPR이 시작되기까지의 시간이라 예후와 처치 판단에 쓰여요.
+    why: What was …?는 이미 지나간 일을 묻는 과거 시제 질문이에요. down time은 쓰러진 뒤 흐른 시간이에요. before CPR started를 붙이면 CPR 없이 지난 시간을 묻는 말이 되고, 이 시간이 예후를 크게 좌우해요.
     decoy: the drive time
     distractorsKo:
     - CPR을 몇 분 동안 했나요?
@@ -5718,7 +5718,7 @@ situations:
     tag: 현장 처치
     icon: siren
     why: How many …?는 셀 수 있는 것의 횟수를 묻는 틀이에요. in the field는 병원 밖, 즉 구급대가 출동한 현장을 뜻해요.
-    decoy: last year
+    decoy: by the family
     distractorsKo:
     - 병원에서 충격과 약물을 몇 번 줬나요?
     - 현장에서 환자를 몇 분 동안 옮겼나요?
@@ -5805,9 +5805,9 @@ situations:
       answer: shocks
       options:
       - en: shocks
-      - en: doses
+      - en: boluses
       - en: breaths
-      - en: fluids
+      - en: doses
   nuance:
   - kind: pair
     words:
@@ -5851,7 +5851,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 구급대 인수 질문 4문장 순서
-    why: 목격 여부로 시작해 그 사람이 CPR을 했는지 묻고, 다운타임을 물은 뒤 구급대의 현장 처치를 물어요. that person, So, Once EMS arrived가 앞 줄을 가리켜 순서가 하나예요.
+    why: 목격 여부로 시작해 그 사람이 CPR을 했는지 묻고, 그 CPR이 시작되기 전 다운타임을 물은 뒤 구급대의 현장 처치를 물어요. that person, So … that CPR, Once EMS arrived가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Was the arrest witnessed, and by whom?
       icon: magnify
@@ -5861,9 +5861,9 @@ situations:
       icon: me
       ko: 그분이 구급차 오기 전에 CPR을 시작했나요?
       note: CPR
-    - en: So what was the down time before CPR started?
+    - en: So how long was he down before that CPR started?
       icon: calendar
-      ko: 그럼 CPR 시작 전 다운타임은 얼마였나요?
+      ko: 그럼 그 CPR이 시작되기 전에 얼마나 쓰러져 있었나요?
       note: 시간
     - en: Once EMS arrived, how many shocks and medications did they give?
       icon: siren
@@ -5888,8 +5888,8 @@ situations:
     why: 비교급 deeper는 지금보다 더라는 방향을 한 단어로 줘요. 깊이는 지치면 얕아지기 쉬워서 수치를 덧붙여 기준을 알려요.
     decoy: one inch
     distractorsKo:
-    - 더 얕게 눌러 주세요 — 매번 1인치만요
-    - 더 빠르게 눌러 주세요 — 분당 140회요
+    - 손을 가슴 중앙으로 옮겨 주세요
+    - 압박 중단은 10초를 넘기지 마세요
     blank:
       answer: deeper
       options:
@@ -5911,11 +5911,11 @@ situations:
     goal: 1
     tag: 이완 교정
     icon: redo
-    why: Let the chest …는 '~하게 두라'는 사역 표현이에요. 압박 사이에 가슴이 완전히 올라와야 심장에 피가 다시 차서 기대지 않는 것이 핵심이에요.
+    why: Let the chest …는 '~하게 두라'는 사역 표현이에요. 압박 사이에 가슴이 완전히 올라와야 심장에 피가 다시 차요. 그래서 가슴에 기대지 않는 것이 핵심이에요.
     decoy: after each shock
     distractorsKo:
-    - 압박 사이에 가슴을 계속 눌러 두세요
-    - 압박 사이에 가슴을 살짝 쓸어 주세요
+    - 팔꿈치를 곧게 펴 주세요
+    - 30번 누르고 두 번 환기해요
     blank:
       answer: recoil
       options:
@@ -5940,8 +5940,8 @@ situations:
     why: 명령을 먼저, 이유를 뒤에 붙이는 짧은 교정이에요. 너무 빠른 환기는 심장으로 돌아오는 혈액을 줄일 수 있어서 속도를 지켜야 해요.
     decoy: too little
     distractorsKo:
-    - 환기를 빠르게 하세요 — 너무 느리게 환기하고 있어요
-    - 환기를 멈추세요 — 이제 필요 없어요
+    - 마스크가 새고 있어요
+    - 흡인기를 준비해 주세요
     blank:
       answer: fast
       options:
@@ -5965,7 +5965,7 @@ situations:
     why: The monitor shows …로 근거를 기계에 두면 압박자에게 지적이 덜 개인적으로 들려요. 피드백 장치가 깊이를 알려 주면 그 숫자를 보고 조절해요.
     decoy: his breaths
     distractorsKo:
-    - 모니터에 압박이 너무 깊다고 나와요
+    - 모니터에 압박 중단 시간이 길다고 나와요
     - 모니터에 압박 속도가 좋다고 나와요
     blank:
       answer: shallow
@@ -5992,8 +5992,8 @@ situations:
     why: before you …로 순서를 정해 줘요. 가슴이 다 올라온 뒤에 다시 눌러야 매번 심장에 피가 차서 효과가 커져요.
     decoy: halfway
     distractorsKo:
-    - 가슴이 이완되기 전에 다시 누르세요
-    - 다시 누르기 전에 환자 가슴에서 손을 떼세요
+    - 2분이 되면 교대할게요
+    - 압박 속도는 지금이 좋아요
     blank:
       answer: push
       options:
@@ -6040,15 +6040,15 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 압박 질 교정 4문장 순서
-    why: 모니터가 얕다고 알려 주면 더 깊게 누르라고 하고, 압박 사이에 이완을 요구한 뒤 좋아졌다고 확인해요. deeper는 shallow를, Between pushes와 full recoil은 앞 줄을 가리켜 순서가 하나예요.
+    why: 모니터가 얕다고 알려 주면 그러니 더 깊게 누르라고 하고, 압박 사이에 이완을 요구한 뒤 좋아졌다고 확인해요. That means는 shallow를, Between pushes와 full recoil은 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: The monitor shows your compressions are too shallow.
       icon: monitor
       ko: 모니터에 압박이 너무 얕다고 나와요
       note: 지적
-    - en: Push deeper — at least two inches every time.
+    - en: That means push deeper — at least two inches every time.
       icon: chartup
-      ko: 더 깊게요 — 매번 최소 2인치요
+      ko: 그러니 더 깊게 눌러요 — 매번 최소 2인치요
       note: 깊이
     - en: Between pushes, let the chest fully recoil.
       icon: redo
@@ -6076,8 +6076,8 @@ situations:
     why: 저체온 환자는 대사가 크게 줄어 몸이 차가울 때 사망 판단을 서두르지 않는다는 원칙을 짧게 외우는 말이에요. 차가운 몸 자체는 사망 선언의 근거가 되지 않아요.
     decoy: and awake
     distractorsKo:
-    - 따뜻해지면 바로 사망 선언해도 돼요
-    - 차가워지면 소생을 멈춰도 돼요
+    - 심부 체온을 식도 탐침으로 재 주세요
+    - 따뜻한 수액을 준비해 주세요
     blank:
       answer: warm
       options:
@@ -6102,8 +6102,8 @@ situations:
     why: while로 동시에 진행되는 두 가지를 이어요. 저체온 심정지는 체온을 올리는 동안에도 압박을 이어 가는 것이 기본이에요.
     decoy: Stop compressions now
     distractorsKo:
-    - 체온이 오를 때까지 압박을 멈추세요
-    - 재가온은 소생이 끝난 뒤에 시작해요
+    - 젖은 옷을 벗겨 주세요
+    - 가온 담요를 덮어 주세요
     blank:
       answer: rewarm
       options:
@@ -6128,11 +6128,11 @@ situations:
     goal: 2
     tag: 약물 간격
     icon: pill
-    why: space out은 간격을 벌린다는 구동사예요. 저체온에서는 약이 몸에 오래 남을 수 있어서 병원 지침에 따라 투여 간격을 늘리거나 미루기도 해요.
+    why: space out은 간격을 벌린다는 구동사예요. 저체온에서는 약이 몸에 오래 남아서, 유럽 지침은 30°C 아래에서 에피네프린을 미루고 그 위에서는 간격을 두 배로 늘려요. 미국은 병원 지침에 따라요.
     decoy: the compressions
     distractorsKo:
-    - 약물을 평소보다 더 자주 주세요
-    - 심부 체온은 신경 쓰지 말고 약물을 주세요
+    - 심부 체온을 15분마다 알려 주세요
+    - 체외순환(ECMO) 팀에 연락해 주세요
     blank:
       answer: rises
       options:
@@ -6157,8 +6157,8 @@ situations:
     why: so로 이유(몸이 매우 차다)와 결정을 이어요. 저체온에서는 뇌가 보호되어 있을 수 있어서 포기하지 않고 계속하는 것이 원칙이에요.
     decoy: stop here
     distractorsKo:
-    - 몸이 아주 따뜻해서 소생을 멈출게요
-    - 몸이 차가워서 사망 시각을 선언할게요
+    - 심부 체온은 28도예요
+    - 가족에게 상황을 알려 드릴게요
     blank:
       answer: cold
       options:
@@ -6183,8 +6183,8 @@ situations:
     why: won't는 하지 않겠다는 분명한 약속이에요. call time of death에서 call은 사망 시각을 공식적으로 선언한다는 뜻이에요.
     decoy: dry
     distractorsKo:
-    - 따뜻해지면 바로 사망 시각을 선언할게요
-    - 따뜻해지기 전에 사망 시각을 선언할게요
+    - 보호자분께 연락드렸어요
+    - 체온을 다시 재 볼게요
     blank:
       answer: death
       options:
@@ -6232,24 +6232,24 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 저체온 심정지 4문장 순서
-    why: 몸이 매우 차갑다는 판단으로 계속하겠다고 말하고, 재가온하는 동안 압박을 잇고, 체온이 오를 때까지 약물 간격을 두고, 그때까지 사망 선언을 보류해요. keep going, Until, Until then이 앞 줄을 가리켜 순서가 하나예요.
+    why: 너무 차가워 사망을 선언할 수 없다고 판단하고, 그래서 재가온하는 동안 압박을 잇고, 그 재가온 동안 지침대로 에피 간격을 두고, 체온이 오르고 약이 들어간 뒤에야 멈출지 정해요. That means, that rewarming, those doses가 앞 줄을 가리켜 순서가 하나예요.
     lines:
-    - en: His body is very cold, so we'll keep going.
+    - en: Core temp is 27 — he's too cold to call, so we keep going.
       icon: shield
-      ko: 몸이 아주 차가우니 계속 이어갈게요
+      ko: 심부 체온 27도예요 — 너무 차가워서 사망 선언은 못 해요, 계속 가요
       note: 결정
-    - en: Keep compressions going while we actively rewarm him.
+    - en: That means compressions continue while we actively rewarm him.
       icon: play
-      ko: 적극적으로 재가온하는 동안 압박을 계속해요
+      ko: 그러니 적극적으로 재가온하는 동안 압박은 계속해요
       note: 압박
-    - en: Until his core temperature rises, space out the medications.
+    - en: During that rewarming, space out the epi per our protocol.
       icon: pill
-      ko: 심부 체온이 오를 때까지 약물 간격을 두어요
+      ko: 그 재가온 동안 우리 지침에 따라 에피 간격을 두어요
       note: 약물
-    - en: Until then, we won't call time of death.
+    - en: Once he's warm and those doses are in, we'll decide whether to stop.
       icon: bell
-      ko: 그때까지는 사망 시각을 선언하지 않아요
-      note: 보류
+      ko: 체온이 오르고 그 약이 들어가면 멈출지 정해요
+      note: 판단
 - title: 고칼륨혈증 심정지 표적치료
   sentences:
   - en: Missed dialysis makes hyperkalemia very likely.
@@ -6269,15 +6269,15 @@ situations:
     why: makes …로 원인과 결과를 이어요. 투석을 거르면 칼륨이 몸에 쌓이기 쉬워서 투석 환자의 심정지에서는 고칼륨혈증을 먼저 의심해요.
     decoy: very rare
     distractorsKo:
-    - 투석을 해서 칼륨이 떨어졌을 가능성이 높아요
-    - 인슐린을 걸러서 저혈당일 가능성이 높아요
+    - 투석 카테터가 오른쪽 가슴에 있어요
+    - 인슐린을 걸러서 고혈당일 수 있어요
     blank:
       answer: dialysis
       options:
-      - en: insulin
-      - en: breakfast
-      - en: therapy
       - en: dialysis
+      - en: therapy
+      - en: insulin
+      - en: rehab
   - en: Give calcium to protect the heart right now.
     ko: 심장을 보호하기 위해 지금 칼슘을 주세요.
     chunks:
@@ -6294,10 +6294,10 @@ situations:
     tag: 칼슘 투여
     icon: pill
     why: to protect …로 약을 주는 목적을 밝혀요. 칼슘은 칼륨 수치를 낮추지는 않지만 높은 칼륨이 심장에 미치는 영향을 막아 줘요.
-    decoy: to lower the fever
+    decoy: to lower the potassium
     distractorsKo:
-    - 칼륨을 줘서 심장을 보호하세요
-    - 칼슘은 나중에 주세요
+    - 중탄산나트륨도 준비해 주세요
+    - 칼륨 수치가 몇이었나요?
     blank:
       answer: calcium
       options:
@@ -6324,8 +6324,8 @@ situations:
     why: with dextrose로 두 약을 함께 준다는 뜻을 담아요. 인슐린은 칼륨을 세포 안으로 밀어 넣고, 포도당은 저혈당을 막아 줘요.
     decoy: to raise the sodium
     distractorsKo:
-    - 칼륨을 올리기 위해 인슐린을 빼 주세요
-    - 포도당 없이 인슐린만 주세요
+    - 알부테롤 흡입도 준비해 주세요
+    - 30분 뒤에 혈당을 다시 재 주세요
     blank:
       answer: dextrose
       options:
@@ -6349,7 +6349,7 @@ situations:
     decoy: meal
     distractorsKo:
     - 마지막 식사가 언제였는지 물어보세요
-    - 다음 투석이 언제인지 물어보세요
+    - 투석 혈관이 어느 쪽 팔인지 물어보세요
     blank:
       answer: last
       options:
@@ -6374,12 +6374,12 @@ situations:
     - w-potassium
     goal: 2
     tag: 역할 설명
-    icon: handshake2
+    icon: bulb
     why: while로 두 약이 동시에 하는 서로 다른 일을 나란히 설명해요. 칼슘은 심장을 지키고 인슐린은 칼륨을 세포 안으로 옮겨요.
     decoy: stops
     distractorsKo:
-    - 칼슘이 칼륨을 이동시키는 동안 인슐린이 심장을 보호해요
-    - 칼슘과 인슐린 둘 다 칼륨을 올려요
+    - 포도당은 저혈당을 막으려고 같이 줘요
+    - 신장내과에 응급 투석을 요청할게요
     blank:
       answer: shifts
       options:
@@ -6430,7 +6430,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 고칼륨혈증 대응 4문장 순서
-    why: 투석 병력으로 고칼륨혈증을 의심하고, 심장을 먼저 보호한 뒤 칼륨을 옮기고, 그동안 마지막 투석 시점을 물어요. If so, With the heart protected, While that works가 앞 줄을 가리켜 순서가 하나예요.
+    why: 투석 병력으로 고칼륨혈증을 의심하고, 심장을 먼저 보호한 뒤 칼륨을 옮기고, 인슐린이 듣는 동안 마지막 투석 시점을 물어요. If so, With the heart protected, While the insulin works가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Missed dialysis makes hyperkalemia very likely.
       icon: bulb
@@ -6444,9 +6444,9 @@ situations:
       icon: pill
       ko: 심장이 보호되면 인슐린과 포도당으로 칼륨을 옮겨요
       note: 이동
-    - en: While that works, ask when he had his last dialysis.
+    - en: While the insulin works, ask exactly when his last dialysis was.
       icon: calendar
-      ko: 그게 듣는 동안 마지막 투석이 언제였는지 물어봐요
+      ko: 인슐린이 듣는 동안 마지막 투석이 정확히 언제였는지 물어봐요
       note: 병력
 - title: 임산부 심정지 자궁 좌측 전위
   sentences:
@@ -6465,11 +6465,11 @@ situations:
     goal: 1
     tag: 자궁 이동
     icon: baby
-    why: Manually는 기구가 아니라 손으로 한다는 부사예요. 임신 후반의 임산부는 자궁이 큰 혈관을 눌러 순환을 방해할 수 있어서 자궁을 왼쪽으로 밀어요.
+    why: Manually는 기구가 아니라 손으로 한다는 부사예요. 임신 20주쯤부터(자궁 바닥이 배꼽 높이 이상) 자궁이 큰 혈관을 눌러 순환을 방해할 수 있어서 자궁을 왼쪽으로 밀어요.
     decoy: the bed
     distractorsKo:
-    - 손으로 자궁을 오른쪽으로 밀어 주세요
-    - 손으로 배를 세게 눌러 주세요
+    - 정맥로는 팔에 잡아 주세요
+    - 태아 모니터는 떼어 주세요
     blank:
       answer: left
       options:
@@ -6495,7 +6495,7 @@ situations:
     goal: 2
     tag: 산과팀 호출
     icon: bell
-    why: 두 팀을 먼저 부르고 준비할 일을 이어 말해요. perimortem C-section은 임산부가 심정지일 때 소생을 돕기 위해 하는 제왕절개예요.
+    why: 두 팀을 먼저 부르고 준비할 일을 이어 말해요. perimortem C-section은 임산부가 심정지일 때 소생을 돕기 위해 하는 제왕절개예요. 심정지 4분 안에 자발순환이 없으면 시작해 5분 안에 아기를 꺼내는 것을 목표로 해서, 팀을 처음부터 같이 불러요.
     decoy: appendectomy
     distractorsKo:
     - 정형외과와 마취과를 불러서 기관 삽관을 준비하세요
@@ -6523,11 +6523,11 @@ situations:
     goal: 1
     tag: 압박 위치
     icon: chartup
-    why: 위치를 high on the sternum처럼 짧게 말하고 continuous로 끊지 말라고 덧붙여요. continuous는 중간에 멈추지 않고 이어진다는 뜻이에요.
+    why: continuous로 압박을 끊지 말라고 덧붙여요. 손 위치는 예전 지침의 '조금 높게'가 아니라 보통 환자와 같은 가슴 중앙(흉골 아래쪽 절반)이에요 — 병원 지침을 따라요.
     decoy: hard
     distractorsKo:
-    - 흉골 아래쪽에서 압박을 가끔씩 하세요
-    - 배 위쪽에서 압박을 끊김 없이 계속하세요
+    - 2분마다 압박자를 바꿔요
+    - 에피네프린은 평소와 같은 용량이에요
     blank:
       answer: continuous
       options:
@@ -6553,7 +6553,7 @@ situations:
     why: Someone needs to …는 지금 비어 있는 역할을 말로 만들어 사람이 나서게 해요. 자궁을 미는 사람이 따로 있어야 압박과 환기가 끊기지 않아요.
     decoy: the table
     distractorsKo:
-    - 누군가 자궁을 오른쪽으로 밀어야 해요
+    - 누군가 시각을 기록해 주세요
     - 누군가 산모 가족을 안내해야 해요
     blank:
       answer: needs
@@ -6581,7 +6581,7 @@ situations:
     why: may need는 확정이 아니라 가능성으로 알려요. 그래서 결정이 나기 전에 미리 팀을 부르는 거예요.
     decoy: later
     distractorsKo:
-    - 산부인과는 부르지 않아도 돼요
+    - 자궁을 계속 왼쪽으로 밀고 있어요
     - 지금 신생아과를 불러 주세요 — 인큐베이터가 필요해요
     blank:
       answer: may
@@ -6629,24 +6629,24 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 임산부 심정지 4문장 순서
-    why: 먼저 자궁을 손으로 밀고, 그동안 압박을 이어 가고, 맥박이 계속 없으면 산부인과를 부르고, 수술 준비를 시켜요. that, still, that C-section이 앞 줄을 가리켜 순서가 하나예요.
+    why: 산부인과·신생아팀을 먼저 부르고, 그들이 오는 동안 자궁을 손으로 밀고, 그걸 유지한 채 압박을 이어 가고, 4분을 해도 자발순환이 없으면 임사 제왕절개를 판단해요. While they come, With that held, that이 앞 줄을 가리켜 순서가 하나예요.
     lines:
-    - en: Manually displace the uterus to the left.
-      icon: baby
-      ko: 손으로 자궁을 왼쪽으로 밀어 주세요
-      note: 자궁
-    - en: While that's held, keep compressions continuous on the sternum.
-      icon: chartup
-      ko: 그걸 유지하는 동안 압박을 끊김 없이 이어요
-      note: 압박
-    - en: If there's still no pulse after those two steps, call OB — she may need a perimortem C-section.
+    - en: Maternal arrest — call OB and neonatal now.
       icon: bell
-      ko: 그 두 가지 뒤에도 맥박이 없으면 산부인과를 불러요 — 임사 제왕절개가 필요할 수 있어요
+      ko: 임산부 심정지예요 — 지금 산부인과와 신생아팀을 불러요
       note: 호출
-    - en: Have the neonatal team and a tray ready for that C-section.
+    - en: While they come, manually displace the uterus to the left.
+      icon: baby
+      ko: 그들이 오는 동안 손으로 자궁을 왼쪽으로 밀어요
+      note: 자궁
+    - en: With that held, keep compressions continuous.
+      icon: chartup
+      ko: 그걸 유지하면서 압박을 끊김 없이 이어요
+      note: 압박
+    - en: If four minutes of that brings no ROSC, she may need a perimortem C-section.
       icon: scalpel
-      ko: 그 제왕절개에 대비해 신생아팀과 수술 도구를 준비해요
-      note: 준비
+      ko: 그렇게 4분을 해도 자발순환이 안 돌아오면 임사 제왕절개가 필요할 수 있어요
+      note: 판단
 - title: 아나필락시스성 심정지
   sentences:
   - en: This is anaphylactic arrest — give IV epinephrine now.
@@ -6669,8 +6669,8 @@ situations:
     why: 상황 이름을 먼저 말하고 그에 맞는 약을 지시해요. 아나필락시스로 심정지가 오면 에피네프린을 정맥으로 바로 주는 것이 핵심이에요.
     decoy: IV atropine
     distractorsKo:
-    - 아나필락시스예요 — 항히스타민제를 먹여 주세요
-    - 심정지예요 — 에피네프린은 주지 마세요
+    - 원인이 된 약 주입을 멈춰 주세요
+    - 마취과에 기도 확보를 요청해 주세요
     blank:
       answer: IV
       options:
@@ -6695,8 +6695,8 @@ situations:
     why: wide open은 조절기를 최대로 연다는 뜻이에요. 아나필락시스에서는 혈관이 넓어지고 새어서 혈압이 떨어지므로 많은 수액이 필요해요.
     decoy: slowly
     distractorsKo:
-    - 수액은 천천히 소량만 주세요
-    - 수액 대신 진통제를 열어 주세요
+    - 두 번째 정맥로를 잡아 주세요
+    - 알레르기 팔찌를 확인해 주세요
     blank:
       answer: fluids
       options:
@@ -6723,8 +6723,8 @@ situations:
     why: with all that …으로 어려움의 이유를 덧붙여요. 아나필락시스에서는 혀와 목이 붓는 일이 많아서 기도 확보가 어려울 수 있어요.
     decoy: bleeding
     distractorsKo:
-    - 기도는 쉬울 테니 천천히 준비하세요
-    - 부종이 없으니 일반 마스크만 준비하세요
+    - 수액을 최대로 열어 주세요
+    - 혈압을 3분마다 재 주세요
     blank:
       answer: difficult
       options:
@@ -6751,8 +6751,8 @@ situations:
     why: not just …로 이미 하던 방식에 더해 달라는 뜻을 담아요. 순환이 멈추면 근육주사는 약이 제대로 퍼지지 않아서 정맥(또는 골내)으로 줘요.
     decoy: ', not just the oxygen'
     distractorsKo:
-    - 근육으로만 에피네프린을 천천히 주세요
-    - 정맥이 아니라 피부에 에피네프린을 주세요
+    - 항히스타민제는 나중에 줄게요
+    - 산소를 100%로 올려 주세요
     blank:
       answer: vein
       options:
@@ -6780,8 +6780,8 @@ situations:
     why: and로 지금 할 일과 지켜볼 일을 이어요. swell은 붓는다는 동사라서 기도가 좁아지는지 계속 보라는 뜻이에요.
     decoy: his pupils
     distractorsKo:
-    - 수액을 잠그고 기도가 마르는지 보세요
-    - 수액은 천천히 열고 체온을 지켜보세요
+    - 이 환자는 조영제를 맞았어요
+    - 에피네프린을 한 번 더 준비해 주세요
     blank:
       answer: swell
       options:
@@ -6829,7 +6829,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 아나필락시스성 심정지 4문장 순서
-    why: 상황을 선언하고 에피네프린을 주고, 그동안 수액을 열고, 수액이 돌면 기도를 준비하고, 붓기가 심해지면 기도를 확보해요. that, Once the fluids are running, it, that airway가 앞 줄을 가리켜 순서가 하나예요.
+    why: 상황을 선언하고 에피네프린을 주고, 그동안 수액을 열고, 수액이 도는 동안 어려운 기도를 준비하고, 붓기가 기도를 막기 전에 일찍 확보해요. that, the fluids, that airway가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: This is anaphylactic arrest — give IV epinephrine now.
       icon: siren
@@ -6839,14 +6839,14 @@ situations:
       icon: pill
       ko: 그게 들어가는 동안 대용량 수액을 완전히 열어요
       note: 수액
-    - en: Once the fluids are running, prepare for a difficult airway.
+    - en: While the fluids run, prepare for a difficult airway — the swelling is bad.
       icon: gear
-      ko: 수액이 돌면 어려운 기도에 대비해요
-      note: 기도
-    - en: Watch it closely — if the swelling gets worse, we secure that airway.
-      icon: magnify
-      ko: 잘 지켜봐요 — 붓기가 심해지면 그 기도를 확보해요
-      note: 관찰
+      ko: 수액이 도는 동안 어려운 기도에 대비해요 — 붓기가 심해요
+      note: 준비
+    - en: Secure that airway early, before the swelling closes it off.
+      icon: stetho
+      ko: 그 기도를 일찍 확보해요 — 붓기가 막아 버리기 전에요
+      note: 확보
 - title: ROSC 후 재정지 반복
   sentences:
   - en: He re-arrested — restart compressions immediately.
@@ -6867,7 +6867,7 @@ situations:
     decoy: slowly
     distractorsKo:
     - 맥박이 돌아왔어요 — 압박을 멈추세요
-    - 다시 심정지가 왔어요 — 잠시 기다리세요
+    - 에피네프린 다음 투여 시각을 알려 주세요
     blank:
       answer: restart
       options:
@@ -6892,17 +6892,17 @@ situations:
     tag: 원인 탐색
     icon: magnify
     why: Let's find and fix로 동사 두 개를 묶어 '찾고 고치자'는 한 가지 목표로 말해요. 재정지가 반복되면 처음 원인이 해결되지 않았을 수 있어요.
-    decoy: gaining his weight
+    decoy: getting his pulse back
     distractorsKo:
     - 왜 맥박이 돌아왔는지 확인해 봐요
-    - 맥박을 잃어도 원인은 나중에 찾아요
+    - 심장내과 선생님을 불러 주세요
     blank:
       answer: fix
       options:
-      - en: ignore
-      - en: forget
-      - en: skip
+      - en: chart
+      - en: watch
       - en: fix
+      - en: explain
   - en: We may need urgent transfer to the cath lab.
     ko: 심혈관조영실로 긴급 이송이 필요할 수 있어요.
     chunks:
@@ -6920,10 +6920,10 @@ situations:
     tag: 이송 가능성
     icon: hospital
     why: may need로 아직 정해지지 않은 가능성을 미리 알려요. 심장 문제가 원인으로 의심되면 혈관을 직접 보고 치료하는 심혈관조영실(cath lab)로 옮길 수 있어요.
-    decoy: to the cafeteria
+    decoy: to the CT scanner
     distractorsKo:
-    - 영상의학과로 일반 이송이 필요할 수 있어요
-    - 심혈관조영실 이송은 필요 없어요
+    - 12유도를 다시 찍어 주세요
+    - 칼륨 수치를 다시 확인해 주세요
     blank:
       answer: urgent
       options:
@@ -6951,7 +6951,7 @@ situations:
     decoy: — stop compressions
     distractorsKo:
     - 맥박이 다시 잡혔어요 — 압박을 멈추세요
-    - 처음부터 맥박이 없었어요 — 지금 압박을 시작하세요
+    - 리듬은 다시 심실세동이에요
     blank:
       answer: lost
       options:
@@ -6973,10 +6973,10 @@ situations:
     tag: 원인 필요
     icon: compass
     why: We need to …는 해야 할 일을 팀 모두의 과제로 말해요. keeps …ing는 같은 일이 되풀이된다는 뜻이에요.
-    decoy: sleeping
+    decoy: losing blood
     distractorsKo:
-    - 왜 계속 맥박이 잡히는지 찾아야 해요
-    - 재정지는 원인을 찾을 필요 없어요
+    - 아미오다론을 한 번 더 준비해 주세요
+    - 이송 전에 가족 동의를 받아 주세요
     blank:
       answer: keeps
       options:
@@ -7008,7 +7008,7 @@ situations:
     scenes:
     - who: 팀에게
       icon: speech
-      en: He's lost his pulse again — restart compressions!
+      en: He re-arrested — restart compressions!
       ok: true
     - who: 리더에게 보고
       icon: monitor
@@ -7020,8 +7020,8 @@ situations:
       ok: false
       fix: His heart started again, but it has stopped a few more times. We're working to find out why.
     why: re-arrest·ROSC는 팀끼리의 말이에요. 보호자에게는 무슨 일이 되풀이되고 있고 팀이 무엇을 하는지를 쉬운 말로 전해요.
-    word: lose
-    ko: 잃다
+    word: re-arrest
+    ko: 재정지되다
   order:
     tag: 대화 흐름
     icon: compass
@@ -7060,18 +7060,18 @@ situations:
     goal: 1
     tag: 소생 거부
     icon: board
-    why: We've confirmed는 방금 확인을 마쳤다는 현재완료예요. 소생을 원치 않는다는 뜻은 사전 지시서(DNR)나 가족·대리인 확인으로 알 수 있어요.
+    why: We've confirmed는 방금 확인을 마쳤다는 현재완료예요. 소생을 원치 않는다는 뜻은 DNR 지시나 POLST, 사전 의료 지시서로 확인하고, 없으면 대리인(가족)에게 확인해요.
     decoy: to be discharged
     distractorsKo:
-    - 소생시켜 달라는 그의 뜻을 확인했어요
+    - 가족분이 지금 오고 계세요
     - 그의 뜻은 아직 확인하지 못했어요
     blank:
-      answer: wishes
+      answer: confirmed
       options:
-      - en: complaints
-      - en: allergies
-      - en: medications
-      - en: wishes
+      - en: questioned
+      - en: overridden
+      - en: confirmed
+      - en: ignored
   - en: The team agrees it's time to focus on his comfort.
     ko: 팀은 이제 편안함에 집중할 때라는 데 동의해요.
     chunks:
@@ -7088,10 +7088,10 @@ situations:
     tag: 팀 합의
     icon: handshake2
     why: it's time to …는 이제 방향을 바꿀 시점이라는 부드러운 선언이에요. 소생을 멈춘 뒤에는 환자와 가족의 편안함이 돌봄의 중심이 돼요.
-    decoy: his billing
+    decoy: his labs
     distractorsKo:
     - 팀은 소생을 더 이어가기로 했어요
-    - 팀은 이제 퇴원시킬 때라고 해요
+    - 원하시면 곁에 계셔도 돼요
     blank:
       answer: comfort
       options:
@@ -7114,17 +7114,17 @@ situations:
     tag: 위로와 배려
     icon: faceWorried
     why: I'm so sorry는 잘못을 인정하는 사과가 아니라 슬픔에 공감하는 위로예요. 원하는 만큼 시간을 허락하면 가족이 작별할 여유를 가져요.
-    decoy: in the hall
+    decoy: I'm so glad
     distractorsKo:
-    - 정말 죄송해요 — 시간이 없으니 서둘러 주세요
-    - 정말 죄송해요 — 잠시 후에 다시 올게요
+    - 원하시면 원목(채플린)을 불러 드릴게요
+    - 장례 절차는 나중에 안내해 드릴게요
     blank:
-      answer: time
+      answer: sorry
       options:
-      - en: medicine
-      - en: time
-      - en: money
-      - en: food
+      - en: sorry
+      - en: proud
+      - en: relieved
+      - en: glad
   - en: I know this is very hard to hear.
     ko: 정말 듣기 힘드시다는 거 알아요.
     chunks:
@@ -7141,7 +7141,7 @@ situations:
     why: I know this is …로 상대의 감정을 먼저 인정해요. 나쁜 소식을 전한 뒤 바로 설명으로 넘어가기보다 공감하는 말을 두면 가족이 소식을 받아들일 틈이 생겨요.
     decoy: to explain
     distractorsKo:
-    - 이 소식이 반가우시리라 생각해요
+    - 궁금한 게 있으면 언제든 물어보세요
     - 듣기 힘드시겠지만 괜찮을 거예요
     blank:
       answer: hard
@@ -7169,8 +7169,8 @@ situations:
     why: We'll …and focus on …로 멈추는 것과 이어서 하는 일을 한 문장에 담아요. 멈춘다는 말만 하면 가족이 버려졌다고 느낄 수 있어서 이어서 할 일을 함께 말해요.
     decoy: his pulse now
     distractorsKo:
-    - 압박을 계속하고 이제 맥박에 집중할게요
-    - 압박을 멈추고 이제 퇴원 준비를 할게요
+    - 가족분들을 안으로 모실게요
+    - 사망 시각은 의사 선생님이 선언하실 거예요
     blank:
       answer: stop
       options:
@@ -7216,7 +7216,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 소생 중단과 가족 응대 4문장 순서
-    why: 뜻을 확인하고, 그에 따라 팀이 합의하고, 압박을 멈추고, 멈춘 뒤 가족에게 위로와 시간을 건네요. Because of that, With that decided, Now that we've stopped가 앞 줄을 가리켜 순서가 하나예요.
+    why: 뜻을 확인하고, 그에 따라 팀이 합의하고, 압박을 멈춘 뒤, 마지막에 died라고 분명히 말하며 위로와 시간을 건네요. Because of that, With that decided가 앞 줄을 가리키고 사망 고지는 압박을 멈춘 뒤라서 순서가 하나예요.
     lines:
     - en: We've confirmed his wishes not to be resuscitated.
       icon: board
@@ -7230,9 +7230,9 @@ situations:
       icon: bell
       ko: 그렇게 정해졌으니 이제 압박을 멈출게요
       note: 중단
-    - en: Now that we've stopped, I'm so sorry — take all the time you need with him.
+    - en: I'm so sorry, he has died — take all the time you need with him.
       icon: faceWorried
-      ko: 멈췄어요, 정말 죄송해요 — 필요한 만큼 곁에 계세요
+      ko: 정말 안타깝게도 돌아가셨어요 — 필요한 만큼 곁에 계세요
       note: 위로
 - title: 외상성 심정지 특수 대응
   sentences:
@@ -7280,12 +7280,12 @@ situations:
     - w-transfusion
     goal: 2
     tag: 출혈 대응
-    icon: pill
-    why: Control과 start 두 동사를 and로 이어 한 번에 지시해요. 외상성 심정지의 흔한 원인은 출혈이라 지혈과 수혈이 압박만큼 중요해요.
+    icon: bandage
+    why: Control과 start 두 동사를 and로 이어 한 번에 지시해요. 외상성 심정지의 흔한 원인은 출혈이라 지혈과 수혈이 압박보다 앞서요.
     decoy: light fluids
     distractorsKo:
-    - 출혈은 두고 약물만 주세요
-    - 출혈을 조절하고 수혈은 하지 마세요
+    - 골반 고정대를 채워 주세요
+    - 초음파로 심낭을 봐 주세요
     blank:
       answer: massive
       options:
@@ -7309,17 +7309,17 @@ situations:
     tag: 우선순위
     icon: compass
     why: matter less than …으로 우선순위를 비교해요. 외상성 심정지는 출혈이나 기흉 같은 원인을 해결하지 않으면 압박만으로는 소생이 어려워요.
-    decoy: the budget
+    decoy: the monitor
     distractorsKo:
-    - 여기서도 압박이 원인 치료보다 더 중요해요
-    - 원인을 찾기 전에 압박을 멈추세요
+    - 양쪽 가슴을 감압해 주세요
+    - 혈액을 데워서 주세요
     blank:
       answer: fixing
       options:
-      - en: ignoring
-      - en: forgetting
       - en: fixing
-      - en: hiding
+      - en: discussing
+      - en: explaining
+      - en: charting
   - en: Control the bleeding first, then start compressions.
     ko: 먼저 출혈을 조절하고, 그다음 압박을 시작하세요.
     chunks:
@@ -7335,18 +7335,18 @@ situations:
     goal: 2
     tag: 순서 지시
     icon: redo
-    why: first와 then으로 두 단계의 순서를 말해요. 외상성 심정지에서는 큰 출혈을 먼저 잡는 것이 우선이에요.
+    why: first와 then으로 우선순위를 말해요. 외상성 심정지에서는 큰 출혈을 잡는 일이 먼저지만, 손이 있으면 압박도 함께 해요.
     decoy: fluids
     distractorsKo:
-    - 먼저 압박을 시작하고, 그다음 출혈을 조절하세요
-    - 출혈은 신경 쓰지 말고 압박만 하세요
+    - 양쪽 가슴 감압이 끝났어요
+    - 대량수혈 프로토콜을 켤게요
     blank:
       answer: first
       options:
-      - en: last
-      - en: later
-      - en: never
+      - en: briefly
+      - en: quickly
       - en: first
+      - en: partly
   - en: Decompress both sides of the chest before you keep pushing.
     ko: 계속 누르기 전에 양쪽 가슴을 먼저 감압하세요.
     chunks:
@@ -7367,8 +7367,8 @@ situations:
     why: before you …로 순서를 고정해요. 긴장성 기흉이 있으면 압박이 효과를 내지 못해서 감압이 먼저예요.
     decoy: keep breathing
     distractorsKo:
-    - 양쪽 가슴을 감압한 뒤에 압박을 멈추세요
-    - 한쪽 가슴만 감압하고 계속 누르세요
+    - 흉관을 넣을 준비를 해 주세요
+    - 산소를 100%로 연결해 주세요
     blank:
       answer: keep
       options:
@@ -7420,7 +7420,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 외상성 심정지 4문장 순서
-    why: 상황을 선언하며 감압하고, 열린 다음 출혈과 수혈을 시작하고, 원인 해결을 우선하고, 출혈이 잡히면 압박을 시작해요. Now that both sides are open, Until the bleeding is stopped, Once it's controlled가 앞 줄을 가리켜 순서가 하나예요.
+    why: 상황을 선언하며 감압하고, 열린 다음 출혈과 수혈을 시작하고, 원인 해결이 압박보다 우선이라고 짚고, 그래도 손이 빈 사람은 고치는 동안 압박을 이어 가요. Now that both sides are open, Until the bleeding is stopped가 앞 줄을 가리키고, Even so는 '압박보다 원인'을 받는 말이라 그 줄 바로 뒤에만 올 수 있어 순서가 하나예요.
     lines:
     - en: Traumatic arrest — decompress both sides of the chest.
       icon: siren
@@ -7434,7 +7434,7 @@ situations:
       icon: compass
       ko: 출혈이 멎을 때까지는 여기서 압박보다 그걸 고치는 게 더 중요해요
       note: 우선
-    - en: Once it's controlled, start compressions.
+    - en: Even so, anyone free keeps compressions going while we fix that.
       icon: play
-      ko: 잡히면 압박을 시작해요
+      ko: 그래도 손이 빈 사람은 우리가 그걸 고치는 동안 압박을 이어 가요
       note: 압박
