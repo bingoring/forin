@@ -3753,10 +3753,10 @@ situations:
     blank:
       answer: spread
       options:
-      - en: stop
-      - en: shrink
+      - en: start
+      - en: burn
       - en: spread
-      - en: fade
+      - en: ache
   - en: I need to know exactly when the pain began.
     ko: 통증이 정확히 언제 시작됐는지 알아야 해요.
     chunks:
@@ -3973,10 +3973,10 @@ situations:
     blank:
       answer: worse
       options:
-      - en: worse
       - en: better
-      - en: longer
-      - en: closer
+      - en: milder
+      - en: worse
+      - en: easier
   - en: Have you had anything to eat or drink today?
     ko: 오늘 뭐라도 먹거나 마신 게 있나요?
     chunks:
@@ -3997,12 +3997,12 @@ situations:
     - 지금 통증이 몇 점인가요?
     - 열이 있었는지 알려 주세요
     blank:
-      answer: eat
+      answer: today
       options:
-      - en: order
-      - en: eat
-      - en: buy
-      - en: cook
+      - en: lately
+      - en: this week
+      - en: recently
+      - en: today
   nuance:
   - kind: slider
     words:
@@ -4042,23 +4042,23 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 활력징후·통증 사정 4문장 순서
-    why: 측정을 먼저 알리고, 통증 점수를 받은 뒤, 그 점수가 달라졌는지 묻고, 그 변화가 수술로 이어질 수 있어 마지막 섭취를 확인해요. 'those numbers'·'that score'·'that change'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 측정을 먼저 알리고, 측정하는 동안 통증 점수를 받고, 그 숫자가 한 시간 전보다 달라졌는지 묻고, 어느 쪽이든 수술 가능성에 대비해 마지막 섭취를 확인해요. 'While I do'·'that number'·'Whichever way it's changed'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: I'm going to check your blood pressure and temperature now.
       icon: monitor
       ko: 혈압과 체온을 확인할게요
       note: 측정
-    - en: With those numbers noted, how bad is the pain from zero to ten?
+    - en: While I do, how bad is the pain from zero to ten?
       icon: chartup
-      ko: 그 수치를 적었으니, 0에서 10까지 통증이 얼마나 심한가요?
+      ko: 그동안 0에서 10까지 통증이 얼마나 심한가요?
       note: 점수
-    - en: Is that score any higher than it was an hour ago?
+    - en: Is that number any higher than it was an hour ago?
       icon: faceWorried
-      ko: 그 점수가 한 시간 전보다 높아졌나요?
+      ko: 그 숫자가 한 시간 전보다 높은가요?
       note: 변화
-    - en: Because that change could mean a procedure, I need to know when you last ate or drank.
+    - en: Whichever way it's changed, I also need to know when you last ate.
       icon: coffee
-      ko: 그 변화가 시술로 이어질 수 있어서, 마지막으로 언제 먹거나 마셨는지 알아야 해요
+      ko: 어느 쪽으로 변했든, 마지막으로 언제 드셨는지도 알아야 해요
       note: 섭취
 - title: 우하복부 압통(충수염 의심)
   sentences:
@@ -4082,12 +4082,12 @@ situations:
     - 누를 때가 더 아픈가요, 뗄 때가 더 아픈가요?
     - 마지막으로 드신 게 언제예요?
     blank:
-      answer: point
+      answer: exactly
       options:
-      - en: step
-      - en: turn
-      - en: point
-      - en: walk
+      - en: roughly
+      - en: about
+      - en: exactly
+      - en: generally
   - en: Does it hurt more when I press or when I let go?
     ko: 누를 때와 뗄 때 중 언제 더 아픈가요?
     chunks:
@@ -4103,16 +4103,16 @@ situations:
     tag: 반발통 확인
     icon: magnify
     why: 환자에게는 반발통이라는 이름 대신 누를 때와 뗄 때를 비교해 물어요. 뗄 때 더 아프면 복막이 자극됐다는 소견일 수 있어요.
-    decoy: your belly
+    decoy: when you cough
     distractorsKo:
     - 통증이 어디로 퍼지는지 말씀해 주세요
     - 열이 나는 것 같으세요?
     blank:
       answer: let go
       options:
-      - en: step back
-      - en: look away
-      - en: sit down
+      - en: hold it
+      - en: tap
+      - en: push deeper
       - en: let go
   - en: When did you last eat or drink anything?
     ko: 마지막으로 언제 뭔가 먹거나 마셨나요?
@@ -4156,7 +4156,7 @@ situations:
     goal: 1
     tag: 증상 알림
     icon: bell
-    why: feel sick은 메스꺼움을 쉽게 부르는 말이에요. 메스꺼움과 열이 복통에 더해지면 염증성 원인을 뒷받침해서 바로 알려 달라고 해요.
+    why: feel sick은 속이 안 좋거나 몸이 안 좋은 것을 넓게 묻는 쉬운 말이에요. 메스꺼움과 열이 복통에 더해지면 염증성 원인을 뒷받침해서 바로 알려 달라고 해요.
     decoy: to the nurse
     distractorsKo:
     - 어지러우면 말씀해 주세요
@@ -4237,23 +4237,23 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 충수염 의심 사정 4문장 순서
-    why: 아픈 자리를 먼저 짚게 하고, 그 자리를 눌러 보고, 그 압통과 함께 오심·열을 묻고, 그 답들을 근거로 금식을 안내해요. 'there'·'that tenderness'·'those answers'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 아픈 자리를 먼저 짚게 하고, 가리킨 곳에서 먼 데부터 눌러 뗄 때를 묻고, 그 압통과 함께 오심·열을 묻고, 그 소견을 근거로 외과가 볼 때까지 금식을 안내해요. 'that spot'·'that tenderness'·'those findings'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Can you point to where it hurts the most?
       icon: pushpin
       ko: 가장 아픈 곳을 가리켜 주시겠어요?
       note: 위치
-    - en: I'm pressing there now — does it hurt more when I press or when I let go?
+    - en: I'll press away from that spot — does it hurt more when I let go?
       icon: magnify
-      ko: 지금 거기를 누르고 있어요, 누를 때와 뗄 때 중 언제 더 아픈가요?
+      ko: 그 자리에서 떨어진 곳부터 누를게요, 뗄 때 더 아픈가요?
       note: 촉진
     - en: Along with that tenderness, do you feel sick or have a fever?
       icon: faceWorried
       ko: 그 압통과 함께 메스껍거나 열이 나나요?
       note: 증상
-    - en: Because of those answers, we may need to call the surgeon, so nothing to eat or drink for now.
+    - en: Because of those findings, nothing to eat or drink until the surgeon sees you.
       icon: shield
-      ko: 그 답들 때문에 외과 선생님을 부를 수도 있어서, 지금은 먹지도 마시지도 마세요
+      ko: 그 소견 때문에 외과 선생님이 보실 때까지 먹거나 마시지 마세요
       note: 금식
 - title: 소화불량성 복통 감별
   sentences:
@@ -4298,7 +4298,7 @@ situations:
     goal: 2
     tag: 식사 관계
     icon: coffee
-    why: 식사 전후로 달라지는지를 물으면 소화기 원인을 가늠하는 단서가 돼요. 먹기 전과 후를 비교해 묻는 습관이 좋아요.
+    why: 식사 전후로 달라지는지를 물으면 소화기 원인을 가늠하는 단서가 돼요. 먹고 나서 심해지면 담낭·위궤양 쪽을, 나아지면 십이지장 궤양을 떠올리기도 해요.
     decoy: than before
     distractorsKo:
     - 지금 가슴이 아픈가요?
@@ -4335,9 +4335,9 @@ situations:
       answer: sweating
       options:
       - en: bleeding
-      - en: sweating
-      - en: itching
+      - en: fever
       - en: coughing
+      - en: sweating
   - en: Do you feel dizzy or short of breath right now?
     ko: 지금 어지럽거나 숨이 찬가요?
     chunks:
@@ -4432,7 +4432,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 소화불량성 복통 감별 4문장 순서
-    why: 통증의 느낌을 먼저 묻고, 그 느낌이 식사와 관련되는지 보고, 심장 원인을 걸러 위험 신호를 묻고, 그 증상이 지금도 있는지 확인해요. 'that feeling'·'those symptoms'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 통증의 느낌을 먼저 묻고, 그 느낌이 식사와 관련되는지 보고, 음식과 상관없이 심장 원인을 걸러 가슴 통증·식은땀·숨참을 묻고, 그 증상이 지금도 있는지 확인해요. 'that feeling'·'food changes it'·'those symptoms'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Is the pain more of a burning or a sharp feeling?
       icon: faceWorried
@@ -4442,9 +4442,9 @@ situations:
       icon: coffee
       ko: 그 느낌이 먹고 나면 나아지나요, 심해지나요?
       note: 식사
-    - en: Because heart problems can look like this, have you had any chest pain, sweating, or shortness of breath?
+    - en: Whether or not food changes it, any chest pain, sweating, or shortness of breath?
       icon: siren
-      ko: 심장 문제도 이렇게 보일 수 있어서, 가슴 통증이나 식은땀, 숨찬 느낌이 있었나요?
+      ko: 음식에 따라 달라지든 아니든, 가슴 통증이나 식은땀, 숨찬 느낌이 있나요?
       note: 위험
     - en: Do you have any of those symptoms right now?
       icon: monitor
@@ -4552,9 +4552,9 @@ situations:
     blank:
       answer: drinking
       options:
-      - en: cooking
-      - en: buying
-      - en: ordering
+      - en: skipping
+      - en: craving
+      - en: avoiding
       - en: drinking
   - en: Does your belly feel swollen or tight?
     ko: 배가 붓거나 팽팽한 느낌이 있나요?
@@ -4625,21 +4625,21 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 변비성 복통 문진 4문장 순서
-    why: 마지막 배변을 먼저 묻고, 그 뒤로 가스가 나오는지 확인하고, 같은 기간 동안 배가 불렀는지 묻고, 이 모든 것의 원인을 찾으려 식습관을 물어요. 'Since then'·'that time'·'all of that'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 마지막 배변을 먼저 묻고, 그 뒤로 배가 부르거나 팽팽한지 묻고, 그 팽만과 함께 가스가 나오는지 확인하고, 이 모든 것의 원인을 찾으려 식습관을 물어요. 'Since then'·'that swelling'·'all that'이 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: When was your last bowel movement?
       icon: calendar
       ko: 마지막 배변이 언제였나요?
       note: 배변
-    - en: Since then, are you passing any gas at all?
-      icon: magnify
-      ko: 그 뒤로 가스는 조금이라도 나오나요?
-      note: 가스
-    - en: In that time, has your belly felt swollen or tight?
+    - en: Since then, has your belly felt swollen or tight?
       icon: faceWorried
-      ko: 그동안 배가 붓거나 팽팽한 느낌이 있었나요?
+      ko: 그 뒤로 배가 붓거나 팽팽한 느낌이 있었나요?
       note: 팽만
-    - en: To find the cause of all of that, what have you been eating and drinking this week?
+    - en: With that swelling, are you passing any gas at all?
+      icon: magnify
+      ko: 그렇게 배가 부른 상태에서 가스는 조금이라도 나오나요?
+      note: 가스
+    - en: To find the cause of all that, what have you eaten and drunk this week?
       icon: board
       ko: 그 모든 것의 원인을 찾으려는데, 이번 주에 뭘 드시고 마셨나요?
       note: 식습관
@@ -4745,7 +4745,7 @@ situations:
     goal: 1
     tag: 동반 증상
     icon: faceWorried
-    why: 열이 함께 있으면 염증이나 감염 쪽을 더 의심하게 돼서 복통 문진에 꼭 넣어요.
+    why: 열이 함께 있으면 염증이나 감염 쪽을 더 의심하게 돼서 복통 문진에 꼭 넣어요. 숨참은 심장·폐 쪽 원인을 함께 거르려는 질문이에요.
     decoy: last night
     distractorsKo:
     - 지금 토할 것 같으세요?
@@ -4819,26 +4819,26 @@ situations:
       icon: speech
       en: She has a positive Murphy's sign.
       ok: true
-    why: Murphy's sign은 진찰 이름이에요. 환자에게는 이름 대신 무엇을 할지(숨을 들이쉬는 동안 누른다)를 말해 줘야 협조를 얻어요.
+    why: Murphy's sign은 진찰 소견의 이름이에요. 환자에게는 결과도 이름 대신 무엇을 느꼈는지(숨을 들이쉴 때 누르면 아픈 것)로 말해요.
     word: Murphy's sign
     ko: 머피 징후
   order:
     tag: 대화 흐름
     icon: compass
     ko: 담석 산통 문진 4문장 순서
-    why: 유발 요인을 먼저 묻고, 그 뒤로 퍼진 곳을 확인하고, 어깨 말고 누를 때의 통증을 보고, 그 답들을 근거로 초음파와 금식을 안내해요. 'Since then'·'your shoulder'·'all that'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 유발 요인을 먼저 묻고, 그 식사 뒤로 퍼진 곳을 확인하고, 어디서 시작하는지 찾으려 숨 쉴 때의 압통을 보고, 그 답들을 근거로 초음파와 금식을 안내해요. 'that meal'·'where it starts'·'all that'이 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Did the pain start after a fatty or heavy meal?
       icon: coffee
       ko: 기름지거나 과한 식사 후에 통증이 시작됐나요?
       note: 유발
-    - en: Since then, has it spread to your back or right shoulder?
+    - en: Since that meal, has it spread to your back or right shoulder?
       icon: compass
-      ko: 그 뒤로 등이나 오른쪽 어깨로 퍼졌나요?
+      ko: 그 식사 뒤로 등이나 오른쪽 어깨로 퍼졌나요?
       note: 방사
-    - en: Apart from your shoulder, does it hurt when I press here as you breathe in?
+    - en: To find where it starts, does pressing here hurt as you breathe in?
       icon: stetho
-      ko: 어깨 말고도, 숨을 들이쉴 때 여기를 누르면 아픈가요?
+      ko: 어디서 시작하는지 찾으려고, 숨을 들이쉴 때 여기를 누르면 아픈가요?
       note: 촉진
     - en: Based on all that, we'll need an ultrasound, so please don't eat anything for now.
       icon: monitor
@@ -4914,7 +4914,7 @@ situations:
     goal: 2
     tag: 금식 안내
     icon: shield
-    why: keep you from …ing은 막아야 한다는 표현이라 지시처럼 들려요. 환자에게는 이유를 곧 덧붙여 주는 게 좋아요.
+    why: keep you from …ing은 '못 하게 막는다'는 뜻이라 금식을 분명하게 전해요. 췌장염 초기에는 구역과 통증이 가라앉을 때까지 금식하고, 견딜 수 있으면 일찍 다시 먹기 시작해요.
     decoy: all night
     distractorsKo:
     - 수액을 먼저 맞으실 거예요
@@ -4923,9 +4923,9 @@ situations:
       answer: eating
       options:
       - en: eating
-      - en: moving
-      - en: talking
-      - en: bathing
+      - en: smoking
+      - en: walking
+      - en: getting up
   - en: When did this pain start, and had you been drinking before that?
     ko: 이 통증은 언제 시작됐고, 그 전에 술을 드셨나요?
     chunks:
@@ -4945,7 +4945,7 @@ situations:
     decoy: since morning
     distractorsKo:
     - 지금 통증이 몇 점인가요?
-    - 술을 얼마나 드셨나요?
+    - 구토는 몇 번 하셨어요?
     blank:
       answer: drinking
       options:
@@ -5019,7 +5019,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 급성 췌장염 대응 4문장 순서
-    why: 통증의 방향을 먼저 묻고, 그 통증의 시작과 음주를 확인하고, 금식을 안내한 뒤, 먹지 못하는 동안의 치료를 알려요. 'it'·'Since you won't be eating'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 통증의 방향을 먼저 묻고, 시작과 음주를 확인하고, 그 양상 때문에 금식을 안내한 뒤, 금식 중 치료의 중심이 수액과 진통제라고 알려요. 'it'·'pain like that after drinking'·'With no food or drink'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Does the pain go through to your back?
       icon: compass
@@ -5029,13 +5029,13 @@ situations:
       icon: calendar
       ko: 그건 언제 시작됐고, 그 전에 술을 드셨나요?
       note: 음주
-    - en: We'll need to keep you from eating or drinking for now.
+    - en: With pain like that after drinking, we'll keep you from eating or drinking for now.
       icon: shield
-      ko: 지금은 먹거나 마시지 못하게 해야 해요
+      ko: 술 뒤에 그런 통증이면, 지금은 먹거나 마시지 못하게 할게요
       note: 금식
-    - en: Since you won't be eating or drinking, we're starting IV fluids and medicine for the pain.
+    - en: With no food or drink, IV fluids and pain medicine are your main treatment.
       icon: pill
-      ko: 먹거나 마시지 않으실 테니, 수액과 통증 약을 시작할게요
+      ko: 먹고 마시지 않는 동안 수액과 통증 약이 주된 치료예요
       note: 치료
 - title: 게실염 좌하복부
   sentences:
@@ -5090,10 +5090,10 @@ situations:
     blank:
       answer: chills
       options:
-      - en: chills
       - en: cough
       - en: rash
-      - en: itching
+      - en: chills
+      - en: nausea
   - en: You may need to drink a contrast liquid before the CT scan.
     ko: CT 촬영 전에 조영제 액체를 드셔야 할 수도 있어요.
     chunks:
@@ -5208,7 +5208,7 @@ situations:
       fix: You may need to drink a contrast liquid before the CT scan.
     - who: 영상의학과 통화
       icon: speech
-      en: She's finished drinking the PO contrast for her CT.
+      en: She's finished her PO contrast for the CT.
       ok: true
     why: PO(경구)나 prior to는 의료진·서류의 말투예요. 환자에게는 drink·before처럼 쉬운 말로, 무엇을 마시는지까지 설명해요.
     word: PO
@@ -5217,7 +5217,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 게실염 의심 4문장 순서
-    why: 통증 위치를 먼저 확인하고, 그 자리가 움직임에 따라 더 아픈지 묻고, 열·오한 같은 증상을 확인한 뒤, 그런 증상을 근거로 CT 준비를 알려요. 'that spot'·'those symptoms'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 통증 위치를 먼저 확인하고, 그 자리가 움직임에 따라 더 아픈지 묻고, 열·오한 같은 증상을 확인한 뒤, 그런 증상을 근거로 CT 준비를 알려요. 'that spot'·'that movement pain'·'those symptoms'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Is the pain low on your left side?
       icon: pushpin
@@ -5227,13 +5227,13 @@ situations:
       icon: magnify
       ko: 그 자리가 움직이거나 기침할 때 더 아픈가요?
       note: 악화
-    - en: Besides the pain, have you had any fever, chills, or change in your stools?
+    - en: Besides that movement pain, have you had fever, chills, or a change in stools?
       icon: faceWorried
-      ko: 통증 외에 열이나 오한, 대변에 변화가 있었나요?
+      ko: 움직일 때 아픈 것 말고, 열이나 오한, 대변에 변화가 있었나요?
       note: 증상
-    - en: With symptoms like those, you may need to drink a contrast liquid before the CT scan.
+    - en: With those symptoms, you may need to drink contrast before the CT.
       icon: lab
-      ko: 그런 증상이면 CT 촬영 전에 조영제 액체를 드셔야 할 수도 있어요
+      ko: 그런 증상이면 CT 전에 조영제를 마셔야 할 수도 있어요
       note: 검사
 - title: 소장 폐색(수술력)
   sentences:
@@ -5414,23 +5414,23 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 소장 폐색 의심 4문장 순서
-    why: 수술력을 먼저 묻고, 그런 수술 뒤에 가스와 배변이 나오는지 확인하고, 그 답이 구토 질문을 중요하게 만든다고 말한 뒤, 모든 것을 근거로 코로 관을 넣을 수 있다고 안내해요. 'a history like that'·'That'·'With all of that'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 수술력을 먼저 묻고, 그 수술 뒤에 가스와 배변이 나오는지 확인하고, 장이 멈춘 상태에서 구토 횟수를 묻고, 모든 것을 근거로 코로 관을 넣어 압력을 줄일 수 있다고 안내해요. 'that surgery'·'like that'·'all of that'이 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Have you had any abdominal surgeries in the past?
       icon: scalpel
       ko: 과거에 복부 수술을 받으신 적이 있나요?
       note: 수술력
-    - en: With a history like that, have you been able to pass gas or have a bowel movement?
+    - en: Since that surgery, have you been able to pass gas or have a bowel movement?
       icon: magnify
-      ko: 그런 병력이면 가스를 배출하거나 배변을 할 수 있었나요?
+      ko: 그 수술 뒤로 가스를 배출하거나 배변을 할 수 있었나요?
       note: 배출
-    - en: That makes vomiting important, so tell me how many times you've vomited today.
+    - en: With your bowels stopped like that, how many times have you vomited today?
       icon: bell
-      ko: 그래서 구토가 중요하니, 오늘 몇 번 토하셨는지 말씀해 주세요
+      ko: 장이 그렇게 멈춘 상태라면 오늘 몇 번 토하셨나요?
       note: 구토
-    - en: With all of that, we may need to place a tube through your nose to relieve the pressure.
+    - en: With all of that, a tube through your nose may relieve the pressure.
       icon: hospital
-      ko: 그 모든 것을 근거로 압력을 줄이려고 코로 관을 넣어야 할 수도 있어요
+      ko: 그 모든 것을 보면 코로 넣는 관이 압력을 줄여 줄 수 있어요
       note: 안내
 - title: 신우신염 동반 복통 여성
   sentences:
@@ -5540,10 +5540,10 @@ situations:
     blank:
       answer: chills
       options:
-      - en: chills
-      - en: bruising
+      - en: nausea
       - en: cough
-      - en: itching
+      - en: chills
+      - en: vomiting
   - en: We're sending the urine for a culture as well.
     ko: 배양검사를 위해 소변도 함께 보낼게요.
     chunks:
@@ -5610,7 +5610,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 신우신염 의심 4문장 순서
-    why: 등을 두드려 옆구리 통증을 확인하고, 그 통증과 함께 배뇨 증상을 묻고, 열·오한을 확인한 뒤, 감염 확인을 위해 소변을 모아 검사한다고 안내해요. 'that back pain'·'those symptoms'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 등을 두드려 옆구리 통증을 확인하고, 그 통증과 함께 배뇨 증상을 묻고, 열·오한을 확인한 뒤, 열까지 있으면 콩팥 감염을 더 의심해 소변을 배양검사로 보낸다고 안내해요. 'that back pain'·'those symptoms'·'fever'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Does it hurt when I tap on your back here?
       icon: stetho
@@ -5624,9 +5624,9 @@ situations:
       icon: faceWorried
       ko: 그 증상들과 함께 열이나 오한이 있었나요?
       note: 열
-    - en: To check for infection, we'll need a urine sample and send it for a culture.
+    - en: Since fever can mean a kidney infection, we'll send your urine for a culture.
       icon: lab
-      ko: 감염을 확인하려고 소변 검체를 받아 배양검사로 보낼게요
+      ko: 열은 콩팥 감염을 뜻할 수 있어서 소변을 배양검사로 보낼게요
       note: 검사
 - title: 임신 가능 여성 복통
   sentences:
@@ -5878,10 +5878,10 @@ situations:
     blank:
       answer: faint
       options:
-      - en: faint
       - en: vomit
-      - en: sneeze
-      - en: cough
+      - en: choke
+      - en: faint
+      - en: shake
   - en: We need to check right away whether you could be pregnant.
     ko: 임신 가능성을 지금 바로 확인해야 해요.
     chunks:
@@ -5933,9 +5933,9 @@ situations:
     blank:
       answer: weak
       options:
-      - en: cold
-      - en: itchy
       - en: weak
+      - en: cold
+      - en: sleepy
       - en: numb
   - en: This needs urgent blood work and an ultrasound right now.
     ko: 지금 바로 긴급 혈액검사와 초음파가 필요해요.
@@ -6005,7 +6005,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 자궁외임신 감별 4문장 순서
-    why: 출혈을 먼저 묻고, 그와 함께 어지러움을 확인하고, 두 증상 때문에 임신을 바로 확인해야 한다고 알린 뒤, 그 확인이 긴급 검사로 이어진다고 설명해요. 'that'·'both'·'That check'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 출혈을 먼저 묻고, 그와 함께 어지러움을 확인하고, 두 증상 때문에 임신을 바로 확인해야 한다고 알린 뒤, 그 확인과 함께 긴급 검사가 필요하다고 설명해요. 'that'·'both'·'that test'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Have you noticed any vaginal bleeding or spotting?
       icon: faceWorried
@@ -6019,9 +6019,9 @@ situations:
       icon: baby
       ko: 둘 다 때문에 임신 가능성을 바로 확인해야 해요
       note: 확인
-    - en: That check means urgent blood work and an ultrasound right now.
+    - en: Along with that test, we need urgent blood work and an ultrasound right now.
       icon: siren
-      ko: 그 확인에는 긴급 혈액검사와 초음파가 필요해요
+      ko: 그 검사와 함께 긴급 혈액검사와 초음파가 지금 바로 필요해요
       note: 검사
 - title: 복통+언어장벽
   sentences:
@@ -6180,13 +6180,13 @@ situations:
     scenes:
     - who: 환자에게 (통역 연결)
       icon: me
-      en: I'm speaking to you through the interpreter. Can you point to where it hurts the most?
+      en: I'll be talking with you through the interpreter. Can you point to where it hurts the most?
       ok: true
     - who: 통역사를 보며
       icon: speech
       en: Ask him to point to where it hurts the most.
       ok: false
-      fix: Please point to the spot that hurts the most — I'll look at you while the interpreter helps.
+      fix: Can you show me with one finger where it hurts the most?
     - who: 인계
       icon: board
       en: With the interpreter on the line, he pointed to where it hurts the most — the RLQ.
@@ -6198,23 +6198,23 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 언어 장벽 복통 문진 4문장 순서
-    why: 통역사를 먼저 부르고, 그 통역사의 도움으로 아픈 곳을 가리키게 하고, 이어지는 질문은 끄덕임으로 받고, 그 답들 밖의 변화는 통역사에게 말하게 해요. 'the interpreter'·'my other questions'·'those answers'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 통역사를 먼저 부르고, 연결되기 전에는 가리키기와 끄덕임으로 받고, 연결되면 통역사를 통해 새로운 증상을 말하게 해요. 'they'·'that spot'·'Once the interpreter is on'이 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: I'll get an interpreter so we can understand you better.
       icon: speech
       ko: 통역사를 불러서 더 잘 이해할 수 있게 할게요
       note: 통역
-    - en: With the interpreter's help, can you point to where it hurts the most?
+    - en: Until they connect, can you point to where it hurts the most?
       icon: pushpin
-      ko: 통역사의 도움으로 가장 아픈 곳을 가리켜 주시겠어요?
+      ko: 연결되기 전까지, 가장 아픈 곳을 가리켜 주시겠어요?
       note: 위치
-    - en: For my other questions, please nod yes or shake your head no.
+    - en: When I press that spot, nod if it hurts, shake your head if not.
       icon: check
-      ko: 다른 질문에는 맞으면 고개를 끄덕이고 아니면 저어 주세요
+      ko: 그 자리를 누를 때 아프면 고개를 끄덕이고 아니면 저어 주세요
       note: 예·아니오
-    - en: Besides those answers, tell the interpreter if anything feels new or different.
+    - en: Once the interpreter is on, tell them if anything feels new or different.
       icon: bell
-      ko: 그 답들 외에, 새롭거나 다르게 느껴지는 게 있으면 통역사에게 말씀해 주세요
+      ko: 통역사가 연결되면, 새롭거나 다르게 느껴지는 게 있을 때 말씀해 주세요
       note: 알림
 - title: 오피오이드 남용 의심 복통
   sentences:
@@ -6243,10 +6243,10 @@ situations:
     blank:
       answer: understand
       options:
-      - en: blame
+      - en: measure
+      - en: treat
+      - en: ease
       - en: understand
-      - en: judge
-      - en: test
   - en: What medications have you taken for this already?
     ko: 이걸 위해 이미 어떤 약을 드셨나요?
     chunks:
@@ -6269,10 +6269,10 @@ situations:
     blank:
       answer: medications
       options:
-      - en: drinks
-      - en: exercises
       - en: medications
-      - en: foods
+      - en: tests
+      - en: scans
+      - en: X-rays
   - en: We'll assess you fully before deciding on treatment.
     ko: 치료를 정하기 전에 충분히 사정할게요.
     chunks:
@@ -6352,10 +6352,10 @@ situations:
     blank:
       answer: safe
       options:
-      - en: warm
+      - en: calm
+      - en: comfortable
+      - en: informed
       - en: safe
-      - en: busy
-      - en: cold
   nuance:
   - kind: slider
     words:
@@ -6394,15 +6394,15 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 통증 약 사용력 대화 4문장 순서
-    why: 도우려는 마음을 먼저 밝히고, 그 이해를 위해 이미 먹은 약을 묻고, 그 약 외에 도움이 된 것을 물은 뒤, 들은 모든 것을 근거로 충분히 사정한다고 말해요. 'To understand it'·'those'·'everything you've told me'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 도우려는 마음을 먼저 밝히고, 이어서 이미 먹은 약을 묻고, 그 약 외에 도움이 된 것을 물은 뒤, 들은 모든 것을 근거로 충분히 사정한다고 말해요. 'So'·'those'·'everything you've told me'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: I want to understand your pain so we can help you safely.
       icon: handshake2
       ko: 통증을 이해해서 안전하게 도와드리고 싶어요
       note: 공감
-    - en: To understand it, what medications have you taken for this already?
+    - en: So, what medications have you taken for this already?
       icon: pill
-      ko: 이해하려고 하는데, 이미 어떤 약을 드셨나요?
+      ko: 그럼 이미 이 일로 어떤 약을 드셨나요?
       note: 약
     - en: Beyond those, tell me honestly what has helped your pain before.
       icon: speech
@@ -6468,9 +6468,9 @@ situations:
     blank:
       answer: weakness
       options:
-      - en: itching
-      - en: coughing
-      - en: sneezing
+      - en: fever
+      - en: bleeding
+      - en: swelling
       - en: weakness
   - en: Let me recheck your vital signs to be safe.
     ko: 안전을 위해 활력징후를 다시 확인할게요.
@@ -6516,7 +6516,7 @@ situations:
     goal: 1
     tag: 가벼워도 중요
     icon: bell
-    why: Even a little…로 작은 통증도 말해 달라는 부탁이에요. 참는 성향의 환자는 증상을 줄여 말하기 쉬워서 미리 안심시켜요.
+    why: Even a little…로 작은 통증도 가볍게 넘기지 않는다고 알려요. 참는 성향의 환자는 증상을 줄여 말하기 쉬워서 미리 안심시켜요.
     decoy: at night
     distractorsKo:
     - 지금 통증이 있으신가요?
@@ -6588,16 +6588,16 @@ situations:
       fix: I'll check your blood pressure and pulse again in fifteen minutes.
     - who: 인계
       icon: speech
-      en: Please recheck her VS every fifteen minutes.
+      en: Please recheck her vital signs every fifteen minutes.
       ok: true
     why: VS·q15 같은 약어는 의료진끼리의 말이에요. 환자에게는 무엇을 언제 다시 재는지 쉬운 말로 알려요.
-    word: VS
-    ko: 활력징후
+    word: recheck
+    ko: 다시 재다
   order:
     tag: 대화 흐름
     icon: compass
     ko: 고령자 비전형 복통 4문장 순서
-    why: 가볍게 느껴져도 신중히 본다고 먼저 말하고, 그 점을 염두에 두고 증상을 묻고, 증상 때문에 활력징후를 다시 재고, 그 수치의 작은 변화도 중요하다고 알려요. 'that in mind'·'those symptoms'·'them'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 가볍게 느껴져도 신중히 본다고 먼저 말하고, 그 점을 염두에 두고 증상을 묻고, 증상과 상관없이 활력징후를 다시 재고, 그 수치의 작은 변화도 중요해서 자주 확인한다고 알려요. 'that in mind'·'Whatever you tell me'·'them'이 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Sometimes serious problems can feel mild, so I want to check carefully.
       icon: magnify
@@ -6607,14 +6607,14 @@ situations:
       icon: faceWorried
       ko: 그걸 염두에 두고, 메스꺼움이나 힘없음, 어지러움이 있었나요?
       note: 증상
-    - en: Let me recheck your vital signs, since those symptoms can matter.
+    - en: Whatever you tell me, let me recheck your vital signs to be safe.
       icon: monitor
-      ko: 그 증상들이 중요할 수 있어서 활력징후를 다시 확인할게요
+      ko: 무슨 말씀을 하시든, 안전을 위해 활력징후를 다시 확인할게요
       note: 재측정
-    - en: A small change in them matters a lot, so tell me even if the pain is small.
+    - en: Even a small change in them matters, so I'll keep checking often.
       icon: bell
-      ko: 그 수치의 작은 변화도 중요하니, 통증이 작아도 말씀해 주세요
-      note: 알림
+      ko: 그 수치는 작은 변화도 중요해서 자주 계속 확인할게요
+      note: 관찰
 - title: 대동맥류 파열(찢는 통증)
   sentences:
   - en: Is the pain tearing or ripping in quality?
@@ -6640,10 +6640,10 @@ situations:
     blank:
       answer: tearing
       options:
-      - en: itching
-      - en: tickling
-      - en: freezing
+      - en: burning
       - en: tearing
+      - en: cramping
+      - en: aching
   - en: We're moving fast because this could be very serious.
     ko: 매우 심각할 수 있어서 저희가 빠르게 움직이고 있어요.
     chunks:
@@ -6688,7 +6688,7 @@ situations:
     tag: 조치 알림
     icon: hospital
     why: 진행형으로 지금 하고 있는 일을 알리면 환자가 방치되지 않는다고 느껴요. 대동맥류 파열이 의심되면 외과 연락과 혈액 준비를 함께 진행해요.
-    decoy: for you
+    decoy: for tomorrow
     distractorsKo:
     - 혈압을 다시 재고 있어요
     - 통증이 찢어지는 느낌인가요?
@@ -6800,21 +6800,21 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 대동맥류 파열 의심 4문장 순서
-    why: 통증의 성질을 먼저 묻고, 그 통증과 함께 박동하는 덩어리를 묻고, 그 답과 낮은 혈압이 심각할 수 있다고 알린 뒤, 그 이유로 외과 연락과 혈액 준비를 알려요. 'that kind of pain'·'Those answers'·'that reason'이 앞 줄을 가리켜 순서가 하나예요.
+    why: 통증의 성질을 먼저 묻고, 그 통증과 함께 박동하는 덩어리를 묻고, 그런 통증과 낮은 혈압이 심각할 수 있다고 알린 뒤, 그래서 외과 연락과 혈액 준비를 알려요. 'that pain'·'pain like that'·'That's why'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Is the pain tearing or ripping in quality?
       icon: faceWorried
       ko: 통증이 찢어지거나 뜯기는 성질인가요?
       note: 양상
-    - en: Along with that kind of pain, have you ever noticed a pulsing lump in your belly?
+    - en: Along with that pain, have you ever felt a pulsing lump in your belly?
       icon: magnify
-      ko: 그런 통증과 함께 배에서 박동하는 덩어리를 느낀 적이 있나요?
+      ko: 그 통증과 함께 배에서 박동하는 덩어리를 느낀 적이 있나요?
       note: 덩어리
-    - en: Those answers and your low blood pressure mean this could be very serious.
+    - en: With pain like that and your pressure this low, this could be very serious.
       icon: monitor
-      ko: 그 답들과 낮은 혈압을 보면 매우 심각할 수 있어요
+      ko: 그런 통증에 혈압까지 이렇게 낮으면 매우 심각할 수 있어요
       note: 설명
-    - en: For that reason, we're calling the surgeon and preparing blood right now.
+    - en: That's why we're calling the surgeon and getting blood ready right now.
       icon: hospital
       ko: 그래서 지금 외과 선생님을 부르고 혈액을 준비하고 있어요
       note: 조치
@@ -6843,12 +6843,12 @@ situations:
     - 젖산 수치를 확인해야 해요
     - 배 CT를 찍어야 해요
     blank:
-      answer: worse
+      answer: concerns
       options:
-      - en: worse
-      - en: longer
-      - en: closer
-      - en: faster
+      - en: concerns
+      - en: reassures
+      - en: relieves
+      - en: surprises
   - en: We're drawing a lactate level right away.
     ko: 지금 바로 젖산 수치를 채혈할게요.
     chunks:
@@ -6864,7 +6864,7 @@ situations:
     goal: 2
     tag: 채혈 안내
     icon: lab
-    why: drawing a lactate level은 피를 뽑는다는 말을 풀지 않은 표현이라, 환자에게는 혈액검사라고 덧붙여 주면 더 쉬워요. 젖산은 조직에 피가 잘 안 통할 때 오르는 수치예요.
+    why: drawing은 지금 피를 뽑고 있다는 진행형이고, right away로 서두르는 검사임을 알려요. 젖산은 장으로 가는 피가 부족할 때 오를 수 있어 장간막 허혈을 의심하면 일찍 재요.
     decoy: tomorrow
     distractorsKo:
     - CT를 찍으러 갈 거예요
@@ -7046,10 +7046,10 @@ situations:
     blank:
       answer: rigid
       options:
-      - en: itchy
-      - en: rigid
+      - en: swollen
+      - en: tender
       - en: warm
-      - en: pale
+      - en: rigid
   - en: We're going to keep you flat and still to reduce the pain.
     ko: 통증을 줄이기 위해 눕히고 가만히 계시게 할게요.
     chunks:
@@ -7152,7 +7152,7 @@ situations:
     goal: 2
     tag: 수술 안내
     icon: scalpel
-    why: needs to로 필요성을 말하고 as soon as possible로 시간이 중요하다고 알려요. 천공은 수술이 필요한 경우가 많아 시간이 중요해요.
+    why: needs to로 필요성을 말하고 as soon as possible로 시간이 중요하다고 알려요. 천공은 대개 응급 수술로 치료해요.
     decoy: on the unit
     distractorsKo:
     - 지금은 아무것도 드시지 마세요
@@ -7208,23 +7208,23 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 천공 의심 급성 복증 4문장 순서
-    why: 단단한 배가 심각한 징후임을 먼저 알리고, 그 징후 때문에 외과에 SBAR로 보고하고, 외과를 기다리는 동안 가만히 누워 있게 하고, 그 보고를 바탕으로 수술 가능성을 안내해요. 'that sign'·'the surgeon'·'that report'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 단단한 배가 심각한 징후임을 먼저 알리고, 그 징후 때문에 외과를 부르고, 외과가 올 때까지 움직이면 더 아프니 가만히 누워 있게 하고, 외과가 보면 수술할 수도 있다고 안내해요. 'that sign'·'they'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Your belly is very rigid, which is a serious sign.
       icon: stetho
       ko: 배가 아주 딱딱해요, 이건 심각한 징후예요
       note: 소견
-    - en: Because of that sign, I'm calling the surgeon now with an SBAR report.
+    - en: Because of that sign, I'm calling the surgeon right now.
       icon: speech
-      ko: 그 징후 때문에 지금 SBAR 형식으로 외과 선생님께 보고할게요
-      note: 보고
-    - en: Since you'll be waiting for the surgeon, we're going to keep you flat and still to reduce the pain.
+      ko: 그 징후 때문에 지금 바로 외과 선생님을 부를게요
+      note: 호출
+    - en: Until they come, lie as still as you can — moving makes it hurt more.
       icon: check
-      ko: 외과 선생님을 기다리시는 동안 통증을 줄이려고 눕히고 가만히 계시게 할게요
+      ko: 그분들이 오실 때까지 최대한 가만히 누워 계세요, 움직이면 더 아파요
       note: 자세
-    - en: Based on that report, the team may need to operate as soon as possible.
+    - en: When they see you, they may need to operate as soon as possible.
       icon: scalpel
-      ko: 그 보고를 바탕으로 팀이 최대한 빨리 수술해야 할 수도 있어요
+      ko: 그분들이 보시면 최대한 빨리 수술해야 할 수도 있어요
       note: 수술
 - title: 담관염(Charcot 3징)
   sentences:
@@ -7301,7 +7301,7 @@ situations:
     - w-duct
     goal: 2
     tag: 시술 안내
-    icon: scalpel
+    icon: hospital
     why: 이름이 어려운 시술은 a procedure called…로 소개하고 목적(to drain)을 이어 말해요. ERCP는 내시경으로 막힌 담관을 뚫는 시술이에요.
     decoy: in your arm
     distractorsKo:
@@ -7414,7 +7414,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 담관염 의심 4문장 순서
-    why: 통증 위치를 먼저 묻고, 그 통증과 함께 황달을 확인하고, 열과 합쳐 감염이라 항생제를 시작한다고 알리고, 항생제 말고 시술이 필요할 수 있다고 안내해요. 'that pain'·'that's why'·'Beyond antibiotics'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 통증 위치를 먼저 묻고, 그 통증과 함께 황달을 확인하고, 황달과 열을 근거로 감염이라 항생제를 바로 시작한다고 알리고, 항생제 말고 시술이 필요할 수 있다고 안내해요. 'that pain'·'that and your fever'·'Beyond antibiotics'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Does your pain sit mostly on your right side, under the ribs?
       icon: pushpin
@@ -7424,9 +7424,9 @@ situations:
       icon: magnify
       ko: 그 통증과 함께 피부나 눈이 노랗게 변한 걸 알아차리셨나요?
       note: 황달
-    - en: Together with your fever, that's why we'll start antibiotics right away to treat the infection.
+    - en: With that and your fever, we'll start antibiotics right away for the infection.
       icon: pill
-      ko: 열과 합쳐서, 그래서 감염을 치료하려고 바로 항생제를 시작할게요
+      ko: 그것과 열을 보면 감염이라 바로 항생제를 시작할게요
       note: 항생제
     - en: Beyond antibiotics, you may need a procedure called ERCP to drain the bile duct.
       icon: scalpel
@@ -7486,10 +7486,10 @@ situations:
     blank:
       answer: calling
       options:
-      - en: calling
       - en: waiting
       - en: looking
-      - en: asking
+      - en: calling
+      - en: charting
   - en: We're starting fluids and oxygen immediately.
     ko: 즉시 수액과 산소를 시작할게요.
     chunks:
@@ -7504,7 +7504,7 @@ situations:
     goal: 2
     tag: 즉시 조치
     icon: hospital
-    why: immediately는 right away보다 더 급박한 느낌이에요. 혈압이 떨어진 환자는 수액과 산소로 먼저 상태를 지지해요.
+    why: immediately로 기다리지 않고 바로 시작한다고 알려요. 혈압이 떨어진 환자는 수액과 산소로 먼저 상태를 지지해요.
     decoy: before dinner
     distractorsKo:
     - 혈압이 낮아졌어요
@@ -7560,7 +7560,7 @@ situations:
     goal: 2
     tag: 치료 목적
     icon: chartup
-    why: to bring…back up으로 수액의 목적을 쉽게 풀어요. pressure는 blood pressure를 줄인 말이고, 환자에게는 이 편이 덜 무섭게 들려요.
+    why: to bring…back up으로 수액의 목적을 쉽게 풀어요. pressure는 대화에서 blood pressure를 줄여 부르는 흔한 말이에요.
     decoy: to the unit
     distractorsKo:
     - 산소도 시작했어요
@@ -7612,23 +7612,23 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 급속 악화 복증 대응 4문장 순서
-    why: 혈압이 떨어졌음을 먼저 알리고, 그래서 곁에서 팀을 부르고, 그 팀이 수액을 시작한다고 말하고, 그들이 무엇을 하든 악화되면 바로 알려 달라고 해요. 'Because of that'·'the team'·'they'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 혈압이 떨어졌음을 먼저 알리고, 팀을 부르며 곁을 지키고, 그 팀이 수액을 시작한다고 말하고, 그 수액을 맞는 중에도 악화되면 바로 알려 달라고 해요. 'the team'·'those fluids'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: Your blood pressure has dropped, so we're acting quickly.
       icon: monitor
       ko: 혈압이 떨어져서 저희가 빠르게 대응하고 있어요
       note: 상황
-    - en: Because of that, stay with me — I'm calling for the team right now.
+    - en: I'm calling for the team right now — stay with me.
       icon: faceWorried
-      ko: 그래서 정신 놓지 마세요, 지금 바로 팀을 부를게요
+      ko: 지금 바로 팀을 부를게요, 정신 놓지 마세요
       note: 호출
     - en: The team is starting fluids to bring your pressure back up.
       icon: chartup
       ko: 팀이 혈압을 다시 끌어올리기 위해 수액을 시작하고 있어요
       note: 수액
-    - en: Whatever they do, tell me right away if you feel any worse.
+    - en: Even with those fluids, tell me right away if you feel any worse.
       icon: bell
-      ko: 그들이 무엇을 하든 더 안 좋아지면 바로 말씀해 주세요
+      ko: 그 수액을 맞는 중에도 더 안 좋아지면 바로 말씀해 주세요
       note: 알림
 - title: 다발외상 동반 복강내출혈
   sentences:
@@ -7684,10 +7684,10 @@ situations:
     blank:
       answer: crash
       options:
-      - en: lift
+      - en: surgery
       - en: crash
-      - en: fall
-      - en: fight
+      - en: procedure
+      - en: injection
   - en: We're getting blood ready in case you need a transfusion.
     ko: 수혈이 필요할 경우를 대비해 혈액을 준비하고 있어요.
     chunks:
@@ -7741,9 +7741,9 @@ situations:
     blank:
       answer: pulse
       options:
-      - en: weight
-      - en: height
-      - en: age
+      - en: temperature
+      - en: oxygen
+      - en: sugar
       - en: pulse
   - en: The trauma team is here to help you right now.
     ko: 외상팀이 지금 바로 도와드리러 왔어요.
@@ -7810,7 +7810,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 외상 복강내출혈 4문장 순서
-    why: 외상팀이 와 있다고 알리고, 그 팀이 FAST를 하고, 그 검사와 활력징후가 심각도를 알려 주고, 심각할 경우를 대비해 혈액을 준비한다고 말해요. 'They'·'that scan'·'that could be serious'가 앞 줄을 가리켜 순서가 하나예요.
+    why: 외상팀이 와 있다고 알리고, 그 팀이 FAST를 하고, 그 검사와 활력징후가 심각도를 알려 주고, 그 결과에 출혈이 보일 때를 대비해 혈액을 준비한다고 말해요. 'They'·'that scan'·'those numbers'가 앞 줄을 가리켜 순서가 하나예요.
     lines:
     - en: The trauma team is here to help you right now.
       icon: hospital
@@ -7824,7 +7824,7 @@ situations:
       icon: chartup
       ko: 그 검사와 함께 혈압과 맥박을 보면 얼마나 심각한지 알 수 있어요
       note: 심각도
-    - en: Because that could be serious, we're getting blood ready for a transfusion.
+    - en: In case those numbers show bleeding, we're getting blood ready for a transfusion.
       icon: lab
-      ko: 그게 심각할 수 있어서 수혈용 혈액을 준비하고 있어요
+      ko: 그 수치에 출혈이 보일 경우에 대비해 수혈용 혈액을 준비하고 있어요
       note: 혈액
