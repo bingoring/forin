@@ -1,0 +1,110 @@
+- title: 흉통 초기 문진
+  s:
+  - {t: "발병 시점", i: calendar, w: "OPQRST의 O(발병)를 묻는 첫 질문이에요. first를 넣으면 지금 아픈 것이 아니라 맨 처음 시작된 순간을 묻게 돼요.", d: "first stop", k: ["가슴 통증이 얼마나 오래 갔나요?", "통증이 어디로 퍼지나요?"], a: "start", o: ["stop", "spread", "change"]}
+  - {t: "발병 상황", i: me, w: "when it began은 통증이 시작된 그 순간의 활동을 묻는 틀이에요. 걷던 중인지 쉬던 중인지에 따라 원인을 가리는 단서가 달라져요.", d: "ended", k: ["언제 마지막으로 식사하셨어요?", "그때 혼자 계셨어요?"], a: "began", o: ["stopped", "worsened", "returned"]}
+  - {t: "완화·악화", i: chartup, w: "OPQRST의 P(유발·완화 요인)를 묻는 질문이에요. better와 worse를 한 문장에 묶으면 환자가 두 방향을 모두 떠올려 답해요.", d: "the same", k: ["통증이 어디로 퍼지나요?", "그때 숨은 쉬기 편했나요?"], a: "better or worse", o: ["faster or slower", "longer or shorter", "higher or lower"]}
+  - {t: "양상 문진", i: speech, w: "what the pain feels like는 환자가 직접 비유를 꺼내게 하는 열린 질문이에요. 압박감이나 찌르는 느낌처럼 환자의 말이 원인을 가리는 단서가 돼요.", d: "how long", k: ["통증이 어디에서 시작됐는지 말씀해 주시겠어요?", "통증 점수를 말씀해 주시겠어요?"], a: "describe", o: ["rate", "repeat", "locate"]}
+  - {t: "통증 점수", i: chartup, w: "scale of one to ten은 통증을 숫자로 말하게 해서 나중에 변화를 비교할 수 있게 해요. right now는 지금 이 순간의 점수를 묻는 표시예요.", d: "at its worst", k: ["통증이 얼마나 오래 이어졌나요?", "통증이 어디까지 퍼졌나요?"], a: "one to ten", o: ["one to five", "zero to five", "one to twenty"]}
+  - {t: "과거력", i: board, w: "like this는 지금과 같은 증상을 가리켜서 비슷한 흉통이 예전에 있었는지 병력을 끌어내요. before 하나로 한 번이라도 있었던 일을 모두 묻는 열린 질문이에요.", d: "since then", k: ["지금 약을 드신 적 있나요?", "가족 중에 심장병이 있는 분이 있나요?"], a: "before", o: ["recently", "twice", "often"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "흉통 초기 문진 4문장 순서"
+    why: "발병 시점을 먼저 묻고, 시작될 때 하던 일을 묻고, 그 활동 중에 달라진 점을 물은 뒤, 마지막에 지금 점수를 받아요. 뒤 줄이 앞 줄의 답을 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "When did the chest pain first start?", icon: calendar, ko: "가슴 통증이 언제 처음 시작됐나요?", note: "발병"}
+    - {en: "What were you doing when it began?", icon: me, ko: "시작됐을 때 뭘 하고 계셨어요?", note: "활동"}
+    - {en: "While you were doing that, did anything make it better or worse?", icon: chartup, ko: "그러는 동안 좋아지거나 나빠진 게 있었나요?", note: "변화"}
+    - {en: "Whatever helped or made it worse, how bad is it right now?", icon: speech, ko: "뭐가 됐든, 지금은 얼마나 심한가요?", note: "점수"}
+  ctx: {word: "start", ko: "시작되다"}
+  sw: {ko: "통증이 어떤 느낌인지 설명해 주시겠어요?"}
+- title: 흉통 활력·ESI 등급
+  s:
+  - {t: "측정 안내", i: monitor, w: "I'm going to …로 곧 할 일을 먼저 알리면 환자가 놀라지 않아요. 혈압과 맥박은 흉통 환자가 오면 초기에 확인하는 활력징후예요.", d: "your weight", k: ["지금 체온을 재 볼게요", "지금 소변 검사를 할게요"], a: "check", o: ["lower", "treat", "change"]}
+  - {t: "동반 증상", i: stetho, w: "any로 묻는 것은 하나라도 있었는지 열어 둔 질문이에요. 숨참과 식은땀은 흉통에 흔히 동반되는 증상이라 함께 물어요.", d: "or fever", k: ["열이나 오한이 있었나요?", "다리가 붓거나 저린 적이 있었나요?"], a: "sweating", o: ["coughing", "vomiting", "fainting"]}
+  - {t: "기기 안내", i: gear, w: "Let me …는 허락을 구하듯 부드럽게 알리는 말투예요. 손가락 클립(맥박산소측정기)은 아프지 않다고 덧붙이면 환자가 더 안심해요.", d: "on your wrist", k: ["이 팔찌를 손목에 채울게요", "손가락에서 피를 조금 뽑을게요"], a: "finger", o: ["wrist", "arm", "chest"]}
+  - {t: "상태 설명", i: siren, w: "숫자를 근거로 대면 왜 서두르는지가 객관적으로 전달돼요. urgent attention은 겁을 주지 않으면서 서두르는 이유를 밝히는 표현이에요.", d: "a short rest", k: ["맥박과 혈압은 모두 정상이에요", "혈압약을 먼저 드셔야 해요"], a: "urgent", o: ["routine", "minor", "occasional"]}
+  - {t: "우선순위", i: bell, w: "so로 이유를 바로 붙이면 왜 나만 먼저 보나 하는 의문이 없어요. 미국 응급실은 중증도 분류(ESI)로 진료 순서를 정해요.", d: "later", k: ["의사가 곧 오지 않을 수도 있어요", "대기실에서 기다려 주세요"], a: "higher", o: ["lower", "fixed", "different"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "흉통 활력 확인 4문장 순서"
+    why: "혈압과 맥박을 먼저 알리고, 그 사이 산소를 재고, 나온 수치를 근거로 위급함을 말한 뒤, 그래서 순서를 올린다고 알려요. 뒤 줄이 앞 줄의 수치와 이유를 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "I'm going to check your blood pressure and heart rate first.", icon: monitor, ko: "먼저 혈압과 맥박을 확인할게요", note: "측정"}
+    - {en: "While I do that, let me put this clip on your finger to check your oxygen.", icon: gear, ko: "그동안 산소를 보게 손가락에 클립을 끼울게요", note: "산소"}
+    - {en: "Those readings, oxygen included, tell me this needs urgent attention.", icon: siren, ko: "산소까지 포함한 수치를 보니 급해 보여요", note: "판단"}
+    - {en: "Because of that, I'm moving you up so the doctor sees you sooner.", icon: bell, ko: "그래서 의사가 더 빨리 보게 순서를 올려요", note: "우선"}
+  ctx: {word: "priority", ko: "우선순위"}
+- title: 심전도 준비 설명·안심
+  s:
+  - {t: "검사 안내", i: monitor, w: "just가 검사를 작게 보이게 하고, 뒤에 it's painless를 바로 붙여 환자의 걱정을 먼저 덜어요. ECG는 몸에 전기를 내보내지 않고 심장의 신호만 읽어요.", d: "just changes", k: ["이 검사는 피를 조금 뽑는 거예요", "이 검사는 심장을 사진으로 찍어요"], a: "records", o: ["changes", "stops", "controls"]}
+  - {t: "안심 설명", i: shield, w: "but 앞에서는 느낄 것을, 뒤에서는 느끼지 않을 것을 말하는 틀이에요. 전기 패드라는 말에서 충격을 떠올리기 쉬워서 no shocks를 분명히 말해 줘요.", d: "a cold gel", k: ["패드 몇 개가 차갑게 느껴질 거예요", "약한 전기 충격이 한두 번 있을 거예요"], a: "sticky", o: ["cold", "heavy", "sharp"]}
+  - {t: "협조 요청", i: me, w: "Please try to …는 부탁처럼 들려서 환자가 협조하기 쉬워요. 움직이거나 말하면 심전도 파형에 잡음이 생겨서 가만히 있어 달라고 해요.", d: "and breathe deeply", k: ["약 10초 동안 크게 숨을 쉬어 주세요", "약 10분 동안 누워 계셔 주세요"], a: "still", o: ["flat", "awake", "warm"]}
+  - {t: "알림 요청", i: bell, w: "Let me know는 간호사가 환자에게 알려 달라고 청하는 정중한 틀이에요. right away는 불편이 생기는 즉시 알려 달라는 뜻이라 환자가 참지 않게 해요.", d: "later today", k: ["불편한 건 참아 주셔도 돼요", "검사가 끝나면 알려 드릴게요"], a: "right away", o: ["tomorrow morning", "after you leave", "at discharge"]}
+  - {t: "소요 안내", i: chartup, w: "in just a few minutes처럼 시간을 짧고 구체적으로 말하면 기다리는 불안이 줄어요. 결과는 환자에게 바로 해석해 주지 않고 의사가 확인해요.", d: "in a few hours", k: ["결과는 며칠 뒤에 나올 거예요", "결과를 지금 바로 설명해 드릴게요"], a: "minutes", o: ["hours", "days", "weeks"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "심전도 설명 4문장 순서"
+    why: "검사가 무엇인지 먼저 말하고, 그러기 위해 패드를 붙인다고 알리고, 붙인 뒤 가만히 있기를 청하고, 그 열 초 뒤의 결과 전달로 마무리해요. 뒤 줄이 앞 줄을 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "This test only records your heart's electrical activity, so it doesn't hurt.", icon: monitor, ko: "이 검사는 심장 전기 활동만 기록해서 아프지 않아요", note: "설명"}
+    - {en: "To do that, I'll place a few sticky pads on your chest.", icon: gear, ko: "그러려고 가슴에 끈끈한 패드를 붙일게요", note: "부착"}
+    - {en: "Once they're on, please stay still for about ten seconds.", icon: me, ko: "붙이고 나면 약 10초간 가만히 계셔 주세요", note: "요청"}
+    - {en: "After those ten seconds, the results go to the doctor within minutes.", icon: chartup, ko: "그 10초 뒤 몇 분 안에 결과가 의사에게 가요", note: "결과"}
+  sw: {ko: "끈끈한 패드 몇 개가 느껴질 텐데, 전기 충격은 전혀 없어요"}
+- title: 위산 역류성 흉통 감별
+  s:
+  - {t: "악화 요인", i: bulb, w: "lie down과 after meals는 역류성 통증이 흔히 심해지는 두 상황이에요. 상황을 구체적으로 짚어 주면 환자가 해당되는지 바로 답해요.", d: "or when you walk", k: ["움직이거나 걸을 때 더 심해지나요?", "누우면 화끈거림이 덜해지나요?"], a: "lie down", o: ["stand up", "sit up", "walk"]}
+  - {t: "역류 증상", i: me, w: "taste anything sour처럼 감각을 구체적으로 물으면 환자가 위산이 올라오는 느낌을 쉽게 떠올려요. 신맛은 역류의 단서 중 하나예요.", d: "in your nose", k: ["목이 자주 아프세요?", "입이 자주 마르시나요?"], a: "sour", o: ["sweet", "spicy", "smoky"]}
+  - {t: "심장 먼저", i: stetho, w: "rule out은 아닌지 확인해 배제한다는 뜻이에요. 증상이 역류처럼 들려도 흉통은 심장부터 배제하는 것이 응급실의 기본 순서예요.", d: "after we assume", k: ["심장 문제는 아니라고 보셔도 돼요", "역류 약을 먼저 드시고 지켜볼게요"], a: "reflux", o: ["anxiety", "a strain", "pneumonia"]}
+  - {t: "양상 구분", i: speech, w: "burning, pressure, squeezing처럼 느낌 단어를 보기로 주면 환자가 고르기 쉬워요. 압박감과 조임은 심장 쪽을, 화끈거림은 역류 쪽을 떠올리게 하지만 이것만으로 단정하지는 않아요.", d: "than stabbing", k: ["통증이 가슴 왼쪽에 있나요?", "통증이 숨 쉴 때 더 심해지나요?"], a: "burning", o: ["stabbing", "tingling", "itching"]}
+  - {t: "약 복용력", i: pill, w: "도움이 됐는지를 같이 물으면 약 이름뿐 아니라 효과까지 알 수 있어요. 제산제로 나아졌다고 해서 심장 원인이 배제되지는 않아요.", d: "any painkillers", k: ["지금 제산제를 한 알 드릴까요?", "제산제 알레르기가 있으신가요?"], a: "antacids", o: ["laxatives", "antibiotics", "sedatives"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "역류성 흉통 감별 4문장 순서"
+    why: "통증이 어떤 느낌인지 먼저 묻고, 화끈거림이라면 언제 심해지는지 묻고, 그렇게 심해질 때 제산제를 썼는지 묻고, 마지막에 그래도 심장부터 확인한다고 말해요. 뒤 줄이 앞 줄의 답을 이어받아 순서가 하나예요."
+    lines:
+    - {en: "Is the pain more like burning than pressure or squeezing?", icon: speech, ko: "압박감이나 조임보다 화끈거림에 가까운가요?", note: "양상"}
+    - {en: "If it's burning, does it get worse when you lie down or after meals?", icon: bulb, ko: "화끈거린다면 눕거나 식사 후에 심해지나요?", note: "악화"}
+    - {en: "When it gets worse like that, have you taken antacids, and did they help?", icon: pill, ko: "그렇게 심해질 때 제산제를 드셨고 도움이 됐나요?", note: "약"}
+    - {en: "Even if they helped, we still need to rule out your heart first.", icon: stetho, ko: "도움이 됐어도 먼저 심장을 배제해야 해요", note: "확인"}
+  ctx: {word: "burning", ko: "화끈거림"}
+- title: 근골격계 흉통(늑연골염) 감별
+  s:
+  - {t: "압통 확인", i: pushpin, w: "when I press on this spot처럼 간호사의 행동을 말로 먼저 알리면 환자가 놀라지 않아요. 누르면 아픈 것은 근골격계 통증의 단서지만 그것만으로 심장을 배제하지는 않아요.", d: "when I listen", k: ["이 부위를 만져도 안 아프신가요?", "이 부위가 따뜻하게 느껴지시나요?"], a: "hurt", o: ["itch", "swell", "bleed"]}
+  - {t: "활동 문진", i: gear, w: "lift와 strain을 함께 묻는 것은 근육을 쓴 일이 있었는지 폭넓게 찾는 질문이에요. recently가 있어서 최근 며칠로 범위가 좁혀져요.", d: "or fall", k: ["최근에 넘어지거나 부딪히셨나요?", "최근에 약을 새로 드셨나요?"], a: "lift", o: ["drop", "break", "cut"]}
+  - {t: "동작 변화", i: chartup, w: "숨을 깊이 쉬거나 몸을 비틀 때 통증이 변하면 근육이나 늑골 쪽 통증일 수 있어요. 다만 폐나 심낭 원인도 숨 쉴 때 아파서 이것만으로 단정하지는 않아요.", d: "or sit up", k: ["숨을 참으면 통증이 사라지나요?", "누워 있을 때만 통증이 생기나요?"], a: "twist", o: ["swallow", "cough", "sneeze"]}
+  - {t: "위치 확인", i: pushpin, w: "point to를 쓰면 말로 설명하기 어려운 환자도 손가락으로 답할 수 있어요. 한 점을 짚는 통증은 넓게 퍼진 통증과 원인이 달라서 구별에 도움이 돼요.", d: "how long", k: ["통증이 얼마나 오래가는지 말씀해 주시겠어요?", "통증이 언제 시작됐는지 말씀해 주시겠어요?"], a: "most", o: ["least", "first", "longest"]}
+  - {t: "안심과 확인", i: shield, w: "usually로 단정을 피하고 but we'll still …로 확인하겠다고 남겨요. 환자를 안심시키되 심장 검사를 건너뛰겠다는 약속은 하지 않는 말이에요.", d: "so we'll skip", k: ["이런 통증은 매우 위험할 수 있어요", "검사 없이 집에 가셔도 돼요"], a: "tests", o: ["guesses", "luck", "words"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "근골격계 흉통 감별 4문장 순서"
+    why: "아픈 곳을 먼저 짚게 하고, 바로 그 자리를 눌러 반응을 보고, 눌러서 아프다면 무리한 일이 있었는지 묻고, 답을 근거로 위험이 낮아 보여도 검사는 한다고 맺어요. 뒤 줄이 앞 줄의 답을 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "Can you point to where it hurts the most?", icon: pushpin, ko: "어디가 제일 아픈지 짚어주시겠어요?", note: "위치"}
+    - {en: "Does it hurt more when I press right there?", icon: gear, ko: "바로 거기를 누르면 더 아프신가요?", note: "압통"}
+    - {en: "If pressing makes it worse, did you lift or strain anything recently?", icon: chartup, ko: "누르면 더하다면 최근 무리한 적 있나요?", note: "활동"}
+    - {en: "From your answers, this pain usually isn't dangerous, but we'll still run tests.", icon: shield, ko: "답을 보면 대체로 위험하지 않지만 검사는 해요", note: "확인"}
+  ctx: {word: "press", ko: "누르다"}
+- title: 전형적 STEMI 신속 트리아지
+  s:
+  - {t: "방사통", i: magnify, w: "spread to로 통증이 퍼지는 방향을 묻고 팔·턱·등을 보기로 들어 환자가 바로 답하게 해요. 이 부위로 퍼지는 통증은 심장 원인에서 흔한 양상이에요.", d: "to your leg", k: ["통증이 숨 쉴 때만 심해지나요?", "통증이 누울 때 심해지나요?"], a: "arm", o: ["hip", "knee", "foot"]}
+  - {t: "즉시 조치", i: siren, w: "right now는 지체 없이 하고 있다는 신호예요. 흉통 환자는 도착 후 10분 안에 심전도를 찍는 것이 목표(미국 심장학회 지침)이고, 환자에게도 그 서두름을 알려 줘요.", d: "in an hour", k: ["잠시 후에 혈액 검사를 할게요", "의사 선생님이 곧 퇴원시켜 주실 거예요"], a: "ECG", o: ["X-ray", "MRI", "ultrasound"]}
+  - {t: "상태 설명", i: faceWorried, w: "상태를 짧게 말해 주고 stay with me로 곁에 있겠다고 하면 환자가 혼자라고 느끼지 않아요. help is coming으로 도움이 오는 중임을 알려요.", d: "and flushed", k: ["안색이 좋아 보여요 — 걱정하지 마세요", "땀이 나시네요 — 일어나 앉으세요"], a: "pale", o: ["flushed", "yellow", "swollen"]}
+  - {t: "이유 설명", i: bulb, w: "could be로 가능성을 말하고 so로 서두르는 이유를 이어요. 확정이 아닌 가능성이라는 틀이라 겁을 덜 주면서 긴박함을 전해요.", d: "to wait here", k: ["아마 가벼운 근육통이라 서두를 필요는 없어요", "심장이 아니라는 게 확인됐어요"], a: "fast", o: ["slowly", "later", "alone"]}
+  - {t: "침착 유도", i: me, w: "Try to …는 명령 대신 노력해 보라는 부탁이라 부드러워요. the team is on its way로 도움이 오는 중이라는 근거를 줘서 침착하라는 말이 공허하지 않아요.", d: "break", k: ["지금 바로 일어나서 걸어 보세요", "팀이 아직 오고 있지 않아요"], a: "calm", o: ["awake", "upright", "alone"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "STEMI 의심 신속 대응 4문장 순서"
+    why: "퍼지는 통증을 먼저 확인하고, 그 양상이 심장일 수 있다며 심전도를 알리고, 심전도를 찍는 동안 가만히 있기를 청하고, 그대로 있으라며 팀이 오는 중임을 알려요. 뒤 줄이 앞 줄을 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "Does the pain spread to your arm, jaw, or back?", icon: magnify, ko: "통증이 팔, 턱, 등으로 퍼지나요?", note: "확인"}
+    - {en: "That could be your heart, so we're getting an ECG right now.", icon: siren, ko: "심장일 수 있어서 지금 바로 심전도를 찍어요", note: "조치"}
+    - {en: "While we do that, try to stay still and calm.", icon: me, ko: "찍는 동안 가만히 침착하게 계세요", note: "요청"}
+    - {en: "Good, just stay like that — the team is on its way.", icon: bell, ko: "좋아요, 그대로 계세요 — 팀이 오고 있어요", note: "안심"}
+  ctx: {word: "ECG", ko: "심전도"}
