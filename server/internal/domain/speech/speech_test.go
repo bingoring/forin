@@ -361,3 +361,24 @@ func TestRecordClearsReviewCardForDrillOrigin(t *testing.T) {
 		t.Fatalf("drill attempts must never carry a review_card_id (I3), got %+v", repo.inserted)
 	}
 }
+
+// Cross-review B1: the response carried durationMs = 0 on every attempt — Record stored the
+// clip length on the row but never on the returned result, so the result screen showed
+// "0.0초" and compared the learner against the reference as if they were always faster.
+func TestRecordReturnsTheClipDuration(t *testing.T) {
+	pron := &fakePronPort{result: sampleResult()}
+	repo := newFakeSpeechRepo()
+	svc := newTestService(pron, repo)
+
+	wav := buildWav(16000, 1, 24000) // 1.5 s
+	got, err := svc.Record(context.Background(), "u1", wav, "I'm giving you acetaminophen", RecordOptions{Origin: "drill"})
+	if err != nil {
+		t.Fatalf("Record: %v", err)
+	}
+	if got.Result.DurationMS != 1500 {
+		t.Fatalf("result DurationMS = %d, want 1500", got.Result.DurationMS)
+	}
+	if repo.inserted[0].DurationMS != 1500 {
+		t.Fatalf("row DurationMS = %d, want 1500", repo.inserted[0].DurationMS)
+	}
+}

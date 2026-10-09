@@ -108,6 +108,9 @@ func (s *Service) Record(ctx context.Context, userID string, audioWav []byte, re
 	}
 
 	key := SentenceKey(referenceText, locale)
+	// The clip length rides on the result too, not only on the row — the result screen reads
+	// it from the response (cross-review B1: it was always 0 there).
+	res.DurationMS = DurationMS(audioWav)
 
 	id, attemptNo, err := s.repo.InsertAttempt(ctx, ports.SpeechAttemptInput{
 		UserID:        userID,
@@ -121,7 +124,7 @@ func (s *Service) Record(ctx context.Context, userID string, audioWav []byte, re
 		Completeness:  res.Completeness,
 		Prosody:       res.Prosody,
 		ProsodyOK:     res.ProsodyOK,
-		DurationMS:    DurationMS(audioWav),
+		DurationMS:    res.DurationMS,
 		Words:         res.Words,
 		ScenarioID:    opts.ScenarioID,
 		SessionID:     opts.SessionID,
