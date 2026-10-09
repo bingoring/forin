@@ -4,13 +4,9 @@ import (
 	"context"
 	"github.com/bingoring/forin/server/internal/i18n"
 	"log/slog"
-	"net"
 	"net/http"
 	"strings"
-	"sync"
 	"time"
-
-	"golang.org/x/time/rate"
 
 	"github.com/bingoring/forin/server/internal/domain/auth"
 	"github.com/bingoring/forin/server/internal/platform/httpx"
@@ -86,29 +82,6 @@ func cors(next http.Handler) http.Handler {
 		}
 		next.ServeHTTP(w, r)
 	})
-}
-
-// rateLimit applies a simple per-IP token bucket (foundation-grade).
-func rateLimit(rps rate.Limit, burst int) middleware {
-	var mu sync.Mutex
-	limiters := map[string]*rate.Limiter{}
-	return func(next http.Handler) http.Handler {
-		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-			ip, _, _ := net.SplitHostPort(r.RemoteAddr)
-			mu.Lock()
-			lim, ok := limiters[ip]
-			if !ok {
-				lim = rate.NewLimiter(rps, burst)
-				limiters[ip] = lim
-			}
-			mu.Unlock()
-			if !lim.Allow() {
-				httpx.Error(w, http.StatusTooManyRequests, "rate limit exceeded")
-				return
-			}
-			next.ServeHTTP(w, r)
-		})
-	}
 }
 
 // requireAuth validates the Bearer access token and injects the user ID.

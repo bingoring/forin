@@ -27,13 +27,16 @@ import (
 type Deps struct {
 	Env           string // dev | staging | prod — gates dev-only routes
 	DevAuthSecret string // gates POST /auth/dev outside dev; empty in prod
-	Log           *slog.Logger
-	Tokens        *auth.TokenService
-	AuthSvc       *auth.Service
-	Users         ports.UserRepo
-	Content       ports.ContentReader
-	Progress      ports.ProgressRepo
-	Review        ports.ReviewRepo
+	// TrustedProxyHops: proxies in front of the app that append to X-Forwarded-For
+	// (config.TrustedProxyHops); 0 = key the rate limit on RemoteAddr.
+	TrustedProxyHops int
+	Log              *slog.Logger
+	Tokens           *auth.TokenService
+	AuthSvc          *auth.Service
+	Users            ports.UserRepo
+	Content          ports.ContentReader
+	Progress         ports.ProgressRepo
+	Review           ports.ReviewRepo
 	// Journeys resolves a profession's learning journey (the themed engine registry,
 	// assembled at boot). Optional: nil degrades every journey read to empty-but-
 	// browsable rather than to an error.
@@ -260,6 +263,6 @@ func NewRouter(d Deps) http.Handler {
 		requestLog(d.Log),
 		cors,
 		localeMW,
-		rateLimit(rate.Limit(20), 40),
+		rateLimit(rate.Limit(20), 40, d.TrustedProxyHops),
 	)
 }

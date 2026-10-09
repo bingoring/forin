@@ -61,6 +61,18 @@ type Config struct {
 	// account to 200 x (TTS + assessment) a day instead of ~20 per second.
 	SpeechReferenceDailyLimit int
 
+	// TrustedProxyHops is how many proxies in front of the app append to X-Forwarded-For
+	// — the rate limiter counts that many entries from the RIGHT to find the real client
+	// (internal/adapters/http/ratelimit.go has the full reasoning). Env TRUSTED_PROXY_HOPS.
+	//
+	// Default 1 for staging/prod: Cloud Run is reached through Google's front end, which
+	// appends the connecting client's address, so the rightmost entry is the caller. With
+	// no proxy in front, RemoteAddr is already the caller and the header is entirely
+	// client-controlled, so the default for dev (and any unknown ENV) is 0 = ignore it.
+	// Put a Google Cloud load balancer in front (it appends its own entry) and set 2;
+	// set 0 to switch the header off.
+	TrustedProxyHops int
+
 	// ContentDir is where authored runtime content (home flavour pools, slang deck) is
 	// read from. The Docker image bundles it at /content and sets CONTENT_DIR; locally it
 	// defaults to the repo's ./content.
@@ -114,6 +126,7 @@ func Load() (*Config, error) {
 		SpeechReferenceDailyLimit: getint("SPEECH_REFERENCE_DAILY_LIMIT", 200),
 		ContentDir:                getenv("CONTENT_DIR", "content"),
 	}
+	c.TrustedProxyHops = getint("TRUSTED_PROXY_HOPS", defaultProxyHops(c.Env))
 
 	var missing []string
 	if c.DatabaseURL == "" {
@@ -149,6 +162,14 @@ func splitList(v string) []string {
 		}
 	}
 	return out
+}
+
+// defaultProxyHops: see Config.TrustedProxyHops.
+func defaultProxyHops(env string) int {
+	if env == "staging" || env == "prod" {
+		return 1
+	}
+	return 0
 }
 
 func getenv(k, def string) string {

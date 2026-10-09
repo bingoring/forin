@@ -183,9 +183,10 @@ func main() {
 		WithReferenceLimiter(redisadapter.NewReferenceLimiter(rdb, cfg.SpeechReferenceDailyLimit))
 
 	handler := httpadapter.NewRouter(httpadapter.Deps{
-		Env:           cfg.Env,
-		DevAuthSecret: cfg.DevAuthSecret,
-		Log:           logger, Tokens: tokens, AuthSvc: authSvc, Users: users, Content: contentRepo,
+		Env:              cfg.Env,
+		DevAuthSecret:    cfg.DevAuthSecret,
+		TrustedProxyHops: cfg.TrustedProxyHops,
+		Log:              logger, Tokens: tokens, AuthSvc: authSvc, Users: users, Content: contentRepo,
 		Progress: progressRepo, Review: progressRepo, Journeys: journeys, Convo: convoEngine, Pron: pronSvc, Speech: speechSvc, Synth: speech,
 		PronunciationEnabled: speech.Configured(),
 		Colleague:            colleagueRepo, Lounge: loungeRepo, HomePools: homePools, Ward: wardSvc, Slang: slangDeck, SlangRepo: slangRepo, Lessons: lessonRepo, Night: nightRadio, Handoff: handoffSvc, PG: pool, Redis: rdb,

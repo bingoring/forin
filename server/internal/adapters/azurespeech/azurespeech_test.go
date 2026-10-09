@@ -217,7 +217,10 @@ func TestSTTCallsStopAtTheirOwnTimeout(t *testing.T) {
 	c := &Client{key: "k", region: "r", http: &http.Client{Transport: hangingTransport{}, Timeout: time.Minute}, sttTimeout: 50 * time.Millisecond}
 
 	for name, call := range map[string]func() error{
-		"Assess":     func() error { _, err := c.Assess(context.Background(), wavWithRate(16000), "hello", "en-US"); return err },
+		"Assess": func() error {
+			_, err := c.Assess(context.Background(), wavWithRate(16000), "hello", "en-US")
+			return err
+		},
 		"Transcribe": func() error { _, err := c.Transcribe(context.Background(), wavWithRate(16000), "en-US"); return err },
 	} {
 		start := time.Now()
