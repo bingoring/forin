@@ -33,7 +33,17 @@ func speechTestPool(t *testing.T) *pgxpool.Pool {
 			"TEST_DATABASE_URL=postgres://forin:forin@localhost:5432/forin_test?sslmode=disable go test ./internal/adapters/postgres/ -run Speech -v " +
 			"(migrations must already be applied to that database)")
 	}
-	pool, err := pgxpool.New(context.Background(), url)
+	cfg, err := pgxpool.ParseConfig(url)
+	if err != nil {
+		t.Fatalf("parse pool config: %v", err)
+	}
+	// pgxpool's default MaxConns is max(4, NumCPU): 4 on a 2-vCPU CI runner, much more on a
+	// laptop. Some tests hold several connections at once (TestRetryResolvesGenuineRace needs
+	// 3, the concurrency test races 8), so pin a floor and stop the result depending on the host.
+	if cfg.MaxConns < 8 {
+		cfg.MaxConns = 8
+	}
+	pool, err := pgxpool.NewWithConfig(context.Background(), cfg)
 	if err != nil {
 		t.Fatalf("open pool: %v", err)
 	}
@@ -486,8 +496,14 @@ func TestConcurrentAttemptsGetDistinctNumbers(t *testing.T) {
 // immediately after don't have their timing skewed by lazy connection
 // dial/auth — a pool that has to open a new physical connection is much
 // slower than one just handing out an idle one.
+//
+// Never more than the pool's MaxConns: on a 2-vCPU CI runner pgxpool's default cap is 4, and
+// holding 4 while asking for a 5th blocks forever (the 10-minute hang on PR #14).
 func warmPool(t *testing.T, pool *pgxpool.Pool, n int) {
 	t.Helper()
+	if max := int(pool.Config().MaxConns); n > max {
+		n = max
+	}
 	conns := make([]*pgxpool.Conn, n)
 	for i := 0; i < n; i++ {
 		c, err := pool.Acquire(context.Background())
