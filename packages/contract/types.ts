@@ -2984,6 +2984,10 @@ export interface components {
         "github_com_bingoring_forin_server_internal_domain_colleague.Relation": "peer" | "mentor" | "mentee";
         "github_com_bingoring_forin_server_internal_domain_content.BlankOption": {
             en?: string;
+            /**
+             * @description Icon is no longer authored or drawn: the sheet lists the options as rows like STEP 1's pick
+             *     (lesson-fidelity-v46 T8, user decision — a sentence needs no picture). Kept so older rows still load.
+             */
             icon?: string;
         };
         "github_com_bingoring_forin_server_internal_domain_content.Briefing": {
