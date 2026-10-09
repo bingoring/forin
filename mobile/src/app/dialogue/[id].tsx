@@ -13,7 +13,7 @@ import * as Speech from 'expo-speech';
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import {
   useAudioPlayer,
-  useAudioRecorder, requestRecordingPermissionsAsync, setAudioModeAsync,
+  requestRecordingPermissionsAsync, setAudioModeAsync,
   IOSOutputFormat, AudioQuality, type RecordingOptions,
 } from 'expo-audio';
 import { readAsStringAsync, EncodingType, cacheDirectory, downloadAsync, deleteAsync } from 'expo-file-system/legacy';
@@ -43,6 +43,7 @@ import { Rail, RailButton } from '@/components/dialogue/DialogueRail';
 import { NotesSheet } from '@/components/dialogue/NotesSheet';
 import { playSfx } from '@/lib/sfx';
 import { t, type Translate, useLocale, useT } from '@/i18n';
+import { useWavRecorder } from '@/lib/useWavRecorder';
 import { TASK_SCREEN } from '@/theme/transitions';
 
 // 16kHz mono PCM WAV — the format the server STT endpoint expects.
@@ -296,7 +297,7 @@ export default function DialogueRoute() {
   const setRec = (r: RecState) => { recRef.current = r; setRecState(r); };
   // Whether the finger is still on the hold mic.
   const heldRef = useRef(false);
-  const recorder = useAudioRecorder(WAV_16K_MONO);
+  const recorder = useWavRecorder(WAV_16K_MONO); // Android: PCM→WAV via AudioStream (lib/useWavRecorder.android.ts)
 
   /** Opens the mic. Resolves true once it is recording. */
   const startRecording = async (): Promise<boolean> => {

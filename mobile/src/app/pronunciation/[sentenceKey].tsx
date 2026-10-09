@@ -22,7 +22,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { ActivityIndicator, Alert, Linking, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import {
-  useAudioRecorder, useAudioRecorderState, useAudioPlayer, requestRecordingPermissionsAsync, setAudioModeAsync,
+  useAudioRecorderState, useAudioPlayer, requestRecordingPermissionsAsync, setAudioModeAsync,
   IOSOutputFormat, AudioQuality, type RecordingOptions,
 } from 'expo-audio';
 import {
@@ -43,6 +43,7 @@ import { splitTargetTokens, syllableBand, syllableLabel, buildCorrectionPoints, 
 import { api, type PronunciationResult, type SentenceReference, type SpeechAttemptRow } from '@/api/client';
 import { next, initialPronState, type PronState, type PronEventType } from '@/lib/pronState';
 import { type Translate, useT } from '@/i18n';
+import { useWavRecorder } from '@/lib/useWavRecorder';
 import { TASK_SCREEN } from '@/theme/transitions';
 
 const BAR_COUNT = 20; // matches SoT's mock W1 array length
@@ -396,7 +397,7 @@ export default function PronunciationRoute() {
   // stop time, from every sample collected (fullSamplesRef below).
   const [myWaveform, setMyWaveform] = useState<number[]>(() => Array(BAR_COUNT).fill(0.05));
 
-  const recorder = useAudioRecorder(WAV_16K_MONO);
+  const recorder = useWavRecorder(WAV_16K_MONO); // Android: PCM→WAV via AudioStream (lib/useWavRecorder.android.ts)
   const recorderState = useAudioRecorderState(recorder, 100);
   const stoppedRef = useRef(false);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
