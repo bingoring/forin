@@ -149,3 +149,23 @@ func TestParseRecognizedPrefersDisplayText(t *testing.T) {
 		t.Fatalf("Recognized should fall back to DisplayText when Display is empty, got %q", got.Recognized)
 	}
 }
+
+// Unscripted assessment (a dialogue utterance has no script): an empty
+// reference must OMIT ReferenceText so Azure scores against its own
+// recognition, instead of sending "" and hoping it is read as absent.
+func TestAssessConfigOmitsReferenceTextWhenUnscripted(t *testing.T) {
+	raw, err := assessConfig("")
+	if err != nil {
+		t.Fatal(err)
+	}
+	var cfg map[string]any
+	if err := json.Unmarshal(raw, &cfg); err != nil {
+		t.Fatal(err)
+	}
+	if _, present := cfg["ReferenceText"]; present {
+		t.Fatalf("ReferenceText must be absent for an unscripted assessment, got %v", cfg["ReferenceText"])
+	}
+	if cfg["Granularity"] != "Phoneme" || cfg["PhonemeAlphabet"] != "IPA" {
+		t.Fatalf("the rest of the config must be unchanged: %v", cfg)
+	}
+}

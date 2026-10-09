@@ -382,3 +382,24 @@ func TestRecordReturnsTheClipDuration(t *testing.T) {
 		t.Fatalf("row DurationMS = %d, want 1500", repo.inserted[0].DurationMS)
 	}
 }
+
+// cross-review I3: a dialogue utterance is scored with ONE unscripted Azure
+// call; RecordScored persists a result that call already produced, without
+// calling the scorer again.
+func TestRecordScoredPersistsWithoutCallingTheScorer(t *testing.T) {
+	pron := &fakePronPort{}
+	repo := newFakeSpeechRepo()
+	svc := newTestService(pron, repo)
+
+	res := sampleResult()
+	rec := svc.RecordScored(context.Background(), "u1", buildWav(16000, 1, 16000), res.Recognized, res, RecordOptions{Origin: "dialogue", SessionID: "s1"})
+	if rec.PersistErr != nil || rec.ID == "" {
+		t.Fatalf("rec = %+v", rec)
+	}
+	if pron.assessCalls != 0 {
+		t.Fatalf("scorer called %d times, want 0", pron.assessCalls)
+	}
+	if len(repo.inserted) != 1 || repo.inserted[0].ReferenceText != res.Recognized || repo.inserted[0].SessionID != "s1" {
+		t.Fatalf("inserted = %+v", repo.inserted)
+	}
+}

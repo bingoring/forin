@@ -121,9 +121,14 @@ func parseAssessment(body []byte) (*ports.PronunciationResult, error) {
 // assessConfig builds the JSON that goes into the Pronunciation-Assessment
 // header. Split out from Assess so a test can pin the parameters without
 // going over HTTP — several of them fail silently when wrong.
+//
+// An empty referenceText is an UNSCRIPTED assessment (free speech with no
+// script): ReferenceText is omitted so Azure scores against what it recognized,
+// and the response's DisplayText doubles as the transcript — one call instead
+// of a separate STT call plus a scripted assessment.
 func assessConfig(referenceText string) ([]byte, error) {
-	return json.Marshal(map[string]interface{}{
-		"ReferenceText": referenceText, "GradingSystem": "HundredMark",
+	cfg := map[string]interface{}{
+		"GradingSystem": "HundredMark",
 		// Phoneme granularity is what makes the syllable grid and the correction
 		// points possible; Word granularity returns neither. Prosody must be
 		// asked for explicitly and is silently absent on unsupported locales —
@@ -139,7 +144,11 @@ func assessConfig(referenceText string) ([]byte, error) {
 		// back to SAPI or to no phoneme name, which phonemetips.Lookup absorbs
 		// by normalizing both alphabets.
 		"PhonemeAlphabet": "IPA",
-	})
+	}
+	if referenceText != "" {
+		cfg["ReferenceText"] = referenceText
+	}
+	return json.Marshal(cfg)
 }
 
 // Assess scores audioWav (16kHz mono PCM WAV) against referenceText in the given locale (e.g. en-US).

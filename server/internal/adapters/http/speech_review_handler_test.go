@@ -2,12 +2,15 @@ package http
 
 import (
 	"encoding/base64"
+	"encoding/binary"
 	"encoding/json"
+	"io"
 	"net/http"
 	"net/http/httptest"
 	"strings"
 	"testing"
 
+	"github.com/bingoring/forin/server/internal/adapters/azurespeech"
 	"github.com/bingoring/forin/server/internal/ports"
 )
 
@@ -38,7 +41,7 @@ func wavB64() string {
 // only transcribed and every review list was permanently empty.
 func TestDictationInADialogueIsScoredAndFiledUnderTheRun(t *testing.T) {
 	repo := newFakeSpeechRepo()
-	pron := &fakePronPort{result: sampleAssessResult(), transcript: "I'm giving you acetaminophen"}
+	pron := &fakePronPort{result: sampleAssessResult()}
 	svc, pronSvc := newTestSpeechService(pron, repo, nil)
 	ph := &pronunciationHandler{svc: pronSvc, speech: svc}
 
@@ -57,9 +60,17 @@ func TestDictationInADialogueIsScoredAndFiledUnderTheRun(t *testing.T) {
 	if a.SessionID != "sess-1" || a.ScenarioID != "SCN-ER-00002" || a.Origin != "dialogue" {
 		t.Errorf("attempt filed as session=%q scenario=%q origin=%q", a.SessionID, a.ScenarioID, a.Origin)
 	}
-	// Free speech has no script, so the transcript IS the reference.
-	if len(pron.assessedRefs) != 1 || pron.assessedRefs[0] != "I'm giving you acetaminophen" {
-		t.Errorf("scored against %q, want the transcript", pron.assessedRefs)
+	// Free speech has no script: ONE unscripted Azure call (empty reference)
+	// both transcribes and scores, and what Azure recognized becomes the
+	// attempt's reference text. No separate STT call (cross-review I3).
+	if len(pron.assessedRefs) != 1 || pron.assessedRefs[0] != "" {
+		t.Errorf("assess calls = %q, want exactly one unscripted (empty reference) call", pron.assessedRefs)
+	}
+	if pron.transcribeCalls != 0 {
+		t.Errorf("made %d separate STT calls, want 0", pron.transcribeCalls)
+	}
+	if a.ReferenceText != "I'm giving you acetaminophen" {
+		t.Errorf("stored reference text = %q, want the recognized text", a.ReferenceText)
 	}
 }
 
@@ -102,6 +113,95 @@ func TestDictationSurvivesAScoringFailure(t *testing.T) {
 	}
 	if out["scored"] == true {
 		t.Error("reported a score after the scorer failed")
+	}
+	if pron.transcribeCalls != 1 {
+		t.Errorf("fallback STT calls = %d, want 1", pron.transcribeCalls)
+	}
+}
+
+// postStt drives POST /stt and returns the raw recorder (any status).
+func postStt(ph *pronunciationHandler, body string) *httptest.ResponseRecorder {
+	req := httptest.NewRequest(http.MethodPost, "/stt", strings.NewReader(body))
+	req = withUser(req, "user-a")
+	w := httptest.NewRecorder()
+	ph.transcribe(w, req)
+	return w
+}
+
+// testWavRate is testWav with the header's sample rate rewritten.
+func testWavRate(rate uint32, numSamples int) []byte {
+	b := testWav(numSamples)
+	binary.LittleEndian.PutUint32(b[24:28], rate)
+	return b
+}
+
+func wavB64Of(wav []byte) string {
+	return `"` + base64.StdEncoding.EncodeToString(wav) + `"`
+}
+
+// cross-review I3: /stt took any size of body and any audio format and passed
+// it to Azure and into speech_attempts. It now enforces the same gates as
+// POST /pronunciation: body cap, ValidateWAV.
+func TestSttRejectsInvalidAudioBeforeCallingAzure(t *testing.T) {
+	huge := make([]byte, 0, 1<<20+2000)
+	huge = append(huge, testWav(16000)...)
+	huge = append(huge, make([]byte, 1<<20+1000)...) // > 1MB (and header lies) -> invalid
+	cases := map[string]string{
+		"not base64":      `{"audioBase64":"@@@@","sessionId":"s"}`,
+		"not a wav":       `{"audioBase64":"` + base64.StdEncoding.EncodeToString([]byte("hello world, definitely not riff")) + `","sessionId":"s"}`,
+		"too long (>10s)": `{"audioBase64":` + wavB64Of(testWav(16000*11)) + `,"sessionId":"s"}`,
+		"over 1MB":        `{"audioBase64":` + wavB64Of(huge) + `,"sessionId":"s"}`,
+		"body over cap":   `{"audioBase64":"` + strings.Repeat("A", maxRequestBodyBytes+10) + `","sessionId":"s"}`,
+		"wrong rate":      `{"audioBase64":` + wavB64Of(testWavRate(24000, 24000)) + `}`,
+	}
+	for name, body := range cases {
+		repo := newFakeSpeechRepo()
+		pron := &fakePronPort{result: sampleAssessResult(), transcript: "x"}
+		svc, pronSvc := newTestSpeechService(pron, repo, nil)
+		ph := &pronunciationHandler{svc: pronSvc, speech: svc}
+		w := postStt(ph, body)
+		if w.Code != http.StatusBadRequest {
+			t.Errorf("%s: status = %d, want 400 (%s)", name, w.Code, w.Body.String())
+		}
+		if len(pron.assessedRefs) != 0 || pron.transcribeCalls != 0 || len(repo.inserted) != 0 {
+			t.Errorf("%s: reached Azure/storage (assess=%d stt=%d rows=%d)", name, len(pron.assessedRefs), pron.transcribeCalls, len(repo.inserted))
+		}
+	}
+}
+
+// A recognized text past the 300-rune cap is never filed (business-rules §2),
+// but the player still gets the transcript.
+func TestSttSkipsScoringWhenRecognizedTextIsTooLong(t *testing.T) {
+	repo := newFakeSpeechRepo()
+	res := sampleAssessResult()
+	res.Recognized = strings.Repeat("가", maxReferenceTextLen+1)
+	pron := &fakePronPort{result: res}
+	svc, pronSvc := newTestSpeechService(pron, repo, nil)
+	ph := &pronunciationHandler{svc: pronSvc, speech: svc}
+
+	out := sttPost(t, ph, "user-a", `{"audioBase64":`+wavB64()+`,"sessionId":"sess-1"}`)
+	if out["text"] != res.Recognized {
+		t.Errorf("transcript lost: %v", out["text"])
+	}
+	if out["scored"] == true || len(repo.inserted) != 0 {
+		t.Errorf("filed an over-long reference (scored=%v rows=%d)", out["scored"], len(repo.inserted))
+	}
+}
+
+// Silence in a dialogue: Azure says no speech. Same outward result as before:
+// 200, empty text, nothing filed, no second call.
+func TestSttNoSpeechInADialogueIsEmptyTextAndNoFollowUpCall(t *testing.T) {
+	repo := newFakeSpeechRepo()
+	pron := &fakePronPort{assessErr: azurespeech.ErrNoSpeech, transcript: "must not be used"}
+	svc, pronSvc := newTestSpeechService(pron, repo, nil)
+	ph := &pronunciationHandler{svc: pronSvc, speech: svc}
+
+	out := sttPost(t, ph, "user-a", `{"audioBase64":`+wavB64()+`,"sessionId":"sess-1"}`)
+	if out["text"] != "" || out["scored"] == true {
+		t.Errorf("out = %v", out)
+	}
+	if pron.transcribeCalls != 0 || len(repo.inserted) != 0 {
+		t.Errorf("stt=%d rows=%d", pron.transcribeCalls, len(repo.inserted))
 	}
 }
 
@@ -243,5 +343,36 @@ func TestSpeakSummaryReportsBands(t *testing.T) {
 	}
 	if out.Total != 128 || out.Low != 10 || out.Mid != 40 || out.High != 78 {
 		t.Errorf("bands = %+v", out)
+	}
+}
+
+// countingReader reports how many bytes the handler pulled off the wire.
+type countingReader struct {
+	r io.Reader
+	n int
+}
+
+func (c *countingReader) Read(p []byte) (int, error) {
+	n, err := c.r.Read(p)
+	c.n += n
+	return n, err
+}
+
+// The body cap is about MEMORY, not the verdict (an oversized clip fails
+// ValidateWAV anyway): the handler must stop reading at the cap instead of
+// buffering a 30MB upload first.
+func TestSttStopsReadingAtTheBodyCap(t *testing.T) {
+	body := `{"audioBase64":"` + strings.Repeat("A", 3*maxRequestBodyBytes) + `"}`
+	cr := &countingReader{r: strings.NewReader(body)}
+	req := withUser(httptest.NewRequest(http.MethodPost, "/stt", cr), "user-a")
+	w := httptest.NewRecorder()
+	svc, pronSvc := newTestSpeechService(&fakePronPort{}, newFakeSpeechRepo(), nil)
+	(&pronunciationHandler{svc: pronSvc, speech: svc}).transcribe(w, req)
+
+	if w.Code != http.StatusBadRequest {
+		t.Errorf("status = %d, want 400", w.Code)
+	}
+	if cr.n > maxRequestBodyBytes+64<<10 {
+		t.Errorf("read %d bytes of a %d-byte body; the cap is %d", cr.n, len(body), maxRequestBodyBytes)
 	}
 }

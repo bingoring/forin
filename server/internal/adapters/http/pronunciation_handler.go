@@ -21,7 +21,7 @@ import (
 // counted in runes (not bytes, via utf8.RuneCountInString) — a Korean or
 // Japanese sentence well under 300 characters can be well over 300 bytes, and
 // len() on a Go string counts bytes.
-const maxReferenceTextLen = 300
+const maxReferenceTextLen = speech.MaxReferenceTextLen
 
 // maxRequestBodyBytes bounds the whole POST /pronunciation JSON body. A
 // base64-encoded 1MB WAV (ValidateWAV's own cap) inflates to ~1.37MB on the
@@ -67,14 +67,8 @@ func (h *pronunciationHandler) assess(w http.ResponseWriter, r *http.Request) {
 		httpx.Error(w, http.StatusBadRequest, "invalid_reference_text")
 		return
 	}
-	audio, err := base64.StdEncoding.DecodeString(req.AudioBase64)
-	if err != nil {
-		httpx.Error(w, http.StatusBadRequest, "audioBase64 is not valid base64")
-		return
-	}
-	// business-rules §2: WAV(RIFF PCM16) 16kHz mono, <=1MB, <=10s (R6).
-	if err := speech.ValidateWAV(audio); err != nil {
-		httpx.Error(w, http.StatusBadRequest, "invalid_audio")
+	audio, ok := decodeValidAudio(w, req.AudioBase64)
+	if !ok {
 		return
 	}
 
@@ -208,6 +202,24 @@ func phonemeTipsFor(res *ports.PronunciationResult) map[string]phonemeTipDTO {
 	return out
 }
 
+// decodeValidAudio is the audio gate shared by every route that lets a client
+// hand us a recording (POST /pronunciation and POST /stt — cross-review I3:
+// /stt used to skip it): base64 must decode, and business-rules §2's audio row
+// must hold — WAV (RIFF PCM16) 16kHz mono, <=1MB, <=10s (R6). On failure it has
+// already written the 400 and returns ok=false.
+func decodeValidAudio(w http.ResponseWriter, b64 string) ([]byte, bool) {
+	audio, err := base64.StdEncoding.DecodeString(b64)
+	if err != nil {
+		httpx.Error(w, http.StatusBadRequest, "audioBase64 is not valid base64")
+		return nil, false
+	}
+	if err := speech.ValidateWAV(audio); err != nil {
+		httpx.Error(w, http.StatusBadRequest, "invalid_audio")
+		return nil, false
+	}
+	return audio, true
+}
+
 type pronounceReq struct {
 	ReferenceText string `json:"referenceText"`
 	AudioBase64   string `json:"audioBase64"`
@@ -240,60 +252,95 @@ type pronounceResp struct {
 // @Router /stt [post]
 func (h *pronunciationHandler) transcribe(w http.ResponseWriter, r *http.Request) {
 	uid, _ := UserID(r.Context())
+	// Same gates as POST /pronunciation (cross-review I3): a bounded body, then
+	// decodeValidAudio's WAV checks, BEFORE any Azure call or storage.
+	r.Body = http.MaxBytesReader(w, r.Body, maxRequestBodyBytes)
 	var req sttReq
 	if err := httpx.DecodeJSON(r, &req); err != nil || req.AudioBase64 == "" {
 		httpx.Error(w, http.StatusBadRequest, "audioBase64 is required")
 		return
 	}
-	audio, err := base64.StdEncoding.DecodeString(req.AudioBase64)
-	if err != nil {
-		httpx.Error(w, http.StatusBadRequest, "audioBase64 is not valid base64")
+	audio, ok := decodeValidAudio(w, req.AudioBase64)
+	if !ok {
 		return
 	}
-	text, err := h.svc.Transcribe(r.Context(), uid, audio)
+
+	text, scored, err := h.recognize(r, uid, audio, req)
 	if err != nil {
 		httpx.Error(w, http.StatusBadGateway, "speech-to-text unavailable")
 		return
 	}
 
 	out := sttResp{Text: text}
-	if score := h.scoreDictation(r, uid, audio, text, req); score != nil {
-		out.Overall, out.Accuracy, out.Fluency = score.Overall, score.Accuracy, score.Fluency
+	if scored != nil {
+		out.Overall, out.Accuracy, out.Fluency = scored.Overall, scored.Accuracy, scored.Fluency
 		out.Scored = true
 	}
 	httpx.JSON(w, http.StatusOK, out)
 }
 
-// scoreDictation scores a dialogue utterance so the Scenario Clear screen and
-// the Review Lab have per-sentence numbers to review. It returns nil when there
-// is nothing to score or scoring failed — a dialogue turn must never fail
-// because the review pipeline did.
+// recognize turns one utterance into text — and, inside a dialogue, into a
+// filed score — with exactly ONE Azure call on the happy path (cross-review I3:
+// it used to be two on the same audio, a plain STT plus a scripted assessment).
+//
+// Inside a dialogue (sessionId present and the speech service wired) the call is
+// an UNSCRIPTED pronunciation assessment: Azure transcribes and scores in the
+// same pass, and what it recognized is both the returned text and the reference
+// text the attempt is filed under. If that call fails for any reason other than
+// silence, fall back to plain STT so a scoring-side problem still cannot cost
+// the player their dialogue turn (a second call only on that failure path).
+//
+// Outside a dialogue there is no run to file a score under, so it is plain STT.
+func (h *pronunciationHandler) recognize(r *http.Request, uid string, audio []byte, req sttReq) (string, *ports.PronunciationResult, error) {
+	ctx := r.Context()
+	if h.speech == nil || req.SessionID == "" {
+		text, err := h.svc.Transcribe(ctx, uid, audio)
+		return text, nil, err
+	}
+
+	res, err := h.svc.Assess(ctx, uid, audio, "")
+	if errors.Is(err, azurespeech.ErrNoSpeech) {
+		return "", nil, nil // silence: same 200/empty text plain STT gave
+	}
+	if err != nil {
+		slog.Warn("stt: unscripted assessment failed, falling back to plain transcription", "err", err, "sessionID", req.SessionID)
+		text, terr := h.svc.Transcribe(ctx, uid, audio)
+		return text, nil, terr
+	}
+	text := res.Recognized
+	return text, h.scoreDictation(r, uid, audio, text, res, req), nil
+}
+
+// scoreDictation files a dialogue utterance's score so the Scenario Clear screen
+// and the Review Lab have per-sentence numbers to review. It returns nil when
+// there is nothing to file — a dialogue turn must never fail because the review
+// pipeline did.
 //
 // The reference text is the RECOGNIZED text, which is the only reference free
 // dialogue can have: the player chose their own words, so there is no script to
-// compare against. Azure then scores how clearly each of those words was
-// pronounced against that word's canonical pronunciation — which is the question
-// the review answers ("how well did I say what I said"), not a circular one.
-// Completeness is meaningless under this arrangement (the reference is by
-// construction exactly what was heard) and the review screens do not show it.
+// compare against. Azure scored how clearly each of those words was pronounced
+// against that word's canonical pronunciation — which is the question the review
+// answers ("how well did I say what I said"), not a circular one. Completeness is
+// meaningless under this arrangement and the review screens do not show it.
 //
-// Scoring is skipped entirely outside a dialogue: without a sessionId there is
-// no run to attribute the utterance to, and paying for a second Azure call per
-// dictation with nowhere to file the result is pure cost.
-func (h *pronunciationHandler) scoreDictation(r *http.Request, uid string, audio []byte, text string, req sttReq) *ports.PronunciationResult {
-	if h.speech == nil || req.SessionID == "" || strings.TrimSpace(text) == "" {
+// A recognized text past maxReferenceTextLen (business-rules §2) is not filed:
+// the player keeps their transcript, but speech_attempts never holds a
+// reference the practice routes would have refused.
+func (h *pronunciationHandler) scoreDictation(r *http.Request, uid string, audio []byte, text string, res *ports.PronunciationResult, req sttReq) *ports.PronunciationResult {
+	if strings.TrimSpace(text) == "" {
 		return nil
 	}
-	res, err := h.speech.Record(r.Context(), uid, audio, text, speech.RecordOptions{
+	if utf8.RuneCountInString(text) > maxReferenceTextLen {
+		slog.Warn("stt: recognized text over the reference cap, not filed", "sessionID", req.SessionID)
+		return nil
+	}
+	rec := h.speech.RecordScored(r.Context(), uid, audio, text, res, speech.RecordOptions{
 		Origin: "dialogue", ScenarioID: req.ScenarioID, SessionID: req.SessionID,
 	})
-	if err != nil {
-		// Includes ErrNoSpeech, which STT already contradicted by returning
-		// text — either way the turn proceeds with no score attached.
-		slog.Warn("stt: utterance transcribed but not scored", "err", err, "sessionID", req.SessionID)
-		return nil
+	if rec.PersistErr != nil {
+		slog.Warn("stt: utterance scored but not persisted", "err", rec.PersistErr, "sessionID", req.SessionID)
 	}
-	return res.Result
+	return rec.Result
 }
 
 type sttReq struct {

@@ -68,6 +68,9 @@ type Service struct {
 	repo ports.SpeechRepo
 	pron *pronunciation.Service
 	tts  ports.SpeechSynthesizer
+	// refLimiter caps reference GENERATION per user per day (cross-review I4).
+	// nil = uncapped (tests, or Redis not wired).
+	refLimiter GenerationLimiter
 }
 
 func NewService(repo ports.SpeechRepo, pron *pronunciation.Service, tts ports.SpeechSynthesizer) *Service {
@@ -87,12 +90,23 @@ func NewService(repo ports.SpeechRepo, pron *pronunciation.Service, tts ports.Sp
 // instead of discarding it (see RecordResult's doc). Only a scoring failure
 // (pron.Assess erroring, including ErrNoSpeech) is a Record-level error.
 func (s *Service) Record(ctx context.Context, userID string, audioWav []byte, referenceText string, opts RecordOptions) (*RecordResult, error) {
-	locale := s.pron.LocaleFor(ctx, userID)
-
 	res, err := s.pron.Assess(ctx, userID, audioWav, referenceText)
 	if err != nil {
 		return nil, err
 	}
+	return s.RecordScored(ctx, userID, audioWav, referenceText, res, opts), nil
+}
+
+// RecordScored persists an attempt whose scoring the caller already did, so a
+// dialogue utterance can be transcribed AND scored by ONE unscripted Azure call
+// (cross-review I3) and still land in speech_attempts the same way Record's do.
+// It never calls the scorer. referenceText is what the attempt is filed under
+// (for free speech, the recognized text); the caller owns validating its length.
+//
+// Like Record, a storage failure is reported in PersistErr, not as a failure:
+// the score was already paid for.
+func (s *Service) RecordScored(ctx context.Context, userID string, audioWav []byte, referenceText string, res *ports.PronunciationResult, opts RecordOptions) *RecordResult {
+	locale := s.pron.LocaleFor(ctx, userID)
 
 	origin := opts.Origin
 	if !allowedOrigins[origin] {
@@ -133,10 +147,10 @@ func (s *Service) Record(ctx context.Context, userID string, audioWav []byte, re
 	})
 	if err != nil {
 		slog.Warn("speech: attempt scored but not persisted", "err", err, "userID", userID, "sentenceKey", key)
-		return &RecordResult{SentenceKey: key, Result: res, PersistErr: err}, nil
+		return &RecordResult{SentenceKey: key, Result: res, PersistErr: err}
 	}
 
-	return &RecordResult{ID: id, SentenceKey: key, AttemptNo: attemptNo, Result: res}, nil
+	return &RecordResult{ID: id, SentenceKey: key, AttemptNo: attemptNo, Result: res}
 }
 
 // History returns up to `limit` attempts for (userID, sentenceKey), oldest

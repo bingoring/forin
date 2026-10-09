@@ -36,6 +36,9 @@ type fakePronPort struct {
 	transcript   string
 	assessedRefs []string
 	assessErr    error
+	// transcribeCalls counts plain STT calls: a dialogue utterance must cost ONE
+	// Azure call in total (Assess, unscripted), so a test can pin that this stays 0.
+	transcribeCalls int
 }
 
 func (f *fakePronPort) Assess(ctx context.Context, audioWav []byte, referenceText, locale string) (*ports.PronunciationResult, error) {
@@ -50,6 +53,7 @@ func (f *fakePronPort) Assess(ctx context.Context, audioWav []byte, referenceTex
 }
 
 func (f *fakePronPort) Transcribe(ctx context.Context, audioWav []byte, locale string) (string, error) {
+	f.transcribeCalls++
 	if f.err != nil {
 		return "", f.err
 	}
