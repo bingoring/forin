@@ -365,6 +365,7 @@ type SpeechReference struct {
 	DurationMs    int                `json:"duration_ms"`
 	CreatedAt     pgtype.Timestamptz `json:"created_at"`
 	AudioWav      []byte             `json:"audio_wav"`
+	LastUsedAt    pgtype.Timestamptz `json:"last_used_at"`
 }
 
 type User struct {
