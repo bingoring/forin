@@ -7,7 +7,6 @@ import (
 	"log/slog"
 	"net/http"
 	"time"
-	"unicode/utf8"
 
 	"github.com/bingoring/forin/server/internal/domain/speech"
 	"github.com/bingoring/forin/server/internal/platform/httpx"
@@ -61,14 +60,10 @@ func (h *speechAudioHandler) audio(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	text := r.URL.Query().Get("text")
-	if text == "" {
-		httpx.Error(w, http.StatusBadRequest, "text is required")
-		return
-	}
 	// business-rules §2's cap (same as POST /pronunciation's referenceText) —
 	// review round 2, Important 4: without it, this route's Synthesize+Assess
 	// cost is unbounded.
-	if utf8.RuneCountInString(text) > maxReferenceTextLen {
+	if !validReferenceText(text) {
 		httpx.Error(w, http.StatusBadRequest, "invalid_reference_text")
 		return
 	}

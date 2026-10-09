@@ -23,6 +23,14 @@ import (
 // len() on a Go string counts bytes.
 const maxReferenceTextLen = speech.MaxReferenceTextLen
 
+// validReferenceText is business-rules §2's whole check on a sentence the client
+// names: not blank (a whitespace-only text normalizes to an empty sentence key and
+// would cost an Azure call for nothing) and within maxReferenceTextLen runes.
+// Every route that takes a sentence goes through here so they cannot drift.
+func validReferenceText(text string) bool {
+	return strings.TrimSpace(text) != "" && utf8.RuneCountInString(text) <= maxReferenceTextLen
+}
+
 // maxRequestBodyBytes bounds the whole POST /pronunciation JSON body. A
 // base64-encoded 1MB WAV (ValidateWAV's own cap) inflates to ~1.37MB on the
 // wire; this leaves generous headroom over that for the rest of the JSON
@@ -59,11 +67,11 @@ func (h *pronunciationHandler) assess(w http.ResponseWriter, r *http.Request) {
 	r.Body = http.MaxBytesReader(w, r.Body, maxRequestBodyBytes)
 
 	var req pronounceReq
-	if err := httpx.DecodeJSON(r, &req); err != nil || req.ReferenceText == "" || req.AudioBase64 == "" {
+	if err := httpx.DecodeJSON(r, &req); err != nil || req.AudioBase64 == "" {
 		httpx.Error(w, http.StatusBadRequest, "referenceText and audioBase64 are required")
 		return
 	}
-	if utf8.RuneCountInString(req.ReferenceText) > maxReferenceTextLen {
+	if !validReferenceText(req.ReferenceText) {
 		httpx.Error(w, http.StatusBadRequest, "invalid_reference_text")
 		return
 	}

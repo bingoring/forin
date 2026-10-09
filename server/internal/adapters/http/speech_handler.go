@@ -6,7 +6,6 @@ import (
 	"net/http"
 	"strconv"
 	"strings"
-	"unicode/utf8"
 
 	"github.com/bingoring/forin/server/internal/domain/pronunciation"
 	"github.com/bingoring/forin/server/internal/domain/speech"
@@ -51,16 +50,12 @@ func (h *speechHandler) reference(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	text := r.URL.Query().Get("text")
-	if text == "" {
-		httpx.Error(w, http.StatusBadRequest, "text is required")
-		return
-	}
 	// business-rules §2's cap (same as POST /pronunciation's referenceText) —
 	// review round 2, Important 4: an unauthenticated-in-spirit text length
 	// cap here bounds how much Synthesize+Assess cost one caller can trigger
 	// via arbitrary `text` values, each landing a new, never-invalidated
 	// speech_references row (R9).
-	if utf8.RuneCountInString(text) > maxReferenceTextLen {
+	if !validReferenceText(text) {
 		httpx.Error(w, http.StatusBadRequest, "invalid_reference_text")
 		return
 	}
@@ -103,8 +98,8 @@ func (h *speechHandler) attempts(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	text := r.URL.Query().Get("text")
-	if text == "" {
-		httpx.Error(w, http.StatusBadRequest, "text is required")
+	if !validReferenceText(text) {
+		httpx.Error(w, http.StatusBadRequest, "invalid_reference_text")
 		return
 	}
 
