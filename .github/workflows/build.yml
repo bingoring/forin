@@ -102,6 +102,10 @@ jobs:
         shell: bash
     steps:
       - uses: actions/checkout@v4
+        with:
+          # `npm test` below reads the design handoff in the public `docs/dlc` submodule
+          # (nbMotion/ficons tests); without it the suite fails before EAS is reached.
+          submodules: true
 
       - uses: actions/setup-node@v4
         with:
