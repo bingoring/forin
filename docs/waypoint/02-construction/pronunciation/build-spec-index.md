@@ -96,7 +96,7 @@ updated: 2026-08-18
 - [x] `app/pronunciation/[sentenceKey].tsx` — 3상태 머신(+ `permissionDenied`/`noSpeech` 포함 실질 5상태). **T10
       시뮬레이터 실측**: `idle`·`permissionDenied` 렌더 확인(강제 상태 주입 — 탭 입력 불가 환경, 아래 §5 참고)
 - [x] `components/pron/`: `TargetCard` · `Wave` · `SyllableGrid` · `ScoreBars` · `CorrectionCard` · `AttemptHistory`
-- [x] 진입점 2곳 배선: `dialogue/[id].tsx`(🎤 직접 말하기) · 리뷰랩 PhraseCard(🎤 따라 말하기) — **T10에서 결함 발견 후
+- [x] 진입점 배선(착수 시점 2곳 — **현재는 아래 §7의 "진입점" 행 참고**): `dialogue/[id].tsx`(🎤 직접 말하기) · 리뷰랩 PhraseCard(🎤 따라 말하기) — **T10에서 결함 발견 후
       수정**: 마이크 액션이 붙은 곳은 `review.tsx`(SM-2 세션 화면)였는데, SoT `04_SCREENS.md:397`이 말하는
       "PhraseCard"는 실제로는 `(tabs)/lab.tsx:204`의 동명 컴포넌트(리뷰랩 탭 목록)였다. **원인은 T9 구현자의 착오가
       아니라 계획서다** — 착수 전 정정 블록(`17cb8d1`)이 `review.tsx:127`을 명시적으로 지목했고 구현자는 그대로
@@ -132,7 +132,7 @@ updated: 2026-08-18
       리뷰랩 PhraseCard) 렌더 확인. **탭/터치 주입 자체는 이 환경에 수단이 없어(idb 없음, `simctl`엔 탭 API가 없고
       osascript 좌표 클릭은 신뢰할 수 없었다) 녹음→채점→결과로 이어지는 실제 제스처 주도 전이는 확인하지 못했다**
       — `permissionDenied`는 코드 레벨에서 초기 상태를 일시적으로 주입해(hot-reload, 커밋 안 함) 렌더만 확인
-- [ ] **T2 정정블록이 요구한 4개 불변식 중 2개는 스모크로 덮지 못했다** — 정직하게 남긴다.
+- [ ] **T2 정정블록이 요구한 4개 불변식 중 2개는 스모크로 덮지 못했다** — 정직하게 남긴다. *(2026-10-10 갱신: 아래 "CI에는 그 변수가 없다"는 `fb8988a`로 **해소됨** — `.github/workflows/server.yml`이 Postgres 서비스를 붙여 `TEST_DATABASE_URL`을 주입하고 실 DB 테스트가 CI에서 실제로 돈다. 본문은 당시 기록으로 남긴다.)*
       `시도번호 증가`·`카드 삭제 후 시도 생존`은 스모크에 있다. 그러나 **원자성**(시도 행과 음소 행이 같은
       트랜잭션)과 **prosody NULL ↔ `prosodyAvailable:false`**(0점과 구분)는 **블랙박스로 강제할 수단이 없다**:
       전자는 음소 삽입 실패를 외부에서 유발할 방법이 없고, 후자는 Azure가 억양 채점을 건너뛰도록 요청할 방법이
@@ -161,6 +161,13 @@ updated: 2026-08-18
 | 화면 3상태(`ScreenPronPractice`/`Recording`/`Result`) | **`scoring` 상태 추가** — `PronState`는 `idle · recording · scoring · result · permissionDenied · noSpeech`의 실질 6상태 | 정적 목업엔 네트워크 대기가 없다. `POST /pronunciation`은 Azure 왕복(실측 p95 수 초)이 끼는 실호출이라, 녹음 종료와 결과 렌더 사이에 "채점 중" 화면이 없으면 사용자가 멈춘 걸로 오인한다 |
 | `ScreenPronDrill`(SoT L221–274, "약한 음소만 드릴하기") | 버튼을 **렌더는 하되 비활성**으로 둠(`disabled`, "드릴 기능은 곧 제공돼요") | §0 범위 밖 결정 그대로 — 드릴은 "지난 2주 이력"을 전제하는데 이번 범위가 그 이력(`speech_phoneme_scores`)을 쌓기 "시작"할 뿐이라 아직 없다. 버튼 자체를 숨기지 않은 것은 SoT 레이아웃을 유지하고 다음 단계가 이미 예정돼 있음을 알리기 위함 |
 | SoT는 완성도(`completeness`)·인식 텍스트(`recognized`)를 화면에 노출 | 결과 화면은 accuracy·fluency·prosody 3축만 그린다(`ScoreBars.tsx`, SoT L160–168 그대로) | SoT의 결과 카드 자체가 3축만 그리도록 설계돼 있음 — 필드는 API 응답에 여전히 존재하고 버려지지 않았다(구 위젯 제거 시 T9가 확인). 표시하지 않는 것으로 결정된 상태 |
+| 진입점: dialogue 🎤 직접 말하기 레일 | 대화 화면에는 레일이 없다(`bace12c`에서 제거). 대화 발화는 서버 `/stt`가 **무대본(unscripted) 평가 1회**로 받아쓰기와 채점을 함께 하고 `origin='dialogue'`로 저장한다. 화면 진입점은 리뷰랩·리뷰 세션·결과 화면·말하기 목록·모범 답안·레슨 STEP 2·slang/home/night 오늘의 문장 | 대화 중 말하기를 따로 연습 화면으로 보내는 것보다 발화 즉시 채점이 흐름을 끊지 않는다. 다만 사용자가 **자유롭게 말한 문장**이 `speech_attempts.reference_text`·`recognized`에 남는다 — 계정·이력 삭제 경로는 아직 없다(개인정보, [cross-review](./cross-review.md) 참고) |
+| `attemptId === ''` 응답(저장 실패) | 채점 성공 + 저장 실패는 200 + 빈 `attemptId`·`attemptNo:0`. 모바일은 결과 화면에 한 줄 안내를 띄운다 | 이미 낸 Azure 비용의 점수를 버리지 않는다([business-rules §5](./business-rules.md)). SoT에는 없는 상태 |
+| "다음 문장 ›" (SoT L213) — `nextText`를 넘기는 호출자가 **0곳**이라 모든 진입점에서 비활성 | **보류.** 버튼은 SoT 위치에 그대로 두되 `nextText`가 없으면 비활성이다 | "다음 문장"의 정의가 진입점마다 다르다(레슨은 카드 순서, 말하기 목록은 정렬 순서, 대화에는 없음). 게다가 `replace` 이동은 뒤로 가기 스택을 바꾼다. 사소한 배선이 아니라 진입점별 정책 결정이라 이번 리뷰 처리에서 빼고 여기 기록한다 |
+| 약물명 하이라이트(SoT L77 lilac) — `splitTargetTokens(referenceText, [])` | **보류.** 숫자+단위(`650 mg`)만 칠해지고 약물명은 칠해지지 않는다 | 약물 어휘를 시나리오에서 화면까지 내려보낼 경로(라우트 파라미터 또는 API)가 없다. 새 계약이 필요한 기능이라 사소 처리에서 제외 |
+| 교정 카드의 음절 재생 버튼 | 렌더하되 **비활성(opacity .4)** — 음절 구간 재생이 생기기 전까지 | 눌러도 개발 모드 경고만 찍던 죽은 버튼이었다. SoT 레이아웃은 유지하고 거짓 신호만 끈다 |
+| 참조 도출의 24kHz TTS WAV를 `samplerate=16000`으로 보내던 문제 | STT 업로드의 Content-Type을 **WAV 헤더의 실제 샘플레이트**로 만든다(헤더를 못 읽으면 16000) | Azure가 Content-Type을 믿는지는 **미확인**이라 증상이 실재하는지 알 수 없다. 리샘플보다 값싸고 어느 쪽이어도 거짓말이 아니라서 방어적으로 고쳤다 |
+| `voicesByLocale`(domain/speech)·`localeFor`(domain/pronunciation) 두 표, `ListSpeakSentences*` SQL 세 벌, `Assess`/`Transcribe` 요청 조립 중복 | **안 고침** | 패키지 경계를 넘는 정리이고 동작 결함이 아니다. 리뷰 자체가 "여유 있을 때"로 분류. 로케일 표를 늘릴 때(언어 8번째)는 두 표를 함께 고친다 — 주석이 이를 요구한다 |
 
 ## §8. 닫지 못한 확인 (T10, 2026-08-18)
 

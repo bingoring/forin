@@ -41,6 +41,7 @@ type SpeechAttempt struct {
     DurationMS   int       `json:"durationMs"`   // 내 발음 길이 (SoT L193 "2.9초 · 조금 느려요")
     Words        []WordResult `json:"words"`     // JSONB
     ScenarioID   string    `json:"scenarioId,omitempty"`
+    SessionID    string    `json:"-"`            // 대화 한 판의 식별(000025). 대화 밖 시도는 ''(NULL 아님). 클리어 화면이 "방금 판"의 발화만 모으는 열쇠
     ReviewCardID *string   `json:"reviewCardId,omitempty"` // nullable — 드릴 발화는 카드가 없다
     Origin       string    `json:"origin"`       // allowed-set §4
     CreatedAt    time.Time `json:"createdAt"`
@@ -105,8 +106,13 @@ type SentenceReference struct {
     Words         []WordResult   `json:"words"` // accuracy는 의미 없음(정준) — 음절 분절만 쓴다
     DurationMS    int            `json:"durationMs"` // 원어민 길이 (SoT L188 "2.1초")
     CreatedAt     time.Time      `json:"-"`
+    LastUsedAt    time.Time      `json:"-"` // 마지막으로 서빙된 시각(000044). 적중 시 하루 한 번만 갱신 — 오래된 행 정리의 기준
 }
 ```
+
+- 참조는 R9대로 영구 캐시지만 **영구 보존은 아니다**: `last_used_at`이 오래된 행은 `cmd/speechrefgc`로 지울 수 있고(기본 90일,
+  `--apply` 없이는 건수만 센다), 지운 행은 다음 방문자가 TTS 1 + 평가 1로 다시 만든다. 자유 문장과 커리큘럼 문장을 구분하지 않는다 —
+  구분할 방법이 없고 필요도 없다(잘못 지워도 비용은 한 번의 재생성). 스케줄에는 올리지 않았다.
 
 ## 3. 관계 (Relationships)
 
@@ -129,7 +135,10 @@ speech_references : sentence_key 로만 식별 (사용자 무관, 전역 캐시)
 
 | 필드 | 허용값 | 확장 여지 |
 |---|---|---|
-| `SpeechAttempt.Origin` | `dialogue` · `review` · `drill` · `freeform` | 진입점이 늘면 추가. 드릴은 이번 범위 밖이지만 값은 지금 정의해 둔다 |
+| `SpeechAttempt.Origin` | `dialogue` · `review` · `drill` · `freeform` · `lesson` · `slang` · `home` · `night` | 진입점이 늘면 추가 — **서버 `allowedOrigins`(domain/speech)와 모바일 `PronOrigin`(api/client.ts) 두 곳을 함께** 고친다. 허용집합 밖은 `freeform`으로 강등되어 출처를 잃는다 |
+
+`Origin`별 보내는 곳: `dialogue` = 서버 `/stt` 자동 채점(대화 발화, 화면이 보내지 않음) · `review` = 리뷰랩·리뷰 세션·결과 화면·말하기 목록·모범 답안 ·
+`lesson` = 레슨 STEP 2 따라 말하기 · `slang`/`home`/`night` = 각 탭의 오늘의 문장 · `drill` = 드릴(아직 없음) · `freeform` = origin을 못 박지 못한 호출(기본값).
 | `WordResult.ErrorType` | `None` · `Omission` · `Insertion` · `Mispronunciation` · `UnexpectedBreak` · `MissingBreak` · `Monotone` | Azure가 정의. 모르는 값이 오면 **그대로 보존**하고 UI는 중립 처리 |
 | 음절 밴드 (표시) | `ok` ≥ 80 · `weak` 60–79 · `bad` < 60 | SoT L149 `col()`의 3색과 1:1. 경계는 [business-rules §1](./business-rules.md) |
 

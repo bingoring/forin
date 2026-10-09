@@ -178,3 +178,33 @@ v22의 불변식을 우회하는 곳이다.
 - **참조 캐시 일관성:** 쓰기 경로는 `PutReference`(ON CONFLICT DO NOTHING)와 `UpdateReferenceAudio`(빈 오디오일 때만) 둘뿐이고 둘 다
   선착순이다. 오디오 크기 검사가 두 경로 모두 저장 **전**에 있다. 한 곳에서 지키고 다른 곳에서 깨는 경로는 찾지 못했다.
 - **응답 필드 이름:** `SpeechAttemptRow`·`SentenceReferenceRow`의 camelCase 태그와 모바일 타입이 일치한다(B1의 값 문제와 별개).
+
+## 6. 처리 결과 — 사소 14건 · I4 (c) · rateLimit (2026-10-10)
+
+코드 해시는 메인 저장소 기준. 고치지 않은 항목은 이유를 적었고, 보류는 [build-spec-index §7](./build-spec-index.md)에도 올렸다.
+
+| # | 처리 | 내용 |
+|---|---|---|
+| S1 | **고침** `bf4ce01` | 서버 허용집합에 `slang`·`home`·`night` 추가, 모바일 `PronOrigin` 유니온과 `toPronOrigin()`으로 어긋남을 컴파일 시 잡는다. domain-entities §4 표 갱신 |
+| S2 | **고침** `a58a038` | 재시도 횟수를 늘리는 대신 `(user, sentence_key)` 단위 `pg_advisory_xact_lock`으로 줄 세웠다 — 재시도는 경합 인원이 늘면 또 질 수 있어서다. 동시성 테스트 n=2→8(수정 전 재현 확인, 수정 후 20회 연속 통과). business-rules I5 |
+| S3 | **고침 + 문서** `f77bd66` | business-rules §5에 "채점 성공 + 저장 실패" 행, 편차 로그 기록. 모바일은 `attemptId === ''`이면 결과 화면에 한 줄 안내(4개 언어) |
+| S4 | **고침** `996e458` | STT 호출(Assess·Transcribe)에 15초 상한. 앱 axios 30초보다 짧다. TTS는 느린 게 정상이라 클라이언트 전체 30초를 유지 |
+| S5 | **고침** `f77bd66` | (a) 점수가 나온 뒤 이력을 다시 읽는다 (b) 힌트를 `Math.min(3, …)` 대신 `nextAttemptNo`(마지막 시도 번호 + 1, 창은 최근 3개라 길이로 세지 않는다)로 계산하고 문구를 "{n}번째 시도"(ko)·"Try #{n}"(en)·"Versuch {n}"(de)·"{n}回目"(ja)로 — 키는 `pron.tryNo`. 재시도 횟수 제한이 없다는 것을 business-rules §5에 적었다 |
+| S6 | **안 함(보류)** | "다음 문장" 정의가 진입점마다 다르고 `replace` 이동은 뒤로 가기를 바꾼다. 진입점별 정책 결정이라 사소가 아니다. 편차 로그에 기록 |
+| S7 | **안 함(보류)** | 약물 어휘를 시나리오에서 화면까지 내려보낼 경로가 없다 — 새 계약이 필요하다. 편차 로그에 기록 |
+| S8 | **고침** `f77bd66` | 교정 카드 음절 재생 버튼을 비활성(opacity .4)으로 그린다. 1:1 핸드오프 원칙에 따라 숨기지 않고 자리를 유지했다 |
+| S9 | **고침** `8fcc8aa` | 공백뿐인 문장은 4개 경로 모두 400 `invalid_reference_text`(`validReferenceText` 한 곳). `/speech/attempts`는 길이 상한도 없었는데 함께 걸렸다. business-rules §2 |
+| S10 | **고침(방어적)** `996e458` | Azure가 Content-Type을 믿는지는 미확인. 리샘플 대신 업로드의 `samplerate=`를 WAV 헤더의 실제 값으로 만든다 |
+| S11 | **고침** `996e458` | `PutReference` 오류를 경고 로그로 남긴다(응답은 그대로) |
+| S12 | **문서** | (a) build-spec §5 CI 항목에 해소 표기 (b) 진입점 행을 §7에 추가 (c) `SpeechAttempt.SessionID`·`SentenceReference.LastUsedAt` (d) `Origin` 허용값 8종과 보내는 곳 (e) = S3 |
+| S13 | **고침** `996e458` | 세 군데 죽은/틀린 주석 정리 |
+| S14 | **일부** `996e458` | (b) `Record`가 로케일을 한 번만 구해 `AssessIn(locale)`로 넘긴다 — 점수 로케일과 키 로케일이 갈리지 않는다(프로필을 두 번 읽던 것을 1회로, 테스트로 고정). **(a) 로케일·목소리 한 표, (c) SQL 세 벌, (d) 요청 조립 중복은 안 함** — 패키지 경계를 넘는 정리이고 동작 결함이 아니다 |
+
+**I4 (c) 참조 캐시 정리** `9c57fd6`: 마이그레이션 `000044_speech_reference_last_used`(up/down, 인덱스 포함). 캐시 적중이 읽은 값 기준으로 24시간이 지났을 때만
+`last_used_at`을 갱신한다(SQL에도 같은 조건이 있어 동시 적중이 겹쳐도 한 번만 쓴다). 정리는 `cmd/speechrefgc`(`--days 90` 기본·최소 7, `--apply` 없으면 건수만).
+스케줄에는 올리지 않았다. 자유 문장과 커리큘럼 문장을 구분하지 않고 나이로만 지운다 — 구분할 수단이 없고, 잘못 지워도 비용은 한 번의 재생성이다.
+(b)안(참조를 커리큘럼 문장으로 제한)은 정책 결정이라 하지 않았다.
+
+**rateLimit** `1380df9`: Cloud Run 뒤에서는 `RemoteAddr`가 Google 프런트엔드라 **모든 사용자가 한 버킷**을 나눠 쓰고 있었다. `TRUSTED_PROXY_HOPS`(기본: staging·prod 1, 그 외 0)만큼
+`X-Forwarded-For`의 **오른쪽**에서 센다 — 클라이언트가 보낸 값은 왼쪽에 붙으므로 맨 왼쪽을 읽으면 호출자가 자기 버킷을 고를 수 있다. 헤더가 없거나 짧거나 IP가 아니면 `RemoteAddr`로 돌아간다.
+`limiters` 맵은 10분 유휴 항목을 요청 안에서 1분에 한 번 치운다(고루틴 없음; 버킷은 2초면 다 차므로 치워도 잃는 게 없다).
