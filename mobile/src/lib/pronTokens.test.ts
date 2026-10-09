@@ -177,10 +177,8 @@ describe('matchPhonemesToSyllables', () => {
 // ── buildCorrectionPoints — business-logic-model.md §2 `CorrectionPoints` ──
 //
 // The tip lookup is a fake table standing in for server/internal/content/
-// phonemetips (that mapping is server-only and, as of this task, not yet
-// wired into any HTTP response — see task-8-report.md). These tests only
-// verify the SELECTION algorithm; they must keep working unchanged once a
-// real lookup is wired in.
+// phonemetips (served to the app as POST /pronunciation's `phonemeTips`).
+// These tests only verify the SELECTION algorithm, independent of the real table.
 describe('buildCorrectionPoints', () => {
   const TIPS: Record<string, { ipa: string; message: string }> = {
     ɪ: { ipa: 'ɪ', message: '짧게' },

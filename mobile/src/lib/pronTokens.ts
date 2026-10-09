@@ -169,10 +169,10 @@ export type CorrectionWord = { syllables?: CorrectionSyllable[]; phonemes?: Corr
 
 /** The Korean coaching for one phoneme. Sourced from the server's phoneme-tip
  *  mapping (server/internal/content/phonemetips) — NEVER hand-authored here.
- *  As of this task that mapping is not yet wired into any HTTP response, so
- *  every real caller's lookup returns undefined for every phoneme; this
- *  function still has to behave correctly (render fewer than 2, never a fake
- *  one) once it is. */
+ *  POST /pronunciation returns it as `phonemeTips` (Task 11), keyed by the raw
+ *  phoneme spelling. A phoneme with no mapped tip is simply absent, so the
+ *  lookup can still return undefined — callers must then render fewer than 2
+ *  points, never a fake one. */
 export type CorrectionTip = { ipa: string; message: string };
 
 /**

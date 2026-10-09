@@ -193,7 +193,7 @@ func (s *Service) Reference(ctx context.Context, userID, text string) (*ports.Se
 		return nil, err
 	}
 
-	scored, err := s.pron.Assess(ctx, userID, wav, text)
+	scored, err := s.pron.AssessIn(ctx, wav, text, locale)
 	if err != nil {
 		return nil, err
 	}
@@ -211,7 +211,13 @@ func (s *Service) Reference(ctx context.Context, userID, text string) (*ports.Se
 		// playback" was this package's own doc promise from the start.
 		ReferenceAudio: wav,
 	}
-	_ = s.repo.PutReference(ctx, ref) // best-effort: first-writer-wins (R9), a race just wastes one Azure call
+	// Best-effort: first-writer-wins (R9), a race just wastes one Azure call. A FAILING
+	// write is not a race though — if it keeps failing, every visit to this sentence is a
+	// cache miss and pays TTS + Assess again, so it must at least be visible (S11).
+	if err := s.repo.PutReference(ctx, ref); err != nil {
+		slog.Warn("speech: reference derived but not cached; every visit will regenerate it until the write succeeds",
+			"err", err, "sentenceKey", key, "userID", userID)
+	}
 	return &ref, nil
 }
 

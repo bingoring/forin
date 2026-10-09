@@ -1,9 +1,14 @@
 package azurespeech
 
 import (
+	"context"
+	"encoding/binary"
 	"encoding/json"
 	"errors"
+	"net/http"
+	"strings"
 	"testing"
+	"time"
 )
 
 // Azure returns SAPI phonemes ("ih", "iy", "th") unless the alphabet is asked
@@ -167,5 +172,64 @@ func TestAssessConfigOmitsReferenceTextWhenUnscripted(t *testing.T) {
 	}
 	if cfg["Granularity"] != "Phoneme" || cfg["PhonemeAlphabet"] != "IPA" {
 		t.Fatalf("the rest of the config must be unchanged: %v", cfg)
+	}
+}
+
+func wavWithRate(rate uint32) []byte {
+	h := make([]byte, 44)
+	copy(h[0:], "RIFF")
+	copy(h[8:], "WAVEfmt ")
+	binary.LittleEndian.PutUint32(h[24:], rate)
+	return h
+}
+
+// Cross-review S10: the STT Content-Type must carry the clip's real sample rate, not a
+// hardcoded 16000 — the reference derivation sends our 24kHz TTS output.
+func TestWavContentTypeFollowsHeaderSampleRate(t *testing.T) {
+	cases := []struct {
+		name string
+		wav  []byte
+		want string
+	}{
+		{"16k", wavWithRate(16000), "samplerate=16000"},
+		{"24k TTS", wavWithRate(24000), "samplerate=24000"},
+		{"not RIFF falls back", []byte("not a wav at all, but long enough to read a rate field"), "samplerate=16000"},
+		{"truncated falls back", []byte("RIFF"), "samplerate=16000"},
+		{"absurd rate falls back", wavWithRate(1), "samplerate=16000"},
+	}
+	for _, c := range cases {
+		if got := wavContentType(c.wav); !strings.HasSuffix(got, c.want) {
+			t.Errorf("%s: got %q, want suffix %q", c.name, got, c.want)
+		}
+	}
+}
+
+type hangingTransport struct{}
+
+func (hangingTransport) RoundTrip(r *http.Request) (*http.Response, error) {
+	<-r.Context().Done()
+	return nil, r.Context().Err()
+}
+
+// Cross-review S4: an STT call must give up on its own budget (shorter than the app's
+// 30s request timeout), not run until the client-wide timeout.
+func TestSTTCallsStopAtTheirOwnTimeout(t *testing.T) {
+	c := &Client{key: "k", region: "r", http: &http.Client{Transport: hangingTransport{}, Timeout: time.Minute}, sttTimeout: 50 * time.Millisecond}
+
+	for name, call := range map[string]func() error{
+		"Assess":     func() error { _, err := c.Assess(context.Background(), wavWithRate(16000), "hello", "en-US"); return err },
+		"Transcribe": func() error { _, err := c.Transcribe(context.Background(), wavWithRate(16000), "en-US"); return err },
+	} {
+		start := time.Now()
+		err := call()
+		if !errors.Is(err, context.DeadlineExceeded) {
+			t.Errorf("%s: want deadline exceeded, got %v", name, err)
+		}
+		if time.Since(start) > 5*time.Second {
+			t.Errorf("%s ran %v, the call budget was not applied", name, time.Since(start))
+		}
+	}
+	if defaultSTTTimeout >= 30*time.Second {
+		t.Errorf("defaultSTTTimeout %v must stay under the app's 30s request timeout", defaultSTTTimeout)
 	}
 }

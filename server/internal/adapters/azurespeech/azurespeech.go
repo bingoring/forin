@@ -6,6 +6,7 @@ import (
 	"bytes"
 	"context"
 	"encoding/base64"
+	"encoding/binary"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -22,10 +23,47 @@ type Client struct {
 	key    string
 	region string
 	http   *http.Client
+	// sttTimeout bounds one Assess/Transcribe call. It is deliberately well under the
+	// mobile app's 30s request timeout (api/client.ts): POST /pronunciation does Azure
+	// scoring AND a DB write, so an Azure call allowed to run to 28s could finish after
+	// the app already gave up — the server then stores an attempt the user was told
+	// failed, they record again, and one try becomes two rows (cross-review S4).
+	// Synthesize keeps the client-wide 30s: it is the slow-by-nature TTS call and no
+	// user-facing request waits on it together with a write.
+	sttTimeout time.Duration
 }
 
 func New(key, region string) *Client {
-	return &Client{key: key, region: region, http: &http.Client{Timeout: 30 * time.Second}}
+	return &Client{key: key, region: region, http: &http.Client{Timeout: 30 * time.Second}, sttTimeout: defaultSTTTimeout}
+}
+
+const defaultSTTTimeout = 15 * time.Second
+
+// sttContext applies the STT call budget on top of the caller's context.
+func (c *Client) sttContext(ctx context.Context) (context.Context, context.CancelFunc) {
+	d := c.sttTimeout
+	if d <= 0 {
+		d = defaultSTTTimeout
+	}
+	return context.WithTimeout(ctx, d)
+}
+
+// wavSampleRate reads the sample rate from a canonical RIFF/WAVE header (bytes 24..27,
+// little-endian), falling back to 16000 — what the app records — when the clip is too
+// short or is not RIFF. The Content-Type of an STT upload must tell Azure the truth:
+// the reference derivation scores our own 24kHz TTS clip, and a header that says 16000
+// over 24kHz samples risks timings stretched by 1.5x being cached for good (S10).
+func wavSampleRate(wav []byte) int {
+	if len(wav) >= 28 && string(wav[0:4]) == "RIFF" && string(wav[8:12]) == "WAVE" {
+		if r := int(binary.LittleEndian.Uint32(wav[24:28])); r >= 8000 && r <= 48000 {
+			return r
+		}
+	}
+	return 16000
+}
+
+func wavContentType(wav []byte) string {
+	return fmt.Sprintf("audio/wav; codecs=audio/pcm; samplerate=%d", wavSampleRate(wav))
 }
 
 func (c *Client) Configured() bool { return c.key != "" && c.region != "" }
@@ -163,13 +201,15 @@ func (c *Client) Assess(ctx context.Context, audioWav []byte, referenceText, loc
 	url := fmt.Sprintf("https://%s.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=%s&format=detailed",
 		c.region, locale)
 
+	ctx, cancel := c.sttContext(ctx)
+	defer cancel()
 	req, err := http.NewRequestWithContext(ctx, http.MethodPost, url, bytes.NewReader(audioWav))
 	if err != nil {
 		return nil, err
 	}
 	req.Header.Set("Ocp-Apim-Subscription-Key", c.key)
 	req.Header.Set("Pronunciation-Assessment", base64.StdEncoding.EncodeToString(cfg))
-	req.Header.Set("Content-Type", "audio/wav; codecs=audio/pcm; samplerate=16000")
+	req.Header.Set("Content-Type", wavContentType(audioWav))
 	req.Header.Set("Accept", "application/json")
 
 	resp, err := c.http.Do(req)
@@ -193,12 +233,14 @@ func (c *Client) Transcribe(ctx context.Context, audioWav []byte, locale string)
 	}
 	url := fmt.Sprintf("https://%s.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=%s&format=detailed",
 		c.region, locale)
+	ctx, cancel := c.sttContext(ctx)
+	defer cancel()
 	req, err := http.NewRequestWithContext(ctx, http.MethodPost, url, bytes.NewReader(audioWav))
 	if err != nil {
 		return "", err
 	}
 	req.Header.Set("Ocp-Apim-Subscription-Key", c.key)
-	req.Header.Set("Content-Type", "audio/wav; codecs=audio/pcm; samplerate=16000")
+	req.Header.Set("Content-Type", wavContentType(audioWav))
 	req.Header.Set("Accept", "application/json")
 
 	resp, err := c.http.Do(req)

@@ -1,8 +1,11 @@
 package speech
 
 import (
+	"bytes"
 	"context"
 	"errors"
+	"log/slog"
+	"strings"
 	"testing"
 
 	"github.com/bingoring/forin/server/internal/domain/pronunciation"
@@ -665,5 +668,29 @@ func TestReferenceAudioBackfillCountsAndIsCapped(t *testing.T) {
 	svc3, _ := newLimitedService(lim3, cached, tts)
 	if _, err := svc3.ReferenceAudio(context.Background(), "u1", "hello there"); err != nil || lim3.calls != 0 {
 		t.Fatalf("cached audio: err=%v calls=%d", err, lim3.calls)
+	}
+}
+
+// Cross-review S11: a failing cache write is still not fatal (the caller gets the
+// freshly derived reference), but it must be logged — silent failures meant every visit
+// regenerated the sentence and nobody could see why the TTS bill grew.
+func TestReferenceLogsCacheWriteFailure(t *testing.T) {
+	var buf bytes.Buffer
+	prev := slog.Default()
+	slog.SetDefault(slog.New(slog.NewTextHandler(&buf, nil)))
+	defer slog.SetDefault(prev)
+
+	pron := &fakePronPort{result: referenceScoredResult()}
+	repo := newFakeSpeechRepo()
+	repo.putRefErr = errors.New("db: disk full")
+	tts := &fakeSynth{configured: true, wav: buildWav(24000, 1, 24000)}
+	svc := newTestServiceWithTTS(pron, repo, tts)
+
+	got, err := svc.Reference(context.Background(), "u1", "I'm giving you acetaminophen")
+	if err != nil || got == nil {
+		t.Fatalf("a cache write failure must not fail Reference: %v", err)
+	}
+	if !strings.Contains(buf.String(), "disk full") {
+		t.Errorf("cache write failure not logged; log was %q", buf.String())
 	}
 }
