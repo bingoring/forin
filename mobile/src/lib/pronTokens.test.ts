@@ -5,6 +5,7 @@ import {
   buildCorrectionPoints,
   downsampleAmplitude,
   phonemeTipLookup,
+  syllableLabel,
   type CorrectionWord,
 } from './pronTokens';
 
@@ -327,5 +328,30 @@ describe('phonemeTipLookup', () => {
   test('phonemeTips 자체가 없어도(undefined) 안전하게 undefined를 반환한다', () => {
     const lookup = phonemeTipLookup(undefined);
     expect(lookup('s')).toBeUndefined();
+  });
+});
+
+// ── syllableLabel — the learner finds a syllable by SPELLING, not by IPA ────
+// We request PhonemeAlphabet: IPA, so Azure's `syllable` is "mɪn", not "min" (cross-review I5).
+describe('syllableLabel', () => {
+  test('철자(grapheme)가 있으면 그것을, 앞뒤 공백은 떼고', () => {
+    expect(syllableLabel({ syllable: 'mɪn', grapheme: ' min ' })).toBe('min');
+  });
+  test('grapheme이 없거나 비어 있으면 발음 표기로 되돌아간다', () => {
+    expect(syllableLabel({ syllable: 'mɪn' })).toBe('mɪn');
+    expect(syllableLabel({ syllable: 'mɪn', grapheme: '  ' })).toBe('mɪn');
+  });
+});
+
+describe('buildCorrectionPoints — 음절 라벨', () => {
+  test('교정 카드의 음절 라벨은 IPA가 아니라 철자다', () => {
+    const words: CorrectionWord[] = [{
+      syllables: [{ syllable: 'mɪn', grapheme: 'min', offset: 0, duration: 10 }],
+      phonemes: [{ phoneme: 'ɪ', accuracy: 40, offset: 5 }],
+    }];
+    const { points } = buildCorrectionPoints(words, () => ({ ipa: 'ɪ', message: '짧게' }));
+    expect(points[0].syllable).toBe('min');
+    // The IPA line is still IPA — it is the label that must not be.
+    expect(points[0].ipa).toBe('/ɪ/');
   });
 });

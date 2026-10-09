@@ -7,10 +7,11 @@
 import { readFileSync } from 'fs';
 import { join } from 'path';
 
-test('the screen labels chips with the grapheme, falling back to the phonetic form', () => {
+test('every place the screen names a syllable goes through syllableLabel', () => {
   const src = readFileSync(join(__dirname, '..', '..', 'app', 'pronunciation', '[sentenceKey].tsx'), 'utf8');
-  // Spelling first, IPA only when a locale gives no grapheme segmentation.
-  expect(src).toMatch(/label:\s*s\.grapheme\?\.trim\(\)\s*\|\|\s*s\.syllable/);
-  // And never the bare phonetic field, which is what it used to be.
+  // Chips AND the recording-time progress cells (cross-review I5) — one rule, not three.
+  expect(src.match(/syllableLabel\(s\)/g)?.length).toBeGreaterThanOrEqual(2);
+  // Never the bare phonetic field, which is what both used to be.
   expect(src).not.toMatch(/label:\s*s\.syllable\s*,/);
+  expect(src).not.toMatch(/map\(\(s\) => s\.syllable\)/);
 });

@@ -39,7 +39,7 @@ import { SyllableGrid, type SyllableChip } from '@/components/pron/SyllableGrid'
 import { ScoreBars } from '@/components/pron/ScoreBars';
 import { CorrectionCard } from '@/components/pron/CorrectionCard';
 import { AttemptHistory, type AttemptRow as AttemptDisplayRow } from '@/components/pron/AttemptHistory';
-import { splitTargetTokens, syllableBand, buildCorrectionPoints, downsampleAmplitude, phonemeTipLookup } from '@/lib/pronTokens';
+import { splitTargetTokens, syllableBand, syllableLabel, buildCorrectionPoints, downsampleAmplitude, phonemeTipLookup } from '@/lib/pronTokens';
 import { api, type PronunciationResult, type SentenceReference, type SpeechAttemptRow } from '@/api/client';
 import { next, initialPronState, type PronState, type PronEventType } from '@/lib/pronState';
 import { type Translate, useT } from '@/i18n';
@@ -706,7 +706,7 @@ export default function PronunciationRoute() {
   )), [attempts]);
 
   const progressSegments = useMemo(() => {
-    const fromRef = reference.words?.flatMap((w) => (w.syllables?.length ? w.syllables.map((s) => s.syllable) : [w.word]));
+    const fromRef = reference.words?.flatMap((w) => (w.syllables?.length ? w.syllables.map((s) => syllableLabel(s)) : [w.word]));
     if (fromRef && fromRef.length) return fromRef;
     return referenceText.split(/\s+/).filter(Boolean);
   }, [reference, referenceText]);
@@ -731,9 +731,8 @@ export default function PronunciationRoute() {
   const syllableChips = useMemo((): SyllableChip[] =>
     (result?.words ?? []).flatMap((w) =>
       (w.syllables ?? []).map((s): SyllableChip => ({
-        // Falls back to the phonetic form rather than rendering an empty chip: a locale
-        // without grapheme segmentation should still show where the syllables divide.
-        label: s.grapheme?.trim() || s.syllable,
+        // syllableLabel falls back to the phonetic form rather than an empty chip.
+        label: syllableLabel(s),
         band: syllableBand(s.accuracy),
       }))
     ),
