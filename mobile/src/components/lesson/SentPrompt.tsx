@@ -23,6 +23,7 @@ import { SheetIconCircle } from '@/components/lesson/SheetStack';
 import { BAD_BG, ChipShadow, DashRule, FAINT, Hatch, OK_BG, Step2Stamp } from '@/components/lesson/SentParts';
 import { sheetKo, sheetLine, sheetWhy, type SheetAnswer, type SheetCard } from '@/data/sentenceDrill';
 import { useT } from '@/i18n';
+import { usePronunciationEnabled } from '@/data/pronunciationFlag';
 import { nb, nbFonts } from '@/theme/nb';
 
 type Result = 'right' | 'wrong' | null;
@@ -300,6 +301,7 @@ export function SentReveal({ card, result, onSay, onRepeat }: {
   card: SheetCard; result: 'right' | 'wrong'; onSay: () => void; onRepeat: () => void;
 }) {
   const t = useT();
+  const pronOn = usePronunciationEnabled();
   const wrong = result === 'wrong';
   const why = sheetWhy(card);
   const speaker = (
@@ -324,15 +326,17 @@ export function SentReveal({ card, result, onSay, onRepeat }: {
           </Text>
         </View>
       )}
-      <View style={{ marginTop: 10, alignItems: 'center' }}>
-        <Pressable testID="sent-repeat" onPress={onRepeat} accessibilityRole="button" style={{
-          flexDirection: 'row', alignItems: 'center', gap: 7, paddingVertical: 7, paddingHorizontal: 16,
-          borderWidth: 1.6, borderColor: nb.ink, borderRadius: 99, backgroundColor: 'rgba(249,227,123,.45)',
-        }}>
-          <NbIcon name="mic" size={17} />
-          <Text style={nbText.hand(14.5)}>{t('sent.repeat')}</Text>
-        </Pressable>
-      </View>
+      {pronOn && (
+        <View style={{ marginTop: 10, alignItems: 'center' }}>
+          <Pressable testID="sent-repeat" onPress={onRepeat} accessibilityRole="button" style={{
+            flexDirection: 'row', alignItems: 'center', gap: 7, paddingVertical: 7, paddingHorizontal: 16,
+            borderWidth: 1.6, borderColor: nb.ink, borderRadius: 99, backgroundColor: 'rgba(249,227,123,.45)',
+          }}>
+            <NbIcon name="mic" size={17} />
+            <Text style={nbText.hand(14.5)}>{t('sent.repeat')}</Text>
+          </Pressable>
+        </View>
+      )}
     </NbEnter>
   );
 }

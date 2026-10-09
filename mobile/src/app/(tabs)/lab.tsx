@@ -21,6 +21,7 @@ import { NbButton, NbChip, NbIndexTabs, NbMark, NbMemo, NbPaper, NbStamp, NbTag,
 import { RULE_COLOR, RULE_H, TOP_INSET, nb, nbFonts } from '@/theme/nb';
 import { space, type as typeScale } from '@/theme/tokens';
 import { t, type Translate, useLocale, useT } from '@/i18n';
+import { usePronunciationEnabled } from '@/data/pronunciationFlag';
 
 const C = nb.ink;
 // Keys, not t(...): evaluated once at import (see i18n/module-scope.test.ts).
@@ -448,6 +449,7 @@ function SectionTabs({ section, onSelect, cardCount, speak, models }: {
 }
 
 function PhraseCard({ card, onGrade }: { card: ReviewCard; onGrade: (id: string, g: ReviewGrade) => void }) {
+  const pronOn = usePronunciationEnabled();
   const t = useT();
   const router = useRouter();
   const speak = () => Speech.speak(card.back, { language: 'en-US', rate: 0.92 });
@@ -554,7 +556,7 @@ function PhraseCard({ card, onGrade }: { card: ReviewCard; onGrade: (id: string,
           <NbMark textStyle={{ fontFamily: nbFonts.bodyMid, fontSize: 14.5, lineHeight: 22 }}>{card.back}</NbMark>
         </View>
         <Pressable onPress={speak} hitSlop={8}><NbIcon name="speaker" size={17} /></Pressable>
-        <Pressable onPress={practicePronunciation} hitSlop={8}><NbIcon name="mic" size={17} /></Pressable>
+        {pronOn && <Pressable onPress={practicePronunciation} hitSlop={8}><NbIcon name="mic" size={17} /></Pressable>}
       </View>
 
       {/* 왜? — the reason, in blue pen. It is the only part of the card that teaches

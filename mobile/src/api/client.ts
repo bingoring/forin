@@ -10,6 +10,7 @@ import type { paths } from '@contract/types';
 import type { Interior } from '@engine';
 import { getLocale } from '@/i18n';
 import { hydrateDestinations } from '@/data/destinations';
+import { hydratePronunciationEnabled } from '@/data/pronunciationFlag';
 import { normalizeAvatarSpec, type AvatarSpec } from '@/data/nbAvatar';
 
 const baseURL = process.env.EXPO_PUBLIC_API_URL ?? 'http://localhost:8080';
@@ -641,9 +642,10 @@ export const api = {
   async economyConfig(): Promise<Record<string, number>> {
     const { data } = await http.get('/config/economy');
     // The same response carries deploy-wide flags that are not economy numbers
-    // (pronunciationEnabled, readyDestinations). Hand the destinations to their own
-    // module rather than letting an array land in ECON's number map.
+    // (pronunciationEnabled, readyDestinations). Hand each to its own module rather
+    // than letting an array or a boolean land in ECON's number map.
     hydrateDestinations((data as { readyDestinations?: unknown }).readyDestinations);
+    hydratePronunciationEnabled((data as { pronunciationEnabled?: unknown }).pronunciationEnabled);
     return data as Record<string, number>;
   },
 

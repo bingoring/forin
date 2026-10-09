@@ -11,9 +11,11 @@ import { NbButton, NbMemo, NbPaper, NbSheet, NbTag, nbText } from '@/components/
 import { TOP_INSET, nb, nbFonts } from '@/theme/nb';
 import { api, type SlangDeck } from '@/api/client';
 import { useT } from '@/i18n';
+import { usePronunciationEnabled } from '@/data/pronunciationFlag';
 
 export default function SlangDeckScreen() {
   const t = useT();
+  const pronOn = usePronunciationEnabled();
   const router = useRouter();
   const [deck, setDeck] = useState<SlangDeck | null>(null);
   const [busy, setBusy] = useState(false);
@@ -74,9 +76,11 @@ export default function SlangDeckScreen() {
               </View>
             )}
             <View style={{ flexDirection: 'row', gap: 8, marginTop: 12 }}>
-              <View style={{ flex: 1 }}>
-                <NbButton variant="yellow" size="md" full icon="speaker" onPress={listen}>{t('slang.listen')}</NbButton>
-              </View>
+              {pronOn && (
+                <View style={{ flex: 1 }}>
+                  <NbButton variant="yellow" size="md" full icon="speaker" onPress={listen}>{t('slang.listen')}</NbButton>
+                </View>
+              )}
               {deck?.collectableToday
                 ? <NbButton variant="paper" size="md" disabled={busy} onPress={collect}>{t('slang.collect')}</NbButton>
                 : <NbButton variant="paper" size="md" disabled>{t('slang.collectedToday')}</NbButton>}

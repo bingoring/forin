@@ -26,6 +26,7 @@ import { nb, nbFonts } from '@/theme/nb';
 import { faceOf } from '@/data/reviewCardFace';
 import { api, type ReviewCard, type ReviewGrade } from '@/api/client';
 import { type Translate, useT } from '@/i18n';
+import { usePronunciationEnabled } from '@/data/pronunciationFlag';
 import { TASK_SCREEN } from '@/theme/transitions';
 
 // Keys, not t(...): evaluated once at import (see i18n/module-scope.test.ts).
@@ -50,6 +51,7 @@ function nextLabel(t: Translate, days: number): string {
 
 export default function ReviewSession() {
   const t = useT();
+  const pronOn = usePronunciationEnabled();
   const router = useRouter();
   const [cards, setCards] = useState<ReviewCard[]>([]);
   const [state, setState] = useState<'loading' | 'error' | 'ok'>('loading');
@@ -222,9 +224,11 @@ export default function ReviewSession() {
                     <Pressable onPress={() => Speech.speak(card.back, { language: 'en-US', rate: 0.92 })} hitSlop={8}>
                       <NbPaper rot={1.5} bg="rgba(143,199,232,.3)" style={styles.iconChip}><NbIcon name="speaker" size={16} /></NbPaper>
                     </Pressable>
-                    <Pressable onPress={() => practicePronunciation(card)} hitSlop={8}>
-                      <NbPaper rot={-1.5} bg="rgba(199,81,70,.14)" style={styles.iconChip}><NbIcon name="mic" size={16} /></NbPaper>
-                    </Pressable>
+                    {pronOn && (
+                      <Pressable onPress={() => practicePronunciation(card)} hitSlop={8}>
+                        <NbPaper rot={-1.5} bg="rgba(199,81,70,.14)" style={styles.iconChip}><NbIcon name="mic" size={16} /></NbPaper>
+                      </Pressable>
+                    )}
                   </View>
                   {!!card.note && (
                     <NbMemo color={nb.blue} rot={0.3} style={{ marginTop: 12 }}>

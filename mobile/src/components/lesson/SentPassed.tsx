@@ -17,6 +17,7 @@ import { NbButton, NbPaper, NbStamp, NbTag, nbText } from '@/components/nb/NbUI'
 import { NbEnter } from '@/components/nb/nbMotion';
 import { api, type LessonSentence } from '@/api/client';
 import { useT } from '@/i18n';
+import { usePronunciationEnabled } from '@/data/pronunciationFlag';
 import { nb } from '@/theme/nb';
 
 const say = (en: string) => Speech.speak(en, { language: 'en-US', rate: 0.9 });
@@ -30,6 +31,7 @@ export function SentPassed({ sentences, situation, onExit, onRepeat, onFinish, s
   saveFailed: boolean;
 }) {
   const t = useT();
+  const pronOn = usePronunciationEnabled();
   const n = sentences.length;
   const [scores, setScores] = useState<Record<string, number>>({});
   // Each time the screen is shown — including coming back from a 따라 말하기.
@@ -71,13 +73,13 @@ export function SentPassed({ sentences, situation, onExit, onRepeat, onFinish, s
             const hi = has && score >= 80;
             return (
               <NbPaper key={`${i}-${s.en}`} rot={i % 2 ? 0.4 : -0.4} style={{ marginTop: 8, paddingVertical: 8, paddingHorizontal: 11, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-                <Pressable testID={`sent-score-${i}`} onPress={() => onRepeat(s.en)} hitSlop={4} accessibilityRole="button" style={{
+                <Pressable testID={`sent-score-${i}`} onPress={() => pronOn && onRepeat(s.en)} disabled={!pronOn} hitSlop={4} accessibilityRole="button" style={{
                   width: 34, height: 34, borderRadius: 17, borderWidth: 2, borderStyle: has ? 'solid' : 'dashed',
                   borderColor: has ? (hi ? nb.green : nb.amber) : nb.soft,
                   backgroundColor: has ? (hi ? 'rgba(95,141,90,.15)' : `${nb.amber}20`) : 'transparent',
                   alignItems: 'center', justifyContent: 'center', flexShrink: 0,
                 }}>
-                  {has ? <Text style={[nbText.hand(13.5), { lineHeight: 16 }]}>{String(score)}</Text> : <NbIcon name="mic" size={15} color={nb.soft} />}
+                  {has ? <Text style={[nbText.hand(13.5), { lineHeight: 16 }]}>{String(score)}</Text> : pronOn ? <NbIcon name="mic" size={15} color={nb.soft} /> : null}
                 </Pressable>
                 <Text style={[nbText.body(12.5), { flex: 1, minWidth: 0, lineHeight: 17.5 }]}>{s.en}</Text>
                 <Pressable testID={`sent-passed-say-${i}`} onPress={() => say(s.en)} hitSlop={8}><NbIcon name="speaker" size={17} /></Pressable>

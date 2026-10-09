@@ -34,6 +34,7 @@ import { RULE_COLOR, RULE_H, TOP_INSET, nb, nbFonts } from '@/theme/nb';
 import { SHIFT_LABEL, moodAt } from '@/data/wardMood';
 import { api, type Home, type HomePage } from '@/api/client';
 import { useLocale, useT } from '@/i18n';
+import { usePronunciationEnabled } from '@/data/pronunciationFlag';
 
 /** How many times the home read is retried before it is called a failure. Cloud Run
  *  scales to zero, so the first request after an idle period is a WAIT, not an error. */
@@ -475,11 +476,12 @@ function TodayBrief({ home, phraseDone, onReview, onContinue, onPhrase }: {
   onPhrase: () => void;
 }) {
   const t = useT();
+  const pronOn = usePronunciationEnabled();
   const b = home.brief;
   const items = [
     { key: 'review', label: t('home.briefReview', { n: b?.reviewCount ?? 0, target: b?.reviewTarget ?? 5 }), done: !!b?.reviewDone, onPress: onReview },
     { key: 'curriculum', label: t('home.briefCurriculum'), done: !!b?.curriculumDone, onPress: onContinue, hidden: !home.todayOne },
-    { key: 'phrase', label: t('home.briefPhrase'), done: phraseDone, onPress: onPhrase, hidden: !home.phrase },
+    { key: 'phrase', label: t('home.briefPhrase'), done: phraseDone, onPress: onPhrase, hidden: !home.phrase || !pronOn },
   ].filter((it) => !it.hidden);
   const doneCount = items.filter((it) => it.done).length;
   const allDone = items.length > 0 && doneCount === items.length;

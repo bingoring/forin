@@ -17,6 +17,7 @@ import { NbButton, NbMemo, NbPaper, NbSheet, NbTag, nbText } from '@/components/
 import { TOP_INSET, nb } from '@/theme/nb';
 import { api, type NightRadio as NightRadioT } from '@/api/client';
 import { useT } from '@/i18n';
+import { usePronunciationEnabled } from '@/data/pronunciationFlag';
 
 // The night-radio track library. Each is a seamless loop synthesized for a mood; the
 // melodic two are original compositions, not transcriptions of any song.
@@ -48,6 +49,7 @@ function EqBar({ i, on }: { i: number; on: boolean }) {
 
 export default function NightRadio() {
   const t = useT();
+  const pronOn = usePronunciationEnabled();
   const router = useRouter();
   const [radio, setRadio] = useState<NightRadioT | null>(null);
   const [offset, setOffset] = useState(0);
@@ -183,9 +185,11 @@ export default function NightRadio() {
               {!!story.keyGloss && <Text style={[nbText.body(10.5, nb.soft), { marginTop: 3 }]}>{story.keyGloss}</Text>}
             </View>
             <View style={{ flexDirection: 'row', gap: 8, marginTop: 12 }}>
-              <View style={{ flex: 1 }}>
-                <NbButton variant="yellow" size="md" full icon="mic" onPress={follow}>{t('night.follow')}</NbButton>
-              </View>
+              {pronOn && (
+                <View style={{ flex: 1 }}>
+                  <NbButton variant="yellow" size="md" full icon="mic" onPress={follow}>{t('night.follow')}</NbButton>
+                </View>
+              )}
               <NbButton variant="paper" size="md" onPress={() => setOffset((n) => n + 1)}>{t('night.next')}</NbButton>
             </View>
           </NbPaper>

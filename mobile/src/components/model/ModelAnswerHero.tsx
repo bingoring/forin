@@ -13,6 +13,7 @@ import { NbMark, NbPaper, NbTag, nbText } from '@/components/nb/NbUI';
 import { nb, nbFonts } from '@/theme/nb';
 import { useReferenceAudio } from '@/hooks/useReferenceAudio';
 import { useT } from '@/i18n';
+import { usePronunciationEnabled } from '@/data/pronunciationFlag';
 import type { ModelAnswerGroup } from '@/api/client';
 
 export function ModelAnswerHero({ group, onPractise }: {
@@ -21,6 +22,7 @@ export function ModelAnswerHero({ group, onPractise }: {
   onPractise: (model: string) => void;
 }) {
   const t = useT();
+  const pronOn = usePronunciationEnabled();
   const card = group.cards?.[0];
   const { play, busy } = useReferenceAudio(card?.model ?? '');
   // No cards means nothing to work through — the row in the list still says how many
@@ -63,10 +65,12 @@ export function ModelAnswerHero({ group, onPractise }: {
           <NbIcon name="speaker" size={14} />
           <Text numberOfLines={1} style={nbText.hand(14)}>{t('model.listenAll')}</Text>
         </Pressable>
-        <Pressable onPress={() => onPractise(card.model)} style={[styles.action, styles.actionYellow]}>
-          <NbIcon name="mic" size={14} />
-          <Text numberOfLines={1} style={nbText.hand(14)}>{t('model.repeatAfter')}</Text>
-        </Pressable>
+        {pronOn && (
+          <Pressable onPress={() => onPractise(card.model)} style={[styles.action, styles.actionYellow]}>
+            <NbIcon name="mic" size={14} />
+            <Text numberOfLines={1} style={nbText.hand(14)}>{t('model.repeatAfter')}</Text>
+          </Pressable>
+        )}
       </View>
     </NbPaper>
   );

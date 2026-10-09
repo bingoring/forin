@@ -22,6 +22,7 @@ import {
 import { drillBar } from '@/components/lesson/SentContext';
 import type { LessonNuance } from '@/api/client';
 import { useT } from '@/i18n';
+import { usePronunciationEnabled } from '@/data/pronunciationFlag';
 import { nb, nbFonts } from '@/theme/nb';
 
 const LINE = 32.3; // 19 × 1.7
@@ -34,6 +35,7 @@ export function SentSwap({ item, k, total, onRepeat, onNext, onExit }: {
   onRepeat: (line: string) => void; onNext: () => void; onExit: () => void;
 }) {
   const t = useT();
+  const pronOn = usePronunciationEnabled();
   const [before, target, after] = item.before ?? ['', '', ''];
   const options = item.options ?? [];
   const [pick, setPick] = useState<string | null>(null);
@@ -137,10 +139,12 @@ export function SentSwap({ item, k, total, onRepeat, onNext, onExit }: {
             <NbButton variant="ink" size="lg" full icon="pencil" iconColor={nb.paper} onPress={check}>{t('recall.check')}</NbButton>
           </View>
         ) : (
-          <View style={{ flexDirection: 'row', gap: 10 }}>
-            <View testID="sent-drill-repeat" style={{ flex: 1 }}>
-              <NbButton variant="paper" size="lg" full icon="mic" onPress={() => onRepeat(swapped)}>{t('sent.swapRepeat')}</NbButton>
-            </View>
+          <View style={{ flexDirection: 'row', gap: 10, justifyContent: 'flex-end' }}>
+            {pronOn && (
+              <View testID="sent-drill-repeat" style={{ flex: 1 }}>
+                <NbButton variant="paper" size="lg" full icon="mic" onPress={() => onRepeat(swapped)}>{t('sent.swapRepeat')}</NbButton>
+              </View>
+            )}
             <View testID="sent-drill-next">
               <NbButton variant="ink" size="lg" icon="speech" iconRight="chevronRight" iconColor={nb.paper} onPress={onNext}>{t('sent.next')}</NbButton>
             </View>
