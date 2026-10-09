@@ -58,3 +58,24 @@ func TestLoadDevAuthSecretDefaultsEmpty(t *testing.T) {
 		t.Fatalf("DevAuthSecret = %q, want empty", c.DevAuthSecret)
 	}
 }
+
+func TestSpeechReferenceDailyLimit(t *testing.T) {
+	t.Setenv("DATABASE_URL", "postgres://x/y")
+	t.Setenv("REDIS_URL", "redis://localhost:6379/0")
+	t.Setenv("JWT_SIGNING_KEY", "0123456789abcdef")
+	for _, tc := range []struct {
+		env  string
+		want int
+	}{
+		{"", 200}, {"50", 50}, {"0", 0}, {"-5", 200}, {"lots", 200},
+	} {
+		t.Setenv("SPEECH_REFERENCE_DAILY_LIMIT", tc.env)
+		c, err := Load()
+		if err != nil {
+			t.Fatal(err)
+		}
+		if c.SpeechReferenceDailyLimit != tc.want {
+			t.Errorf("env %q -> %d, want %d", tc.env, c.SpeechReferenceDailyLimit, tc.want)
+		}
+	}
+}

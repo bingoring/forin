@@ -179,7 +179,8 @@ func main() {
 	// Pronunciation-attempt persistence + history + reference derivation
 	// (domain/speech, Task 5's own domain layer from Tasks 2-4).
 	speechRepo := postgres.NewSpeechRepo(pool)
-	speechSvc := domainspeech.NewService(speechRepo, pronSvc, speech)
+	speechSvc := domainspeech.NewService(speechRepo, pronSvc, speech).
+		WithReferenceLimiter(redisadapter.NewReferenceLimiter(rdb, cfg.SpeechReferenceDailyLimit))
 
 	handler := httpadapter.NewRouter(httpadapter.Deps{
 		Env:           cfg.Env,

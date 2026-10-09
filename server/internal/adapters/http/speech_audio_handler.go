@@ -2,6 +2,7 @@ package http
 
 import (
 	"bytes"
+	"errors"
 	"github.com/bingoring/forin/server/internal/domain/conversation"
 	"log/slog"
 	"net/http"
@@ -73,6 +74,12 @@ func (h *speechAudioHandler) audio(w http.ResponseWriter, r *http.Request) {
 	}
 
 	wav, err := h.speech.ReferenceAudio(r.Context(), uid, text)
+	if errors.Is(err, speech.ErrReferenceQuotaExceeded) {
+		// Cross-review I4: daily cap on NEW reference generations (cache hits
+		// never get here). Same code as GET /speech/reference.
+		httpx.Error(w, http.StatusTooManyRequests, "reference_quota_exceeded")
+		return
+	}
 	if err != nil {
 		// Logged (review round 2, minor): a DB error or Azure failure here
 		// otherwise looks identical to "no reference exists" on the wire —

@@ -1,6 +1,7 @@
 package http
 
 import (
+	"context"
 	"net/http"
 	"net/http/httptest"
 	"strings"
@@ -187,5 +188,70 @@ func TestSpeechAudioCacheControlIsPrivate(t *testing.T) {
 	}
 	if strings.Contains(cc, "public") {
 		t.Fatalf("must not be `public` — a shared cache could serve one user's locale clip to another, got %q", cc)
+	}
+}
+
+// ---- cross-review I4 at the HTTP edge ----
+
+type denyLimiter struct{ calls int }
+
+func (d *denyLimiter) Allow(ctx context.Context, userID string) (bool, error) {
+	d.calls++
+	return false, nil
+}
+
+// Over the daily generation cap: a cache MISS answers 429 with a stable code,
+// on both reference routes — and does so before any paid call.
+func TestReferenceRoutesAnswer429WhenTheDailyCapIsSpent(t *testing.T) {
+	repo := newFakeSpeechRepo()
+	synth := &fakeSynth{configured: true, wav: testWav(8000)}
+	svc, pronSvc := newTestSpeechService(&fakePronPort{result: sampleAssessResult()}, repo, synth)
+	svc.WithReferenceLimiter(&denyLimiter{})
+	sh := &speechHandler{svc: svc, pron: pronSvc}
+	sa := &speechAudioHandler{speech: svc}
+
+	for name, call := range map[string]func(http.ResponseWriter, *http.Request){
+		"/speech/reference":           sh.reference,
+		"/speech/reference/audio.wav": sa.audio,
+	} {
+		req := withUser(httptest.NewRequest(http.MethodGet, name+"?text=brand+new+sentence", nil), "user-a")
+		w := httptest.NewRecorder()
+		call(w, req)
+		if w.Code != http.StatusTooManyRequests {
+			t.Errorf("%s: status = %d, want 429 (%s)", name, w.Code, w.Body.String())
+		}
+		if !strings.Contains(w.Body.String(), "reference_quota_exceeded") {
+			t.Errorf("%s: body = %s, want the reference_quota_exceeded code", name, w.Body.String())
+		}
+	}
+	if synth.synthCalls != 0 {
+		t.Errorf("paid TTS ran %d times despite the refusal", synth.synthCalls)
+	}
+}
+
+// A cached sentence is still served when the cap is spent.
+func TestReferenceCacheHitIsServedEvenWhenTheCapIsSpent(t *testing.T) {
+	repo := newFakeSpeechRepo()
+	repo.refRow = &ports.SentenceReferenceRow{
+		SentenceKey: speech.SentenceKey("hello there", "en-US"), ReferenceText: "hello there",
+		Locale: "en-US", IPA: "/x/", ReferenceAudio: []byte("wav"),
+	}
+	lim := &denyLimiter{}
+	svc, pronSvc := newTestSpeechService(&fakePronPort{}, repo, &fakeSynth{configured: true})
+	svc.WithReferenceLimiter(lim)
+	sh := &speechHandler{svc: svc, pron: pronSvc}
+	sa := &speechAudioHandler{speech: svc}
+
+	for name, call := range map[string]func(http.ResponseWriter, *http.Request){
+		"/speech/reference": sh.reference, "/speech/reference/audio.wav": sa.audio,
+	} {
+		w := httptest.NewRecorder()
+		call(w, withUser(httptest.NewRequest(http.MethodGet, name+"?text=hello+there", nil), "user-a"))
+		if w.Code != http.StatusOK {
+			t.Errorf("%s: status = %d, want 200 on a cache hit", name, w.Code)
+		}
+	}
+	if lim.calls != 0 {
+		t.Errorf("hits consulted the limiter %d times", lim.calls)
 	}
 }

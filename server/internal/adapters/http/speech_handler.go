@@ -1,6 +1,7 @@
 package http
 
 import (
+	"errors"
 	"log/slog"
 	"net/http"
 	"strconv"
@@ -65,6 +66,14 @@ func (h *speechHandler) reference(w http.ResponseWriter, r *http.Request) {
 	}
 
 	ref, err := h.svc.Reference(r.Context(), uid, text)
+	if errors.Is(err, speech.ErrReferenceQuotaExceeded) {
+		// Cross-review I4: this user has caused their daily allowance of NEW
+		// references. Unlike the failures below this is the caller's own doing,
+		// so it is a real 429 — the client treats any non-200 here as "no
+		// reference" (the screen hides IPA + waveform; practice still works).
+		httpx.Error(w, http.StatusTooManyRequests, "reference_quota_exceeded")
+		return
+	}
 	if err != nil {
 		// business-rules §5 "참조 생성(TTS→assess) 실패": every failure mode here —
 		// a DB read error, ErrTTSNotConfigured, ErrUnsupportedLocale, or a

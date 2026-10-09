@@ -516,3 +516,154 @@ func TestReferenceStoresRowWithEmptyIPAWhenAzureOmitsPhonemes(t *testing.T) {
 		t.Fatal("duration must still be computed from the wav even when IPA is empty")
 	}
 }
+
+// ---- cross-review I4: per-user daily cap on reference GENERATION ----
+
+// fakeLimiter is a GenerationLimiter that counts calls and answers as told.
+type fakeLimiter struct {
+	allow bool
+	err   error
+	calls int
+}
+
+func (f *fakeLimiter) Allow(ctx context.Context, userID string) (bool, error) {
+	f.calls++
+	return f.allow, f.err
+}
+
+func newLimitedService(lim *fakeLimiter, repo *fakeSpeechRepo, tts *fakeSynth) (*Service, *fakePronPort) {
+	pron := &fakePronPort{result: referenceScoredResult()}
+	return newTestServiceWithTTS(pron, repo, tts).WithReferenceLimiter(lim), pron
+}
+
+// A cache hit costs nothing, so it must not spend quota.
+func TestReferenceCacheHitDoesNotCountAgainstTheQuota(t *testing.T) {
+	repo := newFakeSpeechRepo()
+	repo.refRow = &ports.SentenceReferenceRow{SentenceKey: SentenceKey("hello there", "en-US"), ReferenceText: "hello there", Locale: "en-US"}
+	lim := &fakeLimiter{allow: false} // even an exhausted user may read the cache
+	svc, _ := newLimitedService(lim, repo, &fakeSynth{configured: true, wav: buildWav(24000, 1, 24000)})
+
+	if _, err := svc.Reference(context.Background(), "u1", "hello there"); err != nil {
+		t.Fatalf("a cache hit must succeed even when the quota is spent: %v", err)
+	}
+	if lim.calls != 0 {
+		t.Fatalf("limiter consulted %d times on a hit, want 0", lim.calls)
+	}
+}
+
+// A miss is one real generation: exactly one count, then the normal TTS+Assess.
+func TestReferenceMissCountsOnceAndGenerates(t *testing.T) {
+	lim := &fakeLimiter{allow: true}
+	tts := &fakeSynth{configured: true, wav: buildWav(24000, 1, 24000)}
+	svc, pron := newLimitedService(lim, newFakeSpeechRepo(), tts)
+
+	if _, err := svc.Reference(context.Background(), "u1", "hello there"); err != nil {
+		t.Fatal(err)
+	}
+	if lim.calls != 1 || tts.synthCalls != 1 || pron.assessCalls != 1 {
+		t.Fatalf("limiter=%d synth=%d assess=%d, want 1/1/1", lim.calls, tts.synthCalls, pron.assessCalls)
+	}
+}
+
+// Over the limit: refuse BEFORE any paid call, with a typed error.
+func TestReferenceOverTheQuotaIsRefusedBeforeAnyPaidCall(t *testing.T) {
+	lim := &fakeLimiter{allow: false}
+	tts := &fakeSynth{configured: true, wav: buildWav(24000, 1, 24000)}
+	repo := newFakeSpeechRepo()
+	svc, pron := newLimitedService(lim, repo, tts)
+
+	_, err := svc.Reference(context.Background(), "u1", "hello there")
+	if !errors.Is(err, ErrReferenceQuotaExceeded) {
+		t.Fatalf("err = %v, want ErrReferenceQuotaExceeded", err)
+	}
+	if tts.synthCalls != 0 || pron.assessCalls != 0 || len(repo.putReference) != 0 {
+		t.Fatalf("paid work ran despite the refusal: synth=%d assess=%d put=%d", tts.synthCalls, pron.assessCalls, len(repo.putReference))
+	}
+}
+
+// Redis down must not take pronunciation practice down with it (fail-open).
+func TestReferenceLimiterErrorFailsOpen(t *testing.T) {
+	lim := &fakeLimiter{allow: false, err: errors.New("redis: connection refused")}
+	tts := &fakeSynth{configured: true, wav: buildWav(24000, 1, 24000)}
+	svc, _ := newLimitedService(lim, newFakeSpeechRepo(), tts)
+
+	if _, err := svc.Reference(context.Background(), "u1", "hello there"); err != nil {
+		t.Fatalf("limiter failure blocked generation: %v", err)
+	}
+	if tts.synthCalls != 1 {
+		t.Fatalf("synth calls = %d, want 1", tts.synthCalls)
+	}
+}
+
+// No limiter wired (tests, or Redis absent) means no cap.
+func TestReferenceWithoutALimiterIsUncapped(t *testing.T) {
+	tts := &fakeSynth{configured: true, wav: buildWav(24000, 1, 24000)}
+	svc := newTestServiceWithTTS(&fakePronPort{result: referenceScoredResult()}, newFakeSpeechRepo(), tts)
+	if _, err := svc.Reference(context.Background(), "u1", "hello there"); err != nil {
+		t.Fatal(err)
+	}
+}
+
+// Nothing is generated when TTS is off or the locale has no voice, so no
+// quota is spent on those no-ops.
+func TestReferenceNoOpPathsDoNotSpendQuota(t *testing.T) {
+	lim := &fakeLimiter{allow: true}
+	svc, _ := newLimitedService(lim, newFakeSpeechRepo(), &fakeSynth{configured: false})
+	if _, err := svc.Reference(context.Background(), "u1", "hello there"); !errors.Is(err, ErrTTSNotConfigured) {
+		t.Fatalf("err = %v", err)
+	}
+	if lim.calls != 0 {
+		t.Fatalf("spent quota with TTS off: %d", lim.calls)
+	}
+}
+
+// ReferenceAudio on a miss goes through Reference: ONE count, not two.
+func TestReferenceAudioMissCountsOnce(t *testing.T) {
+	lim := &fakeLimiter{allow: true}
+	tts := &fakeSynth{configured: true, wav: buildWav(24000, 1, 24000)}
+	svc, _ := newLimitedService(lim, newFakeSpeechRepo(), tts)
+
+	if _, err := svc.ReferenceAudio(context.Background(), "u1", "hello there"); err != nil {
+		t.Fatal(err)
+	}
+	if lim.calls != 1 {
+		t.Fatalf("limiter calls = %d, want 1", lim.calls)
+	}
+}
+
+// Backfilling a legacy row's audio is a fresh paid Synthesize: it counts, and
+// is refused over the limit, but a row WITH audio never does.
+func TestReferenceAudioBackfillCountsAndIsCapped(t *testing.T) {
+	legacy := func() *fakeSpeechRepo {
+		r := newFakeSpeechRepo()
+		r.refRow = &ports.SentenceReferenceRow{SentenceKey: SentenceKey("hello there", "en-US"), ReferenceText: "hello there", Locale: "en-US"}
+		return r
+	}
+	lim := &fakeLimiter{allow: false}
+	tts := &fakeSynth{configured: true, wav: buildWav(24000, 1, 24000)}
+	svc, _ := newLimitedService(lim, legacy(), tts)
+	if _, err := svc.ReferenceAudio(context.Background(), "u1", "hello there"); !errors.Is(err, ErrReferenceQuotaExceeded) {
+		t.Fatalf("err = %v, want quota error", err)
+	}
+	if tts.synthCalls != 0 {
+		t.Fatalf("synthesized despite refusal")
+	}
+
+	lim2 := &fakeLimiter{allow: true}
+	svc2, _ := newLimitedService(lim2, legacy(), tts)
+	if _, err := svc2.ReferenceAudio(context.Background(), "u1", "hello there"); err != nil {
+		t.Fatal(err)
+	}
+	if lim2.calls != 1 {
+		t.Fatalf("backfill counted %d times, want 1", lim2.calls)
+	}
+
+	// Cached audio: no count even when exhausted.
+	cached := newFakeSpeechRepo()
+	cached.refRow = &ports.SentenceReferenceRow{SentenceKey: SentenceKey("hello there", "en-US"), ReferenceText: "hello there", Locale: "en-US", ReferenceAudio: []byte("w")}
+	lim3 := &fakeLimiter{allow: false}
+	svc3, _ := newLimitedService(lim3, cached, tts)
+	if _, err := svc3.ReferenceAudio(context.Background(), "u1", "hello there"); err != nil || lim3.calls != 0 {
+		t.Fatalf("cached audio: err=%v calls=%d", err, lim3.calls)
+	}
+}
