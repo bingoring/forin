@@ -871,3 +871,12 @@ android 빌드는 여전히 0개다).
 ## 다음 단계
 
 승인 후 → `STATUS.md` 갱신 → `02-monitoring.md`로 이동
+
+### 12.8 v46·v22 리뷰 반영 릴리스 (2026-10-10)
+
+- **master 반영**: PR #14(`feat/journey-ia`, 9/21 이후 약 330커밋)를 **머지 커밋** `dd7e967`로 합침 — 문서가 브랜치 커밋 해시를 근거로 인용하므로 스쿼시하지 않음. 그 전에 PR CI에 Postgres 서비스를 붙여(`fb8988a`) 실 DB 테스트 약 50개가 처음으로 CI에서 돌았고, 2vCPU 러너의 pgxpool 기본 MaxConns 4 때문에 동시성 테스트가 10분 멈춘 것을 테스트 풀 하한 8로 고침(`cc6ca69`). contract drift도 고침(`317e8d7`, `go mod download` 선행).
+- **staging**: `deploy.yml` 자동(run 37976433384) — 마이그레이션 000044 적용, `/readyz` ok, `pronunciationEnabled: true`. `seed.yml` staging(run 37977218240) 성공, `/scenarios/SCN-ER-00631`에 새 오답 보기·`order` 확인.
+- **prod**: `promote.yml` image_tag=`dd7e967…`(run 37977514685, 사용자 승인) 성공 — 마이그레이션 000044. `seed.yml` prod(run 37978072202, 사용자 승인, `allow_removal=false`) 성공. `/readyz` ok, `pronunciationEnabled: true`, 같은 시나리오 확인. `contentVersion`은 `2026.08.27-goals4` 그대로(시드는 버전 비교 없이 전량 교체 — 문자열만 낡음).
+- **iOS**: `build.yml` production/ios/submit=true(run 37981943199) — 결과는 아래에 이어 적는다.
+- 새 설정: `TRUSTED_PROXY_HOPS`(staging·prod 기본 1 — GFE가 붙인 X-Forwarded-For 오른쪽 값), `SPEECH_REFERENCE_DAILY_LIMIT`(기본 200). `cmd/speechrefgc`는 스케줄 미등록.
+
