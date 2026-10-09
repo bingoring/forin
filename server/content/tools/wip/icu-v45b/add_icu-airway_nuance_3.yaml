@@ -1,0 +1,126 @@
+기도 응급 카트 숙지·소통:
+  - kind: slider
+    words: [w-handle, w-suction, w-role]
+    cue: "In a crisis, you want one nurse — Maria — on suction."
+    scale: ["Can someone do suction?", "Could you handle suction?", "Maria, you handle suction."]
+    answerAt: 2
+    why: "위기 때 '누가 좀…'은 다들 남이 하겠거니 해서 아무도 안 움직이기 쉬워요. 이름을 불러 한 사람에게 맡기는 것이 폐쇄 루프 의사소통의 시작이에요."
+    example: "Maria, you handle suction — tell me when it's ready."
+    exKo: "마리아, 흡인 맡아 주세요 — 준비되면 말해 주세요."
+  - kind: swap
+    words: [w-call, w-help]
+    who: "팀 브리핑 · 역할 나누기"
+    icon: speech
+    before: ["I'll ", "maybe call someone", " if things go wrong."]
+    options: [maybe call someone, be the one who calls for help, try to call]
+    answer: be the one who calls for help
+    notes:
+      maybe call someone: "누가 부를지 흐릿해서 위기 때 서로 미뤄요."
+      be the one who calls for help: "한 사람이 맡겠다고 분명히 — 미리 역할을 나누는 핵심이에요."
+      try to call: "'해 보겠다'는 맡은 일로 들리지 않아요."
+    why: "브리핑에서 역할은 '누가·무엇을'이 분명한 말로 정해야 실제 위기 때 망설이지 않아요."
+
+삽관·환기 불가 CICO 위기:
+  - kind: slider
+    words: [w-intubate, w-oxygenate, w-emergency]
+    cue: "Two failed intubation attempts; mask and supraglottic airway can't keep SpO2 up — 78 and falling."
+    scale: [difficult airway, failed intubation, CICO]
+    answerAt: 2
+    why: "삽관 실패만으로는 CICO가 아니에요. 마스크와 성문상 기도기로도 산소화가 안 될 때 CICO를 선언하고 곧바로 외과적 기도로 가요."
+    example: "Intubation failed and we can't oxygenate — this is CICO."
+    exKo: "삽관에 실패했고 산소화도 안 돼요 — CICO예요."
+  - kind: context
+    words: [w-call, w-surgery, w-stat, w-surgical]
+    scenes:
+      - {who: 팀에게, icon: speech, en: "Jen, call surgery stat — we need a surgical airway.", ok: true}
+      - {who: 외과에 전화로, icon: speech, en: "ICU bed 2, CICO — we need you for a surgical airway now.", ok: true}
+      - {who: 위기 중 팀에게, icon: siren, en: "Whenever someone has a moment, could you maybe page surgery?", ok: false, fix: "Jen, call surgery stat — we need a surgical airway."}
+    why: "위기 순간에 정중하게 돌려 말하면 급하지 않게 들려 아무도 움직이지 않아요. 누구에게, 무엇을, 지금 — 짧고 분명하게 말해요."
+
+삽관 중 저산소·서맥 급변:
+  - kind: pair
+    words: [w-bagmask, w-ventilate, w-push, w-atropine, w-arrest, w-algorithm]
+    pairs: [[bag-mask, ventilate], [push, atropine], [arrest, algorithm]]
+    decoys: [monitor]
+    why: "bag-mask ventilate(백마스크로 환기), push atropine(아트로핀을 IV로 밀다), arrest algorithm(심정지 알고리즘). 저산소로 온 서맥은 이 순서대로 — 산소화가 먼저예요."
+  - kind: swap
+    words: [w-stop, w-attempt]
+    who: "팀에게 · 삽관 중 SpO2가 떨어질 때"
+    icon: siren
+    before: ["SpO2 is 82 and falling — ", "maybe we could stop soon", "."]
+    options: [maybe we could stop soon, stop the attempt and bag him, keep going]
+    answer: stop the attempt and bag him
+    notes:
+      maybe we could stop soon: "돌려 말하면 시술자가 집중하느라 못 듣거나 미뤄요."
+      stop the attempt and bag him: "짧고 분명한 지시 — 무엇을 멈추고 무엇을 할지가 한 문장에 있어요."
+      keep going: "저산소가 진행되는데 시도를 이어 가면 서맥·심정지로 갈 수 있어요."
+    why: "SpO2가 떨어지면 누구든 시도를 멈추자고 말할 수 있어요. 그때는 완곡어 없이 지시문으로 말해요."
+
+기관절개관 우발적 탈관:
+  - kind: slider
+    words: [w-fresh, w-stoma, w-hard, w-recannulate]
+    cue: "The trach was placed three days ago."
+    scale: [mature stoma, fairly new stoma, fresh stoma]
+    answerAt: 2
+    why: "만든 지 일주일 안팎이 안 된 스토마는 길이 아직 안 잡혀, 다시 넣다가 조직 사이로 잘못 들어가기 쉬워요. 그래서 바로 기도팀을 부르고 입·코로 산소를 줘요."
+    example: "It's a fresh stoma — three days old — so call the airway team."
+    exKo: "생긴 지 사흘 된 스토마예요 — 기도팀을 부르세요."
+  - kind: context
+    words: [w-fault, w-confused, w-scared]
+    scenes:
+      - {who: 동료에게, icon: speech, en: "He pulled it because he's confused — it's not his fault.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Accidental decannulation; pt confused, pulled trach.", ok: true}
+      - {who: 깨어 있는 환자에게, icon: me, en: "You pulled your trach out — that's why you can't breathe.", ok: false, fix: "Your tube came out. I'm right here, and we're putting a new one in."}
+    why: "환자를 탓하는 말은 겁에 질린 환자를 더 몰아붙여요. 무슨 일이 생겼는지와 지금 돕고 있다는 사실만 짧게 말해요."
+
+기관절개 부위 대량 출혈:
+  - kind: slider
+    words: [w-bleeding, w-blood, w-loss]
+    cue: "Bright red blood is pulsing out around the trach and soaks a dressing in under a minute."
+    scale: [some oozing, steady bleeding, massive bleeding]
+    answerAt: 2
+    why: "기관절개 뒤 박동성 선홍색 대량 출혈이면 기관무명동맥 누공을 먼저 의심해요. 'some bleeding'처럼 줄여 말하면 팀이 덜 급하게 움직여요 — 양과 속도를 그대로 말해요."
+    example: "This is massive bleeding — pulsatile and bright red."
+    exKo: "대량 출혈이에요 — 박동성이고 선홍색이에요."
+  - kind: context
+    words: [w-call, w-surgery, w-emergently, w-tracheoinnominate, w-fistula]
+    scenes:
+      - {who: 팀에게, icon: speech, en: "Call surgery emergently — possible tracheo-innominate fistula.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Massive pulsatile bleeding from trach site; cuff overinflated, digital pressure held; surgery paged emergently.", ok: true}
+      - {who: 복도의 보호자에게, icon: me, en: "We think it's a tracheo-innominate fistula, so we're calling surgery emergently.", ok: false, fix: "He's bleeding heavily around his breathing tube. The surgeons are on their way, and we're working to stop it."}
+    why: "보호자에게 병명이나 'emergently'를 그대로 전하면 무슨 뜻인지 모른 채 겁만 커져요. 무슨 일이 있고, 누가 오고 있고, 지금 무엇을 하는지를 쉬운 말로 짧게 말해요."
+
+식도 삽관 인지·즉시 교정:
+  - kind: slider
+    words: [w-capnography, w-mean, w-tube, w-trachea]
+    cue: "No CO2 trace on capnography, and his belly rises with each breath."
+    scale: [probably in the trachea, unsure — recheck later, in the esophagus — pull it]
+    answerAt: 2
+    why: "'No trace, wrong place' — 파형이 없으면 다른 소견보다 우선해 튜브가 기관에 없다고 봐요. 확인을 미루지 말고 빼서 재산소화해요."
+    example: "No trace, wrong place — pull the tube and reoxygenate."
+    exKo: "파형이 없으면 잘못된 위치예요 — 튜브를 빼고 재산소화해요."
+  - kind: context
+    words: [w-tube, w-out, w-remove]
+    scenes:
+      - {who: 팀에게, icon: speech, en: "Tube is out — bagging now.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Esophageal intubation recognized by absent EtCO2; ETT removed, pt reoxygenated, reintubated.", ok: true}
+      - {who: 보호자에게, icon: me, en: "The ETT was esophageal, so we pulled it and reintubated.", ok: false, fix: "The first breathing tube wasn't in the right spot, so we took it out right away and placed a new one."}
+    why: "'esophageal'·'reintubated'는 팀 안의 말이에요. 가족에게는 무엇이 있었고 바로 바로잡았다는 사실을 쉬운 말로 전해요."
+
+기도부종 급성 폐색 위기:
+  - kind: slider
+    words: [w-obstruct, w-obstruction, w-full, w-air, w-movement]
+    cue: "The stridor is getting quieter, but he's working harder and you can barely hear air moving."
+    scale: [partial obstruction, worsening obstruction, near-complete obstruction]
+    answerAt: 2
+    why: "협착음이 작아지는 건 좋아지는 신호가 아닐 수 있어요. 숨쉬기는 더 힘든데 공기 소리가 거의 안 들리면 지나가는 공기 자체가 줄었다는 뜻이라, 거의 완전 폐색으로 보고 바로 에스컬레이션해요."
+    example: "Quieter stridor with almost no air movement means near-complete obstruction."
+    exKo: "협착음이 작아졌는데 공기 흐름이 거의 없으면 거의 완전 폐색이에요."
+  - kind: reel
+    words: [w-escalate]
+    word: escalate
+    scenes:
+      - {who: "간호사 → 담당의", en: "I'm escalating — his airway is closing, and we need the difficult airway team now.", ko: "상급 보고합니다 — 기도가 막혀 가고 있어서 지금 어려운 기도팀이 필요해요.", tone: 급함}
+      - {who: "차트 기록", en: "Escalated to difficult airway team for progressive upper airway obstruction.", ko: "진행성 상기도 폐색으로 어려운 기도팀에 보고함.", tone: 건조}
+      - {who: "야간 인계", en: "If the stridor worsens, escalate right away — don't wait for rounds.", ko: "협착음이 심해지면 회진 기다리지 말고 바로 보고하세요.", tone: 경고}
+      - {who: "보호자에게는…", en: "His breathing is getting harder, so we've called in more specialists to help him.", ko: "숨쉬기가 더 힘들어지고 있어서 도와줄 전문 의료진을 더 불렀어요.", tone: 완곡, swap: true}

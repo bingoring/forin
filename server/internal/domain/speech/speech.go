@@ -19,6 +19,14 @@ var allowedOrigins = map[string]bool{
 	"review":   true,
 	"drill":    true,
 	"freeform": true,
+	// A STEP 1/2 repeat-after of a lesson word or sentence (lesson four steps, v44).
+	"lesson": true,
+	// Standalone entry points on home / slang / night (cross-review S1): they
+	// used to be downgraded to freeform, so the speaking list could not tell
+	// where an attempt started.
+	"slang": true,
+	"home":  true,
+	"night": true,
 }
 
 // RecordOptions carries the bookkeeping a Record call needs beyond the audio
@@ -66,6 +74,9 @@ type Service struct {
 	repo ports.SpeechRepo
 	pron *pronunciation.Service
 	tts  ports.SpeechSynthesizer
+	// refLimiter caps reference GENERATION per user per day (cross-review I4).
+	// nil = uncapped (tests, or Redis not wired).
+	refLimiter GenerationLimiter
 }
 
 func NewService(repo ports.SpeechRepo, pron *pronunciation.Service, tts ports.SpeechSynthesizer) *Service {
@@ -85,12 +96,29 @@ func NewService(repo ports.SpeechRepo, pron *pronunciation.Service, tts ports.Sp
 // instead of discarding it (see RecordResult's doc). Only a scoring failure
 // (pron.Assess erroring, including ErrNoSpeech) is a Record-level error.
 func (s *Service) Record(ctx context.Context, userID string, audioWav []byte, referenceText string, opts RecordOptions) (*RecordResult, error) {
+	// One profile read: the locale that scores the audio is the locale the attempt is
+	// filed under (cross-review S14b).
 	locale := s.pron.LocaleFor(ctx, userID)
-
-	res, err := s.pron.Assess(ctx, userID, audioWav, referenceText)
+	res, err := s.pron.AssessIn(ctx, audioWav, referenceText, locale)
 	if err != nil {
 		return nil, err
 	}
+	return s.recordScored(ctx, userID, audioWav, referenceText, locale, res, opts), nil
+}
+
+// RecordScored persists an attempt whose scoring the caller already did, so a
+// dialogue utterance can be transcribed AND scored by ONE unscripted Azure call
+// (cross-review I3) and still land in speech_attempts the same way Record's do.
+// It never calls the scorer. referenceText is what the attempt is filed under
+// (for free speech, the recognized text); the caller owns validating its length.
+//
+// Like Record, a storage failure is reported in PersistErr, not as a failure:
+// the score was already paid for.
+func (s *Service) RecordScored(ctx context.Context, userID string, audioWav []byte, referenceText string, res *ports.PronunciationResult, opts RecordOptions) *RecordResult {
+	return s.recordScored(ctx, userID, audioWav, referenceText, s.pron.LocaleFor(ctx, userID), res, opts)
+}
+
+func (s *Service) recordScored(ctx context.Context, userID string, audioWav []byte, referenceText, locale string, res *ports.PronunciationResult, opts RecordOptions) *RecordResult {
 
 	origin := opts.Origin
 	if !allowedOrigins[origin] {
@@ -106,6 +134,9 @@ func (s *Service) Record(ctx context.Context, userID string, audioWav []byte, re
 	}
 
 	key := SentenceKey(referenceText, locale)
+	// The clip length rides on the result too, not only on the row — the result screen reads
+	// it from the response (cross-review B1: it was always 0 there).
+	res.DurationMS = DurationMS(audioWav)
 
 	id, attemptNo, err := s.repo.InsertAttempt(ctx, ports.SpeechAttemptInput{
 		UserID:        userID,
@@ -119,7 +150,7 @@ func (s *Service) Record(ctx context.Context, userID string, audioWav []byte, re
 		Completeness:  res.Completeness,
 		Prosody:       res.Prosody,
 		ProsodyOK:     res.ProsodyOK,
-		DurationMS:    DurationMS(audioWav),
+		DurationMS:    res.DurationMS,
 		Words:         res.Words,
 		ScenarioID:    opts.ScenarioID,
 		SessionID:     opts.SessionID,
@@ -128,16 +159,12 @@ func (s *Service) Record(ctx context.Context, userID string, audioWav []byte, re
 	})
 	if err != nil {
 		slog.Warn("speech: attempt scored but not persisted", "err", err, "userID", userID, "sentenceKey", key)
-		return &RecordResult{SentenceKey: key, Result: res, PersistErr: err}, nil
+		return &RecordResult{SentenceKey: key, Result: res, PersistErr: err}
 	}
 
-	return &RecordResult{ID: id, SentenceKey: key, AttemptNo: attemptNo, Result: res}, nil
+	return &RecordResult{ID: id, SentenceKey: key, AttemptNo: attemptNo, Result: res}
 }
 
-// History returns up to `limit` attempts for (userID, sentenceKey), oldest
-// first. ListAttempts hands rows back newest attempt_no first; the practice
-// screen renders 1st -> 2nd -> 3rd (business-rules R3), so this reverses here
-// rather than making every caller remember to.
 // SpeakLine synthesizes one NPC utterance in the persona's voice.
 //
 // Deliberately NOT a general "speak this text" endpoint: the caller passes text
@@ -165,6 +192,10 @@ func (s *Service) SpeakLine(ctx context.Context, userID, text string, p PersonaV
 // a failure the learner should see as an error.
 var ErrNothingToSpeak = errors.New("speech: nothing to speak")
 
+// History returns up to `limit` attempts for (userID, sentenceKey), oldest
+// first. ListAttempts hands rows back newest attempt_no first; the practice
+// screen renders 1st -> 2nd -> 3rd (business-rules R3), so this reverses here
+// rather than making every caller remember to.
 func (s *Service) History(ctx context.Context, userID, sentenceKey string, limit int) ([]ports.SpeechAttemptRow, error) {
 	rows, err := s.repo.ListAttempts(ctx, userID, sentenceKey, limit)
 	if err != nil {

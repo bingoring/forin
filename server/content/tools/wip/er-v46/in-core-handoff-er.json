@@ -1,0 +1,425 @@
+{
+ "theme": "core-handoff-er",
+ "situations": [
+  {
+   "title": "SBAR 기본 구조 인계",
+   "tagline": "Let me give you a quick SBAR on this patient.",
+   "room": "STATION",
+   "brief": "상황·배경·평가·권고 순서로 한 환자를 SBAR로 인계하세요.",
+   "role": "colleague",
+   "skills": [
+    "SBAR 구조",
+    "요점 정리",
+    "인계 소통"
+   ],
+   "keyPhrases": [
+    "Situation: room four with chest pain since noon.",
+    "Background: history of high blood pressure, no cardiac history.",
+    "My recommendation is to keep him on the monitor."
+   ],
+   "goals": [
+    "S-B-A-R 순서로 빠짐없이 전달한다",
+    "인수자의 되묻기에 명확히 답한다"
+   ]
+  },
+  {
+   "title": "교대 시 환자 요약",
+   "tagline": "Here's the quick rundown before you take over.",
+   "room": "STATION",
+   "brief": "활력징후·주호소·대기 검사를 중심으로 교대 환자를 요약 인계하세요.",
+   "role": "colleague",
+   "skills": [
+    "환자 요약",
+    "활력·주호소 전달",
+    "대기 검사 정리"
+   ],
+   "keyPhrases": [
+    "Her vitals are stable, last set thirty minutes ago.",
+    "Chief complaint is abdominal pain since this morning.",
+    "We're still waiting on the CT results."
+   ],
+   "goals": [
+    "활력·주호소·대기 검사를 간결히 요약한다",
+    "미결 사항을 명확히 짚는다"
+   ]
+  },
+  {
+   "title": "미결 업무 인계",
+   "tagline": "A few things still need to be done this shift.",
+   "room": "STATION",
+   "brief": "투약·검사·관찰 등 미결 업무를 명확히 정리해 인계하세요.",
+   "role": "colleague",
+   "skills": [
+    "미결 업무 정리",
+    "우선순위 전달",
+    "확인 요청"
+   ],
+   "keyPhrases": [
+    "His next antibiotic dose is due at four.",
+    "The urine sample still needs to go to the lab.",
+    "Please recheck her blood pressure in an hour."
+   ],
+   "goals": [
+    "미결 투약·검사·관찰을 목록으로 전달한다",
+    "각 업무의 시점을 명확히 한다"
+   ]
+  },
+  {
+   "title": "환자 정보 재확인",
+   "tagline": "Let's confirm the name and diagnosis together.",
+   "room": "STATION",
+   "brief": "인수자와 함께 환자 이름·진단을 재확인하며 인계하세요.",
+   "role": "colleague",
+   "skills": [
+    "정보 재확인",
+    "신원 대조",
+    "진단 확인"
+   ],
+   "keyPhrases": [
+    "This is Mr. Alvarez in bed two, correct?",
+    "Working diagnosis is dehydration, ruling out infection.",
+    "Can you read the name band back to me?"
+   ],
+   "goals": [
+    "이름·진단을 인수자와 대조 확인한다",
+    "오인을 막기 위해 되읽기를 요청한다"
+   ]
+  },
+  {
+   "title": "우선순위 환자 지목",
+   "tagline": "This is the one I'd keep the closest eye on.",
+   "room": "STATION",
+   "brief": "여러 환자 중 주의 요망 환자를 지목하며 우선순위를 인계하세요.",
+   "role": "colleague",
+   "skills": [
+    "우선순위 지정",
+    "주의 강조",
+    "근거 설명"
+   ],
+   "keyPhrases": [
+    "Watch bed three most closely this shift.",
+    "Her pressure has been trending down all afternoon.",
+    "If anything changes, call the doctor early."
+   ],
+   "goals": [
+    "가장 주의할 환자와 이유를 강조한다",
+    "악화 시 대응 기준을 전달한다"
+   ]
+  },
+  {
+   "title": "병동 입원 인계",
+   "tagline": "Handing off to the floor — here's the key picture.",
+   "room": "STATION",
+   "brief": "ER에서 병동으로 입원하는 환자의 핵심 정보를 압축해 인계하세요.",
+   "role": "colleague",
+   "skills": [
+    "입원 인계",
+    "핵심 압축",
+    "후속 계획 전달"
+   ],
+   "keyPhrases": [
+    "She's admitted for pneumonia, on IV antibiotics.",
+    "Last vitals were stable, oxygen at two liters.",
+    "Pending labs are her morning cultures."
+   ],
+   "goals": [
+    "진단·투약·현 상태를 압축해 전달한다",
+    "병동에서 이어질 후속 계획을 명확히 한다"
+   ]
+  },
+  {
+   "title": "검사 대기 환자 인계",
+   "tagline": "He's still waiting on a couple of results.",
+   "room": "STATION",
+   "brief": "미결 검사 결과와 후속 조치가 있는 환자를 인계하세요.",
+   "role": "colleague",
+   "skills": [
+    "미결 결과 전달",
+    "후속 조치 안내",
+    "추적 요청"
+   ],
+   "keyPhrases": [
+    "His troponin is pending, due back within the hour.",
+    "If it's elevated, the doctor wants to be called.",
+    "The X-ray is done but not yet read."
+   ],
+   "goals": [
+    "대기 중인 검사와 예상 시점을 전달한다",
+    "결과에 따른 후속 조치를 명확히 한다"
+   ]
+  },
+  {
+   "title": "불안정 환자 교대 인계",
+   "tagline": "She could turn quickly — here's the plan if she does.",
+   "room": "STATION",
+   "brief": "악화 가능성이 있는 불안정 환자와 대응 계획을 인계하세요.",
+   "role": "colleague",
+   "skills": [
+    "불안정 환자 인계",
+    "악화 지표 전달",
+    "대응 계획"
+   ],
+   "keyPhrases": [
+    "Her pressure is borderline and trending down.",
+    "If systolic drops below ninety, start the fluid bolus.",
+    "The doctor is aware and wants a call for any change."
+   ],
+   "goals": [
+    "악화 지표와 임계값을 명확히 전달한다",
+    "악화 시 즉각 대응 계획을 공유한다"
+   ]
+  },
+  {
+   "title": "다중 환자 동시 인계",
+   "tagline": "I've got four for you — let's prioritize.",
+   "room": "STATION",
+   "brief": "여러 환자를 동시에 인계하며 우선순위를 정리해 전달하세요.",
+   "role": "colleague",
+   "skills": [
+    "다중 환자 인계",
+    "우선순위화",
+    "구조적 정리"
+   ],
+   "keyPhrases": [
+    "Let's start with the sickest and work down.",
+    "Bed one is stable and just waiting for discharge.",
+    "Bed three is the one that needs the most attention."
+   ],
+   "goals": [
+    "여러 환자를 우선순위 순으로 정리해 전달한다",
+    "각 환자의 핵심만 간결히 인계한다"
+   ]
+  },
+  {
+   "title": "인계 정보 누락 확인",
+   "tagline": "Wait — was anything ordered for her pain?",
+   "room": "STATION",
+   "brief": "인계 중 되묻기를 통해 정보 공백을 확인하고 보완하세요.",
+   "role": "colleague",
+   "skills": [
+    "되묻기 확인",
+    "공백 보완",
+    "능동적 청취"
+   ],
+   "keyPhrases": [
+    "You didn't mention her allergies — any I should know?",
+    "Was the pain medicine actually given, or just ordered?",
+    "Let me confirm the last vitals time before you go."
+   ],
+   "goals": [
+    "되묻기로 누락된 정보를 확인한다",
+    "공백을 인계자와 함께 보완한다"
+   ]
+  },
+  {
+   "title": "언어·문화 배경 전달",
+   "tagline": "There are a few communication needs to pass along.",
+   "room": "STATION",
+   "brief": "환자의 언어·문화적 특이사항과 통역 필요성을 인계하세요.",
+   "role": "colleague",
+   "skills": [
+    "특이사항 전달",
+    "통역 인계",
+    "문화적 배려 공유"
+   ],
+   "keyPhrases": [
+    "He speaks Vietnamese and needs a phone interpreter.",
+    "The family prefers a female nurse for personal care.",
+    "Please always confirm understanding through the interpreter."
+   ],
+   "goals": [
+    "언어 선호·통역 필요성을 전달한다",
+    "문화적 특이사항을 인수자와 공유한다"
+   ]
+  },
+  {
+   "title": "정신과 보류 환자 인계",
+   "tagline": "He's on a psychiatric hold — here's the legal status.",
+   "room": "STATION",
+   "brief": "법적 상태와 감시 요구가 있는 정신과 보류 환자를 인계하세요.",
+   "role": "colleague",
+   "skills": [
+    "법적 상태 전달",
+    "감시 요구 공유",
+    "안전 계획"
+   ],
+   "keyPhrases": [
+    "He's under a seventy-two-hour hold, cannot leave.",
+    "He requires one-to-one observation at all times.",
+    "All sharps and cords have been removed from the room."
+   ],
+   "goals": [
+    "법적 상태와 감시 수준을 명확히 전달한다",
+    "환경 안전 조치를 인수자와 공유한다"
+   ]
+  },
+  {
+   "title": "가족 소통 이력 인계",
+   "tagline": "The family's been told part of the picture — here's where things stand.",
+   "room": "STATION",
+   "brief": "나쁜 소식 전달 여부 등 가족 소통 이력과 미해결 사항을 인계하세요.",
+   "role": "colleague",
+   "skills": [
+    "가족 소통 인계",
+    "미해결 사항 전달",
+    "민감 정보 공유"
+   ],
+   "keyPhrases": [
+    "The daughter knows the diagnosis but not the prognosis.",
+    "The doctor still needs to speak with the wife.",
+    "The son had a lot of anger earlier — be gentle."
+   ],
+   "goals": [
+    "가족에게 전달된 내용과 미해결 사항을 공유한다",
+    "민감한 정서적 배경을 인수자에게 전달한다"
+   ]
+  },
+  {
+   "title": "기관 간 이송 인계",
+   "tagline": "I'm calling report for a transfer to your facility.",
+   "room": "STATION",
+   "brief": "타 병원으로 전원하는 환자를 전원 SBAR와 서류로 인계하세요.",
+   "role": "colleague",
+   "skills": [
+    "전원 SBAR",
+    "서류 인계",
+    "이송 조율"
+   ],
+   "keyPhrases": [
+    "This is a transfer for a higher level of stroke care.",
+    "Symptom onset was two hours ago, tPA not given.",
+    "All records and imaging are traveling with the patient."
+   ],
+   "goals": [
+    "전원 사유·경과를 SBAR로 전달한다",
+    "서류·영상 동반과 이송 계획을 확인한다"
+   ]
+  },
+  {
+   "title": "위중 환자 병동 전동",
+   "tagline": "She's crashing — we need to move her up now.",
+   "room": "STATION",
+   "brief": "급속 악화로 상급 병동으로 전동하는 위중 환자를 인계하세요.",
+   "role": "colleague",
+   "skills": [
+    "급속 악화 인계",
+    "위중 환자 전동",
+    "긴급 조율"
+   ],
+   "keyPhrases": [
+    "Her pressure keeps dropping despite fluids.",
+    "She's on a norepinephrine drip, titrating up.",
+    "She needs an ICU bed and close monitoring right now."
+   ],
+   "goals": [
+    "급속 악화 경과와 현재 지지 요법을 전달한다",
+    "긴급 전동에 필요한 준비를 조율한다"
+   ]
+  },
+  {
+   "title": "코드 후 ICU 인계",
+   "tagline": "This is the post-arrest patient — here's where we are.",
+   "room": "STATION",
+   "brief": "심정지 소생 경과와 현재 상태를 ICU 간호사에게 SBAR로 인계하세요.",
+   "role": "colleague",
+   "skills": [
+    "SBAR 인계",
+    "소생 경과 전달",
+    "중환자 인수인계"
+   ],
+   "keyPhrases": [
+    "Situation: this is a fifty-eight-year-old post-cardiac-arrest patient.",
+    "Background: down time was about eight minutes with two shocks.",
+    "Right now he's on a norepinephrine drip and intubated."
+   ],
+   "goals": [
+    "소생 경과·투약·현 상태를 SBAR 순서로 전달한다",
+    "인수자의 되묻기에 정확히 답한다"
+   ]
+  },
+  {
+   "title": "교대 중 급변 발생",
+   "tagline": "He just changed — let's re-do this handoff fast.",
+   "room": "STATION",
+   "brief": "인계 도중 환자가 급변한 상황에서 인계 내용을 재조율하세요.",
+   "role": "colleague",
+   "skills": [
+    "급변 재조율",
+    "실시간 갱신",
+    "팀 소통"
+   ],
+   "keyPhrases": [
+    "Forget what I just said — his status has changed.",
+    "His oxygen just dropped to eighty-five percent.",
+    "Let's both go see him and reassess together."
+   ],
+   "goals": [
+    "급변에 맞춰 인계 정보를 즉시 갱신한다",
+    "인수자와 함께 재사정 계획을 세운다"
+   ]
+  },
+  {
+   "title": "불완전 정보 이송 수용",
+   "tagline": "The report we got is thin — let's fill the gaps.",
+   "room": "STATION",
+   "brief": "외부에서 온 불완전한 인계 정보를 보완하며 이송 환자를 수용하세요.",
+   "role": "colleague",
+   "skills": [
+    "외부 인계 보완",
+    "공백 확인",
+    "정보 재구성"
+   ],
+   "keyPhrases": [
+    "We didn't get her medication list — do you have it?",
+    "Can you confirm when the last dose was given?",
+    "I'll reassess from scratch to be safe."
+   ],
+   "goals": [
+    "누락된 외부 인계 정보를 확인·보완한다",
+    "공백이 있는 부분은 재사정으로 채운다"
+   ]
+  },
+  {
+   "title": "다직역 인계 회의",
+   "tagline": "Let's get everyone on the same page for this patient.",
+   "room": "STATION",
+   "brief": "의사·간호·사회복지가 함께하는 다직역 인계 회의에서 역할을 조율하세요.",
+   "role": "colleague",
+   "skills": [
+    "다직역 조율",
+    "역할 분담",
+    "통합 계획"
+   ],
+   "keyPhrases": [
+    "From nursing, her pain is controlled but mobility is poor.",
+    "Social work is arranging safe discharge to a shelter.",
+    "Let's agree who follows up on each item."
+   ],
+   "goals": [
+    "직역별 정보를 통합해 전달한다",
+    "후속 업무의 담당을 명확히 나눈다"
+   ]
+  },
+  {
+   "title": "대량재해 환자 분류 인계",
+   "tagline": "Here are the triage tags — reds first.",
+   "room": "STATION",
+   "brief": "대량재해 상황에서 트리아지 분류 결과를 팀에 인계하세요.",
+   "role": "colleague",
+   "skills": [
+    "트리아지 인계",
+    "분류 결과 전달",
+    "우선순위 조율"
+   ],
+   "keyPhrases": [
+    "We have three reds, five yellows, and eight greens.",
+    "The reds are in bays one through three, most critical first.",
+    "Reassess yellows every fifteen minutes for changes."
+   ],
+   "goals": [
+    "트리아지 색상별 환자 분류를 전달한다",
+    "재평가 주기와 우선순위를 공유한다"
+   ]
+  }
+ ]
+}

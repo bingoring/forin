@@ -1,0 +1,425 @@
+{
+ "theme": "er-deescalation",
+ "situations": [
+  {
+   "title": "대기 지연 불만 환자",
+   "tagline": "I've been sitting here for three hours — is anyone even working?",
+   "room": "WAITING AREA",
+   "brief": "지연 원인을 투명하게 설명하고 예상 시간을 제시해 불만을 완화하세요.",
+   "role": "patient",
+   "skills": [
+    "지연 설명",
+    "기대 관리",
+    "공감적 응대"
+   ],
+   "keyPhrases": [
+    "I'm sorry for the long wait — let me explain what's happening.",
+    "Patients with life-threatening issues are seen first.",
+    "I'll check on your place in line and update you shortly."
+   ],
+   "goals": [
+    "지연 원인과 우선순위 체계를 설명한다",
+    "예상 시간으로 기대를 조절한다"
+   ]
+  },
+  {
+   "title": "목소리 높아지는 초기 신호",
+   "tagline": "Don't tell me to calm down!",
+   "room": "TRIAGE",
+   "brief": "자세·거리·톤을 조절해 초기 격화 신호를 조기에 진정시키세요.",
+   "role": "patient",
+   "skills": [
+    "비언어 조절",
+    "조기 진정",
+    "톤 관리"
+   ],
+   "keyPhrases": [
+    "You're right to be frustrated — I'm listening.",
+    "Let's talk this through, I've got time for you.",
+    "Tell me what would help right now."
+   ],
+   "goals": [
+    "비언어 신호로 긴장을 낮춘다",
+    "경청으로 격화를 초기에 차단한다"
+   ]
+  },
+  {
+   "title": "공간·개인영역 확보",
+   "tagline": "Back off — you're too close to me.",
+   "room": "EXAM 1",
+   "brief": "안전 거리와 출구를 확보하며 위협감을 주지 않는 위치를 유지하세요.",
+   "role": "patient",
+   "skills": [
+    "안전 거리 유지",
+    "출구 확보",
+    "위협감 완화"
+   ],
+   "keyPhrases": [
+    "I'll give you some space — is this better?",
+    "You can move wherever feels comfortable to you.",
+    "I'm not here to crowd you, just to help."
+   ],
+   "goals": [
+    "안전 거리와 출구를 확보한다",
+    "위협감을 주지 않는 자세를 유지한다"
+   ]
+  },
+  {
+   "title": "요구 반복 환자 경청",
+   "tagline": "I keep telling you what I need and nobody listens!",
+   "room": "HALLWAY BED 2",
+   "brief": "반복되는 요구 이면의 실제 니즈를 짚어 신뢰를 회복하세요.",
+   "role": "patient",
+   "skills": [
+    "적극적 경청",
+    "니즈 파악",
+    "신뢰 회복"
+   ],
+   "keyPhrases": [
+    "Let me make sure I understand what you really need.",
+    "I hear you've had to repeat yourself — that's frustrating.",
+    "Here's what I can do right now for you."
+   ],
+   "goals": [
+    "반복 요구의 근본 니즈를 파악한다",
+    "실행 가능한 응답으로 신뢰를 회복한다"
+   ]
+  },
+  {
+   "title": "통증·불편 기인 초조",
+   "tagline": "It hurts so bad I can't sit still — do something!",
+   "room": "EXAM 4",
+   "brief": "통증 등 기본 욕구를 우선 해결해 초조의 근본 원인을 완화하세요.",
+   "role": "patient",
+   "skills": [
+    "통증 우선 사정",
+    "기본욕구 해결",
+    "초조 완화"
+   ],
+   "keyPhrases": [
+    "Let's get your pain under control first.",
+    "On a scale of zero to ten, how bad is it right now?",
+    "I'm getting something for you right away."
+   ],
+   "goals": [
+    "통증·불편 등 기본 욕구를 우선 해결한다",
+    "원인 해소로 초조를 완화한다"
+   ]
+  },
+  {
+   "title": "알코올 취기 공격성",
+   "tagline": "You think you're better than me? Come here and say it!",
+   "room": "HALLWAY BED 5",
+   "brief": "자극을 최소화하는 접근으로 취기 상태의 공격성을 낮추세요.",
+   "role": "patient",
+   "skills": [
+    "자극 최소화",
+    "취기 대응",
+    "안전 확보"
+   ],
+   "keyPhrases": [
+    "Nobody's judging you here — I just want to help.",
+    "Let's keep it calm; I'm on your side.",
+    "How about we sit down and talk this out?"
+   ],
+   "goals": [
+    "자극을 줄여 공격성을 낮춘다",
+    "안전을 유지하며 협조를 유도한다"
+   ]
+  },
+  {
+   "title": "치매 초조 행동",
+   "tagline": "This isn't my home. I want to go, let me out!",
+   "room": "EXAM 6",
+   "brief": "진정을 유도하고 가족을 활용해 치매 환자의 초조를 완화하세요.",
+   "role": "patient",
+   "skills": [
+    "치매 소통",
+    "진정 유도",
+    "가족 활용"
+   ],
+   "keyPhrases": [
+    "You're safe here, and I'm going to stay with you.",
+    "Your daughter is on her way to see you.",
+    "Let's look at these photos together for a moment."
+   ],
+   "goals": [
+    "지남력을 부드럽게 지지한다",
+    "가족과 익숙한 자극으로 초조를 낮춘다"
+   ]
+  },
+  {
+   "title": "마약 갈망·요구 환자",
+   "tagline": "I'm in real pain — just give me the good stuff, come on.",
+   "room": "EXAM 2",
+   "brief": "공감을 유지하면서 명확한 한계를 설정하세요.",
+   "role": "patient",
+   "skills": [
+    "한계 설정",
+    "공감 유지",
+    "갈망 대응"
+   ],
+   "keyPhrases": [
+    "I believe your pain is real, and I want to treat it safely.",
+    "I can't give you that, but here's what I can offer.",
+    "Let's focus on what will actually help you feel better."
+   ],
+   "goals": [
+    "공감을 유지하며 명확히 한계를 설정한다",
+    "안전한 대안으로 갈망을 관리한다"
+   ]
+  },
+  {
+   "title": "대기실 다인 긴장 확산",
+   "tagline": "Everyone here is fed up — this whole place is a joke!",
+   "room": "WAITING AREA",
+   "brief": "격앙된 환자를 격리·중재해 대기실 전체의 긴장 확산을 막으세요.",
+   "role": "patient",
+   "skills": [
+    "집단 긴장 관리",
+    "격리 중재",
+    "확산 차단"
+   ],
+   "keyPhrases": [
+    "Let's step over here where we can talk privately.",
+    "I want to hear your concern one-on-one.",
+    "I'll address this, but let's keep it calm for everyone."
+   ],
+   "goals": [
+    "격앙 환자를 개별 공간으로 유도한다",
+    "집단 긴장 확산을 차단한다"
+   ]
+  },
+  {
+   "title": "언어폭력 대상 직원 보호",
+   "tagline": "You're useless — all of you should be fired!",
+   "room": "NURSES STATION",
+   "brief": "존중의 경계를 설정하며 관계를 재구축하고 직원을 보호하세요.",
+   "role": "patient",
+   "skills": [
+    "경계 설정",
+    "직원 보호",
+    "관계 재구축"
+   ],
+   "keyPhrases": [
+    "I want to help you, and I need us to speak respectfully.",
+    "I won't accept being spoken to that way, but I'm still here for you.",
+    "Let's reset and figure this out together."
+   ],
+   "goals": [
+    "존중의 경계를 명확히 설정한다",
+    "관계를 재구축하며 직원을 보호한다"
+   ]
+  },
+  {
+   "title": "문화·인종 관련 불신",
+   "tagline": "People like me never get treated right in places like this.",
+   "room": "EXAM 3",
+   "brief": "방어성을 낮추고 신뢰를 형성하며 문화적 불신을 완화하세요.",
+   "role": "patient",
+   "skills": [
+    "문화적 겸손",
+    "방어성 완화",
+    "신뢰 형성"
+   ],
+   "keyPhrases": [
+    "I hear you, and I want to make sure you're treated with respect here.",
+    "Your concern is valid, and I'll do my best for you.",
+    "Tell me what would help you feel more comfortable."
+   ],
+   "goals": [
+    "불신을 인정하고 방어성을 낮춘다",
+    "문화적 겸손으로 신뢰를 형성한다"
+   ]
+  },
+  {
+   "title": "보호자발 공격성",
+   "tagline": "If anything happens to my son, you'll answer to me!",
+   "room": "PEDS BAY",
+   "brief": "위협적인 동반 가족의 공격성을 관리하며 아이 치료를 보호하세요.",
+   "role": "family",
+   "skills": [
+    "보호자 관리",
+    "위협 완화",
+    "치료 보호"
+   ],
+   "keyPhrases": [
+    "I can see how much you love your son — we want the same thing.",
+    "Let me tell you exactly what we're doing for him.",
+    "I need us to stay calm so I can care for him well."
+   ],
+   "goals": [
+    "보호자 공격성을 공감으로 완화한다",
+    "아이 치료 환경을 안전하게 보호한다"
+   ]
+  },
+  {
+   "title": "정신질환+초조 복합",
+   "tagline": "Stop plotting against me — I know what you're all doing!",
+   "room": "QUIET ROOM",
+   "brief": "편집 사고를 자극하지 않는 언어로 복합적 초조를 완화하세요.",
+   "role": "patient",
+   "skills": [
+    "편집 사고 관리",
+    "비자극 소통",
+    "초조 완화"
+   ],
+   "keyPhrases": [
+    "No one here is against you — I want to help you feel safe.",
+    "I'll keep everything out in the open so you can see.",
+    "You're in charge of what we talk about."
+   ],
+   "goals": [
+    "편집 사고를 자극하지 않고 소통한다",
+    "안전감을 주며 초조를 완화한다"
+   ]
+  },
+  {
+   "title": "무기 소지 의심",
+   "tagline": "Don't come any closer. I'm warning you.",
+   "room": "TRIAGE",
+   "brief": "보안·경찰 호출과 직원 대피를 조율하며 자극 없이 거리를 유지하세요.",
+   "role": "patient",
+   "skills": [
+    "무기 위협 대응",
+    "보안 조율",
+    "직원 대피"
+   ],
+   "keyPhrases": [
+    "I'm keeping my distance — I don't want anyone to get hurt.",
+    "Can you tell me what's making you feel unsafe right now?",
+    "Let's talk, and I'll listen to whatever you need to say."
+   ],
+   "goals": [
+    "자극 없이 안전 거리를 유지한다",
+    "보안·경찰 호출과 대피를 조율한다"
+   ]
+  },
+  {
+   "title": "신체 공격 임박 코드",
+   "tagline": "I'll take all of you down if you touch me!",
+   "room": "RESUS 2",
+   "brief": "팀을 호출하고 억제 결정을 신속히 판단하며 마지막까지 언어적 진정을 시도하세요.",
+   "role": "patient",
+   "skills": [
+    "팀 호출",
+    "억제 결정",
+    "최종 언어 진정"
+   ],
+   "keyPhrases": [
+    "I don't want to restrain you — help me keep this calm.",
+    "Tell me what you need and I'll try to make it happen.",
+    "We're going to keep everyone safe, including you."
+   ],
+   "goals": [
+    "마지막까지 언어적 진정을 시도한다",
+    "팀 호출과 억제 결정을 신속히 판단한다"
+   ]
+  },
+  {
+   "title": "억제 후 후속 소통",
+   "tagline": "You tied me down like an animal. How could you?",
+   "room": "RESUS 1",
+   "brief": "억제 이후 존엄을 회복하고 신뢰를 재구축하세요.",
+   "role": "patient",
+   "skills": [
+    "존엄 회복",
+    "신뢰 재구축",
+    "사후 소통"
+   ],
+   "keyPhrases": [
+    "I'm sorry that was scary — we only did it to keep you safe.",
+    "Let me explain what happened and answer your questions.",
+    "Now that things are calmer, how are you feeling?"
+   ],
+   "goals": [
+    "억제 경험의 감정을 인정하고 존엄을 회복한다",
+    "투명한 설명으로 신뢰를 재구축한다"
+   ]
+  },
+  {
+   "title": "흥분성 섬망(ExDS)",
+   "tagline": "So hot — get it off me! Get it off!",
+   "room": "RESUS 2",
+   "brief": "대사 위기를 인지하고 응급 진정과 냉각을 동시에 관리하세요.",
+   "role": "patient",
+   "skills": [
+    "대사 위기 인지",
+    "응급 진정",
+    "냉각 관리"
+   ],
+   "keyPhrases": [
+    "You're overheating — we're going to cool you down fast.",
+    "Stay with me, we're getting you help right now.",
+    "I'm right here; we've got you."
+   ],
+   "goals": [
+    "흥분성 섬망의 대사 위기를 인지한다",
+    "응급 진정과 냉각을 동시에 관리한다"
+   ]
+  },
+  {
+   "title": "집단 폭력·다중 위협",
+   "tagline": "This is between us and them — stay out of it!",
+   "room": "WAITING AREA",
+   "brief": "다중 위협 상황에서 우선순위를 정하고 분리·보안 개입을 조율하세요.",
+   "role": "family",
+   "skills": [
+    "다중 위협 우선순위",
+    "분리 중재",
+    "보안 조율"
+   ],
+   "keyPhrases": [
+    "I need everyone to separate so no one gets hurt.",
+    "Let's take this one group at a time — you first.",
+    "Security is here to keep everyone safe, including you."
+   ],
+   "goals": [
+    "위협을 우선순위화하고 분리한다",
+    "보안 개입을 조율해 확산을 막는다"
+   ]
+  },
+  {
+   "title": "진정제 투여 후 감시",
+   "tagline": "I'm so tired... just let me sleep it off.",
+   "room": "RESUS 1",
+   "brief": "진정제 투여 후 호흡·의식을 지속 재사정하며 안전을 확보하세요.",
+   "role": "patient",
+   "skills": [
+    "진정 후 감시",
+    "호흡 재사정",
+    "의식 확인"
+   ],
+   "keyPhrases": [
+    "I'm going to keep checking on you while you rest.",
+    "Can you open your eyes for me for a second?",
+    "Take slow, deep breaths — I'm watching over you."
+   ],
+   "goals": [
+    "진정 후 호흡과 의식을 지속 재사정한다",
+    "과진정 징후를 조기에 포착한다"
+   ]
+  },
+  {
+   "title": "자의 퇴원(AMA) 갈등 완화",
+   "tagline": "I'm done waiting. I'm leaving right now, get out of my way.",
+   "room": "TRIAGE",
+   "brief": "자의 퇴원을 고집하는 환자의 분노를 낮추고 위험을 설명하며 선택지를 제시하세요.",
+   "role": "patient",
+   "skills": [
+    "디에스컬레이션",
+    "위험 설명",
+    "자기결정 존중"
+   ],
+   "keyPhrases": [
+    "I hear that you're frustrated — help me understand what happened.",
+    "I can't hold you here, but I want you to know what the risks are.",
+    "If you decide to stay, I'll make the wait as short as I can."
+   ],
+   "goals": [
+    "환자의 불만을 경청하고 감정을 먼저 낮춘다",
+    "자의 퇴원의 위험을 비난 없이 설명하고 선택지를 제시한다"
+   ]
+  }
+ ]
+}

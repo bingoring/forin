@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -34,6 +35,17 @@ type Seed struct {
 	Guardrails []string    `yaml:"guardrails"`
 	Acuity     string      `yaml:"acuity"`
 	Persona    SeedPersona `yaml:"persona"`
+	// Sentences (lesson four steps, v44) are this situation's STEP 2 target
+	// sentences — carried onto the generated Scenario verbatim (see
+	// generateSeedScenarios). Empty on every current seed; content lands
+	// department by department (build-spec-index.md §6 결정 2).
+	Sentences []content.Sentence `yaml:"sentences"`
+	// Nuance (v45, build-spec §11-3) are this situation's nuance items, carried
+	// verbatim like Sentences.
+	Nuance []content.Nuance `yaml:"nuance"`
+	// Order (v46, lesson-fidelity-v46 결정 8) is this situation's order card, carried
+	// verbatim like Sentences. Optional.
+	Order *content.SentenceOrder `yaml:"order"`
 }
 
 // SeedPersona is the patient/colleague character for one situation. Authored per
@@ -73,9 +85,47 @@ func loadSeeds(dir, code string) ([]Seed, error) {
 // multiplication) plus events grouped like generateDept. IDs share the SCN-<CODE>-
 // 00101+ namespace so the seed path and the legacy path never collide within a
 // department (a department is one or the other, never both).
-func generateSeedScenarios(deptIdx int, d Dept, seeds []Seed) ([]content.Scenario, []content.Event) {
+//
+// `lexicon` is the department's word banks (loadLexicon), keyed by theme. Before
+// touching any seed, every bank in it is checked for A2 (no duplicate word ids);
+// then each seed whose `Sentences` is non-empty has them checked against ITS
+// theme's bank (A1 unknown word id, A3 goal out of range, A4 chunks don't join to
+// `en`) — see build-spec-index.md §2-1 and lesson-v44/task-A-brief.md §4. A seed
+// with no sentences yet (all of them, currently) skips straight through: "no
+// sentences" is always valid, never an error.
+//
+// Any violation fails the WHOLE generation run (returns an error) rather than
+// dropping the bad seed — a half-generated department silently missing STEP 1/2
+// content for one situation is exactly the failure mode this check exists to
+// prevent from shipping unnoticed.
+func generateSeedScenarios(deptIdx int, d Dept, seeds []Seed, lexicon []content.Lexicon) ([]content.Scenario, []content.Event, error) {
+	for _, bank := range lexicon {
+		if errs := content.ValidateLexiconV45(bank); len(errs) > 0 {
+			return nil, nil, fmt.Errorf("dept %s lexicon: %w", d.Code, errors.Join(errs...))
+		}
+	}
+
 	scns := make([]content.Scenario, 0, len(seeds))
 	for i, s := range seeds {
+		if len(s.Sentences) > 0 {
+			bank, found := content.FindLexiconTheme(lexicon, s.Theme)
+			if !found {
+				bank = content.Lexicon{Theme: s.Theme}
+			}
+			errs := content.ValidateSentences(s.Theme, bank, len(s.Goals), s.Sentences)
+			errs = append(errs, content.ValidateNuance(s.Title, content.UsedWordIDs(s.Sentences), s.Nuance, content.IsV45Bank(bank))...)
+			for j, sn := range s.Sentences {
+				errs = append(errs, content.ValidateSentenceV46(j, sn)...)
+			}
+			errs = append(errs, content.ValidateOrder(s.Title, s.Order)...)
+			if len(errs) > 0 {
+				return nil, nil, fmt.Errorf("dept %s seed %q: %w", d.Code, s.Title, errors.Join(errs...))
+			}
+		} else if len(s.Nuance) > 0 {
+			return nil, nil, fmt.Errorf("dept %s seed %q: has nuance but no sentences to anchor it", d.Code, s.Title)
+		} else if s.Order != nil {
+			return nil, nil, fmt.Errorf("dept %s seed %q: has an order card but no sentences to anchor it", d.Code, s.Title)
+		}
 		diff := clampDiff(s.Difficulty)
 		mins := 4 + diff*2
 		id := fmt.Sprintf("SCN-%s-%05d", d.Code, idStart+i)
@@ -98,6 +148,9 @@ func generateSeedScenarios(deptIdx int, d Dept, seeds []Seed) ([]content.Scenari
 			Acuity:     s.Acuity,
 			Theme:      s.Theme,
 			CollabWith: s.CollabWith,
+			Sentences:  s.Sentences,
+			Nuance:     s.Nuance,
+			Order:      s.Order,
 			Briefing: &content.Briefing{
 				Dept: d.Label + " · " + s.Room, DeptColor: d.Color, Brief: s.Brief, Difficulty: diff,
 				TimeLabel: fmt.Sprintf("약 %d분", mins), Skills: s.Skills,
@@ -111,7 +164,7 @@ func generateSeedScenarios(deptIdx int, d Dept, seeds []Seed) ([]content.Scenari
 			},
 		})
 	}
-	return scns, eventsForScenarios(deptIdx, d, scns)
+	return scns, eventsForScenarios(deptIdx, d, scns), nil
 }
 
 // eventsForScenarios groups scenarios into events of eventSize, identical in

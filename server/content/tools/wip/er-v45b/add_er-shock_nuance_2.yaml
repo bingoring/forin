@@ -1,0 +1,111 @@
+아나필락시스 분포성 쇼크:
+  - kind: slider
+    words: [w-tight, w-throat]
+    cue: "Patient: \"It started as an itch… now it's hard to swallow and my voice sounds different.\""
+    scale: [itchy, tight, closing up]
+    answerAt: 2
+    why: "목소리가 변하고 삼키기 힘들어지면 상기도 부종이 진행 중이라는 신호예요. 바로 기도를 보고 팀에 알려요."
+    example: "Tell me right away if your throat feels like it's closing up."
+    exKo: "목이 막히는 느낌이 들면 바로 말해 주세요."
+  - kind: swap
+    words: [w-epinephrine, w-thigh, w-give]
+    who: "환자에게 · 주사 직전"
+    icon: me
+    before: ["I'm giving you ", "an intramuscular epinephrine injection", " in your thigh right now."]
+    options: [a shot of epinephrine, an intramuscular epinephrine injection, a little something]
+    answer: a shot of epinephrine
+    notes: {a shot of epinephrine: "무슨 약을 어디에 놓는지 쉬운 말로 분명히 말한다.", an intramuscular epinephrine injection: "정확하지만 의료진끼리의 말. 숨이 가쁜 환자에게는 길고 어렵다.", a little something: "무슨 약인지 숨기는 말이라 환자가 자기 치료를 알 수 없다."}
+    why: "응급 상황에서도 환자에게는 약 이름과 부위를 짧고 쉬운 말로 알려요."
+수액 반응성 평가:
+  - kind: slider
+    words: [w-improve, w-come, w-pressure]
+    cue: "After the bolus, BP went from 84/50 to 88/54. The patient asks, \"Am I doing any better?\""
+    scale: [a little better, much better, back to normal]
+    answerAt: 0
+    why: "수축기가 4 정도 오른 건 조금 나아진 정도예요. 실제보다 좋게 말하면 다음 치료가 필요할 때 환자가 받아들이기 어려워져요."
+    example: "After the fluid, your pressure came up a little."
+  - kind: context
+    words: [w-urine, w-output, w-low]
+    scenes:
+      - {who: 차트 기록, icon: board, en: "UOP 20 mL/hr x2h post-bolus.", ok: true}
+      - {who: 의사에게, icon: speech, en: "His urine output is still under half a mL per kilo an hour after the bolus.", ok: true}
+      - {who: 환자에게, icon: me, en: "You're still oliguric after the bolus.", ok: false, fix: "You're still not making much urine, so we may add more fluid."}
+    why: "UOP·oliguric(핍뇨)은 차트와 의료진의 말이에요. 환자에게는 '소변이 아직 적게 나온다'고 하고 다음 계획을 함께 말해요."
+승압제 시작 전 설명:
+  - kind: swap
+    words: [w-medicine, w-raise, w-hold]
+    who: "환자에게 · 승압제 시작"
+    icon: me
+    before: ["This ", "vasopressor", " helps raise and hold your blood pressure."]
+    options: [medicine, vasopressor, strong drug]
+    answer: medicine
+    notes: {medicine: "환자에게 쉬운 말. 무엇을 하는 약인지 뒤에서 바로 설명한다. 이름을 물으면 그때 알려 준다.", vasopressor: "의료진의 말. 환자는 무슨 뜻인지 모른다.", strong drug: "무섭게 들리고, 무엇을 하는 약인지는 알려 주지 않는다."}
+    why: "환자에게는 약의 분류명보다 '무엇을 해 주는 약인지'가 중요해요."
+  - kind: slider
+    words: [w-watch, w-close]
+    cue: "Patient: \"Is this medicine dangerous?\" — norepinephrine is running through the central line."
+    scale: [check on you now and then, watch you very closely, never take our eyes off you]
+    answerAt: 1
+    why: "승압제가 들어가는 동안에는 혈압을 자주 재고 주입 부위도 계속 봐요. 'watch you very closely'가 사실이에요. 한순간도 눈을 떼지 않는다는 건 지킬 수 없는 약속이에요."
+    example: "We'll watch you very closely while it's running."
+항응고제 복용 저혈압:
+  - kind: swap
+    words: [w-thinner, w-take, w-dose, w-last]
+    who: "환자에게 · 복용력 확인"
+    icon: me
+    before: ["Which ", "anticoagulant", " do you take, and when was your last dose?"]
+    options: [blood thinner, anticoagulant, blood medicine]
+    answer: blood thinner
+    notes: {blood thinner: "환자들이 실제로 쓰는 말이라 와파린·엘리퀴스 같은 이름이 바로 나온다.", anticoagulant: "정확한 용어지만 모르는 환자가 많다.", blood medicine: "뜻이 흐려 철분제·혈압약까지 섞여 대답이 온다."}
+    why: "환자에게는 'blood thinner'가 통하는 말이에요. 정확한 약 이름과 마지막 복용 시각을 받아내는 게 목적이에요."
+  - kind: pair
+    words: [w-count, w-dose, w-fall, w-check, w-blood]
+    pairs: [[check your, blood count], [miss, a dose], [any recent, falls]]
+    decoys: [thinner]
+    why: "항응고제 환자 사정의 세 덩어리예요 — 혈구 수 확인(check your blood count), 복용 누락(miss a dose), 최근 낙상(any recent falls)."
+언어장벽 쇼크 핵심 확인:
+  - kind: swap
+    words: [w-pain]
+    who: "영어가 서툰 환자에게 · 통역 오기 전"
+    icon: me
+    before: ["", "Can you describe the character of your pain", "?"]
+    options: ["Pain here? Yes or no", Can you describe the character of your pain, Where does it hurt and how bad is it]
+    answer: "Pain here? Yes or no"
+    notes: {"Pain here? Yes or no": "짧고 예/아니오로 답할 수 있어 통역이 오기 전 꼭 필요한 것만 확인한다.", Can you describe the character of your pain: "길고 열린 질문이라 영어가 서툰 환자는 답하지 못한다.", Where does it hurt and how bad is it: "질문 두 개가 한꺼번에 들어 있어 혼란스럽다."}
+    why: "통역사가 오기 전에는 짧은 폐쇄형 질문으로 안전에 필요한 것만 확인하고, 자세한 문진은 의료 통역사와 함께 해요."
+  - kind: pair
+    words: [w-squeeze, w-point, w-interpreter]
+    pairs: [[squeeze, my hand], [point, to where it hurts], [the interpreter, is coming]]
+    decoys: [the pain]
+    why: "말이 안 통할 때 쓰는 몸짓 지시와 안내예요 — squeeze my hand(손을 꽉 쥐다), point to where it hurts(아픈 곳을 가리키다), the interpreter is coming(통역사가 오고 있다)."
+노인 다약제 저혈압:
+  - kind: swap
+    words: [w-water, w-pill, w-drop]
+    who: "어르신 환자에게 · 약 설명"
+    icon: me
+    before: ["", "Diuretics", " and heart pills together can drop your pressure."]
+    options: [Water pills, Diuretics, Pee pills]
+    answer: Water pills
+    notes: {Water pills: "어르신들이 이뇨제를 실제로 부르는 말이라 바로 알아듣는다.", Diuretics: "정확하지만 모르는 환자가 많다.", Pee pills: "일부 환자가 쓰는 속된 말. 간호사가 먼저 쓰면 가볍게 들린다."}
+    why: "환자 교육에서는 환자가 자기 약을 부르는 말로 말해야 '내 약 이야기'로 들려요."
+  - kind: pair
+    words: [w-water, w-go, w-dizzy]
+    pairs: [[water, pills], [go, through], [dizzy, spell]]
+    decoys: [dose]
+    why: "노인 다약제 문진에서 묶여 다니는 말이에요 — water pills(이뇨제), go through(하나씩 살펴보다), dizzy spell(한바탕 어지러운 것)."
+원인 미상 저혈압 계통 접근:
+  - kind: slider
+    words: [w-fever]
+    cue: "Temp 100.6°F (38.1°C). How do you describe it?"
+    scale: [no fever, a low-grade fever, a high fever]
+    answerAt: 1
+    why: "100.4°F(38.0°C)가 발열 기준선이에요. 38.1°C는 그 바로 위라 미열(low-grade fever)이라고 말해요. 원인 미상 저혈압에선 감염 쪽 단서가 돼요."
+    example: "You have a low-grade fever, so we're checking for infection too."
+    exKo: "미열이 있어서 감염도 함께 확인하고 있어요."
+  - kind: context
+    words: [w-cause, w-find, w-lab]
+    scenes:
+      - {who: 의사에게, icon: speech, en: "Still hypotensive, no clear source yet — labs and ECG are pending.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Etiology of hypotension unclear; workup in progress.", ok: true}
+      - {who: 환자에게, icon: me, en: "The etiology of your hypotension is still unclear.", ok: false, fix: "We don't know the cause yet, so we're running labs and an ECG to find it."}
+    why: "etiology(병인)·hypotension은 의료진의 말이에요. 환자에게는 '아직 원인을 모르고, 찾으려고 검사 중'이라고 지금 하는 일과 함께 말해요."

@@ -1561,10 +1561,13 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
-        /** 여정 지도 — 목표 부서 트랙 + 자유 탐방 */
+        /** 여정 지도 — 목표 부서 트랙(기본) 또는 ?dept= 로 고른 부서 트랙 + 자유 탐방 */
         get: {
             parameters: {
-                query?: never;
+                query?: {
+                    /** @description 그릴 부서 코드. 생략 시 목표 부서. 저장된 목표는 바뀌지 않는다(J4/J5) */
+                    dept?: string;
+                };
                 header?: never;
                 path?: never;
                 cookie?: never;
@@ -1620,6 +1623,220 @@ export interface paths {
         };
         put?: never;
         post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/me/lesson/{scenarioId}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** 상황 학습 4단계 — 단어·문장·가이드 대화·자유 대화의 상태와 콘텐츠 */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    /** @description 시나리오 id */
+                    scenarioId: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["internal_adapters_http.lessonResp"];
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/me/lesson/{scenarioId}/reel/feel": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** 문장 릴의 감상 하나를 교정노트에 남긴다 — 정답 없음, 칩은 그 릴의 feels 중 하나, 한 단어는 한 번만 */
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    /** @description 시나리오 id */
+                    scenarioId: string;
+                };
+                cookie?: never;
+            };
+            /** @description 고른 감상 칩 */
+            requestBody: {
+                content: {
+                    "application/json": components["schemas"]["internal_adapters_http.reelFeelReq"];
+                };
+            };
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["internal_adapters_http.confusedWordResp"];
+                    };
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/me/lesson/{scenarioId}/sentences/confused": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** 헷갈린 문장을 교정노트에 넣는다 — 이 상황의 문장(또는 순서 배열 카드의 이은 줄)만, 한 문장은 한 번만 */
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    /** @description 시나리오 id */
+                    scenarioId: string;
+                };
+                cookie?: never;
+            };
+            /** @description STEP 2 문장장의 문장 en (순서 배열 카드는 네 줄을 공백으로 이은 것) */
+            requestBody: {
+                content: {
+                    "application/json": components["schemas"]["internal_adapters_http.confusedSentenceReq"];
+                };
+            };
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["internal_adapters_http.confusedWordResp"];
+                    };
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/me/lesson/{scenarioId}/steps/{step}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** 상황 학습 단계 완료 기록 — words·sentences 만. 대화 두 회차는 대화를 끝내야 기록된다 */
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    /** @description 시나리오 id */
+                    scenarioId: string;
+                    /** @description words | sentences */
+                    step: string;
+                };
+                cookie?: never;
+            };
+            /** @description STEP 1 에서 틀린 단어 id (words 만) */
+            requestBody?: {
+                content: {
+                    "application/json": components["schemas"]["internal_adapters_http.stepBody"];
+                };
+            };
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["internal_adapters_http.lessonResp"];
+                    };
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/me/lesson/{scenarioId}/words/{wordId}/confused": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** 헷갈린 단어를 교정노트에 넣는다 — 이 상황이 가르치는 단어만, 한 단어는 한 번만 */
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    /** @description 시나리오 id */
+                    scenarioId: string;
+                    /** @description 단어 id (이 상황 STEP 1 목록의) */
+                    wordId: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["internal_adapters_http.confusedWordResp"];
+                    };
+                };
+            };
+        };
         delete?: never;
         options?: never;
         head?: never;
@@ -1903,6 +2120,45 @@ export interface paths {
                     };
                     content: {
                         "application/json": components["schemas"]["github_com_bingoring_forin_server_internal_domain_progress.ModelAnswerSummary"];
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/me/review/scenarios/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** One scenario's correction notes (STEP 3 대화 레일의 노트 바텀시트) */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    /** @description scenario id */
+                    id: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description OK */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["internal_adapters_http.scenarioNotesResp"];
                     };
                 };
             };
@@ -2726,6 +2982,39 @@ export interface components {
         };
         /** @enum {string} */
         "github_com_bingoring_forin_server_internal_domain_colleague.Relation": "peer" | "mentor" | "mentee";
+        "github_com_bingoring_forin_server_internal_domain_content.BlankOption": {
+            en?: string;
+            /**
+             * @description Icon is no longer authored or drawn: the sheet lists the options as rows like STEP 1's pick
+             *     (lesson-fidelity-v46 T8, user decision — a sentence needs no picture). Kept so older rows still load.
+             */
+            icon?: string;
+        };
+        "github_com_bingoring_forin_server_internal_domain_content.Briefing": {
+            accent?: string;
+            /** @description SITUATION paragraph */
+            brief?: string;
+            chart?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_content.ScenarioChart"];
+            /** @description "ER · TRAUMA BAY #4" */
+            dept?: string;
+            /** @description "#DC2626" */
+            deptColor?: string;
+            /** @description 1..3 */
+            difficulty?: number;
+            /**
+             * @description Line is the hub's one line with one [[highlighted]] span (lesson-fidelity-v46 T6,
+             *     hubline.go). Optional — the hub falls back to Brief, unmarked.
+             */
+            line?: string;
+            /** @description met computed client-side vs /me */
+            reqs?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_content.Req"][];
+            rewards?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_content.Reward"][];
+            riskyPhrases?: string[];
+            skills?: string[];
+            /** @description "약 5분" */
+            timeLabel?: string;
+            tone?: string;
+        };
         "github_com_bingoring_forin_server_internal_domain_content.DeptSituation": {
             lv?: string;
             min?: number;
@@ -2742,6 +3031,175 @@ export interface components {
             tagCode?: string;
             /** @description high difficulty */
             urgent?: boolean;
+        };
+        "github_com_bingoring_forin_server_internal_domain_content.Nuance": {
+            answer?: string;
+            answerAt?: number;
+            /** @description before · the word to swap · after */
+            before?: string[];
+            /** @description slider */
+            cue?: string;
+            decoys?: string[];
+            exKo?: string;
+            example?: string;
+            /**
+             * @description Feels are a reel's 감상 칩 (spec §11-8): 3–4 impressions with no right answer.
+             *     Whichever the learner picks, Why unfolds and the pick is saved to the notes.
+             */
+            feels?: string[];
+            icon?: string;
+            kind?: string;
+            /**
+             * @description Ko (v46) is the Korean the C5/C6 screens draw: for context, the meaning of Word
+             *     (the memo “악화되다”, set together with Word); for swap, the swapped sentence's
+             *     meaning (the line under the card — the screen adds "— 라고 전해야 해요").
+             */
+            ko?: string;
+            /** @description one per option */
+            notes?: {
+                [key: string]: string;
+            };
+            options?: string[];
+            /** @description pair */
+            pairs?: string[][];
+            /** @description weak → strong, ≥3 */
+            scale?: string[];
+            scenes?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_content.NuanceScene"][];
+            /** @description swap */
+            who?: string;
+            /** @description the explanation (Korean) */
+            why?: string;
+            /** @description reel · context */
+            word?: string;
+            /**
+             * @description Words are the bank word ids this item is about. They must be words this
+             *     situation's sentences use (V15) — the same "the link is data" rule as sentences,
+             *     and what lets a word missed in STEP 1 come back in STEP 2.
+             */
+            words?: string[];
+        };
+        "github_com_bingoring_forin_server_internal_domain_content.NuanceScene": {
+            en?: string;
+            /** @description context: the rewrite, on the one that does not */
+            fix?: string;
+            icon?: string;
+            ko?: string;
+            /** @description context: does it fit this scene */
+            ok?: boolean;
+            /** @description reel: the "say it this way instead" card */
+            swap?: boolean;
+            tone?: string;
+            who?: string;
+        };
+        "github_com_bingoring_forin_server_internal_domain_content.OrderLine": {
+            en?: string;
+            icon?: string;
+            ko?: string;
+            note?: string;
+        };
+        "github_com_bingoring_forin_server_internal_domain_content.Persona": {
+            /** @description e.g. "60s" */
+            ageRange?: string;
+            /**
+             * @description Gender is optional and exists for VOICE selection, not display: "male" |
+             *     "female". Most authored personas leave it empty (30 of 300 hint at it only
+             *     inside the display `sub` string), so speech falls back to role — filling
+             *     this in is what makes an individual character sound right.
+             */
+            gender?: string;
+            /** @description portrait hair color, e.g. "#9A6B3F" */
+            hair?: string;
+            /** @description portrait hair style, e.g. "bob" */
+            hairStyle?: string;
+            /** @description matches expression: pain, worried, panic... */
+            mood?: string;
+            name?: string;
+            personality?: string;
+            /** @description patient, doctor, surgeon, parent... */
+            role?: string;
+            speakingStyle?: string;
+            /** @description display, e.g. "67y / Female" */
+            sub?: string;
+        };
+        "github_com_bingoring_forin_server_internal_domain_content.QuizVital": {
+            label?: string;
+            unit?: string;
+            value?: string;
+            warn?: boolean;
+        };
+        "github_com_bingoring_forin_server_internal_domain_content.Req": {
+            label?: string;
+            /** @description e.g. "level", "emergencyResponse" */
+            metric?: string;
+            threshold?: number;
+        };
+        "github_com_bingoring_forin_server_internal_domain_content.Reward": {
+            icon?: string;
+            label?: string;
+            value?: string;
+        };
+        /**
+         * @description Dialogue quick-reference (QUICK INFO dock: 차트/약물/활력) and risky-choice
+         *     tagging (hint mode marks these key phrases as reputation-risky).
+         */
+        "github_com_bingoring_forin_server_internal_domain_content.ScenarioChart": {
+            allergies?: string;
+            meds?: string[];
+            notes?: string;
+            vitals?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_content.QuizVital"][];
+        };
+        "github_com_bingoring_forin_server_internal_domain_content.SentenceBlank": {
+            answer?: string;
+            options?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_content.BlankOption"][];
+        };
+        /**
+         * @description Order is the situation's order card (v46, 결정 8); absent when not authored, and
+         *     the sentence sheet then skips the order prompt (lesson-fidelity-v46 §R3).
+         */
+        "github_com_bingoring_forin_server_internal_domain_content.SentenceOrder": {
+            /** @description amber circle (fallback: §R3) */
+            icon?: string;
+            /** @description header line, e.g. "불만 환자 응대 4문장 순서" */
+            ko?: string;
+            /** @description exactly 4, in conversation order */
+            lines?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_content.OrderLine"][];
+            /** @description header tag (fallback: §R3) */
+            tag?: string;
+            /** @description the "왜?" note after the answer */
+            why?: string;
+        };
+        "github_com_bingoring_forin_server_internal_domain_content.Word": {
+            /** @description words → fragments; JoinChips(Chips) == En */
+            chips?: string[][];
+            /** @description front-of-card context clue (Korean), never the answer */
+            cue?: string;
+            /** @description wrong fragments mixed into the pool */
+            decoyChips?: string[];
+            /** @description 2 look-alike English options */
+            distractorsEn?: string[];
+            /** @description 2 Korean meanings for listen-and-pick */
+            distractorsKo?: string[];
+            en?: string;
+            /**
+             * @description ── v45 (build-spec §11-2): the material for STEP 1's recall prompts. All three
+             *     prompt types are authored for every word — which one a learner meets is chosen
+             *     at runtime (결정 8), because a word recurs across ~21 situations. A bank either
+             *     has none of these (v44 content) or all of them on every word (IsV45Word).
+             */
+            exKo?: string;
+            example?: string;
+            icon?: string;
+            /**
+             * @description ID is unique WITHIN its Lexicon (one theme's word bank), not globally — the
+             *     bank is authored and read as one unit (build-spec-index.md §2), so a global
+             *     namespace would only make two independently-authored banks collide by
+             *     accident for no benefit.
+             */
+            id?: string;
+            ipa?: string;
+            ko?: string;
+            /** @description short category label */
+            tag?: string;
         };
         "github_com_bingoring_forin_server_internal_domain_conversation.Choice": {
             /**
@@ -2831,6 +3289,8 @@ export interface components {
             collabWith?: string;
             dept?: string;
             done?: number;
+            /** @description NbIcon name; empty = draw none */
+            icon?: string;
             name?: string;
             resume?: boolean;
             /** @description passed | here | open */
@@ -2841,6 +3301,12 @@ export interface components {
             track?: string;
         };
         "github_com_bingoring_forin_server_internal_domain_learning.FreeRoamEntry": {
+            /**
+             * @description Building is the 서가 tab this binder sits under (서가 건물 간지 v45) — the
+             *     campus table's building name. The server decides it; the client never guesses
+             *     a building from a department code.
+             */
+            building?: string;
             /** @description 부서 코드 — 아이콘과 라벨을 고르는 키 */
             dept?: string;
             /** @description 통과한 정거장 수 = 도장 카운트 */
@@ -2851,13 +3317,28 @@ export interface components {
          * @description Guide/Pass/Passes describe the rung. Absent on steps with a single run.
          * @enum {string}
          */
-        "github_com_bingoring_forin_server_internal_domain_learning.GuideLevel": "choices" | "free";
+        "github_com_bingoring_forin_server_internal_domain_learning.GuideLevel": "guided" | "free";
         "github_com_bingoring_forin_server_internal_domain_learning.JourneyView": {
             freeRoam?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_learning.FreeRoamEntry"][];
+            /** @description GoalBuilding is the goal department's building — the 서가's first tab (v45). */
+            goalBuilding?: string;
             goalDept?: string;
             inferred?: boolean;
             track?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_learning.TrackGroup"];
         };
+        "github_com_bingoring_forin_server_internal_domain_learning.LessonStep": {
+            /**
+             * @description Count is how many items the step holds — words, sentences, or the dialogue's
+             *     goals. It follows the content; nothing here assumes 8 or 5 (build-spec §2-2).
+             */
+            count?: number;
+            kind?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_learning.LessonStepKind"];
+            state?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_learning.LessonStepState"];
+        };
+        /** @enum {string} */
+        "github_com_bingoring_forin_server_internal_domain_learning.LessonStepKind": "words" | "sentences" | "guided" | "free";
+        /** @enum {string} */
+        "github_com_bingoring_forin_server_internal_domain_learning.LessonStepState": "done" | "now" | "lock" | "skip" | "empty";
         "github_com_bingoring_forin_server_internal_domain_learning.Milestone": {
             name?: string;
             /** @description passed | open | closed */
@@ -2873,6 +3354,14 @@ export interface components {
              *     something — never on a done or lock row, where a "tried" badge would contradict.
              */
             attempted?: boolean;
+            /**
+             * @description Difficulty is the tier this step sits in. The theme's own `tiers` summary cannot
+             *     answer this per row: those counts are per SITUATION while these rows are per RUN,
+             *     so a cumulative count over `tiers` lands on the wrong row as soon as any step has
+             *     two rungs. The journey screen draws its section boundaries (기초·실전·심화) from
+             *     this field, so they follow the real ladder instead of a fixed row count.
+             */
+            difficulty?: number;
             guide?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_learning.GuideLevel"];
             /** @description dlg | quiz | event | boss (S4: open string) */
             kind?: string;
@@ -3156,6 +3645,14 @@ export interface components {
         "internal_adapters_http.choicesResp": {
             choices?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_conversation.Choice"][];
         };
+        "internal_adapters_http.confusedSentenceReq": {
+            en?: string;
+        };
+        "internal_adapters_http.confusedWordResp": {
+            cardId?: string;
+            /** @description Created is false when the word was already in the review notes. */
+            created?: boolean;
+        };
         "internal_adapters_http.correctReq": {
             context?: string;
             text?: string;
@@ -3316,6 +3813,87 @@ export interface components {
             scenarioId?: string;
             title?: string;
         };
+        /**
+         * @description Course is the hub subtitle's curriculum coordinate; absent for a situation that
+         *     belongs to no theme.
+         */
+        "internal_adapters_http.lessonCourse": {
+            /** @description Dept is the theme's department code ("ER"); empty for a theme shared by all. */
+            dept?: string;
+            /**
+             * @description Index is this situation's place among the theme's situations (1-based), in the
+             *     journey's order; Total is how many there are. The 주제 시험 and bonus quizzes are
+             *     not situations and are not counted.
+             */
+            index?: number;
+            /** @description Theme is the theme's name in the request's locale. */
+            theme?: string;
+            total?: number;
+        };
+        "internal_adapters_http.lessonResp": {
+            course?: components["schemas"]["internal_adapters_http.lessonCourse"];
+            level?: string;
+            /**
+             * @description Nuance are the situation's nuance items (v45); the client splits them by kind
+             *     into STEP 1 (slider, pair) and STEP 2 (reel, context, swap).
+             */
+            nuance?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_content.Nuance"][];
+            order?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_content.SentenceOrder"];
+            sentences?: components["schemas"]["internal_adapters_http.lessonSentence"][];
+            situation?: components["schemas"]["internal_adapters_http.lessonSituation"];
+            steps?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_learning.LessonStep"][];
+            /** @description Words are the bank words the sentences use, in first-use order (STEP 1). */
+            words?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_content.Word"][];
+        };
+        "internal_adapters_http.lessonSentence": {
+            blank?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_content.SentenceBlank"];
+            /**
+             * @description Chunks, joined per JoinChunks' spacing rule, must reproduce En exactly
+             *     (checked A4) — that agreement is what makes the STEP 2 chunk-assembly
+             *     exercise solvable at all.
+             */
+            chunks?: string[];
+            /**
+             * @description Decoy is build's one wrong chunk mixed into the pool — close to the sentence's own
+             *     chunks, but none of them and nowhere in En.
+             */
+            decoy?: string;
+            /** @description DistractorsKo are listen's two wrong meanings (Korean), next to Ko as the third. */
+            distractorsKo?: string[];
+            en?: string;
+            /**
+             * @description Goal is the 1-based index into the seed's own `goals` this sentence advances
+             *     toward (checked A3: 1..len(seed.Goals)). STEP 3's guided pass walks a
+             *     situation's sentences in this order.
+             */
+            goal?: number;
+            /** @description NbIcon in the sheet's amber circle */
+            icon?: string;
+            ko?: string;
+            /**
+             * @description Review marks a sentence that uses a word missed in the last STEP 1 run — STEP 2
+             *     brings these first ("틀린 단어는 STEP 2 문장에 다시 나와요").
+             */
+            review?: boolean;
+            /** @description short Korean label, the sheet header's blue tag */
+            tag?: string;
+            /** @description the "왜?" note under the answer (Korean) */
+            why?: string;
+            /**
+             * @description Words are bank word ids this sentence actually uses (checked A1: every id
+             *     must exist in the situation's theme bank; A2: the bank itself must have no
+             *     duplicate ids). This is the reference STEP 1 is derived from.
+             */
+            words?: string[];
+        };
+        "internal_adapters_http.lessonSituation": {
+            briefing?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_content.Briefing"];
+            id?: string;
+            persona?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_content.Persona"];
+            tagline?: string;
+            theme?: string;
+            title?: string;
+        };
         "internal_adapters_http.loginResp": {
             tokens?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_auth.TokenPair"];
             user?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_user.User"];
@@ -3428,6 +4006,9 @@ export interface components {
             recognized?: string;
             words?: components["schemas"]["github_com_bingoring_forin_server_internal_ports.WordScore"][];
         };
+        "internal_adapters_http.reelFeelReq": {
+            feel?: string;
+        };
         "internal_adapters_http.refreshReq": {
             refreshToken?: string;
         };
@@ -3441,6 +4022,10 @@ export interface components {
         "internal_adapters_http.resumableTurn": {
             content?: string;
             role?: string;
+        };
+        "internal_adapters_http.scenarioNotesResp": {
+            cards?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_progress.ModelAnswerCard"][];
+            scenarioId?: string;
         };
         "internal_adapters_http.sessionReviewResp": {
             average?: number;
@@ -3500,6 +4085,10 @@ export interface components {
              *     total there said "3 of 128" for a filter that matched 3.
              */
             total?: number;
+        };
+        "internal_adapters_http.stepBody": {
+            /** @description Missed are the word ids answered wrong in STEP 1. Ignored for other steps. */
+            missed?: string[];
         };
         "internal_adapters_http.sttReq": {
             audioBase64?: string;

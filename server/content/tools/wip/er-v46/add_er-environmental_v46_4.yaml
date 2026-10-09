@@ -1,0 +1,388 @@
+- title: 중증 동상 구획증후군
+  s:
+  - t: 우려 전달
+    i: faceWorried
+    w: worry me about…으로 간호사의 걱정을 솔직히 말해요. 구획증후군은 압력이 올라 혈류가 막히는 응급이라서 조임과 심한 통증을 가볍게 넘기지 않고 이유를 설명해요.
+    d: in your leg
+    k:
+    - 발가락을 움직여 보세요.
+    - 발이 차가운가요?
+    a: severe
+    o:
+    - mild
+    - slight
+    - minor
+  - t: 처치 설명
+    i: hospital
+    w: and로 확인과 협진 요청을 함께 알려요. to assess you로 외과가 와서 먼저 평가한다고 말해, 수술이 정해진 것처럼 들리지 않게 해요.
+    d: this evening
+    k:
+    - 통증은 몇 점이에요?
+    - 발가락에 감각이 있나요?
+    a: assess
+    o:
+    - weigh
+    - dress
+    - thank
+  - t: 악화 보고
+    i: bell
+    w: Tell me if로 환자가 스스로 알릴 기준을 줘요. 구획증후군에서는 감각이 무뎌지거나 통증이 심해지는 것이 악화 신호라서, that's important로 왜 바로 말해야 하는지도 덧붙여요.
+    d: at home
+    k:
+    - 통증이 몇 점이에요?
+    - 발이 따뜻한가요?
+    a: numbness
+    o:
+    - itching
+    - coughing
+    - sneezing
+  - t: 상태 설명
+    i: magnify
+    w: more…than before로 이전과 비교해 변화를 말해요. 부기가 늘고 조이는 느낌은 구획 안 압력이 오르는 단서라 비교로 말하면 변화가 분명해요.
+    d: ', and it''s very cold'
+    k:
+    - 발이 차갑진 않나요?
+    - 어느 쪽이 더 아파요?
+    a: tight
+    o:
+    - loose
+    - soft
+    - small
+  - t: 협진 설명
+    i: hospital
+    w: We need…right away로 협진이 필요하고 급하다는 것을 직접 말해요. 구획증후군은 시간이 지날수록 근육과 신경이 상해서 빨리 외과가 평가하는 게 중요해요.
+    d: next week
+    k:
+    - 발 사진을 찍을게요.
+    - 통증약을 드릴게요.
+    a: surgery
+    o:
+    - cardiology
+    - psychiatry
+    - dermatology
+  - t: 감각 확인
+    i: handshake2
+    w: Can you feel…?로 감각을 직접 묻는 질문이에요. 발가락을 만지면서 느끼는지 물어 감각 저하(구획증후군의 단서)를 바로 확인할 수 있어요.
+    d: from here
+    k:
+    - 발가락을 움직여 보세요.
+    - 어디가 가장 아프세요?
+    a: toes
+    o:
+    - knees
+    - ears
+    - lips
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 동상 구획증후군 우려 전달 4문장 순서
+    why: 보이는 변화를 말하고, 그에 대한 걱정을 말하고, 감각을 확인한 뒤, 무엇을 느끼든 하는 확인과 협진을 알려요. 'That tightness'·'To check'·'Whatever you feel'이 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: Your foot looks more swollen than before, and it's very tight.
+      icon: magnify
+      ko: 발이 전보다 더 부었고 아주 조여 있어요
+      note: 관찰
+    - en: That tightness and your severe pain worry me about pressure building in your foot.
+      icon: faceWorried
+      ko: 그 조임과 심한 통증 때문에 발에 압력이 쌓일까 걱정돼요
+      note: 우려
+    - en: To check, can you feel me touching your toes right now?
+      icon: handshake2
+      ko: 확인하려고요, 지금 발가락 만지는 게 느껴지세요?
+      note: 감각
+    - en: Whatever you feel, we're checking the circulation and calling surgery to assess you.
+      icon: hospital
+      ko: 어떻게 느끼시든 순환을 확인하고 외과를 불러 평가받게 할게요
+      note: 협진
+  sw:
+    ko: 외과를 불러 발을 평가받게 할게요.
+- title: 횡문근융해 신부전
+  s:
+  - t: 원인 설명
+    i: bulb
+    w: can mean으로 가능성을 말하고, 마지막에 breaking down이라는 쉬운 말로 병의 핵심을 알려요. 진단명 대신 몸에서 일어나는 일을 먼저 알려요.
+    d: in the evening
+    k:
+    - 소변은 얼마나 보세요?
+    - 근육이 어디가 쑤셔요?
+    a: Dark
+    o:
+    - Clear
+    - Pale
+    - Light
+  - t: 처치 설명
+    i: pill
+    w: to protect your kidneys로 수액의 목적을 말해요. 분해된 근육 성분이 신장에 쌓이면 신장이 상할 수 있어서, 수액을 많이 줘 소변으로 씻어 내려요.
+    d: through a straw
+    k:
+    - 소변이 어두운가요?
+    - CK 검사를 보낼게요.
+    a: fluids
+    o:
+    - pills
+    - tests
+    - meals
+  - t: 모니터링
+    i: monitor
+    w: and로 두 가지(소변량, CK)를 한 문장에 묶어요. CK는 근육이 손상되면 혈액에 올라가는 효소라 수치로 손상 정도를 가늠해요. called CK로 약어를 모르는 환자에게도 이름을 알려요.
+    d: every week
+    k:
+    - 소변 색을 확인할게요.
+    - 수액을 더 드릴게요.
+    a: enzyme
+    o:
+    - vitamin
+    - mineral
+    - hormone
+  - t: 원인 설명
+    i: faceWorried
+    w: took a lot of stress로 근육이 무리했다고 쉬운 말로 알려요. 더위 속에 오래 있으면 근육이 많이 상할 수 있다고 알려 환자가 지금 상태를 이해해요.
+    d: in a day
+    k:
+    - 언제부터 근육이 쑤셨어요?
+    - 운동을 얼마나 하셨어요?
+    a: stress
+    o:
+    - rest
+    - help
+    - water
+  - t: 소변량 관찰
+    i: monitor
+    w: keeping a close eye on으로 계속 살핀다고 알려요. 소변량은 신장이 상하는지 가장 쉽게 보는 지표라서, 환자에게도 이유와 함께 알려 협조를 얻어요.
+    d: all night
+    k:
+    - 마지막으로 소변 본 게 언제예요?
+    - 물은 얼마나 드셨어요?
+    a: urinating
+    o:
+    - sleeping
+    - walking
+    - talking
+  - t: 검사 설명
+    i: lab
+    w: will tell us how much로 검사가 알려 줄 것을 구체적으로 말해요. 근육 손상 정도는 CK 같은 혈액 수치로 가늠하니 검사 결과를 기다리는 이유를 설명해요.
+    d: by hand
+    k:
+    - 소변검사도 같이 할게요.
+    - 결과는 곧 말씀드릴게요.
+    a: bloodwork
+    o:
+    - paperwork
+    - homework
+    - framework
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 횡문근융해 설명 4문장 순서
+    why: 몸에서 생기는 일을 말하고, 그 이유를 잇고, 그 때문에 보는 검사를 알리고, 검사 결과와 상관없는 치료를 알려요. 'That'·'Because of that'·'Whatever it shows'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: Dark urine with muscle aches can mean your muscles are breaking down.
+      icon: bulb
+      ko: 소변이 어둡고 근육이 쑤신 건 근육이 분해되고 있다는 뜻일 수 있어요
+      note: 설명
+    - en: That can happen after being out in the heat so long.
+      icon: faceWorried
+      ko: 더위 속에 오래 있으면 그럴 수 있어요
+      note: 원인
+    - en: Because of that, we'll watch your urine output and check a muscle enzyme, CK.
+      icon: monitor
+      ko: 그래서 소변량을 지켜보고 근육 효소 CK를 확인할게요
+      note: 감시
+    - en: Whatever it shows, we're giving lots of fluids to protect your kidneys.
+      icon: pill
+      ko: 결과가 어떻든 신장을 보호하려고 수액을 많이 드려요
+      note: 치료
+- title: 저체온 부정맥 급변
+  s:
+  - t: 취급 지시
+    i: shield
+    w: irritable은 자극에 예민해 부정맥이 쉽게 생긴다는 뜻의 임상 표현이에요. 차가운 심장은 자극에 부정맥이 생기기 쉬워서 거칠게 다루지 말라는 지시를 먼저 말해요.
+    d: in his chest
+    k:
+    - 재가온을 계속해 주세요.
+    - 불필요한 움직임은 피하세요.
+    a: irritable
+    o:
+    - strong
+    - steady
+    - simple
+  - t: 지시
+    i: monitor
+    w: Keep…while we…로 두 가지를 동시에 한다고 지시해요. 재가온을 멈추지 않으면서 리듬 변화를 놓치지 않겠다는 뜻이에요.
+    d: every hour
+    k:
+    - 움직임을 최소로 할게요.
+    - 순환기내과에 연락할게요.
+    a: closely
+    o:
+    - rarely
+    - briefly
+    - loosely
+  - t: 이동 주의
+    i: lock
+    w: so we don't…로 피하는 이유를 목적절로 붙여요. 저체온 환자는 움직임만으로도 심한 부정맥이 생길 수 있어서 불필요한 움직임을 줄이도록 해요.
+    d: for him
+    k:
+    - 리듬이 바뀌었어요.
+    - 재가온을 계속해 주세요.
+    a: trigger
+    o:
+    - cure
+    - hear
+    - name
+  - t: 변화 보고
+    i: chartup
+    w: the moment…로 변화가 일어난 시점을 행동과 정확히 연결해요. 자세를 바꾼 직후에 변했다는 정보는 원인을 가리키는 중요한 단서라서 시간 순서가 드러나게 말해요.
+    d: after the scan
+    k:
+    - 순환기내과를 호출할게요.
+    - 지금 맥박은 느려요.
+    a: moment
+    o:
+    - week
+    - year
+    - season
+  - t: 자극 최소화
+    i: lock
+    w: Let's로 팀 전체가 함께 줄이자는 뜻으로 말해요. 필요한 처치는 계속하되 불필요한 접촉만 줄이라는 지시예요.
+    d: for hours
+    k:
+    - 움직임을 피하세요.
+    - 리듬을 계속 보세요.
+    a: minimize
+    o:
+    - measure
+    - explain
+    - repeat
+  - t: 호출 지시
+    i: speaker
+    w: Continue…, and page…if로 계속할 일과 조건부 호출을 나눠요. 재가온은 멈추지 않고, 리듬이 나빠지면 전문과를 부르는 기준을 분명히 해요.
+    d: after lunch
+    k:
+    - 리듬을 계속 지켜보세요.
+    - 움직임을 줄이세요.
+    a: cardiology
+    o:
+    - dermatology
+    - radiology
+    - pharmacy
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 저체온 부정맥 대응 4문장 순서
+    why: 원칙을 말하고, 그 이유와 방법을 잇고, 그럼에도 생긴 변화를 알린 뒤, 그 변화에 따른 조치로 마무리해요. "That's why"·'Even so'·'that change'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: Cold hearts are irritable — handle him as gently as possible.
+      icon: shield
+      ko: 차가운 심장은 예민하니 최대한 부드럽게 다루세요
+      note: 원칙
+    - en: That's why we avoid unnecessary movement, so we don't trigger a worse arrhythmia.
+      icon: lock
+      ko: 그래서 더 심한 부정맥을 유발하지 않게 불필요한 움직임을 피해요
+      note: 이유
+    - en: Even so, his rhythm changed the moment we shifted his position.
+      icon: chartup
+      ko: 그런데도 자세를 바꾼 순간 리듬이 바뀌었어요
+      note: 변화
+    - en: Because of that change, let's minimize how much we touch him and keep rewarming.
+      icon: lock
+      ko: 그 변화 때문에 만지는 걸 최소로 하고 재가온은 계속해요
+      note: 조치
+- title: 환경 위기 이송 인계
+  s:
+  - t: 발견 상황
+    i: pushpin
+    w: Found down은 인계의 첫 말로 쓰는 짧은 표현이에요. 장소와 상황을 먼저, 모르는 것은 unknown duration으로 분명히 말해 받는 팀이 노출 시간을 가정하지 않게 해요.
+    d: by a coworker
+    k:
+    - 현장 체온은 41도였어요.
+    - 이송 중 냉각을 시작했어요.
+    a: warehouse
+    o:
+    - school
+    - church
+    - library
+  - t: 수치 보고
+    i: monitor
+    w: on scene으로 수치가 어디서 잰 것인지 밝혀요. and hasn't come down much는 추세를 한 마디로 전해 받는 팀이 냉각 효과를 바로 가늠해요.
+    d: last night
+    k:
+    - 이송 중 체온이 계속 올랐어요.
+    - 큰 정맥주사를 확보했어요.
+    a: scene
+    o:
+    - stage
+    - duty
+    - schedule
+  - t: 처치 보고
+    i: bandage
+    w: We started…en route로 이송 중에 한 일을 짧게 나열해 보고해요. 시작한 처치(냉각)와 확보한 라인(큰 정맥주사 두 개)을 받는 팀이 바로 이어 받을 수 있게 말해요.
+    d: on arrival
+    k:
+    - 쓰러진 채 발견됐어요.
+    - 체온이 계속 올랐어요.
+    a: cooling
+    o:
+    - loading
+    - feeding
+    - stretching
+  - t: 상태 보고
+    i: chartup
+    w: hyperthermic은 체온이 높다는 임상 용어예요. 인계에서는 상태 — 추세 순서로 말하고, kept climbing으로 이송 중에도 계속 올랐다는 경과를 알려요.
+    d: since morning
+    k:
+    - 현장 체온은 41도였어요.
+    - 활력징후는 안정적이에요.
+    a: hyperthermic
+    o:
+    - asthmatic
+    - anemic
+    - diabetic
+  - t: 긴급 인계
+    i: siren
+    w: handing off로 인계 중임을 알리고 critical heat emergency로 위중도를 먼저 말해요. so let's move fast로 팀이 속도를 맞추게 해요.
+    d: to the ward
+    k:
+    - 큰 정맥주사 두 개가 들어가 있어요.
+    - 소생실로 가겠습니다.
+    a: critical
+    o:
+    - minor
+    - mild
+    - small
+  - t: 도착 확인
+    i: hospital
+    w: Vitals and access 두 가지가 안정적임을 먼저 말하고, ready for로 받을 준비가 됐다고 마무리해요. 한 문장으로 도착 시 상태를 정리해서 받는 팀이 바로 소생실에서 움직여요.
+    d: from the scene
+    k:
+    - 현장 체온은 41도였어요.
+    - 체온이 계속 올랐어요.
+    a: stable
+    o:
+    - weak
+    - shaky
+    - slow
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 환경 위기 이송 인계 4문장 순서
+    why: 발견 상황으로 열고, 현장 수치를 말하고, 그 수치에서 시작한 처치를 알린 뒤, 그럼에도 오른 체온으로 서두르자고 마무리해요. 'On scene'·'that reading'·'Even with that'이 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: Found down in a hot warehouse, unknown duration.
+      icon: pushpin
+      ko: 더운 창고에서 쓰러진 채 발견됐고 지속 시간은 불명이에요
+      note: 발견
+    - en: On scene, his core temp was forty-one.
+      icon: monitor
+      ko: 현장에서 심부 체온이 41도였어요
+      note: 수치
+    - en: From that reading, we started cooling and two large-bore IVs en route.
+      icon: bandage
+      ko: 그 수치를 보고 이송 중 냉각과 큰 정맥주사 두 개를 시작했어요
+      note: 처치
+    - en: Even with that, his temp kept climbing during transport, so let's move fast.
+      icon: siren
+      ko: 그래도 이송 중 체온이 계속 올랐으니 빠르게 움직입시다
+      note: 긴급
+  sw:
+    ko: 더운 창고에서 쓰러진 채 발견됐고, 지속 시간은 불명입니다.

@@ -1,0 +1,96 @@
+- title: 두부외상 초기 사정
+  s:
+  - {t: "경위 문진", i: me, w: "How did you…?로 열어 묻으면 환자가 '어쩌다'를 자기 말로 풀어 설명해요. 부딪힌 방식은 충격의 세기와 방향을 가늠하는 단서예요.", d: "your arm", k: ["머리 어디가 제일 아프세요?", "누가 같이 있었는지 말씀해 주세요"], a: "head", o: ["neck", "back", "chin"]}
+  - {t: "의식 확인", i: magnify, w: "at all을 덧붙이면 '아주 잠깐이라도'를 묻는 말이 돼요. 짧은 의식 소실도 두부외상의 위험도를 가르는 중요한 병력이라 놓치지 않으려는 거예요.", d: "at home", k: ["머리가 어지럽거나 핑 도세요?", "구역질이 나거나 토하셨어요?"], a: "consciousness", o: ["vision", "hearing", "feeling"]}
+  - {t: "기억 확인", i: bulb, w: "right before로 사고 직전 시점을 짚어 물어요. 사고 직전의 기억이 비어 있는 것은 뇌진탕에서 흔히 보는 소견이에요.", d: "right after", k: ["그 뒤에 병원까지 어떻게 오셨는지 기억나세요?", "오늘 날짜가 며칠인지 아세요?"], a: "remember", o: ["describe", "predict", "repeat"]}
+  - {t: "경위 문진", i: me, w: "exactly로 대충이 아니라 구체적인 과정을 요청해요. 미끄러져 넘어졌는지 어지러워서 쓰러졌는지에 따라 원인을 따지는 방향이 달라져요.", d: "exactly when", k: ["어디서 넘어지셨는지 말씀해 주세요", "누가 옆에 있었는지 말씀해 주시겠어요?"], a: "how", o: ["why", "where", "when"]}
+  - {t: "의식 확인", i: magnify, w: "the whole time으로 '쭉 깨어 있었는지'를 물어요. 중간에 의식이 끊긴 구간이 있었는지를 환자 본인의 말로 가려내요.", d: "most of the time", k: ["넘어진 뒤에 바로 일어나셨어요?", "넘어지기 전에 어지러우셨어요?"], a: "awake", o: ["asleep", "alone", "upright"]}
+  - {t: "기억 확인", i: bulb, w: "feel like로 부드럽게 물으면 환자가 확신이 없어도 대답하기 쉬워요. 기억이 빈 구간이 있는지는 두부외상 뒤 기억 소실을 평가하는 단서예요.", d: "all of", k: ["그 일이 있고 나서 머리가 아팠어요?", "누가 그 일을 봤는지 아세요?"], a: "missing", o: ["hearing", "saying", "repeating"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "두부외상 첫 문진 4문장 순서"
+    why: "경위를 먼저 묻고, 그 뒤의 의식 소실, 기억의 빈 구간을 차례로 확인한 다음 의사에게 전하겠다고 닫아요. 'it'·'Even if you didn't'·'all of that'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Can you tell me exactly how you hit your head?", icon: me, ko: "정확히 어떻게 머리를 부딪혔는지 말씀해 주시겠어요?", note: "경위"}
+    - {en: "After you hit it, did you lose consciousness at all?", icon: magnify, ko: "부딪힌 뒤 잠깐이라도 의식을 잃으셨나요?", note: "의식"}
+    - {en: "Even if you didn't, do you feel like you're missing any part of what happened?", icon: bulb, ko: "안 잃으셨어도 그 일 중에 기억이 빈 부분이 있는 것 같으세요?", note: "기억"}
+    - {en: "Thanks, I'll tell the doctor all of that so we can plan your care.", icon: speech, ko: "고마워요, 그 모두를 의사에게 전해 치료 계획에 쓸게요", note: "보고"}
+  ctx: {word: "LOC", ko: "의식 소실"}
+- title: GCS 측정·재평가
+  s:
+  - {t: "눈 뜨기", i: magnify, w: "Can you…?로 지시를 부탁처럼 건네면 환자가 긴장하지 않아요. 눈을 뜨는 반응은 GCS의 첫 항목이에요.", d: "and smile", k: ["이름과 생년월일을 말씀해 주세요", "발가락을 움직여 보세요"], a: "open", o: ["close", "cover", "rub"]}
+  - {t: "지남력", i: compass, w: "장소와 요일을 묻는 건 지남력 확인이에요. GCS의 언어 반응 점수가 이 대답으로 정해져요.", d: "and how long", k: ["성함과 생년월일을 말씀해 주세요", "여기 오신 이유를 말씀해 주세요"], a: "day", o: ["month", "year", "season"]}
+  - {t: "재확인 예고", i: calendar, w: "in a few minutes로 시점을 말해 주면 환자가 곧 다시 온다는 걸 알고 안심해요. GCS는 한 번으로 끝나지 않고 반복해서 비교해요.", d: "in a few days", k: ["이건 지금 바로 끝낼게요", "결과가 나오면 바로 알려 드릴게요"], a: "recheck", o: ["record", "explain", "report"]}
+  - {t: "손 쥐기", i: me, w: "as tight as you can로 '최대한'을 알려 주면 그 환자의 최선의 힘을 볼 수 있어요. 좌우 힘을 비교하면 한쪽 마비도 가려내요.", d: "as gently as", k: ["발가락을 움직여 보세요", "제 손을 놓고 팔을 들어 보세요"], a: "tight", o: ["gently", "lightly", "slowly"]}
+  - {t: "점수 설명", i: chartup, w: "has stayed…since…는 지난 확인 이후 지금까지 이어진 상태를 말하는 현재완료예요. 점수가 그대로라는 건 나빠지지 않았다는 뜻이라 환자에게 안심이 돼요.", d: "until your last check", k: ["다음 확인은 한 시간 뒤예요", "점수는 보호자께도 알려 드릴게요"], a: "score", o: ["pain", "pulse", "pressure"]}
+  - {t: "재질문 예고", i: calendar, w: "these same questions로 같은 질문이 반복된다는 걸 미리 알려 주면 환자가 이상하게 여기지 않아요. 반복 질문은 변화를 보려는 정상 절차예요.", d: "different questions", k: ["질문은 이게 마지막이에요", "곧 간단한 검사를 하나 할게요"], a: "same", o: ["new", "easy", "short"]}
+  - {t: "이유 설명", i: bulb, w: "because로 반복의 이유를 바로 붙이면 환자가 짜증 대신 납득해요. 같은 질문에 대한 답이 달라졌는지가 신경학적 변화의 신호예요.", d: "so you can rest", k: ["졸리실 때도 계속 대답해 주세요", "점수가 달라지면 바로 알려 드릴게요"], a: "changing", o: ["resting", "sleeping", "breathing"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "GCS 재평가 4문장 순서"
+    why: "눈을 뜨게 하고, 그 자세를 이어 손 쥐기를 시키고, 점수를 알린 뒤, 곧 다시 확인한다고 닫아요. 'Keep looking'·'Thanks, your score'·'that score'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Can you open your eyes and look at me?", icon: magnify, ko: "눈을 뜨고 저를 봐 주시겠어요?", note: "눈 뜨기"}
+    - {en: "Keep looking at me and squeeze my hand as tight as you can.", icon: me, ko: "계속 저를 보면서 제 손을 최대한 세게 잡아 보세요", note: "손 쥐기"}
+    - {en: "Thanks, your score is the same as last time, so it hasn't dropped.", icon: chartup, ko: "고마워요, 점수가 지난번과 같아서 떨어지지 않았어요", note: "점수"}
+    - {en: "I'll recheck that score in a few minutes to be sure.", icon: calendar, ko: "확실히 하려고 몇 분 뒤에 그 점수를 다시 확인할게요", note: "재확인"}
+  sw: {ko: "몇 분 뒤에 다시 와서 살펴볼게요"}
+- title: 동공 반응 확인
+  s:
+  - {t: "검사 안내", i: magnify, w: "지금 하는 일을 진행형으로 먼저 알리면 갑작스러운 빛에 놀라지 않아요. 정면을 보게 해야 두 눈의 반응을 같은 조건에서 비교해요.", d: "a mirror", k: ["눈을 감고 계세요", "제 손가락을 눈으로 따라와 보세요"], a: "eyes", o: ["ears", "nose", "mouth"]}
+  - {t: "목적 설명", i: bulb, w: "This checks…로 검사의 목적을 한 문장으로 알려 줘요. 동공이 빛에 줄어드는 정도는 뇌 기능을 보는 기본 지표예요.", d: "how your vision", k: ["이건 시야가 좁아졌는지 보는 거예요", "이건 눈에 이물질이 있는지 보는 거예요"], a: "pupils", o: ["eyelids", "tears", "lashes"]}
+  - {t: "안심 안내", i: bell, w: "only take a second으로 짧다는 걸 알리면 환자가 눈을 감지 않고 버텨요. 움직이면 동공 반응을 정확히 못 봐서 가만히 있도록 부탁해요.", d: "look away", k: ["눈을 크게 뜨고 계세요", "빛이 조금 눈부실 수 있어요"], a: "second", o: ["day", "week", "month"]}
+  - {t: "정상 소견", i: check, w: "should be로 정상 기준을 말해 주면 환자가 이어질 결과를 기대치와 견주어 이해해요. 양쪽 크기가 같은지는 동공 사정의 첫 비교 항목이에요.", d: "very large", k: ["빛을 비추면 동공이 작아져야 해요", "양쪽 눈이 같은 방향을 봐야 해요"], a: "size", o: ["shape", "color", "speed"]}
+  - {t: "이상 소견", i: magnify, w: "looks로 눈에 보이는 대로만 말해 단정을 피해요. 한쪽 동공만 커지는 것은 뇌압 상승을 시사할 수 있어 바로 보고하는 소견이에요.", d: "than usual", k: ["오른쪽 눈이 많이 부어 있어요", "눈꺼풀이 한쪽만 처져 있어요"], a: "pupil", o: ["eyelid", "eyebrow", "cheek"]}
+  - {t: "의미 설명", i: bulb, w: "could mean으로 가능성만 말해 환자를 겁주지 않으면서 중요성을 전해요. 동공 변화는 뇌압 상승·뇌 손상의 빠른 신호라 간호사가 바로 알려요.", d: "nothing at all", k: ["눈이 흐릿해 보이면 바로 말씀해 주세요", "빛이 눈부시면 바로 말씀해 주세요"], a: "pupils", o: ["hearing", "vision", "balance"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "동공 검사 4문장 순서"
+    why: "빛을 비추겠다고 알리고, 그 검사의 목적과 기준을 설명한 뒤, 이상이 있으면 의사에게 알린다고 닫아요. 'This'·'they'·'that comparison'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "I'm shining a light in your eyes, so please look straight ahead.", icon: magnify, ko: "눈에 빛을 비출 테니 정면을 봐 주세요", note: "안내"}
+    - {en: "This checks how your pupils respond, so hold still for a second.", icon: bulb, ko: "동공이 어떻게 반응하는지 보는 거니 잠깐 가만히 계세요", note: "목적"}
+    - {en: "Now I'm comparing how they reacted, and both should be the same size.", icon: check, ko: "이제 어떻게 반응했는지 견주어 보는데 둘 다 크기가 같아야 해요", note: "비교"}
+    - {en: "Any difference in that comparison, I'll tell the doctor right away.", icon: speech, ko: "그 비교에서 차이가 있으면 바로 의사에게 알릴게요", note: "보고"}
+  ctx: {word: "PERRL", ko: "동공 정상 소견"}
+- title: 두피 열상·혈종 관찰
+  s:
+  - {t: "촉진 안내", i: me, w: "I'm going to로 무엇을 할지 먼저 알리고 gently로 아프지 않게 하겠다고 말해요. 두피는 만져 봐야 혹이나 함몰, 열상이 확인돼요.", d: "firmly press", k: ["상처 부위를 소독할게요", "머리카락을 조금 잘라 낼게요"], a: "scalp", o: ["neck", "spine", "jaw"]}
+  - {t: "지혈 안내", i: bandage, w: "to stop the bleeding으로 목적을 같이 말하면 눌러서 아플 때도 환자가 이유를 알고 참아요. 두피는 혈관이 많아 열상이 작아도 피가 많이 나 보여서 직접 압박이 기본이에요.", d: "to clean", k: ["상처를 꿰매기 전에 마취할게요", "붕대로 머리를 감쌀 거예요"], a: "pressure", o: ["heat", "ointment", "gel"]}
+  - {t: "통증 확인", i: faceWorried, w: "if any spot…으로 위치를 짚어 달라고 하면 환자가 어디든 말하기 쉬워요. 유난히 아픈 곳은 골절이나 깊은 혈종의 단서가 될 수 있어 따로 적어 둬요.", d: "red", k: ["어디서 피가 나는지 보여 주세요", "혹시 어지러우면 말씀해 주세요"], a: "painful", o: ["itchy", "numb", "swollen"]}
+  - {t: "소견 설명", i: magnify, w: "feel을 써서 눈이 아니라 손으로 확인한 소견을 그대로 전해요. bump와 swelling은 환자가 알아듣는 쉬운 말이라 겁주지 않아요.", d: "a cut", k: ["여기는 피가 좀 나고 있네요", "여기는 살짝 찢어져 있어요"], a: "swelling", o: ["bleeding", "bruising", "redness"]}
+  - {t: "지혈 경과", i: bandage, w: "until로 압박을 언제까지 유지하는지 기준을 알려 줘요. 압박을 중간에 떼고 확인하면 굳던 피가 떨어져 출혈이 다시 늘 수 있어요.", d: "starts again", k: ["압박을 풀기 전에 미리 말씀드릴게요", "붕대는 오늘 밤에 풀게요"], a: "holding", o: ["releasing", "lifting", "easing"]}
+  - {t: "압박 요령", i: bandage, w: "should stay로 지켜야 할 상태를 짧게 말해요. 세기가 들쑥날쑥하면 지혈이 안 되니 단단하고 일정하게 눌러야 해요.", d: "light and quick", k: ["압박하는 동안 머리를 높여 드릴게요", "피가 비치면 거즈를 더 덧댈게요"], a: "firm", o: ["loose", "light", "soft"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "두피 출혈 관리 4문장 순서"
+    why: "두피를 만져 보겠다고 알리고, 확인한 소견과 출혈을 전한 뒤, 지혈 방법과 유지 기준을 말해요. 'As I do that'·'To stop it'·'that pressure'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "I'm going to gently feel your scalp.", icon: me, ko: "두피를 살살 만져 볼게요", note: "촉진"}
+    - {en: "As I do that, I can feel a bump, some swelling, and bleeding.", icon: magnify, ko: "그렇게 하니 혹과 부기가 만져지고 출혈도 있네요", note: "소견"}
+    - {en: "To stop it, we'll press firmly and keep the pressure steady.", icon: bandage, ko: "멈추려고 단단히 누르고 압박을 일정하게 유지할게요", note: "지혈"}
+    - {en: "We'll hold that pressure until the bleeding slows down.", icon: bandage, ko: "출혈이 줄어들 때까지 그 압박을 유지할게요", note: "유지"}
+  sw: {ko: "여기서 혹이 만져지네요"}
+- title: 오심·구토 모니터
+  s:
+  - {t: "구토 횟수", i: magnify, w: "How many times…?로 횟수를 숫자로 묻게 돼 대답이 분명해요. 구토 횟수는 두부외상 뒤 뇌압 상승을 가늠하는 단서이고 늘어나면 보고 대상이에요.", d: "fallen", k: ["마지막으로 식사하신 게 언제예요?", "토하실 때 피가 섞여 있었나요?"], a: "times", o: ["hours", "days", "weeks"]}
+  - {t: "오심 경과", i: faceWorried, w: "getting worse로 '지금의 흐름'을 묻는 질문이에요. 오심이 점점 심해지면 두부외상 환자에서는 뇌압 상승의 징후일 수 있어요.", d: "better", k: ["구역질 때문에 식사는 하셨어요?", "토한 적도 있으세요?"], a: "nausea", o: ["headache", "dizziness", "pain"]}
+  - {t: "관찰 안내", i: monitor, w: "signs of pressure로 무엇을 보는지 알려 주면 계속 확인받는 이유가 이해돼요. 두부외상 뒤 구토·졸림·두통 악화는 두개내압 상승의 흔한 징후예요.", d: "of infection", k: ["머리 사진을 찍을 준비를 하고 있어요", "토할 때를 대비해 용기를 가져다 둘게요"], a: "head", o: ["chest", "belly", "leg"]}
+  - {t: "구토 반복", i: calendar, w: "more than once로 단발인지 반복인지 가르는 질문이에요. 두부외상 뒤 반복 구토는 한 번뿐인 구토보다 훨씬 신중하게 보는 소견이에요.", d: "more than usual", k: ["토한 뒤에 두통이 더 심해졌나요?", "토하기 전에 뭘 드셨나요?"], a: "vomiting", o: ["headache", "dizziness", "bleeding"]}
+  - {t: "기록 안내", i: board, w: "each hour로 확인 간격을 알려 주면 환자가 자주 오는 이유를 이해해요. 증상을 시간별로 적어 두면 변화가 보여서 악화를 일찍 알아챌 수 있어요.", d: "each morning", k: ["활력징후를 한 시간마다 잴게요", "한 시간 뒤에 CT를 찍을 거예요"], a: "hour", o: ["day", "week", "month"]}
+  - {t: "보고 요청", i: bell, w: "right away로 지체하지 말고 알려 달라는 점을 분명히 해요. 환자가 먼저 알려 주면 간호사가 다음 확인까지 기다리지 않고 바로 대응해요.", d: "whenever you can", k: ["더 심해지기 전에 약을 드릴게요", "나아지면 식사를 시작할게요"], a: "know", o: ["hear", "see", "feel"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "구토 모니터 4문장 순서"
+    why: "무엇을 지켜보는지 밝히고, 그 이유로 구토 횟수를 묻고, 매시간 확인한다고 알린 뒤, 사이사이 악화되면 알려 달라고 닫아요. 'That's why'·'it'·'those hourly checks'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "We're watching for signs of pressure in your head.", icon: monitor, ko: "머릿속 압력 상승 징후가 있는지 지켜보고 있어요", note: "관찰"}
+    - {en: "That's why I'm asking how many times you've vomited.", icon: magnify, ko: "그래서 몇 번 토하셨는지 여쭤보는 거예요", note: "문진"}
+    - {en: "I'm keeping track of it each hour to see any change.", icon: board, ko: "변화를 보려고 그걸 매시간 기록하고 있어요", note: "기록"}
+    - {en: "Between those hourly checks, let me know right away if it gets worse.", icon: bell, ko: "그 매시간 확인 사이에 더 심해지면 바로 알려 주세요", note: "요청"}
+  ctx: {word: "emesis", ko: "구토"}

@@ -1,0 +1,108 @@
+면회 안내·환경 설명:
+  - kind: pair
+    words: [w-walk, w-hold, w-bedside]
+    pairs: [[walk you, through], [hold, her hand], [at her, bedside]]
+    decoys: [bedrest]
+    why: "walk someone through는 '하나씩 짚어 가며 안내하다'라는 굳은 표현이에요. 손은 hold her hand, 침대 곁은 at her bedside."
+  - kind: context
+    words: [w-tube, w-normal]
+    scenes:
+      - {who: 동료에게 인계, icon: speech, en: "She's intubated on the vent, with a central line and an art line.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Pt intubated on vent; CVC and arterial line in place.", ok: true}
+      - {who: 처음 면회 온 가족에게, icon: me, en: "She's intubated with a central line and an art line.", ok: false, fix: "She has a breathing tube and a few IV lines. It looks like a lot, but that's normal here."}
+    why: "같은 내용이라도 가족에게는 장비 이름 대신 그 장비가 하는 일을 쉬운 말로 말해요. 처음 보는 가족에게는 \"that's normal here\" 한마디가 큰 안심이 돼요."
+장비·알람 설명:
+  - kind: slider
+    words: [w-urgent, w-emergency]
+    cue: "간호사 판단: 환자 상태는 그대로이고, 수액(생리식염수) 백이 거의 다 됐다는 펌프 알림"
+    scale: [routine, urgent, emergent]
+    answerAt: 0
+    why: "환자 상태는 그대로인데 할 일을 알려 주는 알람이면 routine이에요. urgent는 몇 분 안에 처리해야 할 일, emergent는 생명이 걸려 바로 뛰어가야 하는 일이에요. 같은 펌프 알람이라도 승압제처럼 끊기면 안 되는 약이면 무게가 달라요."
+    example: "If something is truly urgent, I'll come to her right away."
+    exKo: "정말 급한 일이면 바로 그녀에게 갈게요."
+  - kind: swap
+    words: [w-remind, w-alarm]
+    who: "보호자에게 · 알람 설명"
+    icon: me
+    before: ["That alarm is just ", "a low-priority technical alert", "."]
+    options: [a reminder, a low-priority technical alert, noise]
+    answer: a reminder
+    notes: {a reminder: "가족이 바로 알아듣는 쉬운 말이고, 사실 그대로예요.", a low-priority technical alert: "의료진끼리 쓰는 알람 분류어라 가족에게는 낯설어요.", noise: "'그냥 소음'이라고 하면 알람을 무시해도 된다는 뜻이 돼요. 간호사는 알람을 늘 확인해요."}
+    why: "가족에게는 알람의 뜻을 쉬운 말(reminder)로 풀되, 가볍게 넘기는 말로 들리지 않게 해요."
+일일 상태 업데이트:
+  - kind: slider
+    words: [w-better]
+    cue: "간호사가 본 것: 산소 요구량이 어제 60%에서 오늘 50%로 조금 줄었다"
+    scale: [a little better, much better, out of the woods]
+    answerAt: 0
+    why: "조금 나아진 걸 much better라고 하면 가족의 기대가 앞서가요. out of the woods는 '고비를 넘겼다'는 뜻이라, 아직 쓰면 안 돼요."
+    example: "Today his oxygen levels are a little better."
+    exKo: "오늘 그의 산소 수치가 조금 더 나아졌어요."
+  - kind: reel
+    words: [w-step]
+    word: step
+    scenes:
+      - {who: "간호사 → 가족", en: "It's a small step, but it's in the right direction.", ko: "작은 단계지만 옳은 방향이에요.", tone: 희망}
+      - {who: "동료에게 인계", en: "Next step is an SBT in the morning if he stays stable.", ko: "안정적이면 다음 단계는 아침에 자발호흡시험이에요.", tone: 건조}
+      - {who: "가족 회의", en: "We'll go over his condition together, step by step.", ko: "그의 상태를 하나씩 함께 살펴볼게요.", tone: 차분}
+      - {who: "가족에게는…", en: "Tomorrow morning we'll test whether he can breathe more on his own.", ko: "내일 아침엔 스스로 더 숨 쉴 수 있는지 시험해 볼 거예요.", tone: 쉬움, swap: true}
+가족 질문 응대:
+  - kind: slider
+    words: [w-find]
+    cue: "Family: \"Will his kidneys recover?\" — 간호사는 답을 모르고, 의사에게 확인해야 한다"
+    scale: ["I have no idea", "I'm not sure", "I'm pretty sure", "I'm certain"]
+    answerAt: 1
+    why: "모를 때는 I'm not sure라고 정직하게 말하고 \"I'll find out and get back to you\"를 붙여요. I have no idea는 무심하게 들리고, pretty sure는 모르는데 아는 척하는 말이 돼요."
+    example: "I'm not sure, but I'll find out and get back to you."
+    exKo: "잘 모르겠지만, 알아봐서 다시 알려 드릴게요."
+  - kind: context
+    words: [w-find]
+    scenes:
+      - {who: 동료에게, icon: speech, en: "Not sure — let me check with the resident.", ok: true}
+      - {who: 가족에게, icon: me, en: "If I don't know, I'll find out and get back to you.", ok: true}
+      - {who: 가족에게, icon: me, en: "Dunno — not my call. Ask the doctor.", ok: false, fix: "I'm not sure, but I'll find out from the doctor and get back to you."}
+    why: "모른다는 사실은 같아도, 가족에게 \"not my call\"로 떠넘기면 무시당했다고 느껴요. 알아보고 다시 알려 주겠다는 약속을 붙이세요."
+면회 규칙·감염관리 안내:
+  - kind: pair
+    words: [w-wash, w-protect, w-infection, w-gown, w-glove]
+    pairs: [[wash, your hands], [protect her, from infection], [gown, and gloves]]
+    decoys: [of infection]
+    why: "'~로부터 보호하다'는 protect A from B — of가 아니에요. 격리 면회에서 gown and gloves는 늘 짝으로 나와요."
+  - kind: context
+    words: [w-gown, w-glove, w-protect]
+    scenes:
+      - {who: 동료에게, icon: speech, en: "Bed 3 is on contact precautions — gown and gloves.", ok: true}
+      - {who: 병실 문 안내문, icon: board, en: "CONTACT PRECAUTIONS: Gown and gloves required before entering.", ok: true}
+      - {who: 면회 온 딸에게, icon: me, en: "Contact precautions. Gown and gloves.", ok: false, fix: "Please put on a gown and gloves before you go in — they protect her from infection."}
+    why: "규칙은 같아도 가족에게 용어만 짧게 던지면 명령처럼 들려요. 이유(감염에서 보호)를 붙이면 \"왜 내 어머니를 보는데\" 하던 가족도 협조해요."
+가족 정서 지지 기초:
+  - kind: slider
+    words: [w-angry]
+    cue: "Family: \"I'm so frustrated — nobody called me last night when things changed.\""
+    scale: [annoyed, frustrated, furious]
+    answerAt: 1
+    why: "annoyed는 살짝 거슬리는 정도, frustrated는 답답해서 화가 난 상태, furious는 격분이에요. 가족이 쓴 말 그대로 \"I can hear how frustrated you are\"라고 받으면 감정을 인정해 줄 수 있어요."
+    example: "It's okay to cry, to be angry, or to feel numb."
+    exKo: "울어도, 화가 나도, 멍해져도 괜찮아요."
+  - kind: context
+    words: [w-chaplain, w-meet]
+    scenes:
+      - {who: 동료에게, icon: speech, en: "Can you page the chaplain for the family in bed 7?", ok: true}
+      - {who: 차트 기록, icon: board, en: "Chaplain consult placed for family support.", ok: true}
+      - {who: 가족에게, icon: me, en: "I put in a chaplain consult for you.", ok: false, fix: "A chaplain can meet with you if you'd like — would that help?"}
+    why: "consult는 의료진끼리의 의뢰 용어예요. 가족에게는 원하는지 먼저 묻는 제안으로 말해요 — 원목 방문은 가족이 고르는 거예요."
+가족 회의 준비·진행 지원:
+  - kind: pair
+    words: [w-step, w-translate]
+    pairs: [[step, by step], [make, sure], [if, needed]]
+    decoys: [to step]
+    why: "step by step '하나씩 차근차근', make sure '꼭 ~하도록 챙기다', if needed '필요하면' — 회의를 이끌 때 자주 쓰는 굳은 덩어리예요."
+  - kind: swap
+    words: [w-meeting]
+    who: "가족에게 · 회의 안내"
+    icon: me
+    before: ["Let's ", "convene a family conference", " this afternoon."]
+    options: [have a family meeting, convene a family conference, get this over with]
+    answer: have a family meeting
+    notes: {have a family meeting: "가족이 바로 알아듣는 일상어예요.", convene a family conference: "공문서 같은 격식어라 딱딱하고 낯설어요.", get this over with: "'얼른 끝내 버리자'로 들려 가족과 회의를 가볍게 여기는 말이 돼요."}
+    why: "병원에서는 family conference라고도 하지만, 가족에게 직접 말할 때는 family meeting처럼 쉬운 말이 좋아요."

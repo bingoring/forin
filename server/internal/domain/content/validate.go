@@ -94,6 +94,9 @@ func (b *Bundle) Validate() []error {
 		if hasAuthoredChoices(s.Steps) {
 			errs = append(errs, scriptProblems(s)...)
 		}
+		if s.Briefing != nil {
+			errs = append(errs, ValidateHubLine(s.ID, s.Briefing.Line)...)
+		}
 		for _, st := range s.Steps {
 			if !AllowedStepTypes[st.Type] {
 				add("scenario %s step %s: unknown type %q", s.ID, st.ID, st.Type)

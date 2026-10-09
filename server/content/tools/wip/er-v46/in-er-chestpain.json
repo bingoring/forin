@@ -1,0 +1,467 @@
+{
+ "theme": "er-chestpain",
+ "situations": [
+  {
+   "title": "흉통 초기 문진",
+   "tagline": "My chest started aching about an hour ago and it just won't let up.",
+   "room": "TRIAGE",
+   "brief": "흉통을 호소하는 환자에게 OPQRST 틀로 통증의 시작·양상·부위·강도·경과를 차분히 청취하세요.",
+   "role": "patient",
+   "skills": [
+    "OPQRST 문진",
+    "흉통 사정",
+    "초기 트리아지"
+   ],
+   "keyPhrases": [
+    "When did the chest pain first start?",
+    "What were you doing when it began?",
+    "Does anything make it better or worse?"
+   ],
+   "goals": [
+    "OPQRST 순서로 흉통 정보를 빠짐없이 수집한다",
+    "개방형 질문으로 환자가 스스로 증상을 설명하게 유도한다"
+   ]
+  },
+  {
+   "title": "흉통 활력·ESI 등급",
+   "tagline": "I feel a little dizzy and my heart's been pounding since this morning.",
+   "room": "TRIAGE",
+   "brief": "흉통 환자의 활력징후를 측정·통합하여 ESI 등급을 판단하고 적절한 배치를 결정하세요.",
+   "role": "patient",
+   "skills": [
+    "활력징후 측정",
+    "ESI 등급 판단",
+    "트리아지"
+   ],
+   "keyPhrases": [
+    "I'm going to check your blood pressure and heart rate now.",
+    "Have you had any shortness of breath or sweating?",
+    "Let me put this clip on your finger to check your oxygen."
+   ],
+   "goals": [
+    "활력징후와 증상을 통합해 ESI 등급을 정한다",
+    "위험 활력을 근거로 배치 우선순위를 설명한다"
+   ]
+  },
+  {
+   "title": "심전도 준비 설명·안심",
+   "tagline": "Wires all over my chest? Is this going to hurt?",
+   "room": "EXAM 2",
+   "brief": "12유도 심전도 절차를 쉬운 말로 설명하고 불안해하는 환자를 안심시키세요.",
+   "role": "patient",
+   "skills": [
+    "절차 설명",
+    "불안 완화",
+    "환자 교육"
+   ],
+   "keyPhrases": [
+    "This test just records your heart's electrical activity — it's painless.",
+    "You'll feel a few sticky pads, but no shocks at all.",
+    "Please try to stay still and relaxed for about ten seconds."
+   ],
+   "goals": [
+    "심전도 절차를 비의료인이 이해하도록 설명한다",
+    "통증·안전 우려를 다뤄 협조를 이끌어낸다"
+   ]
+  },
+  {
+   "title": "위산 역류성 흉통 감별",
+   "tagline": "It burns right here in the middle, especially after I eat.",
+   "room": "EXAM 3",
+   "brief": "작열감·식후 악화 등 위산 역류 특징을 문진해 비심장성 흉통 가능성을 감별하세요.",
+   "role": "patient",
+   "skills": [
+    "비심장성 감별",
+    "소화기 문진",
+    "흉통 감별"
+   ],
+   "keyPhrases": [
+    "Does the burning get worse when you lie down or after meals?",
+    "Do you taste anything sour in your mouth?",
+    "We still need to rule out your heart before we assume it's reflux."
+   ],
+   "goals": [
+    "역류성 흉통의 전형적 특징을 문진으로 도출한다",
+    "비심장성 인상이어도 심장성 배제가 필요함을 설명한다"
+   ]
+  },
+  {
+   "title": "근골격계 흉통(늑연골염) 감별",
+   "tagline": "It hurts right when I press here, and it got worse after I moved boxes yesterday.",
+   "room": "EXAM 1",
+   "brief": "촉진 재현성과 최근 활동 병력을 확인해 늑연골염 등 근골격계 흉통을 감별하세요.",
+   "role": "patient",
+   "skills": [
+    "재현 통증 사정",
+    "근골격 감별",
+    "병력 청취"
+   ],
+   "keyPhrases": [
+    "Does it hurt more when I press on this spot?",
+    "Did you lift or strain anything recently?",
+    "Does the pain change when you take a deep breath or twist?"
+   ],
+   "goals": [
+    "촉진 재현성으로 근골격계 통증을 시사한다",
+    "최근 신체 활동 병력을 통증과 연결한다"
+   ]
+  },
+  {
+   "title": "전형적 STEMI 신속 트리아지",
+   "tagline": "It feels like a huge weight crushing my chest and my jaw is aching.",
+   "room": "TRIAGE",
+   "brief": "압박성 흉통·방사통·발한 환자를 신속히 사정하고 STEMI 의심 시 즉시 에스컬레이션하세요.",
+   "role": "patient",
+   "skills": [
+    "STEMI 인지",
+    "방사통 사정",
+    "ESI 1등급 판단"
+   ],
+   "keyPhrases": [
+    "Does the pain spread to your arm, jaw, or back?",
+    "We're getting an ECG right now and calling the doctor.",
+    "You're sweating and pale — stay with me, help is coming."
+   ],
+   "goals": [
+    "압박성 흉통·방사통·발한을 신속히 사정한다",
+    "STEMI 의심 시 즉시 의료진에게 에스컬레이션한다"
+   ]
+  },
+  {
+   "title": "비전형 흉통(당뇨 여성)",
+   "tagline": "I'm not really in pain, just so tired and a bit nauseous — probably nothing.",
+   "room": "EXAM 2",
+   "brief": "당뇨 여성 환자의 피로·오심·발한 등 비전형 심장 증상을 능동적으로 도출하세요.",
+   "role": "patient",
+   "skills": [
+    "비전형 증상 도출",
+    "당뇨 위험 인지",
+    "세심한 문진"
+   ],
+   "keyPhrases": [
+    "Have you felt unusually tired, sweaty, or short of breath?",
+    "Even without chest pain, these symptoms can come from the heart.",
+    "Because you have diabetes, I want to check your heart to be safe."
+   ],
+   "goals": [
+    "흉통이 없어도 비전형 심장 증상을 적극적으로 확인한다",
+    "당뇨가 무통성 허혈 위험임을 이해하고 사정에 반영한다"
+   ]
+  },
+  {
+   "title": "불안성 vs 심장성 감별",
+   "tagline": "My heart's racing and I can't breathe — I feel like I'm going to die!",
+   "room": "EXAM 4",
+   "brief": "공황 증상을 보이는 환자를 진정시키면서도 심장성 원인을 배제하기 위한 사정을 병행하세요.",
+   "role": "patient",
+   "skills": [
+    "공황 감별",
+    "불안 완화",
+    "심장성 배제"
+   ],
+   "keyPhrases": [
+    "I'm right here with you — try to breathe slowly with me.",
+    "Have you ever had panic attacks like this before?",
+    "We'll still check your heart to make sure everything is okay."
+   ],
+   "goals": [
+    "공황과 심장성 흉통을 감별하는 질문을 던진다",
+    "진정 소통과 심장성 배제를 동시에 수행한다"
+   ]
+  },
+  {
+   "title": "증상 축소 환자",
+   "tagline": "It's just a little tightness, I really don't want to make a fuss.",
+   "room": "EXAM 1",
+   "brief": "증상을 축소하는 환자에게서 구체적 질문으로 숨은 위험신호를 끌어내세요.",
+   "role": "patient",
+   "skills": [
+    "위험신호 도출",
+    "축소 대응",
+    "구체적 문진"
+   ],
+   "keyPhrases": [
+    "Even mild tightness matters — can you show me exactly where?",
+    "Have you had any sweating, nausea, or arm discomfort?",
+    "It's my job to take this seriously, so please tell me everything."
+   ],
+   "goals": [
+    "축소된 표현 이면의 위험신호를 구체적으로 확인한다",
+    "환자가 증상을 솔직히 말하도록 신뢰를 형성한다"
+   ]
+  },
+  {
+   "title": "재발 환자 재평가",
+   "tagline": "This feels just like the last time I was here, when they put in a stent.",
+   "room": "EXAM 3",
+   "brief": "심장 시술 이력이 있는 재발 환자의 과거력을 통합해 현재 증상을 재평가하세요.",
+   "role": "patient",
+   "skills": [
+    "과거력 통합",
+    "재평가",
+    "심장 병력 청취"
+   ],
+   "keyPhrases": [
+    "Is this pain the same as your previous heart event?",
+    "Which medications and stents have you had before?",
+    "Have you been taking your heart medicines as prescribed?"
+   ],
+   "goals": [
+    "이전 심장 이력과 현재 증상을 비교·통합한다",
+    "복약 순응도와 시술력을 재평가에 반영한다"
+   ]
+  },
+  {
+   "title": "흉통+언어장벽",
+   "tagline": "Chest... hurt... here. English no good, sorry.",
+   "room": "TRIAGE",
+   "brief": "통역 도착 전, 쉬운 단어와 몸짓으로 흉통 환자의 핵심 정보를 확인하세요.",
+   "role": "patient",
+   "skills": [
+    "언어장벽 소통",
+    "핵심 사정",
+    "통역 연계"
+   ],
+   "keyPhrases": [
+    "Pain here? Point for me, please.",
+    "Pain now — one to ten? Show me with fingers.",
+    "An interpreter is coming. You are safe, we will help."
+   ],
+   "goals": [
+    "제한된 언어에서도 통증 부위·강도를 확인한다",
+    "통역 도착까지 환자를 안심시키고 안전을 확보한다"
+   ]
+  },
+  {
+   "title": "니트로글리세린 투여 전 설명",
+   "tagline": "You want me to put a pill under my tongue? What's it going to do to me?",
+   "room": "RESUS BAY",
+   "brief": "니트로글리세린의 목적·투여법·부작용을 설명하고 투여 동의를 얻으세요.",
+   "role": "patient",
+   "skills": [
+    "약물 교육",
+    "부작용 설명",
+    "사전 동의"
+   ],
+   "keyPhrases": [
+    "This tablet goes under your tongue to relax your heart's vessels.",
+    "It may cause a headache or make you feel lightheaded.",
+    "Tell me right away if the pain changes or you feel dizzy."
+   ],
+   "goals": [
+    "니트로글리세린의 작용과 주요 부작용을 설명한다",
+    "투여 전 동의를 얻고 투여 후 관찰 지표를 안내한다"
+   ]
+  },
+  {
+   "title": "가족에게 상황 설명",
+   "tagline": "Is my husband going to be okay? Nobody's told me anything!",
+   "room": "FAMILY WAITING",
+   "brief": "흉통으로 처치 중인 환자의 배우자에게 현재 상황과 다음 단계를 침착하게 설명하세요.",
+   "role": "family",
+   "skills": [
+    "보호자 소통",
+    "정보 제공",
+    "정서 지지"
+   ],
+   "keyPhrases": [
+    "Your husband is being closely monitored by our heart team right now.",
+    "We're running tests on his heart and I'll update you as we learn more.",
+    "I know this is frightening — is there anything I can get for you?"
+   ],
+   "goals": [
+    "보호자에게 이해 가능한 수준으로 상황을 설명한다",
+    "정서적 지지와 다음 단계 안내를 함께 제공한다"
+   ]
+  },
+  {
+   "title": "코카인 관련 흉통(젊은 환자)",
+   "tagline": "My chest is pounding and tight... look, I might've used something last night, okay?",
+   "room": "RESUS BAY",
+   "brief": "판단 없이 신뢰를 형성하며 최근 약물 사용력을 청취하고 코카인 관련 흉통을 사정하세요.",
+   "role": "patient",
+   "skills": [
+    "민감 병력 청취",
+    "비판단적 소통",
+    "약물 관련 사정"
+   ],
+   "keyPhrases": [
+    "Everything you tell me stays confidential and helps me treat you safely.",
+    "What did you use, and about what time was that?",
+    "This information matters because some treatments could be unsafe otherwise."
+   ],
+   "goals": [
+    "비판단적 태도로 민감한 약물 사용력을 이끌어낸다",
+    "코카인 흉통에서 금기 약물을 고려해 사정한다"
+   ]
+  },
+  {
+   "title": "고령 흉통+청력 저하",
+   "tagline": "Eh? Speak up, dear — my chest's been troubling me since lunch.",
+   "room": "EXAM 2",
+   "brief": "청력이 저하된 고령 환자에게 소통 방식을 조정하며 흉통을 사정하세요.",
+   "role": "patient",
+   "skills": [
+    "소통 조정",
+    "고령 사정",
+    "흉통 문진"
+   ],
+   "keyPhrases": [
+    "I'll speak slowly and face you — let me know if you can hear me.",
+    "Can you point to where the pain is?",
+    "Would it help if I wrote my questions down for you?"
+   ],
+   "goals": [
+    "청력 저하에 맞춰 소통 방식을 조정한다",
+    "고령 환자의 흉통을 정확히 사정한다"
+   ]
+  },
+  {
+   "title": "대동맥 박리 의심",
+   "tagline": "It's a sharp, tearing pain that shot straight through to my back!",
+   "room": "RESUS BAY",
+   "brief": "찢어지는 방사통과 좌우 혈압차를 확인해 대동맥 박리를 의심하고 즉시 에스컬레이션하세요.",
+   "role": "patient",
+   "skills": [
+    "대동맥 박리 인지",
+    "좌우 혈압 측정",
+    "긴급 에스컬레이션"
+   ],
+   "keyPhrases": [
+    "Is the pain tearing or ripping, and does it go into your back?",
+    "I need to check the blood pressure in both of your arms.",
+    "I'm getting the doctor immediately — try to stay still."
+   ],
+   "goals": [
+    "찢는 듯한 배부 방사통을 대동맥 박리 신호로 인지한다",
+    "좌우 혈압차를 측정하고 즉시 에스컬레이션한다"
+   ]
+  },
+  {
+   "title": "폐색전 의심 흉통",
+   "tagline": "It hurts to breathe and I've been so short of breath since my flight home.",
+   "room": "EXAM 4",
+   "brief": "흉막성 통증·호흡곤란·최근 부동 병력을 확인해 폐색전 가능성을 사정하세요.",
+   "role": "patient",
+   "skills": [
+    "폐색전 인지",
+    "호흡곤란 사정",
+    "위험인자 청취"
+   ],
+   "keyPhrases": [
+    "Does the pain get worse when you breathe in deeply?",
+    "Have you had any long flights, surgery, or leg swelling recently?",
+    "I'm going to check your oxygen level right away."
+   ],
+   "goals": [
+    "흉막성 통증과 호흡곤란을 폐색전 관점에서 사정한다",
+    "부동·수술 등 위험인자를 병력에서 확인한다"
+   ]
+  },
+  {
+   "title": "심낭염",
+   "tagline": "It's sharp, and it eases up when I lean forward but gets worse lying flat.",
+   "room": "EXAM 3",
+   "brief": "자세와 호흡에 따른 통증 변화를 확인해 심낭염을 감별하세요.",
+   "role": "patient",
+   "skills": [
+    "심낭염 감별",
+    "자세 의존성 사정",
+    "흉통 문진"
+   ],
+   "keyPhrases": [
+    "Does sitting up and leaning forward make the pain better?",
+    "Is the pain worse when you lie down or breathe in?",
+    "Have you had a recent fever or viral illness?"
+   ],
+   "goals": [
+    "자세 의존성·흡기 악화 통증을 심낭염 특징으로 감별한다",
+    "최근 바이러스 감염 등 선행 요인을 확인한다"
+   ]
+  },
+  {
+   "title": "STEMI 확진 후 심도자실 이송",
+   "tagline": "They're taking me somewhere now? What are they going to do to my heart?",
+   "room": "CATH LAB",
+   "brief": "STEMI 확진 환자에게 심도자실 이송 목적과 절차를 설명하고 안전하게 이송을 준비하세요.",
+   "role": "patient",
+   "skills": [
+    "이송 준비",
+    "절차 설명",
+    "심장 응급 소통"
+   ],
+   "keyPhrases": [
+    "We're taking you to the cath lab to open the blocked artery.",
+    "The team will keep you monitored the whole way there.",
+    "You may feel some pressure, but tell us about any new pain."
+   ],
+   "goals": [
+    "심도자실 이송의 목적과 과정을 명확히 설명한다",
+    "이송 중 모니터링과 통증 보고 방법을 안내한다"
+   ]
+  },
+  {
+   "title": "흉통 중 급속 악화",
+   "tagline": "I feel really... strange... everything's going gray...",
+   "room": "RESUS BAY",
+   "brief": "흉통 중 의식·활력 급속 악화 징후를 인지하고 즉시 코드 대응으로 에스컬레이션하세요.",
+   "role": "patient",
+   "skills": [
+    "악화 인지",
+    "심정지 전조 대응",
+    "긴급 에스컬레이션"
+   ],
+   "keyPhrases": [
+    "Stay with me — can you hear my voice?",
+    "I'm calling for help right now, don't close your eyes.",
+    "We're going to take care of you — the team is coming."
+   ],
+   "goals": [
+    "의식·활력 급속 악화를 심정지 전조로 인지한다",
+    "지체 없이 긴급 코드 대응으로 에스컬레이션한다"
+   ]
+  },
+  {
+   "title": "NSTEMI 관찰 중 변화",
+   "tagline": "The pain's creeping back and it's worse than before, nurse.",
+   "room": "OBSERVATION 3",
+   "brief": "관찰 중 흉통이 재발·악화한 NSTEMI 환자를 재사정하고 SBAR로 의료진에게 보고하세요.",
+   "role": "patient",
+   "skills": [
+    "재사정",
+    "SBAR 보고",
+    "NSTEMI 관리"
+   ],
+   "keyPhrases": [
+    "How does this pain compare to earlier — same, better, or worse?",
+    "I'm rechecking your vitals and getting a repeat ECG.",
+    "I'll update the doctor right away about this change."
+   ],
+   "goals": [
+    "통증 변화를 근거로 환자를 신속히 재사정한다",
+    "SBAR 형식으로 변화를 의료진에게 보고한다"
+   ]
+  },
+  {
+   "title": "불안정 협심증 야간 재발",
+   "tagline": "It woke me right up — this tightness came on while I was just lying in bed.",
+   "room": "OBSERVATION 1",
+   "brief": "야간 안정 시 재발한 흉통을 사정하고 불안정 협심증 악화 가능성에 대응하세요.",
+   "role": "patient",
+   "skills": [
+    "불안정 협심증 인지",
+    "야간 재발 사정",
+    "재발 통증 대응"
+   ],
+   "keyPhrases": [
+    "Did the pain come on while you were resting or asleep?",
+    "Is this happening more often or lasting longer than before?",
+    "I'm going to reassess you and let the team know right now."
+   ],
+   "goals": [
+    "안정 시·야간 재발 통증을 불안정 협심증 신호로 인지한다",
+    "빈도·지속시간 변화를 확인하고 신속히 대응한다"
+   ]
+  }
+ ]
+}

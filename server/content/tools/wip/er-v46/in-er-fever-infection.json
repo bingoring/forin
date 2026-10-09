@@ -1,0 +1,446 @@
+{
+ "theme": "er-fever-infection",
+ "situations": [
+  {
+   "title": "발열 시작·양상 문진",
+   "tagline": "I've had a fever off and on for three days now.",
+   "room": "TRIAGE 1",
+   "brief": "발열의 경과와 동반 증상을 체계적으로 문진하세요.",
+   "role": "patient",
+   "skills": [
+    "발열 병력 청취",
+    "동반증상 확인",
+    "경과 파악"
+   ],
+   "keyPhrases": [
+    "When did the fever start, and how high has it gotten?",
+    "Do you have a cough, sore throat, burning urine, or any pain?",
+    "Has anything made it better or worse?"
+   ],
+   "goals": [
+    "발열의 경과와 양상을 파악한다",
+    "동반 증상을 확인한다"
+   ]
+  },
+  {
+   "title": "활력·감염원 초기 사정",
+   "tagline": "I just feel hot and worn out — I don't know what's causing it.",
+   "room": "TREATMENT BAY 5",
+   "brief": "활력징후를 확인하고 감염원을 초기 스크리닝하세요.",
+   "role": "patient",
+   "skills": [
+    "활력 사정",
+    "감염원 스크리닝",
+    "위험 선별"
+   ],
+   "keyPhrases": [
+    "Let me check your temperature, pulse, and breathing first.",
+    "I'll ask about a few common sources of infection.",
+    "Any pain when you pee, cough, or a wound anywhere?"
+   ],
+   "goals": [
+    "활력징후를 확인한다",
+    "감염원을 초기 스크리닝한다"
+   ]
+  },
+  {
+   "title": "격리 필요성 판단",
+   "tagline": "I've been coughing a lot and I have a fever — do I need a mask?",
+   "room": "TRIAGE 2",
+   "brief": "호흡기 증상을 선별하고 격리·마스크 필요성을 설명하세요.",
+   "role": "patient",
+   "skills": [
+    "호흡기 선별",
+    "격리 판단",
+    "감염 관리 설명"
+   ],
+   "keyPhrases": [
+    "Because of the cough and fever, I'll have you wear a mask.",
+    "We may place you in a separate room to protect others.",
+    "Have you been around anyone sick or traveled recently?"
+   ],
+   "goals": [
+    "호흡기 증상을 선별한다",
+    "격리·마스크 필요성을 설명한다"
+   ]
+  },
+  {
+   "title": "해열제 투여 설명",
+   "tagline": "Can I get something to bring this fever down? I'm miserable.",
+   "room": "TREATMENT BAY 4",
+   "brief": "해열제의 용량과 재측정 계획을 알기 쉽게 설명하세요.",
+   "role": "patient",
+   "skills": [
+    "해열제 투여 설명",
+    "재측정 안내",
+    "교육"
+   ],
+   "keyPhrases": [
+    "This will help lower your fever and make you more comfortable.",
+    "We'll recheck your temperature in about an hour.",
+    "Keep drinking fluids — that helps too."
+   ],
+   "goals": [
+    "해열제의 목적과 용량을 설명한다",
+    "재측정 계획을 안내한다"
+   ]
+  },
+  {
+   "title": "여행력·접촉력 문진",
+   "tagline": "I just got back from a trip abroad and now I've got this fever.",
+   "room": "TRIAGE 1",
+   "brief": "여행지·접촉력을 문진해 유입감염을 스크리닝하세요.",
+   "role": "patient",
+   "skills": [
+    "여행력 문진",
+    "접촉력 확인",
+    "유입감염 선별"
+   ],
+   "keyPhrases": [
+    "Where did you travel, and when did you get back?",
+    "Did you get any bug bites or eat anything unusual?",
+    "Was anyone you traveled with also sick?"
+   ],
+   "goals": [
+    "여행지와 접촉력을 파악한다",
+    "유입감염 가능성을 선별한다"
+   ]
+  },
+  {
+   "title": "폐렴 의심 발열",
+   "tagline": "I've had a fever and this deep cough, and I'm getting short of breath.",
+   "room": "TREATMENT BAY 1",
+   "brief": "기침·SpO2를 사정하고 영상·항생제 계획을 설명하세요.",
+   "role": "patient",
+   "skills": [
+    "폐렴 사정",
+    "산소포화도 확인",
+    "항생제 계획"
+   ],
+   "keyPhrases": [
+    "Your cough and shortness of breath make us think of pneumonia.",
+    "We'll get a chest X-ray and check your oxygen level.",
+    "If it's pneumonia, we'll start antibiotics promptly."
+   ],
+   "goals": [
+    "기침·SpO2를 사정한다",
+    "영상·항생제 계획을 설명한다"
+   ]
+  },
+  {
+   "title": "요로감염 발열 노인",
+   "tagline": "Mom's been confused and feverish, but no cough or anything obvious.",
+   "room": "TREATMENT BAY 3",
+   "brief": "비전형 발현과 섬망을 감별하며 요로감염 가능성을 사정하세요.",
+   "role": "family",
+   "skills": [
+    "비전형 감염 사정",
+    "섬망 감별",
+    "요검사 설명"
+   ],
+   "keyPhrases": [
+    "In older adults, a urine infection can show up as confusion.",
+    "We'll check her urine and blood to look for infection.",
+    "Has she had any change in urination or new incontinence?"
+   ],
+   "goals": [
+    "노인의 비전형 발현을 사정한다",
+    "섬망과 요로감염을 감별한다"
+   ]
+  },
+  {
+   "title": "봉와직염 발열",
+   "tagline": "My leg's gotten red, hot, and swollen, and now I've got a fever.",
+   "room": "TREATMENT BAY 2",
+   "brief": "홍반 경계를 표시하고 진행을 관찰하며 항생제를 설명하세요.",
+   "role": "patient",
+   "skills": [
+    "봉와직염 사정",
+    "경계 표시",
+    "진행 관찰"
+   ],
+   "keyPhrases": [
+    "I'm marking the edge of the redness to see if it spreads.",
+    "The fever means the infection may be spreading, so we'll treat it.",
+    "Tell me if the pain suddenly gets much worse than it looks."
+   ],
+   "goals": [
+    "홍반 경계를 표시하고 진행을 관찰한다",
+    "항생제 치료를 설명한다"
+   ]
+  },
+  {
+   "title": "인플루엔자 시즌 선별",
+   "tagline": "Everyone at work has the flu and now I've got body aches and fever too.",
+   "room": "TRIAGE 2",
+   "brief": "검사와 항바이러스제 적응을 선별하고 격리를 설명하세요.",
+   "role": "patient",
+   "skills": [
+    "인플루엔자 선별",
+    "항바이러스 판단",
+    "격리 설명"
+   ],
+   "keyPhrases": [
+    "We'll swab you to check for the flu.",
+    "If it's positive and it's early, an antiviral may help.",
+    "Please keep the mask on to protect others while you're here."
+   ],
+   "goals": [
+    "인플루엔자 검사와 항바이러스 적응을 선별한다",
+    "격리와 예방을 설명한다"
+   ]
+  },
+  {
+   "title": "면역저하 발열",
+   "tagline": "I'm on chemo and I just spiked a fever — my nurse said to come in right away.",
+   "room": "RESUS BAY",
+   "brief": "호중구감소성 발열 가능성을 인지하고 신속한 대응을 설명하세요.",
+   "role": "patient",
+   "skills": [
+    "호중구감소성 발열 인지",
+    "신속 대응",
+    "감염 예방"
+   ],
+   "keyPhrases": [
+    "With chemo, a fever is an emergency, so we act fast.",
+    "We're drawing cultures and starting antibiotics quickly.",
+    "We'll keep you protected from other infections while you're here."
+   ],
+   "goals": [
+    "호중구감소성 발열을 인지한다",
+    "신속한 배양·항생제 대응을 설명한다"
+   ]
+  },
+  {
+   "title": "소아 고열 보호자",
+   "tagline": "His fever hit 104 and I'm terrified he'll have a seizure.",
+   "room": "PEDS BAY 2",
+   "brief": "열성경련 우려를 다루고 해열·수분 관리를 설명하세요.",
+   "role": "family",
+   "skills": [
+    "소아 발열 관리",
+    "보호자 교육",
+    "수분·해열"
+   ],
+   "keyPhrases": [
+    "We'll bring the fever down and keep him comfortable.",
+    "Most fever seizures are brief and don't cause lasting harm.",
+    "Keep offering fluids, and let me know if he becomes hard to wake."
+   ],
+   "goals": [
+    "열성경련 우려를 다룬다",
+    "해열·수분 관리를 설명한다"
+   ]
+  },
+  {
+   "title": "발열+발진 감별",
+   "tagline": "I've got a fever and this rash popped up — I started a new medication last week.",
+   "room": "TREATMENT BAY 4",
+   "brief": "감염성·약물성 발진을 감별하기 위해 병력을 확인하세요.",
+   "role": "patient",
+   "skills": [
+    "발진 감별",
+    "약물력 확인",
+    "진행 관찰"
+   ],
+   "keyPhrases": [
+    "The new medication makes me wonder if the rash is a drug reaction.",
+    "We'll look at how it's spreading and whether it blisters.",
+    "Do you have any mouth sores or eye irritation?"
+   ],
+   "goals": [
+    "감염성·약물성 발진을 감별한다",
+    "약물력과 진행을 확인한다"
+   ]
+  },
+  {
+   "title": "수막염 의심 두통·발열",
+   "tagline": "I've got a splitting headache, fever, and my neck is so stiff I can't look down.",
+   "room": "RESUS BAY",
+   "brief": "경부강직을 사정하고 요추천자 등 검사 필요성을 설명하세요.",
+   "role": "patient",
+   "skills": [
+    "수막자극징후 사정",
+    "요추천자 설명",
+    "신속 격리"
+   ],
+   "keyPhrases": [
+    "The stiff neck with fever and headache concerns me about meningitis.",
+    "We'll need a spinal tap to check the fluid around your brain.",
+    "Does bright light bother your eyes right now?"
+   ],
+   "goals": [
+    "경부강직 등 수막자극징후를 사정한다",
+    "요추천자 검사 필요성을 설명한다"
+   ]
+  },
+  {
+   "title": "결핵 의심 만성기침",
+   "tagline": "I've had this cough for weeks, night sweats, and I've lost weight.",
+   "room": "TRIAGE 2",
+   "brief": "음압격리 필요성을 판단하고 결핵 검사를 설명하세요.",
+   "role": "patient",
+   "skills": [
+    "결핵 선별",
+    "음압격리 판단",
+    "검사 설명"
+   ],
+   "keyPhrases": [
+    "A long cough with night sweats and weight loss can suggest TB.",
+    "We'll place you in a special isolation room right away.",
+    "We'll test your sputum to check for tuberculosis."
+   ],
+   "goals": [
+    "결핵 위험을 선별한다",
+    "음압격리와 검사를 설명한다"
+   ]
+  },
+  {
+   "title": "여행 후 열대열 의심",
+   "tagline": "I got back from a malaria region two weeks ago and now I have chills and fever.",
+   "room": "TREATMENT BAY 1",
+   "brief": "말라리아 노출을 확인하고 신속 검사·격리 판단을 설명하세요.",
+   "role": "patient",
+   "skills": [
+    "말라리아 노출 확인",
+    "신속 검사",
+    "감별 진단"
+   ],
+   "keyPhrases": [
+    "Fever after travel to a malaria area needs urgent testing.",
+    "Did you take any malaria prevention pills, and finish them?",
+    "We'll run a rapid blood test to check for it now."
+   ],
+   "goals": [
+    "말라리아 노출을 확인한다",
+    "신속 검사와 감별 진단을 설명한다"
+   ]
+  },
+  {
+   "title": "호중구감소성 발열 패혈증",
+   "tagline": "I feel like I'm crashing…",
+   "room": "RESUS BAY",
+   "brief": "즉시 광범위 항생제 투여를 시행하고 팀에 SBAR로 인계하세요.",
+   "role": "colleague",
+   "skills": [
+    "즉시 항생제",
+    "패혈증 번들",
+    "SBAR 인계"
+   ],
+   "keyPhrases": [
+    "Neutropenic and now hypotensive — this is septic until proven otherwise.",
+    "Cultures are drawn; give broad-spectrum antibiotics within the hour.",
+    "Febrile neutropenia with sepsis — I need fluids running and a physician now."
+   ],
+   "goals": [
+    "즉시 광범위 항생제를 투여한다",
+    "패혈증 대응을 SBAR로 인계한다"
+   ]
+  },
+  {
+   "title": "수막구균혈증 진행",
+   "tagline": "These purple spots just appeared and he's getting so cold and drowsy.",
+   "room": "RESUS BAY",
+   "brief": "자반·쇼크를 인지하고 즉시 항생제와 격리를 시행하세요.",
+   "role": "family",
+   "skills": [
+    "수막구균혈증 인지",
+    "즉시 항생제",
+    "접촉 격리"
+   ],
+   "keyPhrases": [
+    "Those purple spots with drowsiness are a dangerous sign — we're acting now.",
+    "We're giving antibiotics immediately and starting fluids.",
+    "We're isolating him and will need to protect close contacts too."
+   ],
+   "goals": [
+    "자반·쇼크를 수막구균혈증으로 인지한다",
+    "즉시 항생제·격리를 시행한다"
+   ]
+  },
+  {
+   "title": "괴사성 근막염",
+   "tagline": "The pain in my leg is way worse than it looks — it's unbearable.",
+   "room": "RESUS BAY",
+   "brief": "소견 대비 심한 통증을 인지하고 외과 협진을 긴급 조율하세요.",
+   "role": "patient",
+   "skills": [
+    "괴사성 근막염 인지",
+    "통증-소견 불일치",
+    "외과 긴급연계"
+   ],
+   "keyPhrases": [
+    "Pain this severe with a fever worries me about a deep infection.",
+    "We're calling surgery urgently to evaluate you.",
+    "We're starting strong antibiotics and fluids right now."
+   ],
+   "goals": [
+    "소견 대비 심한 통증을 위험 신호로 인지한다",
+    "외과 협진을 긴급 조율한다"
+   ]
+  },
+  {
+   "title": "독성쇼크증후군",
+   "tagline": "I feel awful — high fever, this red rash all over, and now I'm so dizzy.",
+   "room": "RESUS BAY",
+   "brief": "발진·저혈압·다장기 침범을 인지하고 신속 소생을 시행하세요.",
+   "role": "patient",
+   "skills": [
+    "독성쇼크 인지",
+    "저혈압 대응",
+    "다장기 사정"
+   ],
+   "keyPhrases": [
+    "The rash, fever, and low pressure point to toxic shock.",
+    "We're pouring in fluids and starting antibiotics now.",
+    "Have you had any recent wound, surgery, or been using tampons?"
+   ],
+   "goals": [
+    "발진·저혈압·다장기 침범을 인지한다",
+    "신속 수액·항생제 소생을 시행한다"
+   ]
+  },
+  {
+   "title": "발열 급속악화 쇼크 이행",
+   "tagline": "I was okay an hour ago but now I can barely stay awake…",
+   "room": "RESUS BAY",
+   "brief": "패혈증 번들을 가동하고 쇼크 이행을 팀에 인계하세요.",
+   "role": "patient",
+   "skills": [
+    "쇼크 이행 인지",
+    "번들 가동",
+    "신속 인계"
+   ],
+   "keyPhrases": [
+    "Your pressure is dropping fast, so we're moving quickly now.",
+    "We're giving fluids wide open and antibiotics right away.",
+    "Stay with me — I'm getting the team in here."
+   ],
+   "goals": [
+    "발열의 쇼크 이행을 인지한다",
+    "패혈증 번들을 신속히 가동한다"
+   ]
+  },
+  {
+   "title": "고위험 감염 이송 인계",
+   "tagline": "Transferring a suspected high-consequence infection — need a clean handoff.",
+   "room": "AMBULANCE BAY",
+   "brief": "격리·배양·항생제 정보를 포함해 받는 팀에 명확히 인계하세요.",
+   "role": "colleague",
+   "skills": [
+    "감염 이송 인계",
+    "격리 정보 전달",
+    "배양·항생제 이력"
+   ],
+   "keyPhrases": [
+    "Suspected meningococcemia — he's on airborne and contact precautions.",
+    "Cultures were drawn and first antibiotic dose given at nineteen-hundred.",
+    "Last pressure eighty-five systolic on fluids — please continue isolation."
+   ],
+   "goals": [
+    "격리 상태와 이유를 전달한다",
+    "배양·항생제 이력과 활력을 인계한다"
+   ]
+  }
+ ]
+}

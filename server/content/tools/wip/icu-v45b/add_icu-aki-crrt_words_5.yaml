@@ -1,0 +1,315 @@
+w-volume:
+  cue: "혈관 안 체액이 조금만 빠져도 혈압이 흔들린다 — 'a small ___ shift'"
+  tag: 혈역학
+  distractorsEn: [value, column]
+  distractorsKo: [농도, 압력]
+  chips: [[vol, ume]]
+  decoyChips: [val, um]
+w-shift:
+  cue: "체액이 한쪽에서 다른 쪽으로 옮겨 가는 것 — 'volume ___'"
+  tag: 혈역학
+  distractorsEn: [shaft, drift]
+  distractorsKo: [고정, 정체]
+  chips: [[shift]]
+  decoyChips: [shaft]
+w-reassess:
+  cue: "작은 조정 하나 뒤마다 혈압·상태를 다시 들여다보는 것"
+  tag: 간호 동작
+  distractorsEn: [reassure, recess]
+  distractorsKo: [안심시키다, 보고하다]
+  chips: [[re, as, sess]]
+  decoyChips: [ri, sure]
+w-resume:
+  cue: "멈췄던 순 제거를 다시 이어서 하는 것 — 혈압이 버티면"
+  tag: 혈역학
+  distractorsEn: [reduce, presume]
+  distractorsKo: [줄이다, 끝내다]
+  chips: [[re, sume]]
+  decoyChips: [ri, zoom]
+w-later:
+  cue: "지금이 아니라 안정된 다음에 — 'resume net removal ___'"
+  tag: 정도·시간
+  distractorsEn: [latter, sooner]
+  distractorsKo: [곧, 미리]
+  chips: [[la, ter]]
+  decoyChips: [lat, tor]
+w-unstable:
+  cue: "혈압이 오르내리며 흔들리는 — 일반 투석을 버티기 어려운 상태"
+  tag: 혈역학
+  distractorsEn: [unable, stable]
+  distractorsKo: [안정된, 회복된]
+  chips: [[un, sta, ble]]
+  decoyChips: [in, stay]
+w-hard:
+  cue: "몸에 부담이 큰, 견디기 힘든 — '___er on a critically ill patient'"
+  tag: 정도·시간
+  distractorsEn: [hearty, harmless]
+  distractorsKo: [가벼운, 편한]
+  chips: [[hard]]
+  decoyChips: [herd]
+w-critical:
+  cue: "'___ ill'·'___ high' — 생명이 걸릴 만큼 심하게"
+  tag: 응급 대응
+  distractorsEn: [chronically, clinically]
+  distractorsKo: [가볍게, 만성적으로]
+  chips: [[crit, i, cal, ly]]
+  decoyChips: [cri, cly]
+w-ill:
+  cue: "'critically ___' — 중환자실에 올 만큼 아픈"
+  tag: 응급 대응
+  distractorsEn: [well, idle]
+  distractorsKo: [건강한, 회복된]
+  chips: [[ill]]
+  decoyChips: [il]
+w-basic:
+  cue: "두 투석 방식이 공통으로 하는 가장 기본의 — '___ job'"
+  tag: CRRT 원리
+  distractorsEn: [basin, base]
+  distractorsKo: [특별한, 추가의]
+  chips: [[ba, sic]]
+  decoyChips: [bay, sick]
+w-treatment:
+  cue: "CRRT·투석처럼 병을 다스리려고 하는 일 전체 — 'a paused ___'"
+  tag: CRRT 원리
+  distractorsEn: [treaty, statement]
+  distractorsKo: [진단, 검사]
+  chips: [[treat, ment]]
+  decoyChips: [treet, mint]
+w-easy:
+  cue: "몸에 덜 버거운 — '___ier on an unstable heart'·'no ___ answer'"
+  tag: 정도·시간
+  distractorsEn: [early, eager]
+  distractorsKo: [힘든, 복잡한]
+  chips: [[ea, sy]]
+  decoyChips: [ee, si]
+w-switch:
+  cue: "안정되면 CRRT에서 일반 투석으로 방식을 바꾸는 것"
+  tag: CRRT 원리
+  distractorsEn: [stitch, swish]
+  distractorsKo: [유지하다, 중단하다]
+  chips: [[switch]]
+  decoyChips: [swich]
+w-talk:
+  cue: "가족과 앉아 함께 이야기 나누는 것 — 'we can ___ about'"
+  tag: 가족 소통
+  distractorsEn: [walk, tell]
+  distractorsKo: [설득하다, 알리다]
+  chips: [[talk]]
+  decoyChips: [tock]
+w-antibiotic:
+  cue: "패혈증에 쓰는 반코마이신·피페라실린 같은 약 — CRRT로 일부 빠져나간다"
+  tag: 약물
+  distractorsEn: [antibody, antiseptic]
+  distractorsKo: [항체, 소독제]
+  chips: [[anti, bi, ot, ic]]
+  decoyChips: [ante, body]
+w-renal:
+  cue: "신장에 관한 — 약사와 이야기할 때 쓰는 의학 형용사 ('___ dosing')"
+  tag: 약물
+  distractorsEn: [rental, neural]
+  distractorsKo: [간의, 심장의]
+  chips: [[re, nal]]
+  decoyChips: [ri, nel]
+w-effective:
+  cue: "항생제 혈중 농도가 균을 잡을 만큼 충분한 — 'stay ___'"
+  tag: 약물
+  distractorsEn: [affective, defective]
+  distractorsKo: [독성인, 부족한]
+  chips: [[ef, fec, tive]]
+  decoyChips: [af, tiv]
+w-wash:
+  cue: "항생제가 필터를 지나며 빠르게 빠져나가 버리는 것 — 두 낱말 구동사"
+  tag: 약물
+  distractorsEn: [wash up, wipe out]
+  distractorsKo: [쌓이다, 흡수되다]
+  chips: [[wash], [out]]
+  decoyChips: [wosh, up]
+w-different:
+  cue: "CRRT 중에는 평소와 다른 방식으로 — 'dose them ___'"
+  tag: 약물
+  distractorsEn: [similarly, defiantly]
+  distractorsKo: [똑같이, 평소대로]
+  chips: [[dif, fer, ent, ly]]
+  decoyChips: [def, ant]
+w-pharmacy:
+  cue: "CRRT 중 항생제 용량을 함께 따져 주는 부서 — 'check with ___'"
+  tag: 약물
+  distractorsEn: [pharmacology, pathology]
+  distractorsKo: [약리학, 검사실]
+  chips: [[phar, ma, cy]]
+  decoyChips: [far, see]
+w-next:
+  cue: "이번 다음에 오는 — 'before the ___ dose'"
+  tag: 정도·시간
+  distractorsEn: [last, nearest]
+  distractorsKo: [지난, 첫]
+  chips: [[next]]
+  decoyChips: [nex]
+w-schedule:
+  cue: "회로 교체·정지 시간을 포함한 CRRT 진행표 — 투약 시점을 여기에 맞춘다"
+  tag: 약물
+  distractorsEn: [scheme, module]
+  distractorsKo: [처방, 목록]
+  chips: [[sched, ule]]
+  decoyChips: [sked, jool]
+w-cool:
+  cue: "혈액이 몸 밖 회로를 도는 동안 체온이 떨어지는 것 — 'can ___ his blood'"
+  tag: 저체온·영양
+  distractorsEn: [coil, clot]
+  distractorsKo: [데우다, 묽게 하다]
+  chips: [[cool]]
+  decoyChips: [cole]
+w-warmer:
+  cue: "회로 라인에 끼워 돌아가는 혈액을 데우는 장치"
+  tag: 저체온·영양
+  distractorsEn: [warning, wrapper]
+  distractorsKo: [경보, 덮개]
+  chips: [[warm, er]]
+  decoyChips: [worm, ar]
+w-blanket:
+  cue: "춥다는 환자에게 하나 더 덮어 주는 것"
+  tag: 저체온·영양
+  distractorsEn: [basket, bracket]
+  distractorsKo: [베개, 가운]
+  chips: [[blan, ket]]
+  decoyChips: [blank, kit]
+w-nutrient:
+  cue: "아미노산·비타민처럼 필터로 함께 빠져나가는 몸에 필요한 것"
+  tag: 저체온·영양
+  distractorsEn: [nutritionist, nitrate]
+  distractorsKo: [노폐물, 전해질]
+  chips: [[nu, tri, ent]]
+  decoyChips: [new, ant]
+w-feed:
+  cue: "경관영양으로 먹이는 것 — 명사로 'adjust his ___ing'"
+  tag: 저체온·영양
+  distractorsEn: [feel, flush]
+  distractorsKo: [금식시키다, 배출하다]
+  chips: [[feed]]
+  decoyChips: [fed]
+w-temperature:
+  cue: "회로 때문에 떨어질 수 있어 매시간 재는 바이탈"
+  tag: 저체온·영양
+  distractorsEn: [temper, tempo]
+  distractorsKo: [혈압, 맥박]
+  chips: [[tem, per, a, ture]]
+  decoyChips: [tam, chur]
+w-nutrition:
+  cue: "환자가 먹고 흡수해 몸을 지탱하는 전체 — 체온과 함께 살핀다"
+  tag: 저체온·영양
+  distractorsEn: [nutrient, nutritionist]
+  distractorsKo: [영양소, 영양사]
+  chips: [[nu, tri, tion]]
+  decoyChips: [new, sion]
+w-feel:
+  cue: "환자가 몸으로 춥다고 느끼는 것, 가족이 저마다 받아들이는 것"
+  tag: 가족 소통
+  distractorsEn: [fill, fail]
+  distractorsKo: [보이다, 듣다]
+  chips: [[feel]]
+  decoyChips: [fill]
+w-cold:
+  cue: "회로를 돌며 혈액이 식어 환자가 하는 호소 — 'He may feel ___'"
+  tag: 저체온·영양
+  distractorsEn: [bold, calm]
+  distractorsKo: [더운, 아픈]
+  chips: [[cold]]
+  decoyChips: [coled]
+w-pass:
+  cue: "혈액이 기계 속을 지나가는 것 — '___es through the machine'"
+  tag: 회로·장비
+  distractorsEn: [pause, push]
+  distractorsKo: [멈추다, 막히다]
+  chips: [[pass]]
+  decoyChips: [pas]
+w-calorie:
+  cue: "CRRT로 빠진 만큼 영양 처방에서 늘리는 에너지 단위"
+  tag: 저체온·영양
+  distractorsEn: [calcium, gallery]
+  distractorsKo: [단백질, 수분]
+  chips: [[cal, o, rie]]
+  decoyChips: [kal, ry]
+w-increase:
+  cue: "칼로리·산소·초여과량을 지금보다 올리는 것"
+  tag: 간호 동작
+  distractorsEn: [decrease, increment]
+  distractorsKo: [줄이다, 유지하다]
+  chips: [[in, crease]]
+  decoyChips: [de, crees]
+w-add:
+  cue: "필요하면 담요를 한 장 더 얹는 것"
+  tag: 간호 동작
+  distractorsEn: [aid, odd]
+  distractorsKo: [치우다, 바꾸다]
+  chips: [[add]]
+  decoyChips: [ad]
+w-high:
+  cue: "칼륨 6.8처럼 정상보다 위인 — 'critically ___'"
+  tag: 전해질
+  distractorsEn: [huge, heavy]
+  distractorsKo: [낮은, 정상인]
+  chips: [[high]]
+  decoyChips: [hi]
+w-ecg:
+  cue: "뾰족한 T파·넓은 QRS가 보이는 12유도 검사의 약자"
+  tag: 응급 대응
+  distractorsEn: [EEG, EMG]
+  distractorsKo: [뇌파, 흉부 엑스레이]
+  chips: [[ECG]]
+  decoyChips: [EEG]
+w-emergent:
+  cue: "몇 시간도 기다릴 수 없는, 바로 해야 하는 — '___ dialysis'"
+  tag: 응급 대응
+  distractorsEn: [emerging, elective]
+  distractorsKo: [예정된, 선택적인]
+  chips: [[e, mer, gent]]
+  decoyChips: [em, jent]
+w-stop:
+  cue: "고칼륨으로 심장이 뛰지 않게 되는 것, 출혈이 멎는 것"
+  tag: 응급 대응
+  distractorsEn: [step, slip]
+  distractorsKo: [빨라지다, 시작하다]
+  chips: [[stop]]
+  decoyChips: [stoop]
+w-act:
+  cue: "망설이지 않고 바로 손을 쓰는 것 — 'if we don't ___ fast'"
+  tag: 응급 대응
+  distractorsEn: [ask, add]
+  distractorsKo: [기다리다, 지켜보다]
+  chips: [[act]]
+  decoyChips: [akt]
+w-pull:
+  cue: "응급 카트를 병실까지 끌어오는 것, 회로로 체액을 빼는 것"
+  tag: 응급 대응
+  distractorsEn: [push, pool]
+  distractorsKo: [밀다, 채우다]
+  chips: [[pull]]
+  decoyChips: [pul]
+w-crash-cart:
+  cue: "제세동기와 응급약이 실린 바퀴 달린 수레"
+  tag: 응급 대응
+  distractorsEn: [supply cart, med cart]
+  distractorsKo: [물품 카트, 투약 카트]
+  chips: [[crash], [cart]]
+  decoyChips: [crush, card]
+w-set-up:
+  cue: "투석 기계와 회로를 꺼내 바로 쓸 수 있게 갖추는 것 — 두 낱말 구동사"
+  tag: 응급 대응
+  distractorsEn: [set off, sit up]
+  distractorsKo: [치우다, 끄다]
+  chips: [[set], [up]]
+  decoyChips: [sit, "on"]
+w-lose:
+  cue: "회로가 굳어 그 안에 있던 혈액을 몸에 돌려주지 못하는 것 (과거형으로 쓰인다)"
+  tag: 응급 대응
+  distractorsEn: [loose, lease]
+  distractorsKo: [되찾다, 돌려주다]
+  chips: [[lose]]
+  decoyChips: [loos]
+w-inside:
+  cue: "굳은 회로 속에 갇힌 혈액 — 'the blood ___ it'"
+  tag: 회로·장비
+  distractorsEn: [beside, aside]
+  distractorsKo: [바깥에, 옆에]
+  chips: [[in, side]]
+  decoyChips: [en, sight]

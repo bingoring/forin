@@ -1,0 +1,101 @@
+- title: 출혈 초기 사정
+  s:
+  - {t: "출혈 경과", i: calendar, w: "How long과 how much를 한 문장에 묶어 시간과 양을 한꺼번에 물어요. 출혈이 시작된 때와 잃은 양은 얼마나 급한지 가르는 첫 정보예요.", d: "from your hand", k: ["어디를 다치셨는지 말씀해 주세요", "피가 멈춘 적은 있었나요?"], a: "bleeding", o: ["swelling", "hurting", "healing"]}
+  - {t: "박동성 확인", i: magnify, w: "steady와 spurt를 or로 맞세워 물으면 환자가 눈으로 본 모양을 고르기만 하면 돼요. 맥박에 맞춰 뿜어지는 출혈은 동맥 손상을 시사해서 먼저 가려내요.", d: "all day", k: ["피 색깔이 어두운가요?", "피가 멎은 것 같으세요?"], a: "spurt", o: ["ooze", "trickle", "seep"]}
+  - {t: "즉시 압박", i: bandage, w: "Let me…는 허락을 구하는 말투라 환자가 상처를 맡기기 쉬워요. 살피는 일과 압박을 한 문장에 묶어, 보는 동안에도 지혈이 이어진다는 뜻을 전해요.", d: "and clean", k: ["어디가 제일 아픈지 말씀해 주세요", "혈압부터 재 볼게요"], a: "apply", o: ["release", "reduce", "avoid"]}
+  - {t: "경위 문진", i: me, w: "Can you tell me…?는 직접 묻기보다 부드러운 요청이에요. 베인 경위는 물체의 종류와 오염 가능성을 가늠하는 단서예요.", d: "where the cut", k: ["베인 부위를 보여 주세요", "혹시 먹는 약이 있으세요?"], a: "cut", o: ["burn", "bite", "bruise"]}
+  - {t: "크기 사정", i: magnify, w: "I need to…는 허락을 구하는 대신 해야 할 일을 사실대로 알리는 말이에요. 크기와 깊이는 봉합이 필요한지, 깊은 구조까지 다쳤는지 가르는 기본 기준이에요.", d: "of your hand", k: ["상처 부위를 소독할게요", "가장 아픈 곳을 짚어 보세요"], a: "check", o: ["cover", "clean", "close"]}
+  - {t: "박동성 확인", i: magnify, w: "in spurts or a steady flow처럼 모양을 두 가지로 보여 주면 대답이 쉬워져요. 뿜는 출혈은 동맥, 꾸준한 출혈은 정맥을 시사해 대처가 달라져요.", d: "all at once", k: ["출혈이 얼마나 오래 됐나요?", "피 색깔이 어떤가요?"], a: "bleeding", o: ["swelling", "pain", "bruising"]}
+  - {t: "즉시 압박", i: bandage, w: "right now를 붙여 바로 시작한다고 알리면 환자가 기다리지 않아도 된다는 걸 알아요. 눈에 보이는 출혈은 먼저 직접 압박으로 막아요.", d: "after the scan", k: ["상처에 거즈를 덮어 둘게요", "손을 심장보다 높이 올려 주세요"], a: "press", o: ["rub", "pull", "tap"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "출혈 초기 사정 4문장 순서"
+    why: "먼저 압박을 시작하고, 그 상태로 경과를 묻고, 그 시간을 보며 박동성을 가린 뒤, 모든 정보로 크기·깊이를 확인해요. 'it'·'that time'·'all of that'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "I'm pressing on the wound now, so please stay still.", icon: bandage, ko: "지금 상처를 누르고 있으니 가만히 계세요", note: "압박"}
+    - {en: "Keep it still like that, and tell me how long it has been bleeding.", icon: calendar, ko: "그대로 가만히 두시고 얼마나 오래 피가 났는지 말씀해 주세요", note: "경과"}
+    - {en: "Going by that time, does the blood flow steadily or spurt with your pulse?", icon: magnify, ko: "그 시간을 보면 피가 꾸준히 흐르나요, 맥박에 맞춰 뿜어지나요?", note: "박동"}
+    - {en: "With all of that, I'll check the size and depth of the wound.", icon: check, ko: "그 모두를 보고 상처의 크기와 깊이를 확인할게요", note: "사정"}
+  ctx:
+    word: "blood loss"
+    ko: "실혈"
+    scenes:
+      1: "Blood loss approx. 200 mL prior to arrival."
+    why: "blood loss의 추정치(EBL)는 의료진의 말이에요. 환자에게는 '얼마나 흘린 것 같아요?'처럼 짐작을 묻는 말로 물어요."
+  sw: {ko: "피가 맥박에 맞춰 뿜어져 나오나요, 아니면 꾸준히 나오나요?"}
+- title: 직접압박 지혈 설명
+  s:
+  - {t: "압박 방법", i: bandage, w: "firmly와 steadily를 함께 써서 세기와 지속을 한꺼번에 지시해요. 지혈은 상처 바로 위를 단단히 눌러 유지하는 것이 기본이에요.", d: "Press gently", k: ["어디가 가장 아픈지 알려 주세요", "거즈를 한 장 더 덮을게요"], a: "firmly", o: ["gently", "lightly", "briefly"]}
+  - {t: "거상 지도", i: me, w: "above your heart처럼 기준점을 말해 주면 환자가 높이를 스스로 맞춰요. 상처를 심장보다 높이 두면 그 부위로 가는 혈압이 낮아져요.", d: "below your heart", k: ["손가락을 움직일 수 있는지 볼게요", "붕대를 새로 감아 드릴게요"], a: "raised", o: ["lowered", "folded", "hidden"]}
+  - {t: "압박 유지", i: bandage, w: "금지를 Don't keep + -ing로 말해 '자꾸 하게 되는 행동'을 짚어요. 거즈를 들추면 엉기기 시작한 피딱지가 떨어져 다시 출혈할 수 있어요.", d: "swapping", k: ["거즈가 젖으면 위에 한 장 더 덮을게요", "아프면 바로 말씀해 주세요"], a: "lifting", o: ["tightening", "drying", "soaking"]}
+  - {t: "이유 설명", i: bulb, w: "if you let go too soon으로 조건을 달아 '왜 계속 눌러야 하는지'를 알려요. 누르는 동안 피가 엉겨 굳을 시간이 필요해서 일찍 풀면 다시 나요.", d: "too hard", k: ["너무 세게 누르면 아플 수 있어요", "오래 누르면 손이 저릴 수 있어요"], a: "stop", o: ["start", "hide", "cause"]}
+  - {t: "종료 안내", i: bell, w: "when to stop을 '내가 알려 준다'고 하면 환자가 불안해서 스스로 일찍 떼지 않아요. 압박을 풀 시점은 간호사가 상처를 보고 정해요.", d: "where to", k: ["손이 저리면 말씀해 주세요", "거즈가 젖으면 제가 덮어 드릴게요"], a: "know", o: ["see", "hear", "feel"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "직접압박 설명 4문장 순서"
+    why: "먼저 눌러 달라고 하고, 그 압박 위에서 손을 높이 들게 하고, 그 자세를 지키며 거즈를 들추지 말라 한 뒤, 그래서 풀 시점은 간호사가 알린다고 닫아요. 'that pressure'·'it up there'·'Because of that'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Press firmly right on the wound, and don't let up.", icon: bandage, ko: "상처 바로 위를 단단히 누르고 늦추지 마세요", note: "압박"}
+    - {en: "With that pressure on, raise your hand above your heart.", icon: me, ko: "그렇게 누른 채 손을 심장보다 높이 드세요", note: "거상"}
+    - {en: "Keep it up there, and don't lift the gauze to check.", icon: shield, ko: "그대로 들고 계시고 확인한다고 거즈를 들추지 마세요", note: "유지"}
+    - {en: "Because of that, I'll tell you when it's okay to let go.", icon: bell, ko: "그래서 언제 놓아도 되는지는 제가 알려 드릴게요", note: "안내"}
+  sw: {ko: "손을 심장보다 높이 들고 계세요"}
+- title: 상처 세척·평가
+  s:
+  - {t: "세척 안내", i: bandage, w: "to remove…로 세척의 목적을 바로 붙여 알려요. 흙과 이물질을 씻어 내는 것이 감염을 줄이는 핵심 단계예요.", d: "to measure", k: ["상처 사진을 찍어 둘게요", "상처 주변 털을 밀게요"], a: "remove", o: ["cover", "hide", "trap"]}
+  - {t: "깊이 확인", i: magnify, w: "how deep it is처럼 의문사 절로 말하면 무엇을 보는지 환자에게 그대로 알려 줘요. 깊이와 안에 남은 이물은 봉합 여부와 영상 검사 필요를 정해요.", d: "how wide", k: ["상처가 얼마나 아픈지 말씀해 주세요", "다 헹궜는지 다시 볼게요"], a: "inside", o: ["outside", "above", "beside"]}
+  - {t: "감각 확인", i: bell, w: "still stuck으로 아직 남아 있을 수 있다는 가능성을 환자가 느낌으로 알려 달라고 해요. 환자의 느낌은 눈에 안 보이는 이물을 찾는 단서가 돼요.", d: "already gone", k: ["지금 통증이 어느 정도인가요?", "물이 차갑게 느껴지면 말씀해 주세요"], a: "feel", o: ["hear", "smell", "taste"]}
+  - {t: "경위 문진", i: me, w: "How did you…?로 열어 묻고 fall과 cut을 한 문장에 넣어요. 넘어진 경위는 흙이 들어갔는지, 다른 곳을 다쳤는지 가늠하는 단서예요.", d: "Why did you fall", k: ["어디가 제일 아프세요?", "마지막 파상풍 주사는 언제였나요?"], a: "cut", o: ["burn", "bite", "scald"]}
+  - {t: "통증 예고", i: faceWorried, w: "might…a little로 따가움을 미리 알리면 놀라서 손을 빼지 않아요. 세척할 때 따끔한 것은 흔한 반응이라 예고해 두는 편이 좋아요.", d: "a lot", k: ["아프면 바로 말씀해 주세요", "물이 차가울 수 있어요"], a: "sting", o: ["bleed", "swell", "freeze"]}
+  - {t: "이유 설명", i: shield, w: "so it doesn't…로 목적을 붙여 왜 아프게 씻는지 납득시켜요. 흙이 남으면 감염 위험이 커져서 세척이 중요해요.", d: "so it can", k: ["연고를 바르고 덮을게요", "물이 차가우면 말씀해 주세요"], a: "infected", o: ["stained", "wrapped", "stitched"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "상처 세척 4문장 순서"
+    why: "먼저 헹궈 흙을 씻어 내고, 그 헹굼 뒤 남은 느낌을 묻고, 환자의 말을 근거로 깊이와 이물을 확인한 뒤, 이 모두로 감염 위험이 낮아진다고 닫아요. 'That rinse'·'what you tell me'·'all of that'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "We'll rinse the wound well to wash the dirt out.", icon: bandage, ko: "상처를 충분히 헹궈 흙을 씻어 낼게요", note: "세척"}
+    - {en: "That rinse might sting, so tell me if you feel anything still stuck in there.", icon: bell, ko: "그 헹굼은 따끔할 수 있으니 안에 뭔가 남은 느낌이 들면 말씀해 주세요", note: "감각"}
+    - {en: "Based on what you tell me, I'll check how deep it is.", icon: magnify, ko: "말씀해 주시는 것을 바탕으로 얼마나 깊은지 확인할게요", note: "확인"}
+    - {en: "With all of that done, the risk of infection is lower.", icon: shield, ko: "그 모두를 하고 나면 감염 위험이 낮아져요", note: "안심"}
+  sw: {ko: "자세히 보기 전에 흙을 헹궈 낼게요"}
+- title: 파상풍 예방 문진
+  s:
+  - {t: "접종력 문진", i: calendar, w: "even roughly를 붙여 정확한 날짜를 몰라도 대답해도 된다고 알려요. 마지막 접종 시기가 추가 접종이 필요한지 가르는 기준이에요.", d: "at the clinic", k: ["어떤 약에 알레르기가 있으세요?", "상처가 언제 생겼는지 알려 주세요"], a: "tetanus", o: ["flu", "measles", "hepatitis"]}
+  - {t: "필요성 설명", i: shield, w: "may need처럼 가능성으로 말해 무조건 맞아야 하는 것처럼 들리지 않게 해요. 오염된 상처는 마지막 접종이 5년을 넘었으면 추가 접종을 권해요.", d: "to be seen", k: ["상처를 먼저 헹궈 낼게요", "접종 기록은 차트에 남길게요"], a: "need", o: ["cause", "skip", "delay"]}
+  - {t: "접종 안내", i: pill, w: "if you're not up to date로 조건을 분명히 해 접종이 필요한 사람에게만 놓는다고 알려요. 접종 이력이 최신이면 추가로 맞지 않아요.", d: "due next year", k: ["주사는 팔에 놓을 거예요", "접종 기록이 있는지 찾아볼게요"], a: "vaccine", o: ["antibiotic", "painkiller", "bandage"]}
+  - {t: "환자 응답", i: speech, w: "honestly를 앞에 붙이면 '솔직히 모르겠다'는 뜻이라 불확실함을 숨기지 않아요. 기억도 기록도 없으면 접종하지 않은 것으로 보고 안전하게 대처해요.", d: "very well", k: ["작년에 다른 병원에서 맞았어요", "상처가 어제 생겼어요"], a: "remember", o: ["regret", "enjoy", "review"]}
+  - {t: "위험 설명", i: bulb, w: "even more으로 앞 설명보다 더하다는 걸 비교로 알려요. 더럽거나 깊은 상처는 파상풍 균이 자라기 좋아서 접종 기준이 더 엄격해요.", d: "much less", k: ["더러운 상처는 더 꼼꼼히 씻을게요", "상처 크기를 한 번 더 확인할게요"], a: "raises", o: ["lowers", "removes", "ignores"]}
+  - {t: "통증 예고", i: faceWorried, w: "a quick pinch로 '잠깐'과 '따끔' 두 가지를 알려 놀라지 않게 해요. 미리 알리면 몸에 힘이 덜 들어가 주사가 덜 아파요.", d: "a deep burn", k: ["주사 후에 팔이 뻐근할 수 있어요", "주사는 반대편 팔에 놓을게요"], a: "quick", o: ["deep", "loud", "wide"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "파상풍 문진 4문장 순서"
+    why: "접종 시기를 묻고, 그 날짜가 무엇이든 상처 상태와 견주고, 그 판단으로 추가 접종 가능성을 알린 뒤, 그 접종의 통증을 예고해요. 'Whatever the date is'·'Based on that'·'it'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "When was your last tetanus shot, even roughly?", icon: calendar, ko: "마지막 파상풍 주사가 언제였는지 대략이라도 알려 주세요", note: "문진"}
+    - {en: "Whatever the date is, I'll weigh it against how dirty or deep this wound is.", icon: magnify, ko: "날짜가 언제든 이 상처가 얼마나 더럽고 깊은지와 견주어 볼게요", note: "판단"}
+    - {en: "Based on that, you may need a booster today to be safe.", icon: shield, ko: "그에 따라 안전을 위해 오늘 추가 접종이 필요할 수 있어요", note: "필요성"}
+    - {en: "You'll feel a quick pinch when we give it.", icon: faceWorried, ko: "놓을 때 따끔한 느낌이 잠깐 있을 거예요", note: "예고"}
+  sw: {ko: "마지막 파상풍 주사가 언제였나요?"}
+- title: 통증·기전 청취
+  s:
+  - {t: "기전 문진", i: magnify, w: "원인과 물체 상태를 한 문장에 묶어 한 번에 묻고, dirty or rusty로 대답 범위를 좁혀 줘요. 오염된 물체는 감염과 파상풍 위험을 올려요.", d: "who held", k: ["상처가 언제 생겼는지 알려 주세요", "통증은 몇 점이에요?"], a: "caused", o: ["healed", "hid", "cleaned"]}
+  - {t: "통증 점수", i: faceWorried, w: "On a scale of…로 숫자 척도를 먼저 밝혀 대답을 점수로 받아요. 같은 환자의 점수를 비교하면 처치 뒤 통증이 줄었는지 알 수 있어요.", d: "in a minute", k: ["통증이 언제부터 시작됐어요?", "통증이 다른 곳으로 퍼지나요?"], a: "scale", o: ["list", "menu", "map"]}
+  - {t: "시점 문진", i: calendar, w: "When…?으로 시점을 짧게 묻는 가장 기본 형태예요. 다친 뒤 시간이 얼마나 지났는지는 봉합 가능 여부와 감염 위험을 가늠하는 데 쓰여요.", d: "Why did", k: ["이게 어디서 일어났어요?", "누가 같이 있었어요?"], a: "When", o: ["Where", "Why", "How"]}
+  - {t: "활동 문진", i: speech, w: "what you were doing으로 과거진행형을 써 '그 순간의 행동'을 물어요. 하던 일에서 물체의 종류와 오염 가능성이 떠올라요.", d: "where you", k: ["어디서 다치셨는지 말씀해 주세요", "지금 아픈 곳을 짚어 보세요"], a: "doing", o: ["buying", "reading", "drinking"]}
+  - {t: "위험 설명", i: bulb, w: "can cause로 가능성을 말해 겁주지 않으면서 이유를 알려요. 오염된 물체에 베이면 깊은 감염이 생길 수 있어 접종력을 함께 확인해요.", d: "can cool", k: ["파상풍 주사를 확인할게요", "오늘 항생제를 먼저 드릴게요"], a: "cause", o: ["clean", "fix", "cure"]}
+  - {t: "통증 양상", i: faceWorried, w: "세 가지를 나열해 말로 묘사하기 어려운 환자도 고르게 해요. 날카로움·둔함·욱신거림은 통증의 원인을 가늠하는 단서예요.", d: "burning", k: ["통증이 언제 가장 심한가요?", "통증이 다른 곳으로 번지나요?"], a: "sharp", o: ["cold", "wet", "loud"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "통증·기전 청취 4문장 순서"
+    why: "시점과 활동을 묻고, 그 말에서 원인과 물체 상태를 묻고, 그 물체가 무엇이든 통증 점수를 묻고, 그 통증의 양상을 묻는 순서예요. 'From that'·'Whatever it was'·'that pain'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "When did this happen, and what were you doing?", icon: calendar, ko: "이건 언제, 무엇을 하다 일어났나요?", note: "경위"}
+    - {en: "From that, what caused the cut, and was the object dirty or rusty?", icon: magnify, ko: "그 말을 들으니, 무엇 때문에 베였고 물건이 더럽거나 녹슬었나요?", note: "원인"}
+    - {en: "Whatever it was, how bad is the pain on a scale of zero to ten?", icon: faceWorried, ko: "무엇이었든 통증은 0에서 10 중에 얼마나 심한가요?", note: "점수"}
+    - {en: "Does that pain feel sharp, dull, or throbbing?", icon: bell, ko: "그 통증은 날카로운가요, 둔한가요, 욱신거리나요?", note: "양상"}
+  sw: {ko: "무엇에 베이셨나요?"}

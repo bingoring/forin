@@ -151,15 +151,28 @@ export function matchPhonemesToSyllables(
 // pure-logic module; the shapes line up with WordScore/SyllableScore/
 // PhonemeScore there by construction.
 export type CorrectionPhoneme = TimedSpan & { phoneme: string; accuracy: number };
-export type CorrectionSyllable = TimedSpan & { syllable: string };
+export type CorrectionSyllable = TimedSpan & { syllable: string; grapheme?: string };
+
+/**
+ * What a syllable is CALLED on screen: its spelling.
+ *
+ * We request PhonemeAlphabet: IPA, which makes Azure's `syllable` field an IPA string
+ * ("mɪn"), while `grapheme` is the spelling ("min"). The learner is looking for which part
+ * of the word they missed and finds it by spelling; IPA shows up only on the line that is
+ * labelled as pronunciation. A locale with no grapheme segmentation falls back to the
+ * phonetic form rather than an empty label — the syllable boundaries should still show.
+ */
+export function syllableLabel(s: { syllable: string; grapheme?: string }): string {
+  return s.grapheme?.trim() || s.syllable;
+}
 export type CorrectionWord = { syllables?: CorrectionSyllable[]; phonemes?: CorrectionPhoneme[] };
 
 /** The Korean coaching for one phoneme. Sourced from the server's phoneme-tip
  *  mapping (server/internal/content/phonemetips) — NEVER hand-authored here.
- *  As of this task that mapping is not yet wired into any HTTP response, so
- *  every real caller's lookup returns undefined for every phoneme; this
- *  function still has to behave correctly (render fewer than 2, never a fake
- *  one) once it is. */
+ *  POST /pronunciation returns it as `phonemeTips` (Task 11), keyed by the raw
+ *  phoneme spelling. A phoneme with no mapped tip is simply absent, so the
+ *  lookup can still return undefined — callers must then render fewer than 2
+ *  points, never a fake one. */
 export type CorrectionTip = { ipa: string; message: string };
 
 /**
@@ -186,8 +199,8 @@ export function phonemeTipLookup(
 }
 
 export type CorrectionPoint = {
-  /** The SYLLABLE the worst phoneme sits in (SoT's "min"/"li") — not the
-   *  phoneme itself; business-logic-model §2. */
+  /** The SYLLABLE the worst phoneme sits in (SoT's "min"/"li"), by its spelling
+   *  (syllableLabel) — not the phoneme itself; business-logic-model §2. */
   syllable: string;
   /** Assembled from every phoneme whose time window falls in that same
    *  syllable (SyllableResult itself carries no ipa field), not just the one
@@ -266,7 +279,7 @@ export function buildCorrectionPoints(
     const sylPhonemes = wordPhonemes.filter((_, pi) => wordMatches[pi] === sylIdx).map((p) => p.phoneme);
 
     points.push({
-      syllable: syllable.syllable,
+      syllable: syllableLabel(syllable),
       ipa: `/${sylPhonemes.length ? sylPhonemes.join('') : c.phoneme}/`,
       message: tip.message,
       severe: c.accuracy < 60,
@@ -299,4 +312,13 @@ export function downsampleAmplitude(samples: number[], count: number): number[] 
     out.push(avg);
   }
   return out;
+}
+
+/** The number the learner's NEXT attempt at this sentence will get. `rows` is the history
+ *  window (oldest first, at most the last 3), so it continues from the last real attempt
+ *  number rather than from the window's length — there is no cap on retries (business-rules
+ *  R3 only limits what is DISPLAYED). */
+export function nextAttemptNo(rows: ReadonlyArray<{ attemptNo?: number }>): number {
+  if (rows.length === 0) return 1;
+  return (rows[rows.length - 1].attemptNo ?? rows.length) + 1;
 }

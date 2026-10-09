@@ -1,0 +1,467 @@
+{
+ "theme": "er-dyspnea",
+ "situations": [
+  {
+   "title": "호흡곤란 초기 문진",
+   "tagline": "I've been having trouble catching my breath since this morning.",
+   "room": "TRIAGE",
+   "brief": "호흡곤란의 발병·악화 요인·기좌호흡 여부를 청취해 초기 병력을 정리하세요.",
+   "role": "patient",
+   "skills": [
+    "호흡곤란 문진",
+    "악화 요인 청취",
+    "기좌호흡 확인"
+   ],
+   "keyPhrases": [
+    "When did the shortness of breath start?",
+    "Is it worse when you lie down or when you move?",
+    "Do you have any cough, fever, or chest pain with it?"
+   ],
+   "goals": [
+    "호흡곤란의 발병과 악화 요인을 청취한다",
+    "기좌호흡 등 동반 증상을 확인한다"
+   ]
+  },
+  {
+   "title": "산소포화·호흡수 사정 설명",
+   "tagline": "What's that clip on my finger reading?",
+   "room": "EXAM 1",
+   "brief": "산소포화도·호흡수 측정 과정을 설명하고 산소 적용 필요성을 안내하세요.",
+   "role": "patient",
+   "skills": [
+    "산소포화 측정",
+    "호흡수 사정",
+    "산소 안내"
+   ],
+   "keyPhrases": [
+    "This clip measures the oxygen level in your blood.",
+    "I'm counting how many breaths you take per minute.",
+    "If it's low, we'll give you a little oxygen."
+   ],
+   "goals": [
+    "산소포화·호흡수 측정을 설명한다",
+    "산소 적용 필요성을 환자에게 안내한다"
+   ]
+  },
+  {
+   "title": "비강 캐뉼라 산소 적용",
+   "tagline": "These little tubes in my nose feel strange — is this okay?",
+   "room": "EXAM 2",
+   "brief": "비강 캐뉼라의 유량과 착용감을 조정하며 산소 적용을 안내하세요.",
+   "role": "patient",
+   "skills": [
+    "비강 캐뉼라 적용",
+    "유량 조절",
+    "착용감 관리"
+   ],
+   "keyPhrases": [
+    "The prongs go just inside your nose, gently.",
+    "I'm starting the oxygen at a low flow for now.",
+    "Let me know if it feels too dry or tickly."
+   ],
+   "goals": [
+    "비강 캐뉼라 착용과 유량을 안내한다",
+    "착용감을 조정하며 산소를 적용한다"
+   ]
+  },
+  {
+   "title": "과호흡 증후군 진정 코칭",
+   "tagline": "I can't breathe, my hands are tingling — I feel like I'm suffocating!",
+   "room": "EXAM 3",
+   "brief": "과호흡 증후군 환자에게 호흡 속도를 늦추도록 진정 코칭을 제공하세요.",
+   "role": "patient",
+   "skills": [
+    "과호흡 코칭",
+    "호흡 속도 조절",
+    "불안 완화"
+   ],
+   "keyPhrases": [
+    "You're safe — let's slow your breathing down together.",
+    "Breathe in for four, and out slowly for four with me.",
+    "The tingling will ease as your breathing settles."
+   ],
+   "goals": [
+    "과호흡 환자의 호흡 속도를 늦추도록 코칭한다",
+    "불안을 완화하며 증상을 안정시킨다"
+   ]
+  },
+  {
+   "title": "상기도 감염성 호흡곤란 문진",
+   "tagline": "I've had a cough and fever for days, and now breathing feels harder.",
+   "room": "FAST TRACK",
+   "brief": "발열·인후통·기침 등 상기도 감염 소견을 청취해 호흡곤란 원인을 문진하세요.",
+   "role": "patient",
+   "skills": [
+    "상기도 감염 문진",
+    "발열·기침 청취",
+    "호흡곤란 사정"
+   ],
+   "keyPhrases": [
+    "How high has your fever been?",
+    "Is the cough bringing anything up?",
+    "Does your throat hurt or feel swollen?"
+   ],
+   "goals": [
+    "상기도 감염 관련 증상을 체계적으로 청취한다",
+    "감염과 호흡곤란의 관계를 사정한다"
+   ]
+  },
+  {
+   "title": "급성 폐부종 기좌호흡",
+   "tagline": "I can't lie down at all — I'm coughing up pink, frothy stuff.",
+   "room": "RESUS BAY",
+   "brief": "분홍거품가래·수포음·좌위를 확인해 급성 폐부종을 사정하고 좌위를 유지하세요.",
+   "role": "patient",
+   "skills": [
+    "폐부종 사정",
+    "수포음 청진",
+    "좌위 유지"
+   ],
+   "keyPhrases": [
+    "Let's sit you upright to help you breathe.",
+    "The pink, frothy cough worries me about fluid in your lungs.",
+    "I'm listening to your lungs and getting oxygen on you."
+   ],
+   "goals": [
+    "급성 폐부종 소견을 신속히 사정한다",
+    "좌위 유지와 산소 적용으로 호흡을 지지한다"
+   ]
+  },
+  {
+   "title": "폐렴성 저산소증 사정",
+   "tagline": "My chest hurts when I breathe and I'm coughing up green gunk.",
+   "room": "EXAM 2",
+   "brief": "발열·화농성 객담·청진 소견을 확인해 폐렴성 저산소증을 사정하세요.",
+   "role": "patient",
+   "skills": [
+    "폐렴 사정",
+    "객담 청취",
+    "저산소증 확인"
+   ],
+   "keyPhrases": [
+    "What color is the phlegm you're coughing up?",
+    "Does it hurt to take a deep breath?",
+    "Your oxygen is a bit low, so we'll give you some."
+   ],
+   "goals": [
+    "폐렴 관련 소견과 객담 양상을 청취한다",
+    "저산소증을 확인하고 산소를 적용한다"
+   ]
+  },
+  {
+   "title": "폐색전 의심 호흡곤란",
+   "tagline": "It came on suddenly, it hurts to breathe, and my calf is swollen.",
+   "room": "RESUS BAY",
+   "brief": "흉막통·다리부종을 확인해 폐색전 의심 호흡곤란을 사정하세요.",
+   "role": "patient",
+   "skills": [
+    "폐색전 의심",
+    "흉막통 청취",
+    "다리부종 확인"
+   ],
+   "keyPhrases": [
+    "Did the shortness of breath start suddenly?",
+    "Is one of your legs more swollen or painful?",
+    "Have you traveled far or been immobile recently?"
+   ],
+   "goals": [
+    "폐색전 위험 소견을 청취한다",
+    "흉막통·다리부종과 갑작스런 발병을 확인한다"
+   ]
+  },
+  {
+   "title": "비침습환기(BiPAP) 설명",
+   "tagline": "That mask looks scary — I don't want it strapped to my face.",
+   "room": "RESUS BAY",
+   "brief": "비침습환기(BiPAP)의 목적을 설명하고 마스크 공포를 완화하며 적용하세요.",
+   "role": "patient",
+   "skills": [
+    "BiPAP 설명",
+    "마스크 공포 완화",
+    "협조 유도"
+   ],
+   "keyPhrases": [
+    "This mask pushes air in to help you breathe easier.",
+    "I'll hold it gently first so you can get used to it.",
+    "Try to breathe with the machine — it works with you."
+   ],
+   "goals": [
+    "BiPAP의 작동과 목적을 쉽게 설명한다",
+    "마스크 공포를 완화하며 협조를 유도한다"
+   ]
+  },
+  {
+   "title": "무증상 저산소(행복한 저산소) 인지",
+   "tagline": "Honestly, I feel fine — I don't know why my numbers are low.",
+   "room": "EXAM 3",
+   "brief": "자각 증상 없이 SpO2가 낮은 무증상 저산소를 인지하고 사정하세요.",
+   "role": "patient",
+   "skills": [
+    "무증상 저산소 인지",
+    "SpO2 사정",
+    "재확인"
+   ],
+   "keyPhrases": [
+    "Your oxygen is lower than we'd like, even though you feel okay.",
+    "Let me recheck it and watch you take a few breaths.",
+    "We'll give oxygen and keep a close eye on you."
+   ],
+   "goals": [
+    "자각 증상 없는 저산소를 인지한다",
+    "SpO2 저하를 확인하고 산소를 적용한다"
+   ]
+  },
+  {
+   "title": "흉수·기흉 감별 문진",
+   "tagline": "The right side of my chest feels tight and I can't breathe deep.",
+   "room": "EXAM 2",
+   "brief": "편측 호흡음 감소를 확인해 흉수·기흉을 감별 문진하세요.",
+   "role": "patient",
+   "skills": [
+    "편측 호흡음 사정",
+    "흉수·기흉 감별",
+    "청진"
+   ],
+   "keyPhrases": [
+    "I'm listening to both sides of your chest to compare.",
+    "Did the tightness come on suddenly or gradually?",
+    "Point to exactly where it feels tight."
+   ],
+   "goals": [
+    "편측 호흡음 감소를 확인한다",
+    "흉수와 기흉을 문진과 청진으로 감별한다"
+   ]
+  },
+  {
+   "title": "언어장벽 호흡곤란 핵심",
+   "tagline": "No... respirar... difícil.",
+   "room": "RESUS BAY",
+   "brief": "언어장벽 호흡곤란 환자에게 예/아니오로 통증·질식감·알레르기를 확인하세요.",
+   "role": "patient",
+   "skills": [
+    "언어장벽 대응",
+    "폐쇄형 질문",
+    "핵심증상 확인"
+   ],
+   "keyPhrases": [
+    "Chest pain? Yes or no?",
+    "Choking feeling? Point to your throat, yes or no?",
+    "Allergy to medicine? An interpreter is on the way."
+   ],
+   "goals": [
+    "폐쇄형 질문으로 호흡곤란 핵심 증상을 확인한다",
+    "통역 연계 전 안전을 확보한다"
+   ]
+  },
+  {
+   "title": "신경근질환 환기저하",
+   "tagline": "My muscles are so weak lately, and now my cough is really feeble.",
+   "room": "EXAM 3",
+   "brief": "약한 기침·삼킴장애를 확인해 신경근질환에 의한 환기저하를 사정하세요.",
+   "role": "patient",
+   "skills": [
+    "신경근질환 사정",
+    "기침력 확인",
+    "삼킴장애 청취"
+   ],
+   "keyPhrases": [
+    "Has your cough gotten weaker over the past few days?",
+    "Are you having trouble swallowing or clearing your throat?",
+    "We need to watch your breathing muscles closely."
+   ],
+   "goals": [
+    "약한 기침과 삼킴장애를 사정한다",
+    "신경근질환에 의한 환기저하 위험을 확인한다"
+   ]
+  },
+  {
+   "title": "산소요법 목표치 소통",
+   "tagline": "Can't you just turn my oxygen all the way up so I feel better?",
+   "room": "EXAM 1",
+   "brief": "COPD 과산소 위험을 설명하고 산소요법 목표치를 환자와 소통하세요.",
+   "role": "patient",
+   "skills": [
+    "산소 목표치 교육",
+    "과산소 위험 설명",
+    "환자 소통"
+   ],
+   "keyPhrases": [
+    "For you, too much oxygen can actually be harmful.",
+    "We aim for a target range, not the highest number.",
+    "I'll adjust it carefully to keep you in the safe zone."
+   ],
+   "goals": [
+    "COPD 환자의 산소 목표치를 설명한다",
+    "과산소 위험을 이해되게 소통한다"
+   ]
+  },
+  {
+   "title": "불안 동반 호흡곤란 감별",
+   "tagline": "I feel like I can't get enough air, but the doctor says my lungs are fine.",
+   "room": "EXAM 2",
+   "brief": "기질적 원인을 배제하며 불안 동반 호흡곤란을 감별하세요.",
+   "role": "patient",
+   "skills": [
+    "불안 감별",
+    "기질적 원인 배제",
+    "호흡곤란 사정"
+   ],
+   "keyPhrases": [
+    "Your oxygen and lung exam look reassuring.",
+    "Does this happen when you feel stressed or anxious?",
+    "Let's slow your breathing and see if it eases."
+   ],
+   "goals": [
+    "기질적 원인을 확인해 배제한다",
+    "불안 동반 호흡곤란을 감별하고 안심시킨다"
+   ]
+  },
+  {
+   "title": "상기도 폐쇄 급성 대응",
+   "tagline": "*high-pitched wheeze* ...can't... swallow... drooling...",
+   "room": "RESUS BAY",
+   "brief": "천명·침흘림·어려운 기도 징후를 인지하고 상기도 폐쇄에 응급 대응하세요.",
+   "role": "patient",
+   "skills": [
+    "상기도 폐쇄 인지",
+    "어려운 기도 대비",
+    "응급 호출"
+   ],
+   "keyPhrases": [
+    "That high-pitched sound worries me about your airway.",
+    "I'm calling for airway help right now — stay calm.",
+    "We're keeping you upright and getting oxygen ready."
+   ],
+   "goals": [
+    "천명·침흘림 등 상기도 폐쇄 징후를 인지한다",
+    "어려운 기도에 대비해 즉시 응급 자원을 동원한다"
+   ]
+  },
+  {
+   "title": "기관삽관 준비·RSI 보조",
+   "tagline": "We're going to have to intubate — get everything ready.",
+   "room": "RESUS BAY",
+   "brief": "RSI 약물·장비·흡인을 준비하고 콜아웃으로 기관삽관을 보조하세요.",
+   "role": "colleague",
+   "skills": [
+    "RSI 보조",
+    "삽관 장비 준비",
+    "콜아웃"
+   ],
+   "keyPhrases": [
+    "Suction is on, blade and tube are ready.",
+    "Induction and paralytic drawn up and labeled.",
+    "Sats are 98, we're good to go — go ahead."
+   ],
+   "goals": [
+    "RSI 약물·장비·흡인을 빠짐없이 준비한다",
+    "콜아웃으로 삽관 과정을 안전하게 보조한다"
+   ]
+  },
+  {
+   "title": "I형 호흡부전 급속 악화",
+   "tagline": "His sats just dropped to the seventies even on high-flow oxygen.",
+   "room": "RESUS BAY",
+   "brief": "산소에도 SpO2가 급락하는 I형 호흡부전에서 삽관 결정을 신속히 조율하세요.",
+   "role": "colleague",
+   "skills": [
+    "I형 호흡부전 인지",
+    "급속 악화 대응",
+    "삽관 결정"
+   ],
+   "keyPhrases": [
+    "He's not responding to oxygen — sats keep falling.",
+    "We need to move toward intubation now.",
+    "I'm calling the team and preparing the airway."
+   ],
+   "goals": [
+    "산소 불응성 저산소증을 인지한다",
+    "삽관 결정과 팀 동원을 신속히 조율한다"
+   ]
+  },
+  {
+   "title": "후두부종 아나필락시스 기도",
+   "tagline": "Her lips and tongue are swelling — she can barely get words out.",
+   "room": "RESUS BAY",
+   "brief": "아나필락시스 후두부종에서 에피네프린과 응급기도를 동시에 준비하세요.",
+   "role": "colleague",
+   "skills": [
+    "후두부종 인지",
+    "에피네프린 투여",
+    "응급기도 대비"
+   ],
+   "keyPhrases": [
+    "Give IM epinephrine now — her airway is closing.",
+    "Call for the difficult airway cart and ENT.",
+    "Have a surgical airway kit open at the bedside."
+   ],
+   "goals": [
+    "후두부종의 위급성을 인지한다",
+    "에피네프린과 응급기도를 동시에 준비한다"
+   ]
+  },
+  {
+   "title": "삽관 후 갑작스런 악화(DOPE)",
+   "tagline": "He was stable, but now his sats are crashing after intubation.",
+   "room": "RESUS BAY",
+   "brief": "삽관 후 급성 악화 시 DOPE를 계통적으로 점검하세요.",
+   "role": "colleague",
+   "skills": [
+    "DOPE 점검",
+    "튜브 확인",
+    "계통적 감별"
+   ],
+   "keyPhrases": [
+    "Run through DOPE — displacement, obstruction, pneumothorax, equipment.",
+    "Check the tube position and suction for a plug.",
+    "Listen for equal breath sounds and check the ventilator."
+   ],
+   "goals": [
+    "삽관 후 악화를 DOPE로 계통 점검한다",
+    "튜브 위치·폐쇄·기흉·장비를 순서대로 확인한다"
+   ]
+  },
+  {
+   "title": "대량 객혈 기도확보",
+   "tagline": "He's coughing up a lot of blood and choking on it.",
+   "room": "RESUS BAY",
+   "brief": "대량 객혈 환자에서 흡인·측위·출혈측 관리로 기도를 확보하세요.",
+   "role": "colleague",
+   "skills": [
+    "대량 객혈 대응",
+    "흡인",
+    "측위 관리"
+   ],
+   "keyPhrases": [
+    "Suction continuously to keep the airway clear.",
+    "Position him with the bleeding side down.",
+    "Prepare to intubate and call for help now."
+   ],
+   "goals": [
+    "대량 객혈에서 흡인으로 기도를 확보한다",
+    "출혈측 측위로 건강한 폐를 보호한다"
+   ]
+  },
+  {
+   "title": "기관절개 튜브 폐쇄·이탈",
+   "tagline": "My trach isn't working — I can't breathe through it!",
+   "room": "RESUS BAY",
+   "brief": "기관절개 튜브의 폐쇄·이탈을 인지하고 응급 흡인·교체를 준비하세요.",
+   "role": "patient",
+   "skills": [
+    "기관절개 응급",
+    "튜브 흡인",
+    "튜브 교체 준비"
+   ],
+   "keyPhrases": [
+    "I'm suctioning your trach to clear any blockage.",
+    "If it's out of place, we'll change the tube right away.",
+    "Try to stay calm — we're giving you oxygen now."
+   ],
+   "goals": [
+    "기관절개 튜브 폐쇄·이탈을 인지한다",
+    "응급 흡인과 튜브 교체를 신속히 준비한다"
+   ]
+  }
+ ]
+}

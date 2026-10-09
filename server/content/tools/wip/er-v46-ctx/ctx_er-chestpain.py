@@ -1,0 +1,23 @@
+from _ctx_common_b import run
+run("er-chestpain", {
+ "start": {"scenes": {1: {"en": "CP started approx. 1 hr PTA, at rest."},
+                      2: {"en": "What was the time of symptom start relative to presentation?", "fix": "What time did the pain first start?"}}},
+ "priority": {"scenes": {0: {"en": "Chest pain, tachy at 118 — she's a high priority, needs a bed now."},
+                         1: {"en": "Triage: high priority (ESI 2), CP with tachycardia."}}},
+ "burning": {"scenes": {2: {"en": "Is the burning retrosternal, and is it worse postprandially?"}}},
+ "press": {"scenes": {1: {"en": "Pain reproduces when I press on the sternum — could be costochondritis, but ECG and labs are still pending."},
+                      2: {"en": "Pressing on your sternum reproduces the pain, consistent with costochondritis."}}},
+ "rhythm": {"scenes": {1: {"en": "Sinus rhythm on the monitor, first ECG unremarkable — troponin's pending."}}},
+ "detail": {"scenes": {1: {"en": "She's giving me few details and minimizing, but she's diaphoretic — I'm not letting this go."},
+                       2: {"en": "You're minimizing your symptoms and leaving out details."}}},
+ "medicine": {"scenes": {1: {"en": "Reports missing antiplatelet medicine x 1 week."},
+                         2: {"en": "Have you been noncompliant with your medicines?"}}},
+ "point": {"scenes": {2: {"en": "Could you please point to the precise location of your discomfort?"}}},
+ "tear": {"scenes": {2: {"en": "Does the tearing pain radiate to your interscapular region?",
+                         "fix": "Is the pain tearing, and does it go into your back, between your shoulder blades?"}}},
+ "inflammation": {"scenes": {1: {"en": "Sharp, positional CP, better leaning forward — inflammation, could be pericarditis."},
+                             2: {"en": "Your presentation is consistent with pericardial inflammation."}}},
+ "call": {"scenes": {1: {"en": "Call a rapid response to bed 6 now — he's going gray!"},
+                     2: {"en": "You're decompensating, so I'm calling an escalation of care now."}}},
+ "update": {"scenes": {1: {"en": "Recurrent CP 7/10, repeat ECG obtained, MD updated."}}},
+})

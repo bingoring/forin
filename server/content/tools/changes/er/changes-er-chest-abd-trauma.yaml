@@ -1,0 +1,440 @@
+theme: er-chest-abd-trauma
+changes:
+- kind: word-remove
+  id: w-body
+  why: 너무 쉬움 — 문장 태그를 모두 빼 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-doctor
+  why: 너무 쉬움 — 문장 태그를 모두 빼 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-zero
+  why: 너무 쉬움 — 문장 태그를 모두 빼 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-ten
+  why: 너무 쉬움 — 문장 태그를 모두 빼 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-bad
+  why: 너무 쉬움 — 문장 태그를 모두 빼 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-now
+  why: 너무 쉬움 — 문장 태그를 모두 빼 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-day
+  why: 너무 쉬움 — 문장 태그를 모두 빼 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-car
+  why: 너무 쉬움 — 문장 태그를 모두 빼 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-go
+  why: 너무 쉬움 — 문장 태그를 모두 빼 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-see
+  why: 너무 쉬움 — 문장 태그를 모두 빼 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-hour
+  why: 너무 쉬움 — 문장 태그를 모두 빼 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-minute
+  why: 너무 쉬움 — 문장 태그를 모두 빼 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-week
+  why: 너무 쉬움 — 문장 태그를 모두 빼 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-baby
+  why: 너무 쉬움 — 문장 태그를 모두 빼 어느 문장도 태그하지 않게 됐다
+- kind: word
+  id: w-close
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 형용사 헤드워드(close)에 부사 문장(closely) 3건 — 헤드워드를 부사로, ko도 부사로
+- kind: word
+  id: w-careful
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 형용사 헤드워드(careful)에 부사 문장(carefully) — 헤드워드를 부사로
+- kind: word
+  id: w-hold
+  fields:
+  - en
+  - ipa
+  why: ko '들어 보이다'는 hold up의 뜻 — 헤드워드를 hold up으로
+- kind: word
+  id: w-pressure
+  fields:
+  - ko
+  why: 혈압이 아닌 쓰임(the pressure in your chest 등)이 5건 — ko를 압력으로
+- kind: word
+  id: w-rate
+  fields:
+  - ko
+  why: w-level(수치)과 ko가 겹쳐 듣기 정답이 둘 — (분당) 횟수로 가름
+- kind: word
+  id: w-spot
+  fields:
+  - ko
+  why: w-area(부위)와 ko가 겹침 — 지점으로 가름
+- kind: word
+  id: w-push
+  fields:
+  - ko
+  why: w-press(누르다)와 ko가 겹침 — 밀어 누르다로 가름
+- kind: word
+  id: w-earlier
+  fields:
+  - ko
+  why: '''보다''는 compared to에서 온 뜻 — earlier만의 뜻으로'
+- kind: word
+  id: w-right
+  fields:
+  - ko
+  why: 태그된 두 문장이 모두 방향 — '바로' 뜻 제거
+- kind: word
+  id: w-slow
+  fields:
+  - ko
+  why: 문장에서 형용사(a slow, deep breath) — ko를 형용사로
+- kind: word
+  id: w-deep
+  fields:
+  - ko
+  why: 문장에서 형용사(deep breath, deeper injury) — ko를 형용사로
+- kind: sentence
+  situation: 복부외상 초기 사정
+  index: 4
+  fields:
+  - words
+  why: 너무 쉬운 단어 태그 제거(w-body, w-see)
+- kind: sentence
+  situation: 통증 척도·부위 청취
+  index: 0
+  fields:
+  - words
+  why: 너무 쉬운 단어 태그 제거(w-zero, w-ten, w-bad, w-now)
+- kind: sentence
+  situation: 통증 척도·부위 청취
+  index: 2
+  fields:
+  - words
+  why: 너무 쉬운 단어 태그 제거(w-ten)
+- kind: sentence
+  situation: 수상기전(MOI) 확보
+  index: 1
+  fields:
+  - words
+  why: 너무 쉬운 단어 태그 제거(w-car, w-go)
+- kind: sentence
+  situation: 수상기전(MOI) 확보
+  index: 4
+  fields:
+  - words
+  why: 너무 쉬운 단어 태그 제거(w-car)
+- kind: sentence
+  situation: 수상기전(MOI) 확보
+  index: 5
+  fields:
+  - words
+  why: 너무 쉬운 단어 태그 제거(w-see)
+- kind: sentence
+  situation: 늑골 다발골절 호흡저하
+  index: 5
+  fields:
+  - words
+  why: 너무 쉬운 단어 태그 제거(w-now)
+- kind: sentence
+  situation: 폐좌상 지연성 악화
+  index: 1
+  fields:
+  - words
+  why: 너무 쉬운 단어 태그 제거(w-hour)
+- kind: sentence
+  situation: 폐좌상 지연성 악화
+  index: 5
+  fields:
+  - words
+  why: 너무 쉬운 단어 태그 제거(w-minute)
+- kind: sentence
+  situation: 비장손상 의심 좌상복부
+  index: 4
+  fields:
+  - words
+  why: 너무 쉬운 단어 태그 제거(w-minute)
+- kind: sentence
+  situation: 비장손상 의심 좌상복부
+  index: 5
+  fields:
+  - words
+  why: 너무 쉬운 단어 태그 제거(w-doctor)
+- kind: sentence
+  situation: 안전벨트 증후군
+  index: 3
+  fields:
+  - words
+  why: 너무 쉬운 단어 태그 제거(w-hour)
+- kind: sentence
+  situation: 항응고제 흉복부 둔상
+  index: 2
+  fields:
+  - words
+  why: 너무 쉬운 단어 태그 제거(w-day)
+- kind: sentence
+  situation: 임신부 복부외상
+  index: 0
+  fields:
+  - words
+  why: 너무 쉬운 단어 태그 제거(w-week, w-baby)
+- kind: sentence
+  situation: 임신부 복부외상
+  index: 3
+  fields:
+  - words
+  why: 너무 쉬운 단어 태그 제거(w-baby)
+- kind: sentence
+  situation: 임신부 복부외상
+  index: 4
+  fields:
+  - words
+  why: 너무 쉬운 단어 태그 제거(w-baby)
+- kind: sentence
+  situation: 언어장벽 흉복부외상
+  index: 1
+  fields:
+  - words
+  why: 너무 쉬운 단어 태그 제거(w-bad)
+- kind: sentence
+  situation: 언어장벽 흉복부외상
+  index: 2
+  fields:
+  - words
+  why: 너무 쉬운 단어 태그 제거(w-ten)
+- kind: sentence
+  situation: 긴장성 기흉 감압 위기
+  index: 0
+  fields:
+  - words
+  why: 너무 쉬운 단어 태그 제거(w-now)
+- kind: sentence
+  situation: 긴장성 기흉 감압 위기
+  index: 2
+  fields:
+  - words
+  why: 너무 쉬운 단어 태그 제거(w-see)
+- kind: sentence
+  situation: 대량 혈흉 순환붕괴
+  index: 4
+  fields:
+  - words
+  why: 너무 쉬운 단어 태그 제거(w-minute)
+- kind: sentence
+  situation: 심장탐포네이드 Beck 삼징후
+  index: 3
+  fields:
+  - words
+  why: 너무 쉬운 단어 태그 제거(w-doctor, w-now)
+- kind: sentence
+  situation: 복강내 대량출혈 쇼크
+  index: 4
+  fields:
+  - words
+  why: 너무 쉬운 단어 태그 제거(w-now)
+- kind: sentence
+  situation: 흉복부외상 SBAR 인계
+  index: 1
+  fields:
+  - words
+  why: 너무 쉬운 단어 태그 제거(w-car)
+- kind: sentence
+  situation: 항응고제 흉복부 둔상
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: '''보기보다 괜찮다''로 들려 지연 출혈 감시 목표와 반대 방향 — 멍이 더 심해질 수 있다는 안전 방향으로 교체, w-look 태그 제거'
+- kind: sentence
+  situation: 흉관 삽입 준비 설명
+  index: 5
+  fields:
+  - words
+  why: '''take long''에 w-take(복용하다) 오태그 제거'
+- kind: sentence
+  situation: 간손상 의심 우상복부
+  index: 5
+  fields:
+  - words
+  why: '''a close eye''는 형용사 close — 헤드워드가 closely로 바뀌어 w-close 태그 제거'
+- kind: sentence
+  situation: 활력·쇼크 징후 감시
+  index: 5
+  fields:
+  - en
+  - chunks
+  why: 'v46 검토 결정 11 예외: ko는 "팀에 바로 알릴게요"인데 en에 right away가 없어 뜻이 어긋남(decoy 문제의 원인) — en에 right away 추가'
+- kind: sentence
+  situation: 폐좌상 지연성 악화
+  index: 5
+  fields:
+  - en
+  - chunks
+  why: 'v46 검토 결정 11 예외: recheck와 again이 겹침 — again을 뺌'
+- kind: sentence
+  situation: 비장손상 의심 좌상복부
+  index: 1
+  fields:
+  - en
+  - ko
+  - chunks
+  why: 'v46 검토 결정 11 예외: 청크가 대시를 넘어 구를 끊음 — 두 문장으로 나눠 절 경계에서 끊음'
+- kind: sentence
+  situation: 비장손상 의심 좌상복부
+  index: 4
+  fields:
+  - en
+  - chunks
+  why: 'v46 검토 결정 11 예외: has been dropping the last few minutes는 전치사 빠짐 — over the last few minutes'
+- kind: sentence
+  situation: 관통성 복부 자상
+  index: 0
+  fields:
+  - en
+  - chunks
+  why: 'v46 검토 결정 11 예외: 청크가 대시를 넘어 구를 끊음 — 두 문장으로 나눠 절 경계에서 끊음'
+- kind: sentence
+  situation: 관통성 복부 자상
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'v46 검토 결정 11 예외: 박힌 물체와 장기 탈출을 한 환자에 섞음 — 젖은 멸균 드레싱은 "노출된 장기"에만 쓴다고 문장에서 밝힘'
+- kind: sentence
+  situation: 관통성 복부 자상
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'v46 검토 결정 11 예외: 11.3을 노출된 장기 한정으로 바꾸면서 빠진 w-wound 태그를 이 문장에서 잇는다 — 드레싱이 장기와 상처를 지킨다'
+- kind: sentence
+  situation: 긴장성 기흉 감압 위기
+  index: 5
+  fields:
+  - en
+  - ko
+  - chunks
+  why: 'v46 검토 결정 11 예외: 청크가 대시를 넘어 구를 끊음 — 두 문장으로 나눠 절 경계에서 끊음'
+- kind: word
+  id: w-team
+  fields:
+  - example
+  why: 'v46 검토 결정 11 예외: 바뀐 예문 문장에 맞춰 예문·번역 정렬'
+- kind: word
+  id: w-change
+  fields:
+  - example
+  why: 'v46 검토 결정 11 예외: 바뀐 예문 문장에 맞춰 예문·번역 정렬'
+- kind: word
+  id: w-recheck
+  fields:
+  - example
+  why: 'v46 검토 결정 11 예외: 바뀐 예문 문장에 맞춰 예문·번역 정렬'
+- kind: word
+  id: w-remove
+  fields:
+  - example
+  why: 'v46 검토 결정 11 예외: 바뀐 예문 문장에 맞춰 예문·번역 정렬'
+- kind: word
+  id: w-object
+  fields:
+  - example
+  why: 'v46 검토 결정 11 예외: 바뀐 예문 문장에 맞춰 예문·번역 정렬'
+- kind: word
+  id: w-stabilize
+  fields:
+  - example
+  why: 'v46 검토 결정 11 예외: 바뀐 예문 문장에 맞춰 예문·번역 정렬'
+- kind: word
+  id: w-cover
+  fields:
+  - example
+  - exKo
+  why: 'v46 검토 결정 11 예외: 바뀐 예문 문장에 맞춰 예문·번역 정렬'
+- kind: word
+  id: w-wound
+  fields:
+  - example
+  - exKo
+  why: 'v46 검토 결정 11 예외: 예문을 11.4로 옮김'
+- kind: word
+  id: w-moist
+  fields:
+  - example
+  - exKo
+  why: 'v46 검토 결정 11 예외: 바뀐 예문 문장에 맞춰 예문·번역 정렬'
+- kind: word
+  id: w-sterile
+  fields:
+  - example
+  - exKo
+  why: 'v46 검토 결정 11 예외: 바뀐 예문 문장에 맞춰 예문·번역 정렬'
+- kind: word
+  id: w-dress
+  fields:
+  - example
+  - exKo
+  why: 'v46 검토 결정 11 예외: 바뀐 예문 문장에 맞춰 예문·번역 정렬'
+- kind: word
+  id: w-protect
+  fields:
+  - example
+  - exKo
+  why: 'v46 검토 결정 11 예외: 바뀐 예문 문장에 맞춰 예문·번역 정렬'
+- kind: word
+  id: w-surgery
+  fields:
+  - example
+  - exKo
+  why: 'v46 검토 결정 11 예외: 바뀐 예문 문장에 맞춰 예문·번역 정렬'
+- kind: word
+  id: w-moment
+  fields:
+  - example
+  - exKo
+  why: 'v46 검토 결정 11 예외: 바뀐 예문 문장에 맞춰 예문·번역 정렬'
+- kind: sentence
+  situation: 비장손상 의심 좌상복부
+  index: 1
+  fields: [en, ko, chunks]
+  why: 'v46 검토 결정 11 예외: 대시 표기를 앞뒤 공백 대시로 통일(사용자 결정 2026-10-09)'
+- kind: sentence
+  situation: 관통성 복부 자상
+  index: 0
+  fields: [en, chunks]
+  why: 'v46 검토 결정 11 예외: 대시 표기를 앞뒤 공백 대시로 통일(사용자 결정 2026-10-09)'
+- kind: sentence
+  situation: 긴장성 기흉 감압 위기
+  index: 5
+  fields: [en, ko, chunks]
+  why: 'v46 검토 결정 11 예외: 대시 표기를 앞뒤 공백 대시로 통일(사용자 결정 2026-10-09)'
+- kind: word
+  id: w-remove
+  fields: [example]
+  why: 'v46 검토 결정 11 예외: 대시 표기를 앞뒤 공백 대시로 통일(사용자 결정 2026-10-09)'
+- kind: word
+  id: w-object
+  fields: [example]
+  why: 'v46 검토 결정 11 예외: 대시 표기를 앞뒤 공백 대시로 통일(사용자 결정 2026-10-09)'
+- kind: word
+  id: w-stabilize
+  fields: [example]
+  why: 'v46 검토 결정 11 예외: 대시 표기를 앞뒤 공백 대시로 통일(사용자 결정 2026-10-09)'
+- kind: word
+  id: w-moment
+  fields: [example, exKo]
+  why: 'v46 검토 결정 11 예외: 대시 표기를 앞뒤 공백 대시로 통일(사용자 결정 2026-10-09)'

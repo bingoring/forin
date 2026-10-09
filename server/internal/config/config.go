@@ -4,6 +4,7 @@ package config
 import (
 	"fmt"
 	"os"
+	"strconv"
 	"strings"
 	"time"
 )
@@ -49,6 +50,28 @@ type Config struct {
 	// heartbeats every 6s on home / 15s elsewhere while foregrounded; this must clear
 	// a couple of missed beats but still drop someone soon after they background the app.
 	WardTTL time.Duration
+	// SpeechReferenceDailyLimit caps how many pronunciation references (paid TTS +
+	// assessment) one user may cause to be GENERATED per UTC day; cache hits are free
+	// and uncounted. 0 disables the cap. Env SPEECH_REFERENCE_DAILY_LIMIT, default 200.
+	//
+	// Why 200: a curriculum situation is ~6-12 sentences, and references are cached
+	// GLOBALLY per sentence (R9), so a real learner only ever pays for sentences nobody
+	// has opened yet. Even a binge through 10+ brand-new situations in one day is
+	// ~100-150 generations; 200 clears that with headroom, while bounding a malicious
+	// account to 200 x (TTS + assessment) a day instead of ~20 per second.
+	SpeechReferenceDailyLimit int
+
+	// TrustedProxyHops is how many proxies in front of the app append to X-Forwarded-For
+	// — the rate limiter counts that many entries from the RIGHT to find the real client
+	// (internal/adapters/http/ratelimit.go has the full reasoning). Env TRUSTED_PROXY_HOPS.
+	//
+	// Default 1 for staging/prod: Cloud Run is reached through Google's front end, which
+	// appends the connecting client's address, so the rightmost entry is the caller. With
+	// no proxy in front, RemoteAddr is already the caller and the header is entirely
+	// client-controlled, so the default for dev (and any unknown ENV) is 0 = ignore it.
+	// Put a Google Cloud load balancer in front (it appends its own entry) and set 2;
+	// set 0 to switch the header off.
+	TrustedProxyHops int
 
 	// ContentDir is where authored runtime content (home flavour pools, slang deck) is
 	// read from. The Docker image bundles it at /content and sets CONTENT_DIR; locally it
@@ -84,24 +107,26 @@ func Load() (*Config, error) {
 		// while the caller's `$(gcloud secrets versions access)` stripped the
 		// newline down to 64. The generator is fixed, but pasting a value into
 		// the console can reintroduce it, so tolerate surrounding whitespace here.
-		DevAuthSecret:            strings.TrimSpace(os.Getenv("DEV_AUTH_SECRET")),
-		AccessTTL:                getdur("ACCESS_TTL", 15*time.Minute),
-		RefreshTTL:               getdur("REFRESH_TTL", 30*24*time.Hour),
-		GoogleClientIDs:          splitList(os.Getenv("GOOGLE_CLIENT_ID")),
-		AppleClientIDs:           splitList(os.Getenv("APPLE_CLIENT_ID")),
-		KakaoClientIDs:           splitList(os.Getenv("KAKAO_CLIENT_ID")),
-		LLMProvider:              os.Getenv("LLM_PROVIDER"),
-		AnthropicKey:             firstNonEmpty(os.Getenv("ANTHROPIC_API_KEY"), os.Getenv("ANTHROPIC_KEY")),
-		OpenAIKey:                firstNonEmpty(os.Getenv("OPENAI_API_KEY"), os.Getenv("OPENAI_KEY")),
-		AnthropicDialogueModel:   getenv("ANTHROPIC_DIALOGUE_MODEL", "claude-sonnet-4-6"),
-		AnthropicCorrectionModel: getenv("ANTHROPIC_CORRECTION_MODEL", "claude-haiku-4-5-20251001"),
-		OpenAIDialogueModel:      getenv("OPENAI_DIALOGUE_MODEL", "gpt-4o"),
-		OpenAICorrectionModel:    getenv("OPENAI_CORRECTION_MODEL", "gpt-4o-mini"),
-		AzureSpeechKey:           firstNonEmpty(os.Getenv("AZURE_SPEECH_KEY"), os.Getenv("AZURE_SPEECH_REGION_KEY")),
-		AzureSpeechRegion:        os.Getenv("AZURE_SPEECH_REGION"),
-		WardTTL:                  getdur("WARD_TTL", 40*time.Second),
-		ContentDir:               getenv("CONTENT_DIR", "content"),
+		DevAuthSecret:             strings.TrimSpace(os.Getenv("DEV_AUTH_SECRET")),
+		AccessTTL:                 getdur("ACCESS_TTL", 15*time.Minute),
+		RefreshTTL:                getdur("REFRESH_TTL", 30*24*time.Hour),
+		GoogleClientIDs:           splitList(os.Getenv("GOOGLE_CLIENT_ID")),
+		AppleClientIDs:            splitList(os.Getenv("APPLE_CLIENT_ID")),
+		KakaoClientIDs:            splitList(os.Getenv("KAKAO_CLIENT_ID")),
+		LLMProvider:               os.Getenv("LLM_PROVIDER"),
+		AnthropicKey:              firstNonEmpty(os.Getenv("ANTHROPIC_API_KEY"), os.Getenv("ANTHROPIC_KEY")),
+		OpenAIKey:                 firstNonEmpty(os.Getenv("OPENAI_API_KEY"), os.Getenv("OPENAI_KEY")),
+		AnthropicDialogueModel:    getenv("ANTHROPIC_DIALOGUE_MODEL", "claude-sonnet-4-6"),
+		AnthropicCorrectionModel:  getenv("ANTHROPIC_CORRECTION_MODEL", "claude-haiku-4-5-20251001"),
+		OpenAIDialogueModel:       getenv("OPENAI_DIALOGUE_MODEL", "gpt-4o"),
+		OpenAICorrectionModel:     getenv("OPENAI_CORRECTION_MODEL", "gpt-4o-mini"),
+		AzureSpeechKey:            firstNonEmpty(os.Getenv("AZURE_SPEECH_KEY"), os.Getenv("AZURE_SPEECH_REGION_KEY")),
+		AzureSpeechRegion:         os.Getenv("AZURE_SPEECH_REGION"),
+		WardTTL:                   getdur("WARD_TTL", 40*time.Second),
+		SpeechReferenceDailyLimit: getint("SPEECH_REFERENCE_DAILY_LIMIT", 200),
+		ContentDir:                getenv("CONTENT_DIR", "content"),
 	}
+	c.TrustedProxyHops = getint("TRUSTED_PROXY_HOPS", defaultProxyHops(c.Env))
 
 	var missing []string
 	if c.DatabaseURL == "" {
@@ -139,6 +164,14 @@ func splitList(v string) []string {
 	return out
 }
 
+// defaultProxyHops: see Config.TrustedProxyHops.
+func defaultProxyHops(env string) int {
+	if env == "staging" || env == "prod" {
+		return 1
+	}
+	return 0
+}
+
 func getenv(k, def string) string {
 	if v := os.Getenv(k); v != "" {
 		return v
@@ -150,6 +183,17 @@ func getdur(k string, def time.Duration) time.Duration {
 	if v := os.Getenv(k); v != "" {
 		if d, err := time.ParseDuration(v); err == nil {
 			return d
+		}
+	}
+	return def
+}
+
+// getint reads a non-negative integer env var; unset, unparsable or negative
+// values fall back to def (a typo must not silently disable a cost cap).
+func getint(k string, def int) int {
+	if v := os.Getenv(k); v != "" {
+		if n, err := strconv.Atoi(strings.TrimSpace(v)); err == nil && n >= 0 {
+			return n
 		}
 	}
 	return def

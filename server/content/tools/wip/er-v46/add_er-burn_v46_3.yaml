@@ -1,0 +1,90 @@
+- title: 전기 화상 심전도 감시
+  s:
+  - {t: "심장 감시", i: monitor, w: "so로 이유와 조치를 이어요. 전류가 심장을 지나면 부정맥이 생길 수 있어서 전기 화상 환자는 대개 심전도 모니터를 붙여요.", d: "so we're resting it", k: ["지금 통증이 얼마나 심한지 알려 주세요", "전류가 흐른 길을 따라 살펴볼게요"], a: "heart", o: ["knee", "wrist", "tooth"]}
+  - {t: "상처 확인", i: magnify, w: "Let me…로 몸을 살피기 전에 양해를 구해요. 전류는 들어간 곳과 나간 곳 사이의 조직을 지나가서 두 지점을 알면 손상 범위를 가늠할 수 있어요.", d: "from the wall", k: ["상처 부위에 연고를 발라 드릴게요", "전선에 닿은 시간을 물어볼게요"], a: "body", o: ["clothes", "bed", "chart"]}
+  - {t: "증상 보고", i: faceWorried, w: "if로 두 증상을 나란히 들어 하나만 있어도 알리게 해요. 두근거림과 어지러움은 전기가 일으킨 부정맥의 흔한 신호예요.", d: "when you wake", k: ["손가락이 저리면 말씀해 주세요", "전기가 닿았던 곳이 가장 아픈지 알려 주세요"], a: "Tell", o: ["Show", "Ask", "Teach"]}
+  - {t: "모니터 부착", i: monitor, w: "now로 바로 시작한다고 알려 환자가 기다리지 않아요. 가슴에 붙인 전극이 심장 리듬을 계속 보여 줘서 이상이 생기면 바로 알 수 있어요.", d: "later today", k: ["모니터 소리가 나도 놀라지 마세요", "전극을 붙일 자리의 털을 조금 정리할게요"], a: "now", o: ["tomorrow", "yesterday", "last week"]}
+  - {t: "숨은 손상", i: bulb, w: "that looks fine on the skin이 겉과 속이 다를 수 있다는 점을 짚어요. 전류는 저항이 낮은 근육·혈관을 따라 흘러서 피부 상처가 작아도 속 조직이 크게 상할 수 있어요.", d: "that feels warm", k: ["근육 효소 수치는 피검사로 확인할 거예요", "전기가 지나간 팔은 높이 올려 둘게요"], a: "deep", o: ["dry", "clean", "pale"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "전기 화상 감시 4문장 순서"
+    why: "입구와 출구 상처를 찾고, 상처가 작아도 속 손상이 있을 수 있다고 알리고, 심장에도 영향이 있어 모니터를 붙이고, 증상을 말하게 해요. 'Those wounds'·'It'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Let me find the entry and exit wounds on your body.", icon: magnify, ko: "몸에서 입구와 출구 상처를 찾아볼게요", note: "탐색"}
+    - {en: "Those wounds look small, but electricity can damage deep tissue.", icon: bulb, ko: "그 상처는 작아 보여도 전기는 깊은 조직을 손상시킬 수 있어요", note: "설명"}
+    - {en: "It can affect your heart too, so we'll put you on a monitor now.", icon: monitor, ko: "심장에도 영향을 줄 수 있어서 지금 모니터를 달아드릴게요", note: "감시"}
+    - {en: "Tell me if your heart races or you feel dizzy.", icon: faceWorried, ko: "심장이 빨리 뛰거나 어지러우면 말씀해 주세요", note: "보고"}
+  ctx: {word: "deep", ko: "깊은"}
+- title: 순환성 전층화상
+  s:
+  - {t: "위험 설명", i: bulb, w: "may로 가능성을 말해 겁주지 않으면서 위험은 숨기지 않아요. 팔을 빙 두른 전층 화상은 딱딱한 가피가 조여서 혈류가 막힐 수 있어요.", d: "and may spread", k: ["화상이 팔 전체로 번질 수 있어요", "팔을 베개 위에 올려 둘게요"], a: "cut off", o: ["speed up", "warm up", "build up"]}
+  - {t: "말단 확인", i: stetho, w: "I'm checking으로 지금 하는 일을 알려 환자가 손을 맡겨요. 손가락 맥박과 감각은 조여진 화상 아래로 피가 통하는지 보는 가장 쉬운 방법이에요.", d: "every day", k: ["반지가 있으면 먼저 빼 드릴게요", "손을 심장보다 높이 올려 둘게요"], a: "pulse", o: ["weight", "height", "age"]}
+  - {t: "절개 가능성", i: scalpel, w: "may need로 아직 결정이 아니라 가능성이라고 알려 줘요. 가피가 부풀어 오른 조직을 조일 때는 의사가 작은 절개로 압력을 풀어요.", d: "with a bandage", k: ["붕대를 조금 느슨하게 다시 감을게요", "손가락을 높이 올려 두세요"], a: "release", o: ["raise", "double", "hide"]}
+  - {t: "소견 전달", i: magnify, w: "to me로 제가 본 바라고 말해 환자가 놀라지 않게 해요. 창백하고 차가운 손가락은 혈류가 줄었다는 단서라 바로 의사에게 알려요.", d: "right now", k: ["손가락에 감각이 돌아왔는지 볼게요", "손가락이 붓지 않게 높이 올릴게요"], a: "pale", o: ["pink", "warm", "normal"]}
+  - {t: "시술 안내", i: scalpel, w: "to relieve로 절개의 목적을 밝혀 두려움을 줄여요. 압력이 풀리면 눌려 있던 혈관으로 피가 다시 흐를 수 있어요.", d: "to remove the burn", k: ["절개 전에 동의서를 먼저 받을 거예요", "절개한 뒤에는 상처를 깨끗하게 덮을게요"], a: "relieve", o: ["add", "cause", "build"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "순환성 화상 4문장 순서"
+    why: "화상이 팔을 두른 위험을 알리고, 손가락 맥박과 감각을 확인하고, 본 소견을 전한 뒤, 그래서 절개가 필요할 수 있다고 닫아요. 'They'·'That's why'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "The burn is circling your arm and may cut off circulation.", icon: bulb, ko: "화상이 팔을 둘러싸고 있어서 순환을 막을 수도 있어요", note: "위험"}
+    - {en: "I'm checking the pulse and feeling in your fingers.", icon: stetho, ko: "손가락의 맥박과 감각을 확인하고 있어요", note: "확인"}
+    - {en: "They look pale and feel cool to me.", icon: magnify, ko: "제가 보기엔 창백하고 차가워요", note: "소견"}
+    - {en: "That's why we may need a small cut in the skin to relieve the pressure.", icon: scalpel, ko: "그래서 압력을 풀려고 피부에 작은 절개가 필요할 수도 있어요", note: "절개"}
+  sw: {ko: "압력을 풀려고 화상 입은 피부에 작은 절개를 낼 수도 있어요"}
+- title: 소아 화상 학대 감별
+  s:
+  - {t: "경위 청취", i: speech, w: "walk me through는 처음부터 차근차근 들려 달라는 열린 요청이라 추궁처럼 들리지 않아요. 경위가 상처의 모양·깊이와 맞는지는 학대 가능성을 가리는 핵심 정보예요.", d: "one more time", k: ["아이가 평소에 어떻게 지내는지 말씀해 주세요", "화상을 입은 시간이 언제인지 알려 주세요"], a: "burn", o: ["fall", "crash", "bite"]}
+  - {t: "기록 안내", i: pencil, w: "I'm noting으로 지금 기록한다는 사실을 투명하게 알려요. 모양과 경계는 뜨거운 물이 튄 건지 담긴 건지 같은 기전을 가늠하는 단서가 돼요.", d: "by hand", k: ["화상 부위 사진을 찍어도 될까요?", "아이가 아파하지 않게 천천히 할게요"], a: "noting", o: ["washing", "cooling", "wrapping"]}
+  - {t: "전 아동 확인", i: shield, w: "every child로 모든 아이에게 같은 절차라고 말해 부모가 의심받는다고 느끼지 않게 해요. 상처가 설명한 경위와 맞는지 보는 것은 아이를 보호하는 표준 절차예요.", d: "for the doctor", k: ["부모님을 의심하는 건 아니에요", "아이가 편하도록 보호자는 옆에 계셔도 돼요"], a: "injury", o: ["toys", "shoes", "lunch"]}
+  - {t: "목격자 확인", i: speech, w: "anyone else로 이미 말한 사람 외에 또 있었는지 물어 목격자를 찾아요. 화상이 생길 때 곁에 누가 있었는지는 경위를 확인하는 기본 질문이에요.", d: "at school", k: ["아이가 평소에 이렇게 자주 다치나요?", "아이를 돌보는 분이 누구예요?"], a: "anyone", o: ["something", "nothing", "everything"]}
+  - {t: "대칭 확인", i: magnify, w: "which we always check로 이것이 특별한 의심이 아니라 늘 하는 확인이라고 말해요. 양쪽이 대칭인 화상은 설명한 경위와 맞는지 더 꼼꼼히 살펴보게 돼요.", d: "in the middle", k: ["이 부위는 사진으로 남겨 둘게요", "양쪽 화상 크기를 각각 재 볼게요"], a: "check", o: ["skip", "hide", "change"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "소아 화상 확인 4문장 순서"
+    why: "경위를 차근차근 묻고, 집에 누가 있었는지 묻고, 답이 상처 기록에 쓰인다고 알린 뒤, 모든 아이에게 하는 일이라고 닫아요. 'it'·'Your answers'·'That's routine'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Can you walk me through exactly how the burn happened?", icon: speech, ko: "화상이 정확히 어떻게 생겼는지 차근차근 설명해 주시겠어요?", note: "경위"}
+    - {en: "Thank you. Was anyone else home when it happened?", icon: speech, ko: "고마워요, 그때 집에 다른 사람도 있었나요?", note: "목격"}
+    - {en: "Your answers help me, because I'm noting the shape and edges of the burn.", icon: pencil, ko: "답변이 도움이 돼요, 화상의 모양과 경계를 기록하고 있거든요", note: "기록"}
+    - {en: "That's routine, and it's how we keep every child safe.", icon: shield, ko: "늘 하는 일이고, 모든 아이를 지키는 방법이에요", note: "안심"}
+  sw: {ko: "화상이 정확히 어떻게 생겼는지 차근차근 설명해 주시겠어요?"}
+- title: 고령 화상 동반질환
+  s:
+  - {t: "이유 설명", i: bulb, w: "so로 이유를 먼저 대고 결과를 말해서 나이 탓이 아니라 피부의 특성이라는 점이 전해져요. 얇은 피부는 같은 열에도 더 깊이 손상될 수 있어요.", d: "on the surface", k: ["화상 깊이는 며칠 지나야 정확히 알 수 있어요", "마른 피부에는 보습제를 발라 드릴게요"], a: "thinner", o: ["thicker", "oilier", "darker"]}
+  - {t: "위험 설명", i: lab, w: "may로 가능성이라고 말하고 so we'll watch로 대책을 붙여 불안을 줄여요. 당뇨는 혈류와 면역이 떨어져 상처가 늦게 낫고 감염되기 쉬워요.", d: "every day", k: ["혈당을 지금 바로 한번 재 볼게요", "상처 부위는 매일 소독할 거예요"], a: "slow", o: ["speed", "boost", "help"]}
+  - {t: "병력 문진", i: pill, w: "medicines and health problems 두 가지를 함께 물어 한 번에 병력을 모아요. 혈액 희석제나 당뇨약 같은 복용약은 화상 치료와 수액 계획에 영향을 줘요.", d: "in your family", k: ["가족 중에 화상을 입은 분이 있나요?", "집에서 쓰던 연고가 있으세요?"], a: "health", o: ["family", "money", "school"]}
+  - {t: "재확인", i: magnify, w: "more than once로 한 번 보고 끝내지 않는다고 미리 말해요. 화상 깊이는 처음엔 가늠하기 어렵고 시간이 지나며 드러나서 여러 번 다시 봐요.", d: "just in case", k: ["피부가 건조하면 알려 주세요", "화상 부위에 진통제를 먼저 드릴게요"], a: "check", o: ["wash", "dry", "cover"]}
+  - {t: "약 확인", i: pill, w: "every medicine으로 처방약뿐 아니라 약국에서 산 약과 영양제까지 다 말해 달라는 뜻이에요. 혈액 응고나 혈당에 영향을 주는 약은 치료 선택을 바꿀 수 있어요.", d: "on your own", k: ["약 이름이 기억나지 않으면 처방전 사진을 보여 주세요", "알레르기가 있는 약이 있나요?"], a: "take", o: ["sell", "wash", "borrow"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "고령 화상 4문장 순서"
+    why: "얇은 피부 때문에 겉보다 깊을 수 있다고 알리고, 그래서 여러 번 확인하고, 또 다른 이유로 당뇨를 짚은 뒤, 그 당뇨약을 묻고 닫아요. 'That's why'·'another reason'·'it'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Older skin is thinner, so burns can be deeper than they look.", icon: bulb, ko: "나이든 피부는 얇아서 화상이 겉보기보다 깊을 수 있어요", note: "이유"}
+    - {en: "That's why we'll check your skin more than once.", icon: magnify, ko: "그래서 피부를 여러 번 확인할게요", note: "재확인"}
+    - {en: "Your diabetes is another reason, since it may slow healing.", icon: lab, ko: "당뇨도 또 다른 이유예요, 치유를 늦출 수 있거든요", note: "당뇨"}
+    - {en: "What medicines do you take for it at home?", icon: pill, ko: "그것 때문에 집에서 어떤 약을 드세요?", note: "약"}
+  ctx: {word: "thin", ko: "얇은", sc: {2: {en: "Because you're elderly, your skin is too thin and burns go deeper.", fix: "Skin gets thinner as we all get older, so we're taking extra care with your burn."}}}
+- title: 안면·수부 화상 기능
+  s:
+  - {t: "중요성 설명", i: bandage, w: "special care로 손은 일반 화상보다 더 신경 쓴다고 알려요. 손은 관절과 힘줄이 피부 가까이 있어서 흉터로 굳기 전에 움직임을 지키는 치료가 중요해요.", d: "to look better", k: ["반지는 지금 빼 드릴게요", "손은 심장보다 높이 올려 둘게요"], a: "special", o: ["simple", "routine", "minimal"]}
+  - {t: "전원 안내", i: hospital, w: "for the best outcome으로 전원 이유를 환자의 이득으로 말해요. 손·얼굴 화상은 미국화상학회의 화상센터 의뢰 기준에 들어가요.", d: "for your insurance", k: ["화상센터에 자리가 있는지 확인해 볼게요", "전원 전에 보호자 연락처를 확인할게요"], a: "best", o: ["worst", "cheapest", "simplest"]}
+  - {t: "자세·드레싱", i: bandage, w: "positioned and covered 두 가지를 같이 약속해요. 화상 입은 손은 손가락을 벌려 감싸고 올려 두면 붓기와 굳음을 줄여요.", d: "squeezed tight", k: ["움직이는 연습은 나중에 알려 드릴게요", "붕대가 너무 조이면 말씀해 주세요"], a: "covered", o: ["pinched", "squeezed", "twisted"]}
+  - {t: "움직임 확인", i: me, w: "for me가 부탁하는 말투라 아픈 손도 거부감이 덜해요. 손가락을 하나씩 움직이게 하면 힘줄과 신경 손상 여부를 가려 볼 수 있어요.", d: "all at once", k: ["손가락 색이 어떤지 볼게요", "손가락 끝을 가볍게 눌러서 감각을 볼게요"], a: "move", o: ["wash", "hide", "paint"]}
+  - {t: "전문성 설명", i: hospital, w: "specialists trained in…으로 전원이 왜 이득인지 근거를 대요. 화상센터에는 손·얼굴 치료와 재활을 함께 하는 팀이 있어요.", d: "in cooking", k: ["센터까지 구급차로 이동할 거예요", "전원 전에 의무기록을 같이 보낼게요"], a: "specialists", o: ["visitors", "students", "cooks"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "손 화상 4문장 순서"
+    why: "먼저 손가락을 움직여 보게 하고, 고마움과 함께 자세와 드레싱을 알리고, 그 이유로 손 화상은 특별한 관리가 필요하다고 설명한 뒤, 같은 이유로 화상센터를 말해요. 'Thanks'·'That's because'·'the same reason'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "First, can you move each finger for me one at a time?", icon: me, ko: "먼저 손가락을 하나씩 움직여 보시겠어요?", note: "확인"}
+    - {en: "Thanks. We'll keep your fingers positioned and covered properly.", icon: bandage, ko: "고마워요, 손가락을 제대로 자세 잡고 덮어드릴게요", note: "조치"}
+    - {en: "That's because burns to your hands need special care to keep function.", icon: bulb, ko: "손 화상은 기능을 지키려고 특별한 관리가 필요해서예요", note: "이유"}
+    - {en: "For the same reason, we'll refer you to a burn center for the best outcome.", icon: hospital, ko: "같은 이유로 최선의 결과를 위해 화상센터로 전원해 드릴게요", note: "전원"}
+  sw: {ko: "화상센터가 손이 가장 잘 회복하도록 도울 거예요 — 이 분야 전문이에요"}

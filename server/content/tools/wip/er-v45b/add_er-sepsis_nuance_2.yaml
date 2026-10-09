@@ -1,0 +1,144 @@
+노인 비전형 패혈증:
+  - kind: slider
+    words: [w-low, w-temperature]
+    cue: "Daughter: \"His temperature is 35.6°C (96.1°F). That's not a fever, so it can't be an infection, right?\""
+    scale: [low, normal, a fever]
+    answerAt: 0
+    why: "36℃(96.8℉) 미만은 저체온 쪽이에요. SIRS 기준도 38℃ 초과와 36℃ 미만을 모두 이상으로 봐요. 노인 패혈증은 열 대신 저체온과 혼란으로 올 수 있어서, 열이 없다고 감염을 배제하지 않아요."
+    example: "His temperature is low, and in older adults that can be a sign of sepsis."
+    exKo: "체온이 낮은데, 노인에게는 그게 패혈증 신호일 수 있어요."
+  - kind: swap
+    words: [w-old, w-adult, w-sepsis]
+    who: "보호자에게 · 비전형 발현 설명"
+    icon: me
+    before: ["In ", "old people", ", sepsis can show up as confusion or a low temperature."]
+    options: [older adults, old people, the elderly]
+    answer: older adults
+    notes:
+      older adults: "미국 의료계에서 권하는 중립적인 말. 보호자에게 정중하게 들린다."
+      old people: "뜻은 같지만 직설적이라 아버지를 낮춰 부르는 것처럼 들릴 수 있다."
+      the elderly: "예전 글에 흔하지만, 요즘 미국 의학 문체 지침은 older adults를 권한다. 사람을 한 무리로 묶는 느낌이 든다."
+    why: "AMA·AP 문체 지침은 elderly보다 older adults를 권해요. 같은 뜻이라도 보호자 앞에서는 존중이 담긴 말을 골라요."
+  - kind: context
+    words: [w-confuse, w-sign, w-infection]
+    scenes:
+      - {who: 차트 기록, icon: board, en: "Acute confusion, oriented x1; baseline A&O x3 per daughter. Temp 35.6.", ok: true}
+      - {who: 의사에게 보고, icon: speech, en: "He's acutely confused — his daughter says he's normally fully oriented — and he's hypothermic at 35.6.", ok: true}
+      - {who: 보호자에게, icon: me, en: "He has acute delirium and is altered from baseline.", ok: false, fix: "He's more confused than usual, and that can be an early sign of infection."}
+    why: "delirium·altered from baseline은 의료진끼리의 말이에요. 보호자에게는 '평소보다 더 혼란스러워하시고, 그게 감염의 조기 신호일 수 있다'고 풀어요."
+요로성 패혈증:
+  - kind: slider
+    words: [w-block, w-drain, w-kidney, w-infection]
+    cue: "CT: obstructing ureteral stone with hydronephrosis. Patient febrile and hypotensive."
+    scale: [routine, soon, urgent]
+    answerAt: 2
+    why: "막힌 요로에 감염까지 겹치면 항생제만으로는 잘 낫지 않아요. 요관 스텐트나 경피적 신루술로 막힌 곳을 빼내는 긴급 감압이 필요한 응급이에요."
+    example: "With a blockage and an infection, draining the kidney is urgent."
+    exKo: "막힘에 감염까지 있으면 신장 배액이 급해요."
+  - kind: swap
+    words: [w-drain, w-control, w-need, w-infection]
+    who: "환자에게 · 배액 이유 설명"
+    icon: me
+    before: ["If there's a blockage, we may need to drain it to ", "achieve source control", "."]
+    options: [control the infection, achieve source control, stop the pain]
+    answer: control the infection
+    notes:
+      control the infection: "배액의 목적을 환자가 알아듣는 말로 그대로 전한다."
+      achieve source control: "의료진끼리 쓰는 말(source control). 환자는 무엇을 한다는 건지 모른다."
+      stop the pain: "통증이 줄 수는 있지만 배액의 목적은 감염원 제거다. 목적을 잘못 전한다."
+    why: "source control은 의료진의 말이에요. 환자에게는 '감염을 잡으려고 막힌 곳을 빼낸다'고 말해요."
+폐렴성 패혈증:
+  - kind: slider
+    words: [w-oxygen, w-level, w-low]
+    cue: "SpO2 89% on 4 L nasal cannula. Ordered goal: 92% or higher."
+    scale: [normal, a little low, dangerously low]
+    answerAt: 1
+    why: "목표(92% 이상)보다 조금 낮은 값이에요. 산소를 올리고 지켜볼 단계이지 아직 위험할 만큼은 아니에요. 다만 계속 떨어지거나 호흡이 더 힘들어지면 바로 보고해요."
+    example: "Your oxygen level is a little lower than we'd like."
+    exKo: "산소 수치가 원하는 것보다 조금 낮아요."
+  - kind: swap
+    words: [w-tell, w-breathe, w-hard]
+    who: "환자에게 · 악화 시 알려 달라고"
+    icon: me
+    before: ["Tell me right away if ", "you become hypoxic", "."]
+    options: [breathing gets harder, you become hypoxic, you feel a bit tired]
+    answer: breathing gets harder
+    notes:
+      breathing gets harder: "환자가 스스로 느끼고 알릴 수 있는 변화를 쉬운 말로 짚는다."
+      you become hypoxic: "임상어인 데다, 저산소는 환자가 스스로 알아챌 수 있는 것이 아니다."
+      you feel a bit tired: "너무 막연하고 가벼워, 정작 알려야 할 호흡 악화를 놓친다."
+    why: "환자에게 알려 달라고 할 때는 환자가 직접 느낄 수 있는 변화로 말해요."
+수액반응성 평가:
+  - kind: slider
+    words: [w-come, w-pressure, w-blood, w-fluid]
+    cue: "After a 500 mL bolus: MAP 58 → 61. Goal MAP is 65 or higher."
+    scale: [came up a little, came up a lot, back to normal]
+    answerAt: 0
+    why: "MAP이 3 오른 건 조금 오른 거예요. 아직 목표(65 이상)에 못 미쳐서, 수액을 더 줄지 승압제 같은 다른 지지로 갈지 재사정해요."
+    example: "Your blood pressure came up a little after that last bag of fluids."
+    exKo: "마지막 수액 한 팩 뒤로 혈압이 조금 올랐어요."
+  - kind: context
+    words: [w-swell, w-leg, w-fluid, w-watch, w-breathe]
+    scenes:
+      - {who: 차트 기록, icon: board, en: "After 3 L: new bibasilar crackles, 2+ pitting edema BLE.", ok: true}
+      - {who: 의사에게 보고, icon: speech, en: "After three liters she has new crackles and leg edema — I'm worried about fluid overload.", ok: true}
+      - {who: 환자에게, icon: me, en: "You have bibasilar crackles and 2+ pitting edema.", ok: false, fix: "Your legs are a little swollen, so I'm watching your breathing closely."}
+    why: "crackles·pitting edema는 차트와 보고의 말이에요. 환자에게는 다리가 부었다는 것과 그래서 호흡을 지켜본다는 것을 쉬운 말로 전해요."
+면역저하 잠복 패혈증:
+  - kind: slider
+    words: [w-fever, w-high]
+    cue: "Kidney transplant patient on immune-suppressing medicine. Temp 38.0°C (100.4°F)."
+    scale: [no fever, a fever, a high fever]
+    answerAt: 1
+    why: "미국 병원에서는 38.0℃(100.4℉)부터 발열로 봐요. '미열'이 아니라 발열이에요. 면역억제 환자는 열이 덜 오르기 때문에 이 정도도 가볍게 넘기지 않고 바로 사정해요."
+    example: "At 100.4, that counts as a fever."
+    exKo: "100.4℉(38.0℃)면 발열이에요."
+  - kind: swap
+    words: [w-wait, w-high, w-fever, w-check, w-thorough]
+    who: "환자에게 · 대응 설명"
+    icon: me
+    before: ["We won't wait for a high fever — ", "let's see how you feel tomorrow", "."]
+    options: [we'll check thoroughly now, let's see how you feel tomorrow, you're probably fine]
+    answer: we'll check thoroughly now
+    notes:
+      we'll check thoroughly now: "앞말(기다리지 않겠다)과 맞고, 지금 무엇을 할지 분명히 말한다."
+      let's see how you feel tomorrow: "앞말과 어긋난다. 면역억제 환자는 증상이 약해도 빨리 나빠질 수 있어 미루면 안 된다."
+      you're probably fine: "근거 없는 안심. 환자가 다음 증상을 가볍게 여기게 만든다."
+    why: "면역억제 환자에게는 '기다리지 않고 지금 철저히 본다'고 분명히 말해요."
+카테터 관련 균혈증:
+  - kind: slider
+    words: [w-chill, w-line, w-use]
+    cue: "Patient: \"Every time they hook me up for dialysis, I shake so hard my teeth chatter.\""
+    scale: [feeling chilly, chills, rigors]
+    answerAt: 2
+    why: "이가 딱딱 부딪칠 만큼 온몸이 떨리는 건 rigors(오한 떨림)예요. 투석 라인을 쓸 때마다 rigors가 오면 라인 관련 균혈증을 강하게 의심해요."
+    example: "He had rigors as soon as the line was used."
+    exKo: "라인을 쓰자마자 심한 오한 떨림이 있었어요."
+  - kind: context
+    words: [w-draw, w-culture, w-line, w-arm, w-red]
+    scenes:
+      - {who: 차트 기록, icon: board, en: "Rigors with HD start; exit-site erythema. BCx x2 drawn (catheter + peripheral).", ok: true}
+      - {who: 의사에게 보고, icon: speech, en: "He gets rigors every time dialysis starts and his exit site is red — I drew one culture from the line and one peripheral.", ok: true}
+      - {who: 환자에게, icon: me, en: "We drew paired cultures from your catheter and a peripheral venipuncture.", ok: false, fix: "We took blood from your line and from your arm to check if the line is infected."}
+    why: "paired cultures·peripheral venipuncture는 의료진끼리의 말이에요. 환자에게는 '라인과 팔에서 피를 뽑아 라인 감염인지 본다'고 말해요."
+산모 패혈증:
+  - kind: swap
+    words: [w-monitor, w-heartbeat, w-continuous]
+    who: "산모에게 · 태아 감시 설명"
+    icon: me
+    before: ["We're monitoring your baby's ", "FHR", " continuously."]
+    options: [heartbeat, FHR, fetal tracing]
+    answer: heartbeat
+    notes:
+      heartbeat: "산모가 바로 알아듣고 안심하는 말."
+      FHR: "fetal heart rate의 약어. 의료진끼리 쓰는 말이라 산모는 모른다."
+      fetal tracing: "모니터 기록지를 가리키는 의료진의 말. 산모에게는 낯설다."
+    why: "같은 태아 감시라도 산모에게는 '아기 심장박동'처럼 쉬운 말로 말해요."
+  - kind: slider
+    words: [w-move, w-usual, w-feel, w-tell]
+    cue: "Patient (32 weeks): \"The baby's still kicking, just not as much as usual.\""
+    scale: [moving normally, moving less, not moving]
+    answerAt: 1
+    why: "평소보다 태동이 줄었다는 건 바로 알려야 할 변화예요. 열과 빠른 맥이 있는 산모라면 태아 심박 감시를 곧바로 함께 확인해요."
+    example: "Tell me if you feel the baby moving less than usual."
+    exKo: "아기가 평소보다 덜 움직인다고 느끼면 말씀해 주세요."

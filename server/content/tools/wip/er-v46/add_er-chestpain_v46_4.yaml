@@ -1,0 +1,71 @@
+- title: STEMI 확진 후 심도자실 이송
+  s:
+  - {t: "이송 안내", i: hospital, w: "to open the blocked artery로 이동의 목적을 한 문장에 담아요. 심도자실에서는 막힌 관상동맥을 열어 혈류를 되돌리는 시술을 해요.", d: "to X-ray", k: ["심도자실로 가서 검사 결과를 기다릴 거예요", "수술실로 가서 심장을 열 거예요"], a: "artery", o: ["vein", "valve", "airway"]}
+  - {t: "이송 중 관찰", i: monitor, w: "the whole way there로 이동 중에도 관찰이 끊기지 않는다고 알려요. 불안정한 환자는 이송 중에도 모니터를 단 채로 가요.", d: "part of the way", k: ["이동 중에는 모니터를 잠시 뺄 거예요", "이동하는 동안 혼자 계셔야 해요"], a: "monitored", o: ["informed", "warm", "calm"]}
+  - {t: "예상 증상", i: bell, w: "You may feel …, but …으로 느낄 수 있는 것과 꼭 알릴 것을 나눠 말해요. 시술 전후에는 압박감이 있을 수 있어도 새로운 통증은 알려야 해요.", d: "some cold", k: ["새로운 통증은 말하지 않아도 돼요", "아무것도 느끼지 못하실 거예요"], a: "pressure", o: ["itching", "hunger", "thirst"]}
+  - {t: "기대 안내", i: trophy, w: "should로 확정하지 않고 기대를 말해요. 막힌 혈관이 열리면 통증이 줄어드는 경우가 많지만 모두에게 똑같지는 않아요.", d: "will cure", k: ["이 시술은 통증을 더 심하게 할 거예요", "이 시술은 몇 주 뒤에 효과가 나요"], a: "relieve", o: ["increase", "ignore", "hide"]}
+  - {t: "준비 완료", i: check, w: "Everything is set up으로 준비가 끝났다는 걸 먼저 알려 환자가 마음을 놓아요. for me를 붙이면 지시가 부탁처럼 부드럽게 들려요.", d: "and waiting", k: ["아직 아무것도 준비되지 않았어요", "움직이셔도 괜찮아요 — 편하게 걸으세요"], a: "ready", o: ["late", "finished", "closed"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "심도자실 이송 4문장 순서"
+    why: "어디로 왜 가는지 먼저 알리고, 가는 길에 지켜본다고 말하고, 도착하면 느낄 수 있는 것을 알리고, 끝난 뒤 통증이 줄어들 것이라고 맺어요. 뒤 줄이 앞 줄의 시점을 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "We're taking you to the cath lab to open the blocked artery.", icon: hospital, ko: "막힌 동맥을 열려고 심도자실로 모실게요", note: "이송"}
+    - {en: "On the way, the team will keep you monitored the whole time.", icon: monitor, ko: "가는 길 내내 팀이 계속 지켜볼 거예요", note: "관찰"}
+    - {en: "Once we get there, you may feel some pressure, but tell us about any new pain.", icon: bell, ko: "도착하면 압박감이 있을 수 있지만 새 통증은 알려주세요", note: "안내"}
+    - {en: "When it's over, your chest pain should ease quickly.", icon: trophy, ko: "끝나면 가슴 통증이 빨리 가라앉을 거예요", note: "기대"}
+  sw: {ko: "막힌 동맥을 열려고 심도자실로 모시고 갈게요"}
+- title: 흉통 중 급속 악화
+  s:
+  - {t: "의식 확인", i: speaker, w: "Stay with me는 의식을 붙잡아 달라는 짧은 요청이에요. 목소리가 들리는지 물어 반응이 있는지 바로 확인해요.", d: "my hand", k: ["제 목소리를 따라 하지 마세요", "제가 잠깐 자리를 비울게요"], a: "voice", o: ["name", "footsteps", "message"]}
+  - {t: "도움 요청", i: siren, w: "calling for help right now로 지금 도움을 부르고 있다고 알려서 환자가 혼자라고 느끼지 않아요. don't close your eyes는 의식을 유지하게 하는 짧은 지시예요.", d: "in a bit", k: ["눈을 편히 감고 쉬세요", "도움은 부르지 않을 거예요"], a: "eyes", o: ["mouth", "hands", "ears"]}
+  - {t: "안심", i: shield, w: "We're going to …는 곧 하는 일을 we로 말해 팀이 함께한다는 느낌을 줘요. take care of you는 환자를 책임지고 돌보겠다는 관용 표현이에요.", d: "to check on", k: ["저희는 곧 자리를 떠날 거예요", "팀이 아직 오지 않아서 기다려야 해요"], a: "coming", o: ["leaving", "sleeping", "late"]}
+  - {t: "상태 설명", i: faceWorried, w: "상태를 사실대로 짧게 말하고 so로 서두르는 이유를 바로 이어요. we're moving fast는 환자 때문이 아니라 상황 때문이라는 뜻으로 들려요.", d: ", so we're waiting", k: ["안색이 좋아져서 천천히 움직일게요", "안색은 그대로지만 서두를게요"], a: "fast", o: ["slowly", "later", "alone"]}
+  - {t: "반응 유지", i: speech, w: "Keep talking to me는 말하는 동안 의식이 유지되는지 확인하는 방법이에요. 이름처럼 쉬운 질문을 주면 환자가 답하기 쉬워요.", d: "your address", k: ["말씀하지 말고 가만히 계세요", "제 이름을 말씀해 보세요"], a: "name", o: ["age", "address", "phone number"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "급속 악화 환자 응대 4문장 순서"
+    why: "의식을 먼저 확인하고, 반응이 있으면 도움을 부른다고 알리고, 기다리는 동안 이름을 말하게 해 의식을 이어 가고, 이름을 들은 뒤 팀이 도착했음을 알려요. 뒤 줄이 앞 줄의 답을 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "Stay with me — can you hear my voice?", icon: speaker, ko: "정신 놓지 마세요 — 제 목소리 들리세요?", note: "확인"}
+    - {en: "Good. I'm calling for help right now, so don't close your eyes.", icon: siren, ko: "좋아요. 지금 도움을 부를 테니 눈을 감지 마세요", note: "호출"}
+    - {en: "While we wait, keep talking to me — tell me your name.", icon: speech, ko: "기다리는 동안 말씀해 보세요 — 성함을 알려주세요", note: "유지"}
+    - {en: "Thank you. The team is here now, and we're going to take care of you.", icon: shield, ko: "고마워요. 팀이 왔고 저희가 돌봐드릴게요", note: "안심"}
+  ctx: {word: "call", ko: "부르다"}
+- title: NSTEMI 관찰 중 변화
+  s:
+  - {t: "변화 비교", i: chartup, w: "compare to earlier로 기준을 아까로 잡아 주고, same·better·worse를 보기로 줘서 대답하기 쉬워요. 같은 말투로 반복해 물으면 변화를 추적할 수 있어요.", d: ", bigger, or smaller", k: ["이 통증은 아까부터 계속 같은 곳에 있나요?", "이 통증이 처음 시작된 건 언제인가요?"], a: "earlier", o: ["yesterday", "last year", "before lunch"]}
+  - {t: "재측정", i: monitor, w: "re-와 repeat로 다시 한다는 것을 분명히 해요. 통증이 바뀌면 활력징후와 심전도를 다시 확인하는 것이 기본이에요.", d: "a chest X-ray", k: ["활력징후는 한 번만 확인할게요", "혈액 검사를 한 번 더 할게요"], a: "vitals", o: ["charts", "orders", "labs"]}
+  - {t: "의사 보고", i: speech, w: "update the doctor는 상태가 달라졌음을 의사에게 알리는 간호사의 기본 행동이에요. right away와 this change를 함께 말해 무엇을 왜 알리는지 환자도 알게 해요.", d: "later today", k: ["의사에게는 알리지 않을게요", "이 변화는 일단 기록만 해 둘게요"], a: "doctor", o: ["pharmacist", "dietitian", "chaplain"]}
+  - {t: "칭찬", i: star, w: "You did the right thing은 환자의 행동을 인정하는 말이에요. 증상이 다시 생기면 바로 알리도록 격려해야 다음에도 숨기지 않아요.", d: "by waiting", k: ["다시 아프다고 말씀하지 않으셨어야 했어요", "아픈 걸 참으신 게 잘하신 거예요"], a: "right", o: ["wrong", "hard", "last"]}
+  - {t: "치료 반응", i: pill, w: "responds to는 약에 몸이 반응하는지 본다는 뜻이에요. new pain처럼 달라진 점을 짚어 말하면 환자도 무엇을 지켜보는지 알아요.", d: "to your sleep", k: ["이 통증이 약 때문에 생겼는지 볼게요", "약을 더 드리면 통증이 사라질 거예요"], a: "new", o: ["old", "mild", "sharp"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "NSTEMI 통증 재발 응대 4문장 순서"
+    why: "아까와 비교해 묻고, 다시 아프다는 답을 근거로 재측정을 하고, 그 검사가 진행되는 동안 의사에게 알리고, 의사가 확인한 뒤 약에 반응하는지 지켜본다고 맺어요. 뒤 줄이 앞 줄을 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "How does this pain compare to earlier — same, better, or worse?", icon: chartup, ko: "이 통증이 아까와 어떤가요 — 같나요, 나아졌나요, 나빠졌나요?", note: "비교"}
+    - {en: "Since it's back, I'm rechecking your vitals and getting a repeat ECG.", icon: monitor, ko: "다시 아프시니 활력징후와 심전도를 다시 확인해요", note: "재측정"}
+    - {en: "While those are going, I'll update the doctor right away about this change.", icon: speech, ko: "그동안 이 변화를 바로 의사에게 알릴게요", note: "보고"}
+    - {en: "After the doctor weighs in, let's see if this new pain responds to your medicine.", icon: pill, ko: "의사가 판단한 뒤 새 통증이 약에 반응하는지 봐요", note: "반응"}
+  ctx: {word: "update", ko: "알려주다"}
+- title: 불안정 협심증 야간 재발
+  s:
+  - {t: "안정 시 발생", i: me, w: "while you were resting or asleep로 쉬는 중에 시작됐는지 보기를 줘요. 쉬고 있을 때 생기는 흉통은 불안정 협심증의 특징 중 하나라 꼭 물어요.", d: "or walking", k: ["달리거나 운동하는 중에 통증이 시작됐나요?", "식사한 직후에 통증이 시작됐나요?"], a: "resting", o: ["running", "working", "exercising"]}
+  - {t: "빈도·지속", i: chartup, w: "more often과 lasting longer로 횟수와 길이를 따로 짚어요. 전보다 잦아지거나 길어지는 것은 불안정 협심증을 의심하게 하는 중요한 변화예요.", d: "less often", k: ["이게 예전보다 덜 자주 일어나나요?", "이게 처음 일어난 건 언제인가요?"], a: "before", o: ["yesterday", "last week", "last year"]}
+  - {t: "재평가·보고", i: bell, w: "reassess는 상태를 다시 살펴본다는 뜻이에요. let the team know로 직접 알리겠다고 하면 환자가 방치되지 않는다고 느껴요.", d: "and send", k: ["지금 바로 퇴원 준비를 할게요", "팀에는 나중에 알릴게요"], a: "reassess", o: ["discharge", "transfer", "release"]}
+  - {t: "경고 신호", i: bell, w: "important warning sign은 놓치면 안 되는 단서라는 뜻이에요. 자다가 가슴 통증으로 깨는 것은 불안정 협심증을 포함해 심장 원인을 의심하게 해요.", d: "is a minor problem", k: ["자다가 깨는 건 대개 걱정할 필요가 없어요", "자다가 깨는 건 위가 아파서예요"], a: "important", o: ["unusual", "obvious", "extra"]}
+  - {t: "비교 제안", i: compass, w: "compare A with B는 두 가지를 나란히 놓고 본다는 뜻이에요. 오늘 밤 통증을 이전 통증과 견주면 얼마나 달라졌는지 알 수 있어요.", d: "from the ones", k: ["오늘 밤 통증은 예전과 전혀 비교할 수 없어요", "예전 통증은 모두 잊어버리세요"], a: "tonight's", o: ["yesterday's", "Monday's", "last week's"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "야간 재발 협심증 4문장 순서"
+    why: "쉬는 중에 시작됐는지 먼저 묻고, 그렇다면 더 잦거나 길어졌는지 묻고, 그런 변화를 근거로 재평가와 팀 보고를 알리고, 팀이 오면 오늘 밤 통증을 이전과 견준다고 맺어요. 뒤 줄이 앞 줄의 답을 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "Did the pain come on while you were resting or asleep?", icon: me, ko: "쉬거나 자는 중에 통증이 시작됐나요?", note: "발생"}
+    - {en: "If it did, is it happening more often or lasting longer than before?", icon: chartup, ko: "그랬다면 더 잦거나 오래가나요?", note: "변화"}
+    - {en: "Since it's changing like that, I'm going to reassess you and let the team know.", icon: bell, ko: "그렇게 변하니 다시 평가하고 팀에 알릴게요", note: "보고"}
+    - {en: "Once the team is here, let's compare tonight's episode with the earlier ones.", icon: compass, ko: "팀이 오면 오늘 밤 통증을 이전 통증과 비교해요", note: "비교"}

@@ -27,7 +27,9 @@ type ProgressRepo interface {
 	// returns new progress. state is 'cleared' (passed → counts as 완료) or
 	// 'attempted' (engaged but below pass). grade is the 0..100 AI score, or <0 for
 	// a direct/legacy attempt with no grade (stored NULL).
-	// `guide` is the help this run had (curriculum.GuideLevel: "choices" | "free").
+	// `guide` is the help this run had (curriculum.GuideLevel: "guided" | "free").
+	// Rows written before 2026-09-30 say "choices" for the same rung — learning.IsGuided
+	// reads both.
 	// Without it a clear made with three replies on screen counts the same as one made
 	// alone, which deletes the second rung of the ladder.
 	RecordAttempt(ctx context.Context, userID, scenarioID string, score int, state string, grade int, guide string) (*progress.Progress, error)
@@ -409,7 +411,8 @@ type SpeechSynthesizer interface {
 type ConversationSession struct {
 	ID, UserID, ScenarioID string
 	// Guide is which rung of the ladder opened this session (curriculum.GuideLevel:
-	// "choices" | "free"). "" is a session from before the column existed, read as
+	// "guided" | "free", and "choices" on sessions from before 2026-09-30). "" is a
+	// session from before the column existed, read as
 	// "free". The server needs it because the guided pass is answered from an authored
 	// tree when the scenario has one, and a model called on a turn the tree owns would
 	// walk the conversation off the script.
@@ -472,6 +475,34 @@ type ContentReader interface {
 	// client can offer one search box instead of asking which ward to look in
 	// first. Same card shape as DeptSituations; capped by limit.
 	SearchSituations(ctx context.Context, userID, q string, limit int) ([]content.DeptSituation, error)
+}
+
+// LessonStepClear is what a finished STEP 1/2 run left behind (v45).
+type LessonStepClear struct {
+	// Missed are the word ids answered wrong in STEP 1 — STEP 2 brings their
+	// sentences back first ("틀린 단어는 STEP 2 문장에 다시 나와요").
+	Missed []string `json:"missed,omitempty"`
+}
+
+// LessonRepo backs the four-step situation lesson (v44): the theme word banks STEP 1
+// is derived from, and the record of which of STEP 1/2 a learner has finished. STEP
+// 3/4 are dialogue passes and are read from ProgressRepo, not here.
+type LessonRepo interface {
+	// Lexicon returns one theme's word bank; a theme with no bank yet is (nil, nil).
+	Lexicon(ctx context.Context, theme string) ([]content.Word, error)
+	// StepClears returns the recorded steps ("words", "sentences") finished for one
+	// situation, each with what the run left behind.
+	StepClears(ctx context.Context, userID, scenarioID string) (map[string]LessonStepClear, error)
+	// ClearStep records a step as finished. Finishing it again keeps the first time but
+	// replaces the detail — the latest run's misses are the ones to bring back.
+	ClearStep(ctx context.Context, userID, scenarioID, step string, missed []string) error
+	// HasWordCard reports whether a confused-word card for this headword already exists.
+	HasWordCard(ctx context.Context, userID, en string) (bool, error)
+	// HasNuanceCard reports whether a reel 감상 card for this word already exists (§11-8).
+	HasNuanceCard(ctx context.Context, userID, word string) (bool, error)
+	// HasSentenceCard reports whether a confused-sentence card for this line already exists
+	// (lesson-fidelity-v46 R5 — one card per sentence, as for a word).
+	HasSentenceCard(ctx context.Context, userID, en string) (bool, error)
 }
 
 // ContentSeeder ingests a validated content bundle (file-source or, later, a CMS).

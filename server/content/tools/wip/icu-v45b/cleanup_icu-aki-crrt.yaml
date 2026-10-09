@@ -1,0 +1,59 @@
+# icu-aki-crrt 결정 11 정리 — build_icu-aki-crrt.py 가 읽는다.
+untag_everywhere:
+  w-hour: 공통 쉬운 단어(hour)
+  w-day: 공통 쉬운 단어(day)
+  w-time: 공통 쉬운 단어(time)
+  w-now: 공통 쉬운 단어(now)
+  w-home: 공통 쉬운 단어(home)
+  w-doctor: 공통 쉬운 단어(doctor)
+  w-patient: 공통 쉬운 단어(patient)
+  w-family: 공통 쉬운 단어(family)
+  w-body: 공통 쉬운 단어(body)
+  w-see: 공통 쉬운 단어(see)
+  w-come: 공통 쉬운 단어(come)
+  w-go: 공통 쉬운 단어(go)
+  w-minute: 공통 쉬운 단어(minute)
+  w-tell: 간호사가 이미 아는 말(tell)
+  w-help: 간호사가 이미 아는 말(help)
+  w-make: 간호사가 이미 아는 말(make)
+  w-many: 간호사가 이미 아는 말(many)
+  w-something: 간호사가 이미 아는 말(something)
+  w-else: 간호사가 이미 아는 말(else)
+  w-need: 간호사가 이미 아는 말(need)
+  w-want: 간호사가 이미 아는 말(want)
+  w-everything: 간호사가 이미 아는 말(everything)
+  w-use: 간호사가 이미 아는 말(use)
+  w-look: 간호사가 이미 아는 말(look)
+  w-show: 간호사가 이미 아는 말(show)
+  w-big: 간호사가 이미 아는 말(big) — w-large와 ko(큰)도 겹친다
+
+untag_at:
+  - [18, 5, w-off, "pull fluid off의 off는 불변화사 — w-off(정상을 벗어난) 태그를 뺐다"]
+
+word_edits:
+  w-heavy: {en: heavily, ipa: /ˈhɛvəli/, why: "형용사 헤드워드(heavy)에 부사 문장(bleeding heavily)이 묶여 헤드워드를 부사로 — ko(심하게)는 이미 부사"}
+  w-critical: {en: critically, ipa: /ˈkrɪtɪkli/, ko: 위중하게, why: "태그된 두 문장이 모두 부사(critically ill·critically high)라 헤드워드를 부사로"}
+  w-different: {en: differently, ipa: /ˈdɪfərəntli/, ko: 다르게, why: "태그된 두 문장이 모두 부사(dose them differently·feels this differently)라 헤드워드를 부사로"}
+  w-wash: {en: wash out, ipa: /wɑːʃ aʊt/, ko: 씻겨 나가다, why: "문장은 구동사 'wash out fast' — 헤드워드를 구 단위로"}
+  w-fail: {ko: 기능을 잃다, why: "'기능이 상하다'는 어색 — kidneys are failing은 기능을 잃어 가는 것"}
+  w-heal: {ko: 낫다, why: "w-recover(회복하다)와 ko(회복되다)가 겹쳐 가른다"}
+  w-volume: {ko: 체액량, why: "w-dose와 ko(용량)가 겹치고, 문장은 volume shift(체액량 이동)"}
+  w-number: {ko: 숫자, why: "w-level과 ko(수치)가 겹쳐 가른다"}
+  w-check: {ko: 점검하다, why: "w-confirm과 ko(확인하다)가 겹쳐 가른다"}
+  w-medicine: {ko: 약제, why: "w-drug와 ko(약)가 겹쳐 가른다"}
+  w-set: {ko: 설정하다; 정하다, why: "'설정되다'뿐이었는데 문장은 is set per hour·set goals together"}
+  w-run: {ko: 흘려보내다; 돌아가다, why: "'흐르다'는 run his blood through(흘려보내다)·while it runs(돌아가다)와 안 맞는다"}
+  w-pull: {ko: 가져오다; (체액을) 빼다, why: "'당기다'는 틀림 — pull the crash cart(가져오다)·pull fluid off(빼다)"}
+  w-hold: {ko: 붙잡다; 보류하다, why: "문장은 holding on to fluid·hold CRRT·holding pressure — '붙들다'만으로는 hold CRRT가 안 맞는다"}
+  w-build: {en: build up, ipa: /bɪld ʌp/, ko: 차츰 쌓이다, why: "문장은 구동사 'building up' — 헤드워드를 구 단위로, ko는 w-add-up(쌓이다)과 겹쳐 가른다"}
+  w-set-up: {ko: (장비를) 세팅하다, why: "w-prepare와 ko(준비하다)가 겹쳐 가른다"}
+  w-full: {ko: 온전한, why: "'꽉 찬'은 틀림 — over a full day는 '하루 온종일'"}
+
+# 문장 ko 수정: [상황 번호, 문장 번호, 새 ko, why]
+sentence_ko:
+  - [1, 0, "매일 체중을 재면 몸에 여분의 체액이 고여 있는지 알 수 있어요.", "'그녀가 체액을 붙들고 있는지'는 직역투 — holding on to fluid는 몸에 체액이 고이는 것"]
+  - [3, 1, "일반 투석보다 혈압에 부담이 덜해요.", "'혈압에 훨씬 부드러워요'는 어색하고 en에 없는 '훨씬'이 들어 있었다 — gentler on은 부담이 덜하다"]
+  - [4, 0, "이 굵은 카테터로 혈액이 기계로 나갔다가 다시 들어와요.", "혈액을 '데려와요'는 어색 — carries to and from은 나갔다 들어오는 것"]
+  - [4, 3, "한 라인은 혈액을 빼내고, 다른 라인은 다시 몸으로 돌려보내요.", "혈액을 '데려와요'는 어색"]
+  - [12, 0, "혈압이 불안정할 때는 지속 투석이 부담이 덜해요.", "'더 부드러워요'는 어색 — gentler는 부담이 덜하다"]
+  - [12, 4, "불안정한 심장에는 지속 치료가 부담이 덜해요.", "'심장에는 더 쉬워요'는 직역투 — easier on은 부담이 덜하다"]

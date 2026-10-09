@@ -10,24 +10,28 @@
   track: core
   dept: ER
   order: 10
+  icon: shield
 - key: core-language-er
   name: 언어·의사소통 기본
   nameKey: theme.core.language
   track: core
   dept: ER
   order: 20
+  icon: mic
 - key: core-handoff-er
   name: 인계·SBAR
   nameKey: theme.core.handoff
   track: core
   dept: ER
   order: 30
+  icon: handshake2
 - key: core-family-er
   name: 가족 소통
   nameKey: theme.core.family
   track: core
   dept: ER
   order: 40
+  icon: speech
 
 # ── ER 부서 심화 ──
 - key: er-pain-sedation
@@ -36,186 +40,217 @@
   track: depth
   dept: ER
   order: 100
+  icon: pill
 - key: er-procedures
   name: 기본 처치·술기
   nameKey: theme.er.procedures
   track: depth
   dept: ER
   order: 110
+  icon: bandage
 - key: er-chestpain
   name: 흉통·ACS
   nameKey: theme.er.chestpain
   track: depth
   dept: ER
   order: 120
+  icon: stetho
 - key: er-arrhythmia
   name: 부정맥
   nameKey: theme.er.arrhythmia
   track: depth
   dept: ER
   order: 130
+  icon: monitor
 - key: er-arrest
   name: 심정지·소생
   nameKey: theme.er.arrest
   track: depth
   dept: ER
   order: 140
+  icon: siren
 - key: er-shock
   name: 쇼크
   nameKey: theme.er.shock
   track: depth
   dept: ER
   order: 150
+  icon: siren
 - key: er-dyspnea
   name: 호흡곤란
   nameKey: theme.er.dyspnea
   track: depth
   dept: ER
   order: 160
+  icon: stetho
 - key: er-asthma-copd
   name: 천식·COPD
   nameKey: theme.er.asthma-copd
   track: depth
   dept: ER
   order: 170
+  icon: siren
 - key: er-anaphylaxis
   name: 아나필락시스
   nameKey: theme.er.anaphylaxis
   track: depth
   dept: ER
   order: 180
+  icon: siren
 - key: er-stroke
   name: 뇌졸중
   nameKey: theme.er.stroke
   track: depth
   dept: ER
   order: 190
+  icon: siren
 - key: er-seizure-loc
   name: 발작·의식저하
   nameKey: theme.er.seizure-loc
   track: depth
   dept: ER
   order: 200
+  icon: monitor
 - key: er-head-trauma
   name: 두부 외상
   nameKey: theme.er.head-trauma
   track: depth
   dept: ER
   order: 210
+  icon: siren
 - key: er-polytrauma
   name: 다발성 외상
   nameKey: theme.er.polytrauma
   track: depth
   dept: ER
   order: 220
+  icon: siren
 - key: er-chest-abd-trauma
   name: 흉복부 외상
   nameKey: theme.er.chest-abd-trauma
   track: depth
   dept: ER
   order: 230
+  icon: siren
 - key: er-ortho-trauma
   name: 정형 외상
   nameKey: theme.er.ortho-trauma
   track: depth
   dept: ER
   order: 240
+  icon: bandage
 - key: er-bleeding-wound
   name: 출혈·창상
   nameKey: theme.er.bleeding-wound
   track: depth
   dept: ER
   order: 250
+  icon: bandage
 - key: er-burn
   name: 화상
   nameKey: theme.er.burn
   track: depth
   dept: ER
   order: 260
+  icon: bandage
 - key: er-abdominal
   name: 복통
   nameKey: theme.er.abdominal
   track: depth
   dept: ER
   order: 270
+  icon: stetho
 - key: er-gi-bleed
   name: 위장관 출혈
   nameKey: theme.er.gi-bleed
   track: depth
   dept: ER
   order: 280
+  icon: siren
 - key: er-genitourinary
   name: 비뇨생식
   nameKey: theme.er.genitourinary
   track: depth
   dept: ER
   order: 290
+  icon: siren
 - key: er-diabetic
   name: 당뇨 응급
   nameKey: theme.er.diabetic
   track: depth
   dept: ER
   order: 300
+  icon: siren
 - key: er-sepsis
   name: 패혈증
   nameKey: theme.er.sepsis
   track: depth
   dept: ER
   order: 310
+  icon: siren
 - key: er-fever-infection
   name: 발열·감염
   nameKey: theme.er.fever-infection
   track: depth
   dept: ER
   order: 320
+  icon: shield
 - key: er-poisoning
   name: 중독
   nameKey: theme.er.poisoning
   track: depth
   dept: ER
   order: 330
+  icon: pill
 - key: er-alcohol-withdrawal
   name: 알코올 금단
   nameKey: theme.er.alcohol-withdrawal
   track: depth
   dept: ER
   order: 340
+  icon: siren
 - key: er-environmental
   name: 환경 손상
   nameKey: theme.er.environmental
   track: depth
   dept: ER
   order: 350
+  icon: siren
 - key: er-obgyn
   name: 산부인과 응급
   nameKey: theme.er.obgyn
   track: depth
   dept: ER
   order: 360
+  icon: baby
 - key: er-peds
   name: 소아 응급
   nameKey: theme.er.peds
   track: depth
   dept: ER
   order: 370
+  icon: baby
 - key: er-geriatric
   name: 노인 응급
   nameKey: theme.er.geriatric
   track: depth
   dept: ER
   order: 380
+  icon: siren
 - key: er-psych
   name: 정신과 응급
   nameKey: theme.er.psych
   track: depth
   dept: ER
   order: 390
+  icon: siren
 - key: er-deescalation
   name: 위기 완화
   nameKey: theme.er.deescalation
   track: depth
   dept: ER
   order: 400
+  icon: faceAngry
 
 # ── ICU 부서 코어 + 심화 (커리큘럼 v3 P2 · 35주제) ──
 - key: core-safety-icu
@@ -224,210 +259,245 @@
   track: core
   dept: ICU
   order: 10
+  icon: shield
 - key: core-language-icu
   name: 언어장벽·통역
   nameKey: theme.core.language
   track: core
   dept: ICU
   order: 20
+  icon: mic
 - key: core-handoff-icu
   name: 인계·SBAR
   nameKey: theme.core.handoff
   track: core
   dept: ICU
   order: 30
+  icon: handshake2
 - key: core-family-icu
   name: 가족·보호자 소통
   nameKey: theme.core.family
   track: core
   dept: ICU
   order: 40
+  icon: speech
 - key: icu-hemodynamics
   name: 혈역학 모니터링·승압제
   nameKey: theme.icu.hemodynamics
   track: depth
   dept: ICU
   order: 100
+  icon: monitor
 - key: icu-shock
   name: 쇼크 감별·소생
   nameKey: theme.icu.shock
   track: depth
   dept: ICU
   order: 110
+  icon: monitor
 - key: icu-cardiogenic
   name: 심인성 쇼크·기계순환보조
   nameKey: theme.icu.cardiogenic
   track: depth
   dept: ICU
   order: 120
+  icon: gear
 - key: icu-arrhythmia
   name: 중환자 부정맥·심율동전환
   nameKey: theme.icu.arrhythmia
   track: depth
   dept: ICU
   order: 130
+  icon: monitor
 - key: icu-mech-ventilation
   name: 기계환기 관리
   nameKey: theme.icu.mech-ventilation
   track: depth
   dept: ICU
   order: 140
+  icon: gear
 - key: icu-weaning-extubation
   name: 인공호흡기 이탈·발관
   nameKey: theme.icu.weaning-extubation
   track: depth
   dept: ICU
   order: 150
+  icon: gear
 - key: icu-ards-proning
   name: ARDS·복와위·산소화
   nameKey: theme.icu.ards-proning
   track: depth
   dept: ICU
   order: 160
+  icon: monitor
 - key: icu-airway
   name: 기도확보·삽관·기관절개
   nameKey: theme.icu.airway
   track: depth
   dept: ICU
   order: 170
+  icon: monitor
 - key: icu-resp-support
   name: 호흡부전·HFNC/NIV
   nameKey: theme.icu.resp-support
   track: depth
   dept: ICU
   order: 180
+  icon: stetho
 - key: icu-sedation
   name: 진정·진통 적정
   nameKey: theme.icu.sedation
   track: depth
   dept: ICU
   order: 190
+  icon: pill
 - key: icu-delirium
   name: 섬망 관리
   nameKey: theme.icu.delirium
   track: depth
   dept: ICU
   order: 200
+  icon: monitor
 - key: icu-pain-nonverbal
   name: 비언어 환자 통증·CPOT
   nameKey: theme.icu.pain-nonverbal
   track: depth
   dept: ICU
   order: 210
+  icon: magnify
 - key: icu-post-arrest
   name: 심정지 후 관리·TTM
   nameKey: theme.icu.post-arrest
   track: depth
   dept: ICU
   order: 220
+  icon: siren
 - key: icu-sepsis
   name: 패혈증·패혈성 쇼크
   nameKey: theme.icu.sepsis
   track: depth
   dept: ICU
   order: 230
+  icon: monitor
 - key: icu-infection-prevention
   name: 감염예방·격리·번들
   nameKey: theme.icu.infection-prevention
   track: depth
   dept: ICU
   order: 240
+  icon: shield
 - key: icu-aki-crrt
   name: 급성신손상·CRRT
   nameKey: theme.icu.aki-crrt
   track: depth
   dept: ICU
   order: 250
+  icon: gear
 - key: icu-electrolytes
   name: 전해질 위기
   nameKey: theme.icu.electrolytes
   track: depth
   dept: ICU
   order: 260
+  icon: lab
 - key: icu-endocrine-crisis
   name: 내분비 위기 DKA/HHS/부신/갑상선
   nameKey: theme.icu.endocrine-crisis
   track: depth
   dept: ICU
   order: 270
+  icon: monitor
 - key: icu-glycemic
   name: 혈당 조절·인슐린 주입
   nameKey: theme.icu.glycemic
   track: depth
   dept: ICU
   order: 280
+  icon: pill
 - key: icu-raised-icp
   name: 두개내압 상승·TBI·EVD
   nameKey: theme.icu.raised-icp
   track: depth
   dept: ICU
   order: 290
+  icon: monitor
 - key: icu-status-epilepticus
   name: 경련지속상태
   nameKey: theme.icu.status-epilepticus
   track: depth
   dept: ICU
   order: 300
+  icon: siren
 - key: icu-stroke-icu
   name: 급성 뇌졸중 중환자
   nameKey: theme.icu.stroke-icu
   track: depth
   dept: ICU
   order: 310
+  icon: monitor
 - key: icu-brain-death
   name: 뇌사·장기기증
   nameKey: theme.icu.brain-death
   track: depth
   dept: ICU
   order: 320
+  icon: monitor
 - key: icu-gi-bleed
   name: 소화관 출혈
   nameKey: theme.icu.gi-bleed
   track: depth
   dept: ICU
   order: 330
+  icon: monitor
 - key: icu-liver-failure
   name: 급성 간부전·간성뇌증
   nameKey: theme.icu.liver-failure
   track: depth
   dept: ICU
   order: 340
+  icon: monitor
 - key: icu-nutrition
   name: 중환자 영양·복강내압
   nameKey: theme.icu.nutrition
   track: depth
   dept: ICU
   order: 350
+  icon: coffee
 - key: icu-invasive-lines
   name: 중심정맥·동맥관·흉관 등 침습장치
   nameKey: theme.icu.invasive-lines
   track: depth
   dept: ICU
   order: 360
+  icon: monitor
 - key: icu-transfusion
   name: 수혈·응고장애
   nameKey: theme.icu.transfusion
   track: depth
   dept: ICU
   order: 370
+  icon: monitor
 - key: icu-transport-procedure
   name: 중환자 이송·시술 진정 보조
   nameKey: theme.icu.transport-procedure
   track: depth
   dept: ICU
   order: 380
+  icon: plane
 - key: icu-eol-goals
   name: 임종·목표설정·연명치료
   nameKey: theme.icu.eol-goals
   track: depth
   dept: ICU
   order: 390
+  icon: speech
 - key: icu-mobility-prevention
   name: 조기재활·VTE·욕창 예방
   nameKey: theme.icu.mobility-prevention
   track: depth
   dept: ICU
   order: 400
+  icon: shield
 
 # ── OR 부서 코어 + 심화 (커리큘럼 v3 P2 · 35주제) ──
 - key: core-safety-or
@@ -436,210 +506,245 @@
   track: core
   dept: OR
   order: 10
+  icon: shield
 - key: core-language-or
   name: 마취·동의 언어장벽·통역
   nameKey: theme.core.language
   track: core
   dept: OR
   order: 20
+  icon: mic
 - key: core-handoff-or
   name: 인계·SBAR
   nameKey: theme.core.handoff
   track: core
   dept: OR
   order: 30
+  icon: handshake2
 - key: core-family-or
   name: 수술 대기 가족 소통
   nameKey: theme.core.family
   track: core
   dept: OR
   order: 40
+  icon: speech
 - key: or-preop-verification
   name: 수술 전 확인·동의
   nameKey: theme.or.preop-verification
   track: depth
   dept: OR
   order: 100
+  icon: board
 - key: or-preop-assessment
   name: 금식·기왕력·알레르기 사정
   nameKey: theme.or.preop-assessment
   track: depth
   dept: OR
   order: 110
+  icon: magnify
 - key: or-preop-checklist
   name: 수술 전 체크리스트
   nameKey: theme.or.preop-checklist
   track: depth
   dept: OR
   order: 120
+  icon: board
 - key: or-preop-anxiety
   name: 수술 전 불안 완화
   nameKey: theme.or.preop-anxiety
   track: depth
   dept: OR
   order: 130
+  icon: speech
 - key: or-preop-special-age
   name: 노인·소아 수술 전 준비
   nameKey: theme.or.preop-special-age
   track: depth
   dept: OR
   order: 140
+  icon: baby
 - key: or-preop-meds
   name: 항응고·당뇨약 중단 확인
   nameKey: theme.or.preop-meds
   track: depth
   dept: OR
   order: 150
+  icon: pill
 - key: or-sterile-field
   name: 무균 필드·최대멸균장벽
   nameKey: theme.or.sterile-field
   track: depth
   dept: OR
   order: 160
+  icon: shield
 - key: or-scrub-gowning
   name: 손씻기·가운·장갑 착용
   nameKey: theme.or.scrub-gowning
   track: depth
   dept: OR
   order: 170
+  icon: shield
 - key: or-count
   name: 거즈·기구·바늘 계수
   nameKey: theme.or.count
   track: depth
   dept: OR
   order: 180
+  icon: magnify
 - key: or-timeout
   name: WHO 타임아웃·안전체크리스트
   nameKey: theme.or.timeout
   track: depth
   dept: OR
   order: 190
+  icon: board
 - key: or-specimen
   name: 검체 취급·라벨
   nameKey: theme.or.specimen
   track: depth
   dept: OR
   order: 200
+  icon: lab
 - key: or-surgical-fire
   name: 수술 화재 예방
   nameKey: theme.or.surgical-fire
   track: depth
   dept: OR
   order: 210
+  icon: siren
 - key: or-latex-allergy
   name: 라텍스 알레르기
   nameKey: theme.or.latex-allergy
   track: depth
   dept: OR
   order: 220
+  icon: shield
 - key: or-positioning
   name: 수술 체위·정렬
   nameKey: theme.or.positioning
   track: depth
   dept: OR
   order: 230
+  icon: me
 - key: or-position-injury
   name: 신경·압박 손상 예방
   nameKey: theme.or.position-injury
   track: depth
   dept: OR
   order: 240
+  icon: shield
 - key: or-esu-grounding
   name: 전기소작기·접지 안전
   nameKey: theme.or.esu-grounding
   track: depth
   dept: OR
   order: 250
+  icon: gear
 - key: or-tourniquet
   name: 지혈대 관리
   nameKey: theme.or.tourniquet
   track: depth
   dept: OR
   order: 260
+  icon: bandage
 - key: or-bleeding
   name: 수술 중 출혈·지혈
   nameKey: theme.or.bleeding
   track: depth
   dept: OR
   order: 270
+  icon: scalpel
 - key: or-massive-transfusion
   name: 대량수혈
   nameKey: theme.or.massive-transfusion
   track: depth
   dept: OR
   order: 280
+  icon: scalpel
 - key: or-hypothermia
   name: 저체온·정상체온 유지
   nameKey: theme.or.hypothermia
   track: depth
   dept: OR
   order: 290
+  icon: monitor
 - key: or-induction-airway
   name: 마취 유도·기도 보조·RSI
   nameKey: theme.or.induction-airway
   track: depth
   dept: OR
   order: 300
+  icon: scalpel
 - key: or-regional-spinal
   name: 부위·척추마취
   nameKey: theme.or.regional-spinal
   track: depth
   dept: OR
   order: 310
+  icon: scalpel
 - key: or-malignant-hyperthermia
   name: 악성 고열 MH
   nameKey: theme.or.malignant-hyperthermia
   track: depth
   dept: OR
   order: 320
+  icon: siren
 - key: or-anaphylaxis
   name: 마취 중 아나필락시스·활력 급변
   nameKey: theme.or.anaphylaxis
   track: depth
   dept: OR
   order: 330
+  icon: siren
 - key: or-difficult-airway
   name: 어려운 기도
   nameKey: theme.or.difficult-airway
   track: depth
   dept: OR
   order: 340
+  icon: scalpel
 - key: or-emergency-open
   name: 응급 개복·응급 제왕절개
   nameKey: theme.or.emergency-open
   track: depth
   dept: OR
   order: 350
+  icon: scalpel
 - key: or-minimally-invasive
   name: 복강경·로봇·최소침습 준비
   nameKey: theme.or.minimally-invasive
   track: depth
   dept: OR
   order: 360
+  icon: gear
 - key: or-pacu-emergence
   name: 마취 각성·의식·기도 회복 감시
   nameKey: theme.or.pacu-emergence
   track: depth
   dept: OR
   order: 370
+  icon: monitor
 - key: or-ponv
   name: PONV 수술후 오심구토
   nameKey: theme.or.ponv
   track: depth
   dept: OR
   order: 380
+  icon: scalpel
 - key: or-pacu-pain
   name: 회복실 통증 관리
   nameKey: theme.or.pacu-pain
   track: depth
   dept: OR
   order: 390
+  icon: pill
 - key: or-pacu-pediatric
   name: 소아 각성 섬망
   nameKey: theme.or.pacu-pediatric
   track: depth
   dept: OR
   order: 400
+  icon: baby
 
 # ── WARD 부서 코어 + 심화 (커리큘럼 v3 P2 · 35주제) ──
 - key: core-safety-ward
@@ -648,210 +753,245 @@
   track: core
   dept: WARD
   order: 10
+  icon: shield
 - key: core-language-ward
   name: 언어장벽과 통역
   nameKey: theme.core.language
   track: core
   dept: WARD
   order: 20
+  icon: mic
 - key: core-handoff-ward
   name: 입원 수용·교대·전동·퇴원 인계
   nameKey: theme.core.handoff
   track: core
   dept: WARD
   order: 30
+  icon: handshake2
 - key: core-family-ward
   name: 면회·가족 소통·퇴원 교육
   nameKey: theme.core.family
   track: core
   dept: WARD
   order: 40
+  icon: speech
 - key: ward-admission-assessment
   name: 입원 초기 사정과 병력 청취
   nameKey: theme.ward.admission-assessment
   track: depth
   dept: WARD
   order: 100
+  icon: board
 - key: ward-vitals-ews
   name: 활력징후·조기경고점수와 악화 인지
   nameKey: theme.ward.vitals-ews
   track: depth
   dept: WARD
   order: 110
+  icon: monitor
 - key: ward-rrt-escalation
   name: 신속대응팀 호출과 에스컬레이션
   nameKey: theme.ward.rrt-escalation
   track: depth
   dept: WARD
   order: 120
+  icon: siren
 - key: ward-acute-chest-resp
   name: 급성 흉통·호흡곤란 병동 초기 대응
   nameKey: theme.ward.acute-chest-resp
   track: depth
   dept: WARD
   order: 130
+  icon: stetho
 - key: ward-oral-iv-meds
   name: 경구·정맥 투약 관리
   nameKey: theme.ward.oral-iv-meds
   track: depth
   dept: WARD
   order: 140
+  icon: pill
 - key: ward-insulin-glucose
   name: 인슐린·혈당 관리
   nameKey: theme.ward.insulin-glucose
   track: depth
   dept: WARD
   order: 150
+  icon: pill
 - key: ward-pain-management
   name: 통증 관리 (경구·PCA)
   nameKey: theme.ward.pain-management
   track: depth
   dept: WARD
   order: 160
+  icon: pill
 - key: ward-opioid-safety
   name: 마약류 투약 안전
   nameKey: theme.ward.opioid-safety
   track: depth
   dept: WARD
   order: 170
+  icon: shield
 - key: ward-anticoagulation
   name: 항응고 관리 (와파린·DOAC)
   nameKey: theme.ward.anticoagulation
   track: depth
   dept: WARD
   order: 180
+  icon: pill
 - key: ward-fluids-electrolytes
   name: 수액·전해질 보정
   nameKey: theme.ward.fluids-electrolytes
   track: depth
   dept: WARD
   order: 190
+  icon: lab
 - key: ward-transfusion
   name: 수혈 관리
   nameKey: theme.ward.transfusion
   track: depth
   dept: WARD
   order: 200
+  icon: stetho
 - key: ward-oxygen-hypoxia
   name: 산소요법과 저산소 대응
   nameKey: theme.ward.oxygen-hypoxia
   track: depth
   dept: WARD
   order: 210
+  icon: stetho
 - key: ward-copd-asthma
   name: COPD·천식 병동 관리
   nameKey: theme.ward.copd-asthma
   track: depth
   dept: WARD
   order: 220
+  icon: stetho
 - key: ward-pneumonia
   name: 폐렴·호흡기감염 관리
   nameKey: theme.ward.pneumonia
   track: depth
   dept: WARD
   order: 230
+  icon: stetho
 - key: ward-heart-failure
   name: 만성 심부전 병동 관리
   nameKey: theme.ward.heart-failure
   track: depth
   dept: WARD
   order: 240
+  icon: stetho
 - key: ward-diabetes-education
   name: 당뇨 관리와 교육
   nameKey: theme.ward.diabetes-education
   track: depth
   dept: WARD
   order: 250
+  icon: bulb
 - key: ward-ckd-dialysis
   name: 만성 신질환과 투석 연계
   nameKey: theme.ward.ckd-dialysis
   track: depth
   dept: WARD
   order: 260
+  icon: stetho
 - key: ward-piv-picc
   name: 정맥로(PIV·PICC) 관리와 합병증
   nameKey: theme.ward.piv-picc
   track: depth
   dept: WARD
   order: 270
+  icon: stetho
 - key: ward-urinary-catheter
   name: 유치도뇨관 관리와 CAUTI 예방
   nameKey: theme.ward.urinary-catheter
   track: depth
   dept: WARD
   order: 280
+  icon: shield
 - key: ward-wound-dressing
   name: 상처·드레싱·수술후 상처 관리
   nameKey: theme.ward.wound-dressing
   track: depth
   dept: WARD
   order: 290
+  icon: bandage
 - key: ward-ostomy
   name: 장루 관리
   nameKey: theme.ward.ostomy
   track: depth
   dept: WARD
   order: 300
+  icon: bandage
 - key: ward-pressure-injury
   name: 욕창 예방과 단계 사정
   nameKey: theme.ward.pressure-injury
   track: depth
   dept: WARD
   order: 310
+  icon: bandage
 - key: ward-nutrition-dysphagia
   name: 영양과 연하곤란 관리
   nameKey: theme.ward.nutrition-dysphagia
   track: depth
   dept: WARD
   order: 320
+  icon: coffee
 - key: ward-bowel-elimination
   name: 배설 관리 (변비·설사)
   nameKey: theme.ward.bowel-elimination
   track: depth
   dept: WARD
   order: 330
+  icon: stetho
 - key: ward-fall-risk
   name: 낙상 위험과 낙상 후 대응
   nameKey: theme.ward.fall-risk
   track: depth
   dept: WARD
   order: 340
+  icon: shield
 - key: ward-delirium
   name: 입원 노인 섬망 관리
   nameKey: theme.ward.delirium
   track: depth
   dept: WARD
   order: 350
+  icon: stetho
 - key: ward-isolation
   name: 감염 격리 (접촉·비말·공기)
   nameKey: theme.ward.isolation
   track: depth
   dept: WARD
   order: 360
+  icon: shield
 - key: ward-vte-prevention
   name: 정맥혈전색전증 예방
   nameKey: theme.ward.vte-prevention
   track: depth
   dept: WARD
   order: 370
+  icon: shield
 - key: ward-discharge-teaching
   name: 퇴원 계획과 복약 교육
   nameKey: theme.ward.discharge-teaching
   track: depth
   dept: WARD
   order: 380
+  icon: calendar
 - key: ward-early-mobility
   name: 재활과 조기 이동
   nameKey: theme.ward.early-mobility
   track: depth
   dept: WARD
   order: 390
+  icon: me
 - key: ward-palliative-eol
   name: 완화·임종 돌봄
   nameKey: theme.ward.palliative-eol
   track: depth
   dept: WARD
   order: 400
+  icon: stetho
 
 # ── PEDS 부서 코어 + 심화 (커리큘럼 v3 P2 · 35주제) ──
 - key: core-safety-peds
@@ -860,210 +1000,245 @@
   track: core
   dept: PEDS
   order: 10
+  icon: shield
 - key: core-language-peds
   name: 언어장벽·통역, 부모 대상
   nameKey: theme.core.language
   track: core
   dept: PEDS
   order: 20
+  icon: mic
 - key: core-handoff-peds
   name: 입원·교대·전동 인계, 부모 동반
   nameKey: theme.core.handoff
   track: core
   dept: PEDS
   order: 30
+  icon: handshake2
 - key: core-family-peds
   name: 부모·보호자 소통·교육
   nameKey: theme.core.family
   track: core
   dept: PEDS
   order: 40
+  icon: speech
 - key: peds-age-vitals-approach
   name: 연령별 정상 활력·발달단계별 접근
   nameKey: theme.peds.age-vitals-approach
   track: depth
   dept: PEDS
   order: 100
+  icon: monitor
 - key: peds-fever-assessment
   name: 소아 발열·감염 초기 사정
   nameKey: theme.peds.fever-assessment
   track: depth
   dept: PEDS
   order: 110
+  icon: stetho
 - key: peds-immunization
   name: 예방접종·기록
   nameKey: theme.peds.immunization
   track: depth
   dept: PEDS
   order: 120
+  icon: shield
 - key: peds-play-development
   name: 놀이·발달 지지
   nameKey: theme.peds.play-development
   track: depth
   dept: PEDS
   order: 130
+  icon: baby
 - key: peds-skin-rash
   name: 소아 피부·발진 감별
   nameKey: theme.peds.skin-rash
   track: depth
   dept: PEDS
   order: 140
+  icon: magnify
 - key: peds-bronchiolitis
   name: 세기관지염
   nameKey: theme.peds.bronchiolitis
   track: depth
   dept: PEDS
   order: 150
+  icon: baby
 - key: peds-asthma
   name: 소아 천식
   nameKey: theme.peds.asthma
   track: depth
   dept: PEDS
   order: 160
+  icon: baby
 - key: peds-croup
   name: 크룹
   nameKey: theme.peds.croup
   track: depth
   dept: PEDS
   order: 170
+  icon: baby
 - key: peds-pneumonia-isolation
   name: 폐렴·호흡기감염 격리
   nameKey: theme.peds.pneumonia-isolation
   track: depth
   dept: PEDS
   order: 180
+  icon: shield
 - key: peds-resp-deterioration
   name: 소아 호흡곤란 악화 인지·신속대응
   nameKey: theme.peds.resp-deterioration
   track: depth
   dept: PEDS
   order: 190
+  icon: siren
 - key: peds-dehydration-rehydration
   name: 탈수·경구/정맥 수분보충
   nameKey: theme.peds.dehydration-rehydration
   track: depth
   dept: PEDS
   order: 200
+  icon: baby
 - key: peds-gastroenteritis
   name: 위장관염·구토설사
   nameKey: theme.peds.gastroenteritis
   track: depth
   dept: PEDS
   order: 210
+  icon: baby
 - key: peds-electrolyte-renal
   name: 소아 신질환·전해질
   nameKey: theme.peds.electrolyte-renal
   track: depth
   dept: PEDS
   order: 220
+  icon: lab
 - key: peds-foreign-body
   name: 이물 흡인·삼킴
   nameKey: theme.peds.foreign-body
   track: depth
   dept: PEDS
   order: 230
+  icon: baby
 - key: peds-feeding-nutrition
   name: 모유·수유·영양
   nameKey: theme.peds.feeding-nutrition
   track: depth
   dept: PEDS
   order: 240
+  icon: coffee
 - key: peds-weight-based-dosing
   name: 체중기반 투약 계산·확인
   nameKey: theme.peds.weight-based-dosing
   track: depth
   dept: PEDS
   order: 250
+  icon: pill
 - key: peds-pain-assessment
   name: 소아 통증 사정·관리
   nameKey: theme.peds.pain-assessment
   track: depth
   dept: PEDS
   order: 260
+  icon: magnify
 - key: peds-procedural-sedation-prep
   name: 절차적 통증·진정 전 준비
   nameKey: theme.peds.procedural-sedation-prep
   track: depth
   dept: PEDS
   order: 270
+  icon: baby
 - key: peds-iv-blood-draw
   name: 정맥로 확보·채혈 협조
   nameKey: theme.peds.iv-blood-draw
   track: depth
   dept: PEDS
   order: 280
+  icon: baby
 - key: peds-febrile-seizure
   name: 열성경련·부모 안심
   nameKey: theme.peds.febrile-seizure
   track: depth
   dept: PEDS
   order: 290
+  icon: baby
 - key: peds-diabetes-dka
   name: 소아 당뇨/DKA 병동 관리·교육
   nameKey: theme.peds.diabetes-dka
   track: depth
   dept: PEDS
   order: 300
+  icon: bulb
 - key: peds-perioperative
   name: 소아 수술 전후·PACU 각성
   nameKey: theme.peds.perioperative
   track: depth
   dept: PEDS
   order: 310
+  icon: scalpel
 - key: peds-neonate-warning
   name: 신생아/영아 이상 징후
   nameKey: theme.peds.neonate-warning
   track: depth
   dept: PEDS
   order: 320
+  icon: baby
 - key: peds-chronic-conditions
   name: 만성질환 소아
   nameKey: theme.peds.chronic-conditions
   track: depth
   dept: PEDS
   order: 330
+  icon: baby
 - key: peds-oncology-support
   name: 소아 종양·항암 지지
   nameKey: theme.peds.oncology-support
   track: depth
   dept: PEDS
   order: 340
+  icon: baby
 - key: peds-palliative
   name: 완화·중증 소아·가족
   nameKey: theme.peds.palliative
   track: depth
   dept: PEDS
   order: 350
+  icon: baby
 - key: peds-abuse-neglect
   name: 학대·방임 의심과 신고
   nameKey: theme.peds.abuse-neglect
   track: depth
   dept: PEDS
   order: 360
+  icon: shield
 - key: peds-autism-sensory
   name: 자폐·감각 예민 아동 접근
   nameKey: theme.peds.autism-sensory
   track: depth
   dept: PEDS
   order: 370
+  icon: baby
 - key: peds-adolescent-confidential
   name: 청소년 비밀보장·성·약물
   nameKey: theme.peds.adolescent-confidential
   track: depth
   dept: PEDS
   order: 380
+  icon: baby
 - key: peds-injury-prevention
   name: 소아 사고·환경 안전 교육
   nameKey: theme.peds.injury-prevention
   track: depth
   dept: PEDS
   order: 390
+  icon: shield
 - key: peds-parental-anxiety
   name: 부모 불안·과잉개입 관리
   nameKey: theme.peds.parental-anxiety
   track: depth
   dept: PEDS
   order: 400
+  icon: baby
 
 # ── NICU 부서 코어 + 심화 (커리큘럼 v3 P2 · 35주제) ──
 - key: core-safety-nicu
@@ -1072,210 +1247,245 @@
   track: core
   dept: NICU
   order: 10
+  icon: shield
 - key: core-language-nicu
   name: 부모 언어장벽·통역
   nameKey: theme.core.language
   track: core
   dept: NICU
   order: 20
+  icon: mic
 - key: core-handoff-nicu
   name: 교대·전동·응급 인계
   nameKey: theme.core.handoff
   track: core
   dept: NICU
   order: 30
+  icon: handshake2
 - key: core-family-nicu
   name: 부모 유대·NICU 스트레스·나쁜 소식·퇴원 준비
   nameKey: theme.core.family
   track: core
   dept: NICU
   order: 40
+  icon: speech
 - key: nicu-nrp-resus
   name: 신생아 소생(NRP)·분만장 안정화
   nameKey: theme.nicu.nrp-resus
   track: depth
   dept: NICU
   order: 100
+  icon: siren
 - key: nicu-thermoreg
   name: 체온조절·인큐베이터·개방형 워머
   nameKey: theme.nicu.thermoreg
   track: depth
   dept: NICU
   order: 110
+  icon: gear
 - key: nicu-rds-surfactant
   name: 호흡곤란증후군(RDS)·계면활성제
   nameKey: theme.nicu.rds-surfactant
   track: depth
   dept: NICU
   order: 120
+  icon: stetho
 - key: nicu-cpap-niv
   name: CPAP·비침습 호흡지원
   nameKey: theme.nicu.cpap-niv
   track: depth
   dept: NICU
   order: 130
+  icon: gear
 - key: nicu-mech-vent
   name: 신생아 인공환기
   nameKey: theme.nicu.mech-vent
   track: depth
   dept: NICU
   order: 140
+  icon: gear
 - key: nicu-apnea-brady
   name: 미숙아 무호흡·서맥
   nameKey: theme.nicu.apnea-brady
   track: depth
   dept: NICU
   order: 150
+  icon: bell
 - key: nicu-oxygen-sat
   name: 산소포화·목표 관리
   nameKey: theme.nicu.oxygen-sat
   track: depth
   dept: NICU
   order: 160
+  icon: monitor
 - key: nicu-bpd
   name: 기관지폐이형성증(BPD)·만성폐질환
   nameKey: theme.nicu.bpd
   track: depth
   dept: NICU
   order: 170
+  icon: baby
 - key: nicu-pda
   name: 동맥관개존(PDA)
   nameKey: theme.nicu.pda
   track: depth
   dept: NICU
   order: 180
+  icon: baby
 - key: nicu-chd
   name: 선천성 심질환 관리
   nameKey: theme.nicu.chd
   track: depth
   dept: NICU
   order: 190
+  icon: baby
 - key: nicu-feeding
   name: 수유 진행·위관영양·모유 수유 지원
   nameKey: theme.nicu.feeding
   track: depth
   dept: NICU
   order: 200
+  icon: coffee
 - key: nicu-nec
   name: 괴사성 장염(NEC)
   nameKey: theme.nicu.nec
   track: depth
   dept: NICU
   order: 210
+  icon: baby
 - key: nicu-tpn
   name: 총정맥영양(TPN)·정맥영양
   nameKey: theme.nicu.tpn
   track: depth
   dept: NICU
   order: 220
+  icon: baby
 - key: nicu-growth
   name: 저체중·성장 모니터링
   nameKey: theme.nicu.growth
   track: depth
   dept: NICU
   order: 230
+  icon: chartup
 - key: nicu-hypoglycemia
   name: 저혈당·혈당 관리
   nameKey: theme.nicu.hypoglycemia
   track: depth
   dept: NICU
   order: 240
+  icon: lab
 - key: nicu-fluid-electrolyte
   name: 전해질·수분 균형
   nameKey: theme.nicu.fluid-electrolyte
   track: depth
   dept: NICU
   order: 250
+  icon: lab
 - key: nicu-hyperbili
   name: 고빌리루빈혈증·광선치료
   nameKey: theme.nicu.hyperbili
   track: depth
   dept: NICU
   order: 260
+  icon: bulb
 - key: nicu-exchange-transfusion
   name: 교환수혈
   nameKey: theme.nicu.exchange-transfusion
   track: depth
   dept: NICU
   order: 270
+  icon: baby
 - key: nicu-transfusion
   name: 수혈
   nameKey: theme.nicu.transfusion
   track: depth
   dept: NICU
   order: 280
+  icon: baby
 - key: nicu-sepsis
   name: 신생아 패혈증·감염관리
   nameKey: theme.nicu.sepsis
   track: depth
   dept: NICU
   order: 290
+  icon: shield
 - key: nicu-isolation
   name: 감염 격리
   nameKey: theme.nicu.isolation
   track: depth
   dept: NICU
   order: 300
+  icon: shield
 - key: nicu-ivh
   name: 뇌실내출혈(IVH)·신경 감시
   nameKey: theme.nicu.ivh
   track: depth
   dept: NICU
   order: 310
+  icon: monitor
 - key: nicu-rop
   name: 미숙아망막병증(ROP) 선별
   nameKey: theme.nicu.rop
   track: depth
   dept: NICU
   order: 320
+  icon: magnify
 - key: nicu-congenital-surg
   name: 선천성 기형·수술 전후
   nameKey: theme.nicu.congenital-surg
   track: depth
   dept: NICU
   order: 330
+  icon: scalpel
 - key: nicu-nas
   name: 신생아 금단증후군(NAS)
   nameKey: theme.nicu.nas
   track: depth
   dept: NICU
   order: 340
+  icon: baby
 - key: nicu-umbilical-lines
   name: 제대동정맥관(UAC/UVC)·PICC 관리
   nameKey: theme.nicu.umbilical-lines
   track: depth
   dept: NICU
   order: 350
+  icon: baby
 - key: nicu-blood-draw
   name: 채혈·검사 협조
   nameKey: theme.nicu.blood-draw
   track: depth
   dept: NICU
   order: 360
+  icon: lab
 - key: nicu-pain-care
   name: 신생아 통증 사정·최소자극 돌봄
   nameKey: theme.nicu.pain-care
   track: depth
   dept: NICU
   order: 370
+  icon: stetho
 - key: nicu-developmental
   name: 캥거루케어·발달지지
   nameKey: theme.nicu.developmental
   track: depth
   dept: NICU
   order: 380
+  icon: baby
 - key: nicu-discharge-teaching
   name: 퇴원 준비·가정 돌봄 교육
   nameKey: theme.nicu.discharge-teaching
   track: depth
   dept: NICU
   order: 390
+  icon: bulb
 - key: nicu-palliative
   name: 완화·임종·사별 지지
   nameKey: theme.nicu.palliative
   track: depth
   dept: NICU
   order: 400
+  icon: baby
 
 # ── PICU 부서 코어 + 심화 (커리큘럼 v3 P2 · 35주제) ──
 - key: core-safety-picu
@@ -1284,210 +1494,245 @@
   track: core
   dept: PICU
   order: 10
+  icon: shield
 - key: core-language-picu
   name: 부모 언어장벽 소통
   nameKey: theme.core.language
   track: core
   dept: PICU
   order: 20
+  icon: mic
 - key: core-handoff-picu
   name: PICU 입·퇴실 인계 및 교대
   nameKey: theme.core.handoff
   track: core
   dept: PICU
   order: 30
+  icon: handshake2
 - key: core-family-picu
   name: 부모 소통·목표 설정·나쁜 소식
   nameKey: theme.core.family
   track: core
   dept: PICU
   order: 40
+  icon: speech
 - key: picu-resp-failure
   name: 소아 호흡부전·기계환기
   nameKey: theme.picu.resp-failure
   track: depth
   dept: PICU
   order: 100
+  icon: gear
 - key: picu-ards
   name: 소아 급성 호흡곤란증후군(ARDS)
   nameKey: theme.picu.ards
   track: depth
   dept: PICU
   order: 110
+  icon: monitor
 - key: picu-status-asthmaticus
   name: 천식 지속상태
   nameKey: theme.picu.status-asthmaticus
   track: depth
   dept: PICU
   order: 120
+  icon: siren
 - key: picu-bronchiolitis
   name: 세기관지염 중증·고유량
   nameKey: theme.picu.bronchiolitis
   track: depth
   dept: PICU
   order: 130
+  icon: monitor
 - key: picu-vent-weaning
   name: 인공호흡기 이탈·발관
   nameKey: theme.picu.vent-weaning
   track: depth
   dept: PICU
   order: 140
+  icon: gear
 - key: picu-tracheostomy
   name: 기관절개 관리
   nameKey: theme.picu.tracheostomy
   track: depth
   dept: PICU
   order: 150
+  icon: monitor
 - key: picu-shock-sepsis
   name: 소아 쇼크·패혈증 번들
   nameKey: theme.picu.shock-sepsis
   track: depth
   dept: PICU
   order: 160
+  icon: monitor
 - key: picu-cardiac-postop
   name: 심인성 쇼크·선천성 심질환 술후
   nameKey: theme.picu.cardiac-postop
   track: depth
   dept: PICU
   order: 170
+  icon: monitor
 - key: picu-arrhythmia
   name: 소아 부정맥
   nameKey: theme.picu.arrhythmia
   track: depth
   dept: PICU
   order: 180
+  icon: monitor
 - key: picu-post-arrest
   name: 심정지 후 관리(PALS·TTM)
   nameKey: theme.picu.post-arrest
   track: depth
   dept: PICU
   order: 190
+  icon: siren
 - key: picu-icp-tbi
   name: 두개내압 상승·외상성 뇌손상
   nameKey: theme.picu.icp-tbi
   track: depth
   dept: PICU
   order: 200
+  icon: monitor
 - key: picu-status-epilepticus
   name: 경련지속상태
   nameKey: theme.picu.status-epilepticus
   track: depth
   dept: PICU
   order: 210
+  icon: siren
 - key: picu-cns-infection
   name: 뇌염·뇌수막염 중환자
   nameKey: theme.picu.cns-infection
   track: depth
   dept: PICU
   order: 220
+  icon: monitor
 - key: picu-sedation-analgesia
   name: 진정·진통(RASS·CPOT)
   nameKey: theme.picu.sedation-analgesia
   track: depth
   dept: PICU
   order: 230
+  icon: pill
 - key: picu-delirium
   name: 소아 섬망
   nameKey: theme.picu.delirium
   track: depth
   dept: PICU
   order: 240
+  icon: monitor
 - key: picu-dka
   name: 중증 당뇨성 케톤산증(DKA)
   nameKey: theme.picu.dka
   track: depth
   dept: PICU
   order: 250
+  icon: monitor
 - key: picu-electrolyte
   name: 전해질·대사 위기
   nameKey: theme.picu.electrolyte
   track: depth
   dept: PICU
   order: 260
+  icon: lab
 - key: picu-aki-crrt
   name: 급성 신손상·CRRT
   nameKey: theme.picu.aki-crrt
   track: depth
   dept: PICU
   order: 270
+  icon: gear
 - key: picu-liver-failure
   name: 급성 간부전
   nameKey: theme.picu.liver-failure
   track: depth
   dept: PICU
   order: 280
+  icon: monitor
 - key: picu-gi-bleed
   name: 위장관 출혈
   nameKey: theme.picu.gi-bleed
   track: depth
   dept: PICU
   order: 290
+  icon: monitor
 - key: picu-polytrauma
   name: 다발성 외상
   nameKey: theme.picu.polytrauma
   track: depth
   dept: PICU
   order: 300
+  icon: siren
 - key: picu-burns
   name: 화상 중환자
   nameKey: theme.picu.burns
   track: depth
   dept: PICU
   order: 310
+  icon: bandage
 - key: picu-drowning
   name: 익수·저산소성 뇌손상
   nameKey: theme.picu.drowning
   track: depth
   dept: PICU
   order: 320
+  icon: monitor
 - key: picu-poisoning
   name: 중독·과다복용
   nameKey: theme.picu.poisoning
   track: depth
   dept: PICU
   order: 330
+  icon: pill
 - key: picu-anaphylaxis
   name: 아나필락시스 중증
   nameKey: theme.picu.anaphylaxis
   track: depth
   dept: PICU
   order: 340
+  icon: siren
 - key: picu-transfusion
   name: 수혈·응고
   nameKey: theme.picu.transfusion
   track: depth
   dept: PICU
   order: 350
+  icon: monitor
 - key: picu-oncologic-emergency
   name: 종양 응급(종양용해)
   nameKey: theme.picu.oncologic-emergency
   track: depth
   dept: PICU
   order: 360
+  icon: lab
 - key: picu-invasive-lines
   name: 침습 라인·장치
   nameKey: theme.picu.invasive-lines
   track: depth
   dept: PICU
   order: 370
+  icon: monitor
 - key: picu-transport
   name: 중환자 이송
   nameKey: theme.picu.transport
   track: depth
   dept: PICU
   order: 380
+  icon: plane
 - key: picu-brain-death
   name: 뇌사·장기기증
   nameKey: theme.picu.brain-death
   track: depth
   dept: PICU
   order: 390
+  icon: monitor
 - key: picu-palliative
   name: 완화·임종·사별
   nameKey: theme.picu.palliative
   track: depth
   dept: PICU
   order: 400
+  icon: monitor
 
 # ── LD 부서 코어 + 심화 (커리큘럼 v3 P2 · 35주제) ──
 - key: core-safety-ld
@@ -1496,210 +1741,245 @@
   track: core
   dept: LD
   order: 10
+  icon: shield
 - key: core-language-ld
   name: 언어장벽·통역·동의
   nameKey: theme.core.language
   track: core
   dept: LD
   order: 20
+  icon: mic
 - key: core-handoff-ld
   name: 교대·부서 인계
   nameKey: theme.core.handoff
   track: core
   dept: LD
   order: 30
+  icon: handshake2
 - key: core-family-ld
   name: 배우자·가족 지지
   nameKey: theme.core.family
   track: core
   dept: LD
   order: 40
+  icon: speech
 - key: ld-triage
   name: 분만 트리아지
   nameKey: theme.ld.triage
   track: depth
   dept: LD
   order: 100
+  icon: baby
 - key: ld-initial-assessment
   name: 분만 초기 사정·산과력
   nameKey: theme.ld.initial-assessment
   track: depth
   dept: LD
   order: 110
+  icon: board
 - key: ld-labor-stages
   name: 진통 단계 사정
   nameKey: theme.ld.labor-stages
   track: depth
   dept: LD
   order: 120
+  icon: baby
 - key: ld-efm
   name: 전자태아감시 판독
   nameKey: theme.ld.efm
   track: depth
   dept: LD
   order: 130
+  icon: monitor
 - key: ld-contractions
   name: 자궁수축 감시
   nameKey: theme.ld.contractions
   track: depth
   dept: LD
   order: 140
+  icon: monitor
 - key: ld-fetal-distress
   name: 태아곤란증·심박 이상
   nameKey: theme.ld.fetal-distress
   track: depth
   dept: LD
   order: 150
+  icon: siren
 - key: ld-epidural
   name: 무통분만 준비·관리
   nameKey: theme.ld.epidural
   track: depth
   dept: LD
   order: 160
+  icon: baby
 - key: ld-nonpharm-pain
   name: 비약물 통증 완화·호흡 코칭
   nameKey: theme.ld.nonpharm-pain
   track: depth
   dept: LD
   order: 170
+  icon: baby
 - key: ld-induction
   name: 유도분만·촉진
   nameKey: theme.ld.induction
   track: depth
   dept: LD
   order: 180
+  icon: baby
 - key: ld-prom
   name: 양막파열 관리
   nameKey: theme.ld.prom
   track: depth
   dept: LD
   order: 190
+  icon: baby
 - key: ld-gbs
   name: GBS 관리
   nameKey: theme.ld.gbs
   track: depth
   dept: LD
   order: 200
+  icon: shield
 - key: ld-preterm
   name: 조기진통·조산 위험
   nameKey: theme.ld.preterm
   track: depth
   dept: LD
   order: 210
+  icon: baby
 - key: ld-preeclampsia
   name: 임신성 고혈압·전자간증
   nameKey: theme.ld.preeclampsia
   track: depth
   dept: LD
   order: 220
+  icon: stetho
 - key: ld-mag-sulfate
   name: 마그네슘 관리
   nameKey: theme.ld.mag-sulfate
   track: depth
   dept: LD
   order: 230
+  icon: pill
 - key: ld-gdm
   name: 임신성 당뇨 분만 관리
   nameKey: theme.ld.gdm
   track: depth
   dept: LD
   order: 240
+  icon: baby
 - key: ld-eclampsia
   name: 자간증 경련 응급
   nameKey: theme.ld.eclampsia
   track: depth
   dept: LD
   order: 250
+  icon: siren
 - key: ld-cord-prolapse
   name: 제대탈출 응급
   nameKey: theme.ld.cord-prolapse
   track: depth
   dept: LD
   order: 260
+  icon: siren
 - key: ld-shoulder-dystocia
   name: 견갑난산 응급
   nameKey: theme.ld.shoulder-dystocia
   track: depth
   dept: LD
   order: 270
+  icon: siren
 - key: ld-precipitous
   name: 급속분만
   nameKey: theme.ld.precipitous
   track: depth
   dept: LD
   order: 280
+  icon: baby
 - key: ld-breech
   name: 둔위·비정상 태위
   nameKey: theme.ld.breech
   track: depth
   dept: LD
   order: 290
+  icon: baby
 - key: ld-multiples
   name: 다태임신 분만
   nameKey: theme.ld.multiples
   track: depth
   dept: LD
   order: 300
+  icon: baby
 - key: ld-cesarean-prep
   name: 제왕절개 준비·수술간호
   nameKey: theme.ld.cesarean-prep
   track: depth
   dept: LD
   order: 310
+  icon: scalpel
 - key: ld-cesarean-recovery
   name: 제왕절개 후 회복
   nameKey: theme.ld.cesarean-recovery
   track: depth
   dept: LD
   order: 320
+  icon: bandage
 - key: ld-newborn-care
   name: 신생아 초기 돌봄·APGAR
   nameKey: theme.ld.newborn-care
   track: depth
   dept: LD
   order: 330
+  icon: baby
 - key: ld-breastfeeding
   name: 모유수유 시작 지원
   nameKey: theme.ld.breastfeeding
   track: depth
   dept: LD
   order: 340
+  icon: coffee
 - key: ld-pph
   name: 산후 출혈 응급
   nameKey: theme.ld.pph
   track: depth
   dept: LD
   order: 350
+  icon: baby
 - key: ld-uterine-atony
   name: 자궁이완·자궁수축제
   nameKey: theme.ld.uterine-atony
   track: depth
   dept: LD
   order: 360
+  icon: pill
 - key: ld-postpartum-assessment
   name: 산후 초기 사정
   nameKey: theme.ld.postpartum-assessment
   track: depth
   dept: LD
   order: 370
+  icon: magnify
 - key: ld-perineal
   name: 회음부 열상·회음절개 관리
   nameKey: theme.ld.perineal
   track: depth
   dept: LD
   order: 380
+  icon: bandage
 - key: ld-stillbirth
   name: 태아 사망·사산 지지
   nameKey: theme.ld.stillbirth
   track: depth
   dept: LD
   order: 390
+  icon: baby
 - key: ld-ppd
   name: 산후 우울·정서 지지
   nameKey: theme.ld.ppd
   track: depth
   dept: LD
   order: 400
+  icon: speech
 
 # ── PSYCH 부서 코어 + 심화 (커리큘럼 v3 P2 · 35주제) ──
 - key: core-safety-psych
@@ -1708,210 +1988,245 @@
   track: core
   dept: PSYCH
   order: 10
+  icon: shield
 - key: core-language-psych
   name: 언어장벽·통역
   nameKey: theme.core.language
   track: core
   dept: PSYCH
   order: 20
+  icon: mic
 - key: core-handoff-psych
   name: 교대·전동·법적 상태 인계
   nameKey: theme.core.handoff
   track: core
   dept: PSYCH
   order: 30
+  icon: handshake2
 - key: core-family-psych
   name: 가족 소통·심리교육·비밀보장 경계
   nameKey: theme.core.family
   track: core
   dept: PSYCH
   order: 40
+  icon: speech
 - key: psych-mse
   name: 정신상태검사(MSE)
   nameKey: theme.psych.mse
   track: depth
   dept: PSYCH
   order: 100
+  icon: magnify
 - key: psych-suicide-risk
   name: 자살 위험 사정·안전계획(C-SSRS)
   nameKey: theme.psych.suicide-risk
   track: depth
   dept: PSYCH
   order: 110
+  icon: shield
 - key: psych-self-harm
   name: 자해 반복 관리
   nameKey: theme.psych.self-harm
   track: depth
   dept: PSYCH
   order: 120
+  icon: bandage
 - key: psych-violence-risk
   name: 타해·폭력 위험 사정(Tarasoff)
   nameKey: theme.psych.violence-risk
   track: depth
   dept: PSYCH
   order: 130
+  icon: faceAngry
 - key: psych-deescalation
   name: 초조·공격성 디에스컬레이션
   nameKey: theme.psych.deescalation
   track: depth
   dept: PSYCH
   order: 140
+  icon: speech
 - key: psych-seclusion-restraint
   name: 격리·강박 최소화와 사후 소통
   nameKey: theme.psych.seclusion-restraint
   track: depth
   dept: PSYCH
   order: 150
+  icon: shield
 - key: psych-involuntary
   name: 비자의 입원·법적 상태 소통
   nameKey: theme.psych.involuntary
   track: depth
   dept: PSYCH
   order: 160
+  icon: board
 - key: psych-antipsychotic
   name: 항정신병약 관리·부작용(EPS·지연운동이상)
   nameKey: theme.psych.antipsychotic
   track: depth
   dept: PSYCH
   order: 170
+  icon: pill
 - key: psych-clozapine
   name: 클로자핀 모니터링(호중구)
   nameKey: theme.psych.clozapine
   track: depth
   dept: PSYCH
   order: 180
+  icon: lab
 - key: psych-mood-stabilizer
   name: 기분안정제(리튬 독성 등)
   nameKey: theme.psych.mood-stabilizer
   track: depth
   dept: PSYCH
   order: 190
+  icon: pill
 - key: psych-benzo
   name: 벤조디아제핀·의존
   nameKey: theme.psych.benzo
   track: depth
   dept: PSYCH
   order: 200
+  icon: pill
 - key: psych-med-adherence
   name: 약물 순응·심리교육
   nameKey: theme.psych.med-adherence
   track: depth
   dept: PSYCH
   order: 210
+  icon: pill
 - key: psych-depression
   name: 우울증 관리
   nameKey: theme.psych.depression
   track: depth
   dept: PSYCH
   order: 220
+  icon: bulb
 - key: psych-mania
   name: 양극성 조증 관리
   nameKey: theme.psych.mania
   track: depth
   dept: PSYCH
   order: 230
+  icon: bulb
 - key: psych-psychosis
   name: 조현병·정신증 급성기
   nameKey: theme.psych.psychosis
   track: depth
   dept: PSYCH
   order: 240
+  icon: bulb
 - key: psych-anxiety
   name: 불안·공황 관리
   nameKey: theme.psych.anxiety
   track: depth
   dept: PSYCH
   order: 250
+  icon: bulb
 - key: psych-ocd
   name: 강박장애·강박행동
   nameKey: theme.psych.ocd
   track: depth
   dept: PSYCH
   order: 260
+  icon: bulb
 - key: psych-catatonia
   name: 긴장증(catatonia)
   nameKey: theme.psych.catatonia
   track: depth
   dept: PSYCH
   order: 270
+  icon: bulb
 - key: psych-ptsd
   name: PTSD·트라우마 기반 돌봄
   nameKey: theme.psych.ptsd
   track: depth
   dept: PSYCH
   order: 280
+  icon: bulb
 - key: psych-substance
   name: 물질사용·금단(정신과 맥락)
   nameKey: theme.psych.substance
   track: depth
   dept: PSYCH
   order: 290
+  icon: bulb
 - key: psych-dual-diagnosis
   name: 이중진단
   nameKey: theme.psych.dual-diagnosis
   track: depth
   dept: PSYCH
   order: 300
+  icon: bulb
 - key: psych-somatic
   name: 신체증상·전환장애
   nameKey: theme.psych.somatic
   track: depth
   dept: PSYCH
   order: 310
+  icon: stetho
 - key: psych-eating-disorder
   name: 섭식장애 관리
   nameKey: theme.psych.eating-disorder
   track: depth
   dept: PSYCH
   order: 320
+  icon: coffee
 - key: psych-personality
   name: 인격장애 경계 설정
   nameKey: theme.psych.personality
   track: depth
   dept: PSYCH
   order: 330
+  icon: bulb
 - key: psych-adolescent
   name: 청소년 정신과
   nameKey: theme.psych.adolescent
   track: depth
   dept: PSYCH
   order: 340
+  icon: bulb
 - key: psych-geriatric
   name: 노인 정신과(섬망 감별 포함)
   nameKey: theme.psych.geriatric
   track: depth
   dept: PSYCH
   order: 350
+  icon: bulb
 - key: psych-postpartum
   name: 산후 정신과 응급
   nameKey: theme.psych.postpartum
   track: depth
   dept: PSYCH
   order: 360
+  icon: baby
 - key: psych-ect
   name: 전기경련요법(ECT) 전후 간호
   nameKey: theme.psych.ect
   track: depth
   dept: PSYCH
   order: 370
+  icon: bulb
 - key: psych-milieu
   name: 밀리유·집단치료 참여
   nameKey: theme.psych.milieu
   track: depth
   dept: PSYCH
   order: 380
+  icon: speech
 - key: psych-therapeutic-comm
   name: 치료적 의사소통·라포
   nameKey: theme.psych.therapeutic-comm
   track: depth
   dept: PSYCH
   order: 390
+  icon: mic
 - key: psych-discharge
   name: 퇴원·안전계획·자원 연계
   nameKey: theme.psych.discharge
   track: depth
   dept: PSYCH
   order: 400
+  icon: shield
 
 # ── PHARMA 부서 코어 + 심화 (커리큘럼 v3 P2 · 35주제) ──
 - key: core-safety-pharma
@@ -1920,210 +2235,245 @@
   track: core
   dept: PHARMA
   order: 10
+  icon: shield
 - key: core-language-pharma
   name: 약물 용어·언어장벽·통역
   nameKey: theme.core.language
   track: core
   dept: PHARMA
   order: 20
+  icon: mic
 - key: core-handoff-pharma
   name: 약제부 인계·SBAR·콜백
   nameKey: theme.core.handoff
   track: core
   dept: PHARMA
   order: 30
+  icon: handshake2
 - key: core-family-pharma
   name: 환자·보호자 복약 교육
   nameKey: theme.core.family
   track: core
   dept: PHARMA
   order: 40
+  icon: speech
 - key: pharma-high-alert
   name: 고위험 약물 이중확인
   nameKey: theme.pharma.high-alert
   track: depth
   dept: PHARMA
   order: 100
+  icon: shield
 - key: pharma-anticoagulant
   name: 항응고제(헤파린·와파린·DOAC)
   nameKey: theme.pharma.anticoagulant
   track: depth
   dept: PHARMA
   order: 110
+  icon: pill
 - key: pharma-insulin
   name: 인슐린·혈당강하제
   nameKey: theme.pharma.insulin
   track: depth
   dept: PHARMA
   order: 120
+  icon: pill
 - key: pharma-opioid
   name: 마약성 진통제 안전·PCA
   nameKey: theme.pharma.opioid
   track: depth
   dept: PHARMA
   order: 130
+  icon: pill
 - key: pharma-controlled
   name: 마약류 관리·수불·폐기
   nameKey: theme.pharma.controlled
   track: depth
   dept: PHARMA
   order: 140
+  icon: board
 - key: pharma-diversion
   name: 마약류 불일치·전용 의심 보고
   nameKey: theme.pharma.diversion
   track: depth
   dept: PHARMA
   order: 150
+  icon: magnify
 - key: pharma-electrolyte
   name: 고농도 전해질(KCl·MgSO4·고장성 식염수)
   nameKey: theme.pharma.electrolyte
   track: depth
   dept: PHARMA
   order: 160
+  icon: shield
 - key: pharma-chemo
   name: 항암제·위해약물 취급
   nameKey: theme.pharma.chemo
   track: depth
   dept: PHARMA
   order: 170
+  icon: pill
 - key: pharma-iv-compat
   name: 수액 배합·IV 호환성
   nameKey: theme.pharma.iv-compat
   track: depth
   dept: PHARMA
   order: 180
+  icon: pill
 - key: pharma-sterile-compounding
   name: 무균조제·TPN
   nameKey: theme.pharma.sterile-compounding
   track: depth
   dept: PHARMA
   order: 190
+  icon: pill
 - key: pharma-antibiotic
   name: 항생제 적정사용
   nameKey: theme.pharma.antibiotic
   track: depth
   dept: PHARMA
   order: 200
+  icon: pill
 - key: pharma-tdm
   name: 치료약물농도 모니터링(TDM)
   nameKey: theme.pharma.tdm
   track: depth
   dept: PHARMA
   order: 210
+  icon: chartup
 - key: pharma-renal-hepatic
   name: 신·간기능 용량 조정
   nameKey: theme.pharma.renal-hepatic
   track: depth
   dept: PHARMA
   order: 220
+  icon: pill
 - key: pharma-pediatric-dosing
   name: 소아 체중기반 용량
   nameKey: theme.pharma.pediatric-dosing
   track: depth
   dept: PHARMA
   order: 230
+  icon: baby
 - key: pharma-geriatric-polypharmacy
   name: 노인 다약제·Beers
   nameKey: theme.pharma.geriatric-polypharmacy
   track: depth
   dept: PHARMA
   order: 240
+  icon: pill
 - key: pharma-pregnancy-lactation
   name: 임부·수유부 약물
   nameKey: theme.pharma.pregnancy-lactation
   track: depth
   dept: PHARMA
   order: 250
+  icon: pill
 - key: pharma-interaction
   name: 약물 상호작용
   nameKey: theme.pharma.interaction
   track: depth
   dept: PHARMA
   order: 260
+  icon: pill
 - key: pharma-allergy-adr
   name: 알레르기·약물이상반응
   nameKey: theme.pharma.allergy-adr
   track: depth
   dept: PHARMA
   order: 270
+  icon: pill
 - key: pharma-med-rec
   name: 약물 조정(입원·전동·퇴원)
   nameKey: theme.pharma.med-rec
   track: depth
   dept: PHARMA
   order: 280
+  icon: pill
 - key: pharma-discharge-counsel
   name: 퇴원 복약 상담
   nameKey: theme.pharma.discharge-counsel
   track: depth
   dept: PHARMA
   order: 290
+  icon: bulb
 - key: pharma-inhaler-device
   name: 흡입기·주사 펜·패치 기구 교육
   nameKey: theme.pharma.inhaler-device
   track: depth
   dept: PHARMA
   order: 300
+  icon: bulb
 - key: pharma-verbal-order
   name: 구두·전화 처방 복창
   nameKey: theme.pharma.verbal-order
   track: depth
   dept: PHARMA
   order: 310
+  icon: speech
 - key: pharma-order-clarify
   name: 처방 명료화·의문 처방 중재
   nameKey: theme.pharma.order-clarify
   track: depth
   dept: PHARMA
   order: 320
+  icon: handshake2
 - key: pharma-smart-pump
   name: 스마트펌프·주입속도 계산
   nameKey: theme.pharma.smart-pump
   track: depth
   dept: PHARMA
   order: 330
+  icon: gear
 - key: pharma-enteral-crush
   name: 경관 투여·분쇄 금지 약물
   nameKey: theme.pharma.enteral-crush
   track: depth
   dept: PHARMA
   order: 340
+  icon: pill
 - key: pharma-stat-emergency
   name: STAT·응급 약물·해독제
   nameKey: theme.pharma.stat-emergency
   track: depth
   dept: PHARMA
   order: 350
+  icon: pill
 - key: pharma-shortage-substitution
   name: 품절·대체약
   nameKey: theme.pharma.shortage-substitution
   track: depth
   dept: PHARMA
   order: 360
+  icon: pill
 - key: pharma-error-disclosure
   name: 투약 오류 보고·공개
   nameKey: theme.pharma.error-disclosure
   track: depth
   dept: PHARMA
   order: 370
+  icon: speech
 - key: pharma-dispensing-logistics
   name: 약품 수령·반납·기송관·자동분배기
   nameKey: theme.pharma.dispensing-logistics
   track: depth
   dept: PHARMA
   order: 380
+  icon: pill
 - key: pharma-cold-chain-biologic
   name: 백신·생물학적 제제 콜드체인
   nameKey: theme.pharma.cold-chain-biologic
   track: depth
   dept: PHARMA
   order: 390
+  icon: pill
 - key: pharma-otc-herbal
   name: OTC·한약·건강기능식품
   nameKey: theme.pharma.otc-herbal
   track: depth
   dept: PHARMA
   order: 400
+  icon: pill
 
 # ── SURGWARD 부서 코어 + 심화 (커리큘럼 v3 P2 · 35주제) ──
 - key: core-safety-surgward
@@ -2132,210 +2482,245 @@
   track: core
   dept: SURGWARD
   order: 10
+  icon: shield
 - key: core-language-surgward
   name: 언어장벽·통역·동의
   nameKey: theme.core.language
   track: core
   dept: SURGWARD
   order: 20
+  icon: mic
 - key: core-handoff-surgward
   name: 회복실 인수·교대·전동 인계
   nameKey: theme.core.handoff
   track: core
   dept: SURGWARD
   order: 30
+  icon: handshake2
 - key: core-family-surgward
   name: 수술 후 가족 소통·보호자 교육
   nameKey: theme.core.family
   track: core
   dept: SURGWARD
   order: 40
+  icon: speech
 - key: surgward-postop-assessment
   name: 수술 후 첫 사정
   nameKey: theme.surgward.postop-assessment
   track: depth
   dept: SURGWARD
   order: 100
+  icon: stetho
 - key: surgward-pain-pca
   name: 수술 후 통증·PCA
   nameKey: theme.surgward.pain-pca
   track: depth
   dept: SURGWARD
   order: 110
+  icon: pill
 - key: surgward-ponv
   name: 수술 후 오심·구토
   nameKey: theme.surgward.ponv
   track: depth
   dept: SURGWARD
   order: 120
+  icon: scalpel
 - key: surgward-ambulation
   name: 조기 보행·낙상 예방
   nameKey: theme.surgward.ambulation
   track: depth
   dept: SURGWARD
   order: 130
+  icon: me
 - key: surgward-vte
   name: 정맥혈전색전증 예방
   nameKey: theme.surgward.vte
   track: depth
   dept: SURGWARD
   order: 140
+  icon: shield
 - key: surgward-pulmonary
   name: 호흡기 합병증 예방(IS·무기폐)
   nameKey: theme.surgward.pulmonary
   track: depth
   dept: SURGWARD
   order: 150
+  icon: shield
 - key: surgward-wound
   name: 수술 부위 관찰·드레싱
   nameKey: theme.surgward.wound
   track: depth
   dept: SURGWARD
   order: 160
+  icon: bandage
 - key: surgward-ssi
   name: 수술 부위 감염
   nameKey: theme.surgward.ssi
   track: depth
   dept: SURGWARD
   order: 170
+  icon: shield
 - key: surgward-drains
   name: 배액관 관리(JP·헤모백)
   nameKey: theme.surgward.drains
   track: depth
   dept: SURGWARD
   order: 180
+  icon: bandage
 - key: surgward-ng-tube
   name: 비위관·위장관 감압
   nameKey: theme.surgward.ng-tube
   track: depth
   dept: SURGWARD
   order: 190
+  icon: scalpel
 - key: surgward-bowel-ileus
   name: 장운동 회복·마비성 장폐색
   nameKey: theme.surgward.bowel-ileus
   track: depth
   dept: SURGWARD
   order: 200
+  icon: scalpel
 - key: surgward-diet
   name: 식이 진행·영양
   nameKey: theme.surgward.diet
   track: depth
   dept: SURGWARD
   order: 210
+  icon: coffee
 - key: surgward-fluid-balance
   name: 수분·섭취배설·전해질
   nameKey: theme.surgward.fluid-balance
   track: depth
   dept: SURGWARD
   order: 220
+  icon: lab
 - key: surgward-urinary
   name: 요정체·도뇨관
   nameKey: theme.surgward.urinary
   track: depth
   dept: SURGWARD
   order: 230
+  icon: scalpel
 - key: surgward-postop-fever
   name: 수술 후 발열 감별
   nameKey: theme.surgward.postop-fever
   track: depth
   dept: SURGWARD
   order: 240
+  icon: monitor
 - key: surgward-hemorrhage
   name: 수술 후 출혈·저혈량
   nameKey: theme.surgward.hemorrhage
   track: depth
   dept: SURGWARD
   order: 250
+  icon: siren
 - key: surgward-sepsis
   name: 패혈증 조기 인지
   nameKey: theme.surgward.sepsis
   track: depth
   dept: SURGWARD
   order: 260
+  icon: magnify
 - key: surgward-leak
   name: 문합부 누출·급성 복부 악화
   nameKey: theme.surgward.leak
   track: depth
   dept: SURGWARD
   order: 270
+  icon: scalpel
 - key: surgward-delirium
   name: 수술 후 섬망
   nameKey: theme.surgward.delirium
   track: depth
   dept: SURGWARD
   order: 280
+  icon: scalpel
 - key: surgward-ostomy
   name: 장루 관리·교육
   nameKey: theme.surgward.ostomy
   track: depth
   dept: SURGWARD
   order: 290
+  icon: bandage
 - key: surgward-preop-prep
   name: 수술 전 준비(금식·동의·장정결)
   nameKey: theme.surgward.preop-prep
   track: depth
   dept: SURGWARD
   order: 300
+  icon: scalpel
 - key: surgward-eras
   name: ERAS 회복 경로
   nameKey: theme.surgward.eras
   track: depth
   dept: SURGWARD
   order: 310
+  icon: scalpel
 - key: surgward-glucose
   name: 수술 전후 혈당 관리
   nameKey: theme.surgward.glucose
   track: depth
   dept: SURGWARD
   order: 320
+  icon: lab
 - key: surgward-transfusion
   name: 수혈 관리
   nameKey: theme.surgward.transfusion
   track: depth
   dept: SURGWARD
   order: 330
+  icon: scalpel
 - key: surgward-thyroid-neck
   name: 갑상선·경부 수술 후(저칼슘·기도)
   nameKey: theme.surgward.thyroid-neck
   track: depth
   dept: SURGWARD
   order: 340
+  icon: scalpel
 - key: surgward-breast
   name: 유방 수술 후(배액·림프부종)
   nameKey: theme.surgward.breast
   track: depth
   dept: SURGWARD
   order: 350
+  icon: scalpel
 - key: surgward-hepatobiliary
   name: 간담도·췌장 수술 후
   nameKey: theme.surgward.hepatobiliary
   track: depth
   dept: SURGWARD
   order: 360
+  icon: scalpel
 - key: surgward-bariatric
   name: 비만대사 수술 후
   nameKey: theme.surgward.bariatric
   track: depth
   dept: SURGWARD
   order: 370
+  icon: scalpel
 - key: surgward-geriatric
   name: 노인 수술 환자·허약
   nameKey: theme.surgward.geriatric
   track: depth
   dept: SURGWARD
   order: 380
+  icon: scalpel
 - key: surgward-rapid-response
   name: 급변·신속대응팀 호출
   nameKey: theme.surgward.rapid-response
   track: depth
   dept: SURGWARD
   order: 390
+  icon: bell
 - key: surgward-discharge
   name: 퇴원 교육·재입원 예방
   nameKey: theme.surgward.discharge
   track: depth
   dept: SURGWARD
   order: 400
+  icon: bulb
 
 # ── ONCO 부서 코어 + 심화 (커리큘럼 v3 P2 · 35주제) ──
 - key: core-safety-onco
@@ -2344,210 +2729,245 @@
   track: core
   dept: ONCO
   order: 10
+  icon: shield
 - key: core-language-onco
   name: 언어장벽·통역·동의
   nameKey: theme.core.language
   track: core
   dept: ONCO
   order: 20
+  icon: mic
 - key: core-handoff-onco
   name: 교대·전동·항암 사이클 인계
   nameKey: theme.core.handoff
   track: core
   dept: ONCO
   order: 30
+  icon: handshake2
 - key: core-family-onco
   name: 가족·보호자 소통·나쁜 소식·돌봄 지지
   nameKey: theme.core.family
   track: core
   dept: ONCO
   order: 40
+  icon: speech
 - key: onco-hazardous-drug-handling
   name: 위험약물 취급·안전
   nameKey: theme.onco.hazardous-drug-handling
   track: depth
   dept: ONCO
   order: 100
+  icon: shield
 - key: onco-iv-chemo-infusion
   name: 정맥 항암 주입·주입반응
   nameKey: theme.onco.iv-chemo-infusion
   track: depth
   dept: ONCO
   order: 110
+  icon: pill
 - key: onco-desensitization
   name: 탈감작·과민반응 예방
   nameKey: theme.onco.desensitization
   track: depth
   dept: ONCO
   order: 120
+  icon: pill
 - key: onco-extravasation
   name: 일혈 예방·대응
   nameKey: theme.onco.extravasation
   track: depth
   dept: ONCO
   order: 130
+  icon: bandage
 - key: onco-oral-chemo-adherence
   name: 경구 항암제 순응·교육
   nameKey: theme.onco.oral-chemo-adherence
   track: depth
   dept: ONCO
   order: 140
+  icon: pill
 - key: onco-cvad-port
   name: 중심정맥관·포트 관리
   nameKey: theme.onco.cvad-port
   track: depth
   dept: ONCO
   order: 150
+  icon: pill
 - key: onco-irae
   name: 면역항암제 부작용 irAE
   nameKey: theme.onco.irae
   track: depth
   dept: ONCO
   order: 160
+  icon: pill
 - key: onco-cart-crs
   name: CAR-T·사이토카인폭풍 CRS
   nameKey: theme.onco.cart-crs
   track: depth
   dept: ONCO
   order: 170
+  icon: siren
 - key: onco-neutropenic-fever
   name: 호중구감소성 발열·감염예방
   nameKey: theme.onco.neutropenic-fever
   track: depth
   dept: ONCO
   order: 180
+  icon: monitor
 - key: onco-tls
   name: 종양용해증후군 TLS
   nameKey: theme.onco.tls
   track: depth
   dept: ONCO
   order: 190
+  icon: lab
 - key: onco-hypercalcemia
   name: 고칼슘혈증·종양 응급
   nameKey: theme.onco.hypercalcemia
   track: depth
   dept: ONCO
   order: 200
+  icon: siren
 - key: onco-svc-syndrome
   name: 상대정맥증후군 SVC
   nameKey: theme.onco.svc-syndrome
   track: depth
   dept: ONCO
   order: 210
+  icon: siren
 - key: onco-cord-compression
   name: 척수압박 응급
   nameKey: theme.onco.cord-compression
   track: depth
   dept: ONCO
   order: 220
+  icon: siren
 - key: onco-nausea-vomiting
   name: 오심·구토 관리
   nameKey: theme.onco.nausea-vomiting
   track: depth
   dept: ONCO
   order: 230
+  icon: pill
 - key: onco-mucositis
   name: 점막염·구내염
   nameKey: theme.onco.mucositis
   track: depth
   dept: ONCO
   order: 240
+  icon: pill
 - key: onco-cancer-pain
   name: 암성 통증 관리·오피오이드
   nameKey: theme.onco.cancer-pain
   track: depth
   dept: ONCO
   order: 250
+  icon: pill
 - key: onco-fatigue
   name: 피로·쇠약 관리
   nameKey: theme.onco.fatigue
   track: depth
   dept: ONCO
   order: 260
+  icon: pill
 - key: onco-diarrhea-constipation
   name: 설사·변비·장 문제
   nameKey: theme.onco.diarrhea-constipation
   track: depth
   dept: ONCO
   order: 270
+  icon: pill
 - key: onco-myelosuppression-transfusion
   name: 골수억제·수혈
   nameKey: theme.onco.myelosuppression-transfusion
   track: depth
   dept: ONCO
   order: 280
+  icon: lab
 - key: onco-nutrition-cachexia
   name: 영양·악액질
   nameKey: theme.onco.nutrition-cachexia
   track: depth
   dept: ONCO
   order: 290
+  icon: coffee
 - key: onco-infection-isolation
   name: 감염 격리·면역저하
   nameKey: theme.onco.infection-isolation
   track: depth
   dept: ONCO
   order: 300
+  icon: shield
 - key: onco-radiation-skin
   name: 방사선치료 간호·피부반응
   nameKey: theme.onco.radiation-skin
   track: depth
   dept: ONCO
   order: 310
+  icon: bandage
 - key: onco-lymphedema
   name: 림프부종 관리
   nameKey: theme.onco.lymphedema
   track: depth
   dept: ONCO
   order: 320
+  icon: bandage
 - key: onco-alopecia-body-image
   name: 탈모·신체상 지지
   nameKey: theme.onco.alopecia-body-image
   track: depth
   dept: ONCO
   order: 330
+  icon: me
 - key: onco-new-diagnosis
   name: 새 진단 소통·충격 지지
   nameKey: theme.onco.new-diagnosis
   track: depth
   dept: ONCO
   order: 340
+  icon: speech
 - key: onco-fertility-preservation
   name: 성·생식력 보존 상담
   nameKey: theme.onco.fertility-preservation
   track: depth
   dept: ONCO
   order: 350
+  icon: baby
 - key: onco-clinical-trial
   name: 임상시험 참여 지원
   nameKey: theme.onco.clinical-trial
   track: depth
   dept: ONCO
   order: 360
+  icon: board
 - key: onco-distress
   name: 심리사회적 디스트레스
   nameKey: theme.onco.distress
   track: depth
   dept: ONCO
   order: 370
+  icon: pill
 - key: onco-goals-advance-care
   name: 목표 설정·사전연명의료
   nameKey: theme.onco.goals-advance-care
   track: depth
   dept: ONCO
   order: 380
+  icon: board
 - key: onco-palliative-transition
   name: 완화의료 전환
   nameKey: theme.onco.palliative-transition
   track: depth
   dept: ONCO
   order: 390
+  icon: pill
 - key: onco-survivorship
   name: 생존자 관리·추적
   nameKey: theme.onco.survivorship
   track: depth
   dept: ONCO
   order: 400
+  icon: pill
 
 # ── GERI 부서 코어 + 심화 (커리큘럼 v3 P2 · 35주제) ──
 - key: core-safety-geri
@@ -2556,210 +2976,245 @@
   track: core
   dept: GERI
   order: 10
+  icon: shield
 - key: core-language-geri
   name: 언어장벽·통역·감각저하 소통
   nameKey: theme.core.language
   track: core
   dept: GERI
   order: 20
+  icon: mic
 - key: core-handoff-geri
   name: 교대·전동·요양시설 연계 인계
   nameKey: theme.core.handoff
   track: core
   dept: GERI
   order: 30
+  icon: handshake2
 - key: core-family-geri
   name: 가족·돌봄제공자 소통·목표 설정·돌봄 부담
   nameKey: theme.core.family
   track: core
   dept: GERI
   order: 40
+  icon: speech
 - key: geri-fall-risk
   name: 낙상 위험 사정·예방
   nameKey: theme.geri.fall-risk
   track: depth
   dept: GERI
   order: 100
+  icon: shield
 - key: geri-post-fall
   name: 낙상 후 사정
   nameKey: theme.geri.post-fall
   track: depth
   dept: GERI
   order: 110
+  icon: magnify
 - key: geri-immobility
   name: 부동·조기 이동
   nameKey: theme.geri.immobility
   track: depth
   dept: GERI
   order: 120
+  icon: me
 - key: geri-assistive-device
   name: 보조기구·재활 연계
   nameKey: theme.geri.assistive-device
   track: depth
   dept: GERI
   order: 130
+  icon: gear
 - key: geri-fall-fear
   name: 낙상공포·활동 위축
   nameKey: theme.geri.fall-fear
   track: depth
   dept: GERI
   order: 140
+  icon: shield
 - key: geri-delirium
   name: 급성 섬망 감별
   nameKey: theme.geri.delirium
   track: depth
   dept: GERI
   order: 150
+  icon: shield
 - key: geri-bpsd
   name: 치매 행동심리증상(BPSD) 관리
   nameKey: theme.geri.bpsd
   track: depth
   dept: GERI
   order: 160
+  icon: faceAngry
 - key: geri-cognitive-assessment
   name: 인지 사정(MMSE/MoCA)
   nameKey: theme.geri.cognitive-assessment
   track: depth
   dept: GERI
   order: 170
+  icon: magnify
 - key: geri-geriatric-depression
   name: 노인 우울·자살 위험
   nameKey: theme.geri.geriatric-depression
   track: depth
   dept: GERI
   order: 180
+  icon: shield
 - key: geri-sleep
   name: 수면 문제
   nameKey: theme.geri.sleep
   track: depth
   dept: GERI
   order: 190
+  icon: shield
 - key: geri-postop-delirium
   name: 수술후 노인 섬망
   nameKey: theme.geri.postop-delirium
   track: depth
   dept: GERI
   order: 200
+  icon: shield
 - key: geri-polypharmacy
   name: 다약제·부적절 약물·처방 정리
   nameKey: theme.geri.polypharmacy
   track: depth
   dept: GERI
   order: 210
+  icon: pill
 - key: geri-pain-cognitive
   name: 인지저하 환자 통증 사정
   nameKey: theme.geri.pain-cognitive
   track: depth
   dept: GERI
   order: 220
+  icon: stetho
 - key: geri-pain-management
   name: 노인 통증 관리
   nameKey: theme.geri.pain-management
   track: depth
   dept: GERI
   order: 230
+  icon: pill
 - key: geri-function-assessment
   name: 기능 사정(ADL/IADL)·쇠약
   nameKey: theme.geri.function-assessment
   track: depth
   dept: GERI
   order: 240
+  icon: board
 - key: geri-frailty
   name: 노쇠(frailty)·근감소
   nameKey: theme.geri.frailty
   track: depth
   dept: GERI
   order: 250
+  icon: shield
 - key: geri-atypical-infection
   name: 비전형 감염 표현
   nameKey: theme.geri.atypical-infection
   track: depth
   dept: GERI
   order: 260
+  icon: shield
 - key: geri-chronic-exacerbation
   name: 다중 만성질환 급성 악화
   nameKey: theme.geri.chronic-exacerbation
   track: depth
   dept: GERI
   order: 270
+  icon: monitor
 - key: geri-atypical-emergency
   name: 노인 응급 비전형 악화 인지
   nameKey: theme.geri.atypical-emergency
   track: depth
   dept: GERI
   order: 280
+  icon: siren
 - key: geri-hac-prevention
   name: 병원획득 합병증 예방(HAC)
   nameKey: theme.geri.hac-prevention
   track: depth
   dept: GERI
   order: 290
+  icon: shield
 - key: geri-pressure-injury
   name: 욕창 예방·단계 사정
   nameKey: theme.geri.pressure-injury
   track: depth
   dept: GERI
   order: 300
+  icon: bandage
 - key: geri-incontinence
   name: 요실금·배뇨 관리
   nameKey: theme.geri.incontinence
   track: depth
   dept: GERI
   order: 310
+  icon: shield
 - key: geri-constipation
   name: 변비·장 관리
   nameKey: theme.geri.constipation
   track: depth
   dept: GERI
   order: 320
+  icon: shield
 - key: geri-malnutrition
   name: 영양불량·수분
   nameKey: theme.geri.malnutrition
   track: depth
   dept: GERI
   order: 330
+  icon: coffee
 - key: geri-sensory
   name: 감각저하 소통
   nameKey: theme.geri.sensory
   track: depth
   dept: GERI
   order: 340
+  icon: speaker
 - key: geri-abuse
   name: 노인 학대·방임 의심
   nameKey: theme.geri.abuse
   track: depth
   dept: GERI
   order: 350
+  icon: shield
 - key: geri-capacity
   name: 의사결정능력·동의 사정
   nameKey: theme.geri.capacity
   track: depth
   dept: GERI
   order: 360
+  icon: magnify
 - key: geri-advance-care
   name: 사전연명의료·목표 설정
   nameKey: theme.geri.advance-care
   track: depth
   dept: GERI
   order: 370
+  icon: board
 - key: geri-transition
   name: 전원·전동 돌봄 이행
   nameKey: theme.geri.transition
   track: depth
   dept: GERI
   order: 380
+  icon: plane
 - key: geri-social-isolation
   name: 사회적 고립·돌봄 자원
   nameKey: theme.geri.social-isolation
   track: depth
   dept: GERI
   order: 390
+  icon: shield
 - key: geri-palliative
   name: 임종·완화 돌봄
   nameKey: theme.geri.palliative
   track: depth
   dept: GERI
   order: 400
+  icon: shield
 
 # ── RAD 부서 코어 + 심화 (커리큘럼 v3 P2 · 35주제) ──
 - key: core-safety-rad
@@ -2768,210 +3223,245 @@
   track: core
   dept: RAD
   order: 10
+  icon: shield
 - key: core-language-rad
   name: 언어장벽·통역·동의
   nameKey: theme.core.language
   track: core
   dept: RAD
   order: 20
+  icon: mic
 - key: core-handoff-rad
   name: 검사 의뢰·인계·중환자 이동 인계
   nameKey: theme.core.handoff
   track: core
   dept: RAD
   order: 30
+  icon: handshake2
 - key: core-family-rad
   name: 가족·보호자 소통·대기·소아 동반
   nameKey: theme.core.family
   track: core
   dept: RAD
   order: 40
+  icon: speech
 - key: rad-pre-anxiety
   name: 검사 전 불안 완화·절차 설명
   nameKey: theme.rad.pre-anxiety
   track: depth
   dept: RAD
   order: 100
+  icon: speech
 - key: rad-consent-explain
   name: 검사 동의·설명
   nameKey: theme.rad.consent-explain
   track: depth
   dept: RAD
   order: 110
+  icon: pencil
 - key: rad-result-wait
   name: 결과 대기 불안
   nameKey: theme.rad.result-wait
   track: depth
   dept: RAD
   order: 120
+  icon: magnify
 - key: rad-breath-position
   name: 검사 중 호흡·체위 지시
   nameKey: theme.rad.breath-position
   track: depth
   dept: RAD
   order: 130
+  icon: me
 - key: rad-contrast-renal
   name: 조영제 신독성·eGFR 사정
   nameKey: theme.rad.contrast-renal
   track: depth
   dept: RAD
   order: 140
+  icon: lab
 - key: rad-contrast-premed
   name: 조영제 과민반응 전처치
   nameKey: theme.rad.contrast-premed
   track: depth
   dept: RAD
   order: 150
+  icon: pill
 - key: rad-contrast-anaphylaxis
   name: 조영제 급성 아나필락시스 대응
   nameKey: theme.rad.contrast-anaphylaxis
   track: depth
   dept: RAD
   order: 160
+  icon: siren
 - key: rad-contrast-extravasation
   name: 조영제 일혈
   nameKey: theme.rad.contrast-extravasation
   track: depth
   dept: RAD
   order: 170
+  icon: bandage
 - key: rad-contrast-post
   name: 조영 검사 후 관찰·수분
   nameKey: theme.rad.contrast-post
   track: depth
   dept: RAD
   order: 180
+  icon: coffee
 - key: rad-iv-access
   name: IV 확보·주입
   nameKey: theme.rad.iv-access
   track: depth
   dept: RAD
   order: 190
+  icon: magnify
 - key: rad-ct-prep
   name: CT 검사 준비·조영
   nameKey: theme.rad.ct-prep
   track: depth
   dept: RAD
   order: 200
+  icon: gear
 - key: rad-mri-prep
   name: MRI 검사 준비
   nameKey: theme.rad.mri-prep
   track: depth
   dept: RAD
   order: 210
+  icon: magnify
 - key: rad-mri-screening
   name: MRI 금속·임플란트·심박동기 스크리닝
   nameKey: theme.rad.mri-screening
   track: depth
   dept: RAD
   order: 220
+  icon: shield
 - key: rad-claustrophobia
   name: 폐소공포·진정 지원
   nameKey: theme.rad.claustrophobia
   track: depth
   dept: RAD
   order: 230
+  icon: magnify
 - key: rad-ultrasound
   name: 초음파·조영 초음파
   nameKey: theme.rad.ultrasound
   track: depth
   dept: RAD
   order: 240
+  icon: magnify
 - key: rad-fluoroscopy
   name: 투시(바륨·연하)검사
   nameKey: theme.rad.fluoroscopy
   track: depth
   dept: RAD
   order: 250
+  icon: monitor
 - key: rad-nuclear
   name: 핵의학 방사성의약품 안전
   nameKey: theme.rad.nuclear
   track: depth
   dept: RAD
   order: 260
+  icon: shield
 - key: rad-mammography
   name: 유방촬영 압박·불편
   nameKey: theme.rad.mammography
   track: depth
   dept: RAD
   order: 270
+  icon: magnify
 - key: rad-bone-density
   name: 골밀도 검사
   nameKey: theme.rad.bone-density
   track: depth
   dept: RAD
   order: 280
+  icon: magnify
 - key: rad-stroke-ct
   name: 응급 뇌졸중 CT 신속 프로토콜
   nameKey: theme.rad.stroke-ct
   track: depth
   dept: RAD
   order: 290
+  icon: magnify
 - key: rad-trauma-imaging
   name: 외상 영상 다발검사
   nameKey: theme.rad.trauma-imaging
   track: depth
   dept: RAD
   order: 300
+  icon: magnify
 - key: rad-critical-transport
   name: 중환자·이동환자 영상 안전
   nameKey: theme.rad.critical-transport
   track: depth
   dept: RAD
   order: 310
+  icon: plane
 - key: rad-suite-emergency
   name: 검사실 응급(실신·조영 반응) 대응
   nameKey: theme.rad.suite-emergency
   track: depth
   dept: RAD
   order: 320
+  icon: siren
 - key: rad-pregnancy
   name: 임신·수유 중 영상 판단
   nameKey: theme.rad.pregnancy
   track: depth
   dept: RAD
   order: 330
+  icon: shield
 - key: rad-pediatric
   name: 소아 영상 진정·안심
   nameKey: theme.rad.pediatric
   track: depth
   dept: RAD
   order: 340
+  icon: baby
 - key: rad-geriatric
   name: 노인·인지저하 협조
   nameKey: theme.rad.geriatric
   track: depth
   dept: RAD
   order: 350
+  icon: magnify
 - key: rad-biopsy
   name: 영상유도 생검 전후
   nameKey: theme.rad.biopsy
   track: depth
   dept: RAD
   order: 360
+  icon: lab
 - key: rad-drainage
   name: 배액관 삽입 시술 간호
   nameKey: theme.rad.drainage
   track: depth
   dept: RAD
   order: 370
+  icon: bandage
 - key: rad-angio-embolization
   name: 혈관조영·색전 시술
   nameKey: theme.rad.angio-embolization
   track: depth
   dept: RAD
   order: 380
+  icon: magnify
 - key: rad-radiation-safety
   name: 방사선 차폐·피폭 최소화
   nameKey: theme.rad.radiation-safety
   track: depth
   dept: RAD
   order: 390
+  icon: shield
 - key: rad-incidental-findings
   name: 우발 소견 위험 소통
   nameKey: theme.rad.incidental-findings
   track: depth
   dept: RAD
   order: 400
+  icon: speech
 
 # ── ENDO 부서 코어 + 심화 (커리큘럼 v3 P2 · 35주제) ──
 - key: core-safety-endo
@@ -2980,210 +3470,245 @@
   track: core
   dept: ENDO
   order: 10
+  icon: shield
 - key: core-language-endo
   name: 언어장벽·통역·동의
   nameKey: theme.core.language
   track: core
   dept: ENDO
   order: 20
+  icon: mic
 - key: core-handoff-endo
   name: 시술 인계·회복실→병동 인계
   nameKey: theme.core.handoff
   track: core
   dept: ENDO
   order: 30
+  icon: handshake2
 - key: core-family-endo
   name: 가족 대기·설명·소아 동반
   nameKey: theme.core.family
   track: core
   dept: ENDO
   order: 40
+  icon: speech
 - key: endo-fasting-prep
   name: 내시경 전 금식·장정결 교육
   nameKey: theme.endo.fasting-prep
   track: depth
   dept: ENDO
   order: 100
+  icon: coffee
 - key: endo-anticoag-hold
   name: 항응고제·항혈소판제 중단 관리
   nameKey: theme.endo.anticoag-hold
   track: depth
   dept: ENDO
   order: 110
+  icon: pill
 - key: endo-glycemic-adjust
   name: 당뇨약·인슐린 시술 전 조정
   nameKey: theme.endo.glycemic-adjust
   track: depth
   dept: ENDO
   order: 120
+  icon: pill
 - key: endo-consent-detail
   name: 시술 동의·위험 설명
   nameKey: theme.endo.consent-detail
   track: depth
   dept: ENDO
   order: 130
+  icon: pencil
 - key: endo-sedation-assess
   name: 진정 전 사정·기도 평가
   nameKey: theme.endo.sedation-assess
   track: depth
   dept: ENDO
   order: 140
+  icon: magnify
 - key: endo-sedation-meds
   name: 절차적 진정 약물 설명·모니터링
   nameKey: theme.endo.sedation-meds
   track: depth
   dept: ENDO
   order: 150
+  icon: pill
 - key: endo-resp-depression
   name: 진정 중 호흡억제·저산소 대응
   nameKey: theme.endo.resp-depression
   track: depth
   dept: ENDO
   order: 160
+  icon: monitor
 - key: endo-hypotension-brady
   name: 진정 중 저혈압·서맥 대응
   nameKey: theme.endo.hypotension-brady
   track: depth
   dept: ENDO
   order: 170
+  icon: monitor
 - key: endo-aspiration-position
   name: 흡인 예방·체위 관리
   nameKey: theme.endo.aspiration-position
   track: depth
   dept: ENDO
   order: 180
+  icon: me
 - key: endo-egd
   name: 상부내시경 간호
   nameKey: theme.endo.egd
   track: depth
   dept: ENDO
   order: 190
+  icon: magnify
 - key: endo-colonoscopy
   name: 대장내시경 간호
   nameKey: theme.endo.colonoscopy
   track: depth
   dept: ENDO
   order: 200
+  icon: magnify
 - key: endo-foreign-body
   name: 이물 제거 간호
   nameKey: theme.endo.foreign-body
   track: depth
   dept: ENDO
   order: 210
+  icon: magnify
 - key: endo-gi-bleed-emergency
   name: 응급 내시경 출혈·정맥류
   nameKey: theme.endo.gi-bleed-emergency
   track: depth
   dept: ENDO
   order: 220
+  icon: siren
 - key: endo-ercp
   name: ERCP 간호·췌장염 위험
   nameKey: theme.endo.ercp
   track: depth
   dept: ENDO
   order: 230
+  icon: magnify
 - key: endo-bronchoscopy
   name: 기관지경 간호
   nameKey: theme.endo.bronchoscopy
   track: depth
   dept: ENDO
   order: 240
+  icon: magnify
 - key: endo-stent
   name: 스텐트 삽입 간호
   nameKey: theme.endo.stent
   track: depth
   dept: ENDO
   order: 250
+  icon: pill
 - key: endo-polypectomy-bleed
   name: 용종절제·시술 중 출혈
   nameKey: theme.endo.polypectomy-bleed
   track: depth
   dept: ENDO
   order: 260
+  icon: pill
 - key: endo-specimen
   name: 조직검사·검체 관리
   nameKey: theme.endo.specimen
   track: depth
   dept: ENDO
   order: 270
+  icon: lab
 - key: endo-perforation
   name: 천공 조기 인지·대응
   nameKey: theme.endo.perforation
   track: depth
   dept: ENDO
   order: 280
+  icon: siren
 - key: endo-recovery-discharge
   name: 회복실 각성·퇴실기준
   nameKey: theme.endo.recovery-discharge
   track: depth
   dept: ENDO
   order: 290
+  icon: monitor
 - key: endo-post-complication
   name: 시술 후 합병증 관찰
   nameKey: theme.endo.post-complication
   track: depth
   dept: ENDO
   order: 300
+  icon: monitor
 - key: endo-reversal
   name: 마약성 진통·진정 역전
   nameKey: theme.endo.reversal
   track: depth
   dept: ENDO
   order: 310
+  icon: pill
 - key: endo-infection-control
   name: 감염관리·재처리 소통
   nameKey: theme.endo.infection-control
   track: depth
   dept: ENDO
   order: 320
+  icon: shield
 - key: endo-cathlab-prep
   name: 심혈관 조영실 시술 전 준비
   nameKey: theme.endo.cathlab-prep
   track: depth
   dept: ENDO
   order: 330
+  icon: pill
 - key: endo-pci-access
   name: PCI 후 천자부위·지혈
   nameKey: theme.endo.pci-access
   track: depth
   dept: ENDO
   order: 340
+  icon: bandage
 - key: endo-contrast-reaction
   name: 조영제 반응 대응
   nameKey: theme.endo.contrast-reaction
   track: depth
   dept: ENDO
   order: 350
+  icon: pill
 - key: endo-procedure-anxiety
   name: 시술 중 불안·통증 소통
   nameKey: theme.endo.procedure-anxiety
   track: depth
   dept: ENDO
   order: 360
+  icon: speech
 - key: endo-peds-sedation
   name: 소아 내시경 진정·부모
   nameKey: theme.endo.peds-sedation
   track: depth
   dept: ENDO
   order: 370
+  icon: baby
 - key: endo-geri-polypharm
   name: 노인·다약제 시술 위험
   nameKey: theme.endo.geri-polypharm
   track: depth
   dept: ENDO
   order: 380
+  icon: pill
 - key: endo-code-response
   name: 검사실 급변·소생 대응
   nameKey: theme.endo.code-response
   track: depth
   dept: ENDO
   order: 390
+  icon: siren
 - key: endo-repeat-support
   name: 반복 시술 환자 지지
   nameKey: theme.endo.repeat-support
   track: depth
   dept: ENDO
   order: 400
+  icon: pill
 
 # ── DIAL 부서 코어 + 심화 (커리큘럼 v3 P2 · 35주제) ──
 - key: core-safety-dial
@@ -3192,210 +3717,245 @@
   track: core
   dept: DIAL
   order: 10
+  icon: shield
 - key: core-language-dial
   name: 언어장벽 통역 동의
   nameKey: theme.core.language
   track: core
   dept: DIAL
   order: 20
+  icon: mic
 - key: core-handoff-dial
   name: 교대 병동 응급 인계 통로 상태 인계
   nameKey: theme.core.handoff
   track: core
   dept: DIAL
   order: 30
+  icon: handshake2
 - key: core-family-dial
   name: 가족 돌봄자 소통 교육
   nameKey: theme.core.family
   track: core
   dept: DIAL
   order: 40
+  icon: speech
 - key: dial-hd-session-start
   name: 혈액투석 세션 시작 활력 사정
   nameKey: theme.dial.hd-session-start
   track: depth
   dept: DIAL
   order: 100
+  icon: monitor
 - key: dial-dry-weight-uf
   name: 건체중 초여과 설정
   nameKey: theme.dial.dry-weight-uf
   track: depth
   dept: DIAL
   order: 110
+  icon: chartup
 - key: dial-adequacy-ktv
   name: 투석 적절도 이해
   nameKey: theme.dial.adequacy-ktv
   track: depth
   dept: DIAL
   order: 120
+  icon: lab
 - key: dial-post-dialysis
   name: 투석 후 관찰 퇴실
   nameKey: theme.dial.post-dialysis
   track: depth
   dept: DIAL
   order: 130
+  icon: monitor
 - key: dial-avf-cannulation
   name: 동정맥루 사정 천자 간호
   nameKey: theme.dial.avf-cannulation
   track: depth
   dept: DIAL
   order: 140
+  icon: stetho
 - key: dial-avg-management
   name: 인조혈관 관리
   nameKey: theme.dial.avg-management
   track: depth
   dept: DIAL
   order: 150
+  icon: monitor
 - key: dial-cvc-care
   name: 중심정맥 카테터 관리 감염 예방
   nameKey: theme.dial.cvc-care
   track: depth
   dept: DIAL
   order: 160
+  icon: shield
 - key: dial-access-stenosis
   name: 통로 협착 재순환 혈전
   nameKey: theme.dial.access-stenosis
   track: depth
   dept: DIAL
   order: 170
+  icon: magnify
 - key: dial-access-selfcare
   name: 통로 자가관리 교육
   nameKey: theme.dial.access-selfcare
   track: depth
   dept: DIAL
   order: 180
+  icon: bulb
 - key: dial-intradialytic-hypotension
   name: 투석 중 저혈압 대응
   nameKey: theme.dial.intradialytic-hypotension
   track: depth
   dept: DIAL
   order: 190
+  icon: monitor
 - key: dial-cramps-nausea
   name: 투석 중 근경련 오심
   nameKey: theme.dial.cramps-nausea
   track: depth
   dept: DIAL
   order: 200
+  icon: monitor
 - key: dial-pyrogen-reaction
   name: 투석 중 발열반응 오한
   nameKey: theme.dial.pyrogen-reaction
   track: depth
   dept: DIAL
   order: 210
+  icon: monitor
 - key: dial-air-hemolysis
   name: 공기색전 용혈 응급
   nameKey: theme.dial.air-hemolysis
   track: depth
   dept: DIAL
   order: 220
+  icon: siren
 - key: dial-anticoagulation
   name: 항응고 관리 출혈
   nameKey: theme.dial.anticoagulation
   track: depth
   dept: DIAL
   order: 230
+  icon: pill
 - key: dial-potassium
   name: 칼륨 관리 고칼륨 응급
   nameKey: theme.dial.potassium
   track: depth
   dept: DIAL
   order: 240
+  icon: lab
 - key: dial-phosphorus-bone
   name: 인 뼈 미네랄 관리 식이
   nameKey: theme.dial.phosphorus-bone
   track: depth
   dept: DIAL
   order: 250
+  icon: coffee
 - key: dial-fluid-sodium
   name: 수분 염분 제한 교육
   nameKey: theme.dial.fluid-sodium
   track: depth
   dept: DIAL
   order: 260
+  icon: coffee
 - key: dial-anemia-esa
   name: 빈혈 조혈제 철분 관리
   nameKey: theme.dial.anemia-esa
   track: depth
   dept: DIAL
   order: 270
+  icon: pill
 - key: dial-ckd-staging
   name: 만성신질환 단계 교육
   nameKey: theme.dial.ckd-staging
   track: depth
   dept: DIAL
   order: 280
+  icon: bulb
 - key: dial-first-session
   name: 첫 투석 환자 교육 불안
   nameKey: theme.dial.first-session
   track: depth
   dept: DIAL
   order: 290
+  icon: speech
 - key: dial-adherence
   name: 투석 순응 결석 대응
   nameKey: theme.dial.adherence
   track: depth
   dept: DIAL
   order: 300
+  icon: monitor
 - key: dial-pruritus-rls
   name: 가려움 하지불안 관리
   nameKey: theme.dial.pruritus-rls
   track: depth
   dept: DIAL
   order: 310
+  icon: monitor
 - key: dial-pd-basics
   name: 복막투석 기초 교육
   nameKey: theme.dial.pd-basics
   track: depth
   dept: DIAL
   order: 320
+  icon: bulb
 - key: dial-pd-catheter
   name: 복막투석 도관 관리
   nameKey: theme.dial.pd-catheter
   track: depth
   dept: DIAL
   order: 330
+  icon: bandage
 - key: dial-peritonitis
   name: 복막염 인지 대응
   nameKey: theme.dial.peritonitis
   track: depth
   dept: DIAL
   order: 340
+  icon: magnify
 - key: dial-rrt-choice
   name: 신대체요법 선택 상담
   nameKey: theme.dial.rrt-choice
   track: depth
   dept: DIAL
   order: 350
+  icon: speech
 - key: dial-transplant-waitlist
   name: 이식 대기 상담
   nameKey: theme.dial.transplant-waitlist
   track: depth
   dept: DIAL
   order: 360
+  icon: calendar
 - key: dial-palliative-withdrawal
   name: 말기 신질환 완화 투석 중단 결정
   nameKey: theme.dial.palliative-withdrawal
   track: depth
   dept: DIAL
   order: 370
+  icon: monitor
 - key: dial-hepatitis-isolation
   name: 감염관리 간염 격리
   nameKey: theme.dial.hepatitis-isolation
   track: depth
   dept: DIAL
   order: 380
+  icon: shield
 - key: dial-geriatric
   name: 노인 투석 환자 관리
   nameKey: theme.dial.geriatric
   track: depth
   dept: DIAL
   order: 390
+  icon: monitor
 - key: dial-diabetic-nephropathy
   name: 당뇨병성 신증 투석 관리
   nameKey: theme.dial.diabetic-nephropathy
   track: depth
   dept: DIAL
   order: 400
+  icon: monitor
 
 # ── INFUSION 부서 코어 + 심화 (커리큘럼 v3 P2 · 35주제) ──
 - key: core-safety-infusion
@@ -3404,210 +3964,245 @@
   track: core
   dept: INFUSION
   order: 10
+  icon: shield
 - key: core-language-infusion
   name: 언어장벽과 통역 동의
   nameKey: theme.core.language
   track: core
   dept: INFUSION
   order: 20
+  icon: mic
 - key: core-handoff-infusion
   name: 예약 인계와 병동 응급 연계
   nameKey: theme.core.handoff
   track: core
   dept: INFUSION
   order: 30
+  icon: handshake2
 - key: core-family-infusion
   name: 가족과 보호자 소통 교육
   nameKey: theme.core.family
   track: core
   dept: INFUSION
   order: 40
+  icon: speech
 - key: infusion-peripheral-iv-access
   name: 말초 정맥로 확보와 어려운 혈관
   nameKey: theme.infusion.peripheral-iv-access
   track: depth
   dept: INFUSION
   order: 100
+  icon: pill
 - key: infusion-central-line-port
   name: 중심정맥관과 포트 접근 관리
   nameKey: theme.infusion.central-line-port
   track: depth
   dept: INFUSION
   order: 110
+  icon: pill
 - key: infusion-pump-rate
   name: 주입펌프 설정과 속도 관리
   nameKey: theme.infusion.pump-rate
   track: depth
   dept: INFUSION
   order: 120
+  icon: gear
 - key: infusion-pre-infusion-checks
   name: 주입 전 활력과 랩 확인
   nameKey: theme.infusion.pre-infusion-checks
   track: depth
   dept: INFUSION
   order: 130
+  icon: board
 - key: infusion-drug-allergy-check
   name: 약물 상호작용과 알레르기 확인
   nameKey: theme.infusion.drug-allergy-check
   track: depth
   dept: INFUSION
   order: 140
+  icon: magnify
 - key: infusion-premedication
   name: 전처치 항히스타민과 스테로이드 관리
   nameKey: theme.infusion.premedication
   track: depth
   dept: INFUSION
   order: 150
+  icon: pill
 - key: infusion-first-infusion-monitoring
   name: 첫 주입 관찰과 활력 감시
   nameKey: theme.infusion.first-infusion-monitoring
   track: depth
   dept: INFUSION
   order: 160
+  icon: monitor
 - key: infusion-mild-reaction
   name: 경증 주입반응 사정과 관리
   nameKey: theme.infusion.mild-reaction
   track: depth
   dept: INFUSION
   order: 170
+  icon: pill
 - key: infusion-anaphylaxis
   name: 급성 과민반응과 아나필락시스
   nameKey: theme.infusion.anaphylaxis
   track: depth
   dept: INFUSION
   order: 180
+  icon: siren
 - key: infusion-extravasation
   name: 일혈 발포성 자극성 약물 대응
   nameKey: theme.infusion.extravasation
   track: depth
   dept: INFUSION
   order: 190
+  icon: bandage
 - key: infusion-phlebitis
   name: 주입 부위 통증과 정맥염
   nameKey: theme.infusion.phlebitis
   track: depth
   dept: INFUSION
   order: 200
+  icon: magnify
 - key: infusion-tolerance-titration
   name: 주입 속도 적정과 내약성
   nameKey: theme.infusion.tolerance-titration
   track: depth
   dept: INFUSION
   order: 210
+  icon: chartup
 - key: infusion-acute-deterioration
   name: 주입 중 급변 대응
   nameKey: theme.infusion.acute-deterioration
   track: depth
   dept: INFUSION
   order: 220
+  icon: siren
 - key: infusion-biologics-mab
   name: 생물학제제 단클론항체 주입
   nameKey: theme.infusion.biologics-mab
   track: depth
   dept: INFUSION
   order: 230
+  icon: pill
 - key: infusion-biologics-education
   name: 류마티스와 크론 생물학제제 교육
   nameKey: theme.infusion.biologics-education
   track: depth
   dept: INFUSION
   order: 240
+  icon: bulb
 - key: infusion-iron
   name: 철분 주사와 반응 관리
   nameKey: theme.infusion.iron
   track: depth
   dept: INFUSION
   order: 250
+  icon: pill
 - key: infusion-ivig
   name: IVIG 주입과 부작용 관리
   nameKey: theme.infusion.ivig
   track: depth
   dept: INFUSION
   order: 260
+  icon: pill
 - key: infusion-opat
   name: 외래 항생제 OPAT 교육
   nameKey: theme.infusion.opat
   track: depth
   dept: INFUSION
   order: 270
+  icon: bulb
 - key: infusion-hydration
   name: 수분보충과 탈수 관리
   nameKey: theme.infusion.hydration
   track: depth
   dept: INFUSION
   order: 280
+  icon: coffee
 - key: infusion-transfusion
   name: 외래 수혈과 수혈반응 관리
   nameKey: theme.infusion.transfusion
   track: depth
   dept: INFUSION
   order: 290
+  icon: pill
 - key: infusion-outpatient-chemo
   name: 외래 항암 주입 안전
   nameKey: theme.infusion.outpatient-chemo
   track: depth
   dept: INFUSION
   order: 300
+  icon: pill
 - key: infusion-nausea
   name: 오심과 구토 관리
   nameKey: theme.infusion.nausea
   track: depth
   dept: INFUSION
   order: 310
+  icon: pill
 - key: infusion-post-infusion-discharge
   name: 주입 후 관찰과 귀가 기준
   nameKey: theme.infusion.post-infusion-discharge
   track: depth
   dept: INFUSION
   order: 320
+  icon: monitor
 - key: infusion-pretest-premed
   name: 검사 전 사전투약 조율
   nameKey: theme.infusion.pretest-premed
   track: depth
   dept: INFUSION
   order: 330
+  icon: pill
 - key: infusion-maintenance-education
   name: 만성질환 유지요법 교육
   nameKey: theme.infusion.maintenance-education
   track: depth
   dept: INFUSION
   order: 340
+  icon: bulb
 - key: infusion-repeat-patient-support
   name: 반복 주입 환자 지지
   nameKey: theme.infusion.repeat-patient-support
   track: depth
   dept: INFUSION
   order: 350
+  icon: pill
 - key: infusion-home-infusion
   name: 재택 주입 교육
   nameKey: theme.infusion.home-infusion
   track: depth
   dept: INFUSION
   order: 360
+  icon: bulb
 - key: infusion-scheduling-adherence
   name: 예약과 순응 관리
   nameKey: theme.infusion.scheduling-adherence
   track: depth
   dept: INFUSION
   order: 370
+  icon: calendar
 - key: infusion-pediatric
   name: 소아 외래 주입
   nameKey: theme.infusion.pediatric
   track: depth
   dept: INFUSION
   order: 380
+  icon: baby
 - key: infusion-geriatric
   name: 노인 외래 주입
   nameKey: theme.infusion.geriatric
   track: depth
   dept: INFUSION
   order: 390
+  icon: pill
 - key: infusion-immunocompromised
   name: 면역저하 환자 감염예방
   nameKey: theme.infusion.immunocompromised
   track: depth
   dept: INFUSION
   order: 400
+  icon: shield
 
 # ── HOSPICE 부서 코어 + 심화 (커리큘럼 v3 P2 · 35주제) ──
 - key: core-safety-hospice
@@ -3616,210 +4211,245 @@
   track: core
   dept: HOSPICE
   order: 10
+  icon: shield
 - key: core-language-hospice
   name: 언어장벽과 통역 소통
   nameKey: theme.core.language
   track: core
   dept: HOSPICE
   order: 20
+  icon: mic
 - key: core-handoff-hospice
   name: 호스피스 인계와 전동 연계
   nameKey: theme.core.handoff
   track: core
   dept: HOSPICE
   order: 30
+  icon: handshake2
 - key: core-family-hospice
   name: 가족 소통과 임종 준비
   nameKey: theme.core.family
   track: core
   dept: HOSPICE
   order: 40
+  icon: speech
 - key: hospice-cancer-pain-opioid
   name: 암성 통증과 오피오이드 적정
   nameKey: theme.hospice.cancer-pain-opioid
   track: depth
   dept: HOSPICE
   order: 100
+  icon: pill
 - key: hospice-breakthrough-pain
   name: 돌발통 관리
   nameKey: theme.hospice.breakthrough-pain
   track: depth
   dept: HOSPICE
   order: 110
+  icon: pill
 - key: hospice-route-conversion
   name: 진통제 경로 전환
   nameKey: theme.hospice.route-conversion
   track: depth
   dept: HOSPICE
   order: 120
+  icon: pill
 - key: hospice-nausea-vomiting
   name: 오심과 구토 완화
   nameKey: theme.hospice.nausea-vomiting
   track: depth
   dept: HOSPICE
   order: 130
+  icon: pill
 - key: hospice-constipation-obstruction
   name: 변비와 장폐색 완화
   nameKey: theme.hospice.constipation-obstruction
   track: depth
   dept: HOSPICE
   order: 140
+  icon: shield
 - key: hospice-dyspnea
   name: 호흡곤란 완화
   nameKey: theme.hospice.dyspnea
   track: depth
   dept: HOSPICE
   order: 150
+  icon: stetho
 - key: hospice-death-rattle
   name: 임종기 기도 분비물 돌봄
   nameKey: theme.hospice.death-rattle
   track: depth
   dept: HOSPICE
   order: 160
+  icon: shield
 - key: hospice-oral-care
   name: 구강 편안함 돌봄
   nameKey: theme.hospice.oral-care
   track: depth
   dept: HOSPICE
   order: 170
+  icon: shield
 - key: hospice-skin-pressure-comfort
   name: 피부와 욕창 편안함 돌봄
   nameKey: theme.hospice.skin-pressure-comfort
   track: depth
   dept: HOSPICE
   order: 180
+  icon: bandage
 - key: hospice-anorexia-cachexia
   name: 식욕부진과 악액질 소통
   nameKey: theme.hospice.anorexia-cachexia
   track: depth
   dept: HOSPICE
   order: 190
+  icon: coffee
 - key: hospice-hydration-decision
   name: 수분공급 결정 소통
   nameKey: theme.hospice.hydration-decision
   track: depth
   dept: HOSPICE
   order: 200
+  icon: speech
 - key: hospice-delirium-agitation
   name: 섬망과 초조 관리
   nameKey: theme.hospice.delirium-agitation
   track: depth
   dept: HOSPICE
   order: 210
+  icon: faceAngry
 - key: hospice-anxiety-depression
   name: 불안과 우울 지지
   nameKey: theme.hospice.anxiety-depression
   track: depth
   dept: HOSPICE
   order: 220
+  icon: shield
 - key: hospice-spiritual-care
   name: 영적 돌봄 연계
   nameKey: theme.hospice.spiritual-care
   track: depth
   dept: HOSPICE
   order: 230
+  icon: shield
 - key: hospice-cultural-customs
   name: 문화별 임종 관습 배려
   nameKey: theme.hospice.cultural-customs
   track: depth
   dept: HOSPICE
   order: 240
+  icon: shield
 - key: hospice-dignity-autonomy
   name: 환자 존엄과 자율성 존중
   nameKey: theme.hospice.dignity-autonomy
   track: depth
   dept: HOSPICE
   order: 250
+  icon: shield
 - key: hospice-signs-of-dying
   name: 임종 징후 교육
   nameKey: theme.hospice.signs-of-dying
   track: depth
   dept: HOSPICE
   order: 260
+  icon: bulb
 - key: hospice-imminent-death
   name: 임박한 임종 돌봄
   nameKey: theme.hospice.imminent-death
   track: depth
   dept: HOSPICE
   order: 270
+  icon: shield
 - key: hospice-palliative-sedation
   name: 완화적 진정 설명
   nameKey: theme.hospice.palliative-sedation
   track: depth
   dept: HOSPICE
   order: 280
+  icon: pill
 - key: hospice-postmortem-care
   name: 임종 후 사후 돌봄과 가족 안내
   nameKey: theme.hospice.postmortem-care
   track: depth
   dept: HOSPICE
   order: 290
+  icon: shield
 - key: hospice-symptom-emergency
   name: 완화 응급 증상 대응
   nameKey: theme.hospice.symptom-emergency
   track: depth
   dept: HOSPICE
   order: 300
+  icon: siren
 - key: hospice-goals-of-care
   name: 돌봄 목표 대화
   nameKey: theme.hospice.goals-of-care
   track: depth
   dept: HOSPICE
   order: 310
+  icon: speech
 - key: hospice-advance-directive-dnr
   name: 사전연명의료와 DNR 소통
   nameKey: theme.hospice.advance-directive-dnr
   track: depth
   dept: HOSPICE
   order: 320
+  icon: pencil
 - key: hospice-breaking-bad-news
   name: 나쁜 소식 전달
   nameKey: theme.hospice.breaking-bad-news
   track: depth
   dept: HOSPICE
   order: 330
+  icon: speech
 - key: hospice-ethical-dilemma
   name: 윤리적 딜레마 소통
   nameKey: theme.hospice.ethical-dilemma
   track: depth
   dept: HOSPICE
   order: 340
+  icon: speech
 - key: hospice-interdisciplinary-coordination
   name: 다직역 돌봄 조율
   nameKey: theme.hospice.interdisciplinary-coordination
   track: depth
   dept: HOSPICE
   order: 350
+  icon: handshake2
 - key: hospice-anticipatory-grief
   name: 예기 슬픔 지지
   nameKey: theme.hospice.anticipatory-grief
   track: depth
   dept: HOSPICE
   order: 360
+  icon: shield
 - key: hospice-bereavement
   name: 사별 돌봄
   nameKey: theme.hospice.bereavement
   track: depth
   dept: HOSPICE
   order: 370
+  icon: speech
 - key: hospice-caregiver-burnout
   name: 가족 돌봄자 소진 지지
   nameKey: theme.hospice.caregiver-burnout
   track: depth
   dept: HOSPICE
   order: 380
+  icon: shield
 - key: hospice-home-hospice-teaching
   name: 재택 호스피스 교육
   nameKey: theme.hospice.home-hospice-teaching
   track: depth
   dept: HOSPICE
   order: 390
+  icon: bulb
 - key: hospice-pediatric-palliative
   name: 소아 완화 돌봄
   nameKey: theme.hospice.pediatric-palliative
   track: depth
   dept: HOSPICE
   order: 400
+  icon: baby
 
 # ── REHAB 부서 코어 + 심화 (커리큘럼 v3 P2 · 35주제) ──
 - key: core-safety-rehab
@@ -3828,210 +4458,245 @@
   track: core
   dept: REHAB
   order: 10
+  icon: shield
 - key: core-language-rehab
   name: 언어장벽과 통역 및 실어증 소통
   nameKey: theme.core.language
   track: core
   dept: REHAB
   order: 20
+  icon: mic
 - key: core-handoff-rehab
   name: 급성기에서 재활로의 전동과 팀 인계
   nameKey: theme.core.handoff
   track: core
   dept: REHAB
   order: 30
+  icon: handshake2
 - key: core-family-rehab
   name: 가족과 돌봄자 훈련 및 소통
   nameKey: theme.core.family
   track: core
   dept: REHAB
   order: 40
+  icon: speech
 - key: rehab-stroke-recovery
   name: 뇌졸중 후 기능 회복 재활
   nameKey: theme.rehab.stroke-recovery
   track: depth
   dept: REHAB
   order: 100
+  icon: bandage
 - key: rehab-tbi-cognitive
   name: 외상성 뇌손상 인지 재활
   nameKey: theme.rehab.tbi-cognitive
   track: depth
   dept: REHAB
   order: 110
+  icon: bandage
 - key: rehab-spasticity
   name: 경직 관리
   nameKey: theme.rehab.spasticity
   track: depth
   dept: REHAB
   order: 120
+  icon: bandage
 - key: rehab-dysphagia-slp
   name: 연하곤란 재활
   nameKey: theme.rehab.dysphagia-slp
   track: depth
   dept: REHAB
   order: 130
+  icon: coffee
 - key: rehab-aphasia-comm
   name: 실어증 의사소통
   nameKey: theme.rehab.aphasia-comm
   track: depth
   dept: REHAB
   order: 140
+  icon: speech
 - key: rehab-sci-dysreflexia
   name: 척수손상 재활과 자율신경 반사부전
   nameKey: theme.rehab.sci-dysreflexia
   track: depth
   dept: REHAB
   order: 150
+  icon: monitor
 - key: rehab-bladder-isc
   name: 방광 재훈련과 자가도뇨
   nameKey: theme.rehab.bladder-isc
   track: depth
   dept: REHAB
   order: 160
+  icon: bandage
 - key: rehab-bowel-retraining
   name: 장 재훈련
   nameKey: theme.rehab.bowel-retraining
   track: depth
   dept: REHAB
   order: 170
+  icon: bandage
 - key: rehab-pressure-injury
   name: 욕창 예방
   nameKey: theme.rehab.pressure-injury
   track: depth
   dept: REHAB
   order: 180
+  icon: bandage
 - key: rehab-hemiplegia-transfer
   name: 편마비 이동 이승 훈련
   nameKey: theme.rehab.hemiplegia-transfer
   track: depth
   dept: REHAB
   order: 190
+  icon: me
 - key: rehab-gait-training
   name: 보행 훈련과 보조기구
   nameKey: theme.rehab.gait-training
   track: depth
   dept: REHAB
   order: 200
+  icon: bandage
 - key: rehab-adl-retraining
   name: 일상생활동작 재훈련
   nameKey: theme.rehab.adl-retraining
   track: depth
   dept: REHAB
   order: 210
+  icon: bandage
 - key: rehab-fall-confidence
   name: 낙상 위험과 낙상 후 자신감
   nameKey: theme.rehab.fall-confidence
   track: depth
   dept: REHAB
   order: 220
+  icon: shield
 - key: rehab-wheelchair-positioning
   name: 휠체어와 자세 관리
   nameKey: theme.rehab.wheelchair-positioning
   track: depth
   dept: REHAB
   order: 230
+  icon: gear
 - key: rehab-amputation-prosthesis
   name: 절단과 의지 적응
   nameKey: theme.rehab.amputation-prosthesis
   track: depth
   dept: REHAB
   order: 240
+  icon: bandage
 - key: rehab-ortho-jointreplace
   name: 골절과 관절치환 후 재활
   nameKey: theme.rehab.ortho-jointreplace
   track: depth
   dept: REHAB
   order: 250
+  icon: bandage
 - key: rehab-cardiac
   name: 심장 재활
   nameKey: theme.rehab.cardiac
   track: depth
   dept: REHAB
   order: 260
+  icon: stetho
 - key: rehab-pulmonary
   name: 호흡 재활
   nameKey: theme.rehab.pulmonary
   track: depth
   dept: REHAB
   order: 270
+  icon: bandage
 - key: rehab-edema
   name: 부종 관리
   nameKey: theme.rehab.edema
   track: depth
   dept: REHAB
   order: 280
+  icon: bandage
 - key: rehab-pain-fatigue
   name: 통증과 피로 조절
   nameKey: theme.rehab.pain-fatigue
   track: depth
   dept: REHAB
   order: 290
+  icon: bandage
 - key: rehab-neuropathic-pain
   name: 신경인성 통증 관리
   nameKey: theme.rehab.neuropathic-pain
   track: depth
   dept: REHAB
   order: 300
+  icon: pill
 - key: rehab-acute-deterioration
   name: 재활 중 급성 악화 인지
   nameKey: theme.rehab.acute-deterioration
   track: depth
   dept: REHAB
   order: 310
+  icon: siren
 - key: rehab-motivation-adherence
   name: 동기와 순응 관리
   nameKey: theme.rehab.motivation-adherence
   track: depth
   dept: REHAB
   order: 320
+  icon: bandage
 - key: rehab-depression-support
   name: 우울과 심리 지지
   nameKey: theme.rehab.depression-support
   track: depth
   dept: REHAB
   order: 330
+  icon: bandage
 - key: rehab-home-safety
   name: 재택 안전과 개조 교육
   nameKey: theme.rehab.home-safety
   track: depth
   dept: REHAB
   order: 340
+  icon: shield
 - key: rehab-community-reentry
   name: 지역사회 복귀 지원
   nameKey: theme.rehab.community-reentry
   track: depth
   dept: REHAB
   order: 350
+  icon: bandage
 - key: rehab-caregiver-training
   name: 돌봄자 훈련
   nameKey: theme.rehab.caregiver-training
   track: depth
   dept: REHAB
   order: 360
+  icon: bulb
 - key: rehab-hep-education
   name: 가정운동 프로그램 교육
   nameKey: theme.rehab.hep-education
   track: depth
   dept: REHAB
   order: 370
+  icon: bulb
 - key: rehab-interdisciplinary
   name: 다직역 팀 조율
   nameKey: theme.rehab.interdisciplinary
   track: depth
   dept: REHAB
   order: 380
+  icon: handshake2
 - key: rehab-goal-setting
   name: 목표 설정과 진행 소통
   nameKey: theme.rehab.goal-setting
   track: depth
   dept: REHAB
   order: 390
+  icon: board
 - key: rehab-discharge-planning
   name: 퇴원 계획과 자원 연계
   nameKey: theme.rehab.discharge-planning
   track: depth
   dept: REHAB
   order: 400
+  icon: calendar
 
 # ── WOMENKIDS 부서 코어 + 심화 (커리큘럼 v3 P2 · 35주제) ──
 - key: core-safety-womenkids
@@ -4040,210 +4705,245 @@
   track: core
   dept: WOMENKIDS
   order: 10
+  icon: shield
 - key: core-language-womenkids
   name: 외래 일상 소통과 진료 안내
   nameKey: theme.core.language
   track: core
   dept: WOMENKIDS
   order: 20
+  icon: mic
 - key: core-handoff-womenkids
   name: 외래 인계와 전문 연계
   nameKey: theme.core.handoff
   track: core
   dept: WOMENKIDS
   order: 30
+  icon: handshake2
 - key: core-family-womenkids
   name: 보호자와 가족 교육 상담
   nameKey: theme.core.family
   track: core
   dept: WOMENKIDS
   order: 40
+  icon: speech
 - key: womenkids-antenatal-visit
   name: 산전 정기 검진
   nameKey: theme.womenkids.antenatal-visit
   track: depth
   dept: WOMENKIDS
   order: 100
+  icon: calendar
 - key: womenkids-gestational-diabetes
   name: 임신성 당뇨 교육
   nameKey: theme.womenkids.gestational-diabetes
   track: depth
   dept: WOMENKIDS
   order: 110
+  icon: bulb
 - key: womenkids-preeclampsia
   name: 임신중독증 경고 증상
   nameKey: theme.womenkids.preeclampsia
   track: depth
   dept: WOMENKIDS
   order: 120
+  icon: baby
 - key: womenkids-prenatal-screening
   name: 산전 기형아 선별검사
   nameKey: theme.womenkids.prenatal-screening
   track: depth
   dept: WOMENKIDS
   order: 130
+  icon: magnify
 - key: womenkids-genetic-counseling
   name: 유전 상담 접수
   nameKey: theme.womenkids.genetic-counseling
   track: depth
   dept: WOMENKIDS
   order: 140
+  icon: speech
 - key: womenkids-breastfeeding-clinic
   name: 모유수유 클리닉
   nameKey: theme.womenkids.breastfeeding-clinic
   track: depth
   dept: WOMENKIDS
   order: 150
+  icon: coffee
 - key: womenkids-postpartum-visit
   name: 산후 진료
   nameKey: theme.womenkids.postpartum-visit
   track: depth
   dept: WOMENKIDS
   order: 160
+  icon: baby
 - key: womenkids-postpartum-depression
   name: 산후 우울 선별
   nameKey: theme.womenkids.postpartum-depression
   track: depth
   dept: WOMENKIDS
   order: 170
+  icon: baby
 - key: womenkids-contraception
   name: 피임 상담
   nameKey: theme.womenkids.contraception
   track: depth
   dept: WOMENKIDS
   order: 180
+  icon: pill
 - key: womenkids-menstrual-concerns
   name: 월경 문제 상담
   nameKey: theme.womenkids.menstrual-concerns
   track: depth
   dept: WOMENKIDS
   order: 190
+  icon: speech
 - key: womenkids-menopause
   name: 폐경 상담
   nameKey: theme.womenkids.menopause
   track: depth
   dept: WOMENKIDS
   order: 200
+  icon: speech
 - key: womenkids-well-woman-exam
   name: 여성 건강검진과 자궁경부암 검사
   nameKey: theme.womenkids.well-woman-exam
   track: depth
   dept: WOMENKIDS
   order: 210
+  icon: stetho
 - key: womenkids-sti-counseling
   name: 성매개감염 상담
   nameKey: theme.womenkids.sti-counseling
   track: depth
   dept: WOMENKIDS
   order: 220
+  icon: shield
 - key: womenkids-uti
   name: 요로감염
   nameKey: theme.womenkids.uti
   track: depth
   dept: WOMENKIDS
   order: 230
+  icon: lab
 - key: womenkids-pelvic-pain
   name: 골반통 접수
   nameKey: theme.womenkids.pelvic-pain
   track: depth
   dept: WOMENKIDS
   order: 240
+  icon: baby
 - key: womenkids-well-child-visit
   name: 영유아 건강검진
   nameKey: theme.womenkids.well-child-visit
   track: depth
   dept: WOMENKIDS
   order: 250
+  icon: baby
 - key: womenkids-growth-monitoring
   name: 성장 모니터링
   nameKey: theme.womenkids.growth-monitoring
   track: depth
   dept: WOMENKIDS
   order: 260
+  icon: chartup
 - key: womenkids-infant-sleep
   name: 영아 수면 상담
   nameKey: theme.womenkids.infant-sleep
   track: depth
   dept: WOMENKIDS
   order: 270
+  icon: baby
 - key: womenkids-immunization
   name: 예방접종 일정 상담
   nameKey: theme.womenkids.immunization
   track: depth
   dept: WOMENKIDS
   order: 280
+  icon: shield
 - key: womenkids-infant-feeding
   name: 영아 수유와 영양
   nameKey: theme.womenkids.infant-feeding
   track: depth
   dept: WOMENKIDS
   order: 290
+  icon: coffee
 - key: womenkids-pediatric-fever
   name: 소아 발열 분류
   nameKey: theme.womenkids.pediatric-fever
   track: depth
   dept: WOMENKIDS
   order: 300
+  icon: stetho
 - key: womenkids-pediatric-rash
   name: 소아 발진
   nameKey: theme.womenkids.pediatric-rash
   track: depth
   dept: WOMENKIDS
   order: 310
+  icon: magnify
 - key: womenkids-ear-infection
   name: 소아 중이염
   nameKey: theme.womenkids.ear-infection
   track: depth
   dept: WOMENKIDS
   order: 320
+  icon: baby
 - key: womenkids-adolescent-health
   name: 청소년 건강과 비밀보장
   nameKey: theme.womenkids.adolescent-health
   track: depth
   dept: WOMENKIDS
   order: 330
+  icon: baby
 - key: womenkids-developmental-screening
   name: 발달 선별검사
   nameKey: theme.womenkids.developmental-screening
   track: depth
   dept: WOMENKIDS
   order: 340
+  icon: magnify
 - key: womenkids-adhd-behavior
   name: 주의력과 행동 문제 접수
   nameKey: theme.womenkids.adhd-behavior
   track: depth
   dept: WOMENKIDS
   order: 350
+  icon: baby
 - key: womenkids-childhood-obesity
   name: 소아 비만 상담
   nameKey: theme.womenkids.childhood-obesity
   track: depth
   dept: WOMENKIDS
   order: 360
+  icon: speech
 - key: womenkids-child-abuse
   name: 아동 학대와 방임 의심 신고
   nameKey: theme.womenkids.child-abuse
   track: depth
   dept: WOMENKIDS
   order: 370
+  icon: shield
 - key: womenkids-failure-to-thrive
   name: 성장 부진
   nameKey: theme.womenkids.failure-to-thrive
   track: depth
   dept: WOMENKIDS
   order: 380
+  icon: chartup
 - key: womenkids-eating-disorder
   name: 섭식장애 우려
   nameKey: theme.womenkids.eating-disorder
   track: depth
   dept: WOMENKIDS
   order: 390
+  icon: coffee
 - key: womenkids-newborn-care
   name: 신생아 돌봄 교육
   nameKey: theme.womenkids.newborn-care
   track: depth
   dept: WOMENKIDS
   order: 400
+  icon: baby
 
 # ── ORTHOWARD 부서 코어 + 심화 (커리큘럼 v3 P2 · 35주제) ──
 - key: core-safety-orthoward
@@ -4252,210 +4952,245 @@
   track: core
   dept: ORTHOWARD
   order: 10
+  icon: shield
 - key: core-language-orthoward
   name: 일상 소통 기본기
   nameKey: theme.core.language
   track: core
   dept: ORTHOWARD
   order: 20
+  icon: mic
 - key: core-handoff-orthoward
   name: 인계 및 전동 기본기
   nameKey: theme.core.handoff
   track: core
   dept: ORTHOWARD
   order: 30
+  icon: handshake2
 - key: core-family-orthoward
   name: 가족 교육 기본기
   nameKey: theme.core.family
   track: core
   dept: ORTHOWARD
   order: 40
+  icon: speech
 - key: orthoward-hip-replacement
   name: 고관절 전치환술 후 관리
   nameKey: theme.orthoward.hip-replacement
   track: depth
   dept: ORTHOWARD
   order: 100
+  icon: scalpel
 - key: orthoward-knee-replacement
   name: 슬관절 전치환술 후 관리
   nameKey: theme.orthoward.knee-replacement
   track: depth
   dept: ORTHOWARD
   order: 110
+  icon: scalpel
 - key: orthoward-spinal-surgery
   name: 척추 수술 후 관리
   nameKey: theme.orthoward.spinal-surgery
   track: depth
   dept: ORTHOWARD
   order: 120
+  icon: scalpel
 - key: orthoward-joint-dislocation-precautions
   name: 관절 탈구 예방 수칙
   nameKey: theme.orthoward.joint-dislocation-precautions
   track: depth
   dept: ORTHOWARD
   order: 130
+  icon: shield
 - key: orthoward-wound-drain-care
   name: 상처 배액관 관리
   nameKey: theme.orthoward.wound-drain-care
   track: depth
   dept: ORTHOWARD
   order: 140
+  icon: bandage
 - key: orthoward-surgical-site-infection
   name: 수술 부위 감염 관리
   nameKey: theme.orthoward.surgical-site-infection
   track: depth
   dept: ORTHOWARD
   order: 150
+  icon: bandage
 - key: orthoward-hip-fracture
   name: 고관절 골절 관리
   nameKey: theme.orthoward.hip-fracture
   track: depth
   dept: ORTHOWARD
   order: 160
+  icon: bandage
 - key: orthoward-long-bone-fracture
   name: 장골 골절 관리
   nameKey: theme.orthoward.long-bone-fracture
   track: depth
   dept: ORTHOWARD
   order: 170
+  icon: bandage
 - key: orthoward-traction-care
   name: 견인 관리
   nameKey: theme.orthoward.traction-care
   track: depth
   dept: ORTHOWARD
   order: 180
+  icon: gear
 - key: orthoward-external-fixation
   name: 외고정 장치 관리
   nameKey: theme.orthoward.external-fixation
   track: depth
   dept: ORTHOWARD
   order: 190
+  icon: gear
 - key: orthoward-cast-care
   name: 석고붕대 관리
   nameKey: theme.orthoward.cast-care
   track: depth
   dept: ORTHOWARD
   order: 200
+  icon: bandage
 - key: orthoward-brace-orthosis
   name: 보조기 관리
   nameKey: theme.orthoward.brace-orthosis
   track: depth
   dept: ORTHOWARD
   order: 210
+  icon: bandage
 - key: orthoward-amputation-acute-stump
   name: 절단 후 절단부 급성 관리
   nameKey: theme.orthoward.amputation-acute-stump
   track: depth
   dept: ORTHOWARD
   order: 220
+  icon: bandage
 - key: orthoward-neurovascular-assessment
   name: 신경혈관 사정
   nameKey: theme.orthoward.neurovascular-assessment
   track: depth
   dept: ORTHOWARD
   order: 230
+  icon: stetho
 - key: orthoward-compartment-syndrome
   name: 구획증후군 대응
   nameKey: theme.orthoward.compartment-syndrome
   track: depth
   dept: ORTHOWARD
   order: 240
+  icon: siren
 - key: orthoward-dvt-vte-prophylaxis
   name: 심부정맥혈전 예방
   nameKey: theme.orthoward.dvt-vte-prophylaxis
   track: depth
   dept: ORTHOWARD
   order: 250
+  icon: shield
 - key: orthoward-pulmonary-embolism
   name: 폐색전증 대응
   nameKey: theme.orthoward.pulmonary-embolism
   track: depth
   dept: ORTHOWARD
   order: 260
+  icon: siren
 - key: orthoward-fat-embolism
   name: 지방색전증 대응
   nameKey: theme.orthoward.fat-embolism
   track: depth
   dept: ORTHOWARD
   order: 270
+  icon: siren
 - key: orthoward-blood-loss-anemia-transfusion
   name: 출혈·빈혈·수혈 관리
   nameKey: theme.orthoward.blood-loss-anemia-transfusion
   track: depth
   dept: ORTHOWARD
   order: 280
+  icon: bandage
 - key: orthoward-pca-nerve-block-pain
   name: 자가통증조절 및 신경차단 관리
   nameKey: theme.orthoward.pca-nerve-block-pain
   track: depth
   dept: ORTHOWARD
   order: 290
+  icon: pill
 - key: orthoward-breakthrough-pain
   name: 돌발통증 관리
   nameKey: theme.orthoward.breakthrough-pain
   track: depth
   dept: ORTHOWARD
   order: 300
+  icon: pill
 - key: orthoward-constipation-opioid
   name: 마약성 진통제 관련 변비 관리
   nameKey: theme.orthoward.constipation-opioid
   track: depth
   dept: ORTHOWARD
   order: 310
+  icon: bandage
 - key: orthoward-anticoagulation-teaching
   name: 항응고 요법 교육
   nameKey: theme.orthoward.anticoagulation-teaching
   track: depth
   dept: ORTHOWARD
   order: 320
+  icon: bulb
 - key: orthoward-weight-bearing-mobilization
   name: 체중부하 및 조기 이상
   nameKey: theme.orthoward.weight-bearing-mobilization
   track: depth
   dept: ORTHOWARD
   order: 330
+  icon: bandage
 - key: orthoward-cpm-therapy
   name: 지속수동운동기 관리
   nameKey: theme.orthoward.cpm-therapy
   track: depth
   dept: ORTHOWARD
   order: 340
+  icon: gear
 - key: orthoward-transfer-ambulation
   name: 이송 및 보행 보조
   nameKey: theme.orthoward.transfer-ambulation
   track: depth
   dept: ORTHOWARD
   order: 350
+  icon: plane
 - key: orthoward-fall-prevention-ortho
   name: 정형외과 낙상 예방
   nameKey: theme.orthoward.fall-prevention-ortho
   track: depth
   dept: ORTHOWARD
   order: 360
+  icon: shield
 - key: orthoward-pressure-injury-immobility
   name: 부동 관련 욕창 관리
   nameKey: theme.orthoward.pressure-injury-immobility
   track: depth
   dept: ORTHOWARD
   order: 370
+  icon: bandage
 - key: orthoward-post-op-delirium-elderly
   name: 노인 수술 후 섬망 관리
   nameKey: theme.orthoward.post-op-delirium-elderly
   track: depth
   dept: ORTHOWARD
   order: 380
+  icon: bandage
 - key: orthoward-discharge-to-rehab-planning
   name: 재활 연계 퇴원 계획
   nameKey: theme.orthoward.discharge-to-rehab-planning
   track: depth
   dept: ORTHOWARD
   order: 390
+  icon: calendar
 - key: orthoward-home-equipment-teaching
   name: 가정 보조기구 교육
   nameKey: theme.orthoward.home-equipment-teaching
   track: depth
   dept: ORTHOWARD
   order: 400
+  icon: bulb
 
 # ── NURSERY 부서 코어 + 심화 (커리큘럼 v3 P2 · 35주제) ──
 - key: core-safety-nursery
@@ -4464,210 +5199,245 @@
   track: core
   dept: NURSERY
   order: 10
+  icon: shield
 - key: core-language-nursery
   name: 신생아실 일상 소통
   nameKey: theme.core.language
   track: core
   dept: NURSERY
   order: 20
+  icon: mic
 - key: core-handoff-nursery
   name: 신생아실 SBAR 인계와 연계
   nameKey: theme.core.handoff
   track: core
   dept: NURSERY
   order: 30
+  icon: handshake2
 - key: core-family-nursery
   name: 부모 교육과 애착 지원
   nameKey: theme.core.family
   track: core
   dept: NURSERY
   order: 40
+  icon: speech
 - key: nursery-newborn-assessment
   name: 초기 신생아 사정
   nameKey: theme.nursery.newborn-assessment
   track: depth
   dept: NURSERY
   order: 100
+  icon: stetho
 - key: nursery-gestational-age
   name: 재태연령 사정
   nameKey: theme.nursery.gestational-age
   track: depth
   dept: NURSERY
   order: 110
+  icon: magnify
 - key: nursery-vital-signs
   name: 신생아 활력징후
   nameKey: theme.nursery.vital-signs
   track: depth
   dept: NURSERY
   order: 120
+  icon: monitor
 - key: nursery-thermoregulation
   name: 체온 조절
   nameKey: theme.nursery.thermoregulation
   track: depth
   dept: NURSERY
   order: 130
+  icon: baby
 - key: nursery-first-bath
   name: 첫 목욕
   nameKey: theme.nursery.first-bath
   track: depth
   dept: NURSERY
   order: 140
+  icon: baby
 - key: nursery-cord-care
   name: 제대 관리
   nameKey: theme.nursery.cord-care
   track: depth
   dept: NURSERY
   order: 150
+  icon: bandage
 - key: nursery-circumcision-care
   name: 포경수술 관리
   nameKey: theme.nursery.circumcision-care
   track: depth
   dept: NURSERY
   order: 160
+  icon: scalpel
 - key: nursery-physiologic-jaundice
   name: 생리적 황달
   nameKey: theme.nursery.physiologic-jaundice
   track: depth
   dept: NURSERY
   order: 170
+  icon: baby
 - key: nursery-pathologic-jaundice
   name: 병적 황달
   nameKey: theme.nursery.pathologic-jaundice
   track: depth
   dept: NURSERY
   order: 180
+  icon: baby
 - key: nursery-phototherapy
   name: 광선요법
   nameKey: theme.nursery.phototherapy
   track: depth
   dept: NURSERY
   order: 190
+  icon: bulb
 - key: nursery-bilirubin-education
   name: 빌리루빈 교육
   nameKey: theme.nursery.bilirubin-education
   track: depth
   dept: NURSERY
   order: 200
+  icon: bulb
 - key: nursery-breastfeeding-latch
   name: 모유수유 젖물림
   nameKey: theme.nursery.breastfeeding-latch
   track: depth
   dept: NURSERY
   order: 210
+  icon: coffee
 - key: nursery-formula-feeding
   name: 분유 수유
   nameKey: theme.nursery.formula-feeding
   track: depth
   dept: NURSERY
   order: 220
+  icon: coffee
 - key: nursery-cluster-feeding
   name: 집중 수유
   nameKey: theme.nursery.cluster-feeding
   track: depth
   dept: NURSERY
   order: 230
+  icon: coffee
 - key: nursery-weight-monitoring
   name: 체중 감소와 증가 모니터링
   nameKey: theme.nursery.weight-monitoring
   track: depth
   dept: NURSERY
   order: 240
+  icon: chartup
 - key: nursery-hypoglycemia
   name: 저혈당 선별
   nameKey: theme.nursery.hypoglycemia
   track: depth
   dept: NURSERY
   order: 250
+  icon: lab
 - key: nursery-dehydration-feeding
   name: 수유 부족과 탈수
   nameKey: theme.nursery.dehydration-feeding
   track: depth
   dept: NURSERY
   order: 260
+  icon: coffee
 - key: nursery-metabolic-screening
   name: 대사와 유전 선별검사
   nameKey: theme.nursery.metabolic-screening
   track: depth
   dept: NURSERY
   order: 270
+  icon: lab
 - key: nursery-hearing-screen
   name: 청력 선별
   nameKey: theme.nursery.hearing-screen
   track: depth
   dept: NURSERY
   order: 280
+  icon: speaker
 - key: nursery-cchd-screen
   name: 선천성 심장병 맥박산소 선별
   nameKey: theme.nursery.cchd-screen
   track: depth
   dept: NURSERY
   order: 290
+  icon: monitor
 - key: nursery-vitamin-k
   name: 비타민 케이 예방
   nameKey: theme.nursery.vitamin-k
   track: depth
   dept: NURSERY
   order: 300
+  icon: pill
 - key: nursery-hepatitis-b
   name: 비형 간염 예방접종
   nameKey: theme.nursery.hepatitis-b
   track: depth
   dept: NURSERY
   order: 310
+  icon: shield
 - key: nursery-safe-sleep
   name: 안전 수면
   nameKey: theme.nursery.safe-sleep
   track: depth
   dept: NURSERY
   order: 320
+  icon: shield
 - key: nursery-swaddling
   name: 속싸개
   nameKey: theme.nursery.swaddling
   track: depth
   dept: NURSERY
   order: 330
+  icon: baby
 - key: nursery-skin-to-skin
   name: 피부 접촉
   nameKey: theme.nursery.skin-to-skin
   track: depth
   dept: NURSERY
   order: 340
+  icon: baby
 - key: nursery-rooming-in
   name: 모자 동실
   nameKey: theme.nursery.rooming-in
   track: depth
   dept: NURSERY
   order: 350
+  icon: baby
 - key: nursery-warning-signs
   name: 위험 징후 교육
   nameKey: theme.nursery.warning-signs
   track: depth
   dept: NURSERY
   order: 360
+  icon: bulb
 - key: nursery-sepsis-watch
   name: 패혈증 관찰
   nameKey: theme.nursery.sepsis-watch
   track: depth
   dept: NURSERY
   order: 370
+  icon: monitor
 - key: nursery-car-seat-safety
   name: 카시트 안전
   nameKey: theme.nursery.car-seat-safety
   track: depth
   dept: NURSERY
   order: 380
+  icon: shield
 - key: nursery-discharge-readiness
   name: 퇴원 준비
   nameKey: theme.nursery.discharge-readiness
   track: depth
   dept: NURSERY
   order: 390
+  icon: calendar
 - key: nursery-sibling-bonding
   name: 형제와 부모 유대
   nameKey: theme.nursery.sibling-bonding
   track: depth
   dept: NURSERY
   order: 400
+  icon: baby
 
 # ── DERM 부서 코어 + 심화 (커리큘럼 v3 P2 · 35주제) ──
 - key: core-safety-derm
@@ -4676,210 +5446,245 @@
   track: core
   dept: DERM
   order: 10
+  icon: shield
 - key: core-language-derm
   name: 외래 일상 소통과 안내
   nameKey: theme.core.language
   track: core
   dept: DERM
   order: 20
+  icon: mic
 - key: core-handoff-derm
   name: 외래 인계와 병리·수술 연계
   nameKey: theme.core.handoff
   track: core
   dept: DERM
   order: 30
+  icon: handshake2
 - key: core-family-derm
   name: 보호자와 가족 교육
   nameKey: theme.core.family
   track: core
   dept: DERM
   order: 40
+  icon: speech
 - key: derm-lesion-history
   name: 피부 병변 병력 청취
   nameKey: theme.derm.lesion-history
   track: depth
   dept: DERM
   order: 100
+  icon: pencil
 - key: derm-full-skin-exam
   name: 전신 피부 검진 준비
   nameKey: theme.derm.full-skin-exam
   track: depth
   dept: DERM
   order: 110
+  icon: magnify
 - key: derm-dermoscopy
   name: 더모스코피 검사 안내
   nameKey: theme.derm.dermoscopy
   track: depth
   dept: DERM
   order: 120
+  icon: magnify
 - key: derm-biopsy
   name: 조직검사 준비
   nameKey: theme.derm.biopsy
   track: depth
   dept: DERM
   order: 130
+  icon: lab
 - key: derm-patch-test
   name: 첩포검사 추적
   nameKey: theme.derm.patch-test
   track: depth
   dept: DERM
   order: 140
+  icon: calendar
 - key: derm-biopsy-result
   name: 조직검사 결과 상담
   nameKey: theme.derm.biopsy-result
   track: depth
   dept: DERM
   order: 150
+  icon: speech
 - key: derm-phototherapy-prep
   name: 광선치료 준비
   nameKey: theme.derm.phototherapy-prep
   track: depth
   dept: DERM
   order: 160
+  icon: bulb
 - key: derm-phototherapy-adverse
   name: 광선치료 이상반응과 화상
   nameKey: theme.derm.phototherapy-adverse
   track: depth
   dept: DERM
   order: 170
+  icon: bandage
 - key: derm-laser-cosmetic
   name: 레이저와 미용 시술 전후
   nameKey: theme.derm.laser-cosmetic
   track: depth
   dept: DERM
   order: 180
+  icon: bandage
 - key: derm-cryotherapy
   name: 냉동치료
   nameKey: theme.derm.cryotherapy
   track: depth
   dept: DERM
   order: 190
+  icon: bandage
 - key: derm-excision-wound
   name: 절제 수술과 상처관리
   nameKey: theme.derm.excision-wound
   track: depth
   dept: DERM
   order: 200
+  icon: scalpel
 - key: derm-mohs
   name: Mohs 수술 지원
   nameKey: theme.derm.mohs
   track: depth
   dept: DERM
   order: 210
+  icon: scalpel
 - key: derm-pruritus
   name: 가려움증 조절 상담
   nameKey: theme.derm.pruritus
   track: depth
   dept: DERM
   order: 220
+  icon: bandage
 - key: derm-contact-dermatitis
   name: 알레르기 접촉피부염
   nameKey: theme.derm.contact-dermatitis
   track: depth
   dept: DERM
   order: 230
+  icon: bandage
 - key: derm-eczema-atopic
   name: 아토피피부염 관리
   nameKey: theme.derm.eczema-atopic
   track: depth
   dept: DERM
   order: 240
+  icon: bandage
 - key: derm-eczema-psychosocial
   name: 아토피 심리사회적 지지
   nameKey: theme.derm.eczema-psychosocial
   track: depth
   dept: DERM
   order: 250
+  icon: bandage
 - key: derm-psoriasis-biologics
   name: 건선 생물학제제 교육
   nameKey: theme.derm.psoriasis-biologics
   track: depth
   dept: DERM
   order: 260
+  icon: bulb
 - key: derm-psoriasis-systemic
   name: 건선 전신치료 교육
   nameKey: theme.derm.psoriasis-systemic
   track: depth
   dept: DERM
   order: 270
+  icon: pill
 - key: derm-acne-treatment
   name: 여드름 치료
   nameKey: theme.derm.acne-treatment
   track: depth
   dept: DERM
   order: 280
+  icon: pill
 - key: derm-isotretinoin-ipledge
   name: 이소트레티노인과 임신 예방
   nameKey: theme.derm.isotretinoin-ipledge
   track: depth
   dept: DERM
   order: 290
+  icon: baby
 - key: derm-drug-eruption
   name: 약물발진
   nameKey: theme.derm.drug-eruption
   track: depth
   dept: DERM
   order: 300
+  icon: bandage
 - key: derm-urticaria-angioedema
   name: 두드러기와 혈관부종
   nameKey: theme.derm.urticaria-angioedema
   track: depth
   dept: DERM
   order: 310
+  icon: siren
 - key: derm-cellulitis
   name: 봉와직염과 피부감염
   nameKey: theme.derm.cellulitis
   track: depth
   dept: DERM
   order: 320
+  icon: bandage
 - key: derm-sun-protection
   name: 자외선 차단과 피부암 예방
   nameKey: theme.derm.sun-protection
   track: depth
   dept: DERM
   order: 330
+  icon: shield
 - key: derm-melanoma-concern
   name: 의심 병변과 흑색종 지지
   nameKey: theme.derm.melanoma-concern
   track: depth
   dept: DERM
   order: 340
+  icon: magnify
 - key: derm-topical-steroid
   name: 국소 스테로이드 교육
   nameKey: theme.derm.topical-steroid
   track: depth
   dept: DERM
   order: 350
+  icon: bulb
 - key: derm-wound-dressing
   name: 상처와 드레싱 관리
   nameKey: theme.derm.wound-dressing
   track: depth
   dept: DERM
   order: 360
+  icon: bandage
 - key: derm-wound-photography
   name: 상처 사진과 동의
   nameKey: theme.derm.wound-photography
   track: depth
   dept: DERM
   order: 370
+  icon: board
 - key: derm-pediatric-skin
   name: 소아 피부질환
   nameKey: theme.derm.pediatric-skin
   track: depth
   dept: DERM
   order: 380
+  icon: baby
 - key: derm-nail-hair
   name: 손발톱과 모발 질환
   nameKey: theme.derm.nail-hair
   track: depth
   dept: DERM
   order: 390
+  icon: bandage
 - key: derm-skin-infection-fungal
   name: 진균과 바이러스 피부감염
   nameKey: theme.derm.skin-infection-fungal
   track: depth
   dept: DERM
   order: 400
+  icon: bandage
 
 # ── SPECIALTY 부서 코어 + 심화 (커리큘럼 v3 P2 · 35주제) ──
 - key: core-safety-specialty
@@ -4888,210 +5693,245 @@
   track: core
   dept: SPECIALTY
   order: 10
+  icon: shield
 - key: core-language-specialty
   name: 전문 외래 소통
   nameKey: theme.core.language
   track: core
   dept: SPECIALTY
   order: 20
+  icon: mic
 - key: core-handoff-specialty
   name: 전문 외래 인계와 연계
   nameKey: theme.core.handoff
   track: core
   dept: SPECIALTY
   order: 30
+  icon: handshake2
 - key: core-family-specialty
   name: 보호자와 가족 교육
   nameKey: theme.core.family
   track: core
   dept: SPECIALTY
   order: 40
+  icon: speech
 - key: specialty-eye-drops
   name: 점안약 투여와 교육
   nameKey: theme.specialty.eye-drops
   track: depth
   dept: SPECIALTY
   order: 100
+  icon: pill
 - key: specialty-vision-test-prep
   name: 시력과 시야 검사 준비
   nameKey: theme.specialty.vision-test-prep
   track: depth
   dept: SPECIALTY
   order: 110
+  icon: magnify
 - key: specialty-intravitreal-injection
   name: 안구내 주사 전후 관리
   nameKey: theme.specialty.intravitreal-injection
   track: depth
   dept: SPECIALTY
   order: 120
+  icon: stetho
 - key: specialty-glaucoma-teaching
   name: 녹내장 관리 교육
   nameKey: theme.specialty.glaucoma-teaching
   track: depth
   dept: SPECIALTY
   order: 130
+  icon: bulb
 - key: specialty-cataract-postop
   name: 백내장 수술 후 관리
   nameKey: theme.specialty.cataract-postop
   track: depth
   dept: SPECIALTY
   order: 140
+  icon: bandage
 - key: specialty-hearing-test
   name: 청력 검사 안내
   nameKey: theme.specialty.hearing-test
   track: depth
   dept: SPECIALTY
   order: 150
+  icon: speaker
 - key: specialty-ent-symptoms
   name: 귀코목 증상 평가
   nameKey: theme.specialty.ent-symptoms
   track: depth
   dept: SPECIALTY
   order: 160
+  icon: stetho
 - key: specialty-tonsillectomy-postop
   name: 편도 수술 후 관리
   nameKey: theme.specialty.tonsillectomy-postop
   track: depth
   dept: SPECIALTY
   order: 170
+  icon: scalpel
 - key: specialty-sinus-postop
   name: 부비동 수술 후 관리
   nameKey: theme.specialty.sinus-postop
   track: depth
   dept: SPECIALTY
   order: 180
+  icon: scalpel
 - key: specialty-chronic-pain-assessment
   name: 만성 통증 평가
   nameKey: theme.specialty.chronic-pain-assessment
   track: depth
   dept: SPECIALTY
   order: 190
+  icon: magnify
 - key: specialty-pain-injection-prep
   name: 통증 주사와 시술 준비
   nameKey: theme.specialty.pain-injection-prep
   track: depth
   dept: SPECIALTY
   order: 200
+  icon: stetho
 - key: specialty-opioid-agreement
   name: 마약성 진통제 약속과 모니터링
   nameKey: theme.specialty.opioid-agreement
   track: depth
   dept: SPECIALTY
   order: 210
+  icon: pencil
 - key: specialty-nonpharm-pain
   name: 비약물 통증 관리
   nameKey: theme.specialty.nonpharm-pain
   track: depth
   dept: SPECIALTY
   order: 220
+  icon: stetho
 - key: specialty-diabetes-followup
   name: 당뇨 추적 관리
   nameKey: theme.specialty.diabetes-followup
   track: depth
   dept: SPECIALTY
   order: 230
+  icon: chartup
 - key: specialty-insulin-teaching
   name: 인슐린 자가주사 교육
   nameKey: theme.specialty.insulin-teaching
   track: depth
   dept: SPECIALTY
   order: 240
+  icon: pill
 - key: specialty-thyroid-care
   name: 갑상선 질환 관리
   nameKey: theme.specialty.thyroid-care
   track: depth
   dept: SPECIALTY
   order: 250
+  icon: stetho
 - key: specialty-hypoglycemia-response
   name: 저혈당 대응 교육
   nameKey: theme.specialty.hypoglycemia-response
   track: depth
   dept: SPECIALTY
   order: 260
+  icon: bulb
 - key: specialty-headache-clinic
   name: 두통 클리닉
   nameKey: theme.specialty.headache-clinic
   track: depth
   dept: SPECIALTY
   order: 270
+  icon: stetho
 - key: specialty-seizure-teaching
   name: 발작 관리 교육
   nameKey: theme.specialty.seizure-teaching
   track: depth
   dept: SPECIALTY
   order: 280
+  icon: bulb
 - key: specialty-colonoscopy-prep
   name: 대장내시경 준비
   nameKey: theme.specialty.colonoscopy-prep
   track: depth
   dept: SPECIALTY
   order: 290
+  icon: coffee
 - key: specialty-endoscopy-prep
   name: 위내시경 준비
   nameKey: theme.specialty.endoscopy-prep
   track: depth
   dept: SPECIALTY
   order: 300
+  icon: coffee
 - key: specialty-biologic-teaching
   name: 생물학적 제제 교육
   nameKey: theme.specialty.biologic-teaching
   track: depth
   dept: SPECIALTY
   order: 310
+  icon: bulb
 - key: specialty-ra-management
   name: 류마티스 관절염 관리
   nameKey: theme.specialty.ra-management
   track: depth
   dept: SPECIALTY
   order: 320
+  icon: stetho
 - key: specialty-preprocedure-consent
   name: 시술 전 교육과 동의 지원
   nameKey: theme.specialty.preprocedure-consent
   track: depth
   dept: SPECIALTY
   order: 330
+  icon: board
 - key: specialty-new-diagnosis-support
   name: 새 진단 설명과 정서 지원
   nameKey: theme.specialty.new-diagnosis-support
   track: depth
   dept: SPECIALTY
   order: 340
+  icon: speech
 - key: specialty-medication-adherence
   name: 복약 순응 코칭
   nameKey: theme.specialty.medication-adherence
   track: depth
   dept: SPECIALTY
   order: 350
+  icon: pill
 - key: specialty-lifestyle-counseling
   name: 생활습관 변화 상담
   nameKey: theme.specialty.lifestyle-counseling
   track: depth
   dept: SPECIALTY
   order: 360
+  icon: speech
 - key: specialty-self-management-goals
   name: 자가관리 목표 설정
   nameKey: theme.specialty.self-management-goals
   track: depth
   dept: SPECIALTY
   order: 370
+  icon: stetho
 - key: specialty-symptom-worsening
   name: 증상 악화 조기 대응 교육
   nameKey: theme.specialty.symptom-worsening
   track: depth
   dept: SPECIALTY
   order: 380
+  icon: chartup
 - key: specialty-lab-result-communication
   name: 검사와 결과 전달
   nameKey: theme.specialty.lab-result-communication
   track: depth
   dept: SPECIALTY
   order: 390
+  icon: lab
 - key: specialty-referral-coordination
   name: 의뢰와 진료 연계
   nameKey: theme.specialty.referral-coordination
   track: depth
   dept: SPECIALTY
   order: 400
+  icon: handshake2
 
 # ── GEN 부서 코어 + 심화 (커리큘럼 v3 P2 · 35주제) ──
 - key: core-safety-gen
@@ -5100,210 +5940,245 @@
   track: core
   dept: GEN
   order: 10
+  icon: shield
 - key: core-language-gen
   name: 병원에서 통하는 말
   nameKey: theme.core.language
   track: core
   dept: GEN
   order: 20
+  icon: mic
 - key: core-handoff-gen
   name: 부서 간 인계와 전동
   nameKey: theme.core.handoff
   track: core
   dept: GEN
   order: 30
+  icon: handshake2
 - key: core-family-gen
   name: 가족에게 병원 시스템 설명하기
   nameKey: theme.core.family
   track: core
   dept: GEN
   order: 40
+  icon: speech
 - key: gen-admission-registration
   name: 입원 수속과 등록
   nameKey: theme.gen.admission-registration
   track: depth
   dept: GEN
   order: 100
+  icon: board
 - key: gen-unit-orientation
   name: 병실과 병동 오리엔테이션
   nameKey: theme.gen.unit-orientation
   track: depth
   dept: GEN
   order: 110
+  icon: compass
 - key: gen-call-light
   name: 호출벨 응답과 기대 조율
   nameKey: theme.gen.call-light
   track: depth
   dept: GEN
   order: 120
+  icon: bell
 - key: gen-bed-assignment
   name: 병상 배정과 입실 대기
   nameKey: theme.gen.bed-assignment
   track: depth
   dept: GEN
   order: 130
+  icon: hospital
 - key: gen-ed-to-floor
   name: 응급실에서 올라온 환자 받기
   nameKey: theme.gen.ed-to-floor
   track: depth
   dept: GEN
   order: 140
+  icon: siren
 - key: gen-interpreter-service
   name: 통역 서비스 요청과 3자 통화
   nameKey: theme.gen.interpreter-service
   track: depth
   dept: GEN
   order: 150
+  icon: mic
 - key: gen-family-as-interpreter
   name: 가족이 통역하겠다고 할 때
   nameKey: theme.gen.family-as-interpreter
   track: depth
   dept: GEN
   order: 160
+  icon: speech
 - key: gen-health-literacy
   name: 건강 문해력이 낮은 환자 설명
   nameKey: theme.gen.health-literacy
   track: depth
   dept: GEN
   order: 170
+  icon: bulb
 - key: gen-teach-back
   name: 되말하기로 이해 확인
   nameKey: theme.gen.teach-back
   track: depth
   dept: GEN
   order: 180
+  icon: speech
 - key: gen-disability-accommodation
   name: 장애 편의 제공
   nameKey: theme.gen.disability-accommodation
   track: depth
   dept: GEN
   order: 190
+  icon: me
 - key: gen-name-pronouns
   name: 이름 발음과 호칭
   nameKey: theme.gen.name-pronouns
   track: depth
   dept: GEN
   order: 200
+  icon: speaker
 - key: gen-charting
   name: 전자의무기록 기록
   nameKey: theme.gen.charting
   track: depth
   dept: GEN
   order: 210
+  icon: pencil
 - key: gen-documentation-correction
   name: 기록 정정과 누락 보완
   nameKey: theme.gen.documentation-correction
   track: depth
   dept: GEN
   order: 220
+  icon: pencil
 - key: gen-visitor-policy
   name: 면회 정책 안내와 갈등
   nameKey: theme.gen.visitor-policy
   track: depth
   dept: GEN
   order: 230
+  icon: stetho
 - key: gen-roommate-conflict
   name: 병실 동거 환자 간 갈등
   nameKey: theme.gen.roommate-conflict
   track: depth
   dept: GEN
   order: 240
+  icon: faceAngry
 - key: gen-noise-privacy
   name: 소음과 사생활 보호
   nameKey: theme.gen.noise-privacy
   track: depth
   dept: GEN
   order: 250
+  icon: speaker
 - key: gen-recording-request
   name: 녹음·촬영 요청 대응
   nameKey: theme.gen.recording-request
   track: depth
   dept: GEN
   order: 260
+  icon: mic
 - key: gen-belongings-valuables
   name: 소지품과 귀중품 관리
   nameKey: theme.gen.belongings-valuables
   track: depth
   dept: GEN
   order: 270
+  icon: shield
 - key: gen-meal-service
   name: 식사 배식과 식이 요청
   nameKey: theme.gen.meal-service
   track: depth
   dept: GEN
   order: 280
+  icon: coffee
 - key: gen-equipment-request
   name: 장비 요청과 고장 대응
   nameKey: theme.gen.equipment-request
   track: depth
   dept: GEN
   order: 290
+  icon: gear
 - key: gen-wayfinding
   name: 병원 내 길 안내와 시설 문의
   nameKey: theme.gen.wayfinding
   track: depth
   dept: GEN
   order: 300
+  icon: compass
 - key: gen-insurance-billing
   name: 보험과 비용 문의 응대
   nameKey: theme.gen.insurance-billing
   track: depth
   dept: GEN
   order: 310
+  icon: board
 - key: gen-uninsured-support
   name: 무보험·경제적 어려움 지원
   nameKey: theme.gen.uninsured-support
   track: depth
   dept: GEN
   order: 320
+  icon: stetho
 - key: gen-social-work-referral
   name: 사회복지 연계
   nameKey: theme.gen.social-work-referral
   track: depth
   dept: GEN
   order: 330
+  icon: handshake2
 - key: gen-surrogate-decision-maker
   name: 대리 의사결정자 확인
   nameKey: theme.gen.surrogate-decision-maker
   track: depth
   dept: GEN
   order: 340
+  icon: me
 - key: gen-consent-witness
   name: 동의 절차에서 간호사의 역할
   nameKey: theme.gen.consent-witness
   track: depth
   dept: GEN
   order: 350
+  icon: board
 - key: gen-patient-rights
   name: 환자 권리 안내와 고충 처리
   nameKey: theme.gen.patient-rights
   track: depth
   dept: GEN
   order: 360
+  icon: shield
 - key: gen-complaint-service-recovery
   name: 불만 접수와 서비스 회복
   nameKey: theme.gen.complaint-service-recovery
   track: depth
   dept: GEN
   order: 370
+  icon: faceAngry
 - key: gen-angry-patient
   name: 화난 환자와 가족 응대
   nameKey: theme.gen.angry-patient
   track: depth
   dept: GEN
   order: 380
+  icon: faceAngry
 - key: gen-ama-discharge
   name: 자의 퇴원
   nameKey: theme.gen.ama-discharge
   track: depth
   dept: GEN
   order: 390
+  icon: stetho
 - key: gen-discharge-followup-call
   name: 퇴원 후 추적 전화
   nameKey: theme.gen.discharge-followup-call
   track: depth
   dept: GEN
   order: 400
+  icon: speaker
 
 # ── LOUNGE 부서 코어 + 심화 (커리큘럼 v3 P2 · 35주제) ──
 - key: core-safety-lounge
@@ -5312,210 +6187,245 @@
   track: core
   dept: LOUNGE
   order: 10
+  icon: shield
 - key: core-language-lounge
   name: 직장에서 통하는 말
   nameKey: theme.core.language
   track: core
   dept: LOUNGE
   order: 20
+  icon: mic
 - key: core-handoff-lounge
   name: 교대와 인계 조율
   nameKey: theme.core.handoff
   track: core
   dept: LOUNGE
   order: 30
+  icon: handshake2
 - key: core-peer-lounge
   name: 동료 관계와 팀워크
   nameKey: theme.core.peer
   track: core
   dept: LOUNGE
   order: 40
+  icon: handshake2
 - key: lounge-onboarding
   name: 신규 입사 첫 주
   nameKey: theme.lounge.onboarding
   track: depth
   dept: LOUNGE
   order: 100
+  icon: coffee
 - key: lounge-preceptor
   name: 프리셉터와 신규 지도
   nameKey: theme.lounge.preceptor
   track: depth
   dept: LOUNGE
   order: 110
+  icon: bulb
 - key: lounge-schedule-negotiation
   name: 근무표 협상
   nameKey: theme.lounge.schedule-negotiation
   track: depth
   dept: LOUNGE
   order: 120
+  icon: calendar
 - key: lounge-overtime
   name: 초과근무 요청 대응
   nameKey: theme.lounge.overtime
   track: depth
   dept: LOUNGE
   order: 130
+  icon: calendar
 - key: lounge-time-off
   name: 휴가 요청
   nameKey: theme.lounge.time-off
   track: depth
   dept: LOUNGE
   order: 140
+  icon: plane
 - key: lounge-call-out-sick
   name: 병가 연락과 결근 조율
   nameKey: theme.lounge.call-out-sick
   track: depth
   dept: LOUNGE
   order: 150
+  icon: calendar
 - key: lounge-parental-leave
   name: 육아 휴직
   nameKey: theme.lounge.parental-leave
   track: depth
   dept: LOUNGE
   order: 160
+  icon: baby
 - key: lounge-unit-transfer
   name: 부서 이동 요청
   nameKey: theme.lounge.unit-transfer
   track: depth
   dept: LOUNGE
   order: 170
+  icon: coffee
 - key: lounge-resignation
   name: 이직 통보
   nameKey: theme.lounge.resignation
   track: depth
   dept: LOUNGE
   order: 180
+  icon: coffee
 - key: lounge-job-interview
   name: 면접
   nameKey: theme.lounge.job-interview
   track: depth
   dept: LOUNGE
   order: 190
+  icon: me
 - key: lounge-performance-review
   name: 성과 평가 면담
   nameKey: theme.lounge.performance-review
   track: depth
   dept: LOUNGE
   order: 200
+  icon: trophy
 - key: lounge-feedback
   name: 피드백 주고받기
   nameKey: theme.lounge.feedback
   track: depth
   dept: LOUNGE
   order: 210
+  icon: speech
 - key: lounge-peer-error
   name: 동료의 실수 지적
   nameKey: theme.lounge.peer-error
   track: depth
   dept: LOUNGE
   order: 220
+  icon: speech
 - key: lounge-disagree-with-supervisor
   name: 상사와의 의견 차이
   nameKey: theme.lounge.disagree-with-supervisor
   track: depth
   dept: LOUNGE
   order: 230
+  icon: speech
 - key: lounge-conflict
   name: 동료 갈등
   nameKey: theme.lounge.conflict
   track: depth
   dept: LOUNGE
   order: 240
+  icon: faceAngry
 - key: lounge-bullying
   name: 직장 내 괴롭힘
   nameKey: theme.lounge.bullying
   track: depth
   dept: LOUNGE
   order: 250
+  icon: shield
 - key: lounge-discrimination
   name: 차별과 미세공격 대응
   nameKey: theme.lounge.discrimination
   track: depth
   dept: LOUNGE
   order: 260
+  icon: faceAngry
 - key: lounge-cultural-difference
   name: 문화 차이
   nameKey: theme.lounge.cultural-difference
   track: depth
   dept: LOUNGE
   order: 270
+  icon: coffee
 - key: lounge-boundaries
   name: 경계 설정
   nameKey: theme.lounge.boundaries
   track: depth
   dept: LOUNGE
   order: 280
+  icon: shield
 - key: lounge-burnout
   name: 번아웃
   nameKey: theme.lounge.burnout
   track: depth
   dept: LOUNGE
   order: 290
+  icon: coffee
 - key: lounge-incident-report
   name: 인시던트 리포트 문화
   nameKey: theme.lounge.incident-report
   track: depth
   dept: LOUNGE
   order: 300
+  icon: board
 - key: lounge-staff-injury
   name: 직원 부상 보고
   nameKey: theme.lounge.staff-injury
   track: depth
   dept: LOUNGE
   order: 310
+  icon: bandage
 - key: lounge-committee
   name: 위원회 발언
   nameKey: theme.lounge.committee
   track: depth
   dept: LOUNGE
   order: 320
+  icon: speaker
 - key: lounge-continuing-education
   name: 보수교육
   nameKey: theme.lounge.continuing-education
   track: depth
   dept: LOUNGE
   order: 330
+  icon: bulb
 - key: lounge-license-renewal
   name: 면허와 자격 갱신
   nameKey: theme.lounge.license-renewal
   track: depth
   dept: LOUNGE
   order: 340
+  icon: pencil
 - key: lounge-payroll
   name: 급여 문의
   nameKey: theme.lounge.payroll
   track: depth
   dept: LOUNGE
   order: 350
+  icon: coffee
 - key: lounge-union
   name: 노조
   nameKey: theme.lounge.union
   track: depth
   dept: LOUNGE
   order: 360
+  icon: handshake2
 - key: lounge-email
   name: 이메일 소통
   nameKey: theme.lounge.email
   track: depth
   dept: LOUNGE
   order: 370
+  icon: pencil
 - key: lounge-phone-etiquette
   name: 전화 응대
   nameKey: theme.lounge.phone-etiquette
   track: depth
   dept: LOUNGE
   order: 380
+  icon: mic
 - key: lounge-small-talk
   name: 휴게실 스몰토크
   nameKey: theme.lounge.small-talk
   track: depth
   dept: LOUNGE
   order: 390
+  icon: coffee
 - key: lounge-social-events
   name: 사교 행사
   nameKey: theme.lounge.social-events
   track: depth
   dept: LOUNGE
   order: 400
+  icon: coffee
 
 # ── SPD 부서 코어 + 심화 (커리큘럼 v3 P2 · 35주제) ──
 - key: core-safety-spd
@@ -5524,90 +6434,105 @@
   track: core
   dept: SPD
   order: 10
+  icon: shield
 - key: core-language-spd
   name: 공급 현장에서 통하는 말
   nameKey: theme.core.language
   track: core
   dept: SPD
   order: 20
+  icon: mic
 - key: core-handoff-spd
   name: 교대와 인계
   nameKey: theme.core.handoff
   track: core
   dept: SPD
   order: 30
+  icon: handshake2
 - key: core-request-spd
   name: 타 부서 요청 응대
   nameKey: theme.core.request
   track: core
   dept: SPD
   order: 40
+  icon: speech
 - key: spd-sterile-request
   name: 멸균 물품 요청
   nameKey: theme.spd.sterile-request
   track: depth
   dept: SPD
   order: 100
+  icon: board
 - key: spd-inventory
   name: 재고 조달
   nameKey: theme.spd.inventory
   track: depth
   dept: SPD
   order: 110
+  icon: gear
 - key: spd-instrument-tracking
   name: 기구 추적
   nameKey: theme.spd.instrument-tracking
   track: depth
   dept: SPD
   order: 120
+  icon: gear
 - key: spd-reprocessing
   name: 재처리 절차
   nameKey: theme.spd.reprocessing
   track: depth
   dept: SPD
   order: 130
+  icon: gear
 - key: spd-recall
   name: 리콜
   nameKey: theme.spd.recall
   track: depth
   dept: SPD
   order: 140
+  icon: bell
 - key: spd-expiration
   name: 유효기간과 포장 상태
   nameKey: theme.spd.expiration
   track: depth
   dept: SPD
   order: 150
+  icon: calendar
 - key: spd-case-cart
   name: 케이스 카트
   nameKey: theme.spd.case-cart
   track: depth
   dept: SPD
   order: 160
+  icon: scalpel
 - key: spd-endoscope-disinfection
   name: 내시경 소독
   nameKey: theme.spd.endoscope-disinfection
   track: depth
   dept: SPD
   order: 170
+  icon: shield
 - key: spd-loaner-instrument
   name: 대여 장비
   nameKey: theme.spd.loaner-instrument
   track: depth
   dept: SPD
   order: 180
+  icon: gear
 - key: spd-contamination-exposure
   name: 오염 노출
   nameKey: theme.spd.contamination-exposure
   track: depth
   dept: SPD
   order: 190
+  icon: shield
 - key: spd-new-product-training
   name: 신규 물품 교육
   nameKey: theme.spd.new-product-training
   track: depth
   dept: SPD
   order: 200
+  icon: bulb
 
 # ── MORGUE 부서 코어 + 심화 (커리큘럼 v3 P2 · 35주제) ──
 - key: core-safety-morgue
@@ -5616,90 +6541,105 @@
   track: core
   dept: MORGUE
   order: 10
+  icon: shield
 - key: core-language-morgue
   name: 사망을 말하는 언어
   nameKey: theme.core.language
   track: core
   dept: MORGUE
   order: 20
+  icon: mic
 - key: core-handoff-morgue
   name: 인수와 인계
   nameKey: theme.core.handoff
   track: core
   dept: MORGUE
   order: 30
+  icon: handshake2
 - key: core-family-morgue
   name: 유족 소통
   nameKey: theme.core.family
   track: core
   dept: MORGUE
   order: 40
+  icon: speech
 - key: morgue-body-receiving
   name: 시신 인수와 보관
   nameKey: theme.morgue.body-receiving
   track: depth
   dept: MORGUE
   order: 100
+  icon: shield
 - key: morgue-identification
   name: 신원 확인
   nameKey: theme.morgue.identification
   track: depth
   dept: MORGUE
   order: 110
+  icon: board
 - key: morgue-viewing
   name: 유족 참관
   nameKey: theme.morgue.viewing
   track: depth
   dept: MORGUE
   order: 120
+  icon: shield
 - key: morgue-autopsy
   name: 부검 절차
   nameKey: theme.morgue.autopsy
   track: depth
   dept: MORGUE
   order: 130
+  icon: magnify
 - key: morgue-donation
   name: 조직·장기 기증 안내
   nameKey: theme.morgue.donation
   track: depth
   dept: MORGUE
   order: 140
+  icon: shield
 - key: morgue-cultural-rites
   name: 문화·종교 관습 이행
   nameKey: theme.morgue.cultural-rites
   track: depth
   dept: MORGUE
   order: 150
+  icon: shield
 - key: morgue-belongings
   name: 소지품과 귀중품
   nameKey: theme.morgue.belongings
   track: depth
   dept: MORGUE
   order: 160
+  icon: shield
 - key: morgue-funeral-release
   name: 장례식장 인계
   nameKey: theme.morgue.funeral-release
   track: depth
   dept: MORGUE
   order: 170
+  icon: handshake2
 - key: morgue-unclaimed
   name: 무연고 사망
   nameKey: theme.morgue.unclaimed
   track: depth
   dept: MORGUE
   order: 180
+  icon: shield
 - key: morgue-pediatric-death
   name: 소아 사망
   nameKey: theme.morgue.pediatric-death
   track: depth
   dept: MORGUE
   order: 190
+  icon: baby
 - key: morgue-staff-debrief
   name: 직원 디브리핑
   nameKey: theme.morgue.staff-debrief
   track: depth
   dept: MORGUE
   order: 200
+  icon: speech
 
 # ── SIM 부서 코어 + 심화 (커리큘럼 v3 P2 · 35주제) ──
 - key: core-safety-sim
@@ -5708,87 +6648,102 @@
   track: core
   dept: SIM
   order: 10
+  icon: shield
 - key: core-language-sim
   name: 훈련장에서 통하는 말
   nameKey: theme.core.language
   track: core
   dept: SIM
   order: 20
+  icon: mic
 - key: core-handoff-sim
   name: SBAR 인계 시뮬레이션
   nameKey: theme.core.handoff
   track: core
   dept: SIM
   order: 30
+  icon: handshake2
 - key: core-family-sim
   name: 표준화 가족 역할 응대
   nameKey: theme.core.family
   track: core
   dept: SIM
   order: 40
+  icon: speech
 - key: sim-prebriefing
   name: 사전 브리핑
   nameKey: theme.sim.prebriefing
   track: depth
   dept: SIM
   order: 100
+  icon: board
 - key: sim-debriefing
   name: 구조화된 디브리핑
   nameKey: theme.sim.debriefing
   track: depth
   dept: SIM
   order: 110
+  icon: speech
 - key: sim-skills-rubric
   name: 술기 루브릭 평가
   nameKey: theme.sim.skills-rubric
   track: depth
   dept: SIM
   order: 120
+  icon: pencil
 - key: sim-team-leadership
   name: 팀 리더십
   nameKey: theme.sim.team-leadership
   track: depth
   dept: SIM
   order: 130
+  icon: handshake2
 - key: sim-crisis-resource
   name: 위기 자원 관리
   nameKey: theme.sim.crisis-resource
   track: depth
   dept: SIM
   order: 140
+  icon: siren
 - key: sim-near-miss-review
   name: 근접사례 리뷰
   nameKey: theme.sim.near-miss-review
   track: depth
   dept: SIM
   order: 150
+  icon: magnify
 - key: sim-instructor-feedback
   name: 수행 피드백
   nameKey: theme.sim.instructor-feedback
   track: depth
   dept: SIM
   order: 160
+  icon: speech
 - key: sim-self-reflection
   name: 자기 성찰
   nameKey: theme.sim.self-reflection
   track: depth
   dept: SIM
   order: 170
+  icon: me
 - key: sim-peer-evaluation
   name: 동료 평가
   nameKey: theme.sim.peer-evaluation
   track: depth
   dept: SIM
   order: 180
+  icon: speech
 - key: sim-remediation
   name: 재응시와 보완 훈련
   nameKey: theme.sim.remediation
   track: depth
   dept: SIM
   order: 190
+  icon: monitor
 - key: sim-mass-casualty
   name: 대량재해 시뮬레이션
   nameKey: theme.sim.mass-casualty
   track: depth
   dept: SIM
   order: 200
+  icon: siren

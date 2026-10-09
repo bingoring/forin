@@ -21,6 +21,7 @@ export type NbIconName =
   | 'chevronRight'
   | 'chevronDown'
   | 'chevronUp'
+  | 'redo'
   | 'cross'
   | 'check'
   | 'home'
@@ -29,6 +30,8 @@ export type NbIconName =
   | 'lab'
   | 'me'
   | 'mic'
+  | 'faceAngry'
+  | 'faceWorried'
   | 'speaker'
   | 'siren'
   | 'scalpel'
@@ -53,7 +56,8 @@ export type NbIconName =
   | 'gear'
   | 'calendar'
   | 'lock'
-  | 'pencil';
+  | 'pencil'
+  | 'play';
 
 export function NbIcon({ name, size = 20, color = nb.ink }: {
   name: NbIconName | string;
@@ -92,14 +96,20 @@ export function NbIcon({ name, size = 20, color = nb.ink }: {
     chevronUp: (
       <G><Path {...P} d="M5 14.5 L12 8 L19 14.5"/></G>
     ),
+    // ↺ — the hub CTA's `다시 풀기 ↺` (lesson.jsx L154; lesson-fidelity-v46 결정 4 — glyphs are
+    // drawn). An open circle running anticlockwise, the head at the top pointing left.
+    redo: (
+      <G><Path {...P} d="M12 6.5 A6.5 6.5 0 1 1 6.37 9.75"/><Path {...P} d="M14.6 4 L12 6.5 L14.6 9"/></G>
+    ),
     // The way out and the way to finish. Drawn, not typed: ✕ and ✓ are in the ratchet
     // (theme/glyphs.test.ts) for the reason it names — they render at the font's weight,
     // beside icons drawn at 1.7.
     cross: (
       <G><Path {...P} d="M6 6 L18 18 M18 6 L6 18"/></G>
     ),
+    // forin-notebook.jsx L43: a green watercolour stroke under the ink tick (DOC 07 L228).
     check: (
-      <G><Path {...P} strokeWidth={2.4} d="M5 12.5 L10 17.5 L19.5 6.5"/></G>
+      <G><Path d="M6 13.5 L10 17.5 L18.5 7.5" fill="none" stroke={nb.wash.green} strokeWidth={5} strokeLinecap="round" strokeLinejoin="round"/><Path {...P} strokeWidth={2.2} d="M5 12.5 L10 17.5 L19 7"/></G>
     ),
     home: (
       <G><Path {...P} d="M4.5 11.5 L12 4.5 L19.5 11.5"/><Path {...P} d="M6.5 10.5 V19 H17.5 V10.5"/><Rect {...P} x="10" y="13.5" width="4" height="5.5" fill={nb.wash.yellow}/></G>
@@ -117,7 +127,19 @@ export function NbIcon({ name, size = 20, color = nb.ink }: {
       <G><Circle {...P} cx="12" cy="9" r="4" fill={nb.wash.peach}/><Path {...P} d="M5.5 19.5 Q6 14 12 14 Q18 14 18.5 19.5" fill={nb.wash.blue}/></G>
     ),
     mic: (
-      <G><Rect {...P} x="9.5" y="4" width="5" height="9" rx="2.5" fill={nb.wash.red}/><Path {...P} d="M6.5 11 Q12 16.5 17.5 11"/><Path {...P} d="M12 14.8 V18.5 M9.5 18.5 H14.5"/></G>
+      // v44 §5 rewrite: a narrow tall capsule, a true arc yoke that wraps under it, a short
+      // stand. The old flat Q-curve yoke read as unnatural (handoff feedback).
+      <G><Rect {...P} x="9.6" y="3.5" width="4.8" height="10.5" rx="2.4" fill={nb.wash.red}/><Path {...P} d="M6.3 11.2 A5.7 5.7 0 0 0 17.7 11.2"/><Path {...P} d="M12 16.9 V19.5 M9.4 19.5 H14.6"/></G>
+    ),
+    faceAngry: (
+      <G><Circle {...P} cx="12" cy="12" r="8" fill={nb.wash.peach}/><Path {...P} d="M7.5 8.5 L10.5 10 M16.5 8.5 L13.5 10"/><Circle cx="9.5" cy="12" r="0.9" fill={color} stroke="none"/><Circle cx="14.5" cy="12" r="0.9" fill={color} stroke="none"/><Path {...P} d="M9.5 16 Q12 14.3 14.5 16"/></G>
+    ),
+    // Not in the handoff set — the sentence deck names it (sent-live L15, L17) and the
+    // prototype fell back to the star (spec v46 §3 9: drawn new). faceAngry's rules: the same
+    // r=8 peach face and dot eyes; the brows lift at their INNER ends, and the mouth is a
+    // small wobble rather than a frown.
+    faceWorried: (
+      <G><Circle {...P} cx="12" cy="12" r="8" fill={nb.wash.peach}/><Path {...P} d="M7.5 9.5 L10.5 8 M16.5 9.5 L13.5 8"/><Circle cx="9.5" cy="12" r="0.9" fill={color} stroke="none"/><Circle cx="14.5" cy="12" r="0.9" fill={color} stroke="none"/><Path {...P} d="M9 16 Q10.5 14.8 12 16 Q13.5 17.2 15 16"/></G>
     ),
     speaker: (
       <G><Path {...P} d="M5 10 H8 L12.5 5.8 V18.2 L8 14 H5 Z" fill={nb.wash.blue}/><Path {...P} d="M15.5 9.5 Q17 12 15.5 14.5 M18 7 Q20.7 12 18 17"/></G>
@@ -193,6 +215,12 @@ export function NbIcon({ name, size = 20, color = nb.ink }: {
     ),
     pencil: (
       <G><Path {...P} d="M14.5 5 L19 9.5 L9.5 19 L4.8 19.2 L5 14.5 Z" fill={nb.wash.yellow}/><Path {...P} d="M12.8 6.7 L17.3 11.2"/><Path {...P} d="M5 14.5 L9.5 19"/></G>
+    ),
+    // The dialogue rail's `▷ 보내기` (dialogue.jsx L100·L179; lesson-fidelity-v46 결정 4 —
+    // glyphs are drawn). An open triangle, as ▷ is: outline only, no wash, in the label's
+    // own colour so a dimmed button dims it too.
+    play: (
+      <G><Path {...P} d="M7.5 5.5 L18 12 L7.5 18.5 Z"/></G>
     ),
   };
   return (

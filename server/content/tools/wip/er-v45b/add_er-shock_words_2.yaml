@@ -1,0 +1,266 @@
+w-happen:
+  cue: "실신 환자에게 쓰러진 순간 무슨 일이 있었는지, 목격자가 있는지 물을 때"
+  tag: 증상 문진
+  distractorsEn: [open, harden]
+  distractorsKo: [멈추다, 끝나다]
+  chips: [[hap, pen]]
+  decoyChips: [hop, pan]
+w-hit:
+  cue: "쓰러지면서 머리를 바닥에 찧었는지 — 실신 뒤 두부 손상 확인"
+  tag: 증상 문진
+  distractorsEn: [hurt, heat]
+  distractorsKo: [긁히다, 베이다]
+  chips: [[hit]]
+  decoyChips: [hid]
+w-hurt:
+  cue: "넘어지면서 어디 다친 데는 없는지 — 'Did you ___ yourself?'"
+  tag: 증상 문진
+  distractorsEn: [hit, heart]
+  distractorsKo: [부딪히다, 쓰러지다]
+  chips: [[hurt]]
+  decoyChips: [heart]
+w-notice:
+  cue: "환자가 스스로 변화(변 색깔 등)를 본 적이 있는지 물을 때 — 'Have you ___d …?'"
+  tag: 증상 문진
+  distractorsEn: [note, notify]
+  distractorsKo: [기억하다, 무시하다]
+  chips: [["no", tice]]
+  decoyChips: [note, tise]
+w-black:
+  cue: "타르처럼 끈적한 상부 위장관 출혈의 변 색깔"
+  tag: 출혈·수혈
+  distractorsEn: [bloody, pale]
+  distractorsKo: [붉은, 창백한]
+  chips: [[black]]
+  decoyChips: [block]
+w-stool:
+  cue: "검거나 피가 섞였는지 물을 때 쓰는 대변의 임상어(환자 앞에서도 쓴다)"
+  tag: 출혈·수혈
+  distractorsEn: [still, urine]
+  distractorsKo: [소변, 구토물]
+  chips: [[stool]]
+  decoyChips: [stoll]
+w-thinner:
+  cue: "와파린·아픽사반처럼 피를 덜 굳게 하는 약 — 환자들이 쓰는 쉬운 말"
+  tag: 약물
+  distractorsEn: [blood pressure pill, water pill]
+  distractorsKo: [혈압약, 진통제]
+  chips: [[blood], [thin, ner]]
+  decoyChips: [thick, er]
+w-get:
+  cue: "수액·혈액·키트를 갖다 놓거나 통역사를 모셔 올 때 두루 쓰는 동사 — '___ the kit ready'"
+  tag: 긴급 대응
+  distractorsEn: [let, set]
+  distractorsKo: [버리다, 돌려보내다]
+  chips: [[get]]
+  decoyChips: [got]
+w-ready:
+  cue: "수혈 혈액·키트를 바로 쓸 수 있게 갖춰 둔 상태 — 'get … ___'"
+  tag: 긴급 대응
+  distractorsEn: [steady, already]
+  distractorsKo: [안정된, 끝난]
+  chips: [[read, y]]
+  decoyChips: [red, ey]
+w-bleed:
+  cue: "몸 안이나 밖으로 피가 나는 것 — 항응고제 복용자는 위험이 크다"
+  tag: 출혈·수혈
+  distractorsEn: [bruise, breed]
+  distractorsKo: [멍들다, 붓다]
+  chips: [[bleed]]
+  decoyChips: [blood]
+w-draw:
+  cue: "배양병·검사관에 쓸 피를 정맥에서 받을 때 쓰는 동사 — '___ labs'"
+  tag: 검사
+  distractorsEn: [drain, drip]
+  distractorsKo: [배액하다, 주입하다]
+  chips: [[draw]]
+  decoyChips: [drew]
+w-warm:
+  cue: "열이 나서 만졌을 때 몸이 뜨끈할 때 — 패혈성 쇼크 초기의 피부"
+  tag: 바이탈
+  distractorsEn: [cool, worn]
+  distractorsKo: [서늘한, 축축한]
+  chips: [[warm]]
+  decoyChips: [worm]
+w-heart:
+  cue: "가슴 속에서 빠르게 뛰는 기관 — '___ rate', '___ tones'"
+  tag: 신체
+  distractorsEn: [chest, lung]
+  distractorsKo: [폐, 가슴]
+  chips: [[heart]]
+  decoyChips: [hurt]
+w-race:
+  cue: "심장이 쿵쾅쿵쾅 빠르게 뛴다고 할 때 — 'your heart is ___ing'"
+  tag: 바이탈
+  distractorsEn: [raise, rise]
+  distractorsKo: [멈추다, 느려지다]
+  chips: [[race]]
+  decoyChips: [rice]
+w-concern:
+  cue: "감염이 의심돼 신경이 쓰인다고 환자에게 솔직히 말할 때 — 'I'm ___ed about infection.'"
+  tag: 쇼크 감별
+  distractorsEn: [confirm, confuse]
+  distractorsKo: [확신하다, 안심하다]
+  chips: [[con, cern]]
+  decoyChips: [firm, cert]
+w-infection:
+  cue: "열·빈맥과 함께 패혈성 쇼크의 출발점이 되는 것 — 소변·폐·상처 어디서든"
+  tag: 쇼크 감별
+  distractorsEn: [injection, inflammation]
+  distractorsKo: [염증, 주사]
+  chips: [[in, fec, tion]]
+  decoyChips: [jec, fac]
+w-think:
+  cue: "감염이 어디서 시작됐을 것 같은지 환자 생각을 물을 때 — 'Where do you ___ …?'"
+  tag: 증상 문진
+  distractorsEn: [thank, sink]
+  distractorsKo: [알다, 믿다]
+  chips: [[think]]
+  decoyChips: [thank]
+w-come:
+  cue: "수액을 넣은 뒤 낮던 혈압이 조금 회복됐다고 알릴 때 — 'your pressure ___ a little'"
+  tag: 수액·정맥로
+  distractorsEn: [come down, come off]
+  distractorsKo: [(수치가) 내려가다, (약을) 끊다]
+  chips: [[come], [up]]
+  decoyChips: [down, came]
+w-culture:
+  cue: "항생제를 쓰기 전에 먼저 뽑는 혈액 검사 — 균이 자라는지 본다"
+  tag: 검사
+  distractorsEn: [capture, lactate]
+  distractorsKo: [젖산, 혈구 수]
+  chips: [[cul, ture]]
+  decoyChips: [cal, tur]
+w-lactate:
+  cue: "조직에 산소가 모자라면 올라가는 혈중 수치 — 패혈증 번들에서 재측정한다"
+  tag: 검사
+  distractorsEn: [lactose, culture]
+  distractorsKo: [혈당, 칼륨]
+  chips: [[lact, ate]]
+  decoyChips: [lac, ose]
+w-start:
+  cue: "수액·약을 지금 바로 개시한다고 할 때 — '___ing fluids fast'"
+  tag: 긴급 대응
+  distractorsEn: [stop, stall]
+  distractorsKo: [멈추다, 끝내다]
+  chips: [[start]]
+  decoyChips: [stare]
+w-fast:
+  cue: "수액을 빨리 넣을 때(부사로도 같은 꼴), 맥박이 빠를 때 쓰는 말"
+  tag: 긴급 대응
+  distractorsEn: [last, slow]
+  distractorsKo: [느린, 늦은]
+  chips: [[fast]]
+  decoyChips: [fist]
+w-sign:
+  cue: "소변량이 늘면 순환이 좋아지는 신호로 본다 — 'a good ___', 'an early ___'"
+  tag: 쇼크 감별
+  distractorsEn: [sigh, symptom]
+  distractorsKo: [원인, 결과]
+  chips: [[sign]]
+  decoyChips: [sing]
+w-chest:
+  cue: "심인성 쇼크 환자가 짓눌리듯 무겁다고 호소하는 곳"
+  tag: 신체
+  distractorsEn: [chess, check]
+  distractorsKo: [배, 등]
+  chips: [[chest]]
+  decoyChips: [chess]
+w-spread:
+  cue: "가슴 압박감이 팔·턱으로 뻗치는지 물을 때 — 'Does it ___ to your jaw?'"
+  tag: 증상 문진
+  distractorsEn: [spray, shred]
+  distractorsKo: [가라앉다, 멈추다]
+  chips: [[spread]]
+  decoyChips: [spred]
+w-jaw:
+  cue: "심근경색 통증이 팔과 함께 뻗쳐 갈 수 있는 얼굴 아래쪽 뼈"
+  tag: 신체
+  distractorsEn: [chin, jar]
+  distractorsKo: [어깨, 목]
+  chips: [[jaw]]
+  decoyChips: [jew]
+w-breathe:
+  cue: "똑바로 누우면 숨이 더 차는지 물을 때 쓰는 동사(명사와 철자가 다르다)"
+  tag: 증상 문진
+  distractorsEn: [wheeze, bleed]
+  distractorsKo: [기침하다, 삼키다]
+  chips: [[breath, e]]
+  decoyChips: [breth, bre]
+w-lie:
+  cue: "베개 없이 평평하게 몸을 뉘는 자세 — 'when you ___ flat'"
+  tag: 증상 문진
+  distractorsEn: [sit, lean]
+  distractorsKo: [앉다, 서다]
+  chips: [[lie]]
+  decoyChips: [lay]
+w-ecg:
+  cue: "가슴·팔다리에 전극을 붙여 심장의 전기 활동을 찍는 검사 — 심인성 쇼크 감별에서 가장 먼저"
+  tag: 검사
+  distractorsEn: [EEG, echo]
+  distractorsKo: [뇌파, 심장초음파]
+  chips: [[ECG]]
+  decoyChips: [EEG]
+w-listen:
+  cue: "청진기로 폐·심장 소리를 들어 볼 때 — '___ to your lungs'"
+  tag: 검사
+  distractorsEn: [glisten, loosen]
+  distractorsKo: [보다, 만지다]
+  chips: [[lis, ten]]
+  decoyChips: [les, son]
+w-lung:
+  cue: "심부전으로 물이 차면 청진에서 수포음이 들리는 곳"
+  tag: 신체
+  distractorsEn: [long, liver]
+  distractorsKo: [심장, 간]
+  chips: [[lung]]
+  decoyChips: [long]
+w-epinephrine:
+  cue: "아나필락시스에서 허벅지 바깥쪽에 근육주사하는 첫 번째 약"
+  tag: 약물
+  distractorsEn: [norepinephrine, ephedrine]
+  distractorsKo: [노르에피네프린, 항히스타민제]
+  chips: [[epi, neph, rine]]
+  decoyChips: [ephe, drine]
+w-thigh:
+  cue: "에피네프린 자동주사기를 놓는 다리 윗부분 바깥쪽"
+  tag: 신체
+  distractorsEn: [hip, calf]
+  distractorsKo: [엉덩이, 종아리]
+  chips: [[thigh]]
+  decoyChips: [thy]
+w-eat:
+  cue: "아나필락시스 전에 갯가재·견과류 같은 음식을 먹었는지 물을 때"
+  tag: 증상 문진
+  distractorsEn: [heat, drink]
+  distractorsKo: [마시다, 바르다]
+  chips: [[eat]]
+  decoyChips: [ate]
+w-throat:
+  cue: "아나필락시스 환자가 꽉 막히는 느낌을 호소하는 목 안쪽"
+  tag: 신체
+  distractorsEn: [throne, thread]
+  distractorsKo: [가슴, 코]
+  chips: [[throat]]
+  decoyChips: [throt]
+w-tongue:
+  cue: "아나필락시스 때 부어오르면 기도를 막을 수 있는 입 안 기관"
+  tag: 신체
+  distractorsEn: [tongs, tone]
+  distractorsKo: [입술, 목젖]
+  chips: [[tongue]]
+  decoyChips: [tong]
+w-tight:
+  cue: "목이 조여 오는 느낌 — 기도 부종을 의심하는 호소"
+  tag: 증상 문진
+  distractorsEn: [tired, light]
+  distractorsKo: [따가운, 간지러운]
+  chips: [[tight]]
+  decoyChips: [tite]
+w-airway:
+  cue: "아나필락시스·의식 저하 때 가장 먼저 지키는 숨길 — ABC의 A"
+  tag: 긴급 대응
+  distractorsEn: [airflow, airline]
+  distractorsKo: [식도, 호흡수]
+  chips: [[air, way]]
+  decoyChips: [ear, wey]

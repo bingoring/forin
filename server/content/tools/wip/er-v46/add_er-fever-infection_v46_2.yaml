@@ -1,0 +1,126 @@
+- title: 봉와직염 발열
+  s:
+  - {t: "경계 표시", i: pencil, w: "I'm marking으로 지금 하는 일을 알려 환자가 펜이 닿는 것에 놀라지 않게 해요. 경계선은 시간이 지나 발적이 넓어졌는지 비교할 기준이 돼요.", d: "the middle", k: ["발적 부위를 문질러 닦을게요", "발적 부위에 연고를 바를게요"], a: "edge", o: ["center", "color", "shape"]}
+  - {t: "치료 이유", i: pill, w: "may로 퍼지고 있을 수 있다는 가능성으로 말하고 so로 치료 결정을 바로 이어요. 피부 감염에 열이 동반되면 국소를 넘어 퍼질 수 있다는 신호예요.", d: "will heal itself", k: ["다리를 쿠션 위에 올려 둘게요", "열은 바로 해열제로 내릴게요"], a: "spreading", o: ["healing", "shrinking", "clearing"]}
+  - {t: "통증 보고", i: bell, w: "Tell me if…로 환자가 직접 알릴 기준을 줘요. 겉보기보다 훨씬 심한 통증은 깊은 감염의 경고 신호일 수 있어 놓치지 않아야 해요.", d: "when it itches", k: ["통증은 약을 먹으면 가라앉을 거예요", "붓기가 좀 가라앉았어요"], a: "suddenly", o: ["slowly", "slightly", "rarely"]}
+  - {t: "변화 관찰", i: pencil, w: "so we can…으로 선을 긋는 목적을 함께 말해요. 선 밖으로 번지면 감염이 진행하는 것이라 시간을 두고 비교해요.", d: "so it dries", k: ["발적이 커지면 선을 새로 그을게요", "선은 건드리지 말고 그대로 두세요"], a: "grows", o: ["itches", "bleeds", "hurts"]}
+  - {t: "항생제 시작", i: pill, w: "now를 붙여 지체 없이 시작한다고 알려요. to keep…from…은 하지 않게 막다로 치료의 목적을 말해요. 피부 감염은 일찍 항생제를 쓸수록 퍼지는 걸 막기 쉬워요.", d: "to prove", k: ["상처 부위를 깨끗이 닦을게요", "열은 한 시간 뒤에 다시 잴게요"], a: "antibiotics", o: ["steroids", "painkillers", "lotion"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "봉와직염 관찰·치료 4문장 순서"
+    why: "발적 경계를 표시하고, 그 발적이 퍼질 수 있다고 보고 항생제를 시작하고, 항생제와 함께 통증이 갑자기 커지면 알려 달라고 하고, 다음 확인 때 선과 환자가 말한 것을 함께 본다고 닫아요. 'it'·'the antibiotics'·'that line'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "I'm marking the edge of the redness to see if it spreads.", icon: pencil, ko: "퍼지는지 보려고 발적 경계를 표시하고 있어요", note: "표시"}
+    - {en: "Since the fever means it may be spreading, we'll start antibiotics now.", icon: pill, ko: "열이 있어 퍼질 수 있으니 지금 항생제를 시작할게요", note: "치료"}
+    - {en: "Along with the antibiotics, tell me if the pain suddenly gets much worse than it looks.", icon: bell, ko: "항생제와 함께 통증이 겉보기보다 갑자기 심해지면 말씀해 주세요", note: "보고"}
+    - {en: "At our next check, we'll compare the redness to that line and to what you told me.", icon: magnify, ko: "다음 확인 때 그 선과 말씀하신 내용을 비교할게요", note: "재확인"}
+  sw: {ko: "발적이 퍼지는지 보려고 경계를 표시하고 있어요."}
+- title: 인플루엔자 시즌 선별
+  s:
+  - {t: "검사 안내", i: lab, w: "swab이 동사로 면봉으로 닦아 채취하다라서 무엇을 하는지 바로 알려요. 독감은 코 안쪽 점막을 면봉으로 채취해 빠르게 확인하는 검사가 흔해요.", d: "to clean your", k: ["독감 예방주사를 놓을게요", "피를 뽑아 검사할게요"], a: "flu", o: ["strep", "covid", "pinkeye"]}
+  - {t: "치료 설명", i: pill, w: "If 안에 positive와 early 두 조건을 걸어 이럴 때 도움이 된다고 말하고 may로 효과를 약속하지 않아요. 항바이러스제는 증상 초기에 쓸 때 효과가 가장 커요.", d: "and it's late", k: ["결과는 몇 시간 뒤에 나와요", "약은 식후에 드세요"], a: "antiviral", o: ["antibiotic", "antacid", "antihistamine"]}
+  - {t: "마스크 유지", i: shield, w: "Please keep…on으로 계속 쓰고 있어 달라고 정중하게 요청해요. to protect others로 마스크가 나를 위한 게 아니라 주변을 위한 것임을 알려요.", d: "to protect yourself", k: ["마스크가 답답하면 말씀해 주세요", "장갑도 끼고 계세요"], a: "protect", o: ["scare", "annoy", "remind"]}
+  - {t: "가능성 설명", i: handshake2, w: "Everyone…having the flu가 통째로 주어가 돼 모두가 걸렸다는 사실이 이유가 돼요. very likely는 확정 전이라 검사로 확인하자는 여지를 남겨요.", d: "makes this less", k: ["직장에 언제 복귀하실 수 있는지 알려 드릴게요", "같은 팀 분들도 검사받으셨나요?"], a: "likely", o: ["serious", "urgent", "painful"]}
+  - {t: "시작 시점", i: calendar, w: "works best if로 효과가 가장 큰 조건을 알려요. 독감 항바이러스제는 증상이 시작되고 이틀 안에 쓸 때 가장 효과적이에요.", d: "after the first week", k: ["약은 처방을 받아 약국에서 받으세요", "약은 식사 후에 드세요"], a: "within", o: ["after", "outside", "beyond"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "독감 선별·치료 설명 4문장 순서"
+    why: "검사를 알리고, 그 결과에 따른 항바이러스제 가능성을 말하고, 그 약이 가장 잘 듣는 시점을 설명한 뒤, 결과가 어떻든 마스크를 유지해 달라고 닫아요. 'it'·'the antiviral'·'Either way'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "We'll swab you to check for the flu.", icon: lab, ko: "독감 검사를 위해 면봉검사를 할게요", note: "검사"}
+    - {en: "If it's positive and it's early, an antiviral may help.", icon: pill, ko: "양성이고 초기라면 항바이러스제가 도움이 될 수 있어요", note: "치료"}
+    - {en: "The antiviral works best if we start it within the first two days.", icon: calendar, ko: "그 약은 처음 이틀 안에 시작하면 가장 좋아요", note: "시점"}
+    - {en: "Either way, please keep the mask on to protect others while you're here.", icon: shield, ko: "어느 쪽이든 마스크를 계속 써 주세요", note: "마스크"}
+  sw: {ko: "양성이고 초기라면 항바이러스제가 도움이 될 수 있어요."}
+- title: 면역저하 발열
+  s:
+  - {t: "위급성 설명", i: siren, w: "With chemo로 이유를 먼저 대고 so로 결과를 잇는 이유에서 결론의 구조예요. 항암치료 중에는 백혈구가 줄어 있어 열이 곧 심한 감염의 신호일 수 있어요.", d: "after chemo", k: ["항암 주사는 언제 맞으셨어요?", "체온을 다시 재볼게요"], a: "emergency", o: ["exception", "error", "irritation"]}
+  - {t: "배양·항생제", i: lab, w: "We're …ing 진행형이라 지금 하는 중인 일을 알려요. 배양은 균을 찾는 검사이고 항생제는 결과를 기다리지 않고 바로 시작해요.", d: "a urine sample", k: ["배양은 소변으로만 할게요", "항암제 용량을 다시 확인할게요"], a: "cultures", o: ["scans", "x-rays", "stitches"]}
+  - {t: "감염 예방", i: shield, w: "protected from other infections로 우리가 지켜 드린다는 주체를 말해 환자를 안심시켜요. 항암치료 중에는 면역이 약해 다른 감염에도 취약해서 주변 접촉을 관리해요.", d: "from falling", k: ["다른 환자와 병실을 따로 쓸게요", "손 씻기를 자주 부탁드려요"], a: "infections", o: ["injuries", "allergies", "accidents"]}
+  - {t: "위험 설명", i: faceWorried, w: "Even으로 이 정도 열이라도를 강조해 가볍게 보지 않게 해요. 호중구가 낮으면 작은 감염도 빠르게 패혈증으로 번질 수 있어요.", d: "can go away", k: ["밤에도 체온을 자주 재볼게요", "열이 내려도 계속 지켜볼게요"], a: "mild", o: ["high", "brief", "new"]}
+  - {t: "칭찬·안심", i: star, w: "was right to로 환자가 이미 한 행동을 인정해 죄책감이나 불안을 덜어요. 항암 중 발열은 빨리 올수록 치료가 빨라져요.", d: "to warn you", k: ["오시는 데 오래 걸리셨죠?", "간호사분 성함이 어떻게 되세요?"], a: "immediately", o: ["alone", "upstairs", "separately"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "항암 중 발열 설명 4문장 순서"
+    why: "가벼운 열도 빨리 나빠질 수 있다고 말하고, 그래서 항암 중 열은 응급이라고 하고, 그 응급 때문에 배양과 항생제를 시작한다고 알리고, 그 배양과 항생제를 근거로 바로 오라고 한 간호사가 옳았다고 닫아요. 'that'·'that emergency'·'the cultures and antibiotics'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Even a mild fever like this can turn serious very quickly for you.", icon: faceWorried, ko: "이런 가벼운 열도 아주 빠르게 심각해질 수 있어요", note: "위험"}
+    - {en: "With chemo, that makes a fever an emergency, so we act fast.", icon: siren, ko: "항암치료 중이면 그래서 열은 응급이라 빠르게 움직여요", note: "응급"}
+    - {en: "Because of that emergency, we're drawing cultures and starting antibiotics quickly.", icon: lab, ko: "그 응급 때문에 배양을 채취하고 항생제를 신속히 시작해요", note: "처치"}
+    - {en: "Given the cultures and antibiotics, your nurse was right to send you in immediately.", icon: star, ko: "배양과 항생제를 보면 간호사분이 바로 오시라고 한 게 맞았어요", note: "안심"}
+  ctx: {word: "antibiotics", ko: "항생제", sc: {1: {en: "Febrile, on chemo. BCx drawn, empiric antibiotics started."}, 2: {en: "You're presumed febrile neutropenic, so we're initiating empiric antibiotics."}}}
+- title: 소아 고열 보호자
+  s:
+  - {t: "치료 계획", i: pill, w: "We'll로 의료진이 함께 한다는 주체를 밝히고 열 내리기와 편안하게 하기 두 목표를 and로 묶어요. 열성경련이 걱정인 보호자에게 해야 할 일이 있다는 안정감을 줘요.", d: "wake him up", k: ["아이를 침대에 눕혀 둘게요", "지금 바로 혈액검사를 할게요"], a: "comfortable", o: ["awake", "busy", "dressed"]}
+  - {t: "안심 설명", i: faceWorried, w: "Most로 예외가 있음을 인정하되 대부분은 괜찮다고 말해 보호자의 공포를 줄여요. 단순 열성경련은 대개 몇 분 안에 끝나고 후유증을 남기지 않는 경우가 많아요.", d: "need surgery", k: ["열성경련은 6세 이후에는 거의 없어요", "아이가 이전에 경련한 적이 있나요?"], a: "brief", o: ["rare", "painful", "silent"]}
+  - {t: "관찰 요청", i: bell, w: "Keep offering은 계속 시도하라는 지시고 let me know if로 알려야 할 기준을 줘요. 경련 뒤 졸린 것은 흔하지만 깨우기 힘들면 의식이 떨어진 신호일 수 있어 알려야 해요.", d: "and give him juice", k: ["아이 체온은 제가 다시 재볼게요", "아이 옆에 계셔 주세요"], a: "hard", o: ["easy", "quick", "ready"]}
+  - {t: "경련 설명", i: faceWorried, w: "look scary로 보호자의 공포를 먼저 인정한 뒤 but으로 대개 저절로 멈춘다는 사실을 이어요. 단순 열성경련은 대개 몇 분 안에 저절로 멈춰요.", d: "need an injection", k: ["경련 중에는 아이를 옆으로 눕혀 주세요", "경련이 시작된 시간을 알려 주세요"], a: "scary", o: ["loud", "rare", "silent"]}
+  - {t: "수분 공급", i: coffee, w: "small sips와 every few minutes로 양과 간격을 구체적으로 말해 아이가 토하지 않게 조금씩 먹이도록 해요. 열이 나면 수분이 빠져 탈수되기 쉬워요.", d: "big gulps", k: ["수분은 차갑게 드리세요", "아이가 토하면 알려 주세요"], a: "sips", o: ["bites", "pills", "slices"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "열성경련 우려 보호자 설명 4문장 순서"
+    why: "경련이 무서워 보여도 대개 저절로 멈춘다고 말하고, 그런 경련은 대부분 짧고 후유증이 없다고 이어서 안심시키고, 후유증이 드물다는 말에 이어 열을 내리고 편안하게 해 주겠다고 알리고, 그를 돕는 수분 공급과 관찰 요청으로 닫아요. 'them'·'they'·'it'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Seizures like this look scary, but they usually stop on their own within a minute.", icon: faceWorried, ko: "이런 경련은 무서워 보이지만 보통 1분 안에 저절로 멈춰요", note: "경련"}
+    - {en: "Most of them are brief and don't cause lasting harm.", icon: bulb, ko: "대부분은 짧고 지속적인 해를 남기지 않아요", note: "안심"}
+    - {en: "Since they rarely leave lasting harm, we'll just bring his fever down and keep him comfortable.", icon: pill, ko: "후유증이 거의 없으니 열을 내리고 편안하게 해드릴게요", note: "치료"}
+    - {en: "To help bring it down, keep offering fluids, and let me know if he becomes hard to wake.", icon: coffee, ko: "열 내리는 걸 돕게 수분을 권하고 깨우기 힘들면 알려주세요", note: "요청"}
+  ctx: {word: "seizure", ko: "경련"}
+- title: 발열+발진 감별
+  s:
+  - {t: "원인 추정", i: pill, w: "makes me wonder if로 약 때문이라고 단정하지 않고 궁금증으로 말해 환자를 놀라게 하지 않아요. 새 약 시작 뒤 생긴 발진은 약물 반응을 먼저 떠올려요.", d: "I'm sure the rash", k: ["발진이 언제 생겼는지 알려 주세요", "새로 드신 약 이름을 알려 주세요"], a: "reaction", o: ["habit", "shortage", "trial"]}
+  - {t: "발진 관찰", i: magnify, w: "how와 whether로 퍼지는 모양과 물집 여부 두 가지를 관찰 항목으로 알려요. 물집이 생기거나 빠르게 퍼지는 발진은 심한 약물 반응의 경고 신호일 수 있어요.", d: "how it smells", k: ["발진 부위에 연고를 바를게요", "발진 사진을 찍어 둘게요"], a: "blisters", o: ["itches", "fades", "bleeds"]}
+  - {t: "점막 증상", i: stetho, w: "mouth sores와 eye irritation은 점막이 침범됐는지 보는 질문이에요. 입과 눈의 병변이 함께 있으면 심한 피부 약물 반응일 수 있어 더 서둘러 살펴봐요.", d: "ear pain", k: ["가려움이 심하세요?", "열이 언제부터 있었어요?"], a: "mouth", o: ["ear", "knee", "scalp"]}
+  - {t: "시점 확인", i: calendar, w: "before or after로 두 선택지를 놓고 시간 순서를 짚어요. 발진이 약보다 먼저 났다면 약물 반응일 가능성이 낮아져서 순서가 핵심 단서예요.", d: "while you slept", k: ["새 약은 몇 알 드셨어요?", "새 약은 누가 처방했어요?"], a: "began", o: ["stopped", "finished", "refused"]}
+  - {t: "경과 관찰", i: monitor, w: "Let's로 함께 지켜보자고 제안해 불안을 낮추고 closely로 자세히 본다고 알려요. 물집과 피부 벗겨짐은 진행 신호라 몇 시간 단위로 확인해요.", d: "for bruising", k: ["몇 시간마다 체온을 재볼게요", "피부를 문지르지 마세요"], a: "peeling", o: ["bruising", "swelling", "itching"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "발열·발진 약물 반응 감별 4문장 순서"
+    why: "발진이 새 약 전후 언제 났는지 묻고, 그 시점을 근거로 약물 반응을 의심한다고 말하고, 그 의심이 얼마나 심할지 점막 증상을 묻고, 모든 답을 근거로 지켜본다고 닫아요. 'that timing'·'that reaction'·'all of that'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Did the rash start before or after you began the new medication?", icon: calendar, ko: "발진이 새 약을 드시기 전에 났나요, 후에 났나요?", note: "시점"}
+    - {en: "Given that timing, I wonder if the rash is a drug reaction.", icon: pill, ko: "그 시점을 보면 약물 반응은 아닌지 궁금해요", note: "추정"}
+    - {en: "To see how serious that reaction might be, do you have any mouth sores or eye irritation?", icon: stetho, ko: "그 반응이 얼마나 심할지 보려고, 입안 궤양이나 눈 자극이 있나요?", note: "점막"}
+    - {en: "Based on all of that, we'll watch closely for blisters or peeling skin over the next few hours.", icon: monitor, ko: "그걸 근거로 몇 시간 동안 물집이나 벗겨짐을 지켜볼게요", note: "관찰"}
+  ctx: {word: "rash", ko: "발진", sc: {2: {en: "Your rash might be Stevens-Johnson syndrome."}}}
+- title: 수막염 의심 두통·발열
+  s:
+  - {t: "의심 설명", i: faceWorried, w: "concerns me로 의료진의 걱정을 직접 말해 검사가 필요한 이유를 알려요. 목 뻣뻣함·열·두통은 수막염을 의심하는 대표 조합이라 서둘러 확인해요.", d: "reassures me", k: ["두통약을 바로 드릴게요", "목 베개를 가져다 드릴게요"], a: "meningitis", o: ["migraine", "sinusitis", "arthritis"]}
+  - {t: "척수천자", i: lab, w: "We'll need로 필요성을 알리고 to check로 목적을 붙여 시술의 이유가 먼저 들려요. 척수천자는 뇌척수액을 얻어 수막염 여부를 가려요.", d: "a blood draw", k: ["뇌 사진을 먼저 찍어야 할 수도 있어요", "검사 전에 동의서에 서명해 주세요"], a: "fluid", o: ["blood", "bone", "tissue"]}
+  - {t: "광선 과민", i: bulb, w: "bright light bother your eyes는 빛이 눈을 괴롭히냐로 광선공포증을 일상어로 물어요. right now로 지금 상태만 물어 답이 분명해요. 수막염에서는 빛에 민감한 증상이 흔해요.", d: "loud noise", k: ["지금 눈이 충혈됐어요?", "시야가 흐려요?"], a: "bright", o: ["dim", "soft", "warm"]}
+  - {t: "목 굴곡", i: stetho, w: "for me로 환자를 돕는 부탁처럼 들려 목이 아파도 시도하기 쉬워요. 턱이 가슴에 닿는지 보는 이 동작으로 경부 강직을 확인해요.", d: "up toward the ceiling", k: ["고개를 좌우로 돌려 보시겠어요?", "누워서 다리를 올려 보시겠어요?"], a: "chin", o: ["toe", "wrist", "tongue"]}
+  - {t: "검사 목적", i: bulb, w: "tells us if로 검사가 무엇을 알려 주는지 먼저 밝혀 환자의 불안을 줄여요. 뇌척수액에서 염증 세포나 균이 보이면 수막염으로 진단해요.", d: "if there's a fracture", k: ["검사 결과는 몇 시간 뒤에 나와요", "검사 전에 금식하실 필요는 없어요"], a: "spine", o: ["skull", "heart", "lungs"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "수막염 의심 평가 4문장 순서"
+    why: "수막염이 걱정된다고 알리고, 그 걱정을 확인하려 목 동작을 부탁하고, 그 동작이 어땠는지에 이어 빛 과민을 묻고, 모든 걸 근거로 척수천자를 안내해요. 'To check your neck'·'how that felt'·'all of that'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "The stiff neck with fever and headache concerns me about meningitis.", icon: faceWorried, ko: "뻣뻣한 목에 열과 두통이라 수막염이 걱정돼요", note: "걱정"}
+    - {en: "To check your neck, can you bring your chin down toward your chest for me?", icon: stetho, ko: "목을 확인하려고 턱을 가슴 쪽으로 내려 보시겠어요?", note: "목 검사"}
+    - {en: "Along with how that felt, does bright light bother your eyes right now?", icon: bulb, ko: "그 느낌과 함께 지금 밝은 빛이 눈에 거슬리세요?", note: "빛"}
+    - {en: "Based on all of that, we'll need a spinal tap to check the fluid around your brain.", icon: lab, ko: "그걸 근거로 뇌 주변 체액을 보려고 척수천자가 필요해요", note: "검사"}
+  sw: {ko: "뇌 주변 체액을 확인하려고 척수천자가 필요해요."}
+- title: 결핵 의심 만성기침
+  s:
+  - {t: "의심 설명", i: stetho, w: "can suggest로 확정이 아니라 가능성을 말해요. 오래 가는 기침·야간 발한·체중 감소는 결핵의 전형적인 조합이라 격리와 검사를 서둘러요.", d: "can prove", k: ["가족 중에 결핵 환자가 있으세요?", "기침할 때 피가 섞여 나와요?"], a: "weight", o: ["hair", "height", "skin"]}
+  - {t: "격리실 이동", i: lock, w: "right away로 지체 없이 옮긴다고 말해요. 결핵 의심 환자는 음압격리실에 들이고, 이유를 설명하면 환자가 격리를 벌로 느끼지 않아요.", d: "like the others", k: ["병실에서 식사는 따로 드릴게요", "격리실에서는 문이 닫혀 있어요"], a: "isolation", o: ["waiting", "recovery", "family"]}
+  - {t: "가래 검사", i: lab, w: "test와 check for로 검사 방법과 목적을 나눠 말해요. sputum은 환자가 알아듣기 어려운 말이라 가래를 깊이 뱉어 달라고 풀어서 설명해요.", d: "your saliva", k: ["가래는 아침에 한 번만 뱉으시면 돼요", "피 검사로 결핵을 확인할게요"], a: "sputum", o: ["saliva", "urine", "stool"]}
+  - {t: "기간 문진", i: calendar, w: "How many weeks로 주 단위로 세어 답하게 해 만성 여부를 가려요. 기침이 몇 주 이상 이어지면 결핵을 포함해 만성 원인을 따져요.", d: "how many hours", k: ["가족도 기침을 하나요?", "체중이 얼마나 줄었어요?"], a: "weeks", o: ["days", "months", "years"]}
+  - {t: "격리 이유", i: shield, w: "keeps the air from spreading은 공기가 퍼지지 않게 한다로 방이 하는 일을 쉽게 알려요. 결핵은 공기로 전파돼서 음압격리실은 공기가 방 밖으로 새지 않게 해요.", d: "your family", k: ["격리실에서도 TV는 보실 수 있어요", "격리실에 들어갈 때 의료진은 N95를 써요"], a: "air", o: ["door", "floor", "light"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "결핵 의심 격리 설명 4문장 순서"
+    why: "기침과 식은땀이 몇 주 됐는지 묻고, 그렇게 오래 가는 기침과 증상이 결핵을 시사한다고 말하고, 그 이유로 격리실에 들이고, 그 방이 공기 전파를 막는다고 설명해요. 'that long'·'that reason'·'the room'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "How many weeks have you had this cough and the night sweats?", icon: calendar, ko: "이 기침과 밤 땀이 몇 주나 됐나요?", note: "기간"}
+    - {en: "A cough that long, with night sweats and weight loss, can suggest TB.", icon: stetho, ko: "그렇게 오래된 기침에 밤 땀과 체중 감소는 결핵을 의심하게 해요", note: "의심"}
+    - {en: "For that reason, we'll place you in a special isolation room right away.", icon: lock, ko: "그래서 바로 특별 격리실로 옮겨드릴게요", note: "격리"}
+    - {en: "The room keeps the air from spreading TB to others.", icon: shield, ko: "그 방은 공기로 결핵이 퍼지지 않게 막아줘요", note: "이유"}
+  ctx: {word: "isolation", ko: "격리", sc: {1: {en: "Pt placed in airborne isolation (AIIR); N95 required for staff."}, 2: {en: "You're being placed in an AIIR for airborne isolation."}}}

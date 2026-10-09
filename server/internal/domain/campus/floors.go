@@ -38,7 +38,6 @@ var Floors = []Floor{
 	{Building: "본관", Label: "8F", Depts: []string{"WARD"}, Chapter: "내과 병동 · 만성질환 돌봄", Where: "본관 8F 일반 내과 병동", Tier: 10},
 	{Building: "본관", Label: "7F", Depts: []string{"SURGWARD"}, Chapter: "외과 병동 · 수술 후 회복", Where: "본관 7F 일반 외과 병동", Tier: 20},
 	{Building: "본관", Label: "6F", Depts: []string{"ORTHOWARD"}, Chapter: "정형외과 병동 · 골절과 보행", Where: "본관 6F 정형외과 병동", Tier: 30},
-	{Building: "본관", Label: "2F", Depts: []string{"DERM"}, Chapter: "피부과 센터 · 광선과 레이저", Where: "본관 2F 피부과 센터", Tier: 60},
 
 	// ── 별관 1 ──────────────────────────────────────────────────────────
 	{Building: "별관 1", Label: "1F", Depts: []string{"WOMENKIDS"}, Chapter: "여성소아 외래 · 보호자와 함께", Where: "별관 1 1F 소아청소년·산부인과 외래", Tier: 70},
@@ -57,6 +56,8 @@ var Floors = []Floor{
 	{Building: "별관 3", Label: "2F", Depts: []string{"SPECIALTY"}, Chapter: "특수 외래 · 안·이비인후·비뇨·신경", Where: "별관 3 2F 특수 외래", Tier: 50},
 	{Building: "별관 3", Label: "3F", Depts: []string{"INFUSION", "DIAL"}, Chapter: "주사센터·인공신장실 · 반복 치료의 동행", Where: "별관 3 3F 외래 주사센터 · 인공신장실", Tier: 80},
 	{Building: "별관 3", Label: "4F", Depts: []string{"ENDO"}, Chapter: "내시경·중재 시술 · 진정 관리", Where: "별관 3 4F 내시경실 · 심혈관 조영실", Tier: 90},
+	// 피부과는 대부분 외래 진료라 본관 2F에서 외래·진단동 맨 위로 옮겼다(2026-10-07, 서가 건물 간지 v45 결정).
+	{Building: "별관 3", Label: "5F", Depts: []string{"DERM"}, Chapter: "피부과 센터 · 광선과 레이저", Where: "별관 3 5F 피부과 센터", Tier: 60},
 
 	// ── 지원동 ──────────────────────────────────────────────────────────
 	{Building: "지원동", Label: "B1", Depts: []string{"MORGUE"}, Chapter: "영안실 · 존엄과 애도", Where: "지원동 B1 영안실", Tier: 170},
@@ -91,4 +92,35 @@ func Of(deptCode string) (Floor, bool) {
 		}
 	}
 	return Floor{}, false
+}
+
+// BuildingOf returns the building a department's binder sits in on the 서가 (서가 건물 간지
+// v45 R1·R2): the building of the first floor that lists it, "" for an unknown code.
+//
+// GEN is the one rule outside the table. It is a hospital-wide bank the lift cannot stop
+// at (see Of), so it has no floor — but the shelf still has to put its binder somewhere,
+// and the user decided 본관 (2026-10-07). It stays a rule here rather than an invented
+// floor, because a floor would make the lift offer a stop that has no interior.
+func BuildingOf(deptCode string) string {
+	if deptCode == "GEN" {
+		return "본관"
+	}
+	if f, ok := Of(deptCode); ok {
+		return f.Building
+	}
+	return ""
+}
+
+// Buildings lists the buildings in the order the table first names them — the 서가's
+// tab order (v45 §D).
+func Buildings() []string {
+	var out []string
+	seen := map[string]bool{}
+	for _, f := range Floors {
+		if !seen[f.Building] {
+			seen[f.Building] = true
+			out = append(out, f.Building)
+		}
+	}
+	return out
 }

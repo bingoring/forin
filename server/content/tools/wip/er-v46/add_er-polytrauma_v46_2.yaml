@@ -1,0 +1,90 @@
+- title: "은닉 출혈 저혈압"
+  s:
+  - {t: "복부 문진", i: me, w: "tender or full처럼 두 가지 느낌을 나란히 말해 주면 환자가 '아프다'는 말 대신 느낌을 고르기 쉬워요. 복강 안에 출혈이 있으면 배가 불룩하거나 눌릴 때 아플 수 있어요.", d: "in the car", k: ["배에서 소리가 나나요?", "배에 멍이 있는지 볼게요"], a: "tender", o: ["itchy", "numb", "hot"]}
+  - {t: "상태 알림", i: monitor, w: "You look pale처럼 보이는 그대로 말하면 진단을 단정하지 않아요. 창백함은 혈액이 줄었을 때 나타나는 징후 중 하나라서 안쪽 출혈을 의심하게 해요.", d: "very tired", k: ["얼굴에 열이 올라 보이세요", "눈이 많이 부어 보이세요"], a: "pale", o: ["flushed", "swollen", "tired"]}
+  - {t: "검사 안내", i: magnify, w: "to look inside처럼 목적을 쉬운 말로 풀면 영상 검사 용어를 몰라도 이해해요. CT 같은 영상으로 겉으로는 안 보이는 출혈 부위를 찾아요.", d: "for later", k: ["피 검사를 몇 번 더 할게요", "소변 검사를 위해 소변을 받을게요"], a: "inside", o: ["outside", "behind", "underneath"]}
+  - {t: "공감", i: faceWorried, w: "I know로 환자의 생각을 먼저 인정하고 이어서 설득하면 반박처럼 들리지 않아요. may not seem like much로 단정을 피해 환자의 느낌을 존중해요.", d: "for now", k: ["다친 곳이 작아서 봉합은 필요 없어요", "다친 곳이 작아도 통증약은 드릴게요"], a: "injury", o: ["bruise", "scratch", "bump"]}
+  - {t: "이유 설명", i: bulb, w: "Even a small …로 작은 것을 먼저 인정한 뒤 can hide로 가능성만 말해 겁을 주지 않아요. 외상에서는 겉의 상처 크기와 속 손상의 크기가 일치하지 않을 수 있어요.", d: "from the car", k: ["작은 부상은 저절로 낫는 경우가 많아요", "작은 부상이라도 흉터가 남을 수 있어요"], a: "hide", o: ["heal", "fix", "explain"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "숨은 출혈 설명 4문장 순서"
+    why: "작은 부상이라는 환자의 생각을 인정하고, 그래도 속에 문제가 숨을 수 있다고 말하고, 그것을 찾으려 스캔을 찍는다고 하고, 그동안 배 상태를 묻습니다. 'Even so'·'that'·'they'가 앞 줄에 기대어 순서가 하나예요."
+    lines:
+    - {en: "I know a small injury may not seem like much.", icon: faceWorried, ko: "작은 부상이 크게 느껴지지 않을 수 있다는 거 알아요", note: "공감"}
+    - {en: "Even so, it can hide a bigger problem inside.", icon: bulb, ko: "그래도 안쪽에 더 큰 문제가 숨어 있을 수 있어요", note: "이유"}
+    - {en: "To check for that, we're getting scans to look inside.", icon: magnify, ko: "그걸 확인하려고 안쪽을 보는 스캔을 찍고 있어요", note: "검사"}
+    - {en: "While they're being done, tell me if your belly feels tender or full.", icon: me, ko: "스캔을 하는 동안 배가 아프거나 팽만한지 말씀해 주세요", note: "문진"}
+  ctx: {word: "hemorrhage", ko: "출혈"}
+- title: "골반 골절 순환 불안정"
+  s:
+  - {t: "시행 안내", i: bandage, w: "to stabilize …로 목적을 함께 말하면 골반을 감싸는 것이 무엇인지 환자가 알아요. 골반이 불안정하면 골반 안에서 출혈이 커질 수 있어 바인더로 모양을 잡아 줘요.", d: "for the night", k: ["다리에 부목을 대고 있어요", "엉덩이에 주사를 놓을게요"], a: "pelvis", o: ["spine", "knee", "ribs"]}
+  - {t: "움직임 통제", i: lock, w: "Please don't …는 금지를 정중하게 하는 틀이에요. 골반이 부러졌을 때는 움직이면 부러진 뼈가 혈관을 더 찢어 출혈이 늘 수 있어서 가만히 있게 해요.", d: "on your own", k: ["다리 감각이 있는지 말씀해 주세요", "엉덩이 쪽 통증이 어떤지 말씀해 주세요"], a: "legs", o: ["arms", "feet", "shoulders"]}
+  - {t: "준비 안내", i: lab, w: "in case로 아직 필요하다고 확정한 게 아니라 대비라고 말해 환자가 놀라지 않게 해요. 골반 골절은 출혈이 많아질 수 있어 수혈을 미리 준비해요.", d: "for surgery", k: ["혈액형 검사는 이미 끝났어요", "혈액을 검사실에 보낼게요"], a: "blood", o: ["fluids", "oxygen", "medicine"]}
+  - {t: "상태 설명", i: monitor, w: "unstable, so …로 원인과 조치를 한 문장에 이어 말하면 가만히 있어야 하는 이유가 바로 들려요. 흔들리는 골반을 움직이면 출혈이 늘 수 있어요.", d: "all night", k: ["골반 사진을 곧 찍을 거예요", "골반 쪽 멍이 보이는지 볼게요"], a: "unstable", o: ["swollen", "tender", "bruised"]}
+  - {t: "감시 안내", i: monitor, w: "because of …로 지켜보는 이유를 밝히면 감시가 걱정스러운 신호처럼 들리지 않아요. 출혈이 이어지면 혈압이 떨어질 수 있어서 수치를 자주 봐요.", d: "this morning", k: ["혈압을 재는 동안 팔을 펴 주세요", "혈압 수치를 보호자께 알릴게요"], a: "closely", o: ["rarely", "briefly", "slowly"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "골반 골절 처치 4문장 순서"
+    why: "골반이 불안정하니 움직이지 말라고 알리고, 그걸 돕는 바인더를 대고, 바인더가 있는 동안 수혈을 준비하고, 혈압이 그 수혈이 필요한지 알려 준다고 닫아요. 'that'·'the binder'·'that blood'가 앞 줄에 기대어 순서가 하나예요."
+    lines:
+    - {en: "Your pelvis is unstable, so please don't move your hips or legs.", icon: lock, ko: "골반이 불안정하니 엉덩이와 다리를 움직이지 마세요", note: "통제"}
+    - {en: "To help with that, we're placing a binder around your hips.", icon: bandage, ko: "그걸 돕기 위해 엉덩이에 바인더를 대고 있어요", note: "시행"}
+    - {en: "While the binder is on, we're preparing blood in case you need it.", icon: lab, ko: "바인더를 대는 동안 혹시 필요할 경우를 대비해 혈액을 준비하고 있어요", note: "준비"}
+    - {en: "Your blood pressure will tell us whether you need that blood.", icon: monitor, ko: "혈압이 그 혈액이 필요한지 알려 줄 거예요", note: "감시"}
+  ctx: {word: "belt thing", ko: "벨트 같은 것"}
+- title: "항응고제 복용 외상"
+  s:
+  - {t: "약물 문진", i: pill, w: "Which …?로 묻는 건 복용 중이라는 전제를 두고 약 이름을 열어 묻는 거예요. 항응고제 종류에 따라 출혈 위험과 되돌리는 방법이 달라요.", d: "for pain", k: ["어떤 진통제를 드세요?", "어떤 알레르기 약을 드세요?"], a: "blood thinner", o: ["pain pill", "water pill", "sleeping pill"]}
+  - {t: "복용 시점", i: calendar, w: "last dose는 마지막 복용 시각을 가리켜서 약 효과가 아직 남아 있는지 가늠하게 해요. 응고를 되돌리는 약이나 시술의 시기를 정하는 데 필요한 정보예요.", d: "at home", k: ["약은 하루에 몇 번 드세요?", "약은 얼마나 오래 드셨어요?"], a: "last", o: ["first", "next", "missed"]}
+  - {t: "위험 설명", i: shield, w: "Even a minor …는 작은 상처도 예외가 아니라고 못 박아 경각심을 줘요. 항응고제를 쓰면 피가 잘 굳지 않아 작은 상처에서도 출혈이 오래갈 수 있어요.", d: "at night", k: ["이 약은 식후에 드셔야 해요", "이 약은 보호자께 맡겨 둘게요"], a: "bleed", o: ["heal", "itch", "shrink"]}
+  - {t: "이유 설명", i: monitor, w: "because of로 지켜보는 이유를 약 때문이라고 밝히면 환자가 자기 탓이라고 느끼지 않아요. 항응고제를 먹으면 출혈이 시간이 지나서 드러나기도 해요.", d: "all night", k: ["약 때문에 검사를 한 번 더 할게요", "약 때문에 금식은 하지 않아도 돼요"], a: "blood thinner", o: ["head injury", "broken rib", "long wait"]}
+  - {t: "약 목록", i: pill, w: "even the small dose ones로 적은 양이라고 빼놓지 않게 미리 막아요. 소량의 아스피린이나 보충제도 출혈에 영향을 줄 수 있어서 전부 알아야 해요.", d: "from home", k: ["약 부작용이 있었는지 말씀해 주세요", "약을 어디서 받으셨는지 말씀해 주세요"], a: "taking", o: ["missing", "refusing", "avoiding"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "항응고제 문진 4문장 순서"
+    why: "어떤 약인지 묻고, 그 약의 마지막 복용을 묻고, 그 복용 외 약을 전부 말해 달라고 하고, 모든 것을 이유로 세심히 지켜본다고 닫아요. 'that one'·'that last dose'·'all of that'이 앞 줄에 기대어 순서가 하나예요."
+    lines:
+    - {en: "Which blood thinner do you take?", icon: pill, ko: "어떤 혈액희석제를 드세요?", note: "약물"}
+    - {en: "When was your last dose of that one?", icon: calendar, ko: "그 약을 마지막으로 드신 건 언제였나요?", note: "시점"}
+    - {en: "Thanks—besides that last dose, please tell me every medication you take.", icon: pill, ko: "고마워요, 그 복용 말고도 드시는 약은 전부 말씀해 주세요", note: "목록"}
+    - {en: "Because of all of that, we need to watch you closely.", icon: monitor, ko: "그 모든 것 때문에 세심히 지켜봐야 해요", note: "감시"}
+  sw: {ko: "어떤 혈액희석제를 드세요?"}
+- title: "관통상 다발"
+  s:
+  - {t: "절차 안내", i: shield, w: "leaving in place를 먼저 말해 환자가 직접 빼려는 충동을 막아요. 박힌 물체가 막고 있던 혈관에서 출혈이 늘 수 있어서 수술 전에는 빼지 않고 고정해요.", d: "for you", k: ["물체 주변 사진을 찍고 있어요", "물체 크기를 재고 있어요"], a: "stabilizing", o: ["removing", "shortening", "pulling"]}
+  - {t: "안정 유도", i: lock, w: "Try to로 시도해 보라고 하면 못 하는 사람을 탓하지 않아요. 움직이면 박힌 물체가 같이 움직여 안쪽 조직을 더 다치게 할 수 있어요.", d: "in the bed", k: ["눈을 크게 뜨고 계세요", "저를 쳐다봐 주세요"], a: "still", o: ["upright", "awake", "close"]}
+  - {t: "상황 파악", i: magnify, w: "How many times …?는 숫자로 답하게 열어 둔 질문이고 struck는 맞았다는 객관적인 표현이라 따지는 느낌이 없어요. 몇 번 맞았는지는 찾아봐야 할 손상 부위 수를 가늠하게 해 줘요.", d: "by the door", k: ["어디를 맞으셨는지 가리켜 주세요", "언제 맞으셨는지 말씀해 주세요"], a: "struck", o: ["stabbed", "shot", "kicked"]}
+  - {t: "금지 안내", i: lock, w: "Please don't …로 금지 사항을 정중히 말해요. 박힌 물체는 준비된 수술실에서 빼는 것이 원칙이라 환자가 먼저 건드리지 않게 해요.", d: "with your hand", k: ["물체 주변이 아프면 말씀해 주세요", "물체를 보지 않아도 괜찮아요"], a: "object", o: ["dressing", "bandage", "wrapping"]}
+  - {t: "위치 파악", i: magnify, w: "figuring out은 지금 알아내는 중이라는 뜻이라 확정 못 한 것을 솔직하게 전해요. 박힌 물체는 겉에서 보이는 것보다 몸속 깊이 들어가 있을 수 있어서 영상으로 경로를 확인해요.", d: "by hand", k: ["물체가 무엇인지 확인하고 있어요", "물체 주변 피부 상태를 확인하고 있어요"], a: "exactly", o: ["roughly", "slowly", "quietly"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "박힌 물체 안내 4문장 순서"
+    why: "건드리지 말라고 하고, 그대로 둔 채 고정한다고 알리고, 고정되면 경로를 보려고 스캔을 찍고, 그 전까지 가만히 있어 달라고 닫아요. 'it'·'Once it's held steady'·'Until then'이 앞 줄에 기대어 순서가 하나예요."
+    lines:
+    - {en: "Please don't touch or pull on the object.", icon: lock, ko: "물체를 만지거나 당기지 마세요", note: "금지"}
+    - {en: "For now, we're leaving it in place and stabilizing it.", icon: shield, ko: "지금은 그대로 두고 고정하고 있어요", note: "고정"}
+    - {en: "Once it's held steady, we're getting scans to see where it went.", icon: magnify, ko: "고정되면 어디로 들어갔는지 스캔을 찍을 거예요", note: "검사"}
+    - {en: "Until then, try to stay very still for me.", icon: lock, ko: "그때까지 최대한 가만히 계셔 주세요", note: "부탁"}
+  ctx: {word: "stabilized", ko: "고정된"}
+- title: "고령 낙상 다발외상"
+  s:
+  - {t: "머리 외상", i: me, w: "when you fell로 넘어진 순간을 짚어 묻는 질문이라 기억을 따라가기 쉬워요. 머리를 부딪혔다면 약 복용 여부와 함께 두개내 출혈 가능성을 가려야 해요.", d: "on the floor", k: ["넘어질 때 누가 곁에 있었나요?", "넘어진 뒤 바로 일어나셨나요?"], a: "head", o: ["hip", "wrist", "knee"]}
+  - {t: "약물 문진", i: pill, w: "What …?으로 열어 물으면 환자가 아는 대로 폭넓게 답해요. 고령자는 혈압약·혈액희석제를 먹는 경우가 많아 부상의 경과와 출혈 위험에 영향을 줘요.", d: "this morning", k: ["어떤 음식을 드셨나요?", "어떤 병을 앓으신 적 있나요?"], a: "taking", o: ["skipping", "refusing", "stopping"]}
+  - {t: "위험 설명", i: shield, w: "Even a small …로 작다고 안심하는 생각을 먼저 짚어요. 나이가 들면 뼈가 약해지고 혈액희석제를 먹는 경우도 많아 작은 낙상에도 골절이나 출혈이 생길 수 있어요.", d: "in the house", k: ["넘어지기 전에 어지러웠는지 말씀해 주세요", "신발은 어떤 걸 신고 계셨는지 말씀해 주세요"], a: "serious", o: ["minor", "mild", "hidden"]}
+  - {t: "공감", i: faceWorried, w: "I know …, but …은 환자 생각을 인정한 뒤 자신의 판단을 잇는 구조라 반박하지 않고 설득해요. 고령 환자는 통증이 적어도 속 손상이 클 수 있어서 확인을 미루지 않아요.", d: "right away", k: ["천천히 일어나셔도 괜찮아요", "어지러우면 바로 말씀해 주세요"], a: "carefully", o: ["quickly", "briefly", "casually"]}
+  - {t: "확인 안내", i: pill, w: "along with로 두 가지를 함께 본다고 하면 약 확인이 부상 치료와 따로가 아니라 하나의 과정이란 걸 알아요. 복용 약은 출혈 위험과 치료 선택에 영향을 줘요.", d: "from the pharmacy", k: ["약 알레르기를 다시 확인하고 있어요", "진통제를 드릴 시간을 보고 있어요"], a: "injuries", o: ["allergies", "symptoms", "vitals"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "고령 낙상 문진 4문장 순서"
+    why: "머리를 부딪혔는지 묻고, 그 답에 감사하며 약을 묻고, 그 약이 출혈에 영향을 주니 작은 것도 말해 달라고 하고, 그래서 신중히 확인한다고 닫아요. 'Thank you'·'those'·'That's why'가 앞 줄에 기대어 순서가 하나예요."
+    lines:
+    - {en: "Did you hit your head when you fell?", icon: me, ko: "넘어지실 때 머리를 부딪히셨나요?", note: "머리"}
+    - {en: "Thank you—what medications are you taking?", icon: pill, ko: "고마워요, 어떤 약을 드시고 계세요?", note: "약물"}
+    - {en: "Some of those can make bleeding worse, so please include the small ones.", icon: shield, ko: "그중 일부는 출혈을 악화시킬 수 있어서 적은 것도 포함해 주세요", note: "이유"}
+    - {en: "That's why we're checking you carefully, even after a small fall.", icon: magnify, ko: "그래서 작은 낙상이어도 신중히 확인하고 있어요", note: "확인"}
+  sw: {ko: "연세가 있으시면 작은 낙상도 심각한 부상을 초래할 수 있어요"}

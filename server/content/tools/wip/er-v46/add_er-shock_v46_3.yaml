@@ -1,0 +1,90 @@
+- title: 언어장벽 쇼크 핵심 확인
+  s:
+  - {t: "핵심 확인", i: magnify, w: "한 단어 질문과 Point to where로 말이 안 통해도 몸짓으로 답하게 해요. 예·아니오로 끝나는 짧은 질문은 통역이 오기 전 가장 빠른 선별이에요.", d: "How many", k: ["어디가 아픈지 점수로 말해 주세요", "지금 숨은 쉬어지나요?"], a: "Bleeding", o: ["Vomiting", "Swelling", "Fever"]}
+  - {t: "핵심 확인", i: faceWorried, w: "here를 가리키며 묻는 짧은 말은 번역이 필요 없어요. 쇼크 환자가 말하기 힘들 때 예·아니오 질문만으로 증상을 좁혀 갈 수 있어요.", d: "Hurts a lot", k: ["여기를 눌러도 아파요?", "어제부터 아팠어요?"], a: "Pain", o: ["Numb", "Swollen", "Itchy"]}
+  - {t: "알레르기", i: pill, w: "Any allergy to …?로 짧게 묻고 곧바로 통역사가 온다고 알려 불안을 덜어요. 약 알레르기는 쇼크 치료 약을 고르기 전에 반드시 확인해요.", d: "Family is here", k: ["약을 지금 먹고 있어요?", "지금 약이 필요해요?"], a: "coming", o: ["leaving", "waiting", "ready"]}
+  - {t: "응답 방법", i: handshake2, w: "once for yes, twice for no처럼 횟수로 약속하면 말을 못 해도 답할 수 있어요. 손을 쥐는 신호는 말하기 힘든 환자에게도 쓸 수 있는 쉬운 방법이에요.", d: "for maybe", k: ["손을 들면 제가 바로 올게요", "손가락 개수로 아픈 점수를 알려 주세요"], a: "once", o: ["again", "always", "never"]}
+  - {t: "약속", i: bell, w: "as soon as possible은 지킬 수 있는 약속이에요. 정확한 시간을 모를 때 right now 대신 쓰면 기다리는 환자가 덜 불안해요.", d: "in a minute", k: ["통역사는 전화로 연결할게요", "통역사가 오면 가족분도 같이 들어와요"], a: "possible", o: ["necessary", "likely", "helpful"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "통역 전 핵심 확인 4문장 순서"
+    why: "짧은 질문으로 출혈을 묻고, 답하는 방법(손 쥐기)을 정하고, 같은 방법으로 알레르기를 묻고, 통역사가 오면 다시 묻겠다고 닫아요. 'If yes'·'Same way'·'these'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Bleeding? Point to where. Yes or no?", icon: magnify, ko: "출혈이에요? 어디인지 짚어 주세요. 예, 아니오?", note: "질문"}
+    - {en: "If yes, squeeze my hand once. If no, squeeze twice.", icon: handshake2, ko: "예이면 한 번, 아니요이면 두 번 쥐어 주세요", note: "방법"}
+    - {en: "Same way: any allergy to medicine?", icon: pill, ko: "같은 방법으로, 약 알레르기 있어요?", note: "알레르기"}
+    - {en: "The interpreter is coming, and I'll ask these again with them.", icon: bell, ko: "통역사가 오고 있어요, 함께 이걸 다시 물을게요", note: "마무리"}
+  sw: {ko: "통역사를 최대한 빨리 모셔올게요"}
+- title: 노인 다약제 저혈압
+  s:
+  - {t: "약 점검", i: pill, w: "Can we …?로 함께 하자고 청하면 약 점검이 추궁이 아니라 협력이 돼요. all을 붙여 처방약·상비약·영양제까지 포함하자고 알려요.", d: "by yourself", k: ["약은 약사에게 맡기셔도 돼요", "오늘 드신 음식을 말씀해 주시겠어요?"], a: "today", o: ["yesterday", "last night", "this week"]}
+  - {t: "과량 확인", i: pill, w: "extra dose로 더 먹은 상황을 구체적으로 짚어요. 노인은 먹었는지 헷갈려 한 번 더 먹는 일이 있어서 이를 확인하는 것이 중요해요.", d: "every morning", k: ["혈압약은 아침에 드시나요, 저녁에 드시나요?", "혈압약을 끊은 적이 있으세요?"], a: "dose", o: ["bottle", "refill", "supply"]}
+  - {t: "원인 설명", i: bulb, w: "together로 약을 함께 먹을 때의 효과를 짚어요. 이뇨제는 수분을 빼고 심장약은 혈관과 심박에 작용해서 함께 쓰면 혈압이 더 떨어질 수 있어요.", d: "at night", k: ["이뇨제는 아침에 드시는 게 좋아요", "심장약은 식사와 같이 드세요"], a: "drop", o: ["raise", "hold", "steady"]}
+  - {t: "약병 확인", i: pill, w: "Let's …together로 환자와 같은 편에서 확인한다는 느낌을 줘요. 약병 라벨을 직접 보면 환자가 기억하는 약과 실제 처방을 맞춰 볼 수 있어요.", d: "at the pharmacy", k: ["약병 라벨 사진을 찍을게요", "약병은 약사에게 돌려줄게요"], a: "together", o: ["alone", "again", "first"]}
+  - {t: "위험 설명", i: bulb, w: "at once로 한꺼번에 먹는 것이 문제임을 짚어요. 약이 많아지면 약끼리의 작용과 혈압 저하가 겹쳐 어지러움이 생기기 쉬워요.", d: "every week", k: ["약을 줄이면 곧 괜찮아질 거예요", "약 시간을 나눠 드시도록 알려 드릴게요"], a: "dizzy", o: ["sleepy", "nauseous", "weak"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "다약제 점검 4문장 순서"
+    why: "오늘 약을 함께 살펴보자고 청하고, 그 방법으로 약병을 확인하고, 약병 속 약의 과량 복용을 묻고, 그렇다면 어지러움이 설명된다고 이어요. 'To do that'·'those bottles'·'If so'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Can we go through all the medicines you took today?", icon: pill, ko: "오늘 드신 약을 전부 같이 살펴볼까요?", note: "제안"}
+    - {en: "To do that, let's check all your pill bottles together.", icon: pill, ko: "그러려면 약병을 다 같이 확인해 볼게요", note: "약병"}
+    - {en: "Did you take an extra dose of any pill in those bottles?", icon: magnify, ko: "그 약병 속 약을 더 드신 적이 있으세요?", note: "과량"}
+    - {en: "If so, too many pills at once can make you feel very dizzy.", icon: bulb, ko: "그렇다면 한꺼번에 많이 드시면 많이 어지러울 수 있어요", note: "설명"}
+  sw: {ko: "오늘 드신 약을 전부 함께 살펴볼까요?"}
+- title: 원인 미상 저혈압 계통 접근
+  s:
+  - {t: "시작점", i: compass, w: "Let's start from the beginning으로 처음부터 함께 짚자고 하면 환자가 시간 순서로 말하기 쉬워요. 마지막으로 괜찮았던 시점은 증상이 시작된 때를 가늠하는 기준이에요.", d: "with your family", k: ["오늘 아침에 뭘 드셨는지 말씀해 주시겠어요?", "지금 어디가 제일 불편하세요?"], a: "last", o: ["first", "next", "still"]}
+  - {t: "증상 나열", i: magnify, w: "증상 이름만 나열하는 짧은 문진이에요. 열은 감염, 출혈, 가슴 통증은 심장, 새 약은 약물 반응으로 저혈압의 서로 다른 원인을 한 번에 훑어요.", d: "last week", k: ["기침이나 가래가 있으세요?", "설사나 구토가 있으셨나요?"], a: "chest", o: ["back", "leg", "ear"]}
+  - {t: "검사 안내", i: lab, w: "to find the cause로 검사의 목적을 밝혀요. 원인을 모르는 저혈압은 피검사와 심전도로 감염·출혈·심장 문제를 가려 나가요.", d: "to save time", k: ["지금 CT를 찍으러 갈 거예요", "수액을 먼저 달아 드릴게요"], a: "ECG", o: ["X-ray", "ultrasound", "echo"]}
+  - {t: "최근 사건", i: calendar, w: "recent로 시간 범위를 좁혀 최근 일만 떠올리게 해요. 낙상·실신·새 약은 갑작스러운 혈압 저하의 원인 후보를 한 번에 확인하는 항목이에요.", d: "last year", k: ["최근에 입원하신 적이 있나요?", "최근에 체중이 줄었나요?"], a: "started", o: ["stopped", "skipped", "shared"]}
+  - {t: "계획 안내", i: compass, w: "first, then으로 순서를 말해 영상 검사가 바로 필요한 것은 아니라는 점을 알려요. 피검사 결과에 따라 영상 여부를 정해 불필요한 검사를 줄여요.", d: "after lunch", k: ["영상 검사는 오늘 예약해 둘게요", "검사 결과는 내일 알려 드릴게요"], a: "imaging", o: ["surgery", "discharge", "treatment"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "원인 미상 저혈압 접근 4문장 순서"
+    why: "마지막으로 괜찮았던 때부터 묻고, 그 뒤의 증상을 훑고, 들은 내용을 근거로 검사를 진행하고, 결과가 나오면 영상 여부를 정한다고 이어요. 'Since then'·'what you've told me'·'those results'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Let's start from the beginning — when did you last feel well?", icon: compass, ko: "처음부터 시작해 볼게요 — 마지막으로 괜찮으셨던 게 언제였어요?", note: "시작점"}
+    - {en: "Since then, any fever, bleeding, chest pain, or new medications?", icon: magnify, ko: "그 뒤로 열, 출혈, 가슴 통증, 새 약이 있었나요?", note: "증상"}
+    - {en: "Based on what you've told me, we're running labs and an ECG to find the cause.", icon: lab, ko: "말씀 주신 걸 토대로 원인을 찾으려고 검사와 심전도를 할게요", note: "검사"}
+    - {en: "Once those results are back, we'll decide on imaging.", icon: compass, ko: "그 결과가 나오면 영상 검사 여부를 정할게요", note: "계획"}
+  ctx: {word: "cause", ko: "원인"}
+- title: 패혈증성 쇼크 급속 악화 번들
+  s:
+  - {t: "승압제 시작", i: siren, w: "Fluids aren't holding으로 상황을 먼저 말하고 대시 뒤에 지시를 이어 급박함을 줘요. 충분한 수액에도 혈압이 유지되지 않으면 승압제를 시작해요.", d: "for an hour", k: ["수액은 줄이고 지켜보세요", "혈액배양을 다시 채취하세요"], a: "holding", o: ["changing", "finishing", "dripping"]}
+  - {t: "항생제 지시", i: pill, w: "within the hour로 시간 제한을 말해요. 패혈증성 쇼크에서는 항생제를 가능한 한 빨리 늦어도 한 시간 안에 시작하는 것이 번들의 핵심이에요.", d: "by tomorrow", k: ["항생제를 약국에 요청하세요", "항생제 알레르기를 차트에서 확인하세요"], a: "hour", o: ["day", "shift", "week"]}
+  - {t: "목표 지시", i: chartup, w: "keep … above 65로 지켜야 할 목표 수치를 말해요. 패혈증성 쇼크의 승압제 목표는 평균동맥압(MAP) 65 mmHg 이상이에요.", d: "below 65", k: ["젖산은 아침에 다시 확인하세요", "MAP은 한 시간 뒤에 확인하세요"], a: "above", o: ["below", "under", "around"]}
+  - {t: "약국 연락", i: speech, w: "get … moving은 일이 막혀 있으니 속도를 내자는 구어체예요. 항생제는 약국 조제와 전달에 시간이 걸려서 먼저 연락해 병목을 줄여요.", d: "for the doctor", k: ["약국에 항생제를 반납하세요", "약국에서 용량을 확인받으세요"], a: "pharmacy", o: ["lab", "supervisor", "blood bank"]}
+  - {t: "모니터링", i: monitor, w: "Keep …ing는 계속 반복하라는 지시이고 every few minutes로 간격을 줘요. 승압제를 쓰는 동안 혈압은 짧은 간격으로 또는 동맥관으로 연속 확인해요.", d: "once a shift", k: ["그녀의 체온을 계속 확인하세요", "그녀의 소변량을 비우세요"], a: "minutes", o: ["hours", "days", "shifts"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "패혈증 번들 지시 4문장 순서"
+    why: "승압제를 시작하라고 지시하고, 그것이 돌아가면 젖산과 목표 혈압을 확인하게 하고, 그동안 약국에 연락하고, 항생제가 들어가면 혈압 확인을 이어 가게 해요. 'it'·'that'·'the antibiotics'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Fluids aren't holding — start norepinephrine now.", icon: siren, ko: "수액으로는 안 버텨요 — 노르에피네프린을 지금 시작하세요", note: "시작"}
+    - {en: "Once it's running, recheck the lactate and keep the MAP above 65.", icon: chartup, ko: "들어가기 시작하면 젖산을 재확인하고 MAP을 65 이상으로 유지하세요", note: "목표"}
+    - {en: "While you do that, I'll call the pharmacy and get antibiotics moving.", icon: speech, ko: "그동안 저는 약국에 연락해서 항생제를 준비시킬게요", note: "항생제"}
+    - {en: "Once the antibiotics are in, keep checking her blood pressure every few minutes.", icon: monitor, ko: "항생제가 들어가면 몇 분마다 혈압을 계속 확인하세요", note: "감시"}
+  ctx: {word: "norepinephrine", ko: "노르에피네프린"}
+- title: 폐색전 폐쇄성 쇼크
+  s:
+  - {t: "의심 근거", i: siren, w: "suggest로 확진이 아닌 의심이라고 말해요. 다리 부종(깊은정맥혈전)과 갑작스러운 악화는 폐동맥을 막은 대량 폐색전을 시사하는 조합이에요.", d: "a sprain", k: ["다리가 부은 건 심부전 때문일 수 있어요", "갑자기 나빠진 건 수액이 부족해서예요"], a: "massive", o: ["small", "chronic", "minor"]}
+  - {t: "초음파 지시", i: monitor, w: "bedside는 환자를 옮기지 않고 침상에서 한다는 뜻이에요. 폐색전은 오른쪽 심장이 늘어났는지 초음파로 빠르게 볼 수 있어서 불안정한 환자에게 먼저 해요.", d: "in radiology", k: ["CT실로 환자를 옮기세요", "흉부 엑스레이를 찍으세요"], a: "right", o: ["left", "whole", "upper"]}
+  - {t: "준비 지시", i: pill, w: "두 동사를 and로 묶어 약 준비와 알림을 동시에 지시해요. 불안정한 대량 폐색전에는 혈전용해제를 고려하므로 약 준비와 팀 알림을 같이 해요.", d: "for discharge", k: ["수혈 준비를 하고 가족에게 알리세요", "산소를 올리고 의사를 부르세요"], a: "team", o: ["family", "patient", "pharmacy"]}
+  - {t: "감시 지시", i: monitor, w: "Watch … closely right now로 지금 놓치지 말라고 강조해요. 폐색전 환자는 산소포화도와 혈압이 순식간에 나빠질 수 있어서 두 수치를 함께 지켜봐요.", d: "on the chart", k: ["그의 체온과 맥박을 기록하세요", "그의 소변량을 비우세요"], a: "closely", o: ["quickly", "later", "lightly"]}
+  - {t: "대비 지시", i: speech, w: "for possible …로 아직 확정은 아니지만 대비하라는 뜻이에요. 혈전용해제는 출혈 위험이 있어 의사가 판단하지만 간호사가 미리 준비하면 시간을 아껴요.", d: "tonight", k: ["의사에게 알리고 검사 결과를 기다리세요", "팀에 연락하고 환자를 안정시키세요"], a: "possible", o: ["routine", "daily", "planned"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "대량 폐색전 대응 4문장 순서"
+    why: "의심을 말하고, 그것이 맞는지 보려고 초음파를 가져오게 하고, 결과와 상관없이 팀을 부르며 혈전용해에 대비하고, 팀이 올 때까지 감시를 맡겨요. 'that's right'·'the echo'·'they'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "The swollen leg and crash suggest a massive PE.", icon: siren, ko: "다리 부종과 급격한 악화는 대량 폐색전이 의심돼요", note: "의심"}
+    - {en: "If that's right, get a bedside echo to look at the right heart.", icon: monitor, ko: "맞다면 우심장을 볼 침상 초음파를 준비하세요", note: "초음파"}
+    - {en: "Whatever the echo shows, call the team and prepare for possible thrombolytics.", icon: speech, ko: "초음파 결과와 상관없이 팀을 부르고 혈전용해에 대비하세요", note: "대비"}
+    - {en: "Until they arrive, watch his oxygen and blood pressure closely.", icon: monitor, ko: "그들이 올 때까지 산소와 혈압을 면밀히 지켜보세요", note: "감시"}
+  ctx: {word: "notify", ko: "알리다"}

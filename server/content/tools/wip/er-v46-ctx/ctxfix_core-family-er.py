@@ -1,0 +1,21 @@
+from _ctxfix_common import runfix
+runfix("core-family-er", {
+ "explain": {"scenes": {2: {"en": "Let me explain — labs are pending, turnaround's about an hour.",
+   "fix": "Let me explain it another way — her blood test results take about an hour."}}},
+ "stay": {"scenes": {1: {"en": "You're welcome to stay — sit right here by her head."},
+   2: {"en": "Mom can stay at bedside for the IV start.",
+       "fix": "You can stay right here and hold her hand while we put in the IV."}},
+   "why": "'Mom can stay at bedside'는 동료에게 넘기는 인계 말투예요. 부모 앞에서 3인칭으로 말하면 허락받는 사람이 아니라 지켜보는 대상처럼 들려요. 'You'로 직접 말하고, 할 수 있는 역할(손 잡아 주기)을 주세요."},
+ "practice": {"ko": "관습", "scenes": {2: {"en": "Cultural practices or religious preferences — any?",
+   "fix": "Is there anything about your faith or traditions that's important for us to know?"}},
+   "why": "입원 사정지의 칸 이름을 가족에게 그대로 읽으면 닫힌 확인 질문이 돼요. 무엇이 중요한지 열어 물으면 종교가 없거나 문화적 관습인 경우까지 담을 수 있어요."},
+ "private": {"scenes": {2: {"en": "We need a private room — the doctor has bad news about your dad.",
+   "fix": "Let's go somewhere quiet where we can sit down. The doctor will join us there."}},
+   "why": "나쁜 소식이라는 것부터 복도에서 말하면 가족은 준비 없이 충격을 받아요. 먼저 조용한 곳으로 옮기고(SPIKES의 Setting), 소식은 앉은 뒤에 전해요."},
+ "passed away": {"word": "expired", "ko": "사망하다",
+   "scenes": {0: {"en": "Pt expired at 14:32. Family at bedside."},
+              1: {"en": "Bed 3 expired at 2:30 — the family's in the quiet room."},
+              2: {"en": "Your husband expired at 2:30.",
+                  "fix": "I'm so sorry — your husband died at 2:30. I'll stay with you."}},
+   "why": "'expired'는 차트와 동료 사이에서 쓰는 말이지만 가족에게는 차갑게 들려요. 가족에게는 먼저 애도를 전하고, 완곡어보다 died처럼 분명한 말로 알린 뒤 곁에 있겠다고 하세요."},
+})

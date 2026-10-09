@@ -1,0 +1,160 @@
+theme: er-pain-sedation
+changes:
+- kind: word
+  id: w-eye
+  fields:
+  - en
+  why: 활용형 헤드워드를 원형으로(eyes→eye)
+- kind: word
+  id: w-hour
+  fields:
+  - en
+  - example
+  why: 활용형 헤드워드를 원형으로(hours→hour)
+- kind: word
+  id: w-leave
+  fields:
+  - en
+  - example
+  why: 활용형 헤드워드를 원형으로(leaving→leave)
+- kind: word
+  id: w-cure
+  fields:
+  - en
+  - example
+  why: 활용형 헤드워드를 원형으로(curing→cure)
+- kind: word
+  id: w-look
+  fields:
+  - en
+  - example
+  why: 활용형 헤드워드를 원형으로(looking→look)
+- kind: word
+  id: w-respond
+  fields:
+  - en
+  - example
+  why: 활용형 헤드워드를 원형으로(responds→respond)
+- kind: word
+  id: w-talk
+  fields:
+  - en
+  - ko
+  - example
+  why: 활용형 헤드워드를 원형으로(talking→talk). ko를 speak(말하다)와 가름
+- kind: word
+  id: w-edge
+  fields:
+  - ko
+  why: '''날카로움''은 take the edge off의 뜻과 맞지 않음 — 통증의 기세'
+- kind: word
+  id: w-tough
+  fields:
+  - ko
+  why: '''참다''는 tough it out 전체의 뜻 — 낱말 뜻으로'
+- kind: word
+  id: w-sleepy
+  fields:
+  - ko
+  why: drowsy와 ko가 같아(졸린) 듣고 뜻 고르기에서 정답이 둘 — 가름
+- kind: sentence
+  situation: 알레르기·과거 반응 확인
+  index: 2
+  fields:
+  - words
+  why: 너무 쉬운 w-time 태그를 뺀다
+- kind: sentence
+  situation: 오피오이드 요구 환자
+  index: 1
+  fields:
+  - words
+  why: 너무 쉬운 w-doctor 태그를 뺀다
+- kind: sentence
+  situation: 만성 통증+급성 악화
+  index: 1
+  fields:
+  - words
+  why: 너무 쉬운 w-home 태그를 뺀다
+- kind: sentence
+  situation: 만성 통증+급성 악화
+  index: 2
+  fields:
+  - words
+  why: 너무 쉬운 w-doctor 태그를 뺀다
+- kind: sentence
+  situation: 만성 통증+급성 악화
+  index: 4
+  fields:
+  - words
+  why: 너무 쉬운 w-body 태그를 뺀다
+- kind: sentence
+  situation: 절차적 진정 사전 설명
+  index: 1
+  fields:
+  - words
+  why: 너무 쉬운 w-time 태그를 뺀다
+- kind: sentence
+  situation: 회복 마취 후 관찰
+  index: 0
+  fields:
+  - words
+  why: 너무 쉬운 w-name 태그를 뺀다
+- kind: sentence
+  situation: 난치성 급성 통증
+  index: 1
+  fields:
+  - words
+  why: 너무 쉬운 w-doctor 태그를 뺀다
+- kind: sentence
+  situation: 중증 외상 통증 위기
+  index: 4
+  fields:
+  - words
+  why: 너무 쉬운 w-body 태그를 뺀다
+- kind: word-remove
+  id: w-doctor
+  why: 너무 쉬움 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-body
+  why: 너무 쉬움 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-name
+  why: 너무 쉬움 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-home
+  why: 너무 쉬움 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-time
+  why: 너무 쉬움 — 어느 문장도 태그하지 않게 됐다
+- kind: sentence
+  situation: 오피오이드 과다·날록손
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'v46 검토 결정 11 예외: the medicine이 모호하고 역전제로 읽으면 약리가 거꾸로 — 통증은 날록손이 오피오이드를 막는 동안 돌아옴'
+- kind: sentence
+  situation: 진통제 투여 전 설명
+  index: 5
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'v46 검토 결정 11 예외: 1.2는 졸리면 알려 달라는데 1.5는 정상이니 쉬라고 엇갈림 — 깨어 있기 힘들면 알리라고 덧붙임'
+- kind: sentence
+  situation: 만성 통증+급성 악화
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  why: 'v46 검토 결정 11 예외: 양상과 부위라는 다른 축을 or로 묶어 어색해 두 질문으로 나눔'
+- kind: sentence
+  situation: 회복 마취 후 관찰
+  index: 3
+  fields:
+  - ko
+  why: 'v46 검토 결정 11 예외: en what day it is는 요일에 가까운데 ko가 며칠이라 요일로 맞춤'

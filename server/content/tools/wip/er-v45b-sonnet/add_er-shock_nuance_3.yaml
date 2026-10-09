@@ -1,0 +1,110 @@
+"폐색전 폐쇄성 쇼크":
+  - kind: slider
+    words: [w-massive, w-pe]
+    cue: "A CT shows a PE with right-heart strain, but her BP is steady at 120/80. How do you classify it?"
+    scale: [small, submassive, massive]
+    answerAt: 1
+    why: "massive PE는 저혈압이나 쇼크가 동반된 경우를 말해요. 혈압이 유지되지만 우심 부담이 있으면 submassive라고 해요. 같은 PE라도 단계에 따라 치료와 보고의 긴급도가 달라져요."
+    example: "A massive PE can drop the blood pressure suddenly."
+    exKo: "대량 폐색전은 혈압을 갑자기 떨어뜨릴 수 있어요."
+  - kind: context
+    words: [w-notify, w-team]
+    scenes:
+      - {who: 차트 기록, icon: board, en: "PE response team notified at 14:20.", ok: true}
+      - {who: 의사에게 보고, icon: speech, en: "I've notified the PE team and the ICU.", ok: true}
+      - {who: 환자에게, icon: me, en: "I've activated the PERT per the massive PE pathway.", ok: false, fix: "I've called our specialist team, and they're coming to help right now."}
+    why: "PERT, pathway 같은 약어와 절차 이름은 의료진끼리의 말이에요. 환자에게는 '전문 팀을 불렀고 곧 온다'처럼 풀어 말해요."
+  - kind: reel
+    words: [w-crash]
+    word: crash
+    scenes:
+      - {who: 구급대원 → 간호사, en: "He crashed in the ambulance — pressure's 70 over 40.", ko: "구급차 안에서 갑자기 나빠졌어요 — 혈압이 70/40이에요.", tone: 급함}
+      - {who: 차트 기록, en: "Pt crashed 10 min after arrival; MAP 52.", ko: "도착 10분 뒤 급격히 악화, 평균동맥압 52.", tone: 건조}
+      - {who: 야간 인계, en: "If she crashes overnight, call the rapid response team.", ko: "밤새 급격히 나빠지면 신속대응팀을 호출하세요.", tone: 경고}
+      - {who: "보호자에게는…", en: "His condition got worse very suddenly, and the team is with him now.", ko: "상태가 갑자기 많이 나빠져서 지금 팀이 곁에서 보고 있어요.", tone: 완곡, swap: true}
+    why: "crash는 멀쩡하던 환자가 갑자기 무너지는 모습을 그리는 구어체 임상어예요. 의료진끼리는 짧게 쓰지만, 가족에게는 거칠게 들려서 풀어서 말해요."
+"심장압전 폐쇄성 쇼크":
+  - kind: slider
+    words: [w-muffled, w-tone]
+    cue: "On auscultation the heart sounds are quiet and far away, as if heard through a pillow."
+    scale: [soft, muffled, absent]
+    answerAt: 1
+    why: "Beck 삼징(저혈압·경정맥 확장·심음 감소)의 심음 감소는 'muffled(먹먹한)'로 표현해요. 'absent'는 소리가 아예 없다는 뜻이라 전혀 다른 상황이에요."
+    example: "Her heart tones sound muffled."
+    exKo: "그녀의 심음이 먹먹하게 들려요."
+  - kind: context
+    words: [w-tamponade, w-pericardiocentesis, w-drain]
+    scenes:
+      - {who: 차트 기록, icon: board, en: "Pericardial effusion with tamponade physiology; pericardiocentesis planned.", ok: true}
+      - {who: 의사에게 보고, icon: speech, en: "Echo shows tamponade — setting up for pericardiocentesis.", ok: true}
+      - {who: 보호자에게, icon: me, en: "She has tamponade physiology, so we need emergent pericardiocentesis.", ok: false, fix: "Fluid is pressing on her heart, so we need to drain it right away."}
+    why: "tamponade physiology, pericardiocentesis는 의료진끼리의 용어예요. 보호자에게는 '심장을 누르는 액체를 지금 빼야 한다'로 풀어 말해요."
+"소화관 대량출혈 쇼크":
+  - kind: slider
+    words: [w-vomit, w-blood]
+    cue: "The emesis looks like dark, grainy coffee grounds."
+    scale: [blood-streaked, coffee-ground, bright red]
+    answerAt: 1
+    why: "coffee-ground 구토물은 위산에 닿아 변한 오래된 피로, 천천히 나는 위쪽 소화관 출혈을 시사해요. 선홍색(bright red)은 지금 활발히 출혈 중일 수 있어서 더 급해요."
+    example: "He's vomiting what looks like coffee grounds."
+    exKo: "커피 찌꺼기처럼 보이는 것을 토하고 있어요."
+  - kind: context
+    words: [w-activate, w-transfusion, w-protocol]
+    scenes:
+      - {who: 차트 기록, icon: board, en: "MTP activated; O-neg PRBCs issued.", ok: true}
+      - {who: 의사에게 보고, icon: speech, en: "MTP is active, and the first cooler is on its way.", ok: true}
+      - {who: 환자에게, icon: me, en: "We activated the MTP for your hemorrhagic shock.", ok: false, fix: "You're bleeding a lot, so we're giving you blood right away."}
+    why: "MTP, hemorrhagic shock 같은 약어와 용어는 의료진끼리의 말이에요. 환자에게는 '출혈이 많아서 바로 피를 드리고 있다'로 풀어 말해요."
+"신경성 쇼크 척수손상":
+  - kind: slider
+    words: [w-slow, w-rate, w-heart]
+    cue: "To the physician: HR 44, BP 82/50 after the fall from the roof."
+    scale: [slightly slow, slow, dangerously slow]
+    answerAt: 2
+    why: "분당 60 미만이 서맥인데, 저혈압과 함께 44회까지 느려지면 신경성 쇼크의 특징적인 조합이라 위험하다는 점을 분명히 보고해요. 'slightly slow'는 과소 보고예요."
+    example: "His heart rate is dangerously slow."
+    exKo: "그의 맥박이 위험할 정도로 느려요."
+  - kind: context
+    words: [w-spinal, w-precaution, w-neck, w-move]
+    scenes:
+      - {who: 차트 기록, icon: board, en: "Full spinal precautions maintained; C-collar in place.", ok: true}
+      - {who: 의사에게 보고, icon: speech, en: "C-spine is immobilized, and we're log-rolling only.", ok: true}
+      - {who: 환자에게, icon: me, en: "Your C-spine is immobilized, so no range of motion.", ok: false, fix: "Please stay still. We're keeping your neck and back straight to protect your spine."}
+    why: "C-spine, log-roll, range of motion은 의료진끼리의 말이에요. 환자에게는 '움직이지 말고, 목과 등을 곧게 유지해 척추를 보호한다'로 풀어 말해요."
+"다장기 악화 SBAR·ICU 이송":
+  - kind: slider
+    words: [w-recommend, w-think]
+    cue: "You've reassessed her and want the transfer. What do you say to the ICU physician in the R of SBAR?"
+    scale: [I wonder, I think, I recommend]
+    answerAt: 2
+    why: "SBAR의 R은 확신을 가지고 하는 제안이에요. 'I wonder'는 너무 약하고 'I think'는 개인 의견처럼 들려서, 분명하게 'I recommend …'로 말해요."
+    example: "I recommend ICU admission now."
+    exKo: "지금 중환자실 입원을 권합니다."
+  - kind: context
+    words: [w-hypotensive, w-norepinephrine, w-lactate]
+    scenes:
+      - {who: 차트 기록, icon: board, en: "Remains hypotensive on norepi 12 mcg/min; lactate 4.8, UOP 15 mL/hr.", ok: true}
+      - {who: 의사에게 보고, icon: speech, en: "Still hypotensive on 12 of norepi — lactate's climbing.", ok: true}
+      - {who: 보호자에게, icon: me, en: "She's refractory hypotensive on 12 mcg/min with rising lactate.", ok: false, fix: "Her blood pressure is still too low even with strong medicine, so we want her in the ICU."}
+    why: "refractory hypotensive, mcg/min, lactate 같은 말과 수치는 의료진끼리의 표현이에요. 보호자에게는 '강한 약을 써도 혈압이 낮아 중환자실로 옮기려 한다'처럼 풀어 말해요."
+"부신위기 저혈압":
+  - kind: slider
+    words: [w-dangerous, w-steroid, w-stop]
+    cue: "She has taken steroids for years and stopped them cold for three days. Patient: \"Is that a big deal?\""
+    scale: [harmless, risky, dangerous]
+    answerAt: 2
+    why: "오래 먹던 스테로이드를 갑자기 끊으면 부신위기가 올 수 있고, 이는 생명을 위협해요. 'harmless'는 사실과 반대이고 'risky'는 약해요. 겁주기보다 이유를 분명히 알려 줘요."
+    example: "Stopping steroids suddenly can be dangerous."
+    exKo: "스테로이드를 갑자기 끊으면 위험할 수 있어요."
+  - kind: swap
+    words: [w-stop]
+    who: "환자에게 · 복약 교육"
+    icon: me
+    before: ["Please don't ", "discontinue", " your steroids on your own."]
+    options: [stop, discontinue, cease]
+    answer: stop
+    notes:
+      stop: "환자에게 가장 쉽고 자연스러운 말."
+      discontinue: "처방·차트 용어. 환자 대화에서는 딱딱하다."
+      cease: "문어체라서 환자 대화에는 거의 쓰지 않는다."
+    why: "복약 교육은 환자가 바로 알아듣는 'stop'으로 말하고, 끊기 전에 꼭 상의하라고 덧붙여요."

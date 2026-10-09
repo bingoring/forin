@@ -1,0 +1,121 @@
+ARDS 산소화 지표 이해:
+  - kind: slider
+    words: [w-severe, w-injury]
+    cue: "P/F ratio 90 — 의사가 보호자에게 ARDS 중증도를 설명한 직후"
+    scale: [mild, moderate, severe]
+    answerAt: 2
+    why: "베를린 정의로 P/F 300 이하는 mild, 200 이하는 moderate, 100 이하는 severe ARDS예요. 보호자에게는 숫자보다 '지금 폐 손상이 심한 단계'라는 뜻을 전해요."
+    example: "A lower number means his lung injury is more severe right now."
+    exKo: "숫자가 낮을수록 지금 폐 손상이 더 심하다는 뜻이에요."
+  - kind: swap
+    words: [w-ratio, w-oxygen, w-move]
+    who: "보호자에게 · 수치 설명"
+    icon: me
+    before: ["That number tells us ", "the PaO2 over the FiO2", "."]
+    options: [how well his lungs are moving oxygen, the PaO2 over the FiO2, whether he will survive]
+    answer: how well his lungs are moving oxygen
+    notes: {how well his lungs are moving oxygen: "그 수치가 무엇을 보여 주는지 보호자가 알아듣는 말로 말해요.", the PaO2 over the FiO2: "계산식은 맞지만 의료진끼리의 말이라 보호자에게는 뜻이 전해지지 않아요.", whether he will survive: "수치 하나로 생존을 말할 수는 없어요. 사실보다 무겁게 들려 불안만 키워요."}
+    why: "보호자는 계산식이 아니라 '이 숫자가 그에게 무슨 뜻이냐'를 물어요. 그 질문에 쉬운 말로 답해요."
+  - kind: context
+    words: [w-number, w-improve]
+    scenes:
+      - {who: 동료에게 인계, icon: speech, en: "His P/F is up from 110 to 150 since yesterday.", ok: true}
+      - {who: 차트 기록, icon: board, en: "P/F 150 (prev 110).", ok: true}
+      - {who: 보호자에게, icon: me, en: "His P/F went from 110 to 150.", ok: false, fix: "His oxygen number is better than yesterday, which is a good sign."}
+    why: "같은 호전이라도 보호자에게는 약어와 숫자 대신 '어제보다 나아졌다'는 뜻으로 말해요. 한 번 나아진 것을 회복 약속처럼 말하지는 않아요."
+저 TV 폐보호 환기 유지:
+  - kind: pair
+    words: [w-plateau-pressure, w-tidal-volume, w-ideal-body-weight]
+    pairs: [[plateau, pressure], [tidal, volume], [ideal body, weight]]
+    decoys: [rate]
+    why: "폐보호 환기의 굳은 짝이에요. plateau pressure(고평부압), tidal volume(일회 호흡량), ideal body weight(실제 체중이 아니라 키와 성별로 계산한 체중)."
+  - kind: context
+    words: [w-plateau-pressure, w-driving-pressure, w-protect]
+    scenes:
+      - {who: 동료에게, icon: speech, en: "Plateau is 27 and driving pressure is 12 — we're within target.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Pplat 27 cmH2O, DP 12.", ok: true}
+      - {who: 보호자에게, icon: me, en: "His plateau is 27 and his driving pressure is 12.", ok: false, fix: "We've set the breathing machine gently so it doesn't overstretch his injured lungs."}
+    why: "의료진끼리는 수치로 정확히 말하지만, 보호자에게는 그 설정이 무엇을 위한 것인지(다친 폐를 덜 늘리려고)를 말해요."
+복와위 적응증·금기 확인:
+  - kind: slider
+    words: [w-candidate, w-look, w-overall]
+    cue: "적응증은 맞고 금기도 확인했다. 최종 결정은 회진에서 의사와 팀이 내린다 — 간호사가 의견을 말할 때"
+    scale: ["He might be a candidate.", "He looks like a good candidate to me.", "He's definitely a candidate."]
+    answerAt: 1
+    why: "looks like … to me는 자기 판단임을 밝히면서도 분명하게 들려요. definitely는 결정된 일처럼 들리는데, 복와위 결정은 팀이 함께 내려요. might be는 확인을 다 해 놓고도 자신 없게 들려요."
+    example: "Overall, he looks like a good candidate to me."
+    exKo: "전반적으로 제가 보기엔 좋은 대상자 같아요."
+  - kind: context
+    words: [w-contraindication, w-rule-out]
+    scenes:
+      - {who: 동료에게, icon: speech, en: "Any contraindications before we prone him?", ok: true}
+      - {who: 차트 기록, icon: board, en: "No contraindications to proning identified.", ok: true}
+      - {who: 보호자에게, icon: me, en: "We've ruled out contraindications to proning.", ok: false, fix: "We checked that it's safe for him to lie on his stomach."}
+    why: "contraindication·proning은 의료진의 말이에요. 보호자에게는 같은 내용을 '엎드려 눕혀도 안전한지 확인했다'로 풀어요."
+복와위 체위 준비·물품:
+  - kind: slider
+    words: [w-grab, w-pillow]
+    cue: "돌리기 몇 분 전, 손이 빈 동료에게 베개를 더 부탁한다"
+    scale: ["Grab the pillows.", "Can you grab extra pillows?", "Would you mind grabbing some pillows when you get a chance?"]
+    answerAt: 1
+    why: "Can you …?는 짧고 정중해서 동료에게 부탁할 때 가장 무난해요. 명령문만 쓰면 퉁명스럽게 들릴 수 있고, when you get a chance는 '시간 날 때'라서 지금 필요한 물건에는 맞지 않아요."
+    example: "Can you grab extra pillows for the turn?"
+    exKo: "돌릴 때 쓸 베개를 좀 더 가져다줄래요?"
+  - kind: context
+    words: [w-secure, w-line, w-tube]
+    scenes:
+      - {who: 동료에게, icon: speech, en: "Let's secure all his lines and the tube before we start.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Lines and ETT secured prior to proning.", ok: true}
+      - {who: 보호자에게, icon: me, en: "Lines and ETT secured, ready to prone.", ok: false, fix: "Before we turn him, we make sure his tubes and lines are taped down so nothing pulls."}
+    why: "차트식 줄임말(ETT, prone)은 기록에서는 정확하지만, 보호자에게 하면 무슨 일을 하는지 알 수 없어요."
+복와위 중 압박점 관찰:
+  - kind: slider
+    words: [w-redness, w-pressure]
+    cue: "이마에 붉은 자국 — 손가락으로 누르면 하얗게 변했다가 다시 붉어진다"
+    scale: [redness, stage 1 pressure injury, deep tissue pressure injury]
+    answerAt: 0
+    why: "누르면 하얘지는 붉은 자국은 아직 압박 손상 단계로 매기지 않아요. 눌러도 하얘지지 않으면 stage 1, 짙은 자줏빛·적갈색이 남으면 deep tissue injury를 의심해요. 붉은 자국이라도 바로 패드를 고쳐 줘요."
+    example: "Any redness on the face needs padding adjusted right away."
+    exKo: "얼굴에 발적이 있으면 바로 패딩을 조정해야 해요."
+  - kind: swap
+    words: [w-reposition, w-couple, w-relieve]
+    who: "동료에게 · 복와위 간호 계획"
+    icon: speech
+    before: ["We reposition his head ", "once a shift", " to relieve pressure."]
+    options: [every couple of hours, once a shift, when we have time]
+    answer: every couple of hours
+    notes: {every couple of hours: "정해진 짧은 간격으로 머리 위치를 바꿔 압박을 나눠요. 정확한 간격은 기관 프로토콜을 따라요.", once a shift: "한 근무에 한 번이면 같은 자리가 너무 오래 눌려요.", when we have time: "예방은 여유가 아니라 일정대로 해요. 이렇게 말하면 빠뜨려도 된다고 들려요."}
+    why: "압박 손상 예방은 '언제'가 핵심이에요. 간격을 분명히 말해야 팀이 같은 계획으로 움직여요."
+산소화 반응 모니터:
+  - kind: slider
+    words: [w-better, w-number, w-look]
+    cue: "1시간 전 SpO2 88, 지금 89 — FiO2와 PEEP은 그대로"
+    scale: [about the same, slightly better, much better]
+    answerAt: 0
+    why: "맥박산소측정기는 보통 2~3% 안팎의 오차가 있어서 1% 차이는 about the same이 정직해요. better라고 하면 팀이 반응이 있는 것으로 받아들여요."
+    example: "His numbers look better than they did an hour ago."
+    exKo: "한 시간 전보다 수치가 더 좋아 보여요."
+  - kind: context
+    words: [w-responder, w-chart, w-document]
+    scenes:
+      - {who: 차트 기록, icon: board, en: "Responded to proning: SpO2 88% → 95%.", ok: true}
+      - {who: 동료에게, icon: speech, en: "He's a responder — sats went from 88 to 95.", ok: true}
+      - {who: 보호자에게, icon: me, en: "He's a responder — sats went from 88 to 95.", ok: false, fix: "Lying on his stomach is helping his oxygen levels."}
+    why: "responder·sats는 의료진의 말이에요. 같은 소식을 보호자에게는 '엎드려 눕힌 게 산소에 도움이 되고 있다'로 말해요."
+복와위 안전 전환 팀 협조:
+  - kind: slider
+    words: [w-wait, w-signal]
+    cue: "한 명이 아직 라인을 정리 중이고, 나머지는 손을 얹고 기다린다. 위급한 일은 없다"
+    scale: ["Hang on a sec.", "Wait for my signal.", "Stop! Nobody move."]
+    answerAt: 1
+    why: "계획된 전환에서는 모두가 한 사람의 신호를 기다리게 해요. Hang on a sec은 누가 언제 시작을 알리는지가 흐리고, Stop! Nobody move.는 튜브가 빠지는 것 같은 위급한 순간의 말이라 평소에 쓰면 팀이 놀라요."
+    example: "Wait for my signal before we move."
+    exKo: "움직이기 전에 제 신호를 기다려 주세요."
+  - kind: reel
+    words: [w-count, w-roll]
+    word: count
+    scenes:
+      - {who: "머리맡 리더 → 팀", en: "On my count — one, two, three, roll.", ko: "제 구령에 맞춰요 — 하나, 둘, 셋, 돌려요.", tone: 지시}
+      - {who: "리더 → 팀 확인", en: "Everyone ready? Wait for my count.", ko: "다들 준비됐나요? 제 구령을 기다리세요.", tone: 확인}
+      - {who: "차트 기록", en: "Proned with 5 staff on a three-count; ETT secure.", ko: "직원 5명, 셋 구령으로 복와위 전환. 튜브 고정 유지.", tone: 건조}
+      - {who: "보호자에게는…", en: "We'll turn him together, all at the same time, so he stays safe.", ko: "다 같이 한 번에 돌려서 안전하게 할게요.", tone: 쉬움, swap: true}

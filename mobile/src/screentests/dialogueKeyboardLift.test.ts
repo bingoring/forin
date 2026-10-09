@@ -17,11 +17,12 @@ const SRC = readFileSync(join(__dirname, '..', 'app', 'dialogue', '[id].tsx'), '
 
 test('the thread column has an animated top, not a fixed one', () => {
   expect(SRC).toMatch(/top:\s*threadTopStyle/);
-  // The resting position is now the LEARNER's, from the divider they dragged — clamped,
-  // and falling back to the position that shipped when they never touched it. The
-  // keyboard still overrides it while it is up: that is a borrowed position, and this
-  // is what the edge returns to. (screentests/dialogueResize drives the drag itself.)
-  expect(SRC).toMatch(/const restingTop = clampSplit\(splitTop \|\| saved\.splitTop \|\| winH \* 0\.41 \+ 34, winH\);/);
+  // The resting position is the stage's foot: the handoff height (lesson-fidelity-v46
+  // 결정 5) or the learner's dragged one, clamped. The keyboard still overrides it while
+  // it is up: that is a borrowed position, and this is what the edge returns to.
+  // (screentests/dialogueResize drives the drag itself.)
+  expect(SRC).toMatch(/const stageH = clampStage\(stageDrag \|\| \(guided \? saved\.stageGuided : saved\.stageFree\) \|\| STAGE\[stageMode\], winH, stageMode\);/);
+  expect(SRC).toMatch(/const restingTop = STAGE_TOP \+ stageH;/);
   // Measured, not a constant: with a mission on screen the status bar is ~152pt, so a
   // fixed 96 put the raised thread over the mission text and the 상황 종료 button —
   // the two things you need if the keyboard opened by accident.
@@ -53,11 +54,12 @@ test('the covered chrome stops taking taps', () => {
   // Faded-but-hittable means a tap aimed at the thread opens a QUICK INFO tool,
   // toggles the NPC's voice, or ends the situation from behind it.
   const hits = SRC.match(/pointerEvents=\{typing \? 'none' : 'auto'\}/g) ?? [];
-  // The portrait and 상황 종료 — the latter its own child of the status row now that it
-  // is centred on the screen rather than stacked with the missions. The mission cluster
-  // takes the same fact as a prop instead; that one is asserted where it lives, in
+  // 상황 종료 — its own child of the status row, centred on the screen. The stage (the
+  // portrait and the voice switch) and the mission cluster take the same fact as a prop;
+  // the stage's is asserted in dialogueStage.test.tsx, the cluster's in
   // missionCluster.test.tsx.
-  expect(hits.length).toBe(2);
+  expect(hits.length).toBe(1);
+  expect(SRC).toMatch(/<DialogueStage[\s\S]*?typing=\{typing\}/);
   // The QUICK INFO dock is the third thing the thread used to slide over, and it needs
   // no pointerEvents any more: it moved INSIDE the thread column and is simply not
   // rendered while the keyboard is up, which also gives the exchange its height back.
@@ -81,15 +83,17 @@ test('the input rises with the keyboard, by its measured height', () => {
 });
 
 test('the background ivory grows to fill the screen as the thread rises', () => {
-  // Ivory underneath, the department wash on top, fading as the thread rises — so the
-  // colour the conversation sits on grows instead of leaving a band above it.
+  // Ivory underneath, the stage band on top, fading as the thread rises — so the colour
+  // the conversation sits on grows instead of leaving a band above it.
   expect(SRC).toMatch(/backgroundColor: nb\.cream \}\} \/>/);
   // The fade and the height are on SEPARATE nodes. They have to be: opacity runs on the
   // native driver and height cannot, and on one node RN moves the whole style to native
   // and then throws the first time the keyboard opens. Both halves are asserted here
   // because the pairing is the invariant — the height's own value is driven and checked
   // in screentests/dialogueResize.
-  expect(SRC).toMatch(/<Animated\.View style=\{\{ opacity: chromeOpacity \}\}>[\s\S]{0,900}?<Animated\.View testID="wash-band" style=\{\{ height: threadTopStyle, backgroundColor: wash,/);
+  expect(SRC).toMatch(/opacity: chromeOpacity \}\}>\s*<Animated\.View testID="stage-band" style=\{\{ height: stageBandStyle, backgroundColor: STAGE_BG,/);
+  // The band's height rides the same value as the thread's top, so they stay one edge.
+  expect(SRC).toMatch(/threadTop\.interpolate\(\{ inputRange: \[0, 1\], outputRange: \[restingTop - STAGE_TOP, raisedTop - STAGE_TOP\] \}\)/);
 });
 
 test('the listeners are removed on unmount', () => {

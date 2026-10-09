@@ -1,0 +1,95 @@
+- title: 뇌탈출 임박(동공 산대)
+  s:
+  - {t: "응급 선언", i: siren, w: "blown은 의료진끼리 쓰는 말로 동공이 크게 열려 반응이 없다는 뜻이에요. this is an emergency로 팀 모두에게 긴급함을 분명히 알려요.", d: "Both pupils", k: ["동공 크기를 지금 바로 재 주세요", "의사 선생님께 동공 소견을 알려 주세요"], a: "emergency", o: ["accident", "exercise", "injury"]}
+  - {t: "치료 보고", i: pill, w: "두 가지 조치를 and로 이어 팀이 지금 하는 일을 한 번에 알려요. 뇌탈출이 임박하면 일시적으로 과호흡시켜 뇌혈관을 좁혀 압력을 낮추고, 압력을 낮추는 약도 함께 써요.", d: "and sending labs", k: ["머리를 높이고 정중선에 맞추고 있어요", "수술실에 연락하고 있어요"], a: "reduce", o: ["raise", "measure", "record"]}
+  - {t: "전문의 도착", i: hospital, w: "is coming으로 곧 도착한다고 알려 팀과 가족이 기다릴 수 있어요. 감압은 두개골 안 압력을 낮추는 응급 수술이에요.", d: "for a checkup", k: ["마취과도 같이 오고 있어요", "수술실에 자리를 확보했어요"], a: "emergency", o: ["routine", "planned", "optional"]}
+  - {t: "소견 설명", i: bulb, w: "means로 소견을 해석해서 알려요. 자세이상(포스처링)은 뇌 깊은 곳이 눌릴 때 나타나는 반사 자세라 뇌압이 급히 오르는 위험 신호예요.", d: "His coughing", k: ["이런 자세는 의식이 많이 떨어진 상태에서 나와요", "이 상태에서는 기도 확보가 더 중요해요"], a: "rising", o: ["falling", "dropping", "sinking"]}
+  - {t: "동공 비교", i: magnify, w: "now로 바로 하라고 하고 compare both sides로 목적을 붙여요. 한쪽 동공 이상은 다른 쪽과 견줘야 얼마나 다른지 알 수 있어요.", d: "Cover the other eye", k: ["양쪽 동공을 사진으로 찍어 두세요", "동공 크기를 mm로 적어 주세요"], a: "compare", o: ["record", "cover", "measure"]}
+  - {t: "전화 연결", i: speech, w: "Get … on the phone은 그 사람과 통화가 되게 하라는 구어 지시예요. right now로 지체 없이 하라는 급함을 담아요.", d: "in the hallway", k: ["수술실에도 바로 연락해 주세요", "마취과도 지금 불러 주세요"], a: "neurosurgery", o: ["radiology", "pharmacy", "security"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "뇌탈출 임박 대응 4문장 순서"
+    why: "응급을 선언하고, 다른 쪽 동공과 비교하게 하고, 그 차이의 의미를 알린 뒤, 그래서 신경외과에 전화하라고 해요. 'the other pupil'·'That difference'·'Because of that'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "One pupil is blown—this is an emergency.", icon: siren, ko: "한쪽 동공이 산대됐어요, 응급 상황이에요", note: "선언"}
+    - {en: "Check the other pupil now to compare both sides.", icon: magnify, ko: "지금 다른 쪽 동공을 확인해 양쪽을 비교해요", note: "비교"}
+    - {en: "That difference means the pressure in his brain is rising fast.", icon: bulb, ko: "그 차이는 뇌압이 빠르게 오르고 있다는 뜻이에요", note: "의미"}
+    - {en: "Because of that, get neurosurgery on the phone right now.", icon: speech, ko: "그래서 지금 바로 신경외과에 전화 연결해 주세요", note: "호출"}
+  ctx: {word: "nonreactive", ko: "반응이 없는"}
+- title: 두부외상 삽관·환기
+  s:
+  - {t: "기도 확보", i: siren, w: "GCS 숫자로 상태를 밝히고 we need to로 필요성을 말해 팀이 이유를 알고 움직여요. GCS 8 이하면 스스로 기도를 지키지 못할 위험이 커서 기도 확보를 고려해요.", d: "to clean", k: ["의사 선생님이 기도 확보를 하러 오세요", "기관삽관 도구를 준비해 주세요"], a: "airway", o: ["line", "area", "door"]}
+  - {t: "환기 목표", i: monitor, w: "두 가지 목표를 and로 이어 지시해요. 저산소증은 뇌 손상을 키우고 압력이 오르면 뇌가 더 눌려서 둘 다 피해야 해요.", d: "changes in color", k: ["혈압이 떨어지지 않게 지켜보세요", "체온이 오르면 바로 알려 주세요"], a: "oxygenation", o: ["hydration", "nutrition", "mobility"]}
+  - {t: "CO2 목표", i: lab, w: "Target으로 환기 목표 수치를 말해요. CO2가 높으면 뇌혈관이 넓어져 압력이 오르고 너무 낮으면 혈관이 좁아져 뇌 혈류가 줄어서 정상 범위를 목표로 해요.", d: "high CO2", k: ["동맥혈 가스 결과를 확인해 주세요", "호기말 CO2 모니터를 붙여 주세요"], a: "brain", o: ["lungs", "heart", "liver"]}
+  - {t: "삽관 준비", i: gear, w: "주어를 빼고 -ing로 짧게 말하는 건 응급 상황에서 쓰는 현재진행형 보고체예요. now로 지금 하고 있다고 전해 팀이 같이 준비해요.", d: "extubation", k: ["삽관 후 위관도 넣을 준비를 해 주세요", "진정제는 이미 준비했어요"], a: "intubation", o: ["discharge", "surgery", "transfer"]}
+  - {t: "우선순위", i: shield, w: "Airway takes priority로 무엇이 먼저인지 한 문장에 못 박고 이유를 이어 붙여요. 의식이 낮으면 기도 반사가 약해져 흡인이나 막힘이 생길 수 있어요.", d: "Fluids take", k: ["출혈 조절이 그다음 우선순위예요", "혈압 관리는 기도 확보 뒤에 해요"], a: "Airway", o: ["Bleeding", "Pain", "Nausea"]}
+  - {t: "진정 유지", i: pill, w: "Keep…steady로 흔들리지 않게 유지하라는 지시이고 to avoid…로 이유를 붙여요. 삽관된 환자가 기침하거나 발버둥치면 뇌압이 순간 오를 수 있어서 진정을 일정하게 유지해요.", d: "Stop sedation", k: ["진정제 용량은 의사 지시대로 조절해요", "통증 조절도 같이 해 주세요"], a: "spikes", o: ["drops", "dips", "falls"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "두부외상 삽관·환기 4문장 순서"
+    why: "GCS를 말하며 기도 확보가 필요하다고 하고, 그것이 삽관임을 알려 준비하고, 삽관 뒤의 CO2 목표와 진정 유지로 이어 가요. 'That'·'Once he's intubated'·'Along with that'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "GCS is 6, so we need to secure the airway.", icon: siren, ko: "GCS가 6점이라 기도를 확보해야 합니다", note: "필요"}
+    - {en: "That means intubation, so I'm prepping for it now.", icon: gear, ko: "삽관이 필요하다는 뜻이라 지금 준비 중입니다", note: "준비"}
+    - {en: "Once he's intubated, we'll target normal CO2 to protect the brain.", icon: lab, ko: "삽관되면 뇌를 보호하려고 정상 CO2를 목표로 합니다", note: "목표"}
+    - {en: "Along with that, keep his sedation steady to avoid spikes in pressure.", icon: pill, ko: "그와 함께 압력이 튀지 않도록 진정 수준을 일정하게 유지합니다", note: "진정"}
+  ctx: {word: "intubating", ko: "삽관 중"}
+- title: 관통성 두부손상
+  s:
+  - {t: "물체 고정", i: bandage, w: "두 조치를 and로 묶어 무엇을 하고 무엇을 하지 않는지 함께 알려요. 박힌 물체는 빼지 않고 고정해야 물체가 막고 있던 출혈이 커지는 걸 막을 수 있어요.", d: "and removing it", k: ["물체 주위를 거즈로 감싸고 있어요", "머리를 움직이지 않게 잡아 드릴게요"], a: "stabilizing", o: ["removing", "moving", "shaking"]}
+  - {t: "고개 고정", i: me, w: "as still as possible로 최대한 움직이지 말라는 정도를 알려요. 머리가 움직이면 박힌 물체가 흔들려 뇌 조직을 더 다칠 수 있어요.", d: "as high as", k: ["숨은 편하게 쉬어 주세요", "팔은 몸 옆에 두세요"], a: "still", o: ["high", "low", "quiet"]}
+  - {t: "전문의 안내", i: hospital, w: "on the way로 곧 온다고 알려 환자가 혼자라고 느끼지 않게 해요. 박힌 물체는 신경외과가 수술실에서 다뤄야 해서 도착을 미리 알려요.", d: "The chaplain is", k: ["수술실도 지금 준비하고 있어요", "외상팀이 곧 도착해요"], a: "Neurosurgery", o: ["Radiology", "Pharmacy", "Security"]}
+  - {t: "제거 금지", i: shield, w: "will not remove로 하지 않을 것을 분명히 말하고 that could…로 이유를 붙여요. 응급실에서는 빼지 않고 수술실에서 신경외과가 통제된 상태로 제거해요.", d: "We will cover it", k: ["주변 머리카락은 제가 정리할게요", "물체는 움직이지 않게 고정해 둘게요"], a: "bleeding", o: ["pain", "itching", "cramping"]}
+  - {t: "팀 상황", i: speech, w: "already로 이미 연락이 닿아 있다고 알려 환자와 가족이 안심해요. 두부 관통상은 외상팀과 신경외과가 함께 수술 계획을 세워요.", d: "will soon call", k: ["마취과도 이미 연락을 받았어요", "수술실 간호사에게 소식을 전했어요"], a: "trauma", o: ["cardiac", "dialysis", "nutrition"]}
+  - {t: "접촉 금지", i: shield, w: "Try not to로 부탁하듯 말해 환자가 위축되지 않게 해요. 박힌 물체를 건드리면 위치가 바뀌어 뇌 조직과 혈관이 더 다칠 수 있어요.", d: "to look", k: ["어지러우면 바로 말씀해 주세요", "눈을 감고 쉬셔도 돼요"], a: "object", o: ["bed", "rail", "light"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "관통성 두부손상 설명 4문장 순서"
+    why: "물체를 고정한다고 알리고, 머리를 가만히 하게 하고, 여기서는 빼지 않고 신경외과가 한다고 알린 뒤, 도착 전까지 건드리지 말라고 해요. 'it'·'Until they arrive'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "We're stabilizing the object and leaving it in place.", icon: bandage, ko: "물체를 고정하고 그대로 둘게요", note: "고정"}
+    - {en: "Please keep your head as still as possible so it doesn't shift.", icon: me, ko: "그게 움직이지 않도록 머리를 최대한 가만히 유지해 주세요", note: "자세"}
+    - {en: "We won't remove it here; neurosurgery will do that in the operating room.", icon: hospital, ko: "여기서는 빼지 않고 신경외과가 수술실에서 할 거예요", note: "제거"}
+    - {en: "Until they arrive, try not to touch or move near it.", icon: shield, ko: "그분들이 올 때까지 그 근처는 만지거나 움직이지 않도록 해 주세요", note: "당부"}
+  sw: {ko: "일단은 그대로 둘 거예요"}
+- title: 두부외상 SBAR 인계
+  s:
+  - {t: "상태 변화", i: chartup, w: "from…to…와 over…로 수치의 변화와 기간을 한 문장에 담아요. 인계에서는 현재 값만이 아니라 시간에 따른 추이를 말해야 악화 속도가 보여요.", d: "GCS held", k: ["오늘 GCS를 두 번 측정했습니다", "GCS 감소 원인은 아직 모릅니다"], a: "dropped", o: ["rose", "improved", "recovered"]}
+  - {t: "동공 소견", i: magnify, w: "now로 지금 상태를 못 박아 이전과 달라졌다는 점을 암시해요. 동공이 느리게 반응하고 커지는 것은 뇌압 상승의 중요한 징후라 인계에서 빼놓지 않아요.", d: "pinpoint and brisk", k: ["우측 동공 변화는 30분 전부터 보입니다", "우측 동공 소견을 신경외과에 알렸습니다"], a: "dilated", o: ["constricted", "round", "equal"]}
+  - {t: "복용약 보고", i: pill, w: "세미콜론으로 복용약과 계획을 한 줄에 이어 인계해요. 항응고제 복용 환자의 두개내 출혈은 역전제 사용 여부가 치료의 핵심이라 약 이름을 정확히 알려요.", d: "discharge", k: ["마지막 복용 시간을 확인 중입니다", "약 이름을 가족에게 확인했습니다"], a: "apixaban", o: ["warfarin", "heparin", "aspirin"]}
+  - {t: "동공 소견", i: magnify, w: "remains로 변하지 않고 유지되는 상태를 말해요. 한쪽이 나빠진 상황에서 반대쪽이 정상으로 남아 있다는 정보가 비교의 기준이 돼요.", d: "became fixed", k: ["좌측 눈 주위에 멍이 있습니다", "좌측은 신경외과에서 이미 확인했습니다"], a: "reactive", o: ["sluggish", "fixed", "dilated"]}
+  - {t: "병력 보고", i: pill, w: "daily로 복용 빈도, for…로 복용 이유를 붙여요. 복용 사유(심방세동)까지 전하면 의사가 역전 여부와 위험을 함께 판단해요.", d: "weekly", k: ["심방세동으로 심장내과에 다니고 있습니다", "심방세동 때문에 심박 조절약도 복용합니다"], a: "atrial fibrillation", o: ["hypertension", "diabetes", "asthma"]}
+  - {t: "협진 현황", i: speech, w: "aware와 reviewing으로 알고 있고 지금 보고 있다는 두 가지 상태를 짧게 전해요. 인계에서는 누가 이미 알고 있는지 말해야 중복 호출을 막아요.", d: "off today", k: ["신경외과가 곧 병실에 올 예정입니다", "신경외과가 수술 여부를 결정했습니다"], a: "scan", o: ["chart", "labs", "notes"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "두부외상 SBAR 인계 4문장 순서"
+    why: "GCS 추이를 먼저 알리고, 그 하락과 함께 동공을, 그 변화들 속에서 복용약을 짚은 뒤, 신경외과가 이미 안다고 닫아요. 'that drop'·'those changes'·'all of that'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "GCS dropped from 14 to 10 over 30 minutes.", icon: chartup, ko: "GCS가 30분 동안 14에서 10으로 떨어졌습니다", note: "상황"}
+    - {en: "Along with that drop, his right pupil is now sluggish and dilated.", icon: magnify, ko: "그 하락과 함께 우측 동공이 지금 느리고 산대되어 있습니다", note: "소견"}
+    - {en: "With those changes, his apixaban matters—he takes it daily for atrial fibrillation.", icon: pill, ko: "그 변화들 속에서 아픽사반이 중요합니다, 심방세동으로 매일 복용합니다", note: "병력"}
+    - {en: "Neurosurgery is aware of all of that and reviewing the scan now.", icon: speech, ko: "신경외과는 그 모두를 알고 지금 스캔을 검토 중입니다", note: "현황"}
+  ctx: {word: "GCS", ko: "글래스고 혼수 척도"}
+- title: 외상성 발작 동반
+  s:
+  - {t: "치료 보고", i: pill, w: "to stop the seizure로 투약의 목적을 함께 알려요. 발작이 길어지면 약으로 멈춰야 하는 응급이라 지체하지 않아요.", d: "to record", k: ["발작이 끝나면 기도 상태를 다시 볼게요", "혈당을 지금 바로 확인할게요"], a: "medication", o: ["fluids", "ice", "food"]}
+  - {t: "기도 보호", i: shield, w: "주어를 생략한 -ing 문장은 응급 상황에서 지금 하는 일을 빠르게 알리는 형식이에요. 발작 중에는 기도가 막히거나 산소가 떨어지기 쉬워 기도와 산소를 먼저 챙겨요.", d: "and removing", k: ["환자를 옆으로 눕히고 있어요", "주변의 위험한 물건을 치우고 있어요"], a: "oxygen", o: ["fluids", "medicine", "food"]}
+  - {t: "관찰 보고", i: monitor, w: "Watching closely로 주의 깊게 지켜본다는 점을 보고해요. 외상 후 발작은 뇌압 상승이나 출혈이 더 있다는 신호일 수 있어서 같이 봐요.", d: "dropping", k: ["동공 크기도 같이 살피고 있어요", "발작 시간을 정확히 재고 있어요"], a: "brain", o: ["eye", "chest", "belly"]}
+  - {t: "발작 시간", i: calendar, w: "has lasted…now로 지금까지 이어진 시간을 알려요. 발작 시간은 약을 쓸지, 지속 발작으로 볼지 정하는 기준이라 정확히 말해요.", d: "has stopped", k: ["발작이 시작된 시각은 방금 기록했어요", "발작은 온몸이 뻣뻣해지는 형태예요"], a: "lasted", o: ["stopped", "ended", "paused"]}
+  - {t: "의식 저하", i: chartup, w: "while로 두 가지가 동시에 벌어지고 있다고 짚어요. 발작이 멈춘 뒤에도 의식이 돌아오지 않으면 다른 원인(출혈 등)을 의심해 평가해요.", d: "is rising", k: ["의식이 돌아오면 바로 알려 드릴게요", "동공 반응을 다시 확인할게요"], a: "dropping", o: ["rising", "improving", "holding"]}
+  - {t: "동시 관리", i: gear, w: "at the same time으로 두 가지를 한꺼번에 한다고 말해요. 발작을 멈추는 일과 기도를 지키는 일은 우선순위가 같아서 동시에 진행해요.", d: "one after another", k: ["의사 선생님과 환자 상태를 같이 보고 있어요", "보호자에게는 곧 상황을 설명할게요"], a: "airway", o: ["bleeding", "fever", "pain"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "외상성 발작 대응 4문장 순서"
+    why: "발작이 얼마나 이어졌는지 알리고, 그래서 약을 주고, 약이 듣는 동안 기도와 산소를 챙기며, 약이 들은 뒤 다시 평가한다고 해요. 'Because of that'·'While it takes effect'·'the medication'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "The seizure has lasted almost two minutes now.", icon: calendar, ko: "발작이 거의 2분째 계속되고 있어요", note: "시간"}
+    - {en: "Because of that, we're giving medication to stop it.", icon: pill, ko: "그래서 멈추는 약을 주고 있어요", note: "투약"}
+    - {en: "While it takes effect, we're protecting the airway and giving oxygen.", icon: shield, ko: "약이 듣는 동안 기도를 보호하고 산소를 주고 있어요", note: "기도"}
+    - {en: "Once the medication has worked, we'll recheck his GCS and watch for rising brain pressure.", icon: monitor, ko: "약이 들으면 GCS를 다시 확인하고 뇌압 상승을 지켜볼게요", note: "재평가"}
+  ctx: {word: "benzo", ko: "벤조디아제핀"}

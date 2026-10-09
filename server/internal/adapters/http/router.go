@@ -27,13 +27,16 @@ import (
 type Deps struct {
 	Env           string // dev | staging | prod — gates dev-only routes
 	DevAuthSecret string // gates POST /auth/dev outside dev; empty in prod
-	Log           *slog.Logger
-	Tokens        *auth.TokenService
-	AuthSvc       *auth.Service
-	Users         ports.UserRepo
-	Content       ports.ContentReader
-	Progress      ports.ProgressRepo
-	Review        ports.ReviewRepo
+	// TrustedProxyHops: proxies in front of the app that append to X-Forwarded-For
+	// (config.TrustedProxyHops); 0 = key the rate limit on RemoteAddr.
+	TrustedProxyHops int
+	Log              *slog.Logger
+	Tokens           *auth.TokenService
+	AuthSvc          *auth.Service
+	Users            ports.UserRepo
+	Content          ports.ContentReader
+	Progress         ports.ProgressRepo
+	Review           ports.ReviewRepo
 	// Journeys resolves a profession's learning journey (the themed engine registry,
 	// assembled at boot). Optional: nil degrades every journey read to empty-but-
 	// browsable rather than to an error.
@@ -53,6 +56,7 @@ type Deps struct {
 	SlangRepo            ports.SlangRepo     // slang collection persistence (optional)
 	Night                *night.Stories      // 오늘 밤의 이야기 content (optional)
 	Handoff              *handoff.Service    // 환자 인수인계 노트 (optional)
+	Lessons              ports.LessonRepo    // 상황 학습 4단계 — 단어 은행 + STEP 1·2 완료 (optional)
 	PG                   *pgxpool.Pool
 	Redis                *redis.Client
 }
@@ -125,6 +129,8 @@ func NewRouter(d Deps) http.Handler {
 	// order also documents which is which.
 	mux.Handle("GET /me/review/model-answers/summary", auth(http.HandlerFunc(ph.modelAnswerSummary)))
 	mux.Handle("GET /me/review/model-answers", auth(http.HandlerFunc(ph.modelAnswers)))
+	// One situation's notes — the dialogue rail's 노트 sheet (lesson-fidelity-v46 결정 6).
+	mux.Handle("GET /me/review/scenarios/{id}", auth(http.HandlerFunc(ph.scenarioNotes)))
 
 	// Journey map — one goal-department track + the rest of the campus as chips.
 	jh := &journeyHandler{progress: d.Progress, users: d.Users, journeys: d.Journeys}
@@ -167,6 +173,16 @@ func NewRouter(d Deps) http.Handler {
 		mux.Handle("GET /ward", auth(http.HandlerFunc(wh.get)))
 		mux.Handle("POST /ward/heartbeat", auth(http.HandlerFunc(wh.heartbeat)))
 		mux.Handle("POST /ward/leave", auth(http.HandlerFunc(wh.leave)))
+	}
+
+	// 상황 학습 4단계 (authenticated). Nil when the lesson store is not wired.
+	if d.Lessons != nil {
+		lh := &lessonHandler{content: d.Content, profiles: d.Users, passes: d.Progress, lessons: d.Lessons, review: d.Review, journeys: d.Journeys}
+		mux.Handle("GET /me/lesson/{scenarioId}", auth(http.HandlerFunc(lh.get)))
+		mux.Handle("POST /me/lesson/{scenarioId}/steps/{step}", auth(http.HandlerFunc(lh.clearStep)))
+		mux.Handle("POST /me/lesson/{scenarioId}/words/{wordId}/confused", auth(http.HandlerFunc(lh.confusedWord)))
+		mux.Handle("POST /me/lesson/{scenarioId}/reel/feel", auth(http.HandlerFunc(lh.reelFeel)))
+		mux.Handle("POST /me/lesson/{scenarioId}/sentences/confused", auth(http.HandlerFunc(lh.confusedSentence)))
 	}
 
 	// 은어 도감 (authenticated). Nil when the content deck or its store is not wired.
@@ -247,6 +263,6 @@ func NewRouter(d Deps) http.Handler {
 		requestLog(d.Log),
 		cors,
 		localeMW,
-		rateLimit(rate.Limit(20), 40),
+		rateLimit(rate.Limit(20), 40, d.TrustedProxyHops),
 	)
 }

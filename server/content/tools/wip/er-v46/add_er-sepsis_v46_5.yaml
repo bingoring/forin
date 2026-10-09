@@ -1,0 +1,105 @@
+- title: 다장기부전 진행
+  s:
+  - {t: "장기 영향", i: bell, w: "is now affecting으로 지금 진행 중인 일을 말하고 several of her organs로 범위를 구체적으로 알려요. 가족에게 여러 장기라는 틀을 먼저 주면 이어지는 설명(신장·간·응고)이 쉽게 들려요.", d: "last night", k: ["의사가 곧 자세히 설명할 거예요", "잠시 앉아서 들으셔도 돼요"], a: "organs", o: ["friends", "nurses", "relatives"]}
+  - {t: "장기 지지", i: shield, w: "as best we can로 할 수 있는 최선을 다한다고 말하되 결과를 약속하지 않아요. 다장기부전에서는 투석·승압제·수혈 등으로 각 장기의 기능을 대신 받쳐 주는 것이 치료의 핵심이에요.", d: "for you", k: ["신장 투석이 필요할 수도 있어요", "간 수치는 계속 확인해요"], a: "clotting", o: ["type", "bank", "donor"]}
+  - {t: "솔직한 전달", i: faceWorried, w: "very serious로 심각도를 숨기지 않고 말한 뒤 doing everything possible로 곁에 있다는 신호를 줘요. 위중한 상황의 가족에게는 현실을 흐리지 않되 함께한다는 말을 같이 건네요.", d: "for now", k: ["기다리는 동안 앉을 곳을 안내해 드릴게요", "원하시면 원목 담당자를 부를 수 있어요"], a: "team", o: ["kitchen", "hallway", "elevator"]}
+  - {t: "수치 악화", i: chartup, w: "numbers로 크레아티닌·간효소 같은 검사값을 가족이 알아듣는 말로 묶고 getting worse로 방향만 솔직하게 말해요. 신장과 간 수치가 함께 나빠지는 것은 장기 손상이 진행 중이라는 뜻이에요.", d: "at home", k: ["수치가 바뀌면 다시 알려 드릴게요", "검사는 계속 반복할 거예요"], a: "kidney", o: ["skin", "bone", "eye"]}
+  - {t: "응고 설명", i: lab, w: "isn't clotting as well as it should로 정상이 아니라는 사실을 부정문으로 부드럽게 말해요. 패혈증이 심하면 응고 체계가 흐트러져(DIC) 피가 잘 안 굳거나 곳곳에 응고가 생길 수 있어요.", d: "for lunch", k: ["멍이나 출혈이 보이면 알려 주세요", "피검사를 더 할 수 있어요"], a: "clotting", o: ["growing", "aging", "shrinking"]}
+  - {t: "소통 약속", i: speech, w: "keep explaining으로 한 번이 아니라 계속 설명한다고 약속하고 as it happens로 변화가 생기는 대로 알리겠다고 해요. 위중한 환자의 가족은 소식을 모르는 시간이 가장 힘들어서 소식을 끊지 않겠다는 약속이 큰 위안이 돼요.", d: "at night", k: ["면회 시간은 정해져 있어요", "연락 가능한 번호를 한 번 더 알려 주세요"], a: "explaining", o: ["counting", "drawing", "painting"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "다장기부전 가족 설명 4문장 순서"
+    why: "먼저 솔직하게 상황을 알리고, 'numbers'가 그 상황을 구체적으로 보이고, 'those changes'가 그 변화들을 가리켜 중증도와 대응을 말하고, 'that'이 그 무거운 말을 받아 소통을 약속해요. 'those changes'·'that's a lot to hear'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "I'll be honest: her infection is now affecting several of her organs.", icon: faceWorried, ko: "솔직하게 말씀드릴게요, 감염이 이제 여러 장기에 영향을 주고 있어요", note: "상황"}
+    - {en: "Her kidney and liver numbers are getting worse, and her blood isn't clotting well.", icon: chartup, ko: "신장 수치와 간 수치가 나빠지고 있고 피도 정상만큼 잘 응고되지 않아요", note: "수치"}
+    - {en: "This is very serious, and the team is doing everything possible about those changes.", icon: shield, ko: "매우 심각하고, 저희 팀이 그 변화들에 할 수 있는 모든 걸 하고 있어요", note: "대응"}
+    - {en: "I know that's a lot to hear, and we'll keep explaining every change.", icon: speech, ko: "듣기 힘드실 거 알아요, 변화마다 계속 설명해 드릴게요", note: "공감"}
+  sw: {ko: "지금 환자분의 피가 정상만큼 잘 응고되지 않고 있어요"}
+  ctx:
+    word: "organ failure"
+    ko: "장기부전"
+    sc:
+      0: {en: "AKI (Cr 3.1), shock liver, evolving DIC — multi-organ failure."}
+      2: {en: "She has multi-organ failure with AKI, shock liver, and DIC.", fix: "The infection is now affecting several of her organs — her kidneys, her liver, and her blood's ability to clot."}
+    why: "AKI·shock liver·DIC 같은 약어를 늘어놓는 것은 차트와 의료진끼리의 말이에요. 가족에게는 어떤 장기가 영향을 받는지 쉬운 말로 하나씩 짚어요."
+- title: 젖산 지속상승 위기
+  s:
+  - {t: "수치 상승", i: chartup, w: "still로 이미 수액을 줬는데도 계속이라는 뜻을 넣고 which tells me로 그 수치가 알려 주는 판단(지지가 더 필요함)을 이어요. 수액 후에도 젖산이 계속 오르면 소생이 충분치 않다는 신호예요.", d: "last night", k: ["의사를 곧 다시 부를게요", "젖산을 한 번 더 확인할게요"], a: "lactate", o: ["hunger", "thirst", "mood"]}
+  - {t: "피부 얼룩", i: faceWorried, w: "means로 눈에 보이는 징후를 곧바로 뜻으로 풀어 환자가 이유를 이해하게 해요. 피부가 얼룩덜룩해지는 것은 혈액이 피부까지 충분히 못 가는 쇼크의 신호예요.", d: "this morning", k: ["피부를 만지지 마세요", "손발을 따뜻하게 덮어 드릴게요"], a: "circulation", o: ["digestion", "vision", "memory"]}
+  - {t: "즉시 상급 보고", i: siren, w: "escalating과 immediately로 윗선에 올린다는 행동과 지체 없음이라는 속도를 한 문장에 담아요. 소생에 반응하지 않을 때는 기다리지 않고 바로 의사를 다시 불러요.", d: "for you", k: ["의사가 오면 상황을 바로 설명할게요", "가족분께도 연락할게요"], a: "getting", o: ["losing", "hiding", "leaving"]}
+  - {t: "손발 변화", i: faceWorried, w: "are going cold and blotchy로 지금 환자 몸에 일어나고 있는 변화를 환자 자신의 말로 그대로 짚어요. 쇼크에서는 몸이 중요한 장기로 피를 모으느라 손발이 차고 얼룩덜룩해져요.", d: "all day", k: ["손발을 담요로 덮어 드릴게요", "발 색이 변하면 알려 주세요"], a: "hands", o: ["hair", "nails", "eyebrows"]}
+  - {t: "의사 재호출", i: siren, w: "now로 지금 부른다고 분명히 하고 대시 뒤에 이유(좋아지지 않음)를 붙여, 호출이 과잉 반응이 아니라 근거 있는 행동임을 보여 줘요. 치료에 반응하지 않으면 지체 없이 의사를 다시 불러요.", d: "by yourself", k: ["의사가 오면 바로 보고할게요", "가족분도 곧 부를게요"], a: "calling", o: ["thanking", "hiring", "visiting"]}
+  - {t: "추가 지지", i: bell, w: "alone으로 수액이 틀렸다는 말이 아니라 수액만으로는 모자란다는 말로 이어요. 젖산이 계속 오르는 것은 수액만으로 쇼크가 풀리지 않는다는 신호라, 승압제 등 다른 처치를 의사와 정해요.", d: "for now", k: ["다음 단계는 의사가 정할 거예요", "승압제가 필요할 수도 있어요"], a: "fluids", o: ["curtains", "lights", "towels"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "젖산 지속 상승 설명 4문장 순서"
+    why: "수치를 알리고, 'that'이 그 판단을 가리켜 피부 변화를 연결하고, 'this'가 그 상황을 가리켜 의사 호출을 알리고, 'They'가 그 의사를 가리켜 다음 설명을 말해요. 'that'·'this'·'They'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Your lactate is still climbing, which tells me you need more support.", icon: chartup, ko: "젖산이 계속 올라서 지지가 더 필요하다는 뜻이에요", note: "수치"}
+    - {en: "The cold, blotchy skin on your hands and feet fits with that.", icon: faceWorried, ko: "손발의 차고 얼룩덜룩한 피부도 그것과 맞아요", note: "징후"}
+    - {en: "I'm calling the physician back now because none of this is improving.", icon: siren, ko: "이 중 어느 것도 좋아지지 않아서 지금 의사를 다시 부를게요", note: "호출"}
+    - {en: "They'll talk with you about what comes next, and I'll explain it as we go.", icon: speech, ko: "그분이 다음 계획을 말씀드리고 저는 진행하며 설명해 드릴게요", note: "안내"}
+  sw: {ko: "지금 의사를 다시 부를게요 — 좋아지지 않고 있어요"}
+  ctx:
+    word: "mottling"
+    ko: "피부 얼룩"
+- title: 쇼크 급변 삽관
+  s:
+  - {t: "삽관 안내", i: stetho, w: "is tiring out으로 환자의 호흡이 지쳐 간다는 사실을 환자도 알아듣는 말로 말하고 so로 그래서 하는 일을 이어요. 호흡근이 지치면 호흡이 멈추기 전에 기관 튜브로 호흡을 도와요.", d: "by yourself", k: ["가족에게 곧 연락할게요", "입 안을 한번 볼게요"], a: "tube", o: ["pill", "blanket", "pen"]}
+  - {t: "준비 안심", i: shield, w: "everything과 keep you safe로 빠짐없이 준비하고 안전을 지킨다는 약속을 담아요. 삽관 중에는 산소와 혈압이 떨어질 수 있어서 약과 장비를 다 갖춰 놓고 시작해요.", d: "in the hall", k: ["마지막으로 드신 때를 여쭤볼게요", "알레르기가 있는지 다시 확인할게요"], a: "preparing", o: ["painting", "selling", "counting"]}
+  - {t: "곁 지키기", i: me, w: "I'll be right here로 곁에 있겠다는 약속을 먼저 하고 대시 뒤에 환자가 할 수 있는 일을 짧게 줘요. 숨이 가쁜 환자에게는 한 번에 한두 가지 짧은 지시가 더 잘 전달돼요.", d: "next door", k: ["입을 크게 벌려 보세요", "팔의 힘을 빼 주세요"], a: "calm", o: ["loud", "busy", "tall"]}
+  - {t: "노력 공감", i: faceWorried, w: "working very hard로 환자가 지금 애쓰고 있다는 사실을 인정해 주는 공감이에요. 호흡이 힘든 환자는 자기 몸이 얼마나 지쳤는지 말로 확인받으면 삽관 같은 도움을 더 쉽게 받아들여요.", d: "all day", k: ["힘드시면 고개를 끄덕여 주세요", "말하지 않으셔도 괜찮아요"], a: "working", o: ["sleeping", "playing", "laughing"]}
+  - {t: "준비 상황", i: hospital, w: "are getting ready로 아직 시작 전이고 곧 한다는 진행 단계를 알려요. 삽관은 의사나 호흡 전문 팀이 하고, 간호사는 약·장비·환자 자세를 준비하며 환자에게 상황을 설명해요.", d: "by hand", k: ["튜브는 입으로 들어가요", "넣는 동안 잠들게 해 드릴 거예요"], a: "team", o: ["family", "visitors", "driver"]}
+  - {t: "산소 저하", i: monitor, w: "keeps dropping과 even with로 마스크를 써도 나아지지 않는다는 점을 짚어 삽관이 필요한 이유를 환자가 납득하게 해요. 산소를 줘도 포화도가 계속 떨어지면 기계로 호흡을 대신해야 해요.", d: "last night", k: ["산소 마스크는 그대로 쓰고 계세요", "숨이 차시면 고개를 끄덕여 주세요"], a: "mask", o: ["gown", "cap", "glasses"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "삽관 설명 4문장 순서"
+    why: "산소가 떨어진다는 사실을 알리고, 'That's why'가 그 사실을 이유로 받아 삽관 준비를 말하고, 'this'가 그 삽관을 가리켜 안전 준비를 말하고, 'all of that'이 그 준비를 가리켜 곁에 있겠다고 해요. 'That's why'·'this'·'all of that'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Your oxygen level keeps dropping even with the mask, and you're working hard to breathe.", icon: monitor, ko: "마스크를 써도 산소 수치가 계속 떨어지고 숨쉬려고 정말 애쓰고 계세요", note: "상황"}
+    - {en: "That's why the doctor and team are getting ready to place a breathing tube.", icon: hospital, ko: "그래서 의사와 팀이 호흡 튜브를 넣을 준비를 하고 있어요", note: "삽관"}
+    - {en: "We're preparing everything to keep you safe during this.", icon: shield, ko: "이 과정 동안 안전하도록 모든 걸 준비하고 있어요", note: "준비"}
+    - {en: "I'll be right here through all of that — try to stay calm.", icon: me, ko: "그 모든 과정 동안 곁에 있을게요, 차분히 계세요", note: "곁"}
+  sw: {ko: "숨 쉬는 걸 돕기 위해 호흡용 튜브를 넣을 거예요"}
+- title: 패혈증 심정지 전조
+  s:
+  - {t: "임박 보고", i: siren, w: "pressure와 rate의 변화를 현재진행형으로 짧게 말하고 arrest is imminent로 판단을 덧붙여 팀이 바로 준비하게 해요. 패혈성 쇼크에서 혈압이 무너지고 맥박이 떨어지는 것은 심정지 직전의 신호예요.", d: "last night", k: ["보호자에게 연락해 주세요", "방금 활력징후를 다시 재겠습니다"], a: "pressure", o: ["appetite", "voice", "mood"]}
+  - {t: "지시 한 줄", i: siren, w: "Get…here and…on now로 두 가지 할 일을 명령형으로 연달아 짧게 줘요. 위급할 때는 공손한 장식 없이 동사로 시작해 한 번에 알아듣게 해요. 패드는 심정지가 오면 곧바로 쓰도록 미리 붙여 둬요.", d: "at the desk", k: ["카트는 문 밖에 두세요", "환자 옷은 나중에 정리해요"], a: "cart", o: ["chair", "door", "lamp"]}
+  - {t: "승압제 유지", i: pill, w: "Keep…and prepare…로 이미 하고 있는 일은 유지하고 새로 준비할 일을 한 문장에 나눠 지시해요. 맥박이 사라지면 곧바로 압박을 시작할 수 있게, 그 전에 팀원이 위치와 역할을 정해 둬요.", d: "at home", k: ["제세동기를 가져와 주세요", "환자 침대를 평평하게 눕혀 주세요"], a: "pressor", o: ["radio", "faucet", "oven"]}
+  - {t: "맥박 상태", i: monitor, w: "thready로 맥박이 가늘고 약하다는 임상어를 쓰고 keeps dropping fast로 방향과 속도를 덧붙여 팀이 긴박함을 같이 느끼게 해요. thready는 쇼크 때 맥박을 묘사하는 흔한 말이에요.", d: "last night", k: ["혈압을 한 번 더 재겠습니다", "모니터 알람은 켜 두겠습니다"], a: "Pulse", o: ["Sound", "Smell", "Taste"]}
+  - {t: "코드 호출", i: siren, w: "Call the code now와 bring…to bedside를 and로 이어 두 지시를 한 호흡에 줘요. 심정지가 임박하면 코드를 부르고 제세동기를 침상 곁에 두어 첫 충격까지의 시간을 줄여요.", d: "at the desk", k: ["가족분을 대기실로 모셔 주세요", "기록은 제가 맡겠습니다"], a: "defibrillator", o: ["thermometer", "scale", "walker"]}
+  - {t: "감시 지시", i: monitor, w: "Stay on…and watch…로 지금 맡은 일에서 눈을 떼지 말라는 지시예요. closely와 for arrest로 무엇을 찾는지 분명히 해서 심정지 리듬이 오면 곧바로 알리게 해요.", d: "at the desk", k: ["승압제 속도는 제가 올릴게요", "모니터는 끄지 마세요"], a: "monitor", o: ["door", "window", "ceiling"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "심정지 임박 지시 4문장 순서"
+    why: "임박을 보고하고, 'code'가 그 임박에 따른 호출과 장비를 지시하고, 'it'이 그 심정지를 가리켜 카트와 패드를 지시하고, 'With the cart and pads ready'가 그 준비를 가리켜 유지·감시를 지시해요. 'it'·'With the cart and pads ready'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "His pressure is collapsing and the rate is dropping — arrest is imminent.", icon: siren, ko: "혈압이 무너지고 맥박이 떨어지고 있어요 — 심정지가 임박했어요", note: "보고"}
+    - {en: "Call the code now and bring the defibrillator to bedside.", icon: siren, ko: "지금 코드를 부르고 제세동기를 침상으로 가져와 주세요", note: "호출"}
+    - {en: "Get the crash cart here and pads on, so we're ready if it happens.", icon: pill, ko: "크래시카트를 여기로 가져오고 패드를 붙여 주세요, 일어나도 준비돼 있게요", note: "준비"}
+    - {en: "With the cart and pads ready, stay on the pressor and watch for arrest.", icon: monitor, ko: "카트와 패드가 준비되면 승압제를 유지하고 심정지를 지켜봐 주세요", note: "감시"}
+  sw: {ko: "사라, 크래시카트를 여기로 가져와요 — 지금"}
+- title: 중증 패혈증 ICU 이송
+  s:
+  - {t: "SBAR 요약", i: board, w: "환자 상태, 원인, 처치 완료 순으로 쉼표로 끊어 한 줄에 요약해요. 인계에서는 진단·감염원·번들 완료 여부가 받는 쪽이 가장 먼저 알아야 하는 정보예요.", d: "for now", k: ["가족에게 상황을 설명했습니다", "알레르기는 확인되지 않았습니다"], a: "urinary", o: ["respiratory", "skin", "wound"]}
+  - {t: "승압제·MAP", i: monitor, w: "승압제 이름과 속도, 그 결과 MAP을 한 문장에 이어 말해 받는 쪽이 용량과 반응을 함께 알게 해요. holding은 승압제를 쓰면서 그 값이 유지된다는 정확한 인계 표현이에요.", d: "since noon", k: ["마지막 활력징후는 방금 쟀습니다", "소변량도 같이 말씀드리겠습니다"], a: "MAP", o: ["NPO", "ICU", "ECG"]}
+  - {t: "젖산 추이", i: chartup, w: "수치 하나가 아니라 이전 값과 비교하는 down from six로 변화의 방향까지 전해요. 인계에서는 현재값만이 아니라 추이가 있어야 받는 쪽이 좋아지는지 판단해요.", d: "at home", k: ["다음 젖산 재검은 오더가 나 있습니다", "젖산은 정맥혈로 쟀습니다"], a: "resuscitation", o: ["dinner", "lunch", "breakfast"]}
+  - {t: "번들 완료", i: check, w: "세 가지를 쉼표로 나열하고 all done으로 빠진 것이 없음을 분명히 해요. within the hour로 번들 시간 기준을 지켰다는 점도 받는 쪽에 알려요.", d: "by hand", k: ["배양 결과는 아직 나오지 않았습니다", "항생제 종류는 차트에 있습니다"], a: "Cultures", o: ["Visitors", "Meals", "Forms"]}
+  - {t: "혈압 안정", i: monitor, w: "stable on…으로 어떤 조건에서 안정인지 같이 말해 승압제 덕분에 안정이라는 점을 숨기지 않아요. no changes in the last hour로 최근 한 시간 동안 용량 변화가 없었음을 알려 받는 쪽이 추이를 믿을 수 있게 해요.", d: "for now", k: ["승압제를 한 시간 전에 시작했습니다", "혈압은 5분마다 재고 있습니다"], a: "dose", o: ["floor", "chair", "window"]}
+  - {t: "인계 준비", i: check, w: "alert와 improving으로 현재 상태와 추세를 짧은 낱말로 묶고 ready for report로 인계 준비가 끝났음을 알려요. 의식이 또렷하고 소변량이 늘면 장기로 가는 혈류가 나아지고 있다는 뜻이에요.", d: "by hand", k: ["보호자는 중환자실 앞에서 기다립니다", "이송 장비는 준비됐습니다"], a: "ready", o: ["late", "open", "empty"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "ICU 인계 SBAR 4문장 순서"
+    why: "진단·원인·번들을 요약하고, 'his MAP'이 그 환자의 승압제와 값을 말하고, 'that dose'가 그 용량을 가리켜 안정을 말하고, 'like that'이 그 안정을 가리켜 인계 준비를 말해요. 'that dose'·'like that'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Septic shock, source is a urinary infection, bundle completed within the hour.", icon: board, ko: "패혈성 쇼크, 원인은 요로감염, 번들은 한 시간 안에 완료했습니다", note: "상황"}
+    - {en: "He's on norepinephrine at eight, and his MAP is holding at sixty-six.", icon: monitor, ko: "노르에피네프린 8로 투여 중이고 MAP은 66으로 유지되고 있습니다", note: "경과"}
+    - {en: "Pressure's stable on that dose, with no changes in the last hour.", icon: chartup, ko: "그 용량에서 혈압은 안정적이고 지난 한 시간 변화는 없습니다", note: "안정"}
+    - {en: "Holding like that, he's alert, his urine output is improving, and he's ready for report.", icon: check, ko: "혈압이 그렇게 유지되고 의식이 또렷하며 소변량도 좋아져 ICU 인계 준비가 됐습니다", note: "인계"}
+  sw: {ko: "노르에피네프린 8로 투여 중이고, MAP은 66으로 유지되고 있어요"}

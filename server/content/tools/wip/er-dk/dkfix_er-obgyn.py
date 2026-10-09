@@ -1,0 +1,37 @@
+from dkfix_er5lib import run
+run('obgyn',{
+# review items (rule-4 adjusted)
+"There was nothing you could have done to cause this":(None,"당신이 한 어떤 일도 이 일을 막지 못했어요."),
+"There was nothing you did to cause this":(None,"이건 당신이 뭘 걱정해서 생긴 일이 아니에요."),
+"You are safe here, and you're in control":(None,"이곳은 안전하고, 다음에 어디로 갈지는 당신이 결정해요."),
+"None of this is your fault":(None,"이건 절대 부끄러워할 일이 아니에요."),
+"The head is already showing":(None,"어깨가 이미 보이니, 잠시 힘주기를 멈춰 주세요."),
+"Your baby has died, and I am so very sorry":(None,"아기가 사망했어요. 정말 힘드시겠어요."),
+"When was the first day of your last period":(None,"마지막 검진 날이 언제였는지, 대략이라도 알려주시겠어요?"),
+"However you're feeling about this":(None,"이 일에 대해 어떤 마음이 드시든, 의사 선생님이 곁에서 지지해 주실 거예요."),
+"We need an ultrasound now to see where":("지금 초음파로 임신 주수를 확인해야 해요.",None),
+"How long have you been unable to keep fluids down":(None,"음식조차 넘기지 못하고 토하신 지 얼마나 되셨나요?"),
+"Did the fluid have any color or odor":("양수에 색이나 덩어리가 있었나요?",None),
+"We'll put a monitor on your belly":(None,"배 위에 모니터를 대서 수축과 아기 움직임을 지켜볼게요."),
+"The warmer and blankets are ready":(None,"보온기와 담요가 아기를 위해 준비되어 있어요, 엄마 옆에 바로요."),
+"We're giving you fluids and blood to bring":("혈압을 다시 올리기 위해 수액과 산소를 드릴게요.","혈압을 다시 올리기 위해 수액과 혈액을 준비할게요."),
+"We're starting antibiotics and fluids right away":("지금 바로 항생제 알레르기부터 확인할게요.","지금 바로 항생제와 산소를 시작할게요."),
+# rule 4 on 19.1
+"This isn't your fault, and you didn't do anything wrong":(None,"이건 당신의 잘못이 아니고, 당신은 지금도 혼자가 아니에요."),
+# own pass
+"We're going to check on you and the baby right away":(None,"당신과 아기를 바로 눕혀 드릴게요."),
+"We're checking right away to rule out a tubal":(None,"자궁외임신인지 바로 확인해서 알려드릴게요."),
+"Appendicitis can happen during pregnancy":("충수염은 임신 중에도 생길 수 있어서, 저희는 이를 먼저 설명드려요.",None),
+"I'm worried this may be a miscarriage":(None,"유산일 수 있어서 걱정돼요 — 원무과 직원이 그 부분을 자세히 말씀해 주실 거예요."),
+"I'll stay with you and explain everything gently":(None,"제가 곁에서 하나하나 부드럽게 정리해 드릴게요."),
+"Take your time — we'll make sure nothing is missed":("천천히 하셔도 돼요 — 빠지는 것 없이 번역할게요.",None),
+"We'll go slowly, one question at a time":("천천히, 한 번에 한 가지씩, 다 끝날 때까지 여쭤볼게요.",None),
+"We're going to monitor you and the baby closely":(None,"당신과 아기를 세심히 검사할게요."),
+"We're getting you to the operating room quickly":(None,"두 분 모두를 보호하기 위해 빠르게 수술실을 준비할게요."),
+"We're giving you medication now to help prevent a seizure":("경련을 예방하기 위해 지금 약을 준비할게요.",None),
+"We're ready to care for your baby":(None,"아기가 태어나는 순간 바로 먹일 준비가 되어 있어요."),
+"Give me one more big push":("다음 수축이 올 때 두 번 더 크게 힘주세요.","다음 수축이 올 때 한 번 더 천천히 힘주세요."),
+"Your pressure is dropping and we're acting fast":(None,"혈압이 떨어지고 있어서, 안정시키기 위해 빠르게 보호자를 부르고 있어요."),
+"We're massaging your uterus":(None,"자궁을 마사지하고 출혈을 멈추도록 약을 준비하고 있어요."),
+"We're giving you more blood and fluids":("잃어버린 만큼 혈액과 수액을 더 준비할게요.","잃어버린 만큼 혈액과 수액을 더 요청할게요."),
+})

@@ -1,0 +1,446 @@
+{
+ "theme": "er-chest-abd-trauma",
+ "situations": [
+  {
+   "title": "흉부외상 호흡 사정",
+   "tagline": "It really hurts to take a deep breath since the crash.",
+   "room": "TRAUMA BAY",
+   "brief": "흉부 둔상 환자의 양측 호흡음·흉벽 대칭·통증을 체계적으로 사정하세요.",
+   "role": "patient",
+   "skills": [
+    "호흡 사정",
+    "흉벽 촉진",
+    "외상 어휘"
+   ],
+   "keyPhrases": [
+    "I'm going to listen to your breathing on both sides.",
+    "Point to where it hurts the most when you breathe in.",
+    "Take a slow, deep breath for me if you can."
+   ],
+   "goals": [
+    "양측 호흡음과 흉벽 대칭·움직임을 사정한다",
+    "흡기 시 통증 부위와 강도를 확인한다"
+   ]
+  },
+  {
+   "title": "복부외상 초기 사정",
+   "tagline": "My belly is really sore where the seatbelt was.",
+   "room": "TRAUMA BAY",
+   "brief": "복부 둔상 환자의 압통·팽만·안전벨트 자국을 사정하세요.",
+   "role": "patient",
+   "skills": [
+    "복부 촉진",
+    "안전벨트 자국 확인",
+    "통증 사정"
+   ],
+   "keyPhrases": [
+    "I'm going to gently press on your belly in a few spots.",
+    "Tell me if any area is tender or feels hard.",
+    "Can I see where the seatbelt crossed your body?"
+   ],
+   "goals": [
+    "복부 사분면 압통과 팽만을 사정한다",
+    "안전벨트 자국 등 표재 손상 단서를 확인한다"
+   ]
+  },
+  {
+   "title": "활력·쇼크 징후 감시",
+   "tagline": "I feel dizzy and my heart is pounding really fast.",
+   "room": "RESUS BAY",
+   "brief": "외상 환자의 빈맥·저혈압 등 내부출혈성 쇼크 초기 징후를 감시하세요.",
+   "role": "patient",
+   "skills": [
+    "활력징후 감시",
+    "쇼크 징후",
+    "관류 사정"
+   ],
+   "keyPhrases": [
+    "I'm checking your blood pressure and heart rate closely.",
+    "Do you feel lightheaded or like you might pass out?",
+    "Your skin looks pale, so we're watching you carefully."
+   ],
+   "goals": [
+    "빈맥·저혈압·창백 등 쇼크 초기 징후를 사정한다",
+    "활력 추세 변화를 조기에 인지·보고한다"
+   ]
+  },
+  {
+   "title": "통증 척도·부위 청취",
+   "tagline": "The pain gets much worse when I breathe in deep.",
+   "room": "TRAUMA BAY",
+   "brief": "흡기 시 악화되는 흉복부 통증의 척도와 부위를 청취하세요.",
+   "role": "patient",
+   "skills": [
+    "통증 척도 사정",
+    "통증 부위 청취",
+    "문진"
+   ],
+   "keyPhrases": [
+    "On a scale of zero to ten, how bad is the pain now?",
+    "Does the pain get worse when you breathe in?",
+    "Show me exactly where it hurts with one finger."
+   ],
+   "goals": [
+    "통증 강도를 0~10 척도로 사정한다",
+    "흡기 연관 통증 부위와 양상을 파악한다"
+   ]
+  },
+  {
+   "title": "수상기전(MOI) 확보",
+   "tagline": "The car hit us on my side and the airbags went off.",
+   "room": "TRIAGE",
+   "brief": "충돌·핸들·안전벨트 등 수상기전 정보를 정확히 확보하세요.",
+   "role": "patient",
+   "skills": [
+    "수상기전 문진",
+    "병력 청취",
+    "외상 어휘"
+   ],
+   "keyPhrases": [
+    "Can you tell me how the accident happened?",
+    "Were you wearing a seatbelt and did the airbag deploy?",
+    "Did your chest or belly hit the wheel or dashboard?"
+   ],
+   "goals": [
+    "충돌 방향·속도·안전장치 여부를 확보한다",
+    "잠재 손상 위험을 수상기전으로 예측한다"
+   ]
+  },
+  {
+   "title": "늑골 다발골절 호흡저하",
+   "tagline": "It hurts so much I can barely breathe in.",
+   "room": "TRAUMA BAY",
+   "brief": "늑골 다발골절로 통증성 저환기가 있는 환자의 진통과 호흡을 관리하세요.",
+   "role": "patient",
+   "skills": [
+    "통증성 저환기 사정",
+    "진통 관리",
+    "호흡 지원"
+   ],
+   "keyPhrases": [
+    "The rib fractures make breathing painful, so we'll manage the pain.",
+    "Try to take slow deep breaths even though it hurts.",
+    "Good pain control will help you breathe more fully."
+   ],
+   "goals": [
+    "통증으로 인한 저환기와 SpO2 저하를 사정한다",
+    "진통과 심호흡 격려로 환기를 유지한다"
+   ]
+  },
+  {
+   "title": "폐좌상 지연성 악화",
+   "tagline": "I felt fine at first but now I can't catch my breath.",
+   "room": "ACUTE ZONE",
+   "brief": "폐좌상으로 시간 경과 후 SpO2가 떨어지는 환자를 재사정·보고하세요.",
+   "role": "patient",
+   "skills": [
+    "폐좌상 사정",
+    "산소포화도 추세",
+    "재평가"
+   ],
+   "keyPhrases": [
+    "Your oxygen level has dropped since you arrived.",
+    "A bruised lung can get worse over the next few hours.",
+    "We're going to give you oxygen and watch you closely."
+   ],
+   "goals": [
+    "지연성 SpO2 저하와 호흡곤란 진행을 인지한다",
+    "산소 적용과 재평가·보고를 시행한다"
+   ]
+  },
+  {
+   "title": "비장손상 의심 좌상복부",
+   "tagline": "My left shoulder hurts and my upper belly is really sore.",
+   "room": "RESUS BAY",
+   "brief": "좌상복부 압통·Kehr 징후·저혈압으로 비장손상을 의심하고 사정하세요.",
+   "role": "patient",
+   "skills": [
+    "비장손상 사정",
+    "Kehr 징후 확인",
+    "쇼크 감시"
+   ],
+   "keyPhrases": [
+    "Does the pain spread up to your left shoulder?",
+    "I'm pressing on your upper left belly—tell me if it's tender.",
+    "We're checking for internal bleeding, so stay with me."
+   ],
+   "goals": [
+    "좌상복부 압통과 Kehr 징후를 사정한다",
+    "저혈압 추세로 내부출혈 위험을 판단·보고한다"
+   ]
+  },
+  {
+   "title": "간손상 의심 우상복부",
+   "tagline": "The pain on my right side under the ribs keeps getting worse.",
+   "room": "RESUS BAY",
+   "brief": "우상복부 압통과 활력 추세로 간손상을 의심하고 감시하세요.",
+   "role": "patient",
+   "skills": [
+    "간손상 사정",
+    "우상복부 촉진",
+    "활력 추세 감시"
+   ],
+   "keyPhrases": [
+    "I'm going to feel under your right rib cage.",
+    "Your blood pressure is trending down, so we'll watch closely.",
+    "Tell me right away if you feel faint or more pain."
+   ],
+   "goals": [
+    "우상복부 압통과 방어 징후를 사정한다",
+    "활력 추세로 간출혈 진행 위험을 판단한다"
+   ]
+  },
+  {
+   "title": "안전벨트 증후군",
+   "tagline": "There's a bruise line across my belly from the seatbelt.",
+   "room": "TRAUMA BAY",
+   "brief": "복벽 안전벨트 자국과 함께 지연성 장손상 가능성을 사정하세요.",
+   "role": "patient",
+   "skills": [
+    "안전벨트 증후군 사정",
+    "지연성 장손상 감시",
+    "재평가"
+   ],
+   "keyPhrases": [
+    "That seatbelt mark tells us to check for deeper injury.",
+    "Bowel injuries can show up hours later, so we'll observe you.",
+    "Let me know if your belly pain spreads or gets worse."
+   ],
+   "goals": [
+    "복벽 자국과 연관된 심부 손상 위험을 사정한다",
+    "지연성 장손상 징후를 재평가·설명한다"
+   ]
+  },
+  {
+   "title": "항응고제 흉복부 둔상",
+   "tagline": "I take a blood thinner—should I be worried about this bruise?",
+   "room": "ACUTE ZONE",
+   "brief": "항응고제 복용 둔상 환자의 출혈 확대 위험을 사정·관찰하세요.",
+   "role": "patient",
+   "skills": [
+    "항응고제 병력 청취",
+    "출혈 확대 감시",
+    "재평가"
+   ],
+   "keyPhrases": [
+    "Because you take a blood thinner, bleeding can spread more easily.",
+    "Which blood thinner do you take and when was your last dose?",
+    "We'll watch you longer and repeat your labs to be safe."
+   ],
+   "goals": [
+    "항응고제 종류·최근 복용을 확인한다",
+    "지연성 출혈 확대 위험을 관찰·보고한다"
+   ]
+  },
+  {
+   "title": "관통성 복부 자상",
+   "tagline": "The knife is still in there—please don't pull it out!",
+   "room": "RESUS BAY",
+   "brief": "관통성 복부 자상에서 장기 탈출부는 습윤 피복하고 이물은 제거하지 마세요.",
+   "role": "patient",
+   "skills": [
+    "관통상 처치",
+    "습윤 피복",
+    "이물 고정"
+   ],
+   "keyPhrases": [
+    "We will not remove the object—we'll stabilize it in place.",
+    "I'm covering the wound with a moist sterile dressing.",
+    "Try to stay still so we don't make the injury worse."
+   ],
+   "goals": [
+    "이물을 제거하지 않고 고정한다",
+    "탈출 장기를 습윤 멸균 피복으로 보호한다"
+   ]
+  },
+  {
+   "title": "임신부 복부외상",
+   "tagline": "I'm 30 weeks pregnant and my belly got hit in the crash.",
+   "room": "TRAUMA BAY",
+   "brief": "임신부 복부외상에서 태반조기박리 징후와 태아를 감시하세요.",
+   "role": "patient",
+   "skills": [
+    "임신부 외상 사정",
+    "태반박리 징후",
+    "태아 감시"
+   ],
+   "keyPhrases": [
+    "How many weeks pregnant are you, and is the baby moving?",
+    "Are you having any bleeding, cramping, or tightening?",
+    "We'll put a monitor on to check the baby's heartbeat."
+   ],
+   "goals": [
+    "질출혈·자궁수축 등 박리 징후를 사정한다",
+    "태동·태아 심박 감시를 시행·설명한다"
+   ]
+  },
+  {
+   "title": "언어장벽 흉복부외상",
+   "tagline": "Dolor... aquí... no entiendo bien inglés.",
+   "room": "TRIAGE",
+   "brief": "언어장벽 환자의 통증·기왕력을 통역과 함께 신속히 확보하세요.",
+   "role": "patient",
+   "skills": [
+    "언어장벽 소통",
+    "통역 활용",
+    "신속 문진"
+   ],
+   "keyPhrases": [
+    "I'm getting an interpreter so we understand each other.",
+    "Point to where it hurts and hold up fingers for how bad.",
+    "Do you have any medical problems or take any medicines?"
+   ],
+   "goals": [
+    "통역 자원을 확보해 통증 부위를 파악한다",
+    "핵심 기왕력·알레르기를 신속히 확인한다"
+   ]
+  },
+  {
+   "title": "흉관 삽입 준비 설명",
+   "tagline": "What is that tube for and will it hurt a lot?",
+   "room": "TRAUMA BAY",
+   "brief": "혈흉/기흉 배액을 위한 흉관 삽입 목적과 절차를 환자에게 설명하세요.",
+   "role": "patient",
+   "skills": [
+    "흉관 삽입 설명",
+    "절차 교육",
+    "불안 완화"
+   ],
+   "keyPhrases": [
+    "The tube drains air or blood so your lung can expand.",
+    "We'll numb the area first to make it more comfortable.",
+    "You'll feel pressure, but tell me if the pain is too much."
+   ],
+   "goals": [
+    "흉관의 목적과 절차를 이해하기 쉽게 설명한다",
+    "국소마취·통증 관리로 불안을 완화한다"
+   ]
+  },
+  {
+   "title": "긴장성 기흉 감압 위기",
+   "tagline": "I can't breathe—my chest feels like it's caving in!",
+   "room": "RESUS BAY",
+   "brief": "호흡음 소실·기관 편위를 인지하고 즉시 바늘 감압을 준비·보조하세요.",
+   "role": "patient",
+   "skills": [
+    "긴장성 기흉 인지",
+    "즉시 감압 보조",
+    "응급 소통"
+   ],
+   "keyPhrases": [
+    "Your lung is collapsing and we need to act right now.",
+    "I'm getting the team to release the pressure in your chest.",
+    "Try to stay still—this will help you breathe in a moment."
+   ],
+   "goals": [
+    "호흡음 소실·경정맥 팽대 등 위기 징후를 즉시 인지한다",
+    "바늘 감압을 신속히 준비·보조한다"
+   ]
+  },
+  {
+   "title": "대량 혈흉 순환붕괴",
+   "tagline": "There's so much blood coming out of that tube...",
+   "room": "RESUS BAY",
+   "brief": "흉관 배액 급증과 순환붕괴에 대해 수혈·수술 준비를 조율하세요.",
+   "role": "patient",
+   "skills": [
+    "대량 혈흉 감시",
+    "수혈 준비",
+    "수술 조율"
+   ],
+   "keyPhrases": [
+    "You're losing a lot of blood, so we're giving you a transfusion.",
+    "The surgical team is on the way to stop the bleeding.",
+    "We're watching your drainage and pressure every minute."
+   ],
+   "goals": [
+    "배액량 급증과 순환붕괴를 사정한다",
+    "대량수혈·수술 이송을 신속히 조율한다"
+   ]
+  },
+  {
+   "title": "심장탐포네이드 Beck 삼징후",
+   "tagline": "My heart feels like it's being squeezed and I'm so weak.",
+   "room": "RESUS BAY",
+   "brief": "저혈압·경정맥 팽대·심음 감소의 Beck 삼징후를 인지·보고하세요.",
+   "role": "patient",
+   "skills": [
+    "심장탐포네이드 사정",
+    "Beck 삼징후 인지",
+    "응급 보고"
+   ],
+   "keyPhrases": [
+    "Your neck veins are full and your pressure is very low.",
+    "Fluid around your heart may be limiting its pumping.",
+    "We're preparing to relieve the pressure around your heart."
+   ],
+   "goals": [
+    "Beck 삼징후를 통합적으로 인지한다",
+    "심낭천자 준비와 응급 보고를 시행한다"
+   ]
+  },
+  {
+   "title": "복강내 대량출혈 쇼크",
+   "tagline": "My belly is swelling up and I feel like I'm fading.",
+   "room": "RESUS BAY",
+   "brief": "복부 팽만·쇼크 환자의 개복 수술 이송을 신속히 준비하세요.",
+   "role": "patient",
+   "skills": [
+    "복강내 출혈 사정",
+    "쇼크 관리",
+    "수술 이송 준비"
+   ],
+   "keyPhrases": [
+    "Your belly is filling with blood and your pressure is dropping.",
+    "You need surgery right away to stop the bleeding.",
+    "We're giving you blood and moving you to the OR now."
+   ],
+   "goals": [
+    "복부 팽만과 출혈성 쇼크를 사정한다",
+    "대량수혈과 개복 이송을 신속히 준비한다"
+   ]
+  },
+  {
+   "title": "연가양 흉부(flail chest)",
+   "tagline": "Part of my chest moves the wrong way when I breathe.",
+   "room": "RESUS BAY",
+   "brief": "역설호흡을 보이는 연가양 흉부 환자의 환기 지원을 준비하세요.",
+   "role": "patient",
+   "skills": [
+    "연가양 흉부 사정",
+    "역설호흡 인지",
+    "환기 지원"
+   ],
+   "keyPhrases": [
+    "A section of your ribs is moving separately when you breathe.",
+    "We'll support your breathing and control your pain.",
+    "You may need help from a ventilator to breathe well."
+   ],
+   "goals": [
+    "역설호흡과 환기부전 진행을 사정한다",
+    "진통과 환기 지원 준비를 시행한다"
+   ]
+  },
+  {
+   "title": "흉복부외상 SBAR 인계",
+   "tagline": "The trauma surgeon is here—can you give me the report?",
+   "room": "RESUS BAY",
+   "brief": "손상 부위·배액량·활력을 SBAR 형식으로 정확히 인계하세요.",
+   "role": "colleague",
+   "skills": [
+    "SBAR 인계",
+    "외상 요약",
+    "팀 소통"
+   ],
+   "keyPhrases": [
+    "This is a 40-year-old with blunt chest and abdominal trauma.",
+    "Chest tube output is 400 milliliters and rising.",
+    "Blood pressure is dropping despite two units of blood."
+   ],
+   "goals": [
+    "손상 부위·처치·배액량을 SBAR로 요약한다",
+    "활력 추세와 우선순위를 명확히 인계한다"
+   ]
+  }
+ ]
+}

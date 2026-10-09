@@ -1,0 +1,135 @@
+삽관 전 전산소화·apneic 산소:
+  - kind: slider
+    words: [w-safe, w-buy, w-apneic, w-preoxygenate]
+    cue: "Doctor: \"He's obese and septic — he'll desaturate fast once he's apneic.\""
+    scale: [plenty of safe apnea time, a few minutes, very little safe apnea time]
+    answerAt: 2
+    why: "비만이면 폐에 담기는 산소 예비량이 작고, 패혈증이면 산소를 빨리 써요. 이런 환자는 무호흡이 되면 SpO2가 훨씬 빨리 떨어져서, 전산소화와 apneic 산소로 시간을 최대한 벌어 둬요."
+    example: "He'll have very little safe apnea time, so let's preoxygenate well."
+    exKo: "안전한 무호흡 시간이 아주 짧을 테니 전산소화를 충분히 해요."
+  - kind: swap
+    words: [w-breathe, w-mask, w-extra, w-oxygen]
+    who: "깨어 있는 환자에게 · 마스크를 씌우며"
+    icon: me
+    before: ["I'm putting this mask on so you can ", "preoxygenate", " before we start."]
+    options: [preoxygenate, breathe in extra oxygen, hold your breath]
+    answer: breathe in extra oxygen
+    notes:
+      preoxygenate: "의료진끼리의 말이에요. 환자는 무엇을 하라는 건지 몰라요."
+      breathe in extra oxygen: "할 일을 쉬운 동사로 — 마스크를 댄 채 숨만 쉬면 된다는 게 전해져요."
+      hold your breath: "반대예요. 전산소화는 마스크를 꼭 댄 채 계속 숨을 쉬어야 산소가 채워져요."
+    why: "삽관 전 몇 분은 환자가 깨어 있는 마지막 시간이에요. 해야 할 일을 쉬운 말로 알려 주면 마스크를 덜 밀어내요."
+
+삽관 전후 혈역학 붕괴 대비:
+  - kind: slider
+    words: [w-pressure, w-drop, w-hypotension]
+    cue: "MAP went from 85 to 72 after induction and is still trending down."
+    scale: [stable, drifting down, crashing]
+    answerAt: 1
+    why: "아직 흔히 쓰는 기준선(MAP 65) 위지만 계속 내려가고 있으면 'drifting down'으로 미리 알려 승압제를 준비해요. 'crashing'은 급격히 무너져 지금 바로 처치가 필요할 때 써요."
+    example: "His pressure is drifting down — MAP 72 and trending lower."
+    exKo: "혈압이 서서히 떨어지고 있어요 — MAP 72에서 계속 내려가요."
+  - kind: context
+    words: [w-callout, w-number, w-pressor, w-hypotension]
+    scenes:
+      - {who: 삽관 중 팀에게, icon: speech, en: "BP 82 over 48, MAP 59.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Post-intubation hypotension 82/48 (MAP 59); push-dose pressor given.", ok: true}
+      - {who: 보호자에게, icon: me, en: "His MAP is 59 and we're pushing pressors.", ok: false, fix: "His blood pressure dipped after the breathing tube went in, and we're giving medicine to bring it back up."}
+    why: "MAP·pressor는 팀 안에서 숫자로 빠르게 주고받는 말이에요. 보호자에게는 무슨 일이 있었고 무엇을 하고 있는지를 쉬운 말로 말해요."
+
+화상·부종 기도 조기 확보 판단:
+  - kind: slider
+    words: [w-hoarse, w-stridor, w-voice, w-warning, w-sign]
+    cue: "His voice was normal on arrival. Now it's raspy, and there's a high-pitched sound every time he breathes in."
+    scale: [normal voice, hoarse voice, stridor]
+    answerAt: 2
+    why: "쉰 목소리는 성대 부근이 붓기 시작했다는 신호이고, 들숨마다 나는 높은 소리(협착음)는 기도가 이미 꽤 좁아졌다는 신호예요. 화상 환자에게 이게 보이면 기다리지 말고 조기 삽관을 의논해요."
+    example: "Now he has stridor, not just a hoarse voice."
+    exKo: "이제 쉰 목소리만이 아니라 협착음까지 있어요."
+  - kind: swap
+    words: [w-airway, w-alert, w-team]
+    who: "팀에게 · 조기 삽관을 제안할 때"
+    icon: speech
+    before: ["I'm ", "a little worried about", " his airway — I think we should intubate now."]
+    options: [a little worried about, concerned about, okay with]
+    answer: concerned about
+    notes:
+      a little worried about: "'조금'을 붙이면 급하지 않은 걱정으로 들려 팀이 미루기 쉬워요."
+      concerned about: "TeamSTEPPS의 CUS(Concerned · Uncomfortable · Safety issue) 첫 단계 — 정중하지만 분명한 우려 표시예요."
+      okay with: "'지금 삽관하자'는 뒷말과 정반대예요."
+    why: "기도 화상은 붓기 전에 잡아야 해서, 간호사의 우려는 돌려 말하지 않고 분명한 말로 꺼내요."
+
+기관절개관 교체 보조:
+  - kind: slider
+    words: [w-risk, w-first, w-change, w-carry]
+    cue: "This is his first trach change, five days after surgery."
+    scale: [routine change, higher-risk change, emergency change]
+    answerAt: 1
+    why: "첫 교체는 길이 아직 덜 잡혀 다시 넣기 어렵고 기도를 잃을 위험이 커요. 그래서 계획해서 하되 obturator·같은 크기와 작은 크기 관·기도 카트를 곁에 둬요."
+    example: "It's his first change, so treat it as a higher-risk change."
+    exKo: "첫 교체니까 위험이 더 큰 교체로 생각하세요."
+  - kind: context
+    words: [w-desaturate, w-oxygen, w-level]
+    scenes:
+      - {who: 동료에게, icon: speech, en: "He's desatting — 86 and dropping.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Pt desaturated to 86% during trach change; recovered with O2.", ok: true}
+      - {who: 깨어 있는 환자에게, icon: me, en: "You're desaturating, so stay still.", ok: false, fix: "Your oxygen is a little low, so I'm giving you more. Keep breathing with me."}
+    why: "desat은 의료진끼리의 줄임말이에요. 깨어 있는 환자에게는 산소가 조금 낮다는 사실과 지금 하는 조치를 쉬운 말로 말해야 덜 겁나요."
+
+특수 튜브 관리:
+  - kind: pair
+    words: [w-doublelumen, w-tube, w-ventilation, w-cuff]
+    pairs: [[double-lumen, tube], [one-lung, ventilation], [cuff, positions]]
+    decoys: [cart]
+    why: "double-lumen tube는 통로가 둘인 튜브, one-lung ventilation은 한쪽 폐만 환기, cuff positions는 두 커프가 각각 어디 있는지 — 이중내강 튜브를 확인할 때 함께 나오는 세 묶음이에요."
+  - kind: context
+    words: [w-verify, w-isolation, w-auscultate, w-placement]
+    scenes:
+      - {who: 마취과에게, icon: speech, en: "Left lumen clamped — breath sounds on the right only. Isolation looks good.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Listened, seems like it's in the right spot.", ok: false, fix: "DLT position verified by auscultation; lung isolation confirmed."}
+      - {who: 동료 인계, icon: speech, en: "We checked each side separately, and the isolation is good.", ok: true}
+    why: "차트에는 무엇으로 확인했는지(청진)와 결과(분리 확인)를 정해진 말로 남겨요. '맞는 것 같다'는 확인을 안 한 것처럼 읽혀요."
+
+기관절개 발성밸브 적용:
+  - kind: slider
+    words: [w-cuff, w-fully, w-deflate, w-valve]
+    cue: "Right before the speaking valve goes on."
+    scale: [cuff inflated, cuff partly deflated, cuff fully deflated]
+    answerAt: 2
+    why: "발성밸브는 들숨만 받고 날숨은 막아서, 날숨이 커프 옆을 지나 성대로 나가야 해요. 커프에 바람이 남아 있으면 숨을 내쉴 길이 막혀 위험해요 — 그래서 완전히 빼요."
+    example: "The cuff is fully deflated — now the valve can go on."
+    exKo: "커프에 바람을 완전히 뺐어요 — 이제 밸브를 끼워도 돼요."
+  - kind: swap
+    words: [w-try, w-talk, w-valve]
+    who: "깨어 있는 환자에게 · 밸브를 끼운 뒤"
+    icon: me
+    before: ["The valve is on — ", "phonate", " and let me know how your breathing feels."]
+    options: [phonate, try saying a few words, shout]
+    answer: try saying a few words
+    notes:
+      phonate: "언어치료·차트 용어예요. 환자에게는 무엇을 하라는지 와닿지 않아요."
+      try saying a few words: "짧게 시작하라는 뜻까지 담겨요. 처음엔 숨이 차거나 목소리가 약할 수 있어요."
+      shout: "처음부터 크게 말하게 하면 숨이 차고 겁을 먹어요."
+    why: "오랜만에 목소리를 내는 환자에게는 할 일을 쉬운 말로, 작게 시작하게 해요."
+
+흡인성 폐렴 예방 기도관리:
+  - kind: slider
+    words: [w-lower, w-risk, w-chance, w-pneumonia]
+    cue: "Daughter: \"So he definitely won't get pneumonia now?\""
+    scale: [lowers the chance of, prevents, rules out]
+    answerAt: 0
+    why: "구강간호와 침대 머리 올리기는 폐렴 위험을 '낮추는' 것이지 막아 준다는 보장이 아니에요. 보호자에게 지킬 수 없는 약속을 하지 않도록 'lowers the chance'처럼 말해요."
+    example: "These steps lower the chance of pneumonia, but they can't rule it out."
+    exKo: "이 조치들은 폐렴 가능성을 낮춰 주지만 완전히 막지는 못해요."
+  - kind: swap
+    words: [w-aspiration, w-reduce, w-elevate]
+    who: "보호자에게 · 침대 머리를 올린 이유"
+    icon: me
+    before: ["We keep the head of his bed up to reduce ", "aspiration", "."]
+    options: [aspiration, the chance of saliva going into his lungs, choking]
+    answer: the chance of saliva going into his lungs
+    notes:
+      aspiration: "의료진끼리는 정확한 말이지만, 보호자는 못 알아듣거나 '흡인(석션)'과 헷갈려요."
+      the chance of saliva going into his lungs: "무엇이 어디로 넘어가는 걸 막는지 그림이 그려져요."
+      choking: "목이 막혀 숨을 못 쉬는 응급처럼 들려 불안을 키워요."
+    why: "같은 이유라도 보호자에게는 무엇이 어디로 가는 걸 막는지 쉬운 말로 설명해요."

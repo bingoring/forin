@@ -1,0 +1,120 @@
+- title: FAST 초기 선별
+  s:
+  - {t: "안면 대칭", i: speech, w: "웃어 보라고 하면 입꼬리가 양쪽 똑같이 올라가는지 바로 비교할 수 있어요. 동작을 말로 시키는 요청이라 환자가 따라 하기 쉬워요.", d: "your tongue", k: ["혀를 내밀어 보실 수 있나요?", "성함과 생년월일을 말씀해 주시겠어요?"], a: "teeth", o: ["tongue", "gums", "dentures"]}
+  - {t: "팔 처짐", i: bandage, w: "눈을 감게 하는 것은 눈의 도움 없이 팔 위치를 유지하는지 보려는 것이에요. 한쪽 팔이 아래로 처지면 그쪽 위약을 의심해요.", d: "behind your back", k: ["양쪽 다리를 들어 올려 보세요", "눈을 크게 뜨고 위를 보세요"], a: "straight out", o: ["behind you", "over your head", "at your sides"]}
+  - {t: "발현 시각", i: calendar, w: "발현 시각은 뇌졸중 치료를 할 수 있는지를 가르는 핵심 정보라 첫 문진에서 물어요. first를 붙이면 지금이 아니라 맨 처음 나타난 순간을 가리켜요.", d: "what day", k: ["증상이 지금도 계속되고 있나요?", "예전에도 이런 증상이 있었나요?"], a: "symptoms", o: ["headaches", "spells", "falls"]}
+  - {t: "감각 문진", i: me, w: "한쪽 얼굴의 감각 저하는 흔한 뇌졸중 증상이에요. one side를 넣으면 양쪽이 아니라 좌우 차이를 묻는 질문이 돼요.", d: "of your neck", k: ["한쪽 팔에 힘이 빠지시나요?", "말하기가 어려우신가요?"], a: "numb", o: ["tight", "heavy", "itchy"]}
+  - {t: "말하기 검사", i: speech, w: "같은 문장을 따라 하게 하면 말의 또렷함과 언어 이해를 한꺼번에 볼 수 있어요. 문장이 짧고 쉬워야 결과가 환자의 지식이 아니라 증상을 반영해요.", d: "this long story", k: ["오늘 날짜가 며칠인지 말씀해 주시겠어요?", "눈을 감고 팔을 들어 보세요"], a: "repeat", o: ["read", "spell", "write"]}
+  - {t: "말 변화 알림", i: speaker, w: "sounds로 내가 들은 인상이라고 밝히고 a little로 정도를 누그러뜨리면 단정하지 않으면서 관찰을 전할 수 있어요.", d: "very clear", k: ["숨이 조금 가빠 보여요", "목이 많이 마르신 것 같아요"], a: "slurred", o: ["shaky", "hoarse", "fast"]}
+  - {t: "시각 재확인", i: calendar, w: "exactly는 대략이 아니라 분 단위에 가까운 시각을 요구해요. 치료 시간창을 판단할 기준 시각을 잡으려는 거예요.", d: "who you", k: ["그 후로 점점 나빠지고 있나요?", "그때 어디에 계셨는지 말씀해 주세요"], a: "exactly", o: ["quietly", "briefly", "honestly"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "FAST 선별 4문장 순서"
+    why: "얼굴 확인에서 만든 자세를 팔 검사가 이어받고, 팔을 든 채 말하기를 보고, 마지막에 전체 증상이 시작된 시각을 물어요. 각 줄이 앞 줄의 동작을 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "First, please smile and show me your teeth.", icon: speech, ko: "먼저 웃으면서 이를 보여 주세요", note: "얼굴"}
+    - {en: "Good. Now keep that smile and hold both arms straight out.", icon: bandage, ko: "좋아요, 그 미소를 유지하고 양팔을 뻗어 보세요", note: "팔"}
+    - {en: "While your arms are up, repeat this sentence after me.", icon: speech, ko: "팔을 든 채로 제 뒤를 따라 이 문장을 말해 보세요", note: "말"}
+    - {en: "Thank you, you can lower your arms. When did all of this begin?", icon: calendar, ko: "고마워요, 팔을 내리세요. 이 모든 게 언제 시작됐나요?", note: "시각"}
+  ctx: {word: "slurred", ko: "뭉개진"}
+- title: 마지막 정상 시각 확정
+  s:
+  - {t: "마지막 정상", i: calendar, w: "마지막 정상 시각은 증상이 시작된 시각이 아니라, 환자가 문제없이 지냈다고 확인된 마지막 시각이에요. last와 completely로 기준을 엄격하게 잡아요.", d: "mostly", k: ["그가 언제부터 아프기 시작했나요?", "그가 오늘 아침에 뭘 드셨나요?"], a: "normal", o: ["awake", "alone", "comfortable"]}
+  - {t: "목격자 확인", i: me, w: "증상이 시작되기 직전에 함께 있던 사람이 가장 믿을 만한 목격자예요. 그 사람의 말로 마지막 정상 시각을 좁혀요.", d: "right after", k: ["그가 평소에 어떤 약을 드시나요?", "병원에 오시는 데 얼마나 걸렸나요?"], a: "right before", o: ["right after", "long after", "soon after"]}
+  - {t: "평소 상태", i: me, w: "acting like himself는 평소와 같았는지를 가르는 일상적인 기준이에요. 특정한 식사 자리를 짚으면 보호자가 그때를 더 정확히 떠올려요.", d: "this morning", k: ["어젯밤에 식사를 하셨나요?", "어젯밤에 몇 시에 주무셨나요?"], a: "dinner", o: ["church", "work", "the game"]}
+  - {t: "정확한 시각", i: calendar, w: "exactly로 되물으면 보호자가 저녁쯤에서 구체적인 시각으로 좁혀 줘요. 치료를 쓸 수 있는지는 이 시각에 따라 달라져요.", d: "what day", k: ["그때 어디에 계셨나요?", "그때 혼자 계셨나요?"], a: "exactly", o: ["clearly", "slowly", "honestly"]}
+  - {t: "다른 목격자", i: me, w: "마지막 정상 시각 뒤에 다른 사람이 환자를 봤다면 그 시각이 더 뒤로 옮겨져요. 그래서 anyone else로 또 다른 목격자를 찾아요.", d: "before that", k: ["다른 가족도 병원에 오셨나요?", "그가 이전에도 이런 적이 있었나요?"], a: "anyone else", o: ["any nurse", "any neighbor", "any visitor"]}
+  - {t: "연락처 확보", i: bell, w: "목격 진술을 다시 확인해야 할 때를 대비해 보호자 연락처를 받아요. in case로 연락할 이유를 먼저 밝히면 개인 정보를 달라는 부담이 줄어요.", d: "to send a bill", k: ["보호자님의 성함과 관계를 말씀해 주세요", "환자분의 보험증을 보여 주시겠어요?"], a: "questions", o: ["changes", "delays", "trouble"]}
+  - {t: "최종 목격자", i: me, w: "마지막 정상 시각은 환자를 가장 나중에 본 사람의 진술로 정해요. 그 사람이 환자의 평소 모습을 아는지도 함께 확인해요.", d: "the youngest", k: ["보호자님이 환자분과 같이 사시나요?", "그를 병원에 데려온 분이 보호자님이세요?"], a: "the most recent", o: ["the first", "the only", "the closest"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "마지막 정상 시각 확인 4문장 순서"
+    why: "마지막 정상 시각을 묻고, 그 시각에 함께 있던 사람을 찾고, 그 사람이 이후에 봤는지 확인한 뒤, 맞다면 연락처를 받아요. 뒤 줄이 앞 줄의 답을 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "When did you last see him completely normal?", icon: calendar, ko: "그를 마지막으로 완전히 정상으로 보신 게 언제였나요?", note: "시각"}
+    - {en: "Who was with him at that time?", icon: me, ko: "그때 누가 그와 함께 있었나요?", note: "목격자"}
+    - {en: "Did that person see him again after that?", icon: me, ko: "그 사람이 그 뒤에 그를 다시 봤나요?", note: "이후"}
+    - {en: "If so, I'll need their phone number so we can confirm the time.", icon: bell, ko: "그렇다면 시각을 확인하게 그분 전화번호가 필요해요", note: "연락처"}
+  ctx: {word: "normal", ko: "정상인"}
+- title: 즉시 혈당·활력 측정
+  s:
+  - {t: "혈당 측정", i: lab, w: "뇌졸중이 의심되면 가장 먼저 즉시 혈당을 재요. 저혈당이 뇌졸중과 비슷한 증상을 만들 수 있기 때문이에요.", d: "from your arm", k: ["혈압을 재기 위해 팔에 커프를 감을게요", "정맥주사를 놓을게요"], a: "finger stick", o: ["blood draw", "heel stick", "urine sample"]}
+  - {t: "섭취 문진", i: coffee, w: "마지막 식사 여부는 혈당을 해석할 때 필요해요. anything으로 물으면 한 끼가 아니라 조금이라도 먹었는지를 묻는 열린 질문이 돼요.", d: "last night", k: ["오늘 운동을 하셨나요?", "오늘 술을 드셨나요?"], a: "anything", o: ["breakfast", "lunch", "a snack"]}
+  - {t: "당뇨 약 확인", i: pill, w: "혈당을 낮추는 약이나 인슐린은 저혈당을 일으켜 뇌졸중처럼 보이는 증상을 만들 수 있어요. on은 지금 꾸준히 쓰는 약을 묻는 말이에요.", d: "any allergies", k: ["알레르기가 있으신가요?", "혈압약을 쓰고 계신가요?"], a: "insulin", o: ["warfarin", "aspirin", "steroids"]}
+  - {t: "활력징후", i: monitor, w: "혈압은 뇌졸중 치료를 정할 때 쓰는 기본 수치예요. I'm going to로 먼저 알리면 환자가 놀라지 않아요.", d: "your weight", k: ["체온을 잴게요", "몸무게를 재 볼게요"], a: "pulse", o: ["temperature", "weight", "height"]}
+  - {t: "산소 확인", i: gear, w: "also는 앞서 하던 측정에 이어서 한다는 뜻이에요. 산소포화도는 손가락 센서로 바로 잴 수 있어서 환자에게 부담이 적어요.", d: "your pain", k: ["손가락을 살짝 찔러 볼게요", "열이 있는지 재 볼게요"], a: "oxygen", o: ["pain", "sugar", "anxiety"]}
+  - {t: "수치 설명", i: chartup, w: "a little로 정도를 알리면 겁주지 않으면서 사실을 전할 수 있어요. 낮은 혈당은 혼돈이나 떨림을 만들어 뇌졸중과 헷갈릴 수 있어요.", d: "perfectly fine", k: ["산소포화도가 조금 낮아요", "체온이 조금 높아요"], a: "low", o: ["high", "normal", "unsteady"]}
+  - {t: "당 보충 안내", i: bandage, w: "저혈당이면 당을 올리는 치료를 해요. 정맥으로 주면 효과가 빠르고 삼키기 어려운 환자에게도 쓸 수 있어요. to bring it up으로 목적을 밝혀요.", d: "by mouth", k: ["수액을 걸어 드릴게요", "혈당을 한 번 더 확인할게요"], a: "IV", o: ["mouth", "skin", "nose"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "저혈당 확인과 보충 4문장 순서"
+    why: "손끝 혈당으로 시작해 낮은 수치를 알리고 당을 주고, 그 사이 활력징후를 재고, 마지막에 혈당을 다시 확인해요. 뒤 줄이 앞 줄의 결과와 행동을 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "I'm going to check your blood sugar with a quick finger stick.", icon: lab, ko: "손끝을 살짝 찔러 혈당을 확인할게요", note: "측정"}
+    - {en: "Your reading is a little low, so we'll give you sugar through your IV.", icon: bandage, ko: "수치가 조금 낮아서 정맥으로 당을 드릴게요", note: "보충"}
+    - {en: "While that goes in, I'll take your blood pressure and pulse.", icon: monitor, ko: "그게 들어가는 동안 혈압과 맥박을 잴게요", note: "활력"}
+    - {en: "Once all of that is done, I'll recheck your sugar to see if it came up.", icon: lab, ko: "그게 다 끝나면 혈당이 올랐는지 다시 확인할게요", note: "재확인"}
+  sw: {ko: "지금 혈당이 조금 낮아요"}
+- title: 두부 CT 준비 설명
+  s:
+  - {t: "검사 목적", i: magnify, w: "응급 두부 CT는 출혈인지 혈전인지부터 가려요. 이 구분이 혈전용해제를 쓸 수 있는지를 정해요.", d: "in your chest", k: ["CT로 폐에 물이 찼는지 확인해요", "촬영 전에 혈액검사를 먼저 해요"], a: "brain", o: ["lung", "heart", "leg"]}
+  - {t: "안심 설명", i: shield, w: "quick and painless로 환자에게 부담이 적다는 점부터 알려요. 뒤에 right away를 붙여 서둘러야 하는 이유도 함께 전해요.", d: "next week", k: ["검사 결과는 내일 알려 드릴게요", "금식은 하지 않으셔도 돼요"], a: "painless", o: ["noisy", "tiring", "costly"]}
+  - {t: "자세 안내", i: gear, w: "머리가 움직이면 영상이 흐려져서 판독이 어려워져요. while로 움직이지 말아야 하는 시간이 촬영 중이라는 점을 정확히 알려요.", d: "your hands", k: ["촬영 중에는 숨을 참아 주세요", "촬영하는 동안 눈을 감아 주세요"], a: "still", o: ["up", "back", "low"]}
+  - {t: "투약 전 확인", i: pill, w: "혈전용해제는 출혈이 있으면 위험해서 약을 쓰기 전에 CT로 출혈이 없는지 확인해요. rule out은 가능성을 하나씩 지워 가는 의료 표현이에요.", d: "after", k: ["약을 투여하기 전에 몸무게를 재야 해요", "약을 투여한 뒤에 촬영을 한 번 더 해야 해요"], a: "rule out", o: ["watch for", "ask about", "treat"]}
+  - {t: "소지품 안내", i: gear, w: "금속은 영상에 줄무늬 잡음을 만들어 판독을 방해할 수 있어서 촬영 전에 빼요. 머리와 가까운 것일수록 영향이 커요.", d: "your shoes", k: ["촬영 후에 장신구를 돌려 드릴게요", "환자복으로 갈아입으셔야 해요"], a: "jewelry", o: ["buttons", "zippers", "glasses"]}
+  - {t: "소요 시간", i: calendar, w: "걸리는 시간을 먼저 알려 주면 막연한 불안이 줄어요. only는 짧다는 점을 강조해요.", d: "an hour", k: ["결과는 바로 의사가 확인할 거예요", "촬영 중에 가족이 옆에 있을 수는 없어요"], a: "minutes", o: ["pictures", "steps", "breaths"]}
+  - {t: "협조 요청", i: me, w: "as … as possible은 완벽하지 않아도 최대한 해 달라는 부드러운 요청이에요. 덜 움직일수록 한 번에 선명한 영상이 나와요.", d: "after the scan", k: ["촬영하는 동안 눈을 뜨고 계세요", "촬영 중에 계속 말씀해 주세요"], a: "still", o: ["quiet", "awake", "relaxed"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "두부 CT 준비 설명 4문장 순서"
+    why: "무엇을 보는 검사인지 먼저 설명하고, 그 영상을 위한 준비물을 안내하고, 장신구를 뺀 뒤 가만히 있으라고 하고, 끝나면 의사가 영상을 본다고 알려요. 뒤 줄이 앞 줄을 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "The CT scan checks for bleeding versus a clot in your brain.", icon: magnify, ko: "CT는 뇌에 출혈이 있는지 혈전이 있는지 확인해요", note: "목적"}
+    - {en: "For that picture, please take off any metal jewelry first.", icon: gear, ko: "그 영상을 위해 먼저 금속 장신구를 빼 주세요", note: "준비"}
+    - {en: "With all of it off, please hold your head still while the machine scans.", icon: me, ko: "다 빼신 상태로 촬영하는 동안 머리를 가만히 두세요", note: "자세"}
+    - {en: "As soon as it's finished, the doctor will review the pictures and decide on treatment.", icon: monitor, ko: "끝나는 대로 의사가 영상을 보고 치료를 정해요", note: "결과"}
+  sw: {ko: "CT 촬영은 뇌 속 출혈이나 혈전이 있는지 확인해요"}
+- title: 침상 삼킴 선별
+  s:
+  - {t: "삼킴 선별", i: stetho, w: "뇌졸중 뒤에는 삼키는 근육도 약해져 물이 기도로 넘어갈 수 있어요. 그래서 마시기 전에 삼킴부터 확인해요.", d: "After you drink", k: ["물은 한 번에 조금씩 드세요", "마신 물의 양을 기록할게요"], a: "swallowing", o: ["breathing", "chewing", "speech"]}
+  - {t: "금식 안내", i: lock, w: "삼킴 검사를 통과하기 전에는 입으로 아무것도 주지 않아요. until을 붙이면 영원히 금지가 아니라 검사 후까지라는 한계를 알려 줘요.", d: "for an hour", k: ["마시기 전에 침대를 올려 앉혀 드릴게요", "마시기 전에 입안을 먼저 닦아 드릴게요"], a: "until", o: ["because", "although", "whenever"]}
+  - {t: "시험 삼킴", i: coffee, w: "처음에는 아주 적은 양으로 시험해야 기도로 넘어가도 위험이 작아요. 기침은 물이 기도 쪽으로 들어갔다는 신호일 수 있어요.", d: "a big gulp", k: ["삼킨 뒤에 아 하고 소리를 내 보세요", "물 대신 젤리를 한 숟갈 드셔 보세요"], a: "sip", o: ["bite", "pill", "breath"]}
+  - {t: "공감 안내", i: faceWorried, w: "I know로 환자의 불편을 먼저 인정하면 거절이 아니라 이해로 들려요. but으로 이유가 있는 보류라는 점을 이어 줘요.", d: "later", k: ["입이 마르시면 입술에 연고를 발라 드릴게요", "입이 마르신 건 약 때문일 수 있어요"], a: "dry", o: ["sore", "bitter", "swollen"]}
+  - {t: "중단 기준", i: siren, w: "기침이나 사레는 삼킨 것이 기도로 넘어갔다는 신호라서 바로 멈춰요. 미리 알려 두면 환자가 신호를 놓치지 않아요.", d: "slow down", k: ["기침이 나면 가래를 뱉으라고 할게요", "사레가 들리면 바로 의사에게 알릴게요"], a: "stop", o: ["continue", "repeat", "finish"]}
+  - {t: "이유 설명", i: shield, w: "흡인은 음식이나 물이 기도와 폐로 들어가는 것이고 흡인성 폐렴으로 이어질 수 있어요. 검사하는 이유를 알면 환자가 협조하기 쉬워요.", d: "from germs", k: ["안전하게 삼키면 소화가 잘돼요", "삼킴 검사는 폐 기능을 확인해요"], a: "lungs", o: ["stomach", "heart", "throat"]}
+  - {t: "금식 유지", i: lock, w: "results come back은 검사 결과가 나와 의료진이 판단할 때까지라는 뜻이에요. 기한을 알려 주면 환자가 언제까지 참아야 하는지 알아요.", d: "this evening", k: ["결과가 나오면 식사를 주문해 드릴게요", "결과가 나올 때까지 침대 머리를 올려 둘게요"], a: "results", o: ["nurses", "visitors", "patients"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "삼킴 선별 안내 4문장 순서"
+    why: "마르신 입에 공감하며 검사부터 한다고 알리고, 그 검사로 한 모금을 시험하고, 기침하면 멈춘다고 알린 뒤, 결과 전에는 금식을 당부해요. 뒤 줄이 앞 줄을 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "I know your mouth feels dry, but I need to check your swallowing first.", icon: faceWorried, ko: "입이 마르신 거 알지만 먼저 삼킴을 확인해야 해요", note: "공감"}
+    - {en: "For that check, take a small sip and tell me if you cough.", icon: coffee, ko: "그 확인을 위해 조금만 마시고 기침이 나면 말씀해 주세요", note: "시험"}
+    - {en: "If you do, we'll stop right away.", icon: siren, ko: "기침이 나면 바로 멈출게요", note: "중단"}
+    - {en: "Until the results come back, please don't eat or drink anything.", icon: lock, ko: "결과가 나올 때까지 아무것도 드시지 마세요", note: "금식"}
+  ctx: {word: "drink", ko: "마시다"}
+- title: NIHSS 협조 요청
+  s:
+  - {t: "과제 예고", i: speech, w: "검사를 시작하기 전에 질문과 과제가 있다고 알리면 환자가 준비해요. a few는 부담스럽지 않은 양이라는 인상을 줘요.", d: "a long list of", k: ["지금부터 약을 하나씩 확인할게요", "몇 가지 검사 결과를 말씀드릴게요"], a: "a few", o: ["a lot of", "many", "dozens of"]}
+  - {t: "시선 추적", i: magnify, w: "눈만 움직이게 하는 이유는 고개를 돌리면 눈 움직임의 이상이 가려지기 때문이에요. 끝에 only를 붙여 머리는 가만히 두라는 뜻을 전해요.", d: "with your head", k: ["손가락이 몇 개인지 말씀해 보세요", "제 손가락을 코에 대 보세요"], a: "eyes", o: ["head", "hand", "voice"]}
+  - {t: "이름 대기", i: pencil, w: "물건의 이름을 말하게 하면 단어를 떠올려 말하는 능력을 볼 수 있어요. holding up으로 환자가 볼 수 있게 들어 올린다는 동작도 함께 알려요.", d: "of my pen", k: ["이 그림에 뭐가 보이는지 말씀해 보세요", "제가 하는 말을 그대로 따라 해 보세요"], a: "name", o: ["color", "price", "owner"]}
+  - {t: "악력 확인", i: me, w: "양손으로 쥐게 하면 좌우 힘의 차이를 바로 비교할 수 있어요. as hard as you can는 환자의 최대 힘을 보려는 요청이에요.", d: "as softly as", k: ["제 손을 놓아 보세요", "제 손을 천천히 밀어 보세요"], a: "Squeeze", o: ["Push", "Lift", "Release"]}
+  - {t: "눈 감고 팔", i: bandage, w: "눈을 감게 하면 시각의 도움 없이 팔을 들고 있을 수 있는지 볼 수 있어요. 한쪽이 내려오면 그쪽 힘이 약하다는 단서예요.", d: "open your eyes", k: ["이제 눈을 뜨고 다리를 들어 보세요", "이제 팔을 내리고 편히 쉬세요"], a: "arms", o: ["legs", "fingers", "knees"]}
+  - {t: "격려", i: star, w: "Try your best는 틀려도 괜찮다는 분위기를 만들어 줘요. 어려운 과제에서 환자가 포기하면 실제 능력보다 낮은 점수가 나올 수 있어요.", d: "even if it hurts", k: ["각 과제는 한 번만 할 거예요", "중간에 힘들면 바로 말씀해 주세요"], a: "hard", o: ["easy", "silly", "boring"]}
+  - {t: "점수 설명", i: chartup, w: "점수를 숫자로 남기면 나중에 다시 재서 나아졌는지 나빠졌는지 비교할 수 있어요. over time은 한 번이 아니라 여러 번 반복해서 본다는 뜻이에요.", d: "your bill", k: ["이 점수를 보고 약 용량을 정해요", "이 점수는 의사에게 먼저 전달할게요"], a: "changes", o: ["costs", "visits", "errors"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "NIHSS 협조 요청 4문장 순서"
+    why: "앞으로 할 질문과 과제를 알리고, 눈 따라오기를 먼저 하고, 이어서 눈을 감은 채 팔을 들게 하고, 끝나면 점수의 용도를 알려요. 뒤 줄이 앞 줄의 동작을 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "I'm going to ask you a few questions and tasks, so please try your best.", icon: speech, ko: "몇 가지 질문과 과제를 드릴 테니 최선을 다해 주세요", note: "안내"}
+    - {en: "First, follow my finger with your eyes only.", icon: magnify, ko: "먼저 눈으로만 제 손가락을 따라오세요", note: "시선"}
+    - {en: "This time, close your eyes and hold both arms up.", icon: bandage, ko: "이번에는 눈을 감고 양팔을 들어 보세요", note: "팔"}
+    - {en: "After all of those tasks, this score helps us track any changes over time.", icon: chartup, ko: "그 과제들이 끝나면 이 점수로 시간에 따른 변화를 추적해요", note: "점수"}
+  ctx: {word: "score", ko: "점수"}

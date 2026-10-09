@@ -1,0 +1,367 @@
+theme: er-obgyn
+changes:
+- kind: sentence
+  situation: 임신 초기 출혈 문진
+  index: 0
+  fields:
+  - words
+  why: 쉬운 w-week 태그를 뺐다
+- kind: sentence
+  situation: 임신 초기 출혈 문진
+  index: 2
+  fields:
+  - words
+  why: 쉬운 w-baby 태그를 뺐다
+- kind: sentence
+  situation: 마지막 월경일 청취
+  index: 0
+  fields:
+  - words
+  why: 쉬운 w-day 태그를 뺐다
+- kind: sentence
+  situation: 임신 확인 검사 안내
+  index: 1
+  fields:
+  - ko
+  why: w-precise ko를 정밀한으로 가른 것에 맞춤 — 정확한은 w-exact의 ko
+- kind: sentence
+  situation: 산전 기록 확인
+  index: 3
+  fields:
+  - words
+  why: 쉬운 w-baby 태그를 뺐다
+- kind: sentence
+  situation: 산전 기록 확인
+  index: 5
+  fields:
+  - words
+  why: 쉬운 w-baby 태그를 뺐다
+- kind: sentence
+  situation: 자궁외임신 의심
+  index: 2
+  fields:
+  - words
+  why: 쉬운 w-bad 태그를 뺐다
+- kind: sentence
+  situation: 자궁외임신 의심
+  index: 5
+  fields:
+  - words
+  why: 쉬운 w-bad 태그를 뺐다
+- kind: sentence
+  situation: 임신오조 탈수
+  index: 2
+  fields:
+  - words
+  why: 쉬운 w-baby 태그를 뺐다
+- kind: sentence
+  situation: 임신 중 복통 감별
+  index: 0
+  fields:
+  - words
+  why: 쉬운 w-baby 태그를 뺐다
+- kind: sentence
+  situation: 임신 중 복통 감별
+  index: 4
+  fields:
+  - words
+  why: 쉬운 w-baby 태그를 뺐다
+- kind: sentence
+  situation: 산과 병력 언어장벽
+  index: 3
+  fields:
+  - words
+  why: 쉬운 w-family 태그를 뺐다
+- kind: sentence
+  situation: 조기 진통 징후
+  index: 2
+  fields:
+  - words
+  why: 쉬운 w-baby 태그를 뺐다
+- kind: sentence
+  situation: 조기 진통 징후
+  index: 5
+  fields:
+  - words
+  why: 쉬운 w-baby 태그를 뺐다
+- kind: sentence
+  situation: 임신 후기 대량출혈
+  index: 0
+  fields:
+  - words
+  why: 쉬운 w-baby 태그를 뺐다
+- kind: sentence
+  situation: 자간전증·자간증
+  index: 3
+  fields:
+  - words
+  why: 쉬운 w-hand·w-face 태그를 뺐다
+- kind: sentence
+  situation: 자간전증·자간증
+  index: 4
+  fields:
+  - words
+  why: w-spot(spotting, 소량 출혈)은 여기서 seeing spots(눈앞의 반점)라 다른 뜻 — 태그를 뺐다
+- kind: sentence
+  situation: ER 내 급속 분만
+  index: 2
+  fields:
+  - words
+  why: 쉬운 w-baby 태그를 뺐다
+- kind: sentence
+  situation: ER 내 급속 분만
+  index: 3
+  fields:
+  - words
+  why: 쉬운 w-head 태그를 뺐다
+- kind: sentence
+  situation: ER 내 급속 분만
+  index: 5
+  fields:
+  - words
+  why: 쉬운 w-baby 태그를 뺐다
+- kind: sentence
+  situation: 태아 사망 고지
+  index: 0
+  fields:
+  - words
+  why: w-deeply 태그를 더했다
+- kind: sentence
+  situation: 태아 사망 고지
+  index: 4
+  fields:
+  - words
+  - ko
+  why: 쉬운 w-baby 태그를 뺐다; '세상을 떠났어요'는 완곡어라 has died를 분명히 말하는 문장의 뜻이 흐려졌고, '애도를 표합니다'는 I am so very sorry로는 딱딱했다 — w-die ko에 맞춤
+- kind: sentence
+  situation: 패혈성 유산
+  index: 5
+  fields:
+  - words
+  why: w-support(지지하다)는 여기서 support your blood pressure(혈압을 유지하다)라 다른 뜻 — 태그를 뺐다
+- kind: word-remove
+  id: w-week
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-day
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-baby
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-bad
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-family
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-hand
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-head
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-face
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word
+  id: w-cramp
+  fields:
+  - ko
+  why: w-crampy(쥐어짜는 듯한)와 ko가 거의 같아 정답이 둘 — cramping은 명사 '경련성 통증'
+- kind: word
+  id: w-frighten
+  fields:
+  - ko
+  why: 헤드워드는 형용사 frightening인데 ko가 '무섭게 하는'으로 어색했다
+- kind: word
+  id: w-precise
+  fields:
+  - ko
+  why: w-exact와 ko(정확한)가 같아 듣고 뜻 고르기에서 정답이 둘 — precise는 정밀한
+- kind: word
+  id: w-miss
+  fields:
+  - en
+  - ipa
+  why: 활용형 헤드워드(missed)를 원형으로
+- kind: word
+  id: w-odor
+  fields:
+  - ko
+  why: w-smell과 ko(냄새)가 같아 정답이 둘 — odor는 체액·분비물의 이상한 냄새를 묻는 임상어
+- kind: word
+  id: w-drop
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 활용형 헤드워드(dropping)를 원형으로 — ko도 동사로
+- kind: word
+  id: w-eye
+  fields:
+  - en
+  - ipa
+  why: 활용형 헤드워드(eyes)를 원형으로
+- kind: word
+  id: w-massage
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 활용형 헤드워드(massaging)를 원형으로
+- kind: word
+  id: w-die
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 활용형 헤드워드(died)를 원형으로 — ko '세상을 떠나다'는 완곡어인데, 사망 고지는 died를 분명히 말하는 것이 요점이라 뜻을 곧게
+- kind: word
+  id: w-antibiotic
+  fields:
+  - en
+  - ipa
+  why: 복수형 헤드워드(antibiotics)를 원형으로 — 다른 ER 주제와 같게
+- kind: word-add
+  id: w-deeply
+  why: 쉬운 w-baby를 빼 태아 사망 고지가 서로 다른 단어 7개가 됨 — 문장 0(keyPhrase)에 이미 있는 deeply sorry
+- kind: sentence
+  situation: 임신 후기 대량출혈
+  index: 1
+  fields:
+  - ko
+  why: "Stay with me를 '곁에 있어 주세요'로 옮겨 역할이 뒤집혔다 — 의식이 흐려지는 환자에게 하는 '정신 놓지 마세요'"
+- kind: sentence
+  situation: 자궁외임신 파열 쇼크
+  index: 1
+  fields:
+  - ko
+  why: "Stay with me를 '곁에 있어 주세요'로 옮겨 역할이 뒤집혔다 — '정신 놓지 마세요'"
+- kind: sentence
+  situation: 산후 대량출혈
+  index: 1
+  fields:
+  - ko
+  why: "Stay with me를 '곁에 있어 주세요'로 옮겨 역할이 뒤집혔다 — '정신 놓지 마세요'"
+- kind: sentence
+  situation: 임신오조 탈수
+  index: 0
+  fields:
+  - ko
+  why: keep fluids down은 '삼키다'가 아니라 토하지 않고 넘기는 것
+- kind: sentence
+  situation: 임신오조 탈수
+  index: 4
+  fields:
+  - ko
+  why: keep food or water down은 '삼키다'가 아니라 토하지 않고 넘기는 것
+- kind: sentence
+  situation: 조기 진통 징후
+  index: 0
+  fields:
+  - ko
+  why: 수축에 주체 높임(오시나요)을 붙였다 — 오나요
+- kind: sentence
+  situation: 태아 사망 고지
+  index: 4
+  fields:
+  - ko
+  why: "'정말 너무' 강조어 중복을 하나로 — w-die exKo도 함께"
+- kind: sentence
+  situation: ER 내 급속 분만
+  index: 0
+  fields:
+  - words
+  why: w-delivery(명사)가 help you deliver(동사)에 붙어 있어 태그를 뺐다
+- kind: sentence
+  situation: 유산 진행 중 소통
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  why: 'v46 검토 결정 11 예외: 간호사가 진단을 단정해 고지하지 않고 걱정으로 전한 뒤 의사가 설명하도록 틀을 바꿈'
+- kind: word
+  id: w-miscarriage
+  fields:
+  - example
+  - exKo
+  why: 'v46 검토 결정 11 예외: 6.3 문장이 바뀜 — 예문도 새 문장으로'
+- kind: sentence
+  situation: 유산 진행 중 소통
+  index: 5
+  fields:
+  - chunks
+  why: 'v46 검토 결정 11 예외: 청크가 nothing you could / have done 구를 끊음'
+- kind: sentence
+  situation: 태아 사망 고지
+  index: 5
+  fields:
+  - ko
+  - chunks
+  why: 'v46 검토 결정 11 예외: 청크가 구를 끊음; ko를 en("당신이 일으킨 것이 아니다")에 맞춤 — 사산은 막을 수 있었던 경우도 있어 단정하지 않음'
+- kind: sentence
+  situation: 산전 기록 확인
+  index: 1
+  fields:
+  - chunks
+  why: 'v46 검토 결정 11 예외: 청크가 in your / last pregnancy를 끊음'
+- kind: sentence
+  situation: 산과 병력 언어장벽
+  index: 4
+  fields:
+  - chunks
+  why: 'v46 검토 결정 11 예외: 청크가 about your / pregnancies를 끊음'
+- kind: sentence
+  situation: 자궁외임신 파열 쇼크
+  index: 1
+  fields:
+  - chunks
+  why: 'v46 검토 결정 11 예외: 청크가 Stay with / me를 끊음'
+- kind: sentence
+  situation: 산후 대량출혈
+  index: 1
+  fields:
+  - chunks
+  why: 'v46 검토 결정 11 예외: 청크가 Stay with / me를 끊음'
+- kind: sentence
+  situation: 성폭력 피해자 접수
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  why: 'v46 검토 결정 11 예외: 증거를 모으는 사람이 환자처럼 읽히던 to have an exam and collect evidence를 an exam and evidence collection으로'
+- kind: word
+  id: w-exam
+  fields:
+  - example
+  - exKo
+  why: 'v46 검토 결정 11 예외: 8.3 문장이 바뀜 — 예문도 새 문장으로'
+- kind: word
+  id: w-evidence
+  fields:
+  - example
+  - exKo
+  why: 'v46 검토 결정 11 예외: 8.3 문장이 바뀜 — 예문도 새 문장으로'
+- kind: sentence
+  situation: 자간전증·자간증
+  index: 1
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'v46 검토 결정 11 예외: 자간증 경련은 전조 없이 오는 경우가 많고 more headache가 어색해 두통 악화·시야 변화 알림으로 바꿈'
+- kind: word
+  id: w-headache
+  fields:
+  - example
+  - exKo
+  why: 'v46 검토 결정 11 예외: 15.1 문장이 바뀜 — 예문도 새 문장으로'
+- kind: word
+  id: w-seizure
+  fields:
+  - example
+  - exKo
+  why: 'v46 검토 결정 11 예외: 15.1에서 seizure가 빠져 예문을 15.5로 옮김'

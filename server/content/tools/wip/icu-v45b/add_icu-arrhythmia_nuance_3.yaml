@@ -1,0 +1,104 @@
+부정맥 유발 허혈 감별:
+  - kind: pair
+    words: [w-cardiac, w-enzyme, w-rule, w-compare, w-baseline]
+    pairs: [[cardiac, enzymes], [rule, out], [compare it to, his baseline]]
+    decoys: [down]
+    why: "심근 손상 수치는 cardiac enzymes, 가능성을 지우는 건 rule out(down이 아니라 out), 새 파형은 baseline과 compare해요."
+  - kind: context
+    words: [w-rule, w-ischemia]
+    scenes:
+      - {who: 동료에게, icon: speech, en: "Let's trend troponins to rule out ischemia.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Troponin sent to r/o ischemia as arrhythmia trigger.", ok: true}
+      - {who: 보호자에게, icon: me, en: "We're trending troponins to rule out ischemia.", ok: false, fix: "We're doing blood tests to check whether his heart muscle is getting enough blood."}
+    why: "troponin·ischemia·rule out은 의료진의 말이에요. 보호자에게는 '심장 근육에 피가 충분히 가는지 피검사로 확인한다'를 쉬운 말로 해요."
+불안정 빈맥 응급 심율동전환:
+  - kind: pair
+    words: [w-stand, w-clear, w-synchronized, w-cardioversion, w-charge, w-joule]
+    pairs: [[stand, clear], [synchronized, cardioversion], [charge to, one hundred joules]]
+    decoys: [atropine]
+    why: "충격 전 외침은 stand clear, R파에 맞춘 충격은 synchronized cardioversion, 에너지는 charge to ... joules예요."
+  - kind: context
+    words: [w-unstable, w-cardioversion]
+    scenes:
+      - {who: 동료에게, icon: speech, en: "She's unstable — we need synchronized cardioversion.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Pt hypotensive and altered; synchronized cardioversion performed.", ok: true}
+      - {who: 보호자에게, icon: me, en: "She's hemodynamically unstable, so we're cardioverting her.", ok: false, fix: "This fast rhythm is dropping her blood pressure, so we need to shock her heart back into a normal rhythm now."}
+    why: "hemodynamically unstable·cardiovert는 의료진의 말이에요. 보호자에게는 무엇이 위험하고 지금 무엇을 하는지를 쉬운 말로 — 급하다는 사실은 숨기지 않아요."
+무맥성 VT·VF 제세동:
+  - kind: pair
+    words: [w-chest, w-compression, w-clear, w-bed, w-charge]
+    pairs: [[chest, compressions], [clear, the bed], [charge to, "200"]]
+    decoys: [a pulse]
+    why: "CPR의 압박은 chest compressions, 충격 전에는 clear the bed, 에너지는 charge to 200이에요."
+  - kind: swap
+    words: [w-pulseless, w-vfib]
+    who: "보호자에게 · 코드 중"
+    icon: me
+    before: ["His heart ", "is in pulseless v-fib", " — the team is doing CPR right now."]
+    options: [has stopped pumping blood, is in pulseless v-fib, is having a little trouble]
+    answer: has stopped pumping blood
+    notes: {has stopped pumping blood: "보호자가 알아듣는 말로 사실을 분명히 전한다. 위급함을 숨기지 않는다.", is in pulseless v-fib: "의료진 용어라 보호자는 무슨 일인지 모른다.", is having a little trouble: "심정지를 축소해 보호자가 상황을 잘못 믿게 된다."}
+    why: "보호자에게도 심정지는 쉬운 말로, 그러나 분명하게 — 완곡하게 돌려 말하지 않아요."
+완전방실차단 심정지 임박:
+  - kind: slider
+    words: [w-barely, w-perfuse, w-dangerously, w-slow]
+    cue: "HR 28, BP 68/40, 묻는 말에 겨우 대답, 피부가 차갑고 얼룩덜룩하다"
+    scale: [slow, dangerously slow, barely perfusing]
+    answerAt: 2
+    why: "barely perfusing은 심박수가 느린 것을 넘어 조직에 피가 거의 안 간다는 뜻이에요 — 곧 심정지가 올 수 있다는 경고로 들려요."
+    example: "He's barely perfusing and could arrest any minute."
+    exKo: "겨우 관류되고 있고 언제든 심정지가 올 수 있어요."
+  - kind: context
+    words: [w-transvenous, w-backup, w-pacing]
+    scenes:
+      - {who: 동료에게, icon: speech, en: "Get cardiology on the phone — we need transvenous backup.", ok: true}
+      - {who: 차트 기록, icon: board, en: "TCP initiated; cardiology paged for transvenous pacer.", ok: true}
+      - {who: 보호자에게, icon: me, en: "We're paging cardiology for transvenous pacing backup.", ok: false, fix: "The pads are helping his heart beat for now, and the heart team is coming to put in a more reliable pacemaker wire."}
+    why: "transvenous pacing backup은 의료진끼리의 말이에요. 보호자에게는 지금 무엇이 심장을 돕고 있고 다음에 무엇을 하는지를 쉬운 말로 해요."
+TdP 급변 마그네슘 응급:
+  - kind: pair
+    words: [w-break, w-torsades, w-qt, w-drug, w-defibrillator, w-ready]
+    pairs: [[break into, torsades], [QT-prolonging, drugs], [get the defibrillator, ready]]
+    decoys: [capture]
+    why: "리듬이 갑자기 넘어가는 건 break into, QT를 늘리는 약은 QT-prolonging drugs, 장비는 get ... ready예요."
+  - kind: context
+    words: [w-torsades, w-magnesium]
+    scenes:
+      - {who: 동료에게, icon: speech, en: "She's in torsades — two grams of mag IV, now!", ok: true}
+      - {who: 차트 기록, icon: board, en: "Torsades de pointes; magnesium sulfate 2 g IV given.", ok: true}
+      - {who: 보호자에게, icon: me, en: "She's in torsades, so we're pushing mag.", ok: false, fix: "Her heart has gone into a dangerous rhythm, and we're giving her medicine through her IV to stop it."}
+    why: "torsades·mag은 의료진의 말이에요. 보호자에게는 위험한 리듬이라는 것과 지금 약으로 멈추려 한다는 것을 쉬운 말로 해요."
+전기폭풍 반복 제세동 관리:
+  - kind: slider
+    words: [w-electrical, w-storm, w-repeated]
+    cue: "24시간 안에 지속성 VT가 네 번 와서 매번 충격이 필요했다"
+    scale: [a few extra beats, a run of VT, an electrical storm]
+    answerAt: 2
+    why: "짧은 시간(대개 24시간)에 VT·VF가 세 번 이상 와서 매번 처치가 필요하면 electrical storm이라고 해요. 한 번의 VT 연발과는 무게가 달라요."
+    example: "He's had repeated shocks — this is an electrical storm."
+    exKo: "충격을 반복해서 받았어요, 이건 전기폭풍이에요."
+  - kind: swap
+    words: [w-electrical, w-storm, w-deep, w-sedation]
+    who: "보호자에게 · 상황 설명"
+    icon: me
+    before: ["He's had ", "an electrical storm", " today, so we're giving more medicine and keeping him more deeply sedated."]
+    options: [several dangerous rhythms that needed shocks, an electrical storm, a few hiccups]
+    answer: several dangerous rhythms that needed shocks
+    notes: {several dangerous rhythms that needed shocks: "무슨 일이 몇 번 있었는지 보호자가 알아듣게 전한다.", an electrical storm: "의료진의 말이라 보호자는 날씨나 기계 고장으로 오해할 수 있다.", a few hiccups: "생명이 걸린 상황을 사소하게 들리게 한다."}
+    why: "같은 사건이라도 보호자에게는 쉬운 말로, 그러나 무게는 줄이지 않고 전해요."
+페이싱 캡처 실패 위기:
+  - kind: slider
+    words: [w-backup, w-pacing, w-troubleshoot, w-call]
+    cue: "출력을 올리고 연결부까지 다 확인했는데 캡처가 안 돌아오고 HR 30대"
+    scale: [keep an eye on it, keep troubleshooting, call for backup pacing now]
+    answerAt: 2
+    why: "고칠 수 있는 걸 다 해도 캡처가 안 돌아오면 더 붙잡지 말고 바로 백업 페이싱을 불러요."
+    example: "If this doesn't fix it, call for a backup pacer now."
+    exKo: "이걸로 고쳐지지 않으면 백업 페이서를 요청하세요."
+  - kind: context
+    words: [w-capture, w-fix]
+    scenes:
+      - {who: 동료에게, icon: speech, en: "He's losing capture — I'm turning up the output.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Intermittent failure to capture; output increased to 10 mA.", ok: true}
+      - {who: 보호자에게, icon: me, en: "His temporary wire is failing to capture.", ok: false, fix: "The pacemaker isn't making his heart beat the way it should, so we're fixing it right now."}
+    why: "failure to capture는 의료진끼리의 말이에요. 보호자에게는 무엇이 안 되고 지금 고치고 있다는 것을 쉬운 말로 해요."

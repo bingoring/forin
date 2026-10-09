@@ -1,0 +1,94 @@
+- title: 자궁외임신 의심
+  s:
+  - {t: "위험 신호", i: siren, w: "한쪽 통증과 어지러움 두 가지를 함께 짚어 둘이 같이 올 때가 왜 중요한지 알려 줘요. 임신 가능한 여성의 한쪽 하복부 통증과 어지러움은 자궁외임신 파열로 인한 출혈 신호일 수 있어요.", d: "we write down", k: ["지금 혈압과 맥박을 확인할게요", "마지막 생리가 언제였나요?"], a: "dizziness", o: ["headache", "nausea", "fever"]}
+  - {t: "즉시 확인", i: magnify, w: "to rule out으로 무엇이 아닌지 확인하려는 목적을 말해 환자가 왜 서두르는지 이해해요. 자궁외임신은 파열되면 대출혈로 이어질 수 있어서 먼저 배제해야 해요.", d: "to write down", k: ["아기 심장 소리를 들어 볼게요", "혈액형을 확인해야 해요"], a: "tubal", o: ["twin", "molar", "full-term"]}
+  - {t: "즉시 알림", i: bell, w: "immediately와 if절로 어떤 변화를 알려야 하는지 분명히 해요. 통증이나 어지러움이 심해지는 것은 내부 출혈이 늘고 있다는 신호일 수 있어서 놓치면 안 돼요.", d: "to the nurse", k: ["통증이 몇 점인지 말씀해 주세요", "어디가 가장 아픈지 짚어 주세요"], a: "Tell", o: ["Show", "Remind", "Promise"]}
+  - {t: "초음파", i: monitor, w: "to see where로 초음파의 목적이 임신의 위치 확인임을 알려요. 임신 반응이 있는데 자궁 안에서 임신낭이 보이지 않으면 자궁외임신 가능성을 의심해요.", d: "a family visit", k: ["정맥 주사를 먼저 잡을게요", "혈액 검사 결과가 곧 나와요"], a: "an ultrasound", o: ["a blood test", "a urine test", "a nurse"]}
+  - {t: "긴박함 설명", i: siren, w: "so로 이유와 행동을 이어 환자가 서두르는 모습을 불안이 아니라 대응으로 이해하게 해요. 파열된 자궁외임신은 짧은 시간에 쇼크로 진행할 수 있어요.", d: "in the hall", k: ["가족분께 연락드릴까요?", "아기 심박을 확인해 볼게요"], a: "quickly", o: ["quietly", "gently", "carefully"]}
+  - {t: "도움 요청", i: bell, w: "If절로 언제 부를지 기준을 주고 right away로 망설이지 말라고 해요. 갑작스러운 통증 악화는 파열을 시사할 수 있어서 환자가 스스로 판단해 기다리지 않게 해요.", d: "ask a friend", k: ["침대 난간은 올려 둘게요", "수액이 다 들어가면 알려 드릴게요"], a: "worse", o: ["better", "lighter", "calmer"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "자궁외임신 의심 4문장 순서"
+    why: "위험 신호를 먼저 알리고, 그래서 바로 확인한다고 말하고, 그 확인을 위해 초음파가 필요하다고 설명한 뒤, 초음파를 하든 안 하든 악화를 바로 알려 달라고 부탁해요. 'Because of that'·'that check'·'Scan or no scan'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "One-sided pain with dizziness is something we take seriously.", icon: siren, ko: "한쪽으로만 아프면서 어지러운 건 심각하게 받아들여요", note: "신호"}
+    - {en: "Because of that, we're checking right away to rule out a tubal pregnancy.", icon: magnify, ko: "그래서 자궁외임신인지 바로 확인해 배제할게요", note: "확인"}
+    - {en: "For that check, we need an ultrasound now to see where the pregnancy is.", icon: monitor, ko: "그 확인을 위해 지금 초음파로 임신 위치를 봐야 해요", note: "초음파"}
+    - {en: "Scan or no scan, tell me immediately if the pain or dizziness gets worse.", icon: bell, ko: "초음파를 하든 안 하든, 통증이나 어지러움이 심해지면 바로 말씀해 주세요", note: "알림"}
+- title: 유산 진행 중 소통
+  sw: {ko: "지금 보이는 상황을 봤을 때, 유산이 진행되고 있는 것 같아요"}
+  s:
+  - {t: "공감", i: faceWorried, w: "I'm so sorry로 먼저 마음을 알아 주고, 사건을 평가하지 않은 채 painful이라는 감정어로 인정해요. 유산 중인 환자에게는 설명이나 처치보다 공감이 먼저예요.", d: "to look at", k: ["지금 통증이 어느 정도인가요?", "곧 의사 선생님이 오실 거예요"], a: "go through", o: ["hear about", "think about", "talk about"]}
+  - {t: "죄책감 덜기", i: shield, w: "환자는 자기 탓인지 가장 먼저 묻는 경우가 많아서 원인이 환자의 행동이 아니라고 분명히 말해요. 초기 유산은 태아의 염색체 이상이 흔한 원인이라 환자가 한 일과 무관해요.", d: "to explain", k: ["지금 출혈이 많이 있나요?", "통증이 있으면 바로 말씀해 주세요"], a: "did", o: ["wore", "read", "heard"]}
+  - {t: "곁에 머물기", i: handshake2, w: "I'll stay with you로 혼자 두지 않겠다고 약속하고 explain everything으로 앞으로의 일을 알려 주겠다고 해요. 유산을 겪는 환자는 모르는 데서 오는 불안이 커져요.", d: "and ask everything", k: ["필요하시면 가족분을 불러 드릴게요", "따뜻한 담요를 가져다 드릴게요"], a: "gently", o: ["briefly", "loudly", "formally"]}
+  - {t: "설명 근거", i: stetho, w: "Based on…으로 판단의 근거를 먼저 말하고 I believe로 단정을 피해요. 확진은 의사가 하므로 간호사는 보이는 소견을 바탕으로 가능성으로 전해요.", d: "I'm certain", k: ["의사 선생님이 곧 초음파 결과를 설명해 드릴 거예요", "혈압을 한 번 더 재 볼게요"], a: "seeing", o: ["hearing", "reading", "counting"]}
+  - {t: "배출량", i: bandage, w: "tissue or blood로 두 가지를 짚어 환자가 무엇을 가늠해 말해야 하는지 알게 해요. 배출한 조직과 출혈량은 유산의 진행 정도와 출혈 위험을 판단하는 근거예요.", d: "how many times", k: ["어지럽거나 숨이 차지는 않으세요?", "통증은 몇 점인가요?"], a: "tissue", o: ["urine", "stool", "vomit"]}
+  - {t: "죄책감 덜기", i: shield, w: "could have done으로 지난 일을 돌아보며 자책하는 마음에 직접 답해요. 환자의 활동이나 음식이 유산을 일으킨 것이 아니라는 점을 분명히 해 줘요.", d: "to ignore this", k: ["휴지를 여기 두겠습니다", "불을 조금 낮춰 드릴게요"], a: "prevent", o: ["notice", "repair", "cure"]}
+  - {t: "곁에 있기", i: handshake2, w: "I'm staying right here로 지금 이 순간 자리를 뜨지 않는다는 현재진행형 약속을 해요. 슬픔 속의 환자에게는 해결책보다 곁에 있다는 느낌이 먼저 닿아요.", d: "just outside", k: ["제가 의사 선생님께 알릴게요", "베개를 하나 더 드릴게요"], a: "staying", o: ["sitting", "standing", "waiting"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "유산 진행 중 소통 4문장 순서"
+    why: "보이는 소견을 먼저 전하고, 그 일이 안타깝다고 말하고, 그렇게 힘들어도 환자 탓이 아니라고 알린 뒤, 곁에 있으면서 배출량을 물어요. 'about that'·'As painful as it is'·'Knowing that'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Based on what we're seeing, I'm worried this may be a miscarriage.", icon: stetho, ko: "지금 보이는 상황으로는 유산일 수 있어 걱정돼요", note: "소견"}
+    - {en: "I'm so sorry about that — it's a painful thing to go through.", icon: faceWorried, ko: "그 일이 정말 안타까워요, 견디기 힘든 일이에요", note: "공감"}
+    - {en: "As painful as it is, there was nothing you did to cause this.", icon: shield, ko: "아무리 힘들어도, 당신이 뭘 잘못해서 생긴 일이 아니에요", note: "탓 아님"}
+    - {en: "Knowing that, I'm staying right here — how much tissue or blood have you passed?", icon: bandage, ko: "그걸 알고 바로 곁에 있을게요, 조직이나 혈액을 얼마나 배출하셨나요?", note: "배출량"}
+- title: 임신오조 탈수
+  s:
+  - {t: "구토 기간", i: calendar, w: "How long으로 기간을 묻고 fluids down으로 삼키고도 유지하지 못하는지를 구체화해요. 수분을 유지하지 못한 기간이 길수록 탈수와 전해질 이상 위험이 커져서 먼저 물어요.", d: "willing to", k: ["체중이 얼마나 줄었는지 아시나요?", "소변은 마지막으로 언제 보셨나요?"], a: "fluids", o: ["pills", "vitamins", "snacks"]}
+  - {t: "수액 안내", i: hospital, w: "수액을 주는 이유를 to help you feel better로 환자의 이익으로 풀어 줘요. 임신오조에서 정맥 수액은 탈수를 바로잡는 기본 처치예요.", d: "to help the doctor", k: ["의사 선생님이 구토를 줄이는 약을 처방해 주실 거예요", "혈액 검사를 위해 피를 조금 뽑을게요"], a: "IV", o: ["oral", "warm", "cold"]}
+  - {t: "검사 안내", i: lab, w: "구토가 오래되면 나트륨·칼륨 같은 전해질이 떨어질 수 있어서 확인한다고 알려요. keep you and baby safe로 산모와 아기 둘 다 챙긴다는 점도 함께 말해요.", d: "your weight", k: ["화장실에 갈 때는 벨을 눌러 주세요", "혈압을 재 볼게요"], a: "electrolytes", o: ["vitamins", "allergies", "medications"]}
+  - {t: "구토 빈도", i: monitor, w: "more than a few times로 기준선을 주면 환자가 많다·적다를 스스로 판단하지 않고 횟수로 답할 수 있어요. 하루 여러 번 반복되는 구토는 임신오조를 가르는 단서 중 하나예요.", d: "less than", k: ["메스꺼움은 아침에만 있나요?", "마지막으로 드신 게 언제인가요?"], a: "vomiting", o: ["coughing", "sneezing", "hiccuping"]}
+  - {t: "마지막 섭취", i: coffee, w: "the last time으로 마지막으로 성공한 시점을 물어 탈수가 얼마나 진행됐는지 가늠해요. 먹고 마신 것을 유지하지 못한 시간이 길수록 정맥 수액의 필요성이 커져요.", d: "you were told", k: ["오늘 소변을 몇 번 보셨나요?", "입안이 마른 느낌이 있으신가요?"], a: "last", o: ["best", "only", "worst"]}
+  - {t: "수액 목적", i: hospital, w: "replace로 수액이 무엇을 대신 채우는지 알려서 줄을 꽂는 일이 치료라는 점을 환자가 이해하게 해요. 구토로 수분과 영양, 전해질이 빠져나가요.", d: "you've been given", k: ["바늘이 아프면 말씀해 주세요", "팔을 너무 움직이지 마세요"], a: "lost", o: ["eaten", "drunk", "swallowed"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "임신오조 탈수 4문장 순서"
+    why: "구토를 못 멈춘 기간을 먼저 묻고, 그 기간 동안의 구토 횟수를 묻고, 그 횟수가 어떻든 전해질 확인과 수액을 한다고 설명한 뒤, 수액이 무엇을 채우는지 알려요. 'Since then'·'Either way'·'This IV'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "How long have you been unable to keep fluids down?", icon: calendar, ko: "물을 넘기지 못한 지 얼마나 되셨나요?", note: "기간"}
+    - {en: "Since then, how many times a day have you been vomiting?", icon: monitor, ko: "그 뒤로 하루에 몇 번 토하셨나요?", note: "횟수"}
+    - {en: "Either way, we'll check your electrolytes and give you IV fluids.", icon: lab, ko: "어느 쪽이든 전해질을 확인하고 정맥 수액을 드릴게요", note: "처치"}
+    - {en: "This IV will replace the fluids and nutrients you've lost.", icon: hospital, ko: "이 수액이 잃은 수분과 영양을 채워 줄 거예요", note: "목적"}
+- title: 성폭력 피해자 접수
+  sw: {ko: "검사를 받고 증거를 채취할지는 당신이 고를 수 있어요"}
+  s:
+  - {t: "안전 확인", i: shield, w: "먼저 safe here로 안전을 확인하고 in control로 선택권이 환자에게 있다고 알려요. 성폭력 피해자 응대에서는 통제감을 되돌려 주는 것이 첫걸음이에요.", d: "in a hurry", k: ["지금 아프신 곳이 있나요?", "따뜻한 담요를 가져다 드릴게요"], a: "safe", o: ["welcome", "heard", "believed"]}
+  - {t: "선택권", i: shield, w: "your choice와 can stop at any time으로 선택권과 중단권을 분명히 해요. 성폭력 피해자의 검사와 면담은 모든 단계에서 동의가 필요하고 환자가 거절하거나 멈출 수 있어요.", d: "on Monday", k: ["방 문은 닫아 둘게요", "필요하시면 휴지를 드릴게요"], a: "stop", o: ["rest", "ask", "speak"]}
+  - {t: "속도 존중", i: compass, w: "at your pace로 진행 속도를 환자가 정한다고 알리고 each step을 설명해 예고 없는 접촉을 피해요. 외상 후 환자에게는 예측할 수 있는 진행이 안정감을 줘요.", d: "at the bedside", k: ["지금 통증이 있는 곳을 알려 주세요", "커튼을 쳐서 사생활을 지켜 드릴게요"], a: "pace", o: ["schedule", "request", "direction"]}
+  - {t: "선택 묻기", i: board, w: "Would you like…, or not?으로 하든 안 하든 똑같이 괜찮다는 열린 질문을 해요. 증거 채취는 환자의 동의가 있어야 하고, 하지 않기로 해도 진료는 받을 수 있어요.", d: "and sign a form", k: ["오늘 어떤 도움이 필요하신지 말씀해 주세요", "의사 선생님이 곧 오실 거예요"], a: "evidence", o: ["paperwork", "medicine", "receipts"]}
+  - {t: "신고 선택", i: shield, w: "or not right now를 붙여 지금 정하지 않아도 된다고 알려요. 신고는 환자의 결정이고, 신고하지 않아도 진료는 받을 수 있어요.", d: "to your family", k: ["피해자 지원 상담사를 연결해 드릴 수 있어요", "조용한 방으로 옮겨 드릴게요"], a: "the police", o: ["a lawyer", "your employer", "your school"]}
+  - {t: "강요 안 함", i: shield, w: "unless로 환자가 원할 때만 이야기하도록 예외를 열어 둬요. 피해자에게 사건을 되풀이해 말하게 하지 않는 것이 외상 중심 응대의 원칙이에요.", d: "unless you forget", k: ["안전한 곳에서 지낼 수 있는지 먼저 확인할게요", "지금 가장 필요한 게 무엇인지 말씀해 주세요"], a: "share", o: ["forget", "repeat", "write"]}
+  - {t: "비난 아님", i: shield, w: "fault라는 말을 직접 꺼내 환자가 속으로 묻는 질문에 먼저 답해요. 피해자는 자책하는 경우가 많아서 짧고 분명하게 한 번 말해 주는 것이 도움이 돼요.", d: "the staff's", k: ["제가 곁에서 필요한 걸 도와드릴게요", "편하게 앉으실 수 있도록 의자를 가져올게요"], a: "your", o: ["my", "her", "their"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "성폭력 피해자 접수 4문장 순서"
+    why: "안전과 통제권을 먼저 말하고, 그 뜻을 진행 속도로 구체화하고, 그 방식으로 검사 여부를 묻고, 어떤 결정이든 언제든 멈출 수 있다고 마무리해요. 'That means'·'At that pace'·'Whatever you decide'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "You are safe here, and you're in control of what happens next.", icon: shield, ko: "이곳은 안전하고, 다음 일은 당신이 정해요", note: "안전"}
+    - {en: "That means I'll go at your pace and explain each step.", icon: compass, ko: "그래서 당신의 속도에 맞춰 한 단계씩 설명할게요", note: "속도"}
+    - {en: "At that pace, would you like an exam and evidence collection, or not?", icon: board, ko: "그 속도로, 검사와 증거 채취를 원하시나요, 아니면 원치 않으시나요?", note: "선택"}
+    - {en: "Whatever you decide, you can stop at any time.", icon: shield, ko: "어떻게 정하시든 언제든 멈출 수 있어요", note: "중단권"}
+- title: 임신 중 복통 감별
+  s:
+  - {t: "원인 구분", i: stetho, w: "Not all…로 아기 때문이라는 단정을 풀어 환자가 다른 원인도 있다는 것을 받아들이게 해요. 임신 중 복통에는 충수염·요로 감염·담석처럼 임신과 무관한 원인도 있어요.", d: "at the clinic", k: ["아기는 지금 잘 움직이고 있나요?", "언제부터 아프기 시작했나요?"], a: "belly", o: ["back", "chest", "leg"]}
+  - {t: "압통 확인", i: magnify, w: "누를 때와 뗄 때를 비교해 묻는 쉬운 말이라 환자가 반발통이라는 용어를 몰라도 답할 수 있어요. 뗄 때 더 아프면 복막이 자극됐다는 소견일 수 있어요.", d: "and look away", k: ["어디가 가장 아픈지 짚어 주세요", "열이 있는지 재 볼게요"], a: "press", o: ["rub", "tap", "pinch"]}
+  - {t: "안심", i: shield, w: "figure out the cause로 아직 원인을 모른다는 점을 솔직히 인정하고 safely for both of you로 아기도 함께 지키겠다고 약속해요. 임신 중에는 태아의 안전까지 고려해 검사를 골라요.", d: "for the doctor", k: ["임신 몇 주째인지 말씀해 주시겠어요?", "곧 초음파실로 모실게요"], a: "safely", o: ["quickly", "quietly", "gently"]}
+  - {t: "통증 이동", i: pushpin, w: "show me exactly로 손가락으로 짚게 해 위치를 정확히 알아요. 충수염의 통증은 배꼽 주위에서 오른쪽 아랫배로 옮겨 가는 경우가 많아서 이동 여부를 물어요.", d: "disappeared", k: ["아기가 움직이는 게 느껴지나요?", "눌렀을 때 더 아픈가요?"], a: "moved", o: ["started", "stopped", "spread"]}
+  - {t: "초음파 우선", i: monitor, w: "since로 초음파를 먼저 하는 이유를 붙여 환자의 걱정을 덜어요. 초음파는 방사선을 쓰지 않아서 임신 중 복통의 첫 영상 검사로 쓰여요.", d: "a blood draw first", k: ["의사 선생님이 곧 오셔서 결과를 설명해 줄 거예요", "젤이 조금 차가울 수 있어요"], a: "safest", o: ["quickest", "easiest", "cheapest"]}
+  - {t: "충수염 주의", i: siren, w: "too로 임신 중에도 급성 복통의 원인이 생긴다는 점을 짚어요. 임신 중 충수염은 증상이 다르게 나타나 진단이 늦어질 수 있어서 더 주의해요.", d: "after delivery too", k: ["오른쪽 아랫배를 눌러 볼게요", "열이 있는지 체온을 재 볼게요"], a: "Appendicitis", o: ["Anemia", "Gallstones", "Infection"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "임신 중 복통 감별 4문장 순서"
+    why: "임신 중 복통의 원인이 다양하다고 먼저 알리고, 그래서 통증이 옮겨간 곳을 짚게 하고, 그 자리를 눌러 보고, 답을 바탕으로 초음파부터 하겠다고 말해요. 'That's why'·'there'·'your answers'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Not all belly pain in pregnancy is from the baby.", icon: stetho, ko: "임신 중 배 통증이 전부 아기 때문은 아니에요", note: "설명"}
+    - {en: "That's why I'm asking: can you show me exactly where the pain moved?", icon: pushpin, ko: "그래서 여쭤봐요, 통증이 어디로 옮겨갔는지 보여주시겠어요?", note: "위치"}
+    - {en: "Does it hurt more when I press there and let go?", icon: magnify, ko: "거기를 눌렀다가 뗄 때 더 아프신가요?", note: "압통"}
+    - {en: "Based on your answers, we'll do an ultrasound first, since it's safest for the baby.", icon: monitor, ko: "답을 바탕으로, 아기에게 가장 안전한 초음파부터 할게요", note: "검사"}

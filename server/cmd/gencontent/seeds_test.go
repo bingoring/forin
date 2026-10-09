@@ -14,7 +14,10 @@ func TestGenerateSeedScenarios_oneScenarioPerSeed(t *testing.T) {
 			Room: "EXAM 2", Brief: "자세 의존성 흉통을 감별하세요.", Role: "patient", Difficulty: 3,
 			Persona: SeedPersona{Name: "Ms. Ortega", AgeRange: "40s", Mood: "anxious"}},
 	}
-	scns, evts := generateSeedScenarios(0, d, seeds)
+	scns, evts, err := generateSeedScenarios(0, d, seeds, nil)
+	if err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
 
 	if len(scns) != 2 {
 		t.Fatalf("want 2 scenarios (1 per seed), got %d", len(scns))

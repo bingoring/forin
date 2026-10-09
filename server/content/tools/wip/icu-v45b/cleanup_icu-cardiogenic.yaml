@@ -1,0 +1,71 @@
+# icu-cardiogenic 결정 11 정리 — build_icu-cardiogenic.py 가 읽는다.
+untag_everywhere:
+  w-now: 공통 쉬운 단어(now)
+  w-minute: 공통 쉬운 단어(minute)
+  w-hour: 공통 쉬운 단어(hour)
+  w-time: 공통 쉬운 단어(time)
+  w-today: 공통 쉬운 단어(today)
+  w-morning: 공통 쉬운 단어(morning)
+  w-day: 공통 쉬운 단어(day)
+  w-doctor: 공통 쉬운 단어(doctor)
+  w-nurse: 공통 쉬운 단어(nurse)
+  w-family: 공통 쉬운 단어(family)
+  w-hand: 공통 쉬운 단어(hand)
+  w-head: 공통 쉬운 단어(head)
+  w-know: 공통 쉬운 단어(know)
+  w-come: 공통 쉬운 단어(come)
+  w-get: 간호사가 이미 아는 말(get) — 문장마다 뜻이 달라(하다·준비하다) 카드 하나로 가르칠 수 없다
+  w-let: 간호사가 이미 아는 말(let) — know를 뺀 뒤 let 홀로는 가르칠 값이 없다
+  w-need: 간호사가 이미 아는 말(need)
+  w-tell: 간호사가 이미 아는 말(tell)
+  w-want: 간호사가 이미 아는 말(want)
+  w-put: 간호사가 이미 아는 말(put)
+
+# [상황 번호, 문장 번호, id, why]
+untag_at:
+  - [3, 4, w-breath, "short of breath는 w-short(헤드워드 short of breath) 한 카드로 가르친다 — w-breath 태그를 뺐다"]
+  - [7, 2, w-pick, "pick up(늘어나다)은 카드(고르다)와 뜻이 다르다"]
+  - [7, 4, w-slow, "slowly는 부사라 w-slow(느린) 카드와 다른 낱말이다 — 은행의 w-slowly로 태그한다"]
+  - [18, 3, w-pressure, "holding pressure는 지혈 압박이라 카드(혈압)와 뜻이 다르다"]
+  - [9, 1, w-sit, "It sits in an artery의 sit은 '자리 잡다'라 카드(앉히다)와 뜻이 다르다"]
+
+tag_at:
+  - [7, 4, w-slowly, "slowly는 은행의 w-slowly(천천히)로 태그한다"]
+
+# [상황 번호, 문장 번호, ko, why]
+sentence_ko: []
+
+word_edits:
+  w-short: {en: short of breath, ipa: /ʃɔːrt əv brɛθ/, ko: 숨이 찬, why: "헤드워드 short(짧은)가 short of breath로 쓰였다 — 구 단위로, 다른 ICU 주제(icu-arrhythmia)와 맞춘다"}
+  w-away: {en: right away, ipa: /raɪt əˈweɪ/, ko: 곧바로, why: "헤드워드 away에 ko '즉시'가 붙어 있었다 — 구 단위(right away)로, w-immediately(즉시)와 ko를 가른다. icu-arrhythmia와 맞춘다"}
+  w-right: {ko: 맞는; 바로, why: "태그된 문장이 right here·right after(바로)와 exactly right·looks right(맞는) — icu-arrhythmia와 맞춘다"}
+  w-overwork: {en: overwork, ipa: /ˌoʊvərˈwɜːrk/, why: "활용형 헤드워드(overworking)를 원형으로"}
+  w-fail: {en: fail, ipa: /feɪl/, why: "활용형 헤드워드(failing)를 원형으로"}
+  w-lower: {en: lower, ipa: /ˈloʊər/, why: "활용형 헤드워드(lowering)를 원형으로"}
+  w-slip: {en: slip, ipa: /slɪp/, why: "활용형 헤드워드(slipping)를 원형으로"}
+  w-rupture: {en: rupture, ipa: /ˈrʌptʃər/, why: "활용형 헤드워드(ruptured)를 원형으로"}
+  w-alarm: {en: alarm, ipa: /əˈlɑːrm/, why: "활용형 헤드워드(alarming)를 원형으로"}
+  w-stop: {en: stop, ipa: /stɑːp/, why: "활용형 헤드워드(stopping)를 원형으로"}
+  w-call: {en: call, ipa: /kɔːl/, why: "활용형 헤드워드(calling)를 원형으로"}
+  w-stay: {en: stay, ipa: /steɪ/, why: "활용형 헤드워드(staying)를 원형으로"}
+  w-arrive: {en: arrive, ipa: /əˈraɪv/, why: "활용형 헤드워드(arrives)를 원형으로"}
+  w-inotrope: {en: inotrope, ipa: /ˈaɪnətroʊp/, why: "복수형 헤드워드(inotropes)를 원형으로"}
+  w-compression: {en: compression, ipa: /kəmˈprɛʃn/, why: "복수형 헤드워드(compressions)를 원형으로"}
+  w-secure: {en: secure, ipa: /sɪˈkjʊr/, why: "활용형 헤드워드(secured)를 원형으로"}
+  w-send: {en: send, ipa: /sɛnd/, why: "활용형 헤드워드(sent)를 원형으로"}
+  w-recover: {en: recover, ipa: /rɪˈkʌvər/, why: "활용형 헤드워드(recovering)를 원형으로"}
+  w-hope: {en: hope, ipa: /hoʊp/, why: "활용형 헤드워드(hoped)를 원형으로"}
+  w-fit: {en: fit, ipa: /fɪt/, why: "활용형 헤드워드(fits)를 원형으로"}
+  w-matter: {en: matter, ipa: /ˈmætər/, why: "활용형 헤드워드(matters)를 원형으로"}
+  w-confirm: {ko: 확실히 확인하다, why: "w-check(확인하다)와 ko가 같아 듣고 뜻 고르기에서 정답이 둘이 된다 — icu-ards-proning과 맞춘다"}
+  w-doublecheck: {ko: 이중 확인하다, why: "w-recheck(다시 확인하다)와 뜻이 겹쳤다 — 다른 간호사와 하는 독립 이중 확인"}
+  w-saturated: {ko: (피가) 흥건히 배어든, why: "w-soaked(흠뻑 젖은)와 ko가 같았다 — 드레싱이 피로 다 배어든 상태"}
+  w-injured: {ko: 다친, why: "w-damaged(손상된)와 ko가 같았다"}
+  w-steady: {ko: 흔들림 없는, why: "w-stable(안정된)과 뜻이 겹쳤다 — icu-ards-proning과 맞춘다"}
+  w-clear: {ko: 물러나다, why: "clear the bed는 '비우다'가 아니라 (충격 전) 침대에서 물러나는 것 — 문장 ko도 '물러나세요', icu-arrhythmia와 맞춘다"}
+  w-grab: {ko: 가져오다, why: "grab the crash cart는 '붙잡다'가 아니라 '가져오다' — icu-arrhythmia와 맞춘다"}
+  w-trigger: {ko: 트리거; 유발하다, why: "태그된 문장 셋 중 둘이 IABP의 trigger(명사: 트리거) — 유발하다만으로는 맞지 않는다"}
+  w-further: {ko: 한층 더, why: "w-more(더)와 ko가 같았다 — further behind의 '한층 더'"}
+  w-run: {ko: 주입되다, why: "once it's running은 드립이 '주입되는' 것 — core-handoff-icu·core-safety-icu와 맞춘다"}
+
+remove_why: {}

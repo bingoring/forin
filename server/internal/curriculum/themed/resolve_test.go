@@ -161,3 +161,25 @@ func TestResolve_zeroProgressNeverInventsHere(t *testing.T) {
 		t.Fatalf("resume must be exactly 1, got %d", resumeCount)
 	}
 }
+
+// v42 §5 간지 한 장의 주제 아이콘. 레지스트리의 icon이 그대로 실려 나가고, 없는 주제는
+// 빈 값이다 — 서버는 아이콘을 지어내지 않는다(이름이 NbIcon에 있는지는 모바일 테스트가 지킨다).
+func TestResolve_iconSurfacesFromRegistry(t *testing.T) {
+	themes := []Theme{
+		{Key: "er-triage", Name: "트리아지", Track: "depth", Dept: "ER", Order: 10, Icon: "siren"},
+		{Key: "er-burn", Name: "화상", Track: "depth", Dept: "ER", Order: 20},
+	}
+	tags := []ScenarioTag{
+		{ID: "SCN-ER-1", Title: "트리아지1", Theme: "er-triage", Dept: "ER", Difficulty: 1},
+		{ID: "SCN-ER-2", Title: "화상1", Theme: "er-burn", Dept: "ER", Difficulty: 1},
+	}
+	cur, _ := Assemble(themes, tags)
+	tracks := Resolve(cur, []string{"ER"}, nil, nil, "")
+	got := map[string]string{}
+	for _, c := range tracks[0].Curricula {
+		got[c.ThemeKey] = c.Icon
+	}
+	if got["er-triage"] != "siren" || got["er-burn"] != "" {
+		t.Fatalf("icon should pass through from the registry and stay empty when unset: %v", got)
+	}
+}

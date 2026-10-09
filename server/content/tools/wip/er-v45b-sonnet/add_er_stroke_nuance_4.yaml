@@ -1,0 +1,86 @@
+- title: "tPA 후 신경학 악화"
+  nuance:
+    - kind: slider
+      words: ["w-urgent", "w-scan"]
+      cue: "Halfway through the tPA infusion, he suddenly complains of a severe headache and starts vomiting."
+      scale: ["routine scan", "same-day scan", "urgent scan"]
+      answerAt: 2
+      why: "tPA 투여 중 갑작스러운 심한 두통이나 신경학적 악화는 출혈을 의심하는 신호예요. 투여를 멈추고 가능한 한 빨리 두부 CT를 찍어요. routine이나 same-day로 미룰 일이 아니에요."
+      example: "We need an urgent repeat scan of your head."
+      exKo: "머리에 대한 긴급 재촬영이 필요해요."
+    - kind: context
+      words: ["w-stop", "w-medication"]
+      scenes:
+        - {who: 환자에게, icon: me, en: "I'm stopping the medication right now.", ok: true}
+        - {who: 의사 콜, icon: monitor, en: "Headache and vomiting during the tPA infusion. Infusion stopped, I need a stat head CT.", ok: true}
+        - {who: 환자에게, icon: me, en: "The infusion has been discontinued pending reassessment.", ok: false, fix: "I'm stopping the medication right now, and we'll get a scan as fast as we can."}
+      why: "급박할수록 환자에게는 지금 하는 일을 짧고 직접 말해요. 의료진끼리의 보고 문장은 환자에게는 차갑고 불안하게 들려요."
+- title: "뇌간 경색 급속 의식저하"
+  nuance:
+    - kind: slider
+      words: ["w-respond", "w-voice"]
+      cue: "You call his name loudly and he doesn't react. When you squeeze the muscle at his shoulder, he opens his eyes."
+      scale: ["responds to voice", "responds only to pain", "does not respond at all"]
+      answerAt: 1
+      why: "의식 수준은 AVPU(깨어 있음, 목소리에 반응, 통증에 반응, 무반응)로 나눠 말해요. 목소리에는 반응이 없고 자극에만 눈을 뜨면 'responds only to pain'이에요."
+      example: "His eyes are closing and he's not responding to me now."
+      exKo: "눈이 감기고 있고 지금 제게 반응하지 않아요."
+    - kind: swap
+      words: ["w-intubation", "w-airway", "w-protect"]
+      who: "보호자에게 · 급박한 상황 설명"
+      icon: me
+      before: ["He needs ", "intubation", " to protect his airway."]
+      options: ["a breathing tube", "intubation", "life support"]
+      answer: "a breathing tube"
+      notes: {"a breathing tube": "가족이 이해하는 쉬운 말이에요. 무엇을 하는지 정확히 전해요.", "intubation": "의료진끼리 쓰는 말이에요. 가족에게는 낯설어요.", "life support": "생명 유지 장치처럼 들려 실제보다 무거운 인상을 줘요."}
+      why: "삽관이 필요하다는 사실은 그대로, 가족이 알아듣는 쉬운 말로 전해요."
+- title: "뇌졸중 SBAR 인계"
+  nuance:
+    - kind: pair
+      words: ["w-known", "w-onset"]
+      pairs: [["last known well", "the last time he was seen normal"], ["symptom onset", "when the weakness actually began"], ["NIHSS", "the stroke severity score"]]
+      decoys: ["the time of admission"]
+      why: "인계에서 last known well(마지막 정상 시각)과 symptom onset(증상이 실제로 시작된 시각)은 달라요. onset은 모르는 경우가 많아서 'onset unclear'라고 말하고, 그럴 때는 LKW를 기준으로 시간창을 계산해요."
+    - kind: context
+      words: ["w-deterioration", "w-call"]
+      scenes:
+        - {who: 의사 콜, icon: monitor, en: "NIHSS is up from 12 to 15.", ok: true}
+        - {who: 인계받는 간호사에게, icon: bell, en: "Call me if his exam changes at all.", ok: true}
+        - {who: 가족에게, icon: me, en: "He is exhibiting neurological deterioration with a rising NIHSS.", ok: false, fix: "His stroke symptoms are getting worse, and we're acting on it right now."}
+      why: "의료진끼리는 NIHSS·deterioration 같은 정확한 용어로 말하지만, 가족에게는 '나빠지고 있고 조치 중'처럼 쉬운 말로 전해야 해요."
+- title: "젊은 환자 경동맥 박리"
+  nuance:
+    - kind: slider
+      words: ["w-neck"]
+      cue: "Patient: \"It's the worst neck pain I've ever had, and it runs up behind my ear.\""
+      scale: ["mild neck stiffness", "neck pain", "severe neck pain"]
+      answerAt: 2
+      why: "경동맥 박리에서는 목이나 머리 통증이 먼저 오고 신경 증상이 뒤따를 수 있어요. 통증의 강도와 시작 시각을 환자 말 그대로 기록해요."
+      example: "Did you have any neck injury or sudden strain?"
+      exKo: "목에 부상이나 갑작스러운 긴장이 있었나요?"
+    - kind: swap
+      words: ["w-tear", "w-stroke", "w-cause", "w-neck"]
+      who: "젊은 환자에게 · 원인 설명"
+      icon: me
+      before: ["A ", "dissection", " in the neck artery can cause a stroke like this."]
+      options: ["tear", "dissection", "sprain"]
+      answer: "tear"
+      notes: {"tear": "동맥 벽 안쪽이 찢어진다는 뜻을 환자가 바로 이해해요.", "dissection": "의료진 용어예요. 환자에게는 낯설어요.", "sprain": "염좌는 근육이나 인대에 쓰는 말이라 동맥 벽 손상에는 맞지 않아요."}
+      why: "경동맥 박리를 '동맥 벽이 찢어진 것'으로 풀어 주면 젊은 환자도 원인을 이해해요."
+- title: "악성 부종 감시"
+  nuance:
+    - kind: slider
+      words: ["w-swelling", "w-pupil", "w-brain"]
+      cue: "One pupil is larger and not reacting, he is getting drowsy, and the CT shows the brain shifting to one side."
+      scale: ["mild swelling", "swelling", "life-threatening swelling"]
+      answerAt: 2
+      why: "대면적 경색 뒤 뇌부종이 심해지면 뇌가 한쪽으로 밀리며 동공이 커지고 의식이 떨어져요. 이 정도는 'life-threatening'으로 분명히 알리고 바로 팀을 호출해요."
+      example: "We're watching closely for swelling in the brain."
+      exKo: "뇌부종이 없는지 자세히 지켜보고 있어요."
+    - kind: context
+      words: ["w-pupil", "w-alert", "w-change"]
+      scenes:
+        - {who: 팀 호출, icon: bell, en: "One pupil is now larger. I'm alerting the team right away.", ok: true}
+        - {who: 의사 콜, icon: monitor, en: "Right pupil is dilated and sluggish. I need you at the bedside now.", ok: true}
+        - {who: 가족에게, icon: me, en: "The patient is exhibiting anisocoria with impending herniation.", ok: false, fix: "One pupil is larger now, and that's an important change. I'm alerting the team right away."}
+      why: "의료진끼리는 anisocoria·herniation 같은 정확한 용어가 빠르지만, 가족에게는 무슨 일이 일어나고 무엇을 하고 있는지 쉬운 말로 전해야 해요."

@@ -82,6 +82,7 @@ func main() {
 	colleagueRepo := postgres.NewColleagueRepo(pool)
 	loungeRepo := postgres.NewLoungeRepo(pool)
 	slangRepo := postgres.NewSlangRepo(pool)
+	lessonRepo := postgres.NewLessonRepo(pool)
 	handoffRepo := postgres.NewHandoffRepo(pool)
 
 	// Home flavour (mentor notes, field phrases). A missing content dir is not
@@ -178,15 +179,17 @@ func main() {
 	// Pronunciation-attempt persistence + history + reference derivation
 	// (domain/speech, Task 5's own domain layer from Tasks 2-4).
 	speechRepo := postgres.NewSpeechRepo(pool)
-	speechSvc := domainspeech.NewService(speechRepo, pronSvc, speech)
+	speechSvc := domainspeech.NewService(speechRepo, pronSvc, speech).
+		WithReferenceLimiter(redisadapter.NewReferenceLimiter(rdb, cfg.SpeechReferenceDailyLimit))
 
 	handler := httpadapter.NewRouter(httpadapter.Deps{
-		Env:           cfg.Env,
-		DevAuthSecret: cfg.DevAuthSecret,
-		Log:           logger, Tokens: tokens, AuthSvc: authSvc, Users: users, Content: contentRepo,
+		Env:              cfg.Env,
+		DevAuthSecret:    cfg.DevAuthSecret,
+		TrustedProxyHops: cfg.TrustedProxyHops,
+		Log:              logger, Tokens: tokens, AuthSvc: authSvc, Users: users, Content: contentRepo,
 		Progress: progressRepo, Review: progressRepo, Journeys: journeys, Convo: convoEngine, Pron: pronSvc, Speech: speechSvc, Synth: speech,
 		PronunciationEnabled: speech.Configured(),
-		Colleague:            colleagueRepo, Lounge: loungeRepo, HomePools: homePools, Ward: wardSvc, Slang: slangDeck, SlangRepo: slangRepo, Night: nightRadio, Handoff: handoffSvc, PG: pool, Redis: rdb,
+		Colleague:            colleagueRepo, Lounge: loungeRepo, HomePools: homePools, Ward: wardSvc, Slang: slangDeck, SlangRepo: slangRepo, Lessons: lessonRepo, Night: nightRadio, Handoff: handoffSvc, PG: pool, Redis: rdb,
 	})
 
 	srv := &http.Server{

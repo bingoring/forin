@@ -1,0 +1,90 @@
+- title: 코드 후 ICU 인계
+  s:
+  - {t: "상황(S)", i: siren, w: "SBAR의 S는 환자가 누구이고 지금 무슨 일인지 한 줄로 시작해요. post-cardiac-arrest는 심정지 뒤라는 뜻이라, 나이와 함께 말하면 인수자가 바로 그림을 그려요.", d: "from home", k: ["상황: 이분은 58세 뇌졸중 환자입니다", "상황: 이분은 심정지 전 환자입니다"], a: "post-cardiac-arrest", ai: stetho, o: [["post-surgical", "scalpel"], ["post-stroke", "bulb"], ["pre-operative", "calendar"]]}
+  - {t: "배경(B)", i: board, w: "down time은 심정지로 쓰러져 있던 시간을 말하는 인계 용어예요. 시간과 제세동 횟수는 소생 경과를 보여 주는 핵심 정보예요.", d: "last night", k: ["배경: 정지 시간은 약 한 시간이었습니다", "배경: 제세동은 없었습니다"], a: "eight", ai: calendar, o: [["two", "play"], ["twelve", "redo"], ["twenty", "lock"]]}
+  - {t: "현재 상태", i: monitor, w: "Right now로 시작하면 지난 경과(B)에서 현재 상태로 넘어간다는 신호가 돼요. 승압제와 삽관은 인수자가 바로 눈으로 확인할 장치예요.", d: "last night", k: ["지금은 삽관이 제거된 상태입니다", "지금은 노르에피네프린을 끊은 상태입니다"], a: "intubated", ai: speaker, o: [["extubated", "redo"], ["sedated", "coffee"], ["awake", "star"]]}
+  - {t: "혈압 경과", i: chartup, w: "since the last shock은 마지막 제세동 시점을 기준으로 삼아서 안정적인 상태가 얼마 동안인지 보여 줘요. 소생 후 혈압은 변할 수 있어서 기준 시점이 중요해요.", d: "for a week", k: ["마지막 제세동 이후 혈압이 계속 떨어졌습니다", "첫 번째 제세동 이후 혈압은 안정적이었습니다"], a: "stable", ai: shield, o: [["unstable", "siren"], ["low", "chevronDown"], ["falling", "redo"]]}
+  - {t: "수치 확인", i: mic, w: "last recorded는 차트에 기록된 마지막 값을 묻는 표현이에요. for me는 요청을 부탁으로 부드럽게 만들어요.", d: "yesterday", k: ["혈압을 제가 직접 다시 재 보겠습니다", "마지막 혈압은 이미 확인했습니다"], a: "pressure", ai: monitor, o: [["sugar", "coffee"], ["count", "lab"], ["type", "pushpin"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "코드 후 ICU 인계 4문장 순서"
+    why: "SBAR의 순서대로 상황, 배경을 말해요. 이어서 현재 상태를 말하고, 그 승압제를 쓰는 동안의 혈압 경과로 마무리해요. that drip이 앞 줄의 약을 가리켜요."
+    lines:
+    - {en: "Situation: this is a fifty-eight-year-old post-cardiac-arrest patient.", icon: siren, ko: "상황: 58세 심정지 후 환자예요", note: "상황"}
+    - {en: "Background: down time was about eight minutes with two shocks.", icon: board, ko: "배경: 정지 약 8분, 제세동 두 번", note: "배경"}
+    - {en: "Right now he's on a norepinephrine drip and intubated.", icon: monitor, ko: "지금은 노르에피네프린과 삽관 상태예요", note: "현재"}
+    - {en: "On that drip, his pressure has been stable since the last shock.", icon: chartup, ko: "그 약으로 마지막 제세동 이후 혈압은 안정적이에요", note: "혈압"}
+  sw: {ko: "배경: 정지 시간은 약 8분이었고 제세동은 두 번 있었어요"}
+- title: 교대 중 급변 발생
+  s:
+  - {t: "정정 선언", i: redo, w: "Forget what I just said는 방금 한 인계를 무효로 한다는 신호예요. 뒤에 바뀐 이유를 바로 붙여야 상대가 혼란 없이 새 정보를 받아요.", d: "last night", k: ["방금 한 말 그대로 하세요, 상태는 같습니다", "방금 한 말을 기록해 두세요"], a: "status", ai: monitor, o: [["plan", "compass"], ["order", "board"], ["room", "home"]]}
+  - {t: "산소 저하", i: chevronDown, w: "just dropped는 방금 일어난 급한 변화라는 뜻이에요. 수치를 정확히 말해야 인수자가 얼마나 위급한지 바로 알아요.", d: "at noon", k: ["산소포화도가 95퍼센트로 올랐습니다", "산소 공급을 방금 올렸습니다"], a: "dropped", ai: siren, o: [["rose", "chartup"], ["climbed", "chevronUp"], ["jumped", "play"]]}
+  - {t: "함께 재사정", i: handshake2, w: "Let's both go는 인수자를 지시하지 않고 같이 가자고 말해서 급한 상황에서도 팀으로 움직이게 해요. reassess는 상태가 변했을 때 다시 평가하는 단계예요.", d: "alone", k: ["저 혼자 가서 그분을 다시 사정할게요", "같이 가서 그분을 퇴원시켜요"], a: "see", ai: magnify, o: [["call", "bell"], ["tell", "speech"], ["show", "board"]]}
+  - {t: "즉시 호출", i: siren, w: "this can't wait는 지금 바로 해야 하는 이유를 한마디로 알려 줘요. 급할 때는 짧은 명령형과 이유 한 줄이면 충분해요.", d: "twice", k: ["의사에게 나중에 연락해도 괜찮아요", "의사를 부르지 말고 기다리세요"], a: "now", ai: bell, o: [["later", "redo"], ["tomorrow", "calendar"], ["tonight", "lock"]]}
+  - {t: "모니터 확인", i: monitor, w: "is showing은 지금 화면에 나타나는 것을 말해요. 말로 알린 변화를 모니터가 뒷받침한다고 하면 인수자가 바로 믿고 움직여요.", d: "at noon", k: ["모니터에 산소 수치 상승이 나타나고 있습니다", "모니터가 방금 꺼졌습니다"], a: "drop", ai: chevronDown, o: [["rise", "chartup"], ["increase", "chevronUp"], ["peak", "trophy"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "교대 중 급변 4문장 순서"
+    why: "먼저 앞서 한 말을 정정해요. 그 이유로 산소 하락을 알리고, 그 하락을 근거로 의사를 호출하며, 의사가 오는 동안 함께 재사정해요."
+    lines:
+    - {en: "Forget what I just said — his status has changed.", icon: redo, ko: "방금 말은 잊으세요, 상태가 바뀌었어요", note: "정정"}
+    - {en: "His oxygen just dropped to eighty-five percent.", icon: chevronDown, ko: "산소포화도가 방금 85퍼센트로 떨어졌어요", note: "하락"}
+    - {en: "Because of that drop, call the doctor now — this can't wait.", icon: siren, ko: "그 하락 때문에 지금 의사를 부르세요", note: "호출"}
+    - {en: "While the doctor's on the way, let's both go see him and reassess.", icon: handshake2, ko: "의사가 오는 동안 같이 가서 다시 사정해요", note: "재사정"}
+  ctx: {word: "status", ko: "상태"}
+- title: 불완전 정보 이송 수용
+  s:
+  - {t: "누락 요청", i: board, w: "We didn't get …은 상대 잘못이 아니라 우리 쪽에 도착하지 않았다는 사실만 말해요. 이어지는 do you have it?이 협조를 부탁하는 질문이 돼요.", d: "last night", k: ["투약 목록은 이미 받았습니다", "투약 목록을 팩스로 보내 드릴게요"], a: "medication", ai: pill, o: [["allergy", "shield"], ["problem", "faceWorried"], ["visitor", "home"]]}
+  - {t: "시각 확인", i: calendar, w: "when the last dose was given은 마지막 투여 시각을 되묻는 간접 의문문이에요. 다음 투약 시각을 정할 때 필요한 정보예요.", d: "by mouth", k: ["마지막 투여 시각은 제가 알려 드릴게요", "마지막 투여를 취소해 주시겠어요?"], a: "dose", ai: pill, o: [["meal", "coffee"], ["bath", "bandage"], ["tray", "board"]]}
+  - {t: "처음부터", i: redo, w: "from scratch는 받은 정보에 기대지 않고 처음부터 한다는 뜻이에요. 인계 정보가 빠졌을 때는 내 눈으로 직접 다시 확인하는 것이 안전해요.", d: "at noon", k: ["받은 보고를 그대로 믿고 진행하겠습니다", "안전하게 다음 근무자에게 넘기겠습니다"], a: "scratch", ai: pencil, o: [["memory", "bulb"], ["home", "home"], ["there", "compass"]]}
+  - {t: "누락 지적", i: mic, w: "didn't mention any …는 보고에서 빠진 항목만 담담히 짚어요. 알레르기는 투약 전에 꼭 알아야 하는 정보라 빠지면 반드시 되묻고 확인해요.", d: "yesterday", k: ["받은 보고에는 알레르기가 자세히 적혀 있었습니다", "보고는 아직 받지 못했습니다"], a: "allergies", ai: shield, o: [["vitals", "monitor"], ["diagnosis", "stetho"], ["medications", "pill"]]}
+  - {t: "시각 확인", i: pencil, w: "so I can …은 부탁의 이유를 붙여서 요청을 협조로 바꿔요. 활력징후는 측정 시각이 틀리면 추세 해석이 틀어지니 정확히 기록해야 해요.", d: "tonight", k: ["활력징후 시각은 확인하지 않아도 돼요", "차트는 제가 나중에 정리할게요"], a: "correctly", ai: star, o: [["later", "redo"], ["quickly", "play"], ["twice", "calendar"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "불완전 정보 수용 4문장 순서"
+    why: "투약 목록 요청이 먼저예요. 없다면 마지막 투여 시각을 묻고, 어느 쪽이든 활력징후 시각을 확인하고, 그 모든 정보를 받을 때까지 처음부터 다시 사정한다고 마무리해요."
+    lines:
+    - {en: "We didn't get her medication list — do you have it?", icon: board, ko: "투약 목록을 못 받았는데, 갖고 계신가요?", note: "목록"}
+    - {en: "If you don't have it, can you confirm when the last dose was given?", icon: pill, ko: "없으면 마지막 투여 시각을 확인해 주시겠어요?", note: "투여"}
+    - {en: "Either way, please confirm her vitals time so I can chart it correctly.", icon: pencil, ko: "어느 쪽이든 활력징후 시각을 확인해 주세요", note: "시각"}
+    - {en: "Until I have all of that, I'll reassess from scratch to be safe.", icon: redo, ko: "그걸 다 받을 때까지 안전하게 처음부터 사정할게요", note: "재사정"}
+  sw: {ko: "투약 목록을 받지 못했는데, 보내 주시겠어요?"}
+- title: 다직역 인계 회의
+  s:
+  - {t: "간호 보고", i: stetho, w: "From nursing,으로 시작하면 어느 직역의 관점인지 먼저 밝혀서 회의에서 보고가 섞이지 않아요. controlled but … poor처럼 좋은 점과 문제를 한 문장에 나눠 말해요.", d: "this morning", k: ["간호 측면에서는 통증이 심하고 거동은 좋습니다", "간호 측면에서는 통증도 거동도 모두 좋습니다"], a: "controlled", ai: shield, o: [["severe", "faceAngry"], ["worse", "chevronDown"], ["new", "star"]]}
+  - {t: "사회복지", i: home, w: "Social work is arranging …은 사회복지팀이 지금 맡아 진행 중인 일을 알려 줘요. 퇴원 장소가 정해져야 의사와 간호사가 퇴원 준비를 같이 맞춰요.", d: "from home", k: ["사회복지팀이 퇴원을 취소했습니다", "사회복지팀이 아직 상황을 모릅니다"], a: "arranging", ai: handshake2, o: [["refusing", "faceAngry"], ["avoiding", "plane"], ["canceling", "lock"]]}
+  - {t: "담당 지정", i: pushpin, w: "Let's agree who …는 회의가 흩어지기 전에 항목마다 책임자를 정하자는 제안이에요. 책임자가 없으면 누군가 하겠지로 끝나는 경우가 많아요.", d: "of the", k: ["각 항목은 제가 혼자 후속 처리할게요", "각 항목은 나중에 정해요"], a: "agree", ai: handshake2, o: [["forget", "lock"], ["argue", "faceAngry"], ["guess", "bulb"]]}
+  - {t: "미결 확인", i: stetho, w: "still needs to는 아직 끝나지 않은 단계를 짚어 줘요. 퇴원 계획은 의사의 확정이 있어야 다음 준비를 진행할 수 있어요.", d: "alone", k: ["의사가 퇴원 계획을 이미 확정했습니다", "간호사가 퇴원 계획을 확인해야 합니다"], a: "confirm", ai: bell, o: [["sign", "pencil"], ["cancel", "redo"], ["delay", "calendar"]]}
+  - {t: "가족 인지", i: speech, w: "already는 가족에게 이미 설명이 끝났다는 뜻이라 다른 직역이 같은 설명을 반복하지 않아도 돼요. 가족이 아는 범위를 회의에서 공유하면 설명이 겹치거나 빠지지 않아요.", d: "last week", k: ["가족은 보호소 계획을 아직 모릅니다", "가족이 보호소 계획에 반대합니다"], a: "shelter", ai: home, o: [["surgery", "scalpel"], ["therapy", "pill"], ["insurance", "board"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "다직역 인계 회의 4문장 순서"
+    why: "간호 보고로 시작하고 사회복지가 퇴원 준비를 말해요. 가족이 그 계획을 이미 안다는 점을 받아 they already know로 이어 담당을 정하며 회의를 마쳐요."
+    lines:
+    - {en: "From nursing, her pain is controlled but mobility is poor.", icon: stetho, ko: "간호: 통증은 조절되지만 거동은 좋지 않아요", note: "간호"}
+    - {en: "Social work is arranging safe discharge to a shelter for her.", icon: home, ko: "사회복지: 그분의 보호소 퇴원을 주선 중이에요", note: "복지"}
+    - {en: "Her family knows about it already.", icon: speech, ko: "가족은 그 계획을 이미 알고 있어요", note: "가족"}
+    - {en: "Since they already know, let's agree who follows up on each item.", icon: pushpin, ko: "이미 아니까 항목마다 누가 후속 처리할지 정해요", note: "담당"}
+  sw: {ko: "각 항목을 누가 후속 처리할지 합의해요"}
+- title: 대량재해 환자 분류 인계
+  s:
+  - {t: "인원 보고", i: board, w: "reds, yellows, greens는 중증도 분류 색을 복수로 세는 현장 말투예요. 색과 숫자를 짧게 말하면 전체 규모가 한눈에 전해져요.", d: "at noon", k: ["적색 3명, 황색 8명, 녹색 5명입니다", "적색은 한 명도 없습니다"], a: "yellows", ai: star, o: [["blacks", "lock"], ["blues", "bell"], ["whites", "home"]]}
+  - {t: "구역 배치", i: compass, w: "one through three는 1번부터 3번까지 모두를 한 번에 가리키는 표현이에요. most critical first는 위중한 순서로 놓였다는 뜻이라 가장 급한 환자부터 볼 수 있어요.", d: "last night", k: ["적색 환자는 4번에서 6번 구역에 있습니다", "적색 환자는 덜 위중한 순서로 놓여 있습니다"], a: "critical", ai: siren, o: [["recent", "calendar"], ["stable", "monitor"], ["quiet", "speaker"]]}
+  - {t: "재사정 주기", i: redo, w: "every fifteen minutes처럼 간격을 숫자로 정해 주면 누가 해도 같은 주기로 재사정해요. 황색 환자는 나빠지면 적색으로 올려야 해서 주기적으로 다시 봐요.", d: "at night", k: ["황색 환자는 한 번만 재사정하세요", "녹색 환자를 15분마다 재사정하세요"], a: "fifteen", ai: calendar, o: [["five", "star"], ["thirty", "play"], ["sixty", "lock"]]}
+  - {t: "녹색 대기", i: home, w: "can wait는 지금 당장 치료하지 않아도 안전하다고 판단했다는 뜻이에요. until we call them은 대기가 끝나는 시점을 호출로 정해 줘요.", d: "at noon", k: ["녹색 환자는 지금 바로 치료해야 합니다", "녹색 환자는 퇴원시켜도 됩니다"], a: "hallway", ai: compass, o: [["lobby", "hospital"], ["cafeteria", "coffee"], ["parking lot", "plane"]]}
+  - {t: "분류 태그", i: pushpin, w: "Here are …는 물건을 건네며 말하는 가장 짧은 틀이에요. 태그가 침상마다 붙어 있어야 다른 팀도 색으로 우선순위를 바로 알아요.", d: "at noon", k: ["이 구역 환자는 모두 태그를 뗐습니다", "이 구역에는 침상이 한 개뿐입니다"], a: "triage", ai: siren, o: [["visitor", "me"], ["billing", "calendar"], ["allergy", "shield"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "대량재해 분류 4문장 순서"
+    why: "전체 인원으로 시작하고 적색의 위치를 말해요. 그 구역을 맡은 뒤 황색을 재사정하고, 두 그룹을 모두 본 뒤에 녹색이 기다린다는 순서예요."
+    lines:
+    - {en: "We have three reds, five yellows, and eight greens.", icon: board, ko: "적색 3, 황색 5, 녹색 8명이에요", note: "인원"}
+    - {en: "The reds are in bays one through three, most critical first.", icon: siren, ko: "적색은 1~3번 구역, 가장 위중한 순이에요", note: "적색"}
+    - {en: "Once those bays are covered, reassess the yellows every fifteen minutes.", icon: redo, ko: "그 구역을 맡은 뒤 황색을 15분마다 재사정하세요", note: "황색"}
+    - {en: "The greens can wait in the hallway until both groups are seen.", icon: home, ko: "녹색은 두 그룹을 본 뒤까지 복도에서 기다려도 돼요", note: "녹색"}
+  ctx: {word: "red", ko: "적색(최중증)"}

@@ -1,0 +1,6189 @@
+theme: er-anaphylaxis
+words:
+- id: w-eat
+  en: eat
+  ipa: /iːt/
+  ko: 먹다
+  icon: coffee
+  example: What did you eat before this started?
+  exKo: 이게 시작되기 전에 뭘 드셨어요?
+  cue: 노출원 문진 — 입으로 들어간 음식부터 물을 때
+  tag: 문진
+  distractorsEn:
+  - drink
+  - taste
+  distractorsKo:
+  - 마시다
+  - 맛보다
+  chips:
+  - - eat
+  decoyChips:
+  - ate
+- id: w-take
+  en: take
+  ipa: /teɪk/
+  ko: 복용하다
+  icon: pill
+  example: Did you take anything new today?
+  exKo: 오늘 새로 드신 약 있어요?
+  cue: 약·보충제를 먹었는지 물을 때 — '약을 ___하셨어요?'
+  tag: 문진
+  distractorsEn:
+  - make
+  - bring
+  distractorsKo:
+  - 처방하다
+  - 주사하다
+  chips:
+  - - take
+  decoyChips:
+  - took
+- id: w-contact
+  en: contact
+  ipa: /ˈkɑːntækt/
+  ko: 접촉
+  icon: board
+  example: What did you come into contact with?
+  exKo: 뭐에 닿으셨어요?
+  cue: 피부에 닿은 것(라텍스·식물·세제)을 물을 때 — 'come into ___ with'
+  tag: 문진
+  distractorsEn:
+  - contrast
+  - content
+  distractorsKo:
+  - 대조
+  - 내용물
+  chips:
+  - - con
+    - tact
+  decoyChips:
+  - tract
+  - trast
+- id: w-hive
+  en: hives
+  ipa: /haɪvz/
+  ko: 두드러기
+  icon: board
+  example: The hives started after lunch.
+  exKo: 두드러기는 점심 먹고 나서 생겼어요.
+  cue: 피부가 볼록하게 부풀어 오르고 가려운 붉은 자국
+  tag: 피부 증상
+  distractorsEn:
+  - rash
+  - blister
+  distractorsKo:
+  - 물집
+  - 멍
+  chips:
+  - - hives
+  decoyChips:
+  - hive
+  - hikes
+- id: w-start
+  en: start
+  ipa: /stɑːrt/
+  ko: 시작되다
+  icon: board
+  example: When did the hives start?
+  exKo: 두드러기는 언제 시작됐어요?
+  cue: 증상이 처음 나타난 시점을 물을 때 — 'When did it ___?'
+  tag: 문진
+  distractorsEn:
+  - stop
+  - stay
+  distractorsKo:
+  - 멈추다
+  - 계속되다
+  chips:
+  - - start
+  decoyChips:
+  - stare
+- id: w-ever
+  en: ever
+  ipa: /ˈɛvər/
+  ko: 예전에
+  icon: board
+  example: Have you ever had this before?
+  exKo: 전에도 이런 적 있으세요?
+  cue: 과거 반응 이력을 물을 때 — 'Have you ___ had…?'
+  tag: 문진
+  distractorsEn:
+  - even
+  - never
+  distractorsKo:
+  - 여전히
+  - 방금
+  chips:
+  - - ev
+    - er
+  decoyChips:
+  - ven
+- id: w-reaction
+  en: reaction
+  ipa: /riˈækʃən/
+  ko: 반응
+  icon: board
+  example: Have you had a reaction like this before?
+  exKo: 전에도 이런 반응이 있었던 적 있으세요?
+  cue: 알레르기 물질을 만난 뒤 몸에 나타난 일을 묶어 부르는 명사 — 'a ___ like this before?'
+  tag: 피부 증상
+  distractorsEn:
+  - infection
+  - rejection
+  distractorsKo:
+  - 감염
+  - 증상
+  chips:
+  - - re
+    - ac
+    - tion
+  decoyChips:
+  - sion
+  - ject
+- id: w-before
+  en: before
+  ipa: /bɪˈfɔːr/
+  ko: ~전에
+  icon: calendar
+  example: Tell me what happened right before.
+  exKo: 바로 전에 무슨 일이 있었는지 말씀해 주세요.
+  cue: 증상 직전에 무엇을 했는지 시간을 거슬러 물을 때
+  tag: 문진
+  distractorsEn:
+  - after
+  - during
+  distractorsKo:
+  - ~후에
+  - ~동안
+  chips:
+  - - be
+    - fore
+  decoyChips:
+  - for
+- id: w-trouble
+  en: trouble
+  ipa: /ˈtrʌbəl/
+  ko: 어려움
+  icon: siren
+  example: Any trouble breathing right now?
+  exKo: 지금 숨쉬기 힘든 거 있어요?
+  cue: 기도 침범을 빠르게 거를 때 — 'any ___ breathing?'
+  tag: 기도·호흡
+  distractorsEn:
+  - struggle
+  - tremble
+  distractorsKo:
+  - 통증
+  - 부기
+  chips:
+  - - trou
+    - ble
+  decoyChips:
+  - ple
+- id: w-breathe
+  en: breathe
+  ipa: /briːð/
+  ko: 숨쉬다
+  icon: stetho
+  example: Try to breathe slowly with me.
+  exKo: 저랑 같이 천천히 숨 쉬어 봐요.
+  cue: 숨을 들이쉬고 내쉬는 동작 — 동사(명사형과 철자가 다름)
+  tag: 기도·호흡
+  distractorsEn:
+  - bleed
+  - wheeze
+  distractorsKo:
+  - 삼키다
+  - 기침하다
+  chips:
+  - - breathe
+  decoyChips:
+  - breath
+- id: w-throat
+  en: throat
+  ipa: /θroʊt/
+  ko: 목구멍
+  icon: board
+  example: Does your throat feel tight?
+  exKo: 목이 조이는 느낌이 있어요?
+  cue: 조이는 느낌이 드는 곳 — 입 안쪽에서 목 아래로 이어지는 통로
+  tag: 신체 부위
+  distractorsEn:
+  - thorax
+  - tongue
+  distractorsKo:
+  - 가슴
+  - 턱
+  chips:
+  - - throat
+  decoyChips:
+  - threat
+- id: w-tightness
+  en: tightness
+  ipa: /ˈtaɪtnəs/
+  ko: 조임(느낌)
+  icon: board
+  example: Tell me about any tightness in your throat.
+  exKo: 목에 조이는 느낌이 있으면 말씀해 주세요.
+  cue: 목·가슴이 죄어 오는 느낌을 가리키는 명사 — 'any ___ in your throat?'
+  tag: 기도·호흡
+  distractorsEn:
+  - tenderness
+  - thickness
+  distractorsKo:
+  - 압통
+  - 두께
+  chips:
+  - - tight
+    - ness
+  decoyChips:
+  - tighten
+- id: w-sting
+  en: sting
+  ipa: /stɪŋ/
+  ko: 쏘다
+  icon: board
+  example: Did a bee sting you today?
+  exKo: 오늘 벌에 쏘이셨어요?
+  cue: 벌이 침으로 찌르는 것 — 벌쏘임 노출원을 물을 때
+  tag: 알레르겐
+  distractorsEn:
+  - bite
+  - stick
+  distractorsKo:
+  - 물다
+  - 긁다
+  chips:
+  - - sting
+  decoyChips:
+  - stung
+- id: w-new
+  en: new
+  ipa: /nuː/
+  ko: 새로운
+  icon: board
+  example: Did you start any new medication?
+  exKo: 새로 시작한 약이 있어요?
+  cue: 최근에 처음 먹기 시작한 약을 거를 때 — 'any ___ medication?'
+  tag: 문진
+  distractorsEn:
+  - next
+  - old
+  distractorsKo:
+  - 예전의
+  - 다음의
+  chips:
+  - - new
+  decoyChips:
+  - knew
+- id: w-medication
+  en: medication
+  ipa: /ˌmɛdɪˈkeɪʃən/
+  ko: 약물
+  icon: pill
+  example: This medication may cause a reaction.
+  exKo: 이 약은 반응을 일으킬 수 있어요.
+  cue: 새로 먹기 시작한 것이 있는지 물을 때 — 'any new ___?', 'heart ___'
+  tag: 투약
+  distractorsEn:
+  - meditation
+  - indication
+  distractorsKo:
+  - 처방전
+  - 치료
+  chips:
+  - - med
+    - i
+    - ca
+    - tion
+  decoyChips:
+  - ta
+  - di
+- id: w-recently
+  en: recently
+  ipa: /ˈriːsəntli/
+  ko: 최근에
+  icon: calendar
+  example: Did you take anything recently?
+  exKo: 최근에 뭐 드신 거 있어요?
+  cue: 노출 시점을 좁힐 때 — 며칠 안쪽의 일을 묻는 부사
+  tag: 문진
+  distractorsEn:
+  - usually
+  - currently
+  distractorsKo:
+  - 평소에
+  - 자주
+  chips:
+  - - re
+    - cent
+    - ly
+  decoyChips:
+  - cant
+- id: w-check
+  en: check
+  ipa: /tʃɛk/
+  ko: 확인하다
+  icon: check
+  example: I need to check your airway.
+  exKo: 기도를 확인해야 해요.
+  cue: 입술·혀·기도를 눈으로 살펴볼 때 — 간호사가 가장 많이 쓰는 동사
+  tag: 관찰·재발
+  distractorsEn:
+  - chart
+  - choke
+  distractorsKo:
+  - 기록하다
+  - 치료하다
+  chips:
+  - - check
+  decoyChips:
+  - cheek
+- id: w-lip
+  en: lip
+  ipa: /lɪp/
+  ko: 입술
+  icon: board
+  example: Your lips look a little swollen.
+  exKo: 입술이 약간 부어 보여요.
+  cue: 혈관부종이 먼저 보이는 곳 중 하나 — 입 가장자리
+  tag: 신체 부위
+  distractorsEn:
+  - lid
+  - lap
+  distractorsKo:
+  - 눈꺼풀
+  - 잇몸
+  chips:
+  - - lip
+  decoyChips:
+  - lid
+- id: w-tongue
+  en: tongue
+  ipa: /tʌŋ/
+  ko: 혀
+  icon: board
+  example: Let me look at your tongue.
+  exKo: 혀 좀 볼게요.
+  cue: 입 안에서 붓기 시작하면 기도가 위험해지는 곳
+  tag: 신체 부위
+  distractorsEn:
+  - tonsil
+  - throat
+  distractorsKo:
+  - 편도
+  - 잇몸
+  chips:
+  - - tongue
+  decoyChips:
+  - tong
+- id: w-airway
+  en: airway
+  ipa: /ˈɛərweɪ/
+  ko: 기도
+  icon: stetho
+  example: We're checking your airway first.
+  exKo: 기도부터 확인하고 있어요.
+  cue: ABC의 A — 공기가 드나드는 길, 붓기 시작하면 가장 먼저 확보
+  tag: 기도·호흡
+  distractorsEn:
+  - airflow
+  - artery
+  distractorsKo:
+  - 폐
+  - 식도
+  chips:
+  - - air
+    - way
+  decoyChips:
+  - flow
+- id: w-look
+  en: look
+  ipa: /lʊk/
+  ko: 보이다
+  icon: magnify
+  example: It looks limited to your arms.
+  exKo: 팔에만 국한된 것처럼 보여요.
+  cue: 겉으로 본 인상을 말할 때 — 'It ___s limited to…'
+  tag: 관찰·재발
+  distractorsEn:
+  - sound
+  - lock
+  distractorsKo:
+  - 들리다
+  - 느끼다
+  chips:
+  - - look
+  decoyChips:
+  - lick
+- id: w-limit
+  en: limit
+  ipa: /ˈlɪmɪt/
+  ko: 국한되다
+  icon: board
+  example: The rash is limited to one arm.
+  exKo: 발진이 한쪽 팔에만 국한돼 있어요.
+  cue: 증상이 한 부위를 넘지 않고 머물러 있을 때 — 'be ___ed to'
+  tag: 피부 증상
+  distractorsEn:
+  - linger
+  - spread
+  distractorsKo:
+  - 퍼지다
+  - 남아 있다
+  chips:
+  - - lim
+    - it
+  decoyChips:
+  - ite
+- id: w-arm
+  en: arm
+  ipa: /ɑːrm/
+  ko: 팔
+  icon: board
+  example: The hives are only on your arms.
+  exKo: 두드러기가 팔에만 있어요.
+  cue: 국한된 두드러기가 흔히 보이는 곳 — 어깨에서 손목까지
+  tag: 신체 부위
+  distractorsEn:
+  - arch
+  - leg
+  distractorsKo:
+  - 다리
+  - 어깨
+  chips:
+  - - arm
+  decoyChips:
+  - ram
+- id: w-reassure
+  en: reassure
+  ipa: /ˌriːəˈʃʊr/
+  ko: 안심시키다
+  icon: shield
+  example: That's reassuring to hear.
+  exKo: 그 말을 들으니 안심이 되네요.
+  cue: 걱정하는 환자에게 좋은 신호를 알려 마음을 놓게 할 때 — 형용사형으로 흔히
+  tag: 안심·소통
+  distractorsEn:
+  - reassess
+  - insure
+  distractorsKo:
+  - 재평가하다
+  - 설득하다
+  chips:
+  - - re
+    - as
+    - sure
+  decoyChips:
+  - sess
+- id: w-watch
+  en: watch
+  ipa: /wɑːtʃ/
+  ko: 지켜보다
+  icon: magnify
+  example: We'll watch it closely.
+  exKo: 면밀히 지켜볼게요.
+  cue: 경과 관찰 — 퍼지거나 나빠지는지 눈을 떼지 않을 때
+  tag: 관찰·재발
+  distractorsEn:
+  - wash
+  - wait
+  distractorsKo:
+  - 기다리다
+  - 씻기다
+  chips:
+  - - watch
+  decoyChips:
+  - wash
+- id: w-spread
+  en: spread
+  ipa: /sprɛd/
+  ko: 퍼지다
+  icon: board
+  example: Tell me if the rash spreads.
+  exKo: 발진이 퍼지면 말씀해 주세요.
+  cue: 두드러기가 팔에서 얼굴·몸통으로 넓어지는 것
+  tag: 피부 증상
+  distractorsEn:
+  - shred
+  - spray
+  distractorsKo:
+  - 가라앉다
+  - 사라지다
+  chips:
+  - - spread
+  decoyChips:
+  - spray
+- id: w-affect
+  en: affect
+  ipa: /əˈfɛkt/
+  ko: 영향을 주다
+  icon: board
+  example: It shouldn't affect your breathing.
+  exKo: 호흡에는 영향이 없을 거예요.
+  cue: 피부 반응이 호흡까지 미치는지 말할 때 — 동사(명사형과 철자 한 글자 차이)
+  tag: 기도·호흡
+  distractorsEn:
+  - effect
+  - infect
+  distractorsKo:
+  - 감염시키다
+  - 막다
+  chips:
+  - - af
+    - fect
+  decoyChips:
+  - ef
+- id: w-immediately
+  en: immediately
+  ipa: /ɪˈmiːdiətli/
+  ko: 즉시
+  icon: board
+  example: Tell me immediately if it changes.
+  exKo: 바뀌면 즉시 말씀해 주세요.
+  cue: 입술이 저릿해지는 순간 바로 — 기다리지 말라는 부사
+  tag: 안심·소통
+  distractorsEn:
+  - eventually
+  - intermediately
+  distractorsKo:
+  - 나중에
+  - 가끔
+  chips:
+  - - im
+    - medi
+    - ate
+    - ly
+  decoyChips:
+  - mi
+- id: w-tingle
+  en: tingle
+  ipa: /ˈtɪŋɡəl/
+  ko: 저릿하다
+  icon: board
+  example: Tell me if your lips tingle.
+  exKo: 입술이 저릿하면 말씀해 주세요.
+  cue: 입술·혀가 찌릿찌릿한 느낌 — 혈관부종의 초기 신호로 알려 달라고 할 때
+  tag: 피부 증상
+  distractorsEn:
+  - tickle
+  - tangle
+  distractorsKo:
+  - 마비되다
+  - 화끈거리다
+  chips:
+  - - tin
+    - gle
+  decoyChips:
+  - ckle
+- id: w-redness
+  en: redness
+  ipa: /ˈrɛdnəs/
+  ko: 발적
+  icon: board
+  example: The redness is only on one arm.
+  exKo: 발적은 한쪽 팔에만 있어요.
+  cue: 피부가 붉어진 상태를 가리키는 명사 — 분포를 설명할 때
+  tag: 피부 증상
+  distractorsEn:
+  - rawness
+  - rashes
+  distractorsKo:
+  - 부기
+  - 창백함
+  chips:
+  - - red
+    - ness
+  decoyChips:
+  - rad
+- id: w-face
+  en: face
+  ipa: /feɪs/
+  ko: 얼굴
+  icon: board
+  example: Is your face swelling at all?
+  exKo: 얼굴이 좀 붓나요?
+  cue: 두드러기가 번지면 위험 신호가 되는 곳 — 눈·입술이 있는 머리 앞쪽
+  tag: 신체 부위
+  distractorsEn:
+  - neck
+  - chest
+  distractorsKo:
+  - 목
+  - 이마
+  chips:
+  - - face
+  decoyChips:
+  - fake
+- id: w-chest
+  en: chest
+  ipa: /tʃɛst/
+  ko: 가슴
+  icon: stetho
+  example: Does your chest feel tight?
+  exKo: 가슴이 조이는 느낌이 있어요?
+  cue: 조이는 느낌·발진이 퍼지는 몸통 앞쪽
+  tag: 신체 부위
+  distractorsEn:
+  - throat
+  - chin
+  distractorsKo:
+  - 배
+  - 등
+  chips:
+  - - chest
+  decoyChips:
+  - chess
+- id: w-feel
+  en: feel
+  ipa: /fiːl/
+  ko: 느끼다
+  icon: board
+  example: Tell me how you feel.
+  exKo: 어떻게 느껴지는지 말씀해 주세요.
+  cue: 목·가슴의 감각을 환자 본인에게 물을 때 — 'Does your throat ___ tight?'
+  tag: 안심·소통
+  distractorsEn:
+  - fill
+  - fall
+  distractorsKo:
+  - 보이다
+  - 듣다
+  chips:
+  - - feel
+  decoyChips:
+  - fell
+- id: w-tighten
+  en: tighten
+  ipa: /ˈtaɪtən/
+  ko: 조여오다
+  icon: board
+  example: Tell me if your throat starts to tighten.
+  exKo: 목이 조여 오기 시작하면 말씀해 주세요.
+  cue: 목이 점점 죄어 오는 변화를 말하는 동사
+  tag: 기도·호흡
+  distractorsEn:
+  - thicken
+  - lighten
+  distractorsKo:
+  - 풀리다
+  - 두꺼워지다
+  chips:
+  - - tight
+    - en
+  decoyChips:
+  - ness
+- id: w-tell
+  en: tell
+  ipa: /tɛl/
+  ko: 말하다
+  icon: speech
+  example: Tell me right away if that happens.
+  exKo: 그런 일이 생기면 바로 말씀해 주세요.
+  cue: 변화가 생기면 알려 달라고 부탁할 때 — '___ me right away'
+  tag: 안심·소통
+  distractorsEn:
+  - yell
+  - sell
+  distractorsKo:
+  - 묻다
+  - 듣다
+  chips:
+  - - tell
+  decoyChips:
+  - tall
+- id: w-antihistamine
+  en: antihistamine
+  ipa: /ˌæntiˈhɪstəmiːn/
+  ko: 항히스타민제
+  icon: pill
+  example: This antihistamine will calm the itching.
+  exKo: 이 항히스타민제가 가려움을 가라앉혀 줄 거예요.
+  cue: 경증 두드러기·가려움에 주는 약 — 디펜히드라민 같은 계열
+  tag: 투약
+  distractorsEn:
+  - antibiotic
+  - antihypertensive
+  distractorsKo:
+  - 항생제
+  - 스테로이드
+  chips:
+  - - anti
+    - hista
+    - mine
+  decoyChips:
+  - bio
+- id: w-calm
+  en: calm
+  ipa: /kɑːm/
+  ko: 차분한; 진정시키다
+  icon: shield
+  example: This will calm the itching and hives.
+  exKo: 이게 가려움과 두드러기를 가라앉혀 줄 거예요.
+  cue: 가려움을 가라앉히거나, 불안한 사람을 차분하게 할 때
+  tag: 안심·소통
+  distractorsEn:
+  - numb
+  - clamp
+  distractorsKo:
+  - 마비시키다
+  - 식히다
+  chips:
+  - - calm
+  decoyChips:
+  - clam
+- id: w-itch
+  en: itch
+  ipa: /ɪtʃ/
+  ko: 가렵다
+  icon: board
+  example: The itching should ease soon.
+  exKo: 가려움은 곧 가라앉을 거예요.
+  cue: 두드러기가 주는 긁고 싶은 느낌
+  tag: 피부 증상
+  distractorsEn:
+  - ache
+  - sting
+  distractorsKo:
+  - 따갑다
+  - 쑤시다
+  chips:
+  - - itch
+  decoyChips:
+  - etch
+- id: w-drowsy
+  en: drowsy
+  ipa: /ˈdraʊzi/
+  ko: 졸린
+  icon: board
+  example: This medicine can make you drowsy.
+  exKo: 이 약은 졸릴 수 있어요.
+  cue: 항히스타민 부작용 설명 — 잠이 쏟아지고 멍한 상태(형용사)
+  tag: 투약
+  distractorsEn:
+  - dizzy
+  - dreary
+  distractorsKo:
+  - 어지러운
+  - 멍든
+  chips:
+  - - drow
+    - sy
+  decoyChips:
+  - siness
+- id: w-drive
+  en: drive
+  ipa: /draɪv/
+  ko: 운전하다
+  icon: board
+  example: You shouldn't drive after this shot.
+  exKo: 이 주사 맞고는 운전하시면 안 돼요.
+  cue: 졸림 부작용이 있을 때 금지하는 일 — 차를 모는 것
+  tag: 투약
+  distractorsEn:
+  - ride
+  - drink
+  distractorsKo:
+  - 걷다
+  - 타다
+  chips:
+  - - drive
+  decoyChips:
+  - dive
+- id: w-keep
+  en: keep
+  ipa: /kiːp/
+  ko: 유지하다
+  icon: board
+  example: We'll keep you here a while.
+  exKo: 한동안 여기 계시게 할게요.
+  cue: 재반응을 보려고 환자를 응급실에 더 머물게 할 때 — '___ you here'
+  tag: 관찰·재발
+  distractorsEn:
+  - leave
+  - send
+  distractorsKo:
+  - 보내다
+  - 옮기다
+  chips:
+  - - keep
+  decoyChips:
+  - kept
+- id: w-react
+  en: react
+  ipa: /riˈækt/
+  ko: (알레르기) 반응을 일으키다
+  icon: board
+  example: Tell me if your body reacts again.
+  exKo: 몸이 또 반응하면 말씀해 주세요.
+  cue: 원인 물질에 몸이 다시 두드러기·부기를 보일 때 — 'your body is still ___ing'
+  tag: 피부 증상
+  distractorsEn:
+  - recover
+  - relapse
+  distractorsKo:
+  - 회복하다
+  - 재발하다
+  chips:
+  - - re
+    - act
+  decoyChips:
+  - ject
+- id: w-again
+  en: again
+  ipa: /əˈɡɛn/
+  ko: 다시
+  icon: board
+  example: I'm giving epinephrine again.
+  exKo: 에피네프린을 한 번 더 투여할게요.
+  cue: 같은 일이 한 번 더 일어날 때 — 재투여·재발을 말하는 부사
+  tag: 관찰·재발
+  distractorsEn:
+  - already
+  - still
+  distractorsKo:
+  - 이미
+  - 아직
+  chips:
+  - - a
+    - gain
+  decoyChips:
+  - gin
+- id: w-ease
+  en: ease
+  ipa: /iːz/
+  ko: 완화되다
+  icon: board
+  example: The itching should ease soon.
+  exKo: 가려움은 곧 가라앉을 거예요.
+  cue: 약이 들면서 가려움이 점점 덜해질 때
+  tag: 투약
+  distractorsEn:
+  - erase
+  - increase
+  distractorsKo:
+  - 심해지다
+  - 번지다
+  chips:
+  - - ease
+  decoyChips:
+  - eas
+- id: w-wait
+  en: wait
+  ipa: /weɪt/
+  ko: 기다리다
+  icon: board
+  example: Please wait here until it wears off.
+  exKo: 약 기운이 가실 때까지 여기서 기다려 주세요.
+  cue: 졸림이 가실 때까지 응급실에 남아 있어 달라고 할 때
+  tag: 투약
+  distractorsEn:
+  - weigh
+  - walk
+  distractorsKo:
+  - 걷다
+  - 쉬다
+  chips:
+  - - wait
+  decoyChips:
+  - weight
+- id: w-drowsiness
+  en: drowsiness
+  ipa: /ˈdraʊzinəs/
+  ko: 졸림(증상)
+  icon: board
+  example: The drowsiness will wear off soon.
+  exKo: 졸린 건 곧 가실 거예요.
+  cue: 항히스타민 뒤 잠이 쏟아지는 증상을 가리키는 명사
+  tag: 투약
+  distractorsEn:
+  - dizziness
+  - dryness
+  distractorsKo:
+  - 어지러움
+  - 입 마름
+  chips:
+  - - drow
+    - si
+    - ness
+  decoyChips:
+  - zi
+- id: w-describe
+  en: describe
+  ipa: /dɪˈskraɪb/
+  ko: 설명하다
+  icon: speech
+  example: Can you describe what happened?
+  exKo: 어떻게 된 건지 설명해 주실래요?
+  cue: 예전 약물 반응이 어땠는지 환자 말로 풀어 달라고 할 때
+  tag: 문진
+  distractorsEn:
+  - prescribe
+  - decide
+  distractorsKo:
+  - 처방하다
+  - 결정하다
+  chips:
+  - - de
+    - scribe
+  decoyChips:
+  - pre
+- id: w-happen
+  en: happen
+  ipa: /ˈhæpən/
+  ko: 일어나다
+  icon: board
+  example: Tell me exactly what happened.
+  exKo: 정확히 어떻게 된 건지 말씀해 주세요.
+  cue: 과거 반응 때 무슨 일이 있었는지 물을 때 — 'What ___ed?'
+  tag: 문진
+  distractorsEn:
+  - harm
+  - open
+  distractorsKo:
+  - 다치다
+  - 시작하다
+  chips:
+  - - hap
+    - pen
+  decoyChips:
+  - pan
+- id: w-penicillin
+  en: penicillin
+  ipa: /ˌpɛnɪˈsɪlɪn/
+  ko: 페니실린
+  icon: pill
+  example: Are you allergic to penicillin?
+  exKo: 페니실린에 알레르기 있으세요?
+  cue: 환자가 가장 흔히 알레르기가 있다고 말하는 항생제
+  tag: 알레르겐
+  distractorsEn:
+  - amoxicillin
+  - vancomycin
+  distractorsKo:
+  - 아목시실린
+  - 세팔로스포린
+  chips:
+  - - pen
+    - i
+    - cil
+    - lin
+  decoyChips:
+  - ci
+- id: w-rash
+  en: rash
+  ipa: /ræʃ/
+  ko: 발진
+  icon: board
+  example: Did the rash come with any swelling?
+  exKo: 발진이 날 때 붓기도 했어요?
+  cue: 피부에 붉게 돋는 것을 넓게 부르는 말 — 과거 반응 문진의 첫 보기
+  tag: 피부 증상
+  distractorsEn:
+  - hives
+  - rush
+  distractorsKo:
+  - 물집
+  - 멍
+  chips:
+  - - rash
+  decoyChips:
+  - rush
+- id: w-swell
+  en: swell
+  ipa: /swɛl/
+  ko: 붓다
+  icon: board
+  example: Your lips are starting to swell.
+  exKo: 입술이 붓기 시작해요.
+  cue: 입술·얼굴·기도가 부풀어 오르는 것 — 혈관부종의 동사
+  tag: 피부 증상
+  distractorsEn:
+  - smell
+  - sweat
+  distractorsKo:
+  - 가렵다
+  - 가라앉다
+  chips:
+  - - swell
+  decoyChips:
+  - smell
+- id: w-allergy
+  en: allergy
+  ipa: /ˈælərdʒi/
+  ko: 알레르기
+  icon: board
+  example: I'm flagging your penicillin allergy.
+  exKo: 페니실린 알레르기를 표시해 둘게요.
+  cue: 특정 물질에 몸이 과민하게 반응하는 체질 — 밴드·차트에 표시하는 것
+  tag: 알레르겐
+  distractorsEn:
+  - energy
+  - analogy
+  distractorsKo:
+  - 면역
+  - 감염
+  chips:
+  - - al
+    - ler
+    - gy
+  decoyChips:
+  - lar
+  - gic
+- id: w-band
+  en: band
+  ipa: /bænd/
+  ko: 밴드
+  icon: bandage
+  example: I'll put a red allergy band on you.
+  exKo: 빨간 알레르기 밴드를 채워 드릴게요.
+  cue: 손목에 채워 모든 의료진이 알레르기를 알아보게 하는 빨간 띠
+  tag: 기록·인계
+  distractorsEn:
+  - bandage
+  - bond
+  distractorsKo:
+  - 붕대
+  - 반창고
+  chips:
+  - - band
+  decoyChips:
+  - bend
+- id: w-flag
+  en: flag
+  ipa: /flæɡ/
+  ko: 표시하다
+  icon: pushpin
+  example: I'll flag it in your chart.
+  exKo: 차트에 표시해 둘게요.
+  cue: 차트·시스템에 알레르기 경고를 띄워 모두가 보게 할 때 — 동사
+  tag: 기록·인계
+  distractorsEn:
+  - flap
+  - file
+  distractorsKo:
+  - 보관하다
+  - 지우다
+  chips:
+  - - flag
+  decoyChips:
+  - flog
+- id: w-chart
+  en: chart
+  ipa: /tʃɑːrt/
+  ko: 차트
+  icon: chartup
+  example: This is noted in your chart now.
+  exKo: 이제 차트에 기록돼 있어요.
+  cue: 환자 기록 — 알레르기를 적어 두는 곳
+  tag: 기록·인계
+  distractorsEn:
+  - chat
+  - card
+  distractorsKo:
+  - 처방전
+  - 동의서
+  chips:
+  - - chart
+  decoyChips:
+  - chat
+- id: w-avoid
+  en: avoid
+  ipa: /əˈvɔɪd/
+  ko: 피하다
+  icon: shield
+  example: We'll talk about how to avoid it.
+  exKo: 어떻게 피할지 이야기해요.
+  cue: 원인 물질을 다시 접하지 않게 할 때 — 재노출 예방 교육의 동사
+  tag: 알레르겐
+  distractorsEn:
+  - avail
+  - void
+  distractorsKo:
+  - 줄이다
+  - 견디다
+  chips:
+  - - a
+    - void
+  decoyChips:
+  - vail
+- id: w-completely
+  en: completely
+  ipa: /kəmˈpliːtli/
+  ko: 완전히
+  icon: board
+  example: Please avoid penicillin completely.
+  exKo: 페니실린은 완전히 피해 주세요.
+  cue: 조금도 예외 없이 — '아주 소량도 안 된다'를 강조하는 부사
+  tag: 알레르겐
+  distractorsEn:
+  - comparably
+  - compactly
+  distractorsKo:
+  - 대체로
+  - 가끔
+  chips:
+  - - com
+    - plete
+    - ly
+  decoyChips:
+  - pact
+- id: w-pull
+  en: pull
+  ipa: /pʊl/
+  ko: 당기다
+  icon: board
+  example: Pull off the blue cap first.
+  exKo: 먼저 파란 뚜껑을 당겨서 빼세요.
+  cue: 자가주사기 사용 첫 단계 — 안전 뚜껑을 잡아 빼는 동작
+  tag: 자가주사 교육
+  distractorsEn:
+  - push
+  - peel
+  distractorsKo:
+  - 밀다
+  - 비틀다
+  chips:
+  - - pull
+  decoyChips:
+  - pool
+- id: w-cap
+  en: cap
+  ipa: /kæp/
+  ko: 뚜껑
+  icon: board
+  example: Pull off the blue cap.
+  exKo: 파란 뚜껑을 당겨서 빼세요.
+  cue: 자가주사기 위쪽의 파란 안전 덮개
+  tag: 자가주사 교육
+  distractorsEn:
+  - cup
+  - clip
+  distractorsKo:
+  - 바늘
+  - 손잡이
+  chips:
+  - - cap
+  decoyChips:
+  - cup
+- id: w-press
+  en: press
+  ipa: /prɛs/
+  ko: 누르다
+  icon: board
+  example: Press the orange tip firmly.
+  exKo: 주황색 끝부분을 힘껏 누르세요.
+  cue: 주황색 끝을 허벅지에 대고 힘을 주는 동작
+  tag: 자가주사 교육
+  distractorsEn:
+  - pinch
+  - pierce
+  distractorsKo:
+  - 꼬집다
+  - 문지르다
+  chips:
+  - - press
+  decoyChips:
+  - price
+- id: w-tip
+  en: tip
+  ipa: /tɪp/
+  ko: 끝부분
+  icon: board
+  example: Press the orange tip into your thigh.
+  exKo: 주황색 끝부분을 허벅지에 대고 누르세요.
+  cue: 자가주사기에서 바늘이 나오는 주황색 쪽
+  tag: 자가주사 교육
+  distractorsEn:
+  - top
+  - lip
+  distractorsKo:
+  - 뚜껑
+  - 손잡이
+  chips:
+  - - tip
+  decoyChips:
+  - top
+- id: w-thigh
+  en: thigh
+  ipa: /θaɪ/
+  ko: 허벅지
+  icon: board
+  example: We give epinephrine in your thigh.
+  exKo: 에피네프린은 허벅지에 놓아요.
+  cue: 에피네프린 근주 자리 — 다리 윗부분 바깥쪽
+  tag: 신체 부위
+  distractorsEn:
+  - hip
+  - shin
+  distractorsKo:
+  - 엉덩이
+  - 종아리
+  chips:
+  - - thigh
+  decoyChips:
+  - thy
+- id: w-hold
+  en: hold
+  ipa: /hoʊld/
+  ko: 잡고 있다
+  icon: board
+  example: Hold it in place for three seconds.
+  exKo: 3초 동안 그대로 대고 있으세요.
+  cue: 자가주사기를 허벅지에 댄 채 3초 셀 때 / 겁먹은 아이 곁에서 손을 쥐어 줄 때
+  tag: 자가주사 교육
+  distractorsEn:
+  - fold
+  - hide
+  distractorsKo:
+  - 놓다
+  - 흔들다
+  chips:
+  - - hold
+  decoyChips:
+  - held
+- id: w-second
+  en: second
+  ipa: /ˈsɛkənd/
+  ko: 초
+  icon: calendar
+  example: Hold it for three seconds.
+  exKo: 3초 동안 대고 있으세요.
+  cue: 자가주사기를 대고 셀 때의 시간 단위 — 셋을 센다
+  tag: 자가주사 교육
+  distractorsEn:
+  - section
+  - sequence
+  distractorsKo:
+  - 순서
+  - 분
+  chips:
+  - - sec
+    - ond
+  decoyChips:
+  - cund
+- id: w-call
+  en: call
+  ipa: /kɔːl/
+  ko: 부르다
+  icon: speaker
+  example: Call 911 even if you feel better.
+  exKo: 좋아진 것 같아도 911에 전화하세요.
+  cue: 911·전문의·간호사를 오게 할 때 — 전화든 호출 버튼이든
+  tag: 안심·소통
+  distractorsEn:
+  - cull
+  - fall
+  distractorsKo:
+  - 기다리다
+  - 묻다
+  chips:
+  - - call
+  decoyChips:
+  - cool
+- id: w-show
+  en: show
+  ipa: /ʃoʊ/
+  ko: 보여주다
+  icon: board
+  example: Can you show me on the trainer?
+  exKo: 연습용 기구로 보여 주시겠어요?
+  cue: 교육 뒤 환자가 직접 해 보게 할 때 — 'Can you ___ me?'
+  tag: 자가주사 교육
+  distractorsEn:
+  - shoot
+  - sow
+  distractorsKo:
+  - 가르치다
+  - 설명하다
+  chips:
+  - - show
+  decoyChips:
+  - shoe
+- id: w-trainer
+  en: trainer
+  ipa: /ˈtreɪnər/
+  ko: 연습용 기구
+  icon: board
+  example: Try it once on the trainer.
+  exKo: 연습용 기구로 한 번 해 보세요.
+  cue: 교육 때 환자가 직접 눌러 보는, 바늘·약이 없는 가짜 자가주사기
+  tag: 자가주사 교육
+  distractorsEn:
+  - trailer
+  - container
+  distractorsKo:
+  - 설명서
+  - 보관 케이스
+  chips:
+  - - train
+    - er
+  decoyChips:
+  - or
+- id: w-push
+  en: push
+  ipa: /pʊʃ/
+  ko: 밀다·누르다
+  icon: board
+  example: Push the pen against your thigh.
+  exKo: 펜을 허벅지에 대고 미세요.
+  cue: 펜을 허벅지 쪽으로 딸깍 소리가 날 때까지 밀어 넣는 동작
+  tag: 자가주사 교육
+  distractorsEn:
+  - pull
+  - pinch
+  distractorsKo:
+  - 당기다
+  - 꼬집다
+  chips:
+  - - push
+  decoyChips:
+  - posh
+- id: w-pen
+  en: pen
+  ipa: /pɛn/
+  ko: 펜형 자가주사기
+  icon: pencil
+  example: This pen is easy to use.
+  exKo: 이 펜은 쓰기 쉬워요.
+  cue: 자가주사기를 짧게 부르는 말 — 필기구처럼 생긴 모양
+  tag: 자가주사 교육
+  distractorsEn:
+  - pin
+  - pan
+  distractorsKo:
+  - 흡입기
+  - 주사바늘
+  chips:
+  - - pen
+  decoyChips:
+  - pin
+- id: w-hear
+  en: hear
+  ipa: /hɪr/
+  ko: 듣다
+  icon: board
+  example: Push until you hear a click.
+  exKo: 딸깍 소리가 들릴 때까지 누르세요.
+  cue: 주입이 시작됐다는 딸깍 소리를 귀로 알아챌 때
+  tag: 자가주사 교육
+  distractorsEn:
+  - heal
+  - here
+  distractorsKo:
+  - 보다
+  - 느끼다
+  chips:
+  - - hear
+  decoyChips:
+  - here
+- id: w-click
+  en: click
+  ipa: /klɪk/
+  ko: 딸깍 소리
+  icon: board
+  example: You'll hear a click when it's done.
+  exKo: 다 되면 딸깍 소리가 날 거예요.
+  cue: 자가주사기가 작동할 때 나는 짧은 소리
+  tag: 자가주사 교육
+  distractorsEn:
+  - clip
+  - clock
+  distractorsKo:
+  - 진동
+  - 불빛
+  chips:
+  - - click
+  decoyChips:
+  - clock
+- id: w-shot
+  en: shot
+  ipa: /ʃɑːt/
+  ko: 주사
+  icon: pill
+  example: I'm giving you a shot now.
+  exKo: 지금 주사 놓을게요.
+  cue: 환자에게 허벅지에 놓을 것을 쉬운 말로 알릴 때 — 'a ___ of epinephrine'
+  tag: 투약
+  distractorsEn:
+  - shock
+  - shoot
+  distractorsKo:
+  - 알약
+  - 수액
+  chips:
+  - - shot
+  decoyChips:
+  - shut
+- id: w-need
+  en: need
+  ipa: /niːd/
+  ko: 필요하다
+  icon: board
+  example: You need to come back after this.
+  exKo: 이 뒤에 다시 오셔야 해요.
+  cue: 꼭 해야 하는 일을 말할 때 — 'you ___ to come back'
+  tag: 안심·소통
+  distractorsEn:
+  - want
+  - knead
+  distractorsKo:
+  - 원하다
+  - 바라다
+  chips:
+  - - need
+  decoyChips:
+  - knee
+- id: w-give
+  en: give
+  ipa: /ɡɪv/
+  ko: 투여하다
+  icon: pill
+  example: I'm giving you epinephrine now.
+  exKo: 지금 에피네프린을 투여할게요.
+  cue: 환자에게 약을 넣어 줄 때 쓰는 가장 흔한 동사 — 'I'm ___ing you…'
+  tag: 투약
+  distractorsEn:
+  - take
+  - get
+  distractorsKo:
+  - 복용하다
+  - 처방하다
+  chips:
+  - - give
+  decoyChips:
+  - gave
+- id: w-epinephrine
+  en: epinephrine
+  ipa: /ˌɛpɪˈnɛfrɪn/
+  ko: 에피네프린
+  icon: pill
+  example: I'm giving you epinephrine now.
+  exKo: 지금 에피네프린을 투여할게요.
+  cue: 아나필락시스의 1차 약 — 허벅지 근주, 필요하면 5~15분 간격으로 반복
+  tag: 투약
+  distractorsEn:
+  - norepinephrine
+  - ephedrine
+  distractorsKo:
+  - 노르에피네프린
+  - 항히스타민제
+  chips:
+  - - epi
+    - neph
+    - rine
+  decoyChips:
+  - nor
+  - ephe
+- id: w-tight
+  en: tight
+  ipa: /taɪt/
+  ko: 조이는
+  icon: board
+  example: Does your throat feel tight?
+  exKo: 목이 조이는 느낌이 있어요?
+  cue: 목·가슴이 죄는 듯한 느낌을 말하는 형용사 — 'feel ___'
+  tag: 기도·호흡
+  distractorsEn:
+  - light
+  - tired
+  distractorsKo:
+  - 헐거운
+  - 따가운
+  chips:
+  - - tight
+  decoyChips:
+  - ness
+- id: w-hard
+  en: hard
+  ipa: /hɑːrd/
+  ko: 힘든
+  icon: board
+  example: Is it hard to breathe right now?
+  exKo: 지금 숨쉬기 힘들어요?
+  cue: 숨쉬기가 쉽지 않은지 쉬운 말로 물을 때 — 'is it ___ to breathe?'
+  tag: 기도·호흡
+  distractorsEn:
+  - harsh
+  - heart
+  distractorsKo:
+  - 아픈
+  - 느린
+  chips:
+  - - hard
+  decoyChips:
+  - herd
+- id: w-squeeze
+  en: squeeze
+  ipa: /skwiːz/
+  ko: 꽉 쥐다
+  icon: board
+  example: Squeeze my hand if you hear me.
+  exKo: 제 말이 들리면 손을 꽉 쥐어 보세요.
+  cue: 의식·명령 수행을 볼 때 — 손을 힘주어 쥐어 보라고
+  tag: 안심·소통
+  distractorsEn:
+  - sneeze
+  - seize
+  distractorsKo:
+  - 흔들다
+  - 들어 올리다
+  chips:
+  - - squeeze
+  decoyChips:
+  - sneeze
+- id: w-voice
+  en: voice
+  ipa: /vɔɪs/
+  ko: 목소리
+  icon: speech
+  example: Your voice sounds a little different.
+  exKo: 목소리가 좀 달라졌어요.
+  cue: 쉬거나 변하면 후두 부종을 의심하는 것 — 말소리
+  tag: 기도·호흡
+  distractorsEn:
+  - noise
+  - vein
+  distractorsKo:
+  - 기침
+  - 숨소리
+  chips:
+  - - voice
+  decoyChips:
+  - vice
+- id: w-different
+  en: different
+  ipa: /ˈdɪfərənt/
+  ko: 다른
+  icon: board
+  example: Tell me if your voice sounds different.
+  exKo: 목소리가 다르게 들리면 말씀해 주세요.
+  cue: 평소와 달라진 것을 알려 달라고 할 때 — 형용사
+  tag: 관찰·재발
+  distractorsEn:
+  - difficult
+  - deferent
+  distractorsKo:
+  - 비슷한
+  - 똑같은
+  chips:
+  - - dif
+    - fer
+    - ent
+  decoyChips:
+  - fic
+- id: w-heart
+  en: heart
+  ipa: /hɑːrt/
+  ko: 심장
+  icon: stetho
+  example: Your heart may race after the shot.
+  exKo: 주사 후에 심장이 빨리 뛸 수 있어요.
+  cue: 에피네프린 뒤 두근거림이 오는 기관 / 베타차단제를 먹는 이유
+  tag: 순환·쇼크
+  distractorsEn:
+  - lung
+  - liver
+  distractorsKo:
+  - 폐
+  - 혈관
+  chips:
+  - - heart
+  decoyChips:
+  - hurt
+- id: w-race
+  en: race
+  ipa: /reɪs/
+  ko: 빠르게 뛰다
+  icon: board
+  example: Your heart may race a little.
+  exKo: 심장이 조금 빨리 뛸 수 있어요.
+  cue: 에피네프린 부작용 설명 — 주사 뒤 심장이 두근두근할 거라고 미리 알릴 때(동사)
+  tag: 순환·쇼크
+  distractorsEn:
+  - raise
+  - rise
+  distractorsKo:
+  - 멈추다
+  - 느려지다
+  chips:
+  - - race
+  decoyChips:
+  - rise
+- id: w-expect
+  en: expect
+  ipa: /ɪkˈspɛkt/
+  ko: 예상하다
+  icon: board
+  example: A racing heart is expected here.
+  exKo: 여기서 심장이 빨리 뛰는 건 예상된 일이에요.
+  cue: 부작용이 정상 범위라고 안심시킬 때 — 'that's ___ed'
+  tag: 안심·소통
+  distractorsEn:
+  - inspect
+  - accept
+  distractorsKo:
+  - 걱정하다
+  - 확인하다
+  chips:
+  - - ex
+    - pect
+  decoyChips:
+  - cept
+  - spect
+- id: w-stop
+  en: stop
+  ipa: /stɑːp/
+  ko: 멈추다
+  icon: board
+  example: I'm stopping the contrast now.
+  exKo: 지금 조영제를 멈출게요.
+  cue: 반응이 의심되면 첫 조치 — 주입 중인 것을 즉시 끊는다
+  tag: 투약
+  distractorsEn:
+  - slow
+  - start
+  distractorsKo:
+  - 늦추다
+  - 바꾸다
+  chips:
+  - - stop
+  decoyChips:
+  - step
+- id: w-contrast
+  en: contrast
+  ipa: /ˈkɑːntræst/
+  ko: 조영제
+  icon: lab
+  example: I'm stopping the contrast right now.
+  exKo: 지금 바로 조영제를 멈출게요.
+  cue: CT 찍을 때 혈관으로 넣는 약 — 가려움·두드러기 반응이 올 수 있다
+  tag: 알레르겐
+  distractorsEn:
+  - contact
+  - content
+  distractorsKo:
+  - 진정제
+  - 생리식염수
+  chips:
+  - - con
+    - trast
+  decoyChips:
+  - tact
+- id: w-change
+  en: change
+  ipa: /tʃeɪndʒ/
+  ko: 변하다
+  icon: board
+  example: Tell me if your breathing changes.
+  exKo: 호흡이 달라지면 말씀해 주세요.
+  cue: 호흡·목소리가 평소와 달라질 때 — 동사
+  tag: 관찰·재발
+  distractorsEn:
+  - charge
+  - challenge
+  distractorsKo:
+  - 멈추다
+  - 유지되다
+  chips:
+  - - change
+  decoyChips:
+  - charge
+- id: w-move
+  en: move
+  ipa: /muːv/
+  ko: 옮기다
+  icon: board
+  example: We're moving you to watch you closely.
+  exKo: 가까이서 지켜보려고 자리를 옮길게요.
+  cue: 모니터가 있는 곳으로 환자를 데려갈 때
+  tag: 관찰·재발
+  distractorsEn:
+  - remove
+  - mode
+  distractorsKo:
+  - 눕히다
+  - 돌려보내다
+  chips:
+  - - move
+  decoyChips:
+  - mode
+- id: w-closely
+  en: closely
+  ipa: /ˈkloʊsli/
+  ko: 면밀히
+  icon: magnify
+  example: We're watching you closely now.
+  exKo: 지금 면밀히 지켜보고 있어요.
+  cue: 눈을 떼지 않고 가까이서 — 'watch you ___'
+  tag: 관찰·재발
+  distractorsEn:
+  - clearly
+  - loosely
+  distractorsKo:
+  - 대충
+  - 가끔
+  chips:
+  - - close
+    - ly
+  decoyChips:
+  - clear
+- id: w-treat
+  en: treat
+  ipa: /triːt/
+  ko: 치료하다
+  icon: pill
+  example: I'm treating the reaction now.
+  exKo: 지금 반응을 치료하고 있어요.
+  cue: 원인을 찾는 중에도 반응 자체에 처치를 할 때 — 동사
+  tag: 투약
+  distractorsEn:
+  - test
+  - check
+  distractorsKo:
+  - 검사하다
+  - 진단하다
+  chips:
+  - - treat
+  decoyChips:
+  - threat
+- id: w-flush
+  en: flush
+  ipa: /flʌʃ/
+  ko: 씻어내다
+  icon: board
+  example: I'm flushing your line now.
+  exKo: 지금 라인을 씻어 낼게요.
+  cue: 정맥관에 생리식염수를 밀어 넣어 관을 씻을 때 — '___ the line'
+  tag: 투약
+  distractorsEn:
+  - flash
+  - plug
+  distractorsKo:
+  - 막다
+  - 빼다
+  chips:
+  - - flush
+  decoyChips:
+  - flash
+- id: w-injection
+  en: injection
+  ipa: /ɪnˈdʒɛkʃən/
+  ko: 주입
+  icon: pill
+  example: Any itching since the injection started?
+  exKo: 주입이 시작된 뒤로 가려운 데 있었어요?
+  cue: 조영제·약을 혈관이나 근육에 넣는 일을 가리키는 명사
+  tag: 투약
+  distractorsEn:
+  - infection
+  - inspection
+  distractorsKo:
+  - 감염
+  - 채혈
+  chips:
+  - - in
+    - jec
+    - tion
+  decoyChips:
+  - fec
+- id: w-blood
+  en: blood
+  ipa: /blʌd/
+  ko: 혈액
+  icon: board
+  example: I'm checking your blood pressure.
+  exKo: 혈압을 재고 있어요.
+  cue: 혈관 속을 도는 붉은 액체 — '___ pressure'의 앞말
+  tag: 순환·쇼크
+  distractorsEn:
+  - plasma
+  - flood
+  distractorsKo:
+  - 피부
+  - 혈관
+  chips:
+  - - blood
+  decoyChips:
+  - bleed
+- id: w-pressure
+  en: pressure
+  ipa: /ˈprɛʃər/
+  ko: 혈압
+  icon: board
+  example: Your pressure is very low.
+  exKo: 혈압이 아주 낮아요.
+  cue: 쇼크에서 떨어지는 활력징후 — 혈관 벽을 미는 힘
+  tag: 순환·쇼크
+  distractorsEn:
+  - pulse
+  - pleasure
+  distractorsKo:
+  - 맥박
+  - 체온
+  chips:
+  - - pres
+    - sure
+  decoyChips:
+  - pleas
+- id: w-oxygen
+  en: oxygen
+  ipa: /ˈɑːksɪdʒən/
+  ko: 산소
+  icon: lab
+  example: I'm checking your oxygen now.
+  exKo: 지금 산소 수치를 확인하고 있어요.
+  cue: 손가락 센서로 재는 포화도 — 기도 침범이면 떨어진다
+  tag: 기도·호흡
+  distractorsEn:
+  - nitrogen
+  - carbon dioxide
+  distractorsKo:
+  - 이산화탄소
+  - 질소
+  chips:
+  - - ox
+    - y
+    - gen
+  decoyChips:
+  - tro
+- id: w-antibiotic
+  en: antibiotic
+  ipa: /ˌæntibaɪˈɑːtɪk/
+  ko: 항생제
+  icon: pill
+  example: I'm stopping the antibiotic now.
+  exKo: 지금 항생제를 멈출게요.
+  cue: 감염 치료용 약 — IV로 들어가다가 반응이 오면 바로 끊는다
+  tag: 알레르겐
+  distractorsEn:
+  - antihistamine
+  - antibody
+  distractorsKo:
+  - 항히스타민제
+  - 진통제
+  chips:
+  - - anti
+    - bi
+    - ot
+    - ic
+  decoyChips:
+  - hista
+- id: w-line
+  en: line
+  ipa: /laɪn/
+  ko: 정맥관
+  icon: board
+  example: I'm flushing your line now.
+  exKo: 지금 라인을 씻어 낼게요.
+  cue: 팔에 꽂아 둔 수액 관을 짧게 부르는 말 — 'IV ___'
+  tag: 투약
+  distractorsEn:
+  - lane
+  - lung
+  distractorsKo:
+  - 바늘
+  - 수액백
+  chips:
+  - - line
+  decoyChips:
+  - lane
+- id: w-swallow
+  en: swallow
+  ipa: /ˈswɑːloʊ/
+  ko: 삼키다
+  icon: board
+  example: Any trouble swallowing right now?
+  exKo: 지금 삼키기 힘든 거 있어요?
+  cue: 침·음식을 목으로 넘기는 것 — 힘들면 인후 부종을 의심
+  tag: 기도·호흡
+  distractorsEn:
+  - shallow
+  - swell
+  distractorsKo:
+  - 씹다
+  - 뱉다
+  chips:
+  - - swal
+    - low
+  decoyChips:
+  - shal
+- id: w-ready
+  en: ready
+  ipa: /ˈrɛdi/
+  ko: 준비된
+  icon: check
+  example: I have epinephrine ready.
+  exKo: 에피네프린 준비해 뒀어요.
+  cue: 필요할 때 바로 쓸 수 있게 갖춰 둔 상태 — 형용사
+  tag: 투약
+  distractorsEn:
+  - steady
+  - already
+  distractorsKo:
+  - 부족한
+  - 늦은
+  chips:
+  - - read
+    - y
+  decoyChips:
+  - al
+- id: w-close
+  en: close
+  ipa: /kloʊz/
+  ko: 막히다
+  icon: board
+  example: Is your throat closing up?
+  exKo: 목이 막히는 느낌이에요?
+  cue: 목·기도가 부어서 공기 길이 좁아지다 못해 다물리는 것 — '___ up'
+  tag: 기도·호흡
+  distractorsEn:
+  - clot
+  - choke
+  distractorsKo:
+  - 열리다
+  - 붓다
+  chips:
+  - - close
+  decoyChips:
+  - clothe
+- id: w-draw
+  en: draw
+  ipa: /drɔː/
+  ko: 뽑아 두다
+  icon: board
+  example: I'll draw it up now.
+  exKo: 지금 뽑아 둘게요.
+  cue: 약병에서 주사기로 약을 미리 빨아올려 둘 때 — '___ it up'
+  tag: 투약
+  distractorsEn:
+  - drop
+  - drain
+  distractorsKo:
+  - 섞다
+  - 버리다
+  chips:
+  - - draw
+  decoyChips:
+  - drew
+- id: w-moment
+  en: moment
+  ipa: /ˈmoʊmənt/
+  ko: 순간
+  icon: board
+  example: It's ready the moment you need it.
+  exKo: 필요한 순간 바로 쓸 수 있어요.
+  cue: 변화가 생긴 바로 그때 — 'the ___ you need it'
+  tag: 관찰·재발
+  distractorsEn:
+  - movement
+  - minute
+  distractorsKo:
+  - 하루
+  - 기간
+  chips:
+  - - mo
+    - ment
+  decoyChips:
+  - move
+- id: w-dizziness
+  en: dizziness
+  ipa: /ˈdɪzinəs/
+  ko: 어지러움
+  icon: board
+  example: The dizziness tells me this is serious.
+  exKo: 어지러운 걸 보니 심각한 거예요.
+  cue: 혈압이 떨어질 때 오는 핑 도는 증상 — 전신 반응의 신호(명사)
+  tag: 순환·쇼크
+  distractorsEn:
+  - drowsiness
+  - busyness
+  distractorsKo:
+  - 졸림
+  - 두통
+  chips:
+  - - diz
+    - zi
+    - ness
+  decoyChips:
+  - si
+- id: w-repeat
+  en: repeat
+  ipa: /rɪˈpiːt/
+  ko: 반복하다
+  icon: board
+  example: We may need to repeat the epinephrine.
+  exKo: 에피네프린을 한 번 더 놔야 할 수도 있어요.
+  cue: 첫 투여로 부족하면 5~15분 뒤 같은 약을 한 번 더 — 동사
+  tag: 투약
+  distractorsEn:
+  - replace
+  - retreat
+  distractorsKo:
+  - 중단하다
+  - 줄이다
+  chips:
+  - - re
+    - peat
+  decoyChips:
+  - treat
+- id: w-symptom
+  en: symptom
+  ipa: /ˈsɪmptəm/
+  ko: 증상
+  icon: board
+  example: Your symptoms keep progressing.
+  exKo: 증상이 계속 진행되고 있어요.
+  cue: 환자가 겪는 가려움·어지러움·숨참을 묶어 부르는 명사
+  tag: 관찰·재발
+  distractorsEn:
+  - system
+  - sign
+  distractorsKo:
+  - 원인
+  - 진단
+  chips:
+  - - symp
+    - tom
+  decoyChips:
+  - sys
+- id: w-progress
+  en: progress
+  ipa: /ˈprɑːɡrɛs/
+  ko: 진행되다
+  icon: board
+  example: Your symptoms keep progressing.
+  exKo: 증상이 계속 진행되고 있어요.
+  cue: 피부에서 호흡·순환으로 증상이 점점 번져 갈 때 — 동사
+  tag: 관찰·재발
+  distractorsEn:
+  - process
+  - regress
+  distractorsKo:
+  - 호전되다
+  - 멈추다
+  chips:
+  - - pro
+    - gress
+  decoyChips:
+  - cess
+- id: w-another
+  en: another
+  ipa: /əˈnʌðər/
+  ko: 또 다른
+  icon: board
+  example: Another dose keeps you safe.
+  exKo: 한 번 더 투여해야 안전해요.
+  cue: 같은 것을 하나 더 — '___ dose'
+  tag: 투약
+  distractorsEn:
+  - other
+  - either
+  distractorsKo:
+  - 첫
+  - 마지막
+  chips:
+  - - an
+    - oth
+    - er
+  decoyChips:
+  - ei
+- id: w-dose
+  en: dose
+  ipa: /doʊs/
+  ko: 용량
+  icon: pill
+  example: We calculate every dose by weight.
+  exKo: 모든 용량은 체중으로 계산해요.
+  cue: 한 번에 주는 약의 양 — 소아는 kg당으로 정한다
+  tag: 투약
+  distractorsEn:
+  - doze
+  - douse
+  distractorsKo:
+  - 농도
+  - 속도
+  chips:
+  - - dose
+  decoyChips:
+  - doze
+- id: w-safe
+  en: safe
+  ipa: /seɪf/
+  ko: 안전한
+  icon: shield
+  example: It's safe, and it helps both of you.
+  exKo: 안전하고, 두 분 모두에게 도움이 돼요.
+  cue: 임산부·보호자가 약을 걱정할 때 '해가 되지 않는다'고 할 때 — 형용사
+  tag: 안심·소통
+  distractorsEn:
+  - save
+  - sane
+  distractorsKo:
+  - 편한
+  - 빠른
+  chips:
+  - - safe
+  decoyChips:
+  - save
+- id: w-food
+  en: food
+  ipa: /fuːd/
+  ko: 음식
+  icon: coffee
+  example: Did the food have any nuts?
+  exKo: 그 음식에 견과가 들어 있었어요?
+  cue: 노출원 문진의 첫 갈래 — 먹은 것
+  tag: 알레르겐
+  distractorsEn:
+  - feed
+  - fluid
+  distractorsKo:
+  - 약
+  - 음료
+  chips:
+  - - food
+  decoyChips:
+  - feed
+- id: w-peanut
+  en: peanut
+  ipa: /ˈpiːnʌt/
+  ko: 땅콩
+  icon: board
+  example: Did the food have peanuts in it?
+  exKo: 그 음식에 땅콩이 들어 있었어요?
+  cue: 식품 아나필락시스의 대표 원인 — 사실은 콩과라 견과류와 따로 묻는다
+  tag: 알레르겐
+  distractorsEn:
+  - pecan
+  - walnut
+  distractorsKo:
+  - 호두
+  - 아몬드
+  chips:
+  - - pea
+    - nut
+  decoyChips:
+  - pe
+- id: w-nut
+  en: nut
+  ipa: /nʌt/
+  ko: 견과
+  icon: board
+  example: Read every label for hidden nuts.
+  exKo: 숨은 견과가 있는지 라벨을 다 읽으세요.
+  cue: 호두·캐슈·아몬드 같은 열매 — 'tree ___s'
+  tag: 알레르겐
+  distractorsEn:
+  - seed
+  - bean
+  distractorsKo:
+  - 씨앗
+  - 콩
+  chips:
+  - - nut
+  decoyChips:
+  - net
+- id: w-talk
+  en: talk
+  ipa: /tɔːk/
+  ko: 이야기하다
+  icon: speech
+  example: We'll talk about how to avoid it.
+  exKo: 어떻게 피할지 이야기해요.
+  cue: 교육 시간을 예고할 때 — 'we'll ___ about…'
+  tag: 안심·소통
+  distractorsEn:
+  - stalk
+  - walk
+  distractorsKo:
+  - 묻다
+  - 들려주다
+  chips:
+  - - talk
+  decoyChips:
+  - walk
+- id: w-carry
+  en: carry
+  ipa: /ˈkæri/
+  ko: 소지하다
+  icon: board
+  example: You should carry an EpiPen with you.
+  exKo: 에피펜을 늘 갖고 다니셔야 해요.
+  cue: 자가주사기를 어디 가든 몸에 지니고 다니라고 할 때
+  tag: 자가주사 교육
+  distractorsEn:
+  - cure
+  - marry
+  distractorsKo:
+  - 보관하다
+  - 사다
+  chips:
+  - - car
+    - ry
+  decoyChips:
+  - cur
+- id: w-epipen
+  en: EpiPen
+  ipa: /ˈɛpiˌpɛn/
+  ko: 에피펜
+  icon: pill
+  example: Carry an EpiPen everywhere from now on.
+  exKo: 이제부터 어디 가든 에피펜을 갖고 다니세요.
+  cue: 가장 널리 알려진 에피네프린 자가주사기의 상품명
+  tag: 자가주사 교육
+  distractorsEn:
+  - inhaler
+  - Auvi-Q
+  distractorsKo:
+  - 흡입기
+  - 혈당측정기
+  chips:
+  - - Epi
+    - Pen
+  decoyChips:
+  - Pin
+- id: w-fast
+  en: fast
+  ipa: /fæst/
+  ko: 빠르게
+  icon: board
+  example: Your face is swelling fast.
+  exKo: 얼굴이 빠르게 붓고 있어요.
+  cue: 부기·수액이 짧은 시간에 빨리 — 부사
+  tag: 관찰·재발
+  distractorsEn:
+  - first
+  - vast
+  distractorsKo:
+  - 천천히
+  - 점점
+  chips:
+  - - fast
+  decoyChips:
+  - fist
+- id: w-read
+  en: read
+  ipa: /riːd/
+  ko: 읽다
+  icon: board
+  example: Read every food label carefully.
+  exKo: 음식 라벨을 꼼꼼히 읽으세요.
+  cue: 사 먹기 전 성분표를 눈으로 훑는 것 — 재노출 예방 교육
+  tag: 알레르겐
+  distractorsEn:
+  - reach
+  - lead
+  distractorsKo:
+  - 쓰다
+  - 고르다
+  chips:
+  - - read
+  decoyChips:
+  - reed
+- id: w-label
+  en: label
+  ipa: /ˈleɪbəl/
+  ko: 라벨
+  icon: board
+  example: Read every food label first.
+  exKo: 음식 라벨부터 읽으세요.
+  cue: 포장에 붙은 성분표 — 숨은 견과를 찾는 곳
+  tag: 알레르겐
+  distractorsEn:
+  - level
+  - table
+  distractorsKo:
+  - 영수증
+  - 메뉴판
+  chips:
+  - - la
+    - bel
+  decoyChips:
+  - vel
+- id: w-ask
+  en: ask
+  ipa: /æsk/
+  ko: 물어보다
+  icon: speech
+  example: Ask about hidden nuts before you eat.
+  exKo: 먹기 전에 숨은 견과가 있는지 물어보세요.
+  cue: 식당에서 재료를 확인하라고 가르칠 때 — '___ about hidden nuts'
+  tag: 알레르겐
+  distractorsEn:
+  - task
+  - answer
+  distractorsKo:
+  - 대답하다
+  - 알려주다
+  chips:
+  - - ask
+  decoyChips:
+  - axe
+- id: w-later
+  en: later
+  ipa: /ˈleɪtər/
+  ko: 나중에
+  icon: calendar
+  example: Symptoms came back hours later.
+  exKo: 증상이 몇 시간 뒤에 다시 나타났어요.
+  cue: 이상성 반응 설명 — '몇 시간 ___' 뒤에 다시
+  tag: 관찰·재발
+  distractorsEn:
+  - latter
+  - lately
+  distractorsKo:
+  - 일찍
+  - 곧바로
+  chips:
+  - - lat
+    - er
+  decoyChips:
+  - ter
+- id: w-treatment
+  en: treatment
+  ipa: /ˈtriːtmənt/
+  ko: 치료
+  icon: pill
+  example: We may repeat treatment tonight.
+  exKo: 오늘 밤 치료를 반복할 수도 있어요.
+  cue: 투약·수액 같은 처치 전체를 가리키는 명사
+  tag: 투약
+  distractorsEn:
+  - treaty
+  - statement
+  distractorsKo:
+  - 진단
+  - 검사
+  chips:
+  - - treat
+    - ment
+  decoyChips:
+  - state
+- id: w-stay
+  en: stay
+  ipa: /steɪ/
+  ko: 머물다
+  icon: board
+  example: Please stay in bed for now.
+  exKo: 당분간 침대에 계세요.
+  cue: 자리를 떠나지 말라고 할 때 / 간호사가 곁을 지키겠다고 할 때
+  tag: 관찰·재발
+  distractorsEn:
+  - stray
+  - sit
+  distractorsKo:
+  - 떠나다
+  - 쉬다
+  chips:
+  - - stay
+  decoyChips:
+  - stray
+- id: w-bed
+  en: bed
+  ipa: /bɛd/
+  ko: 침대
+  icon: board
+  example: Stay in bed and keep your monitor on.
+  exKo: 침대에 계시고 모니터를 계속 붙이고 계세요.
+  cue: 재발 관찰 중 환자가 머물러야 하는 곳
+  tag: 관찰·재발
+  distractorsEn:
+  - bad
+  - bench
+  distractorsKo:
+  - 의자
+  - 휠체어
+  chips:
+  - - bed
+  decoyChips:
+  - bad
+- id: w-monitor
+  en: monitor
+  ipa: /ˈmɑːnɪtər/
+  ko: 모니터
+  icon: monitor
+  example: Keep your monitor on for now.
+  exKo: 당분간 모니터를 계속 붙이고 계세요.
+  cue: 심전도·산소포화도를 계속 보여 주는 화면과 선
+  tag: 관찰·재발
+  distractorsEn:
+  - mentor
+  - motor
+  distractorsKo:
+  - 호출기
+  - 청진기
+  chips:
+  - - mon
+    - i
+    - tor
+  decoyChips:
+  - men
+- id: w-wave
+  en: wave
+  ipa: /weɪv/
+  ko: 파동
+  icon: board
+  example: This second wave can hit fast.
+  exKo: 이 두 번째 물결은 빠르게 닥칠 수 있어요.
+  cue: 이상성 반응을 환자에게 풀어 말할 때 — 'a second ___'
+  tag: 관찰·재발
+  distractorsEn:
+  - wake
+  - wane
+  distractorsKo:
+  - 흔적
+  - 고비
+  chips:
+  - - wave
+  decoyChips:
+  - wake
+- id: w-hit
+  en: hit
+  ipa: /hɪt/
+  ko: 닥치다
+  icon: board
+  example: A second wave can hit fast.
+  exKo: 두 번째 물결은 빠르게 닥칠 수 있어요.
+  cue: 두 번째 반응이 갑자기 몰려올 수 있다고 경고할 때 — 짧은 동사
+  tag: 관찰·재발
+  distractorsEn:
+  - heat
+  - hint
+  distractorsKo:
+  - 지나가다
+  - 사라지다
+  chips:
+  - - hit
+  decoyChips:
+  - hat
+- id: w-fine
+  en: fine
+  ipa: /faɪn/
+  ko: 괜찮은
+  icon: board
+  example: It can hit even after you feel fine.
+  exKo: 괜찮다고 느낀 뒤에도 닥칠 수 있어요.
+  cue: 증상이 다 가라앉아 멀쩡하다고 느낄 때 — 'feel ___'
+  tag: 관찰·재발
+  distractorsEn:
+  - find
+  - fire
+  distractorsKo:
+  - 피곤한
+  - 이상한
+  chips:
+  - - fine
+  decoyChips:
+  - find
+- id: w-button
+  en: button
+  ipa: /ˈbʌtən/
+  ko: 버튼
+  icon: bell
+  example: Push the call button right away.
+  exKo: 바로 호출 버튼을 누르세요.
+  cue: 침대 옆에서 눌러 간호사를 부르는 것 — 'call ___'
+  tag: 안심·소통
+  distractorsEn:
+  - bottom
+  - badge
+  distractorsKo:
+  - 줄
+  - 스위치판
+  chips:
+  - - but
+    - ton
+  decoyChips:
+  - tom
+- id: w-work
+  en: work
+  ipa: /wɜːrk/
+  ko: 작용하다
+  icon: gear
+  example: The epinephrine may work less well.
+  exKo: 에피네프린이 덜 들을 수 있어요.
+  cue: 약이 효과를 내는 것 — '약이 ___하다(듣다)'
+  tag: 투약
+  distractorsEn:
+  - wear
+  - fail
+  distractorsKo:
+  - 부작용이 나다
+  - 떨어지다
+  chips:
+  - - work
+  decoyChips:
+  - walk
+- id: w-less
+  en: less
+  ipa: /lɛs/
+  ko: 덜
+  icon: board
+  example: It may work less well for you.
+  exKo: 에피네프린이 덜 잘 들을 수 있어요.
+  cue: 베타차단제 복용자에게서 약효가 평소보다 약할 때 — '___ well'
+  tag: 투약
+  distractorsEn:
+  - loss
+  - lest
+  distractorsKo:
+  - 더
+  - 아주
+  chips:
+  - - less
+  decoyChips:
+  - lass
+- id: w-well
+  en: well
+  ipa: /wɛl/
+  ko: 잘
+  icon: board
+  example: It may work less well for you.
+  exKo: 약이 덜 잘 들을 수 있어요.
+  cue: 효과·호흡이 제대로 되는 정도를 말하는 부사 — 'breathing ___'
+  tag: 안심·소통
+  distractorsEn:
+  - badly
+  - barely
+  distractorsKo:
+  - 나쁘게
+  - 겨우
+  chips:
+  - - well
+  decoyChips:
+  - wall
+- id: w-glucagon
+  en: glucagon
+  ipa: /ˈɡluːkəɡɑːn/
+  ko: 글루카곤
+  icon: pill
+  example: We're giving glucagon to help your body.
+  exKo: 몸을 돕기 위해 글루카곤을 투여할게요.
+  cue: 베타차단제 때문에 에피가 잘 안 들을 때 쓰는 약 — 수용체를 우회한다
+  tag: 투약
+  distractorsEn:
+  - glucose
+  - glycogen
+  distractorsKo:
+  - 포도당
+  - 인슐린
+  chips:
+  - - glu
+    - ca
+    - gon
+  decoyChips:
+  - cose
+- id: w-help
+  en: help
+  ipa: /hɛlp/
+  ko: 돕다
+  icon: shield
+  example: Glucagon can help your body respond.
+  exKo: 글루카곤이 몸이 반응하도록 도울 수 있어요.
+  cue: 약·보호자의 행동이 도움이 된다고 말할 때 — 동사
+  tag: 안심·소통
+  distractorsEn:
+  - heal
+  - hold
+  distractorsKo:
+  - 치료하다
+  - 붙잡다
+  chips:
+  - - help
+  decoyChips:
+  - heal
+- id: w-respond
+  en: respond
+  ipa: /rɪˈspɑːnd/
+  ko: (치료에) 반응하다
+  icon: board
+  example: Glucagon helps your body respond.
+  exKo: 글루카곤은 몸이 반응하도록 도와요.
+  cue: 투여한 약에 몸이 효과를 보이는 것 — 'help your body ___'
+  tag: 투약
+  distractorsEn:
+  - resist
+  - recover
+  distractorsKo:
+  - 저항하다
+  - 회복하다
+  chips:
+  - - re
+    - spond
+  decoyChips:
+  - spend
+- id: w-blocker
+  en: blocker
+  ipa: /ˈblɑːkər/
+  ko: 차단제
+  icon: pill
+  example: What's the name of your beta blocker?
+  exKo: 드시는 베타차단제 이름이 뭐예요?
+  cue: 심장약 계열 — 'beta ___'. 복용 중이면 에피 반응이 약해진다
+  tag: 투약
+  distractorsEn:
+  - booster
+  - breaker
+  distractorsKo:
+  - 촉진제
+  - 이뇨제
+  chips:
+  - - block
+    - er
+  decoyChips:
+  - ade
+- id: w-last
+  en: last
+  ipa: /læst/
+  ko: 마지막으로
+  icon: board
+  example: When did you last take it?
+  exKo: 마지막으로 언제 드셨어요?
+  cue: 복용 시각을 물을 때 — 'when did you ___ take it?'
+  tag: 문진
+  distractorsEn:
+  - first
+  - least
+  distractorsKo:
+  - 처음으로
+  - 자주
+  chips:
+  - - last
+  decoyChips:
+  - lost
+- id: w-big
+  en: big
+  ipa: /bɪɡ/
+  ko: 큰
+  icon: board
+  example: You might need a bigger dose.
+  exKo: 더 많은 용량이 필요할 수 있어요.
+  cue: 용량을 올려야 할 때 — 비교급으로 '더 ___ger dose'
+  tag: 투약
+  distractorsEn:
+  - bit
+  - dig
+  distractorsKo:
+  - 작은
+  - 짧은
+  chips:
+  - - big
+  decoyChips:
+  - bag
+- id: w-several
+  en: several
+  ipa: /ˈsɛvrəl/
+  ko: 여러
+  icon: board
+  example: You might need several doses.
+  exKo: 여러 번 투여해야 할 수도 있어요.
+  cue: 한 번으로 부족해 두세 번 이상 — '___ doses'
+  tag: 투약
+  distractorsEn:
+  - severe
+  - separate
+  distractorsKo:
+  - 한 번의
+  - 절반의
+  chips:
+  - - sev
+    - er
+    - al
+  decoyChips:
+  - ere
+- id: w-response
+  en: response
+  ipa: /rɪˈspɑːns/
+  ko: 반응(결과)
+  icon: board
+  example: You might need more doses for a response.
+  exKo: 반응을 얻으려면 더 투여해야 할 수 있어요.
+  cue: 약을 준 뒤 몸이 보여 주는 효과 — 명사('to get a ___')
+  tag: 투약
+  distractorsEn:
+  - resistance
+  - respite
+  distractorsKo:
+  - 저항
+  - 부작용
+  chips:
+  - - re
+    - sponse
+  decoyChips:
+  - spond
+- id: w-raise
+  en: raise
+  ipa: /reɪz/
+  ko: 올리다
+  icon: board
+  example: This will raise your blood pressure.
+  exKo: 이게 혈압을 올려 줄 거예요.
+  cue: 쇼크에서 떨어진 혈압을 위로 — 'This will ___ your blood pressure'
+  tag: 순환·쇼크
+  distractorsEn:
+  - rise
+  - race
+  distractorsKo:
+  - 낮추다
+  - 유지하다
+  chips:
+  - - raise
+  decoyChips:
+  - rise
+- id: w-tilt
+  en: tilt
+  ipa: /tɪlt/
+  ko: 기울이다
+  icon: board
+  example: I'm tilting you onto your left side.
+  exKo: 왼쪽으로 기울여 드릴게요.
+  cue: 임산부를 한쪽으로 살짝 돌려 눕혀 대정맥 압박을 풀 때
+  tag: 순환·쇼크
+  distractorsEn:
+  - lift
+  - tuck
+  distractorsKo:
+  - 들어 올리다
+  - 뒤집다
+  chips:
+  - - tilt
+  decoyChips:
+  - till
+- id: w-left
+  en: left
+  ipa: /lɛft/
+  ko: 왼쪽
+  icon: board
+  example: I'm tilting you onto your left side.
+  exKo: 왼쪽으로 기울여 드릴게요.
+  cue: 임산부를 눕히는 방향 — 오른쪽의 반대
+  tag: 순환·쇼크
+  distractorsEn:
+  - lift
+  - right
+  distractorsKo:
+  - 오른쪽
+  - 위쪽
+  chips:
+  - - left
+  decoyChips:
+  - lift
+- id: w-side
+  en: side
+  ipa: /saɪd/
+  ko: 쪽
+  icon: board
+  example: Lie onto your left side for now.
+  exKo: 당분간 왼쪽으로 누우세요.
+  cue: 몸의 옆면 — 'onto your left ___'
+  tag: 순환·쇼크
+  distractorsEn:
+  - site
+  - back
+  distractorsKo:
+  - 등
+  - 앞쪽
+  chips:
+  - - side
+  decoyChips:
+  - site
+- id: w-flow
+  en: flow
+  ipa: /floʊ/
+  ko: 흐르다
+  icon: board
+  example: This helps blood flow to your baby.
+  exKo: 이렇게 하면 아기에게 피가 잘 가요.
+  cue: 혈액이 태반·장기로 흘러가는 것 — 동사
+  tag: 순환·쇼크
+  distractorsEn:
+  - flower
+  - flood
+  distractorsKo:
+  - 막히다
+  - 고이다
+  chips:
+  - - flow
+  decoyChips:
+  - flew
+- id: w-heartbeat
+  en: heartbeat
+  ipa: /ˈhɑːrtbiːt/
+  ko: 심장박동
+  icon: stetho
+  example: We're monitoring your baby's heartbeat.
+  exKo: 아기 심장박동을 모니터하고 있어요.
+  cue: 태아 안녕을 볼 때 계속 듣는 것 — 두근거리는 한 번 한 번
+  tag: 순환·쇼크
+  distractorsEn:
+  - heartburn
+  - breath
+  distractorsKo:
+  - 태동
+  - 호흡
+  chips:
+  - - heart
+    - beat
+  decoyChips:
+  - burn
+- id: w-rate
+  en: rate
+  ipa: /reɪt/
+  ko: 박동수
+  icon: board
+  example: Your baby's heart rate is being watched.
+  exKo: 아기 심박수를 지켜보고 있어요.
+  cue: 1분에 몇 번인지 — 'heart ___'
+  tag: 순환·쇼크
+  distractorsEn:
+  - rhythm
+  - ratio
+  distractorsKo:
+  - 리듬
+  - 세기
+  chips:
+  - - rate
+  decoyChips:
+  - rat
+- id: w-switch
+  en: switch
+  ipa: /swɪtʃ/
+  ko: 전환하다
+  icon: gear
+  example: We're switching to latex-free gloves.
+  exKo: 무라텍스 장갑으로 바꿀게요.
+  cue: 쓰던 물품을 다른 것으로 통째로 갈아 치울 때 — '___ to latex-free'
+  tag: 알레르겐
+  distractorsEn:
+  - stitch
+  - swipe
+  distractorsKo:
+  - 버리다
+  - 고치다
+  chips:
+  - - switch
+  decoyChips:
+  - stitch
+- id: w-latex
+  en: latex
+  ipa: /ˈleɪtɛks/
+  ko: 라텍스
+  icon: board
+  example: Nothing here should touch latex.
+  exKo: 여기 있는 어떤 것도 라텍스에 닿으면 안 돼요.
+  cue: 고무장갑·소변줄·풍선에 든 천연고무 — 바나나·아보카도와 교차반응
+  tag: 알레르겐
+  distractorsEn:
+  - lactose
+  - nitrile
+  distractorsKo:
+  - 니트릴
+  - 유당
+  chips:
+  - - la
+    - tex
+  decoyChips:
+  - lac
+- id: w-glove
+  en: glove
+  ipa: /ɡlʌv/
+  ko: 장갑
+  icon: board
+  example: We're switching to latex-free gloves.
+  exKo: 무라텍스 장갑으로 바꿀게요.
+  cue: 의료진이 손에 끼는 것 — 라텍스 알레르기면 니트릴로 바꾼다
+  tag: 알레르겐
+  distractorsEn:
+  - gown
+  - globe
+  distractorsKo:
+  - 가운
+  - 마스크
+  chips:
+  - - glove
+  decoyChips:
+  - love
+- id: w-supply
+  en: supply
+  ipa: /səˈplaɪ/
+  ko: 물품
+  icon: board
+  example: We're switching every supply to latex-free.
+  exKo: 모든 물품을 무라텍스로 바꿀게요.
+  cue: 병실에서 쓰는 소모품 전체 — 장갑·카테터·지혈대 등
+  tag: 알레르겐
+  distractorsEn:
+  - surplus
+  - supplement
+  distractorsKo:
+  - 장비
+  - 약품
+  chips:
+  - - sup
+    - ply
+  decoyChips:
+  - ple
+- id: w-banana
+  en: banana
+  ipa: /bəˈnænə/
+  ko: 바나나
+  icon: board
+  example: Does banana also bother you?
+  exKo: 바나나도 문제가 되나요?
+  cue: 라텍스와 교차반응하는 대표 과일 — 노랗고 길다
+  tag: 알레르겐
+  distractorsEn:
+  - bandana
+  - papaya
+  distractorsKo:
+  - 파파야
+  - 키위
+  chips:
+  - - ba
+    - na
+    - na
+  decoyChips:
+  - ban
+- id: w-avocado
+  en: avocado
+  ipa: /ˌævəˈkɑːdoʊ/
+  ko: 아보카도
+  icon: board
+  example: Does avocado also bother you?
+  exKo: 아보카도도 문제가 되나요?
+  cue: 라텍스와 교차반응하는 초록 과일 — 가운데 큰 씨
+  tag: 알레르겐
+  distractorsEn:
+  - avocet
+  - apricot
+  distractorsKo:
+  - 살구
+  - 망고
+  chips:
+  - - av
+    - o
+    - ca
+    - do
+  decoyChips:
+  - co
+- id: w-bother
+  en: bother
+  ipa: /ˈbɑːðər/
+  ko: 문제를 일으키다
+  icon: board
+  example: Do certain foods also bother you?
+  exKo: 특정 음식도 문제를 일으키나요?
+  cue: 어떤 음식이 몸에 탈을 내는지 부드럽게 물을 때 — '___ you'
+  tag: 알레르겐
+  distractorsEn:
+  - brother
+  - border
+  distractorsKo:
+  - 좋아하다
+  - 먹어 보다
+  chips:
+  - - both
+    - er
+  decoyChips:
+  - broth
+- id: w-care
+  en: care
+  ipa: /kɛr/
+  ko: 돌보다
+  icon: me
+  example: Everyone caring for you will know.
+  exKo: 돌보는 모든 사람이 알게 돼요.
+  cue: 환자를 맡아 보살피는 의료진 전체 — 'everyone ___ing for you'
+  tag: 안심·소통
+  distractorsEn:
+  - cure
+  - carry
+  distractorsKo:
+  - 치료하다
+  - 옮기다
+  chips:
+  - - care
+  decoyChips:
+  - cure
+- id: w-touch
+  en: touch
+  ipa: /tʌtʃ/
+  ko: 닿다
+  icon: board
+  example: Nothing here should touch latex.
+  exKo: 여기 있는 어떤 것도 라텍스에 닿으면 안 돼요.
+  cue: 피부가 물건과 맞닿는 것 — 접촉 알레르겐을 막을 때
+  tag: 알레르겐
+  distractorsEn:
+  - taunt
+  - torch
+  distractorsKo:
+  - 냄새 맡다
+  - 삼키다
+  chips:
+  - - touch
+  decoyChips:
+  - torch
+- id: w-write
+  en: write
+  ipa: /raɪt/
+  ko: 적다
+  icon: pencil
+  example: I'm writing this on your chart.
+  exKo: 차트에 적어 둘게요.
+  cue: 알레르기를 다음 근무조도 보게 차트에 남길 때 — 'I'm ___ing this on your chart'
+  tag: 기록·인계
+  distractorsEn:
+  - white
+  - right
+  distractorsKo:
+  - 지우다
+  - 읽다
+  chips:
+  - - write
+  decoyChips:
+  - wrote
+- id: w-shift
+  en: shift
+  ipa: /ʃɪft/
+  ko: 근무조
+  icon: calendar
+  example: The next shift will see it too.
+  exKo: 다음 근무조도 볼 거예요.
+  cue: 인계에서 다음 사람들·이번 근무 내내를 말할 때 — 'next ___', 'all ___'
+  tag: 기록·인계
+  distractorsEn:
+  - shaft
+  - sheet
+  distractorsKo:
+  - 병동
+  - 당직의
+  chips:
+  - - shift
+  decoyChips:
+  - shaft
+- id: w-weight
+  en: weight
+  ipa: /weɪt/
+  ko: 체중
+  icon: board
+  example: We calculate every dose by his weight.
+  exKo: 모든 용량을 아이 체중으로 계산해요.
+  cue: 소아 용량의 기준 — kg으로 재는 몸의 무게(명사)
+  tag: 투약
+  distractorsEn:
+  - height
+  - width
+  distractorsKo:
+  - 키
+  - 나이
+  chips:
+  - - weight
+  decoyChips:
+  - wait
+- id: w-lot
+  en: lot
+  ipa: /lɑːt/
+  ko: 많이
+  icon: board
+  example: Keeping him calm helps a lot.
+  exKo: 아이를 진정시켜 주시는 게 큰 도움이 돼요.
+  cue: 보호자를 격려할 때 — 'keeping him calm helps a ___'
+  tag: 안심·소통
+  distractorsEn:
+  - little
+  - bit
+  distractorsKo:
+  - 조금
+  - 가끔
+  chips:
+  - - lot
+  decoyChips:
+  - lit
+- id: w-weigh
+  en: weigh
+  ipa: /weɪ/
+  ko: 체중이 나가다
+  icon: board
+  example: How much does he weigh?
+  exKo: 아이 체중이 얼마나 나가요?
+  cue: 보호자에게 아이 몸무게를 물을 때 — 'how much does he ___?'(동사)
+  tag: 문진
+  distractorsEn:
+  - wait
+  - way
+  distractorsKo:
+  - 키가 크다
+  - 나이가 들다
+  chips:
+  - - weigh
+  decoyChips:
+  - weight
+- id: w-calculate
+  en: calculate
+  ipa: /ˈkælkjəleɪt/
+  ko: 계산하다
+  icon: gear
+  example: We calculate every dose by weight.
+  exKo: 모든 용량을 체중으로 계산해요.
+  cue: kg당 용량에 체중을 곱해 약의 양을 정할 때
+  tag: 투약
+  distractorsEn:
+  - calibrate
+  - circulate
+  distractorsKo:
+  - 조절하다
+  - 추정하다
+  chips:
+  - - cal
+    - cu
+    - late
+  decoyChips:
+  - ci
+- id: w-exact
+  en: exact
+  ipa: /ɪɡˈzækt/
+  ko: 정확한
+  icon: board
+  example: This makes the dose exact for him.
+  exKo: 이렇게 하면 아이에게 딱 맞는 용량이 돼요.
+  cue: 체중으로 계산해 한 치도 어긋나지 않는 양이라고 보호자를 안심시킬 때 — 형용사
+  tag: 투약
+  distractorsEn:
+  - extra
+  - excess
+  distractorsKo:
+  - 대략의
+  - 넉넉한
+  chips:
+  - - ex
+    - act
+  decoyChips:
+  - tra
+- id: w-softly
+  en: softly
+  ipa: /ˈsɔːftli/
+  ko: 부드럽게
+  icon: board
+  example: Talk to him softly — that helps.
+  exKo: 아이에게 부드럽게 말 걸어 주세요 — 도움이 돼요.
+  cue: 겁먹은 아이를 달래는 목소리의 결 — 부사
+  tag: 안심·소통
+  distractorsEn:
+  - swiftly
+  - loudly
+  distractorsKo:
+  - 크게
+  - 빨리
+  chips:
+  - - soft
+    - ly
+  decoyChips:
+  - swift
+- id: w-secure
+  en: secure
+  ipa: /sɪˈkjʊr/
+  ko: 확보하다
+  icon: lock
+  example: We're securing your airway now.
+  exKo: 지금 기도를 확보하고 있어요.
+  cue: 기도가 막히기 전에 관을 넣어 길을 지켜 둘 때 — 'the airway'와 짝
+  tag: 기도·호흡
+  distractorsEn:
+  - secrete
+  - rescue
+  distractorsKo:
+  - 흡인하다
+  - 검사하다
+  chips:
+  - - se
+    - cure
+  decoyChips:
+  - crete
+- id: w-continue
+  en: continue
+  ipa: /kənˈtɪnjuː/
+  ko: 계속하다
+  icon: board
+  example: I'm continuing epinephrine now.
+  exKo: 지금 에피네프린을 계속 투여하고 있어요.
+  cue: 끊지 않고 이어서 — 약을 멈추지 않을 때의 동사
+  tag: 투약
+  distractorsEn:
+  - contain
+  - conclude
+  distractorsKo:
+  - 중단하다
+  - 늦추다
+  chips:
+  - - con
+    - tin
+    - ue
+  decoyChips:
+  - tain
+- id: w-bedside
+  en: bedside
+  ipa: /ˈbɛdsaɪd/
+  ko: 침상 곁
+  icon: board
+  example: I'm calling ENT to the bedside.
+  exKo: 이비인후과를 침상 곁으로 부를게요.
+  cue: 전문의에게 지금 환자 옆으로 와 달라고 할 때 — 'to the ___'
+  tag: 기도·호흡
+  distractorsEn:
+  - bedsore
+  - beside
+  distractorsKo:
+  - 병동
+  - 처치실
+  chips:
+  - - bed
+    - side
+  decoyChips:
+  - sore
+- id: w-slowly
+  en: slowly
+  ipa: /ˈsloʊli/
+  ko: 천천히
+  icon: board
+  example: Breathe slowly with me.
+  exKo: 저랑 같이 천천히 숨 쉬어요.
+  cue: 공황 상태의 환자와 숨을 맞출 때 — 서두르지 않게(부사)
+  tag: 안심·소통
+  distractorsEn:
+  - slightly
+  - lowly
+  distractorsKo:
+  - 깊게
+  - 세게
+  chips:
+  - - slow
+    - ly
+  decoyChips:
+  - slight
+- id: w-nod
+  en: nod
+  ipa: /nɑːd/
+  ko: 고개를 끄덕이다
+  icon: board
+  example: Can you nod if it's harder to breathe?
+  exKo: 숨쉬기 더 힘들면 고개를 끄덕여 줄래요?
+  cue: 숨이 차 말을 못 하는 환자와 '예'를 주고받을 때 — 머리를 위아래로
+  tag: 안심·소통
+  distractorsEn:
+  - shake
+  - knock
+  distractorsKo:
+  - 고개를 젓다
+  - 눈을 깜빡이다
+  chips:
+  - - nod
+  decoyChips:
+  - not
+- id: w-way
+  en: way
+  ipa: /weɪ/
+  ko: 도중
+  icon: board
+  example: ENT is on the way now.
+  exKo: 이비인후과가 지금 오고 있어요.
+  cue: 사람이 오는 중이라고 안심시킬 때 — 'on the ___'
+  tag: 안심·소통
+  distractorsEn:
+  - weigh
+  - wait
+  distractorsKo:
+  - 대기
+  - 끝
+  chips:
+  - - way
+  decoyChips:
+  - why
+- id: w-low
+  en: low
+  ipa: /loʊ/
+  ko: 낮은
+  icon: board
+  example: Your pressure is very low.
+  exKo: 혈압이 아주 낮아요.
+  cue: 쇼크에서 혈압 수치가 기준보다 아래일 때 — 형용사
+  tag: 순환·쇼크
+  distractorsEn:
+  - slow
+  - loud
+  distractorsKo:
+  - 높은
+  - 불규칙한
+  chips:
+  - - low
+  decoyChips:
+  - law
+- id: w-drip
+  en: drip
+  ipa: /drɪp/
+  ko: 지속 투여
+  icon: pill
+  example: We're starting an epinephrine drip.
+  exKo: 에피네프린 지속 주입을 시작할게요.
+  cue: 근주로 안 될 때 펌프로 계속 들어가게 거는 약 — 'epi ___'
+  tag: 순환·쇼크
+  distractorsEn:
+  - drop
+  - dip
+  distractorsKo:
+  - 일시 주사
+  - 근육주사
+  chips:
+  - - drip
+  decoyChips:
+  - drop
+- id: w-pour
+  en: pour
+  ipa: /pɔːr/
+  ko: 쏟아붓다
+  icon: board
+  example: We're pouring in fluids now.
+  exKo: 지금 수액을 쏟아붓고 있어요.
+  cue: 쇼크에서 수액을 아주 빠르게 대량으로 넣는 것을 말로 그릴 때 — '___ in fluids'
+  tag: 순환·쇼크
+  distractorsEn:
+  - pore
+  - pump
+  distractorsKo:
+  - 흘리다
+  - 조금씩 넣다
+  chips:
+  - - pour
+  decoyChips:
+  - pore
+- id: w-fluid
+  en: fluid
+  ipa: /ˈfluːɪd/
+  ko: 수액
+  icon: pill
+  example: More fluid is going in fast.
+  exKo: 수액이 빠르게 더 들어가고 있어요.
+  cue: 쇼크에서 혈관 안을 채우려고 넣는 생리식염수·링거
+  tag: 순환·쇼크
+  distractorsEn:
+  - flood
+  - flush
+  distractorsKo:
+  - 혈액
+  - 산소
+  chips:
+  - - flu
+    - id
+  decoyChips:
+  - flo
+- id: w-bring
+  en: bring
+  ipa: /brɪŋ/
+  ko: 끌어올리다
+  icon: board
+  example: This will bring your blood pressure up.
+  exKo: 이게 혈압을 끌어올려 줄 거예요.
+  cue: 혈압을 원래 자리로 되돌릴 때 — '___ your pressure up'
+  tag: 순환·쇼크
+  distractorsEn:
+  - bang
+  - brush
+  distractorsKo:
+  - 떨어뜨리다
+  - 재다
+  chips:
+  - - bring
+  decoyChips:
+  - brought
+- id: w-round
+  en: round
+  ipa: /raʊnd/
+  ko: 회차
+  icon: board
+  example: This is a second round of epinephrine.
+  exKo: 이번이 에피네프린 두 번째 회차예요.
+  cue: 투약을 한 번, 두 번 셀 때의 한 차례 — 'a second ___'
+  tag: 투약
+  distractorsEn:
+  - ground
+  - route
+  distractorsKo:
+  - 용량
+  - 속도
+  chips:
+  - - round
+  decoyChips:
+  - ground
+- id: w-first
+  en: first
+  ipa: /fɜːrst/
+  ko: 첫 번째
+  icon: board
+  example: The first dose didn't fully work.
+  exKo: 첫 번째 투여가 충분히 듣지 않았어요.
+  cue: 맨 처음 준 한 번 — 'the ___ dose'
+  tag: 투약
+  distractorsEn:
+  - fast
+  - last
+  distractorsKo:
+  - 마지막
+  - 다음
+  chips:
+  - - first
+  decoyChips:
+  - fist
+- id: w-fully
+  en: fully
+  ipa: /ˈfʊli/
+  ko: 충분히
+  icon: board
+  example: The first dose didn't fully work.
+  exKo: 첫 번째 투여가 충분히 듣지 않았어요.
+  cue: 효과가 끝까지 다 나지 않았을 때 — 'didn't ___ work'(부사)
+  tag: 투약
+  distractorsEn:
+  - fairly
+  - freely
+  distractorsKo:
+  - 조금
+  - 거의
+  chips:
+  - - ful
+    - ly
+  decoyChips:
+  - fair
+- id: w-support
+  en: support
+  ipa: /səˈpɔːrt/
+  ko: 지지하다
+  icon: shield
+  example: This fluid will support your circulation.
+  exKo: 이 수액이 순환을 받쳐 줄 거예요.
+  cue: 수액·약으로 무너지는 혈압과 순환을 떠받칠 때 — 동사
+  tag: 순환·쇼크
+  distractorsEn:
+  - suppress
+  - supply
+  distractorsKo:
+  - 억제하다
+  - 공급하다
+  chips:
+  - - sup
+    - port
+  decoyChips:
+  - press
+- id: w-circulation
+  en: circulation
+  ipa: /ˌsɜːrkjəˈleɪʃən/
+  ko: 순환
+  icon: board
+  example: This fluid will support your circulation.
+  exKo: 이 수액이 순환을 받쳐 줄 거예요.
+  cue: 심장이 피를 온몸으로 돌리는 것 — ABC의 C
+  tag: 순환·쇼크
+  distractorsEn:
+  - calculation
+  - circumstance
+  distractorsKo:
+  - 호흡
+  - 계산
+  chips:
+  - - cir
+    - cu
+    - la
+    - tion
+  decoyChips:
+  - cal
+- id: w-compression
+  en: compression
+  ipa: /kəmˈprɛʃən/
+  ko: 흉부압박
+  icon: board
+  example: Start compressions right now.
+  exKo: 지금 바로 흉부압박 시작하세요.
+  cue: 맥박이 없을 때 가슴 한가운데를 누르는 것 — 복수형으로 지시
+  tag: 소생술
+  distractorsEn:
+  - compensation
+  - depression
+  distractorsKo:
+  - 인공호흡
+  - 제세동
+  chips:
+  - - com
+    - pres
+    - sion
+  decoyChips:
+  - pen
+- id: w-arrest
+  en: arrest
+  ipa: /əˈrɛst/
+  ko: 심정지
+  icon: siren
+  example: This is anaphylactic arrest.
+  exKo: 아나필락시스성 심정지예요.
+  cue: 심장이 멎어 맥박이 없는 상태 — 'anaphylactic ___'
+  tag: 소생술
+  distractorsEn:
+  - arrhythmia
+  - attack
+  distractorsKo:
+  - 부정맥
+  - 쇼크
+  chips:
+  - - ar
+    - rest
+  decoyChips:
+  - rhyth
+- id: w-hang
+  en: hang
+  ipa: /hæŋ/
+  ko: 걸다
+  icon: pill
+  example: Hang a liter wide open.
+  exKo: 1리터 최대 속도로 거세요.
+  cue: 수액백을 폴대에 걸어 연결할 때 — 'a liter'와 짝인 동사
+  tag: 소생술
+  distractorsEn:
+  - hand
+  - bang
+  distractorsKo:
+  - 빼다
+  - 섞다
+  chips:
+  - - hang
+  decoyChips:
+  - hung
+- id: w-liter
+  en: liter
+  ipa: /ˈliːtər/
+  ko: 리터
+  icon: board
+  example: Hang a liter wide open.
+  exKo: 1리터 최대 속도로 거세요.
+  cue: 수액 한 백의 양을 세는 단위 — 1,000 mL
+  tag: 소생술
+  distractorsEn:
+  - litter
+  - meter
+  distractorsKo:
+  - 밀리리터
+  - 파운드
+  chips:
+  - - li
+    - ter
+  decoyChips:
+  - tre
+- id: w-open
+  en: open
+  ipa: /ˈoʊpən/
+  ko: 열린
+  icon: board
+  example: Hang a liter wide open.
+  exKo: 1리터 최대 속도로 거세요.
+  cue: 조절기를 끝까지 풀어 수액이 최대로 들어가게 — 'wide ___'
+  tag: 소생술
+  distractorsEn:
+  - often
+  - over
+  distractorsKo:
+  - 잠긴
+  - 느린
+  chips:
+  - - o
+    - pen
+  decoyChips:
+  - ov
+- id: w-difficult
+  en: difficult
+  ipa: /ˈdɪfɪkəlt/
+  ko: 어려운
+  icon: board
+  example: Get the difficult airway cart now.
+  exKo: 지금 어려운 기도 카트 가져오세요.
+  cue: 기도가 부어 삽관이 힘들 것 같을 때 쓰는 카트 이름의 앞말
+  tag: 소생술
+  distractorsEn:
+  - different
+  - deficient
+  distractorsKo:
+  - 다른
+  - 좁은
+  chips:
+  - - dif
+    - fi
+    - cult
+  decoyChips:
+  - fer
+- id: w-cart
+  en: cart
+  ipa: /kɑːrt/
+  ko: 카트
+  icon: board
+  example: Get the difficult airway cart now.
+  exKo: 지금 어려운 기도 카트 가져오세요.
+  cue: 기도 장비·약을 실어 끌고 오는 바퀴 달린 수레
+  tag: 소생술
+  distractorsEn:
+  - card
+  - chart
+  distractorsKo:
+  - 가방
+  - 선반
+  chips:
+  - - cart
+  decoyChips:
+  - card
+- id: w-pulse
+  en: pulse
+  ipa: /pʌls/
+  ko: 맥박
+  icon: stetho
+  example: There's no pulse right now.
+  exKo: 지금 맥박이 없어요.
+  cue: 경동맥에서 손끝으로 느끼는 박동 — 없으면 CPR
+  tag: 소생술
+  distractorsEn:
+  - pause
+  - pressure
+  distractorsKo:
+  - 호흡
+  - 혈압
+  chips:
+  - - pulse
+  decoyChips:
+  - pause
+- id: w-full
+  en: full
+  ipa: /fʊl/
+  ko: 전체 용량의
+  icon: pill
+  example: I'm giving a full second dose.
+  exKo: 두 번째도 전체 용량으로 투여할게요.
+  cue: 용량을 줄이지 않고 다 — '___ second dose'(형용사)
+  tag: 투약
+  distractorsEn:
+  - fall
+  - half
+  distractorsKo:
+  - 절반의
+  - 추가의
+  chips:
+  - - full
+  decoyChips:
+  - fall
+- id: w-vital
+  en: vitals
+  ipa: /ˈvaɪtəlz/
+  ko: 활력징후
+  icon: stetho
+  example: I'm checking your vitals often.
+  exKo: 활력징후를 자주 확인하고 있어요.
+  cue: 혈압·맥박·호흡·체온·산소포화도
+  tag: 관찰·재발
+  distractorsEn:
+  - vitamins
+  - visuals
+  distractorsKo:
+  - 검사 수치
+  - 증상
+  chips:
+  - - vi
+    - tals
+  decoyChips:
+  - ral
+  - vital
+- id: w-return
+  en: return
+  ipa: /rɪˈtɜːrn/
+  ko: 돌아오다
+  icon: board
+  example: Symptoms can return hours later.
+  exKo: 증상이 몇 시간 뒤에 다시 돌아올 수 있어요.
+  cue: 사라졌던 증상이 다시 나타날 때 — 이상성 반응의 동사
+  tag: 관찰·재발
+  distractorsEn:
+  - retain
+  - remain
+  distractorsKo:
+  - 사라지다
+  - 나아지다
+  chips:
+  - - re
+    - turn
+  decoyChips:
+  - tain
+- id: w-compare
+  en: compare
+  ipa: /kəmˈpɛr/
+  ko: 비교하다
+  icon: board
+  example: Tell me how it compares to before.
+  exKo: 전과 비교해서 어떤지 말씀해 주세요.
+  cue: 지금 호흡을 처음 반응 때와 견주어 보게 할 때 — '___d to before'
+  tag: 관찰·재발
+  distractorsEn:
+  - compete
+  - prepare
+  distractorsKo:
+  - 기억하다
+  - 설명하다
+  chips:
+  - - com
+    - pare
+  decoyChips:
+  - pete
+- id: w-remove
+  en: remove
+  ipa: /rɪˈmuːv/
+  ko: 제거하다
+  icon: board
+  example: We're removing anything you react to.
+  exKo: 반응할 만한 건 전부 치우고 있어요.
+  cue: 의심 유발원을 병실에서 치워 없앨 때 — 동사
+  tag: 알레르겐
+  distractorsEn:
+  - remote
+  - remain
+  distractorsKo:
+  - 남겨 두다
+  - 가져오다
+  chips:
+  - - re
+    - move
+  decoyChips:
+  - mote
+- id: w-list
+  en: list
+  ipa: /lɪst/
+  ko: 목록으로 적다
+  icon: pencil
+  example: Let's list everything you've eaten today.
+  exKo: 오늘 드신 걸 전부 적어 봐요.
+  cue: 먹은 것·만진 것·복용한 것을 하나씩 늘어놓을 때 — 'Let's ___ everything'
+  tag: 문진
+  distractorsEn:
+  - lift
+  - last
+  distractorsKo:
+  - 외우다
+  - 고르다
+  chips:
+  - - list
+  decoyChips:
+  - lost
+- id: w-product
+  en: product
+  ipa: /ˈprɑːdʌkt/
+  ko: 제품
+  icon: board
+  example: Tell me every product you've touched.
+  exKo: 만진 제품을 전부 말씀해 주세요.
+  cue: 로션·세제·화장품처럼 가까이 한 물건을 넓게 부르는 말
+  tag: 알레르겐
+  distractorsEn:
+  - produce
+  - protocol
+  distractorsKo:
+  - 성분
+  - 포장
+  chips:
+  - - prod
+    - uct
+  decoyChips:
+  - duce
+- id: w-figure
+  en: figure
+  ipa: /ˈfɪɡjər/
+  ko: 파악하다
+  icon: magnify
+  example: We're figuring out the trigger.
+  exKo: 유발원을 알아내고 있어요.
+  cue: 원인을 따져서 알아낼 때 — '___ out'
+  tag: 알레르겐
+  distractorsEn:
+  - finger
+  - fixture
+  distractorsKo:
+  - 없애다
+  - 숨기다
+  chips:
+  - - fig
+    - ure
+  decoyChips:
+  - fin
+- id: w-trigger
+  en: trigger
+  ipa: /ˈtrɪɡər/
+  ko: 유발원
+  icon: board
+  example: We're figuring out the trigger.
+  exKo: 유발원을 알아내고 있어요.
+  cue: 반응을 일으킨 바로 그 원인 물질 — 명사
+  tag: 알레르겐
+  distractorsEn:
+  - tiger
+  - trimmer
+  distractorsKo:
+  - 증상
+  - 해독제
+  chips:
+  - - trig
+    - ger
+  decoyChips:
+  - tig
+- id: w-stable
+  en: stable
+  ipa: /ˈsteɪbəl/
+  ko: 안정적인
+  icon: check
+  example: The patient was stable until midnight.
+  exKo: 환자는 자정까지 안정적이었어요.
+  cue: 인계에서 '그때까지 문제없었다'를 한 단어로 — 형용사
+  tag: 기록·인계
+  distractorsEn:
+  - stale
+  - capable
+  distractorsKo:
+  - 위독한
+  - 악화된
+  chips:
+  - - sta
+    - ble
+  decoyChips:
+  - un
+- id: w-drop
+  en: drop
+  ipa: /drɑːp/
+  ko: 떨어지다
+  icon: board
+  example: Blood pressure dropped overnight.
+  exKo: 밤사이 혈압이 떨어졌어요.
+  cue: 수치가 갑자기 아래로 — 혈압·포화도가 내려갈 때(동사)
+  tag: 순환·쇼크
+  distractorsEn:
+  - drip
+  - droop
+  distractorsKo:
+  - 오르다
+  - 버티다
+  chips:
+  - - drop
+  decoyChips:
+  - drip
+- id: w-reassess
+  en: reassess
+  ipa: /ˌriːəˈsɛs/
+  ko: 재평가하다
+  icon: magnify
+  example: I need you to reassess him now.
+  exKo: 지금 환자를 재평가해 주세요.
+  cue: 재투여 뒤 의사에게 다시 봐 달라고 할 때 — 인계의 요청(R)
+  tag: 기록·인계
+  distractorsEn:
+  - reassure
+  - reassign
+  distractorsKo:
+  - 안심시키다
+  - 재배정하다
+  chips:
+  - - re
+    - as
+    - sess
+  decoyChips:
+  - sure
+- id: w-steady
+  en: steady
+  ipa: /ˈstɛdi/
+  ko: 변동 없는
+  icon: check
+  example: Vitals were steady all shift.
+  exKo: 근무 내내 활력징후가 변동 없었어요.
+  cue: 수치가 오르내림 없이 한결같았다고 보고할 때 — 형용사
+  tag: 기록·인계
+  distractorsEn:
+  - ready
+  - sturdy
+  distractorsKo:
+  - 불안정한
+  - 들쭉날쭉한
+  chips:
+  - - stead
+    - y
+  decoyChips:
+  - stur
+situations:
+- title: 알레르기력·노출원 문진
+  sentences:
+  - en: What did you eat, take, or come into contact with before the hives started?
+    ko: 두드러기가 시작되기 전에 무엇을 먹었거나 복용했거나, 무엇에 닿았나요?
+    chunks:
+    - What did you eat, take,
+    - or come into contact with
+    - before the hives
+    - started
+    - '?'
+    words:
+    - w-eat
+    - w-take
+    - w-contact
+    - w-hive
+    - w-start
+    goal: 1
+  - en: Have you ever had a reaction like this before?
+    ko: 예전에 이런 반응이 있었던 적이 있나요?
+    chunks:
+    - Have you ever had
+    - a reaction
+    - like this
+    - before
+    - '?'
+    words:
+    - w-ever
+    - w-reaction
+    - w-before
+    goal: 1
+  - en: Any trouble breathing or tightness in your throat right now?
+    ko: 지금 숨쉬기가 힘들거나 목이 조이는 느낌이 있나요?
+    chunks:
+    - Any trouble breathing
+    - or tightness
+    - in your throat
+    - right now
+    - '?'
+    words:
+    - w-trouble
+    - w-breathe
+    - w-throat
+    - w-tightness
+    goal: 2
+  - en: Did a bee sting you, or did you take any new medication recently?
+    ko: 벌에 쏘였거나 최근에 새로운 약을 복용했나요?
+    chunks:
+    - Did a bee sting you,
+    - or did you take
+    - any new medication
+    - recently
+    - '?'
+    words:
+    - w-sting
+    - w-take
+    - w-new
+    - w-medication
+    - w-recently
+    goal: 1
+  - en: I'm going to check your lips, tongue, and airway right now.
+    ko: 지금 입술과 혀, 기도를 확인해 볼게요.
+    chunks:
+    - I'm going to check
+    - your lips, tongue,
+    - and airway
+    - right now
+    - .
+    words:
+    - w-check
+    - w-lip
+    - w-tongue
+    - w-airway
+    goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-contact
+    - w-sting
+    - w-trouble
+    - w-breathe
+    pairs:
+    - - come into
+      - contact with
+    - - a bee
+      - sting
+    - - trouble
+      - breathing
+    decoys:
+    - a reaction
+    why: come into contact with는 통째로 굳은 표현이고, a bee sting은 '벌쏘임', trouble은 뒤에 -ing가 붙어 '숨쉬기 어려움'이 돼요.
+  - kind: context
+    words:
+    - w-reaction
+    - w-ever
+    scenes:
+    - who: 환자에게
+      icon: me
+      en: Have you ever had a reaction like this before?
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Hx of hives after PCN, no prior anaphylaxis.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Any prior history of anaphylaxis or angioedema?
+      ok: false
+      fix: Have you ever had a reaction like this before — like swelling or trouble breathing?
+    why: anaphylaxis·angioedema는 의료진과 차트의 말이에요. 환자에게는 '전에도 이런 반응이 있었나요?'처럼 풀어서 물어야 정확한 답이 나와요.
+- title: 경증 두드러기 사정
+  sentences:
+  - en: Right now it looks limited to your arms, which is reassuring.
+    ko: 지금은 팔에만 국한돼 있어서 안심이 되네요.
+    chunks:
+    - Right now
+    - it looks limited
+    - to your arms,
+    - which is reassuring
+    - .
+    words:
+    - w-look
+    - w-limit
+    - w-arm
+    - w-reassure
+    goal: 1
+  - en: We'll watch to make sure it doesn't spread or affect your breathing.
+    ko: 퍼지거나 호흡에 영향을 주지 않는지 지켜볼게요.
+    chunks:
+    - We'll watch
+    - to make sure
+    - it doesn't spread
+    - or affect your breathing
+    - .
+    words:
+    - w-watch
+    - w-spread
+    - w-affect
+    - w-breathe
+    goal: 2
+  - en: Let me know immediately if your lips or tongue start to tingle.
+    ko: 입술이나 혀가 저릿해지기 시작하면 바로 알려주세요.
+    chunks:
+    - Let me know
+    - immediately
+    - if your lips or tongue
+    - start to tingle
+    - .
+    words:
+    - w-immediately
+    - w-lip
+    - w-tongue
+    - w-start
+    - w-tingle
+    goal: 2
+  - en: The redness is only on your arms right now, not on your face or chest.
+    ko: 발적은 지금 팔에만 있고, 얼굴이나 가슴에는 없어요.
+    chunks:
+    - The redness is only
+    - on your arms
+    - right now,
+    - not on your face
+    - or chest
+    - .
+    words:
+    - w-redness
+    - w-arm
+    - w-face
+    - w-chest
+    goal: 1
+  - en: If it spreads to your face or you feel your throat tighten, tell me right away.
+    ko: 얼굴로 퍼지거나 목이 조여오는 느낌이 들면 바로 말씀해 주세요.
+    chunks:
+    - If it spreads
+    - to your face
+    - or you feel
+    - your throat tighten,
+    - tell me right away
+    - .
+    words:
+    - w-spread
+    - w-face
+    - w-feel
+    - w-throat
+    - w-tighten
+    - w-tell
+    goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-reassure
+    cue: Hives on both forearms only. Lips, tongue, voice, and breathing are normal.
+    scale:
+    - reassuring
+    - concerning
+    - alarming
+    answerAt: 0
+    why: 피부에만 국한되고 입술·혀·호흡이 정상이면 reassuring이에요. 다만 '걱정할 것 없다'고 장담하지는 않아요 — 번질 수 있어서 계속 지켜봐요.
+    example: That's reassuring, but we'll keep watching.
+    exKo: 안심은 되지만, 계속 지켜볼게요.
+  - kind: swap
+    words:
+    - w-immediately
+    - w-tingle
+    - w-lip
+    who: 환자에게 · 악화 신호 알려 달라기
+    icon: me
+    before:
+    - 'Let me know '
+    - whenever it's convenient
+    - ' if your lips or tongue start to tingle.'
+    options:
+    - immediately
+    - whenever it's convenient
+    - eventually
+    answer: immediately
+    notes:
+      immediately: 기다리지 말라는 뜻이 분명하다. 입술·혀가 저린 건 반응이 입 쪽으로 번진다는 신호일 수 있다.
+      whenever it's convenient: 편할 때 알려 달라는 말이라, 급한 신호를 미뤄도 된다고 들린다.
+      eventually: '''언젠가는''이라 기다려도 된다는 뜻이 된다.'
+    why: 진행 신호는 바로 알려 달라고 분명하게 말해요. 공손하게 하려다 급함이 빠지면 안 돼요.
+- title: 항히스타민 투여 설명
+  sentences:
+  - en: This antihistamine will calm the itching and the hives.
+    ko: 이 항히스타민제가 가려움과 두드러기를 가라앉혀 줄 거예요.
+    chunks:
+    - This antihistamine
+    - will calm
+    - the itching
+    - and the hives
+    - .
+    words:
+    - w-antihistamine
+    - w-calm
+    - w-itch
+    - w-hive
+    goal: 1
+  - en: It can make you drowsy, so you shouldn't drive for a while.
+    ko: 졸릴 수 있어서 당분간 운전은 하지 마세요.
+    chunks:
+    - It can make you
+    - drowsy,
+    - so you shouldn't drive
+    - for a while
+    - .
+    words:
+    - w-drowsy
+    - w-drive
+    goal: 1
+  - en: We'll keep you here a bit to make sure you don't react again.
+    ko: 다시 반응이 없는지 확인하러 잠시 더 계셔야 해요.
+    chunks:
+    - We'll keep you here
+    - a bit
+    - to make sure
+    - you don't react again
+    - .
+    words:
+    - w-keep
+    - w-react
+    - w-again
+    goal: 2
+  - en: The itching should ease within thirty minutes or so.
+    ko: 가려움은 30분 정도면 완화될 거예요.
+    chunks:
+    - The itching
+    - should ease
+    - within thirty minutes
+    - or so
+    - .
+    words:
+    - w-itch
+    - w-ease
+    goal: 1
+  - en: Have someone else drive you, or wait here until the drowsiness wears off.
+    ko: 다른 분이 운전해 주시거나, 졸림이 가실 때까지 여기서 기다려 주세요.
+    chunks:
+    - Have someone else
+    - drive you,
+    - or wait here
+    - until the drowsiness
+    - wears off
+    - .
+    words:
+    - w-drive
+    - w-wait
+    - w-drowsiness
+    goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-drowsy
+    cue: 'Patient: "I can barely keep my eyes open, but I''m fine to talk."'
+    scale:
+    - alert
+    - drowsy
+    - hard to wake
+    answerAt: 1
+    why: 눈이 감겨도 대화가 되면 drowsy예요. 불러도 잘 깨지 않으면(hard to wake) 흔한 부작용으로 넘기지 말고 바로 보고해요.
+    example: He's drowsy but easy to wake.
+    exKo: 졸려 하지만 쉽게 깨요.
+  - kind: context
+    words:
+    - w-drowsy
+    - w-drive
+    scenes:
+    - who: 환자에게
+      icon: me
+      en: It can make you drowsy, so you shouldn't drive for a while.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Diphenhydramine 50 mg IV given. Pt drowsy, ride home arranged.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Sedation is an expected adverse effect, so driving is contraindicated.
+      ok: false
+      fix: This can make you sleepy, so please don't drive for a while.
+    why: sedation·adverse effect·contraindicated는 문서에 쓰는 말이에요. 환자에게는 '졸릴 수 있으니 한동안 운전하지 마세요'처럼 쉽게 말해요.
+- title: 약물 알레르기 이력 확인
+  sentences:
+  - en: Can you describe what happened when you took penicillin?
+    ko: 페니실린을 복용했을 때 어떤 일이 있었는지 설명해 주시겠어요?
+    chunks:
+    - Can you describe
+    - what happened
+    - when you took
+    - penicillin
+    - '?'
+    words:
+    - w-describe
+    - w-happen
+    - w-take
+    - w-penicillin
+    goal: 1
+  - en: Was it a rash, swelling, or trouble breathing?
+    ko: 발진이었나요, 부기였나요, 아니면 숨쉬기 힘든 거였나요?
+    chunks:
+    - Was it a rash,
+    - swelling,
+    - or trouble breathing
+    - '?'
+    words:
+    - w-rash
+    - w-swell
+    - w-trouble
+    - w-breathe
+    goal: 1
+  - en: I'll put a red allergy band on you and flag it in your chart.
+    ko: 빨간 알레르기 밴드를 채워드리고 차트에도 표시해 둘게요.
+    chunks:
+    - I'll put a red
+    - allergy band
+    - on you
+    - and flag it
+    - in your chart
+    - .
+    words:
+    - w-allergy
+    - w-band
+    - w-flag
+    - w-chart
+    goal: 2
+  - en: Did the rash come with any swelling of your lips or face?
+    ko: 발진과 함께 입술이나 얼굴이 붓기도 했나요?
+    chunks:
+    - Did the rash
+    - come with any
+    - swelling of your lips
+    - or face
+    - '?'
+    words:
+    - w-rash
+    - w-swell
+    - w-lip
+    - w-face
+    goal: 1
+  - en: This band tells every nurse and doctor to avoid penicillin completely.
+    ko: 이 밴드는 모든 간호사와 의사에게 페니실린을 완전히 피하라고 알려줘요.
+    chunks:
+    - This band tells
+    - every nurse and doctor
+    - to avoid penicillin
+    - completely
+    - .
+    words:
+    - w-band
+    - w-avoid
+    - w-penicillin
+    - w-completely
+    goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-penicillin
+    - w-flag
+    - w-chart
+    - w-trouble
+    pairs:
+    - - allergic
+      - to penicillin
+    - - flag it
+      - in your chart
+    - - trouble
+      - breathing
+    decoys:
+    - of penicillin
+    why: allergic은 of가 아니라 to와 붙어요(allergic to penicillin). flag는 차트'에' 표시하니 in your chart, trouble은 -ing와 붙어요.
+  - kind: context
+    words:
+    - w-rash
+    - w-swell
+    - w-trouble
+    scenes:
+    - who: 환자에게
+      icon: me
+      en: Was it a rash, swelling, or trouble breathing?
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: 'PCN allergy: hives and lip swelling in 2019.'
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Was it urticaria, angioedema, or bronchospasm?
+      ok: false
+      fix: Did you get hives, swelling, or trouble breathing?
+    why: urticaria·angioedema·bronchospasm은 정확한 임상어지만 환자는 대답하기 어려워요. 반응의 종류는 쉬운 말로 물어야 이력이 정확해져요.
+- title: 에피펜 사용법 교육
+  sentences:
+  - en: Pull off the blue cap, then press the orange tip firmly into your outer thigh.
+    ko: 파란 뚜껑을 당겨서 빼고, 주황색 끝부분을 허벅지 바깥쪽에 힘껏 눌러 주세요.
+    chunks:
+    - Pull off the blue cap,
+    - then press
+    - the orange tip
+    - firmly into your outer thigh
+    - .
+    words:
+    - w-pull
+    - w-cap
+    - w-press
+    - w-tip
+    - w-thigh
+    goal: 1
+  - en: Hold it for three seconds, then call 911 even if you feel better.
+    ko: 3초간 누르고 있다가, 좋아진 것 같아도 911에 전화하세요.
+    chunks:
+    - Hold it
+    - for three seconds,
+    - then call 911
+    - even if you feel better
+    - .
+    words:
+    - w-hold
+    - w-second
+    - w-call
+    - w-feel
+    goal: 1
+  - en: Can you show me on the trainer how you'd do it?
+    ko: 연습용 기구로 어떻게 하실 건지 보여주시겠어요?
+    chunks:
+    - Can you show me
+    - on the trainer
+    - how you'd
+    - do it
+    - '?'
+    words:
+    - w-show
+    - w-trainer
+    goal: 1
+  - en: Push the pen against your thigh until you hear a click.
+    ko: 딸깍 소리가 들릴 때까지 펜을 허벅지에 대고 눌러 주세요.
+    chunks:
+    - Push the pen
+    - against your thigh
+    - until you hear
+    - a click
+    - .
+    words:
+    - w-push
+    - w-pen
+    - w-thigh
+    - w-hear
+    - w-click
+    goal: 1
+  - en: Even after the shot, you need to come back so we can watch for another reaction.
+    ko: 주사를 맞은 뒤에도 다시 반응이 없는지 지켜봐야 하니 응급실에 다시 오셔야 해요.
+    chunks:
+    - Even after the shot,
+    - you need to
+    - come back
+    - so we can watch
+    - for another reaction
+    - .
+    words:
+    - w-shot
+    - w-need
+    - w-watch
+    - w-reaction
+    goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-pull
+    - w-cap
+    - w-click
+    - w-call
+    pairs:
+    - - pull off
+      - the blue cap
+    - - listen for
+      - the click
+    - - call
+      - '911'
+    decoys:
+    - into your thigh
+    why: pull off는 뚜껑을 잡아 '빼는' 동작, listen for는 올 소리를 '기다려 듣는' 것이라 click과, call은 911과 짝이에요. 주사 후 나아져도 911은 꼭 불러요.
+  - kind: swap
+    words:
+    - w-thigh
+    - w-press
+    who: 환자에게 · 주사 부위 설명
+    icon: me
+    before:
+    - 'Press the orange tip into '
+    - your vastus lateralis
+    - .
+    options:
+    - your outer thigh
+    - your vastus lateralis
+    - any muscle you like
+    answer: your outer thigh
+    notes:
+      your outer thigh: 환자가 바로 찾을 수 있는 말. 자가주사기 설명서도 허벅지 바깥쪽이라고 쓴다.
+      your vastus lateralis: 해부학 용어 — 맞는 자리지만 환자는 알아듣지 못한다.
+      any muscle you like: 틀린 안내 — 권장 부위는 허벅지 바깥쪽 앞(전외측)이다.
+    why: 같은 부위도 환자 교육에서는 몸으로 바로 찾을 수 있는 말로 가르쳐요.
+- title: 전형 아나필락시스
+  sentences:
+  - en: I'm giving you a shot of epinephrine in your thigh now.
+    ko: 지금 허벅지에 에피네프린 주사를 놓을게요.
+    chunks:
+    - I'm giving you
+    - a shot of epinephrine
+    - in your thigh
+    - now
+    - .
+    words:
+    - w-give
+    - w-shot
+    - w-epinephrine
+    - w-thigh
+    goal: 2
+  - en: Does your throat feel tight or is it hard to breathe?
+    ko: 목이 조이거나 숨쉬기 힘든 느낌이 있나요?
+    chunks:
+    - Does your throat feel
+    - tight
+    - or is it
+    - hard to breathe
+    - '?'
+    words:
+    - w-throat
+    - w-feel
+    - w-tight
+    - w-breathe
+    - w-hard
+    goal: 1
+  - en: What did you eat or take right before this started?
+    ko: 이게 시작되기 바로 전에 무엇을 먹거나 복용했나요?
+    chunks:
+    - What did you eat
+    - or take
+    - right before this
+    - started
+    - '?'
+    words:
+    - w-eat
+    - w-take
+    - w-before
+    - w-start
+    goal: 1
+  - en: Squeeze my hand and tell me if your voice sounds different.
+    ko: 제 손을 꽉 쥐고, 목소리가 다르게 들리면 말씀해 주세요.
+    chunks:
+    - Squeeze my hand
+    - and tell me
+    - if your voice
+    - sounds different
+    - .
+    words:
+    - w-squeeze
+    - w-tell
+    - w-voice
+    - w-different
+    goal: 1
+  - en: Your heart may race after the shot, and that's expected.
+    ko: 주사 후에 심장이 빨리 뛸 수 있는데, 정상적인 거예요.
+    chunks:
+    - Your heart may race
+    - after the shot,
+    - and that's
+    - expected
+    - .
+    words:
+    - w-heart
+    - w-race
+    - w-shot
+    - w-expect
+    goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-throat
+    - w-tight
+    cue: 'Patient (hoarse): "My throat is closing — I can''t even swallow my spit."'
+    scale:
+    - scratchy
+    - tight
+    - closing up
+    answerAt: 2
+    why: 침도 못 삼키고 목소리가 쉬면 closing up 쪽이에요. 기도가 침범됐다는 신호라 에피네프린을 미루지 않아요.
+    example: Tell me right away if your throat feels like it's closing up.
+    exKo: 목이 막히는 느낌이 들면 바로 말씀해 주세요.
+  - kind: swap
+    words:
+    - w-epinephrine
+    - w-shot
+    - w-give
+    who: 환자에게 · 투약 설명
+    icon: me
+    before:
+    - 'I''m giving you '
+    - 0.5 milligrams of epi IM
+    - ' in your thigh now.'
+    options:
+    - a shot of epinephrine
+    - 0.5 milligrams of epi IM
+    - something to calm you down
+    answer: a shot of epinephrine
+    notes:
+      a shot of epinephrine: 무엇을 어디에 놓는지 환자가 바로 알아듣는다.
+      0.5 milligrams of epi IM: 팀끼리 복창할 때의 말 — 용량과 경로 약어는 환자에게 잡음이다.
+      something to calm you down: 사실이 아니다 — 에피네프린은 진정제가 아니고, 오히려 심장이 빨리 뛸 수 있다.
+    why: 환자에게는 약 이름과 부위를, 용량·경로는 팀에게 복창할 때 말해요.
+- title: 조영제 반응
+  sentences:
+  - en: I'm stopping the contrast right now.
+    ko: 지금 바로 조영제 주입을 멈출게요.
+    chunks:
+    - I'm stopping
+    - the contrast
+    - right now
+    - .
+    words:
+    - w-stop
+    - w-contrast
+    goal: 1
+  - en: Tell me if your throat feels tight or your breathing changes.
+    ko: 목이 조이거나 호흡이 달라지면 말씀해 주세요.
+    chunks:
+    - Tell me
+    - if your throat feels tight
+    - or your breathing
+    - changes
+    - .
+    words:
+    - w-tell
+    - w-throat
+    - w-feel
+    - w-tight
+    - w-breathe
+    - w-change
+    goal: 1
+  - en: We're moving you where we can watch you closely and treat this.
+    ko: 가까이서 지켜보고 치료할 수 있는 곳으로 옮길게요.
+    chunks:
+    - We're moving you
+    - where we can watch you
+    - closely
+    - and treat this
+    - .
+    words:
+    - w-move
+    - w-watch
+    - w-closely
+    - w-treat
+    goal: 2
+  - en: Any itching, flushing, or swelling since the injection started?
+    ko: 주입이 시작된 뒤로 가려움, 홍조, 또는 부기가 있었나요?
+    chunks:
+    - Any itching,
+    - flushing,
+    - or swelling
+    - since the injection
+    - started
+    - '?'
+    words:
+    - w-itch
+    - w-swell
+    - w-injection
+    - w-start
+    goal: 1
+  - en: I'm checking your blood pressure and oxygen every few minutes now.
+    ko: 이제 몇 분마다 혈압과 산소 수치를 확인할게요.
+    chunks:
+    - I'm checking
+    - your blood pressure
+    - and oxygen
+    - every few minutes now
+    - .
+    words:
+    - w-check
+    - w-blood
+    - w-pressure
+    - w-oxygen
+    goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-itch
+    cue: 'Patient: "Just a few itchy bumps on my arm." Breathing and blood pressure are normal.'
+    scale:
+    - mild
+    - moderate
+    - severe
+    answerAt: 0
+    why: 몇 개 안 되는 국소 두드러기·가려움만 있으면 경증(mild) 조영제 반응이에요. 전신으로 번지거나 얼굴이 붓거나 목이 조이면 중등도 이상으로 올라가요.
+    example: This looks like a mild reaction, but we'll keep watching.
+    exKo: 경한 반응으로 보이지만, 계속 지켜볼게요.
+  - kind: context
+    words:
+    - w-stop
+    - w-contrast
+    scenes:
+    - who: 환자에게
+      icon: me
+      en: I'm stopping the contrast right now.
+      ok: true
+    - who: 영상의학과 의사에게
+      icon: monitor
+      en: Contrast stopped. Pt has hives and flushing, BP 118/76.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: I'm discontinuing the iodinated contrast medium.
+      ok: false
+      fix: I'm stopping the dye right now.
+    why: iodinated contrast medium·discontinue는 의료진 말이에요. 미국 환자는 조영제를 흔히 'dye'라고 불러서, 환자에게는 그 말이 더 쉽게 들려요.
+- title: 항생제 IV 중 반응
+  sentences:
+  - en: I'm stopping the antibiotic and flushing your line now.
+    ko: 지금 항생제를 멈추고 라인을 씻어낼게요.
+    chunks:
+    - I'm stopping
+    - the antibiotic
+    - and flushing
+    - your line now
+    - .
+    words:
+    - w-stop
+    - w-antibiotic
+    - w-flush
+    - w-line
+    goal: 1
+  - en: Are you feeling any swelling in your face or trouble swallowing?
+    ko: 얼굴이 붓거나 삼키기 힘든 느낌이 있나요?
+    chunks:
+    - Are you feeling
+    - any swelling
+    - in your face
+    - or trouble swallowing
+    - '?'
+    words:
+    - w-feel
+    - w-swell
+    - w-face
+    - w-trouble
+    - w-swallow
+    goal: 1
+  - en: I have epinephrine ready in case we need it.
+    ko: 필요할 경우를 대비해 에피네프린을 준비해 뒀어요.
+    chunks:
+    - I have epinephrine
+    - ready
+    - in case
+    - we need it
+    - .
+    words:
+    - w-epinephrine
+    - w-ready
+    - w-need
+    goal: 2
+  - en: Does your chest feel tight, or is your throat closing up?
+    ko: 가슴이 조이거나 목이 막히는 느낌이 있나요?
+    chunks:
+    - Does your chest feel
+    - tight,
+    - or is your throat
+    - closing up
+    - '?'
+    words:
+    - w-chest
+    - w-feel
+    - w-tight
+    - w-throat
+    - w-close
+    goal: 1
+  - en: I'll draw it up now so it's ready the moment you need it.
+    ko: 필요한 순간 바로 쓸 수 있도록 지금 미리 뽑아 둘게요.
+    chunks:
+    - I'll draw it up
+    - now
+    - so it's ready
+    - the moment
+    - you need it
+    - .
+    words:
+    - w-draw
+    - w-ready
+    - w-moment
+    - w-need
+    goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-flush
+    - w-line
+    - w-draw
+    - w-trouble
+    - w-swallow
+    pairs:
+    - - flush
+      - the line
+    - - draw it
+      - up
+    - - trouble
+      - swallowing
+    decoys:
+    - a moment
+    why: flush the line은 정맥관을 식염수로 씻어 내는 것, draw it up은 약을 주사기로 '뽑아 두는' 것이라 up이 붙어요. trouble은 -ing와 짝이에요.
+  - kind: context
+    words:
+    - w-epinephrine
+    - w-ready
+    scenes:
+    - who: 동료 간호사에게
+      icon: monitor
+      en: Antibiotic stopped, possible anaphylaxis — epi 0.3 IM drawn up.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: I have epinephrine ready in case we need it.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Epi's drawn up in case you code.
+      ok: false
+      fix: I have medicine ready right here in case we need it.
+    why: code는 심정지를 뜻하는 의료진 말이라, 환자에게는 겁을 주는 말이 돼요. 대비하고 있다는 사실만 차분하게 전해요.
+- title: 벌쏘임 전신반응
+  sentences:
+  - en: The dizziness with itching tells me this is a whole-body reaction.
+    ko: 어지러움과 가려움이 함께 있는 걸 보니 전신반응이네요.
+    chunks:
+    - The dizziness
+    - with itching
+    - tells me
+    - this is a whole-body reaction
+    - .
+    words:
+    - w-dizziness
+    - w-itch
+    - w-tell
+    - w-reaction
+    goal: 1
+  - en: We may need to repeat the epinephrine if symptoms keep progressing.
+    ko: 증상이 계속 진행되면 에피네프린을 다시 투여해야 할 수도 있어요.
+    chunks:
+    - We may need
+    - to repeat
+    - the epinephrine
+    - if symptoms keep progressing
+    - .
+    words:
+    - w-need
+    - w-repeat
+    - w-epinephrine
+    - w-symptom
+    - w-keep
+    - w-progress
+    goal: 2
+  - en: Have you ever been stung and reacted like this before?
+    ko: 예전에도 벌에 쏘여서 이렇게 반응한 적이 있나요?
+    chunks:
+    - Have you ever
+    - been stung
+    - and reacted
+    - like this before
+    - '?'
+    words:
+    - w-ever
+    - w-react
+    - w-before
+    goal: 1
+  - en: Tell me if the itching spreads or your face starts to swell.
+    ko: 가려움이 퍼지거나 얼굴이 붓기 시작하면 말씀해 주세요.
+    chunks:
+    - Tell me
+    - if the itching spreads
+    - or your face
+    - starts to swell
+    - .
+    words:
+    - w-tell
+    - w-itch
+    - w-spread
+    - w-face
+    - w-start
+    - w-swell
+    goal: 1
+  - en: Your body is still reacting, so another dose keeps you safe.
+    ko: 몸이 아직 반응하고 있어서, 한 번 더 투여해야 안전해요.
+    chunks:
+    - Your body is still
+    - reacting,
+    - so another dose
+    - keeps you safe
+    - .
+    words:
+    - w-react
+    - w-another
+    - w-dose
+    - w-safe
+    goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-reaction
+    cue: Stung on the hand. Swelling reaches the elbow, no hives elsewhere, breathing fine.
+    scale:
+    - local reaction
+    - large local reaction
+    - systemic reaction
+    answerAt: 1
+    why: 쏘인 자리 주변이 크게 부어도 다른 곳에 증상이 없으면 large local reaction이에요. 어지러움·전신 가려움처럼 쏘인 곳에서 먼 증상이 있으면 systemic(전신) 반응이에요.
+    example: This is a large local reaction, not a systemic one.
+    exKo: 이건 전신 반응이 아니라 국소 반응이 크게 온 거예요.
+  - kind: context
+    words:
+    - w-repeat
+    - w-epinephrine
+    scenes:
+    - who: 환자에게
+      icon: me
+      en: If this keeps getting worse, we may need to give you another dose.
+      ok: true
+    - who: 의사에게
+      icon: monitor
+      en: Symptoms progressing five minutes after epi — requesting a repeat IM dose.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Your symptoms are refractory, so we'll re-dose IM epi q5 minutes.
+      ok: false
+      fix: If this keeps getting worse, we may need to give you another shot.
+    why: refractory·re-dose·q5는 팀끼리 쓰는 말이에요. 환자에게는 '더 나빠지면 한 번 더 놓을 수 있다'로 말해요.
+- title: 음식(견과) 아나필락시스
+  sentences:
+  - en: I'm giving epinephrine now for this reaction.
+    ko: 이 반응 때문에 지금 에피네프린을 투여할게요.
+    chunks:
+    - I'm giving epinephrine
+    - now
+    - for this reaction
+    - .
+    words:
+    - w-give
+    - w-epinephrine
+    - w-reaction
+    goal: 1
+  - en: Did the food have peanuts or tree nuts that you know of?
+    ko: 그 음식에 아는 한 땅콩이나 견과류가 들어 있었나요?
+    chunks:
+    - Did the food
+    - have peanuts
+    - or tree nuts
+    - that you know of
+    - '?'
+    words:
+    - w-food
+    - w-peanut
+    - w-nut
+    goal: 1
+  - en: After this we'll talk about how to avoid it and carry an EpiPen.
+    ko: 이 일이 끝나면 어떻게 피할지, 에피펜을 어떻게 소지할지 이야기해요.
+    chunks:
+    - After this
+    - we'll talk about
+    - how to avoid it
+    - and carry an EpiPen
+    - .
+    words:
+    - w-talk
+    - w-avoid
+    - w-carry
+    - w-epipen
+    goal: 2
+  - en: Your face and lips are swelling fast, so I'm treating this right away.
+    ko: 얼굴과 입술이 빠르게 붓고 있어서 지금 바로 치료할게요.
+    chunks:
+    - Your face and lips
+    - are swelling fast,
+    - so I'm treating
+    - this right away
+    - .
+    words:
+    - w-face
+    - w-lip
+    - w-swell
+    - w-fast
+    - w-treat
+    goal: 1
+  - en: Read every food label and ask about hidden nuts before you eat.
+    ko: 먹기 전에 모든 음식 라벨을 읽고 숨은 견과가 있는지 물어보세요.
+    chunks:
+    - Read every food label
+    - and ask
+    - about hidden nuts
+    - before you eat
+    - .
+    words:
+    - w-read
+    - w-food
+    - w-label
+    - w-ask
+    - w-nut
+    - w-before
+    - w-eat
+    goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-peanut
+    - w-read
+    - w-label
+    - w-carry
+    - w-epipen
+    pairs:
+    - - allergic
+      - to peanuts
+    - - read
+      - every food label
+    - - carry
+      - an EpiPen everywhere
+    decoys:
+    - of nuts
+    why: allergic은 of가 아니라 to와 붙어요(allergic to peanuts). read는 라벨을 '읽는' 것, carry는 에피펜을 늘 '지니고 다니는' 것이에요.
+  - kind: reel
+    words:
+    - w-swell
+    word: swell
+    feels:
+    - 눈에 보이는 변화
+    - 급하고 무서움
+    - 차트 관찰어
+    - 보호자에겐 puffy
+    why: swell은 붓는다는 말이에요. 얼굴·입술·혀가 부으면 기도가 막힐 수 있어 아나필락시스에서는 급한 신호예요. 차트와 호출에는 부위와 시각을 붙여 말하고, 보호자에게는 'puffy'처럼 쉬운 말과 이미 치료 중이라는 사실을 함께 말해요.
+    scenes:
+    - who: 간호사 → 환자
+      en: Your face and lips are swelling fast, so I'm treating this right away.
+      ko: 얼굴과 입술이 빠르게 붓고 있어서 지금 바로 치료할게요.
+      tone: 급함
+    - who: 차트 기록
+      en: Facial and lip swelling noted at 1410; epi 0.5 mg IM given.
+      ko: 14시 10분 얼굴·입술 부종 확인, 에피 0.5 mg 근주.
+      tone: 건조
+    - who: 의사 호출
+      en: Her tongue is starting to swell — I need you at the bedside now.
+      ko: 혀가 붓기 시작했어요 — 지금 침상으로 와 주세요.
+      tone: 경고
+    - who: 보호자에게는…
+      en: Her face is puffy right now, and we're already treating it.
+      ko: 지금 얼굴이 부어 있는데, 이미 치료하고 있어요.
+      tone: 완곡
+      swap: true
+- title: 이상성 반응 관찰
+  sentences:
+  - en: Sometimes symptoms come back hours later — that's why we kept you here.
+    ko: 가끔 증상이 몇 시간 뒤에 다시 나타나서, 그래서 여기 계시게 한 거예요.
+    chunks:
+    - Sometimes symptoms come back
+    - hours later —
+    - that's why
+    - we kept you here
+    - .
+    words:
+    - w-symptom
+    - w-later
+    - w-keep
+    goal: 1
+  - en: Tell me the moment your throat or breathing changes again.
+    ko: 목이나 호흡이 다시 달라지는 순간 바로 말씀해 주세요.
+    chunks:
+    - Tell me
+    - the moment
+    - your throat or breathing
+    - changes again
+    - .
+    words:
+    - w-tell
+    - w-moment
+    - w-throat
+    - w-breathe
+    - w-change
+    - w-again
+    goal: 2
+  - en: We may repeat treatment, so stay in bed and keep your monitor on.
+    ko: 치료를 반복해야 할 수도 있으니, 침대에 계시고 모니터를 계속 붙이고 계세요.
+    chunks:
+    - We may repeat
+    - treatment,
+    - so stay in bed
+    - and keep your monitor on
+    - .
+    words:
+    - w-repeat
+    - w-treatment
+    - w-stay
+    - w-bed
+    - w-keep
+    - w-monitor
+    goal: 2
+  - en: This second wave can hit even after you start feeling fine.
+    ko: 괜찮아졌다고 느낀 뒤에도 이 두 번째 파동이 닥칠 수 있어요.
+    chunks:
+    - This second wave
+    - can hit
+    - even after you
+    - start feeling fine
+    - .
+    words:
+    - w-wave
+    - w-hit
+    - w-start
+    - w-feel
+    - w-fine
+    goal: 1
+  - en: Push the call button right away if anything feels different.
+    ko: 뭔가 다르게 느껴지면 바로 호출 버튼을 누르세요.
+    chunks:
+    - Push the call button
+    - right away
+    - if anything
+    - feels different
+    - .
+    words:
+    - w-push
+    - w-call
+    - w-button
+    - w-feel
+    - w-different
+    goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-stay
+    - w-bed
+    - w-push
+    - w-button
+    - w-wave
+    pairs:
+    - - stay
+      - in bed
+    - - push
+      - the call button
+    - - a second
+      - wave
+    decoys:
+    - hours later
+    why: stay in bed는 '침대에 머물다', push the call button은 호출 버튼을 누르는 것, a second wave는 이상성 반응을 환자에게 풀어 말하는 표현이에요.
+  - kind: context
+    words:
+    - w-wave
+    - w-symptom
+    - w-later
+    scenes:
+    - who: 환자에게
+      icon: me
+      en: Sometimes symptoms come back hours later — that's why we kept you here.
+      ok: true
+    - who: 인계
+      icon: board
+      en: Observing for biphasic reaction, last epi at 1300.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: We're monitoring you for a biphasic anaphylactic reaction.
+      ok: false
+      fix: Sometimes the reaction comes back in a second wave, so we're watching you.
+    why: biphasic reaction은 의료진 말이에요. 환자에게는 'second wave'나 '다시 올 수 있다'처럼 풀어서 말해요.
+- title: 베타차단제 복용자
+  sentences:
+  - en: Because of your heart medication, the epinephrine may work less well.
+    ko: 심장약 때문에 에피네프린이 덜 잘 들을 수 있어요.
+    chunks:
+    - Because of your heart
+    - medication,
+    - the epinephrine
+    - may work less well
+    - .
+    words:
+    - w-heart
+    - w-medication
+    - w-epinephrine
+    - w-work
+    - w-less
+    - w-well
+    goal: 1
+  - en: We're giving glucagon to help your body respond.
+    ko: 몸이 반응하도록 돕기 위해 글루카곤을 투여할게요.
+    chunks:
+    - We're giving glucagon
+    - to help
+    - your body respond
+    - .
+    words:
+    - w-give
+    - w-glucagon
+    - w-help
+    - w-respond
+    goal: 2
+  - en: What's the name of your beta blocker and when did you last take it?
+    ko: 베타차단제 이름이 뭐고, 마지막으로 언제 복용하셨나요?
+    chunks:
+    - What's the name
+    - of your beta blocker
+    - and when
+    - did you last take it
+    - '?'
+    words:
+    - w-blocker
+    - w-last
+    - w-take
+    goal: 1
+  - en: You might need a bigger dose or several doses to get a response.
+    ko: 반응을 얻으려면 더 큰 용량이나 여러 번의 투여가 필요할 수도 있어요.
+    chunks:
+    - You might need
+    - a bigger dose
+    - or several doses
+    - to get a response
+    - .
+    words:
+    - w-need
+    - w-big
+    - w-dose
+    - w-several
+    - w-response
+    goal: 1
+  - en: Glucagon works around your beta blocker to raise your blood pressure.
+    ko: 글루카곤은 베타차단제를 우회해서 혈압을 올려줘요.
+    chunks:
+    - Glucagon works
+    - around your beta blocker
+    - to raise
+    - your blood pressure
+    - .
+    words:
+    - w-glucagon
+    - w-work
+    - w-blocker
+    - w-raise
+    - w-blood
+    - w-pressure
+    goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-work
+    - w-less
+    - w-well
+    - w-raise
+    - w-blood
+    - w-pressure
+    - w-blocker
+    pairs:
+    - - work
+      - less well
+    - - raise
+      - your blood pressure
+    - - beta
+      - blocker
+    decoys:
+    - of glucagon
+    why: 약이 '듣다'는 work라서 work less well(덜 듣다), raise는 혈압을 '올리다', beta blocker는 한 덩어리 약 이름이에요.
+  - kind: swap
+    words:
+    - w-glucagon
+    - w-help
+    - w-respond
+    who: 환자에게 · 글루카곤 설명
+    icon: me
+    before:
+    - 'We''re giving glucagon to '
+    - bypass your beta-adrenergic blockade
+    - .
+    options:
+    - help your body respond
+    - bypass your beta-adrenergic blockade
+    - cancel out your heart pills
+    answer: help your body respond
+    notes:
+      help your body respond: 무엇을 위해 주는지 환자가 알아듣는 말.
+      bypass your beta-adrenergic blockade: 기전은 맞지만 의료진끼리의 말이다.
+      cancel out your heart pills: 사실이 아니다 — 글루카곤은 베타차단제를 없애는 게 아니라 베타 수용체를 거치지 않는 다른 길로 심장에 작용한다.
+    why: 기전은 차트와 인계에서, 환자에게는 목적을 쉬운 말로 설명해요.
+- title: 임산부 아나필락시스
+  sentences:
+  - en: I'm giving epinephrine now — it's safe and it helps both of you.
+    ko: 지금 에피네프린을 투여할게요 — 안전하고 두 분 모두에게 도움이 돼요.
+    chunks:
+    - I'm giving epinephrine
+    - now —
+    - it's safe
+    - and it helps both of you
+    - .
+    words:
+    - w-give
+    - w-epinephrine
+    - w-safe
+    - w-help
+    goal: 1
+  - en: I'm tilting you onto your left side to help blood flow to your baby.
+    ko: 아기에게 혈류가 잘 가도록 왼쪽으로 기울여 드릴게요.
+    chunks:
+    - I'm tilting you
+    - onto your left side
+    - to help blood flow
+    - to your baby
+    - .
+    words:
+    - w-tilt
+    - w-left
+    - w-side
+    - w-help
+    - w-blood
+    - w-flow
+    goal: 2
+  - en: We're monitoring your baby's heartbeat the whole time.
+    ko: 아기의 심장박동을 계속 지켜보고 있을게요.
+    chunks:
+    - We're monitoring
+    - your baby's heartbeat
+    - the whole time
+    - .
+    words:
+    - w-monitor
+    - w-heartbeat
+    goal: 2
+  - en: Your baby needs you breathing well, so the epinephrine helps both of you.
+    ko: 아기는 산모가 잘 숨쉬는 게 필요해서, 에피네프린이 두 분 모두에게 도움이 돼요.
+    chunks:
+    - Your baby needs you
+    - breathing well,
+    - so the epinephrine
+    - helps both of you
+    - .
+    words:
+    - w-need
+    - w-breathe
+    - w-well
+    - w-epinephrine
+    - w-help
+    goal: 1
+  - en: Your blood pressure and your baby's heart rate are both being watched closely.
+    ko: 산모의 혈압과 아기의 심박수 모두 면밀히 지켜보고 있어요.
+    chunks:
+    - Your blood pressure
+    - and your baby's heart rate
+    - are both
+    - being watched closely
+    - .
+    words:
+    - w-blood
+    - w-pressure
+    - w-heart
+    - w-rate
+    - w-watch
+    - w-closely
+    goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-left
+    - w-side
+    - w-blood
+    - w-flow
+    - w-monitor
+    - w-heartbeat
+    pairs:
+    - - onto your left
+      - side
+    - - blood flow
+      - to your baby
+    - - monitor
+      - the heartbeat
+    decoys:
+    - on your back
+    why: onto your left side는 눕히는 방향, blood flow는 to와 이어 어디로 흐르는지, monitor는 계속 볼 대상을 목적어로 받아요. 왼쪽으로 기울이면 자궁이 대정맥을 누르는 것이 풀려요.
+  - kind: swap
+    words:
+    - w-safe
+    - w-epinephrine
+    - w-help
+    who: 임산부에게 · 에피네프린 걱정에 답하기
+    icon: me
+    before:
+    - 'I''m giving epinephrine now — '
+    - it shouldn't be too harmful to the baby
+    - .
+    options:
+    - it's safe and it helps both of you
+    - it shouldn't be too harmful to the baby
+    - we'll deal with the baby later
+    answer: it's safe and it helps both of you
+    notes:
+      it's safe and it helps both of you: 아나필락시스에서 에피네프린은 임신 중에도 1차 약이다. 엄마가 숨을 쉬어야 아기도 산소를 받는다.
+      it shouldn't be too harmful to the baby: 애매하게 위험을 암시해서 치료를 망설이게 만든다.
+      we'll deal with the baby later: 아기를 뒤로 미룬다고 들려 불안을 키운다 — 실제로는 둘 다 지금 돌보고 있다.
+    why: 임신 중에도 아나필락시스 치료는 미루지 않아요. 두 사람 모두에게 도움이 된다고 분명하게 말해요.
+- title: 라텍스 알레르기
+  sentences:
+  - en: We're switching to latex-free gloves and supplies right away.
+    ko: 지금 바로 무라텍스 장갑과 물품으로 바꿀게요.
+    chunks:
+    - We're switching
+    - to latex-free gloves
+    - and supplies
+    - right away
+    - .
+    words:
+    - w-switch
+    - w-latex
+    - w-glove
+    - w-supply
+    goal: 1
+  - en: Do certain foods like bananas or avocado also bother you?
+    ko: 바나나나 아보카도 같은 특정 음식도 문제가 되나요?
+    chunks:
+    - Do certain foods
+    - like bananas
+    - or avocado
+    - also bother you
+    - '?'
+    words:
+    - w-food
+    - w-banana
+    - w-avocado
+    - w-bother
+    goal: 2
+  - en: I'll flag your latex allergy so everyone caring for you knows.
+    ko: 라텍스 알레르기를 표시해서 돌보는 모든 사람이 알 수 있게 할게요.
+    chunks:
+    - I'll flag
+    - your latex allergy
+    - so everyone caring
+    - for you knows
+    - .
+    words:
+    - w-flag
+    - w-latex
+    - w-allergy
+    - w-care
+    goal: 2
+  - en: Nothing in this room should touch latex from now on.
+    ko: 이제부터 이 병실 안 어떤 것도 라텍스에 닿으면 안 돼요.
+    chunks:
+    - Nothing in this room
+    - should touch
+    - latex
+    - from now on
+    - .
+    words:
+    - w-touch
+    - w-latex
+    goal: 1
+  - en: I'm writing this on your chart so the next shift sees it too.
+    ko: 다음 근무조도 볼 수 있도록 차트에 적어 둘게요.
+    chunks:
+    - I'm writing this
+    - on your chart
+    - so the next shift
+    - sees it too
+    - .
+    words:
+    - w-write
+    - w-chart
+    - w-shift
+    goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-switch
+    - w-supply
+    - w-latex
+    - w-care
+    pairs:
+    - - switch to
+      - latex-free supplies
+    - - allergic
+      - to latex
+    - - caring
+      - for you
+    decoys:
+    - of bananas
+    why: switch to는 '~로 바꾸다', allergic은 to와 붙고, care는 for와 이어 'caring for you(당신을 돌보는)'가 돼요.
+  - kind: context
+    words:
+    - w-latex
+    - w-banana
+    - w-avocado
+    - w-food
+    scenes:
+    - who: 환자에게
+      icon: me
+      en: Do certain foods like bananas or avocado also bother you?
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Latex allergy. Screen for latex-fruit cross-reactivity (banana, avocado, kiwi).
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Do you have latex-fruit syndrome cross-reactivity?
+      ok: false
+      fix: Do foods like bananas, avocado, or kiwi ever give you a reaction?
+    why: latex-fruit syndrome·cross-reactivity는 임상어예요. 환자에게는 음식 이름으로 물어야 답이 나와요. 라텍스 알레르기가 있는 사람 일부는 바나나·아보카도·키위·밤에도 반응해요.
+- title: 소아 아나필락시스 보호자
+  sentences:
+  - en: I'm giving him epinephrine dosed for his weight right now.
+    ko: 지금 아이 체중에 맞춘 용량으로 에피네프린을 투여할게요.
+    chunks:
+    - I'm giving him
+    - epinephrine dosed
+    - for his weight
+    - right now
+    - .
+    words:
+    - w-give
+    - w-epinephrine
+    - w-dose
+    - w-weight
+    goal: 1
+  - en: You're doing great — keeping him calm helps a lot.
+    ko: 정말 잘하고 계세요 — 아이를 진정시켜 주시는 게 큰 도움이 돼요.
+    chunks:
+    - You're doing
+    - great —
+    - keeping him calm
+    - helps a lot
+    - .
+    words:
+    - w-calm
+    - w-help
+    - w-lot
+    goal: 2
+  - en: What did he eat, and how much does he weigh?
+    ko: 아이가 무엇을 먹었고, 체중은 얼마나 나가나요?
+    chunks:
+    - What did he eat,
+    - and how much
+    - does he
+    - weigh
+    - '?'
+    words:
+    - w-eat
+    - w-weigh
+    goal: 1
+  - en: We calculate every dose by his weight, so it's exact for him.
+    ko: 모든 용량을 체중에 맞춰 계산해서, 아이에게 정확한 양이에요.
+    chunks:
+    - We calculate
+    - every dose
+    - by his weight,
+    - so it's exact for him
+    - .
+    words:
+    - w-calculate
+    - w-dose
+    - w-weight
+    - w-exact
+    goal: 1
+  - en: Hold his hand and talk to him softly — that helps us both.
+    ko: 아이 손을 잡고 부드럽게 말을 걸어주세요 — 저희 모두에게 도움이 돼요.
+    chunks:
+    - Hold his hand
+    - and talk to him
+    - softly —
+    - that helps us both
+    - .
+    words:
+    - w-hold
+    - w-talk
+    - w-softly
+    - w-help
+    goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-dose
+    - w-weight
+    - w-calm
+    pairs:
+    - - dosed for
+      - his weight
+    - - keep him
+      - calm
+    - - you're doing
+      - great
+    decoys:
+    - to his size
+    why: dosed for his weight는 '체중에 맞춘 용량', keep him calm은 'keep + 사람 + 상태', You're doing great는 보호자를 격려하는 굳은 표현이에요.
+  - kind: swap
+    words:
+    - w-epinephrine
+    - w-dose
+    - w-weight
+    - w-give
+    who: 보호자에게 · 소아 용량 설명
+    icon: me
+    before:
+    - 'I''m giving him epinephrine '
+    - at 0.01 milligrams per kilogram IM
+    - ' right now.'
+    options:
+    - dosed for his weight
+    - at 0.01 milligrams per kilogram IM
+    - at a smaller adult dose
+    answer: dosed for his weight
+    notes:
+      dosed for his weight: 보호자가 '우리 아이에게 맞춘 양'이라고 바로 알아듣는다.
+      at 0.01 milligrams per kilogram IM: 정확한 소아 용량이지만 팀끼리 복창할 말이다.
+      at a smaller adult dose: 사실과 다르다 — 성인 용량을 대충 줄이는 게 아니라 체중으로 계산한다.
+    why: 0.01 mg/kg은 소아 에피네프린 근주의 표준 용량이에요. 보호자에게는 숫자보다 '체중에 맞췄다'로 안심시켜요.
+- title: 후두부종 기도폐쇄 임박
+  sentences:
+  - en: Your airway is swelling — we're securing it before it closes.
+    ko: 기도가 붓고 있어요 — 막히기 전에 확보할게요.
+    chunks:
+    - Your airway is
+    - swelling —
+    - we're securing it
+    - before it closes
+    - .
+    words:
+    - w-airway
+    - w-swell
+    - w-secure
+    - w-before
+    - w-close
+    goal: 1
+  - en: I'm continuing epinephrine and calling ENT to the bedside.
+    ko: 에피네프린을 계속 투여하면서 이비인후과를 침상 곁으로 부를게요.
+    chunks:
+    - I'm continuing epinephrine
+    - and calling
+    - ENT
+    - to the bedside
+    - .
+    words:
+    - w-continue
+    - w-epinephrine
+    - w-call
+    - w-bedside
+    goal: 2
+  - en: Stay as calm as you can and breathe slowly with me.
+    ko: 최대한 진정하시고 저랑 같이 천천히 숨을 쉬어봐요.
+    chunks:
+    - Stay as calm
+    - as you can
+    - and breathe slowly
+    - with me
+    - .
+    words:
+    - w-stay
+    - w-calm
+    - w-breathe
+    - w-slowly
+    goal: 1
+  - en: Can you nod if it's getting harder to breathe?
+    ko: 숨쉬기가 더 힘들어지면 고개를 끄덕여 주시겠어요?
+    chunks:
+    - Can you nod
+    - if it's getting
+    - harder
+    - to breathe
+    - '?'
+    words:
+    - w-nod
+    - w-hard
+    - w-breathe
+    goal: 1
+  - en: ENT is on the way, and I'm staying right here with you.
+    ko: 이비인후과가 오고 있고, 저는 계속 곁에 있을게요.
+    chunks:
+    - ENT is
+    - on the way,
+    - and I'm staying
+    - right here with you
+    - .
+    words:
+    - w-way
+    - w-stay
+    goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-breathe
+    - w-hard
+    cue: Patient can only whisper one or two words, is drooling, and has stridor at rest.
+    scale:
+    - short of breath
+    - struggling to breathe
+    - can't get air
+    answerAt: 2
+    why: 쉬는 중에도 협착음(stridor)이 들리고 침을 흘리며 한두 단어밖에 못 하면 가장 심한 쪽이에요. 기도가 곧 막힐 수 있다는 신호예요.
+    example: He can't get air — we're securing the airway now.
+    exKo: 숨을 못 쉬어요 — 지금 기도를 확보합니다.
+  - kind: context
+    words:
+    - w-airway
+    - w-secure
+    - w-call
+    - w-bedside
+    scenes:
+    - who: 동료에게
+      icon: monitor
+      en: Call ENT to the bedside now — impending airway compromise.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Your airway is swelling — we're securing it before it closes.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: You're at risk of complete airway obstruction and may need a cric.
+      ok: false
+      fix: Your airway is swelling, so we're getting ready to help you breathe.
+    why: cric(윤상갑상막 절개)·obstruction은 팀끼리의 말이에요. 숨이 막히는 환자에게는 겁주는 말 대신 무엇을 하는지 짧게 말해요.
+- title: 아나필락시스 쇼크 불응
+  sentences:
+  - en: Your pressure is very low, so we're starting an epinephrine drip.
+    ko: 혈압이 많이 낮아서, 에피네프린을 지속 투여로 시작할게요.
+    chunks:
+    - Your pressure is
+    - very low,
+    - so we're starting
+    - an epinephrine drip
+    - .
+    words:
+    - w-pressure
+    - w-low
+    - w-start
+    - w-epinephrine
+    - w-drip
+    goal: 1
+  - en: We're pouring in fluids to bring your blood pressure up.
+    ko: 혈압을 올리기 위해 수액을 많이 넣고 있어요.
+    chunks:
+    - We're pouring
+    - in fluids
+    - to bring your blood
+    - pressure up
+    - .
+    words:
+    - w-pour
+    - w-fluid
+    - w-bring
+    - w-blood
+    - w-pressure
+    goal: 2
+  - en: Stay with me — squeeze my hand if you can hear me.
+    ko: 정신 차리세요 — 제 목소리가 들리면 손을 꽉 쥐어보세요.
+    chunks:
+    - Stay with me —
+    - squeeze my hand
+    - if you can
+    - hear me
+    - .
+    words:
+    - w-stay
+    - w-squeeze
+    - w-hear
+    goal: 1
+  - en: This is a second round of epinephrine since the first didn't fully work.
+    ko: 첫 번째가 완전히 듣지 않아서 에피네프린을 두 번째로 투여해요.
+    chunks:
+    - This is a second round
+    - of epinephrine
+    - since the first
+    - didn't fully work
+    - .
+    words:
+    - w-round
+    - w-epinephrine
+    - w-first
+    - w-fully
+    - w-work
+    goal: 1
+  - en: More fluid is going in fast to support your circulation.
+    ko: 순환을 돕기 위해 수액을 더 빠르게 넣고 있어요.
+    chunks:
+    - More fluid
+    - is going in
+    - fast
+    - to support your circulation
+    - .
+    words:
+    - w-fluid
+    - w-fast
+    - w-support
+    - w-circulation
+    goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-low
+    - w-pressure
+    cue: BP 70/40 after two IM doses of epi. Patient is gray and confused.
+    scale:
+    - soft
+    - low
+    - dangerously low
+    answerAt: 2
+    why: soft는 경계선 정도로 낮을 때 의료진이 쓰는 말이에요. 70/40에 의식 변화까지 있으면 dangerously low — 에피네프린 지속 주입을 시작할 자리예요.
+    example: Her pressure is dangerously low, so we're starting a drip.
+    exKo: 혈압이 위험하게 낮아서 지속 주입을 시작해요.
+  - kind: swap
+    words:
+    - w-fluid
+    - w-pour
+    - w-bring
+    who: 환자에게 · 수액 설명
+    icon: me
+    before:
+    - 'We''re '
+    - running a 2-liter bolus of NS wide open
+    - ' to bring your blood pressure up.'
+    options:
+    - giving you lots of fluid
+    - running a 2-liter bolus of NS wide open
+    - draining some fluid
+    answer: giving you lots of fluid
+    notes:
+      giving you lots of fluid: 무엇을 왜 하는지 환자가 알아듣는 쉬운 말.
+      running a 2-liter bolus of NS wide open: 팀끼리 쓰는 오더 말 — 환자에게는 약어 뭉치다.
+      draining some fluid: 반대 뜻 — 수액을 빼는 게 아니라 넣는 것이다.
+    why: 같은 처치도 팀에게는 양·종류·속도를, 환자에게는 목적을 말해요.
+- title: 심정지 진행 아나필락시스
+  sentences:
+  - en: Start compressions — this is anaphylactic arrest.
+    ko: 흉부압박 시작하세요 — 아나필락시스성 심정지입니다.
+    chunks:
+    - Start compressions —
+    - this is
+    - anaphylactic arrest
+    - .
+    words:
+    - w-compression
+    - w-arrest
+    goal: 1
+  - en: Give epinephrine and hang a liter wide open.
+    ko: 에피네프린 투여하고 수액 1리터 전개방으로 걸어주세요.
+    chunks:
+    - Give epinephrine
+    - and hang a liter
+    - wide open
+    - .
+    words:
+    - w-give
+    - w-epinephrine
+    - w-hang
+    - w-liter
+    - w-open
+    goal: 1
+  - en: Airway is swollen, so get the difficult airway cart now.
+    ko: 기도가 부어 있으니 지금 어려운 기도 카트를 가져오세요.
+    chunks:
+    - Airway is swollen,
+    - so get
+    - the difficult airway cart
+    - now
+    - .
+    words:
+    - w-airway
+    - w-swell
+    - w-difficult
+    - w-cart
+    goal: 2
+  - en: No pulse — starting CPR now.
+    ko: 맥박 없습니다 — 지금 CPR 시작합니다.
+    chunks:
+    - No pulse —
+    - starting CPR
+    - now
+    - .
+    words:
+    - w-pulse
+    - w-start
+    goal: 1
+  - en: I need one more set of hands on the airway cart.
+    ko: 기도 카트에 손이 하나 더 필요합니다.
+    chunks:
+    - I need
+    - one more set
+    - of hands
+    - on the airway cart
+    - .
+    words:
+    - w-need
+    - w-airway
+    - w-cart
+    goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-hang
+    - w-liter
+    - w-open
+    - w-compression
+    - w-start
+    - w-pulse
+    pairs:
+    - - hang a liter
+      - wide open
+    - - start
+      - compressions
+    - - check for
+      - a pulse
+    decoys:
+    - the crash cart
+    why: wide open은 수액 조절기를 끝까지 연 '최대 속도', start compressions는 흉부압박 개시, check for a pulse는 맥박이 '있는지 확인'이라 for가 붙어요.
+  - kind: context
+    words:
+    - w-give
+    - w-epinephrine
+    scenes:
+    - who: 팀 리더 → 간호사
+      icon: siren
+      en: Maria, give 1 milligram of epi IV push now.
+      ok: true
+    - who: 간호사 → 팀 리더
+      icon: speech
+      en: 1 milligram epi IV push, given.
+      ok: true
+    - who: 팀 리더 → 팀 전체
+      icon: siren
+      en: If anyone gets a chance, maybe someone could give some epi?
+      ok: false
+      fix: Maria, give 1 milligram of epi IV now and tell me when it's in.
+    why: 코드 중에는 이름을 불러 짧게 지시하고 복창을 받는 closed-loop가 원칙이에요. 돌려 말하면 아무도 안 하거나 두 사람이 같이 해요.
+- title: 이상성 반응 재악화
+  sentences:
+  - en: This is a second wave — I'm giving epinephrine again now.
+    ko: 두 번째 파동이에요 — 지금 에피네프린을 다시 투여할게요.
+    chunks:
+    - This is a second wave —
+    - I'm giving
+    - epinephrine again
+    - now
+    - .
+    words:
+    - w-wave
+    - w-give
+    - w-epinephrine
+    - w-again
+    goal: 1
+  - en: We're keeping you on the monitor and staying right here.
+    ko: 모니터를 계속 붙이고, 계속 곁에 있을게요.
+    chunks:
+    - We're keeping you
+    - on the monitor
+    - and staying
+    - right here
+    - .
+    words:
+    - w-keep
+    - w-monitor
+    - w-stay
+    goal: 2
+  - en: Tell me exactly how your breathing feels compared to before.
+    ko: 이전과 비교해서 호흡이 어떻게 느껴지는지 정확히 말씀해 주세요.
+    chunks:
+    - Tell me exactly
+    - how your breathing feels
+    - compared to
+    - before
+    - .
+    words:
+    - w-tell
+    - w-breathe
+    - w-feel
+    - w-compare
+    - w-before
+    goal: 1
+  - en: Even after treatment, symptoms can return two to twelve hours later.
+    ko: 치료 후에도 증상이 2시간에서 12시간 뒤에 다시 돌아올 수 있어요.
+    chunks:
+    - Even after treatment,
+    - symptoms can return
+    - two to twelve hours
+    - later
+    - .
+    words:
+    - w-treatment
+    - w-symptom
+    - w-return
+    - w-later
+    goal: 1
+  - en: I'm giving a full second dose and checking your vitals every ten minutes.
+    ko: 전체 용량으로 두 번째 투여를 하고, 10분마다 활력징후를 확인할게요.
+    chunks:
+    - I'm giving a full
+    - second dose
+    - and checking
+    - your vitals every ten minutes
+    - .
+    words:
+    - w-give
+    - w-full
+    - w-dose
+    - w-check
+    - w-vital
+    goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-compare
+    - w-before
+    - w-full
+    - w-dose
+    pairs:
+    - - compared
+      - to before
+    - - a full second
+      - dose
+    - - every ten
+      - minutes
+    decoys:
+    - hours later
+    why: compared는 to와 이어 '~와 비교해', a full second dose는 '두 번째도 전체 용량으로', every ten minutes는 활력징후를 재는 간격이에요.
+  - kind: context
+    words:
+    - w-wave
+    - w-return
+    - w-symptom
+    scenes:
+    - who: 환자에게
+      icon: me
+      en: This is a second wave — I'm giving epinephrine again now.
+      ok: true
+    - who: 의사 보고
+      icon: monitor
+      en: 'Biphasic reaction at hour six: wheezing, lip swelling. Repeat epi IM given.'
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: You're having a biphasic recurrence of anaphylaxis.
+      ok: false
+      fix: Your reaction has come back, so I'm giving you another dose now.
+    why: biphasic recurrence는 차트와 보고의 말이에요. 환자에게는 '반응이 다시 왔다'고 쉽게 말해요.
+- title: 다중 알레르겐 중환자
+  sentences:
+  - en: We're removing anything you might be reacting to from your room.
+    ko: 혹시 반응을 일으킬 만한 것들을 병실에서 모두 치울게요.
+    chunks:
+    - We're removing anything
+    - you might be
+    - reacting to
+    - from your room
+    - .
+    words:
+    - w-remove
+    - w-react
+    goal: 2
+  - en: Let's list everything you've eaten, touched, or taken today.
+    ko: 오늘 드시거나 만지거나 복용한 모든 것을 목록으로 적어봐요.
+    chunks:
+    - Let's list everything
+    - you've eaten,
+    - touched,
+    - or taken today
+    - .
+    words:
+    - w-list
+    - w-eat
+    - w-touch
+    - w-take
+    goal: 1
+  - en: I'm treating the reaction now while we figure out the trigger.
+    ko: 유발원을 파악하는 동안 지금은 반응을 치료할게요.
+    chunks:
+    - I'm treating
+    - the reaction now
+    - while we figure out
+    - the trigger
+    - .
+    words:
+    - w-treat
+    - w-reaction
+    - w-figure
+    - w-trigger
+    goal: 2
+  - en: Tell me every medication, food, and product you've been near this week.
+    ko: 이번 주에 가까이 했던 모든 약, 음식, 제품을 말씀해 주세요.
+    chunks:
+    - Tell me every medication,
+    - food,
+    - and product
+    - you've been near this week
+    - .
+    words:
+    - w-tell
+    - w-medication
+    - w-food
+    - w-product
+    goal: 1
+  - en: We're keeping this room free of every trigger we know about.
+    ko: 우리가 아는 모든 유발원이 없도록 이 병실을 유지할게요.
+    chunks:
+    - We're keeping
+    - this room free
+    - of every trigger
+    - we know about
+    - .
+    words:
+    - w-keep
+    - w-trigger
+    goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-trigger
+    cue: She reacted within minutes of a new lotion — twice — and nothing else changed.
+    scale:
+    - possible trigger
+    - likely trigger
+    - confirmed trigger
+    answerAt: 1
+    why: 같은 로션 직후에 두 번 반응했다면 likely trigger예요. confirmed는 알레르기 검사로 확인했을 때 써요 — 응급실에서는 확정하지 않고 일단 피하도록 교육해요.
+    example: The new lotion is a likely trigger.
+    exKo: 새 로션이 유력한 유발원이에요.
+  - kind: context
+    words:
+    - w-list
+    - w-touch
+    scenes:
+    - who: 환자에게
+      icon: me
+      en: Let's list everything you've eaten, touched, or taken today.
+      ok: true
+    - who: 인계
+      icon: board
+      en: Multiple allergies, trigger unknown. Room cleared of latex and scented products.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: We need a comprehensive exposure history for allergen identification.
+      ok: false
+      fix: Let's go through everything you've eaten, touched, or taken today.
+    why: exposure history·allergen identification은 의료진 말이에요. 환자와는 오늘 먹은 것·만진 것·먹은 약을 하나씩 같이 짚어요.
+- title: 관찰 중 급변 야간 SBAR
+  sentences:
+  - en: Post-anaphylaxis obs patient, stable until zero-two-hundred.
+    ko: 아나필락시스 후 관찰 환자로, 새벽 2시까지는 안정적이었습니다.
+    chunks:
+    - Post-anaphylaxis obs patient,
+    - stable
+    - until zero-two-hundred
+    - .
+    words:
+    - w-stable
+    goal: 1
+  - en: Blood pressure dropped to ninety over fifty and hives returned.
+    ko: 혈압이 90에 50으로 떨어졌고 두드러기가 다시 나타났습니다.
+    chunks:
+    - Blood pressure dropped
+    - to ninety
+    - over fifty
+    - and hives returned
+    - .
+    words:
+    - w-blood
+    - w-pressure
+    - w-drop
+    - w-hive
+    - w-return
+    goal: 1
+  - en: I gave a second epi and I need you to reassess him now.
+    ko: 두 번째 에피를 투여했고, 지금 재평가가 필요합니다.
+    chunks:
+    - I gave a second epi
+    - and I need
+    - you to reassess
+    - him now
+    - .
+    words:
+    - w-give
+    - w-need
+    - w-reassess
+    goal: 2
+  - en: Vitals were steady all shift until about zero-one-thirty.
+    ko: 활력징후는 새벽 1시 반쯤까지 근무 내내 안정적이었습니다.
+    chunks:
+    - Vitals were steady
+    - all shift
+    - until about zero-one-thirty
+    - .
+    words:
+    - w-vital
+    - w-steady
+    - w-shift
+    goal: 1
+  - en: Please come reassess him and let the doctor know right away.
+    ko: 와서 재평가해 주시고, 의사에게도 바로 알려주세요.
+    chunks:
+    - Please come reassess
+    - him and
+    - let the doctor
+    - know right away
+    - .
+    words:
+    - w-reassess
+    goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-reassess
+    - w-drop
+    - w-give
+    pairs:
+    - - I need you to
+      - reassess him
+    - - dropped to
+      - ninety over fifty
+    - - a second
+      - epi
+    decoys:
+    - all shift
+    why: SBAR의 요청(R)은 'I need you to + 동사'로 분명하게. dropped to는 수치와 이어 어디까지 떨어졌는지, a second epi는 몇 번째 투여인지를 보고해요.
+  - kind: swap
+    words:
+    - w-reassess
+    - w-need
+    who: 야간 의사 호출 · SBAR의 R
+    icon: speaker
+    before:
+    - 'I gave a second epi, and '
+    - maybe you could look at him sometime
+    - .
+    options:
+    - I need you to reassess him now
+    - maybe you could look at him sometime
+    - he's probably fine
+    answer: I need you to reassess him now
+    notes:
+      I need you to reassess him now: 무엇을 언제까지 원하는지 분명한 요청 — SBAR의 R이다.
+      maybe you could look at him sometime: 급함이 빠져서 의사가 우선순위를 낮춘다.
+      he's probably fine: 다시 떨어진 혈압과 두드러기를 가볍게 전해 위험하다.
+    why: 돌려 말하면 급변이 전달되지 않아요. SBAR은 마지막에 무엇을 해 달라는지(Recommendation)를 구체적으로 말하라고 가르쳐요.

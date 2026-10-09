@@ -1,0 +1,382 @@
+theme: core-handoff-er
+changes:
+- kind: sentence
+  situation: SBAR 기본 구조 인계
+  index: 0
+  fields:
+  - words
+  why: 쉬운 w-room 태그를 뺐다
+- kind: sentence
+  situation: 교대 시 환자 요약
+  index: 1
+  fields:
+  - words
+  why: 쉬운 w-morning 태그를 뺐다
+- kind: sentence
+  situation: 우선순위 환자 지목
+  index: 1
+  fields:
+  - words
+  why: 쉬운 w-afternoon 태그를 뺐다
+- kind: sentence
+  situation: 우선순위 환자 지목
+  index: 2
+  fields:
+  - words
+  why: 쉬운 w-doctor 태그를 뺐다
+- kind: sentence
+  situation: 병동 입원 인계
+  index: 2
+  fields:
+  - words
+  why: 쉬운 w-morning 태그를 뺐다; 'Pending labs'에 w-pending 태그
+- kind: sentence
+  situation: 검사 대기 환자 인계
+  index: 0
+  fields:
+  - words
+  why: '''is pending''에 w-pending 태그'
+- kind: sentence
+  situation: 검사 대기 환자 인계
+  index: 1
+  fields:
+  - words
+  why: 쉬운 w-doctor 태그를 뺐다
+- kind: sentence
+  situation: 불안정 환자 교대 인계
+  index: 2
+  fields:
+  - words
+  why: 쉬운 w-doctor 태그를 뺐다
+- kind: sentence
+  situation: 다중 환자 동시 인계
+  index: 0
+  fields:
+  - words
+  why: w-down(정지, down time)은 'work down'(차례로 내려가다)과 다른 뜻 — 태그를 뺐다
+- kind: sentence
+  situation: 다중 환자 동시 인계
+  index: 4
+  fields:
+  - words
+  why: '''give you the full report''의 give는 투여하다가 아니고 ''in order''는 처방하다가 아니다 — 두 태그를 빼고 w-report 태그'
+- kind: sentence
+  situation: 인계 정보 누락 확인
+  index: 3
+  fields:
+  - words
+  why: 쉬운 w-doctor 태그를 뺐다; 'still pending'에 w-pending 태그
+- kind: sentence
+  situation: 언어·문화 배경 전달
+  index: 1
+  fields:
+  - words
+  why: 쉬운 w-nurse 태그를 뺐다
+- kind: sentence
+  situation: 정신과 보류 환자 인계
+  index: 2
+  fields:
+  - words
+  why: 쉬운 w-room 태그를 뺐다
+- kind: sentence
+  situation: 정신과 보류 환자 인계
+  index: 3
+  fields:
+  - words
+  why: 쉬운 w-room 태그를 뺐다
+- kind: sentence
+  situation: 가족 소통 이력 인계
+  index: 1
+  fields:
+  - words
+  why: 쉬운 w-doctor 태그를 뺐다
+- kind: sentence
+  situation: 가족 소통 이력 인계
+  index: 4
+  fields:
+  - words
+  why: 쉬운 w-doctor 태그를 뺐다
+- kind: sentence
+  situation: 기관 간 이송 인계
+  index: 2
+  fields:
+  - words
+  why: 쉬운 w-patient 태그를 뺐다
+- kind: sentence
+  situation: 위중 환자 병동 전동
+  index: 3
+  fields:
+  - words
+  why: 쉬운 w-nurse 태그를 뺐다
+- kind: sentence
+  situation: 위중 환자 병동 전동
+  index: 4
+  fields:
+  - words
+  why: '''give report''의 give는 투여하다가 아니다 — w-give를 빼고 w-report 태그'
+- kind: sentence
+  situation: 코드 후 ICU 인계
+  index: 0
+  fields:
+  - words
+  why: 쉬운 w-patient 태그를 뺐다
+- kind: sentence
+  situation: 교대 중 급변 발생
+  index: 3
+  fields:
+  - words
+  why: 쉬운 w-doctor 태그를 뺐다
+- kind: sentence
+  situation: 불완전 정보 이송 수용
+  index: 3
+  fields:
+  - words
+  why: '''The report we got''에 w-report 태그'
+- kind: sentence
+  situation: 다직역 인계 회의
+  index: 3
+  fields:
+  - words
+  why: 쉬운 w-doctor 태그를 뺐다
+- kind: word-remove
+  id: w-doctor
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-nurse
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-patient
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-room
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-morning
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-afternoon
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word
+  id: w-noon
+  fields:
+  - example
+  why: example 'It started since noon.'이 비문(started since)
+- kind: word
+  id: w-close
+  fields:
+  - ko
+  why: close monitoring(면밀한 관찰)으로만 쓰이는데 ko가 거리의 '가까운'이었다
+- kind: word
+  id: w-medication
+  fields:
+  - ko
+  why: ko '투약 목록'은 w-list(목록)와 합친 구의 뜻 — 낱말 medication은 투약(w-medicine 약과도 갈린다)
+- kind: word-add
+  id: w-pending
+  why: 인계의 핵심어 — 검사 대기 환자 인계 문장 0('is pending'), 병동 입원 인계 문장 2, 누락 확인 문장 3에 이미 있다. w-doctor를 빼 모자란 V3도 채운다
+- kind: word-add
+  id: w-report
+  why: give report(인계하다)가 문장 셋에 이미 있다 — w-give(투여하다)·w-order(처방하다)가 잘못 태그된 자리를 대신한다
+- kind: sentence
+  situation: 교대 시 환자 요약
+  index: 0
+  fields:
+  - words
+  why: 공통 쉬운 단어 w-minute 태그를 뺐다
+- kind: sentence
+  situation: 미결 업무 인계
+  index: 2
+  fields:
+  - words
+  why: 공통 쉬운 단어 w-hour 태그를 뺐다
+- kind: sentence
+  situation: 미결 업무 인계
+  index: 3
+  fields:
+  - words
+  why: 공통 쉬운 단어 w-time 태그를 뺐다
+- kind: sentence
+  situation: 검사 대기 환자 인계
+  index: 0
+  fields:
+  - words
+  why: 공통 쉬운 단어 w-hour 태그를 뺐다
+- kind: sentence
+  situation: 불안정 환자 교대 인계
+  index: 4
+  fields:
+  - words
+  why: 공통 쉬운 단어 w-hour 태그를 뺐다
+- kind: sentence
+  situation: 인계 정보 누락 확인
+  index: 0
+  fields:
+  - words
+  why: 공통 쉬운 단어 w-know 태그를 뺐다
+- kind: sentence
+  situation: 인계 정보 누락 확인
+  index: 2
+  fields:
+  - words
+  why: 공통 쉬운 단어 w-time 태그를 뺐다
+- kind: sentence
+  situation: 언어·문화 배경 전달
+  index: 1
+  fields:
+  - words
+  why: 공통 쉬운 단어 w-family 태그를 뺐다
+- kind: sentence
+  situation: 가족 소통 이력 인계
+  index: 0
+  fields:
+  - words
+  why: 공통 쉬운 단어 w-know 태그를 뺐다
+- kind: sentence
+  situation: 가족 소통 이력 인계
+  index: 3
+  fields:
+  - words
+  why: 공통 쉬운 단어 w-family 태그를 뺐다
+- kind: sentence
+  situation: 가족 소통 이력 인계
+  index: 4
+  fields:
+  - words
+  why: 공통 쉬운 단어 w-know 태그를 뺐다
+- kind: sentence
+  situation: 코드 후 ICU 인계
+  index: 1
+  fields:
+  - words
+  why: 공통 쉬운 단어 w-minute 태그를 뺐다
+- kind: sentence
+  situation: 불완전 정보 이송 수용
+  index: 4
+  fields:
+  - words
+  why: 공통 쉬운 단어 w-time 태그를 뺐다
+- kind: sentence
+  situation: 다직역 인계 회의
+  index: 4
+  fields:
+  - words
+  why: 공통 쉬운 단어 w-family·w-know 태그를 뺐다
+- kind: sentence
+  situation: 대량재해 환자 분류 인계
+  index: 2
+  fields:
+  - words
+  why: 공통 쉬운 단어 w-minute 태그를 뺐다
+- kind: sentence
+  situation: 검사 대기 환자 인계
+  index: 1
+  fields:
+  - words
+  why: w-hour를 빼 V3가 모자라 이미 있는 'If it's elevated'를 w-elevated로 태그
+- kind: sentence
+  situation: 불안정 환자 교대 인계
+  index: 0
+  fields:
+  - words
+  why: w-hour를 빼 V3가 모자라 이미 있는 'is borderline'을 w-borderline으로 태그
+- kind: word-add
+  id: w-elevated
+  why: 공통 쉬운 w-hour를 빼 검사 대기 환자 인계가 7개 — 문장 1에 이미 있는 elevated
+- kind: word-add
+  id: w-borderline
+  why: 공통 쉬운 w-hour를 빼 불안정 환자 교대 인계가 7개 — 문장 0에 이미 있는 borderline
+- kind: word-remove
+  id: w-hour
+  why: 공통 쉬운 단어 목록 — 어느 문장도 태그하지 않게 됐다(문장은 그대로)
+- kind: word-remove
+  id: w-minute
+  why: 공통 쉬운 단어 목록 — 어느 문장도 태그하지 않게 됐다(문장은 그대로)
+- kind: word-remove
+  id: w-time
+  why: 공통 쉬운 단어 목록 — 어느 문장도 태그하지 않게 됐다(문장은 그대로)
+- kind: word-remove
+  id: w-family
+  why: 공통 쉬운 단어 목록 — 어느 문장도 태그하지 않게 됐다(문장은 그대로)
+- kind: word-remove
+  id: w-know
+  why: 공통 쉬운 단어 목록 — 어느 문장도 태그하지 않게 됐다(문장은 그대로)
+- kind: sentence
+  situation: 언어·문화 배경 전달
+  index: 3
+  fields:
+  - en
+  - chunks
+  why: 문장 0(He speaks Vietnamese)과 성별이 어긋났다 — her→him
+- kind: sentence
+  situation: 언어·문화 배경 전달
+  index: 4
+  fields:
+  - en
+  - chunks
+  why: 문장 0(He speaks Vietnamese)과 성별이 어긋났다 — her→his
+- kind: sentence
+  situation: 인계 정보 누락 확인
+  index: 1
+  fields:
+  - chunks
+  why: 복합명사 pain medicine을 가르던 경계를 붙였다
+- kind: sentence
+  situation: SBAR 기본 구조 인계
+  index: 3
+  fields:
+  - chunks
+  why: 전치사 'on'이 홀로 조각이었다 — on the monitor로 묶었다
+- kind: sentence
+  situation: 기관 간 이송 인계
+  index: 1
+  fields:
+  - chunks
+  why: 수사와 명사(two | hours)를 가르던 경계를 붙였다
+- kind: sentence
+  situation: 환자 정보 재확인
+  index: 2
+  fields:
+  - chunks
+  why: 전치사와 목적어(back to | me)를 가르던 경계를 붙였다
+- kind: sentence
+  situation: 인계 정보 누락 확인
+  index: 4
+  fields:
+  - words
+  why: '''check the chart''에 은행 단어 w-chart가 있는데 태그가 없었다'
+- kind: sentence
+  situation: 환자 정보 재확인
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'v46 검토 결정 11 예외: 병상 번호를 확인 항목으로 보여 줌(NPSG.01.01.01은 이름·생년월일) — 이름과 생년월일로 바로잡음'
+- kind: word
+  id: w-match
+  fields:
+  - example
+  - exKo
+  why: 'v46 검토 결정 11 예외: example를 바뀐 문장 en에 맞춤'
+- kind: sentence
+  situation: 환자 정보 재확인
+  index: 2
+  fields:
+  - en
+  - ko
+  - chunks
+  why: 'v46 검토 결정 11 예외: 미국 병원은 name band보다 ID band·wristband를 더 흔히 씀 (keyPhrase 문장이라 상황 keyPhrases도 바꿈)'
+- kind: word
+  id: w-band
+  fields:
+  - example
+  - exKo
+  why: 'v46 검토 결정 11 예외: name band를 ID band로 바꿔 예문·exKo도 맞춤'
+- kind: sentence
+  situation: 환자 정보 재확인
+  index: 5
+  fields:
+  - en
+  - chunks
+  why: 'v46 검토 결정 11 예외: 같은 환자(Mr. Alvarez)인데 대명사가 her였음 — his로 맞춤'

@@ -15,8 +15,8 @@ jest.mock('react-native-worklets', () => ({
 }));
 
 import { act, create, type ReactTestInstance } from 'react-test-renderer';
-import { Text } from 'react-native';
-import { CURL_SLICES, PageCurl, curlSamples } from './PageCurl';
+import { Animated, Text } from 'react-native';
+import { CURL_MS, CURL_SLICES, PageCurl, curlSamples } from './PageCurl';
 import { trackMounts } from '../../testing/mountRegistry';
 
 const track = trackMounts();
@@ -38,11 +38,32 @@ test('the sheet is whole: every slice starts where the last one ended', () => {
   const geo = curlSamples(W);
   for (let s = 0; s < geo.samples; s += 1) {
     const e = edges(geo, s);
-    expect(e[0].left).toBeCloseTo(0, 4);
     for (let i = 1; i < e.length; i += 1) {
       expect(e[i].left).toBeCloseTo(e[i - 1].right, 4);
     }
   }
+});
+
+// The sheet is pinned at the spine while it curls, and only then walks off the left edge.
+// Without the exit it stopped edge-on and blinked out as a band still standing at the
+// spine — about a centimetre of paper vanishing in place, which reads as a glitch rather
+// than a page turn.
+test('the sheet stays pinned at the spine while it curls, then leaves to the left', () => {
+  const geo = curlSamples(W);
+  const leftAt = (s: number) => edges(geo, s)[0].left;
+  const rightAt = (s: number) => edges(geo, s)[CURL_SLICES - 1].right;
+
+  // Through the curl proper the spine edge does not move.
+  const held = Math.floor((geo.samples - 1) * 0.7);
+  for (let s = 0; s <= held; s += 1) expect(leftAt(s)).toBeCloseTo(0, 4);
+
+  // After that it only ever moves left, and never comes back.
+  for (let s = held + 1; s < geo.samples; s += 1) {
+    expect(leftAt(s)).toBeLessThan(leftAt(s - 1) + 0.001);
+  }
+
+  // And at the end the whole sheet is past the left edge — nothing is left standing.
+  expect(rightAt(geo.samples - 1)).toBeLessThanOrEqual(0.001);
 });
 
 test('flat at rest, and no wider than the page', () => {
@@ -112,6 +133,26 @@ test('it renders one clipped copy of the page per slice, with a shade over each'
     return !!flat && flat.overflow === 'hidden' && flat.transform === undefined;
   }, { deep: true });
   expect(clips.length).toBeGreaterThanOrEqual(CURL_SLICES);
+});
+
+// journey-binder-v42 Task I, task-I-brief.md §1·§7 item 9 — the bare-metal parameter
+// this handoff added `durationMs` for: the binder cover's closing curl runs at 800ms,
+// faster than the onboarding passport's own default (`CURL_MS.in`, 1100ms), while every
+// OTHER curl in the app keeps using the default it always had.
+test('durationMs overrides the default duration; omitting it falls back to CURL_MS[dir]', () => {
+  const spy = jest.spyOn(Animated, 'timing');
+
+  act(() => { track(create(<PageCurl dir="in" durationMs={800}><Text>X</Text></PageCurl>)); });
+  expect(spy.mock.calls[spy.mock.calls.length - 1][1].duration).toBe(800);
+  expect(spy.mock.calls[spy.mock.calls.length - 1][1].duration).not.toBe(CURL_MS.in);
+
+  act(() => { track(create(<PageCurl dir="in"><Text>X</Text></PageCurl>)); });
+  expect(spy.mock.calls[spy.mock.calls.length - 1][1].duration).toBe(CURL_MS.in);
+
+  act(() => { track(create(<PageCurl dir="out"><Text>X</Text></PageCurl>)); });
+  expect(spy.mock.calls[spy.mock.calls.length - 1][1].duration).toBe(CURL_MS.out);
+
+  spy.mockRestore();
 });
 
 test('the shading is what makes it paper, so it is not flat', () => {

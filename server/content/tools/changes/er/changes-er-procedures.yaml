@@ -1,0 +1,449 @@
+theme: er-procedures
+changes:
+- kind: sentence
+  situation: 채혈 전 환자 확인
+  index: 0
+  fields:
+  - words
+  why: 쉬운 w-name 태그를 뺐다
+- kind: sentence
+  situation: 정맥로 확보 안내
+  index: 2
+  fields:
+  - words
+  - ko
+  why: 쉬운 w-arm 태그를 뺐다; for me를 '저를 위해'로 옮겨 부자연스러웠다 — 부탁의 말투일 뿐
+- kind: sentence
+  situation: 심전도 부착 설명
+  index: 5
+  fields:
+  - words
+  why: 쉬운 w-minute 태그를 뺐다
+- kind: sentence
+  situation: 검사 목적 설명
+  index: 1
+  fields:
+  - words
+  why: a routine step은 단계 — w-step(step out, 잠깐 나가다)과 다른 뜻이라 태그를 뺐다
+- kind: sentence
+  situation: 검사 목적 설명
+  index: 2
+  fields:
+  - words
+  why: 쉬운 w-know 태그를 뺐다
+- kind: sentence
+  situation: 검사 목적 설명
+  index: 4
+  fields:
+  - words
+  why: 쉬운 w-doctor 태그를 뺐다
+- kind: sentence
+  situation: 조영제 검사 사전 확인
+  index: 1
+  fields:
+  - words
+  why: take metformin은 복용 — w-take(take care of, 처리하다)와 다른 뜻이라 태그를 뺐다
+- kind: sentence
+  situation: 조영제 검사 사전 확인
+  index: 3
+  fields:
+  - words
+  why: 쉬운 w-tell 태그를 뺐다
+- kind: sentence
+  situation: 항생제 첫 투여 설명
+  index: 1
+  fields:
+  - words
+  why: 쉬운 w-tell 태그를 뺐다
+- kind: sentence
+  situation: 항생제 첫 투여 설명
+  index: 5
+  fields:
+  - words
+  why: 쉬운 w-minute 태그를 뺐다
+- kind: sentence
+  situation: 수혈 전 확인·설명
+  index: 0
+  fields:
+  - words
+  why: 쉬운 w-name 태그를 뺐다; blood type을 w-type(blood type)이 구로 다루게 되어 겹치는 w-blood 태그를 뺐다
+- kind: sentence
+  situation: 수혈 전 확인·설명
+  index: 1
+  fields:
+  - words
+  why: 쉬운 w-tell 태그를 뺐다
+- kind: sentence
+  situation: 수혈 전 확인·설명
+  index: 2
+  fields:
+  - words
+  why: 쉬운 w-minute 태그를 뺐다
+- kind: sentence
+  situation: 수혈 전 확인·설명
+  index: 4
+  fields:
+  - words
+  why: 쉬운 w-nurse 태그를 뺐다; A second nurse는 서수(두 번째) — w-second(초)와 다른 뜻이라 태그를 뺐다
+- kind: sentence
+  situation: 비위관 삽입 협조
+  index: 1
+  fields:
+  - words
+  why: 쉬운 w-water·w-help 태그를 뺐다
+- kind: sentence
+  situation: 도뇨관 삽입 설명
+  index: 5
+  fields:
+  - words
+  why: 쉬운 w-help 태그를 뺐다
+- kind: sentence
+  situation: 검체 라벨·추적
+  index: 0
+  fields:
+  - words
+  why: 쉬운 w-name 태그를 뺐다
+- kind: sentence
+  situation: 중심정맥관 삽입 보조
+  index: 0
+  fields:
+  - words
+  why: 쉬운 w-head 태그를 뺐다
+- kind: sentence
+  situation: 수혈 반응 발생
+  index: 1
+  fields:
+  - words
+  why: 쉬운 w-tell 태그를 뺐다
+- kind: sentence
+  situation: 수혈 반응 발생
+  index: 2
+  fields:
+  - words
+  why: 쉬운 w-doctor 태그를 뺐다
+- kind: sentence
+  situation: 수혈 반응 발생
+  index: 5
+  fields:
+  - words
+  why: 쉬운 w-doctor·w-minute 태그를 뺐다
+- kind: sentence
+  situation: 조영제 아나필락시스
+  index: 4
+  fields:
+  - words
+  why: not leaving your side는 곁을 떠나다 — w-leave(두다)와 다른 뜻이라 태그를 뺐다; your side는 곁 — w-side(쪽·방향)와 다른 뜻이라 태그를 뺐다
+- kind: sentence
+  situation: 골내주사(IO) 응급 확보
+  index: 2
+  fields:
+  - ko
+  why: Stay with me의 뜻('정신 놓지 말고 버텨요')에 맞추고 [19]·릴과 번역을 하나로 — '정신 차리세요'는 다그치는 말투
+- kind: sentence
+  situation: 골내주사(IO) 응급 확보
+  index: 5
+  fields:
+  - words
+  why: 쉬운 w-help 태그를 뺐다
+- kind: sentence
+  situation: 응급 약물 오류 방지
+  index: 1
+  fields:
+  - words
+  why: 쉬운 w-patient 태그를 뺐다
+- kind: sentence
+  situation: 흉관 삽입 보조·통증
+  index: 1
+  fields:
+  - words
+  why: 쉬운 w-hand 태그를 뺐다
+- kind: sentence
+  situation: 흉관 삽입 보조·통증
+  index: 2
+  fields:
+  - words
+  why: 쉬운 w-help 태그를 뺐다
+- kind: sentence
+  situation: 흉관 삽입 보조·통증
+  index: 3
+  fields:
+  - ko
+  why: Stay with me는 '정신 놓지 말고 버티라'는 말 — '저와 함께 있어요'는 오역
+- kind: sentence
+  situation: 흉관 삽입 보조·통증
+  index: 5
+  fields:
+  - words
+  why: 쉬운 w-here 태그를 뺐다
+- kind: sentence
+  situation: 대량수혈 프로토콜
+  index: 0
+  fields:
+  - words
+  why: packed cells(농축적혈구)의 packed는 w-pack(온찜질 팩)과 다른 낱말이라 태그를 뺐다
+- kind: sentence
+  situation: 대량수혈 프로토콜
+  index: 2
+  fields:
+  - words
+  why: Blood bank를 w-bank(blood bank)가 구로 다루게 되어 겹치는 w-blood 태그를 뺐다
+- kind: sentence
+  situation: 대량수혈 프로토콜
+  index: 3
+  fields:
+  - words
+  why: 쉬운 w-minute 태그를 뺐다
+- kind: sentence
+  situation: 대량수혈 프로토콜
+  index: 5
+  fields:
+  - words
+  why: 쉬운 w-tell 태그를 뺐다
+- kind: word-remove
+  id: w-name
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-minute
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-know
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-doctor
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-nurse
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-patient
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-hand
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-head
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-tell
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-help
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-arm
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-water
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-here
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word
+  id: w-check
+  fields:
+  - ko
+  why: w-confirm과 ko가 '확인하다'로 같아 듣고 뜻 고르기에서 정답이 둘
+- kind: word
+  id: w-done
+  fields:
+  - ko
+  why: w-over와 ko가 '끝난'으로 같아 정답이 둘
+- kind: word
+  id: w-take
+  fields:
+  - en
+  - ipa
+  why: ko '처리하다'는 take care of의 뜻 — take metformin(복용) 태그를 빼고 구 단위 헤드워드로
+- kind: word
+  id: w-step
+  fields:
+  - en
+  - ipa
+  - ko
+  why: ko '나가다'는 step out의 뜻 — routine step(단계) 태그를 빼고 구 단위 헤드워드로
+- kind: word
+  id: w-stay
+  fields:
+  - ko
+  why: stay는 자동사라 '유지하다'가 어긋난다 — stay still·staying right here·Stay with me 모두에 맞게
+- kind: word
+  id: w-dye
+  fields:
+  - ko
+  why: contrast dye는 조영제 — '염료'는 뜻이 흐리다(조영제는 w-contrast)
+- kind: word
+  id: w-site
+  fields:
+  - ko
+  why: w-area와 ko가 '부위'로 같아 정답이 둘 — site는 바늘·소독이 가는 그 자리
+- kind: word
+  id: w-area
+  fields:
+  - ko
+  why: w-site와 ko가 '부위'로 같아 정답이 둘
+- kind: word
+  id: w-prep
+  fields:
+  - ko
+  why: prepped는 피부 소독까지 마친 상태 — '준비하다'만으로는 뜻이 흐리다
+- kind: word
+  id: w-breath
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 유일한 문장이 short of breath(숨이 찬) — 낱말 breath·숨보다 구로 가르칠 값이 있고 w-breathe(숨쉬다)와도 갈린다
+- kind: word
+  id: w-type
+  fields:
+  - en
+  - ipa
+  why: ko '혈액형'은 blood type의 뜻 — 낱말 type만으로는 '종류'라 구 단위로
+- kind: word
+  id: w-confirm
+  fields:
+  - ko
+  why: w-check와 ko가 '확인하다'로 같아 듣고 뜻 고르기에서 정답이 둘
+- kind: word
+  id: w-over
+  fields:
+  - ko
+  why: w-done과 ko가 '끝난'으로 같아 정답이 둘
+- kind: word
+  id: w-bank
+  fields:
+  - en
+  - ipa
+  why: ko '혈액은행'은 blood bank의 뜻 — 낱말 bank만으로는 '은행'이라 구 단위로
+- kind: word
+  id: w-vital
+  fields:
+  - en
+  - ipa
+  why: ko '활력징후'는 명사 vitals — vital은 형용사(필수적인)라 문장의 vitals로
+- kind: word
+  id: w-sticker
+  fields:
+  - ko
+  why: '''A sticker and a big high-five''는 보상 스티커 — ''전극 스티커''로는 그 문장에 틀린다'
+- kind: word
+  id: w-hold
+  fields:
+  - ko
+  why: hold him on your lap(안다)·hold your arm still(가만히 잡고 있다) 어느 쪽에도 '고정하다'는 어긋난다
+- kind: word
+  id: w-cause
+  fields:
+  - ko
+  why: 태그된 문장 'what's causing your pain'은 동사 — 명사 '원인'만으로는 어긋난다
+- kind: sentence
+  situation: 항생제 첫 투여 설명
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'v46 검토 결정 11 예외: 첫 항생제를 시험 용량으로 소개하는 말은 미국 관행과 어긋나 호출 버튼 안내로 바꿈'
+- kind: sentence
+  situation: 어려운 정맥 확보
+  index: 5
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'v46 검토 결정 11 예외: 끝까지 멈추지 않겠다는 말은 시도 횟수 제한(INS)·5.2와 어긋나 한 번 더 시도하고 도움을 받겠다는 말로 바꿈'
+- kind: sentence
+  situation: 응급 약물 오류 방지
+  index: 2
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'v46 검토 결정 11 예외: 값을 먼저 말하면 독립 이중 확인이 아니라 각자 따로 계산한 뒤 맞춰 보자는 말로 바꿈'
+- kind: sentence
+  situation: 대량수혈 프로토콜
+  index: 1
+  fields:
+  - en
+  - chunks
+  why: 'v46 검토 결정 11 예외: `one-to-one-to-one ratio` 앞에 관사 a가 빠짐'
+- kind: sentence
+  situation: 비위관 삽입 협조
+  index: 2
+  fields:
+  - en
+  - chunks
+  why: 'v46 검토 결정 11 예외: 미국 영어는 stop you from breathing'
+- kind: sentence
+  situation: 소아 채혈 협조 유도
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  why: 'v46 검토 결정 11 예외: 결과를 장담하는 말을 should로 낮춰 같은 상황 swap(거짓 약속은 신뢰를 잃는다)과 맞춤'
+- kind: sentence
+  situation: 골내주사(IO) 응급 확보
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'v46 검토 결정 11 예외: 결과를 약속하는 말(I promise) 대신 예상과 곁에 있음을 말함'
+- kind: word-remove
+  id: w-promise
+  why: 'v46 검토 결정 11 예외: 17.4에서 I promise를 버려 쓰는 곳이 없어짐'
+- kind: sentence
+  situation: 채혈 전 환자 확인
+  index: 0
+  fields:
+  - ko
+  why: 'v46 검토 결정 11 예외: `이름과 생년월일을 전부`가 부자연스러움'
+- kind: sentence
+  situation: 항생제 첫 투여 설명
+  index: 0
+  fields:
+  - ko
+  why: 'v46 검토 결정 11 예외: 정맥 항생제라 `복용해 보신`이 어긋남'
+- kind: sentence
+  situation: 채혈 전 환자 확인
+  index: 4
+  fields:
+  - chunks
+  why: 'v46 검토 결정 11 예외: 구를 끊는 청크(`just to / be safe`, `a big / high-five are / waiting after`, `the site really / well first`)를 구 경계로 다시 나눔'
+- kind: sentence
+  situation: 소아 채혈 협조 유도
+  index: 2
+  fields:
+  - chunks
+  why: 'v46 검토 결정 11 예외: 구를 끊는 청크(`just to / be safe`, `a big / high-five are / waiting after`, `the site really / well first`)를 구 경계로 다시 나눔'
+- kind: sentence
+  situation: 배양검사 무균 채취
+  index: 0
+  fields:
+  - chunks
+  why: 'v46 검토 결정 11 예외: 구를 끊는 청크(`just to / be safe`, `a big / high-five are / waiting after`, `the site really / well first`)를 구 경계로 다시 나눔'
+- kind: word
+  id: w-stop
+  fields:
+  - example
+  why: 'v46 검토 결정 11 예외: 단독 예문이 포기하지 않겠다는 5.5의 옛 약속이라 수혈 반응 때 멈추는 예문으로 바꿈'
+- kind: word
+  id: w-breathe
+  fields:
+  - example
+  why: 'v46 검토 결정 11 예외: 단독 예문을 11.2와 같은 미국식 `from breathing`으로 맞춤'
+- kind: word
+  id: w-calculate
+  fields:
+  - example
+  why: 'v46 검토 결정 11 예외: 단독 예문이 값을 먼저 말하는 옛 18.2라 새 18.2 문장으로 맞춤'
+- kind: word
+  id: w-unit
+  fields:
+  - example
+  why: 'v46 검토 결정 11 예외: 단독 예문이 값을 먼저 말하는 옛 18.2라 새 18.2 문장으로 맞춤'

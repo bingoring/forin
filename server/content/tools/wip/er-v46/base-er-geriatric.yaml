@@ -1,0 +1,5364 @@
+theme: er-geriatric
+words:
+- id: w-happen
+  en: happen
+  ipa: /ˈhæpən/
+  ko: 일어나다
+  icon: board
+  example: Can you tell me what happened right before you fell?
+  exKo: 넘어지시기 직전에 무슨 일이 있었는지 말씀해 주시겠어요?
+  cue: 넘어지기 직전 상황을 열린 질문으로 물을 때 — 'What ___ right before you fell?'
+  tag: 낙상 문진
+  distractorsEn:
+  - appear
+  - handle
+  distractorsKo:
+  - 나타나다
+  - 멈추다
+  chips:
+  - - hap
+    - pen
+  decoyChips:
+  - hop
+- id: w-fall
+  en: fall
+  ipa: /fɔːl/
+  ko: 넘어지다
+  icon: board
+  example: Have you fallen before in the past year?
+  exKo: 지난 1년 동안 넘어지신 적이 있으신가요?
+  cue: 노인이 응급실에 오는 가장 흔한 이유 — 발을 헛디뎌 바닥으로
+  tag: 낙상 문진
+  distractorsEn:
+  - fail
+  - feel
+  distractorsKo:
+  - 미끄러지다
+  - 기절하다
+  chips:
+  - - fall
+  decoyChips:
+  - full
+- id: w-remember
+  en: remember
+  ipa: /rɪˈmɛmbər/
+  ko: 기억하다
+  icon: bulb
+  example: Do you remember feeling dizzy or faint before you fell?
+  exKo: 넘어지시기 전에 어지럽거나 아찔한 느낌이 있으셨나요?
+  cue: 넘어지기 전의 느낌이 떠오르는지 물을 때 — 'Do you ___ feeling dizzy?'
+  tag: 낙상 문진
+  distractorsEn:
+  - remind
+  - recover
+  distractorsKo:
+  - 잊다
+  - 상기시키다
+  chips:
+  - - re
+    - mem
+    - ber
+  decoyChips:
+  - mim
+  - bar
+- id: w-dizzy
+  en: dizzy
+  ipa: /ˈdɪzi/
+  ko: 어지러운
+  icon: monitor
+  example: Do you remember feeling dizzy or faint before you fell?
+  exKo: 넘어지시기 전에 어지럽거나 아찔한 느낌이 있으셨나요?
+  cue: 빙빙 돌거나 붕 뜬 느낌 — 낙상 원인을 찾을 때 먼저 묻는 증상
+  tag: 낙상 문진
+  distractorsEn:
+  - drowsy
+  - dusty
+  distractorsKo:
+  - 졸린
+  - 멍한
+  chips:
+  - - diz
+    - zy
+  decoyChips:
+  - dis
+- id: w-faint
+  en: faint
+  ipa: /feɪnt/
+  ko: 실신할 것 같은
+  icon: monitor
+  example: Do you remember feeling dizzy or faint before you fell?
+  exKo: 넘어지시기 전에 어지럽거나 아찔한 느낌이 있으셨나요?
+  cue: 눈앞이 캄캄해지며 쓰러질 것 같던 느낌 — 실신을 감별할 때
+  tag: 낙상 문진
+  distractorsEn:
+  - pale
+  - weak
+  distractorsKo:
+  - 창백한
+  - 힘없는
+  chips:
+  - - faint
+  decoyChips:
+  - feint
+- id: w-lose
+  en: lose
+  ipa: /luːz/
+  ko: 잃다
+  icon: board
+  example: Did you lose consciousness at any point?
+  exKo: 잠깐이라도 의식을 잃으신 적이 있나요?
+  cue: 잠깐이라도 정신을 놓았는지 물을 때 — 'Did you ___ consciousness?'
+  tag: 낙상 문진
+  distractorsEn:
+  - regain
+  - leave
+  distractorsKo:
+  - 되찾다
+  - 유지하다
+  chips:
+  - - lose
+  decoyChips:
+  - loose
+- id: w-consciousness
+  en: consciousness
+  ipa: /ˈkɒnʃəsnəs/
+  ko: 의식
+  icon: bulb
+  example: Did you lose consciousness at any point?
+  exKo: 잠깐이라도 의식을 잃으신 적이 있나요?
+  cue: 넘어질 때 정신을 놓았는지 — 'Did you lose ___?' 실신 감별의 핵심
+  tag: 낙상 문진
+  distractorsEn:
+  - conscience
+  - continence
+  distractorsKo:
+  - 양심
+  - 배변 조절
+  chips:
+  - - con
+    - scious
+    - ness
+  decoyChips:
+  - cons
+  - cience
+- id: w-trip
+  en: trip
+  ipa: /trɪp/
+  ko: 발이 걸려 넘어지다
+  icon: board
+  example: Did you trip on something, or did your legs just give out?
+  exKo: 뭔가에 걸려 넘어지신 건가요, 아니면 다리에 힘이 풀리신 건가요?
+  cue: 문턱·러그에 발이 걸렸는지 물을 때 — 'Did you ___ on something?'
+  tag: 낙상 문진
+  distractorsEn:
+  - slip
+  - drip
+  distractorsKo:
+  - 미끄러지다
+  - 발목을 삐다
+  chips:
+  - - trip
+  decoyChips:
+  - trap
+- id: w-leg
+  en: leg
+  ipa: /lɛɡ/
+  ko: 다리
+  icon: board
+  example: Did you trip on something, or did your legs just give out?
+  exKo: 뭔가에 걸려 넘어지신 건가요, 아니면 다리에 힘이 풀리신 건가요?
+  cue: 힘이 쑥 빠져 주저앉을 때 버티지 못한 곳 — 무릎·발목이 달린
+  tag: 낙상 문진
+  distractorsEn:
+  - knee
+  - foot
+  distractorsKo:
+  - 무릎
+  - 발
+  chips:
+  - - leg
+  decoyChips:
+  - lag
+- id: w-give
+  en: give out
+  ipa: /ˌɡɪv ˈaʊt/
+  ko: 힘이 풀리다
+  icon: board
+  example: Did you trip on something, or did your legs just give out?
+  exKo: 뭔가에 걸려 넘어지신 건가요, 아니면 다리에 힘이 풀리신 건가요?
+  cue: 걸려 넘어진 게 아니라 다리가 갑자기 버티지 못했을 때 — 'my legs just ___'
+  tag: 낙상 문진
+  distractorsEn:
+  - give up
+  - give in
+  distractorsKo:
+  - 포기하다
+  - 굴복하다
+  chips:
+  - - give
+  - - out
+  decoyChips:
+  - gave
+  - up
+- id: w-medication
+  en: medication
+  ipa: /ˌmɛdɪˈkeɪʃən/
+  ko: 약물
+  icon: pill
+  example: Let's go over the medications you take.
+  exKo: 복용하시는 약들을 함께 살펴볼게요.
+  cue: 먹는 약·주사·패치까지 통틀어 목록을 정리할 때 쓰는 정식 말
+  tag: 약물
+  distractorsEn:
+  - meditation
+  - dedication
+  distractorsKo:
+  - 처방전
+  - 치료법
+  chips:
+  - - med
+    - i
+    - ca
+    - tion
+  decoyChips:
+  - mad
+  - ta
+- id: w-thinner
+  en: blood thinner
+  ipa: /ˈblʌd ˌθɪnər/
+  ko: 혈액 희석제
+  icon: pill
+  example: Are you currently taking any blood thinners or sleep medication?
+  exKo: 현재 혈액 희석제나 수면제를 복용하고 계신가요?
+  cue: 와파린·아픽사반처럼 피가 잘 멎지 않게 하는 약 — 낙상·머리 부딪힘에서 꼭 확인
+  tag: 약물
+  distractorsEn:
+  - blood clot
+  - blood sugar
+  distractorsKo:
+  - 혈전
+  - 혈당
+  chips:
+  - - blood
+  - - thin
+    - ner
+  decoyChips:
+  - thick
+  - ter
+- id: w-list
+  en: list
+  ipa: /lɪst/
+  ko: 목록
+  icon: board
+  example: Do you have a list or the bottles with you?
+  exKo: 약 목록이나 약병을 가지고 계신가요?
+  cue: 약 이름과 용량을 적어 둔 종이 — 'Do you have a ___ or the bottles?'
+  tag: 약물
+  distractorsEn:
+  - chart
+  - label
+  distractorsKo:
+  - 차트
+  - 라벨
+  chips:
+  - - list
+  decoyChips:
+  - lost
+- id: w-bottle
+  en: bottle
+  ipa: /ˈbɒtl/
+  ko: 약병
+  icon: pill
+  example: Do you have a list or the bottles with you?
+  exKo: 약 목록이나 약병을 가지고 계신가요?
+  cue: 약국에서 받은 알약이 든 통 — 라벨에 약 이름과 용량이 있다
+  tag: 약물
+  distractorsEn:
+  - box
+  - pouch
+  distractorsKo:
+  - 상자
+  - 파우치
+  chips:
+  - - bot
+    - tle
+  decoyChips:
+  - bat
+- id: w-include
+  en: include
+  ipa: /ɪnˈkluːd/
+  ko: 포함하다
+  icon: board
+  example: Let's include vitamins and anything you buy over the counter.
+  exKo: 비타민이랑 약국에서 직접 사신 약도 포함해서 말씀해 주세요.
+  cue: 환자가 빠뜨리기 쉬운 비타민·보충제까지 목록에 넣어 달라고 할 때
+  tag: 약물
+  distractorsEn:
+  - exclude
+  - conclude
+  distractorsKo:
+  - 빼다
+  - 결론짓다
+  chips:
+  - - in
+    - clude
+  decoyChips:
+  - ex
+  - con
+- id: w-vitamin
+  en: vitamin
+  ipa: /ˈvaɪtəmɪn/
+  ko: 비타민
+  icon: pill
+  example: Let's include vitamins and anything you buy over the counter.
+  exKo: 비타민이랑 약국에서 직접 사신 약도 포함해서 말씀해 주세요.
+  cue: 환자가 약이라고 생각하지 않아 말하지 않는 영양 보충제
+  tag: 약물
+  distractorsEn:
+  - mineral
+  - vaccine
+  distractorsKo:
+  - 미네랄
+  - 백신
+  chips:
+  - - vi
+    - ta
+    - min
+  decoyChips:
+  - vy
+  - man
+- id: w-buy
+  en: buy
+  ipa: /baɪ/
+  ko: 사다
+  icon: board
+  example: Let's include vitamins and anything you buy over the counter.
+  exKo: 비타민이랑 약국에서 직접 사신 약도 포함해서 말씀해 주세요.
+  cue: 처방 없이 약국·마트에서 직접 구한 것을 물을 때
+  tag: 약물
+  distractorsEn:
+  - pay
+  - borrow
+  distractorsKo:
+  - 빌리다
+  - 지불하다
+  chips:
+  - - buy
+  decoyChips:
+  - by
+- id: w-counter
+  en: over the counter
+  ipa: /ˌoʊvər ðə ˈkaʊntər/
+  ko: 처방전 없이 (사는)
+  icon: board
+  example: Let's include vitamins and anything you buy over the counter.
+  exKo: 비타민이랑 약국에서 직접 사신 약도 포함해서 말씀해 주세요.
+  cue: 진통제·수면 보조제처럼 약국 진열대에서 바로 집어 오는 약 — 약사 확인 없이
+  tag: 약물
+  distractorsEn:
+  - by prescription
+  - under the counter
+  distractorsKo:
+  - 처방전으로
+  - 몰래
+  chips:
+  - - o
+    - ver
+  - - the
+  - - coun
+    - ter
+  decoyChips:
+  - un
+  - der
+- id: w-dose
+  en: dose
+  ipa: /doʊs/
+  ko: 복용량
+  icon: pill
+  example: It's okay if you don't remember every dose, we can call the pharmacy.
+  exKo: 복용량이 매번 기억 안 나셔도 괜찮아요 — 약국에 전화해서 확인할 수 있어요.
+  cue: 알약 몇 mg을 하루 몇 번 — 기억 안 나면 약국에 전화해 확인하는 것
+  tag: 약물
+  distractorsEn:
+  - route
+  - refill
+  distractorsKo:
+  - 투여 경로
+  - 재조제
+  chips:
+  - - dose
+  decoyChips:
+  - doze
+- id: w-pharmacy
+  en: pharmacy
+  ipa: /ˈfɑːrməsi/
+  ko: 약국
+  icon: hospital
+  example: It's okay if you don't remember every dose, we can call the pharmacy.
+  exKo: 복용량이 매번 기억 안 나셔도 괜찮아요 — 약국에 전화해서 확인할 수 있어요.
+  cue: 환자가 기억 못 하는 처방 내역을 전화로 확인할 수 있는 곳
+  tag: 약물
+  distractorsEn:
+  - pharmacist
+  - pharmacology
+  distractorsKo:
+  - 약사
+  - 약리학
+  chips:
+  - - phar
+    - ma
+    - cy
+  decoyChips:
+  - far
+  - cist
+- id: w-face
+  en: face
+  ipa: /feɪs/
+  ko: 마주 보다
+  icon: me
+  example: I'll face you and speak slowly — let me know if this is clearer.
+  exKo: 제가 마주 보고 천천히 말씀드릴게요 — 이게 더 잘 들리시면 말씀해 주세요.
+  cue: 청력이 떨어진 환자에게 입 모양이 보이도록 자리를 잡을 때 — 'I'll ___ you'
+  tag: 소통
+  distractorsEn:
+  - fade
+  - pace
+  distractorsKo:
+  - 외면하다
+  - 따라가다
+  chips:
+  - - face
+  decoyChips:
+  - phase
+- id: w-speak
+  en: speak
+  ipa: /spiːk/
+  ko: 말하다
+  icon: speech
+  example: I'll face you and speak slowly — let me know if this is clearer.
+  exKo: 제가 마주 보고 천천히 말씀드릴게요 — 이게 더 잘 들리시면 말씀해 주세요.
+  cue: 청력저하 환자에게 또박또박, 소리치지 않고 — '___ slowly'
+  tag: 소통
+  distractorsEn:
+  - spell
+  - shout
+  distractorsKo:
+  - 소리치다
+  - 철자를 말하다
+  chips:
+  - - speak
+  decoyChips:
+  - speck
+- id: w-clear
+  en: clear
+  ipa: /klɪr/
+  ko: 분명한
+  icon: bulb
+  example: I'll face you and speak slowly — let me know if this is clearer.
+  exKo: 제가 마주 보고 천천히 말씀드릴게요 — 이게 더 잘 들리시면 말씀해 주세요.
+  cue: 마주 보고 다시 말한 뒤 더 잘 알아듣겠는지 물을 때 — 'Is this ___er?'
+  tag: 소통
+  distractorsEn:
+  - clean
+  - loud
+  distractorsKo:
+  - 시끄러운
+  - 조용한
+  chips:
+  - - clear
+  decoyChips:
+  - clean
+- id: w-write
+  en: write
+  ipa: /raɪt/
+  ko: 적다
+  icon: pencil
+  example: Would it help if I wrote this down for you?
+  exKo: 적어서 보여드리면 도움이 될까요?
+  cue: 말로 전달이 안 될 때 종이에 — '___ it down'
+  tag: 소통
+  distractorsEn:
+  - read
+  - wipe
+  distractorsKo:
+  - 읽다
+  - 지우다
+  chips:
+  - - write
+  decoyChips:
+  - right
+- id: w-raise
+  en: raise
+  ipa: /reɪz/
+  ko: 들다
+  icon: board
+  example: Just raise your hand if you miss something.
+  exKo: 놓치신 부분이 있으면 그냥 손을 들어 주세요.
+  cue: 놓친 말이 있으면 손으로 신호해 달라고 할 때 — '___ your hand'
+  tag: 소통
+  distractorsEn:
+  - rise
+  - praise
+  distractorsKo:
+  - 흔들다
+  - 내리다
+  chips:
+  - - raise
+  decoyChips:
+  - rise
+- id: w-miss
+  en: miss
+  ipa: /mɪs/
+  ko: 놓치다
+  icon: board
+  example: Just raise your hand if you miss something.
+  exKo: 놓치신 부분이 있으면 그냥 손을 들어 주세요.
+  cue: 청력 때문에 말 일부를 알아듣지 못하고 지나쳤을 때 — 'if you ___ something'
+  tag: 소통
+  distractorsEn:
+  - mix
+  - mess
+  distractorsKo:
+  - 헷갈리다
+  - 틀리다
+  chips:
+  - - miss
+  decoyChips:
+  - mess
+- id: w-aid
+  en: hearing aid
+  ipa: /ˈhɪrɪŋ eɪd/
+  ko: 보청기
+  icon: mic
+  example: Let's check if your hearing aids are in and working.
+  exKo: 보청기가 끼워져 있고 제대로 작동하는지 확인해볼게요.
+  cue: 귀에 끼우는 작은 기계 — 끼워져 있는지, 배터리가 살아 있는지부터
+  tag: 소통
+  distractorsEn:
+  - hearing test
+  - hearing loss
+  distractorsKo:
+  - 청력 검사
+  - 난청
+  chips:
+  - - hear
+    - ing
+  - - aid
+  decoyChips:
+  - here
+  - aide
+- id: w-normally
+  en: normally
+  ipa: /ˈnɔːrməli/
+  ko: 평소에
+  icon: calendar
+  example: What is she normally like on a good day?
+  exKo: 평소 컨디션 좋으신 날엔 어떠신 편인가요?
+  cue: 가족에게 컨디션 좋은 날 모습을 물을 때 — 'What is she ___ like?'
+  tag: 인지·섬망
+  distractorsEn:
+  - formally
+  - rarely
+  distractorsKo:
+  - 격식 있게
+  - 드물게
+  chips:
+  - - nor
+    - mal
+    - ly
+  decoyChips:
+  - for
+  - mul
+- id: w-notice
+  en: notice
+  ipa: /ˈnoʊtɪs/
+  ko: 알아차리다
+  icon: magnify
+  example: When did you first notice this change?
+  exKo: 이 변화를 언제 처음 알아차리셨나요?
+  cue: 가족이 달라진 모습을 처음 눈치챈 때를 물을 때 — 'When did you first ___?'
+  tag: 인지·섬망
+  distractorsEn:
+  - notify
+  - neglect
+  distractorsKo:
+  - 통보하다
+  - 방치하다
+  chips:
+  - - 'no'
+    - tice
+  decoyChips:
+  - tify
+  - note
+- id: w-change
+  en: change
+  ipa: /tʃeɪndʒ/
+  ko: 변화
+  icon: board
+  example: When did you first notice this change?
+  exKo: 이 변화를 언제 처음 알아차리셨나요?
+  cue: 가족이 느낀 평소와 다른 점 — 'When did you first notice this ___?'
+  tag: 인지·섬망
+  distractorsEn:
+  - chance
+  - charge
+  distractorsKo:
+  - 기회
+  - 경과
+  chips:
+  - - change
+  decoyChips:
+  - chance
+- id: w-first
+  en: first
+  ipa: /fɜːrst/
+  ko: 처음
+  icon: board
+  example: When did you first notice this change?
+  exKo: 이 변화를 언제 처음 알아차리셨나요?
+  cue: 처음 달라진 걸 알아챈 시점 — 또는 여러 문제 중 맨 앞에 할 일
+  tag: 인지·섬망
+  distractorsEn:
+  - fast
+  - last
+  distractorsKo:
+  - 마지막
+  - 빨리
+  chips:
+  - - first
+  decoyChips:
+  - fist
+- id: w-observation
+  en: observation
+  ipa: /ˌɒbzərˈveɪʃən/
+  ko: 관찰
+  icon: magnify
+  example: Your observations help us a lot — thank you.
+  exKo: 보호자분의 관찰이 저희에게 정말 큰 도움이 돼요 — 감사합니다.
+  cue: 매일 곁에서 지켜본 가족의 이야기 — 기저 상태를 아는 가장 좋은 자료
+  tag: 인지·섬망
+  distractorsEn:
+  - conversation
+  - observance
+  distractorsKo:
+  - 대화
+  - 준수
+  chips:
+  - - ob
+    - ser
+    - va
+    - tion
+  decoyChips:
+  - ab
+  - ver
+- id: w-orient
+  en: oriented
+  ipa: /ˈɔːriənˌtɪd/
+  ko: 지남력이 있는
+  icon: bulb
+  example: Is she usually oriented to time and place?
+  exKo: 평소에는 시간과 장소를 잘 인지하시는 편인가요?
+  cue: 사람·장소·시간을 제대로 아는지 — 섬망 사정에서 x3, x4로 적는 말
+  tag: 인지·섬망
+  distractorsEn:
+  - disoriented
+  - organized
+  distractorsKo:
+  - 지남력이 없는
+  - 정돈된
+  chips:
+  - - or
+    - i
+    - ent
+    - ed
+  decoyChips:
+  - dis
+  - ant
+- id: w-usual
+  en: usual
+  ipa: /ˈjuːʒuəl/
+  ko: 평소의
+  icon: calendar
+  example: How long has she seemed different than usual?
+  exKo: 평소와 다르게 보이신 지 얼마나 되셨나요?
+  cue: '''평소와 다르다''고 할 때 — ''different than ___'''
+  tag: 인지·섬망
+  distractorsEn:
+  - unusual
+  - casual
+  distractorsKo:
+  - 특이한
+  - 격식 없는
+  chips:
+  - - u
+    - su
+    - al
+  decoyChips:
+  - un
+  - ca
+- id: w-detail
+  en: detail
+  ipa: /ˈdiːteɪl/
+  ko: 세부 사항
+  icon: board
+  example: We really appreciate you telling us these details.
+  exKo: 이렇게 자세히 말씀해 주셔서 정말 감사해요.
+  cue: 가족이 알려 준 작은 사실 하나하나에 고마움을 표할 때
+  tag: 인지·섬망
+  distractorsEn:
+  - delay
+  - deal
+  distractorsKo:
+  - 지연
+  - 요약
+  chips:
+  - - de
+    - tail
+  decoyChips:
+  - re
+  - tale
+- id: w-bathe
+  en: bathe
+  ipa: /beɪð/
+  ko: 씻다
+  icon: cross
+  example: Are you able to bathe and dress on your own?
+  exKo: 혼자서 씻고 옷 입는 게 가능하신가요?
+  cue: 일상생활 수행 능력(ADL) 가운데 몸을 씻는 일
+  tag: 일상기능
+  distractorsEn:
+  - breathe
+  - bake
+  distractorsKo:
+  - 숨 쉬다
+  - 굽다
+  chips:
+  - - bathe
+  decoyChips:
+  - bath
+- id: w-dress
+  en: dress
+  ipa: /drɛs/
+  ko: 옷을 입다
+  icon: board
+  example: Are you able to bathe and dress on your own?
+  exKo: 혼자서 씻고 옷 입는 게 가능하신가요?
+  cue: 일상생활 수행 능력(ADL) 가운데 스스로 옷을 챙겨 입는 일
+  tag: 일상기능
+  distractorsEn:
+  - undress
+  - press
+  distractorsKo:
+  - 옷을 벗다
+  - 누르다
+  chips:
+  - - dress
+  decoyChips:
+  - press
+- id: w-lately
+  en: lately
+  ipa: /ˈleɪtli/
+  ko: 요즘
+  icon: calendar
+  example: Has anything changed in what you can do lately?
+  exKo: 요즘 할 수 있는 일에 변화가 있으셨나요?
+  cue: 최근 몇 주 사이 달라진 것을 물을 때 — 'Has anything changed ___?'
+  tag: 일상기능
+  distractorsEn:
+  - lastly
+  - early
+  distractorsKo:
+  - 마지막으로
+  - 일찍
+  chips:
+  - - late
+    - ly
+  decoyChips:
+  - last
+- id: w-shame
+  en: shame
+  ipa: /ʃeɪm/
+  ko: 부끄러움
+  icon: board
+  example: There's no shame in needing a little help.
+  exKo: 도움이 필요하다고 부끄러워하실 일은 전혀 아니에요.
+  cue: 도움이 필요하다고 털어놓기 어려워하는 어르신을 안심시킬 때 — 'There's no ___'
+  tag: 일상기능
+  distractorsEn:
+  - blame
+  - shape
+  distractorsKo:
+  - 탓
+  - 자존심
+  chips:
+  - - shame
+  decoyChips:
+  - same
+- id: w-need
+  en: need
+  ipa: /niːd/
+  ko: 필요하다
+  icon: board
+  example: There's no shame in needing a little help.
+  exKo: 도움이 필요하다고 부끄러워하실 일은 전혀 아니에요.
+  cue: 일어설 때 도움을 받아야 하는지 조심스럽게 물을 때 — 'Do you ___ help?'
+  tag: 일상기능
+  distractorsEn:
+  - want
+  - feed
+  distractorsKo:
+  - 원하다
+  - 먹이다
+  chips:
+  - - need
+  decoyChips:
+  - knead
+- id: w-little
+  en: little
+  ipa: /ˈlɪtl/
+  ko: 약간의
+  icon: board
+  example: There's no shame in needing a little help.
+  exKo: 도움이 필요하다고 부끄러워하실 일은 전혀 아니에요.
+  cue: 도움받는 일이 부담스럽지 않게 양을 줄여 말할 때 — 'a ___ help'
+  tag: 일상기능
+  distractorsEn:
+  - few
+  - light
+  distractorsKo:
+  - 많은
+  - 몇몇의
+  chips:
+  - - lit
+    - tle
+  decoyChips:
+  - lid
+- id: w-meal
+  en: meal
+  ipa: /miːl/
+  ko: 식사
+  icon: board
+  example: Can you cook and manage your own meals at home?
+  exKo: 혼자서 요리하고 식사를 챙기실 수 있으신가요?
+  cue: 혼자 요리해 끼니를 챙길 수 있는지 — 도구적 일상생활(IADL) 사정
+  tag: 일상기능
+  distractorsEn:
+  - snack
+  - mail
+  distractorsKo:
+  - 간식
+  - 우편
+  chips:
+  - - meal
+  decoyChips:
+  - mail
+- id: w-hospital
+  en: hospital
+  ipa: /ˈhɒspɪtl/
+  ko: 병원
+  icon: hospital
+  example: You're in the hospital and you're safe with me.
+  exKo: 지금 병원에 계시고, 저와 함께 안전하세요.
+  cue: 섬망으로 어디 있는지 모르는 환자에게 지금 있는 곳을 알려 줄 때
+  tag: 인지·섬망
+  distractorsEn:
+  - hospice
+  - hostel
+  distractorsKo:
+  - 호스피스
+  - 요양원
+  chips:
+  - - hos
+    - pi
+    - tal
+  decoyChips:
+  - pice
+  - tel
+- id: w-safe
+  en: safe
+  ipa: /seɪf/
+  ko: 안전한
+  icon: shield
+  example: You're in the hospital and you're safe with me.
+  exKo: 지금 병원에 계시고, 저와 함께 안전하세요.
+  cue: 겁먹거나 말하기 두려워하는 환자를 안심시킬 때 — 'You're ___ with me'
+  tag: 안전·보호
+  distractorsEn:
+  - sane
+  - same
+  distractorsKo:
+  - 위험한
+  - 제정신인
+  chips:
+  - - safe
+  decoyChips:
+  - save
+- id: w-confusion
+  en: confusion
+  ipa: /kənˈfjuːʒən/
+  ko: 혼돈
+  icon: bulb
+  example: This confusion may be new — we're finding out why.
+  exKo: 이 혼돈은 새로 생긴 걸 수도 있어요 — 저희가 원인을 찾고 있어요.
+  cue: 노인에게 새로 생기면 감염·약물 부작용의 첫 신호일 수 있는 것 — 섬망의 핵심 증상
+  tag: 인지·섬망
+  distractorsEn:
+  - concussion
+  - conclusion
+  distractorsKo:
+  - 뇌진탕
+  - 결론
+  chips:
+  - - con
+    - fu
+    - sion
+  decoyChips:
+  - cus
+  - clu
+- id: w-new
+  en: new
+  ipa: /njuː/
+  ko: 새로운
+  icon: board
+  example: This confusion may be new — we're finding out why.
+  exKo: 이 혼돈은 새로 생긴 걸 수도 있어요 — 저희가 원인을 찾고 있어요.
+  cue: 원래 있던 치매인지, 이번에 처음 생긴 것인지 가를 때
+  tag: 인지·섬망
+  distractorsEn:
+  - old
+  - mild
+  distractorsKo:
+  - 오래된
+  - 가벼운
+  chips:
+  - - new
+  decoyChips:
+  - knew
+- id: w-stay
+  en: stay
+  ipa: /steɪ/
+  ko: 머무르다
+  icon: me
+  example: I'm going to stay close and help you feel calmer.
+  exKo: 제가 곁에 있으면서 좀 더 편안해지시도록 도와드릴게요.
+  cue: 혼란스러운 환자가 혼자라고 느끼지 않도록 — '___ close'
+  tag: 소통
+  distractorsEn:
+  - stray
+  - step
+  distractorsKo:
+  - 떠나다
+  - 지켜보다
+  chips:
+  - - stay
+  decoyChips:
+  - stray
+- id: w-close
+  en: close
+  ipa: /kloʊs/
+  ko: 가까이
+  icon: me
+  example: I'm going to stay close and help you feel calmer.
+  exKo: 제가 곁에 있으면서 좀 더 편안해지시도록 도와드릴게요.
+  cue: 환자 곁을 떠나지 않겠다고 할 때 — 'stay ___'
+  tag: 소통
+  distractorsEn:
+  - far
+  - apart
+  distractorsKo:
+  - 멀리
+  - 따로
+  chips:
+  - - close
+  decoyChips:
+  - clothes
+- id: w-calm
+  en: calm
+  ipa: /kɑːm/
+  ko: 차분한
+  icon: bulb
+  example: I'm going to stay close and help you feel calmer.
+  exKo: 제가 곁에 있으면서 좀 더 편안해지시도록 도와드릴게요.
+  cue: 불안한 환자가 가라앉도록 조명·소음을 줄일 때 — 'help you feel ___er'
+  tag: 인지·섬망
+  distractorsEn:
+  - warm
+  - numb
+  distractorsKo:
+  - 따뜻한
+  - 무딘
+  chips:
+  - - calm
+  decoyChips:
+  - clam
+- id: w-frighten
+  en: frightening
+  ipa: /ˈfraɪtənɪŋ/
+  ko: 무서운
+  icon: bulb
+  example: I know this feels frightening, but you're not alone.
+  exKo: 무섭게 느껴지시는 거 알아요, 하지만 혼자가 아니세요.
+  cue: 갑작스러운 섬망으로 겁먹은 환자의 감정을 알아줄 때 — 'I know this feels ___'
+  tag: 소통
+  distractorsEn:
+  - threatening
+  - enlightening
+  distractorsKo:
+  - 위협적인
+  - 깨우쳐 주는
+  chips:
+  - - fright
+    - en
+    - ing
+  decoyChips:
+  - fight
+  - ning
+- id: w-old
+  en: older
+  ipa: /ˈoʊldər/
+  ko: 나이 든
+  icon: me
+  example: In older adults, infections can show up as confusion, not fever.
+  exKo: 노인분들은 감염이 열 대신 혼돈으로 나타날 수 있어요.
+  cue: 미국 병원에서 권하는 고령 환자 호칭 — elderly보다 존중하는 '___ adults'
+  tag: 감염·패혈증
+  distractorsEn:
+  - elder
+  - bolder
+  distractorsKo:
+  - 연장자
+  - 대담한
+  chips:
+  - - old
+    - er
+  decoyChips:
+  - eld
+  - est
+- id: w-infection
+  en: infection
+  ipa: /ɪnˈfɛkʃən/
+  ko: 감염
+  icon: cross
+  example: In older adults, infections can show up as confusion, not fever.
+  exKo: 노인분들은 감염이 열 대신 혼돈으로 나타날 수 있어요.
+  cue: 노인에게는 열 없이 혼돈으로만 나타나기도 하는 것 — 요로·폐가 흔하다
+  tag: 감염·패혈증
+  distractorsEn:
+  - injection
+  - inflammation
+  distractorsKo:
+  - 주사
+  - 염증
+  chips:
+  - - in
+    - fec
+    - tion
+  decoyChips:
+  - jec
+  - flam
+- id: w-fever
+  en: fever
+  ipa: /ˈfiːvər/
+  ko: 열
+  icon: monitor
+  example: In older adults, infections can show up as confusion, not fever.
+  exKo: 노인분들은 감염이 열 대신 혼돈으로 나타날 수 있어요.
+  cue: 노인은 심한 감염에도 이것이 없을 수 있다 — 체온 38도 이상
+  tag: 감염·패혈증
+  distractorsEn:
+  - chill
+  - flush
+  distractorsKo:
+  - 오한
+  - 홍조
+  chips:
+  - - fe
+    - ver
+  decoyChips:
+  - fi
+  - vor
+- id: w-urinate
+  en: urination
+  ipa: /ˌjʊrɪˈneɪʃən/
+  ko: 배뇨
+  icon: monitor
+  example: Has she had any changes in urination or breathing?
+  exKo: 소변이나 호흡에 변화가 있으셨나요?
+  cue: 소변 보는 횟수·통증의 변화 — 요로감염을 찾을 때 묻는 말
+  tag: 감염·패혈증
+  distractorsEn:
+  - urinalysis
+  - hydration
+  distractorsKo:
+  - 소변검사
+  - 수분 공급
+  chips:
+  - - u
+    - ri
+    - na
+    - tion
+  decoyChips:
+  - ur
+  - ly
+- id: w-breathe
+  en: breathing
+  ipa: /ˈbriːðɪŋ/
+  ko: 호흡
+  icon: monitor
+  example: Has she had any changes in urination or breathing?
+  exKo: 소변이나 호흡에 변화가 있으셨나요?
+  cue: 숨 쉬는 모양·속도의 변화 — 폐렴을 찾을 때 가족에게 묻는 말
+  tag: 증상
+  distractorsEn:
+  - bleeding
+  - breaking
+  distractorsKo:
+  - 출혈
+  - 기침
+  chips:
+  - - breath
+    - ing
+  decoyChips:
+  - breed
+  - bleed
+- id: w-run
+  en: run
+  ipa: /rʌn/
+  ko: (검사를) 시행하다
+  icon: lab
+  example: We'll run tests to find a hidden infection.
+  exKo: 숨겨진 감염을 찾기 위해 검사를 진행할게요.
+  cue: 열 없이 숨은 원인을 찾으려 피·소변 검사를 돌릴 때 — '___ tests'
+  tag: 감염·패혈증
+  distractorsEn:
+  - rule
+  - read
+  distractorsKo:
+  - 해석하다
+  - 배제하다
+  chips:
+  - - run
+  decoyChips:
+  - ran
+- id: w-find
+  en: find
+  ipa: /faɪnd/
+  ko: 찾다
+  icon: magnify
+  example: We'll run tests to find a hidden infection.
+  exKo: 숨겨진 감염을 찾기 위해 검사를 진행할게요.
+  cue: 원인을 꼭 밝혀내겠다고 가족을 안심시킬 때 — '___ the cause'
+  tag: 감염·패혈증
+  distractorsEn:
+  - bind
+  - mind
+  distractorsKo:
+  - 묶다
+  - 신경 쓰다
+  chips:
+  - - find
+  decoyChips:
+  - fine
+- id: w-hidden
+  en: hidden
+  ipa: /ˈhɪdn/
+  ko: 숨겨진
+  icon: magnify
+  example: We'll run tests to find a hidden infection.
+  exKo: 숨겨진 감염을 찾기 위해 검사를 진행할게요.
+  cue: 열이 없어 겉으로 드러나지 않는 감염 — 검사로 찾아야 하는
+  tag: 감염·패혈증
+  distractorsEn:
+  - sudden
+  - forbidden
+  distractorsKo:
+  - 갑작스러운
+  - 금지된
+  chips:
+  - - hid
+    - den
+  decoyChips:
+  - hind
+  - din
+- id: w-urine
+  en: urine
+  ipa: /ˈjʊrɪn/
+  ko: 소변
+  icon: lab
+  example: We'll check her urine and listen to her lungs.
+  exKo: 소변 검사를 하고 폐 소리를 들어볼게요.
+  cue: 요로감염을 확인하려고 받는 검체
+  tag: 감염·패혈증
+  distractorsEn:
+  - urea
+  - serum
+  distractorsKo:
+  - 요소
+  - 혈청
+  chips:
+  - - u
+    - rine
+  decoyChips:
+  - ur
+  - ea
+- id: w-lung
+  en: lung
+  ipa: /lʌŋ/
+  ko: 폐
+  icon: stetho
+  example: We'll check her urine and listen to her lungs.
+  exKo: 소변 검사를 하고 폐 소리를 들어볼게요.
+  cue: 폐렴을 찾으려 청진기를 대고 소리를 듣는 곳
+  tag: 감염·패혈증
+  distractorsEn:
+  - lunge
+  - liver
+  distractorsKo:
+  - 간
+  - 기관지
+  chips:
+  - - lung
+  decoyChips:
+  - lunge
+- id: w-sharp
+  en: sharp
+  ipa: /ʃɑːrp/
+  ko: 날카로운
+  icon: bulb
+  example: Even without sharp pain, we take this seriously.
+  exKo: 날카로운 통증이 없어도 저희는 이걸 진지하게 받아들여요.
+  cue: 노인 흉통은 이렇지 않고 뻐근하거나 아예 없기도 — 칼로 찌르는 듯한
+  tag: 증상
+  distractorsEn:
+  - dull
+  - shaky
+  distractorsKo:
+  - 둔한
+  - 떨리는
+  chips:
+  - - sharp
+  decoyChips:
+  - shape
+- id: w-pain
+  en: pain
+  ipa: /peɪn/
+  ko: 통증
+  icon: cross
+  example: Even without sharp pain, we take this seriously.
+  exKo: 날카로운 통증이 없어도 저희는 이걸 진지하게 받아들여요.
+  cue: 노인 심근경색에서는 이것 대신 압박감·피로가 오기도 — 0~10 척도로 묻는 것
+  tag: 증상
+  distractorsEn:
+  - pressure
+  - numbness
+  distractorsKo:
+  - 압박감
+  - 저림
+  chips:
+  - - pain
+  decoyChips:
+  - pane
+- id: w-tired
+  en: tired
+  ipa: /ˈtaɪərd/
+  ko: 피곤한
+  icon: bulb
+  example: Do you feel more tired or short of breath than usual?
+  exKo: 평소보다 더 피곤하시거나 숨이 차시나요?
+  cue: 노인 심근경색에서 흉통 대신 오기도 하는 증상 — 평소보다 기운이 없는
+  tag: 증상
+  distractorsEn:
+  - tight
+  - thirsty
+  distractorsKo:
+  - 답답한
+  - 목마른
+  chips:
+  - - tired
+  decoyChips:
+  - tried
+- id: w-breath
+  en: breath
+  ipa: /brɛθ/
+  ko: 숨
+  icon: monitor
+  example: Do you feel more tired or short of breath than usual?
+  exKo: 평소보다 더 피곤하시거나 숨이 차시나요?
+  cue: 조금만 움직여도 숨이 차는지 물을 때 — 'short of ___'
+  tag: 증상
+  distractorsEn:
+  - breadth
+  - strength
+  distractorsKo:
+  - 폭
+  - 기운
+  chips:
+  - - breath
+  decoyChips:
+  - breathe
+- id: w-heart
+  en: heart
+  ipa: /hɑːrt/
+  ko: 심장
+  icon: stetho
+  example: We'll check your heart to be safe.
+  exKo: 안전을 위해 심장을 확인해볼게요.
+  cue: 노인은 증상이 흐려도 심전도·혈액검사로 꼭 확인하는 장기
+  tag: 증상
+  distractorsEn:
+  - heat
+  - hearth
+  distractorsKo:
+  - 가슴
+  - 폐
+  chips:
+  - - heart
+  decoyChips:
+  - hurt
+- id: w-nausea
+  en: nausea
+  ipa: /ˈnɔːziə/
+  ko: 메스꺼움
+  icon: monitor
+  example: Have you had any nausea, sweating, or dizziness with this?
+  exKo: 메스꺼움이나 식은땀, 어지러움이 함께 있으셨나요?
+  cue: 흉통의 동반 증상으로 묻는, 속이 울렁거리는 느낌
+  tag: 증상
+  distractorsEn:
+  - numbness
+  - anemia
+  distractorsKo:
+  - 저림
+  - 빈혈
+  chips:
+  - - nau
+    - sea
+  decoyChips:
+  - nou
+  - sia
+- id: w-sweat
+  en: sweating
+  ipa: /ˈswɛtɪŋ/
+  ko: 식은땀
+  icon: monitor
+  example: Have you had any nausea, sweating, or dizziness with this?
+  exKo: 메스꺼움이나 식은땀, 어지러움이 함께 있으셨나요?
+  cue: 흉통과 함께 오는 동반 증상 — 차트에는 diaphoresis
+  tag: 증상
+  distractorsEn:
+  - swelling
+  - shivering
+  distractorsKo:
+  - 부기
+  - 떨림
+  chips:
+  - - sweat
+    - ing
+  decoyChips:
+  - sweet
+  - swell
+- id: w-dizziness
+  en: dizziness
+  ipa: /ˈdɪzinəs/
+  ko: 어지럼증
+  icon: monitor
+  example: When did the dizziness start after the new medication?
+  exKo: 이 어지럼증은 새 약을 드신 뒤 언제부터 시작됐나요?
+  cue: 새 약을 시작한 뒤 생긴 핑 도는 증상 — 낙상 위험 신호
+  tag: 약물
+  distractorsEn:
+  - drowsiness
+  - business
+  distractorsKo:
+  - 졸림
+  - 두근거림
+  chips:
+  - - diz
+    - zi
+    - ness
+  decoyChips:
+  - dis
+  - zy
+- id: w-medicine
+  en: medicine
+  ipa: /ˈmɛdɪsɪn/
+  ko: 약
+  icon: pill
+  example: Some medicines can interact and cause these symptoms.
+  exKo: 일부 약들은 서로 상호작용해서 이런 증상을 일으킬 수 있어요.
+  cue: 환자·가족과 이야기할 때 약을 가리키는 쉬운 말 — 'Some ___s can interact'
+  tag: 약물
+  distractorsEn:
+  - ointment
+  - vaccine
+  distractorsKo:
+  - 연고
+  - 백신
+  chips:
+  - - med
+    - i
+    - cine
+  decoyChips:
+  - mad
+  - sin
+- id: w-interact
+  en: interact
+  ipa: /ˌɪntərˈækt/
+  ko: 상호작용하다
+  icon: gear
+  example: Some medicines can interact and cause these symptoms.
+  exKo: 일부 약들은 서로 상호작용해서 이런 증상을 일으킬 수 있어요.
+  cue: 약끼리 서로 영향을 주고받아 부작용을 낼 때
+  tag: 약물
+  distractorsEn:
+  - interrupt
+  - interpret
+  distractorsKo:
+  - 방해하다
+  - 해석하다
+  chips:
+  - - in
+    - ter
+    - act
+  decoyChips:
+  - rupt
+  - pret
+- id: w-cause
+  en: cause
+  ipa: /kɔːz/
+  ko: 일으키다
+  icon: board
+  example: Some medicines can interact and cause these symptoms.
+  exKo: 일부 약들은 서로 상호작용해서 이런 증상을 일으킬 수 있어요.
+  cue: 약끼리 부딪혀 증상을 만들어 낼 때 — 'interact and ___ these symptoms'
+  tag: 약물
+  distractorsEn:
+  - pause
+  - cure
+  distractorsKo:
+  - 막다
+  - 고치다
+  chips:
+  - - cause
+  decoyChips:
+  - case
+- id: w-symptom
+  en: symptom
+  ipa: /ˈsɪmptəm/
+  ko: 증상
+  icon: monitor
+  example: Some medicines can interact and cause these symptoms.
+  exKo: 일부 약들은 서로 상호작용해서 이런 증상을 일으킬 수 있어요.
+  cue: 어지럼·혼돈처럼 환자가 느끼고 호소하는 것 — 약 상호작용이 일으키기도
+  tag: 증상
+  distractorsEn:
+  - syndrome
+  - sign
+  distractorsKo:
+  - 증후군
+  - 징후
+  chips:
+  - - symp
+    - tom
+  decoyChips:
+  - synd
+  - rome
+- id: w-review
+  en: review
+  ipa: /rɪˈvjuː/
+  ko: 검토하다
+  icon: magnify
+  example: We'll review everything you take to find the cause.
+  exKo: 복용하시는 모든 약을 검토해서 원인을 찾아볼게요.
+  cue: 먹는 약을 하나하나 살펴 원인을 찾을 때 — 'We'll ___ everything you take'
+  tag: 약물
+  distractorsEn:
+  - renew
+  - revise
+  distractorsKo:
+  - 갱신하다
+  - 수정하다
+  chips:
+  - - re
+    - view
+  decoyChips:
+  - new
+  - vise
+- id: w-everything
+  en: everything
+  ipa: /ˈɛvriˌθɪŋ/
+  ko: 모든 것
+  icon: board
+  example: We'll review everything you take to find the cause.
+  exKo: 복용하시는 모든 약을 검토해서 원인을 찾아볼게요.
+  cue: 처방약·일반약·보충제 할 것 없이 드시는 것 전부
+  tag: 약물
+  distractorsEn:
+  - anything
+  - something
+  distractorsKo:
+  - 아무것
+  - 무언가
+  chips:
+  - - every
+    - thing
+  decoyChips:
+  - any
+  - some
+- id: w-unsteady
+  en: unsteady
+  ipa: /ʌnˈstɛdi/
+  ko: 휘청거리는
+  icon: board
+  example: This combination may be making you unsteady on your feet.
+  exKo: 이 약 조합이 다리 힘을 불안정하게 만들고 있을 수 있어요.
+  cue: 약 조합 때문에 걸을 때 비틀거리는 상태 — '___ on your feet'
+  tag: 약물
+  distractorsEn:
+  - steady
+  - unhealthy
+  distractorsKo:
+  - 안정된
+  - 건강하지 않은
+  chips:
+  - - un
+    - stead
+    - y
+  decoyChips:
+  - in
+  - ready
+- id: w-baseline
+  en: baseline
+  ipa: /ˈbeɪslaɪn/
+  ko: 평소 상태
+  icon: board
+  example: Do you know her baseline and what happened today?
+  exKo: 평소 상태랑 오늘 무슨 일이 있었는지 아시나요?
+  cue: 이송 온 노인의 평소 인지·활동 수준 — 오늘의 변화를 재는 기준
+  tag: 정보 수집
+  distractorsEn:
+  - bedside
+  - deadline
+  distractorsKo:
+  - 침상
+  - 마감
+  chips:
+  - - base
+    - line
+  decoyChips:
+  - bass
+  - lane
+- id: w-reach
+  en: reach
+  ipa: /riːtʃ/
+  ko: 연락이 닿다
+  icon: speaker
+  example: Can you help me reach the facility for her records?
+  exKo: 기록을 확인하기 위해 시설에 연락하는 걸 도와주실 수 있나요?
+  cue: 기록을 받으려 요양시설 담당자와 통화가 되게 할 때 — 'help me ___ the facility'
+  tag: 정보 수집
+  distractorsEn:
+  - teach
+  - leave
+  distractorsKo:
+  - 방문하다
+  - 떠나다
+  chips:
+  - - reach
+  decoyChips:
+  - teach
+- id: w-facility
+  en: facility
+  ipa: /fəˈsɪləti/
+  ko: 요양시설
+  icon: hospital
+  example: Can you help me reach the facility for her records?
+  exKo: 기록을 확인하기 위해 시설에 연락하는 걸 도와주실 수 있나요?
+  cue: 환자가 지내던 요양원·재활센터 같은 곳을 통틀어 부르는 말
+  tag: 정보 수집
+  distractorsEn:
+  - faculty
+  - utility
+  distractorsKo:
+  - 교수진
+  - 병동
+  chips:
+  - - fa
+    - cil
+    - i
+    - ty
+  decoyChips:
+  - fac
+  - ul
+- id: w-allergy
+  en: allergy
+  ipa: /ˈælərdʒi/
+  ko: 알레르기
+  icon: bell
+  example: Any medication or allergy info you can share?
+  exKo: 복용약이나 알레르기 정보 공유해 주실 수 있나요?
+  cue: 약을 주기 전 반드시 확인하는 것 — 페니실린에 두드러기가 난 적이 있는지
+  tag: 정보 수집
+  distractorsEn:
+  - allergen
+  - energy
+  distractorsKo:
+  - 알레르기 유발 물질
+  - 부작용
+  chips:
+  - - al
+    - ler
+    - gy
+  decoyChips:
+  - el
+  - gen
+- id: w-info
+  en: info
+  ipa: /ˈɪnfoʊ/
+  ko: 정보
+  icon: board
+  example: Any medication or allergy info you can share?
+  exKo: 복용약이나 알레르기 정보 공유해 주실 수 있나요?
+  cue: 이송 서류에서 빠진 약·알레르기 내용을 달라고 할 때 쓰는 줄임말
+  tag: 정보 수집
+  distractorsEn:
+  - input
+  - intro
+  distractorsKo:
+  - 의견
+  - 소개
+  chips:
+  - - info
+  decoyChips:
+  - into
+- id: w-share
+  en: share
+  ipa: /ʃɛr/
+  ko: 공유하다
+  icon: board
+  example: Any medication or allergy info you can share?
+  exKo: 복용약이나 알레르기 정보 공유해 주실 수 있나요?
+  cue: 보호자·이송 요원이 아는 것을 알려 달라고 부드럽게 청할 때
+  tag: 정보 수집
+  distractorsEn:
+  - shave
+  - spare
+  distractorsKo:
+  - 숨기다
+  - 빌려주다
+  chips:
+  - - share
+  decoyChips:
+  - shore
+- id: w-status
+  en: status
+  ipa: /ˈsteɪtəs/
+  ko: 상태
+  icon: board
+  example: The paperwork doesn't say much — what's her normal mental status?
+  exKo: 서류엔 별 내용이 없네요 — 평소 정신 상태는 어떠셨나요?
+  cue: 평소 의식·인지 수준을 물을 때 — 'mental ___'
+  tag: 정보 수집
+  distractorsEn:
+  - statue
+  - stature
+  distractorsKo:
+  - 조각상
+  - 키
+  chips:
+  - - sta
+    - tus
+  decoyChips:
+  - stat
+  - ue
+- id: w-understand
+  en: understand
+  ipa: /ˌʌndərˈstænd/
+  ko: 이해하다
+  icon: bulb
+  example: I noticed some things I'd like to understand better.
+  exKo: 몇 가지 알아차린 점이 있어서 더 이해하고 싶어요.
+  cue: 멍·체중 감소를 보고 판단하지 않고 사정을 알고 싶다고 할 때
+  tag: 안전·보호
+  distractorsEn:
+  - undertake
+  - understate
+  distractorsKo:
+  - 맡다
+  - 축소해 말하다
+  chips:
+  - - under
+    - stand
+  decoyChips:
+  - over
+  - take
+- id: w-leave
+  en: leave
+  ipa: /liːv/
+  ko: 나가다
+  icon: board
+  example: I'll tell you before anything you say leaves this room.
+  exKo: 말씀하신 내용이 이 방 밖으로 나가기 전에 먼저 말씀드릴게요.
+  cue: 환자가 한 말이 밖으로 전해지기 전에 먼저 알리겠다고 할 때 — 'before anything ___s this room'
+  tag: 안전·보호
+  distractorsEn:
+  - live
+  - lift
+  distractorsKo:
+  - 남다
+  - 들어오다
+  chips:
+  - - leave
+  decoyChips:
+  - live
+- id: w-say
+  en: say
+  ipa: /seɪ/
+  ko: 발언권
+  icon: speech
+  example: You'll have a say in what happens next.
+  exKo: 다음에 어떻게 할지에 어르신 의견이 들어갈 거예요.
+  cue: 다음 단계에 환자 본인의 의견이 들어간다고 할 때 — 'have a ___ in'
+  tag: 안전·보호
+  distractorsEn:
+  - sake
+  - side
+  distractorsKo:
+  - 이익
+  - 편
+  chips:
+  - - say
+  decoyChips:
+  - sea
+- id: w-goal
+  en: goal
+  ipa: /ɡoʊl/
+  ko: 목표
+  icon: star
+  example: My only goal is to make sure you're cared for.
+  exKo: 제 목표는 어르신이 돌봄을 잘 받으시도록 하는 것뿐이에요.
+  cue: 학대 의심 환자에게 추궁이 아니라 돌보려는 것임을 밝힐 때 — 'My only ___'
+  tag: 안전·보호
+  distractorsEn:
+  - role
+  - coal
+  distractorsKo:
+  - 역할
+  - 규칙
+  chips:
+  - - goal
+  decoyChips:
+  - gold
+- id: w-sure
+  en: sure
+  ipa: /ʃʊr/
+  ko: 확실한
+  icon: check
+  example: My only goal is to make sure you're cared for.
+  exKo: 제 목표는 어르신이 돌봄을 잘 받으시도록 하는 것뿐이에요.
+  cue: 꼭 그렇게 되도록 챙기겠다고 할 때 — 'make ___'
+  tag: 안전·보호
+  distractorsEn:
+  - pure
+  - sore
+  distractorsKo:
+  - 아픈
+  - 순수한
+  chips:
+  - - sure
+  decoyChips:
+  - sore
+- id: w-care
+  en: care
+  ipa: /kɛr/
+  ko: 돌봄
+  icon: cross
+  example: Comfort care is an active, caring option too.
+  exKo: 완화 돌봄도 적극적이고 정성스러운 하나의 선택지예요.
+  cue: 환자가 받는 보살핌 전체 — 목표 재설정·임종기 대화에서 가장 자주 나오는 말
+  tag: 연명·완화
+  distractorsEn:
+  - cure
+  - core
+  distractorsKo:
+  - 완치
+  - 핵심
+  chips:
+  - - care
+  decoyChips:
+  - cure
+- id: w-bruise
+  en: bruise
+  ipa: /bruːz/
+  ko: 멍
+  icon: bandage
+  example: I want to ask about some bruises I noticed on your arm.
+  exKo: 팔에 있는 멍에 대해 여쭤보고 싶어요.
+  cue: 학대·방임을 의심하게 하는, 설명과 맞지 않는 팔의 푸르스름한 자국
+  tag: 안전·보호
+  distractorsEn:
+  - burn
+  - scar
+  distractorsKo:
+  - 화상
+  - 흉터
+  chips:
+  - - bruise
+  decoyChips:
+  - brews
+- id: w-food
+  en: food
+  ipa: /fuːd/
+  ko: 음식
+  icon: board
+  example: Are you getting enough food at home?
+  exKo: 집에서 식사는 충분히 하고 계신가요?
+  cue: 방임을 가려낼 때 — 집에서 충분히 먹고 있는지
+  tag: 안전·보호
+  distractorsEn:
+  - drink
+  - fuel
+  distractorsKo:
+  - 음료
+  - 연료
+  chips:
+  - - food
+  decoyChips:
+  - feed
+- id: w-live
+  en: live
+  ipa: /lɪv/
+  ko: 살다
+  icon: home
+  example: I ask everyone this — do you feel safe where you live?
+  exKo: 모든 분께 여쭤보는 건데요 — 사시는 곳에서 안전하다고 느끼세요?
+  cue: 학대 선별 질문 — 지내는 곳에서 안전한지 'where you ___'
+  tag: 안전·보호
+  distractorsEn:
+  - leave
+  - love
+  distractorsKo:
+  - 떠나다
+  - 사랑하다
+  chips:
+  - - live
+  decoyChips:
+  - leave
+- id: w-start
+  en: start
+  ipa: /stɑːrt/
+  ko: 시작하다
+  icon: board
+  example: We'll start low and adjust carefully for your kidneys.
+  exKo: 적은 용량으로 시작해서 신장 상태에 맞춰 조절할게요.
+  cue: 노인 진통제 원칙 — 적은 용량으로 '___ low, go slow'
+  tag: 외상·통증
+  distractorsEn:
+  - stop
+  - stare
+  distractorsKo:
+  - 멈추다
+  - 늘리다
+  chips:
+  - - start
+  decoyChips:
+  - stare
+- id: w-low
+  en: low
+  ipa: /loʊ/
+  ko: 낮은
+  icon: board
+  example: We'll start low and adjust carefully for your kidneys.
+  exKo: 적은 용량으로 시작해서 신장 상태에 맞춰 조절할게요.
+  cue: 진통제를 적게 시작할 때, 또는 체온·혈압이 떨어져 있을 때
+  tag: 외상·통증
+  distractorsEn:
+  - high
+  - loose
+  distractorsKo:
+  - 높은
+  - 느슨한
+  chips:
+  - - low
+  decoyChips:
+  - law
+- id: w-adjust
+  en: adjust
+  ipa: /əˈdʒʌst/
+  ko: 조절하다
+  icon: gear
+  example: We'll start low and adjust carefully for your kidneys.
+  exKo: 적은 용량으로 시작해서 신장 상태에 맞춰 조절할게요.
+  cue: 신장 기능을 보며 용량을 조금씩 맞춰 갈 때
+  tag: 외상·통증
+  distractorsEn:
+  - adjourn
+  - adopt
+  distractorsKo:
+  - 휴정하다
+  - 채택하다
+  chips:
+  - - ad
+    - just
+  decoyChips:
+  - op
+  - journ
+- id: w-kidney
+  en: kidney
+  ipa: /ˈkɪdni/
+  ko: 신장
+  icon: stetho
+  example: We'll start low and adjust carefully for your kidneys.
+  exKo: 적은 용량으로 시작해서 신장 상태에 맞춰 조절할게요.
+  cue: 나이가 들수록 약을 걸러 내는 속도가 떨어져 진통제 용량을 줄이게 하는 장기
+  tag: 외상·통증
+  distractorsEn:
+  - liver
+  - bladder
+  distractorsKo:
+  - 간
+  - 방광
+  chips:
+  - - kid
+    - ney
+  decoyChips:
+  - kit
+  - nay
+- id: w-avoid
+  en: avoid
+  ipa: /əˈvɔɪd/
+  ko: 피하다
+  icon: shield
+  example: I'll help you avoid feeling too groggy or unsteady.
+  exKo: 너무 몽롱하거나 휘청거리지 않도록 도와드릴게요.
+  cue: 몽롱하거나 휘청거리지 않게 미리 막을 때 — 'help you ___ feeling groggy'
+  tag: 외상·통증
+  distractorsEn:
+  - allow
+  - afford
+  distractorsKo:
+  - 허락하다
+  - 감당하다
+  chips:
+  - - a
+    - void
+  decoyChips:
+  - o
+  - vide
+- id: w-groggy
+  en: groggy
+  ipa: /ˈɡrɒɡi/
+  ko: 몽롱한
+  icon: bulb
+  example: I'll help you avoid feeling too groggy or unsteady.
+  exKo: 너무 몽롱하거나 휘청거리지 않도록 도와드릴게요.
+  cue: 진통제·수면제 뒤에 멍하고 잠이 덜 깬 듯한 상태
+  tag: 외상·통증
+  distractorsEn:
+  - grumpy
+  - jumpy
+  distractorsKo:
+  - 짜증 난
+  - 신경이 곤두선
+  chips:
+  - - grog
+    - gy
+  decoyChips:
+  - grum
+  - fog
+- id: w-point
+  en: point
+  ipa: /pɔɪnt/
+  ko: 시점
+  icon: board
+  example: Tell me if you feel dizzy at any point.
+  exKo: 조금이라도 어지러우시면 언제든 말씀해 주세요.
+  cue: 언제라도 어지러우면 바로 말해 달라고 할 때 — 'at any ___'
+  tag: 외상·통증
+  distractorsEn:
+  - place
+  - pint
+  distractorsKo:
+  - 기간
+  - 횟수
+  chips:
+  - - point
+  decoyChips:
+  - paint
+- id: w-effect
+  en: side effect
+  ipa: /ˈsaɪd ɪˌfɛkt/
+  ko: 부작용
+  icon: board
+  example: We'll watch you closely for any side effects.
+  exKo: 다른 부작용이 없는지 가까이서 지켜볼게요.
+  cue: 진통제를 준 뒤 몽롱함·변비처럼 목적 밖으로 나타나는 것
+  tag: 약물
+  distractorsEn:
+  - side rail
+  - side note
+  distractorsKo:
+  - 침대 난간
+  - 주석
+  chips:
+  - - side
+  - - ef
+    - fect
+  decoyChips:
+  - sight
+  - af
+- id: w-alone
+  en: alone
+  ipa: /əˈloʊn/
+  ko: 혼자
+  icon: me
+  example: Please don't try to get up alone until we check on you.
+  exKo: 저희가 확인할 때까지 혼자 일어나려 하지 마세요.
+  cue: 낙상 위험이 큰 환자에게 혼자 일어나지 말라고 할 때 — 'don't get up ___'
+  tag: 안전·보호
+  distractorsEn:
+  - along
+  - aloud
+  distractorsKo:
+  - 큰 소리로
+  - 따라서
+  chips:
+  - - a
+    - lone
+  decoyChips:
+  - long
+  - loud
+- id: w-hear
+  en: hear
+  ipa: /hɪr/
+  ko: 듣다
+  icon: mic
+  example: You can hold her hand and speak to her — she may still hear you.
+  exKo: 손을 잡고 말을 건네셔도 돼요 — 아직 들리실 수 있어요.
+  cue: 임종기에도 마지막까지 남는다는 감각 — 가족에게 말을 건네 보라고 할 때 'she may still ___ you'
+  tag: 소통
+  distractorsEn:
+  - heal
+  - feel
+  distractorsKo:
+  - 치유되다
+  - 느끼다
+  chips:
+  - - hear
+  decoyChips:
+  - here
+- id: w-view
+  en: view
+  ipa: /vjuː/
+  ko: 시야
+  icon: magnify
+  example: I'll speak clearly and stay in your view.
+  exKo: 제가 또렷하게 말하고 시야 안에 있을게요.
+  cue: 청력이 떨어진 환자가 입 모양을 볼 수 있게 — 'stay in your ___'
+  tag: 소통
+  distractorsEn:
+  - voice
+  - reach
+  distractorsKo:
+  - 목소리
+  - 손 닿는 곳
+  chips:
+  - - view
+  decoyChips:
+  - few
+- id: w-glasses
+  en: glasses
+  ipa: /ˈɡlæsɪz/
+  ko: 안경
+  icon: magnify
+  example: Having your glasses will help you feel less confused.
+  exKo: 안경을 쓰시면 덜 혼란스러워지실 거예요.
+  cue: 섬망 예방 — 평소 쓰던 것을 돌려주면 덜 혼란스러워한다, 보청기와 짝
+  tag: 소통
+  distractorsEn:
+  - grasses
+  - gloves
+  distractorsKo:
+  - 장갑
+  - 보청기
+  chips:
+  - - glass
+    - es
+  decoyChips:
+  - grass
+  - gloves
+- id: w-less
+  en: less
+  ipa: /lɛs/
+  ko: 덜
+  icon: board
+  example: Having your glasses will help you feel less confused.
+  exKo: 안경을 쓰시면 덜 혼란스러워지실 거예요.
+  cue: 안경·보청기를 쓰면 혼란이 줄어든다고 할 때 — '___ confused'
+  tag: 인지·섬망
+  distractorsEn:
+  - more
+  - worse
+  distractorsKo:
+  - 더
+  - 더 나쁜
+  chips:
+  - - less
+  decoyChips:
+  - loss
+- id: w-confused
+  en: confused
+  ipa: /kənˈfjuːzd/
+  ko: 혼란스러운
+  icon: bulb
+  example: Having your glasses will help you feel less confused.
+  exKo: 안경을 쓰시면 덜 혼란스러워지실 거예요.
+  cue: 지금 어디 있는지 헷갈려하는 환자의 상태 — 'if she seems more ___'
+  tag: 인지·섬망
+  distractorsEn:
+  - confusing
+  - concerned
+  distractorsKo:
+  - 걱정하는
+  - 헷갈리게 하는
+  chips:
+  - - con
+    - fused
+  decoyChips:
+  - cerned
+  - fusing
+- id: w-directive
+  en: directive
+  ipa: /dəˈrɛktɪv/
+  ko: 사전의향서
+  icon: board
+  example: Do you know if he has a POLST or advance directive?
+  exKo: POLST나 사전의료의향서가 있으신지 아시나요?
+  cue: 의식을 잃었을 때 원하는 치료를 미리 적어 둔 법적 문서 — 'advance ___'
+  tag: 연명·완화
+  distractorsEn:
+  - direction
+  - detective
+  distractorsKo:
+  - 방향
+  - 형사
+  chips:
+  - - di
+    - rec
+    - tive
+  decoyChips:
+  - tion
+  - dec
+- id: w-matter
+  en: matter
+  ipa: /ˈmætər/
+  ko: 중요하다
+  icon: board
+  example: What matters most to him about his care?
+  exKo: 그분께 치료에서 가장 중요한 게 뭘까요?
+  cue: 환자가 치료에서 가장 소중히 여기는 것을 물을 때 — 'What ___s most to him?'
+  tag: 연명·완화
+  distractorsEn:
+  - mutter
+  - master
+  distractorsKo:
+  - 중얼거리다
+  - 익히다
+  chips:
+  - - mat
+    - ter
+  decoyChips:
+  - mut
+  - mas
+- id: w-honor
+  en: honor
+  ipa: /ˈɒnər/
+  ko: (뜻을) 지키다
+  icon: star
+  example: We'll honor his wishes as best we can.
+  exKo: 저희가 할 수 있는 한 그분의 뜻을 지켜 드릴게요.
+  cue: 환자가 미리 밝혀 둔 바람대로 해 드리겠다고 할 때 — '___ his wishes'
+  tag: 연명·완화
+  distractorsEn:
+  - hover
+  - harbor
+  distractorsKo:
+  - 맴돌다
+  - 품다
+  chips:
+  - - hon
+    - or
+  decoyChips:
+  - 'on'
+  - our
+- id: w-wish
+  en: wish
+  ipa: /wɪʃ/
+  ko: 뜻
+  icon: star
+  example: We'll honor his wishes as best we can.
+  exKo: 저희가 할 수 있는 한 그분의 뜻을 지켜 드릴게요.
+  cue: 환자가 원했던 치료 방향 — 'honor his ___es'
+  tag: 연명·완화
+  distractorsEn:
+  - whim
+  - wash
+  distractorsKo:
+  - 기억
+  - 걱정
+  chips:
+  - - wish
+  decoyChips:
+  - wash
+- id: w-copy
+  en: copy
+  ipa: /ˈkɒpi/
+  ko: 사본
+  icon: board
+  example: Do you have a copy of the directive with you today?
+  exKo: 오늘 사전의향서 사본을 가지고 오셨나요?
+  cue: 보호자가 가져온 사전의향서를 차트에 넣으려 할 때 — 'a ___ of the directive'
+  tag: 연명·완화
+  distractorsEn:
+  - coffee
+  - cover
+  distractorsKo:
+  - 원본
+  - 표지
+  chips:
+  - - co
+    - py
+  decoyChips:
+  - ca
+  - pi
+- id: w-respect
+  en: respect
+  ipa: /rɪˈspɛkt/
+  ko: 존중하다
+  icon: star
+  example: We want to respect his wishes and support your family.
+  exKo: 그분의 뜻을 존중하고 가족분들을 지지해드리고 싶어요.
+  cue: 환자의 뜻과 가족의 결정을 가볍게 여기지 않겠다고 할 때
+  tag: 연명·완화
+  distractorsEn:
+  - inspect
+  - expect
+  distractorsKo:
+  - 검사하다
+  - 기대하다
+  chips:
+  - - re
+    - spect
+  decoyChips:
+  - in
+  - ex
+- id: w-temperature
+  en: temperature
+  ipa: /ˈtɛmprətʃər/
+  ko: 체온
+  icon: monitor
+  example: Her low temperature and pressure worry me — we're acting fast.
+  exKo: 체온이 낮고 혈압도 걱정돼서 저희가 빠르게 움직이고 있어요.
+  cue: 노인 패혈증에서 오르기는커녕 오히려 떨어지기도 하는 활력징후
+  tag: 감염·패혈증
+  distractorsEn:
+  - temperament
+  - pressure
+  distractorsKo:
+  - 기질
+  - 맥박
+  chips:
+  - - tem
+    - per
+    - a
+    - ture
+  decoyChips:
+  - pre
+  - sure
+- id: w-pressure
+  en: pressure
+  ipa: /ˈprɛʃər/
+  ko: 혈압
+  icon: monitor
+  example: Her low temperature and pressure worry me — we're acting fast.
+  exKo: 체온이 낮고 혈압도 걱정돼서 저희가 빠르게 움직이고 있어요.
+  cue: 패혈성 쇼크에서 떨어지는 활력징후 — 체온과 함께 적는 말
+  tag: 감염·패혈증
+  distractorsEn:
+  - pleasure
+  - presence
+  distractorsKo:
+  - 맥박
+  - 체온
+  chips:
+  - - pres
+    - sure
+  decoyChips:
+  - plea
+  - sence
+- id: w-worry
+  en: worry
+  ipa: /ˈwʌri/
+  ko: 걱정시키다
+  icon: bulb
+  example: Her low temperature and pressure worry me — we're acting fast.
+  exKo: 체온이 낮고 혈압도 걱정돼서 저희가 빠르게 움직이고 있어요.
+  cue: 수치가 나빠 서두르는 이유를 보호자에게 솔직히 말할 때 — 'These numbers ___ me'
+  tag: 감염·패혈증
+  distractorsEn:
+  - hurry
+  - weary
+  distractorsKo:
+  - 서두르다
+  - 지치다
+  chips:
+  - - wor
+    - ry
+  decoyChips:
+  - hur
+  - ried
+- id: w-sepsis
+  en: sepsis
+  ipa: /ˈsɛpsɪs/
+  ko: 패혈증
+  icon: cross
+  example: In older adults sepsis can look different, and we're on it.
+  exKo: 노인분들은 패혈증이 다르게 나타날 수 있는데, 저희가 확인하고 있어요.
+  cue: 감염에 대한 몸의 반응이 장기를 망가뜨리는 응급 — 노인에게는 열 없이 오기도
+  tag: 감염·패혈증
+  distractorsEn:
+  - necrosis
+  - psoriasis
+  distractorsKo:
+  - 괴사
+  - 건선
+  chips:
+  - - sep
+    - sis
+  decoyChips:
+  - sept
+  - sys
+- id: w-treatment
+  en: treatment
+  ipa: /ˈtriːtmənt/
+  ko: 치료
+  icon: pill
+  example: We're starting treatment right away.
+  exKo: 바로 치료를 시작할게요.
+  cue: 원인이 보이면 지체 없이 시작하는 것 — 수액·항생제 같은
+  tag: 감염·패혈증
+  distractorsEn:
+  - triage
+  - trial
+  distractorsKo:
+  - 환자 분류
+  - 임상시험
+  chips:
+  - - treat
+    - ment
+  decoyChips:
+  - trea
+  - mint
+- id: w-fluid
+  en: fluid
+  ipa: /ˈfluːɪd/
+  ko: 수액
+  icon: pill
+  example: We're giving fluids and antibiotics right away.
+  exKo: 수액이랑 항생제를 바로 투여할게요.
+  cue: 패혈증 초기에 혈압을 올리려 정맥으로 빠르게 넣는 것 — 항생제와 함께
+  tag: 감염·패혈증
+  distractorsEn:
+  - flush
+  - filling
+  distractorsKo:
+  - 혈액
+  - 영양제
+  chips:
+  - - flu
+    - id
+  decoyChips:
+  - flo
+  - uid
+- id: w-explain
+  en: explain
+  ipa: /ɪkˈspleɪn/
+  ko: 설명하다
+  icon: speech
+  example: I'll explain each step as we move quickly.
+  exKo: 빠르게 움직이는 동안 단계마다 설명해드릴게요.
+  cue: 빠르게 처치하면서도 겁먹은 가족에게 지금 무엇을 하는지 풀어 말해 줄 때
+  tag: 소통
+  distractorsEn:
+  - explore
+  - complain
+  distractorsKo:
+  - 탐색하다
+  - 불평하다
+  chips:
+  - - ex
+    - plain
+  decoyChips:
+  - com
+  - plore
+- id: w-bump
+  en: bump
+  ipa: /bʌmp/
+  ko: 부딪힘
+  icon: bandage
+  example: Because she's on blood thinners, we take head bumps seriously.
+  exKo: 혈액 희석제를 복용 중이시라서 머리 부딪힘도 저희는 심각하게 받아들여요.
+  cue: 항응고제를 먹는 노인은 이것 하나로도 뇌출혈 — 'head ___s'
+  tag: 외상·통증
+  distractorsEn:
+  - lump
+  - bruise
+  distractorsKo:
+  - 멍
+  - 찰과상
+  chips:
+  - - bump
+  decoyChips:
+  - pump
+- id: w-scan
+  en: scan
+  ipa: /skæn/
+  ko: 영상 촬영
+  icon: lab
+  example: We'll get a scan right away to rule out bleeding.
+  exKo: 출혈이 없는지 바로 영상 촬영을 할게요.
+  cue: 머리를 부딪힌 항응고제 환자에게 곧바로 찍는 CT
+  tag: 외상·통증
+  distractorsEn:
+  - scab
+  - scope
+  distractorsKo:
+  - 딱지
+  - 내시경
+  chips:
+  - - scan
+  decoyChips:
+  - scam
+- id: w-bleed
+  en: bleeding
+  ipa: /ˈbliːdɪŋ/
+  ko: 출혈
+  icon: cross
+  example: We'll get a scan right away to rule out bleeding.
+  exKo: 출혈이 없는지 바로 영상 촬영을 할게요.
+  cue: 항응고제 환자가 머리를 부딪혔을 때 CT로 가려내려는 것 — 'rule out ___'
+  tag: 외상·통증
+  distractorsEn:
+  - breathing
+  - bleaching
+  distractorsKo:
+  - 호흡
+  - 멍
+  chips:
+  - - bleed
+    - ing
+  decoyChips:
+  - breed
+  - blood
+- id: w-drowsy
+  en: drowsiness
+  ipa: /ˈdraʊzinəs/
+  ko: 졸림
+  icon: bulb
+  example: Watch for any drowsiness or confusion — tell me immediately.
+  exKo: 졸리거나 혼란스러운 모습이 보이면 바로 알려 주세요.
+  cue: 머리를 부딪힌 뒤 자꾸 잠에 빠져드는 것 — 두개내출혈의 경고 신호
+  tag: 외상·통증
+  distractorsEn:
+  - dizziness
+  - drowning
+  distractorsKo:
+  - 어지럼증
+  - 익사
+  chips:
+  - - drow
+    - si
+    - ness
+  decoyChips:
+  - dizzi
+  - row
+- id: w-tell
+  en: tell
+  ipa: /tɛl/
+  ko: 알려 주다
+  icon: speech
+  example: Watch for any drowsiness or confusion — tell me immediately.
+  exKo: 졸리거나 혼란스러운 모습이 보이면 바로 알려 주세요.
+  cue: 보호자에게 이상한 모습이 보이면 곧바로 불러 달라고 할 때 — '___ me immediately'
+  tag: 소통
+  distractorsEn:
+  - sell
+  - yell
+  distractorsKo:
+  - 팔다
+  - 소리치다
+  chips:
+  - - tell
+  decoyChips:
+  - tall
+- id: w-immediately
+  en: immediately
+  ipa: /ɪˈmiːdiətli/
+  ko: 즉시
+  icon: calendar
+  example: Watch for any drowsiness or confusion — tell me immediately.
+  exKo: 졸리거나 혼란스러운 모습이 보이면 바로 알려 주세요.
+  cue: 졸림·혼돈이 보이면 지체 없이 알려 달라고 할 때 — right away와 같은 뜻
+  tag: 외상·통증
+  distractorsEn:
+  - immensely
+  - eventually
+  distractorsKo:
+  - 엄청나게
+  - 결국
+  chips:
+  - - im
+    - medi
+    - ate
+    - ly
+  decoyChips:
+  - en
+  - dia
+- id: w-monitor
+  en: monitor
+  ipa: /ˈmɒnɪtər/
+  ko: 관찰하다
+  icon: monitor
+  example: We'll monitor her closely for the next few hours.
+  exKo: 앞으로 몇 시간 동안 가까이서 지켜볼게요.
+  cue: 몇 시간 동안 의식 변화가 없는지 곁에서 계속 지켜볼 때
+  tag: 외상·통증
+  distractorsEn:
+  - mention
+  - mentor
+  distractorsKo:
+  - 언급하다
+  - 지도하다
+  chips:
+  - - mon
+    - i
+    - tor
+  decoyChips:
+  - men
+  - tion
+- id: w-hurt
+  en: hurt
+  ipa: /hɜːrt/
+  ko: 다치게 하다
+  icon: cross
+  example: You're safe here — I'm not going to hurt you.
+  exKo: 여기서는 안전해요 — 제가 다치게 하지 않을게요.
+  cue: 섬망으로 공격적인 환자를 안심시킬 때 — 'I'm not going to ___ you'
+  tag: 인지·섬망
+  distractorsEn:
+  - hunt
+  - hug
+  distractorsKo:
+  - 안아 주다
+  - 쫓다
+  chips:
+  - - hurt
+  decoyChips:
+  - hut
+- id: w-noise
+  en: noise
+  ipa: /nɔɪz/
+  ko: 소음
+  icon: speaker
+  example: Let's lower the noise so you feel calmer.
+  exKo: 소음을 줄여서 좀 더 편안해지시게 할게요.
+  cue: 섬망 환자 주변에서 줄여야 하는 것 — 알람 소리·말소리
+  tag: 인지·섬망
+  distractorsEn:
+  - nose
+  - voice
+  distractorsKo:
+  - 코
+  - 목소리
+  chips:
+  - - noise
+  decoyChips:
+  - nose
+- id: w-comfort
+  en: comfort
+  ipa: /ˈkʌmfərt/
+  ko: 편안함
+  icon: cross
+  example: Let's talk about what would give him the most comfort.
+  exKo: 그분께 가장 편안함을 줄 수 있는 방법을 함께 이야기해볼게요.
+  cue: 완화 돌봄의 중심 — 연명 치료 대신 괴로움을 덜어 주는 쪽에 초점을 둘 때
+  tag: 연명·완화
+  distractorsEn:
+  - effort
+  - control
+  distractorsKo:
+  - 통제
+  - 노력
+  chips:
+  - - com
+    - fort
+  decoyChips:
+  - con
+  - ford
+- id: w-wrong
+  en: wrong
+  ipa: /rɔːŋ/
+  ko: 잘못된
+  icon: board
+  example: There's no wrong choice here — we'll support whatever you decide.
+  exKo: 여기엔 잘못된 선택이 없어요 — 어떤 결정을 하시든 저희가 지지할게요.
+  cue: 가족이 결정을 두고 죄책감을 느끼지 않게 — 'There's no ___ choice'
+  tag: 연명·완화
+  distractorsEn:
+  - strong
+  - right
+  distractorsKo:
+  - 옳은
+  - 강한
+  chips:
+  - - wrong
+  decoyChips:
+  - ring
+- id: w-choice
+  en: choice
+  ipa: /tʃɔɪs/
+  ko: 선택
+  icon: board
+  example: There's no wrong choice here — we'll support whatever you decide.
+  exKo: 여기엔 잘못된 선택이 없어요 — 어떤 결정을 하시든 저희가 지지할게요.
+  cue: 치료를 이어 갈지, 편안함에 집중할지 가족이 고르는 것
+  tag: 연명·완화
+  distractorsEn:
+  - voice
+  - chance
+  distractorsKo:
+  - 목소리
+  - 기회
+  chips:
+  - - choice
+  decoyChips:
+  - chose
+- id: w-support
+  en: support
+  ipa: /səˈpɔːrt/
+  ko: 지지하다
+  icon: star
+  example: There's no wrong choice here — we'll support whatever you decide.
+  exKo: 여기엔 잘못된 선택이 없어요 — 어떤 결정을 하시든 저희가 지지할게요.
+  cue: 가족이 무엇을 정하든 곁에서 함께하겠다고 할 때
+  tag: 연명·완화
+  distractorsEn:
+  - suppose
+  - report
+  distractorsKo:
+  - 추측하다
+  - 보고하다
+  chips:
+  - - sup
+    - port
+  decoyChips:
+  - pose
+  - re
+- id: w-decide
+  en: decide
+  ipa: /dɪˈsaɪd/
+  ko: 결정하다
+  icon: board
+  example: There's no wrong choice here — we'll support whatever you decide.
+  exKo: 여기엔 잘못된 선택이 없어요 — 어떤 결정을 하시든 저희가 지지할게요.
+  cue: 가족이 치료 방향을 정하는 것 — 'whatever you ___'
+  tag: 연명·완화
+  distractorsEn:
+  - divide
+  - decline
+  distractorsKo:
+  - 나누다
+  - 거절하다
+  chips:
+  - - de
+    - cide
+  decoyChips:
+  - di
+  - vide
+- id: w-illness
+  en: illness
+  ipa: /ˈɪlnəs/
+  ko: 질병
+  icon: cross
+  example: What matters most to him at this stage of his illness?
+  exKo: 이 단계에서 그분께 가장 중요한 게 뭘까요?
+  cue: 말기 환자에게 병의 이 단계에서 무엇이 중요한지 물을 때 — 'this stage of his ___'
+  tag: 연명·완화
+  distractorsEn:
+  - wellness
+  - illusion
+  distractorsKo:
+  - 건강
+  - 착각
+  chips:
+  - - ill
+    - ness
+  decoyChips:
+  - well
+  - lus
+- id: w-strain
+  en: strain
+  ipa: /streɪn/
+  ko: 부담
+  icon: bulb
+  example: Your heart and kidneys are both under strain — we're balancing them.
+  exKo: 심장과 신장 모두 부담을 받고 있어서, 저희가 균형을 맞추고 있어요.
+  cue: 심부전과 신부전이 서로 짐을 지우는 상태 — 'under ___'
+  tag: 증상
+  distractorsEn:
+  - stain
+  - train
+  distractorsKo:
+  - 얼룩
+  - 회복
+  chips:
+  - - strain
+  decoyChips:
+  - stain
+- id: w-bother
+  en: bother
+  ipa: /ˈbɑːðər/
+  ko: 괴롭히다
+  icon: bulb
+  example: Tell me which symptom is bothering you most.
+  exKo: 어떤 증상이 가장 힘드신지 알려 주세요.
+  cue: 여러 증상 가운데 가장 힘든 것부터 물을 때 — 'Which symptom is ___ing you most?'
+  tag: 증상
+  distractorsEn:
+  - gather
+  - borrow
+  distractorsKo:
+  - 모으다
+  - 빌리다
+  chips:
+  - - both
+    - er
+  decoyChips:
+  - bath
+  - broth
+- id: w-swollen
+  en: swollen
+  ipa: /ˈswoʊlən/
+  ko: 부은
+  icon: monitor
+  example: Your legs are swollen because your heart isn't pumping well.
+  exKo: 심장이 잘 뛰지 못해서 다리가 부으신 거예요.
+  cue: 심장이 피를 잘 짜내지 못해 다리에 물이 찬 모양
+  tag: 증상
+  distractorsEn:
+  - swallowed
+  - shrunken
+  distractorsKo:
+  - 삼킨
+  - 쪼그라든
+  chips:
+  - - swol
+    - len
+  decoyChips:
+  - swal
+  - lon
+- id: w-problem
+  en: problem
+  ipa: /ˈprɒbləm/
+  ko: 문제
+  icon: board
+  example: Let's figure out together which problem to treat first.
+  exKo: 어떤 문제를 먼저 치료할지 함께 정해볼게요.
+  cue: 여러 만성질환 가운데 먼저 다룰 것을 함께 정할 때 — 'which ___ to treat first'
+  tag: 증상
+  distractorsEn:
+  - protocol
+  - process
+  distractorsKo:
+  - 과정
+  - 규약
+  chips:
+  - - prob
+    - lem
+  decoyChips:
+  - pro
+  - gram
+- id: w-manage
+  en: manage
+  ipa: /ˈmænɪdʒ/
+  ko: 관리하다
+  icon: gear
+  example: We'll manage your pain while you wait for surgery.
+  exKo: 수술을 기다리시는 동안 통증을 관리해 드릴게요.
+  cue: 수술을 기다리는 동안 통증을 계속 다스려 줄 때 — '___ your pain'
+  tag: 외상·통증
+  distractorsEn:
+  - massage
+  - measure
+  distractorsKo:
+  - 마사지하다
+  - 재다
+  chips:
+  - - man
+    - age
+  decoyChips:
+  - mass
+  - mess
+- id: w-wait
+  en: wait
+  ipa: /weɪt/
+  ko: 기다리다
+  icon: calendar
+  example: We'll manage your pain while you wait for surgery.
+  exKo: 수술을 기다리시는 동안 통증을 관리해 드릴게요.
+  cue: 수술실이 날 때까지 — '___ for surgery'
+  tag: 외상·통증
+  distractorsEn:
+  - wake
+  - want
+  distractorsKo:
+  - 깨다
+  - 원하다
+  chips:
+  - - wait
+  decoyChips:
+  - weight
+- id: w-surgery
+  en: surgery
+  ipa: /ˈsɜːrdʒəri/
+  ko: 수술
+  icon: scalpel
+  example: We'll manage your pain while you wait for surgery.
+  exKo: 수술을 기다리시는 동안 통증을 관리해 드릴게요.
+  cue: 고관절 골절 노인이 대개 입원 후 하루 이틀 안에 받는 치료 — 정형외과가 맡는
+  tag: 외상·통증
+  distractorsEn:
+  - surgeon
+  - sorcery
+  distractorsKo:
+  - 외과 의사
+  - 마술
+  chips:
+  - - sur
+    - ger
+    - y
+  decoyChips:
+  - geon
+  - sor
+- id: w-hydrate
+  en: hydrated
+  ipa: /ˈhaɪdreɪtɪd/
+  ko: 수분을 섭취한
+  icon: coffee
+  example: Staying oriented and hydrated helps prevent confusion.
+  exKo: 지남력을 유지하고 수분을 섭취하면 혼돈을 예방하는 데 도움이 돼요.
+  cue: 섬망을 막으려 물을 충분히 마신 상태 — 'stay ___'
+  tag: 인지·섬망
+  distractorsEn:
+  - dehydrated
+  - heated
+  distractorsKo:
+  - 탈수된
+  - 과열된
+  chips:
+  - - hy
+    - drat
+    - ed
+  decoyChips:
+  - de
+  - hi
+- id: w-prevent
+  en: prevent
+  ipa: /prɪˈvɛnt/
+  ko: 예방하다
+  icon: shield
+  example: Staying oriented and hydrated helps prevent confusion.
+  exKo: 지남력을 유지하고 수분을 섭취하면 혼돈을 예방하는 데 도움이 돼요.
+  cue: 지남력·수분을 챙겨 섬망이 생기지 않게 미리 막을 때
+  tag: 인지·섬망
+  distractorsEn:
+  - present
+  - provide
+  distractorsKo:
+  - 제시하다
+  - 제공하다
+  chips:
+  - - pre
+    - vent
+  decoyChips:
+  - sent
+  - pro
+- id: w-hip
+  en: hip
+  ipa: /hɪp/
+  ko: 고관절
+  icon: bandage
+  example: Your hip fracture needs surgery, but we'll keep you comfortable until then.
+  exKo: 고관절 골절이라 수술이 필요하지만, 그때까지 편안하게 지내시도록 도와드릴게요.
+  cue: 노인이 옆으로 넘어질 때 가장 잘 부러지는, 넓적다리뼈 윗머리의 관절
+  tag: 외상·통증
+  distractorsEn:
+  - pelvis
+  - thigh
+  distractorsKo:
+  - 골반
+  - 허벅지
+  chips:
+  - - hip
+  decoyChips:
+  - hop
+- id: w-fracture
+  en: fracture
+  ipa: /ˈfræktʃər/
+  ko: 골절
+  icon: bandage
+  example: Your hip fracture needs surgery, but we'll keep you comfortable until then.
+  exKo: 고관절 골절이라 수술이 필요하지만, 그때까지 편안하게 지내시도록 도와드릴게요.
+  cue: 뼈에 금이 가거나 부러진 것 — 넘어진 노인의 고관절에 흔하다
+  tag: 외상·통증
+  distractorsEn:
+  - fraction
+  - dislocation
+  distractorsKo:
+  - 탈구
+  - 염좌
+  chips:
+  - - frac
+    - ture
+  decoyChips:
+  - tion
+  - frag
+- id: w-comfortable
+  en: comfortable
+  ipa: /ˈkʌmfərtəbl/
+  ko: 편안한
+  icon: cross
+  example: We'll focus on keeping her comfortable and peaceful.
+  exKo: 편안하고 평온하게 지내실 수 있도록 초점을 맞출게요.
+  cue: 임종이 가까운 환자에게 가족이 가장 바라는 상태 — 통증 없이
+  tag: 연명·완화
+  distractorsEn:
+  - comparable
+  - controllable
+  distractorsKo:
+  - 비슷한
+  - 조절 가능한
+  chips:
+  - - com
+    - fort
+    - a
+    - ble
+  decoyChips:
+  - par
+  - con
+- id: w-peaceful
+  en: peaceful
+  ipa: /ˈpiːsfəl/
+  ko: 평온한
+  icon: bulb
+  example: We'll focus on keeping her comfortable and peaceful.
+  exKo: 편안하고 평온하게 지내실 수 있도록 초점을 맞출게요.
+  cue: 임종기 병실 — 조명을 낮추고 조용한, 괴로움 없는 마지막
+  tag: 연명·완화
+  distractorsEn:
+  - powerful
+  - painful
+  distractorsKo:
+  - 괴로운
+  - 강력한
+  chips:
+  - - peace
+    - ful
+  decoyChips:
+  - piece
+  - pain
+- id: w-hold
+  en: hold
+  ipa: /hoʊld/
+  ko: 잡다
+  icon: me
+  example: You can hold her hand and speak to her — she may still hear you.
+  exKo: 손을 잡고 말을 건네셔도 돼요 — 아직 들리실 수 있어요.
+  cue: 임종 직전 가족에게 손을 잡아 드려도 된다고 할 때 — '___ her hand'
+  tag: 연명·완화
+  distractorsEn:
+  - fold
+  - shake
+  distractorsKo:
+  - 접다
+  - 흔들다
+  chips:
+  - - hold
+  decoyChips:
+  - hole
+- id: w-goodbye
+  en: goodbye
+  ipa: /ˌɡʊdˈbaɪ/
+  ko: 작별
+  icon: me
+  example: It's okay to say goodbye in whatever way feels right to you.
+  exKo: 어떤 방식으로든 편하게 작별 인사를 하셔도 괜찮아요.
+  cue: 임종 직전 가족이 마지막 인사를 나누는 것 — 'say ___'
+  tag: 연명·완화
+  distractorsEn:
+  - good night
+  - goodwill
+  distractorsKo:
+  - 잘 자요
+  - 선의
+  chips:
+  - - good
+    - bye
+  decoyChips:
+  - buy
+  - god
+- id: w-slowly
+  en: slowly
+  ipa: /ˈsloʊli/
+  ko: 천천히
+  icon: speech
+  example: I'll face you and speak slowly — let me know if this is clearer.
+  exKo: 제가 마주 보고 천천히 말씀드릴게요 — 이게 더 잘 들리시면 말씀해 주세요.
+  cue: 청력이 떨어진 환자에게 서두르지 않고 또박또박 — 'speak ___'
+  tag: 소통
+  distractorsEn:
+  - lowly
+  - slightly
+  distractorsKo:
+  - 살짝
+  - 빠르게
+  chips:
+  - - slow
+    - ly
+  decoyChips:
+  - low
+  - sly
+- id: w-dim
+  en: dim
+  ipa: /dɪm/
+  ko: (조명을) 낮추다
+  icon: bulb
+  example: Let's dim the lights and keep things calm around you.
+  exKo: 조명을 낮추고 주변을 차분하게 유지할게요.
+  cue: 섬망 환자나 임종 병실에서 밝은 불빛을 줄일 때 — '___ the lights'
+  tag: 인지·섬망
+  distractorsEn:
+  - dip
+  - dump
+  distractorsKo:
+  - 끄다
+  - 켜다
+  chips:
+  - - dim
+  decoyChips:
+  - dime
+situations:
+- title: 노인 낙상 후 문진
+  sentences:
+  - en: Can you tell me what happened right before you fell?
+    ko: 넘어지시기 직전에 무슨 일이 있었는지 말씀해 주시겠어요?
+    chunks:
+    - Can you tell me
+    - what happened
+    - right before
+    - you fell
+    - '?'
+    words:
+    - w-happen
+    - w-fall
+    goal: 1
+  - en: Do you remember feeling dizzy or faint before you fell?
+    ko: 넘어지시기 전에 어지럽거나 아찔한 느낌이 있으셨나요?
+    chunks:
+    - Do you remember
+    - feeling dizzy
+    - or faint
+    - before you fell
+    - '?'
+    words:
+    - w-remember
+    - w-dizzy
+    - w-faint
+    - w-fall
+    goal: 1
+  - en: Did you lose consciousness at any point?
+    ko: 잠깐이라도 의식을 잃으신 적이 있나요?
+    chunks:
+    - Did you lose
+    - consciousness
+    - at any point
+    - '?'
+    words:
+    - w-lose
+    - w-consciousness
+    goal: 1
+  - en: Did you trip on something, or did your legs just give out?
+    ko: 뭔가에 걸려 넘어지신 건가요, 아니면 다리에 힘이 풀리신 건가요?
+    chunks:
+    - Did you trip
+    - on something
+    - ', or did your legs'
+    - just give out
+    - '?'
+    words:
+    - w-trip
+    - w-leg
+    - w-give
+    goal: 1
+  - en: Let's go over the medications you take.
+    ko: 복용하시는 약들을 함께 살펴볼게요.
+    chunks:
+    - Let's go over
+    - the medications
+    - you take
+    - .
+    words:
+    - w-medication
+    goal: 2
+  - en: Have you fallen before in the past year?
+    ko: 지난 1년 동안 넘어지신 적이 있으신가요?
+    chunks:
+    - Have you fallen
+    - before
+    - in the past year
+    - '?'
+    words:
+    - w-fall
+    goal: 2
+  - en: Are you currently taking any blood thinners or sleep medication?
+    ko: 현재 혈액 희석제나 수면제를 복용하고 계신가요?
+    chunks:
+    - Are you
+    - currently taking
+    - any blood thinners
+    - or sleep medication
+    - '?'
+    words:
+    - w-thinner
+    - w-medication
+    goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-lose
+    - w-consciousness
+    - w-leg
+    - w-give
+    - w-thinner
+    pairs:
+    - - lose
+      - consciousness
+    - - my legs
+      - gave out
+    - - blood
+      - thinners
+    decoys:
+    - fainted
+    why: 정신을 잃은 것은 lose consciousness, 걸린 게 아니라 다리에 힘이 풀린 것은 legs gave out, 항응고제를 환자에게 쉽게 부를 때는 blood thinners예요.
+  - kind: context
+    words:
+    - w-lose
+    - w-consciousness
+    - w-trip
+    scenes:
+    - who: 차트 기록
+      icon: board
+      en: Pt denies LOC; states she tripped on a rug.
+      ok: true
+    - who: 의사에게 보고
+      icon: speech
+      en: She denies any LOC and says she tripped on a rug.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Any LOC with the fall?
+      ok: false
+      fix: Did you black out or lose consciousness at any point?
+    why: LOC(loss of consciousness)는 차트와 의료진끼리 쓰는 약어예요. 환자에게는 black out, lose consciousness처럼 풀어서 물어야 정확한 답이 나와요.
+- title: 다약제 복용력 정리
+  sentences:
+  - en: Do you have a list or the bottles with you?
+    ko: 약 목록이나 약병을 가지고 계신가요?
+    chunks:
+    - Do you have
+    - a list
+    - or the bottles
+    - with you
+    - '?'
+    words:
+    - w-list
+    - w-bottle
+    goal: 1
+  - en: Let's include vitamins and anything you buy over the counter.
+    ko: 비타민이랑 약국에서 직접 사신 약도 포함해서 말씀해 주세요.
+    chunks:
+    - Let's include vitamins
+    - and anything
+    - you buy
+    - over the counter
+    - .
+    words:
+    - w-include
+    - w-vitamin
+    - w-buy
+    - w-counter
+    goal: 1
+  - en: Take your time — we'll go one by one.
+    ko: 천천히 하셔도 돼요 — 하나씩 짚어볼게요.
+    chunks:
+    - Take your
+    - time
+    - — we'll
+    - go
+    - one by one
+    - .
+    words: []
+    goal: 2
+  - en: How long have you been taking this one?
+    ko: 이 약은 얼마나 오래 복용하고 계셨나요?
+    chunks:
+    - How long
+    - have you been taking
+    - this one
+    - '?'
+    words: []
+    goal: 2
+  - en: Is this medication for your blood pressure or something else?
+    ko: 이 약은 혈압 때문인가요, 아니면 다른 이유인가요?
+    chunks:
+    - Is this medication
+    - for your blood pressure
+    - or something
+    - else
+    - '?'
+    words:
+    - w-medication
+    goal: 1
+  - en: It's okay if you don't remember every dose, we can call the pharmacy.
+    ko: 복용량이 매번 기억 안 나셔도 괜찮아요 — 약국에 전화해서 확인할 수 있어요.
+    chunks:
+    - It's okay
+    - if you don't remember
+    - every dose
+    - ', we can call'
+    - the pharmacy
+    - .
+    words:
+    - w-remember
+    - w-dose
+    - w-pharmacy
+    goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-medication
+    - w-dose
+    cue: 'Patient: "The sleeping pill? Only when I really can''t sleep — maybe twice a month."'
+    scale:
+    - occasionally
+    - most days
+    - every day
+    answerAt: 0
+    why: 한 달에 두어 번, 필요할 때만 먹으면 occasionally 쪽이에요. 차트에는 as needed(PRN)로 적고, 매일 먹는 약과 따로 정리해야 약을 조정할 때 헷갈리지 않아요.
+    example: She takes the sleeping pill only occasionally.
+    exKo: 수면제는 가끔만 드세요.
+  - kind: swap
+    words:
+    - w-counter
+    - w-buy
+    - w-include
+    who: 환자에게 · 비처방약 확인
+    icon: me
+    before:
+    - 'Do you take '
+    - OTC meds
+    - ' for pain or sleep?'
+    options:
+    - anything over the counter
+    - OTC meds
+    - nonprescription agents
+    answer: anything over the counter
+    notes:
+      anything over the counter: 환자도 쓰는 일상어. anything이라 진통제·수면 보조제를 폭넓게 떠올리게 한다.
+      OTC meds: 의료진끼리 흔히 쓰는 약어. 풀어 말하는 편이 노인 환자에게 확실하다.
+      nonprescription agents: 문서·교과서 말투라 대화에서는 딱딱하다.
+    why: 비처방약은 환자가 '약'으로 여기지 않아 빠뜨리기 쉬워요. over the counter처럼 익숙한 말로, anything을 붙여 넓게 물어요.
+- title: 청력저하 환자 소통
+  sentences:
+  - en: I'll face you and speak slowly — let me know if this is clearer.
+    ko: 제가 마주 보고 천천히 말씀드릴게요 — 이게 더 잘 들리시면 말씀해 주세요.
+    chunks:
+    - I'll face you
+    - and speak slowly
+    - — let me know
+    - if this is clearer
+    - .
+    words:
+    - w-face
+    - w-speak
+    - w-clear
+    - w-slowly
+    goal: 1
+  - en: Would it help if I wrote this down for you?
+    ko: 적어서 보여드리면 도움이 될까요?
+    chunks:
+    - Would it help
+    - if I wrote
+    - this down
+    - for you
+    - '?'
+    words:
+    - w-write
+    goal: 1
+  - en: Just raise your hand if you miss something.
+    ko: 놓치신 부분이 있으면 그냥 손을 들어 주세요.
+    chunks:
+    - Just raise your hand
+    - if you miss
+    - something
+    - .
+    words:
+    - w-raise
+    - w-miss
+    goal: 2
+  - en: Let me sit where you can see my face clearly.
+    ko: 제 얼굴이 잘 보이는 자리에 앉을게요.
+    chunks:
+    - Let me sit
+    - where you can see
+    - my face
+    - clearly
+    - .
+    words: []
+    goal: 1
+  - en: Does that sound clearer, or should I write it down?
+    ko: 이게 더 잘 들리세요, 아니면 적어드릴까요?
+    chunks:
+    - Does that sound
+    - clearer
+    - ', or should I'
+    - write it down
+    - '?'
+    words:
+    - w-clear
+    - w-write
+    goal: 2
+  - en: Let's check if your hearing aids are in and working.
+    ko: 보청기가 끼워져 있고 제대로 작동하는지 확인해볼게요.
+    chunks:
+    - Let's check
+    - if your hearing aids
+    - are in
+    - and working
+    - .
+    words:
+    - w-aid
+    goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-aid
+    - w-write
+    - w-raise
+    pairs:
+    - - hearing
+      - aids
+    - - write it
+      - down
+    - - raise your
+      - hand
+    decoys:
+    - loud
+    why: 보청기는 hearing aids, 적어 드릴 때는 write it down, 놓친 말이 있을 때의 신호는 raise your hand예요.
+  - kind: swap
+    words:
+    - w-face
+    - w-speak
+    - w-clear
+    who: 청력이 떨어진 환자에게
+    icon: me
+    before:
+    - 'I''ll '
+    - shout
+    - ' so you can understand me.'
+    options:
+    - face you and speak clearly
+    - shout
+    - talk from the doorway
+    answer: face you and speak clearly
+    notes:
+      face you and speak clearly: 입 모양과 표정이 보이게 마주 보고 또렷하게. 미국 국립노화연구소(NIA)가 권하는 방법이다.
+      shout: 소리치면 말소리가 일그러지고 화난 것처럼 들린다. NIA도 조금 크게는 괜찮지만 소리치지는 말라고 한다.
+      talk from the doorway: 멀리서 말하면 소리가 약해지고 입 모양도 보이지 않는다.
+    why: '''Speak up''이라는 말을 들어도 소리치기보다 마주 보고 또렷하게 말하는 것이 더 잘 전달돼요.'
+- title: 기저 인지기능 확인
+  sentences:
+  - en: What is she normally like on a good day?
+    ko: 평소 컨디션 좋으신 날엔 어떠신 편인가요?
+    chunks:
+    - What is she
+    - normally like
+    - on a good
+    - day
+    - '?'
+    words:
+    - w-normally
+    goal: 1
+  - en: When did you first notice this change?
+    ko: 이 변화를 언제 처음 알아차리셨나요?
+    chunks:
+    - When did you first
+    - notice this
+    - change
+    - '?'
+    words:
+    - w-notice
+    - w-change
+    - w-first
+    goal: 2
+  - en: Your observations help us a lot — thank you.
+    ko: 보호자분의 관찰이 저희에게 정말 큰 도움이 돼요 — 감사합니다.
+    chunks:
+    - Your observations
+    - help us
+    - a lot
+    - — thank you
+    - .
+    words:
+    - w-observation
+    goal: 1
+  - en: Is she usually oriented to time and place?
+    ko: 평소에는 시간과 장소를 잘 인지하시는 편인가요?
+    chunks:
+    - Is she usually oriented
+    - to time
+    - and place
+    - '?'
+    words:
+    - w-orient
+    goal: 1
+  - en: Does she usually know the date and where she is?
+    ko: 평소에는 날짜와 지금 계신 곳을 잘 아시는 편인가요?
+    chunks:
+    - Does she usually know
+    - the date
+    - and where
+    - she is
+    - '?'
+    words: []
+    goal: 1
+  - en: How long has she seemed different than usual?
+    ko: 평소와 다르게 보이신 지 얼마나 되셨나요?
+    chunks:
+    - How long
+    - has she seemed different
+    - than usual
+    - '?'
+    words:
+    - w-usual
+    goal: 2
+  - en: We really appreciate you telling us these details.
+    ko: 이렇게 자세히 말씀해 주셔서 정말 감사해요.
+    chunks:
+    - We really appreciate
+    - you telling us
+    - these details
+    - .
+    words:
+    - w-detail
+    goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-change
+    - w-notice
+    cue: 'Daughter: "She''s been a little off since Tuesday — but she still knows all of us."'
+    scale:
+    - slightly different
+    - confused
+    - completely disoriented
+    answerAt: 0
+    why: 가족을 다 알아보면서 'a little off'라면 slightly different 쪽이에요. 그래도 노인에게는 이런 작은 변화가 섬망의 첫 신호일 수 있어서 언제 시작됐는지 꼭 적어 둬요.
+    example: Her daughter says she's been slightly different since Tuesday.
+    exKo: 따님 말로는 화요일부터 조금 달라지셨대요.
+  - kind: context
+    words:
+    - w-orient
+    - w-usual
+    - w-normally
+    scenes:
+    - who: 차트 기록
+      icon: board
+      en: Per daughter, pt is A&Ox4 at baseline.
+      ok: true
+    - who: 의사에게 보고
+      icon: speech
+      en: Daughter says she's normally oriented times four.
+      ok: true
+    - who: 따님에게
+      icon: me
+      en: Is she usually A&O times four?
+      ok: false
+      fix: Does she usually know the date and where she is?
+    why: A&Ox4는 사람·장소·시간·상황을 아는지를 줄인 의료진의 말이에요. 가족에게는 날짜와 있는 곳을 아는지처럼 풀어서 물어요.
+- title: 활동·일상수행 청취
+  sentences:
+  - en: Are you able to bathe and dress on your own?
+    ko: 혼자서 씻고 옷 입는 게 가능하신가요?
+    chunks:
+    - Are you able
+    - to bathe
+    - and dress
+    - on your own
+    - '?'
+    words:
+    - w-bathe
+    - w-dress
+    goal: 1
+  - en: Has anything changed in what you can do lately?
+    ko: 요즘 할 수 있는 일에 변화가 있으셨나요?
+    chunks:
+    - Has anything changed
+    - in what
+    - you can do
+    - lately
+    - '?'
+    words:
+    - w-change
+    - w-lately
+    goal: 2
+  - en: There's no shame in needing a little help.
+    ko: 도움이 필요하다고 부끄러워하실 일은 전혀 아니에요.
+    chunks:
+    - There's no shame
+    - in needing
+    - a little help
+    - .
+    words:
+    - w-shame
+    - w-need
+    - w-little
+    goal: 2
+  - en: Can you cook and manage your own meals at home?
+    ko: 혼자서 요리하고 식사를 챙기실 수 있으신가요?
+    chunks:
+    - Can you cook
+    - and manage
+    - your own meals
+    - at home
+    - '?'
+    words:
+    - w-meal
+    goal: 1
+  - en: Do you need help getting up from a chair or the toilet?
+    ko: 의자나 화장실에서 일어나실 때 도움이 필요하신가요?
+    chunks:
+    - Do you need help
+    - getting up
+    - from a chair
+    - or the toilet
+    - '?'
+    words:
+    - w-need
+    goal: 1
+  - en: Has getting dressed become harder lately?
+    ko: 요즘 옷 입는 게 더 힘들어지셨나요?
+    chunks:
+    - Has getting dressed
+    - become harder
+    - lately
+    - '?'
+    words:
+    - w-dress
+    - w-lately
+    goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-bathe
+    - w-dress
+    - w-meal
+    pairs:
+    - - bathe and
+      - dress on your own
+    - - manage your own
+      - meals
+    - - get up from
+      - a chair
+    decoys:
+    - lately
+    why: 혼자 씻고 옷 입기는 bathe and dress on your own, 끼니를 챙기는 것은 manage your own meals, 의자에서 일어나기는 get up from a chair — 모두 일상생활 수행 능력을 묻는 말이에요.
+  - kind: swap
+    words:
+    - w-bathe
+    - w-dress
+    - w-need
+    who: 환자에게 · 일상생활 수행 능력 사정
+    icon: me
+    before:
+    - 'Do you need help with '
+    - your ADLs
+    - '?'
+    options:
+    - things like bathing or dressing
+    - your ADLs
+    - your activities of daily living
+    answer: things like bathing or dressing
+    notes:
+      things like bathing or dressing: 무엇을 묻는지 구체적이라 환자가 바로 답할 수 있다.
+      your ADLs: 의료진 약어. 환자는 무슨 뜻인지 모른다.
+      your activities of daily living: 틀리지 않지만 서류를 읽는 말투라 대화에서는 딱딱하다.
+    why: ADL은 사정 항목의 이름이에요. 환자에게는 씻기·옷 입기처럼 구체적인 일로 물어요.
+- title: 급성 섬망 감별
+  sentences:
+  - en: You're in the hospital and you're safe with me.
+    ko: 지금 병원에 계시고, 저와 함께 안전하세요.
+    chunks:
+    - You're in
+    - the hospital
+    - and you're safe
+    - with me
+    - .
+    words:
+    - w-hospital
+    - w-safe
+    goal: 1
+  - en: This confusion may be new — we're finding out why.
+    ko: 이 혼돈은 새로 생긴 걸 수도 있어요 — 저희가 원인을 찾고 있어요.
+    chunks:
+    - This confusion
+    - may be new
+    - — we're finding out
+    - why
+    - .
+    words:
+    - w-confusion
+    - w-new
+    goal: 1
+  - en: I'm going to stay close and help you feel calmer.
+    ko: 제가 곁에 있으면서 좀 더 편안해지시도록 도와드릴게요.
+    chunks:
+    - I'm going to stay
+    - close
+    - and help you
+    - feel calmer
+    - .
+    words:
+    - w-stay
+    - w-close
+    - w-calm
+    goal: 2
+  - en: Do you know where you are right now?
+    ko: 지금 어디에 계신지 아시겠어요?
+    chunks:
+    - Do you know
+    - where you are
+    - right now
+    - '?'
+    words: []
+    goal: 1
+  - en: I know this feels frightening, but you're not alone.
+    ko: 무섭게 느껴지시는 거 알아요, 하지만 혼자가 아니세요.
+    chunks:
+    - I know
+    - this feels frightening
+    - ', but you''re'
+    - not alone
+    - .
+    words:
+    - w-frighten
+    goal: 2
+  - en: Let's keep the room quiet and calm for you.
+    ko: 방을 조용하고 차분하게 유지할게요.
+    chunks:
+    - Let's keep
+    - the room quiet
+    - and calm
+    - for you
+    - .
+    words:
+    - w-calm
+    goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-frighten
+    - w-calm
+    cue: 'Patient, pulling away: "Who are you people? Where am I? Get away from me!"'
+    scale:
+    - uneasy
+    - scared
+    - terrified
+    answerAt: 2
+    why: 누군지도, 어디인지도 모른 채 밀어낸다면 terrified 쪽이에요. 이럴 때는 목소리를 낮추고, 지금 병원이고 안전하다는 것부터 알려 줘요.
+    example: She's terrified and doesn't know where she is.
+    exKo: 어디 계신지 모르셔서 몹시 겁에 질려 계세요.
+  - kind: context
+    words:
+    - w-hospital
+    - w-safe
+    - w-confusion
+    scenes:
+    - who: 동료에게
+      icon: speech
+      en: She's acutely confused — this is new since this morning.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Acute change in mental status, onset this AM; reoriented.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: You have acute delirium.
+      ok: false
+      fix: You're in the hospital, and you're safe with me. We're finding out why you feel confused.
+    why: 혼란에 빠진 환자에게 진단명을 말해도 알아듣지 못하고 더 불안해할 수 있어요. 지금 어디에 있고 안전하다는 것을 알려 주는 재지남(reorientation)이 먼저예요.
+- title: 비전형 감염 표현
+  sentences:
+  - en: In older adults, infections can show up as confusion, not fever.
+    ko: 노인분들은 감염이 열 대신 혼돈으로 나타날 수 있어요.
+    chunks:
+    - In older adults
+    - ', infections can show up'
+    - as confusion
+    - ', not fever'
+    - .
+    words:
+    - w-old
+    - w-infection
+    - w-confusion
+    - w-fever
+    goal: 1
+  - en: Has she had any changes in urination or breathing?
+    ko: 소변이나 호흡에 변화가 있으셨나요?
+    chunks:
+    - Has she had
+    - any changes
+    - in urination
+    - or breathing
+    - '?'
+    words:
+    - w-change
+    - w-urinate
+    - w-breathe
+    goal: 2
+  - en: We'll run tests to find a hidden infection.
+    ko: 숨겨진 감염을 찾기 위해 검사를 진행할게요.
+    chunks:
+    - We'll run tests
+    - to find
+    - a hidden infection
+    - .
+    words:
+    - w-run
+    - w-find
+    - w-hidden
+    - w-infection
+    goal: 1
+  - en: Older patients don't always get a fever, even with a serious infection.
+    ko: 노인 환자분들은 심각한 감염이 있어도 열이 늘 나는 건 아니에요.
+    chunks:
+    - Older patients
+    - don't always get
+    - a fever
+    - ', even with'
+    - a serious infection
+    - .
+    words:
+    - w-old
+    - w-fever
+    - w-infection
+    goal: 1
+  - en: Has she been eating or drinking less than usual?
+    ko: 평소보다 식사나 물 섭취가 줄어드셨나요?
+    chunks:
+    - Has she been
+    - eating
+    - or drinking less
+    - than usual
+    - '?'
+    words:
+    - w-usual
+    goal: 2
+  - en: We'll check her urine and listen to her lungs.
+    ko: 소변 검사를 하고 폐 소리를 들어볼게요.
+    chunks:
+    - We'll check
+    - her urine
+    - and listen
+    - to her lungs
+    - .
+    words:
+    - w-urine
+    - w-lung
+    goal: 2
+  nuance:
+  - kind: swap
+    words:
+    - w-old
+    - w-infection
+    - w-confusion
+    who: 보호자에게 · 비전형 감염 설명
+    icon: me
+    before:
+    - 'In '
+    - the elderly
+    - ', infections can show up as confusion, not fever.'
+    options:
+    - older adults
+    - the elderly
+    - old folks
+    answer: older adults
+    notes:
+      older adults: AP 스타일북과 미국노인의학회(AGS) 학술지가 권하는 중립적인 말.
+      the elderly: 흔히 쓰지만 노인을 한 덩어리로 묶는 말이라 요즘 지침은 피하라고 한다.
+      old folks: 친근한 입말이지만 의료진이 설명할 때 쓰기에는 가볍다.
+    why: 미국 의료 현장과 학술지는 elderly 대신 older adults를 써요. 보호자 앞에서도 이 말이 무난해요.
+  - kind: pair
+    words:
+    - w-run
+    - w-lung
+    - w-confusion
+    pairs:
+    - - run
+      - tests
+    - - listen to
+      - her lungs
+    - - show up as
+      - confusion
+    decoys:
+    - thermometer
+    why: 검사를 돌리는 것은 run tests, 청진은 listen to her lungs, 감염이 혼돈으로 나타나는 것은 show up as confusion이에요.
+- title: 노인 흉통 비전형
+  sentences:
+  - en: Even without sharp pain, we take this seriously.
+    ko: 날카로운 통증이 없어도 저희는 이걸 진지하게 받아들여요.
+    chunks:
+    - Even without sharp pain
+    - ', we take'
+    - this seriously
+    - .
+    words:
+    - w-sharp
+    - w-pain
+    goal: 1
+  - en: Do you feel more tired or short of breath than usual?
+    ko: 평소보다 더 피곤하시거나 숨이 차시나요?
+    chunks:
+    - Do you feel
+    - more tired
+    - or short of breath
+    - than usual
+    - '?'
+    words:
+    - w-tired
+    - w-breath
+    - w-usual
+    goal: 2
+  - en: We'll check your heart to be safe.
+    ko: 안전을 위해 심장을 확인해볼게요.
+    chunks:
+    - We'll check
+    - your heart
+    - to be safe
+    - .
+    words:
+    - w-heart
+    - w-safe
+    goal: 2
+  - en: Some people your age feel pressure or tiredness instead of pain.
+    ko: 어르신 연령대에서는 통증 대신 압박감이나 피로감을 느끼기도 해요.
+    chunks:
+    - Some people your age
+    - feel pressure
+    - or tiredness
+    - instead of pain
+    - .
+    words:
+    - w-pain
+    goal: 1
+  - en: Have you had any nausea, sweating, or dizziness with this?
+    ko: 메스꺼움이나 식은땀, 어지러움이 함께 있으셨나요?
+    chunks:
+    - Have you had
+    - any nausea
+    - ', sweating'
+    - ', or dizziness'
+    - with this
+    - '?'
+    words:
+    - w-nausea
+    - w-sweat
+    goal: 1
+  - en: We take chest symptoms seriously in older patients.
+    ko: 노인 환자분들의 흉부 증상은 저희가 진지하게 받아들여요.
+    chunks:
+    - We take
+    - chest symptoms
+    - seriously in older patients
+    - .
+    words:
+    - w-old
+    goal: 1
+  - en: We'll do an EKG and some blood tests on your heart.
+    ko: 심전도랑 혈액 검사로 심장을 확인해볼게요.
+    chunks:
+    - We'll do
+    - an EKG
+    - and some blood tests
+    - on your heart
+    - .
+    words:
+    - w-heart
+    goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-pain
+    - w-sharp
+    cue: 'Patient: "It''s not really pain, just a heavy, tired feeling in my chest."'
+    scale:
+    - discomfort
+    - pain
+    - crushing pain
+    answerAt: 0
+    why: '''pain은 아니고 무거운 느낌''이면 discomfort 쪽이에요. 하지만 노인의 심근경색은 이렇게 약하게 오기도 해서 가볍게 넘기지 않고 심전도부터 찍어요.'
+    example: She describes it as discomfort, not pain.
+    exKo: 통증이라기보다 불편감이라고 하세요.
+  - kind: swap
+    words:
+    - w-pain
+    who: 노인 환자에게 · 흉부 증상 문진
+    icon: me
+    before:
+    - 'Are you having any '
+    - angina
+    - ' right now?'
+    options:
+    - chest pain or pressure
+    - angina
+    - cardiac symptoms
+    answer: chest pain or pressure
+    notes:
+      chest pain or pressure: 쉬운 말이고, pressure까지 물어 통증이라 부르지 않는 증상도 잡는다.
+      angina: 의학 용어라 환자가 모르거나 '없다'고 답하기 쉽다.
+      cardiac symptoms: 무엇을 묻는지 막연해 환자가 대답하기 어렵다.
+    why: 노인·여성·당뇨 환자의 심근경색은 흉통 대신 압박감·숨참·피로로 오기도 해요. pain만 묻지 말고 pressure까지 물어요.
+- title: 다약제 상호작용 부작용
+  sentences:
+  - en: When did the dizziness start after the new medication?
+    ko: 이 어지럼증은 새 약을 드신 뒤 언제부터 시작됐나요?
+    chunks:
+    - When did
+    - the dizziness start
+    - after the new
+    - medication
+    - '?'
+    words:
+    - w-dizziness
+    - w-new
+    - w-medication
+    goal: 1
+  - en: Some medicines can interact and cause these symptoms.
+    ko: 일부 약들은 서로 상호작용해서 이런 증상을 일으킬 수 있어요.
+    chunks:
+    - Some medicines
+    - can interact
+    - and cause these symptoms
+    - .
+    words:
+    - w-medicine
+    - w-interact
+    - w-cause
+    - w-symptom
+    goal: 1
+  - en: We'll review everything you take to find the cause.
+    ko: 복용하시는 모든 약을 검토해서 원인을 찾아볼게요.
+    chunks:
+    - We'll review
+    - everything you take
+    - to find
+    - the cause
+    - .
+    words:
+    - w-review
+    - w-everything
+    - w-find
+    - w-cause
+    goal: 2
+  - en: Has anyone added or changed a medicine recently?
+    ko: 최근에 새로 추가되거나 바뀐 약이 있나요?
+    chunks:
+    - Has anyone added
+    - or changed
+    - a medicine recently
+    - '?'
+    words:
+    - w-medicine
+    - w-change
+    goal: 1
+  - en: This combination may be making you unsteady on your feet.
+    ko: 이 약 조합이 다리 힘을 불안정하게 만들고 있을 수 있어요.
+    chunks:
+    - This combination
+    - may be making you
+    - unsteady
+    - on your feet
+    - .
+    words:
+    - w-unsteady
+    goal: 2
+  - en: We may lower or stop one of these medicines.
+    ko: 이 약들 중 하나를 줄이거나 중단할 수도 있어요.
+    chunks:
+    - We may lower
+    - or stop
+    - one of these
+    - medicines
+    - .
+    words:
+    - w-medicine
+    goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-unsteady
+    cue: He wobbles when he turns around, but he hasn't fallen today.
+    scale:
+    - a little unsteady
+    - very unsteady
+    - unable to stand
+    answerAt: 0
+    why: 돌아설 때 휘청거리지만 넘어지지 않았다면 a little unsteady 쪽이에요. 그래도 새 약 뒤에 생긴 것이면 낙상 위험이라 혼자 걷지 않게 해요.
+    example: He's a little unsteady when he turns around.
+    exKo: 돌아서실 때 조금 휘청거리세요.
+  - kind: context
+    words:
+    - w-interact
+    - w-medicine
+    - w-dizziness
+    scenes:
+    - who: 차트 기록
+      icon: board
+      en: Dizziness likely adverse drug reaction; polypharmacy — med review requested.
+      ok: true
+    - who: 약사에게
+      icon: speech
+      en: I'm worried two of her meds are interacting — can you review her list?
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: You're having an adverse drug interaction from polypharmacy.
+      ok: false
+      fix: Some of your medicines may be interacting and making you dizzy.
+    why: polypharmacy·adverse drug reaction은 의료진끼리의 말이에요. 환자에게는 약끼리 영향을 주고받아 어지러울 수 있다고 쉽게 말해요.
+- title: 요양시설 이송 정보 부족
+  sentences:
+  - en: Do you know her baseline and what happened today?
+    ko: 평소 상태랑 오늘 무슨 일이 있었는지 아시나요?
+    chunks:
+    - Do you know
+    - her baseline
+    - and what happened
+    - today
+    - '?'
+    words:
+    - w-baseline
+    - w-happen
+    goal: 1
+  - en: Can you help me reach the facility for her records?
+    ko: 기록을 확인하기 위해 시설에 연락하는 걸 도와주실 수 있나요?
+    chunks:
+    - Can you help me
+    - reach
+    - the facility
+    - for her records
+    - '?'
+    words:
+    - w-reach
+    - w-facility
+    goal: 2
+  - en: Any medication or allergy info you can share?
+    ko: 복용약이나 알레르기 정보 공유해 주실 수 있나요?
+    chunks:
+    - Any medication
+    - or allergy info
+    - you can share
+    - '?'
+    words:
+    - w-medication
+    - w-allergy
+    - w-info
+    - w-share
+    goal: 2
+  - en: The paperwork doesn't say much — what's her normal mental status?
+    ko: 서류엔 별 내용이 없네요 — 평소 정신 상태는 어떠셨나요?
+    chunks:
+    - The paperwork
+    - doesn't say much
+    - — what's her
+    - normal mental status
+    - '?'
+    words:
+    - w-status
+    goal: 1
+  - en: Do you have a contact number for the facility nurse?
+    ko: 시설 간호사 연락처가 있으신가요?
+    chunks:
+    - Do you have
+    - a contact number
+    - for the facility
+    - nurse
+    - '?'
+    words:
+    - w-facility
+    goal: 2
+  - en: Let's call the facility to confirm her medication list.
+    ko: 약 목록을 확인하러 시설에 전화해볼게요.
+    chunks:
+    - Let's call
+    - the facility
+    - to confirm
+    - her medication list
+    - .
+    words:
+    - w-facility
+    - w-medication
+    - w-list
+    goal: 1
+  nuance:
+  - kind: pair
+    words:
+    - w-status
+    - w-reach
+    - w-facility
+    pairs:
+    - - doesn't say
+      - much
+    - - mental
+      - status
+    - - reach
+      - the facility
+    decoys:
+    - allergy
+    why: 서류에 쓰인 게 별로 없다는 doesn't say much, 평소 정신 상태는 mental status, 시설과 연락이 닿게 하는 것은 reach the facility예요.
+  - kind: context
+    words:
+    - w-baseline
+    - w-status
+    scenes:
+    - who: 이송 요원에게
+      icon: speech
+      en: Do you know her baseline mental status?
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: 'Baseline per facility RN: A&Ox2, ambulates with walker.'
+      ok: true
+    - who: 따님에게 전화
+      icon: speaker
+      en: What's her baseline — A&O times what?
+      ok: false
+      fix: What is she normally like — does she usually know where she is?
+    why: baseline·A&O는 의료진끼리 통하는 말이에요. 가족에게는 평소 어떤 분인지, 어디 있는지 아시는지처럼 풀어서 물어요.
+- title: 학대·방임 의심
+  sentences:
+  - en: I noticed some things I'd like to understand better.
+    ko: 몇 가지 알아차린 점이 있어서 더 이해하고 싶어요.
+    chunks:
+    - I noticed
+    - some things
+    - I'd like
+    - to understand better
+    - .
+    words:
+    - w-notice
+    - w-understand
+    goal: 1
+  - en: You're safe to talk with me — nothing leaves this room without your say.
+    ko: 여기서는 안전하게 말씀하셔도 돼요 — 허락 없이는 이 방 밖으로 나가지 않아요.
+    chunks:
+    - You're safe
+    - to talk with me
+    - — nothing leaves
+    - this room
+    - without your say
+    - .
+    words:
+    - w-safe
+    - w-leave
+    - w-say
+    goal: 2
+  - en: My only goal is to make sure you're cared for.
+    ko: 제 목표는 어르신이 돌봄을 잘 받으시도록 하는 것뿐이에요.
+    chunks:
+    - My only goal
+    - is to make sure
+    - you're cared
+    - for
+    - .
+    words:
+    - w-goal
+    - w-sure
+    - w-care
+    goal: 2
+  - en: I want to ask about some bruises I noticed on your arm.
+    ko: 팔에 있는 멍에 대해 여쭤보고 싶어요.
+    chunks:
+    - I want to ask
+    - about some bruises
+    - I noticed
+    - on your arm
+    - .
+    words:
+    - w-bruise
+    - w-notice
+    goal: 1
+  - en: Are you getting enough food at home?
+    ko: 집에서 식사는 충분히 하고 계신가요?
+    chunks:
+    - Are you getting
+    - enough food
+    - at home
+    - '?'
+    words:
+    - w-food
+    goal: 1
+  - en: I ask everyone this — do you feel safe where you live?
+    ko: 모든 분께 여쭤보는 건데요 — 사시는 곳에서 안전하다고 느끼세요?
+    chunks:
+    - I ask
+    - everyone this
+    - — do you feel safe
+    - where you live
+    - '?'
+    words:
+    - w-safe
+    - w-live
+    goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-bruise
+    - w-safe
+    - w-live
+    - w-food
+    pairs:
+    - - bruises on
+      - your arm
+    - - feel safe
+      - where you live
+    - - enough
+      - food
+    decoys:
+    - cared
+    why: 멍은 bruises on 부위, 지내는 곳이 안전한지는 feel safe where you live, 잘 먹는지는 enough food로 물어요.
+  - kind: swap
+    words:
+    - w-bruise
+    - w-notice
+    - w-understand
+    who: 환자에게 · 학대 의심 사정
+    icon: me
+    before:
+    - 'I want to ask about '
+    - who hit you
+    - .
+    options:
+    - some bruises I noticed
+    - who hit you
+    - your abuse
+    answer: some bruises I noticed
+    notes:
+      some bruises I noticed: 본 것을 판단 없이 말해 환자가 스스로 설명할 여지를 준다.
+      who hit you: 답을 미리 정해 두고 묻는 유도 질문이라 환자가 입을 닫을 수 있다.
+      your abuse: 확인되지 않은 것을 단정해 환자를 방어적으로 만든다.
+    why: 학대가 의심될 때는 본 것을 중립적으로 말하고 열린 질문으로 물어요. 환자가 누구를 곤란하게 할까 걱정할수록 더 그래요.
+- title: 진통제 신중 투여
+  sentences:
+  - en: We'll start low and adjust carefully for your kidneys.
+    ko: 적은 용량으로 시작해서 신장 상태에 맞춰 조절할게요.
+    chunks:
+    - We'll start low
+    - and adjust
+    - carefully
+    - for your kidneys
+    - .
+    words:
+    - w-start
+    - w-low
+    - w-adjust
+    - w-kidney
+    goal: 1
+  - en: I'll help you avoid feeling too groggy or unsteady.
+    ko: 너무 몽롱하거나 휘청거리지 않도록 도와드릴게요.
+    chunks:
+    - I'll help you
+    - avoid feeling
+    - too groggy
+    - or unsteady
+    - .
+    words:
+    - w-avoid
+    - w-groggy
+    - w-unsteady
+    goal: 2
+  - en: Tell me if you feel dizzy at any point.
+    ko: 조금이라도 어지러우시면 언제든 말씀해 주세요.
+    chunks:
+    - Tell me
+    - if you feel
+    - dizzy
+    - at any point
+    - .
+    words:
+    - w-dizzy
+    - w-point
+    goal: 2
+  - en: Your kidneys process medication more slowly as you age.
+    ko: 나이가 드시면 신장이 약을 더 천천히 처리해요.
+    chunks:
+    - Your kidneys
+    - process medication
+    - more slowly
+    - as you age
+    - .
+    words:
+    - w-kidney
+    - w-medication
+    goal: 1
+  - en: We'll watch you closely for any side effects.
+    ko: 다른 부작용이 없는지 가까이서 지켜볼게요.
+    chunks:
+    - We'll watch you
+    - closely
+    - for any side effects
+    - .
+    words:
+    - w-effect
+    goal: 2
+  - en: Please don't try to get up alone until we check on you.
+    ko: 저희가 확인할 때까지 혼자 일어나려 하지 마세요.
+    chunks:
+    - Please don't try
+    - to get up alone
+    - until we check
+    - on you
+    - .
+    words:
+    - w-alone
+    goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-groggy
+    cue: 'After a small dose of hydromorphone: "I feel a bit foggy, but I can talk to you fine."'
+    scale:
+    - a little groggy
+    - very drowsy
+    - hard to wake
+    answerAt: 0
+    why: 또렷하게 대화하면서 멍하다면 a little groggy 쪽이에요. 오피오이드의 진정은 호흡 억제보다 먼저 오기 때문에, 점점 깨우기 힘들어지면 호흡부터 확인해요.
+    example: She's a little groggy but talking normally.
+    exKo: 조금 몽롱하시지만 말씀은 평소처럼 하세요.
+  - kind: context
+    words:
+    - w-start
+    - w-low
+    - w-adjust
+    - w-kidney
+    scenes:
+    - who: 동료에게
+      icon: speech
+      en: Start low, go slow — she's 88 with kidney disease.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Hydromorphone 0.2 mg IV given; reduced dose d/t age and renal function.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Start low, go slow — standard geriatric dosing.
+      ok: false
+      fix: We'll start with a small dose and adjust carefully for your kidneys.
+    why: '''start low, go slow''는 노인 약물 원칙을 줄인 의료진끼리의 말이에요. 환자에게는 적은 양으로 시작해 신장 상태를 보며 조절한다고 풀어 말해요.'
+- title: 보청기·안경 보조기구
+  sentences:
+  - en: Let's see if we can get you some help hearing and seeing better.
+    ko: 듣고 보시는 데 도움이 될 만한 걸 함께 찾아볼게요.
+    chunks:
+    - Let's see
+    - if we can get you
+    - some help
+    - hearing and seeing
+    - better
+    - .
+    words:
+    - w-hear
+    goal: 1
+  - en: I'll speak clearly and stay in your view.
+    ko: 제가 또렷하게 말하고 시야 안에 있을게요.
+    chunks:
+    - I'll speak clearly
+    - and stay
+    - in your view
+    - .
+    words:
+    - w-speak
+    - w-stay
+    - w-view
+    goal: 2
+  - en: Having your glasses will help you feel less confused.
+    ko: 안경을 쓰시면 덜 혼란스러워지실 거예요.
+    chunks:
+    - Having your glasses
+    - will help you
+    - feel less
+    - confused
+    - .
+    words:
+    - w-glasses
+    - w-less
+    - w-confused
+    goal: 1
+  - en: Do you usually wear glasses or contact lenses?
+    ko: 평소에 안경이나 콘택트렌즈를 쓰시나요?
+    chunks:
+    - Do you usually wear
+    - glasses
+    - or contact lenses
+    - '?'
+    words:
+    - w-glasses
+    goal: 1
+  - en: Let's get your hearing aid batteries replaced if needed.
+    ko: 필요하면 보청기 배터리도 교체해드릴게요.
+    chunks:
+    - Let's get
+    - your hearing aid
+    - batteries replaced
+    - if needed
+    - .
+    words:
+    - w-aid
+    goal: 1
+  - en: Wearing your glasses can make you feel much less confused here.
+    ko: 안경을 쓰시면 여기서 훨씬 덜 혼란스러우실 거예요.
+    chunks:
+    - Wearing your glasses
+    - can make you feel
+    - much less
+    - confused here
+    - .
+    words:
+    - w-glasses
+    - w-less
+    - w-confused
+    goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-aid
+    - w-stay
+    - w-view
+    pairs:
+    - - hearing aid
+      - batteries
+    - - contact
+      - lenses
+    - - stay in
+      - your view
+    decoys:
+    - louder
+    why: 보청기 배터리는 hearing aid batteries, 콘택트렌즈는 contact lenses, 환자 시야 안에 있는 것은 stay in your view예요.
+  - kind: swap
+    words:
+    - w-glasses
+    who: 노인 환자에게 · 안경 챙겨 드리기
+    icon: me
+    before:
+    - ''
+    - Sweetie
+    - ', let''s put your glasses on so you can see me.'
+    options:
+    - Mrs. Park
+    - Sweetie
+    - Grandma
+    answer: Mrs. Park
+    notes:
+      Mrs. Park: 성인 환자는 성과 호칭으로, 또는 본인이 원하는 이름으로 부른다.
+      Sweetie: '''elderspeak'' — 아이를 대하듯 들린다. 치매 환자에게 elderspeak를 쓰면 돌봄 거부가 늘었다는 연구도 있다.'
+      Grandma: 가족이 아닌 사람이 부르면 나이로 낮춰 보는 말로 들린다.
+    why: 노인 환자에게 sweetie·honey 같은 말은 다정하게 들리려 해도 존중이 빠진 말이에요. 이름과 호칭으로 불러요.
+- title: 사전연명의료의향 확인
+  sentences:
+  - en: Do you know if he has a POLST or advance directive?
+    ko: POLST나 사전의료의향서가 있으신지 아시나요?
+    chunks:
+    - Do you know
+    - if he has
+    - a POLST
+    - or advance directive
+    - '?'
+    words:
+    - w-directive
+    goal: 1
+  - en: What matters most to him about his care?
+    ko: 그분께 치료에서 가장 중요한 게 뭘까요?
+    chunks:
+    - What matters most
+    - to him
+    - about his care
+    - '?'
+    words:
+    - w-matter
+    - w-care
+    goal: 2
+  - en: We'll honor his wishes as best we can.
+    ko: 저희가 할 수 있는 한 그분의 뜻을 지켜 드릴게요.
+    chunks:
+    - We'll honor
+    - his wishes
+    - as best we can
+    - .
+    words:
+    - w-honor
+    - w-wish
+    goal: 2
+  - en: Has he ever talked about what kind of care he'd want?
+    ko: 평소에 원하시는 치료 방식에 대해 말씀하신 적이 있나요?
+    chunks:
+    - Has he ever talked
+    - about what kind
+    - of care
+    - he'd want
+    - '?'
+    words:
+    - w-care
+    goal: 1
+  - en: Do you have a copy of the directive with you today?
+    ko: 오늘 사전의향서 사본을 가지고 오셨나요?
+    chunks:
+    - Do you have
+    - a copy
+    - of the directive
+    - with you today
+    - '?'
+    words:
+    - w-copy
+    - w-directive
+    goal: 1
+  - en: We want to respect his wishes and support your family.
+    ko: 그분의 뜻을 존중하고 가족분들을 지지해드리고 싶어요.
+    chunks:
+    - We want to respect
+    - his wishes
+    - and support
+    - your family
+    - .
+    words:
+    - w-respect
+    - w-wish
+    - w-support
+    goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-directive
+    - w-care
+    cue: 'Daughter: "No ICU and no breathing tube — but if he gets pneumonia, yes, give him antibiotics."'
+    scale:
+    - comfort-focused treatment
+    - selective treatment
+    - full treatment
+    answerAt: 1
+    why: 중환자실·기관삽관은 원하지 않지만 항생제는 쓰겠다면 selective treatment에 가까워요. POLST 양식은 치료 범위를 comfort-focused · selective · full treatment 셋으로 나눠요.
+    example: Per the POLST, he wants selective treatment — no intubation.
+    exKo: POLST에 따르면 선택적 치료를 원하세요 — 기관삽관은 하지 않아요.
+  - kind: context
+    words:
+    - w-care
+    - w-directive
+    scenes:
+    - who: 의사에게
+      icon: speech
+      en: Do we have a code status on him? Family mentions a POLST.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: 'Code status: pending — family bringing POLST.'
+      ok: true
+    - who: 따님에게
+      icon: me
+      en: So what's his code status — full code or DNR?
+      ok: false
+      fix: Has he ever talked about what kind of care he'd want if he got very sick?
+    why: code status·DNR은 의료진의 말이에요. 가족에게 불쑥 물으면 결정을 떠넘기는 것처럼 들릴 수 있어, 그분이 어떤 돌봄을 원했는지부터 물어요.
+- title: 노인 패혈증 급속 진행
+  sentences:
+  - en: Her low temperature and pressure worry me — we're acting fast.
+    ko: 체온이 낮고 혈압도 걱정돼서 저희가 빠르게 움직이고 있어요.
+    chunks:
+    - Her low temperature
+    - and pressure
+    - worry me
+    - — we're acting fast
+    - .
+    words:
+    - w-low
+    - w-temperature
+    - w-pressure
+    - w-worry
+    goal: 1
+  - en: In older adults sepsis can look different, and we're on it.
+    ko: 노인분들은 패혈증이 다르게 나타날 수 있는데, 저희가 확인하고 있어요.
+    chunks:
+    - In older adults
+    - sepsis can look different
+    - ', and we''re'
+    - on it
+    - .
+    words:
+    - w-old
+    - w-sepsis
+    goal: 1
+  - en: We're starting treatment right away.
+    ko: 바로 치료를 시작할게요.
+    chunks:
+    - We're starting
+    - treatment
+    - right away
+    - .
+    words:
+    - w-treatment
+    goal: 2
+  - en: Sepsis in older adults may not cause a high fever.
+    ko: 노인분들은 패혈증이 있어도 고열이 안 날 수 있어요.
+    chunks:
+    - Sepsis in
+    - older adults
+    - may not cause
+    - a high fever
+    - .
+    words:
+    - w-sepsis
+    - w-old
+    - w-cause
+    - w-fever
+    goal: 1
+  - en: We're giving fluids and antibiotics right away.
+    ko: 수액이랑 항생제를 바로 투여할게요.
+    chunks:
+    - We're giving
+    - fluids and antibiotics
+    - right away
+    - .
+    words:
+    - w-fluid
+    goal: 2
+  - en: I'll explain each step as we move quickly.
+    ko: 빠르게 움직이는 동안 단계마다 설명해드릴게요.
+    chunks:
+    - I'll explain
+    - each step
+    - as we move quickly
+    - .
+    words:
+    - w-explain
+    goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-sepsis
+    cue: 'Daughter: "She''s so cold and weak — this came on out of nowhere."'
+    scale:
+    - gradually
+    - quickly
+    - suddenly
+    answerAt: 2
+    why: '''out of nowhere''라면 suddenly 쪽이에요. 노인 패혈증은 몇 시간 만에 급격히 나빠지기도 해서, 언제부터였는지 시각을 물어 적어요.'
+    example: Her symptoms started suddenly this morning.
+    exKo: 오늘 아침 갑자기 증상이 시작됐어요.
+  - kind: context
+    words:
+    - w-temperature
+    - w-pressure
+    - w-treatment
+    scenes:
+    - who: 동료에게
+      icon: speech
+      en: Temp 35.6, BP 84 over 50 — let's start the sepsis bundle now.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Hypothermic, hypotensive; 30 mL/kg crystalloid bolus initiated.
+      ok: true
+    - who: 따님에게
+      icon: me
+      en: She's hypothermic and hypotensive; we're initiating the sepsis bundle.
+      ok: false
+      fix: Her temperature and blood pressure are low, which worries me — we're starting treatment right away.
+    why: hypothermic·hypotensive·sepsis bundle은 의료진끼리의 말이에요. 가족에게는 무엇이 걱정되고 지금 무엇을 하는지 쉬운 말로 말해요.
+- title: 항응고제 두부외상
+  sentences:
+  - en: Because she's on blood thinners, we take head bumps seriously.
+    ko: 혈액 희석제를 복용 중이시라서 머리 부딪힘도 저희는 심각하게 받아들여요.
+    chunks:
+    - Because she's on blood thinners
+    - ', we take'
+    - head bumps
+    - seriously
+    - .
+    words:
+    - w-thinner
+    - w-bump
+    goal: 1
+  - en: We'll get a scan right away to rule out bleeding.
+    ko: 출혈이 없는지 바로 영상 촬영을 할게요.
+    chunks:
+    - We'll get
+    - a scan
+    - right away
+    - to rule out bleeding
+    - .
+    words:
+    - w-scan
+    - w-bleed
+    goal: 2
+  - en: Watch for any drowsiness or confusion — tell me immediately.
+    ko: 졸리거나 혼란스러운 모습이 보이면 바로 알려 주세요.
+    chunks:
+    - Watch for
+    - any drowsiness
+    - or confusion
+    - — tell me immediately
+    - .
+    words:
+    - w-drowsy
+    - w-confusion
+    - w-tell
+    - w-immediately
+    goal: 2
+  - en: Even a small bump can cause bleeding on blood thinners.
+    ko: 혈액 희석제를 드시고 계시면 작은 부딪힘도 출혈을 일으킬 수 있어요.
+    chunks:
+    - Even a small bump
+    - can cause
+    - bleeding
+    - on blood thinners
+    - .
+    words:
+    - w-bump
+    - w-cause
+    - w-bleed
+    - w-thinner
+    goal: 1
+  - en: We'll monitor her closely for the next few hours.
+    ko: 앞으로 몇 시간 동안 가까이서 지켜볼게요.
+    chunks:
+    - We'll monitor
+    - her closely
+    - for the next
+    - few hours
+    - .
+    words:
+    - w-monitor
+    goal: 2
+  - en: Please tell us right away if she seems more confused.
+    ko: 더 혼란스러워 보이시면 바로 알려주세요.
+    chunks:
+    - Please tell us
+    - right away
+    - if she seems more
+    - confused
+    - .
+    words:
+    - w-tell
+    - w-confused
+    goal: 1
+  nuance:
+  - kind: slider
+    words:
+    - w-drowsy
+    cue: 'Daughter: "She keeps nodding off in the middle of a sentence, but she wakes up when I say her name."'
+    scale:
+    - tired
+    - drowsy
+    - unresponsive
+    answerAt: 1
+    why: 말하다가 졸지만 이름을 부르면 깨면 drowsy 쪽이에요. 항응고제를 먹는 환자가 머리를 부딪힌 뒤라면 두개내출혈의 신호일 수 있어 곧바로 알려요.
+    example: She's drowsy but wakes up to her name.
+    exKo: 졸려 하시지만 이름을 부르면 깨세요.
+  - kind: context
+    words:
+    - w-scan
+    - w-bleed
+    - w-thinner
+    scenes:
+    - who: 영상의학과 전화
+      icon: speaker
+      en: I need a stat head CT — 84-year-old on apixaban, fall with head strike.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Head CT ordered to r/o ICH; pt on apixaban.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: We need a stat noncontrast head CT to r/o ICH.
+      ok: false
+      fix: We'll get a scan of your head right away to rule out bleeding.
+    why: stat·r/o·ICH는 의료진끼리의 약어예요. 환자에게는 머리 사진을 바로 찍어 출혈이 없는지 본다고 풀어 말해요.
+- title: 급성 섬망+공격성
+  sentences:
+  - en: You're safe here — I'm not going to hurt you.
+    ko: 여기서는 안전해요 — 제가 다치게 하지 않을게요.
+    chunks:
+    - You're safe
+    - here
+    - — I'm not going
+    - to hurt you
+    - .
+    words:
+    - w-safe
+    - w-hurt
+    goal: 2
+  - en: Something's causing this confusion and we're finding it.
+    ko: 이 혼돈을 일으키는 원인이 있고, 저희가 찾고 있어요.
+    chunks:
+    - Something's causing
+    - this confusion
+    - and we're finding it
+    - .
+    words:
+    - w-cause
+    - w-confusion
+    - w-find
+    goal: 1
+  - en: Let's lower the noise so you feel calmer.
+    ko: 소음을 줄여서 좀 더 편안해지시게 할게요.
+    chunks:
+    - Let's lower
+    - the noise
+    - so you feel calmer
+    - .
+    words:
+    - w-noise
+    - w-calm
+    goal: 2
+  - en: We're checking your blood and body for what's causing this.
+    ko: 이걸 일으킨 원인을 찾기 위해 혈액과 몸 상태를 확인하고 있어요.
+    chunks:
+    - We're checking
+    - your blood and body
+    - for what's causing
+    - this
+    - .
+    words:
+    - w-cause
+    goal: 1
+  - en: I won't hold you down unless it keeps you safe.
+    ko: 안전을 지키기 위해서가 아니면 붙잡지 않을게요.
+    chunks:
+    - I won't hold you
+    - down
+    - unless it keeps you
+    - safe
+    - .
+    words:
+    - w-safe
+    goal: 2
+  - en: Let's dim the lights and keep things calm around you.
+    ko: 조명을 낮추고 주변을 차분하게 유지할게요.
+    chunks:
+    - Let's dim
+    - the lights
+    - and keep things
+    - calm around you
+    - .
+    words:
+    - w-calm
+    - w-dim
+    goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-confusion
+    - w-calm
+    cue: He's shouting and pulling at his IV, but he isn't swinging at anyone.
+    scale:
+    - restless
+    - agitated
+    - combative
+    answerAt: 1
+    why: 소리치고 줄을 잡아당기지만 사람을 치려 하지 않으면 agitated 쪽이에요. 때리려 들면 combative — 그때는 도움을 부르고 거리를 둬요.
+    example: He's agitated and pulling at his IV.
+    exKo: 흥분해서 수액 줄을 잡아당기고 계세요.
+  - kind: swap
+    words:
+    - w-safe
+    - w-hurt
+    who: 섬망으로 공격적인 환자에게
+    icon: me
+    before:
+    - ''
+    - Calm down
+    - ' — I''m not going to hurt you.'
+    options:
+    - You're safe here
+    - Calm down
+    - Stop fighting me
+    answer: You're safe here
+    notes:
+      You're safe here: 환자가 느끼는 두려움에 먼저 답한다. 섬망 환자는 위협을 받는다고 느껴 공격적이 되곤 한다.
+      Calm down: 명령처럼 들려 흥분한 사람을 오히려 자극하기 쉽다.
+      Stop fighting me: 환자와 맞서는 말이라 긴장을 키운다.
+    why: 흥분한 사람에게 calm down은 효과가 거의 없어요. 안전하다는 말로 두려움을 먼저 가라앉혀요.
+- title: 말기 환자 목표 재설정
+  sentences:
+  - en: Let's talk about what would give him the most comfort.
+    ko: 그분께 가장 편안함을 줄 수 있는 방법을 함께 이야기해볼게요.
+    chunks:
+    - Let's talk
+    - about what would give him
+    - the most
+    - comfort
+    - .
+    words:
+    - w-comfort
+    goal: 1
+  - en: There's no wrong choice here — we'll support whatever you decide.
+    ko: 여기엔 잘못된 선택이 없어요 — 어떤 결정을 하시든 저희가 지지할게요.
+    chunks:
+    - There's no wrong choice
+    - here
+    - — we'll support
+    - whatever you decide
+    - .
+    words:
+    - w-wrong
+    - w-choice
+    - w-support
+    - w-decide
+    goal: 2
+  - en: Comfort care is an active, caring option too.
+    ko: 완화 돌봄도 적극적이고 정성스러운 하나의 선택지예요.
+    chunks:
+    - Comfort care
+    - is an active
+    - ', caring option'
+    - too
+    - .
+    words:
+    - w-comfort
+    - w-care
+    goal: 1
+  - en: What matters most to him at this stage of his illness?
+    ko: 이 단계에서 그분께 가장 중요한 게 뭘까요?
+    chunks:
+    - What matters most
+    - to him
+    - at this stage
+    - of his illness
+    - '?'
+    words:
+    - w-matter
+    - w-illness
+    goal: 1
+  - en: We can focus on his comfort instead of aggressive treatment.
+    ko: 적극적인 치료 대신 편안함에 집중할 수도 있어요.
+    chunks:
+    - We can focus
+    - on his comfort
+    - instead of aggressive
+    - treatment
+    - .
+    words:
+    - w-comfort
+    - w-treatment
+    goal: 1
+  - en: Whatever you decide, we'll support your family fully.
+    ko: 어떤 결정을 하시든 가족분들을 온전히 지지해드릴게요.
+    chunks:
+    - Whatever you decide
+    - ', we''ll support'
+    - your family fully
+    - .
+    words:
+    - w-decide
+    - w-support
+    goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-decide
+    cue: 'Son: "I think… maybe it''s what Dad would have wanted? I don''t know."'
+    scale:
+    - unsure
+    - leaning toward it
+    - certain
+    answerAt: 0
+    why: 말끝을 흐리며 '모르겠다'고 하면 아직 unsure예요. 결정을 재촉하지 말고, 아버지께 무엇이 중요했는지를 더 물어요.
+    example: He's still unsure what to decide.
+    exKo: 아직 어떻게 결정할지 확신이 없으세요.
+  - kind: swap
+    words:
+    - w-comfort
+    - w-care
+    - w-treatment
+    who: 가족에게 · 치료 목표 재설정
+    icon: me
+    before:
+    - 'We''re going to '
+    - withdraw care
+    - ' and focus on his comfort.'
+    options:
+    - stop treatments that aren't helping
+    - withdraw care
+    - give up
+    answer: stop treatments that aren't helping
+    notes:
+      stop treatments that aren't helping: 멈추는 것은 도움이 안 되는 치료이고 돌봄은 계속된다는 것이 분명하다.
+      withdraw care: 돌봄 자체를 거둔다는 말로 들려 가족이 버림받았다고 느낄 수 있다. 완화의료 쪽에서 피하라고 하는 표현이다.
+      give up: 포기한다는 말이라 가족에게 죄책감을 남긴다.
+    why: 완화 쪽으로 방향을 바꿔도 돌봄(care)은 멈추지 않아요. 멈추는 것은 치료(treatment)예요.
+- title: 다발성 만성질환 급성 악화
+  sentences:
+  - en: Your heart and kidneys are both under strain — we're balancing them.
+    ko: 심장과 신장 모두 부담을 받고 있어서, 저희가 균형을 맞추고 있어요.
+    chunks:
+    - Your heart and kidneys
+    - are both
+    - under strain
+    - — we're balancing them
+    - .
+    words:
+    - w-heart
+    - w-kidney
+    - w-strain
+    goal: 1
+  - en: We'll help your breathing first and go from there.
+    ko: 먼저 호흡을 도와드리고 그다음을 살펴볼게요.
+    chunks:
+    - We'll help
+    - your breathing
+    - first
+    - and go from there
+    - .
+    words:
+    - w-breathe
+    - w-first
+    goal: 2
+  - en: Tell me which symptom is bothering you most.
+    ko: 어떤 증상이 가장 힘드신지 알려 주세요.
+    chunks:
+    - Tell me
+    - which symptom
+    - is bothering you most
+    - .
+    words:
+    - w-tell
+    - w-symptom
+    - w-bother
+    goal: 2
+  - en: Your legs are swollen because your heart isn't pumping well.
+    ko: 심장이 잘 뛰지 못해서 다리가 부으신 거예요.
+    chunks:
+    - Your legs
+    - are swollen
+    - because your heart
+    - isn't pumping well
+    - .
+    words:
+    - w-leg
+    - w-swollen
+    - w-heart
+    goal: 1
+  - en: We'll treat your breathing and your heart at the same time.
+    ko: 호흡이랑 심장을 동시에 치료할게요.
+    chunks:
+    - We'll treat
+    - your breathing
+    - and your heart
+    - at the same time
+    - .
+    words:
+    - w-breathe
+    - w-heart
+    goal: 2
+  - en: Let's figure out together which problem to treat first.
+    ko: 어떤 문제를 먼저 치료할지 함께 정해볼게요.
+    chunks:
+    - Let's figure out
+    - together
+    - which problem
+    - to treat first
+    - .
+    words:
+    - w-problem
+    - w-first
+    goal: 1
+  nuance:
+  - kind: pair
+    words:
+    - w-strain
+    - w-swollen
+    - w-leg
+    pairs:
+    - - under
+      - strain
+    - - swollen
+      - legs
+    - - at the same
+      - time
+    decoys:
+    - breathing
+    why: 짐을 지고 있는 상태는 under strain, 부은 다리는 swollen legs, 동시에는 at the same time이에요.
+  - kind: context
+    words:
+    - w-swollen
+    - w-leg
+    - w-heart
+    scenes:
+    - who: 의사에게 보고
+      icon: speech
+      en: She has 3+ pitting edema in both legs — looks like a CHF exacerbation.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: BLE 3+ pitting edema; orthopnea.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: You have 3+ pitting edema from your CHF.
+      ok: false
+      fix: Your legs are swollen because your heart isn't pumping well.
+    why: pitting edema·CHF는 의료진끼리의 말이에요. 환자에게는 다리가 부은 이유를 쉬운 말로 설명해요.
+- title: 고관절 골절 통증·수술 대기
+  sentences:
+  - en: We'll manage your pain while you wait for surgery.
+    ko: 수술을 기다리시는 동안 통증을 관리해 드릴게요.
+    chunks:
+    - We'll manage
+    - your pain
+    - while you wait
+    - for surgery
+    - .
+    words:
+    - w-manage
+    - w-pain
+    - w-wait
+    - w-surgery
+    goal: 1
+  - en: Staying oriented and hydrated helps prevent confusion.
+    ko: 지남력을 유지하고 수분을 섭취하면 혼돈을 예방하는 데 도움이 돼요.
+    chunks:
+    - Staying oriented
+    - and hydrated
+    - helps prevent confusion
+    - .
+    words:
+    - w-orient
+    - w-hydrate
+    - w-prevent
+    - w-confusion
+    goal: 2
+  - en: I'll keep checking on you so you're not alone.
+    ko: 혼자 계시지 않도록 계속 살펴보러 올게요.
+    chunks:
+    - I'll keep checking
+    - on you
+    - so you're
+    - not alone
+    - .
+    words:
+    - w-alone
+    goal: 2
+  - en: Your hip fracture needs surgery, but we'll keep you comfortable until then.
+    ko: 고관절 골절이라 수술이 필요하지만, 그때까지 편안하게 지내시도록 도와드릴게요.
+    chunks:
+    - Your hip fracture
+    - needs surgery
+    - ', but we''ll keep you'
+    - comfortable
+    - until then
+    - .
+    words:
+    - w-hip
+    - w-fracture
+    - w-surgery
+    goal: 1
+  - en: Drink some water to help stay hydrated before surgery.
+    ko: 수술 전에 물을 좀 드셔서 수분을 유지해 주세요.
+    chunks:
+    - Drink some water
+    - to help
+    - stay hydrated
+    - before surgery
+    - .
+    words:
+    - w-hydrate
+    - w-surgery
+    goal: 2
+  - en: Let's keep you moving and oriented while you wait.
+    ko: 기다리시는 동안 계속 움직이시고 지남력을 유지하게 도와드릴게요.
+    chunks:
+    - Let's keep you
+    - moving
+    - and oriented
+    - while you wait
+    - .
+    words:
+    - w-orient
+    - w-wait
+    goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-pain
+    - w-manage
+    cue: 'Patient, gripping the rail: "The pain is unbearable — please don''t move my leg!"'
+    scale:
+    - mild
+    - moderate
+    - severe
+    answerAt: 2
+    why: '''unbearable''에 움직이지 말라고 애원하면 severe 쪽이에요. 노인은 통증을 덜 말하기도 해서 숫자와 함께 표정·몸짓도 봐요.'
+    example: Her pain is severe whenever we move her leg.
+    exKo: 다리를 움직일 때마다 통증이 심하세요.
+  - kind: context
+    words:
+    - w-orient
+    - w-hydrate
+    - w-prevent
+    - w-confusion
+    scenes:
+    - who: 동료에게
+      icon: speech
+      en: Let's get her glasses on and keep the blinds open — delirium prevention.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: 'Delirium precautions: reorientation, hydration, glasses on.'
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: We're implementing delirium precautions for you.
+      ok: false
+      fix: Staying oriented and hydrated helps prevent confusion.
+    why: delirium precautions는 간호 계획의 이름이에요. 환자에게는 무엇을 왜 하는지 쉬운 말로 말해야 함께할 수 있어요.
+- title: 요양원 이송 임종 임박
+  sentences:
+  - en: We'll focus on keeping her comfortable and peaceful.
+    ko: 편안하고 평온하게 지내실 수 있도록 초점을 맞출게요.
+    chunks:
+    - We'll focus
+    - on keeping her
+    - comfortable and peaceful
+    - .
+    words:
+    - w-comfortable
+    - w-peaceful
+    goal: 1
+  - en: You can hold her hand and speak to her — she may still hear you.
+    ko: 손을 잡고 말을 건네셔도 돼요 — 아직 들리실 수 있어요.
+    chunks:
+    - You can hold
+    - her hand
+    - and speak to her
+    - — she may still
+    - hear you
+    - .
+    words:
+    - w-hold
+    - w-speak
+    - w-hear
+    goal: 2
+  - en: Take all the time you need; we're here for all of you.
+    ko: 필요한 만큼 시간을 가지세요; 저희가 가족분들 곁에 있어요.
+    chunks:
+    - Take all the time
+    - you need;
+    - we're here
+    - for all of you
+    - .
+    words:
+    - w-need
+    goal: 2
+  - en: We'll keep the room calm and dim the lights for her.
+    ko: 방을 차분하게 하고 조명을 낮춰드릴게요.
+    chunks:
+    - We'll keep
+    - the room calm
+    - and dim
+    - the lights
+    - for her
+    - .
+    words:
+    - w-calm
+    - w-dim
+    goal: 1
+  - en: It's okay to say goodbye in whatever way feels right to you.
+    ko: 어떤 방식으로든 편하게 작별 인사를 하셔도 괜찮아요.
+    chunks:
+    - It's okay
+    - to say goodbye
+    - in whatever way
+    - feels right
+    - to you
+    - .
+    words:
+    - w-goodbye
+    goal: 2
+  - en: We'll make sure she stays comfortable and free of pain.
+    ko: 통증 없이 편안하게 지내시도록 해드릴게요.
+    chunks:
+    - We'll make sure
+    - she stays
+    - comfortable
+    - and free of pain
+    - .
+    words:
+    - w-sure
+    - w-comfortable
+    - w-pain
+    goal: 1
+  nuance:
+  - kind: pair
+    words:
+    - w-hold
+    - w-pain
+    - w-goodbye
+    pairs:
+    - - hold
+      - her hand
+    - - free of
+      - pain
+    - - say
+      - goodbye
+    decoys:
+    - peaceful
+    why: 손을 잡는 것은 hold her hand, 통증이 없는 것은 free of pain, 작별 인사는 say goodbye예요.
+  - kind: context
+    words:
+    - w-comfortable
+    scenes:
+    - who: 동료에게
+      icon: speech
+      en: She's actively dying — mottling and Cheyne-Stokes breathing.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Pt actively dying; comfort measures only per POLST.
+      ok: true
+    - who: 가족에게
+      icon: me
+      en: She's actively dying, with mottling and Cheyne-Stokes respirations.
+      ok: false
+      fix: She is dying, and her breathing may change — that's expected, and we'll keep her comfortable.
+    why: mottling·Cheyne-Stokes는 의료진끼리의 말이에요. 가족에게도 돌아가시고 있다는 사실은 분명히 말하되, 무엇이 보일지는 쉬운 말로 미리 알려 줘요.

@@ -1,0 +1,61 @@
+# icu-brain-death 결정 11 정리 — build_icu-brain-death.py 가 읽는다.
+untag_everywhere:
+  w-time: 공통 쉬운 단어(time)
+  w-hour: 공통 쉬운 단어(hour)
+  w-minute: 공통 쉬운 단어(minute)
+  w-doctor: 공통 쉬운 단어(doctor)
+  w-family: 공통 쉬운 단어(family)
+  w-body: 공통 쉬운 단어(body)
+  w-need: 간호사가 이미 아는 말(need)
+  w-ask: 간호사가 이미 아는 말(ask)
+  w-anyone: 간호사가 이미 아는 말(anyone)
+  w-blood: 간호사가 이미 아는 말(blood) — blood gas는 w-gas(혈액가스) 카드로 가르친다
+  w-cotton: cotton swab을 w-swab(헤드워드 cotton swab) 한 카드로 가르친다 — '면'은 뜻이 흐린 카드
+
+word_add:
+  - {id: w-entirely, en: entirely, ipa: /ɪnˈtaɪɚli/, ko: 전적으로, icon: board, example: "There is no pressure — this is entirely your decision.",
+     why: "w-family·w-pressure·w-right 태그를 뺀 뒤 기증 거부 상황의 단어가 8개 아래로 — 문장 1(keyPhrase)에 이미 있는 말"}
+  - {id: w-bring-up, en: bring up, ipa: /brɪŋ ʌp/, ko: (이야기를) 꺼내다, icon: speech, example: "We don't bring up donation with the family ourselves.",
+     why: "간호사가 기증을 먼저 꺼내지 않는 관행(decoupling)을 담은 문장 5의 핵심 구 — 태그가 없었다"}
+
+# [상황 번호, 문장 번호, id, why]
+untag_at:
+  - [18, 1, w-pressure, "no pressure는 '부담'이라 카드(혈압)와 뜻이 다르다"]
+  - [18, 3, w-right, "every right의 right는 명사(권리)라 카드(맞는)와 뜻이 다르다"]
+  - [11, 4, w-step, "step outside는 '자리를 비키다'라 카드(단계)와 뜻이 다르다"]
+  - [11, 3, w-hold, "hold his hand는 '잡다'라 카드(유지되다)와 뜻이 다르다"]
+  - [6, 3, w-call, "call it은 '(검사 중단을) 선언하다'는 관용 표현이라 카드(연락하다)와 뜻이 다르다"]
+  - [10, 3, w-stay, "has stayed above는 '유지되다'라 카드(머무르다)와 뜻이 다르다"]
+  - [13, 3, w-set, "the next set of labs의 set은 명사(한 묶음)라 카드(준비되다)와 뜻이 다르다"]
+  - [19, 2, w-bring, "bring the team together는 '모으다'라 카드(올리다)와 뜻이 다르다"]
+
+tag_at:
+  - [18, 1, w-entirely, "새 단어 w-entirely 태그"]
+  - [4, 5, w-bring-up, "새 단어 w-bring-up 태그"]
+
+# [상황 번호, 문장 번호, ko, why]
+sentence_ko:
+  - [0, 2, "의사들이 이를 확인하기 위해 따르는 신중한 법적 절차가 있습니다.", "legal process는 '합법적인 절차'가 아니라 법이 정한 '법적 절차' — en은 그대로"]
+  - [14, 0, "DCD에서는 생명유지 치료를 중단하고 순환이 멈춰 사망한 뒤에 기증이 이루어집니다.", "'순환정지사'가 낯선 말이라 뜻이 흐렸다 — en은 그대로"]
+  - [2, 4, "시간 측정을 시작하기 전, 활력징후는 안정적입니다.", "start the clock을 '시계를 시작하다'로 직역했다"]
+  - [14, 5, "일의 진행 순서를 팀과 함께 다시 한번 확인하겠습니다.", "order of events를 '사건의 순서'로 직역했다"]
+
+word_edits:
+  w-swab: {en: cotton swab, ipa: /ˈkɑtn swɑb/, why: "cotton swab을 구 단위로 — w-cotton(면)을 지운다"}
+  w-gas: {ko: 혈액가스, why: "다른 ICU 주제의 w-gas(혈액가스)와 맞춘다 — 문장이 모두 blood gas"}
+  w-map: {en: map out, ipa: /mæp aʊt/, why: "map out(정리하다)이 구동사 — map 홀로는 '지도'로 읽힌다"}
+  w-exam: {ko: 진찰, why: "w-test(검사)와 ko가 같아 듣고 뜻 고르기에서 정답이 둘이었다 — brainstem reflex exam은 손으로 하는 진찰"}
+  w-steady: {ko: 흔들림 없는, why: "w-stable(안정적인)과 ko가 같았다"}
+  w-vent: {ko: 인공호흡기(줄임말), why: "w-ventilator(인공호흡기)와 ko가 같았다 — 다른 ICU 주제와도 맞춘다"}
+  w-arrange: {ko: 마련하다, why: "w-coordinate(조율하다)와 ko가 같았다 — arrange for는 자리를 '마련하다'"}
+  w-honor: {ko: 받들다, why: "w-respect(존중하다)와 ko가 같았다 — 다른 ICU 주제의 w-honor(받들다)와 맞춘다"}
+  w-confirm: {ko: 확실히 확인하다, why: "w-check(확인하다)와 ko가 같았다 — 다른 ICU 주제와도 맞춘다"}
+  w-begin: {ko: 시작되다, why: "w-start(시작하다)와 ko가 같았다 — 문장은 the test to begin(자동사)"}
+  w-titrate: {ko: 적정하다, why: "다른 ICU 주제의 w-titrate(적정하다)와 맞춘다"}
+  w-give: {ko: 투여하다, why: "태그된 문장이 모두 약·수액 투여 — 다른 ICU 주제의 w-give(투여하다)와 맞춘다"}
+  w-vital: {ko: 활력징후, why: "문장은 모두 명사 vitals — '활력징후의'는 형용사"}
+  w-support: {ko: 지지 요법; 지지하다, why: "태그된 문장이 명사(current support)와 동사(support you·supporting it)로 나뉜다"}
+
+  w-volume: {ko: 체액량; 용적, why: "w-dose(용량)와 ko가 같았다 — 태그된 문장이 give volume·keep his volume(체액량)과 tidal volumes(용적)"}
+
+remove_why: {}

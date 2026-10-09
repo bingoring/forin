@@ -1,0 +1,83 @@
+- title: 노인 비전형 패혈증
+  s:
+  - {t: "비전형 증상", i: bell, w: "In older adults로 대상을 먼저 한정하고 can으로 가능성만 말해, 모든 노인이 그렇다는 뜻이 아님을 지켜요. 노인은 열 대신 혼란이나 저체온으로 나타날 수 있어 선별을 놓치기 쉬워요.", d: "in babies", k: ["평소 드시는 약 목록이 있나요?", "식사는 잘 하셨나요?"], a: "sepsis", o: ["asthma", "arthritis", "eczema"]}
+  - {t: "심각성 설명", i: faceWorried, w: "The fact that…으로 이유를 사실로 짚고, 가족이 직접 본 증상(차갑고 혼란스러움)을 그대로 말해 같은 것을 보고 있음을 보여 줘요. 평소와 달라졌다는 가족의 말은 노인 패혈증을 가려내는 중요한 단서예요.", d: "for sure", k: ["오늘 드신 약을 확인해도 될까요?", "혼자 일어나시지 않게 도와드릴게요"], a: "confused", o: ["hungry", "thirsty", "bored"]}
+  - {t: "감염 병력", i: speech, w: "Has he had any…로 최근에 한 번이라도 있었는지 묻는 현재완료 질문이에요. 감염·카테터·상처는 패혈증의 대표적인 감염원 후보라 한 번에 묶어 물어요.", d: "yesterday", k: ["평소에도 이렇게 혼란스러워하셨나요?", "최근에 드시는 약이 바뀌었나요?"], a: "wound", o: ["birthday", "wedding", "holiday"]}
+  - {t: "발열 예외", i: bell, w: "don't always로 열이 없다고 안심하면 안 된다는 요지를 부드럽게 말해요. 노인이나 면역이 약한 사람은 심한 감염에도 열이 안 날 수 있어요.", d: "in the past", k: ["평소 체온이 어떻게 되세요?", "체온을 다시 한번 재 볼게요"], a: "even", o: ["only", "also", "except"]}
+  - {t: "혼란 신호", i: bell, w: "can be로 단정하지 않고 가능성만 말해 가족이 겁먹지 않게 하면서, early sign으로 지금 확인하는 이유를 알려요. 갑자기 평소와 다르게 혼란스러운 것은 감염 때문에 생기는 급성 혼돈(섬망)일 수 있어요.", d: "at the desk", k: ["가족분이 곁에 계셔 주세요", "지금 계신 곳이 어디인지 여쭤볼게요"], a: "Confusion", o: ["Hunger", "Thirst", "Boredom"]}
+  - {t: "최근 변화", i: magnify, w: "Any…?로 동사를 줄이고 항목만 늘어놓아 보호자가 짧게 답하게 해요. 낙상·새 약·카테터 문제는 혼란의 흔한 원인이라 감염과 함께 확인해요.", d: "last year", k: ["평소 걸음은 괜찮으셨나요?", "잠은 잘 주무셨나요?"], a: "falls", o: ["meals", "visits", "naps"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "노인 패혈증 설명 4문장 순서"
+    why: "혼란이 평소보다 심하다고 알리고, 'That's because'가 그 걱정을 이유로 받아 비전형 증상을 설명하고, 'for that'이 그 가능성을 가리켜 병력을 묻고, 'Thank you'가 그 대답을 받아 다음 행동을 말해요. 'That's because'·'for that'·'Thank you'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Your father is much more confused than usual, and that worries us.", icon: faceWorried, ko: "아버님이 평소보다 많이 혼란스러워하셔서 걱정돼요", note: "걱정"}
+    - {en: "That's because in older adults, sepsis can show up as confusion instead of fever.", icon: bell, ko: "노인은 패혈증이 열 대신 혼란으로 나타날 수 있어서예요", note: "이유"}
+    - {en: "To check for that, has he had any recent infection, catheter problem, or wound?", icon: speech, ko: "그걸 확인하려는데 최근 감염이나 카테터 문제, 상처가 있었나요?", note: "병력"}
+    - {en: "Thank you. We'll look for an infection now and keep a close eye on him.", icon: monitor, ko: "고마워요. 지금 감염을 찾아보고 곁에서 계속 지켜볼게요", note: "계획"}
+  sw: {ko: "고령 환자분들은 패혈증이 혼란이나 저체온으로 나타날 수 있어요"}
+  ctx:
+    word: "baseline"
+    ko: "평소 상태"
+    sc:
+      1: {en: "He's acutely confused — his daughter says his baseline is fully oriented — and he's hypothermic at 35.6."}
+- title: 요로성 패혈증
+  s:
+  - {t: "옆구리 통증", i: bell, w: "with로 통증과 요로감염을 한 묶음으로 보고 can lead로 진행 가능성을 짚어요. 옆구리 통증은 요로감염이 신장까지 올라갔다는 단서일 수 있어요.", d: "in your leg", k: ["소변 색이 어떤가요?", "열은 언제부터 났나요?"], a: "flank", o: ["ankle", "elbow", "wrist"]}
+  - {t: "막힘 확인", i: magnify, w: "We'll check if로 확인할 일과 그 이유를 한 문장에 담아요. 요로가 돌 등으로 막히면 감염된 소변이 갇혀서 항생제만으로는 부족해 배액이 필요할 수 있어요.", d: "at home", k: ["소변 줄을 넣을 수도 있어요", "검사실에서 소변을 확인하고 있어요"], a: "blockage", o: ["rash", "bruise", "fracture"]}
+  - {t: "치료 시작", i: pill, w: "now로 지금 시작한다고 분명히 해서 환자가 아직 기다리는 중인지 헷갈리지 않게 해요. 패혈증은 수액과 항생제를 한 시간 안에 시작하는 것이 핵심이에요.", d: "at home", k: ["항생제 알레르기가 있으신지 다시 확인할게요", "팔에 따끔할 수 있어요"], a: "fluids", o: ["meals", "forms", "visits"]}
+  - {t: "원인 짚기", i: magnify, w: "points to로 단정하지 않고 가리킨다고만 말해 아직 추정임을 지켜요. 등·옆구리 통증에 열이 겹치면 신우신염(신장 감염)을 가장 먼저 떠올려요.", d: "last night", k: ["소변을 볼 때 아프세요?", "어느 쪽이 더 아픈가요?"], a: "kidney", o: ["lung", "skin", "throat"]}
+  - {t: "배액 이유", i: scalpel, w: "If로 막힘이 있을 때만 하는 처치라고 조건을 걸고 may로 아직 결정이 아님을 말해요. 막힌 곳의 감염된 소변을 빼내는 배액은 의사가 결정하고, 간호사는 이유를 환자 말로 설명해요.", d: "by mouth", k: ["영상 검사에서 확인할 수 있어요", "시술은 의사가 설명해 줄 거예요"], a: "drain", o: ["cover", "freeze", "rub"]}
+  - {t: "즉시 투여", i: pill, w: "right away로 지체 없이 투여한다고 분명히 해서 환자가 기다리는 불안을 덜어요. to fight로 목적을 붙여 약과 수액이 하는 일을 한 문장에 묶어요.", d: "by hand", k: ["검사 결과는 곧 나올 거예요", "혈압은 계속 볼게요"], a: "Antibiotics", o: ["Gloves", "Blankets", "Pillows"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "요로성 패혈증 설명 4문장 순서"
+    why: "원인을 짚고, 'it'이 그 감염을 가리켜 즉시 치료를 알리고, 'Along with that'이 그 치료를 가리켜 막힘 확인을 더하고, 'one'이 그 막힘을 가리켜 배액 가능성을 말해요. 'it'·'Along with that'·'one'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Your back and side pain with a fever points to a kidney infection.", icon: magnify, ko: "등과 옆구리 통증에 열이 있어서 신장 감염을 의심해요", note: "원인"}
+    - {en: "We're starting fluids and antibiotics right away to fight it.", icon: pill, ko: "그걸 잡으려고 수액과 항생제를 바로 시작할게요", note: "치료"}
+    - {en: "Along with that, we'll check for a blockage that could keep the infection from clearing.", icon: magnify, ko: "그와 함께 감염이 가라앉지 못하게 하는 막힘이 있는지 확인할게요", note: "확인"}
+    - {en: "If we find one, we may need to drain it.", icon: scalpel, ko: "막힘을 찾으면 빼내야 할 수 있어요", note: "배액"}
+  sw: {ko: "막힌 곳이 있으면 감염을 잡으려고 빼내야 할 수 있어요"}
+- title: 폐렴성 패혈증
+  s:
+  - {t: "상태 설명", i: stetho, w: "has spread로 이미 일어난 일을 말하고 so we're acting fast로 그래서 하는 행동을 바로 이어요. 폐렴이 혈류로 퍼져 전신 반응(패혈증)이 되면 빠른 치료가 필요해요.", d: "in the lungs", k: ["폐 사진을 다시 찍을 거예요", "기침은 언제부터 심해졌나요?"], a: "so", o: ["but", "because", "although"]}
+  - {t: "지금 치료", i: pill, w: "oxygen·fluids·antibiotics를 나열해 한꺼번에 하는 일을 보여 주고 right now로 지금 한다고 안심시켜요. 폐렴성 패혈증은 산소, 수액, 항생제가 함께 가요.", d: "in the room", k: ["가래를 검사실로 보낼 거예요", "호흡기 치료사가 곧 올 거예요"], a: "oxygen", o: ["blankets", "pillows", "gowns"]}
+  - {t: "호흡 감시", i: stetho, w: "closely로 계속 지켜본다고 약속하고 if needed로 필요할 때 개입하겠다고 해서 환자가 혼자 버티지 않아도 됨을 알려요. 폐렴 환자는 호흡이 지치면 산소나 호흡 보조를 늘려야 할 수 있어요.", d: "by yourself", k: ["기침을 깊게 해 보세요", "누워 있기 힘들면 말씀해 주세요"], a: "I'm", o: ["You're", "It's", "That's"]}
+  - {t: "산소 수치", i: monitor, w: "lower than we'd like는 정상보다 낮다는 말을 우리가 바라는 수준이라는 기준으로 감싸, 환자를 겁주거나 탓하지 않고 사실을 전해요. 패혈증 폐렴은 산소포화도가 떨어지기 쉬워서 산소를 줘요.", d: "in the room", k: ["산소 마스크를 벗지 마세요", "숨을 크게 쉬어 보세요"], a: "oxygen", o: ["sodium", "potassium", "glucose"]}
+  - {t: "동시 치료", i: stetho, w: "at the same time으로 두 가지를 동시에 한다고 말해, 하나를 하느라 다른 것을 미룬다는 걱정을 덜어요. 감염을 잡는 치료(항생제)와 폐를 돕는 지지(산소 등)가 함께 가요.", d: "one by one", k: ["가슴 소리를 들어 볼게요", "소변량을 확인할게요"], a: "lungs", o: ["knees", "eyes", "ears"]}
+  - {t: "악화 보고", i: siren, w: "right away로 곧바로 말하라고 하고 if breathing gets harder로 환자가 직접 느끼는 변화를 기준으로 줘요. 숨쉬기가 힘들어지는 것은 산소·호흡 보조를 늘려야 한다는 가장 빠른 신호예요.", d: "for you", k: ["가래가 나오면 뱉어 주세요", "기침은 참지 마세요"], a: "harder", o: ["easier", "lighter", "calmer"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "폐렴성 패혈증 설명 4문장 순서"
+    why: "상태를 알리고, 'That's why'가 그 상태를 이유로 받아 치료를 말하고, 'Along with that'이 그 치료를 가리켜 호흡 감시를 더하고, 'too'가 간호사의 감시에 환자가 도울 일을 더해요. 'That's why'·'Along with that'·'too'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Your pneumonia has spread, and your oxygen level is lower than we'd like.", icon: stetho, ko: "폐렴이 퍼졌고 산소 수치도 바라는 것보다 낮아요", note: "상태"}
+    - {en: "That's why we're giving oxygen, fluids, and antibiotics right now.", icon: pill, ko: "그래서 지금 산소, 수액, 항생제를 드리고 있어요", note: "치료"}
+    - {en: "Along with that, I'm watching your breathing closely and will support it as needed.", icon: monitor, ko: "그와 함께 호흡을 계속 지켜보고 필요하면 도와드릴게요", note: "감시"}
+    - {en: "You can help too — tell me right away if breathing gets harder.", icon: siren, ko: "도와주실 수도 있어요 — 숨쉬기가 더 힘들어지면 바로 말씀해 주세요", note: "협조"}
+  sw: {ko: "숨쉬기가 더 힘들어지면 바로 말씀해 주세요"}
+- title: 수액반응성 평가
+  s:
+  - {t: "재평가", i: monitor, w: "After the fluids로 기준 시점을 먼저 말해 지금 하는 확인이 수액에 대한 반응을 보는 것임을 알려요. 혈압과 호흡을 함께 보는 이유는 혈압이 오르는지와 폐에 물이 차지 않는지를 동시에 알아야 해서예요.", d: "last night", k: ["소변량도 같이 볼게요", "팔에 부기가 없는지 볼게요"], a: "how", o: ["when", "where", "why"]}
+  - {t: "다음 결정", i: compass, w: "if…or…로 결과에 따라 갈리는 두 갈래를 보여 줘 재평가가 다음 결정을 위한 것임을 알려요. 수액으로 혈압이 오르지 않으면 승압제 같은 다른 지지가 필요할 수 있어요.", d: "for now", k: ["결과는 의사에게 바로 전할게요", "수액 속도는 의사가 정해요"], a: "body", o: ["family", "room", "chart"]}
+  - {t: "숨참 보고", i: bell, w: "Let me know는 명령이 아니라 부탁이라 환자가 보고하는 일을 편하게 맡아요. start to로 심해지기 전 처음 느낌부터 알려 달라는 뜻을 담아요. 수액이 많이 들어가면 폐에 물이 찰 수 있어서 처음 징후가 중요해요.", d: "at home", k: ["팔에 통증이 생기면 알려 주세요", "다리를 올려 드릴게요"], a: "breath", o: ["hope", "food", "money"]}
+  - {t: "경과 설명", i: chartup, w: "came up a little로 좋아진 정도를 과장하지 않고 정확히 말해요. after that last bag of fluids로 변화의 원인 후보(수액)를 짚어 반응이 있음을 알려요.", d: "last week", k: ["아직 안심하기엔 일러요", "수액은 의사가 정한 만큼 들어갈 거예요"], a: "up", o: ["down", "out", "off"]}
+  - {t: "과다 주의", i: bell, w: "Too much fluid can…으로 수액이 많을수록 좋은 것은 아니라는 균형을 말하고 so I'm watching으로 그래서 하는 행동을 이어요. 패혈증에서 수액을 많이 주면 폐에 물이 차 호흡이 힘들어질 수 있어요.", d: "for you", k: ["가슴 소리를 들어 볼게요", "소변량을 확인할게요"], a: "breathe", o: ["swallow", "taste", "chew"]}
+  - {t: "과다 신호", i: faceWorried, w: "Swelling…or feeling…으로 환자가 직접 알아챌 수 있는 두 신호를 주어로 삼고 can mean으로 가능성만 말해요. 다리 부종과 호흡곤란 악화는 수액이 과할 때 나타나는 대표 신호예요.", d: "by the bed", k: ["다리를 심장보다 높이 올려 두세요", "양말이 꽉 끼면 말씀해 주세요"], a: "mean", o: ["cure", "prevent", "fix"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "수액 반응 평가 4문장 순서"
+    why: "재확인을 알리고, 'Your pressure'가 그 확인의 결과를 말하고, 'Fluids that help'가 그 결과 속 '수액이 돕는다'를 받아 과다의 위험을 말하고, 'of that'이 그 위험을 가리켜 신호를 말해요. 'Your pressure'·'Fluids that help'·'of that'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "After the fluids, I'm rechecking your blood pressure and how you're breathing.", icon: monitor, ko: "수액을 준 뒤 혈압과 호흡을 다시 확인하고 있어요", note: "재확인"}
+    - {en: "Your pressure came up a little, which tells us the fluids are helping.", icon: chartup, ko: "혈압이 조금 올라서 수액이 도움이 되고 있다는 걸 알 수 있어요", note: "결과"}
+    - {en: "Fluids that help can still cause trouble in excess, so I'm watching closely.", icon: bell, ko: "도움이 되는 수액도 과하면 문제가 될 수 있어서 계속 지켜보고 있어요", note: "주의"}
+    - {en: "Leg swelling or worse breathing would be signs of that, so tell me right away.", icon: siren, ko: "다리가 붓거나 숨쉬기가 더 힘들면 그 신호라서 바로 말씀해 주세요", note: "신호"}
+  ctx:
+    word: "edema"
+    ko: "부종"

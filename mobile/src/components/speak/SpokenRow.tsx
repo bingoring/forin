@@ -7,6 +7,7 @@ import { NbPaper, nbText } from '@/components/nb/NbUI';
 import { nb, nbFonts } from '@/theme/nb';
 import { bandColor, bandOf, deptOf, scoreLabel } from '@/data/speakBands';
 import { useT } from '@/i18n';
+import { usePronunciationEnabled } from '@/data/pronunciationFlag';
 import type { SpokenSentence } from '@/api/client';
 
 export function SpokenRow({
@@ -26,6 +27,7 @@ export function SpokenRow({
   rot?: number;
 }) {
   const t = useT();
+  const pronOn = usePronunciationEnabled();
   const dept = deptOf(sentence);
   const body = (
     <>
@@ -43,7 +45,7 @@ export function SpokenRow({
           <Text numberOfLines={1} style={nbText.hand(13, nb.soft)}>{t('speak.tries', { n: sentence.attempts })}</Text>
         </View>
       </View>
-      {onPractise && (
+      {onPractise && pronOn && (
         <Pressable onPress={() => onPractise(sentence)} hitSlop={8}>
           {card
             ? <NbIcon name="mic" size={18} />

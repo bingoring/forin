@@ -1,0 +1,100 @@
+알람 설정·우선순위 이해:
+  - kind: slider
+    words: [w-alarm, w-red]
+    cue: "Monitor: HR 34, patient pale and not responding."
+    scale: [low-priority alarm, medium-priority alarm, high-priority alarm]
+    answerAt: 2
+    why: "지금 생명을 위협하고 즉각 조치가 필요하면 high-priority — 모니터에서는 빨간색이에요. 노란색이 medium, 그 아래가 low예요."
+    example: "That's a high-priority alarm — go now."
+    exKo: "그건 최우선 알람이에요, 지금 가요."
+  - kind: context
+    words: [w-limit, w-baseline]
+    scenes:
+      - {who: 동료 간호사에게, icon: speech, en: "His baseline heart rate is 110, so let's set the high limit at 130.", ok: true}
+      - {who: 차트 기록, icon: board, en: "HR alarm limits adjusted to pt baseline.", ok: true}
+      - {who: 보호자에게, icon: me, en: "We adjusted his HR alarm limits to his baseline parameters.", ok: false, fix: "We set his monitor to fit what's normal for him, so it beeps when something really changes."}
+    why: "limit·baseline·parameter는 의료진끼리의 말이에요. 보호자에게는 '그분에게 정상인 범위에 맞췄다'로 풀어 말해요."
+억제대 적응·대안 확인:
+  - kind: slider
+    words: [w-restrictive, w-sitter]
+    cue: "He settles down when someone stays at the bedside and talks to him."
+    scale: [reorientation, a sitter, mitts, wrist restraints]
+    answerAt: 1
+    why: "덜 제한적인 방법부터 올라가요. 곁에서 지켜보는 사람만으로 진정되면 그 위 단계(손 장갑·손목 억제대)로 가지 않아요."
+    example: "Have we tried a sitter before we reach for restraints?"
+    exKo: "억제대를 쓰기 전에 관찰 인력을 먼저 시도해 봤나요?"
+  - kind: context
+    words: [w-reassess, w-restraint]
+    scenes:
+      - {who: 동료 간호사에게, icon: speech, en: "Let's reassess whether he still needs the restraints at two.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Restraint need reassessed; less restrictive alternatives ineffective.", ok: true}
+      - {who: 보호자에게, icon: me, en: "Restraint necessity will be reassessed per protocol.", ok: false, fix: "We check often whether he still needs them, and we take them off as soon as it's safe."}
+    why: "'per protocol' 같은 행정 말투는 보호자에게 차갑게 들려요. 얼마나 자주 보고 언제 푸는지를 쉬운 말로 말해요."
+고위험약 이중확인:
+  - kind: pair
+    words: [w-sign, w-hear, w-back, w-unit]
+    pairs: [[sign, "off"], [hear it, back], [ten, units]]
+    decoys: [apart]
+    why: "이중확인을 마치고 승인 서명하는 건 sign off, 들은 걸 되읽어 확인하는 건 hear it back이에요. 인슐린은 mg가 아니라 units로 세요."
+  - kind: context
+    words: [w-wrong, w-hear]
+    scenes:
+      - {who: 동료 간호사에게, icon: speech, en: "I'm not saying you're wrong — I just need to hear it back before we sign.", ok: true}
+      - {who: 담당 의사 콜, icon: monitor, en: "Before we hang this, can you clarify the insulin order? The label says fifty units.", ok: true}
+      - {who: 동료 간호사에게, icon: speech, en: "You're wrong. That's fifty units, not five.", ok: false, fix: "Wait — the label says fifty units, but the order says five. Can we check it together?"}
+    why: "이중확인에서 상대를 'wrong'이라고 단정하면 방어적으로 만들어요. 숫자를 사실대로 말하고 '같이 확인하자'로 이어 가면 같은 지적도 협조를 얻어요."
+라인·튜브 라벨·경로 확인:
+  - kind: pair
+    words: [w-trace, w-label, w-push]
+    pairs: [[trace the line, from bag to patient], [label, both ends], [push, into the wrong line]]
+    decoys: [on hold]
+    why: "trace는 출발점에서 끝까지 손으로 짚어 가는 것이라 from A to B와 어울려요. 라벨은 라인 양 끝(both ends)에 붙여요."
+  - kind: context
+    words: [w-arterial, w-line]
+    scenes:
+      - {who: 동료 간호사에게, icon: speech, en: "Careful — that's the art line, not for meds.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Arterial line R radial; no meds via A-line.", ok: true}
+      - {who: 보호자에게, icon: me, en: "That's his art line, no meds.", ok: false, fix: "That line measures his blood pressure all the time, so we never give medicine through it."}
+    why: "'art line'은 의료진끼리의 줄임말이에요. 보호자에게는 그 줄이 무엇을 하는지로 설명해요."
+낙상·손상 예방 기초:
+  - kind: pair
+    words: [w-lock, w-call, w-light, w-reach]
+    pairs: [[lock, the wheels], [call, light], [within, reach]]
+    decoys: [apart]
+    why: "침대 바퀴는 lock the wheels, 호출등은 call light, '손 닿는 곳에'는 within reach로 굳은 말이에요."
+  - kind: context
+    words: [w-fall, w-risk, w-high]
+    scenes:
+      - {who: 인계받는 동료에게, icon: speech, en: "He's a high fall risk tonight — bed's low and the alarm is on.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Fall risk high. Bed low/locked, alarm on, call light in reach.", ok: true}
+      - {who: 보호자에게, icon: me, en: "His Morse score is 65, so he's a high fall risk.", ok: false, fix: "He's more likely to fall tonight because he's confused, so please call us before helping him up."}
+    why: "점수와 등급은 의료진끼리의 말이에요. 보호자에게는 이유와 해 줄 일(부르기 전에 혼자 일으키지 않기)을 같이 말해야 도움이 돼요."
+투약 5R 확인:
+  - kind: pair
+    words: [w-allergy, w-check, w-wristband, w-scan, w-band]
+    pairs: [[allergic, to penicillin], [check his wristband, against the order], [scan, the band]]
+    decoys: [of penicillin]
+    why: "'~에 알레르기가 있다'는 allergic to예요. 한국어 '~에 대한'을 옮겨 of로 쓰기 쉬워요. 대조 확인은 check A against B."
+  - kind: context
+    words: [w-allergy, w-ask]
+    scenes:
+      - {who: 환자에게, icon: me, en: "Are you allergic to any medicines, like penicillin?", ok: true}
+      - {who: 동료 간호사에게, icon: speech, en: "Any drug allergies charted for bed 4?", ok: true}
+      - {who: 환자에게, icon: me, en: "Do you have any known drug hypersensitivities?", ok: false, fix: "Are you allergic to any medicines?"}
+    why: "hypersensitivity는 정확한 임상어지만 환자는 무엇을 묻는지 놓치기 쉬워요. 'allergic to'로 쉽게 물어요."
+알람 피로 관리·맞춤화:
+  - kind: slider
+    words: [w-silence, w-alarm]
+    cue: "You're about to suction him, and his SpO2 will dip for a minute."
+    scale: [pause, silence, turn off]
+    answerAt: 0
+    why: "pause는 정해진 몇 분만 멈췄다가 저절로 다시 켜져요. silence는 지금 울리는 소리를 끄는 것, turn off는 그 알람 자체를 꺼서 다시 울리지 않으니 가장 위험해요."
+    example: "Let's pause the alarms while we suction."
+    exKo: "흡인하는 동안 알람을 잠시 멈춰 둬요."
+  - kind: context
+    words: [w-alarm, w-fatigue]
+    scenes:
+      - {who: 동료 간호사에게, icon: speech, en: "Alarm fatigue is real — after the tenth alert, you stop hearing them.", ok: true}
+      - {who: 안전 회의 보고, icon: board, en: "Nonactionable alarms contributed to alarm fatigue on the unit.", ok: true}
+      - {who: 보호자에게, icon: me, en: "Don't worry, most of these alarms are meaningless — we ignore them.", ok: false, fix: "A lot of these beeps are routine, but we check every one, and we've set them to fit him."}
+    why: "'ignore'라고 하면 보호자는 아무도 안 본다고 받아들여요. 대부분 일상적인 알람이라도 확인하고 있다는 사실을 함께 말해요."

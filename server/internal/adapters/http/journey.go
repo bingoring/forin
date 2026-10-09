@@ -99,7 +99,7 @@ func summariseFreeRoam(tracks []learning.TrackGroup, goal string) []learning.Fre
 		if tg.Dept == goal || tg.Dept == "CORE" {
 			continue
 		}
-		e := learning.FreeRoamEntry{Dept: tg.Dept, Total: len(tg.Curricula)}
+		e := learning.FreeRoamEntry{Dept: tg.Dept, Total: len(tg.Curricula), Building: campus.BuildingOf(tg.Dept)}
 		for _, c := range tg.Curricula {
 			if c.State == "passed" {
 				e.Passed++

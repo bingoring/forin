@@ -178,6 +178,19 @@ type InviteCode struct {
 	RevokedAt pgtype.Timestamptz `json:"revoked_at"`
 }
 
+type LessonStepClear struct {
+	UserID     string             `json:"user_id"`
+	ScenarioID string             `json:"scenario_id"`
+	Step       string             `json:"step"`
+	ClearedAt  pgtype.Timestamptz `json:"cleared_at"`
+	Detail     []byte             `json:"detail"`
+}
+
+type Lexicon struct {
+	Theme string `json:"theme"`
+	Words []byte `json:"words"`
+}
+
 type LoungePost struct {
 	ID         string             `json:"id"`
 	AuthorID   string             `json:"author_id"`
@@ -275,20 +288,23 @@ type ReviewSchedule struct {
 }
 
 type Scenario struct {
-	ID         string `json:"id"`
-	Profession string `json:"profession"`
-	EventID    string `json:"event_id"`
-	Title      string `json:"title"`
-	Tagline    string `json:"tagline"`
-	Goals      []byte `json:"goals"`
-	Guardrails []byte `json:"guardrails"`
-	KeyPhrases []byte `json:"key_phrases"`
-	Steps      []byte `json:"steps"`
-	Persona    []byte `json:"persona"`
-	Briefing   []byte `json:"briefing"`
-	Acuity     string `json:"acuity"`
-	Theme      string `json:"theme"`
-	CollabWith string `json:"collab_with"`
+	ID          string `json:"id"`
+	Profession  string `json:"profession"`
+	EventID     string `json:"event_id"`
+	Title       string `json:"title"`
+	Tagline     string `json:"tagline"`
+	Goals       []byte `json:"goals"`
+	Guardrails  []byte `json:"guardrails"`
+	KeyPhrases  []byte `json:"key_phrases"`
+	Steps       []byte `json:"steps"`
+	Persona     []byte `json:"persona"`
+	Briefing    []byte `json:"briefing"`
+	Acuity      string `json:"acuity"`
+	Theme       string `json:"theme"`
+	CollabWith  string `json:"collab_with"`
+	Sentences   []byte `json:"sentences"`
+	Nuance      []byte `json:"nuance"`
+	LessonOrder []byte `json:"lesson_order"`
 }
 
 type ScenarioAttempt struct {
@@ -349,6 +365,7 @@ type SpeechReference struct {
 	DurationMs    int                `json:"duration_ms"`
 	CreatedAt     pgtype.Timestamptz `json:"created_at"`
 	AudioWav      []byte             `json:"audio_wav"`
+	LastUsedAt    pgtype.Timestamptz `json:"last_used_at"`
 }
 
 type User struct {

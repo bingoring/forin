@@ -1,0 +1,232 @@
+w-rate:
+  exKo: "혈압은 낮은데 맥박도 느린 걸 보면 신경성 쇼크가 의심돼요."
+  cue: "1분 동안 몇 번 뛰는지를 나타내는 수 — 'heart ___'"
+  tag: 바이탈
+  distractorsEn: [rhythm, range]
+  distractorsKo: [리듬, 범위]
+  chips: [[rate]]
+  decoyChips: [late]
+w-point:
+  exKo: "출혈이에요? 어디인지 짚어주세요. 예, 아니오?"
+  cue: "손가락으로 위치를 짚어 줄 때, 또는 소견이 어떤 진단을 가리킬 때"
+  tag: 증상 문진
+  distractorsEn: [paint, print]
+  distractorsKo: [감추다, 배제하다]
+  chips: [[point]]
+  decoyChips: [pint]
+w-neurogenic:
+  exKo: "혈압은 낮은데 맥박도 느린 걸 보면 신경성 쇼크가 의심돼요."
+  cue: "척수손상으로 교감신경이 끊겨 혈관이 늘어나는 쇼크 — 신경이 원인인"
+  tag: 쇼크 원인
+  distractorsEn: [neurologic, nephrogenic]
+  distractorsKo: [심인성의, 신장성의]
+  chips: [[neu, ro, gen, ic]]
+  decoyChips: [new, jen]
+w-shock:
+  exKo: "혈압은 낮은데 맥박도 느린 걸 보면 신경성 쇼크가 의심돼요."
+  cue: "조직에 피가 충분히 가지 못하는 생명 위협 상태 — 저혈압이 흔하다"
+  tag: 쇼크 원인
+  distractorsEn: [stock, shake]
+  distractorsKo: [실신, 발작]
+  chips: [[shock]]
+  decoyChips: [shook]
+w-full:
+  exKo: "척추 고정을 완전히 유지하세요 — 목을 움직이지 마세요."
+  cue: "일부만이 아니라 빠짐없이 전부 갖춘"
+  tag: 긴급 대응
+  distractorsEn: [foul, fuel]
+  distractorsKo: [부분적인, 느슨한]
+  chips: [[full]]
+  decoyChips: [fell]
+w-spinal:
+  exKo: "척추 고정을 완전히 유지하세요 — 목을 움직이지 마세요."
+  cue: "등뼈와 그 안의 척수에 관한 — 추락 환자는 이 보호를 먼저 한다"
+  tag: 신체
+  distractorsEn: [spiral, final]
+  distractorsKo: [흉부의, 복부의]
+  chips: [[spin, al]]
+  decoyChips: [spun, all]
+w-precaution:
+  exKo: "척추 고정을 완전히 유지하세요 — 목을 움직이지 마세요."
+  cue: "나쁜 일이 생기기 전에 미리 하는 조치 — 낙상 ___, 척추 ___ 처럼 복수로도 쓴다"
+  tag: 긴급 대응
+  distractorsEn: [precision, prescription]
+  distractorsKo: [처방, 진단]
+  chips: [[pre, cau, tion]]
+  decoyChips: [pro, caw]
+w-move:
+  exKo: "척추 고정을 완전히 유지하세요 — 목을 움직이지 마세요."
+  cue: "몸이나 위치를 옮기는 동작 — 목을 다친 환자에게는 하면 안 되는 것"
+  tag: 긴급 대응
+  distractorsEn: [remove, prove]
+  distractorsKo: [멈추다, 쉬다]
+  chips: [[move]]
+  decoyChips: [mauve]
+w-consider:
+  exKo: "수액을 주고 승압제와 아트로핀도 고려하세요."
+  cue: "당장 하지는 않아도 선택지로 올려 두고 생각해 볼 때"
+  tag: 인계
+  distractorsEn: [consist, consult]
+  distractorsKo: [거부하다, 확정하다]
+  chips: [[con, sid, er]]
+  decoyChips: [can, side]
+w-pressor:
+  exKo: "수액을 주고 승압제와 아트로핀도 고려하세요."
+  cue: "혈관을 조여 혈압을 올리는 약을 통틀어 부르는 말"
+  tag: 약물
+  distractorsEn: [pressure, processor]
+  distractorsKo: [진정제, 이뇨제]
+  chips: [[pres, sor]]
+  decoyChips: [press, sure]
+w-atropine:
+  exKo: "수액을 주고 승압제와 아트로핀도 고려하세요."
+  cue: "너무 느린 심박수를 올리려고 쓰는 약 — 서맥이 동반된 쇼크에서"
+  tag: 약물
+  distractorsEn: [atrophy, adenosine]
+  distractorsKo: [아데노신, 도파민]
+  chips: [[at, ro, pine]]
+  decoyChips: [ate, pin]
+w-situation:
+  exKo: "상황: 노르에피네프린을 쓰고 있는 패혈증성 쇼크, 여전히 저혈압이에요."
+  cue: "SBAR의 첫 글자 S — 지금 무슨 일이 벌어졌는지 한 줄로 알린다"
+  tag: 인계
+  distractorsEn: [station, situate]
+  distractorsKo: [배경, 권고]
+  chips: [[sit, u, a, tion]]
+  decoyChips: [sat, sion]
+w-septic:
+  exKo: "상황: 노르에피네프린을 쓰고 있는 패혈증성 쇼크, 여전히 저혈압이에요."
+  cue: "혈액 속 감염이 온몸의 반응을 일으킨 — 이 쇼크는 항생제와 승압제가 필요"
+  tag: 쇼크 원인
+  distractorsEn: [skeptic, aseptic]
+  distractorsKo: [무균의, 출혈성의]
+  chips: [[sep, tic]]
+  decoyChips: [sip, tick]
+w-still:
+  exKo: "상황: 노르에피네프린을 쓰고 있는 패혈증성 쇼크, 여전히 저혈압이에요."
+  cue: "치료를 했는데도 아직 그 상태가 이어질 때"
+  tag: 인계
+  distractorsEn: [stall, steel]
+  distractorsKo: [이미, 갑자기]
+  chips: [[still]]
+  decoyChips: [stall]
+w-hypotensive:
+  exKo: "상황: 노르에피네프린을 쓰고 있는 패혈증성 쇼크, 여전히 저혈압이에요."
+  cue: "혈압이 기준(수축기 90 미만) 밑으로 내려간 — 의료진끼리 쓰는 형용사"
+  tag: 바이탈
+  distractorsEn: [hypertensive, hypoxic]
+  distractorsKo: [고혈압의, 저산소의]
+  chips: [[hypo, tens, ive]]
+  decoyChips: [hyper, ion]
+w-climb:
+  exKo: "소변량이 줄었고 젖산 수치가 올라가고 있어요."
+  cue: "수치가 계단 오르듯 계속 높아질 때 — 젖산이 이러면 나쁜 신호"
+  tag: 바이탈
+  distractorsEn: [clamp, crumble]
+  distractorsKo: [떨어지다, 멈추다]
+  chips: [[climb]]
+  decoyChips: [clim]
+w-recommend:
+  exKo: "지금 중환자실 입원과 중심정맥 감시를 권합니다."
+  cue: "이렇게 하자고 의견을 공식적으로 제안할 때 — SBAR의 R"
+  tag: 인계
+  distractorsEn: [recover, recompense]
+  distractorsKo: [금지하다, 거부하다]
+  chips: [[re, com, mend]]
+  decoyChips: [ri, cum]
+w-icu:
+  exKo: "지금 중환자실 입원과 중심정맥 감시를 권합니다."
+  cue: "가장 위중한 환자를 24시간 집중 감시하는 병동"
+  tag: 인계
+  distractorsEn: [ER, OR]
+  distractorsKo: [응급실, 수술실]
+  chips: [[ICU]]
+  decoyChips: [ICN]
+w-admission:
+  exKo: "지금 중환자실 입원과 중심정맥 감시를 권합니다."
+  cue: "병동이나 중환자실에 환자를 정식으로 받아들이는 절차"
+  tag: 인계
+  distractorsEn: [admiration, addition]
+  distractorsKo: [퇴원, 외래]
+  chips: [[ad, mis, sion]]
+  decoyChips: [at, miss]
+w-central:
+  exKo: "지금 중환자실 입원과 중심정맥 감시를 권합니다."
+  cue: "몸의 말단이 아니라 한가운데 큰 혈관 쪽의 — 목이나 쇄골 아래로 넣는 라인에 붙는 말"
+  tag: 수액·혈류
+  distractorsEn: [peripheral, neutral]
+  distractorsKo: [말초의, 표면의]
+  chips: [[cen, tral]]
+  decoyChips: [sen, trol]
+w-monitor:
+  exKo: "지금 중환자실 입원과 중심정맥 감시를 권합니다."
+  cue: "수치를 계속 지켜보며 변화를 놓치지 않는 일 (동사)"
+  tag: 바이탈
+  distractorsEn: [mentor, measure]
+  distractorsKo: [치료하다, 기록하다]
+  chips: [[mon, i, tor]]
+  decoyChips: [man, ter]
+w-steroid:
+  exKo: "스테로이드를 마지막으로 언제 드셨고, 왜 중단하셨나요?"
+  cue: "부신 호르몬 계열 약 — 오래 먹다가 갑자기 끊으면 위험하다"
+  tag: 약물
+  distractorsEn: [stereo, asteroid]
+  distractorsKo: [항생제, 이뇨제]
+  chips: [[ste, roid]]
+  decoyChips: [stair, void]
+w-stop:
+  exKo: "스테로이드를 마지막으로 언제 드셨고, 왜 중단하셨나요?"
+  cue: "하던 것을 그만두는 것 — 약을 끊었다고 말할 때"
+  tag: 증상 문진
+  distractorsEn: [step, shop]
+  distractorsKo: [시작하다, 이어가다]
+  chips: [[stop]]
+  decoyChips: [step]
+w-miss:
+  exKo: "스테로이드를 거르면 위험한 위기가 올 수 있어요."
+  cue: "먹어야 할 약을 빠뜨리고 넘길 때"
+  tag: 증상 문진
+  distractorsEn: [mess, mass]
+  distractorsKo: [두 배로 먹다, 나누어 먹다]
+  chips: [[miss]]
+  decoyChips: [moss]
+w-dangerous:
+  exKo: "스테로이드를 거르면 위험한 위기가 올 수 있어요."
+  cue: "해를 입을 가능성이 큰 — 약을 갑자기 끊으면 생길 수 있는 결과"
+  tag: 설명·안심
+  distractorsEn: [generous, dangling]
+  distractorsKo: [안전한, 흔한]
+  chips: [[dan, ger, ous]]
+  decoyChips: [den, jer]
+w-crisis:
+  exKo: "스테로이드를 거르면 위험한 위기가 올 수 있어요."
+  cue: "갑자기 생명이 위태로워지는 고비 — 부신이 이렇게 되면 응급"
+  tag: 쇼크 원인
+  distractorsEn: [crisp, cruise]
+  distractorsKo: [증상, 합병증]
+  chips: [[cri, sis]]
+  decoyChips: [cry, sys]
+w-hydrocortisone:
+  exKo: "지금 바로 하이드로코르티손과 수액을 드릴게요."
+  cue: "부신위기에 정맥으로 놓는 스테로이드 — 모자란 코르티솔을 채워 준다"
+  tag: 약물
+  distractorsEn: [hydroxyzine, hydralazine]
+  distractorsKo: [하이드록시진, 하이드랄라진]
+  chips: [[hydro, corti, sone]]
+  decoyChips: [hydra, zone]
+w-squeeze:
+  exKo: "예라면 손을 한 번 꽉 쥐어 주세요."
+  cue: "손을 오므려 꽉 힘을 주어 신호를 보낼 때 — 말이 안 통하는 환자와"
+  tag: 설명·안심
+  distractorsEn: [sneeze, freeze]
+  distractorsKo: [놓다, 흔들다]
+  chips: [[squeeze]]
+  decoyChips: [sneeze]
+w-possible:
+  exKo: "최대한 빨리 와 주세요."
+  cue: "할 수 있는 한 — 'as soon as ___'"
+  tag: 설명·안심
+  distractorsEn: [impossible, probable]
+  distractorsKo: [불가능한, 필수적인]
+  chips: [[pos, si, ble]]
+  decoyChips: [pass, bill]

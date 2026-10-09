@@ -1,0 +1,336 @@
+w-start:
+  exKo: "바로 이어서 항생제를 시작해요."
+  cue: "배양을 뽑은 직후 약을 처음 들어가게 할 때 — '___ the antibiotic'"
+  tag: 치료
+  distractorsEn: [stop, stay]
+  distractorsKo: [멈추다, 계속되다]
+  chips: [[start]]
+  decoyChips: [stare]
+w-germ:
+  exKo: "배양으로 어떤 세균이 원인인지 알 수 있어요."
+  cue: "배양병에서 자라는 병원체를 일컫는 일반적인 말"
+  tag: 감염원
+  distractorsEn: [gem, gel]
+  distractorsKo: [항체, 백신]
+  chips: [[germ]]
+  decoyChips: [term]
+w-choose:
+  exKo: "맞는 항생제를 선택해 드릴게요."
+  cue: "균이 밝혀진 뒤 여러 항생제 중 알맞은 것을 정할 때 — 'we can ___ the right antibiotic'"
+  tag: 치료
+  distractorsEn: [chase, change]
+  distractorsKo: [바꾸다, 중단하다]
+  chips: [[choose]]
+  decoyChips: [chose]
+w-fluid:
+  exKo: "이 수액이 혈압을 받쳐 줘요."
+  cue: "정맥으로 빠르게 넣어 혈압을 올리는 것 — 패혈증 초기 소생의 핵심"
+  tag: 수액·혈류
+  distractorsEn: [flush, flux]
+  distractorsKo: [혈액, 산소]
+  chips: [[flu, id]]
+  decoyChips: [flo, ed]
+w-support:
+  exKo: "이 수액이 혈압을 받쳐 줘요."
+  cue: "혈압이나 호흡이 스스로 버티지 못할 때 옆에서 받쳐 주는 것"
+  tag: 수액·혈류
+  distractorsEn: [suppress, report]
+  distractorsKo: [억제하다, 방해하다]
+  chips: [[sup, port]]
+  decoyChips: [sub, pert]
+w-pressure:
+  exKo: "혈압을 면밀히 지켜보고 있어요."
+  cue: "수액을 넣어 올리려는 값 — 'blood ___'"
+  tag: 바이탈
+  distractorsEn: [pressor, pleasure]
+  distractorsKo: [맥박, 체온]
+  chips: [[pres, sure]]
+  decoyChips: [press, sor]
+w-flow:
+  exKo: "이 수액이 피가 잘 돌게 도와줘요."
+  cue: "혈관 속을 피가 흘러 장기까지 가는 것 — 'blood ___'"
+  tag: 수액·혈류
+  distractorsEn: [flu, flaw]
+  distractorsKo: [막힘, 압력]
+  chips: [[flow]]
+  decoyChips: [flew]
+w-cold:
+  exKo: "팔이 차갑게 느껴지는 건 정상이에요."
+  cue: "실온 수액이 정맥으로 빠르게 들어갈 때 팔에 느껴지는 감각"
+  tag: 설명·안심
+  distractorsEn: [numb, sore]
+  distractorsKo: [저린, 따가운]
+  chips: [[cold]]
+  decoyChips: [cord]
+w-arm:
+  exKo: "정맥주사는 팔에 들어가 있어요."
+  cue: "말초 정맥로를 가장 흔히 잡는 곳"
+  tag: 수액·혈류
+  distractorsEn: [arch, harm]
+  distractorsKo: [다리, 목]
+  chips: [[arm]]
+  decoyChips: [alm]
+w-normal:
+  exKo: "그 차가운 느낌은 정상이에요."
+  cue: "걱정할 일이 아니라고 환자를 안심시킬 때 — 'That's ___.'"
+  tag: 설명·안심
+  distractorsEn: [formal, minimal]
+  distractorsKo: [비정상적인, 위험한]
+  chips: [[nor, mal]]
+  decoyChips: [mor, mel]
+w-pass:
+  exKo: "그 느낌은 곧 지나갈 거예요."
+  cue: "불편한 느낌이 잠깐이면 사라진다고 말할 때 — 'it will ___'"
+  tag: 설명·안심
+  distractorsEn: [last, pause]
+  distractorsKo: [계속되다, 심해지다]
+  chips: [[pass]]
+  decoyChips: [past]
+w-give:
+  exKo: "수액을 빠르게 드리고 있어요."
+  cue: "수액·약을 환자에게 넣어 드린다고 쉽게 말할 때 — 'We're ___ing you fluids'"
+  tag: 치료
+  distractorsEn: [live, take]
+  distractorsKo: [빼다, 받다]
+  chips: [[give]]
+  decoyChips: [gave]
+w-quick:
+  exKo: "이 수액을 신속하게 드리고 있어요."
+  cue: "지체 없이 서둘러 하는 치료 — '___ treatment'"
+  tag: 긴급 대응
+  distractorsEn: [quiet, thick]
+  distractorsKo: [느린, 조용한]
+  chips: [[quick]]
+  decoyChips: [quack]
+w-need:
+  exKo: "몸에 이 도움이 필요해요."
+  cue: "지금 없으면 안 된다는 뜻으로 말할 때 — 'your body ___s this'"
+  tag: 설명·안심
+  distractorsEn: [feed, want]
+  distractorsKo: [원하다, 거절하다]
+  chips: [[need]]
+  decoyChips: [knead]
+w-line:
+  exKo: "이 정맥로로 수액을 빠르게 드릴 수 있어요."
+  cue: "혈관에 넣어 둔 관을 간호사들끼리 줄여 부르는 말 — 'IV ___'"
+  tag: 수액·혈류
+  distractorsEn: [lane, link]
+  distractorsKo: [마스크, 패드]
+  chips: [[line]]
+  decoyChips: [lime]
+w-short:
+  exKo: "숨이 차면 말씀해 주세요."
+  cue: "수액이 과할 때 먼저 나타나는 호흡 증상 — 숨이 모자라 헐떡이는 느낌"
+  tag: 증상 문진
+  distractorsEn: [short of time, short-staffed]
+  distractorsKo: [숨을 참는, 숨이 고른]
+  chips: [[short], [of], [breath]]
+  decoyChips: [breathe, "off"]
+w-urine:
+  exKo: "소변량을 재고 있어요."
+  cue: "장기에 피가 잘 가는지 보여 주는 배설물 — 시간당 양을 잰다"
+  tag: 장기·관류
+  distractorsEn: [urea, urinal]
+  distractorsKo: [대변, 땀]
+  chips: [[u, rine]]
+  decoyChips: [ur, rain]
+w-output:
+  exKo: "소변 배출량으로 많은 걸 알 수 있어요."
+  cue: "몸에서 나가는 양 — 'urine ___' (들어간 양의 반대)"
+  tag: 장기·관류
+  distractorsEn: [input, outcome]
+  distractorsKo: [섭취량, 결과]
+  chips: [[out, put]]
+  decoyChips: [in, pot]
+w-organ:
+  exKo: "이게 여러 장기에 영향을 주고 있어요."
+  cue: "신장·간·폐처럼 피가 부족하면 기능이 떨어지는 몸속 기관"
+  tag: 장기·관류
+  distractorsEn: [origin, organism]
+  distractorsKo: [조직, 세포]
+  chips: [[or, gan]]
+  decoyChips: [ar, gen]
+w-get:
+  exKo: "장기에 피가 충분히 가고 있어요."
+  cue: "상태가 변해 가는 것을 말할 때 — '___ting worse'"
+  tag: 설명·안심
+  distractorsEn: [let, set]
+  distractorsKo: [유지하다, 멈추다]
+  chips: [[get]]
+  decoyChips: [got]
+w-measure:
+  exKo: "소변량을 측정하고 있어요."
+  cue: "카테터 주머니의 눈금을 매시간 정확히 잴 때"
+  tag: 장기·관류
+  distractorsEn: [treasure, manage]
+  distractorsKo: [추정하다, 버리다]
+  chips: [[mea, sure]]
+  decoyChips: [mes, shure]
+w-work:
+  exKo: "수액이 효과가 있는지 알 수 있어요."
+  cue: "치료가 제 역할을 하고 있는지 물을 때 — 'Are the fluids ___ing?'"
+  tag: 치료
+  distractorsEn: [walk, wake]
+  distractorsKo: [실패하다, 멈추다]
+  chips: [[work]]
+  decoyChips: [word]
+w-important:
+  exKo: "저희가 지켜보는 중요한 징후예요."
+  cue: "놓치면 안 되는 징후라고 강조할 때"
+  tag: 설명·안심
+  distractorsEn: [impatient, imported]
+  distractorsKo: [사소한, 흔한]
+  chips: [[im, por, tant]]
+  decoyChips: [pur, tent]
+w-watch:
+  exKo: "호흡을 면밀히 지켜보고 있어요."
+  cue: "상태 변화를 계속 눈으로 확인할 때 — '___ closely'"
+  tag: 설명·안심
+  distractorsEn: [wash, match]
+  distractorsKo: [기록하다, 무시하다]
+  chips: [[watch]]
+  decoyChips: [wash]
+w-catheter:
+  exKo: "이 카테터로 소변량을 재요."
+  cue: "방광에 넣어 소변을 받아내는 관 — 요로감염의 흔한 원인이기도 하다"
+  tag: 장기·관류
+  distractorsEn: [cannula, cathode]
+  distractorsKo: [주삿바늘, 배액관]
+  chips: [[cath, e, ter]]
+  decoyChips: [cat, tor]
+w-make:
+  exKo: "소변을 얼마나 만드는지 재요."
+  cue: "신장이 소변을 얼마나 생산하는지 말할 때 — 'how much urine you ___'"
+  tag: 장기·관류
+  distractorsEn: [take, lose]
+  distractorsKo: [참다, 버리다]
+  chips: [[make]]
+  decoyChips: [mate]
+w-amount:
+  exKo: "매시간 양을 확인해요."
+  cue: "소변 주머니에 모인 것이 몇 mL인지 — 얼마나 많은지"
+  tag: 장기·관류
+  distractorsEn: [account, mount]
+  distractorsKo: [색깔, 냄새]
+  chips: [[a, mount]]
+  decoyChips: [ac, mont]
+w-kidney:
+  exKo: "신장을 면밀히 지켜보고 있어요."
+  cue: "소변을 만드는 장기 — 관류가 떨어지면 소변량부터 준다"
+  tag: 장기·관류
+  distractorsEn: [liver, bladder]
+  distractorsKo: [간, 방광]
+  chips: [[kid, ney]]
+  decoyChips: [kit, nee]
+w-move:
+  exKo: "한 단계씩 안정에 가까워져요."
+  cue: "번들을 서둘러 해 나갈 때도, 태아가 배 속에서 꿈틀댈 때도 쓰는 동사"
+  tag: 긴급 대응
+  distractorsEn: [remove, prove]
+  distractorsKo: [멈추다, 쉬다]
+  chips: [[move]]
+  decoyChips: [mauve]
+w-lactate:
+  exKo: "젖산 검사를 하고 있어요."
+  cue: "조직에 산소가 모자라면 올라가는 혈액 수치 — 2 이상이면 이상, 4 이상이면 중증"
+  tag: 검사
+  distractorsEn: [lactose, latex]
+  distractorsKo: [젖당, 라텍스]
+  chips: [[lac, tate]]
+  decoyChips: [tose, lat]
+w-test:
+  exKo: "이 젖산 검사로 많은 걸 알 수 있어요."
+  cue: "피를 뽑아 수치를 확인하는 것 — 'a lactate ___'"
+  tag: 검사
+  distractorsEn: [text, rest]
+  distractorsKo: [치료, 처방]
+  chips: [[test]]
+  decoyChips: [tent]
+w-level:
+  exKo: "이 젖산 농도로 몸이 얼마나 스트레스를 받는지 알 수 있어요."
+  cue: "피 속에 어떤 물질이 얼마나 들어 있는지 — 'lactate ___', 'oxygen ___'"
+  tag: 검사
+  distractorsEn: [label, lever]
+  distractorsKo: [단계, 부피]
+  chips: [[lev, el]]
+  decoyChips: [lav, al]
+w-stress:
+  exKo: "몸이 얼마나 스트레스를 받는지 알 수 있어요."
+  cue: "감염과 싸우느라 몸에 무리가 가 있을 때 — 'how ___ed your body is'"
+  tag: 장기·관류
+  distractorsEn: [stretch, rest]
+  distractorsKo: [쉬다, 회복시키다]
+  chips: [[stress]]
+  decoyChips: [dress]
+w-done:
+  exKo: "네 단계가 모두 끝났어요."
+  cue: "번들의 각 항목을 마쳤다고 보고할 때 — 'all ___'"
+  tag: 인계
+  distractorsEn: [down, gone]
+  distractorsKo: [시작된, 미뤄진]
+  chips: [[done]]
+  decoyChips: [dune]
+w-step:
+  exKo: "한 단계씩 안정에 가까워져요."
+  cue: "번들을 하나씩 진행할 때 그 한 가지 — 'each ___'"
+  tag: 설명·안심
+  distractorsEn: [stop, stage]
+  distractorsKo: [결과, 목표]
+  chips: [[step]]
+  decoyChips: [stop]
+w-stable:
+  exKo: "한 단계씩 안정된 상태에 가까워지는 거예요."
+  cue: "혈압과 수치가 더 흔들리지 않고 버티는 상태"
+  tag: 인계
+  distractorsEn: [stale, sterile]
+  distractorsKo: [위태로운, 악화된]
+  chips: [[sta, ble]]
+  decoyChips: [sto, bel]
+w-explain:
+  exKo: "진행하면서 하나하나 설명해 드릴게요."
+  cue: "빠르게 처치하면서도 무엇을 왜 하는지 풀어 말해 줄 때"
+  tag: 설명·안심
+  distractorsEn: [explore, complain]
+  distractorsKo: [숨기다, 요약하다]
+  chips: [[ex, plain]]
+  decoyChips: [plane, im]
+w-part:
+  exKo: "진행하면서 하나하나 설명해 드릴게요."
+  cue: "전체 과정을 나눈 한 조각 — 'each ___ as we go'"
+  tag: 설명·안심
+  distractorsEn: [port, path]
+  distractorsKo: [전체, 끝]
+  chips: [[part]]
+  decoyChips: [pert]
+w-high:
+  exKo: "젖산이 높다는 건 조직에 산소가 부족하다는 뜻이에요."
+  cue: "수치가 기준보다 위에 있을 때 — 'a ___ lactate', 'a ___ fever'"
+  tag: 검사
+  distractorsEn: [low, heavy]
+  distractorsKo: [낮은, 정상인]
+  chips: [[high]]
+  decoyChips: [hight]
+w-mean:
+  exKo: "젖산이 높다는 건 조직에 산소가 더 필요하다는 뜻이에요."
+  cue: "검사 결과가 무엇을 나타내는지 풀어 줄 때 — 'A high lactate ___s…'"
+  tag: 설명·안심
+  distractorsEn: [meet, lean]
+  distractorsKo: [숨기다, 바꾸다]
+  chips: [[mean]]
+  decoyChips: [mien]
+w-tissue:
+  exKo: "조직에 산소가 충분히 가지 않고 있어요."
+  cue: "세포들이 모여 이룬 몸의 구성 — 산소가 모자라면 젖산을 만든다"
+  tag: 장기·관류
+  distractorsEn: [fissure, issue]
+  distractorsKo: [혈관, 뼈]
+  chips: [[tis, sue]]
+  decoyChips: [tiss, shoe]
+w-enough:
+  exKo: "조직에 산소가 충분히 가지 않고 있어요."
+  cue: "필요한 만큼 모자람 없이 — 'aren't getting ___ oxygen'"
+  tag: 장기·관류
+  distractorsEn: [even, tough]
+  distractorsKo: [지나친, 적은]
+  chips: [[e, nough]]
+  decoyChips: [nuff, i]

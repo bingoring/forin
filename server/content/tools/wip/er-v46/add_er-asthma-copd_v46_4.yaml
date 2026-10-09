@@ -1,0 +1,113 @@
+- title: 조용한 흉부(silent chest) 위기
+  s:
+  - {t: "원인 설명", i: stetho, w: "'The wheezing stopped because …'처럼 결과 뒤에 이유를 붙이면 '좋아진 게 아니다'는 반전이 한 문장에 전해져요. 쌕쌕거림은 공기가 좁은 기도를 지날 때 나는 소리라 공기가 거의 안 움직이면 사라져요.", d: "got better", k: ["폐 소리가 오른쪽이 약해요", "산소포화도가 올라갔어요"], a: "stopped", o: ["started", "worsened", "improved"]}
+  - {t: "경고", i: bell, w: "'a warning (that) …'로 소견이 무엇을 뜻하는지 한 문장에 풀어 줘요. 조용한 흉부는 호전이 아니라 환기가 거의 안 되어 환자가 지쳐 간다는 위험 신호예요.", d: "a sign", k: ["오른쪽 폐에서 호흡음이 약해요", "환자가 말을 하려고 하고 있어요"], a: "tiring out", o: ["calming down", "waking up", "speeding up"]}
+  - {t: "팀 호출", i: siren, w: "'Call …— prepare …'처럼 명령을 짧게 이어 급한 상황을 빠르게 전달해요. 조용한 흉부에서 더 나빠지면 기도 확보를 위한 삽관을 준비하는 것이 맞아요.", d: "when ready", k: ["환자를 일으켜 앉혀 주세요", "가족에게 먼저 설명하세요"], a: "intubation", o: ["transfer", "discharge", "surgery"]}
+  - {t: "상태 보고", i: monitor, w: "Sats는 산소포화도(saturation)의 줄임말이에요. 수치 변화와 환기 상태를 한 문장에 이어 말하면 팀이 위급한 정도를 바로 알아요.", d: "very slowly", k: ["혈압도 같이 재 주세요", "심전도를 붙여 주세요"], a: "dropping", o: ["rising", "climbing", "holding"]}
+  - {t: "인력 요청", i: speech, w: "'I need … here now'로 필요한 사람과 장소와 시점을 한 번에 요청해요. 기도 확보가 어려울 수 있어 마취과와 호흡치료팀을 함께 부르는 일이 흔해요.", d: "later today", k: ["약사를 불러 주세요", "영상의학과에 연락하세요"], a: "anesthesia", o: ["radiology", "surgery", "cardiology"]}
+  - {t: "물품 준비", i: scalpel, w: "'Get … ready at …'처럼 준비물과 놓을 곳을 함께 말해 팀이 헤매지 않게 해요. 삽관 키트는 필요한 순간에 바로 쓸 수 있도록 환자 곁에 둬요.", d: "in the hallway", k: ["산소 마스크를 벗겨 주세요", "침대 난간을 내려 주세요"], a: "bedside", o: ["front desk", "supply room", "waiting room"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "조용한 흉부 위기 대응 4문장 순서"
+    why: "수치로 위급함을 알리고, 조용한 흉부의 의미를 풀고, 팀을 부른 뒤, 팀이 오는 동안 키트를 준비시켜요. 'That's why'·'they'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Sats are dropping fast — she's barely moving air.", icon: monitor, ko: "산소포화도가 빠르게 떨어지고 있어요 — 공기가 거의 안 들어가요", note: "수치"}
+    - {en: "That's why the wheezing stopped — this silent chest is a warning she's tiring out.", icon: bell, ko: "그래서 쌕쌕거림이 멈췄어요 — 이 조용한 흉부는 지쳐 간다는 경고예요", note: "의미"}
+    - {en: "Call the team — prepare for intubation now.", icon: siren, ko: "팀을 불러 주세요 — 지금 삽관을 준비하세요", note: "호출"}
+    - {en: "While they're on the way, get the intubation kit ready at the bedside.", icon: scalpel, ko: "그들이 오는 동안 삽관 키트를 침상 곁에 준비해 주세요", note: "준비"}
+  ctx: {word: "silent chest", ko: "조용한 흉부"}
+- title: COPD 고탄산 호흡부전 BiPAP
+  s:
+  - {t: "원인 추정", i: bulb, w: "'likely means …'는 확신 대신 가능성이 높다고 말하는 표현이에요. COPD 환자가 졸리면 이산화탄소가 쌓여 의식이 떨어지는 신호일 수 있어요.", d: "might be", k: ["혈압이 많이 올랐어요", "체온이 올라가고 있어요"], a: "rising", o: ["falling", "dropping", "lower"]}
+  - {t: "치료 시작", i: monitor, w: "'Let's …'는 팀 안에서 함께 하자고 제안하는 형태예요. BiPAP은 마스크로 압력을 줘서 환기를 돕고 이산화탄소 배출을 늘려요.", d: "right after", k: ["심전도를 먼저 붙여요", "소변 검사를 보내요"], a: "BiPAP", o: ["dialysis", "insulin", "antibiotics"]}
+  - {t: "단계 상향", i: compass, w: "'If …, we'll …'로 조건과 다음 단계를 미리 말해 팀이 같은 계획을 공유해요. BiPAP에도 호전이 없거나 의식이 더 떨어지면 삽관으로 올려요.", d: "downgrade", k: ["호전되면 바로 퇴원시켜요", "검사는 내일로 미뤄요"], a: "intubation", o: ["surgery", "dialysis", "transfusion"]}
+  - {t: "상태 변화", i: faceWorried, w: "'more … than he was …'로 과거와 지금을 비교하면 변화의 방향과 속도가 전해져요. 한 시간 만에 혼돈이 심해졌다면 이산화탄소가 계속 쌓이는 중일 수 있어요.", d: "than yesterday", k: ["어제보다 열이 올랐어요", "한 시간 전보다 혈압이 낮아요"], a: "confused", o: ["alert", "awake", "talkative"]}
+  - {t: "검사 요청", i: lab, w: "'Let's get … to check …'로 검사와 목적을 함께 말해요. 동맥혈가스는 혈액 속 이산화탄소와 산도를 직접 보여 줘서 호흡부전 정도를 가늠해요.", d: "a quick", k: ["혈당 검사를 해 주세요", "소변 검사를 보내 주세요"], a: "ABG", o: ["EKG", "MRI", "X-ray"]}
+  - {t: "주의 안내", i: bell, w: "'can …'은 가능성을 말하고 at first로 처음에만 그럴 수 있다고 한정해요. 밀착 마스크의 압력이 낯설어 초반에 불안해할 수 있어 곁에서 설명하고 안심시켜요.", d: "right away", k: ["마스크 압력은 제가 올릴게요", "마스크가 새지 않는지 볼게요"], a: "anxious", o: ["hungry", "thirsty", "dizzy"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "고탄산 호흡부전 대응 4문장 순서"
+    why: "졸림을 이산화탄소 상승으로 추정하고, 그걸 확인하는 검사를 요청하고, 높으면 BiPAP을 시작하고, 호전이 없으면 삽관으로 올려요. 'To confirm that'·'If it's high'·'after that'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "His drowsiness likely means rising carbon dioxide.", icon: bulb, ko: "졸림은 이산화탄소가 오르고 있다는 뜻일 거예요", note: "추정"}
+    - {en: "To confirm that, let's get an ABG to check his CO2 level.", icon: lab, ko: "그걸 확인하려고 CO2 수치를 보는 동맥혈가스검사를 해 보죠", note: "검사"}
+    - {en: "If it's high, let's start BiPAP and watch his mental status closely.", icon: monitor, ko: "높으면 BiPAP를 시작하고 의식 상태를 면밀히 지켜보죠", note: "치료"}
+    - {en: "If he doesn't improve after that, we'll escalate to intubation.", icon: compass, ko: "그 뒤에도 호전되지 않으면 삽관으로 단계를 높일 거예요", note: "상향"}
+- title: 천식 지속상태 삽관 준비
+  s:
+  - {t: "상태 보고", i: monitor, w: "'She's in …'은 환자의 현재 상태를 이름 붙여 말하는 틀이에요. 천식지속상태는 치료에도 반응하지 않는 중증 발작이라 팀이 곧 기도 확보를 준비해요.", d: "at home", k: ["지금 체온이 올랐어요", "혈압이 조금 내려갔어요"], a: "quickly", o: ["slowly", "gradually", "quietly"]}
+  - {t: "약 준비", i: pill, w: "'Draw up …'은 주사기에 약을 미리 뽑아 두라는 지시예요. RSI는 진정제와 근이완제를 연달아 써서 빠르게 삽관하는 방법이고, 천식에서는 케타민을 쓰기도 해요.", d: "throw away", k: ["수액 두 팩을 걸어 주세요", "산소 마스크를 준비해 주세요"], a: "ketamine", o: ["insulin", "heparin", "digoxin"]}
+  - {t: "예상 공유", i: bulb, w: "'Expect …'로 곧 일어날 일을 팀에 미리 알려 놀라지 않게 해요. 천식 환자는 기도가 좁고 숨이 갇혀 인공호흡기 압력이 높아지기 쉬워요.", d: "plan for", k: ["수액은 천천히 들어갈 거예요", "혈압은 곧 오를 거예요"], a: "difficult", o: ["easy", "smooth", "normal"]}
+  - {t: "치료 경과", i: chartup, w: "'hasn't responded to …'는 지금까지의 치료에 반응이 없었다는 현재완료 부정이에요. 지속 흡입 치료와 마그네슘에도 호전이 없으면 삽관을 대비해요.", d: "didn't need", k: ["어제 약을 끊었어요", "알레르기 반응은 없었어요"], a: "continuous", o: ["oral", "repeated", "standard"]}
+  - {t: "장비 요청", i: siren, w: "'Get … to … now'처럼 가져올 것과 놓을 곳과 시점을 한 번에 말해 지시가 빠르고 분명해요. 어려운 기도 카트에는 첫 시도가 실패했을 때 쓸 여러 기구가 모여 있어요.", d: "back to", k: ["흉관 키트를 가져와 주세요", "제세동기를 침상 곁에 두세요"], a: "bedside", o: ["lobby", "nurses' station", "waiting room"]}
+  - {t: "투여 시점", i: pill, w: "'once you're ready'로 상대가 준비된 뒤에 한다는 시점을 정해 팀의 호흡을 맞춰요. 약을 주입하는 사람과 기도를 잡는 사람이 서로 신호를 확인한 뒤 진행해요.", d: "right after", k: ["케타민은 제가 폐기할게요", "마취과가 약을 가져올게요"], a: "push", o: ["draw", "hold", "order"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "삽관 준비 지시 4문장 순서"
+    why: "반응이 없었다는 보고로 시작하고, 그래서 약을 뽑게 하고, 그동안 카트를 가져오게 하고, 다 갖춰지면 주입하겠다고 해요. 'So'·'While you do that'·'Once it's all there'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "She hasn't responded to continuous treatments or magnesium.", icon: chartup, ko: "지속적인 치료나 마그네슘에도 반응이 없었어요", note: "보고"}
+    - {en: "So draw up ketamine and the paralytic for RSI.", icon: pill, ko: "그러니 RSI용 케타민과 근이완제를 뽑아 두세요", note: "약"}
+    - {en: "While you do that, get the difficult airway cart to the bedside.", icon: siren, ko: "그동안 어려운 기도 카트를 침상 곁으로 가져와 주세요", note: "장비"}
+    - {en: "Once it's all there, I'll push the ketamine.", icon: pill, ko: "다 갖춰지면 제가 케타민을 주입할게요", note: "투여"}
+  ctx: {word: "RSI", ko: "신속기도삽관"}
+- title: 긴장성 기흉 합병 COPD
+  s:
+  - {t: "소견 보고", i: stetho, w: "소견 둘을 이어 말한 뒤 '— think …'로 의심 진단을 짚는 보고 방식이에요. 한쪽 호흡음 소실과 급락하는 혈압은 긴장성 기흉을 떠올리게 하는 조합이에요.", d: "rule out", k: ["오른쪽 어깨가 부어 있어요", "맥박이 느려지고 있어요"], a: "No breath sounds", o: ["Loud wheezing", "Wet crackles", "Normal breath sounds"]}
+  - {t: "시술 준비", i: scalpel, w: "'Prepare for …'는 곧 할 시술을 대비하라는 지시예요. 바늘로 공기를 빼는 감압은 의사가 시행하고 간호사는 필요한 도구와 보조를 준비해요.", d: "slow", k: ["엑스레이를 먼저 찍고 기다려요", "수액을 천천히 주세요"], a: "needle", o: ["surgical", "medical", "manual"]}
+  - {t: "키트 준비", i: scalpel, w: "'Set up …'은 필요한 물품을 바로 쓸 수 있게 펼쳐 두라는 뜻이에요. 바늘 감압 뒤 흉관 삽입은 의사가 하고 간호사는 키트와 멸균 준비를 해요.", d: "clean up", k: ["산소 마스크를 바꿔 주세요", "심전도를 다시 붙여 주세요"], a: "chest tube", o: ["central line", "urinary catheter", "spinal tap"]}
+  - {t: "상태 보고", i: monitor, w: "'on that side'로 어느 쪽인지 짚어 말하면 팀이 같은 곳을 본다는 확신이 생겨요. 긴장성 기흉은 한쪽에 갇힌 공기가 폐를 눌러 산소가 빠르게 떨어져요.", d: "on both sides", k: ["산소포화도가 안정됐어요", "맥박이 느려졌어요"], a: "fast", o: ["slowly", "gradually", "steadily"]}
+  - {t: "역할 분담", i: speech, w: "'I'll … while you …'로 두 사람이 동시에 할 일을 나눠 말해 시간을 아껴요. 위급할 때는 의사 호출과 장비 준비를 나누어 동시에 진행해요.", d: "after you", k: ["제가 환자를 침상으로 옮길게요", "제가 가족에게 설명할게요"], a: "decompression", o: ["intubation", "suction", "dressing"]}
+  - {t: "기대 경과", i: chartup, w: "'should …'는 의학적으로 그렇게 될 가능성이 높다는 기대를 말해요. 감압으로 갇힌 공기가 빠지면 심장으로 돌아오는 혈액이 늘어 혈압이 회복돼요.", d: "may not", k: ["엑스레이는 그 뒤에 찍어요", "의사가 곧 오실 거예요"], a: "improve", o: ["drop", "worsen", "stall"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "긴장성 기흉 대응 4문장 순서"
+    why: "소견으로 의심 진단을 알리고, 감압을 준비시키고, 키트를 가져오며 의사를 부르게 하고, 감압 뒤의 회복을 말해요. 'for that'·'the needle goes in'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "No breath sounds on the right and a crashing pressure — think tension pneumo.", icon: stetho, ko: "오른쪽 호흡음이 없고 혈압이 급락해요 — 긴장성 기흉을 생각하세요", note: "소견"}
+    - {en: "His oxygen is dropping fast on that side, so prepare for immediate needle decompression.", icon: scalpel, ko: "그쪽에서 산소가 빠르게 떨어지니 즉각적인 바늘감압을 준비하세요", note: "준비"}
+    - {en: "I'll grab what we need for that while you page the doctor.", icon: speech, ko: "그에 필요한 걸 제가 가져올 테니 의사를 호출해 주세요", note: "분담"}
+    - {en: "Right after the needle goes in, his pressure should improve.", icon: chartup, ko: "바늘이 들어간 직후에 혈압이 좋아질 거예요", note: "경과"}
+  sw: {ko: "오른쪽 호흡음이 없고 혈압이 급락해요 — 긴장성 기흉을 생각하세요"}
+- title: 임박 호흡정지 SBAR 이송
+  s:
+  - {t: "S 상황", i: board, w: "SBAR의 S는 지금 일어나고 있는 일을 한 줄로 말하는 자리예요. 가장 중요한 변화인 '거의 반응 없음'을 앞에 두면 듣는 사람이 바로 위급함을 알아요.", d: "Summary", k: ["배경: 오래된 천식 병력이 있어요", "권고: 지금 삽관하세요"], a: "Situation", o: ["Background", "Assessment", "Recommendation"]}
+  - {t: "객관 수치", i: monitor, w: "숫자와 조건('on max therapy')을 함께 말하면 듣는 사람이 수치의 무게를 정확히 알아요. 최대 치료에도 포화도가 낮으면 치료에 반응하지 않는다는 뜻이에요.", d: "on room air", k: ["혈압은 120에 80이에요", "체온은 38도예요"], a: "82", o: ["98", "95", "100"]}
+  - {t: "R 권고", i: siren, w: "'I recommend …'로 나의 판단을 분명한 권고로 말해요. SBAR의 R은 상대가 무엇을 해 주길 바라는지 구체적으로 말하는 자리예요.", d: "I wonder", k: ["배경: 중증 천식이 있었어요", "사정: 지쳐 보여요"], a: "ICU", o: ["floor", "rehab", "clinic"]}
+  - {t: "B 배경", i: board, w: "SBAR의 B는 현재 상황을 이해하는 데 필요한 병력을 말하는 자리예요. 중증 천식 병력이 있으면 지금 악화가 얼마나 위험한지 판단하는 근거가 돼요.", d: "history of", k: ["상황: 지금 반응이 거의 없어요", "권고: 중환자실로 옮기세요"], a: "status asthmaticus", o: ["heart failure", "sepsis", "shock"]}
+  - {t: "A 사정", i: stetho, w: "SBAR의 A는 내가 본 것에서 내린 판단을 말하는 자리예요. 기도를 스스로 지키지 못한다는 판단이 삽관 권고의 근거가 돼요.", d: "wheezing", k: ["상황: 계속 쌕쌕거려요", "배경: 지난주에도 입원했어요"], a: "tiring", o: ["improving", "recovering", "stabilizing"]}
+  - {t: "R 권고", i: siren, w: "권고는 조치와 요청을 짧게 이어 말해야 상대가 바로 움직여요. 삽관이라는 조치와 중환자실 팀 호출이라는 협조 요청을 함께 말해요.", d: "consider", k: ["상황: 산소포화도가 낮아요", "배경: 천식 병력이 있어요"], a: "intubate", o: ["observe", "sedate", "restrain"]}
+  order:
+    tag: "SBAR"
+    icon: compass
+    ko: "SBAR 보고 4문장 순서"
+    why: "SBAR는 Situation, Background, Assessment, Recommendation 순서로 말하는 보고 틀이에요. 각 줄 머리의 낱말이 순서를 하나로 정해요."
+    lines:
+    - {en: "Situation: severe COPD flare, now barely responsive.", icon: board, ko: "상황: 중증 COPD 악화, 지금 거의 반응이 없어요", note: "상황"}
+    - {en: "Background: known severe asthma, now in status asthmaticus.", icon: board, ko: "배경: 중증 천식 병력이 있고, 지금 천식지속상태예요", note: "배경"}
+    - {en: "Assessment: he's tiring and can't protect his airway.", icon: stetho, ko: "사정: 지쳐가고 있고 기도를 보호하지 못하고 있어요", note: "사정"}
+    - {en: "Recommendation: intubate now and call the ICU team.", icon: siren, ko: "권고: 지금 삽관하고 중환자실 팀을 부르세요", note: "권고"}
+  sw: {ko: "즉각적인 삽관과 중환자실 이송을 권고해요"}
+- title: 인공호흡 이력 중증 재발
+  s:
+  - {t: "삽관 이력", i: hospital, w: "'Have you ever …?'는 지금까지 한 번이라도 있었는지 묻는 현재완료예요. 인공호흡기를 달았던 천식 이력은 치명적인 발작의 위험 인자라 꼭 물어요.", d: "this year", k: ["천식으로 응급실에 자주 오세요?", "집에 산소 기계가 있으세요?"], a: "breathing machine", o: ["heart monitor", "dialysis machine", "feeding tube"]}
+  - {t: "치료 방침", i: shield, w: "'That history means …'로 이력이 치료 방침을 정한다는 인과를 말해요. 겁주는 말 대신 '그래서 처음부터 강하게 돕겠다'는 약속으로 전해요.", d: "wait and see", k: ["그 병력을 차트에 적어 둘게요", "그 병력은 의사에게 전할게요"], a: "aggressively", o: ["gently", "slowly", "cautiously"]}
+  - {t: "선제 치료", i: compass, w: "'to stay ahead of it'는 상태가 나빠지기 전에 앞서 간다는 뜻이에요. 위험 병력이 있는 환자는 악화를 기다리지 않고 일찍 치료를 시작해요.", d: "just in case", k: ["산소부터 먼저 연결할게요", "혈압부터 재 볼게요"], a: "early", o: ["late", "slowly", "tomorrow"]}
+  - {t: "ICU 이력", i: hospital, w: "'Were you ever admitted …?'는 과거 입원 경험을 묻는 수동태 질문이에요. 천식으로 중환자실에 입원한 적이 있으면 이번 발작도 빠르게 나빠질 수 있다고 보고 더 주의해요.", d: "last time", k: ["천식 때문에 수술한 적 있으세요?", "입원 중에 약을 바꾸셨나요?"], a: "ICU", o: ["rehab", "nursing home", "clinic"]}
+  - {t: "공감", i: faceWorried, w: "'How scary was …?'처럼 감정을 직접 묻는 질문은 환자가 그때의 두려움을 털어놓게 해요. 이전의 무서운 경험을 알면 이번에 더 일찍 안심시키고 설명할 수 있어요.", d: "how long", k: ["그때 며칠 입원하셨어요?", "그때 누가 곁에 있었나요?"], a: "scary", o: ["long", "expensive", "tiring"]}
+  - {t: "다짐", i: shield, w: "'We won't …— we'll …'처럼 부정 뒤에 다짐을 이어 말하면 환자가 지켜지고 있다고 느껴요. 말의 무게가 있으니 실제로 치료를 곧바로 시작하는 상황에서 써요.", d: "step by step", k: ["가족분께도 곧 알려 드릴게요", "의사가 곧 올 거예요"], a: "hard", o: ["softly", "lightly", "slowly"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "인공호흡 이력 환자 응대 4문장 순서"
+    why: "이력을 먼저 묻고, 그 경험의 무서움을 헤아리고, 그 이력 때문에 적극적으로 치료한다고 말한 뒤, 그래서 일찍 시작한다고 닫아요. 'If so'·'that history'·'So'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Have you ever been on a breathing machine for your asthma?", icon: hospital, ko: "천식 때문에 인공호흡기를 달아 보신 적 있으세요?", note: "이력"}
+    - {en: "If so, how scary was that experience for you?", icon: faceWorried, ko: "그렇다면 그 경험이 얼마나 무서우셨어요?", note: "공감"}
+    - {en: "Because of that history, we treat you aggressively from the start.", icon: shield, ko: "그 병력 때문에 처음부터 적극적으로 치료할 거예요", note: "방침"}
+    - {en: "So we're starting strong treatments early, and we won't wait.", icon: compass, ko: "그래서 일찍 강한 치료를 시작하고 기다리지 않을게요", note: "시작"}
+  ctx: {word: "history", ko: "병력"}

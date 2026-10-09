@@ -24,6 +24,17 @@ export const nb = {
   blue: '#4A6FA5',
   /** Green pen — passes, progress, local-staff badge. */
   green: '#5F8D5A',
+  /** Red embroidery thread — the journey trail's yarn (Task H, journey-binder-v42).
+   *  Distinct from `red` (`#C75146`, the pen): this is a physical thread colour, not ink,
+   *  and the two screens that use them side by side (the stamp trail's yarn against its
+   *  pencil-dashed future segment, which reuses `nb.ink` at low opacity) never need to
+   *  tell `red` and `yarn` apart, but a component reading the wrong token would still be
+   *  a silent colour bug — hence its own name rather than reusing `red`. */
+  yarn: '#D3574B',
+  /** Amber and purple pens — the words and guided-dialogue steps of a lesson
+   *  (StepTrack, v44). The other two steps reuse `blue` and `red`. */
+  amber: '#C77E2E',
+  purple: '#7A5C9E',
 
   /** The notebook itself: cream stock with ruled lines. */
   cream: '#F1EBDD',
@@ -98,6 +109,35 @@ export const paperShadow = {
   elevation: 2,
 } as const;
 
+/** Hard offset shadows — the handoff's `Xpx Ypx 0 color` (no blur), per variant.
+ *
+ *  NbUI (reference/forin-notebook-ui.jsx L58–62): ink `2.5px 2.5px 0 rgba(62,54,43,.3)`,
+ *  yellow `2px 2px 0 rgba(62,54,43,.25)`, danger `2px 2px 0 rgba(199,81,70,.25)`. Lesson chips
+ *  (forin-notebook-lesson-words-live.jsx L147, -sent-live.jsx L57) `1px 2px 0 rgba(62,54,43,.2)`.
+ *
+ *  Not `paperShadow`: these are printed blocks, not paper lifting off the page. RN has no
+ *  offset-only shadow on Android (elevation always blurs) and an iOS shadow on a see-through
+ *  face (yellow, danger) would show through it, so NbUI draws them as the strip outside the
+ *  face (see NbHardShadow). */
+export const hardShadow = {
+  ink: { dx: 2.5, dy: 2.5, color: 'rgba(62,54,43,.3)' },
+  yellow: { dx: 2, dy: 2, color: 'rgba(62,54,43,.25)' },
+  danger: { dx: 2, dy: 2, color: 'rgba(199,81,70,.25)' },
+  chip: { dx: 1, dy: 2, color: 'rgba(62,54,43,.2)' },
+} as const;
+export type HardShadow = { dx: number; dy: number; color: string };
+
+/** A loose leaf in the lesson's binder — `0 4px 10px rgba(62,54,43,.16)`
+ *  (forin-notebook-lesson-words-live.jsx L156, -sent-live.jsx L107). Blur mapped 1:1 to
+ *  shadowRadius, the same convention as `paperShadow`. */
+export const sheetShadow = {
+  shadowColor: '#3E362B',
+  shadowOpacity: 0.16,
+  shadowRadius: 10,
+  shadowOffset: { width: 0, height: 4 },
+  elevation: 4,
+} as const;
+
 /** Three faces, three jobs.
  *
  *  · hand  — Gaegu. Headings, labels, buttons, anything a nurse would have written.
@@ -113,6 +153,7 @@ export const nbFonts = {
   body: 'Pretendard',
   bodyMid: 'Pretendard-SemiBold',
   bodyBold: 'Pretendard-Bold',
+  bodyHeavy: 'Pretendard-ExtraBold', // 800 — the stamp's top line (ui.jsx L85–92)
   mono: 'IBMPlexMono',
-  monoBold: 'IBMPlexMono-SemiBold',
+  monoBold: 'IBMPlexMono-Bold', // the handoff's MONO is always 700
 } as const;

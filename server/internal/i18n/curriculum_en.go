@@ -24,7 +24,7 @@ func init() {
 		"본관|8F":   "Main 8F · General Medical Ward",
 		"본관|7F":   "Main 7F · General Surgical Ward",
 		"본관|6F":   "Main 6F · Orthopaedic Ward",
-		"본관|2F":   "Main 2F · Dermatology Centre",
+		"별관 3|5F": "Annex 3 5F · Dermatology Centre",
 		"별관 1|1F": "Annex 1 1F · Paediatric & Obstetric Clinic",
 		"별관 1|2F": "Annex 1 2F · General Paediatric Ward",
 		"별관 1|3F": "Annex 1 3F · Family Delivery Suite · Nursery",
@@ -82,10 +82,10 @@ func init() {
 		"본관|6F|walking":  "Back on their feet",
 		"본관|6F|watch":    "What you cannot miss",
 
-		// ── 본관 2F 피부과 센터 ──────────────────────────────────────────────
-		"본관|2F|lesion":      "An eye for skin",
-		"본관|2F|light":       "Phototherapy and lasers",
-		"본관|2F|chronicskin": "People who live with it",
+		// ── 별관 3 5F 피부과 센터 ──────────────────────────────────────────────
+		"별관 3|5F|lesion":      "An eye for skin",
+		"별관 3|5F|light":       "Phototherapy and lasers",
+		"별관 3|5F|chronicskin": "People who live with it",
 
 		// ── 별관 1 여성소아 센터 ─────────────────────────────────────────────
 		"별관 1|1F|prenatal":         "Before and after birth",

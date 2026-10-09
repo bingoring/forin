@@ -1,0 +1,273 @@
+w-amiodarone:
+  cue: "심방세동·심실빈맥에 쓰는 대표 항부정맥제 — 로딩 후 지속 주입, 저혈압 주의"
+  tag: 약물 투여
+  distractorsEn: [adenosine, amlodipine]
+  distractorsKo: [아데노신, 암로디핀]
+  chips: [[amio, dar, one]]
+  decoyChips: [amlo, dine]
+w-loading:
+  cue: "효과를 빨리 내려고 처음에 크게 주는 용량 — '___ dose'"
+  tag: 약물 투여
+  distractorsEn: [maintenance, lowering]
+  distractorsKo: [유지 용량, 감량]
+  chips: [[load, ing]]
+  decoyChips: [lead, in]
+w-dose:
+  cue: "한 번에 주는 약의 양 — mg으로 확인하는 것"
+  tag: 약물 투여
+  distractorsEn: [bolus, drip]
+  distractorsKo: [농도, 주입 속도]
+  chips: [[dose]]
+  decoyChips: [does]
+w-per:
+  cue: "'프로토콜대로'를 짧게 말할 때 쓰는 전치사 — '___ protocol'"
+  tag: 약물 투여
+  distractorsEn: [for, by]
+  distractorsKo: [~에도 불구하고, ~대신에]
+  chips: [[per]]
+  decoyChips: [pre]
+w-protocol:
+  cue: "병원이 정해 둔 단계별 투여·처치 규칙 — '전해질 보충 ___'"
+  tag: 약물 투여
+  distractorsEn: [procedure, prescription]
+  distractorsKo: [처방전, 동의서]
+  chips: [[proto, col]]
+  decoyChips: [proce, coal]
+w-concentration:
+  cue: "약이 수액에 얼마나 진하게 섞였는지 — mg/mL로 펌프에 넣는 값"
+  tag: 약물 투여
+  distractorsEn: [consideration, contamination]
+  distractorsKo: [총 용량, 주입 속도]
+  chips: [[concen, tra, tion]]
+  decoyChips: [conten, tri]
+w-infusion:
+  cue: "펌프로 정맥에 일정하게 흘려 넣는 투여 — 'the ___ rate'"
+  tag: 약물 투여
+  distractorsEn: [injection, infection]
+  distractorsKo: [근육주사, 경구 투여]
+  chips: [[in, fu, sion]]
+  decoyChips: [fec, tion]
+w-rate:
+  cue: "분당 몇 번 뛰는지, 또는 시간당 몇 mL 들어가는지 — 'heart ___', 'infusion ___'"
+  tag: 리듬 판독
+  distractorsEn: [rhythm, ratio]
+  distractorsKo: [리듬, 농도]
+  chips: [[rate]]
+  decoyChips: [rat]
+w-watch:
+  cue: "로딩하는 동안 눈을 떼지 않고 리듬·혈압을 보는 것 — 'I'm ___ing his rhythm'"
+  tag: 모니터링
+  distractorsEn: [wait, match]
+  distractorsKo: [무시하다, 기록하다]
+  chips: [[watch]]
+  decoyChips: [wash]
+w-pressure:
+  cue: "이 주제에서는 혈압을 줄여 부를 때 — 'watch her ___'"
+  tag: 혈역학
+  distractorsEn: [perfusion, pulse]
+  distractorsKo: [관류, 맥박]
+  chips: [[pres, sure]]
+  decoyChips: [press, shure]
+w-load:
+  cue: "로딩 용량을 주는 동안을 가리키는 명사 — 'during the ___'"
+  tag: 약물 투여
+  distractorsEn: [lead, lag]
+  distractorsKo: [유지 주입, 휴약기]
+  chips: [[load]]
+  decoyChips: [lode]
+w-run:
+  cue: "약이 어떤 라인을 통해 들어가는지 말할 때 — 'This ___s through a central line'"
+  tag: 약물 투여
+  distractorsEn: [rinse, drain]
+  distractorsKo: [멈추다, 새다]
+  chips: [[run]]
+  decoyChips: [ran]
+w-central:
+  cue: "목·쇄골 아래 큰 정맥으로 들어가는 라인 — 자극성 약을 안전하게 주는 길"
+  tag: 약물 투여
+  distractorsEn: [arterial, cerebral]
+  distractorsKo: [동맥의, 말초의]
+  chips: [[cen, tral]]
+  decoyChips: [cent, trial]
+w-line:
+  cue: "몸 안 혈관에 꽂혀 약·수액이 들어가는 관 — 'a central ___'"
+  tag: 약물 투여
+  distractorsEn: [lead, link]
+  distractorsKo: [전극, 배액관]
+  chips: [[line]]
+  decoyChips: [lime]
+w-peripheral:
+  cue: "팔 정맥처럼 몸 바깥쪽에 잡는 정맥로 — 'a large ___ IV'"
+  tag: 약물 투여
+  distractorsEn: [perineal, parenteral]
+  distractorsKo: [중심의, 동맥의]
+  chips: [[peri, pher, al]]
+  decoyChips: [para, fer]
+w-iv:
+  cue: "정맥으로 바로 들어가는 경로의 약자 — 팔에 잡아 둔 말초 정맥로도 이렇게 부른다"
+  tag: 약물 투여
+  distractorsEn: [IM, IO]
+  distractorsKo: [근육주사, 골내주사]
+  chips: [[IV]]
+  decoyChips: [VI]
+w-call:
+  cue: "혈압이 떨어지면 나를 찾으라고 할 때, 또는 백업을 청할 때 — '___ for backup'"
+  tag: 팀 소통
+  distractorsEn: [cancel, collect]
+  distractorsKo: [취소하다, 기다리다]
+  chips: [[call]]
+  decoyChips: [cell]
+w-right:
+  cue: "'지금 당장'의 강조, 또는 '적절한 수치' — '___ now', 'the ___ level'"
+  tag: 동작·상태
+  distractorsEn: [ready, light]
+  distractorsKo: [틀린; 나중에, 높은; 늦게]
+  chips: [[right]]
+  decoyChips: [write]
+w-away:
+  cue: "혈압이 떨어지면 미루지 말고 바로 부르라고 할 때 — 'Call me ___'"
+  tag: 팀 소통
+  distractorsEn: [far away, right after]
+  distractorsKo: [나중에, 천천히]
+  chips: [[right], [a, way]]
+  decoyChips: [write, weigh]
+w-drop:
+  cue: "혈압·심박수가 갑자기 아래로 내려갈 때 — 'if his pressure ___s'"
+  tag: 혈역학
+  distractorsEn: [drip, rise]
+  distractorsKo: [오르다, 유지되다]
+  chips: [[drop]]
+  decoyChips: [drip]
+w-blood:
+  cue: "'___ pressure', '___ thinner'처럼 앞에 붙어 혈액을 가리키는 말"
+  tag: 혈역학
+  distractorsEn: [body, bleed]
+  distractorsKo: [혈관, 체액]
+  chips: [[blood]]
+  decoyChips: [blud]
+w-infuse:
+  cue: "로딩 용량이 펌프로 다 들어가는 것 — 'takes ten minutes to ___'"
+  tag: 약물 투여
+  distractorsEn: [infect, refuse]
+  distractorsKo: [희석하다, 중단하다]
+  chips: [[in, fuse]]
+  decoyChips: [fuss, im]
+w-check:
+  cue: "심박수와 혈압을 함께 재고 보는 가장 흔한 동사 — 'I'm ___ing your heart rate'"
+  tag: 모니터링
+  distractorsEn: [chart, change]
+  distractorsKo: [교체하다, 무시하다]
+  chips: [[check]]
+  decoyChips: [chek]
+w-together:
+  cue: "심박수만 보지 말고 혈압도 동시에 — 'heart rate and blood pressure ___'"
+  tag: 동작·상태
+  distractorsEn: [altogether, otherwise]
+  distractorsKo: [따로, 번갈아]
+  chips: [[to, geth, er]]
+  decoyChips: [gather, too]
+w-fast:
+  cue: "빈맥일 때 리듬을, 또 혈압이 떨어지는 속도를 말할 때 — 'a ___ rhythm', 'dropping ___'"
+  tag: 리듬 판독
+  distractorsEn: [firm, faint]
+  distractorsKo: [느린; 천천히, 불규칙한]
+  chips: [[fast]]
+  decoyChips: [fats]
+w-sometimes:
+  cue: "늘 그런 건 아니지만 그럴 수 있다고 환자에게 말할 때 — 'can ___ lower your pressure'"
+  tag: 환자 설명
+  distractorsEn: [somehow, someday]
+  distractorsKo: [항상, 절대로]
+  chips: [[some, times]]
+  decoyChips: [time, sum]
+w-lower:
+  cue: "빠른 리듬이 혈압에 하는 일 — 내려가게 만들다"
+  tag: 혈역학
+  distractorsEn: [slower, raise]
+  distractorsKo: [올리다, 유지하다]
+  chips: [[low, er]]
+  decoyChips: [flow, or]
+w-feel:
+  cue: "어지러움·두근거림을 몸으로 겪는 것 — 'Tell me if you ___ dizzy'"
+  tag: 환자 설명
+  distractorsEn: [fail, fill]
+  distractorsKo: [보다, 참다]
+  chips: [[feel]]
+  decoyChips: [fell]
+w-dizzy:
+  cue: "혈압이 떨어질 때 환자가 '핑 돈다'고 하는 느낌"
+  tag: 환자 설명
+  distractorsEn: [drowsy, dazed]
+  distractorsKo: [졸린, 메스꺼운]
+  chips: [[diz, zy]]
+  decoyChips: [dis, zzy]
+w-short:
+  cue: "빠른 리듬에 숨이 차 헐떡이는 환자에게 묻는 구 — 'more dizzy or ___'"
+  tag: 환자 설명
+  distractorsEn: [out of breath, short of time]
+  distractorsKo: [기침이 나는, 숨이 멎은]
+  chips: [[short], [of], [breath]]
+  decoyChips: [breathe, "off"]
+w-beat:
+  cue: "심장이 한 번 뛰는 것, 또는 뛰는 동작 — 'Every spike should produce a ___'"
+  tag: 리듬 판독
+  distractorsEn: [bit, bleat]
+  distractorsKo: [멈춤; 쉬다, 잡음; 떨다]
+  chips: [[beat]]
+  decoyChips: [beet]
+w-normal:
+  cue: "그 사람에게 평소 그런 상태 — 'faster than ___'"
+  tag: 동작·상태
+  distractorsEn: [formal, minimal]
+  distractorsKo: [비정상적인, 위험한]
+  chips: [[nor, mal]]
+  decoyChips: [form, mel]
+w-respond:
+  cue: "처치 뒤 혈압이 어떻게 따라오는지 보는 것 — 'how your pressure ___s'"
+  tag: 혈역학
+  distractorsEn: [resolve, rebound]
+  distractorsKo: [악화되다, 거절하다]
+  chips: [[re, spond]]
+  decoyChips: [spend, ri]
+w-settle:
+  cue: "빠른 리듬이 저절로 잦아드는 것 — 'if this doesn't ___'"
+  tag: 리듬 판독
+  distractorsEn: [set, shuttle]
+  distractorsKo: [심해지다, 반복되다]
+  chips: [[set, tle]]
+  decoyChips: [sat, tel]
+w-draw:
+  cue: "피검사를 위해 피를 받거나 주사기에 약을 채우는 것 — '___ a potassium', '___ up atropine'"
+  tag: 전해질
+  distractorsEn: [drain, drip]
+  distractorsKo: [주입하다, 폐기하다]
+  chips: [[draw]]
+  decoyChips: [drew]
+w-potassium:
+  cue: "K로 쓰는 전해질 — 낮아도 높아도 부정맥, 정맥으로는 천천히"
+  tag: 전해질
+  distractorsEn: [phosphorus, sodium]
+  distractorsKo: [인, 나트륨]
+  chips: [[potas, sium]]
+  decoyChips: [potash, dium]
+w-magnesium:
+  cue: "Mg로 쓰는 전해질 — 토르사드에 2g을 밀어 넣는 그 약"
+  tag: 전해질
+  distractorsEn: [manganese, calcium]
+  distractorsKo: [칼슘, 망간]
+  chips: [[mag, ne, sium]]
+  decoyChips: [mang, cal]
+w-level:
+  cue: "혈액 검사로 나온 수치 — 'a potassium ___'"
+  tag: 전해질
+  distractorsEn: [label, lever]
+  distractorsKo: [용량, 비율]
+  chips: [[lev, el]]
+  decoyChips: [lab, al]
+w-low:
+  cue: "칼륨·마그네슘이 정상보다 아래일 때 — '___ electrolytes'"
+  tag: 전해질
+  distractorsEn: [slow, lean]
+  distractorsKo: [높은, 정상인]
+  chips: [[low]]
+  decoyChips: [law]

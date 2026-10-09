@@ -1,0 +1,259 @@
+w-drip:
+  cue: "펌프로 쉬지 않고 들어가는 강심제·승압제 — 'before we start the ___'"
+  tag: 약물 투여
+  distractorsEn: [drop, bolus]
+  distractorsKo: [일시 주사, 경구약]
+  chips: [[drip]]
+  decoyChips: [drop]
+w-run:
+  cue: "펌프가 돌기 시작해 약이 실제로 들어가는 중일 때 — 'once it's ___ning'"
+  tag: 약물 투여
+  distractorsEn: [rinse, drain]
+  distractorsKo: [멈추다, 새다]
+  chips: [[run]]
+  decoyChips: [ran]
+w-ecg:
+  cue: "가슴 통증이 오면 10분 안에 찍는 12-lead 검사의 약어"
+  tag: 심전도
+  distractorsEn: [EEG, EGD]
+  distractorsKo: [뇌파, 심초음파]
+  chips: [[ECG]]
+  decoyChips: [EEG]
+w-chest:
+  cue: "심근경색 환자가 짓눌린다고 호소하는 몸의 앞부분 — '___ pain'"
+  tag: 신체 사정
+  distractorsEn: [cheek, throat]
+  distractorsKo: [배, 목]
+  chips: [[chest]]
+  decoyChips: [chess]
+w-pain:
+  cue: "환자가 '10분 전부터 가슴이 아프다'고 할 때 그 아픔"
+  tag: 신체 사정
+  distractorsEn: [tightness, pallor]
+  distractorsKo: [압박감, 두근거림]
+  chips: [[pain]]
+  decoyChips: [pane]
+w-ago:
+  cue: "증상이 시작된 시각을 지금부터 거슬러 말할 때 — 'about ten minutes ___'"
+  tag: 팀 소통
+  distractorsEn: [later, after]
+  distractorsKo: [후에, 동안]
+  chips: [[ago]]
+  decoyChips: [agon]
+w-look:
+  cue: "수치·파형이 눈으로 보기에 어떤지 말할 때 — 'It ___s better already'"
+  tag: 팀 소통
+  distractorsEn: [sound, feel]
+  distractorsKo: [들리다, 느껴지다]
+  chips: [[look]]
+  decoyChips: [lock]
+w-suggest:
+  cue: "ST 변화가 허혈을 가리킨다고 말할 때 — 확진이 아니라 그쪽을 짚는다"
+  tag: 심전도
+  distractorsEn: [digest, suspect]
+  distractorsKo: [배제하다, 확진하다]
+  chips: [[sug, gest]]
+  decoyChips: [sag, jest]
+w-ischemia:
+  cue: "관상동맥이 막혀 심근에 피가 모자란 상태 — 12-lead에서 ST 변화로 찾는 것"
+  tag: 심전도
+  distractorsEn: [infarction, anemia]
+  distractorsKo: [경색, 빈혈]
+  chips: [[isch, emia]]
+  decoyChips: [isk, emea]
+w-lead:
+  cue: "가슴·팔다리에 붙인 전극에서 이어지는 선 — 12-___"
+  tag: 심전도
+  distractorsEn: [line, load]
+  distractorsKo: [수액줄, 전원선]
+  chips: [[lead]]
+  decoyChips: [led]
+w-exactly:
+  cue: "어림이 아니라 딱 맞게 — 전극 위치, 마신 양을 물을 때"
+  tag: 팀 소통
+  distractorsEn: [roughly, extremely]
+  distractorsKo: [대략, 거의]
+  chips: [[exact, ly]]
+  decoyChips: [exakt, lee]
+w-clean:
+  cue: "잡음·흔들림 없이 또렷한 심전도를 말할 때 — 'a ___ tracing'"
+  tag: 심전도
+  distractorsEn: [noisy, flat]
+  distractorsKo: [지저분한, 평평한]
+  chips: [[clean]]
+  decoyChips: [clear]
+w-tracing:
+  cue: "심전도 기계가 종이·화면에 그려 낸 선 그 자체"
+  tag: 심전도
+  distractorsEn: [training, tracking]
+  distractorsKo: [판독 소견, 혈압 곡선]
+  chips: [[trac, ing]]
+  decoyChips: [track, ink]
+w-show:
+  cue: "찍은 심전도를 의사 눈앞에 내밀 때 — '___ this to the physician'"
+  tag: 팀 소통
+  distractorsEn: [send, sow]
+  distractorsKo: [숨기다, 버리다]
+  chips: [[show]]
+  decoyChips: [shoe]
+w-physician:
+  cue: "간호사가 이상 소견을 보고하는 처방 권한자 — doctor보다 격식 있는 말"
+  tag: 팀 소통
+  distractorsEn: [physicist, pharmacist]
+  distractorsKo: [약사, 물리치료사]
+  chips: [[phys, i, cian]]
+  decoyChips: [phis, cist]
+w-immediately:
+  cue: "ST 상승을 보면 한순간도 미루지 않고 — 'I'll show this ___'"
+  tag: 팀 소통
+  distractorsEn: [eventually, intermediately]
+  distractorsKo: [나중에, 결국]
+  chips: [[im, medi, ate, ly]]
+  decoyChips: [in, midi]
+w-print:
+  cue: "심전도를 종이로 뽑아 차트에 넣을 때"
+  tag: 심전도
+  distractorsEn: [paint, sprint]
+  distractorsKo: [스캔하다, 저장하다]
+  chips: [[print]]
+  decoyChips: [prent]
+w-copy:
+  cue: "원본과 똑같이 한 장 더 뽑은 것 — 'a ___ for the chart'"
+  tag: 심전도
+  distractorsEn: [cover, copier]
+  distractorsKo: [원본, 표지]
+  chips: [[copy]]
+  decoyChips: [coppy]
+w-chart:
+  cue: "검사 결과·투약·관찰을 모아 두는 환자 기록"
+  tag: 팀 소통
+  distractorsEn: [cart, chat]
+  distractorsKo: [카트, 처방전]
+  chips: [[chart]]
+  decoyChips: [chat]
+w-away:
+  cue: "미루지 말고 바로 지금 — 변화가 있으면 '___ 말씀해 주세요'"
+  tag: 팀 소통
+  distractorsEn: [right after, far away]
+  distractorsKo: [나중에, 천천히]
+  chips: [[right], [a, way]]
+  decoyChips: [write, weigh]
+w-sit:
+  cue: "폐부종 환자를 상체를 세워 앉게 할 때 — '___ you upright'"
+  tag: 환자 설명
+  distractorsEn: [set, lay]
+  distractorsKo: [눕히다, 돌려 눕히다]
+  chips: [[sit]]
+  decoyChips: [set]
+w-upright:
+  cue: "폐에 물이 찬 환자가 숨쉬기 편한 자세 — 상체를 곧게 세운"
+  tag: 환자 설명
+  distractorsEn: [flat, uptight]
+  distractorsKo: [누운, 엎드린]
+  chips: [[up, right]]
+  decoyChips: [ap, rite]
+w-easy:
+  cue: "자세를 바꿔 숨쉬기가 덜 힘들어질 때 — 'make breathing ___ier'"
+  tag: 환자 설명
+  distractorsEn: [heavy, busy]
+  distractorsKo: [힘든, 무거운]
+  chips: [[easy]]
+  decoyChips: [eazy]
+w-raise:
+  cue: "침대 머리 쪽·용량을 위로 높일 때 — '___ the head of your bed'"
+  tag: 환자 설명
+  distractorsEn: [rise, lower]
+  distractorsKo: [낮추다, 유지하다]
+  chips: [[raise]]
+  decoyChips: [rise]
+w-bed:
+  cue: "환자가 누운 자리 — 머리 쪽을 올리고, 제세동 전엔 다 같이 물러나는 곳"
+  tag: 환자 설명
+  distractorsEn: [stretcher, chair]
+  distractorsKo: [들것, 의자]
+  chips: [[bed]]
+  decoyChips: [bad]
+w-more:
+  cue: "지금보다 조금 덧붙여 — 'a little ___'"
+  tag: 환자 설명
+  distractorsEn: [less, many]
+  distractorsKo: [덜, 가장]
+  chips: [[more]]
+  decoyChips: [mor]
+w-turn:
+  cue: "산소 다이얼을 돌려 양을 올릴 때 — '___ing up your oxygen'"
+  tag: 환자 설명
+  distractorsEn: [tune, return]
+  distractorsKo: [끄다, 떼다]
+  chips: [[turn]]
+  decoyChips: [tern]
+w-oxygen:
+  cue: "폐부종 환자가 '더 올려 달라'는 것 — 캐뉼라·마스크로 들어가는 기체"
+  tag: 신체 사정
+  distractorsEn: [nitrogen, oxygenation]
+  distractorsKo: [이산화탄소, 공기]
+  chips: [[oxy, gen]]
+  decoyChips: [oxi, gene]
+w-level:
+  cue: "산소포화도·칼륨·ACT처럼 재서 숫자로 나오는 값"
+  tag: 혈역학
+  distractorsEn: [label, lever]
+  distractorsKo: [농도, 속도]
+  chips: [[lev, el]]
+  decoyChips: [lab, al]
+w-better:
+  cue: "산소를 올린 뒤 수치가 좋아졌다고 환자에게 알릴 때 — 'looks ___ already'"
+  tag: 환자 설명
+  distractorsEn: [bitter, worse]
+  distractorsKo: [더 나쁜, 비슷한]
+  chips: [[bet, ter]]
+  decoyChips: [bit, tor]
+w-already:
+  cue: "기대보다 빨리, 벌써 — 'Your oxygen level looks better ___'"
+  tag: 환자 설명
+  distractorsEn: [all ready, almost]
+  distractorsKo: [아직, 곧]
+  chips: [[al, ready]]
+  decoyChips: [all, redy]
+w-feel:
+  cue: "숨참·저림을 환자가 몸으로 겪는 것을 물을 때 — 'if you ___ any more...'"
+  tag: 환자 설명
+  distractorsEn: [fill, fall]
+  distractorsKo: [보이다, 들리다]
+  chips: [[feel]]
+  decoyChips: [fill]
+w-short:
+  cue: "폐에 물이 차 숨이 가쁜 환자에게 묻는 구 — 'if you feel any more ___'"
+  tag: 환자 설명
+  distractorsEn: [short of time, short of sleep]
+  distractorsKo: [기침이 나는, 숨이 멎은]
+  chips: [[short], [of], [breath]]
+  decoyChips: [breathe, "off"]
+w-breath:
+  cue: "들이쉬고 내쉬는 한 번 — 'take slow, deep ___s'"
+  tag: 환자 설명
+  distractorsEn: [death, breadth]
+  distractorsKo: [기침, 맥박]
+  chips: [[breath]]
+  decoyChips: [breathe]
+w-try:
+  cue: "숨찬 환자에게 부드럽게 해 보라고 권할 때 — '___ to take slow breaths'"
+  tag: 환자 설명
+  distractorsEn: [cry, tie]
+  distractorsKo: [포기하다, 멈추다]
+  chips: [[try]]
+  decoyChips: [tri]
+w-slow:
+  cue: "급하게 몰아쉬지 말고 — '___, deep breaths'"
+  tag: 환자 설명
+  distractorsEn: [fast, shallow]
+  distractorsKo: [얕은, 빠른]
+  chips: [[slow]]
+  decoyChips: [slew]
+w-deep:
+  cue: "숨을 끝까지 크게 들이쉬는 — 'slow, ___ breaths'"
+  tag: 환자 설명
+  distractorsEn: [steep, shallow]
+  distractorsKo: [얕은, 짧은]
+  chips: [[deep]]
+  decoyChips: [dip]

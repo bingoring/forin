@@ -1,0 +1,108 @@
+CRRT 중 저체온·영양 손실 관리:
+  - kind: slider
+    words: [w-cold, w-feel]
+    cue: "간호사가 본 것: 체온 36.5°C, 환자가 춥다며 담요를 더 원한다 — 보호자에게"
+    scale: [comfortable, a little chilly, hypothermic]
+    answerAt: 1
+    why: "저체온(hypothermia)은 보통 심부 체온 35°C 미만이에요. 36.5°C에서 춥다고 하면 a little chilly — 그래도 CRRT 중에는 혈액이 회로에서 식으니 체온을 자주 재요."
+    example: "He feels a little chilly, so I'll add another blanket."
+    exKo: "조금 쌀쌀해하셔서 담요를 한 장 더 덮어 드릴게요."
+  - kind: swap
+    words: [w-cool, w-blood, w-pass, w-machine]
+    who: "보호자에게 · 체온 설명"
+    icon: me
+    before: ["His blood ", "undergoes extracorporeal heat loss", " as it passes through the machine."]
+    options: [cools down, undergoes extracorporeal heat loss, freezes]
+    answer: cools down
+    notes: {cools down: "쉬운 말로 일어나는 일을 그대로 전해요.", undergoes extracorporeal heat loss: "'체외 열손실'이라는 교과서 말투라 가족은 못 알아들어요.", freezes: "과장이고 틀린 말이라 가족을 놀라게 해요."}
+    why: "혈액이 몸 밖 회로를 도는 동안 식기 때문에 보온기와 담요를 써요. 가족에게는 그 과정을 쉬운 말로 설명해요."
+고칼륨혈증 응급 CRRT 연계:
+  - kind: slider
+    words: [w-high, w-potassium, w-ecg]
+    cue: "검사·모니터: 칼륨 7.1, ECG에 뾰족한 T파와 넓어진 QRS — 의사에게 보고"
+    scale: [a little high, high, critically high]
+    answerAt: 2
+    why: "ECG 변화가 함께 있는 고칼륨은 응급이에요. critically high로 보고하고 바로 조치해요. 칼슘은 심장을 보호할 뿐 칼륨을 낮추지는 않아서, 칼륨을 빼는 치료(투석 등)가 따로 필요해요."
+    example: "His potassium is critically high with ECG changes."
+    exKo: "심전도 변화와 함께 칼륨 수치가 위험할 정도로 높아요."
+  - kind: context
+    words: [w-potassium, w-ecg, w-emergent]
+    scenes:
+      - {who: 의사에게 보고, icon: speech, en: "His potassium is 7.1 with peaked T waves. I need you at the bedside now.", ok: true}
+      - {who: 동료에게, icon: speech, en: "K is 7.1 with ECG changes — can you pull the crash cart?", ok: true}
+      - {who: 의사에게 보고, icon: speech, en: "Um, his potassium seems a bit high, whenever you get a chance.", ok: false, fix: "His potassium is 7.1 with ECG changes. I need you at the bedside now."}
+    why: "생명이 걸린 수치를 '시간 나실 때'처럼 돌려 말하면 급하다는 것이 전달되지 않아요. 수치·ECG 변화·원하는 것을 바로 말해요."
+회로 응고·실혈 위기:
+  - kind: slider
+    words: [w-stat, w-hemoglobin]
+    cue: "회로가 응고돼 안의 혈액을 돌려받지 못했다 — 혈색소 검사를 보낼 때 우선순위"
+    scale: [routine, urgent, stat]
+    answerAt: 2
+    why: "stat은 가장 높은 우선순위로, 결과를 바로 받아야 할 때 써요. 실혈 직후의 혈색소는 수혈 판단에 바로 쓰이니 stat으로 보내요."
+    example: "I'll send a stat hemoglobin and notify the doctor."
+    exKo: "즉시 혈색소를 보내고 의사에게 알릴게요."
+  - kind: context
+    words: [w-lose, w-blood, w-circuit, w-clot]
+    scenes:
+      - {who: 동료에게, icon: speech, en: "The circuit clotted, and we couldn't return the blood.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Circuit clotted; unable to return blood. Stat Hgb sent; provider notified.", ok: true}
+      - {who: 의사에게 보고, icon: speech, en: "The machine broke, so we're kind of stuck.", ok: false, fix: "The circuit clotted, and we lost the blood inside it. A stat hemoglobin is pending."}
+    why: "'기계가 고장 났다'는 무엇이 일어났는지 틀리게 전해요. 회로 응고와 혈액 손실, 이미 한 조치를 함께 말해요."
+시트르산 축적 위기:
+  - kind: pair
+    words: [w-metabolic, w-alkalosis, w-ionized, w-calcium, w-protocol]
+    pairs: [[metabolic, alkalosis], [ionized, calcium], [per the, protocol]]
+    decoys: [edema]
+    why: "metabolic alkalosis는 '대사성 알칼리증', 시트르산 감시에서 보는 칼슘은 ionized calcium, '프로토콜대로'는 per the protocol이에요."
+  - kind: context
+    words: [w-ratio, w-suggest, w-citrate, w-accumulation]
+    scenes:
+      - {who: 의사에게 보고, icon: speech, en: "His ratio is up to 2.8, which suggests citrate accumulation.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Total/ionized Ca ratio 2.8, suggestive of citrate accumulation; provider notified.", ok: true}
+      - {who: 의사에게 보고, icon: speech, en: "He's got citrate toxicity for sure.", ok: false, fix: "His ratio is up to 2.8, which suggests citrate accumulation."}
+    why: "비율 상승은 축적을 '시사(suggest)'하는 것이지 확진이 아니에요. 보고에서는 수치와 판단의 확실성을 정확히 말하고, 진단은 팀이 내려요."
+급성 폐부종 응급 초여과:
+  - kind: pair
+    words: [w-fluid, w-overload, w-pulmonary, w-edema, w-sit, w-upright]
+    pairs: [[fluid, overload], [pulmonary, edema], [sit him, upright]]
+    decoys: [stable]
+    why: "fluid overload는 '용량 과부하', pulmonary edema는 '폐부종'으로 굳은 짝이에요. 숨찬 환자는 sit him upright — 상체를 세워 앉혀요."
+  - kind: swap
+    words: [w-breathe, w-easy, w-fluid]
+    who: "환자에게 · 처치 중 설명"
+    icon: me
+    before: ["As we take this fluid off, your breathing should ", "normalize", "."]
+    options: [get easier, normalize, be perfect]
+    answer: get easier
+    notes: {get easier: "숨찬 환자가 바로 알아듣는 쉬운 말이고, 사실 그대로예요.", normalize: "딱딱한 의료 표현이라 숨이 찬 환자에게 와닿지 않아요.", be perfect: "지킬 수 없는 약속이에요."}
+    why: "숨이 찬 환자에게는 짧고 쉬운 말로, 지킬 수 있는 만큼만 말해요."
+카테터 관련 대량출혈·감염 위기:
+  - kind: pair
+    words: [w-assess, w-infection, w-sign, w-call, w-evaluation, w-red, w-warm]
+    pairs: [[assess for, infection signs], [call for, line evaluation], [red and, warm]]
+    decoys: [downtime]
+    why: "감염 징후를 살피는 것은 assess for infection signs, 라인을 계속 써도 될지 봐 달라는 것은 call for line evaluation, 감염을 의심하게 하는 부위 모습은 red and warm이에요."
+  - kind: reel
+    words: [w-hold]
+    word: hold
+    scenes:
+      - {who: "동료에게", en: "Hold CRRT — the catheter site is bleeding.", ko: "CRRT 멈춰요 — 카테터 부위에서 피가 나요.", tone: 급함}
+      - {who: "출혈 부위에서", en: "I'm holding pressure now.", ko: "지금 누르고 있어요.", tone: 지시}
+      - {who: "차트 기록", en: "CRRT held for catheter-site bleeding; provider notified.", ko: "카테터 부위 출혈로 CRRT 보류; 담당의 보고.", tone: 건조}
+      - {who: "보호자에게는…", en: "We're stopping the machine for a little while to take care of the bleeding.", ko: "출혈을 처치하려고 기계를 잠시 멈출게요.", tone: 차분, swap: true}
+신대체 지속 여부 목표 논의:
+  - kind: slider
+    words: [w-recovery, w-honest]
+    cue: "Family: \"Will his kidneys ever come back?\" — 팀 판단: 아직 회복 여부를 알 수 없다"
+    scale: ["They'll definitely recover", "We don't know yet", "They'll never recover"]
+    answerAt: 1
+    why: "모를 때는 모른다고 솔직하게 말하고, 함께 지켜보겠다고 덧붙여요. 'definitely'·'never'는 팀이 확신할 때만 쓰고, 예후 이야기는 팀이 함께 해요."
+    example: "We don't know yet if his kidneys will recover, and we'll keep being honest with you."
+    exKo: "신장이 회복될지 아직 모르지만, 계속 솔직하게 말씀드릴게요."
+  - kind: context
+    words: [w-talk, w-goal, w-set, w-together]
+    scenes:
+      - {who: 가족 회의, icon: me, en: "Let's talk about what he would want and set goals together.", ok: true}
+      - {who: 동료에게, icon: speech, en: "Family meeting at 3 for a goals-of-care talk about continuing CRRT.", ok: true}
+      - {who: 가족 회의, icon: me, en: "So, do you want us to continue CRRT or withdraw care?", ok: false, fix: "Let's talk about what he would want, and set goals for his care together."}
+    why: "'withdraw care'는 가족에게 돌봄 자체를 끊는다는 말로 들려요. 멈출 수 있는 것은 특정 치료이지 돌봄이 아니에요. 그리고 결정을 가족 혼자 떠안지 않게, 환자가 원했을 것을 함께 이야기해요."

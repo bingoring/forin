@@ -1,0 +1,107 @@
+- title: 폐렴성 저산소증 사정
+  s:
+  - {t: "가래 문진", i: stetho, w: "What color …?로 열린 질문 대신 색을 묻는 쉬운 질문을 해요. 가래의 색은 감염 여부를 가늠하는 단서가 되고, 환자는 phlegm이나 mucus라는 말을 많이 써요.", d: "you're swallowing", k: ["가래가 언제부터 나왔나요?", "가래에 피가 섞여 있나요?"], a: "phlegm", o: ["blood", "water", "food"]}
+  - {t: "흉막통 확인", i: faceWorried, w: "숨을 깊이 쉴 때 아프면 폐를 감싼 막이 자극된 것일 수 있어요. 아픈지 묻는 한 가지 동작만 시켜서 환자가 바로 시도해 볼 수 있게 해요.", d: "to cough", k: ["숨을 깊게 쉬면 기침이 나나요?", "기침할 때 가슴이 아픈가요?"], a: "deep", o: ["quick", "short", "slow"]}
+  - {t: "열 문진", i: monitor, w: "with this cough처럼 지금 증상과 묶어서 물으면 환자가 같은 병의 일부로 떠올려 답해요. 기침에 열이 같이 있으면 폐렴 같은 감염을 의심해요.", d: "for a week", k: ["이 기침이 얼마나 됐나요?", "오한이나 식은땀이 있었나요?"], a: "cough", o: ["pain", "headache", "rash"]}
+  - {t: "산소 안내", i: pill, w: "a bit low처럼 수치를 부드럽게 말하면 환자가 겁먹지 않아요. 산소포화도가 낮으면 처방에 따라 산소를 줘요.", d: "so we'll wait", k: ["수치가 낮은 건 폐렴 때문일 수 있어요", "수치를 20분 뒤에 다시 확인할게요"], a: "low", o: ["high", "uneven", "stable"]}
+  - {t: "경과 안내", i: chartup, w: "get … back up은 떨어진 수치를 되돌려 놓겠다는 약속이에요. 환자가 지금 무엇을 목표로 하는지 알면 불안이 줄어요.", d: "all the way", k: ["산소 수치를 다시 확인해 볼게요", "산소를 천천히 줄여 볼게요"], a: "oxygen", o: ["pressure", "sugar", "pulse"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "폐렴 사정 4문장 순서"
+    why: "가래 색을 묻고, 그 기침을 하는 동안 숨 쉴 때 아픈지 묻고, 그런 증상과 낮은 수치를 설명하고, 수치를 되돌리겠다고 마무리합니다. 'cough that up'·'all of that'·'it back up'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "What color is the phlegm you're coughing up?", icon: stetho, ko: "기침으로 나오는 가래는 무슨 색이에요?", note: "가래"}
+    - {en: "When you cough that up, does it hurt to take a deep breath?", icon: faceWorried, ko: "그 가래를 뱉을 때 숨을 깊이 쉬면 아픈가요?", note: "통증"}
+    - {en: "With all of that, your oxygen is a bit low, so we'll give you some.", icon: pill, ko: "그런 증상에 산소가 약간 낮아서 좀 드릴게요", note: "산소"}
+    - {en: "We'll get it back up and check again soon.", icon: monitor, ko: "다시 올려서 곧 또 확인할게요", note: "회복"}
+  ctx: {word: "phlegm", ko: "가래"}
+- title: 폐색전 의심 호흡곤란
+  s:
+  - {t: "발병 양상", i: calendar, w: "suddenly를 쓰면 천천히 진행됐는지 갑자기 왔는지를 가르는 질문이 돼요. 폐색전은 숨찬 것이 갑자기 시작되는 경우가 많아요.", d: "at night", k: ["숨이 찰 때 가슴이 아프신가요?", "기침에 피가 섞여 나왔나요?"], a: "suddenly", o: ["slowly", "yesterday", "again"]}
+  - {t: "다리 문진", i: me, w: "one of your legs처럼 한쪽을 콕 집어 물어요. 한쪽 다리만 붓거나 아프면 다리 깊은 정맥의 혈전을 의심해요.", d: "or itchy", k: ["다리에 혈전이 있었던 적 있나요?", "종아리가 단단하고 따뜻한가요?"], a: "legs", o: ["arms", "hands", "shoulders"]}
+  - {t: "위험 인자", i: bulb, w: "traveled far or been immobile처럼 두 가지 상황을 한 질문에 담아요. 장거리 이동이나 오래 움직이지 못한 것은 혈전의 위험 인자예요.", d: "by plane", k: ["최근에 수술이나 입원을 하셨나요?", "혈전약을 드시고 계신가요?"], a: "immobile", o: ["ill", "busy", "dizzy"]}
+  - {t: "흉통 확인", i: stetho, w: "breathe in과 같이 어떤 동작에서 아픈지를 딱 집어 물어요. 숨 들이쉴 때 가슴이 아프면 폐를 감싼 막이 자극된 것일 수 있어요.", d: "when you cough", k: ["가슴이 답답하고 두근거리나요?", "기침하면 가슴이 더 아픈가요?"], a: "chest", o: ["shoulder", "stomach", "head"]}
+  - {t: "부위 확인", i: pushpin, w: "Point to …는 말보다 동작으로 답하게 해서 환자의 부담을 줄여요. 부은 위치를 보면 한쪽만인지 양쪽인지 비교할 수 있어요.", d: "and warm", k: ["다리가 언제부터 부었는지 말씀해 주세요", "다리에 힘이 빠지는 곳을 가리켜 주세요"], a: "leg", o: ["arm", "hand", "shoulder"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "폐색전 문진 4문장 순서"
+    why: "시작 양상을 먼저 묻고, 위험 인자를 묻고, 그 조건에 이어 다리를 묻고, 다리 다음에 가슴 통증을 묻습니다. 'Since it started'·'If you were'·'Along with the leg'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Did the shortness of breath start suddenly?", icon: calendar, ko: "호흡곤란이 갑자기 시작됐나요?", note: "시작"}
+    - {en: "Since it started, have you traveled far or been immobile?", icon: bulb, ko: "시작된 뒤로 멀리 다녀오셨거나 오래 움직이지 못하셨나요?", note: "위험"}
+    - {en: "If you were immobile, is one of your legs more swollen?", icon: me, ko: "움직이지 못하셨다면 한쪽 다리가 더 부었나요?", note: "다리"}
+    - {en: "Along with the leg, does your chest hurt when you breathe in?", icon: stetho, ko: "다리와 함께 숨을 들이쉴 때 가슴도 아픈가요?", note: "가슴"}
+  sw: {ko: "한쪽 다리가 더 붓거나 아픈가요?"}
+- title: 비침습환기(BiPAP) 설명
+  s:
+  - {t: "원리 설명", i: monitor, w: "pushes air in처럼 눈에 그려지는 동사로 기계가 하는 일을 말해요. BiPAP은 마스크로 압력을 넣어 숨쉬기를 돕는 비침습 환기예요.", d: "to stop you coughing", k: ["이 마스크는 가래를 빨아내 줘요", "이 마스크는 기계에 연결해서 써요"], a: "pushes", o: ["pulls", "holds", "warms"]}
+  - {t: "적응 안내", i: shield, w: "hold it gently first로 바로 씌우지 않고 먼저 대 보겠다고 말하면 답답함에 대한 걱정이 줄어요. 처음엔 손으로 얼굴에 가볍게 대서 압력에 익숙해지게 해요.", d: "so you can sleep", k: ["마스크 끈은 나중에 조여 드릴게요", "마스크가 새는지 확인할게요"], a: "gently", o: ["tightly", "quickly", "firmly"]}
+  - {t: "협조 요청", i: speech, w: "works with you처럼 기계가 환자에게 맞춘다고 말하면 맞서 싸우지 않게 돼요. BiPAP은 환자의 호흡을 감지해 압력을 넣어요.", d: "against it", k: ["기계가 불편하면 손을 들어 주세요", "숨을 억지로 크게 쉬지 않으셔도 돼요"], a: "machine", o: ["nurse", "team", "tube"]}
+  - {t: "착용감 안내", i: faceWorried, w: "at first를 붙이면 처음만 그렇다는 뜻이 되어 불편을 견딜 만하게 만들어요. 마스크는 공기가 새지 않게 얼굴에 맞춰 조여서 처음엔 답답할 수 있어요.", d: "around your ears", k: ["마스크 자국이 남을 수 있어요", "얼굴이 건조해질 수 있어요"], a: "tight", o: ["loose", "cold", "heavy"]}
+  - {t: "효과 설명", i: bulb, w: "숨쉬기 일을 기계가 나눠 맡는다는 이유를 알려 주면 환자가 마스크를 받아들이기 쉬워요. 비침습환기는 호흡하는 근육의 일을 덜어 줘요.", d: "your heart", k: ["마스크를 쓰면 더 편해질 거예요", "마스크를 벗고 싶으면 말씀하세요"], a: "rest", o: ["grow", "dry", "shrink"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "BiPAP 설명 4문장 순서"
+    why: "마스크가 하는 일을 설명하고, 처음엔 손으로 살짝 대 보겠다고 하고, 익숙해지면 끈을 고정하고, 고정한 뒤 조이는지 확인합니다. 'it'·'used to it'·'Once they're on'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "This mask pushes air in to help you breathe easier.", icon: monitor, ko: "이 마스크가 공기를 밀어넣어서 숨쉬기를 도와줘요", note: "설명"}
+    - {en: "I'll hold it on gently first, so you can get used to it.", icon: shield, ko: "먼저 살살 대드릴 테니 익숙해지시면 돼요", note: "적응"}
+    - {en: "Once you're used to it, I'll put the straps on.", icon: me, ko: "익숙해지시면 끈을 걸어 드릴게요", note: "고정"}
+    - {en: "Once they're on, tell me if the straps feel too tight.", icon: faceWorried, ko: "걸고 나면 끈이 너무 조이는지 말해 주세요", note: "확인"}
+  ctx: {word: "push", ko: "밀어 넣다"}
+- title: 무증상 저산소(행복한 저산소) 인지
+  s:
+  - {t: "수치 설명", i: monitor, w: "even though you feel okay로 느낌과 수치가 다를 수 있다는 점을 먼저 말해요. 산소가 낮아도 숨이 안 차다고 느끼는 환자가 있어서 수치를 믿고 확인해요.", d: "since you feel sick", k: ["지금 어디가 가장 불편하세요?", "최근 기침이나 열이 있었나요?"], a: "lower", o: ["higher", "steadier", "better"]}
+  - {t: "재확인", i: stetho, w: "recheck는 한 번 잰 값을 믿기 전에 다시 본다는 뜻이에요. 손가락이 차거나 움직이면 값이 틀릴 수 있어서 다시 재고 호흡도 같이 봐요.", d: "for a minute", k: ["손가락을 따뜻하게 해 드릴게요", "다른 손가락에 끼워 볼게요"], a: "recheck", o: ["unplug", "remove", "reset"]}
+  - {t: "느낌 대비", i: faceWorried, w: "but으로 느낌과 수치가 엇갈린다는 점을 분명히 해요. 숨이 차지 않아도 수치가 낮을 수 있다는 점을 환자가 이해해야 치료에 협조해요.", d: "on the screen", k: ["가슴이 답답한 느낌은 없으신가요?", "숨이 찬 건 아닌지 다시 여쭤볼게요"], a: "low", o: ["high", "normal", "unsteady"]}
+  - {t: "조치 안내", i: pill, w: "두 가지 계획을 and로 묶어 한 번에 알려 주면 환자가 뭘 하는지 알 수 있어요. 산소를 주고 가까이서 지켜보는 것은 저산소 환자의 기본 대응이에요.", d: "a blood test", k: ["산소를 드리고 의사 선생님께 알릴게요", "산소를 드리고 가슴 엑스레이를 찍을 거예요"], a: "oxygen", o: ["fluids", "antibiotics", "blankets"]}
+  - {t: "측정 안내", i: play, w: "again으로 한 번 더 잰다고 알려 두면 환자가 반복 측정을 걱정하지 않아요. 수치는 치료 뒤에 변화를 보려고 계속 다시 재요.", d: "on your ear", k: ["이 집게는 손가락에 다시 끼울게요", "이 집게로 맥박도 같이 볼 수 있어요"], a: "again", o: ["first", "later", "twice"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "무증상 저산소 4문장 순서"
+    why: "수치가 낮다고 말하고, 그 수치를 다시 확인하고, 계속 낮을 때의 조치를 알리고, 어느 쪽이든 지켜본다고 마무리합니다. 'it'·'If it stays low'·'Either way'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Your oxygen is lower than we'd like, even though you feel okay.", icon: monitor, ko: "느낌은 괜찮으셔도 산소 수치는 원하는 만큼 안 나와요", note: "수치"}
+    - {en: "Let me recheck it with this clip, and I'll watch you breathe.", icon: stetho, ko: "이 집게로 다시 재 볼게요, 숨 쉬시는 것도 볼게요", note: "재확인"}
+    - {en: "If it stays low, we'll give you oxygen.", icon: pill, ko: "계속 낮으면 산소를 드릴게요", note: "조치"}
+    - {en: "Either way, we'll keep a close eye on you.", icon: shield, ko: "어느 쪽이든 계속 가까이서 지켜볼게요", note: "관찰"}
+- title: 흉수·기흉 감별 문진
+  s:
+  - {t: "청진 안내", i: stetho, w: "양쪽을 비교한다고 알려 주면 환자가 청진기가 두 번 움직여도 이상하게 여기지 않아요. 한쪽 폐 소리가 줄면 그쪽에 공기나 물이 찼을 수 있어서 좌우를 비교해요.", d: "of your back", k: ["가슴을 눌러서 아픈 곳을 찾고 있어요", "가슴 한쪽에 패드를 붙이고 있어요"], a: "listening to", o: ["tapping on", "pressing on", "looking at"]}
+  - {t: "발병 양상", i: calendar, w: "suddenly or gradually처럼 두 가지를 주고 고르게 해요. 기흉은 갑자기, 흉수는 점차 생기는 경우가 많아요.", d: "or yesterday", k: ["조이는 느낌이 얼마나 오래 갔나요?", "조이는 느낌이 숨 쉴 때 더 심한가요?"], a: "tightness", o: ["cough", "swelling", "fever"]}
+  - {t: "부위 확인", i: pushpin, w: "Point to로 말 대신 손가락으로 답하게 하면 정확한 위치를 알 수 있어요. exactly를 붙이면 대략이 아니라 가장 불편한 한 곳을 짚게 돼요.", d: "with both hands", k: ["아픈 쪽으로 돌아누워 주세요", "조이는 느낌이 퍼지는지 말씀해 주세요"], a: "exactly", o: ["roughly", "only", "mostly"]}
+  - {t: "호흡 요청", i: speech, w: "for me를 붙이면 지시가 부탁처럼 들려요. 깊은 숨을 쉬게 하면 아픈 쪽이 있는지, 숨소리가 달라지는지 확인할 수 있어요.", d: "for ten seconds", k: ["숨을 참아 보시겠어요?", "기침을 한 번 해 보시겠어요?"], a: "deep", o: ["small", "quick", "quiet"]}
+  - {t: "편측 확인", i: faceWorried, w: "on one side로 한쪽만 더 아픈지 묻고 있어요. 한쪽만 아프면 그쪽 폐나 흉막에 문제가 있는지 보는 단서가 돼요.", d: "at night", k: ["통증이 한쪽에서 다른 쪽으로 퍼지나요?", "숨을 쉴 때만 아픈가요?"], a: "more", o: ["less", "only", "again"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "흉수·기흉 문진 4문장 순서"
+    why: "양쪽을 비교해 듣는다고 알리고, 들으면서 깊은 숨을 부탁하고, 그렇게 쉴 때 한쪽이 더 아픈지 묻고, 그쪽에서 조이는 곳을 짚게 합니다. 'while I do'·'like that'·'that side'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "I'm listening to both sides of your chest to compare.", icon: stetho, ko: "양쪽 가슴 소리를 비교하려고 듣고 있어요", note: "청진"}
+    - {en: "Can you take a deep breath for me while I do?", icon: speech, ko: "제가 듣는 동안 숨을 깊게 한 번 쉬어봐 주시겠어요?", note: "요청"}
+    - {en: "When you breathe like that, does it hurt more on one side?", icon: faceWorried, ko: "그렇게 숨 쉴 때 한쪽이 더 아픈가요?", note: "편측"}
+    - {en: "Point to exactly where it feels tight on that side.", icon: pushpin, ko: "그쪽에서 조이는 곳을 정확히 가리켜 주세요", note: "부위"}
+  ctx: {word: "listen", ko: "듣다(청진)"}
+- title: 언어장벽 호흡곤란 핵심
+  s:
+  - {t: "폐쇄 질문", i: speech, w: "한 단어와 yes or no로 묻는 짧은 질문은 영어가 서툰 환자도 알아듣고 고개로 답할 수 있어요. 통역 전에는 한 번에 하나씩 물어요.", d: "right now", k: ["숨이 차요? 예, 아니오?", "열이 있어요? 예, 아니오?"], a: "Chest", o: ["Back", "Head", "Belly"]}
+  - {t: "동작 응답", i: pushpin, w: "Point to로 말 대신 손으로 답하게 하면 언어 장벽이 있어도 위치를 전해요. 목을 가리키게 하면 기도가 막히는 느낌인지 알 수 있어요.", d: "and nod", k: ["어지러워요? 예, 아니오?", "토할 것 같아요? 예, 아니오?"], a: "throat", o: ["chest", "nose", "mouth"]}
+  - {t: "통역 안내", i: speaker, w: "통역사가 오고 있다고 알려 주면 환자가 기다릴 수 있어요. 자세한 병력은 자격 있는 의료 통역사를 통해 받는 것이 원칙이에요.", d: "with the doctor", k: ["지금 드시는 약 있어요? 예, 아니오?", "보호자가 같이 오셨어요?"], a: "medicine", o: ["food", "latex", "dust"]}
+  - {t: "신호 요청", i: me, w: "nod와 shake your head처럼 고개 동작으로 답하게 하면 말을 못 하는 환자도 참여해요. 두 동작을 시범으로 보여 주면 더 잘 전해져요.", d: "squeeze my hand", k: ["영어를 얼마나 아세요?", "통역사를 원하세요?"], a: "nod", o: ["blink", "wave", "speak"]}
+  - {t: "안심 약속", i: shield, w: "until help arrives처럼 도움이 올 때까지라는 기한을 주면 환자가 막연히 기다리지 않아요. 지켜보며 안전을 지킨다는 약속이 가장 먼저 전해야 할 말이에요.", d: "until morning", k: ["의사 선생님이 곧 오실 거예요", "통역사가 오면 다시 자세히 물어볼게요"], a: "safe", o: ["warm", "busy", "quiet"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "언어장벽 문진 4문장 순서"
+    why: "짧은 질문을 하겠다고 알리고, 첫 질문을 하고, 아니라면 다음 질문으로 넘어가고, 마지막에 통역사가 올 때까지 지킨다고 알립니다. 'First one'·'If it's not your chest'·'until then'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "I'm going to ask you short questions — please answer with a nod or a shake.", icon: speech, ko: "짧게 여쭤볼게요 — 끄덕이거나 저어서 답해 주세요", note: "안내"}
+    - {en: "First one: chest pain? Yes or no?", icon: stetho, ko: "첫 번째요: 가슴 통증? 예, 아니오?", note: "첫째"}
+    - {en: "If it's not your chest, is it a choking feeling? Point to your throat, yes or no?", icon: pushpin, ko: "가슴이 아니면 질식할 것 같은 느낌인가요? 목을 가리켜 보세요, 예, 아니오?", note: "둘째"}
+    - {en: "Thank you — an interpreter is on the way, and we'll keep you safe until then.", icon: shield, ko: "고마워요 — 통역사가 오고 있고, 그때까지 안전하게 지켜드릴게요", note: "마무리"}
+  sw: {ko: "가슴 통증? 예, 아니오?"}

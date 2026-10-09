@@ -1,0 +1,96 @@
+- title: 난치성 급성 통증
+  s:
+  - {t: "공감 표현", i: faceWorried, w: "I can see …로 환자의 고통을 직접 보고 인정해요. 약이 듣지 않는 통증일수록 믿는다는 말이 먼저 필요해요.", d: ", but I doubt", k: ["이 통증은 곧 사라질 거예요", "이 통증은 별것 아니에요"], a: "unbearable", ai: siren, o: [["tiny", "baby"], ["funny", "star"], ["invisible", "magnify"]]}
+  - {t: "계획 변경", i: stetho, w: "의사를 부르는 이유를 to try a different approach로 바로 붙이면 계획이 바뀌고 있다는 희망을 줘요. 효과 없는 약을 되풀이하지 않고 처방을 다시 검토하라는 신호예요.", d: "to skip", k: ["약을 그대로 한 번 더 드릴게요", "통증이 저절로 나아질 때까지 기다릴게요"], a: "calling", ai: bell, o: [["ignoring", "lock"], ["thanking", "star"], ["blaming", "faceAngry"]]}
+  - {t: "동행 약속", i: hospital, w: "get on top of this는 통증을 다시 잡겠다는 관용 표현이에요. together로 환자가 혼자가 아니라는 점을 분명히 해요.", d: "on my own", k: ["혼자 이겨내셔야 해요", "의사 선생님이 혼자 해결하실 거예요"], a: "together", ai: handshake2, o: [["alone", "me"], ["later", "calendar"], ["quietly", "mic"]]}
+  - {t: "상황 인정", i: board, w: "이미 해 본 것을 인정하면 환자가 같은 설명을 반복하지 않아도 돼요. yet은 앞으로 달라질 수 있다는 여지를 남겨요.", d: "and something", k: ["효과가 있었던 걸 알고 있어요", "아직 한 가지도 안 해보셨죠"], a: "worked", ai: gear, o: [["arrived", "plane"], ["started", "play"], ["ended", "chevronDown"]]}
+  - {t: "포기 안 함", i: shield, w: "until로 도움이 되는 것을 찾을 때까지 계속하겠다는 목표를 말해요. 약속은 처방 범위와 안전 안에서 지킬 수 있는 말로 해요.", d: "if we find", k: ["효과가 없으면 여기서 멈출게요", "찾으면 바로 퇴원하세요"], a: "until", ai: compass, o: [["unless", "lock"], ["after", "calendar"], ["because", "bell"]]}
+  - {t: "곁에 머물기", i: me, w: "right here는 간호사가 지금 곁에 있다는 말이에요. 고통이 큰 환자에게 혼자가 아니라고 말하는 것이 신뢰를 지켜요.", d: "— I'm far", k: ["혼자 견디셔야 해요", "저는 곧 자리를 비울 거예요"], a: "alone", ai: home, o: [["wrong", "faceAngry"], ["late", "calendar"], ["sorry", "faceWorried"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "약이 듣지 않는 환자 4문장 순서"
+    why: "이미 시도한 것을 인정하며 시작해요. 그래서(That's why) 의사를 불러 방법을 바꾼다고 하고, 도움이 될 것을 찾을 때까지 멈추지 않겠다고 해요. 그때까지(Until then) 곁에 있겠다고 마무리해요."
+    lines:
+    - {en: "I know you've tried everything, and nothing has worked yet.", icon: board, ko: "다 해 보셨는데 아직 효과가 없다는 거 알아요", note: "인정"}
+    - {en: "That's why we're calling the doctor to try a different approach.", icon: stetho, ko: "그래서 다른 방법을 시도하려고 의사를 불러요", note: "변경"}
+    - {en: "We won't stop until we find something that helps.", icon: shield, ko: "도움이 될 걸 찾을 때까지 멈추지 않을게요", note: "약속"}
+    - {en: "Until then, stay with me — you're not alone.", icon: me, ko: "그때까지 저와 함께 있어요, 혼자가 아니에요", note: "동행"}
+  sw: {ko: "죄송해요, 의사 선생님을 불러 다른 방법을 시도해 볼게요"}
+- title: 진정 중 아나필락시스
+  s:
+  - {t: "상황 설명", i: siren, w: "지금 무슨 일이 일어나는지 짧게 알리면 환자가 겁에 질려도 상황을 이해해요. 아나필락시스는 약물 같은 원인에 대한 급성 알레르기 반응이에요.", d: "to the weather", k: ["약이 잘 듣고 있어요", "그냥 잠이 오는 거예요"], a: "allergic", ai: shield, o: [["emotional", "faceWorried"], ["angry", "faceAngry"], ["early", "calendar"]]}
+  - {t: "약 설명", i: pill, w: "에피네프린은 아나필락시스의 1차 치료약이에요. 쉬운 말로 목적(숨쉬기를 돕는다)을 함께 알려 주세요. 허벅지 바깥쪽 근육주사가 일반적인 투여 방법이에요.", d: "to help you rest", k: ["졸리게 하는 약을 드리고 있어요", "수액을 빠르게 넣고 있어요"], a: "epinephrine", ai: monitor, o: [["insulin", "gear"], ["heparin", "lock"], ["vitamins", "star"]]}
+  - {t: "안정 유도", i: handshake2, w: "calm은 불안을 낮춰 호흡을 덜 힘들게 해요. we're right here with you로 혼자 두지 않는다고 함께 말해요.", d: "Try to leave", k: ["빨리 일어나서 움직여 보세요", "잠들지 말고 크게 소리 지르세요"], a: "calm", ai: star, o: [["angry", "faceAngry"], ["late", "calendar"], ["hungry", "coffee"]]}
+  - {t: "증상 설명", i: stetho, w: "목이 조이는 느낌은 기도가 붓는 대표 증상이에요. 증상이 반응 때문이라고 설명하면 환자가 자기 잘못이라고 느끼지 않아요.", d: "of the noise", k: ["목이 아픈 건 감기 때문이에요", "목이 편해지고 있어요"], a: "tight", ai: lock, o: [["cold", "coffee"], ["sweet", "star"], ["wet", "bandage"]]}
+  - {t: "효과 설명", i: play, w: "open your airway로 약이 하는 일을 눈에 그려지게 말해요. 에피네프린은 부은 기도를 열고 혈압을 올리는 작용을 해요.", d: "close your door", k: ["에피네프린이 열을 내려 줄 거예요", "에피네프린이 통증을 없애 줄 거예요"], a: "airway", ai: stetho, o: [["eyes", "magnify"], ["door", "home"], ["window", "bulb"]]}
+  - {t: "곁에 머물기", i: hospital, w: "stable은 활력징후가 안정되었다는 뜻이에요. 안정될 때까지 곁에 있겠다고 기한을 말하면 환자가 안심해요.", d: "unless you're ready", k: ["안정되면 바로 자리를 비울게요", "검사가 끝날 때까지 곁에 있을게요"], a: "stable", ai: monitor, o: [["hungry", "coffee"], ["bored", "play"], ["late", "calendar"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "아나필락시스 환자 안심시키기 4문장 순서"
+    why: "무슨 일인지 먼저 알리고, 약을 주고 있다고 말해요. 그 약(It)이 기도를 열어 줄 것이니 침착하라고 하고, 약이 듣기 시작해도(it starts working) 곁에 있겠다고 해요."
+    lines:
+    - {en: "You're having an allergic reaction to the medicine.", icon: siren, ko: "약물에 알레르기 반응이 일어나고 있어요", note: "설명"}
+    - {en: "We're giving you epinephrine to help you breathe.", icon: pill, ko: "숨쉬기 편하게 에피네프린을 드리고 있어요", note: "투여"}
+    - {en: "It will open your airway quickly, so try to stay calm.", icon: handshake2, ko: "기도를 빨리 열어 줄 테니 침착해 주세요", note: "안정"}
+    - {en: "Even after it starts working, we're not leaving your side.", icon: hospital, ko: "약이 듣기 시작해도 곁을 떠나지 않아요", note: "곁에"}
+  ctx: {word: "epinephrine", ko: "에피네프린"}
+- title: 말기 환자 통증 완화
+  s:
+  - {t: "목표 전환", i: home, w: "now와 not more tests로 목표가 바뀌었음을 부드럽게 알려요. 완화 돌봄은 치료를 포기하는 것이 아니라 편안함과 삶의 질을 목표로 하는 돌봄이에요.", d: ", and more", k: ["지금은 검사를 더 늘려야 해요", "지금은 완치가 목표예요"], a: "comfort", ai: shield, o: [["schedule", "calendar"], ["bill", "board"], ["diet", "coffee"]]}
+  - {t: "약 설명", i: pill, w: "ease는 아픔을 덜어 준다는 뜻이라 낫게 한다는 과장 없이 약의 목적을 정직하게 전해요. rest는 편히 쉬게 한다는 현실적인 기대를 줘요.", d: "and keep her up", k: ["이 약이 환자분을 깨워 줄 거예요", "이 약이 검사 결과를 좋게 해 줄 거예요"], a: "ease", ai: chevronDown, o: [["double", "chartup"], ["cause", "siren"], ["show", "magnify"]]}
+  - {t: "가치 묻기", i: speech, w: "what matters most로 가족이 중요하게 여기는 가치를 열어 주면 돌봄 계획을 가족의 뜻에 맞출 수 있어요. 의료 결정은 환자의 가치와 목표에 맞춰 가는 것이 기본이에요.", d: "what costs most", k: ["가족분들이 얼마를 내야 하는지 말해요", "가족분들은 밖에서 기다려 달라고 말해요"], a: "family", ai: home, o: [["doctor", "stetho"], ["nurse", "me"], ["hospital", "hospital"]]}
+  - {t: "목표 설명", i: lab, w: "not trying to cure는 완치가 아니라 편안함이 목표라는 사실을 정직하게 말해요. 완곡하게 피하면 가족이 계속 완치를 기대할 수 있어요.", d: "to move her", k: ["이제 더 강한 치료를 시작해요", "이제 검사를 모두 다시 해요"], a: "cure", ai: pill, o: [["teach", "pencil"], ["wake", "bell"], ["test", "magnify"]]}
+  - {t: "소망 표현", i: star, w: "peaceful and free of pain은 목표를 가족이 그릴 수 있는 모습으로 말해요. 마지막 단계의 통증 조절 목표는 편안함이에요.", d: "restless and full", k: ["환자분이 깨어 활동하시길 바라요", "환자분이 통증을 견디시길 바라요"], a: "peaceful", ai: handshake2, o: [["busy", "gear"], ["loud", "speaker"], ["hungry", "coffee"]]}
+  - {t: "의사 확인", i: compass, w: "What would she want는 환자가 말하지 못해도 그 사람의 뜻을 중심에 두는 질문이에요. 평소 가치나 기록된 사전 지시가 있으면 그것을 따라요.", d: "What did she tell", k: ["가족분들은 지금 무엇을 원하세요?", "환자분 이름이 어떻게 되세요?"], a: "want", ai: bulb, o: [["forbid", "lock"], ["force", "faceAngry"], ["teach", "pencil"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "임종기 환자 가족과의 대화 4문장 순서"
+    why: "목표가 편안함으로 바뀌었다고 먼저 알려요. 그래서(That's why) 약이 하는 일을 설명하고, 그 너머(Beyond that)로 환자가 무엇을 원할지 물어요. 마지막은 그 선택(whatever she chooses)에 맞춘 소망이에요."
+    lines:
+    - {en: "Our focus now is her comfort, not more tests.", icon: home, ko: "지금 중요한 건 검사가 아니라 편안함이에요", note: "목표"}
+    - {en: "That's why this medicine will ease her pain and let her rest.", icon: pill, ko: "그래서 이 약이 통증을 덜고 쉬게 해줄 거예요", note: "약"}
+    - {en: "Beyond that, what would she want us to do for her?", icon: compass, ko: "그 밖에 환자분이 우리에게 뭘 원하실까요?", note: "질문"}
+    - {en: "We'll make her peaceful and free of pain, whatever she chooses.", icon: star, ko: "뭘 택하시든 평온하고 통증 없게 해드릴게요", note: "소망"}
+  sw: {ko: "이제 환자분의 편안함에 집중할 거예요"}
+- title: 진정 후 급속 각성 흥분
+  s:
+  - {t: "장소 안내", i: hospital, w: "깨어나는 환자는 어디인지 모를 수 있어 장소를 먼저 알려 줘요. 짧은 문장으로 장소와 안전을 한 번에 말하면 흥분이 가라앉기 쉬워요.", d: "— you're lost", k: ["지금 수술실에 계세요", "지금 집에 계세요"], a: "emergency", ai: siren, o: [["waiting", "calendar"], ["living", "home"], ["dining", "coffee"]]}
+  - {t: "안전 안내", i: shield, w: "Let's …로 같이 한다는 틀을 써서 명령 대신 협력으로 들려요. 흥분한 환자가 정맥주사나 모니터를 뽑을 수 있어 손을 가만히 두도록 부드럽게 안내해요.", d: "so you can fall", k: ["손을 흔들어 보세요", "손을 머리 위로 올리세요"], a: "still", ai: pushpin, o: [["dirty", "bandage"], ["wet", "bell"], ["cold", "coffee"]]}
+  - {t: "신원 안내", i: me, w: "자기소개로 낯선 환경에서 누구인지 알려 안심시켜요. right here는 곁을 떠나지 않겠다는 약속이에요.", d: ", and I'm leaving soon", k: ["저는 의사예요, 곧 갈 거예요", "저는 보호자예요, 여기 있을게요"], a: "nurse", ai: stetho, o: [["neighbor", "home"], ["driver", "plane"], ["teacher", "pencil"]]}
+  - {t: "상황 설명", i: bell, w: "깨어나는 중이라 혼란은 정상이라고 쉬운 말로 설명하면 환자가 자신이 이상하다고 겁먹지 않아요. waking up from sedation은 지금 상태의 이유를 알려 줘요.", d: ", and some snow", k: ["진정제가 아직 들어가고 있어요", "혼란스러운 건 위험한 신호예요"], a: "confusion", ai: faceWorried, o: [["hunger", "coffee"], ["noise", "speaker"], ["traffic", "plane"]]}
+  - {t: "지남력 안내", i: calendar, w: "요일과 병원 이름으로 지금이 언제 어디인지 알려 주면 방향 감각이 돌아오도록 도와요. 진정에서 깨어날 때는 같은 정보를 여러 번 짧게 알려 줘도 좋아요.", d: "in Memorial Clinic", k: ["지금은 월요일이에요", "지금은 집에 계세요"], a: "Hospital", ai: hospital, o: [["Library", "pencil"], ["Hall", "home"], ["School", "trophy"]]}
+  - {t: "침대 안내", i: shield, w: "I need you to …는 이유(for your own safety)를 붙여 부탁하는 틀이라 명령보다 협조를 얻기 쉬워요. 낙상과 라인 제거를 막으려는 안내예요.", d: "to climb out of", k: ["침대 밖으로 나오셔도 돼요", "혼자 서서 걸어 보세요"], a: "stay", ai: lock, o: [["jump", "play"], ["run", "plane"], ["sing", "mic"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "흥분한 채 깨어나는 환자 4문장 순서"
+    why: "어디인지, 안전하다는 것부터 알려요. 누가 곁에 있는지 말하고, 혼란이 정상이라고 설명해요. 그래서(That's why) 안전을 위해 침대에 있어 달라고 부탁해요."
+    lines:
+    - {en: "You're in the emergency room — you're safe here.", icon: hospital, ko: "응급실이에요, 여기서는 안전해요", note: "장소"}
+    - {en: "I'm your nurse, and I'm staying right here with you.", icon: me, ko: "저는 간호사고, 곁에 있을게요", note: "신원"}
+    - {en: "You're waking up from sedation, and some confusion is normal.", icon: bell, ko: "진정에서 깨는 중이라 혼란은 정상이에요", note: "설명"}
+    - {en: "That's why I need you to stay in the bed for your own safety.", icon: shield, ko: "그래서 안전을 위해 침대에 계셔야 해요", note: "부탁"}
+  ctx: {word: "confusion", ko: "혼란"}
+  sw: {ko: "침대에 계시길 부탁드려요"}
+- title: 중증 외상 통증 위기
+  s:
+  - {t: "투여 안내", i: pill, w: "작은 양으로 나눠 준다고 알리면 환자가 약이 부족하다고 오해하지 않아요. 혈압이 낮은 환자는 진통제를 조금씩 올려 가며 반응을 봐요.", d: ", in a hurry", k: ["한 번에 많은 양을 드릴게요", "약은 아직 드리지 않아요"], a: "small", ai: chevronDown, o: [["large", "chevronUp"], ["huge", "chartup"], ["equal", "compass"]]}
+  - {t: "의식 유지", i: me, w: "눈을 보게 하면 환자의 의식과 집중을 계속 확인할 수 있어요. 위기에서는 짧고 한 가지씩 말하는 지시가 가장 잘 전달돼요.", d: "and stop looking", k: ["제 손만 보세요", "눈을 감고 계세요"], a: "eyes", ai: magnify, o: [["shoes", "home"], ["phone", "speaker"], ["watch", "calendar"]]}
+  - {t: "감시 설명", i: monitor, w: "very closely로 혈압을 자주 확인한다고 알리면 약을 쓰는 동안 안전하다고 느껴요. 외상에서는 출혈로 혈압이 떨어질 수 있어 진통제를 쓰기 전후로 계속 봐요.", d: "very loosely", k: ["혈압은 한 번만 잴게요", "혈압은 재지 않을 거예요"], a: "closely", ai: magnify, o: [["rarely", "calendar"], ["briefly", "play"], ["lightly", "coffee"]]}
+  - {t: "위험 설명", i: lock, w: "약이 혈압을 더 떨어뜨릴 수 있어서 한 번에 많이 쓰지 않는다고 이유를 설명해요. 출혈이 있는 외상 환자는 마약성 진통제로 혈압이 더 떨어질 수 있어 신중히 써요.", d: "could hold", k: ["약이 많으면 혈압이 올라가요", "약은 혈압에 영향을 주지 않아요"], a: "drop", ai: chevronDown, o: [["raise", "chevronUp"], ["boost", "chartup"], ["fix", "gear"]]}
+  - {t: "용량 설명", i: gear, w: "small doses와 watch를 짝지어 말하면 조금씩 주고 반응을 보며 조절한다는 흐름이 전달돼요. 반응을 보며 용량을 조절하는 것을 적정 용량 조절(titration)이라고 해요.", d: "how your mind", k: ["반응은 보지 않고 약만 드릴게요", "한 번에 큰 용량을 드릴게요"], a: "responds", ai: monitor, o: [["grows", "chartup"], ["travels", "plane"], ["speaks", "speech"]]}
+  - {t: "곁에 머물기", i: me, w: "계속 말하게 하면 의식 수준을 확인하면서 환자를 곁에서 붙잡아 줄 수 있어요. I'm not going anywhere는 떠나지 않겠다는 가장 쉬운 약속이에요.", d: "Stay quiet with me", k: ["저는 곧 자리를 비울 거예요", "조용히 눈을 감고 계세요"], a: "talking", ai: speech, o: [["writing", "pencil"], ["walking", "play"], ["singing", "mic"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "중증 외상 환자 진통 4문장 순서"
+    why: "조금씩 나눠 주고 있다고 먼저 알려요. 그 이유(That's because)가 혈압이 더 떨어질 수 있어서라고 설명하고, 그래서(So) 혈압을 지켜본다고 해요. 마지막은 곁에 머문다는 약속이에요."
+    lines:
+    - {en: "We're giving you something for the pain, in small amounts.", icon: pill, ko: "통증약을 조금씩 나눠서 드리고 있어요", note: "투여"}
+    - {en: "That's because too much right now could drop your blood pressure.", icon: lock, ko: "지금 많이 쓰면 혈압이 떨어질 수 있어서예요", note: "이유"}
+    - {en: "So we're watching it very closely.", icon: monitor, ko: "그래서 혈압을 아주 면밀히 지켜보고 있어요", note: "감시"}
+    - {en: "Keep talking to me, I'm not going anywhere.", icon: me, ko: "계속 말씀하세요, 어디 안 가요", note: "곁에"}
+  ctx: {word: "blood pressure", ko: "혈압"}

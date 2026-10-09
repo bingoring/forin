@@ -1,0 +1,119 @@
+복와위 중 튜브·라인 관리:
+  - kind: pair
+    words: [w-route, w-mark, w-slack]
+    pairs: [[route the lines, over his shoulders], [mark the tube, at the lip], [give every line, enough slack]]
+    decoys: [pinched]
+    why: "route는 라인이 지나갈 길을 잡는 동사라 over his shoulders와, 튜브 표시는 깊이를 읽는 기준인 at the lip과, give는 slack(여유 길이)과 짝이에요."
+  - kind: swap
+    words: [w-tube, w-depth, w-lip]
+    who: "차트 기록 · 튜브 확인"
+    icon: board
+    before: ["ETT ", "looks okay", " at 24 cm at the lip."]
+    options: [secured, looks okay, is roughly]
+    answer: secured
+    notes: {secured: "차트에는 확인한 사실과 수치를 정확히 남겨요 — 고정 상태와 깊이.", looks okay: "말로는 괜찮지만, 차트에서는 무엇을 확인했는지가 빠져요.", is roughly: "깊이는 정확한 cm로 적어요. 다음 근무자가 이 숫자와 비교해 튜브가 빠졌는지 판단해요."}
+    why: "구두로는 느슨하게 말해도 통하지만, 차트는 다음 사람이 그대로 믿고 비교하는 기록이에요."
+복와위 중 장관영양 관리:
+  - kind: pair
+    words: [w-aspiration, w-gastric, w-reverse-trendelenburg]
+    pairs: [[aspiration, risk], [gastric, residuals], [Reverse, Trendelenburg]]
+    decoys: [depth]
+    why: "aspiration risk(흡인 위험), gastric residuals(위 잔여량), Reverse Trendelenburg(머리 쪽을 높이고 몸 전체를 기울인 자세) — 굳은 짝으로 통째로 외워요."
+  - kind: context
+    words: [w-belly, w-distended, w-feed]
+    scenes:
+      - {who: 차트 기록, icon: board, en: "Abd distended; TF held, MD notified.", ok: true}
+      - {who: 의사 콜, icon: monitor, en: "His abdomen is distended, so I've held his tube feeds.", ok: true}
+      - {who: 보호자에게, icon: me, en: "His abdomen is distended, so TF are held.", ok: false, fix: "His belly looks a bit swollen, so we've paused his feeding for now and let the doctor know."}
+    why: "abdomen·distended·TF는 의료진의 말이에요. 보호자에게는 belly, swollen, paused처럼 쉬운 말로 같은 내용을 전해요."
+신경근차단제 병용 감시:
+  - kind: slider
+    words: [w-deeply, w-sedated, w-paralyzed]
+    cue: "신경근차단제를 지속 주입하는 중 — 진정은 어느 깊이여야 하나"
+    scale: [lightly sedated, moderately sedated, deeply sedated]
+    answerAt: 2
+    why: "근육이 차단되면 환자는 깨어 있어도 움직이거나 표현할 수 없어요. 그래서 차단하는 동안에는 깊은 진정을 유지해요 — 마비된 채로 깨어 있는 것(awareness)이 가장 피해야 할 일이에요."
+    example: "Because he's paralyzed, he must be deeply sedated at all times."
+    exKo: "약물로 마비돼 있으니 항상 깊이 진정돼 있어야 해요."
+  - kind: context
+    words: [w-tof, w-twitch, w-document]
+    scenes:
+      - {who: 차트 기록, icon: board, en: "TOF 2/4 at 0800.", ok: true}
+      - {who: 동료에게, icon: speech, en: "He's got two out of four twitches.", ok: true}
+      - {who: 보호자에게, icon: me, en: "His TOF is two out of four.", ok: false, fix: "He's on medicine that keeps him asleep and his muscles still, and we check regularly that it's working the way we want."}
+    why: "TOF는 의료진의 말이에요. 보호자에게는 근육을 쉬게 하는 약과 함께 잠들게 하는 약도 쓴다는 걸 꼭 말해요 — '마비'만 들으면 아파도 못 움직이는 건 아닌지 걱정해요."
+PEEP·recruitment 반응 평가:
+  - kind: pair
+    words: [w-recruitment, w-overdistension, w-harm]
+    pairs: [[recruitment, maneuver], [watch for, overdistension], [harm, the good lung]]
+    decoys: [opened up]
+    why: "recruitment maneuver는 굳은 짝이에요. watch for는 '생기지 않는지 지켜보다'라서 overdistension 같은 나쁜 일과 같이 써요. harm은 목적어를 바로 받아요."
+  - kind: slider
+    words: [w-suggest, w-oxygenation, w-peep]
+    cue: "같은 PEEP에서 산소화가 좋아졌다. 영상 검사는 아직 안 했다"
+    scale: [suggests, shows, proves]
+    answerAt: 0
+    why: "산소화가 좋아진 것만으로 폐포가 열렸다고 단정할 수는 없어서 suggests(시사한다)예요. proves는 다른 근거 없이 쓰면 과장이에요."
+    example: "Better oxygenation at the same PEEP suggests the lung opened up."
+    exKo: "같은 PEEP에서 산소화가 더 좋아진 건 폐가 열렸다는 뜻이에요."
+  - kind: swap
+    words: [w-spike, w-stop, w-maneuver]
+    who: "동료에게 · 수기 중 안전 기준"
+    icon: speech
+    before: ["If his pressures spike, we ", "might want to think about stopping", " the maneuver right away."]
+    options: [stop, might want to think about stopping, keep going with]
+    answer: stop
+    notes: {stop: "위험 신호에는 분명한 동사를 써요. 듣는 사람이 바로 움직여요.", might want to think about stopping: "돌려 말하면 급한 순간에 팀이 망설여요.", keep going with: "압이 치솟는데 계속하면 압력 손상 위험이 커져요."}
+    why: "안전 기준을 미리 정할 때는 짧고 분명하게 말해요. 그래야 그 순간에 아무도 다시 묻지 않아요."
+복와위 응답자 여부 판단:
+  - kind: slider
+    words: [w-substantially, w-improve, w-oxygenation]
+    cue: "엎드린 뒤 P/F가 90에서 180으로 올랐다"
+    scale: [slightly, moderately, substantially]
+    answerAt: 2
+    why: "두 배로 오른 건 substantially예요. responder를 가르는 기준은 기관과 연구마다 다르니, 말할 때 숫자를 같이 붙여요."
+    example: "His oxygenation improved substantially, so he's a proning responder."
+    exKo: "산소화가 상당히 좋아져서 복와위 응답자예요."
+  - kind: context
+    words: [w-report, w-response, w-responder]
+    scenes:
+      - {who: 회진 보고, icon: speech, en: "P/F went from 90 to 180 after proning — he responded well.", ok: true}
+      - {who: 차트 기록, icon: board, en: "P/F 90 → 180 post-prone; responder.", ok: true}
+      - {who: 보호자에게, icon: me, en: "He's a proning responder with a P/F of 180.", ok: false, fix: "Turning him onto his stomach is helping his lungs, so we plan to keep doing it."}
+    why: "responder·P/F는 팀 안의 말이에요. 보호자에게는 '도움이 되고 있고, 그래서 계속할 계획'이라는 뜻으로 전해요."
+복와위 중 혈역학 변화 관리:
+  - kind: slider
+    words: [w-drop, w-temporarily]
+    cue: "돌린 직후 MAP가 72에서 64로 — 몇 분 사이 다시 오르는 중"
+    scale: [dipped, dropped, crashed]
+    answerAt: 0
+    why: "dipped는 작고 잠깐 내려간 것, dropped는 뚜렷한 하락, crashed는 급격하고 위험한 하락이에요. 동료는 이 말을 듣고 얼마나 빨리 와야 할지 정해요."
+    example: "The position change can drop his blood pressure temporarily."
+    exKo: "체위 변화로 혈압이 일시적으로 떨어질 수 있어요."
+  - kind: swap
+    words: [w-drop, w-turn]
+    who: "의사 콜 · 저혈압 보고"
+    icon: monitor
+    before: ["His MAP ", "is kind of low-ish", " after we turned him."]
+    options: [dropped to 58, is kind of low-ish, is fine]
+    answer: dropped to 58
+    notes: {dropped to 58: "수치로 말해야 의사가 바로 판단해요.", is kind of low-ish: "얼마나 낮은지 알 수 없어 의사가 다시 물어야 해요.", is fine: "떨어져서 전화했는데 괜찮다고 하면 보고한 까닭이 사라져요."}
+    why: "의사에게 보고할 때는 느낌이 아니라 수치로 말해요."
+안면 부종·안압 관리:
+  - kind: slider
+    words: [w-scary, w-swelling, w-look]
+    cue: "보호자: \"얼굴이 너무 부었어요, 다친 거예요?\" — 간호사는 그 걱정을 먼저 받아 준다"
+    scale: ["It's nothing.", "It looks scary, I know.", "It's very dangerous."]
+    answerAt: 1
+    why: "It's nothing은 걱정을 무시하는 말이고 사실도 아니에요 — 지켜봐야 하는 변화예요. very dangerous는 사실보다 무거워요. 감정을 먼저 인정하고, 이어서 흔한 일이고 돌려 눕히면 가라앉는다고 설명해요."
+    example: "The swelling looks scary, but it will go down soon."
+    exKo: "부종이 무서워 보여도 곧 가라앉을 거예요."
+  - kind: swap
+    words: [w-swelling, w-common, w-face-down]
+    who: "보호자에게 · 얼굴 부기 설명"
+    icon: me
+    before: ["The swelling is ", "dependent edema from prone positioning", ", and it eases when we turn him back."]
+    options: [common when he's face-down, dependent edema from prone positioning, nothing to worry about]
+    answer: common when he's face-down
+    notes: {common when he's face-down: "흔한 일이라는 사실과 그 까닭을 쉬운 말로 함께 전해요.", dependent edema from prone positioning: "정확한 의학 용어지만 보호자는 알아듣기 어려워요.", nothing to worry about: "간호사는 눈과 피부를 계속 살피고 있어요. 걱정할 게 없다고 하면 사실보다 가볍게 들려요."}
+    why: "보호자에게는 정확하되 쉬운 말로, 그리고 사실보다 가볍게도 무겁게도 말하지 않아요."

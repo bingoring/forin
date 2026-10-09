@@ -426,3 +426,32 @@ func (emptyJourney) Locate(learning.ScenarioID) (learning.StepRef, bool) {
 	return learning.StepRef{}, false
 }
 func (emptyJourney) Steps(learning.ThemeKey, learning.Progress) []learning.StepState { return nil }
+
+// scenarioNotesResp is one situation's 교정노트 — the STEP 3 rail's 노트 sheet.
+type scenarioNotesResp struct {
+	ScenarioID string                     `json:"scenarioId"`
+	Cards      []progress.ModelAnswerCard `json:"cards"`
+}
+
+// @Summary One scenario's correction notes (STEP 3 대화 레일의 노트 바텀시트)
+// @Tags review
+// @Security Bearer
+// @Param id path string true "scenario id"
+// @Success 200 {object} scenarioNotesResp
+// @Router /me/review/scenarios/{id} [get]
+func (h *progressHandler) scenarioNotes(w http.ResponseWriter, r *http.Request) {
+	uid, _ := UserID(r.Context())
+	id := r.PathValue("id")
+	byScenario, err := h.review.ListModelAnswerCards(r.Context(), uid, []string{id})
+	if err != nil {
+		slog.Error("review: scenario notes failed", "err", err)
+		httpx.Error(w, http.StatusInternalServerError, "could not load the notes")
+		return
+	}
+	cards := byScenario[id]
+	if cards == nil {
+		// [] rather than null: the sheet draws its empty state from a list.
+		cards = []progress.ModelAnswerCard{}
+	}
+	httpx.JSON(w, http.StatusOK, scenarioNotesResp{ScenarioID: id, Cards: cards})
+}

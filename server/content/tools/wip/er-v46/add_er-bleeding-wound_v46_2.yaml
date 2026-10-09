@@ -1,0 +1,115 @@
+- title: 열상 봉합 준비 교육
+  s:
+  - {t: "마취 안내", i: pill, w: "first로 순서를 알려 주고 so …로 이유를 붙여 안심시켜요. 국소 마취가 듣는 동안은 꿰매는 것이 아프지 않아요.", d: "We'll wash", k: ["상처를 한 번 더 헹굴게요", "오늘은 무거운 걸 들지 마세요"], a: "numb", o: ["wash", "cover", "shave"]}
+  - {t: "관리 교육", i: shield, w: "clean and dry로 형용사 둘을 묶어 기억하기 쉽게 해요. 봉합 부위가 젖은 채로 있으면 감염 위험이 커져서 마른 상태를 지키라고 알려요.", d: "warm and moist", k: ["오늘은 무거운 것은 들지 마세요", "아프면 진통제를 드셔도 돼요"], a: "Keep", o: ["Rub", "Pick", "Squeeze"]}
+  - {t: "추적 방문", i: calendar, w: "have + 목적어 + 과거분사는 '내가 직접 하는 것이 아니라 해 받는 일'이라는 틀이에요. 실밥을 뽑는 시기는 상처 부위에 따라 달라 의사가 알려 줘요.", d: "to pay for", k: ["상처가 나으면 연락 주세요", "다음에는 약만 받아 가시면 돼요"], a: "removed", o: ["tightened", "counted", "sold"]}
+  - {t: "환자 질문", i: speech, w: "Are you going to…?로 진행 계획을 직접 묻는 환자 말이에요. stitch up은 '꿰매 닫다'는 일상 표현이라 환자가 쓰기 쉬워요.", d: "wash", k: ["이거 많이 아플까요?", "지금 약 먹어도 되나요?"], a: "stitch", o: ["freeze", "bury", "paint"]}
+  - {t: "통증 설명", i: faceWorried, w: "once…로 '그 뒤에는'이라는 시점을 알려 줘 조금만 참으면 된다고 느끼게 해요. 마취 중에도 아프면 말하라고 해야 부족한 마취를 보충할 수 있어요.", d: "before the area", k: ["마취 주사를 놓을 때 따끔해요", "마취가 풀리면 약을 드릴게요"], a: "numb", o: ["swollen", "bleeding", "itchy"]}
+  - {t: "환자 질문", i: speech, w: "How many…?로 개수를 직접 묻는 환자의 질문이에요. 필요한 바늘 수는 상처 길이와 부위를 본 의사가 정하므로 간호사는 확답 대신 의사가 알려 준다고 답해요.", d: "How much pain", k: ["꿰매면 흉터가 남나요?", "얼마나 걸리나요?"], a: "stitches", o: ["bandages", "visits", "scars"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "봉합 준비 교육 4문장 순서"
+    why: "먼저 마취하고, 마취된 부위를 꿰매고, 닫힌 상처를 집에서 관리하게 한 뒤, 그렇게 나으면 실밥을 뽑으러 온다고 닫아요. 'First'·'With it numb'·'closed wound'·'that way'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "First, we'll numb the area so the stitches won't hurt.", icon: pill, ko: "먼저 부위를 마취해서 꿰매는 게 아프지 않게 할게요", note: "마취"}
+    - {en: "With it numb, we'll close the cut with stitches.", icon: scalpel, ko: "마취가 되면 상처를 꿰매 닫을게요", note: "봉합"}
+    - {en: "Keep the closed wound clean and dry at home so it heals well.", icon: shield, ko: "닫힌 상처는 집에서 깨끗하고 건조하게 유지해야 잘 아물어요", note: "관리"}
+    - {en: "You'll come back to have the stitches removed after it heals that way.", icon: calendar, ko: "그렇게 아문 뒤에 실밥을 뽑으러 다시 오시게 돼요", note: "방문"}
+  ctx:
+    word: "suture removal"
+    ko: "실밥 제거"
+    scenes:
+      0: "You'll come back for your suture removal when the wound has healed enough."
+    why: "suture removal은 차트와 의료진의 말이에요. 성인 환자는 알아듣지만 아이에게는 'take your stitches out'처럼 쉬운 말로 해요."
+  sw: {ko: "마취가 되면 상처를 꿰매 닫을게요"}
+- title: 항응고제 지속출혈
+  s:
+  - {t: "복용약 문진", i: pill, w: "Which…?로 약 이름을 고르게 묻고, last dose로 마지막 복용 시각을 함께 물어요. 약 종류와 마지막 복용 시점은 지혈이 얼마나 어려울지, 효과를 되돌릴 약을 쓸지 정하는 단서예요.", d: "how much", k: ["어디가 계속 피가 나나요?", "최근에 넘어지신 적 있어요?"], a: "blood thinner", o: ["painkiller", "vitamin", "antibiotic"]}
+  - {t: "검사 안내", i: lab, w: "to guide treatment로 검사의 목적을 알려 환자가 이유를 납득해요. 응고 검사(PT/INR 등)의 수치가 지혈 약을 쓸지 정하는 데 도움이 돼요.", d: "to cut costs", k: ["혈압을 한 번 더 재 볼게요", "혈액형도 같이 확인할게요"], a: "clotting", o: ["allergy", "vision", "hearing"]}
+  - {t: "치료 안내", i: pill, w: "may give로 약이 확정이 아니라 검사 결과에 따라 쓸 수 있다고 말해요. 항응고제는 종류에 따라 효과를 되돌리는 약이 따로 있어요.", d: "to slow your", k: ["약은 입으로 드시면 돼요", "혈압을 먼저 재 볼게요"], a: "clot", o: ["thin", "drain", "flow"]}
+  - {t: "환자 호소", i: speech, w: "keeps oozing으로 '계속 배어 나온다'는 지속을 말해요. 와파린을 복용 중인 환자의 지속 출혈은 응고 수치(INR)를 확인해야 한다는 신호예요.", d: "just stopped", k: ["어제부터 어지러워요", "아스피린도 같이 먹고 있어요"], a: "warfarin", o: ["insulin", "metformin", "Tylenol"]}
+  - {t: "복용 시각", i: calendar, w: "When did you…?로 과거 시점을 곧바로 묻는 가장 짧은 형태예요. 마지막 복용 시각이 약 효과가 얼마나 남았는지 가늠하는 기준이에요.", d: "Why did you", k: ["약을 하루에 몇 번 드세요?", "어떤 약인지 이름을 아세요?"], a: "take", o: ["spill", "lose", "sell"]}
+  - {t: "결과 설명", i: lab, w: "how well로 정도를 묻는 의문사 절이에요. 응고 검사 결과가 나오면 그 수치로 약을 쓸지 정해요.", d: "how much", k: ["결과가 나오면 바로 알려 드릴게요", "피를 한 번 더 뽑을 수 있어요"], a: "labs", o: ["x-rays", "scans", "bandages"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "항응고제 출혈 4문장 순서"
+    why: "복용약과 마지막 복용 시각을 묻고, 그에 따라 응고 검사를 알리고, 수치가 어떻든 압박은 계속하고, 수치에 따라 약을 쓸 수 있다고 알려요. 'Going by that'·'Whatever the numbers are'·'those numbers'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Which blood thinner do you take, and when was your last dose?", icon: pill, ko: "어떤 항응고제를 드시고 마지막 복용은 언제였나요?", note: "문진"}
+    - {en: "Going by that, we'll check your clotting labs to guide treatment.", icon: lab, ko: "그걸 보고 치료 방향을 정하려고 응고 검사를 확인할게요", note: "검사"}
+    - {en: "Whatever the numbers are, I'll keep pressing firmly on the wound.", icon: bandage, ko: "수치가 어떻든 계속 상처를 단단히 누르고 있을게요", note: "압박"}
+    - {en: "Depending on those numbers, we may give medicine to help your blood clot.", icon: pill, ko: "그 수치에 따라 혈액이 응고되도록 돕는 약을 드릴 수도 있어요", note: "치료"}
+  ctx:
+    word: "INR"
+    ko: "응고 수치"
+  sw: {ko: "피를 묽게 하는 약을 드시고 계세요?"}
+- title: 동물 교상 감염관리
+  s:
+  - {t: "세척 안내", i: bandage, w: "thoroughly로 '꼼꼼히'를 알려 오래 씻는 이유를 납득시켜요. 물린 상처는 입 안 세균이 깊이 들어가서 충분한 세척이 감염 예방의 기본이에요.", d: "to raise", k: ["광견병 주사는 내일 맞을 거예요", "물린 개는 지금 어디 있나요?"], a: "thoroughly", o: ["barely", "hastily", "lightly"]}
+  - {t: "개 접종 확인", i: magnify, w: "if로 예/아니오 대답을 이끌어 확실히 모르면 모른다고 답하기 쉬워요. 개의 광견병 접종 여부가 광견병 예방 치료의 필요를 정해요.", d: "when the dog", k: ["그 개가 누구 개인지 아세요?", "물린 곳이 어디예요?"], a: "vaccinated", o: ["washed", "trained", "fed"]}
+  - {t: "치료 안내", i: pill, w: "may need로 필요할 수 있다고만 말해 결과를 미리 단정하지 않아요. 개 접종 여부와 물린 상황에 따라 광견병 예방 치료와 항생제 사용을 정해요.", d: "You can skip", k: ["개 주인에게 연락해 볼게요", "물린 부위를 높이 들어 주세요"], a: "antibiotics", o: ["crutches", "glasses", "vitamins"]}
+  - {t: "환자 설명", i: speech, w: "bit은 bite의 과거형이라 이미 일어난 일을 말해요. 떠돌이 개라는 말은 광견병 접종 여부를 알 수 없다는 뜻이라 예방 치료를 더 신중히 따져요.", d: "at the zoo", k: ["우리 개가 제 손을 물었어요", "어제 집에서 고양이에게 긁혔어요"], a: "park", o: ["pool", "gym", "office"]}
+  - {t: "환자 질문", i: faceWorried, w: "Should I worry about…?로 걱정을 그대로 꺼내 묻는 환자의 질문이에요. 광견병은 접종 여부와 노출 상황에 따라 위험이 달라서 단정 대신 위험을 함께 따져 줘요.", d: "Should I wait", k: ["상처가 낫는 데 얼마나 걸려요?", "저 입원해야 하나요?"], a: "rabies", o: ["measles", "shingles", "mumps"]}
+  - {t: "접종력 확인", i: calendar, w: "also로 앞 내용에 하나를 더 얹어 확인 항목을 늘려요. 동물에게 물린 상처는 파상풍 접종력도 함께 보는 것이 일반적이에요.", d: "We'll also skip", k: ["상처 사진을 찍어 둘게요", "개 주인에게 연락해 볼게요"], a: "shot", o: ["pill", "visit", "fee"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "동물 교상 관리 4문장 순서"
+    why: "개의 접종 여부를 묻고, 아는 만큼과 상관없이 세척을 시작하고, 그 세척과 함께 파상풍 접종력을 확인한 뒤, 이 모두를 바탕으로 광견병 예방과 항생제를 안내해요. 'Whatever you know'·'the cleaning'·'all of that'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Do you know if the dog was vaccinated?", icon: magnify, ko: "그 개가 예방접종을 받았는지 아시나요?", note: "개 확인"}
+    - {en: "Whatever you know, we'll clean the bite thoroughly to lower infection risk.", icon: bandage, ko: "아시는 만큼과 상관없이 감염 위험을 낮추려고 물린 부위를 꼼꼼히 씻을게요", note: "세척"}
+    - {en: "Along with the cleaning, we'll check your tetanus shot history.", icon: calendar, ko: "세척과 함께 파상풍 접종 이력도 확인할게요", note: "접종력"}
+    - {en: "Based on all of that, you may need rabies prevention and antibiotics.", icon: pill, ko: "그 모두를 바탕으로 광견병 예방과 항생제가 필요할 수 있어요", note: "치료"}
+  sw: {ko: "좋은 질문이에요, 위험이 어느 정도인지 같이 살펴봐요"}
+- title: 사람 교상 특수관리
+  s:
+  - {t: "위험 설명", i: bulb, w: "carry a high risk of…는 '위험을 안고 있다'는 정형 표현이에요. 사람의 입에는 세균이 많아 사람에게 물린 상처는 감염 위험이 높은 상처로 다뤄요.", d: "have a low", k: ["물린 부위를 깨끗이 씻을게요", "물리신 시각을 알려 주세요"], a: "high", o: ["low", "small", "slim"]}
+  - {t: "봉합 설명", i: bandage, w: "rather than은 두 가지 중 앞쪽을 택했다는 뜻이에요. 물린 상처를 꿰매 닫으면 세균이 갇힐 수 있어 열어 두는 경우가 많아요(얼굴 등은 예외가 있어요).", d: "We rarely", k: ["상처를 한 번 더 헹굴게요", "항생제를 먼저 드릴게요"], a: "leave", o: ["close", "seal", "tie"]}
+  - {t: "치료 안내", i: pill, w: "need A and B로 두 가지를 묶어 알려 환자가 둘 다 중요하다고 받아들여요. 사람 교상은 항생제를 쓰고 며칠 안에 상처를 다시 보는 경우가 많아요.", d: "You'll avoid", k: ["파상풍 접종도 확인할게요", "물린 부위를 높이 들고 계세요"], a: "antibiotics", o: ["oxygen", "dialysis", "chemotherapy"]}
+  - {t: "환자 설명", i: speech, w: "got bitten은 get + 과거분사로 '물리게 됐다'는 사건을 담담히 말해요. 싸우다 물린 상처를 말하기 꺼리는 환자가 많아서 판단 없이 사실만 받는 것이 중요해요.", d: "a hike", k: ["물린 사람이 누군지 몰라요", "어제 개한테 물렸어요"], a: "fight", o: ["game", "party", "trip"]}
+  - {t: "부위 설명", i: me, w: "right here를 덧붙이며 손으로 짚는 말이라 병원 영어에서도 자연스러워요. 주먹 쥔 손가락 관절의 상처는 이에 의한 상처일 수 있어 특히 중요하게 봐요.", d: "my elbow", k: ["상처가 오른손에 있어요", "손가락을 못 움직이겠어요"], a: "knuckle", o: ["elbow", "ankle", "shoulder"]}
+  - {t: "주의 설명", i: bulb, w: "extra careful로 '더 신중하게'를 강조해 손 상처를 가볍게 보지 않게 해요. 손은 힘줄과 관절이 가까워 감염이 깊이 퍼지기 쉬워요.", d: "less careful", k: ["손을 심장보다 높이 올려 주세요", "손가락을 움직여 보세요"], a: "need", o: ["avoid", "cause", "refuse"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "사람 교상 설명 4문장 순서"
+    why: "물린 곳과 경위를 묻고, 그 말에서 사람 교상임을 짚고, 그 위험 때문에 열어 둔다고 알린 뒤, 열어 둔 상태에서 항생제와 추적이 필요하다고 닫아요. 'what you've told me'·'that risk'·'it left open'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Tell me where the bite is and how it happened.", icon: magnify, ko: "물린 곳이 어디고 어떻게 일어났는지 말씀해 주세요", note: "문진"}
+    - {en: "From what you've told me, this is a human bite, a high infection risk.", icon: bulb, ko: "말씀하신 걸 보면 사람 교상이고 감염 위험이 높아요", note: "위험"}
+    - {en: "Because of that risk, we often leave it open rather than stitch it.", icon: bandage, ko: "그 위험 때문에 꿰매지 않고 열어 두는 경우가 많아요", note: "처치"}
+    - {en: "With it left open, you'll need antibiotics and close follow-up.", icon: pill, ko: "열어 둔 만큼 항생제와 꼼꼼한 추적 관찰이 필요해요", note: "추적"}
+  ctx:
+    word: "leave open"
+    ko: "열어 두다"
+    scenes:
+      2: "We'll leave it open to heal by secondary intention."
+  sw: {ko: "누군가의 이에 닿아서 생긴 건가요?"}
+- title: 이물 잔존 창상
+  s:
+  - {t: "영상 안내", i: monitor, w: "to see if로 검사의 목적을 알려 줘요. 유리는 대부분 엑스레이에 보여서 안에 남았는지 확인하는 데 쓰여요.", d: "to hear if", k: ["상처를 한 번 더 헹굴게요", "유리가 박힌 곳을 짚어 보세요"], a: "glass", o: ["metal", "wood", "gravel"]}
+  - {t: "안심 안내", i: shield, w: "won't…, to avoid…로 하지 않을 일과 그 이유를 함께 말해요. 영상 없이 헤집으면 신경이나 혈관을 다치거나 조각이 더 깊이 들어갈 수 있어요.", d: "to save more", k: ["상처 주변을 깨끗이 닦을게요", "통증이 심하면 말씀해 주세요"], a: "blindly", o: ["gently", "slowly", "carefully"]}
+  - {t: "자세 안내", i: bandage, w: "keep + 목적어 + still로 '그대로 움직이지 않게'를 부탁해요. 움직이면 이물이 더 깊이 들어가거나 영상이 흐려질 수 있어요.", d: "warm", k: ["지금 엑스레이실로 가실 거예요", "옷을 갈아입으셔야 해요"], a: "keep", o: ["wash", "rub", "cover"]}
+  - {t: "환자 호소", i: speech, w: "I think…로 확신이 없어도 느낀 대로 말하는 틀이에요. 환자가 느끼는 이물감은 영상으로 확인할 단서가 돼요.", d: "I hope", k: ["유리 조각이 손가락에 박힌 것 같아요", "엑스레이를 찍어야 하나요?"], a: "glass", o: ["plastic", "paper", "rubber"]}
+  - {t: "검사 설명", i: monitor, w: "will show exactly로 영상이 알려 줄 것을 단정적으로 말해 기다릴 이유를 알려요. 위치를 알면 필요한 곳만 열어 빼서 조직 손상이 적어요.", d: "will hide", k: ["엑스레이는 바로 찍을 수 있어요", "결과는 의사가 설명해 줄 거예요"], a: "show", o: ["hide", "forget", "dig"]}
+  - {t: "위험 설명", i: faceWorried, w: "could로 가능성만 말해 겁주지 않으면서 헤집지 않는 이유를 알려요. 상처 안에는 신경과 힘줄이 있어 보이지 않는 채로 찾으면 다칠 수 있어요.", d: "cool", k: ["이물은 엑스레이로 먼저 확인해요", "손을 심장보다 높이 올려 주세요"], a: "injure", o: ["heal", "warm", "comfort"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "이물 잔존 4문장 순서"
+    why: "먼저 부위를 가만히 두게 하고, 그 엑스레이가 위치를 보여 준다고 알리고, 그래서 헤집지 않는다고 밝힌 뒤, 헤집지 않으니 더 아프면 바로 말하라고 닫아요. 'That X-ray'·'Because of that'·'With no digging'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Please keep the area still, because I'm going to get an X-ray.", icon: bandage, ko: "엑스레이를 찍을 거니 부위를 가만히 두세요", note: "안정"}
+    - {en: "That X-ray will show exactly where the glass is.", icon: monitor, ko: "그 엑스레이가 유리가 어디 있는지 정확히 보여 줄 거예요", note: "설명"}
+    - {en: "Because of that, we won't dig around blindly and risk injuring a nerve.", icon: shield, ko: "그래서 무작정 헤집어 신경을 다치게 하지 않을 거예요", note: "안심"}
+    - {en: "With no digging, tell me right away if the area hurts more.", icon: bell, ko: "헤집지 않을 테니 부위가 더 아프면 바로 말씀해 주세요", note: "확인"}
+  ctx:
+    word: "X-ray"
+    ko: "엑스레이"
+    scenes:
+      2: "We need an X-ray to rule out a retained radiopaque foreign body."
+    fix: "A quick X-ray will show whether any glass is still inside."
+    why: "radiopaque foreign body는 의료진의 말이에요. 대부분의 유리는 엑스레이에 보이니, 환자에게는 '유리가 남았는지 사진으로 본다'고 말해요."

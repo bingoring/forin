@@ -1,0 +1,393 @@
+theme: er-stroke
+changes:
+- kind: word
+  id: w-hurt
+  fields: [en, ipa]
+  why: 활용형 헤드워드(hurts)를 원형으로
+- kind: word
+  id: w-miss
+  fields: [en, ipa]
+  why: 활용형 헤드워드(missed)를 원형으로
+- kind: word
+  id: w-respond
+  fields: [en, ipa]
+  why: 활용형 헤드워드(responding)를 원형으로
+- kind: word
+  id: w-alert
+  fields: [en, ipa]
+  why: 활용형 헤드워드(alerting)를 원형으로
+- kind: word
+  id: w-pass
+  fields: [en, ipa]
+  why: 활용형 헤드워드(passed)를 원형으로
+- kind: word
+  id: w-teeth
+  fields: [en, ipa]
+  why: 복수형 헤드워드(teeth)를 단수 원형으로
+- kind: word
+  id: w-spin
+  fields: [en, ipa, ko, example]
+  why: 활용형 헤드워드(spinning)를 원형으로, 환자 대사였던 예문을 간호사 문장으로
+- kind: word
+  id: w-double
+  fields: [example]
+  why: 환자 대사였던 예문을 간호사 문장으로
+- kind: word
+  id: w-thinner
+  fields: [en, ipa]
+  why: 다른 ER 주제(gi-bleed·geriatric 등)와 같이 헤드워드를 blood thinner로 — 문장은 늘 blood thinner
+- kind: word
+  id: w-call
+  fields: [ko]
+  why: 태그된 문장이 "call me if…"(연락) — 헤드워드 ko를 맞춤
+- {kind: word-add, id: w-exactly, why: '"exactly when/what time"은 LKW 확정의 핵심 부사 — 문장 4개에 이미 있다'}
+- {kind: word-add, id: w-protect, why: 쉬운 w-hand 등 대신 가르칠 말 — 기도·폐 보호 문장 4개에 이미 있다}
+- kind: sentence
+  situation: FAST 초기 선별
+  index: 2
+  fields: [words]
+  why: 태그 뺌 w-time
+- kind: sentence
+  situation: FAST 초기 선별
+  index: 6
+  fields: [words]
+  why: 태그 더함 w-exactly
+- kind: sentence
+  situation: 마지막 정상 시각 확정
+  index: 0
+  fields: [words]
+  why: 태그 뺌 w-see
+- kind: sentence
+  situation: 마지막 정상 시각 확정
+  index: 2
+  fields: [words]
+  why: 태그 뺌 w-night
+- kind: sentence
+  situation: 마지막 정상 시각 확정
+  index: 3
+  fields: [words]
+  why: 태그 뺌 w-time / 태그 더함 w-exactly
+- kind: sentence
+  situation: 마지막 정상 시각 확정
+  index: 4
+  fields: [words]
+  why: 태그 뺌 w-see
+- kind: sentence
+  situation: 즉시 혈당·활력 측정
+  index: 1
+  fields: [words]
+  why: 태그 뺌 w-eat, w-today
+- kind: sentence
+  situation: 두부 CT 준비 설명
+  index: 2
+  fields: [words]
+  why: 태그 뺌 w-head
+- kind: sentence
+  situation: 두부 CT 준비 설명
+  index: 5
+  fields: [words]
+  why: 태그 뺌 w-minute
+- kind: sentence
+  situation: 침상 삼킴 선별
+  index: 1
+  fields: [words]
+  why: 태그 뺌 w-eat
+- kind: sentence
+  situation: 침상 삼킴 선별
+  index: 5
+  fields: [words]
+  why: 태그 더함 w-protect
+- kind: sentence
+  situation: 침상 삼킴 선별
+  index: 6
+  fields: [words]
+  why: 태그 뺌 w-eat
+- kind: sentence
+  situation: NIHSS 협조 요청
+  index: 2
+  fields: [words]
+  why: 태그 뺌 w-name
+- kind: sentence
+  situation: NIHSS 협조 요청
+  index: 3
+  fields: [words]
+  why: 태그 뺌 w-hand
+- kind: sentence
+  situation: NIHSS 협조 요청
+  index: 6
+  fields: [words]
+  why: 태그 뺌 w-time
+- kind: sentence
+  situation: 전형 좌중대뇌동맥 폐색
+  index: 1
+  fields: [words]
+  why: 태그 뺌 w-hand
+- kind: sentence
+  situation: 후순환(소뇌) 뇌졸중
+  index: 0
+  fields: [words]
+  why: 태그 뺌 w-see
+- kind: sentence
+  situation: 후순환(소뇌) 뇌졸중
+  index: 2
+  fields: [words]
+  why: 태그 뺌 w-head
+- kind: sentence
+  situation: 후순환(소뇌) 뇌졸중
+  index: 3
+  fields: [en, ko, chunks, words]
+  why: 환자 대사("I'm seeing double…")가 간호사 문장에 섞여 있어 간호사 질문으로; 태그 더함 w-eye
+- kind: sentence
+  situation: 후순환(소뇌) 뇌졸중
+  index: 4
+  fields: [en, ko, chunks]
+  why: 환자 대사("The room feels like it's spinning…")가 간호사 문장에 섞여 있어 간호사 질문으로
+- kind: sentence
+  situation: 기상 시 발견(wake-up)
+  index: 0
+  fields: [words]
+  why: 태그 뺌 w-time, w-night
+- kind: sentence
+  situation: 기상 시 발견(wake-up)
+  index: 1
+  fields: [words]
+  why: 태그 뺌 w-night
+- kind: sentence
+  situation: 기상 시 발견(wake-up)
+  index: 2
+  fields: [words]
+  why: 태그 뺌 w-morning / 태그 더함 w-exactly
+- kind: sentence
+  situation: 기상 시 발견(wake-up)
+  index: 6
+  fields: [words]
+  why: 태그 뺌 w-night
+- kind: sentence
+  situation: tPA 금기 선별
+  index: 1
+  fields: [words]
+  why: 태그 뺌 w-blood
+- kind: sentence
+  situation: tPA 금기 선별
+  index: 3
+  fields: [words]
+  why: 태그 뺌 w-head
+- kind: sentence
+  situation: 실어증 환자 소통
+  index: 0
+  fields: [words]
+  why: 태그 뺌 w-yes, w-no
+- kind: sentence
+  situation: 실어증 환자 소통
+  index: 2
+  fields: [words]
+  why: 태그 뺌 w-hand
+- kind: sentence
+  situation: 실어증 환자 소통
+  index: 3
+  fields: [words, chunks]
+  why: 태그 뺌 w-yes, w-no / 청크가 구 경계를 끊음(', one at' / 'a time')
+- kind: sentence
+  situation: 실어증 환자 소통
+  index: 5
+  fields: [words]
+  why: 태그 뺌 w-time, w-no
+- kind: sentence
+  situation: 실어증 환자 소통
+  index: 6
+  fields: [words]
+  why: 태그 뺌 w-yes
+- kind: sentence
+  situation: 심방세동 병력 통합
+  index: 1
+  fields: [words]
+  why: 태그 뺌 w-blood
+- kind: sentence
+  situation: 항응고제 복용자
+  index: 0
+  fields: [words]
+  why: 태그 뺌 w-blood
+- kind: sentence
+  situation: 항응고제 복용자
+  index: 1
+  fields: [words]
+  why: 태그 더함 w-exactly
+- kind: sentence
+  situation: 항응고제 복용자
+  index: 6
+  fields: [words]
+  why: 태그 뺌 w-time
+- kind: sentence
+  situation: 언어장벽 뇌졸중
+  index: 0
+  fields: [words]
+  why: 태그 뺌 w-time
+- kind: sentence
+  situation: 언어장벽 뇌졸중
+  index: 5
+  fields: [words]
+  why: 태그 뺌 w-minute
+- kind: sentence
+  situation: 혈압 급상승 동반
+  index: 1
+  fields: [words]
+  why: 태그 뺌 w-low
+- kind: sentence
+  situation: 혈압 급상승 동반
+  index: 4
+  fields: [words]
+  why: 태그 뺌 w-minute
+- kind: sentence
+  situation: 출혈성 뇌졸중 급성 악화
+  index: 0
+  fields: [ko, words]
+  why: '"Stay with me"는 환자에게 "정신 놓지 마세요" — "함께 있어 주세요"는 역할이 뒤집힌 번역(keyPhrase라 ko만) / 태그 w-stay를 w-stay-with-me로 교체'
+- kind: sentence
+  situation: 출혈성 뇌졸중 급성 악화
+  index: 1
+  fields: [words]
+  why: 태그 더함 w-protect
+- kind: sentence
+  situation: 출혈성 뇌졸중 급성 악화
+  index: 3
+  fields: [words]
+  why: 태그 뺌 w-hand
+- kind: sentence
+  situation: 출혈성 뇌졸중 급성 악화
+  index: 4
+  fields: [words]
+  why: 태그 더함 w-protect
+- kind: sentence
+  situation: 출혈성 뇌졸중 급성 악화
+  index: 6
+  fields: [ko, words]
+  why: '"Stay with me"는 환자에게 "정신 놓지 마세요" / 태그 w-stay를 w-stay-with-me로 교체'
+- kind: sentence
+  situation: 대혈관 폐색 혈전제거술 이송
+  index: 2
+  fields: [words]
+  why: 태그 뺌 w-time
+- kind: sentence
+  situation: 대혈관 폐색 혈전제거술 이송
+  index: 5
+  fields: [words]
+  why: 태그 뺌 w-minute
+- kind: sentence
+  situation: tPA 후 신경학 악화
+  index: 2
+  fields: [words]
+  why: 태그 뺌 w-head
+- kind: sentence
+  situation: 뇌간 경색 급속 의식저하
+  index: 0
+  fields: [ko, words]
+  why: '"Stay with me"는 환자에게 "정신 놓지 마세요"(keyPhrase라 ko만) / 태그 w-stay를 w-stay-with-me로 교체'
+- kind: sentence
+  situation: 뇌간 경색 급속 의식저하
+  index: 1
+  fields: [words]
+  why: 태그 더함 w-protect
+- kind: sentence
+  situation: 악성 부종 감시
+  index: 4
+  fields: [words]
+  why: 태그 뺌 w-minute
+- kind: sentence
+  situation: 악성 부종 감시
+  index: 5
+  fields: [words, ko]
+  why: 태그 뺌 w-pressure / 압력 → 뇌압
+- {kind: word-remove, id: w-time, why: 공통 쉬운 단어 목록 — 어느 문장도 태그하지 않게 됐다}
+- {kind: word-remove, id: w-night, why: 공통 쉬운 단어 목록 — 어느 문장도 태그하지 않게 됐다}
+- {kind: word-remove, id: w-today, why: 공통 쉬운 단어 목록 — 어느 문장도 태그하지 않게 됐다}
+- {kind: word-remove, id: w-morning, why: 공통 쉬운 단어 목록 — 어느 문장도 태그하지 않게 됐다}
+- {kind: word-remove, id: w-minute, why: 공통 쉬운 단어 목록 — 어느 문장도 태그하지 않게 됐다}
+- {kind: word-remove, id: w-name, why: 공통 쉬운 단어 목록 — 어느 문장도 태그하지 않게 됐다}
+- {kind: word-remove, id: w-hand, why: 공통 쉬운 단어 목록 — 어느 문장도 태그하지 않게 됐다}
+- {kind: word-remove, id: w-head, why: 공통 쉬운 단어 목록 — 어느 문장도 태그하지 않게 됐다}
+- {kind: word-remove, id: w-see, why: 공통 쉬운 단어 목록 — 어느 문장도 태그하지 않게 됐다}
+- {kind: word-remove, id: w-yes, why: 너무 쉬움 — 간호사가 이미 아는 말 — 어느 문장도 태그하지 않게 됐다}
+- {kind: word-remove, id: w-no, why: 너무 쉬움 — 간호사가 이미 아는 말 — 어느 문장도 태그하지 않게 됐다}
+- {kind: word-remove, id: w-eat, why: 너무 쉬움 — 간호사가 이미 아는 말 — 어느 문장도 태그하지 않게 됐다}
+- kind: word
+  id: w-value
+  fields: [ko]
+  why: w-level(수치)과 ko가 같아 듣고 뜻 고르기 정답이 둘이 됨 — value는 검사값
+- {kind: word-add, id: w-stay-with-me, why: '"Stay with me"는 관용구(정신 놓지 마세요) — w-stay(머무르다) 카드가 오역을 가르쳐 분리. 문장 3개에 이미 있다'}
+- kind: sentence
+  situation: 즉시 혈당·활력 측정
+  index: 6
+  fields: [en, ko, chunks]
+  why: 삼킴 선별 전 환자에게 경구(주스) 안내 — 안전 문제, IV 당 투여로
+- kind: word
+  id: w-speech
+  fields: [ko]
+  why: '"speech sounds slurred"의 speech는 말투가 아니라 발화·발음'
+- kind: word
+  id: w-strain
+  fields: [ko]
+  why: strain은 긴장(tension)이 아니라 무리한 힘으로 인한 근육 부담(염좌) / 염좌는 sprain — 근육 좌상으로
+- kind: sentence
+  situation: 젊은 환자 경동맥 박리
+  index: 0
+  fields: [ko]
+  why: '"갑작스러운 긴장" → 무리하게 힘을 준 일'
+- kind: word
+  id: w-intubation
+  fields: [ipa]
+  why: 영국식 발음(tj) → 미국식
+- kind: sentence
+  situation: 젊은 환자 경동맥 박리
+  index: 1
+  fields: [ko]
+  why: 부자연스러운 한국어 어순
+- kind: sentence
+  situation: 출혈성 뇌졸중 급성 악화
+  index: 2
+  fields: [ko]
+  why: 한국어 세미콜론을 마침표로
+- kind: sentence
+  situation: 언어장벽 뇌졸중
+  index: 3
+  fields: [chunks]
+  why: 청크가 구 경계를 끊음(', one' / 'to five')
+- kind: sentence
+  situation: 언어장벽 뇌졸중
+  index: 1
+  fields: [en, chunks]
+  why: 'v46 검토 결정 11 예외: 대시 표기를 앞뒤 공백 대시로 통일(사용자 결정 2026-10-09)'
+- kind: sentence
+  situation: 출혈성 뇌졸중 급성 악화
+  index: 0
+  fields: [en, chunks]
+  why: 'v46 검토 결정 11 예외: 대시 표기를 앞뒤 공백 대시로 통일(사용자 결정 2026-10-09)'
+- kind: sentence
+  situation: 뇌간 경색 급속 의식저하
+  index: 0
+  fields: [en, chunks]
+  why: 'v46 검토 결정 11 예외: 대시 표기를 앞뒤 공백 대시로 통일(사용자 결정 2026-10-09)'
+- kind: sentence
+  situation: 악성 부종 감시
+  index: 1
+  fields: [en, chunks]
+  why: 'v46 검토 결정 11 예외: 대시 표기를 앞뒤 공백 대시로 통일(사용자 결정 2026-10-09)'
+- kind: word
+  id: w-stay-with-me
+  fields: [example]
+  why: 'v46 검토 결정 11 예외: 대시 표기를 앞뒤 공백 대시로 통일(사용자 결정 2026-10-09)'
+- kind: word
+  id: w-hear
+  fields: [example]
+  why: 'v46 검토 결정 11 예외: 대시 표기를 앞뒤 공백 대시로 통일(사용자 결정 2026-10-09)'
+- kind: word
+  id: w-voice
+  fields: [example]
+  why: 'v46 검토 결정 11 예외: 대시 표기를 앞뒤 공백 대시로 통일(사용자 결정 2026-10-09)'
+- kind: word
+  id: w-pupil
+  fields: [example]
+  why: 'v46 검토 결정 11 예외: 대시 표기를 앞뒤 공백 대시로 통일(사용자 결정 2026-10-09)'
+- kind: word
+  id: w-change
+  fields: [example]
+  why: 'v46 검토 결정 11 예외: 대시 표기를 앞뒤 공백 대시로 통일(사용자 결정 2026-10-09)'

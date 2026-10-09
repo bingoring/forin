@@ -61,6 +61,7 @@ export function curlSamples(width: number, slices = CURL_SLICES, samples = SAMPL
   for (let s = 0; s < samples; s += 1) {
     const p = s / (samples - 1);
     let edge = 0; // running left edge of the current slice, in screen points
+    const cols: number[] = [];
     for (let i = 0; i < slices; i += 1) {
       // u = 0 at the spine, 1 at the free edge. The free edge leads.
       const u = slices === 1 ? 1 : i / (slices - 1);
@@ -70,20 +71,44 @@ export function curlSamples(width: number, slices = CURL_SLICES, samples = SAMPL
       const scale = Math.max(0, Math.cos(theta));
       // A scaleX applies about the view's centre, so a slice pinned at `edge` would drift
       // inward by half of what it lost. Compensated here, in the sample.
-      xs[i].push(edge - (w * (1 - scale)) / 2 - i * w);
+      cols.push(edge - (w * (1 - scale)) / 2 - i * w);
       sx[i].push(scale);
       edge += w * scale;
     }
+    // The collapsed sheet walks off the left edge over the last stretch of the turn.
+    // Without this the page stops edge-on and simply vanishes as a band still standing at
+    // the spine — about a centimetre of paper blinking out of existence. `edge` is exactly
+    // the band's remaining width, so shifting by it at p = 1 puts the whole thing just
+    // past the left edge, which is where a turned page goes.
+    const off = -edge * exitRamp(p);
+    for (let i = 0; i < slices; i += 1) xs[i].push(cols[i] + off);
   }
   return { w, xs, sx, samples };
+}
+
+/** 0 until the sheet is nearly edge-on, then 0→1. Starting it earlier would slide the page
+ *  sideways while it is still wide, which reads as the sheet being dragged rather than
+ *  turned. */
+export function exitRamp(p: number): number {
+  const START = 0.7;
+  if (p <= START) return 0;
+  return (p - START) / (1 - START);
 }
 
 /**
  * @param dir 'out' turns the page away (forward), 'in' brings one back over the top
  *            (backward, and the passport closing).
  */
-export function PageCurl({ dir, onDone, children }: {
+/** 넘김 기본 시간. 핸드오프의 `nb-hinge` 1.25s / `nb-hinge-in` 1.1s 그대로다. */
+export const CURL_MS = { out: 1250, in: 1100 } as const;
+
+export function PageCurl({ dir, durationMs, onDone, children }: {
   dir: 'out' | 'in';
+  /** 기본값을 덮어쓴다. 핸드오프 v43이 이 인자를 낸 이유는 하나다 — 여정의 바인더
+   *  표지는 온보딩 여권과 같은 넘김을 쓰되 닫을 때만 0.8초로 빠르다. 여권은 한 번
+   *  보는 연출이지만 바인더는 부서를 옮길 때마다 지나가는 길목이라, 같은 속도면
+   *  돌아오는 길이 길게 느껴진다. */
+  durationMs?: number;
   onDone?: () => void;
   children: React.ReactNode;
 }) {
@@ -94,7 +119,7 @@ export function PageCurl({ dir, onDone, children }: {
   useEffect(() => {
     const a = Animated.timing(t, {
       toValue: dir === 'out' ? 1 : 0,
-      duration: dir === 'out' ? 1250 : 1100,
+      duration: durationMs ?? CURL_MS[dir],
       easing: dir === 'out' ? Easing.bezier(0.45, 0.05, 0.28, 0.98) : Easing.bezier(0.3, 0.6, 0.3, 1),
       useNativeDriver: true,
     });
@@ -102,7 +127,7 @@ export function PageCurl({ dir, onDone, children }: {
     return () => a.stop();
     // onDone is a fresh closure every render; listing it would restart the turn mid-flight.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dir, t]);
+  }, [dir, durationMs, t]);
 
   const input = useMemo(
     () => Array.from({ length: geo.samples }, (_, s) => s / (geo.samples - 1)),

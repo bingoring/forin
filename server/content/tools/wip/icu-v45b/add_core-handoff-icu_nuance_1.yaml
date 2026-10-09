@@ -1,0 +1,225 @@
+# core-handoff-icu v45 뉘앙스 (1/2) — 상황 제목: 문항 목록
+SBAR 구조 인계 기초:
+  - kind: pair
+    words: [w-situation, w-background, w-assessment, w-recommendation]
+    pairs:
+      - ["Situation", "sixty-year-old with sepsis, day two"]
+      - ["Background", "no prior ICU admissions"]
+      - ["Assessment", "calm and cooperative"]
+      - ["Recommendation", "keep the drip running"]
+    decoys: ["thanks for listening"]
+    why: "S는 지금 벌어진 문제, B는 병력·입원 경위, A는 내가 본 환자 상태, R은 인수자에게 바라는 조치예요. 칸이 정해져 있어서 듣는 쪽이 빠진 칸을 바로 알아챕니다."
+  - kind: swap
+    words: [w-recommendation]
+    who: "인수 간호사에게 · 권고(R)"
+    icon: speech
+    before: ["", "Maybe we could keep", " the drip running."]
+    options: ["I recommend we keep", "Maybe we could keep", "You have to keep"]
+    answer: "I recommend we keep"
+    notes:
+      "I recommend we keep": "SBAR의 R답게 무엇을 바라는지 분명히 말한다."
+      "Maybe we could keep": "망설이는 말로 들려 인수자가 중요도를 낮게 받아들일 수 있다."
+      "You have to keep": "동료에게 명령처럼 들린다."
+    why: "R은 부탁이 아니라 분명한 권고로 말해요. 흐리게 말하면 인계받는 쪽이 얼마나 중요한지 놓칩니다."
+
+활력·주입약 인계:
+  - kind: slider
+    words: [w-pressure, w-stable]
+    cue: "Nurse: \"MAP's been sixty-six, sixty-eight, sixty-five for the last two hours.\""
+    scale: [stable, labile, crashing]
+    answerAt: 0
+    why: "두 시간 내내 65~68 사이면 stable이에요. 크게 오르내리면 labile, 몇 분 만에 무너지면 crashing — 추이를 한 낱말로 넘기면 인수자가 바로 감을 잡아요."
+    example: "Her pressure's been stable for the last two hours."
+    exKo: "혈압은 지난 두 시간 동안 안정적이었습니다."
+  - kind: context
+    words: [w-norepinephrine, w-titrate, w-map]
+    scenes:
+      - {who: 동료 인계, icon: speech, en: "She's on norepi at eight, titrating to a MAP of sixty-five.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Norepinephrine at 8, titrate to MAP ≥ 65.", ok: true}
+      - {who: 보호자에게, icon: me, en: "She's on norepi at eight, titrating to a MAP of sixty-five.", ok: false, fix: "She's on a medicine that keeps her blood pressure up, and we adjust it minute by minute."}
+    why: "약칭(norepi)·목표 수치·'titrate'는 의료진끼리의 말이에요. 가족에게는 그 약이 무엇을 위한 것인지로 풀어 말해요."
+
+라인·장치 목록 인계:
+  - kind: pair
+    words: [w-central, w-radial, w-ng, w-foley]
+    pairs:
+      - ["right IJ", "central line"]
+      - ["left radial", "art line"]
+      - ["the NG", "to low suction"]
+      - ["the Foley", "draining clear urine"]
+    decoys: ["on room air"]
+    why: "IJ는 목의 큰 정맥이라 중심정맥관, radial은 손목 동맥이라 동맥관이에요. NG는 흡인에, Foley는 소변 배액에 연결해요."
+  - kind: context
+    words: [w-dressing, w-change, w-central]
+    scenes:
+      - {who: 동료 인계, icon: speech, en: "The central line dressing was changed this morning.", ok: true}
+      - {who: 차트 기록, icon: board, en: "CVC dressing changed this AM, dated and intact.", ok: true}
+      - {who: 보호자에게, icon: me, en: "Her central line dressing was changed this morning.", ok: false, fix: "We put a fresh cover over the IV in her neck this morning."}
+    why: "'central line dressing'은 의료진 말이에요. 가족에게는 무엇을 했는지(목에 있는 주사 자리의 덮개를 새로 갈았다)로 풀어 말해요."
+
+간호 문제·계획 인계:
+  - kind: slider
+    words: [w-anxiety]
+    cue: "Nurse: \"She gets a little nervous about the weaning trial, but she settles once we explain each step.\""
+    scale: [uneasy, anxious, panicking]
+    answerAt: 0
+    why: "설명하면 가라앉는 정도는 uneasy, 계속 불안해서 이탈 시도를 방해하면 anxious, 숨을 몰아쉬며 튜브를 잡아당기려 하면 panicking이에요. 정도를 정확히 넘겨야 인수자가 진정·설명 계획을 세워요."
+    example: "Her biggest issue tonight is anxiety around the weaning trial."
+    exKo: "오늘 밤 가장 큰 문제는 이탈 시도에 대한 불안입니다."
+  - kind: pair
+    words: [w-advance, w-repeat, w-wean]
+    pairs:
+      - ["advance", "her diet"]
+      - ["repeat", "the lactate"]
+      - ["wean", "the vent"]
+    decoys: ["the family"]
+    why: "advance는 식이·급식을 한 단계 올릴 때, repeat는 같은 검사를 다시 할 때, wean은 호흡기·약을 조금씩 줄여 뗄 때 써요."
+  - kind: context
+    words: [w-plan, w-advance, w-tolerate]
+    scenes:
+      - {who: 동료 인계, icon: speech, en: "The plan is to advance her diet if she tolerates it.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Plan: advance diet as tolerated.", ok: true}
+      - {who: 보호자에게, icon: me, en: "The plan is to advance her diet as tolerated.", ok: false, fix: "If she handles it well, we'll let her eat a little more today."}
+    why: "'advance … as tolerated'는 차트·인계 말이에요. 가족에게는 '잘 드시면 조금씩 늘린다'처럼 풀어 말해요."
+
+알레르기·주의사항 전달:
+  - kind: pair
+    words: [w-allergic, w-precaution, w-mrsa, w-swab, w-negative]
+    pairs:
+      - ["allergic", "to penicillin"]
+      - ["on contact precautions", "for MRSA"]
+      - ["the swab came back", "negative"]
+    decoys: ["a fall risk"]
+    why: "allergic은 'to'와 함께, 격리 이유는 'for MRSA'로, 검사 결과는 'came back negative/positive'로 말해요."
+  - kind: swap
+    words: [w-allergic, w-anaphylaxis, w-cause]
+    who: "인수 간호사에게 · 알레르기 반응"
+    icon: speech
+    before: ["She's allergic to penicillin — ", "it gives her a little rash", "."]
+    options: ["it causes anaphylaxis", "it gives her a little rash", "she doesn't like it"]
+    answer: "it causes anaphylaxis"
+    notes:
+      "it causes anaphylaxis": "약 이름에 반응의 정도까지 붙여 넘긴다 — 인수자가 위험을 바로 안다."
+      "it gives her a little rash": "실제 반응보다 가볍게 전해 위험을 낮춰 듣게 만든다."
+      "she doesn't like it": "알레르기가 아니라 기호처럼 들린다."
+    why: "알레르기는 약 이름만이 아니라 어떤 반응이었는지까지 함께 넘겨요. 반응이 아나필락시스였다면 그 말을 그대로 써야 합니다."
+
+인계 중 확인질문 응대:
+  - kind: slider
+    words: [w-sure, w-read, w-back]
+    cue: "Nurse: \"You read it back, and I checked the pump myself — twelve units per kilo per hour.\""
+    scale: ["I think", "I'm pretty sure", "I'm sure"]
+    answerAt: 2
+    why: "되읽기와 펌프 확인까지 끝났으면 'I'm sure'라고 말할 수 있어요. 확인 전이라면 'I think'라고 말하고 직접 확인하는 것이 맞아요."
+    example: "Read it back to me so we're both sure."
+    exKo: "둘 다 확실하도록 저에게 되읽어 주세요."
+  - kind: swap
+    words: [w-sorry, w-say, w-again, w-catch]
+    who: "인계하는 동료에게 · 못 들은 수치"
+    icon: speech
+    before: ["", "What?", " I didn't catch the rate."]
+    options: ["Sorry, could you say that again?", "What?", "You're talking too fast."]
+    answer: "Sorry, could you say that again?"
+    notes:
+      "Sorry, could you say that again?": "정중하게 한 번 더 청한다 — 못 들은 것을 내 쪽 일로 말한다."
+      "What?": "짧고 퉁명스럽게 들린다."
+      "You're talking too fast.": "상대 탓으로 들려 인계 분위기를 굳힌다."
+    why: "수치를 놓쳤을 때는 짐작으로 채우지 말고 정중하게 한 번 더 청해요."
+
+ROSC 후 환자 인계:
+  - kind: pair
+    words: [w-down, w-lead, w-neuro, w-check]
+    pairs:
+      - ["down", "time"]
+      - ["twelve-lead", "ECG"]
+      - ["neuro", "checks"]
+    decoys: ["arrest"]
+    why: "down time은 심정지부터 자발순환이 돌아올 때까지의 시간, twelve-lead ECG는 12유도 심전도, neuro checks는 동공·의식 확인이에요. 모두 한 덩어리로 써요."
+  - kind: context
+    words: [w-arrest, w-intubate, w-ttm]
+    scenes:
+      - {who: 동료 인계, icon: speech, en: "He's post-arrest, intubated, and we're starting TTM.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Post-arrest, intubated, TTM initiated.", ok: true}
+      - {who: 보호자에게, icon: me, en: "He's post-arrest, intubated, and we're starting TTM.", ok: false, fix: "His heart stopped and we got it beating again. He has a breathing tube, and we're carefully controlling his body temperature."}
+    why: "'post-arrest'·'TTM'은 의료진 약어예요. 가족에게는 무슨 일이 있었고 지금 무엇을 하는지를 풀어서 말해요."
+
+OR에서 ICU 수술후 인계:
+  - kind: pair
+    words: [w-propofol, w-drip, w-confirm, w-anesthesiologist, w-read, w-back]
+    pairs:
+      - ["a small propofol", "drip"]
+      - ["confirm with", "the anesthesiologist"]
+      - ["read back", "the lines"]
+    decoys: ["settled"]
+    why: "소량 지속 주입은 'a small … drip', 수술 중 정보는 마취과 의사에게 'confirm with', 라인은 되읽어 'read back'으로 확인해요."
+  - kind: context
+    words: [w-estimate, w-blood, w-loss]
+    scenes:
+      - {who: 마취과 인계, icon: speech, en: "Estimated blood loss was about eight hundred.", ok: true}
+      - {who: 차트 기록, icon: board, en: "EBL 800 mL.", ok: true}
+      - {who: 보호자에게, icon: me, en: "His estimated blood loss was about eight hundred.", ok: false, fix: "He lost some blood during surgery, and we're keeping a close eye on it."}
+    why: "'estimated blood loss'와 숫자만 던지면 가족은 많은지 적은지 알 수 없어요. 의료진끼리는 수치로, 가족에게는 무엇을 하고 있는지로 말해요."
+
+cath lab에서 ICU 인계:
+  - kind: pair
+    words: [w-stay, w-flat, w-hold, w-parameter, w-access, w-site]
+    pairs:
+      - ["stay", "flat"]
+      - ["hold", "parameters"]
+      - ["access", "site"]
+    decoys: ["hematoma"]
+    why: "시술 뒤 'stay flat'(누운 자세 유지), 'hold parameters'(약을 멈출 기준), 'access site'(천자 부위)는 한 덩어리로 써요."
+  - kind: context
+    words: [w-access, w-site, w-hematoma, w-clean, w-dry, w-intact]
+    scenes:
+      - {who: 동료 인계, icon: speech, en: "The access site is clean, dry, and intact with no hematoma.", ok: true}
+      - {who: 차트 기록, icon: board, en: "R femoral site C/D/I, no hematoma.", ok: true}
+      - {who: 환자에게, icon: me, en: "Your access site is C/D/I with no hematoma.", ok: false, fix: "The spot where they went in looks good — no bleeding and no swelling."}
+    why: "C/D/I·hematoma는 의료진 말이에요. 환자에게는 '들어간 자리', '피 나거나 붓지 않음'으로 풀어 말해요."
+
+ICU에서 병동 전동 인계:
+  - kind: pair
+    words: [w-assistance, w-stand, w-wean, w-nasal, w-cannula, w-fall, w-risk]
+    pairs:
+      - ["needs assistance", "to stand"]
+      - ["weaned to", "nasal cannula"]
+      - ["fall", "risk"]
+    decoys: ["pressors"]
+    why: "부축이 필요하면 'needs assistance to stand', 산소를 줄인 단계는 'weaned to nasal cannula', 낙상 위험은 'fall risk'로 말해요."
+  - kind: context
+    words: [w-orient, w-assistance, w-stand]
+    scenes:
+      - {who: 병동 간호사에게, icon: speech, en: "She's oriented and moving well, but still needs assistance to stand.", ok: true}
+      - {who: 차트 기록, icon: board, en: "A&O x4, OOB with assist x1.", ok: true}
+      - {who: 환자에게, icon: me, en: "You're oriented, but you need assistance to stand.", ok: false, fix: "You're doing great — just call us before you get up, so someone can help you stand."}
+    why: "'oriented'·'assist x1'은 의료진 말이에요. 환자에게는 무엇을 해 달라는지(일어나기 전에 부르기)로 말해야 낙상을 막아요."
+
+night shift 인계 우선순위:
+  - kind: slider
+    words: [w-pressure, w-drop]
+    cue: "Nurse: \"His MAP went from seventy to sixty-six over the last hour.\""
+    scale: [dipping, dropping, crashing]
+    answerAt: 0
+    why: "한 시간에 몇 포인트 내려간 정도는 dipping, 꾸준히 내려가는 중이면 dropping, 몇 분 만에 무너지면 crashing이에요. 같은 '떨어진다'도 속도가 달라요."
+    example: "If his pressure drops, page the resident early."
+    exKo: "혈압이 떨어지면 일찍 레지던트를 호출해 주세요."
+  - kind: pair
+    words: [w-page, w-resident, w-titrate, w-overnight, w-hourly, w-neuro]
+    pairs:
+      - ["page", "the resident"]
+      - ["titrated", "overnight"]
+      - ["two-hourly", "neuro checks"]
+    decoys: ["the code cart"]
+    why: "의사를 부를 때는 'page the resident', 밤새 조절할 약은 'titrated overnight', 확인 간격은 'two-hourly neuro checks'처럼 말해요."
+  - kind: swap
+    words: [w-page, w-early, w-resident]
+    who: "야간 인수 간호사에게 · 호출 기준"
+    icon: speech
+    before: ["If his pressure drops, ", "you can probably wait and see", "."]
+    options: ["page the resident early", "you can probably wait and see", "call a code"]
+    answer: "page the resident early"
+    notes:
+      "page the resident early": "악화 초기에 담당의를 부르게 한다 — 조기 대응."
+      "you can probably wait and see": "이미 흔들리는 환자를 지켜보기만 하라는 말이라 대응이 늦어진다."
+      "call a code": "혈압 하강만으로 코드는 과하다 — 심정지나 무반응일 때 부른다."
+    why: "불안정한 환자를 넘길 때는 언제 누구를 부를지까지 넘겨요. 기준선이 흔들리면 일찍 부르는 것이 기본이에요."

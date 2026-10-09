@@ -1,0 +1,93 @@
+- title: 급성 섬망 감별
+  s:
+  - {t: 재지남, i: hospital, w: "지금 있는 곳과 안전하다는 사실을 짧은 두 문장으로 알려 줘요. 혼란스러운 환자에게는 긴 설명보다 어디인지, 안전한지부터 알려 주는 것이 도움이 돼요.", d: "at the airport", k: ["지금 몇 시인지 아시겠어요?", "성함이 어떻게 되세요?"], a: "hospital", o: ["parking lot", "elevator", "cafeteria"]}
+  - {t: 이유 설명, i: bulb, w: "may be new로 새로 생긴 변화일 수 있다고 단정하지 않고 알려요. 섬망은 급성으로 생기는 혼란이라 원인을 찾고 있다고 말해 주면 환자가 불안을 덜 수 있어요.", d: "in the morning", k: ["이 혼란이 약 때문일 수도 있어요", "가족분께 연락드릴까요?"], a: "new", o: ["rare", "familiar", "strange"]}
+  - {t: 곁에 있기, i: handshake2, w: "stay close는 곁을 떠나지 않겠다는 약속이에요. 섬망 환자는 낯선 환경에서 두려움이 커서 가까이 있어 주는 것만으로도 안정에 도움이 돼요.", d: "with your daughter", k: ["가족분께 전화해 드릴까요?", "물을 좀 드릴까요?"], a: "calmer", o: ["warmer", "stronger", "cleaner"]}
+  - {t: 지남력 확인, i: compass, w: "where you are로 장소 지남력을 한 번에 하나씩 짧게 물어요. right now는 평소가 아니라 지금 상태를 보겠다는 뜻이에요.", d: "last night", k: ["여기가 어디인지 제가 알려 드릴까요?", "오늘이 며칠인지 아시겠어요?"], a: "where", o: ["who", "when", "how"]}
+  - {t: 공감, i: faceWorried, w: "I know로 환자의 감정을 먼저 인정하고, but you're not alone으로 혼자가 아님을 알려요. 섬망의 두려움은 실제로 느끼는 감정이라 부정하지 않아요.", d: "in time", k: ["가족분께 연락해 둘게요", "물이나 담요가 필요하세요?"], a: "frightening", o: ["tiring", "noisy", "crowded"]}
+  - {t: 환경 조성, i: bulb, w: "Let's keep으로 환자와 함께 환경을 정돈한다는 뜻을 담아요. 소음과 자극을 줄이는 것은 섬망 환자를 위한 비약물 간호의 기본이에요.", d: "for the visitors", k: ["불을 켜 둘까요?", "방을 옮겨 드릴까요?"], a: "quiet", o: ["crowded", "busy", "messy"]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 혼란 환자 응대 4문장 순서
+    why: 병원이고 안전하다는 재지남이 먼저, 그곳에 있는 두려움을 인정하고, 방을 조용히 하고, 곁에 머뭅니다. 'being here'·'that'·'this quiet room'이 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - {en: "You're in the hospital, and you're safe with me.", icon: hospital, ko: "지금 병원에 계시고 저와 함께 안전하세요", note: 재지남}
+    - {en: "I know being here feels frightening, but you're not alone.", icon: faceWorried, ko: "여기 계신 게 무섭게 느껴지시는 거 알아요, 하지만 혼자가 아니세요", note: 공감}
+    - {en: "To help with that, let's keep the room quiet and calm for you.", icon: bulb, ko: "그걸 덜어 드리려고 방을 조용하고 차분하게 할게요", note: 환경}
+    - {en: "I'll stay close in this quiet room and help you feel calmer.", icon: handshake2, ko: "이 조용한 방에서 곁에 있으면서 편안해지시도록 도울게요", note: 곁에}
+- title: 비전형 감염 표현
+  s:
+  - {t: 비전형 설명, i: bulb, w: "In older adults로 노인에게 흔한 양상이라고 범위를 밝히고, show up as로 증상이 어떤 모습으로 드러나는지 말해요. 노인은 감염이 있어도 열이 없거나 낮고 혼란으로만 나타나기도 해요.", d: "in the lungs", k: ["열이 언제부터 있었나요?", "최근에 병원에 다녀오셨나요?"], a: "fever", o: ["rash", "itching", "swelling"]}
+  - {t: 증상 문진, i: stetho, w: "소변과 호흡은 노인 감염에서 흔한 두 부위인 요로와 폐의 증상을 짚는 질문이에요. any changes로 넓게 열어 두면 가족이 눈치채지 못한 변화도 떠올려요.", d: "in the morning", k: ["최근에 새로 먹기 시작한 약이 있나요?", "식사량은 어땠나요?"], a: "urination", o: ["hearing", "vision", "balance"]}
+  - {t: 검사 안내, i: lab, w: "hidden infection으로 겉으로 열이 없어도 감염이 숨어 있을 수 있다고 알려요. run tests는 검사를 돌린다는 일상적인 말이에요.", d: "for the doctor", k: ["가족분께 결과를 알려 드릴게요", "소변을 조금 받아 주세요"], a: "tests", o: ["errands", "laps", "drills"]}
+  - {t: 사실 설명, i: bulb, w: "don't always는 열이 안 나는 경우가 있다는 부분 부정이에요. 그래서 열이 없어도 안심하지 말라는 메시지가 되고, even with로 심한 감염에서도 그렇다고 강조해요.", d: "at the clinic", k: ["열은 몇 도까지 올랐나요?", "해열제를 드셨나요?"], a: "Older", o: ["Younger", "Pregnant", "Sleepy"]}
+  - {t: 섭취량, i: coffee, w: "eating or drinking less than usual로 먹는 양과 마시는 양을 함께 묻고 평소와 비교하게 해요. 노인은 감염이 있으면 식욕과 수분 섭취가 먼저 줄기도 해요.", d: "before dinner", k: ["평소에 소변 색이 진한 편인가요?", "요즘 체중이 줄었나요?"], a: "eating", o: ["walking", "talking", "sleeping"]}
+  - {t: 신체 검사, i: stetho, w: "소변과 폐는 노인 감염의 대표적인 원인 부위라 살펴봐요. check는 검사하는 것, listen to는 청진기로 듣는 것을 구분해 말해요.", d: "in the lab", k: ["폐 사진을 한 장 찍을게요", "혈압을 한 번 더 잴게요"], a: "lungs", o: ["ankles", "shoulders", "teeth"]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 비전형 감염 확인 4문장 순서
+    why: 소변·호흡 변화를 묻고, 답과 상관없이 소변과 폐를 살피고, 둘에 검사를 돌리고, 열이 없을 수 있는 이유를 설명합니다. 'Whatever the answer'·'both'·'That's because'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - {en: "Has she had any changes in urination or breathing?", icon: stetho, ko: "소변이나 호흡에 변화가 있으셨나요?", note: 문진}
+    - {en: "Whatever the answer, we'll check her urine and listen to her lungs.", icon: magnify, ko: "답이 어떻든 소변을 검사하고 폐 소리를 들어볼게요", note: 진찰}
+    - {en: "We'll run tests on both to find a hidden infection.", icon: lab, ko: "둘 다 검사를 진행해 숨은 감염을 찾을게요", note: 검사}
+    - {en: "That's because older patients don't always get a fever, even with a serious infection.", icon: bulb, ko: "노인은 심한 감염에도 열이 늘 나는 건 아니기 때문이에요", note: 이유}
+  sw: {ko: "고령자분들은 감염이 열이 아니라 혼란으로 나타날 수 있어요."}
+- title: 노인 흉통 비전형
+  s:
+  - {t: 심각성 안내, i: shield, w: "Even without으로 날카로운 통증이 없어도 가볍게 보지 않는다고 알려요. 노인은 심근경색이 흉통 없이 오기도 해서 통증이 약해도 심각하게 다뤄요.", d: "to your heart", k: ["숨이 차시면 바로 말씀해 주세요", "어느 쪽 가슴이 아프신가요?"], a: "sharp", o: ["round", "flat", "rough"]}
+  - {t: 증상 문진, i: stetho, w: "more … than usual로 평소와 비교해 묻고, tired와 short of breath를 함께 열어요. 노인의 심장 문제는 피로나 숨참으로 나타나기도 해요.", d: "after meals", k: ["누우면 숨이 더 차시나요?", "평소보다 소변이 줄었나요?"], a: "tired", o: ["bored", "chatty", "cheerful"]}
+  - {t: 검사 안내, i: stetho, w: "to be safe로 검사의 이유를 짧게 알려 환자가 놀라지 않게 해요. 증상이 약해도 심장은 확인해 두는 것이 안전해요.", d: "at the desk", k: ["혈압을 재 볼게요", "약을 먼저 드릴게요"], a: "heart", o: ["ankle", "wrist", "throat"]}
+  - {t: 이유 설명, i: bulb, w: "instead of pain으로 통증 대신 다른 느낌이 올 수 있다고 알려 주면 환자가 아프진 않다고 넘기지 않아요. your age를 넣어 환자 자신에게 해당하는 말로 만들어요.", d: "in your sleep", k: ["통증이 팔이나 턱으로 퍼지나요?", "가슴이 답답할 때 약을 드시나요?"], a: "pressure", o: ["hunger", "thirst", "cravings"]}
+  - {t: 동반 증상, i: stetho, w: "nausea·sweating·dizziness처럼 심장 증상과 함께 오는 증상을 나열해 물어요. 메스꺼움이나 식은땀은 환자가 흉부 증상과 연결짓지 못하는 경우가 많아 하나씩 짚어요.", d: "after eating", k: ["가슴 통증이 있을 때 숨이 차시나요?", "이런 증상이 전에도 있었나요?"], a: "sweating", o: ["itching", "hiccups", "snoring"]}
+  - {t: 심각성 안내, i: shield, w: "chest symptoms로 통증뿐 아니라 압박감이나 숨참까지 포함해요. 노인은 심근경색이 흔한 통증 없이 올 수 있어 증상의 범위를 넓게 잡아요.", d: "in the morning", k: ["약을 드신 뒤 증상이 나아지셨나요?", "가슴 통증이 전에도 있었나요?"], a: "older", o: ["pregnant", "sleeping", "talkative"]}
+  - {t: 검사 안내, i: monitor, w: "EKG와 blood tests를 함께 말해 무엇을 할지 구체적으로 알려요. 심전도로 심장의 전기 신호를, 혈액 검사로 심장 손상의 표지를 확인해요.", d: "for the insurance", k: ["가슴 사진을 찍을게요", "심장 초음파도 볼게요"], a: "blood", o: ["urine", "stool", "saliva"]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 노인 흉부 증상 4문장 순서
+    why: 증상을 묻고, 동반 증상을 묻고, 통증이 약해도 심각하게 본다고 알리고, 그래서 심전도와 혈액 검사를 한다고 설명합니다. 'with any of that'·'That's why'·'Because of that'이 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - {en: "Do you feel more tired or short of breath than usual?", icon: stetho, ko: "평소보다 더 피곤하거나 숨이 차시나요?", note: 증상}
+    - {en: "Have you had any nausea, sweating, or dizziness along with any of that?", icon: faceWorried, ko: "그와 함께 메스꺼움, 식은땀, 어지러움이 있으셨나요?", note: 동반}
+    - {en: "That's why we take this seriously, even without sharp pain.", icon: shield, ko: "그래서 날카로운 통증이 없어도 저희는 진지하게 받아들여요", note: 이유}
+    - {en: "Because of that, we'll do an EKG and some blood tests on your heart.", icon: monitor, ko: "그래서 심전도와 혈액 검사로 심장을 확인할게요", note: 검사}
+  sw: {ko: "지금 가슴이 아프거나 눌리는 느낌이 있으세요?"}
+- title: 다약제 상호작용 부작용
+  s:
+  - {t: 시작 시점, i: calendar, w: "after the new medication으로 새 약과의 시간 관계를 짚어요. 약을 시작한 뒤 증상이 생겼는지가 약물 부작용을 의심하는 첫 단서예요.", d: "in the car", k: ["어지러울 때 혈압을 재 보셨나요?", "그 약은 누가 처방했나요?"], a: "new", o: ["expired", "extra", "daily"]}
+  - {t: 원인 설명, i: pill, w: "can interact로 약끼리 서로 영향을 줄 수 있다고 단정하지 않고 가능성으로 말해요. 약이 많은 노인에게 부작용이 흔해서 약부터 의심해 보는 것이 중요해요.", d: "with food", k: ["약을 새로 바꾸신 적이 있나요?", "약은 식후에 드시나요?"], a: "interact", o: ["dissolve", "shrink", "evaporate"]}
+  - {t: 약 검토, i: pill, w: "everything you take로 처방약뿐 아니라 비처방약과 보충제까지 모두 포함해요. 원인을 찾는다는 목적을 붙여 검토가 비난이 아니라 안전을 위한 것임을 알려요.", d: "at the pharmacy", k: ["약 이름을 적어 주세요", "약은 제가 대신 챙겨 드릴게요"], a: "review", o: ["repackage", "rename", "restock"]}
+  - {t: 변경 확인, i: pencil, w: "added or changed로 새로 추가한 것과 바뀐 것을 함께 물어요. anyone이라 의사·약사·가족 누구든 포함해서 환자가 모르는 변경도 놓치지 않아요.", d: "by mistake", k: ["약 때문에 속이 쓰리신가요?", "약을 드시는 시간이 일정한가요?"], a: "added", o: ["doubled", "hidden", "shared"]}
+  - {t: 원인 설명, i: faceWorried, w: "may be로 약 조합이 원인이라고 단정하지 않고 가능성으로 말해요. unsteady on your feet은 걸을 때 휘청거린다는 일상어라 환자가 자기 증상으로 알아들어요.", d: "in your sleep", k: ["어지러울 땐 천천히 일어나세요", "보행기를 가져다 드릴까요?"], a: "unsteady", o: ["unhappy", "unlucky", "unusual"]}
+  - {t: 계획 안내, i: redo, w: "may lower or stop으로 의사가 정할 수 있는 선택지를 열어 둬요. one of these로 모든 약이 아니라 일부만 조정할 수 있다고 알려 불안을 줄여요.", d: "with water", k: ["새 약은 의사와 상의해서 정해요", "약 때문에 다른 병원에 가신 적이 있나요?"], a: "lower", o: ["refill", "repeat", "reorder"]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 약 부작용 설명 4문장 순서
+    why: 새 약 뒤 어지럼의 시작 시점을 묻고, 약끼리 영향을 줄 수 있다고 설명하고, 원인을 찾으려 약을 검토하고, 일부를 줄이거나 중단할 수 있다고 알립니다. 'these symptoms'·'the cause'·'these medicines'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - {en: "When did the dizziness start after the new medication?", icon: calendar, ko: "새 약을 드신 뒤 어지럼증이 언제 시작됐나요?", note: 시점}
+    - {en: "Some medicines can interact and cause these symptoms.", icon: pill, ko: "일부 약은 서로 영향을 주어 이런 증상을 일으킬 수 있어요", note: 설명}
+    - {en: "We'll review everything you take to find the cause.", icon: magnify, ko: "원인을 찾기 위해 복용하시는 모든 약을 검토할게요", note: 검토}
+    - {en: "We may lower or stop one of these medicines.", icon: redo, ko: "이 약들 중 하나를 줄이거나 중단할 수도 있어요", note: 조정}
+- title: 요양시설 이송 정보 부족
+  s:
+  - {t: 기저 상태, i: board, w: "baseline은 평소 상태를 가리키는 의료진의 말이에요. what happened today를 함께 물어 평소와 오늘의 차이를 한 번에 파악해요. 이송 직원처럼 의료 용어를 아는 상대에게 쓰는 말이에요.", d: "in the van", k: ["어르신 보험 정보를 아시나요?", "시설에서 몇 시에 출발했나요?"], a: "baseline", o: ["address", "insurance", "birthday"]}
+  - {t: 시설 연락, i: speaker, w: "help me reach는 직접 연락하라는 지시가 아니라 도움을 청하는 부탁이에요. her records는 시설이 가진 투약과 병력 기록을 가리켜요.", d: "from the van", k: ["시설 이름이 어떻게 되나요?", "응급실 번호를 알려 드릴까요?"], a: "records", o: ["luggage", "flowers", "lunch"]}
+  - {t: 약·알레르기, i: pill, w: "Any ...?로 문장을 줄인 것은 급한 상황에서 빠르게 묻는 구두 말투예요. medication과 allergy는 응급 치료 전에 꼭 알아야 하는 정보라 함께 물어요.", d: "from the van", k: ["수술 이력을 아시나요?", "주치의 이름을 아시나요?"], a: "allergy", o: ["insurance", "visitor", "parking"]}
+  - {t: 서류 부족, i: board, w: "The paperwork doesn't say much로 서류가 부실하다는 사실을 비난 없이 말하고 질문으로 이어 가요. mental status는 의식과 지남력 같은 정신 상태를 뜻하는 의료진의 말이에요.", d: "at the desk", k: ["서류는 누가 작성했나요?", "시설에서 어떤 약을 쓰나요?"], a: "mental", o: ["financial", "marital", "legal"]}
+  - {t: 연락처, i: speaker, w: "contact number for the facility nurse로 시설의 담당 간호사를 구체적으로 짚어요. 시설 간호사는 환자의 최근 상태와 약 변경을 가장 잘 아는 사람 중 하나예요.", d: "for the daughter", k: ["담당 의사 이름을 알려 주시겠어요?", "시설 주소가 어떻게 되나요?"], a: "nurse", o: ["chef", "janitor", "gardener"]}
+  - {t: 약 목록 확인, i: pill, w: "Let's call로 함께 전화하자고 제안해 협력을 이끌어요. confirm her medication list는 이송 서류의 약 목록을 시설 기록과 대조해 정확한지 확인한다는 뜻이에요.", d: "for the driver", k: ["시설에 가족이 와 있나요?", "약 목록을 사진으로 받을 수 있나요?"], a: "confirm", o: ["cancel", "rename", "print"]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 시설 정보 확인 4문장 순서
+    why: 이송 직원에게 평소 상태를 묻고, 서류가 부족하니 시설 연락을 부탁하고, 그곳 간호사의 연락처를 묻고, 그 간호사와 약 목록을 확인합니다. 'Beyond what you know'·'there'·'that nurse'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - {en: "Do you know her baseline and what happened today?", icon: board, ko: "평소 상태랑 오늘 무슨 일이 있었는지 아시나요?", note: 기저}
+    - {en: "Beyond what you know, the paperwork doesn't say much — can you help me reach the facility for her records?", icon: speaker, ko: "아시는 것 외에는 서류에 별 내용이 없어요, 기록을 위해 시설에 연락하는 걸 도와주실 수 있나요?", note: 부탁}
+    - {en: "Do you have a contact number for the nurse there?", icon: speaker, ko: "그곳 간호사 연락처가 있으신가요?", note: 연락처}
+    - {en: "Let's call that nurse to confirm her medication list.", icon: pill, ko: "그 간호사에게 전화해 약 목록을 확인해볼게요", note: 확인}

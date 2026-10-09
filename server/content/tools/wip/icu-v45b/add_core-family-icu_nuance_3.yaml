@@ -1,0 +1,87 @@
+임종 임박 나쁜 소식 전달:
+  - kind: pair
+    words: [w-keep, w-comfortable, w-respond, w-treatment, w-near, w-end]
+    pairs: [[keep him, comfortable], [responding, to treatment], [nearing the end, of his life]]
+    decoys: [in his life]
+    why: "keep + 사람 + 형용사는 '~하게 해 드리다'(keep him comfortable), '치료에 반응하다'는 respond to treatment, '삶의 마지막'은 the end of his life — 임종 대화의 굳은 덩어리예요."
+  - kind: swap
+    words: [w-near, w-end, w-believe]
+    who: "가족에게 · 임종 임박을 알릴 때"
+    icon: me
+    before: ["We believe he is ", "circling the drain", "."]
+    options: [nearing the end of his life, circling the drain, going to be fine]
+    answer: nearing the end of his life
+    notes: {nearing the end of his life: "정직하면서도 존엄을 지키는 말이라, 가족이 무엇이 다가오는지 알 수 있어요.", circling the drain: "의료진 사이의 거친 은어예요. 가족 앞에서는 절대 쓰지 않아요.", going to be fine: "사실과 다른 거짓 안심이라, 마지막 시간을 준비할 기회를 빼앗아요."}
+    why: "임종이 가까울 때는 은어로 가볍게 말하지도, 거짓으로 안심시키지도 않고 분명하고 부드럽게 말해요."
+가족 급성 비탄·위기 대응:
+  - kind: slider
+    words: [w-shock]
+    cue: "동료에게 가족 상태를 전할 때 — 소식을 듣고 바닥에 주저앉아 흐느끼며 어쩔 줄 모른다"
+    scale: [sad, upset, distraught]
+    answerAt: 2
+    why: "sad는 슬픔, upset은 마음이 크게 상한 상태, distraught는 슬픔과 충격으로 어쩔 줄 모르는 상태예요. hysterical은 상대를 깎아내리는 말이라 쓰지 않아요."
+    example: "Whatever you're feeling right now is a normal response to shock."
+    exKo: "지금 느끼시는 건 충격에 대한 자연스러운 반응이에요."
+  - kind: context
+    words: [w-response, w-shock, w-normal]
+    scenes:
+      - {who: 동료에게, icon: speech, en: "She's having an acute grief reaction — can you get the chaplain?", ok: true}
+      - {who: 차트 기록, icon: board, en: "Family member with acute grief reaction; chaplain at bedside.", ok: true}
+      - {who: 슬퍼하는 가족에게, icon: me, en: "You're having an acute grief reaction.", ok: false, fix: "Whatever you're feeling right now is a normal response to shock."}
+    why: "acute grief reaction은 의료진의 관찰 용어라 동료·차트에는 맞지만, 슬퍼하는 가족에게 하면 진단명을 붙이는 것처럼 들려요. 가족에게는 그 반응이 자연스럽다고 말해 줘요."
+목표 불일치·갈등 중재:
+  - kind: pair
+    words: [w-common, w-ground, w-move, w-hear, w-side]
+    pairs: [[common, ground], [move, forward], [hear both, sides]]
+    decoys: [middle]
+    why: "common ground '공통 기반', move forward '앞으로 나아가다', hear both sides '양쪽 이야기를 다 듣다' — 가족 중재에서 굳은 표현이에요."
+  - kind: swap
+    words: [w-want, w-best]
+    who: "의견이 갈린 남매에게"
+    icon: me
+    before: ["You both ", "are being unreasonable", " — let's center this on what he would have wanted."]
+    options: [want what's best for him, are being unreasonable, need to pick a side]
+    answer: want what's best for him
+    notes: {want what's best for him: "두 사람의 공통점을 먼저 짚어 대립을 누그러뜨려요.", are being unreasonable: "두 사람을 다 비난해 방어적으로 만들어요.", need to pick a side: "중재하는 사람이 편을 가르라고 하면 갈등이 커져요."}
+    why: "중재의 첫걸음은 공통 기반을 찾는 거예요. 그다음 결정의 중심을 환자의 바람에 둬요."
+대리결정 부재 상황:
+  - kind: pair
+    words: [w-interest, w-best, w-ethics, w-committee]
+    pairs: [[in his best, interest], [ethics, committee], [step, up]]
+    decoys: [benefit]
+    why: "in his best interest '그에게 가장 이로운 쪽으로'는 환자의 바람을 알 수 없을 때 결정의 기준을 말하는 굳은 표현이에요. ethics committee '윤리위원회', step up '(책임을 지고) 나서다'."
+  - kind: context
+    words: [w-proxy, w-process, w-thank]
+    scenes:
+      - {who: 이웃에게, icon: me, en: "Thank you for being here for him. Since there's no named proxy, the team follows a set process.", ok: true}
+      - {who: 동료에게, icon: speech, en: "No proxy, no family we can reach — we need to loop in ethics.", ok: true}
+      - {who: 이웃에게, icon: me, en: "You're not family, so this isn't your decision. We'll handle it.", ok: false, fix: "Thank you for being here for him. Since there's no named proxy, the team follows a set process — and what you know about him can still help."}
+    why: "결정 절차를 병원이 맡는다는 사실은 같아도, 와 준 이웃을 밀어내듯 말하면 상처가 돼요. 환자를 아는 사람이 들려주는 그의 가치와 생활은 결정 과정에 도움이 돼요."
+분노·불신 가족 대응:
+  - kind: pair
+    words: [w-deserve, w-answer, w-anger, w-sense]
+    pairs: [[you deserve, straight answers], [your anger, makes sense], [let me go through, everything with you]]
+    decoys: [straight answer]
+    why: "deserve는 '받아 마땅하다' — you deserve straight answers는 화난 가족의 요구가 정당하다고 인정하는 말이에요. answers는 복수로 써요."
+  - kind: context
+    words: [w-angry, w-hear]
+    scenes:
+      - {who: 가족에게, icon: me, en: "I hear that you're angry, and you deserve straight answers.", ok: true}
+      - {who: 동료에게, icon: speech, en: "The daughter in 12 is really upset — she thinks we're hiding something. Can you come with me?", ok: true}
+      - {who: 가족에게, icon: me, en: "Ma'am, you need to calm down.", ok: false, fix: "I hear that you're angry — let's sit down and I'll answer every question you have."}
+    why: "\"calm down\"은 감정을 인정하지 않고 누르는 말이라 오히려 화를 키워요. de-escalation은 상대의 감정을 먼저 말로 인정하는 데서 시작해요."
+사별·애도 지원·후속:
+  - kind: pair
+    words: [w-grief, w-support, w-step]
+    pairs: [[take all the time, you need], [grief, support], [next, steps]]
+    decoys: [supports]
+    why: "take all the time you need '충분히 시간을 가지세요', grief support '사별 가족을 위한 애도 지원', next steps '다음 절차' — 사별 직후 가족에게 쓰는 굳은 말이에요."
+  - kind: swap
+    words: [w-sorry]
+    who: "가족에게 · 사망을 알릴 때"
+    icon: me
+    before: ["I'm so sorry — your father ", "has expired", "."]
+    options: [has died, has expired, is in a better place]
+    answer: has died
+    notes: {has died: "분명해서 가족이 되묻지 않아요. 부드러움은 말투와 곁에 있어 주는 것으로 전해요.", has expired: "차트·의료진 용어예요. 가족에게는 물건처럼 들려 상처가 돼요.", is in a better place: "종교적 믿음을 전제해서, 가족의 믿음과 다르면 위로가 아니라 상처가 돼요."}
+    why: "사망을 알릴 때는 died를 분명히 말해요 — 완곡어만 쓰면 가족이 아직 살아 있는지 헷갈려요."

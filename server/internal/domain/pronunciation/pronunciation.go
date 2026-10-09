@@ -22,6 +22,14 @@ func (s *Service) Assess(ctx context.Context, userID string, audioWav []byte, re
 	return s.pron.Assess(ctx, audioWav, referenceText, s.LocaleFor(ctx, userID))
 }
 
+// AssessIn is Assess with the locale already resolved. A caller that also needs the
+// locale for something else (the sentence key) resolves it once with LocaleFor and
+// passes it here, so a target-language change between two profile reads cannot score
+// in one locale and file the result under another (cross-review S14b).
+func (s *Service) AssessIn(ctx context.Context, audioWav []byte, referenceText, locale string) (*ports.PronunciationResult, error) {
+	return s.pron.Assess(ctx, audioWav, referenceText, locale)
+}
+
 // Transcribe converts spoken audio to text (dictation) in the user's target locale.
 func (s *Service) Transcribe(ctx context.Context, userID string, audioWav []byte) (string, error) {
 	return s.pron.Transcribe(ctx, audioWav, s.LocaleFor(ctx, userID))

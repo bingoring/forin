@@ -1,0 +1,425 @@
+{
+ "theme": "core-language-er",
+ "situations": [
+  {
+   "title": "통역 서비스 요청 안내",
+   "tagline": "Let me get an interpreter so we understand each other.",
+   "room": "TRIAGE",
+   "brief": "전화·영상 통역 서비스를 요청하는 절차를 환자에게 안내하세요.",
+   "role": "patient",
+   "skills": [
+    "통역 요청",
+    "서비스 안내",
+    "언어 확인"
+   ],
+   "keyPhrases": [
+    "I'm going to call an interpreter to help us talk.",
+    "It only takes a minute, and it's free for you.",
+    "You'll hear them through this phone, in your language."
+   ],
+   "goals": [
+    "통역 서비스의 이용 방법을 안내한다",
+    "환자가 안심하고 통역을 받도록 돕는다"
+   ]
+  },
+  {
+   "title": "기본 의사 확인",
+   "tagline": "Let me ask a few simple questions to start.",
+   "room": "TRIAGE",
+   "brief": "통증·알레르기 등 핵심 정보를 단순화한 표현으로 확인하세요.",
+   "role": "patient",
+   "skills": [
+    "단순 표현",
+    "핵심 문진",
+    "비언어 병용"
+   ],
+   "keyPhrases": [
+    "Pain? Point to where.",
+    "Any allergy to medicine? Yes or no?",
+    "Show me with your fingers, zero to ten."
+   ],
+   "goals": [
+    "통증·알레르기를 단순한 말로 확인한다",
+    "손짓·표정을 함께 활용해 이해를 돕는다"
+   ]
+  },
+  {
+   "title": "통역 통한 동의 확인",
+   "tagline": "Through the interpreter, let's confirm you agree.",
+   "room": "BAY",
+   "brief": "통역을 통해 검사·처치에 대한 동의를 정확히 확인하세요.",
+   "role": "patient",
+   "skills": [
+    "통역 동의",
+    "이해 확인",
+    "정확한 전달"
+   ],
+   "keyPhrases": [
+    "The interpreter will explain the test to you.",
+    "Please tell me back what you understood.",
+    "Do you agree to have this done? Yes or no?"
+   ],
+   "goals": [
+    "통역으로 처치 내용을 정확히 전달한다",
+    "되말하기로 동의의 이해를 확인한다"
+   ]
+  },
+  {
+   "title": "가족 통역 한계 설명",
+   "tagline": "I appreciate your help, but let's use a professional interpreter.",
+   "room": "TRIAGE",
+   "brief": "가족이 통역을 자처할 때 전문 통역의 필요성을 정중히 설명하세요.",
+   "role": "family",
+   "skills": [
+    "전문 통역 안내",
+    "가족 배려",
+    "정확성 강조"
+   ],
+   "keyPhrases": [
+    "Thank you for wanting to help translate.",
+    "For medical details, we use a trained interpreter.",
+    "This keeps everything accurate and protects your mom."
+   ],
+   "goals": [
+    "가족의 도움을 존중하며 한계를 설명한다",
+    "전문 통역의 필요성을 정중히 전달한다"
+   ]
+  },
+  {
+   "title": "언어 선호 확인",
+   "tagline": "What language do you feel most comfortable in?",
+   "room": "TRIAGE",
+   "brief": "환자의 모국어와 문해 수준 등 언어 선호를 확인하세요.",
+   "role": "patient",
+   "skills": [
+    "언어 선호 확인",
+    "문해 수준 파악",
+    "배려적 소통"
+   ],
+   "keyPhrases": [
+    "What language would you like us to use?",
+    "Is it easier to read or to listen for you?",
+    "We can get materials in your language too."
+   ],
+   "goals": [
+    "모국어와 문해 수준을 확인한다",
+    "선호에 맞는 소통 방식을 준비한다"
+   ]
+  },
+  {
+   "title": "통역 3자 대화 구조",
+   "tagline": "I'll talk to you directly while the interpreter helps.",
+   "room": "BAY",
+   "brief": "통역 3자 대화에서 환자를 직접 바라보며 소통하는 구조를 유지하세요.",
+   "role": "patient",
+   "skills": [
+    "3자 대화 관리",
+    "직접 시선",
+    "통역 협업"
+   ],
+   "keyPhrases": [
+    "I'm speaking to you, not to the phone.",
+    "Please look at me, and the interpreter will follow.",
+    "Tell me in short sentences so nothing is missed."
+   ],
+   "goals": [
+    "통역이 있어도 환자를 직접 바라보며 말한다",
+    "짧은 문장으로 정확한 통역을 돕는다"
+   ]
+  },
+  {
+   "title": "방언·소수언어 대응",
+   "tagline": "Let's find an interpreter who speaks your exact dialect.",
+   "room": "TRIAGE",
+   "brief": "흔치 않은 소수언어·방언 환자를 위해 적합한 통역을 확보하세요.",
+   "role": "patient",
+   "skills": [
+    "소수언어 통역 확보",
+    "인내심",
+    "위축 완화"
+   ],
+   "keyPhrases": [
+    "I want to make sure we get the right dialect.",
+    "It may take a little longer to find the interpreter.",
+    "You're doing fine — take your time."
+   ],
+   "goals": [
+    "정확한 방언·소수언어 통역을 확보한다",
+    "위축된 환자를 격려하며 기다린다"
+   ]
+  },
+  {
+   "title": "통역 오역 감지",
+   "tagline": "That answer seemed short — can we go over it again?",
+   "room": "BAY",
+   "brief": "통역 길이·환자 반응의 불일치로 오역 가능성을 감지하고 재확인하세요.",
+   "role": "patient",
+   "skills": [
+    "오역 감지",
+    "재확인",
+    "이해 검증"
+   ],
+   "keyPhrases": [
+    "You said a lot — I want to hear all of it.",
+    "Can the interpreter repeat that in full?",
+    "Let me ask again a different way to be sure."
+   ],
+   "goals": [
+    "통역 길이·반응 불일치로 오역을 감지한다",
+    "되묻기로 정확한 의미를 확인한다"
+   ]
+  },
+  {
+   "title": "문화적 금기 배려",
+   "tagline": "I can arrange a female nurse if that's more comfortable.",
+   "room": "BAY",
+   "brief": "성별·접촉에 민감한 문화적 금기를 배려하며 처치를 조율하세요.",
+   "role": "patient",
+   "skills": [
+    "문화적 금기 배려",
+    "성별 조정",
+    "사생활 존중"
+   ],
+   "keyPhrases": [
+    "Would you prefer a female nurse for this exam?",
+    "I'll keep you covered as much as possible.",
+    "Please tell me if anything makes you uncomfortable."
+   ],
+   "goals": [
+    "성별·접촉에 대한 선호를 존중한다",
+    "문화적 금기에 맞춰 처치를 조정한다"
+   ]
+  },
+  {
+   "title": "문해력 저하 환자",
+   "tagline": "Let me explain this out loud instead of on paper.",
+   "room": "BAY",
+   "brief": "문해력이 낮은 환자에게 구두·그림으로 정보를 전달하세요.",
+   "role": "patient",
+   "skills": [
+    "구두 설명",
+    "그림 보조",
+    "자존감 배려"
+   ],
+   "keyPhrases": [
+    "I'll walk you through it out loud, step by step.",
+    "Let me draw a simple picture to show you.",
+    "There's no rush — tell me if I go too fast."
+   ],
+   "goals": [
+    "구두·그림으로 이해를 돕는다",
+    "자존심을 상하지 않게 배려한다"
+   ]
+  },
+  {
+   "title": "청각장애 수어 통역",
+   "tagline": "Let's get a sign language interpreter for you.",
+   "room": "TRIAGE",
+   "brief": "청각장애 환자를 위해 수어 통역을 확보하고 소통 방식을 조정하세요.",
+   "role": "patient",
+   "skills": [
+    "수어 통역 확보",
+    "시각적 소통",
+    "소통 조정"
+   ],
+   "keyPhrases": [
+    "I'm arranging a sign language interpreter now.",
+    "Face me so you can see my expressions.",
+    "We can also write things down together."
+   ],
+   "goals": [
+    "수어 통역을 확보하고 시야를 확보한다",
+    "필담 등 보조 수단을 함께 활용한다"
+   ]
+  },
+  {
+   "title": "통증 표현 문화차",
+   "tagline": "It's okay to tell me how much it really hurts.",
+   "room": "BAY",
+   "brief": "통증을 절제하거나 과장하는 문화적 배경을 고려하며 사정하세요.",
+   "role": "patient",
+   "skills": [
+    "문화적 통증 해석",
+    "표현 배경 이해",
+    "관찰 병용"
+   ],
+   "keyPhrases": [
+    "In here, telling me your pain helps us help you.",
+    "You don't need to be strong for me.",
+    "I can see you're tensing — is it worse than you're saying?"
+   ],
+   "goals": [
+    "통증 표현의 문화적 배경을 이해한다",
+    "관찰과 대화로 실제 통증을 판단한다"
+   ]
+  },
+  {
+   "title": "응급 중 통역 지연",
+   "tagline": "Help is coming — point to where it hurts right now.",
+   "room": "RESUS",
+   "brief": "통역이 늦어지는 응급 상황에서 최소한의 소통으로 사정하세요.",
+   "role": "patient",
+   "skills": [
+    "응급 최소 소통",
+    "비언어 사정",
+    "즉시 대응"
+   ],
+   "keyPhrases": [
+    "Chest? Point here. Yes or no?",
+    "Squeeze my hand if the pain is very bad.",
+    "The interpreter is coming — stay with me."
+   ],
+   "goals": [
+    "통역 지연 중 핵심 증상을 신속히 파악한다",
+    "손짓·예/아니오로 응급 사정을 진행한다"
+   ]
+  },
+  {
+   "title": "통역 없는 위기 소통",
+   "tagline": "No interpreter yet — let's use gestures and this app.",
+   "room": "RESUS",
+   "brief": "통역이 없는 위급 상황에서 비언어·번역기로 최소 소통을 유지하세요.",
+   "role": "patient",
+   "skills": [
+    "비언어 소통",
+    "번역기 활용",
+    "위기 대응"
+   ],
+   "keyPhrases": [
+    "I'm using a translation app — read this.",
+    "Nod yes, shake for no — can you breathe okay?",
+    "We are helping you. You are safe."
+   ],
+   "goals": [
+    "번역기·몸짓으로 핵심 정보를 주고받는다",
+    "공포에 질린 환자를 진정시킨다"
+   ]
+  },
+  {
+   "title": "나쁜 소식 통역 전달",
+   "tagline": "I have difficult news, and I want to share it carefully.",
+   "room": "BAY",
+   "brief": "통역을 통해 사망·중증 소식을 배려 있게 전달하세요.",
+   "role": "family",
+   "skills": [
+    "나쁜 소식 통역",
+    "배려적 전달",
+    "애도 지지"
+   ],
+   "keyPhrases": [
+    "The interpreter will help me tell you something serious.",
+    "I'm so sorry — his condition is very grave.",
+    "Take your time, and ask me anything you need."
+   ],
+   "goals": [
+    "통역으로 나쁜 소식을 정확·연민 있게 전한다",
+    "가족의 반응을 기다리며 지지한다"
+   ]
+  },
+  {
+   "title": "동의능력 언어 복합",
+   "tagline": "We need consent, but his understanding is unclear.",
+   "room": "BAY",
+   "brief": "언어 장벽과 의식저하가 겹친 환자의 동의 능력을 신중히 평가하세요.",
+   "role": "patient",
+   "skills": [
+    "동의능력 평가",
+    "언어·의식 복합",
+    "대리동의 판단"
+   ],
+   "keyPhrases": [
+    "Can you tell me back what I just explained?",
+    "The interpreter will check if he truly understands.",
+    "If he can't consent, we'll reach his next of kin."
+   ],
+   "goals": [
+    "언어·의식 요인을 분리해 동의 능력을 평가한다",
+    "필요 시 대리 동의 경로를 안내한다"
+   ]
+  },
+  {
+   "title": "정신과 위기 언어장벽",
+   "tagline": "I need to understand exactly how you're feeling right now.",
+   "room": "BAY",
+   "brief": "언어 장벽이 있는 자살 위기 환자를 정확한 통역으로 사정하세요.",
+   "role": "patient",
+   "skills": [
+    "자살 위험 사정",
+    "정확한 통역",
+    "정서적 안전"
+   ],
+   "keyPhrases": [
+    "The interpreter will help me ask some serious questions.",
+    "Have you thought about hurting yourself?",
+    "You're not alone — we're here to keep you safe."
+   ],
+   "goals": [
+    "통역으로 자살 위험을 정확히 사정한다",
+    "절망한 환자를 정서적으로 지지한다"
+   ]
+  },
+  {
+   "title": "문화·언어 기인 치료거부",
+   "tagline": "Let's talk through what's making you say no.",
+   "room": "BAY",
+   "brief": "문화·언어 오해에서 비롯된 치료 거부의 이유를 통역으로 풀어내세요.",
+   "role": "patient",
+   "skills": [
+    "오해 해소",
+    "치료 거부 탐색",
+    "신뢰 회복"
+   ],
+   "keyPhrases": [
+    "I want to understand your concern, not push you.",
+    "There may be a misunderstanding I can clear up.",
+    "The interpreter will make sure I explain it right."
+   ],
+   "goals": [
+    "거부의 배경 오해를 통역으로 확인한다",
+    "신뢰를 회복하며 대안을 제시한다"
+   ]
+  },
+  {
+   "title": "이송 중 언어 인계",
+   "tagline": "Passing along his language needs for the transfer.",
+   "room": "STATION",
+   "brief": "이송 인수자에게 환자의 언어 특이사항과 통역 필요를 전달하세요.",
+   "role": "colleague",
+   "skills": [
+    "언어 특이사항 인계",
+    "통역 필요 전달",
+    "소통 연속성"
+   ],
+   "keyPhrases": [
+    "He speaks only Somali and needs a video interpreter.",
+    "He's declined care before due to a misunderstanding.",
+    "Always confirm understanding through the interpreter."
+   ],
+   "goals": [
+    "언어 특이사항·통역 필요를 인수자에게 전달한다",
+    "소통 연속성을 위해 주의사항을 공유한다"
+   ]
+  },
+  {
+   "title": "퇴원 교육 언어 장벽",
+   "tagline": "So... I take the white pill when? I don't want to ask again.",
+   "room": "DISCHARGE",
+   "brief": "통역을 통해 퇴원 약물과 주의사항을 teach-back으로 확인하세요.",
+   "role": "patient",
+   "skills": [
+    "teach-back 확인",
+    "통역 활용",
+    "퇴원 교육"
+   ],
+   "keyPhrases": [
+    "Can you tell me in your own words how you'll take this medicine at home?",
+    "I'll go through each step slowly with the interpreter.",
+    "There are no wrong questions — let's make sure it's clear."
+   ],
+   "goals": [
+    "통역을 통해 약물 복용법과 경고 증상을 teach-back으로 확인한다",
+    "환자가 되묻기를 주저하지 않도록 안심시킨다"
+   ]
+  }
+ ]
+}

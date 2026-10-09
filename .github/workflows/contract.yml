@@ -23,6 +23,11 @@ jobs:
           node-version: '20'
       # Pinned to match server/Makefile — @latest let swag rc6 change the generated contract.
       - run: go install github.com/swaggo/swag/v2/cmd/swag@v2.0.0-rc5
+      # swag --parseDependency runs `go list` over cmd/api's imports; without the modules in the
+      # cache it fails with "cannot find all dependencies" (first seen on PR #14).
+      - name: Download modules
+        working-directory: server
+        run: go mod download
       - name: Regenerate contract
         working-directory: server
         run: make contract

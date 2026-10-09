@@ -54,7 +54,7 @@ func init() {
 			{Title: "정형 병동 인계", Tagline: "Two hip replacements, one traction.", Room: "STATION", Role: "colleague", Diff: 3, Brief: "체위 제한과 보행 진행도를 인계하세요.", Skills: []string{"SBAR", "체위 제한"}, Phrases: []string{"Bed 3 is hip precautions, day two.", "Bed 5 walked to the door today.", "Bed 8's traction weights are set at four."}, Goals: []string{"체위 제한 전달", "보행 진행 공유"}},
 		}},
 
-		// ── 본관 2F · 피부과 센터 ───────────────────────────────────────────
+		// ── 별관 3 5F · 피부과 센터 ───────────────────────────────────────────
 		{Code: "DERM", Name: "피부과 센터", Label: "DERM", Color: "#DB2777", Tone: "#FCE7F3", Accent: "#9D174D", Topics: []Topic{
 			{Title: "피부 병변 문진", Tagline: "It started as one spot and spread.", Room: "CLINIC", Role: "patient", Diff: 1, Brief: "병변의 발생·경과·유발 요인을 문진하세요.", Skills: []string{"피부 문진", "경과 청취"}, Phrases: []string{"When did you first notice it?", "Does anything make it flare?", "Have you changed soaps or detergent?"}, Goals: []string{"경과 청취", "유발 요인 탐색"}},
 			{Title: "가려움 조절 상담", Tagline: "I scratch it in my sleep without knowing.", Room: "CLINIC", Role: "patient", Diff: 2, Brief: "긁는 악순환을 끊는 실질적 방법을 상담하세요.", Skills: []string{"소양증", "생활 지도"}, Phrases: []string{"Scratching makes it itch more, not less.", "Cool compresses can break the cycle.", "Cotton gloves at night help a lot."}, Goals: []string{"악순환 설명", "대안 제시"}},

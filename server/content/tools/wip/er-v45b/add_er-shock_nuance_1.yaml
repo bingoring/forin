@@ -1,0 +1,126 @@
+저혈압 초기 활력 인지:
+  - kind: slider
+    words: [w-low, w-blood, w-pressure]
+    cue: "BP 92/58. The patient is alert and asks, \"Is my blood pressure okay?\""
+    scale: [a little low, low, dangerously low]
+    answerAt: 0
+    why: "수축기 92는 저혈압 기준선(90) 바로 위라 '조금 낮다'가 사실에 맞아요. 의식이 또렷한 환자를 겁주지 않으면서도 지켜보고 있다는 걸 알려요."
+    example: "Your blood pressure is a little low right now."
+    exKo: "지금 혈압이 조금 낮아요."
+  - kind: swap
+    words: [w-cool, w-feel, w-circulation]
+    who: "환자에게 · 손을 만지며"
+    icon: me
+    before: ["Your hands feel ", "poorly perfused", " — I'm checking your circulation."]
+    options: [cool, poorly perfused, ice-cold]
+    answer: cool
+    notes: {cool: "만져 본 그대로를 쉬운 말로 말하고, 이어서 순환을 확인한다고 이유를 붙인다.", poorly perfused: "차트·인계에서 쓰는 임상어. 환자는 알아듣기 어렵고 무섭게 들린다.", ice-cold: "실제보다 과장돼 환자의 불안을 키운다."}
+    why: "같은 소견도 환자에게는 느낀 그대로 쉬운 말로, 의료진끼리는 임상어로 말해요."
+기립성 저혈압 문진:
+  - kind: pair
+    words: [w-dizzy, w-stand, w-fall]
+    pairs: [[feel, dizzy], [stand up, slowly], [prevent, a fall]]
+    decoys: [a drink]
+    why: "기립성 저혈압 교육의 세 덩어리예요 — 어지러움은 feel dizzy, 일어설 때는 stand up slowly, 낙상은 prevent a fall."
+  - kind: context
+    words: [w-blood, w-pressure, w-stand]
+    scenes:
+      - {who: 차트 기록, icon: board, en: "Orthostatic vitals positive: SBP drops 24 on standing.", ok: true}
+      - {who: 동료 간호사에게, icon: speech, en: "Her orthostatics are positive — her systolic drops more than 20 when she stands.", ok: true}
+      - {who: 환자에게, icon: me, en: "Your orthostatic vitals are positive.", ok: false, fix: "Your blood pressure drops quite a bit when you stand up — that's likely why you feel dizzy."}
+    why: "orthostatic(기립성)·positive는 의료진의 말이에요. 환자에게는 '일어설 때 혈압이 떨어진다'고 풀어서 말하고 어지러운 이유와 이어 줘요."
+대구경 정맥로·수액 설명:
+  - kind: slider
+    words: [w-pinch, w-feel]
+    cue: "Patient: \"Is that big needle going to hurt a lot?\" — you are about to place the IV."
+    scale: [a quick pinch, a sharp pain, it'll really hurt]
+    answerAt: 0
+    why: "정맥로 삽입은 보통 잠깐 따끔한 정도라 'a quick pinch'가 사실에 맞고 안심도 돼요. 하나도 안 아프다고 하지도, 겁주지도 않아요."
+    example: "You'll feel a quick pinch, then a cool sensation in your arm."
+  - kind: swap
+    words: [w-place, w-iv, w-fluid, w-give]
+    who: "환자에게 · 정맥로 설명"
+    icon: me
+    before: ["I'm placing a ", "large-bore", " IV so we can give fluids quickly."]
+    options: [larger, large-bore, huge]
+    answer: larger
+    notes: {larger: "환자에게는 '더 굵은'이면 충분하다. 왜 굵은 게 필요한지가 뒤에 바로 이어진다.", large-bore: "의료진끼리 쓰는 말. 틀린 말은 아니지만 환자에게는 낯설다.", huge: "바늘이 무섭게 들려 불안을 키운다."}
+    why: "같은 굵은 정맥로도 동료에게는 large-bore, 환자에게는 larger로 말해요."
+탈수 관련 저혈압 교육:
+  - kind: slider
+    words: [w-sip, w-try]
+    cue: "Two days of vomiting; the nausea is finally easing after medicine. How much should the patient drink first?"
+    scale: [small sips, a full glass, a whole bottle]
+    answerAt: 0
+    why: "구토 뒤에는 한꺼번에 마시면 다시 토하기 쉬워서 조금씩(small sips)부터 시작해요. 넘길 수 있으면 양을 늘려요."
+    example: "Once you feel better, we'll try small sips slowly."
+  - kind: context
+    words: [w-lose, w-fluid, w-throw]
+    scenes:
+      - {who: 차트 기록, icon: board, en: "2 days of emesis, unable to tolerate PO; likely volume depleted.", ok: true}
+      - {who: 의사에게, icon: speech, en: "She's been vomiting for two days and can't keep fluids down — I think she's dry.", ok: true}
+      - {who: 환자에게, icon: me, en: "You're volume depleted from persistent emesis.", ok: false, fix: "Throwing up for two days can make you lose a lot of fluid, and that lowers your blood pressure."}
+    why: "emesis·volume depleted는 차트·의료진의 말이에요. 환자에게는 '토해서 수분을 많이 잃었고 그래서 혈압이 내려갔다'고 풀어요."
+실신 후 내원 사정:
+  - kind: slider
+    words: [w-faint]
+    cue: "Patient: \"Everything went gray and I had to grab the shelf, but I never actually went down.\""
+    scale: [lightheaded, nearly fainted, fainted]
+    answerAt: 1
+    why: "의식을 실제로 잃지 않고 쓰러질 뻔했다면 실신(syncope)이 아니라 '실신할 뻔한' 상태(near-syncope)예요. 차트에 다르게 기록되니 정확히 물어요."
+    example: "Did you actually faint, or did you just feel like you might?"
+    exKo: "실제로 정신을 잃으셨어요, 아니면 그럴 것 같은 느낌만 있었어요?"
+  - kind: swap
+    words: [w-happen]
+    who: "함께 온 가족에게"
+    icon: me
+    before: ["Did anyone ", "witness the syncopal episode", "?"]
+    options: [see what happened, witness the syncopal episode, notice anything]
+    answer: see what happened
+    notes: {see what happened: "쉬운 말로 쓰러지는 순간을 본 사람이 있는지 묻는다.", witness the syncopal episode: "차트 용어. 가족에게는 딱딱하고 낯설다.", notice anything: "무엇을 묻는지 흐려 쓰러지는 장면을 봤는지에 대한 답을 못 듣는다."}
+    why: "목격자 정보는 실신 원인을 좁히는 데 중요해요. 가족에게는 쉬운 말로 분명하게 물어요."
+저혈량성 쇼크 출혈원 사정:
+  - kind: swap
+    words: [w-stool, w-black, w-notice]
+    who: "환자에게 · 출혈 문진"
+    icon: me
+    before: ["Have you noticed any ", "melena or hematochezia", "?"]
+    options: [black or bloody stools, melena or hematochezia, unusual bowel movements]
+    answer: black or bloody stools
+    notes: {black or bloody stools: "색으로 물어 환자가 바로 떠올리고 정확히 답한다.", melena or hematochezia: "차트 용어. 환자는 무슨 뜻인지 모른다.", unusual bowel movements: "너무 넓어서 설사·변비 이야기가 돌아오고 출혈 여부는 놓친다."}
+    why: "흑색변(melena)·혈변(hematochezia)은 차트에 쓰는 말이에요. 환자에게는 색깔로 물어야 출혈원을 좁힐 수 있어요."
+  - kind: pair
+    words: [w-take, w-thinner, w-draw, w-get, w-ready]
+    pairs: [[take, blood thinners], [draw, labs], [get blood, ready]]
+    decoys: [the bleeding]
+    why: "약은 take(복용하다), 피검사는 draw(채혈하다), 수혈할 혈액은 get … ready(준비해 두다)와 붙어요."
+패혈증성 쇼크 조기 인지:
+  - kind: slider
+    words: [w-concern, w-infection]
+    cue: "Temp 38.9°C, HR 124, the patient is newly confused. No source confirmed yet. What do you tell the patient?"
+    scale: [it might be nothing, I'm concerned about infection, you definitely have sepsis]
+    answerAt: 1
+    why: "아직 확진 전이지만 서둘러야 할 소견이라 'concerned'가 맞아요. 걱정을 솔직히 말하되 진단을 단정하지 않아요."
+    example: "You feel warm and your heart is racing — I'm concerned about infection."
+  - kind: context
+    words: [w-culture, w-lactate, w-draw]
+    scenes:
+      - {who: 차트 기록, icon: board, en: "BCx x2 and lactate drawn prior to abx.", ok: true}
+      - {who: 동료 간호사에게, icon: speech, en: "Cultures and lactate are drawn — can you hang the antibiotics?", ok: true}
+      - {who: 환자에게, icon: me, en: "We drew BCx times two and a lactate prior to abx.", ok: false, fix: "We're taking some blood tests to look for infection before we start antibiotics."}
+    why: "BCx·abx 같은 약어는 차트와 의료진끼리만 써요. 환자에게는 무엇을 왜 하는지 풀어서 말해요."
+심인성 쇼크 감별:
+  - kind: pair
+    words: [w-chest, w-lie]
+    pairs: [[chest, heaviness], [short of, breath], [lie, flat]]
+    decoys: [the jaw]
+    why: "심인성 쇼크 문진의 묶음말이에요 — chest heaviness(가슴 압박감), short of breath(숨이 찬), lie flat(평평하게 눕다). 누우면 숨이 더 차면 폐울혈을 의심해요."
+  - kind: swap
+    words: [w-ecg, w-get]
+    who: "환자에게 · 검사 안내"
+    icon: me
+    before: ["We're ", "obtaining a twelve-lead electrocardiogram", " and listening to your lungs now."]
+    options: [getting an ECG, obtaining a twelve-lead electrocardiogram, doing a heart scan]
+    answer: getting an ECG
+    notes: {getting an ECG: "짧고 정확해 환자 앞에서도 흔히 쓴다(미국 병원에선 EKG라고도 한다).", obtaining a twelve-lead electrocardiogram: "정식 표현이지만 말로 하기엔 길고 딱딱하다.", doing a heart scan: "'scan'은 CT·MRI 같은 영상을 떠올리게 해 다른 검사로 오해한다."}
+    why: "환자에게는 검사 이름을 짧고 정확하게 말해요. 쉬운 말로 바꾸다가 다른 검사처럼 들리게 하면 안 돼요."

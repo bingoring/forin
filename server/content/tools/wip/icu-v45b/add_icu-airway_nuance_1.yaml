@@ -1,0 +1,125 @@
+삽관 물품 준비·점검:
+  - kind: slider
+    words: [w-off, w-look, w-light, w-test]
+    cue: "Colleague: \"The blade light flickered once, then came on fine.\""
+    scale: [looks fine, looks a bit off, isn't working]
+    answerAt: 1
+    why: "켜지긴 했지만 깜빡였다면 '좀 이상하다'로 알리고 배터리나 날을 바꿔 둬요. 'looks fine'으로 넘기면 삽관 도중에 불이 꺼져 시야를 잃을 수 있어요."
+    example: "The light looks a bit off — let me swap the batteries."
+    exKo: "불빛이 좀 이상해요 — 배터리를 갈게요."
+  - kind: context
+    words: [w-suction, w-setup, w-work]
+    scenes:
+      - {who: 동료에게, icon: speech, en: "Suction is set up and working at the bedside.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Suction's probably fine, I think it should work.", ok: false, fix: "Suction set up at bedside; tested, functioning."}
+      - {who: 삽관 직전 체크리스트 콜, icon: check, en: "Suction — on and working.", ok: true}
+    why: "차트에는 '괜찮을 것 같다'가 아니라 확인한 사실(켜 봤다, 작동한다)을 적어요. 추측처럼 쓰면 점검을 안 한 것으로 읽혀요."
+
+RSI 약물 준비 보조:
+  - kind: slider
+    words: [w-confirm, w-dose, w-check]
+    cue: "Doctor: \"Read it back to me before I push.\""
+    scale: [glance at it, check it, confirm it out loud together]
+    answerAt: 2
+    why: "RSI 약은 한 번 들어가면 되돌릴 수 없어요. 혼자 훑어보는 것보다 약 이름과 용량을 소리 내어 읽고 상대가 되받는 확인(read-back)이 실수를 잡아요."
+    example: "Let's confirm the dose out loud before you push."
+    exKo: "주입하기 전에 용량을 소리 내어 같이 확인해요."
+  - kind: context
+    words: [w-sedative, w-paralytic, w-separate, w-syringe]
+    scenes:
+      - {who: 의사에게, icon: speech, en: "Sedative and paralytic are drawn up in separate syringes, both labeled.", ok: true}
+      - {who: 차트 기록, icon: board, en: "RSI meds drawn up in separate labeled syringes.", ok: true}
+      - {who: 보호자에게, icon: me, en: "I've drawn up the sedative and the paralytic in separate syringes.", ok: false, fix: "We're getting medicines ready to help him sleep and relax his muscles for the breathing tube."}
+    why: "보호자에게 'paralytic'은 '마비시킨다'로 들려 놀라기 쉬워요. 가족에게는 약 이름보다 '잠들고 근육이 풀리게 하는 약'처럼 목적으로 설명해요."
+
+삽관 체위·BURP 보조:
+  - kind: slider
+    words: [w-pressure, w-more, w-less, w-adjust]
+    cue: "Doctor: \"A little more… okay, stop — hold it right there.\""
+    scale: [less pressure, the same pressure, more pressure]
+    answerAt: 1
+    why: "BURP는 의사가 성대를 보면서 지시하는 대로 맞춰요. 'hold it right there'면 더 누르지 말고 지금 힘을 그대로 유지하라는 뜻이에요."
+    example: "I'll hold the same pressure until the tube is through."
+    exKo: "튜브가 통과할 때까지 같은 힘으로 유지할게요."
+  - kind: context
+    words: [w-burp, w-backward, w-upward, w-rightward, w-cartilage]
+    scenes:
+      - {who: 의사의 지시, icon: speech, en: "BURP, please.", ok: true}
+      - {who: 간호사의 되받기, icon: speech, en: "Backward, upward, rightward on the thyroid cartilage — got it.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Pushed his throat back, up, and to the right so the doc could see.", ok: false, fix: "BURP applied; glottic view improved."}
+    why: "말로 할 때는 동작을 풀어 되받는 게 좋지만, 차트에는 정해진 용어(BURP)와 결과(시야 개선)를 적어요. 동작 묘사는 기록에서 모호하고 비전문적으로 읽혀요."
+
+삽관 후 위치 확인 협조:
+  - kind: slider
+    words: [w-sustain, w-color, w-change, w-capnography]
+    cue: "CO2 detector: turns yellow on the first breath, then stays purple."
+    scale: [no color change, color change that fades, sustained color change]
+    answerAt: 1
+    why: "한두 번만 바뀌고 사라지면 위에 있던 CO2일 수 있어 식도 삽관을 배제하지 못해요. 여러 번(흔히 6번)의 호흡 내내 이어져야 기관 안이라고 봐요."
+    example: "The color change faded, so we can't call it confirmed."
+    exKo: "색 변화가 사라졌으니 확인됐다고 할 수 없어요."
+  - kind: context
+    words: [w-tube, w-secure, w-tape, w-centimeter, w-depth]
+    scenes:
+      - {who: 차트 기록, icon: board, en: "ETT 7.5 secured at 22 cm at the lip.", ok: true}
+      - {who: 동료 인계, icon: speech, en: "Tube's taped at twenty-two at the lip.", ok: true}
+      - {who: 보호자에게, icon: me, en: "His ETT is secured at 22 at the lip.", ok: false, fix: "The breathing tube is in the right place, and it's taped so it won't move."}
+    why: "ETT·22 at the lip은 의료진끼리 위치를 주고받는 표기예요. 보호자가 알고 싶은 건 '제자리에 있고 고정돼 있다'는 사실이라 쉬운 말로 전해요."
+
+기관절개관 기본 관리:
+  - kind: slider
+    words: [w-tie, w-snug, w-loose, w-finger]
+    cue: "You can slide one finger under the ties, but not two."
+    scale: [loose, snug, too tight]
+    answerAt: 1
+    why: "손가락 하나가 들어가면 알맞게 꼭 맞는 거예요. 두 개가 들어가면 느슨해 관이 빠질 수 있고, 하나도 안 들어가면 목 피부와 혈류를 눌러요."
+    example: "The ties are snug — one finger fits underneath."
+    exKo: "끈이 알맞게 맞아요 — 손가락 하나가 들어가요."
+  - kind: swap
+    words: [w-suction, w-clear]
+    who: "깨어 있는 환자에게 · 흡인 직전"
+    icon: me
+    before: ["I'm going to ", "perform tracheal suctioning", " — it'll make you cough for a few seconds."]
+    options: [perform tracheal suctioning, clear some mucus from your tube, suction you hard]
+    answer: clear some mucus from your tube
+    notes:
+      perform tracheal suctioning: "절차 이름이라 환자에게는 딱딱하고, 무엇을 하는지 그려지지 않아요."
+      clear some mucus from your tube: "무엇을 왜 하는지 쉬운 말로. 기침이 날 거라는 예고까지 하면 덜 놀라요."
+      suction you hard: "'세게'는 아프고 무섭게 들려요. 흡인은 짧고 부드럽게 하는 처치예요."
+    why: "깨어 있는 기관절개 환자는 말로 묻지 못해서 예고가 더 중요해요. 처치 이름보다 무엇이 일어날지를 쉬운 말로 말해요."
+
+기관절개 부위 드레싱·피부:
+  - kind: slider
+    words: [w-redness, w-breakdown, w-skin]
+    cue: "Skin under the flange is pink, intact, and turns white when you press it."
+    scale: [intact skin, redness, breakdown]
+    answerAt: 1
+    why: "눌러서 하얘지는 붉음은 아직 피부가 버티고 있는 발적이에요. 피부가 벗겨지거나 짓무르기 시작하면 breakdown이라고 불러요 — 둘을 구분해 기록해요."
+    example: "There's some redness, but no breakdown yet."
+    exKo: "약간 발적은 있지만 아직 피부 손상은 없어요."
+  - kind: context
+    words: [w-drainage, w-edge, w-clean, w-wound]
+    scenes:
+      - {who: 차트 기록, icon: board, en: "Stoma site: scant serous drainage; edges clean, no erythema.", ok: true}
+      - {who: 동료 인계, icon: speech, en: "There's a little clear drainage, but the edges look clean.", ok: true}
+      - {who: 깨어 있는 환자에게, icon: me, en: "There's scant serous drainage at your stoma site.", ok: false, fix: "There's a little clear fluid around your tube, but the skin looks clean."}
+    why: "scant serous·stoma site는 차트 용어예요. 환자에게는 '맑은 물기가 조금, 피부는 깨끗하다'처럼 보이는 그대로 말해요."
+
+예상 어려운 기도 준비:
+  - kind: pair
+    words: [w-supraglottic, w-airway, w-agree, w-plan, w-talk]
+    pairs: [[supraglottic, airway], [agree, "on plan A, B, and C"], [talk, through who does what]]
+    decoys: [laryngoscope]
+    why: "agree on(~에 합의하다)과 talk through(하나하나 짚어 말하다)는 전치사까지 한 묶음이에요. supraglottic airway는 성대 위에 얹는 구조용 기도기예요."
+  - kind: swap
+    words: [w-tricky, w-backup, w-gear]
+    who: "동료에게 · 기도 예상"
+    icon: speech
+    before: ["His airway looks ", "impossible", ", so we're bringing backup gear."]
+    options: [impossible, tricky, fine]
+    answer: tricky
+    notes:
+      impossible: "과장이에요. 팀이 겁먹거나, 거꾸로 '설마' 하고 흘려들어요."
+      tricky: "동료끼리 '까다롭겠다'는 알맞은 온도 — 그래서 예비 장비를 챙긴다는 말과 맞아요."
+      fine: "예비 장비를 챙기는 이유와 어긋나요."
+    why: "어려운 기도 예상은 과장도 축소도 없이 말해야 팀이 같은 수준으로 준비해요."

@@ -1,0 +1,95 @@
+- title: 신원 불명 환자 등록
+  s:
+  - {t: "임시 등록", i: board, w: "신원 불명 환자는 이름 대신 병원이 정한 임시 이름(예: trauma alpha)으로 등록해요. 이름을 모르는 채로도 진료를 이어 가면서 환자를 구분하는 방법이에요.", d: "Release him", k: ["가족에게 연락했어요", "이분 이름은 알바레즈예요"], a: "Register", ai: board, o: [["Release", "plane"], ["Ignore", "cross"], ["Forget", "bulb"]]}
+  - {t: "임시 밴드", i: bandage, w: "temporary band에는 임시 이름과 번호가 들어가고, 검체도 같은 식별자로 라벨을 붙여요. 한 가지 식별자를 모든 곳에 써야 나중에 기록이 이어져요.", d: "Cut the old", k: ["밴드는 이름을 알 때 채워요", "검체에는 라벨이 필요 없어요"], a: "label", ai: lab, o: [["lose", "magnify"], ["spill", "pill"], ["drop", "chevronDown"]]}
+  - {t: "이후 갱신", i: pencil, w: "once는 '…하는 즉시'라는 접속사예요. 신원이 확인되면 임시 기록을 실제 신원으로 이어 붙이는 절차예요.", d: "since we forgot", k: ["이름을 알려 드릴게요", "기록은 지금 삭제할게요"], a: "update", ai: pencil, o: [["hide", "lock"], ["lose", "magnify"], ["sell", "board"]]}
+  - {t: "일관 사용", i: lock, w: "Until로 임시 번호를 쓰는 기간을 정해 줘요. 같은 번호를 모든 검체와 차트에 써야 다른 환자의 것과 섞이지 않아요.", d: "Because we know", k: ["이름을 알면 번호를 지워요", "검체마다 번호가 달라요"], a: "same", ai: lock, o: [["different", "gear"], ["old", "calendar"], ["wrong", "cross"]]}
+  - {t: "팀 공유", i: speech, w: "임시 이름은 팀 모두가 똑같이 알아야 쓸모가 있어요. confirm the team knows로 서로 다른 이름으로 부르는 혼선을 막아요.", d: "Let's pretend", k: ["팀이 이미 실명을 알고 있어요", "트라우마 알파를 취소할게요"], a: "registered", ai: board, o: [["released", "plane"], ["hidden", "lock"], ["moved", "compass"]]}
+  - {t: "일괄 갱신", i: pencil, w: "everywhere at once는 한 곳도 남기지 않고 동시에 고친다는 뜻이에요. 일부만 바뀌면 같은 환자의 기록이 이름 둘로 남을 수 있어요.", d: "one by one", k: ["가족이 곧 도착할 거예요", "이름은 나중에 바꿔요"], a: "real", ai: star, o: [["fake", "cross"], ["funny", "faceAngry"], ["secret", "lock"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "신원 불명 환자 처리 순서"
+    why: "먼저 임시 이름으로 등록하고, 임시 밴드를 채운 뒤, 같은 번호로 검체에 라벨을 붙이고, 신원이 확인되면 기록을 갱신해요. 앞 단계가 있어야 다음 단계의 임시 번호가 생겨서 순서가 하나예요."
+    lines:
+    - {en: "Register him as unknown male, trauma alpha.", icon: board, ko: "신원 불명 남성, 트라우마 알파로 등록해요", note: "등록"}
+    - {en: "Now put the temporary band on him.", icon: bandage, ko: "이제 임시 밴드를 채워요", note: "밴드"}
+    - {en: "Label all samples with the same temporary ID.", icon: lab, ko: "모든 검체에 같은 임시 번호를 붙여요", note: "라벨"}
+    - {en: "Once we identify him, we'll update everything.", icon: pencil, ko: "신원이 확인되면 전부 갱신해요", note: "갱신"}
+  ctx: {word: "unknown male", ko: "신원 불명 남성"}
+- title: 검체 라벨 오류 방지
+  s:
+  - {t: "대조 확인", i: lab, w: "bed four, not bed six처럼 맞는 것과 아닌 것을 함께 말하면 혼동하기 쉬운 지점을 정확히 짚어요. 같은 병실에서는 침상 번호가 헷갈리기 쉬워서 그 자리에서 같이 확인해요.", d: "for room two", k: ["이 튜브는 6번 침상용이에요", "이 튜브는 비어 있어요"], a: "confirm", ai: check, o: [["guess", "bulb"], ["skip", "cross"], ["hurry", "plane"]]}
+  - {t: "함께 읽기", i: speech, w: "이름과 오더를 함께 소리 내어 읽으면 라벨과 처방이 같은 환자의 것인지 한 번에 맞춰 볼 수 있어요. Read me …는 상대에게 읽어 달라는 요청이에요.", d: "Write me", k: ["이름만 읽어 주세요", "오더는 나중에 읽어요"], a: "name", ai: speech, o: [["price", "board"], ["color", "star"], ["shape", "gear"]]}
+  - {t: "라벨 원칙", i: lab, w: "at the bedside는 환자 곁에서 한다는 뜻이에요. 환자 앞에서 신원을 확인하며 붙여야 튜브가 바뀌지 않아요.", d: "in the hall", k: ["라벨은 데스크에서 붙여요", "검체는 한꺼번에 라벨해요"], a: "bedside", ai: bandage, o: [["window", "bulb"], ["elevator", "hospital"], ["entrance", "home"]]}
+  - {t: "위험 설명", i: siren, w: "With …로 조건을 앞에 두고 it's easy to …로 위험을 말해요. 한 병실에 환자가 둘이면 튜브가 서로 바뀔 위험이 커서 라벨 원칙이 더 중요해져요.", d: "the same tube", k: ["환자가 한 명이면 튜브가 바뀌지 않아요", "병실이 비어 있어요"], a: "grab", ai: lab, o: [["paint", "pencil"], ["kick", "faceAngry"], ["sing", "mic"]]}
+  - {t: "사전 확인", i: check, w: "Always로 예외 없는 규칙임을 말해요. before you label로 순서를 정해 라벨을 붙이기 전에 침상 번호부터 보게 해요.", d: "once you leave", k: ["라벨을 붙인 뒤 번호를 확인해요", "튜브는 늘 같은 방향으로 놓아요"], a: "before", ai: calendar, o: [["after", "chevronRight"], ["while", "monitor"], ["since", "pushpin"]]}
+  - {t: "금지 사항", i: cross, w: "Never로 데스크에서 라벨 붙이는 일을 단호히 금지해요. 환자 곁을 떠나 붙이면 어느 환자의 튜브인지 확인할 방법이 사라져요.", d: "Always carry", k: ["라벨은 데스크로 가져가서 붙여요", "튜브 라벨은 필요 없어요"], a: "Never", ai: cross, o: [["Always", "check"], ["Often", "calendar"], ["Sometimes", "chartup"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "검체 라벨링 4단계"
+    why: "침상 번호를 먼저 확인하고, 이름과 오더를 읽어 맞춘 뒤, 그 자리에서 라벨을 붙이고, 마지막에 이유를 정리해요. 앞 단계가 뒤 단계의 조건이라 순서가 하나예요."
+    lines:
+    - {en: "First, check the bed number.", icon: check, ko: "먼저 침상 번호를 확인해요", note: "번호"}
+    - {en: "Then read me the name and the order together.", icon: speech, ko: "그다음 이름과 오더를 같이 읽어 주세요", note: "대조"}
+    - {en: "Now we label the tube right here at the bedside.", icon: lab, ko: "이제 여기 침상 옆에서 튜브에 라벨을 붙여요", note: "라벨"}
+    - {en: "That's how we avoid mix-ups.", icon: shield, ko: "이렇게 하면 뒤바뀜을 막을 수 있어요", note: "정리"}
+  sw: {ko: "라벨은 침상 옆에서 붙이고, 데스크에서는 절대 안 해요"}
+- title: 낙상 발생 후 대응
+  s:
+  - {t: "안정·통증", i: faceWorried, w: "Stay still을 먼저 말해 움직이다 더 다치는 일을 막고, 질문은 can you tell me로 부드럽게 해요. 낙상 직후에는 옮기기 전에 어디가 아픈지부터 파악해요.", d: "Sit up", k: ["어디서 넘어지셨어요?", "지금 일어나 보세요"], a: "hurts", ai: faceWorried, o: [["sleeps", "coffee"], ["smiles", "star"], ["sings", "mic"]]}
+  - {t: "머리 부상", i: stetho, w: "at all은 조금이라도 부딪혔는지 묻는 강조예요. 낙상 후에는 머리를 부딪혔는지가 이후 평가의 범위를 정해서 가장 먼저 묻는 항목이에요.", d: "your neck", k: ["넘어질 때 어지러우셨어요?", "머리가 아프세요?"], a: "hit", ai: stetho, o: [["wash", "bandage"], ["paint", "pencil"], ["comb", "gear"]]}
+  - {t: "이동 전 평가", i: stetho, w: "I'm going to …는 곧 할 일을 미리 알리는 말이에요. 낙상 후에는 옮기기 전에 먼저 상태를 살펴서 손상을 키우지 않아요.", d: "after we leave", k: ["바로 침대로 옮길게요", "혼자 일어나 보세요"], a: "before", ai: calendar, o: [["after", "chevronRight"], ["unless", "cross"], ["though", "speech"]]}
+  - {t: "손상 확인", i: magnify, w: "any injury는 어떤 손상이든 찾아본다는 뜻이에요. before you try로 일어서려는 시도보다 확인이 먼저라고 말해요.", d: "after you rest", k: ["일어서서 걸어 보세요", "다친 곳은 없어요"], a: "injury", ai: bandage, o: [["dessert", "coffee"], ["weather", "bulb"], ["visitor", "home"]]}
+  - {t: "보고·계획", i: board, w: "report는 정식으로 알린다는 동사예요. 다치지 않은 낙상도 보통 보고 대상이고, 결과를 care plan에 반영해야 재발을 막을 수 있어요.", d: "I'll hide", k: ["낙상은 보고하지 않을게요", "퇴원 계획을 갱신할게요"], a: "report", ai: board, o: [["hide", "lock"], ["deny", "cross"], ["forget", "bulb"]]}
+  - {t: "안심·재발 방지", i: shield, w: "You're okay for now처럼 for now를 붙이면 지금 확인한 상태만 말하는 거라 섣부른 장담을 하지 않아요. 이어서 재발 방지를 같이 이야기해 환자를 참여시켜요.", d: "for sure", k: ["이번엔 보고하지 않을 거예요", "완전히 다 나으셨어요"], a: "talk", ai: speech, o: [["joke", "faceAngry"], ["sing", "mic"], ["laugh", "star"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "낙상 직후 대응 순서"
+    why: "먼저 움직이지 않게 하고 통증 부위를 묻고, 머리를 부딪혔는지 이어서 묻고, 옮기기 전에 직접 살핀 뒤, 보고와 계획 갱신으로 마무리해요."
+    lines:
+    - {en: "Stay still — can you tell me where it hurts?", icon: faceWorried, ko: "가만히 계세요, 어디가 아프세요?", note: "통증"}
+    - {en: "And did you hit your head?", icon: stetho, ko: "그리고 머리를 부딪히셨어요?", note: "머리"}
+    - {en: "Let me check you before we move you up.", icon: magnify, ko: "옮기기 전에 먼저 살펴볼게요", note: "평가"}
+    - {en: "I'll report this fall and update your care plan.", icon: board, ko: "낙상을 보고하고 계획을 갱신할게요", note: "보고"}
+  sw: {ko: "이 낙상을 보고하고 케어 플랜을 갱신할게요"}
+- title: 억제대 사용 안전
+  s:
+  - {t: "일시적 사용", i: lock, w: "temporary로 영구적인 조치가 아니라는 점을 먼저 알려요. only to …로 억제대를 쓰는 목적을 줄을 지키는 것 하나로 좁혀 말해요.", d: "to teach him", k: ["이건 앞으로 계속 쓸 거예요", "줄은 저절로 빠져요"], a: "temporary", ai: calendar, o: [["permanent", "lock"], ["painful", "faceWorried"], ["free", "star"]]}
+  - {t: "정기 확인", i: stetho, w: "억제대를 쓰는 동안 순환과 피부를 정기적으로 확인하는 것은 병원 정책의 필수 항목이에요. every hour처럼 주기를 말하면 가족도 안심해요(주기는 병원 정책에 따라 달라요).", d: "every week", k: ["하루에 한 번만 확인해요", "억제대는 밤에만 해요"], a: "hour", ai: calendar, o: [["week", "calendar"], ["month", "chartup"], ["year", "plane"]]}
+  - {t: "해제 기준", i: check, w: "as soon as는 조건이 충족되는 즉시라는 뜻이에요. 억제대는 필요가 없어지는 즉시 푸는 것이 원칙이라 시기를 약속해 줘요.", d: "even if it's", k: ["내일까지 풀지 않을 거예요", "가족이 직접 풀 수 있어요"], a: "remove", ai: check, o: [["tighten", "lock"], ["wash", "bandage"], ["sell", "board"]]}
+  - {t: "사용 기준", i: shield, w: "only used when …은 사용 조건을 좁게 한정해요. 억제대는 다른 방법으로 안전을 지킬 수 없을 때 쓰는 마지막 수단이에요.", d: "are never used", k: ["억제대는 항상 사용해요", "정맥줄은 빼 드릴게요"], a: "only", ai: lock, o: [["always", "chartup"], ["never", "cross"], ["often", "calendar"]]}
+  - {t: "설명", i: speech, w: "Let me explain으로 이유를 말씀드리겠다고 먼저 알리면 듣는 사람이 방어적으로 되지 않아요. right now는 지금 상황에만 해당하는 설명이라는 한정이에요.", d: "Let me promise", k: ["이게 왜 필요 없는지 알려 드릴게요", "이건 영구적이에요"], a: "explain", ai: speech, o: [["hide", "lock"], ["forget", "bulb"], ["deny", "cross"]]}
+  - {t: "해제 후 확인", i: check, w: "As soon as he's calmer로 풀 시점의 기준을 구체적으로 말해요. 푼 뒤에도 피부를 다시 확인해 눌린 자국이나 손상이 없는지 봐요.", d: "Unless he's calmer", k: ["진정되어도 풀지 않을 거예요", "풀기 전에 피부를 한 번 확인해요"], a: "calmer", ai: faceWorried, o: [["angrier", "faceAngry"], ["louder", "speaker"], ["weaker", "bandage"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "억제대 설명 4문장 순서"
+    why: "먼저 일시적이라는 것과 목적을 말하고, 사용하는 동안의 확인을 알린 뒤, 진정되면 푼다고 하고, 푼 다음 확인으로 마무리해요. 시간 흐름 그대로라 순서가 하나예요."
+    lines:
+    - {en: "This is temporary, only to keep him from pulling his lines.", icon: lock, ko: "일시적이에요, 줄을 잡아당기지 못하게 하려는 거예요", note: "목적"}
+    - {en: "In the meantime, we check his circulation and skin every hour.", icon: stetho, ko: "그동안 매시간 순환과 피부를 확인해요", note: "확인"}
+    - {en: "As soon as he's calmer, we'll remove them.", icon: check, ko: "진정되면 바로 풀어드릴게요", note: "해제"}
+    - {en: "Then we'll check his skin again.", icon: magnify, ko: "그런 다음 피부를 다시 확인할게요", note: "재확인"}
+  ctx: {word: "restraints", ko: "신체 억제대"}
+- title: 감염 격리 설명
+  s:
+  - {t: "격리 이유", i: shield, w: "to protect others from …로 격리의 목적을 말하면 환자가 벌을 받는 게 아니라 다른 사람을 지키는 조치로 들려요. 가족에게 낙인 없이 설명하는 방법이에요.", d: "to teach him", k: ["그는 아무도 만날 수 없어요", "그는 곧 퇴원할 거예요"], a: "isolation", ai: shield, o: [["surgery", "scalpel"], ["pain", "faceWorried"], ["labor", "baby"]]}
+  - {t: "보호구 안내", i: shield, w: "wear A, B, and C처럼 필요한 보호구를 나열하면 빠뜨리는 것이 없어요. before entering으로 착용 시점도 함께 말해요.", d: "after leaving", k: ["들어가기 전에 가운만 입으세요", "가운은 나올 때 입어요"], a: "mask", ai: shield, o: [["scarf", "bandage"], ["hat", "star"], ["ring", "trophy"]]}
+  - {t: "손 위생", i: me, w: "go in and out으로 들어갈 때와 나올 때 모두라는 뜻을 짧게 담아요. 병실을 드나들 때의 손 씻기는 감염 전파를 줄이는 기본이에요.", d: "just once", k: ["들어갈 때만 씻으면 돼요", "손은 씻지 않아도 돼요"], a: "in and out", ai: home, o: [["to bed", "bandage"], ["to lunch", "coffee"], ["to sleep", "monitor"]]}
+  - {t: "목적 설명", i: shield, w: "helps stop은 완전히 막는다고 단언하지 않고 줄여 준다고 말해요. 격리는 감염이 다른 환자에게 번지는 길을 줄이는 조치예요.", d: "spread infection", k: ["격리는 환자를 벌주는 거예요", "감염은 이미 모두에게 퍼졌어요"], a: "spreading", ai: siren, o: [["sleeping", "monitor"], ["shrinking", "chevronDown"], ["ending", "cross"]]}
+  - {t: "보호 효과", i: shield, w: "picking up은 병을 '옮아 온다'는 일상 표현이에요. 보호구는 들어가는 사람 자신을 지켜 주기도 해요.", d: "from handing out", k: ["가운과 장갑은 환자를 위한 거예요", "가운은 입지 않아도 돼요"], a: "gloves", ai: shield, o: [["socks", "bandage"], ["hats", "star"], ["rings", "trophy"]]}
+  - {t: "나올 때", i: me, w: "again은 들어가기 전에 씻은 것에 더해 나올 때 또 씻는다는 뜻이에요. right after로 시점을 곧바로 정해 병실 밖으로 균을 가져가지 않게 해요.", d: "Never wash", k: ["나온 뒤 한 시간 뒤에 씻으세요", "들어가기 전에만 씻으세요"], a: "leave", ai: home, o: [["paint", "pencil"], ["lock", "lock"], ["rent", "board"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "격리 병실 안내 4문장 순서"
+    why: "이유를 먼저 설명하고, 들어가기 전 보호구를 입게 한 뒤, 들어가기 전 손 씻기를 덧붙이고, 나올 때 다시 씻는 것으로 마무리해요. And와 again이 앞 줄을 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "He's in isolation to protect others from infection.", icon: shield, ko: "다른 사람들을 지키려고 격리 중이에요", note: "이유"}
+    - {en: "Please wear this gown, gloves, and mask before entering.", icon: shield, ko: "들어가기 전에 가운, 장갑, 마스크를 착용해 주세요", note: "보호구"}
+    - {en: "And wash your hands well before you go in.", icon: me, ko: "그리고 들어가기 전에 손을 잘 씻으세요", note: "손 씻기"}
+    - {en: "Always wash your hands again right after you leave the room.", icon: me, ko: "나온 직후에 다시 손을 씻으세요", note: "재확인"}
+  ctx: {word: "isolation", ko: "격리"}

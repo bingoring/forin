@@ -1,0 +1,95 @@
+- title: 임신부 복부외상
+  s:
+  - {t: "임신 확인", i: baby, w: "두 질문을 and로 이어 임신 주수와 태동을 한 번에 물어요. 임신부 외상에서는 주수에 따라 태아를 지켜보는 방법과 필요한 처치가 달라져요.", d: "at home", k: ["마지막 생리는 언제였어요?", "전에도 임신한 적이 있나요?"], a: "weeks", o: ["years", "times", "hours"]}
+  - {t: "증상 문진", i: faceWorried, w: "세 가지를 or로 나열해 해당되는 것을 환자가 고르게 해요. 임신 중 복부 외상 뒤 출혈이나 배가 조이는 느낌은 태반이나 조기 진통 문제의 단서일 수 있어요.", d: "or headaches", k: ["아기가 평소보다 덜 움직이나요?", "마지막으로 소변을 본 게 언제인가요?"], a: "cramping", o: ["coughing", "sneezing", "itching"]}
+  - {t: "출혈·양수", i: faceWorried, w: "bright red로 색을 짚어 물으면 환자가 새 출혈인지 알려 주기 쉬워요. 질에서 나오는 선홍색 피나 맑은 액체는 태반이나 양막 문제를 알려 주는 단서가 될 수 있어요.", d: "or a smell", k: ["어두운 색의 피도 나왔나요?", "얼마나 많이 나왔나요?"], a: "bright", o: ["dark", "pale", "deep"]}
+  - {t: "태아 감시", i: monitor, w: "to check …로 모니터를 다는 목적을 먼저 말해 불안을 줄여요. 임신부 외상에서는 산모가 괜찮아 보여도 태아 심박을 지켜봐야 해요.", d: "on your leg", k: ["모니터를 다는 동안 옆으로 누워 주세요", "불편하면 바로 말씀해 주세요"], a: "heartbeat", o: ["weight", "gender", "size"]}
+  - {t: "태동 보고", i: bell, w: "when you feel로 느끼는 순간 바로 알려 달라고 해요. 외상 뒤 태동이 줄거나 없어지는 것은 태아 상태를 걱정하게 하는 신호라 환자의 느낌도 중요한 정보예요.", d: "in the morning", k: ["배가 단단해지면 말씀해 주세요", "아기 움직임을 세어 보세요"], a: "baby", o: ["cramp", "pressure", "water"]}
+  - {t: "모니터 설명", i: monitor, w: "will show us로 모니터가 보여 주는 것을 구체적으로 알려요. 심박과 수축을 함께 보면 태아가 수축이나 외상에 어떻게 반응하는지 알 수 있어요.", d: "and your weight", k: ["모니터 소리가 나도 놀라지 마세요", "모니터는 계속 달고 계실 거예요"], a: "contractions", o: ["bleeding", "weight", "height"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "임신부 복부외상 문진 4문장 순서"
+    why: "주수와 태동을 묻고, 태동 말고 다른 증상을 묻고, 어떤 증상이든 모니터로 태아 심박을 보겠다고 한 뒤, 그 모니터가 보여 주는 것을 설명해요. 'the baby's movement'·'Whatever you're feeling'·'The monitor'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "How many weeks pregnant are you, and is the baby moving?", icon: baby, ko: "임신 몇 주이고 아기는 움직이고 있나요?", note: "주수"}
+    - {en: "Besides the baby's movement, are you having any bleeding, cramping, or tightening?", icon: faceWorried, ko: "아기 움직임 말고 출혈이나 경련, 조여지는 느낌이 있으세요?", note: "증상"}
+    - {en: "Whatever you're feeling, we'll put a monitor on to check the baby's heartbeat.", icon: monitor, ko: "어떤 느낌이든 아기 심장박동을 확인하려고 모니터를 달게요", note: "모니터"}
+    - {en: "The monitor will show us the baby's heartbeat and your contractions.", icon: monitor, ko: "모니터로 아기 심장박동과 산모님의 수축을 볼 수 있어요", note: "설명"}
+  ctx: {word: "assess", ko: "평가하다"}
+- title: 언어장벽 흉복부외상
+  s:
+  - {t: "통역 연결", i: speech, w: "so we understand each other로 통역사를 부르는 이유를 환자에게 알려요. 의료 정보를 정확히 주고받으려면 가족이 아니라 자격 있는 의료 통역사가 필요해요.", d: "in the hallway", k: ["가족분을 불러 드릴게요", "잠시 후에 의사 선생님이 오세요"], a: "understand", o: ["greet", "thank", "forgive"]}
+  - {t: "손짓 요청", i: pushpin, w: "말이 통하지 않을 때는 가리키기와 손가락 숫자 같은 몸짓으로 답하게 해요. 통역사가 연결되기 전에도 위치와 통증 정도를 알 수 있어요.", d: "with your hand", k: ["숫자로 통증을 말해 보세요", "손바닥으로 아픈 곳을 덮어 보세요"], a: "bad", o: ["old", "far", "tall"]}
+  - {t: "척도 약속", i: chartup, w: "손가락 수를 약속으로 정해 주면 언어가 달라도 같은 척도로 답할 수 있어요. mild와 severe로 양 끝의 뜻을 정해 줘요.", d: "two fingers mean", k: ["0은 아프지 않다는 뜻이에요", "다섯 개는 중간 정도예요"], a: "mild", o: ["normal", "calm", "simple"]}
+  - {t: "병력 문진", i: pill, w: "or로 지병과 복용약을 한 번에 물어요. 지병과 복용약은 외상 치료와 약 선택에 영향을 줘서 말이 서툰 환자일수록 빠뜨리지 않고 물어야 해요.", d: "or live alone", k: ["수술 받은 적이 있나요?", "담배나 술을 하시나요?"], a: "medical", o: ["legal", "financial", "family"]}
+  - {t: "알레르기", i: shield, w: "allergic to …로 약 알레르기를 직접 물어요. 투약 전에 알레르기를 알아야 위험한 반응을 피할 수 있어요.", d: "to any foods", k: ["음식 알레르기도 있으세요?", "라텍스에 반응이 있었나요?"], a: "allergic", o: ["addicted", "opposed", "prone"]}
+  - {t: "통역 효과", i: speech, w: "will help us로 통역사가 하는 일을 알려요. 정확한 정보를 빨리 얻으면 응급 처치에서 놓치는 것이 줄어요.", d: "from the family", k: ["통역사가 곧 전화로 연결돼요", "통역사가 있으니 편하게 말씀하셔도 돼요"], a: "quickly", o: ["slowly", "rarely", "privately"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "통역 연결 후 문진 4문장 순서"
+    why: "통역사를 부른다고 알리고, 연결될 때까지 몸짓으로 답하게 하고, 그 손가락 약속을 정한 뒤, 아픈 정도를 알았으니 병력을 물어요. 'they'·'fingers'·'how bad it is'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "I'm getting an interpreter so we understand each other.", icon: speech, ko: "서로 이해할 수 있도록 통역사를 부를게요", note: "통역"}
+    - {en: "Until they connect, point to where it hurts and hold up fingers for how bad.", icon: pushpin, ko: "연결될 때까지 아픈 곳을 가리키고 손가락으로 얼마나 아픈지 보여 주세요", note: "몸짓"}
+    - {en: "One finger means mild, ten fingers means severe.", icon: chartup, ko: "손가락 하나는 약함, 열 개는 심함을 뜻해요", note: "약속"}
+    - {en: "Now that I know how bad it is, do you have any medical problems or take any medicines?", icon: pill, ko: "얼마나 아픈지 알았으니 지병이나 드시는 약이 있나요?", note: "병력"}
+  sw: {ko: "서로 이해할 수 있도록 통역사를 부를게요"}
+- title: 흉관 삽입 준비 설명
+  s:
+  - {t: "목적 설명", i: bulb, w: "so your lung can …로 관의 목적을 환자가 이해할 말로 풀어요. 흉강에 찬 공기나 피를 빼내면 눌려 있던 폐가 다시 펴져요.", d: "from your arm", k: ["관은 가슴 옆쪽에 넣어요", "관 끝은 통에 연결돼요"], a: "drains", o: ["fills", "hides", "adds"]}
+  - {t: "효과 설명", i: bulb, w: "will help처럼 도움이 된다고 말해 과한 약속을 피해요. 관으로 공기나 피를 계속 빼 주면 폐가 다시 눌리지 않고 펴진 채 유지돼요.", d: "all day", k: ["관을 넣으면 숨쉬기가 편해질 거예요", "관은 며칠간 둘 수 있어요"], a: "open", o: ["flat", "closed", "empty"]}
+  - {t: "마취 안내", i: pill, w: "first로 마취가 먼저라는 순서를 알려요. 국소마취를 하면 시술하는 동안 아픈 느낌이 줄어요.", d: "after the tube", k: ["그 부위를 소독부터 할게요", "시작 전에 한 번 더 말씀드릴게요"], a: "numb", o: ["shave", "mark", "measure"]}
+  - {t: "느낌 예고", i: bell, w: "might로 느낄 수 있다고 가능성으로 말하고 pinch와 pressure의 순서를 알려요. 미리 알면 놀라서 움직이는 일이 줄어요.", d: "for a while", k: ["움직이지 않으면 금방 끝나요", "불편하면 손을 들어 알려 주세요"], a: "feel", o: ["hear", "taste", "smell"]}
+  - {t: "통증 요청", i: bell, w: "but으로 눌리는 느낌은 있을 수 있지만 통증은 참지 말라고 구분해 줘요. 마취가 모자라면 의사에게 알려 마취를 더 해요.", d: "a little", k: ["움직이지 말고 가만히 계세요", "숨은 편하게 쉬세요"], a: "pressure", o: ["nothing", "relief", "comfort"]}
+  - {t: "곁에 있기", i: handshake2, w: "I'll stay right here로 곁에 있겠다고 말해 불안을 줄여요. 시술은 의사가 하고 간호사는 환자를 안심시키며 상태를 지켜봐요.", d: "outside", k: ["의사 선생님이 곧 오실 거예요", "필요하면 손을 잡아 드릴게요"], a: "stay", o: ["leave", "hide", "run"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "흉관 시술 전 설명 4문장 순서"
+    why: "의사가 관을 넣는다고 알리고, 그 전에 마취한다고 말한 뒤, 마취할 때의 느낌을 예고하고, 그 모든 과정에서 곁에 있겠다고 해요. 'Before that'·'the numbing'·'all of that'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "The doctor will place a tube to drain air or blood.", icon: bulb, ko: "의사 선생님이 공기나 피를 빼내는 관을 넣을 거예요", note: "목적"}
+    - {en: "Before that, we'll numb the area to make it comfortable.", icon: pill, ko: "그전에 편하시도록 부위를 마취할게요", note: "마취"}
+    - {en: "You might feel a pinch from the numbing, and then pressure.", icon: bell, ko: "마취할 때 따끔하고 그다음엔 눌리는 느낌이 있을 수 있어요", note: "예고"}
+    - {en: "Through all of that, I'll stay right here with you.", icon: handshake2, ko: "그 모든 동안 제가 곁에 있을게요", note: "안심"}
+  ctx: {word: "thoracostomy", ko: "흉관 삽입술"}
+- title: 긴장성 기흉 감압 위기
+  s:
+  - {t: "긴급 알림", i: siren, w: "right now로 지금 바로 조치가 필요하다고 분명히 말해요. 위기 상황에서는 짧고 직접적인 말이 환자와 팀 모두에게 전달돼요.", d: "after the scan", k: ["산소를 최대로 드릴게요", "팀이 곧 옆으로 올 거예요"], a: "collapsing", o: ["healing", "resting", "growing"]}
+  - {t: "청진 소견", i: stetho, w: "I don't hear처럼 들은 것을 사실대로 말해요. 한쪽 호흡음이 안 들리는 것은 그쪽 폐가 제대로 펴지지 않았다는 중요한 소견이라 팀에 바로 알려요.", d: "in the back", k: ["반대쪽 숨소리를 먼저 들어 볼게요", "가슴 모양이 양쪽 다른지 볼게요"], a: "hear", o: ["see", "smell", "taste"]}
+  - {t: "목 정맥 소견", i: magnify, w: "I can see로 눈에 보이는 소견을 말해요. 긴장성 기흉에서는 가슴 안 압력이 정맥 피가 심장으로 돌아가는 것을 막아 목 정맥이 부풀 수 있어요.", d: "and very warm", k: ["숨 쉴 때 목이 아프세요?", "목 주변에 멍이 있는지 볼게요"], a: "bulging", o: ["flat", "shrinking", "tiny"]}
+  - {t: "도움 요청", i: siren, w: "I'm getting the team으로 직접 하지 않고 팀을 부른다고 말해요. 가슴 안 압력을 푸는 시술은 의사나 APP가 하고 간호사는 팀을 부르고 준비를 도와요.", d: "from your neck", k: ["필요한 물품은 제가 준비할게요", "의사 선생님이 곧 도착해요"], a: "release", o: ["increase", "raise", "hide"]}
+  - {t: "처치 안내", i: bandage, w: "to relieve로 바늘을 넣는 이유를 먼저 말해요. 압력을 빨리 풀어 주는 바늘 감압은 의사나 APP가 하는 응급 시술이에요.", d: "in your arm", k: ["가슴 옆쪽을 소독부터 할게요", "시술 도구를 가져오고 있어요"], a: "relieve", o: ["raise", "build", "trap"]}
+  - {t: "안정 요청", i: me, w: "in a moment로 곧 나아질 거라고 짧게 말해 환자를 안심시켜요. 시술하는 동안 움직이지 않으면 의사가 안전하게 할 수 있어요.", d: "on your side", k: ["천천히 숨을 쉬어 보세요", "제가 계속 곁에 있을게요"], a: "breathe", o: ["swallow", "sleep", "walk"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "긴장성 기흉 위기 대응 4문장 순서"
+    why: "호흡음이 안 들린다고 알리고, 그 소견과 목 정맥으로 지금 조치가 필요하다고 말한 뒤, 그것을 위해 팀을 부르고, 팀이 준비하는 동안 가만히 있기를 부탁해요. 'That'·'For that'·'they'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "I don't hear any breath sounds on this side.", icon: stetho, ko: "이쪽에서는 숨소리가 전혀 들리지 않아요", note: "소견"}
+    - {en: "That and your bulging neck veins mean we need to act right now.", icon: siren, ko: "그리고 부풀어 오른 목 정맥 때문에 지금 바로 조치해야 해요", note: "긴급"}
+    - {en: "For that, I'm getting the team to release the pressure in your chest.", icon: siren, ko: "그래서 가슴 안의 압력을 풀어 주려고 팀을 부를게요", note: "호출"}
+    - {en: "While they get ready, try to stay still—this will help you breathe in a moment.", icon: me, ko: "팀이 준비하는 동안 가만히 계세요, 곧 숨쉬기가 편해질 거예요", note: "안정"}
+  ctx: {word: "pneumothorax", ko: "기흉"}
+- title: 대량 혈흉 순환붕괴
+  s:
+  - {t: "수혈 안내", i: bandage, w: "so로 이유와 조치를 이어 말해요. 피를 많이 잃으면 혈액을 직접 채워 줘야 해서 수혈이 필요해요. 수혈은 환자 확인 절차를 거쳐 줘요.", d: "right now", k: ["혈액형 확인부터 할게요", "팔에 굵은 정맥로를 하나 더 잡을게요"], a: "transfusion", o: ["vaccine", "medicine", "sedative"]}
+  - {t: "배액 증가", i: chartup, w: "a lot more … than before로 이전과 비교해 늘었다고 말해요. 흉관으로 나오는 피가 갑자기 많아지면 활동성 출혈의 신호라 의사에게 바로 알려요.", d: "since lunch", k: ["관에서 나오는 양을 다시 재 볼게요", "관 연결 부위를 확인할게요"], a: "blood", o: ["urine", "sweat", "water"]}
+  - {t: "혈압 변화", i: chartup, w: "despite the fluids로 수액을 줘도 나아지지 않는다는 점을 짚어요. 수액에도 혈압이 오르지 않으면 출혈이 계속된다는 뜻이라 혈액 제제와 수술을 서둘러야 해요.", d: "after the scan", k: ["수액 속도를 높일게요", "혈액이 오는 중이에요"], a: "dropping", o: ["rising", "holding", "recovering"]}
+  - {t: "수술팀 도착", i: siren, w: "on the way로 곧 도착한다고 알려요. 흉관에서 피가 계속 나오면 수술로 출혈 부위를 막아야 해서 수술팀이 직접 와요.", d: "to the waiting room", k: ["수술실에도 이미 연락했어요", "수술 설명은 의사 선생님이 해 주실 거예요"], a: "surgical", o: ["nursing", "dental", "billing"]}
+  - {t: "계속 감시", i: monitor, w: "every minute으로 확인 간격을 구체적으로 말해요. 출혈 환자는 배액량과 혈압이 빠르게 변할 수 있어 쉬지 않고 봐요.", d: "from the door", k: ["배액통은 비울 때 양을 기록할게요", "혈압은 모니터로 계속 보고 있어요"], a: "minute", o: ["hour", "shift", "day"]}
+  - {t: "수혈 목적", i: bandage, w: "to replace로 수혈의 목적을 말해요. 잃은 만큼 혈액을 채워 줘야 조직으로 가는 산소 공급이 유지돼요.", d: "for the surgery", k: ["혈액은 따뜻하게 데워서 드려요", "수혈하는 동안 이상한 느낌이 들면 바로 말씀해 주세요"], a: "replace", o: ["hide", "ignore", "avoid"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "대량 혈흉 대응 4문장 순서"
+    why: "관에서 피가 많이 나온다고 알리고, 그것과 혈압 하락이 출혈을 뜻한다고 설명한 뒤, 그 피를 채우려 수혈하고, 피가 들어가는 동안 수술팀이 오고 있다고 해요. 'That'·'it'·'the blood goes in'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "The tube is draining a lot more blood than before.", icon: chartup, ko: "관에서 아까보다 훨씬 많은 피가 나오고 있어요", note: "배액"}
+    - {en: "That and your dropping pressure mean you're losing a lot of blood.", icon: chartup, ko: "그리고 떨어지는 혈압은 피를 많이 잃고 있다는 뜻이에요", note: "설명"}
+    - {en: "To replace it, we're giving you a transfusion.", icon: bandage, ko: "그걸 채우려고 수혈을 해드릴게요", note: "수혈"}
+    - {en: "While the blood goes in, the surgical team is on the way to stop the bleeding.", icon: siren, ko: "피가 들어가는 동안 출혈을 멈추려고 수술팀이 오고 있어요", note: "수술팀"}
+  sw: {ko: "피를 많이 잃고 계셔서 수혈을 해드릴게요"}

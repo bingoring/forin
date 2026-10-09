@@ -1,0 +1,467 @@
+{
+ "theme": "er-shock",
+ "situations": [
+  {
+   "title": "저혈압 초기 활력 인지",
+   "tagline": "I feel so weak and cold — is my blood pressure okay?",
+   "room": "TRIAGE",
+   "brief": "혈압·맥박·의식·말초관류를 확인해 저혈압 초기 상태를 인지하세요.",
+   "role": "patient",
+   "skills": [
+    "활력 사정",
+    "말초관류 확인",
+    "저혈압 인지"
+   ],
+   "keyPhrases": [
+    "Let me take your blood pressure and check your pulse.",
+    "Your hands feel cool — I'm checking your circulation.",
+    "How long have you been feeling weak like this?"
+   ],
+   "goals": [
+    "혈압·맥박·의식·관류를 종합해 사정한다",
+    "저혈압 초기 상태를 신속히 인지한다"
+   ]
+  },
+  {
+   "title": "기립성 저혈압 문진",
+   "tagline": "Every time I stand up, the room spins and I nearly fall.",
+   "room": "EXAM 1",
+   "brief": "기립 시 어지럼·수분 섭취를 문진해 기립성 저혈압을 사정하세요.",
+   "role": "patient",
+   "skills": [
+    "기립성 증상 문진",
+    "수분 사정",
+    "낙상 위험"
+   ],
+   "keyPhrases": [
+    "Do you feel dizzy only when you stand up?",
+    "How much have you had to drink today?",
+    "I'll check your blood pressure lying down and standing."
+   ],
+   "goals": [
+    "기립 시 증상과 수분 상태를 청취한다",
+    "기립성 저혈압 여부를 사정한다"
+   ]
+  },
+  {
+   "title": "대구경 정맥로·수액 설명",
+   "tagline": "Why do I need such a big needle and all this fluid?",
+   "room": "EXAM 2",
+   "brief": "대구경 정맥로 확보와 수액 볼루스의 이유를 환자에게 설명하며 진행하세요.",
+   "role": "patient",
+   "skills": [
+    "정맥로 설명",
+    "수액 볼루스 안내",
+    "환자 안심"
+   ],
+   "keyPhrases": [
+    "I'm placing a larger IV so we can give fluids quickly.",
+    "This fluid will help bring your blood pressure up.",
+    "You'll feel a quick pinch, then a cool sensation in your arm."
+   ],
+   "goals": [
+    "대구경 정맥로의 필요성을 설명한다",
+    "수액 볼루스 목적을 환자에게 안내한다"
+   ]
+  },
+  {
+   "title": "탈수 관련 저혈압 교육",
+   "tagline": "I've been throwing up for two days and can't keep water down.",
+   "room": "FAST TRACK",
+   "brief": "구토·설사·섭취 부족과 저혈압의 관계를 교육하고 수분 회복을 안내하세요.",
+   "role": "patient",
+   "skills": [
+    "탈수 사정",
+    "섭취량 청취",
+    "수분 회복 교육"
+   ],
+   "keyPhrases": [
+    "Losing that much fluid can lower your blood pressure.",
+    "We'll give fluids through your vein to catch you up.",
+    "Once you feel better, we'll try small sips slowly."
+   ],
+   "goals": [
+    "탈수와 저혈압의 관계를 교육한다",
+    "수분 손실량과 회복 계획을 안내한다"
+   ]
+  },
+  {
+   "title": "실신 후 내원 사정",
+   "tagline": "I just dropped at the store — I don't even remember hitting the floor.",
+   "room": "EXAM 3",
+   "brief": "실신 전조·목격 정황·손상 여부를 사정해 원인을 좁히세요.",
+   "role": "patient",
+   "skills": [
+    "실신 사정",
+    "목격 정황 청취",
+    "손상 확인"
+   ],
+   "keyPhrases": [
+    "Do you remember feeling anything before you fainted?",
+    "Did anyone see what happened?",
+    "Did you hit your head or hurt yourself when you fell?"
+   ],
+   "goals": [
+    "실신 전조와 목격 정황을 청취한다",
+    "낙상으로 인한 손상을 확인한다"
+   ]
+  },
+  {
+   "title": "저혈량성 쇼크 출혈원 사정",
+   "tagline": "I've had black, tarry stools and now I feel like I'm going to pass out.",
+   "room": "RESUS BAY",
+   "brief": "흑색변·외상·부인과 출혈 등을 감별해 저혈량성 쇼크의 출혈원을 사정하세요.",
+   "role": "patient",
+   "skills": [
+    "출혈원 감별",
+    "흑색변 청취",
+    "저혈량 사정"
+   ],
+   "keyPhrases": [
+    "Have you noticed any black or bloody stools?",
+    "Are you taking any blood thinners?",
+    "We're getting fluids and blood ready for you."
+   ],
+   "goals": [
+    "저혈량성 쇼크의 출혈원을 계통적으로 감별한다",
+    "활력 저하에 맞춰 수액·수혈을 준비한다"
+   ]
+  },
+  {
+   "title": "패혈증성 쇼크 조기 인지",
+   "tagline": "I've had a fever and chills, and now I just feel completely out of it.",
+   "room": "RESUS BAY",
+   "brief": "발열·빈맥·의식변화·젖산 등 패혈증성 쇼크의 조기 소견을 인지하세요.",
+   "role": "patient",
+   "skills": [
+    "패혈증 조기 인지",
+    "qSOFA 사정",
+    "젖산 확인"
+   ],
+   "keyPhrases": [
+    "You feel warm and your heart is racing — I'm concerned about infection.",
+    "Where do you think the infection might be coming from?",
+    "We're drawing cultures and lactate and starting fluids fast."
+   ],
+   "goals": [
+    "패혈증성 쇼크의 조기 소견을 인지한다",
+    "감염원 추정과 초기 번들을 시작한다"
+   ]
+  },
+  {
+   "title": "심인성 쇼크 감별",
+   "tagline": "My chest has been heavy and now I can't catch my breath lying down.",
+   "room": "RESUS BAY",
+   "brief": "흉통·폐부종·경정맥 확장을 확인해 심인성 쇼크를 감별하세요.",
+   "role": "patient",
+   "skills": [
+    "심인성 쇼크 감별",
+    "폐부종 사정",
+    "경정맥 확인"
+   ],
+   "keyPhrases": [
+    "Does the chest heaviness spread to your arm or jaw?",
+    "Is it harder to breathe when you lie flat?",
+    "We're getting an ECG and listening to your lungs now."
+   ],
+   "goals": [
+    "흉통·폐부종·경정맥 확장으로 심인성 쇼크를 감별한다",
+    "심장 원인에 맞춘 초기 사정을 수행한다"
+   ]
+  },
+  {
+   "title": "아나필락시스 분포성 쇼크",
+   "tagline": "I ate shellfish and now my throat feels tight and I'm covered in hives.",
+   "room": "RESUS BAY",
+   "brief": "노출력·발진을 확인하고 아나필락시스에 에피네프린 투여를 준비하세요.",
+   "role": "patient",
+   "skills": [
+    "아나필락시스 인지",
+    "노출력 청취",
+    "에피네프린 준비"
+   ],
+   "keyPhrases": [
+    "I'm giving you epinephrine in your thigh right now.",
+    "What did you eat or take before this started?",
+    "Does your throat or tongue feel tight?"
+   ],
+   "goals": [
+    "아나필락시스를 신속히 인지한다",
+    "에피네프린 투여와 기도 감시를 준비한다"
+   ]
+  },
+  {
+   "title": "수액 반응성 평가",
+   "tagline": "You gave me all that fluid — am I doing any better?",
+   "room": "RESUS BAY",
+   "brief": "볼루스 후 혈압·소변량 변화를 재사정해 수액 반응성을 평가하세요.",
+   "role": "patient",
+   "skills": [
+    "수액 반응성 평가",
+    "소변량 사정",
+    "재사정"
+   ],
+   "keyPhrases": [
+    "After the fluid, your pressure came up a little.",
+    "We're watching your urine output as a good sign.",
+    "If you don't improve, we'll add another treatment."
+   ],
+   "goals": [
+    "볼루스 후 혈압·소변량 변화를 재사정한다",
+    "수액 반응성에 따라 다음 조치를 판단한다"
+   ]
+  },
+  {
+   "title": "승압제 시작 전 설명",
+   "tagline": "What's this new medicine going into my neck line for?",
+   "room": "RESUS BAY",
+   "brief": "노르에피네프린 등 승압제 시작과 중심정맥로의 이유를 환자에게 설명하세요.",
+   "role": "patient",
+   "skills": [
+    "승압제 설명",
+    "중심정맥 안내",
+    "환자 안심"
+   ],
+   "keyPhrases": [
+    "This medicine helps raise and hold your blood pressure.",
+    "We use the neck line so it works quickly and safely.",
+    "We'll watch you very closely while it's running."
+   ],
+   "goals": [
+    "승압제 시작의 목적을 환자에게 설명한다",
+    "중심정맥로 사용 이유를 안내하며 안심시킨다"
+   ]
+  },
+  {
+   "title": "항응고제 복용 저혈압",
+   "tagline": "I'm on a blood thinner, and now I feel faint — could I be bleeding inside?",
+   "room": "EXAM 2",
+   "brief": "항응고제 복용력과 출혈 위험을 확인해 저혈압 원인을 사정하세요.",
+   "role": "patient",
+   "skills": [
+    "항응고제 이력",
+    "출혈 위험 사정",
+    "저혈압 감별"
+   ],
+   "keyPhrases": [
+    "Which blood thinner do you take, and when was your last dose?",
+    "Any recent falls, bruising, or dark stools?",
+    "We're checking your blood count and clotting right away."
+   ],
+   "goals": [
+    "항응고제 복용력과 출혈 위험을 확인한다",
+    "잠재 출혈에 의한 저혈압을 사정한다"
+   ]
+  },
+  {
+   "title": "언어장벽 쇼크 핵심 확인",
+   "tagline": "Sangre... aquí... duele mucho.",
+   "room": "RESUS BAY",
+   "brief": "언어장벽 저혈압 환자에게 예/아니오로 통증·출혈·알레르기를 확인하세요.",
+   "role": "patient",
+   "skills": [
+    "언어장벽 대응",
+    "폐쇄형 질문",
+    "핵심증상 확인"
+   ],
+   "keyPhrases": [
+    "Bleeding? Point to where. Yes or no?",
+    "Pain here? Yes or no?",
+    "Any allergy to medicine? Interpreter is coming."
+   ],
+   "goals": [
+    "폐쇄형 질문으로 출혈·통증·알레르기를 확인한다",
+    "통역 연계 전 안전을 확보한다"
+   ]
+  },
+  {
+   "title": "노인 다약제 저혈압",
+   "tagline": "I take a lot of pills — my heart and water pills, and now I'm so dizzy.",
+   "room": "EXAM 1",
+   "brief": "강압제·이뇨제 등 다약제 과용 여부를 확인해 저혈압 원인을 사정하세요.",
+   "role": "patient",
+   "skills": [
+    "다약제 검토",
+    "강압제·이뇨제 확인",
+    "저혈압 사정"
+   ],
+   "keyPhrases": [
+    "Can we go through all the medicines you took today?",
+    "Did you take an extra dose of any blood pressure pill?",
+    "Water pills and heart pills together can drop your pressure."
+   ],
+   "goals": [
+    "강압제·이뇨제 등 다약제 복용을 검토한다",
+    "약물 유발 저혈압 가능성을 사정한다"
+   ]
+  },
+  {
+   "title": "원인 미상 저혈압 계통 접근",
+   "tagline": "I just don't feel right, and they say my pressure is low — but why?",
+   "room": "RESUS BAY",
+   "brief": "병력과 검사 우선순위를 정해 원인 미상 저혈압에 계통적으로 접근하세요.",
+   "role": "patient",
+   "skills": [
+    "계통적 병력",
+    "검사 우선순위",
+    "감별 접근"
+   ],
+   "keyPhrases": [
+    "Let's start from the beginning — when did you last feel well?",
+    "Any fever, bleeding, chest pain, or new medications?",
+    "We're running labs and an ECG to find the cause."
+   ],
+   "goals": [
+    "계통적 병력으로 저혈압 원인을 좁힌다",
+    "검사 우선순위를 정해 접근한다"
+   ]
+  },
+  {
+   "title": "패혈증성 쇼크 급속 악화 번들",
+   "tagline": "She's dropping fast — pressure won't come up despite the fluids.",
+   "room": "RESUS BAY",
+   "brief": "급속 악화 패혈증성 쇼크에서 승압·항생제·젖산 번들을 신속히 조율하세요.",
+   "role": "colleague",
+   "skills": [
+    "패혈증 번들",
+    "승압제 시작",
+    "항생제 신속 투여"
+   ],
+   "keyPhrases": [
+    "Fluids aren't holding — start norepinephrine now.",
+    "Get broad-spectrum antibiotics in within the hour.",
+    "Recheck the lactate and keep the MAP above 65."
+   ],
+   "goals": [
+    "패혈증 번들을 시간 내 완수한다",
+    "승압제·항생제를 신속히 개시한다"
+   ]
+  },
+  {
+   "title": "폐색전 폐쇄성 쇼크",
+   "tagline": "He suddenly can't breathe, his leg is swollen, and his pressure crashed.",
+   "room": "RESUS BAY",
+   "brief": "우심부전 소견을 확인하고 폐색전에 의한 폐쇄성 쇼크와 혈전용해를 대비하세요.",
+   "role": "colleague",
+   "skills": [
+    "폐색전 인지",
+    "우심부전 사정",
+    "혈전용해 대비"
+   ],
+   "keyPhrases": [
+    "The swollen leg and crash suggest a massive PE.",
+    "Get a bedside echo to look at the right heart.",
+    "Prepare thrombolytics and notify the team."
+   ],
+   "goals": [
+    "폐색전 폐쇄성 쇼크를 임상 소견으로 인지한다",
+    "혈전용해와 우심부전 대응을 준비한다"
+   ]
+  },
+  {
+   "title": "심장압전 폐쇄성 쇼크",
+   "tagline": "Her pressure's low, neck veins are bulging, and heart sounds are muffled.",
+   "room": "RESUS BAY",
+   "brief": "저혈압·경정맥 확장·심음 감소를 통합해 심장압전을 인지하고 심낭천자를 대비하세요.",
+   "role": "colleague",
+   "skills": [
+    "심장압전 인지",
+    "Beck 삼징 확인",
+    "심낭천자 대비"
+   ],
+   "keyPhrases": [
+    "Low pressure, big neck veins, muffled tones — think tamponade.",
+    "Get the ultrasound and call for a pericardiocentesis kit.",
+    "Give a fluid bolus while we prepare the drain."
+   ],
+   "goals": [
+    "Beck 삼징으로 심장압전을 인지한다",
+    "심낭천자 준비를 신속히 조율한다"
+   ]
+  },
+  {
+   "title": "소화관 대량출혈 쇼크",
+   "tagline": "He's vomiting bright red blood and his pressure keeps falling.",
+   "room": "RESUS BAY",
+   "brief": "소화관 대량출혈 쇼크에서 대량수혈 프로토콜을 개시하고 팀을 조율하세요.",
+   "role": "colleague",
+   "skills": [
+    "대량출혈 대응",
+    "대량수혈 프로토콜",
+    "팀 조율"
+   ],
+   "keyPhrases": [
+    "Activate the massive transfusion protocol now.",
+    "Two large-bore IVs and get O-negative blood up here.",
+    "Call GI for emergent endoscopy."
+   ],
+   "goals": [
+    "대량수혈 프로토콜을 신속히 개시한다",
+    "출혈 통제와 내시경 연계를 조율한다"
+   ]
+  },
+  {
+   "title": "신경성 쇼크 척수손상",
+   "tagline": "He fell off the roof — his pressure's low but his heart rate's slow too.",
+   "room": "TRAUMA BAY",
+   "brief": "저혈압에 서맥이 동반된 신경성 쇼크를 인지하고 척추 고정을 유지하세요.",
+   "role": "colleague",
+   "skills": [
+    "신경성 쇼크 인지",
+    "척추 고정",
+    "서맥 대응"
+   ],
+   "keyPhrases": [
+    "Low pressure with a slow heart rate points to neurogenic shock.",
+    "Keep full spinal precautions — don't move his neck.",
+    "Give fluids and consider a pressor and atropine."
+   ],
+   "goals": [
+    "저혈압+서맥 조합으로 신경성 쇼크를 인지한다",
+    "척추 고정을 유지하며 순환을 지지한다"
+   ]
+  },
+  {
+   "title": "다장기 악화 SBAR·ICU 이송",
+   "tagline": "She's on pressors and still slipping — I think she needs the ICU now.",
+   "room": "RESUS BAY",
+   "brief": "승압제 유지 중 재사정 결과를 SBAR로 보고하고 ICU 이송을 조율하세요.",
+   "role": "colleague",
+   "skills": [
+    "SBAR 보고",
+    "다장기 사정",
+    "ICU 이송 조율"
+   ],
+   "keyPhrases": [
+    "Situation: septic shock on norepinephrine, still hypotensive.",
+    "Her urine output dropped and lactate is climbing.",
+    "I recommend ICU admission and central monitoring now."
+   ],
+   "goals": [
+    "다장기 악화를 SBAR로 종합 보고한다",
+    "ICU 이송을 적시에 조율한다"
+   ]
+  },
+  {
+   "title": "부신위기 저혈압",
+   "tagline": "I take steroids every day but ran out — now I'm weak and my pressure's low.",
+   "room": "RESUS BAY",
+   "brief": "스테로이드 중단력을 확인하고 부신위기에 hydrocortisone 투여를 준비하세요.",
+   "role": "patient",
+   "skills": [
+    "부신위기 인지",
+    "스테로이드 이력",
+    "hydrocortisone 준비"
+   ],
+   "keyPhrases": [
+    "When did you last take your steroid, and why did you stop?",
+    "Missing your steroids can cause a dangerous crisis.",
+    "We're giving hydrocortisone and fluids right away."
+   ],
+   "goals": [
+    "스테로이드 중단력으로 부신위기를 인지한다",
+    "hydrocortisone과 수액 투여를 준비한다"
+   ]
+  }
+ ]
+}

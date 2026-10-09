@@ -113,3 +113,15 @@ test('a re-render does not leave the gesture calling a stale handler', () => {
   act(() => { pan.claim(10); pan.move(5); });
   expect(seen).toEqual(['second']);
 });
+
+test('the bar is the notebook grabber, at the handoff spacing', () => {
+  // lesson-fidelity-v46: dialogue.jsx L11 `grab` — 52×5, rgba(62,54,43,.25), radius 99,
+  // margin 7 auto. The pixel line drew it in solid ink at .45 with square-ish ends and a
+  // 13pt bottom margin.
+  const g = grabber(mount().root);
+  const st = Array.isArray(g.props.style) ? Object.assign({}, ...g.props.style) : g.props.style;
+  expect([st.paddingTop, st.paddingBottom]).toEqual([7, 7]);
+  const bar = g.findAll((n) => typeof n.type === 'string' && n.props?.style?.height === 5, { deep: true })[0];
+  expect(bar.props.style).toMatchObject({ width: 52, height: 5, borderRadius: 99, backgroundColor: 'rgba(62,54,43,.25)' });
+  expect(bar.props.style.opacity).toBeUndefined();
+});

@@ -1,0 +1,107 @@
+# icu-airway 결정 11 정리 — build_icu-airway.py 가 읽는다.
+# 쉬운 단어: 모든 문장에서 태그를 빼고, 남은 태그가 없으면 은행에서 지운다.
+untag_everywhere:
+  w-now: 공통 쉬운 단어(now)
+  w-time: 공통 쉬운 단어(time)
+  w-minute: 공통 쉬운 단어(minute)
+  w-name: 공통 쉬운 단어(name)
+  w-head: 공통 쉬운 단어(head)
+  w-patient: 공통 쉬운 단어(patient)
+  w-know: 공통 쉬운 단어(know)
+  w-go: 공통 쉬운 단어(go)
+  w-see: 공통 쉬운 단어(see)
+  w-come: 공통 쉬운 단어(come)
+  w-hand: 공통 쉬운 단어(hand)
+  w-tell: 간호사가 이미 아는 말(tell)
+  w-want: 간호사가 이미 아는 말(want)
+  w-need: 간호사가 이미 아는 말(need)
+  w-anything: 간호사가 이미 아는 말(anything)
+  w-someone: 간호사가 이미 아는 말(someone)
+  w-everyone: 간호사가 이미 아는 말(everyone)
+  w-one: 간호사가 이미 아는 말 — 'the one who'의 one을 '사람'으로 가르칠 값이 없다
+  w-water: 간호사가 이미 아는 말(water)
+  w-nose: 간호사가 이미 아는 말(nose)
+  w-got: 간호사가 이미 아는 말(I've got)
+
+# 특정 문장에서만 태그를 뺀다(뜻이 카드와 다르다): [상황 번호, 문장 번호, id, why]
+untag_at:
+  - [10, 2, w-close, "keep the airway cart close는 형용사(가까이) — w-close(막히다) 태그를 뺐다"]
+  - [12, 4, w-off, "take the valve off는 떼어 낸다는 불변화사 — w-off(이상한) 태그를 뺐다"]
+  - [12, 5, w-alert, "he's alert는 형용사(의식이 또렷한) — 카드를 '알리다'로 가르고 이 태그를 뺐다"]
+  - [16, 3, w-monitor, "watch the monitor는 기계(명사) — w-monitor(모니터링하다) 태그를 뺐다"]
+  - [11, 0, w-position, "cuff positions는 위치(명사) — w-position(체위) 카드와 뜻이 달라 태그를 뺐다"]
+  - [9, 0, w-safer, "w-safe와 겹치는 비교급 카드 — w-safe로 바꿔 태그"]
+
+# 특정 문장에 태그를 더한다: [상황 번호, 문장 번호, id, why]
+tag_at:
+  - [9, 0, w-safe, "w-safer 대신 w-safe로 태그(safer는 safe의 비교급)"]
+
+# 단어 필드 수정 (id는 그대로). why는 변경 목록에 그대로 들어간다.
+word_edits:
+  w-work: {en: work, ipa: /wɜːrk/, why: "활용형 헤드워드(working)를 원형으로"}
+  w-label: {en: label, ipa: /ˈleɪbəl/, ko: 라벨을 붙이다, why: "활용형 헤드워드(labeled)를 원형으로"}
+  w-adjust: {en: adjust, ipa: /əˈdʒʌst/, ko: 조정하다, why: "활용형 헤드워드(adjusted)를 원형으로"}
+  w-support: {en: support, ipa: /səˈpɔːrt/, ko: 받치다, why: "활용형 헤드워드(supported)를 원형으로"}
+  w-align: {en: align, ipa: /əˈlaɪn/, ko: 정렬하다, why: "활용형 헤드워드(aligned)를 원형으로"}
+  w-sound: {en: sound, ipa: /saʊnd/, why: "복수형 헤드워드(sounds)를 원형으로"}
+  w-result: {en: result, ipa: /rɪˈzʌlt/, why: "복수형 헤드워드(results)를 원형으로"}
+  w-tape: {en: tape, ipa: /teɪp/, why: "활용형 헤드워드(taped)를 원형으로"}
+  w-centimeter: {en: centimeter, ipa: /ˈsɛntɪˌmiːtər/, why: "복수형 헤드워드(centimeters)를 원형으로"}
+  w-tie: {en: tie, ipa: /taɪ/, why: "복수형 헤드워드(ties)를 원형으로"}
+  w-humidify: {en: humidify, ipa: /hjuːˈmɪdɪfaɪ/, ko: 가습하다, why: "활용형 헤드워드(humidified)를 원형으로"}
+  w-prevent: {en: prevent, ipa: /prɪˈvɛnt/, why: "활용형 헤드워드(prevents)를 원형으로"}
+  w-secretion: {en: secretion, ipa: /sɪˈkriːʃən/, why: "복수형 헤드워드(secretions)를 원형으로"}
+  w-dry: {en: dry, ipa: /draɪ/, ko: 마르다; 건조한, why: "활용형 헤드워드(drying)를 원형으로 — 'keep the skin dry'(형용사)도 같은 카드라 ko에 둘 다"}
+  w-help: {en: help, ipa: /hɛlp/, why: "활용형 헤드워드(helps)를 원형으로"}
+  w-edge: {en: edge, ipa: /ɛdʒ/, why: "복수형 헤드워드(edges)를 원형으로"}
+  w-bring: {en: bring, ipa: /brɪŋ/, why: "활용형 헤드워드(bringing)를 원형으로"}
+  w-fail: {en: fail, ipa: /feɪl/, why: "활용형 헤드워드(fails)를 원형으로"}
+  w-buy: {en: buy, ipa: /baɪ/, why: "활용형 헤드워드(buys)를 원형으로"}
+  w-sat: {en: sat, ipa: /sæt/, why: "복수형 헤드워드(sats)를 원형으로"}
+  w-number: {en: number, ipa: /ˈnʌmbər/, why: "복수형 헤드워드(numbers)를 원형으로"}
+  w-drop: {en: drop, ipa: /drɑːp/, why: "활용형 헤드워드(dropping)를 원형으로"}
+  w-burn: {en: burn, ipa: /bɜːrn/, why: "복수형 헤드워드(burns)를 원형으로"}
+  w-sign: {en: sign, ipa: /saɪn/, why: "복수형 헤드워드(signs)를 원형으로"}
+  w-close: {en: close, ipa: /kloʊz/, why: "활용형 헤드워드(closes)를 원형으로"}
+  w-worsen: {en: worsen, ipa: /ˈwɜːrsən/, why: "활용형 헤드워드(worsens)를 원형으로"}
+  w-call: {en: call, ipa: /kɔːl/, why: "활용형 헤드워드(calling)를 원형으로"}
+  w-wait: {en: wait, ipa: /weɪt/, why: "활용형 헤드워드(waiting)를 원형으로"}
+  w-desaturate: {en: desaturate, ipa: /diːˈsætʃəreɪt/, why: "활용형 헤드워드(desaturates)를 원형으로"}
+  w-level: {en: level, ipa: /ˈlɛvəl/, why: "복수형 헤드워드(levels)를 원형으로"}
+  w-ventilate: {en: ventilate, ipa: /ˈvɛntɪleɪt/, why: "활용형 헤드워드(ventilates)를 원형으로"}
+  w-inflate: {en: inflate, ipa: /ɪnˈfleɪt/, ko: 부풀리다, why: "활용형 헤드워드(inflated)를 원형으로"}
+  w-deflate: {en: deflate, ipa: /dɪˈfleɪt/, ko: 바람을 빼다, why: "활용형 헤드워드(deflated)를 원형으로"}
+  w-struggle: {en: struggle, ipa: /ˈstrʌɡəl/, why: "활용형 헤드워드(struggles)를 원형으로"}
+  w-elevate: {en: elevate, ipa: /ˈɛlɪveɪt/, ko: 높이다, why: "활용형 헤드워드(elevated)를 원형으로"}
+  w-lower: {en: lower, ipa: /ˈloʊər/, why: "활용형 헤드워드(lowers)를 원형으로"}
+  w-device: {en: device, ipa: /dɪˈvaɪs/, why: "복수형 헤드워드(devices)를 원형으로"}
+  w-hit: {en: hit, ipa: /hɪt/, why: "활용형 헤드워드(hits)를 원형으로"}
+  w-mark: {en: mark, ipa: /mɑːrk/, why: "활용형 헤드워드(marking)를 원형으로"}
+  w-line: {en: line up, ipa: /laɪn ʌp/, ko: 일직선으로 맞추다, why: "활용형 헤드워드(lined)를 구동사 원형(line up)으로 — 문장은 'lined up right'"}
+  w-hesitate: {en: hesitate, ipa: /ˈhɛzɪteɪt/, why: "활용형 헤드워드(hesitates)를 원형으로"}
+  w-mean: {en: mean, ipa: /miːn/, why: "활용형 헤드워드(means)를 원형으로"}
+  w-rise: {en: rise, ipa: /raɪz/, ko: 부풀어 오르다, why: "활용형 헤드워드(rising)를 원형으로"}
+  w-obstruct: {en: obstruct, ipa: /əbˈstrʌkt/, ko: 폐색되다, why: "활용형 헤드워드(obstructing)를 원형으로, ko는 w-close(막히다)와 겹쳐 '폐색되다'로"}
+  w-nebulize: {en: nebulize, ipa: /ˈnɛbjəlaɪz/, ko: 분무하다, why: "활용형 헤드워드(nebulized)를 원형으로"}
+  w-escalate: {en: escalate, ipa: /ˈɛskəleɪt/, why: "활용형 헤드워드(escalating)를 원형으로"}
+  w-become: {en: become, ipa: /bɪˈkʌm/, why: "활용형 헤드워드(becomes)를 원형으로"}
+  w-cord: {en: cord, ipa: /kɔːrd/, why: "복수형 헤드워드(cords)를 원형으로"}
+  w-periintubation: {en: peri-intubation, why: "문장 첫머리 대문자(Peri-)를 헤드워드에서 뺐다"}
+  # ko만
+  w-check: {ko: 점검하다, why: "w-confirm·w-verify와 ko(확인하다)가 같아 듣고 뜻 고르기에서 겹친다"}
+  w-review: {ko: 검토하다, why: "w-check를 '점검하다'로 가르며 겹치지 않게"}
+  w-verify: {ko: 검증하다, why: "w-confirm·w-check와 ko(확인하다)가 겹쳐 가른다"}
+  w-monitor: {ko: 모니터링하다, why: "w-watch와 ko(지켜보다)가 겹쳐 가른다"}
+  w-stay: {ko: 계속 ~한 상태로 있다, why: "w-keep과 ko(유지하다)가 겹치고, 문장은 stay ready·stays low·stay calm"}
+  w-hard: {ko: 힘든, why: "w-difficult와 ko(어려운)가 겹쳐 가른다"}
+  w-drug: {ko: 약, why: "'약물(명)'은 어색하고 w-medication(약물)과 겹친다"}
+  w-place: {ko: 두다; 끼우다, why: "'눕히다'는 틀림 — 스니핑 자세로 '두다', 발성밸브를 '끼우다'"}
+  w-secure: {ko: 확보하다; 고정된, why: "문장 3개 중 2개가 '기도를 확보하다'인데 ko가 '고정된'뿐이었다"}
+  w-clear: {ko: (분비물을 빼서) 뚫다, why: "w-secure(확보하다)와 겹치고, clear the airway는 분비물을 빼 기도를 뚫는 것"}
+  w-first: {ko: 첫; 먼저, why: "7문장 중 4개가 부사(먼저)인데 ko가 '첫 번째'뿐이었다"}
+  w-pressure: {ko: 압력; 압박, why: "BURP·지혈은 압박, 커프·혈압은 압력 — 둘 다 태그돼 있다"}
+  w-alert: {ko: 알리다, why: "형용사 문장 태그를 빼고 동사 뜻 하나로"}
+
+# 문장 ko 수정: [상황 번호, 문장 번호, 새 ko, why]
+sentence_ko:
+  - [2, 0, "최선의 시야를 위해 스니핑 자세를 잡을게요.", "'눕혀 드릴게요'는 틀림 — 이미 누운 환자의 머리·목 자세를 잡는 것"]

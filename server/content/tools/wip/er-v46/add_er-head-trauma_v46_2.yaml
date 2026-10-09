@@ -1,0 +1,95 @@
+- title: 경증 뇌진탕 귀가교육
+  s:
+  - {t: "재방문 기준", i: siren, w: "if 뒤에 구체적인 증상을 나열하면 환자가 언제 돌아와야 하는지 기준이 분명해요. 심해지는 두통과 구토는 뇌출혈 같은 지연 합병증의 대표 경고 증상이에요.", d: "Stay home", k: ["두통은 타이레놀로 가라앉힐 수 있어요", "구토가 멎으면 물부터 조금씩 드세요"], a: "headache", o: ["rash", "cough", "fever"]}
+  - {t: "경고 증상", i: bell, w: "증상 셋을 짧은 단어로 나열하면 환자와 보호자가 외우기 쉬워요. 혼돈·졸림·무력감은 뇌진탕 뒤 지켜봐야 할 대표적인 신경학적 변화예요.", d: "or hiccups", k: ["오늘 밤은 TV나 휴대폰을 줄여 보세요", "술은 며칠 동안 드시지 마세요"], a: "drowsiness", o: ["hunger", "thirst", "boredom"]}
+  - {t: "보호자 안내", i: home, w: "Have someone…으로 누가 필요한지 먼저 말하고 tonight으로 기간을 좁혀요. 뇌진탕 직후에는 증상이 늦게 나타날 수 있어서 첫날 밤은 옆에서 지켜볼 사람이 필요해요.", d: "drive you", k: ["오늘 밤은 일찍 주무세요", "내일은 직장에 나가지 마세요"], a: "tonight", o: ["tomorrow", "yesterday", "later"]}
+  - {t: "응급 기준", i: siren, w: "much worse로 조금 아픈 정도가 아니라 눈에 띄는 악화를 기준으로 삼아요. 시간이 갈수록 심해지는 두통은 뇌 안 출혈의 경고일 수 있어 지체 없이 오게 해요.", d: "next week", k: ["두통이 가시면 평소처럼 지내셔도 돼요", "두통이 있으면 이 약을 드세요"], a: "headache", o: ["cough", "rash", "fever"]}
+  - {t: "깨우기 안내", i: bell, w: "every few hours로 간격을, to check that…으로 목적을 밝혀요. 자는 동안 의식이 나빠지는 걸 놓치지 않기 위한 확인이라 깨웠을 때 평소처럼 반응하는지가 기준이에요.", d: "Let him sleep", k: ["깨울 때는 이름을 불러 주세요", "깨어나면 시간과 장소를 물어봐 주세요"], a: "hours", o: ["days", "weeks", "minutes"]}
+  - {t: "재방문 기준", i: siren, w: "Any …가 주어라 둘 중 하나만 있어도 돌아오라는 뜻이 한 문장에 담겨요. 발작이나 깨우기 어려움은 뇌진탕 뒤 바로 진료가 필요한 위험 신호예요.", d: "or feeling tired", k: ["이런 증상이 생기면 가족에게도 알려 주세요", "이럴 땐 구급차를 부르세요"], a: "seizure", o: ["rash", "cough", "cramp"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "뇌진탕 귀가교육 4문장 순서"
+    why: "함께 있을 사람을 정하고, 그 사람이 볼 증상을 알리고, 그 증상이면 돌아오라고 한 뒤, 적어 주겠다고 닫아요. 'That person'·'Any of those'·'those warning signs'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Have someone stay with you tonight.", icon: home, ko: "오늘 밤은 누군가와 함께 계세요", note: "동반"}
+    - {en: "That person should watch for confusion, drowsiness, or weakness.", icon: bell, ko: "그분이 혼돈, 졸림, 무력감을 지켜봐 주세요", note: "증상"}
+    - {en: "Any of those means you should come back right away.", icon: siren, ko: "그중 하나라도 있으면 바로 다시 오셔야 해요", note: "기준"}
+    - {en: "Before you go, I'll write down those warning signs for you.", icon: pencil, ko: "가시기 전에 그 경고 증상을 적어 드릴게요", note: "서면"}
+  sw: {ko: "두통이 훨씬 심해지면 바로 다시 오세요"}
+- title: 항응고제 복용 경미 두부외상
+  s:
+  - {t: "복용약 확인", i: pill, w: "Which …?는 이미 먹고 있다고 전제하고 종류를 물어 정확한 약 이름을 얻기 쉬워요. 항응고제 종류는 출혈 위험과 역전제 선택을 정하는 핵심 정보예요.", d: "cold medicine", k: ["마지막으로 복용한 게 언제예요?", "그 약은 누가 처방했나요?"], a: "blood thinner", o: ["pain medicine", "sleeping pill", "antibiotic"]}
+  - {t: "위험 설명", i: bulb, w: "Even a minor…로 가벼워 보여도를 먼저 말해 환자가 별일 아니라고 넘기지 않게 해요. 항응고제를 쓰면 작은 충격에도 뇌 안 출혈이 서서히 생길 수 있어요.", d: "quickly", k: ["이 약은 혈액이 응고되지 않게 해요", "머리에 얼음을 대 드릴게요"], a: "brain", o: ["stomach", "eye", "knee"]}
+  - {t: "검사 권유", i: monitor, w: "We recommend로 의료진이 권하는 형태라 강요처럼 들리지 않아요. to be safe는 지금 괜찮아 보여도 안전을 위해서라는 이유를 줘요. 항응고제를 먹는 두부외상은 증상이 없어도 CT를 흔히 시행해요.", d: "a blood test", k: ["CT 촬영 중에는 가만히 계셔야 해요", "CT는 5분 정도 걸려요"], a: "CT", o: ["PET", "bone", "heart"]}
+  - {t: "위험 설명", i: bulb, w: "make even small…으로 작은 부상조차를 강조해 CT를 권하는 이유를 뒷받침해요. 항응고제는 피가 굳는 것을 늦춰 작은 출혈도 멎기 어렵게 해요.", d: "more painful", k: ["약 때문에 멍이 더 쉽게 들 수 있어요", "약 이름은 차트에 적어 둘게요"], a: "riskier", o: ["safer", "easier", "lighter"]}
+  - {t: "검사 설명", i: magnify, w: "we can't see or feel yet으로 아직 증상이 없어도라는 뜻을 풀어 줘요. CT는 겉으로 보이지 않는 뇌 안 출혈을 찾는 검사예요.", d: "for pain", k: ["스캔 중에는 머리를 움직이지 마세요", "스캔 결과는 약 한 시간 안에 나와요"], a: "bleeding", o: ["infection", "fever", "allergy"]}
+  - {t: "지연 출혈", i: calendar, w: "Even without symptoms now로 지금 괜찮다는 안심을 먼저 인정한 뒤 hours later로 시간차를 알려요. 항응고제를 먹는 환자는 늦게 출혈이 생길 수 있어 증상이 없어도 주의해요.", d: "right now", k: ["오늘 밤은 가족과 함께 계세요", "두통이 심해지면 바로 알려 주세요"], a: "symptoms", o: ["pain", "bruising", "swelling"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "항응고제 복용 환자 설명 4문장 순서"
+    why: "복용약을 묻고, 그 약 때문에 위험하다고 알린 뒤, CT를 권하고, 검사가 깨끗해도 늦게 나빠질 수 있다고 닫아요. 'Because of that'·'So'·'a clear scan'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Which blood thinner are you taking?", icon: pill, ko: "어떤 항응고제를 복용하고 계세요?", note: "복용약"}
+    - {en: "Because of that, even a minor bump can bleed slowly in the brain.", icon: bulb, ko: "그래서 가벼운 충격도 뇌 안에서 서서히 출혈이 있을 수 있어요", note: "위험"}
+    - {en: "So we recommend a CT scan to look for any bleeding.", icon: monitor, ko: "그래서 출혈이 있는지 보려고 CT 스캔을 권해 드려요", note: "검사"}
+    - {en: "With a clear scan, bleeding can still show up hours later.", icon: bell, ko: "스캔이 깨끗해도 출혈은 몇 시간 뒤에 나타날 수 있어요", note: "당부"}
+  ctx: {word: "anticoagulated", ko: "항응고 상태인"}
+- title: 고령 낙상 경막하 의심
+  s:
+  - {t: "낙상 시점", i: calendar, w: "When exactly로 정확한 시점을 물어요. 언제 넘어졌는지에 따라 급성 출혈인지 며칠에 걸친 만성 출혈인지 가늠해요.", d: "Where exactly", k: ["어디서 넘어지셨는지 아세요?", "넘어질 때 머리를 부딪히셨나요?"], a: "When", o: ["Where", "Why", "How"]}
+  - {t: "경과 문진", i: calendar, w: "been getting worse over days로 서서히 이어진 변화를 묻는 현재완료진행이에요. 며칠에 걸쳐 심해지는 혼돈은 만성 경막하혈종을 의심하게 하는 전형적인 경과예요.", d: "overnight", k: ["혼돈 때문에 최근에 넘어진 적이 있나요?", "혼돈이 있을 때 열도 있었나요?"], a: "confusion", o: ["headache", "weakness", "sleepiness"]}
+  - {t: "원인 설명", i: bulb, w: "can show up like this로 이런 모습으로도 나타난다고 부드럽게 연결해요. 서서히 진행되는 경막하 출혈은 심한 두통 없이 혼돈·졸림·성격 변화로만 나타나기도 해요.", d: "A quick", k: ["이런 변화는 탈수나 감염 때문일 수도 있어요", "이런 증상으로 CT를 찍는 경우가 많아요"], a: "slow", o: ["sudden", "tiny", "large"]}
+  - {t: "행동 변화", i: me, w: "than he usually does로 평소 모습을 기준 삼아 묻는 비교 질문이에요. 고령 환자는 평소와 달라진 점이 가장 믿을 만한 단서라 가족에게 먼저 물어요.", d: "than his friends", k: ["평소에 혼자 걸어 다니셨어요?", "최근에 약이 바뀐 게 있나요?"], a: "usually", o: ["rarely", "seldom", "sometimes"]}
+  - {t: "가족 역할", i: handshake2, w: "before we do로 의료진보다 가족이 먼저 안다는 점을 인정해 주면 가족이 말을 꺼내기 쉬워요. 매일 보는 가족이 의료진보다 먼저 미세한 변화를 알아채는 경우가 많아요.", d: "Doctors often notice", k: ["이런 변화는 가족이 기록해 두시면 도움이 돼요", "저희도 곧 같이 확인해 볼게요"], a: "notices", o: ["ignores", "forgets", "repeats"]}
+  - {t: "검사 안내", i: monitor, w: "We'll get…으로 곧 진행한다는 걸 알리고 to check for…로 목적을 붙여요. CT는 뇌 안 출혈을 가장 빠르게 확인하는 검사라서 낙상 후 혼돈이 있는 고령 환자에게 먼저 시행해요.", d: "to treat", k: ["CT 전에 금속 장신구를 빼 주세요", "CT 결과는 가족분께 먼저 알려 드릴게요"], a: "brain", o: ["belly", "chest", "leg"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "고령 낙상 문진 4문장 순서"
+    why: "넘어진 시점을 묻고, 그 이후의 혼돈 경과를 묻고, 출혈 가능성과 CT를 알린 뒤, 기다리는 동안 달라진 점을 알려 달라고 해요. 'that fall'·'like that'·'the scan'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "When exactly did he fall?", icon: calendar, ko: "정확히 언제 넘어지셨어요?", note: "시점"}
+    - {en: "Since that fall, has his confusion been getting worse over days?", icon: magnify, ko: "그 낙상 이후 며칠에 걸쳐 혼돈이 더 심해지고 있나요?", note: "경과"}
+    - {en: "A slow bleed can show up like that, so we'll get a CT scan.", icon: monitor, ko: "서서히 진행되는 출혈이 그렇게 나타날 수 있어서 CT를 찍을게요", note: "검사"}
+    - {en: "While we wait for the scan, tell us anything he's doing differently than usual.", icon: me, ko: "스캔을 기다리는 동안 평소와 다르게 하는 게 있으면 알려 주세요", note: "당부"}
+  ctx: {word: "subdural", ko: "경막하"}
+- title: 소아 두부외상 부모 소통
+  s:
+  - {t: "경위 청취", i: me, w: "walk me through는 처음부터 차근차근 말해 달라는 열린 요청이라 부모가 추궁받는다고 느끼지 않아요. 낙상 경위가 상처 양상과 맞는지도 살필 수 있어요.", d: "hand me", k: ["넘어지고 나서 바로 울었나요?", "아이가 얼마나 높은 곳에서 떨어졌나요?"], a: "how", o: ["when", "where", "why"]}
+  - {t: "경고 증상", i: bell, w: "Watch for 뒤에 증상 셋을 나열해 부모가 무엇을 볼지 구체적으로 알려 줘요. 아이는 말로 표현하지 못해 구토·졸림·보챔이 이상을 알리는 신호가 돼요.", d: "or coughing", k: ["아이가 먹는 양이 어떤지 알려 주세요", "아이가 낮잠 자는 시간을 적어 두세요"], a: "fussiness", o: ["hunger", "thirst", "laughter"]}
+  - {t: "진찰 안내", i: stetho, w: "carefully로 서두르지 않고 꼼꼼히 보겠다고 약속해 부모를 안심시켜요. to be sure는 지금 괜찮아 보여도 놓치지 않으려는 이유를 알려 줘요.", d: "quickly", k: ["검사하는 동안 옆에 계셔도 돼요", "아이가 울어도 잠깐만 참아 주세요"], a: "examine", o: ["weigh", "scan", "bathe"]}
+  - {t: "경위 확인", i: magnify, w: "It helps to know…로 부모를 의심하지 않고 정보를 구하는 말투예요. 말한 경위와 소견이 맞는지 보는 것은 모든 소아 외상에서 하는 기본 평가예요.", d: "has changed", k: ["그때 누가 아이와 함께 있었나요?", "아이가 평소에도 자주 넘어지나요?"], a: "see", o: ["hear", "feel", "think"]}
+  - {t: "졸림 확인", i: bell, w: "if he seems로 아이가 그렇게 보이면이라 확신이 없어도 말하기 쉬워요. 평소보다 더 졸린 것은 소아 두부외상에서 부모가 가장 먼저 알아챌 수 있는 변화예요.", d: "more cheerful", k: ["아이가 잠들면 저희에게 알려 주세요", "평소 잠드는 시간이 언제인지 알려 주세요"], a: "sleepy", o: ["hungry", "thirsty", "chatty"]}
+  - {t: "호출 기준", i: siren, w: "right away로 지체하지 말라는 점을 분명히 해요. 아이가 토하거나 잘 안 깨는 것은 곧바로 다시 평가해야 하는 위험 신호예요.", d: "in the morning", k: ["토하면 입안을 닦아 주세요", "잘 깨면 물을 조금 먹여 보세요"], a: "throws up", o: ["coughs", "sneezes", "hiccups"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "소아 두부외상 부모 설명 4문장 순서"
+    why: "경위를 듣고, 그 이야기와 소견이 맞는지 보며 진찰하고, 지켜볼 증상을 알린 뒤, 그 증상이면 부르라고 닫아요. 'that story'·'From here on'·'any of those'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Can you walk me through exactly how he fell?", icon: me, ko: "정확히 어떻게 넘어졌는지 차근차근 설명해 주시겠어요?", note: "경위"}
+    - {en: "We'll examine him carefully to see if that story matches what we see.", icon: stetho, ko: "그 이야기가 소견과 맞는지 보려고 꼼꼼히 진찰할게요", note: "진찰"}
+    - {en: "From here on, watch for vomiting, unusual sleepiness, or fussiness.", icon: bell, ko: "이제부터 구토, 평소와 다른 졸림, 보챔을 지켜봐 주세요", note: "관찰"}
+    - {en: "Call us right away if you notice any of those.", icon: siren, ko: "그중 하나라도 보이면 바로 저희를 불러 주세요", note: "호출"}
+  sw: {ko: "어떻게 넘어졌는지 처음부터 차근차근 말해 주세요"}
+- title: 음주 동반 두부외상
+  s:
+  - {t: "음주량 문진", i: coffee, w: "How much…?로 열어 묻고 tonight으로 시간을 좁혀요. 비난하지 않는 말투로 물어야 환자가 실제 양을 말해요.", d: "How often", k: ["마지막으로 마신 게 몇 시쯤이에요?", "술 말고 다른 약도 드셨어요?"], a: "drink", o: ["eat", "smoke", "sleep"]}
+  - {t: "관찰 이유", i: bulb, w: "술과 부상 중 무엇 때문인지 구분이 안 된다고 솔직히 말하면 관찰이 꼭 필요한 이유가 설득돼요. 술에 취한 상태는 두부외상의 졸림·혼돈 같은 증상을 가려요.", d: "we send you home", k: ["술이 깰 때까지 물을 드릴게요", "머리 부상은 CT로 확인할 수 있어요"], a: "alcohol", o: ["medicine", "fever", "hunger"]}
+  - {t: "대기 요청", i: pushpin, w: "so we can으로 머무는 이유를 목적으로 붙이면 지시가 아니라 협조 요청으로 들려요. 술이 깨는 동안 상태가 달라지는지 다시 확인해야 해서 환자가 자리를 뜨지 않게 부탁해요.", d: "Please leave", k: ["술이 깰 때까지 침대에서 쉬세요", "가족분께도 연락해 드릴까요?"], a: "recheck", o: ["discharge", "weigh", "bill"]}
+  - {t: "외상 확인", i: magnify, w: "at all tonight으로 취한 상태에서 기억 못 할 수도 있는 부딪힘까지 넓게 물어요. 술을 마시면 넘어지거나 부딪히고도 잘 기억하지 못하는 경우가 흔해요.", d: "last week", k: ["술은 몇 시부터 드셨어요?", "어디서 넘어지셨는지 기억나세요?"], a: "head", o: ["arm", "knee", "back"]}
+  - {t: "음주 영향", i: bulb, w: "can hide로 가능성을 말해 술을 탓하지 않고 사실만 전해요. 술이 졸림·혼돈·반응 저하와 비슷한 모습을 만들어 부상으로 인한 악화를 놓칠 수 있어요.", d: "can show", k: ["술이 깨면 검사를 다시 할게요", "술은 머리 부상의 위험을 높여요"], a: "hide", o: ["remove", "treat", "fix"]}
+  - {t: "관찰 기준", i: monitor, w: "until로 관찰이 끝나는 기준을 알려 주면 환자가 얼마나 있어야 하는지 이해해요. 술이 깬 뒤에도 증상이 남는지를 봐야 부상으로 인한 문제를 가려낼 수 있어요.", d: "until morning", k: ["술이 깰 때까지 안전 난간을 올려 둘게요", "깨고 나면 가족과 함께 귀가하세요"], a: "keep", o: ["stop", "start", "quit"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "음주 두부외상 설명 4문장 순서"
+    why: "마신 양을 묻고, 술이 징후를 가린다고 알리고, 그래서 머물러 달라고 하고, 깰 때까지 확인한다고 닫아요. 'Thanks'·'Because of that'·'That's why'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "How much did you drink tonight?", icon: coffee, ko: "오늘 밤 얼마나 드셨어요?", note: "문진"}
+    - {en: "Thanks—alcohol can hide the signs we need to watch for after a head injury.", icon: bulb, ko: "고마워요, 술은 머리 부상 뒤 지켜봐야 할 징후를 가릴 수 있어요", note: "이유"}
+    - {en: "Because of that, please stay so we can recheck you.", icon: pushpin, ko: "그래서 다시 확인할 수 있게 계셔 주세요", note: "요청"}
+    - {en: "That's why we'll keep checking on you until you're clearly sober and steady.", icon: monitor, ko: "그래서 확실히 술이 깨고 안정될 때까지 계속 확인할게요", note: "기준"}
+  sw: {ko: "술을 좀 하신 것 같아서 한동안 지켜봐야 해요"}

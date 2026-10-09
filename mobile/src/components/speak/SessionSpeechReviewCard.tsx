@@ -10,6 +10,7 @@ import { nb, nbFonts } from '@/theme/nb';
 import { bandColor, bandOf, scoreLabel } from '@/data/speakBands';
 import { SpokenRow } from './SpokenRow';
 import { useT } from '@/i18n';
+import { usePronunciationEnabled } from '@/data/pronunciationFlag';
 import type { SessionSpeechReview, SpokenSentence } from '@/api/client';
 
 export function SessionSpeechReviewCard({
@@ -21,6 +22,7 @@ export function SessionSpeechReviewCard({
   onPractise: (sentences: SpokenSentence[]) => void;
 }) {
   const t = useT();
+  const pronOn = usePronunciationEnabled();
   const spoken = review.sentences.length > 0;
   return (
     <NbPaper rot={0.4} style={styles.card}>
@@ -51,7 +53,7 @@ export function SessionSpeechReviewCard({
       {/* The button is offered only when there is actually something weak to practise:
           with every line at 80+ it would send the learner to drill sentences they have
           already mastered. */}
-      {review.weakest.length > 0 && review.weakest.some((s) => bandOf(s.overall) !== 'high') && (
+      {pronOn && review.weakest.length > 0 && review.weakest.some((s) => bandOf(s.overall) !== 'high') && (
         <View style={styles.footer}>
           <NbButton variant="yellow" full icon="mic" onPress={() => onPractise(review.weakest)}>
             {t('speak.practiceWeak', { n: review.weakest.length })}

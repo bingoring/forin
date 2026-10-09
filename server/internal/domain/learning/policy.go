@@ -33,7 +33,7 @@ func (g DefaultGuidance) GuideForPass(kind string, pass int) GuideLevel {
 	if g.Passes(kind) == 1 || pass >= 2 {
 		return GuideFree
 	}
-	return GuideChoices
+	return GuideGuided
 }
 
 // TierUnlockPolicy decides whether a difficulty tier is open given whether the

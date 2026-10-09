@@ -1,0 +1,61 @@
+# icu-ards-proning 결정 11 정리 — build_icu-ards-proning.py 가 읽는다.
+untag_everywhere:
+  w-now: 공통 쉬운 단어(now)
+  w-see: 공통 쉬운 단어(see)
+  w-go: 공통 쉬운 단어(go)
+  w-hour: 공통 쉬운 단어(hour)
+  w-time: 공통 쉬운 단어(time)
+  w-head: 공통 쉬운 단어(head)
+  w-doctor: 공통 쉬운 단어(doctor)
+  w-patient: 공통 쉬운 단어(patient)
+  w-come: 공통 쉬운 단어(come)
+  w-good: 공통 쉬운 단어(good)
+  w-afternoon: 공통 쉬운 단어(afternoon)
+  w-tell: 간호사가 이미 아는 말(tell)
+  w-need: 간호사가 이미 아는 말(need)
+  w-new: 간호사가 이미 아는 말(new)
+  w-five: 간호사가 이미 아는 말(five)
+  w-people: 간호사가 이미 아는 말(people)
+  w-person: 간호사가 이미 아는 말(person)
+  w-again: 간호사가 이미 아는 말(again)
+  w-also: 간호사가 이미 아는 말(also)
+  w-get: 간호사가 이미 아는 말(get) — w-grab과 ko(가져오다)도 겹쳤다
+  w-help: 간호사가 이미 아는 말(help)
+  w-yesterday: 간호사가 이미 아는 말(yesterday)
+  w-tonight: 간호사가 이미 아는 말(tonight)
+
+# [상황 번호, 문장 번호, id, why]
+untag_at:
+  - [19, 1, w-lower, "Lower the tidal volume은 동사(낮추다) — 형용사 카드 w-lower(더 낮은) 태그를 뺐다"]
+  - [10, 1, w-open, "the lung opened up은 동사(열리다) — 형용사 카드 w-open(열린) 태그를 뺐다"]
+  - [8, 4, w-hold, "hold the feeds는 '보류하다' — w-hold(잡고 있다) 태그를 뺐다"]
+  - [14, 1, w-hold, "his oxygen holds는 '유지되다' — w-hold(잡고 있다) 태그를 뺐다"]
+  - [14, 1, w-back, "on his back은 명사(등) — w-back(다시·원래대로) 태그를 뺐다"]
+  - [16, 2, w-back, "on his back은 명사(등) — w-back(다시·원래대로) 태그를 뺐다"]
+  - [6, 0, w-call, "call the count는 '구령을 붙이다' — 카드 w-call을 '부르다·연락하다'로 맞추고 이 태그를 뺐다"]
+  - [0, 1, w-lower, "A lower number의 비교급 — w-low와 겹치는 카드라 w-low로 바꿔 태그"]
+  - [15, 4, w-change, "something changed는 동사(바뀌다) — 명사 카드 w-change(변화) 태그를 뺐다"]
+  - [9, 3, w-count, "TOF count는 '반응 횟수' — w-count(구령) 태그를 뺐다"]
+  - [20, 3, w-mark, "This mark는 명사(자국) — 동사 카드 w-mark(표시하다) 태그를 뺐다"]
+
+tag_at:
+  - [0, 1, w-low, "w-lower 대신 w-low로 태그(lower는 low의 비교급)"]
+
+word_edits:
+  w-prone: {ko: 복와위로 눕히다, why: "태그된 문장 대부분이 proning·proned(간호사가 눕히는 것) — '엎드리다'(자동사)가 아니라 '눕히다'로"}
+  w-call: {ko: 부르다·연락하다, why: "태그된 문장 대부분이 call the doctor·code·team(부르다·연락하다) — '외치다'는 call the count 하나뿐"}
+  w-steady: {ko: 흔들림 없는, why: "부사 ko(안정적으로)가 형용사 용법(keeps it steady·have been steady)과 어긋나고, w-stable(안정된)과도 겹친다"}
+  w-tof: {ko: 4연속 자극(줄임말), why: "ko에 정답 영어 TOF가 그대로 들어 있어 회상 문제가 되지 않는다 — w-vent·w-sat처럼 줄임말 표시"}
+  w-train-of-four: {ko: 4연속 자극, why: "ko의 (TOF)가 줄임말 카드 w-tof의 정답을 드러낸다"}
+  w-vent: {ko: 인공호흡기(줄임말), why: "w-ventilator와 ko가 같아 듣고 뜻 고르기에서 정답이 겹친다"}
+  w-sat: {ko: 산소포화도(줄임말), why: "w-saturation과 ko가 같아 듣고 뜻 고르기에서 정답이 겹친다"}
+  w-confirm: {ko: 확실히 확인하다, why: "w-check(확인하다)와 ko가 같아 듣고 뜻 고르기에서 정답이 겹친다"}
+  w-keep: {ko: 계속 ~하게 두다, why: "w-maintain(유지하다)과 ko가 같다 — keep X low·free·moist 용법에 맞춰"}
+  w-flag: {ko: 표시해 알리다, why: "w-mark(표시하다)와 ko가 같다 — 차트에 표시해 팀에 알리는 뜻으로"}
+  w-number: {ko: 수치, why: "태그된 문장이 모두 검사·바이탈 수치(numbers look better 등) — '숫자'보다 '수치'"}
+  w-couple: {ko: 두어(두세), why: "every couple of hours의 couple — '두어 개'는 시간에 맞지 않는 단위"}
+  w-ago: {ko: (지금부터) ~ 전, why: "w-before(전에)와 ko가 같아 듣고 뜻 고르기에서 정답이 겹친다"}
+  w-deeply: {ko: 깊게, why: "w-depth(깊이)와 ko가 같아 듣고 뜻 고르기에서 정답이 겹친다"}
+
+remove_why:
+  w-lower: w-low와 겹치는 비교급 카드 — 유일한 태그를 w-low로 옮겼다

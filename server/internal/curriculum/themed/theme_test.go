@@ -52,3 +52,21 @@ func TestLoadThemes_parsesTracks(t *testing.T) {
 		t.Errorf("exam should default true, got false for %s", themes[1].Key)
 	}
 }
+
+func TestLoadThemes_readsIcon(t *testing.T) {
+	path := writeTmp(t, `
+- key: er-triage
+  name: 트리아지
+  track: depth
+  dept: ER
+  order: 20
+  icon: siren
+`)
+	themes, err := LoadThemes(path)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if themes[0].Icon != "siren" {
+		t.Fatalf("icon not read: %+v", themes[0])
+	}
+}

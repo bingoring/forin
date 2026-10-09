@@ -1,0 +1,272 @@
+theme: core-safety-icu
+changes:
+- {kind: word-remove, id: w-minute, why: 공통 쉬운 단어 목록 — 어느 문장도 태그하지 않게 됐다}
+- {kind: word-remove, id: w-hour, why: 공통 쉬운 단어 목록 — 어느 문장도 태그하지 않게 됐다}
+- {kind: word-remove, id: w-time, why: 공통 쉬운 단어 목록 — 어느 문장도 태그하지 않게 됐다}
+- {kind: word-remove, id: w-now, why: 공통 쉬운 단어 목록 — 어느 문장도 태그하지 않게 됐다}
+- {kind: word-remove, id: w-night, why: 공통 쉬운 단어 목록 — 어느 문장도 태그하지 않게 됐다}
+- {kind: word-remove, id: w-name, why: 공통 쉬운 단어 목록 — 어느 문장도 태그하지 않게 됐다}
+- {kind: word-remove, id: w-room, why: 공통 쉬운 단어 목록 — 어느 문장도 태그하지 않게 됐다}
+- {kind: word-remove, id: w-doctor, why: 공통 쉬운 단어 목록 — 어느 문장도 태그하지 않게 됐다}
+- {kind: word-remove, id: w-patient, why: 공통 쉬운 단어 목록 — 어느 문장도 태그하지 않게 됐다}
+- {kind: word-remove, id: w-family, why: 공통 쉬운 단어 목록 — 어느 문장도 태그하지 않게 됐다}
+- {kind: word-remove, id: w-know, why: 공통 쉬운 단어 목록 — 어느 문장도 태그하지 않게 됐다}
+- {kind: word-remove, id: w-day, why: 공통 쉬운 단어 목록 — 어느 문장도 태그하지 않게 됐다}
+- kind: word
+  id: w-verify
+  fields: [ko]
+  why: w-confirm과 ko가 같아(대조 확인하다) 듣고 뜻 고르기에서 정답이 둘 — verify를 '검증하다'로 가른다
+- kind: word
+  id: w-trace
+  fields: [ko]
+  why: w-follow와 ko가 같아(따라가다) 정답이 둘 — trace를 '추적하다'로 가른다
+- kind: word
+  id: w-afterward
+  fields: [ko]
+  why: w-later와 ko가 같아(나중에) 정답이 둘 — afterward를 '그 후에'로 가른다
+- kind: word
+  id: w-immediate
+  fields: [en, ko, ipa, example]
+  why: 태그된 문장 3/3이 부사 immediately — 헤드워드를 부사로
+- kind: word
+  id: w-crash
+  fields: [en, ipa]
+  why: 활용형 헤드워드(crashing)를 원형(crash)으로
+- kind: word
+  id: w-slid
+  fields: [en, ko, ipa]
+  why: 활용형 헤드워드(slid)를 원형(slide)으로
+- kind: word
+  id: w-stand
+  fields: [en, ipa]
+  why: stand 단독은 '두드러지다'가 아님 — 문장 그대로 구 stand out으로
+- kind: word
+  id: w-call
+  fields: [ko, example]
+  why: 태그된 문장 대부분이 동사(call the physician·call for help) — ko '호출'을 '부르다'로, 예문도 동사 문장으로
+- kind: word
+  id: w-light
+  fields: [ko]
+  why: call light의 light는 '조명'이 아니라 등(램프)
+- kind: word
+  id: w-need
+  fields: [ko]
+  why: 태그된 문장 대부분이 동사 need — ko를 '필요하다'로
+- kind: word
+  id: w-feeding
+  fields: [ko]
+  why: feeding line을 '급식용의'로 옮김 — 임상 용어 '경관영양용의'로
+- kind: word
+  id: w-secure
+  fields: [example]
+  why: 예문(약품 보관 문장)의 secured는 '고정하다' 뜻이 아니어서 태그를 뺐음 — 예문을 라인 고정 문장으로
+- kind: word
+  id: w-bedside
+  fields: [ko]
+  why: 다른 ICU 주제(15곳)와 ko를 맞춤 — 침상 곁
+- {kind: word-add, id: w-highalert, why: 주제의 핵심어 high-alert — w-alert(경고음) 대신 이중확인 상황 문장 2·6에 이미 있다}
+- kind: sentence
+  situation: 알람 설정·우선순위 이해
+  index: 1
+  fields: [words]
+  why: '쉬운 단어 태그 제거: w-minute'
+- kind: sentence
+  situation: 알람 설정·우선순위 이해
+  index: 2
+  fields: [words]
+  why: '쉬운 단어 태그 제거: w-patient'
+- kind: sentence
+  situation: 알람 설정·우선순위 이해
+  index: 4
+  fields: [words]
+  why: '쉬운 단어 태그 제거: w-minute'
+- kind: sentence
+  situation: 억제대 적응·대안 확인
+  index: 4
+  fields: [words]
+  why: '쉬운 단어 태그 제거: w-hour'
+- kind: sentence
+  situation: 고위험약 이중확인
+  index: 5
+  fields: [words]
+  why: '쉬운 단어 태그 제거: w-hour'
+- kind: sentence
+  situation: 고위험약 이중확인
+  index: 7
+  fields: [words]
+  why: '쉬운 단어 태그 제거: w-name'
+- kind: sentence
+  situation: 라인·튜브 라벨·경로 확인
+  index: 1
+  fields: [words]
+  why: '쉬운 단어 태그 제거: w-patient'
+- kind: sentence
+  situation: 라인·튜브 라벨·경로 확인
+  index: 6
+  fields: [words]
+  why: '쉬운 단어 태그 제거: w-patient'
+- kind: sentence
+  situation: 낙상·손상 예방 기초
+  index: 2
+  fields: [words]
+  why: '쉬운 단어 태그 제거: w-know'
+- kind: sentence
+  situation: 투약 5R 확인
+  index: 0
+  fields: [words]
+  why: '쉬운 단어 태그 제거: w-patient, w-time'
+- kind: sentence
+  situation: 투약 5R 확인
+  index: 3
+  fields: [words]
+  why: '쉬운 단어 태그 제거: w-hour'
+- kind: sentence
+  situation: 투약 5R 확인
+  index: 4
+  fields: [words]
+  why: '쉬운 단어 태그 제거: w-patient, w-time'
+- kind: sentence
+  situation: 알람 피로 관리·맞춤화
+  index: 0
+  fields: [words]
+  why: '쉬운 단어 태그 제거: w-patient'
+- kind: sentence
+  situation: 억제대 사용 모니터·문서
+  index: 0
+  fields: [words]
+  why: '쉬운 단어 태그 제거: w-hour'
+- kind: sentence
+  situation: 섬망 환자 안전 환경
+  index: 3
+  fields: [words]
+  why: '쉬운 단어 태그 제거: w-know'
+- kind: sentence
+  situation: 섬망 환자 안전 환경
+  index: 4
+  fields: [words]
+  why: '쉬운 단어 태그 제거: w-day'
+- kind: sentence
+  situation: 섬망 환자 안전 환경
+  index: 6
+  fields: [words]
+  why: '쉬운 단어 태그 제거: w-room, w-night'
+- kind: sentence
+  situation: 사건 보고·학습 문화
+  index: 2
+  fields: [words]
+  why: '쉬운 단어 태그 제거: w-patient'
+- kind: sentence
+  situation: 라인·튜브 치명적 오류 대응
+  index: 1
+  fields: [words]
+  why: '쉬운 단어 태그 제거: w-patient, w-now'
+- kind: sentence
+  situation: 라인·튜브 치명적 오류 대응
+  index: 3
+  fields: [words]
+  why: '쉬운 단어 태그 제거: w-now'
+- kind: sentence
+  situation: 고위험약 용량사고 위기
+  index: 0
+  fields: [words]
+  why: '쉬운 단어 태그 제거: w-now'
+- kind: sentence
+  situation: 고위험약 용량사고 위기
+  index: 4
+  fields: [words]
+  why: '쉬운 단어 태그 제거: w-now'
+- kind: sentence
+  situation: 고위험약 용량사고 위기
+  index: 5
+  fields: [words]
+  why: '쉬운 단어 태그 제거: w-now, w-doctor'
+- kind: sentence
+  situation: 억제대 관련 질식·손상 위기
+  index: 1
+  fields: [words]
+  why: '쉬운 단어 태그 제거: w-now; right now의 right는 ''맞는''(w-right) 뜻이 아님 — 태그 제거'
+- kind: sentence
+  situation: 억제대 관련 질식·손상 위기
+  index: 5
+  fields: [words]
+  why: '쉬운 단어 태그 제거: w-now'
+- kind: sentence
+  situation: 알람 무시 급변 위기
+  index: 0
+  fields: [words]
+  why: '쉬운 단어 태그 제거: w-now'
+- kind: sentence
+  situation: 알람 무시 급변 위기
+  index: 4
+  fields: [words]
+  why: '쉬운 단어 태그 제거: w-now'
+- kind: sentence
+  situation: 심각 안전사건 공개·소통
+  index: 3
+  fields: [words]
+  why: '쉬운 단어 태그 제거: w-family, w-room'
+- kind: sentence
+  situation: 심각 안전사건 공개·소통
+  index: 4
+  fields: [words]
+  why: '쉬운 단어 태그 제거: w-now'
+- kind: sentence
+  situation: 심각 안전사건 공개·소통
+  index: 5
+  fields: [words]
+  why: '쉬운 단어 태그 제거: w-know'
+- kind: sentence
+  situation: 알람 설정·우선순위 이해
+  index: 0
+  fields: [words]
+  why: w-immediate 헤드워드를 부사 immediately로 바꿈 — 형용사 immediate 문장에서 태그 제거
+- kind: sentence
+  situation: 고위험약 이중확인
+  index: 2
+  fields: [words]
+  why: sign off의 off는 '풀린'(w-off) 뜻이 아님 — 태그 제거
+- kind: sentence
+  situation: 낙상·손상 예방 기초
+  index: 4
+  fields: [words]
+  why: step out(나가다)은 명사 '단계'(w-step) 뜻이 아님 — 태그 제거
+- kind: sentence
+  situation: 고농도 전해질·마약 관리
+  index: 0
+  fields: [ko, words]
+  why: 약품 보관의 secured(잠가 보관)는 '고정하다'(w-secure) 뜻이 아님 — 태그 제거; 약품 보관의 secured를 '고정해요'로 옮긴 오역 — '잠가 보관해요'로
+- kind: sentence
+  situation: 이중확인·독립확인 프로토콜
+  index: 2
+  fields: [words]
+  why: high-alert는 '경고음'(w-alert)이 아님 — w-highalert로 태그 교체; 주제의 핵심어 high-alert를 새 단어로 태그
+- kind: sentence
+  situation: 이중확인·독립확인 프로토콜
+  index: 6
+  fields: [words]
+  why: high-alert는 '경고음'(w-alert)이 아님 — w-highalert로 태그 교체; 주제의 핵심어 high-alert를 새 단어로 태그
+- kind: sentence
+  situation: 이송·인계 중 안전 확인
+  index: 2
+  fields: [words]
+  why: run the checklist(진행하다)는 '주입되다'(w-run) 뜻이 아님 — 태그 제거
+- kind: sentence
+  situation: 사건 보고·학습 문화
+  index: 6
+  fields: [words]
+  why: whole unit(병동)은 '단위'(w-unit) 뜻이 아님 — 태그 제거; 명사 카드 learning이 동사 learn 문장에 태그됨 — 태그 제거
+- kind: sentence
+  situation: 라인 오연결 예방
+  index: 4
+  fields: [ko]
+  why: feeding line을 '급식용 라인'으로 옮김 — 임상 용어 '경관영양 라인'으로
+- kind: sentence
+  situation: 심각 안전사건 공개·소통
+  index: 2
+  fields: [ko]
+  why: '''계획을 인정해요''는 뜻이 흐림 — 일어난 일을 인정하고 계획을 밝힌다는 뜻으로'
+- kind: sentence
+  situation: 이중확인·독립확인 프로토콜
+  index: 5
+  fields: [chunks, en, ko, words]
+  why: 용량을 먼저 소리 내어 말하면 상대를 유도(prompting)해 독립확인이 아니게 됨 — 같은 상황 핵심 문장('without prompting')과 어긋나는 틀린 절차라 고침; 용량을 먼저 소리 내어 말하면 상대를 유도(prompting)해 독립확인이 아니게 됨 — 같은 상황 핵심 문장('without prompting')과 어긋나는 틀린 절차라 고침; 용량을 먼저 소리 내어 말하면 상대를 유도(prompting)해 독립확인이 아니게 됨 — 같은 상황 핵심 문장('without prompting')과 어긋나는 틀린 절차라 고침; 용량을 먼저 소리 내어 말하면 상대를 유도(prompting)해 독립확인이 아니게 됨 — 같은 상황 핵심 문장('without prompting')과 어긋나는 틀린 절차라 고침

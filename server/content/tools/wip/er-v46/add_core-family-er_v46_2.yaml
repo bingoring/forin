@@ -1,0 +1,90 @@
+- title: 검사 결과 대기 불안
+  s:
+  - {t: "공감", i: me, w: "I know …로 시작하면 지시나 해결책이 아니라 공감으로 들려요. 모르는 상태가 힘들다고 직접 이름 붙여 주면 가족이 이해받는다고 느껴요.", d: "to wait", k: ["결과는 이미 나왔어요", "지금 검사를 시작할게요"], a: "hard", ai: faceWorried, o: [["easy", "lock"], ["boring", "chevronDown"], ["quick", "play"]]}
+  - {t: "솔직한 약속", i: lab, w: "아직 모르는 것을 모른다고 먼저 말한 뒤에 약속하는 구조예요. 결과를 모르면서 괜찮을 거라고 하는 근거 없는 안심보다 솔직하겠다는 약속이 신뢰를 지켜요.", d: "of them", k: ["결과는 괜찮을 거예요", "결과는 내일 우편으로 보내요"], a: "honest", ai: handshake2, o: [["ready", "play"], ["quick", "chartup"], ["late", "calendar"]]}
+  - {t: "도움 제안", i: handshake2, w: "Is there anything I can …?는 요구를 받기 전에 먼저 도움을 제안하는 질문이에요. 물이나 담요 같은 작은 것이라도 챙기는 말이 기다리는 시간을 덜 외롭게 해요.", d: "for them", k: ["대기실은 이쪽이에요", "검사 결과가 나오셨어요"], a: "get", ai: coffee, o: [["ask", "mic"], ["sell", "board"], ["charge", "monitor"]]}
+  - {t: "곁에 있기", i: faceWorried, w: "the hardest part처럼 최상급으로 기다림이 가장 힘들다고 인정한 뒤, let me …로 곁에 있겠다고 제안해요. 해결책이 없을 때는 함께 있어 주겠다는 말이 도움이 돼요.", d: "in the car", k: ["결과를 곧 가져올게요", "자리를 옮겨 드릴게요"], a: "sit", ai: coffee, o: [["run", "play"], ["drive", "compass"], ["shop", "pushpin"]]}
+  - {t: "안심", i: me, w: "not alone처럼 부정으로 말하면 혼자일 것 같은 두려움을 정면으로 덜어 줘요. while we로 주어를 '우리'로 잡아 기다림을 함께하는 일로 만들어요.", d: "to them", k: ["결과는 혼자 확인하셔야 해요", "잠시 후에 다시 오세요"], a: "alone", ai: handshake2, o: [["ready", "play"], ["wrong", "lock"], ["late", "calendar"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "결과 대기 가족 응대 4문장 순서"
+    why: "기다림의 어려움을 공감하고, them으로 그 결과를 받아 아직 없지만 솔직하겠다고 말해요. 3줄의 Until then은 2줄의 결과가 나올 때를, 4줄의 If not은 3줄의 질문을 이어서 순서가 하나예요."
+    lines:
+    - {en: "I know waiting for these results is really hard.", icon: faceWorried, ko: "결과를 기다리는 게 정말 힘들다는 거 알아요", note: "공감"}
+    - {en: "I don't have them yet, but I'll be honest when I do.", icon: lab, ko: "아직 없지만, 나오면 솔직하게 말씀드릴게요", note: "솔직"}
+    - {en: "Until then, is there anything I can get you?", icon: handshake2, ko: "그때까지 가져다드릴 게 있을까요?", note: "제안"}
+    - {en: "If not, I'm happy to just sit with you.", icon: coffee, ko: "없으시면 그냥 곁에 있을게요", note: "곁에"}
+  sw: {ko: "아직 결과는 없지만, 나오면 솔직하게 말씀드릴게요"}
+- title: 가족 간 정보 상충
+  s:
+  - {t: "정리 제안", i: board, w: "Let me …로 정리를 제안하면 앞선 이야기가 틀렸다는 말 없이 다시 시작할 수 있어요. what we actually know는 확인된 것과 아직 모르는 것을 나누겠다는 뜻이에요.", d: "by now", k: ["가족분들끼리 먼저 정리해 보세요", "저도 아직 아무것도 몰라요"], a: "clarify", ai: magnify, o: [["guess", "bulb"], ["hide", "lock"], ["forget", "redo"]]}
+  - {t: "인정", i: speech, w: "I understand …로 상대가 들은 것을 인정하되 something different로 누가 틀렸다가 아니라 다르게 들렸다고 말해요. 가족 사이에서 편을 들지 않는 중립 표현이에요.", d: "from me", k: ["아까 제가 잘못 말씀드렸어요", "다른 분이 잘못 들으신 거예요"], a: "different", ai: redo, o: [["similar", "handshake2"], ["wrong", "lock"], ["rude", "faceAngry"]]}
+  - {t: "창구 일원화", i: handshake2, w: "It might help to …는 might로 단정을 피한 제안이에요. 연락 담당자를 한 명 정하면 같은 소식이 여러 경로로 달리 전해져 생기는 엇갈림을 줄일 수 있어요.", d: "to them", k: ["담당자를 매일 바꿔 주세요", "모두 각자 따로 전화하세요"], a: "designate", ai: pushpin, o: [["remove", "lock"], ["replace", "redo"], ["interview", "mic"]]}
+  - {t: "정보 일치", i: board, w: "Let's …로 '우리'를 주어로 하면 누구의 잘못이 아니라 함께 맞추는 일이 돼요. same information이라는 목표를 말하면 갈등 중인 가족이 같은 쪽을 바라봐요.", d: "of them", k: ["각자 따로 설명해 드릴게요", "의사 선생님만 정보를 갖고 계세요"], a: "same", ai: handshake2, o: [["different", "compass"], ["old", "calendar"], ["wrong", "lock"]]}
+  - {t: "중립 선언", i: shield, w: "I'm not taking sides는 편이 없다는 중립을 먼저 선언해요. 사실(facts)을 명확히 하는 것이 목표라고 하면 다투는 가족도 방어를 풀기 쉬워요.", d: "for me", k: ["저는 따님 편이에요", "누가 옳은지 판단해 드릴게요"], a: "facts", ai: chevronDown, o: [["rumors", "speech"], ["opinions", "bulb"], ["secrets", "lock"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "엇갈린 가족 정보 정리 4문장 순서"
+    why: "다른 이야기를 들은 것을 인정하고, 그 문제를 풀려고 사실을 정리하고, 정리가 끝난 뒤 담당자를 정해 그래서 모두가 같은 정보를 갖게 돼요. 2줄의 that, 3줄의 that, 4줄의 That way가 모두 앞 줄을 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "I understand you each heard something different earlier.", icon: speech, ko: "각자 아까 다른 이야기를 들으셨다는 거 이해해요", note: "인정"}
+    - {en: "To sort that out, let me clarify what we actually know.", icon: magnify, ko: "정리하려고 저희가 실제로 아는 걸 말씀드릴게요", note: "정리"}
+    - {en: "Once that's clear, it might help to designate one contact person.", icon: pushpin, ko: "정리되면 연락 담당자를 한 분 정하면 좋아요", note: "제안"}
+    - {en: "That way, everyone has the same information.", icon: handshake2, ko: "그러면 모두가 같은 정보를 갖게 돼요", note: "효과"}
+  sw: {ko: "정리해 드릴게요, 지금까지 저희가 실제로 아는 건 이거예요"}
+- title: 치료 거부하는 가족
+  s:
+  - {t: "걱정 묻기", i: speech, w: "what worries you처럼 걱정을 열린 질문으로 물으면 거부 뒤의 이유를 말하게 돼요. Why로 따지는 질문보다 방어를 덜 불러요.", d: "for the doctor", k: ["치료는 꼭 받으셔야 해요", "치료는 언제 시작하고 싶으세요?"], a: "worries", ai: faceWorried, o: [["pleases", "star"], ["bores", "chevronDown"], ["amuses", "play"]]}
+  - {t: "뜻 존중", i: handshake2, w: "also로 의료진 쪽의 입장을 부드럽게 더해요. honor는 존중해 따른다는 뜻이라 환자 본인의 뜻이 기준이라는 말이 돼요.", d: "for the chart", k: ["아버님은 치료를 원하셨어요", "저희가 대신 결정할게요"], a: "honor", ai: star, o: [["ignore", "lock"], ["change", "redo"], ["question", "mic"]]}
+  - {t: "함께 의논", i: stetho, w: "Let's …로 '함께'하자는 모양이라 가족을 몰아붙이지 않아요. talk through는 문제를 끝까지 이야기로 풀어 본다는 뜻이에요.", d: "to him", k: ["의사 선생님은 지금 안 계세요", "결정은 저희가 이미 했어요"], a: "involve", ai: handshake2, o: [["replace", "redo"], ["ignore", "lock"], ["skip", "chevronRight"]]}
+  - {t: "이유 묻기", i: pencil, w: "Help me …는 명령형이지만 부탁이라 가족이 가르치는 위치에 서게 해요. 결정을 바꾸라고 하기 전에 그 뒤의 이유를 이해하려는 태도가 전해져요.", d: "for me", k: ["결정을 바꿔 주세요", "이 결정은 잘못된 거예요"], a: "understand", ai: bulb, o: [["forget", "redo"], ["avoid", "chevronDown"], ["deny", "lock"]]}
+  - {t: "공감", i: me, w: "I hear …로 감정을 들었다고 말하고 and I want to help …로 같은 편이라는 신호를 줘요. too가 나도 같은 마음이라는 연결을 만들어요.", d: "for you", k: ["아버님을 설득해 보세요", "저는 치료만 도와드릴게요"], a: "love", ai: star, o: [["hate", "faceAngry"], ["fear", "siren"], ["doubt", "bulb"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "치료 거부 가족 응대 4문장 순서"
+    why: "걱정을 먼저 묻고, 들은 뒤 감사와 공감을 하고, 그걸 바탕으로 환자의 뜻을 존중해야 한다고 말하고, 그걸 위해 의사를 부르자고 해요. Thank you for telling me, With that in mind, To do that이 앞 줄을 이어서 순서가 하나예요."
+    lines:
+    - {en: "Can you tell me what worries you about the treatment?", icon: speech, ko: "치료에 대해 무엇이 걱정되시는지 말씀해 주시겠어요?", note: "질문"}
+    - {en: "Thank you for telling me — I hear how much you love him.", icon: me, ko: "말씀해 주셔서 감사해요, 얼마나 사랑하시는지 느껴져요", note: "공감"}
+    - {en: "With that in mind, we also need to honor what he would want.", icon: handshake2, ko: "그래서 저희도 아버님의 뜻을 존중해야 해요", note: "뜻 존중"}
+    - {en: "To do that, let's involve the doctor to talk this through.", icon: stetho, ko: "그러려면 의사 선생님과 함께 이야기해 봐요", note: "의논"}
+  sw: {ko: "치료에 대해 무엇이 걱정되시는지 말씀해 주시겠어요?"}
+- title: 소아 환자 부모 불안
+  s:
+  - {t: "허용 안내", i: baby, w: "You can …은 허락의 모양이라 부모에게 해도 되는 것을 먼저 알려 줘요. while we work는 처치를 방해하지 않으면서 곁에 있는 방법을 보여 줘요.", d: "to her", k: ["처치 중에는 밖에서 기다리세요", "아이는 지금 주사를 맞아요"], a: "hold", ai: handshake2, o: [["wash", "bandage"], ["paint", "pencil"], ["shake", "play"]]}
+  - {t: "목적 설명", i: bandage, w: "Everything we're doing으로 처치 전체를 한 덩어리로 묶고 to help …로 목적을 말해요. 아이를 위한 일이라고 알려 주면 부모가 낯선 처치를 덜 무서워해요.", d: "to the child", k: ["처치는 모두 끝났어요", "아이는 곧 집에 갈 수 있어요"], a: "better", ai: lock, o: [["worse", "chevronDown"], ["afraid", "faceWorried"], ["hungry", "coffee"]]}
+  - {t: "부모에게 묻기", i: home, w: "Tell me …는 부탁 대신 가볍게 청하는 명령형이에요. 부모만 아는 아이의 진정 방법을 물으면 부모가 도울 수 있다는 느낌도 들어요.", d: "in the lab", k: ["아이가 집에서 아팠나요?", "아이가 좋아하는 음식이 뭐예요?"], a: "comforts", ai: baby, o: [["scares", "siren"], ["hurts", "lock"], ["bores", "chevronDown"]]}
+  - {t: "안심 안내", i: shield, w: "taking good care of는 '잘 돌보다'의 관용 표현이에요. 안심시키는 말 뒤에 stay close로 곁에 있어도 된다고 허락해 주면 부모가 쫓겨난다는 불안을 덜어요.", d: "of him", k: ["아이는 잠시 혼자 있어야 해요", "부모님은 밖에서 기다리세요"], a: "close", ai: handshake2, o: [["away", "plane"], ["outside", "lock"], ["alone", "me"]]}
+  - {t: "칭찬", i: handshake2, w: "You're doing great처럼 부모가 지금 하는 일을 칭찬하면 불안한 부모도 자신감을 가져요. 구체적인 방법(talking softly)을 쥐여 주면 할 수 있는 일이 생겨요.", d: "to her", k: ["아이에게는 말을 걸지 마세요", "큰 소리로 달래 주세요"], a: "softly", ai: star, o: [["loudly", "speaker"], ["quickly", "play"], ["angrily", "faceAngry"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "아이 부모 안심시키기 4문장 순서"
+    why: "곁에 있어도 된다고 허락하고, 아이를 진정시키는 방법을 묻고, 그 답을 받아 지금 해 보자고 하고, 해 본 결과를 칭찬해요. 3줄의 that은 2줄의 답을, 4줄의 already는 3줄에서 해 본 뒤라는 뜻이어서 순서가 하나예요."
+    lines:
+    - {en: "You can stay close and hold her hand while we work.", icon: handshake2, ko: "곁에서 아이 손을 잡고 계셔도 돼요", note: "허용"}
+    - {en: "Tell me what usually comforts her at home.", icon: home, ko: "집에서 보통 뭐가 아이를 진정시키는지 알려주세요", note: "질문"}
+    - {en: "Thank you — let's try that now.", icon: check, ko: "감사해요, 지금 그렇게 해 봐요", note: "실행"}
+    - {en: "See? She's already calmer, and you're doing great.", icon: star, ko: "보세요, 벌써 차분해졌어요, 잘하고 계세요", note: "칭찬"}
+  ctx: {word: "stay", ko: "곁에 머물다"}
+- title: 문화·종교 요청 반영
+  s:
+  - {t: "관습 묻기", i: speech, w: "Please tell me …로 열린 질문을 하면 종교나 문화를 캐묻지 않고 환자 본인이 중요한 것을 말하게 돼요. practices는 의식이나 관습처럼 실제로 행하는 것들을 가리켜요.", d: "for me", k: ["어느 종교를 믿으세요?", "어디 출신이세요?"], a: "practices", ai: compass, o: [["symptoms", "stetho"], ["medications", "pill"], ["allergies", "bandage"]]}
+  - {t: "가능성 안내", i: home, w: "We can …은 할 수 있다고 가능성을 열어 주는 말이에요. space and time으로 장소와 시간을 모두 말하면 요청이 실제로 가능하다는 신뢰를 줘요.", d: "of prayer", k: ["기도는 병원에서 허용되지 않아요", "기도는 퇴원 후에 하세요"], a: "prayer", ai: bulb, o: [["surgery", "scalpel"], ["paperwork", "board"], ["billing", "pencil"]]}
+  - {t: "팀 조율", i: speech, w: "I'll …로 그 자리에서 하겠다고 약속해요. coordinate with the team은 혼자 해결하지 않고 팀과 맞춰 실제로 가능하게 만든다는 뜻이에요.", d: "for him", k: ["그건 제 권한 밖이에요", "의사 선생님께 먼저 허락받으세요"], a: "coordinate", ai: handshake2, o: [["argue", "faceAngry"], ["compete", "trophy"], ["disagree", "lock"]]}
+  - {t: "최선 약속", i: handshake2, w: "do our best to …는 결과를 장담하지 않고 최선을 다하겠다는 말이에요. 병원 사정으로 모두 들어주지 못할 수도 있어서 정직한 표현이에요.", d: "of ours", k: ["가족분들의 뜻은 따를 수 없어요", "저희는 규칙대로만 할게요"], a: "honor", ai: star, o: [["ignore", "lock"], ["change", "redo"], ["question", "mic"]]}
+  - {t: "가치 질문", i: compass, w: "What matters most to …?는 환자와 가족이 원하는 우선순위를 열어 두고 물어요. 종교나 문화를 직접 묻지 않고도 중요한 것이 나오게 해요.", d: "in the lab", k: ["가족분들은 어디에 사세요?", "어떤 종교를 믿으세요?"], a: "most", ai: star, o: [["least", "chevronDown"], ["little", "baby"], ["less", "lock"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "문화·종교 요청 반영 4문장 순서"
+    why: "가장 중요한 것을 묻고, 들은 뒤 감사하며 가능한 일을 알리고, 팀과 조율해 그것이 이뤄지게 하겠다고 하고, 최선을 다하겠다고 맺어요. 2줄의 telling me, 3줄의 that, 4줄의 Until then이 앞 줄을 이어서 순서가 하나예요."
+    lines:
+    - {en: "What matters most to your family during this time?", icon: compass, ko: "이 시간 동안 가족분들께 가장 중요한 게 뭔가요?", note: "질문"}
+    - {en: "Thank you for telling me — we can make space and time for prayer.", icon: home, ko: "말씀 감사해요, 기도할 공간과 시간을 마련할 수 있어요", note: "가능"}
+    - {en: "I'll coordinate with the team so that happens.", icon: handshake2, ko: "그렇게 되도록 팀과 조율할게요", note: "조율"}
+    - {en: "Until then, we'll do our best to honor your family's wishes.", icon: star, ko: "그때까지 가족분들의 뜻을 존중하도록 최선을 다할게요", note: "약속"}
+  ctx: {word: "practice", ko: "관습"}

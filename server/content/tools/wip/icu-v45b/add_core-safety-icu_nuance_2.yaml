@@ -1,0 +1,105 @@
+억제대 사용 모니터·문서:
+  - kind: slider
+    words: [w-circulation, w-check]
+    cue: "Fingers below the restraint: warm, pink, capillary refill under 2 seconds."
+    scale: [absent, impaired, adequate]
+    answerAt: 2
+    why: "따뜻하고 분홍빛, 모세혈관 재충전 2초 이내면 순환은 adequate(양호)예요. 차갑고 창백하거나 재충전이 늦으면 impaired로 적고 억제대를 느슨하게 해요."
+    example: "Circulation adequate distal to the restraint."
+    exKo: "억제대 원위부 순환 양호."
+  - kind: swap
+    words: [w-document, w-reason]
+    who: "차트 기록 · 억제대 사유"
+    icon: board
+    before: ["Restraints applied — reason: ", "pt was uncooperative", "."]
+    options: [pulling at ETT despite sitter, pt was uncooperative, pt was being difficult]
+    answer: pulling at ETT despite sitter
+    notes: {pulling at ETT despite sitter: "관찰한 행동과 먼저 시도한 대안이 함께 적혀 사유가 분명해요.", pt was uncooperative: "평가하는 말이라 무엇이 위험했는지 드러나지 않아요.", pt was being difficult: "감정이 담긴 표현이라 기록에 쓰지 않아요."}
+    why: "억제대 사유는 판단어가 아니라 관찰한 행동(무엇을 잡아당기는지)과 시도한 대안으로 적어요."
+라인 오연결 예방:
+  - kind: pair
+    words: [w-trace, w-back, w-source, w-force, w-connection, w-connector, w-alike]
+    pairs: [[trace it back, to the source], [force, a connection], [connectors, look alike]]
+    decoys: [look likely]
+    why: "근원까지 거슬러 가는 건 trace it back to the source, 억지로 끼우는 건 force a connection, 생김새가 같은 건 look alike예요."
+  - kind: context
+    words: [w-careless, w-mix, w-feeding]
+    scenes:
+      - {who: 동료 간호사에게, icon: speech, en: "It's an easy mix-up, not a careless one — let's just trace it together.", ok: true}
+      - {who: 사건 보고서, icon: board, en: "Near-miss: enteral tubing nearly connected to IV port; caught on line trace.", ok: true}
+      - {who: 동료 간호사에게, icon: speech, en: "How could you be so careless? That's the feeding line.", ok: false, fix: "Wait, that's the feeding line — easy mix-up. Let's trace it together."}
+    why: "실수를 사람 탓으로 몰면 다음엔 숨기게 돼요. 어떤 라인인지 사실을 말하고 해결(같이 따라가기)로 이어 가요."
+고농도 전해질·마약 관리:
+  - kind: slider
+    words: [w-concentrated, w-potassium]
+    cue: "Vial label: potassium chloride 2 mEq/mL — must be diluted before use."
+    scale: [premixed, diluted, concentrated]
+    answerAt: 2
+    why: "희석해야 쓸 수 있는 원액이면 concentrated예요. 이런 고농도 칼륨은 환자 곁에 두지 않고, 병동에서는 보통 미리 섞인(premixed) 백을 써요."
+    example: "Never keep concentrated potassium at the bedside."
+    exKo: "고농도 칼륨은 절대 침상 곁에 두지 마세요."
+  - kind: reel
+    words: [w-narcotic]
+    word: narcotic
+    scenes:
+      - {who: "동료 간호사에게", en: "Narcotics require two-nurse counts and locked storage.", ko: "마약은 두 간호사 계수와 잠금 보관이 필요해요.", tone: 규정}
+      - {who: "교대 인계", en: "Narcotic count is correct — we both signed.", ko: "마약 계수 맞아요, 둘 다 서명했어요.", tone: 확인}
+      - {who: "차트 기록", en: "Narcotic waste witnessed by second RN.", ko: "마약 폐기, 두 번째 간호사 입회.", tone: 건조}
+      - {who: "환자에게는…", en: "This is a strong pain medicine, so we keep it locked up.", ko: "이건 강한 진통제라서 잠가서 보관해요.", tone: 완곡, swap: true}
+섬망 환자 안전 환경:
+  - kind: pair
+    words: [w-sleep, w-cycle, w-familiar, w-item, w-gown]
+    pairs: [[sleep-wake, cycle], [familiar, items], [under his, gown]]
+    decoys: [reach]
+    why: "자고 깨는 리듬은 sleep-wake cycle, 집에서 쓰던 물건은 familiar items, 라인을 옷 아래로 감추는 건 under his gown이에요."
+  - kind: context
+    words: [w-reorient]
+    scenes:
+      - {who: 환자에게, icon: me, en: "You're in the hospital, Mr. Lee. It's Tuesday morning, and I'm your nurse.", ok: true}
+      - {who: 동료 간호사에게, icon: speech, en: "He needs frequent reorienting — he thinks it's 1998.", ok: true}
+      - {who: 환자에게, icon: me, en: "Mr. Lee, you're disoriented times three, so you need to be reoriented.", ok: false, fix: "Mr. Lee, you're in the hospital. It's Tuesday morning, and you're safe here."}
+    why: "환자에게 'disoriented x3' 같은 평가 결과를 말하면 혼란만 커져요. 지금 어디·언제인지를 짧게 알려 주는 것이 재지남이에요."
+투약 오류 예방 시스템:
+  - kind: slider
+    words: [w-limit, w-hard, w-soft]
+    cue: "Pump screen: \"Dose exceeds maximum — cannot be programmed.\""
+    scale: [no alert, soft limit, hard limit]
+    answerAt: 2
+    why: "soft limit는 확인한 뒤 넘길 수 있는 경고예요. hard limit는 펌프가 아예 입력을 막아서 처방을 다시 확인해야 해요."
+    example: "That's a hard limit — the pump won't let us go past it."
+    exKo: "그건 하드 리밋이라 펌프가 넘어가게 해 주지 않아요."
+  - kind: context
+    words: [w-override, w-flag, w-verify]
+    scenes:
+      - {who: 동료 간호사에게, icon: speech, en: "Let's not just click past it — check the order first.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Soft-limit alert overridden after verification with order and pharmacy.", ok: true}
+      - {who: 담당 의사 콜, icon: monitor, en: "Hey, the pump's freaking out about your dose — can I just override it?", ok: false, fix: "The pump flagged a soft-limit alert on the heparin dose. Can you confirm the order before I override it?"}
+    why: "의사에게 콜할 때는 무엇이 어떤 경고를 띄웠는지 정확히 말하고 확인을 요청해요. 'freaking out'처럼 흐린 말은 판단할 정보를 주지 않아요."
+이중확인·독립확인 프로토콜:
+  - kind: pair
+    words: [w-independent, w-highalert, w-medication, w-dose]
+    pairs: [[independent, of each other], [high-alert, medications], [work out, the dose]]
+    decoys: [on own]
+    why: "독립확인은 두 사람이 서로에게서 independent of each other — 상대 숫자를 보지 않고 각자 work out the dose(용량을 계산)해요. 잘못 쓰면 큰 해가 되는 약은 high-alert medications(ISMP 용어)예요."
+  - kind: swap
+    words: [w-independent, w-prompt, w-confirm]
+    who: "동료에게 · 독립확인 요청"
+    icon: speech
+    before: ["Can you ", "confirm it's fifty units", " before I start the drip?"]
+    options: [check this on your own, confirm it's fifty units, just glance at it]
+    answer: check this on your own
+    notes: {check this on your own: "답을 먼저 말하지 않아 상대가 스스로 계산해요 — 독립확인이에요.", confirm it's fifty units: "숫자를 먼저 알려 주면 상대가 그 숫자에 끌려가요(prompting). 독립확인이 아니에요.", just glance at it: "훑어보기는 확인이 아니에요."}
+    why: "독립확인은 숫자를 먼저 말하지 않고 각자 따로 계산한 뒤 맞춰 봐요."
+이송·인계 중 안전 확인:
+  - kind: pair
+    words: [w-checklist, w-oxygen]
+    pairs: [[run, the checklist], [a full, oxygen tank], [read it, out loud]]
+    decoys: [loudly out]
+    why: "점검표를 '돌리다'는 run the checklist, 산소통은 a full oxygen tank, 소리 내어 읽기는 read it out loud예요."
+  - kind: context
+    words: [w-airway, w-secure]
+    scenes:
+      - {who: 동료 간호사에게, icon: speech, en: "Tube's secured at 23 at the lip — okay to unlock the brakes.", ok: true}
+      - {who: 차트 기록, icon: board, en: "ETT secure at 23 cm at lip prior to transport.", ok: true}
+      - {who: 보호자에게, icon: me, en: "ETT's at 23 at the lip, we're good to roll.", ok: false, fix: "We've made sure his breathing tube is secure before we move him for the scan."}
+    why: "튜브 깊이 같은 수치는 의료진끼리의 확인이에요. 보호자에게는 무엇을 확인했는지 쉬운 말로 말해요."

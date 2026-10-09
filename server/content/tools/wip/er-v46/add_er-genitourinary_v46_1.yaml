@@ -1,0 +1,501 @@
+- title: 배뇨통·빈뇨 문진(UTI)
+  s:
+  - t: 발현 시점
+    i: calendar
+    w: When did…start?로 시작 시점을 묻는 기본 문형이에요. 증상이 하루 이틀 된 것인지 며칠 지난 것인지에 따라 감염 가능성과 진행 정도를 가늠해요.
+    d: at night
+    k:
+    - 언제부터 열이 났나요?
+    - 소변 검사를 해 보신 적 있나요?
+    a: burning
+    o:
+    - swelling
+    - bleeding
+    - shaking
+  - t: 빈도 확인
+    i: chartup
+    w: How often…?은 횟수를 묻는 문형이에요. are you needing으로 지금 진행 중인 필요를 물어서 평소보다 자주 가는지 알 수 있어요.
+    d: at the hospital
+    k:
+    - 소변을 볼 때 통증이 있나요?
+    - 하루에 물은 얼마나 드세요?
+    a: urinate
+    o:
+    - drink
+    - vomit
+    - cough
+  - t: 소변 양상
+    i: magnify
+    w: Have you noticed…?로 환자가 스스로 본 변화를 묻는 현재완료 질문이에요. 혈뇨나 강한 냄새는 요로감염에서 흔히 확인하는 소변의 변화예요.
+    d: in your stool
+    k:
+    - 허리나 옆구리가 아프진 않으세요?
+    - 하루에 소변을 몇 번 보시나요?
+    a: blood
+    o:
+    - pus
+    - foam
+    - stones
+  - t: 통증 양상
+    i: pushpin
+    w: the whole time과 just at the start를 대비시켜 고르게 해요. 배뇨 내내 아픈지 처음에만 아픈지 말하게 하면 설명하기 어려운 통증도 짚을 수 있어요.
+    d: all night
+    k:
+    - 화장실에 가는 횟수가 늘었나요?
+    - 통증이 옆구리까지 퍼지나요?
+    a: whole
+    o:
+    - first
+    - last
+    - next
+  - t: 동반 증상
+    i: stetho
+    w: 열이나 아랫배 통증은 감염이 방광에 머무는지 더 번졌는지 살피는 단서예요. any를 써서 둘 중 하나라도 있었는지 넓게 물어요.
+    d: in your back
+    k:
+    - 소변에서 냄새가 나나요?
+    - 마지막으로 식사하신 게 언제예요?
+    a: fever
+    o:
+    - rash
+    - cough
+    - swelling
+  - t: 검체 안내
+    i: lab
+    w: I need to…로 필요한 일을 담담하게 알려요. before we go further는 소변 검사 결과를 보고 다음 단계를 정한다는 뜻이에요.
+    d: for allergies
+    k:
+    - 지금 바로 항생제를 시작할게요
+    - 검사 결과는 내일 알려 드릴게요
+    a: urine
+    o:
+    - blood
+    - stool
+    - wound
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 배뇨통 문진 4문장 순서
+    why: 먼저 시작 시점을 묻고, 그 뒤 얼마나 자주 가는지를 묻고, 그 빈번한 화장실 방문과 함께 온 열·복통을 확인한 뒤, 그 열과 통증까지 소변 검체로 확인하겠다고 마무리해요. 'it began'·'those trips'·'the fever, the pain'이 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: When did the burning with urination start?
+      icon: calendar
+      ko: 배뇨 시 화끈거림이 언제 시작됐나요?
+      note: 시작
+    - en: Since it began, how often have you needed to make trips to the bathroom?
+      icon: chartup
+      ko: 시작된 뒤로 화장실에 얼마나 자주 가셨나요?
+      note: 빈도
+    - en: With those trips, have you had any fever or pain in your lower belly?
+      icon: stetho
+      ko: 그렇게 자주 가시면서 열이나 아랫배 통증이 있었나요?
+      note: 동반
+    - en: Thanks. A urine sample will tell us more about the fever, the pain, and all of that.
+      icon: lab
+      ko: 감사해요. 소변 검체로 열, 통증, 그 모든 것에 대해 더 알 수 있어요
+      note: 검체
+  sw:
+    ko: 배뇨 시 화끈거리는 느낌이 있으셨나요?
+- title: 청결채뇨(clean catch) 설명
+  s:
+  - t: 첫 단계
+    i: bandage
+    w: First로 순서의 시작을 알리고, with the wipe we give you으로 필요한 물건을 병원이 준다고 말해 환자가 준비할 것이 없다고 안심시켜요. 먼저 닦아야 피부의 균이 검체에 섞이는 것을 줄일 수 있어요.
+    d: after you finish
+    k:
+    - 컵 안쪽은 만지지 마세요
+    - 끝나면 데스크로 가져오세요
+    a: wipe
+    o:
+    - cup
+    - specimen
+    - catheter
+  - t: 채취 방법
+    i: lab
+    w: Start…, then…으로 두 동작을 차례로 말해요. 처음 나오는 소변에는 요도 입구의 균이 섞일 수 있어서 중간 부분만 받아요.
+    d: into the toilet
+    k:
+    - 컵에 소변을 가득 채워 주세요
+    - 받은 컵은 뚜껑을 닫아 주세요
+    a: middle
+    o:
+    - first
+    - last
+    - end
+  - t: 오염 방지
+    i: shield
+    w: Try not to…는 금지 명령보다 부드러운 요청이에요. 컵 안쪽을 만지면 손의 균이 검체에 묻어 결과가 흐려질 수 있어요.
+    d: the outside
+    k:
+    - 컵 바깥쪽에 이름을 적을게요
+    - 컵 뚜껑은 꼭 닫아 주세요
+    a: touch
+    o:
+    - shake
+    - squeeze
+    - crush
+  - t: 절차 안내
+    i: speech
+    w: Let me…는 허락을 구하듯 말하는 방식이라 환자가 준비할 시간을 줘요. 시작 전에 단계를 알려 주면 순서가 틀려 검체를 다시 받는 일이 줄어요.
+    d: after the test
+    k:
+    - 컵을 가져다 드릴게요
+    - 이름과 생년월일을 확인할게요
+    a: explain
+    o:
+    - skip
+    - hide
+    - cancel
+  - t: 질문 확인
+    i: speech
+    w: Do you have any questions?는 "이해했나요?"보다 환자가 모르는 것을 말하기 쉬운 열린 질문이에요. 설명 직후에 물어 이해를 확인해요.
+    d: for the lab
+    k:
+    - 결과는 곧 알려 드릴게요
+    - 화장실은 복도 끝에 있어요
+    a: collection
+    o:
+    - payment
+    - insurance
+    - discharge
+  - t: 마무리
+    i: check
+    w: Once…는 앞 동작이 끝난 뒤에 이어질 일을 말해요. 컵을 밀봉해야 검체가 새거나 오염되지 않은 채 검사실로 가요.
+    d: to the pharmacy
+    k:
+    - 컵에 이름을 적어 주세요
+    - 손을 깨끗이 씻으세요
+    a: seal
+    o:
+    - empty
+    - wash
+    - open
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 청결채뇨 안내 4문장 순서
+    why: 단계를 먼저 설명하고, 그 단계를 알고 닦고, 닦은 부위로 소변을 받고, 채운 컵을 밀봉해 제출해요. 'those steps'·'the area clean'·'just filled'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: Let me explain the steps before you begin.
+      icon: speech
+      ko: 시작하기 전에 단계를 설명해 드릴게요
+      note: 안내
+    - en: Knowing those steps, clean the area with the wipe we give you.
+      icon: bandage
+      ko: 그 단계를 아셨으니 드리는 물티슈로 부위를 닦으세요
+      note: 닦기
+    - en: With the area clean, start urinating, then catch the middle part in the cup.
+      icon: lab
+      ko: 닦은 뒤 소변을 보기 시작하고 중간 부분을 컵에 받으세요
+      note: 채취
+    - en: Seal the cup you just filled and bring it to the front desk.
+      icon: check
+      ko: 방금 채운 컵을 밀봉해서 데스크로 가져오세요
+      note: 제출
+  ctx:
+    word: sample
+    ko: 검체
+    sc:
+      0:
+        en: Midstream urine sample collected, sent for UA.
+      1:
+        en: She's doing a clean catch — I went over the midstream sample with her.
+      2:
+        en: Please provide a clean-catch midstream sample for UA.
+        fix: Start peeing into the toilet, then catch the middle part of the stream in the cup — that's your sample.
+    why: 모두 중간뇨를 받으라는 같은 말이에요. 환자는 midstream·UA가 무슨 뜻인지 모를 수 있으니, 무엇을 어떤 순서로 하는지 쉬운 말로 풀어 말해요.
+- title: 요폐(소변 못 봄)
+  s:
+  - t: 마지막 배뇨
+    i: calendar
+    w: the last time you were able to…로 마지막으로 성공한 때를 물어요. 소변을 못 본 시간이 길수록 방광이 찬 정도와 도뇨가 얼마나 급한지 가늠하는 근거가 돼요.
+    d: at home
+    k:
+    - 지금 아랫배가 아프신가요?
+    - 평소 물은 얼마나 드세요?
+    a: last
+    o:
+    - first
+    - next
+    - same
+  - t: 복부 사정
+    i: stetho
+    w: feel full or tender?로 두 가지 감각을 한 번에 물어요. 방광에 소변이 차면 아랫배가 불러 오고 눌렀을 때 아플 수 있어요.
+    d: when you eat
+    k:
+    - 소변 줄기가 약한가요?
+    - 배변은 규칙적인가요?
+    a: tender
+    o:
+    - numb
+    - itchy
+    - cold
+  - t: 도뇨 안내
+    i: gear
+    w: We may need to…로 확정이 아닌 가능성으로 알려 환자가 마음의 준비를 해요. small은 불안을 덜어 주는 말이고, 도뇨관으로 방광을 비우면 압박감이 풀려요.
+    d: for a week
+    k:
+    - 소변 검체를 먼저 받을게요
+    - 방광 초음파를 먼저 볼게요
+    a: drain
+    o:
+    - fill
+    - weigh
+    - stretch
+  - t: 경과 시간
+    i: calendar
+    w: How long has it been since…?는 마지막 배뇨 이후 지난 시간을 묻는 문형이에요. 시간이 길수록 방광에 소변이 많이 찼을 수 있어요.
+    d: so far
+    k:
+    - 오늘 물은 얼마나 드셨나요?
+    - 열은 없으신가요?
+    a: urinated
+    o:
+    - eaten
+    - slept
+    - bled
+  - t: 촉진 안내
+    i: stetho
+    w: I'm going to…로 몸에 손을 대기 전에 미리 알려 놀라지 않게 해요. gently는 압통이 있는 아랫배를 누르기 전에 아프지 않게 하겠다는 약속이에요.
+    d: on the bed
+    k:
+    - 아프면 바로 말씀해 주세요
+    - 배에 젤을 바를게요
+    a: gently
+    o:
+    - firmly
+    - quickly
+    - twice
+  - t: 효과 안내
+    i: check
+    w: will…right away로 도뇨관의 효과를 분명하게 말해 환자를 안심시켜요. 방광에 찬 소변을 빼면 압박감과 통증이 바로 줄어요.
+    d: next week
+    k:
+    - 검사 결과가 곧 나올 거예요
+    - 카테터는 며칠 뒤에 뺄 거예요
+    a: relieve
+    o:
+    - measure
+    - replace
+    - record
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 요폐 사정 4문장 순서
+    why: 마지막 배뇨 시점을 묻고, 그 뒤 아랫배가 차 있는지 묻고, 찬 곳을 눌러 확인하고, 눌러서 느낀 그 팽만감을 작은 카테터가 풀어 준다고 안내해요. 'since then'·'where it feels full'·'I felt there'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: When was the last time you were able to urinate?
+      icon: calendar
+      ko: 마지막으로 소변을 볼 수 있었던 때가 언제였나요?
+      note: 시점
+    - en: Since then, has your lower belly started to feel full or tender?
+      icon: stetho
+      ko: 그 뒤로 아랫배가 차거나 아프기 시작했나요?
+      note: 증상
+    - en: Let me press gently on your belly where it feels full.
+      icon: pushpin
+      ko: 찬 느낌이 있는 곳을 부드럽게 눌러 볼게요
+      note: 촉진
+    - en: A small catheter will relieve the fullness I felt there right away.
+      icon: gear
+      ko: 작은 카테터가 제가 만져 본 그 팽만감을 바로 풀어 줄 거예요
+      note: 도뇨
+  sw:
+    ko: 작은 카테터를 넣어 방광을 비워야 할 수도 있어요
+- title: 육안적 혈뇨 주소
+  s:
+  - t: 통증 유무
+    i: magnify
+    w: Is there any…?로 통증이 있는지 예·아니오로 묻는 가장 쉬운 형태예요. 아픈 혈뇨와 아프지 않은 혈뇨는 원인을 가리는 방향이 달라서 먼저 구분해요.
+    d: by morning
+    k:
+    - 소변 색깔이 언제부터 변했나요?
+    - 열이 나지는 않으세요?
+    a: pain
+    o:
+    - rash
+    - swelling
+    - dizziness
+  - t: 발현 시점
+    i: calendar
+    w: first notice는 처음 알아차린 순간을 가리켜 시작 시점을 정확히 말하게 해요. 오늘 갑자기인지 며칠 전부터인지에 따라 다음 질문이 달라져요.
+    d: after lunch
+    k:
+    - 그 빨간 색이 얼마나 짙은가요?
+    - 화장실에 몇 번이나 가셨어요?
+    a: red
+    o:
+    - yellow
+    - green
+    - blue
+  - t: 출혈 양상
+    i: pushpin
+    w: start·end·throughout 세 갈래로 묻는 선택형 질문이라 환자가 답하기 쉬워요. 피가 나오는 시점이 출혈 부위를 가늠하는 단서가 돼요.
+    d: of the day
+    k:
+    - 덩어리가 같이 나오나요?
+    - 색이 점점 연해지나요?
+    a: blood
+    o:
+    - pain
+    - pressure
+    - burning
+  - t: 혈전 확인
+    i: magnify
+    w: passed는 소변과 함께 몸 밖으로 내보냈다는 뜻으로 쓰는 동사예요. 덩어리가 요도를 막으면 소변을 못 볼 수 있어서 꼭 확인해요.
+    d: since morning
+    k:
+    - 소변을 볼 때 따갑나요?
+    - 피가 언제 처음 보였나요?
+    a: passed
+    o:
+    - lost
+    - kept
+    - shed
+  - t: 변화 확인
+    i: chartup
+    w: from one…to the next는 매번 비교하라는 표현이에요. 색이 진해지고 옅어지는 흐름이 출혈이 계속되는지 멈추는지 보여 줘요.
+    d: after you drink
+    k:
+    - 소변을 볼 때 통증이 있나요?
+    - 마지막으로 드신 약이 있나요?
+    a: color
+    o:
+    - smell
+    - amount
+    - speed
+  - t: 검사 안내
+    i: lab
+    w: We'll…로 다음에 할 일을 먼저 알려 줘요. 소변검사로 적혈구와 감염 여부를 확인하고 필요하면 배양도 해요.
+    d: for the doctor
+    k:
+    - 소변을 따로 받아 오세요
+    - 결과는 내일 알려 드릴게요
+    a: lab
+    o:
+    - pharmacy
+    - ward
+    - kitchen
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 혈뇨 문진 4문장 순서
+    why: 붉은 색을 처음 본 때를 묻고, 그 뒤 피가 나오는 양상을 묻고, 그 피가 덩어리로 나왔는지 묻고, 피와 덩어리를 보도록 소변을 검사실로 보낸다고 마무리해요. 'Since then'·'that blood'·'any clots'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: When did you first notice the red color?
+      icon: calendar
+      ko: 빨간 색깔을 언제 처음 알아차리셨나요?
+      note: 시점
+    - en: Since then, has the blood come at the start, the end, or throughout?
+      icon: pushpin
+      ko: 그 뒤로 피가 처음, 끝, 아니면 내내 나오나요?
+      note: 양상
+    - en: Has any of that blood been passed as clots?
+      icon: magnify
+      ko: 그 피가 덩어리로 나온 적이 있나요?
+      note: 혈전
+    - en: Thank you. We'll send your urine to the lab to look at the blood and any clots.
+      icon: lab
+      ko: 감사해요. 피와 혹시 모를 덩어리를 보도록 소변을 검사실로 보낼게요
+      note: 검사
+  sw:
+    ko: 빨간색을 처음 언제 알아차리셨어요?
+- title: 도뇨관 삽입 절차 설명
+  s:
+  - t: 감각 예고
+    i: faceWorried
+    w: may feel…but…으로 느낄 감각을 미리 알려 놀라지 않게 해요. 도뇨관을 넣을 때는 압박감이나 불편감이 흔하고, 날카로운 통증은 바로 알려 달라고 해요.
+    d: at first
+    k:
+    - 천천히 넣을 테니 걱정 마세요
+    - 숨을 깊게 쉬어 보세요
+    a: pressure
+    o:
+    - itching
+    - chill
+    - dizziness
+  - t: 무균 설명
+    i: shield
+    w: to prevent…로 이유를 붙여 이 준비가 환자를 위한 것임을 알려요. 요도로 관을 넣으면 균이 방광에 들어갈 수 있어서 무균 술기를 써요.
+    d: for a minute
+    k:
+    - 소변 색을 확인할게요
+    - 관을 넣을 때 압박감이 있을 거예요
+    a: sterile
+    o:
+    - warm
+    - quiet
+    - private
+  - t: 소통 요청
+    i: speech
+    w: Tell me if…로 불편하면 알려 달라고 길을 열어 줘요. 환자가 멈추라고 요청할 수 있다는 통제감을 주면 긴장이 풀려요.
+    d: right now
+    k:
+    - 관이 들어갈 때 숨을 내쉬세요
+    - 곧 소변이 나오기 시작할 거예요
+    a: discomfort
+    o:
+    - nausea
+    - dizziness
+    - cough
+  - t: 소요 시간
+    i: calendar
+    w: only로 짧다는 점을 강조하고 a couple of로 대략의 시간을 알려요. 얼마나 걸리는지 알면 불안이 줄어요.
+    d: per day
+    k:
+    - 곧 시작할게요
+    - 끝나면 바로 알려 드릴게요
+    a: minutes
+    o:
+    - hours
+    - days
+    - weeks
+  - t: 긴장 완화
+    i: stetho
+    w: for me는 요청을 부탁처럼 들리게 하는 표현이에요. 긴장으로 골반 근육이 조이면 관이 들어가기 어렵고 더 아파서 긴장을 풀도록 도와요.
+    d: as fast as you can
+    k:
+    - 다리를 조금 더 벌려 주세요
+    - 아주 천천히 넣을게요
+    a: relax
+    o:
+    - cough
+    - sneeze
+    - stretch
+  - t: 격려
+    i: star
+    w: You're doing great로 칭찬하고 almost done으로 끝이 가까움을 알려요. 긴장한 환자는 끝이 보일 때 한결 편해져요.
+    d: for today
+    k:
+    - 이제 도뇨관을 고정할게요
+    - 소변이 나오고 있어요
+    a: almost
+    o:
+    - hardly
+    - never
+    - barely
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 도뇨관 삽입 중 4문장 순서
+    why: 넣는다고 알리며 무균을 말하고, 그 관 때문에 느낄 압박감을 예고하고, 그 압박감이 불편으로 바뀌면 알리라며 천천히 하겠다고 하고, 그 속도와 압박감을 잘 견뎠다며 끝이 가까움을 알려요. 'it'·'the pressure'·'the slow pace'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: I'm going to put the catheter in now, and we keep everything sterile.
+      icon: gear
+      ko: 이제 카테터를 넣을 거고, 모든 것을 무균으로 유지해요
+      note: 안내
+    - en: You may feel some pressure from it, but it shouldn't be sharply painful.
+      icon: faceWorried
+      ko: 압박감은 느낄 수 있지만 날카롭게 아프지는 않을 거예요
+      note: 예고
+    - en: Tell me if the pressure becomes discomfort and I'll go slowly.
+      icon: speech
+      ko: 압박감이 불편해지면 말씀해 주세요, 천천히 할게요
+      note: 요청
+    - en: You've handled the slow pace and the pressure well — we're almost done.
+      icon: star
+      ko: 천천히 하는 것과 압박감을 잘 견디셨어요, 거의 끝났어요
+      note: 격려
+  ctx:
+    word: sterile
+    ko: 무균의

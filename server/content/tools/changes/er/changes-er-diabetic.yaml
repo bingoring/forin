@@ -1,0 +1,348 @@
+theme: er-diabetic
+changes:
+- kind: sentence
+  situation: 혈당 측정·병력 문진
+  index: 4
+  fields:
+  - words
+  why: 쉬운 w-finger 태그를 뺐다
+- kind: sentence
+  situation: 저혈당 초기(경증)
+  index: 1
+  fields:
+  - words
+  why: 쉬운 w-today 태그를 뺐다
+- kind: sentence
+  situation: 저혈당 초기(경증)
+  index: 3
+  fields:
+  - words
+  why: 쉬운 w-minute 태그를 뺐다
+- kind: sentence
+  situation: 다뇨·다갈 고혈당 주소
+  index: 3
+  fields:
+  - words
+  why: 쉬운 w-day 태그를 뺐다
+- kind: sentence
+  situation: 다뇨·다갈 고혈당 주소
+  index: 4
+  fields:
+  - words
+  why: 쉬운 w-family 태그를 뺐다
+- kind: sentence
+  situation: 인슐린 사용법 확인
+  index: 3
+  fields:
+  - words
+  why: 쉬운 w-body 태그를 뺐다
+- kind: sentence
+  situation: 저혈당 의식저하
+  index: 3
+  fields:
+  - words
+  why: 쉬운 w-minute 태그를 뺐다
+- kind: sentence
+  situation: 신환 1형 당뇨 발현
+  index: 2
+  fields:
+  - words
+  why: 쉬운 w-question 태그를 뺐다
+- kind: sentence
+  situation: 신환 1형 당뇨 발현
+  index: 3
+  fields:
+  - words
+  why: 쉬운 w-body 태그를 뺐다
+- kind: sentence
+  situation: 저혈당 반복 고령자
+  index: 0
+  fields:
+  - words
+  why: 쉬운 w-time 태그를 뺐다
+- kind: sentence
+  situation: 저혈당 반복 고령자
+  index: 1
+  fields:
+  - words
+  why: 쉬운 w-time 태그를 뺐다; 쉬운 w-month 태그를 뺐다
+- kind: sentence
+  situation: 임신성/임신 당뇨 위기
+  index: 0
+  fields:
+  - words
+  why: 쉬운 w-week 태그를 뺐다
+- kind: sentence
+  situation: 임신성/임신 당뇨 위기
+  index: 2
+  fields:
+  - words
+  why: 쉬운 w-baby 태그를 뺐다
+- kind: sentence
+  situation: 임신성/임신 당뇨 위기
+  index: 4
+  fields:
+  - words
+  why: 쉬운 w-baby 태그를 뺐다
+- kind: sentence
+  situation: 임신성/임신 당뇨 위기
+  index: 5
+  fields:
+  - words
+  why: 쉬운 w-baby 태그를 뺐다
+- kind: sentence
+  situation: 당뇨 언어장벽 교육
+  index: 2
+  fields:
+  - words
+  why: 쉬운 w-question 태그를 뺐다
+- kind: sentence
+  situation: DKA 뇌부종(소아)
+  index: 1
+  fields:
+  - words
+  why: 쉬운 w-hour 태그를 뺐다
+- kind: sentence
+  situation: HHS 쇼크 동반
+  index: 0
+  fields:
+  - words
+  why: 쉬운 w-hour 태그를 뺐다; w-last(마지막으로)는 여기서 over the last hour(지난)라 다른 뜻 — 태그를 뺐다
+- kind: sentence
+  situation: HHS 쇼크 동반
+  index: 3
+  fields:
+  - words
+  why: w-bring(데려오다)은 여기서 bring her blood pressure back up(되돌리다)이라 다른 뜻 — 태그를 뺐다
+- kind: sentence
+  situation: 당뇨발 괴사 패혈증
+  index: 6
+  fields:
+  - words
+  why: w-give(투여하다)는 여기서 give a full report(보고하다)라 다른 뜻 — 태그를 뺐다
+- kind: sentence
+  situation: DKA 급변 야간 인계
+  index: 0
+  fields:
+  - words
+  why: 쉬운 w-hour 태그를 뺐다
+- kind: sentence
+  situation: DKA 급변 야간 인계
+  index: 2
+  fields:
+  - words
+  - ko
+  why: 쉬운 w-doctor 태그를 뺐다; anion gap이 드러나게 — 단어 exKo와 통일
+- kind: sentence
+  situation: DKA 급변 야간 인계
+  index: 4
+  fields:
+  - words
+  why: 쉬운 w-doctor 태그를 뺐다; w-give(투여하다)는 여기서 giving the doctor an update라 다른 뜻 — 태그를 뺐다
+- kind: sentence
+  situation: DKA 급변 야간 인계
+  index: 5
+  fields:
+  - words
+  why: 쉬운 w-hand 태그를 뺐다
+- kind: word-remove
+  id: w-minute
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-today
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-day
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-family
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-body
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-week
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-baby
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-time
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-hour
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-doctor
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-hand
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-question
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-finger
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word
+  id: w-take
+  fields:
+  - ko
+  why: '''섭취하다''는 음식에 쓰는 말 — 문장은 take your insulin(인슐린을 맞다/쓰다)·take juice라 약 복용 쪽이 맞다'
+- kind: word
+  id: w-spot
+  fields:
+  - ko
+  why: w-site와 ko(부위)가 같아 정답이 둘 — spot은 환자가 쓰는 쉬운 말, 주사 자리
+- kind: word
+  id: w-miss
+  fields:
+  - ko
+  why: w-skip과 ko(거르다)가 같아 듣고 뜻 고르기에서 정답이 둘 — missed doses·nothing gets missed 모두 놓치다로 통한다
+- kind: word
+  id: w-sore
+  fields:
+  - ko
+  why: w-wound와 ko(상처)가 같아 정답이 둘 — sore는 헐어서 잘 안 낫는 곳; '헌 데'는 띄어쓰기가 틀리고 '헌데'는 접속사로 읽혀 풀어 썼다
+- kind: word
+  id: w-rise
+  fields:
+  - ko
+  why: 문장은 명사(This rise in sugar)인데 ko가 동사 '오르다'였고 w-raise(올리다)와도 헷갈린다
+- kind: word
+  id: w-sleepy
+  fields:
+  - ko
+  why: w-drowsy와 ko(졸린)가 같아 정답이 둘 — 지시서의 예대로 가른다
+- kind: sentence
+  situation: 인슐린 사용법 확인
+  index: 2
+  fields:
+  - ko
+  why: w-miss(놓치다)와 어긋난 '거르다'(=w-skip ko)를 빠뜨리다로
+- kind: sentence
+  situation: 전형 DKA
+  index: 0
+  fields:
+  - ko
+  why: w-miss(놓치다)와 어긋난 '거르다'(=w-skip ko)를 빠뜨리다로
+- kind: word
+  id: w-walk
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 낱말 walk에 '안내하다'는 틀린 뜻 — 문장은 walk you through라 구 단위로
+- kind: word
+  id: w-fluid
+  fields:
+  - ko
+  why: 태그 문장 6개 중 4개가 IV fluids·giving fluids(수액)라 넓혔다
+- kind: word-remove
+  id: w-month
+  why: 너무 쉬움(day·week·hour와 같은 급) — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: sentence
+  situation: 발 상처 당뇨 환자
+  index: 5
+  fields:
+  - chunks
+  why: 'v46 검토 결정 11 예외: 청크 controlled helps가 your sugar controlled를 끊음 — 주어와 동사 경계에서 끊음'
+- kind: sentence
+  situation: 당뇨 언어장벽 교육
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  why: 'v46 검토 결정 11 예외: show me back은 원어민이 잘 쓰지 않고 청크도 구를 끊음 — how you''d do it 형태로'
+- kind: sentence
+  situation: DKA 중증 저칼륨
+  index: 1
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'v46 검토 결정 11 예외: 15.0과 같은 말을 두 번 배움 — 약한 부위(다리·팔)를 고르게 묻는 질문으로 바꿈'
+- kind: sentence
+  situation: DKA 중증 저칼륨
+  index: 5
+  fields:
+  - ko
+  why: 'v46 검토 결정 11 예외: en 주어는 모니터인데 ko 주체가 달랐음 — ko를 "저희가 바로 알 수 있어요"로'
+- kind: sentence
+  situation: HHS 쇼크 동반
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'v46 검토 결정 11 예외: 17.2와 같은 말을 두 번 배움 — 수액이 혈압을 다시 올려 줄 거라는 기대를 말하는 문장으로 바꿈'
+- kind: sentence
+  situation: 당뇨발 괴사 패혈증
+  index: 2
+  fields:
+  - en
+  - chunks
+  why: 'v46 검토 결정 11 예외: 주어가 둘(swelling and blackness)이라 Is가 아니라 Are'
+- kind: sentence
+  situation: DKA 급변 야간 인계
+  index: 2
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'v46 검토 결정 11 예외: 환자에게 하는 말인데 S20 context가 가르치는 어색한 실수(anion gap을 환자에게)와 같음 — 쉬운 말로 풀어 씀'
+- kind: word
+  id: w-understand
+  fields:
+  - example
+  - exKo
+  why: 'v46 검토 결정 11 예외: 바뀐 예문 문장에 맞춰 예문·번역 정렬'
+- kind: word
+  id: w-weak
+  fields:
+  - example
+  - exKo
+  why: 'v46 검토 결정 11 예외: 바뀐 예문 문장에 맞춰 예문·번역 정렬'
+- kind: word
+  id: w-swelling
+  fields:
+  - example
+  why: 'v46 검토 결정 11 예외: 바뀐 예문 문장에 맞춰 예문·번역 정렬'
+- kind: word
+  id: w-spread
+  fields:
+  - example
+  why: 'v46 검토 결정 11 예외: 바뀐 예문 문장에 맞춰 예문·번역 정렬'
+- kind: word
+  id: w-leg
+  fields:
+  - example
+  why: 'v46 검토 결정 11 예외: 바뀐 예문 문장에 맞춰 예문·번역 정렬'
+- kind: word
+  id: w-lab
+  fields:
+  - example
+  - exKo
+  why: 'v46 검토 결정 11 예외: 바뀐 예문 문장에 맞춰 예문·번역 정렬'
+- kind: word
+  id: w-gap
+  fields:
+  - example
+  - exKo
+  why: 'v46 검토 결정 11 예외: 예문을 20.3으로 옮김'
+- kind: word
+  id: w-update
+  fields:
+  - example
+  - exKo
+  why: 'v46 검토 결정 11 예외: 바뀐 예문 문장에 맞춰 예문·번역 정렬'
+- kind: sentence
+  situation: DKA 급변 야간 인계
+  index: 3
+  fields:
+  - ko
+  why: 'v46 검토 결정 11 예외: 환자에게 하는 말의 ko에 영어 anion gap이 남음 — 우리말 "음이온차"로'

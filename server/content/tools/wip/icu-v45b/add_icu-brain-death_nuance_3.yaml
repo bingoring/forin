@@ -1,0 +1,130 @@
+순환정지후 기증 이해:
+  - kind: pair
+    words: [w-circulatory, w-withdrawal, w-wait, w-period]
+    pairs: [[circulatory, death], [withdrawal of, life-sustaining treatment], [waiting, period]]
+    decoys: [blanket]
+    why: "DCD 절차의 핵심 말들이에요. 생명유지 치료를 중단(withdrawal of life-sustaining treatment)한 뒤 심장이 멈추면 순환 정지에 의한 사망(circulatory death)을 선언하고, 정해진 관찰 시간(waiting period)이 지난 뒤에야 구득을 시작해요."
+  - kind: swap
+    words: [w-role, w-team]
+    who: "동료에게 · DCD 역할 확인"
+    icon: speech
+    before: ["Our ICU team withdraws support and declares death; the OPO team ", "helps decide when to withdraw", "."]
+    options: [isn't involved in either, helps decide when to withdraw, declares death]
+    answer: isn't involved in either
+    notes:
+      isn't involved in either: "치료 중단과 사망 선언은 환자를 돌보던 팀의 일이고, 기증·구득 쪽은 여기서 빠진다."
+      helps decide when to withdraw: "기증 쪽이 중단 결정에 관여하면 환자보다 기증을 앞세운다는 의심을 산다. 하지 않는다."
+      declares death: "사망 선언은 구득팀이 아니라 환자를 돌보던 의료진이 한다."
+    why: "DCD에서 치료 쪽과 기증 쪽의 역할을 나누는 것은 이해 충돌을 막기 위해서예요. 그래서 '역할이 다르다(roles are different)'는 말이 이 상황의 핵심이에요."
+
+무호흡 검사 중 급변 위기:
+  - kind: slider
+    words: [w-crash, w-pressure]
+    cue: "SBP 112, then 84, then 66 within a minute of coming off the vent."
+    scale: [dipping, dropping, crashing]
+    answerAt: 2
+    why: "1분 만에 크게 떨어지면 'crashing'이에요. 동료에게 위급함이 바로 전해져 검사를 즉시 중단하고 인공호흡기를 다시 연결해요."
+    example: "His pressure crashed the moment we started the test."
+    exKo: "검사를 시작하자마자 혈압이 급격히 떨어졌습니다."
+  - kind: context
+    words: [w-abort, w-reconnect, w-ventilator]
+    scenes:
+      - {who: 팀에게 · 급변 콜, icon: siren, en: "Aborting now — reconnecting him to the ventilator.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Apnea test aborted for hypotension; reconnected to ventilator.", ok: true}
+      - {who: 보호자에게, icon: me, en: "We had to abort — he crashed, so we reconnected the ventilator.", ok: false, fix: "We had to stop one of the tests because his blood pressure dropped. He's back on the breathing machine, and we'll try again when it's safe."}
+    why: "'abort'와 'crashed'는 급변 때 팀에 쓰는 짧고 강한 말이에요. 가족에게는 무슨 일이 있었고 지금은 어떤지를 차분하고 쉬운 말로 전해요."
+
+뇌사 후 순환 붕괴 위기:
+  - kind: slider
+    words: [w-escalate, w-pressor]
+    cue: "MAP in the 40s on maxed norepinephrine and vasopressin, and still falling."
+    scale: [keep watching, let the team know, escalate now]
+    answerAt: 2
+    why: "최대 용량에도 버티지 못하면 지켜볼 때가 아니에요. 의사와 코디네이터를 지금 부르고 치료 단계를 올려요(escalate now)."
+    example: "We're losing time if we don't escalate now."
+    exKo: "지금 단계를 높이지 않으면 시간을 잃게 됩니다."
+  - kind: swap
+    words: [w-max, w-pressor, w-give, w-volume]
+    who: "동료에게 · 순환 붕괴"
+    icon: siren
+    before: ["Pressure's bottoming out — ", "slowly increase", " the pressors and give volume now."]
+    options: [max, slowly increase, hold]
+    answer: max
+    notes:
+      max: "위급할 때 팀에 쓰는 짧은 지시. 듣는 순간 모두가 가장 강한 조치라는 것을 안다."
+      slowly increase: "천천히 올리자는 뜻이라 혈압이 바닥으로 떨어지는 지금은 너무 느리다."
+      hold: "병원에서 hold는 '투여를 잠시 멈추다'라는 뜻이라, 혈압이 무너지는 지금과 정반대의 지시가 된다."
+    why: "순환 붕괴 때는 지시를 짧고 분명하게 해요. 말의 세기가 상황의 긴급도와 맞아야 팀이 같은 속도로 움직여요."
+
+심한 요붕증 급변 관리:
+  - kind: slider
+    words: [w-climb, w-sodium]
+    cue: "Sodium 150, then 151, then 152 over six hours."
+    scale: [creeping up, climbing fast, skyrocketing]
+    answerAt: 0
+    why: "몇 시간에 걸쳐 1씩 오르면 'creeping up'(서서히 오른다)이에요. 'skyrocketing'은 짧은 시간에 크게 뛸 때 써요. 말의 세기를 수치에 맞춰야 팀이 긴급도를 바로 판단해요."
+    example: "His sodium is creeping up, so I'll recheck it closely."
+    exKo: "나트륨이 서서히 오르고 있어서 세심하게 다시 확인할게요."
+  - kind: context
+    words: [w-recheck, w-correct, w-careful]
+    scenes:
+      - {who: 동료에게, icon: speech, en: "Recheck the sodium immediately and correct carefully.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Na rechecked; correction per order with serial levels.", ok: true}
+      - {who: 보호자에게, icon: me, en: "His sodium is skyrocketing, so we're correcting it carefully.", ok: false, fix: "His salt level is too high, so we're bringing it down carefully and checking it often."}
+    why: "'skyrocketing'·'sodium'은 동료에게는 긴급도를 정확히 전하지만, 가족에게는 겁만 주고 뜻은 와닿지 않아요. 가족에게는 '염분 수치'처럼 쉬운 말로 전해요."
+
+가족 갈등·기증 거부 상황:
+  - kind: slider
+    words: [w-convince]
+    cue: "Nurse to family: \"Donating would help so many people — you should really think about it.\""
+    scale: [informing, encouraging, pressuring]
+    answerAt: 2
+    why: "간호사가 기증의 좋은 점을 들며 권하면 슬픔과 분노 속의 가족에게는 압박으로 들려요. 기증 이야기는 OPO 담당자가 하고, 간호사는 가족 곁에서 어떤 결정이든 지지해요."
+    example: "I'm not here to convince you of anything."
+    exKo: "무언가를 설득하려고 온 것이 아닙니다."
+  - kind: swap
+    words: [w-respect, w-wish]
+    who: "보호자에게 · 기증을 거부하며 화내는 가족"
+    icon: me
+    before: ["I hear you, and your family's wishes will be ", "reconsidered", "."]
+    options: [respected, reconsidered, discussed later]
+    answer: respected
+    notes:
+      respected: "가족의 거부를 그대로 받아들인다는 분명한 말."
+      reconsidered: "나중에 다시 따져 보겠다는 뜻이라 가족의 말을 무시하는 것으로 들린다."
+      discussed later: "다시 설득하러 오겠다는 뜻으로 들려 분노를 키운다."
+    why: "거부하는 가족에게 간호사는 설득하지 않고 뜻을 존중한다고 분명히 말해요. 기증과 관련된 질문이 이어지면 OPO 담당자에게 넘겨요."
+
+판정 시점·연명 갈등:
+  - kind: slider
+    words: [w-brain, w-activity]
+    cue: "No brainstem reflexes, no breathing on the apnea test, no sedation on board."
+    scale: [unconscious, in a coma, brain dead]
+    answerAt: 2
+    why: "혼수(coma)는 뇌 기능이 일부 남아 있는 상태지만, 뇌사는 뇌간을 포함한 뇌 전체의 기능이 영구히 멈춘 것이고 미국에서는 법적 사망이에요. 가족이 혼수와 헷갈리지 않게 분명히 구분해 말해요."
+    example: "The tests show his brain has no activity at all. That means he has died."
+    exKo: "검사 결과 뇌에는 아무 활동도 없어요. 그가 사망했다는 뜻이에요."
+  - kind: context
+    words: [w-machine, w-keep, w-heart]
+    scenes:
+      - {who: 보호자에게, icon: me, en: "The machine is keeping his heart going, but his brain has stopped.", ok: true}
+      - {who: 동료에게, icon: speech, en: "He's on the vent and pressors; his heart rate is holding in the 90s.", ok: true}
+      - {who: 보호자에게, icon: me, en: "We're keeping him alive on life support for now.", ok: false, fix: "The machine is moving air into his lungs, so his heart is still beating. But he has died."}
+    why: "뇌사 판정 뒤 가족에게 'keeping him alive'·'life support'라고 하면 아직 살아 있다는 뜻으로 들려 혼란을 키워요. 심장은 기계와 약의 도움으로 뛰지만 그는 이미 사망했다는 사실을 분명히 말해요."
+
+기증 장기 기능 유지 위기:
+  - kind: slider
+    words: [w-tolerate, w-kidney]
+    cue: "Urine output has tapered to almost nothing despite fluids and pressors."
+    scale: [handling it, struggling with it, not tolerating it]
+    answerAt: 2
+    why: "수액과 승압제에도 소변이 거의 끊겼다면 신장이 지금 상태를 '견디지 못한다(not tolerating)'고 분명히 보고해요. 그래야 코디네이터와 의사가 바로 움직여요."
+    example: "The kidneys aren't tolerating the current numbers."
+    exKo: "현재 수치로는 신장이 버티지 못하고 있습니다."
+  - kind: context
+    words: [w-coordinator, w-escalate, w-quickly]
+    scenes:
+      - {who: 코디네이터에게, icon: mic, en: "His kidneys are trending down — I'm calling so we can escalate quickly.", ok: true}
+      - {who: 동료 인계, icon: board, en: "Kidney function is dropping; coordinator aware and the team is escalating.", ok: true}
+      - {who: 보호자에게, icon: me, en: "We could lose the kidney offer, so we need to escalate quickly.", ok: false, fix: "Things are changing quickly, and the team is working hard. The coordinator will update you."}
+    why: "'offer'·'escalate'는 OPO와 의료진끼리의 실무 말이에요. 가족에게 그대로 하면 부담만 지워요. 진행 상황은 코디네이터가 가족에게 알려요."

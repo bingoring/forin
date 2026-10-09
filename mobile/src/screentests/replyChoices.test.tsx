@@ -148,18 +148,33 @@ test('nothing to offer draws nothing at all', () => {
 const SRC = readFileSync(join(__dirname, '..', 'app', 'dialogue', '[id].tsx'), 'utf8');
 
 test('the rung the learner TAPPED decides it, with the server as fallback', () => {
-  expect(SRC).toMatch(/const guided = \(guideParam \?\? scenario\?\.guide\) === 'choices';/);
+  expect(SRC).toMatch(/const guided = isGuidedRung\(guideParam \?\? scenario\?\.guide\);/);
   expect(SRC).toMatch(/guide: guideParam \} = useLocalSearchParams/);
 });
 
-test('the speak area opens once an intent is picked, or on the free path', () => {
-  // The mic-driven input replaces the option list the moment a goal is chosen; it also
-  // stands in for the whole box on the free / no-mic / empty path.
-  expect(SRC).toMatch(/selectedChoice \|\| wroteOwn \|\| !guided \|\| \(!choicesBusy && choices\.length === 0\)/);
+// 2026-09-30에 이 회차의 이름이 `choices` 에서 `guided` 로 바뀌었다. 판정을 화면에서
+// 직접 하면 옛 이름이 박힌 딥링크가 조용히 자유 회차로 떨어진다 — 터지지 않고 그냥
+// 보기가 사라지므로 눈으로 못 찾는다. 그래서 판정은 data/guideRung 한 곳에만 둔다.
+test('회차 판정을 화면에서 직접 하지 않는다 — 옛 이름이 조용히 떨어진다', () => {
+  expect(SRC).not.toMatch(/=== 'choices'/);
+  expect(SRC).not.toMatch(/=== 'guided'/);
+  expect(SRC).toMatch(/import \{ GUIDED, isGuidedRung \} from '@\/data\/guideRung'/);
+  // 보낼 때는 새 이름만 쓴다.
+  expect(SRC).not.toMatch(/'choices' : 'free'/);
+});
+
+test('the guided input opens with a target, once an intent is picked, or on the empty path', () => {
+  // The STEP 3 input (말하기 / 타이핑, lesson-fidelity-v46) replaces the option list the
+  // moment a goal is chosen; it also stands in on the no-mic / empty path. v44 J: a STEP 3
+  // target (the situation's STEP 2 sentence) opens it straight away.
+  expect(SRC).toMatch(/const guidedInputOn = guided && \(!!target \|\| !!selectedChoice \|\| wroteOwn \|\| \(!choicesBusy && choices\.length === 0\)\);/);
+  // Asking for the box ("직접 적기") opens the typing card, not the mic.
+  expect(SRC).toMatch(/onWriteMyOwn=\{\(\) => \{ setWroteOwn\(true\); setInputMode\('type'\); \}\}/);
 });
 
 test('send carries the picked intent so the correction can judge against it', () => {
-  expect(SRC).toMatch(/send\(selectedChoice \? \{ text: draft, intent: selectedChoice\.intent \}/);
+  expect(SRC).toMatch(/const guidedIntent = selectedChoice \? selectedChoice\.intent : target \? target\.ko : undefined;/);
+  expect(SRC).toMatch(/send\(guidedIntent !== undefined \? \{ text: draft, intent: guidedIntent \} : undefined\)/);
 });
 
 test('the immediate correction lands under the learner’s own bubble', () => {
@@ -179,30 +194,48 @@ test('the suggestions are answers to the line that was just said', () => {
 });
 
 test('asking for the box is remembered', () => {
-  expect(SRC).toMatch(/if \(!guided \|\| wroteOwn \|\| !sid\) return;/);
+  // v44 J: with STEP 2 sentences there are no choices to fetch either.
+  expect(SRC).toMatch(/if \(!guided \|\| wroteOwn \|\| !sid \|\| !lessonRef\.current\.ready \|\| lessonRef\.current\.count > 0\) return;/);
 });
 
 // ── the hint ──────────────────────────────────────────────────────────────
-test('the hint reveals the picked intent’s model line when stuck', () => {
-  // With a goal chosen, "막히면 보기" shows THAT intent's model line in the target
-  // language — it is already in hand, so no fetch. On the free pass it still withholds
-  // the sentence and shows only the reason.
+test('the hint is the free pass’s, and withholds the sentence', () => {
+  // lesson-fidelity-v46: the guided rail is 보내기 · 듣기 · 노트 (dialogue.jsx L178–182) —
+  // no 힌트; its hints are the target card's chunks. On the free pass the hint shows only
+  // the reason the best reply works, never the reply.
   expect(SRC).toMatch(/const askHint = async \(\) => \{/);
-  expect(SRC).toMatch(/if \(selectedChoice\) \{ setHintText\(selectedChoice\.text\); return; \}/);
+  expect(SRC).not.toMatch(/setHintText\(selectedChoice\.text\)/);
+  expect(SRC).not.toMatch(/setHintText\(target\.en\)/);
   expect(SRC).toMatch(/setHintText\(cs\.find\(\(c\) => c\.tier === 'best'\)\?\.why/);
 });
 
 // Task 13 replaced 캠퍼스's DeptSheet/campus.tsx pair with the journey map's
-// StationSheet/journey.tsx pair — the property survives, just through the new pipe:
-// a step row carries its own `guide` (JourneyStep, server-sent) straight to
-// `onStepPress`, and journey.tsx threads THAT into the push rather than re-deriving it.
-test('the chosen rung survives every screen between the list and the conversation', () => {
-  const sheet = readFileSync(join(__dirname, '..', 'components', 'journey', 'StationSheet.tsx'), 'utf8');
-  expect(sheet).toMatch(/onPress=\{\(\) => onStepPress\(s\)\}/);
+// StationSheet/journey.tsx pair — the property survived through that pipe: a step row
+// carries its own `guide` (JourneyStep, server-sent) straight to `onStepPress`, and
+// journey.tsx threaded THAT into the push rather than re-deriving it.
+//
+// P3-C (curriculum-v3-journey-ia/build-spec-index.md) moved the whole pipe: the 일터
+// 탭 (1단계) no longer opens a sheet at all, and `StationSheet.tsx` itself is gone —
+// §6 of the build spec called this out up front ("시트는 이 화면에 흡수된다"). The
+// 2단계 주제 화면 (`app/journey/theme/[themeKey].tsx` + `StationTrack.tsx`) is what
+// absorbed the job, so this now checks the SAME property one hop later in that pipe:
+// `StationTrack` still hands the tapped step's own `guide` straight through to
+// `onStepPress` (via `pressStep`, not renamed away), and the theme screen's own
+// `routeStep` still reads `step.guide` off of it rather than re-deriving one.
+test('the chosen rung survives from the step row to the conversation screen', () => {
+  const track = readFileSync(join(__dirname, '..', 'components', 'journey', 'StationTrack.tsx'), 'utf8');
+  expect(track).toMatch(/onPress=\{\(\) => pressStep\(i, step\)\}/);
+  expect(track).toMatch(/onStepPress\(step\);/);
 
-  const journey = readFileSync(join(__dirname, '..', 'app', '(tabs)', 'journey.tsx'), 'utf8');
-  expect(journey).toMatch(/router\.push\(step\.guide \? `\/scenario\/\$\{scn\}\?guide=\$\{step\.guide\}`/);
+  const theme = readFileSync(join(__dirname, '..', 'app', '(tabs)', 'journey', 'theme', '[themeKey].tsx'), 'utf8');
+  expect(theme).toMatch(/router\.push\(step\.guide \? `\/scenario\/\$\{scn\}\?guide=\$\{step\.guide\}`/);
 
-  const briefing = readFileSync(join(__dirname, '..', 'app', 'scenario', '[id].tsx'), 'utf8');
-  expect(briefing).toMatch(/guide \? `\/dialogue\/\$\{id\}\?guide=\$\{guide\}`/);
+  // v44 G (lesson-four-steps-v44 결정 4): the pipe now ends at the 상황 허브, which took
+  // the briefing's route. The hub is where the rung is chosen — each dialogue step sends
+  // its own (`stepHref`, locked in data/lessonSteps.test + screentests/lessonHub.test) —
+  // so what must hold here is that the hub does NOT read a rung off the URL and forward
+  // it: a stale `?guide=choices` link would otherwise open a pass the hub shows as locked.
+  const hub = readFileSync(join(__dirname, '..', 'app', 'scenario', '[id]', 'index.tsx'), 'utf8');
+  expect(hub).toMatch(/router\.push\(stepHref\(id, k\)\)/);
+  expect(hub).not.toMatch(/useLocalSearchParams<\{[^}]*guide/);
 });

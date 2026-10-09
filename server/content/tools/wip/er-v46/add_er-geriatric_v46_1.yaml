@@ -1,0 +1,95 @@
+- title: 노인 낙상 후 문진
+  s:
+  - {t: 낙상 정황, i: magnify, w: "right before로 시점을 낙상 직전에 고정해요. 노인은 그냥 미끄러졌다고 줄여 말하기 쉬워서, 직전 상황을 열린 질문으로 물어야 어지럼이나 걸림 같은 단서가 나와요.", d: "at the door", k: ["머리를 부딪히셨나요?", "그때 혼자 계셨나요?"], a: "before", o: ["after", "when", "as"]}
+  - {t: 실신 전조, i: faceWorried, w: "dizzy or faint를 나란히 주면 환자가 어느 쪽에 가까운지 고르기 쉬워요. 낙상 전의 어지럼이나 아찔함은 실신이나 기립성 저혈압 같은 원인을 가르는 단서예요.", d: "after dinner", k: ["넘어진 뒤에 머리가 아프셨나요?", "어지러울 때 약을 드셨나요?"], a: "faint", o: ["silly", "chatty", "thirsty"]}
+  - {t: 의식 소실, i: stetho, w: "at any point로 잠깐이라도를 포함해 물어요. 노인은 짧은 실신을 그냥 넘어졌다고 기억하기도 해서 폭넓게 묻는 것이 좋아요.", d: "in the car", k: ["넘어진 뒤에 일어나기가 힘드셨나요?", "넘어질 때 머리를 부딪히셨나요?"], a: "consciousness", o: ["weight", "appetite", "hearing"]}
+  - {t: 원인 구분, i: compass, w: "or로 두 가능성을 나란히 주면 환자가 걸린 것인지 다리 힘이 풀린 것인지 고를 수 있어요. 걸림은 환경 요인, 힘이 풀림은 근력·혈압·신경 문제를 의심하는 단서예요.", d: "by yourself", k: ["넘어진 곳이 어디였나요?", "누가 도와주셨나요?"], a: "legs", o: ["arms", "eyes", "lungs"]}
+  - {t: 복용약 확인, i: pill, w: "Let's go over는 지시가 아니라 함께 훑어본다는 말투예요. 노인은 약이 많아 낙상 원인이 약일 수 있어서 같이 목록을 살피는 것으로 시작해요.", d: "you stopped", k: ["약 알레르기가 있으신가요?", "약은 어디서 받으세요?"], a: "go over", o: ["pick up", "throw out", "hand out"]}
+  - {t: 낙상 이력, i: calendar, w: "in the past year로 기간을 정해 주면 환자가 기억을 더듬기 쉬워요. 지난 1년 사이 낙상 이력은 노인의 낙상 위험을 가늠하는 핵심 질문이에요.", d: "in the next year", k: ["지난 1년 동안 입원하신 적이 있나요?", "넘어졌을 때 다치신 적이 있나요?"], a: "fallen", o: ["fainted", "fractured", "forgotten"]}
+  - {t: 위험약 확인, i: pill, w: "혈액 희석제는 낙상 때의 출혈 위험을, 수면제는 어지럼과 균형 저하를 높여서 둘을 함께 물어요. currently로 지금 복용 중인 약을 짚어요.", d: "or herbal tea", k: ["약은 어디에서 받으세요?", "그 약을 드신 지 얼마나 되셨나요?"], a: "blood thinners", o: ["eye drops", "antacids", "laxatives"]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 낙상 문진 4문장 순서
+    why: 낙상 직전 상황을 먼저 묻고, 그때 증상을 묻고, 비슷한 일이 전에 있었는지 묻고, 마지막으로 약을 살핍니다. 'that moment'·'that feeling'·'these falls'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - {en: "Can you tell me what happened right before you fell?", icon: magnify, ko: "넘어지시기 직전에 무슨 일이 있었는지 말씀해 주시겠어요?", note: 정황}
+    - {en: "In that moment, did you feel dizzy or faint, or lose consciousness?", icon: faceWorried, ko: "그 순간 어지럽거나 아찔했나요, 아니면 의식을 잃으셨나요?", note: 증상}
+    - {en: "Have you had other falls in the past year, with or without that feeling?", icon: calendar, ko: "지난 1년 안에 그런 느낌이 있었든 없었든 다른 낙상이 있었나요?", note: 이력}
+    - {en: "Let's go over the medications you take, in case one of them is behind these falls.", icon: pill, ko: "혹시 약 때문일 수 있으니 복용하시는 약을 함께 살펴볼게요.", note: 약}
+- title: 다약제 복용력 정리
+  s:
+  - {t: 약 목록, i: board, w: "list or the bottles로 두 가지를 같이 보여 주면 환자가 가진 쪽을 골라 답하기 쉬워요. 병 라벨에는 약 이름과 용량이 적혀 있어 기억에 기대는 것보다 정확해요.", d: "in your purse", k: ["약은 어디서 타 오세요?", "약 이름을 아시나요?"], a: "bottles", o: ["insurance cards", "house keys", "glasses"]}
+  - {t: 비처방약, i: pill, w: "anything을 붙이면 환자가 약으로 여기지 않는 비타민이나 진통제까지 열려요. over the counter는 처방전 없이 살 수 있다는 일상어라 환자에게 바로 통해요.", d: "at the pharmacy", k: ["약을 하루에 몇 번 드세요?", "약값은 어떻게 내세요?"], a: "vitamins", o: ["vaccines", "antibiotics", "bandages"]}
+  - {t: 안심시키기, i: handshake2, w: "Take your time으로 재촉하지 않는다는 신호를 먼저 줘요. 약이 많을수록 서두르면 빠뜨리기 쉬워서 one by one으로 부담을 나눠 줘요.", d: "as fast as you can", k: ["기억나는 약이 있으면 말씀해 주세요", "약병 라벨을 같이 읽어 볼게요"], a: "one by one", o: ["all at once", "back to back", "door to door"]}
+  - {t: 복용 기간, i: calendar, w: "have you been taking은 지금도 먹고 있는 약의 기간을 묻는 현재완료 진행형이에요. this one으로 병을 가리키면 이름을 몰라도 대답할 수 있어요.", d: "with food", k: ["하루에 몇 알씩 드세요?", "이 약은 누가 처방해 주셨나요?"], a: "taking", o: ["splitting", "crushing", "sharing"]}
+  - {t: 용도 확인, i: stetho, w: "or something else로 열어 두면 환자가 혈압 말고 다른 이유를 말할 수 있어요. 약 이름보다 먹는 이유를 기억하는 환자가 많아 이렇게 물으면 약을 짚기 쉬워요.", d: "from your doctor", k: ["이 약은 아침에 드시나요?", "이 약 때문에 불편한 점이 있나요?"], a: "blood pressure", o: ["blood type", "blood bank", "blood draw"]}
+  - {t: 안심·확인, i: shield, w: "It's okay if로 기억나지 않는 것이 잘못이 아니라고 먼저 말해요. 약국 기록이 있다는 해결책을 함께 줘서 환자 기억에만 기대지 않아도 된다고 알려요.", d: "the next time", k: ["가족분께 복용량을 물어봐 주세요", "약은 약국에서 다시 받으실 수 있어요"], a: "pharmacy", o: ["cafeteria", "billing office", "security desk"]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 복용약 정리 4문장 순서
+    why: 목록·약병이 있는지 묻고, 가진 것 중 하나를 골라 시작하고, 그 약의 용도와 기간을 묻고, 같은 방식으로 비처방약까지 살핍니다. 'Whatever you have'·'that one'·'the same'이 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - {en: "Do you have a list or the bottles with you?", icon: board, ko: "약 목록이나 약병을 가지고 계신가요?", note: 확인}
+    - {en: "Whatever you have, take your time — we'll pick one to start with.", icon: handshake2, ko: "가진 것이 무엇이든 천천히 하세요, 하나를 골라 시작해 볼게요", note: 안심}
+    - {en: "For that one, what is it for, and how long have you been taking it?", icon: pill, ko: "그 약은 무엇 때문에 드시고 얼마나 오래 드셨나요?", note: 용도}
+    - {en: "Let's do the same for vitamins and anything you buy over the counter.", icon: bell, ko: "비타민과 약국에서 직접 사신 약도 같은 식으로 살펴볼게요", note: 비처방}
+  sw: {ko: "통증이나 잠을 위해 처방 없이 사서 드시는 약이 있으세요?"}
+- title: 청력저하 환자 소통
+  s:
+  - {t: 소통 방식, i: speech, w: "마주 보고 천천히 말하면 입 모양이 보여 알아듣기 쉬워요. let me know if로 환자가 직접 확인해 줄 수 있게 열어 둬요.", d: "by phone", k: ["이 종이에 이름을 적어 주시겠어요?", "보청기를 끼고 계신가요?"], a: "slowly", o: ["quickly", "quietly", "briefly"]}
+  - {t: 서면 보조, i: pencil, w: "Would it help if로 제안하면 환자가 자존심 상하지 않고 고를 수 있어요. 말로는 놓치기 쉬운 숫자나 약 이름도 적으면 다시 볼 수 있어요.", d: "to the doctor", k: ["귀가 언제부터 잘 안 들리셨나요?", "보청기를 끼실래요?"], a: "help", o: ["hurt", "matter", "change"]}
+  - {t: 신호 정하기, i: me, w: "말로 되묻기 어려운 환자에게 손 들기라는 쉬운 신호를 정해 줘요. Just는 부담 없이 해도 된다는 뜻이고, 환자가 놓친 부분을 스스로 알릴 수 있어요.", d: "when you're ready", k: ["이해하셨으면 고개를 끄덕여 주세요", "큰 글씨로 써 드릴까요?"], a: "raise", o: ["lower", "cover", "hide"]}
+  - {t: 위치 잡기, i: me, w: "where you can see my face는 입 모양과 표정이 보이는 자리에 앉겠다는 말이에요. 청력이 떨어진 환자는 입 모양을 보고 말을 보충하는 경우가 많아요.", d: "behind you", k: ["제 목소리가 잘 들리시나요?", "자리를 바꿔 드릴까요?"], a: "face", o: ["badge", "shoes", "watch"]}
+  - {t: 이해 확인, i: bulb, w: "방금 방식이 통했는지 묻고, 안 되면 대안을 바로 주는 두 갈래 질문이에요. 못 알아들었다고 말하기 어려워도 or로 고르게 하면 답하기 쉬워요.", d: "in Spanish", k: ["보청기 소리를 키워 드릴까요?", "이 글씨가 잘 보이세요?"], a: "clearer", o: ["familiar", "wrong", "funny"]}
+  - {t: 보청기 확인, i: gear, w: "in and working으로 끼웠는지와 작동하는지를 둘 다 확인해요. 보청기가 있어도 꺼져 있거나 배터리가 다 되면 소용이 없어서 먼저 점검해요.", d: "on the table", k: ["귀에 통증이 있으신가요?", "보청기는 언제 사셨나요?"], a: "hearing aids", o: ["dentures", "contacts", "eye drops"]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 청력저하 소통 4문장 순서
+    why: 보청기부터 점검하고, 마주 보고 천천히 말하고, 놓치면 손을 들게 하고, 그래도 안 되면 적어 줍니다. 'them'·'it again'이 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - {en: "Let's check if your hearing aids are in and working.", icon: gear, ko: "보청기가 끼워져 있고 작동하는지 확인해볼게요", note: 점검}
+    - {en: "I'll face you and speak slowly — is that clearer with them in?", icon: speech, ko: "마주 보고 천천히 말할게요, 보청기를 끼니 더 잘 들리세요?", note: 말하기}
+    - {en: "Just raise your hand any time that isn't clear, and I'll say it again.", icon: me, ko: "분명하지 않을 때마다 손을 들어 주세요, 다시 말씀드릴게요", note: 신호}
+    - {en: "If hearing it again doesn't help, I can write it down for you.", icon: pencil, ko: "다시 들으셔도 어려우면 적어서 보여드릴게요", note: 서면}
+  sw: {ko: "제 말을 알아들으실 수 있도록 마주 보고 또렷하게 말씀드릴게요."}
+- title: 기저 인지기능 확인
+  s:
+  - {t: 평소 모습, i: me, w: "on a good day를 붙여 가장 좋을 때의 모습을 물어요. 평소 기저 상태를 알아야 오늘의 변화가 급성인지 판단할 수 있어요.", d: "at church", k: ["최근에 약이 바뀌었나요?", "따님은 얼마나 자주 방문하세요?"], a: "good day", o: ["holiday", "birthday", "vacation"]}
+  - {t: 시작 시점, i: calendar, w: "first notice로 처음 눈치챈 때를 물어요. 변화가 갑자기 생겼는지 서서히 왔는지 가르는 시간 단서이고, 섬망은 수 시간에서 수 일 사이에 급하게 시작되는 것이 특징이에요.", d: "in the lobby", k: ["이 변화가 얼마나 심한가요?", "전에도 이런 일이 있었나요?"], a: "When", o: ["Where", "Why", "Who"]}
+  - {t: 감사, i: star, w: "보호자의 관찰이 진료에 쓰인다고 구체적으로 알려 주면 정보를 더 내놓기 쉬워요. 환자가 직접 말하기 어려울 때 가족의 설명은 기저 상태를 아는 핵심 자료예요.", d: "for waiting", k: ["어머니께 물을 가져다 드릴까요?", "기다리시게 해서 죄송해요"], a: "observations", o: ["donations", "signatures", "prescriptions"]}
+  - {t: 지남력, i: compass, w: "oriented to time and place는 날짜와 있는 곳을 아는지를 가리키는 표준 표현이에요. usually를 넣어 오늘의 상태가 아니라 평소 기저 상태를 묻고 있음을 분명히 해요.", d: "to the doctor", k: ["평소에 혼자 외출하시나요?", "평소에 잠은 잘 주무시나요?"], a: "usually", o: ["recently", "finally", "suddenly"]}
+  - {t: 쉬운 말, i: speech, w: "oriented 대신 the date and where she is로 풀어 가족이 바로 답할 수 있게 해요. 의료 용어 없이 같은 것을 묻는 방법이에요.", d: "and the weather", k: ["평소에 가족 얼굴은 알아보시나요?", "평소에 기억이 흐려질 때가 있으세요?"], a: "date", o: ["size", "price", "brand"]}
+  - {t: 기간 확인, i: calendar, w: "different than usual로 비교 기준을 평소에 두고, How long으로 변화가 시작된 시점을 좁혀요. 급성 변화인지 오래된 인지저하인지 가르는 질문이에요.", d: "with you", k: ["오늘 아침에는 식사를 하셨나요?", "어제는 주무시는 모습이 어땠나요?"], a: "How long", o: ["How often", "How much", "How far"]}
+  - {t: 감사, i: star, w: "appreciate you telling us로 정보를 준 행동 자체에 감사를 표해요. these details로 구체적인 내용이 도움이 됐다고 짚으면 가족이 더 말하기 쉬워요.", d: "to the nurse", k: ["어머니를 곧 병실로 모실게요", "기다려 주셔서 감사해요"], a: "appreciate", o: ["understand", "remember", "notice"]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 기저 인지 확인 4문장 순서
+    why: 평소 모습을 먼저 묻고, 그와 달라진 때를 묻고, 그 이전의 지남력을 묻고, 마지막에 감사합니다. 'like that'·'Before that'·'these details'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - {en: "What is she normally like on a good day?", icon: me, ko: "컨디션 좋으신 날엔 평소 어떠신 편인가요?", note: 평소}
+    - {en: "When did you first notice she wasn't like that?", icon: calendar, ko: "그런 모습이 아니라는 걸 언제 처음 알아차리셨나요?", note: 시작}
+    - {en: "Before that, did she usually know the date and where she is?", icon: compass, ko: "그 전에는 날짜와 있는 곳을 평소 아셨나요?", note: 지남력}
+    - {en: "We really appreciate you telling us all of these details.", icon: star, ko: "이렇게 자세히 말씀해 주셔서 정말 감사해요", note: 감사}
+- title: 활동·일상수행 청취
+  s:
+  - {t: 일상 수행, i: me, w: "Are you able to로 능력을 물어 못 한다는 말을 환자가 꺼내기 쉬운 틀을 줘요. 씻기와 옷 입기는 노인 기능 평가의 기본 항목이에요.", d: "by the window", k: ["혼자서 식사하실 수 있으신가요?", "혼자서 계단을 오르내리실 수 있으신가요?"], a: "bathe", o: ["drive", "shop", "text"]}
+  - {t: 최근 변화, i: redo, w: "anything changed로 열어서 묻고 lately로 최근에 초점을 맞춰요. 일상 기능이 갑자기 떨어졌다면 감염이나 약물 같은 새 문제의 신호일 수 있어요.", d: "for years", k: ["요즘 잠은 잘 주무세요?", "요즘 외출은 자주 하세요?"], a: "anything", o: ["everything", "someone", "somewhere"]}
+  - {t: 공감, i: handshake2, w: "no shame으로 도움이 필요하다는 말을 부끄러워하는 마음을 먼저 풀어 줘요. 노인은 독립성을 잃을까 봐 어려움을 숨기기도 해서 이런 말이 솔직한 답을 끌어내요.", d: "in this room", k: ["지금 도움이 필요하세요?", "집에 도와주는 분이 계세요?"], a: "shame", o: ["rush", "charge", "penalty"]}
+  - {t: 식사 준비, i: coffee, w: "cook and manage your own meals로 요리뿐 아니라 끼니를 챙기는 전체 능력을 물어요. 식사 준비는 도구적 일상 수행 능력 평가의 대표 항목이에요.", d: "for guests", k: ["장은 누가 봐 주시나요?", "식사는 하루에 몇 끼 하세요?"], a: "meals", o: ["bills", "laundry", "errands"]}
+  - {t: 이동 능력, i: me, w: "getting up from a chair or the toilet은 이동과 화장실 이용 능력을 구체적인 동작으로 물어요. 일어서기 어려움은 낙상 위험과 이어지는 중요한 기능 단서예요.", d: "after dinner", k: ["평소에 지팡이를 쓰세요?", "일어서실 때 어지러우세요?"], a: "chair", o: ["stove", "mirror", "pillow"]}
+  - {t: 변화 확인, i: redo, w: "become harder로 이전과 달라진 정도를 비교해 묻고 lately로 최근 변화에 초점을 맞춰요. 옷 입기가 갑자기 어려워졌다면 급성 문제도 의심해요.", d: "for months", k: ["요즘 걷는 속도가 느려지셨나요?", "요즘 혼자 샤워하기 힘드세요?"], a: "dressed", o: ["bathed", "shaved", "fed"]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 일상 수행 청취 4문장 순서
+    why: 씻기·옷 입기를 먼저 묻고, 그중 어려워진 것을 묻고, 다른 활동으로 넓히고, 도움을 청해도 된다고 마무리합니다. 'those'·'the same'·'any of that'이 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - {en: "Are you able to bathe and dress on your own?", icon: me, ko: "혼자서 씻고 옷 입는 게 가능하신가요?", note: 확인}
+    - {en: "Has either of those become harder lately?", icon: redo, ko: "그중 어느 쪽이 요즘 더 힘들어지셨나요?", note: 변화}
+    - {en: "Does the same go for cooking and getting up from a chair?", icon: coffee, ko: "요리나 의자에서 일어나기도 마찬가지인가요?", note: 확대}
+    - {en: "There's no shame in needing a little help with any of that.", icon: handshake2, ko: "그 어떤 것에든 도움이 필요하다고 부끄러워하실 일은 아니에요", note: 공감}
+  sw: {ko: "씻기나 옷 입기 같은 일에 도움이 필요하세요?"}

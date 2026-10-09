@@ -1,0 +1,417 @@
+theme: core-safety-er
+changes:
+- kind: sentence
+  situation: 환자 2인 확인
+  index: 0
+  fields:
+  - words
+  why: '쉬운 단어 태그 제거: w-name'
+- kind: sentence
+  situation: 환자 2인 확인
+  index: 5
+  fields:
+  - words
+  why: '쉬운 단어 태그 제거: w-name'
+- kind: sentence
+  situation: 낙상 위험 초기 사정
+  index: 2
+  fields:
+  - words
+  why: '쉬운 단어 태그 제거: w-home'
+- kind: sentence
+  situation: 고위험 낙상 환자 관리
+  index: 1
+  fields:
+  - words
+  why: '쉬운 단어 태그 제거: w-button'
+- kind: sentence
+  situation: 신원 불명 환자 등록
+  index: 3
+  fields:
+  - words
+  why: '쉬운 단어 태그 제거: w-name'
+- kind: sentence
+  situation: 신원 불명 환자 등록
+  index: 5
+  fields:
+  - words
+  why: '쉬운 단어 태그 제거: w-name'
+- kind: sentence
+  situation: 검체 라벨 오류 방지
+  index: 1
+  fields:
+  - words
+  why: '쉬운 단어 태그 제거: w-name'
+- kind: sentence
+  situation: 억제대 사용 안전
+  index: 1
+  fields:
+  - words
+  why: '쉬운 단어 태그 제거: w-hour'
+- kind: sentence
+  situation: 감염 격리 설명
+  index: 2
+  fields:
+  - words
+  why: '쉬운 단어 태그 제거: w-hand'
+- kind: sentence
+  situation: 감염 격리 설명
+  index: 5
+  fields:
+  - words
+  why: '쉬운 단어 태그 제거: w-hand'
+- kind: sentence
+  situation: 오환자 시술 방지
+  index: 3
+  fields:
+  - words
+  why: '쉬운 단어 태그 제거: w-name'
+- kind: sentence
+  situation: 다환자 혼동 위기
+  index: 1
+  fields:
+  - words
+  why: '쉬운 단어 태그 제거: w-name'
+- kind: sentence
+  situation: 다환자 혼동 위기
+  index: 2
+  fields:
+  - words
+  why: '쉬운 단어 태그 제거: w-second'
+- kind: sentence
+  situation: 다환자 혼동 위기
+  index: 4
+  fields:
+  - words
+  why: '쉬운 단어 태그 제거: w-name'
+- kind: sentence
+  situation: 투약 위해사건 대응
+  index: 1
+  fields:
+  - words
+  why: '쉬운 단어 태그 제거: w-doctor'
+- kind: sentence
+  situation: 화재·대피 안전
+  index: 2
+  fields:
+  - words
+  why: '쉬운 단어 태그 제거: w-door'
+- kind: sentence
+  situation: 화재·대피 안전
+  index: 3
+  fields:
+  - words
+  why: '쉬운 단어 태그 제거: w-walk'
+- kind: sentence
+  situation: 화재·대피 안전
+  index: 5
+  fields:
+  - words
+  why: '쉬운 단어 태그 제거: w-door'
+- kind: word-remove
+  id: w-home
+  why: 너무 쉬움 — 간호사가 이미 아는 말 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-name
+  why: 너무 쉬움 — 간호사가 이미 아는 말 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-doctor
+  why: 너무 쉬움 — 간호사가 이미 아는 말 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-hand
+  why: 너무 쉬움 — 간호사가 이미 아는 말 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-door
+  why: 너무 쉬움 — 간호사가 이미 아는 말 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-second
+  why: 너무 쉬움 — 간호사가 이미 아는 말 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-walk
+  why: 너무 쉬움 — 간호사가 이미 아는 말 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-hour
+  why: 너무 쉬움 — 간호사가 이미 아는 말 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-button
+  why: 너무 쉬움 — 간호사가 이미 아는 말 — 어느 문장도 태그하지 않게 됐다
+- kind: word
+  id: w-verify
+  fields:
+  - ko
+  why: w-confirm과 ko가 같아(대조 확인하다) 듣고 뜻 고르기에서 정답이 둘 — verify를 '검증하다'로 가른다
+- kind: word
+  id: w-vitals
+  fields:
+  - ko
+  why: w-vital(vital signs)과 ko가 같아(활력징후) 정답이 둘 — 줄임말 vitals를 '바이탈'로 가른다
+- kind: word
+  id: w-alert
+  fields:
+  - ko
+  why: w-notify와 ko가 같아(알리다) 정답이 둘 — alert를 '경고하다'로 가른다
+- kind: word
+  id: w-lying
+  fields:
+  - en
+  - ko
+  - ipa
+  - example
+  why: 활용형 헤드워드(lying)를 원형(lie)으로
+- kind: sentence
+  situation: 오환자 시술 방지
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: '''stop the time-out''은 확인 절차를 멈춘다는 뜻이 된다 — 불일치 때 멈추는 것은 시술'
+- kind: sentence
+  situation: 환자 2인 확인
+  index: 3
+  fields:
+  - words
+  why: 공통 쉬운 단어 w-patient 태그를 뺐다
+- kind: sentence
+  situation: 환자 2인 확인
+  index: 4
+  fields:
+  - words
+  why: 공통 쉬운 단어 w-patient 태그를 뺐다
+- kind: sentence
+  situation: 투약 오류 예방
+  index: 2
+  fields:
+  - words
+  why: 공통 쉬운 단어 w-patient 태그를 뺐다
+- kind: sentence
+  situation: 검체 라벨 오류 방지
+  index: 3
+  fields:
+  - words
+  why: 공통 쉬운 단어 w-patient·w-room 태그를 뺐다
+- kind: sentence
+  situation: 낙상 발생 후 대응
+  index: 1
+  fields:
+  - words
+  why: 공통 쉬운 단어 w-head 태그를 뺐다
+- kind: sentence
+  situation: 감염 격리 설명
+  index: 3
+  fields:
+  - words
+  why: 공통 쉬운 단어 w-patient 태그를 뺐다
+- kind: sentence
+  situation: 감염 격리 설명
+  index: 5
+  fields:
+  - words
+  why: 공통 쉬운 단어 w-room 태그를 뺐다
+- kind: sentence
+  situation: 자살 위험 환경 안전
+  index: 0
+  fields:
+  - words
+  why: 공통 쉬운 단어 w-room 태그를 뺐다
+- kind: sentence
+  situation: 자살 위험 환경 안전
+  index: 3
+  fields:
+  - words
+  why: 공통 쉬운 단어 w-room 태그를 뺐다
+- kind: sentence
+  situation: 다환자 혼동 위기
+  index: 0
+  fields:
+  - words
+  why: 공통 쉬운 단어 w-patient 태그를 뺐다
+- kind: sentence
+  situation: 낙상 후 두부외상
+  index: 0
+  fields:
+  - words
+  why: 공통 쉬운 단어 w-head 태그를 뺐다
+- kind: sentence
+  situation: 낙상 후 두부외상
+  index: 4
+  fields:
+  - words
+  why: 공통 쉬운 단어 w-head 태그를 뺐다
+- kind: sentence
+  situation: 투약 위해사건 대응
+  index: 0
+  fields:
+  - words
+  why: 공통 쉬운 단어 w-patient 태그를 뺐다
+- kind: sentence
+  situation: 투약 위해사건 대응
+  index: 3
+  fields:
+  - words
+  why: 공통 쉬운 단어 w-patient 태그를 뺐다
+- kind: sentence
+  situation: 화재·대피 안전
+  index: 0
+  fields:
+  - words
+  why: 공통 쉬운 단어 w-patient 태그를 뺐다
+- kind: sentence
+  situation: 화재·대피 안전
+  index: 1
+  fields:
+  - words
+  why: 공통 쉬운 단어 w-patient 태그를 뺐다
+- kind: sentence
+  situation: 화재·대피 안전
+  index: 3
+  fields:
+  - words
+  why: 공통 쉬운 단어 w-patient 태그를 뺐다
+- kind: sentence
+  situation: 화재·대피 안전
+  index: 4
+  fields:
+  - words
+  why: 공통 쉬운 단어 w-patient 태그를 뺐다
+- kind: sentence
+  situation: 환자 2인 확인
+  index: 0
+  fields:
+  - words
+  why: w-patient를 빼 V3가 모자라 이미 있는 'state your full name'을 w-state로 태그
+- kind: sentence
+  situation: 자살 위험 환경 안전
+  index: 1
+  fields:
+  - words
+  why: w-room을 빼 V3가 모자라 이미 있는 'at all times'를 w-at_all_times로 태그
+- kind: sentence
+  situation: 고위험 낙상 환자 관리
+  index: 1
+  fields:
+  - words
+  why: 여러 상황에 되풀이되는 'right away'를 w-right_away로 태그
+- kind: sentence
+  situation: 투약 오류 예방
+  index: 4
+  fields:
+  - words
+  why: 여러 상황에 되풀이되는 'right away'를 w-right_away로 태그
+- kind: sentence
+  situation: 낙상 후 두부외상
+  index: 5
+  fields:
+  - words
+  why: 여러 상황에 되풀이되는 'right away'를 w-right_away로 태그
+- kind: sentence
+  situation: 투약 위해사건 대응
+  index: 2
+  fields:
+  - words
+  why: 여러 상황에 되풀이되는 'right away'를 w-right_away로 태그
+- kind: word-add
+  id: w-state
+  why: 공통 쉬운 w-patient를 빼 환자 2인 확인이 7개 — 문장 0에 이미 있는 state
+- kind: word-add
+  id: w-at_all_times
+  why: 공통 쉬운 w-room을 빼 자살 위험 환경 안전이 7개 — 문장 1에 이미 있는 at all times
+- kind: word-add
+  id: w-right_away
+  why: 네 상황 네 문장에 되풀이되는 'right away' — 태그 공백이던 keyPhrase도 이어진다
+- kind: word-remove
+  id: w-patient
+  why: 공통 쉬운 단어 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-room
+  why: 공통 쉬운 단어 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-head
+  why: 공통 쉬운 단어 — 어느 문장도 태그하지 않게 됐다
+- kind: word
+  id: w-id
+  fields:
+  - ko
+  why: '''임시''는 문장의 temporary에서 온 것이지 ID의 뜻이 아니다'
+- kind: sentence
+  situation: 오환자 시술 방지
+  index: 1
+  fields:
+  - words
+  why: 흉관(chest tube)에 검체 튜브 뜻의 w-tube가 태그돼 있었다
+- kind: word
+  id: w-fall
+  fields:
+  - example
+  why: '''Please don''t fall on your own.''은 어색한 영어'
+- kind: word
+  id: w-allergy
+  fields:
+  - example
+  why: '''any allergy'' → ''any allergies'''
+- kind: sentence
+  situation: 오환자 시술 방지
+  index: 0
+  fields:
+  - en
+  - ko
+  - chunks
+  why: 'v46 검토 결정 11 예외: ''date of birth in 1962''는 비문 — 생년월일 전체로 (keyPhrase 문장이라 상황 keyPhrases도 바꿈)'
+- kind: sentence
+  situation: 검체 라벨 오류 방지
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'v46 검토 결정 11 예외: 침상 번호는 환자 식별자가 아님 — 손목밴드를 확인하는 습관으로'
+- kind: sentence
+  situation: 억제대 사용 안전
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'v46 검토 결정 11 예외: 낙상 위험만으로는 억제대 사용 근거가 안 됨(CMS) — 치료 기구를 빼낼 위험으로'
+- kind: sentence
+  situation: 침상 안전 설정
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  why: 'v46 검토 결정 11 예외: 난간 전부를 상시 올려 두면 억제대로 간주될 수 있어 위쪽 난간만으로 한정'
+- kind: sentence
+  situation: 화재·대피 안전
+  index: 4
+  fields:
+  - en
+  - chunks
+  why: 'v46 검토 결정 11 예외: 침대는 carry가 아니라 밀어 옮김 — move … on the bed로'
+- kind: sentence
+  situation: 침상 안전 설정
+  index: 6
+  fields:
+  - chunks
+  why: 'v46 검토 결정 11 예외: correctly helps prevent로 구를 끊음 — 청크 경계만 고침'
+- kind: sentence
+  situation: 신원 불명 환자 등록
+  index: 1
+  fields:
+  - chunks
+  why: 'v46 검토 결정 11 예외: on and label로 구를 끊음 — 청크 경계만 고침'
+- kind: sentence
+  situation: 급변 환자 조기 경고
+  index: 0
+  fields:
+  - chunks
+  why: 'v46 검토 결정 11 예외: is up and / pressure is로 구를 끊음 — 청크 경계만 고침'
+- kind: sentence
+  situation: 투약 위해사건 대응
+  index: 0
+  fields:
+  - chunks
+  why: 'v46 검토 결정 11 예외: double the ordered / dose로 구를 끊음 — 청크 경계만 고침'

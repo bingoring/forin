@@ -1,0 +1,510 @@
+- title: 혈뇨+항응고제
+  s:
+  - t: 약물 확인
+    i: pill
+    w: Which…?로 여러 약 중 구체적인 이름을 묻고, 마지막 복용 시각을 함께 물어요. 항응고제는 약 이름과 마지막 복용 시각에 따라 출혈 위험과 대처가 달라져요.
+    d: next visit
+    k:
+    - 알레르기가 있는 약이 있나요?
+    - 약은 누가 챙겨 주시나요?
+    a: dose
+    o:
+    - meal
+    - visit
+    - shower
+  - t: 통증 유무
+    i: magnify
+    w: along with는 두 증상이 함께 나타나는지 묻는 표현이에요. 혈뇨에 통증이 같이 있는지에 따라 결석이나 감염 같은 원인을 구분해요.
+    d: at triage
+    k:
+    - 소변이 언제부터 붉어졌나요?
+    - 열이 나지 않으세요?
+    a: pain
+    o:
+    - fever
+    - itching
+    - cough
+  - t: 최근 병력
+    i: board
+    w: recent로 최근 있었던 일만 좁혀 묻고, injury와 catheter를 한 문장에 나열했어요. 외상이나 도뇨관 삽입은 요로 출혈의 흔한 원인이라 둘 다 확인해요.
+    d: at work
+    k:
+    - 최근에 열이 난 적이 있나요?
+    - 마지막으로 소변을 본 게 언제인가요?
+    a: recent
+    o:
+    - old
+    - minor
+    - distant
+  - t: 복용 확인
+    i: pill
+    w: How many…?와 at what time…?으로 수량과 시각을 따로 물어 정확한 복용 패턴을 알아내요. 약을 거르거나 두 번 먹은 적이 있는지도 출혈 위험에 영향을 줘요.
+    d: with water
+    k:
+    - 약을 처방받은 병원이 어디예요?
+    - 약 이름을 적어 놓으셨나요?
+    a: take
+    o:
+    - miss
+    - skip
+    - refill
+  - t: 검사 안내
+    i: lab
+    w: to see how…로 검사의 목적을 밝혀요. 항응고제는 종류에 따라 응고와 관련된 검사 수치로 피가 얼마나 묽은 상태인지 가늠해요.
+    d: over the phone
+    k:
+    - 소변 검체를 다시 받을게요
+    - 혈압을 다시 잴게요
+    a: levels
+    o:
+    - types
+    - cells
+    - vessels
+  - t: 복용 보류
+    i: bell
+    w: may need to로 확정이 아닌 가능성으로 알리고, until we know more로 보류가 임시임을 알려요. 환자가 임의로 약을 끊지 않도록 판단이 날 때까지만 보류한다고 말해요.
+    d: this week
+    k:
+    - 약 이름을 다시 확인할게요
+    - 처방전은 약국으로 보낼게요
+    a: hold
+    o:
+    - double
+    - share
+    - count
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 혈뇨 항응고제 확인 4문장 순서
+    why: 약 이름과 마지막 복용을 묻고, 그 약을 하루 몇 알 먹는지 묻고, 그 복용량을 감안해 최근 외상이나 도뇨관을 묻고, 이 모든 것을 바탕으로 혈액 수치를 확인한다고 해요. 'it'·'that many pills'·'all of that'이 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: Which blood thinner are you taking, and when was your last dose?
+      icon: pill
+      ko: 어떤 혈액희석제를 드시고, 마지막 복용은 언제였나요?
+      note: 약물
+    - en: How many pills of it do you take, and at what time each day?
+      icon: pill
+      ko: 그 약은 몇 알씩, 하루 중 몇 시에 드시나요?
+      note: 복용
+    - en: With that many pills a day, have you had any recent injury or catheter?
+      icon: board
+      ko: 그만큼 드시는 동안 최근 부상이나 카테터가 있었나요?
+      note: 병력
+    - en: Given all of that, we'll check your blood levels, and we may need to hold your next dose until we know more.
+      icon: lab
+      ko: 그걸 바탕으로 혈액 수치를 확인하고 다음 복용을 보류할 수도 있어요
+      note: 검사
+  sw:
+    ko: 어떤 혈액희석제를 드시고 계시고, 마지막 복용은 언제였나요?
+- title: 투석 환자 응급
+  s:
+  - t: 마지막 투석
+    i: calendar
+    w: last…session으로 가장 최근 회차를 짚어 물어요. 투석이 거르거나 늦어지면 체액과 칼륨이 쌓일 수 있어서 마지막 투석 시점은 가장 먼저 확인하는 정보 중 하나예요.
+    d: on the monitor
+    k:
+    - 투석은 보통 일주일에 몇 번 받으세요?
+    - 투석 센터는 어디예요?
+    a: last
+    o:
+    - first
+    - next
+    - only
+  - t: 혈관통로
+    i: shield
+    w: Which arm…?으로 위치를 먼저 묻고 so로 이유를 이어요. 투석용 혈관통로가 있는 팔은 혈압 측정이나 주사로 막히거나 다칠 수 있어서 피해요.
+    d: for the scan
+    k:
+    - 그 팔에서 진동이 느껴지나요?
+    - 혈관통로는 언제 만들었나요?
+    a: avoid
+    o:
+    - use
+    - choose
+    - test
+  - t: 체액 증상
+    i: stetho
+    w: trouble breathing과 swelling in your legs를 or로 이어 두 증상을 한 번에 물어요. 투석 환자는 체액이 쌓이면 숨이 차고 다리가 부을 수 있어요.
+    d: during rounds
+    k:
+    - 어지럽거나 쓰러질 것 같은가요?
+    - 소변은 하루에 얼마나 나오나요?
+    a: swelling
+    o:
+    - bleeding
+    - itching
+    - numbness
+  - t: 경과 일수
+    i: calendar
+    w: How many days has it been since…?는 지난 일수를 세어 답하게 해요. 투석 일정에서 얼마나 벗어났는지 가늠하는 질문이에요.
+    d: this month
+    k:
+    - 투석은 몇 시간 동안 받으세요?
+    - 투석 전에 체중은 얼마였나요?
+    a: days
+    o:
+    - hours
+    - weeks
+    - months
+  - t: 팔 보호
+    i: shield
+    w: avoid 뒤에는 동사의 -ing형이 와요. 혈관통로가 있는 팔로 주사나 채혈을 하면 통로가 막히거나 손상될 수 있어서 반대쪽 팔을 써요.
+    d: for blood pressure
+    k:
+    - 다른 쪽 팔로 혈압을 잴게요
+    - 팔에 표시를 해 둘게요
+    a: avoid
+    o:
+    - prefer
+    - choose
+    - need
+  - t: 투석 이유
+    i: bulb
+    w: need…removed는 '제거되어야 한다'는 수동 구조예요. 신장이 소변으로 내보내지 못한 체액은 투석으로 빼야 심장과 폐의 부담이 줄어요.
+    d: very slowly
+    k:
+    - 투석은 네 시간쯤 걸릴 거예요
+    - 투석 후에는 피곤할 수 있어요
+    a: removed
+    o:
+    - added
+    - given
+    - stored
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 투석 환자 응급 4문장 순서
+    why: 마지막 치료 뒤 며칠인지 묻고, 그 며칠 동안 체액이 쌓인 증상을 묻고, 그 체액을 안전하게 빼야 한다고 설명하고, 빼기 전에 혈관통로 팔을 확인해요. 'those days'·'that extra fluid'·'Before we do'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: How many days has it been since your last treatment?
+      icon: calendar
+      ko: 마지막 치료 이후 며칠이 지났나요?
+      note: 일수
+    - en: Over those days, has fluid built up, with any trouble breathing or swelling in your legs?
+      icon: stetho
+      ko: 그동안 체액이 쌓여 숨이 차거나 다리가 붓지 않았나요?
+      note: 증상
+    - en: Your heart and lungs need that extra fluid removed safely.
+      icon: bulb
+      ko: 심장과 폐를 위해 그 여분의 체액을 안전하게 제거해야 해요
+      note: 이유
+    - en: Before we do, which arm has your access, so we avoid it for blood pressure?
+      icon: shield
+      ko: 하기 전에 혈관통로가 어느 팔인지 알려 주세요, 혈압 측정은 피할게요
+      note: 팔 확인
+  ctx:
+    word: fistula
+    ko: 동정맥루
+    sc:
+      2:
+        en: No BP or venipuncture on your AV fistula extremity.
+        fix: We won't use the arm with your fistula for blood pressure or needles.
+    why: 모두 투석 혈관통로(동정맥루)가 있는 쪽을 가리키는 같은 말이에요. 그 팔로는 혈압·주사·채혈을 하지 않아 통로를 지켜요. 환자에게는 extremity·venipuncture 같은 말 대신 'the arm with your fistula', 'needles'처럼 환자가 쓰는 말로 알려요.
+- title: 결석+구토 탈수
+  s:
+  - t: 구토 횟수
+    i: chartup
+    w: How many times…?로 횟수를 세어 답하게 해요. 구토 횟수는 탈수 정도를 가늠하는 가장 쉬운 단서예요.
+    d: at the bedside
+    k:
+    - 어제는 몇 끼를 드셨나요?
+    - 마지막으로 소변을 본 게 언제인가요?
+    a: vomited
+    o:
+    - eaten
+    - slept
+    - coughed
+  - t: 치료 안내
+    i: pill
+    w: to settle…로 약과 수액의 목적을 알려요. 구토가 잦으면 몸의 수분이 빠지므로 속을 가라앉히는 약과 함께 수액으로 수분을 채워요.
+    d: after the scan
+    k:
+    - 진통제도 곧 드릴게요
+    - 물은 천천히 마셔 보세요
+    a: medicine
+    o:
+    - insulin
+    - oxygen
+    - blood
+  - t: 소변 거르기
+    i: lab
+    w: ask you to…로 환자가 직접 할 일을 부탁으로 알려요. 소변을 거름망에 걸러 나온 결석을 잡으면 성분을 검사해 재발 예방에 쓸 수 있어요.
+    d: every hour
+    k:
+    - 소변은 컵에 받아 주세요
+    - 화장실에 갈 때마다 알려 주세요
+    a: urine
+    o:
+    - stool
+    - saliva
+    - sweat
+  - t: 수분 섭취
+    i: stetho
+    w: keep…down은 먹은 것을 토하지 않고 넘긴다는 구동사예요. 물조차 넘기지 못하면 입으로 수분을 채울 수 없어 정맥 수액이 필요해요.
+    d: for now
+    k:
+    - 지금 속이 메스꺼운가요?
+    - 마지막으로 드신 게 언제인가요?
+    a: down
+    o:
+    - up
+    - out
+    - away
+  - t: 경과 시간
+    i: calendar
+    w: since you last kept fluids down은 마지막으로 수분을 유지한 순간부터 센다는 뜻이에요. 시간이 오래될수록 탈수가 심할 수 있어요.
+    d: yesterday
+    k:
+    - 지난번에 수액은 언제 맞으셨나요?
+    - 물은 하루에 얼마나 드세요?
+    a: last
+    o:
+    - first
+    - next
+    - never
+  - t: 결석 검사
+    i: lab
+    w: Once…, we'll…로 앞 일이 끝난 뒤에 할 일을 말해요. 결석 성분을 검사하면 어떤 종류인지 알아 재발 예방에 쓸 수 있어요.
+    d: by morning
+    k:
+    - 결석이 나오면 알려 주세요
+    - 결석이 크면 시술이 필요할 수도 있어요
+    a: Once
+    o:
+    - Before
+    - Unless
+    - Although
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 결석 구토 탈수 4문장 순서
+    why: 구토 횟수를 묻고, 그만큼 토한 뒤에도 물을 넘기는지 묻고, 넘기든 아니든 수액과 약을 주겠다고 하고, 그 수액과 함께 소변을 걸러 결석을 잡으라고 해요. 'that much vomiting'·'whatever you can keep down'·'those fluids'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: How many times have you vomited today?
+      icon: chartup
+      ko: 오늘 몇 번이나 토하셨나요?
+      note: 구토
+    - en: With that much vomiting, are you able to keep any water down?
+      icon: stetho
+      ko: 그렇게 많이 토하셨는데 물은 넘기실 수 있나요?
+      note: 수분
+    - en: We'll give you fluids and medicine to settle your stomach, whatever you can keep down.
+      icon: pill
+      ko: 얼마나 넘기시든 속을 가라앉힐 수액과 약을 드릴게요
+      note: 치료
+    - en: Along with those fluids, we'll ask you to strain your urine to catch the stone.
+      icon: lab
+      ko: 그 수액과 함께 결석을 잡도록 소변을 걸러 달라고 할게요
+      note: 거르기
+  sw:
+    ko: 오늘 몇 번이나 토하셨나요?
+- title: 임신 중 신우신염
+  s:
+  - t: 임신 주수
+    i: calendar
+    w: How many weeks…?로 주수를 묻는 정해진 문형이에요. 주수에 따라 쓸 수 있는 약과 필요한 산과 평가가 달라져요.
+    d: for the nurse
+    k:
+    - 출산 예정일이 언제예요?
+    - 임신 중 복용하는 약이 있나요?
+    a: weeks
+    o:
+    - days
+    - years
+    - pounds
+  - t: 약 선택
+    i: pill
+    w: that are safe during…으로 약이 갖춰야 할 조건을 알려요. 임신 중에는 태아에게 안전한 항생제만 골라야 해서 임신 사실이 약 선택의 핵심이에요.
+    d: after delivery
+    k:
+    - 항생제는 정맥으로 드릴 거예요
+    - 알레르기 이력을 확인할게요
+    a: safe
+    o:
+    - cheap
+    - new
+    - fast
+  - t: 태아 확인
+    i: baby
+    w: also는 앞서 말한 것에 더해 다른 일도 한다는 뜻이에요. 산모가 감염으로 열이 나면 태아에게도 영향이 갈 수 있어서 함께 살펴요.
+    d: in the hallway
+    k:
+    - 산부인과 의사에게도 연락할게요
+    - 산모수첩을 가져오셨나요?
+    a: wellbeing
+    o:
+    - gender
+    - name
+    - birthday
+  - t: 산과 증상
+    i: stetho
+    w: 증상을 나열해 하나씩 답하게 하는 질문이에요. 출혈과 수축은 조기 진통 같은 산과 문제를 알리는 신호라 임신 중 신우신염에서는 꼭 확인해요.
+    d: next visit
+    k:
+    - 아기가 평소처럼 움직이나요?
+    - 양수가 새는 것 같나요?
+    a: bleeding
+    o:
+    - itching
+    - coughing
+    - dizziness
+  - t: 경과 관찰
+    i: monitor
+    w: monitor…closely로 계속 지켜보겠다고 약속해 환자를 안심시켜요. 산모의 열과 태아 심박수는 감염이 태아에게 영향을 주는지 보는 지표예요.
+    d: at triage
+    k:
+    - 열은 해열제로 내릴게요
+    - 아기 초음파를 지금 볼게요
+    a: monitor
+    o:
+    - ignore
+    - skip
+    - forget
+  - t: 수분 섭취
+    i: coffee
+    w: Staying hydrated처럼 동명사가 주어가 되어 일반적인 조언을 말해요. 수분이 충분하면 소변이 잘 나와 요로의 균을 씻어 내는 데 도움이 돼요.
+    d: very quickly
+    k:
+    - 식사는 가볍게 하세요
+    - 푹 쉬시면 괜찮아질 거예요
+    a: better
+    o:
+    - worse
+    - sicker
+    - weaker
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 임신 중 신우신염 4문장 순서
+    why: 임신 주수를 묻고, 그 시기에 출혈이나 수축이 있었는지 묻고, 그 점을 염두에 두고 아기도 살피겠다고 하고, 결과가 어떻든 안전한 항생제를 고른다고 마무리해요. 'this stage'·'that in mind'·'Whatever we find'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: How many weeks pregnant are you?
+      icon: calendar
+      ko: 임신 몇 주째이신가요?
+      note: 주수
+    - en: Have you had any bleeding or contractions at this stage?
+      icon: stetho
+      ko: 이 시기에 출혈이나 수축이 있었나요?
+      note: 증상
+    - en: We'll also check on the baby's wellbeing, with that in mind.
+      icon: baby
+      ko: 그 점을 염두에 두고 아기가 잘 있는지도 확인할게요
+      note: 태아
+    - en: Whatever we find, we'll choose antibiotics that are safe during pregnancy.
+      icon: pill
+      ko: 결과가 어떻든 임신 중에 안전한 항생제를 고를게요
+      note: 약
+  ctx:
+    word: heartbeat
+    ko: 심박(심장 소리)
+    sc:
+      0:
+        en: She's eighteen weeks with pyelo — we're checking the fetal heartbeat now.
+      1:
+        en: Fetal heartbeat 150s by Doppler.
+      2:
+        en: We'll be assessing fetal heartbeat via Doppler.
+        fix: We'll also listen to the baby's heartbeat to make sure the baby's okay.
+- title: 반복 결석 환자 교육
+  s:
+  - t: 예방 교육
+    i: bulb
+    w: one of the best ways to…로 여러 방법 중 가장 효과적인 것임을 알려요. 수분을 충분히 마시면 소변이 묽어져 결석이 다시 생길 가능성이 줄어요.
+    d: after meals
+    k:
+    - 결석은 크기에 따라 치료가 달라요
+    - 통증이 오면 바로 오셔도 돼요
+    a: prevent
+    o:
+    - cause
+    - produce
+    - form
+  - t: 식이 점검
+    i: board
+    w: We can…은 제안하는 말투예요. 결석의 종류에 따라 조심할 음식이 달라서 환자의 평소 식사를 함께 살펴봐요.
+    d: every day
+    k:
+    - 약은 식사 후에 드세요
+    - 결석 종류를 검사로 알아볼게요
+    a: raise
+    o:
+    - lower
+    - check
+    - hide
+  - t: 추적 진료
+    i: hospital
+    w: Following up은 진료 뒤에 다시 방문한다는 구동사예요. 비뇨의학과에서 결석의 원인과 종류를 따로 평가하면 재발을 줄이는 계획을 세울 수 있어요.
+    d: next year
+    k:
+    - 외래 진료는 일주일 뒤예요
+    - 추가 검사 일정은 안내해 드릴게요
+    a: urologist
+    o:
+    - dentist
+    - pharmacist
+    - barber
+  - t: 일상 지침
+    i: coffee
+    w: especially로 더 중요한 경우를 짚어요. 더운 날에는 땀으로 수분이 빠져 소변이 진해지기 쉬워서 평소보다 더 마셔야 해요.
+    d: over the phone
+    k:
+    - 운동 후에는 쉬어 주세요
+    - 몸무게를 매일 재 보세요
+    a: hot
+    o:
+    - cold
+    - rainy
+    - windy
+  - t: 식이 조언
+    i: board
+    w: Cutting back on은 '줄이다'라는 구동사이고 also는 앞 조언에 더하는 말이에요. 소금을 많이 먹으면 소변으로 칼슘이 더 빠져나와 결석 위험이 올라갈 수 있어요.
+    d: for good
+    k:
+    - 물을 더 드시면 위험이 줄어요
+    - 운동을 하면 도움이 돼요
+    a: salt
+    o:
+    - water
+    - sleep
+    - walks
+  - t: 거름망 안내
+    i: lab
+    w: to catch…로 거름망의 목적을 말해요. 앞으로 나올 결석을 잡아 검사하면 결석의 종류에 맞는 예방 계획을 세울 수 있어요.
+    d: every morning
+    k:
+    - 거름망은 다 쓰면 버리세요
+    - 결석이 나오면 병원에 가져오세요
+    a: strainer
+    o:
+    - pillow
+    - blanket
+    - thermometer
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 반복 결석 교육 4문장 순서
+    why: 물을 충분히 마시는 것이 예방의 핵심이라고 알리고, 그 물을 매일 마시라고 구체화하고, 그 습관에 더해 소금을 줄이라고 하고, 그래도 나오는 결석은 거름망으로 잡는다고 해요. 'of it'·'that routine'·'anyway'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - en: Drinking plenty of water is one of the best ways to prevent stones.
+      icon: bulb
+      ko: 물을 충분히 마시는 것이 결석을 막는 최고의 방법 중 하나예요
+      note: 핵심
+    - en: Try to drink enough of it every day, especially in hot weather.
+      icon: coffee
+      ko: 특히 더운 날씨에는 매일 그걸 충분히 마시도록 하세요
+      note: 실천
+    - en: With that routine, cutting back on salt can also lower your risk.
+      icon: board
+      ko: 그 습관에 더해 소금을 줄이면 위험도 낮출 수 있어요
+      note: 식이
+    - en: To catch any stones that do come anyway, we'll give you a strainer.
+      icon: lab
+      ko: 그래도 나오는 결석을 잡도록 거름망을 드릴게요
+      note: 거름망
+  ctx:
+    word: fluid
+    ko: 수분
+    sc:
+      2:
+        en: Increase PO fluid intake to achieve a urine output over 2.5 liters per day.
+        fix: Try to drink enough fluids every day that your pee stays pale yellow.

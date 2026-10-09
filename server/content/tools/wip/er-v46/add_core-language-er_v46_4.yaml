@@ -1,0 +1,72 @@
+- title: 응급 중 통역 지연
+  s:
+  - {t: "가슴 확인", i: stetho, w: "위급할 때는 한 단어 질문과 예·아니오 답으로 필요한 정보부터 얻어요. 가슴 통증은 응급실에서 가장 먼저 확인하는 증상 중 하나예요.", d: "Tell me", k: ["다리가 아프세요? 예 아니오?", "숨이 차세요? 예 아니오?"], a: "Yes or no", ai: gear, o: ["Hot or cold", "Up or down", "Left or right"]}
+  - {t: "손 신호", i: handshake2, w: "말을 못 하는 환자에게 손 쥐기 같은 간단한 신호를 정해 두면 말 없이도 답할 수 있어요. 어떤 신호가 어떤 뜻인지 먼저 알려 줘요.", d: "if you feel better", k: ["통증이 없으면 손을 쥐어 주세요", "손을 놓아 주세요"], a: "Squeeze", ai: me, o: ["Release", "Drop", "Wash"]}
+  - {t: "곁에 있기", i: bell, w: "도움이 오고 있다고 알리면 환자가 혼자라고 느끼지 않아요. stay with me는 응급 상황에서 곁에 있어 주겠다는 짧은 말이에요.", d: "I'll go", k: ["통역사는 취소됐어요", "혼자 계세요"], a: "coming", ai: speaker, o: ["leaving", "canceled", "lost"]}
+  - {t: "위치 확인", i: magnify, w: "아픈 부위를 짧게 묻고 바로 가리키게 하면 언어가 달라도 위치를 확인할 수 있어요. 가슴 통증은 심장 문제의 신호일 수 있어 위치부터 확인해요.", d: "Tell me", k: ["숨이 가쁜가요? 가리켜 주세요", "어깨가 아픈가요?"], a: "pain", ai: me, o: ["fever", "chill", "heat"]}
+  - {t: "손 신호", i: handshake2, w: "횟수로 신호를 정해 두면 예·아니오를 구분할 수 있어요. 이해했다는 확인도 말 없이 받을 수 있어요.", d: "once more", k: ["한 번 쥐면 이해한 거예요", "이해하지 못하면 쥐어 주세요"], a: "understand", ai: gear, o: ["disagree", "forget", "refuse"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "통역 없이 위급할 때 순서"
+    why: "통증 위치를 먼저 묻고, 심하면 손을 쥐게 하고, 이해했다는 응답과 함께 통역사가 오고 있다고 알리고, 통역사가 오면 말하게 해요. it, Good, they가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Chest pain? Point to where.", icon: stetho, ko: "가슴 통증? 어디인지 가리켜 주세요", note: "위치"}
+    - {en: "If it's very bad, squeeze my hand.", icon: handshake2, ko: "아주 심하면 제 손을 쥐어 주세요", note: "신호"}
+    - {en: "Good, I understand. The interpreter is coming, so stay with me.", icon: bell, ko: "알겠어요. 통역사가 오고 있으니 곁에 계세요", note: "안심"}
+    - {en: "When they get here, you can tell them everything.", icon: speech, ko: "그분이 오시면 다 말씀하셔도 돼요", note: "연결"}
+  ctx: {word: "stay", ko: "함께 있다"}
+- title: 통역 없는 위기 소통
+  s:
+  - {t: "앱 사용", i: monitor, w: "통역사를 기다릴 수 없을 때 번역 앱은 임시 수단이에요. 짧은 문장을 쓰고, 중요한 내용은 통역사가 연결되는 즉시 다시 확인해야 해요.", d: "and call me", k: ["앱을 끄세요", "앱은 사용하지 않아요"], a: "read", ai: pencil, o: ["erase", "hide", "pay"]}
+  - {t: "고개 신호", i: faceWorried, w: "고개를 끄덕이면 예, 저으면 아니오라는 신호는 언어 없이도 통하는 편이에요. 다만 문화에 따라 뜻이 다를 수 있으니 먼저 시범을 보여요.", d: "raise your hand", k: ["눈을 깜빡이면 예예요", "숨을 크게 쉬세요"], a: "shake", ai: gear, o: ["wave", "roll", "bow"]}
+  - {t: "안심", i: shield, w: "짧은 문장 둘로 안심시키면 번역 앱이 정확히 옮기고 환자도 이해하기 쉬워요. 위기에는 정보보다 안심이 먼저예요.", d: "We are leaving", k: ["우리는 곧 떠나요", "당신은 혼자예요"], a: "safe", ai: star, o: ["alone", "lost", "late"]}
+  - {t: "이해 확인", i: monitor, w: "읽게 한 뒤 끄덕이게 하면 이해 여부를 말 없이 확인할 수 있어요. 끄덕임은 예의일 수도 있어서 중요한 내용은 통역사가 오면 다시 확인해요.", d: "or shake", k: ["앱을 읽고 서명해 주세요", "읽고 다시 말씀해 주세요"], a: "nod", ai: pencil, o: ["shout", "jump", "cry"]}
+  - {t: "위험 신호", i: siren, w: "'아니오' 신호를 쉽게 정해 두면 숨을 못 쉬는 위급 상황을 빠르게 알 수 있어요. 번역 앱 없이도 쓸 수 있어요.", d: "if you feel fine", k: ["숨을 쉬시면 고개를 저어 주세요", "숨을 못 쉬시면 손을 드세요"], a: "Shake", ai: star, o: ["Nod", "Hold", "Turn"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "통역 없이 앱으로 소통하는 순서"
+    why: "번역 앱을 읽게 하고, 이해하면 끄덕이게 하고, 이해했다는 답 뒤에 호흡을 묻고, 답해 준 데 감사하며 안심시켜요. Good, Thanks for answering이 앞 줄의 답을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "I'm using a translation app, so please read this.", icon: monitor, ko: "번역 앱을 쓰고 있으니 이걸 읽어 주세요", note: "앱"}
+    - {en: "Nod if you understand, and shake if you don't.", icon: faceWorried, ko: "이해하면 끄덕이고, 아니면 저어 주세요", note: "신호"}
+    - {en: "Good. Can you breathe okay? Shake your head if you can't.", icon: siren, ko: "좋아요. 숨은 괜찮으세요? 아니면 고개를 저어 주세요", note: "호흡"}
+    - {en: "Thanks for answering. We are helping you, and you are safe.", icon: shield, ko: "답해 줘서 고마워요. 저희가 돕고 있고 안전해요", note: "안심"}
+  sw: {ko: "번역 앱을 쓰고 있어요, 이걸 읽어 주세요"}
+- title: 나쁜 소식 통역 전달
+  s:
+  - {t: "예고", i: bell, w: "나쁜 소식 전에 심각한 이야기라고 예고하면 환자나 가족이 마음의 준비를 해요. 통역사가 함께 전한다고 알려 혼자 듣지 않게 해요.", d: "to tell the doctor", k: ["통역사는 곧 나갈 거예요", "좋은 소식을 전할게요"], a: "will", ai: gear, o: ["won't", "can't", "didn't"]}
+  - {t: "위중함 전달", i: faceWorried, w: "grave는 생명이 위태로울 만큼 위중하다는 격식 있는 표현이에요. 위로의 말을 먼저 하고 사실을 분명히 말하면 통역도 정확히 옮길 수 있어요.", d: "for now", k: ["상태가 많이 좋아졌어요", "상태는 안정적이에요"], a: "grave", ai: bandage, o: ["stable", "good", "mild"]}
+  - {t: "질문 권유", i: coffee, w: "시간을 주고 질문을 허락하면 충격 속에서도 이해할 시간을 얻어요. 통역사에게도 천천히 옮길 여유를 줘요.", d: "if you're ready", k: ["빨리 결정해 주세요", "질문은 나중에만 받아요"], a: "ask", ai: speech, o: ["forget", "hide", "deny"]}
+  - {t: "이해 돕기", i: speaker, w: "통역사는 단어뿐 아니라 의학적 의미가 전달되도록 돕는 역할이에요. 상태를 이해해야 다음 결정을 내릴 수 있어요.", d: "from the doctor", k: ["통역사가 상태를 바꿔 줄 거예요", "통역사가 약을 줄 거예요"], a: "understand", ai: bulb, o: ["ignore", "hide", "pay"]}
+  - {t: "공감", i: faceWorried, w: "나쁜 소식을 전하기 전의 I'm sorry는 사과가 아니라 슬픔을 함께 나누는 공감의 표현이에요.", d: "to hear", k: ["이렇게 기쁜 소식을 전해요", "이렇게 늦어서 죄송해요"], a: "sorry", ai: handshake2, o: ["glad", "happy", "proud"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "나쁜 소식을 통역으로 전하는 순서"
+    why: "심각한 이야기를 하겠다고 예고하고, 위중하다는 사실을 전하고, 받아들일 시간을 주고, 이어서 다음 단계를 통역사와 함께 의논해요. that과 When you're ready가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "I need to tell you something serious, and the interpreter will help.", icon: bell, ko: "심각한 이야기를 해야 하고, 통역사가 도와줄 거예요", note: "예고"}
+    - {en: "I'm so sorry. His condition is very grave.", icon: faceWorried, ko: "정말 죄송해요. 상태가 매우 위중해요", note: "전달"}
+    - {en: "Take your time with that. Ask me anything you need.", icon: coffee, ko: "천천히 받아들이세요. 필요한 건 뭐든 물어보세요", note: "배려"}
+    - {en: "When you're ready, the interpreter can help us go over the next steps.", icon: speaker, ko: "준비되시면 통역사와 함께 다음 단계를 살펴봐요", note: "다음"}
+  ctx: {word: "grave", ko: "위중한"}
+- title: 동의능력 언어 복합
+  s:
+  - {t: "이해 확인", i: speech, w: "teach-back은 환자의 말로 다시 말하게 해서 이해를 확인해요. '이해했어요?'라고 묻는 것보다 확실해요.", d: "again later", k: ["방금 서명한 걸 말씀해 주시겠어요?", "제 이름을 말씀해 주시겠어요?"], a: "explained", ai: gear, o: ["forgot", "lost", "broke"]}
+  - {t: "이해 확인", i: magnify, w: "동의 능력은 의사가 판단하지만, 언어 때문에 이해하지 못한 것인지 통역으로 먼저 구분해야 해요. 통역사는 환자의 대답을 그대로 옮겨 줘요.", d: "if you sign", k: ["통역사가 서류에 서명할 거예요", "통역사가 환자를 진찰할 거예요"], a: "truly", ai: handshake2, o: ["barely", "hardly", "rarely"]}
+  - {t: "대리 동의", i: home, w: "환자가 동의할 수 없으면 병원 절차에 따라 법적 대리인이나 가장 가까운 가족에게 연락해요. 누가 대리인인지는 주(州) 법과 병원 지침이 정해요.", d: "to the court", k: ["동의할 수 없어도 그냥 진행해요", "가족에게 연락하지 않을게요"], a: "reach", ai: bell, o: ["avoid", "ignore", "forget"]}
+  - {t: "재설명", i: bulb, w: "다시 설명하겠다고 하면 이해하지 못한 것이 환자 잘못이 아니라는 신호예요. 이해되면 말해 달라는 것으로 마무리해요.", d: "if you agree", k: ["서명하시면 알려 주세요", "다음에 설명해 드릴게요"], a: "Let", ai: faceWorried, o: ["Don't", "Never", "Stop"]}
+  - {t: "동의 확인", i: pencil, w: "통역사와 함께 동의 여부를 꼼꼼히 확인하면 언어 문제로 동의가 잘못 기록되는 일을 막을 수 있어요.", d: "without questions", k: ["동의서는 가족이 확인해요", "통역사 없이 확인할게요"], a: "carefully", ai: star, o: ["rarely", "loudly", "blindly"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "언어와 동의 능력을 함께 확인하는 순서"
+    why: "통역사를 통해 설명하고, 그 설명을 다시 말하게 하고, 못 하면 언어 문제인지 먼저 확인하고, 언어 문제가 아니면 가족에게 연락해요. Then, it, If it's not the language가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "I'll explain the procedure to him through the interpreter.", icon: speaker, ko: "통역사를 통해 환자분께 시술을 설명할게요", note: "설명"}
+    - {en: "Then I'll ask him to tell me back what I just explained.", icon: speech, ko: "그다음 방금 설명한 걸 다시 말해 달라고 할게요", note: "복창"}
+    - {en: "If he can't tell it back, the interpreter will check whether it's the language.", icon: magnify, ko: "다시 말하지 못하면 언어 때문인지 통역사가 확인해요", note: "확인"}
+    - {en: "If it's not the language and he can't consent, we'll reach his next of kin.", icon: home, ko: "언어 문제가 아닌데 동의할 수 없으면 가족에게 연락해요", note: "대리"}
+  ctx: {word: "consent", ko: "동의"}

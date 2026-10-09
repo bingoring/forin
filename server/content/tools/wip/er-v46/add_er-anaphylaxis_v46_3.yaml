@@ -1,0 +1,99 @@
+- title: 베타차단제 복용자
+  s:
+  - {t: "약효 안내", i: pill, w: "Because of…로 이유를 먼저 말해 환자가 왜 그런지 바로 납득하게 해요. 베타차단제를 복용 중이면 에피네프린 반응이 약해지고 아나필락시스가 더 심해질 수 있어요.", d: "right away", k: ["에피네프린은 반복해서 맞을 수 있어요", "혈압을 더 자주 잴게요"], a: "medication", o: ["surgery", "scan", "screening"]}
+  - {t: "글루카곤", i: pill, w: "to help…로 약의 목적을 환자의 몸을 돕는 일로 풀어 말해요. 글루카곤은 베타차단제 때문에 에피네프린이 잘 듣지 않을 때 쓰는 약이에요.", d: "for the pain", k: ["혈당을 다시 한 번 잴게요", "에피네프린은 한 번 더 놓을 수 있어요"], a: "glucagon", o: ["aspirin", "nitroglycerin", "atropine"]}
+  - {t: "복용력 문진", i: pill, w: "두 질문을 and로 묶어 이름과 마지막 복용 시각을 한 번에 물어요. 약 종류와 복용 시간은 에피네프린이 얼마나 약해질지 가늠하는 단서예요.", d: "at the pharmacy", k: ["다른 처방약도 가져오셨어요?", "심장이 안 좋다는 말을 들은 지 얼마나 되셨어요?"], a: "beta blocker", o: ["blood thinner", "inhaler", "allergy pill"]}
+  - {t: "용량 안내", i: bulb, w: "might로 가능성을 열어 두고 or로 두 경우를 나란히 알려요. 에피네프린이 잘 듣지 않으면 여러 번 투여해야 할 수 있다는 점은 사실이에요.", d: "or a different pill", k: ["투여한 뒤에는 혈압을 자주 잴게요", "글루카곤은 천천히 넣을게요"], a: "bigger", o: ["smaller", "lower", "weaker"]}
+  - {t: "작용 원리", i: bulb, w: "works around…to…로 방법과 목적을 한 문장에 담아 약이 어떻게 우회하는지 말해요. 글루카곤은 베타 수용체를 거치지 않고 심장 수축력을 올려서 베타차단제의 영향을 피해요.", d: "to ease your pain", k: ["혈압은 몇 분마다 잴게요", "글루카곤은 구역질을 일으킬 수 있어요"], a: "raise", o: ["lower", "protect", "check"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "베타차단제 환자 4문장 순서"
+    why: "심장약 때문에 에피네프린이 덜 들을 수 있다고 알리고, 'That's why'가 그 이유로 글루카곤을 쓰고, 'It'이 그 약을 가리켜 작용을 설명하고, 'both'가 두 약을 가리켜 여러 번 필요할 수 있다고 닫아요. 앞 줄을 가리키는 말이 줄마다 있어 순서가 하나예요."
+    lines:
+    - {en: "Because of your heart medication, the epinephrine may work less well.", icon: pill, ko: "심장약 때문에 에피네프린이 덜 들을 수 있어요", note: "이유"}
+    - {en: "That's why we're giving glucagon to help your body respond.", icon: pill, ko: "그래서 몸이 반응하도록 글루카곤을 드려요", note: "글루카곤"}
+    - {en: "It works around your beta blocker to raise your blood pressure.", icon: bulb, ko: "그 약은 베타차단제를 우회해 혈압을 올려요", note: "원리"}
+    - {en: "Even with both, you might need several doses to get a response.", icon: calendar, ko: "두 약을 써도 반응을 얻으려면 여러 번 필요할 수 있어요", note: "용량"}
+  sw: {ko: "몸이 반응하도록 돕기 위해 글루카곤을 투여할게요"}
+- title: 임산부 아나필락시스
+  s:
+  - {t: "안전 안내", i: shield, w: "now로 지체 없이 하겠다고 하고 it's safe로 임산부가 가장 걱정하는 점부터 풀어요. 임신 중에도 아나필락시스의 1차 치료는 에피네프린이고, 엄마가 안정되는 것이 아기에게도 가장 좋아요.", d: "after the scan", k: ["아기 움직임은 지금 느껴지세요?", "산부인과 선생님께 연락할게요"], a: "safe", o: ["risky", "harmful", "optional"]}
+  - {t: "좌측위", i: baby, w: "to help…로 자세를 바꾸는 이유를 아기의 혈류라는 환자의 가장 큰 걱정과 연결해요. 임신 중 왼쪽으로 기울이면 큰 혈관이 눌리지 않아 엄마의 혈류가 유지돼요.", d: "onto your back", k: ["산소를 코로 넣어 드릴게요", "베개를 하나 받쳐 드릴게요"], a: "left", o: ["right", "upper", "lower"]}
+  - {t: "태아 감시", i: monitor, w: "the whole time으로 처음부터 끝까지 지켜본다고 말해 불안을 줄여요. 산모의 저혈압과 저산소는 아기에게 바로 영향을 줘서 태아 심박도 함께 봐요.", d: "once a day", k: ["진통처럼 배가 뭉치는 느낌이 있나요?", "아기가 움직이는 게 느껴지면 알려 주세요"], a: "heartbeat", o: ["position", "weight", "size"]}
+  - {t: "이유 설명", i: baby, w: "Your baby needs you…로 아기를 주어로 삼아 엄마가 치료를 받아들일 이유를 만들어요. 아기는 엄마의 산소로 사니까 엄마의 호흡이 안정돼야 아기도 안전해요.", d: "to rest more", k: ["진정제는 쓰지 않을 거예요", "아기가 움직이는지 알려 주세요"], a: "breathing", o: ["eating", "sleeping", "moving"]}
+  - {t: "감시 설명", i: monitor, w: "both로 엄마와 아기 두 사람의 수치를 함께 보고 있다고 알려요. being watched처럼 수동태로 쓰면 환자가 아니라 지켜보는 일에 초점이 가서 부담이 줄어요.", d: "by the doctors", k: ["혈압이 낮으면 수액을 맞을 수 있어요", "산소 수치도 같이 보고 있어요"], a: "closely", o: ["rarely", "lightly", "casually"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "임산부 아나필락시스 4문장 순서"
+    why: "먼저 에피네프린을 놓고, 'With that in'이 그 투여를 가리키며 왼쪽으로 눕히고, 'this position'이 그 자세를 가리키며 감시를 알리고, 'Those two numbers'가 그 감시 수치를 가리켜 이유를 닫아요. 앞 줄을 가리키는 말이 줄마다 있어 순서가 하나예요."
+    lines:
+    - {en: "I'm giving epinephrine now — it's safe and it helps both of you.", icon: shield, ko: "지금 에피네프린을 놓을게요 — 안전하고 두 분 모두에게 도움이 돼요", note: "투여"}
+    - {en: "With that in, I'm tilting you left to help blood flow to your baby.", icon: baby, ko: "들어갔으니 아기에게 혈류가 가도록 왼쪽으로 기울일게요", note: "자세"}
+    - {en: "In this position, we're watching your blood pressure and your baby's heart rate.", icon: monitor, ko: "이 자세에서 혈압과 아기 심박수를 지켜봐요", note: "감시"}
+    - {en: "Those two numbers matter because your baby needs you breathing well.", icon: faceWorried, ko: "그 두 수치가 중요한 건 아기가 산모의 호흡에 달려 있어서예요", note: "이유"}
+  sw: {ko: "지금 에피네프린을 투여할게요 — 안전하고 두 분 모두에게 도움이 돼요"}
+- title: 라텍스 알레르기
+  s:
+  - {t: "환경 교체", i: shield, w: "right away로 지체 없이 바꾼다고 말해 환자가 안심하게 해요. 라텍스 알레르기 환자는 장갑·튜브 같은 라텍스 제품에 닿기만 해도 반응할 수 있어서 환경부터 바꿔요.", d: "by tomorrow", k: ["의사 선생님께 알레르기 사실을 전할게요", "손목에 알레르기 밴드를 채워 드릴게요"], a: "gloves", o: ["gowns", "masks", "shoes"]}
+  - {t: "교차반응", i: magnify, w: "certain foods like…로 예를 들어 환자가 자기 경험을 떠올리게 해요. 라텍스 알레르기가 있는 사람 일부는 바나나·아보카도·키위 같은 과일에도 반응해요.", d: "every morning", k: ["라텍스 장갑을 쓰는 직업이세요?", "풍선이나 고무줄에 닿아도 반응하세요?"], a: "avocado", o: ["rice", "cheese", "bread"]}
+  - {t: "알레르기 표시", i: bandage, w: "so everyone…knows로 표시하는 목적을 밝혀 한 사람이 아니라 팀 전체가 알게 한다고 말해요. 차트 표시와 밴드가 있어야 부서가 바뀌어도 라텍스가 환자에게 닿지 않아요.", d: "on the door", k: ["라텍스가 들어간 물품은 다 치울게요", "알레르기가 처음 생긴 때를 말씀해 주세요"], a: "flag", o: ["hide", "delete", "cancel"]}
+  - {t: "환경 규칙", i: lock, w: "Nothing…should touch…로 주어를 사물로 두어 환자가 아니라 환경이 책임진다고 말해요. from now on으로 방금 바꾼 규칙이 이후에도 계속된다는 점을 알려요.", d: "after dinner", k: ["이 병실의 장갑은 모두 바꿨어요", "라텍스가 든 물품은 전부 치웠어요"], a: "latex", o: ["nickel", "iodine", "perfume"]}
+  - {t: "인계 표시", i: pencil, w: "so the next shift sees it too로 지금 근무자뿐 아니라 다음 근무조도 안다고 말해요. 차트에 적어 두면 교대할 때 정보가 끊기지 않아요.", d: "on a sticky note", k: ["밴드도 같이 채워 드릴게요", "다음 근무조에게 말로도 전할게요"], a: "shift", o: ["floor", "lab", "bed"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "라텍스 알레르기 4문장 순서"
+    why: "먼저 라텍스 없는 물품으로 바꾸고, 'that'이 그 교체를 가리키며 병실 규칙을 정하고, 'this'가 그 규칙을 가리켜 차트에 적고, 'that chart'가 방금 적은 차트를 가리켜 교차반응 음식을 더해요. 앞 줄을 가리키는 말이 줄마다 있어 순서가 하나예요."
+    lines:
+    - {en: "We're switching to latex-free gloves and supplies right away.", icon: shield, ko: "지금 바로 라텍스 없는 장갑과 물품으로 바꿔요", note: "교체"}
+    - {en: "With that done, nothing in this room should touch latex from now on.", icon: lock, ko: "그렇게 하고 나면 이제부터 병실 안 어떤 것도 라텍스에 닿으면 안 돼요", note: "규칙"}
+    - {en: "I'm writing this on your chart so the next shift sees it too.", icon: pencil, ko: "다음 근무조도 보도록 이걸 차트에 적을게요", note: "기록"}
+    - {en: "Do bananas or avocado bother you? I'll add them to that chart.", icon: magnify, ko: "바나나나 아보카도도 문제가 되나요? 그 차트에 더할게요", note: "교차"}
+  ctx:
+    word: "food"
+    ko: "음식"
+    sc:
+      1: {en: "Latex allergy. Ask about foods with cross-reactivity (banana, avocado, kiwi)."}
+      2: {en: "Any food cross-reactivity or latex-fruit syndrome?", fix: "Do foods like bananas, avocado, or kiwi ever give you a reaction?"}
+- title: 소아 아나필락시스 보호자
+  s:
+  - {t: "체중 용량", i: siren, w: "dosed for his weight로 용량이 아이 몸에 맞춰져 있다는 점을 먼저 보여 줘 보호자가 안심해요. 소아 에피네프린은 체중으로 계산해서(0.01 mg/kg) 근육주사해요.", d: "for his age", k: ["아이 허벅지를 잡아 줄 사람이 필요해요", "보호자님은 아이 곁에 계세요"], a: "epinephrine", o: ["lidocaine", "atropine", "insulin"]}
+  - {t: "보호자 격려", i: star, w: "You're doing great로 평가를 먼저 해 주고 keeping him calm으로 보호자가 지금 할 수 있는 일을 구체적으로 알려요. 보호자의 불안은 아이에게 전해져서 보호자가 차분하면 아이도 안정돼요.", d: "for the doctors", k: ["아이가 울어도 괜찮아요", "아이에게 먹을 걸 주지 말아 주세요"], a: "helps", o: ["hurts", "slows", "bothers"]}
+  - {t: "원인·체중", i: magnify, w: "두 질문을 and로 이어 한 번에 필요한 정보 둘을 물어요. 먹은 것은 원인을, 체중은 에피네프린 용량 계산에 필요해요.", d: "at school", k: ["아이 이름과 생년월일이 어떻게 되나요?", "집에 에피펜이 있었나요?"], a: "weigh", o: ["cough", "grow", "sleep"]}
+  - {t: "용량 설명", i: chartup, w: "every dose로 예외 없이 체중으로 계산한다고 말해 신뢰를 줘요. 소아는 체중 범위가 넓어서 용량을 체중에 맞춰 계산해요.", d: "by his age", k: ["약 이름과 용량은 차트에 적어 둘게요", "다음 용량이 필요하면 바로 말씀드릴게요"], a: "exact", o: ["rough", "random", "generic"]}
+  - {t: "보호자 요청", i: handshake2, w: "Hold…and talk…으로 보호자가 할 수 있는 행동 둘을 쉬운 명령형으로 줘요. that helps us both로 보호자의 행동이 의료진에게도 도움이 된다고 해서 방해가 아니라 협력이라고 느끼게 해요.", d: "in the hall", k: ["아이를 안아 올리지 말고 눕혀 주세요", "옆에서 아이 이름을 계속 불러 주세요"], a: "softly", o: ["loudly", "quickly", "angrily"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "소아 에피네프린 보호자 설명 4문장 순서"
+    why: "먼저 에피네프린을 놓고, 'the dose'가 그 용량을 가리키며 체중을 묻고, 'Thanks'가 그 대답을 받아 계산을 설명하고, 'That part'가 그 의료진의 몫을 가리켜 보호자가 할 일을 말해요. 앞 줄을 가리키는 말이 줄마다 있어 순서가 하나예요."
+    lines:
+    - {en: "I'm giving him epinephrine now, dosed by his estimated weight.", icon: siren, ko: "아이 추정 체중에 맞춰 지금 에피네프린을 놓을게요", note: "투여"}
+    - {en: "How much does he weigh, so I can check the dose?", icon: magnify, ko: "용량을 확인하게 아이 체중이 얼마예요?", note: "체중"}
+    - {en: "Thanks. We calculate every dose by his weight, so it's exact for him.", icon: chartup, ko: "고마워요. 모든 용량을 체중으로 계산해 아이에게 정확해요", note: "계산"}
+    - {en: "That part is ours — you can hold his hand and talk to him softly.", icon: handshake2, ko: "그건 저희 몫이에요 — 아이 손을 잡고 부드럽게 말해 주세요", note: "요청"}
+  sw: {ko: "지금 아이 체중에 맞춘 용량으로 에피네프린을 투여할게요"}
+- title: 후두부종 기도폐쇄 임박
+  s:
+  - {t: "기도 확보", i: siren, w: "swelling과 securing을 같은 -ing 형태로 맞춰 상황과 대응을 한 호흡에 말해요. before it closes로 시간이 없는 이유를 밝혀요. 후두 부종이 진행하면 기도가 막혀서 막히기 전에 확보하는 것이 원칙이에요.", d: "after you calm down", k: ["산소를 최대한 드릴게요", "에피네프린이 듣는지 지켜볼게요"], a: "securing", o: ["cleaning", "covering", "measuring"]}
+  - {t: "에피·호출", i: bell, w: "continuing과 calling을 and로 이어 두 일이 동시에 진행된다고 알려요. 기도 부종이 심하면 에피네프린을 이어 가면서 어려운 기도를 다룰 수 있는 전문의를 함께 불러야 해요.", d: "to the lobby", k: ["어려운 기도 카트를 가져올게요", "산소를 마스크로 드릴게요"], a: "continuing", o: ["stopping", "delaying", "ending"]}
+  - {t: "호흡 유도", i: me, w: "as…as you can으로 가능한 만큼만 부탁해서 무리한 요구로 들리지 않게 해요. with me로 같이 한다고 해서 혼자가 아니라고 느끼게 해요.", d: "and speak loudly", k: ["눈을 감지 말고 저를 봐 주세요", "제 손을 꽉 쥐어 보세요"], a: "slowly", o: ["loudly", "quickly", "heavily"]}
+  - {t: "고개 끄덕임", i: speech, w: "Can you nod…로 말하기 힘든 환자에게 고개 끄덕임이라는 쉬운 응답 방법을 줘요. harder처럼 비교로 물어 변화를 알아보려는 질문이에요.", d: "if you can hear me", k: ["눈을 깜빡여 보시겠어요?", "지금 손을 들 수 있으세요?"], a: "harder", o: ["easier", "simpler", "safer"]}
+  - {t: "곁 지킴", i: handshake2, w: "두 절을 and로 이어 도움이 오고 있다는 사실과 내가 곁에 있다는 약속을 함께 줘요. staying right here with you는 숨이 막히는 환자에게 가장 큰 안심이에요.", d: "at the desk", k: ["산소 수치는 계속 보고 있어요", "에피네프린은 계속 들어가고 있어요"], a: "ENT", o: ["Radiology", "Pharmacy", "Dietary"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "후두부종 대응 4문장 순서"
+    why: "기도가 붓는다고 알리고, 'that'이 그 부기를 가리켜 에피네프린과 호출을 알리고, 'Their'이 호출한 전문의를 가리켜 호흡을 유도하고, 'Good'이 환자가 따라 한 것을 받아 상태를 물어요. 앞 줄을 가리키는 말이 줄마다 있어 순서가 하나예요."
+    lines:
+    - {en: "Your airway is swelling — we're securing it before it closes.", icon: siren, ko: "기도가 붓고 있어요 — 막히기 전에 확보할게요", note: "상황"}
+    - {en: "I'm continuing epinephrine and calling ENT to the bedside for that.", icon: bell, ko: "그 때문에 에피네프린을 계속하고 이비인후과를 부를게요", note: "조치"}
+    - {en: "Their help is coming, so stay calm and breathe slowly with me.", icon: me, ko: "도움이 오고 있으니 진정하고 저와 천천히 숨 쉬어요", note: "호흡"}
+    - {en: "Good. Can you nod if it's getting harder to breathe?", icon: speech, ko: "좋아요. 숨쉬기가 더 힘들어지면 고개를 끄덕여 주시겠어요?", note: "확인"}
+  ctx:
+    word: "airway"
+    ko: "기도"
+    sc:
+      2: {en: "You're at risk of complete airway obstruction and may need a cric.", fix: "The swelling is near your airway, so we're getting ready to help you breathe."}

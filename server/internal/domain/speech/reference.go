@@ -4,6 +4,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"log/slog"
 	"strings"
 
 	"github.com/bingoring/forin/server/internal/ports"
@@ -79,6 +80,55 @@ func checkReferenceAudioSize(wav []byte) error {
 	return nil
 }
 
+// MaxReferenceTextLen is business-rules §2's cap on a reference text, in runes
+// (not bytes: a Korean sentence well under 300 characters is far over 300
+// bytes). One constant shared by the HTTP edge and anything that files free
+// speech under its recognized text.
+const MaxReferenceTextLen = 300
+
+// ErrReferenceQuotaExceeded means this user has already caused their daily
+// allowance of reference GENERATIONS (cross-review I4). It is returned only on
+// a cache miss, before any paid TTS/Assess call; cache hits never see it. The
+// HTTP layer maps it to 429 reference_quota_exceeded.
+var ErrReferenceQuotaExceeded = errors.New("speech: daily reference generation quota exceeded")
+
+// GenerationLimiter counts reference generations per user. Allow records one
+// generation and reports whether it is within the user's daily allowance.
+// The production implementation is a Redis counter (adapters/redis).
+type GenerationLimiter interface {
+	Allow(ctx context.Context, userID string) (bool, error)
+}
+
+// WithReferenceLimiter installs the per-user daily generation cap and returns
+// the service for chaining. Leave unset (nil) for no cap.
+func (s *Service) WithReferenceLimiter(l GenerationLimiter) *Service {
+	s.refLimiter = l
+	return s
+}
+
+// takeGeneration spends one unit of the user's daily reference-generation
+// allowance. Called only on the paths that are about to make a paid TTS call.
+//
+// FAIL-OPEN, deliberately: if the limiter itself errors (Redis down or slow),
+// generation proceeds. The cap is abuse protection, not a correctness rule —
+// refusing every uncached sentence whenever Redis hiccups would turn a cost
+// guard into an outage of pronunciation practice for everyone. The failure is
+// logged, so a Redis outage that silently lifts the cap is visible.
+func (s *Service) takeGeneration(ctx context.Context, userID string) error {
+	if s.refLimiter == nil {
+		return nil
+	}
+	ok, err := s.refLimiter.Allow(ctx, userID)
+	if err != nil {
+		slog.Warn("speech: reference quota check failed, allowing generation (fail-open)", "err", err, "userID", userID)
+		return nil
+	}
+	if !ok {
+		return ErrReferenceQuotaExceeded
+	}
+	return nil
+}
+
 // ErrTTSNotConfigured is returned by Reference when the synthesizer cannot run
 // at all. This is distinct from a Synthesize *call* failing (network/5xx) —
 // checking Configured() upfront mirrors quizAudioHandler.entry's own guard and
@@ -128,6 +178,11 @@ func (s *Service) Reference(ctx context.Context, userID, text string) (*ports.Se
 		return nil, ErrTTSNotConfigured
 	}
 
+	// A real generation starts here (cache miss, TTS available): count it.
+	if err := s.takeGeneration(ctx, userID); err != nil {
+		return nil, err
+	}
+
 	wav, err := s.tts.Synthesize(ctx, text, voice, locale)
 	if err != nil {
 		return nil, err
@@ -138,7 +193,7 @@ func (s *Service) Reference(ctx context.Context, userID, text string) (*ports.Se
 		return nil, err
 	}
 
-	scored, err := s.pron.Assess(ctx, userID, wav, text)
+	scored, err := s.pron.AssessIn(ctx, wav, text, locale)
 	if err != nil {
 		return nil, err
 	}
@@ -156,7 +211,13 @@ func (s *Service) Reference(ctx context.Context, userID, text string) (*ports.Se
 		// playback" was this package's own doc promise from the start.
 		ReferenceAudio: wav,
 	}
-	_ = s.repo.PutReference(ctx, ref) // best-effort: first-writer-wins (R9), a race just wastes one Azure call
+	// Best-effort: first-writer-wins (R9), a race just wastes one Azure call. A FAILING
+	// write is not a race though — if it keeps failing, every visit to this sentence is a
+	// cache miss and pays TTS + Assess again, so it must at least be visible (S11).
+	if err := s.repo.PutReference(ctx, ref); err != nil {
+		slog.Warn("speech: reference derived but not cached; every visit will regenerate it until the write succeeds",
+			"err", err, "sentenceKey", key, "userID", userID)
+	}
 	return &ref, nil
 }
 
@@ -221,6 +282,10 @@ func (s *Service) ReferenceAudio(ctx context.Context, userID, text string) ([]by
 	}
 	if s.tts == nil || !s.tts.Configured() {
 		return nil, ErrTTSNotConfigured
+	}
+	// Backfill is a fresh paid Synthesize too, so it spends quota like a miss.
+	if err := s.takeGeneration(ctx, userID); err != nil {
+		return nil, err
 	}
 	newWav, err := s.tts.Synthesize(ctx, existing.ReferenceText, voice, existing.Locale)
 	if err != nil {

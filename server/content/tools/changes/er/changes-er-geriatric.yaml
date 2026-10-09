@@ -1,0 +1,267 @@
+theme: er-geriatric
+changes:
+- kind: sentence
+  situation: 노인 낙상 후 문진
+  index: 5
+  fields:
+  - words
+  why: 쉬운 w-year 태그를 뺐다
+- kind: sentence
+  situation: 청력저하 환자 소통
+  index: 0
+  fields:
+  - words
+  why: w-slowly 태그를 더했다
+- kind: sentence
+  situation: 청력저하 환자 소통
+  index: 2
+  fields:
+  - words
+  why: 쉬운 w-hand 태그를 뺐다
+- kind: sentence
+  situation: 청력저하 환자 소통
+  index: 3
+  fields:
+  - words
+  why: w-face(마주 보다)는 여기서 see my face(명사 얼굴)라 다른 뜻 — 태그를 뺐다; 부사 clearly에 형용사 카드 w-clear(분명한)가 태그 — 태그를 뺐다([0]·[4]에 clearer가 남음)
+- kind: sentence
+  situation: 보청기·안경 보조기구
+  index: 0
+  fields:
+  - words
+  why: 쉬운 w-see 태그를 뺐다
+- kind: sentence
+  situation: 사전연명의료의향 확인
+  index: 2
+  fields:
+  - ko
+  why: w-honor ko를 (뜻을) 지키다로 가른 것에 맞춤 — 존중하다는 w-respect의 ko
+- kind: sentence
+  situation: 사전연명의료의향 확인
+  index: 5
+  fields:
+  - words
+  why: 쉬운 w-family 태그를 뺐다; w-support 태그를 더했다
+- kind: sentence
+  situation: 항응고제 두부외상
+  index: 2
+  fields:
+  - ko
+  why: w-tell ko를 알려 주다로 가른 것에 맞춤 — 말하다는 w-speak의 ko
+- kind: sentence
+  situation: 급성 섬망+공격성
+  index: 2
+  fields:
+  - words
+  why: w-low(낮은)는 여기서 lower the noise(동사 낮추다)라 다른 뜻 — 태그를 뺐다
+- kind: sentence
+  situation: 급성 섬망+공격성
+  index: 3
+  fields:
+  - words
+  why: 쉬운 w-body 태그를 뺐다
+- kind: sentence
+  situation: 급성 섬망+공격성
+  index: 5
+  fields:
+  - words
+  why: w-dim 태그를 더했다
+- kind: sentence
+  situation: 말기 환자 목표 재설정
+  index: 0
+  fields:
+  - words
+  why: w-give(give out, 힘이 풀리다)는 여기서 give him the most comfort라 다른 뜻 — 태그를 뺐다
+- kind: sentence
+  situation: 말기 환자 목표 재설정
+  index: 5
+  fields:
+  - words
+  why: 쉬운 w-family 태그를 뺐다
+- kind: sentence
+  situation: 다발성 만성질환 급성 악화
+  index: 2
+  fields:
+  - ko
+  why: w-tell ko를 알려 주다로 가른 것에 맞춤 — 말하다는 w-speak의 ko
+- kind: sentence
+  situation: 고관절 골절 통증·수술 대기
+  index: 0
+  fields:
+  - ko
+  why: w-manage ko를 관리하다로 가른 것에 맞춤 — 조절하다는 w-adjust의 ko
+- kind: sentence
+  situation: 고관절 골절 통증·수술 대기
+  index: 4
+  fields:
+  - words
+  why: w-stay(곁에 있다)는 여기서 stay hydrated(유지하다)라 다른 뜻 — 태그를 뺐다
+- kind: sentence
+  situation: 요양원 이송 임종 임박
+  index: 1
+  fields:
+  - words
+  why: 쉬운 w-hand 태그를 뺐다
+- kind: sentence
+  situation: 요양원 이송 임종 임박
+  index: 3
+  fields:
+  - words
+  why: w-dim 태그를 더했다
+- kind: sentence
+  situation: 요양원 이송 임종 임박
+  index: 4
+  fields:
+  - words
+  why: w-say(발언권, without your say)는 여기서 say goodbye(동사)라 다른 뜻 — 태그를 뺐다
+- kind: sentence
+  situation: 요양원 이송 임종 임박
+  index: 5
+  fields:
+  - words
+  why: w-stay(곁에 있다)는 여기서 stays comfortable(유지하다)이라 다른 뜻 — 태그를 뺐다
+- kind: word-remove
+  id: w-hand
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-family
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-body
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-see
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-year
+  why: 너무 쉬움 — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word
+  id: w-give
+  fields:
+  - en
+  - ipa
+  why: 낱말 give에 '힘이 풀리다'는 틀린 뜻 — 문장은 legs just give out이라 구동사로
+- kind: word
+  id: w-thinner
+  fields:
+  - en
+  - ipa
+  why: thinner만으로는 '시너' — 태그 문장 셋이 모두 blood thinners라 ko(혈액 희석제)에 맞는 구로
+- kind: word
+  id: w-counter
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 문장은 buy over the counter(처방전 없이 사다) — 낱말 counter와 ko '약국 카운터'로는 뜻이 안 잡힌다
+- kind: word
+  id: w-care
+  fields:
+  - ko
+  - example
+  why: 태그 문장 4개 중 3개가 명사(his care·kind of care·comfort care)인데 ko가 동사 '돌보다'였다; ko(돌봄)는 명사인데 예문이 동사 문장(you're cared for) — 명사 문장으로
+- kind: word
+  id: w-effect
+  fields:
+  - en
+  - ipa
+  why: effect의 뜻은 '효과'인데 ko가 부작용 — 문장은 side effects라 구로
+- kind: word
+  id: w-hear
+  fields:
+  - en
+  - ipa
+  - ko
+  - example
+  why: 활용형 헤드워드(hearing)를 원형으로 — 태그 문장이 hearing(동명사)·hear
+- kind: word
+  id: w-honor
+  fields:
+  - ko
+  why: w-respect와 ko(존중하다)가 같아 듣고 뜻 고르기에서 정답이 둘 — honor his wishes는 뜻을 지켜 드리는 것
+- kind: word
+  id: w-tell
+  fields:
+  - ko
+  why: w-speak와 ko(말하다)가 같아 정답이 둘 — tell me는 알려 달라는 말
+- kind: word
+  id: w-bother
+  fields:
+  - en
+  - ipa
+  why: 활용형 헤드워드(bothering)를 원형으로
+- kind: word
+  id: w-manage
+  fields:
+  - ko
+  why: w-adjust와 ko(조절하다)가 같아 정답이 둘 — manage your pain은 통증 관리
+- kind: word-add
+  id: w-slowly
+  why: 쉬운 w-hand를 빼 청력저하 환자 소통이 서로 다른 단어 7개가 됨 — 문장 0(keyPhrase)에 이미 있는 speak slowly
+- kind: word-add
+  id: w-dim
+  why: 쉬운 w-body와 뜻이 다른 w-low 태그를 빼 급성 섬망+공격성이 7개가 됨 — 두 상황 문장에 이미 있는 dim the lights
+- kind: word
+  id: w-leave
+  fields:
+  - example
+  why: 예문이 지킬 수 없는 비밀 보장 약속(nothing leaves this room without your say)을 굳혀 — 먼저 알리겠다는 문장으로
+- kind: word
+  id: w-say
+  fields:
+  - example
+  why: 예문이 지킬 수 없는 비밀 보장 약속을 굳혀 — have a say in 문장으로
+- kind: word
+  id: w-cause
+  fields:
+  - ko
+  - example
+  why: 태그 문장 6개 중 5개가 동사(cause these symptoms 등)인데 ko가 명사 '원인' — ko를 일으키다로, 예문도 동사 문장으로
+- kind: word
+  id: w-fluid
+  fields:
+  - en
+  - ipa
+  why: 복수 헤드워드(fluids)를 원형으로 — 형제 주제 er-sepsis·er-shock의 w-fluid(fluid)와 맞춤
+- kind: word
+  id: w-stay
+  fields:
+  - ko
+  why: '''곁에 있다''는 stay close에만 맞고 stay in your view(보청기·안경 [1])에는 안 맞음 — 머무르다로'
+- kind: sentence
+  situation: 학대·방임 의심
+  index: 1
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'v46 검토 결정 11 예외: 지킬 수 없는 비밀 보장(노인 학대 의심 시 APS 신고 의무)을 약속하지 않고, 누가 더 알아야 하는지 솔직히 알린다'
+- kind: sentence
+  situation: 고관절 골절 통증·수술 대기
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  why: 'v46 검토 결정 11 예외: 금식(NPO)은 마취팀이 정하므로 간호사는 물을 권하지 않고 마셔도 되는지 확인하겠다고 말한다'
+- kind: sentence
+  situation: 고관절 골절 통증·수술 대기
+  index: 5
+  fields:
+  - en
+  - ko
+  - chunks
+  why: 'v46 검토 결정 11 예외: `keep you moving`은 고관절 골절 환자에게 움직임을 권하는 말로 읽힌다'
+- kind: sentence
+  situation: 다약제 상호작용 부작용
+  index: 4
+  fields:
+  - ko
+  why: 'v46 검토 결정 11 예외: "다리 힘을 불안정하게 만들고"가 어색'
+- kind: word-remove
+  id: w-leave
+  why: 'v46 검토 결정 11 예외: 10.1에서 비밀 보장 표현(leave·say)을 버려 쓰는 곳이 없어짐'
+- kind: word-remove
+  id: w-say
+  why: 'v46 검토 결정 11 예외: 10.1에서 비밀 보장 표현(leave·say)을 버려 쓰는 곳이 없어짐'

@@ -45,7 +45,9 @@ test('the dialogue screen draws the NPC only, and no stock face for the player',
   // player would have to be a second portrait frame.
   const src = readFileSync(join(SRC, 'app', 'dialogue', '[id].tsx'), 'utf8');
   expect(src).not.toMatch(/<FacePlayer/);
-  // Exactly one portrait frame, and it takes the scenario's own character.
-  expect(src.match(/<PortraitFrame/g) ?? []).toHaveLength(1);
-  expect(src).toMatch(/<PortraitFrame[^>]*name=\{p\.name/);
+  // Exactly one portrait on the stage (lesson-fidelity-v46: DialogueStage), and it takes
+  // the scenario's own character.
+  expect(src.match(/<DialogueStage/g) ?? []).toHaveLength(1);
+  expect(src).toMatch(/<DialogueStage[\s\S]{0,200}?name=\{p\.name/);
+  expect(src).toMatch(/portrait=\{\(w\) => <NbAvatar spec=\{npcSpec\}/);
 });

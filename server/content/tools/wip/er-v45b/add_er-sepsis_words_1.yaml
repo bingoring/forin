@@ -1,0 +1,336 @@
+w-check:
+  exKo: "이제 체온을 확인할게요."
+  cue: "체온·심박수·호흡을 하나씩 재 볼 때 — 'Let me ___ your temperature.'"
+  tag: 바이탈
+  distractorsEn: [chart, change]
+  distractorsKo: [기록하다, 바꾸다]
+  chips: [[check]]
+  decoyChips: [cheek]
+w-temperature:
+  exKo: "체온이 조금 높아요."
+  cue: "체온계로 재는 값 — 38.0℃(100.4℉) 이상이면 발열로 본다"
+  tag: 바이탈
+  distractorsEn: [temper, pressure]
+  distractorsKo: [혈압, 맥박]
+  chips: [[tem, per, a, ture]]
+  decoyChips: [tam, tore]
+w-heart:
+  exKo: "심박수가 조금 빨라요."
+  cue: "분당 몇 번 뛰는지 세는 기관 — '___ rate'"
+  tag: 바이탈
+  distractorsEn: [chest, lung]
+  distractorsKo: [폐, 가슴]
+  chips: [[heart]]
+  decoyChips: [hurt]
+w-rate:
+  exKo: "심박수가 조금 빨라요."
+  cue: "심장이 1분에 몇 번 뛰는지 — 'heart ___'가 90을 넘으면 SIRS 기준"
+  tag: 바이탈
+  distractorsEn: [rhythm, range]
+  distractorsKo: [리듬, 범위]
+  chips: [[rate]]
+  decoyChips: [late]
+w-breathe:
+  exKo: "천천히 숨 쉬어 보세요."
+  cue: "분당 호흡수를 세며 환자에게 천천히 해 보라고 할 때 (동사)"
+  tag: 바이탈
+  distractorsEn: [breed, bleed]
+  distractorsKo: [기침하다, 삼키다]
+  chips: [[breathe]]
+  decoyChips: [breath]
+w-together:
+  exKo: "이것들을 함께 확인할게요."
+  cue: "활력징후 하나가 아니라 여러 개를 한꺼번에 묶어 볼 때"
+  tag: 바이탈
+  distractorsEn: [apart, separately]
+  distractorsKo: [따로, 차례로]
+  chips: [[to, geth, er]]
+  decoyChips: [ther, gather]
+w-few:
+  exKo: "몇 가지만 여쭤볼게요."
+  cue: "질문이 많지 않다고 환자를 안심시킬 때 — 'just a ___ questions'"
+  tag: 증상 문진
+  distractorsEn: [several, many]
+  distractorsKo: [많은, 여러]
+  chips: [[few]]
+  decoyChips: [fee]
+w-off:
+  exKo: "오늘 안색이 좀 안 좋아 보여요."
+  cue: "수치나 안색이 평소·정상과 어긋나 있을 때 — 'looks a little ___'"
+  tag: 바이탈
+  distractorsEn: [out, over]
+  distractorsKo: [정상인, 안정된]
+  chips: [["off"]]
+  decoyChips: [of]
+w-early:
+  exKo: "이걸 일찍 발견했어요."
+  cue: "패혈증은 늦기 전에 잡을수록 결과가 좋다 — 발견 시점이 빠를 때"
+  tag: 긴급 대응
+  distractorsEn: [late, easy]
+  distractorsKo: [늦은, 쉬운]
+  chips: [[ear, ly]]
+  decoyChips: [ea, lay]
+w-warning:
+  exKo: "이건 저희가 주의해서 보는 경고 신호예요."
+  cue: "나빠지기 전에 미리 알려 주는 신호 — '___ sign'"
+  tag: 긴급 대응
+  distractorsEn: [warming, morning]
+  distractorsKo: [예상, 회복]
+  chips: [[warn, ing]]
+  decoyChips: [warm, ning]
+w-sign:
+  exKo: "추적해야 할 중요한 징후예요."
+  cue: "검사나 관찰로 드러나는 몸의 변화 — 'vital ___s'"
+  tag: 바이탈
+  distractorsEn: [sigh, signal]
+  distractorsKo: [진단, 치료]
+  chips: [[sign]]
+  decoyChips: [sine]
+w-pain:
+  exKo: "지금 아픈 데 있으세요?"
+  cue: "감염 부위를 짐작하려고 아픈 곳을 물을 때"
+  tag: 증상 문진
+  distractorsEn: [itch, rash]
+  distractorsKo: [가려움, 발진]
+  chips: [[pain]]
+  decoyChips: [pane]
+w-cough:
+  exKo: "기침 있으세요?"
+  cue: "폐렴이 감염원인지 가늠할 때 묻는 호흡기 증상"
+  tag: 증상 문진
+  distractorsEn: [sneeze, choke]
+  distractorsKo: [재채기, 딸꾹질]
+  chips: [[cough]]
+  decoyChips: [cuff]
+w-burn:
+  exKo: "소변볼 때 화끈거림이 있나요?"
+  cue: "요로감염을 가늠할 때 — 소변볼 때 따갑고 뜨거운 느낌"
+  tag: 증상 문진
+  distractorsEn: [itch, sting]
+  distractorsKo: [가려움, 저림]
+  chips: [[burn]]
+  decoyChips: [born]
+w-urinate:
+  exKo: "소변볼 때 아프세요?"
+  cue: "요로감염 증상을 물을 때 쓰는 격식 있는 동사 — 'when you ___'"
+  tag: 증상 문진
+  distractorsEn: [ulcerate, irrigate]
+  distractorsKo: [배변하다, 토하다]
+  chips: [[u, rin, ate]]
+  decoyChips: [ur, rine]
+w-fast:
+  exKo: "심장이 빨리 뛰고 있어요."
+  cue: "심박수가 100을 넘어 모니터 숫자가 올라가 있을 때"
+  tag: 바이탈
+  distractorsEn: [faint, firm]
+  distractorsKo: [느린, 약한]
+  chips: [[fast]]
+  decoyChips: [fist]
+w-vital:
+  exKo: "이 활력징후들은 함께 봐야 의미가 있어요."
+  cue: "체온·맥박·호흡·혈압을 묶어 부르는 말 — '___ signs'"
+  tag: 바이탈
+  distractorsEn: [viral, visual]
+  distractorsKo: [바이러스성의, 시각의]
+  chips: [[vi, tal]]
+  decoyChips: [vy, tel]
+w-catch:
+  exKo: "이걸 일찍 발견하고 싶어요."
+  cue: "선별 검사로 패혈증을 초기에 잡아낼 때 — '___ it early'"
+  tag: 긴급 대응
+  distractorsEn: [miss, cure]
+  distractorsKo: [놓치다, 완치하다]
+  chips: [[catch]]
+  decoyChips: [cash]
+w-possible:
+  exKo: "할 수 있는 건 다 하고 있어요."
+  cue: "아직 확정되지 않았지만 그럴 수도 있을 때 — 'a ___ infection'"
+  tag: 감염원
+  distractorsEn: [positive, passable]
+  distractorsKo: [확실한, 양성의]
+  chips: [[pos, si, ble]]
+  decoyChips: [pas, sable]
+w-infection:
+  exKo: "감염원을 찾고 있어요."
+  cue: "균이 몸에 들어와 자라는 것 — 패혈증은 이것에 대한 몸의 과한 반응"
+  tag: 감염원
+  distractorsEn: [inflammation, injection]
+  distractorsKo: [염증, 주사]
+  chips: [[in, fec, tion]]
+  decoyChips: [jec, flam]
+w-fever:
+  exKo: "열은 오늘 아침에 시작됐어요."
+  cue: "미국 병원 기준 38.0℃(100.4℉) 이상 — 감염을 의심하는 첫 신호"
+  tag: 증상 문진
+  distractorsEn: [flu, chill]
+  distractorsKo: [오한, 독감]
+  chips: [[fe, ver]]
+  decoyChips: [fa, vor]
+w-close:
+  exKo: "여기서는 안전하고, 저희가 면밀히 지켜볼게요."
+  cue: "상태가 바뀔 수 있어 눈을 떼지 않고 지켜볼 때 — 'watch you ___'"
+  tag: 설명·안심
+  distractorsEn: [clearly, loosely]
+  distractorsKo: [대충, 가끔]
+  chips: [[close, ly]]
+  decoyChips: [clos, sely]
+w-look:
+  exKo: "좀 더 자세히 살펴볼게요."
+  cue: "원인을 찾으려고 눈으로 확인할 때 — '___ for the source'"
+  tag: 감염원
+  distractorsEn: [lock, like]
+  distractorsKo: [기다리다, 지나치다]
+  chips: [[look]]
+  decoyChips: [luck]
+w-blood:
+  exKo: "지금 혈액을 확인하고 있어요."
+  cue: "배양과 젖산 검사를 위해 정맥에서 뽑는 것"
+  tag: 검사
+  distractorsEn: [bleed, flood]
+  distractorsKo: [소변, 가래]
+  chips: [[blood]]
+  decoyChips: [blud]
+w-source:
+  exKo: "원인을 찾아야 해요."
+  cue: "균이 처음 자리 잡은 곳 — 폐·요로·라인 중 어디서 시작됐는지"
+  tag: 감염원
+  distractorsEn: [course, force]
+  distractorsKo: [결과, 경과]
+  chips: [[source]]
+  decoyChips: [sauce]
+w-feel:
+  exKo: "어디가 가장 안 좋으세요?"
+  cue: "환자가 몸으로 겪는 감각을 물을 때 — 'Where do you ___ it?'"
+  tag: 증상 문진
+  distractorsEn: [fill, fall]
+  distractorsKo: [보다, 듣다]
+  chips: [[feel]]
+  decoyChips: [fell]
+w-chest:
+  exKo: "가슴에서 느껴지세요?"
+  cue: "폐렴이 감염원인지 볼 때 통증 위치로 묻는 곳"
+  tag: 증상 문진
+  distractorsEn: [chess, throat]
+  distractorsKo: [목, 등]
+  chips: [[chest]]
+  decoyChips: [chess]
+w-belly:
+  exKo: "배를 누르면 아프세요?"
+  cue: "복부 감염을 의심할 때 환자에게 쓰는 쉬운 말 (배)"
+  tag: 증상 문진
+  distractorsEn: [bowel, belt]
+  distractorsKo: [가슴, 허리]
+  chips: [[bel, ly]]
+  decoyChips: [bal, ley]
+w-race:
+  exKo: "심장이 조금 빨리 뛰고 있어요."
+  cue: "환자가 '가슴이 쿵쿵 뛴다'고 할 때 쓰는 동사 — 'my heart is ___ing'"
+  tag: 바이탈
+  distractorsEn: [pound, rest]
+  distractorsKo: [멈추다, 느려지다]
+  chips: [[race]]
+  decoyChips: [rice]
+w-draw:
+  exKo: "지금 피를 조금 뽑고 있어요."
+  cue: "배양병과 검사관에 피를 받을 때 쓰는 동사 — '___ blood'"
+  tag: 검사
+  distractorsEn: [drain, drip]
+  distractorsKo: [배액하다, 떨어뜨리다]
+  chips: [[draw]]
+  decoyChips: [drew]
+w-find:
+  exKo: "원인을 찾으려는 중이에요."
+  cue: "원인을 알아내려고 할 때 — 'to ___ out what's causing this'"
+  tag: 감염원
+  distractorsEn: [fine, fight]
+  distractorsKo: [놓치다, 숨기다]
+  chips: [[find]]
+  decoyChips: [fined]
+w-cause:
+  exKo: "왜 이런지 알아보고 있어요."
+  cue: "어떤 균이 이 증상을 일으켰는지 말할 때 — 'what's ___ing this'"
+  tag: 감염원
+  distractorsEn: [cure, case]
+  distractorsKo: [치료하다, 막다]
+  chips: [[cause]]
+  decoyChips: [cos]
+w-tell:
+  exKo: "달라지는 게 있으면 말해 주세요."
+  cue: "변화가 생기면 바로 알려 달라고 환자에게 부탁할 때 — '___ me'"
+  tag: 설명·안심
+  distractorsEn: [talk, sell]
+  distractorsKo: [듣다, 묻다]
+  chips: [[tell]]
+  decoyChips: [tall]
+w-culture:
+  exKo: "혈액배양을 먼저 채취해요."
+  cue: "어떤 균인지 키워서 알아보는 검사 — 항생제 전에 뽑는다"
+  tag: 검사
+  distractorsEn: [cultivate, capture]
+  distractorsKo: [혈구검사, 소변검사]
+  chips: [[cul, ture]]
+  decoyChips: [cal, tore]
+w-antibiotic:
+  exKo: "바로 이어서 항생제를 시작해요."
+  cue: "세균 감염에 쓰는 약 — 패혈증 인지 후 1시간 안에 들어가야 한다"
+  tag: 치료
+  distractorsEn: [antiviral, antibody]
+  distractorsKo: [항바이러스제, 항체]
+  chips: [[anti, bi, ot, ic]]
+  decoyChips: [bio, anto]
+w-exact:
+  exKo: "정확히 어떤 균인지 찾고 싶어요."
+  cue: "대충이 아니라 딱 그 균을 짚어낼 때 — 'the ___ bug'"
+  tag: 검사
+  distractorsEn: [exit, extra]
+  distractorsKo: [대략적인, 흔한]
+  chips: [[ex, act]]
+  decoyChips: [ext, ect]
+w-bug:
+  exKo: "배양이 정확히 어떤 균인지 알려 줘요."
+  cue: "환자에게 '세균'을 쉽고 가볍게 부를 때 쓰는 구어"
+  tag: 감염원
+  distractorsEn: [bud, bag]
+  distractorsKo: [곰팡이, 바이러스]
+  chips: [[bug]]
+  decoyChips: [bog]
+w-help:
+  exKo: "이게 가장 좋은 약을 고르는 데 도움이 돼요."
+  cue: "검사 결과가 치료 결정에 보탬이 될 때 — 'That ___s us pick'"
+  tag: 설명·안심
+  distractorsEn: [hold, harm]
+  distractorsKo: [방해하다, 해치다]
+  chips: [[help]]
+  decoyChips: [held]
+w-pick:
+  exKo: "가장 잘 맞는 약을 골라 드릴게요."
+  cue: "배양 결과를 보고 여러 약 중 하나를 고를 때 (구어) — '___ the best medicine'"
+  tag: 치료
+  distractorsEn: [pack, prick]
+  distractorsKo: [버리다, 섞다]
+  chips: [[pick]]
+  decoyChips: [peck]
+w-medicine:
+  exKo: "이 약이 감염을 치료해요."
+  cue: "환자에게 '약'을 가장 쉽게 부르는 말"
+  tag: 치료
+  distractorsEn: [medical, measure]
+  distractorsKo: [주사, 검사]
+  chips: [[med, i, cine]]
+  decoyChips: [medi, sin]
+w-delay:
+  exKo: "항생제가 조금 늦어질 뿐이에요."
+  cue: "배양을 먼저 하느라 항생제가 몇 분 늦어질 때"
+  tag: 치료
+  distractorsEn: [decay, relay]
+  distractorsKo: [앞당기다, 취소하다]
+  chips: [[de, lay]]
+  decoyChips: [dis, ley]
+w-take:
+  exKo: "배양을 먼저 채취해요."
+  cue: "검체를 받아 낼 때 쓰는 가장 흔한 동사 — '___ the cultures first'"
+  tag: 검사
+  distractorsEn: [make, send]
+  distractorsKo: [보내다, 버리다]
+  chips: [[take]]
+  decoyChips: [tack]

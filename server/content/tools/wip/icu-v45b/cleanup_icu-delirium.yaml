@@ -1,0 +1,85 @@
+# icu-delirium 결정 11 정리 — build_icu-delirium.py 가 읽는다.
+word_add:
+  - {id: w-clearly, en: clearly, ipa: /ˈklɪrli/, ko: 분명히, icon: check, example: "If we do restrain him, we document the reason clearly.",
+     why: "부사 clearly가 형용사·동사 카드 w-clear(맑아지다)에 묶여 있었다 — 두 문장에 이미 있는 부사를 별도 단어로"}
+
+untag_everywhere:
+  w-hand: 공통 쉬운 단어(hand)
+  w-morning: 공통 쉬운 단어(morning)
+  w-body: 공통 쉬운 단어(body)
+  w-time: 공통 쉬운 단어(time)
+  w-night: 공통 쉬운 단어(night)
+  w-today: 공통 쉬운 단어(today)
+  w-minute: 공통 쉬운 단어(minute)
+  w-day: 공통 쉬운 단어(day)
+  w-home: 공통 쉬운 단어(home)
+  w-room: 공통 쉬운 단어(room)
+  w-patient: 공통 쉬운 단어(patient)
+  w-now: 공통 쉬운 단어(now)
+  w-hour: 공통 쉬운 단어(hour)
+  w-week: 공통 쉬운 단어(week)
+  w-know: 공통 쉬운 단어(know)
+  w-come: 공통 쉬운 단어(come)
+  w-good: 공통 쉬운 단어(good)
+  w-see: 공통 쉬운 단어(see)
+  w-put: 간호사가 이미 아는 말(put)
+  w-get: 간호사가 이미 아는 말(get)
+  w-tell: 간호사가 이미 아는 말(tell)
+  w-really: 간호사가 이미 아는 말(really)
+  w-also: 간호사가 이미 아는 말(also)
+  w-much: 간호사가 이미 아는 말(much)
+  w-three: 간호사가 이미 아는 말(three)
+  w-door: 간호사가 이미 아는 말(door)
+  w-tv: 간호사가 이미 아는 말(TV)
+  w-red: 간호사가 이미 아는 말(red)
+
+# [상황 번호, 문장 번호, id, why]
+untag_at:
+  - [6, 3, w-though, "even though는 구 하나다 — w-even 헤드워드를 even though로 바꾸고 w-though 태그를 뺐다"]
+  - [10, 2, w-light, "lighter sedation의 light는 '얕은'이라 카드(빛)와 뜻이 다르다"]
+  - [20, 2, w-face, "His face의 face는 명사(얼굴)라 동사 카드(마주 보다)와 뜻이 다르다"]
+  - [17, 2, w-pull, "pull an ECG는 '(심전도를) 찍다'라 카드(뽑다)와 뜻이 다르다"]
+  - [9, 5, w-steady, "A steady rhythm의 steady는 형용사(안정된)라 동사 카드(붙잡아 안정시키다)와 뜻이 다르다"]
+  - [19, 0, w-last, "is lasting의 last는 동사(지속되다)라 카드(마지막)와 뜻이 다르다"]
+  - [15, 1, w-back, "step back은 w-step(물러나다) 카드가 가르친다 — w-back은 get back to themselves(원래대로) 한 문장에 남긴다"]
+  - [11, 3, w-clear, "clearly는 부사라 w-clear와 다른 낱말이다 — 새 단어 w-clearly로 태그한다"]
+  - [12, 4, w-clear, "clearly는 부사라 w-clear와 다른 낱말이다 — 새 단어 w-clearly로 태그한다"]
+
+tag_at:
+  - [11, 3, w-clearly, "clearly는 새 단어 w-clearly(분명히)로 태그한다"]
+  - [12, 4, w-clearly, "clearly는 새 단어 w-clearly(분명히)로 태그한다"]
+
+# [상황 번호, 문장 번호, ko, why]
+sentence_ko:
+  - [7, 0, "그 마음 알아요 — 안전하세요, 제가 도와드리려고 여기 있어요.", "I hear you를 '목소리 들려요'로 옮겨 뜻이 틀렸다 — '(말씀하시는) 마음 알아요'라는 공감 표현"]
+  - [10, 1, "진정을 얕게 하고 비약물적 방법에 더 기대볼게요.", "'얕추다'는 표준어가 아니다 — '얕게 하다'로"]
+  - [14, 3, "곁에 계시는 것과 익숙한 물건이 회복에 정말 도움이 돼요.", "presence(곁에 있음)를 '목소리'로 옮겨 뜻이 틀렸다"]
+  - [19, 3, "얼마나 지치셨는지 알아요, 정말 당연한 일이에요.", "I hear how tired you are를 '지치신 거 들려요'로 옮겨 어색했다 — 공감 표현으로"]
+
+remove_why:
+  w-though: "even though는 구 하나다 — w-even(헤드워드 even though)이 가르친다"
+
+word_edits:
+  w-even: {en: even though, ipa: /ˈiːvən ðoʊ/, ko: 비록 ~이지만, why: "even(~조차)이 even though로만 쓰였다 — 구 단위 헤드워드로, w-though를 합친다"}
+  w-aid: {en: hearing aid, ipa: /ˈhɪrɪŋ eɪd/, ko: 보청기, why: "aid(보조기기)가 hearing aids로만 쓰였다 — 구 단위로, core-language-icu와 맞춘다"}
+  w-lighten: {ko: 얕게 하다, why: "'얕추다'는 표준어가 아니다"}
+  w-clear: {ko: 맑아지다; 비우다, why: "태그된 문장이 clears the confusion·fully clear(맑아지다)와 clear the area(비우다) — 부사 clearly는 w-clearly로 갈랐다"}
+  w-turn: {ko: 돌리다; 변하다, why: "태그된 문장이 turn off·turn him on his side·turning red인데 ko가 '끄다'뿐이었다"}
+  w-back: {ko: 다시(원래대로), why: "남은 문장이 get back to themselves — icu-ards-proning과 맞춘다"}
+  w-cause: {ko: 원인; 일으키다, why: "태그된 문장 셋 중 둘이 동사(cause injury·caused by) — 다른 ICU 주제(일으키다)와 맞춘다"}
+  w-calm: {ko: 차분한, why: "태그된 문장 다섯 중 넷이 형용사(he's calm·a calm patient·calmer) — icu-airway와 맞추고, w-deescalate(진정시키다)와 ko를 가른다"}
+  w-medication: {ko: 약물, why: "'투약'은 행위라 group his medications·any medication과 맞지 않는다 — 다른 ICU 주제(약물)와 맞춘다"}
+  w-drug: {ko: 약, why: "w-medication을 '약물'로 맞추며 ko가 겹친다 — icu-airway·icu-aki-crrt(약)와 맞춘다"}
+  w-med: {ko: 약(줄임말), why: "w-drug(약)와 ko가 같아 듣고 뜻 고르기에서 정답이 둘이 된다 — med는 medication의 구어 줄임말"}
+  w-iv: {ko: 정맥주사, why: "다른 ICU 주제(정맥주사)와 맞춘다"}
+  w-qt: {ko: QT간격, why: "icu-arrhythmia와 맞춘다"}
+  w-stat: {ko: 즉시(시행), why: "w-immediately(즉시)와 ko가 같다 — icu-arrhythmia와 맞춘다"}
+  w-flag: {ko: 표시해 알리다, why: "w-update(알리다)와 ko가 같다 — icu-ards-proning과 맞춘다"}
+  w-assess: {ko: 사정하다, why: "'살피다'는 간호 용어가 아니다 — 다른 ICU 주제(사정하다)와 맞춘다"}
+  w-cluster: {ko: 몰아서 하다, why: "w-group·w-tie와 ko(묶다)가 셋이 같다 — cluster care는 처치를 한 번에 몰아서 하는 것"}
+  w-group: {ko: 한데 모으다, why: "w-cluster·w-tie와 ko(묶다)가 셋이 같다"}
+  w-shorten: {ko: 단축하다, why: "w-reduce(줄이다)와 ko가 같다 — shorten delirium은 기간을 줄이는 것"}
+  w-escalate: {ko: (용량을) 올리다, why: "w-increase(늘리다)와 ko가 같다 — escalate the dose"}
+  w-danger: {ko: 위험한 존재, why: "w-risk(위험)와 ko가 같다 — a danger to himself"}
+  w-completely: {ko: 전적으로, why: "w-fully(완전히)와 ko가 같다"}
+  w-note: {ko: 적어 두다, why: "w-document(기록하다)와 ko가 같다"}

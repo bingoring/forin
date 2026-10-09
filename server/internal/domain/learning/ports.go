@@ -22,12 +22,35 @@ type (
 type GuideLevel string
 
 const (
-	// GuideChoices offers candidate replies per NPC turn (the guided pass).
-	GuideChoices GuideLevel = "choices"
+	// GuideGuided is the guided pass. v44 turns it from "three replies to pick from"
+	// into "one Korean target sentence you produce yourself", so the old name
+	// (`choices`) stopped describing what the rung does — nothing is chosen any more.
+	GuideGuided GuideLevel = "guided"
 	// GuideFree is an empty box with a hint within reach (the free pass, and every
 	// boss/quiz, and anything outside a course).
 	GuideFree GuideLevel = "free"
+
+	// legacyGuideChoices is what the guided rung was called before 2026-09-30, and it
+	// is what every `scenario_attempts.guide` row written before that date holds.
+	// Reads accept it (see IsGuided); nothing writes it any more.
+	//
+	// It can go once no stored row carries it — that is a data question, not a code
+	// one, so check the column before deleting this.
+	legacyGuideChoices = "choices"
 )
+
+// IsGuided reports whether a STORED `guide` value means the guided pass.
+//
+// This exists because the rename is not only a constant. Two places used to compare
+// the stored string to "choices" directly — the ClearedPassGuides query and the repo
+// that buckets its rows — and the moment the server started writing "guided" those
+// comparisons would have bucketed a guided clear as a FREE clear. The learner's free
+// pass would be born complete: marked done without ever having been done alone.
+//
+// So the rule lives here, once, and both callers ask it.
+func IsGuided(stored string) bool {
+	return stored == string(GuideGuided) || stored == legacyGuideChoices
+}
 
 // ClearedPasses splits a clear into the two rungs of a dialogue: cleared WITH help
 // vs alone. The zero value means "no split known", and a plain clear then reads as
@@ -72,6 +95,7 @@ type CurriculumState struct {
 	Name       string      `json:"name"`
 	Track      string      `json:"track"`
 	Dept       string      `json:"dept"`
+	Icon       string      `json:"icon,omitempty"` // NbIcon name; empty = draw none
 	CollabWith string      `json:"collabWith,omitempty"`
 	Done       int         `json:"done"`
 	Total      int         `json:"total"`
@@ -97,6 +121,12 @@ type StepState struct {
 	Attempted bool `json:"attempted,omitempty"`
 	// Optional marks a bonus quiz: playable any time, gates nothing, uncounted.
 	Optional bool `json:"optional,omitempty"`
+	// Difficulty is the tier this step sits in. The theme's own `tiers` summary cannot
+	// answer this per row: those counts are per SITUATION while these rows are per RUN,
+	// so a cumulative count over `tiers` lands on the wrong row as soon as any step has
+	// two rungs. The journey screen draws its section boundaries (기초·실전·심화) from
+	// this field, so they follow the real ladder instead of a fixed row count.
+	Difficulty int `json:"difficulty,omitempty"`
 	// Guide/Pass/Passes describe the rung. Absent on steps with a single run.
 	Guide  GuideLevel `json:"guide,omitempty"`
 	Pass   int        `json:"pass,omitempty"`
@@ -137,15 +167,21 @@ type FreeRoamEntry struct {
 	Dept   string `json:"dept"`   // 부서 코드 — 아이콘과 라벨을 고르는 키
 	Passed int    `json:"passed"` // 통과한 정거장 수 = 도장 카운트
 	Total  int    `json:"total"`
+	// Building is the 서가 tab this binder sits under (서가 건물 간지 v45) — the
+	// campus table's building name. The server decides it; the client never guesses
+	// a building from a department code.
+	Building string `json:"building"`
 }
 
 // JourneyView is everything the journey screen draws, in one round trip. Sending all
 // 29 departments would be 340KB against the 11.7KB the screen actually renders.
 type JourneyView struct {
-	GoalDept string          `json:"goalDept"`
-	Inferred bool            `json:"inferred"`
-	Track    TrackGroup      `json:"track"`
-	FreeRoam []FreeRoamEntry `json:"freeRoam"`
+	GoalDept string `json:"goalDept"`
+	// GoalBuilding is the goal department's building — the 서가's first tab (v45).
+	GoalBuilding string          `json:"goalBuilding"`
+	Inferred     bool            `json:"inferred"`
+	Track        TrackGroup      `json:"track"`
+	FreeRoam     []FreeRoamEntry `json:"freeRoam"`
 }
 
 // Journey is the single domain port for one profession's live learning experience.

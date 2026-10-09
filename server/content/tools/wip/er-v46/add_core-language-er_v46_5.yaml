@@ -1,0 +1,71 @@
+- title: 정신과 위기 언어장벽
+  s:
+  - {t: "예고", i: bell, w: "민감한 질문 전에 질문이 곧 시작된다고 알리면 환자가 놀라지 않아요. 통역사가 그대로 옮기도록 직접적인 문장을 써요.", d: "for the doctor", k: ["통역사가 약을 줄 거예요", "통역사가 퇴원을 도와줄 거예요"], a: "serious", ai: gear, o: ["funny", "silly", "easy"]}
+  - {t: "직접 질문", i: faceWorried, w: "자살 위험은 돌려 말하지 않고 직접 묻는 것이 권장돼요. 직접 물어도 자살 생각이 늘어나지 않는다고 알려져 있어요.", d: "about leaving", k: ["스스로를 돌볼 생각을 하셨나요?", "스스로 씻을 수 있나요?"], a: "hurting", ai: shield, o: ["helping", "feeding", "dressing"]}
+  - {t: "안심", i: handshake2, w: "혼자가 아니라고 말하면 위기에 처한 환자가 고립감을 덜 느껴요. keep you safe는 감시가 아니라 보호가 목적이라는 뜻이에요.", d: "to leave you", k: ["혼자 있어도 괜찮아요", "저희는 곧 떠나요"], a: "alone", ai: star, o: ["lost", "late", "hungry"]}
+  - {t: "통역 예고", i: speaker, w: "통역사에게 질문을 그대로 옮기게 하면 의미가 달라지지 않아요. 에둘러 말하면 번역이 흐려질 수 있어요.", d: "to your family", k: ["통역사가 약을 원하는지 물을 거예요", "통역사가 가족에게 연락할 거예요"], a: "ask", ai: monitor, o: ["forget", "hide", "cancel"]}
+  - {t: "안심", i: shield, w: "여기 있다는 말과 안전하다는 말을 함께 하면 위기 환자가 안정을 찾는 데 도움이 돼요.", d: "and you're free", k: ["여기는 위험해요", "저희는 곧 떠나요"], a: "safe", ai: star, o: ["alone", "lost", "late"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "통역으로 위기 환자를 평가하는 순서"
+    why: "통역사와 함께 민감한 질문을 하겠다고 알리고, 직접 묻고, 대답해 준 데 감사하며 혼자가 아니라고 하고, 곁에 있겠다고 마무리해요. that과 the team이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "I'm going to ask you some serious questions, with the interpreter's help.", icon: bell, ko: "통역사의 도움으로 중요한 질문을 몇 가지 할게요", note: "예고"}
+    - {en: "Have you thought about hurting yourself?", icon: faceWorried, ko: "스스로를 다치게 할 생각을 하신 적 있나요?", note: "질문"}
+    - {en: "Thank you for telling me that. You're not alone.", icon: handshake2, ko: "말씀해 주셔서 고마워요. 혼자가 아니에요", note: "공감"}
+    - {en: "We're here to keep you safe, and the team will stay with you.", icon: shield, ko: "안전하게 지켜드릴게요, 팀이 곁에 있을 거예요", note: "안심"}
+  sw: {ko: "스스로를 다치게 할 생각을 하신 적 있나요?"}
+- title: 문화·언어 기인 치료거부
+  s:
+  - {t: "우려 경청", i: faceWorried, w: "거부 이유를 먼저 이해하려는 태도를 보이면 환자가 방어적으로 되지 않아요. 몰아붙이지 않겠다는 말이 신뢰를 만들어요.", d: "for your choice", k: ["거부는 허락되지 않아요", "빨리 동의해 주세요"], a: "understand", ai: bulb, o: ["ignore", "dismiss", "deny"]}
+  - {t: "오해 풀기", i: bulb, w: "may로 단정하지 않고 오해일 수 있다고 말하면 환자를 틀렸다고 하지 않아요. 언어나 문화 때문에 치료 설명이 다르게 전달되는 경우가 있어요.", d: "that I can cause", k: ["오해는 환자분 잘못이에요", "오해는 풀 수 없어요"], a: "clear", ai: magnify, o: ["cover", "wrap", "mix"]}
+  - {t: "통역 역할", i: speaker, w: "통역사가 제 설명이 제대로 전달되도록 돕는다고 하면 환자도 설명이 정확하다고 믿기 쉬워요.", d: "to the doctor", k: ["통역사가 거부 이유를 대신 말할 거예요", "통역사가 서류에 대신 서명해요"], a: "right", ai: gear, o: ["wrong", "backward", "loudly"]}
+  - {t: "협력", i: handshake2, w: "together로 한 팀이라는 느낌을 주면 거부하던 환자가 대화에 참여하기 쉬워요.", d: "by yourself", k: ["오해는 혼자 풀어 보세요", "오해는 다음에 풀어요"], a: "together", ai: star, o: ["alone", "later", "tomorrow"]}
+  - {t: "존중", i: coffee, w: "걱정을 이해한다고 하고 강요하지 않겠다고 약속하면 환자가 자기 결정을 존중받는다고 느껴요. 결정은 환자에게 있다는 뜻이에요.", d: "so sign it", k: ["걱정은 이해해요, 곧 설득할게요", "걱정 말고 동의해 주세요"], a: "won't", ai: bell, o: ["will", "can", "must"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "치료를 거부하는 환자와 대화하는 순서"
+    why: "몰아붙이지 않고 걱정을 이해하겠다고 하고, 오해가 있을 수 있다고 하고, 통역사가 설명을 정확히 옮긴다고 하고, 그다음 결정은 환자에게 있다고 마무리해요. it과 After that이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "I want to understand your concern, not push you.", icon: faceWorried, ko: "걱정을 이해하고 싶을 뿐, 밀어붙이려는 게 아니에요", note: "경청"}
+    - {en: "There may be a misunderstanding I can clear up.", icon: bulb, ko: "제가 풀어드릴 수 있는 오해가 있을 수 있어요", note: "오해"}
+    - {en: "The interpreter will make sure I explain it right.", icon: speaker, ko: "통역사가 제 설명이 정확한지 도와줄 거예요", note: "통역"}
+    - {en: "After that, the choice is yours, and I'll respect it.", icon: handshake2, ko: "그 뒤에는 선택이 환자분께 있고, 존중할게요", note: "존중"}
+  ctx: {word: "misunderstanding", ko: "오해"}
+- title: 이송 중 언어 인계
+  s:
+  - {t: "언어 인계", i: speech, w: "인계에는 환자의 언어와 필요한 통역 방식까지 넣어야 다음 팀이 처음부터 통역을 준비해요. 언어는 환자가 쓰는 언어로 정확히 적어요.", d: "and speaks English", k: ["이 환자분은 영어만 하세요", "이 환자분은 통역이 필요 없어요"], a: "needs", ai: monitor, o: ["refuses", "declines", "hates"]}
+  - {t: "거부 이력", i: siren, w: "과거 거부 이력과 그 이유를 인계하면 다음 팀이 같은 오해를 피할 수 있어요. 이유는 추측이 아니라 확인된 것만 적어요.", d: "for a visit", k: ["전에 치료를 받으신 적이 없어요", "치료비 때문에 거부하셨어요"], a: "declined", ai: pencil, o: ["accepted", "requested", "received"]}
+  - {t: "확인 지시", i: check, w: "Always로 예외 없는 규칙임을 알려요. 통역사를 통해 이해를 확인하는 것은 환자 안전을 위한 기본이에요.", d: "when asked", k: ["이해는 가족에게 확인하세요", "통역사 없이 확인하세요"], a: "Always", ai: bell, o: ["Never", "Rarely", "Seldom"]}
+  - {t: "확인 요청", i: monitor, w: "비언어 신호를 함께 봐야 하는 환자는 전화보다 화상 통역이 도움이 될 수 있어요. 인계 때 통역 방식을 구분해서 전달해요.", d: "or pager", k: ["전화 통역이 필요한지 확인해 주세요", "화상 통역은 필요 없는지 확인해 주세요"], a: "confirm", ai: handshake2, o: ["deny", "forget", "doubt"]}
+  - {t: "반복 확인", i: redo, w: "한 번 거부한 환자는 다시 거부할 수 있어서 매번 이해를 확인하라고 인계해요. 거부 이유를 알면 대응이 쉬워요.", d: "for sure", k: ["한 번 확인하면 충분해요", "거부한 적이 한 번도 없어요"], a: "once", ai: star, o: ["twice", "often", "never"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "언어 인계 순서"
+    why: "환자의 언어를 먼저 알리고, 필요한 통역 방식을 말하고, 통역사를 통한 이해 확인과 거부 이력을 이어서 전하고, 다시 거부하면 연락해 달라고 해요. He, the interpreter, again이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Quick handoff: this patient speaks only Somali.", icon: speech, ko: "빠른 인계예요, 이 환자분은 소말리어만 하세요", note: "언어"}
+    - {en: "He needs a video interpreter, not phone.", icon: monitor, ko: "전화 말고 화상 통역사가 필요해요", note: "방식"}
+    - {en: "With the interpreter, confirm his understanding each time, since he declined care once.", icon: check, ko: "통역사와 함께 매번 이해를 확인하세요, 한 번 거부하셨거든요", note: "확인"}
+    - {en: "Call me if he declines again.", icon: bell, ko: "다시 거부하시면 저에게 연락해 주세요", note: "연락"}
+- title: 퇴원 교육 언어 장벽
+  s:
+  - {t: "복약 복창", i: pill, w: "teach-back은 환자의 말로 약 먹는 방법을 말하게 해서 이해를 확인해요. 통역을 쓸 때도 환자 본인이 말하게 해요.", d: "at the clinic", k: ["약을 어디서 사야 하는지 말씀해 주시겠어요?", "약값이 얼마인지 아세요?"], a: "medicine", ai: bulb, o: ["form", "chart", "bill"]}
+  - {t: "천천히 설명", i: coffee, w: "천천히 한 단계씩 설명하면 통역사가 옮기는 속도에 맞출 수 있어요. 퇴원 교육은 핵심을 나눠서 하는 것이 환자가 기억하기 좋아요.", d: "in a hurry", k: ["한 번에 빠르게 설명할게요", "통역사 없이 설명할게요"], a: "slowly", ai: calendar, o: ["quickly", "rarely", "badly"]}
+  - {t: "질문 권유", i: bulb, w: "잘못된 질문은 없다고 말하면 모르는 것을 묻는 부담이 줄어요. 퇴원 후에는 물어볼 사람이 곁에 없어서 지금 묻는 것이 중요해요.", d: "because you're sure", k: ["질문은 한 번만 하세요", "질문은 의사에게만 하세요"], a: "no", ai: star, o: ["some", "many", "few"]}
+  - {t: "복창 요청", i: pencil, w: "한 단계씩 말하게 하면 빠뜨린 단계를 바로 찾을 수 있어요. 환자의 말로 해야 이해했는지 알 수 있어요.", d: "in my words", k: ["각 단계를 제 말로 다시 해 주세요", "각 단계는 건너뛰세요"], a: "Tell", ai: speech, o: ["Hide", "Forget", "Skip"]}
+  - {t: "질문 권유", i: speech, w: "anything은 어떤 질문이든 환영한다는 열린 초대예요. 통역을 통해서도 같은 질문을 할 수 있다고 알려요.", d: "only once", k: ["질문은 하지 마세요", "질문은 다음에 받을게요"], a: "anything", ai: handshake2, o: ["nothing", "nobody", "never"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "통역 퇴원 교육 순서"
+    why: "통역사와 함께 단계를 설명하고, 환자가 각 단계를 말해 보게 하고, 빠뜨린 단계는 다시 짚고, 마지막에 질문을 열어 줘요. Now, If you missed any step, it again이 앞 줄을 가리키고 Last가 마지막을 고정해요."
+    lines:
+    - {en: "I'll go through each step slowly with the interpreter.", icon: coffee, ko: "통역사와 함께 한 단계씩 천천히 짚어드릴게요", note: "설명"}
+    - {en: "Now tell me each step back in your own words.", icon: pencil, ko: "이제 각 단계를 환자분 말로 다시 말씀해 주세요", note: "복창"}
+    - {en: "If you missed any step, that's okay. Let's go over it again.", icon: redo, ko: "빠뜨린 단계가 있어도 괜찮아요. 다시 살펴봐요", note: "재설명"}
+    - {en: "Last, there are no wrong questions, so ask me anything.", icon: speech, ko: "마지막으로, 잘못된 질문은 없으니 뭐든 물어보세요", note: "질문"}
+  ctx: {word: "question", ko: "질문"}

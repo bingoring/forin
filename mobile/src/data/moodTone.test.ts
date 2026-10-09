@@ -1,8 +1,8 @@
 // The bubble border, the portrait and the distress cue are three views of one fact.
 // When they were derived separately the face could say worried while the border said
 // calm, and a reader trusts whichever they noticed first.
-import { asMood, MOODS, moodBorder, moodExpression, moodShowsSweat } from './moodTone';
-import { colors } from '@/theme/tokens';
+import { asMood, MOODS, NPC_EDGE, moodBorder, moodExpression, moodShowsSweat } from './moodTone';
+import { nb } from '@/theme/nb';
 
 test('every mood the server can send is one the portrait draws', () => {
   // Mirrors the server's vocabulary (conversation/mood.go moodRank) and the app's
@@ -22,18 +22,20 @@ test('a mood we cannot draw is rejected rather than passed through', () => {
 });
 
 test('distress is red, unsettled is peach, relief is mint', () => {
-  for (const m of ['panic', 'pain', 'angry'] as const) expect(moodBorder(m)).toBe(colors.red);
-  for (const m of ['sad', 'worried', 'surprised', 'shy'] as const) expect(moodBorder(m)).toBe(colors.peachShadow);
-  expect(moodBorder('happy')).toBe(colors.mintShadow);
+  for (const m of ['panic', 'pain', 'angry'] as const) expect(moodBorder(m)).toBe(nb.red);
+  for (const m of ['sad', 'worried', 'surprised', 'shy'] as const) expect(moodBorder(m)).toBe(nb.amber);
+  expect(moodBorder('happy')).toBe(nb.green);
 });
 
 test('nothing notable looks like the default, not a fourth state', () => {
   // A neutral turn must not announce itself: the border is peripheral vision while
   // the learner reads the words.
   for (const m of ['neutral', 'derp', 'thinking', 'focused', 'sleepy'] as const) {
-    expect(moodBorder(m)).toBe(colors.ink);
+    // The handoff's NPC bubble edge (dialogue.jsx L73) — lesson-fidelity-v46: the notebook
+    // line, not the pixel tokens this used to return.
+    expect(moodBorder(m)).toBe(NPC_EDGE);
   }
-  expect(moodBorder(undefined)).toBe(colors.ink);
+  expect(moodBorder(undefined)).toBe(NPC_EDGE);
 });
 
 test('an absent mood leaves the face alone rather than resetting it', () => {

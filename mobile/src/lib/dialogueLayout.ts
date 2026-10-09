@@ -13,17 +13,26 @@
 import { useSyncExternalStore } from 'react';
 import * as SecureStore from 'expo-secure-store';
 
-const KEY = 'forin.dialogueLayout.v1';
+// v2 (lesson-fidelity-v46 결정 5): v1 held the old divider — a point ~400 down a screen
+// whose stage was a wash of 41% — which means nothing on the handoff's 236/168 stage.
+// A fresh key so everyone opens on the handoff heights; the old value is left unread.
+const KEY = 'forin.dialogueLayout.v2';
 
 export type DialogueLayout = {
-  /** Where the conversation starts — the portrait/thread divider. 0 = never set, and
-   *  then the screen uses its own default for the device. */
-  splitTop: number;
+  /** The stage's height on the free run (E). 0 = never set → the handoff's 236. */
+  stageFree: number;
+  /** …and on the guided run (D). 0 = never set → the handoff's 168. Separate, because the
+   *  handoff gives the two runs different stages. */
+  stageGuided: number;
+  /** The guided run's message band (D). 0 = never set → the handoff's 128. */
+  threadGuided: number;
   /** How tall the reply-choices band is. 0 = never set. */
   choicesH: number;
 };
 
-export const NOT_SET: DialogueLayout = { splitTop: 0, choicesH: 0 };
+const FIELDS = ['stageFree', 'stageGuided', 'threadGuided', 'choicesH'] as const;
+
+export const NOT_SET: DialogueLayout = { stageFree: 0, stageGuided: 0, threadGuided: 0, choicesH: 0 };
 
 let current: DialogueLayout = NOT_SET;
 const listeners = new Set<() => void>();
@@ -47,10 +56,9 @@ export async function loadDialogueLayout(): Promise<void> {
     const raw = await SecureStore.getItemAsync(KEY);
     if (!raw) return;
     const p = JSON.parse(raw) as Partial<DialogueLayout>;
-    current = {
-      splitTop: Number(p.splitTop) > 0 ? Number(p.splitTop) : 0,
-      choicesH: Number(p.choicesH) > 0 ? Number(p.choicesH) : 0,
-    };
+    const next = { ...NOT_SET };
+    for (const f of FIELDS) next[f] = Number(p[f]) > 0 ? Number(p[f]) : 0;
+    current = next;
     emit();
   } catch {
     // A corrupt value is not worth a failed launch: the screen falls back to its

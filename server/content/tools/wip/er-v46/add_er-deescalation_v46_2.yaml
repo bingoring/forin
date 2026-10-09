@@ -1,0 +1,108 @@
+- title: 알코올 취기 공격성
+  s:
+  - {t: "비난 안 함", i: handshake2, w: "Nobody's judging은 술에 대한 낙인을 먼저 내려놓겠다는 말이에요. 비난받는다고 느끼면 방어적으로 더 격해지기 쉬워요.", d: "about the noise", k: ["술을 얼마나 드셨는지 알려 주세요.", "여기 침대에 누워 주세요."], a: "judging", o: ["weighing", "billing", "feeding"]}
+  - {t: "같은 편", i: handshake2, w: "Let's로 함께 하자고 하고 on your side로 적이 아니라 편임을 말해요. 취한 환자는 위협을 쉽게 느끼므로 편이라는 말을 직접 해 줘요.", d: "at the desk", k: ["지금 혈당을 재 볼게요.", "옷을 갈아입으셔야 해요."], a: "side", o: ["case", "back", "nerves"]}
+  - {t: "제안", i: speech, w: "How about we는 명령이 아니라 제안이라 거절하기 쉬워요. 앉자는 제안은 서 있을 때보다 긴장을 낮추는 자세를 권하는 거예요.", d: "right now", k: ["술은 얼마나 드셨어요?", "보호자분께 전화할까요?"], a: "sit", o: ["rush", "hurry", "race"]}
+  - {t: "안심", i: handshake2, w: "I hear you로 먼저 듣는다는 신호를 주고 not here to fight로 싸울 뜻이 없음을 말로 분명히 해요. 시비가 붙은 환자에게는 대립 구도부터 풀어 줘요.", d: "with you", k: ["지금 체온을 재도 될까요?", "병실로 모셔 드릴게요."], a: "fight", o: ["pay", "sleep", "shop"]}
+  - {t: "속도 늦추기", i: redo, w: "Let's … together로 같이 속도를 늦추자고 하면 환자를 지적하지 않고도 격앙된 분위기를 가라앉힐 수 있어요. things라고 하면 환자 탓이 아니라 상황 전체를 가리켜요.", d: "for the staff", k: ["물 좀 드시겠어요?", "담요를 가져다 드릴게요."], a: "together", o: ["alone", "separately", "apart"]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 취한 공격적 환자 응대 4문장 순서
+    why: 싸우러 온 것이 아님을 먼저 말하고, 그 때문에('Because of that') 속도를 늦추자고 하고, 그러려면('To do that') 앉아서 이야기하자고 제안하고, 어느 쪽이든('Either way') 편이라고 마무리해요.
+    lines:
+    - {en: "I hear you, and I'm not here to fight.", icon: handshake2, ko: "말씀 듣고 있어요, 싸우러 온 게 아니에요", note: 안심}
+    - {en: "Because of that, let's slow things down together.", icon: redo, ko: "그러니 같이 천천히 가요", note: 속도}
+    - {en: "To do that, how about we sit down and talk this out?", icon: speech, ko: "그러려면 앉아서 이야기로 풀어 보는 게 어때요?", note: 제안}
+    - {en: "Either way, I'm on your side.", icon: handshake2, ko: "어느 쪽이든 저는 당신 편이에요", note: 편}
+  sw: {ko: "여기서 아무도 당신을 비난하지 않아요, 그저 돕고 싶어요."}
+- title: 치매 초조 행동
+  s:
+  - {t: "안전 안내", i: shield, w: "낯선 곳에서 불안해하는 치매 환자에게는 안전하다는 말과 곁에 있겠다는 약속을 함께 해요. 짧은 문장으로 같은 말을 되풀이해도 괜찮아요.", d: "in bed", k: ["따님께 전화해 드릴게요.", "점심 드실 시간이에요."], a: "here", o: ["outside", "upstairs", "downtown"]}
+  - {t: "가족 소식", i: bell, w: "보호자 소식을 구체적으로 알려 주면 안심이 돼요. on her way로 곧 온다는 사실만 말하며, 실제로 오고 있을 때에만 하는 말이에요.", d: "at home", k: ["어디가 아프세요?", "아침 약을 드릴게요."], a: "way", o: ["own", "back", "list"]}
+  - {t: "사진 보기", i: star, w: "사진은 기억에 닿기 쉬운 주제라 불안한 환자의 주의를 부드럽게 돌려 줘요. for a moment로 부담 없이 잠깐만 해 보자고 제안해요.", d: "on the wall", k: ["약을 같이 드실까요?", "화장실에 가고 싶으세요?"], a: "photos", o: ["charts", "forms", "bills"]}
+  - {t: "곁에 있기", i: handshake2, w: "safe와 beside you를 짧은 문장으로 반복해 줘요. 치매 환자에게는 복잡한 설명보다 짧고 따뜻한 말이 더 잘 전달돼요.", d: "in this room", k: ["잠깐 팔을 걷어 주세요.", "따뜻한 담요를 드릴게요."], a: "with", o: ["without", "against", "despite"]}
+  - {t: "화제 전환", i: speech, w: "가족 이야기는 오래된 기억과 이어져 편안함을 줄 수 있어요. Let's로 같이 하자고 하고 for a while로 잠시만 해 보자고 가볍게 제안해요.", d: "at lunch", k: ["오늘 약은 다 드셨어요?", "팔찌를 확인할게요."], a: "family", o: ["surgery", "insurance", "diagnosis"]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 불안한 치매 환자 응대 4문장 순서
+    why: 안전하고 곁에 있다는 말이 먼저, 나 말고도('Besides me') 가족이 오고 있음을 알리고, 그 가족('her')의 사진을 같이 보고, 사진 속 사람들('them') 이야기를 나눠요.
+    lines:
+    - {en: "You're safe here, and I'm going to stay with you.", icon: shield, ko: "여기서는 안전해요, 제가 곁에 있을게요", note: 안심}
+    - {en: "Besides me, your daughter is on her way to see you.", icon: bell, ko: "저 말고도 따님이 지금 오고 계세요", note: 소식}
+    - {en: "Let's look at some photos of her together.", icon: star, ko: "따님 사진을 함께 봐요", note: 사진}
+    - {en: "Tell me about the people in them.", icon: speech, ko: "사진 속 사람들 이야기를 들려 주세요", note: 대화}
+  sw: {ko: "이곳이 낯설게 느껴지실 거예요, 하지만 여기서는 안전하고 제가 곁에 있을게요."}
+- title: 마약 갈망·요구 환자
+  s:
+  - {t: "믿음 표현", i: faceWorried, w: "통증이 진짜라고 먼저 믿어 준 뒤 safely로 치료 방향을 말해요. 약을 요구하는 환자를 의심부터 하면 갈등이 커지기 쉬워서 믿음과 안전을 한 문장에 함께 담아요.", d: "for you", k: ["약 알레르기가 있으세요?", "오늘 몇 시에 오셨어요?"], a: "safely", o: ["secretly", "reluctantly", "suddenly"]}
+  - {t: "거절+대안", i: handshake2, w: "못 하는 일을 말한 뒤 바로 but으로 할 수 있는 일을 이어 줘요. 거절만 하면 대화가 끊기지만 대안을 같이 말하면 환자가 외면당한다고 느끼지 않아요.", d: "right now", k: ["통증 점수를 알려 주세요.", "처방전은 어느 약국이세요?"], a: "can't", o: ["can", "will", "must"]}
+  - {t: "목표 전환", i: compass, w: "Let's focus on으로 약 이름을 두고 다투는 대화에서 나아지는 것이라는 공동 목표로 옮겨요. actually는 실제로 효과가 있는 방법을 찾겠다는 뜻이에요.", d: "for the chart", k: ["가족분께 전화할까요?", "접수 서류에 서명해 주세요."], a: "focus", o: ["comment", "elaborate", "speculate"]}
+  - {t: "비난 안 함", i: faceWorried, w: "I hear that you're hurting은 환자의 고통을 인정하는 말이에요. not judging은 약을 요구하는 환자가 가장 두려워하는 낙인을 먼저 내려놓겠다는 말이에요.", d: "at home", k: ["지금 통증이 어디쯤이세요?", "제가 의사 선생님께 말씀드릴게요."], a: "hurting", o: ["improving", "healing", "sleeping"]}
+  - {t: "대안 탐색", i: speech, w: "what else로 이미 거절된 한 가지 말고 다른 선택지를 같이 찾자고 해요. might로 효과를 장담하지 않으면서 가능성을 열어 줘요.", d: "with me", k: ["약을 드시는 시간은 언제예요?", "지난번에도 같은 통증이었어요?"], a: "work", o: ["hurt", "fail", "shake"]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 마약성 진통제를 요구하는 환자 응대 4문장 순서
+    why: 아픔을 인정하는 말이 먼저, 통증이 진짜라고 믿고 안전하게 치료하겠다는 말이 이를 받고('Beyond that'), 그 안전 때문에('Treating it safely') 줄 수 없는 것과 줄 수 있는 것을 말하고, 대안을('what else') 같이 찾아요.
+    lines:
+    - {en: "I hear that you're hurting, and I'm not judging you.", icon: faceWorried, ko: "많이 아프신 거 알아요, 비난하는 게 아니에요", note: 공감}
+    - {en: "Beyond that, I believe your pain is real, and I want to treat it safely.", icon: shield, ko: "그뿐 아니라 통증이 진짜라고 믿고 안전하게 치료하고 싶어요", note: 믿음}
+    - {en: "Treating it safely means I can't give you that, but here's what I can offer.", icon: handshake2, ko: "안전하게 치료하려면 그건 드릴 수 없지만 대신 이걸 드릴 수 있어요", note: 대안}
+    - {en: "Let's talk about what else might work for you.", icon: speech, ko: "또 어떤 게 맞을지 이야기해 봐요", note: 탐색}
+  sw: {ko: "통증이 진짜라고 믿어요, 안전하게 치료해 드리고 싶어요."}
+- title: 대기실 다인 긴장 확산
+  s:
+  - {t: "장소 이동", i: compass, w: "여러 사람 앞에서는 체면 때문에 더 격해지기 쉬워서 조용한 곳으로 옮기자고 제안해요. Let's로 같이 가자고 하면 끌려가는 느낌이 줄어요.", d: "with everyone", k: ["이쪽 의자에 앉아 주세요.", "잠깐 신분증을 보여 주세요."], a: "privately", o: ["publicly", "loudly", "angrily"]}
+  - {t: "일대일", i: speech, w: "one-on-one은 둘이서만 듣겠다는 뜻이라 사람들 앞에서 말하기 부담스러운 환자의 체면을 지켜 줘요.", d: "right now", k: ["번호표를 받아 가세요.", "물을 드릴까요?"], a: "one-on-one", o: ["in public", "all at once", "in groups"]}
+  - {t: "해결 약속", i: shield, w: "I'll address this로 불만을 직접 처리하겠다고 약속한 뒤 for everyone으로 차분함이 모두를 위한 것이라고 말해요. 환자만 지적하는 말로 들리지 않아요.", d: "at the desk", k: ["다른 환자분들도 곧 안내해 드릴게요.", "접수 번호를 불러 드릴게요."], a: "address", o: ["ignore", "skip", "forget"]}
+  - {t: "거리 두기", i: compass, w: "사람이 많은 곳에서는 서로 말이 안 들려서 더 큰 소리로 말하게 돼요. 군중에서 떨어지자고 하면 목소리가 낮아지고 대화에 집중할 수 있어요.", d: "in the lobby", k: ["번호표를 새로 뽑아 오세요.", "접수 창구가 저쪽이에요."], a: "away from", o: ["closer to", "into", "toward"]}
+  - {t: "확산 방지", i: bell, w: "I don't want this to로 환자를 탓하지 않고 내 바람으로 말해요. bigger than it needs to be는 문제의 크기를 줄이자는 뜻이라 서로 체면을 지킬 수 있어요.", d: "next time", k: ["대기 번호를 다시 알려 드릴게요.", "다른 분들께도 안내해 드릴게요."], a: "bigger", o: ["smaller", "quieter", "calmer"]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 대기실 긴장 완화 4문장 순서
+    why: 따로 이야기할 곳으로 옮기자고 하고, 그곳에서('Over here') 일대일로 듣겠다고 하고, 불만이 무엇이든('Whatever it is') 처리하되 차분하게 하자고 하고, 그렇게 해서('That way') 일이 커지지 않게 해요.
+    lines:
+    - {en: "Let's step over here where we can talk privately.", icon: compass, ko: "따로 이야기할 수 있는 곳으로 옮겨 봐요", note: 이동}
+    - {en: "Over here, I want to hear your concern one-on-one.", icon: speech, ko: "이쪽에서 일대일로 걱정되시는 점을 듣고 싶어요", note: 경청}
+    - {en: "Whatever it is, I'll address it, but let's keep it calm for everyone.", icon: shield, ko: "무엇이든 제가 처리할게요, 모두를 위해 차분히 해요", note: 약속}
+    - {en: "That way, it won't get bigger than it needs to be.", icon: bell, ko: "그래야 필요 이상으로 커지지 않아요", note: 이유}
+  sw: {ko: "따로 이야기할 수 있는 곳으로 옮겨 봐요."}
+- title: 언어폭력 대상 직원 보호
+  s:
+  - {t: "존중 요청", i: handshake2, w: "I want to help you로 먼저 도울 뜻을 밝히고 I need us to로 요청해요. us를 써서 환자만 지적하지 않고 대화 방식을 함께 지키자는 말로 만들어요.", d: "at the desk", k: ["지금 혈압을 재도 될까요?", "의사 선생님이 곧 오실 거예요."], a: "respectfully", o: ["angrily", "loudly", "rudely"]}
+  - {t: "경계 설정", i: shield, w: "받아들일 수 없는 행동은 분명히 말하되 but I'm still here for you로 환자를 돌보겠다는 뜻은 그대로 유지해요. 경계와 돌봄을 한 문장에 함께 담는 방법이에요.", d: "by anyone", k: ["보호자분께 연락드릴게요.", "차트에 기록해 둘게요."], a: "accept", o: ["forget", "regret", "deny"]}
+  - {t: "재시작", i: redo, w: "reset은 앞의 말다툼을 없던 것으로 하고 다시 시작하자는 초대예요. Let's … together로 같은 편이 되어 문제를 풀자고 해요.", d: "at home", k: ["신분증을 다시 보여 주세요.", "진료 순서를 확인할게요."], a: "together", o: ["alone", "separately", "apart"]}
+  - {t: "상호 존중", i: handshake2, w: "on your team으로 같은 편임을 말하고 but I need respect too로 직원도 존중받아야 한다고 분명히 해요. 한쪽만 참는 관계가 아니라 서로 존중하는 관계로 말해요.", d: "for you", k: ["의사 선생님께 말씀드릴게요.", "서류에 서명해 주세요."], a: "team", o: ["list", "floor", "clock"]}
+  - {t: "다시 시작", i: redo, w: "start over는 방금의 말투를 없던 것으로 하고 다시 시작하자는 제안이에요. Let's로 환자만 바꾸라는 말이 아니라 둘 다 새로 시작하자고 해요.", d: "in the hall", k: ["이름과 생년월일을 알려 주세요.", "물을 드릴까요?"], a: "again", o: ["alone", "separately", "silently"]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 폭언하는 환자에게 존중 요청 4문장 순서
+    why: 같은 편이고 돕고 싶다는 말이 먼저, 그러려면('To do that') 서로 존중해 달라고 요청하고, 그런 말투는 받아들일 수 없지만 곁에 있다고 경계를 말하고, 그 말을 정리하며('With that said') 다시 시작하자고 해요.
+    lines:
+    - {en: "I'm on your team, and I want to help you.", icon: handshake2, ko: "저는 당신 편이고 도와드리고 싶어요", note: 편}
+    - {en: "To do that, I need us to speak respectfully.", icon: speech, ko: "그러려면 서로 정중하게 말씀해 주셔야 해요", note: 요청}
+    - {en: "I won't accept being spoken to that way, but I'm still here for you.", icon: shield, ko: "그런 식의 말은 받아들일 수 없지만 곁에 있을게요", note: 경계}
+    - {en: "With that said, let's reset and figure this out together.", icon: redo, ko: "그렇게 정리하고 처음부터 함께 풀어 봐요", note: 재시작}
+  sw: {ko: "도와드리고 싶어요, 서로 정중하게 말씀해 주시면 좋겠어요."}
+- title: 문화·인종 관련 불신
+  s:
+  - {t: "존중 약속", i: handshake2, w: "I hear you로 먼저 듣고 treated with respect로 환자가 존중받도록 직접 챙기겠다고 말해요. 불신을 반박하지 않고 받아들이는 첫 문장이에요.", d: "by everyone", k: ["어떤 점이 가장 불편하셨어요?", "통역이 필요하신가요?"], a: "respect", o: ["caution", "haste", "pity"]}
+  - {t: "우려 인정", i: check, w: "valid는 환자의 우려가 이유 있는 것으로 인정한다는 뜻이에요. 해명이나 반박보다 인정이 먼저 와야 신뢰를 쌓기 시작할 수 있어요.", d: "for now", k: ["성함이 어떻게 되세요?", "진료실은 이쪽이에요."], a: "valid", o: ["private", "temporary", "visible"]}
+  - {t: "선호 묻기", i: mic, w: "Tell me로 열린 질문을 하면 환자가 필요한 것을 직접 정할 수 있어요. 불신이 있을 때는 어떻게 하면 편한지를 먼저 묻는 것이 존중을 보여 줘요.", d: "about this", k: ["어디가 가장 아프세요?", "보험 정보를 알려 주세요."], a: "comfortable", o: ["nervous", "rushed", "tired"]}
+  - {t: "진지한 수용", i: check, w: "take … seriously는 말씀을 가볍게 넘기지 않는다는 뜻이에요. 무시당해 본 경험이 있는 환자에게는 이 한마디가 신뢰의 시작이 될 수 있어요.", d: "in my notes", k: ["제가 차트에 적어 둘게요.", "의사 선생님을 불러올게요."], a: "seriously", o: ["lightly", "casually", "reluctantly"]}
+  - {t: "신뢰 형성", i: handshake2, w: "build your trust는 신뢰를 요구하는 대신 쌓아 가는 과정으로 말해요. what would로 환자가 원하는 방법을 직접 말하게 해요.", d: "with you", k: ["생년월일을 말씀해 주세요.", "팔찌를 확인할게요."], a: "trust", o: ["doubt", "anger", "fear"]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 불신하는 환자 응대 4문장 순서
+    why: 존중받도록 하겠다는 말이 먼저, 그 말에 포함해('That includes') 우려를 인정하고, 최선을 다하려면('To do my best') 편안한 조건을 묻고, 들은 말에서('From what you tell me') 신뢰를 쌓을 방법을 이야기해요.
+    lines:
+    - {en: "I hear you, and I want to make sure you're treated with respect here.", icon: handshake2, ko: "말씀 듣고 있어요, 여기서 존중받으시도록 챙길게요", note: 존중}
+    - {en: "That includes your concern: it's valid, and I'll do my best for you.", icon: check, ko: "우려도 그에 포함돼요, 타당하고 최선을 다할게요", note: 인정}
+    - {en: "To do my best for you, tell me what would help you feel more comfortable.", icon: mic, ko: "최선을 다하려면 뭐가 편안하실지 말씀해 주세요", note: 질문}
+    - {en: "From what you tell me, let's talk about what would build your trust in us.", icon: handshake2, ko: "말씀하신 걸 토대로 신뢰를 쌓을 방법을 이야기해 봐요", note: 신뢰}
+  sw: {ko: "그 우려는 타당해요, 최선을 다할게요."}

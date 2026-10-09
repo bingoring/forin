@@ -222,6 +222,139 @@ type Scenario struct {
 	// CollabWith is set only on track=collab scenarios: the other department
 	// this situation is faced from the learner's own dept (e.g. "ICU").
 	CollabWith string `yaml:"collabWith,omitempty" json:"collabWith,omitempty"`
+	// Sentences (lesson four steps, v44) are this situation's STEP 2 target
+	// sentences, carried verbatim from the authoring seed by cmd/gencontent. Empty
+	// on every scenario until content lands department by department (build-spec
+	// §6 결정 2) — a scenario with none simply has no STEP 1/2 content yet.
+	Sentences []Sentence `yaml:"sentences,omitempty" json:"sentences,omitempty"`
+	// Nuance (v45, build-spec §11-3) are this situation's nuance items — STEP 1's
+	// scale and collocation cards, STEP 2's reel, context and swap drills. Authored
+	// per situation (결정 7); empty until a department's content has the v45 pass.
+	Nuance []Nuance `yaml:"nuance,omitempty" json:"nuance,omitempty"`
+	// Order (v46, 결정 8) is this situation's order card — optional; without it the
+	// sentence sheet skips the order prompt (§R3).
+	Order *SentenceOrder `yaml:"order,omitempty" json:"order,omitempty"`
+}
+
+// ---- lesson four steps (v44): words + sentences ----
+//
+// A situation is learned in four linked steps: words → sentences → guided dialogue
+// → free dialogue (build-spec-index.md §2-1). The link between them is made of
+// DATA, not authoring instruction: a Sentence carries the ids of the bank Words it
+// used, and STEP 1's word list is derived by following that reference backwards —
+// "which bank words does this situation's sentences actually use". That is what
+// ValidateSentences/ValidateLexicon (lexicon.go) exist to keep honest: a broken
+// reference must fail loading, not ship an empty STEP 1.
+
+// Word is one vocabulary-bank entry: a headword a learner meets in STEP 1, with
+// enough to render a flashcard (pronunciation, meaning, an icon, one example line).
+type Word struct {
+	// ID is unique WITHIN its Lexicon (one theme's word bank), not globally — the
+	// bank is authored and read as one unit (build-spec-index.md §2), so a global
+	// namespace would only make two independently-authored banks collide by
+	// accident for no benefit.
+	ID      string `yaml:"id" json:"id"`
+	En      string `yaml:"en" json:"en"`
+	IPA     string `yaml:"ipa" json:"ipa,omitempty"`
+	Ko      string `yaml:"ko" json:"ko"`
+	Icon    string `yaml:"icon" json:"icon,omitempty"`
+	Example string `yaml:"example" json:"example,omitempty"`
+
+	// ── v45 (build-spec §11-2): the material for STEP 1's recall prompts. All three
+	// prompt types are authored for every word — which one a learner meets is chosen
+	// at runtime (결정 8), because a word recurs across ~21 situations. A bank either
+	// has none of these (v44 content) or all of them on every word (IsV45Word).
+	ExKo          string     `yaml:"exKo,omitempty" json:"exKo,omitempty"`                   // the example, in Korean
+	Cue           string     `yaml:"cue,omitempty" json:"cue,omitempty"`                     // front-of-card context clue (Korean), never the answer
+	Tag           string     `yaml:"tag,omitempty" json:"tag,omitempty"`                     // short category label
+	DistractorsEn []string   `yaml:"distractorsEn,omitempty" json:"distractorsEn,omitempty"` // 2 look-alike English options
+	DistractorsKo []string   `yaml:"distractorsKo,omitempty" json:"distractorsKo,omitempty"` // 2 Korean meanings for listen-and-pick
+	Chips         [][]string `yaml:"chips,omitempty" json:"chips,omitempty"`                 // words → fragments; JoinChips(Chips) == En
+	DecoyChips    []string   `yaml:"decoyChips,omitempty" json:"decoyChips,omitempty"`       // wrong fragments mixed into the pool
+}
+
+// Lexicon is one theme's word bank. content/nurse/lexicon/<dept>.yaml holds a list
+// of these, one per theme the department teaches. Themed rather than
+// per-situation on purpose: situations under the same theme share vocabulary
+// ("wristband"/"verify"/"allergy" recur across a department's situations), so one
+// shared bank produces the REPEATED exposure that is how a word actually gets
+// learned, instead of teaching it fresh — and only once — in whichever situation
+// happens to use it first.
+type Lexicon struct {
+	Theme string `yaml:"theme" json:"theme"`
+	Words []Word `yaml:"words" json:"words"`
+}
+
+// Sentence is one STEP 2 target sentence, authored onto a seed situation
+// (content/nurse/topics/<dept>.yaml). Words is the connective tissue of
+// build-spec-index.md §2-1.
+type Sentence struct {
+	En string `yaml:"en" json:"en"`
+	Ko string `yaml:"ko" json:"ko"`
+	// Chunks, joined per JoinChunks' spacing rule, must reproduce En exactly
+	// (checked A4) — that agreement is what makes the STEP 2 chunk-assembly
+	// exercise solvable at all.
+	Chunks []string `yaml:"chunks" json:"chunks"`
+	// Words are bank word ids this sentence actually uses (checked A1: every id
+	// must exist in the situation's theme bank; A2: the bank itself must have no
+	// duplicate ids). This is the reference STEP 1 is derived from.
+	Words []string `yaml:"words" json:"words"`
+	// Goal is the 1-based index into the seed's own `goals` this sentence advances
+	// toward (checked A3: 1..len(seed.Goals)). STEP 3's guided pass walks a
+	// situation's sentences in this order.
+	Goal int `yaml:"goal" json:"goal"`
+
+	// ── v46 (lesson-fidelity-v46 §D): what the handoff's sentence sheet draws. All
+	// optional — a sentence without them falls back per §R3 — but checked when present
+	// (ValidateSentenceV46, V18). Icon names are NbIcon names; the allowed set is the
+	// mobile NbIcon union, kept by mobile's contentIcons test, not checked here.
+
+	Tag  string `yaml:"tag,omitempty" json:"tag,omitempty"`   // short Korean label, the sheet header's blue tag
+	Icon string `yaml:"icon,omitempty" json:"icon,omitempty"` // NbIcon in the sheet's amber circle
+	Why  string `yaml:"why,omitempty" json:"why,omitempty"`   // the "왜?" note under the answer (Korean)
+	// Decoy is build's one wrong chunk mixed into the pool — close to the sentence's own
+	// chunks, but none of them and nowhere in En.
+	Decoy string `yaml:"decoy,omitempty" json:"decoy,omitempty"`
+	// DistractorsKo are listen's two wrong meanings (Korean), next to Ko as the third.
+	DistractorsKo []string       `yaml:"distractorsKo,omitempty" json:"distractorsKo,omitempty"`
+	Blank         *SentenceBlank `yaml:"blank,omitempty" json:"blank,omitempty"`
+}
+
+// SentenceBlank is the blank prompt's authored 2×2 (handoff SENTS `before`/`answer`/`opts`).
+// Answer is a stretch of the sentence's En — on word boundaries, exactly once — and the
+// screen splits En around it; Options are the four cards, the answer among them.
+type SentenceBlank struct {
+	Answer  string        `yaml:"answer" json:"answer"`
+	Options []BlankOption `yaml:"options" json:"options"`
+}
+
+// BlankOption is one card of the blank 2×2: the English word and its NbIcon.
+type BlankOption struct {
+	En string `yaml:"en" json:"en"`
+	// Icon is no longer authored or drawn: the sheet lists the options as rows like STEP 1's pick
+	// (lesson-fidelity-v46 T8, user decision — a sentence needs no picture). Kept so older rows still load.
+	Icon string `yaml:"icon,omitempty" json:"icon,omitempty"`
+}
+
+// SentenceOrder is a situation's order card (결정 8): four short lines in the order the
+// conversation runs, authored per situation because the sentence list is grouped by goal
+// and is not a conversation order. The answer is Lines as written; the screen shuffles.
+type SentenceOrder struct {
+	Tag   string      `yaml:"tag,omitempty" json:"tag,omitempty"`   // header tag (fallback: §R3)
+	Icon  string      `yaml:"icon,omitempty" json:"icon,omitempty"` // amber circle (fallback: §R3)
+	Ko    string      `yaml:"ko" json:"ko"`                         // header line, e.g. "불만 환자 응대 4문장 순서"
+	Why   string      `yaml:"why" json:"why"`                       // the "왜?" note after the answer
+	Lines []OrderLine `yaml:"lines" json:"lines"`                   // exactly 4, in conversation order
+}
+
+// OrderLine is one line of an order card. The handoff draws En and Icon; Ko and Note
+// (a 2–4 character role such as "공감"·"이유") are optional extras for the notes and the
+// "공감 → 이유 → 확인 → 감사" summary.
+type OrderLine struct {
+	En   string `yaml:"en" json:"en"`
+	Icon string `yaml:"icon" json:"icon"`
+	Ko   string `yaml:"ko,omitempty" json:"ko,omitempty"`
+	Note string `yaml:"note,omitempty" json:"note,omitempty"`
 }
 
 // Persona describes the AI's conversation character for realistic role-play.
@@ -264,6 +397,10 @@ type Briefing struct {
 	// tagging (hint mode marks these key phrases as reputation-risky).
 	Chart        *ScenarioChart `yaml:"chart" json:"chart,omitempty"`
 	RiskyPhrases []string       `yaml:"riskyPhrases" json:"riskyPhrases,omitempty"`
+
+	// Line is the hub's one line with one [[highlighted]] span (lesson-fidelity-v46 T6,
+	// hubline.go). Optional — the hub falls back to Brief, unmarked.
+	Line string `yaml:"line,omitempty" json:"line,omitempty"`
 }
 
 // ScenarioChart — bedside quick-reference shown in the dialogue QUICK INFO dock.
@@ -586,6 +723,13 @@ type Bundle struct {
 	Scenarios   []Scenario
 	Quizzes     []Quiz
 	Phrases     []Phrase
+	// Lexicons are the per-theme word banks STEP 1 is built from. They stay a bank
+	// rather than being copied onto every scenario: a theme's ~21 situations draw on
+	// the same vocabulary, so baking the words into each scenario would add ~24MB to
+	// a 40MB corpus to say the same thing twenty times. Held flat here because a
+	// theme key is unique across the whole catalogue — the per-department FILES are
+	// a filing convenience, not a namespace.
+	Lexicons []Lexicon
 }
 
 func set[T comparable](xs ...T) map[T]bool {

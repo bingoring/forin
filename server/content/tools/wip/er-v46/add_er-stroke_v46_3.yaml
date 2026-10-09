@@ -1,0 +1,120 @@
+- title: 항응고제 복용자
+  s:
+  - {t: "약 종류·용량", i: pill, w: "항응고제는 종류에 따라 효과가 가라앉는 시간과 되돌리는 방법이 달라서 이름과 용량을 함께 확인해요. 한 문장에 둘을 묶으면 한 번에 답을 받을 수 있어요.", d: "what pharmacy", k: ["약을 어디서 처방받으셨나요?", "약은 처음 드시는 건가요?"], a: "dose", o: ["pharmacy", "reason", "price"]}
+  - {t: "마지막 복용", i: calendar, w: "마지막 복용 시각이 가까울수록 약효가 많이 남아 있어서 치료 선택에 영향을 줘요. exactly로 몇 시쯤이 아니라 정확한 시각을 요청해요.", d: "refill", k: ["마지막으로 피를 뽑은 게 언제였나요?", "마지막으로 식사하신 게 정확히 언제였나요?"], a: "dose", o: ["meal", "visit", "bleed"]}
+  - {t: "INR 확인", i: lab, w: "INR은 와파린 같은 약의 효과를 보는 혈액검사 수치예요. 가장 최근 값을 알면 지금 출혈 위험이 어느 정도인지 가늠할 수 있어요.", d: "your highest", k: ["최근에 비타민 K가 든 음식을 드셨나요?", "검사를 받은 병원 이름을 아세요?"], a: "INR", o: ["blood sugar", "cholesterol", "weight"]}
+  - {t: "정기 검사", i: lab, w: "와파린은 같은 용량이라도 음식이나 다른 약에 따라 효과가 달라질 수 있어서 혈액검사로 수치를 확인해요. regular는 한 번이 아니라 주기적이라는 뜻이에요.", d: "occasional", k: ["와파린은 시간을 정해 매일 드세요", "와파린은 약국에서 직접 조제해요"], a: "regular", o: ["rare", "painful", "urgent"]}
+  - {t: "수치 의미", i: chartup, w: "INR이 높으면 피가 잘 멎지 않아 출혈 위험이 커져요. means로 수치를 의미로 바로 번역해 주면 환자가 숫자의 뜻을 이해해요.", d: "a lower", k: ["INR이 높으면 혈전이 더 잘 생겨요", "INR이 높으면 약을 한 알 더 드셔야 해요"], a: "bleeding", o: ["clotting", "infection", "stroke"]}
+  - {t: "해독 가능성", i: pill, w: "항응고제 효과를 되돌리는 치료가 있는 약이 있어서 심한 출혈에서는 의사가 사용을 결정해요. may need to는 확정이 아니라 가능성이라는 뜻이에요.", d: "double", k: ["출혈이 심하면 수혈을 해야 할 수도 있어요", "출혈이 심하면 약을 바꿔야 할 수도 있어요"], a: "reverse", o: ["increase", "refill", "switch"]}
+  - {t: "약병 요청", i: pill, w: "약병에는 약 이름과 용량이 적혀 있어서 정확한 복용 정보를 확인하기 좋아요. if you can은 어려우면 안 해도 된다는 배려예요.", d: "tomorrow", k: ["약 이름을 종이에 적어 주세요", "처방전은 약국에 두고 오세요"], a: "pill bottle", o: ["insurance card", "photo ID", "blood pressure log"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "항응고제 복용 확인 4문장 순서"
+    why: "약 이름과 용량을 묻고, 그 약의 마지막 복용 시각을 묻고, 그 시각과 함께 최근 INR을 묻고, 높은 INR과 심한 출혈이면 해독이 필요할 수 있다고 알려요. 뒤 줄이 앞 줄의 답을 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "What blood thinner do you take and what dose?", icon: pill, ko: "어떤 항응고제를 얼마나 복용하시나요?", note: "약"}
+    - {en: "When was your last dose of that exactly?", icon: calendar, ko: "그 약의 마지막 복용이 정확히 언제였나요?", note: "시각"}
+    - {en: "With that timing in mind, do you know your most recent INR value?", icon: lab, ko: "그 시각을 감안해 최근 INR 수치를 아세요?", note: "INR"}
+    - {en: "If that INR is high and bleeding is severe, we may need to reverse the medication.", icon: pill, ko: "그 INR이 높고 출혈이 심하면 약효를 되돌려야 할 수 있어요", note: "해독"}
+  sw: {ko: "INR이 높으면 지금 피가 더 쉽게 난다는 뜻이에요"}
+- title: 언어장벽 뇌졸중
+  s:
+  - {t: "시각 가리키기", i: calendar, w: "말이 통하지 않을 때는 짧은 단어와 몸짓으로 묻는 것이 가장 정확해요. 시계를 가리키게 하면 말 없이도 시각을 알 수 있어요.", d: "the door", k: ["몇 살인지 손가락으로 보여 주세요", "어디가 아픈지 가리켜 보세요"], a: "clock", o: ["door", "window", "board"]}
+  - {t: "마비 시점", i: bandage, w: "통역사가 오기 전에는 환자가 가리키는 부위를 중심으로 짧게 묻는 것이 안전해요. stop moving은 힘이 빠진 시점을 직접적으로 표현해서 번역 없이도 이해하기 쉬워요.", d: "start hurting", k: ["이 팔이 언제부터 아팠나요?", "이 팔로 뭘 하다가 다치셨나요?"], a: "arm", o: ["leg", "hand", "finger"]}
+  - {t: "통역 연결", i: speaker, w: "의료 통역사를 쓰면 환자의 말이 정확히 전달돼서 오해가 줄어요. 가족이 대신 통역하면 누락이나 왜곡이 생길 수 있어서 병원은 전문 통역을 권해요.", d: "a relative", k: ["지금 가족에게 전화할게요", "지금 바로 의사를 부를게요"], a: "an interpreter", o: ["a doctor", "a manager", "a chaplain"]}
+  - {t: "숫자로 답하기", i: me, w: "손가락 숫자는 언어가 달라도 통하는 신호예요. one to five로 범위를 좁혀 주면 환자가 답하기 쉬워요.", d: "one to ten", k: ["손가락으로 아픈 곳을 가리켜 보세요", "손가락 열 개를 모두 펴 보세요"], a: "fingers", o: ["words", "eyes", "feet"]}
+  - {t: "이해 확인", i: me, w: "말이 안 통할 때는 끄덕임처럼 쉬운 몸짓으로 이해 여부를 확인해요. 이해한 척 끄덕이는 경우도 있어서 중요한 내용은 통역사와 다시 확인해요.", d: "Shake your head", k: ["가족이 오면 알려 주세요", "제가 하는 말을 하나씩 따라 해 보세요"], a: "Nod", o: ["Smile", "Wave", "Clap"]}
+  - {t: "대기 안내", i: bell, w: "도착까지 걸리는 시간을 알려 주면 환자가 기다릴 수 있어요. just는 곧 온다는 뜻이라 짧은 대기라는 인상을 줘요.", d: "in an hour", k: ["가족이 몇 분 안에 도착할 거예요", "의사가 몇 분 안에 올 거예요"], a: "interpreter", o: ["doctor", "pharmacist", "technician"]}
+  - {t: "근력 표현", i: bandage, w: "strong or weak처럼 짧은 반대말 한 쌍으로 물으면 번역 없이도 몸짓으로 답하기 쉬워요. 팔을 먼저 가리키게 해서 어느 부위인지 분명히 해요.", d: "or sore", k: ["팔을 가리키고 아픈 정도를 보여 주세요", "팔을 가리키고 따뜻한지 차가운지 보여 주세요"], a: "strong or weak", o: ["hot or cold", "big or small", "fast or slow"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "언어장벽 뇌졸중 응대 4문장 순서"
+    why: "통역사를 부르고 있다고 알리고, 도착 전에 이해 여부를 몸짓으로 확인하고, 이해했다면 팔의 힘을 보여 달라고 하고, 그 팔이 언제부터인지 시계로 답하게 해요. 뒤 줄이 앞 줄을 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "I'm getting an interpreter right now.", icon: speaker, ko: "지금 바로 통역사를 부를게요", note: "통역"}
+    - {en: "Until she gets here, nod if you understand what I'm saying.", icon: me, ko: "통역사가 올 때까지 제 말을 이해하면 끄덕여 주세요", note: "이해"}
+    - {en: "If you do, point to your arm and show me strong or weak.", icon: bandage, ko: "이해하면 팔을 가리키고 강한지 약한지 보여 주세요", note: "근력"}
+    - {en: "For that arm, what time did it stop moving? Point to the clock.", icon: calendar, ko: "그 팔이 몇 시에 움직이지 않았나요? 시계를 가리켜 보세요", note: "시각"}
+  ctx: {word: "interpreter", ko: "통역사"}
+- title: 혈압 급상승 동반
+  s:
+  - {t: "혈압 설명", i: monitor, w: "혈전용해제 같은 치료를 하려면 혈압이 너무 높지 않아야 해서 먼저 낮춰요. needs to는 선택이 아니라 필요한 단계라는 뜻이에요.", d: "go up", k: ["혈압을 한 시간마다 확인해야 해요", "혈압을 재는 동안 팔을 움직이지 마세요"], a: "treatment", o: ["surgery", "discharge", "transfer"]}
+  - {t: "투약 안내", i: pill, w: "혈압을 너무 빠르게 떨어뜨리면 오히려 뇌로 가는 피가 줄어들 수 있어서 안전하게 낮춰요. 어떻게 하는지 알려 주면 환자가 약을 받아들이기 쉬워요.", d: "quickly", k: ["혈당을 낮추는 약을 드릴게요", "통증을 줄이는 약을 드릴게요"], a: "lower", o: ["raise", "hold", "track"]}
+  - {t: "악화 보고", i: bell, w: "혈압을 낮추는 중에 두통이 심해지면 뇌출혈 같은 합병증의 신호일 수 있어서 바로 알려 달라고 해요. if로 무엇을 알려야 하는지 분명히 해요.", d: "comes back", k: ["약을 드시면 알려 주세요", "어지러우면 눕지 말고 앉아 계세요"], a: "headache", o: ["nausea", "chest pain", "dizziness"]}
+  - {t: "목표 설명", i: chartup, w: "치료 전에 목표 혈압까지 낮춘다고 알려 주면 환자가 왜 기다리는지 이해해요. number는 혈압 수치를 쉬운 말로 부르는 방식이에요.", d: "after we can treat", k: ["목표 수치는 약을 먹은 뒤 알려 드릴게요", "혈전 치료는 수치와 상관없이 시작해요"], a: "clot", o: ["infection", "fracture", "wound"]}
+  - {t: "재측정 예고", i: monitor, w: "혈압을 낮추는 동안에는 간격을 정해 자주 다시 재요. 몇 분 뒤인지 말해 주면 환자가 기다리는 동안 불안이 줄어요.", d: "every day", k: ["지금 바로 혈압약을 드릴게요", "혈압이 괜찮으면 퇴원할 수 있어요"], a: "check", o: ["lower", "raise", "explain"]}
+  - {t: "증상 보고", i: bell, w: "시야 변화는 혈압이나 뇌 혈류가 달라질 때 나타날 수 있어서 바로 알려 달라고 해요. right away는 기다리지 말고 즉시라는 뜻이에요.", d: "later today", k: ["시야가 좋아지면 알려 주세요", "눈이 아프면 바로 말씀해 주세요"], a: "vision", o: ["hearing", "balance", "taste"]}
+  - {t: "긴급성 설명", i: siren, w: "갑작스러운 두통에 높은 혈압이 겹치면 뇌출혈 같은 위급한 원인일 수 있어요. sudden과 quick이 함께 오면 왜 서두르는지가 한 문장에 담겨요.", d: "mild", k: ["갑작스러운 두통은 진통제만 드시면 돼요", "두통이 있으면 먼저 눈을 감고 쉬세요"], a: "quick", o: ["routine", "regular", "gentle"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "혈압 조절 안내 4문장 순서"
+    why: "치료 전에 혈압을 낮춰야 한다고 알리고, 그 목표를 위해 약을 쓴다고 하고, 약이 들어간 뒤 일정 시간 뒤 재측정을 예고하고, 그때까지 시야나 두통 변화를 알려 달라고 해요. 뒤 줄이 앞 줄을 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "Your blood pressure needs to come down before treatment.", icon: monitor, ko: "치료 전에 혈압을 낮춰야 해요", note: "목표"}
+    - {en: "To get it there, we'll give medication to lower it safely.", icon: pill, ko: "거기까지 안전하게 낮추도록 약을 드릴게요", note: "투약"}
+    - {en: "After that goes in, I'll check your pressure again in fifteen minutes.", icon: monitor, ko: "그 약이 들어간 뒤 15분 후에 혈압을 다시 잴게요", note: "재측정"}
+    - {en: "Until then, let me know right away if your vision changes or your headache gets worse.", icon: bell, ko: "그때까지 시야가 변하거나 두통이 심해지면 바로 알려 주세요", note: "보고"}
+  ctx: {word: "headache", ko: "두통"}
+- title: TIA 증상 소실
+  s:
+  - {t: "경고 신호", i: siren, w: "증상이 사라져도 TIA는 곧 뇌졸중이 올 수 있다는 경고예요. Even though로 이미 나았다는 환자의 생각을 먼저 인정한 뒤 반박해요.", d: "false alarm", k: ["증상이 다시 나타나면 바로 알려 주세요", "증상이 사라진 시각을 기록할게요"], a: "serious", o: ["minor", "harmless", "common"]}
+  - {t: "검사 필요성", i: lab, w: "TIA 뒤에는 원인을 찾는 검사로 뇌졸중을 막아요. full stroke는 증상이 남는 본격적인 뇌졸중이라 이미 지나간 증상과 구분돼요.", d: "a heart attack", k: ["검사 결과는 가족에게 먼저 전달할게요", "검사를 위해 금식이 필요한지 확인할게요"], a: "tests", o: ["medication", "rest", "surgery"]}
+  - {t: "입원 권유", i: hospital, w: "Please stay는 명령이 아니라 부탁이고 so we can …으로 남아야 하는 이유를 바로 이어 붙였어요. 이유가 있으면 환자가 받아들이기 쉬워요.", d: "relax", k: ["원인은 가족에게 먼저 설명할게요", "원인을 찾는 동안 먹는 건 잠시 쉬어요"], a: "find", o: ["fix", "report", "explain"]}
+  - {t: "재발 가능성", i: faceWorried, w: "TIA를 흔히 미니 뇌졸중이라고 불러요. likely로 확정이 아닌 가능성을 말하고 can happen again으로 다시 올 수 있다는 점을 숨기지 않아요.", d: "a bad dream", k: ["이건 편두통일 가능성이 높아요", "이건 발작일 가능성이 높아요"], a: "mini-stroke", o: ["seizure", "migraine", "panic attack"]}
+  - {t: "퇴원 위험", i: siren, w: "Going home now로 지금 가는 것의 결과를 직접 말해 주면 환자가 선택의 대가를 이해해요. 비난이 아니라 이유를 밝히는 말투예요.", d: "Waiting", k: ["지금 집에 가시면 약이 부족할 수 있어요", "지금 집에 가시려면 서류가 필요해요"], a: "why", o: ["when", "where", "whether"]}
+  - {t: "치료 안 할 때", i: chartup, w: "Without treatment로 시작해 치료를 받지 않았을 때의 결과를 먼저 보여 줘요. 위험이 오른다는 사실을 과장 없이 말해요.", d: "your bill for", k: ["치료받지 않으면 퇴원이 늦어져요", "치료받지 않으면 약이 부족해요"], a: "real", o: ["small", "mild", "second"]}
+  - {t: "검사 목적", i: lab, w: "검사로 원인을 찾으면 같은 원인이 또 뇌졸중을 일으키지 않게 막는 치료를 고를 수 있어요. another one은 앞에서 말한 뇌졸중을 가리켜 되풀이하지 않아요.", d: "the answer", k: ["검사 결과는 한 달 뒤에 알 수 있어요", "검사 결과로 퇴원 날짜를 정해요"], a: "another one", o: ["a fall", "an infection", "a fever"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "TIA 후 입원 권유 4문장 순서"
+    why: "증상이 지나갔어도 경고였다고 알리고, 그것이 미니 뇌졸중일 가능성과 재발을 말하고, 그래서 검사가 필요하다고 이유를 잇고, 집에 가면 그 검사를 못 하니 남아 달라고 해요. 뒤 줄이 앞 줄을 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "Even though it passed, this was a serious warning sign.", icon: siren, ko: "지나갔더라도 이건 심각한 경고 신호였어요", note: "경고"}
+    - {en: "It was likely a mini-stroke, and it can happen again.", icon: faceWorried, ko: "미니 뇌졸중일 가능성이 높고 다시 올 수 있어요", note: "재발"}
+    - {en: "That's why we need tests to find the cause and prevent a full stroke.", icon: lab, ko: "그래서 원인을 찾고 본격적인 뇌졸중을 막을 검사가 필요해요", note: "이유"}
+    - {en: "Going home now would mean skipping those tests, so please stay.", icon: hospital, ko: "지금 가시면 그 검사를 못 하게 되니 남아 주세요", note: "권유"}
+  ctx: {word: "stay", ko: "머무르다"}
+- title: 출혈성 뇌졸중 급성 악화
+  s:
+  - {t: "의식 유지", i: bell, w: "의식이 떨어지는 환자에게는 눈을 뜨게 하는 지시로 반응을 확인해요. stay with me는 놓치지 않겠다는 뜻이라 곁에 있다는 안정감을 줘요.", d: "rest now", k: ["눈을 감고 천천히 숨을 쉬세요", "제 손을 쥐어 보실 수 있나요?"], a: "eyes", o: ["mouth", "hand", "fist"]}
+  - {t: "기도 보호", i: shield, w: "의식이 떨어진 환자가 토하면 토사물이 기도로 들어가 흡인될 수 있어서 기도부터 지켜요. if you keep …은 지금 하는 일의 조건을 알려 줘요.", d: "while you sleep", k: ["구토약을 바로 드릴게요", "토한 양을 기록할게요"], a: "vomiting", o: ["coughing", "bleeding", "seizing"]}
+  - {t: "상태 설명", i: siren, w: "위험할 만큼 혈압이 높다는 사실과 지금 치료 중이라는 행동을 한 문장에 함께 말해요. 겁만 주지 않고 대응하고 있다는 안심을 같이 전해요.", d: "a little high", k: ["혈압을 다시 재 볼게요", "혈압이 높은 이유를 알아볼게요"], a: "high", o: ["low", "unstable", "irregular"]}
+  - {t: "반응 확인", i: me, w: "두 가지 지시를 함께 주면 손 쥐기와 눈 뜨기로 의식과 운동 반응을 한 번에 볼 수 있어요. for me로 부탁하는 말투를 유지해요.", d: "your own hand", k: ["제 손을 잡고 일어나 보실 수 있나요?", "눈을 감고 제 이름을 말해 보세요"], a: "hand", o: ["foot", "arm", "shoulder"]}
+  - {t: "체위 변경", i: bandage, w: "의식이 떨어지고 구토 위험이 있으면 옆으로 눕혀 토사물이 입 밖으로 흐르게 해서 기도를 보호해요. to protect your airway로 몸을 돌리는 이유를 바로 말해요.", d: "to check your back", k: ["침대를 올려 앉혀 드릴게요", "몸을 닦아 드릴게요"], a: "side", o: ["back", "stomach", "stretcher"]}
+  - {t: "치료 중 안내", i: pill, w: "지금 약을 쓰고 있다고 말하면 환자와 가족이 아무 일도 안 하고 있는 게 아니라는 걸 알아요. to bring … down으로 목적을 밝혀요.", d: "up", k: ["수액을 지금 연결할게요", "혈압이 조금 내려갔는지 다시 잴게요"], a: "pressure", o: ["sugar", "fever", "pain"]}
+  - {t: "의식 격려", i: bell, w: "Stay with me는 의식이 흐려지는 환자에게 계속 반응해 달라는 관용 표현이에요. if you can을 붙이면 못 해도 괜찮다는 배려가 담겨요.", d: "rest your eyes", k: ["제 목소리가 들리면 눈을 깜빡여 보세요", "가족 이름을 말해 보실 수 있나요?"], a: "Stay with me", o: ["Talk to me", "Listen to me", "Look at me"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "출혈성 뇌졸중 악화 응대 4문장 순서"
+    why: "의식을 붙잡는 말로 시작하고, 그동안 혈압약을 쓴다고 알리고, 치료 중 구토가 이어지면 옆으로 돌려 기도를 지키고, 옆으로 누운 상태에서 반응을 다시 확인해요. 뒤 줄이 앞 줄을 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "Stay with me and keep your eyes open if you can.", icon: bell, ko: "정신 잃지 마시고 가능하면 눈을 뜨고 계세요", note: "격려"}
+    - {en: "While you do that, we're giving medication right now to bring your pressure down.", icon: pill, ko: "그동안 혈압을 낮추려고 지금 약을 드리고 있어요", note: "투약"}
+    - {en: "If you keep vomiting during that, we're turning you on your side to protect your airway.", icon: shield, ko: "그러는 중 계속 토하면 기도를 보호하려고 옆으로 돌려 드려요", note: "체위"}
+    - {en: "Once you're on your side, can you squeeze my hand and open your eyes for me?", icon: me, ko: "옆으로 누우면 제 손을 쥐고 눈을 떠 보실 수 있나요?", note: "반응"}
+  sw: {ko: "계속 구토하시면 기도를 보호할게요"}
+- title: 대혈관 폐색 혈전제거술 이송
+  s:
+  - {t: "시술 필요성", i: scalpel, w: "큰 혈관이 막힌 경우 약만으로는 부족할 수 있어서 기구로 혈전을 직접 빼내는 시술을 고려해요. physically는 약으로 녹이는 것과 구분해 줘요.", d: "scan", k: ["큰 혈전은 약으로 이미 녹았어요", "혈전이 있는지는 아직 알 수 없어요"], a: "large", o: ["small", "soft", "fresh"]}
+  - {t: "이송 안내", i: hospital, w: "혈관 내 혈전제거술은 영상으로 혈관을 보며 하는 시술이라 전용 시술실로 옮겨요. immediately는 시간이 곧 뇌 조직이라서 지체 없이 간다는 뜻이에요.", d: "later today", k: ["그는 중환자실로 먼저 옮길 거예요", "그는 퇴원 준비를 해야 해요"], a: "cath lab", o: ["x-ray room", "step-down unit", "waiting room"]}
+  - {t: "동의 요청", i: pencil, w: "so we don't lose time으로 서두르는 이유를 붙이면 압박이 아니라 설명으로 들려요. 설명 동의는 시술 의사가 받고, 간호사는 서명에 입회하며 이해했는지 확인해요.", d: "your opinion", k: ["동의서는 시술 후에 받을게요", "동의서는 의사가 이미 받았어요"], a: "consent", o: ["insurance", "address", "ID"]}
+  - {t: "시술 설명", i: scalpel, w: "혈전을 빼내면 막혔던 혈관에 피가 다시 흐르고 뇌 조직이 살아날 기회가 생겨요. 시술 이름보다 결과를 먼저 말하면 가족이 이해하기 쉬워요.", d: "wash the clot out", k: ["이 시술은 혈전을 약으로 녹여요", "이 시술은 뇌압을 낮춰요"], a: "restore", o: ["measure", "reduce", "redirect"]}
+  - {t: "준비 안내", i: bell, w: "시술팀이 이미 대기 중이라고 알리면 가족이 왜 서두르는지, 어떤 시간이 아껴지는지 이해해요. right now로 지금 상태임을 분명히 해요.", d: "all night", k: ["팀이 곧 병실로 올라올 거예요", "팀이 그의 검사 결과를 보고 있어요"], a: "ready", o: ["upstairs", "outside", "nearby"]}
+  - {t: "시간 긴급성", i: siren, w: "뇌졸중에서는 치료가 늦어질수록 더 많은 뇌 조직이 손상돼요. Every minute으로 지체의 비용을 구체적으로 말하면 가족이 서둘러야 하는 이유를 이해해요.", d: "Every week", k: ["치료 시간이 지날수록 비용이 올라가요", "치료 전에 몇 가지 검사를 더 해야 해요"], a: "brain", o: ["heart", "muscle", "skin"]}
+  - {t: "서명 요청", i: pencil, w: "so we can …으로 서명을 부탁하는 이유를 알려요. 서명 전에 시술 의사의 설명이 끝났고 보호자가 이해했는지 확인하는 것이 중요해요.", d: "carefully", k: ["여기에 성함을 크게 읽어 주세요", "여기에 전화번호를 적어 주세요"], a: "sign", o: ["wait", "stand", "sit"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "혈전제거술 동의와 이송 4문장 순서"
+    why: "시술이 필요한 이유를 알리고, 그 시술이 어떻게 혈류를 되돌리는지 설명한 뒤, 설명이 끝난 상태에서 동의를 요청하고, 서명이 끝나면 시술실로 이송해요. 뒤 줄이 앞 줄을 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "There's a large clot we can physically remove.", icon: scalpel, ko: "물리적으로 제거할 수 있는 큰 혈전이 있어요", note: "필요"}
+    - {en: "This procedure can pull the clot out and restore blood flow.", icon: scalpel, ko: "이 시술로 혈전을 빼내 혈류를 되돌려요", note: "설명"}
+    - {en: "With all of that explained, I need your consent so we don't lose time.", icon: pencil, ko: "그 설명이 끝났으니 시간을 잃지 않게 동의가 필요해요", note: "동의"}
+    - {en: "Once you've signed, he'll transfer to the cath lab immediately.", icon: hospital, ko: "서명하시는 대로 그는 바로 시술실로 이송돼요", note: "이송"}
+  ctx: {word: "consent", ko: "동의"}

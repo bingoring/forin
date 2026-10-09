@@ -1,0 +1,90 @@
+- title: 심장압전 폐쇄성 쇼크
+  s:
+  - {t: "소견 정리", i: stetho, w: "소견 세 가지를 나열한 뒤 think로 결론을 던지는 구조예요. 저혈압·목정맥 팽창·둔탁한 심음은 심장압전의 전형적인 조합(Beck 삼징)이에요.", d: "wait and see", k: ["혈압이 낮고 맥박이 빨라요 — 출혈을 생각하세요", "혈압이 낮고 열이 있어요 — 감염을 생각하세요"], a: "muffled", o: ["loud", "clear", "sharp"]}
+  - {t: "장비 지시", i: monitor, w: "두 지시를 and로 묶어 한 번에 말해요. 심낭천자는 초음파로 위치를 보며 하므로 초음파와 키트를 같이 준비해요.", d: "for the scan", k: ["엑스레이를 가져오고 흉관 키트를 요청하세요", "초음파를 끄고 환자를 눕히세요"], a: "ultrasound", o: ["ECG", "defibrillator", "monitor"]}
+  - {t: "임시 조치", i: bandage, w: "while로 동시에 하는 일을 묶어요. 심장압전에서는 배액 전까지 수액으로 심장 충만압을 높여 혈압을 잠시 받쳐요.", d: "after the drain", k: ["혈압을 재면서 배액을 준비하세요", "환자를 눕히면서 배액을 준비하세요"], a: "while", o: ["after", "before", "once"]}
+  - {t: "소견 보고", i: magnify, w: "look big처럼 보이는 그대로 말하는 관찰 보고예요. 목 정맥 팽창과 둔탁한 심음은 심낭에 액체가 차 심장이 눌리고 있다는 단서예요.", d: "from the side", k: ["그녀의 목에 멍이 들었고 숨소리가 약해요", "그녀의 맥이 빠르고 팔다리가 차요"], a: "veins", o: ["glands", "muscles", "nodes"]}
+  - {t: "준비 지시", i: siren, w: "Get … ready로 준비를 지시하고 may need로 가능성을 말해요. 심낭천자는 의사가 시행하고 간호사는 키트·초음파·모니터를 미리 갖춰 시간을 줄여요.", d: "tomorrow morning", k: ["키트를 열지 말고 의사를 기다리세요", "의사가 오기 전에 키트를 설명해 두세요"], a: "ready", o: ["sterile", "labeled", "wrapped"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "심장압전 대응 4문장 순서"
+    why: "소견을 보고하고, 그 소견을 근거로 초음파와 키트를 부르고, 초음파로 확인되면 배액 준비를 지시하고, 그 배액을 준비하는 동안 수액을 줍니다. 'those findings'·'it'·'the drain'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Her neck veins look big and her heart tones are muffled.", icon: magnify, ko: "목 정맥이 부풀어 보이고 심음이 둔탁해요", note: "소견"}
+    - {en: "With those findings, get the ultrasound and call for a pericardiocentesis kit.", icon: monitor, ko: "그 소견이면 초음파를 가져오고 심낭천자 키트를 요청하세요", note: "장비"}
+    - {en: "If it confirms tamponade, get the kit ready — we may need to drain this now.", icon: siren, ko: "그게 심장압전이면 키트를 준비하세요 — 지금 배액해야 할 수 있어요", note: "준비"}
+    - {en: "Give a fluid bolus while we prepare the drain.", icon: bandage, ko: "배액을 준비하는 동안 수액 볼루스를 주세요", note: "수액"}
+  ctx: {word: "drain", ko: "배액하다"}
+- title: 소화관 대량출혈 쇼크
+  s:
+  - {t: "프로토콜", i: siren, w: "Activate는 한 번 호출하면 혈액은행·검사실·약국이 함께 움직이는 절차를 시작한다는 뜻이에요. 대량수혈 프로토콜은 적혈구·혈장·혈소판을 미리 정한 비율로 빠르게 내보내요.", d: "for the family", k: ["혈액은행에 상황을 설명하러 가세요", "수혈 동의서를 먼저 받아 오세요"], a: "massive", o: ["routine", "standard", "regular"]}
+  - {t: "접근 확보", i: bandage, w: "명사구와 지시를 짧게 이어 급박한 상황의 말투를 보여 줘요. 혈액형을 확인하기 전에는 O형 음성 혈액을 쓰고 굵은 정맥로 두 개로 빠르게 넣어요.", d: "in the hall", k: ["정맥로는 하나만 잡고 천천히 주세요", "정맥로 두 개를 잡고 채혈하세요"], a: "blood", o: ["saline", "oxygen", "plasma"]}
+  - {t: "협진 요청", i: speech, w: "emergent는 응급으로 지금 해야 한다는 뜻이에요. 위장관 출혈은 내시경으로 출혈 부위를 찾고 지혈할 수 있어서 소화기내과에 바로 연락해요.", d: "tomorrow", k: ["외과에 연락해 수술 일정을 잡으세요", "영상의학과에 CT를 요청하세요"], a: "emergent", o: ["routine", "elective", "outpatient"]}
+  - {t: "상태 보고", i: faceWorried, w: "관찰한 모습을 그대로 말하는 보고예요. 토혈과 창백함은 출혈량이 많다는 눈에 보이는 단서라 수치를 확인하기 전에도 위급도를 짐작할 수 있어요.", d: "since noon", k: ["그는 피를 토하고 열이 많이 나요", "그는 구토를 하고 얼굴이 붉어요"], a: "pale", o: ["red", "flushed", "calm"]}
+  - {t: "접근 유지", i: bandage, w: "Keep …running은 지금 있는 것을 끊지 말라는 지시예요. 대량 출혈에서는 굵은 정맥로 두 개가 있어야 수혈과 수액이 끊기지 않고 들어가요.", d: "for the lab", k: ["정맥로를 하나 빼서 채혈하세요", "정맥로를 소독하고 닫아 두세요"], a: "running", o: ["clamped", "flushed", "labeled"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "대량 위장관 출혈 대응 4문장 순서"
+    why: "상태를 보고하고, 그 상태를 근거로 프로토콜을 가동하고, 그 혈액을 받을 정맥로를 유지하고, 라인이 돌아가면 내시경을 요청합니다. 'Given that'·'receive it'·'those lines'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "He's vomiting blood and looks very pale and weak.", icon: faceWorried, ko: "피를 토하고 있고 매우 창백하고 힘이 없어 보여요", note: "보고"}
+    - {en: "Given that, activate the massive transfusion protocol now.", icon: siren, ko: "그렇다면 지금 대량수혈 프로토콜을 가동하세요", note: "가동"}
+    - {en: "To receive it, keep two large IV lines running.", icon: bandage, ko: "그걸 받으려면 굵은 정맥로 두 개를 유지하세요", note: "정맥로"}
+    - {en: "Once those lines are going, call GI for emergent endoscopy.", icon: speech, ko: "그 라인들이 돌아가면 응급 내시경을 위해 소화기내과에 연락하세요", note: "협진"}
+  ctx: {word: "activate", ko: "가동하다"}
+- title: 신경성 쇼크 척수손상
+  s:
+  - {t: "감별 소견", i: monitor, w: "A with B points to C 구조로 소견 두 가지를 묶어 결론을 가리켜요. 보통 저혈압에는 맥박이 빨라지는데, 느린 맥박이 함께 있으면 신경성 쇼크를 의심해요.", d: "with a fever", k: ["혈압이 낮고 맥박이 빨라서 출혈이 의심돼요", "혈압이 낮고 열이 있어서 패혈증이 의심돼요"], a: "slow", o: ["fast", "strong", "normal"]}
+  - {t: "척추 보호", i: shield, w: "대시 뒤에 구체적 금지 사항을 붙여 무엇이 척추 보호인지 보여 줘요. 척수 손상이 의심되면 목과 척추를 일직선으로 고정해 이차 손상을 막아요.", d: "on his side", k: ["통나무 굴리듯 한 번에 돌리세요", "경추 보조기를 더 꽉 조이세요"], a: "spinal", o: ["fall", "seizure", "bleeding"]}
+  - {t: "치료 제안", i: pill, w: "consider로 의사에게 제안하는 완곡한 지시예요. 신경성 쇼크는 혈관이 늘어나고 맥박이 느려져서 수액에 승압제를, 느린 맥박에는 아트로핀을 고려해요.", d: "and a steroid", k: ["수액을 멈추고 승압제만 쓰세요", "수액과 함께 이뇨제를 고려하세요"], a: "atropine", o: ["naloxone", "heparin", "lidocaine"]}
+  - {t: "소견 해석", i: stetho, w: "suggest로 단정하지 않고 시사한다고 말해요. 척수 손상 환자에서 저혈압과 서맥이 함께 오면 교감신경이 끊긴 신경성 쇼크를 의심하되 출혈도 같이 배제해요.", d: "his fast breathing", k: ["그의 빠른 맥박과 낮은 혈압은 출혈 쇼크를 시사해요", "그의 열과 낮은 혈압은 패혈증 쇼크를 시사해요"], a: "neurogenic", o: ["septic", "cardiogenic", "hypovolemic"]}
+  - {t: "계획 안내", i: compass, w: "if fluids don't fix로 조건을 앞서 말해 승압제가 둘째 단계임을 알려요. 신경성 쇼크도 먼저 수액을 쓰고, 수액만으로 혈압이 안 오르면 승압제를 더해요.", d: "after the scan", k: ["수액으로 혈압이 오르면 승압제를 끊을게요", "혈압이 오르면 수액을 더 빨리 줄게요"], a: "pressor", o: ["steroid", "diuretic", "sedative"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "신경성 쇼크 대응 4문장 순서"
+    why: "소견으로 신경성 쇼크를 가리키고, 그 판단으로 척추를 고정하게 하고, 목이 고정된 동안 수액과 약을 제안하고, 수액이 부족하면 승압제를 쓴다고 이어요. 'that in mind'·'his neck stays still'·'those fluids'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Low pressure with a slow heart rate points to neurogenic shock.", icon: monitor, ko: "혈압은 낮고 맥박은 느려서 신경성 쇼크가 의심돼요", note: "소견"}
+    - {en: "With that in mind, keep full spinal precautions — don't move his neck.", icon: shield, ko: "그걸 염두에 두고 척추 고정을 유지하세요 — 목을 움직이지 마세요", note: "고정"}
+    - {en: "While his neck stays still, give fluids and consider a pressor and atropine.", icon: pill, ko: "목이 고정된 동안 수액을 주고 승압제와 아트로핀도 고려하세요", note: "치료"}
+    - {en: "If those fluids don't fix his pressure, we'll give a pressor.", icon: compass, ko: "그 수액으로 혈압이 안 오르면 승압제를 줄게요", note: "계획"}
+  ctx: {word: "precaution", ko: "주의 조치"}
+- title: 다장기 악화 SBAR·ICU 이송
+  s:
+  - {t: "상황 보고", i: board, w: "Situation:으로 시작해 SBAR의 첫 칸임을 알려요. 한 줄에 진단·치료·현재 상태를 담아 듣는 사람이 가장 중요한 점을 먼저 잡게 해요.", d: "Assessment:", k: ["배경: 오래 전부터 고혈압이 있었어요", "권고: 중환자실로 옮기겠습니다"], a: "septic", o: ["cardiogenic", "neurogenic", "hemorrhagic"]}
+  - {t: "변화 보고", i: chartup, w: "과거형 dropped와 현재진행 is climbing을 맞춰 써서 이미 일어난 변화와 지금 진행 중인 변화를 구분해요. 소변량 감소와 젖산 상승은 장기 관류가 나빠지고 있다는 신호예요.", d: "stayed flat", k: ["그녀의 체온이 올랐고 호흡수는 느려졌어요", "그녀의 혈당이 떨어지고 칼륨이 올라가고 있어요"], a: "climbing", o: ["falling", "clearing", "stable"]}
+  - {t: "권고", i: hospital, w: "I recommend …는 SBAR의 R(권고)로 요청을 분명히 말하는 틀이에요. 승압제가 둘 필요한 환자는 중환자실 수준의 감시와 중심 라인이 필요해 입실을 권해요.", d: "a short stay", k: ["퇴원을 권고합니다", "일반 병동 입원을 권고합니다"], a: "ICU", o: ["ward", "rehab", "hospice"]}
+  - {t: "평가", i: chartup, w: "despite로 치료 중에도 나빠진다는 대비를 한 문장에 담아요. 승압제를 두 개 쓰는데도 혈압이 떨어지는 것은 쇼크가 매우 심하다는 가장 강한 근거예요.", d: "thanks to fluids", k: ["두 승압제를 쓰기 시작한 지 한 시간 됐어요", "승압제 두 가지 모두 용량을 올렸어요"], a: "despite", o: ["because of", "without", "after"]}
+  - {t: "권고", i: hospital, w: "I think she needs …로 권고를 단정하지 않고 완곡하게 말해요. 보고받는 사람에게 결정할 여지를 두면서도 필요한 것을 분명히 전해요.", d: "at home", k: ["제 생각엔 그녀가 퇴원해도 될 것 같아요", "제 생각엔 그녀가 수술이 필요해 보여요"], a: "needs", o: ["wants", "avoids", "declines"]}
+  order:
+    tag: "SBAR"
+    icon: compass
+    ko: "ICU 이송 SBAR 4문장 순서"
+    why: "상황을 말하고, 그 치료 뒤의 변화를 보고하고, 그 악화 때문에 승압제를 더했는데도 혈압이 떨어진다고 평가한 뒤, 권고로 마칩니다. 'that'·'Because of that'·'the second pressor'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Situation: septic shock on norepinephrine, still hypotensive.", icon: board, ko: "상황: 노르에피네프린을 쓰는 패혈증성 쇼크, 여전히 저혈압이에요", note: "상황"}
+    - {en: "Since I started that, her urine output dropped and lactate is climbing.", icon: chartup, ko: "그걸 시작한 뒤 소변량이 줄고 젖산이 올라가고 있어요", note: "경과"}
+    - {en: "Because of that, we added a second pressor, but her pressure keeps dropping.", icon: monitor, ko: "그래서 승압제를 하나 더했는데도 혈압이 계속 떨어져요", note: "평가"}
+    - {en: "Given the second pressor, I recommend ICU admission and central monitoring now.", icon: hospital, ko: "두 번째 승압제까지 쓰고 있으니 지금 중환자실 입원과 집중 감시를 권합니다", note: "권고"}
+  ctx: {word: "hypotensive", ko: "저혈압인"}
+- title: 부신위기 저혈압
+  s:
+  - {t: "복약 문진", i: pill, w: "When …, and why …로 시점과 이유를 한 문장에서 물어요. why did you stop은 추궁보다 사정을 묻는 말이라 환자가 비용이나 부작용 같은 이유를 말하기 쉬워요.", d: "by mistake", k: ["스테로이드를 얼마나 오래 드셨나요?", "스테로이드 용량이 얼마였나요?"], a: "steroid", o: ["antibiotic", "vitamin", "laxative"]}
+  - {t: "위험 설명", i: faceWorried, w: "can cause로 거르는 일과 위기 사이의 인과를 짧게 알려요. 오래 스테로이드를 쓰면 몸이 스스로 코르티솔을 덜 만들어서 갑자기 거르면 부신위기가 올 수 있어요.", d: "on weekends", k: ["스테로이드를 먹으면 위가 쓰릴 수 있어요", "스테로이드를 먹으면 살이 찔 수 있어요"], a: "dangerous", o: ["minor", "short", "usual"]}
+  - {t: "치료 안내", i: pill, w: "right away로 바로 시작한다고 알려요. 부신위기에는 하이드로코르티손과 수액을 늦추지 않고 줘서 모자란 코르티솔과 수분을 채워요.", d: "after the test", k: ["스테로이드를 끊고 수액만 드릴게요", "진통제와 수액을 드릴게요"], a: "hydrocortisone", o: ["morphine", "insulin", "heparin"]}
+  - {t: "복약 교육", i: bulb, w: "can't just …로 갑자기 끊지 말라는 금지를 부드럽게 전해요. without a plan은 의사와 상의해 단계적으로 줄이는 방법이 따로 있다는 뜻이에요.", d: "for a day", k: ["스테로이드는 아침에 한 번만 드세요", "스테로이드는 우유와 함께 드세요"], a: "suddenly", o: ["quietly", "partly", "twice"]}
+  - {t: "치료 안내", i: shield, w: "to help prevent로 약의 목적을 알려요. 몸이 아플 때는 코르티솔 필요량이 늘어서 미리 채워 부신위기를 막아요.", d: "after the lab", k: ["위기가 오면 하이드로코르티손을 드릴게요", "위기를 막기 위해 수액을 줄일게요"], a: "crisis", o: ["seizure", "stroke", "relapse"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "부신위기 설명 4문장 순서"
+    why: "스테로이드를 끊은 사정을 묻고, 그것이 위험한 위기가 될 수 있다고 알리고, 그 위기를 막으려 약을 준다고 하고, 약이 들어간 뒤 갑자기 끊지 말라고 교육해요. 'it'·'that'·'the hydrocortisone'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "When did you last take your steroid, and why did you stop?", icon: pill, ko: "스테로이드를 마지막으로 언제 드셨고 왜 중단하셨어요?", note: "문진"}
+    - {en: "I see. Missing it can cause a dangerous crisis.", icon: faceWorried, ko: "그렇군요. 거르면 위험한 위기가 올 수 있어요", note: "위험"}
+    - {en: "To help prevent that, we'll give hydrocortisone and fluids right away.", icon: pill, ko: "그걸 막으려고 하이드로코르티손과 수액을 바로 드릴게요", note: "치료"}
+    - {en: "When the hydrocortisone has done its job, remember that steroids can't just stop suddenly without a plan.", icon: bulb, ko: "하이드로코르티손이 효과를 내면, 스테로이드는 계획 없이 갑자기 끊으면 안 된다는 걸 기억하세요", note: "교육"}
+  sw: {ko: "스테로이드를 혼자 판단해서 끊지 마세요"}

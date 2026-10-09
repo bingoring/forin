@@ -1,0 +1,45 @@
+# core-handoff-icu v45 단어 필드 (2/6)
+w-allergic: {exKo: "페니실린에 알레르기가 있어요.", cue: "어떤 약에 과민 반응을 보이는 체질 — '페니실린에 ___'", tag: 안전 주의, distractorsEn: [allergenic, alert], distractorsKo: [내성이 있는, 의존적인], chips: [[al, ler, gic]], decoyChips: [ala, jic]}
+w-penicillin: {exKo: "페니실린에 알레르기가 있어요.", cue: "가장 흔한 약물 알레르기 항생제 — 아나필락시스 이력을 묻는 대상", tag: 안전 주의, distractorsEn: [amoxicillin, vancomycin], distractorsKo: [반코마이신, 세팔로스포린], chips: [[peni, cillin]], decoyChips: [pena, cilin]}
+w-cause: {exKo: "페니실린은 그녀에게 아나필락시스를 일으켜요.", cue: "그 약이 반응을 불러온다고 할 때 — 'it ___s anaphylaxis'", tag: 안전 주의, distractorsEn: [cure, carry], distractorsKo: [막다, 줄이다], chips: [[cause]], decoyChips: [cose]}
+w-anaphylaxis: {exKo: "페니실린은 그녀에게 아나필락시스를 일으켜요.", cue: "기도가 붓고 혈압이 떨어지는 전신 알레르기 반응", tag: 안전 주의, distractorsEn: [anaplasia, prophylaxis], distractorsKo: [예방 조치, 두드러기], chips: [[ana, phy, lax, is]], decoyChips: [pro, phi]}
+w-fall: {exKo: "오늘 밤 낙상 위험이 있어요.", cue: "침대에서 혼자 일어나다 넘어질 위험 — '___ risk'", tag: 안전 주의, distractorsEn: [fault, fail], distractorsKo: [욕창, 섬망], chips: [[fall]], decoyChips: [fal]}
+w-risk: {exKo: "낙상 위험 환자예요.", cue: "일이 날 수 있는 가능성 — 'fall ___', 'high ___'", tag: 안전 주의, distractorsEn: [rush, disk], distractorsKo: [이력, 증상], chips: [[risk]], decoyChips: [rusk]}
+w-contact: {exKo: "접촉주의 중이에요.", cue: "MRSA 환자 방에 가운·장갑을 입고 들어가는 격리 종류", tag: 안전 주의, distractorsEn: [droplet, airborne], distractorsKo: [비말, 공기], chips: [[con, tact]], decoyChips: [com, tract]}
+w-precaution: {exKo: "MRSA로 접촉주의 중이에요.", cue: "감염·낙상을 막으려고 지키는 조치 — 'contact ___s'", tag: 안전 주의, distractorsEn: [preparation, prescription], distractorsKo: [처방, 절차], chips: [[pre, cau, tion]], decoyChips: [pro, caus]}
+w-mrsa: {exKo: "MRSA로 접촉주의 중이에요.", cue: "메티실린이 듣지 않는 포도알균 — 접촉주의 대상", tag: 안전 주의, distractorsEn: [VRE, MSSA], distractorsKo: [반코마이신 내성 장알균, 결핵균], chips: [[MR, SA]], decoyChips: [MS, VR]}
+w-latex: {exKo: "차트에 라텍스 알레르기 표시가 있어요.", cue: "장갑·카테터 재질 — 알레르기가 있으면 대체 제품을 쓴다", tag: 안전 주의, distractorsEn: [Lasix, lactate], distractorsKo: [이뇨제, 요오드 조영제], chips: [[la, tex]], decoyChips: [lat, ix]}
+w-allergy: {exKo: "차트에 라텍스 알레르기 표시가 있어요.", cue: "약·재질에 몸이 과민하게 반응하는 것 — 손목의 빨간 밴드", tag: 안전 주의, distractorsEn: [allergen, anergy], distractorsKo: [부작용, 내성], chips: [[al, ler, gy]], decoyChips: [ala, gen]}
+w-flag: {exKo: "차트에 알레르기 표시가 있어요.", cue: "전자차트에 눈에 띄게 붙은 경고 — 'allergy ___'", tag: 안전 주의, distractorsEn: [flap, flask], distractorsKo: [밴드, 처방], chips: [[flag]], decoyChips: [flog]}
+w-chart: {exKo: "그 표시는 차트에 있어요.", cue: "환자 기록이 담긴 곳 — 'on her ___'", tag: 확인·소통, distractorsEn: [cart, card], distractorsKo: [카트, 목록], chips: [[chart]], decoyChips: [cart]}
+w-check: {exKo: "알레르기 밴드를 확인해 주세요.", cue: "투여 전에 밴드·수치를 눈으로 보고 맞는지 보는 것", tag: 확인·소통, distractorsEn: [clamp, chase], distractorsKo: [떼어 내다, 바꾸다], chips: [[check]], decoyChips: [chek]}
+w-band: {exKo: "알레르기 밴드를 확인해 주세요.", cue: "손목에 찬 띠 — 이름·알레르기를 색으로 알린다", tag: 안전 주의, distractorsEn: [bond, brand], distractorsKo: [붕대, 차트], chips: [[band]], decoyChips: [bend]}
+w-give: {exKo: "뭘 투여하든 그 전에 밴드를 확인하세요.", cue: "환자에게 약을 넣어 주는 것 — 'before you ___ anything'", tag: 주입약, distractorsEn: [hold, have], distractorsKo: [보류하다, 처방하다], chips: [[give]], decoyChips: [gave]}
+w-keep: {exKo: "격리주의를 유지해 주세요.", cue: "하던 조치를 끊지 말고 그대로 둘 때 — '___ her on'", tag: 안전 주의, distractorsEn: [kick, seek], distractorsKo: [해제하다, 시작하다], chips: [[keep]], decoyChips: [kip]}
+w-isolation: {exKo: "격리주의를 유지해 주세요.", cue: "다른 환자에게 옮지 않게 방을 따로 쓰는 조치", tag: 안전 주의, distractorsEn: [insulation, ventilation], distractorsKo: [소독, 환기], chips: [[iso, lation]], decoyChips: [in, su]}
+w-swab: {exKo: "배양 검체 결과를 기다리고 있어요.", cue: "면봉으로 코·상처를 문질러 받은 것 — MRSA 선별 검사", tag: 검사·시술, distractorsEn: [swap, stab], distractorsKo: [혈액 배양, 소변 검사], chips: [[swab]], decoyChips: [swap]}
+w-negative: {exKo: "검체 결과가 음성으로 나왔어요.", cue: "검사에서 균이 나오지 않았다 — 격리를 풀 수 있는 결과", tag: 검사·시술, distractorsEn: [positive, native], distractorsKo: [양성의, 미결의], chips: [[nega, tive]], decoyChips: [na, tiv]}
+w-correct: {exKo: "네, 맞아요.", cue: "상대가 되읽은 용량이 틀림없을 때 — 'Yes, that's ___'", tag: 확인·소통, distractorsEn: [complete, current], distractorsKo: [완료된, 현재의], chips: [[cor, rect]], decoyChips: [col, lect]}
+w-unit: {exKo: "시간당 kg당 12단위예요.", cue: "헤파린·인슐린 양을 셀 때 쓰는 말 — 'twelve ___s per kilo'", tag: 주입약, distractorsEn: [vial, ampule], distractorsKo: [바이알, 밀리리터], chips: [[unit]], decoyChips: [unet]}
+w-kilo: {exKo: "kg당, 시간당으로 투여해요.", cue: "체중당 용량을 말할 때 줄여 부르는 무게", tag: 주입약, distractorsEn: [pound, liter], distractorsKo: [파운드, 리터], chips: [[ki, lo]], decoyChips: [kee, low]}
+w-catch: {exKo: "잘 짚으셨어요, 그 부분을 분명히 할게요.", cue: "상대가 이상한 점을 잡아냈을 때 'Good ___', 말을 놓쳤을 때 'I didn't ___ that'", tag: 확인·소통, distractorsEn: [match, patch], distractorsKo: [놓치다, 반복하다], chips: [[catch]], decoyChips: [cach]}
+w-clarify: {exKo: "그 용량을 분명히 해 드릴게요.", cue: "애매한 수치를 다시 또렷하게 짚어 줄 때", tag: 확인·소통, distractorsEn: [classify, calcify], distractorsKo: [반복하다, 수정하다], chips: [[clar, ify]], decoyChips: [class, cal]}
+w-read: {exKo: "저한테 되읽어 주세요.", cue: "받아 적은 용량을 소리 내 다시 들려주는 것 — '___ it back'", tag: 확인·소통, distractorsEn: [lead, feed], distractorsKo: [받아 적다, 서명하다], chips: [[read]], decoyChips: [reed]}
+w-back: {exKo: "확인하게 되읽어 주세요.", cue: "read에 붙어 '되돌려 들려주기'를 만드는 말 — 'read it ___'", tag: 확인·소통, distractorsEn: [up, down], distractorsKo: [먼저, 나중에], chips: [[back]], decoyChips: [bak]}
+w-sure: {exKo: "둘 다 확실하게 해 둬요.", cue: "둘 다 틀림없다고 느낄 때까지 — 'so we're both ___'", tag: 확인·소통, distractorsEn: [sore, pure], distractorsKo: [안전한, 침착한], chips: [[sure]], decoyChips: [shor]}
+w-sorry: {exKo: "죄송한데, 다시 말씀해 주시겠어요?", cue: "못 들어서 다시 부탁할 때 맨 앞에 붙이는 말", tag: 확인·소통, distractorsEn: [solemn, sullen], distractorsKo: [고마운, 바쁜], chips: [[sor, ry]], decoyChips: [sar, rey]}
+w-say: {exKo: "다시 말씀해 주시겠어요?", cue: "못 들었을 때 — 'Could you ___ that again?'", tag: 확인·소통, distractorsEn: [stay, sew], distractorsKo: [쓰다, 읽다], chips: [[say]], decoyChips: [sai]}
+w-again: {exKo: "다시 말씀해 주시겠어요?", cue: "못 들은 말을 다시 청할 때 문장 끝에 — 'say that ___'", tag: 확인·소통, distractorsEn: [ahead, along], distractorsKo: [나중에, 천천히], chips: [[a, gain]], decoyChips: [gen, e]}
+w-rate: {exKo: "속도를 못 들었어요.", cue: "펌프에 거는 시간당 주입량 — 'at these ___s'", tag: 주입약, distractorsEn: [route, ratio], distractorsKo: [경로, 농도], chips: [[rate]], decoyChips: [rait]}
+w-milligram: {exKo: "50이 아니라 15밀리그램이라고 하셨죠?", cue: "1그램의 천분의 일 — 용량을 말할 때", tag: 주입약, distractorsEn: [microgram, milliliter], distractorsKo: [마이크로그램, 밀리리터], chips: [[milli, gram]], decoyChips: [micro, liter]}
+w-down: {exKo: "정지 시간은 약 10분이었어요.", cue: "심정지가 시작돼 순환이 돌아오기까지 걸린 시간 — '___ time'", tag: 소생·급변, distractorsEn: [lag, dwell], distractorsKo: [대기 시간, 이송 시간], chips: [[down]], decoyChips: [dawn]}
+w-epi: {exKo: "에피네프린을 두 차례 받았어요.", cue: "심정지에 3~5분마다 주는 약을 줄여 부른 말", tag: 소생·급변, distractorsEn: [amio, atropine], distractorsKo: [아미오다론, 아트로핀], chips: [[epi]], decoyChips: [ape]}
+w-arrest: {exKo: "심정지 후 상태이고 삽관돼 있어요.", cue: "심장이 멈춘 일 — 'post-___', 'cardiac ___'", tag: 소생·급변, distractorsEn: [arrhythmia, arousal], distractorsKo: [부정맥, 의식 회복], chips: [[ar, rest]], decoyChips: [ah, rust]}
+w-intubate: {exKo: "삽관돼 있고 안정적이에요.", cue: "기관 안에 관을 넣어 기도를 잡는 것 — 호흡기를 달기 전", tag: 소생·급변, distractorsEn: [extubate, incubate], distractorsKo: [발관하다, 흡인하다], chips: [[in, tu, bate]], decoyChips: [ex, cu]}
+w-start: {exKo: "지금 TTM을 시작해요.", cue: "새 치료에 이제 막 들어갈 때 — '지금 ___ing TTM'", tag: 목표·계획, distractorsEn: [stop, stall], distractorsKo: [멈추다, 미루다], chips: [[start]], decoyChips: [stat]}
+w-ttm: {exKo: "지금 TTM을 시작해요.", cue: "심정지 후 체온을 정해 놓고 유지하는 치료", tag: 소생·급변, distractorsEn: [TPN, TTE], distractorsKo: [정맥영양, 경흉부 심초음파], chips: [[TTM]], decoyChips: [TPN]}
+w-step: {exKo: "다음 단계는 검사와 신경학적 확인이에요.", cue: "소생 직후 이어서 할 일들 — 'next ___s'", tag: 목표·계획, distractorsEn: [stop, stub], distractorsKo: [결과, 원인], chips: [[step]], decoyChips: [stop]}
+w-lead: {exKo: "지금 12유도 심전도를 찍어 주세요.", cue: "심전도를 몇 방향에서 보느냐 — 'twelve-___'", tag: 검사·시술, distractorsEn: [load, lane], distractorsKo: [채널, 파형], chips: [[lead]], decoyChips: [leed]}
+w-lab: {exKo: "다음 단계는 검사와 신경학적 확인이에요.", cue: "피를 뽑아 보내는 혈액검사를 통틀어 — '___s are due at four'", tag: 검사·시술, distractorsEn: [lap, tab], distractorsKo: [영상, 처치], chips: [[lab]], decoyChips: [lap]}
+w-neuro: {exKo: "신경학적 확인은 매시간 예정이에요.", cue: "동공·의식·운동 반응을 보는 계통 — '___ checks'", tag: 환자 상태, distractorsEn: [nephro, pulm], distractorsKo: [신장의, 폐의], chips: [[neu, ro]], decoyChips: [nu, rho]}
+w-rosc: {exKo: "세 번째 차례 뒤에 자발순환이 돌아왔어요.", cue: "심정지 중 맥박이 다시 잡힌 순간 — 'We got ___'", tag: 소생·급변, distractorsEn: [RSI, ROM], distractorsKo: [급속 삽관, 무맥성 전기활동], chips: [[RO, SC]], decoyChips: [RS, CS]}

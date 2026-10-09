@@ -1,0 +1,105 @@
+- title: 자살 사고 초기 선별
+  s:
+  - {t: "자해 질문", i: speech, w: "any thoughts of로 행동이 아니라 '생각'부터 묻고, 생각이 있는지 직접 물어요. 자살을 직접 묻는다고 그 생각을 심어 주지 않는다는 것이 연구로 확인된 사실이에요.", d: "for your doctor", k: ["어젯밤에 잠은 좀 주무셨어요?", "지금 몸 어디가 아프세요?"], a: "thoughts", o: ["dreams", "fears", "hopes"]}
+  - {t: "계획 질문", i: magnify, w: "a plan for how로 방법이 정해져 있는지 한 번에 물어요. 막연한 생각인지 구체적인 계획인지가 위험 단계를 가르는 핵심이라, 콜롬비아 척도(C-SSRS)도 방법과 계획을 따로 올려 물어요.", d: "with your family", k: ["누가 같이 오셨어요?", "예전에 치료를 받은 적이 있으세요?"], a: "plan", o: ["reason", "diagnosis", "prescription"]}
+  - {t: "안심 전달", i: shield, w: "I want you to know로 말하는 목적을 먼저 밝히고 safe와 listening 두 가지를 약속해요. 자살 생각이 있는 환자는 판단받을까 봐 입을 닫기 쉬워서 듣는 사람이 있다는 확신이 질문보다 먼저예요.", d: "if you want", k: ["지금 가족에게 연락해 드릴까요?", "편히 앉으실 의자를 가져올게요"], a: "listening", o: ["writing", "guessing", "counting"]}
+  - {t: "질문 예고", i: bell, w: "I'm going to로 곧 시작할 일을 미리 알리고 direct로 돌려 묻지 않겠다는 것도 알려요. 예고를 들으면 환자가 마음의 준비를 할 수 있고, 갑작스러운 질문보다 방어가 줄어요.", d: "in the hallway", k: ["지금 약을 가져다 드릴게요", "잠깐 혈압을 재 볼게요"], a: "direct", o: ["vague", "random", "trivial"]}
+  - {t: "수단 접근", i: lock, w: "access to anything으로 구체적인 물건을 말하기 전에 '무엇이든'을 열어 둬요. 계획이 있어도 수단을 구하기 쉬운지가 위험을 가르고, 수단에 접근하기 어렵게 만드는 것이 가장 직접적인 예방이에요.", d: "from your doctor", k: ["집에 같이 사는 분이 있으세요?", "마지막으로 식사하신 게 언제예요?"], a: "hurt", o: ["protect", "warm", "wash"]}
+  - {t: "판단 없음", i: shield, w: "no judgment here로 환자가 두려워하는 것을 먼저 부정하고, only concern으로 이 자리의 목적을 말해요. 자살 생각은 수치심 때문에 숨기는 경우가 많아서 판단하지 않는다는 말이 솔직한 대답의 문을 열어요.", d: "about the bill", k: ["오늘은 어떻게 오셨어요?", "여기 오기 전에 어디 계셨어요?"], a: "concern", o: ["blame", "anger", "pity"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "자살 사고 선별 4문장 순서"
+    why: "먼저 안전하고 듣고 있다고 알리고, 그 말을 이어 직접적인 질문을 예고하고, 생각 유무를 묻고, 생각이 있을 때에만 방법을 이어 묻는 흐름이에요. 'With that in mind'와 'If you have'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "I want you to know you're safe here and I'm listening.", icon: shield, ko: "여기서는 안전하고 제가 듣고 있다는 걸 알아주세요", note: "안심"}
+    - {en: "With that in mind, I'm going to ask you some direct questions.", icon: bell, ko: "그 점을 마음에 두고, 직접적인 질문을 드릴게요", note: "예고"}
+    - {en: "Have you had any thoughts of ending your life?", icon: speech, ko: "삶을 끝내려는 생각이 든 적이 있나요?", note: "생각"}
+    - {en: "If you have, do you have a plan for how you would do it?", icon: magnify, ko: "그런 생각이 있었다면, 어떻게 할지 계획이 있나요?", note: "계획"}
+  sw: {ko: "스스로 목숨을 끊을 생각을 하고 계신가요?"}
+- title: 소지품·환경 안전 점검
+  s:
+  - {t: "맡아 두기", i: lock, w: "hold onto…for now로 빼앗는 것이 아니라 잠시 맡는다는 뜻을 담고, For your safety로 이유를 앞에 둬요. 임시라는 말이 있어야 환자가 물건이 사라진다고 느끼지 않아요.", d: "for the doctor", k: ["지금 입고 계신 옷은 갈아입으실게요", "보험증을 보여 주시겠어요?"], a: "hold onto", o: ["give away", "throw out", "sell off"]}
+  - {t: "돌려줄 약속", i: check, w: "You'll get…back으로 돌려준다는 약속을 퇴원이라는 시점과 함께 줘요. 언제 돌려받는지 모르는 환자는 물건을 빼앗긴다고 느껴 협조를 거부하기 쉬워요.", d: "from the desk", k: ["오늘 밤은 이 방에서 지내실 거예요", "가족분께 연락해 드릴까요?"], a: "discharged", o: ["examined", "weighed", "scanned"]}
+  - {t: "모두에게 적용", i: shield, w: "everyone in this room으로 특정 환자를 의심해서가 아니라 방 전체의 규칙임을 밝혀요. 개인을 겨냥한 조치로 들리면 낙인찍혔다고 느끼기 쉬워서 같은 규칙이 모두에게 적용된다는 사실을 먼저 말해요.", d: "at night", k: ["이 방은 간호사실에서 잘 보여요", "식사는 곧 가져다 드릴게요"], a: "everyone", o: ["no one", "someone", "the doctor"]}
+  - {t: "물건 맡기", i: lock, w: "until you leave this room으로 맡아 두는 기간을 정해 말해요. 벨트와 신발끈은 목을 맬 때 쓸 수 있어서 자살 위험이 있는 환자에게서 먼저 치우는 물건이에요.", d: "in the hallway", k: ["이 방에는 화장실이 따로 있어요", "옷은 환자복으로 갈아입으실게요"], a: "hold", o: ["return", "replace", "repair"]}
+  - {t: "공감 먼저", i: faceWorried, w: "I know…but으로 불편함을 먼저 인정한 뒤 but으로 이유를 붙여요. 환자의 감정을 부정하지 않고 인정하면 조치를 따르게 하려는 설득이 아니라 이해로 들려요.", d: "for a moment", k: ["많이 불편하시면 담당 의사 선생님께 말씀드릴게요", "물 한 잔 드릴까요?"], a: "safe", o: ["lonely", "angry", "stuck"]}
+  - {t: "처벌 아님", i: shield, w: "This isn't punishment로 환자가 속으로 하는 해석을 먼저 말로 부정해 줘요. 소지품을 맡는 일이 벌처럼 느껴지면 반발하기 쉬워서, 방 전체의 안전 절차라고 이름을 바로잡아요.", d: "for tonight", k: ["저는 오늘 밤 담당 간호사예요", "불편한 곳이 있으면 알려 주세요"], a: "safe", o: ["quiet", "clean", "warm"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "소지품 맡기기 4문장 순서"
+    why: "먼저 맡아 두겠다고 알리고, 그 가운데 벨트와 신발끈을 구체적으로 말하고, 불편함을 인정하며 이유를 붙이고, 돌려준다는 약속으로 닫아요. 'That includes'와 'That's only temporary'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "For your safety, I need to hold onto a few items for now.", icon: lock, ko: "안전을 위해 지금은 몇 가지 물건을 맡아 둘게요", note: "알림"}
+    - {en: "That includes your belt and shoelaces, which I'll keep until you leave this room.", icon: lock, ko: "벨트와 신발끈도 포함돼요, 이 방을 나가실 때까지 보관할게요", note: "구체"}
+    - {en: "I know this feels intrusive, but it keeps you safe and it isn't punishment.", icon: faceWorried, ko: "침해적으로 느껴지겠지만 안전을 위한 것이고 처벌이 아니에요", note: "공감"}
+    - {en: "That's only temporary — when you're discharged, you'll get all of it back.", icon: check, ko: "그건 일시적이에요 — 퇴원할 때 전부 돌려받으실 거예요", note: "약속"}
+  ctx:
+    word: "belt"
+    ko: "벨트"
+- title: 자발적 정신과 내원 접수
+  s:
+  - {t: "용기 인정", i: star, w: "It took…to로 환자가 한 행동 자체를 인정해요. 도움을 청하는 일을 약함이 아니라 용기로 이름 붙이면 수치심이 줄어서 이어지는 평가에서 솔직해지기 쉬워요.", d: "with the doctor", k: ["혹시 같이 오신 분이 있으세요?", "성함과 생년월일을 확인할게요"], a: "courage", o: ["money", "luck", "practice"]}
+  - {t: "열린 질문", i: speech, w: "Can you tell me…로 정해진 답을 요구하지 않는 열린 질문으로 시작해요. 가장 힘든 부분을 환자가 직접 고르게 하면 환자가 무엇을 우선으로 보는지 알 수 있어요.", d: "about your insurance", k: ["어떤 보험을 쓰고 계세요?", "지금까지 드신 약이 있나요?"], a: "tell", o: ["show", "coach", "ask"]}
+  - {t: "안심·단계", i: shield, w: "right place로 찾아온 곳이 맞다고 확인해 주고 one step at a time으로 한꺼번에 해결해야 한다는 부담을 덜어요. 위기에 온 환자는 압도되어 있어서 작은 단위로 나눠 안내하면 따라오기 쉬워요.", d: "for today", k: ["이쪽 방으로 안내해 드릴게요", "먼저 몸무게부터 잴게요"], a: "right", o: ["wrong", "busy", "crowded"]}
+  - {t: "상황 묻기", i: speech, w: "Tell me…로 명령형이지만 me를 넣어 나에게 들려 달라는 초대로 말해요. lately로 범위를 최근으로 좁혀서 지금 왜 왔는지에 먼저 닿아요.", d: "about your diet", k: ["오늘 아침은 드셨어요?", "여기 오기 전에 어디 계셨어요?"], a: "Tell", o: ["Show", "Remind", "Teach"]}
+  - {t: "결정 인정", i: check, w: "made the right call로 온 결정을 올바른 판단으로 인정해요. 오기 전에 망설였을 환자에게 잘했다는 평가를 주면 이후 치료에 협조하기 쉬워요.", d: "about the wait", k: ["여기 오는 데 시간이 얼마나 걸렸어요?", "오시는 건 가족이 알고 계세요?"], a: "made", o: ["took", "gave", "kept"]}
+  - {t: "함께 진행", i: handshake2, w: "step by step together로 진행 방식(작은 단계)과 누구와 하는지(함께)를 같이 약속해요. 정신과 접수는 질문이 많아 보여서, 한 번에 다 하지 않는다고 알려 주면 부담이 줄어요.", d: "at home", k: ["접수가 끝나면 방으로 모실게요", "옷은 지금 입으신 그대로 괜찮아요"], a: "together", o: ["quickly", "silently", "separately"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "자발적 내원 환영 4문장 순서"
+    why: "온 용기를 인정하고, 그 용기가 곧 여기가 맞는 곳이라는 뜻이라고 이어 알리고, 힘든 점을 묻고, 어떤 이야기가 나오든 한 단계씩 간다고 닫아요. 'That tells me'와 'Whatever it is'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "It took a lot of courage to come in on your own today.", icon: star, ko: "오늘 스스로 오시기까지 큰 용기가 필요했을 거예요", note: "용기"}
+    - {en: "That tells me you're in the right place, and I'm glad you came.", icon: shield, ko: "그건 여기 잘 오셨다는 뜻이고, 오셔서 기뻐요", note: "안심"}
+    - {en: "Can you tell me what's been the hardest part lately?", icon: speech, ko: "요즘 가장 힘든 부분이 무엇이었는지 말씀해 주시겠어요?", note: "질문"}
+    - {en: "Whatever it is, we'll take it one step at a time.", icon: handshake2, ko: "무엇이든 한 단계씩 해 나갈 거예요", note: "함께"}
+  ctx:
+    word: "psych eval"
+    ko: "정신과 평가"
+    sc:
+      0: {en: "Pt self-presented requesting psych eval."}
+- title: 공황발작 첫 대응
+  s:
+  - {t: "공황 안심", i: shield, w: "You're safe에 이어 will pass로 일시적이라는 것과 right here로 곁에 있다는 것을 한 문장에 담아요. 공황 증상은 대개 몇 분 안에 정점을 지나기 때문에 지나간다는 말은 사실에 근거한 안심이에요.", d: "at the hospital", k: ["가슴이 아프면 바로 말씀해 주세요", "어지러우면 침대에 눕혀 드릴게요"], a: "feeling", o: ["noise", "smell", "taste"]}
+  - {t: "호흡 유도", i: speech, w: "Let's로 지시가 아니라 같이 하자는 말로 시작하고 in for four, out for four로 세는 숫자를 줘요. 숫자를 세며 천천히 쉬면 빠른 호흡이 늦춰져서 어지러움과 손 저림이 가라앉는 데 도움이 돼요.", d: "in the room", k: ["지금 통증이 몇 점인지 말씀해 주세요", "손을 이쪽으로 주시겠어요?"], a: "breathe", o: ["sing", "whisper", "stretch"]}
+  - {t: "원인 확인", i: stetho, w: "working hard로 빠르게 뛰는 심장을 위험하다는 말 대신 '열심히 일하는 중'으로 설명하고 but 뒤에 전부 확인한다는 사실을 줘요. 공황과 심장 문제는 증상이 겹치므로 안심시키면서도 검사로 확인하는 것이 안전해요.", d: "for you", k: ["심장약은 드시고 계세요?", "지금 가슴이 많이 아프세요?"], a: "hard", o: ["slowly", "quietly", "lightly"]}
+  - {t: "활력징후", i: monitor, w: "I need to로 선택이 아니라 필요한 확인이라고 분명히 말하고 right now로 지금 한다고 알려요. 숨이 가쁜 환자는 심박수와 산소포화도로 신체 원인을 먼저 가려야 공황으로 판단할 수 있어요.", d: "after lunch", k: ["이 약을 드시면 졸릴 수 있어요", "화장실에 가고 싶으세요?"], a: "oxygen", o: ["address", "insurance", "allergies"]}
+  - {t: "느낌 설명", i: faceWorried, w: "It feels like…but으로 환자가 느끼는 공포를 부정하지 않고 인정한 뒤 몸은 안전하다는 사실로 대비시켜요. 공황 중에는 위험하다는 느낌이 실제 위험과 다를 수 있다고 알려 주는 방식이에요.", d: "in the hallway", k: ["숨이 차면 바로 말씀해 주세요", "물이 필요하시면 가져다 드릴게요"], a: "terrible", o: ["minor", "harmless", "pleasant"]}
+  - {t: "곁을 지킴", i: shield, w: "staying right here로 환자를 혼자 두지 않겠다는 약속을 구체적인 위치와 함께 말해요. 공황 중에는 혼자라는 느낌이 불안을 키우므로 곁에 사람이 있다는 사실이 큰 도움이 돼요.", d: "for the doctor", k: ["의사 선생님이 곧 오실 거예요", "보호자분께 연락해 드릴까요?"], a: "staying", o: ["moving", "calling", "dancing"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "공황발작 첫 대응 4문장 순서"
+    why: "안전하다고 먼저 안심시키고, 그 느낌이 지나가도록 같이 호흡하게 하고, 심장 설명으로 이어 확인한다고 알리고, 그 모든 확인 내내 곁에 있겠다고 닫아요. 'it'과 'all of it'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "You're safe — this feeling will pass, and I'm right here with you.", icon: shield, ko: "안전해요 — 이 느낌은 지나갈 거고 제가 곁에 있어요", note: "안심"}
+    - {en: "To help it pass, let's breathe together, in for four, out for four.", icon: speech, ko: "지나가도록 함께 숨을 쉬어요, 넷 들이쉬고 넷 내쉬고요", note: "호흡"}
+    - {en: "Your heart is working hard, but we're checking everything to be sure.", icon: stetho, ko: "심장이 열심히 뛰지만 확실히 하려고 전부 확인하고 있어요", note: "확인"}
+    - {en: "I'm staying right here with you through all of it.", icon: shield, ko: "그 모든 과정 동안 제가 바로 곁에 있을게요", note: "곁에"}
+  sw: {ko: "괜찮아요. 안전해요 — 이 느낌은 지나갈 거예요"}
+- title: 우울 스크리닝(PHQ) 문진
+  s:
+  - {t: "수면 문진", i: calendar, w: "Over the last two weeks로 기간을 미리 정해 줘요. PHQ-9는 지난 2주 동안의 증상을 묻도록 만들어진 도구라서 기간을 넣어야 답이 점수에 맞게 쓰여요.", d: "next month", k: ["지금 드시는 약은 어떤 거예요?", "요즘 일은 어떠세요?"], a: "sleep", o: ["vision", "hearing", "breathing"]}
+  - {t: "흥미 상실", i: faceWorried, w: "things you used to enjoy로 예전에 즐기던 일을 기준으로 삼아요. 흥미 상실은 PHQ의 핵심 두 문항 중 하나이고, 환자의 예전 모습과 지금을 비교하는 질문이 가장 정확해요.", d: "this morning", k: ["식사량이 줄었어요?", "밤에 자주 깨세요?"], a: "enjoy", o: ["afford", "regret", "repair"]}
+  - {t: "솔직함 감사", i: star, w: "Thank you for…로 환자가 한 행동을 구체적으로 짚어 감사해요. 우울 문진은 숨기기 쉬운 주제라서 솔직하게 말한 것을 강화해 주면 다음 질문에도 정직하게 답하기 쉬워요.", d: "for waiting", k: ["다음 질문으로 넘어갈게요", "잠깐 쉬었다 할까요?"], a: "honest", o: ["quick", "brief", "early"]}
+  - {t: "식욕 문진", i: magnify, w: "any changes로 '변했는지'를 열어 묻고 늘었는지 줄었는지는 환자가 말하게 해요. 우울에서는 식욕이 줄 수도 늘 수도 있어서 한쪽으로 단정하지 않는 질문이에요.", d: "for lunch", k: ["수면 시간은 어떠세요?", "기분이 가장 안 좋은 시간대가 있어요?"], a: "appetite", o: ["schedule", "address", "insurance"]}
+  - {t: "용기 인정", i: star, w: "It takes courage to로 말하는 행동 자체를 용기로 인정해요. 우울한 기분을 말하는 데는 낙인에 대한 두려움이 따라서, 말했다는 사실을 먼저 존중해 주면 대화가 이어져요.", d: "for the doctor", k: ["그 기분이 하루 중 언제 가장 심해요?", "가족분들은 알고 계세요?"], a: "talk", o: ["joke", "laugh", "argue"]}
+  - {t: "함께 해결", i: handshake2, w: "I hear you로 먼저 들었다는 신호를 주고 we'll work through this together로 환자 혼자 해결하는 게 아니라는 약속을 이어요. 환자가 느끼는 외로움을 줄이는 두 문장 구조예요.", d: "for you", k: ["다음 진료는 일주일 뒤로 잡을게요", "약 처방은 의사 선생님이 정해요"], a: "work through", o: ["walk away from", "stay out of", "pass along"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "우울 문진 4문장 순서"
+    why: "기간을 정해 잠부터 묻고, 솔직함에 감사하며 식욕으로 넘어가고, 앞의 두 가지와 함께 흥미를 묻고, 말하기 어려웠을 것을 인정하며 함께 간다고 닫아요. 'about your sleep'과 'Along with sleep and appetite'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Over the last two weeks, how has your sleep been?", icon: calendar, ko: "지난 2주 동안 잠은 어떠셨어요?", note: "수면"}
+    - {en: "Thank you for being honest about your sleep — any changes in your appetite?", icon: magnify, ko: "잠에 대해 솔직히 말해 주셔서 감사해요 — 식욕은 달라졌나요?", note: "식욕"}
+    - {en: "Along with sleep and appetite, have you lost interest in things you enjoyed?", icon: faceWorried, ko: "잠과 식욕과 함께, 즐기던 것들에 흥미를 잃으셨나요?", note: "흥미"}
+    - {en: "It takes courage to talk about this, and we'll work through it together.", icon: handshake2, ko: "이걸 말하는 데는 용기가 필요해요, 함께 헤쳐 나갈게요", note: "함께"}
+  ctx:
+    word: "anhedonia"
+    ko: "무쾌감증"
+    sc:
+      1: {en: "She reports anhedonia — hasn't enjoyed anything for about two weeks."}

@@ -1,0 +1,446 @@
+{
+ "theme": "er-arrest",
+ "situations": [
+  {
+   "title": "무반응 환자 초기 인지",
+   "tagline": "Nurse, this patient isn't responding — I just found him like this!",
+   "room": "HALLWAY BED",
+   "brief": "무반응 환자의 반응·호흡·맥박을 신속히 확인하고 상황을 판단하세요.",
+   "role": "colleague",
+   "skills": [
+    "반응 확인",
+    "호흡·맥박 확인",
+    "상황 판단"
+   ],
+   "keyPhrases": [
+    "Sir, can you hear me? Open your eyes!",
+    "He's not responding — checking for breathing and a pulse.",
+    "No pulse — I'm calling a code and starting compressions."
+   ],
+   "goals": [
+    "반응·호흡·맥박을 순서대로 신속히 확인한다",
+    "심정지 여부를 판단하고 초기 대응을 개시한다"
+   ]
+  },
+  {
+   "title": "응급코드 호출·역할 배정",
+   "tagline": "Code Blue, bed 4 — what do you need me to do?",
+   "room": "RESUS BAY",
+   "brief": "코드블루를 호출하고 도착한 팀원에게 역할을 명확히 배정하세요.",
+   "role": "colleague",
+   "skills": [
+    "코드 호출",
+    "역할 배정",
+    "팀 조직화"
+   ],
+   "keyPhrases": [
+    "I need you on compressions — start now.",
+    "You take the airway and bag him.",
+    "Someone grab the crash cart and record the time."
+   ],
+   "goals": [
+    "코드블루를 정확히 호출한다",
+    "팀원에게 역할을 명확히 배정한다"
+   ]
+  },
+  {
+   "title": "흉부압박 기본 수행",
+   "tagline": "Am I pushing hard enough? Tell me if I'm doing this right.",
+   "room": "RESUS BAY",
+   "brief": "흉부압박의 위치·깊이·속도를 확인하고 2분마다 교대를 조율하세요.",
+   "role": "colleague",
+   "skills": [
+    "흉부압박",
+    "압박 질 관리",
+    "교대 조율"
+   ],
+   "keyPhrases": [
+    "Push hard and fast in the center of the chest.",
+    "Aim for at least two inches deep, a hundred a minute.",
+    "Let's switch compressors after this cycle to stay strong."
+   ],
+   "goals": [
+    "고품질 흉부압박의 위치·깊이·속도를 유지한다",
+    "2분 주기 교대를 조율한다"
+   ]
+  },
+  {
+   "title": "BVM 환기 협조",
+   "tagline": "The mask keeps leaking — the chest isn't rising much.",
+   "room": "RESUS BAY",
+   "brief": "기도개방과 마스크 밀착을 조정해 효과적인 BVM 환기를 협조하세요.",
+   "role": "colleague",
+   "skills": [
+    "기도개방",
+    "마스크 밀착",
+    "BVM 환기"
+   ],
+   "keyPhrases": [
+    "Tilt the head back and lift the chin to open the airway.",
+    "Use a two-handed seal — I'll squeeze the bag.",
+    "Watch for the chest to rise with each breath."
+   ],
+   "goals": [
+    "기도개방과 마스크 밀착을 확보한다",
+    "흉곽 상승을 확인하며 효과적으로 환기한다"
+   ]
+  },
+  {
+   "title": "제세동 패드 부착 안전",
+   "tagline": "Pads are on — should I clear everyone?",
+   "room": "RESUS BAY",
+   "brief": "제세동 패드를 부착하고 방전 전 클리어 콜아웃으로 안전을 확보하세요.",
+   "role": "colleague",
+   "skills": [
+    "패드 부착",
+    "클리어 콜아웃",
+    "안전 관리"
+   ],
+   "keyPhrases": [
+    "Place the pads right of the sternum and below the left armpit.",
+    "I'm clear, you're clear, everybody clear!",
+    "Make sure no one is touching the bed or the patient."
+   ],
+   "goals": [
+    "제세동 패드를 올바른 위치에 부착한다",
+    "방전 전 안전 클리어를 확실히 콜아웃한다"
+   ]
+  },
+  {
+   "title": "제세동 가능 리듬(VF/pVT) 판단",
+   "tagline": "Rhythm check — it's fibrillating, right?",
+   "room": "RESUS BAY",
+   "brief": "리듬 분석 후 제세동 가능 리듬을 판단하고 충전·즉시 제세동을 조율하세요.",
+   "role": "colleague",
+   "skills": [
+    "리듬 분석",
+    "제세동 판단",
+    "즉시 방전 조율"
+   ],
+   "keyPhrases": [
+    "Stop compressions for a rhythm check.",
+    "That's V-fib — charge to 200 and clear.",
+    "Shock delivered, resume compressions immediately."
+   ],
+   "goals": [
+    "제세동 가능 리듬을 정확히 판단한다",
+    "충전·방전·압박 재개를 지연 없이 조율한다"
+   ]
+  },
+  {
+   "title": "무수축/PEA 대응",
+   "tagline": "It's asystole — no shock, right?",
+   "room": "RESUS BAY",
+   "brief": "무수축/PEA에서 제세동 대신 압박과 에피네프린을 우선하도록 팀을 조율하세요.",
+   "role": "colleague",
+   "skills": [
+    "비제세동 리듬 대응",
+    "에피네프린 우선",
+    "압박 지속"
+   ],
+   "keyPhrases": [
+    "This rhythm isn't shockable — keep compressions going.",
+    "Give epinephrine one milligram now.",
+    "Continue high-quality CPR and reassess in two minutes."
+   ],
+   "goals": [
+    "무수축/PEA에서 제세동 금기를 인지한다",
+    "압박 지속과 에피네프린 투여를 우선한다"
+   ]
+  },
+  {
+   "title": "가역적 원인(H's&T's) 점검",
+   "tagline": "What could be causing this — any reversible cause we're missing?",
+   "room": "RESUS BAY",
+   "brief": "팀과 함께 가역적 원인(H's&T's)을 브레인스토밍하고 점검하세요.",
+   "role": "colleague",
+   "skills": [
+    "가역적 원인 점검",
+    "팀 브레인스토밍",
+    "병력 통합"
+   ],
+   "keyPhrases": [
+    "Let's run through the H's and T's.",
+    "Could this be hypoxia, low potassium, or a tension pneumo?",
+    "Any history of clots, overdose, or bleeding?"
+   ],
+   "goals": [
+    "H's&T's를 체계적으로 점검한다",
+    "병력을 통합해 가역적 원인을 좁힌다"
+   ]
+  },
+  {
+   "title": "정맥로/골내로 확보 소통",
+   "tagline": "I can't get a vein — should I go for an IO?",
+   "room": "RESUS BAY",
+   "brief": "정맥로 확보 실패 시 골내로 전환을 신속히 소통하고 확보를 보고하세요.",
+   "role": "colleague",
+   "skills": [
+    "정맥로 확보",
+    "골내로 전환",
+    "확보 보고"
+   ],
+   "keyPhrases": [
+    "Two IV attempts failed — switching to an IO now.",
+    "IO is in the tibia and flushing well.",
+    "Access is secured, ready for medications."
+   ],
+   "goals": [
+    "정맥로 실패 시 골내로 전환을 신속히 결정한다",
+    "확보 상태를 팀에 명확히 보고한다"
+   ]
+  },
+  {
+   "title": "ROSC 후 초기 안정화",
+   "tagline": "We've got a pulse back — what's our next move?",
+   "room": "RESUS BAY",
+   "brief": "ROSC 직후 활력을 재사정하고 목표혈압 유지를 위한 안정화를 진행하세요.",
+   "role": "colleague",
+   "skills": [
+    "ROSC 후 사정",
+    "활력 재사정",
+    "목표혈압 관리"
+   ],
+   "keyPhrases": [
+    "We have ROSC — recheck a full set of vitals.",
+    "Let's keep the systolic above 90 and support the airway.",
+    "Get a twelve-lead and prepare to move to the ICU."
+   ],
+   "goals": [
+    "ROSC 후 활력을 즉시 재사정한다",
+    "목표혈압 유지를 위한 초기 안정화를 수행한다"
+   ]
+  },
+  {
+   "title": "소생 중 SBAR 리더 보고",
+   "tagline": "Give me a quick rundown — where are we in this code?",
+   "room": "RESUS BAY",
+   "brief": "소생 경과·투약·리듬을 SBAR로 리더에게 요약 보고하세요.",
+   "role": "colleague",
+   "skills": [
+    "SBAR 보고",
+    "소생 경과 요약",
+    "투약 정리"
+   ],
+   "keyPhrases": [
+    "Down about eight minutes, three rounds of CPR so far.",
+    "Two shocks delivered, epi given twice, last dose four minutes ago.",
+    "Current rhythm is still V-fib, no ROSC yet."
+   ],
+   "goals": [
+    "소생 경과와 투약을 SBAR로 요약한다",
+    "현재 리듬과 다음 조치를 명확히 전달한다"
+   ]
+  },
+  {
+   "title": "가족 입회 소생 지원",
+   "tagline": "That's my husband — please tell me what you're doing to him!",
+   "room": "RESUS BAY",
+   "brief": "소생에 입회한 가족 곁에서 진행 상황을 설명하며 정서적으로 지지하세요.",
+   "role": "family",
+   "skills": [
+    "가족 입회 지원",
+    "진행 설명",
+    "정서 지지"
+   ],
+   "keyPhrases": [
+    "The team is doing everything they can for him right now.",
+    "I'll stay with you and explain what's happening.",
+    "You can stand here where he can hear your voice."
+   ],
+   "goals": [
+    "소생 진행 상황을 가족에게 이해되게 설명한다",
+    "입회 가족을 정서적으로 지지한다"
+   ]
+  },
+  {
+   "title": "목격자 CPR 이력 인수",
+   "tagline": "We started CPR about ten minutes ago and gave one shock with the AED.",
+   "room": "RESUS BAY",
+   "brief": "EMS로부터 다운타임·투약·목격자 CPR 이력을 인수받아 정리하세요.",
+   "role": "colleague",
+   "skills": [
+    "EMS 인수",
+    "다운타임 확인",
+    "투약 이력 정리"
+   ],
+   "keyPhrases": [
+    "What was the down time before CPR started?",
+    "How many shocks and medications were given in the field?",
+    "Was the arrest witnessed, and by whom?"
+   ],
+   "goals": [
+    "EMS로부터 핵심 소생 이력을 인수한다",
+    "다운타임·투약·목격 여부를 정리한다"
+   ]
+  },
+  {
+   "title": "압박 질 피드백 대응",
+   "tagline": "The monitor says our compressions are too shallow — fix it.",
+   "room": "RESUS BAY",
+   "brief": "압박 질 피드백(깊이·과환기)에 따라 실시간으로 수행을 교정하세요.",
+   "role": "colleague",
+   "skills": [
+    "압박 질 교정",
+    "과환기 방지",
+    "실시간 피드백"
+   ],
+   "keyPhrases": [
+    "Push deeper — at least two inches every time.",
+    "Let the chest fully recoil between compressions.",
+    "Slow the bagging — you're ventilating too fast."
+   ],
+   "goals": [
+    "압박 깊이·이완을 실시간으로 교정한다",
+    "과환기를 방지하도록 환기 속도를 조절한다"
+   ]
+  },
+  {
+   "title": "저체온 심정지 연장 소생",
+   "tagline": "He was pulled from the icy lake — how long do we keep going?",
+   "room": "RESUS BAY",
+   "brief": "저체온 심정지에서 재가온 전까지 사망을 확정하지 않고 소생을 연장하세요.",
+   "role": "colleague",
+   "skills": [
+    "저체온 소생",
+    "재가온",
+    "연장 소생 판단"
+   ],
+   "keyPhrases": [
+    "He's not dead until he's warm and dead.",
+    "Keep compressions going while we actively rewarm him.",
+    "Space out the medications until his core temperature rises."
+   ],
+   "goals": [
+    "저체온 심정지의 연장 소생 원칙을 적용한다",
+    "재가온과 병행해 소생을 지속한다"
+   ]
+  },
+  {
+   "title": "고칼륨혈증 심정지 표적치료",
+   "tagline": "He's a dialysis patient who missed his session — could it be potassium?",
+   "room": "RESUS BAY",
+   "brief": "고칼륨혈증 심정지를 의심하고 칼슘·인슐린 등 표적치료를 준비하세요.",
+   "role": "colleague",
+   "skills": [
+    "고칼륨혈증 인지",
+    "칼슘·인슐린 준비",
+    "표적치료"
+   ],
+   "keyPhrases": [
+    "Missed dialysis makes hyperkalemia very likely.",
+    "Give calcium to protect the heart right now.",
+    "Push insulin with dextrose to shift the potassium."
+   ],
+   "goals": [
+    "고칼륨혈증 심정지를 병력으로 의심한다",
+    "칼슘·인슐린 표적치료를 신속히 준비한다"
+   ]
+  },
+  {
+   "title": "임산부 심정지 자궁 좌측 전위",
+   "tagline": "She's about 34 weeks — someone displace that uterus!",
+   "room": "RESUS BAY",
+   "brief": "임산부 심정지에서 자궁 좌측 전위를 수행하고 응급제왕절개에 대비하세요.",
+   "role": "colleague",
+   "skills": [
+    "임산부 소생",
+    "자궁 좌측 전위",
+    "응급제왕 대비"
+   ],
+   "keyPhrases": [
+    "Manually displace the uterus to the left.",
+    "Call OB and neonatal — prepare for a perimortem C-section.",
+    "Keep compressions high on the sternum and continuous."
+   ],
+   "goals": [
+    "임산부 심정지에서 자궁 좌측 전위를 시행한다",
+    "응급제왕절개 팀을 즉시 동원한다"
+   ]
+  },
+  {
+   "title": "아나필락시스성 심정지",
+   "tagline": "She reacted to the antibiotic and coded within minutes — her face is swollen.",
+   "room": "RESUS BAY",
+   "brief": "아나필락시스성 심정지에서 에피네프린 정주와 기도부종 대응을 준비하세요.",
+   "role": "colleague",
+   "skills": [
+    "아나필락시스 소생",
+    "에피네프린 정주",
+    "기도부종 대응"
+   ],
+   "keyPhrases": [
+    "This is anaphylactic arrest — give IV epinephrine now.",
+    "Run large-volume fluids wide open.",
+    "Prepare for a difficult airway with all that swelling."
+   ],
+   "goals": [
+    "아나필락시스성 심정지를 인지하고 에피를 정주한다",
+    "기도부종에 대비한 응급기도를 준비한다"
+   ]
+  },
+  {
+   "title": "ROSC 후 재정지 반복",
+   "tagline": "We got him back but he's arresting again — third time now.",
+   "room": "RESUS BAY",
+   "brief": "ROSC 후 반복 재정지 환자에 대해 재소생과 이송 결정을 조율하세요.",
+   "role": "colleague",
+   "skills": [
+    "재정지 대응",
+    "재소생",
+    "이송 결정"
+   ],
+   "keyPhrases": [
+    "He re-arrested — restart compressions immediately.",
+    "Let's find and fix why he keeps losing his pulse.",
+    "We may need urgent transfer to the cath lab."
+   ],
+   "goals": [
+    "반복 재정지에 신속히 재소생한다",
+    "원인 교정과 이송 결정을 조율한다"
+   ]
+  },
+  {
+   "title": "소생 중단·사망 고지",
+   "tagline": "He has a DNR — the family is asking us to stop.",
+   "room": "RESUS BAY",
+   "brief": "DNR·팀 합의에 따라 소생 중단을 조율하고 임종 과정을 지지하세요.",
+   "role": "family",
+   "skills": [
+    "소생 중단 조율",
+    "DNR 확인",
+    "임종 지지"
+   ],
+   "keyPhrases": [
+    "We've confirmed his wishes not to be resuscitated.",
+    "The team agrees it's time to focus on his comfort.",
+    "I'm so sorry — take all the time you need with him."
+   ],
+   "goals": [
+    "DNR와 팀 합의에 따라 소생 중단을 조율한다",
+    "가족의 임종 과정을 정서적으로 지지한다"
+   ]
+  },
+  {
+   "title": "외상성 심정지 특수 대응",
+   "tagline": "He was hit by a car — no pulse, and his chest looks awful.",
+   "room": "TRAUMA BAY",
+   "brief": "외상성 심정지에서 긴장성 기흉·출혈 등 가역 원인을 동시에 대응하세요.",
+   "role": "colleague",
+   "skills": [
+    "외상 소생",
+    "긴장성 기흉 대응",
+    "출혈 통제"
+   ],
+   "keyPhrases": [
+    "Traumatic arrest — decompress both sides of the chest.",
+    "Control the bleeding and start massive transfusion.",
+    "Compressions matter less than fixing the cause here."
+   ],
+   "goals": [
+    "외상성 심정지의 가역 원인을 동시에 대응한다",
+    "긴장성 기흉·출혈을 즉시 통제한다"
+   ]
+  }
+ ]
+}

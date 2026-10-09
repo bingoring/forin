@@ -1,0 +1,57 @@
+# icu-arrhythmia 결정 11 정리 — build_icu-arrhythmia.py 가 읽는다.
+untag_everywhere:
+  w-now: 공통 쉬운 단어(now)
+  w-minute: 공통 쉬운 단어(minute)
+  w-hour: 공통 쉬운 단어(hour)
+  w-time: 공통 쉬운 단어(time) — timed를 '시간을 맞추다'로 가르칠 값이 적다
+  w-doctor: 공통 쉬운 단어(doctor)
+  w-patient: 공통 쉬운 단어(patient)
+  w-see: 공통 쉬운 단어(see)
+  w-know: 공통 쉬운 단어(know)
+  w-go: 공통 쉬운 단어(go)
+  w-come: 공통 쉬운 단어(come)
+  w-tell: 간호사가 이미 아는 말(tell)
+  w-need: 간호사가 이미 아는 말(need)
+  w-anything: 간호사가 이미 아는 말(anything)
+  w-everyone: 간호사가 이미 아는 말(everyone)
+  w-everybody: 간호사가 이미 아는 말(everybody)
+  w-get: 간호사가 이미 아는 말(get) — 문장마다 뜻이 달라(받다·하다·부르다) 카드 하나로 가르칠 수 없다
+  w-let: 간호사가 이미 아는 말(let) — know를 뺀 뒤 let 홀로는 가르칠 값이 없다
+
+# [상황 번호, 문장 번호, id, why]
+untag_at:
+  - [2, 4, w-right, "right away는 w-away(헤드워드 right away) 카드로 가르친다 — w-right 태그를 뺐다"]
+  - [8, 5, w-right, "right away는 w-away(헤드워드 right away) 카드로 가르친다 — w-right 태그를 뺐다"]
+  - [13, 2, w-right, "right away는 w-away(헤드워드 right away) 카드로 가르친다 — w-right 태그를 뺐다"]
+  - [14, 5, w-right, "right away는 w-away(헤드워드 right away) 카드로 가르친다 — w-right 태그를 뺐다"]
+  - [3, 2, w-breath, "short of breath는 w-short(헤드워드 short of breath) 한 카드로 가르친다 — w-breath 태그를 뺐다"]
+  - [7, 1, w-call, "called adenosine의 call은 '이름이 ~인'이라 카드(부르다·요청하다)와 뜻이 다르다"]
+  - [8, 1, w-up, "draw up은 w-draw(뽑다)가 가르친다 — w-up(위로)은 뜻이 틀린 카드"]
+  - [19, 5, w-second, "a second antiarrhythmic의 second는 '두 번째'라 카드(초)와 뜻이 다르다"]
+  - [18, 3, w-run, "dangerous runs는 명사(연발 박동)라 카드(흐르다)와 뜻이 다르다"]
+  - [10, 3, w-slow, "slowly는 부사라 w-slow(느린·늦추다) 카드와 다른 낱말이다"]
+
+tag_at: []
+
+# [상황 번호, 문장 번호, ko, why]
+sentence_ko:
+  - [18, 3, "리듬이 자꾸 이런 위험한 연발 박동으로 넘어가요.", "dangerous runs(연발 박동)가 '위험한 상태'로 흐리게 옮겨져 있었다"]
+
+word_edits:
+  w-short: {en: short of breath, ipa: /ʃɔːrt əv brɛθ/, why: "헤드워드 short에 ko '숨이 찬'이 붙어 있었다 — 구 단위(short of breath)로"}
+  w-board: {en: on board, ipa: /ɑn bɔːrd/, why: "헤드워드 board에 ko '투여 중인'이 붙어 있었다 — 구 단위(on board)로"}
+  w-away: {en: right away, ipa: /raɪt əˈweɪ/, ko: 곧바로, why: "헤드워드 away에 ko '즉시'가 붙어 있었다 — 구 단위(right away)로, w-immediately(즉시)와 ko를 가른다"}
+  w-right: {ko: 맞는; 바로, example: "Your heart is beating faster than normal right now.", why: "right away를 w-away로 넘긴 뒤 남은 문장은 right now·right after(바로)와 the right level(맞는)"}
+  w-call: {ko: 부르다; 요청하다, why: "태그된 문장 대부분이 call for(요청하다)"}
+  w-skip: {ko: (박동을) 건너뛰다, why: "heart skip은 박동을 건너뛰는 것이지 '두근거리다'가 아니다 — 문장 ko도 '건너뛰거나'"}
+  w-replace: {ko: 보충하다, why: "replace potassium은 '교체'가 아니라 '보충' — 다른 ICU 주제의 w-replace(보충하다)와도 맞춘다"}
+  w-push: {ko: 밀어 넣다; 힘주다, example: "We push epinephrine every few minutes during the code.", why: "태그된 문장 대부분이 약을 push(밀어 넣어 투여)하는 뜻 — 다른 ICU 주제(밀어 넣다)와도 맞춘다"}
+  w-risk: {ko: 위험성, why: "w-danger(위험)와 ko가 같았다 — risk for torsades는 '위험성'"}
+  w-beat: {ko: 박동; 뛰다, why: "태그된 문장 셋 중 둘이 명사(a beat·more beats)"}
+  w-slow: {ko: 느린; 늦추다, why: "태그된 문장이 형용사(slow rate·slower)와 동사(slow the rate)"}
+  w-fast: {ko: 빠른; 빠르게, why: "태그된 문장이 형용사(fast rhythm)와 부사(dropping fast·works fast)"}
+  w-break: {ko: (갑자기 ~로) 넘어가다, why: "break into는 리듬이 갑자기 넘어가는 것 — '나타나다'보다 정확하게"}
+
+remove_why:
+  w-breath: "short of breath를 w-short 한 카드로 가르친다"
+  w-up: "draw up의 up을 '위로'로 가르쳤다 — 뜻이 틀린 카드"

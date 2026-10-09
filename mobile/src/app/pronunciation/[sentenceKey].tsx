@@ -22,7 +22,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { ActivityIndicator, Alert, Linking, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import {
-  useAudioRecorder, useAudioRecorderState, useAudioPlayer, requestRecordingPermissionsAsync, setAudioModeAsync,
+  useAudioRecorderState, useAudioPlayer, requestRecordingPermissionsAsync, setAudioModeAsync,
   IOSOutputFormat, AudioQuality, type RecordingOptions,
 } from 'expo-audio';
 import {
@@ -39,10 +39,11 @@ import { SyllableGrid, type SyllableChip } from '@/components/pron/SyllableGrid'
 import { ScoreBars } from '@/components/pron/ScoreBars';
 import { CorrectionCard } from '@/components/pron/CorrectionCard';
 import { AttemptHistory, type AttemptRow as AttemptDisplayRow } from '@/components/pron/AttemptHistory';
-import { splitTargetTokens, syllableBand, buildCorrectionPoints, downsampleAmplitude, phonemeTipLookup } from '@/lib/pronTokens';
-import { api, type PronunciationResult, type SentenceReference, type SpeechAttemptRow } from '@/api/client';
+import { splitTargetTokens, syllableBand, syllableLabel, buildCorrectionPoints, downsampleAmplitude, phonemeTipLookup, nextAttemptNo } from '@/lib/pronTokens';
+import { api, toPronOrigin, type PronunciationResult, type SentenceReference, type SpeechAttemptRow } from '@/api/client';
 import { next, initialPronState, type PronState, type PronEventType } from '@/lib/pronState';
 import { type Translate, useT } from '@/i18n';
+import { useWavRecorder } from '@/lib/useWavRecorder';
 import { TASK_SCREEN } from '@/theme/transitions';
 
 const BAR_COUNT = 20; // matches SoT's mock W1 array length
@@ -378,7 +379,7 @@ export default function PronunciationRoute() {
   const referenceText = params.referenceText ?? '';
   const ctx = params.ctx ?? '';
   const idleStep = params.step ?? t('pron.practice');
-  const origin = params.origin || 'freeform';
+  const origin = toPronOrigin(params.origin);
 
   const [pron, setPron] = useState<PronState>(initialPronState);
   const dispatch = useCallback((type: PronEventType) => setPron((s) => next(s, { type })), []);
@@ -386,6 +387,7 @@ export default function PronunciationRoute() {
   const [banner, setBanner] = useState<string | null>(null);
   const [reference, setReference] = useState<SentenceReference>({});
   const [attempts, setAttempts] = useState<SpeechAttemptRow[]>([]);
+  const [unsaved, setUnsaved] = useState(false);
   const [result, setResult] = useState<PronunciationResult | null>(null);
   // Rolling window (last ~2s at 100ms polling) for the LIVE meter — a VU-meter
   // read is supposed to show only recent input, not the whole clip.
@@ -396,7 +398,7 @@ export default function PronunciationRoute() {
   // stop time, from every sample collected (fullSamplesRef below).
   const [myWaveform, setMyWaveform] = useState<number[]>(() => Array(BAR_COUNT).fill(0.05));
 
-  const recorder = useAudioRecorder(WAV_16K_MONO);
+  const recorder = useWavRecorder(WAV_16K_MONO); // Android: PCM→WAV via AudioStream (lib/useWavRecorder.android.ts)
   const recorderState = useAudioRecorderState(recorder, 100);
   const stoppedRef = useRef(false);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -418,6 +420,13 @@ export default function PronunciationRoute() {
     api.speechReference(referenceText).then((r) => { if (alive) setReference(r); }).catch(() => { if (alive) setReference({}); });
     api.speechAttempts(referenceText, 3).then((rows) => { if (alive) setAttempts(rows); }).catch(() => { if (alive) setAttempts([]); });
     return () => { alive = false; };
+  }, [referenceText]);
+
+  // The history is read once on entry, so it must be re-read after a scored attempt —
+  // otherwise a retry (result → idle → record again) shows a hint and rows that are one
+  // attempt behind. Best-effort: a failed refresh keeps what is already on screen.
+  const refreshAttempts = useCallback(() => {
+    api.speechAttempts(referenceText, 3).then(setAttempts).catch(() => {});
   }, [referenceText]);
 
   // A new sentence invalidates whatever native clip was cached for the
@@ -536,7 +545,11 @@ export default function PronunciationRoute() {
         reviewCardId: params.reviewCardId,
       });
       setResult(res);
+      // The server answers 200 with an empty attemptId when it scored but could not store
+      // the attempt; say so, or the try silently vanishes from the history.
+      setUnsaved(res.attemptId === '');
       dispatch('SUCCESS');
+      refreshAttempts();
     } catch (e) {
       const status = statusOf(e);
       if (status === 422) {
@@ -558,7 +571,7 @@ export default function PronunciationRoute() {
       if (uri) await deleteAsync(uri, { idempotent: true }).catch(() => {});
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch, recorder, referenceText, origin, params.scenarioId, params.reviewCardId]);
+  }, [dispatch, recorder, referenceText, origin, params.scenarioId, params.reviewCardId, refreshAttempts]);
 
   const handleBack = useCallback(() => {
     if (pron === 'scoring') return; // no escape once the request is in flight
@@ -692,7 +705,7 @@ export default function PronunciationRoute() {
   // there is no separate probe call to make first.
   const nativeAvailable = !!reference.sentenceKey;
 
-  const hint = t('pron.attemptOf', { n: Math.min(3, attempts.length + 1) });
+  const hint = t('pron.tryNo', { n: nextAttemptNo(attempts) });
 
   // AttemptHistory always shows 3 rows (business-rules R3). `attempts` is
   // already the server's most-recent-3-oldest-first window, so any slot past
@@ -706,7 +719,7 @@ export default function PronunciationRoute() {
   )), [attempts]);
 
   const progressSegments = useMemo(() => {
-    const fromRef = reference.words?.flatMap((w) => (w.syllables?.length ? w.syllables.map((s) => s.syllable) : [w.word]));
+    const fromRef = reference.words?.flatMap((w) => (w.syllables?.length ? w.syllables.map((s) => syllableLabel(s)) : [w.word]));
     if (fromRef && fromRef.length) return fromRef;
     return referenceText.split(/\s+/).filter(Boolean);
   }, [reference, referenceText]);
@@ -731,9 +744,8 @@ export default function PronunciationRoute() {
   const syllableChips = useMemo((): SyllableChip[] =>
     (result?.words ?? []).flatMap((w) =>
       (w.syllables ?? []).map((s): SyllableChip => ({
-        // Falls back to the phonetic form rather than rendering an empty chip: a locale
-        // without grapheme segmentation should still show where the syllables divide.
-        label: s.grapheme?.trim() || s.syllable,
+        // syllableLabel falls back to the phonetic form rather than an empty chip.
+        label: syllableLabel(s),
         band: syllableBand(s.accuracy),
       }))
     ),
@@ -836,6 +848,14 @@ export default function PronunciationRoute() {
                 prosodyAvailable={!!result.prosodyAvailable}
               />
             </View>
+            {unsaved && (
+              <View style={[styles.body, { marginTop: 13 }]}>
+                <View style={styles.banner}>
+                  <NbIcon name="bell" size={15} color={nb.red} />
+                  <Text style={[nbText.hand(14.5), { flex: 1, minWidth: 0 }]}>{t('pron.notSaved')}</Text>
+                </View>
+              </View>
+            )}
             <View style={[styles.body, { marginTop: 13 }]}>
               <SyllableGrid syllables={syllableChips} />
             </View>
@@ -869,7 +889,7 @@ export default function PronunciationRoute() {
                         // 원어민 chip), not a per-syllable clip — slicing just this
                         // syllable's span out of the full WAV is a distinct feature this
                         // task didn't build (task-11-report.md's open concerns).
-                        onPlay={() => { if (__DEV__) console.warn('[pronunciation] no per-syllable audio clip yet — see task-11-report.md'); }}
+                        // onPlay stays omitted: the card draws the button flat and disabled.
                       />
                     </View>
                   ))}

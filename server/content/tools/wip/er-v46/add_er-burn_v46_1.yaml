@@ -1,0 +1,54 @@
+- title: 화상 초기 사정
+  s:
+  - {t: "병력 청취", i: magnify, w: "How did…happen으로 경위를, what caused로 원인을 한 문장에 묻는 열린 질문이에요. 끓는 물·불·화학물질·전기에 따라 응급 처치와 위험이 달라져요.", d: "last night", k: ["화상 부위에 뭘 바르셨어요?", "파상풍 주사는 언제 맞으셨어요?"], a: "caused", o: ["healed", "cooled", "covered"]}
+  - {t: "범위 사정", i: magnify, w: "I'm going to로 지금부터 볼 것을 미리 알려 환자가 놀라지 않게 해요. 화상은 넓이와 깊이를 둘 다 봐야 치료와 전원 여부가 정해져요.", d: "how recent", k: ["화상 부위 사진을 찍어 둘게요", "지금 통증이 어느 정도인지 알려 주세요"], a: "deep", o: ["hot", "wet", "itchy"]}
+  - {t: "덮은 것 제거", i: bandage, w: "Let me…는 허락을 구하는 말투라 아픈 부위를 건드리기 전에 동의를 얻어요. 부기가 오르면 반지나 시계가 조여 오기 때문에 일찍 풀어요.", d: "with tweezers", k: ["화상 부위를 깨끗한 천으로 덮을게요", "팔을 심장보다 높이 올려 주세요"], a: "covering", o: ["cooling", "painting", "bleeding"]}
+  - {t: "통증 위치", i: pushpin, w: "exactly로 정확한 지점을, the most로 가장 심한 곳 하나를 말하게 해요. 깊은 화상은 감각이 둔해서 가장 아픈 곳이 오히려 얕은 화상 부위일 때가 많아요.", d: "before today", k: ["통증은 0에서 10 중에 얼마나 되세요?", "언제부터 아프기 시작했나요?"], a: "hurts", o: ["itches", "bleeds", "drips"]}
+  - {t: "범위 확인", i: board, w: "I'll check로 지금 하겠다고 약속하고 for the size of the burn으로 목적을 밝혀요. 부위별 면적을 더해서 전체 화상 크기를 어림해요.", d: "for the color", k: ["팔과 가슴에 붕대를 감을게요", "화상 정도를 사진으로 남길게요"], a: "check", o: ["wash", "wrap", "cool"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "화상 초기 사정 4문장 순서"
+    why: "경위를 묻고, 들은 뒤 범위와 깊이를 살피겠다고 알리고, 가장 아픈 곳을 묻고, 그 부위를 덮은 것을 조심스럽게 제거해요. 'Thanks'·'it'·'that spot'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "How did the burn happen, and what caused it?", icon: magnify, ko: "화상이 어떻게 생겼고 원인이 뭐였나요?", note: "경위"}
+    - {en: "Thanks. I'm going to look at how large and deep it is.", icon: me, ko: "고마워요, 얼마나 넓고 깊은지 살펴볼게요", note: "안내"}
+    - {en: "Which spot hurts the most?", icon: pushpin, ko: "어느 곳이 가장 아프세요?", note: "통증"}
+    - {en: "Let me remove anything covering that spot gently.", icon: bandage, ko: "그 부위를 덮은 것을 부드럽게 제거할게요", note: "제거"}
+  sw: {ko: "화상을 덮은 것을 살살 제거할게요"}
+- title: TBSA 9의 법칙 설명
+  s:
+  - {t: "크기 추정", i: chartup, w: "We estimate로 정확한 측정이 아니라 어림이라고 알려 줘요. 화상 크기는 몸을 부위로 나눠 더해서 정하고, 처음 값은 나중에 다시 조정할 수 있어요.", d: "using a ruler", k: ["화상 깊이는 색과 감각으로 구분해요", "몸무게를 먼저 재 볼게요"], a: "skin", o: ["blood", "hair", "water"]}
+  - {t: "9의 법칙", i: chartup, w: "Each …로 부위마다 같은 값을 매긴다고 말해요. 성인은 한쪽 팔이 약 9퍼센트라서 9의 법칙이라는 이름이 붙었어요.", d: "of your weight", k: ["다리 하나는 약 18퍼센트로 쳐요", "손바닥 하나는 약 1퍼센트로 쳐요"], a: "nine", o: ["four", "eighteen", "thirty-six"]}
+  - {t: "이유 설명", i: bulb, w: "This는 앞에서 말한 크기 추정을 가리켜 왜 재는지 연결해 줘요. 화상이 클수록 처음 24시간에 필요한 수액이 많아서 크기가 수액 계산의 출발점이에요.", d: "how long", k: ["수액은 정맥으로 드릴 거예요", "회복까지 얼마나 걸릴지 알 수 있어요"], a: "fluid", o: ["insulin", "cream", "antibiotic"]}
+  - {t: "부위 비교", i: magnify, w: "than으로 팔과 견주면 왜 다리와 등이 더 큰 값인지 한눈에 들어와요. 성인에서 다리 하나와 몸통 앞면·뒷면이 각각 약 18퍼센트라 한쪽 팔(9퍼센트)의 두 배예요.", d: "than yesterday", k: ["얼굴과 머리는 팔과 같은 값으로 쳐요", "환자 손바닥 크기가 약 1퍼센트예요"], a: "larger", o: ["smaller", "softer", "separate"]}
+  - {t: "수액 계획", i: board, w: "We'll use…to plan으로 이 수치가 다음 행동으로 이어진다고 말해요. 화상 수액은 Parkland 같은 공식에 체중과 화상 크기를 넣어 첫 24시간 양을 잡고, 소변량을 보며 조절해요.", d: "to plan your surgery", k: ["수치는 다시 재서 바뀔 수 있어요", "오늘 식사는 나중에 정할게요"], a: "number", o: ["name", "room", "bed"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "9의 법칙 설명 4문장 순서"
+    why: "몸을 부위로 나눠 추정한다고 알리고, 그 부위별 값을 설명한 뒤, 불탄 부위를 더해 한 수치를 만들고, 그 수치가 수액량을 정한다고 닫아요. 'those regions'·'the burned regions'·'That number'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "We estimate how much skin is burned using body regions.", icon: chartup, ko: "신체 부위를 이용해 피부가 얼마나 탔는지 추정해요", note: "추정"}
+    - {en: "In those regions, each arm counts as about nine percent.", icon: magnify, ko: "그 부위들 중 팔 하나는 약 9퍼센트로 쳐요", note: "값"}
+    - {en: "We add up the burned regions to get one number.", icon: board, ko: "불탄 부위를 더해서 하나의 수치를 얻어요", note: "합산"}
+    - {en: "That number tells us how much fluid you need.", icon: bulb, ko: "그 수치가 수액이 얼마나 필요한지 알려 줘요", note: "결과"}
+  ctx: {word: "percent", ko: "퍼센트", sc: {0: {en: "Est. TBSA 27 percent, partial thickness, rule of nines."}}}
+- title: 화상 깊이 구분
+  s:
+  - {t: "깊이 설명", i: bulb, w: "actually가 더 깊으면 더 아플 것이라는 기대를 뒤집어 줘요. 신경 말단까지 손상된 깊은 화상은 통증 감각이 사라질 수 있어요.", d: "because of the heat", k: ["깊이는 시간이 지나야 정확히 알 수 있어요", "화상 부위가 붓기 시작할 거예요"], a: "numb", o: ["sore", "itchy", "sweaty"]}
+  - {t: "통증 해석", i: faceWorried, w: "usually가 항상 그렇지는 않다는 여지를 남겨요. 통증을 느끼는 신경이 살아 있다는 뜻이라 대개 표층에 가까운 화상이에요.", d: "on the arm", k: ["통증이 심하면 진통제를 바로 드릴게요", "아픈 부위부터 먼저 덮어 드릴게요"], a: "painful", o: ["numb", "dry", "dark"]}
+  - {t: "사정 안내", i: magnify, w: "I'm checking처럼 진행형으로 지금 하는 일을 알려요. 깊이와 감각을 함께 보는 건 깊은 화상일수록 감각이 둔해지기 때문이에요.", d: "for blisters", k: ["각 부위를 한 번씩 소독할게요", "깊이는 사진으로 남겨 둘게요"], a: "checking", o: ["cooling", "covering", "cleaning"]}
+  - {t: "오해 바로잡기", i: bell, w: "still이 안 아프니 괜찮겠지라는 생각을 정면으로 바로잡아요. 통증이 없는 화상은 신경까지 손상된 깊은 화상일 수 있어서 오히려 더 주의해요.", d: "for hours", k: ["아프면 바로 말씀해 주세요", "화상 부위를 깨끗하게 덮어 둘게요"], a: "still", o: ["never", "hardly", "rarely"]}
+  - {t: "통증 해석", i: bulb, w: "points to처럼 단서가 가리키는 방향을 말해 단정하지 않아요. 날카로운 통증은 신경이 살아 있다는 신호라 얕은 화상 쪽을 가리켜요.", d: "comes from", k: ["얕은 화상은 보통 물집이 생겨요", "통증은 며칠 지나면 가라앉아요"], a: "shallow", o: ["deep", "chemical", "full-thickness"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "화상 깊이 구분 4문장 순서"
+    why: "각 부위를 살피겠다고 알리고, 날카로운 통증이 있는지 묻고, 그 통증이 뜻하는 바를 설명한 뒤, 반대로 감각이 없는 부위를 짚어요. 'any spot'·'That kind of pain'·'But a numb spot'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "I'm checking each area for depth and sensation.", icon: magnify, ko: "각 부위의 깊이와 감각을 확인하고 있어요", note: "안내"}
+    - {en: "Tell me if any spot feels sharp and painful.", icon: bell, ko: "날카롭고 아픈 곳이 있으면 말씀해 주세요", note: "문진"}
+    - {en: "That kind of pain usually points to a shallow burn.", icon: bulb, ko: "그런 통증은 보통 얕은 화상을 뜻해요", note: "해석"}
+    - {en: "But a numb spot can be deeper, so I'll look at it again.", icon: faceWorried, ko: "하지만 감각이 없는 곳은 더 깊을 수 있어서 다시 볼게요", note: "주의"}
+  sw: {ko: "이 부위가 감각이 없는 건 그곳 신경이 손상됐기 때문이에요"}

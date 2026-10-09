@@ -88,7 +88,7 @@ func Resolve(curricula []Curriculum, deptOrder []string, cleared, attempted map[
 func resolveOne(c Curriculum, cleared map[string]bool, latestTheme string) learning.CurriculumState {
 	st := learning.CurriculumState{
 		ThemeKey: c.Theme.Key, Name: c.Theme.Name, Track: c.Theme.Track, Dept: c.Theme.Dept,
-		CollabWith: c.CollabWith,
+		Icon: c.Theme.Icon, CollabWith: c.CollabWith,
 	}
 	prevTierDone := true
 	for _, ti := range c.Tiers {

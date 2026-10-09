@@ -1,0 +1,27 @@
+-- name: UpsertLessonStepClear :exec
+-- Finishing a step again keeps the first time it was finished, but takes the newest
+-- detail: the words missed on the latest run are the ones to bring back.
+INSERT INTO lesson_step_clears (user_id, scenario_id, step, detail) VALUES ($1, $2, $3, $4)
+ON CONFLICT (user_id, scenario_id, step) DO UPDATE SET detail = EXCLUDED.detail;
+
+-- name: ListLessonStepClears :many
+SELECT step, detail FROM lesson_step_clears WHERE user_id = $1 AND scenario_id = $2;
+
+-- name: HasWordCard :one
+-- A word the learner found confusing is filed once, however many times they say so.
+SELECT EXISTS (
+    SELECT 1 FROM review_cards WHERE user_id = $1 AND source = 'word' AND back = $2
+)::bool;
+
+-- name: HasNuanceCard :one
+-- A reel's 감상 is noted once per word (spec 2-9 §11-8): the card's front is the word.
+SELECT EXISTS (
+    SELECT 1 FROM review_cards WHERE user_id = $1 AND source = 'nuance' AND front = $2
+)::bool;
+
+-- name: HasSentenceCard :one
+-- A STEP 2 sentence the learner found confusing is filed once (lesson-fidelity-v46 R5):
+-- the card's back is the sentence.
+SELECT EXISTS (
+    SELECT 1 FROM review_cards WHERE user_id = $1 AND source = 'sentence' AND back = $2
+)::bool;

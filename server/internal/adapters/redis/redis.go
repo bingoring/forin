@@ -84,3 +84,43 @@ func (s *WardStore) Recent(ctx context.Context, cutoff time.Time, limit int64) (
 		Min: min, Max: "+inf", Offset: 0, Count: limit,
 	}).Result()
 }
+
+// ReferenceLimiter is the per-user DAILY cap on speech-reference generation
+// (cross-review I4): one counter per user per UTC day, key
+// speechref:gen:{userID}:{YYYYMMDD}, incremented on each real generation.
+// limit <= 0 disables the cap.
+type ReferenceLimiter struct {
+	c     *redis.Client
+	limit int
+	now   func() time.Time
+}
+
+func NewReferenceLimiter(c *redis.Client, limit int) *ReferenceLimiter {
+	return &ReferenceLimiter{c: c, limit: limit, now: time.Now}
+}
+
+func (l *ReferenceLimiter) key(userID string, at time.Time) string {
+	return "speechref:gen:" + userID + ":" + at.UTC().Format("20060102")
+}
+
+// Allow counts one generation and reports whether it is within the limit.
+// Refused attempts are counted too (the counter just keeps climbing), which is
+// harmless: the key is per-day and expires. The TTL is set in the same
+// transaction as the INCR so a crash can never leave an immortal counter; 48h
+// covers the whole UTC day plus clock slack.
+func (l *ReferenceLimiter) Allow(ctx context.Context, userID string) (bool, error) {
+	if l.limit <= 0 {
+		return true, nil
+	}
+	k := l.key(userID, l.now())
+	var incr *redis.IntCmd
+	_, err := l.c.TxPipelined(ctx, func(p redis.Pipeliner) error {
+		incr = p.Incr(ctx, k)
+		p.Expire(ctx, k, 48*time.Hour)
+		return nil
+	})
+	if err != nil {
+		return false, err
+	}
+	return incr.Val() <= int64(l.limit), nil
+}

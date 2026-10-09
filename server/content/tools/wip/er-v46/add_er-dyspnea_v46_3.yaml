@@ -1,0 +1,108 @@
+- title: 신경근질환 환기저하
+  s:
+  - {t: "기침 변화", i: chartup, w: "over the past few days로 기간을 한정하면 환자가 최근 변화를 떠올려 답해요. 기침이 약해지면 가래를 뱉어 내는 힘이 줄어 호흡 근육이 약해졌을 수 있어요.", d: "since last night", k: ["기침이 더 자주 나오나요?", "기침에 가래가 섞여 나오나요?"], a: "weaker", o: ["louder", "wetter", "longer"]}
+  - {t: "연하 문진", i: faceWorried, w: "swallowing or clearing your throat처럼 두 동작을 묶어 물으면 환자가 둘 중 하나만 있어도 답해요. 신경근질환은 삼키는 근육과 호흡 근육이 함께 약해질 수 있어요.", d: "or speaking", k: ["손에 힘이 빠지거나 저린가요?", "말할 때 목소리가 약해졌나요?"], a: "swallowing", o: ["sleeping", "walking", "reading"]}
+  - {t: "사레 확인", i: bulb, w: "go down the wrong way는 영어에서 음식이 기도로 넘어가 사레들리는 걸 가리키는 쉬운 표현이에요. 삼키는 힘이 약하면 음식이 기도로 들어가 폐렴 위험이 커져요.", d: "too fast", k: ["식사 후에 목소리가 젖은 듯 변하나요?", "삼킬 때 아프신가요?"], a: "wrong", o: ["right", "long", "slow"]}
+  - {t: "관찰 안내", i: shield, w: "closely로 가까이 지켜본다고 알려 주면 환자가 검사를 자주 해도 놀라지 않아요. 호흡 근육의 힘은 한 번이 아니라 시간에 따라 추이를 봐야 해요.", d: "once a day", k: ["호흡근 검사는 하루 두 번 할 거예요", "호흡기를 준비해 둘게요"], a: "closely", o: ["rarely", "quietly", "slowly"]}
+  - {t: "힘 재확인", i: monitor, w: "again으로 이전에 쟀다는 것을 알려요. 호흡 근육 힘은 시간에 따라 변해서 같은 방법으로 반복해 재야 추이를 알 수 있어요.", d: "tomorrow", k: ["오늘 폐활량도 다시 확인해 볼게요", "오늘 물 삼키는 걸 다시 지켜볼게요"], a: "strength", o: ["weight", "pulse", "balance"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "신경근질환 문진 4문장 순서"
+    why: "기침이 약해졌는지 묻고, 약해진 기침과 함께 삼킴 문제를 묻고, 그 때문에 호흡근을 지켜본다고 알리고, 그것을 추적하려고 힘을 다시 잰다고 말합니다. 'weaker cough'·'Because of that'·'To track it'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Has your cough gotten weaker over the past few days?", icon: chartup, ko: "지난 며칠 사이 기침이 더 약해졌나요?", note: "기침"}
+    - {en: "With a weaker cough, are you having trouble swallowing or clearing your throat?", icon: faceWorried, ko: "기침이 약해졌다면 삼키기나 목에 낀 걸 뱉기가 힘든가요?", note: "삼킴"}
+    - {en: "Because of that, we need to watch your breathing muscles closely.", icon: shield, ko: "그래서 호흡근을 가까이서 지켜봐야 해요", note: "관찰"}
+    - {en: "To track it, let's check your strength again today.", icon: monitor, ko: "추이를 보려고 오늘 힘도 다시 확인해볼게요", note: "재확인"}
+  ctx: {word: "muscle", ko: "근육"}
+- title: 산소요법 목표치 소통
+  s:
+  - {t: "위험 설명", i: shield, w: "For you로 이 환자에게만 해당한다고 먼저 말해요. 만성 폐쇄성 폐질환 환자 일부는 산소가 너무 많으면 이산화탄소가 쌓일 수 있어요.", d: "for everyone", k: ["산소가 부족하면 입술이 파래질 수 있어요", "산소 마스크는 하루에 몇 번 바꿔요"], a: "harmful", o: ["helpful", "tiring", "useless"]}
+  - {t: "목표 설명", i: chartup, w: "not the highest number처럼 오해하기 쉬운 것을 부정해 주면 환자가 높을수록 좋다고 여기지 않아요. 산소포화도는 환자마다 정해진 목표 범위를 맞춰요.", d: "the lowest number", k: ["수치가 오르면 마스크를 바꿀게요", "목표 범위는 의사 선생님이 정해요"], a: "range", o: ["time", "dose", "date"]}
+  - {t: "조절 약속", i: monitor, w: "adjust it carefully로 산소를 올릴 때 신중하게 한다고 알려요. 목표 범위 안에 있도록 유량을 조금씩 바꿔요.", d: "every hour", k: ["산소 수치를 매시간 기록할게요", "마스크를 더 꽉 조일게요"], a: "carefully", o: ["quickly", "rarely", "fully"]}
+  - {t: "한계 설명", i: faceWorried, w: "all the way up처럼 눈에 그려지는 표현으로 끝까지 올리는 상황을 보여 줘요. 산소를 최대로 올린다고 더 안전한 것은 아니라는 점이 핵심이에요.", d: "at night", k: ["산소는 낮은 유량부터 시작할게요", "산소를 끄면 위험할 수 있어요"], a: "safe", o: ["easy", "quick", "simple"]}
+  - {t: "점검 안내", i: stetho, w: "as needed는 정해진 시간이 아니라 필요할 때 조절한다는 뜻이에요. 수치는 환자 상태를 보며 확인하고 처방 범위 안에서 조절해요.", d: "as ordered", k: ["수치가 안정되면 알려 드릴게요", "수치를 가족에게도 알려 드릴게요"], a: "levels", o: ["tubes", "lines", "charts"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "산소 목표치 설명 4문장 순서"
+    why: "산소가 해로울 수 있다는 위험을 먼저 말하고, 그래서 목표 범위를 맞춘다고 설명하고, 그 범위를 지키려고 수치를 확인하며 조절하고, 그렇게 해도 끝까지 올리지는 않는다고 덧붙입니다. 'That's why'·'that range'·'Even then'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "For you, too much oxygen can actually be harmful.", icon: shield, ko: "환자분께는 산소가 너무 많아도 오히려 해로울 수 있어요", note: "위험"}
+    - {en: "That's why we aim for a target range, not the highest number.", icon: chartup, ko: "그래서 가장 높은 수치가 아니라 목표 범위를 맞추는 거예요", note: "목표"}
+    - {en: "To stay in that range, I'll check your levels and adjust as needed.", icon: monitor, ko: "그 범위에 있도록 수치를 확인하고 필요하면 조절할게요", note: "조절"}
+    - {en: "Even then, turning it all the way up wouldn't be safe for you.", icon: faceWorried, ko: "그렇게 해도 끝까지 올리는 건 환자분께 안전하지 않아요", note: "한계"}
+  sw: {ko: "환자분께는 산소가 너무 많으면 혈액에 이산화탄소가 쌓일 수 있어요"}
+- title: 불안 동반 호흡곤란 감별
+  s:
+  - {t: "결과 안내", i: check, w: "reassuring은 걱정을 덜어 주는 소견이라는 뜻이에요. 산소와 폐 진찰이 정상일 때 먼저 알려 주면 환자의 두려움이 가라앉아요.", d: "so far", k: ["심전도 결과도 곧 나올 거예요", "혈액검사 결과는 아직 안 나왔어요"], a: "reassuring", o: ["alarming", "unusual", "low"]}
+  - {t: "청진 결과", i: stetho, w: "to me를 붙이면 확정이 아니라 간호사가 듣고 느낀 것이라는 범위를 지켜요. 진단은 의사가 하고, 간호사는 들은 소견을 쉬운 말로 전해요.", d: "to the doctor", k: ["심장 소리를 먼저 들어 볼게요", "폐 소리는 뒤에서 들어 볼게요"], a: "normal", o: ["strange", "loud", "fast"]}
+  - {t: "유발 상황", i: faceWorried, w: "when 절로 어떤 상황에서 나타나는지를 물어요. 스트레스나 불안과 함께 증상이 오면 불안이 숨참에 영향을 줄 수 있어요.", d: "when you exercise", k: ["이런 증상이 전에도 있었나요?", "최근에 큰일이 있었나요?"], a: "stressed", o: ["tired", "angry", "sad"]}
+  - {t: "호흡 시도", i: speech, w: "Let's …로 같이 해 보자고 하고 see if로 결과를 지켜보자고 말해요. 천천히 숨 쉬어 나아지면 불안이 호흡을 빠르게 했을 가능성을 가늠할 수 있어요.", d: "while you rest", k: ["숨이 안정되면 말씀해 주세요", "심호흡을 열 번 해 보세요"], a: "eases", o: ["worsens", "returns", "repeats"]}
+  - {t: "감정 인정", i: shield, w: "It's okay to로 불안을 느껴도 된다고 허락하면 환자가 감정을 숨기지 않아요. 안전하다는 말을 이어 붙이면 안심이 돼요.", d: "you're alone", k: ["불안할 땐 같이 숨을 쉬어요", "원하시면 가족을 불러 드릴게요"], a: "anxious", o: ["angry", "sad", "ashamed"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "불안 동반 호흡곤란 4문장 순서"
+    why: "검사 소견이 안심할 만하다고 알리고, 그런 결과를 두고 불안과 관련이 있는지 묻고, 그렇다면 호흡을 늦춰 보고, 시도하는 동안 불안해도 괜찮다고 말합니다. 'these'·'If it does'·'that'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Your oxygen and lung exam look reassuring.", icon: check, ko: "산소 수치도 폐 진찰 소견도 안심할 만해요", note: "소견"}
+    - {en: "With results like these, does this happen when you feel stressed or anxious?", icon: faceWorried, ko: "이런 결과라면 스트레스받거나 불안할 때 증상이 나타나나요?", note: "유발"}
+    - {en: "If it does, let's slow your breathing and see if it eases.", icon: speech, ko: "그렇다면 숨을 천천히 쉬면서 나아지는지 봐요", note: "시도"}
+    - {en: "While we try that, it's okay to feel anxious — you're safe here.", icon: shield, ko: "해 보는 동안 불안해도 괜찮아요 — 여긴 안전해요", note: "인정"}
+  ctx: {word: "reassuring", ko: "안심되는"}
+- title: 상기도 폐쇄 급성 대응
+  s:
+  - {t: "걱정 공유", i: faceWorried, w: "high-pitched sound는 좁아진 기도에서 나는 높은 숨소리를 환자가 알아들을 만한 말로 가리켜요. 숨 들이쉴 때 나는 높은 소리는 상기도가 좁아졌다는 신호일 수 있어요.", d: "your lungs", k: ["그 소리가 언제부터 났나요?", "목이 붓는 느낌이 있나요?"], a: "sound", o: ["cough", "voice", "cry"]}
+  - {t: "삼킴 확인", i: stetho, w: "Are you able to …?는 할 수 있는지를 물어 환자가 예·아니오로 답할 수 있게 해요. 침을 삼키기 힘들면 기도가 거의 막혀 가는 신호일 수 있어요.", d: "by yourself", k: ["지금 목소리를 낼 수 있으세요?", "지금 입을 벌릴 수 있으세요?"], a: "swallow", o: ["stand", "walk", "sleep"]}
+  - {t: "도움 요청", i: speaker, w: "지금 하는 일을 먼저 말하고 stay calm으로 환자에게 할 일을 하나만 줘요. 기도가 위험하면 기도 전문 인력을 즉시 불러요.", d: "in a minute", k: ["지금 산소를 가져올게요 — 앉아 계세요", "곧 마스크를 가져올 거예요"], a: "calm", o: ["awake", "quiet", "home"]}
+  - {t: "자세 유지", i: me, w: "keeping you upright으로 환자가 가장 편한 자세를 그대로 두는 것이 상기도 폐쇄 환자의 기본이에요. 눕히면 부은 조직이 기도를 더 막을 수 있어요.", d: "starting an IV", k: ["곧 기도 전문 의사가 올 거예요", "어지러우면 바로 말씀하세요"], a: "upright", o: ["flat", "asleep", "warm"]}
+  - {t: "협조 요청", i: shield, w: "Try to로 환자에게 지시하되 let us help you로 환자를 도와주는 쪽에 둬요. 움직이거나 힘을 쓰면 기도가 더 좁아질 수 있어서 가만히 있게 해요.", d: "and keep talking", k: ["가능하면 말은 하지 말고 계세요", "목을 만지지 말고 계세요"], a: "still", o: ["quiet", "awake", "warm"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "기도 폐쇄 대응 4문장 순서"
+    why: "높은 숨소리에 대한 걱정을 말하고, 그 소리를 두고 삼킬 수 있는지 묻고, 어느 쪽이든 기도 도움을 부르고, 그들이 오는 동안 자세와 산소를 준비합니다. 'that sound'·'Either way'·'they'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "That high-pitched sound worries me about your airway.", icon: faceWorried, ko: "그 높은 숨소리 때문에 기도가 걱정돼요", note: "걱정"}
+    - {en: "Because of that sound, are you able to swallow right now?", icon: stetho, ko: "그 소리 때문에 지금 침을 삼킬 수 있으세요?", note: "확인"}
+    - {en: "Either way, I'm calling for airway help right now — stay calm.", icon: speaker, ko: "어느 쪽이든 기도 도움을 지금 부를게요 — 침착하게 계세요", note: "호출"}
+    - {en: "While they come, we're keeping you upright and getting oxygen ready.", icon: me, ko: "그들이 오는 동안 앉혀드리고 산소도 준비하고 있어요", note: "대기"}
+  sw: {ko: "곧게 앉혀드리고 산소도 준비하고 있어요"}
+- title: 기관삽관 준비·RSI 보조
+  s:
+  - {t: "장비 보고", i: speaker, w: "삽관 직전에는 문장을 짧게 끊어 준비된 것만 말해요. 흡인(suction)이 켜져 있어야 구토나 분비물이 나와도 바로 기도를 닦을 수 있어요.", d: "and the bougie", k: ["BVM과 산소가 연결돼 있습니다", "모니터는 이미 붙어 있습니다"], a: "Suction", o: ["Monitor", "Light", "Pump"]}
+  - {t: "약 보고", i: pill, w: "drawn up and labeled는 약을 주사기에 뽑아 이름을 붙여 놓았다는 뜻이에요. 약 이름 표시는 투여 전에 혼동을 막는 기본 안전 수칙이에요.", d: "and signed", k: ["유도제와 근이완제를 곧 섞을 겁니다", "약 이름을 한 번 더 복창하겠습니다"], a: "paralytic", o: ["antibiotic", "antacid", "insulin"]}
+  - {t: "카트 보고", i: board, w: "위치를 말해 주면 팀원이 찾으러 헤매지 않아요. 어려운 기도에 대비해 기도 카트는 침상 옆에 두는 것이 안전해요.", d: "on the way", k: ["기도 카트를 지금 가져오겠습니다", "카트에 후두경이 있는지 확인했습니다"], a: "bedside", o: ["entrance", "pharmacy", "station"]}
+  - {t: "수치 보고", i: monitor, w: "수치를 숫자로 먼저 말하고 진행해도 좋다는 신호를 짧게 이어요. 삽관은 산소포화도가 충분히 올라간 뒤에 시작해요.", d: "hold off", k: ["산소포화도는 모니터로 계속 보고 있습니다", "수액은 연결돼 있습니다 — 시작하세요"], a: "98", o: ["88", "79", "85"]}
+  - {t: "진행 약속", i: speech, w: "step by step으로 단계마다 큰 소리로 말하면 팀원이 같은 시점에 움직여요. 팀원이 되받아 말해 확인하는 닫힌 고리 소통(closed-loop)이 안전해요.", d: "one by one", k: ["약을 하나씩 확인하며 말하겠습니다", "각 단계마다 시간을 기록하겠습니다"], a: "call", o: ["write", "draw", "type"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "삽관 준비 4문장 순서"
+    why: "장비 준비를 먼저 보고하고, 그 준비가 끝난 상태에서 약을 보고하고, 수치를 확인하며 진행을 허락하고, 진행하는 동안 콜아웃한다고 말합니다. 'all of that'·'Go ahead'·'As you go'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Suction is on, blade and tube are ready.", icon: speaker, ko: "흡인 준비됐고, 후두경 날과 튜브도 준비됐습니다", note: "장비"}
+    - {en: "With all of that set, induction and paralytic are drawn up and labeled.", icon: pill, ko: "그렇게 준비된 상태에서 유도제와 근이완제를 뽑아 라벨을 붙였습니다", note: "약"}
+    - {en: "Sats are 98 — we're good to go. Go ahead.", icon: monitor, ko: "산소포화도 98, 진행해도 좋습니다 — 시작하세요", note: "허락"}
+    - {en: "As you go, I'll call it out step by step.", icon: speech, ko: "진행하시는 동안 단계별로 콜아웃하겠습니다", note: "콜아웃"}
+  ctx: {word: "sats", ko: "산소포화도"}
+- title: I형 호흡부전 급속 악화
+  s:
+  - {t: "반응 보고", i: monitor, w: "not responding to oxygen으로 산소를 주었는데도 수치가 오르지 않는다는 핵심을 말해요. 산소에 반응하지 않는 저산소증은 곧 인공호흡 보조를 준비해야 한다는 신호예요.", d: "to fluids", k: ["산소 마스크를 비재호흡 마스크로 바꾸겠습니다", "혈압도 같이 떨어지고 있습니다"], a: "falling", o: ["rising", "climbing", "holding"]}
+  - {t: "변화 보고", i: chartup, w: "fast와 just now로 속도와 시점을 같이 말해요. 얼마나 빨리 변했는지는 팀이 얼마나 서둘러야 하는지를 정해 줘요.", d: "last night", k: ["산소 마스크를 다시 확인했습니다", "호흡수가 40까지 올라갔습니다"], a: "dropped", o: ["rose", "held", "doubled"]}
+  - {t: "계획 알림", i: speaker, w: "We need to로 팀이 해야 할 큰 방향을 분명히 말해요. 산소와 비침습환기로 호전되지 않으면 기관삽관을 결정해요.", d: "later today", k: ["지금 팀을 불러야 합니다", "지금 흉부 엑스레이가 필요합니다"], a: "intubation", o: ["extubation", "transfusion", "sedation"]}
+  - {t: "준비 보고", i: bulb, w: "calling과 preparing을 and로 묶어 지금 하고 있는 두 가지를 한 번에 말해요. 삽관 전에는 도울 사람과 기도 장비를 같이 준비해요.", d: "the pharmacy", k: ["약을 준비하고 있습니다", "마취과와 응급의가 오고 있습니다"], a: "preparing", o: ["cleaning", "closing", "measuring"]}
+  - {t: "협진 요청", i: speaker, w: "get … on the line은 전화로 연결한다는 관용 표현이에요. 어려운 기도가 예상되면 마취과 같은 기도 전문 인력을 일찍 불러요.", d: "on the list", k: ["약국에 약을 급히 요청하겠습니다", "마취과 선생님이 도착했습니다"], a: "anesthesia", o: ["pharmacy", "radiology", "security"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "급속 악화 보고 4문장 순서"
+    why: "산소에 반응하지 않는다고 먼저 보고하고, 그래서 삽관 쪽으로 가야 한다고 말하고, 삽관을 위해 팀을 부르며 준비하고, 팀이 오는 동안 마취과를 부릅니다. 'Because of that'·'the intubation'·'they'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "He's not responding to oxygen — sats keep falling.", icon: monitor, ko: "산소에 반응이 없습니다 — 수치가 계속 떨어지고 있습니다", note: "보고"}
+    - {en: "Because of that, we need to move toward intubation now.", icon: speaker, ko: "그래서 지금 삽관 쪽으로 가야 합니다", note: "계획"}
+    - {en: "For the intubation, I'm calling the team and preparing the airway.", icon: bulb, ko: "삽관을 위해 팀을 부르고 기도를 준비하고 있습니다", note: "준비"}
+    - {en: "While they're coming, let's get anesthesia on the line.", icon: speaker, ko: "그들이 오는 동안 마취과에 바로 연락하겠습니다", note: "협진"}
+  sw: {ko: "우려됩니다 — 지금 삽관 쪽으로 가야 합니다"}

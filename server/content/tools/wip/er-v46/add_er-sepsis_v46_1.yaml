@@ -1,0 +1,63 @@
+- title: SIRS/qSOFA 기초 사정
+  s:
+  - {t: "활력 측정", i: monitor, w: "Let me…는 측정을 하기 전에 먼저 알리는 말투라 환자가 갑작스럽게 느끼지 않아요. 체온·심박수·호흡수는 SIRS 선별에서 가장 먼저 보는 활력징후예요.", d: "in the hall", k: ["가슴 소리를 먼저 들어 볼게요", "지금 손목밴드를 확인할게요"], a: "temperature", o: ["weight", "height", "vision"]}
+  - {t: "조기 경고", i: bell, w: "can으로 가능성만 말해 겁을 주지 않으면서, early가 지금 살펴보는 이유를 줘요. 수치 하나가 아니라 여러 개가 함께 벗어날 때 패혈증을 의심해요.", d: "right now", k: ["혈액 검사 결과가 곧 나올 거예요", "숨이 차면 바로 알려 주세요"], a: "early", o: ["old", "ordinary", "obvious"]}
+  - {t: "증상 문진", i: speech, w: "pain·cough·burning을 or로 이어 폐·요로·그 밖의 감염 부위를 한 번에 훑어요. 소변 볼 때 화끈거림은 요로감염의 대표 증상이에요.", d: "yesterday", k: ["언제부터 열이 났나요?", "어제 소변을 얼마나 보셨어요?"], a: "urinate", o: ["swallow", "breathe", "eat"]}
+  - {t: "수치 설명", i: chartup, w: "a little로 수치를 낮춰 말해 환자가 놀라지 않게 하고, right now로 지금 값일 뿐 바뀔 수 있음을 알려요. 심박수가 분당 90을 넘으면 SIRS 기준에 해당해요.", d: "in the room", k: ["혈압은 정상 범위예요", "체온을 한 번 더 잴게요"], a: "fast", o: ["slow", "low", "irregular"]}
+  - {t: "호흡 확인", i: stetho, w: "also가 앞서 말한 심박수에 이어 하나 더 본다고 알려 주고, how fast로 호흡수를 센다는 것을 환자 말로 풀어요. 호흡수는 SIRS와 qSOFA가 둘 다 보는 항목이에요.", d: "twice", k: ["지금 산소를 연결할게요", "소변은 언제 보셨어요?"], a: "breathing", o: ["eating", "walking", "swallowing"]}
+  - {t: "조기 발견", i: magnify, w: "together로 수치 하나가 아니라 묶음으로 본다는 점을 짚고, possible로 확진이 아니라 가능성임을 분명히 해요. 패혈증은 늦을수록 치료가 어려워져서 일찍 잡는 것이 핵심이에요.", d: "for sure", k: ["항생제는 한 시간 안에 시작할 거예요", "체온이 다시 정상으로 돌아왔어요"], a: "infection", o: ["injury", "fracture", "allergy"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "기초 사정 설명 4문장 순서"
+    why: "측정을 알리고, 'the numbers'가 그 측정을 가리키며 결과를 말하고, 'like that'이 그 결과를 가리켜 의미를 설명하고, 'That's why'가 그 의미를 이유로 받아 재측정을 알려요. 'the numbers'·'like that'·'That's why'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "I'd like to check your temperature, heart rate, and breathing together.", icon: monitor, ko: "체온, 심박수, 호흡을 함께 확인하고 싶어요", note: "측정"}
+    - {en: "Okay, the numbers show a fast heart rate and a raised temperature.", icon: chartup, ko: "수치를 보니 심박수가 빠르고 체온이 올랐어요", note: "결과"}
+    - {en: "A few numbers being off like that can be an early warning sign.", icon: bell, ko: "그렇게 몇 가지가 어긋나 있으면 조기 경고 신호일 수 있어요", note: "의미"}
+    - {en: "That's why I'll recheck them soon and tell you what I find.", icon: speech, ko: "그래서 곧 다시 확인하고 결과를 말씀드릴게요", note: "재확인"}
+  ctx:
+    word: "sepsis"
+    ko: "패혈증"
+- title: 감염 의심+활력 이상
+  s:
+  - {t: "열+빠른 맥", i: monitor, w: "with로 열·빠른 심박·빠른 호흡을 한 묶음으로 말하고, closer look으로 다음 단계가 필요하다는 신호를 줘요. 열 하나일 때보다 여러 징후가 함께일 때 패혈증 가능성을 더 따져요.", d: "for now", k: ["가슴 사진을 찍을 거예요", "지금은 금식하셔야 해요"], a: "Fever", o: ["Cough", "Bruising", "Headache"]}
+  - {t: "원인 찾기", i: magnify, w: "We'll로 검사를 계획으로 알리고, blood와 source를 한 문장에 묶어 피 검사와 원인 찾기가 한 흐름임을 보여 줘요. 패혈증 치료는 감염 부위를 찾아 잡는 것이 핵심이에요.", d: "at home", k: ["어디가 가장 아픈지 짚어 보세요", "열은 한 시간 뒤에 다시 잴게요"], a: "source", o: ["spread", "history", "number"]}
+  - {t: "불편 부위", i: faceWorried, w: "most unwell은 아프다는 한 가지 증상 대신 전반적으로 안 좋은 곳을 묻는 말이라, 증상을 정리하지 못한 환자도 답하기 쉬워요. 가슴·배·elsewhere로 폐·복부·그 밖의 감염 부위를 짚어요.", d: "since morning", k: ["열이 난 지 얼마나 됐나요?", "어젯밤에 약을 드셨나요?"], a: "unwell", o: ["hungry", "thirsty", "sleepy"]}
+  - {t: "수치 설명", i: chartup, w: "up과 racing으로 수치가 평소보다 오르고 빠르다는 것을 그림처럼 말하고, a bit으로 무겁지 않게 해요. 체온과 심박이 함께 오르는 것은 감염에 대한 몸의 흔한 반응이에요.", d: "all day", k: ["혈압은 아직 괜찮은 편이에요", "배가 아프면 말씀해 주세요"], a: "racing", o: ["resting", "slowing", "healing"]}
+  - {t: "채혈 이유", i: lab, w: "to find out으로 채혈의 목적을 문장 안에 넣어 주사 바늘이 왜 필요한지 바로 알려 줘요. 이유를 들은 환자는 검사에 협조하기 쉬워요.", d: "in the room", k: ["팔이 따끔할 수 있어요", "결과는 곧 알려 드릴게요"], a: "drawing", o: ["giving", "saving", "moving"]}
+  - {t: "악화 보고", i: bell, w: "Tell me if…는 명령이 아니라 변화를 알려 달라는 부탁이라 환자가 보고하는 역할을 맡아요. 통증이 달라지면 처치 계획이 바뀔 수 있어서 바로 알려 달라고 해요.", d: "if you want", k: ["지금 통증이 몇 점인가요?", "통증이 시작된 때를 말해 주세요"], a: "worse", o: ["better", "smaller", "lighter"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "감염 의심 설명 4문장 순서"
+    why: "열과 빠른 맥을 알리며 더 보겠다고 하고, 'that'이 그것을 가리키며 원인을 묻고, 'Thanks'가 그 대답을 받아 채혈을 알리고, 'too'가 간호사의 처치에 더해 환자가 도울 일을 말해요. 'that'·'Thanks'·'too'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "You have a fever and a fast heart rate, so I want to look closer.", icon: monitor, ko: "열이 있고 심박수가 빨라서 더 자세히 보려고 해요", note: "설명"}
+    - {en: "To find out why, where do you feel the worst — chest, belly, or elsewhere?", icon: magnify, ko: "이유를 찾으려는데 가슴, 배, 다른 곳 중 어디가 가장 안 좋으세요?", note: "문진"}
+    - {en: "Thanks. A blood test will tell us more, so we'll draw some now.", icon: lab, ko: "고마워요. 혈액 검사로 더 알 수 있어서 지금 채혈할게요", note: "채혈"}
+    - {en: "You can help too — tell me right away if the pain gets worse.", icon: bell, ko: "도와주실 수도 있어요 — 통증이 심해지면 바로 말씀해 주세요", note: "협조"}
+  ctx:
+    word: "tachycardic"
+    ko: "빈맥인"
+    sc:
+      0: {en: "Febrile 38.9, tachycardic at 118, tachypneic at 26."}
+- title: 배양 채취 설명
+  s:
+  - {t: "배양 목적", i: lab, w: "before antibiotics를 앞쪽에 두어 순서(배양이 먼저)를 강조하고, to find…로 목적을 붙였어요. 항생제를 먼저 쓰면 배양에서 균이 안 자랄 수 있어서 가능한 한 항생제 전에 채취해요.", d: "in the room", k: ["소변도 따로 받을 거예요", "팔이 따끔할 수 있어요"], a: "exact", o: ["same", "only", "first"]}
+  - {t: "검사 효과", i: pill, w: "That이 앞 문장의 배양을 가리켜 '그래서 필요하다'로 이어 줘요. 어떤 균인지, 어느 항생제가 듣는지 알면 약을 더 정확히 고를 수 있어요.", d: "for you", k: ["결과는 보통 며칠 걸려요", "팔을 가만히 두세요"], a: "best", o: ["cheapest", "newest", "only"]}
+  - {t: "지연 안심", i: bell, w: "only로 늦어지는 폭이 작다는 것을 먼저 말하고 by a few minutes로 크기를 줘서, 왜 바로 안 주느냐는 불안을 덜어요. 패혈증 항생제는 가능한 한 빨리 시작해야 해서 채취는 그 흐름 안에서 짧게 해요.", d: "for the lab", k: ["팔을 곧게 펴 주세요", "혈액 채취는 곧 끝나요"], a: "antibiotic", o: ["scan", "meal", "visit"]}
+  - {t: "순서 안내", i: calendar, w: "first와 then으로 두 단계를 차례로 말하고 right after로 항생제가 곧 이어진다는 점을 분명히 해요. 배양이 먼저인 이유는 항생제가 들어가면 균이 덜 자랄 수 있어서예요.", d: "in the lab", k: ["지금 알레르기 약부터 확인할게요", "결과는 내일 알려 드릴게요"], a: "take", o: ["wash", "sign", "count"]}
+  - {t: "결과 의미", i: lab, w: "exactly which로 막연한 감염이 아니라 정확한 균을 알려 준다는 점을 강조해요. 혈액배양에서 자란 균과 그 균에 듣는 항생제를 알면 치료를 맞춰 조정해요.", d: "last week", k: ["결과 나오기 전에 치료는 시작할 거예요", "혈액 검체는 검사실로 보내요"], a: "germ", o: ["drug", "allergy", "injury"]}
+  - {t: "항생제 선택", i: pill, w: "Once로 균을 알게 되는 때를 조건 삼아 선택이 따라온다는 인과를 보여 줘요. 처음에는 넓게 듣는 항생제로 시작하고, 균이 확인되면 맞는 약으로 좁혀 가요.", d: "by hand", k: ["배양 결과는 의사가 설명해 줄 거예요", "항생제 알레르기가 있으면 말씀해 주세요"], a: "Once", o: ["Although", "Unless", "Whether"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "배양 채취 설명 4문장 순서"
+    why: "채혈을 알리고, 'which germ'이 그 배양이 보여 줄 것을 말하고, 'that answer'가 그 답을 가리켜 지연이 짧다고 안심시키고, 'Beyond that short delay'가 그 지연을 받아 얻는 이점을 말해요. 'that answer'·'that short delay'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "I need to draw some blood for cultures before your antibiotic.", icon: lab, ko: "항생제 전에 배양용 혈액을 채취해야 해요", note: "채혈"}
+    - {en: "The cultures will show exactly which germ is causing your infection.", icon: magnify, ko: "배양으로 어떤 균이 감염을 일으키는지 정확히 알 수 있어요", note: "목적"}
+    - {en: "Getting that answer only delays the antibiotic by a few minutes.", icon: bell, ko: "그 답을 얻느라 항생제가 몇 분 늦어질 뿐이에요", note: "안심"}
+    - {en: "Beyond that short delay, knowing the germ lets us choose the best medicine for you.", icon: pill, ko: "그 짧은 지연 말고도 균을 알면 가장 맞는 약을 고를 수 있어요", note: "이점"}
+  sw: {ko: "정확한 균을 찾으려고 항생제 전에 혈액배양을 채취해요"}

@@ -1,0 +1,38 @@
+- title: 환자 2인 확인
+  s:
+  - {t: "신원 확인", i: speech, w: "Can you … for me?는 명령 대신 부탁의 모양이라 환자가 취조당하는 느낌이 덜해요. state는 say보다 격식 있는 확인 절차의 동사예요.", d: "for the chart", k: ["생년월일을 말씀해 주시겠어요?", "어디가 불편하세요?"], a: "state", ai: speech, o: [["guess", "bulb"], ["hide", "lock"], ["change", "gear"]]}
+  - {t: "신원 확인", i: calendar, w: "문장 맨 끝의 please가 짧은 질문을 퉁명스럽지 않게 만들어요. 이름과 생년월일은 환자 확인에 쓰는 대표적인 두 가지 식별자예요.", d: "of admission", k: ["입원하신 날짜가 언제예요?", "주소가 어떻게 되세요?"], a: "date of birth", ai: calendar, o: [["home address", "home"], ["phone number", "speaker"], ["insurance plan", "board"]]}
+  - {t: "밴드 대조", i: bandage, w: "check A against B는 A를 기준과 맞대어 본다는 짧은 표현이에요. 무엇을 하는지 말로 알려 주면 환자가 확인에 협조하기 쉬워요.", d: "with your chart", k: ["새 밴드를 채워 드릴게요", "차트에 기록해 둘게요"], a: "against", ai: check, o: [["without", "cross"], ["despite", "shield"], ["before", "calendar"]]}
+  - {t: "표준 절차", i: check, w: "I always …라고 말하면 환자 한 사람을 위한 특별 조치가 아니라 모두에게 하는 표준 절차라는 뜻이 전해져요.", d: "for every doctor", k: ["저는 이름을 한 번만 확인해요", "환자분께 새 밴드를 채워 드릴게요"], a: "always", ai: check, o: [["never", "cross"], ["rarely", "calendar"], ["almost", "chartup"]]}
+  - {t: "이유 설명", i: shield, w: "prevent A from -ing는 A가 …하지 못하게 막는다는 구조예요. 확인의 목적을 알려 주면 되풀이되는 질문도 환자가 이해해요.", d: "us to", k: ["이 확인은 시간이 오래 걸려요", "두 환자분 모두 이름이 같아요"], a: "prevent", ai: shield, o: [["cause", "siren"], ["allow", "handshake2"], ["remind", "bell"]]}
+  - {t: "불일치 대응", i: siren, w: "If … doesn't match, I'll stop은 정보가 어긋나면 진행하지 않겠다는 약속이에요. 불일치를 그냥 넘기지 않는 것이 환자 확인의 핵심이에요.", d: "and guess", k: ["일치하면 바로 시작할게요", "의사 선생님께 먼저 물어볼게요"], a: "match", ai: check, o: [["change", "gear"], ["disappear", "lock"], ["improve", "chartup"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "환자 2인 확인 4단계"
+    why: "이름을 먼저 묻고, And로 이어 생년월일을 묻습니다. 두 가지를 받은 뒤 밴드와 대조하고, 일치하면 마무리해요. 앞 줄이 뒤 줄의 전제라 순서가 하나예요."
+    lines:
+    - {en: "Can you state your full name for me?", icon: speech, ko: "성함을 말씀해 주시겠어요?", note: "이름"}
+    - {en: "And your date of birth, please?", icon: calendar, ko: "그리고 생년월일도요", note: "생년월일"}
+    - {en: "I'm checking this against your wristband.", icon: bandage, ko: "손목밴드와 대조할게요", note: "대조"}
+    - {en: "Thank you. Everything matches.", icon: check, ko: "감사해요, 모두 일치해요", note: "마무리"}
+  ctx: {word: "date of birth", ko: "생년월일"}
+- title: 낙상 위험 초기 사정
+  s:
+  - {t: "병력 질문", i: calendar, w: "Have you had any falls?는 일상어의 현재완료 질문이에요. fall event 같은 보고서 말투보다 환자가 가벼운 낙상까지 떠올려요.", d: "since yesterday", k: ["지금 어지러우세요?", "어떤 약을 드시고 계세요?"], a: "falls", ai: chevronDown, o: [["allergies", "shield"], ["surgeries", "scalpel"], ["fevers", "monitor"]]}
+  - {t: "약물 확인", i: pill, w: "that make you dizzy는 약이 일으키는 증상을 묻는 관계절이에요. 어지럼을 일으킬 수 있는 약은 낙상 위험 사정에서 병력과 함께 확인하는 항목이에요.", d: "that help you", k: ["약을 하루에 몇 번 드세요?", "넘어지신 적이 있으세요?"], a: "dizzy", ai: faceWorried, o: [["thirsty", "coffee"], ["hungry", "home"], ["itchy", "bandage"]]}
+  - {t: "거동 확인", i: home, w: "or로 보조기구 두 가지를 한 번에 묻고 at home으로 평소 생활 환경을 확인해요. 평소 쓰는 보조기구는 낙상 위험을 가늠하는 단서예요.", d: "at work", k: ["집에 혼자 계세요?", "계단을 자주 오르내리세요?"], a: "use", ai: check, o: [["sell", "cross"], ["paint", "pencil"], ["break", "gear"]]}
+  - {t: "계획 설명", i: pill, w: "I'll also …로 앞으로 하려는 확인을 미리 알려 줘요. 복용 약이 낙상 위험을 키울 수 있어서 약 목록도 같이 보는 거예요.", d: "if any food", k: ["약은 모두 끊으셔야 해요", "의사 선생님께 먼저 여쭤볼게요"], a: "raise", ai: chartup, o: [["wash", "bandage"], ["paint", "pencil"], ["borrow", "handshake2"]]}
+  - {t: "함께 계획", i: handshake2, w: "we'll work together는 환자를 함께하는 사람으로 말해 줘요. Based on what I find로 사정 결과가 계획의 근거라는 흐름도 보여 줘요.", d: "alone to", k: ["오늘 바로 퇴원하실 수 있어요", "결과는 저 혼자 정할게요"], a: "together", ai: handshake2, o: [["alone", "me"], ["later", "calendar"], ["quietly", "mic"]]}
+  - {t: "사전 안내", i: shield, w: "before you get up on your own은 혼자 일어나시기 전에 먼저 말씀해 달라는 안내예요. 위험 요소는 일어나기 전에 알려야 낙상을 줄여요.", d: "after you eat", k: ["혼자서 일어나셔도 괜찮아요", "일어나기 전에 약을 드릴게요"], a: "risk", ai: siren, o: [["lunch", "coffee"], ["hobby", "star"], ["address", "home"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "낙상 위험 사정 4문장 순서"
+    why: "먼저 병력을 묻고, 어지럼을 주는 약을 확인한 뒤 앞으로 할 일을 안내하고 마지막에 함께 계획을 세워요. 병력 → 약 → 확인 → 계획 순으로 앞이 뒤의 근거가 돼요."
+    lines:
+    - {en: "Have you had any falls in the past year?", icon: calendar, ko: "지난 1년 사이 넘어지신 적 있나요?", note: "병력"}
+    - {en: "And do you take any medicines that make you dizzy?", icon: pill, ko: "그리고 어지럽게 하는 약을 드시나요?", note: "약물"}
+    - {en: "Thank you. I'll also check your medicine list for fall risks.", icon: check, ko: "약 목록도 위험 요소가 있는지 볼게요", note: "확인"}
+    - {en: "Based on what I find, we'll plan together.", icon: handshake2, ko: "결과를 바탕으로 함께 계획해요", note: "계획"}
+  sw: {ko: "지난 1년 동안 넘어지신 적이 있으세요?"}

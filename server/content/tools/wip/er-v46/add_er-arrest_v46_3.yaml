@@ -1,0 +1,90 @@
+- title: 가족 입회 소생 지원
+  s:
+  - {t: "안심 설명", i: handshake2, w: "everything they can은 '최선을 다하고 있다'는 뜻을 구체적으로 풀어 말해요. 결과를 약속하지 않으면서 지금 노력 중이라는 사실만 정직하게 전해요.", d: "all night", k: ["팀이 곧 그를 병실로 옮길 거예요", "팀이 지금 가족을 기다리고 있어요"], a: "team", o: ["family", "chaplain", "pharmacy"]}
+  - {t: "곁에 있기", i: speech, w: "I'll …은 곧 하겠다는 약속의 말이라 가족이 혼자가 아니라고 느껴요. stay with you는 자리를 지키겠다는 뜻이에요.", d: "what's for lunch", k: ["제가 잠시 자리를 비울게요", "상황은 의사가 나중에 설명할 거예요"], a: "explain", o: ["ignore", "cancel", "hide"]}
+  - {t: "위치 안내", i: speaker, w: "You can …은 허락하는 말투라 입회한 가족이 해도 되는 일을 알려 줘요. 목소리가 환자에게 닿는 자리를 짚어 주면 가족이 할 수 있는 일이 생겨요.", d: "feel your pulse", k: ["여기서는 환자가 보이지 않을 거예요", "대기실에서 기다려 주세요"], a: "here", o: ["outside", "upstairs", "downstairs"]}
+  - {t: "공감", i: faceWorried, w: "I know this is …로 상대의 감정을 먼저 인정하면 그다음 설명이 훨씬 잘 들려요. but 뒤에는 지금 일어나는 일을 사실대로 이어요.", d: "is resting", k: ["걱정 마세요, 아무 문제 없어요", "무서우시겠지만 팀은 지금 쉬고 있어요"], a: "frightening", o: ["confusing", "exhausting", "annoying"]}
+  - {t: "계속 설명", i: speech, w: "as it happens는 일이 일어나는 바로 그때 알려 주겠다는 뜻이에요. keep …ing로 중간에 끊지 않겠다는 약속을 담아요.", d: "after it's over", k: ["일이 끝난 뒤에 한꺼번에 설명할게요", "설명은 의사 선생님이 하실 거예요"], a: "keep", o: ["stop", "avoid", "refuse"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "입회 가족에게 하는 4문장 순서"
+    why: "먼저 감정을 인정하고 곁에 있겠다고 말하고, 서 있을 자리를 알려 주고, 눈앞의 처치를 설명한 뒤 계속 알리겠다고 약속해요. While I'm here, From where you're standing, all of that이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "I know this is frightening, so I'll stay with you.", icon: faceWorried, ko: "무서우시겠지만 제가 곁에 있을게요", note: "공감"}
+    - {en: "While I'm here, you can stand where he can hear your voice.", icon: speaker, ko: "제가 있는 동안 목소리가 들리는 곳에 서 계세요", note: "위치"}
+    - {en: "From where you're standing, you can see the team doing everything they can for him.", icon: handshake2, ko: "서 계신 곳에서 팀이 최선을 다하는 게 보여요", note: "안심"}
+    - {en: "I'll keep explaining all of that as it happens.", icon: speech, ko: "그 모든 걸 진행되는 대로 계속 설명할게요", note: "약속"}
+  sw: {ko: "지금 팀은 그의 가슴을 눌러 뇌로 피가 계속 가게 하고 있어요"}
+- title: 목격자 CPR 이력 인수
+  s:
+  - {t: "다운타임", i: calendar, w: "What was …?는 이미 지나간 일을 묻는 과거 시제 질문이에요. down time은 쓰러진 뒤 CPR이 시작되기까지의 시간이라 예후와 처치 판단에 쓰여요.", d: "the drive time", k: ["CPR을 몇 분 동안 했나요?", "쓰러진 뒤 누가 먼저 도착했나요?"], a: "started", o: ["ended", "stopped", "failed"]}
+  - {t: "현장 처치", i: siren, w: "How many …?는 셀 수 있는 것의 횟수를 묻는 틀이에요. in the field는 병원 밖, 즉 구급대가 출동한 현장을 뜻해요.", d: "last year", k: ["병원에서 충격과 약물을 몇 번 줬나요?", "현장에서 환자를 몇 분 동안 옮겼나요?"], a: "field", o: ["ward", "lab", "pharmacy"]}
+  - {t: "목격 여부", i: magnify, w: "수동태 witnessed로 사건 자체에 초점을 두고, by whom으로 행위자를 따로 물어요. 목격된 심정지는 시작 시점이 비교적 분명해요.", d: "what", k: ["심정지가 병원 안에서 일어났나요?", "목격자가 CPR을 했나요?"], a: "witnessed", o: ["delayed", "filmed", "treated"]}
+  - {t: "목격자 CPR", i: me, w: "Did anyone …?은 누구인지 몰라도 일단 한 사람이 있었는지를 묻는 질문이에요. 구급대가 오기 전 CPR 여부는 다운타임 계산과 예후에 중요해요.", d: "before the doctor", k: ["구급차가 몇 시에 도착했나요?", "구급대원이 CPR을 시작했나요?"], a: "arrived", o: ["left", "stopped", "returned"]}
+  - {t: "정확한 횟수", i: bell, w: "exactly를 붙여 대략이 아니라 정확한 숫자를 달라고 요구해요. 충격 횟수는 처치 기록과 다음 처치 판단에 필요해요.", d: "after arrival", k: ["현장 도착 시각을 정확히 알려 주세요", "병원에서 충격을 몇 번 줄지 알려 주세요"], a: "shocks", o: ["doses", "breaths", "fluids"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "구급대 인수 질문 4문장 순서"
+    why: "목격 여부로 시작해 그 사람이 CPR을 했는지 묻고, 다운타임을 물은 뒤 구급대의 현장 처치를 물어요. that person, So, Once EMS arrived가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Was the arrest witnessed, and by whom?", icon: magnify, ko: "심정지가 목격됐나요, 누가 목격했나요?", note: "목격"}
+    - {en: "Did that person start CPR before the ambulance arrived?", icon: me, ko: "그분이 구급차 오기 전에 CPR을 시작했나요?", note: "CPR"}
+    - {en: "So what was the down time before CPR started?", icon: calendar, ko: "그럼 CPR 시작 전 다운타임은 얼마였나요?", note: "시간"}
+    - {en: "Once EMS arrived, how many shocks and medications did they give?", icon: siren, ko: "구급대가 온 뒤 충격과 약물을 몇 번 줬나요?", note: "처치"}
+  ctx: {word: "field", ko: "현장"}
+- title: 압박 질 피드백 대응
+  s:
+  - {t: "깊이 교정", i: chartup, w: "비교급 deeper는 지금보다 더라는 방향을 한 단어로 줘요. 깊이는 지치면 얕아지기 쉬워서 수치를 덧붙여 기준을 알려요.", d: "one inch", k: ["더 얕게 눌러 주세요 — 매번 1인치만요", "더 빠르게 눌러 주세요 — 분당 140회요"], a: "deeper", o: ["slower", "softer", "lighter"]}
+  - {t: "이완 교정", i: redo, w: "Let the chest …는 '~하게 두라'는 사역 표현이에요. 압박 사이에 가슴이 완전히 올라와야 심장에 피가 다시 차서 기대지 않는 것이 핵심이에요.", d: "after each shock", k: ["압박 사이에 가슴을 계속 눌러 두세요", "압박 사이에 가슴을 살짝 쓸어 주세요"], a: "recoil", o: ["collapse", "shrink", "sink"]}
+  - {t: "환기 속도", i: bell, w: "명령을 먼저, 이유를 뒤에 붙이는 짧은 교정이에요. 너무 빠른 환기는 심장으로 돌아오는 혈액을 줄일 수 있어서 속도를 지켜야 해요.", d: "too little", k: ["환기를 빠르게 하세요 — 너무 느리게 환기하고 있어요", "환기를 멈추세요 — 이제 필요 없어요"], a: "fast", o: ["slow", "early", "late"]}
+  - {t: "모니터 피드백", i: monitor, w: "The monitor shows …로 근거를 기계에 두면 압박자에게 지적이 덜 개인적으로 들려요. 피드백 장치가 깊이를 알려 주면 그 숫자를 보고 조절해요.", d: "his breaths", k: ["모니터에 압박이 너무 깊다고 나와요", "모니터에 압박 속도가 좋다고 나와요"], a: "shallow", o: ["deep", "fast", "hard"]}
+  - {t: "이완 후 압박", i: redo, w: "before you …로 순서를 정해 줘요. 가슴이 다 올라온 뒤에 다시 눌러야 매번 심장에 피가 차서 효과가 커져요.", d: "halfway", k: ["가슴이 이완되기 전에 다시 누르세요", "다시 누르기 전에 환자 가슴에서 손을 떼세요"], a: "push", o: ["rest", "switch", "count"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "압박 질 교정 4문장 순서"
+    why: "모니터가 얕다고 알려 주면 더 깊게 누르라고 하고, 압박 사이에 이완을 요구한 뒤 좋아졌다고 확인해요. deeper는 shallow를, Between pushes와 full recoil은 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "The monitor shows your compressions are too shallow.", icon: monitor, ko: "모니터에 압박이 너무 얕다고 나와요", note: "지적"}
+    - {en: "Push deeper — at least two inches every time.", icon: chartup, ko: "더 깊게요 — 매번 최소 2인치요", note: "깊이"}
+    - {en: "Between pushes, let the chest fully recoil.", icon: redo, ko: "압박 사이에 가슴이 완전히 이완되게 하세요", note: "이완"}
+    - {en: "Now it's right — good depth and full recoil on the monitor.", icon: star, ko: "이제 맞아요 — 모니터에 깊이도 이완도 좋아요", note: "확인"}
+  ctx: {word: "recoil", ko: "이완되다"}
+- title: 저체온 심정지 연장 소생
+  s:
+  - {t: "핵심 원칙", i: star, w: "저체온 환자는 대사가 크게 줄어 몸이 차가울 때 사망 판단을 서두르지 않는다는 원칙을 짧게 외우는 말이에요. 차가운 몸 자체는 사망 선언의 근거가 되지 않아요.", d: "and awake", k: ["따뜻해지면 바로 사망 선언해도 돼요", "차가워지면 소생을 멈춰도 돼요"], a: "warm", o: ["cold", "hot", "stable"]}
+  - {t: "압박 유지", i: play, w: "while로 동시에 진행되는 두 가지를 이어요. 저체온 심정지는 체온을 올리는 동안에도 압박을 이어 가는 것이 기본이에요.", d: "Stop compressions now", k: ["체온이 오를 때까지 압박을 멈추세요", "재가온은 소생이 끝난 뒤에 시작해요"], a: "rewarm", o: ["cool", "chill", "freeze"]}
+  - {t: "약물 간격", i: pill, w: "space out은 간격을 벌린다는 구동사예요. 저체온에서는 약이 몸에 오래 남을 수 있어서 병원 지침에 따라 투여 간격을 늘리거나 미루기도 해요.", d: "the compressions", k: ["약물을 평소보다 더 자주 주세요", "심부 체온은 신경 쓰지 말고 약물을 주세요"], a: "rises", o: ["drops", "falls", "sinks"]}
+  - {t: "이유와 결정", i: shield, w: "so로 이유(몸이 매우 차다)와 결정을 이어요. 저체온에서는 뇌가 보호되어 있을 수 있어서 포기하지 않고 계속하는 것이 원칙이에요.", d: "stop here", k: ["몸이 아주 따뜻해서 소생을 멈출게요", "몸이 차가워서 사망 시각을 선언할게요"], a: "cold", o: ["warm", "wet", "pale"]}
+  - {t: "선언 보류", i: bell, w: "won't는 하지 않겠다는 분명한 약속이에요. call time of death에서 call은 사망 시각을 공식적으로 선언한다는 뜻이에요.", d: "dry", k: ["따뜻해지면 바로 사망 시각을 선언할게요", "따뜻해지기 전에 사망 시각을 선언할게요"], a: "death", o: ["birth", "arrival", "discharge"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "저체온 심정지 4문장 순서"
+    why: "몸이 매우 차갑다는 판단으로 계속하겠다고 말하고, 재가온하는 동안 압박을 잇고, 체온이 오를 때까지 약물 간격을 두고, 그때까지 사망 선언을 보류해요. keep going, Until, Until then이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "His body is very cold, so we'll keep going.", icon: shield, ko: "몸이 아주 차가우니 계속 이어갈게요", note: "결정"}
+    - {en: "Keep compressions going while we actively rewarm him.", icon: play, ko: "적극적으로 재가온하는 동안 압박을 계속해요", note: "압박"}
+    - {en: "Until his core temperature rises, space out the medications.", icon: pill, ko: "심부 체온이 오를 때까지 약물 간격을 두어요", note: "약물"}
+    - {en: "Until then, we won't call time of death.", icon: bell, ko: "그때까지는 사망 시각을 선언하지 않아요", note: "보류"}
+  ctx: {word: "warm", ko: "따뜻한"}
+- title: 고칼륨혈증 심정지 표적치료
+  s:
+  - {t: "원인 추정", i: bulb, w: "makes …로 원인과 결과를 이어요. 투석을 거르면 칼륨이 몸에 쌓이기 쉬워서 투석 환자의 심정지에서는 고칼륨혈증을 먼저 의심해요.", d: "very rare", k: ["투석을 해서 칼륨이 떨어졌을 가능성이 높아요", "인슐린을 걸러서 저혈당일 가능성이 높아요"], a: "dialysis", o: ["insulin", "breakfast", "therapy"]}
+  - {t: "칼슘 투여", i: pill, w: "to protect …로 약을 주는 목적을 밝혀요. 칼슘은 칼륨 수치를 낮추지는 않지만 높은 칼륨이 심장에 미치는 영향을 막아 줘요.", d: "to lower the fever", k: ["칼륨을 줘서 심장을 보호하세요", "칼슘은 나중에 주세요"], a: "calcium", o: ["heparin", "sodium", "potassium"]}
+  - {t: "칼륨 이동", i: pill, w: "with dextrose로 두 약을 함께 준다는 뜻을 담아요. 인슐린은 칼륨을 세포 안으로 밀어 넣고, 포도당은 저혈당을 막아 줘요.", d: "to raise the sodium", k: ["칼륨을 올리기 위해 인슐린을 빼 주세요", "포도당 없이 인슐린만 주세요"], a: "dextrose", o: ["saline", "heparin", "adenosine"]}
+  - {t: "투석 시점", i: calendar, w: "when 절을 목적어로 넣어 물을 내용을 한 문장에 담아요. 마지막 투석 시점은 칼륨이 얼마나 쌓였을지 짐작하는 단서예요.", d: "meal", k: ["마지막 식사가 언제였는지 물어보세요", "다음 투석이 언제인지 물어보세요"], a: "last", o: ["first", "only", "usual"]}
+  - {t: "역할 설명", i: handshake2, w: "while로 두 약이 동시에 하는 서로 다른 일을 나란히 설명해요. 칼슘은 심장을 지키고 인슐린은 칼륨을 세포 안으로 옮겨요.", d: "stops", k: ["칼슘이 칼륨을 이동시키는 동안 인슐린이 심장을 보호해요", "칼슘과 인슐린 둘 다 칼륨을 올려요"], a: "shifts", o: ["raises", "increases", "doubles"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "고칼륨혈증 대응 4문장 순서"
+    why: "투석 병력으로 고칼륨혈증을 의심하고, 심장을 먼저 보호한 뒤 칼륨을 옮기고, 그동안 마지막 투석 시점을 물어요. If so, With the heart protected, While that works가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Missed dialysis makes hyperkalemia very likely.", icon: bulb, ko: "투석을 걸러서 고칼륨혈증일 가능성이 아주 높아요", note: "의심"}
+    - {en: "If so, give calcium to protect the heart right now.", icon: pill, ko: "그렇다면 심장을 보호하게 지금 칼슘을 주세요", note: "칼슘"}
+    - {en: "With the heart protected, push insulin with dextrose to shift the potassium.", icon: pill, ko: "심장이 보호되면 인슐린과 포도당으로 칼륨을 옮겨요", note: "이동"}
+    - {en: "While that works, ask when he had his last dialysis.", icon: calendar, ko: "그게 듣는 동안 마지막 투석이 언제였는지 물어봐요", note: "병력"}
+  sw: {ko: "투석을 걸러서 고칼륨혈증일 가능성이 아주 높아요"}

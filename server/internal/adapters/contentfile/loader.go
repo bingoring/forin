@@ -50,6 +50,17 @@ func Load(dir string) (*content.Bundle, error) {
 		if err := loadType(pdir, "phrases", prof, func(p content.Phrase) { b.Phrases = append(b.Phrases, p) }); err != nil {
 			return nil, err
 		}
+		if err := loadType(pdir, "lexicon", prof, func(l content.Lexicon) { b.Lexicons = append(b.Lexicons, l) }); err != nil {
+			return nil, err
+		}
+	}
+	// A sentence pointing at a word that is not in its theme's bank is the one failure
+	// that must never reach a device: STEP 1 is built by following those references
+	// backwards, so a broken one shows up as a lesson with no words and no clue why.
+	// gencontent checks the same thing when it writes the files; this checks what the
+	// server is actually about to serve, which is the copy that matters.
+	if errs := content.ValidateBundleLessons(b); len(errs) > 0 {
+		return nil, fmt.Errorf("lesson content: %w (and %d more)", errs[0], len(errs)-1)
 	}
 	return b, nil
 }

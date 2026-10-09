@@ -51,6 +51,7 @@ type fakeSpeechRepo struct {
 	getRefErr      error
 	refRow         *ports.SentenceReferenceRow // pre-seeded cache row, for cache-hit tests
 	putReference   []ports.SentenceReferenceRow
+	putRefErr      error
 	getRefAudioErr error
 	updatedAudio   []updatedAudioCall // every UpdateReferenceAudio call, in order
 	updateAudioErr error
@@ -147,7 +148,7 @@ func (f *fakeSpeechRepo) GetReference(ctx context.Context, sentenceKey string) (
 
 func (f *fakeSpeechRepo) PutReference(ctx context.Context, r ports.SentenceReferenceRow) error {
 	f.putReference = append(f.putReference, r)
-	return nil
+	return f.putRefErr
 }
 
 // GetReferenceAudio mirrors the real repo's "check the pre-seeded row, then
@@ -316,6 +317,23 @@ func TestRecordDowngradesUnknownOrigin(t *testing.T) {
 	}
 }
 
+// Cross-review S1: every origin the mobile entry points send must be in the
+// allowed set — one that is missing is silently stored as "freeform", so the
+// speaking list could never tell where an attempt came from.
+func TestRecordKeepsEveryEntryPointOrigin(t *testing.T) {
+	for _, origin := range []string{"dialogue", "review", "drill", "freeform", "lesson", "slang", "home", "night"} {
+		pron := &fakePronPort{result: sampleResult()}
+		repo := newFakeSpeechRepo()
+		svc := newTestService(pron, repo)
+		if _, err := svc.Record(context.Background(), "u1", []byte("wav"), "hello", RecordOptions{Origin: origin}); err != nil {
+			t.Fatalf("Record(%s): %v", origin, err)
+		}
+		if len(repo.inserted) != 1 || repo.inserted[0].Origin != origin {
+			t.Errorf("origin %q must be kept as-is, got %+v", origin, repo.inserted)
+		}
+	}
+}
+
 // Review round 2, Important 1: by the time InsertAttempt runs, Assess has
 // already happened — Azure was already paid for (I4) and produced a real
 // score. A storage failure after that must not throw the result away: Record
@@ -359,5 +377,92 @@ func TestRecordClearsReviewCardForDrillOrigin(t *testing.T) {
 	}
 	if len(repo.inserted) != 1 || repo.inserted[0].ReviewCardID != nil {
 		t.Fatalf("drill attempts must never carry a review_card_id (I3), got %+v", repo.inserted)
+	}
+}
+
+// Cross-review B1: the response carried durationMs = 0 on every attempt — Record stored the
+// clip length on the row but never on the returned result, so the result screen showed
+// "0.0초" and compared the learner against the reference as if they were always faster.
+func TestRecordReturnsTheClipDuration(t *testing.T) {
+	pron := &fakePronPort{result: sampleResult()}
+	repo := newFakeSpeechRepo()
+	svc := newTestService(pron, repo)
+
+	wav := buildWav(16000, 1, 24000) // 1.5 s
+	got, err := svc.Record(context.Background(), "u1", wav, "I'm giving you acetaminophen", RecordOptions{Origin: "drill"})
+	if err != nil {
+		t.Fatalf("Record: %v", err)
+	}
+	if got.Result.DurationMS != 1500 {
+		t.Fatalf("result DurationMS = %d, want 1500", got.Result.DurationMS)
+	}
+	if repo.inserted[0].DurationMS != 1500 {
+		t.Fatalf("row DurationMS = %d, want 1500", repo.inserted[0].DurationMS)
+	}
+}
+
+// cross-review I3: a dialogue utterance is scored with ONE unscripted Azure
+// call; RecordScored persists a result that call already produced, without
+// calling the scorer again.
+func TestRecordScoredPersistsWithoutCallingTheScorer(t *testing.T) {
+	pron := &fakePronPort{}
+	repo := newFakeSpeechRepo()
+	svc := newTestService(pron, repo)
+
+	res := sampleResult()
+	rec := svc.RecordScored(context.Background(), "u1", buildWav(16000, 1, 16000), res.Recognized, res, RecordOptions{Origin: "dialogue", SessionID: "s1"})
+	if rec.PersistErr != nil || rec.ID == "" {
+		t.Fatalf("rec = %+v", rec)
+	}
+	if pron.assessCalls != 0 {
+		t.Fatalf("scorer called %d times, want 0", pron.assessCalls)
+	}
+	if len(repo.inserted) != 1 || repo.inserted[0].ReferenceText != res.Recognized || repo.inserted[0].SessionID != "s1" {
+		t.Fatalf("inserted = %+v", repo.inserted)
+	}
+}
+
+// flippingProfiles answers "en" on the first read and "ja" on every later one — the
+// user switched target language between two reads of one request.
+type flippingProfiles struct{ reads int }
+
+func (f *flippingProfiles) GetProfile(ctx context.Context, userID string) (*user.Profile, error) {
+	f.reads++
+	if f.reads == 1 {
+		return &user.Profile{TargetLang: "en"}, nil
+	}
+	return &user.Profile{TargetLang: "ja"}, nil
+}
+
+type localeSpyPort struct {
+	fakePronPort
+	locales []string
+}
+
+func (f *localeSpyPort) Assess(ctx context.Context, audioWav []byte, referenceText, locale string) (*ports.PronunciationResult, error) {
+	f.locales = append(f.locales, locale)
+	return f.fakePronPort.Assess(ctx, audioWav, referenceText, locale)
+}
+
+// Cross-review S14b: Record resolves the locale ONCE. Read twice, a language switch
+// between the reads would score in one locale and file the attempt under another's
+// sentence key.
+func TestRecordResolvesLocaleOnce(t *testing.T) {
+	profiles := &flippingProfiles{}
+	port := &localeSpyPort{fakePronPort: fakePronPort{result: sampleResult()}}
+	repo := newFakeSpeechRepo()
+	svc := NewService(repo, pronunciation.NewService(port, profiles), nil)
+
+	if _, err := svc.Record(context.Background(), "u1", []byte("wav"), "hello", RecordOptions{}); err != nil {
+		t.Fatalf("Record: %v", err)
+	}
+	if profiles.reads != 1 {
+		t.Errorf("profile read %d times, want exactly 1", profiles.reads)
+	}
+	if len(port.locales) != 1 || len(repo.inserted) != 1 {
+		t.Fatalf("calls: scorer=%v inserts=%d", port.locales, len(repo.inserted))
+	}
+	if got := repo.inserted[0]; got.Locale != port.locales[0] || got.SentenceKey != SentenceKey("hello", port.locales[0]) {
+		t.Errorf("scored in %q but filed as locale=%q key=%q", port.locales[0], got.Locale, got.SentenceKey)
 	}
 }

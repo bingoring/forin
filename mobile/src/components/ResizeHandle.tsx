@@ -18,9 +18,6 @@
 // is above or below it.
 import { useMemo, useRef } from 'react';
 import { PanResponder, View } from 'react-native';
-import { colors } from '@/theme/tokens';
-
-const C = colors.ink;
 /** Vertical movement before the drag is claimed. Below this a wobble during a tap would
  *  turn into a resize. Small (2, not 4): the reports were that the handle "barely moves",
  *  and a 4pt deadband on a short drag ate the start of the gesture. */
@@ -67,16 +64,18 @@ export function ResizeHandle({ onDrag, onDone, testID }: {
       // it further past its drawn bounds so a thumb that lands near the line still grabs
       // it. The reports were that the handle was hard to catch at all.
       //
-      // Biased DOWNWARD, both in the padding and the slop: the grab zone used to sit
-      // centred on the bar, but it read as being ABOVE the bar — the empty margin over the
-      // handle was catching the thumb while the bar itself felt dead. So the bar rides
-      // higher in its box (paddingTop < paddingBottom) and the slop reaches further below
-      // it (bottom > top), which moves the felt centre of the target onto and just under
-      // the mark. No extra empty space is added — the box is a touch shorter, not taller.
-      hitSlop={{ top: 4, bottom: 16, left: 24, right: 24 }}
-      style={{ paddingTop: 7, paddingBottom: 13, alignItems: 'center', justifyContent: 'center' }}
+      // Biased DOWNWARD in the slop: the grab zone used to sit centred on the bar, but it
+      // read as being ABOVE the bar — the empty margin over the handle was catching the
+      // thumb while the bar itself felt dead. The slop reaches further below it (bottom >
+      // top), which moves the felt centre of the target onto and just under the mark.
+      //
+      // The drawn spacing is the handoff's (lesson-fidelity-v46, dialogue.jsx L11 `grab`:
+      // margin 7 auto), so the padding is even; the bias lives in the slop alone.
+      hitSlop={{ top: 4, bottom: 22, left: 24, right: 24 }}
+      style={{ paddingTop: 7, paddingBottom: 7, alignItems: 'center', justifyContent: 'center' }}
     >
-      <View style={{ height: 5, width: 52, borderRadius: 3, backgroundColor: C, opacity: 0.45 }} />
+      {/* The notebook grabber (NbGrabber's values): 52×5, ink at .25, fully rounded. */}
+      <View style={{ height: 5, width: 52, borderRadius: 99, backgroundColor: 'rgba(62,54,43,.25)' }} />
     </View>
   );
 }

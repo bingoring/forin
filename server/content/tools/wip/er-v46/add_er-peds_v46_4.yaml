@@ -1,0 +1,120 @@
+- title: 소아 패혈증 초기
+  s:
+  - {t: "걱정 공유", i: bell, w: "Her signs worry me로 걱정을 솔직히 말해 상황의 심각성을 부모에게 전해요. we're moving quickly로 이미 움직이고 있다고 이어 불안만 키우지 않게 해요.", d: "at night", k: ["아이 이름을 다시 확인할게요", "아이가 오늘 뭘 먹었는지 알려 주세요"], a: "worry", o: ["confuse", "surprise", "interest"]}
+  - {t: "변화 시점", i: calendar, w: "Tell me when…으로 명령형이지만 부탁하는 어조로 변화가 시작된 때를 물어요. 패혈증은 시간이 중요해서 증상이 시작된 시각이 치료 속도를 정하는 단서예요.", d: "on the phone", k: ["아이가 오늘 얼마나 먹었나요?", "소변은 마지막으로 언제 봤나요?"], a: "started", o: ["ended", "stopped", "slowed"]}
+  - {t: "팀 호출", i: bell, w: "calling the team으로 도움을 부르고 있다고 알려요. 소아 패혈증이 의심되면 의사·약사·검사실 등 여러 사람이 함께 빠르게 움직여요.", d: "in the hall", k: ["의사 선생님이 곧 오실 거예요", "검사실에도 연락하고 있어요"], a: "team", o: ["lab", "pharmacy", "office"]}
+  - {t: "의식 문진", i: faceWorried, w: "harder…than…으로 한 시간 전과 지금의 의식 수준을 견주게 해요. 깨우기 어려워지는 것은 소아 패혈증에서 중요한 악화 신호예요.", d: "than her brother", k: ["오늘 열이 몇 도까지 올랐나요?", "마지막으로 먹은 게 언제예요?"], a: "harder", o: ["easier", "quicker", "faster"]}
+  - {t: "피부 설명", i: magnify, w: "feels cool and looks…로 만져서 느끼는 것과 눈으로 보이는 것을 함께 말해요. 피부가 차갑고 얼룩덜룩한 것은 혈액순환이 떨어진다는 신호일 수 있어요.", d: "after the bath", k: ["아이 몸이 뜨거운가요?", "열은 몇 도까지 올랐나요?"], a: "blotchy", o: ["dry", "itchy", "shiny"]}
+  - {t: "신속 이유", i: siren, w: "because로 서두르는 이유를 한 문장으로 설명해요. 패혈증은 항생제와 수액을 일찍 시작할수록 경과가 좋다고 알려져 있어요.", d: "at night", k: ["검사 결과는 나오는 대로 알려 드릴게요", "팀이 아이 곁을 계속 지킬 거예요"], a: "lives", o: ["time", "money", "space"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "소아 패혈증 의심 4문장 순서"
+    why: "걱정되는 징후를 말하며 의식 상태를 묻고, 'Thank you'가 그 대답을 받아 피부 소견을 말하고, 'both of those'가 앞의 두 소견을 가리켜 팀 호출을 알리고, 'The team'이 방금 부른 팀을 가리켜 변화 시점을 묻고 신속한 이유를 말해요. 'Thank you'·'both of those'·'The team'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Her signs worry me, so I have to ask — is she harder to wake up than she was an hour ago?", icon: faceWorried, ko: "걱정되는 징후라 여쭤볼게요 — 한 시간 전보다 깨우기가 더 힘든가요?", note: "문진"}
+    - {en: "Thank you. Her skin feels cool and looks a little blotchy.", icon: magnify, ko: "고마워요. 피부가 서늘하고 얼룩덜룩해 보여요", note: "소견"}
+    - {en: "Because of both of those, we're calling the team so nothing is missed.", icon: bell, ko: "그 두 가지 때문에 놓치는 게 없도록 팀을 부르고 있어요", note: "호출"}
+    - {en: "The team will want to know, so tell me when this change started — early treatment saves lives.", icon: calendar, ko: "팀이 알고 싶어 할 테니 이 변화가 언제 시작됐는지 말씀해 주세요 — 빠른 치료가 생명을 구해요", note: "시점"}
+  ctx:
+    word: "mottled"
+    ko: "얼룩덜룩한"
+- title: 소아 심정지 코드
+  s:
+  - {t: "팀 안내", i: siren, w: "whole team으로 한 사람이 아니라 팀 전체가 움직인다고 알려 보호자가 혼자 남겨진 느낌을 덜어요. 소아 소생 처치는 여러 사람이 역할을 나눠 동시에 진행해요.", d: "at the desk", k: ["아이 이름을 확인하고 있어요", "곧 의사 선생님이 상황을 설명할 거예요"], a: "whole", o: ["small", "tiny", "new"]}
+  - {t: "보호자 곁", i: handshake2, w: "stay right here…로 보호자가 아이 곁에 있어도 된다고 허락해요. 소생 중에도 가족이 곁에 있도록 허용하는 병원이 많고, 의료진 한 명이 옆에서 설명해 줘요.", d: "at the door", k: ["의자를 가져다 드릴게요", "물이 필요하시면 말씀하세요"], a: "hear", o: ["see", "feel", "know"]}
+  - {t: "상황 공유", i: speech, w: "keep telling…every step으로 계속 알려 주겠다는 약속이에요. 소생 중 가족은 정보가 끊기면 최악을 상상하기 쉬워서 한 사람이 단계마다 설명해 주는 것이 좋아요.", d: "at night", k: ["결과는 나오는 대로 알려 드릴게요", "궁금한 건 언제든 물어보세요"], a: "telling", o: ["asking", "showing", "teaching"]}
+  - {t: "처치 설명", i: monitor, w: "chest compressions and medicine으로 지금 하는 처치 두 가지를 쉬운 말로 알려요. 흉부 압박은 심장이 멈췄을 때 피를 돌게 하려고 하는 처치예요.", d: "in the bed", k: ["전기 충격이 필요한지 보고 있어요", "호흡도 같이 도와주고 있어요"], a: "heart", o: ["lungs", "brain", "stomach"]}
+  - {t: "접촉 허락", i: handshake2, w: "It's okay to…로 보호자가 아이를 만져도 된다고 먼저 허락해요. 처치에 방해되지 않는 자리에서 손을 잡는 것은 아이와 가족 모두에게 의미가 있어요.", d: "in the room", k: ["아이 머리 쪽은 비워 주세요", "의자를 여기에 놓을게요"], a: "hold", o: ["wave", "pat", "kiss"]}
+  - {t: "집중 안내", i: bell, w: "Every second counts로 시간이 중요하다는 점을 한마디로 전하고 whole team으로 총력을 알려요. 소생에서는 시간이 결과를 좌우해서 서두르는 이유를 가족에게도 알려요.", d: "in the hall", k: ["필요하면 원목이나 사회복지사를 불러 드릴게요", "아이 이름을 다시 확인해 볼게요"], a: "focused", o: ["waiting", "relying", "counting"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "소아 심정지 가족 안내 4문장 순서"
+    why: "팀이 지금 아이에게 매달려 있다고 알리고, 'That's what'이 그 팀이 하는 일을 가리켜 처치를 설명하고, 'you'로 보호자에게 곁에 있어도 된다고 하고, 'beside you'가 그 허락을 받아 단계마다 설명하겠다고 약속해요. 'That's what'·'beside you'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Our whole team is working on her right now.", icon: siren, ko: "저희 팀 전체가 지금 아이를 돌보고 있어요", note: "안내"}
+    - {en: "That's what they're doing: chest compressions and medicine to help her heart.", icon: monitor, ko: "그게 지금 하는 일이에요: 심장을 돕는 흉부 압박과 약물이에요", note: "처치"}
+    - {en: "You can stay right here where she can hear your voice.", icon: handshake2, ko: "아이가 목소리를 들을 수 있게 바로 여기 계셔도 돼요", note: "허락"}
+    - {en: "I'll stay beside you and keep telling you what's happening every step.", icon: speech, ko: "곁에서 매 단계마다 무슨 일인지 계속 말씀드릴게요", note: "약속"}
+  sw: {ko: "아이가 목소리를 들을 수 있게 바로 여기 계셔도 돼요"}
+- title: 영아 SIDS 소생 실패
+  s:
+  - {t: "사망 고지", i: handshake2, w: "I'm so sorry로 먼저 애도를 표하고 we did everything we could로 최선을 다했음을 전해요. 사망 소식은 돌려 말하지 않고 분명하게 말해야 가족이 현실을 받아들일 수 있어요.", d: "in the hall", k: ["아이는 지금 침대에 누워 있어요", "의사 선생님이 곧 오실 거예요"], a: "sorry", o: ["glad", "sure", "proud"]}
+  - {t: "시간 허용", i: me, w: "Take all the time you need로 서두르지 않아도 된다고 허락해요. 사망 직후 가족이 아이와 충분히 함께하도록 시간을 주는 것은 애도에 도움이 돼요.", d: "in the hall", k: ["필요하시면 담요를 가져다 드릴게요", "물이 필요하시면 말씀하세요"], a: "time", o: ["money", "food", "help"]}
+  - {t: "곁에 있음", i: handshake2, w: "You are not alone으로 부모가 느낄 고립감을 직접 덜어 줘요. 말이 안 나올 때는 긴 위로보다 곁에 있다는 짧은 표현이 도움이 돼요.", d: "at the door", k: ["필요하시면 사회복지사를 불러 드릴게요", "가족분께 연락해 드릴까요?"], a: "alone", o: ["lost", "late", "wrong"]}
+  - {t: "자책 덜기", i: handshake2, w: "not something you caused or could have prevented로 부모의 죄책감을 직접 덜어요. 영아 돌연사는 원인을 알 수 없는 경우가 많고 부모가 막을 수 있었던 일이 아니라고 분명히 말해 줘요.", d: "at night", k: ["아이가 어떤 모습으로 발견됐는지 기억하시나요?", "집에 다른 가족이 있나요?"], a: "caused", o: ["missed", "ignored", "expected"]}
+  - {t: "지원 제안", i: handshake2, w: "Would you like…?로 필요한지 의사를 묻는 제안형이에요. 원목(chaplain)이나 사회복지사는 병원이 가족에게 제공하는 지지 자원이에요.", d: "in the car", k: ["아이를 위해 해 드릴 일이 있을까요?", "물이나 담요가 필요하세요?"], a: "chaplain", o: ["pharmacist", "cashier", "dentist"]}
+  - {t: "안아도 됨", i: handshake2, w: "hold her for as long as…로 아이를 안고 있어도 되고 시간 제한이 없다고 허락해요. 사망 후 아이를 안고 작별할 기회는 가족의 애도에 도움이 될 수 있어요.", d: "in the hall", k: ["아이 모습이 달라 보여도 괜찮아요", "원하시면 손도장을 남길 수 있어요"], a: "hold", o: ["see", "carry", "visit"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "영아 사망 가족 안내 4문장 순서"
+    why: "사망 소식을 분명히 전하고, 'This'가 그 소식을 가리켜 부모 탓이 아니라고 하고, 'hold her'로 아이와 함께할 시간을 허락하고, 'for that'이 그 허락을 가리켜 곁에 있어 줄 사람을 제안해요. 'This'·'for that'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "I'm so sorry — we did everything we could, and she didn't survive.", icon: handshake2, ko: "정말 유감입니다 — 최선을 다했지만 아이는 살아나지 못했어요", note: "고지"}
+    - {en: "This is not something you caused or could have prevented.", icon: handshake2, ko: "이건 부모님이 일으켰거나 막을 수 있었던 일이 아니에요", note: "자책 덜기"}
+    - {en: "You can hold her for as long as you'd like.", icon: me, ko: "원하시는 만큼 오래 아이를 안고 계셔도 돼요", note: "허락"}
+    - {en: "Would you like a chaplain or someone else here with you for that?", icon: handshake2, ko: "그때 원목이나 다른 누군가가 곁에 있었으면 하시나요?", note: "제안"}
+  sw: {ko: "정말 유감이에요 — 아이가 사망했어요"}
+- title: 학대 의심 신고 결정
+  s:
+  - {t: "신고 의무", i: shield, w: "By law로 개인의 선택이 아니라 법적 의무임을 먼저 밝히고 it's not an accusation으로 비난이 아님을 분명히 해요. 미국에서는 의료진이 아동 학대를 의심하면 신고할 법적 의무가 있어요.", d: "in writing", k: ["아이는 오늘 안전하게 돌볼게요", "담당 전문가가 곧 올 거예요"], a: "law", o: ["habit", "request", "luck"]}
+  - {t: "협력 의지", i: handshake2, w: "My focus…and I want to work with you로 목적(아이 안전)과 태도(함께)를 한 문장에 담아요. 신고 상황에서도 보호자와 협력하는 관계를 유지하는 것이 아이에게 이로워요.", d: "at school", k: ["아이 곁에는 계속 있을 거예요", "모든 걸 설명해 드릴게요"], a: "safety", o: ["schedule", "grades", "weight"]}
+  - {t: "전문가 연계", i: me, w: "A specialist…together로 전문가가 판단하고 우리는 함께 상황을 파악한다고 알려요. 아동 학대 평가는 소아과·사회복지 등 전문팀이 맡아요.", d: "in the lobby", k: ["사회복지사도 같이 올 거예요", "아이는 계속 곁에서 돌볼게요"], a: "specialist", o: ["neighbor", "teacher", "stranger"]}
+  - {t: "공감·절차", i: faceWorried, w: "I understand…, but…으로 속상한 마음을 먼저 인정하고 절차를 따라야 한다는 한계를 이어요. 감정을 먼저 인정한 뒤 규정을 말하면 책임을 피하는 말로 들리지 않아요.", d: "at night", k: ["아이는 안전하게 돌볼게요", "전문가가 곧 설명해 드릴 거예요"], a: "upsetting", o: ["exciting", "boring", "simple"]}
+  - {t: "면담 안내", i: speech, w: "both of you…the same questions로 두 보호자에게 똑같은 질문을 한다고 미리 알려요. 같은 질문을 각각 묻는 것은 특정인을 의심해서가 아니라 표준 절차라는 점을 전해요.", d: "in a row", k: ["질문은 오래 걸리지 않을 수 있어요", "질문이 불편하면 말씀해 주세요"], a: "same", o: ["different", "easy", "long"]}
+  - {t: "변치 않는 마음", i: handshake2, w: "Nothing you say…로 말한 내용 때문에 아이에 대한 돌봄이 달라지지 않는다고 약속해요. 보호자가 방어적이 되지 않고 사실대로 이야기하도록 돕는 말이에요.", d: "at school", k: ["아이 진료는 그대로 계속돼요", "필요한 건 말씀해 주세요"], a: "care", o: ["know", "hear", "learn"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "학대 의심 신고 설명 4문장 순서"
+    why: "신고 의무를 밝히며 비난이 아니라고 하고, 'this'가 그 상황을 가리켜 속상함을 인정하며 절차를 말하고, 'that process'가 앞의 절차를 가리켜 전문가를 소개하고, 'the specialist'가 그 전문가를 가리켜 마음이 변치 않는다고 닫아요. 'this'·'that process'·'the specialist'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "By law, I have to report certain injuries — it's not an accusation.", icon: shield, ko: "법에 따라 특정 손상은 신고해야 해요 — 비난하려는 게 아니에요", note: "의무"}
+    - {en: "I understand this feels upsetting, but I have to follow the process.", icon: faceWorried, ko: "속상하게 느껴지실 걸 알지만, 절차를 따라야 해요", note: "공감"}
+    - {en: "As part of that process, a specialist will help us figure this out together.", icon: me, ko: "그 절차의 일부로 전문가가 함께 파악하는 걸 도와줄 거예요", note: "전문가"}
+    - {en: "Whatever the specialist asks, nothing you say here changes how much we care about your child.", icon: handshake2, ko: "전문가가 뭘 묻든, 여기서 하신 말씀이 아이를 아끼는 마음을 바꾸진 않아요", note: "약속"}
+  sw: {ko: "법에 따라 제가 신고를 해야 해요"}
+- title: 소아 DKA
+  s:
+  - {t: "원인 설명", i: bulb, w: "low on insulin으로 DKA의 핵심 원인(인슐린 부족)을 쉬운 말로 설명하고 correcting it carefully로 신중하게 바로잡는다고 알려요. DKA는 인슐린이 모자라 몸이 당을 못 쓰고 산이 쌓이는 상태예요.", d: "in the morning", k: ["아이가 최근에 많이 마시고 소변을 자주 봤나요?", "마지막으로 인슐린을 맞은 게 언제예요?"], a: "insulin", o: ["water", "iron", "calcium"]}
+  - {t: "단계 설명", i: handshake2, w: "This is a lot to take in으로 받아들이기 벅찬 마음을 인정하고 walk you through each step으로 단계마다 곁에서 설명하겠다고 약속해요. 새로 당뇨를 알게 된 부모는 한꺼번에 많은 정보를 받아요.", d: "in the hall", k: ["질문은 언제든 하셔도 돼요", "검사 결과는 나오는 대로 알려 드릴게요"], a: "step", o: ["test", "meal", "visit"]}
+  - {t: "안심", i: check, w: "in the right place로 올바른 곳에 왔다고 확인해 부모의 불안을 덜어요. we're helping her now로 이미 치료가 시작됐음을 알려요.", d: "at night", k: ["아이 이름을 다시 확인할게요", "곧 의사 선생님이 상황을 설명해 드릴 거예요"], a: "place", o: ["time", "mood", "order"]}
+  - {t: "처치 설명", i: pill, w: "fluids and insulin으로 DKA의 두 가지 핵심 치료(수액과 인슐린)를 알려요. safely로 혈당을 너무 빨리 낮추지 않고 단계적으로 내린다는 점도 전해요.", d: "at the bedside", k: ["혈액 검사를 자주 해서 확인할게요", "아이 몸무게에 맞춰 용량을 정해요"], a: "fluids", o: ["oxygen", "vitamins", "antibiotics"]}
+  - {t: "질환 설명", i: bulb, w: "means로 병의 뜻을 한 문장으로 정의하고 every day로 평생 관리가 필요한 병이라는 점을 짚어요. 소아 1형 당뇨는 인슐린을 매일 맞아야 해요.", d: "at school", k: ["식사 계획은 영양사가 도와줄 거예요", "인슐린 주사법은 천천히 알려 드릴게요"], a: "sugar", o: ["salt", "water", "fat"]}
+  - {t: "모니터링", i: monitor, w: "check her levels often으로 혈당과 전해질을 자주 재서 확인한다고 알려요. DKA 치료 중에는 혈당과 칼륨 등을 자주 확인해 치료를 조절해요.", d: "at lunch", k: ["수치가 바뀌면 바로 알려 드릴게요", "아이는 곁에서 계속 지켜볼게요"], a: "levels", o: ["lines", "bags", "tubes"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "소아 DKA 설명 4문장 순서"
+    why: "인슐린이 모자라 바로잡고 있다고 설명하고, 'To do that'이 그 바로잡기를 가리켜 수액과 인슐린을 말하고, 'it's working'의 it이 그 투여를 가리켜 수치 확인을 알리고, 'This'가 지금까지의 모든 설명을 받아 단계별 안내를 약속해요. 'To do that'·'it's working'·'This'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Her body is low on insulin, and we're correcting it carefully.", icon: bulb, ko: "아이 몸에 인슐린이 부족해서 저희가 신중하게 바로잡고 있어요", note: "원인"}
+    - {en: "To do that, we're giving fluids and insulin through an IV.", icon: pill, ko: "그러려고 정맥주사로 수액과 인슐린을 주고 있어요", note: "처치"}
+    - {en: "We'll check her levels often to make sure it's working.", icon: monitor, ko: "잘 듣는지 수치를 자주 확인할게요", note: "확인"}
+    - {en: "This is a lot to take in — I'll walk you through each step.", icon: handshake2, ko: "받아들이기 힘드시겠지만 단계마다 차근차근 설명해 드릴게요", note: "안내"}
+  sw: {ko: "혈당을 천천히 안전하게 낮추고 있어요"}
+- title: 중증 천식 지속상태
+  s:
+  - {t: "치료 안내", i: hospital, w: "stronger…right now로 지금 더 강하게 치료한다고 알려요. 중증 천식에서는 기관지를 여는 흡입약을 반복해서 쓰고 스테로이드 등을 함께 써요.", d: "at night", k: ["산소도 같이 드리고 있어요", "아이가 숨 쉬는 모습을 계속 보고 있어요"], a: "treatments", o: ["checkups", "vitamins", "questions"]}
+  - {t: "보호자 역할", i: handshake2, w: "Stay close and keep…로 보호자가 할 수 있는 일을 두 가지 구체적으로 말해요. 천식 발작 중 아이가 불안하면 숨이 더 가빠져서 차분한 목소리가 도움이 돼요.", d: "in the hall", k: ["아이가 편한 자세를 찾게 도와주세요", "아이 손을 잡아 주세요"], a: "voice", o: ["hands", "face", "eyes"]}
+  - {t: "지속 관찰", i: monitor, w: "every second로 잠깐도 눈을 떼지 않는다고 강조해 부모가 혼자 감시하지 않아도 된다는 안도를 줘요. 중증 천식은 상태가 빨리 변해서 계속 지켜봐요.", d: "at the door", k: ["산소 수치를 계속 보고 있어요", "숨소리도 계속 확인하고 있어요"], a: "watching", o: ["feeding", "weighing", "teaching"]}
+  - {t: "악화 설명", i: monitor, w: "dropping과 so로 산소 수치가 떨어져서 지원을 늘린다는 인과를 한 문장에 이어요. 산소 포화도가 떨어지면 산소 공급과 호흡 보조를 늘려요.", d: "in the room", k: ["의사가 곧 설명해 드릴 거예요", "아이 상태를 계속 알려 드릴게요"], a: "oxygen", o: ["sugar", "pressure", "fever"]}
+  - {t: "호흡 보조 예고", i: hospital, w: "If…, we'll…로 지금은 아니지만 악화되면 쓸 수단을 미리 알려요. breathing machine은 호흡을 대신 돕는 기계를 보호자가 알아듣는 말로 푼 거예요.", d: "in the hall", k: ["지금은 산소와 약으로 먼저 도와드려요", "상태가 바뀌면 바로 알려 드릴게요"], a: "harder", o: ["easier", "slower", "quieter"]}
+  - {t: "격려", i: star, w: "You're doing great로 부모의 행동을 칭찬하고 it really helps him으로 그 행동이 아이에게 도움이 된다고 이유를 줘요. 침착한 보호자는 아이의 불안을 낮추는 데 실제로 도움이 돼요.", d: "at night", k: ["아이 곁에서 계속 말을 걸어 주세요", "물이 필요하시면 말씀하세요"], a: "calm", o: ["busy", "tired", "focused"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "중증 천식 가족 안내 4문장 순서"
+    why: "더 강한 치료를 한다고 알리고, 'That's because'가 그 치료를 이유로 받아 산소 저하를 설명하고, 'that support'가 앞의 지원을 가리켜 호흡 보조 계획을 말하고, 'next'가 그 계획 다음 상황을 받아 보호자를 격려해요. 'That's because'·'that support'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "We're giving stronger treatments right now to open his airways.", icon: hospital, ko: "지금 더 강한 치료로 기도를 열어주고 있어요", note: "치료"}
+    - {en: "That's because his oxygen level is dropping, so we're adding more support.", icon: monitor, ko: "산소 수치가 떨어지고 있어서 호흡 보조를 더 올리고 있어요", note: "이유"}
+    - {en: "If breathing gets any harder even with that support, we'll help him with a breathing machine.", icon: hospital, ko: "그 보조에도 호흡이 더 힘들어지면 호흡 보조 기계로 도와드릴게요", note: "계획"}
+    - {en: "Whatever happens next, you're doing great staying calm — it really helps him.", icon: star, ko: "앞으로 어떻게 되든 차분히 계셔주셔서 정말 잘하고 계세요 — 아이한테 큰 도움이 돼요", note: "격려"}
+  ctx:
+    word: "intubate"
+    ko: "기관 삽관하다"
+    sc:
+      0: {en: "Worsening WOB despite continuous albuterol; prep to intubate."}

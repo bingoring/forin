@@ -10,6 +10,7 @@ import type { paths } from '@contract/types';
 import type { Interior } from '@engine';
 import { getLocale } from '@/i18n';
 import { hydrateDestinations } from '@/data/destinations';
+import { hydratePronunciationEnabled } from '@/data/pronunciationFlag';
 import { normalizeAvatarSpec, type AvatarSpec } from '@/data/nbAvatar';
 
 const baseURL = process.env.EXPO_PUBLIC_API_URL ?? 'http://localhost:8080';
@@ -50,6 +51,84 @@ type LoginResp = paths['/auth/social']['post']['responses'][200]['content']['app
 type TokenPair = paths['/auth/refresh']['post']['responses'][200]['content']['application/json'];
 type MeResp = paths['/me']['get']['responses'][200]['content']['application/json'];
 type Manifest = paths['/content/manifest']['get']['responses'][200]['content']['application/json'];
+/** GET /me/lesson/{scenarioId} — one situation as its four steps (v44). */
+export type LessonResp = paths['/me/lesson/{scenarioId}']['get']['responses'][200]['content']['application/json'];
+type LessonStepWire = NonNullable<LessonResp['steps']>[number];
+export type LessonStepKind = NonNullable<LessonStepWire['kind']>;
+export type LessonStepState = NonNullable<LessonStepWire['state']>;
+/** A step as the screens draw it. `empty` = content not written yet, never opt-in-able. */
+export interface LessonStepView { kind: LessonStepKind; state: LessonStepState; count?: number }
+export interface LessonWord {
+  id: string; en: string; ipa?: string; ko: string; icon?: string; example?: string;
+  // v45 recall material (build-spec §11-2). Absent on v44 content (not yet backfilled).
+  exKo?: string; cue?: string; tag?: string;
+  distractorsEn?: string[]; distractorsKo?: string[];
+  /** Words → fragments. Fragments inside a word join with nothing; words with one space. */
+  chips?: string[][]; decoyChips?: string[];
+}
+export interface LessonSentence {
+  en: string; ko: string; chunks: string[]; words: string[]; goal: number;
+  /** Uses a word missed in the last STEP 1 run — STEP 2 shows these first. */
+  review?: boolean;
+  // v46 (lesson-fidelity-v46 §D) — the sentence sheet. All optional: absent on content not yet
+  // authored, and the screen falls back per §R3. Icons are NbIcon names.
+  /** Header tag (short Korean, ≤10 chars). Fallback: the situation's short name. */
+  tag?: string;
+  /** NbIcon in the amber circle. Fallback: the department's icon. */
+  icon?: string;
+  /** The "왜?" note under the answer. Absent → no note box. */
+  why?: string;
+  /** build: the one wrong chunk mixed into the pool. Absent → a chunk of another sentence. */
+  decoy?: string;
+  /** listen: two wrong Korean meanings, shown with `ko`. Absent → other sentences' ko. */
+  distractorsKo?: string[];
+  /** blank: the authored 2×2. `answer` occurs once in `en` on word boundaries; the screen splits
+   *  `en` around it. Absent → the runtime blank (no icons). */
+  blank?: LessonBlank;
+}
+export interface LessonBlank { answer: string; options: { en: string; icon: string }[] }
+/** A situation's order card (v46, 결정 8): four lines in conversation order — the answer is
+ *  `lines` as written, the screen shuffles. Absent → the sheet skips the order prompt. */
+export interface LessonOrder {
+  tag?: string; icon?: string;
+  /** Header line, e.g. "불만 환자 응대 4문장 순서". */
+  ko: string;
+  why: string;
+  /** Exactly 4. The handoff draws en + icon; ko and note (a role like "공감") are optional. */
+  lines: { en: string; icon: string; ko?: string; note?: string }[];
+}
+export interface LessonNuanceScene { who: string; icon?: string; en: string; ko?: string; tone?: string; swap?: boolean; ok?: boolean; fix?: string }
+/** A nuance item (v45, §11-3). Which fields apply depends on `kind`. */
+export interface LessonNuance {
+  kind: 'slider' | 'pair' | 'reel' | 'context' | 'swap';
+  words: string[]; why?: string;
+  cue?: string; scale?: string[]; answerAt?: number; example?: string; exKo?: string;
+  pairs?: string[][]; decoys?: string[];
+  word?: string; scenes?: LessonNuanceScene[];
+  /** reel: 감상 칩 3~4개 — 정답 없음(스펙 2-9 §11-8). 옛 콘텐츠에는 없다. */
+  feels?: string[];
+  who?: string; icon?: string; before?: string[]; options?: string[]; answer?: string; notes?: Record<string, string>;
+  /** v46: context — the Korean of `word` (C5 memo “악화되다”, always with `word`); swap — the
+   *  swapped sentence's meaning (the line under the card; the screen adds "— 라고 전해야 해요"). */
+  ko?: string;
+}
+/** LessonResp with the situation's persona/briefing typed the way ScenarioDetail types them. */
+export interface LessonDetail {
+  situation: { id: string; title: string; tagline?: string; theme?: string; persona?: ScenarioPersona; briefing?: ScenarioBriefing };
+  level: string;
+  steps: LessonStepView[];
+  words: LessonWord[];
+  sentences: LessonSentence[];
+  nuance: LessonNuance[];
+  /** v46 order card — absent when not authored. */
+  order?: LessonOrder;
+  /** Where the situation sits in the curriculum — the hub subtitle (v46 T6); absent when it
+   *  belongs to no theme. */
+  course?: LessonCourse;
+}
+
+/** The hub subtitle's coordinate: `ER · 환자 안전·오류 예방 · 3/34`. */
+export interface LessonCourse { dept?: string; theme: string; index: number; total: number }
 
 // --- scenario + conversation types (GET /scenarios/{id} is untyped in the
 // contract, so we mirror the server content.Scenario json tags here). ---
@@ -64,6 +143,8 @@ export interface ScenarioBriefing {
   dept?: string; deptColor?: string; brief?: string; difficulty?: number; timeLabel?: string;
   skills?: string[]; rewards?: ScenarioReward[]; reqs?: ScenarioReq[]; tone?: string; accent?: string;
   chart?: ScenarioChart; riskyPhrases?: string[];
+  /** The hub's one line with one `[[highlighted]]` span (v46 T6); optional. */
+  line?: string;
 }
 export interface ScenarioStep {
   id: string; type: string; next?: string;
@@ -96,7 +177,9 @@ export interface ScenarioDetail {
   /** How much help THIS run gets: "choices" the first time through a conversation,
    *  "free" the second. Sent with the scenario so the screen knows what to draw before
    *  the conversation starts. */
-  guide?: 'choices' | 'free';
+  // 사다리의 회차. 서버는 'guided' | 'free' 를 보내고, 2026-09-30 이전에 저장된
+  // 세션은 'choices' 를 보낸다(같은 회차다). 판정은 data/guideRung 이 한다.
+  guide?: string;
   briefing?: ScenarioBriefing; steps?: ScenarioStep[];
 }
 
@@ -252,6 +335,21 @@ export interface SentenceReference {
  *  Distinct from SpeechAttemptRow, which is one TRY at a known sentence and
  *  carries the syllable breakdown; this is one SENTENCE across tries and the
  *  lists that render it need the text and provenance instead. */
+/** Where a pronunciation attempt started — mirrors the server's allowed set
+ *  (domain/speech allowedOrigins). Anything else is stored as 'freeform', so a
+ *  new entry point must add its value on BOTH sides. */
+export type PronOrigin =
+  | 'dialogue' | 'review' | 'drill' | 'freeform' | 'lesson' | 'slang' | 'home' | 'night';
+
+const PRON_ORIGINS: readonly string[] = [
+  'dialogue', 'review', 'drill', 'freeform', 'lesson', 'slang', 'home', 'night',
+];
+
+/** Route params arrive as free strings; unknown → 'freeform' (same as the server). */
+export function toPronOrigin(v: string | undefined): PronOrigin {
+  return v && PRON_ORIGINS.includes(v) ? (v as PronOrigin) : 'freeform';
+}
+
 export interface SpokenSentence {
   sentenceKey: string;
   referenceText: string;
@@ -265,7 +363,7 @@ export interface SpokenSentence {
   /** Present when the sentence came from a scenario; the list derives its
    *  department chip from it (SCN-ER-00002 → ER). */
   scenarioId?: string;
-  origin?: string;
+  origin?: PronOrigin;
   createdAt: string;
 }
 
@@ -559,9 +657,10 @@ export const api = {
   async economyConfig(): Promise<Record<string, number>> {
     const { data } = await http.get('/config/economy');
     // The same response carries deploy-wide flags that are not economy numbers
-    // (pronunciationEnabled, readyDestinations). Hand the destinations to their own
-    // module rather than letting an array land in ECON's number map.
+    // (pronunciationEnabled, readyDestinations). Hand each to its own module rather
+    // than letting an array or a boolean land in ECON's number map.
     hydrateDestinations((data as { readyDestinations?: unknown }).readyDestinations);
+    hydratePronunciationEnabled((data as { pronunciationEnabled?: unknown }).pronunciationEnabled);
     return data as Record<string, number>;
   },
 
@@ -800,6 +899,38 @@ export const api = {
     }
   },
 
+  /** One situation as its four steps (v44): state per step + the words and sentences. */
+  async lesson(scenarioId: string): Promise<LessonDetail> {
+    const { data } = await http.get(`/me/lesson/${scenarioId}`);
+    return data as LessonDetail;
+  },
+
+  /** Files a STEP 1 word the learner found confusing into the review notes (once per word). */
+  async confusedWord(scenarioId: string, wordId: string): Promise<{ cardId?: string; created: boolean }> {
+    const { data } = await http.post(`/me/lesson/${scenarioId}/words/${wordId}/confused`);
+    return data as { cardId?: string; created: boolean };
+  },
+
+  /** Files a STEP 2 sentence the learner marked 아직 헷갈려요 into the review notes (lesson-fidelity-v46 R5).
+   *  `en` must be one of the lesson's sentences, or its order card's lines run together; one card per sentence. */
+  async confusedSentence(scenarioId: string, en: string): Promise<{ cardId?: string; created: boolean }> {
+    const { data } = await http.post(`/me/lesson/${scenarioId}/sentences/confused`, { en });
+    return data as { cardId?: string; created: boolean };
+  },
+
+  /** Files the 감상 the learner picked at the end of a reel into the review notes (spec 2-9 §11-8).
+   *  `feel` must be one of that reel's `feels`; one card per word. */
+  async reelFeel(scenarioId: string, feel: string): Promise<{ cardId?: string; created: boolean }> {
+    const { data } = await http.post(`/me/lesson/${scenarioId}/reel/feel`, { feel });
+    return data as { cardId?: string; created: boolean };
+  },
+
+  /** Records STEP 1 or 2 as finished; returns the lesson as it now stands. */
+  async clearLessonStep(scenarioId: string, step: 'words' | 'sentences', missed?: string[]): Promise<LessonDetail> {
+    const { data } = await http.post(`/me/lesson/${scenarioId}/steps/${step}`, missed ? { missed } : undefined);
+    return data as LessonDetail;
+  },
+
   async scenario(id: string): Promise<ScenarioDetail> {
     const { data } = await http.get(`/scenarios/${id}`);
     return data as ScenarioDetail;
@@ -831,9 +962,15 @@ export const api = {
     return (data as { situations?: DeptSituation[] }).situations ?? [];
   },
 
-  /** 여정 지도 — 목표 부서 트랙 + 자유 탐방. 정거장 좌표는 클라이언트가 계산한다(J10). */
-  async journey(): Promise<JourneyView> {
-    const { data } = await http.get('/me/journey');
+  /**
+   * 여정 지도 — 목표 부서 트랙 + 자유 탐방. 정거장 좌표는 클라이언트가 계산한다(J10).
+   *
+   * `dept`를 주면 그 부서의 트랙을 보여 달라고만 묻는다(journey-binder-v42 Task G) —
+   * **저장된 목표는 바뀌지 않는다.** 목표를 바꾸는 것은 여전히 `setGoalDept` 하나뿐이다.
+   * 저작된 주제가 없는 부서 코드에는 서버가 400을 낸다.
+   */
+  async journey(dept?: string): Promise<JourneyView> {
+    const { data } = await http.get('/me/journey', dept ? { params: { dept } } : undefined);
     return data as JourneyView;
   },
   /** 정거장 시트 — 시트가 열릴 때만 스텝을 받는다. 모르는 주제(themeKey)에는 404. */
@@ -966,6 +1103,12 @@ export const api = {
     return { total: d?.total ?? 0, groups: d?.groups ?? [], more: d?.more ?? 0 };
   },
 
+  /** One situation's 교정노트 — the dialogue rail's 노트 sheet (lesson-fidelity-v46 결정 6). */
+  async scenarioNotes(scenarioId: string): Promise<ModelAnswerCard[]> {
+    const { data } = await http.get(`/me/review/scenarios/${encodeURIComponent(scenarioId)}`);
+    return ((data as { cards?: ModelAnswerCard[] } | null)?.cards ?? []);
+  },
+
   /** One page of ScreenModelAnswerList. Every group carries its cards, so a row
    *  expands without another request. */
   async modelAnswers(opts: { sort: ModelAnswerSort; limit?: number; offset?: number }): Promise<{ groups: ModelAnswerGroup[]; total: number }> {
@@ -1049,7 +1192,7 @@ export const api = {
   async assessPronunciation(
     referenceText: string,
     audioBase64: string,
-    opts?: { origin?: string; scenarioId?: string; reviewCardId?: string }
+    opts?: { origin?: PronOrigin; scenarioId?: string; reviewCardId?: string }
   ): Promise<PronunciationResult> {
     const { data } = await http.post('/pronunciation', { referenceText, audioBase64, ...opts });
     return data as PronunciationResult;
@@ -1120,7 +1263,7 @@ export const api = {
    *  guided rung a scenario with an authored conversation is answered from that file
    *  instead of from a model, and it cannot know which rung this is otherwise. Omitted
    *  means the free pass, which is the safe default — the value only ever adds help. */
-  async startConversation(scenarioId: string, resumeSessionId?: string, guide?: 'choices' | 'free'): Promise<string> {
+  async startConversation(scenarioId: string, resumeSessionId?: string, guide?: string): Promise<string> {
     const body: Record<string, string> = {};
     if (resumeSessionId) body.resumeSessionId = resumeSessionId;
     if (guide) body.guide = guide;

@@ -1,0 +1,101 @@
+# 결정 11 가벼운 정리 — build_core-safety-icu.py 가 적용하고 changes-core-safety-icu.yaml 을 만든다.
+untag:
+  w-minute: "공통 쉬운 단어 목록"
+  w-hour: "공통 쉬운 단어 목록"
+  w-time: "공통 쉬운 단어 목록"
+  w-now: "공통 쉬운 단어 목록"
+  w-night: "공통 쉬운 단어 목록"
+  w-name: "공통 쉬운 단어 목록"
+  w-room: "공통 쉬운 단어 목록"
+  w-doctor: "공통 쉬운 단어 목록"
+  w-patient: "공통 쉬운 단어 목록"
+  w-family: "공통 쉬운 단어 목록"
+  w-know: "공통 쉬운 단어 목록"
+  w-day: "공통 쉬운 단어 목록"
+untag_at:
+  - {situation: "알람 설정·우선순위 이해", index: 0, word: w-immediate, why: "w-immediate 헤드워드를 부사 immediately로 바꿈 — 형용사 immediate 문장에서 태그 제거"}
+  - {situation: "고위험약 이중확인", index: 2, word: w-off, why: "sign off의 off는 '풀린'(w-off) 뜻이 아님 — 태그 제거"}
+  - {situation: "낙상·손상 예방 기초", index: 4, word: w-step, why: "step out(나가다)은 명사 '단계'(w-step) 뜻이 아님 — 태그 제거"}
+  - {situation: "고농도 전해질·마약 관리", index: 0, word: w-secure, why: "약품 보관의 secured(잠가 보관)는 '고정하다'(w-secure) 뜻이 아님 — 태그 제거"}
+  - {situation: "이중확인·독립확인 프로토콜", index: 2, word: w-alert, why: "high-alert는 '경고음'(w-alert)이 아님 — w-highalert로 태그 교체"}
+  - {situation: "이중확인·독립확인 프로토콜", index: 6, word: w-alert, why: "high-alert는 '경고음'(w-alert)이 아님 — w-highalert로 태그 교체"}
+  - {situation: "이송·인계 중 안전 확인", index: 2, word: w-run, why: "run the checklist(진행하다)는 '주입되다'(w-run) 뜻이 아님 — 태그 제거"}
+  - {situation: "사건 보고·학습 문화", index: 6, word: w-unit, why: "whole unit(병동)은 '단위'(w-unit) 뜻이 아님 — 태그 제거"}
+  - {situation: "사건 보고·학습 문화", index: 6, word: w-learning, why: "명사 카드 learning이 동사 learn 문장에 태그됨 — 태그 제거"}
+  - {situation: "억제대 관련 질식·손상 위기", index: 1, word: w-right, why: "right now의 right는 '맞는'(w-right) 뜻이 아님 — 태그 제거"}
+tag_at:
+  - {situation: "이중확인·독립확인 프로토콜", index: 2, word: w-highalert, why: "주제의 핵심어 high-alert를 새 단어로 태그"}
+  - {situation: "이중확인·독립확인 프로토콜", index: 6, word: w-highalert, why: "주제의 핵심어 high-alert를 새 단어로 태그"}
+sentence_ko:
+  - situation: "고농도 전해질·마약 관리"
+    index: 0
+    en: "Concentrated electrolytes are stored separately and secured."
+    ko: "고농도 전해질은 따로 분리해 잠가 보관해요."
+    why: "약품 보관의 secured를 '고정해요'로 옮긴 오역 — '잠가 보관해요'로"
+  - situation: "라인 오연결 예방"
+    index: 4
+    en: "Wait, that's the feeding line — the IV port is over here."
+    ko: "잠깐요, 그건 경관영양 라인이에요, 정맥 포트는 여기고요."
+    why: "feeding line을 '급식용 라인'으로 옮김 — 임상 용어 '경관영양 라인'으로"
+  - situation: "심각 안전사건 공개·소통"
+    index: 2
+    en: "We acknowledge what happened and our plan to make it right."
+    ko: "무슨 일이 있었는지 인정하고, 바로잡을 계획을 말씀드려요."
+    why: "'계획을 인정해요'는 뜻이 흐림 — 일어난 일을 인정하고 계획을 밝힌다는 뜻으로"
+word_fields:
+  w-verify:
+    why: "w-confirm과 ko가 같아(대조 확인하다) 듣고 뜻 고르기에서 정답이 둘 — verify를 '검증하다'로 가른다"
+    set: {ko: 검증하다}
+  w-trace:
+    why: "w-follow와 ko가 같아(따라가다) 정답이 둘 — trace를 '추적하다'로 가른다"
+    set: {ko: 추적하다}
+  w-afterward:
+    why: "w-later와 ko가 같아(나중에) 정답이 둘 — afterward를 '그 후에'로 가른다"
+    set: {ko: 그 후에}
+  w-immediate:
+    why: "태그된 문장 3/3이 부사 immediately — 헤드워드를 부사로"
+    set: {en: immediately, ko: 즉시, ipa: /ɪˈmiːdiətli/, example: "Stop the infusion and disconnect it immediately."}
+  w-crash:
+    why: "활용형 헤드워드(crashing)를 원형(crash)으로"
+    set: {en: crash, ipa: /kræʃ/}
+  w-slid:
+    why: "활용형 헤드워드(slid)를 원형(slide)으로"
+    set: {en: slide, ko: 미끄러져 내려가다, ipa: /slaɪd/}
+  w-stand:
+    why: "stand 단독은 '두드러지다'가 아님 — 문장 그대로 구 stand out으로"
+    set: {en: stand out, ipa: /stænd ˈaʊt/}
+  w-call:
+    why: "태그된 문장 대부분이 동사(call the physician·call for help) — ko '호출'을 '부르다'로, 예문도 동사 문장으로"
+    set: {ko: 부르다, example: "Call for help and stay with him."}
+  w-light:
+    why: "call light의 light는 '조명'이 아니라 등(램프)"
+    set: {ko: 등(램프)}
+  w-need:
+    why: "태그된 문장 대부분이 동사 need — ko를 '필요하다'로"
+    set: {ko: 필요하다}
+  w-feeding:
+    why: "feeding line을 '급식용의'로 옮김 — 임상 용어 '경관영양용의'로"
+    set: {ko: 경관영양용의}
+  w-secure:
+    why: "예문(약품 보관 문장)의 secured는 '고정하다' 뜻이 아니어서 태그를 뺐음 — 예문을 라인 고정 문장으로"
+    set: {example: "Secure and camouflage his lines out of easy reach."}
+  w-bedside:
+    why: "다른 ICU 주제(15곳)와 ko를 맞춤 — 침상 곁"
+    set: {ko: 침상 곁}
+word_add:
+  - id: w-highalert
+    en: high-alert
+    ipa: /ˌhaɪ əˈlɝːt/
+    ko: 고위험(경계)의
+    icon: siren
+    example: "This is required for all high-alert medications."
+    why: "주제의 핵심어 high-alert — w-alert(경고음) 대신 이중확인 상황 문장 2·6에 이미 있다"
+sentence_set:
+  - situation: "이중확인·독립확인 프로토콜"
+    index: 5
+    old_en: "I'll say the dose out loud first, then you confirm it your own way."
+    en: "You work out the dose on your own first, then we compare numbers."
+    ko: "먼저 각자 용량을 계산하고, 그다음 숫자를 맞춰 봐요."
+    chunks: ["You work out", "the dose", "on your own", "first", ",", "then we compare", "numbers", "."]
+    words: [w-dose, w-number]
+    why: "용량을 먼저 소리 내어 말하면 상대를 유도(prompting)해 독립확인이 아니게 됨 — 같은 상황 핵심 문장('without prompting')과 어긋나는 틀린 절차라 고침"

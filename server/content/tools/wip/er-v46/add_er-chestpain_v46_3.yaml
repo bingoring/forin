@@ -1,0 +1,108 @@
+- title: 가족에게 상황 설명
+  s:
+  - {t: "현재 상태", i: monitor, w: "being monitored는 지금 진행 중인 일을 수동태로 말해 가족에게 누군가 지켜보고 있다는 안도를 줘요. 가족에게는 의학 용어 없이 지금 일어나는 일부터 알려요.", d: "by himself", k: ["남편분은 지금 집에 가셨어요", "남편분 검사 결과가 모두 나왔어요"], a: "husband", o: ["wife", "son", "mother"]}
+  - {t: "진행·약속", i: lab, w: "I'll update you as we learn more는 결과가 나오는 대로 알려 주겠다는 약속이에요. 가족이 기다리는 동안 소식이 올 거라는 것을 알면 불안이 줄어요.", d: "on his lungs", k: ["심장 검사는 모두 끝났어요", "결과를 알아도 알려드리기 어려워요"], a: "update", o: ["ignore", "avoid", "blame"]}
+  - {t: "공감과 도움", i: faceWorried, w: "I know this is …로 먼저 감정을 인정하고, 이어서 구체적인 도움을 제안해요. 가족에게는 물, 의자, 전화처럼 지금 해 줄 수 있는 일을 묻는 것이 도움이 돼요.", d: "for him", k: ["이런 일은 무서울 것 하나 없어요", "여기서 기다리지 말고 집에 가세요"], a: "frightening", o: ["simple", "routine", "boring"]}
+  - {t: "대기 안내", i: home, w: "You're welcome to …는 허락과 환영을 함께 담아 여기 계셔도 된다고 말하는 틀이에요. come find you는 가족이 기다리는 자리로 직접 찾아가겠다는 약속이에요.", d: "to leave now", k: ["여기서 기다리실 수 없어요", "소식이 있어도 전화로만 알려드릴게요"], a: "wait", o: ["sleep", "eat", "park"]}
+  - {t: "안심 전달", i: shield, w: "at the moment로 지금은이라고 한정해 사실을 넘어서는 약속을 하지 않아요. taking good care는 의료진이 돌보고 있다는 것을 쉬운 말로 알려요.", d: "He's leaving", k: ["지금은 매우 위험한 상태예요", "의사 선생님들이 아직 오지 않았어요"], a: "stable", o: ["cured", "discharged", "asleep"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "가족 설명 4문장 순서"
+    why: "지금 누가 지켜보는지 먼저 알리고, 그 일의 일부로 검사 중임을 말하고, 결과가 나올 때까지 기다려도 된다고 안내하고, 기다리는 그 자리로 소식을 가져가겠다고 맺어요. 뒤 줄이 앞 줄을 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "Your husband is being closely monitored by our heart team right now.", icon: monitor, ko: "남편분은 지금 심장팀이 지켜보고 있어요", note: "상태"}
+    - {en: "As part of that, we're running tests on his heart.", icon: lab, ko: "그 일환으로 심장 검사를 하고 있어요", note: "검사"}
+    - {en: "Until the results are in, you're welcome to wait here.", icon: home, ko: "결과가 나올 때까지 여기서 기다리셔도 돼요", note: "대기"}
+    - {en: "I'll come find you there as soon as I have news.", icon: speech, ko: "소식이 있으면 바로 그 자리로 찾아갈게요", note: "약속"}
+  sw: {ko: "지금은 안정된 상태이고, 의사 선생님들이 잘 돌봐주고 있어요"}
+- title: 코카인 관련 흉통(젊은 환자)
+  s:
+  - {t: "비밀 보장", i: lock, w: "stays confidential로 비밀이 지켜진다는 것을 먼저 말해야 환자가 솔직하게 말해요. 치료가 안전해지려면 환자가 쓴 물질을 정확히 알아야 한다는 이유도 함께 줘요.", d: "gets reported", k: ["말씀하신 건 경찰에게 바로 전달돼요", "말씀하지 않으셔도 치료는 똑같아요"], a: "confidential", o: ["public", "shared", "hidden"]}
+  - {t: "물질·시간", i: calendar, w: "use처럼 중립적인 동사를 쓰면 환자가 비난받는다고 느끼지 않아요. 무엇을 언제 썼는지는 약 선택과 관찰 계획에 직접 필요해요.", d: "and how much", k: ["마지막으로 식사하신 게 몇 시였나요?", "통증이 몇 시에 시작됐나요?"], a: "time", o: ["day", "week", "year"]}
+  - {t: "이유 설명", i: bulb, w: "because로 왜 묻는지 이유를 밝히면 캐묻는 것처럼 들리지 않아요. 환자의 상태나 사용한 물질에 따라 일부 치료가 위험할 수 있어서 정확한 정보가 필요해요.", d: "could be free", k: ["이 정보는 서류에만 필요해요", "어떤 치료든 똑같이 안전해요"], a: "information", o: ["paperwork", "insurance", "billing"]}
+  - {t: "비판단", i: handshake2, w: "I'm not here to judge you는 환자가 가장 걱정하는 판단 여부를 직접 풀어 주는 말이에요. the full picture는 치료에 필요한 전체 상황을 가리키는 관용 표현이에요.", d: "to blame you", k: ["사실대로 말하지 않으면 치료할 수 없어요", "저는 환자분의 행동이 옳은지 판단하러 왔어요"], a: "picture", o: ["list", "form", "record"]}
+  - {t: "위험 설명", i: pill, w: "if 조건으로 위험이 생기는 경우를 정확히 짚어요. 코카인을 쓴 직후에는 약 선택에 주의가 필요해서 의료진이 사용 여부를 확인해요.", d: "if you've eaten", k: ["코카인을 쓰셨어도 모든 약은 안전해요", "코카인은 심장약을 더 잘 듣게 해요"], a: "dangerous", o: ["harmless", "useless", "unnecessary"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "물질 사용 문진 4문장 순서"
+    why: "비밀 보장과 비판하지 않겠다는 약속을 먼저 하고, 무엇을 언제 썼는지 묻고, 받은 답이 왜 중요한지 설명하고, 그 이유 때문에 의사에게 알린다고 맺어요. 뒤 줄이 앞 줄의 답과 이유를 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "Everything you tell me stays confidential, and I'm not here to judge you.", icon: lock, ko: "말씀하신 건 비밀이고, 판단하려는 게 아니에요", note: "약속"}
+    - {en: "What did you use, and about what time was that?", icon: calendar, ko: "무엇을 사용했고 대략 몇 시였나요?", note: "문진"}
+    - {en: "Thank you. That matters, because some treatments could be unsafe otherwise.", icon: bulb, ko: "고마워요. 그게 중요한 건 일부 치료가 위험할 수 있어서예요", note: "이유"}
+    - {en: "For that reason, I'll tell the doctor right away so your medicines are chosen safely.", icon: pill, ko: "그래서 바로 의사에게 알려 약을 안전하게 고르게 할게요", note: "조치"}
+  sw: {ko: "무엇을 사용하셨고, 대략 몇 시쯤이었나요?"}
+- title: 고령 흉통+청력 저하
+  s:
+  - {t: "소통 방법", i: speaker, w: "face you는 입 모양을 볼 수 있게 해 주는 방법이에요. 청력이 떨어진 환자에게는 크게 말하는 것보다 천천히, 얼굴을 보며 말하는 것이 더 잘 전달돼요.", d: "and shout", k: ["더 크게 소리를 지를게요", "들리는지는 제가 알아서 판단할게요"], a: "slowly", o: ["quickly", "loudly", "quietly"]}
+  - {t: "손짓 답변", i: pushpin, w: "point to를 쓰면 잘 안 들려도 몸짓으로 대답할 수 있어요. 질문을 짧고 구체적으로 만들면 청력이 떨어진 환자도 놓치지 않아요.", d: "it hurts", k: ["통증이 언제 시작됐는지 말씀해 주시겠어요?", "통증이 얼마나 심한지 말씀해 주시겠어요?"], a: "point", o: ["reach", "walk", "look"]}
+  - {t: "필담 제안", i: pencil, w: "Would it help if …?는 환자에게 선택권을 주는 제안이에요. 글로 보여 주면 소리만으로는 놓치기 쉬운 질문도 정확히 전달돼요.", d: "my answers down", k: ["제가 질문을 크게 읽어 드릴까요?", "질문에 답을 적어 주셔야 해요"], a: "questions", o: ["answers", "orders", "names"]}
+  - {t: "환경 조정", i: home, w: "Let's …로 같이 움직이자고 제안하면 환자가 불편해하지 않아요. 소음을 줄이는 것도 청력이 떨어진 환자와 소통하는 방법이에요.", d: "a little louder", k: ["더 시끄러운 곳으로 가면 잘 들리실 거예요", "여기서 조금 더 크게 말씀드릴게요"], a: "quieter", o: ["louder", "darker", "busier"]}
+  - {t: "기록 약속", i: pencil, w: "so we don't …로 적는 이유를 우리가 놓치지 않기 위해서라고 말해요. 환자를 탓하지 않고 함께 하는 일로 들려요.", d: "your name", k: ["답변은 적지 않고 기억해 둘게요", "중요하지 않은 건 적지 않을게요"], a: "important", o: ["extra", "minor", "unusual"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "청력 저하 환자 응대 4문장 순서"
+    why: "말하는 방법을 먼저 정하고, 말 대신 짚어서 답하게 하고, 짚기 어려우면 글로 쓰자고 제안하고, 어느 쪽이든 답을 적어 두겠다고 맺어요. 뒤 줄이 앞 줄의 방법을 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "I'll speak slowly and face you — let me know if you can hear me.", icon: speaker, ko: "천천히, 얼굴을 보며 말할게요 — 들리면 알려주세요", note: "방법"}
+    - {en: "Good. Can you point to where the pain is?", icon: pushpin, ko: "좋아요. 통증이 어디인지 짚어주시겠어요?", note: "위치"}
+    - {en: "If pointing is hard, would it help if I wrote my questions down?", icon: pencil, ko: "짚기 힘드시면 질문을 적어 드릴까요?", note: "필담"}
+    - {en: "Either way, I'll write down your answers so we don't miss anything.", icon: board, ko: "어느 쪽이든 답을 적어 놓칠 게 없게 할게요", note: "기록"}
+  sw: {ko: "잘 들리시도록 천천히, 또렷하게 말씀드릴게요"}
+- title: 대동맥 박리 의심
+  s:
+  - {t: "양상·방사", i: magnify, w: "tearing과 ripping은 환자가 고르기 쉬운 느낌 단어예요. 갑자기 찢어지는 통증이 등으로 뻗는 것은 대동맥 박리를 의심하게 하는 단서예요.", d: "or pressing", k: ["통증이 숨 쉴 때만 심해지나요?", "통증이 음식을 먹으면 심해지나요?"], a: "back", o: ["leg", "head", "stomach"]}
+  - {t: "양팔 혈압", i: monitor, w: "both of your arms로 이유 없이 양팔을 재는 게 아님을 알려요. 양팔의 혈압 차이가 큰 것은 대동맥 박리에서 볼 수 있는 소견이에요.", d: "in one", k: ["한쪽 팔의 혈압만 확인할게요", "양쪽 다리의 맥박을 확인할게요"], a: "arms", o: ["legs", "hands", "feet"]}
+  - {t: "즉시 조치", i: siren, w: "immediately는 지금 바로 한다는 가장 강한 시간 표현이에요. 가만히 있으라는 요청은 짧게 하면 더 잘 따라요.", d: "in a while", k: ["의사 선생님이 곧 퇴근하세요", "일어나서 걸어 보세요"], a: "still", o: ["awake", "upset", "alone"]}
+  - {t: "검사 필요", i: magnify, w: "needs a scan으로 필요한 검사를 분명히 말하고 right away로 서두르는 이유를 줘요. 대동맥 박리는 CT 같은 영상으로 확인해요.", d: "needs rest", k: ["이런 통증은 집에서 쉬면 돼요", "가슴과 배를 만져서 확인할게요"], a: "chest", o: ["neck", "head", "back"]}
+  - {t: "움직임 제한", i: lock, w: "Try not to …는 금지가 아니라 부탁이라 환자가 불안해하지 않아요. until we know what's going on은 언제까지인지 끝을 말해 줘요.", d: "to leave", k: ["마음껏 움직이셔도 돼요", "무슨 일인지 알려 드릴 수 없어요"], a: "move", o: ["talk", "eat", "sleep"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "대동맥 박리 의심 4문장 순서"
+    why: "통증 양상을 먼저 묻고, 그렇다면 양팔 혈압을 재고, 그 수치를 근거로 의사를 부르고, 의사가 올 때까지 움직이지 말라고 맺어요. 뒤 줄이 앞 줄의 결과를 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "Is the pain tearing or ripping, and does it go into your back?", icon: magnify, ko: "찢어지는 느낌이고 등으로 뻗나요?", note: "양상"}
+    - {en: "If it is, I need to check the blood pressure in both of your arms.", icon: monitor, ko: "그렇다면 양팔의 혈압을 재야 해요", note: "혈압"}
+    - {en: "With those numbers, I'm getting the doctor immediately.", icon: siren, ko: "그 수치를 보니 바로 의사를 부를게요", note: "호출"}
+    - {en: "Until the doctor arrives, try not to move too much.", icon: lock, ko: "의사가 올 때까지 너무 움직이지 마세요", note: "안정"}
+  ctx: {word: "tear", ko: "찢어지다"}
+- title: 폐색전 의심 흉통
+  s:
+  - {t: "호흡 관련 통증", i: stetho, w: "breathe in deeply로 호흡과 통증의 관계를 물어요. 숨 쉴 때 심해지는 날카로운 통증은 폐나 흉막 쪽 원인에서 흔해요.", d: "when you cough", k: ["숨을 쉬면 통증이 가라앉나요?", "움직일 때마다 통증이 심해지나요?"], a: "worse", o: ["better", "longer", "lighter"]}
+  - {t: "위험 요인", i: plane, w: "비행·수술·다리 붓기는 폐색전의 위험 요인을 물을 때 쓰는 대표 보기예요. 하나씩 말해 주면 환자가 그것도 상관있나 하고 빼먹지 않아요.", d: ", or a fall", k: ["최근에 감기나 기침이 있었나요?", "최근에 새 약을 시작하셨나요?"], a: "flights", o: ["walks", "visits", "shifts"]}
+  - {t: "산소 확인", i: monitor, w: "oxygen level은 산소포화도를 환자에게 쉽게 말하는 표현이에요. 숨이 차거나 갑자기 아프면 산소 수치를 일찍 확인해요.", d: "your weight", k: ["산소 마스크를 벗겨 드릴게요", "나중에 산소를 확인할게요"], a: "oxygen", o: ["sugar", "pain", "stress"]}
+  - {t: "경고 신호", i: bell, w: "can be로 가능성만 말하고 warning sign으로 놓치면 안 되는 신호임을 알려요. 장거리 이동 뒤 갑자기 숨이 차면 폐색전을 의심해요.", d: "after dinner", k: ["여행 뒤의 숨참은 항상 괜찮아요", "숨이 천천히 차는 건 위험하지 않아요"], a: "Sudden", o: ["Slow", "Mild", "Constant"]}
+  - {t: "검사 설명", i: lab, w: "to look closely at …으로 검사의 목적을 보는 일로 풀어 말하면 환자가 쉽게 이해해요. scan은 환자에게 CT 같은 영상 검사를 부드럽게 부르는 말이에요.", d: "at your teeth", k: ["폐 소리를 청진기로 들어 볼게요", "폐를 수술로 자세히 볼게요"], a: "lungs", o: ["kidneys", "liver", "bones"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "폐색전 의심 흉통 4문장 순서"
+    why: "숨 쉴 때의 통증을 먼저 묻고, 그런 통증과 함께 위험 요인이 있었는지 묻고, 답이 왜 중요한지 경고 신호로 알리고, 그 신호일 수 있으니 산소부터 확인한다고 맺어요. 뒤 줄이 앞 줄을 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "Does the pain get worse when you breathe in deeply?", icon: stetho, ko: "숨을 깊이 들이쉴 때 통증이 심해지나요?", note: "호흡"}
+    - {en: "With that kind of pain, have you had any long flights, surgery, or leg swelling recently?", icon: plane, ko: "그런 통증과 함께 최근 장거리 비행, 수술, 다리 붓기가 있었나요?", note: "위험"}
+    - {en: "That matters, since sudden shortness of breath after travel can be a warning sign.", icon: bell, ko: "여행 뒤 갑자기 숨이 차면 경고 신호일 수 있어서 중요해요", note: "경고"}
+    - {en: "Since it may be a warning sign, I'll check your oxygen level right away.", icon: monitor, ko: "경고 신호일 수 있으니 바로 산소포화도를 볼게요", note: "산소"}
+  sw: {ko: "폐를 자세히 보려고 스캔을 할게요"}
+- title: 심낭염
+  s:
+  - {t: "자세 변화", i: me, w: "자세를 구체적으로 말해 주면 환자가 직접 해 보지 않아도 떠올려 답해요. 앞으로 숙이면 나아지는 통증은 심낭염을 의심하게 하는 단서예요.", d: "lying down", k: ["누우면 통증이 나아지나요?", "숨을 쉬면 통증이 나아지나요?"], a: "forward", o: ["backward", "sideways", "left"]}
+  - {t: "악화 요인", i: chartup, w: "worse로 한쪽 방향만 물어 환자가 비교하기 쉬워요. 누울 때나 숨 들이쉴 때 심해지는 통증은 심낭염에서 흔한 양상이에요.", d: "or stand up", k: ["앉아 있을 때만 통증이 심해지나요?", "음식을 먹을 때 통증이 심해지나요?"], a: "lie down", o: ["stand up", "walk", "sit up"]}
+  - {t: "선행 감염", i: stetho, w: "recent로 최근 몇 주를 짚어 물어요. 심낭염은 바이러스 감염 뒤에 흔히 와서 열이나 감기 증상이 있었는지 확인해요.", d: "or a fall", k: ["최근에 다친 적이 있었나요?", "최근에 새 약을 시작하셨나요?"], a: "fever", o: ["rash", "fall", "injury"]}
+  - {t: "원인 설명", i: bulb, w: "can point to로 가능성만 짚어 말해요. positional은 자세에 따라 변하는 통증을 가리키는 말이라 환자의 답을 다시 정리해 줘요.", d: "a broken rib", k: ["이 통증은 뼈가 부러졌다는 뜻이에요", "이 통증은 위 때문이에요"], a: "sharp", o: ["dull", "mild", "steady"]}
+  - {t: "청진 안내", i: stetho, w: "Let's …로 같이 하는 일처럼 말해 부담을 줄여요. 심낭염에서는 심장 주변이 마찰되는 소리를 청진으로 확인해요.", d: "to your lungs", k: ["심장 소리를 녹음해 둘게요", "숨소리를 크게 내 보세요"], a: "unusual", o: ["loud", "normal", "pleasant"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "심낭염 의심 문진 4문장 순서"
+    why: "자세에 따라 달라지는지 먼저 묻고, 그렇다면 눕거나 숨 쉴 때 더 심한지 묻고, 그런 양상과 함께 최근 감염이 있었는지 묻고, 마지막에 그렇다면 심장 주변 염증일 수 있다고 설명해요. 뒤 줄이 앞 줄의 답을 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "Does sitting up and leaning forward make the pain better?", icon: me, ko: "앉아서 앞으로 숙이면 통증이 나아지나요?", note: "자세"}
+    - {en: "If it does, is it worse when you lie down or breathe in?", icon: chartup, ko: "그렇다면 눕거나 숨 쉴 때 더 심한가요?", note: "악화"}
+    - {en: "With that pattern, have you had a recent fever or viral illness?", icon: stetho, ko: "그런 양상이라면 최근 열이나 바이러스 질환이 있었나요?", note: "감염"}
+    - {en: "If so, this sharp, positional pain can point to inflammation around the heart.", icon: bulb, ko: "그렇다면 이 통증은 심장 주변 염증일 수 있어요", note: "설명"}
+  ctx: {word: "inflammation", ko: "염증"}

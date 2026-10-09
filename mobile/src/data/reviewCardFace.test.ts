@@ -26,3 +26,27 @@ test('an unknown source is shown as a correction', () => {
   expect(faceOf('something-new').strike).toBe(true);
   expect(faceOf('').strike).toBe(true);
 });
+
+test('a confused STEP 1 word is drawn as advice, never as something said wrong', () => {
+  const f = faceOf('word');
+  expect(f.strike).toBe(false);
+  expect(f.correction).toBe(false);
+  expect(f.promptKey).toBe('lab.faceWordPrompt');
+});
+
+// 문장 릴의 감상(스펙 2-9 §11-8) — 틀리게 말한 것이 아니므로 취소선 없는 제안 면이다.
+test('a reel 감상 card is a suggestion, not a correction', () => {
+  const f = faceOf('nuance');
+  expect(f.strike).toBe(false);
+  expect(f.correction).toBe(false);
+  expect(f.promptKey).toBe('lab.faceNuancePrompt');
+});
+
+// STEP 2 문장 '아직 헷갈려요'(lesson-fidelity-v46 R5) — 단어처럼 제안 면, 취소선 없음.
+test('a confused STEP 2 sentence is drawn as advice, never as something said wrong', () => {
+  const f = faceOf('sentence');
+  expect(f.strike).toBe(false);
+  expect(f.correction).toBe(false);
+  expect(f.badgeIcon).toBe('bulb');
+  expect(f.promptKey).toBe('lab.faceSentencePrompt');
+});

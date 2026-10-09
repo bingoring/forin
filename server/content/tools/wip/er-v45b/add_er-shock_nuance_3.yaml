@@ -1,0 +1,100 @@
+패혈증성 쇼크 급속 악화 번들:
+  - kind: pair
+    words: [w-antibiotic, w-lactate, w-keep, w-map, w-above]
+    pairs: [[broad-spectrum, antibiotics], [serial, lactates], [keep the MAP, above 65]]
+    decoys: [pressors]
+    why: "패혈성 쇼크 번들의 묶음말이에요 — broad-spectrum antibiotics(광범위 항생제), serial lactates(젖산 반복 측정), keep the MAP above 65(평균동맥압 65 이상 유지)."
+  - kind: context
+    words: [w-norepinephrine, w-start, w-fluid, w-hold]
+    scenes:
+      - {who: 의사에게, icon: speech, en: "She's still 78 over 40 after two liters — fluids aren't holding. Do you want to start norepinephrine?", ok: true}
+      - {who: 차트 기록, icon: board, en: "Persistent hypotension after 2 L crystalloid; norepinephrine initiated per order.", ok: true}
+      - {who: 보호자에게, icon: me, en: "Her MAP is refractory to crystalloid, so we're initiating norepinephrine.", ok: false, fix: "Her blood pressure is still low even with the fluids, so we're starting a medicine to raise it."}
+    why: "refractory·crystalloid·MAP은 의료진의 말이에요. 가족에게는 '수액으로도 혈압이 안 올라서 혈압을 올리는 약을 시작한다'고 풀어서 말해요."
+폐색전 폐쇄성 쇼크:
+  - kind: pair
+    words: [w-bedside, w-echo, w-notify, w-team, w-swell, w-leg]
+    pairs: [[bedside, echo], [notify, the team], [swollen, leg]]
+    decoys: [pressure]
+    why: "폐색전 대응의 묶음말이에요 — bedside echo(침상 심초음파), notify the team(팀에 알리다), swollen leg(부은 다리)."
+  - kind: reel
+    words: [w-crash]
+    word: crash
+    scenes:
+      - {who: "동료 간호사 → 간호사", en: "His pressure just crashed — seventy over forty.", ko: "혈압이 방금 곤두박질쳤어요 — 70/40이에요.", tone: 급함}
+      - {who: "의사 호출", en: "Bed 4 is crashing — I need you at the bedside now.", ko: "4번 침대 환자가 급격히 나빠지고 있어요 — 지금 바로 와 주세요.", tone: 긴급}
+      - {who: "차지 간호사에게", en: "Can someone bring the crash cart to Bed 4?", ko: "누가 4번 침대로 응급 카트 좀 가져와 줄래요?", tone: 대비}
+      - {who: "보호자에게는…", en: "His blood pressure dropped suddenly, and the team is with him now.", ko: "혈압이 갑자기 떨어져서 지금 팀이 곁에서 처치하고 있어요.", tone: 차분, swap: true}
+심장압전 폐쇄성 쇼크:
+  - kind: pair
+    words: [w-muffled, w-tone, w-neck, w-vein, w-pericardiocentesis, w-kit]
+    pairs: [[muffled, heart tones], [distended, neck veins], [pericardiocentesis, kit]]
+    decoys: [pulse]
+    why: "Beck 삼징을 말하는 묶음말이에요 — muffled heart tones(둔탁한 심음), distended neck veins(경정맥 팽대), 그리고 저혈압. 준비할 것은 pericardiocentesis kit(심낭천자 키트)."
+  - kind: swap
+    words: [w-big, w-neck, w-vein, w-muffled]
+    who: "의사에게 · 소견 보고"
+    icon: speech
+    before: ["Her neck veins look ", "big", " and her heart tones are muffled."]
+    options: [distended, big, fat]
+    answer: distended
+    notes: {distended: "보고에 맞는 정확한 소견어. 경정맥 팽대(JVD)를 바로 떠올리게 한다.", big: "뜻은 통하고 급할 때 동료끼리 쓰기도 하지만, 보고로는 흐리다.", fat: "목이 살쪘다는 말로 들려 소견이 전달되지 않는다."}
+    why: "의사에게 하는 소견 보고에서는 정확한 임상어가 빠르고 오해가 없어요."
+소화관 대량출혈 쇼크:
+  - kind: pair
+    words: [w-activate, w-massive, w-transfusion, w-protocol, w-large, w-bore, w-call, w-gi, w-emergent, w-endoscopy]
+    pairs: [[activate, the massive transfusion protocol], [two large-bore, IVs], [call GI for, emergent endoscopy]]
+    decoys: [O-negative blood]
+    why: "대량 출혈 때의 묶음말이에요 — activate the MTP(대량수혈 프로토콜 가동), two large-bore IVs(굵은 정맥로 두 개), emergent endoscopy(응급 내시경)."
+  - kind: context
+    words: [w-vomit, w-blood]
+    scenes:
+      - {who: 차트 기록, icon: board, en: "Hematemesis x2, bright red.", ok: true}
+      - {who: 의사에게, icon: speech, en: "He's vomiting bright red blood again, and his pressure is 82 over 50.", ok: true}
+      - {who: 보호자에게, icon: me, en: "He's having frank hematemesis again.", ok: false, fix: "He's throwing up blood again, and we're giving him blood and fluids right now."}
+    why: "hematemesis(토혈)는 차트와 의료진의 말이에요. 가족에게는 '피를 토하고 있다'고 쉽게 말하고 지금 하는 처치를 함께 알려요."
+신경성 쇼크 척수손상:
+  - kind: pair
+    words: [w-spinal, w-precaution, w-slow, w-heart, w-rate, w-pressor, w-atropine]
+    pairs: [[spinal, precautions], [slow heart, rate], [pressor and, atropine]]
+    decoys: [tamponade]
+    why: "신경성 쇼크의 묶음말이에요 — spinal precautions(척추 보호), slow heart rate(느린 맥박), pressor and atropine(승압제와 아트로핀)."
+  - kind: context
+    words: [w-neurogenic, w-shock, w-suggest]
+    scenes:
+      - {who: 의사에게, icon: speech, en: "Pressure 80 over 44 with a heart rate of 48 after the fall — this looks neurogenic.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Hypotension with bradycardia after fall from roof; suspect neurogenic shock.", ok: true}
+      - {who: 보호자에게, icon: me, en: "He's in neurogenic shock from a probable cord injury.", ok: false, fix: "His blood pressure and heart rate are both low after the fall, and we're treating that right now."}
+    why: "추정 진단명을 단정해 말하는 건 의료진끼리의 말이에요. 가족에게는 지금 보이는 변화와 하고 있는 처치를 쉬운 말로 전하고, 진단 설명은 의사와 함께 해요."
+다장기 악화 SBAR·ICU 이송:
+  - kind: pair
+    words: [w-situation, w-recommend, w-septic, w-shock, w-hypotensive, w-lactate, w-climb, w-icu, w-admission]
+    pairs: [["Situation:", "septic shock, still hypotensive"], ["Assessment:", "lactate climbing, urine output dropping"], ["Recommendation:", "ICU admission now"]]
+    decoys: ["history of diabetes, came in with fever"]
+    why: "SBAR은 칸마다 들어갈 내용이 정해져 있어요 — S는 지금 상태, A는 간호사가 본 변화와 판단, R은 원하는 조치. 배경(B)은 다른 칸에 섞지 않아요."
+  - kind: swap
+    words: [w-recommend, w-icu, w-admission, w-central, w-monitor]
+    who: "의사에게 · SBAR의 R"
+    icon: speech
+    before: ["", "Maybe we could think about", " ICU admission and central monitoring now."]
+    options: [I recommend, Maybe we could think about, You need to order]
+    answer: I recommend
+    notes: {I recommend: "SBAR의 R답게 원하는 조치를 공손하지만 분명하게 말한다.", Maybe we could think about: "너무 망설여 위급함이 전달되지 않는다.", You need to order: "의사에게 지시하는 말투라 협업을 해치고 반발을 부른다."}
+    why: "악화 중인 환자의 권고는 공손하지만 분명하게 — 'I recommend …', 'I think she needs …'."
+부신위기 저혈압:
+  - kind: slider
+    words: [w-dangerous, w-crisis, w-miss, w-steroid]
+    cue: "On daily prednisone for years, ran out three days ago; now weak and BP 84/50. How do you describe the risk to the patient?"
+    scale: [a minor issue, something to keep an eye on, dangerous]
+    answerAt: 2
+    why: "오래 먹던 스테로이드를 갑자기 끊으면 부신위기가 와서 생명이 위험할 수 있어요. 겁주려는 게 아니라 다시는 거르지 않게 분명히 말해요."
+    example: "Missing your steroids can cause a dangerous crisis."
+  - kind: swap
+    words: [w-steroid, w-stop]
+    who: "환자에게 · 퇴원 전 교육"
+    icon: me
+    before: ["Steroids can't just ", "be discontinued abruptly", " without a plan."]
+    options: [stop suddenly, be discontinued abruptly, be stopped cold turkey]
+    answer: stop suddenly
+    notes: {stop suddenly: "환자에게 쉬운 말로 무엇이 위험한지 알린다.", be discontinued abruptly: "차트·의료진의 말이라 환자에게 딱딱하고 어렵다.", be stopped cold turkey: "'cold turkey'는 흔히 담배·중독 물질을 끊는 데 쓰는 말이라 어감이 맞지 않는다."}
+    why: "환자 교육은 쉬운 말로 해야 집에 가서도 기억해요."

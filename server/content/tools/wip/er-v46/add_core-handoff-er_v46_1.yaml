@@ -1,0 +1,92 @@
+- title: SBAR 기본 구조 인계
+  s:
+  - {t: "상황(S)", i: siren, w: "SBAR는 한 줄 상황(S)으로 시작해요. since는 시작 시점을 짚어 주어 인수자가 경과 시간을 바로 가늠해요.", d: "for two days", k: ["배경: 고혈압 병력이 있습니다", "평가: 의식이 명료합니다"], a: "chest", ai: stetho, o: [["back", "chevronDown"], ["head", "bulb"], ["throat", "mic"]]}
+  - {t: "배경(B)", i: board, w: "B에는 병력처럼 인수자가 알고 들어야 할 사정을 담아요. no cardiac history처럼 없는 것도 말해 주면 인수자가 되물을 일이 줄어요.", d: "for a week", k: ["상황: 흉통이 있습니다", "권고: 모니터를 유지하세요"], a: "cardiac", ai: stetho, o: [["kidney", "lab"], ["liver", "pill"], ["lung", "monitor"]]}
+  - {t: "평가(A)", i: magnify, w: "A는 지금 상태에 대한 내 판단이에요. right now를 붙이면 지금 기준이라는 걸 분명히 해서, 나중에 달라질 수 있다는 여지도 남겨요.", d: "since lunch", k: ["평가: 호흡이 힘들어 보입니다", "권고: 산소를 올려 주세요"], a: "stable", ai: check, o: [["unstable", "siren"], ["low", "chevronDown"], ["critical", "faceWorried"]]}
+  - {t: "권고(R)", i: speech, w: "R은 인수자에게 바라는 행동이에요. My recommendation is to …는 부탁보다 분명하게, 명령보다 부드럽게 제안하는 틀이에요.", d: "at home", k: ["제 권고는 퇴원시키는 것입니다", "그분을 중환자실로 옮겼습니다"], a: "monitor", ai: chartup, o: [["ventilator", "hospital"], ["stretcher", "bandage"], ["drip", "pill"]]}
+  - {t: "복창", i: redo, w: "혈압은 over로 수축기와 이완기를 나눠 읽어요. 되묻는 쪽이 정확히 받아 적도록 수치를 천천히 다시 말하는 거예요.", d: "his temperature", k: ["네, 맥박은 90이었습니다", "네, 체온을 다시 재겠습니다"], a: "over", ai: check, o: [["under", "chevronDown"], ["above", "chevronUp"], ["minus", "cross"]]}
+  - {t: "호출 기준", i: bell, w: "호출 기준은 숫자로 못 박으면 인수자가 판단할 일이 없어요. if 조건으로 언제 부를지를 먼저 말해요.", d: "this evening", k: ["통증 점수를 지금 확인해 주세요", "통증 점수가 5점이면 기록만 해 주세요"], a: "above", ai: chevronUp, o: [["below", "chevronDown"], ["under", "lock"], ["down to", "play"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "SBAR 인계 4문장 순서"
+    why: "SBAR는 상황, 배경, 평가, 권고 순서의 틀이에요. 평가는 앞선 병력을 근거로 하고 권고는 그 평가의 결론이라 순서가 하나예요."
+    lines:
+    - {en: "Situation: room four, chest pain since noon.", icon: siren, ko: "상황: 4호실, 정오부터 흉통", note: "상황"}
+    - {en: "Background: high blood pressure, but no cardiac history.", icon: board, ko: "배경: 고혈압, 심장 병력은 없음", note: "배경"}
+    - {en: "Assessment: with that history, he's alert and stable.", icon: magnify, ko: "평가: 그 병력에 비해 의식 명료, 안정적", note: "평가"}
+    - {en: "Recommendation: so I'd keep him on the monitor.", icon: monitor, ko: "권고: 그래서 모니터로 계속 관찰하길 권해요", note: "권고"}
+  sw: {ko: "모니터로 계속 관찰하기를 권합니다"}
+- title: 교대 시 환자 요약
+  s:
+  - {t: "활력징후", i: monitor, w: "last set은 마지막 활력징후 한 세트를 줄인 인계 말투예요. 수치와 함께 측정 시각을 알려야 인수자가 다음 측정 시각을 가늠해요.", d: "from now", k: ["활력징후는 30분 뒤에 다시 잴게요", "활력징후는 아직 재지 않았습니다"], a: "stable", ai: check, o: [["unstable", "siren"], ["low", "chevronDown"], ["irregular", "redo"]]}
+  - {t: "주호소", i: pushpin, w: "chief complaint는 환자가 병원에 온 가장 큰 이유를 환자가 말한 대로 적는 항목이에요. 인계를 이 말로 시작하면 인수자가 맥락을 바로 잡아요.", d: "for two weeks", k: ["주호소는 어제부터 시작된 두통입니다", "주호소는 가슴 통증입니다"], a: "abdominal", ai: stetho, o: [["chest", "cross"], ["back", "chevronDown"], ["throat", "mic"]]}
+  - {t: "대기 중", i: hospital, w: "wait on은 결과가 나오기를 기다린다는 뜻으로 병원에서 흔히 써요. still을 넣으면 이미 시간이 꽤 지났다는 느낌까지 전해요.", d: "of the", k: ["CT 결과는 이미 나왔습니다", "CT 촬영을 예약해야 합니다"], a: "CT", ai: magnify, o: [["MRI", "monitor"], ["X-ray", "scalpel"], ["ultrasound", "speaker"]]}
+  - {t: "재확인 요청", i: pencil, w: "before you chart it은 기록 전에 확인하라는 순서를 정해 줘요. 잘못된 수치를 차트에 남기지 않도록 하는 순서예요.", d: "yourself", k: ["체온을 다시 확인해 주세요", "혈압은 이미 기록했습니다"], a: "before", ai: calendar, o: [["after", "redo"], ["while", "play"], ["once", "star"]]}
+  - {t: "투약 상황", i: pill, w: "hasn't needed any는 한 번도 필요하지 않았다는 부정을 짧게 전해요. 이번 근무 기준으로 말하면 인수자가 진통제 사용 이력을 한눈에 알아요.", d: "last night", k: ["진통제는 방금 투여했습니다", "진통제를 한 번 더 처방받아야 합니다"], a: "pain", ai: faceWorried, o: [["sleep", "coffee"], ["allergy", "shield"], ["heart", "stetho"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "교대 환자 요약 4문장 순서"
+    why: "주호소로 시작해 그 뒤의 활력징후를 말하고, 아직 남은 검사를 짚은 다음 결과가 나오면 연락해 달라고 부탁해요. 앞 줄이 뒤 줄이 가리키는 말의 근거예요."
+    lines:
+    - {en: "Chief complaint is abdominal pain since this morning.", icon: pushpin, ko: "주호소는 오늘 아침부터 복통", note: "주호소"}
+    - {en: "Her vitals have been stable since then.", icon: monitor, ko: "그 뒤로 활력징후는 안정적", note: "상태"}
+    - {en: "Even so, we're still waiting on her CT results.", icon: hospital, ko: "그래도 CT 결과는 아직 기다리는 중", note: "대기"}
+    - {en: "Please call me as soon as they're back.", icon: bell, ko: "결과가 나오는 대로 저를 불러 주세요", note: "요청"}
+  ctx: {word: "chief complaint", ko: "주호소"}
+- title: 미결 업무 인계
+  s:
+  - {t: "투약 예정", i: pill, w: "be due at + 시각은 정해진 시각에 해야 하는 일을 말해요. 다음 투약 시각을 먼저 알려 주면 인수자가 업무 순서를 잡을 수 있어요.", d: "every day", k: ["항생제는 4시에 이미 투여했습니다", "다음 진통제는 4시 예정입니다"], a: "due", ai: bell, o: [["late", "redo"], ["held", "lock"], ["skipped", "cross"]]}
+  - {t: "미결 업무", i: pushpin, w: "still needs to는 아직 끝나지 않은 일을 인계할 때 쓰는 틀이에요. 검체는 시간이 지나면 검사에 쓸 수 없는 경우가 있어서 보낼 곳과 함께 알려요.", d: "to the unit", k: ["소변 검체는 이미 검사실에 도착했습니다", "소변량을 다시 재야 합니다"], a: "urine", ai: lab, o: [["blood", "cross"], ["stool", "home"], ["sputum", "mic"]]}
+  - {t: "재측정 요청", i: monitor, w: "in an hour처럼 시간 간격을 정해 주면 인수자가 재측정 시각을 직접 계산하지 않아도 돼요. Please …는 짧게 부탁할 때 쓰는 틀이에요.", d: "this morning", k: ["한 시간 전에 혈압을 확인했습니다", "혈압은 지금 바로 확인해 주세요"], a: "an hour", ai: calendar, o: [["a day", "bell"], ["a week", "redo"], ["a minute", "star"]]}
+  - {t: "투약 확인", i: check, w: "was given은 투여가 실제로 이루어졌다는 말이에요. ordered(처방됨)와 구분해서 말해야 인수자가 중복 투여나 누락을 걱정하지 않아요.", d: "yesterday", k: ["지난번 항생제는 아직 투여하지 않았습니다", "지난번 항생제는 처방만 되어 있습니다"], a: "given", ai: pill, o: [["ordered", "board"], ["charted", "pencil"], ["held", "lock"]]}
+  - {t: "확인 요청", i: speech, w: "once는 ~하는 대로라는 뜻이라 결과가 나오는 때를 조건으로 부탁해요. Can you …?는 지시 대신 부탁의 모양이에요.", d: "of the", k: ["결과가 나오기 전에 확인해 주시겠어요?", "결과를 제가 대신 확인할게요"], a: "once", ai: check, o: [["unless", "cross"], ["although", "faceWorried"], ["until", "lock"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "미결 업무 인계 4문장 순서"
+    why: "검체를 보내는 일이 먼저고, 그것이 끝나면 혈압을 다시 재요. 잰 값을 적고 나서 다음 투약 시각을 안내하니 앞 줄이 뒤 줄의 전제예요."
+    lines:
+    - {en: "The urine sample still needs to go to the lab.", icon: lab, ko: "소변 검체는 아직 검사실로 보내야 해요", note: "검체"}
+    - {en: "Once it's there, please recheck her blood pressure.", icon: monitor, ko: "도착하면 혈압을 다시 확인해 주세요", note: "재측정"}
+    - {en: "Write down whatever number you get.", icon: pencil, ko: "나온 수치를 적어 주세요", note: "기록"}
+    - {en: "After that, her next antibiotic dose is due at four.", icon: pill, ko: "그다음 항생제는 4시 예정이에요", note: "투약"}
+  ctx: {word: "dose", ko: "용량"}
+- title: 환자 정보 재확인
+  s:
+  - {t: "인수자 확인", i: me, w: "동료끼리는 correct?를 끝에 붙여 이해한 내용을 되묻는 확인을 해요. 병상 번호는 위치를 말할 뿐이고, 환자 식별은 이름과 생년월일로 해요.", d: "from admitting", k: ["이분은 3번 병상의 알바레즈 씨입니다", "2번 병상 환자는 퇴원했습니다"], a: "correct", ai: check, o: [["ready", "play"], ["stable", "monitor"], ["awake", "coffee"]]}
+  - {t: "현재 진단", i: stetho, w: "working diagnosis는 아직 확정 전이라 검사로 바뀔 수 있는 잠정 진단이에요. ruling out은 가능성을 하나씩 지워 가는 중이라는 뜻이에요.", d: "for sure", k: ["확진은 감염으로 나왔습니다", "현재 진단은 아직 없습니다"], a: "dehydration", ai: coffee, o: [["anemia", "cross"], ["stroke", "faceWorried"], ["asthma", "speaker"]]}
+  - {t: "복창 요청", i: mic, w: "read … back to me는 눈으로 본 것을 소리 내어 되읽게 해서 내가 들은 것과 맞는지 대조하는 방식이에요. 소리 내어 읽으면 눈으로만 볼 때 놓친 오류를 잡기 쉬워요.", d: "from me", k: ["이름 밴드를 새로 채워 주시겠어요?", "이름 밴드를 저에게 건네 주시겠어요?"], a: "name", ai: board, o: [["allergy", "shield"], ["blood", "cross"], ["alert", "bell"]]}
+  - {t: "함께 확인", i: calendar, w: "Let's …는 상대를 지시하지 않고 같이 하자는 모양이라 공동 확인이 자연스러워요. 생년월일은 이름과 함께 쓰는 두 번째 식별자예요.", d: "by phone", k: ["생년월일은 제가 혼자 확인할게요", "차트에서 이름을 함께 확인해요"], a: "together", ai: handshake2, o: [["alone", "me"], ["later", "redo"], ["twice", "star"]]}
+  - {t: "일치 확인", i: check, w: "both match는 두 항목이 모두 일치한다고 한 번에 보고해요. 병상 번호는 위치 확인용이고 환자 식별을 대신하지 않아요.", d: "last night", k: ["진단명과 병상 번호가 모두 다릅니다", "진단명만 차트와 일치합니다"], a: "chart", ai: board, o: [["monitor", "chartup"], ["pharmacy", "pill"], ["schedule", "calendar"]]}
+  - {t: "대기 표현", i: bandage, w: "I'll wait while you …는 상대가 확인하는 동안 서두르지 않겠다는 약속이에요. 확인이 끝날 때까지 기다린다고 말하면 급히 넘기는 인계를 막아요.", d: "outside the room", k: ["손목밴드는 제가 다시 확인할게요", "손목밴드를 확인하신 뒤에 가겠습니다"], a: "while", ai: play, o: [["unless", "cross"], ["although", "faceWorried"], ["because", "bulb"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "환자 정보 재확인 4문장 순서"
+    why: "먼저 누구인지 되묻고, 그 답 뒤에 이름 밴드를 읽게 해요. 밴드가 맞으면 생년월일을 확인하고, 두 가지가 모두 맞을 때 인수를 마무리해요."
+    lines:
+    - {en: "This is Mr. Alvarez in bed two, correct?", icon: me, ko: "2번 병상의 알바레즈 씨 맞나요?", note: "확인"}
+    - {en: "Yes. Can you read his name band back to me?", icon: mic, ko: "네. 이름 밴드를 읽어 주시겠어요?", note: "복창"}
+    - {en: "That matches, so let's confirm the date of birth next.", icon: calendar, ko: "맞네요, 이어서 생년월일을 확인해요", note: "생년월일"}
+    - {en: "Both match the chart, so I'm good to take over.", icon: check, ko: "둘 다 차트와 맞으니 제가 이어받을게요", note: "인수"}
+  ctx: {word: "bed", ko: "병상"}
+- title: 우선순위 환자 지목
+  s:
+  - {t: "우선순위", i: magnify, w: "most closely로 가장 먼저 눈여겨볼 환자를 분명히 짚어요. 명령형 Watch …는 짧고 분명해서 인계 중 우선순위를 전하기 좋아요.", d: "tomorrow", k: ["이번 근무 동안 3번 병상은 신경 쓰지 않아도 돼요", "3번 병상은 가장 마지막에 봐 주세요"], a: "closely", ai: check, o: [["briefly", "redo"], ["rarely", "calendar"], ["loosely", "lock"]]}
+  - {t: "추세 설명", i: chevronDown, w: "has been trending down은 한 번의 수치가 아니라 시간에 따른 흐름을 말해요. 추세를 알려 주면 지금 값이 괜찮아도 인수자가 경계해요.", d: "than before", k: ["그분 혈압이 오후 내내 올라가고 있습니다", "그분 혈압은 오후 내내 일정합니다"], a: "afternoon", ai: calendar, o: [["morning", "coffee"], ["evening", "home"], ["night", "lock"]]}
+  - {t: "호출 기준", i: bell, w: "If anything changes는 구체적 수치 없이도 변화가 생기면 알리라는 포괄적 조건이에요. early는 상태가 더 나빠지기 전에 알리라는 뜻이에요.", d: "at home", k: ["변화가 없으면 의사를 호출하세요", "뭔가 변하면 의사에게 나중에 말하세요"], a: "early", ai: siren, o: [["later", "redo"], ["late", "calendar"], ["twice", "star"]]}
+  - {t: "나머지 환자", i: board, w: "just waiting for는 치료할 일은 끝났고 절차만 남았다는 느낌을 줘요. 나머지 환자가 안정적이라고 먼저 알려야 인수자가 시선을 한 환자에게 모을 수 있어요.", d: "at noon", k: ["나머지 세 병상은 모두 불안정합니다", "나머지 환자는 모두 퇴원했습니다"], a: "discharge", ai: home, o: [["surgery", "scalpel"], ["dialysis", "gear"], ["admission", "hospital"]]}
+  - {t: "집중 필요", i: siren, w: "the most attention은 여러 환자 중 가장 많은 관심이 필요하다고 순위를 매기는 말이에요. 앞에서 말한 우선순위를 마지막에 한 줄로 되짚어 줘요.", d: "for one", k: ["오늘 밤은 3번 병상이 가장 안정적입니다", "오늘 밤은 3번 병상에 아무 조치도 필요 없습니다"], a: "attention", ai: magnify, o: [["oxygen", "speaker"], ["fluids", "coffee"], ["medicine", "pill"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "우선순위 환자 지목 4문장 순서"
+    why: "누구를 볼지 먼저 짚고, 그 환자의 추세를 근거로 대요. 이어서 호출 기준을 주고, 마지막에 나머지 환자는 안정적이라고 정리해요. Otherwise는 앞의 조건 뒤에만 올 수 있어요."
+    lines:
+    - {en: "Watch bed three most closely this shift.", icon: magnify, ko: "이번 근무엔 3번 병상을 가장 주의 깊게 봐 주세요", note: "우선순위"}
+    - {en: "Her pressure has been trending down all afternoon.", icon: chevronDown, ko: "그분 혈압이 오후 내내 떨어지고 있어요", note: "추세"}
+    - {en: "If it drops further, call the doctor early.", icon: bell, ko: "더 떨어지면 일찍 의사를 부르세요", note: "호출"}
+    - {en: "Otherwise, the other three beds are stable and just waiting for discharge.", icon: home, ko: "아니라면 나머지 세 병상은 안정적이고 퇴원만 기다려요", note: "나머지"}
+  sw: {ko: "3번 병상에 가장 주의가 필요해요"}

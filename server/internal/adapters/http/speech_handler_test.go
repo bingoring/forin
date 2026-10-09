@@ -9,6 +9,7 @@ import (
 	"errors"
 	"net/http"
 	"net/http/httptest"
+	"net/url"
 	"strings"
 	"testing"
 	"time"
@@ -36,6 +37,9 @@ type fakePronPort struct {
 	transcript   string
 	assessedRefs []string
 	assessErr    error
+	// transcribeCalls counts plain STT calls: a dialogue utterance must cost ONE
+	// Azure call in total (Assess, unscripted), so a test can pin that this stays 0.
+	transcribeCalls int
 }
 
 func (f *fakePronPort) Assess(ctx context.Context, audioWav []byte, referenceText, locale string) (*ports.PronunciationResult, error) {
@@ -50,6 +54,7 @@ func (f *fakePronPort) Assess(ctx context.Context, audioWav []byte, referenceTex
 }
 
 func (f *fakePronPort) Transcribe(ctx context.Context, audioWav []byte, locale string) (string, error) {
+	f.transcribeCalls++
 	if f.err != nil {
 		return "", f.err
 	}
@@ -971,6 +976,47 @@ func TestPronunciationResponseOmitsUnknownPhoneme(t *testing.T) {
 	if tips, ok := got["phonemeTips"]; ok {
 		if m, ok := tips.(map[string]any); ok && len(m) != 0 {
 			t.Fatalf("expected no entries for an unrecognized phoneme, got %+v", m)
+		}
+	}
+}
+
+// Cross-review S9: a blank referenceText ("   ") passed the `== ""` check, cost one
+// Azure call and filed a row under an empty normalized key. Every entry that takes a
+// sentence must answer 400 invalid_reference_text for blank text, and the scorer must
+// never be reached.
+func TestBlankReferenceTextIs400OnEveryRoute(t *testing.T) {
+	for _, blank := range []string{"", "   ", "\t\n"} {
+		repo := newFakeSpeechRepo()
+		pron := &fakePronPort{result: sampleAssessResult()}
+		svc, pronSvc := newTestSpeechService(pron, repo, nil)
+		ph := &pronunciationHandler{svc: pronSvc, speech: svc, review: &fakeReviewRepo{owned: map[string]string{}}}
+		sh := &speechHandler{svc: svc, pron: pronSvc}
+		sa := &speechAudioHandler{speech: svc}
+
+		body, _ := json.Marshal(map[string]string{"referenceText": blank, "audioBase64": testWavBase64(16000)})
+		cases := map[string]func(*httptest.ResponseRecorder){
+			"POST /pronunciation": func(w *httptest.ResponseRecorder) {
+				ph.assess(w, withUser(httptest.NewRequest(http.MethodPost, "/pronunciation", bytes.NewReader(body)), "u"))
+			},
+			"GET /speech/reference": func(w *httptest.ResponseRecorder) {
+				sh.reference(w, withUser(httptest.NewRequest(http.MethodGet, "/speech/reference?text="+url.QueryEscape(blank), nil), "u"))
+			},
+			"GET /speech/attempts": func(w *httptest.ResponseRecorder) {
+				sh.attempts(w, withUser(httptest.NewRequest(http.MethodGet, "/speech/attempts?text="+url.QueryEscape(blank), nil), "u"))
+			},
+			"GET /speech/reference/audio.wav": func(w *httptest.ResponseRecorder) {
+				sa.audio(w, withUser(httptest.NewRequest(http.MethodGet, "/speech/reference/audio.wav?text="+url.QueryEscape(blank), nil), "u"))
+			},
+		}
+		for name, call := range cases {
+			w := httptest.NewRecorder()
+			call(w)
+			if w.Code != http.StatusBadRequest || !strings.Contains(w.Body.String(), "invalid_reference_text") {
+				t.Errorf("%s with %q: want 400 invalid_reference_text, got %d %s", name, blank, w.Code, w.Body.String())
+			}
+		}
+		if len(repo.inserted) != 0 {
+			t.Errorf("blank text %q must never be stored: %+v", blank, repo.inserted)
 		}
 	}
 }

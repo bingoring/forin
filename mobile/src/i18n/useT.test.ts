@@ -42,23 +42,101 @@ function walk(dir: string): string[] {
   return out;
 }
 
-/** Every `function Name(` in a file, with the index of its body's opening brace. */
-function functions(src: string): { name: string; start: number; brace: number }[] {
-  const out: { name: string; start: number; brace: number }[] = [];
-  for (const m of src.matchAll(/\bfunction\s+([A-Za-z_][A-Za-z0-9_]*)\s*\(/g)) {
-    let i = m.index! + m[0].length - 1;
-    let depth = 0;
-    while (i < src.length) {
-      if (src[i] === '(') depth += 1;
-      else if (src[i] === ')') {
-        depth -= 1;
-        if (depth === 0) break;
-      }
-      i += 1;
+/**
+ * Every function-like declaration in a file, with its real body span.
+ *
+ * Two things this has to get right, both learned the hard way:
+ *
+ * ① **The body ends at its matching brace, not at the next `function` keyword.** The first
+ *    version sliced from one declaration to the start of the next, so a helper declared
+ *    INSIDE a component swallowed everything below it — including the component's own JSX.
+ *    `StationTrack`'s `pressStep` never touched a translation and was reported anyway,
+ *    and the way that reads from inside the failure is "reshape the helper until the rule
+ *    stops complaining", which is how a guard turns into a thing people route around.
+ *
+ * ② **Arrow consts count.** They were invisible, so `const f = () => …` was a way out of
+ *    the rule that needed no argument. A rule with a legal escape hatch protects nothing.
+ */
+type Fn = { name: string; params: string; start: number; bodyStart: number; bodyEnd: number };
+
+/** Index just past the token that closes the group opened at `open`. */
+function matchAt(src: string, open: number, pair: string): number {
+  const [o, c] = pair;
+  let depth = 0;
+  for (let i = open; i < src.length; i += 1) {
+    if (src[i] === o) depth += 1;
+    else if (src[i] === c) {
+      depth -= 1;
+      if (depth === 0) return i + 1;
     }
-    out.push({ name: m[1], start: m.index!, brace: src.indexOf('{', i) });
   }
-  return out;
+  return src.length;
+}
+
+/** A concise arrow (`(x) => x + 1`) has no braces — take it to the end of its statement. */
+function conciseEnd(src: string, from: number): number {
+  let depth = 0;
+  for (let i = from; i < src.length; i += 1) {
+    const ch = src[i];
+    if ('([{'.includes(ch)) depth += 1;
+    else if (')]}'.includes(ch)) {
+      if (depth === 0) return i;
+      depth -= 1;
+    } else if (depth === 0 && (ch === ';' || ch === '\n')) return i;
+  }
+  return src.length;
+}
+
+function functions(src: string): Fn[] {
+  const out: Fn[] = [];
+
+  const push = (name: string, start: number, paren: number, arrow: boolean) => {
+    const afterParams = matchAt(src, paren, '()');
+    const params = src.slice(paren, afterParams);
+    let i = afterParams;
+    if (arrow) {
+      // The body begins right after `=>`. Scanning on for a `{` instead would walk
+      // straight through a concise body (`(x) => t(x)`) and measure nothing — which is
+      // how the terse form stayed unguarded on the first attempt at this fix.
+      i = src.indexOf('=>', afterParams) + 2;
+    } else {
+      while (i < src.length && src[i] !== '{') i += 1; // past any return-type annotation
+    }
+    while (i < src.length && /\s/.test(src[i])) i += 1;
+    out.push(src[i] === '{'
+      ? { name, params, start, bodyStart: i, bodyEnd: matchAt(src, i, '{}') }
+      : { name, params, start, bodyStart: i, bodyEnd: conciseEnd(src, i) });
+  };
+
+  for (const m of src.matchAll(/\bfunction\s+([A-Za-z_][A-Za-z0-9_]*)\s*\(/g)) {
+    push(m[1], m.index!, m.index! + m[0].length - 1, false);
+  }
+  // `const name = (…) =>` and `const name = async (…) =>`, with or without a type annotation
+  // on the binding. A non-arrow initialiser is filtered out by the `=>` check in `push`.
+  for (const m of src.matchAll(/\b(?:const|let)\s+([A-Za-z_][A-Za-z0-9_]*)\s*(?::[^=\n]*)?=\s*(?:async\s*)?\(/g)) {
+    const paren = m.index! + m[0].length - 1;
+    const afterParams = matchAt(src, paren, '()');
+    let j = afterParams;
+    while (j < src.length && /[\s:A-Za-z0-9_<>,.|\[\]]/.test(src[j]) && !src.startsWith('=>', j)) j += 1;
+    if (!src.startsWith('=>', j)) continue; // not an arrow — a call, a cast, a tuple
+    push(m[1], m.index!, paren, true);
+  }
+
+  return out.sort((a, b) => a.start - b.start);
+}
+
+/** Does this declaration, or anything it is nested inside, hold a live translate function? */
+function satisfied(fn: Fn, all: Fn[]): boolean {
+  const own = (f: Fn) =>
+    f.params.includes('t: Translate') ||
+    src_has(f, 'const t = useT();');
+  if (own(fn)) return true;
+  return all.some((o) => o !== fn && o.bodyStart <= fn.start && fn.bodyEnd <= o.bodyEnd && own(o));
+}
+
+let SRC = '';
+function src_has(f: Fn, needle: string): boolean {
+  return SRC.slice(f.bodyStart, f.bodyEnd).includes(needle);
 }
 
 test('nothing that renders depends on the module-level t()', () => {
@@ -70,14 +148,19 @@ test('nothing that renders depends on the module-level t()', () => {
   for (const p of files) {
     const src = readFileSync(p, 'utf8');
     if (!CALL.test(src)) continue;
+    SRC = src;
     const fns = functions(src);
-    for (let i = 0; i < fns.length; i += 1) {
-      const end = i + 1 < fns.length ? fns[i + 1].start : src.length;
-      const body = src.slice(fns[i].brace, end);
-      if (!CALL.test(body)) continue;
-      const hasLocal = body.includes('const t = useT();');
-      const takesIt = new RegExp(`function ${fns[i].name}\\(t: Translate`).test(src);
-      if (!hasLocal && !takesIt) offenders.push(`${p.slice(root.length + 1)}::${fns[i].name}`);
+    for (const fn of fns) {
+      // Only the calls this declaration makes ITSELF — a nested helper's own calls belong
+      // to that helper, and it is measured on its own turn.
+      let own = src.slice(fn.bodyStart, fn.bodyEnd);
+      for (const inner of fns) {
+        if (inner !== fn && fn.bodyStart <= inner.start && inner.bodyEnd <= fn.bodyEnd) {
+          own = own.slice(0, inner.start - fn.bodyStart) + ' '.repeat(inner.bodyEnd - inner.start) + own.slice(inner.bodyEnd - fn.bodyStart);
+        }
+      }
+      if (!CALL.test(own)) continue;
+      if (!satisfied(fn, fns)) offenders.push(`${p.slice(root.length + 1)}::${fn.name}`);
     }
   }
   expect(offenders).toEqual([]);

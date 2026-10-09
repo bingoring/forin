@@ -1,0 +1,6187 @@
+theme: er-dyspnea
+words:
+- id: w-breath
+  en: breath
+  ipa: /brɛθ/
+  ko: 숨(명사)
+  icon: speech
+  example: When did the shortness of breath start?
+  exKo: 호흡곤란이 언제 시작됐나요?
+  cue: '''숨이 차다''를 영어로 물을 때 shortness of 뒤에 오는 명사'
+  tag: 호흡 문진
+  distractorsEn:
+  - breadth
+  - birth
+  distractorsKo:
+  - 폭
+  - 출생
+  chips:
+  - - breath
+  decoyChips:
+  - breathe
+  - bread
+- id: w-start
+  en: start
+  ipa: /stɑːrt/
+  ko: 시작하다
+  icon: compass
+  example: When did the shortness of breath start?
+  exKo: 호흡곤란이 언제 시작됐나요?
+  cue: 증상이 처음 생긴 때를 물을 때 — '언제부터 그랬어요?'
+  tag: 호흡 문진
+  distractorsEn:
+  - stop
+  - stall
+  distractorsKo:
+  - 멈추다
+  - 지체되다
+  chips:
+  - - start
+  decoyChips:
+  - stare
+  - art
+- id: w-lie
+  en: lie
+  ipa: /laɪ/
+  ko: 눕다
+  icon: bulb
+  example: Is it worse when you lie down or when you move?
+  exKo: 누우면 더 힘든가요, 아니면 움직이면 더 힘든가요?
+  cue: 기좌호흡을 확인할 때 — '침대에 등을 대면 더 숨차요?'
+  tag: 호흡 문진
+  distractorsEn:
+  - lean
+  - kneel
+  distractorsKo:
+  - 기대다
+  - 무릎 꿇다
+  chips:
+  - - lie
+  decoyChips:
+  - lay
+  - lye
+- id: w-move
+  en: move
+  ipa: /muːv/
+  ko: 움직이다
+  icon: compass
+  example: Is it worse when you lie down or when you move?
+  exKo: 누우면 더 힘든가요, 아니면 움직이면 더 힘든가요?
+  cue: 악화 요인을 물을 때 — 걷거나 몸을 쓰면 더 힘든지
+  tag: 호흡 문진
+  distractorsEn:
+  - remove
+  - mount
+  distractorsKo:
+  - 제거하다
+  - 오르다
+  chips:
+  - - move
+  decoyChips:
+  - mov
+  - moo
+- id: w-cough
+  en: cough
+  ipa: /kɔːf/
+  ko: 기침
+  icon: stetho
+  example: Do you have any cough, fever, or chest pain with it?
+  exKo: 기침이나 열, 가슴 통증도 같이 있나요?
+  cue: 가래가 나오는지, 마른 것인지 함께 묻는 호흡기 증상
+  tag: 증상 표현
+  distractorsEn:
+  - cuff
+  - hiccup
+  distractorsKo:
+  - 커프
+  - 딸꾹질
+  chips:
+  - - cough
+  decoyChips:
+  - cuff
+  - coff
+- id: w-fever
+  en: fever
+  ipa: /ˈfiːvər/
+  ko: 열
+  icon: bulb
+  example: Do you have any cough, fever, or chest pain with it?
+  exKo: 기침이나 열, 가슴 통증도 같이 있나요?
+  cue: 감염을 의심할 때 체온과 함께 묻는 증상 — '집에서 재 봤어요?'
+  tag: 증상 표현
+  distractorsEn:
+  - flavor
+  - flush
+  distractorsKo:
+  - 맛
+  - 홍조
+  chips:
+  - - fe
+    - ver
+  decoyChips:
+  - fi
+  - vor
+- id: w-chest
+  en: chest
+  ipa: /tʃɛst/
+  ko: 가슴
+  icon: stetho
+  example: Do you have any cough, fever, or chest pain with it?
+  exKo: 기침이나 열, 가슴 통증도 같이 있나요?
+  cue: 숨찰 때 통증·압박감이 있는지 묻는 몸의 부위 — 흉부
+  tag: 증상 표현
+  distractorsEn:
+  - chess
+  - cheek
+  distractorsKo:
+  - 체스
+  - 뺨
+  chips:
+  - - chest
+  decoyChips:
+  - chess
+  - test
+- id: w-pain
+  en: pain
+  ipa: /peɪn/
+  ko: 통증
+  icon: bulb
+  example: Do you have any cough, fever, or chest pain with it?
+  exKo: 기침이나 열, 가슴 통증도 같이 있나요?
+  cue: 0~10 척도로 세기를 묻는 증상 — 가슴이 아픈지
+  tag: 증상 표현
+  distractorsEn:
+  - pane
+  - pail
+  distractorsKo:
+  - 창유리
+  - 양동이
+  chips:
+  - - pain
+  decoyChips:
+  - pane
+  - pin
+- id: w-trouble
+  en: trouble
+  ipa: /ˈtrʌbəl/
+  ko: 어려움
+  icon: bulb
+  example: Are you having trouble breathing right now?
+  exKo: 지금 숨쉬기 힘드신가요?
+  cue: '''숨쉬기 힘드세요?''를 부드럽게 물을 때 having ___ breathing'
+  tag: 호흡 문진
+  distractorsEn:
+  - tremor
+  - rubble
+  distractorsKo:
+  - 떨림
+  - 잔해
+  chips:
+  - - trou
+    - ble
+  decoyChips:
+  - tru
+  - bble
+- id: w-breathe
+  en: breathe
+  ipa: /briːð/
+  ko: 숨쉬다
+  icon: speech
+  example: Are you having trouble breathing right now?
+  exKo: 지금 숨쉬기 힘드신가요?
+  cue: 간호사가 가장 자주 하는 동사 — '천천히 들이쉬고 내쉬세요'
+  tag: 호흡 문진
+  distractorsEn:
+  - breed
+  - bathe
+  distractorsKo:
+  - 번식하다
+  - 목욕시키다
+  chips:
+  - - breathe
+  decoyChips:
+  - breath
+  - brea
+- id: w-sit
+  en: sit
+  ipa: /sɪt/
+  ko: 앉다
+  icon: bulb
+  example: Does sitting up help you breathe?
+  exKo: 앉으면 숨쉬기가 좀 편해지나요?
+  cue: 숨찬 환자를 편하게 할 때 — 상체를 세워 침대에 앉게
+  tag: 기본 동작
+  distractorsEn:
+  - set
+  - spit
+  distractorsKo:
+  - 놓다
+  - 뱉다
+  chips:
+  - - sit
+  decoyChips:
+  - set
+  - sat
+- id: w-help
+  en: help
+  ipa: /hɛlp/
+  ko: 돕다
+  icon: bulb
+  example: Does sitting up help you breathe?
+  exKo: 앉으면 숨쉬기가 좀 편해지나요?
+  cue: 자세나 기구가 숨쉬기를 편하게 해 주는지 물을 때
+  tag: 기본 동작
+  distractorsEn:
+  - hold
+  - heal
+  distractorsKo:
+  - 붙잡다
+  - 낫게 하다
+  chips:
+  - - help
+  decoyChips:
+  - hel
+  - yelp
+- id: w-clip
+  en: clip
+  ipa: /klɪp/
+  ko: 집게
+  icon: monitor
+  example: This clip measures the oxygen level in your blood.
+  exKo: 이 집게가 혈중 산소 수치를 재는 거예요.
+  cue: 손가락에 끼워 산소포화도를 읽는 작은 기구를 환자에게 쉽게 부르는 말
+  tag: 산소 측정
+  distractorsEn:
+  - clamp
+  - chip
+  distractorsKo:
+  - 겸자
+  - 칩
+  chips:
+  - - clip
+  decoyChips:
+  - clap
+  - lip
+- id: w-measure
+  en: measure
+  ipa: /ˈmɛʒər/
+  ko: 측정하다
+  icon: monitor
+  example: This clip measures the oxygen level in your blood.
+  exKo: 이 집게가 혈중 산소 수치를 재는 거예요.
+  cue: 기구가 무엇을 하는지 설명할 때 — '혈중 산소를 재는 거예요'
+  tag: 산소 측정
+  distractorsEn:
+  - treasure
+  - manage
+  distractorsKo:
+  - 소중히 하다
+  - 관리하다
+  chips:
+  - - mea
+    - sure
+  decoyChips:
+  - mes
+  - sur
+- id: w-oxygen
+  en: oxygen
+  ipa: /ˈɑːksɪdʒən/
+  ko: 산소
+  icon: monitor
+  example: This clip measures the oxygen level in your blood.
+  exKo: 이 집게가 혈중 산소 수치를 재는 거예요.
+  cue: 코 캐뉼라·마스크로 넣어 주는 기체 — 포화도가 낮을 때
+  tag: 산소 측정
+  distractorsEn:
+  - nitrogen
+  - hydrogen
+  distractorsKo:
+  - 질소
+  - 수소
+  chips:
+  - - oxy
+    - gen
+  decoyChips:
+  - hydro
+  - gin
+- id: w-level
+  en: level
+  ipa: /ˈlɛvəl/
+  ko: 수치
+  icon: chartup
+  example: This clip measures the oxygen level in your blood.
+  exKo: 이 집게가 혈중 산소 수치를 재는 거예요.
+  cue: 혈중 산소가 얼마인지 말할 때 oxygen 뒤에 붙는 말
+  tag: 산소 측정
+  distractorsEn:
+  - label
+  - lever
+  distractorsKo:
+  - 라벨
+  - 지렛대
+  chips:
+  - - lev
+    - el
+  decoyChips:
+  - lab
+  - ver
+- id: w-blood
+  en: blood
+  ipa: /blʌd/
+  ko: 혈액
+  icon: stetho
+  example: This clip measures the oxygen level in your blood.
+  exKo: 이 집게가 혈중 산소 수치를 재는 거예요.
+  cue: 포화도 측정기가 산소를 재는 곳 — 핏속
+  tag: 산소 측정
+  distractorsEn:
+  - blade
+  - flood
+  distractorsKo:
+  - 칼날
+  - 홍수
+  chips:
+  - - blood
+  decoyChips:
+  - flood
+  - bloo
+- id: w-count
+  en: count
+  ipa: /kaʊnt/
+  ko: 세다
+  icon: chartup
+  example: I'm counting how many breaths you take per minute.
+  exKo: 1분 동안 몇 번 숨 쉬는지 세고 있어요.
+  cue: 호흡수를 잴 때 — 1분 동안 몇 번인지 하나씩
+  tag: 산소 측정
+  distractorsEn:
+  - court
+  - mount
+  distractorsKo:
+  - 법원
+  - 올라타다
+  chips:
+  - - count
+  decoyChips:
+  - cont
+  - unt
+- id: w-take
+  en: take
+  ipa: /teɪk/
+  ko: (숨을) 쉬다
+  icon: check
+  example: I'm counting how many breaths you take per minute.
+  exKo: 1분 동안 몇 번 숨 쉬는지 세고 있어요.
+  cue: '''숨을 크게 한 번 쉬어 보세요'' — ___ a deep breath'
+  tag: 기본 동작
+  distractorsEn:
+  - make
+  - tape
+  distractorsKo:
+  - 만들다
+  - 테이프로 붙이다
+  chips:
+  - - take
+  decoyChips:
+  - tak
+  - make
+- id: w-hurt
+  en: hurt
+  ipa: /hɜːrt/
+  ko: 아프다
+  icon: bulb
+  example: This won't hurt at all.
+  exKo: 이건 전혀 아프지 않아요.
+  cue: 손가락에 집게를 끼우기 전에 겁먹은 환자를 안심시킬 때 쓰는 동사
+  tag: 증상 표현
+  distractorsEn:
+  - hurry
+  - hunt
+  distractorsKo:
+  - 서두르다
+  - 사냥하다
+  chips:
+  - - hurt
+  decoyChips:
+  - heart
+  - hut
+- id: w-low
+  en: low
+  ipa: /loʊ/
+  ko: 낮은
+  icon: chartup
+  example: If it's low, we'll give you a little oxygen.
+  exKo: 수치가 낮으면 산소를 약간 드릴게요.
+  cue: 포화도 수치가 기준보다 모자랄 때 — 산소를 시작하는 이유
+  tag: 산소 측정
+  distractorsEn:
+  - slow
+  - loose
+  distractorsKo:
+  - 느린
+  - 헐거운
+  chips:
+  - - low
+  decoyChips:
+  - law
+  - lo
+- id: w-give
+  en: give
+  ipa: /gɪv/
+  ko: 주다
+  icon: pill
+  example: If it's low, we'll give you a little oxygen.
+  exKo: 수치가 낮으면 산소를 약간 드릴게요.
+  cue: 환자에게 산소·약을 '드릴게요'라고 할 때의 쉬운 동사
+  tag: 기본 동작
+  distractorsEn:
+  - live
+  - gain
+  distractorsKo:
+  - 살다
+  - 얻다
+  chips:
+  - - give
+  decoyChips:
+  - gave
+  - giv
+- id: w-little
+  en: little
+  ipa: /ˈlɪtəl/
+  ko: 약간의
+  icon: bulb
+  example: If it's low, we'll give you a little oxygen.
+  exKo: 수치가 낮으면 산소를 약간 드릴게요.
+  cue: 겁주지 않게 산소 양을 줄여 말할 때 — '조금만 드릴게요'
+  tag: 기본 동작
+  distractorsEn:
+  - lot
+  - whole
+  distractorsKo:
+  - 많은
+  - 전체의
+  chips:
+  - - lit
+    - tle
+  decoyChips:
+  - lot
+  - ttle
+- id: w-prong
+  en: prong
+  ipa: /prɔːŋ/
+  ko: (캐뉼라) 갈래
+  icon: board
+  example: The prongs go just inside your nose, gently.
+  exKo: 갈래가 코 안쪽으로 살짝 들어가요.
+  cue: 비강 캐뉼라에서 콧구멍에 들어가는 두 개의 짧은 관
+  tag: 산소 기구
+  distractorsEn:
+  - plug
+  - probe
+  distractorsKo:
+  - 마개
+  - 탐침
+  chips:
+  - - prong
+  decoyChips:
+  - pron
+  - wrong
+- id: w-inside
+  en: inside
+  ipa: /ɪnˈsaɪd/
+  ko: 안쪽
+  icon: compass
+  example: The prongs go just inside your nose, gently.
+  exKo: 갈래가 코 안쪽으로 살짝 들어가요.
+  cue: 캐뉼라를 끼울 때 — 콧구멍 바로 안쪽까지만
+  tag: 산소 기구
+  distractorsEn:
+  - outside
+  - beside
+  distractorsKo:
+  - 바깥쪽
+  - 옆에
+  chips:
+  - - in
+    - side
+  decoyChips:
+  - out
+  - sid
+- id: w-nose
+  en: nose
+  ipa: /noʊz/
+  ko: 코
+  icon: me
+  example: The prongs go just inside your nose, gently.
+  exKo: 갈래가 코 안쪽으로 살짝 들어가요.
+  cue: 캐뉼라 갈래가 들어가는 곳 — '입 말고 여기로 숨 쉬어 보세요'
+  tag: 산소 기구
+  distractorsEn:
+  - noise
+  - node
+  distractorsKo:
+  - 소음
+  - 결절
+  chips:
+  - - nose
+  decoyChips:
+  - noise
+  - nos
+- id: w-gently
+  en: gently
+  ipa: /ˈdʒɛntli/
+  ko: 부드럽게
+  icon: bulb
+  example: The prongs go just inside your nose, gently.
+  exKo: 갈래가 코 안쪽으로 살짝 들어가요.
+  cue: 기구를 얼굴에 댈 때 — 힘주지 않고 살살
+  tag: 코칭·안심
+  distractorsEn:
+  - gradually
+  - firmly
+  distractorsKo:
+  - 점차
+  - 단단히
+  chips:
+  - - gent
+    - ly
+  decoyChips:
+  - gen
+  - tle
+- id: w-flow
+  en: flow
+  ipa: /floʊ/
+  ko: 유량
+  icon: gear
+  example: I'm starting the oxygen at a low flow for now.
+  exKo: 지금은 낮은 유량으로 산소를 시작할게요.
+  cue: 캐뉼라 산소를 분당 몇 리터로 줄지 — 처음엔 낮게 시작
+  tag: 산소 기구
+  distractorsEn:
+  - flaw
+  - float
+  distractorsKo:
+  - 결함
+  - 떠다니다
+  chips:
+  - - flow
+  decoyChips:
+  - flo
+  - glow
+- id: w-feel
+  en: feel
+  ipa: /fiːl/
+  ko: 느끼다
+  icon: bulb
+  example: Let me know if it feels too dry or tickly.
+  exKo: 너무 건조하거나 간질거리면 알려 주세요.
+  cue: 환자의 감각을 물을 때 — '건조하거나 간질거리는 느낌이 들면'
+  tag: 기본 동작
+  distractorsEn:
+  - fill
+  - fail
+  distractorsKo:
+  - 채우다
+  - 실패하다
+  chips:
+  - - feel
+  decoyChips:
+  - fell
+  - fill
+- id: w-dry
+  en: dry
+  ipa: /draɪ/
+  ko: 건조한
+  icon: bulb
+  example: Let me know if it feels too dry or tickly.
+  exKo: 너무 건조하거나 간질거리면 알려 주세요.
+  cue: 산소를 오래 쓰면 코 안이 이렇게 느껴진다 — 가습이 필요할 때
+  tag: 산소 기구
+  distractorsEn:
+  - raw
+  - stuffy
+  distractorsKo:
+  - 따가운
+  - 코가 막힌
+  chips:
+  - - dry
+  decoyChips:
+  - dri
+  - try
+- id: w-tickly
+  en: tickly
+  ipa: /ˈtɪkli/
+  ko: 간질간질한
+  icon: bulb
+  example: Let me know if it feels too dry or tickly.
+  exKo: 너무 건조하거나 간질거리면 알려 주세요.
+  cue: 캐뉼라 갈래가 콧속에 닿아 재채기가 날 것 같은 느낌
+  tag: 산소 기구
+  distractorsEn:
+  - prickly
+  - tingly
+  distractorsKo:
+  - 따끔따끔한
+  - 찌릿한
+  chips:
+  - - tick
+    - ly
+  decoyChips:
+  - tic
+  - kle
+- id: w-adjust
+  en: adjust
+  ipa: /əˈdʒʌst/
+  ko: 조절하다
+  icon: gear
+  example: I'll adjust it if it's too tight.
+  exKo: 너무 조이면 조절해 드릴게요.
+  cue: 끈이 조이거나 유량이 맞지 않을 때 간호사가 손보는 것
+  tag: 산소 기구
+  distractorsEn:
+  - adapt
+  - attach
+  distractorsKo:
+  - 적응하다
+  - 부착하다
+  chips:
+  - - ad
+    - just
+  decoyChips:
+  - adj
+  - ust
+- id: w-tight
+  en: tight
+  ipa: /taɪt/
+  ko: 꽉 조이는
+  icon: bulb
+  example: I'll adjust it if it's too tight.
+  exKo: 너무 조이면 조절해 드릴게요.
+  cue: 마스크·캐뉼라 끈이 얼굴을 누를 때 환자가 하는 말
+  tag: 산소 기구
+  distractorsEn:
+  - tired
+  - tense
+  distractorsKo:
+  - 피곤한
+  - 긴장한
+  chips:
+  - - tight
+  decoyChips:
+  - tite
+  - ight
+- id: w-safe
+  en: safe
+  ipa: /seɪf/
+  ko: 안전한
+  icon: shield
+  example: You're safe — let's slow your breathing down together.
+  exKo: 안전해요 — 같이 천천히 숨을 늦춰봐요.
+  cue: 공황 상태의 환자에게 가장 먼저 건네는 말 — '괜찮아요, 여기 있어요'
+  tag: 코칭·안심
+  distractorsEn:
+  - sane
+  - saved
+  distractorsKo:
+  - 제정신인
+  - 구조된
+  chips:
+  - - safe
+  decoyChips:
+  - save
+  - sa
+- id: w-slow
+  en: slow
+  ipa: /sloʊ/
+  ko: 느린
+  icon: compass
+  example: You're safe — let's slow your breathing down together.
+  exKo: 안전해요 — 같이 천천히 숨을 늦춰봐요.
+  cue: 과호흡 환자에게 호흡 속도를 늦추자고 할 때 — ___ it down
+  tag: 코칭·안심
+  distractorsEn:
+  - low
+  - shallow
+  distractorsKo:
+  - 낮은
+  - 얕은
+  chips:
+  - - slow
+  decoyChips:
+  - slo
+  - flow
+- id: w-down
+  en: down
+  ipa: /daʊn/
+  ko: 아래로
+  icon: compass
+  example: You're safe — let's slow your breathing down together.
+  exKo: 안전해요 — 같이 천천히 숨을 늦춰봐요.
+  cue: 속도를 '낮추다'의 뒤를 받치는 말 — slow ... ___
+  tag: 코칭·안심
+  distractorsEn:
+  - up
+  - 'off'
+  distractorsKo:
+  - 위로
+  - 꺼진
+  chips:
+  - - down
+  decoyChips:
+  - dawn
+  - own
+- id: w-together
+  en: together
+  ipa: /təˈgɛðər/
+  ko: 함께
+  icon: bulb
+  example: You're safe — let's slow your breathing down together.
+  exKo: 안전해요 — 같이 천천히 숨을 늦춰봐요.
+  cue: 코칭할 때 환자 혼자 하게 두지 않고 — '저랑 같이'
+  tag: 코칭·안심
+  distractorsEn:
+  - altogether
+  - forever
+  distractorsKo:
+  - 완전히
+  - 영원히
+  chips:
+  - - to
+    - geth
+    - er
+  decoyChips:
+  - al
+  - gath
+- id: w-out
+  en: out
+  ipa: /aʊt/
+  ko: 밖으로
+  icon: compass
+  example: Breathe in for four, and out slowly for four with me.
+  exKo: 넷을 세며 들이쉬고, 넷을 세며 천천히 내쉬어요, 저랑 같이.
+  cue: 4박자 호흡 코칭에서 들이쉰 다음 — '이제 내쉬세요'
+  tag: 코칭·안심
+  distractorsEn:
+  - in
+  - up
+  distractorsKo:
+  - 안으로
+  - 위로
+  chips:
+  - - out
+  decoyChips:
+  - ot
+  - in
+- id: w-tingling
+  en: tingling
+  ipa: /ˈtɪŋglɪŋ/
+  ko: 저림
+  icon: bulb
+  example: The tingling will ease as your breathing settles.
+  exKo: 저림은 숨이 안정되면서 나아질 거예요.
+  cue: 과호흡 때 손끝·입 주변이 찌릿찌릿한 느낌 — 환자가 겁먹는 증상
+  tag: 증상 표현
+  distractorsEn:
+  - tickling
+  - twitching
+  distractorsKo:
+  - 간지럼
+  - 경련
+  chips:
+  - - ting
+    - ling
+  decoyChips:
+  - tick
+  - tink
+- id: w-ease
+  en: ease
+  ipa: /iːz/
+  ko: 완화되다
+  icon: bulb
+  example: The tingling will ease as your breathing settles.
+  exKo: 저림은 숨이 안정되면서 나아질 거예요.
+  cue: 숨이 안정되면 저린 느낌이 '나아질 거예요'라고 할 때
+  tag: 코칭·안심
+  distractorsEn:
+  - erase
+  - increase
+  distractorsKo:
+  - 지우다
+  - 증가하다
+  chips:
+  - - ease
+  decoyChips:
+  - eas
+  - cease
+- id: w-settle
+  en: settle
+  ipa: /ˈsɛtəl/
+  ko: 안정되다
+  icon: bulb
+  example: The tingling will ease as your breathing settles.
+  exKo: 저림은 숨이 안정되면서 나아질 거예요.
+  cue: 숨이 고르게 돌아오면 저림이 풀린다고 설명할 때 — 호흡이 '가라앉으면'
+  tag: 코칭·안심
+  distractorsEn:
+  - startle
+  - shuttle
+  distractorsKo:
+  - 깜짝 놀라다
+  - 왕복하다
+  chips:
+  - - set
+    - tle
+  decoyChips:
+  - sat
+  - ttle
+- id: w-great
+  en: great
+  ipa: /greɪt/
+  ko: 훌륭한
+  icon: star
+  example: You're doing great — just keep breathing with me.
+  exKo: 잘하고 계세요 — 계속 저랑 같이 숨 쉬어요.
+  cue: 코칭 중 환자를 북돋울 때 — 'You're doing ___'
+  tag: 코칭·안심
+  distractorsEn:
+  - grave
+  - grand
+  distractorsKo:
+  - 심각한
+  - 웅장한
+  chips:
+  - - great
+  decoyChips:
+  - grate
+  - eat
+- id: w-keep
+  en: keep
+  ipa: /kiːp/
+  ko: 유지하다
+  icon: shield
+  example: You're doing great — just keep breathing with me.
+  exKo: 잘하고 계세요 — 계속 저랑 같이 숨 쉬어요.
+  cue: 멈추지 말고 이어 가게 할 때 — '계속 저랑 같이 숨 쉬어요'
+  tag: 기본 동작
+  distractorsEn:
+  - leave
+  - peek
+  distractorsKo:
+  - 떠나다
+  - 엿보다
+  chips:
+  - - keep
+  decoyChips:
+  - kep
+  - peep
+- id: w-high
+  en: high
+  ipa: /haɪ/
+  ko: 높은
+  icon: chartup
+  example: How high has your fever been?
+  exKo: 열이 얼마나 높았나요?
+  cue: 열이 몇 도까지 올랐는지 물을 때 — How ___ has your fever been?
+  tag: 증상 표현
+  distractorsEn:
+  - huge
+  - heavy
+  distractorsKo:
+  - 거대한
+  - 무거운
+  chips:
+  - - high
+  decoyChips:
+  - hi
+  - igh
+- id: w-bring
+  en: bring
+  ipa: /brɪŋ/
+  ko: 나오게 하다
+  icon: board
+  example: Is the cough bringing anything up?
+  exKo: 기침할 때 뭔가 나오나요?
+  cue: 기침에 가래가 딸려 나오는지 물을 때 — ___ anything up
+  tag: 증상 표현
+  distractorsEn:
+  - ring
+  - fling
+  distractorsKo:
+  - 울리다
+  - 내던지다
+  chips:
+  - - bring
+  decoyChips:
+  - brin
+  - ring
+- id: w-anything
+  en: anything
+  ipa: /ˈɛniθɪŋ/
+  ko: 무엇이든
+  icon: board
+  example: Is the cough bringing anything up?
+  exKo: 기침할 때 뭔가 나오나요?
+  cue: 기침할 때 가래든 피든 '뭐라도' 나오는지
+  tag: 증상 표현
+  distractorsEn:
+  - everything
+  - nothing
+  distractorsKo:
+  - 모든 것
+  - 아무것도 아닌 것
+  chips:
+  - - any
+    - thing
+  decoyChips:
+  - every
+  - think
+- id: w-hard
+  en: hard
+  ipa: /hɑːrd/
+  ko: 힘든
+  icon: bulb
+  example: Does the cough make it hard to breathe?
+  exKo: 기침 때문에 숨쉬기가 힘든가요?
+  cue: 기침 때문에 숨쉬기가 버거운지 물을 때 — make it ___ to breathe
+  tag: 증상 표현
+  distractorsEn:
+  - harsh
+  - hardy
+  distractorsKo:
+  - 거친
+  - 튼튼한
+  chips:
+  - - hard
+  decoyChips:
+  - heard
+  - har
+- id: w-upright
+  en: upright
+  ipa: /ˈʌpraɪt/
+  ko: 곧게 세운
+  icon: compass
+  example: Let's sit you upright to help you breathe.
+  exKo: 숨쉬기 편하게 앉혀 드릴게요.
+  cue: 폐부종 환자를 앉힐 때 — 상체를 곧추세운 자세
+  tag: 기본 동작
+  distractorsEn:
+  - uptight
+  - outright
+  distractorsKo:
+  - 긴장한
+  - 완전한
+  chips:
+  - - up
+    - right
+  decoyChips:
+  - tight
+  - rite
+- id: w-pink
+  en: pink
+  ipa: /pɪŋk/
+  ko: 분홍빛의
+  icon: bulb
+  example: The pink, frothy cough worries me about fluid in your lungs.
+  exKo: 분홍빛 거품 섞인 기침이 걱정돼요, 폐에 물이 찬 것 같아서요.
+  cue: 폐부종 가래의 색 — 거품에 피가 살짝 섞인 빛깔
+  tag: 증상 표현
+  distractorsEn:
+  - pale
+  - purple
+  distractorsKo:
+  - 창백한
+  - 보라색의
+  chips:
+  - - pink
+  decoyChips:
+  - pin
+  - ink
+- id: w-frothy
+  en: frothy
+  ipa: /ˈfrɔːθi/
+  ko: 거품이 인
+  icon: bulb
+  example: The pink, frothy cough worries me about fluid in your lungs.
+  exKo: 분홍빛 거품 섞인 기침이 걱정돼요, 폐에 물이 찬 것 같아서요.
+  cue: 폐부종 가래의 모양 — 비누처럼 거품이 부글부글한
+  tag: 증상 표현
+  distractorsEn:
+  - frosty
+  - fruity
+  distractorsKo:
+  - 서리가 낀
+  - 과일 향의
+  chips:
+  - - froth
+    - y
+  decoyChips:
+  - frost
+  - ie
+- id: w-worry
+  en: worry
+  ipa: /ˈwɜːri/
+  ko: 걱정시키다
+  icon: bulb
+  example: The pink, frothy cough worries me about fluid in your lungs.
+  exKo: 분홍빛 거품 섞인 기침이 걱정돼요, 폐에 물이 찬 것 같아서요.
+  cue: 의심 소견을 환자에게 솔직히 말할 때 — '이게 마음에 걸려요'
+  tag: 청진·진찰
+  distractorsEn:
+  - hurry
+  - carry
+  distractorsKo:
+  - 서두르게 하다
+  - 나르다
+  chips:
+  - - wor
+    - ry
+  decoyChips:
+  - war
+  - rry
+- id: w-fluid
+  en: fluid
+  ipa: /ˈfluːɪd/
+  ko: 체액
+  icon: stetho
+  example: The pink, frothy cough worries me about fluid in your lungs.
+  exKo: 분홍빛 거품 섞인 기침이 걱정돼요, 폐에 물이 찬 것 같아서요.
+  cue: 폐부종 때 폐 안에 찬 것 — 환자에게는 '물'이라고도 한다
+  tag: 청진·진찰
+  distractorsEn:
+  - flu
+  - fluoride
+  distractorsKo:
+  - 독감
+  - 불소
+  chips:
+  - - flu
+    - id
+  decoyChips:
+  - flo
+  - ide
+- id: w-lung
+  en: lung
+  ipa: /lʌŋ/
+  ko: 폐
+  icon: stetho
+  example: The pink, frothy cough worries me about fluid in your lungs.
+  exKo: 분홍빛 거품 섞인 기침이 걱정돼요, 폐에 물이 찬 것 같아서요.
+  cue: 청진기로 양쪽 가슴에서 듣는 장기
+  tag: 청진·진찰
+  distractorsEn:
+  - lunge
+  - liver
+  distractorsKo:
+  - 돌진
+  - 간
+  chips:
+  - - lung
+  decoyChips:
+  - lunge
+  - lun
+- id: w-listen
+  en: listen
+  ipa: /ˈlɪsən/
+  ko: (청진기로) 듣다
+  icon: stetho
+  example: I'm listening to your lungs and getting oxygen on you.
+  exKo: 폐 소리를 듣고 산소도 넣어드리고 있어요.
+  cue: 청진기를 대면서 환자에게 하는 말 — 폐 소리를 들어 볼게요
+  tag: 청진·진찰
+  distractorsEn:
+  - glisten
+  - lessen
+  distractorsKo:
+  - 반짝이다
+  - 줄이다
+  chips:
+  - - lis
+    - ten
+  decoyChips:
+  - les
+  - sten
+- id: w-flat
+  en: flat
+  ipa: /flæt/
+  ko: 평평하게
+  icon: bulb
+  example: Try not to lie flat right now.
+  exKo: 지금은 평평하게 눕지 않도록 해요.
+  cue: 폐부종·기좌호흡 환자가 피해야 할 자세 — 등을 대고 반듯이
+  tag: 기본 동작
+  distractorsEn:
+  - prone
+  - sideways
+  distractorsKo:
+  - 엎드린
+  - 옆으로
+  chips:
+  - - flat
+  decoyChips:
+  - flap
+  - lat
+- id: w-color
+  en: color
+  ipa: /ˈkʌlər/
+  ko: 색깔
+  icon: board
+  example: What color is the phlegm you're coughing up?
+  exKo: 기침에서 나온 가래는 무슨 색이에요?
+  cue: 가래가 초록인지 노랑인지 물을 때
+  tag: 증상 표현
+  distractorsEn:
+  - collar
+  - odor
+  distractorsKo:
+  - 옷깃
+  - 냄새
+  chips:
+  - - col
+    - or
+  decoyChips:
+  - coll
+  - our
+- id: w-phlegm
+  en: phlegm
+  ipa: /flɛm/
+  ko: 가래
+  icon: stetho
+  example: What color is the phlegm you're coughing up?
+  exKo: 기침에서 나온 가래는 무슨 색이에요?
+  cue: 폐렴 환자가 기침으로 뱉어 내는 끈적한 것 — 색을 묻는다
+  tag: 증상 표현
+  distractorsEn:
+  - flame
+  - saliva
+  distractorsKo:
+  - 불꽃
+  - 침
+  chips:
+  - - phlegm
+  decoyChips:
+  - flem
+  - phleg
+- id: w-deep
+  en: deep
+  ipa: /diːp/
+  ko: 깊은
+  icon: bulb
+  example: Does it hurt to take a deep breath?
+  exKo: 숨을 깊이 쉬면 아픈가요?
+  cue: 흉막통을 확인할 때 — 숨을 크게 들이쉬면 아픈지
+  tag: 청진·진찰
+  distractorsEn:
+  - steep
+  - shallow
+  distractorsKo:
+  - 가파른
+  - 얕은
+  chips:
+  - - deep
+  decoyChips:
+  - dip
+  - deed
+- id: w-bit
+  en: bit
+  ipa: /bɪt/
+  ko: 약간
+  icon: bulb
+  example: Your oxygen is a bit low, so we'll give you some.
+  exKo: 산소가 약간 낮아서 좀 드릴게요.
+  cue: 겁주지 않게 수치를 말할 때 — '산소가 조금 낮아요' a ___ low
+  tag: 산소 측정
+  distractorsEn:
+  - bite
+  - pit
+  distractorsKo:
+  - 한 입
+  - 구덩이
+  chips:
+  - - bit
+  decoyChips:
+  - bet
+  - bite
+- id: w-back
+  en: back
+  ipa: /bæk/
+  ko: 원래대로
+  icon: compass
+  example: We'll get your oxygen back up.
+  exKo: 산소 수치를 다시 올려드릴게요.
+  cue: 떨어진 산소를 제 수준으로 '되돌려' 놓겠다고 할 때 — get it ___ up
+  tag: 산소 측정
+  distractorsEn:
+  - aside
+  - forth
+  distractorsKo:
+  - 옆으로
+  - 앞으로
+  chips:
+  - - back
+  decoyChips:
+  - bag
+  - pack
+- id: w-suddenly
+  en: suddenly
+  ipa: /ˈsʌdənli/
+  ko: 갑자기
+  icon: bulb
+  example: Did the shortness of breath start suddenly?
+  exKo: 호흡곤란이 갑자기 시작됐나요?
+  cue: 폐색전을 의심할 때 — 숨찬 게 '딱 한순간에' 시작됐는지
+  tag: 호흡 문진
+  distractorsEn:
+  - gradually
+  - silently
+  distractorsKo:
+  - 점차
+  - 조용히
+  chips:
+  - - sud
+    - den
+    - ly
+  decoyChips:
+  - sad
+  - dent
+- id: w-leg
+  en: leg
+  ipa: /lɛg/
+  ko: 다리
+  icon: me
+  example: Is one of your legs more swollen or painful?
+  exKo: 한쪽 다리가 더 붓거나 아픈가요?
+  cue: 심부정맥혈전을 찾을 때 한쪽만 부었는지 보는 곳
+  tag: 증상 표현
+  distractorsEn:
+  - lag
+  - log
+  distractorsKo:
+  - 지연
+  - 통나무
+  chips:
+  - - leg
+  decoyChips:
+  - lag
+  - eg
+- id: w-swollen
+  en: swollen
+  ipa: /ˈswoʊlən/
+  ko: 부은
+  icon: bulb
+  example: Is one of your legs more swollen or painful?
+  exKo: 한쪽 다리가 더 붓거나 아픈가요?
+  cue: 종아리 한쪽이 더 굵고 팽팽해졌는지 물을 때
+  tag: 증상 표현
+  distractorsEn:
+  - sullen
+  - stolen
+  distractorsKo:
+  - 뚱한
+  - 도난당한
+  chips:
+  - - swol
+    - len
+  decoyChips:
+  - swell
+  - lan
+- id: w-painful
+  en: painful
+  ipa: /ˈpeɪnfəl/
+  ko: 아픈
+  icon: bulb
+  example: Is one of your legs more swollen or painful?
+  exKo: 한쪽 다리가 더 붓거나 아픈가요?
+  cue: 부은 종아리를 누르거나 걸을 때 느낌을 묻는 형용사 — swollen과 나란히
+  tag: 증상 표현
+  distractorsEn:
+  - peaceful
+  - pitiful
+  distractorsKo:
+  - 평화로운
+  - 가엾은
+  chips:
+  - - pain
+    - ful
+  decoyChips:
+  - pane
+  - fill
+- id: w-travel
+  en: travel
+  ipa: /ˈtrævəl/
+  ko: 여행하다
+  icon: plane
+  example: Have you traveled far or been immobile recently?
+  exKo: 최근에 멀리 다녀오셨거나 오래 움직이지 못하셨나요?
+  cue: 폐색전 위험을 물을 때 — 최근 장거리 비행이나 차로 먼 길을 다녀왔는지
+  tag: 호흡 문진
+  distractorsEn:
+  - tremble
+  - trample
+  distractorsKo:
+  - 떨다
+  - 짓밟다
+  chips:
+  - - trav
+    - el
+  decoyChips:
+  - trev
+  - ell
+- id: w-far
+  en: far
+  ipa: /fɑːr/
+  ko: 멀리
+  icon: compass
+  example: Have you traveled far or been immobile recently?
+  exKo: 최근에 멀리 다녀오셨거나 오래 움직이지 못하셨나요?
+  cue: 이동 거리를 물을 때 — '먼 데까지 다녀오셨어요?'
+  tag: 호흡 문진
+  distractorsEn:
+  - fast
+  - fairly
+  distractorsKo:
+  - 빠르게
+  - 꽤
+  chips:
+  - - far
+  decoyChips:
+  - fur
+  - fair
+- id: w-immobile
+  en: immobile
+  ipa: /ɪˈmoʊbəl/
+  ko: 움직이지 않는
+  icon: bulb
+  example: Have you traveled far or been immobile recently?
+  exKo: 최근에 멀리 다녀오셨거나 오래 움직이지 못하셨나요?
+  cue: 수술 후·깁스·장기 입원처럼 오래 누워 지냈는지 — 혈전 위험 인자
+  tag: 호흡 문진
+  distractorsEn:
+  - immune
+  - mobile
+  distractorsKo:
+  - 면역이 있는
+  - 잘 움직이는
+  chips:
+  - - im
+    - mo
+    - bile
+  decoyChips:
+  - in
+  - mob
+- id: w-recently
+  en: recently
+  ipa: /ˈriːsəntli/
+  ko: 최근에
+  icon: calendar
+  example: Have you traveled far or been immobile recently?
+  exKo: 최근에 멀리 다녀오셨거나 오래 움직이지 못하셨나요?
+  cue: 위험 인자를 물을 때 — '요 근래에' 그런 일이 있었는지
+  tag: 호흡 문진
+  distractorsEn:
+  - frequently
+  - decently
+  distractorsKo:
+  - 자주
+  - 적당히
+  chips:
+  - - re
+    - cent
+    - ly
+  decoyChips:
+  - ri
+  - sent
+- id: w-point
+  en: point
+  ipa: /pɔɪnt/
+  ko: 가리키다
+  icon: pushpin
+  example: Point to where your leg feels swollen.
+  exKo: 다리가 부은 곳을 가리켜 주세요.
+  cue: 말이 어려운 환자에게 — '손가락으로 여기라고 짚어 주세요'
+  tag: 기본 동작
+  distractorsEn:
+  - paint
+  - poke
+  distractorsKo:
+  - 칠하다
+  - 찌르다
+  chips:
+  - - point
+  decoyChips:
+  - pint
+  - oint
+- id: w-mask
+  en: mask
+  ipa: /mæsk/
+  ko: 마스크
+  icon: shield
+  example: This mask pushes air in to help you breathe easier.
+  exKo: 이 마스크가 공기를 밀어넣어서 숨쉬기를 도와줘요.
+  cue: BiPAP에서 코와 입을 덮어 얼굴에 고정하는 것
+  tag: 산소 기구
+  distractorsEn:
+  - flask
+  - task
+  distractorsKo:
+  - 플라스크
+  - 과업
+  chips:
+  - - mask
+  decoyChips:
+  - mas
+  - musk
+- id: w-push
+  en: push
+  ipa: /pʊʃ/
+  ko: 밀어넣다
+  icon: gear
+  example: This mask pushes air in to help you breathe easier.
+  exKo: 이 마스크가 공기를 밀어넣어서 숨쉬기를 도와줘요.
+  cue: BiPAP가 하는 일을 쉽게 — 기계가 공기를 폐 쪽으로 '밀어 줘요'
+  tag: 산소 기구
+  distractorsEn:
+  - pull
+  - pump
+  distractorsKo:
+  - 당기다
+  - 펌프질하다
+  chips:
+  - - push
+  decoyChips:
+  - posh
+  - pus
+- id: w-air
+  en: air
+  ipa: /ɛr/
+  ko: 공기
+  icon: compass
+  example: This mask pushes air in to help you breathe easier.
+  exKo: 이 마스크가 공기를 밀어넣어서 숨쉬기를 도와줘요.
+  cue: BiPAP 마스크로 밀려 들어오는 것 — 산소보다 쉬운 말
+  tag: 산소 기구
+  distractorsEn:
+  - ear
+  - hair
+  distractorsKo:
+  - 귀
+  - 머리카락
+  chips:
+  - - air
+  decoyChips:
+  - ear
+  - aire
+- id: w-hold
+  en: hold
+  ipa: /hoʊld/
+  ko: 잡다·대다
+  icon: me
+  example: I'll hold it gently first so you can get used to it.
+  exKo: 먼저 살살 대드릴 테니 익숙해지시면 돼요.
+  cue: 끈을 매기 전 마스크를 손으로 얼굴에 살짝 '대고 있을게요'
+  tag: 산소 기구
+  distractorsEn:
+  - fold
+  - mold
+  distractorsKo:
+  - 접다
+  - 본을 뜨다
+  chips:
+  - - hold
+  decoyChips:
+  - hole
+  - old
+- id: w-first
+  en: first
+  ipa: /fɜːrst/
+  ko: 먼저
+  icon: calendar
+  example: I'll hold it gently first so you can get used to it.
+  exKo: 먼저 살살 대드릴 테니 익숙해지시면 돼요.
+  cue: 순서를 알려 줄 때 — 끈부터 조이지 않고 '우선' 손으로
+  tag: 기본 동작
+  distractorsEn:
+  - last
+  - finally
+  distractorsKo:
+  - 마지막에
+  - 마침내
+  chips:
+  - - first
+  decoyChips:
+  - fist
+  - irst
+- id: w-used
+  en: used
+  ipa: /juːzd/
+  ko: 익숙해진
+  icon: bulb
+  example: I'll hold it gently first so you can get used to it.
+  exKo: 먼저 살살 대드릴 테니 익숙해지시면 돼요.
+  cue: 낯선 마스크에 차차 적응하게 할 때 — get ___ to it
+  tag: 코칭·안심
+  distractorsEn:
+  - useful
+  - unused
+  distractorsKo:
+  - 유용한
+  - 쓰지 않은
+  chips:
+  - - used
+  decoyChips:
+  - use
+  - fused
+- id: w-machine
+  en: machine
+  ipa: /məˈʃiːn/
+  ko: 기계
+  icon: gear
+  example: Try to breathe with the machine — it works with you.
+  exKo: 기계와 같이 숨 쉬어보세요 — 기계가 맞춰줘요.
+  cue: BiPAP 본체를 환자에게 부르는 쉬운 말 — '이 기계와 같이 숨 쉬어요'
+  tag: 산소 기구
+  distractorsEn:
+  - marine
+  - cuisine
+  distractorsKo:
+  - 해병
+  - 요리
+  chips:
+  - - ma
+    - chine
+  decoyChips:
+  - mash
+  - shine
+- id: w-work
+  en: work
+  ipa: /wɜːrk/
+  ko: 작동하다
+  icon: gear
+  example: Try to breathe with the machine — it works with you.
+  exKo: 기계와 같이 숨 쉬어보세요 — 기계가 맞춰줘요.
+  cue: 기계가 환자 호흡에 맞춰 돌아간다고 안심시킬 때 — it ___s with you
+  tag: 산소 기구
+  distractorsEn:
+  - walk
+  - wake
+  distractorsKo:
+  - 걷다
+  - 깨다
+  chips:
+  - - work
+  decoyChips:
+  - walk
+  - wor
+- id: w-face
+  en: face
+  ipa: /feɪs/
+  ko: 얼굴
+  icon: me
+  example: It will feel tight around your face at first.
+  exKo: 처음엔 얼굴 주변이 꽉 조이는 느낌이 들 거예요.
+  cue: BiPAP 마스크가 닿아 조이는 곳 — 코·입·볼 둘레
+  tag: 산소 기구
+  distractorsEn:
+  - phase
+  - pace
+  distractorsKo:
+  - 단계
+  - 속도
+  chips:
+  - - face
+  decoyChips:
+  - fase
+  - ace
+- id: w-around
+  en: around
+  ipa: /əˈraʊnd/
+  ko: 주변에
+  icon: compass
+  example: It will feel tight around your face at first.
+  exKo: 처음엔 얼굴 주변이 꽉 조이는 느낌이 들 거예요.
+  cue: 마스크 가장자리가 얼굴 '둘레에' 꽉 붙는다고 미리 말할 때
+  tag: 산소 기구
+  distractorsEn:
+  - abroad
+  - along
+  distractorsKo:
+  - 해외에
+  - 따라서
+  chips:
+  - - a
+    - round
+  decoyChips:
+  - ar
+  - ground
+- id: w-rest
+  en: rest
+  ipa: /rɛst/
+  ko: 쉬다
+  icon: bulb
+  example: This helps your lungs rest.
+  exKo: 이게 폐를 좀 쉬게 해줄 거예요.
+  cue: BiPAP의 목적을 쉽게 — 지친 호흡근이 좀 '쉬게' 해 준다
+  tag: 산소 기구
+  distractorsEn:
+  - test
+  - reset
+  distractorsKo:
+  - 검사하다
+  - 재설정하다
+  chips:
+  - - rest
+  decoyChips:
+  - wrest
+  - est
+- id: w-okay
+  en: okay
+  ipa: /ˌoʊˈkeɪ/
+  ko: 괜찮은
+  icon: bulb
+  example: Your oxygen is lower than we'd like, even though you feel okay.
+  exKo: 느낌은 괜찮으셔도 산소 수치는 원하는 만큼 안 나와요.
+  cue: 숨찬 느낌이 없다는 환자의 말을 받을 때 — '몸은 멀쩡하다고 느끼셔도'
+  tag: 코칭·안심
+  distractorsEn:
+  - awake
+  - alone
+  distractorsKo:
+  - 깨어 있는
+  - 혼자인
+  chips:
+  - - o
+    - kay
+  decoyChips:
+  - ok
+  - key
+- id: w-recheck
+  en: recheck
+  ipa: /ˌriːˈtʃɛk/
+  ko: 다시 확인하다
+  icon: check
+  example: Let me recheck it and watch you take a few breaths.
+  exKo: 다시 확인하면서 숨 몇 번 쉬시는 걸 볼게요.
+  cue: 수치가 이상하게 낮을 때 기계 탓인지 보려고 한 번 더 재는 것
+  tag: 산소 측정
+  distractorsEn:
+  - recharge
+  - research
+  distractorsKo:
+  - 재충전하다
+  - 연구하다
+  chips:
+  - - re
+    - check
+  decoyChips:
+  - ri
+  - chek
+- id: w-watch
+  en: watch
+  ipa: /wɑːtʃ/
+  ko: 지켜보다
+  icon: monitor
+  example: Let me recheck it and watch you take a few breaths.
+  exKo: 다시 확인하면서 숨 몇 번 쉬시는 걸 볼게요.
+  cue: 숨 쉬는 모양을 눈으로 계속 살필 때 — 호흡 보조근을 쓰는지
+  tag: 청진·진찰
+  distractorsEn:
+  - wash
+  - match
+  distractorsKo:
+  - 씻다
+  - 맞추다
+  chips:
+  - - watch
+  decoyChips:
+  - wash
+  - atch
+- id: w-few
+  en: few
+  ipa: /fjuː/
+  ko: 몇몇의
+  icon: calendar
+  example: Let me recheck it and watch you take a few breaths.
+  exKo: 다시 확인하면서 숨 몇 번 쉬시는 걸 볼게요.
+  cue: 호흡을 잠깐 관찰할 때 — '숨 몇 번만 쉬어 보세요'
+  tag: 기본 동작
+  distractorsEn:
+  - many
+  - both
+  distractorsKo:
+  - 많은
+  - 둘 다의
+  chips:
+  - - few
+  decoyChips:
+  - fee
+  - dew
+- id: w-close
+  en: close
+  ipa: /kloʊs/
+  ko: 가까운
+  icon: bulb
+  example: We'll give oxygen and keep a close eye on you.
+  exKo: 산소를 드리고 계속 가까이서 지켜볼게요.
+  cue: 눈을 떼지 않고 지켜보겠다는 관용구 keep a ___ eye on에 들어가는 형용사
+  tag: 청진·진찰
+  distractorsEn:
+  - clear
+  - loose
+  distractorsKo:
+  - 맑은
+  - 느슨한
+  chips:
+  - - close
+  decoyChips:
+  - clothe
+  - lose
+- id: w-eye
+  en: eye
+  ipa: /aɪ/
+  ko: 눈
+  icon: me
+  example: We'll give oxygen and keep a close eye on you.
+  exKo: 산소를 드리고 계속 가까이서 지켜볼게요.
+  cue: '''계속 지켜볼게요''를 관용구로 — keep a close ___ on you'
+  tag: 청진·진찰
+  distractorsEn:
+  - ear
+  - arm
+  distractorsKo:
+  - 귀
+  - 팔
+  chips:
+  - - eye
+  decoyChips:
+  - aye
+  - ey
+- id: w-again
+  en: again
+  ipa: /əˈgɛn/
+  ko: 다시
+  icon: compass
+  example: This clip will show your oxygen level again.
+  exKo: 이 집게로 산소 수치를 다시 보여드릴게요.
+  cue: 한 번 잰 수치를 '또' 보여 줄 때, 약을 '또' 줄 때
+  tag: 기본 동작
+  distractorsEn:
+  - against
+  - ahead
+  distractorsKo:
+  - ~에 맞서
+  - 앞으로
+  chips:
+  - - a
+    - gain
+  decoyChips:
+  - gin
+  - agan
+- id: w-show
+  en: show
+  ipa: /ʃoʊ/
+  ko: 보여주다
+  icon: monitor
+  example: This clip will show your oxygen level again.
+  exKo: 이 집게로 산소 수치를 다시 보여드릴게요.
+  cue: 모니터 숫자를 환자에게 가리키며 — '이 집게가 수치를 보여 줄 거예요'
+  tag: 산소 측정
+  distractorsEn:
+  - shout
+  - sow
+  distractorsKo:
+  - 외치다
+  - 씨 뿌리다
+  chips:
+  - - show
+  decoyChips:
+  - shoe
+  - sho
+- id: w-side
+  en: side
+  ipa: /saɪd/
+  ko: 쪽·편
+  icon: compass
+  example: I'm listening to both sides of your chest to compare.
+  exKo: 양쪽 가슴 소리를 비교하려고 듣고 있어요.
+  cue: 한쪽 호흡음이 줄었는지 볼 때 — 오른쪽·왼쪽 각각
+  tag: 청진·진찰
+  distractorsEn:
+  - site
+  - slide
+  distractorsKo:
+  - 부위
+  - 미끄러지다
+  chips:
+  - - side
+  decoyChips:
+  - sid
+  - site
+- id: w-compare
+  en: compare
+  ipa: /kəmˈpɛr/
+  ko: 비교하다
+  icon: monitor
+  example: I'm listening to both sides of your chest to compare.
+  exKo: 양쪽 가슴 소리를 비교하려고 듣고 있어요.
+  cue: 양쪽 폐 소리를 번갈아 들으며 어느 쪽이 약한지 견주는 것
+  tag: 청진·진찰
+  distractorsEn:
+  - compete
+  - compress
+  distractorsKo:
+  - 경쟁하다
+  - 압박하다
+  chips:
+  - - com
+    - pare
+  decoyChips:
+  - comp
+  - pair
+- id: w-tightness
+  en: tightness
+  ipa: /ˈtaɪtnəs/
+  ko: 조이는 느낌
+  icon: bulb
+  example: Did the tightness come on suddenly or gradually?
+  exKo: 조이는 느낌이 갑자기 왔나요, 아니면 점차 왔나요?
+  cue: 기흉·흉수 환자가 한쪽 가슴에 띠를 두른 듯하다고 호소하는 증상(명사)
+  tag: 증상 표현
+  distractorsEn:
+  - tiredness
+  - thickness
+  distractorsKo:
+  - 피로감
+  - 두께
+  chips:
+  - - tight
+    - ness
+  decoyChips:
+  - tite
+  - nest
+- id: w-gradually
+  en: gradually
+  ipa: /ˈgrædʒuəli/
+  ko: 점차
+  icon: compass
+  example: Did the tightness come on suddenly or gradually?
+  exKo: 조이는 느낌이 갑자기 왔나요, 아니면 점차 왔나요?
+  cue: 증상이 몇 시간·며칠에 걸쳐 '서서히' 왔는지 — 갑자기의 반대
+  tag: 호흡 문진
+  distractorsEn:
+  - suddenly
+  - generally
+  distractorsKo:
+  - 갑자기
+  - 대체로
+  chips:
+  - - grad
+    - u
+    - al
+    - ly
+  decoyChips:
+  - grand
+  - ully
+- id: w-exactly
+  en: exactly
+  ipa: /ɪgˈzæktli/
+  ko: 정확히
+  icon: pushpin
+  example: Point to exactly where it feels tight.
+  exKo: 조이는 곳을 정확히 가리켜 주세요.
+  cue: 아픈 자리를 손끝으로 콕 짚어 달라고 할 때 — '정확히 어디'
+  tag: 청진·진찰
+  distractorsEn:
+  - actually
+  - extremely
+  distractorsKo:
+  - 실제로
+  - 극도로
+  chips:
+  - - ex
+    - act
+    - ly
+  decoyChips:
+  - ax
+  - exit
+- id: w-choking
+  en: choking
+  ipa: /ˈtʃoʊkɪŋ/
+  ko: 질식하는
+  icon: bulb
+  example: Choking feeling? Point to your throat, yes or no?
+  exKo: 질식할 것 같은 느낌? 목을 가리켜 보세요, 예, 아니오?
+  cue: 말이 안 통하는 환자에게 목이 막히는 느낌인지 묻는 형용사 — ___ feeling?
+  tag: 기도 응급
+  distractorsEn:
+  - joking
+  - soaking
+  distractorsKo:
+  - 농담하는
+  - 흠뻑 젖은
+  chips:
+  - - chok
+    - ing
+  decoyChips:
+  - chock
+  - king
+- id: w-throat
+  en: throat
+  ipa: /θroʊt/
+  ko: 목구멍
+  icon: me
+  example: Choking feeling? Point to your throat, yes or no?
+  exKo: 질식할 것 같은 느낌? 목을 가리켜 보세요, 예, 아니오?
+  cue: 질식감이 있는지 확인할 때 손으로 가리키게 하는 목 안쪽
+  tag: 증상 표현
+  distractorsEn:
+  - thread
+  - throne
+  distractorsKo:
+  - 실
+  - 왕좌
+  chips:
+  - - throat
+  decoyChips:
+  - throw
+  - oat
+- id: w-allergy
+  en: allergy
+  ipa: /ˈælərdʒi/
+  ko: 알레르기
+  icon: pill
+  example: Allergy to medicine? An interpreter is on the way.
+  exKo: 약물 알레르기? 통역사가 오고 있어요.
+  cue: 약을 주기 전에 반드시 확인하는 것 — 두드러기·부종이 났던 약이 있는지
+  tag: 호흡 문진
+  distractorsEn:
+  - analogy
+  - energy
+  distractorsKo:
+  - 유추
+  - 에너지
+  chips:
+  - - al
+    - ler
+    - gy
+  decoyChips:
+  - ali
+  - gie
+- id: w-medicine
+  en: medicine
+  ipa: /ˈmɛdəsən/
+  ko: 약
+  icon: pill
+  example: Allergy to medicine? An interpreter is on the way.
+  exKo: 약물 알레르기? 통역사가 오고 있어요.
+  cue: 알레르기를 물을 때 짧게 — 먹거나 맞는 약
+  tag: 호흡 문진
+  distractorsEn:
+  - medic
+  - magazine
+  distractorsKo:
+  - 위생병
+  - 잡지
+  chips:
+  - - med
+    - i
+    - cine
+  decoyChips:
+  - medi
+  - sine
+- id: w-interpreter
+  en: interpreter
+  ipa: /ɪnˈtɜːrprɪtər/
+  ko: 통역사
+  icon: speech
+  example: Allergy to medicine? An interpreter is on the way.
+  exKo: 약물 알레르기? 통역사가 오고 있어요.
+  cue: 말이 안 통하는 환자에게 '곧 와요'라고 알리는 사람 — 가족 말고 자격 있는 사람
+  tag: 팀 콜아웃
+  distractorsEn:
+  - interrupter
+  - instructor
+  distractorsKo:
+  - 말을 끊는 사람
+  - 강사
+  chips:
+  - - in
+    - ter
+    - pret
+    - er
+  decoyChips:
+  - rupt
+  - intro
+- id: w-way
+  en: way
+  ipa: /weɪ/
+  ko: 길·방식
+  icon: compass
+  example: Allergy to medicine? An interpreter is on the way.
+  exKo: 약물 알레르기? 통역사가 오고 있어요.
+  cue: 도움이 지금 오고 있다고 할 때 — on the ___
+  tag: 팀 콜아웃
+  distractorsEn:
+  - whey
+  - wave
+  distractorsKo:
+  - 유청
+  - 물결
+  chips:
+  - - way
+  decoyChips:
+  - weigh
+  - wa
+- id: w-nod
+  en: nod
+  ipa: /nɑːd/
+  ko: 고개를 끄덕이다
+  icon: me
+  example: Can you nod yes or shake your head no?
+  exKo: 예면 고개를 끄덕이고, 아니면 좌우로 흔들어 주세요.
+  cue: 말 대신 머리를 위아래로 움직여 '예'를 표시하는 것
+  tag: 기본 동작
+  distractorsEn:
+  - nudge
+  - knock
+  distractorsKo:
+  - 팔꿈치로 쿡 찌르다
+  - 두드리다
+  chips:
+  - - nod
+  decoyChips:
+  - node
+  - not
+- id: w-shake
+  en: shake
+  ipa: /ʃeɪk/
+  ko: 흔들다
+  icon: me
+  example: Can you nod yes or shake your head no?
+  exKo: 예면 고개를 끄덕이고, 아니면 좌우로 흔들어 주세요.
+  cue: 말 대신 머리를 좌우로 움직여 '아니오'를 표시하는 것
+  tag: 기본 동작
+  distractorsEn:
+  - shape
+  - soak
+  distractorsKo:
+  - 모양 짓다
+  - 적시다
+  chips:
+  - - shake
+  decoyChips:
+  - shak
+  - ache
+- id: w-arrive
+  en: arrive
+  ipa: /əˈraɪv/
+  ko: 도착하다
+  icon: compass
+  example: We'll keep you safe until help arrives.
+  exKo: 도움이 올 때까지 안전하게 지켜드릴게요.
+  cue: 통역사나 지원팀이 '올 때까지' 곁을 지킨다고 할 때
+  tag: 팀 콜아웃
+  distractorsEn:
+  - derive
+  - revive
+  distractorsKo:
+  - 끌어내다
+  - 되살리다
+  chips:
+  - - ar
+    - rive
+  decoyChips:
+  - ari
+  - drive
+- id: w-past
+  en: past
+  ipa: /pæst/
+  ko: 지난
+  icon: calendar
+  example: Has your cough gotten weaker over the past few days?
+  exKo: 지난 며칠 사이 기침이 더 약해졌나요?
+  cue: 기침이 약해진 기간을 물을 때 — 지난 며칠 동안
+  tag: 호흡 문진
+  distractorsEn:
+  - vast
+  - fast
+  distractorsKo:
+  - 광대한
+  - 빠른
+  chips:
+  - - past
+  decoyChips:
+  - pest
+  - pas
+- id: w-swallow
+  en: swallow
+  ipa: /ˈswɑːloʊ/
+  ko: 삼키다
+  icon: me
+  example: Are you having trouble swallowing or clearing your throat?
+  exKo: 삼키기 힘들거나 목에 낀 가래를 뱉어 내기 힘든가요?
+  cue: 상기도·신경근 문제를 볼 때 — 침이나 음식을 꿀꺽 넘길 수 있는지
+  tag: 증상 표현
+  distractorsEn:
+  - swell
+  - follow
+  distractorsKo:
+  - 붓다
+  - 따라가다
+  chips:
+  - - swal
+    - low
+  decoyChips:
+  - swell
+  - lo
+- id: w-clear
+  en: clear
+  ipa: /klɪr/
+  ko: (막힘을) 없애다
+  icon: check
+  example: Are you having trouble swallowing or clearing your throat?
+  exKo: 삼키기 힘들거나 목에 낀 가래를 뱉어 내기 힘든가요?
+  cue: 목의 가래, 튜브 안의 분비물처럼 막힌 것을 치울 때
+  tag: 기관절개·흡인
+  distractorsEn:
+  - close
+  - cover
+  distractorsKo:
+  - 닫다
+  - 덮다
+  chips:
+  - - clear
+  decoyChips:
+  - clean
+  - ear
+- id: w-food
+  en: food
+  ipa: /fuːd/
+  ko: 음식
+  icon: coffee
+  example: Does food or water ever go down the wrong way?
+  exKo: 음식이나 물을 먹다가 사레가 들리는 일이 있나요?
+  cue: 사레가 드는지 물을 때 물과 함께 묻는 것 — 먹는 것
+  tag: 증상 표현
+  distractorsEn:
+  - feed
+  - fluid
+  distractorsKo:
+  - 먹이다
+  - 체액
+  chips:
+  - - food
+  decoyChips:
+  - feed
+  - foot
+- id: w-water
+  en: water
+  ipa: /ˈwɔːtər/
+  ko: 물
+  icon: coffee
+  example: Does food or water ever go down the wrong way?
+  exKo: 음식이나 물을 먹다가 사레가 들리는 일이 있나요?
+  cue: 마실 때 사레가 드는지 — 음식과 함께 묻는 것
+  tag: 증상 표현
+  distractorsEn:
+  - waiter
+  - wafer
+  distractorsKo:
+  - 웨이터
+  - 웨하스
+  chips:
+  - - wa
+    - ter
+  decoyChips:
+  - wat
+  - tter
+- id: w-wrong
+  en: wrong
+  ipa: /rɔːŋ/
+  ko: 잘못된
+  icon: board
+  example: Does food or water ever go down the wrong way?
+  exKo: 음식이나 물을 먹다가 사레가 들리는 일이 있나요?
+  cue: 사레를 쉬운 말로 — 음식이 '엉뚱한' 길로 넘어가다
+  tag: 증상 표현
+  distractorsEn:
+  - long
+  - strong
+  distractorsKo:
+  - 긴
+  - 강한
+  chips:
+  - - wrong
+  decoyChips:
+  - rong
+  - prong
+- id: w-need
+  en: need
+  ipa: /niːd/
+  ko: 필요하다
+  icon: board
+  example: We need to watch your breathing muscles closely.
+  exKo: 호흡근을 가까이서 지켜봐야 해요.
+  cue: 해야 할 일을 분명히 말할 때 — '호흡근을 지켜봐야 해요'
+  tag: 기본 동작
+  distractorsEn:
+  - knead
+  - seed
+  distractorsKo:
+  - 반죽하다
+  - 씨를 뿌리다
+  chips:
+  - - need
+  decoyChips:
+  - knead
+  - nee
+- id: w-muscle
+  en: muscle
+  ipa: /ˈmʌsəl/
+  ko: 근육
+  icon: stetho
+  example: We need to watch your breathing muscles closely.
+  exKo: 호흡근을 가까이서 지켜봐야 해요.
+  cue: 신경근질환에서 약해지는 것 — 숨쉬기를 돕는 가슴·횡격막의
+  tag: 청진·진찰
+  distractorsEn:
+  - mussel
+  - muzzle
+  distractorsKo:
+  - 홍합
+  - 입마개
+  chips:
+  - - mus
+    - cle
+  decoyChips:
+  - muss
+  - sel
+- id: w-strength
+  en: strength
+  ipa: /strɛŋkθ/
+  ko: 힘
+  icon: stetho
+  example: Let's check your strength again today.
+  exKo: 오늘 힘도 다시 확인해볼게요.
+  cue: 신경근 환자의 손 쥐기·팔 들기로 재는 것 — 오늘은 어제보다 약한지
+  tag: 청진·진찰
+  distractorsEn:
+  - stretch
+  - length
+  distractorsKo:
+  - 늘이기
+  - 길이
+  chips:
+  - - strength
+  decoyChips:
+  - strong
+  - streng
+- id: w-check
+  en: check
+  ipa: /tʃɛk/
+  ko: 확인하다
+  icon: check
+  example: Let's check your strength again today.
+  exKo: 오늘 힘도 다시 확인해볼게요.
+  cue: 간호사가 하루에도 몇 번씩 하는 말 — 튜브 위치·힘·수치를 '확인할게요'
+  tag: 기본 동작
+  distractorsEn:
+  - chuck
+  - cheek
+  distractorsKo:
+  - 던지다
+  - 뺨
+  chips:
+  - - check
+  decoyChips:
+  - chek
+  - heck
+- id: w-actually
+  en: actually
+  ipa: /ˈæktʃuəli/
+  ko: 실제로
+  icon: bulb
+  example: For you, too much oxygen can actually be harmful.
+  exKo: 환자분께는 산소가 너무 많아도 오히려 해로울 수 있어요.
+  cue: 상식과 반대되는 사실을 말할 때 — 산소가 많으면 '오히려' 해롭다
+  tag: 산소 측정
+  distractorsEn:
+  - exactly
+  - usually
+  distractorsKo:
+  - 정확히
+  - 보통
+  chips:
+  - - ac
+    - tu
+    - al
+    - ly
+  decoyChips:
+  - act
+  - ally
+- id: w-harmful
+  en: harmful
+  ipa: /ˈhɑːrmfəl/
+  ko: 해로운
+  icon: shield
+  example: For you, too much oxygen can actually be harmful.
+  exKo: 환자분께는 산소가 너무 많아도 오히려 해로울 수 있어요.
+  cue: COPD 환자에게 산소를 끝까지 올리면 안 되는 이유를 말할 때
+  tag: 산소 측정
+  distractorsEn:
+  - helpful
+  - harmless
+  distractorsKo:
+  - 도움이 되는
+  - 무해한
+  chips:
+  - - harm
+    - ful
+  decoyChips:
+  - help
+  - less
+- id: w-aim
+  en: aim
+  ipa: /eɪm/
+  ko: 목표로 하다
+  icon: pushpin
+  example: We aim for a target range, not the highest number.
+  exKo: 가장 높은 수치가 아니라 목표 범위를 맞추는 거예요.
+  cue: 산소를 얼마나 맞출지 설명할 때 — 정해진 범위를 '노려요'
+  tag: 산소 측정
+  distractorsEn:
+  - claim
+  - maim
+  distractorsKo:
+  - 주장하다
+  - 불구로 만들다
+  chips:
+  - - aim
+  decoyChips:
+  - am
+  - aime
+- id: w-target
+  en: target
+  ipa: /ˈtɑːrgɪt/
+  ko: 목표
+  icon: pushpin
+  example: We aim for a target range, not the highest number.
+  exKo: 가장 높은 수치가 아니라 목표 범위를 맞추는 거예요.
+  cue: COPD 산소포화도 88–92%처럼 미리 정해 둔 값
+  tag: 산소 측정
+  distractorsEn:
+  - tablet
+  - margin
+  distractorsKo:
+  - 정제
+  - 여유분
+  chips:
+  - - tar
+    - get
+  decoyChips:
+  - tag
+  - gate
+- id: w-range
+  en: range
+  ipa: /reɪndʒ/
+  ko: 범위
+  icon: chartup
+  example: We aim for a target range, not the highest number.
+  exKo: 가장 높은 수치가 아니라 목표 범위를 맞추는 거예요.
+  cue: 숫자 하나가 아니라 '88에서 92 사이'처럼 폭을 가진 목표
+  tag: 산소 측정
+  distractorsEn:
+  - rank
+  - rage
+  distractorsKo:
+  - 순위
+  - 분노
+  chips:
+  - - range
+  decoyChips:
+  - rang
+  - orange
+- id: w-carefully
+  en: carefully
+  ipa: /ˈkɛrfəli/
+  ko: 조심스럽게
+  icon: shield
+  example: I'll adjust it carefully to keep you in the safe zone.
+  exKo: 안전한 범위 안에 있도록 조심스럽게 조절할게요.
+  cue: COPD 환자 산소를 조금씩 살피며 올리고 내릴 때
+  tag: 산소 측정
+  distractorsEn:
+  - cheerfully
+  - carelessly
+  distractorsKo:
+  - 기분 좋게
+  - 부주의하게
+  chips:
+  - - care
+    - ful
+    - ly
+  decoyChips:
+  - car
+  - less
+- id: w-zone
+  en: zone
+  ipa: /zoʊn/
+  ko: 구역
+  icon: board
+  example: I'll adjust it carefully to keep you in the safe zone.
+  exKo: 안전한 범위 안에 있도록 조심스럽게 조절할게요.
+  cue: 목표 범위를 환자에게 쉽게 — '안전한 구간' safe ___
+  tag: 산소 측정
+  distractorsEn:
+  - zoo
+  - cone
+  distractorsKo:
+  - 동물원
+  - 원뿔
+  chips:
+  - - zone
+  decoyChips:
+  - zon
+  - one
+- id: w-turning
+  en: turn
+  ipa: /tɜːrn/
+  ko: 돌리다
+  icon: gear
+  example: Turning it all the way up isn't safe for you.
+  exKo: 산소를 끝까지 올리는 건 환자분께 안전하지 않아요.
+  cue: '''산소를 끝까지 올려 달라''는 환자에게 — 다이얼을 all the way up으로'
+  tag: 산소 기구
+  distractorsEn:
+  - burn
+  - churn
+  distractorsKo:
+  - 태우다
+  - 휘젓다
+  chips:
+  - - turn
+  decoyChips:
+  - tern
+  - urn
+- id: w-exam
+  en: exam
+  ipa: /ɪgˈzæm/
+  ko: 진찰
+  icon: stetho
+  example: Your oxygen and lung exam look reassuring.
+  exKo: 산소 수치도 폐 진찰 소견도 안심할 만해요.
+  cue: 청진·타진처럼 손과 청진기로 몸을 살핀 결과 — lung ___
+  tag: 청진·진찰
+  distractorsEn:
+  - example
+  - exile
+  distractorsKo:
+  - 예시
+  - 망명
+  chips:
+  - - ex
+    - am
+  decoyChips:
+  - exa
+  - em
+- id: w-look
+  en: look
+  ipa: /lʊk/
+  ko: 보이다
+  icon: monitor
+  example: Your oxygen and lung exam look reassuring.
+  exKo: 산소 수치도 폐 진찰 소견도 안심할 만해요.
+  cue: 검사 결과가 어때 '보이는지' 환자에게 말할 때 — 수치가 안심할 만해 ___
+  tag: 청진·진찰
+  distractorsEn:
+  - lock
+  - lurk
+  distractorsKo:
+  - 잠그다
+  - 숨어 있다
+  chips:
+  - - look
+  decoyChips:
+  - lock
+  - ook
+- id: w-reassuring
+  en: reassuring
+  ipa: /ˌriːəˈʃʊrɪŋ/
+  ko: 안심시키는
+  icon: shield
+  example: Your oxygen and lung exam look reassuring.
+  exKo: 산소 수치도 폐 진찰 소견도 안심할 만해요.
+  cue: 기질적 원인이 안 보일 때 불안한 환자에게 결과를 전하는 말
+  tag: 코칭·안심
+  distractorsEn:
+  - concerning
+  - measuring
+  distractorsKo:
+  - 우려스러운
+  - 측정하는
+  chips:
+  - - re
+    - as
+    - sur
+    - ing
+  decoyChips:
+  - ri
+  - sure
+- id: w-heart
+  en: heart
+  ipa: /hɑːrt/
+  ko: 심장
+  icon: stetho
+  example: Your heart and lungs sound normal to me.
+  exKo: 심장과 폐 소리는 정상으로 들려요.
+  cue: 폐와 함께 청진기로 듣는 장기 — 가슴 왼쪽
+  tag: 청진·진찰
+  distractorsEn:
+  - hearth
+  - heat
+  distractorsKo:
+  - 난로
+  - 열기
+  chips:
+  - - heart
+  decoyChips:
+  - hurt
+  - hear
+- id: w-sound
+  en: sound
+  ipa: /saʊnd/
+  ko: 들리다·소리
+  icon: speaker
+  example: Your heart and lungs sound normal to me.
+  exKo: 심장과 폐 소리는 정상으로 들려요.
+  cue: 청진 결과를 전할 때 — 폐가 정상으로 '들려요', 또는 고음의 숨소리
+  tag: 청진·진찰
+  distractorsEn:
+  - pound
+  - bound
+  distractorsKo:
+  - 두드리다
+  - 묶다
+  chips:
+  - - sound
+  decoyChips:
+  - sond
+  - round
+- id: w-normal
+  en: normal
+  ipa: /ˈnɔːrməl/
+  ko: 정상인
+  icon: check
+  example: Your heart and lungs sound normal to me.
+  exKo: 심장과 폐 소리는 정상으로 들려요.
+  cue: 심장·폐 청진에서 이상 소견이 없을 때
+  tag: 청진·진찰
+  distractorsEn:
+  - formal
+  - abnormal
+  distractorsKo:
+  - 격식 있는
+  - 비정상인
+  chips:
+  - - nor
+    - mal
+  decoyChips:
+  - ab
+  - mail
+- id: w-happen
+  en: happen
+  ipa: /ˈhæpən/
+  ko: 일어나다
+  icon: bulb
+  example: Does this happen when you feel stressed or anxious?
+  exKo: 스트레스받거나 불안할 때 이런 증상이 나타나나요?
+  cue: 숨찬 증상이 어떤 때 '생기는지' 물을 때 — 스트레스 받을 때?
+  tag: 호흡 문진
+  distractorsEn:
+  - deepen
+  - hasten
+  distractorsKo:
+  - 깊어지다
+  - 서두르다
+  chips:
+  - - hap
+    - pen
+  decoyChips:
+  - hop
+  - pan
+- id: w-stressed
+  en: stressed
+  ipa: /strɛst/
+  ko: 스트레스 받는
+  icon: bulb
+  example: Does this happen when you feel stressed or anxious?
+  exKo: 스트레스받거나 불안할 때 이런 증상이 나타나나요?
+  cue: 불안 동반 호흡곤란을 가를 때 — 일·걱정으로 압박을 느끼는 상태
+  tag: 호흡 문진
+  distractorsEn:
+  - stretched
+  - dressed
+  distractorsKo:
+  - 늘어난
+  - 옷을 입은
+  chips:
+  - - stress
+    - ed
+  decoyChips:
+  - stres
+  - stretch
+- id: w-anxious
+  en: anxious
+  ipa: /ˈæŋkʃəs/
+  ko: 불안한
+  icon: bulb
+  example: Does this happen when you feel stressed or anxious?
+  exKo: 스트레스받거나 불안할 때 이런 증상이 나타나나요?
+  cue: 검사는 괜찮은데 가슴이 두근거리고 걱정이 멈추지 않는 환자의 마음 상태
+  tag: 코칭·안심
+  distractorsEn:
+  - ambitious
+  - obnoxious
+  distractorsKo:
+  - 야심 있는
+  - 불쾌한
+  chips:
+  - - anx
+    - ious
+  decoyChips:
+  - ank
+  - xious
+- id: w-airway
+  en: airway
+  ipa: /ˈɛrweɪ/
+  ko: 기도
+  icon: stetho
+  example: That high-pitched sound worries me about your airway.
+  exKo: 그 높은 숨소리 때문에 기도가 걱정돼요.
+  cue: 고음의 숨소리(stridor)가 들릴 때 막혔을까 걱정하는 목 안의 길
+  tag: 기도 응급
+  distractorsEn:
+  - airflow
+  - hallway
+  distractorsKo:
+  - 기류
+  - 복도
+  chips:
+  - - air
+    - way
+  decoyChips:
+  - ear
+  - flow
+- id: w-calling
+  en: call
+  ipa: /kɔːl/
+  ko: 부르다
+  icon: speaker
+  example: I'm calling for airway help right now — stay calm.
+  exKo: 기도 도움을 지금 부를게요 — 침착하게 계세요.
+  cue: 응급 인력을 부를 때 — 기도팀·이비인후과를 '호출해요', 단계를 소리 내 알릴 때
+  tag: 팀 콜아웃
+  distractorsEn:
+  - crawl
+  - haul
+  distractorsKo:
+  - 기어가다
+  - 끌다
+  chips:
+  - - call
+  decoyChips:
+  - cal
+  - fall
+- id: w-stay
+  en: stay
+  ipa: /steɪ/
+  ko: (~한 채로) 있다
+  icon: shield
+  example: I'm calling for airway help right now — stay calm.
+  exKo: 기도 도움을 지금 부를게요 — 침착하게 계세요.
+  cue: 숨찬 환자에게 '침착하게, 가만히 계세요'라고 할 때 앞에 붙는 동사
+  tag: 코칭·안심
+  distractorsEn:
+  - stray
+  - sway
+  distractorsKo:
+  - 길을 벗어나다
+  - 흔들리다
+  chips:
+  - - stay
+  decoyChips:
+  - stray
+  - tay
+- id: w-calm
+  en: calm
+  ipa: /kɑːm/
+  ko: 차분한
+  icon: bulb
+  example: I'm calling for airway help right now — stay calm.
+  exKo: 기도 도움을 지금 부를게요 — 침착하게 계세요.
+  cue: 상기도 폐쇄 환자가 몸부림치지 않게 — 흥분하지 않은 상태
+  tag: 코칭·안심
+  distractorsEn:
+  - warm
+  - numb
+  distractorsKo:
+  - 따뜻한
+  - 감각이 없는
+  chips:
+  - - calm
+  decoyChips:
+  - clam
+  - cam
+- id: w-ready
+  en: ready
+  ipa: /ˈrɛdi/
+  ko: 준비된
+  icon: check
+  example: We're keeping you upright and getting oxygen ready.
+  exKo: 곧게 앉혀드리고 산소도 준비하고 있어요.
+  cue: 삽관 전 콜아웃 — 흡인·날·튜브가 모두 '갖춰졌다'
+  tag: 삽관·RSI
+  distractorsEn:
+  - steady
+  - heady
+  distractorsKo:
+  - 안정된
+  - 들뜬
+  chips:
+  - - ready
+  decoyChips:
+  - red
+  - dy
+- id: w-still
+  en: still
+  ipa: /stɪl/
+  ko: 가만히
+  icon: bulb
+  example: Try to stay still and let us help you.
+  exKo: 가만히 계시고 저희가 돕게 해주세요.
+  cue: 기도가 좁아진 환자에게 버둥거리지 말라고 할 때 — stay ___
+  tag: 코칭·안심
+  distractorsEn:
+  - stiff
+  - chill
+  distractorsKo:
+  - 뻣뻣한
+  - 쌀쌀한
+  chips:
+  - - still
+  decoyChips:
+  - stil
+  - till
+- id: w-let
+  en: let
+  ipa: /lɛt/
+  ko: 하게 하다
+  icon: bulb
+  example: Try to stay still and let us help you.
+  exKo: 가만히 계시고 저희가 돕게 해주세요.
+  cue: 환자에게 맡겨 달라고 할 때 — '저희가 도와 드리게 해 주세요' ___ us help
+  tag: 기본 동작
+  distractorsEn:
+  - get
+  - set
+  distractorsKo:
+  - 얻다
+  - 놓다
+  chips:
+  - - let
+  decoyChips:
+  - lot
+  - lett
+- id: w-suction
+  en: suction
+  ipa: /ˈsʌkʃən/
+  ko: 흡인
+  icon: gear
+  example: Suction is on, blade and tube are ready.
+  exKo: 흡인 준비됐고, 후두경 날과 튜브도 준비됐습니다.
+  cue: 삽관 전 가장 먼저 켜 두는 것 — 분비물·피를 빨아내는 장치
+  tag: 기관절개·흡인
+  distractorsEn:
+  - section
+  - suture
+  distractorsKo:
+  - 구획
+  - 봉합
+  chips:
+  - - suc
+    - tion
+  decoyChips:
+  - suck
+  - sec
+- id: w-blade
+  en: blade
+  ipa: /bleɪd/
+  ko: (후두경) 날
+  icon: scalpel
+  example: Suction is on, blade and tube are ready.
+  exKo: 흡인 준비됐고, 후두경 날과 튜브도 준비됐습니다.
+  cue: 후두경 손잡이에 끼워 혀를 들어 올리는 금속 부분 — Mac·Miller
+  tag: 삽관·RSI
+  distractorsEn:
+  - stylet
+  - bladder
+  distractorsKo:
+  - 스타일렛(유도철사)
+  - 방광
+  chips:
+  - - blade
+  decoyChips:
+  - blad
+  - laid
+- id: w-tube
+  en: tube
+  ipa: /tuːb/
+  ko: 튜브
+  icon: board
+  example: Suction is on, blade and tube are ready.
+  exKo: 흡인 준비됐고, 후두경 날과 튜브도 준비됐습니다.
+  cue: 삽관 때 성대 사이로 넣는 관 — 기관절개 구멍에도 끼운다
+  tag: 삽관·RSI
+  distractorsEn:
+  - cube
+  - tub
+  distractorsKo:
+  - 정육면체
+  - 욕조
+  chips:
+  - - tube
+  decoyChips:
+  - tub
+  - ube
+- id: w-induction
+  en: induction
+  ipa: /ɪnˈdʌkʃən/
+  ko: 유도 약물
+  icon: pill
+  example: Induction and paralytic drawn up and labeled.
+  exKo: 유도제와 근이완제 뽑아서 라벨 붙였습니다.
+  cue: RSI에서 근이완제보다 먼저 넣어 의식을 잃게 하는 약 — 케타민·에토미데이트
+  tag: 삽관·RSI
+  distractorsEn:
+  - intubation
+  - infusion
+  distractorsKo:
+  - 기관삽관
+  - 주입
+  chips:
+  - - in
+    - duc
+    - tion
+  decoyChips:
+  - indu
+  - duct
+- id: w-paralytic
+  en: paralytic
+  ipa: /ˌpærəˈlɪtɪk/
+  ko: 근이완제
+  icon: pill
+  example: Induction and paralytic drawn up and labeled.
+  exKo: 유도제와 근이완제 뽑아서 라벨 붙였습니다.
+  cue: RSI에서 두 번째로 넣어 온몸 근육을 멈추게 하는 약 — 로큐로늄·석시닐콜린
+  tag: 삽관·RSI
+  distractorsEn:
+  - sedative
+  - analgesic
+  distractorsKo:
+  - 진정제
+  - 진통제
+  chips:
+  - - par
+    - a
+    - lyt
+    - ic
+  decoyChips:
+  - para
+  - lysis
+- id: w-drawn
+  en: draw up
+  ipa: /ˌdrɔː ˈʌp/
+  ko: (주사기에) 약을 재다
+  icon: pill
+  example: Induction and paralytic drawn up and labeled.
+  exKo: 유도제와 근이완제 뽑아서 라벨 붙였습니다.
+  cue: RSI 약을 앰플에서 주사기로 뽑아 준비해 두는 것
+  tag: 삽관·RSI
+  distractorsEn:
+  - throw up
+  - dry up
+  distractorsKo:
+  - 토하다
+  - 마르다
+  chips:
+  - - draw
+  - - up
+  decoyChips:
+  - drew
+  - down
+- id: w-labeled
+  en: label
+  ipa: /ˈleɪbəl/
+  ko: 라벨을 붙이다
+  icon: pencil
+  example: Induction and paralytic drawn up and labeled.
+  exKo: 유도제와 근이완제 뽑아서 라벨 붙였습니다.
+  cue: 뽑아 둔 주사기마다 약 이름·용량 스티커를 붙이는 것 — 투약 오류 방지
+  tag: 삽관·RSI
+  distractorsEn:
+  - ladle
+  - tabulate
+  distractorsKo:
+  - 국자로 뜨다
+  - 표로 만들다
+  chips:
+  - - la
+    - bel
+  decoyChips:
+  - lab
+  - ble
+- id: w-cart
+  en: cart
+  ipa: /kɑːrt/
+  ko: 카트
+  icon: board
+  example: Airway cart is at the bedside.
+  exKo: 기도 카트는 침상 옆에 있습니다.
+  cue: 기도 장비를 서랍마다 담아 끌고 오는 바퀴 달린 것
+  tag: 기도 응급
+  distractorsEn:
+  - chart
+  - card
+  distractorsKo:
+  - 차트
+  - 카드
+  chips:
+  - - cart
+  decoyChips:
+  - card
+  - art
+- id: w-bedside
+  en: bedside
+  ipa: /ˈbɛdsaɪd/
+  ko: 침상 곁
+  icon: home
+  example: Airway cart is at the bedside.
+  exKo: 기도 카트는 침상 옆에 있습니다.
+  cue: 장비를 어디 둘지 — 환자 침대 바로 옆
+  tag: 기도 응급
+  distractorsEn:
+  - bedsore
+  - bedpan
+  distractorsKo:
+  - 욕창
+  - 변기
+  chips:
+  - - bed
+    - side
+  decoyChips:
+  - bid
+  - sore
+- id: w-sats
+  en: sats
+  ipa: /sæts/
+  ko: 산소포화도 수치
+  icon: monitor
+  example: Sats are 98, we're good to go — go ahead.
+  exKo: 산소포화도 98, 진행해도 좋습니다 — 시작하세요.
+  cue: 팀끼리 산소포화도를 말로 줄여 부를 때 — '98이에요, 진행하세요'
+  tag: 산소 측정
+  distractorsEn:
+  - stats
+  - sets
+  distractorsKo:
+  - 통계
+  - 세트
+  chips:
+  - - sats
+  decoyChips:
+  - stats
+  - sots
+- id: w-step
+  en: step
+  ipa: /stɛp/
+  ko: 단계
+  icon: pushpin
+  example: I'll call it out step by step.
+  exKo: 단계별로 콜아웃하겠습니다.
+  cue: 삽관 보조가 과정을 하나씩 소리 내 알릴 때 — ___ by ___
+  tag: 팀 콜아웃
+  distractorsEn:
+  - stem
+  - stop
+  distractorsKo:
+  - 줄기
+  - 정지
+  chips:
+  - - step
+  decoyChips:
+  - stop
+  - tep
+- id: w-responding
+  en: respond
+  ipa: /rɪˈspɑːnd/
+  ko: 반응하다
+  icon: bulb
+  example: He's not responding to oxygen — sats keep falling.
+  exKo: 산소에 반응이 없습니다 — 수치가 계속 떨어지고 있습니다.
+  cue: 고유량 산소를 줘도 수치가 안 오를 때 — 치료에 '듣지' 않는다
+  tag: 팀 콜아웃
+  distractorsEn:
+  - correspond
+  - resolve
+  distractorsKo:
+  - 일치하다
+  - 해소되다
+  chips:
+  - - re
+    - spond
+  decoyChips:
+  - res
+  - pond
+- id: w-falling
+  en: fall
+  ipa: /fɔːl/
+  ko: 떨어지다
+  icon: chartup
+  example: He's not responding to oxygen — sats keep falling.
+  exKo: 산소에 반응이 없습니다 — 수치가 계속 떨어지고 있습니다.
+  cue: 산소포화도가 계속 내려가는 중이라고 알릴 때 — sats keep ___ing
+  tag: 팀 콜아웃
+  distractorsEn:
+  - fail
+  - fill
+  distractorsKo:
+  - 실패하다
+  - 채우다
+  chips:
+  - - fall
+  decoyChips:
+  - fell
+  - full
+- id: w-dropped
+  en: drop
+  ipa: /drɑːp/
+  ko: 급락하다
+  icon: chartup
+  example: His oxygen level dropped fast just now.
+  exKo: 산소 수치가 방금 급격히 떨어졌습니다.
+  cue: 방금 수치가 뚝 떨어졌다고 보고할 때 — 과거형으로 쓰는 동사
+  tag: 팀 콜아웃
+  distractorsEn:
+  - droop
+  - drip
+  distractorsKo:
+  - 처지다
+  - 방울져 떨어지다
+  chips:
+  - - drop
+  decoyChips:
+  - drip
+  - rop
+- id: w-fast
+  en: fast
+  ipa: /fæst/
+  ko: 빠르게
+  icon: compass
+  example: His oxygen level dropped fast just now.
+  exKo: 산소 수치가 방금 급격히 떨어졌습니다.
+  cue: 수치가 떨어지는 속도·입술이 붓는 속도를 강조할 때
+  tag: 팀 콜아웃
+  distractorsEn:
+  - far
+  - soon
+  distractorsKo:
+  - 멀리
+  - 곧
+  chips:
+  - - fast
+  decoyChips:
+  - fist
+  - ast
+- id: w-intubation
+  en: intubation
+  ipa: /ˌɪntjuːˈbeɪʃən/
+  ko: 기관삽관
+  icon: scalpel
+  example: We need to move toward intubation now.
+  exKo: 지금 삽관 쪽으로 가야 합니다.
+  cue: 산소에도 수치가 계속 떨어질 때 팀이 결정하는 처치 — 기도에 관을 넣는 것(명사)
+  tag: 삽관·RSI
+  distractorsEn:
+  - incubation
+  - intonation
+  distractorsKo:
+  - 잠복기
+  - 억양
+  chips:
+  - - in
+    - tu
+    - ba
+    - tion
+  decoyChips:
+  - intubate
+  - cu
+- id: w-team
+  en: team
+  ipa: /tiːm/
+  ko: 팀
+  icon: board
+  example: I'm calling the team and preparing the airway.
+  exKo: 팀을 부르고 기도를 준비하고 있습니다.
+  cue: 기도 응급에 호출하는 의사·호흡치료사·간호사 무리
+  tag: 팀 콜아웃
+  distractorsEn:
+  - steam
+  - term
+  distractorsKo:
+  - 증기
+  - 용어
+  chips:
+  - - team
+  decoyChips:
+  - teem
+  - eam
+- id: w-preparing
+  en: prepare
+  ipa: /prɪˈpɛr/
+  ko: 준비하다
+  icon: gear
+  example: I'm calling the team and preparing the airway.
+  exKo: 팀을 부르고 기도를 준비하고 있습니다.
+  cue: 삽관 직전에 약·장비를 갖춰 놓는 것 — '기도 준비하고 있어요'
+  tag: 삽관·RSI
+  distractorsEn:
+  - repair
+  - compare
+  distractorsKo:
+  - 수리하다
+  - 비교하다
+  chips:
+  - - pre
+    - pare
+  decoyChips:
+  - pri
+  - pair
+- id: w-anesthesia
+  en: anesthesia
+  ipa: /ˌænəsˈθiːʒə/
+  ko: 마취
+  icon: pill
+  example: Let's get anesthesia on the line.
+  exKo: 마취과에 바로 연락하겠습니다.
+  cue: 어려운 기도일 때 전화로 부르는 과 — 마취를 맡는 의사들
+  tag: 팀 콜아웃
+  distractorsEn:
+  - amnesia
+  - analgesia
+  distractorsKo:
+  - 기억상실
+  - 진통
+  chips:
+  - - an
+    - es
+    - the
+    - sia
+  decoyChips:
+  - amne
+  - thesis
+- id: w-line
+  en: line
+  ipa: /laɪn/
+  ko: (전화) 연결
+  icon: speaker
+  example: Let's get anesthesia on the line.
+  exKo: 마취과에 바로 연락하겠습니다.
+  cue: 전화로 바로 연결할 때 — get them on the ___
+  tag: 팀 콜아웃
+  distractorsEn:
+  - lane
+  - lime
+  distractorsKo:
+  - 차선
+  - 라임
+  chips:
+  - - line
+  decoyChips:
+  - lane
+  - ine
+- id: w-epinephrine
+  en: epinephrine
+  ipa: /ˌɛpəˈnɛfrɪn/
+  ko: 에피네프린
+  icon: pill
+  example: Give IM epinephrine now — her airway is closing.
+  exKo: 지금 근육주사로 에피네프린 주세요 — 기도가 막히고 있습니다.
+  cue: 아나필락시스 1차 약 — 허벅지 근육에 IM으로
+  tag: 기도 응급
+  distractorsEn:
+  - ephedrine
+  - norepinephrine
+  distractorsKo:
+  - 에페드린
+  - 노르에피네프린
+  chips:
+  - - ep
+    - i
+    - neph
+    - rine
+  decoyChips:
+  - ephed
+  - nor
+- id: w-difficult
+  en: difficult
+  ipa: /ˈdɪfɪkəlt/
+  ko: 어려운
+  icon: board
+  example: Call for the difficult airway cart and ENT.
+  exKo: 어려운 기도 카트와 이비인후과 불러주세요.
+  cue: 입이 안 벌어지거나 혀·입술이 부어 삽관이 힘들 것 같은 기도
+  tag: 기도 응급
+  distractorsEn:
+  - different
+  - diffident
+  distractorsKo:
+  - 다른
+  - 자신 없는
+  chips:
+  - - dif
+    - fi
+    - cult
+  decoyChips:
+  - diff
+  - rent
+- id: w-ent
+  en: ENT
+  ipa: /ˌiː ɛn ˈtiː/
+  ko: 이비인후과
+  icon: stetho
+  example: Call for the difficult airway cart and ENT.
+  exKo: 어려운 기도 카트와 이비인후과 불러주세요.
+  cue: 후두부종에 함께 부르는 과 — 귀·코·목 전문
+  tag: 기도 응급
+  distractorsEn:
+  - ICU
+  - GI
+  distractorsKo:
+  - 중환자실
+  - 소화기내과
+  chips:
+  - - ENT
+  decoyChips:
+  - ETN
+  - NET
+- id: w-surgical
+  en: surgical
+  ipa: /ˈsɜːrdʒɪkəl/
+  ko: 외과적인
+  icon: scalpel
+  example: Have a surgical airway kit open at the bedside.
+  exKo: 외과적 기도 세트를 침상에 열어 두세요.
+  cue: 삽관이 안 될 때 목 앞을 절개해 여는 기도 — 그 세트 앞에 붙는 말
+  tag: 기도 응급
+  distractorsEn:
+  - cervical
+  - spherical
+  distractorsKo:
+  - 경부의
+  - 구형의
+  chips:
+  - - sur
+    - gi
+    - cal
+  decoyChips:
+  - surge
+  - cle
+- id: w-kit
+  en: kit
+  ipa: /kɪt/
+  ko: 세트
+  icon: board
+  example: Have a surgical airway kit open at the bedside.
+  exKo: 외과적 기도 세트를 침상에 열어 두세요.
+  cue: 응급 절개 기도에 필요한 도구를 한데 담아 둔 묶음 — 침상 옆에 열어 둔다
+  tag: 기도 응급
+  distractorsEn:
+  - kid
+  - kite
+  distractorsKo:
+  - 아이
+  - 연
+  chips:
+  - - kit
+  decoyChips:
+  - kid
+  - cit
+- id: w-open
+  en: open
+  ipa: /ˈoʊpən/
+  ko: 열려 있는
+  icon: lock
+  example: Have a surgical airway kit open at the bedside.
+  exKo: 외과적 기도 세트를 침상에 열어 두세요.
+  cue: 바로 쓸 수 있게 포장을 뜯어 펼쳐 둔 상태 — 세트를 ___ at the bedside
+  tag: 기도 응급
+  distractorsEn:
+  - sealed
+  - opaque
+  distractorsKo:
+  - 밀봉된
+  - 불투명한
+  chips:
+  - - open
+  decoyChips:
+  - oven
+  - pen
+- id: w-lips
+  en: lips
+  ipa: /lɪps/
+  ko: 입술
+  icon: me
+  example: Her lips are swelling fast.
+  exKo: 입술이 빠르게 부어오르고 있습니다.
+  cue: 아나필락시스에서 혀와 함께 부어오르는 입 둘레
+  tag: 기도 응급
+  distractorsEn:
+  - hips
+  - lids
+  distractorsKo:
+  - 엉덩이
+  - 눈꺼풀
+  chips:
+  - - lips
+  decoyChips:
+  - lip
+  - laps
+- id: w-swelling
+  en: swell
+  ipa: /swɛl/
+  ko: 부어오르다
+  icon: bulb
+  example: Her lips are swelling fast.
+  exKo: 입술이 빠르게 부어오르고 있습니다.
+  cue: 아나필락시스에서 입술·혀가 점점 커지고 있다고 팀에 알릴 때의 동사
+  tag: 기도 응급
+  distractorsEn:
+  - smell
+  - dwell
+  distractorsKo:
+  - 냄새 맡다
+  - 머물다
+  chips:
+  - - swell
+  decoyChips:
+  - swollen
+  - well
+- id: w-run
+  en: run
+  ipa: /rʌn/
+  ko: (차례로) 훑다
+  icon: compass
+  example: Run through DOPE — displacement, obstruction, pneumothorax, equipment.
+  exKo: DOPE로 점검하겠습니다 — 위치 이탈, 폐쇄, 기흉, 장비.
+  cue: 점검 목록을 처음부터 차례로 훑을 때 — ___ through
+  tag: 삽관·RSI
+  distractorsEn:
+  - rub
+  - ruin
+  distractorsKo:
+  - 문지르다
+  - 망치다
+  chips:
+  - - run
+  decoyChips:
+  - ran
+  - rum
+- id: w-dope
+  en: DOPE
+  ipa: /doʊp/
+  ko: (점검법) DOPE
+  icon: board
+  example: Run through DOPE — displacement, obstruction, pneumothorax, equipment.
+  exKo: DOPE로 점검하겠습니다 — 위치 이탈, 폐쇄, 기흉, 장비.
+  cue: 삽관 환자가 갑자기 나빠질 때 떠올리는 네 가지 점검 순서의 머리글자
+  tag: 삽관·RSI
+  distractorsEn:
+  - SBAR
+  - SOAP
+  distractorsKo:
+  - (인계법) SBAR
+  - (기록법) SOAP
+  chips:
+  - - DOPE
+  decoyChips:
+  - DOEP
+  - PODE
+- id: w-displacement
+  en: displacement
+  ipa: /dɪsˈpleɪsmənt/
+  ko: 위치 이탈
+  icon: board
+  example: Run through DOPE — displacement, obstruction, pneumothorax, equipment.
+  exKo: DOPE로 점검하겠습니다 — 위치 이탈, 폐쇄, 기흉, 장비.
+  cue: 점검 첫 번째 — 튜브가 빠지거나 한쪽 기관지로 밀려 들어갔는지
+  tag: 삽관·RSI
+  distractorsEn:
+  - replacement
+  - placement
+  distractorsKo:
+  - 교체
+  - 배치
+  chips:
+  - - dis
+    - place
+    - ment
+  decoyChips:
+  - re
+  - plac
+- id: w-obstruction
+  en: obstruction
+  ipa: /əbˈstrʌkʃən/
+  ko: 폐쇄
+  icon: board
+  example: Run through DOPE — displacement, obstruction, pneumothorax, equipment.
+  exKo: DOPE로 점검하겠습니다 — 위치 이탈, 폐쇄, 기흉, 장비.
+  cue: 점검 두 번째 — 가래 덩어리·피로 튜브가 막혔는지
+  tag: 삽관·RSI
+  distractorsEn:
+  - construction
+  - instruction
+  distractorsKo:
+  - 공사
+  - 지시
+  chips:
+  - - ob
+    - struc
+    - tion
+  decoyChips:
+  - con
+  - struct
+- id: w-pneumothorax
+  en: pneumothorax
+  ipa: /ˌnjuːmoʊˈθɔːræks/
+  ko: 기흉
+  icon: stetho
+  example: Run through DOPE — displacement, obstruction, pneumothorax, equipment.
+  exKo: DOPE로 점검하겠습니다 — 위치 이탈, 폐쇄, 기흉, 장비.
+  cue: 점검 세 번째 — 양압 환기 중 폐가 터져 가슴안에 공기가 찬 것
+  tag: 삽관·RSI
+  distractorsEn:
+  - hemothorax
+  - pneumonia
+  distractorsKo:
+  - 혈흉
+  - 폐렴
+  chips:
+  - - pneu
+    - mo
+    - thor
+    - ax
+  decoyChips:
+  - neumo
+  - hemo
+- id: w-equipment
+  en: equipment
+  ipa: /ɪˈkwɪpmənt/
+  ko: 장비
+  icon: gear
+  example: Run through DOPE — displacement, obstruction, pneumothorax, equipment.
+  exKo: DOPE로 점검하겠습니다 — 위치 이탈, 폐쇄, 기흉, 장비.
+  cue: 점검 네 번째 — 인공호흡기·회로·산소 공급이 제대로 돌아가는지
+  tag: 삽관·RSI
+  distractorsEn:
+  - equivalent
+  - shipment
+  distractorsKo:
+  - 동등한 것
+  - 배송
+  chips:
+  - - e
+    - quip
+    - ment
+  decoyChips:
+  - equi
+  - ship
+- id: w-place
+  en: place
+  ipa: /pleɪs/
+  ko: 제자리
+  icon: pushpin
+  example: Displacement first — is the tube still in place?
+  exKo: 위치부터요 — 튜브가 제자리에 그대로 있나요?
+  cue: 튜브가 원래 있어야 할 자리에 그대로 있는지 — in ___ / out of ___
+  tag: 기관절개·흡인
+  distractorsEn:
+  - space
+  - palace
+  distractorsKo:
+  - 공간
+  - 궁전
+  chips:
+  - - place
+  decoyChips:
+  - plac
+  - lace
+- id: w-position
+  en: position
+  ipa: /pəˈzɪʃən/
+  ko: 위치
+  icon: pushpin
+  example: Check the tube position and suction for a plug.
+  exKo: 튜브 위치를 확인하고 막힌 곳이 있는지 흡인해보세요.
+  cue: 튜브 깊이를 입술 눈금으로 확인하거나, 환자를 한쪽으로 눕힐 때
+  tag: 삽관·RSI
+  distractorsEn:
+  - portion
+  - petition
+  distractorsKo:
+  - 부분
+  - 청원
+  chips:
+  - - po
+    - si
+    - tion
+  decoyChips:
+  - pos
+  - por
+- id: w-plug
+  en: plug
+  ipa: /plʌg/
+  ko: (가래) 덩어리
+  icon: board
+  example: Check the tube position and suction for a plug.
+  exKo: 튜브 위치를 확인하고 막힌 곳이 있는지 흡인해보세요.
+  cue: 튜브 안을 막는 끈적한 가래 덩어리 — mucus ___
+  tag: 기관절개·흡인
+  distractorsEn:
+  - plague
+  - slug
+  distractorsKo:
+  - 역병
+  - 민달팽이
+  chips:
+  - - plug
+  decoyChips:
+  - plag
+  - lug
+- id: w-equal
+  en: equal
+  ipa: /ˈiːkwəl/
+  ko: 동일한
+  icon: check
+  example: Listen for equal breath sounds and check the ventilator.
+  exKo: 양쪽 호흡음이 같은지 듣고 인공호흡기도 확인해주세요.
+  cue: 튜브 위치를 확인할 때 좌우 호흡음이 똑같이 들리는지
+  tag: 청진·진찰
+  distractorsEn:
+  - eager
+  - legal
+  distractorsKo:
+  - 열망하는
+  - 합법적인
+  chips:
+  - - e
+    - qual
+  decoyChips:
+  - equ
+  - eal
+- id: w-ventilator
+  en: ventilator
+  ipa: /ˈvɛntəleɪtər/
+  ko: 인공호흡기
+  icon: monitor
+  example: Listen for equal breath sounds and check the ventilator.
+  exKo: 양쪽 호흡음이 같은지 듣고 인공호흡기도 확인해주세요.
+  cue: 삽관 환자의 숨을 대신 넣어 주는 기계 — 알람·회로를 점검
+  tag: 삽관·RSI
+  distractorsEn:
+  - ventricle
+  - vaporizer
+  distractorsKo:
+  - 심실
+  - 기화기
+  chips:
+  - - ven
+    - ti
+    - la
+    - tor
+  decoyChips:
+  - vent
+  - ric
+- id: w-climbing
+  en: climb
+  ipa: /klaɪm/
+  ko: 올라가다
+  icon: chartup
+  example: Sats are climbing again.
+  exKo: 산소포화도가 다시 올라가고 있습니다.
+  cue: 조치 뒤 산소포화도가 다시 오르고 있다고 알릴 때 — sats are ___ing
+  tag: 팀 콜아웃
+  distractorsEn:
+  - cling
+  - clamp
+  distractorsKo:
+  - 달라붙다
+  - 겸자로 잠그다
+  chips:
+  - - climb
+  decoyChips:
+  - clim
+  - limb
+- id: w-continuously
+  en: continuously
+  ipa: /kənˈtɪnjuəsli/
+  ko: 계속해서
+  icon: compass
+  example: Suction continuously to keep the airway clear.
+  exKo: 기도를 확보하려고 계속 흡인하세요.
+  cue: 대량 객혈 때 흡인을 끊지 말고 '쉬지 않고' 하라고 할 때
+  tag: 기관절개·흡인
+  distractorsEn:
+  - consciously
+  - conspicuously
+  distractorsKo:
+  - 의식적으로
+  - 눈에 띄게
+  chips:
+  - - con
+    - tin
+    - uous
+    - ly
+  decoyChips:
+  - cont
+  - ious
+- id: w-bleeding
+  en: bleed
+  ipa: /bliːd/
+  ko: 출혈하다
+  icon: bulb
+  example: Position him with the bleeding side down.
+  exKo: 출혈 쪽이 아래로 가게 눕혀주세요.
+  cue: 객혈 환자에서 피가 나는 쪽 폐를 아래로 — 피가 나는 중이라고 알릴 때
+  tag: 기관절개·흡인
+  distractorsEn:
+  - breed
+  - bleach
+  distractorsKo:
+  - 번식하다
+  - 표백하다
+  chips:
+  - - bleed
+  decoyChips:
+  - blood
+  - bled
+- id: w-lot
+  en: lot
+  ipa: /lɑːt/
+  ko: 많이
+  icon: bulb
+  example: He's bleeding a lot — suction again.
+  exKo: 출혈이 많습니다 — 다시 흡인하세요.
+  cue: 출혈이 조금이 아니라 '엄청' 나고 있다고 알릴 때 — a ___
+  tag: 기관절개·흡인
+  distractorsEn:
+  - bit
+  - loft
+  distractorsKo:
+  - 약간
+  - 다락
+  chips:
+  - - lot
+  decoyChips:
+  - lit
+  - lott
+- id: w-protect
+  en: protect
+  ipa: /prəˈtɛkt/
+  ko: 보호하다
+  icon: shield
+  example: Protect the good lung on top.
+  exKo: 건강한 폐가 위로 오게 보호해주세요.
+  cue: 대량 객혈 때 피가 안 나는 쪽 폐로 피가 넘어가지 않게 지키는 것
+  tag: 기관절개·흡인
+  distractorsEn:
+  - project
+  - protest
+  distractorsKo:
+  - 투사하다
+  - 항의하다
+  chips:
+  - - pro
+    - tect
+  decoyChips:
+  - pre
+  - test
+- id: w-top
+  en: top
+  ipa: /tɑːp/
+  ko: 위쪽
+  icon: compass
+  example: Protect the good lung on top.
+  exKo: 건강한 폐가 위로 오게 보호해주세요.
+  cue: 출혈 쪽을 아래로 눕히면 건강한 폐는 이쪽에 오게 된다
+  tag: 기관절개·흡인
+  distractorsEn:
+  - tip
+  - tap
+  distractorsKo:
+  - 끝
+  - 수도꼭지
+  chips:
+  - - top
+  decoyChips:
+  - tip
+  - op
+- id: w-trach
+  en: trach
+  ipa: /træk/
+  ko: 기관절개관
+  icon: board
+  example: I'm suctioning your trach to clear any blockage.
+  exKo: 막힌 곳을 없애려고 기관절개관을 흡인하고 있어요.
+  cue: 목 앞 구멍에 끼운 관을 의료진이 짧게 부르는 말 — 환자도 이렇게 부른다
+  tag: 기관절개·흡인
+  distractorsEn:
+  - stoma
+  - track
+  distractorsKo:
+  - 기공(스토마)
+  - 선로
+  chips:
+  - - trach
+  decoyChips:
+  - track
+  - rach
+- id: w-any
+  en: any
+  ipa: /ˈɛni/
+  ko: 어떤
+  icon: board
+  example: I'm suctioning your trach to clear any blockage.
+  exKo: 막힌 곳을 없애려고 기관절개관을 흡인하고 있어요.
+  cue: 흡인할 때 막힌 것이 있다면 '무엇이든' 치운다고 할 때
+  tag: 기관절개·흡인
+  distractorsEn:
+  - many
+  - every
+  distractorsKo:
+  - 많은
+  - 모든
+  chips:
+  - - any
+  decoyChips:
+  - en
+  - ny
+- id: w-blockage
+  en: blockage
+  ipa: /ˈblɑːkɪdʒ/
+  ko: 막힘
+  icon: board
+  example: I'm suctioning your trach to clear any blockage.
+  exKo: 막힌 곳을 없애려고 기관절개관을 흡인하고 있어요.
+  cue: 기관절개관으로 공기가 안 통할 때 흡인으로 치우는 대상 — 굳은 가래 덩어리 따위(명사)
+  tag: 기관절개·흡인
+  distractorsEn:
+  - breakage
+  - bandage
+  distractorsKo:
+  - 파손
+  - 붕대
+  chips:
+  - - block
+    - age
+  decoyChips:
+  - black
+  - edge
+- id: w-change
+  en: change
+  ipa: /tʃeɪndʒ/
+  ko: 교체하다
+  icon: gear
+  example: If it's out of place, we'll change the tube right away.
+  exKo: 제자리에서 빠졌으면 바로 튜브를 교체할게요.
+  cue: 빠지거나 막힌 기관절개관을 새것으로 바꿔 끼울 때
+  tag: 기관절개·흡인
+  distractorsEn:
+  - charge
+  - chafe
+  distractorsKo:
+  - 청구하다
+  - 쓸리다
+  chips:
+  - - change
+  decoyChips:
+  - chance
+  - hange
+- id: w-away
+  en: right away
+  ipa: /ˌraɪt əˈweɪ/
+  ko: 즉시
+  icon: compass
+  example: If it's out of place, we'll change the tube right away.
+  exKo: 제자리에서 빠졌으면 바로 튜브를 교체할게요.
+  cue: 기다리지 않고 지금 곧 하겠다고 할 때 — 두 낱말짜리 부사구
+  tag: 팀 콜아웃
+  distractorsEn:
+  - far away
+  - anyway
+  distractorsKo:
+  - 멀리
+  - 어쨌든
+  chips:
+  - - right
+  - - a
+    - way
+  decoyChips:
+  - write
+  - weigh
+- id: w-new
+  en: new
+  ipa: /nuː/
+  ko: 새로운
+  icon: board
+  example: We'll have a new tube ready in a moment.
+  exKo: 새 튜브를 잠시 후 준비해 드릴게요.
+  cue: 빠진 튜브를 바꿔 끼울 '새' 관을 준비할 때
+  tag: 기관절개·흡인
+  distractorsEn:
+  - few
+  - raw
+  distractorsKo:
+  - 몇몇의
+  - 날것의
+  chips:
+  - - new
+  decoyChips:
+  - knew
+  - nu
+- id: w-moment
+  en: moment
+  ipa: /ˈmoʊmənt/
+  ko: 잠시
+  icon: calendar
+  example: We'll have a new tube ready in a moment.
+  exKo: 새 튜브를 잠시 후 준비해 드릴게요.
+  cue: '''금방 돼요''를 공손하게 — in a ___'
+  tag: 기관절개·흡인
+  distractorsEn:
+  - movement
+  - momentum
+  distractorsKo:
+  - 움직임
+  - 가속도
+  chips:
+  - - mo
+    - ment
+  decoyChips:
+  - move
+  - mint
+- id: w-intubate
+  en: intubate
+  ipa: /ˈɪntjuːbeɪt/
+  ko: 삽관하다
+  icon: scalpel
+  example: Prepare to intubate and call for help now.
+  exKo: 삽관 준비하고 지금 도움을 요청하세요.
+  cue: 대량 객혈로 기도를 지키려고 관을 넣기로 할 때의 동사 — Prepare to ___
+  tag: 삽관·RSI
+  distractorsEn:
+  - incubate
+  - extubate
+  distractorsKo:
+  - 배양하다
+  - 발관하다
+  chips:
+  - - in
+    - tu
+    - bate
+  decoyChips:
+  - ex
+  - cu
+situations:
+- title: 호흡곤란 초기 문진
+  sentences:
+  - en: When did the shortness of breath start?
+    ko: 호흡곤란이 언제 시작됐나요?
+    chunks:
+    - When did
+    - the shortness
+    - of breath
+    - start
+    - '?'
+    words:
+    - w-breath
+    - w-start
+    goal: 1
+  - en: Is it worse when you lie down or when you move?
+    ko: 누우면 더 힘든가요, 아니면 움직이면 더 힘든가요?
+    chunks:
+    - Is it worse
+    - when you
+    - lie down
+    - or when you move
+    - '?'
+    words:
+    - w-lie
+    - w-move
+    goal: 1
+  - en: Do you have any cough, fever, or chest pain with it?
+    ko: 기침이나 열, 가슴 통증도 같이 있나요?
+    chunks:
+    - Do you have
+    - any cough,
+    - fever, or chest pain
+    - with it
+    - '?'
+    words:
+    - w-cough
+    - w-fever
+    - w-chest
+    - w-pain
+    goal: 2
+  - en: Are you having trouble breathing right now?
+    ko: 지금 숨쉬기 힘드신가요?
+    chunks:
+    - Are you having
+    - trouble breathing
+    - right now
+    - '?'
+    words:
+    - w-trouble
+    - w-breathe
+    goal: 1
+  - en: Does sitting up help you breathe?
+    ko: 앉으면 숨쉬기가 좀 편해지나요?
+    chunks:
+    - Does sitting up
+    - help you
+    - breathe
+    - '?'
+    words:
+    - w-sit
+    - w-help
+    - w-breathe
+    goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-breath
+    - w-trouble
+    cue: 'Patient: "I only notice it when I climb the stairs."'
+    scale:
+    - a bit winded
+    - short of breath
+    - gasping for air
+    answerAt: 0
+    why: 계단을 오를 때만 숨이 차면 가벼운 쪽(a bit winded)이에요. 말을 이어 가지 못할 만큼 헐떡이면 gasping for air예요. 트리아지에서는 한 문장을 끝까지 말할 수 있는지도 함께 봐요.
+    example: He gets a bit winded on the stairs.
+    exKo: 계단을 오르면 조금 숨이 차요.
+  - kind: swap
+    words:
+    - w-breath
+    - w-start
+    who: 환자에게 · 발병 시점 묻기
+    icon: me
+    before:
+    - 'When did the '
+    - dyspnea
+    - ' start?'
+    options:
+    - shortness of breath
+    - dyspnea
+    - air hunger
+    answer: shortness of breath
+    notes:
+      shortness of breath: 환자가 바로 알아듣는 말. '숨찬 게 언제부터예요?'가 그대로 전해진다.
+      dyspnea: 차트·의료진끼리 쓰는 말. 환자는 모를 수 있다.
+      air hunger: 숨이 모자라 허덕이는 특정한 느낌을 가리키는 표현이라, 처음 묻는 말로는 좁고 낯설다.
+    why: 환자에게는 shortness of breath로 묻고, 차트에는 dyspnea나 SOB로 적어요.
+- title: 산소포화·호흡수 사정 설명
+  sentences:
+  - en: This clip measures the oxygen level in your blood.
+    ko: 이 집게가 혈중 산소 수치를 재는 거예요.
+    chunks:
+    - This clip
+    - measures
+    - the oxygen level
+    - in your blood
+    - .
+    words:
+    - w-clip
+    - w-measure
+    - w-oxygen
+    - w-level
+    - w-blood
+    goal: 1
+  - en: I'm counting how many breaths you take per minute.
+    ko: 1분 동안 몇 번 숨 쉬는지 세고 있어요.
+    chunks:
+    - I'm counting
+    - how many breaths
+    - you take
+    - per minute
+    - .
+    words:
+    - w-count
+    - w-breath
+    - w-take
+    goal: 1
+  - en: This won't hurt at all.
+    ko: 이건 전혀 아프지 않아요.
+    chunks:
+    - This won't
+    - hurt
+    - at all
+    - .
+    words:
+    - w-hurt
+    goal: 1
+  - en: If it's low, we'll give you a little oxygen.
+    ko: 수치가 낮으면 산소를 약간 드릴게요.
+    chunks:
+    - If it's low,
+    - we'll
+    - give you
+    - a little oxygen
+    - .
+    words:
+    - w-low
+    - w-give
+    - w-little
+    - w-oxygen
+    goal: 2
+  - en: Your oxygen level looks okay right now.
+    ko: 지금 산소 수치는 괜찮아 보이네요.
+    chunks:
+    - Your oxygen level
+    - looks okay
+    - right now
+    - .
+    words:
+    - w-oxygen
+    - w-level
+    goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-low
+    - w-little
+    cue: SpO2 just under the target range; the patient is comfortable and talking normally.
+    scale:
+    - a little low
+    - low
+    - dangerously low
+    answerAt: 0
+    why: 목표보다 살짝 낮고 환자가 편하면 a little low예요. 겁주지 않으면서 사실을 말하고, 산소를 줄 거라고 이어서 알려요.
+    example: Your oxygen is a little low, so we'll give you some.
+    exKo: 산소가 조금 낮아서 좀 드릴게요.
+  - kind: context
+    words:
+    - w-oxygen
+    - w-level
+    scenes:
+    - who: 차트 기록
+      icon: board
+      en: SpO2 91% on RA.
+      ok: true
+    - who: 의사에게
+      icon: monitor
+      en: Sats are 91 on room air.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Your SpO2 is 91 percent on RA.
+      ok: false
+      fix: Your oxygen level is 91 — a little lower than we'd like.
+    why: SpO2·RA(room air)는 의료진끼리의 약어예요. 환자에게는 oxygen level처럼 풀어서 말해요.
+- title: 비강 캐뉼라 산소 적용
+  sentences:
+  - en: The prongs go just inside your nose, gently.
+    ko: 갈래가 코 안쪽으로 살짝 들어가요.
+    chunks:
+    - The prongs go
+    - just inside
+    - your nose,
+    - gently
+    - .
+    words:
+    - w-prong
+    - w-inside
+    - w-nose
+    - w-gently
+    goal: 1
+  - en: I'm starting the oxygen at a low flow for now.
+    ko: 지금은 낮은 유량으로 산소를 시작할게요.
+    chunks:
+    - I'm starting
+    - the oxygen
+    - at a low flow
+    - for now
+    - .
+    words:
+    - w-start
+    - w-oxygen
+    - w-low
+    - w-flow
+    goal: 1
+  - en: Can you breathe through your nose okay?
+    ko: 코로 숨 쉬는 건 괜찮으세요?
+    chunks:
+    - Can you breathe
+    - through your nose
+    - okay
+    - '?'
+    words:
+    - w-breathe
+    - w-nose
+    - w-okay
+    goal: 1
+  - en: Let me know if it feels too dry or tickly.
+    ko: 너무 건조하거나 간질거리면 알려 주세요.
+    chunks:
+    - Let me know
+    - if it feels
+    - too dry
+    - or tickly
+    - .
+    words:
+    - w-feel
+    - w-dry
+    - w-tickly
+    goal: 2
+  - en: I'll adjust it if it's too tight.
+    ko: 너무 조이면 조절해 드릴게요.
+    chunks:
+    - I'll adjust it
+    - if it's
+    - too tight
+    - .
+    words:
+    - w-adjust
+    - w-tight
+    goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-gently
+    - w-prong
+    cue: Placing the cannula prongs just inside the patient's nostrils.
+    scale:
+    - gently
+    - firmly
+    - forcefully
+    answerAt: 0
+    why: 캐뉼라 갈래는 콧구멍 바로 안쪽에 살짝 걸치면 돼요. 깊이 밀어 넣을 필요가 없고, 귀 뒤로 넘긴 줄도 너무 조이지 않게 해요.
+    example: The prongs go just inside your nose, gently.
+    exKo: 갈래가 코 안쪽으로 살짝 들어가요.
+  - kind: context
+    words:
+    - w-feel
+    - w-dry
+    scenes:
+    - who: 환자에게
+      icon: me
+      en: Let me know if your nose feels too dry.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Pt reports nasal dryness on 2 L NC.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Please report any nasal mucosal dryness.
+      ok: false
+      fix: Tell me if the inside of your nose feels dry.
+    why: mucosal 같은 말은 차트에 쓰는 말이에요. 환자에게는 몸으로 느끼는 쉬운 말로 물어요.
+- title: 과호흡 증후군 진정 코칭
+  sentences:
+  - en: You're safe — let's slow your breathing down together.
+    ko: 안전해요 — 같이 천천히 숨을 늦춰봐요.
+    chunks:
+    - You're safe —
+    - let's slow
+    - your breathing down
+    - together
+    - .
+    words:
+    - w-safe
+    - w-slow
+    - w-breathe
+    - w-down
+    - w-together
+    goal: 1
+  - en: Breathe in for four, and out slowly for four with me.
+    ko: 넷을 세며 들이쉬고, 넷을 세며 천천히 내쉬어요, 저랑 같이.
+    chunks:
+    - Breathe in
+    - for four,
+    - and out slowly
+    - for four
+    - with me
+    - .
+    words:
+    - w-breathe
+    - w-out
+    - w-slow
+    goal: 1
+  - en: Let's breathe in together, nice and slow.
+    ko: 저랑 같이 천천히, 편안하게 숨 쉬어봐요.
+    chunks:
+    - Let's breathe in
+    - together,
+    - nice and slow
+    - .
+    words:
+    - w-breathe
+    - w-together
+    - w-slow
+    goal: 1
+  - en: The tingling will ease as your breathing settles.
+    ko: 저림은 숨이 안정되면서 나아질 거예요.
+    chunks:
+    - The tingling
+    - will ease
+    - as your breathing
+    - settles
+    - .
+    words:
+    - w-tingling
+    - w-ease
+    - w-breathe
+    - w-settle
+    goal: 2
+  - en: You're doing great — just keep breathing with me.
+    ko: 잘하고 계세요 — 계속 저랑 같이 숨 쉬어요.
+    chunks:
+    - You're doing great —
+    - just keep
+    - breathing
+    - with me
+    - .
+    words:
+    - w-great
+    - w-keep
+    - w-breathe
+    goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-safe
+    - w-tingling
+    cue: 'Patient: "My hands are tingling — I''m going to die, I can''t breathe!"'
+    scale:
+    - uneasy
+    - anxious
+    - panicked
+    answerAt: 2
+    why: '''죽을 것 같다''며 손이 저리다면 panicked 쪽이에요. 과호흡은 다른 원인을 배제하고 붙이는 진단이라, 코칭하면서도 SpO2·바이탈을 계속 봐요.'
+    example: She's panicked and breathing very fast.
+    exKo: 환자가 공황 상태로 아주 빠르게 숨 쉬고 있어요.
+  - kind: swap
+    words:
+    - w-safe
+    - w-slow
+    - w-together
+    who: 환자에게 · 과호흡 코칭
+    icon: me
+    before:
+    - ''
+    - Calm down
+    - ' — let''s slow your breathing down together.'
+    options:
+    - You're safe
+    - Calm down
+    - Stop panicking
+    answer: You're safe
+    notes:
+      You're safe: 안심부터 건넨다. 곁에서 같이 하겠다는 뒤 문장과 이어진다.
+      Calm down: 명령처럼 들려 공황 상태의 환자에게는 오히려 불안을 키우기 쉽다.
+      Stop panicking: 환자를 탓하는 말로 들린다.
+    why: 공황 상태의 사람에게 'calm down'은 역효과가 나기 쉬운 말로 꼽혀요. 안전하다고 알려 주고 같이 호흡하는 쪽이 효과적이에요.
+- title: 상기도 감염성 호흡곤란 문진
+  sentences:
+  - en: How high has your fever been?
+    ko: 열이 얼마나 높았나요?
+    chunks:
+    - How high
+    - has your fever
+    - been
+    - '?'
+    words:
+    - w-high
+    - w-fever
+    goal: 1
+  - en: Is the cough bringing anything up?
+    ko: 기침할 때 뭔가 나오나요?
+    chunks:
+    - Is the cough
+    - bringing
+    - anything up
+    - '?'
+    words:
+    - w-cough
+    - w-bring
+    - w-anything
+    goal: 1
+  - en: Have you had a fever at home?
+    ko: 집에서도 열이 있었나요?
+    chunks:
+    - Have you had
+    - a fever
+    - at home
+    - '?'
+    words:
+    - w-fever
+    goal: 1
+  - en: Does your throat hurt or feel swollen?
+    ko: 목이 아프거나 부은 느낌이 있나요?
+    chunks:
+    - Does your throat
+    - hurt or
+    - feel swollen
+    - '?'
+    words:
+    - w-throat
+    - w-hurt
+    - w-feel
+    - w-swollen
+    goal: 2
+  - en: Does the cough make it hard to breathe?
+    ko: 기침 때문에 숨쉬기가 힘든가요?
+    chunks:
+    - Does the cough
+    - make it
+    - hard to breathe
+    - '?'
+    words:
+    - w-cough
+    - w-hard
+    - w-breathe
+    goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-fever
+    - w-high
+    cue: 'Patient: "It was 100.4 when I checked at home."'
+    scale:
+    - low-grade fever
+    - fever
+    - high fever
+    answerAt: 1
+    why: 미국 병원은 100.4°F(38.0°C)부터 fever로 봐요 — 감염 선별의 기준선이라 '미열'로 낮춰 말하지 않아요. low-grade는 기준선 근처를 느슨하게 부르는 말이고, high fever는 대개 103°F(39.4°C) 안팎부터예요. 미국 환자는 화씨로 말하니 숫자를 그대로 적고 섭씨는 머릿속에서 바꿔요.
+    example: She's had a fever of 100.4 since yesterday.
+    exKo: 어제부터 100.4도(38.0℃) 열이 있어요.
+  - kind: context
+    words:
+    - w-cough
+    - w-bring
+    - w-anything
+    scenes:
+    - who: 환자에게
+      icon: me
+      en: Is the cough bringing anything up?
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Productive cough, yellow sputum.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Is your cough productive?
+      ok: false
+      fix: Are you coughing anything up?
+    why: productive cough는 가래가 나오는 기침을 뜻하는 의료 용어예요. 환자는 '생산적'이라는 일상 뜻으로 알아듣기 쉬워서 쉬운 말로 물어요.
+- title: 급성 폐부종 기좌호흡
+  sentences:
+  - en: Let's sit you upright to help you breathe.
+    ko: 숨쉬기 편하게 앉혀 드릴게요.
+    chunks:
+    - Let's sit you
+    - upright
+    - to help you
+    - breathe
+    - .
+    words:
+    - w-sit
+    - w-upright
+    - w-help
+    - w-breathe
+    goal: 2
+  - en: The pink, frothy cough worries me about fluid in your lungs.
+    ko: 분홍빛 거품 섞인 기침이 걱정돼요, 폐에 물이 찬 것 같아서요.
+    chunks:
+    - The pink, frothy cough
+    - worries me
+    - about fluid
+    - in your lungs
+    - .
+    words:
+    - w-pink
+    - w-frothy
+    - w-cough
+    - w-worry
+    - w-fluid
+    - w-lung
+    goal: 1
+  - en: I'm listening to your lungs and getting oxygen on you.
+    ko: 폐 소리를 듣고 산소도 넣어드리고 있어요.
+    chunks:
+    - I'm listening
+    - to your lungs
+    - and getting
+    - oxygen on you
+    - .
+    words:
+    - w-listen
+    - w-lung
+    - w-oxygen
+    goal: 2
+  - en: Try not to lie flat right now.
+    ko: 지금은 평평하게 눕지 않도록 해요.
+    chunks:
+    - Try not to
+    - lie flat
+    - right now
+    - .
+    words:
+    - w-lie
+    - w-flat
+    goal: 2
+  - en: Have you coughed up anything pink or frothy before?
+    ko: 전에도 분홍빛이나 거품 있는 기침을 하신 적 있나요?
+    chunks:
+    - Have you coughed up
+    - anything pink
+    - or frothy
+    - before
+    - '?'
+    words:
+    - w-cough
+    - w-anything
+    - w-pink
+    - w-frothy
+    goal: 1
+  nuance:
+  - kind: pair
+    words:
+    - w-pink
+    - w-frothy
+    - w-lie
+    - w-flat
+    - w-fluid
+    - w-lung
+    pairs:
+    - - pink
+      - frothy sputum
+    - - lie
+      - flat
+    - - fluid
+      - in the lungs
+    decoys:
+    - a pulse
+    why: 급성 폐부종의 전형적인 가래는 pink, frothy sputum이에요. 누우면 숨이 더 차서(기좌호흡) lie flat을 피하고, 폐에 찬 것은 fluid in the lungs라고 말해요.
+  - kind: swap
+    words:
+    - w-fluid
+    - w-lung
+    - w-worry
+    who: 환자에게 · 소견 설명
+    icon: me
+    before:
+    - 'I''m worried there may be '
+    - pulmonary edema
+    - ' — that''s why we''re sitting you up.'
+    options:
+    - fluid in your lungs
+    - pulmonary edema
+    - water drowning your lungs
+    answer: fluid in your lungs
+    notes:
+      fluid in your lungs: 쉬운 말로 무엇이 걱정인지 전한다.
+      pulmonary edema: 의료진끼리의 진단명. 환자에게는 낯설다.
+      water drowning your lungs: 사실보다 무섭게 들려 숨찬 환자를 더 불안하게 한다.
+    why: 진단명은 차트와 의사 보고에 쓰고, 환자에게는 fluid in your lungs처럼 풀어서 말해요.
+- title: 폐렴성 저산소증 사정
+  sentences:
+  - en: What color is the phlegm you're coughing up?
+    ko: 기침에서 나온 가래는 무슨 색이에요?
+    chunks:
+    - What color
+    - is the phlegm
+    - you're coughing up
+    - '?'
+    words:
+    - w-color
+    - w-phlegm
+    - w-cough
+    goal: 1
+  - en: Does it hurt to take a deep breath?
+    ko: 숨을 깊이 쉬면 아픈가요?
+    chunks:
+    - Does it hurt
+    - to take
+    - a deep breath
+    - '?'
+    words:
+    - w-hurt
+    - w-take
+    - w-deep
+    - w-breath
+    goal: 1
+  - en: Have you had a fever with this cough?
+    ko: 이 기침과 함께 열도 있었나요?
+    chunks:
+    - Have you had
+    - a fever
+    - with this cough
+    - '?'
+    words:
+    - w-fever
+    - w-cough
+    goal: 1
+  - en: Your oxygen is a bit low, so we'll give you some.
+    ko: 산소가 약간 낮아서 좀 드릴게요.
+    chunks:
+    - Your oxygen is
+    - a bit low,
+    - so we'll give
+    - you some
+    - .
+    words:
+    - w-oxygen
+    - w-bit
+    - w-low
+    - w-give
+    goal: 2
+  - en: We'll get your oxygen back up.
+    ko: 산소 수치를 다시 올려드릴게요.
+    chunks:
+    - We'll get
+    - your oxygen
+    - back up
+    - .
+    words:
+    - w-oxygen
+    - w-back
+    goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-take
+    - w-deep
+    - w-breath
+    - w-phlegm
+    - w-cough
+    - w-oxygen
+    - w-back
+    pairs:
+    - - take
+      - a deep breath
+    - - cough up
+      - phlegm
+    - - get your oxygen
+      - back up
+    decoys:
+    - a fever
+    why: 숨은 take a deep breath, 가래는 cough up phlegm, 떨어진 산소 수치를 되돌리는 건 get it back up이에요.
+  - kind: context
+    words:
+    - w-phlegm
+    - w-color
+    scenes:
+    - who: 환자에게
+      icon: me
+      en: What color is the phlegm you're coughing up?
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Productive cough with purulent green sputum.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Is your sputum purulent?
+      ok: false
+      fix: What color is it — clear, yellow, or green?
+    why: purulent·sputum은 차트에 쓰는 말이에요. 환자에게는 phlegm이나 mucus라고 하고, 색깔로 물어요.
+- title: 폐색전 의심 호흡곤란
+  sentences:
+  - en: Did the shortness of breath start suddenly?
+    ko: 호흡곤란이 갑자기 시작됐나요?
+    chunks:
+    - Did the shortness
+    - of breath
+    - start
+    - suddenly
+    - '?'
+    words:
+    - w-breath
+    - w-start
+    - w-suddenly
+    goal: 1
+  - en: Is one of your legs more swollen or painful?
+    ko: 한쪽 다리가 더 붓거나 아픈가요?
+    chunks:
+    - Is one
+    - of your legs
+    - more swollen
+    - or painful
+    - '?'
+    words:
+    - w-leg
+    - w-swollen
+    - w-painful
+    goal: 2
+  - en: Have you traveled far or been immobile recently?
+    ko: 최근에 멀리 다녀오셨거나 오래 움직이지 못하셨나요?
+    chunks:
+    - Have you traveled
+    - far or
+    - been immobile
+    - recently
+    - '?'
+    words:
+    - w-travel
+    - w-far
+    - w-immobile
+    - w-recently
+    goal: 1
+  - en: Does your chest hurt when you breathe in?
+    ko: 숨을 들이쉴 때 가슴이 아픈가요?
+    chunks:
+    - Does your chest hurt
+    - when you
+    - breathe in
+    - '?'
+    words:
+    - w-chest
+    - w-hurt
+    - w-breathe
+    goal: 2
+  - en: Point to where your leg feels swollen.
+    ko: 다리가 부은 곳을 가리켜 주세요.
+    chunks:
+    - Point to
+    - where your leg
+    - feels swollen
+    - .
+    words:
+    - w-point
+    - w-leg
+    - w-feel
+    - w-swollen
+    goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-suddenly
+    - w-start
+    cue: 'Patient: "I was fine, then I stood up and — boom — I couldn''t breathe."'
+    scale:
+    - gradually
+    - fairly quickly
+    - suddenly
+    answerAt: 2
+    why: 멀쩡하다가 한순간에 시작했다면 suddenly예요. 폐색전은 갑자기 시작하는 호흡곤란으로 오는 일이 흔해서 발병 속도를 꼭 물어요.
+    example: The shortness of breath started suddenly this morning.
+    exKo: 오늘 아침 갑자기 숨이 차기 시작했어요.
+  - kind: swap
+    words:
+    - w-swollen
+    - w-leg
+    - w-painful
+    who: 환자에게 · 다리 부종 묻기
+    icon: me
+    before:
+    - 'Is one of your legs more '
+    - edematous
+    - ' or painful?'
+    options:
+    - swollen
+    - edematous
+    - deformed
+    answer: swollen
+    notes:
+      swollen: 환자가 바로 알아듣는 말.
+      edematous: 차트에 쓰는 의료 용어. 환자에게는 어렵다.
+      deformed: 모양이 비틀어졌다는 뜻이라 묻는 내용이 달라진다.
+    why: 부종(edema)은 차트 말이에요. 환자에게는 swollen으로, 한쪽이 더 부었는지 물어요.
+- title: 비침습환기(BiPAP) 설명
+  sentences:
+  - en: This mask pushes air in to help you breathe easier.
+    ko: 이 마스크가 공기를 밀어넣어서 숨쉬기를 도와줘요.
+    chunks:
+    - This mask
+    - pushes air in
+    - to help you
+    - breathe easier
+    - .
+    words:
+    - w-mask
+    - w-push
+    - w-air
+    - w-help
+    - w-breathe
+    goal: 1
+  - en: I'll hold it gently first so you can get used to it.
+    ko: 먼저 살살 대드릴 테니 익숙해지시면 돼요.
+    chunks:
+    - I'll hold it
+    - gently first
+    - so you can
+    - get used to it
+    - .
+    words:
+    - w-hold
+    - w-gently
+    - w-first
+    - w-used
+    goal: 2
+  - en: Try to breathe with the machine — it works with you.
+    ko: 기계와 같이 숨 쉬어보세요 — 기계가 맞춰줘요.
+    chunks:
+    - Try to breathe
+    - with the machine —
+    - it works
+    - with you
+    - .
+    words:
+    - w-breathe
+    - w-machine
+    - w-work
+    goal: 2
+  - en: It will feel tight around your face at first.
+    ko: 처음엔 얼굴 주변이 꽉 조이는 느낌이 들 거예요.
+    chunks:
+    - It will feel
+    - tight around
+    - your face
+    - at first
+    - .
+    words:
+    - w-feel
+    - w-tight
+    - w-around
+    - w-face
+    - w-first
+    goal: 2
+  - en: This helps your lungs rest.
+    ko: 이게 폐를 좀 쉬게 해줄 거예요.
+    chunks:
+    - This helps
+    - your lungs
+    - rest
+    - .
+    words:
+    - w-help
+    - w-lung
+    - w-rest
+    goal: 1
+  nuance:
+  - kind: slider
+    words:
+    - w-tight
+    - w-face
+    cue: 'Patient: "It''s snug, but I can breathe okay with it."'
+    scale:
+    - snug
+    - tight
+    - painfully tight
+    answerAt: 0
+    why: 마스크는 새지 않을 만큼 꼭 맞아야 해서 snug이면 정상이에요. 아프다고 하면 끈을 조절하고, 콧등처럼 눌리는 피부에 압박 손상이 생기지 않았는지 봐요.
+    example: The mask should feel snug, not painful.
+    exKo: 마스크는 꼭 맞는 느낌이어야지, 아프면 안 돼요.
+  - kind: context
+    words:
+    - w-mask
+    - w-push
+    - w-air
+    scenes:
+    - who: 환자에게
+      icon: me
+      en: This mask pushes air in to help you breathe easier.
+      ok: true
+    - who: 의사에게
+      icon: monitor
+      en: BiPAP is on at 10 over 5.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Your IPAP is 10 and your EPAP is 5.
+      ok: false
+      fix: The mask gives you a push of air when you breathe in, and a little when you breathe out.
+    why: IPAP·EPAP 같은 설정 수치는 의료진끼리의 말이에요. 환자에게는 공기가 숨을 도와준다는 느낌으로 설명해요.
+- title: 무증상 저산소(행복한 저산소) 인지
+  sentences:
+  - en: Your oxygen is lower than we'd like, even though you feel okay.
+    ko: 느낌은 괜찮으셔도 산소 수치는 원하는 만큼 안 나와요.
+    chunks:
+    - Your oxygen is lower
+    - than we'd like,
+    - even though
+    - you feel okay
+    - .
+    words:
+    - w-oxygen
+    - w-feel
+    - w-okay
+    goal: 1
+  - en: Let me recheck it and watch you take a few breaths.
+    ko: 다시 확인하면서 숨 몇 번 쉬시는 걸 볼게요.
+    chunks:
+    - Let me recheck it
+    - and watch
+    - you take
+    - a few breaths
+    - .
+    words:
+    - w-recheck
+    - w-watch
+    - w-take
+    - w-few
+    - w-breath
+    goal: 1
+  - en: You don't feel short of breath, but your numbers are low.
+    ko: 숨찬 느낌은 없으셔도 수치는 낮아요.
+    chunks:
+    - You don't feel
+    - short of breath,
+    - but your numbers
+    - are low
+    - .
+    words:
+    - w-feel
+    - w-breath
+    - w-low
+    goal: 1
+  - en: We'll give oxygen and keep a close eye on you.
+    ko: 산소를 드리고 계속 가까이서 지켜볼게요.
+    chunks:
+    - We'll give oxygen
+    - and keep
+    - a close eye
+    - on you
+    - .
+    words:
+    - w-give
+    - w-oxygen
+    - w-keep
+    - w-close
+    - w-eye
+    goal: 2
+  - en: This clip will show your oxygen level again.
+    ko: 이 집게로 산소 수치를 다시 보여드릴게요.
+    chunks:
+    - This clip
+    - will show
+    - your oxygen level
+    - again
+    - .
+    words:
+    - w-clip
+    - w-show
+    - w-oxygen
+    - w-level
+    - w-again
+    goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-close
+    - w-eye
+    - w-watch
+    cue: SpO2 is low, but the patient says she feels fine.
+    scale:
+    - check on you now and then
+    - keep an eye on you
+    - keep a close eye on you
+    answerAt: 2
+    why: 증상이 없어도 산소가 낮으면 갑자기 나빠질 수 있어서 가장 촘촘한 keep a close eye on you가 맞아요. 느낌이 괜찮다는 말만 믿고 간격을 늘리지 않아요.
+    example: We'll give oxygen and keep a close eye on you.
+    exKo: 산소를 드리고 계속 가까이서 지켜볼게요.
+  - kind: reel
+    words:
+    - w-low
+    - w-oxygen
+    word: low
+    feels:
+    - 쉬운 말
+    - 숫자와 함께 씀
+    - 환자에게도 씀
+    - 덜 무섭게 들림
+    why: low는 의료진에게도 환자에게도 쓰는 쉬운 말이라, 보고할 때는 숫자(86% RA)를 붙여야 정확해요. 환자에게는 'lower than we'd like'처럼 걱정되는 정도를 담되 겁주지 않고, 숨이 편해도 산소가 낮을 수 있다는 점을 함께 알려요.
+    scenes:
+    - who: 간호사 → 의사
+      en: Her sats are low — 86 on room air, but she's talking in full sentences.
+      ko: 포화도가 낮아요 — 실내공기에서 86인데 문장으로 말은 해요.
+      tone: 보고
+    - who: 차트 기록
+      en: Low SpO2 (86% RA); no respiratory distress.
+      ko: SpO2 저하(실내공기 86%), 호흡곤란 징후 없음.
+      tone: 건조
+    - who: 교대 인계
+      en: Watch her sats — they've been running low all shift.
+      ko: 포화도 잘 봐 주세요 — 근무 내내 낮게 나왔어요.
+      tone: 경고
+    - who: 환자에게는…
+      en: Your oxygen is lower than we'd like, even though you feel okay.
+      ko: 느낌은 괜찮으셔도 산소 수치는 원하는 만큼 안 나와요.
+      tone: 완곡
+      swap: true
+- title: 흉수·기흉 감별 문진
+  sentences:
+  - en: I'm listening to both sides of your chest to compare.
+    ko: 양쪽 가슴 소리를 비교하려고 듣고 있어요.
+    chunks:
+    - I'm listening
+    - to both sides
+    - of your chest
+    - to compare
+    - .
+    words:
+    - w-listen
+    - w-side
+    - w-chest
+    - w-compare
+    goal: 1
+  - en: Did the tightness come on suddenly or gradually?
+    ko: 조이는 느낌이 갑자기 왔나요, 아니면 점차 왔나요?
+    chunks:
+    - Did the tightness
+    - come on
+    - suddenly or gradually
+    - '?'
+    words:
+    - w-tightness
+    - w-suddenly
+    - w-gradually
+    goal: 2
+  - en: Point to exactly where it feels tight.
+    ko: 조이는 곳을 정확히 가리켜 주세요.
+    chunks:
+    - Point to
+    - exactly where
+    - it feels tight
+    - .
+    words:
+    - w-point
+    - w-exactly
+    - w-feel
+    - w-tight
+    goal: 2
+  - en: Can you take a deep breath for me?
+    ko: 숨을 깊게 한 번 쉬어봐 주시겠어요?
+    chunks:
+    - Can you take
+    - a deep breath
+    - for me
+    - '?'
+    words:
+    - w-take
+    - w-deep
+    - w-breath
+    goal: 1
+  - en: Does it hurt more on one side?
+    ko: 한쪽이 더 아픈가요?
+    chunks:
+    - Does it hurt
+    - more on
+    - one side
+    - '?'
+    words:
+    - w-hurt
+    - w-side
+    goal: 1
+  nuance:
+  - kind: pair
+    words:
+    - w-breath
+    - w-suddenly
+    - w-take
+    - w-deep
+    pairs:
+    - - breath
+      - sounds
+    - - come on
+      - suddenly
+    - - take
+      - a deep breath
+    decoys:
+    - gradual
+    why: 청진 소견은 breath sounds(호흡음), 증상이 시작된 양상은 come on suddenly, 숨은 take a deep breath로 짝지어요. gradual은 형용사라 come on 뒤에는 부사 gradually가 와요.
+  - kind: context
+    words:
+    - w-listen
+    - w-side
+    - w-chest
+    scenes:
+    - who: 의사에게
+      icon: monitor
+      en: Decreased breath sounds on the right side.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Diminished breath sounds, R lower lobe.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: You have diminished breath sounds on the right.
+      ok: false
+      fix: It sounds a bit quieter on your right side, so we're going to check why.
+    why: diminished breath sounds는 청진 소견을 의료진끼리 전하는 말이에요. 환자에게는 한쪽 소리가 작게 들린다고 쉽게 말하고, 다음에 무엇을 할지 알려요.
+- title: 언어장벽 호흡곤란 핵심
+  sentences:
+  - en: Chest pain? Yes or no?
+    ko: 가슴 통증? 예, 아니오?
+    chunks:
+    - Chest pain
+    - '?'
+    - 'Yes'
+    - or no
+    - '?'
+    words:
+    - w-chest
+    - w-pain
+    goal: 1
+  - en: Choking feeling? Point to your throat, yes or no?
+    ko: 질식할 것 같은 느낌? 목을 가리켜 보세요, 예, 아니오?
+    chunks:
+    - Choking feeling
+    - '?'
+    - Point to
+    - your throat,
+    - yes or no
+    - '?'
+    words:
+    - w-choking
+    - w-feel
+    - w-point
+    - w-throat
+    goal: 1
+  - en: Allergy to medicine? An interpreter is on the way.
+    ko: 약물 알레르기? 통역사가 오고 있어요.
+    chunks:
+    - Allergy to medicine
+    - '?'
+    - An interpreter
+    - is on
+    - the way
+    - .
+    words:
+    - w-allergy
+    - w-medicine
+    - w-interpreter
+    - w-way
+    goal: 2
+  - en: Can you nod yes or shake your head no?
+    ko: 예면 고개를 끄덕이고, 아니면 좌우로 흔들어 주세요.
+    chunks:
+    - Can you nod
+    - yes or
+    - shake your head
+    - 'no'
+    - '?'
+    words:
+    - w-nod
+    - w-shake
+    goal: 1
+  - en: We'll keep you safe until help arrives.
+    ko: 도움이 올 때까지 안전하게 지켜드릴게요.
+    chunks:
+    - We'll keep you
+    - safe
+    - until help arrives
+    - .
+    words:
+    - w-keep
+    - w-safe
+    - w-help
+    - w-arrive
+    goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-chest
+    - w-pain
+    - w-allergy
+    - w-medicine
+    - w-interpreter
+    - w-way
+    pairs:
+    - - chest
+      - pain
+    - - allergy
+      - to medicine
+    - - interpreter
+      - on the way
+    decoys:
+    - of breath
+    why: 통역사가 오기 전에는 핵심을 짧은 명사구로 묻고(chest pain? allergy to medicine?), 통역사가 오고 있다는 것(on the way)을 알려요.
+  - kind: swap
+    words:
+    - w-chest
+    - w-pain
+    who: 영어가 어려운 환자에게 · 폐쇄형 질문
+    icon: me
+    before:
+    - ''
+    - Are you experiencing any chest discomfort
+    - '? Yes or no?'
+    options:
+    - Chest pain
+    - Are you experiencing any chest discomfort
+    - Tell me about your chest
+    answer: Chest pain
+    notes:
+      Chest pain: 짧고 쉬워서 고개로도 답할 수 있다.
+      Are you experiencing any chest discomfort: 길고 어려운 낱말이 섞여 영어가 서툰 환자는 알아듣기 힘들다.
+      Tell me about your chest: 설명을 요구하는 열린 질문이라 예/아니오와 맞지 않는다.
+    why: 통역 전에는 짧고 예/아니오로 답할 수 있는 질문을 한 번에 하나씩 해요. 자세한 병력은 자격 있는 의료 통역사를 통해 받아요.
+- title: 신경근질환 환기저하
+  sentences:
+  - en: Has your cough gotten weaker over the past few days?
+    ko: 지난 며칠 사이 기침이 더 약해졌나요?
+    chunks:
+    - Has your cough
+    - gotten weaker
+    - over the past
+    - few days
+    - '?'
+    words:
+    - w-cough
+    - w-past
+    - w-few
+    goal: 1
+  - en: Are you having trouble swallowing or clearing your throat?
+    ko: 삼키기 힘들거나 목에 낀 가래를 뱉어 내기 힘든가요?
+    chunks:
+    - Are you having
+    - trouble swallowing
+    - or clearing
+    - your throat
+    - '?'
+    words:
+    - w-trouble
+    - w-swallow
+    - w-clear
+    - w-throat
+    goal: 1
+  - en: Does food or water ever go down the wrong way?
+    ko: 음식이나 물을 먹다가 사레가 들리는 일이 있나요?
+    chunks:
+    - Does food
+    - or water
+    - ever go down
+    - the wrong way
+    - '?'
+    words:
+    - w-food
+    - w-water
+    - w-wrong
+    goal: 1
+  - en: We need to watch your breathing muscles closely.
+    ko: 호흡근을 가까이서 지켜봐야 해요.
+    chunks:
+    - We need to
+    - watch your breathing
+    - muscles closely
+    - .
+    words:
+    - w-need
+    - w-watch
+    - w-breathe
+    - w-muscle
+    goal: 2
+  - en: Let's check your strength again today.
+    ko: 오늘 힘도 다시 확인해볼게요.
+    chunks:
+    - Let's check
+    - your strength
+    - again today
+    - .
+    words:
+    - w-check
+    - w-strength
+    - w-again
+    goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-water
+    - w-wrong
+    cue: 'Patient: "Pretty much every time I drink water, it goes down the wrong way."'
+    scale:
+    - rarely
+    - sometimes
+    - often
+    - almost always
+    answerAt: 3
+    why: 물 마실 때마다 사레가 든다면 almost always예요. 신경근질환에서 삼킴이 자주 어긋나면 흡인 위험이 커서, 얼마나 자주인지 꼭 물어요.
+    example: Water almost always goes down the wrong way now.
+    exKo: 요즘은 물이 거의 매번 잘못 넘어가요.
+  - kind: context
+    words:
+    - w-muscle
+    - w-watch
+    - w-breathe
+    scenes:
+    - who: 의사에게
+      icon: monitor
+      en: Her vital capacity keeps dropping — her breathing muscles are tiring.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Declining FVC; progressive respiratory muscle weakness.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Your forced vital capacity is declining.
+      ok: false
+      fix: The muscles that help you breathe are getting weaker, so we're watching them closely.
+    why: 폐활량(FVC)이나 흡기력(NIF) 같은 수치는 의료진끼리의 말이에요. 환자에게는 숨 쉬는 근육이 약해지고 있어 가까이 지켜본다고 말해요.
+- title: 산소요법 목표치 소통
+  sentences:
+  - en: For you, too much oxygen can actually be harmful.
+    ko: 환자분께는 산소가 너무 많아도 오히려 해로울 수 있어요.
+    chunks:
+    - For you,
+    - too much oxygen
+    - can actually be
+    - harmful
+    - .
+    words:
+    - w-oxygen
+    - w-actually
+    - w-harmful
+    goal: 2
+  - en: We aim for a target range, not the highest number.
+    ko: 가장 높은 수치가 아니라 목표 범위를 맞추는 거예요.
+    chunks:
+    - We aim for
+    - a target range,
+    - not the highest
+    - number
+    - .
+    words:
+    - w-aim
+    - w-target
+    - w-range
+    goal: 1
+  - en: I'll adjust it carefully to keep you in the safe zone.
+    ko: 안전한 범위 안에 있도록 조심스럽게 조절할게요.
+    chunks:
+    - I'll adjust it
+    - carefully
+    - to keep you
+    - in the safe zone
+    - .
+    words:
+    - w-adjust
+    - w-carefully
+    - w-keep
+    - w-safe
+    - w-zone
+    goal: 1
+  - en: Turning it all the way up isn't safe for you.
+    ko: 산소를 끝까지 올리는 건 환자분께 안전하지 않아요.
+    chunks:
+    - Turning it
+    - all the way up
+    - isn't safe
+    - for you
+    - .
+    words:
+    - w-turning
+    - w-way
+    - w-safe
+    goal: 2
+  - en: I'll check your levels and adjust as needed.
+    ko: 수치를 확인하고 필요하면 조절할게요.
+    chunks:
+    - I'll check
+    - your levels
+    - and adjust as needed
+    - .
+    words:
+    - w-check
+    - w-level
+    - w-adjust
+    - w-need
+    goal: 1
+  nuance:
+  - kind: pair
+    words:
+    - w-aim
+    - w-target
+    - w-range
+    - w-turning
+    - w-way
+    - w-actually
+    - w-harmful
+    pairs:
+    - - aim for
+      - a target range
+    - - turn it
+      - all the way up
+    - - can actually
+      - be harmful
+    decoys:
+    - on the chart
+    why: 목표를 말할 때는 aim for a target range, 끝까지 올리는 것은 turn it all the way up, 오히려 해롭다는 건 can actually be harmful이에요.
+  - kind: swap
+    words:
+    - w-oxygen
+    - w-harmful
+    who: COPD 환자에게 · 과산소 설명
+    icon: me
+    before:
+    - 'For you, too much oxygen can '
+    - cause hypercapnic respiratory failure
+    - .
+    options:
+    - let carbon dioxide build up in your blood
+    - cause hypercapnic respiratory failure
+    - kill you
+    answer: let carbon dioxide build up in your blood
+    notes:
+      let carbon dioxide build up in your blood: 무엇이 왜 위험한지 쉬운 말로 전한다.
+      cause hypercapnic respiratory failure: 의료진끼리의 말. 환자는 알아듣기 어렵다.
+      kill you: 사실보다 무섭게 들려 산소를 아예 거부하게 만들 수 있다.
+    why: 만성 폐쇄성 폐질환 환자 일부는 산소를 너무 많이 받으면 이산화탄소가 쌓여요. 그래서 산소포화도 88–92%를 목표로 하고, 환자에게는 이유를 쉬운 말로 설명해요.
+- title: 불안 동반 호흡곤란 감별
+  sentences:
+  - en: Your oxygen and lung exam look reassuring.
+    ko: 산소 수치도 폐 진찰 소견도 안심할 만해요.
+    chunks:
+    - Your oxygen
+    - and lung exam
+    - look reassuring
+    - .
+    words:
+    - w-oxygen
+    - w-lung
+    - w-exam
+    - w-look
+    - w-reassuring
+    goal: 1
+  - en: Your heart and lungs sound normal to me.
+    ko: 심장과 폐 소리는 정상으로 들려요.
+    chunks:
+    - Your heart
+    - and lungs
+    - sound normal
+    - to me
+    - .
+    words:
+    - w-heart
+    - w-lung
+    - w-sound
+    - w-normal
+    goal: 1
+  - en: Does this happen when you feel stressed or anxious?
+    ko: 스트레스받거나 불안할 때 이런 증상이 나타나나요?
+    chunks:
+    - Does this happen
+    - when you feel
+    - stressed or
+    - anxious
+    - '?'
+    words:
+    - w-happen
+    - w-feel
+    - w-stressed
+    - w-anxious
+    goal: 2
+  - en: Let's slow your breathing and see if it eases.
+    ko: 숨을 천천히 쉬면서 나아지는지 봐요.
+    chunks:
+    - Let's slow
+    - your breathing
+    - and see
+    - if it eases
+    - .
+    words:
+    - w-slow
+    - w-breathe
+    - w-ease
+    goal: 2
+  - en: It's okay to feel anxious — you're safe here.
+    ko: 불안해도 괜찮아요 — 여긴 안전해요.
+    chunks:
+    - It's okay
+    - to feel anxious —
+    - you're safe
+    - here
+    - .
+    words:
+    - w-okay
+    - w-feel
+    - w-anxious
+    - w-safe
+    goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-anxious
+    - w-feel
+    cue: 'Patient: "I''m a little on edge, that''s all."'
+    scale:
+    - nervous
+    - anxious
+    - panicky
+    answerAt: 0
+    why: '''조금 신경이 곤두선 정도''면 nervous 쪽이에요. 불안을 인정해 주되, 불안 때문이라고 말하는 건 기질적 원인을 확인해 배제한 다음이에요.'
+    example: She's a little nervous, but her breathing is settling.
+    exKo: 조금 긴장했지만 호흡은 안정되고 있어요.
+  - kind: context
+    words:
+    - w-reassuring
+    - w-exam
+    - w-lung
+    scenes:
+    - who: 차트 기록
+      icon: board
+      en: No acute cardiopulmonary process identified.
+      ok: true
+    - who: 의사에게
+      icon: monitor
+      en: Lungs clear, sats 99 on room air — exam is reassuring.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Your workup is negative for organic pathology.
+      ok: false
+      fix: Your oxygen and lung exam look reassuring.
+    why: organic pathology 같은 말은 의료진끼리의 표현이에요. 환자에게는 검사 결과가 안심할 만하다고 쉬운 말로 전해요.
+- title: 상기도 폐쇄 급성 대응
+  sentences:
+  - en: That high-pitched sound worries me about your airway.
+    ko: 그 높은 숨소리 때문에 기도가 걱정돼요.
+    chunks:
+    - That high-pitched sound
+    - worries me
+    - about your airway
+    - .
+    words:
+    - w-high
+    - w-sound
+    - w-worry
+    - w-airway
+    goal: 1
+  - en: Are you able to swallow right now?
+    ko: 지금 침을 삼킬 수 있으세요?
+    chunks:
+    - Are you able
+    - to swallow
+    - right now
+    - '?'
+    words:
+    - w-swallow
+    goal: 1
+  - en: I'm calling for airway help right now — stay calm.
+    ko: 기도 도움을 지금 부를게요 — 침착하게 계세요.
+    chunks:
+    - I'm calling
+    - for airway help
+    - right now —
+    - stay calm
+    - .
+    words:
+    - w-calling
+    - w-airway
+    - w-help
+    - w-stay
+    - w-calm
+    goal: 2
+  - en: We're keeping you upright and getting oxygen ready.
+    ko: 곧게 앉혀드리고 산소도 준비하고 있어요.
+    chunks:
+    - We're keeping you
+    - upright
+    - and getting
+    - oxygen ready
+    - .
+    words:
+    - w-keep
+    - w-upright
+    - w-oxygen
+    - w-ready
+    goal: 2
+  - en: Try to stay still and let us help you.
+    ko: 가만히 계시고 저희가 돕게 해주세요.
+    chunks:
+    - Try to
+    - stay still
+    - and let us
+    - help you
+    - .
+    words:
+    - w-stay
+    - w-still
+    - w-let
+    - w-help
+    goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-worry
+    - w-airway
+    cue: Stridor at rest, drooling, can't swallow his own saliva.
+    scale:
+    - concerning
+    - worrying
+    - critical
+    answerAt: 2
+    why: 쉬고 있는데도 협착음(stridor)이 들리고 침을 삼키지 못해 흘리면 기도가 곧 막힐 수 있는 징후라 critical이에요. 기다리지 않고 바로 기도 전문 인력을 불러요.
+    example: Stridor at rest and drooling — this is a critical airway.
+    exKo: 안정 시 협착음에 침까지 흘려요 — 위급한 기도예요.
+  - kind: swap
+    words:
+    - w-keep
+    - w-upright
+    - w-oxygen
+    - w-ready
+    who: 환자에게 · 자세와 준비
+    icon: me
+    before:
+    - 'We''re keeping you '
+    - lying down
+    - ' and getting oxygen ready.'
+    options:
+    - upright
+    - lying down
+    - sedated
+    answer: upright
+    notes:
+      upright: 앉은 자세가 기도를 가장 잘 열어 두고, 환자가 스스로 편한 자세를 유지하게 한다.
+      lying down: 눕히면 부은 조직이 기도를 더 막을 수 있다.
+      sedated: 진정은 호흡 노력을 떨어뜨려 부분 폐쇄를 완전 폐쇄로 바꿀 수 있다.
+    why: 상기도 폐쇄 환자는 편한 자세(대개 앉은 자세)를 그대로 두고, 눕히거나 진정시키지 않은 채 기도 전문 인력을 불러요.
+- title: 기관삽관 준비·RSI 보조
+  sentences:
+  - en: Suction is on, blade and tube are ready.
+    ko: 흡인 준비됐고, 후두경 날과 튜브도 준비됐습니다.
+    chunks:
+    - Suction is on,
+    - blade and tube
+    - are ready
+    - .
+    words:
+    - w-suction
+    - w-blade
+    - w-tube
+    - w-ready
+    goal: 1
+  - en: Induction and paralytic drawn up and labeled.
+    ko: 유도제와 근이완제 뽑아서 라벨 붙였습니다.
+    chunks:
+    - Induction and paralytic
+    - drawn up
+    - and labeled
+    - .
+    words:
+    - w-induction
+    - w-paralytic
+    - w-drawn
+    - w-labeled
+    goal: 1
+  - en: Airway cart is at the bedside.
+    ko: 기도 카트는 침상 옆에 있습니다.
+    chunks:
+    - Airway cart
+    - is at
+    - the bedside
+    - .
+    words:
+    - w-airway
+    - w-cart
+    - w-bedside
+    goal: 1
+  - en: Sats are 98, we're good to go — go ahead.
+    ko: 산소포화도 98, 진행해도 좋습니다 — 시작하세요.
+    chunks:
+    - Sats are 98,
+    - we're good
+    - to go —
+    - go ahead
+    - .
+    words:
+    - w-sats
+    goal: 2
+  - en: I'll call it out step by step.
+    ko: 단계별로 콜아웃하겠습니다.
+    chunks:
+    - I'll call
+    - it out
+    - step by step
+    - .
+    words:
+    - w-calling
+    - w-step
+    goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-drawn
+    - w-labeled
+    - w-suction
+    pairs:
+    - - drawn up
+      - and labeled
+    - - suction
+      - is on
+    - - good
+      - to go
+    decoys:
+    - by step
+    why: RSI 콜아웃은 짧게 해요. 약은 drawn up and labeled, 흡인은 suction is on, 모두 준비됐으면 good to go예요.
+  - kind: context
+    words:
+    - w-sats
+    - w-ready
+    scenes:
+    - who: 팀 콜아웃
+      icon: speaker
+      en: Sats 98, suction on, meds labeled — ready.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Preoxygenated to SpO2 98% prior to induction.
+      ok: true
+    - who: 팀 콜아웃
+      icon: speaker
+      en: I would like to inform everyone that the oxygen saturation is currently ninety-eight percent.
+      ok: false
+      fix: Sats are 98 — good to go.
+    why: 삽관 순간의 콜아웃은 짧고 크게, 팀이 쓰는 줄임말(sats)로 해요. 긴 문장은 중요한 정보를 늦춰요.
+- title: I형 호흡부전 급속 악화
+  sentences:
+  - en: He's not responding to oxygen — sats keep falling.
+    ko: 산소에 반응이 없습니다 — 수치가 계속 떨어지고 있습니다.
+    chunks:
+    - He's not responding
+    - to oxygen —
+    - sats keep
+    - falling
+    - .
+    words:
+    - w-responding
+    - w-oxygen
+    - w-sats
+    - w-keep
+    - w-falling
+    goal: 1
+  - en: His oxygen level dropped fast just now.
+    ko: 산소 수치가 방금 급격히 떨어졌습니다.
+    chunks:
+    - His oxygen level
+    - dropped fast
+    - just now
+    - .
+    words:
+    - w-oxygen
+    - w-level
+    - w-dropped
+    - w-fast
+    goal: 1
+  - en: We need to move toward intubation now.
+    ko: 지금 삽관 쪽으로 가야 합니다.
+    chunks:
+    - We need to
+    - move toward
+    - intubation now
+    - .
+    words:
+    - w-need
+    - w-move
+    - w-intubation
+    goal: 2
+  - en: I'm calling the team and preparing the airway.
+    ko: 팀을 부르고 기도를 준비하고 있습니다.
+    chunks:
+    - I'm calling
+    - the team
+    - and preparing
+    - the airway
+    - .
+    words:
+    - w-calling
+    - w-team
+    - w-preparing
+    - w-airway
+    goal: 2
+  - en: Let's get anesthesia on the line.
+    ko: 마취과에 바로 연락하겠습니다.
+    chunks:
+    - Let's get
+    - anesthesia
+    - on the line
+    - .
+    words:
+    - w-anesthesia
+    - w-line
+    goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-falling
+    - w-dropped
+    - w-sats
+    cue: SpO2 goes from 92 to 74 in under a minute on high-flow oxygen.
+    scale:
+    - drifting down
+    - dropping
+    - crashing
+    answerAt: 2
+    why: 1분도 안 돼 70대로 곤두박질치면 crashing이라고 해요. drifting down은 천천히 조금씩 내려갈 때예요. 응급실에서 crashing은 환자 상태가 급격히 무너지고 있다는 말로도 써요.
+    example: She's crashing — sats are in the seventies.
+    exKo: 환자 급격히 나빠지고 있어요 — 포화도가 70대예요.
+  - kind: swap
+    words:
+    - w-need
+    - w-move
+    - w-intubation
+    who: 의사에게 · 우려 말하기
+    icon: monitor
+    before:
+    - ''
+    - Sorry to bother you, but maybe
+    - ' we need to move toward intubation now.'
+    options:
+    - I'm concerned —
+    - Sorry to bother you, but maybe
+    - Whatever you think, but
+    answer: I'm concerned —
+    notes:
+      I'm concerned —: 걱정을 분명히 먼저 말한다. 급한 상황임이 바로 전해진다.
+      Sorry to bother you, but maybe: 사과와 얼버무림 때문에 급하다는 뜻이 흐려진다.
+      Whatever you think, but: 판단을 떠넘기는 말이라 우려가 묻힌다.
+    why: 급변 상황에서는 TeamSTEPPS의 CUS(I'm Concerned · I'm Uncomfortable · This is a Safety issue)처럼 걱정을 돌려 말하지 않고 분명히 말해요.
+- title: 후두부종 아나필락시스 기도
+  sentences:
+  - en: Give IM epinephrine now — her airway is closing.
+    ko: 지금 근육주사로 에피네프린 주세요 — 기도가 막히고 있습니다.
+    chunks:
+    - Give IM epinephrine
+    - now —
+    - her airway
+    - is closing
+    - .
+    words:
+    - w-give
+    - w-epinephrine
+    - w-airway
+    goal: 1
+  - en: Her lips are swelling fast.
+    ko: 입술이 빠르게 부어오르고 있습니다.
+    chunks:
+    - Her lips
+    - are swelling
+    - fast
+    - .
+    words:
+    - w-lips
+    - w-swelling
+    - w-fast
+    goal: 1
+  - en: Call for the difficult airway cart and ENT.
+    ko: 어려운 기도 카트와 이비인후과 불러주세요.
+    chunks:
+    - Call for
+    - the difficult airway cart
+    - and ENT
+    - .
+    words:
+    - w-calling
+    - w-difficult
+    - w-airway
+    - w-cart
+    - w-ent
+    goal: 2
+  - en: Have a surgical airway kit open at the bedside.
+    ko: 외과적 기도 세트를 침상에 열어 두세요.
+    chunks:
+    - Have a surgical
+    - airway kit
+    - open at
+    - the bedside
+    - .
+    words:
+    - w-surgical
+    - w-airway
+    - w-kit
+    - w-open
+    - w-bedside
+    goal: 2
+  - en: Get epinephrine ready to give again if needed.
+    ko: 필요하면 다시 줄 수 있게 에피네프린 준비해 두세요.
+    chunks:
+    - Get epinephrine ready
+    - to give again
+    - if needed
+    - .
+    words:
+    - w-epinephrine
+    - w-ready
+    - w-give
+    - w-again
+    - w-need
+    goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-epinephrine
+    - w-difficult
+    - w-airway
+    - w-cart
+    - w-lips
+    - w-swelling
+    pairs:
+    - - IM
+      - epinephrine
+    - - difficult airway
+      - cart
+    - - lips
+      - swelling
+    decoys:
+    - on the line
+    why: 아나필락시스의 1차 약은 IM epinephrine(허벅지 바깥쪽 근육)이에요. 삽관이 어려울 것 같으면 difficult airway cart를 불러요. 입술이 붓는 것은 lips swelling처럼 보고해요.
+  - kind: context
+    words:
+    - w-epinephrine
+    - w-give
+    scenes:
+    - who: 팀에게
+      icon: speaker
+      en: Give IM epi now — her airway is closing.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Epinephrine IM given, R lateral thigh.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Administering IM epi for angioedema.
+      ok: false
+      fix: This is a shot in your thigh to bring the swelling down.
+    why: IM·epi·angioedema는 의료진끼리의 줄임말과 진단명이에요. 환자에게는 무엇을 왜 하는지 쉬운 말로 알려요.
+- title: 삽관 후 갑작스런 악화(DOPE)
+  sentences:
+  - en: Run through DOPE — displacement, obstruction, pneumothorax, equipment.
+    ko: DOPE로 점검하겠습니다 — 위치 이탈, 폐쇄, 기흉, 장비.
+    chunks:
+    - Run through DOPE —
+    - displacement, obstruction,
+    - pneumothorax, equipment
+    - .
+    words:
+    - w-run
+    - w-dope
+    - w-displacement
+    - w-obstruction
+    - w-pneumothorax
+    - w-equipment
+    goal: 1
+  - en: Displacement first — is the tube still in place?
+    ko: 위치부터요 — 튜브가 제자리에 그대로 있나요?
+    chunks:
+    - Displacement first —
+    - is the tube
+    - still
+    - in place
+    - '?'
+    words:
+    - w-displacement
+    - w-tube
+    - w-place
+    goal: 1
+  - en: Check the tube position and suction for a plug.
+    ko: 튜브 위치를 확인하고 막힌 곳이 있는지 흡인해보세요.
+    chunks:
+    - Check the tube
+    - position
+    - and suction
+    - for a plug
+    - .
+    words:
+    - w-check
+    - w-tube
+    - w-position
+    - w-suction
+    - w-plug
+    goal: 2
+  - en: Listen for equal breath sounds and check the ventilator.
+    ko: 양쪽 호흡음이 같은지 듣고 인공호흡기도 확인해주세요.
+    chunks:
+    - Listen for
+    - equal breath sounds
+    - and check
+    - the ventilator
+    - .
+    words:
+    - w-listen
+    - w-equal
+    - w-breath
+    - w-sound
+    - w-check
+    - w-ventilator
+    goal: 2
+  - en: Sats are climbing again.
+    ko: 산소포화도가 다시 올라가고 있습니다.
+    chunks:
+    - Sats are climbing
+    - again
+    - .
+    words:
+    - w-sats
+    - w-climbing
+    - w-again
+    goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-displacement
+    - w-obstruction
+    - w-pneumothorax
+    - w-equipment
+    pairs:
+    - - D
+      - displacement
+    - - O
+      - obstruction
+    - - P
+      - pneumothorax
+    - - E
+      - equipment
+    decoys:
+    - hypoxia
+    why: DOPE는 삽관 환자가 갑자기 나빠질 때 점검하는 순서예요 — Displacement(튜브 이탈), Obstruction(막힘), Pneumothorax(기흉), Equipment(장비 고장).
+  - kind: swap
+    words:
+    - w-check
+    - w-tube
+    - w-position
+    who: 팀에게 · 급변 콜아웃
+    icon: speaker
+    before:
+    - ''
+    - Maybe someone could look at
+    - ' the tube position.'
+    options:
+    - Check
+    - Maybe someone could look at
+    - I wonder about
+    answer: Check
+    notes:
+      Check: 짧은 명령형이라 바로 행동으로 옮겨진다. 이름을 불러 맡기면 더 좋다.
+      Maybe someone could look at: 누가 할지 정해지지 않아 아무도 안 할 수 있다.
+      I wonder about: 혼잣말처럼 들려 지시로 받아들여지지 않는다.
+    why: 급변 때는 누가 무엇을 할지 짧은 말로, 가능하면 이름을 불러 맡기고 되받아 확인해요(closed-loop).
+- title: 대량 객혈 기도확보
+  sentences:
+  - en: Suction continuously to keep the airway clear.
+    ko: 기도를 확보하려고 계속 흡인하세요.
+    chunks:
+    - Suction continuously
+    - to keep
+    - the airway clear
+    - .
+    words:
+    - w-suction
+    - w-continuously
+    - w-keep
+    - w-airway
+    - w-clear
+    goal: 1
+  - en: He's bleeding a lot — suction again.
+    ko: 출혈이 많습니다 — 다시 흡인하세요.
+    chunks:
+    - He's bleeding
+    - a lot —
+    - suction again
+    - .
+    words:
+    - w-bleeding
+    - w-lot
+    - w-suction
+    - w-again
+    goal: 1
+  - en: Position him with the bleeding side down.
+    ko: 출혈 쪽이 아래로 가게 눕혀주세요.
+    chunks:
+    - Position him
+    - with the bleeding side
+    - down
+    - .
+    words:
+    - w-position
+    - w-bleeding
+    - w-side
+    - w-down
+    goal: 2
+  - en: Protect the good lung on top.
+    ko: 건강한 폐가 위로 오게 보호해주세요.
+    chunks:
+    - Protect
+    - the good lung
+    - on top
+    - .
+    words:
+    - w-protect
+    - w-lung
+    - w-top
+    goal: 2
+  - en: Prepare to intubate and call for help now.
+    ko: 삽관 준비하고 지금 도움을 요청하세요.
+    chunks:
+    - Prepare to intubate
+    - and call
+    - for help now
+    - .
+    words:
+    - w-preparing
+    - w-intubate
+    - w-calling
+    - w-help
+    goal: 1
+  nuance:
+  - kind: slider
+    words:
+    - w-bleeding
+    - w-lot
+    cue: He's coughing up cupfuls of bright red blood.
+    scale:
+    - streaks of blood
+    - a little blood
+    - a lot of blood
+    answerAt: 2
+    why: 컵으로 쏟을 만큼이면 a lot of blood — 대량 객혈이에요. 가래에 피가 줄처럼 섞인 streaks와는 대응이 전혀 달라요.
+    example: He's coughing up a lot of blood.
+    exKo: 기침할 때마다 피가 많이 나와요.
+  - kind: swap
+    words:
+    - w-position
+    - w-bleeding
+    - w-side
+    - w-down
+    who: 팀에게 · 측위 지시
+    icon: speaker
+    before:
+    - 'Position him with the bleeding side '
+    - up
+    - .
+    options:
+    - down
+    - up
+    - toward the wall
+    answer: down
+    notes:
+      down: 피가 아래쪽 폐에 머물러 건강한 폐로 넘어가지 않는다.
+      up: 피가 건강한 폐로 흘러 들어가 양쪽 폐가 다 잠길 수 있다.
+      toward the wall: 어느 쪽인지 기준이 모호해 팀이 헷갈린다.
+    why: 대량 객혈에서 출혈 쪽을 알면 그쪽을 아래로 눕혀(bleeding side down) 건강한 폐를 지켜요.
+- title: 기관절개 튜브 폐쇄·이탈
+  sentences:
+  - en: I'm suctioning your trach to clear any blockage.
+    ko: 막힌 곳을 없애려고 기관절개관을 흡인하고 있어요.
+    chunks:
+    - I'm suctioning
+    - your trach
+    - to clear
+    - any blockage
+    - .
+    words:
+    - w-suction
+    - w-trach
+    - w-clear
+    - w-any
+    - w-blockage
+    goal: 1
+  - en: Can you feel air moving through it?
+    ko: 공기가 통해서 느껴지세요?
+    chunks:
+    - Can you feel
+    - air moving
+    - through it
+    - '?'
+    words:
+    - w-feel
+    - w-air
+    - w-move
+    goal: 1
+  - en: If it's out of place, we'll change the tube right away.
+    ko: 제자리에서 빠졌으면 바로 튜브를 교체할게요.
+    chunks:
+    - If it's out
+    - of place,
+    - we'll change
+    - the tube right away
+    - .
+    words:
+    - w-place
+    - w-change
+    - w-tube
+    - w-away
+    goal: 2
+  - en: Try to stay calm — we're giving you oxygen now.
+    ko: 침착하게 계세요 — 지금 산소를 드리고 있어요.
+    chunks:
+    - Try to stay calm —
+    - we're giving
+    - you oxygen
+    - now
+    - .
+    words:
+    - w-stay
+    - w-calm
+    - w-give
+    - w-oxygen
+    goal: 2
+  - en: We'll have a new tube ready in a moment.
+    ko: 새 튜브를 잠시 후 준비해 드릴게요.
+    chunks:
+    - We'll have
+    - a new tube
+    - ready
+    - in a moment
+    - .
+    words:
+    - w-new
+    - w-tube
+    - w-ready
+    - w-moment
+    goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-blockage
+    - w-trach
+    cue: 'Patient mouthing: "Nothing — no air at all is getting through!"'
+    scale:
+    - partly blocked
+    - blocked
+    - completely blocked
+    answerAt: 2
+    why: 공기가 전혀 안 통하면 completely blocked예요. 내관이 있으면 먼저 빼고, 흡인 카테터가 들어가지 않으면 튜브 교체를 준비해요. 산소는 얼굴과 목의 구멍 양쪽에 줘요.
+    example: The trach is completely blocked — I can't pass the catheter.
+    exKo: 기관절개관이 완전히 막혔어요 — 카테터가 안 들어가요.
+  - kind: context
+    words:
+    - w-trach
+    - w-tube
+    scenes:
+    - who: 동료에게
+      icon: speaker
+      en: Trach is blocked — I can't pass the suction catheter.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Tracheostomy tube obstructed; unable to pass suction catheter.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Your tracheostomy tube is obstructed.
+      ok: false
+      fix: Your trach is blocked — I'm clearing it right now.
+    why: 환자는 자기 튜브를 보통 trach라고 불러요. obstructed보다 blocked처럼 쉬운 말로 말하고, 지금 조치하고 있다는 것을 함께 알려요.

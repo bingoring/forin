@@ -1,0 +1,6099 @@
+theme: core-handoff-er
+words:
+- id: w-situation
+  en: situation
+  ipa: /ˌsɪtʃuˈeɪʃən/
+  ko: 상황
+  icon: speech
+  example: 'Situation: room four with chest pain.'
+  exKo: '상황: 4호실, 흉통 환자입니다.'
+  cue: SBAR의 첫 글자 — 지금 무슨 일인지 한 줄로 먼저
+  tag: SBAR 구조
+  distractorsEn:
+  - saturation
+  - sedation
+  distractorsKo:
+  - 배경
+  - 평가
+  chips:
+  - - sit
+    - u
+    - ation
+  decoyChips:
+  - sat
+  - ition
+- id: w-background
+  en: background
+  ipa: /ˈbækɡraʊnd/
+  ko: 배경
+  icon: board
+  example: 'Background: no cardiac history.'
+  exKo: '배경: 심장 병력은 없습니다.'
+  cue: SBAR의 둘째 — 병력·입원 경위처럼 알고 들어야 할 사정
+  tag: SBAR 구조
+  distractorsEn:
+  - baseline
+  - backboard
+  distractorsKo:
+  - 상황
+  - 권고
+  chips:
+  - - back
+    - ground
+  decoyChips:
+  - bake
+  - grand
+- id: w-assessment
+  en: assessment
+  ipa: /əˈsɛsmənt/
+  ko: 평가
+  icon: magnify
+  example: 'Assessment: he''s alert and stable.'
+  exKo: '평가: 의식 명료, 안정적입니다.'
+  cue: SBAR의 셋째 — 내가 보기에 환자가 지금 어떤 상태인지
+  tag: SBAR 구조
+  distractorsEn:
+  - assignment
+  - adjustment
+  distractorsKo:
+  - 진단
+  - 권고
+  chips:
+  - - as
+    - sess
+    - ment
+  decoyChips:
+  - sign
+  - ise
+- id: w-recommendation
+  en: recommendation
+  ipa: /ˌrɛkəmɛnˈdeɪʃən/
+  ko: 권고
+  icon: speech
+  example: My recommendation is to keep him on the monitor.
+  exKo: 제 권고는 계속 모니터로 관찰하는 것입니다.
+  cue: SBAR의 마지막 — 인수자에게 무엇을 해 달라고 제안하는지
+  tag: SBAR 구조
+  distractorsEn:
+  - reconciliation
+  - representation
+  distractorsKo:
+  - 평가
+  - 요청
+  chips:
+  - - re
+    - com
+    - mend
+    - ation
+  decoyChips:
+  - con
+  - mand
+- id: w-chest
+  en: chest
+  ipa: /tʃɛst/
+  ko: 가슴
+  icon: cross
+  example: He has chest pain.
+  exKo: 흉통이 있어요.
+  cue: 흉통 환자 — 통증이 있는 몸통 앞쪽 부위
+  tag: 증상·진단
+  distractorsEn:
+  - breast
+  - back
+  distractorsKo:
+  - 복부
+  - 목
+  chips:
+  - - chest
+  decoyChips:
+  - chess
+- id: w-pain
+  en: pain
+  ipa: /peɪn/
+  ko: 통증
+  icon: bulb
+  example: Her pain is controlled.
+  exKo: 통증은 조절되고 있어요.
+  cue: 환자가 0~10 척도로 매기는 것
+  tag: 증상·진단
+  distractorsEn:
+  - strain
+  - spasm
+  distractorsKo:
+  - 부기
+  - 저림
+  chips:
+  - - pain
+  decoyChips:
+  - pane
+- id: w-noon
+  en: noon
+  ipa: /nuːn/
+  ko: 정오
+  icon: calendar
+  example: Her pain started at noon.
+  exKo: 통증은 정오에 시작됐어요.
+  cue: 낮 12시 — 증상이 시작된 시각을 말할 때
+  tag: 시간·일정
+  distractorsEn:
+  - midnight
+  - afternoon
+  distractorsKo:
+  - 자정
+  - 오후
+  chips:
+  - - noon
+  decoyChips:
+  - moon
+- id: w-history
+  en: history
+  ipa: /ˈhɪstəri/
+  ko: 병력
+  icon: board
+  example: No cardiac history.
+  exKo: 심장 병력은 없어요.
+  cue: 과거에 앓았거나 앓고 있는 질환 — '고혈압 ___'
+  tag: 증상·진단
+  distractorsEn:
+  - histology
+  - record
+  distractorsKo:
+  - 예후
+  - 증상
+  chips:
+  - - his
+    - tory
+  decoyChips:
+  - hys
+  - tery
+- id: w-pressure
+  en: pressure
+  ipa: /ˈprɛʃər/
+  ko: 혈압
+  icon: monitor
+  example: Her pressure is trending down.
+  exKo: 혈압이 계속 떨어지고 있어요.
+  cue: 140/90처럼 두 수로 말하는 수치 — 인계에서는 blood 없이 한 낱말로
+  tag: 바이탈
+  distractorsEn:
+  - pulse
+  - perfusion
+  distractorsKo:
+  - 맥박
+  - 체온
+  chips:
+  - - pres
+    - sure
+  decoyChips:
+  - pre
+  - sher
+- id: w-borderline
+  en: borderline
+  ipa: /ˈbɔrdərˌlaɪn/
+  ko: 경계선의
+  icon: monitor
+  example: Her pressure is borderline and trending down.
+  exKo: 혈압이 경계선이고 계속 떨어지고 있어요.
+  cue: 수치가 정상과 비정상 사이 기준 언저리에 걸쳐 있을 때
+  tag: 환자 상태
+  distractorsEn:
+  - baseline
+  - bottom line
+  distractorsKo:
+  - 위험한
+  - 정상인
+  chips:
+  - - bor
+    - der
+    - line
+  decoyChips:
+  - base
+  - dor
+- id: w-cardiac
+  en: cardiac
+  ipa: /ˈkɑːrdiæk/
+  ko: 심장의
+  icon: stetho
+  example: No cardiac history.
+  exKo: 심장 병력은 없어요.
+  cue: 심장과 관련된 — '___ history', '___ arrest'
+  tag: 증상·진단
+  distractorsEn:
+  - coronary
+  - cerebral
+  distractorsKo:
+  - 뇌의
+  - 폐의
+  chips:
+  - - card
+    - i
+    - ac
+  decoyChips:
+  - cord
+  - ic
+- id: w-alert
+  en: alert
+  ipa: /əˈlɜːrt/
+  ko: 의식이 명료한
+  icon: bulb
+  example: He's alert right now.
+  exKo: 지금은 의식이 명료해요.
+  cue: 깨어 있고 묻는 말에 또렷이 답한다 — 의식 수준
+  tag: 환자 상태
+  distractorsEn:
+  - lethargic
+  - altered
+  distractorsKo:
+  - 기면 상태의
+  - 혼돈된
+  chips:
+  - - a
+    - lert
+  decoyChips:
+  - e
+  - lart
+- id: w-vitals
+  en: vitals
+  ipa: /ˈvaɪtəlz/
+  ko: 활력징후
+  icon: monitor
+  example: Her vitals are stable.
+  exKo: 활력징후는 안정적이에요.
+  cue: 혈압·맥박·호흡·체온을 한데 부르는 말
+  tag: 바이탈
+  distractorsEn:
+  - values
+  - labs
+  distractorsKo:
+  - 검사 결과
+  - 투약 기록
+  chips:
+  - - vi
+    - tals
+  decoyChips:
+  - vit
+  - tles
+- id: w-stable
+  en: stable
+  ipa: /ˈsteɪbəl/
+  ko: 안정적인
+  icon: shield
+  example: His vitals are stable.
+  exKo: 활력징후는 안정적이에요.
+  cue: 수치가 흔들리지 않고 그대로일 때
+  tag: 환자 상태
+  distractorsEn:
+  - unstable
+  - labile
+  distractorsKo:
+  - 불안정한
+  - 위중한
+  chips:
+  - - sta
+    - ble
+  decoyChips:
+  - un
+  - bel
+- id: w-monitor
+  en: monitor
+  ipa: /ˈmɒnɪtər/
+  ko: 모니터
+  icon: monitor
+  example: Keep him on the monitor.
+  exKo: 계속 모니터를 달아 두세요.
+  cue: 심전도·산소포화도를 쉬지 않고 보여 주는 화면
+  tag: 바이탈
+  distractorsEn:
+  - pump
+  - ventilator
+  distractorsKo:
+  - 인공호흡기
+  - 수액 펌프
+  chips:
+  - - mon
+    - i
+    - tor
+  decoyChips:
+  - man
+  - ter
+- id: w-repeat
+  en: repeat
+  ipa: /rɪˈpiːt/
+  ko: 다시 말하다
+  icon: speaker
+  example: Let me repeat that.
+  exKo: 다시 말씀드릴게요.
+  cue: 인수자가 수치를 못 들었다고 할 때 — 한 번 더
+  tag: 확인·소통
+  distractorsEn:
+  - replay
+  - recheck
+  distractorsKo:
+  - 재확인하다
+  - 받아 적다
+  chips:
+  - - re
+    - peat
+  decoyChips:
+  - pit
+- id: w-call
+  en: call
+  ipa: /kɔːl/
+  ko: 호출하다
+  icon: mic
+  example: Call me if anything changes.
+  exKo: 뭔가 바뀌면 저를 불러 주세요.
+  cue: 상태가 바뀌면 의사나 나에게 연락해 달라고 할 때
+  tag: 확인·소통
+  distractorsEn:
+  - cancel
+  - cover
+  distractorsKo:
+  - 기록하다
+  - 대기하다
+  chips:
+  - - call
+  decoyChips:
+  - cal
+- id: w-score
+  en: score
+  ipa: /skɔːr/
+  ko: 점수
+  icon: chartup
+  example: Watch his pain score.
+  exKo: 통증 점수를 지켜봐 주세요.
+  cue: 통증 척도로 매긴 숫자 — 0~10 중 몇
+  tag: 바이탈
+  distractorsEn:
+  - scale
+  - scope
+  distractorsKo:
+  - 척도
+  - 부위
+  chips:
+  - - score
+  decoyChips:
+  - core
+- id: w-complaint
+  en: complaint
+  ipa: /kəmˈpleɪnt/
+  ko: 주호소
+  icon: speech
+  example: Chief complaint is abdominal pain.
+  exKo: 주호소는 복통이에요.
+  cue: '''chief ___'' — 환자가 병원에 온 가장 큰 이유'
+  tag: 증상·진단
+  distractorsEn:
+  - compliance
+  - complication
+  distractorsKo:
+  - 합병증
+  - 병력
+  chips:
+  - - com
+    - plaint
+  decoyChips:
+  - plain
+  - pli
+- id: w-abdominal
+  en: abdominal
+  ipa: /æbˈdɒmɪnəl/
+  ko: 복부의
+  icon: cross
+  example: She has abdominal pain.
+  exKo: 복통이 있어요.
+  cue: 배 쪽의 — '___ pain'
+  tag: 증상·진단
+  distractorsEn:
+  - abnormal
+  - adrenal
+  distractorsKo:
+  - 흉부의
+  - 골반의
+  chips:
+  - - ab
+    - dom
+    - in
+    - al
+  decoyChips:
+  - dam
+  - nal
+- id: w-result
+  en: result
+  ipa: /rɪˈzʌlt/
+  ko: 결과
+  icon: chartup
+  example: We're waiting on the results.
+  exKo: 결과를 기다리는 중이에요.
+  cue: CT·피검사를 해 놓고 아직 안 나온 것
+  tag: 검사·투약
+  distractorsEn:
+  - report
+  - response
+  distractorsKo:
+  - 검체
+  - 처방
+  chips:
+  - - re
+    - sult
+  decoyChips:
+  - salt
+- id: w-wait
+  en: wait
+  ipa: /weɪt/
+  ko: 기다리다
+  icon: calendar
+  example: We're still waiting on the CT.
+  exKo: 아직 CT를 기다리고 있어요.
+  cue: 결과가 나올 때까지 — 'still ___ing on the CT'
+  tag: 시간·일정
+  distractorsEn:
+  - watch
+  - want
+  distractorsKo:
+  - 주시하다
+  - 확인하다
+  chips:
+  - - wait
+  decoyChips:
+  - wate
+- id: w-antibiotic
+  en: antibiotic
+  ipa: /ˌæntibaɪˈɒtɪk/
+  ko: 항생제
+  icon: pill
+  example: His antibiotic dose is due at four.
+  exKo: 항생제 투여는 4시 예정이에요.
+  cue: 폐렴·감염에 정맥으로 주는 약
+  tag: 검사·투약
+  distractorsEn:
+  - antibody
+  - antiemetic
+  distractorsKo:
+  - 해열제
+  - 진통제
+  chips:
+  - - anti
+    - bio
+    - tic
+  decoyChips:
+  - anty
+  - bod
+- id: w-dose
+  en: dose
+  ipa: /doʊs/
+  ko: 용량
+  icon: pill
+  example: Her next dose is due soon.
+  exKo: 다음 투여가 곧이에요.
+  cue: 약을 한 번에 주는 양 — '다음 ___가 4시'
+  tag: 검사·투약
+  distractorsEn:
+  - route
+  - rate
+  distractorsKo:
+  - 경로
+  - 속도
+  chips:
+  - - dose
+  decoyChips:
+  - doze
+- id: w-due
+  en: due
+  ipa: /duː/
+  ko: 예정된
+  icon: calendar
+  example: His dose is due at four.
+  exKo: 다음 투여는 4시 예정이에요.
+  cue: 약·검사가 정해진 시각이 됐을 때 — '4시에 ___'
+  tag: 시간·일정
+  distractorsEn:
+  - done
+  - late
+  distractorsKo:
+  - 완료된
+  - 지연된
+  chips:
+  - - due
+  decoyChips:
+  - dew
+- id: w-urine
+  en: urine
+  ipa: /ˈjʊərɪn/
+  ko: 소변
+  icon: lab
+  example: The urine sample needs to go to the lab.
+  exKo: 소변 검체는 검사실로 보내야 해요.
+  cue: 검체 종류 — 컵에 받아 가는 것
+  tag: 검사·투약
+  distractorsEn:
+  - serum
+  - sputum
+  distractorsKo:
+  - 혈액
+  - 객담
+  chips:
+  - - ur
+    - ine
+  decoyChips:
+  - ure
+  - ane
+- id: w-sample
+  en: sample
+  ipa: /ˈsæmpəl/
+  ko: 검체
+  icon: lab
+  example: The sample is ready.
+  exKo: 검체가 준비됐어요.
+  cue: 검사실로 보낼 혈액·소변 같은 것
+  tag: 검사·투약
+  distractorsEn:
+  - swab
+  - slide
+  distractorsKo:
+  - 결과
+  - 처방
+  chips:
+  - - sam
+    - ple
+  decoyChips:
+  - sim
+  - pel
+- id: w-lab
+  en: lab
+  ipa: /læb/
+  ko: 검사실
+  icon: lab
+  example: Send it to the lab.
+  exKo: 검사실로 보내 주세요.
+  cue: 검체를 보내 분석하는 부서
+  tag: 검사·투약
+  distractorsEn:
+  - ward
+  - pharmacy
+  distractorsKo:
+  - 약제부
+  - 병동
+  chips:
+  - - lab
+  decoyChips:
+  - lap
+- id: w-recheck
+  en: recheck
+  ipa: /riːˈtʃɛk/
+  ko: 재확인하다
+  icon: check
+  example: Please recheck her blood pressure.
+  exKo: 혈압을 다시 확인해 주세요.
+  cue: 한 번 잰 수치를 조금 뒤 한 번 더
+  tag: 확인·소통
+  distractorsEn:
+  - recharge
+  - restart
+  distractorsKo:
+  - 기록하다
+  - 보고하다
+  chips:
+  - - re
+    - check
+  decoyChips:
+  - chek
+- id: w-bed
+  en: bed
+  ipa: /bɛd/
+  ko: 병상
+  icon: hospital
+  example: He's in bed two.
+  exKo: 2번 병상에 계세요.
+  cue: 환자가 누워 있는 자리 — 'in ___ two', 'the other three ___s'
+  tag: 우선순위·배치
+  distractorsEn:
+  - chair
+  - stretcher
+  distractorsKo:
+  - 구역
+  - 대기실
+  chips:
+  - - bed
+  decoyChips:
+  - bad
+- id: w-correct
+  en: correct
+  ipa: /kəˈrɛkt/
+  ko: 맞는
+  icon: check
+  example: That's correct.
+  exKo: 맞아요.
+  cue: 상대가 말한 이름·병상이 맞는지 끝에 붙여 확인
+  tag: 확인·소통
+  distractorsEn:
+  - complete
+  - current
+  distractorsKo:
+  - 완료된
+  - 현재의
+  chips:
+  - - cor
+    - rect
+  decoyChips:
+  - col
+  - lect
+- id: w-diagnosis
+  en: diagnosis
+  ipa: /ˌdaɪəɡˈnoʊsɪs/
+  ko: 진단
+  icon: magnify
+  example: Working diagnosis is dehydration.
+  exKo: 현재 진단은 탈수예요.
+  cue: 의사가 붙인 병명 — 'working ___'
+  tag: 증상·진단
+  distractorsEn:
+  - prognosis
+  - dialysis
+  distractorsKo:
+  - 예후
+  - 증상
+  chips:
+  - - dia
+    - gno
+    - sis
+  decoyChips:
+  - pro
+  - gnos
+- id: w-chart
+  en: chart
+  ipa: /tʃɑːrt/
+  ko: 차트
+  icon: board
+  example: It matches the chart.
+  exKo: 차트와 일치해요.
+  cue: 환자 정보가 적힌 기록 — 대조해 볼 곳
+  tag: 확인·소통
+  distractorsEn:
+  - card
+  - cart
+  distractorsKo:
+  - 목록
+  - 손목밴드
+  chips:
+  - - chart
+  decoyChips:
+  - cart
+- id: w-match
+  en: match
+  ipa: /mætʃ/
+  ko: 일치하다
+  icon: check
+  example: His name and date of birth both match the chart.
+  exKo: 이름과 생년월일 모두 차트와 일치합니다.
+  cue: 밴드의 정보와 차트 내용이 똑같을 때
+  tag: 확인·소통
+  distractorsEn:
+  - catch
+  - mark
+  distractorsKo:
+  - 누락되다
+  - 수정하다
+  chips:
+  - - match
+  decoyChips:
+  - mach
+- id: w-band
+  en: band
+  ipa: /bænd/
+  ko: 밴드
+  icon: bandage
+  example: Read the ID band back to me.
+  exKo: ID 밴드를 다시 읽어 주세요.
+  cue: 환자 손목에 찬 신원 확인 밴드 — 'ID ___'
+  tag: 확인·소통
+  distractorsEn:
+  - tag
+  - badge
+  distractorsKo:
+  - 붕대
+  - 사원증
+  chips:
+  - - band
+  decoyChips:
+  - bend
+- id: w-watch
+  en: watch
+  ipa: /wɒtʃ/
+  ko: 주시하다
+  icon: magnify
+  example: Watch bed three closely.
+  exKo: 3번 병상을 가장 주의 깊게 봐 주세요.
+  cue: 악화할 수 있는 환자를 눈여겨볼 때 — '___ closely'
+  tag: 우선순위·배치
+  distractorsEn:
+  - wait
+  - walk
+  distractorsKo:
+  - 기다리다
+  - 치우다
+  chips:
+  - - watch
+  decoyChips:
+  - wach
+- id: w-trend
+  en: trend
+  ipa: /trɛnd/
+  ko: 추세
+  icon: chartup
+  example: Her pressure is trending down.
+  exKo: 혈압이 떨어지는 추세예요.
+  cue: 수치가 한 방향으로 계속 움직이는 흐름 — '___ing down'
+  tag: 바이탈
+  distractorsEn:
+  - trace
+  - tremor
+  distractorsKo:
+  - 변동
+  - 기준치
+  chips:
+  - - trend
+  decoyChips:
+  - tred
+- id: w-discharge
+  en: discharge
+  ipa: /ˈdɪstʃɑːrdʒ/
+  ko: 퇴원
+  icon: home
+  example: She's just waiting for discharge.
+  exKo: 퇴원만 기다리고 있어요.
+  cue: 진료가 끝나 병원을 나가는 것 — 집이나 다른 거처로
+  tag: 전원·퇴원
+  distractorsEn:
+  - admission
+  - disclosure
+  distractorsKo:
+  - 입원
+  - 전원
+  chips:
+  - - dis
+    - charge
+  decoyChips:
+  - change
+  - dys
+- id: w-attention
+  en: attention
+  ipa: /əˈtɛnʃən/
+  ko: 주의
+  icon: bulb
+  example: Bed three needs the most attention.
+  exKo: 3번 병상에 가장 주의가 필요해요.
+  cue: 가장 신경 써서 봐야 할 환자를 짚을 때 — 'needs the most ___'
+  tag: 우선순위·배치
+  distractorsEn:
+  - intention
+  - retention
+  distractorsKo:
+  - 휴식
+  - 설명
+  chips:
+  - - at
+    - ten
+    - tion
+  decoyChips:
+  - in
+  - tension
+- id: w-allergy
+  en: allergy
+  ipa: /ˈælərdʒi/
+  ko: 알레르기
+  icon: shield
+  example: Any allergies I should know?
+  exKo: 제가 알아야 할 알레르기가 있나요?
+  cue: 투약 전 꼭 묻는 것 — 페니실린에 두드러기가 났던 일
+  tag: 검사·투약
+  distractorsEn:
+  - allergen
+  - analgesic
+  distractorsKo:
+  - 부작용
+  - 금식
+  chips:
+  - - al
+    - ler
+    - gy
+  decoyChips:
+  - el
+  - gie
+- id: w-mention
+  en: mention
+  ipa: /ˈmɛnʃən/
+  ko: 언급하다
+  icon: speech
+  example: You didn't mention her allergies.
+  exKo: 알레르기는 말씀 안 하셨어요.
+  cue: 인계에서 빠뜨린 걸 짚을 때 — '그 얘기는 안 하셨는데'
+  tag: 확인·소통
+  distractorsEn:
+  - notice
+  - measure
+  distractorsKo:
+  - 확인하다
+  - 기록하다
+  chips:
+  - - men
+    - tion
+  decoyChips:
+  - mon
+  - sion
+- id: w-medicine
+  en: medicine
+  ipa: /ˈmɛdəsɪn/
+  ko: 약
+  icon: pill
+  example: Was the pain medicine given?
+  exKo: 진통제는 투여됐나요?
+  cue: '''pain ___'' — 진통제를 이루는 뒷말'
+  tag: 검사·투약
+  distractorsEn:
+  - medic
+  - medium
+  distractorsKo:
+  - 주사
+  - 수액
+  chips:
+  - - medi
+    - cine
+  decoyChips:
+  - meda
+  - sin
+- id: w-order
+  en: order
+  ipa: /ˈɔːrdər/
+  ko: 처방하다
+  icon: pencil
+  example: Was it given, or just ordered?
+  exKo: 투여된 건가요, 처방만 된 건가요?
+  cue: 의사가 약·검사를 지시해 두는 것 — 투여 전 단계
+  tag: 검사·투약
+  distractorsEn:
+  - record
+  - refer
+  distractorsKo:
+  - 투여하다
+  - 보류하다
+  chips:
+  - - or
+    - der
+  decoyChips:
+  - ar
+  - ter
+- id: w-give
+  en: give
+  ipa: /ɡɪv/
+  ko: 투여하다
+  icon: pill
+  example: Was the medicine actually given?
+  exKo: 약은 실제로 투여됐나요?
+  cue: 처방만 된 게 아니라 환자에게 실제로 들어갔는지
+  tag: 검사·투약
+  distractorsEn:
+  - get
+  - keep
+  distractorsKo:
+  - 처방하다
+  - 중단하다
+  chips:
+  - - give
+  decoyChips:
+  - gave
+- id: w-confirm
+  en: confirm
+  ipa: /kənˈfɜːrm/
+  ko: 확인하다
+  icon: check
+  example: Let me confirm the last vitals time.
+  exKo: 마지막 활력징후 시각을 확인할게요.
+  cue: 애매한 정보가 확실히 맞는지 짚고 넘어갈 때
+  tag: 확인·소통
+  distractorsEn:
+  - conform
+  - confine
+  distractorsKo:
+  - 언급하다
+  - 보류하다
+  chips:
+  - - con
+    - firm
+  decoyChips:
+  - form
+  - fine
+- id: w-speak
+  en: speak
+  ipa: /spiːk/
+  ko: 말하다
+  icon: speech
+  example: He speaks Vietnamese.
+  exKo: 베트남어를 쓰세요.
+  cue: 환자가 쓰는 언어를 전할 때 — 'He ___s Vietnamese'
+  tag: 가족·문화
+  distractorsEn:
+  - spell
+  - read
+  distractorsKo:
+  - 통역하다
+  - 읽다
+  chips:
+  - - speak
+  decoyChips:
+  - spik
+- id: w-interpreter
+  en: interpreter
+  ipa: /ɪnˈtɜːrprɪtər/
+  ko: 통역사
+  icon: speaker
+  example: He needs a phone interpreter.
+  exKo: 전화 통역이 필요해요.
+  cue: 영어가 안 되는 환자와 말할 때 연결하는 사람
+  tag: 가족·문화
+  distractorsEn:
+  - interrupter
+  - intercom
+  distractorsKo:
+  - 번역가
+  - 사회복지사
+  chips:
+  - - inter
+    - pret
+    - er
+  decoyChips:
+  - rupt
+  - prit
+- id: w-phone
+  en: phone
+  ipa: /foʊn/
+  ko: 전화
+  icon: mic
+  example: He needs a phone interpreter.
+  exKo: 전화 통역이 필요해요.
+  cue: 통역을 전화선으로 연결하는 방식 — '___ interpreter'
+  tag: 가족·문화
+  distractorsEn:
+  - pager
+  - video
+  distractorsKo:
+  - 영상
+  - 호출기
+  chips:
+  - - phone
+  decoyChips:
+  - fone
+- id: w-prefer
+  en: prefer
+  ipa: /prɪˈfɜːr/
+  ko: 선호하다
+  icon: star
+  example: The family prefers a female nurse.
+  exKo: 가족은 여성 간호사를 원해요.
+  cue: 강요는 아니지만 이쪽이 좋다고 할 때
+  tag: 가족·문화
+  distractorsEn:
+  - refer
+  - require
+  distractorsKo:
+  - 요구하다
+  - 거절하다
+  chips:
+  - - pre
+    - fer
+  decoyChips:
+  - re
+  - far
+- id: w-female
+  en: female
+  ipa: /ˈfiːmeɪl/
+  ko: 여성
+  icon: me
+  example: The family prefers a female nurse.
+  exKo: 여성 간호사를 원해요.
+  cue: 성별을 지정해 돌봄을 요청할 때
+  tag: 가족·문화
+  distractorsEn:
+  - male
+  - familiar
+  distractorsKo:
+  - 남성
+  - 보호자
+  chips:
+  - - fe
+    - male
+  decoyChips:
+  - fa
+  - mail
+- id: w-understand
+  en: understand
+  ipa: /ˌʌndərˈstænd/
+  ko: 이해하다
+  icon: bulb
+  example: Confirm understanding through the interpreter.
+  exKo: 통역사를 통해 이해했는지 확인하세요.
+  cue: 설명을 제대로 알아들었는지 — 통역을 거쳐 확인
+  tag: 가족·문화
+  distractorsEn:
+  - undertake
+  - understate
+  distractorsKo:
+  - 동의하다
+  - 기억하다
+  chips:
+  - - under
+    - stand
+  decoyChips:
+  - take
+  - stant
+- id: w-hold
+  en: hold
+  ipa: /hoʊld/
+  ko: 보류
+  icon: lock
+  example: He's under a seventy-two-hour hold.
+  exKo: 72시간 보류 상태예요.
+  cue: 법으로 정한 시간 동안 퇴원할 수 없게 붙잡아 두는 조치
+  tag: 안전·감시
+  distractorsEn:
+  - restraint
+  - halt
+  distractorsKo:
+  - 억제대
+  - 격리
+  chips:
+  - - hold
+  decoyChips:
+  - hole
+- id: w-leave
+  en: leave
+  ipa: /liːv/
+  ko: 떠나다
+  icon: lock
+  example: He cannot leave.
+  exKo: 나가실 수 없어요.
+  cue: 보류 중인 환자가 병원 밖으로 가려 할 때
+  tag: 안전·감시
+  distractorsEn:
+  - live
+  - lift
+  distractorsKo:
+  - 도착하다
+  - 돌아오다
+  chips:
+  - - leave
+  decoyChips:
+  - live
+- id: w-observation
+  en: observation
+  ipa: /ˌɒbzərˈveɪʃən/
+  ko: 관찰
+  icon: magnify
+  example: He requires one-to-one observation.
+  exKo: 1대1 관찰이 필요해요.
+  cue: '''one-to-one ___'' — 한 사람이 늘 곁에서 지켜봄'
+  tag: 안전·감시
+  distractorsEn:
+  - obstruction
+  - conversation
+  distractorsKo:
+  - 격리
+  - 면담
+  chips:
+  - - ob
+    - ser
+    - va
+    - tion
+  decoyChips:
+  - ab
+  - sir
+- id: w-sharp
+  en: sharp
+  ipa: /ʃɑːrp/
+  ko: 날카로운 물건
+  icon: scalpel
+  example: All sharps have been removed.
+  exKo: 날카로운 물건은 모두 치웠어요.
+  cue: 자해 위험이 있는 병실에서 치우는 바늘·칼 같은 것
+  tag: 안전·감시
+  distractorsEn:
+  - shard
+  - sheet
+  distractorsKo:
+  - 침대 시트
+  - 약품
+  chips:
+  - - sharp
+  decoyChips:
+  - shap
+- id: w-cord
+  en: cord
+  ipa: /kɔːrd/
+  ko: 줄
+  icon: gear
+  example: All cords have been removed.
+  exKo: 줄은 모두 치웠어요.
+  cue: 목에 감길 위험이 있어 병실에서 치우는 전선·끈
+  tag: 안전·감시
+  distractorsEn:
+  - code
+  - curtain
+  distractorsKo:
+  - 커튼
+  - 바늘
+  chips:
+  - - cord
+  decoyChips:
+  - chord
+- id: w-remove
+  en: remove
+  ipa: /rɪˈmuːv/
+  ko: 치우다
+  icon: shield
+  example: Sharps have been removed from the room.
+  exKo: 병실에서 날카로운 물건을 치웠어요.
+  cue: 위험한 물건을 병실 밖으로 빼낼 때
+  tag: 안전·감시
+  distractorsEn:
+  - renew
+  - revoke
+  distractorsKo:
+  - 점검하다
+  - 보관하다
+  chips:
+  - - re
+    - move
+  decoyChips:
+  - ri
+  - mov
+- id: w-daughter
+  en: daughter
+  ipa: /ˈdɔːtər/
+  ko: 딸
+  icon: me
+  example: The daughter knows the diagnosis.
+  exKo: 따님은 진단을 알고 있어요.
+  cue: 환자의 자녀 중 여성 — 가족 중 누가 아는지 전할 때
+  tag: 가족·문화
+  distractorsEn:
+  - sister
+  - niece
+  distractorsKo:
+  - 며느리
+  - 조카
+  chips:
+  - - daugh
+    - ter
+  decoyChips:
+  - dough
+- id: w-prognosis
+  en: prognosis
+  ipa: /prɒɡˈnoʊsɪs/
+  ko: 예후
+  icon: magnify
+  example: She knows the diagnosis but not the prognosis.
+  exKo: 진단은 알지만 예후는 몰라요.
+  cue: 앞으로 병이 어떻게 될지 — 나쁜 소식일 수 있는 것
+  tag: 증상·진단
+  distractorsEn:
+  - diagnosis
+  - progress
+  distractorsKo:
+  - 진단
+  - 경과
+  chips:
+  - - pro
+    - gno
+    - sis
+  decoyChips:
+  - dia
+  - gress
+- id: w-wife
+  en: wife
+  ipa: /waɪf/
+  ko: 아내
+  icon: me
+  example: The doctor still needs to speak with the wife.
+  exKo: 의사가 아직 아내분과 이야기해야 해요.
+  cue: 환자의 배우자 — 여성
+  tag: 가족·문화
+  distractorsEn:
+  - widow
+  - sister
+  distractorsKo:
+  - 남편
+  - 딸
+  chips:
+  - - wife
+  decoyChips:
+  - wive
+- id: w-son
+  en: son
+  ipa: /sʌn/
+  ko: 아들
+  icon: me
+  example: The son had a lot of anger earlier.
+  exKo: 아드님이 아까 화가 많이 나셨어요.
+  cue: 환자의 자녀 중 남성
+  tag: 가족·문화
+  distractorsEn:
+  - nephew
+  - grandson
+  distractorsKo:
+  - 남편
+  - 조카
+  chips:
+  - - son
+  decoyChips:
+  - sun
+- id: w-anger
+  en: anger
+  ipa: /ˈæŋɡər/
+  ko: 분노
+  icon: bulb
+  example: The son had a lot of anger earlier.
+  exKo: 아드님이 아까 화가 많이 나셨어요.
+  cue: 가족이 큰소리로 따졌던 감정 — 다음 근무자도 알아야 할 것
+  tag: 가족·문화
+  distractorsEn:
+  - anguish
+  - anxiety
+  distractorsKo:
+  - 슬픔
+  - 불안
+  chips:
+  - - an
+    - ger
+  decoyChips:
+  - ang
+  - gre
+- id: w-gentle
+  en: gentle
+  ipa: /ˈdʒɛntəl/
+  ko: 부드러운
+  icon: star
+  example: Be gentle with him.
+  exKo: 그분께 부드럽게 대해 주세요.
+  cue: 감정이 격해진 가족을 대할 때의 태도
+  tag: 가족·문화
+  distractorsEn:
+  - genuine
+  - general
+  distractorsKo:
+  - 단호한
+  - 솔직한
+  chips:
+  - - gen
+    - tle
+  decoyChips:
+  - gent
+  - al
+- id: w-transfer
+  en: transfer
+  ipa: /ˈtrænsfɜːr/
+  ko: 전원
+  icon: plane
+  example: This is a transfer for stroke care.
+  exKo: 뇌졸중 상급 치료를 위한 전원입니다.
+  cue: 다른 병원으로 환자를 보내는 것
+  tag: 전원·퇴원
+  distractorsEn:
+  - transplant
+  - transition
+  distractorsKo:
+  - 퇴원
+  - 입원
+  chips:
+  - - trans
+    - fer
+  decoyChips:
+  - fur
+  - tran
+- id: w-level
+  en: level
+  ipa: /ˈlɛvəl/
+  ko: 수준
+  icon: chartup
+  example: She needs a higher level of care.
+  exKo: 더 높은 단계의 치료가 필요해요.
+  cue: '''higher ___ of care'' — 단계, 또는 산소 수치'
+  tag: 전원·퇴원
+  distractorsEn:
+  - label
+  - lever
+  distractorsKo:
+  - 기준
+  - 속도
+  chips:
+  - - lev
+    - el
+  decoyChips:
+  - lab
+  - al
+- id: w-stroke
+  en: stroke
+  ipa: /stroʊk/
+  ko: 뇌졸중
+  icon: cross
+  example: This is a transfer for stroke care.
+  exKo: 뇌졸중 치료를 위한 전원입니다.
+  cue: tPA 시간 창이 중요한 뇌혈관 질환
+  tag: 증상·진단
+  distractorsEn:
+  - seizure
+  - strain
+  distractorsKo:
+  - 뇌전증 발작
+  - 심근경색
+  chips:
+  - - stroke
+  decoyChips:
+  - strike
+- id: w-care
+  en: care
+  ipa: /kɛr/
+  ko: 치료
+  icon: shield
+  example: She needs a higher level of care.
+  exKo: 더 높은 단계의 치료가 필요해요.
+  cue: '''higher level of ___'' — 큰 병원이 더 줄 수 있는 것'
+  tag: 전원·퇴원
+  distractorsEn:
+  - cure
+  - core
+  distractorsKo:
+  - 검사
+  - 관찰
+  chips:
+  - - care
+  decoyChips:
+  - cure
+- id: w-onset
+  en: onset
+  ipa: /ˈɒnsɛt/
+  ko: 발생
+  icon: calendar
+  example: Symptom onset was two hours ago.
+  exKo: 증상은 2시간 전에 시작됐어요.
+  cue: 증상이 처음 시작된 시점 — 뇌졸중에서 특히 중요
+  tag: 증상·진단
+  distractorsEn:
+  - offset
+  - outset
+  distractorsKo:
+  - 종료
+  - 악화
+  chips:
+  - - 'on'
+    - set
+  decoyChips:
+  - 'off'
+  - out
+- id: w-symptom
+  en: symptom
+  ipa: /ˈsɪmptəm/
+  ko: 증상
+  icon: bulb
+  example: Symptom onset was two hours ago.
+  exKo: 증상은 2시간 전에 시작됐어요.
+  cue: 환자가 느끼고 드러내는 이상 — 마비, 어눌한 말
+  tag: 증상·진단
+  distractorsEn:
+  - syndrome
+  - system
+  distractorsKo:
+  - 진단
+  - 병력
+  chips:
+  - - symp
+    - tom
+  decoyChips:
+  - sim
+  - tum
+- id: w-record
+  en: record
+  ipa: /ˈrɛkərd/
+  ko: 기록
+  icon: board
+  example: Her records are traveling with her.
+  exKo: 기록은 환자와 함께 가요.
+  cue: 전원할 때 환자와 같이 보내는 서류
+  tag: 전원·퇴원
+  distractorsEn:
+  - recall
+  - receipt
+  distractorsKo:
+  - 영상 자료
+  - 동의서
+  chips:
+  - - re
+    - cord
+  decoyChips:
+  - ri
+  - card
+- id: w-imaging
+  en: imaging
+  ipa: /ˈɪmɪdʒɪŋ/
+  ko: 영상 자료
+  icon: lab
+  example: Her imaging is traveling with her.
+  exKo: 영상 자료는 환자와 함께 가요.
+  cue: CT·MRI 사진 파일을 통틀어
+  tag: 전원·퇴원
+  distractorsEn:
+  - imagery
+  - staging
+  distractorsKo:
+  - 검사 결과
+  - 기록
+  chips:
+  - - im
+    - ag
+    - ing
+  decoyChips:
+  - em
+  - age
+- id: w-travel
+  en: travel
+  ipa: /ˈtrævəl/
+  ko: 함께 이동하다
+  icon: plane
+  example: Her records are traveling with the patient.
+  exKo: 기록은 환자와 함께 이동해요.
+  cue: 서류나 간호사가 환자와 같이 옮겨 갈 때 — '___ing with the patient'
+  tag: 전원·퇴원
+  distractorsEn:
+  - trail
+  - trace
+  distractorsKo:
+  - 보관하다
+  - 기다리다
+  chips:
+  - - tra
+    - vel
+  decoyChips:
+  - tri
+  - val
+- id: w-drip
+  en: drip
+  ipa: /drɪp/
+  ko: 지속 정맥주사
+  icon: lab
+  example: She's on a norepinephrine drip.
+  exKo: 노르에피네프린 지속 주입 중이에요.
+  cue: 승압제처럼 끊지 않고 계속 들어가는 정맥 주입
+  tag: 검사·투약
+  distractorsEn:
+  - bolus
+  - drop
+  distractorsKo:
+  - 일시 주입
+  - 경구약
+  chips:
+  - - drip
+  decoyChips:
+  - drap
+- id: w-titrate
+  en: titrate
+  ipa: /ˈtaɪtreɪt/
+  ko: 용량을 조절하다
+  icon: gear
+  example: We're titrating the drip up.
+  exKo: 지속 주입 용량을 올리고 있어요.
+  cue: 혈압에 맞춰 약 속도를 조금씩 올리거나 내림
+  tag: 검사·투약
+  distractorsEn:
+  - tolerate
+  - hydrate
+  distractorsKo:
+  - 중단하다
+  - 희석하다
+  chips:
+  - - ti
+    - trate
+  decoyChips:
+  - tri
+  - tate
+- id: w-icu
+  en: ICU
+  ipa: /ˌaɪ siː ˈjuː/
+  ko: 중환자실
+  icon: hospital
+  example: She needs an ICU bed.
+  exKo: 중환자실 병상이 필요해요.
+  cue: 승압제·삽관 환자가 올라가는 집중 치료 병동
+  tag: 전원·퇴원
+  distractorsEn:
+  - NICU
+  - PACU
+  distractorsKo:
+  - 회복실
+  - 응급실
+  chips:
+  - - ICU
+  decoyChips:
+  - ICD
+- id: w-close
+  en: close
+  ipa: /kloʊs/
+  ko: 면밀한
+  icon: lock
+  example: She needs close monitoring.
+  exKo: 면밀한 모니터링이 필요해요.
+  cue: '''___ monitoring'' — 눈을 떼지 않고 자세히'
+  tag: 우선순위·배치
+  distractorsEn:
+  - clear
+  - loose
+  distractorsKo:
+  - 간헐적인
+  - 느슨한
+  chips:
+  - - close
+  decoyChips:
+  - clothe
+- id: w-norepinephrine
+  en: norepinephrine
+  ipa: /ˌnɔːrˌɛpɪˈnɛfrɪn/
+  ko: 노르에피네프린
+  icon: pill
+  example: He's on a norepinephrine drip.
+  exKo: 노르에피네프린 지속 주입 중이에요.
+  cue: 혈압을 올리는 1차 승압제 — 흔히 '레보페드'
+  tag: 검사·투약
+  distractorsEn:
+  - epinephrine
+  - phenylephrine
+  distractorsKo:
+  - 에피네프린
+  - 도파민
+  chips:
+  - - nor
+    - epi
+    - neph
+    - rine
+  decoyChips:
+  - phen
+  - ephe
+- id: w-intubate
+  en: intubate
+  ipa: /ˈɪntjubeɪt/
+  ko: 삽관하다
+  icon: scalpel
+  example: He's intubated right now.
+  exKo: 지금 삽관된 상태예요.
+  cue: 기도에 튜브를 넣어 인공호흡기를 단 상태로 만듦
+  tag: 소생·처치
+  distractorsEn:
+  - incubate
+  - extubate
+  distractorsKo:
+  - 발관하다
+  - 제세동하다
+  chips:
+  - - in
+    - tu
+    - bate
+  decoyChips:
+  - ex
+  - cu
+- id: w-shock
+  en: shock
+  ipa: /ʃɒk/
+  ko: 제세동
+  icon: siren
+  example: He needed two shocks.
+  exKo: 제세동을 두 번 했어요.
+  cue: 심정지 때 패드로 전기를 주는 것 — 몇 번 했는지 센다
+  tag: 소생·처치
+  distractorsEn:
+  - compression
+  - shot
+  distractorsKo:
+  - 흉부압박
+  - 주사
+  chips:
+  - - shock
+  decoyChips:
+  - shok
+- id: w-down
+  en: down
+  ipa: /daʊn/
+  ko: 정지
+  icon: chartup
+  example: Down time was about eight minutes.
+  exKo: 정지 시간은 약 8분이었어요.
+  cue: '''___ time'' — 심정지부터 순환이 돌아올 때까지'
+  tag: 소생·처치
+  distractorsEn:
+  - done
+  - dawn
+  distractorsKo:
+  - 대기
+  - 이송
+  chips:
+  - - down
+  decoyChips:
+  - dawn
+- id: w-forget
+  en: forget
+  ipa: /fərˈɡɛt/
+  ko: 잊다
+  icon: bulb
+  example: Forget what I just said.
+  exKo: 방금 한 말은 잊으세요.
+  cue: 상황이 바뀌어 앞서 한 인계를 무를 때
+  tag: 확인·소통
+  distractorsEn:
+  - forgive
+  - forge
+  distractorsKo:
+  - 기억하다
+  - 반복하다
+  chips:
+  - - for
+    - get
+  decoyChips:
+  - give
+  - fore
+- id: w-status
+  en: status
+  ipa: /ˈsteɪtəs/
+  ko: 상태
+  icon: board
+  example: His status has changed.
+  exKo: 상태가 바뀌었어요.
+  cue: 환자의 전반적인 지금 형편 — 급변했을 때
+  tag: 환자 상태
+  distractorsEn:
+  - statute
+  - stature
+  distractorsKo:
+  - 원인
+  - 계획
+  chips:
+  - - sta
+    - tus
+  decoyChips:
+  - stat
+  - ure
+- id: w-change
+  en: change
+  ipa: /tʃeɪndʒ/
+  ko: 변화
+  icon: gear
+  example: Call me if anything changes.
+  exKo: 뭔가 변화가 있으면 연락 주세요.
+  cue: 상태가 달라지는 것 — 있으면 바로 연락
+  tag: 환자 상태
+  distractorsEn:
+  - chance
+  - charge
+  distractorsKo:
+  - 기록
+  - 요청
+  chips:
+  - - change
+  decoyChips:
+  - charge
+- id: w-drop
+  en: drop
+  ipa: /drɒp/
+  ko: 떨어지다
+  icon: chartup
+  example: His oxygen just dropped.
+  exKo: 산소포화도가 방금 떨어졌어요.
+  cue: 수치가 갑자기 아래로 — 85%까지
+  tag: 바이탈
+  distractorsEn:
+  - drip
+  - droop
+  distractorsKo:
+  - 오르다
+  - 유지되다
+  chips:
+  - - drop
+  decoyChips:
+  - drip
+- id: w-percent
+  en: percent
+  ipa: /pərˈsɛnt/
+  ko: 퍼센트
+  icon: chartup
+  example: His oxygen dropped to eighty-five percent.
+  exKo: 85퍼센트로 떨어졌어요.
+  cue: 산소포화도 85 뒤에 붙는 단위
+  tag: 바이탈
+  distractorsEn:
+  - percentile
+  - perfusion
+  distractorsKo:
+  - 밀리미터
+  - 리터
+  chips:
+  - - per
+    - cent
+  decoyChips:
+  - pre
+  - sent
+- id: w-oxygen
+  en: oxygen
+  ipa: /ˈɒksɪdʒən/
+  ko: 산소
+  icon: lab
+  example: His oxygen just dropped.
+  exKo: 산소포화도가 방금 떨어졌어요.
+  cue: 산소포화도로 재고, 콧줄로 2리터 주는 것
+  tag: 바이탈
+  distractorsEn:
+  - oxide
+  - nitrogen
+  distractorsKo:
+  - 이산화탄소
+  - 질소
+  chips:
+  - - oxy
+    - gen
+  decoyChips:
+  - oxi
+  - gin
+- id: w-reassess
+  en: reassess
+  ipa: /ˌriːəˈsɛs/
+  ko: 재사정하다
+  icon: magnify
+  example: Let's go reassess him together.
+  exKo: 같이 가서 다시 사정해요.
+  cue: 급변 뒤 환자를 처음부터 다시 살펴볼 때
+  tag: 확인·소통
+  distractorsEn:
+  - reassure
+  - reassign
+  distractorsKo:
+  - 안심시키다
+  - 재배정하다
+  chips:
+  - - re
+    - as
+    - sess
+  decoyChips:
+  - sure
+  - sign
+- id: w-medication
+  en: medication
+  ipa: /ˌmɛdɪˈkeɪʃən/
+  ko: 투약
+  icon: pill
+  example: We didn't get her medication list.
+  exKo: 투약 목록을 받지 못했어요.
+  cue: '''___ list'' — 환자가 먹고 있는 약을 적은 목록'
+  tag: 검사·투약
+  distractorsEn:
+  - meditation
+  - mediation
+  distractorsKo:
+  - 알레르기
+  - 검사
+  chips:
+  - - medi
+    - ca
+    - tion
+  decoyChips:
+  - ta
+  - sion
+- id: w-list
+  en: list
+  ipa: /lɪst/
+  ko: 목록
+  icon: board
+  example: We didn't get her medication list.
+  exKo: 투약 목록을 받지 못했어요.
+  cue: 약 이름을 줄줄이 적어 놓은 것
+  tag: 확인·소통
+  distractorsEn:
+  - log
+  - lift
+  distractorsKo:
+  - 기록
+  - 처방
+  chips:
+  - - list
+  decoyChips:
+  - lest
+- id: w-scratch
+  en: scratch
+  ipa: /skrætʃ/
+  ko: 처음부터
+  icon: pencil
+  example: I'll reassess from scratch.
+  exKo: 안전을 위해 처음부터 다시 사정할게요.
+  cue: '''from ___'' — 받은 정보를 믿지 않고 맨 처음부터'
+  tag: 확인·소통
+  distractorsEn:
+  - scrap
+  - sketch
+  distractorsKo:
+  - 대충
+  - 나중에
+  chips:
+  - - scratch
+  decoyChips:
+  - scrach
+- id: w-safe
+  en: safe
+  ipa: /seɪf/
+  ko: 안전한
+  icon: shield
+  example: I'll reassess from scratch to be safe.
+  exKo: 안전을 위해 처음부터 다시 사정할게요.
+  cue: '''to be ___'' — 위험을 줄이려고 굳이 한 번 더'
+  tag: 안전·감시
+  distractorsEn:
+  - sane
+  - same
+  distractorsKo:
+  - 빠른
+  - 정확한
+  chips:
+  - - safe
+  decoyChips:
+  - save
+- id: w-nursing
+  en: nursing
+  ipa: /ˈnɜːrsɪŋ/
+  ko: 간호
+  icon: stetho
+  example: From nursing, her pain is controlled.
+  exKo: 간호 측면에서는 통증이 조절되고 있어요.
+  cue: 다직역 회의에서 우리 직역을 대표해 말할 때 — 'From ___'
+  tag: 확인·소통
+  distractorsEn:
+  - nursery
+  - nurturing
+  distractorsKo:
+  - 의료
+  - 사회복지
+  chips:
+  - - nurs
+    - ing
+  decoyChips:
+  - nurse
+  - ery
+- id: w-mobility
+  en: mobility
+  ipa: /moʊˈbɪləti/
+  ko: 거동
+  icon: me
+  example: Her mobility is poor.
+  exKo: 거동이 좋지 않아요.
+  cue: 혼자 걷고 움직일 수 있는 정도 — 퇴원 계획에 중요
+  tag: 환자 상태
+  distractorsEn:
+  - ability
+  - morbidity
+  distractorsKo:
+  - 통증
+  - 식욕
+  chips:
+  - - mo
+    - bil
+    - ity
+  decoyChips:
+  - mor
+  - bid
+- id: w-poor
+  en: poor
+  ipa: /pʊr/
+  ko: 좋지 않은
+  icon: bulb
+  example: Her mobility is poor.
+  exKo: 거동이 좋지 않아요.
+  cue: 기능이 기대보다 한참 모자랄 때 — 거동 평가
+  tag: 환자 상태
+  distractorsEn:
+  - fair
+  - fine
+  distractorsKo:
+  - 양호한
+  - 보통의
+  chips:
+  - - poor
+  decoyChips:
+  - pour
+- id: w-social
+  en: social
+  ipa: /ˈsoʊʃəl/
+  ko: 사회복지의
+  icon: home
+  example: Social work is arranging discharge.
+  exKo: 사회복지팀이 안전한 퇴원을 주선하고 있어요.
+  cue: '''___ work'' — 주거·보험 문제를 맡는 팀'
+  tag: 전원·퇴원
+  distractorsEn:
+  - special
+  - sociable
+  distractorsKo:
+  - 재활의
+  - 영양의
+  chips:
+  - - so
+    - cial
+  decoyChips:
+  - spe
+  - tial
+- id: w-arrange
+  en: arrange
+  ipa: /əˈreɪndʒ/
+  ko: 주선하다
+  icon: gear
+  example: Social work is arranging a safe discharge.
+  exKo: 사회복지팀이 안전한 퇴원을 주선하고 있어요.
+  cue: 퇴원 뒤 갈 곳·교통편을 알아보고 맞춰 두는 것
+  tag: 전원·퇴원
+  distractorsEn:
+  - assign
+  - attend
+  distractorsKo:
+  - 취소하다
+  - 승인하다
+  chips:
+  - - ar
+    - range
+  decoyChips:
+  - or
+  - rang
+- id: w-shelter
+  en: shelter
+  ipa: /ˈʃɛltər/
+  ko: 보호소
+  icon: home
+  example: She's discharging to a shelter.
+  exKo: 보호소로 퇴원해요.
+  cue: 집이 없는 환자가 퇴원해 머물 곳
+  tag: 전원·퇴원
+  distractorsEn:
+  - shelf
+  - shutter
+  distractorsKo:
+  - 요양원
+  - 재활병원
+  chips:
+  - - shel
+    - ter
+  decoyChips:
+  - shal
+  - tor
+- id: w-agree
+  en: agree
+  ipa: /əˈɡriː/
+  ko: 합의하다
+  icon: check
+  example: Let's agree who follows up.
+  exKo: 누가 후속 처리할지 합의해요.
+  cue: 회의 끝에 담당자를 모두가 받아들이게 정할 때
+  tag: 확인·소통
+  distractorsEn:
+  - argue
+  - arrange
+  distractorsKo:
+  - 반대하다
+  - 미루다
+  chips:
+  - - a
+    - gree
+  decoyChips:
+  - de
+  - grie
+- id: w-follow
+  en: follow
+  ipa: /ˈfɒloʊ/
+  ko: 후속 처리하다
+  icon: compass
+  example: Let's agree who follows up on each item.
+  exKo: 각 항목을 누가 후속 처리할지 합의해요.
+  cue: '''___ up on'' — 회의 뒤 맡은 일을 끝까지 챙김'
+  tag: 확인·소통
+  distractorsEn:
+  - fall
+  - flow
+  distractorsKo:
+  - 인수하다
+  - 위임하다
+  chips:
+  - - fol
+    - low
+  decoyChips:
+  - fal
+  - lo
+- id: w-item
+  en: item
+  ipa: /ˈaɪtəm/
+  ko: 항목
+  icon: board
+  example: Let's agree who follows up on each item.
+  exKo: 각 항목을 누가 맡을지 정해요.
+  cue: 회의에서 하나씩 번호 매긴 할 일
+  tag: 확인·소통
+  distractorsEn:
+  - idea
+  - time
+  distractorsKo:
+  - 일정
+  - 담당자
+  chips:
+  - - i
+    - tem
+  decoyChips:
+  - ti
+  - me
+- id: w-red
+  en: red
+  ipa: /rɛd/
+  ko: 적색(최중증)
+  icon: board
+  example: We have three reds.
+  exKo: 적색이 3명이에요.
+  cue: 트리아지 태그 중 즉시 처치가 필요한 색
+  tag: 재해 분류
+  distractorsEn:
+  - yellow
+  - black
+  distractorsKo:
+  - 황색(중등증)
+  - 흑색(사망)
+  chips:
+  - - red
+  decoyChips:
+  - rod
+- id: w-yellow
+  en: yellow
+  ipa: /ˈjɛloʊ/
+  ko: 황색(중등증)
+  icon: board
+  example: We have five yellows.
+  exKo: 황색이 5명이에요.
+  cue: 트리아지 태그 중 처치를 조금 미뤄도 되는 색
+  tag: 재해 분류
+  distractorsEn:
+  - green
+  - black
+  distractorsKo:
+  - 적색(최중증)
+  - 녹색(경증)
+  chips:
+  - - yel
+    - low
+  decoyChips:
+  - yal
+  - lo
+- id: w-green
+  en: green
+  ipa: /ɡriːn/
+  ko: 녹색(경증)
+  icon: board
+  example: We have eight greens.
+  exKo: 녹색이 8명이에요.
+  cue: 트리아지 태그 중 걸어 다닐 수 있는 경상자의 색
+  tag: 재해 분류
+  distractorsEn:
+  - yellow
+  - black
+  distractorsKo:
+  - 황색(중등증)
+  - 흑색(사망)
+  chips:
+  - - green
+  decoyChips:
+  - grain
+- id: w-bay
+  en: bay
+  ipa: /beɪ/
+  ko: 구역
+  icon: hospital
+  example: The reds are in bays one through three.
+  exKo: 적색은 1번부터 3번 구역에 있어요.
+  cue: ER에서 커튼으로 나눠 번호를 붙인 환자 자리
+  tag: 우선순위·배치
+  distractorsEn:
+  - booth
+  - bench
+  distractorsKo:
+  - 병실
+  - 대기실
+  chips:
+  - - bay
+  decoyChips:
+  - bey
+- id: w-critical
+  en: critical
+  ipa: /ˈkrɪtɪkəl/
+  ko: 위중한
+  icon: siren
+  example: Take the most critical first.
+  exKo: 가장 위중한 환자부터요.
+  cue: 당장 처치하지 않으면 생명이 위험한 정도
+  tag: 재해 분류
+  distractorsEn:
+  - clinical
+  - cortical
+  distractorsKo:
+  - 안정적인
+  - 경미한
+  chips:
+  - - crit
+    - i
+    - cal
+  decoyChips:
+  - clin
+  - ic
+- id: w-triage
+  en: triage
+  ipa: /ˈtriːɑːʒ/
+  ko: 중증도 분류
+  icon: siren
+  example: Here are the triage tags.
+  exKo: 중증도 분류 태그예요.
+  cue: 대량재해에서 색깔 태그로 치료 순서를 매기는 일
+  tag: 재해 분류
+  distractorsEn:
+  - trauma
+  - trial
+  distractorsKo:
+  - 외상
+  - 이송
+  chips:
+  - - tri
+    - age
+  decoyChips:
+  - tree
+  - ache
+- id: w-pending
+  en: pending
+  ipa: /ˈpɛndɪŋ/
+  ko: 대기 중인
+  icon: lab
+  example: His troponin is pending.
+  exKo: 트로포닌 결과는 대기 중이에요.
+  cue: 검사를 냈지만 결과가 아직 안 나온 상태
+  tag: 검사·투약
+  distractorsEn:
+  - spending
+  - impending
+  distractorsKo:
+  - 완료된
+  - 취소된
+  chips:
+  - - pend
+    - ing
+  decoyChips:
+  - pand
+  - en
+- id: w-elevated
+  en: elevated
+  ipa: /ˈɛləˌveɪtɪd/
+  ko: (수치가) 상승한
+  icon: chartup
+  example: If it's elevated, the doctor wants to be called.
+  exKo: 수치가 높으면 의사에게 연락해 달라고 했어요.
+  cue: 트로포닌 결과가 기준치를 넘어 나왔을 때 — 의사에게 바로 알릴 조건
+  tag: 검사 결과
+  distractorsEn:
+  - elevator
+  - alleviated
+  distractorsKo:
+  - 정상 범위의
+  - 감소한
+  chips:
+  - - e
+    - lev
+    - at
+    - ed
+  decoyChips:
+  - al
+  - ated
+- id: w-report
+  en: report
+  ipa: /rɪˈpɔrt/
+  ko: 인계 보고
+  icon: speech
+  example: I'll give report at the door.
+  exKo: 문 앞에서 인계할게요.
+  cue: 교대·이송 때 다음 간호사에게 넘기는 환자 정보 — 'give ___'
+  tag: SBAR 구조
+  distractorsEn:
+  - record
+  - rapport
+  distractorsKo:
+  - 처치
+  - 처방
+  chips:
+  - - re
+    - port
+  decoyChips:
+  - rap
+  - part
+situations:
+- title: SBAR 기본 구조 인계
+  sentences:
+  - en: 'Situation: room four with chest pain since noon.'
+    ko: '상황: 4호실, 정오부터 흉통이 있습니다.'
+    chunks:
+    - 'Situation:'
+    - room four
+    - with chest pain
+    - since noon
+    - .
+    words:
+    - w-situation
+    - w-chest
+    - w-pain
+    - w-noon
+    goal: 1
+    tag: 상황(S)
+    icon: siren
+    why: SBAR는 한 줄 상황(S)으로 시작해요. since는 시작 시점을 짚어 주어 인수자가 경과 시간을 바로 가늠해요.
+    decoy: for two days
+    distractorsKo:
+    - '배경: 고혈압 병력이 있습니다'
+    - '평가: 의식이 명료합니다'
+    blank:
+      answer: chest
+      options:
+      - en: chest
+      - en: back
+      - en: head
+      - en: throat
+  - en: 'Background: history of high blood pressure, no cardiac history.'
+    ko: '배경: 고혈압 병력이 있고, 심장 병력은 없습니다.'
+    chunks:
+    - 'Background:'
+    - history
+    - of high blood pressure
+    - ', no cardiac history'
+    - .
+    words:
+    - w-background
+    - w-history
+    - w-pressure
+    - w-cardiac
+    goal: 1
+    tag: 배경(B)
+    icon: board
+    why: B에는 병력처럼 인수자가 알고 들어야 할 사정을 담아요. no cardiac history처럼 없는 것도 말해 주면 인수자가 되물을 일이 줄어요.
+    decoy: for a week
+    distractorsKo:
+    - '상황: 흉통이 있습니다'
+    - '권고: 모니터를 유지하세요'
+    blank:
+      answer: cardiac
+      options:
+      - en: lung
+      - en: cardiac
+      - en: kidney
+      - en: liver
+  - en: 'Assessment: he''s alert, and his vitals are stable right now.'
+    ko: '평가: 의식은 명료하고, 활력징후는 지금 안정적입니다.'
+    chunks:
+    - 'Assessment:'
+    - he's alert
+    - ', and his vitals'
+    - are stable right now
+    - .
+    words:
+    - w-assessment
+    - w-alert
+    - w-vitals
+    - w-stable
+    goal: 1
+    tag: 평가(A)
+    icon: magnify
+    why: A는 지금 상태에 대한 내 판단이에요. right now를 붙이면 지금 기준이라는 걸 분명히 해서, 나중에 달라질 수 있다는 여지도 남겨요.
+    decoy: since lunch
+    distractorsKo:
+    - '평가: 호흡이 힘들어 보입니다'
+    - '권고: 산소를 올려 주세요'
+    blank:
+      answer: stable
+      options:
+      - en: low
+      - en: critical
+      - en: stable
+      - en: unstable
+  - en: My recommendation is to keep him on the monitor.
+    ko: 제 권고는 계속 모니터로 관찰하는 것입니다.
+    chunks:
+    - My recommendation
+    - is
+    - to keep him
+    - on the monitor
+    - .
+    words:
+    - w-recommendation
+    - w-monitor
+    goal: 1
+    tag: 권고(R)
+    icon: speech
+    why: R은 인수자에게 바라는 행동이에요. My recommendation is to …는 부탁보다 분명하게, 명령보다 부드럽게 제안하는 틀이에요.
+    decoy: at home
+    distractorsKo:
+    - 제 권고는 퇴원시키는 것입니다
+    - 그분을 중환자실로 옮겼습니다
+    blank:
+      answer: monitor
+      options:
+      - en: ventilator
+      - en: stretcher
+      - en: drip
+      - en: monitor
+  - en: 'Sure, let me repeat that: his blood pressure was one forty over ninety.'
+    ko: '네, 다시 말씀드릴게요: 혈압은 140에 90이었습니다.'
+    chunks:
+    - Sure, let me repeat
+    - 'that:'
+    - his blood pressure
+    - was one forty over ninety
+    - .
+    words:
+    - w-repeat
+    - w-pressure
+    goal: 2
+    tag: 복창
+    icon: redo
+    why: 혈압은 over로 수축기와 이완기를 나눠 읽어요. 되묻는 쪽이 정확히 받아 적도록 수치를 천천히 다시 말하는 거예요.
+    decoy: his temperature
+    distractorsKo:
+    - 네, 맥박은 90이었습니다
+    - 네, 체온을 다시 재겠습니다
+    blank:
+      answer: over
+      options:
+      - en: over
+      - en: under
+      - en: above
+      - en: minus
+  - en: Call me right away if his pain score goes above five.
+    ko: 통증 점수가 5점을 넘으면 바로 저를 불러 주세요.
+    chunks:
+    - Call me
+    - right away
+    - if his pain score
+    - goes above five
+    - .
+    words:
+    - w-call
+    - w-pain
+    - w-score
+    goal: 2
+    tag: 호출 기준
+    icon: bell
+    why: 호출 기준은 숫자로 못 박으면 인수자가 판단할 일이 없어요. if 조건으로 언제 부를지를 먼저 말해요.
+    decoy: this evening
+    distractorsKo:
+    - 통증 점수를 지금 확인해 주세요
+    - 통증 점수가 5점이면 기록만 해 주세요
+    blank:
+      answer: above
+      options:
+      - en: down to
+      - en: above
+      - en: below
+      - en: under
+  nuance:
+  - kind: pair
+    words:
+    - w-situation
+    - w-background
+    - w-assessment
+    - w-recommendation
+    pairs:
+    - - Situation
+      - chest pain since noon
+    - - Background
+      - no cardiac history
+    - - Assessment
+      - alert and stable
+    - - Recommendation
+      - keep him on the monitor
+    decoys:
+    - thanks for listening
+    why: S는 지금 벌어진 문제, B는 병력·경위, A는 내가 본 환자 상태(의식·바이탈), R은 인수자에게 바라는 조치예요. 순서를 지키면 듣는 쪽이 빠진 칸을 바로 알아챕니다.
+  - kind: swap
+    words:
+    - w-recommendation
+    who: 인수 간호사에게 · 권고(R)
+    icon: speech
+    before:
+    - ''
+    - Maybe we could keep him
+    - ' on the monitor.'
+    options:
+    - I recommend we keep him
+    - Maybe we could keep him
+    - You have to keep him
+    answer: I recommend we keep him
+    notes:
+      I recommend we keep him: SBAR의 R답게 무엇을 바라는지 분명히 말한다.
+      Maybe we could keep him: 망설이는 말로 들려 인수자가 중요도를 낮게 받아들일 수 있다.
+      You have to keep him: 동료에게 명령처럼 들린다.
+    why: R은 부탁이 아니라 분명한 권고로 말해요. 흐리게 말하면 인계받는 쪽이 얼마나 중요한지 놓칩니다.
+    ko: 모니터로 계속 관찰하기를 권합니다
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: SBAR 인계 4문장 순서
+    why: SBAR는 상황, 배경, 평가, 권고 순서의 틀이에요. 평가는 앞선 병력을 근거로 하고 권고는 그 평가의 결론이라 순서가 하나예요.
+    lines:
+    - en: 'Situation: room four, chest pain since noon.'
+      icon: siren
+      ko: '상황: 4호실, 정오부터 흉통'
+      note: 상황
+    - en: 'Background: high blood pressure, but no cardiac history.'
+      icon: board
+      ko: '배경: 고혈압, 심장 병력은 없음'
+      note: 배경
+    - en: 'Assessment: with that history, he''s alert and stable.'
+      icon: magnify
+      ko: '평가: 그 병력에 비해 의식 명료, 안정적'
+      note: 평가
+    - en: 'Recommendation: so I''d keep him on the monitor.'
+      icon: monitor
+      ko: '권고: 그래서 모니터로 계속 관찰하길 권해요'
+      note: 권고
+- title: 교대 시 환자 요약
+  sentences:
+  - en: Her vitals are stable, last set thirty minutes ago.
+    ko: 활력징후는 안정적이고, 마지막 측정은 30분 전입니다.
+    chunks:
+    - Her vitals are stable
+    - ', last set'
+    - thirty minutes
+    - ago
+    - .
+    words:
+    - w-vitals
+    - w-stable
+    goal: 1
+    tag: 활력징후
+    icon: monitor
+    why: last set은 마지막 활력징후 한 세트를 줄인 인계 말투예요. 수치와 함께 측정 시각을 알려야 인수자가 다음 측정 시각을 가늠해요.
+    decoy: from now
+    distractorsKo:
+    - 활력징후는 30분 뒤에 다시 잴게요
+    - 활력징후는 아직 재지 않았습니다
+    blank:
+      answer: stable
+      options:
+      - en: irregular
+      - en: stable
+      - en: unstable
+      - en: low
+  - en: Chief complaint is abdominal pain since this morning.
+    ko: 주호소는 오늘 아침부터 시작된 복통입니다.
+    chunks:
+    - Chief complaint is
+    - abdominal pain
+    - since this morning
+    - .
+    words:
+    - w-complaint
+    - w-abdominal
+    - w-pain
+    goal: 1
+    tag: 주호소
+    icon: pushpin
+    why: chief complaint는 환자가 병원에 온 가장 큰 이유를 환자가 말한 대로 적는 항목이에요. 인계를 이 말로 시작하면 인수자가 맥락을 바로 잡아요.
+    decoy: for two weeks
+    distractorsKo:
+    - 주호소는 어제부터 시작된 두통입니다
+    - 주호소는 가슴 통증입니다
+    blank:
+      answer: abdominal
+      options:
+      - en: back
+      - en: throat
+      - en: abdominal
+      - en: chest
+  - en: We're still waiting on the CT results.
+    ko: CT 결과는 아직 기다리는 중입니다.
+    chunks:
+    - We're still waiting
+    - on the CT
+    - results
+    - .
+    words:
+    - w-wait
+    - w-result
+    goal: 2
+    tag: 대기 중
+    icon: hospital
+    why: wait on은 결과가 나오기를 기다린다는 뜻으로 병원에서 흔히 써요. still을 넣으면 이미 시간이 꽤 지났다는 느낌까지 전해요.
+    decoy: for the MRI
+    distractorsKo:
+    - CT 결과는 이미 나왔습니다
+    - CT 촬영을 예약해야 합니다
+    blank:
+      answer: CT
+      options:
+      - en: MRI
+      - en: X-ray
+      - en: ultrasound
+      - en: CT
+  - en: Please recheck her blood pressure before you chart it.
+    ko: 차트에 기록하기 전에 혈압을 다시 확인해 주세요.
+    chunks:
+    - Please recheck
+    - her blood pressure
+    - before you
+    - chart it
+    - .
+    words:
+    - w-recheck
+    - w-pressure
+    goal: 2
+    tag: 재확인 요청
+    icon: pencil
+    why: before you chart it은 기록 전에 확인하라는 순서를 정해 줘요. 잘못된 수치를 차트에 남기지 않도록 하는 순서예요.
+    decoy: yourself
+    distractorsKo:
+    - 체온을 다시 확인해 주세요
+    - 혈압은 이미 기록했습니다
+    blank:
+      answer: before
+      options:
+      - en: before
+      - en: after
+      - en: while
+      - en: once
+  - en: She hasn't needed any pain medicine this shift.
+    ko: 이번 근무 동안 진통제는 필요 없었습니다.
+    chunks:
+    - She hasn't needed
+    - any pain medicine
+    - this shift
+    - .
+    words:
+    - w-pain
+    - w-medicine
+    goal: 1
+    tag: 투약 상황
+    icon: pill
+    why: hasn't needed any는 한 번도 필요하지 않았다는 부정을 짧게 전해요. 이번 근무 기준으로 말하면 인수자가 진통제 사용 이력을 한눈에 알아요.
+    decoy: last night
+    distractorsKo:
+    - 진통제는 방금 투여했습니다
+    - 진통제를 한 번 더 처방받아야 합니다
+    blank:
+      answer: pain
+      options:
+      - en: heart
+      - en: pain
+      - en: sleep
+      - en: allergy
+  nuance:
+  - kind: pair
+    words:
+    - w-complaint
+    - w-result
+    pairs:
+    - - chief
+      - complaint
+    - - still waiting on
+      - the CT results
+    - - thirty minutes
+      - ago
+    decoys:
+    - stable
+    why: '''chief complaint''(주호소)는 한 덩어리 표현이고, 결과는 ''waiting on''으로 기다려요. 마지막 측정 시점은 ''thirty minutes ago''처럼 얼마 전인지로 말합니다.'
+  - kind: context
+    words:
+    - w-complaint
+    - w-abdominal
+    scenes:
+    - who: 교대 인계
+      icon: speech
+      en: Chief complaint is abdominal pain since this morning.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: 'Chief complaint: abd pain since this AM.'
+      ok: true
+    - who: 보호자에게
+      icon: me
+      en: Her chief complaint is abdominal pain.
+      ok: false
+      fix: She came in because of stomach pain that started this morning.
+    why: '''chief complaint''·''abdominal''은 의료진끼리 쓰는 말이에요. 가족에게는 ''came in because of'', ''stomach pain''처럼 풀어 말해요.'
+    word: chief complaint
+    ko: 주호소
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 교대 환자 요약 4문장 순서
+    why: 주호소로 시작해 그 뒤의 활력징후를 말하고, 아직 남은 검사를 짚은 다음 결과가 나오면 연락해 달라고 부탁해요. 앞 줄이 뒤 줄이 가리키는 말의 근거예요.
+    lines:
+    - en: Chief complaint is abdominal pain since this morning.
+      icon: pushpin
+      ko: 주호소는 오늘 아침부터 복통
+      note: 주호소
+    - en: Her vitals have been stable since then.
+      icon: monitor
+      ko: 그 뒤로 활력징후는 안정적
+      note: 상태
+    - en: Even so, we're still waiting on her CT results.
+      icon: hospital
+      ko: 그래도 CT 결과는 아직 기다리는 중
+      note: 대기
+    - en: Please call me as soon as they're back.
+      icon: bell
+      ko: 결과가 나오는 대로 저를 불러 주세요
+      note: 요청
+- title: 미결 업무 인계
+  sentences:
+  - en: His next antibiotic dose is due at four.
+    ko: 다음 항생제 투여는 4시 예정입니다.
+    chunks:
+    - His next antibiotic dose
+    - is due
+    - at four
+    - .
+    words:
+    - w-antibiotic
+    - w-dose
+    - w-due
+    goal: 1
+    tag: 투약 예정
+    icon: pill
+    why: be due at + 시각은 정해진 시각에 해야 하는 일을 말해요. 다음 투약 시각을 먼저 알려 주면 인수자가 업무 순서를 잡을 수 있어요.
+    decoy: every day
+    distractorsKo:
+    - 항생제는 4시에 이미 투여했습니다
+    - 다음 진통제는 4시 예정입니다
+    blank:
+      answer: due
+      options:
+      - en: held
+      - en: skipped
+      - en: due
+      - en: late
+  - en: The urine sample still needs to go to the lab.
+    ko: 소변 검체는 아직 검사실로 보내야 합니다.
+    chunks:
+    - The urine sample
+    - still needs
+    - to go
+    - to the lab
+    - .
+    words:
+    - w-urine
+    - w-sample
+    - w-lab
+    goal: 1
+    tag: 미결 업무
+    icon: pushpin
+    why: still needs to는 아직 끝나지 않은 일을 인계할 때 쓰는 틀이에요. 검체는 시간이 지나면 검사에 쓸 수 없는 경우가 있어서 보낼 곳과 함께 알려요.
+    decoy: to the unit
+    distractorsKo:
+    - 소변 검체는 이미 검사실에 도착했습니다
+    - 소변량을 다시 재야 합니다
+    blank:
+      answer: urine
+      options:
+      - en: blood
+      - en: stool
+      - en: sputum
+      - en: urine
+  - en: Please recheck her blood pressure in an hour.
+    ko: 한 시간 뒤에 혈압을 다시 확인해 주세요.
+    chunks:
+    - Please recheck
+    - her blood pressure
+    - in an hour
+    - .
+    words:
+    - w-recheck
+    - w-pressure
+    goal: 1
+    tag: 재측정 요청
+    icon: monitor
+    why: in an hour처럼 시간 간격을 정해 주면 인수자가 재측정 시각을 직접 계산하지 않아도 돼요. Please …는 짧게 부탁할 때 쓰는 틀이에요.
+    decoy: this morning
+    distractorsKo:
+    - 한 시간 전에 혈압을 확인했습니다
+    - 혈압은 지금 바로 확인해 주세요
+    blank:
+      answer: an hour
+      options:
+      - en: an hour
+      - en: a day
+      - en: a week
+      - en: a minute
+  - en: His last dose of antibiotic was given on time.
+    ko: 지난번 항생제 투여는 제시간에 이루어졌습니다.
+    chunks:
+    - His last dose
+    - of antibiotic
+    - was given
+    - on time
+    - .
+    words:
+    - w-dose
+    - w-antibiotic
+    - w-give
+    goal: 1
+    tag: 투약 확인
+    icon: check
+    why: was given은 투여가 실제로 이루어졌다는 말이에요. ordered(처방됨)와 구분해서 말해야 인수자가 중복 투여나 누락을 걱정하지 않아요.
+    decoy: yesterday
+    distractorsKo:
+    - 지난번 항생제는 아직 투여하지 않았습니다
+    - 지난번 항생제는 처방만 되어 있습니다
+    blank:
+      answer: given
+      options:
+      - en: held
+      - en: given
+      - en: ordered
+      - en: charted
+  - en: Can you confirm the lab result once it's back?
+    ko: 결과가 나오면 확인해 주실 수 있나요?
+    chunks:
+    - Can you confirm
+    - the lab result
+    - once it's
+    - back
+    - '?'
+    words:
+    - w-confirm
+    - w-lab
+    - w-result
+    goal: 2
+    tag: 확인 요청
+    icon: speech
+    why: once는 ~하는 대로라는 뜻이라 결과가 나오는 때를 조건으로 부탁해요. Can you …?는 지시 대신 부탁의 모양이에요.
+    decoy: the X-ray report
+    distractorsKo:
+    - 결과가 나오기 전에 확인해 주시겠어요?
+    - 결과를 제가 대신 확인할게요
+    blank:
+      answer: once
+      options:
+      - en: although
+      - en: until
+      - en: once
+      - en: unless
+  nuance:
+  - kind: slider
+    words:
+    - w-due
+    cue: 'Nurse: "It was supposed to go in at two, and it''s already three."'
+    scale:
+    - due at six
+    - due soon
+    - overdue
+    answerAt: 2
+    why: '''due''는 예정 시각이고, 그 시각이 지났으면 ''overdue''예요. 이미 늦은 투약은 인계에서 overdue라고 분명히 말해야 인수자가 먼저 챙겨요.'
+    example: His antibiotic is overdue by an hour.
+    exKo: 항생제가 한 시간 늦었어요.
+  - kind: context
+    words:
+    - w-antibiotic
+    - w-dose
+    scenes:
+    - who: 교대 인계
+      icon: speech
+      en: His next antibiotic dose is due at four.
+      ok: true
+    - who: 투약 기록
+      icon: board
+      en: Next abx dose due 1600.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Your next antibiotic dose is due at sixteen hundred.
+      ok: false
+      fix: You'll get your next antibiotic at four o'clock.
+    why: 24시간제(1600)와 'dose is due'는 의료진끼리의 말이에요. 환자에게는 'four o'clock'처럼 일상 시각으로 말해요.
+    word: dose
+    ko: (1회) 투여분
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 미결 업무 인계 4문장 순서
+    why: 지난 투약을 말하고, the next one으로 다음 투약이 4시라고 이어요. Before that으로 그 전에 검체를 보내야 한다고 짚고, 마지막으로 the result가 나오면 확인해 달라고 부탁해요. 줄마다 앞 줄을 가리키는 말이 있어 순서가 하나예요.
+    lines:
+    - en: His last dose of antibiotic was given on time.
+      icon: pill
+      ko: 그분의 지난 항생제는 제시간에 투여됐어요
+      note: 지난 투약
+    - en: The next one is due at four.
+      icon: calendar
+      ko: 다음 투약은 4시 예정이에요
+      note: 다음 투약
+    - en: Before that, the urine sample still needs to go to the lab.
+      icon: lab
+      ko: 그 전에 소변 검체를 아직 검사실로 보내야 해요
+      note: 검체
+    - en: Can you confirm the result once it's back?
+      icon: magnify
+      ko: 결과가 나오면 확인해 주시겠어요?
+      note: 결과 확인
+- title: 환자 정보 재확인
+  sentences:
+  - en: This is Mr. Alvarez in bed two, correct?
+    ko: 이분은 2번 병상의 알바레즈 씨, 맞나요?
+    chunks:
+    - This is Mr. Alvarez
+    - in bed two
+    - ', correct'
+    - '?'
+    words:
+    - w-bed
+    - w-correct
+    goal: 1
+    tag: 인수자 확인
+    icon: me
+    why: 동료끼리는 correct?를 끝에 붙여 이해한 내용을 되묻는 확인을 해요. 병상 번호는 위치를 말할 뿐이고, 환자 식별은 이름과 생년월일로 해요.
+    decoy: from admitting
+    distractorsKo:
+    - 이분은 3번 병상의 알바레즈 씨입니다
+    - 2번 병상 환자는 퇴원했습니다
+    blank:
+      answer: correct
+      options:
+      - en: ready
+      - en: stable
+      - en: awake
+      - en: correct
+  - en: Working diagnosis is dehydration, ruling out infection.
+    ko: 현재 진단은 탈수이고, 감염은 배제하는 중입니다.
+    chunks:
+    - Working diagnosis is
+    - dehydration
+    - ', ruling out infection'
+    - .
+    words:
+    - w-diagnosis
+    goal: 1
+    tag: 현재 진단
+    icon: stetho
+    why: working diagnosis는 아직 확정 전이라 검사로 바뀔 수 있는 잠정 진단이에요. ruling out은 가능성을 하나씩 지워 가는 중이라는 뜻이에요.
+    decoy: for sure
+    distractorsKo:
+    - 확진은 감염으로 나왔습니다
+    - 현재 진단은 아직 없습니다
+    blank:
+      answer: dehydration
+      options:
+      - en: dehydration
+      - en: anemia
+      - en: stroke
+      - en: asthma
+  - en: Can you read the ID band back to me?
+    ko: ID 밴드를 저에게 다시 읽어 주시겠어요?
+    chunks:
+    - Can you
+    - read
+    - the ID band
+    - back to me
+    - '?'
+    words:
+    - w-band
+    goal: 2
+    tag: 복창 요청
+    icon: mic
+    why: read … back to me는 눈으로 본 것을 소리 내어 되읽게 해서 내가 들은 것과 맞는지 대조하는 방식이에요. 소리 내어 읽으면 눈으로만 볼 때 놓친 오류를 잡기 쉬워요.
+    decoy: from me
+    distractorsKo:
+    - ID 밴드를 새로 채워 주시겠어요?
+    - ID 밴드를 저에게 건네 주시겠어요?
+    blank:
+      answer: ID
+      options:
+      - en: alert
+      - en: ID
+      - en: allergy
+      - en: blood
+  - en: Let's confirm the date of birth on the chart together.
+    ko: 차트에 있는 생년월일도 함께 확인해요.
+    chunks:
+    - Let's confirm
+    - the date of birth
+    - on the chart
+    - together
+    - .
+    words:
+    - w-confirm
+    - w-chart
+    goal: 2
+    tag: 함께 확인
+    icon: calendar
+    why: Let's …는 상대를 지시하지 않고 같이 하자는 모양이라 공동 확인이 자연스러워요. 생년월일은 이름과 함께 쓰는 두 번째 식별자예요.
+    decoy: by phone
+    distractorsKo:
+    - 생년월일은 제가 혼자 확인할게요
+    - 차트에서 이름을 함께 확인해요
+    blank:
+      answer: together
+      options:
+      - en: later
+      - en: twice
+      - en: together
+      - en: alone
+  - en: His name and date of birth both match the chart.
+    ko: 이름과 생년월일 모두 차트와 일치합니다.
+    chunks:
+    - His name
+    - and date of birth
+    - both match
+    - the chart
+    - .
+    words:
+    - w-match
+    - w-chart
+    goal: 1
+    tag: 일치 확인
+    icon: check
+    why: both match는 두 항목이 모두 일치한다고 한 번에 보고해요. 이름과 생년월일은 환자 식별에 쓰는 두 식별자라 이 둘을 대조해요(병상 번호는 위치 확인용).
+    decoy: last night
+    distractorsKo:
+    - 이름과 생년월일이 모두 다릅니다
+    - 이름만 차트와 일치합니다
+    blank:
+      answer: chart
+      options:
+      - en: monitor
+      - en: pharmacy
+      - en: schedule
+      - en: chart
+  - en: I'll wait while you double-check his wristband.
+    ko: 손목밴드를 다시 확인하시는 동안 기다릴게요.
+    chunks:
+    - I'll wait
+    - while you double-check
+    - his wristband
+    - .
+    words:
+    - w-wait
+    goal: 2
+    tag: 대기 표현
+    icon: bandage
+    why: I'll wait while you …는 상대가 확인하는 동안 서두르지 않겠다는 약속이에요. 확인이 끝날 때까지 기다린다고 말하면 급히 넘기는 인계를 막아요.
+    decoy: outside the room
+    distractorsKo:
+    - 손목밴드는 제가 다시 확인할게요
+    - 손목밴드를 확인하신 뒤에 가겠습니다
+    blank:
+      answer: while
+      options:
+      - en: while
+      - en: unless
+      - en: although
+      - en: because
+  nuance:
+  - kind: pair
+    words:
+    - w-band
+    - w-diagnosis
+    - w-chart
+    pairs:
+    - - read the ID band
+      - back to me
+    - - working
+      - diagnosis
+    - - match
+      - the chart
+    decoys:
+    - ruling out
+    why: '''read back''은 들은 것을 되읽어 확인하는 것, ''working diagnosis''는 아직 확정 전의 현재 진단, 차트와 대조할 때는 ''match''를 써요.'
+  - kind: context
+    words:
+    - w-correct
+    - w-bed
+    scenes:
+    - who: 인수 간호사에게
+      icon: speech
+      en: This is Mr. Alvarez in bed two, correct?
+      ok: true
+    - who: 차트 대조
+      icon: board
+      en: Name and DOB correct per the chart.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: You're Mr. Alvarez in bed two, correct?
+      ok: false
+      fix: Can you tell me your full name and date of birth?
+    why: 동료끼리는 '맞죠?'로 확인해도 되지만, 환자에게 이름을 먼저 말하고 '맞죠?'라고 물으면 잘못 듣고도 '네'라고 할 수 있어요. 환자에게는 이름과 생년월일을 직접 말하게 해요.
+    word: correct
+    ko: 맞는(확인)
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 환자 정보 재확인 4문장 순서
+    why: 먼저 누구인지 되묻고, 그 답 뒤에 ID 밴드를 읽게 해요. 밴드가 맞으면 생년월일을 확인하고, 두 가지가 모두 맞을 때 인수를 마무리해요.
+    lines:
+    - en: This is Mr. Alvarez in bed two, correct?
+      icon: me
+      ko: 2번 병상의 알바레즈 씨 맞나요?
+      note: 확인
+    - en: Yes. Can you read his ID band back to me?
+      icon: mic
+      ko: 네. ID 밴드를 읽어 주시겠어요?
+      note: 복창
+    - en: That matches, so let's confirm the date of birth next.
+      icon: calendar
+      ko: 맞네요, 이어서 생년월일을 확인해요
+      note: 생년월일
+    - en: Both match the chart, so I'm good to take over.
+      icon: check
+      ko: 둘 다 차트와 맞으니 제가 이어받을게요
+      note: 인수
+- title: 우선순위 환자 지목
+  sentences:
+  - en: Watch bed three most closely this shift.
+    ko: 이번 근무 동안 3번 병상을 가장 주의 깊게 봐 주세요.
+    chunks:
+    - Watch bed three
+    - most closely
+    - this shift
+    - .
+    words:
+    - w-watch
+    - w-bed
+    goal: 1
+    tag: 우선순위
+    icon: magnify
+    why: most closely로 가장 먼저 눈여겨볼 환자를 분명히 짚어요. 명령형 Watch …는 짧고 분명해서 인계 중 우선순위를 전하기 좋아요.
+    decoy: tomorrow
+    distractorsKo:
+    - 이번 근무 동안 3번 병상은 신경 쓰지 않아도 돼요
+    - 3번 병상은 가장 마지막에 봐 주세요
+    blank:
+      answer: closely
+      options:
+      - en: closely
+      - en: briefly
+      - en: rarely
+      - en: loosely
+  - en: Her pressure has been trending down all afternoon.
+    ko: 그분 혈압이 오후 내내 계속 떨어지고 있습니다.
+    chunks:
+    - Her pressure has been
+    - trending down
+    - all afternoon
+    - .
+    words:
+    - w-pressure
+    - w-trend
+    goal: 1
+    tag: 추세 설명
+    icon: chevronDown
+    why: has been trending down은 한 번의 수치가 아니라 시간에 따른 흐름을 말해요. 추세를 알려 주면 지금 값이 괜찮아도 인수자가 경계해요.
+    decoy: than before
+    distractorsKo:
+    - 그분 혈압이 오후 내내 올라가고 있습니다
+    - 그분 혈압은 오후 내내 일정합니다
+    blank:
+      answer: afternoon
+      options:
+      - en: night
+      - en: afternoon
+      - en: morning
+      - en: evening
+  - en: If anything changes, call the doctor early.
+    ko: 뭔가 변화가 있으면 일찍 의사를 호출하세요.
+    chunks:
+    - If anything changes
+    - ', call the doctor'
+    - early
+    - .
+    words:
+    - w-change
+    - w-call
+    goal: 2
+    tag: 호출 기준
+    icon: bell
+    why: If anything changes는 구체적 수치 없이도 변화가 생기면 알리라는 포괄적 조건이에요. early는 상태가 더 나빠지기 전에 알리라는 뜻이에요.
+    decoy: at home
+    distractorsKo:
+    - 변화가 없으면 의사를 호출하세요
+    - 뭔가 변하면 의사에게 나중에 말하세요
+    blank:
+      answer: early
+      options:
+      - en: late
+      - en: twice
+      - en: early
+      - en: later
+  - en: The other three beds are stable and just waiting for discharge.
+    ko: 나머지 세 병상은 안정적이고 퇴원만 기다리고 있습니다.
+    chunks:
+    - The other three beds
+    - are stable
+    - and just waiting
+    - for discharge
+    - .
+    words:
+    - w-bed
+    - w-stable
+    - w-wait
+    - w-discharge
+    goal: 1
+    tag: 나머지 환자
+    icon: board
+    why: just waiting for는 치료할 일은 끝났고 절차만 남았다는 느낌을 줘요. 나머지 환자가 안정적이라고 먼저 알려야 인수자가 시선을 한 환자에게 모을 수 있어요.
+    decoy: at noon
+    distractorsKo:
+    - 나머지 세 병상은 모두 불안정합니다
+    - 나머지 환자는 모두 퇴원했습니다
+    blank:
+      answer: discharge
+      options:
+      - en: surgery
+      - en: dialysis
+      - en: admission
+      - en: discharge
+  - en: Bed three needs the most attention tonight.
+    ko: 오늘 밤은 3번 병상에 가장 주의가 필요합니다.
+    chunks:
+    - Bed three
+    - needs the most
+    - attention tonight
+    - .
+    words:
+    - w-bed
+    - w-attention
+    goal: 1
+    tag: 집중 필요
+    icon: siren
+    why: the most attention은 여러 환자 중 가장 많은 관심이 필요하다고 순위를 매기는 말이에요. 앞에서 말한 우선순위를 마지막에 한 줄로 되짚어 줘요.
+    decoy: for one
+    distractorsKo:
+    - 오늘 밤은 3번 병상이 가장 안정적입니다
+    - 오늘 밤은 3번 병상에 아무 조치도 필요 없습니다
+    blank:
+      answer: attention
+      options:
+      - en: attention
+      - en: oxygen
+      - en: fluids
+      - en: medicine
+  nuance:
+  - kind: pair
+    words:
+    - w-watch
+    - w-trend
+    - w-call
+    pairs:
+    - - watch
+      - closely
+    - - trending
+      - down
+    - - call the doctor
+      - early
+    decoys:
+    - attention
+    why: '''watch closely''는 주의 깊게 봐 달라는 인계 표현, 수치의 흐름은 ''trending down/up'', ''call early''는 나빠지기 전에 미리 알리라는 뜻이에요.'
+  - kind: swap
+    words:
+    - w-attention
+    - w-bed
+    who: 인수 간호사에게 · 우선순위
+    icon: speech
+    before:
+    - 'Bed three '
+    - is kind of sick, I guess
+    - .
+    options:
+    - needs the most attention
+    - is kind of sick, I guess
+    - is going to crash
+    answer: needs the most attention
+    notes:
+      needs the most attention: 누구를 먼저 봐야 하는지 분명히 짚는다.
+      is kind of sick, I guess: 흐릿해서 우선순위가 전해지지 않는다.
+      is going to crash: '''crash''는 급격한 악화를 뜻하는 구어라, 근거 없이 단정하면 과장으로 들린다.'
+    why: 우선순위 환자는 흐리지도 부풀리지도 말고 분명하게 짚어요. 이유(혈압 추세)는 이어서 말합니다.
+    ko: 3번 병상에 가장 주의가 필요해요
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 우선순위 환자 지목 4문장 순서
+    why: 누구를 볼지 먼저 짚고, 그 환자의 추세를 근거로 대요. 이어서 호출 기준을 주고, 마지막에 나머지 환자는 안정적이라고 정리해요. Other than her가 앞의 3번 병상을, that call이 앞 줄의 호출을 받아요.
+    lines:
+    - en: Watch bed three most closely this shift.
+      icon: magnify
+      ko: 이번 근무엔 3번 병상을 가장 주의 깊게 봐 주세요
+      note: 우선순위
+    - en: Her pressure has been trending down all afternoon.
+      icon: chevronDown
+      ko: 그분 혈압이 오후 내내 떨어지고 있어요
+      note: 추세
+    - en: If it drops further, call the doctor early.
+      icon: bell
+      ko: 더 떨어지면 일찍 의사를 부르세요
+      note: 호출
+    - en: Other than her, the other three beds are stable and just waiting for discharge, so that call is only for her.
+      icon: home
+      ko: 그분 말고 나머지 세 병상은 안정적이고 퇴원만 기다리니, 그 호출은 그분만 해당돼요
+      note: 나머지
+- title: 병동 입원 인계
+  sentences:
+  - en: She's admitted for pneumonia, on IV antibiotics.
+    ko: 폐렴으로 입원했고, 정맥 항생제를 투여 중입니다.
+    chunks:
+    - She's admitted
+    - for pneumonia
+    - ', on IV antibiotics'
+    - .
+    words:
+    - w-antibiotic
+    goal: 1
+    tag: 입원 사유
+    icon: hospital
+    why: admitted for + 병명은 입원 이유를 한 번에 알려 줘요. on IV antibiotics로 지금 받는 치료까지 이어 말하면 인계가 짧아져요.
+    decoy: from home
+    distractorsKo:
+    - 폐렴이 완치되어 퇴원할 예정입니다
+    - 폐렴으로 중환자실에 입원했습니다
+    blank:
+      answer: pneumonia
+      options:
+      - en: meningitis
+      - en: pneumonia
+      - en: appendicitis
+      - en: cellulitis
+  - en: Last vitals were stable, oxygen at two liters.
+    ko: 마지막 활력징후는 안정적이고, 산소는 2리터입니다.
+    chunks:
+    - Last vitals
+    - were stable
+    - ', oxygen at two liters'
+    - .
+    words:
+    - w-vitals
+    - w-stable
+    - w-oxygen
+    goal: 1
+    tag: 산소 상태
+    icon: monitor
+    why: oxygen at two liters는 산소를 분당 2리터로 주는 지금 설정을 말해요. 활력징후와 산소 설정을 함께 알려야 인수자가 바로 비교할 수 있어요.
+    decoy: per day
+    distractorsKo:
+    - 마지막 활력징후는 불안정했고 산소는 2리터입니다
+    - 마지막 활력징후는 안정적이고 산소는 필요 없습니다
+    blank:
+      answer: oxygen
+      options:
+      - en: output
+      - en: drainage
+      - en: oxygen
+      - en: fluids
+  - en: Pending labs are her morning cultures.
+    ko: 대기 중인 검사는 아침 배양검사입니다.
+    chunks:
+    - Pending labs
+    - are her
+    - morning cultures
+    - .
+    words:
+    - w-lab
+    - w-pending
+    goal: 2
+    tag: 대기 검사
+    icon: lab
+    why: pending은 검사를 보냈지만 결과가 아직 없다는 상태예요. 어떤 검사가 남았는지 알려 줘야 인수자가 결과를 챙겨요.
+    decoy: this week
+    distractorsKo:
+    - 아침 배양검사 결과는 모두 나왔습니다
+    - 대기 중인 검사는 저녁 혈액검사입니다
+    blank:
+      answer: cultures
+      options:
+      - en: x-rays
+      - en: scans
+      - en: vitals
+      - en: cultures
+  - en: She's due for her next antibiotic dose at six.
+    ko: 다음 항생제 투여는 6시 예정입니다.
+    chunks:
+    - She's due
+    - for her next
+    - antibiotic dose
+    - at six
+    - .
+    words:
+    - w-due
+    - w-antibiotic
+    - w-dose
+    goal: 2
+    tag: 다음 투약
+    icon: pill
+    why: be due for는 때가 된 일을 말해요. 시각을 함께 말하면 병동 간호사가 도착 직후에도 투약을 놓치지 않아요.
+    decoy: by mouth
+    distractorsKo:
+    - 다음 항생제는 6시에 이미 투여했습니다
+    - 항생제 처방이 아직 나지 않았습니다
+    blank:
+      answer: antibiotic
+      options:
+      - en: antibiotic
+      - en: insulin
+      - en: heparin
+      - en: steroid
+  - en: Please recheck her oxygen level once she's settled on the floor.
+    ko: 병동에 자리 잡으면 산소 수치를 다시 확인해 주세요.
+    chunks:
+    - Please recheck
+    - her oxygen level
+    - once she's settled
+    - on the floor
+    - .
+    words:
+    - w-recheck
+    - w-oxygen
+    - w-level
+    goal: 2
+    tag: 재확인 요청
+    icon: redo
+    why: once she's settled은 이동 직후 정신없는 시간이 지난 뒤에 확인하라는 시점을 정해 줘요. 이동 중 수치는 흔들릴 수 있어서 안정된 뒤 다시 재요.
+    decoy: tonight
+    distractorsKo:
+    - 병동에 도착하기 전에 산소 수치를 확인해 주세요
+    - 산소 수치는 다시 확인하지 않아도 됩니다
+    blank:
+      answer: level
+      options:
+      - en: alarm
+      - en: level
+      - en: tank
+      - en: mask
+  nuance:
+  - kind: slider
+    words:
+    - w-oxygen
+    cue: 'Floor nurse: "How much oxygen is she on?" — "Just a little, through her nose."'
+    scale:
+    - room air
+    - two liters by nasal cannula
+    - non-rebreather mask
+    answerAt: 1
+    why: 산소 요구량은 room air(산소 없음) → nasal cannula(콧줄, 저유량) → non-rebreather(고농도 마스크) 순으로 커져요. 병동은 산소를 얼마나, 무엇으로 주는지 꼭 알아야 해요.
+    example: She's on two liters by nasal cannula.
+    exKo: 콧줄로 2리터 쓰고 있어요.
+  - kind: context
+    words:
+    - w-pending
+    - w-lab
+    scenes:
+    - who: 병동 간호사에게
+      icon: speech
+      en: Pending labs are her morning cultures.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: 'Pending labs: AM blood cultures.'
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Your pending labs are the morning cultures.
+      ok: false
+      fix: We're still waiting on some test results from this morning.
+    why: '''pending labs''·''cultures''는 의료진끼리의 말이에요. 환자에게는 ''still waiting on test results''로 풀어 말해요.'
+    word: pending labs
+    ko: 대기 중인 검사
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 병동 입원 인계 4문장 순서
+    why: 입원 사유로 시작해 활력징후를 말하고, 그것이 바뀌면 산소를 다시 재요. 새 수치가 낮을 때 의사를 부르니 각 줄이 앞 줄의 말을 이어받아요.
+    lines:
+    - en: She's admitted for pneumonia, on IV antibiotics.
+      icon: hospital
+      ko: 폐렴으로 입원했고 정맥 항생제 중이에요
+      note: 입원
+    - en: Her last vitals were stable, with oxygen at two liters.
+      icon: monitor
+      ko: 마지막 활력징후는 안정적, 산소 2리터
+      note: 상태
+    - en: If that changes, please recheck her oxygen level.
+      icon: redo
+      ko: 그게 바뀌면 산소 수치를 다시 확인해 주세요
+      note: 재확인
+    - en: If the new number is lower, call the doctor early.
+      icon: bell
+      ko: 새 수치가 더 낮으면 일찍 의사를 부르세요
+      note: 호출
+- title: 검사 대기 환자 인계
+  sentences:
+  - en: His troponin is pending, due back within the hour.
+    ko: 트로포닌 결과는 대기 중이며, 한 시간 내로 나올 예정입니다.
+    chunks:
+    - His troponin
+    - is pending
+    - ', due back'
+    - within the hour
+    - .
+    words:
+    - w-due
+    - w-pending
+    goal: 1
+    tag: 대기 결과
+    icon: lab
+    why: troponin은 심근 손상이 있을 때 오르는 혈액 검사 수치예요. due back은 결과가 돌아올 예정이라는 말로, 시간 범위를 함께 말하면 기다리는 간격이 분명해져요.
+    decoy: last night
+    distractorsKo:
+    - 트로포닌 결과가 이미 나왔습니다
+    - 트로포닌 검사는 취소되었습니다
+    blank:
+      answer: pending
+      options:
+      - en: elevated
+      - en: negative
+      - en: pending
+      - en: normal
+  - en: If it's elevated, the doctor wants to be called.
+    ko: 수치가 높으면 의사에게 연락해 달라고 했습니다.
+    chunks:
+    - If it's elevated
+    - ', the doctor'
+    - wants to be
+    - called
+    - .
+    words:
+    - w-call
+    - w-elevated
+    goal: 2
+    tag: 호출 조건
+    icon: bell
+    why: If it's elevated로 어떤 결과일 때 행동할지 조건을 먼저 정해요. wants to be called는 의사의 요청을 그대로 전하는 간접 표현이에요.
+    decoy: at home
+    distractorsKo:
+    - 수치가 정상이면 의사에게 연락해 달라고 했습니다
+    - 수치와 상관없이 의사가 직접 올 예정입니다
+    blank:
+      answer: elevated
+      options:
+      - en: normal
+      - en: pending
+      - en: negative
+      - en: elevated
+  - en: The X-ray is done but not yet read.
+    ko: 엑스레이는 촬영했지만 아직 판독 전입니다.
+    chunks:
+    - The X-ray is done
+    - but not yet
+    - read
+    - .
+    words: []
+    goal: 1
+    tag: 판독 대기
+    icon: magnify
+    why: done은 촬영이 끝났다는 뜻이고 read는 판독이 끝났다는 뜻이에요. 둘을 구분해야 결과가 나온 줄 오해하지 않아요.
+    decoy: last night
+    distractorsKo:
+    - 엑스레이는 아직 촬영 전입니다
+    - 엑스레이 판독까지 모두 끝났습니다
+    blank:
+      answer: done
+      options:
+      - en: done
+      - en: ordered
+      - en: scheduled
+      - en: canceled
+  - en: His pain score has stayed the same since the last check.
+    ko: 마지막 확인 이후 통증 점수는 그대로입니다.
+    chunks:
+    - His pain score
+    - has stayed
+    - the same
+    - since the last check
+    - .
+    words:
+    - w-pain
+    - w-score
+    goal: 1
+    tag: 통증 추이
+    icon: faceWorried
+    why: has stayed the same은 변화가 없다는 것을 그대로 전해요. since the last check로 비교 시점을 정해 줘야 같다는 말이 의미를 가져요.
+    decoy: each time
+    distractorsKo:
+    - 마지막 확인 이후 통증 점수가 올랐습니다
+    - 마지막 확인 이후 통증 점수가 반으로 줄었습니다
+    blank:
+      answer: since
+      options:
+      - en: during
+      - en: since
+      - en: until
+      - en: before
+  - en: Please confirm the troponin result as soon as it's back.
+    ko: 트로포닌 결과가 나오는 대로 확인해 주세요.
+    chunks:
+    - Please confirm
+    - the troponin result
+    - as soon as
+    - it's back
+    - .
+    words:
+    - w-confirm
+    - w-result
+    goal: 2
+    tag: 확인 요청
+    icon: mic
+    why: as soon as는 결과가 나오는 즉시라는 시점을 정해 줘요. Please 뒤의 명령형은 짧게 부탁할 때 쓰는 흔한 틀이에요.
+    decoy: to him
+    distractorsKo:
+    - 트로포닌 결과가 나오기 전에는 확인하지 마세요
+    - 결과는 제가 직접 확인할게요
+    blank:
+      answer: confirm
+      options:
+      - en: order
+      - en: cancel
+      - en: confirm
+      - en: repeat
+  nuance:
+  - kind: slider
+    words:
+    - w-result
+    cue: The troponin came back right at the cutoff — not clearly normal, not clearly high.
+    scale:
+    - within normal limits
+    - borderline
+    - elevated
+    - critical
+    answerAt: 1
+    why: borderline은 기준치 언저리, elevated는 기준치를 넘음, critical은 검사실이 즉시 알려 오는 위험 수치예요. 인계에서 이 차이가 대응 속도를 정해요.
+    example: Her troponin is borderline, so we're repeating it.
+    exKo: 트로포닌이 경계선이라 다시 재요.
+  - kind: swap
+    words:
+    - w-call
+    who: 인수 간호사에게 · 결과에 따른 조치
+    icon: speech
+    before:
+    - 'If it''s elevated, '
+    - you might want to let the doctor know
+    - .
+    options:
+    - call the doctor right away
+    - you might want to let the doctor know
+    - maybe mention it at some point
+    answer: call the doctor right away
+    notes:
+      call the doctor right away: 조건과 할 일을 분명히 넘긴다.
+      you might want to let the doctor know: 권유처럼 들려 급하지 않다고 받아들일 수 있다.
+      maybe mention it at some point: 언제 할지가 빠져 사실상 미뤄도 된다는 말이 된다.
+    why: 결과에 따른 조치는 '만약 ~이면 ~하세요'로 분명히 넘겨요. 의사가 연락을 원한다고 했다면 더욱 그렇습니다.
+    ko: 수치가 높으면 바로 의사를 호출하세요
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 검사 대기 환자 인계 4문장 순서
+    why: 결과가 대기 중이라는 사실이 먼저예요. 나오면 확인하고, 확인한 뒤 높으면 의사를 부르며, 그렇지 않을 때의 행동은 앞의 조건을 받아 마지막에 말해요.
+    lines:
+    - en: His troponin is pending, due back within the hour.
+      icon: lab
+      ko: 트로포닌은 대기 중, 한 시간 내로 나와요
+      note: 대기
+    - en: Please confirm the result as soon as it's back.
+      icon: check
+      ko: 나오는 대로 결과를 확인해 주세요
+      note: 확인
+    - en: Once you've confirmed it, call the doctor right away if it's elevated.
+      icon: bell
+      ko: 확인한 뒤 높으면 바로 의사를 부르세요
+      note: 호출
+    - en: If it isn't, just chart it and let me know.
+      icon: pencil
+      ko: 높지 않으면 기록하고 저에게 알려 주세요
+      note: 기록
+- title: 불안정 환자 교대 인계
+  sentences:
+  - en: Her pressure is borderline and trending down.
+    ko: 혈압이 경계선이고 계속 떨어지고 있습니다.
+    chunks:
+    - Her pressure
+    - is borderline
+    - and trending down
+    - .
+    words:
+    - w-pressure
+    - w-borderline
+    - w-trend
+    goal: 1
+    tag: 혈압 상태
+    icon: chevronDown
+    why: borderline은 기준선에 걸려 있다는 말이라 아직 정상 범위일 수 있지만 위험에 가깝다는 뜻이에요. trending down을 붙이면 방향까지 알려 줘요.
+    decoy: than before
+    distractorsKo:
+    - 그분 혈압이 정상이고 계속 올라가고 있습니다
+    - 그분 혈압은 아직 재지 않았습니다
+    blank:
+      answer: borderline
+      options:
+      - en: high
+      - en: normal
+      - en: stable
+      - en: borderline
+  - en: If systolic drops below ninety, start the fluid bolus.
+    ko: 수축기 혈압이 90 아래로 떨어지면 수액을 빠르게 주입하세요.
+    chunks:
+    - If systolic drops
+    - below ninety
+    - ', start the fluid'
+    - bolus
+    - .
+    words:
+    - w-drop
+    goal: 2
+    tag: 조치 기준
+    icon: pill
+    why: If …, start …는 조건과 행동을 한 문장으로 묶어서 인수자가 판단 없이 바로 움직이게 해요. 수축기 90 미만은 저혈압 기준으로 흔히 쓰는 수치예요.
+    decoy: for one hour
+    distractorsKo:
+    - 수축기 혈압이 90 위로 오르면 수액을 멈추세요
+    - 수축기 혈압이 90 아래로 떨어져도 기다리세요
+    blank:
+      answer: systolic
+      options:
+      - en: systolic
+      - en: diastolic
+      - en: pulse
+      - en: temperature
+  - en: The doctor is aware and wants a call for any change.
+    ko: 의사도 알고 있고, 변화가 있으면 연락을 원합니다.
+    chunks:
+    - The doctor is aware
+    - and wants a call
+    - for any
+    - change
+    - .
+    words:
+    - w-call
+    - w-change
+    goal: 2
+    tag: 의사 인지
+    icon: speech
+    why: is aware는 의사가 이미 상황을 알고 있다는 뜻이라 인수자가 처음부터 설명하지 않아도 돼요. a call for any change는 연락 기준이 아주 작은 변화까지라는 뜻이에요.
+    decoy: at night
+    distractorsKo:
+    - 의사는 아직 상황을 모르고 있습니다
+    - 의사가 직접 와서 환자를 볼 예정입니다
+    blank:
+      answer: aware
+      options:
+      - en: unsure
+      - en: aware
+      - en: away
+      - en: unaware
+  - en: Watch her closely — she could turn quickly.
+    ko: 그분을 주의 깊게 봐 주세요, 빠르게 악화될 수 있습니다.
+    chunks:
+    - Watch her closely
+    - — she could turn
+    - quickly
+    - .
+    words:
+    - w-watch
+    goal: 1
+    tag: 주의 당부
+    icon: magnify
+    why: could turn은 상태가 빠르게 나빠질 수 있다는 의료진 구어예요. 가능성을 말하는 could라서 확정이 아니라 대비하라는 뜻이에요.
+    decoy: alone
+    distractorsKo:
+    - 그분은 곧 퇴원할 수 있습니다
+    - 그분은 천천히 회복될 것입니다
+    blank:
+      answer: closely
+      options:
+      - en: rarely
+      - en: loosely
+      - en: closely
+      - en: briefly
+  - en: Her monitor alarm has gone off twice this hour.
+    ko: 이번 한 시간 동안 모니터 경보가 두 번 울렸습니다.
+    chunks:
+    - Her monitor alarm
+    - has gone
+    - off twice
+    - this hour
+    - .
+    words:
+    - w-monitor
+    goal: 1
+    tag: 경보 이력
+    icon: bell
+    why: has gone off는 경보가 울렸다는 표현이에요. 횟수와 시간 범위를 함께 알려야 얼마나 자주 울렸는지 가늠돼요.
+    decoy: at night
+    distractorsKo:
+    - 이번 한 시간 동안 경보는 울리지 않았습니다
+    - 모니터 경보를 방금 꺼 두었습니다
+    blank:
+      answer: twice
+      options:
+      - en: once
+      - en: four times
+      - en: three times
+      - en: twice
+  nuance:
+  - kind: slider
+    words:
+    - w-pressure
+    - w-trend
+    cue: Systolic went 108, then 100, then 94 over three hours — slowly, but always down.
+    scale:
+    - stable
+    - trending down
+    - dropping fast
+    answerAt: 1
+    why: trending down은 한 방향으로 서서히, dropping fast는 짧은 시간에 급격히 떨어지는 거예요.
+    example: Her pressure is trending down, so I'd recheck it in fifteen minutes.
+    exKo: 혈압이 떨어지는 추세라 15분 뒤에 다시 재 보면 좋겠어요.
+  - kind: context
+    words:
+    - w-watch
+    scenes:
+    - who: 인수 간호사에게
+      icon: speech
+      en: Watch her closely — she could turn quickly.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Pt at risk for rapid deterioration; monitoring closely.
+      ok: true
+    - who: 보호자에게
+      icon: me
+      en: She could turn quickly, so watch her closely and call us if anything changes.
+      ok: false
+      fix: We're keeping a very close eye on her, and we'll tell you right away if anything changes.
+    why: '''turn quickly, watch her closely''는 급변 가능성을 동료에게 넘기는 인계 말이에요. 보호자에게 쓰면 뜻이 전해지지 않거나 겁을 주고, 관찰을 가족에게 떠넘기는 말처럼 들려요.'
+    word: closely
+    ko: 주의 깊게
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 불안정 환자 인계 4문장 순서
+    why: 상태를 말하고, Because of that으로 그 상태 때문에 경보가 울렸다는 이력을 이어요. 두 가지를 받아(Given both) 의사가 이미 안다고 전한 뒤, 의사가 정한 조치 기준으로 마무리해요.
+    lines:
+    - en: Her pressure is borderline and trending down.
+      icon: chevronDown
+      ko: 혈압이 경계선이고 계속 떨어져요
+      note: 상태
+    - en: Because of that, her monitor alarm has gone off twice this hour.
+      icon: bell
+      ko: 그 때문에 이번 한 시간에 경보가 두 번 울렸어요
+      note: 경보
+    - en: Given both, the doctor is aware and wants a call for any change.
+      icon: speech
+      ko: 둘 다 감안해 의사도 알고 변화 시 연락을 원해요
+      note: 의사
+    - en: Per the doctor, if systolic drops below ninety, start the fluid bolus.
+      icon: pill
+      ko: '의사 지시: 수축기 90 아래면 수액을 빠르게 주입'
+      note: 조치
+- title: 다중 환자 동시 인계
+  sentences:
+  - en: Let's start with the sickest and work down.
+    ko: 가장 위중한 환자부터 시작해서 내려가요.
+    chunks:
+    - Let's start
+    - with the sickest
+    - and work down
+    - .
+    words: []
+    goal: 1
+    tag: 진행 방식
+    icon: compass
+    why: work down은 목록을 위에서부터 차례로 훑어 내려간다는 뜻이에요. 가장 위중한 환자부터 시작하면 시간이 모자라도 중요한 정보를 먼저 전해요.
+    decoy: with luck
+    distractorsKo:
+    - 가장 안정적인 환자부터 시작해요
+    - 각자 한 명씩 맡아서 시작해요
+    blank:
+      answer: sickest
+      options:
+      - en: sickest
+      - en: newest
+      - en: oldest
+      - en: quietest
+  - en: Bed one is stable and just waiting for discharge.
+    ko: 1번 병상은 안정적이고 퇴원만 기다리고 있습니다.
+    chunks:
+    - Bed one
+    - is stable
+    - and just waiting
+    - for discharge
+    - .
+    words:
+    - w-bed
+    - w-stable
+    - w-wait
+    - w-discharge
+    goal: 2
+    tag: 안정 환자
+    icon: board
+    why: 안정적인 환자는 짧게 한 줄로 넘기는 것이 인계 시간을 아끼는 방법이에요. just waiting for discharge면 치료는 끝났다는 신호예요.
+    decoy: in pain
+    distractorsKo:
+    - 1번 병상은 위중해서 계속 관찰이 필요합니다
+    - 1번 병상은 이미 퇴원했습니다
+    blank:
+      answer: stable
+      options:
+      - en: pending
+      - en: stable
+      - en: unstable
+      - en: critical
+  - en: Bed three is the one that needs the most attention.
+    ko: 3번 병상이 가장 주의가 필요한 환자입니다.
+    chunks:
+    - Bed three
+    - is the one
+    - that needs
+    - the most attention
+    - .
+    words:
+    - w-bed
+    - w-attention
+    goal: 1
+    tag: 집중 환자
+    icon: siren
+    why: the one that …은 여럿 중 어느 환자인지를 콕 집는 틀이에요. 가장 주의가 필요한 환자를 분명히 짚어야 나머지 인계 때도 그 환자가 머릿속에 남아요.
+    decoy: of all the
+    distractorsKo:
+    - 3번 병상은 가장 주의가 덜 필요한 환자입니다
+    - 3번 병상은 이미 퇴원 준비가 끝났습니다
+    blank:
+      answer: attention
+      options:
+      - en: fluids
+      - en: medicine
+      - en: attention
+      - en: oxygen
+  - en: Bed two just needs her antibiotic dose at noon.
+    ko: 2번 병상은 정오에 항생제만 투여하면 됩니다.
+    chunks:
+    - Bed two
+    - just needs
+    - her antibiotic dose
+    - at noon
+    - .
+    words:
+    - w-bed
+    - w-antibiotic
+    - w-dose
+    - w-noon
+    goal: 1
+    tag: 단순 업무
+    icon: pill
+    why: just needs는 남은 일이 그것 하나뿐이라는 말이에요. 남은 일이 적은 환자는 이렇게 짧게 정리해 넘겨요.
+    decoy: by mouth
+    distractorsKo:
+    - 2번 병상은 정오에 수술이 예정되어 있습니다
+    - 2번 병상은 항생제 투여가 이미 끝났습니다
+    blank:
+      answer: noon
+      options:
+      - en: night
+      - en: midnight
+      - en: dawn
+      - en: noon
+  - en: I'll give you the full report on each bed in order.
+    ko: 각 병상에 대해 순서대로 전체 보고를 드릴게요.
+    chunks:
+    - I'll give you
+    - the full report
+    - on each bed
+    - in order
+    - .
+    words:
+    - w-bed
+    - w-report
+    goal: 1
+    tag: 보고 약속
+    icon: speech
+    why: I'll give you …는 앞으로 할 일을 미리 알려서 듣는 사람이 흐름을 따라오게 해요. in order는 정한 순서대로 빠짐없이 한다는 뜻이에요.
+    decoy: at noon
+    distractorsKo:
+    - 각 병상은 간단히 한 줄씩만 말씀드릴게요
+    - 보고는 나중에 서면으로 드릴게요
+    blank:
+      answer: full
+      options:
+      - en: full
+      - en: short
+      - en: quick
+      - en: final
+  nuance:
+  - kind: pair
+    words:
+    - w-discharge
+    - w-attention
+    pairs:
+    - - start with
+      - the sickest
+    - - just waiting
+      - for discharge
+    - - needs the most
+      - attention
+    decoys:
+    - stable
+    why: 여러 환자 인계는 'start with the sickest'로 가장 위중한 환자부터, 안정된 환자는 'just waiting for discharge'로 짧게, 핵심 환자는 'needs the most attention'으로 짚어요.
+  - kind: context
+    words:
+    - w-bed
+    - w-antibiotic
+    scenes:
+    - who: 인수 간호사에게
+      icon: speech
+      en: Bed two just needs her antibiotic at noon.
+      ok: true
+    - who: 투약 기록
+      icon: board
+      en: 'Bed 2: abx due 1200.'
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Bed two, it's time for your antibiotic.
+      ok: false
+      fix: Ms. Lee, it's time for your antibiotic.
+    why: 병상 번호는 의료진끼리 환자를 짧게 가리킬 때 써요. 환자 본인에게는 이름으로 불러요.
+    word: bed
+    ko: 병상
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 다중 환자 인계 4문장 순서
+    why: 가장 위중한 환자부터라고 방식을 먼저 정해요. 그다음 First, Next, Last로 환자를 위중한 순서대로 넘기니 순서가 하나예요.
+    lines:
+    - en: Let's start with the sickest and work down.
+      icon: compass
+      ko: 가장 위중한 환자부터 내려가요
+      note: 방식
+    - en: First is bed three, the one that needs the most attention.
+      icon: siren
+      ko: 먼저 3번 병상, 가장 주의가 필요해요
+      note: 가장 위중
+    - en: Next is bed two, who just needs her antibiotic dose at noon.
+      icon: pill
+      ko: 다음은 2번 병상, 정오 항생제만 남았어요
+      note: 단순
+    - en: Last is bed one, who is stable and just waiting for discharge.
+      icon: home
+      ko: 마지막은 1번 병상, 안정적이고 퇴원 대기예요
+      note: 안정
+- title: 인계 정보 누락 확인
+  sentences:
+  - en: You didn't mention her allergies — any I should know?
+    ko: 알레르기를 말씀 안 하셨는데, 제가 알아야 할 게 있나요?
+    chunks:
+    - You didn't mention
+    - her allergies
+    - — any I should
+    - know
+    - '?'
+    words:
+    - w-mention
+    - w-allergy
+    goal: 1
+    tag: 누락 확인
+    icon: speech
+    why: You didn't mention …은 비난 대신 빠진 사실만 짚는 말이에요. 뒤의 any I should know?가 질문으로 이어져 상대가 방어하지 않고 답하기 쉬워요.
+    decoy: last night
+    distractorsKo:
+    - 알레르기는 이미 차트에 적어 두었습니다
+    - 제가 알레르기를 확인해 드릴게요
+    blank:
+      answer: allergies
+      options:
+      - en: diagnoses
+      - en: allergies
+      - en: surgeries
+      - en: medications
+  - en: Was the pain medicine actually given, or just ordered?
+    ko: 진통제는 실제로 투여됐나요, 아니면 처방만 됐나요?
+    chunks:
+    - Was
+    - the pain medicine
+    - actually given
+    - ', or just ordered'
+    - '?'
+    words:
+    - w-pain
+    - w-medicine
+    - w-give
+    - w-order
+    goal: 1
+    tag: 투여 확인
+    icon: pill
+    why: ordered는 처방만 났다는 뜻이고 given은 실제로 투여했다는 뜻이에요. 둘을 나란히 물으면 인계자가 어느 쪽인지 바로 답해요.
+    decoy: by mouth
+    distractorsKo:
+    - 진통제를 방금 처방받았나요?
+    - 진통제는 몇 시에 투여됐나요?
+    blank:
+      answer: ordered
+      options:
+      - en: charted
+      - en: delayed
+      - en: ordered
+      - en: refused
+  - en: Let me confirm the last vitals time before you go.
+    ko: 가시기 전에 마지막 활력징후 시각을 확인할게요.
+    chunks:
+    - Let me confirm
+    - the last
+    - vitals time
+    - before you go
+    - .
+    words:
+    - w-confirm
+    - w-vitals
+    goal: 2
+    tag: 시각 확인
+    icon: monitor
+    why: Let me …는 내가 확인하겠다고 먼저 알려서 상대가 당황하지 않게 해요. 활력징후는 값만큼 측정 시각도 중요해서 함께 확인해요.
+    decoy: tomorrow
+    distractorsKo:
+    - 마지막 활력징후 시각은 제가 이미 알고 있어요
+    - 가시기 전에 활력징후를 다시 재 드릴게요
+    blank:
+      answer: before
+      options:
+      - en: after
+      - en: until
+      - en: unless
+      - en: before
+  - en: Did the doctor already see her, or is that still pending?
+    ko: 의사가 이미 봤나요, 아니면 아직 대기 중인가요?
+    chunks:
+    - Did the doctor
+    - already see her
+    - ', or is that'
+    - still pending
+    - '?'
+    words:
+    - w-pending
+    goal: 1
+    tag: 진료 여부
+    icon: mic
+    why: or is that still pending?은 아직 안 봤다는 가능성까지 같이 물어 대답이 흐려지는 걸 막아요. 의사 평가 여부는 이후 계획에 영향을 줘요.
+    decoy: at home
+    distractorsKo:
+    - 간호사가 이미 환자를 봤나요?
+    - 의사가 이미 처방을 냈나요?
+    blank:
+      answer: pending
+      options:
+      - en: pending
+      - en: finished
+      - en: canceled
+      - en: charted
+  - en: I'll go check the chart now so we don't miss anything.
+    ko: 놓치는 게 없도록 지금 차트를 확인하러 갈게요.
+    chunks:
+    - I'll go check
+    - the chart now
+    - so we don't
+    - miss anything
+    - .
+    words:
+    - w-chart
+    goal: 2
+    tag: 차트 확인
+    icon: board
+    why: so we don't miss anything은 확인의 목적을 우리의 일로 말해서 탓하는 느낌 없이 빠진 것을 찾겠다는 뜻이에요.
+    decoy: tomorrow
+    distractorsKo:
+    - 차트는 퇴근하고 나서 확인할게요
+    - 놓친 것은 인계자가 확인해 주세요
+    blank:
+      answer: miss
+      options:
+      - en: change
+      - en: miss
+      - en: mix
+      - en: hide
+  nuance:
+  - kind: pair
+    words:
+    - w-allergy
+    - w-vitals
+    - w-medicine
+    pairs:
+    - - no known
+      - allergies
+    - - last set of
+      - vitals
+    - - pain
+      - medicine
+    decoys:
+    - wristband
+    why: '''no known allergies''(NKA)는 알레르기가 없다는 정해진 표현, ''a set of vitals''는 한 번 잰 활력징후 묶음, 진통제는 ''pain medicine''이에요.'
+  - kind: swap
+    words:
+    - w-give
+    - w-order
+    who: 인계자에게 · 투약 확인
+    icon: speech
+    before:
+    - 'Was the pain medicine '
+    - done
+    - '?'
+    options:
+    - given
+    - done
+    - taken care of
+    answer: given
+    notes:
+      given: 실제로 환자에게 들어갔는지 정확히 묻는다.
+      done: 처방·투여·기록 중 무엇이 끝났는지 모호하다.
+      taken care of: 마찬가지로 모호해서 처방만 된 것도 '네'가 될 수 있다.
+    why: '''ordered''(처방)와 ''given''(투여)은 다르니, 투여 여부는 ''given''으로 콕 집어 물어요.'
+    ko: 진통제는 투여됐나요?
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 누락 정보 확인 4문장 순서
+    why: 빠진 알레르기부터 묻고, With no allergies로 그 답을 받아 투여 여부를 확인해요. it이 앞 줄의 진통제를 받아 처방자와 진료 여부를 묻고, With all of that으로 앞의 답을 모두 받은 뒤 차트를 보러 가며 마무리해요.
+    lines:
+    - en: You didn't mention her allergies — any I should know?
+      icon: shield
+      ko: 알레르기 말씀이 없었는데, 알아야 할 게 있나요?
+      note: 누락
+    - en: With no allergies, was the pain medicine actually given, or just ordered?
+      icon: pill
+      ko: 알레르기가 없다면, 진통제는 실제 투여됐나요, 처방만인가요?
+      note: 투여
+    - en: Who ordered it — has the doctor already seen her, or is that still pending?
+      icon: stetho
+      ko: 누가 처방했나요 — 의사가 이미 봤나요, 아니면 아직 대기 중인가요?
+      note: 진료
+    - en: With all of that, I'll go check the chart now so we don't miss anything.
+      icon: board
+      ko: 이 모든 걸 감안해 놓치는 게 없도록 지금 차트를 볼게요
+      note: 차트
+- title: 언어·문화 배경 전달
+  sentences:
+  - en: He speaks Vietnamese and needs a phone interpreter.
+    ko: 베트남어를 쓰시고, 전화 통역이 필요합니다.
+    chunks:
+    - He speaks Vietnamese
+    - and needs
+    - a phone interpreter
+    - .
+    words:
+    - w-speak
+    - w-interpreter
+    - w-phone
+    goal: 1
+    tag: 언어 정보
+    icon: speaker
+    why: 언어와 통역 필요 여부를 한 문장에 붙여 말하면 인수자가 입원 즉시 통역을 연결해요. 미국 병원은 영어가 서툰 환자에게 통역을 제공해야 해요.
+    decoy: in person
+    distractorsKo:
+    - 베트남어를 쓰시고, 통역은 필요 없습니다
+    - 영어를 잘하시고, 가족이 통역합니다
+    blank:
+      answer: phone
+      options:
+      - en: family
+      - en: private
+      - en: phone
+      - en: video
+  - en: The family prefers a female nurse for personal care.
+    ko: 가족은 개인 간호에 여성 간호사를 선호합니다.
+    chunks:
+    - The family
+    - prefers a female nurse
+    - for personal
+    - care
+    - .
+    words:
+    - w-prefer
+    - w-female
+    - w-care
+    goal: 1
+    tag: 선호 전달
+    icon: handshake2
+    why: prefers는 요구가 아니라 선호라서 가능하면 맞춰 달라는 정도로 전해요. 개인 위생 같은 돌봄에서는 문화나 종교에 따라 성별 선호가 있을 수 있어요.
+    decoy: of any
+    distractorsKo:
+    - 가족은 남성 간호사를 선호합니다
+    - 가족은 아무 간호사든 상관없다고 합니다
+    blank:
+      answer: female
+      options:
+      - en: male
+      - en: senior
+      - en: young
+      - en: female
+  - en: Please always confirm understanding through the interpreter.
+    ko: 항상 통역사를 통해 이해했는지 확인해 주세요.
+    chunks:
+    - Please always confirm
+    - understanding
+    - through the interpreter
+    - .
+    words:
+    - w-confirm
+    - w-understand
+    - w-interpreter
+    goal: 2
+    tag: 이해 확인
+    icon: magnify
+    why: 환자가 yes라고만 해도 이해했다는 뜻이 아닐 수 있어요. 통역사를 통해 환자가 자기 말로 되풀이하게 해 확인하는 방법을 teach-back이라고 해요.
+    decoy: later
+    distractorsKo:
+    - 가끔 통역사를 통해 이해를 확인해 주세요
+    - 통역사 없이 이해했는지 확인해 주세요
+    blank:
+      answer: always
+      options:
+      - en: always
+      - en: never
+      - en: rarely
+      - en: sometimes
+  - en: Don't rely on the son to interpret for him.
+    ko: 아드님에게 통역을 맡기지 마세요.
+    chunks:
+    - Don't rely on
+    - the son
+    - to interpret
+    - for him
+    - .
+    words:
+    - w-son
+    goal: 2
+    tag: 통역 금지
+    icon: shield
+    why: 가족 통역은 내용이 빠지거나 바뀔 수 있고, 환자가 가족 앞에서 말하기 어려운 이야기도 있어요. 그래서 자격 있는 통역사를 쓰는 것이 원칙이에요.
+    decoy: in front of
+    distractorsKo:
+    - 아드님에게 통역을 꼭 맡기세요
+    - 아드님에게 서명을 맡기지 마세요
+    blank:
+      answer: interpret
+      options:
+      - en: care
+      - en: interpret
+      - en: decide
+      - en: sign
+  - en: The interpreter line number is already on his chart.
+    ko: 통역 전화번호는 이미 차트에 적혀 있습니다.
+    chunks:
+    - The interpreter
+    - line number
+    - is already
+    - on his chart
+    - .
+    words:
+    - w-interpreter
+    - w-chart
+    goal: 2
+    tag: 연락처
+    icon: speaker
+    why: is already on his chart는 따로 찾을 필요 없이 차트에 있다는 정보를 줘요. 통역 연결 번호가 차트에 있으면 밤 근무자도 바로 연결해요.
+    decoy: this morning
+    distractorsKo:
+    - 통역 전화번호는 아직 차트에 없습니다
+    - 통역사는 이미 병실에 와 있습니다
+    blank:
+      answer: chart
+      options:
+      - en: door
+      - en: monitor
+      - en: chart
+      - en: wristband
+  nuance:
+  - kind: pair
+    words:
+    - w-interpreter
+    - w-prefer
+    - w-understand
+    pairs:
+    - - video or phone
+      - interpreter
+    - - prefers
+      - a female nurse
+    - - confirm
+      - understanding
+    decoys:
+    - personal
+    why: 통역은 'video or phone interpreter'로 연결하고, 가족의 바람은 'prefers', 알아들었는지는 'confirm understanding'으로 확인해요.
+  - kind: swap
+    words:
+    - w-interpreter
+    - w-son
+    who: 환자에게 · 통역 안내
+    icon: me
+    before:
+    - ''
+    - Your son can just translate for you
+    - .
+    options:
+    - We'll get an interpreter on the phone for you
+    - Your son can just translate for you
+    - Just nod if you understand
+    answer: We'll get an interpreter on the phone for you
+    notes:
+      We'll get an interpreter on the phone for you: 의료 통역은 훈련된 통역사에게 맡기는 것이 원칙이다. 미국 병원은 통역을 무료로 제공해야 한다.
+      Your son can just translate for you: 가족 통역은 빠뜨리거나 바꿔 전할 수 있고, 환자가 가족 앞에서 말하기 어려운 것도 있다.
+      Just nod if you understand: 고개를 끄덕이는 것만으로는 이해했는지 알 수 없다.
+    why: 영어가 서툰 환자에게는 가족이 아니라 자격 있는 통역사를 연결해요.
+    ko: 전화로 통역사를 연결해 드릴게요
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 언어·문화 배경 전달 4문장 순서
+    why: 언어와 통역 필요를 먼저 알리고, 통역 연결 번호가 차트에 있음을 말해요. 가족이 돕겠다고 하면 그 번호를 쓰라고 하고, 어느 경우든 통역사를 통해 이해를 확인해요.
+    lines:
+    - en: He speaks Vietnamese and needs a phone interpreter.
+      icon: speaker
+      ko: 베트남어를 쓰고 전화 통역이 필요해요
+      note: 언어
+    - en: The interpreter line number is already on his chart.
+      icon: board
+      ko: 통역 전화번호는 이미 차트에 있어요
+      note: 연락처
+    - en: If the family offers to help, use that line instead of the son.
+      icon: shield
+      ko: 가족이 돕겠다 해도 아들 대신 그 번호를 쓰세요
+      note: 가족
+    - en: Either way, always confirm understanding through the interpreter.
+      icon: magnify
+      ko: 어느 쪽이든 항상 통역사를 통해 이해를 확인하세요
+      note: 확인
+- title: 정신과 보류 환자 인계
+  sentences:
+  - en: He's under a seventy-two-hour hold, cannot leave.
+    ko: 72시간 보류 상태라 나갈 수 없습니다.
+    chunks:
+    - He's under
+    - a seventy-two-hour hold
+    - ', cannot leave'
+    - .
+    words:
+    - w-hold
+    - w-leave
+    goal: 1
+    tag: 법적 상태
+    icon: shield
+    why: hold는 정신과적 위기로 일정 시간 동안 퇴원이 제한된 법적 상태예요. 72시간 같은 기간과 절차는 주마다 다를 수 있으니 그 병원 규정을 따라요.
+    decoy: at home
+    distractorsKo:
+    - 72시간 동안 자유롭게 외출할 수 있습니다
+    - 72시간 뒤에 퇴원할 예정입니다
+    blank:
+      answer: hold
+      options:
+      - en: watch
+      - en: review
+      - en: sedation
+      - en: hold
+  - en: He requires one-to-one observation at all times.
+    ko: 항상 1대1 관찰이 필요합니다.
+    chunks:
+    - He requires
+    - one-to-one observation
+    - at all times
+    - .
+    words:
+    - w-observation
+    goal: 1
+    tag: 1대1 관찰
+    icon: magnify
+    why: requires로 말하면 선택이 아닌 의무라는 게 분명해져요. at all times를 붙여 교대·휴식 중에도 끊기지 않게 해요.
+    decoy: for one hour
+    distractorsKo:
+    - 그분은 가끔씩만 관찰하면 됩니다
+    - 그분은 혼자 있기를 원합니다
+    blank:
+      answer: requires
+      options:
+      - en: requires
+      - en: refuses
+      - en: avoids
+      - en: dislikes
+  - en: All sharps and cords have been removed from the room.
+    ko: 날카로운 물건과 줄은 모두 병실에서 치웠습니다.
+    chunks:
+    - All sharps
+    - and cords
+    - have been removed
+    - from the room
+    - .
+    words:
+    - w-sharp
+    - w-cord
+    - w-remove
+    goal: 2
+    tag: 위험물 제거
+    icon: scalpel
+    why: 날카로운 물건과 줄은 자해 도구가 될 수 있어서 정신과 위기 환자 방에서는 치워요. have been removed는 이미 끝난 일을 현재 상태로 알려 줘요.
+    decoy: this morning
+    distractorsKo:
+    - 날카로운 물건은 아직 병실에 있습니다
+    - 줄과 가방은 보안팀이 가져갔습니다
+    blank:
+      answer: cords
+      options:
+      - en: blankets
+      - en: cords
+      - en: charts
+      - en: pillows
+  - en: Please recheck the room every time you leave and return.
+    ko: 나갔다 돌아올 때마다 병실을 다시 확인해 주세요.
+    chunks:
+    - Please recheck
+    - the room
+    - every time
+    - you leave and return
+    - .
+    words:
+    - w-recheck
+    - w-leave
+    goal: 2
+    tag: 병실 점검
+    icon: home
+    why: every time은 예외 없이 매번이라는 뜻이에요. 방을 비운 사이 물건이 들어올 수 있어서 돌아올 때마다 다시 확인해요.
+    decoy: after lunch
+    distractorsKo:
+    - 병실은 한 번만 점검하면 됩니다
+    - 병실은 나갈 때만 확인해 주세요
+    blank:
+      answer: every time
+      options:
+      - en: the last time
+      - en: the next time
+      - en: every time
+      - en: the first time
+  - en: Security is aware and will call if he tries to leave.
+    ko: 보안팀도 알고 있고, 나가려 하면 연락할 것입니다.
+    chunks:
+    - Security is aware
+    - and will call
+    - if he tries
+    - to leave
+    - .
+    words:
+    - w-call
+    - w-leave
+    goal: 1
+    tag: 보안 협조
+    icon: shield
+    why: is aware로 보안팀이 상황을 미리 알고 있다고 알려요. will call은 보안팀이 먼저 연락한다는 뜻이라 인수자가 혼자 막으려 하지 않아도 돼요.
+    decoy: next door
+    distractorsKo:
+    - 보안팀은 아직 상황을 모릅니다
+    - 보안팀이 병실 앞에서 지키고 있습니다
+    blank:
+      answer: aware
+      options:
+      - en: away
+      - en: busy
+      - en: ready
+      - en: aware
+  nuance:
+  - kind: pair
+    words:
+    - w-hold
+    - w-observation
+    pairs:
+    - - under a
+      - seventy-two-hour hold
+    - - one-to-one
+      - observation
+    - - a ligature-safe
+      - room
+    decoys:
+    - discharge
+    why: 72시간 보류는 'under a hold', 한 사람이 늘 곁에서 지켜보는 건 'one-to-one observation', 목을 맬 만한 곳을 없앤 방은 'ligature-safe room'이라고 해요.
+  - kind: swap
+    words:
+    - w-hold
+    - w-leave
+    who: 환자에게 · 보류 안내
+    icon: me
+    before:
+    - ''
+    - You're not allowed to go anywhere
+    - .
+    options:
+    - You're on a seventy-two-hour hold, so you need to stay here for now
+    - You're not allowed to go anywhere
+    - Security will stop you if you try to leave
+    answer: You're on a seventy-two-hour hold, so you need to stay here for now
+    notes:
+      You're on a seventy-two-hour hold, so you need to stay here for now: 법적 상태와 이유를 차분하고 분명하게 알린다.
+      You're not allowed to go anywhere: 이유 없이 금지만 해서 반발을 부를 수 있다.
+      Security will stop you if you try to leave: 위협으로 들려 긴장을 키운다.
+    why: 보류 환자도 자기 법적 상태를 알 권리가 있어요. 사실은 분명히 말하되, 말투는 위협 없이.
+    ko: 72시간 보류 상태라서 지금은 여기 계셔야 해요
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 정신과 보류 환자 4문장 순서
+    why: 보류 상태가 근거라 먼저 말해요. 그 때문에 1대1 관찰이 필요하고, 관찰하는 사람이 바뀔 때마다 병실을 점검하며, 그 점검 중에 나가려 하면(those room checks가 앞 줄을 받아) 보안이 연락한다는 순서예요.
+    lines:
+    - en: He's under a seventy-two-hour hold, so he cannot leave.
+      icon: lock
+      ko: 72시간 보류라 나갈 수 없어요
+      note: 보류
+    - en: Because of that, he needs one-to-one observation at all times.
+      icon: magnify
+      ko: 그래서 항상 1대1 관찰이 필요해요
+      note: 관찰
+    - en: Whenever the sitter changes, please recheck the room.
+      icon: home
+      ko: 지켜보는 사람이 바뀔 때마다 병실을 다시 확인해 주세요
+      note: 점검
+    - en: If he tries to leave during those room checks, security is aware and will call.
+      icon: shield
+      ko: 그 병실 점검 중에 나가려 하면 보안팀이 알고 연락할 거예요
+      note: 보안
+- title: 가족 소통 이력 인계
+  sentences:
+  - en: The daughter knows the diagnosis but not the prognosis.
+    ko: 따님은 진단은 알지만 예후는 모릅니다.
+    chunks:
+    - The daughter knows
+    - the diagnosis
+    - but not
+    - the prognosis
+    - .
+    words:
+    - w-daughter
+    - w-diagnosis
+    - w-prognosis
+    goal: 1
+    tag: 정보 범위
+    icon: board
+    why: knows A but not B는 가족이 어디까지 아는지 경계를 정확히 그어 줘요. 어디까지 설명됐는지 알아야 인수자가 실수로 앞서 말하지 않아요.
+    decoy: from him
+    distractorsKo:
+    - 따님은 예후는 알지만 진단은 모릅니다
+    - 따님은 진단도 예후도 모두 압니다
+    blank:
+      answer: prognosis
+      options:
+      - en: prognosis
+      - en: treatment
+      - en: insurance
+      - en: history
+  - en: The doctor still needs to speak with the wife.
+    ko: 의사가 아직 아내분과 이야기해야 합니다.
+    chunks:
+    - The doctor
+    - still needs
+    - to speak
+    - with the wife
+    - .
+    words:
+    - w-speak
+    - w-wife
+    goal: 2
+    tag: 미결 면담
+    icon: speech
+    why: still needs to는 아직 안 한 일을 넘기는 말이에요. 의사 면담 전에는 간호사가 대신 설명하지 않도록 알려 줘요.
+    decoy: alone
+    distractorsKo:
+    - 의사가 아내분과 이미 이야기했습니다
+    - 간호사가 아내분과 이야기해야 합니다
+    blank:
+      answer: wife
+      options:
+      - en: husband
+      - en: wife
+      - en: son
+      - en: daughter
+  - en: The son had a lot of anger earlier — be gentle.
+    ko: 아드님이 아까 화가 많이 나셨었어요, 부드럽게 대해 주세요.
+    chunks:
+    - The son had
+    - a lot of anger
+    - earlier
+    - — be gentle
+    - .
+    words:
+    - w-son
+    - w-anger
+    - w-gentle
+    goal: 2
+    tag: 정서 전달
+    icon: faceAngry
+    why: had … earlier로 지금이 아니라 아까 있었던 일로 말해서 낙인을 피해요. be gentle은 그 정보를 어떻게 쓸지까지 알려 줘요.
+    decoy: at night
+    distractorsKo:
+    - 아드님이 아까 매우 차분했어요, 평소처럼 대해 주세요
+    - 아드님은 아까 면회를 마치고 돌아가셨어요
+    blank:
+      answer: gentle
+      options:
+      - en: quick
+      - en: brief
+      - en: gentle
+      - en: firm
+  - en: No one has mentioned the prognosis to the family yet.
+    ko: 아직 가족에게 예후를 언급한 사람은 없습니다.
+    chunks:
+    - No one
+    - has mentioned
+    - the prognosis
+    - to the family yet
+    - .
+    words:
+    - w-mention
+    - w-prognosis
+    goal: 1
+    tag: 미전달 정보
+    icon: lock
+    why: No one has … yet은 아직 아무도 하지 않았다는 사실을 분명히 해요. 예후는 의사가 먼저 설명하는 것이 일반적이라 인계에서 꼭 짚어요.
+    decoy: today
+    distractorsKo:
+    - 가족은 예후를 이미 들었습니다
+    - 의사가 예후를 이미 설명했습니다
+    blank:
+      answer: mentioned
+      options:
+      - en: hidden
+      - en: changed
+      - en: denied
+      - en: mentioned
+  - en: Let the doctor know before you say anything about the prognosis.
+    ko: 예후에 대해 말하기 전에 의사에게 먼저 알려 주세요.
+    chunks:
+    - Let the doctor know
+    - before you say
+    - anything about
+    - the prognosis
+    - .
+    words:
+    - w-prognosis
+    goal: 1
+    tag: 의사 먼저
+    icon: bell
+    why: Let … know before …는 순서를 정해 주는 틀이라 가족에게 먼저 말해 버리는 실수를 막아요. 예후 설명은 의사가 맡는 것이 일반적이에요.
+    decoy: again
+    distractorsKo:
+    - 예후를 말한 뒤에 의사에게 알려 주세요
+    - 예후는 아무에게도 말하지 마세요
+    blank:
+      answer: before
+      options:
+      - en: before
+      - en: after
+      - en: while
+      - en: unless
+  nuance:
+  - kind: pair
+    words:
+    - w-diagnosis
+    - w-prognosis
+    - w-anger
+    - w-gentle
+    pairs:
+    - - knows the diagnosis but
+      - not the prognosis
+    - - had a lot of
+      - anger
+    - - be
+      - gentle
+    decoys:
+    - gently
+    why: 진단(diagnosis)은 무슨 병인지, 예후(prognosis)는 앞으로 어떻게 될지예요. 'gentle'은 형용사라 be 뒤에, 'gently'는 부사라 동사 뒤에(speak gently) 와요.
+  - kind: swap
+    words:
+    - w-son
+    - w-anger
+    who: 인수 간호사에게 · 가족 정서 전달
+    icon: speech
+    before:
+    - ''
+    - The son is crazy
+    - ' — be gentle.'
+    options:
+    - The son had a lot of anger earlier
+    - The son is crazy
+    - The son is a problem
+    answer: The son had a lot of anger earlier
+    notes:
+      The son had a lot of anger earlier: 있었던 일(감정)을 관찰한 대로 전한다.
+      The son is crazy: 사람에게 낙인을 찍는 말이라 인계에 쓰면 안 된다.
+      The son is a problem: 가족을 문제로 규정해 다음 근무자에게 편견을 넘긴다.
+    why: 가족의 감정은 판단이 아니라 관찰한 사실로 인계해요.
+    ko: 아드님이 아까 화가 많이 나셨었어요, 부드럽게 대해 주세요
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 가족 소통 이력 4문장 순서
+    why: 가족이 아는 범위를 먼저 말해요. 그 가운데 예후는 아직 아무도 말하지 않았고, 그래서 의사가 면담해야 하며, 면담 전까지는 의사에게 먼저 알리라는 순서예요.
+    lines:
+    - en: The daughter knows the diagnosis but not the prognosis.
+      icon: board
+      ko: 따님은 진단은 알지만 예후는 몰라요
+      note: 범위
+    - en: No one has mentioned it to the family yet.
+      icon: lock
+      ko: 아직 아무도 가족에게 말하지 않았어요
+      note: 미전달
+    - en: That's why the doctor still needs to speak with the wife.
+      icon: speech
+      ko: 그래서 의사가 아내분과 이야기해야 해요
+      note: 면담
+    - en: Until then, let the doctor know before you say anything about it.
+      icon: bell
+      ko: 그때까지 말하기 전에 의사에게 먼저 알리세요
+      note: 당부
+- title: 기관 간 이송 인계
+  sentences:
+  - en: This is a transfer for a higher level of stroke care.
+    ko: 뇌졸중 상급 치료를 위한 전원입니다.
+    chunks:
+    - This is a transfer
+    - for a higher
+    - level
+    - of stroke care
+    - .
+    words:
+    - w-transfer
+    - w-level
+    - w-stroke
+    - w-care
+    goal: 1
+    tag: 전원 사유
+    icon: hospital
+    why: a higher level of care는 전원 가는 병원이 더 전문적인 치료를 할 수 있다는 뜻이에요. 인계 첫 줄에 이유를 두면 받는 쪽이 준비해요.
+    decoy: from home
+    distractorsKo:
+    - 뇌졸중 환자를 퇴원시키려는 것입니다
+    - 화상 치료를 위한 전원입니다
+    blank:
+      answer: stroke
+      options:
+      - en: trauma
+      - en: stroke
+      - en: burn
+      - en: cardiac
+  - en: Symptom onset was two hours ago, tPA not given.
+    ko: 증상 발생은 2시간 전이고, tPA는 투여하지 않았습니다.
+    chunks:
+    - Symptom onset
+    - was two hours ago
+    - ', tPA'
+    - not given
+    - .
+    words:
+    - w-symptom
+    - w-onset
+    - w-give
+    goal: 1
+    tag: 발병 시각
+    icon: calendar
+    why: 뇌졸중은 증상이 시작된 시각(시작을 못 봤다면 마지막으로 정상이던 시각, 미국에서는 last known well)에 따라 치료할 수 있는지가 달라져서 전원 인계에서 꼭 전해요. tPA를 줬는지에 따라 받는 병원의 혈압 관리·출혈 감시·혈전제거술 결정이 달라져요.
+    decoy: last week
+    distractorsKo:
+    - 증상은 이틀 전에 시작되었고 tPA를 투여했습니다
+    - 증상은 2시간 전에 호전되었습니다
+    blank:
+      answer: onset
+      options:
+      - en: check
+      - en: review
+      - en: onset
+      - en: relief
+  - en: All records and imaging are traveling with the patient.
+    ko: 모든 기록과 영상 자료는 환자와 함께 이동합니다.
+    chunks:
+    - All records
+    - and imaging
+    - are traveling
+    - with the patient
+    - .
+    words:
+    - w-record
+    - w-imaging
+    - w-travel
+    goal: 2
+    tag: 서류 동행
+    icon: board
+    why: are traveling with the patient는 진행형으로 지금 함께 실려 간다는 걸 알려서, 받는 쪽이 따로 요청하지 않아도 돼요. 영상을 같이 보내면 받는 병원이 촬영을 다시 하는 일을 줄일 수 있어요.
+    decoy: to follow
+    distractorsKo:
+    - 기록과 영상은 나중에 따로 보내겠습니다
+    - 기록은 환자와 함께 가고 영상은 없습니다
+    blank:
+      answer: imaging
+      options:
+      - en: belongings
+      - en: medications
+      - en: forms
+      - en: imaging
+  - en: Please confirm the accepting doctor's name before transport.
+    ko: 이송 전에 수용 의사 성함을 확인해 주세요.
+    chunks:
+    - Please confirm
+    - the accepting doctor's name
+    - before transport
+    - .
+    words:
+    - w-confirm
+    goal: 2
+    tag: 수용의 확인
+    icon: mic
+    why: accepting doctor는 환자를 받겠다고 한 상대 병원 의사예요. 이송 전에 이름을 확인해 두면 도착해서 누구에게 인계할지 헷갈리지 않아요.
+    decoy: after transport
+    distractorsKo:
+    - 이송하는 의사의 성함을 확인해 주세요
+    - 이송이 끝난 뒤 성함을 확인해 주세요
+    blank:
+      answer: accepting
+      options:
+      - en: accepting
+      - en: referring
+      - en: covering
+      - en: former
+  - en: Her last blood pressure was stable before the transfer.
+    ko: 전원 전 마지막 혈압은 안정적이었습니다.
+    chunks:
+    - Her last
+    - blood pressure
+    - was stable
+    - before the transfer
+    - .
+    words:
+    - w-pressure
+    - w-stable
+    - w-transfer
+    goal: 1
+    tag: 전원 전 혈압
+    icon: stetho
+    why: before the transfer는 측정 시점을 전원 직전으로 정해 줘요. 이송 중 변화를 비교할 기준값이 되어서 받는 쪽이 도착 후 수치를 해석하기 쉬워요.
+    decoy: this morning
+    distractorsKo:
+    - 이송 중에는 혈압을 재지 못했습니다
+    - 전원 전 마지막 혈압은 떨어지고 있었습니다
+    blank:
+      answer: stable
+      options:
+      - en: borderline
+      - en: stable
+      - en: unstable
+      - en: low
+  nuance:
+  - kind: pair
+    words:
+    - w-transfer
+    - w-care
+    - w-imaging
+    pairs:
+    - - transfer for
+      - a higher level of care
+    - - last known
+      - well
+    - - imaging
+      - on a disc
+    decoys:
+    - onset
+    why: 전원 사유는 'transfer for a higher level of care'로 말해요. 뇌졸중은 'last known well'(마지막으로 정상이던 시각)을 기준으로 치료 시간 창을 따지고, 영상은 CD에 담아 보내거나 전송해요.
+  - kind: context
+    words:
+    - w-symptom
+    - w-onset
+    scenes:
+    - who: 수용 병원 간호사에게
+      icon: mic
+      en: Symptom onset was two hours ago, tPA not given.
+      ok: true
+    - who: 전원 기록
+      icon: board
+      en: Sx onset 2 hrs PTA, tPA not given.
+      ok: true
+    - who: 보호자에게
+      icon: me
+      en: Symptom onset was two hours ago, tPA not given.
+      ok: false
+      fix: Her symptoms started about two hours ago, and she hasn't been given the clot-dissolving medicine.
+    why: '''onset''·''tPA''는 의료진 말이에요. 가족에게는 ''started'', ''clot-dissolving medicine''처럼 풀어 말해요.'
+    word: onset
+    ko: 발생
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 기관 간 이송 인계 4문장 순서
+    why: 전원 이유를 먼저 말하고 발병 시점과 tPA 여부를 이어요. Since then으로 그 뒤의 혈압을 말한 다음, 이송 전에 받는 의사 이름을 확인하라고 마무리해요.
+    lines:
+    - en: She's being transferred for a higher level of stroke care.
+      icon: hospital
+      ko: 뇌졸중 상급 치료를 위해 전원하는 환자예요
+      note: 전원
+    - en: Her symptoms started two hours ago, and she hasn't had tPA.
+      icon: calendar
+      ko: 증상은 2시간 전 시작, tPA는 투여 안 했어요
+      note: 발병
+    - en: Since then, her blood pressure has stayed stable.
+      icon: stetho
+      ko: 그 뒤로 혈압은 안정적이었어요
+      note: 혈압
+    - en: Please confirm the accepting doctor's name before transport.
+      icon: mic
+      ko: 이송 전에 수용 의사 성함을 확인해 주세요
+      note: 확인
+- title: 위중 환자 병동 전동
+  sentences:
+  - en: Her pressure keeps dropping despite fluids.
+    ko: 수액을 줘도 혈압이 계속 떨어지고 있습니다.
+    chunks:
+    - Her pressure
+    - keeps dropping
+    - despite fluids
+    - .
+    words:
+    - w-pressure
+    - w-drop
+    goal: 1
+    tag: 혈압 악화
+    icon: chevronDown
+    why: despite fluids는 수액을 줬는데도 혈압이 오르지 않는다는 뜻이에요. 치료에 반응하지 않는다는 사실이 ICU 전동의 가장 큰 근거가 돼요.
+    decoy: after dinner
+    distractorsKo:
+    - 수액을 주자 혈압이 올랐습니다
+    - 수액은 아직 시작하지 않았습니다
+    blank:
+      answer: dropping
+      options:
+      - en: improving
+      - en: holding
+      - en: dropping
+      - en: rising
+  - en: She's on a norepinephrine drip, titrating up.
+    ko: 노르에피네프린을 투여 중이고, 용량을 올리고 있습니다.
+    chunks:
+    - She's on
+    - a norepinephrine drip
+    - ', titrating up'
+    - .
+    words:
+    - w-norepinephrine
+    - w-drip
+    - w-titrate
+    goal: 1
+    tag: 승압제 투여
+    icon: gear
+    why: titrating up은 반응을 보면서 용량을 조금씩 올리고 있다는 뜻이에요. 용량이 오르는 중이면 아직 안정되지 않았다는 신호예요.
+    decoy: at home
+    distractorsKo:
+    - 노르에피네프린을 끊고 있습니다
+    - 수액을 두 배로 주고 있습니다
+    blank:
+      answer: norepinephrine
+      options:
+      - en: heparin
+      - en: propofol
+      - en: nitroglycerin
+      - en: norepinephrine
+  - en: She needs an ICU bed and close monitoring right now.
+    ko: 지금 바로 중환자실 병상과 집중 관찰이 필요합니다.
+    chunks:
+    - She needs
+    - an ICU bed
+    - and close monitoring
+    - right now
+    - .
+    words:
+    - w-icu
+    - w-bed
+    - w-close
+    - w-monitor
+    goal: 2
+    tag: ICU 필요
+    icon: siren
+    why: right now는 기다릴 수 없다는 긴급도를 전해요. 병상과 집중 관찰을 함께 말하면 받는 쪽이 자리와 인력을 같이 준비해요.
+    decoy: tomorrow
+    distractorsKo:
+    - 일반 병동 병상이면 충분합니다
+    - 내일 중환자실 병상이 필요합니다
+    blank:
+      answer: close
+      options:
+      - en: close
+      - en: light
+      - en: brief
+      - en: routine
+  - en: Please call the ICU charge nurse and confirm a bed.
+    ko: 중환자실 책임 간호사에게 연락해서 병상을 확인해 주세요.
+    chunks:
+    - Please call
+    - the ICU charge nurse
+    - and confirm
+    - a bed
+    - .
+    words:
+    - w-call
+    - w-icu
+    - w-confirm
+    - w-bed
+    goal: 2
+    tag: 병상 확인
+    icon: bell
+    why: charge nurse는 병상 배정을 조정하는 책임 간호사예요. 연락에서 끝내지 않고 병상 확정까지 하라고 해야 이송 중에 자리가 없어지는 일을 막아요.
+    decoy: right now
+    distractorsKo:
+    - 중환자실 의사에게 연락해 주세요
+    - 중환자실 병상 확인은 하지 마세요
+    blank:
+      answer: charge
+      options:
+      - en: student
+      - en: charge
+      - en: float
+      - en: night
+  - en: I'll travel with her and give report at the door.
+    ko: 제가 함께 이동해서 문 앞에서 인계하겠습니다.
+    chunks:
+    - I'll travel
+    - with her
+    - and give report
+    - at the door
+    - .
+    words:
+    - w-travel
+    - w-report
+    goal: 1
+    tag: 동행 인계
+    icon: speech
+    why: travel with her로 간호사가 이송에 동행한다고 밝혀요. 불안정한 환자라 이송 중에도 간호사가 곁을 지킨다는 뜻이 돼요.
+    decoy: by phone
+    distractorsKo:
+    - 저는 병동에 남아 있겠습니다
+    - 보고는 전화로 드리겠습니다
+    blank:
+      answer: travel
+      options:
+      - en: talk
+      - en: sit
+      - en: travel
+      - en: wait
+  nuance:
+  - kind: pair
+    words:
+    - w-norepinephrine
+    - w-drip
+    - w-titrate
+    - w-icu
+    pairs:
+    - - norepinephrine
+      - drip
+    - - titrating
+      - up
+    - - ICU charge
+      - nurse
+    decoys:
+    - room
+    why: 승압제는 'norepinephrine drip'으로 지속 주입하고, 용량을 올리는 건 'titrating up'이에요. 병상 배정을 맡는 사람은 'charge nurse'입니다.
+  - kind: context
+    words:
+    - w-drip
+    - w-titrate
+    scenes:
+    - who: ICU 간호사에게
+      icon: speech
+      en: She's on a norepinephrine drip, titrating up.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: Norepi drip titrated up for MAP goal.
+      ok: true
+    - who: 보호자에게
+      icon: me
+      en: She's on a norepinephrine drip, titrating up.
+      ok: false
+      fix: She's on a medicine that supports her blood pressure, and we're adjusting the dose.
+    why: '''drip''·''titrating''은 의료진 말이에요. 가족에게는 ''혈압을 받쳐 주는 약''이라고 풀고, 용량을 조절 중이라고 말해요.'
+    word: drip
+    ko: 지속 정맥주사
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 위중 환자 병동 전동 4문장 순서
+    why: 혈압이 계속 떨어지는 사실이 먼저예요. 그 때문에 승압제를 쓰고, 그만큼 지원하는데도 ICU가 필요하다고 판단하며, 그 병상을 확인하라고 요청해요.
+    lines:
+    - en: Her pressure keeps dropping despite fluids.
+      icon: chevronDown
+      ko: 수액을 줘도 혈압이 계속 떨어져요
+      note: 악화
+    - en: Because of that, she's on a norepinephrine drip, titrating up.
+      icon: gear
+      ko: 그래서 노르에피네프린을 쓰며 올리는 중이에요
+      note: 투여
+    - en: With that much support, she needs an ICU bed and close monitoring right now.
+      icon: siren
+      ko: 그 정도 지원에도 지금 ICU 병상이 필요해요
+      note: ICU
+    - en: Please call the ICU charge nurse to confirm that bed.
+      icon: bell
+      ko: ICU 책임 간호사에게 그 병상을 확인해 주세요
+      note: 확인
+- title: 코드 후 ICU 인계
+  sentences:
+  - en: 'Situation: this is a fifty-eight-year-old post-cardiac-arrest patient.'
+    ko: '상황: 58세 심정지 후 소생 환자입니다.'
+    chunks:
+    - 'Situation:'
+    - this is a fifty-eight-year-old
+    - post-cardiac-arrest patient
+    - .
+    words:
+    - w-situation
+    - w-cardiac
+    goal: 1
+    tag: 상황(S)
+    icon: siren
+    why: SBAR의 S는 환자가 누구이고 지금 무슨 일인지 한 줄로 시작해요. post-cardiac-arrest는 심정지 뒤라는 뜻이라, 나이와 함께 말하면 인수자가 바로 그림을 그려요.
+    decoy: from home
+    distractorsKo:
+    - '상황: 이분은 58세 뇌졸중 환자입니다'
+    - '상황: 이분은 심정지 전 환자입니다'
+    blank:
+      answer: post-cardiac-arrest
+      options:
+      - en: post-surgical
+      - en: post-stroke
+      - en: pre-operative
+      - en: post-cardiac-arrest
+  - en: 'Background: down time was about eight minutes with two shocks.'
+    ko: '배경: 정지 시간은 약 8분이었고, 제세동은 두 번 있었습니다.'
+    chunks:
+    - 'Background:'
+    - down time was
+    - about eight minutes
+    - with two shocks
+    - .
+    words:
+    - w-background
+    - w-down
+    - w-shock
+    goal: 1
+    tag: 배경(B)
+    icon: board
+    why: down time은 심정지로 쓰러져 있던 시간을 말하는 인계 용어예요. 시간과 제세동 횟수는 소생 경과를 보여 주는 핵심 정보예요.
+    decoy: last night
+    distractorsKo:
+    - '배경: 정지 시간은 약 한 시간이었습니다'
+    - '배경: 제세동은 없었습니다'
+    blank:
+      answer: shocks
+      options:
+      - en: shocks
+      - en: breaths
+      - en: doses
+      - en: codes
+  - en: Right now he's on a norepinephrine drip and intubated.
+    ko: 지금은 노르에피네프린을 투여 중이고 삽관된 상태입니다.
+    chunks:
+    - Right now
+    - he's on
+    - a norepinephrine drip
+    - and intubated
+    - .
+    words:
+    - w-norepinephrine
+    - w-drip
+    - w-intubate
+    goal: 1
+    tag: 현재 상태
+    icon: monitor
+    why: Right now로 시작하면 지난 경과(B)에서 현재 상태로 넘어간다는 신호가 돼요. 승압제와 삽관은 인수자가 바로 눈으로 확인할 장치예요.
+    decoy: last night
+    distractorsKo:
+    - 지금은 삽관이 제거된 상태입니다
+    - 지금은 노르에피네프린을 끊은 상태입니다
+    blank:
+      answer: intubated
+      options:
+      - en: awake
+      - en: intubated
+      - en: extubated
+      - en: ambulating
+  - en: His pressure has been stable since the last shock.
+    ko: 마지막 제세동 이후 혈압은 안정적이었습니다.
+    chunks:
+    - His pressure
+    - has been stable
+    - since the last
+    - shock
+    - .
+    words:
+    - w-pressure
+    - w-stable
+    - w-shock
+    goal: 2
+    tag: 혈압 경과
+    icon: chartup
+    why: since the last shock은 마지막 제세동 시점을 기준으로 삼아서 안정적인 상태가 얼마 동안인지 보여 줘요. 소생 후 혈압은 변할 수 있어서 기준 시점이 중요해요.
+    decoy: for a week
+    distractorsKo:
+    - 마지막 제세동 이후 혈압이 계속 떨어졌습니다
+    - 제세동 뒤 승압제를 끊었습니다
+    blank:
+      answer: stable
+      options:
+      - en: low
+      - en: falling
+      - en: stable
+      - en: unstable
+  - en: Can you confirm his last recorded blood pressure for me?
+    ko: 마지막으로 기록된 혈압을 확인해 주시겠어요?
+    chunks:
+    - Can you confirm
+    - his last recorded
+    - blood pressure
+    - for me
+    - '?'
+    words:
+    - w-confirm
+    - w-record
+    - w-pressure
+    goal: 2
+    tag: 수치 확인
+    icon: mic
+    why: last recorded는 차트에 기록된 마지막 값을 묻는 표현이에요. for me는 요청을 부탁으로 부드럽게 만들어요.
+    decoy: yesterday
+    distractorsKo:
+    - 혈압을 제가 직접 다시 재 보겠습니다
+    - 마지막 혈압은 이미 확인했습니다
+    blank:
+      answer: pressure
+      options:
+      - en: sugar
+      - en: count
+      - en: type
+      - en: pressure
+  nuance:
+  - kind: pair
+    words:
+    - w-down
+    - w-shock
+    - w-intubate
+    pairs:
+    - - down time was
+      - about eight minutes
+    - - two
+      - shocks
+    - - intubated and on
+      - a norepinephrine drip
+    decoys:
+    - cardiac history
+    why: '''down time''은 심정지부터 자발순환 회복(ROSC)까지 걸린 시간이고, 제세동은 ''shocks''로 횟수를 세요.'
+  - kind: swap
+    words:
+    - w-shock
+    who: ICU 간호사에게 · 소생 경과
+    icon: speech
+    before:
+    - 'Background: down time was about eight minutes with '
+    - two zaps
+    - .
+    options:
+    - two shocks
+    - two zaps
+    - two electric treatments
+    answer: two shocks
+    notes:
+      two shocks: 제세동 횟수를 세는 표준 표현이다.
+      two zaps: 구어라 공식 인계에는 가볍게 들린다.
+      two electric treatments: 무엇을 했는지 모호하다 — 제세동이 아니라 전기경련치료처럼 들릴 수 있다.
+    why: 제세동 횟수는 'shocks'로 세요. 소생 경과 인계에는 정확한 임상어가 필요해요.
+    ko: '배경: 정지 시간은 약 8분이었고 제세동은 두 번 있었어요'
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 코드 후 ICU 인계 4문장 순서
+    why: SBAR의 순서대로 상황, 배경을 말해요. 이어서 현재 상태를 말하고, 그 승압제를 쓰는 동안의 혈압 경과로 마무리해요. that drip이 앞 줄의 약을 가리켜요.
+    lines:
+    - en: 'Situation: this is a fifty-eight-year-old post-cardiac-arrest patient.'
+      icon: siren
+      ko: '상황: 58세 심정지 후 환자예요'
+      note: 상황
+    - en: 'Background: down time was about eight minutes with two shocks.'
+      icon: board
+      ko: '배경: 정지 약 8분, 제세동 두 번'
+      note: 배경
+    - en: Right now he's on a norepinephrine drip and intubated.
+      icon: monitor
+      ko: 지금은 노르에피네프린과 삽관 상태예요
+      note: 현재
+    - en: On that drip, his pressure has been stable since the last shock.
+      icon: chartup
+      ko: 그 약으로 마지막 제세동 이후 혈압은 안정적이에요
+      note: 혈압
+- title: 교대 중 급변 발생
+  sentences:
+  - en: Forget what I just said — his status has changed.
+    ko: 방금 한 말은 잊으세요, 상태가 바뀌었습니다.
+    chunks:
+    - Forget what
+    - I just said
+    - — his status
+    - has changed
+    - .
+    words:
+    - w-forget
+    - w-status
+    - w-change
+    goal: 1
+    tag: 정정 선언
+    icon: redo
+    why: Forget what I just said는 방금 한 인계를 무효로 한다는 신호예요. 뒤에 바뀐 이유를 바로 붙여야 상대가 혼란 없이 새 정보를 받아요.
+    decoy: last night
+    distractorsKo:
+    - 방금 한 말 그대로 하세요, 상태는 같습니다
+    - 방금 한 말을 기록해 두세요
+    blank:
+      answer: status
+      options:
+      - en: status
+      - en: plan
+      - en: order
+      - en: room
+  - en: His oxygen just dropped to eighty-five percent.
+    ko: 산소포화도가 85퍼센트로 방금 떨어졌습니다.
+    chunks:
+    - His oxygen
+    - just dropped
+    - to eighty-five percent
+    - .
+    words:
+    - w-oxygen
+    - w-drop
+    - w-percent
+    goal: 1
+    tag: 산소 저하
+    icon: chevronDown
+    why: just dropped는 방금 일어난 급한 변화라는 뜻이에요. 수치를 정확히 말해야 인수자가 얼마나 위급한지 바로 알아요.
+    decoy: at noon
+    distractorsKo:
+    - 산소포화도가 95퍼센트로 올랐습니다
+    - 산소 공급을 방금 올렸습니다
+    blank:
+      answer: dropped
+      options:
+      - en: jumped
+      - en: dropped
+      - en: rose
+      - en: climbed
+  - en: Let's both go see him and reassess together.
+    ko: 같이 가서 그분을 다시 사정해요.
+    chunks:
+    - Let's both go
+    - see him
+    - and reassess together
+    - .
+    words:
+    - w-reassess
+    goal: 2
+    tag: 함께 재사정
+    icon: handshake2
+    why: Let's both go는 인수자를 지시하지 않고 같이 가자고 말해서 급한 상황에서도 팀으로 움직이게 해요. reassess는 상태가 변했을 때 다시 평가하는 단계예요.
+    decoy: alone
+    distractorsKo:
+    - 저 혼자 가서 그분을 다시 사정할게요
+    - 같이 가서 그분을 퇴원시켜요
+    blank:
+      answer: reassess
+      options:
+      - en: discharge
+      - en: transfer
+      - en: reassess
+      - en: sedate
+  - en: Call the doctor now — this can't wait.
+    ko: 지금 바로 의사를 호출하세요, 기다릴 수 없습니다.
+    chunks:
+    - Call the doctor
+    - now
+    - — this can't wait
+    - .
+    words:
+    - w-call
+    - w-wait
+    goal: 2
+    tag: 즉시 호출
+    icon: siren
+    why: this can't wait는 지금 바로 해야 하는 이유를 한마디로 알려 줘요. 급할 때는 짧은 명령형과 이유 한 줄이면 충분해요.
+    decoy: twice
+    distractorsKo:
+    - 의사에게 나중에 연락해도 괜찮아요
+    - 의사를 부르지 말고 기다리세요
+    blank:
+      answer: wait
+      options:
+      - en: last
+      - en: change
+      - en: matter
+      - en: wait
+  - en: His monitor is showing the drop in oxygen right now.
+    ko: 모니터에 지금 산소 수치 하락이 나타나고 있습니다.
+    chunks:
+    - His monitor
+    - is showing
+    - the drop
+    - in oxygen right now
+    - .
+    words:
+    - w-monitor
+    - w-drop
+    - w-oxygen
+    goal: 1
+    tag: 모니터 확인
+    icon: monitor
+    why: is showing은 지금 화면에 나타나는 것을 말해요. 말로 알린 변화를 모니터가 뒷받침한다고 하면 인수자가 바로 믿고 움직여요.
+    decoy: at noon
+    distractorsKo:
+    - 모니터에 산소 수치 상승이 나타나고 있습니다
+    - 모니터가 방금 꺼졌습니다
+    blank:
+      answer: drop
+      options:
+      - en: drop
+      - en: rise
+      - en: increase
+      - en: peak
+  nuance:
+  - kind: slider
+    words:
+    - w-drop
+    cue: His sats slipped to 93 for a few seconds, then came right back to 97.
+    scale:
+    - dipped
+    - dropped
+    - plummeted
+    answerAt: 0
+    why: dip은 잠깐 살짝 내려갔다 돌아오는 것, drop은 뚜렷하게 떨어진 것, plummet은 급격히 곤두박질친 것이에요. 동사 하나가 급한 정도를 전해요.
+    example: Her sats dipped to 93 but came right back up.
+    exKo: 산소포화도가 93까지 잠깐 내려갔다가 바로 회복됐어요.
+  - kind: context
+    words:
+    - w-status
+    - w-change
+    scenes:
+    - who: 인수 간호사에게
+      icon: speech
+      en: Forget what I just said — his status has changed.
+      ok: true
+    - who: 차트 기록
+      icon: board
+      en: 'Change in status: SpO2 85%, team at bedside.'
+      ok: true
+    - who: 보호자에게
+      icon: me
+      en: Forget what I said — his status has changed. He's desatting.
+      ok: false
+      fix: I need to update you — his oxygen level has dropped, and the team is with him now.
+    why: '''Forget what I just said''는 동료 사이에서 인계를 무를 때 쓰는 말이고, status·desatting은 의료진 말이에요. 가족에게는 앞서 한 말을 없던 일로 하라는 말로 들리니, 무엇이 바뀌었는지 쉬운 말로 알려요.'
+    word: status
+    ko: 상태
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 교대 중 급변 4문장 순서
+    why: 먼저 앞서 한 말을 정정해요. 그 이유로 산소 하락을 알리고, 그 하락을 근거로 의사를 호출하며, 의사가 오는 동안 함께 재사정해요.
+    lines:
+    - en: Forget what I just said — his status has changed.
+      icon: redo
+      ko: 방금 말은 잊으세요, 상태가 바뀌었어요
+      note: 정정
+    - en: His oxygen just dropped to eighty-five percent.
+      icon: chevronDown
+      ko: 산소포화도가 방금 85퍼센트로 떨어졌어요
+      note: 하락
+    - en: Because of that drop, call the doctor now — this can't wait.
+      icon: siren
+      ko: 그 하락 때문에 지금 의사를 부르세요
+      note: 호출
+    - en: While the doctor's on the way, let's both go see him and reassess.
+      icon: handshake2
+      ko: 의사가 오는 동안 같이 가서 다시 사정해요
+      note: 재사정
+- title: 불완전 정보 이송 수용
+  sentences:
+  - en: We didn't get her medication list — do you have it?
+    ko: 투약 목록을 받지 못했는데, 갖고 계신가요?
+    chunks:
+    - We didn't get
+    - her medication list
+    - — do you
+    - have it
+    - '?'
+    words:
+    - w-medication
+    - w-list
+    goal: 1
+    tag: 누락 요청
+    icon: board
+    why: We didn't get …은 상대 잘못이 아니라 우리 쪽에 도착하지 않았다는 사실만 말해요. 이어지는 do you have it?이 협조를 부탁하는 질문이 돼요.
+    decoy: last night
+    distractorsKo:
+    - 투약 목록은 이미 받았습니다
+    - 투약 목록을 팩스로 보내 드릴게요
+    blank:
+      answer: medication
+      options:
+      - en: visitor
+      - en: medication
+      - en: allergy
+      - en: problem
+  - en: Can you confirm when the last dose was given?
+    ko: 마지막 투여 시각을 확인해 주시겠어요?
+    chunks:
+    - Can you
+    - confirm when
+    - the last dose
+    - was given
+    - '?'
+    words:
+    - w-confirm
+    - w-dose
+    - w-give
+    goal: 1
+    tag: 시각 확인
+    icon: calendar
+    why: when the last dose was given은 마지막 투여 시각을 되묻는 간접 의문문이에요. 다음 투약 시각을 정할 때 필요한 정보예요.
+    decoy: by mouth
+    distractorsKo:
+    - 마지막 투여 시각은 제가 알려 드릴게요
+    - 마지막 투여를 취소해 주시겠어요?
+    blank:
+      answer: dose
+      options:
+      - en: bath
+      - en: tray
+      - en: dose
+      - en: meal
+  - en: I'll reassess from scratch to be safe.
+    ko: 안전을 위해 처음부터 다시 사정하겠습니다.
+    chunks:
+    - I'll reassess
+    - from scratch
+    - to be safe
+    - .
+    words:
+    - w-reassess
+    - w-scratch
+    - w-safe
+    goal: 2
+    tag: 처음부터
+    icon: redo
+    why: from scratch는 받은 정보에 기대지 않고 처음부터 한다는 뜻이에요. 인계 정보가 빠졌을 때는 내 눈으로 직접 다시 확인하는 것이 안전해요.
+    decoy: at noon
+    distractorsKo:
+    - 받은 보고를 그대로 믿고 진행하겠습니다
+    - 안전하게 다음 근무자에게 넘기겠습니다
+    blank:
+      answer: scratch
+      options:
+      - en: memory
+      - en: home
+      - en: there
+      - en: scratch
+  - en: The report we got didn't mention any allergies.
+    ko: 받은 보고에는 알레르기 언급이 없었습니다.
+    chunks:
+    - The report we got
+    - didn't mention
+    - any allergies
+    - .
+    words:
+    - w-mention
+    - w-allergy
+    - w-report
+    goal: 1
+    tag: 누락 지적
+    icon: mic
+    why: didn't mention any …는 보고에서 빠진 항목만 담담히 짚어요. 알레르기는 투약 전에 꼭 알아야 하는 정보라 빠지면 반드시 되묻고 확인해요.
+    decoy: yesterday
+    distractorsKo:
+    - 받은 보고에는 알레르기가 자세히 적혀 있었습니다
+    - 보고는 아직 받지 못했습니다
+    blank:
+      answer: allergies
+      options:
+      - en: allergies
+      - en: vitals
+      - en: diagnosis
+      - en: medications
+  - en: Please confirm her vitals time so I can chart it correctly.
+    ko: 차트에 정확히 기록하도록 활력징후 시각을 확인해 주세요.
+    chunks:
+    - Please confirm
+    - her vitals time
+    - so I can
+    - chart it correctly
+    - .
+    words:
+    - w-confirm
+    - w-vitals
+    goal: 2
+    tag: 시각 확인
+    icon: pencil
+    why: so I can …은 부탁의 이유를 붙여서 요청을 협조로 바꿔요. 활력징후는 측정 시각이 틀리면 추세 해석이 틀어지니 정확히 기록해야 해요.
+    decoy: tonight
+    distractorsKo:
+    - 활력징후 시각은 확인하지 않아도 돼요
+    - 차트는 제가 나중에 정리할게요
+    blank:
+      answer: correctly
+      options:
+      - en: twice
+      - en: correctly
+      - en: later
+      - en: quickly
+  nuance:
+  - kind: pair
+    words:
+    - w-medication
+    - w-list
+    - w-scratch
+    - w-safe
+    pairs:
+    - - medication
+      - list
+    - - from
+      - scratch
+    - - to be
+      - safe
+    decoys:
+    - percent
+    why: '''from scratch''는 ''처음부터 다시'', ''to be safe''는 ''혹시 모르니까''예요. 정보가 빈 이송 환자는 이 말을 붙여 재사정해요.'
+  - kind: swap
+    words:
+    - w-medication
+    - w-list
+    who: 보낸 병원에 전화 · 누락 요청
+    icon: mic
+    before:
+    - 'We didn''t get her medication list — '
+    - why didn't you send it
+    - '?'
+    options:
+    - could you send it over
+    - why didn't you send it
+    - you forgot it
+    answer: could you send it over
+    notes:
+      could you send it over: 탓하지 않고 필요한 것을 요청한다.
+      why didn't you send it: 추궁으로 들려 협조가 늦어진다.
+      you forgot it: 상대의 잘못으로 단정한다.
+    why: 빠진 정보는 탓보다 요청으로 받아요. 목적은 필요한 정보를 빨리 받는 것이에요.
+    ko: 투약 목록을 받지 못했는데, 보내 주시겠어요?
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 불완전 정보 수용 4문장 순서
+    why: 투약 목록 요청이 먼저예요. 없다면 마지막 투여 시각을 묻고, 어느 쪽이든 활력징후 시각을 확인하고, 그 모든 정보를 받을 때까지 처음부터 다시 사정한다고 마무리해요.
+    lines:
+    - en: We didn't get her medication list — do you have it?
+      icon: board
+      ko: 투약 목록을 못 받았는데, 갖고 계신가요?
+      note: 목록
+    - en: If you don't have it, can you confirm when the last dose was given?
+      icon: pill
+      ko: 없으면 마지막 투여 시각을 확인해 주시겠어요?
+      note: 투여
+    - en: Either way, please confirm her vitals time so I can chart it correctly.
+      icon: pencil
+      ko: 어느 쪽이든 활력징후 시각을 확인해 주세요
+      note: 시각
+    - en: Until I have all of that, I'll reassess from scratch to be safe.
+      icon: redo
+      ko: 그걸 다 받을 때까지 안전하게 처음부터 사정할게요
+      note: 재사정
+- title: 다직역 인계 회의
+  sentences:
+  - en: From nursing, her pain is controlled but mobility is poor.
+    ko: 간호 측면에서는 통증은 조절되지만 거동은 좋지 않습니다.
+    chunks:
+    - From nursing
+    - ', her pain'
+    - is controlled
+    - but mobility is poor
+    - .
+    words:
+    - w-nursing
+    - w-pain
+    - w-mobility
+    - w-poor
+    goal: 1
+    tag: 간호 보고
+    icon: stetho
+    why: From nursing,으로 시작하면 어느 직역의 관점인지 먼저 밝혀서 회의에서 보고가 섞이지 않아요. controlled but … poor처럼 좋은 점과 문제를 한 문장에 나눠 말해요.
+    decoy: this morning
+    distractorsKo:
+    - 간호 측면에서는 통증이 심하고 거동은 좋습니다
+    - 간호 측면에서는 통증도 거동도 모두 좋습니다
+    blank:
+      answer: controlled
+      options:
+      - en: worse
+      - en: new
+      - en: controlled
+      - en: severe
+  - en: Social work is arranging safe discharge to a shelter.
+    ko: 사회복지팀이 보호소로의 안전한 퇴원을 주선하고 있습니다.
+    chunks:
+    - Social work
+    - is arranging
+    - safe discharge
+    - to a shelter
+    - .
+    words:
+    - w-social
+    - w-arrange
+    - w-safe
+    - w-discharge
+    - w-shelter
+    goal: 1
+    tag: 사회복지
+    icon: home
+    why: Social work is arranging …은 사회복지팀이 지금 맡아 진행 중인 일을 알려 줘요. 퇴원 장소가 정해져야 의사와 간호사가 퇴원 준비를 같이 맞춰요.
+    decoy: from home
+    distractorsKo:
+    - 사회복지팀이 퇴원을 취소했습니다
+    - 사회복지팀이 아직 상황을 모릅니다
+    blank:
+      answer: arranging
+      options:
+      - en: refusing
+      - en: avoiding
+      - en: canceling
+      - en: arranging
+  - en: Let's agree who follows up on each item.
+    ko: 각 항목을 누가 후속 처리할지 합의해요.
+    chunks:
+    - Let's agree
+    - who follows up
+    - on each item
+    - .
+    words:
+    - w-agree
+    - w-follow
+    - w-item
+    goal: 2
+    tag: 담당 지정
+    icon: pushpin
+    why: Let's agree who …는 회의가 흩어지기 전에 항목마다 책임자를 정하자는 제안이에요. 책임자가 없으면 누군가 하겠지로 끝나는 경우가 많아요.
+    decoy: by tomorrow
+    distractorsKo:
+    - 각 항목은 제가 혼자 후속 처리할게요
+    - 각 항목은 나중에 정해요
+    blank:
+      answer: agree
+      options:
+      - en: agree
+      - en: forget
+      - en: ignore
+      - en: guess
+  - en: The doctor still needs to confirm the discharge plan.
+    ko: 의사는 아직 퇴원 계획을 확인해야 합니다.
+    chunks:
+    - The doctor
+    - still needs
+    - to confirm
+    - the discharge plan
+    - .
+    words:
+    - w-confirm
+    - w-discharge
+    goal: 2
+    tag: 미결 확인
+    icon: stetho
+    why: still needs to는 아직 끝나지 않은 단계를 짚어 줘요. 퇴원 계획은 의사의 확정이 있어야 다음 준비를 진행할 수 있어요.
+    decoy: alone
+    distractorsKo:
+    - 의사가 퇴원 계획을 이미 확정했습니다
+    - 간호사가 퇴원 계획을 확인해야 합니다
+    blank:
+      answer: confirm
+      options:
+      - en: delay
+      - en: confirm
+      - en: reject
+      - en: cancel
+  - en: Her family knows about the shelter plan already.
+    ko: 가족은 이미 보호소 계획을 알고 있습니다.
+    chunks:
+    - Her family knows
+    - about the shelter plan
+    - already
+    - .
+    words:
+    - w-shelter
+    goal: 1
+    tag: 가족 인지
+    icon: speech
+    why: already는 가족에게 이미 설명이 끝났다는 뜻이라 다른 직역이 같은 설명을 반복하지 않아도 돼요. 가족이 아는 범위를 회의에서 공유하면 설명이 겹치거나 빠지지 않아요.
+    decoy: last week
+    distractorsKo:
+    - 가족은 보호소 계획을 아직 모릅니다
+    - 가족이 보호소 계획에 반대합니다
+    blank:
+      answer: shelter
+      options:
+      - en: therapy
+      - en: insurance
+      - en: shelter
+      - en: surgery
+  nuance:
+  - kind: slider
+    words:
+    - w-mobility
+    - w-poor
+    cue: 'PT: "She can walk to the bathroom, but only with one of us holding her arm."'
+    scale:
+    - independent
+    - standby assist
+    - one-person assist
+    - bedbound
+    answerAt: 2
+    why: 거동은 independent(혼자) → standby assist(곁에서 지켜봄) → one-person assist(한 사람이 부축) → bedbound(침상 생활) 순으로 도움이 커져요. 'poor'보다 이렇게 구체적으로 말하면 퇴원 계획을 세우기 쉬워요.
+    example: She's a one-person assist to the bathroom.
+    exKo: 화장실까지는 한 사람이 부축해야 해요.
+  - kind: swap
+    words:
+    - w-agree
+    - w-follow
+    - w-item
+    who: 다직역 회의 · 마무리
+    icon: handshake2
+    before:
+    - ''
+    - Somebody should probably follow up on this stuff
+    - .
+    options:
+    - Let's agree who follows up on each item
+    - Somebody should probably follow up on this stuff
+    - You all need to follow up on these
+    answer: Let's agree who follows up on each item
+    notes:
+      Let's agree who follows up on each item: 항목마다 담당을 정하자고 분명히 제안한다.
+      Somebody should probably follow up on this stuff: 담당이 없어 결국 아무도 하지 않게 된다.
+      You all need to follow up on these: 다른 직역 동료에게 지시처럼 들린다.
+    why: 회의 끝에는 항목마다 담당자를 정해요 — '누군가'는 결국 아무도 아니에요.
+    ko: 각 항목을 누가 후속 처리할지 합의해요
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 다직역 인계 회의 4문장 순서
+    why: 간호 보고로 시작하고, 사회복지가 거동이 나아지면(her mobility가 앞 줄을 받아) 퇴원을 주선한다고 이어요. 가족이 그 계획을 이미 안다고 전한 뒤, With all of that으로 앞 내용을 모두 받아 담당을 정하며 회의를 마쳐요.
+    lines:
+    - en: From nursing, her pain is controlled but mobility is poor.
+      icon: stetho
+      ko: '간호: 통증은 조절되지만 거동은 좋지 않아요'
+      note: 간호
+    - en: Social work is arranging safe discharge to a shelter once her mobility improves.
+      icon: home
+      ko: '사회복지: 거동이 나아지면 보호소로 안전하게 퇴원시키도록 주선 중이에요'
+      note: 복지
+    - en: Her family knows about it already.
+      icon: speech
+      ko: 가족은 그 계획을 이미 알고 있어요
+      note: 가족
+    - en: With all of that, let's agree who follows up on each item.
+      icon: pushpin
+      ko: 이 모든 걸 감안해 항목마다 누가 후속 처리할지 정해요
+      note: 담당
+- title: 대량재해 환자 분류 인계
+  sentences:
+  - en: We have three reds, five yellows, and eight greens.
+    ko: 적색 3명, 황색 5명, 녹색 8명입니다.
+    chunks:
+    - We have
+    - three reds
+    - ', five yellows'
+    - ', and eight greens'
+    - .
+    words:
+    - w-red
+    - w-yellow
+    - w-green
+    goal: 1
+    tag: 인원 보고
+    icon: board
+    why: reds, yellows, greens는 중증도 분류 색을 복수로 세는 현장 말투예요. 색과 숫자를 짧게 말하면 전체 규모가 한눈에 전해져요.
+    decoy: at noon
+    distractorsKo:
+    - 적색 환자는 이미 모두 이송했습니다
+    - 적색은 한 명도 없습니다
+    blank:
+      answer: yellows
+      options:
+      - en: blues
+      - en: oranges
+      - en: purples
+      - en: yellows
+  - en: The reds are in bays one through three, most critical first.
+    ko: 적색 환자는 1번부터 3번 구역에 있고, 가장 위중한 순서입니다.
+    chunks:
+    - The reds are
+    - in bays
+    - one through three
+    - ', most critical first'
+    - .
+    words:
+    - w-red
+    - w-bay
+    - w-critical
+    goal: 1
+    tag: 구역 배치
+    icon: compass
+    why: one through three는 1번부터 3번까지 모두를 한 번에 가리키는 표현이에요. most critical first는 위중한 순서로 놓였다는 뜻이라 가장 급한 환자부터 볼 수 있어요.
+    decoy: last night
+    distractorsKo:
+    - 적색 환자는 4번에서 6번 구역에 있습니다
+    - 적색 환자는 덜 위중한 순서로 놓여 있습니다
+    blank:
+      answer: critical
+      options:
+      - en: critical
+      - en: recent
+      - en: stable
+      - en: quiet
+  - en: Reassess yellows every fifteen minutes for changes.
+    ko: 황색 환자는 15분마다 변화를 재사정하세요.
+    chunks:
+    - Reassess yellows
+    - every fifteen minutes
+    - for changes
+    - .
+    words:
+    - w-reassess
+    - w-yellow
+    - w-change
+    goal: 2
+    tag: 재사정 주기
+    icon: redo
+    why: every fifteen minutes처럼 간격을 숫자로 정해 주면 누가 해도 같은 주기로 재사정해요. 황색 환자는 나빠지면 적색으로 올려야 해서 주기적으로 다시 봐요.
+    decoy: at night
+    distractorsKo:
+    - 황색 환자는 한 번만 재사정하세요
+    - 황색 환자는 녹색 구역으로 보내세요
+    blank:
+      answer: Reassess
+      options:
+      - en: Discharge
+      - en: Reassess
+      - en: Sedate
+      - en: Transfer
+  - en: Greens can wait in the hallway until we call them.
+    ko: 녹색 환자는 호출할 때까지 복도에서 기다릴 수 있습니다.
+    chunks:
+    - Greens can wait
+    - in the hallway
+    - until we
+    - call them
+    - .
+    words:
+    - w-green
+    - w-wait
+    - w-call
+    goal: 2
+    tag: 녹색 대기
+    icon: home
+    why: can wait는 지금 당장 치료하지 않아도 안전하다고 판단했다는 뜻이에요. until we call them은 대기가 끝나는 시점을 호출로 정해 줘요.
+    decoy: at noon
+    distractorsKo:
+    - 녹색 환자는 지금 바로 치료해야 합니다
+    - 녹색 환자는 퇴원시켜도 됩니다
+    blank:
+      answer: hallway
+      options:
+      - en: cafeteria
+      - en: parking lot
+      - en: hallway
+      - en: lobby
+  - en: Here are the triage tags for every bed in this bay.
+    ko: 이 구역 모든 병상에 대한 중증도 분류 태그입니다.
+    chunks:
+    - Here are
+    - the triage tags
+    - for every bed
+    - in this bay
+    - .
+    words:
+    - w-triage
+    - w-bed
+    - w-bay
+    goal: 1
+    tag: 분류 태그
+    icon: pushpin
+    why: Here are …는 물건을 건네며 말하는 가장 짧은 틀이에요. 태그가 침상마다 붙어 있어야 다른 팀도 색으로 우선순위를 바로 알아요.
+    decoy: at noon
+    distractorsKo:
+    - 이 구역 환자는 모두 태그를 뗐습니다
+    - 이 구역에는 침상이 한 개뿐입니다
+    blank:
+      answer: triage
+      options:
+      - en: visitor
+      - en: billing
+      - en: allergy
+      - en: triage
+  nuance:
+  - kind: slider
+    words:
+    - w-green
+    - w-yellow
+    - w-red
+    cue: He sprained his wrist, but he's talking and walking around on his own.
+    scale:
+    - green
+    - yellow
+    - red
+    answerAt: 0
+    why: START 분류에서 걸을 수 있으면 green(경증)이에요. 걷지는 못해도 호흡·순환·지시 따르기가 괜찮으면 yellow(지연), 호흡·순환·의식 중 하나라도 위험 신호가 있으면 red(즉시)입니다.
+    example: He's walking and talking, so he's a green.
+    exKo: 걷고 말할 수 있으니 녹색이에요.
+  - kind: context
+    words:
+    - w-red
+    - w-bed
+    scenes:
+    - who: 팀에게
+      icon: siren
+      en: Bed two is a red — take him first.
+      ok: true
+    - who: 상황판
+      icon: board
+      en: 'Bed 2: RED, immediate.'
+      ok: true
+    - who: 보호자에게
+      icon: me
+      en: Your husband is a red.
+      ok: false
+      fix: Your husband is badly hurt, so he's being treated first.
+    why: 색상 태그는 팀끼리 쓰는 분류어예요. 가족에게는 '많이 다쳐서 가장 먼저 치료받고 있다'고 풀어 말해요.
+    word: red
+    ko: 적색(최중증)
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 대량재해 분류 4문장 순서
+    why: 전체 인원으로 시작하고 적색의 위치를 말해요. 그 구역을 맡은 뒤(Once those bays are covered) 황색을 재사정하고, 그 재사정을 하는 동안(those reassessments) 녹색은 복도에서 기다린다는 순서예요.
+    lines:
+    - en: We have three reds, five yellows, and eight greens.
+      icon: board
+      ko: 적색 3, 황색 5, 녹색 8명이에요
+      note: 인원
+    - en: The reds are in bays one through three, most critical first.
+      icon: siren
+      ko: 적색은 1~3번 구역, 가장 위중한 순이에요
+      note: 적색
+    - en: Once those bays are covered, reassess the yellows every fifteen minutes.
+      icon: redo
+      ko: 그 구역을 맡은 뒤 황색을 15분마다 재사정하세요
+      note: 황색
+    - en: While you do those reassessments, the greens can wait in the hallway.
+      icon: home
+      ko: 그 재사정을 하는 동안 녹색은 복도에서 기다려도 돼요
+      note: 녹색

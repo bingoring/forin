@@ -33,7 +33,17 @@ func speechTestPool(t *testing.T) *pgxpool.Pool {
 			"TEST_DATABASE_URL=postgres://forin:forin@localhost:5432/forin_test?sslmode=disable go test ./internal/adapters/postgres/ -run Speech -v " +
 			"(migrations must already be applied to that database)")
 	}
-	pool, err := pgxpool.New(context.Background(), url)
+	cfg, err := pgxpool.ParseConfig(url)
+	if err != nil {
+		t.Fatalf("parse pool config: %v", err)
+	}
+	// pgxpool's default MaxConns is max(4, NumCPU): 4 on a 2-vCPU CI runner, much more on a
+	// laptop. Some tests hold several connections at once (TestRetryResolvesGenuineRace needs
+	// 3, the concurrency test races 8), so pin a floor and stop the result depending on the host.
+	if cfg.MaxConns < 8 {
+		cfg.MaxConns = 8
+	}
+	pool, err := pgxpool.NewWithConfig(context.Background(), cfg)
 	if err != nil {
 		t.Fatalf("open pool: %v", err)
 	}
@@ -448,7 +458,7 @@ func TestConcurrentAttemptsGetDistinctNumbers(t *testing.T) {
 	ctx := context.Background()
 	sentenceKey := "sk-concurrent-test"
 
-	const n = 2
+	const n = 8 // cross-review S2: three or more callers used to defeat the single retry
 	warmPool(t, pool, n)
 
 	var wg sync.WaitGroup
@@ -486,8 +496,14 @@ func TestConcurrentAttemptsGetDistinctNumbers(t *testing.T) {
 // immediately after don't have their timing skewed by lazy connection
 // dial/auth — a pool that has to open a new physical connection is much
 // slower than one just handing out an idle one.
+//
+// Never more than the pool's MaxConns: on a 2-vCPU CI runner pgxpool's default cap is 4, and
+// holding 4 while asking for a 5th blocks forever (the 10-minute hang on PR #14).
 func warmPool(t *testing.T, pool *pgxpool.Pool, n int) {
 	t.Helper()
+	if max := int(pool.Config().MaxConns); n > max {
+		n = max
+	}
 	conns := make([]*pgxpool.Conn, n)
 	for i := 0; i < n; i++ {
 		c, err := pool.Acquire(context.Background())
@@ -662,5 +678,98 @@ func TestUpdateReferenceAudioBackfillsLegacyRow(t *testing.T) {
 	}
 	if string(stillAfter) != string(backfilled) {
 		t.Fatalf("want the first backfill to win, got %q", stillAfter)
+	}
+}
+
+// referenceLastUsed reads speech_references.last_used_at straight from the table.
+func referenceLastUsed(t *testing.T, pool *pgxpool.Pool, key string) time.Time {
+	t.Helper()
+	var at time.Time
+	if err := pool.QueryRow(context.Background(), `SELECT last_used_at FROM speech_references WHERE sentence_key = $1`, key).Scan(&at); err != nil {
+		t.Fatalf("read last_used_at: %v", err)
+	}
+	return at
+}
+
+func putTestReference(t *testing.T, pool *pgxpool.Pool, repo *SpeechRepo, tag string) string {
+	t.Helper()
+	key := fmt.Sprintf("sk-%s-%d", tag, time.Now().UnixNano())
+	t.Cleanup(func() {
+		_, _ = pool.Exec(context.Background(), `DELETE FROM speech_references WHERE sentence_key = $1`, key)
+	})
+	if err := repo.PutReference(context.Background(), ports.SentenceReferenceRow{
+		SentenceKey: key, ReferenceText: "x", Locale: "en-US", ReferenceAudio: []byte("RIFFxxxx"),
+	}); err != nil {
+		t.Fatalf("put: %v", err)
+	}
+	return key
+}
+
+// Cross-review I4(c): a cache hit refreshes last_used_at, but at most once a day — a row
+// served within the last 24h is left alone so hot sentences do not turn reads into writes.
+func TestReferenceHitRefreshesLastUsedAtAtMostDaily(t *testing.T) {
+	pool := speechTestPool(t)
+	repo := NewSpeechRepo(pool)
+	ctx := context.Background()
+
+	for name, hit := range map[string]func(key string) error{
+		"GetReference":      func(k string) error { _, err := repo.GetReference(ctx, k); return err },
+		"GetReferenceAudio": func(k string) error { _, err := repo.GetReferenceAudio(ctx, k); return err },
+	} {
+		key := putTestReference(t, pool, repo, "touch")
+
+		// Stale (2 days): the hit must refresh it to ~now.
+		old := time.Now().Add(-48 * time.Hour)
+		if _, err := pool.Exec(ctx, `UPDATE speech_references SET last_used_at = $2 WHERE sentence_key = $1`, key, old); err != nil {
+			t.Fatal(err)
+		}
+		if err := hit(key); err != nil {
+			t.Fatalf("%s: %v", name, err)
+		}
+		if got := referenceLastUsed(t, pool, key); time.Since(got) > time.Minute {
+			t.Errorf("%s: stale row not refreshed, last_used_at=%v", name, got)
+		}
+
+		// Fresh (1h): the hit must NOT write.
+		recent := time.Now().Add(-time.Hour).Truncate(time.Microsecond)
+		if _, err := pool.Exec(ctx, `UPDATE speech_references SET last_used_at = $2 WHERE sentence_key = $1`, key, recent); err != nil {
+			t.Fatal(err)
+		}
+		if err := hit(key); err != nil {
+			t.Fatalf("%s: %v", name, err)
+		}
+		if got := referenceLastUsed(t, pool, key); !got.Equal(recent) {
+			t.Errorf("%s: row used an hour ago was rewritten: %v -> %v", name, recent, got)
+		}
+	}
+}
+
+// The cleanup removes only rows unused since the cutoff, and a dry count agrees with it.
+func TestDeleteStaleReferences(t *testing.T) {
+	pool := speechTestPool(t)
+	repo := NewSpeechRepo(pool)
+	ctx := context.Background()
+
+	stale := putTestReference(t, pool, repo, "stale")
+	fresh := putTestReference(t, pool, repo, "fresh")
+	if _, err := pool.Exec(ctx, `UPDATE speech_references SET last_used_at = now() - interval '200 days' WHERE sentence_key = $1`, stale); err != nil {
+		t.Fatal(err)
+	}
+
+	cutoff := time.Now().Add(-90 * 24 * time.Hour)
+	n, err := repo.CountStaleReferences(ctx, cutoff)
+	if err != nil || n < 1 {
+		t.Fatalf("count stale = %d, %v; want >= 1", n, err)
+	}
+	// Other rows in a shared test DB may also be stale; scope the assertion to ours.
+	deleted, err := repo.DeleteStaleReferences(ctx, cutoff)
+	if err != nil || deleted < 1 {
+		t.Fatalf("deleted = %d, %v; want >= 1", deleted, err)
+	}
+	if got, _ := repo.GetReference(ctx, stale); got != nil {
+		t.Errorf("stale reference survived the cleanup")
+	}
+	if got, _ := repo.GetReference(ctx, fresh); got == nil {
+		t.Errorf("fresh reference was deleted by the cleanup")
 	}
 }

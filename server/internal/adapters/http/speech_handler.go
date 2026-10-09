@@ -1,11 +1,11 @@
 package http
 
 import (
+	"errors"
 	"log/slog"
 	"net/http"
 	"strconv"
 	"strings"
-	"unicode/utf8"
 
 	"github.com/bingoring/forin/server/internal/domain/pronunciation"
 	"github.com/bingoring/forin/server/internal/domain/speech"
@@ -50,21 +50,25 @@ func (h *speechHandler) reference(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	text := r.URL.Query().Get("text")
-	if text == "" {
-		httpx.Error(w, http.StatusBadRequest, "text is required")
-		return
-	}
 	// business-rules §2's cap (same as POST /pronunciation's referenceText) —
 	// review round 2, Important 4: an unauthenticated-in-spirit text length
 	// cap here bounds how much Synthesize+Assess cost one caller can trigger
 	// via arbitrary `text` values, each landing a new, never-invalidated
 	// speech_references row (R9).
-	if utf8.RuneCountInString(text) > maxReferenceTextLen {
+	if !validReferenceText(text) {
 		httpx.Error(w, http.StatusBadRequest, "invalid_reference_text")
 		return
 	}
 
 	ref, err := h.svc.Reference(r.Context(), uid, text)
+	if errors.Is(err, speech.ErrReferenceQuotaExceeded) {
+		// Cross-review I4: this user has caused their daily allowance of NEW
+		// references. Unlike the failures below this is the caller's own doing,
+		// so it is a real 429 — the client treats any non-200 here as "no
+		// reference" (the screen hides IPA + waveform; practice still works).
+		httpx.Error(w, http.StatusTooManyRequests, "reference_quota_exceeded")
+		return
+	}
 	if err != nil {
 		// business-rules §5 "참조 생성(TTS→assess) 실패": every failure mode here —
 		// a DB read error, ErrTTSNotConfigured, ErrUnsupportedLocale, or a
@@ -94,8 +98,8 @@ func (h *speechHandler) attempts(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	text := r.URL.Query().Get("text")
-	if text == "" {
-		httpx.Error(w, http.StatusBadRequest, "text is required")
+	if !validReferenceText(text) {
+		httpx.Error(w, http.StatusBadRequest, "invalid_reference_text")
 		return
 	}
 

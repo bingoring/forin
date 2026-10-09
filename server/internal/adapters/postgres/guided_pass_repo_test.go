@@ -41,6 +41,22 @@ func TestAHelpedClearIsNotAClearAlone(t *testing.T) {
 	if !free["SCN-ER-00002"] {
 		t.Fatal("an unaided clear was not recorded as one")
 	}
+
+	// The rung was renamed `choices` → `guided` on 2026-09-30. Rows written before that
+	// date still say `choices`, and the two above were written that way on purpose — this
+	// third one uses the new spelling. **Both have to land in the guided set.** If only
+	// one did, the learner's free pass would be born complete: marked done without ever
+	// having been done alone.
+	if _, err := repo.RecordAttempt(ctx, uid, "SCN-ER-00003", 100, "cleared", 88, "guided"); err != nil {
+		t.Fatalf("RecordAttempt(guided): %v", err)
+	}
+	guided, free, _ = repo.ClearedByGuide(ctx, uid)
+	if !guided["SCN-ER-00003"] {
+		t.Fatal("a clear stored with the NEW spelling was not read as guided")
+	}
+	if free["SCN-ER-00003"] {
+		t.Fatal("a guided clear under the new spelling was also counted as unaided")
+	}
 }
 
 func TestAnAbandonedGuidedRunDoesNotUnlockTheFreePass(t *testing.T) {

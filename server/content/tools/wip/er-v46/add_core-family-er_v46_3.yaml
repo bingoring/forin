@@ -1,0 +1,91 @@
+- title: 보호자 과잉 개입
+  s:
+  - {t: "공감", i: me, w: "I can see …는 상대의 마음을 보이는 대로 말해 주는 공감 표현이에요. 제지하기 전에 먼저 그 마음을 인정하면 보호자가 비난받는다고 느끼지 않아요.", d: "for you", k: ["환자분은 지금 쉬고 계세요", "보호자분은 나가 주세요"], a: "care", ai: star, o: [["joke", "play"], ["complain", "faceAngry"], ["brag", "trophy"]]}
+  - {t: "이유 설명", i: shield, w: "For her safety처럼 이유를 먼저 말하면 보호자가 자기를 막는 말이 아니라 환자를 위한 요청으로 받아들여요. a little로 필요한 정도를 작게 말해 부담도 줄여요.", d: "of mine", k: ["환자분은 혼자 있고 싶어 하세요", "보호자분이 처치를 도와 주세요"], a: "space", ai: compass, o: [["money", "board"], ["noise", "speaker"], ["sugar", "coffee"]]}
+  - {t: "역할 안내", i: handshake2, w: "help most by -ing는 …하는 것이 가장 도움이 된다는 구조라, 막는 대신 할 수 있는 일을 쥐여 줘요. 머리맡은 대개 처치가 이뤄지는 몸 쪽과 겹치지 않는 자리예요.", d: "for her", k: ["발치에서 지켜보시면 돼요", "밖에서 기다려 주세요"], a: "softly", ai: bell, o: [["loudly", "speaker"], ["quickly", "play"], ["angrily", "faceAngry"]]}
+  - {t: "공감", i: me, w: "I know you want to …로 상대의 마음을 인정하고 let me guide how로 그 마음이 갈 곳을 안내해요. 막는 말 대신 방법을 주면 보호자가 쓸모없다고 느끼지 않아요.", d: "of you", k: ["도와주지 않으셔도 돼요", "제가 모두 알아서 할게요"], a: "help", ai: handshake2, o: [["hurt", "lock"], ["leave", "plane"], ["stop", "faceAngry"]]}
+  - {t: "위치 안내", i: pushpin, w: "stand right here처럼 서 있을 자리를 정확히 가리키면 보호자가 어디에 있어야 할지 망설이지 않아요. 뒤의 talk softly는 할 수 있는 일을 함께 줘요.", d: "from him", k: ["멀리 떨어져 서 계세요", "손을 잡고 계세요"], a: "talk", ai: speech, o: [["shout", "speaker"], ["scream", "siren"], ["yell", "faceAngry"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "과잉 개입 보호자 응대 4문장 순서"
+    why: "마음을 먼저 인정하고, Even so로 공간이 필요한 이유를 말하고, 대신 도울 수 있는 자리와 방법을 주고, 그렇게 해 주는 것에 감사해요. Even so는 1줄을, Until I'm done은 2줄의 작업을, That은 3줄의 행동을 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "I can see how much you care about her.", icon: star, ko: "환자분을 얼마나 아끼시는지 느껴져요", note: "공감"}
+    - {en: "Even so, for her safety, I need a little space to work.", icon: shield, ko: "그래도 안전을 위해 처치할 공간이 조금 필요해요", note: "이유"}
+    - {en: "Until I'm done, you can help most by standing right here and talking softly.", icon: pushpin, ko: "끝날 때까지 여기 서서 부드럽게 말씀해 주시는 게 가장 도움이 돼요", note: "역할"}
+    - {en: "That helps me more than you know — thank you.", icon: handshake2, ko: "그게 생각보다 큰 도움이에요, 감사해요", note: "감사"}
+  sw: {ko: "도와주고 싶으신 마음 알아요, 어떻게 하면 될지 안내해 드릴게요"}
+- title: 나쁜 소식 전 준비
+  s:
+  - {t: "장소 이동", i: home, w: "Let's step …로 우리가 함께 자리를 옮기자는 모양이라 상대가 끌려간다는 느낌이 덜해요. private room은 다른 사람의 눈과 귀를 피할 수 있는 공간을 가리켜요.", d: "of the room", k: ["복도에서 이야기해 볼까요", "화장실은 저쪽이에요"], a: "private", ai: lock, o: [["public", "speaker"], ["crowded", "handshake2"], ["noisy", "bell"]]}
+  - {t: "이해도 확인", i: stetho, w: "already로 이미 아는 만큼부터 시작하자고 해요. 나쁜 소식을 전하기 전에 가족이 알고 있는 것을 먼저 들으면 어디서부터 설명할지 알 수 있어요.", d: "to him", k: ["아버님은 어느 병원에서 오셨나요?", "아버님 병력을 알려 주세요"], a: "already", ai: bulb, o: [["never", "lock"], ["rarely", "calendar"], ["hardly", "chevronDown"]]}
+  - {t: "곁의 사람", i: handshake2, w: "Is there someone …?는 예/아니오로 답하기 쉬운 질문이라 충격 직전의 가족도 대답할 수 있어요. 나쁜 소식을 혼자 듣지 않도록 곁에 둘 사람을 미리 물어요.", d: "for you", k: ["보호자분 성함이 어떻게 되세요?", "병원에 어떻게 오셨어요?"], a: "someone", ai: me, o: [["nobody", "redo"], ["nothing", "chevronDown"], ["no one", "lock"]]}
+  - {t: "곧 설명", i: bell, w: "The doctor will be here soon으로 곧 무슨 일이 있을지 먼저 알려 줘요. 이어서 let's로 함께 조용한 곳을 찾자고 하면 가족이 따라오기 쉬워요.", d: "for him", k: ["의사 선생님은 퇴근하셨어요", "병실에서 기다리세요"], a: "quiet", ai: home, o: [["loud", "speaker"], ["crowded", "handshake2"], ["bright", "monitor"]]}
+  - {t: "여유 주기", i: coffee, w: "Take a moment는 서두르지 않아도 된다는 여유를 줘요. let me know if …로 필요한 것을 먼저 말해 달라고 해서 이야기 전에 마음을 가다듬을 시간을 줘요.", d: "to him", k: ["서둘러 결정해 주세요", "이야기는 이미 끝났어요"], a: "moment", ai: chevronDown, o: [["picture", "monitor"], ["ticket", "board"], ["shower", "bandage"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "나쁜 소식 전 준비 4문장 순서"
+    why: "먼저 조용한 방으로 옮기고, 그곳에서 아는 만큼을 묻고, 감사한 뒤 곁에 둘 사람을 묻고, 그렇다면 부르겠다고 해요. in there, Thank you, If so가 앞 줄의 장소·대답·질문을 이어서 순서가 하나예요."
+    lines:
+    - {en: "Let's step into a private room where we can talk.", icon: home, ko: "이야기 나눌 수 있는 조용한 방으로 가요", note: "이동"}
+    - {en: "Once we're in there, what do you already understand about his condition?", icon: stetho, ko: "방에 들어가면 상태에 대해 어디까지 알고 계신지 말씀해 주세요", note: "이해도"}
+    - {en: "Thank you. Is there someone you'd like to have with you?", icon: handshake2, ko: "감사해요, 함께 계셨으면 하는 분이 있나요?", note: "곁의 사람"}
+    - {en: "If so, I'll call them now — the doctor will be here soon.", icon: bell, ko: "그러시면 지금 연락할게요, 의사 선생님이 곧 오세요", note: "연락"}
+  ctx: {word: "private", ko: "사적인"}
+- title: 원거리 가족 전화 소통
+  s:
+  - {t: "전화 목적", i: speaker, w: "전화를 건 이유를 첫 문장에 밝히는 I'm calling to … 구조예요. 갑자기 걸려 온 병원 전화는 불안하니 목적을 바로 말하면 가족이 안심해요.", d: "for the bill", k: ["어머님 진료비를 안내드릴게요", "어머님을 퇴원시키려고 전화했어요"], a: "update", ai: bell, o: [["quiz", "pencil"], ["lecture", "trophy"], ["survey", "board"]]}
+  - {t: "상태 먼저", i: stetho, w: "전화로 소식을 전할 때는 상태부터 말하는 게 좋아요. 가장 궁금한 것을 먼저 풀고 here's what's happening now로 이어 가면 가족이 숨을 돌릴 수 있어요.", d: "last night", k: ["어머님이 방금 퇴원하셨어요", "어머님은 수술 중이세요"], a: "stable", ai: chartup, o: [["critical", "siren"], ["unstable", "faceWorried"], ["confused", "bulb"]]}
+  - {t: "연락 안내", i: mic, w: "anytime for updates로 전화해도 되는 때와 목적을 함께 알려 줘요. 언제든 확인할 수 있다고 하면 가족이 계속 전화기를 붙잡고 불안해하지 않아요.", d: "to him", k: ["이 번호는 평일에만 연결돼요", "이 번호로는 문자만 받아요"], a: "updates", ai: bell, o: [["bills", "board"], ["refunds", "pushpin"], ["rumors", "speech"]]}
+  - {t: "상세 설명", i: speech, w: "walk you through는 처음부터 끝까지 하나씩 짚어 준다는 뜻이에요. over the phone을 덧붙이면 멀리 있어도 직접 설명을 듣는다는 느낌이 들어요.", d: "to her", k: ["직접 병원에 와서 들으셔야 해요", "설명서를 우편으로 보내드릴게요"], a: "everything", ai: board, o: [["the building", "hospital"], ["the hallway", "compass"], ["the lobby", "home"]]}
+  - {t: "번호 안내", i: pencil, w: "write down은 받아 적는 행동을 부탁해서 번호를 잊지 않게 해요. in case you need to reach us는 필요할 때만 쓰라는 여지를 줘서 전화하는 부담도 덜어요.", d: "to him", k: ["번호는 저희가 대신 기억할게요", "번호는 문자로 이미 보냈어요"], a: "direct", ai: speaker, o: [["busy", "siren"], ["broken", "lock"], ["wrong", "faceAngry"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "원거리 가족 전화 4문장 순서"
+    why: "인사와 전화한 이유로 시작하고, 상태를 말하고, 끊기 전에 번호를 적게 하고, 그 번호로 언제든 걸라고 해요. 2줄의 She는 1줄의 어머님을, 4줄의 it은 3줄의 번호를 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "Hello, I'm calling to update you on your mother.", icon: speaker, ko: "안녕하세요, 어머님 소식을 전해드리려고 전화했어요", note: "목적"}
+    - {en: "She's stable, and I'll walk you through everything we know.", icon: stetho, ko: "안정적이세요, 지금 아는 걸 하나씩 설명드릴게요", note: "상태"}
+    - {en: "Before we hang up, please write down this direct line.", icon: pencil, ko: "끊기 전에 이 직통 번호를 적어 두세요", note: "번호"}
+    - {en: "You can call it anytime for updates.", icon: bell, ko: "소식이 궁금하면 언제든 거세요", note: "안내"}
+  ctx: {word: "condition", ko: "상태"}
+- title: 사망 고지 소통
+  s:
+  - {t: "예고", i: bell, w: "very difficult news처럼 미리 신호를 주는 말은 나쁜 소식 전의 경고 문장이에요. 듣는 사람이 마음의 준비를 할 짧은 틈을 줘요.", d: "to him", k: ["좋은 소식이 있어요", "검사 결과가 나왔어요"], a: "difficult", ai: faceWorried, o: [["good", "star"], ["happy", "lock"], ["exciting", "play"]]}
+  - {t: "소식 전달", i: faceWorried, w: "but으로 최선을 다했다는 말과 사망 소식을 한 문장에 담아요. passed away는 부드러운 표현이라서, 충격 속의 가족이 오해하지 않도록 died처럼 분명한 말도 함께 쓰라고 가르쳐요.", d: "from him", k: ["그분은 다른 병원으로 옮겨졌어요", "그분은 지금 수술 중이세요"], a: "passed away", ai: chevronDown, o: [["moved away", "plane"], ["walked away", "play"], ["run away", "chartup"]]}
+  - {t: "시간 허락", i: shield, w: "Take all the time you need는 서두르지 않아도 된다는 허락이에요. I'm here with you로 곁에 있다고 말하면 해결책이 없어도 위로가 돼요.", d: "to go", k: ["이제 서류를 작성해 주세요", "시간이 많지 않아요"], a: "with", ai: handshake2, o: [["without", "lock"], ["against", "faceAngry"], ["like", "me"]]}
+  - {t: "분명한 말", i: me, w: "I'm so sorry로 먼저 마음을 전하고 died로 분명하게 말해요. 완곡한 말만 쓰면 충격 속에서 오해할 수 있어서, 한 번은 분명한 말로 확인하는 것이 사망 고지의 권고예요.", d: "last week", k: ["아직 희망이 있어요", "지금 수술실에 계세요"], a: "died", ai: lock, o: [["recovered", "chevronDown"], ["improved", "chartup"], ["woken", "bell"]]}
+  - {t: "곁에 있기", i: me, w: "I'm not going anywhere는 떠나지 않겠다고 부정문으로 말해 가족이 혼자 남겨질까 하는 불안을 덜어요. right here로 지금 이 자리에 있다는 걸 구체적으로 말해요.", d: "for you", k: ["잠시 자리를 비울게요", "서류를 가져올게요"], a: "stay", ai: handshake2, o: [["leave", "plane"], ["hide", "lock"], ["shout", "speaker"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "사망 고지 4문장 순서"
+    why: "먼저 힘든 소식이 있다고 예고하고, 죄송하다고 하며 died로 분명히 알리고, 그 말을 들은 뒤 시간을 가지라고 하고, 그동안 곁에 있겠다고 해요. 3줄의 that은 2줄의 소식을, 4줄의 While you do는 3줄의 시간을 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "I have very difficult news to share.", icon: bell, ko: "아주 힘든 소식을 전해드려야 해요", note: "예고"}
+    - {en: "I'm so sorry — despite everything we did, he has died.", icon: faceWorried, ko: "정말 죄송해요, 최선을 다했지만 돌아가셨어요", note: "고지"}
+    - {en: "Please take all the time you need after hearing that.", icon: shield, ko: "그 말을 들으셨으니 필요한 만큼 시간을 가지세요", note: "시간"}
+    - {en: "While you do, I'll stay right here with you.", icon: handshake2, ko: "그동안 제가 바로 곁에 있을게요", note: "곁에"}
+  ctx: {word: "pass away", ko: "돌아가시다"}
+  sw: {ko: "정말 죄송해요, 모든 걸 다 했지만 그분은 돌아가셨습니다"}
+- title: 소생 중 가족 입회
+  s:
+  - {t: "팀 상황", i: siren, w: "The team으로 한 사람이 아니라 팀 전체가 움직인다고 말해요. everything possible은 가능한 모든 것이라는 뜻이라, 결과를 장담하지 않으면서 최선을 알리는 정직한 표현이에요.", d: "for him", k: ["환자분은 방금 일어나셨어요", "팀은 지금 쉬고 있어요"], a: "possible", ai: lock, o: [["impossible", "chevronDown"], ["easy", "play"], ["painful", "faceWorried"]]}
+  - {t: "설명 약속", i: bulb, w: "as we go는 진행하는 동안 그때그때라는 뜻이에요. 소생 중에는 한꺼번에 설명할 수 없으니 계속 알려 주겠다고 약속해서 가족이 모른 채 서 있지 않게 해요.", d: "to him", k: ["나중에 한꺼번에 설명할게요", "설명은 의사 선생님만 해요"], a: "explain", ai: speech, o: [["hide", "lock"], ["skip", "chevronRight"], ["change", "redo"]]}
+  - {t: "위치 안내", i: me, w: "Stand here with me처럼 설 자리를 정해 주면 가족이 처치하는 팀과 부딪치지 않아요. you can talk to her는 가족이 할 수 있는 일을 알려서 지켜보기만 하는 무력감을 덜어 줘요.", d: "to me", k: ["멀리서 지켜보세요", "손대지 마세요"], a: "talk", ai: speech, o: [["shout", "speaker"], ["scream", "siren"], ["yell", "faceAngry"]]}
+  - {t: "곁에 있기", i: faceWorried, w: "You can be here는 허락을 먼저 줘서 가족이 쫓겨날까 하는 걱정을 덜어요. I'll stay by your side는 가족 곁에 팀원 한 명이 남아 있다는 약속이에요.", d: "of her", k: ["가족분들은 나가 주세요", "저는 환자 곁에만 있을게요"], a: "side", ai: handshake2, o: [["door", "home"], ["car", "plane"], ["desk", "board"]]}
+  - {t: "계속 알림", i: board, w: "keep -ing는 계속 반복한다는 뜻이라 한 번이 아니라 끝까지 알려 주겠다는 약속이 돼요. what the team is doing으로 알려 줄 내용도 구체적으로 정해 줘요.", d: "for him", k: ["처치가 끝나면 알려드릴게요", "팀이 하는 일은 알려드릴 수 없어요"], a: "keep", ai: redo, o: [["stop", "chevronDown"], ["forget", "lock"], ["refuse", "faceAngry"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "소생 중 가족 입회 4문장 순서"
+    why: "팀이 최선을 다하고 있다고 알린 뒤 곁에 있어도 된다고 허락하고, 그 자리에 있는 동안 말을 걸어도 된다고 알리고, 그동안 상황을 계속 알려 주겠다고 해요. While you're here는 2줄의 입회를, Meanwhile은 3줄의 시간을 이어서 순서가 하나예요."
+    lines:
+    - {en: "The team is doing everything possible for her.", icon: siren, ko: "팀이 할 수 있는 모든 걸 하고 있어요", note: "상황"}
+    - {en: "You can be here with her, and I'll stay by your side.", icon: faceWorried, ko: "곁에 계셔도 돼요, 저도 옆에 있을게요", note: "허락"}
+    - {en: "While you're here, you can talk to her.", icon: speech, ko: "곁에 계시는 동안 말을 걸어주셔도 돼요", note: "안내"}
+    - {en: "Meanwhile, I'll keep telling you what the team is doing.", icon: board, ko: "그동안 팀이 하는 일을 계속 말씀드릴게요", note: "약속"}
+  ctx: {word: "tell", ko: "알려 주다"}

@@ -1,0 +1,425 @@
+{
+ "theme": "core-safety-er",
+ "situations": [
+  {
+   "title": "환자 2인 확인",
+   "tagline": "Let's confirm your name and date of birth.",
+   "room": "BAY",
+   "brief": "표준 절차에 따라 이름·생년월일로 환자를 2인 확인하세요.",
+   "role": "patient",
+   "skills": [
+    "환자 2인 확인",
+    "신원 대조",
+    "표준 준수"
+   ],
+   "keyPhrases": [
+    "Can you state your full name for me?",
+    "And your date of birth, please?",
+    "I'm checking this against your wristband."
+   ],
+   "goals": [
+    "이름·생년월일 두 가지로 신원을 확인한다",
+    "손목밴드와 대조해 오인을 막는다"
+   ]
+  },
+  {
+   "title": "낙상 위험 초기 사정",
+   "tagline": "Let me ask a few questions about falls and steadiness.",
+   "room": "TRIAGE",
+   "brief": "병력·약물·거동을 바탕으로 낙상 위험을 초기 사정하세요.",
+   "role": "patient",
+   "skills": [
+    "낙상 위험 사정",
+    "병력·약물 확인",
+    "거동 평가"
+   ],
+   "keyPhrases": [
+    "Have you had any falls in the past year?",
+    "Do you take any medicines that make you dizzy?",
+    "Do you use a cane or walker at home?"
+   ],
+   "goals": [
+    "낙상 관련 병력·약물·거동을 확인한다",
+    "위험도를 평가해 예방 계획을 세운다"
+   ]
+  },
+  {
+   "title": "침상 안전 설정",
+   "tagline": "Let me set up your bed so you stay safe.",
+   "room": "BAY",
+   "brief": "침상 높이·난간·호출벨 등 침상 안전을 설정하고 안내하세요.",
+   "role": "patient",
+   "skills": [
+    "침상 안전 설정",
+    "호출벨 교육",
+    "낙상 예방"
+   ],
+   "keyPhrases": [
+    "I'm lowering the bed and putting the rails up.",
+    "This is your call button — press it if you need help.",
+    "Please don't get up on your own; call me first."
+   ],
+   "goals": [
+    "침상 높이·난간·호출벨을 안전하게 설정한다",
+    "도움 요청 방법을 명확히 안내한다"
+   ]
+  },
+  {
+   "title": "알레르기 밴드 확인",
+   "tagline": "Let's double-check your allergy band.",
+   "room": "BAY",
+   "brief": "알레르기 밴드의 표식과 기록을 대조해 확인하세요.",
+   "role": "patient",
+   "skills": [
+    "알레르기 확인",
+    "표식·기록 대조",
+    "안전 확인"
+   ],
+   "keyPhrases": [
+    "Your band says you're allergic to penicillin, correct?",
+    "Any other allergies we should add?",
+    "This red band alerts everyone on the team."
+   ],
+   "goals": [
+    "알레르기 밴드와 기록을 대조 확인한다",
+    "누락된 알레르기가 없는지 재확인한다"
+   ]
+  },
+  {
+   "title": "이송 전 안전 확인",
+   "tagline": "Before we move you, let me check a few things.",
+   "room": "BAY",
+   "brief": "검사실 이송 전 라인·산소·낙상 등 안전 요소를 확인하세요.",
+   "role": "patient",
+   "skills": [
+    "이송 전 확인",
+    "라인·산소 점검",
+    "낙상 예방"
+   ],
+   "keyPhrases": [
+    "I'm making sure your IV line is secure.",
+    "Your oxygen tank is full for the trip.",
+    "Please stay lying down while we move you."
+   ],
+   "goals": [
+    "라인·산소·낙상 요소를 이송 전 점검한다",
+    "이송 중 안전 수칙을 안내한다"
+   ]
+  },
+  {
+   "title": "고위험 낙상 환자 관리",
+   "tagline": "Please wait for me before you stand up.",
+   "room": "BAY",
+   "brief": "섬망·진정으로 낙상 위험이 높은 환자를 감시하고 관리하세요.",
+   "role": "patient",
+   "skills": [
+    "고위험 낙상 관리",
+    "섬망 감시",
+    "안전 재안내"
+   ],
+   "keyPhrases": [
+    "You're a bit unsteady, so let me help you move.",
+    "Press this button and I'll come right away.",
+    "For now, stay in bed so you don't fall."
+   ],
+   "goals": [
+    "섬망·진정 상태의 낙상 위험을 감시한다",
+    "반복적으로 안전 수칙을 재안내한다"
+   ]
+  },
+  {
+   "title": "투약 오류 예방",
+   "tagline": "This looks like a high-alert drug — verify with me.",
+   "room": "STATION",
+   "brief": "유사명·고농도 약물의 투약 오류를 동료와 이중확인으로 예방하세요.",
+   "role": "colleague",
+   "skills": [
+    "고위험약 이중확인",
+    "유사명 구분",
+    "오류 예방"
+   ],
+   "keyPhrases": [
+    "Is this hydralazine or hydroxyzine? Let's confirm.",
+    "Can you verify the concentration with me?",
+    "Right patient, right dose — read it back to me."
+   ],
+   "goals": [
+    "유사명·고농도 약물을 소리내어 이중확인한다",
+    "불일치 시 즉시 중단하고 재확인한다"
+   ]
+  },
+  {
+   "title": "신원 불명 환자 등록",
+   "tagline": "Let's assign a temporary ID until we know who he is.",
+   "room": "STATION",
+   "brief": "무의식 신원 불명 환자에게 임시 식별번호를 부여하고 팀과 조율하세요.",
+   "role": "colleague",
+   "skills": [
+    "임시 식별 부여",
+    "신원 불명 관리",
+    "팀 조율"
+   ],
+   "keyPhrases": [
+    "Register him as unknown male, trauma alpha.",
+    "Put the temporary band on and label all samples with it.",
+    "We'll update the record once we identify him."
+   ],
+   "goals": [
+    "임시 식별번호를 부여하고 밴드를 부착한다",
+    "검체·기록에 임시 ID를 일관되게 적용한다"
+   ]
+  },
+  {
+   "title": "검체 라벨 오류 방지",
+   "tagline": "Let's cross-check these labels before they go out.",
+   "room": "STATION",
+   "brief": "다환자 검체의 라벨 오류를 동료와 함께 대조해 방지하세요.",
+   "role": "colleague",
+   "skills": [
+    "검체 라벨 대조",
+    "다환자 구분",
+    "오류 예방"
+   ],
+   "keyPhrases": [
+    "This tube is for bed four, not bed six — let's confirm.",
+    "Read me the name and the order together.",
+    "We label at the bedside, never at the desk."
+   ],
+   "goals": [
+    "다환자 검체 라벨을 동료와 대조 확인한다",
+    "침상 라벨링 원칙을 지킨다"
+   ]
+  },
+  {
+   "title": "낙상 발생 후 대응",
+   "tagline": "Don't move yet — let me check you over first.",
+   "room": "BAY",
+   "brief": "낙상이 발생한 환자를 사정하고 보고·재발 방지로 이어지도록 대응하세요.",
+   "role": "patient",
+   "skills": [
+    "낙상 후 사정",
+    "손상 확인",
+    "재발 방지"
+   ],
+   "keyPhrases": [
+    "Stay still — can you tell me where it hurts?",
+    "Did you hit your head at all?",
+    "I'm going to check you before we move you up."
+   ],
+   "goals": [
+    "낙상 후 손상 여부를 우선 사정한다",
+    "재발 방지 조치를 설명하고 안심시킨다"
+   ]
+  },
+  {
+   "title": "억제대 사용 안전",
+   "tagline": "Let me explain why the restraints are needed right now.",
+   "room": "BAY",
+   "brief": "억제대의 필요성·순환 확인·최소 사용 원칙을 가족에게 설명하세요.",
+   "role": "family",
+   "skills": [
+    "억제대 설명",
+    "순환 확인 안내",
+    "최소 사용 원칙"
+   ],
+   "keyPhrases": [
+    "This is temporary, only to keep him from pulling his lines.",
+    "We check his circulation and skin every hour.",
+    "We'll remove them as soon as it's safe."
+   ],
+   "goals": [
+    "억제대의 필요성과 안전 관찰을 설명한다",
+    "최소 사용·조기 해제 원칙을 안내한다"
+   ]
+  },
+  {
+   "title": "감염 격리 설명",
+   "tagline": "Here's what to know before you visit in isolation.",
+   "room": "ISO",
+   "brief": "감염 격리의 필요성과 방문 규정을 방문 가족에게 설명하세요.",
+   "role": "family",
+   "skills": [
+    "격리 설명",
+    "방문 규정 안내",
+    "감염 예방 교육"
+   ],
+   "keyPhrases": [
+    "He's in isolation to protect others from infection.",
+    "Please wear this gown, gloves, and mask before entering.",
+    "Wash your hands well when you go in and out."
+   ],
+   "goals": [
+    "격리의 필요성을 이해시킨다",
+    "개인보호구·손위생 등 방문 규정을 안내한다"
+   ]
+  },
+  {
+   "title": "자살 위험 환경 안전",
+   "tagline": "I want to keep you safe, so let's set the room up together.",
+   "room": "BAY",
+   "brief": "자살 위험 환자의 환경에서 위험물을 제거하고 감시 계획을 설명하세요.",
+   "role": "patient",
+   "skills": [
+    "환경 안전 확보",
+    "위험물 제거",
+    "지속 감시"
+   ],
+   "keyPhrases": [
+    "I'm keeping the room safe for you right now.",
+    "Someone will stay with you at all times.",
+    "You're not in trouble — we just want to help."
+   ],
+   "goals": [
+    "위험물을 제거하고 지속 감시를 설명한다",
+    "비판단적 태도로 환자의 안전을 지지한다"
+   ]
+  },
+  {
+   "title": "오환자 시술 방지",
+   "tagline": "Let's do the time-out before we start.",
+   "room": "RESUS",
+   "brief": "시술 직전 팀 타임아웃으로 환자·부위·시술을 최종 확인하세요.",
+   "role": "colleague",
+   "skills": [
+    "타임아웃 수행",
+    "최종 확인",
+    "오시술 예방"
+   ],
+   "keyPhrases": [
+    "Time-out: this is John Reyes, date of birth in 1962.",
+    "We're doing a right chest tube — everyone agree?",
+    "Consent is signed and the site is marked."
+   ],
+   "goals": [
+    "환자·부위·시술을 팀이 함께 최종 확인한다",
+    "불일치 발견 시 즉시 중단한다"
+   ]
+  },
+  {
+   "title": "급변 환자 조기 경고",
+   "tagline": "Her vitals are deteriorating — I'm calling rapid response.",
+   "room": "BAY",
+   "brief": "활력징후가 악화되는 환자를 조기에 인지하고 신속대응팀에 보고하세요.",
+   "role": "colleague",
+   "skills": [
+    "조기 경고 인지",
+    "신속대응 보고",
+    "악화 지표 전달"
+   ],
+   "keyPhrases": [
+    "Her heart rate is up and pressure is dropping.",
+    "Respiratory rate is thirty and she's confused.",
+    "I need eyes on her now — this is a rapid response."
+   ],
+   "goals": [
+    "활력 악화 지표를 조기에 포착한다",
+    "신속대응팀에 명확히 보고한다"
+   ]
+  },
+  {
+   "title": "다환자 혼동 위기",
+   "tagline": "It's crowded — let's re-verify who's who before we act.",
+   "room": "STATION",
+   "brief": "혼잡한 환경에서 환자 신원 혼동 위기를 재확인으로 차단하세요.",
+   "role": "colleague",
+   "skills": [
+    "신원 재대조",
+    "혼동 방지",
+    "상황 정리"
+   ],
+   "keyPhrases": [
+    "Two patients have similar names — let's double-check bands.",
+    "Confirm the medical record number, not just the name.",
+    "Let's slow down for ten seconds and get this right."
+   ],
+   "goals": [
+    "유사 환자 신원을 밴드·번호로 재대조한다",
+    "혼잡 속에서도 확인 절차를 지킨다"
+   ]
+  },
+  {
+   "title": "낙상 후 두부외상",
+   "tagline": "You hit your head, and you're on a blood thinner — this needs urgent checks.",
+   "room": "RESUS",
+   "brief": "항응고제를 복용하는 낙상 후 두부외상 환자를 응급 평가하세요.",
+   "role": "patient",
+   "skills": [
+    "두부외상 사정",
+    "항응고 위험 평가",
+    "응급 대응"
+   ],
+   "keyPhrases": [
+    "Because you take a blood thinner, we need a head scan fast.",
+    "Tell me if your headache gets worse or you feel sleepy.",
+    "Do you feel any numbness or trouble seeing?"
+   ],
+   "goals": [
+    "항응고 관련 출혈 위험을 신속히 평가한다",
+    "악화 신경 증상을 관찰·설명한다"
+   ]
+  },
+  {
+   "title": "투약 위해사건 대응",
+   "tagline": "A wrong dose was given — let's act and report now.",
+   "room": "STATION",
+   "brief": "오투약 후 환자 조치와 사건 보고를 관리자와 조율하세요.",
+   "role": "colleague",
+   "skills": [
+    "위해사건 대응",
+    "환자 조치",
+    "사건 보고"
+   ],
+   "keyPhrases": [
+    "The patient got double the ordered dose.",
+    "We're monitoring her vitals and notifying the doctor.",
+    "I'll complete an incident report right away."
+   ],
+   "goals": [
+    "오투약 후 환자 안전 조치를 우선한다",
+    "정직하게 경위를 보고하고 문서화한다"
+   ]
+  },
+  {
+   "title": "화재·대피 안전",
+   "tagline": "Code red — let's move patients in priority order.",
+   "room": "STATION",
+   "brief": "화재 상황에서 환자 대피 우선순위를 팀과 조율하세요.",
+   "role": "colleague",
+   "skills": [
+    "화재 대피 조율",
+    "우선순위 판단",
+    "팀 소통"
+   ],
+   "keyPhrases": [
+    "Ambulatory patients out this exit first.",
+    "The intubated patient needs a team to move the bed.",
+    "Close doors behind us and account for everyone."
+   ],
+   "goals": [
+    "거동·중증도에 따라 대피 우선순위를 정한다",
+    "팀과 역할을 나눠 안전하게 대피시킨다"
+   ]
+  },
+  {
+   "title": "다직역 안전 브리핑",
+   "tagline": "Let's brief the team on this patient's key risks.",
+   "room": "STATION",
+   "brief": "위중 환자의 위험 요소를 다직역 팀과 공유하는 안전 브리핑을 진행하세요.",
+   "role": "colleague",
+   "skills": [
+    "안전 브리핑",
+    "위험 공유",
+    "다직역 조율"
+   ],
+   "keyPhrases": [
+    "Key risks are aspiration and a difficult airway.",
+    "She's a high fall risk and on anticoagulation.",
+    "Everyone clear on their role if she deteriorates?"
+   ],
+   "goals": [
+    "위중 환자의 핵심 위험을 팀에 공유한다",
+    "악화 시 각자의 역할을 사전 합의한다"
+   ]
+  }
+ ]
+}

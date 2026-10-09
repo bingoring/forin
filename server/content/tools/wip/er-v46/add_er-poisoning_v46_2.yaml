@@ -1,0 +1,152 @@
+- title: 벤조 과다
+  s:
+  - {t: "안내", i: stetho, w: "I'm going to로 곧 할 일을 미리 알리고 and로 두 가지를 묶어 말해요. 진정이 깊을수록 혀와 분비물이 기도를 막기 쉬워서 진정 정도 확인과 기도 보호를 함께 해요.", d: "with the doctor", k: ["보호자분께 지금 상태를 설명해 드릴게요", "약을 먹은 시각을 다시 확인할게요"], a: "airway", o: ["pulse", "skin", "temperature"]}
+  - {t: "위험 설명", i: bell, w: "cautious…because it can으로 쓰는 이유가 아니라 조심하는 이유를 말해요. 벤조디아제핀 역전제(플루마제닐)는 장기 복용자나 다른 약을 함께 먹은 환자에게 발작을 일으킬 수 있어서 신중히 써요.", d: "for the pain", k: ["진정제가 몸에서 빠지기까지 시간이 걸려요", "역전제는 의사 선생님이 처방해야 해요"], a: "cautious", o: ["generous", "careless", "casual"]}
+  - {t: "동반 복용", i: pill, w: "any other pills or alcohol로 흔한 조합을 예로 들어 떠올리게 해요. 벤조디아제핀은 술이나 오피오이드와 함께 먹으면 호흡 억제가 크게 겹쳐요.", d: "last night", k: ["평소 드시는 약이 있으세요?", "마지막으로 식사하신 게 언제였어요?"], a: "taken", o: ["refused", "stopped", "dropped"]}
+  - {t: "우선순위", i: shield, w: "Right now…top priority로 지금 가장 먼저 할 일을 한 문장으로 선언해요. 중독 환자는 어떤 약이든 기도·호흡·순환을 먼저 지지하는 것이 해독제보다 앞서요.", d: "for you", k: ["지금은 가족 연락이 가장 중요해요", "지금은 약물 검사가 가장 중요해요"], a: "airway", o: ["discharge", "paperwork", "billing"]}
+  - {t: "투여 안내", i: pill, w: "slowly로 천천히 주는 방식과 watch closely for로 지켜볼 것을 한 문장에 묶어요. 급하게 주면 갑자기 깨어나 흥분하거나 발작할 수 있어서 조금씩 주며 반응을 봐요.", d: "all at once", k: ["역전제를 드린 뒤 기도를 다시 확인할게요", "역전제를 정맥 수액에 섞어 드릴게요"], a: "slowly", o: ["quickly", "rapidly", "suddenly"]}
+  - {t: "증상 보고", i: bell, w: "notice로 보이면 알려 달라고 부탁하고 twitching or jerking으로 눈에 띄는 모양을 예로 들어요. 발작은 작은 씰룩임에서 시작할 수 있어서 가족이나 환자의 눈도 도움이 돼요.", d: "after dinner", k: ["졸리시면 바로 알려 주세요", "입이 마르면 알려 주세요"], a: "twitching", o: ["sneezing", "blinking", "yawning"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "벤조 과다 4문장 순서"
+    why: "진정 정도를 확인하고, 그 결과에 따라 기도를 지지하고, 기도가 보호된 상태에서 역전제를 천천히 쓰고, 그 약으로 생길 수 있는 움찔거림을 알리게 해요. 'That'·'her airway protected'·'it'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "I'm going to check how deeply she's sedated.", icon: stetho, ko: "얼마나 깊이 진정됐는지 확인할게요", note: "확인"}
+    - {en: "That tells us how much support her airway needs.", icon: shield, ko: "그걸로 기도에 얼마나 지지가 필요한지 알 수 있어요", note: "기도"}
+    - {en: "With her airway protected, we use the reversal drug slowly.", icon: pill, ko: "기도를 보호한 채 역전제를 천천히 써요", note: "역전제"}
+    - {en: "Tell me if you notice any twitching or jerking from it.", icon: bell, ko: "그 약 때문에 씰룩거리거나 움찔거리면 말씀해 주세요", note: "보고"}
+  sw: {ko: "역전제가 발작을 유발할 수 있어서 신중하게 쓰고 있어요"}
+- title: 살리실산 중독
+  s:
+  - {t: "증상 해석", i: bulb, w: "a clue that으로 증상을 단정이 아니라 단서로 설명해요. 귀 울림은 살리실산(아스피린) 중독에서 흔한 증상 가운데 하나예요.", d: "from the noise", k: ["귀 울림은 곧 가라앉을 거예요", "귀 검사를 먼저 받아 보실게요"], a: "high", o: ["low", "normal", "gone"]}
+  - {t: "치료 안내", i: pill, w: "to help…faster로 목적과 속도를 함께 말해요. 중탄산염은 소변을 알칼리성으로 만들어 살리실산이 소변으로 더 빨리 빠지게 도와요.", d: "through your mouth", k: ["수액은 팔 대신 입으로 드릴게요", "체온을 낮추는 담요를 덮어 드릴게요"], a: "clear", o: ["raise", "double", "increase"]}
+  - {t: "문진", i: magnify, w: "How many…and over how long으로 개수와 기간을 나눠 물어요. 한 번에 먹었는지 오래 나눠 먹었는지에 따라 위험과 치료가 달라져요.", d: "this month", k: ["아스피린은 어떤 이유로 드셨어요?", "통증이 있어서 드신 건가요?"], a: "aspirin", o: ["antibiotics", "vitamins", "antacids"]}
+  - {t: "증상 해석", i: stetho, w: "can be a sign으로 단정하지 않고 가능성으로 설명해요. 살리실산은 호흡 중추를 자극해 숨을 빠르게 쉬게 하고, 몸이 산 염기 균형을 맞추려는 반응이기도 해요.", d: "from the fever", k: ["빠른 호흡은 아스피린이 위에서 녹아서 생겨요", "빠른 호흡이 멎으면 바로 알려 주세요"], a: "Fast", o: ["Slow", "Noisy", "Weak"]}
+  - {t: "치료 설명", i: pill, w: "helps로 중탄산염이 몸을 도와서 하는 일이라고 말해요. 소변을 알칼리성으로 만들어 아스피린이 소변으로 빠지는 것을 돕는 치료예요.", d: "from your stomach", k: ["중탄산염은 위산을 더 늘려요", "중탄산염은 열을 내려 줘요"], a: "bicarbonate", o: ["oxygen", "insulin", "morphine"]}
+  - {t: "감시 계획", i: monitor, w: "keep checking으로 한 번이 아니라 계속한다고 말해요. 살리실산은 흡수가 늦거나 수치가 더 오를 수 있어서 호흡과 혈액 수치를 반복해서 확인해요.", d: "once a day", k: ["혈당과 체온을 계속 확인할게요", "소변 양을 계속 확인할게요"], a: "keep", o: ["stop", "finish", "skip"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "살리실산 중독 4문장 순서"
+    why: "먹은 양과 기간을 묻고, 그만큼이면 귀 울림이 수치가 높다는 단서라고 알리고, 그 수치를 내리는 치료를 설명하고, 치료가 듣는지 계속 확인한다고 닫아요. 'that many'·'that level'·'it'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "How many aspirin did you take, and over how long?", icon: magnify, ko: "아스피린을 몇 알, 얼마 동안 드셨어요?", note: "문진"}
+    - {en: "With that many, the ringing in your ears is a clue the level is high.", icon: bulb, ko: "그만큼 드셨으면 귀 울림은 수치가 높다는 단서예요", note: "해석"}
+    - {en: "To bring that level down, we'll give you fluids with bicarbonate.", icon: pill, ko: "그 수치를 내리려고 중탄산염 수액을 드릴게요", note: "치료"}
+    - {en: "We'll keep checking your breathing and blood levels to see it work.", icon: monitor, ko: "그것이 듣는지 보도록 호흡과 혈액 수치를 계속 확인할게요", note: "확인"}
+  ctx:
+    word: "aspirin"
+    ko: "아스피린"
+    sc:
+      0: {en: "Pt c/o tinnitus and tachypnea after aspirin ingestion."}
+      1: {en: "Any tinnitus or tachypnea since the aspirin ingestion?", fix: "Are your ears ringing since you took the aspirin?"}
+      2: {en: "Aspirin ingestion with tinnitus, respiratory rate thirty-two."}
+    why: "셋 다 아스피린을 먹은 뒤 귀가 울리고 숨이 빨라졌다는 같은 말이에요. tinnitus·tachypnea는 의료진끼리의 말이고, 환자에게는 귀가 울리는지 쉬운 말로 물어요."
+- title: TCA 과다
+  s:
+  - {t: "감시 안내", i: monitor, w: "We're watching으로 지금 진행 중인 일을 알려 환자가 불안하지 않게 해요. 삼환계 과다는 심장 전도와 리듬에 영향을 줘서 모니터를 끊지 않아요.", d: "every morning", k: ["지금 약물 수치를 확인하고 있어요", "지금 호흡을 가까이서 보고 있어요"], a: "closely", o: ["carelessly", "casually", "lazily"]}
+  - {t: "치료 설명", i: pill, w: "helps protect로 완전히 막는 게 아니라 돕는다고 정직하게 말해요. 중탄산나트륨은 삼환계 약물이 심장 전도를 늦추는 작용을 줄여 QRS가 넓어질 때 쓰는 치료예요.", d: "from the cold", k: ["이 약은 심장 박동을 더 빠르게 해요", "이 약은 혈압을 바로 올려 줘요"], a: "heart", o: ["liver", "lungs", "stomach"]}
+  - {t: "문진", i: magnify, w: "Exactly which로 약의 이름을 정확히 짚고 and when으로 시각을 이어요. 삼환계는 소량도 위험할 수 있고 흡수된 뒤 몇 시간 안에 위험이 커져서 약 이름과 시각이 필요해요.", d: "from the label", k: ["그 약은 몇 번 나눠서 드셨어요?", "집에 같은 약이 더 있어요?"], a: "pills", o: ["drinks", "meals", "snacks"]}
+  - {t: "위험 설명", i: bell, w: "can change quickly로 지금은 괜찮아도 곧 바뀔 수 있다고 알려요. 삼환계 과다는 심전도에서 QRS가 넓어지고 부정맥이 갑자기 생길 수 있어서 계속 지켜봐요.", d: "after surgery", k: ["심장 초음파를 곧 해 볼게요", "심장 약을 먼저 드릴게요"], a: "quickly", o: ["slowly", "rarely", "seldom"]}
+  - {t: "대비 안내", i: siren, w: "ready to act로 일이 생기면 바로 움직일 준비가 됐다고 말해 안심시켜요. 모니터가 변화를 바로 알려 주고 필요한 약과 장비를 가까이 두고 있어요.", d: "tomorrow", k: ["리듬이 바뀌면 약부터 다시 확인할게요", "리듬이 바뀌면 보호자분께 알릴게요"], a: "ready", o: ["unable", "afraid", "unwilling"]}
+  - {t: "협조 요청", i: monitor, w: "for me로 부탁하는 말투를 만들고 while로 이유가 되는 시간을 정해요. 움직이면 전극이 흔들려 심전도 파형이 어긋나서 정확히 읽기 어려워요.", d: "in bed", k: ["눈을 감고 쉬어 주세요", "팔을 앞으로 뻗어 주세요"], a: "watch", o: ["unplug", "clean", "cover"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "TCA 과다 4문장 순서"
+    why: "심장 리듬을 지켜본다고 알리고, 그 이유를 설명하고, 이유에 이어 보호 치료를 알리고, 모니터가 효과를 보여 주도록 움직이지 말라고 요청해요. 'That's because'·'that'·'it'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "We're watching your heart rhythm closely.", icon: monitor, ko: "심장 리듬을 가까이서 지켜보고 있어요", note: "안내"}
+    - {en: "That's because its electrical signal can change quickly with this overdose.", icon: bell, ko: "이 과다복용으로 전기 신호가 빠르게 바뀔 수 있어서예요", note: "이유"}
+    - {en: "This bicarbonate helps protect your heart from that.", icon: pill, ko: "이 중탄산염이 그로부터 심장을 보호하도록 도와요", note: "치료"}
+    - {en: "The monitor will show us if it's working, so please stay still for me.", icon: monitor, ko: "모니터가 그게 듣는지 보여 줄 거라서 가만히 계세요", note: "요청"}
+  sw: {ko: "이 약이 심장 리듬에 영향을 줄 수 있어서 심장을 가까이서 지켜보고 있어요"}
+- title: 항응고제 과다
+  s:
+  - {t: "검사 설명", i: lab, w: "to see…로 검사의 목적을 바로 이어요. INR은 혈액이 얼마나 천천히 굳는지 나타내는 수치라서, 출혈 위험을 가늠하는 기준이 돼요.", d: "from your arm", k: ["혈당을 먼저 재 볼게요", "혈압을 지금 다시 잴게요"], a: "thin", o: ["thick", "heavy", "clean"]}
+  - {t: "치료 안내", i: pill, w: "There's…we can give로 쓸 수 있는 방법이 있다고 알려 안심시켜요. 와파린 과다에는 비타민 K나 응고인자 제제 같은 역전제를 의사 판단에 따라 써요.", d: "tomorrow", k: ["출혈이 있으면 바로 압박할게요", "출혈 부위를 사진으로 남길게요"], a: "worse", o: ["better", "calmer", "smaller"]}
+  - {t: "출혈 확인", i: magnify, w: "any blood in…or…anywhere로 소변·대변·피부까지 한 번에 훑어요. 항응고제 과다의 출혈은 겉으로 안 보이는 곳에서 시작될 수 있어서 구체적인 자리를 짚어 줘요.", d: "on your hands", k: ["어지럽거나 머리가 아프세요?", "최근에 넘어지신 적 있어요?"], a: "seeing", o: ["hiding", "feeling", "wanting"]}
+  - {t: "문진", i: pill, w: "extra pills로 평소 먹는 약에 더한 양을 묻고 by mistake로 실수라는 전제를 줘요. 실수라고 말해 주면 환자가 부담 없이 사실대로 말할 수 있어요.", d: "this morning", k: ["평소 드시는 용량은 몇 알이에요?", "마지막으로 INR을 잰 건 언제예요?"], a: "mistake", o: ["habit", "choice", "design"]}
+  - {t: "감시 안내", i: magnify, w: "any new로 이미 있던 것이 아니라 새로 생기는 것을 본다고 구분해요. 기준 시점과 비교해야 출혈이 진행되는지 알 수 있어요.", d: "on your legs", k: ["멍든 곳은 문지르지 마세요", "멍이 든 곳에 연고를 발라 드릴게요"], a: "new", o: ["old", "healed", "faded"]}
+  - {t: "대비 안내", i: siren, w: "If…we're ready로 조건과 준비를 한 문장에 묶어요. 심한 출혈이나 머리 외상 등에서는 역전제를 지체 없이 쓰는 것이 중요해서 미리 준비해 둬요.", d: "after lunch", k: ["출혈이 심하면 혈액 검사를 다시 할게요", "출혈이 심하면 바로 영상 검사를 할게요"], a: "ready", o: ["reluctant", "unable", "unwilling"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "항응고제 과다 4문장 순서"
+    why: "INR로 혈액이 얼마나 묽은지 확인하고, 그만큼 묽은 상태에서 어디에 출혈이 있는지 묻고, 보이는 것이 심해지면 쓸 역전제를 알리고, 그래서 새 출혈을 지켜본다고 닫아요. 'that thin'·'what you're seeing'·'That's why'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "We'll check your INR to see how thin your blood is.", icon: lab, ko: "혈액이 얼마나 묽은지 INR로 확인할게요", note: "검사"}
+    - {en: "With your blood that thin, are you seeing any bruising or blood in your urine?", icon: magnify, ko: "그만큼 묽으니 멍이나 소변에 피가 보이나요?", note: "문진"}
+    - {en: "If what you're seeing gets worse, there's a reversal medicine we can give.", icon: pill, ko: "지금 보이는 게 심해지면 드릴 수 있는 역전제가 있어요", note: "치료"}
+    - {en: "That's why we're watching closely for any new bruising or bleeding.", icon: magnify, ko: "그래서 새 멍이나 출혈을 가까이서 지켜보고 있어요", note: "관찰"}
+  ctx:
+    word: "INR"
+    ko: "INR(응고 수치)"
+- title: 자살시도 다약제
+  s:
+  - {t: "공감", i: faceWorried, w: "I hear로 감정을 알아들었다고 먼저 알리고 I'm staying으로 곁에 머문다고 약속해요. 위기 환자는 평가보다 먼저 혼자가 아니라는 느낌이 필요해요.", d: "for the doctor", k: ["지금 바로 보호자분께 연락할게요", "지금은 쉬시고 나중에 이야기해요"], a: "hear", o: ["doubt", "ignore", "forget"]}
+  - {t: "약물 확인", i: pill, w: "each thing으로 약·술·보충제까지 빠짐없이 말해 달라고 해요. 여러 약을 먹었으면 약마다 위험과 해독제가 달라서 빠진 것 없이 알아야 안전하게 치료할 수 있어요.", d: "from the pharmacy", k: ["약은 얼마나 오래 드셨어요?", "그 약들은 누가 처방했나요?"], a: "took", o: ["saw", "lost", "made"]}
+  - {t: "지원 안내", i: speech, w: "come see you와 stay with you로 앞으로 일어날 두 가지 도움을 나열해요. 자살 시도 환자는 응급 처치 뒤에도 안전을 위해 곁에 사람이 계속 있게 하는 것이 기본이에요.", d: "after discharge", k: ["의사 선생님이 곧 결과를 알려 드릴 거예요", "보호자분은 면회실에서 기다리세요"], a: "whole", o: ["first", "next", "last"]}
+  - {t: "공감", i: faceWorried, w: "I know…right now로 지금의 감정을 인정하면서 영원한 상태가 아니라고 암시해요. 위기 감정에 해결책부터 말하면 외면당한다고 느끼기 쉬워서 공감이 먼저예요.", d: "for you", k: ["지금은 천천히 이야기하셔도 돼요", "지금 기분을 점수로 말씀해 주세요"], a: "know", o: ["doubt", "deny", "forget"]}
+  - {t: "연대", i: handshake2, w: "not alone과 we're going to help로 부정과 약속을 나란히 놓아요. 위기 환자에게 우리가 함께한다고 말하는 것이 외로움을 줄여요.", d: "tonight", k: ["지금 가족에게 연락해 드릴게요", "배우자분이 오고 계세요"], a: "help", o: ["blame", "ignore", "judge"]}
+  - {t: "약속", i: shield, w: "every step of the way로 처음부터 끝까지 곁에 있다고 약속해요. 위기 환자가 가장 두려워하는 혼자 남겨지는 상황을 말로 먼저 막아 줘요.", d: "tomorrow", k: ["의사 선생님이 곧 오실 거예요", "보호자분이 곧 도착하실 거예요"], a: "Someone", o: ["Nobody", "Few", "Most"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "자살시도 다약제 4문장 순서"
+    why: "고통에 먼저 공감하고, 그 고통을 돕기 위해 먹은 것을 빠짐없이 묻고, 그 정보를 상담사와 나누겠다고 알리고, 그 과정 내내 곁에 있다고 닫아요. 'that pain'·'all of that'·'that'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "I hear how much pain you're in, and I'm staying right here.", icon: faceWorried, ko: "얼마나 힘드신지 느껴져요, 바로 여기 있을게요", note: "공감"}
+    - {en: "To help with that pain, can you tell me each thing you took?", icon: pill, ko: "그 고통을 돕기 위해 드신 것을 하나하나 말씀해 주시겠어요?", note: "약물"}
+    - {en: "I'll share all of that with a counselor who will come see you.", icon: speech, ko: "그 모두를 상담사에게 전할 거고, 상담사가 뵈러 올 거예요", note: "연계"}
+    - {en: "Someone will stay with you through that, so you're not alone.", icon: handshake2, ko: "그 과정 내내 누군가 함께 있을 거라서 혼자가 아니에요", note: "연대"}
+  sw: {ko: "안전하게 해드릴 수 있도록 드신 것 하나하나 말씀해 주시겠어요?"}
+- title: 알코올+약물 혼합
+  s:
+  - {t: "위험 설명", i: bell, w: "together can…so we'll로 위험의 원인과 우리의 대응을 한 문장에 이어요. 술과 진정 작용이 있는 약이 겹치면 호흡 억제가 더 커질 수 있어요.", d: "at home", k: ["술을 마신 지 얼마나 됐나요?", "약은 술과 같이 드셨나요?"], a: "slow", o: ["speed", "raise", "strengthen"]}
+  - {t: "문진", i: magnify, w: "How much와 how many를 구분해 술의 양과 알약의 개수를 각각 물어요. 먹은 양이 위험 정도와 관찰 기간을 가르는 기준이 돼요.", d: "this week", k: ["술은 평소에도 자주 드시나요?", "마지막으로 식사하신 게 언제예요?"], a: "drink", o: ["spill", "waste", "borrow"]}
+  - {t: "안심", i: shield, w: "Stay with me로 의식을 붙잡는 말을 먼저 하고 I'll keep checking으로 곁을 떠나지 않는다고 약속해요. 술과 진정 약물이 겹치면 갑자기 처질 수 있어서 자주 확인해요.", d: "after a while", k: ["제가 계속 곁에서 말을 걸게요", "지금 혈압을 한 번 더 잴게요"], a: "keep", o: ["stop", "quit", "forget"]}
+  - {t: "위험 설명", i: siren, w: "without warning으로 미리 알리는 증상 없이 닥칠 수 있다고 강조해요. 겹친 진정 효과는 잠들듯 호흡이 느려지다 멈출 수 있어서 증상이 없어도 지켜봐요.", d: "on weekends", k: ["술과 약을 같이 먹으면 간이 쉬어요", "술이 깨면 약 효과도 바로 끝나요"], a: "sedatives", o: ["vitamins", "antacids", "laxatives"]}
+  - {t: "감시 계획", i: monitor, w: "oxygen and alertness로 숨과 의식, 두 가지 지표를 짚어 줘요. 산소 수치와 깨어 있는 정도는 호흡 억제가 진행되는지 가장 빨리 보여 줘요.", d: "once a day", k: ["체온과 혈당을 몇 분마다 볼게요", "소변량을 몇 분마다 볼게요"], a: "alertness", o: ["appetite", "hearing", "taste"]}
+  - {t: "협조 요청", i: speech, w: "Try to로 부탁하는 말투를 쓰고 for now로 지금만이라고 한정해 부담을 낮춰요. 깨어서 말하면 의식 수준을 바로 확인할 수 있어요.", d: "all night", k: ["물을 조금 드세요", "침대 난간을 잡고 계세요"], a: "awake", o: ["asleep", "quiet", "silent"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "술과 약 혼합 4문장 순서"
+    why: "호흡이 느려질 위험을 알리고, 그래서 먹은 양을 묻고, 그 양을 바탕으로 확인 주기를 알리고, 그 확인 사이에 깨어 있게 부탁해요. 'That's why'·'that amount'·'those checks'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Alcohol and those pills together can slow your breathing, so I'm watching you closely.", icon: bell, ko: "술과 그 약이 함께면 호흡이 느려질 수 있어서 가까이서 보고 있어요", note: "위험"}
+    - {en: "That's why I need to know how much you drank and how many pills.", icon: magnify, ko: "그래서 술을 얼마나, 알약은 몇 개 드셨는지 알아야 해요", note: "문진"}
+    - {en: "With that amount in mind, I'll check your oxygen and alertness every few minutes.", icon: monitor, ko: "그 양을 감안해 산소와 각성 상태를 몇 분마다 확인할게요", note: "감시"}
+    - {en: "Try to stay awake and talk with me between those checks.", icon: speech, ko: "그 확인 사이에는 깨어서 저와 이야기해 보세요", note: "요청"}
+  ctx:
+    word: "alcohol"
+    ko: "술"
+    sc:
+      1: {en: "Alcohol and those pills depress your respiratory drive.", fix: "Alcohol and those pills together can make your breathing slow down, so we'll check on you often."}
+    why: "셋 다 숨이 느려질 위험을 말해요. respiratory depression·respiratory drive는 의료진끼리의 말이고, 환자에게는 숨이 느려질 수 있다고 쉽게 말해요."
+- title: 일산화탄소 중독
+  s:
+  - {t: "검사 설명", i: lab, w: "can look normal even with로 정상처럼 보여도 믿을 수 없다는 점을 먼저 말하고 so we use로 대안을 이어요. 일반 맥박산소측정기는 일산화탄소가 붙은 헤모글로빈을 산소가 붙은 것처럼 읽어요.", d: "in your arm", k: ["산소 수치가 정상이니 안심하셔도 돼요", "산소 수치는 손가락에서 다시 재 볼게요"], a: "special", o: ["routine", "quick", "cheap"]}
+  - {t: "치료 안내", i: monitor, w: "to clear it from…으로 산소를 주는 목적을 밝혀요. 높은 농도의 산소는 일산화탄소가 헤모글로빈에서 떨어져 나가는 속도를 크게 높여요.", d: "in the car", k: ["산소 마스크는 몇 분만 쓰실 거예요", "산소는 코로만 조금씩 드릴게요"], a: "high-flow", o: ["low-flow", "humid", "cold"]}
+  - {t: "문진", i: home, w: "anyone else…too로 집 안의 다른 사람도 같은 노출을 겪었는지 물어요. 일산화탄소는 같은 공간의 사람이 같은 증상을 보이는 것이 중요한 단서예요.", d: "at work", k: ["집에 일산화탄소 경보기가 있었나요?", "집에 난방기구를 켜 두셨나요?"], a: "too", o: ["twice", "soon", "first"]}
+  - {t: "단서 설명", i: bulb, w: "the whole family로 한 사람이 아니라 함께 사는 모두를 짚어요. 같은 집에서 같은 시기에 두통과 어지럼이 생기면 일산화탄소를 의심하는 것이 기본이에요.", d: "last winter", k: ["가족 모두 검사를 받아야 해요", "두통은 곧 가라앉을 거예요"], a: "Headaches", o: ["Rashes", "Bruises", "Fevers"]}
+  - {t: "검사 설명", i: monitor, w: "even when으로 겉으로 괜찮아 보이는 수치와 실제 상태가 다를 수 있다고 말해요. 일반 측정기는 일산화탄소가 붙은 헤모글로빈을 구분하지 못해서 정상 수치만 보고 안심하지 않아요.", d: "in the room", k: ["산소 수치가 낮으면 일산화탄소가 높아요", "산소 수치는 팔을 따뜻하게 하면 달라져요"], a: "fine", o: ["wrong", "poor", "blue"]}
+  - {t: "치료 계획", i: monitor, w: "until로 끝나는 기준을 시간이 아니라 수치로 정해요. 일산화탄소 수치가 충분히 내려가고 증상이 가라앉을 때까지 산소를 이어 가요.", d: "tomorrow", k: ["수치는 몇 시간마다 다시 재 볼게요", "수치가 나오면 의사 선생님이 설명하실 거예요"], a: "until", o: ["although", "because", "before"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "일산화탄소 중독 4문장 순서"
+    why: "일반 산소 수치가 정상처럼 보일 수 있다고 알리고, 그래서 특별한 검사를 쓰고, 검사 결과와 무관하게 일산화탄소를 씻어 내는 산소를 주고, 그 산소를 수치가 안전해질 때까지 이어요. 'That's why'·'the test'·'it'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "A regular oxygen reading can look normal even with carbon monoxide.", icon: monitor, ko: "일반 산소 수치는 일산화탄소가 있어도 정상으로 보일 수 있어요", note: "경고"}
+    - {en: "That's why we use a special test.", icon: lab, ko: "그래서 특별한 검사를 써요", note: "검사"}
+    - {en: "Whatever the test shows, you're on high-flow oxygen to clear it from your blood.", icon: pill, ko: "검사 결과가 어떻든 혈액에서 씻어내도록 고유량 산소를 드려요", note: "산소"}
+    - {en: "We'll keep you on it until your levels are safe.", icon: shield, ko: "수치가 안전해질 때까지 그걸 계속 드릴게요", note: "지속"}
+  ctx:
+    word: "carboxyhemoglobin"
+    ko: "카복시헤모글로빈"
+    sc:
+      2: {en: "SpO2 99% on room air; carboxyhemoglobin pending."}
+    why: "셋 다 일산화탄소 때문에 산소 수치가 정상처럼 보여도 믿을 수 없다는 같은 말이에요. 의료진끼리는 carboxyhemoglobin(COHb)을 보내지만, 환자에게는 일반 측정기로는 안 보여서 특별한 검사를 한다고 풀어 말해요."

@@ -1,0 +1,120 @@
+- title: 놀이·눈높이 접근
+  s:
+  - {t: "놀이 접근", i: play, w: "do you want to…?로 지시가 아니라 제안으로 시작하고, 인형을 먼저 확인하자고 해서 검사를 놀이로 바꿔요. 아이에게 먼저 선택권을 주면 낯선 의료진에 대한 경계가 줄어요.", d: "and sit", k: ["오늘 어디가 제일 아프니?", "엄마 옆에 앉아 볼래?"], a: "teddy", o: ["doll", "puppy", "robot"]}
+  - {t: "약속", i: handshake2, w: "I promise로 아이가 알아듣는 짧은 약속을 해요. 약속은 지킬 수 있는 것만 하고, 아플 수 있는 처치는 미리 솔직히 말해야 신뢰가 유지돼요.", d: "at school", k: ["엄마도 같이 있을 거야", "불빛이 너무 밝으면 말해 줘"], a: "gentle", o: ["strict", "loud", "busy"]}
+  - {t: "칭찬·놀이", i: star, w: "brave로 아이를 칭찬하고 superhero muscles로 팔을 내밀게 해요. 팔을 보여 주는 동작을 놀이로 바꾸면 검사를 쉽게 시작할 수 있어요.", d: "in the box", k: ["약은 마시는 거란다", "아프면 손을 들어 줘"], a: "muscles", o: ["shoes", "toes", "teeth"]}
+  - {t: "부모 협조", i: handshake2, w: "It helps if…로 지시가 아니라 도움이 되는 방법으로 부탁해요. 보호자가 곁에서 차분하면 아이도 따라 진정되는 경우가 많아서 보호자의 역할을 요청해요.", d: "in the hall", k: ["아이가 울면 잠깐 안아 주세요", "검사는 금방 끝날 거예요"], a: "calm", o: ["busy", "serious", "curious"]}
+  - {t: "역할 놀이", i: play, w: "Let's pretend로 인형을 환자로 삼아 아이가 검사 과정을 먼저 구경하게 해요. 인형으로 먼저 보여 주면 청진기나 체온계에 대한 두려움이 줄어요.", d: "on the floor", k: ["여기 누워 볼래?", "청진기는 차갑지 않게 할게"], a: "pretend", o: ["decide", "remember", "promise"]}
+  - {t: "보상 약속", i: star, w: "after로 끝난 뒤의 보상을 미리 알려 아이가 견딜 이유를 줘요. 고를 수 있게(pick) 하면 아이가 상황을 어느 정도 통제한다고 느껴요.", d: "in the car", k: ["다 끝나면 같이 게임 하자", "엄마도 같이 구경하자"], a: "sticker", o: ["balloon", "crayon", "toy"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "놀이로 진찰 시작 4문장 순서"
+    why: "곰인형을 먼저 확인하자고 제안하고, 'Great'가 아이의 승낙을 받아 인형 검진 놀이로 이어지고, 'your turn'이 인형 검진이 끝난 뒤 아이 차례를 가리키며 살살 하겠다고 약속하고, 'all of that'이 지난 과정을 받아 칭찬과 스티커로 닫아요. 'Great'·'your turn'·'all of that'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Hi buddy, do you want to help me check your teddy first?", icon: play, ko: "안녕 친구야, 먼저 네 곰인형부터 같이 확인해 볼래?", note: "제안"}
+    - {en: "Great! Let's pretend he needs a checkup too.", icon: play, ko: "좋아! 곰인형도 검진이 필요한 척 해보자", note: "놀이"}
+    - {en: "Now it's your turn. I'm going to be really gentle, I promise.", icon: handshake2, ko: "이제 네 차례야. 정말 살살 할게, 약속해", note: "약속"}
+    - {en: "You were so brave through all of that — you can pick the sticker you want, okay?", icon: star, ko: "정말 용감했어 — 원하는 스티커를 고를 수 있어, 알겠지?", note: "보상"}
+  sw: {ko: "정말 살살 할게 — 만지기 전에 먼저 말해 줄게"}
+- title: 열성 경련 목격 부모
+  s:
+  - {t: "공감·상태", i: faceWorried, w: "terrifying으로 목격한 경험을 먼저 인정하고 but으로 지금은 안정됐다는 정보를 이어 줘요. 열성 경련을 본 부모는 큰 충격을 받는 경우가 많아요.", d: "at night", k: ["아이 열은 지금 내려가고 있어요", "경련은 몇 분 동안 이어졌나요?"], a: "stable", o: ["hungry", "angry", "cold"]}
+  - {t: "질환 설명", i: bulb, w: "common과 usually not harmful을 함께 말해 흔하고 대개 해롭지 않다는 두 가지를 전해요. 열성 경련은 보통 생후 6개월~5세 사이 열이 오를 때 생겨요.", d: "in adults", k: ["아이는 계속 지켜볼 거예요", "검사는 의사가 정할 거예요"], a: "common", o: ["rare", "unusual", "painful"]}
+  - {t: "교육 예고", i: board, w: "Let me…로 설명을 시작하겠다고 알리고, what to watch for와 what to do로 살필 것과 할 일을 나눠요. 경련을 본 부모는 다음에 무엇을 할지 알면 덜 불안해해요.", d: "in the car", k: ["약 이름은 나중에 알려 드릴게요", "열이 내리면 퇴원 안내를 드릴게요"], a: "explain", o: ["decide", "remember", "promise"]}
+  - {t: "공감·인정", i: handshake2, w: "scary…, but…으로 겁났던 마음을 인정한 뒤 부모의 대처가 옳았다고 말해요. 경련을 본 부모가 '내가 뭘 잘못했나' 하고 자책하기 쉬워서 짚어 줘요.", d: "at night", k: ["지금은 열이 내리고 있어요", "경련 모습을 의사에게 다시 설명해 주세요"], a: "scary", o: ["easy", "boring", "quick"]}
+  - {t: "예후 설명", i: calendar, w: "Most…by school age로 시간이 지나면 좋아진다는 전망을 줘요. 열성 경련은 대부분 학령기 무렵이면 더 생기지 않아요.", d: "in winter", k: ["열이 나는 동안 다시 올 수 있어요", "의사가 곧 설명해 드릴 거예요"], a: "outgrow", o: ["catch", "miss", "hide"]}
+  - {t: "응급 기준", i: siren, w: "If…, call 911 right away로 기준(5분 넘게 지속)과 행동을 한 문장에 담아요. 경련이 5분 넘게 이어지면 응급으로 보고 바로 구조를 요청해요.", d: "or longer", k: ["경련하면 아이를 옆으로 눕혀 주세요", "열이 있으면 옷을 가볍게 입히세요"], a: "seizure", o: ["fever", "cough", "rash"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "열성 경련 부모 설명 4문장 순서"
+    why: "목격한 일을 인정하며 안정됐다고 알리고, 'like that'이 방금 본 경련을 가리켜 흔하고 해롭지 않다고 설명하고, 'what to do next time'으로 교육을 예고하고, 'of those'가 그 교육 내용 중 가장 중요한 것을 짚어요. 'like that'·'of those'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "What you saw was terrifying, but he's stable now.", icon: faceWorried, ko: "보신 건 정말 무서우셨겠지만, 지금은 안정됐어요", note: "공감"}
+    - {en: "Febrile seizures like that are common and usually not harmful.", icon: bulb, ko: "그런 열성 경련은 흔하고 대개 해롭지 않아요", note: "설명"}
+    - {en: "Let me explain what to watch for and what to do next time.", icon: board, ko: "다음에 뭘 살피고 어떻게 할지 설명해 드릴게요", note: "예고"}
+    - {en: "The most important of those is to call 911 right away if it lasts more than five minutes.", icon: siren, ko: "그중 가장 중요한 건 5분 넘게 지속되면 바로 911에 전화하는 거예요", note: "기준"}
+  sw: {ko: "경련이 5분 넘게 지속되면 911에 전화하세요"}
+- title: 세기관지염 호흡곤란
+  s:
+  - {t: "상태 인정", i: stetho, w: "I can see…로 보호자가 이미 느끼는 것을 먼저 인정하고 we'll help her로 곧 돕겠다고 이어요. working hard to breathe는 숨 쉬는 데 힘이 드는 모습을 쉬운 말로 풀어요.", d: "at night", k: ["아이가 열은 있었나요?", "기침은 언제부터 했어요?"], a: "hard", o: ["slowly", "quietly", "happily"]}
+  - {t: "수유량 문진", i: coffee, w: "compared to normal로 평소 수유량과 견주게 해요. 세기관지염 영아는 숨이 차서 먹는 양이 줄기 쉬워서 수유량이 탈수 위험과 입원 필요를 가늠하는 단서예요.", d: "than her brother", k: ["기침은 밤에 더 심해지나요?", "집에 담배 피우는 사람이 있나요?"], a: "feeding", o: ["sleeping", "crying", "coughing"]}
+  - {t: "가정 관찰 교육", i: board, w: "I'll show you…로 집에서 볼 징후를 직접 보여 주겠다고 예고해요. 퇴원 후 호흡 곤란 징후를 알아보는 법을 미리 알려 두는 것이 중요해요.", d: "next door", k: ["약 먹이는 시간을 알려 드릴게요", "다음 진료 일정을 잡아 드릴게요"], a: "signs", o: ["tests", "pills", "tubes"]}
+  - {t: "소견 설명", i: stetho, w: "chest is pulling in으로 숨쉴 때 가슴이 쏙 들어가는 모습을 보이는 그대로 말해요. 의료진은 이것을 함몰호흡(retractions)이라 부르고 숨 쉬는 데 힘이 든다는 신호로 봐요.", d: "on her arm", k: ["산소 수치를 재 볼게요", "가슴 사진은 의사가 정할 거예요"], a: "chest", o: ["back", "hand", "leg"]}
+  - {t: "처치 설명", i: hospital, w: "clear her nose는 코의 분비물을 빼 준다는 뜻이에요. 세기관지염 영아는 코가 막히면 숨 쉬고 먹기가 더 힘들어서 코를 먼저 정리하고 필요하면 산소를 줘요.", d: "with a spoon", k: ["아이를 편안한 자세로 안아 주세요", "아이가 먹는 양은 계속 확인할게요"], a: "nose", o: ["ears", "eyes", "skin"]}
+  - {t: "퇴원 교육", i: calendar, w: "before you go home으로 교육 시점을 못 박아 퇴원 전에 꼭 알려 준다는 뜻을 전해요. what…looks like로 눈으로 알아볼 모습을 가르쳐 집에서도 악화를 알아보게 해요.", d: "at school", k: ["콧물은 이렇게 닦아 주시면 돼요", "수유는 조금씩 자주 해 주세요"], a: "harder", o: ["easier", "slower", "quieter"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "세기관지염 설명 4문장 순서"
+    why: "숨쉬기 힘들어 보인다고 인정하고, 'that's how I can tell'이 그 판단의 근거로 가슴 모습을 말하고, 'that'이 그 호흡 곤란을 가리켜 처치를 알리고, 'harder breathing'이 앞의 힘든 호흡을 받아 퇴원 전 교육으로 이어요. 'that's how I can tell'·'that'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "I can see she's working hard to breathe — we'll help her.", icon: stetho, ko: "숨쉬기가 힘들어 보이네요 — 저희가 도와드릴게요", note: "인정"}
+    - {en: "Her chest is pulling in a little with every breath — that's how I can tell.", icon: stetho, ko: "숨 쉴 때마다 가슴이 살짝 들어가요 — 그래서 알 수 있어요", note: "근거"}
+    - {en: "To help with that, we'll clear her nose and give her oxygen.", icon: hospital, ko: "그걸 돕기 위해 코를 뚫어주고 산소를 줄게요", note: "처치"}
+    - {en: "Before you go home, I'll teach you what harder breathing looks like.", icon: calendar, ko: "퇴원 전에 호흡이 힘들어지는 모습을 알려드릴게요", note: "교육"}
+  ctx:
+    word: "retractions"
+    ko: "함몰호흡"
+- title: 탈수 유아 평가
+  s:
+  - {t: "소변량 문진", i: calendar, w: "last wet diaper로 가장 최근의 소변 시점을 물어요. 영아는 기저귀가 오래 마르면 탈수의 단서라 마지막 소변 시각이 핵심 질문이에요.", d: "in the bag", k: ["열이 있었나요?", "마지막으로 먹은 게 언제예요?"], a: "last", o: ["first", "next", "best"]}
+  - {t: "수분 보충", i: coffee, w: "Let's try…로 같이 해 보자는 제안이에요. 탈수된 아이는 한 번에 많이 먹이면 토하기 쉬워서 조금씩 자주 먹이는 방법을 써요.", d: "with a straw", k: ["링거를 놓을지 의사가 정할 거예요", "열이 있으면 먼저 알려 주세요"], a: "sips", o: ["cups", "spoons", "bottles"]}
+  - {t: "탈수 징후", i: board, w: "I'll show you…로 직접 보여 주겠다고 예고하고 to watch for로 앞으로 살필 것을 알려요. 탈수 징후를 알아보면 병원에 다시 올 시점을 판단하기 쉬워요.", d: "on your phone", k: ["약 이름을 적어 드릴게요", "체중을 다시 재 볼게요"], a: "dehydration", o: ["infection", "allergy", "fracture"]}
+  - {t: "증상 감별", i: magnify, w: "Has she…, or is it just…?로 구토와 묽은 변 중 무엇이 있는지 둘로 나눠 묻고 just로 부담 없이 답하게 해요. 구토·설사는 소아 탈수의 가장 흔한 원인이에요.", d: "last week", k: ["토한 게 초록빛이었나요?", "변에 피가 섞여 있었나요?"], a: "vomited", o: ["coughed", "cried", "slept"]}
+  - {t: "급여 방법", i: coffee, w: "instead of…로 해야 할 방법과 피할 방법을 대비해 기억하기 쉽게 해요. 한 번에 많이 마시면 토하기 쉬워서 조금씩 자주 주는 것이 원칙이에요.", d: "all night", k: ["아이가 좋아하는 컵으로 주세요", "토하면 잠시 쉬었다 다시 시작하세요"], a: "instead of", o: ["along with", "as well as", "together with"]}
+  - {t: "가정 점검", i: magnify, w: "how to check for…로 방법과 확인할 부위를 함께 알려 줘요. 입술이 마르고 눈이 푹 꺼지는 것은 아이가 탈수일 때 나타나는 대표적인 모습이에요.", d: "at the door", k: ["소변 횟수를 적어 두세요", "토하는 횟수도 적어 두세요"], a: "sunken", o: ["watery", "swollen", "bulging"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "탈수 평가 4문장 순서"
+    why: "마지막 소변 시점을 묻고, 'Thank you'가 그 대답을 받아 구토·설사를 묻고, 'what she's losing'이 구토·설사로 잃는 수분을 가리켜 조금씩 자주 먹이자고 하고, 'the sips'가 그 급여를 가리켜 효과를 가늠할 징후를 알려요. 'Thank you'·'what she's losing'·'the sips'가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "When was her last wet diaper?", icon: calendar, ko: "마지막으로 기저귀가 젖은 게 언제였나요?", note: "문진"}
+    - {en: "Thank you. Has she vomited today, or is it just loose stools?", icon: magnify, ko: "고마워요. 오늘 토하기도 했나요, 아니면 무른 변만 있었나요?", note: "감별"}
+    - {en: "To replace what she's losing, let's try small sips of fluid frequently.", icon: coffee, ko: "잃은 수분을 채우려고 조금씩 자주 마시게 해볼게요", note: "처치"}
+    - {en: "To tell if the sips are working, I'll show you the signs of dehydration to watch for.", icon: board, ko: "효과가 있는지 알 수 있게 살필 탈수 징후를 보여드릴게요", note: "교육"}
+  sw: {ko: "기저귀가 덜 젖고 울어도 눈물이 안 나는지 살펴보세요"}
+- title: 소아 골절 통증 관리
+  s:
+  - {t: "통증 평가", i: faceWorried, w: "point to the face로 말로 설명하기 어려운 아이가 얼굴 그림을 가리켜 아픈 정도를 표현하게 해요. 어린 아이에게는 숫자보다 얼굴 통증 척도(Wong-Baker 등)가 쓰여요.", d: "to the door", k: ["어디가 제일 아프니?", "언제 넘어졌는지 기억하니?"], a: "hurts", o: ["itches", "helps", "grows"]}
+  - {t: "통증 약속", i: pill, w: "very gentle과 get you medicine soon으로 조심스럽게 다루겠다는 약속과 통증 조절을 곧 해 주겠다는 약속을 함께 줘요. 골절 아이의 통증은 일찍 조절할수록 이후 처치가 수월해요.", d: "at school", k: ["엑스레이는 사진을 찍는 거야", "엄마는 여기 계실 거야"], a: "gentle", o: ["quiet", "quick", "strong"]}
+  - {t: "칭찬·대처", i: star, w: "You're so brave로 칭찬하고 squeeze mom's hand로 아플 때 할 수 있는 행동을 줘요. 아플 때 할 일을 알면 아이가 울음 대신 행동으로 표현할 수 있어요.", d: "in your pocket", k: ["엄마가 안아 줄게", "곧 끝나니까 조금만 참아"], a: "squeeze", o: ["pat", "wave", "shake"]}
+  - {t: "처치 예고", i: bandage, w: "quick pinch로 따끔한 순간이 짧다는 점을 아이 말로 알려 줘요. 안 아프다고 거짓말하지 않고 따끔하다고 솔직히 말해야 아이가 다음에도 의료진을 믿어요.", d: "all night", k: ["이 약은 먹는 약이야", "엄마가 손 잡아 줄게"], a: "quick", o: ["long", "big", "deep"]}
+  - {t: "선택권", i: check, w: "Do you want A or B first?로 할지 말지가 아니라 어느 것부터인지 고르게 해요. 아이에게 작은 선택권을 주면 통제감이 생겨 협조가 쉬워져요.", d: "or the music", k: ["지금 누워 볼래?", "아프면 말해 줘"], a: "cold", o: ["warm", "loud", "sticky"]}
+  - {t: "처치 계획", i: bandage, w: "We'll…and…before…로 부목과 진통제 두 가지를 하고 그 시점을 엑스레이 앞이라고 밝혀요. 골절이 의심되면 움직이지 않게 고정하고 통증 조절을 함께 해요.", d: "in the hall", k: ["엑스레이는 사진 찍는 거라 아프지 않아요", "결과는 의사가 먼저 볼 거예요"], a: "arm", o: ["leg", "knee", "ankle"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "아이 골절 통증 4문장 순서"
+    why: "얼굴 그림으로 통증을 평가하고, 'Thank you'가 그 대답을 받아 약을 곧 주겠다고 약속하고, 'That medicine'이 앞의 약을 가리켜 부목과 엑스레이 계획을 말하고, 'all of that'이 지나온 과정을 받아 칭찬과 보상으로 닫아요. 'Thank you'·'That medicine'·'all of that'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Can you point to the face that shows how much it hurts?", icon: faceWorried, ko: "얼마나 아픈지 보여주는 얼굴을 짚어볼래?", note: "평가"}
+    - {en: "Thank you. I'm going to be very gentle and get you medicine soon.", icon: pill, ko: "고마워. 아주 살살 할 거고 곧 약도 줄게", note: "약속"}
+    - {en: "That medicine will help, and we'll splint the arm before the X-ray.", icon: bandage, ko: "그 약이 도와줄 거고 엑스레이 전에 팔에 부목을 댈 거야", note: "계획"}
+    - {en: "You were so brave through all of that — do you want the sticker or the bandage?", icon: star, ko: "정말 용감했어 — 스티커랑 밴드 중에 뭘 할래?", note: "보상"}
+  sw: {ko: "이건 따끔하고 금방 끝나"}
+- title: 이물질 흡인·삼킴
+  s:
+  - {t: "삼킨 물질", i: magnify, w: "what…and when으로 삼킨 물건과 시각을 한 번에 묻는 두 질문이에요. 무엇을 언제 삼켰는지에 따라 영상 검사와 처치의 시급도를 정해요.", d: "to school", k: ["아이가 지금 기침하나요?", "마지막으로 먹은 게 언제예요?"], a: "swallowed", o: ["dropped", "chewed", "broke"]}
+  - {t: "기도 확인", i: stetho, w: "able to breathe and talk로 기도가 막히지 않았는지 가장 먼저 확인해요. 숨쉬기와 말하기가 정상이면 기도가 완전히 막힌 것은 아니라는 단서가 돼요.", d: "last night", k: ["지금 기침을 계속하나요?", "삼킨 뒤로 먹은 게 있나요?"], a: "breathe", o: ["eat", "walk", "sit"]}
+  - {t: "부모 인정", i: handshake2, w: "You did the right thing으로 바로 데려온 결정을 인정해요. 이물을 삼키면 시간이 중요해서 즉시 온 것을 인정하는 것이 맞아요.", d: "back home", k: ["아이가 마지막으로 먹은 게 언제예요?", "집에 같은 물건이 더 있나요?"], a: "right", o: ["hard", "first", "brave"]}
+  - {t: "물체 파악", i: magnify, w: "describe로 크기·모양·종류를 말하게 해요. 동전·건전지·자석처럼 종류에 따라 위험과 처치 시급도가 달라서 무엇인지 정확히 알아야 해요.", d: "in a bag", k: ["그 물건과 같은 걸 가지고 계신가요?", "아이가 입에 넣는 걸 본 사람이 있나요?"], a: "describe", o: ["wash", "keep", "count"]}
+  - {t: "삼킴 곤란", i: faceWorried, w: "drooling과 trouble swallowing은 삼킨 물체가 식도에 걸려 침도 넘기기 힘들 때 나타나는 경고 신호예요. 이 둘을 or로 묶어 한 번에 확인해요.", d: "since last week", k: ["숨이 가쁜 적이 있나요?", "가슴이 아프다고 하나요?"], a: "drooling", o: ["sweating", "shaking", "coughing"]}
+  - {t: "검사 설명", i: hospital, w: "get an X-ray to see…로 검사와 그 목적을 함께 말해요. 엑스레이로 삼킨 물체의 위치와 종류를 보고 처치 방법을 정해요. 금속 이물은 영상에 보이지만 모든 이물이 보이는 것은 아니에요.", d: "with a flashlight", k: ["엑스레이는 아프지 않아요", "결과는 의사가 설명해 드릴 거예요"], a: "exactly", o: ["roughly", "partly", "slightly"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "삼킴 문진 4문장 순서"
+    why: "삼킨 것과 시각을 묻고, 'Thank you'가 그 대답을 받아 호흡과 말하기를 확인하고, 'Besides his breathing'이 앞의 호흡 확인을 가리켜 침 흘림과 삼킴 곤란을 묻고, 'all of that'이 지금까지의 대답을 받아 엑스레이를 알려요. 'Thank you'·'Besides his breathing'·'all of that'이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "Can you tell me exactly what he swallowed and when?", icon: magnify, ko: "정확히 뭘 삼켰고 언제였는지 말씀해 주시겠어요?", note: "문진"}
+    - {en: "Thank you. Is he able to breathe and talk normally right now?", icon: stetho, ko: "고마워요. 지금 숨쉬고 말하는 게 정상적으로 되나요?", note: "기도"}
+    - {en: "Besides his breathing, is he drooling or having any trouble swallowing his own saliva?", icon: faceWorried, ko: "숨 외에도 침을 흘리거나 자기 침을 삼키기 힘들어하나요?", note: "삼킴"}
+    - {en: "Thank you for answering all of that. We'll get an X-ray to see exactly where the coin is.", icon: hospital, ko: "다 답해 주셔서 고마워요. 동전이 어디 있는지 엑스레이로 확인할게요", note: "검사"}
+  ctx:
+    word: "ingestion"
+    ko: "삼킴"
+    sc:
+      1: {en: "Coin ingestion around two o'clock — he's drooling, and the X-ray's ordered."}

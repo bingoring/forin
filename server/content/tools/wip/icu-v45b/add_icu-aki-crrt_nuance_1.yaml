@@ -1,0 +1,109 @@
+소변량·크레아티닌 추세 사정:
+  - kind: slider
+    words: [w-drop, w-urine-output]
+    cue: "간호사가 본 것: 시간당 소변량이 60 mL에서 45 mL로 조금 줄었다 — 보호자에게 설명"
+    scale: [dipped a little, dropped, crashed]
+    answerAt: 0
+    why: "조금 줄었으면 dipped a little. crashed는 '곤두박질쳤다'는 구어라 보호자를 크게 놀라게 해요. 줄어든 정도만큼만 말하고, 매시간 지켜본다고 덧붙여요."
+    example: "His urine output has dipped a little since this morning."
+    exKo: "아침부터 소변량이 조금 줄었어요."
+  - kind: context
+    words: [w-urine-output, w-kidney, w-fail]
+    scenes:
+      - {who: 동료에게 인계, icon: speech, en: "UOP is down to 15 an hour — I'm worried his AKI is getting worse.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Oliguric, UOP < 0.5 mL/kg/h x 6 h. Provider notified.", ok: true}
+      - {who: 보호자에게, icon: me, en: "He's oliguric and in AKI.", ok: false, fix: "His kidneys are under stress, and he's making less urine. We're watching it every hour."}
+    why: "같은 사실이라도 가족에게는 oliguric·AKI 같은 용어 대신 쉬운 말로 하고, 지금 무엇을 하고 있는지 덧붙여요. 차트의 0.5 mL/kg/h는 AKI 단계를 매길 때 쓰는 소변량 기준이에요."
+수분·전해질 균형 기록:
+  - kind: slider
+    words: [w-weight, w-daily]
+    cue: "간호사가 본 것: 아침 체중이 어제보다 2 kg 늘었고 발목이 부었다 — 보호자에게"
+    scale: [about the same, up a little, up quite a bit]
+    answerAt: 2
+    why: "하루에 2 kg이면 체액 약 2 L가 몸에 남았다는 뜻이라 '조금'이 아니에요. 그래서 매일 같은 시간, 같은 저울로 재서 비교해요."
+    example: "Her weight is up quite a bit since yesterday, so we're watching her fluids closely."
+    exKo: "어제보다 체중이 꽤 늘어서 체액을 자세히 지켜보고 있어요."
+  - kind: swap
+    words: [w-measure, w-balance]
+    who: "보호자에게 · I/O 설명"
+    icon: me
+    before: ["We measure ", "her I&O", " to balance her fluids."]
+    options: [everything in and out, her I&O, her intake and output totals]
+    answer: everything in and out
+    notes: {everything in and out: "가족이 바로 알아듣는 쉬운 말이고, 뜻은 똑같아요.", her I&O: "의료진끼리 쓰는 약어라 가족은 못 알아들어요.", her intake and output totals: "틀리진 않지만 차트 말투라 딱딱하게 들려요."}
+    why: "인계·차트에서는 I&O라고 하지만, 가족에게는 '들어가고 나오는 모든 것'으로 풀어 말해요."
+신독성 약물 검토:
+  - kind: pair
+    words: [w-pain-reliever, w-function, w-kidney, w-dose]
+    pairs: [[pain, reliever], [kidney, function], [dose, adjustment]]
+    decoys: [reader]
+    why: "pain reliever는 진통제를 쉽게 부르는 말, kidney function은 '신장 기능', dose adjustment는 '용량 조정'이에요. 신장 기능이 떨어지면 약사와 함께 용량 조정을 검토해요."
+  - kind: swap
+    words: [w-ibuprofen, w-hurt]
+    who: "보호자에게 · 집에서 먹던 약 설명"
+    icon: me
+    before: ["Ibuprofen can ", "be nephrotoxic", " right now."]
+    options: [be hard on his kidneys, be nephrotoxic, destroy his kidneys]
+    answer: be hard on his kidneys
+    notes: {be hard on his kidneys: "쉬운 말로 사실을 그대로 전해요.", be nephrotoxic: "'신독성'이라는 의료진 용어라 가족은 못 알아들어요.", destroy his kidneys: "사실보다 무겁게 들려 가족이 자책할 수 있어요."}
+    why: "이부프로펜 같은 NSAID는 신장 혈류를 줄여 손상된 신장에 부담이 돼요. 가족에게는 겁주지 않으면서 쉬운 말로 알려요."
+CRRT 개념·목적 이해:
+  - kind: slider
+    words: [w-promise, w-recover]
+    cue: "Family: \"Will his kidneys come back?\" — 팀 판단: 회복할 수도 있지만 아직 확실하지 않다"
+    scale: ["They won't", "Many patients recover, but we can't promise", "They definitely will"]
+    answerAt: 1
+    why: "AKI에서는 신장이 회복하는 환자가 많지만, 누가 회복할지는 장담할 수 없어요. 희망과 불확실성을 함께 말해요."
+    example: "We can't promise his kidneys will come back, but this gives them time."
+    exKo: "신장이 꼭 돌아온다고 약속할 수는 없지만, 이건 시간을 벌어줘요."
+  - kind: context
+    words: [w-regular, w-dialysis, w-continuous]
+    scenes:
+      - {who: 동료에게, icon: speech, en: "He can't tolerate intermittent HD, so he's on CVVHDF.", ok: true}
+      - {who: 차트 기록, icon: board, en: "CRRT (CVVHDF) initiated d/t hemodynamic instability.", ok: true}
+      - {who: 보호자에게, icon: me, en: "We started CVVHDF because he couldn't tolerate IHD.", ok: false, fix: "We started a slow, continuous kind of dialysis, because regular dialysis is too hard on his blood pressure right now."}
+    why: "가족에게 IHD·CVVHDF 같은 약어는 뜻이 전달되지 않아요. 간헐 투석은 'regular dialysis', CRRT는 '천천히 계속하는 투석'으로 풀어 말해요."
+CRRT 회로·접근 관찰:
+  - kind: pair
+    words: [w-loose, w-redness, w-kink]
+    pairs: [[comes, loose], [free of, redness], [a kink, in the line]]
+    decoys: [tight]
+    why: "come loose는 '헐거워지다'로 굳은 짝이에요. free of는 '~가 없는', kink는 'a kink in the line'(라인이 꺾임)처럼 in과 함께 써요."
+  - kind: swap
+    words: [w-catheter, w-carry, w-large]
+    who: "보호자에게 · 장비 설명"
+    icon: me
+    before: ["This ", "large-bore dialysis catheter", " carries his blood to and from the machine."]
+    options: [special large tube, large-bore dialysis catheter, vascular access device]
+    answer: special large tube
+    notes: {special large tube: "가족이 바로 그림을 떠올리는 쉬운 말이에요.", large-bore dialysis catheter: "의료진끼리는 정확한 말이지만 가족에게는 낯설어요.", vascular access device: "차트·규정 문서의 말투라 더 멀게 들려요."}
+    why: "처음 보는 가족에게는 장비 이름보다 그 장비가 하는 일을 쉬운 말로 설명해요."
+항응고 기초 감시:
+  - kind: slider
+    words: [w-bleed, w-gum]
+    cue: "간호사가 본 것: 양치 후 칫솔에 피가 조금 묻었고, 다른 출혈은 없다 — 보호자에게"
+    scale: [a little oozing, bleeding, hemorrhaging]
+    answerAt: 0
+    why: "칫솔에 묻은 정도면 oozing(스며 나옴)이에요. hemorrhage는 대량 출혈이라 가족에게 쓰면 겁을 줘요. 그래도 항응고 중에는 작은 출혈도 기록하고 팀에 알려요."
+    example: "There's a little oozing from his gums, so I'll let the team know."
+    exKo: "잇몸에서 피가 조금 스며 나와서 팀에 알릴게요."
+  - kind: context
+    words: [w-thinner, w-medicine, w-circuit]
+    scenes:
+      - {who: 동료에게 인계, icon: speech, en: "Citrate is running per protocol, and his post-filter ionized calcium is in range.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Regional citrate anticoagulation per protocol.", ok: true}
+      - {who: 보호자에게, icon: me, en: "We're running regional citrate anticoagulation.", ok: false, fix: "We use a small amount of blood thinner that works mostly inside the machine."}
+    why: "가족에게는 'regional citrate anticoagulation' 대신 blood thinner라고 하고, 몸 전체가 아니라 주로 기계 회로 안에서 작용한다고 설명해요."
+CRRT 처방 파라미터 이해:
+  - kind: pair
+    words: [w-page, w-team, w-confirm, w-prescription]
+    pairs: [[page, the team], [confirm, the prescription], [walk me, through]]
+    decoys: [machine]
+    why: "page는 호출기로 사람을 부르는 것이라 the team과, confirm은 처방을 '확인해 두는' 것, 인계 받을 때 '하나씩 설명해 달라'는 walk me through예요."
+  - kind: context
+    words: [w-setting, w-blood-flow, w-net, w-removal]
+    scenes:
+      - {who: 동료에게 인계, icon: speech, en: "Blood flow is 150, dialysate is 2 liters an hour, and net removal is 100 an hour.", ok: true}
+      - {who: 차트 기록, icon: board, en: "CVVHDF: BFR 150 mL/min, dialysate 2 L/h, net UF 100 mL/h.", ok: true}
+      - {who: 동료에게 인계, icon: speech, en: "The machine's running fine, and it's pulling some fluid.", ok: false, fix: "Blood flow is 150, dialysate is 2 liters an hour, and net removal is 100 an hour."}
+    why: "인계에서는 '잘 돌고 있고 좀 빼고 있다'가 아니라 숫자로 말해요. 받는 간호사가 처방과 하나씩 대조할 수 있어야 해요."

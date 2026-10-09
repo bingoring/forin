@@ -1,0 +1,274 @@
+- title: 출혈+빈혈 실신
+  s:
+  - t: 기립 증상
+    i: me
+    w: when you sit up처럼 자세를 바꾸는 순간을 짚어 물어요. 빈혈과 출혈로 혈액량이 줄면 몸을 일으킬 때 어지럼이 먼저 올 수 있어요.
+    d: at night
+    k: ['앉을 때 숨이 차나요?', '앉을 때 가슴이 아픈가요?']
+    a: feel
+    o: [sound, taste, smell]
+  - t: 호출 요청
+    i: bell
+    w: Please …로 부탁하는 말투라 금지가 아니라 도움을 청하라는 뜻으로 들려요. 빈혈이 있는 환자가 혼자 일어서다 어지러워 쓰러지는 일을 막으려는 부탁이에요.
+    d: at night
+    k: [침대에서 나오시기 전에 신발을 신으세요, 침대에서 나오시면 제가 옆에서 부축할게요]
+    a: call
+    o: [text, email, wave]
+  - t: 낙상 예방
+    i: shield
+    w: bed low and the rails up처럼 무엇을 어떻게 하는지 말하고 to prevent a fall로 이유를 붙여요. 난간을 어떻게 올릴지는 병원 지침에 따라요.
+    d: all day
+    k: [침대 알람을 꺼 둘게요, 침대 시트를 갈아 드릴게요]
+    a: prevent
+    o: [cause, invite, allow]
+  - t: 의식 소실
+    i: faceWorried
+    w: How long으로 의식이 없던 시간을 묻되, 환자는 정신을 잃은 동안을 기억하지 못하니 목격자의 말이 더 믿을 만해요. 의식 소실이 길수록 원인 감별과 머리 손상 확인이 더 중요해져요.
+    d: in the car
+    k: ['쓰러지신 뒤 바로 일어나셨나요?', '쓰러지기 전에 뭘 하고 계셨나요?']
+    a: unconscious
+    o: [silent, sober, absent]
+  - t: 공감 표현
+    i: shield
+    w: We don't want you to …는 환자가 아니라 우리가 바라는 것이라고 말해 지시가 아닌 염려로 들려요. again이 이미 한 번 쓰러졌다는 사실을 담담히 짚어요.
+    d: at home
+    k: [다시 쓰러지지 않게 수액을 더 드릴게요, 넘어진 곳을 사진으로 남길게요]
+    a: hurt
+    o: [sick, scared, lost]
+  - t: 도움 약속
+    i: handshake2
+    w: every time으로 한 번이 아니라 매번 도와준다고 약속해요. 혼자 일어서면 안 된다는 금지보다 도움이 항상 있다는 말이 환자가 벨을 누르게 만들어요.
+    d: by yourself
+    k: [일어나실 때 보행기를 쓰세요, 일어나실 때 천천히 숨 쉬세요]
+    a: Someone
+    o: [Nobody, Nothing, Nowhere]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 낙상 예방 안내 4문장 순서
+    why: 증상을 묻고, 그 때문에 하는 조치를 알리고, 부탁을 전한 뒤, 그 부름에 답하겠다고 약속해요. 'That's why'·'even if'·'that call'이 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - {en: 'Do you feel dizzy or weak when you sit up?', icon: me, ko: '일어나 앉을 때 어지럽거나 힘이 없으세요?', note: 증상}
+    - {en: That's why we're keeping the bed low and the rails up., icon: shield, ko: 그래서 침대를 낮추고 난간을 올려 둘게요, note: 조치}
+    - {en: 'Please call us before getting out of bed, even if you feel fine.', icon: bell, ko: 괜찮아도 침대에서 나오기 전에 저희를 불러 주세요, note: 부탁}
+    - {en: Someone will answer that call and help you get up every time., icon: handshake2, ko: 누군가 그 호출에 답하고 매번 일어나시는 걸 도울 거예요, note: 약속}
+- title: 여호와의증인 수혈 거부
+  s:
+  - t: 존중 표현
+    i: handshake2
+    w: respect your decision으로 먼저 존중을 말한 뒤 want to understand로 질문의 목적을 밝혀요. 신념에 따른 수혈 거부는 환자의 권리라서 설득이 아니라 이해에서 시작해요.
+    d: right now
+    k: [결정하시기까지 시간을 드릴게요, 결정하신 내용을 서류에 적어 드릴게요]
+    a: fully
+    o: [barely, rarely, loudly]
+  - t: 대안 안내
+    i: bandage
+    w: there are other treatments로 거부해도 치료가 끝나지 않는다고 알려요. 대안은 환자의 신념과 상태에 따라 의사가 정해요.
+    d: for sure
+    k: [다른 치료는 의사 선생님과 먼저 상의할게요, 다른 병원으로 옮겨야 할 수도 있어요]
+    a: support
+    o: [blame, scare, charge]
+  - t: 기록 안내
+    i: board
+    w: Let's …로 함께 한다는 말투라 환자 몰래 적는 기록이 아니에요. 치료 거부나 선호는 팀 모두가 같은 내용을 알도록 정확히 기록해야 해요.
+    d: in private
+    k: [서류에 서명하실 분을 확인할게요, 가족분께 연락해 둘게요]
+    a: document
+    o: [delete, hide, ignore]
+  - t: 신념 문진
+    i: speech
+    w: tell me more about으로 열린 질문이라 환자가 자기 말로 신념을 설명해요. 어떤 혈액 성분이나 치료까지 받아들이는지는 사람마다 달라서 일반화하지 않고 직접 물어요.
+    d: at home
+    k: ['수혈 외에 거부하시는 치료가 있나요?', '이런 결정을 가족과 이야기해 보셨나요?']
+    a: beliefs
+    o: [allergies, symptoms, insurance]
+  - t: 최선 약속
+    i: shield
+    w: everything possible without …로 약속의 범위와 한계를 함께 말해요. 환자의 결정을 지키면서 할 수 있는 모든 치료를 하겠다는 약속이라 결과를 보장하지는 않아요.
+    d: for you
+    k: [혈액 제품 없이 가능한 치료를 의사 선생님과 정할게요, 혈액 제품 대신 어떤 약이 있는지 설명할게요]
+    a: without
+    o: [with, before, after]
+  - t: 존중 약속
+    i: handshake2
+    w: throughout your care로 존중이 지금 한 번이 아니라 치료 내내 이어진다고 약속해요. 치료 중 상태가 나빠져도 처음에 밝힌 뜻을 팀이 기억하겠다는 약속이에요.
+    d: right now
+    k: [팀이 환자분 곁을 교대로 지킬 거예요, 팀이 치료 계획을 매일 설명해 드릴 거예요]
+    a: respect
+    o: [forget, change, reject]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 수혈 거부 환자 응대 4문장 순서
+    why: 존중부터 말하고, 그 바람을 이해하려고 신념을 묻고, 그 뜻에 맞는 치료를 약속한 뒤, 기록으로 팀에 전해요. 'them'·'those wishes'·'all of that'이 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - {en: I respect your decision and want to understand your wishes fully., icon: handshake2, ko: 결정을 존중하고 바람을 완전히 이해하고 싶어요, note: 존중}
+    - {en: 'To understand them fully, can you tell me more about your beliefs regarding blood transfusions?', icon: speech, ko: '그것을 충분히 이해하려는데, 수혈에 관한 신념을 더 말씀해 주시겠어요?', note: 문진}
+    - {en: 'With those wishes in mind, we''ll do everything possible without blood products.', icon: shield, ko: 그 바람을 염두에 두고 혈액 제품 없이 가능한 모든 걸 해 볼게요, note: 약속}
+    - {en: We'll document all of that clearly so the whole team respects it., icon: board, ko: 그 모두를 명확히 기록해서 팀 전체가 존중하게 할게요, note: 기록}
+  sw: {ko: 팀과 함께 환자분의 선호를 명확하게 기록해 둘게요}
+- title: 재출혈 이력 통합
+  s:
+  - t: 과거 시술
+    i: board
+    w: Tell me about …으로 질문보다 부드럽게 이야기를 청해요. 환자가 기억하는 만큼 자유롭게 말하게 하면 기록에 없는 이전 시술 이야기가 나오기도 해요.
+    d: last year
+    k: [내시경 전에 금식하셨는지 말씀해 주세요, 내시경을 받은 병원 이름을 말씀해 주세요]
+    a: endoscopy
+    o: [surgery, scan, biopsy]
+  - t: 결과 확인
+    i: magnify
+    w: Do you know로 모를 수 있다는 여지를 먼저 줘요. 이전 내시경에서 발견된 소견과 그때의 치료는 이번 출혈의 원인을 짐작하는 중요한 단서예요.
+    d: in the lab
+    k: ['지난번에 어느 병원에서 하셨는지 아세요?', '지난번에 약을 얼마나 드셨는지 아세요?']
+    a: treated
+    o: [tested, removed, repaired]
+  - t: 재발 확인
+    i: calendar
+    w: more than once로 한 번이냐 아니냐만 가려 환자가 답하기 쉬워요. 되풀이된 출혈은 원인이 아직 남아 있을 수 있다는 단서가 돼요.
+    d: at night
+    k: ['출혈 때문에 수혈을 받은 적이 있나요?', '이런 출혈이 있을 때 약을 드셨나요?']
+    a: bleeding
+    o: [pain, vomiting, dizziness]
+  - t: 시기 확인
+    i: calendar
+    w: How many years ago로 정확한 연도를 몰라도 햇수로 어림해 답하게 해요. 시술이 오래전이면 그때의 소견이 지금 출혈과 직접 관련이 없을 수 있어서 기록을 같이 찾아봐요.
+    d: at home
+    k: ['그 시술 때 며칠 입원하셨나요?', '그 시술은 누가 하셨나요?']
+    a: ago
+    o: [later, after, before]
+  - t: 원인 문진
+    i: speech
+    w: anything about the cause처럼 범위를 열어 두면 환자가 기억나는 것만 말해도 돼요. 과거에 알려진 원인은 이번 출혈이 같은 곳에서 다시 난 것인지 가늠하는 데 쓰여요.
+    d: in writing
+    k: ['그때 약을 몇 주 드시라고 했나요?', '그때 수술을 하자고 했나요?']
+    a: cause
+    o: [plan, risk, cost]
+  - t: 이유 설명
+    i: bulb
+    w: helps us …로 질문이 환자를 평가하려는 것이 아니라 돕기 위한 것임을 알려요. 이전 출혈과 치료 이력은 이번에 어떤 검사와 예방 치료가 필요한지 정하는 데 쓰여요.
+    d: for sure
+    k: [이 병력은 의사 선생님도 함께 보실 거예요, 이 병력은 차트에 기록해 둘게요]
+    a: understand
+    o: [hide, avoid, ignore]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 재출혈 이력 문진 4문장 순서
+    why: 이전 내시경 이야기를 열고, 그때의 발견을 묻고, 그 뒤 같은 출혈이 반복됐는지 묻고, 이 이력의 쓰임으로 닫아요. 'at that time'·'Since then'·'This history'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - {en: Tell me about the endoscopy you had before., icon: board, ko: 전에 받으신 내시경에 대해 말씀해 주세요, note: 이력}
+    - {en: 'Do you know what was found or treated at that time?', icon: magnify, ko: '그때 무엇이 발견되거나 치료됐는지 아세요?', note: 소견}
+    - {en: 'Since then, has bleeding like this happened more than once?', icon: calendar, ko: '그 뒤로 이런 출혈이 한 번 넘게 있었나요?', note: 재발}
+    - {en: This history helps us understand your risk of bleeding again., icon: bulb, ko: 이 병력이 재출혈 위험을 이해하는 데 도움이 돼요, note: 이유}
+  sw: {ko: '그때 의사 선생님들이 원인에 대해 뭐라고 하셨나요?'}
+- title: 항혈소판제 심장환자 출혈
+  s:
+  - t: 복용약 문진
+    i: pill
+    w: like aspirin or clopidogrel로 예를 들면 환자가 약 이름을 떠올리기 쉬워요. 아스피린과 클로피도그렐은 둘 다 혈소판이 엉기는 것을 막는 약이라 출혈이 있을 때 꼭 확인해요.
+    d: by mouth
+    k: ['심장약을 드시고 나서 부작용이 있었나요?', '심장약은 누가 처방하셨나요?']
+    a: heart
+    o: [stomach, pain, sleep]
+  - t: 시술력 문진
+    i: board
+    w: stent or heart procedure로 구체적인 시술과 넓은 말을 함께 줘요. 최근 스텐트를 넣은 환자는 혈전을 막으려고 항혈소판제를 끊기 어려운 경우가 많아서 시기를 꼭 확인해요.
+    d: last year
+    k: ['스텐트 시술을 받은 병원이 어디예요?', '시술 뒤에 흉통이 있었나요?']
+    a: recently
+    o: [tomorrow, daily, rarely]
+  - t: 저울질 설명
+    i: shield
+    w: weigh A against B로 두 위험을 저울에 올린다는 그림을 줘요. 출혈이 계속되면 약을 끊고 싶고 스텐트가 막힐 위험 때문에 지키고 싶어서 한쪽만 보고 정할 수 없다고 설명해요.
+    d: for you
+    k: [팀이 심장 검사 결과를 먼저 확인할 거예요, 팀이 가족분께 먼저 설명드릴 거예요]
+    a: weigh
+    o: [ignore, hide, raise]
+  - t: 복용 기간
+    i: calendar
+    w: How long have you been …ing로 지금까지 이어진 기간을 묻는 현재완료진행이에요. 시술 직후에는 항혈소판제를 끊으면 위험이 커서 복용 기간이 판단의 근거가 돼요.
+    d: in a row
+    k: [하루에 몇 번 드시는지 말씀해 주세요, '처음 처방받은 병원이 어디예요?']
+    a: long
+    o: [often, much, many]
+  - t: 중단 위험
+    i: shield
+    w: could로 가능성만 말해 겁주지 않으면서 too soon으로 문제가 약을 끊는 것 자체가 아니라 너무 일찍 끊는 것임을 짚어요. 스텐트가 있는 환자는 약을 일찍 끊으면 스텐트 안에 혈전이 생길 위험이 커져요.
+    d: for good
+    k: [이 약은 위를 자극할 수 있어요, 이 약은 식사와 함께 드시는 게 좋아요]
+    a: increase
+    o: [reduce, remove, cure]
+  - t: 협진 안내
+    i: handshake2
+    w: A and B will decide together로 두 전문과가 함께 정한다고 말해 환자가 한쪽 말만 듣고 혼란스럽지 않게 해요. 출혈과 혈전 사이의 결정은 어느 한 과만으로 내리기 어려워요.
+    d: in person
+    k: [두 분 모두 오늘 중으로 보러 오실 거예요, 두 분 선생님께 검사 결과를 드릴 거예요]
+    a: together
+    o: [alone, separately, apart]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 항혈소판제 환자 설명 4문장 순서
+    why: 복용약을 묻고, 그 약을 먹게 된 시술을 묻고, 그 때문에 약을 끊을 때의 위험을 알리고, 그래서 두 의사가 함께 정한다고 닫아요. 'them'·'Because of that'·'That's why'가 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - {en: 'Which heart medicines are you taking, like aspirin or clopidogrel?', icon: pill, ko: '아스피린이나 클로피도그렐 같은 어떤 심장약을 드세요?', note: 복용약}
+    - {en: 'Did you start them after a stent or another heart procedure?', icon: board, ko: '그 약들은 스텐트나 다른 심장 시술 뒤에 시작하셨나요?', note: 시술}
+    - {en: 'Because of that, stopping those medicines too soon could increase your clot risk.', icon: shield, ko: 그 때문에 그 약들을 너무 일찍 끊으면 응고 위험이 늘 수 있어요, note: 위험}
+    - {en: That's why the heart doctor and the stomach doctor will decide together., icon: handshake2, ko: 그래서 심장 의사와 소화기 의사가 함께 결정할 거예요, note: 협진}
+  sw: {ko: 심장 의사와 소화기 의사가 함께 결정할 거예요}
+- title: 출혈성 쇼크 인지
+  s:
+  - t: 상태 알림
+    i: monitor
+    w: Your … is high and … is dropping처럼 수치를 쉬운 말로 사실대로 말하고 we're acting now로 곧바로 대응을 붙여요. 불안한 소식도 지금 하고 있는 일이 함께 오면 환자가 덜 겁먹어요.
+    d: slowly
+    k: [지금 심전도를 먼저 찍을게요, 지금 보호자분께 연락할게요]
+    a: dropping
+    o: [rising, holding, climbing]
+  - t: 치료 안내
+    i: bandage
+    w: right away로 지금 바로라는 점을 분명히 해 기다리는 시간이 없다고 알려요. 출혈성 쇼크에서는 잃은 부피를 수액과 혈액으로 빨리 채우는 것이 치료의 핵심이에요.
+    d: tomorrow
+    k: [먼저 산소부터 드릴게요, 먼저 검사부터 끝낼게요]
+    a: fluids
+    o: [pills, food, ice]
+  - t: 곁에 있기
+    i: handshake2
+    w: Stay with me는 의식을 유지하고 말을 이어 가게 하려는 요청이기도 해요. 쇼크 환자의 반응과 의식 수준은 중요한 관찰 지표라서 대화를 이어 가요.
+    d: right now
+    k: [숨을 크게 쉬세요, 팔을 움직이지 마세요]
+    a: ready
+    o: [lost, closed, empty]
+  - t: 상태 알림
+    i: stetho
+    w: very fast right now로 지금 이 순간의 상태를 담담하게 말해요. 빠른 맥박은 줄어든 혈액량을 심장이 더 빨리 뛰어 메우려는 반응이라 환자가 느끼는 두근거림을 설명해 줘요.
+    d: at rest
+    k: [지금 맥박을 다시 잴게요, 지금 심전도를 붙일게요]
+    a: fast
+    o: [slow, weak, uneven]
+  - t: 안심 설명
+    i: shield
+    w: to keep you safe로 서두르는 이유를 환자의 안전으로 밝혀요. 서둘러야 한다는 말만 하면 급박함만 전해져서 이유가 같이 있어야 안심돼요.
+    d: for now
+    k: [산소 마스크를 쓰려면 입을 벌려 주세요, 안정을 위해 침대를 조금 낮출게요]
+    a: quickly
+    o: [slowly, later, gently]
+  - t: 혈액 안내
+    i: bandage
+    w: on the way는 이동 중이라는 쉬운 표현이라 혈액이 곧 도착한다는 느낌을 줘요. 혈액 제품 종류와 단위 같은 세부는 환자에게 필요하지 않아요.
+    d: right now
+    k: [수액이 더 오고 있어요, 의사 선생님이 더 오고 있어요]
+    a: More
+    o: [Less, Old, Little]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 출혈성 쇼크 환자 응대 4문장 순서
+    why: 상태를 알리고, 그래서 하는 치료를 알리고, 그 효과와 혈액이 오는 중임을 알리고, 곁에 있겠다고 닫아요. 'That's why'·'That should help'·'all of that'이 앞 줄을 가리켜 순서가 하나예요.
+    lines:
+    - {en: Your heart rate is high and your pressure is dropping — we're acting now., icon: monitor, ko: '심박수는 높고 혈압은 떨어지고 있어요, 지금 바로 조치할게요', note: 상태}
+    - {en: That's why we're giving you fluids and blood right away., icon: bandage, ko: 그래서 수액과 혈액을 바로 드리고 있어요, note: 치료}
+    - {en: 'That should help your heart slow down, and more blood is on the way.', icon: stetho, ko: 그러면 심장이 느려지는 데 도움이 되고 혈액도 더 오고 있어요, note: 효과}
+    - {en: 'Stay with me through all of that, and tell me how you feel.', icon: handshake2, ko: 그 모든 과정에서 저와 함께 있어 주시고 느낌을 말씀해 주세요, note: 곁에}
+  sw: {ko: 심박수는 높고 혈압은 떨어지고 있어요}

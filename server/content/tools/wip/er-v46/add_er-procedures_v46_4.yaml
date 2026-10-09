@@ -1,0 +1,59 @@
+- title: 응급 약물 오류 방지
+  s:
+  - {t: "이중 확인", i: check, w: "verify … with me는 혼자 확인하지 않고 둘이 함께 맞춰 보자는 요청이에요. 확인할 항목을 약 이름·용량·농도로 나눠 말하면 빠뜨리기 어려워요.", d: "the room", k: ["약물, 용량, 농도를 저 혼자 확인할게요", "약물, 용량, 농도는 확인하지 않아도 돼요"], a: "verify", ai: magnify, o: [["ignore", "cross"], ["forget", "redo"], ["skip", "chevronRight"]]}
+  - {t: "복창 확인", i: speech, w: "Right patient, right route처럼 확인 항목을 소리 내어 읽으면 눈으로만 볼 때 놓치는 오류를 잡기 쉬워요. let's는 둘이 함께 한다는 뜻이에요.", d: "it later", k: ["마음속으로 조용히 읽어봐요", "환자 이름만 읽어봐요"], a: "aloud", ai: speaker, o: [["silently", "lock"], ["quietly", "coffee"], ["secretly", "bulb"]]}
+  - {t: "계산 확인", i: pencil, w: "계산한 값을 먼저 말하고 can you confirm?으로 두 번째 사람의 확인을 부탁해요. 독립적으로 한 번 더 계산하는 것이 오류를 막아요.", d: "I ordered fifteen", k: ["15유닛을 이미 투여했어요", "15유닛을 제가 정했으니 확인은 필요 없어요"], a: "calculated", ai: board, o: [["forgot", "redo"], ["cancelled", "cross"], ["ignored", "lock"]]}
+  - {t: "불일치 제기", i: siren, w: "Wait는 진행을 멈추게 하는 짧은 신호예요. 숫자가 처방과 다르다고 사실만 말하면 상대를 탓하지 않고도 오류를 제기할 수 있어요.", d: "dose is the same as", k: ["잠깐만요, 그 숫자는 처방과 정확히 맞아요", "잠깐만요, 그 처방은 취소됐어요"], a: "Wait", ai: pushpin, o: [["Go", "play"], ["Sure", "handshake2"], ["Great", "star"]]}
+  - {t: "투여 전 멈춤", i: lock, w: "Let's stop and …는 함께 멈춰서 확인하자는 제안이에요. before we give this로 투여 전이 마지막으로 오류를 막을 수 있는 시점임을 짚어요.", d: "double-check after we", k: ["투여한 다음에 멈추고 확인해봐요", "확인은 건너뛰고 바로 투여해요"], a: "before", ai: calendar, o: [["after", "redo"], ["while", "gear"], ["once", "star"]]}
+  - {t: "감사", i: star, w: "Thanks for catching that으로 오류를 짚은 사람을 인정하면 다음에도 편하게 말해 줘요. safety first는 모든 판단에서 안전을 우선한다는 짧은 구호예요.", d: "Sorry for missing", k: ["그걸 놓쳐서 미안해요, 안전이 우선이에요", "그건 괜찮아요, 속도가 우선이에요"], a: "catching", ai: magnify, o: [["missing", "chevronDown"], ["hiding", "lock"], ["ignoring", "gear"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "응급 약물 확인 4문장 순서"
+    why: "계산한 값을 말하고 확인을 청하고, 처방과 소리 내어 대조하고, 어긋나면 멈추라고 하고, 잡아 준 것에 감사해요. 뒤 줄이 앞 줄의 내용을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "I calculated fifteen units; can you confirm?", icon: pencil, ko: "15유닛으로 계산했는데 확인해 주시겠어요?", note: "계산"}
+    - {en: "Let's read it against the order, aloud.", icon: speech, ko: "처방과 대조해 소리 내어 읽어봐요", note: "대조"}
+    - {en: "Wait — the number I read doesn't match the order.", icon: siren, ko: "잠깐만요, 읽은 숫자가 처방과 안 맞아요", note: "불일치"}
+    - {en: "Thanks for catching that — let's recheck before we give it.", icon: star, ko: "잡아줘서 고마워요, 투여 전에 다시 확인해요", note: "감사"}
+  ctx: {word: "match", ko: "일치하다"}
+  sw: {ko: "레귤러 인슐린 15유닛 피하주사, 간호사 두 명이 확인함"}
+- title: 흉관 삽입 보조·통증
+  s:
+  - {t: "감각 안내", i: pill, w: "then으로 느낄 순서를 미리 알려 줘요. 마취약이 들어간 뒤에도 누르는 압박감은 남을 수 있다고 정직하게 말해 주는 거예요.", d: ", then sharp pain", k: ["마취약이 들어간 뒤에는 아무것도 못 느껴요", "따끔한 느낌이 한참 계속돼요"], a: "pushing", ai: chevronRight, o: [["cutting", "scalpel"], ["burning", "siren"], ["freezing", "lock"]]}
+  - {t: "통증 조절", i: pill, w: "Squeeze my hand로 말 대신 신호를 정해 주면 말하기 힘들 때도 아픔을 알릴 수 있어요. 지금 진통제를 준다고 알려 환자가 예측할 수 있게 해요.", d: "Shake my hand", k: ["제 손을 놓으세요, 진통제를 뺄게요", "소리 내서 세어 주세요, 약은 나중에 드려요"], a: "Squeeze", ai: handshake2, o: [["Shake", "gear"], ["Wave", "me"], ["Drop", "chevronDown"]]}
+  - {t: "효과 설명", i: lab, w: "helps your lung expand로 관이 하는 일을 쉬운 말로 풀었어요. 흉관은 폐 주위의 공기나 액체를 빼서 폐가 펴지도록 돕는 관이에요.", d: "breathe harder", k: ["이 관이 폐를 줄여서 숨쉬기가 편해져요", "이 관은 심장을 도와요"], a: "expand", ai: chartup, o: [["shrink", "chevronDown"], ["collapse", "siren"], ["stiffen", "lock"]]}
+  - {t: "격려", i: me, w: "Stay with me로 의식과 주의를 이쪽에 붙들어 두고 you're doing so well로 지금까지를 인정해요. 처치가 길어질 때 이런 짧은 격려가 협조를 이어 줘요.", d: "so slowly", k: ["제 곁을 떠나도 괜찮아요, 잘 못하고 계세요", "잠깐 눈을 감고 쉬세요"], a: "well", ai: trophy, o: [["badly", "faceAngry"], ["poorly", "chevronDown"], ["wrong", "siren"]]}
+  - {t: "안심", i: chartup, w: "The worst part로 가장 힘든 단계를 짚어 주고 almost over로 거의 끝났다고 알려요. 고비가 지나간다는 말은 환자가 버티게 해요.", d: "The best", k: ["가장 힘든 부분이 이제 시작돼요", "가장 좋은 부분은 거의 끝났어요"], a: "almost", ai: star, o: [["barely", "chevronDown"], ["hardly", "lock"], ["never", "redo"]]}
+  - {t: "곁을 지킴", i: handshake2, w: "I'm right here로 가까이 있다는 걸 알려 주고 the whole time으로 처치가 끝날 때까지라고 못 박아요. 곁에 있다는 확신이 불안을 줄여 줘요.", d: "away", k: ["제가 곧 자리를 비울게요", "처음에만 여기 있을게요"], a: "whole", ai: compass, o: [["first", "play"], ["last", "chevronRight"], ["only", "pushpin"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "흉관 삽입 4문장 순서"
+    why: "관을 넣는다고 알리며 마취와 압박을 안내하고, 압박이 세면 손으로 신호하게 하고, 관이 들어가면 폐가 펴진다고 설명하고, 힘든 고비가 지났다고 격려해요. 뒤 줄이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "I'm placing the chest tube now, so you'll feel numbing medicine, then pushing pressure.", icon: pill, ko: "흉관을 넣어요, 마취약 뒤에 압박감이 있어요", note: "안내"}
+    - {en: "If the pressure gets too strong, squeeze my hand and I'll give you pain medicine.", icon: handshake2, ko: "압박이 세면 제 손을 쥐세요, 진통제를 드려요", note: "신호"}
+    - {en: "Once it's in, it helps your lung expand and you'll breathe easier.", icon: lab, ko: "들어가면 폐가 펴져 숨쉬기 편해져요", note: "효과"}
+    - {en: "From here, the worst part is over — stay with me.", icon: star, ko: "여기부터 가장 힘든 부분은 끝났어요", note: "격려"}
+  ctx: {word: "lung", ko: "폐"}
+  sw: {ko: "정신 놓지 마세요, 정말 잘하고 계세요"}
+- title: 대량수혈 프로토콜
+  s:
+  - {t: "첫 유닛 시작", i: lab, w: "hanging은 혈액 팩을 걸어 연결한다는 병원 속어예요. first unit of packed cells로 몇 번째 유닛인지 밝히면 기록과 대조가 쉬워져요.", d: "the last unit", k: ["지금 혈액 팩을 떼어 내고 있어요", "지금 혈장 팩을 걸고 있어요"], a: "hanging", ai: pushpin, o: [["removing", "cross"], ["discarding", "redo"], ["draining", "chevronDown"]]}
+  - {t: "비율 확인", i: board, w: "Do you want …?는 의사의 선택을 묻는 질문이라 지시가 아니라 확인 요청으로 들려요. 대량수혈에서는 적혈구:혈장:혈소판을 1:1:1 같은 균형 비율로 주는 프로토콜을 쓰기도 해요.", d: "with water", k: ["혈장 없이 혈소판만 드릴까요?", "이 비율로 이미 시작했어요"], a: "plasma", ai: lab, o: [["saline", "pill"], ["insulin", "chartup"], ["heparin", "bell"]]}
+  - {t: "상황 보고", i: home, w: "has … on the way는 이미 출발했다는 진행 상황을 알려요. two more로 앞으로 올 양을 구체적으로 말하면 팀이 준비하기 쉬워요.", d: "two fewer", k: ["혈액은행에는 보냉함이 더 없어요", "혈액은행에서 보냉함이 방금 도착했어요"], a: "two", ai: chartup, o: [["zero", "lock"], ["no", "chevronDown"], ["any", "compass"]]}
+  - {t: "보고 주기", i: monitor, w: "I'll report는 앞으로 알리겠다는 약속이고 every five minutes는 주기를 못 박아요. 대량수혈 중에는 활력징후가 빠르게 변해 자주 보고해요.", d: "labs every", k: ["활력징후는 한 시간마다 보고할게요", "활력징후는 보고하지 않을게요"], a: "five", ai: play, o: [["fifty", "calendar"], ["ninety", "plane"], ["five hundred", "star"]]}
+  - {t: "담당의 확인", i: stetho, w: "Let's …로 함께 확인하자고 제안하고 now로 미루지 말고 지금 하자고 말해요. attending은 환자를 책임지는 담당 전문의예요.", d: "the dose with", k: ["지금 담당의 없이 비율을 정해요", "나중에 담당의와 비율을 확인해요"], a: "confirm", ai: check, o: [["cancel", "cross"], ["forget", "redo"], ["hide", "lock"]]}
+  - {t: "도착 알림", i: bell, w: "the moment는 '…하는 바로 그 순간'이라는 뜻의 접속 표현이에요. 다음 혈액이 도착한 즉시 알아야 끊김 없이 이어서 수혈해요.", d: "one hour after the", k: ["다음 보냉함이 오면 말하지 마세요", "다음 보냉함은 내일 도착해요"], a: "moment", ai: play, o: [["day", "calendar"], ["week", "plane"], ["month", "star"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "대량수혈 4문장 순서"
+    why: "첫 유닛을 걸고, 다음 유닛들의 비율을 묻고, 그 비율을 담당의와 확인하자고 하고, 답을 받기 전까지 활력징후를 보고해요. 뒤 줄이 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "I'm hanging the first unit of packed cells now.", icon: lab, ko: "지금 첫 적혈구 팩을 걸고 있어요", note: "시작"}
+    - {en: "For the next ones, do you want one-to-one-to-one with plasma and platelets?", icon: board, ko: "다음 것들은 혈장·혈소판과 1대1대1로 갈까요?", note: "비율"}
+    - {en: "Let's confirm that with the attending now.", icon: stetho, ko: "그걸 지금 담당의와 확인해요", note: "확인"}
+    - {en: "Until we have the answer, I'll report vitals every five minutes.", icon: monitor, ko: "답을 받기 전까지 5분마다 활력징후를 보고할게요", note: "보고"}
+  ctx: {word: "vitals", ko: "활력징후"}

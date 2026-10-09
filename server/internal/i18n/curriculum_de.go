@@ -31,14 +31,14 @@ func init() {
 		"milestone.name": "Abschnittsprüfung",
 
 		// ── floor headings (building|floor) ──────────────────────────────────
-		"본관|1F": "Haupthaus 1F · Notaufnahme",
-		"본관|2F": "Haupthaus 2F · Dermatologie",
-		"본관|3F": "Haupthaus 3F · OP · Aufwachraum",
-		"본관|4F": "Haupthaus 4F · Intensivstation",
-		"본관|6F": "Haupthaus 6F · Orthopädie",
-		"본관|7F": "Haupthaus 7F · Allgemeinchirurgie",
-		"본관|8F": "Haupthaus 8F · Innere Medizin",
-		"본관|P1": "Haupthaus P1 · Zentralapotheke",
+		"본관|1F":   "Haupthaus 1F · Notaufnahme",
+		"별관 3|5F": "Nebengebäude 3 5F · Dermatologie",
+		"본관|3F":   "Haupthaus 3F · OP · Aufwachraum",
+		"본관|4F":   "Haupthaus 4F · Intensivstation",
+		"본관|6F":   "Haupthaus 6F · Orthopädie",
+		"본관|7F":   "Haupthaus 7F · Allgemeinchirurgie",
+		"본관|8F":   "Haupthaus 8F · Innere Medizin",
+		"본관|P1":   "Haupthaus P1 · Zentralapotheke",
 
 		"별관 1|1F": "Nebengebäude 1 1F · Kinder- und Frauenambulanz",
 		"별관 1|2F": "Nebengebäude 1 2F · Kinderstation",

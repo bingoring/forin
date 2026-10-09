@@ -23,7 +23,7 @@ FROM events WHERE delivery IN ('daily_pool', 'both') AND ($1 = '' OR profession 
 ORDER BY tier, id LIMIT $2;
 
 -- name: GetScenario :one
-SELECT id, profession, event_id, title, tagline, persona, goals, guardrails, key_phrases, steps, briefing, acuity
+SELECT id, profession, event_id, title, tagline, persona, goals, guardrails, key_phrases, steps, briefing, acuity, theme, sentences, nuance, lesson_order
 FROM scenarios WHERE id = $1;
 
 -- name: ListBoardScenarios :many
@@ -50,6 +50,8 @@ DELETE FROM interiors;
 DELETE FROM events;
 -- name: DeleteScenarios :exec
 DELETE FROM scenarios;
+-- name: DeleteLexicons :exec
+DELETE FROM lexicons;
 -- name: DeleteQuizzes :exec
 DELETE FROM quizzes;
 -- name: DeletePhrases :exec
@@ -67,8 +69,14 @@ INSERT INTO events (id, profession, title, ward, category, tier, tags, delivery,
 VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12);
 
 -- name: InsertScenario :exec
-INSERT INTO scenarios (id, profession, event_id, title, tagline, persona, goals, guardrails, key_phrases, steps, briefing, acuity, theme, collab_with)
-VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14);
+INSERT INTO scenarios (id, profession, event_id, title, tagline, persona, goals, guardrails, key_phrases, steps, briefing, acuity, theme, collab_with, sentences, nuance, lesson_order)
+VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17);
+
+-- name: InsertLexicon :exec
+INSERT INTO lexicons (theme, words) VALUES ($1, $2);
+
+-- name: GetLexicon :one
+SELECT words FROM lexicons WHERE theme = $1;
 
 -- name: ListScenarioTags :many
 -- 커리큘럼 v3 조립기 입력: 부팅 시 1회 조회. difficulty는 briefing JSON에서 뽑아 컬럼처럼 노출.

@@ -42,18 +42,18 @@ export const STEP_META: Record<StepKind, { icon: IconName; nbIcon: NbIconName; l
  * lookup has to match them. The subtitle is display text, so it carries a
  * translation key.
  */
-export const BUILDING_STYLE: Record<string, { icon: FIconName; nbIcon: NbIconName; accent: string; subKey: string; nameKey: string }> = {
+export const BUILDING_STYLE: Record<string, { icon: FIconName; nbIcon: NbIconName; accent: string; subKey: string; nameKey: string; shortKey: string }> = {
   // `nbIcon` is the 근무 수첩 line's doodle, beside the pixel line's `icon`. Two names
   // rather than one because they are not the same drawing at two sizes, and a screen
   // belongs to one line or the other (07). The KEYS are the server's building names, which
   // is why this table lives in src/data — src/app and src/components may hold no Korean
   // literals at all (i18n/ceiling), and these are data, not copy. `nameKey` localizes the
   // DISPLAY name while the Korean key stays the lookup id the server sends.
-  '본관': { icon: 'stetho', nbIcon: 'siren', accent: '#D14B3D', subKey: 'building.main.sub', nameKey: 'building.main.name' },
-  '별관 1': { icon: 'baby', nbIcon: 'baby', accent: '#C2487E', subKey: 'building.annex1.sub', nameKey: 'building.annex1.name' },
-  '별관 2': { icon: 'ivbag', nbIcon: 'pill', accent: '#1E8A5B', subKey: 'building.annex2.sub', nameKey: 'building.annex2.name' },
-  '별관 3': { icon: 'magnify', nbIcon: 'monitor', accent: '#0E7490', subKey: 'building.annex3.sub', nameKey: 'building.annex3.name' },
-  '지원동': { icon: 'gear', nbIcon: 'board', accent: '#6E6354', subKey: 'building.support.sub', nameKey: 'building.support.name' },
+  '본관': { icon: 'stetho', nbIcon: 'siren', accent: '#D14B3D', subKey: 'building.main.sub', nameKey: 'building.main.name', shortKey: 'building.main.short' },
+  '별관 1': { icon: 'baby', nbIcon: 'baby', accent: '#C2487E', subKey: 'building.annex1.sub', nameKey: 'building.annex1.name', shortKey: 'building.annex1.short' },
+  '별관 2': { icon: 'ivbag', nbIcon: 'pill', accent: '#1E8A5B', subKey: 'building.annex2.sub', nameKey: 'building.annex2.name', shortKey: 'building.annex2.short' },
+  '별관 3': { icon: 'magnify', nbIcon: 'monitor', accent: '#0E7490', subKey: 'building.annex3.sub', nameKey: 'building.annex3.name', shortKey: 'building.annex3.short' },
+  '지원동': { icon: 'gear', nbIcon: 'board', accent: '#6E6354', subKey: 'building.support.sub', nameKey: 'building.support.name', shortKey: 'building.support.short' },
 };
 
 /** Fallback for a building the server adds before this file learns its colour.
@@ -103,4 +103,46 @@ const DEPT_NB_ICON: Record<string, NbIconName> = {
 export function deptNbIcon(contentID?: string): NbIconName {
   const code = deptCodeOf(contentID);
   return (code && DEPT_NB_ICON[code]) || 'stetho';
+}
+
+/**
+ * The colour of a department's binder spine on the 서가 (journey-binder-v42 §6).
+ *
+ * A per-department colour, not a rotating palette. Handoff v42 gives each binder its own
+ * spine — ER red, ICU blue, 수술실 green, 약국 amber — and that is what makes a shelf
+ * readable: you find your department by its colour the way you find a file by its tab.
+ * Cycling four colours through 29 departments says the opposite, that the colour means
+ * nothing, and it reads as a repeating pattern rather than a shelf.
+ *
+ * Related departments share a hue and differ in value, so the family shows at a glance
+ * (the three intensive-care binders are all blue) while no two are the same colour —
+ * `campus.test.ts` holds both of those properties.
+ *
+ * The first eight are handoff v42's own values; the rest extend them by care family.
+ */
+const DEPT_SPINE: Record<string, string> = {
+  // 응급 · 중환자 — 붉은 하나와 푸른 계열
+  ER: '#C75146',
+  ICU: '#4A6FA5', PICU: '#5E86C4', NICU: '#7BA3D6',
+  // 수술 · 처치 — 초록에서 청록으로
+  OR: '#5F8D5A', ENDO: '#6F9E68', DIAL: '#4E8C86', INFUSION: '#58A08F',
+  // 약 · 검사 · 물품 — 황토 계열
+  PHARMA: '#C77E2E', RAD: '#A8823F', SPD: '#9A8F6B',
+  // 여성 · 소아 — 분홍과 연두
+  PEDS: '#D98BA6', NURSERY: '#C98FB8', WOMENKIDS: '#BE7F9E', LD: '#7A9E7E',
+  // 병동 — 보라 계열
+  WARD: '#8B7BB5', SURGWARD: '#7E6FA8', ORTHOWARD: '#9585C2', GERI: '#A08FA8',
+  // 정신 · 재활 — 청회색
+  PSYCH: '#6E8FA8', REHAB: '#5F9AA8',
+  // 암 · 완화
+  ONCO: '#B06A8A', HOSPICE: '#8F7C9E',
+  // 그 밖
+  SPECIALTY: '#C08A5E', DERM: '#D2A05C', SIM: '#7D8FA0',
+  LOUNGE: '#9E9478', MORGUE: '#6E6A62', GEN: '#8A8A7E',
+};
+
+/** The binder-spine colour for a department code. Unmapped codes fall back to ink-grey
+ *  rather than borrowing another department's colour. */
+export function deptSpineColor(dept?: string): string {
+  return (dept && DEPT_SPINE[dept]) || '#8A8277';
 }

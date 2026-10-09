@@ -1,0 +1,49 @@
+# core-handoff-icu v45 단어 필드 (1/6)
+w-situation: {exKo: "상황: 지금은 안정적입니다.", cue: "SBAR의 첫 칸 — 지금 무슨 일인지 한 줄로 먼저", tag: 인계 구조, distractorsEn: [saturation, sedation], distractorsKo: [배경, 평가], chips: [[situ, ation]], decoyChips: [sat, ition]}
+w-sepsis: {exKo: "패혈증으로 치료받고 있어요.", cue: "감염이 온몸 반응으로 번진 상태 — 승압제·젖산과 함께 나오는 진단", tag: 환자 상태, distractorsEn: [asepsis, stasis], distractorsKo: [폐렴, 저혈량증], chips: [[sep, sis]], decoyChips: [sip, sys]}
+w-background: {exKo: "배경: 이전 ICU 입원력은 없습니다.", cue: "SBAR의 둘째 칸 — 병력·입원 경위처럼 알고 들어야 할 사정", tag: 인계 구조, distractorsEn: [baseline, backboard], distractorsKo: [상황, 권고], chips: [[back, ground]], decoyChips: [bake, grand]}
+w-assessment: {exKo: "평가: 차분하고 협조적입니다.", cue: "SBAR의 셋째 칸 — 내가 본 환자의 지금 상태", tag: 인계 구조, distractorsEn: [assignment, adjustment], distractorsKo: [진단, 권고], chips: [[as, sess, ment]], decoyChips: [sign, ise]}
+w-recommendation: {exKo: "제 권고는 주입을 그대로 유지하는 것입니다.", cue: "SBAR의 마지막 칸 — 인수자에게 바라는 조치", tag: 인계 구조, distractorsEn: [reconciliation, representation], distractorsKo: [평가, 요청], chips: [[re, com, mend, ation]], decoyChips: [con, mand]}
+w-repeat: {exKo: "배경을 한 번 더 말씀드릴게요.", cue: "같은 말·같은 검사를 한 번 더 — 젖산 재검, 흉부 사진 재촬영", tag: 확인·소통, distractorsEn: [reply, report], distractorsKo: [보고하다, 기록하다], chips: [[re, peat]], decoyChips: [pit, peet]}
+w-sbar: {exKo: "처음부터 SBAR 순서로 짚어 볼게요.", cue: "상황·배경·평가·권고 네 칸으로 정리하는 인계 틀", tag: 인계 구조, distractorsEn: [SOAP, ABCDE], distractorsKo: [경과 기록, 체크리스트], chips: [[SBAR]], decoyChips: [SOAP]}
+w-pressor: {exKo: "지금 어떤 승압제를 쓰고 있나요?", cue: "혈압을 끌어올리려고 지속 주입하는 약 — 노르에피 같은", tag: 주입약, distractorsEn: [depressor, sedative], distractorsKo: [진정제, 이뇨제], chips: [[press, or]], decoyChips: [er, pres]}
+w-sedation: {exKo: "진정을 위해 프로포폴이 들어가고 있어요.", cue: "삽관 환자를 편하게 재워 두는 것 — 프로포폴을 주는 목적", tag: 주입약, distractorsEn: [sedative, saturation], distractorsKo: [진통, 마취], chips: [[se, da, tion]], decoyChips: [sed, ta]}
+w-norepinephrine: {exKo: "노르에피네프린 8로 들어가고 있어요.", cue: "패혈성 쇼크에서 가장 먼저 쓰는 승압제 — 약칭은 '노르에피'", tag: 주입약, distractorsEn: [epinephrine, phenylephrine], distractorsKo: [에피네프린, 페닐에프린], chips: [[nor, epi, neph, rine]], decoyChips: [phen, ephe]}
+w-titrate: {exKo: "노르에피네프린을 줄여 가며 적정하고 있어요.", cue: "목표 혈압에 맞춰 주입 속도를 올리고 내리는 것", tag: 주입약, distractorsEn: [hydrate, saturate], distractorsKo: [희석하다, 중단하다], chips: [[ti, trate]], decoyChips: [tri, trait]}
+w-map: {exKo: "MAP 65를 목표로 적정하고 있어요.", cue: "승압제 목표로 '65 이상'을 잡는 평균 혈압 수치", tag: 바이탈·수치, distractorsEn: [SBP, CVP], distractorsKo: [수축기혈압, 중심정맥압], chips: [[MAP]], decoyChips: [MAC]}
+w-propofol: {exKo: "프로포폴은 30으로 들어가고 있어요.", cue: "우유처럼 하얀 진정제 — 펌프로 계속 주입한다", tag: 주입약, distractorsEn: [propranolol, fentanyl], distractorsKo: [펜타닐, 미다졸람], chips: [[pro, po, fol]], decoyChips: [pra, fal]}
+w-run: {exKo: "주입은 10으로 들어가고 있어요.", cue: "약이 펌프로 지금 들어가고 있다 — '30으로 ___ning'", tag: 주입약, distractorsEn: [hang, rush], distractorsKo: [멈추다, 교체되다], chips: [[run]], decoyChips: [ran]}
+w-pressure: {exKo: "혈압은 안정적이었어요.", cue: "인계에서 'blood'를 빼고 한 낱말로 줄여 부르는 수치 — 'Her ___ dropped'", tag: 바이탈·수치, distractorsEn: [pulse, perfusion], distractorsKo: [맥박, 관류], chips: [[pres, sure]], decoyChips: [pre, sher]}
+w-stable: {exKo: "활력징후는 안정적이에요.", cue: "수치가 흔들리지 않고 그대로일 때", tag: 환자 상태, distractorsEn: [unstable, labile], distractorsKo: [불안정한, 악화된], chips: [[sta, ble]], decoyChips: [un, bel]}
+w-dose: {exKo: "지금 승압제 용량이 얼마예요?", cue: "지금 들어가고 있는 약의 양 — '현재 승압제 ___'", tag: 주입약, distractorsEn: [route, bolus], distractorsKo: [경로, 속도], chips: [[dose]], decoyChips: [doze]}
+w-improve: {exKo: "혈압이 좋아지고 있어요.", cue: "수치가 나아지는 쪽으로 — 승압제를 줄일 수 있는 이유", tag: 환자 상태, distractorsEn: [approve, prove], distractorsKo: [악화되다, 유지되다], chips: [[im, prove]], decoyChips: [ap, proof]}
+w-line: {exKo: "중심정맥관과 동맥관이 있어요.", cue: "혈관에 넣어 둔 관 — 'central ___', 'art ___'", tag: 라인·장치, distractorsEn: [lane, tube], distractorsKo: [배액관, 산소줄], chips: [[line]], decoyChips: [lane]}
+w-central: {exKo: "오른쪽 IJ에 중심정맥관이 있어요.", cue: "목·쇄골 밑 큰 정맥으로 넣어 끝이 심장 가까이 닿는 라인", tag: 라인·장치, distractorsEn: [peripheral, cerebral], distractorsKo: [말초의, 동맥의], chips: [[cen, tral]], decoyChips: [sen, tril]}
+w-right: {exKo: "오른쪽 IJ 라인은 그대로 잘 있어요.", cue: "환자 몸 기준으로 왼쪽의 반대편 — 라인 위치를 말할 때", tag: 라인·장치, distractorsEn: [left, bright], distractorsKo: [왼쪽의, 양쪽의], chips: [[right]], decoyChips: [rite]}
+w-left: {exKo: "왼쪽 요골동맥관은 상태가 좋아요.", cue: "환자 몸 기준으로 오른쪽의 반대편 — 동맥관 위치", tag: 라인·장치, distractorsEn: [right, lateral], distractorsKo: [오른쪽의, 앞쪽의], chips: [[left]], decoyChips: [loft]}
+w-radial: {exKo: "왼쪽 요골동맥관은 잘 뚫려 있어요.", cue: "손목 엄지 쪽 동맥 — 동맥관을 가장 흔히 잡는 자리", tag: 라인·장치, distractorsEn: [femoral, brachial], distractorsKo: [대퇴의, 상완의], chips: [[radi, al]], decoyChips: [ri, del]}
+w-foley: {exKo: "폴리로 배액이 잘 되고 있어요.", cue: "방광에 넣어 두고 소변을 받는 유치 카테터 — 상표 이름이 굳은 말", tag: 라인·장치, distractorsEn: [NG, PICC], distractorsKo: [비위관, 말초삽입 중심정맥관], chips: [[Fo, ley]], decoyChips: [Fol, lee]}
+w-drain: {exKo: "폴리로 맑은 소변이 배액되고 있어요.", cue: "관을 따라 소변·체액이 빠져나오는 것 — '___ing well'", tag: 라인·장치, distractorsEn: [drip, strain], distractorsKo: [막히다, 새다], chips: [[drain]], decoyChips: [drane]}
+w-ng: {exKo: "NG는 저압 흡인에 연결돼 있어요.", cue: "코로 넣어 위까지 닿는 관 — 흡인이나 영양에 쓴다", tag: 라인·장치, distractorsEn: [OG, ET], distractorsKo: [구위관, 기관내관], chips: [[NG]], decoyChips: [OG]}
+w-suction: {exKo: "NG는 저압 흡인에 연결돼 있어요.", cue: "음압을 걸어 빨아내는 것 — 'low intermittent ___'", tag: 라인·장치, distractorsEn: [section, traction], distractorsKo: [세척, 배액], chips: [[suc, tion]], decoyChips: [sec, shun]}
+w-dressing: {exKo: "중심정맥관 드레싱을 교체했어요.", cue: "라인 삽입부를 덮은 투명 필름 — 정해진 날마다 간다", tag: 라인·장치, distractorsEn: [drainage, pressing], distractorsKo: [배액, 고정 장치], chips: [[dress, ing]], decoyChips: [dross, ign]}
+w-change: {exKo: "드레싱은 오늘 아침에 교체했어요.", cue: "드레싱·튜빙을 새것으로 갈아 끼우는 것", tag: 라인·장치, distractorsEn: [charge, clean], distractorsKo: [고정하다, 제거하다], chips: [[change]], decoyChips: [charge]}
+w-due: {exKo: "라인 드레싱을 갈 날이 됐어요.", cue: "정해진 시각·날이 됐을 때 — '8시에 ___'", tag: 시간·일정, distractorsEn: [done, late], distractorsKo: [완료된, 지연된], chips: [[due]], decoyChips: [dew]}
+w-tomorrow: {exKo: "드레싱 교체는 내일 예정이에요.", cue: "오늘 다음 날 — 다음 근무조가 챙길 일정", tag: 시간·일정, distractorsEn: [today, tonight], distractorsKo: [어제, 모레], chips: [[to, mor, row]], decoyChips: [mar, ro]}
+w-output: {exKo: "NG 배출량을 자세히 지켜봐 주세요.", cue: "관·소변으로 몸 밖에 나온 양 — 들어간 양과 맞춰 본다", tag: 바이탈·수치, distractorsEn: [input, outcome], distractorsKo: [섭취량, 잔류량], chips: [[out, put]], decoyChips: [in, pot]}
+w-watch: {exKo: "NG 배출량을 지켜봐 주세요.", cue: "변화가 있는지 계속 눈여겨봐 달라고 인수자에게 부탁할 때", tag: 우선순위, distractorsEn: [wait, wash], distractorsKo: [기다리다, 기록하다], chips: [[watch]], decoyChips: [wach]}
+w-priority: {exKo: "가장 먼저 챙길 것은 호흡 상태예요.", cue: "이번 근무에서 가장 먼저 챙길 것 — 'top ___'", tag: 우선순위, distractorsEn: [property, protocol], distractorsKo: [절차, 원칙], chips: [[prior, ity]], decoyChips: [pre, ety]}
+w-respiratory: {exKo: "가장 먼저 챙길 것은 호흡 상태예요.", cue: "숨쉬기와 관련된 — 시스템별 발표에서 신경계 다음 계통", tag: 환자 상태, distractorsEn: [circulatory, cardiac], distractorsKo: [순환기의, 신경계의], chips: [[re, spira, tory]], decoyChips: [inspi, tary]}
+w-status: {exKo: "호흡 상태는 안정적이에요.", cue: "어떤 계통이 지금 어떤 형편인지 — 'code ___', 'respiratory ___'", tag: 환자 상태, distractorsEn: [stasis, stature], distractorsKo: [경과, 추세], chips: [[sta, tus]], decoyChips: [ste, tis]}
+w-wean: {exKo: "이탈 시도를 자세히 지켜봐 주세요.", cue: "인공호흡기·산소·승압제를 조금씩 줄여 떼어 내는 것", tag: 환자 상태, distractorsEn: [wane, wake], distractorsKo: [증량하다, 삽관하다], chips: [[wean]], decoyChips: [wane]}
+w-trial: {exKo: "오늘 이탈 시도 중이에요.", cue: "호흡기를 떼어도 되는지 시험 삼아 해 보는 것 — 'weaning ___'", tag: 환자 상태, distractorsEn: [trail, triage], distractorsKo: [결과, 계획], chips: [[tri, al]], decoyChips: [trai, el]}
+w-lactate: {exKo: "젖산 재검이 예정돼 있어요.", cue: "패혈증에서 조직 관류를 보려고 거듭 재는 피검사 수치", tag: 검사·시술, distractorsEn: [lactose, lipase], distractorsKo: [젖당, 지방분해효소], chips: [[lac, tate]], decoyChips: [lack, tose]}
+w-update: {exKo: "가족은 의사 회진 때 소식을 듣고 싶어 합니다.", cue: "보호자가 '요즘 어때요?' 하고 기다리는 것 — 회진 뒤에 해 준다", tag: 목표·계획, distractorsEn: [upgrade, uptake], distractorsKo: [동의서, 면회], chips: [[up, date]], decoyChips: [grade, dat]}
+w-round: {exKo: "에피네프린을 두 차례 받았어요.", cue: "에피 투여·흉부압박을 한 번씩 세는 단위 — 'third ___'", tag: 소생·급변, distractorsEn: [rank, roll], distractorsKo: [간격, 용량], chips: [[round]], decoyChips: [rownd]}
+w-issue: {exKo: "오늘 밤 가장 큰 문제는 불안이에요.", cue: "이번 근무에 붙잡고 있어야 할 간호 문제 — 'biggest ___'", tag: 우선순위, distractorsEn: [tissue, item], distractorsKo: [목표, 원인], chips: [[is, sue]], decoyChips: [tis, shoe]}
+w-tonight: {exKo: "오늘 밤 자세히 지켜봐 주세요.", cue: "지금부터 야간 근무 동안 — 해가 진 뒤", tag: 시간·일정, distractorsEn: [tomorrow, today], distractorsKo: [내일, 새벽], chips: [[to, night]], decoyChips: [tu, nite]}
+w-anxiety: {exKo: "이탈 중에 불안이 치솟아요.", cue: "숨이 찰까 봐 마음이 졸아드는 것 — 이탈 시도를 방해한다", tag: 환자 상태, distractorsEn: [ataxia, apathy], distractorsKo: [섬망, 통증], chips: [[anx, iety]], decoyChips: [ax, ity]}
+w-plan: {exKo: "오늘 계획은 식이를 올리는 거예요.", cue: "라운딩·인계 끝에 말하는 앞으로 할 일", tag: 목표·계획, distractorsEn: [plant, plain], distractorsKo: [결과, 경과], chips: [[plan]], decoyChips: [plane]}
+w-advance: {exKo: "잘 견디면 식이를 올릴 거예요.", cue: "견디면 식이·급식 속도를 한 단계씩 높이는 것", tag: 목표·계획, distractorsEn: [advise, adhere], distractorsKo: [중단하다, 유지하다], chips: [[ad, vance]], decoyChips: [vise, vanse]}
+w-diet: {exKo: "오늘 식이를 올릴 거예요.", cue: "금식 → 물 → 미음처럼 입으로 먹는 것의 단계", tag: 목표·계획, distractorsEn: [diary, dye], distractorsKo: [수분, 체중], chips: [[di, et]], decoyChips: [dy, ate]}
+w-tolerate: {exKo: "경관영양을 잘 견뎌요.", cue: "경관영양·이탈 시도를 문제없이 버텨 낼 때", tag: 환자 상태, distractorsEn: [titrate, terminate], distractorsKo: [거부하다, 중단하다], chips: [[tol, er, ate]], decoyChips: [tal, rate]}

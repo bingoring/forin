@@ -1,0 +1,75 @@
+- title: 낙상 후 두부외상
+  s:
+  - {t: "스캔 이유", i: monitor, w: "Because로 이유를 앞에 두면 환자가 왜 서두르는지 바로 이해해요. 항응고제를 복용 중이면 머리를 부딪힌 뒤 출혈 위험이 높아서 빨리 촬영하는 경우가 많아요.", d: "Even if", k: ["약을 먹으면 스캔은 필요 없어요", "스캔은 내일 할 거예요"], a: "scan", ai: monitor, o: [["haircut", "scalpel"], ["shampoo", "bandage"], ["tattoo", "pencil"]]}
+  - {t: "증상 안내", i: faceWorried, w: "Tell me if …로 어떤 변화를 알려야 하는지 구체적으로 알려요. 두통이 심해지거나 졸린 것은 머리를 다친 뒤 지켜봐야 하는 증상이에요.", d: "stays the same", k: ["두통이 나아지면 알려 주세요", "졸려도 말하지 않아도 돼요"], a: "sleepy", ai: faceWorried, o: [["hungry", "coffee"], ["thirsty", "pill"], ["cheerful", "star"]]}
+  - {t: "신경 증상", i: stetho, w: "any로 하나라도 있으면 알려 달라는 열린 질문이에요. 저림이나 시야 문제는 신경 증상이라 머리를 다친 뒤 꼭 확인해요.", d: "trouble eating", k: ["어지러운 곳이 있으세요?", "시야는 잘 보이시죠?"], a: "numbness", ai: stetho, o: [["hunger", "coffee"], ["thirst", "pill"], ["sadness", "faceWorried"]]}
+  - {t: "위험 설명", i: siren, w: "even a small fall의 even은 작은 낙상조차라는 강조예요. 항응고제를 복용 중이면 가벼운 충격으로도 출혈이 생길 수 있다는 점을 알려요.", d: "Unless you're on", k: ["작은 낙상은 아무 문제 없어요", "항응고제는 출혈을 막아 줘요"], a: "bleeding", ai: siren, o: [["sleeping", "monitor"], ["laughing", "star"], ["singing", "mic"]]}
+  - {t: "경과 관찰", i: magnify, w: "if anything changes로 어떤 변화든 재촬영의 조건이라고 알려요. 첫 촬영이 정상이어도 시간이 지나 달라질 수 있어서 경과를 보며 필요하면 다시 찍어요.", d: "if nothing changes", k: ["스캔은 한 번이면 끝이에요", "변화가 없어도 다시 찍어요"], a: "repeat", ai: monitor, o: [["cancel", "cross"], ["skip", "chevronRight"], ["avoid", "lock"]]}
+  - {t: "즉시 알림", i: bell, w: "right away는 기다리지 말고 바로라는 뜻이에요. 증상 변화는 직접 겪는 환자가 가장 먼저 알아채니까 바로 알려 달라고 당부해요.", d: "when it's convenient", k: ["두통이 변하면 내일 말씀해 주세요", "저림이 없어도 알려 주세요"], a: "right away", ai: bell, o: [["next week", "calendar"], ["next month", "chartup"], ["someday", "star"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "두부외상 환자 안내 순서"
+    why: "스캔이 필요한 이유를 먼저 말하고, 기다리는 동안 신경 증상을 묻고, 촬영 뒤 관찰을 알리고, 변화가 있으면 바로 알려 달라고 당부해요. 시간 순서라 하나예요."
+    lines:
+    - {en: "Because you take a blood thinner, we need a head scan fast.", icon: monitor, ko: "항응고제를 드셔서 빨리 머리 스캔이 필요해요", note: "이유"}
+    - {en: "While we wait for the scan, do you feel any numbness?", icon: stetho, ko: "기다리는 동안 저린 곳이 있으세요?", note: "질문"}
+    - {en: "After the scan, we'll watch you closely.", icon: magnify, ko: "스캔 후에는 계속 지켜볼게요", note: "관찰"}
+    - {en: "And please tell us right away if anything changes.", icon: bell, ko: "그리고 변화가 있으면 바로 말씀해 주세요", note: "당부"}
+  sw: {ko: "항응고제를 드시고 계셔서 빨리 머리 스캔이 필요해요"}
+- title: 투약 위해사건 대응
+  s:
+  - {t: "상황 보고", i: pill, w: "double the ordered dose는 처방의 두 배라는 뜻이에요. 사건 보고는 추측 없이 사실과 수치를 그대로 말하는 데서 시작해요.", d: "half the ordered", k: ["환자가 처방보다 적게 받았어요", "환자가 약을 거부했어요"], a: "double", ai: pill, o: [["half", "chevronDown"], ["triple", "chartup"], ["zero", "cross"]]}
+  - {t: "즉시 조치", i: monitor, w: "monitoring과 notifying을 and로 묶어 지금 동시에 하는 두 가지를 말해요. 투약 오류가 생기면 환자 상태를 지켜보고 의사에게 바로 알리는 것이 먼저예요.", d: "her mood and", k: ["의사에게는 나중에 알릴게요", "활력징후는 지켜보지 않아도 돼요"], a: "notifying", ai: bell, o: [["blaming", "faceAngry"], ["ignoring", "cross"], ["thanking", "star"]]}
+  - {t: "보고서 작성", i: pencil, w: "complete는 빠진 것 없이 끝까지 작성한다는 동사예요. 사건 보고서는 사람을 비난하려는 것이 아니라 재발을 막기 위해 기억이 생생할 때 바로 써요.", d: "when I'm free", k: ["보고서는 내일 쓸게요", "보고서는 쓰지 않을 거예요"], a: "incident", ai: board, o: [["weather", "bulb"], ["lunch", "coffee"], ["menu", "home"]]}
+  - {t: "안전 우선", i: shield, w: "First로 첫 순서가 환자의 안전임을 분명히 해요. safe and stable은 위험한 상태가 아니고 상태가 안정적이라는 뜻이에요.", d: "Lastly", k: ["먼저 보고서를 작성해요", "환자는 아직 불안정해요"], a: "stable", ai: monitor, o: [["angry", "faceAngry"], ["noisy", "speaker"], ["sticky", "bandage"]]}
+  - {t: "정직한 보고", i: speech, w: "exactly what happened는 보태거나 줄이지 않고 있었던 그대로라는 뜻이에요. even though it's hard처럼 힘든 마음을 인정하는 말을 붙이면 정직하게 보고하는 태도가 드러나요.", d: "even if it's easy", k: ["일어난 일을 줄여서 보고할게요", "힘들면 보고하지 않을게요"], a: "exactly", ai: check, o: [["roughly", "chevronDown"], ["barely", "pushpin"], ["partly", "compass"]]}
+  - {t: "기록 원칙", i: pencil, w: "so …can learn from it로 기록의 목적이 팀의 학습이라고 밝혀요. 솔직하게 적은 사건 기록이 있어야 원인을 찾고 절차를 고칠 수 있어요.", d: "the team can hide", k: ["팀이 책임질 사람을 찾을 수 있도록 적어요", "기록은 하지 않아도 돼요"], a: "honestly", ai: pencil, o: [["vaguely", "bulb"], ["secretly", "lock"], ["carelessly", "cross"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "투약 위해사건 대응 순서"
+    why: "환자의 안전을 먼저 확보하고, 상태 관찰과 의사 통보를 하고, 그다음 보고서를 쓰고, 보고서에 사실대로 적는다는 순서예요. Then과 in the report가 앞 줄을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "First, we make sure the patient is safe and stable.", icon: shield, ko: "먼저 환자가 안전하고 안정적인지 확인해요", note: "안전"}
+    - {en: "We're monitoring her vitals and notifying the doctor.", icon: monitor, ko: "활력징후를 관찰하고 의사에게 알리고 있어요", note: "조치"}
+    - {en: "Then I'll complete an incident report right away.", icon: pencil, ko: "그다음 바로 사건 보고서를 작성할게요", note: "보고서"}
+    - {en: "And in the report I'll write exactly what happened.", icon: board, ko: "보고서에는 있었던 일을 그대로 적을게요", note: "사실"}
+  sw: {ko: "팀이 배울 수 있도록 있는 그대로 정직하게 기록할게요"}
+- title: 화재·대피 안전
+  s:
+  - {t: "거동 가능", i: me, w: "ambulatory는 스스로 걸을 수 있다는 뜻이에요. 걸을 수 있는 환자는 먼저 내보내고, 남는 인력은 도움이 필요한 환자 이동에 써요.", d: "Bedbound patients", k: ["침대 환자부터 먼저 나가세요", "엘리베이터를 사용하세요"], a: "first", ai: compass, o: [["last", "chevronDown"], ["alone", "me"], ["slowly", "monitor"]]}
+  - {t: "삽관 환자", i: siren, w: "intubated는 기관 삽관을 한 환자예요. 인공호흡기를 쓰는 환자는 걸을 수 없어서 팀이 침대째로 옮겨야 해요.", d: "needs a ride", k: ["삽관된 환자는 걸어서 나와요", "삽관된 환자는 가장 먼저 걸어 나가요"], a: "team", ai: handshake2, o: [["taxi", "plane"], ["ladder", "chevronUp"], ["pillow", "bandage"]]}
+  - {t: "문 닫기", i: lock, w: "Close doors behind us는 지나온 문을 닫는다는 뜻이에요. 화재 때 문을 닫으면 불과 연기가 번지는 속도를 늦춰요. account for everyone은 인원 전체를 확인한다는 관용 표현이에요.", d: "Open windows", k: ["문을 모두 열어 두세요", "모두 다시 병실로 들어가세요"], a: "account", ai: check, o: [["argue", "faceAngry"], ["apologize", "faceWorried"], ["answer", "speech"]]}
+  - {t: "순서 설명", i: compass, w: "first, then으로 순서를 말해요. 걸을 수 있는 환자가 먼저 나가야 복도가 막히지 않고 남은 인력이 침대 환자에게 집중할 수 있어요.", d: "then we wait", k: ["침대 환자가 먼저 나가요", "모든 환자를 침대로 옮겨요"], a: "walk", ai: me, o: [["sleep", "monitor"], ["swim", "plane"], ["sing", "mic"]]}
+  - {t: "침대 이송", i: bandage, w: "carry … on the bed together는 침대째 함께 옮긴다는 말이에요. 삽관 환자는 튜브와 장비가 붙어 있어서 여러 명이 맞춰 움직여야 해요.", d: "on the stairs", k: ["저 혼자 업고 나갈게요", "삽관 환자는 걸어서 나가요"], a: "carry", ai: handshake2, o: [["drop", "chevronDown"], ["paint", "pencil"], ["sell", "board"]]}
+  - {t: "마무리 확인", i: check, w: "Once everyone is out으로 다 나온 뒤라는 조건을 먼저 말해요. 마지막에 인원수를 확인해야 남은 사람이 없는지 알 수 있어요.", d: "Until everyone", k: ["인원수는 확인하지 않아도 돼요", "문은 열어 두세요"], a: "count", ai: check, o: [["menu", "home"], ["color", "star"], ["price", "board"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "화재 대피 4단계 순서"
+    why: "걸을 수 있는 환자를 먼저 내보내고, 그다음 삽관 환자를 침대로 옮기고, 마지막 사람들이 나갈 때 문을 닫고, 모두 나온 뒤 인원을 확인하는 순서예요."
+    lines:
+    - {en: "Ambulatory patients out this exit first.", icon: me, ko: "거동 가능한 환자는 이 출구로 먼저 나가세요", note: "보행"}
+    - {en: "Then we move the intubated patient by bed with a team.", icon: siren, ko: "그다음 삽관 환자는 팀이 침대째 옮겨요", note: "침대"}
+    - {en: "As the last ones leave, close the doors behind us.", icon: lock, ko: "마지막 사람이 나갈 때 문을 닫아요", note: "문"}
+    - {en: "Once everyone is out, we check the count together.", icon: check, ko: "모두 나오면 같이 인원을 확인해요", note: "인원"}
+  ctx: {word: "ambulatory", ko: "거동 가능한"}
+- title: 다직역 안전 브리핑
+  s:
+  - {t: "핵심 위험", i: siren, w: "Key risks are로 가장 중요한 위험만 먼저 말해요. 흡인과 어려운 기도는 급변 때 대응 방법이 달라지는 위험이라 브리핑 첫머리에 꼽아요.", d: "Minor risks are", k: ["핵심 위험은 낙상이에요", "기도는 아주 쉬워요"], a: "Key", ai: star, o: [["Minor", "chevronDown"], ["Small", "pushpin"], ["Rare", "calendar"]]}
+  - {t: "위험 요약", i: shield, w: "a high fall risk처럼 위험 수준을 명사구로 짧게 쓰는 것은 인계에서 흔한 말투예요. on anticoagulation은 항응고 치료 중이라는 뜻이에요.", d: "She's not a", k: ["낙상 위험이 낮고 약도 먹지 않아요", "혈압이 높고 열이 있어요"], a: "high", ai: chevronUp, o: [["low", "chevronDown"], ["rare", "calendar"], ["old", "monitor"]]}
+  - {t: "역할 확인", i: handshake2, w: "Everyone clear on …?는 Are you를 생략한 확인 질문이에요. 급변 전에 역할을 소리 내어 확인해 두면 급할 때 망설임이 줄어요.", d: "Anyone confused about", k: ["각자 역할은 정하지 않아도 돼요", "환자는 곧 좋아질 거예요"], a: "role", ai: handshake2, o: [["seat", "home"], ["lunch", "coffee"], ["color", "star"]]}
+  - {t: "사전 브리핑", i: speech, w: "brief the team on …은 팀에게 요점을 알려 준다는 구예요. before the shift starts로 일이 시작되기 전에 해서 모두가 같은 정보를 가지고 시작해요.", d: "after the shift ends", k: ["근무가 끝난 뒤에 브리핑해요", "위험은 알리지 않아도 돼요"], a: "before", ai: calendar, o: [["after", "chevronRight"], ["since", "pushpin"], ["until", "compass"]]}
+  - {t: "역할 실행", i: siren, w: "already knows는 이미 알고 있다는 뜻이에요. 역할을 미리 나눠 두면 악화될 때 누가 무엇을 할지 정하느라 시간을 쓰지 않아요.", d: "someone asks", k: ["악화되면 역할을 그때 정해요", "환자는 악화되지 않을 거예요"], a: "deteriorate", ai: chevronDown, o: [["recover", "chevronUp"], ["sleep", "monitor"], ["relax", "coffee"]]}
+  - {t: "소리 내어 공유", i: speaker, w: "out loud는 소리 내어라는 뜻이에요. 말로 공유하면 듣는 모두가 같은 계획을 들었다는 것이 확인돼요.", d: "in silence", k: ["계획은 혼자만 알고 있어요", "낙상 위험은 공유하지 않아요"], a: "share", ai: handshake2, o: [["hide", "lock"], ["forget", "bulb"], ["sell", "board"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "근무 시작 전 안전 브리핑 순서"
+    why: "브리핑을 시작한다고 알리고, 핵심 위험을 말하고, also로 이어 낙상·약물 위험을 더하고, 마지막으로 역할을 확인해요."
+    lines:
+    - {en: "Let's brief the team on her key risks before the shift starts.", icon: speech, ko: "근무 전에 핵심 위험을 브리핑해요", note: "시작"}
+    - {en: "Key risks are aspiration and a difficult airway.", icon: siren, ko: "핵심 위험은 흡인과 어려운 기도예요", note: "위험"}
+    - {en: "She's also a high fall risk and on anticoagulation.", icon: shield, ko: "낙상 위험이 높고 항응고 치료 중이에요", note: "추가"}
+    - {en: "Everyone clear on their role if she deteriorates?", icon: handshake2, ko: "악화되면 각자 역할이 명확하세요?", note: "역할"}

@@ -1,0 +1,120 @@
+- title: 채혈 전 환자 확인
+  s:
+  - {t: "신원 확인", i: speech, w: "Can you …?는 명령 대신 질문의 모양이라 부드럽게 들려요. 이름과 생년월일을 환자가 직접 말하게 하면 간호사가 먼저 불러 주는 것보다 오류를 잡기 쉬워요.", d: "of arrival", k: ["어디가 불편하세요?", "알레르기가 있으신가요?"], a: "date of birth", ai: calendar, o: [["room number", "home"], ["bed number", "hospital"], ["insurance plan", "board"]]}
+  - {t: "채혈 안내", i: lab, w: "I'm going to …는 곧 할 일을 먼저 알리는 말투예요. draw는 혈액에 쓰는 동사라서 환자에게도 '채혈' 같은 용어보다 알아듣기 쉬워요.", d: "a large tube", k: ["차트에 기록해 둘게요", "소변 검체를 받을게요"], a: "draw", ai: magnify, o: [["inject", "pill"], ["transfuse", "siren"], ["return", "redo"]]}
+  - {t: "사전 안내", i: bulb, w: "느낌을 미리 말해 두면 환자가 놀라지 않아요. pinch는 '따끔함'을 가리키는 흔한 말이라 pain보다 가볍게 들려요.", d: "a deep ache", k: ["꽤 아프고 오래 걸려요", "바늘을 두 번 쓸 거예요"], a: "feel", ai: me, o: [["hear", "speaker"], ["see", "magnify"], ["taste", "coffee"]]}
+  - {t: "밴드 확인", i: bandage, w: "Let me …는 허락을 구하는 듯한 부드러운 제안이라 환자가 확인을 거슬리지 않게 받아들여요. 시술 전 손목밴드 확인은 환자 확인 절차의 일부예요.", d: "your insurance card", k: ["시작한 뒤에 차트를 확인할게요", "손목밴드를 새로 채워 드릴게요"], a: "double-check", ai: check, o: [["remove", "cross"], ["replace", "redo"], ["tighten", "gear"]]}
+  - {t: "안전 설명", i: shield, w: "just to be safe는 확인을 의심이 아니라 안전을 위한 습관으로 말해 줘요. compare A with B는 두 정보를 맞대어 본다는 뜻이에요.", d: "with the pharmacy", k: ["이걸 의사 선생님께 드릴게요", "차트에 새로 적어 둘게요"], a: "compare", ai: magnify, o: [["replace", "redo"], ["staple", "pushpin"], ["hide", "lock"]]}
+  - {t: "소요 안내", i: bell, w: "only가 소요 시간을 작게 보이게 해서 환자의 긴장을 줄여요. 시간을 구체적으로 알려 주면 막연한 불안이 줄어요.", d: "a few hours", k: ["한 시간쯤 걸려요", "거의 다 끝났어요"], a: "seconds", ai: play, o: [["hours", "coffee"], ["days", "calendar"], ["weeks", "plane"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "채혈 전 확인 4문장 순서"
+    why: "이름과 생년월일을 먼저 묻고, 받은 정보를 손목밴드와 대조합니다. 일치를 확인한 뒤에야 채혈을 알리고, 마지막에 따끔함을 미리 알려요. 앞 줄이 뒤 줄의 전제라 순서가 하나예요."
+    lines:
+    - {en: "Can you tell me your full name and date of birth?", icon: speech, ko: "성함과 생년월일을 말씀해 주시겠어요?", note: "확인 질문"}
+    - {en: "Thank you. I'm going to check them against your wristband.", icon: bandage, ko: "감사해요. 손목밴드와 대조할게요", note: "대조"}
+    - {en: "Everything matches, so I'll draw a small tube of blood.", icon: lab, ko: "모두 일치하니 채혈할게요", note: "채혈 안내"}
+    - {en: "You'll feel a quick pinch, then it's over.", icon: bulb, ko: "따끔하고 나면 끝나요", note: "감각 안내"}
+  ctx: {word: "date of birth", ko: "생년월일"}
+  sw: {ko: "지금 피를 뽑을게요"}
+- title: 정맥로 확보 안내
+  s:
+  - {t: "목적 설명", i: pill, w: "lets us …는 관의 목적을 '우리가 할 수 있게 해 준다'로 설명해요. 목적을 알려 주면 바늘에 대한 거부감이 줄어요.", d: "This heavy machine", k: ["이 관으로 피를 뽑을 거예요", "이 관은 소변을 받아 줘요"], a: "tube", ai: lab, o: [["mask", "hospital"], ["bandage", "bandage"], ["cuff", "monitor"]]}
+  - {t: "사전 안내", i: bulb, w: "for just a second는 불편이 아주 짧다는 신호예요. sharp라고 솔직히 말해 주면 환자가 놀라지 않아요.", d: "after just", k: ["한참 동안 아플 거예요", "아무것도 느껴지지 않아요"], a: "second", ai: play, o: [["week", "calendar"], ["month", "home"], ["year", "star"]]}
+  - {t: "협조 요청", i: pushpin, w: "Try to …와 for me가 지시를 부탁처럼 부드럽게 만들어요. nice and still은 '가만히 잘'이라는 구어 표현이에요.", d: "your hand nice", k: ["팔을 계속 움직여 주세요", "팔을 위로 들어 주세요"], a: "hold", ai: lock, o: [["shake", "bell"], ["wave", "handshake2"], ["swing", "chevronRight"]]}
+  - {t: "공감", i: faceWorried, w: "I know …로 먼저 공감하고 but으로 안심을 잇는 구조예요. 감정을 인정한 뒤 해결책을 말하면 환자가 방어적으로 받지 않아요.", d: "take time", k: ["바늘은 전혀 아프지 않아요", "천천히 오래 걸릴 거예요"], a: "scary", ai: siren, o: [["comfortable", "coffee"], ["relaxing", "home"], ["pleasant", "star"]]}
+  - {t: "안심 설명", i: bandage, w: "just a small …은 크기를 낮춰 말해 안심시키는 표현이에요. start an IV는 정맥주사 관을 확보한다는 뜻의 실무 표현이에요.", d: "remove your", k: ["이 바늘로 피를 뽑을 거예요", "정맥주사 관을 빼는 거예요"], a: "start", ai: play, o: [["stop", "cross"], ["cut", "scalpel"], ["cancel", "redo"]]}
+  - {t: "격려", i: star, w: "진행 중에 칭찬을 섞으면 환자가 협조를 이어 가요. almost done은 끝이 가깝다는 것을 알려 주는 짧은 안내예요.", d: "just beginning", k: ["아직 한참 남았어요", "이제 막 시작했어요"], a: "almost", ai: check, o: [["barely", "chevronDown"], ["hardly", "cross"], ["never", "lock"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "정맥로 확보 4문장 순서"
+    why: "무엇을 하는지 먼저 알리고, 바늘이 무서울 수 있다는 감정을 인정한 뒤, 따끔함이 오는 순간을 알리고, 끝나고 격려합니다. 뒤 줄이 앞 줄의 내용을 이어받아 순서가 하나예요."
+    lines:
+    - {en: "I'm going to start an IV with a small needle.", icon: bandage, ko: "작은 바늘로 정맥주사를 놓을게요", note: "안내"}
+    - {en: "I know needles can feel scary, so I'll tell you each step.", icon: faceWorried, ko: "무서울 수 있으니 단계마다 말씀드릴게요", note: "공감"}
+    - {en: "Here it comes — you'll feel a quick pinch.", icon: bulb, ko: "들어가요, 따끔할 거예요", note: "신호"}
+    - {en: "That's it — you're doing great.", icon: star, ko: "다 됐어요, 잘하셨어요", note: "격려"}
+  ctx: {word: "start", ko: "시작하다"}
+  sw: {ko: "바늘이 무섭게 느껴질 수 있다는 걸 알아요 — 작은 바늘일 뿐이에요"}
+- title: 소변 검체 채취 안내
+  s:
+  - {t: "닦는 방법", i: bandage, w: "First가 순서를 못 박아 환자가 첫 단계를 헷갈리지 않아요. 앞에서 뒤로 닦는 것은 항문 쪽 균이 요도 쪽으로 옮겨 가지 않게 하는 방향이에요.", d: "this soap", k: ["먼저 손을 씻어 주세요", "뒤에서 앞으로 닦아 주세요"], a: "cloth", ai: check, o: [["cup", "coffee"], ["needle", "scalpel"], ["tube", "lab"]]}
+  - {t: "중간뇨 채취", i: lab, w: "then이 순서를 이어 줘요. 중간뇨는 처음 나오는 소변을 흘려보내 요도 입구의 균이 섞이지 않게 하려는 거예요.", d: "the first part in", k: ["처음 나오는 소변을 컵에 받아 주세요", "컵에 가득 채워 주세요"], a: "middle", ai: chartup, o: [["first", "play"], ["last", "chevronRight"], ["early", "calendar"]]}
+  - {t: "검체 전달", i: board, w: "I'll take care of it은 환자가 더 할 일이 없다고 알려 줘요. 검체 처리를 간호사가 맡는다는 책임 분담을 분명히 해요.", d: "here and you'll", k: ["검체를 직접 검사실에 가져다주세요", "검체는 가지고 계세요"], a: "Leave", ai: home, o: [["Throw", "cross"], ["Drink", "coffee"], ["Flush", "chevronDown"]]}
+  - {t: "이유 설명", i: magnify, w: "This helps us …는 요청의 이유를 '우리가 정확히 하게 돕는다'로 설명해 환자 협조를 이끌어요. test for는 '~가 있는지 검사하다'라는 뜻이에요.", d: "ask for", k: ["이렇게 하면 소변이 더 빨리 나와요", "검사 결과는 내일 나와요"], a: "accurately", ai: check, o: [["carelessly", "cross"], ["rarely", "calendar"], ["blindly", "lock"]]}
+  - {t: "배려", i: home, w: "step out은 자리를 비운다는 말이고, give you some privacy는 사생활을 지켜 주겠다는 배려 표현이에요. 환자가 편하게 검체를 채취하도록 해요.", d: "I'll stay here", k: ["제가 옆에서 도와드릴게요", "커튼을 열어 둘게요"], a: "out", ai: chevronRight, o: [["in", "chevronLeft"], ["up", "chevronUp"], ["over", "compass"]]}
+  - {t: "마무리 안내", i: pushpin, w: "Just가 요청을 가볍고 쉬운 일로 들리게 해요. when you're done은 환자가 스스로 끝낸 시점을 정하게 해 부담을 줄여요.", d: "the cup into", k: ["컵을 직접 검사실로 가져가 주세요", "끝나면 벨을 눌러 주세요"], a: "shelf", ai: board, o: [["floor", "chevronDown"], ["bed", "hospital"], ["pillow", "home"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "소변 검체 채취 4문장 순서"
+    why: "먼저 닦고, 중간 소변을 받고, 끝낸 뒤 컵을 두고, 마지막으로 간호사가 인수합니다. 각 줄이 앞 단계를 가리켜 순서가 하나예요."
+    lines:
+    - {en: "First wipe from front to back with this cloth.", icon: bandage, ko: "먼저 앞에서 뒤로 닦아 주세요", note: "닦기"}
+    - {en: "Start urinating, and catch the middle part in the cup.", icon: lab, ko: "소변을 보시다가 중간 부분을 받아 주세요", note: "채취"}
+    - {en: "Once you've done that, put the cup on the shelf.", icon: pushpin, ko: "그러고 나면 컵을 선반에 두세요", note: "두기"}
+    - {en: "Thank you. I'll take it to the lab from here.", icon: star, ko: "감사해요. 이제 제가 검사실로 보낼게요", note: "인수"}
+  ctx: {word: "sample", ko: "검체"}
+  sw: {ko: "이 컵에 소변을 보세요"}
+- title: 심전도 부착 설명
+  s:
+  - {t: "목적 설명", i: monitor, w: "to check your heart로 스티커의 목적을 먼저 알려요. electrode라는 용어 대신 stickers라고 하면 환자가 쉽게 알아들어요.", d: "bandages to cover", k: ["혈압을 재려고 커프를 감을게요", "체온을 재려고 이걸 붙일게요"], a: "heart", ai: stetho, o: [["lungs", "chartup"], ["kidneys", "lab"], ["stomach", "pill"]]}
+  - {t: "안심", i: speaker, w: "just listens는 기계가 전기 신호를 '듣기만' 한다고 비유해 아프지 않다는 점을 쉽게 전해요. at all이 부정을 강조해요.", d: "at first", k: ["약간 따끔할 수 있어요", "전기가 흐르는 느낌이 나요"], a: "listens", ai: mic, o: [["cuts", "scalpel"], ["injects", "pill"], ["burns", "siren"]]}
+  - {t: "협조 요청", i: pushpin, w: "for about ten seconds로 필요한 시간을 구체적으로 알려 줘요. 움직임이 심전도 파형에 잡음을 만들 수 있어 가만히 있어 달라고 부탁해요.", d: "ten minutes", k: ["10분 정도 누워 계세요", "숨을 크게 쉬어 주세요"], a: "ten", ai: calendar, o: [["two", "chevronDown"], ["ninety", "plane"], ["two hundred", "star"]]}
+  - {t: "용어 설명", i: board, w: "is called …는 낯선 용어에 이름표를 붙여 주는 말이에요. 미국에서는 EKG와 ECG를 둘 다 쓰니 병원이 쓰는 말을 따르면 돼요.", d: "is not", k: ["이 검사는 혈액 검사예요", "이 검사는 엑스레이라고 해요"], a: "EKG", ai: monitor, o: [["MRI", "hospital"], ["X-ray", "magnify"], ["ultrasound", "speaker"]]}
+  - {t: "협조 요청", i: mic, w: "Try not to …는 금지 대신 '노력해 달라'는 완곡한 부탁이에요. 말하면 근육 움직임이 기록에 잡음으로 섞일 수 있어요.", d: "sleep while", k: ["기록되는 동안 크게 숨 쉬세요", "기록이 끝나면 말씀하지 마세요"], a: "recording", ai: play, o: [["charging", "gear"], ["cooling", "coffee"], ["printing", "pencil"]]}
+  - {t: "결과 안내", i: bell, w: "in just a minute는 곧 결과가 나올 거라는 기대를 줘요. 구체적 시간을 알려 주면 기다림이 덜 불안해요.", d: "results next", k: ["결과는 며칠 뒤에 나와요", "결과는 의사 선생님만 보실 수 있어요"], a: "minute", ai: play, o: [["month", "calendar"], ["year", "star"], ["week", "plane"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "심전도 부착 4문장 순서"
+    why: "붙이는 이유를 알리고, 아프지 않다고 안심시킨 뒤, 기록이 잘 되도록 가만히 있어 달라고 부탁하고, 끝나면 결과 시점을 알려요. 각 줄이 앞 줄의 말을 이어받아요."
+    lines:
+    - {en: "I'm placing these stickers to check your heart.", icon: monitor, ko: "심장을 확인하려고 스티커를 붙일게요", note: "목적"}
+    - {en: "It doesn't hurt at all — it just listens.", icon: speaker, ko: "전혀 아프지 않아요, 듣기만 해요", note: "안심"}
+    - {en: "So please stay still for ten seconds so it can listen clearly.", icon: pushpin, ko: "잘 들리도록 10초만 가만히 계세요", note: "부탁"}
+    - {en: "All done — your results will be ready in a minute.", icon: bell, ko: "끝났어요, 결과는 금방 나와요", note: "결과"}
+  ctx: null
+  sw: {ko: "심장을 확인하려고 이 스티커들을 붙일게요"}
+- title: 검사 목적 설명
+  s:
+  - {t: "목적 설명", i: magnify, w: "help us find…는 검사가 우리가 원인을 찾도록 돕는다고 설명해 환자를 한 팀으로 만들어요. what's causing …은 원인을 가리키는 관계절이에요.", d: "us hide", k: ["이 검사들로 통증을 바로 없앨 수 있어요", "이 검사들은 보험 때문에 해요"], a: "causing", ai: siren, o: [["curing", "pill"], ["ending", "cross"], ["hiding", "lock"]]}
+  - {t: "안심 설명", i: shield, w: "routine step이라고 하면 환자 상태가 나빠서가 아니라 모두에게 하는 표준 절차라는 뜻이 전해져요. to keep you safe는 목적을 안전으로 밝혀요.", d: "step to scare", k: ["환자분이 위독해서 하는 절차예요", "보험 때문에 하는 절차예요"], a: "routine", ai: check, o: [["rare", "star"], ["risky", "siren"], ["secret", "lock"]]}
+  - {t: "결과 안내", i: bell, w: "as soon as는 결과가 나오는 즉시라는 약속이에요. 정확한 시간을 약속하지 않으면서도 환자를 기다리게만 두지 않는 말이에요.", d: "after we", k: ["결과는 알려 드리지 않을 거예요", "결과는 내일 알려 드릴게요"], a: "as soon as", ai: play, o: [["as long as", "calendar"], ["as much as", "chartup"], ["as far as", "compass"]]}
+  - {t: "공감", i: faceWorried, w: "I understand로 먼저 감정을 인정하면 'Calm down'처럼 감정을 깎아내리는 말보다 환자가 훨씬 편하게 받아들여요. stressful은 상황이 주는 부담을 말해요.", d: "is silly", k: ["기다리는 건 어렵지 않아요", "답은 곧 나올 테니 걱정 마세요"], a: "stressful", ai: siren, o: [["peaceful", "home"], ["relaxing", "coffee"], ["easy", "check"]]}
+  - {t: "다음 단계", i: stetho, w: "once we're done은 설명이 '모든 검사가 끝난 뒤'라고 시점을 못 박아요. 누가 설명하는지(의사)를 밝혀 환자가 누구에게 물어야 할지 알게 해요.", d: "The pharmacist will", k: ["의사 선생님은 오늘 안 오세요", "검사 중에 설명해 드릴게요"], a: "explain", ai: speech, o: [["cancel", "cross"], ["ignore", "chevronDown"], ["erase", "redo"]]}
+  - {t: "지지", i: handshake2, w: "You're not alone으로 환자의 고립감을 먼저 덜어요. we're working on this together는 환자를 치료 과정의 동반자로 말하는 표현이에요.", d: "this by yourself", k: ["이건 혼자서 감당하셔야 해요", "의사 선생님이 혼자 해결하실 거예요"], a: "together", ai: me, o: [["alone", "chevronLeft"], ["separately", "cross"], ["silently", "mic"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "검사 목적 설명 4문장 순서"
+    why: "검사의 목적을 먼저 알리고, 기다림의 부담에 공감하며 결과를 알려 주겠다고 약속하고, 의사가 설명할 것을 말한 뒤, 그때까지 함께한다고 마무리해요. 뒤 줄이 앞 줄의 말을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "These tests help us find what's causing your pain.", icon: magnify, ko: "이 검사로 통증의 원인을 찾아요", note: "목적"}
+    - {en: "I know waiting for them is stressful, so I'll tell you the moment we have results.", icon: faceWorried, ko: "기다리기 힘드시죠, 결과 나오는 즉시 알려 드릴게요", note: "공감"}
+    - {en: "Once you have them, the doctor will explain everything.", icon: stetho, ko: "결과가 나오면 의사 선생님이 설명해 주실 거예요", note: "설명"}
+    - {en: "Until then, you're not alone — we're working on this together.", icon: handshake2, ko: "그때까지 혼자가 아니에요, 함께해요", note: "지지"}
+  ctx: {word: "test", ko: "검사"}
+  sw: {ko: "이해해요. 답을 기다리는 게 정말 스트레스죠"}
+- title: 어려운 정맥 확보
+  s:
+  - {t: "사과", i: faceWorried, w: "I'm sorry this is …는 실수를 인정하는 말이 아니라 환자의 불편에 대한 사과예요. 정맥이 어렵다는 사실을 솔직히 알리면 환자가 기다릴 마음의 준비를 해요.", d: "a few hours", k: ["이번엔 한 번에 성공했어요", "정맥이 아주 잘 보여요"], a: "sorry", ai: handshake2, o: [["glad", "star"], ["proud", "trophy"], ["afraid", "siren"]]}
+  - {t: "이유와 해결", i: hospital, w: "so I'll …로 문제의 이유와 해결책을 한 문장에 묶었어요. 따뜻하게 하면 정맥이 확장돼 더 잘 보이고 잘 잡혀요.", d: "a cold pack", k: ["정맥이 잘 보여서 바로 놓을게요", "얼음팩을 올려 볼게요"], a: "warm", ai: coffee, o: [["cold", "chevronDown"], ["frozen", "lock"], ["wet", "star"]]}
+  - {t: "도움 요청", i: handshake2, w: "If needed로 조건을 달아 '실패하면 바로 넘긴다'가 아니라 필요할 때만이라는 여지를 줘요. colleague는 동료를 가리키는 중립적인 말이에요.", d: "a relative who's great", k: ["필요 없으면 제가 다시 시도할게요", "보호자께 부탁드릴게요"], a: "colleague", ai: me, o: [["visitor", "home"], ["stranger", "lock"], ["relative", "baby"]]}
+  - {t: "공감과 감사", i: faceWorried, w: "I know …로 감정을 먼저 읽고 and I appreciate로 감사까지 이어요. patience는 기다려 준 환자에게 건네는 흔한 감사의 대상이에요.", d: "your apology", k: ["짜증 내셔도 괜찮아요", "금방 끝나니 조금만 참으세요"], a: "patience", ai: star, o: [["anger", "faceAngry"], ["mistake", "cross"], ["hurry", "plane"]]}
+  - {t: "재시도 제안", i: coffee, w: "Let's …는 '우리가 함께'라는 뜻이라 환자도 결정에 참여한다는 느낌을 줘요. short break로 쉬는 시간이 길지 않다고 알려요.", d: "a long wait and", k: ["이제 그만하고 다음에 해요", "쉬지 않고 바로 다시 할게요"], a: "break", ai: pushpin, o: [["photo", "magnify"], ["bath", "bandage"], ["test", "lab"]]}
+  - {t: "약속", i: star, w: "won't stop until …은 끝까지 포기하지 않겠다는 약속이에요. we로 말해 개인이 아니라 팀이 책임진다는 느낌을 줘요.", d: "after we", k: ["정맥을 못 찾으면 바로 멈출게요", "좋은 정맥을 이미 찾았어요"], a: "until", ai: calendar, o: [["unless", "cross"], ["because", "bulb"], ["although", "chevronRight"]]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "어려운 정맥 확보 4문장 순서"
+    why: "먼저 사과하고, 그 이유와 해결을 설명하고, 안 되면 동료를 부른다고 알린 뒤, 기다려 준 것에 감사해요. 뒤 줄이 앞 줄의 내용을 가리켜 순서가 하나예요."
+    lines:
+    - {en: "I'm sorry this is taking a few tries.", icon: faceWorried, ko: "몇 번 시도하게 돼서 죄송해요", note: "사과"}
+    - {en: "That's why I'm using a warm pack to help your veins show up.", icon: hospital, ko: "그래서 온찜질팩으로 정맥을 잘 보이게 해요", note: "이유"}
+    - {en: "If that doesn't work, I'll ask a colleague who's great at this.", icon: handshake2, ko: "안 되면 능숙한 동료에게 부탁할게요", note: "대안"}
+    - {en: "Thank you for your patience through all of that.", icon: star, ko: "그동안 참아 주셔서 감사해요", note: "감사"}
+  ctx: {word: "vein", ko: "정맥"}
+  sw: {ko: "필요하면 이 일에 능숙한 동료에게 시도해 달라고 부탁할게요"}

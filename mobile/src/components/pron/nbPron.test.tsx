@@ -18,6 +18,7 @@ import { AttemptHistory } from './AttemptHistory';
 import { ScoreBars } from './ScoreBars';
 import { SyllableGrid } from './SyllableGrid';
 import { TargetCard } from './TargetCard';
+import { CorrectionCard } from './CorrectionCard';
 import { BAND } from './nbPron';
 import { trackMounts } from '../../testing/mountRegistry';
 
@@ -120,7 +121,7 @@ test('with no reference audio the 원어민 chip goes flat and dead', () => {
   // A live-looking chip that plays nothing is the learner tapping the one thing that
   // would tell them what the line should sound like, twice, and concluding the app broke.
   const dead = draw(
-    <TargetCard tokens={[{ w: 'Hello' }]} ipa="/həˈloʊ/" hint="3회 중 1회차" nativeAvailable={false} onPlayNative={() => {}} />,
+    <TargetCard tokens={[{ w: 'Hello' }]} ipa="/həˈloʊ/" hint="1번째 시도" nativeAvailable={false} onPlayNative={() => {}} />,
   );
   const press = dead.findAll((n) => typeof n.props?.onPress === 'function' && n.props?.disabled !== undefined, { deep: true });
   expect(press.length).toBeGreaterThan(0);
@@ -128,7 +129,7 @@ test('with no reference audio the 원어민 chip goes flat and dead', () => {
   expect(styled(dead, (s) => s.opacity === 0.4).length).toBeGreaterThan(0);
 
   const live = draw(
-    <TargetCard tokens={[{ w: 'Hello' }]} ipa="/həˈloʊ/" hint="3회 중 1회차" nativeAvailable onPlayNative={() => {}} />,
+    <TargetCard tokens={[{ w: 'Hello' }]} ipa="/həˈloʊ/" hint="1번째 시도" nativeAvailable onPlayNative={() => {}} />,
   );
   expect(styled(live, (s) => s.opacity === 0.4).length).toBe(0);
 });
@@ -151,4 +152,17 @@ test('the dose and the drug name are both marked, and told apart by pen', () => 
   expect(marked.map((n) => n.children[0])).toEqual(['acetaminophen', '650mg']);
   expect(flatten(marked[0].props.style).textDecorationLine).toBe('underline');
   expect(flatten(marked[1].props.style).textDecorationLine).toBeUndefined();
+});
+
+test('the correction card has no live play button until a per-syllable clip exists', () => {
+  // Cross-review S8: the button used to look live and do nothing but log in dev.
+  const dead = draw(<CorrectionCard syllable="min" ipa="/ˈmɪn/" message="혀끝을 올려요" severe={false} />);
+  const press = dead.findAll((n) => n.props?.disabled !== undefined && 'onPress' in (n.props ?? {}), { deep: true });
+  expect(press.length).toBeGreaterThan(0);
+  expect(press.every((n) => n.props.disabled === true)).toBe(true);
+  expect(styled(dead, (s) => s.opacity === 0.4).length).toBeGreaterThan(0);
+
+  const live = draw(<CorrectionCard syllable="min" ipa="/ˈmɪn/" message="혀끝을 올려요" severe={false} onPlay={() => {}} />);
+  expect(styled(live, (s) => s.opacity === 0.4).length).toBe(0);
+  expect(live.findAll((n) => typeof n.props?.onPress === 'function' && n.props.disabled === true, { deep: true }).length).toBe(0);
 });

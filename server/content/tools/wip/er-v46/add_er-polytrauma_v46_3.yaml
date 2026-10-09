@@ -1,0 +1,92 @@
+- title: "언어장벽 외상"
+  s:
+  - {t: "가리키기", i: pushpin, w: "짧은 명령문에 쉬운 단어만 쓰고 말이 안 통해도 손으로 답하게 해서 영어가 서툰 환자도 따라 할 수 있어요. worst는 통증이 가장 심한 곳을 가리키라는 뜻이에요.", d: "if you can", k: ["어디서 피가 나는지 가리켜 주세요", "아프지 않은 곳도 가리켜 주세요"], a: "worst", o: ["new", "old", "dull"]}
+  - {t: "예·아니오", i: pill, w: "Yes or no?로 답의 형태를 미리 정해 주면 영어가 서툰 환자도 한 단어로 답할 수 있어요. 약 알레르기는 약을 주기 전에 확인해야 하는 정보예요.", d: "or maybe", k: ["지금 약을 먹고 있어요?", "전에 수술한 적 있어요?"], a: "medicine", o: ["food", "latex", "tape"]}
+  - {t: "통역 연결", i: speech, w: "for you now로 환자를 위해 지금 하고 있다고 알리면 말이 안 통하는 불안이 줄어요. 의료 설명과 동의에는 전문 통역사를 쓰는 것이 원칙이에요.", d: "a minute ago", k: ["의사를 지금 불러 드릴게요", "보호자 연락처를 지금 확인할게요"], a: "for you", o: ["for him", "for them", "for us"]}
+  - {t: "몸짓 설명", i: me, w: "show you what I mean으로 말이 안 통할 때 몸짓으로 보충한다고 알리면 환자가 손짓을 이해해요. 통역사가 오기 전에도 동작과 가리키기를 함께 써서 설명해요.", d: "with a pen", k: ["천천히 또박또박 말할게요", "어려운 말은 쓰지 않을게요"], a: "hands", o: ["phone", "pen", "eyes"]}
+  - {t: "몸짓 요청", i: pushpin, w: "if it's easier than words로 말이 어려우면 몸으로 답해도 된다고 허락해서 부담을 덜어 줘요. 선택권을 주면 영어가 어려운 환자도 의사를 표현해요.", d: "if you want", k: ["그림으로 아픈 곳을 그려 주세요", "숫자로 아픈 정도를 알려 주세요"], a: "body", o: ["chart", "wristband", "phone"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "언어장벽 소통 4문장 순서"
+    why: "통역사를 부르고, 오기 전에는 몸짓으로 설명하고, 그걸 본 뒤 아픈 곳을 가리키게 하고, 가리킨 것에 감사하며 알레르기를 묻습니다. 'Until then'·'it'·'Thank you for pointing'이 앞 줄에 기대어 순서가 하나예요."
+    lines:
+    - {en: "I'm getting an interpreter for you now.", icon: speech, ko: "지금 통역사를 연결해 드릴게요", note: "통역"}
+    - {en: "Until then, I'll use my hands to show you what I mean.", icon: me, ko: "그때까지 제 뜻을 손짓으로 보여 드릴게요", note: "몸짓"}
+    - {en: "Now that you see it, point to where the pain is worst.", icon: pushpin, ko: "보셨으니 통증이 가장 심한 곳을 가리켜 주세요", note: "가리키기"}
+    - {en: "Thank you for pointing—any allergy to medicine? Yes or no?", icon: pill, ko: "가리켜 줘서 고마워요, 약물 알레르기 있나요? 예 아니면 아니오?", note: "알레르기"}
+  ctx: {word: "language access services", ko: "언어 지원 서비스"}
+  sw: {ko: "약물 알레르기 있나요? 예 아니면 아니오?"}
+- title: "임신부 외상 1차평가"
+  s:
+  - {t: "임신 주수", i: baby, w: "How many weeks …?는 정확한 주수를 숫자로 묻는 질문이라 대답이 짧아요. 임신 주수는 태아 생존 가능성과 필요한 감시 방법을 정하는 기준이 돼요.", d: "in the car", k: ["마지막 월경이 언제였나요?", "전에 출산한 적 있으세요?"], a: "weeks", o: ["months", "days", "times"]}
+  - {t: "자세 안내", i: me, w: "to help blood flow로 이유를 붙이면 몸을 기울이는 이유가 환자에게 바로 전달돼요. 임신 후반에는 커진 자궁이 큰 정맥을 눌러 심장으로 돌아가는 피를 줄일 수 있어서 왼쪽으로 기울여요.", d: "to the front", k: ["왼쪽 다리를 높이 들어 올릴게요", "왼쪽 팔에 혈압계를 감을게요"], a: "left", o: ["right", "front", "back"]}
+  - {t: "산과 문진", i: bell, w: "세 가지를 쉼표로 나열해 짧게 물으면 급한 상황에서 환자가 예·아니오로 답하기 쉬워요. 복통·출혈·수축은 태반 문제나 조기진통을 가려내는 핵심 증상이에요.", d: "since morning", k: ["아기가 움직이는 게 느껴지시나요?", "양수가 터진 느낌이 있나요?"], a: "contractions", o: ["headaches", "coughing", "vomiting"]}
+  - {t: "환자 안심", i: shield, w: "both you and your baby로 아기도 함께 살핀다고 말하면 임신부의 가장 큰 걱정을 먼저 풀어 줘요. 임신부 외상에서는 산모를 안정시키는 것이 태아를 위한 첫 조치예요.", d: "and your family", k: ["산모분 혈액형을 확인하고 있어요", "산모분 가족을 부르고 있어요"], a: "baby", o: ["partner", "mother", "family"]}
+  - {t: "이유 설명", i: bulb, w: "can press로 가능성만 말해 겁주지 않고 so로 그래서 기울인다고 이어요. 임신 후반에 똑바로 누우면 커진 자궁이 아래대정맥을 눌러 혈압이 떨어질 수 있어요.", d: "all night", k: ["왼쪽으로 누우면 혈압이 더 쉽게 재져요", "왼쪽으로 누워도 검사는 그대로 해요"], a: "vein", o: ["bone", "nerve", "muscle"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "임신부 1차평가 4문장 순서"
+    why: "임신 주수를 묻고, 답에 감사하며 복통·출혈·수축을 묻고, 어느 쪽이든 왼쪽으로 기울이고, 그 이유를 설명합니다. 'Thank you'·'Either way'·'that tilt'가 앞 줄에 기대어 순서가 하나예요."
+    lines:
+    - {en: "How many weeks pregnant are you right now?", icon: baby, ko: "지금 임신 몇 주세요?", note: "주수"}
+    - {en: "Thank you, and do you have any belly pain, bleeding, or contractions?", icon: bell, ko: "고마워요, 배 통증이나 출혈, 수축이 있나요?", note: "문진"}
+    - {en: "Either way, we're tilting you to your left side to help blood flow.", icon: me, ko: "어느 쪽이든 혈류를 도우려고 왼쪽으로 기울여 드릴게요", note: "자세"}
+    - {en: "Lying flat can press on a big vein, so that tilt helps you both.", icon: bulb, ko: "똑바로 누우면 큰 정맥을 눌러서, 그 기울임이 두 분 다 도와요", note: "이유"}
+  sw: {ko: "큰 정맥이 눌리는 걸 풀어 주려고 왼쪽으로 기울여 드릴게요"}
+- title: "대량수혈 프로토콜 준비 설명"
+  s:
+  - {t: "상황 설명", i: siren, w: "so로 원인과 조치를 이어 말하면 보호자가 지금 왜 이렇게 바쁜지 이해해요. 많이 잃은 피를 같은 혈액으로 빨리 채우는 것이 출혈성 쇼크 치료의 기본이에요.", d: "by hand", k: ["혈액형 검사는 이미 끝났어요", "수술실이 지금 준비되고 있어요"], a: "fast", o: ["slowly", "gently", "carefully"]}
+  - {t: "치료 설명", i: lab, w: "together로 혈액과 응고인자를 따로따로가 아니라 함께 준다고 말해 줘요. 대량 출혈에서는 적혈구만 채우면 응고가 모자라서 혈장·혈소판도 함께 줘요.", d: "one at a time", k: ["혈액과 수액을 번갈아 주고 있어요", "혈액과 진통제를 함께 주고 있어요"], a: "clotting factors", o: ["antibiotics", "pain medicine", "salt water"]}
+  - {t: "상황 안내", i: star, w: "everything they can은 구체적인 결과를 약속하지 않으면서 최선을 다하고 있다는 사실을 전해요. 결과를 확신할 수 없을 때는 과한 낙관도 비관도 피해요.", d: "with their hands", k: ["수술 팀이 곧 도착해요", "의사가 곧 이야기하러 올 거예요"], a: "right now", o: ["all night", "this morning", "tonight"]}
+  - {t: "공감", i: faceWorried, w: "I know this is …, but …으로 두려움을 인정한 뒤 사실 하나를 건네는 순서라 위로가 빈말로 들리지 않아요. already는 이미 나아진 점을 짚지만 앞으로의 결과를 약속하지는 않아요.", d: "for now", k: ["무서우시면 잠깐 앉아 계세요", "무서우시면 가족분께 연락할게요"], a: "improving", o: ["racing", "stopping", "skipping"]}
+  - {t: "소식 약속", i: bell, w: "I'll come find you는 보호자가 기다리는 곳으로 내가 찾아가겠다는 약속이라 불안이 줄어요. 시간을 정하지 않고 알게 되는 대로라고 해서 지킬 수 없는 약속을 피해요.", d: "in ten minutes", k: ["대기실에서 기다려 주세요", "서류에 서명해 주세요"], a: "find", o: ["see", "thank", "help"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "대량수혈 설명 4문장 순서"
+    why: "출혈이 많아 피를 빨리 채운다고 알리고, 그러기 위해 혈액과 응고인자를 함께 주고, 두려움을 인정하며 좋아진 점을 전하고, 팀의 노력과 소식 약속으로 닫아요. 'To do that'·'that's frightening'이 앞 줄에 기대어 순서가 하나예요."
+    lines:
+    - {en: "He's losing a lot of blood, so we're replacing it fast.", icon: siren, ko: "출혈이 많아서 빠르게 보충하고 있어요", note: "상황"}
+    - {en: "To do that, we're giving blood and clotting factors together.", icon: lab, ko: "그러려고 혈액과 응고인자를 함께 주고 있어요", note: "치료"}
+    - {en: "I know that's frightening, but his heart rate is already improving.", icon: faceWorried, ko: "무서우신 건 알지만 심박수가 벌써 좋아지고 있어요", note: "공감"}
+    - {en: "The team is doing all they can, and I'll find you when we know more.", icon: bell, ko: "팀이 할 수 있는 모든 걸 하고 있고, 더 알게 되는 대로 찾아뵐게요", note: "약속"}
+  ctx: {word: "MTP", ko: "대량수혈 프로토콜"}
+  sw: {ko: "아직 말씀드리기 이르지만—팀이 지금 할 수 있는 모든 걸 하고 있어요"}
+- title: "저체온 예방"
+  s:
+  - {t: "보온 안내", i: shield, w: "We're …ing now로 지금 덮는 중이라고 알려 환자가 몸에 닿는 담요에 놀라지 않아요. 출혈한 환자는 체온이 쉽게 떨어져서 가능한 한 일찍 덮어 줘요.", d: "for the night", k: ["얼음주머니를 대 드릴게요", "땀을 닦아 드릴게요"], a: "warm", o: ["wet", "cold", "thin"]}
+  - {t: "이유 설명", i: bulb, w: "helps … properly로 따뜻함이 응고를 돕는다는 연결을 쉬운 말로 줘요. 체온이 떨어지면 응고인자가 제대로 작동하지 못해 출혈이 더 오래갈 수 있어요.", d: "all by itself", k: ["따뜻한 수액으로 바꿔 드릴게요", "담요가 필요하면 말씀해 주세요"], a: "properly", o: ["slowly", "fully", "rarely"]}
+  - {t: "증상 알림", i: bell, w: "if you keep feeling이라 한 번 추운 것이 아니라 계속되면 알려 달라는 뜻이에요. 추위를 환자가 먼저 말해 주면 담요 추가 같은 조치를 앞당길 수 있어요.", d: "at all", k: ["아프면 바로 말씀해 주세요", "어지러우면 바로 말씀해 주세요"], a: "cold", o: ["hot", "thirsty", "itchy"]}
+  - {t: "위험 설명", i: bulb, w: "can make it harder로 단정하지 않고 어려워질 수 있다고 말해요. 떨림은 체온이 떨어지고 있다는 신호이고, 차가운 몸에서는 응고가 잘 되지 않아요.", d: "by itself", k: ["떨리면 호흡이 가빠질 수 있어요", "떨리면 맥박이 빨라질 수 있어요"], a: "harder", o: ["easier", "safer", "faster"]}
+  - {t: "보온 안내", i: shield, w: "before it touches your skin으로 담요가 닿기 전에 이미 데워져 있다는 점을 말해서 차가운 담요에 놀라지 않게 해요. 차가운 담요가 몸에 닿으면 체온을 더 뺏을 수 있어요.", d: "after it dries", k: ["담요를 한 장 더 가져올게요", "담요를 목까지 덮어 드릴게요"], a: "skin", o: ["hair", "feet", "hands"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "저체온 예방 4문장 순서"
+    why: "따뜻한 담요를 덮는다고 알리고, 그 담요가 체온 하락을 막는다고 설명하고, 그것이 응고에 중요한 이유를 말하고, 떨리면 알려 달라고 닫아요. 'Those blankets'·'That matters'·'it worse'가 앞 줄에 기대어 순서가 하나예요."
+    lines:
+    - {en: "We're covering you with warm blankets now.", icon: shield, ko: "지금 따뜻한 담요로 덮어 드릴게요", note: "시행"}
+    - {en: "Those blankets help keep your body temperature from dropping.", icon: monitor, ko: "그 담요가 체온이 떨어지지 않게 도와요", note: "효과"}
+    - {en: "That matters because a cold body can't clot blood properly.", icon: bulb, ko: "차가운 몸은 피가 제대로 굳지 않아서 그게 중요해요", note: "이유"}
+    - {en: "Shivering can make it worse, so please tell me if you keep feeling cold.", icon: bell, ko: "떨리면 더 나빠질 수 있으니 계속 추우시면 말씀해 주세요", note: "요청"}
+  ctx: {word: "lethal triad", ko: "치명적 3요소(저체온·산증·응고장애)"}
+- title: "긴장성 기흉 급속악화"
+  s:
+  - {t: "상태 알림", i: stetho, w: "absent처럼 짧은 서술어로 소견을 전하면 비상 상황에서 말이 길어지지 않아요. 한쪽 호흡음이 안 들리면 그쪽 폐가 제대로 펴지지 않았다는 뜻이라 기흉을 의심해요.", d: "in the lung", k: ["오른쪽 어깨가 많이 아픈지 말씀해 주세요", "가래 소리가 나는지 들어 볼게요"], a: "absent", o: ["clear", "wheezy", "wet"]}
+  - {t: "긴급 시술", i: siren, w: "now로 지체할 수 없다는 긴박감을 전해요. 흉강에 공기가 갇혀 압력이 차오르면 심장으로 돌아오는 피가 막혀 쇼크가 오므로 압력을 빼내야 해요.", d: "in time", k: ["가슴 사진을 지금 찍을게요", "가슴에 심전도 전극을 붙일게요"], a: "release", o: ["increase", "measure", "cover"]}
+  - {t: "환자 안심", i: faceWorried, w: "Stay with me는 의식을 붙잡도록 부르는 말이라 숨이 가쁜 환자에게 짧게 반복하기 좋아요. 도움이 이어지고 있다는 사실을 함께 말해 환자가 혼자라고 느끼지 않게 해요.", d: "on your own", k: ["눈을 감지 마세요", "제 손을 꽉 잡아 보세요"], a: "breathe", o: ["move", "speak", "sit"]}
+  - {t: "상태 알림", i: monitor, w: "getting·is climbing 같은 진행형은 상태가 지금도 변하고 있다는 뜻이라 긴급함이 전해져요. 긴장성 기흉은 가슴 안 압력이 커지면서 심박수가 오르고 혈압이 떨어지는 쪽으로 빠르게 나빠져요.", d: "all day", k: ["가슴에 멍이 올라오고 있어요", "산소 수치를 계속 보고 있어요"], a: "tighter", o: ["looser", "warmer", "lighter"]}
+  - {t: "이유 설명", i: siren, w: "because로 서두르는 이유를 말하면 거친 손길도 급해서라고 이해돼요.", d: "all alone", k: ["이쪽 폐 사진을 지금 찍고 있어요", "이쪽 가슴에 소독을 하고 있어요"], a: "quickly", o: ["slowly", "slightly", "sometimes"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "긴장성 기흉 대응 4문장 순서"
+    why: "한쪽 호흡음이 없다고 알리고, 그것이 압력이 차오른다는 뜻이라고 설명하고, 그 압력을 지금 빼낸다고 하고, 그동안 곁에서 숨을 도와준다고 닫아요. 'That'·'it'·'that's happening'이 앞 줄에 기대어 순서가 하나예요."
+    lines:
+    - {en: "Your breath sounds are absent on one side.", icon: stetho, ko: "한쪽에서 호흡음이 들리지 않아요", note: "소견"}
+    - {en: "That tells us pressure is building up in your chest.", icon: monitor, ko: "그건 가슴 안에 압력이 차오르고 있다는 뜻이에요", note: "설명"}
+    - {en: "We need to release it now, so we're moving fast.", icon: siren, ko: "지금 그걸 빼내야 해서 서두르고 있어요", note: "시행"}
+    - {en: "Stay with me—while that's happening, we're helping you breathe.", icon: faceWorried, ko: "정신 차리세요, 그동안 숨쉬는 걸 도와드릴게요", note: "안심"}
+  ctx: {word: "decompression", ko: "감압"}

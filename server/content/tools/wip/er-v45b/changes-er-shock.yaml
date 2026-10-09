@@ -1,0 +1,266 @@
+theme: er-shock
+changes:
+- kind: sentence
+  situation: 저혈압 초기 활력 인지
+  index: 1
+  fields:
+  - words
+  why: 쉬운 w-hand 태그를 뺐다
+- kind: sentence
+  situation: 기립성 저혈압 문진
+  index: 1
+  fields:
+  - words
+  why: 쉬운 w-today 태그를 뺐다
+- kind: sentence
+  situation: 대구경 정맥로·수액 설명
+  index: 2
+  fields:
+  - words
+  why: w-quick을 quickly로 바꿨는데 여기는 형용사 a quick pinch라 태그를 뺐다
+- kind: sentence
+  situation: 탈수 관련 저혈압 교육
+  index: 2
+  fields:
+  - words
+  why: 형용사 w-slow(느린)가 부사 slowly 문장에 붙어 있어 태그를 뺐다
+- kind: sentence
+  situation: 탈수 관련 저혈압 교육
+  index: 4
+  fields:
+  - words
+  - ko
+  why: 형용사 w-slow 태그를 뺐고, ko의 오타 '드리게요'를 고쳤다(조금씩 마시게 한다는 뜻)
+- kind: sentence
+  situation: 실신 후 내원 사정
+  index: 1
+  fields:
+  - words
+  why: 쉬운 w-see 태그를 뺐다
+- kind: sentence
+  situation: 실신 후 내원 사정
+  index: 2
+  fields:
+  - words
+  why: 쉬운 w-head 태그를 뺐다
+- kind: sentence
+  situation: 실신 후 내원 사정
+  index: 4
+  fields:
+  - words
+  why: 쉬운 w-head 태그를 뺐다
+- kind: sentence
+  situation: 패혈증성 쇼크 조기 인지
+  index: 1
+  fields:
+  - words
+  why: w-come을 come up(수치가 올라오다)으로 바꿨는데 여기는 coming from이라 태그를 뺐다
+- kind: sentence
+  situation: 아나필락시스 분포성 쇼크
+  index: 1
+  fields:
+  - ko
+  why: '''드시거나 드셨나요''는 eat과 take를 한 동사로 뭉개 뜻이 흐리다 — en(keyPhrase)은 그대로 두고 ko만'
+- kind: sentence
+  situation: 언어장벽 쇼크 핵심 확인
+  index: 0
+  fields:
+  - words
+  why: 쉬운 w-yes·w-no 태그를 뺐다
+- kind: sentence
+  situation: 언어장벽 쇼크 핵심 확인
+  index: 1
+  fields:
+  - words
+  why: 쉬운 w-yes·w-no 태그를 뺐다
+- kind: sentence
+  situation: 언어장벽 쇼크 핵심 확인
+  index: 2
+  fields:
+  - words
+  why: w-come을 come up으로 바꿨는데 여기는 Interpreter is coming이라 태그를 뺐다
+- kind: sentence
+  situation: 언어장벽 쇼크 핵심 확인
+  index: 3
+  fields:
+  - words
+  - ko
+  why: 쉬운 w-hand·w-yes·w-no 태그를 빼고 w-squeeze를 태그했다; ko의 띄어쓰기('네 이면')를 고쳤다
+- kind: sentence
+  situation: 노인 다약제 저혈압
+  index: 0
+  fields:
+  - words
+  why: 쉬운 w-today 태그를 뺐고, w-go가 go through로 바뀌어 w-through 태그를 뺐다
+- kind: sentence
+  situation: 원인 미상 저혈압 계통 접근
+  index: 0
+  fields:
+  - words
+  why: 명사 beginning에 동사 w-begin이 붙어 있어 태그를 뺐다(쉬운 말)
+- kind: sentence
+  situation: 원인 미상 저혈압 계통 접근
+  index: 2
+  fields:
+  - words
+  why: w-run을 '(약물을) 주입하다'로 가르는데 여기는 running labs라 태그를 뺐다
+- kind: sentence
+  situation: 패혈증성 쇼크 급속 악화 번들
+  index: 1
+  fields:
+  - words
+  why: 쉬운 w-hour 태그를 뺐다
+- kind: sentence
+  situation: 패혈증성 쇼크 급속 악화 번들
+  index: 4
+  fields:
+  - words
+  why: 쉬운 w-minute 태그를 뺐다
+- kind: sentence
+  situation: 폐색전 폐쇄성 쇼크
+  index: 3
+  fields:
+  - words
+  why: w-right(오른쪽의)가 right now 문장에 붙어 있어 태그를 뺐다
+- kind: sentence
+  situation: 부신위기 저혈압
+  index: 1
+  fields:
+  - words
+  why: 명사 w-cause(원인)가 동사 can cause 문장에 붙어 있어 태그를 뺐다
+- kind: word
+  id: w-come
+  fields:
+  - en
+  - ipa
+  - ko
+  - example
+  why: 공통 쉬운 말 come이지만 수액 반응 문장이 pressure came up이라 구(come up)로 둔다 — 형제 주제 er-sepsis와 같은 헤드워드·ko; coming from·is coming 문장은 태그를 뺐다
+- kind: word
+  id: w-go
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 공통 쉬운 말 go이지만 유일한 태그 문장이 go through all the medicines라 구동사로 둔다(ko '가다·훑다'는 낱말 뜻이 섞였다)
+- kind: word
+  id: w-close
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 형용사 헤드워드에 부사가 묶였다 — 태그 문장 둘 다 watch … closely(형제 주제 er-sepsis와 같게)
+- kind: word
+  id: w-quick
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 형용사 헤드워드에 부사가 묶였다(태그 문장 4개 중 3개가 quickly) — a quick pinch 문장은 태그를 뺐고, w-fast(빠른)와 ko가 겹치던 것도 가른다(형제 주제의 '신속한'에 맞춘 부사형)
+- kind: word
+  id: w-safe
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 형용사 헤드워드에 부사가 묶였다 — 유일한 태그 문장이 works quickly and safely
+- kind: word
+  id: w-thinner
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 낱말 thinner는 항응고제가 아니다 — 태그 문장 둘 다 blood thinner(s)라 구로
+- kind: word
+  id: w-water
+  fields:
+  - en
+  - ipa
+  - ko
+  why: ko '물'이 태그 문장(Water pills … heart pills)의 뜻과 다르다 — 환자가 이뇨제를 부르는 말이라 구로
+- kind: word
+  id: w-throw
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 낱말 throw는 '토하다'가 아니다 — 태그 문장이 Throwing up이라 구동사로
+- kind: word
+  id: w-rate
+  fields:
+  - ko
+  why: 태그 문장 둘 다 slow heart rate — '속도(맥박수)'를 형제 주제 er-sepsis의 ko에 맞췄다
+- kind: word
+  id: w-run
+  fields:
+  - ko
+  - example
+  why: 태그 문장 넷 중 셋이 약물·수혈 주입(it's running·lines running·pressors running) — 형제 주제 ko에 맞추고, running labs 문장은 태그를 빼며 예문도 주입 문장으로
+- kind: word
+  id: w-septic
+  fields:
+  - ko
+  why: septic shock의 표준 번역은 '패혈성 쇼크' — 형제 주제 er-sepsis의 ko에 맞췄다
+- kind: word
+  id: w-climb
+  fields:
+  - ko
+  why: w-come(올라오다)·w-raise(올리다)와 뜻이 붙어 있어 형제 주제 er-sepsis의 ko에 맞춰 가른다
+- kind: word
+  id: w-right
+  fields:
+  - ko
+  why: '''오른쪽·맞는''이 right now(지금 당장) 문장에까지 붙어 있었다 — 그 태그를 빼고 right heart 뜻만 남긴다'
+- kind: word
+  id: w-dark
+  fields:
+  - ko
+  why: w-black(검은)과 ko가 겹쳐 듣고 뜻 고르기에서 정답이 둘 — dark stools는 짙은 색 변
+- kind: word
+  id: w-large
+  fields:
+  - ko
+  why: w-big(큰)과 ko가 겹쳤다 — 태그 문장은 large-bore IV·large IV lines(굵은 정맥로)
+- kind: word
+  id: w-work
+  fields:
+  - ko
+  why: '''작동하다''는 기계에 쓰는 말 — 태그 문장은 약이 works quickly(효과가 나다); 형제 주제의 ''효과가 있다''와 같은 뜻'
+- kind: word
+  id: w-slow
+  fields:
+  - example
+  why: 형용사 slow에 부사 slowly 문장(small sips slowly) 둘이 묶여 있어 그 태그를 뺐다 — 예문도 형용사 문장으로
+- kind: word-add
+  id: w-squeeze
+  why: 쉬운 w-hand·w-yes·w-no를 빼면 언어장벽 상황의 서로 다른 단어가 7개로 줄어 — 그 상황 문장 3에 이미 있는 가르칠 말
+- kind: word-remove
+  id: w-hand
+  why: 너무 쉬움(공통 목록) — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-today
+  why: 너무 쉬움(공통 목록) — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-see
+  why: 너무 쉬움(공통 목록) — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-head
+  why: 너무 쉬움(공통 목록) — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-minute
+  why: 너무 쉬움(공통 목록) — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-hour
+  why: 너무 쉬움(공통 목록) — 문장은 두고 태그만 뺐고, 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-yes
+  why: 너무 쉬움(판단) — 간호사가 이미 아는 말이고 YAML 예약어라 적재 위험도 있다; 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-no
+  why: 너무 쉬움(판단) — 간호사가 이미 아는 말이고 YAML 예약어라 적재 위험도 있다; 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-begin
+  why: 유일한 태그 문장이 명사 the beginning이라 동사 헤드워드와 맞지 않고 w-start(시작하다)와 ko도 같았다 — 쉬운 말이라 태그를 빼고 지웠다
+- kind: word-remove
+  id: w-through
+  why: 유일한 태그 문장(go through)이 w-go를 구동사 go through로 바꾸며 그쪽에 묶였다 — 전치사 단독 '~을 통해'는 그 문장의 뜻과 맞지 않았다
