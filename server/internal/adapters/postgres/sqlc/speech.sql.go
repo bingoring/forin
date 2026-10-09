@@ -559,6 +559,20 @@ func (q *Queries) ListSpeechAttempts(ctx context.Context, arg ListSpeechAttempts
 	return items, nil
 }
 
+const lockSpeechAttemptKey = `-- name: LockSpeechAttemptKey :exec
+SELECT pg_advisory_xact_lock(hashtextextended($1::text, 0))
+`
+
+// Serializes concurrent InsertSpeechAttempt calls for one (user, sentence) for the
+// rest of the transaction (cross-review S2). attempt_no is MAX+1; without this two
+// callers read the same MAX, one loses on the UNIQUE index, and with three or more
+// the single retry loses again. The lock is per key, so unrelated sentences and
+// users never wait on each other.
+func (q *Queries) LockSpeechAttemptKey(ctx context.Context, dollar_1 string) error {
+	_, err := q.db.Exec(ctx, lockSpeechAttemptKey, dollar_1)
+	return err
+}
+
 const putSpeechReference = `-- name: PutSpeechReference :exec
 INSERT INTO speech_references (sentence_key, reference_text, locale, ipa, words, duration_ms, audio_wav)
 VALUES ($1, $2, $3, $4, $5, $6, $7)

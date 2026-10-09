@@ -19,6 +19,14 @@ RETURNING id, attempt_no;
 INSERT INTO speech_phoneme_scores (attempt_id, user_id, phoneme, accuracy)
 VALUES ($1, $2, $3, $4);
 
+-- name: LockSpeechAttemptKey :exec
+-- Serializes concurrent InsertSpeechAttempt calls for one (user, sentence) for the
+-- rest of the transaction (cross-review S2). attempt_no is MAX+1; without this two
+-- callers read the same MAX, one loses on the UNIQUE index, and with three or more
+-- the single retry loses again. The lock is per key, so unrelated sentences and
+-- users never wait on each other.
+SELECT pg_advisory_xact_lock(hashtextextended($1::text, 0));
+
 -- name: ListSpeechAttempts :many
 SELECT id, attempt_no, overall, accuracy, fluency, completeness, prosody,
        duration_ms, recognized, words, created_at

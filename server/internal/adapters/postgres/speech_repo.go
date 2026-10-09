@@ -34,9 +34,11 @@ func NewSpeechRepo(pool *pgxpool.Pool) *SpeechRepo {
 // statement itself (I5), which is race-safe against duplicate DATA but not
 // against duplicate REQUESTS: two concurrent calls for the same
 // (user_id, sentence_key) can compute the same MAX and both attempt to insert
-// it, so exactly one of them trips the UNIQUE(user_id, sentence_key, attempt_no)
-// constraint (23505). That is retried once — the retry re-reads MAX inside a
-// fresh transaction, so it naturally picks the next free number.
+// it, so the loser trips the UNIQUE(user_id, sentence_key, attempt_no)
+// constraint (23505). insertAttemptOnce therefore takes a per-key advisory lock
+// first, so concurrent callers queue (cross-review S2: with 3+ callers a lone
+// retry was not enough). The 23505 retry stays as a backstop — it re-reads MAX
+// inside a fresh transaction, so it picks the next free number.
 func (r *SpeechRepo) InsertAttempt(ctx context.Context, a ports.SpeechAttemptInput) (string, int, error) {
 	id, attemptNo, err := r.insertAttemptOnce(ctx, a)
 	if isUniqueViolation(err) {
@@ -74,6 +76,13 @@ func (r *SpeechRepo) insertAttemptOnce(ctx context.Context, a ports.SpeechAttemp
 		if err := reviewCard.Scan(*a.ReviewCardID); err != nil {
 			return "", 0, err
 		}
+	}
+
+	// Take the per-(user, sentence) lock BEFORE the MAX+1 insert so concurrent
+	// callers queue instead of colliding (S2). The retry in InsertAttempt stays as a
+	// backstop for any writer that bypasses this path.
+	if err := q.LockSpeechAttemptKey(ctx, a.UserID+":"+a.SentenceKey); err != nil {
+		return "", 0, err
 	}
 
 	row, err := q.InsertSpeechAttempt(ctx, sqlc.InsertSpeechAttemptParams{

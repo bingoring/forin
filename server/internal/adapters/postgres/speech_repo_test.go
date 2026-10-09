@@ -448,7 +448,7 @@ func TestConcurrentAttemptsGetDistinctNumbers(t *testing.T) {
 	ctx := context.Background()
 	sentenceKey := "sk-concurrent-test"
 
-	const n = 2
+	const n = 8 // cross-review S2: three or more callers used to defeat the single retry
 	warmPool(t, pool, n)
 
 	var wg sync.WaitGroup
