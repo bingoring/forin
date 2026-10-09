@@ -316,6 +316,23 @@ func TestRecordDowngradesUnknownOrigin(t *testing.T) {
 	}
 }
 
+// Cross-review S1: every origin the mobile entry points send must be in the
+// allowed set — one that is missing is silently stored as "freeform", so the
+// speaking list could never tell where an attempt came from.
+func TestRecordKeepsEveryEntryPointOrigin(t *testing.T) {
+	for _, origin := range []string{"dialogue", "review", "drill", "freeform", "lesson", "slang", "home", "night"} {
+		pron := &fakePronPort{result: sampleResult()}
+		repo := newFakeSpeechRepo()
+		svc := newTestService(pron, repo)
+		if _, err := svc.Record(context.Background(), "u1", []byte("wav"), "hello", RecordOptions{Origin: origin}); err != nil {
+			t.Fatalf("Record(%s): %v", origin, err)
+		}
+		if len(repo.inserted) != 1 || repo.inserted[0].Origin != origin {
+			t.Errorf("origin %q must be kept as-is, got %+v", origin, repo.inserted)
+		}
+	}
+}
+
 // Review round 2, Important 1: by the time InsertAttempt runs, Assess has
 // already happened — Azure was already paid for (I4) and produced a real
 // score. A storage failure after that must not throw the result away: Record

@@ -40,7 +40,7 @@ import { ScoreBars } from '@/components/pron/ScoreBars';
 import { CorrectionCard } from '@/components/pron/CorrectionCard';
 import { AttemptHistory, type AttemptRow as AttemptDisplayRow } from '@/components/pron/AttemptHistory';
 import { splitTargetTokens, syllableBand, syllableLabel, buildCorrectionPoints, downsampleAmplitude, phonemeTipLookup } from '@/lib/pronTokens';
-import { api, type PronunciationResult, type SentenceReference, type SpeechAttemptRow } from '@/api/client';
+import { api, toPronOrigin, type PronunciationResult, type SentenceReference, type SpeechAttemptRow } from '@/api/client';
 import { next, initialPronState, type PronState, type PronEventType } from '@/lib/pronState';
 import { type Translate, useT } from '@/i18n';
 import { useWavRecorder } from '@/lib/useWavRecorder';
@@ -379,7 +379,7 @@ export default function PronunciationRoute() {
   const referenceText = params.referenceText ?? '';
   const ctx = params.ctx ?? '';
   const idleStep = params.step ?? t('pron.practice');
-  const origin = params.origin || 'freeform';
+  const origin = toPronOrigin(params.origin);
 
   const [pron, setPron] = useState<PronState>(initialPronState);
   const dispatch = useCallback((type: PronEventType) => setPron((s) => next(s, { type })), []);

@@ -335,6 +335,21 @@ export interface SentenceReference {
  *  Distinct from SpeechAttemptRow, which is one TRY at a known sentence and
  *  carries the syllable breakdown; this is one SENTENCE across tries and the
  *  lists that render it need the text and provenance instead. */
+/** Where a pronunciation attempt started — mirrors the server's allowed set
+ *  (domain/speech allowedOrigins). Anything else is stored as 'freeform', so a
+ *  new entry point must add its value on BOTH sides. */
+export type PronOrigin =
+  | 'dialogue' | 'review' | 'drill' | 'freeform' | 'lesson' | 'slang' | 'home' | 'night';
+
+const PRON_ORIGINS: readonly string[] = [
+  'dialogue', 'review', 'drill', 'freeform', 'lesson', 'slang', 'home', 'night',
+];
+
+/** Route params arrive as free strings; unknown → 'freeform' (same as the server). */
+export function toPronOrigin(v: string | undefined): PronOrigin {
+  return v && PRON_ORIGINS.includes(v) ? (v as PronOrigin) : 'freeform';
+}
+
 export interface SpokenSentence {
   sentenceKey: string;
   referenceText: string;
@@ -348,7 +363,7 @@ export interface SpokenSentence {
   /** Present when the sentence came from a scenario; the list derives its
    *  department chip from it (SCN-ER-00002 → ER). */
   scenarioId?: string;
-  origin?: string;
+  origin?: PronOrigin;
   createdAt: string;
 }
 
@@ -1177,7 +1192,7 @@ export const api = {
   async assessPronunciation(
     referenceText: string,
     audioBase64: string,
-    opts?: { origin?: string; scenarioId?: string; reviewCardId?: string }
+    opts?: { origin?: PronOrigin; scenarioId?: string; reviewCardId?: string }
   ): Promise<PronunciationResult> {
     const { data } = await http.post('/pronunciation', { referenceText, audioBase64, ...opts });
     return data as PronunciationResult;

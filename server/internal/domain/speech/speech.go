@@ -21,6 +21,12 @@ var allowedOrigins = map[string]bool{
 	"freeform": true,
 	// A STEP 1/2 repeat-after of a lesson word or sentence (lesson four steps, v44).
 	"lesson": true,
+	// Standalone entry points on home / slang / night (cross-review S1): they
+	// used to be downgraded to freeform, so the speaking list could not tell
+	// where an attempt started.
+	"slang": true,
+	"home":  true,
+	"night": true,
 }
 
 // RecordOptions carries the bookkeeping a Record call needs beyond the audio
