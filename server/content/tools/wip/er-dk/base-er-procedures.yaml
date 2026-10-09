@@ -10,7 +10,7 @@ words:
   cue: 채혈·투약 전에 이름과 함께 묻는 두 번째 식별 정보
   tag: 환자 확인
   distractorsEn:
-  - date of admission
+  - date of arrival
   - place of birth
   distractorsKo:
   - 입원일
@@ -151,8 +151,8 @@ words:
   - change
   - chase
   distractorsKo:
-  - 바꾸다
-  - 치우다
+  - 바꾸다·교체하다
+  - 치우다·정리하다
   chips:
   - - check
   decoyChips:
@@ -449,8 +449,8 @@ words:
   - down
   - gone
   distractorsKo:
-  - 시작한
-  - 멈춘
+  - (할 일을) 막 시작한
+  - (할 일을) 잠시 멈춘
   chips:
   - - done
   decoyChips:
@@ -773,8 +773,8 @@ words:
   - stray
   - sway
   distractorsKo:
-  - 떠나다
-  - 움직이다
+  - 떠나다·옮겨가다
+  - 움직이다·돌아다니다
   chips:
   - - stay
   decoyChips:
@@ -872,8 +872,8 @@ words:
   - case
   - cure
   distractorsKo:
-  - 결과
-  - 증상
+  - 결과; 이어지다
+  - 증상; 나타내다
   chips:
   - - cause
   decoyChips:
@@ -972,8 +972,8 @@ words:
   - stressed
   - successful
   distractorsKo:
-  - 지루한
-  - 위험한
+  - 지루하고 단조로운
+  - 위험부담이 큰
   chips:
   - - stress
     - ful
@@ -1601,8 +1601,8 @@ words:
   - side
   - sight
   distractorsKo:
-  - 쪽
-  - 시야
+  - (시술) 방향
+  - (시술) 시야
   chips:
   - - site
   decoyChips:
@@ -1639,8 +1639,8 @@ words:
   - aria
   - era
   distractorsKo:
-  - 전체
-  - 가장자리
+  - (그) 전체 범위
+  - (그) 가장자리·끝
   chips:
   - - ar
     - ea
@@ -1660,8 +1660,8 @@ words:
   - prop
   - prime
   distractorsKo:
-  - 말리다
-  - 붕대로 감다
+  - (시술 후 피부를) 붕대로 감다
+  - (시술 후 피부를) 말려 두다
   chips:
   - - prep
   decoyChips:
@@ -1890,7 +1890,7 @@ words:
   - arthritic
   distractorsKo:
   - 내성이 있는
-  - 중독된
+  - 감염이 있는
   chips:
   - - al
     - ler
@@ -1992,8 +1992,8 @@ words:
   - conform
   - consent
   distractorsKo:
-  - 거절하다
-  - 수정하다
+  - (맞는지) 의심하다·되묻다
+  - (맞는지) 수정하다·바꾸다
   chips:
   - - con
     - firm
@@ -2418,8 +2418,8 @@ words:
   cue: 소변이 고이는 주머니 — 도뇨관 끝이 들어가는 곳
   tag: 삽입 시술
   distractorsEn:
-  - gallbladder
   - bowel
+  - blister
   distractorsKo:
   - 신장
   - 장
@@ -3303,8 +3303,8 @@ words:
   - ever
   - sober
   distractorsKo:
-  - 시작된
-  - 남은
+  - (힘든 것이) 막 시작된
+  - (힘든 것이) 남아 있는
   chips:
   - - over
   decoyChips:
@@ -3515,8 +3515,8 @@ situations:
     why: Can you …?는 명령 대신 질문의 모양이라 부드럽게 들려요. 이름과 생년월일을 환자가 직접 말하게 하면 간호사가 먼저 불러 주는 것보다 오류를 잡기 쉬워요.
     decoy: of arrival
     distractorsKo:
-    - 어디가 불편하세요?
-    - 알레르기가 있으신가요?
+    - 성함 전체와 주소를 말씀해 주시겠어요?
+    - 성함 전체와 전화번호를 말씀해 주시겠어요?
     blank:
       answer: date of birth
       options:
@@ -3542,8 +3542,8 @@ situations:
     why: I'm going to …는 곧 할 일을 먼저 알리는 말투예요. draw는 혈액에 쓰는 일상 동사라 venipuncture 같은 용어보다 환자가 알아듣기 쉬워요.
     decoy: a large tube
     distractorsKo:
-    - 차트에 기록해 둘게요
-    - 소변 검체를 받을게요
+    - 작은 튜브 두 개 분량의 혈액을 채취할게요.
+    - 작은 튜브 하나 분량의 혈액을 보관할게요.
     blank:
       answer: draw
       options:
@@ -3567,8 +3567,8 @@ situations:
     why: 느낌을 미리 말해 두면 환자가 놀라지 않아요. pinch는 '따끔함'을 가리키는 흔한 말이라 pain보다 가볍게 들려요.
     decoy: a deep ache
     distractorsKo:
-    - 꽤 아프고 오래 걸려요
-    - 바늘을 두 번 쓸 거예요
+    - 따끔한 느낌이 잠깐 있고 나면 시작돼요.
+    - 따뜻한 느낌이 잠깐 있고 나면 끝나요.
     blank:
       answer: feel
       options:
@@ -3592,14 +3592,14 @@ situations:
     why: Let me …는 허락을 구하는 듯한 부드러운 제안이라 환자가 확인을 거슬리지 않게 받아들여요. 시술 전 손목밴드 확인은 환자 확인 절차의 일부예요.
     decoy: your insurance card
     distractorsKo:
-    - 시작한 뒤에 차트를 확인할게요
-    - 손목밴드를 새로 채워 드릴게요
+    - 시작하기 전에 차트를 한 번 더 확인할게요.
+    - 시작하기 전에 명찰을 한 번 더 확인할게요.
     blank:
       answer: double-check
       options:
-      - en: remove
-      - en: replace
-      - en: tighten
+      - en: disinfect
+      - en: reposition
+      - en: investigate
       - en: double-check
   - en: I'll compare this with your chart just to be safe.
     ko: 안전을 위해 이걸 차트와 대조해 볼게요.
@@ -3619,8 +3619,8 @@ situations:
     why: just to be safe는 확인을 의심이 아니라 안전을 위한 습관으로 말해 줘요. compare A with B는 두 정보를 맞대어 본다는 뜻이에요.
     decoy: with the pharmacy
     distractorsKo:
-    - 이걸 의사 선생님께 드릴게요
-    - 차트에 새로 적어 둘게요
+    - 안전을 위해 이걸 시계와 대조해 볼게요.
+    - 청결을 위해 이걸 차트와 대조해 볼게요.
     blank:
       answer: compare
       options:
@@ -3643,8 +3643,8 @@ situations:
     why: only가 소요 시간을 작게 보이게 해서 환자의 긴장을 줄여요. 시간을 구체적으로 알려 주면 막연한 불안이 줄어요.
     decoy: a few hours
     distractorsKo:
-    - 한 시간쯤 걸려요
-    - 거의 다 끝났어요
+    - 몇 분밖에 안 걸려요.
+    - 몇 초 뒤에 시작해요.
     blank:
       answer: seconds
       options:
@@ -3753,8 +3753,8 @@ situations:
     why: lets us …는 관의 목적을 '우리가 할 수 있게 해 준다'로 설명해요. 목적을 알려 주면 바늘에 대한 거부감이 줄어요.
     decoy: This heavy machine
     distractorsKo:
-    - 이 관으로 피를 뽑을 거예요
-    - 이 관은 소변을 받아 줘요
+    - 이 작은 바늘로 수액과 약을 드릴 수 있어요.
+    - 이 작은 관으로 수액과 약을 설명해 드릴 수 있어요.
     blank:
       answer: tube
       options:
@@ -3781,8 +3781,8 @@ situations:
     why: for just a second는 불편이 아주 짧다는 신호예요. sharp라고 솔직히 말해 주면 환자가 놀라지 않아요.
     decoy: a dull ache
     distractorsKo:
-    - 한참 동안 아플 거예요
-    - 아무것도 느껴지지 않아요
+    - 오래 날카로운 따끔함이 느껴질 거예요.
+    - 잠깐 차가운 느낌이 느껴질 거예요.
     blank:
       answer: pinch
       options:
@@ -3807,8 +3807,8 @@ situations:
     why: Try to …와 for me가 지시를 부탁처럼 부드럽게 만들어요. nice and still은 '가만히 잘'이라는 구어 표현이에요.
     decoy: your hand nice
     distractorsKo:
-    - 팔을 계속 움직여 주세요
-    - 팔을 위로 들어 주세요
+    - 다리를 가만히 잘 고정해 주세요.
+    - 팔을 가만히 잘 올려 주세요.
     blank:
       answer: hold
       options:
@@ -3834,8 +3834,8 @@ situations:
     why: I know …로 먼저 공감하고 but으로 안심을 잇는 구조예요. 감정을 인정한 뒤 해결책을 말하면 환자가 방어적으로 받지 않아요.
     decoy: take time
     distractorsKo:
-    - 바늘은 전혀 아프지 않아요
-    - 천천히 오래 걸릴 거예요
+    - 바늘이 아프게 느껴질 수 있지만 빨리 끝낼게요.
+    - 바늘이 무섭게 느껴질 수 있지만 같이 끝낼게요.
     blank:
       answer: scary
       options:
@@ -3860,8 +3860,8 @@ situations:
     why: just a small …은 크기를 낮춰 말해 안심시키는 표현이에요. start an IV는 정맥주사 관을 확보한다는 뜻의 실무 표현이에요.
     decoy: remove your
     distractorsKo:
-    - 이 바늘로 피를 뽑을 거예요
-    - 정맥주사 관을 빼는 거예요
+    - 정맥주사 관을 보여줄 작은 바늘일 뿐이에요.
+    - 정맥주사 관을 넣을 작은 밴드일 뿐이에요.
     blank:
       answer: start
       options:
@@ -3885,8 +3885,8 @@ situations:
     why: 진행 중에 칭찬을 섞으면 환자가 협조를 이어 가요. almost done은 끝이 가깝다는 것을 알려 주는 짧은 안내예요.
     decoy: just beginning
     distractorsKo:
-    - 아직 한참 남았어요
-    - 이제 막 시작했어요
+    - 조용히 계세요, 거의 다 됐어요.
+    - 잘하고 계세요, 곧 시작이에요.
     blank:
       answer: almost
       options:
@@ -3990,8 +3990,8 @@ situations:
     why: First가 순서를 못 박아 환자가 첫 단계를 헷갈리지 않아요. 앞에서 뒤로 닦는 것은 항문 쪽 균이 요도 쪽으로 옮겨 가지 않게 하는 방향이에요.
     decoy: this soap
     distractorsKo:
-    - 먼저 손을 씻어 주세요
-    - 뒤에서 앞으로 닦아 주세요
+    - 마지막에 이 수건으로 앞에서 뒤로 닦아 주세요.
+    - 먼저 이 수건을 앞에서 뒤로 접어 주세요.
     blank:
       answer: cloth
       options:
@@ -4017,8 +4017,8 @@ situations:
     why: then이 순서를 이어 줘요. 중간뇨는 처음 나오는 소변을 흘려보내 요도 입구의 균이 섞이지 않게 하려는 거예요.
     decoy: the first part in
     distractorsKo:
-    - 뚜껑 안쪽은 만지지 마세요
-    - 컵에 가득 채워 주세요
+    - 소변을 보시다가 처음 부분을 컵에 받아 주세요.
+    - 소변을 보시다가 중간 부분을 병에 받아 주세요.
     blank:
       answer: middle
       options:
@@ -4044,8 +4044,8 @@ situations:
     why: I'll take care of it은 환자가 더 할 일이 없다고 알려 줘요. 검체 처리를 간호사가 맡는다는 책임 분담을 분명히 해요.
     decoy: here and you'll
     distractorsKo:
-    - 검체를 직접 검사실에 가져다주세요
-    - 검체는 가지고 계세요
+    - 검체는 여기 두시면 직원이 처리할게요.
+    - 검체는 저기 두시면 제가 처리할게요.
     blank:
       answer: Leave
       options:
@@ -4069,8 +4069,8 @@ situations:
     why: This helps us …는 요청의 이유를 '우리가 정확히 하게 돕는다'로 설명해 환자 협조를 이끌어요. test for는 '~가 있는지 검사하다'라는 뜻이에요.
     decoy: ask for
     distractorsKo:
-    - 이렇게 하면 소변이 더 빨리 나와요
-    - 검사 결과는 내일 나와요
+    - 이렇게 하면 혈당 여부를 정확히 검사할 수 있어요.
+    - 이렇게 하면 감염 여부를 빠르게 검사할 수 있어요.
     blank:
       answer: accurately
       options:
@@ -4094,8 +4094,8 @@ situations:
     why: step out으로 내가 나가겠다고 먼저 말하면 환자가 혼자 채취해도 된다는 것을 알아요. give you some privacy는 '나가 드릴게요'를 환자 배려로 들리게 해요.
     decoy: I'll stay here
     distractorsKo:
-    - 제가 옆에서 도와드릴게요
-    - 커튼을 열어 둘게요
+    - 제가 나가서 문을 닫아드릴게요.
+    - 제가 나가서 가족을 불러드릴게요.
     blank:
       answer: out
       options:
@@ -4120,8 +4120,8 @@ situations:
     why: Just가 요청을 가볍고 쉬운 일로 들리게 해요. when you're done은 환자가 스스로 끝낸 시점을 정하게 해 부담을 줄여요.
     decoy: the cup into
     distractorsKo:
-    - 컵을 직접 검사실로 가져가 주세요
-    - 끝나면 벨을 눌러 주세요
+    - 다 하시면 컵을 선반 아래에 두세요.
+    - 다 하시면 컵을 책상 위에 올려 두세요.
     blank:
       answer: shelf
       options:
@@ -4228,8 +4228,8 @@ situations:
     why: to check your heart로 스티커의 목적을 먼저 알려요. electrode라는 용어 대신 stickers라고 하면 환자가 쉽게 알아들어요.
     decoy: bandages to cover
     distractorsKo:
-    - 혈압을 재려고 커프를 감을게요
-    - 체온을 재려고 이걸 붙일게요
+    - 폐를 확인하려고 이 스티커들을 붙일게요.
+    - 심장을 확인하려고 이 스티커들을 보여드릴게요.
     blank:
       answer: heart
       options:
@@ -4254,8 +4254,8 @@ situations:
     why: just listens는 기계가 전기 신호를 '듣기만' 한다고 비유해 아프지 않다는 점을 쉽게 전해요. at all이 부정을 강조해요.
     decoy: at first
     distractorsKo:
-    - 약간 따끔할 수 있어요
-    - 전기가 흐르는 느낌이 나요
+    - 전혀 아프지 않아요, 그냥 붙이기만 하는 거예요.
+    - 전혀 가렵지 않아요, 그냥 듣기만 하는 거예요.
     blank:
       answer: listens
       options:
@@ -4280,8 +4280,8 @@ situations:
     why: for about ten seconds로 필요한 시간을 구체적으로 알려 줘요. 움직임이 심전도 파형에 잡음을 만들 수 있어 가만히 있어 달라고 부탁해요.
     decoy: ten minutes
     distractorsKo:
-    - 10분 정도 누워 계세요
-    - 숨을 크게 쉬어 주세요
+    - 10분 정도만 가만히 계셔 주세요.
+    - 10초 정도만 편하게 계셔 주세요.
     blank:
       answer: ten
       options:
@@ -4304,8 +4304,8 @@ situations:
     why: is called …는 낯선 용어에 이름표를 붙여 주는 말이에요. 미국에서는 EKG와 ECG를 둘 다 쓰니 병원이 쓰는 말을 따르면 돼요.
     decoy: is not
     distractorsKo:
-    - 이 검사는 혈액 검사예요
-    - 이 검사는 엑스레이라고 해요
+    - 이 검사를 뇌파라고 해요.
+    - 이 장비를 심전도라고 해요.
     blank:
       answer: EKG
       options:
@@ -4329,8 +4329,8 @@ situations:
     why: Try not to …는 금지 대신 '노력해 달라'는 완곡한 부탁이에요. 말하면 근육 움직임이 기록에 잡음으로 섞일 수 있어요.
     decoy: sleep while
     distractorsKo:
-    - 기록되는 동안 크게 숨 쉬세요
-    - 기록이 끝나면 스티커를 뗄게요
+    - 저장되는 동안은 말씀을 삼가 주세요.
+    - 인쇄되는 동안은 말씀을 삼가 주세요.
     blank:
       answer: recording
       options:
@@ -4353,8 +4353,8 @@ situations:
     why: in just a minute는 곧 결과가 나올 거라는 기대를 줘요. 구체적 시간을 알려 주면 기다림이 덜 불안해요.
     decoy: results next
     distractorsKo:
-    - 결과는 며칠 뒤에 나와요
-    - 결과는 의사 선생님만 보실 수 있어요
+    - 결과는 내일 나올 거예요.
+    - 결과는 금방 설명할 거예요.
     blank:
       answer: results
       options:
@@ -4442,8 +4442,8 @@ situations:
     why: help us find…는 검사가 원인을 찾는 도구라고 말해, 검사가 많아도 이유가 있다는 것을 알려요. what's causing …은 원인을 가리키는 관계절이에요.
     decoy: us hide
     distractorsKo:
-    - 이 검사들로 통증을 바로 없앨 수 있어요
-    - 이 검사들은 보험 때문에 해요
+    - 이 검사들로 기침의 원인을 찾을 수 있어요.
+    - 이 검사들로 통증의 원인을 설명할 수 있어요.
     blank:
       answer: causing
       options:
@@ -4467,8 +4467,8 @@ situations:
     why: routine step이라고 하면 환자 상태가 나빠서가 아니라 모두에게 하는 표준 절차라는 뜻이 전해져요. to keep you safe는 목적을 안전으로 밝혀요.
     decoy: step to scare
     distractorsKo:
-    - 환자분이 위독해서 하는 절차예요
-    - 보험 때문에 하는 절차예요
+    - 환자분을 안전하게 지키기 위한 특별한 절차예요.
+    - 환자분을 편하게 해 드리기 위한 일상적인 절차예요.
     blank:
       answer: routine
       options:
@@ -4492,8 +4492,8 @@ situations:
     why: as soon as는 결과가 나오는 즉시라는 약속이에요. 정확한 시간을 약속하지 않으면서도 환자를 기다리게만 두지 않는 말이에요.
     decoy: after we
     distractorsKo:
-    - 결과는 의사 선생님이 알려 주실 거예요
-    - 결과는 내일 알려 드릴게요
+    - 결과가 나오는 대로 바로 의사에게 알려 드릴게요.
+    - 결과가 나오는 대로 내일 알려 드릴게요.
     blank:
       answer: as soon as
       options:
@@ -4518,8 +4518,8 @@ situations:
     why: I understand로 먼저 감정을 인정하면 'Calm down'처럼 감정을 깎아내리는 말보다 환자가 훨씬 편하게 받아들여요. stressful은 상황이 주는 부담을 말해요.
     decoy: is silly
     distractorsKo:
-    - 기다리는 건 어렵지 않아요
-    - 답은 곧 나올 테니 걱정 마세요
+    - 답을 기다리는 게 지루하다는 거 이해해요.
+    - 검사를 기다리는 게 스트레스라는 거 이해해요.
     blank:
       answer: stressful
       options:
@@ -4543,8 +4543,8 @@ situations:
     why: once we're done은 설명이 '모든 검사가 끝난 뒤'라고 시점을 못 박아요. 누가 설명하는지(의사)를 밝혀 환자가 누구에게 물어야 할지 알게 해요.
     decoy: The pharmacist will
     distractorsKo:
-    - 의사 선생님은 오늘 안 오세요
-    - 검사 중에 설명해 드릴게요
+    - 다 끝나면 간호사 선생님이 전부 설명해 주실 거예요.
+    - 다 끝나면 의사 선생님이 전부 확인해 주실 거예요.
     blank:
       answer: explain
       options:
@@ -4569,8 +4569,8 @@ situations:
     why: You're not alone으로 환자의 고립감을 먼저 덜어요. we're working on this together는 환자를 치료 과정의 동반자로 말하는 표현이에요.
     decoy: this by yourself
     distractorsKo:
-    - 이건 혼자서 감당하셔야 해요
-    - 의사 선생님이 혼자 해결하실 거예요
+    - 혼자가 아니에요, 저희가 함께 기다리고 있어요.
+    - 혼자가 아니에요, 가족이 함께 해결하고 있어요.
     blank:
       answer: together
       options:
@@ -4676,8 +4676,8 @@ situations:
     why: I'm sorry this is …는 실수를 인정하는 말이 아니라 환자의 불편에 대한 사과예요. 정맥이 어렵다는 사실을 솔직히 알리면 환자가 기다릴 마음의 준비를 해요.
     decoy: a few hours
     distractorsKo:
-    - 이번엔 한 번에 성공했어요
-    - 정맥이 아주 잘 보여요
+    - 몇 분 더 시도하게 돼서 죄송해요.
+    - 몇 번 더 시도하게 돼서 감사해요.
     blank:
       answer: sorry
       options:
@@ -4703,8 +4703,8 @@ situations:
     why: so I'll …로 문제의 이유와 해결책을 한 문장에 묶었어요. 따뜻하게 하면 정맥이 확장돼 더 잘 보이고 잘 잡혀요.
     decoy: a cold pack
     distractorsKo:
-    - 정맥이 잘 보여서 바로 놓을게요
-    - 얼음팩을 올려 볼게요
+    - 정맥이 잘 안 보여서 베개를 써볼게요.
+    - 손이 잘 안 보여서 온찜질팩을 써볼게요.
     blank:
       answer: warm
       options:
@@ -4729,8 +4729,8 @@ situations:
     why: If needed로 조건을 달아 '실패하면 바로 넘긴다'가 아니라 필요할 때만이라는 여지를 줘요. colleague는 동료를 가리키는 중립적인 말이에요.
     decoy: a relative who's great
     distractorsKo:
-    - 필요 없으면 제가 다시 시도할게요
-    - 보호자께 부탁드릴게요
+    - 필요하면 이 일에 능숙한 의사에게 부탁할게요.
+    - 필요하면 이 일에 능숙한 동료에게 설명할게요.
     blank:
       answer: colleague
       options:
@@ -4755,8 +4755,8 @@ situations:
     why: I know …로 감정을 먼저 읽고 and I appreciate로 감사까지 이어요. patience는 기다려 준 환자에게 건네는 흔한 감사의 대상이에요.
     decoy: your apology
     distractorsKo:
-    - 짜증 내셔도 괜찮아요
-    - 금방 끝나니 조금만 참으세요
+    - 화나실 텐데, 참아주셔서 감사해요.
+    - 답답하실 텐데, 도와주셔서 감사해요.
     blank:
       answer: patience
       options:
@@ -4780,8 +4780,8 @@ situations:
     why: Let's …는 '우리가 함께'라는 뜻이라 환자도 결정에 참여한다는 느낌을 줘요. short break로 쉬는 시간이 길지 않다고 알려요.
     decoy: a long wait and
     distractorsKo:
-    - 이제 그만하고 다음에 해요
-    - 쉬지 않고 바로 다시 할게요
+    - 잠깐 쉬었다가 다시 설명해볼게요.
+    - 오래 쉬었다가 다시 시도해볼게요.
     blank:
       answer: break
       options:
@@ -4805,8 +4805,8 @@ situations:
     why: once more로 시도에 한도를 두고, and then으로 그다음 계획을 이어요. 한 사람이 두 번쯤 시도하고도 안 되면 능숙한 동료나 초음파 유도로 넘기는 것이 기준이라, 끝없이 찌르지 않는다고 환자에게 알려요.
     decoy: until we find
     distractorsKo:
-    - 다른 팔에서 해 볼게요
-    - 초음파로 정맥을 먼저 찾아볼게요
+    - 한 번만 더 해 보고, 그다음엔 초음파를 쓸게요.
+    - 두 번만 더 해 보고, 그다음엔 도움을 받을게요.
     blank:
       answer: help
       options:
@@ -4912,8 +4912,8 @@ situations:
     why: You can …은 지시가 아니라 '해도 좋다'는 허락의 모양이라 보호자가 부담 없이 받아들여요. 안겨 있으면 아이가 안정되고 팔을 잡아 주기도 쉬워요.
     decoy: him under your
     distractorsKo:
-    - 아이는 혼자 앉혀 주세요
-    - 팔을 세게 잡아 주세요
+    - 침대에 눕혀 계시면 아이가 진정하는 데 도움이 돼요.
+    - 무릎에 안고 계시면 아이가 웃는 데 도움이 돼요.
     blank:
       answer: calm
       options:
@@ -4938,8 +4938,8 @@ situations:
     why: count to three together는 아이가 따라 세며 주의를 옮길 수 있게 해요. 정확한 숫자를 알려 주면 끝이 보인다는 안심을 줘요.
     decoy: ten together and
     distractorsKo:
-    - 제가 혼자 셀게요
-    - 다 끝나면 알려 드릴게요
+    - 함께 열을 세면 바로 끝나요.
+    - 함께 셋을 세면 바로 시작해요.
     blank:
       answer: together
       options:
@@ -4964,8 +4964,8 @@ situations:
     why: 끝난 뒤의 보상을 미리 알려 주면 아이가 참는 동기가 생겨요. are waiting은 보상이 이미 준비돼 있다는 느낌을 줘요.
     decoy: A shot and
     distractorsKo:
-    - 끝나면 주사를 한 번 더 맞아요
-    - 스티커는 다음에 줄게요
+    - 끝나면 풍선이랑 하이파이브가 기다리고 있어요.
+    - 시작하면 스티커랑 하이파이브가 기다리고 있어요.
     blank:
       answer: sticker
       options:
@@ -4988,8 +4988,8 @@ situations:
     why: 보호자에게 '아주 짧다'를 알리는 말이에요. should로 장담 대신 예상으로 말하고, 아이에게 직접 '아프지 않다'고 약속하지는 않아요 — 같은 상황 swap처럼 정직한 말이 신뢰를 지켜요.
     decoy: because he
     distractorsKo:
-    - 아이가 알아차릴 때까지 걸려요
-    - 아이가 울면 끝나요
+    - 아마 아이가 눈 뜨기도 전에 끝날 거예요.
+    - 아마 아이가 알아차리기도 전에 시작할 거예요.
     blank:
       answer: before
       options:
@@ -5012,8 +5012,8 @@ situations:
     why: You're doing an amazing job은 보호자에게 구체적인 행동을 칭찬하는 틀이에요. 보호자가 안심하면 아이도 더 안정되기 쉬워요.
     decoy: a poor job keeping
     distractorsKo:
-    - 아이를 너무 세게 잡고 계세요
-    - 아이를 혼자 두셔도 돼요
+    - 아이를 안아주느라 정말 잘하고 계세요.
+    - 아이를 진정시키느라 정말 지치셨어요.
     blank:
       answer: amazing
       options:
@@ -5036,8 +5036,8 @@ situations:
     why: so brave처럼 구체적인 칭찬을 아이가 들을 수 있게 말하면 협조가 이어져요. right now는 지금 이 순간의 행동을 칭찬한다는 표시예요.
     decoy: so loud
     distractorsKo:
-    - 지금 아이가 많이 울고 있네요
-    - 아이가 너무 졸려 보여요
+    - 지금 정말 조용하게 하고 있네요.
+    - 어제 정말 용감하게 했네요.
     blank:
       answer: brave
       options:
@@ -5145,8 +5145,8 @@ situations:
     why: Have you ever …?는 지금까지의 모든 경험을 묻는 현재완료예요. 이전 조영제 반응은 이번 반응의 위험을 가늠하는 핵심 병력이에요.
     decoy: dye today
     distractorsKo:
-    - 오늘 조영제를 처음 맞으시나요?
-    - 조영제 검사는 어디서 받으셨나요?
+    - 예전에 조영제를 맞아 보신 적 있나요?
+    - 예전에 조영제에 반응을 보인 가족이 있나요?
     blank:
       answer: reacted
       options:
@@ -5172,8 +5172,8 @@ situations:
     why: Do you have … or take …?는 두 가지를 한 문장에 묶어 묻는 형태예요. 신장 기능이 나쁘거나 메트포르민을 복용하면 조영제 검사 전에 확인해야 하는 항목이에요.
     decoy: any shoulder
     distractorsKo:
-    - 오늘 식사는 하셨나요?
-    - 최근에 수술을 받으셨나요?
+    - 신장에 문제가 있으시거나 메트포르민을 사셨나요?
+    - 신장에 문제가 있으시거나 메트포르민을 오늘 드셨나요?
     blank:
       answer: kidney
       options:
@@ -5199,8 +5199,8 @@ situations:
     why: may feel은 모두가 느끼는 건 아니라는 여지를 두는 말이고, that's normal은 놀라지 않게 먼저 안심시켜요. 조영제를 넣으면 따뜻한 느낌이 드는 것은 흔한 반응이에요.
     decoy: feel itchy —
     distractorsKo:
-    - 조영제가 차갑게 느껴지면 알려 주세요
-    - 따뜻하면 위험하니 멈출게요
+    - 조영제가 차갑게 느껴질 수 있는데 정상이에요.
+    - 조영제가 쓴맛으로 느껴질 수 있는데 정상이에요.
     blank:
       answer: warm
       options:
@@ -5223,8 +5223,8 @@ situations:
     why: Please tell me about …은 질문 대신 요청의 모양이라 부드러워요. any를 쓰면 없을 수도 있다는 전제로 열린 질문이 돼요.
     decoy: any visitors
     distractorsKo:
-    - 오늘 어떤 약을 드셨는지 말해 주세요
-    - 가족력에 대해 말해 주세요
+    - 가지고 계신 알레르기가 있으면 보여 주세요.
+    - 가지고 계신 알레르기가 있으면 눌러 주세요.
     blank:
       answer: allergies
       options:
@@ -5249,8 +5249,8 @@ situations:
     why: This helps us …는 확인의 이유를 환자의 이익으로 설명해요. keep your kidneys safe는 신장을 보호하려는 목적을 밝혀요.
     decoy: keep your lungs
     distractorsKo:
-    - 이렇게 하면 검사 시간이 더 짧아져요
-    - 검사 중에는 움직이지 않으셔도 돼요
+    - 이렇게 하면 검사 후에 신장을 안전하게 지킬 수 있어요.
+    - 이렇게 하면 검사 전에 신장을 안전하게 지킬 수 있어요.
     blank:
       answer: kidneys
       options:
@@ -5274,8 +5274,8 @@ situations:
     why: passes quickly는 느낌이 곧 지나간다는 시간 정보이고, it's expected는 이상이 아니라 예상된 반응이라는 안심이에요.
     decoy: it's unusual
     distractorsKo:
-    - 그 느낌이 계속되면 위험해요
-    - 차가운 느낌이 곧 지나가요
+    - 그 차가운 느낌은 금방 지나가고, 예상된 거예요.
+    - 그 따뜻한 느낌은 금방 지나가고, 아프지 않아요.
     blank:
       answer: quickly
       options:
@@ -5381,8 +5381,8 @@ situations:
     why: first가 소독이 채취보다 앞서는 첫 단계임을 못 박아요. really well은 소독을 철저히 한다는 강조예요.
     decoy: touch
     distractorsKo:
-    - 부위를 먼저 만져 볼게요
-    - 소독은 채취한 뒤에 할게요
+    - 먼저 손을 아주 깨끗이 소독해야 해요.
+    - 먼저 부위를 아주 깨끗이 소독할 솜을 가져올게요.
     blank:
       answer: clean
       options:
@@ -5409,8 +5409,8 @@ situations:
     why: once it's prepped는 소독이 끝난 시점부터라는 조건이에요. 소독한 부위를 만지면 피부 균이 다시 묻어 검체가 오염될 수 있어요.
     decoy: to rinse
     distractorsKo:
-    - 소독이 끝나면 부위를 문질러 주세요
-    - 소독약이 조금 차가울 수 있어요
+    - 붕대를 감으면 그 부위를 만지지 말아 주세요.
+    - 소독이 끝나면 그 부위를 가리지 말아 주세요.
     blank:
       answer: once
       options:
@@ -5437,8 +5437,8 @@ situations:
     why: so가 앞 문장의 이유를 결과로 이어 줘요. 피부 균이 섞이지 않은 검체여야 배양 결과를 믿을 수 있어요.
     decoy: the room clean
     distractorsKo:
-    - 이렇게 하면 검체가 더 빨리 가요
-    - 결과는 이틀쯤 뒤에 나와요
+    - 이렇게 하면 검체가 깨끗하게 유지돼서 결과가 빨라져요.
+    - 이렇게 하면 검체가 뜨겁게 유지돼서 결과가 정확해져요.
     blank:
       answer: accurate
       options:
@@ -5462,8 +5462,8 @@ situations:
     why: can은 '그럴 수 있다'는 가능성을 나타내 겁을 주지 않고 사실만 전해요. false result는 실제 감염과 다른 결과가 나오는 것을 말해요.
     decoy: a clear result
     distractorsKo:
-    - 오염되면 결과가 더 빨리 나와요
-    - 소독약이 마를 때까지 잠깐 기다릴게요
+    - 오염되면 늦은 결과가 나올 수 있어요.
+    - 오염되면 잘못된 처방이 나올 수 있어요.
     blank:
       answer: Contamination
       options:
@@ -5489,8 +5489,8 @@ situations:
     why: Just가 요청을 가볍게 만들고 for a moment가 짧은 시간임을 알려요. while I finish는 간호사가 끝내는 동안이라는 범위를 정해 줘요.
     decoy: since
     distractorsKo:
-    - 제가 시작할 때까지 움직이셔도 돼요
-    - 이제 편하게 움직이셔도 돼요
+    - 제가 끝낼 때까지 잠깐만 편하게 계세요.
+    - 의사가 끝낼 때까지 잠깐만 가만히 계세요.
     blank:
       answer: still
       options:
@@ -5514,8 +5514,8 @@ situations:
     why: almost done으로 끝이 가깝다고 알리고 thanks for …로 환자의 인내에 감사해요. 감사 표현은 협조를 이어 가게 해 줘요.
     decoy: — beware of
     distractorsKo:
-    - 아직 한참 남았어요
-    - 불편하셨다면 죄송해요
+    - 거의 다 됐어요, 도와주셔서 감사해요.
+    - 거의 다 됐어요, 와주셔서 감사해요.
     blank:
       answer: thanks
       options:
@@ -5623,8 +5623,8 @@ situations:
     why: Have you had …?는 해 본 적이 있는지 묻는 현재완료 질문이에요. 같은 항생제를 전에 쓴 적이 있는지는 알레르기 위험을 가늠하는 질문이에요.
     decoy: vaccine before
     distractorsKo:
-    - 이 주사를 어디서 맞으셨나요?
-    - 지금 열이 있으신가요?
+    - 이 항생제를 어제 맞아 보신 적 있나요?
+    - 이 병원에서 전에 맞아 보신 적 있나요?
     blank:
       answer: antibiotic
       options:
@@ -5650,8 +5650,8 @@ situations:
     why: right away는 증상이 느껴지면 기다리지 말고 즉시 알리라는 뜻이에요. 가려움과 숨참은 항생제 알레르기 반응의 초기 신호일 수 있어요.
     decoy: later if you
     distractorsKo:
-    - 졸리면 바로 말씀해 주세요
-    - 괜찮아지면 바로 말씀해 주세요
+    - 가렵거나 숨이 차면 바로 눌러 주세요.
+    - 추우시거나 숨이 차면 바로 말씀해 주세요.
     blank:
       answer: itchy
       options:
@@ -5677,8 +5677,8 @@ situations:
     why: I'll be …ing는 계속 지켜보겠다는 진행형 약속이에요. 첫 투여 중에는 반응을 빨리 알아채기 위해 더 가까이 살펴요.
     decoy: before
     distractorsKo:
-    - 한 시간쯤 걸려 들어가요
-    - 첫 투여 뒤에는 보러 오지 않아요
+    - 첫 투여 동안 숨소리를 들을게요.
+    - 첫 투여 동안 같이 기다려 드릴게요.
     blank:
       answer: closely
       options:
@@ -5704,8 +5704,8 @@ situations:
     why: ever를 넣으면 '살면서 한 번이라도'로 범위가 넓어져요. 과거 약물 알레르기 반응은 어떤 약을 쓸지 정하는 핵심 병력이에요.
     decoy: Did you just
     distractorsKo:
-    - 지금 알레르기 약을 드시고 계세요?
-    - 음식 알레르기가 있으세요?
+    - 음식에 알레르기 반응을 보이신 적 있나요?
+    - 약물에 알레르기 반응을 보인 가족이 있나요?
     blank:
       answer: ever
       options:
@@ -5730,8 +5730,8 @@ situations:
     why: call button으로 환자가 직접 부를 수 있는 길을 알려 줘요. 첫 투여 중 이상한 느낌이 생기면 바로 알려야 하므로, 간호사가 곁에 없을 때도 쓸 수 있는 방법을 쥐여 줘요.
     decoy: every hour
     distractorsKo:
-    - 주입 속도를 조금 낮출게요
-    - 이 약은 삼십 분 동안 들어가요
+    - 숨이 차면 호출 버튼을 눌러 주세요.
+    - 뭔가 빠지면 호출 버튼을 눌러 주세요.
     blank:
       answer: button
       options:
@@ -5755,8 +5755,8 @@ situations:
     why: check on you는 환자 상태를 보러 들르겠다는 표현이에요. in a few minutes로 구체적인 시간을 알려 주면 환자가 기다릴 수 있어요.
     decoy: I'll check out
     distractorsKo:
-    - 몇 시간 뒤에 확인하러 올게요
-    - 다음 교대 때 확인하러 올게요
+    - 몇 분 후에 약을 드리러 올게요.
+    - 몇 분 후에 의사가 다시 확인하러 올게요.
     blank:
       answer: minutes
       options:
@@ -5863,8 +5863,8 @@ situations:
     why: Two of us가 두 사람이 확인한다는 것을 먼저 알려 환자가 놀라지 않게 해요. 수혈 전 이름과 혈액 정보를 두 사람이 확인하는 것은 안전 절차예요.
     decoy: One of us
     distractorsKo:
-    - 한 사람이 이름만 확인할 거예요
-    - 수혈은 두 시간쯤 걸려요
+    - 세 사람이 이름과 혈액형을 이중 확인할 거예요.
+    - 두 사람이 팔찌와 혈액형을 이중 확인할 거예요.
     blank:
       answer: blood type
       options:
@@ -5891,8 +5891,8 @@ situations:
     why: Tell me if …로 어떤 증상을 알려야 하는지 구체적인 예를 들어 줘요. 오한·가려움·등 통증은 수혈 반응의 흔한 신호예요.
     decoy: ', or hair loss'
     distractorsKo:
-    - 수혈 중에도 물은 드셔도 돼요
-    - 가려워도 긁지 말고 참아 주세요
+    - 오한, 가려움, 등 통증이 느껴지면 눌러 주세요.
+    - 열, 가려움, 등 통증이 느껴지면 말씀해 주세요.
     blank:
       answer: back pain
       options:
@@ -5917,8 +5917,8 @@ situations:
     why: The first fifteen minutes를 문장 앞에 놓아 처음 15분이 핵심임을 부각해요. 수혈 반응은 시작 직후에 나타나기 쉬워 초반에 더 자주 살펴요.
     decoy: The last fifteen
     distractorsKo:
-    - 수혈 중에도 화장실은 가실 수 있어요
-    - 처음 15분은 혼자 두실 거예요
+    - 처음 30분 동안은 아주 면밀히 지켜볼게요.
+    - 처음 15분 동안은 제가 곁에 앉아 있을게요.
     blank:
       answer: closely
       options:
@@ -5942,8 +5942,8 @@ situations:
     why: This confirms는 앞서 한 확인의 목적을 요약하는 연결 말이에요. matches you exactly는 혈액이 환자와 정확히 맞아야 한다는 점을 강조해요.
     decoy: the label matches
     distractorsKo:
-    - 이렇게 하면 수혈이 더 빨리 끝나요
-    - 이렇게 하면 수혈 속도가 정해져요
+    - 이렇게 하면 혈액이 정확히 얼마인지 확인돼요.
+    - 이렇게 하면 혈액이 정확히 빨리 들어가는지 확인돼요.
     blank:
       answer: exactly
       options:
@@ -5966,8 +5966,8 @@ situations:
     why: A second nurse로 확인하는 사람이 한 명 더 있다고 알려요. verify는 check보다 격식 있는 말로 수혈 확인 절차에서 자주 써요.
     decoy: A new doctor
     distractorsKo:
-    - 다른 간호사가 모든 걸 혼자 확인할 거예요
-    - 저 혼자 모든 걸 확인할 거예요
+    - 다른 의사가 저와 함께 모든 걸 검증할 거예요.
+    - 다른 간호사가 혼자 모든 걸 검증할 거예요.
     blank:
       answer: verify
       options:
@@ -5992,8 +5992,8 @@ situations:
     why: If anything feels off는 증상 이름을 몰라도 '이상하면'이라고 열어 두는 표현이에요. 호출 버튼을 바로 누르게 하면 반응 대응이 빨라져요.
     decoy: ', wait for your call'
     distractorsKo:
-    - 이상해도 조금 참았다가 눌러 주세요
-    - 괜찮으면 호출 버튼을 눌러 주세요
+    - 뭔가 아프면 바로 호출 버튼을 눌러 주세요.
+    - 몸이 가려우면 바로 호출 버튼을 눌러 주세요.
     blank:
       answer: press
       options:
@@ -6080,8 +6080,8 @@ situations:
     why: goes through …into …는 관이 지나는 경로를 두 전치사로 보여 줘요. 길을 미리 알려 주면 낯선 처치에 대한 막연한 불안이 줄어요.
     decoy: around your
     distractorsKo:
-    - 이 관은 입을 통해 폐로 들어가요
-    - 이 관은 팔의 혈관에 들어가요
+    - 이 약은 코를 통해 위까지 들어가요.
+    - 이 관은 입을 통해 위까지 들어가요.
     blank:
       answer: stomach
       options:
@@ -6105,8 +6105,8 @@ situations:
     why: When I say go로 삼킬 타이밍을 신호로 정해 줘요. 삼키면 관이 식도로 넘어가기 쉬워진다고 알려 주는 말이에요.
     decoy: to stop
     distractorsKo:
-    - 제가 말하면 물을 뱉어 주세요
-    - 신호 전에 미리 삼켜 주세요
+    - 제가 신호하면 물을 삼켜서 넘어가는 걸 지켜봐 주세요.
+    - 제가 신호하면 껌을 씹어서 넘어가는 걸 도와주세요.
     blank:
       answer: swallow
       options:
@@ -6133,8 +6133,8 @@ situations:
     why: It feels strange, but …은 불편한 점을 인정한 뒤 안심시키는 구조예요. 비위관은 숨 쉬는 길을 막지 않는다고 알려 주는 말이에요.
     decoy: It looks strange
     distractorsKo:
-    - 아프지만 곧 괜찮아져요
-    - 숨쉬는 걸 막을 수 있어요
+    - 느낌이 이상하겠지만 걷는 데는 지장이 없어요.
+    - 느낌이 간지럽겠지만 숨쉬는 데는 지장이 없어요.
     blank:
       answer: strange
       options:
@@ -6159,8 +6159,8 @@ situations:
     why: small sips는 한 번에 조금씩 마시라는 뜻이고 when I count는 삼키는 타이밍을 세는 소리에 맞추게 해요. 한꺼번에 많이 마시면 사레들릴 수 있어요.
     decoy: Take big gulps
     distractorsKo:
-    - 한 번에 컵을 다 마셔 주세요
-    - 제가 세기 전에 삼켜 주세요
+    - 제가 세면 물을 조금씩 마시고 뱉어 주세요.
+    - 제가 세면 주스를 조금씩 마시고 삼켜 주세요.
     blank:
       answer: small
       options:
@@ -6184,14 +6184,14 @@ situations:
     why: I know로 불편함을 인정하고 that's normal로 흔한 일이라고 안심시켜요. 먼저 공감한 뒤 정상이라고 말해야 불편을 가볍게 넘긴다는 느낌을 주지 않아요.
     decoy: feels dangerous
     distractorsKo:
-    - 위험할 수 있으니 조심하세요
-    - 불편하지 않으시죠?
+    - 복잡하게 느껴지는 거 알아요, 정상이에요.
+    - 불편하게 느껴지는 거 알아요, 금방 끝나요.
     blank:
       answer: uncomfortable
       options:
-      - en: painless
-      - en: pleasant
-      - en: relaxing
+      - en: unbelievable
+      - en: complicated
+      - en: impossible
       - en: uncomfortable
   - en: We're almost through — a few more swallows.
     ko: 거의 다 끝나가요, 몇 번만 더 삼켜 주세요.
@@ -6208,8 +6208,8 @@ situations:
     why: almost through는 끝이 가깝다는 신호이고 a few more로 남은 횟수가 많지 않다고 알려요. 남은 양을 알려 주면 환자가 마지막까지 협조하기 쉬워요.
     decoy: — a hundred
     distractorsKo:
-    - 이제 막 시작했으니 천천히 삼키세요
-    - 삼킬 필요는 이제 없어요
+    - 이제 시작이에요, 몇 번만 더 삼켜 주세요.
+    - 거의 다 끝나가요, 몇 번만 더 마셔 주세요.
     blank:
       answer: swallows
       options:
@@ -6315,8 +6315,8 @@ situations:
     why: This soft tube로 부드러운 관이라는 점을 먼저 말해 거부감을 줄여요. drains는 고인 소변이 관을 따라 빠져나온다는 뜻이에요.
     decoy: makes the urine
     distractorsKo:
-    - 이 관으로 수액을 드릴 거예요
-    - 이 관은 소변을 막아 줘요
+    - 이 부드러운 관이 막혀 있는 가스를 배출해 줘요.
+    - 이 부드러운 관이 막혀 있는 소변을 검사해 줘요.
     blank:
       answer: drains
       options:
@@ -6342,8 +6342,8 @@ situations:
     why: to prevent infection으로 소독하는 이유를 먼저 밝혀요. 도뇨관은 무균 술기로 넣어야 요로 감염 위험을 줄일 수 있어요.
     decoy: quickly to
     distractorsKo:
-    - 무릎을 세우고 다리를 벌려 주세요
-    - 관을 조심스럽게 빼 드릴게요
+    - 통증을 예방하기 위해 모든 걸 조심스럽게 소독할게요.
+    - 감염을 예방하기 위해 모든 걸 조심스럽게 덮어 둘게요.
     blank:
       answer: prevent
       options:
@@ -6370,8 +6370,8 @@ situations:
     why: uncomfortable for a moment처럼 아프다 대신 불편하다고 말하고 기간도 짧다고 알려요. then으로 곧 나아지는 흐름을 보여 줘요.
     decoy: an hour
     distractorsKo:
-    - 한참 동안 계속 불편할 거예요
-    - 불편한 느낌은 전혀 없을 거예요
+    - 잠깐 따끔하다가 곧 압박감이 가라앉아요.
+    - 잠깐 불편하다가 곧 가려움이 가라앉아요.
     blank:
       answer: eases
       options:
@@ -6394,8 +6394,8 @@ situations:
     why: keep you covered는 노출을 최소화하겠다는 약속이에요. as much as possible로 처치에 필요한 만큼만 드러낸다고 솔직히 알려요.
     decoy: warm as much
     distractorsKo:
-    - 필요하면 이불을 걷을게요
-    - 가능한 한 빨리 끝낼게요
+    - 가능한 한 최대한 빨리 해드릴게요.
+    - 가능한 한 최대한 닦아드릴게요.
     blank:
       answer: covered
       options:
@@ -6418,8 +6418,8 @@ situations:
     why: Do I have your okay …?는 동의를 구하는 부드러운 질문이에요. go ahead는 처치를 시작하는 것을 뜻하는 구어 표현이에요.
     decoy: your bed to
     distractorsKo:
-    - 지금 바로 시작할게요
-    - 소변은 얼마나 나왔나요?
+    - 나가도 될까요?
+    - 들어가도 될까요?
     blank:
       answer: ahead
       options:
@@ -6443,8 +6443,8 @@ situations:
     why: This will help …는 처치의 효과를 환자의 이익으로 설명해요. empty는 형용사가 아니라 '비워지다'라는 동사로 쓰였어요.
     decoy: fill slowly
     distractorsKo:
-    - 이렇게 하면 방광이 서서히 차올라요
-    - 이렇게 하면 소변이 안 나오게 돼요
+    - 이렇게 하면 방광을 완전히 씻는 데 도움이 돼요.
+    - 이렇게 하면 방광을 천천히 비우는 데 도움이 돼요.
     blank:
       answer: empty
       options:
@@ -6549,8 +6549,8 @@ situations:
     why: right at your bedside로 라벨을 붙이는 장소가 환자 곁임을 못 박아요. 환자 앞에서 붙여야 다른 환자 검체와 바뀌는 사고를 막을 수 있어요.
     decoy: room number right at
     distractorsKo:
-    - 각 튜브에 라벨을 간호사실에서 붙일 거예요
-    - 튜브마다 병실 번호를 적고 있어요
+    - 침상 곁에서 바로 각 튜브에 바코드로 라벨을 붙이고 있어요.
+    - 침상 곁에서 바로 각 튜브의 이름으로 라벨을 맞추고 있어요.
     blank:
       answer: bedside
       options:
@@ -6575,8 +6575,8 @@ situations:
     why: Can you …?는 명령 대신 부탁의 모양이라 같은 질문을 반복해도 덜 퉁명스러워요. once more가 이미 한 질문을 한 번 더 한다고 미리 알려 줘요.
     decoy: your room
     distractorsKo:
-    - 병실 번호를 한 번 더 확인해 주시겠어요?
-    - 차트에 서명해 주시겠어요?
+    - 주소를 한 번 더 확인해 주시겠어요?
+    - 전화번호를 한 번 더 확인해 주시겠어요?
     blank:
       answer: confirm
       options:
@@ -6601,8 +6601,8 @@ situations:
     why: This makes sure …는 '이렇게 해서 확실히 …되게 한다'는 목적을 말해요. never get mixed up은 다른 환자 결과와 섞이지 않게 한다는 뜻이에요.
     decoy: often get
     distractorsKo:
-    - 이렇게 하면 결과가 가끔 섞일 수 있어요
-    - 이렇게 하면 결과가 더 빨리 나와요
+    - 이렇게 하면 결과가 절대 늦지 않아요.
+    - 이렇게 하면 라벨이 절대 섞이지 않아요.
     blank:
       answer: never
       options:
@@ -6626,8 +6626,8 @@ situations:
     why: its own barcode는 튜브마다 고유한 표식이 있다는 뜻이에요. right now는 나중으로 미루지 않고 지금 한다는 점을 강조해요.
     decoy: the same barcode
     distractorsKo:
-    - 튜브마다 바코드는 나중에 붙일 거예요
-    - 모든 튜브에 같은 바코드를 붙여요
+    - 각 가방마다 지금 바로 고유 바코드를 붙여요.
+    - 각 튜브마다 지금 바로 고유 스티커를 붙여요.
     blank:
       answer: right now
       options:
@@ -6652,8 +6652,8 @@ situations:
     why: so nothing gets …는 '그래서 …되는 일이 없게'라는 목적절이에요. switched는 검체가 다른 환자 것과 바뀌는 사고를 가리켜요.
     decoy: the station so
     distractorsKo:
-    - 나중에 간호사실에서 라벨을 붙여요
-    - 검사 결과는 한 시간쯤 걸려요
+    - 나중에 늦지 않도록 침상 곁에서 라벨을 붙여요.
+    - 나중에 바뀌지 않도록 침상 곁에서 라벨을 읽어요.
     blank:
       answer: label
       options:
@@ -6679,8 +6679,8 @@ situations:
     why: every label로 하나도 빠뜨리지 않겠다는 약속이에요. before sending으로 보내기 전이 마지막 안전망이라는 순서를 알려요.
     decoy: label after sending
     distractorsKo:
-    - 결과는 담당 의사에게 갈 거예요
-    - 라벨은 검사실에서 확인할 거예요
+    - 병동으로 보내기 전에 모든 라벨을 다시 확인할게요.
+    - 검사실로 보내기 전에 모든 서류를 다시 확인할게요.
     blank:
       answer: before
       options:
@@ -6766,8 +6766,8 @@ situations:
     why: Please keep …은 자세를 유지해 달라는 정중한 부탁이에요. turned to this side처럼 방향을 구체적으로 말해야 환자가 따라 하기 쉬워요.
     decoy: hand turned to
     distractorsKo:
-    - 머리를 반대쪽으로 돌려 주세요
-    - 머리를 정면으로 들어 주세요
+    - 손을 이쪽 방향으로 돌린 채 유지해 주세요.
+    - 머리를 이쪽 방향으로 돌린 채 올려 주세요.
     blank:
       answer: head
       options:
@@ -6793,8 +6793,8 @@ situations:
     why: then pressure로 느낄 순서를 알려 줘서 예상할 수 있게 해요. 마취약이 들어간 뒤에는 아픔 대신 누르는 느낌이 주가 돼요.
     decoy: bitter medicine
     distractorsKo:
-    - 시술은 30분쯤 걸려요
-    - 얼굴은 천으로 덮어 둘게요
+    - 소독약이 느껴지고 나서 압박감이 있을 거예요.
+    - 마취약이 느껴지기 전에 압박감이 있을 거예요.
     blank:
       answer: feel
       options:
@@ -6820,8 +6820,8 @@ situations:
     why: keep everything sterile은 방포가 무균 구역을 만든다고 이유를 알려요. try not to touch them은 금지 대신 협조를 구하는 말투예요.
     decoy: everything tidy
     distractorsKo:
-    - 얼굴 위로 천을 덮을게요
-    - 방포는 곧 치울 거예요
+    - 방포가 온기 상태를 유지해 주니 만지지 말아 주세요.
+    - 방포가 무균 상태를 유지해 주니 말씀하지 말아 주세요.
     blank:
       answer: sterile
       options:
@@ -6845,8 +6845,8 @@ situations:
     why: the whole time으로 처치가 끝날 때까지 계속 본다는 뜻을 전해요. 삽입 중 심박·산소포화도 같은 수치를 계속 확인한다는 말이에요.
     decoy: I'm unplugging your
     distractorsKo:
-    - 내내 보호자 분을 지켜보고 있어요
-    - 모니터는 잠깐만 볼게요
+    - 내내 모니터를 닦고 있어요.
+    - 내내 시계를 지켜보고 있어요.
     blank:
       answer: watching
       options:
@@ -6869,8 +6869,8 @@ situations:
     why: You're doing great로 현재 상태를 칭찬하고 just a little longer로 남은 시간이 짧다고 알려요. 끝이 보이는 격려가 협조를 이어 줘요.
     decoy: a long while
     distractorsKo:
-    - 아직 한참 더 걸려요
-    - 이제 완전히 끝났어요
+    - 잘하고 계세요, 조금만 더 쉬면 돼요.
+    - 조용하시네요, 조금만 더 하면 돼요.
     blank:
       answer: great
       options:
@@ -6895,8 +6895,8 @@ situations:
     why: I know this is scary로 공포를 인정하고 but we're staying…으로 곁을 지키겠다고 약속해요. 환자를 혼자 두지 않겠다는 말이 불안을 줄여요.
     decoy: ', but we''re stepping out'
     distractorsKo:
-    - 무서우시면 잠깐 눈을 감고 계세요
-    - 저희는 잠깐 자리를 비울게요
+    - 무서우실 텐데, 가족이 바로 여기 계속 있을게요.
+    - 화나실 텐데, 저희가 바로 여기 계속 있을게요.
     blank:
       answer: staying
       options:
@@ -7006,8 +7006,8 @@ situations:
     why: right away로 지체 없이 한다는 뜻을 전해요. 수혈 반응이 의심되면 먼저 수혈을 멈추는 것이 첫 대응이에요.
     decoy: I'm speeding
     distractorsKo:
-    - 지금 수혈 속도를 올릴게요
-    - 수혈을 천천히 계속할게요
+    - 동료가 바로 수혈을 멈춰요.
+    - 팀장이 바로 수혈을 멈춰요.
     blank:
       answer: stopping
       options:
@@ -7030,8 +7030,8 @@ situations:
     why: Tell me exactly는 모호한 대답 대신 구체적인 증상을 말해 달라는 요청이에요. 무엇을 느끼는지 알아야 상황을 정확히 의료진에게 전할 수 있어요.
     decoy: felt yesterday
     distractorsKo:
-    - 어제 어땠는지 말씀해 주세요
-    - 혈압을 다시 재 볼게요
+    - 어제 느끼셨던 걸 정확히 말씀해 주세요.
+    - 지금 느끼시는 걸 정확히 그려 주세요.
     blank:
       answer: exactly
       options:
@@ -7056,8 +7056,8 @@ situations:
     why: We're …ing는 지금 진행 중인 조치를 알리는 진행형이에요. 수혈 반응이 의심되면 수혈을 멈추고 수액으로 정맥로를 유지하면서 의사에게 알려요.
     decoy: more blood and calling
     distractorsKo:
-    - 수혈을 더 빠르게 바꾸고 간호사를 부를게요
-    - 혈액 팩은 혈액은행으로 돌려보낼게요
+    - 수액으로 바꾸고 혈액은행을 부를게요.
+    - 수액으로 바꾸고 의사 선생님을 기다릴게요.
     blank:
       answer: calling
       options:
@@ -7080,8 +7080,8 @@ situations:
     why: comes first는 다른 모든 것보다 우선순위가 높다는 뜻이에요. always를 문장 끝에 덧붙여 이 약속이 예외가 없다는 점을 강조해요.
     decoy: Your comfort
     distractorsKo:
-    - 환자분의 편안함이 언제나 최우선이에요
-    - 의사 선생님의 일정이 최우선이에요
+    - 환자분의 편안이 언제나 최우선이에요.
+    - 병원의 안전이 언제나 최우선이에요.
     blank:
       answer: first
       options:
@@ -7105,8 +7105,8 @@ situations:
     why: I'm right here로 곁에 있다는 사실을 먼저 알리고 get through this together로 함께 넘기겠다고 말해요. 불안한 환자에게 곁을 지키는 말이 필요해요.
     decoy: I'm right back
     distractorsKo:
-    - 저는 잠깐 자리를 비울게요
-    - 혼자서 이겨내셔야 해요
+    - 제가 바로 여기 있고, 곧 끝날 거예요.
+    - 제가 바로 여기 있고, 함께 기다릴 거예요.
     blank:
       answer: together
       options:
@@ -7129,8 +7129,8 @@ situations:
     why: will be here로 곧 도착한다는 약속을 전하고 in just a minute로 시간을 알려요. 구체적인 시간을 알려 주면 위급한 상황에서도 환자가 덜 불안해요.
     decoy: be gone
     distractorsKo:
-    - 의사 선생님은 내일 오실 거예요
-    - 의사 선생님이 방금 떠나셨어요
+    - 간호사 선생님이 곧 오실 거예요.
+    - 의사 선생님이 곧 가실 거예요.
     blank:
       answer: doctor
       options:
@@ -7214,8 +7214,8 @@ situations:
     why: You're having …은 지금 일어나고 있는 일을 침착하게 알려 주는 진행형이에요. 반응이라고 짧게 말하면 겁을 주지 않으면서 상황을 정직하게 전달해요.
     decoy: a meeting with
     distractorsKo:
-    - 조영제 검사가 곧 끝나요
-    - 조영제를 더 넣을게요
+    - 음식에 반응이 나타나고 있어요.
+    - 벌레에 반응이 나타나고 있어요.
     blank:
       answer: contrast
       options:
@@ -7241,8 +7241,8 @@ situations:
     why: to open your airway로 약의 목적을 같은 문장에 붙였어요. 에피네프린은 아나필락시스의 1차 약으로 기도 부종과 혈압 저하에 쓰여요.
     decoy: to close
     distractorsKo:
-    - 산소를 더 올려 드릴게요
-    - 통증을 줄이려고 약을 드릴게요
+    - 혈압을 올리려고 에피네프린을 드리고 있어요.
+    - 두드러기를 줄이기 위해 에피네프린을 드리고 있어요.
     blank:
       answer: epinephrine
       options:
@@ -7269,8 +7269,8 @@ situations:
     why: Focus on my voice는 불안을 가라앉히려 주의를 하나에 모으게 하는 요청이에요. try to로 부담 없이 할 수 있는 만큼 하라는 여지를 줘요.
     decoy: my hands and
     distractorsKo:
-    - 다리를 조금 올려 드릴게요
-    - 빠르게 숨을 쉬어 보세요
+    - 제 얼굴에 집중하시고 천천히 숨을 쉬어 보세요.
+    - 제 목소리에 집중하시고 깊게 숨을 쉬어 보세요.
     blank:
       answer: slowly
       options:
@@ -7297,8 +7297,8 @@ situations:
     why: feels tight로 환자의 증상을 말로 먼저 인정하고 but으로 약이 이미 작용 중이라고 이어요. 증상을 알아주는 말이 불안을 줄여 줘요.
     decoy: Your hands
     distractorsKo:
-    - 목이 편해졌지만 약은 아직 안 들어요
-    - 목은 괜찮지만 약이 천천히 들어요
+    - 목이 마른 느낌이 있지만 약이 빠르게 효과를 보이고 있어요.
+    - 배가 조이는 느낌이 있지만 약이 빠르게 효과를 보이고 있어요.
     blank:
       answer: tight
       options:
@@ -7320,8 +7320,8 @@ situations:
     why: not leaving your side는 곁에서 떠나지 않겠다는 관용 표현이에요. 위급한 환자에게 혼자가 아니라는 확신을 줘요.
     decoy: changing your
     distractorsKo:
-    - 제가 잠깐 자리를 비울게요
-    - 제가 어느 편도 들지 않을게요
+    - 커튼을 닫지 않을게요.
+    - 모니터를 끄지 않을게요.
     blank:
       answer: leaving
       options:
@@ -7347,8 +7347,8 @@ situations:
     why: watching … closely로 수치를 계속 확인한다는 뜻을 전해요. 아나필락시스 때는 산소포화도와 혈압이 급히 떨어질 수 있어 계속 지켜봐요.
     decoy: height and blood
     distractorsKo:
-    - 체온과 맥박을 가끔 확인할게요
-    - 혈압은 나중에 확인할게요
+    - 산소포화도와 체온을 면밀히 지켜보고 있어요.
+    - 산소포화도와 혈압을 한 시간째 지켜보고 있어요.
     blank:
       answer: oxygen
       options:
@@ -7460,8 +7460,8 @@ situations:
     why: to give medicine fast로 왜 뼈에 관을 놓는지 이유를 바로 알려요. 정맥을 못 잡을 때 골수강으로 약과 수액을 빠르게 줄 수 있어요(IO).
     decoy: a cast on your
     distractorsKo:
-    - 다리뼈를 잠깐 검사할게요
-    - 팔 정맥에 관을 놓을게요
+    - 수액을 주려고 다리뼈에 관을 놓을게요.
+    - 혈액을 빨리 드리려고 다리뼈에 관을 놓을게요.
     blank:
       answer: fast
       options:
@@ -7488,8 +7488,8 @@ situations:
     why: it means it's working으로 불편한 느낌의 의미를 해석해 줘요. 불편의 이유를 알려 주면 환자가 놀라 움직이는 것을 줄일 수 있어요.
     decoy: tickling —
     distractorsKo:
-    - 다리를 곧게 펴 주세요
-    - 압박감이 느껴지면 관이 빠진 거예요
+    - 강한 통증이 느껴지는데, 잘 되고 있다는 뜻이에요.
+    - 약한 압박감이 느껴지는데, 잘 되고 있다는 뜻이에요.
     blank:
       answer: working
       options:
@@ -7514,8 +7514,8 @@ situations:
     why: Stay with me는 의식을 놓지 말고 계속 집중하라는 구어 표현이에요. getting fluids into you now로 지금 조치가 진행 중임을 알려요.
     decoy: fluids out of
     distractorsKo:
-    - 가족분께 연락드렸어요
-    - 수액을 뽑아내고 있어요
+    - 정신 놓지 마세요, 지금 약을 넣고 있어요.
+    - 눈 감지 마세요, 지금 수액을 넣고 있어요.
     blank:
       answer: into
       options:
@@ -7540,8 +7540,8 @@ situations:
     why: so가 앞의 이유를 결과로 이어 줘요. couldn't find a vein 같은 사실을 솔직히 말하면 환자와 가족이 갑작스러운 방법 변경을 이해해요.
     decoy: a doctor
     distractorsKo:
-    - 정맥을 이미 찾아서 그대로 쓸게요
-    - 정맥을 찾을 때까지 계속 시도할게요
+    - 정맥을 찾지 못해서 다른 경로를 보고 있어요.
+    - 정맥을 찾지 못해서 다른 간호사를 부르고 있어요.
     blank:
       answer: another
       options:
@@ -7565,8 +7565,8 @@ situations:
     why: should로 결과를 약속하지 않고 예상을 전하고, and we're right here로 곁에 있다고 안심시켜요. 골내 경로는 약과 수액을 빠르게 전달하지만 결과를 약속하지는 않아요.
     decoy: was placed
     distractorsKo:
-    - 이건 느리게 효과가 날 거예요
-    - 이건 효과가 없을 수도 있어요
+    - 이건 오래 효과가 날 거예요, 저희가 바로 곁에 있어요.
+    - 이건 빨리 효과가 날 거예요, 조금 따끔할 거예요.
     blank:
       answer: fast
       options:
@@ -7588,8 +7588,8 @@ situations:
     why: Hang on은 포기하지 말고 조금만 버티라는 구어 표현이에요. help is on the way로 도움이 오고 있다는 사실을 알려 불안을 줄여요.
     decoy: Give in
     distractorsKo:
-    - 그냥 눈을 감고 계세요
-    - 도움은 아직 부르지 않았어요
+    - 조금만 쉬어요, 도움이 오고 있어요.
+    - 조금만 버텨요, 약이 들어가고 있어요.
     blank:
       answer: Hang on
       options:
@@ -7705,8 +7705,8 @@ situations:
     why: verify … with me는 두 번째 사람의 확인을 청해요. 항목을 약 이름·용량·농도로 나눠 말하면 빠뜨리기 어렵고, 고위험 약은 두 사람이 각자 따로 확인한 뒤 맞춰 봐요.
     decoy: the room
     distractorsKo:
-    - 약물, 용량, 농도를 저 혼자 확인할게요
-    - 약국에 농도를 물어볼게요
+    - 약물, 용량, 시간을 저와 함께 검증해 주시겠어요?
+    - 약물, 용량, 농도를 저와 따로 검증해 주시겠어요?
     blank:
       answer: verify
       options:
@@ -7732,8 +7732,8 @@ situations:
     why: Right patient, right route처럼 확인 항목을 소리 내어 읽으면 눈으로만 볼 때 놓치는 오류를 잡기 쉬워요. let's는 둘이 함께 한다는 뜻이에요.
     decoy: it later
     distractorsKo:
-    - 마음속으로 조용히 읽어봐요
-    - 환자 이름만 읽어봐요
+    - 정확한 환자, 정확한 경로, 소리내어 써봐요.
+    - 정확한 환자, 정확한 시간, 소리내어 읽어봐요.
     blank:
       answer: aloud
       options:
@@ -7758,8 +7758,8 @@ situations:
     why: on your own으로 상대가 내 값을 듣기 전에 따로 계산하게 해요. 인슐린·헤파린 같은 고위험 약의 독립 이중 확인은 두 사람이 각자 계산한 뒤 맞춰 보는 것이 원칙이에요(ISMP).
     decoy: mine is fifteen
     distractorsKo:
-    - 15유닛을 이미 투여했어요
-    - 혈당을 한 번 더 재 볼게요
+    - 먼저 혼자 유닛을 계산해 주세요, 그다음 약사와 맞춰 봐요.
+    - 먼저 혼자 농도를 계산해 주세요, 그다음 맞춰 봐요.
     blank:
       answer: calculate
       options:
@@ -7784,8 +7784,8 @@ situations:
     why: Wait는 진행을 멈추게 하는 짧은 신호예요. 숫자가 처방과 다르다고 사실만 말하면 상대를 탓하지 않고도 오류를 제기할 수 있어요.
     decoy: dose is the same as
     distractorsKo:
-    - 잠깐만요, 그 숫자는 처방과 정확히 맞아요
-    - 잠깐만요, 그 처방은 취소됐어요
+    - 잠깐만요, 그 숫자가 시간과 안 맞아요.
+    - 잠깐만요, 그 색깔이 처방과 안 맞아요.
     blank:
       answer: Wait
       options:
@@ -7810,8 +7810,8 @@ situations:
     why: Let's stop and …는 함께 멈춰서 확인하자는 제안이에요. before we give this로 투여 전이 마지막으로 오류를 막을 수 있는 시점임을 짚어요.
     decoy: double-check after we
     distractorsKo:
-    - 약국에 전화해 볼게요
-    - 처방을 다시 띄워 볼게요
+    - 이걸 드리기 전에 멈추고 약사에게 물어봐요.
+    - 이걸 드리기 전에 앉아서 다시 확인해봐요.
     blank:
       answer: before
       options:
@@ -7834,8 +7834,8 @@ situations:
     why: Thanks for catching that으로 오류를 짚은 사람을 인정하면 다음에도 편하게 말해 줘요. safety first는 모든 판단에서 안전을 우선한다는 짧은 구호예요.
     decoy: Sorry for missing
     distractorsKo:
-    - 그걸 놓쳐서 미안해요, 안전이 우선이에요
-    - 이 일은 기록해 둘게요
+    - 그걸 잡아줘서 고마워요, 시간이 우선이니까요.
+    - 그걸 잡아줘서 미안해요, 안전이 우선이니까요.
     blank:
       answer: catching
       options:
@@ -7944,8 +7944,8 @@ situations:
     why: then으로 느낄 순서를 미리 알려 줘요. 마취약이 들어간 뒤에도 누르는 압박감은 남을 수 있다고 정직하게 말해 주는 거예요.
     decoy: ', then sharp pain'
     distractorsKo:
-    - 마취약이 들어간 뒤에는 아무것도 못 느껴요
-    - 따끔한 느낌이 한참 계속돼요
+    - 소독약이 느껴지고 나서 누르는 압박감이 있을 거예요.
+    - 마취약이 느껴지기 전에 누르는 압박감이 있을 거예요.
     blank:
       answer: pushing
       options:
@@ -7972,8 +7972,8 @@ situations:
     why: Squeeze my hand로 말 대신 신호를 정해 주면 말하기 힘들 때도 아픔을 알릴 수 있어요. 지금 진통제를 준다고 알려 환자가 예측할 수 있게 해요.
     decoy: Shake my hand
     distractorsKo:
-    - 숨을 천천히 내쉬어 보세요
-    - 소리 내서 세어 주세요, 약은 나중에 드려요
+    - 제 손을 꽉 쥐세요, 지금 동료가 진통제를 드릴 거예요.
+    - 제 팔을 꽉 쥐세요, 지금 진통제를 드릴게요.
     blank:
       answer: Squeeze
       options:
@@ -8000,8 +8000,8 @@ situations:
     why: helps your lung expand로 관이 하는 일을 쉬운 말로 풀었어요. 흉관은 폐 주위의 공기나 액체를 빼서 폐가 펴지도록 돕는 관이에요.
     decoy: breathe harder
     distractorsKo:
-    - 이 관이 폐를 줄여서 숨쉬기가 편해져요
-    - 이 관은 심장을 도와요
+    - 이 관이 폐가 펴지게 도와서 걷기가 더 편해질 거예요.
+    - 이 관이 폐가 펴지는지 보여서 숨쉬기가 더 편해질 거예요.
     blank:
       answer: expand
       options:
@@ -8025,8 +8025,8 @@ situations:
     why: Stay with me로 의식과 주의를 이쪽에 붙들어 두고 you're doing so well로 지금까지를 인정해요. 처치가 길어질 때 이런 짧은 격려가 협조를 이어 줘요.
     decoy: so slowly
     distractorsKo:
-    - 엑스레이를 곧 찍을 거예요
-    - 잠깐 눈을 감고 쉬세요
+    - 눈 감지 마세요, 정말 잘하고 계세요.
+    - 정신 놓지 마세요, 정말 조용히 계세요.
     blank:
       answer: well
       options:
@@ -8050,8 +8050,8 @@ situations:
     why: The worst part로 가장 힘든 단계를 짚어 주고 almost over로 거의 끝났다고 알려요. 고비가 지나간다는 말은 환자가 버티게 해요.
     decoy: The best
     distractorsKo:
-    - 가장 힘든 부분이 이제 시작돼요
-    - 곧 엑스레이를 찍을 거예요
+    - 가장 힘든 부분은 이제 시작이에요.
+    - 가장 쉬운 부분은 거의 끝났어요.
     blank:
       answer: worst
       options:
@@ -8073,8 +8073,8 @@ situations:
     why: I'm right here로 가까이 있다는 걸 알려 주고 the whole time으로 처치가 끝날 때까지라고 못 박아요. 곁에 있다는 확신이 불안을 줄여 줘요.
     decoy: away
     distractorsKo:
-    - 제가 곧 자리를 비울게요
-    - 처음에만 여기 있을게요
+    - 내내 바로 밖에 있을게요.
+    - 내내 바로 옆방에 있을게요.
     blank:
       answer: whole
       options:
@@ -8179,8 +8179,8 @@ situations:
     why: hanging은 혈액 팩을 걸어 연결한다는 병원 현장 표현예요. first unit of packed cells로 몇 번째 유닛인지 밝히면 기록과 대조가 쉬워져요.
     decoy: the last unit
     distractorsKo:
-    - 지금 혈액 팩을 떼어 내고 있어요
-    - 지금 혈장 팩을 걸고 있어요
+    - 지금 두 번째 적혈구 팩을 걸고 있어요.
+    - 지금 첫 번째 적혈구 팩을 확인하고 있어요.
     blank:
       answer: hanging
       options:
@@ -8206,8 +8206,8 @@ situations:
     why: Do you want …?는 의사의 선택을 묻는 질문이라 지시가 아니라 확인 요청으로 들려요. 대량수혈에서는 적혈구:혈장:혈소판을 1:1:1 같은 균형 비율로 주는 프로토콜을 쓰기도 해요.
     decoy: with water
     distractorsKo:
-    - 혈장 없이 혈소판만 드릴까요?
-    - 이 비율로 이미 시작했어요
+    - 혈장·혈소판과 1대1대1 비율로 볼까요?
+    - 혈장·혈소판과 1대1대1 비율로 바꿀까요?
     blank:
       answer: plasma
       options:
@@ -8232,8 +8232,8 @@ situations:
     why: has … on the way는 이미 출발했다는 진행 상황을 알려요. two more로 앞으로 올 양을 구체적으로 말하면 팀이 준비하기 쉬워요.
     decoy: two fewer
     distractorsKo:
-    - 혈액은행에는 보냉함이 더 없어요
-    - 혈액은행에서 보냉함이 방금 도착했어요
+    - 혈액은행에서 보냉함 세 개가 더 오고 있어요.
+    - 약국에서 보냉함 두 개가 더 오고 있어요.
     blank:
       answer: two
       options:
@@ -8257,8 +8257,8 @@ situations:
     why: I'll report는 앞으로 알리겠다는 약속이고 every five minutes는 주기를 못 박아요. 대량수혈 중에는 활력징후가 빠르게 변해 자주 보고해요.
     decoy: labs every
     distractorsKo:
-    - 활력징후는 한 시간마다 보고할게요
-    - 가온기를 연결할게요
+    - 5분마다 활력징후를 기록할게요.
+    - 5분마다 소변량을 보고할게요.
     blank:
       answer: five
       options:
@@ -8282,8 +8282,8 @@ situations:
     why: Let's …로 함께 확인하자고 제안하고 now로 미루지 말고 지금 하자고 말해요. attending은 환자를 책임지는 담당 전문의예요.
     decoy: the dose with
     distractorsKo:
-    - 칼슘 수치를 확인해 볼게요
-    - 나중에 담당의와 비율을 확인해요
+    - 지금 혈액은행과 비율을 확인해봐요.
+    - 지금 담당의와 이름을 확인해봐요.
     blank:
       answer: confirm
       options:
@@ -8306,8 +8306,8 @@ situations:
     why: the moment는 '…하는 바로 그 순간'이라는 뜻의 접속 표현이에요. 다음 혈액이 도착한 즉시 알아야 끊김 없이 이어서 수혈해요.
     decoy: one hour after the
     distractorsKo:
-    - 빈 혈액 팩은 모아 두세요
-    - 다음 보냉함은 내일 도착해요
+    - 다음 보냉함이 도착하는 순간 눌러 주세요.
+    - 다음 보냉함이 출발하는 순간 알려 주세요.
     blank:
       answer: moment
       options:

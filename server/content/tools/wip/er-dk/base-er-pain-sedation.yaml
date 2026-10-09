@@ -689,7 +689,7 @@ words:
   - allergenic
   - lethargic
   distractorsKo:
-  - 예민한
+  - 감염이 있는
   - 내성이 있는
   chips:
   - - al
@@ -811,8 +811,8 @@ words:
   cue: 애드빌·모트린으로 파는 대표 NSAID 소염진통제
   tag: 약물
   distractorsEn:
-  - acetaminophen
   - naproxen
+  - ketorolac
   distractorsKo:
   - 아세트아미노펜
   - 나프록센
@@ -1379,7 +1379,7 @@ words:
   tag: 모니터링
   distractorsEn:
   - nitrogen
-  - carbon dioxide
+  - hydrogen
   distractorsKo:
   - 이산화탄소
   - 질소
@@ -1400,7 +1400,7 @@ words:
   tag: 모니터링
   distractorsEn:
   - heart rhythm
-  - respiratory rate
+  - heart sound
   distractorsKo:
   - 심장 리듬
   - 호흡수
@@ -1646,8 +1646,8 @@ words:
   - guide
   - grasp
   distractorsKo:
-  - 누르다
-  - 문지르다
+  - 자세를 바꾸다
+  - 손으로 누르다
   chips:
   - - guard
   decoyChips:
@@ -2678,8 +2678,8 @@ words:
   - wear out
   - work off
   distractorsKo:
+  - 효과가 커지다
   - 효과가 나타나다
-  - 닳다
   chips:
   - - wear
   - - 'off'
@@ -3356,8 +3356,8 @@ situations:
     why: 범위(zero to ten)를 먼저 주면 환자가 숫자로 답하기 쉬워요. how would you …는 would 덕분에 지시보다 부드러운 질문이 돼요.
     decoy: last night
     distractorsKo:
-    - 어디가 아픈지 가리켜 주시겠어요?
-    - 통증이 언제 시작됐나요?
+    - 0점에서 10점 척도로 어제 통증이 몇 점이었나요?
+    - 0점에서 5점 척도로 지금 통증이 몇 점인가요?
     blank:
       answer: rate
       options:
@@ -3381,8 +3381,8 @@ situations:
     why: point to는 말로 설명하기 어려운 환자도 손으로 답할 수 있게 해요. exactly를 넣으면 대략이 아니라 한 지점을 짚어 달라는 뜻이 돼요.
     decoy: at the doctor
     distractorsKo:
-    - 통증이 얼마나 심한가요?
-    - 언제부터 아프셨어요?
+    - 정확히 언제 다쳤는지 말씀해 주시겠어요?
+    - 정확히 어디가 가려운지 가리켜 주시겠어요?
     blank:
       answer: hurts
       options:
@@ -3409,8 +3409,8 @@ situations:
     why: sharp, dull, burning처럼 보기를 말로 들려 주면 통증을 표현할 단어가 없는 환자도 고르기 쉬워요. 통증의 양상은 원인을 짐작하는 단서가 돼요.
     decoy: in your leg
     distractorsKo:
-    - 가슴이 답답하세요?
-    - 통증이 얼마나 오래 갔나요?
+    - 날카로운 통증인가요, 둔한 통증인가요, 아니면 욱신거리는 통증인가요?
+    - 묵직한 통증인가요, 둔한 통증인가요, 아니면 타는 듯한 통증인가요?
     blank:
       answer: burning
       options:
@@ -3435,8 +3435,8 @@ situations:
     why: make A worse 틀과 like 뒤의 예시는 환자가 떠올리기 어려운 악화 요인을 짚어 줘요. 움직임이나 기침은 통증이 심해지는 흔한 요인이에요.
     decoy: like resting
     distractorsKo:
-    - 통증이 언제 시작됐나요?
-    - 어떤 약을 드셨어요?
+    - 움직이거나 숨 쉴 때처럼 통증이 심해지는 게 있나요?
+    - 누워 있거나 기침할 때처럼 통증이 심해지는 게 있나요?
     blank:
       answer: worse
       options:
@@ -3462,8 +3462,8 @@ situations:
     why: I believe you를 먼저 말하면 통증을 의심받을까 하는 걱정이 줄어요. 통증은 환자가 말하는 만큼 있다고 보는 것이 사정의 기본 원칙이에요.
     decoy: so we'll wait
     distractorsKo:
-    - 통증 점수를 다시 말씀해 주세요
-    - 차트에 기록해 둘게요
+    - 환자분 말씀 믿어요, 이 통증을 꼭 설명해 드릴게요.
+    - 환자분 말씀 믿어요, 이 기침을 꼭 조절해 드릴게요.
     blank:
       answer: believe
       options:
@@ -3487,8 +3487,8 @@ situations:
     why: 정답이 없다고 먼저 말해 주면 환자가 의료진이 원하는 숫자를 맞히려 하지 않아요. 통증 점수는 환자 본인의 보고가 기준이에요.
     decoy: only a score
     distractorsKo:
-    - 점수가 높으면 약을 더 드려요
-    - 어제 통증은 몇 점이었어요?
+    - 정답은 없어요, 들은 그대로 말씀해 주시면 돼요.
+    - 정답은 없어요, 느끼는 그대로 직접 그려 주시면 돼요.
     blank:
       answer: feel
       options:
@@ -3586,8 +3586,8 @@ situations:
     why: something으로 약 이름은 아직 말하지 않고 목적(for the pain)부터 알려요. 구체적인 이름은 다음 문장에서 이어 말하면 돼요.
     decoy: for the nurse
     distractorsKo:
-    - 드시기 전에 알레르기를 확인할게요
-    - 30분 뒤에 다시 올게요
+    - 지금 열에 도움이 될 약을 드릴게요.
+    - 지금 구역질에 도움이 될 약을 드릴게요.
     blank:
       answer: pain
       options:
@@ -3612,8 +3612,8 @@ situations:
     why: about ten to fifteen minutes처럼 범위로 말하면 정확한 시각을 약속하지 않고도 기대를 줄 수 있어요. 발현 시간은 약과 투여 경로에 따라 달라요.
     decoy: once a day
     distractorsKo:
-    - 하루에 세 번 드시면 돼요
-    - 이 약은 알약으로 드릴게요
+    - 보통 40분에서 50분 정도면 효과가 나타나요.
+    - 보통 10분에서 15분 정도면 약이 준비돼요.
     blank:
       answer: minutes
       options:
@@ -3639,8 +3639,8 @@ situations:
     why: Let me know if …는 증상을 보고해 달라는 부탁을 부드럽게 만들어요. 졸림과 어지럼은 진통제의 흔한 부작용이라 미리 알려 두면 환자가 겁먹지 않고 말해요.
     decoy: if it helps
     distractorsKo:
-    - 약은 30분 뒤에 드릴게요
-    - 통증이 나아졌는지 점수를 말해 주세요
+    - 졸리거나 목이 마르면 알려 주세요.
+    - 배고프거나 어지러우면 알려 주세요.
     blank:
       answer: drowsy
       options:
@@ -3665,8 +3665,8 @@ situations:
     why: 약의 종류(pain medicine)를 먼저 말하고 이름을 덧붙이면 낯선 이름도 부담이 덜해요. 투약 전 약 이름을 알려 주는 것은 안전 확인의 일부이기도 해요.
     decoy: for fever
     distractorsKo:
-    - 이건 항생제예요
-    - 이건 수액이에요
+    - 이건 모르핀이라는 약 설명서예요.
+    - 이건 모르핀이라는 약 상자예요.
     blank:
       answer: morphine
       options:
@@ -3691,8 +3691,8 @@ situations:
     why: take the edge off는 통증을 없앤다는 약속 없이 날카로운 부분을 덜어 준다고 말하는 관용구예요. 기대를 현실적으로 맞춰 줘요.
     decoy: onto
     distractorsKo:
-    - 바로 일어나 걸으셔도 돼요
-    - 물을 많이 드셔야 해요
+    - 부기를 한결 가라앉혀 줄 거예요.
+    - 열을 한결 가라앉혀 줄 거예요.
     blank:
       answer: edge
       options:
@@ -3718,8 +3718,8 @@ situations:
     why: 졸림이 흔한 반응이라고 먼저 말해 안심시키되, 깨어 있기 힘들 만큼 졸리면 호흡이 느려지는 신호라 알려 달라고 덧붙여요. 간호사는 진정 정도를 계속 확인해요.
     decoy: right away
     distractorsKo:
-    - 졸리면 약을 바로 중단할게요
-    - 졸려도 일어나 걸어 다니세요
+    - 조금 추운 건 정상이지만, 깨어 있기 힘들어지면 알려 주세요.
+    - 조금 메스꺼운 건 정상이지만, 깨어 있기 힘들어지면 알려 주세요.
     blank:
       answer: normal
       options:
@@ -3823,8 +3823,8 @@ situations:
     why: 냉찜질은 급성 부기에 흔히 쓰이고, 피부를 보호하려고 얇은 천을 사이에 대고 쓰는 것이 일반적이에요. to bring … down은 목적을 알려 줘요.
     decoy: to warm up
     distractorsKo:
-    - 다리를 심장보다 높이 올려 주세요
-    - 불을 어둡게 해 드릴게요
+    - 부기를 가라앉히게 냉찜질팩을 옮길게요.
+    - 부기를 가라앉히게 냉찜질팩을 옆에 둘게요.
     blank:
       answer: cold
       options:
@@ -3849,8 +3849,8 @@ situations:
     why: 다리를 올리면 중력 덕분에 부기가 덜하고 통증 완화에 도움이 돼요. 올리는 높이는 보통 심장보다 높게 안내해요.
     decoy: on the floor
     distractorsKo:
-    - 지금 바로 일어나 걸어 보세요
-    - 다리에 얼음을 대 드릴게요
+    - 이 담요 위에 다리를 올려 두세요.
+    - 이 의자 위에 다리를 올려 두세요.
     blank:
       answer: raised
       options:
@@ -3876,8 +3876,8 @@ situations:
     why: 밝은 조명은 통증이 있는 환자를 더 예민하게 할 수 있어서 조명을 낮추면 긴장을 푸는 데 도움이 돼요. if that helps는 환자가 선택하게 해 줘요.
     decoy: when that hurts
     distractorsKo:
-    - 창문을 열어 드릴게요
-    - TV를 켜 드릴게요
+    - 긴장이 풀리시게 소리를 작게 해드릴 수 있어요.
+    - 잠이 오시게 조명을 어둡게 해드릴 수 있어요.
     blank:
       answer: dim
       options:
@@ -3902,8 +3902,8 @@ situations:
     why: might는 효과를 약속하지 않고 가능성만 말해서 부담이 없어요. 따뜻함은 근육 긴장을 풀어 줄 수 있어 요통 같은 통증에 흔히 권해요.
     decoy: on the floor
     distractorsKo:
-    - 담요는 드릴 수 없어요
-    - 얼음 주머니를 올려 드릴게요
+    - 발에 따뜻한 담요를 덮으면 편안하실 거예요.
+    - 등에 부드러운 담요를 덮으면 편안하실 거예요.
     blank:
       answer: warm
       options:
@@ -3929,8 +3929,8 @@ situations:
     why: without more medicine은 약을 쓰지 않는다는 뜻이 아니라 약을 더하지 않아도 된다는 말이에요. 약 없는 방법은 약과 함께 써도 돼요.
     decoy: with extra
     distractorsKo:
-    - 약을 더 드려야만 줄어요
-    - 이 방법은 효과가 없어요
+    - 이런 방법들로 약을 더 쓰지 않고도 부기를 줄일 수 있어요.
+    - 이런 방법들로 주사를 더 쓰지 않고도 통증을 줄일 수 있어요.
     blank:
       answer: lower
       options:
@@ -3954,8 +3954,8 @@ situations:
     why: 먼저 약 없는 방법을 해 보고 필요하면 더하겠다고 순서를 알려 주면 환자가 거절당했다고 느끼지 않아요. 두 방법은 함께 쓸 수도 있어요.
     decoy: for later
     distractorsKo:
-    - 약부터 먼저 드릴게요
-    - 이 방법은 효과가 없으니 건너뛸게요
+    - 다른 걸 더하기 전에 이걸 먼저 설명할게요.
+    - 주사를 놓기 전에 이걸 먼저 해볼게요.
     blank:
       answer: before
       options:
@@ -4042,14 +4042,14 @@ situations:
     why: 알려진 알레르기를 먼저 묻는 것은 투약 전 안전 확인의 기본이에요. that you know of를 덧붙이면 확실하지 않은 환자도 아는 범위에서 부담 없이 답해요.
     decoy: for any foods
     distractorsKo:
-    - 평소에 드시는 약이 있나요?
-    - 수술을 받으신 적이 있나요?
+    - 알고 계신 음식 알레르기가 있나요?
+    - 알고 계신 약물 부작용이 있나요?
     blank:
       answer: allergic
       options:
-      - en: used
-      - en: new
-      - en: open
+      - en: attached
+      - en: related
+      - en: similar
       - en: allergic
   - en: Have you ever taken morphine or codeine before?
     ko: 예전에 모르핀이나 코데인을 복용하신 적 있나요?
@@ -4067,8 +4067,8 @@ situations:
     why: Have you ever + 과거분사는 경험을 묻는 틀이라 정확한 날짜를 기억하지 못해도 답할 수 있어요. 예전 복용 경험은 약 선택에 참고돼요.
     decoy: last year
     distractorsKo:
-    - 오늘 아침에 약을 드셨나요?
-    - 집에 약이 남아 있나요?
+    - 어제 모르핀이나 코데인을 복용하신 적 있나요?
+    - 가족분이 예전에 모르핀이나 코데인을 복용하신 적 있나요?
     blank:
       answer: taken
       options:
@@ -4092,8 +4092,8 @@ situations:
     why: last time으로 과거의 한 번을 짚으면 환자가 기억을 더듬기 쉬워요. 반응의 종류를 알아야 진짜 알레르기인지 부작용인지 가릴 수 있어요.
     decoy: right now
     distractorsKo:
-    - 지금도 그 약을 드시고 계세요?
-    - 그 약은 누가 처방했나요?
+    - 지난번엔 어떤 약을 드셨어요?
+    - 지난번엔 어디서 반응이 있으셨어요?
     blank:
       answer: reaction
       options:
@@ -4118,8 +4118,8 @@ situations:
     why: 발진과 호흡곤란은 약물 알레르기 반응에서 확인하는 대표 증상이에요. or로 나눠 묻기 때문에 한쪽만 해당해도 대답할 수 있어요.
     decoy: with a fever
     distractorsKo:
-    - 속이 메스꺼우셨나요?
-    - 어지러워서 쓰러지셨나요?
+    - 구토가 났거나 숨쉬기 힘드셨나요?
+    - 열이 났거나 숨쉬기 힘드셨나요?
     blank:
       answer: breathing
       options:
@@ -4145,8 +4145,8 @@ situations:
     why: 이부프로펜과 아스피린 같은 비스테로이드 소염진통제(NSAID)는 서로 교차 반응할 수 있어서 함께 물어요. 경험을 묻는 Have you ever had …를 그대로 써요.
     decoy: taken a
     distractorsKo:
-    - 이부프로펜을 하루에 몇 번 드세요?
-    - 두통이 얼마나 자주 있으세요?
+    - 이부프로펜이나 아스피린에 위장 장애를 보이신 적 있나요?
+    - 이부프로펜이나 아스피린에 알레르기 반응을 보인 가족이 있나요?
     blank:
       answer: had
       options:
@@ -4171,8 +4171,8 @@ situations:
     why: 차트에 남기면 다음 교대 간호사와 의사도 같은 정보를 보고 그 약을 피할 수 있어요. 기록한다고 말하면 알려 준 정보가 쓰인다는 신뢰가 생겨요.
     decoy: in the lobby
     distractorsKo:
-    - 처방전은 약국에 보낼게요
-    - 보험 정보를 확인할게요
+    - 팀에서 알 수 있게 약사에게 전해 둘게요.
+    - 팀에서 알 수 있게 손목 밴드에 표시해 둘게요.
     blank:
       answer: knows
       options:
@@ -4258,8 +4258,8 @@ situations:
     why: in about twenty minutes로 구체적인 시간을 말하면 환자가 기다리는 동안 덜 불안해요. 진통제 뒤 재평가는 병원 지침에 정해진 시간에 해요.
     decoy: in a week
     distractorsKo:
-    - 약을 지금 바로 드릴게요
-    - 호출 버튼을 눌러 주세요
+    - 20분쯤 뒤에 동료가 다시 올게요.
+    - 20분쯤 뒤에 다시 혈압을 확인하러 올게요.
     blank:
       answer: minutes
       options:
@@ -4284,8 +4284,8 @@ situations:
     why: 재평가 사이에 통증이 심해질 때를 미리 알려 주면 환자가 정해진 시간까지 참지 않아요. 호출 버튼의 위치와 쓰는 법도 함께 보여 줘요.
     decoy: right after
     distractorsKo:
-    - 약이 안 들으면 의사 선생님께 말할게요
-    - 통증이 줄면 퇴원하세요
+    - 그전에 소변이 마려우면 이 호출 버튼을 눌러 주세요.
+    - 그전에 어지러우면 이 호출 버튼을 눌러 주세요.
     blank:
       answer: worse
       options:
@@ -4311,8 +4311,8 @@ situations:
     why: again으로 처음 점수와 비교할 것임을 알려요. 투약 뒤 통증 점수를 다시 매겨 효과를 확인하는 것이 재평가예요.
     decoy: if we waited
     distractorsKo:
-    - 약을 한 번 더 드릴게요
-    - 통증 점수는 기록하지 않을게요
+    - 잠이 도움이 됐는지 다시 통증 점수를 매겨볼게요.
+    - 약이 필요한지 다시 통증 점수를 매겨볼게요.
     blank:
       answer: medicine
       options:
@@ -4336,8 +4336,8 @@ situations:
     why: 점수를 다시 묻는 이유를 설명하면 환자가 같은 질문을 되풀이한다고 느끼지 않아요. 재평가 결과는 약을 더 쓸지 바꿀지 판단하는 근거가 돼요.
     decoy: the nurse is
     distractorsKo:
-    - 약을 바꿔야 하는지는 의사가 정해요
-    - 통증이 몇 시간 갈지 알 수 있어요
+    - 이렇게 하면 졸린지 알 수 있어요.
+    - 이렇게 하면 약이 얼마나 필요한지 알 수 있어요.
     blank:
       answer: working
       options:
@@ -4362,8 +4362,8 @@ situations:
     why: unbearable까지 기다리지 말라고 말하면 참는 것이 미덕이 아니라는 신호가 돼요. 통증 조절은 심해지기 전에 하는 편이 쉬워요.
     decoy: tomorrow morning
     distractorsKo:
-    - 참을 수 있으면 기다려 주세요
-    - 통증이 있으면 간호사실로 오세요
+    - 밤이 될 때까지 기다리지 말고 바로 불러 주세요.
+    - 숨쉬기 힘들 때까지 기다리지 말고 바로 불러 주세요.
     blank:
       answer: until
       options:
@@ -4387,8 +4387,8 @@ situations:
     why: 도움 요청이 폐가 아니라고 먼저 말하면 눈치를 보는 환자도 호출을 눌러요. 통증을 참는 환자를 위한 안심 표현이에요.
     decoy: for water
     distractorsKo:
-    - 도움을 요청하면 늦어질 수 있어요
-    - 다른 환자분들이 불편해해요
+    - 음료를 요청하는 건 절대 폐가 아니에요.
+    - 도움을 요청하는 건 절대 의사에게 폐가 아니에요.
     blank:
       answer: bothering
       options:
@@ -4473,8 +4473,8 @@ situations:
     why: 통증이 진짜라고 먼저 인정하면 약을 요구하는 환자도 방어적으로 되지 않아요. 요구하는 행동을 판단하지 않고 통증을 믿는다는 것을 먼저 전해요.
     decoy: ', but I doubt'
     distractorsKo:
-    - 약을 더 드릴 수는 없어요
-    - 의사 선생님이 곧 오세요
+    - 통증이 진짜라는 거 알아요, 같이 있어 드리고 싶어요.
+    - 두통이 진짜라는 거 알아요, 도와드리고 싶어요.
     blank:
       answer: real
       options:
@@ -4498,8 +4498,8 @@ situations:
     why: 의사가 처방한 내용을 먼저 알려 주면 간호사가 마음대로 정한다는 느낌이 줄어요. 약의 종류와 용량은 처방 범위 안에서만 줄 수 있다는 점도 자연스럽게 전해져요.
     decoy: what you have
     distractorsKo:
-    - 약을 더 요청하셨다고 기록할게요
-    - 약은 하루 한 번만 나와요
+    - 약사 선생님이 처방하신 걸 말씀드릴게요.
+    - 의사 선생님이 말씀하신 걸 전해드릴게요.
     blank:
       answer: ordered
       options:
@@ -4524,8 +4524,8 @@ situations:
     why: also는 약을 거절하는 것이 아니라 약에 더해 다른 방법도 쓴다는 신호예요. 대안에는 비약물적 방법과 비마약성 진통제가 들어갈 수 있어요.
     decoy: to talk about
     distractorsKo:
-    - 약은 더 이상 쓸 수 없어요
-    - 통증은 시간이 지나면 사라져요
+    - 불안을 줄일 다른 방법도 함께 시도해볼 수 있어요.
+    - 통증을 알아볼 다른 방법도 함께 시도해볼 수 있어요.
     blank:
       answer: try
       options:
@@ -4550,8 +4550,8 @@ situations:
     why: can't 뒤에 한계의 이유(처방된 범위)를 말하고 but으로 돌봄을 이어 가요. 거절 바로 뒤에 포기하지 않는다는 말을 붙이면 방치로 들리지 않아요.
     decoy: except when
     distractorsKo:
-    - 지금 바로 두 배로 드릴게요
-    - 처방된 약은 이제 다 쓰셨어요
+    - 처방된 것보다 일찍 드릴 순 없지만, 통증을 포기하지 않을게요.
+    - 처방된 것보다 더 드릴 순 없지만, 통증을 다시 설명드릴게요.
     blank:
       answer: more
       options:
@@ -4574,8 +4574,8 @@ situations:
     why: 예전에 효과가 있었던 방법을 물으면 환자가 치료 계획에 참여한다고 느껴요. 환자의 과거 경험은 진통 계획을 세울 때 유용한 정보예요.
     decoy: next time
     distractorsKo:
-    - 지금 드실 약을 정해 볼게요
-    - 어느 병원에서 처방받으셨어요?
+    - 어제 효과가 있었던 방법에 대해 이야기해봐요.
+    - 예전에 효과가 있었던 방법을 종이에 적어 주세요.
     blank:
       answer: worked
       options:
@@ -4600,8 +4600,8 @@ situations:
     why: on your side는 환자와 간호사를 같은 편으로 놓아 약을 두고 맞서는 구도를 피해요. together는 해결책을 함께 찾겠다는 약속이에요.
     decoy: on my own
     distractorsKo:
-    - 제가 대신 결정해 드릴게요
-    - 의사 선생님이 해결하실 거예요
+    - 저는 환자분 편이에요, 함께 병원을 찾아볼게요.
+    - 저는 의사 선생님 편이에요, 함께 방법을 찾아볼게요.
     blank:
       answer: together
       options:
@@ -4688,8 +4688,8 @@ situations:
     why: 평소 통증과 비교해 묻는 것이 새로 생긴 통증과 원래 통증을 가르는 첫 질문이에요. usual pain을 기준으로 삼으면 만성 통증 환자의 경험을 존중하게 돼요.
     decoy: similar to
     distractorsKo:
-    - 이 약을 얼마나 오래 드셨어요?
-    - 평소에 어디가 가장 아프세요?
+    - 이번 통증은 평소 통증과 언제 달라졌나요?
+    - 이번 통증은 지난주 통증과 어떻게 다른가요?
     blank:
       answer: usual
       options:
@@ -4713,8 +4713,8 @@ situations:
     why: 집에서 이미 먹는 약을 먼저 물으면 진통제 용량과 약물 상호작용을 판단할 수 있어요. 처방약뿐 아니라 사 먹는 약과 보충제도 함께 묻는 것이 좋아요.
     decoy: at work
     distractorsKo:
-    - 약을 어디서 구하세요?
-    - 약을 몇 시에 드세요?
+    - 집에서 이미 드시는 음식을 말씀해 주세요.
+    - 병원에서 이미 드신 약을 말씀해 주세요.
     blank:
       answer: already
       options:
@@ -4739,8 +4739,8 @@ situations:
     why: 내성은 오래 써서 같은 용량의 효과가 줄어드는 현상으로 중독과 달라요. 쉬운 말로 풀어 주면 환자가 낙인찍힌다고 느끼지 않아요.
     decoy: must stop
     distractorsKo:
-    - 약을 끊으면 중독돼요
-    - 의사 선생님이 약을 바꾸지 않을 거예요
+    - 내성 때문에 약사 선생님이 용량을 조절하실 수도 있어요.
+    - 내성 때문에 의사 선생님이 용량을 확인하실 수도 있어요.
     blank:
       answer: adjust
       options:
@@ -4765,8 +4765,8 @@ situations:
     why: 양상(날카로운지)과 위치(다른 부위인지)를 따로 물어 새로 생긴 통증인지 가려요. 새롭거나 달라진 통증은 원인이 다를 수 있어 의사에게 알리는 근거가 돼요.
     decoy: and in the same
     distractorsKo:
-    - 통증이 얼마나 오래 갔어요?
-    - 어떤 약을 드셨어요?
+    - 이번 통증은 둔한가요? 그리고 다른 부위인가요?
+    - 이번 통증은 날카로운가요? 그리고 더 넓은 부위인가요?
     blank:
       answer: sharp
       options:
@@ -4790,8 +4790,8 @@ situations:
     why: used to는 예전에는 그랬지만 지금은 아니라는 변화를 말해요. 오래 약을 써 온 몸은 같은 용량에 덜 반응할 수 있다고 쉬운 말로 설명해요.
     decoy: than I do
     distractorsKo:
-    - 몸이 약에 중독되었어요
-    - 약이 더 이상 필요하지 않아요
+    - 예전보다 몸이 더 많은 잠을 필요로 할 수 있어요.
+    - 예전보다 몸이 더 많은 휴식을 필요로 할 수 있어요.
     blank:
       answer: more
       options:
@@ -4816,8 +4816,8 @@ situations:
     why: 용량을 바꾸는 동안 더 가까이 지켜본다고 알리면 환자가 불안해하지 않아요. 약을 조절할 때는 호흡과 진정 정도를 자주 확인해요.
     decoy: as we wait
     distractorsKo:
-    - 용량은 제가 직접 정할게요
-    - 모니터는 필요 없어요
+    - 용량을 조절하는 동안 조용히 지켜볼게요.
+    - 용량을 조절하는 동안 밤새 지켜볼게요.
     blank:
       answer: closely
       options:
@@ -4901,8 +4901,8 @@ situations:
     why: 마지막으로 먹고 마신 시간은 의사가 진정 방법과 시점을 정하는 근거라 꼭 물어요. NPO 같은 약어보다 eat or drink로 풀어 물어야 환자가 정확히 답해요. 응급실에서는 금식 시간만으로 진정을 미루지 않지만, 구토 위험을 가늠하는 데 써요.
     decoy: Where did you
     distractorsKo:
-    - 마지막으로 약을 드신 게 언제예요?
-    - 마지막으로 화장실에 가신 게 언제예요?
+    - 마지막으로 먹거나 마신 곳이 어디인가요?
+    - 마지막으로 먹거나 마신 게 무엇인가요?
     blank:
       answer: When
       options:
@@ -4925,8 +4925,8 @@ situations:
     why: the whole time으로 시작부터 끝까지 지켜본다고 말하면 환자가 안심해요. 진정 중에는 호흡, 산소포화도, 심박수를 계속 확인해요.
     decoy: in the hallway
     distractorsKo:
-    - 모니터를 잠깐만 붙일게요
-    - 중간에 모니터를 뗄 거예요
+    - 내내 보호자를 계속 곁에 둘 거예요.
+    - 내내 조명을 계속 켜 둘 거예요.
     blank:
       answer: monitors
       options:
@@ -4952,8 +4952,8 @@ situations:
     why: sleepy라고 쉬운 말로 말하면 환자가 어떤 느낌일지 그릴 수 있어요. gently는 깨울 때도 부드럽게 한다는 약속이에요.
     decoy: you suddenly
     distractorsKo:
-    - 진정 중에는 계속 깨어 계실 거예요
-    - 끝나도 하루 종일 주무실 거예요
+    - 졸리실 거고, 끝나면 부드럽게 모셔 드릴게요.
+    - 어지러우실 거고, 끝나면 부드럽게 깨워 드릴게요.
     blank:
       answer: sleepy
       options:
@@ -4976,8 +4976,8 @@ situations:
     why: 시술을 위한 진정이라는 이름을 알려 준 뒤 뜻을 풀어 주면 돼요. procedural sedation은 시술 동안 통증과 불안을 줄이려고 쓰는 진정으로, 전신마취와는 달리 환자가 스스로 숨을 쉬는 깊이를 목표로 해요.
     decoy: or anesthesia
     distractorsKo:
-    - 이걸 전신마취라고 해요
-    - 이건 수면제예요
+    - 이걸 절차적 마취라고 해요.
+    - 이걸 응급 진정이라고 해요.
     blank:
       answer: procedural
       options:
@@ -5003,8 +5003,8 @@ situations:
     why: 산소포화도와 심박수는 진정 중 가장 기본적인 감시 항목이에요. 쉬운 말로 oxygen and heart rate라고 해서 환자가 무엇을 지켜보는지 알게 해요.
     decoy: will be changed
     distractorsKo:
-    - 키와 몸무게를 쟀어요
-    - 혈액검사 결과를 계속 볼 거예요
+    - 산소포화도와 체온을 계속 지켜볼 거예요.
+    - 혈당과 심박수를 계속 지켜볼 거예요.
     blank:
       answer: oxygen
       options:
@@ -5028,8 +5028,8 @@ situations:
     why: 누군가 처음부터 끝까지 곁에 있다고 말하면 진정 중 혼자 남겨지는 두려움이 줄어요. 진정 중에는 환자를 계속 지켜보는 사람을 따로 두는 것이 권고돼요.
     decoy: from here
     distractorsKo:
-    - 중간에 잠깐 혼자 계실 거예요
-    - 의사 선생님이 대신 오실 거예요
+    - 처음부터 끝까지 담요를 덮어 드릴 거예요.
+    - 처음부터 끝까지 누군가 안내해 드릴 거예요.
     blank:
       answer: Someone
       options:
@@ -5114,8 +5114,8 @@ situations:
     why: won't feel the stitches로 아이가 아프지 않다는 점을 먼저 말해 부모를 안심시켜요. 국소마취나 진정 같은 방법은 의사가 정하니, 간호사는 부모가 이해하는 말로 목적을 전해요.
     decoy: so he can feel
     distractorsKo:
-    - 아이가 잠들 때까지 기다릴게요
-    - 봉합 후에 약을 드릴게요
+    - 주사할 때 아프지 않게 약을 조금 드릴 거예요.
+    - 봉합할 때 무섭지 않게 약을 조금 드릴 거예요.
     blank:
       answer: stitches
       options:
@@ -5140,8 +5140,8 @@ situations:
     why: 부모가 곁에 있을 수 있다고 알려 주면 아이도 부모도 덜 불안해요. 시술 중 보호자가 함께 있을 수 있는지는 병원 지침과 시술 종류에 따라 달라서 가능한 범위로 말해요.
     decoy: far from
     distractorsKo:
-    - 부모님은 밖에서 기다려 주세요
-    - 잠시 후에 들어오시면 돼요
+    - 내내 간호사 곁에 계셔도 돼요.
+    - 잠시 아이 곁에 계셔도 돼요.
     blank:
       answer: can
       options:
@@ -5165,8 +5165,8 @@ situations:
     why: 시작 전에 질문을 받으면 부모가 모르는 채 시술이 시작되지 않아요. any questions는 예·아니요보다 말문을 열어 주는 질문이에요.
     decoy: after we finish
     distractorsKo:
-    - 아이가 아침에 뭘 먹었나요?
-    - 아이 몸무게가 얼마나 되나요?
+    - 끝나기 전에 궁금하신 점 있으세요?
+    - 시작하기 전에 불편하신 점 있으세요?
     blank:
       answer: questions
       options:
@@ -5191,8 +5191,8 @@ situations:
     why: calm and still은 약이 하는 일을 아이의 모습으로 그려 줘서 부모가 이해하기 쉬워요. 가만히 있어야 봉합이 안전하고 정확해서 알려 줘요.
     decoy: and quickly
     distractorsKo:
-    - 약이 아이를 뛰어다니게 해요
-    - 약이 열을 내려 줘요
+    - 이 약이 아이를 졸리고 가만히 있게 도와줄 거예요.
+    - 이 약이 아이를 차분하고 편안히 있게 도와줄 거예요.
     blank:
       answer: still
       options:
@@ -5217,8 +5217,8 @@ situations:
     why: 긴장은 정상이라고 먼저 말하면 부모가 자기 반응을 잘못으로 여기지 않아요. 단계마다 설명한다는 약속은 통제감을 줘요.
     decoy: It's rare to feel
     distractorsKo:
-    - 긴장하면 시술을 못 해요
-    - 설명 없이 바로 시작할게요
+    - 화나는 건 정상이에요, 단계마다 설명해 드릴게요.
+    - 긴장되는 건 정상이에요, 단계마다 보여 드릴게요.
     blank:
       answer: nervous
       options:
@@ -5242,8 +5242,8 @@ situations:
     why: soon after we finish로 깨어나는 시점을 알려 주면 부모가 기다리는 동안 덜 불안해요. 깨어나는 속도는 약과 아이에 따라 달라서 정확한 분 대신 soon이라고 말해요.
     decoy: long after
     distractorsKo:
-    - 아이는 하루 종일 잘 거예요
-    - 시술 중에 깨어 있을 거예요
+    - 시작하면 곧 아이가 깨어날 거예요.
+    - 끝나면 곧 아이가 졸릴 거예요.
     blank:
       answer: finish
       options:
@@ -5330,8 +5330,8 @@ situations:
     why: 솔직하게 말해도 된다고 열어 주면 참는 환자가 실제 통증을 말하기 쉬워요. 판단하는 말을 쓰지 않고 말하는 사람의 부담을 덜어 줘요.
     decoy: if it's easy
     distractorsKo:
-    - 아프다고 말하면 약을 더 드려요
-    - 아프지 않으면 말씀하지 마세요
+    - 정말 아프면 저한테 소리 내셔도 괜찮아요.
+    - 정말 추우면 저한테 말씀하셔도 괜찮아요.
     blank:
       answer: really
       options:
@@ -5357,8 +5357,8 @@ situations:
     why: I notice …는 관찰한 사실만 말하고 추측이나 비난을 담지 않아요. 몸을 감싸는 자세(guarding)는 통증의 객관적인 단서라 조용히 확인하는 것이 좋아요.
     decoy: I wonder if you
     distractorsKo:
-    - 그쪽은 아프지 않은 거죠?
-    - 그쪽에 상처가 있나요?
+    - 그쪽을 만지고 계신 게 보이는데, 보여주시겠어요?
+    - 손을 감싸고 계신 게 보이는데, 보여주시겠어요?
     blank:
       answer: notice
       options:
@@ -5382,8 +5382,8 @@ situations:
     why: tough it out은 아파도 참고 견딘다는 관용구예요. 나와 있을 땐 참지 않아도 된다고 말하면 소극적인 환자도 통증을 알려요.
     decoy: to stop it
     distractorsKo:
-    - 저한테 힘들다고 하지 마세요
-    - 통증은 참는 게 좋아요
+    - 저한테는 억지로 웃으실 필요 없어요.
+    - 저한테는 억지로 서 계실 필요 없어요.
     blank:
       answer: tough
       options:
@@ -5408,8 +5408,8 @@ situations:
     why: 사람마다 통증 표현이 다르다고 말하면 조용한 환자도 판단받지 않는다고 느껴요. 통증은 환자의 보고가 기준이지만, 표현이 적은 환자는 감싸기·찡그림 같은 행동 단서도 함께 봐요.
     decoy: in the same
     distractorsKo:
-    - 모두 같은 방식으로 아파해요
-    - 표현하지 않으면 통증이 아니에요
+    - 사람마다 통증을 느끼는 부위가 다르고, 그건 괜찮아요.
+    - 사람마다 통증을 참는 시간이 다르고, 그건 괜찮아요.
     blank:
       answer: different
       options:
@@ -5432,8 +5432,8 @@ situations:
     why: 용감할 필요 없다고 말하면 아파도 괜찮은 척하던 환자가 부담을 내려놓아요. for me가 의료진을 위해 참을 필요가 없다는 뜻을 분명히 해요.
     decoy: to be here
     distractorsKo:
-    - 용감하면 약을 덜 드려요
-    - 저를 위해 용감해야 해요
+    - 저한테 미안한 척 안 하셔도 돼요.
+    - 가족한테 용감한 척 안 하셔도 돼요.
     blank:
       answer: brave
       options:
@@ -5456,8 +5456,8 @@ situations:
     why: 함께 놓친 게 없는지 보자고 하면 환자를 의심하는 게 아니라 같이 확인하는 말로 들려요. 통증 점수와 몸의 신호가 어긋날 때 다시 살피는 계기가 돼요.
     decoy: we're not done
     distractorsKo:
-    - 지금까지 아무 문제도 없어요
-    - 더 이상 확인할 건 없어요
+    - 혹시 놓친 게 없는지 차트를 봐요.
+    - 혹시 새로 생긴 게 없는지 확인해봐요.
     blank:
       answer: missing
       options:
@@ -5540,8 +5540,8 @@ situations:
     why: what worries you는 거부의 이유를 판단 없이 열어 주는 질문이에요. 거부 이유(부작용이나 중독 걱정 등)를 알아야 대안을 제안할 수 있어요.
     decoy: what helps you
     distractorsKo:
-    - 약을 먹기 싫으신 이유를 적어 둘게요
-    - 약은 꼭 드셔야 해요
+    - 약에 대해 어떤 게 궁금하신지 말씀해 주시겠어요?
+    - 수술에 대해 어떤 게 걱정되시는지 말씀해 주시겠어요?
     blank:
       answer: medicine
       options:
@@ -5567,8 +5567,8 @@ situations:
     why: choice를 존중한다고 먼저 말하면 거절이 논쟁으로 번지지 않아요. 환자에게는 치료를 거부할 권리가 있고, 그 뒤에 대안을 이야기하는 것이 이어지는 돌봄이에요.
     decoy: — let's skip
     distractorsKo:
-    - 선택을 바꾸셔야 해요
-    - 의사에게 말씀하셔도 소용없어요
+    - 환자분의 선택을 존중해요, 다른 병원도 이야기해봐요.
+    - 환자분의 마음을 존중해요, 다른 선택지도 이야기해봐요.
     blank:
       answer: respect
       options:
@@ -5593,8 +5593,8 @@ situations:
     why: if you prefer는 환자에게 선택권을 돌려줘요. 순한 약부터 시작해 필요하면 올리는 단계적 접근은 걱정이 큰 환자가 받아들이기 쉬워요.
     decoy: if you must
     distractorsKo:
-    - 더 센 약으로 바로 시작할게요
-    - 약 없이 끝까지 참으셔야 해요
+    - 의사가 원하시면 더 순한 걸로 먼저 시작할 수 있어요.
+    - 원하시면 더 작은 알로 먼저 시작할 수 있어요.
     blank:
       answer: milder
       options:
@@ -5621,8 +5621,8 @@ situations:
     why: Some patients …로 일반화하면 환자가 자기 걱정을 이상하게 여기지 않고 말해요. 졸림과 통제력 상실은 진정 효과가 있는 진통제를 꺼리는 흔한 이유예요.
     decoy: about visiting
     distractorsKo:
-    - 대부분의 환자는 약을 걱정하지 않아요
-    - 환자분만 그렇게 걱정하세요
+    - 너무 졸리거나 토할까봐 걱정하는 환자분들도 계세요.
+    - 너무 졸리거나 정신을 놓을까봐 걱정하는 가족분들도 계세요.
     blank:
       answer: sleepy
       options:
@@ -5647,8 +5647,8 @@ situations:
     why: non-opioid는 마약성이 아닌 진통제(아세트아미노펜, NSAID 등)를 가리켜요. 마약성 약을 꺼리는 환자에게도 통증 조절을 포기하지 않는다는 뜻을 전해요.
     decoy: an opioid option
     distractorsKo:
-    - 마약성 진통제를 더 드릴게요
-    - 진통제는 쓰지 않을 거예요
+    - 먼저 비마약성 진통제를 시도해볼 수 있어요.
+    - 대신 비마약성 진통제를 같이 골라볼 수 있어요.
     blank:
       answer: instead
       options:
@@ -5674,8 +5674,8 @@ situations:
     why: whatever you decide는 어떤 결정이든 존중한다는 뜻이라 거부하는 환자가 압박받지 않아요. 다만 필요하면 의사에게 알리고 위험을 설명해야 하는 책임은 남아 있어요.
     decoy: ', but I''ll argue'
     distractorsKo:
-    - 결정은 제가 대신 할게요
-    - 환자분의 선택은 중요하지 않아요
+    - 환자분의 선택이니, 무엇을 결정하시든 기다려 드릴게요.
+    - 환자분의 선택이니, 언제 결정하시든 지지해드릴게요.
     blank:
       answer: support
       options:
@@ -5761,8 +5761,8 @@ situations:
     why: Can you list는 한 번에 모두 말해 달라는 부드러운 부탁이에요. 사 먹는 약, 수면제, 보충제까지 포함해 물어야 병용 위험을 빠뜨리지 않아요.
     decoy: the doctors you
     distractorsKo:
-    - 오늘 몇 시에 일어나셨어요?
-    - 오늘 식사를 하셨나요?
+    - 어제 드신 약들을 나열해 주시겠어요?
+    - 오늘 드신 음식들을 나열해 주시겠어요?
     blank:
       answer: list
       options:
@@ -5787,8 +5787,8 @@ situations:
     why: together라는 한 단어로 약이 합쳐질 때 문제가 생긴다는 핵심을 전해요. 졸리게 하는 약끼리는 효과가 겹쳐 더 졸릴 수 있어요.
     decoy: one by one
     distractorsKo:
-    - 이 약들은 서로 아무 문제가 없어요
-    - 이 약 하나만으로도 위험해요
+    - 이 약들이 함께면 많이 가렵게 만들 수 있어요.
+    - 이 약들이 함께면 많이 배고프게 만들 수 있어요.
     blank:
       answer: together
       options:
@@ -5814,8 +5814,8 @@ situations:
     why: 이미 먹는 약을 고려해 고른다고 알리면 환자가 약 때문에 위험해질까 하는 걱정을 덜어요. 약의 상호작용은 약사와 의사가 함께 확인하는 것이 안전해요.
     decoy: risky with
     distractorsKo:
-    - 제일 센 약부터 고를게요
-    - 드시는 약을 모두 끊을게요
+    - 이미 드시는 약과 안전하게 맞는 걸 설명드릴게요.
+    - 이미 드시는 음식과 안전하게 맞는 걸 골라드릴게요.
     blank:
       answer: safe
       options:
@@ -5842,8 +5842,8 @@ situations:
     why: 진정 효과가 있는 약과 마약성 진통제를 함께 쓰면 호흡을 느리게 하는 효과가 겹칠 수 있어요. 환자에게는 slow your breathing처럼 그려지는 말로 설명해요.
     decoy: can help your
     distractorsKo:
-    - 진정제는 호흡에 도움이 돼요
-    - 진통제를 섞으면 더 빨리 나아요
+    - 진정제와 진통제를 섞으면 호흡이 느려지는지 볼게요.
+    - 진정제와 진통제를 섞기 전에 호흡을 먼저 볼게요.
     blank:
       answer: slow
       options:
@@ -5870,8 +5870,8 @@ situations:
     why: too … to … 틀은 졸림이 안전을 해칠 정도라는 뜻이에요. 너무 졸리면 낙상이나 호흡 문제의 위험이 커져서 미리 알려요.
     decoy: wake you
     distractorsKo:
-    - 이 조합은 아주 안전해요
-    - 이 조합은 잠을 못 자게 해요
+    - 이 조합은 너무 가렵게 만들어 안전하지 않을 수 있어요.
+    - 이 조합은 너무 목마르게 만들어 안전하지 않을 수 있어요.
     blank:
       answer: drowsy
       options:
@@ -5895,8 +5895,8 @@ situations:
     why: that risk로 앞에서 설명한 위험을 가리켜 이어 말해요. 병용 위험이 있을 때는 처방 범위 안에서 용량을 낮추거나 조정하고, 그 계획을 환자에게 풀어 설명해요.
     decoy: that will add
     distractorsKo:
-    - 위험을 더 크게 할 용량을 고를게요
-    - 용량은 환자분이 직접 고르세요
+    - 그 위험을 더하지 않을 시간으로 골라드릴게요.
+    - 그 위험을 더하지 않을 병실로 골라드릴게요.
     blank:
       answer: risk
       options:
@@ -5983,8 +5983,8 @@ situations:
     why: 자격을 갖춘 의료 통역사를 쓰면 통증 설명이 정확해져요. 미국 병원은 영어가 서툰 환자에게 통역 서비스(대면·전화·화상)를 제공해야 해요.
     decoy: so we argue
     distractorsKo:
-    - 가족을 불러올게요
-    - 의사 선생님을 불러올게요
+    - 서로 잘 이해할 수 있게 보호자를 불러올게요.
+    - 서로 잘 이해할 수 있게 의사 선생님을 불러올게요.
     blank:
       answer: get
       options:
@@ -6009,8 +6009,8 @@ situations:
     why: 통증 얼굴 척도(Wong-Baker FACES 등)는 말이 통하지 않아도 강도를 표현하게 해 줘요. 숫자 대신 얼굴을 고르게 하면 영어가 서툰 환자나 아이도 답할 수 있어요.
     decoy: that scares
     distractorsKo:
-    - 통증이 있는 부위를 가리켜 주세요
-    - 통증이 시작된 날짜를 가리켜 주세요
+    - 통증과 맞는 얼굴을 말해 주세요.
+    - 통증과 맞는 얼굴을 따라해 주세요.
     blank:
       answer: matches
       options:
@@ -6035,8 +6035,8 @@ situations:
     why: Show me …는 말을 못 해도 몸짓으로 답할 수 있게 해요. 짧고 쉬운 동사 위주 문장은 통역이 오기 전에도 알아듣기 쉬워요.
     decoy: with your foot
     distractorsKo:
-    - 아픈 날짜를 말씀해 주세요
-    - 아픈 정도를 숫자로 말씀해 주세요
+    - 발로 아픈 곳을 보여주세요.
+    - 손으로 가려운 곳을 보여주세요.
     blank:
       answer: hurts
       options:
@@ -6061,8 +6061,8 @@ situations:
     why: 양 끝(통증 없음, 가장 심한 통증)을 먼저 알려 주면 환자가 그 사이에서 고를 수 있어요. 척도의 끝은 쉬운 단어로 천천히 설명해요.
     decoy: means a happy day
     distractorsKo:
-    - 이 얼굴은 가장 행복한 상태를 뜻해요
-    - 두 얼굴 모두 같은 통증이에요
+    - 이 얼굴은 통증 없음, 이 얼굴은 가장 오래된 통증을 뜻해요.
+    - 이 얼굴은 불안 없음, 이 얼굴은 가장 심한 불안을 뜻해요.
     blank:
       answer: worst
       options:
@@ -6087,8 +6087,8 @@ situations:
     why: 말하기 힘든 환자에게는 손을 쥐는 간단한 신호로 답하게 해요. 쥐기로 예·아니요를 미리 약속해 두면 통증과 의식 상태를 계속 확인할 수 있어요.
     decoy: when you can
     distractorsKo:
-    - 숨을 크게 쉬어 보세요
-    - 눈을 감고 계세요
+    - 지금 걷기 힘드시면 제 손을 꽉 쥐어 주세요.
+    - 지금 말씀하기 힘드시면 제 팔을 꽉 쥐어 주세요.
     blank:
       answer: Squeeze
       options:
@@ -6113,8 +6113,8 @@ situations:
     why: 말이 통하지 않을 때는 호흡과 표정 같은 비언어 신호가 중요한 단서예요. 지켜본다고 알리면 환자가 말하지 못해도 돌봄을 받고 있다고 느껴요.
     decoy: I'm asking about
     distractorsKo:
-    - 숨 쉬는 소리는 안 들어요
-    - 표정은 기록하지 않아요
+    - 호흡이랑 자세도 함께 지켜보고 있어요.
+    - 맥박이랑 표정도 함께 지켜보고 있어요.
     blank:
       answer: watching
       options:
@@ -6199,8 +6199,8 @@ situations:
     why: 이름과 장소를 묻는 것은 마취에서 깨어난 환자의 지남력(의식과 방향 감각)을 확인하는 기본 질문이에요. 짧고 천천히 말해야 졸린 환자도 따라와요.
     decoy: your phone
     distractorsKo:
-    - 어디가 아픈지 말씀해 주세요
-    - 약을 언제 드셨는지 말씀해 주세요
+    - 성함이랑 지금 날짜를 말씀해 주시겠어요?
+    - 나이랑 지금 계신 곳을 말씀해 주시겠어요?
     blank:
       answer: name
       options:
@@ -6223,8 +6223,8 @@ situations:
     why: nice deep breath는 환자가 숨을 스스로 깊게 쉬는지 확인하는 간단한 요청이에요. for me를 붙이면 지시가 아니라 부탁처럼 들려 졸린 환자가 따라 하기 쉬워요.
     decoy: long sigh
     distractorsKo:
-    - 숨을 참고 계세요
-    - 입을 크게 벌려 주세요
+    - 저를 위해 천천히 숨을 한번 쉬어 주세요.
+    - 저를 위해 깊게 기침을 한번 해 주세요.
     blank:
       answer: deep
       options:
@@ -6250,8 +6250,8 @@ situations:
     why: You did great로 환자를 칭찬하면서 all done으로 끝났음을 분명히 알려요. 깨어나는 환자에게는 칭찬과 '끝났다'는 사실을 함께 말해 불안을 먼저 덜어요.
     decoy: visit is
     distractorsKo:
-    - 시술이 이제 막 시작됐어요
-    - 시술이 아직 절반 남았어요
+    - 정말 잘하셨어요, 검사가 다 끝났어요.
+    - 정말 힘드셨어요, 시술이 다 끝났어요.
     blank:
       answer: procedure
       options:
@@ -6274,8 +6274,8 @@ situations:
     why: 오늘이 무슨 요일인지 묻는 것은 마취에서 깨어난 환자의 지남력을 보는 질문이에요. 답이 흐리면 아직 약기운이 남아 있다는 신호라 계속 지켜봐요.
     decoy: how old
     distractorsKo:
-    - 지금 몇 시인지 아세요?
-    - 오늘 날씨를 아세요?
+    - 오늘이 몇 월인지 아세요?
+    - 내일이 무슨 요일인지 아세요?
     blank:
       answer: day
       options:
@@ -6299,8 +6299,8 @@ situations:
     why: much better now로 이전과 비교해 좋아졌다고 알려 주면 환자가 안심해요. 호흡 상태를 말로 알려 주는 것은 회복 중 환자에게 중요한 피드백이에요.
     decoy: much worse
     distractorsKo:
-    - 호흡이 아직 불안정해요
-    - 호흡 소리가 시끄러워요
+    - 맥박이 훨씬 좋아지셨네요.
+    - 표정이 훨씬 좋아지셨네요.
     blank:
       answer: better
       options:
@@ -6324,8 +6324,8 @@ situations:
     why: 깨어나는 환자는 어디에 있는지 몰라 불안할 수 있어서 safe를 먼저 말해 줘요. 결과는 짧게 알리고 자세한 설명은 환자가 더 깨어난 뒤에 해요.
     decoy: but everything
     distractorsKo:
-    - 아직 위험한 상태예요
-    - 시술이 잘 안 됐어요
+    - 안전하세요, 다 끝났어요.
+    - 조용해요, 다 잘 됐어요.
     blank:
       answer: safe
       options:
@@ -6408,8 +6408,8 @@ situations:
     why: 호흡이 느려질 때는 짧고 구체적인 지시가 가장 잘 전달돼요. right now로 급하다는 점을 알리고 deeply로 행동을 정확히 말해요.
     decoy: for him
     distractorsKo:
-    - 숨을 참고 계세요
-    - 눈을 감고 쉬세요
+    - 지금 저를 위해 눈을 크게 떠 주세요.
+    - 지금 저를 위해 깊게 기침을 해 주세요.
     blank:
       answer: deeply
       options:
@@ -6434,8 +6434,8 @@ situations:
     why: 눈을 뜨고 손을 쥐게 하는 것은 의식과 반응을 확인하는 가장 단순한 명령이에요. 두 동작을 한 번에 말해 환자의 반응 정도를 한눈에 봐요.
     decoy: — shake
     distractorsKo:
-    - 눈을 감고 계세요
-    - 다리를 움직여 보세요
+    - 입을 열어 보세요, 제 손을 꽉 쥐어 보세요.
+    - 눈을 떠 보세요, 제 팔을 꽉 쥐어 보세요.
     blank:
       answer: squeeze
       options:
@@ -6461,8 +6461,8 @@ situations:
     why: extra oxygen이라고 쉬운 말로 알려 주면 환자가 지금 무슨 일이 일어나는지 알아요. 진정 중 호흡이 느려지면 깨우는 자극, 기도 열기, 산소 올리기를 함께 해요.
     decoy: to let you
     distractorsKo:
-    - 수액을 더 드리고 있어요
-    - 약을 더 드리고 있어요
+    - 잠자기 편하게 산소를 더 드리고 있어요.
+    - 눈뜨기 편하게 산소를 더 드리고 있어요.
     blank:
       answer: oxygen
       options:
@@ -6487,8 +6487,8 @@ situations:
     why: 수치가 떨어지는 사실을 알리고 그래서 도움을 부른다고 이유를 이으면 환자가 불안한 와중에도 상황을 이해해요. 진정 중에는 도움 요청이 지체 없이 이뤄져야 해요.
     decoy: ', so I''m leaving'
     distractorsKo:
-    - 산소가 충분히 올라가고 있어요
-    - 산소가 필요 없어졌어요
+    - 체온이 떨어지고 있어서 도움을 부르고 있어요.
+    - 맥박이 떨어지고 있어서 도움을 부르고 있어요.
     blank:
       answer: dropping
       options:
@@ -6511,8 +6511,8 @@ situations:
     why: 기도를 연다는 말을 미리 하면 머리나 턱을 만져도 환자가 놀라지 않아요. 진정 중 호흡이 약하면 턱을 들거나 기도를 열어 주는 조치를 해요.
     decoy: check your arm
     distractorsKo:
-    - 지금 바로 침대에서 내려오세요
-    - 지금 산소 마스크를 벗겨 드릴게요
+    - 지금 의사가 기도를 열어요.
+    - 지금 동료가 기도를 열어 줘요.
     blank:
       answer: open
       options:
@@ -6537,8 +6537,8 @@ situations:
     why: Stay with me는 곁에 있겠다는 신호이면서 환자가 의식을 붙잡게 해요. 눈 뜨기 같은 행동 지시는 반응을 확인하는 수단도 돼요.
     decoy: and let go
     distractorsKo:
-    - 눈을 감고 쉬세요
-    - 저를 보지 말고 누워 계세요
+    - 저와 함께 있어요, 손을 계속 잡고 계세요.
+    - 저와 함께 있어요, 팔을 계속 들고 계세요.
     blank:
       answer: open
       options:
@@ -6624,8 +6624,8 @@ situations:
     why: reversal medicine은 약의 효과를 되돌리는 약이라는 쉬운 설명이에요. 왜 약을 줬는지(숨을 잘 못 쉬었다)를 먼저 말하면 환자가 놀라지 않아요.
     decoy: ', so we told you'
     distractorsKo:
-    - 숨 쉬는 게 더 좋아져서 약을 줄였어요
-    - 수면제를 드렸어요
+    - 호흡이 잘 안 되셔서 아드님이 역전제를 드렸어요.
+    - 호흡이 잘 안 되셔서 역전제를 챙겼어요.
     blank:
       answer: reversal
       options:
@@ -6648,8 +6648,8 @@ situations:
     why: 무엇을 얼마나 복용했는지는 과다복용 치료에서 가장 중요한 정보예요. 판단하지 않는 말투로 물어야 환자가 사실대로 답해요.
     decoy: what you need
     distractorsKo:
-    - 오늘 뭘 드셔야 하는지 아세요?
-    - 오늘 몇 시에 일어나셨는지 아세요?
+    - 어제 뭘 드셨는지 아세요?
+    - 오늘 누가 드렸는지 아세요?
     blank:
       answer: took
       options:
@@ -6675,8 +6675,8 @@ situations:
     why: 오피오이드에 의존이 있는 사람은 날록손 뒤에 약효가 갑자기 풀려 메스꺼움·떨림 같은 금단 증상이 올 수 있어요. that will pass로 일시적이라고 알리면 환자가 놀라지 않아요.
     decoy: — that will stay
     distractorsKo:
-    - 메스꺼움은 오래 갈 거예요
-    - 떨림은 위험해서 약을 더 드릴게요
+    - 속이 안 좋거나 추울 수 있는데, 곧 지나갈 거예요.
+    - 머리가 아프거나 떨릴 수 있는데, 곧 지나갈 거예요.
     blank:
       answer: shaky
       options:
@@ -6702,8 +6702,8 @@ situations:
     why: 날록손은 작용 시간이 짧아서, 마약성 약이 더 오래 남으면 호흡이 다시 느려질 수 있어요. 그래서 약이 풀린 뒤에도 환자를 지켜봐요.
     decoy: ', so it lasts'
     distractorsKo:
-    - 이 약은 마약성 약보다 오래 가요
-    - 이 약은 한 번 맞으면 영구히 가요
+    - 역전제는 따끔하지만 마약성 진통제보다 먼저 효과가 사라져요.
+    - 역전제는 간단하지만 마약성 진통제보다 먼저 효과가 사라져요.
     blank:
       answer: sooner
       options:
@@ -6728,8 +6728,8 @@ situations:
     why: 날록손이 오피오이드를 막는 동안에는 오피오이드의 진통 효과도 함께 막혀서 통증이 다시 올 수 있어요. 미리 알리면 통증이 돌아와도 약이 잘못된 게 아니라고 이해해요.
     decoy: away when
     distractorsKo:
-    - 통증은 이제 다시 안 올 거예요
-    - 약이 오래 남아서 통증이 없을 거예요
+    - 마약성 진통제가 차단된 상태라 가려움이 다시 올 수 있어요.
+    - 마약성 진통제가 차단된 상태라 두통이 다시 올 수 있어요.
     blank:
       answer: opioid
       options:
@@ -6755,8 +6755,8 @@ situations:
     why: 역전제 뒤에는 약효가 다시 올라올 수 있어서 몇 시간 지켜보는 것이 일반적이에요. 얼마나 지켜볼지는 약과 환자 상태에 따라 병원 지침으로 정해요.
     decoy: for the days
     distractorsKo:
-    - 한 시간 안에 퇴원하실 거예요
-    - 저는 바로 자리를 비울 거예요
+    - 몇 시간 동안 가까이서 도와드릴게요.
+    - 며칠 동안 가까이서 지켜볼게요.
     blank:
       answer: hours
       options:
@@ -6840,8 +6840,8 @@ situations:
     why: I can see …로 환자의 고통을 직접 보고 인정해요. 약이 듣지 않는 통증일수록 믿는다는 말이 먼저 필요해요.
     decoy: ', but I doubt'
     distractorsKo:
-    - 이 통증은 곧 사라질 거예요
-    - 이 통증은 별것 아니에요
+    - 이 통증이 참기 힘드시다는 걸 알아요, 기억해요.
+    - 이 두통이 참기 힘드시다는 걸 알아요, 믿어요.
     blank:
       answer: unbearable
       options:
@@ -6867,8 +6867,8 @@ situations:
     why: 의사를 부르는 이유를 to try a different approach로 바로 붙이면 계획이 바뀌고 있다는 희망을 줘요. 효과 없는 약을 되풀이하지 않고 처방을 다시 검토하라는 신호예요.
     decoy: to skip
     distractorsKo:
-    - 약을 그대로 한 번 더 드릴게요
-    - 통증이 저절로 나아질 때까지 기다릴게요
+    - 다른 방법을 시도해보게 간호팀장을 부를게요.
+    - 다른 방법을 시도해보게 통역사를 부를게요.
     blank:
       answer: calling
       options:
@@ -6893,8 +6893,8 @@ situations:
     why: get on top of this는 통증을 다시 잡겠다는 관용 표현이에요. together로 환자가 혼자가 아니라는 점을 분명히 해요.
     decoy: on my own
     distractorsKo:
-    - 혼자 이겨내셔야 해요
-    - 의사 선생님이 혼자 해결하실 거예요
+    - 저와 함께 있어요, 이걸 함께 지켜볼 거예요.
+    - 저와 함께 있어요, 이걸 가족과 함께 이겨낼 거예요.
     blank:
       answer: together
       options:
@@ -6918,8 +6918,8 @@ situations:
     why: 이미 해 본 것을 인정하면 환자가 같은 설명을 반복하지 않아도 돼요. yet은 앞으로 달라질 수 있다는 여지를 남겨요.
     decoy: and something
     distractorsKo:
-    - 효과가 있었던 걸 알고 있어요
-    - 아직 한 가지도 안 해보셨죠
+    - 다 시도해보셨는데 아직 효과가 없었다는 거 차트에서 봤어요.
+    - 다 시도해보셨는데 아직 연락이 없었다는 거 알아요.
     blank:
       answer: worked
       options:
@@ -6944,8 +6944,8 @@ situations:
     why: until로 도움이 되는 것을 찾을 때까지 계속하겠다는 목표를 말해요. 약속은 처방 범위와 안전 안에서 지킬 수 있는 말로 해요.
     decoy: if we find
     distractorsKo:
-    - 효과가 없으면 여기서 멈출게요
-    - 찾으면 바로 퇴원하세요
+    - 도움이 될 걸 찾을 때까지 곁에 있을게요.
+    - 도움이 될 사람을 찾을 때까지 멈추지 않을게요.
     blank:
       answer: until
       options:
@@ -6969,8 +6969,8 @@ situations:
     why: I'm right here는 지금 이 자리에 있다는 구체적인 약속이라, 막연한 위로보다 환자가 붙잡기 쉬워요. 고통이 큰 환자에게 혼자가 아니라고 말하는 것이 신뢰를 지켜요.
     decoy: — I'm far
     distractorsKo:
-    - 혼자 견디셔야 해요
-    - 저는 곧 자리를 비울 거예요
+    - 혼자가 아니에요, 제가 바로 전화 드릴게요.
+    - 혼자가 아니에요, 제가 바로 밖에 있어요.
     blank:
       answer: alone
       options:
@@ -7053,8 +7053,8 @@ situations:
     why: 지금 무슨 일이 일어나는지 짧게 알리면 환자가 겁에 질려도 상황을 이해해요. 아나필락시스는 약물 같은 원인에 대한 급성 알레르기 반응이에요.
     decoy: to the weather
     distractorsKo:
-    - 약이 잘 듣고 있어요
-    - 그냥 잠이 오는 거예요
+    - 음식에 알레르기 반응이 일어나고 있어요.
+    - 벌레에 알레르기 반응이 일어나고 있어요.
     blank:
       answer: allergic
       options:
@@ -7079,8 +7079,8 @@ situations:
     why: 에피네프린은 아나필락시스의 1차 치료약이에요. 쉬운 말로 목적(숨쉬기를 돕는다)을 함께 알려 주세요. 허벅지 바깥쪽 근육주사가 일반적인 투여 방법이에요.
     decoy: to help you rest
     distractorsKo:
-    - 졸리게 하는 약을 드리고 있어요
-    - 수액을 빠르게 넣고 있어요
+    - 혈압이 오르게 에피네프린을 드리고 있어요.
+    - 두드러기가 가라앉게 에피네프린을 드리고 있어요.
     blank:
       answer: epinephrine
       options:
@@ -7105,8 +7105,8 @@ situations:
     why: calm은 불안을 낮춰 호흡을 덜 힘들게 해요. we're right here with you로 혼자 두지 않는다고 함께 말해요.
     decoy: Try to leave
     distractorsKo:
-    - 빨리 일어나서 움직여 보세요
-    - 잠들지 말고 크게 소리 지르세요
+    - 조용히 있어 보세요, 저희가 바로 곁에 있어요.
+    - 차분히 있어 보세요, 저희가 바로 약을 드려요.
     blank:
       answer: calm
       options:
@@ -7131,8 +7131,8 @@ situations:
     why: 목이 조이는 느낌은 기도가 붓는 대표 증상이에요. 증상이 반응 때문이라고 설명하면 환자가 자기 잘못이라고 느끼지 않아요.
     decoy: of the noise
     distractorsKo:
-    - 목이 아픈 건 감기 때문이에요
-    - 목이 편해지고 있어요
+    - 반응 때문에 목이 마른 느낌이 드는 거예요.
+    - 반응 때문에 배가 조이는 느낌이 드는 거예요.
     blank:
       answer: tight
       options:
@@ -7157,8 +7157,8 @@ situations:
     why: open your airway로 약이 하는 일을 눈에 그려지게 말해요. 에피네프린은 부은 기도를 열고 혈압을 올리는 작용을 해요.
     decoy: close your door
     distractorsKo:
-    - 에피네프린이 열을 내려 줄 거예요
-    - 에피네프린이 통증을 없애 줄 거예요
+    - 에피네프린이 기침을 빠르게 멈춰줄 거예요.
+    - 에피네프린이 기도를 천천히 열어줄 거예요.
     blank:
       answer: airway
       options:
@@ -7183,8 +7183,8 @@ situations:
     why: stable은 활력징후가 안정되었다는 뜻이에요. 안정될 때까지 곁에 있겠다고 기한을 말하면 환자가 안심해요.
     decoy: unless you're ready
     distractorsKo:
-    - 안정되면 바로 자리를 비울게요
-    - 검사가 끝날 때까지 곁에 있을게요
+    - 숨이 편해질 때까지 곁을 떠나지 않을게요.
+    - 아침까지 곁을 떠나지 않을게요.
     blank:
       answer: stable
       options:
@@ -7270,8 +7270,8 @@ situations:
     why: now와 not more tests로 목표가 바뀌었음을 부드럽게 알려요. 완화 돌봄은 치료를 포기하는 것이 아니라 편안함과 삶의 질을 목표로 하는 돌봄이에요.
     decoy: ', and more'
     distractorsKo:
-    - 지금은 검사를 더 늘려야 해요
-    - 지금은 완치가 목표예요
+    - 지금 중요한 건 검사가 아니라 식사예요.
+    - 지금 중요한 건 수술이 아니라 편안함이에요.
     blank:
       answer: comfort
       options:
@@ -7298,8 +7298,8 @@ situations:
     why: ease는 아픔을 덜어 준다는 뜻이라 낫게 한다는 과장 없이 약의 목적을 정직하게 전해요. rest는 편히 쉬게 한다는 현실적인 기대를 줘요.
     decoy: and keep her up
     distractorsKo:
-    - 이 약이 환자분을 깨워 줄 거예요
-    - 이 약이 검사 결과를 좋게 해 줄 거예요
+    - 이 약이 기침을 덜어주고 편히 쉬게 해줄 거예요.
+    - 이 약이 통증을 덜어주고 편히 앉게 해줄 거예요.
     blank:
       answer: ease
       options:
@@ -7324,8 +7324,8 @@ situations:
     why: what matters most로 가족이 중요하게 여기는 가치를 열어 주면 돌봄 계획을 가족의 뜻에 맞출 수 있어요. 의료 결정은 환자의 가치와 목표에 맞춰 가는 것이 기본이에요.
     decoy: what costs most
     distractorsKo:
-    - 비용은 원무과에서 안내해 드려요
-    - 가족분들은 잠시 밖에서 기다려 주세요
+    - 친구분들께 가장 중요한 게 뭔지 이야기해봐요.
+    - 가족분들께 가장 불편한 게 뭔지 이야기해봐요.
     blank:
       answer: family
       options:
@@ -7352,8 +7352,8 @@ situations:
     why: not trying to cure는 완치가 아니라 편안함이 목표라는 사실을 정직하게 말해요. 완곡하게 피하면 가족이 계속 완치를 기대할 수 있어요.
     decoy: to move her
     distractorsKo:
-    - 이제 더 강한 치료를 시작해요
-    - 이제 검사를 모두 다시 해요
+    - 이제 치료보다 식사에 집중하고 있어요.
+    - 이제 검사보다 편안함에 집중하고 있어요.
     blank:
       answer: cure
       options:
@@ -7378,8 +7378,8 @@ situations:
     why: peaceful and free of pain은 목표를 가족이 그릴 수 있는 모습으로 말해요. 마지막 단계의 통증 조절 목표는 편안함이에요.
     decoy: restless and full
     distractorsKo:
-    - 환자분이 깨어 활동하시길 바라요
-    - 환자분이 통증을 견디시길 바라요
+    - 구토 없이 평온하시길 바라요.
+    - 통증 없이 건강하시길 바라요.
     blank:
       answer: peaceful
       options:
@@ -7403,8 +7403,8 @@ situations:
     why: What would she want는 환자가 말하지 못해도 그 사람의 뜻을 중심에 두는 질문이에요. 평소 가치나 기록된 사전 지시가 있으면 그것을 따라요.
     decoy: What would you want
     distractorsKo:
-    - 가족분들은 지금 무엇을 원하세요?
-    - 환자분 이름이 어떻게 되세요?
+    - 지금 환자분이 뭘 무서워하실까요?
+    - 지금 환자분이 뭘 드시고 싶어하실 것 같으세요?
     blank:
       answer: want
       options:
@@ -7519,8 +7519,8 @@ situations:
     why: 깨어나는 환자는 어디인지 모를 수 있어 장소를 먼저 알려 줘요. 짧은 문장으로 장소와 안전을 한 번에 말하면 흥분이 가라앉기 쉬워요.
     decoy: — you're lost
     distractorsKo:
-    - 지금 수술실에 계세요
-    - 지금 집에 계세요
+    - 병실에 계세요, 여기서는 안전해요.
+    - 응급실에 계세요, 여기서는 조용해요.
     blank:
       answer: emergency
       options:
@@ -7546,8 +7546,8 @@ situations:
     why: Let's …로 같이 한다는 틀을 써서 명령 대신 협력으로 들려요. 흥분한 환자가 정맥주사나 모니터를 뽑을 수 있어 손을 가만히 두도록 부드럽게 안내해요.
     decoy: so you can fall
     distractorsKo:
-    - 손을 흔들어 보세요
-    - 손을 머리 위로 올리세요
+    - 넘어지지 않게 손을 가만히 두어요.
+    - 다치지 않게 발을 가만히 두어요.
     blank:
       answer: still
       options:
@@ -7571,8 +7571,8 @@ situations:
     why: 자기소개로 낯선 환경에서 누구인지 알려 안심시켜요. right here는 곁을 떠나지 않겠다는 약속이에요.
     decoy: ', and I''m leaving soon'
     distractorsKo:
-    - 저는 의사예요, 곧 갈 거예요
-    - 저는 다른 환자 담당이에요, 곧 올게요
+    - 저는 담당 약사예요, 바로 여기 있을게요.
+    - 저는 담당 간호사예요, 바로 밖에 있을게요.
     blank:
       answer: nurse
       options:
@@ -7599,8 +7599,8 @@ situations:
     why: 깨어나는 중이라 혼란은 정상이라고 쉬운 말로 설명하면 환자가 자신이 이상하다고 겁먹지 않아요. waking up from sedation은 지금 상태의 이유를 알려 줘요.
     decoy: ', and some snow'
     distractorsKo:
-    - 진정제가 아직 들어가고 있어요
-    - 혼란스러운 건 위험한 신호예요
+    - 진정에서 깨어나는 중이라 약간 배고픈 건 정상이에요.
+    - 수술에서 깨어나는 중이라 약간 혼란스러운 건 정상이에요.
     blank:
       answer: confusion
       options:
@@ -7623,8 +7623,8 @@ situations:
     why: 요일과 병원 이름으로 지금이 언제 어디인지 알려 주면 방향 감각이 돌아오도록 도와요. 진정에서 깨어날 때는 같은 정보를 여러 번 짧게 알려 줘도 좋아요.
     decoy: in Memorial Clinic
     distractorsKo:
-    - 지금은 월요일이에요
-    - 지금은 집에 계세요
+    - 오늘은 목요일이고, 시티 병원에 계세요.
+    - 오늘은 화요일이고, 센트럴 병원에 계세요.
     blank:
       answer: Hospital
       options:
@@ -7650,8 +7650,8 @@ situations:
     why: I need you to …는 이유(for your own safety)를 붙여 부탁하는 틀이라 명령보다 협조를 얻기 쉬워요. 낙상과 라인 제거를 막으려는 안내예요.
     decoy: to climb out of
     distractorsKo:
-    - 침대 밖으로 나오셔도 돼요
-    - 혼자 서서 걸어 보세요
+    - 편안함을 위해 침대에 계셔야 해요.
+    - 검사를 위해 침대에 계셔야 해요.
     blank:
       answer: stay
       options:
@@ -7759,8 +7759,8 @@ situations:
     why: 작은 양으로 나눠 준다고 알리면 환자가 약이 부족하다고 오해하지 않아요. 혈압이 낮은 환자는 진통제를 조금씩 올려 가며 반응을 봐요.
     decoy: ', in a hurry'
     distractorsKo:
-    - 한 번에 많은 양을 드릴게요
-    - 약은 아직 드리지 않아요
+    - 열 때문에 조금씩 나눠서 약을 드리고 있어요.
+    - 통증 때문에 조금씩 나눠서 약을 가져오고 있어요.
     blank:
       answer: small
       options:
@@ -7786,8 +7786,8 @@ situations:
     why: 눈을 보게 하면 환자의 의식과 집중을 계속 확인할 수 있어요. 위기에서는 짧고 한 가지씩 말하는 지시가 가장 잘 전달돼요.
     decoy: and stop looking
     distractorsKo:
-    - 제 손만 보세요
-    - 눈을 감고 계세요
+    - 저와 함께 있어요, 제 손을 계속 봐 주세요.
+    - 저와 함께 있어요, 모니터를 계속 봐 주세요.
     blank:
       answer: eyes
       options:
@@ -7812,8 +7812,8 @@ situations:
     why: very closely로 혈압을 자주 확인한다고 알리면 약을 쓰는 동안 안전하다고 느껴요. 외상에서는 출혈로 혈압이 떨어질 수 있어 진통제를 쓰기 전후로 계속 봐요.
     decoy: very loosely
     distractorsKo:
-    - 혈압은 한 번만 잴게요
-    - 혈압은 재지 않을 거예요
+    - 맥박을 아주 면밀히 지켜보고 있어요.
+    - 혈압을 아주 천천히 지켜보고 있어요.
     blank:
       answer: closely
       options:
@@ -7839,8 +7839,8 @@ situations:
     why: 약이 혈압을 더 떨어뜨릴 수 있어서 한 번에 많이 쓰지 않는다고 이유를 설명해요. 출혈이 있는 외상 환자는 마약성 진통제로 혈압이 더 떨어질 수 있어 신중히 써요.
     decoy: could hold
     distractorsKo:
-    - 약이 많으면 혈압이 올라가요
-    - 약은 혈압에 영향을 주지 않아요
+    - 지금 약을 너무 많이 쓰면 혈당이 더 떨어질 수 있어요.
+    - 지금 약을 너무 많이 쓰면 체온이 더 떨어질 수 있어요.
     blank:
       answer: drop
       options:
@@ -7866,8 +7866,8 @@ situations:
     why: small doses와 watch를 짝지어 말하면 조금씩 주고 반응을 보며 조절한다는 흐름이 전달돼요. 반응을 보며 용량을 조절하는 것을 적정 용량 조절(titration)이라고 해요.
     decoy: how your mind
     distractorsKo:
-    - 반응은 보지 않고 약만 드릴게요
-    - 한 번에 큰 용량을 드릴게요
+    - 소량씩 드리면서 통증이 어떻게 줄어드는지 지켜볼게요.
+    - 소량씩 드리면서 몸이 어떻게 반응하는지 물어볼게요.
     blank:
       answer: responds
       options:
@@ -7890,8 +7890,8 @@ situations:
     why: 계속 말하게 하면 의식 수준을 확인하면서 환자를 곁에서 붙잡아 줄 수 있어요. I'm not going anywhere는 떠나지 않겠다는 가장 쉬운 약속이에요.
     decoy: Stay quiet with me
     distractorsKo:
-    - 저는 곧 자리를 비울 거예요
-    - 조용히 눈을 감고 계세요
+    - 계속 저를 쳐다보세요, 어디 안 가요.
+    - 계속 저한테 속삭이세요, 어디 안 가요.
     blank:
       answer: talking
       options:
