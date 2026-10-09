@@ -4,7 +4,7 @@
 **PRD:** [prd.md](prd.md) | [prd-tech.md](prd-tech.md)
 **Design handoff:** [inputs/design-handoff_v42/](inputs/design-handoff_v42/README.md) (최신) · [v40](inputs/design-handoff_v40/README.md) · [v39](inputs/design-handoff_v39/README.md) · [v38](inputs/design-handoff_v38/README.md) · [v22](inputs/design-handoff_v22/README.md)
 **Decisions (audit):** [DECISIONS.md](DECISIONS.md)
-**Last updated:** 2026-10-09
+**Last updated:** 2026-10-10
 
 > 🚩 **학습 화면 핸드오프 1:1(v46) — 착수 (2026-10-07).** 사용자 지적: 학습 화면(STEP 1 회상 6장+뉘앙스 2장, STEP 2, 워밍업 릴)이
 > 핸드오프와 전체적으로 다르고(조각 칩 모양·선택 상태·정답 뒤 넘김 애니메이션), 릴 스와이프 연출을 사용자 의견 없이 범위에서
@@ -65,8 +65,10 @@
 > 지시서·TASK·REVIEW 갱신(예전 "같은 상황의 다른 말" 규칙 대체). 파형은 한 색으로(`3f2601b`).
 > **범위(사용자 결정 2026-10-09, 주간 토큰 사정):** 이번 주는 25주제(5묶음 — core 4·abdominal·alcohol-withdrawal·anaphylaxis·arrest·arrhythmia·asthma-copd·bleeding-wound·burn·chest-abd-trauma·chestpain·deescalation·diabetic·dyspnea·environmental·fever-infection·genitourinary·geriatric·gi-bleed·head-trauma·obgyn·ortho-trauma)만 저작·Opus 검토·반영. **남은 10주제(pain-sedation·peds·poisoning·polytrauma·procedures·psych·seizure-loc·sepsis·shock·stroke)는 다음 주** — 그때까지 정본 검사에 이 주제들의 V20이 남는다. 표본: Sonnet 저작은 길이·들리는 자리는 좋으나 안전 시험을 놓침(911 빠진 오답 등) → Opus 검토 생략 불가.
 > **오답 보기 재저작 25주제 완료(2026-10-09):** 5묶음 Sonnet 저작 → Opus 검토(고칠 것 57·62·96·56·125, 안전·처치 빠짐·바꿔치기 다수) → Sonnet 반영 → 합치기. 커밋 `a5f3684`·`4c04a61`·`316cd37`·`b7a4f46`·`08c7184`. 합친 주제 V20 0·위반 0, go test 통과, 시뮬레이터에서 에피펜 문제 보기 확인. 정답이 가장 긴/짧은 보기 12%/8%(우연 33%) — 길이 단서 없음. 검토가 더한 규칙: 옆 단계 낱말(기록·확인·사진·"제가"·약사) 주제당 5회 이하, 오답 둘 중 하나는 정답 길이 이하, 지시("다시 오세요"·911·물러나세요) 보존, 고지 문장에서 탓·감쌈 금지. 남은 10주제는 TODO.
+> **오답 보기 재저작 ER 35주제 완료(2026-10-10):** 남은 10주제(D6·D7)도 같은 흐름. 커밋 `f28046b`·`c223eee`. **ER 정본 검사 위반 0**(V20 0·W16 0·W17 0, 경고 96은 기존 W13 등). 검토가 더한 규칙: 되풀이 상한은 **모든 낱말**(오답에만 나오는 낱말 주제당 5회, 의문사·숫자 7회 — D6이 기록·확인을 피해 "설명" 33회·"가족" 20회로 옮겨 간 것을 잡음), 처치가 하나뿐인 문장은 그 처치의 참인 다른 효과를 오답으로(들리고 해가 없으면 허용). 앞서 합친 25주제의 모든-낱말 되풀이는 최대 15회(diabetic 혈압)·대부분 6~10회 — 약한 단서로 남음(정리 여부 사용자 결정 대기).
 > **TODO (2026-10-09 점검 — 남은 일):**
-> - [ ] **오답 보기 재저작 남은 10주제**(위 '범위') — `wip/er-dk/` 같은 지시서로.
+> - [x] ~~오답 보기 재저작 남은 10주제~~ — 2026-10-10 완료.
+> - [ ] 앞서 합친 25주제의 모든-낱말 되풀이 정리(8회 넘는 것만, 약 15주제) — 사용자 결정 대기.
 > - [ ] **`briefing.line` ER 저작** — T6 화면·검사(`ValidateHubLine`)는 있으나 ER 751상황 모두 비어 있음(허브는 brief 문단을 형광펜 없이). 지시서에 넣고 결정 14 파이프라인으로 저작. **T5 체크는 이 저작 전이라 잘못 체크됨** — 저작 후 다시 체크.
 > - [ ] T7 시뮬레이터 확인 목록 중 미확인: D 마이크 홀드 녹음, 키보드 올라올 때 무대·카드, 그래버 끌기와 크기 기억, iPhone SE(667) 레일 위치.
 > - [ ] Android 실기 확인(층 순서·그림자·T1 편차 3·4) — 한 번도 안 함.
