@@ -313,3 +313,12 @@ export function downsampleAmplitude(samples: number[], count: number): number[] 
   }
   return out;
 }
+
+/** The number the learner's NEXT attempt at this sentence will get. `rows` is the history
+ *  window (oldest first, at most the last 3), so it continues from the last real attempt
+ *  number rather than from the window's length — there is no cap on retries (business-rules
+ *  R3 only limits what is DISPLAYED). */
+export function nextAttemptNo(rows: ReadonlyArray<{ attemptNo?: number }>): number {
+  if (rows.length === 0) return 1;
+  return (rows[rows.length - 1].attemptNo ?? rows.length) + 1;
+}

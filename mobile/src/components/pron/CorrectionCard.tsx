@@ -21,7 +21,9 @@ type Props = {
   message: string;
   /** Pink label for a failing phoneme, yellow for a shaky one. */
   severe: boolean;
-  onPlay(): void;
+  /** Plays this syllable's clip. Omit while no per-syllable audio exists: the button is
+   *  then drawn flat and disabled instead of looking live and doing nothing. */
+  onPlay?(): void;
   rot?: number;
 };
 
@@ -37,8 +39,8 @@ export function CorrectionCard({ syllable, ipa, message, severe, onPlay, rot = -
         <Text style={styles.ipa}>{ipa}</Text>
         <Text style={[nbText.hand(15.5), styles.message]}>{message}</Text>
       </View>
-      <Pressable onPress={onPlay} hitSlop={8}>
-        <NbPaper rot={1.5} bg="rgba(143,199,232,.3)" style={styles.play}>
+      <Pressable onPress={onPlay} disabled={!onPlay} hitSlop={8}>
+        <NbPaper rot={1.5} bg="rgba(143,199,232,.3)" style={[styles.play, !onPlay && styles.flat]}>
           <NbIcon name="speaker" size={16} />
         </NbPaper>
       </Pressable>
@@ -56,5 +58,6 @@ const styles = StyleSheet.create({
   body: { flex: 1, minWidth: 0 },
   ipa: { fontFamily: nbFonts.mono, fontSize: 10, color: nb.soft },
   message: { marginTop: 1, lineHeight: 19 },
+  flat: { opacity: 0.4 },
   play: { width: 32, height: 32, alignItems: 'center', justifyContent: 'center', flexShrink: 0 },
 });

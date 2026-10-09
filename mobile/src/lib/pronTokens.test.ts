@@ -6,6 +6,7 @@ import {
   downsampleAmplitude,
   phonemeTipLookup,
   syllableLabel,
+  nextAttemptNo,
   type CorrectionWord,
 } from './pronTokens';
 
@@ -351,5 +352,21 @@ describe('buildCorrectionPoints — 음절 라벨', () => {
     expect(points[0].syllable).toBe('min');
     // The IPA line is still IPA — it is the label that must not be.
     expect(points[0].ipa).toBe('/ɪ/');
+  });
+});
+
+// ── nextAttemptNo — the "try N" hint ──
+// The history window holds only the last 3 attempts, so counting its length would make
+// the hint stop at 4 forever; it has to continue from the last real attempt number.
+describe('nextAttemptNo', () => {
+  test('이력이 없으면 1번째', () => {
+    expect(nextAttemptNo([])).toBe(1);
+  });
+  test('이력 길이가 아니라 마지막 시도 번호에서 이어간다 (창은 최근 3개)', () => {
+    expect(nextAttemptNo([{ attemptNo: 2 }, { attemptNo: 3 }, { attemptNo: 4 }])).toBe(5);
+    expect(nextAttemptNo([{ attemptNo: 11 }])).toBe(12);
+  });
+  test('번호가 없는 행은 길이로 대신한다', () => {
+    expect(nextAttemptNo([{}, {}])).toBe(3);
   });
 });

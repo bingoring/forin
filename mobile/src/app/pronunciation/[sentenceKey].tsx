@@ -39,7 +39,7 @@ import { SyllableGrid, type SyllableChip } from '@/components/pron/SyllableGrid'
 import { ScoreBars } from '@/components/pron/ScoreBars';
 import { CorrectionCard } from '@/components/pron/CorrectionCard';
 import { AttemptHistory, type AttemptRow as AttemptDisplayRow } from '@/components/pron/AttemptHistory';
-import { splitTargetTokens, syllableBand, syllableLabel, buildCorrectionPoints, downsampleAmplitude, phonemeTipLookup } from '@/lib/pronTokens';
+import { splitTargetTokens, syllableBand, syllableLabel, buildCorrectionPoints, downsampleAmplitude, phonemeTipLookup, nextAttemptNo } from '@/lib/pronTokens';
 import { api, toPronOrigin, type PronunciationResult, type SentenceReference, type SpeechAttemptRow } from '@/api/client';
 import { next, initialPronState, type PronState, type PronEventType } from '@/lib/pronState';
 import { type Translate, useT } from '@/i18n';
@@ -387,6 +387,7 @@ export default function PronunciationRoute() {
   const [banner, setBanner] = useState<string | null>(null);
   const [reference, setReference] = useState<SentenceReference>({});
   const [attempts, setAttempts] = useState<SpeechAttemptRow[]>([]);
+  const [unsaved, setUnsaved] = useState(false);
   const [result, setResult] = useState<PronunciationResult | null>(null);
   // Rolling window (last ~2s at 100ms polling) for the LIVE meter — a VU-meter
   // read is supposed to show only recent input, not the whole clip.
@@ -419,6 +420,13 @@ export default function PronunciationRoute() {
     api.speechReference(referenceText).then((r) => { if (alive) setReference(r); }).catch(() => { if (alive) setReference({}); });
     api.speechAttempts(referenceText, 3).then((rows) => { if (alive) setAttempts(rows); }).catch(() => { if (alive) setAttempts([]); });
     return () => { alive = false; };
+  }, [referenceText]);
+
+  // The history is read once on entry, so it must be re-read after a scored attempt —
+  // otherwise a retry (result → idle → record again) shows a hint and rows that are one
+  // attempt behind. Best-effort: a failed refresh keeps what is already on screen.
+  const refreshAttempts = useCallback(() => {
+    api.speechAttempts(referenceText, 3).then(setAttempts).catch(() => {});
   }, [referenceText]);
 
   // A new sentence invalidates whatever native clip was cached for the
@@ -537,7 +545,11 @@ export default function PronunciationRoute() {
         reviewCardId: params.reviewCardId,
       });
       setResult(res);
+      // The server answers 200 with an empty attemptId when it scored but could not store
+      // the attempt; say so, or the try silently vanishes from the history.
+      setUnsaved(res.attemptId === '');
       dispatch('SUCCESS');
+      refreshAttempts();
     } catch (e) {
       const status = statusOf(e);
       if (status === 422) {
@@ -559,7 +571,7 @@ export default function PronunciationRoute() {
       if (uri) await deleteAsync(uri, { idempotent: true }).catch(() => {});
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch, recorder, referenceText, origin, params.scenarioId, params.reviewCardId]);
+  }, [dispatch, recorder, referenceText, origin, params.scenarioId, params.reviewCardId, refreshAttempts]);
 
   const handleBack = useCallback(() => {
     if (pron === 'scoring') return; // no escape once the request is in flight
@@ -693,7 +705,7 @@ export default function PronunciationRoute() {
   // there is no separate probe call to make first.
   const nativeAvailable = !!reference.sentenceKey;
 
-  const hint = t('pron.attemptOf', { n: Math.min(3, attempts.length + 1) });
+  const hint = t('pron.tryNo', { n: nextAttemptNo(attempts) });
 
   // AttemptHistory always shows 3 rows (business-rules R3). `attempts` is
   // already the server's most-recent-3-oldest-first window, so any slot past
@@ -836,6 +848,14 @@ export default function PronunciationRoute() {
                 prosodyAvailable={!!result.prosodyAvailable}
               />
             </View>
+            {unsaved && (
+              <View style={[styles.body, { marginTop: 13 }]}>
+                <View style={styles.banner}>
+                  <NbIcon name="bell" size={15} color={nb.red} />
+                  <Text style={[nbText.hand(14.5), { flex: 1, minWidth: 0 }]}>{t('pron.notSaved')}</Text>
+                </View>
+              </View>
+            )}
             <View style={[styles.body, { marginTop: 13 }]}>
               <SyllableGrid syllables={syllableChips} />
             </View>
@@ -869,7 +889,7 @@ export default function PronunciationRoute() {
                         // 원어민 chip), not a per-syllable clip — slicing just this
                         // syllable's span out of the full WAV is a distinct feature this
                         // task didn't build (task-11-report.md's open concerns).
-                        onPlay={() => { if (__DEV__) console.warn('[pronunciation] no per-syllable audio clip yet — see task-11-report.md'); }}
+                        // onPlay stays omitted: the card draws the button flat and disabled.
                       />
                     </View>
                   ))}
