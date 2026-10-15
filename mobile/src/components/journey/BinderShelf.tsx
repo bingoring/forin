@@ -52,9 +52,9 @@ const SHELF_WOOD = '#C9B99A';
 const GOAL_RING = '#C77E2E';
 /** 아직 서가 컨테이너의 onLayout이 오기 전 첫 프레임에만 쓰는 자리표시 폭이다. */
 const SHELF_WIDTH_FALLBACK = 335;
-/** 목표 부서 카드의 주제 막대 — 한 줄에 이만큼 넣고 넘치면 접는다. 주제가 15~35개라
- *  참조처럼 한 줄에 전부 늘어놓으면 막대가 획보다 얇아진다(V5·V6). */
-const SEG_PER_ROW = 12;
+/** 목표 부서 카드의 진행 막대 칸 수 — 참조 G처럼 한 줄 6칸이다. 주제는 15~35개라 칸 하나가
+ *  이어진 주제 몇 개를 묶는다(사용자 결정 2026-10-15: 12칸씩 접은 3줄이 부서 수처럼 읽혔다). */
+const GOAL_SEGMENTS = 6;
 
 function chunk<T>(arr: T[], size: number): T[][] {
   const out: T[][] = [];
@@ -84,11 +84,27 @@ function goalSubline(t: Translate, curricula: JourneyCurriculum[]): string {
   })}`;
 }
 
-/** 주제 하나짜리 잉크 막대. 참조의 `height:7, border 1.2, radius 2, rotate ±.8`. */
-function TopicSegment({ c, index }: { c: JourneyCurriculum; index: number }) {
-  const total = c.total ?? 0;
-  const done = c.done ?? 0;
+/** 주제를 순서대로 n묶음으로 나눈다 — 앞 묶음부터 하나씩 더 받는다(35 → 6·6·6·6·6·5).
+ *  주제가 n개보다 적으면 주제 하나가 한 칸이다(빈 칸을 지어내지 않는다). */
+export function groupTopics(curricula: JourneyCurriculum[], n = GOAL_SEGMENTS): JourneyCurriculum[][] {
+  const k = Math.min(n, curricula.length);
+  const out: JourneyCurriculum[][] = [];
+  let at = 0;
+  for (let i = 0; i < k; i++) {
+    const size = Math.floor(curricula.length / k) + (i < curricula.length % k ? 1 : 0);
+    out.push(curricula.slice(at, at + size));
+    at += size;
+  }
+  return out;
+}
+
+/** 묶음 하나짜리 잉크 막대. 참조의 `height:7, border 1.2, radius 2, rotate ±.8`.
+ *  채움은 묶음 안 상황 진도(참조의 .38 = 13/34)이고, 묶음의 주제가 전부 끝나야 초록이다. */
+function TopicSegment({ group, index }: { group: JourneyCurriculum[]; index: number }) {
+  const total = group.reduce((s, c) => s + (c.total ?? 0), 0);
+  const done = group.reduce((s, c) => s + Math.min(c.done ?? 0, c.total ?? 0), 0);
   const pct = total > 0 ? Math.min(100, Math.max(0, (done / total) * 100)) : 0;
+  const allDone = group.length > 0 && group.every(isTopicDone);
   return (
     <View
       testID="goal-topic-segment"
@@ -98,7 +114,7 @@ function TopicSegment({ c, index }: { c: JourneyCurriculum; index: number }) {
       }}
     >
       {pct > 0 && (
-        <View style={{ width: `${pct}%`, height: '100%', backgroundColor: isTopicDone(c) ? nb.green : GOAL_RING }} />
+        <View style={{ width: `${pct}%`, height: '100%', backgroundColor: allDone ? nb.green : GOAL_RING }} />
       )}
     </View>
   );
@@ -113,7 +129,7 @@ function GoalDeptCard({ goalDept, goalCurricula, inferred, onOpen, onChangeGoal 
 }) {
   const t = useT();
   const spine = deptSpineColor(goalDept);
-  const rows = chunk(goalCurricula, SEG_PER_ROW);
+  const groups = groupTopics(goalCurricula);
 
   return (
     <NbPaper
@@ -155,17 +171,12 @@ function GoalDeptCard({ goalDept, goalCurricula, inferred, onOpen, onChangeGoal 
         </NbButton>
       </View>
 
-      {/* 주제 막대 — 주제 하나당 하나, 한 줄 12개씩 접는다. 막대는 flex:1이라 마지막 줄이 덜 차면
-          남은 폭을 나눠 가져 넓어진다(13개면 둘째 줄 막대 하나가 한 줄을 다 먹는다, V5). 그래서
-          마지막 줄을 보이지 않는 자리채움으로 12칸 폭까지 맞춘다 — 자리채움은 막대가 아니다. */}
-      {rows.map((row, ri) => (
-        <View key={ri} testID="goal-topic-row" style={{ flexDirection: 'row', gap: 4, marginTop: 10 }}>
-          {row.map((c, i) => <TopicSegment key={c.themeKey || `${ri}-${i}`} c={c} index={ri * SEG_PER_ROW + i} />)}
-          {Array.from({ length: SEG_PER_ROW - row.length }, (_, k) => (
-            <View key={`pad-${k}`} testID="goal-topic-spacer" style={{ flex: 1, height: 7 }} />
-          ))}
+      {/* 진행 막대 — 참조 G처럼 한 줄 6칸, 칸 하나 = 이어진 주제 한 묶음. */}
+      {groups.length > 0 && (
+        <View testID="goal-topic-row" style={{ flexDirection: 'row', gap: 4, marginTop: 10 }}>
+          {groups.map((g, i) => <TopicSegment key={g[0]?.themeKey || i} group={g} index={i} />)}
         </View>
-      ))}
+      )}
 
       <Pressable
         testID="binder-shelf-change-goal"
