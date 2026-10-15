@@ -369,17 +369,7 @@ export default function HomeTab() {
           </NbPaper>
         </Pressable>
 
-        {/* 나이트 근무 라디오 — a night-only channel (v38). */}
-        <Pressable onPress={() => router.push('/night')}>
-          <NbPaper rot={0.4} style={{ marginTop: 11, paddingVertical: 12, paddingHorizontal: 14, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-            <NbIcon name="speaker" size={20} />
-            <View style={{ flex: 1, minWidth: 0 }}>
-              <Text style={nbText.hand(15)}>{t('night.homeEntry')}</Text>
-              <Text numberOfLines={1} style={[nbText.body(9.5, nb.soft), { marginTop: 1 }]}>{t('night.homeEntrySub')}</Text>
-            </View>
-            <NbIcon name="chevronRight" size={15} color={nb.soft} />
-          </NbPaper>
-        </Pressable>
+        {/* 나이트 근무 라디오(v38) 입구는 뺐다 — 완성도가 아직 낮다(사용자 결정 2026-10-15). /night 화면은 그대로 둔다. */}
 
         {/* 환자 인수인계 노트 — follow-up notes from patients met in cleared scenarios (v38). */}
         <Pressable onPress={() => router.push('/handoff')}>
