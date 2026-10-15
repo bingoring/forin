@@ -17,7 +17,7 @@ jest.mock('./measureBinderRect', () => ({
 
 import { act, create, type ReactTestInstance } from 'react-test-renderer';
 import { Text } from 'react-native';
-import { BinderShelf } from './BinderShelf';
+import { BinderShelf, groupTopics } from './BinderShelf';
 import { measureBinderRect } from './measureBinderRect';
 import type { FreeRoamEntry } from '@/api/client';
 import type { JourneyCurriculum } from './JourneyMap';
@@ -240,36 +240,35 @@ describe('BinderShelf', () => {
     expect((st.height as number) / (st.width as number)).toBeCloseTo(118 / 78, 2);
   });
 
-  // 참조의 내 부서 카드는 주제마다 막대 하나를 둔다.
-  it('내 부서 카드가 주제 하나당 막대 하나를 그린다', () => {
+  // 참조 G의 내 부서 카드는 한 줄 6칸이다(사용자 결정 2026-10-15). 주제가 6개보다 적으면 주제 하나가 한 칸이다.
+  it('내 부서 카드의 막대는 한 줄이고, 주제가 적으면 주제 하나당 한 칸이다', () => {
     const tree = mount(<BinderShelf {...baseProps()} />);
-    expect(hostNodesWithTestId(tree.root, 'goal-topic-segment').length).toBe(GOAL_CURRICULA.length);
+    expect(hostNodesWithTestId(tree.root, 'goal-topic-row').length).toBe(1);
+    expect(hostNodesWithTestId(tree.root, 'goal-topic-segment').length).toBe(Math.min(6, GOAL_CURRICULA.length));
   });
 
-  // 주제가 35개여도 막대가 획보다 얇아지지 않게 줄을 접는다(V5).
-  it('주제가 35개면 막대 줄이 세 줄로 접힌다', () => {
+  it('주제가 35개여도 한 줄 6칸이다 — 6·6·6·6·6·5로 묶는다', () => {
     const many = Array.from({ length: 35 }, (_, i) => curriculum({ themeKey: `t${i}` }));
+    expect(groupTopics(many).map((g) => g.length)).toEqual([6, 6, 6, 6, 6, 5]);
     const tree = mount(<BinderShelf {...baseProps()} goalCurricula={many} />);
-    expect(hostNodesWithTestId(tree.root, 'goal-topic-segment').length).toBe(35);
-    expect(hostNodesWithTestId(tree.root, 'goal-topic-row').length).toBe(3);
+    expect(hostNodesWithTestId(tree.root, 'goal-topic-segment').length).toBe(6);
+    expect(hostNodesWithTestId(tree.root, 'goal-topic-row').length).toBe(1);
   });
 
-  // 주제 15개(스펙 §8 2행): 줄은 12 + 3으로 접히고, 막대는 정확히 15개다 — 빈 막대를 지어내지 않는다.
-  it('주제가 15개면 막대가 15개, 줄은 두 줄이다', () => {
-    const fifteen = Array.from({ length: 15 }, (_, i) => curriculum({ themeKey: `t${i}` }));
-    const tree = mount(<BinderShelf {...baseProps()} goalCurricula={fifteen} />);
-    expect(hostNodesWithTestId(tree.root, 'goal-topic-segment').length).toBe(15);
-    expect(hostNodesWithTestId(tree.root, 'goal-topic-row').length).toBe(2);
-  });
-
-  // V5 '칸 크기가 줄지 않는다'의 반대쪽: 마지막 줄의 막대가 남은 폭을 나눠 가져 넓어지지도 않는다.
-  // 마지막 줄은 보이지 않는 자리채움으로 12칸 폭을 맞춘다 — 자리채움은 막대가 아니다(세지 않는다).
-  it('마지막 줄의 막대도 다른 줄과 같은 폭이다 — 13개면 둘째 줄은 막대 1 + 자리채움 11', () => {
-    const thirteen = Array.from({ length: 13 }, (_, i) => curriculum({ themeKey: `t${i}` }));
-    const tree = mount(<BinderShelf {...baseProps()} goalCurricula={thirteen} />);
-    const rows = hostNodesWithTestId(tree.root, 'goal-topic-row');
-    const inRow = (r: ReactTestInstance, id: string) => r.findAll((n) => typeof n.type === 'string' && n.props?.testID === id).length;
-    expect(rows.map((r) => [inRow(r, 'goal-topic-segment'), inRow(r, 'goal-topic-spacer')])).toEqual([[12, 0], [1, 11]]);
+  // 칸 채움은 묶음 안 상황 진도, 색은 묶음의 주제가 전부 끝났을 때만 초록이다(참조: [1,1,.38,0,0,0]).
+  it('칸은 묶음의 상황 진도만큼 차고, 다 끝난 묶음만 초록이다', () => {
+    const list = Array.from({ length: 12 }, (_, i) => curriculum({
+      themeKey: `t${i}`, total: 10, done: i < 2 ? 10 : i === 2 ? 5 : 0,
+    }));
+    const tree = mount(<BinderShelf {...baseProps()} goalCurricula={list} />);
+    const fills = hostNodesWithTestId(tree.root, 'goal-topic-segment').map((seg) => {
+      const inner = seg.children.find((c) => typeof c !== 'string') as ReactTestInstance | undefined;
+      return inner ? flat(inner.props.style) : undefined;
+    });
+    expect(fills[0]).toMatchObject({ width: '100%' });
+    expect(fills[1]).toMatchObject({ width: '25%' });
+    expect(fills[0]?.backgroundColor).not.toBe(fills[1]?.backgroundColor);
+    expect(fills.slice(2)).toEqual([undefined, undefined, undefined, undefined]);
   });
 
   // 진행 중인 주제가 없으면 '지금 …' 부분을 지어내지 않는다.
