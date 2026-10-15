@@ -4,7 +4,11 @@
 **PRD:** [prd.md](prd.md) | [prd-tech.md](prd-tech.md)
 **Design handoff:** [inputs/design-handoff_v42/](inputs/design-handoff_v42/README.md) (최신) · [v40](inputs/design-handoff_v40/README.md) · [v39](inputs/design-handoff_v39/README.md) · [v38](inputs/design-handoff_v38/README.md) · [v22](inputs/design-handoff_v22/README.md)
 **Decisions (audit):** [DECISIONS.md](DECISIONS.md)
-**Last updated:** 2026-10-10
+**Last updated:** 2026-10-15
+
+> 🔧 **일터 탭 `내 부서` 카드 진행 막대 = 핸드오프 G 한 줄 6칸(2026-10-15, 사용자 지적).** TestFlight 1.0.0(19)에서 막대가 주제마다 1칸(ER 35칸, 12칸씩 3줄)이라
+> 부서 수처럼 읽혔다. 사용자 결정: 참조 G처럼 한 줄 6칸, 칸 하나 = 이어진 주제 한 묶음(35 → 6·6·6·6·6·5, 주제가 6개 미만이면 주제당 1칸).
+> 채움은 묶음 안 상황 진도, 묶음의 주제가 전부 끝나야 초록. journey-binder-v42 스펙 V5를 이 결정으로 대체. `BinderShelf.tsx` `groupTopics`.
 
 > 🚩 **학습 화면 핸드오프 1:1(v46) — 착수 (2026-10-07).** 사용자 지적: 학습 화면(STEP 1 회상 6장+뉘앙스 2장, STEP 2, 워밍업 릴)이
 > 핸드오프와 전체적으로 다르고(조각 칩 모양·선택 상태·정답 뒤 넘김 애니메이션), 릴 스와이프 연출을 사용자 의견 없이 범위에서
