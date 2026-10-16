@@ -6,6 +6,14 @@
 **Decisions (audit):** [DECISIONS.md](DECISIONS.md)
 **Last updated:** 2026-10-16
 
+> ✅ **ICU·OR 한 번에 저작 파일럿 완료(2026-10-16).** 4주제 정본 합침(ICU weaning `8b4b57d`·eol-goals `a6ae700`, OR timeout `3d0a3a5`·MH),
+> 부서 검사 위반 0·경고 0, Go 테스트 통과. 합계 568만 토큰(주제당 Fable 빼고 평균 약 122만, 벽시계 약 1시간) → 35주제 부서 약 4,300만,
+> ICU·OR 나머지 66주제 약 8,000만, v44부터 필요한 26개 부서 약 11억. Opus 검토 고칠 것 81~360건/주제, **응급·임종 주제에서 오답 안전 실패 집중**
+> (호출 대상·확인 주체·시점·처치 행동 바꿔치기) → Opus 검토 생략 불가. **Fable 판정이 Opus가 놓친 비속어 오답 조각을 잡음** → ER 정본의 `cum`×5·`ass`×1,
+> OR `ass`×1 정리 + 검사기 V21(오답 조각 금칙어, `a8adf88`) — **ER 수정은 배포·seed 전까지 운영에 남아 있음.**
+> 결정 대기: keyPhrase 9건(eol 5·weaning 1·MH 3)과 slider '응답 고르기' 허용 여부, 확장 범위·순서. 검사기 후보 4(decoy·빈칸 오답 되풀이, 어간 되풀이,
+> slider 정답 위치·길이 편향, 확인 뒤집는 빈칸 오답). 보고 `server/content/tools/wip/icu-or-pilot/REPORT.md`, 토큰 `TOKENS.md`.
+
 > 🧪 **ICU·OR 한 번에 저작 파일럿 착수(2026-10-16, 사용자 결정).** v44만 있는 주제를 v45(단어 회상·뉘앙스)+v46(문장 낱장·order·오답 재설계)까지
 > 한 번에 — 주제마다 Sonnet 저작 A(단어·뉘앙스) ‖ B(문장 낱장·order) → `combine_halves.py` → Opus 검토 A ‖ B → Sonnet 수정 → `--replace` 합치기.
 > 대상 ICU `icu-eol-goals`·`icu-weaning-extubation`, OR `or-timeout`·`or-malignant-hyperthermia`(저장소 `server/content/tools/wip/icu-or-pilot/`).
