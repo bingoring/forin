@@ -25,3 +25,343 @@ changes:
   fields:
   - ko
   why: w-match(일치하다)와 ko(일치시키다)가 겹친다 — align은 팀원의 이해·계획을 한 방향으로 맞추는 쪽
+- kind: word
+  id: w-circulating
+  fields:
+  - ko
+  why: ko를 '순환하는'으로 — 문장 ko·뉘앙스 설명의 '순환 간호사'와 통일
+- kind: word
+  id: w-type
+  fields:
+  - ko
+  why: type and cross의 type은 혈액형을 정하는 검사 — ko를 '혈액형 검사'로
+- kind: word
+  id: w-hold
+  fields:
+  - example
+  why: example을 S19 문장(절개 보류)으로 — S8 'on hold'(혈액 확보)와 다른 뜻의 hold 태그를 떼었다
+- kind: word
+  id: w-double
+  fields:
+  - ko
+  why: 태그된 말은 double-check의 double — ko를 '이중의(두 번)'로(재확인의 → 이중의)
+- kind: word
+  id: w-vital
+  fields:
+  - en
+  - ipa
+  why: 문장 두 곳 모두 명사 vitals — 헤드워드를 vitals로(id는 그대로)
+- kind: word-remove
+  id: w-patient
+  why: 너무 쉬운 말(결정 11) — 어느 문장도 태그하지 않게 됨
+- kind: word-remove
+  id: w-name
+  why: 너무 쉬운 말(결정 11) — 어느 문장도 태그하지 않게 됨
+- kind: word-remove
+  id: w-nurse
+  why: 너무 쉬운 말(결정 11) — 어느 문장도 태그하지 않게 됨
+- kind: word-remove
+  id: w-know
+  why: 너무 쉬운 말(결정 11) — 어느 문장도 태그하지 않게 됨
+- kind: word-remove
+  id: w-give
+  why: 너무 쉬운 말(결정 11) — 어느 문장도 태그하지 않게 됨
+- kind: word-remove
+  id: w-time
+  why: 너무 쉬운 말(결정 11) — 어느 문장도 태그하지 않게 됨
+- kind: word-remove
+  id: w-go
+  why: 너무 쉬운 말(결정 11) — 어느 문장도 태그하지 않게 됨
+- kind: word-remove
+  id: w-use
+  why: 너무 쉬운 말(결정 11) — 어느 문장도 태그하지 않게 됨
+- kind: word-remove
+  id: w-hour
+  why: 너무 쉬운 말(결정 11) — 어느 문장도 태그하지 않게 됨
+- kind: word-remove
+  id: w-long
+  why: 너무 쉬운 말(결정 11) — 어느 문장도 태그하지 않게 됨
+- kind: word-remove
+  id: w-take
+  why: 너무 쉬운 말(결정 11) — 어느 문장도 태그하지 않게 됨
+- kind: word-remove
+  id: w-new
+  why: 너무 쉬운 말(결정 11) — 어느 문장도 태그하지 않게 됨
+- kind: word-remove
+  id: w-stay
+  why: 너무 쉬운 말(결정 11) — 어느 문장도 태그하지 않게 됨
+- kind: word-remove
+  id: w-put
+  why: 너무 쉬운 말(결정 11) — 어느 문장도 태그하지 않게 됨
+- kind: word-remove
+  id: w-down
+  why: 너무 쉬운 말(결정 11) — 어느 문장도 태그하지 않게 됨
+- kind: word-remove
+  id: w-other
+  why: 너무 쉬운 말(결정 11) — 어느 문장도 태그하지 않게 됨
+- kind: sentence
+  situation: 마취 전 sign-in
+  index: 0
+  fields:
+  - words
+  why: 쉬운 말 태그 제거
+- kind: sentence
+  situation: 환자·부위·시술 재확인
+  index: 0
+  fields:
+  - words
+  why: 쉬운 말 태그 제거
+- kind: sentence
+  situation: 팀원 역할 소개
+  index: 0
+  fields:
+  - words
+  why: 쉬운 말 태그 제거
+- kind: sentence
+  situation: 팀원 역할 소개
+  index: 1
+  fields:
+  - words
+  why: 쉬운 말 태그 제거
+- kind: sentence
+  situation: 예방적 항생제 확인
+  index: 0
+  fields:
+  - words
+  why: 쉬운 말 태그 제거
+- kind: sentence
+  situation: 예방적 항생제 확인
+  index: 2
+  fields:
+  - words
+  why: 쉬운 말 태그 제거
+- kind: sentence
+  situation: 예방적 항생제 확인
+  index: 3
+  fields:
+  - words
+  why: 쉬운 말 태그 제거
+- kind: sentence
+  situation: 예방적 항생제 확인
+  index: 4
+  fields:
+  - words
+  why: 쉬운 말 태그 제거
+- kind: sentence
+  situation: 종료 sign-out
+  index: 2
+  fields:
+  - ko
+  why: ko 수정(검토 목록)
+- kind: sentence
+  situation: 종료 sign-out
+  index: 3
+  fields:
+  - words
+  why: 쉬운 말 태그 제거
+- kind: sentence
+  situation: 타임아웃 중 이견 제기
+  index: 4
+  fields:
+  - words
+  why: 쉬운 말 태그 제거
+- kind: sentence
+  situation: 영상 좌우 대조
+  index: 4
+  fields:
+  - words
+  why: 쉬운 말 태그 제거
+- kind: sentence
+  situation: 예상 출혈·수혈 논의
+  index: 1
+  fields:
+  - ko
+  - words
+  why: 쉬운 말 태그 제거 · 다른 뜻의 hold/set 태그 제거 / ko 수정(검토 목록)
+- kind: sentence
+  situation: 이식물·특수 기구 확인
+  index: 3
+  fields:
+  - words
+  why: 쉬운 말 태그 제거
+- kind: sentence
+  situation: 알레르기 팀 공유
+  index: 0
+  fields:
+  - words
+  why: 쉬운 말 태그 제거
+- kind: sentence
+  situation: 알레르기 팀 공유
+  index: 1
+  fields:
+  - words
+  why: 쉬운 말 태그 제거
+- kind: sentence
+  situation: 알레르기 팀 공유
+  index: 3
+  fields:
+  - chunks
+  why: 조각을 구 경계에서
+- kind: sentence
+  situation: 항생제 재투여 계획
+  index: 0
+  fields:
+  - words
+  why: 쉬운 말 태그 제거
+- kind: sentence
+  situation: 항생제 재투여 계획
+  index: 1
+  fields:
+  - words
+  why: 쉬운 말 태그 제거 · 다른 뜻의 hold/set 태그 제거
+- kind: sentence
+  situation: 항생제 재투여 계획
+  index: 2
+  fields:
+  - words
+  why: 쉬운 말 태그 제거
+- kind: sentence
+  situation: 항생제 재투여 계획
+  index: 3
+  fields:
+  - words
+  why: 쉬운 말 태그 제거
+- kind: sentence
+  situation: 항생제 재투여 계획
+  index: 4
+  fields:
+  - words
+  why: 쉬운 말 태그 제거
+- kind: sentence
+  situation: 타임아웃 참여 저조
+  index: 2
+  fields:
+  - words
+  why: 쉬운 말 태그 제거
+- kind: sentence
+  situation: 타임아웃 참여 저조
+  index: 4
+  fields:
+  - words
+  why: 쉬운 말 태그 제거
+- kind: sentence
+  situation: 시술 변경 재확인
+  index: 1
+  fields:
+  - words
+  why: 쉬운 말 태그 제거
+- kind: sentence
+  situation: 시술 변경 재확인
+  index: 2
+  fields:
+  - ko
+  why: ko 수정(검토 목록)
+- kind: sentence
+  situation: 시술 변경 재확인
+  index: 3
+  fields:
+  - words
+  why: 쉬운 말 태그 제거
+- kind: sentence
+  situation: 시술 변경 재확인
+  index: 4
+  fields:
+  - ko
+  - words
+  why: 쉬운 말 태그 제거 / ko 수정(검토 목록)
+- kind: sentence
+  situation: 검체 처리 사전 확인
+  index: 1
+  fields:
+  - words
+  why: 쉬운 말 태그 제거
+- kind: sentence
+  situation: 검체 처리 사전 확인
+  index: 3
+  fields:
+  - words
+  why: 쉬운 말 태그 제거
+- kind: sentence
+  situation: 응급 타임아웃 생략 압박
+  index: 0
+  fields:
+  - words
+  why: 쉬운 말 태그 제거
+- kind: sentence
+  situation: 응급 타임아웃 생략 압박
+  index: 1
+  fields:
+  - words
+  why: 쉬운 말 태그 제거
+- kind: sentence
+  situation: 응급 타임아웃 생략 압박
+  index: 4
+  fields:
+  - words
+  why: 쉬운 말 태그 제거
+- kind: sentence
+  situation: 팀 침묵 속 오류 방치
+  index: 0
+  fields:
+  - words
+  why: 쉬운 말 태그 제거
+- kind: sentence
+  situation: 팀 침묵 속 오류 방치
+  index: 1
+  fields:
+  - words
+  why: 쉬운 말 태그 제거
+- kind: sentence
+  situation: 팀 침묵 속 오류 방치
+  index: 3
+  fields:
+  - chunks
+  why: 조각을 구 경계에서
+- kind: sentence
+  situation: wrong-site 임박 차단
+  index: 1
+  fields:
+  - words
+  why: 쉬운 말 태그 제거
+- kind: sentence
+  situation: wrong-site 임박 차단
+  index: 2
+  fields:
+  - words
+  why: 쉬운 말 태그 제거
+- kind: sentence
+  situation: wrong-site 임박 차단
+  index: 3
+  fields:
+  - words
+  why: 쉬운 말 태그 제거
+- kind: sentence
+  situation: 항생제 누락 절개 임박
+  index: 0
+  fields:
+  - words
+  why: 쉬운 말 태그 제거
+- kind: sentence
+  situation: 항생제 누락 절개 임박
+  index: 1
+  fields:
+  - words
+  why: 쉬운 말 태그 제거
+- kind: sentence
+  situation: 항생제 누락 절개 임박
+  index: 3
+  fields:
+  - words
+  why: 쉬운 말 태그 제거
+- kind: sentence
+  situation: 타임아웃 후 상태 급변
+  index: 2
+  fields:
+  - words
+  why: 쉬운 말 태그 제거
+- kind: sentence
+  situation: 타임아웃 후 상태 급변
+  index: 4
+  fields:
+  - words
+  why: 쉬운 말 태그 제거

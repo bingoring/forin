@@ -1,7 +1,7 @@
 # 커리큘럼 v3 / lesson-four-steps-v44 — ICU 부서 단어 은행.
 # 주제 1건당 은행 1건. STEP 1은 이 은행을 직접 읽지 않고, 상황의
 # sentences 가 참조한 id 를 거슬러 올라가 만들어진다.
-# 35 themes · 9176 words.
+# 35 themes · 9169 words.
 
 - theme: core-family-icu
   words:
@@ -54085,1047 +54085,2181 @@
       ko: "잠시 멈추다"
       icon: "gear"
       example: "First we pause his sedation to see how awake he can get."
+      exKo: "먼저 진정제를 잠시 멈추고 얼마나 깰 수 있는지 봅니다."
+      cue: "진정제 점적을 아주 끊지는 않고 잠깐 멈춰 두는 일 — 매일 아침 얼마나 깨는지 볼 때"
+      tag: "진정·각성"
+      distractorsEn: ["taper", "push"]
+      distractorsKo: ["서서히 줄이다", "빨리 넣다"]
+      chips: [["pause"]]
+      decoyChips: ["pose"]
     - id: w-sedation
       en: "sedation"
       ipa: "/sɪˈdeɪʃən/"
       ko: "진정(제 투여)"
       icon: "pill"
       example: "First we pause his sedation to see how awake he can get."
+      exKo: "먼저 진정제를 잠시 멈추고 얼마나 깰 수 있는지 봅니다."
+      cue: "불안과 통증을 약으로 가라앉혀 재워 두는 처치 — 점적으로 들어간다"
+      tag: "진정·각성"
+      distractorsEn: ["analgesia", "paralysis"]
+      distractorsKo: ["진통(제 투여)", "마비(제 투여)"]
+      chips: [["se", "da", "tion"]]
+      decoyChips: ["sta", "sion"]
     - id: w-awake
       en: "awake"
       ipa: "/əˈweɪk/"
       ko: "깨어 있는"
       icon: "bulb"
       example: "First we pause his sedation to see how awake he can get."
+      exKo: "먼저 진정제를 잠시 멈추고 얼마나 깰 수 있는지 봅니다."
+      cue: "눈을 뜨고 말을 걸면 반응하는 상태 — 진정제를 끊은 뒤 기대하는 모습"
+      tag: "진정·각성"
+      distractorsEn: ["aware", "asleep"]
+      distractorsKo: ["졸리는", "인지하는"]
+      chips: [["a", "wake"]]
+      decoyChips: ["woke", "wick"]
     - id: w-breathe
       en: "breathe"
       ipa: "/briːð/"
       ko: "숨쉬다"
       icon: "stetho"
       example: "Then we let him breathe on his own for a trial to test his readiness."
+      exKo: "그다음엔 시험 삼아 스스로 숨쉬게 해서 준비가 됐는지 봅니다."
+      cue: "기계 도움 없이 환자가 스스로 공기를 들이쉬고 내쉬는 동작"
+      tag: "이탈·SBT"
+      distractorsEn: ["bleed", "bathe"]
+      distractorsKo: ["기침하다", "삼키다"]
+      chips: [["breathe"]]
+      decoyChips: ["breath"]
     - id: w-onhisown
       en: "on his own"
       ipa: "/ɑːn hɪz oʊn/"
       ko: "스스로"
       icon: "check"
       example: "Then we let him breathe on his own for a trial to test his readiness."
+      exKo: "그다음엔 시험 삼아 스스로 숨쉬게 해서 준비가 됐는지 봅니다."
+      cue: "기계의 도움 없이 자기 힘만으로 해내는 모습을 환자 입장에서 말할 때"
+      tag: "이탈·SBT"
+      distractorsEn: ["on his back", "on his way"]
+      distractorsKo: ["천천히", "곧바로"]
+      chips: [["on"], ["his"], ["own"]]
+      decoyChips: ["one", "hit"]
     - id: w-trial
       en: "trial"
       ipa: "/ˈtraɪəl/"
       ko: "시험"
       icon: "chartup"
       example: "Then we let him breathe on his own for a trial to test his readiness."
+      exKo: "그다음엔 시험 삼아 스스로 숨쉬게 해서 준비가 됐는지 봅니다."
+      cue: "본격적으로 이어 가기 전에 짧게 해 보며 견디는지 보는 시도"
+      tag: "이탈·SBT"
+      distractorsEn: ["trail", "triage"]
+      distractorsKo: ["수술", "투약"]
+      chips: [["tri", "al"]]
+      decoyChips: ["bi", "ple"]
     - id: w-readiness
       en: "readiness"
       ipa: "/ˈrɛdinəs/"
       ko: "준비도"
       icon: "check"
       example: "Then we let him breathe on his own for a trial to test his readiness."
+      exKo: "그다음엔 시험 삼아 스스로 숨쉬게 해서 준비가 됐는지 봅니다."
+      cue: "이탈해도 될 만큼 몸이 갖춰졌는지를 가리키는 정도"
+      tag: "준비 기준"
+      distractorsEn: ["steadiness", "willingness"]
+      distractorsKo: ["안정도", "의욕"]
+      chips: [["read", "i", "ness"]]
+      decoyChips: ["road", "less"]
     - id: w-daily
       en: "daily"
       ipa: "/ˈdeɪli/"
       ko: "매일의"
       icon: "calendar"
       example: "These daily checks help us know when he can come off the ventilator."
+      exKo: "이 매일의 확인이 언제 인공호흡기를 뗄 수 있는지 알려줍니다."
+      cue: "하루도 거르지 않는 간격 — 아침 회진 때마다 챙기는 확인"
+      tag: "이탈·SBT"
+      distractorsEn: ["weekly", "nightly"]
+      distractorsKo: ["매주의", "매시간의"]
+      chips: [["dai", "ly"]]
+      decoyChips: ["dry", "li"]
     - id: w-check
       en: "check"
       ipa: "/tʃɛk/"
       ko: "확인"
       icon: "check"
       example: "These daily checks help us know when he can come off the ventilator."
+      exKo: "이 매일의 확인이 언제 인공호흡기를 뗄 수 있는지 알려줍니다."
+      cue: "수치나 상태를 눈으로 훑어 맞는지 보는 일 — 명사로도 동사로도 쓴다"
+      tag: "준비 기준"
+      distractorsEn: ["chart", "chest"]
+      distractorsKo: ["기록", "교체"]
+      chips: [["check"]]
+      decoyChips: ["chuck"]
     - id: w-comeoff
       en: "come off"
       ipa: "/kʌm ɔːf/"
-      ko: "떼다(이탈하다)"
+      ko: "(기계를) 떼다"
       icon: "gear"
       example: "These daily checks help us know when he can come off the ventilator."
+      exKo: "이 매일의 확인이 언제 인공호흡기를 뗄 수 있는지 알려줍니다."
+      cue: "기계 지원에서 환자가 풀려나는 것을 가리키는 두 낱말짜리 구동사"
+      tag: "이탈·SBT"
+      distractorsEn: ["come on", "go off"]
+      distractorsKo: ["(기계를) 켜다", "(경보가) 울리다"]
+      chips: [["come"], ["off"]]
+      decoyChips: ["came", "of"]
     - id: w-ventilator
       en: "ventilator"
       ipa: "/ˈvɛntɪleɪtər/"
       ko: "인공호흡기"
       icon: "monitor"
       example: "These daily checks help us know when he can come off the ventilator."
+      exKo: "이 매일의 확인이 언제 인공호흡기를 뗄 수 있는지 알려줍니다."
+      cue: "환자 대신 숨을 밀어 넣어 주는 기계 — 침상 머리맡에 있고 알람이 울린다"
+      tag: "장비·산소"
+      distractorsEn: ["ventricle", "nebulizer"]
+      distractorsKo: ["산소 마스크", "심장 모니터"]
+      chips: [["ven", "ti", "la", "tor"]]
+      decoyChips: ["ta", "ri"]
     - id: w-oxygen
       en: "oxygen"
       ipa: "/ˈɑːksɪdʒən/"
       ko: "산소"
       icon: "monitor"
       example: "Let's check if his oxygen requirement is low enough to wean."
+      exKo: "산소 요구량이 이탈할 만큼 충분히 낮은지 확인해 봅시다."
+      cue: "공기 중에 약 21퍼센트 있고, 호흡이 힘든 환자에게 더해 주는 기체"
+      tag: "장비·산소"
+      distractorsEn: ["nitrogen", "hydrogen"]
+      distractorsKo: ["질소", "수소"]
+      chips: [["ox", "y", "gen"]]
+      decoyChips: ["ex", "jen"]
     - id: w-requirement
       en: "requirement"
       ipa: "/rɪˈkwaɪərmənt/"
       ko: "요구량"
       icon: "chartup"
       example: "Let's check if his oxygen requirement is low enough to wean."
+      exKo: "산소 요구량이 이탈할 만큼 충분히 낮은지 확인해 봅시다."
+      cue: "환자가 지금 필요로 하는 양 — 산소를 얼마나 줘야 하는지에 대해"
+      tag: "준비 기준"
+      distractorsEn: ["requisition", "replacement"]
+      distractorsKo: ["공급량", "소모량"]
+      chips: [["re", "quire", "ment"]]
+      decoyChips: ["quit", "mint"]
     - id: w-lowenough
       en: "low enough"
       ipa: "/loʊ ɪˈnʌf/"
       ko: "충분히 낮은"
       icon: "chartup"
       example: "Let's check if his oxygen requirement is low enough to wean."
+      exKo: "산소 요구량이 이탈할 만큼 충분히 낮은지 확인해 봅시다."
+      cue: "기준선 아래로 내려와서 이탈을 시도해도 되는 수준"
+      tag: "준비 기준"
+      distractorsEn: ["high enough", "low flow"]
+      distractorsKo: ["충분히 높은", "충분히 느린"]
+      chips: [["low"], ["en", "ough"]]
+      decoyChips: ["tough", "flow"]
     - id: w-wean
       en: "wean"
       ipa: "/wiːn/"
       ko: "이탈하다"
       icon: "gear"
       example: "Let's check if his oxygen requirement is low enough to wean."
+      exKo: "산소 요구량이 이탈할 만큼 충분히 낮은지 확인해 봅시다."
+      cue: "도움을 서서히 줄여 가며 자기 힘으로 서게 하는 일 — 아기 젖떼기에서 온 말"
+      tag: "이탈·SBT"
+      distractorsEn: ["wane", "weigh"]
+      distractorsKo: ["유지하다", "증량하다"]
+      chips: [["wean"]]
+      decoyChips: ["wane"]
     - id: w-bloodpressure
       en: "blood pressure"
       ipa: "/blʌd ˈprɛʃər/"
       ko: "혈압"
       icon: "monitor"
       example: "His blood pressure is stable without pressors, so that criterion is met."
+      exKo: "승압제 없이 혈압이 안정적이라 그 기준은 충족됐어요."
+      cue: "팔 커프나 동맥 라인으로 재는 수치 — 승압제로 맞추기도 한다"
+      tag: "준비 기준"
+      distractorsEn: ["blood volume", "blood sugar"]
+      distractorsKo: ["혈당", "혈액량"]
+      chips: [["blood"], ["pres", "sure"]]
+      decoyChips: ["press", "pure"]
     - id: w-stable
       en: "stable"
       ipa: "/ˈsteɪbəl/"
       ko: "안정적인"
       icon: "check"
       example: "His blood pressure is stable without pressors, so that criterion is met."
+      exKo: "승압제 없이 혈압이 안정적이라 그 기준은 충족됐어요."
+      cue: "수치가 오르내리지 않고 일정하게 유지되는 상태"
+      tag: "준비 기준"
+      distractorsEn: ["static", "stagnant"]
+      distractorsKo: ["흔들리는", "악화되는"]
+      chips: [["sta", "ble"]]
+      decoyChips: ["tab", "ple"]
     - id: w-pressor
       en: "pressor"
       ipa: "/ˈprɛsər/"
       ko: "승압제"
       icon: "pill"
       example: "His blood pressure is stable without pressors, so that criterion is met."
+      exKo: "승압제 없이 혈압이 안정적이라 그 기준은 충족됐어요."
+      cue: "혈압을 끌어올리려고 점적하는 약 — 노르에피네프린 같은 것"
+      tag: "준비 기준"
+      distractorsEn: ["diuretic", "sedative"]
+      distractorsKo: ["이뇨제", "진정제"]
+      chips: [["press", "or"]]
+      decoyChips: ["pass", "er"]
     - id: w-criterion
       en: "criterion"
       ipa: "/kraɪˈtɪəriən/"
       ko: "기준"
       icon: "chartup"
       example: "His blood pressure is stable without pressors, so that criterion is met."
+      exKo: "승압제 없이 혈압이 안정적이라 그 기준은 충족됐어요."
+      cue: "이탈해도 되는지 항목별로 맞춰 보는 잣대 하나"
+      tag: "준비 기준"
+      distractorsEn: ["critique", "crisis"]
+      distractorsKo: ["위기", "비평"]
+      chips: [["cri", "ter", "ion"]]
+      decoyChips: ["tor", "ian"]
     - id: w-followcommands
       en: "follow commands"
       ipa: "/ˈfɑːloʊ ˈkɑːməndz/"
       ko: "지시를 따르다"
       icon: "check"
       example: "He's following commands, which tells us his mental status is adequate."
+      exKo: "지시를 잘 따르는 걸 보니 의식 상태가 충분해요."
+      cue: "눈 떠 보세요, 손 쥐어 보세요 같은 말에 맞게 움직이는 신경 사정 항목"
+      tag: "준비 기준"
+      distractorsEn: ["give commands", "follow protocols"]
+      distractorsKo: ["지시를 내리다", "규정을 따르다"]
+      chips: [["fol", "low"], ["com", "mands"]]
+      decoyChips: ["fell", "mends"]
     - id: w-mentalstatus
       en: "mental status"
       ipa: "/ˈmɛntəl ˈsteɪtəs/"
       ko: "의식 상태"
       icon: "bulb"
       example: "He's following commands, which tells us his mental status is adequate."
+      exKo: "지시를 잘 따르는 걸 보니 의식 상태가 충분해요."
+      cue: "깨어 있는지, 말이 통하는지, 지남력이 있는지를 묶어 본 신경 사정 결과"
+      tag: "준비 기준"
+      distractorsEn: ["mental health", "vital signs"]
+      distractorsKo: ["정신 건강", "활력징후"]
+      chips: [["men", "tal"], ["sta", "tus"]]
+      decoyChips: ["ten", "stat"]
     - id: w-adequate
       en: "adequate"
       ipa: "/ˈædɪkwət/"
       ko: "충분한"
       icon: "check"
       example: "He's following commands, which tells us his mental status is adequate."
+      exKo: "지시를 잘 따르는 걸 보니 의식 상태가 충분해요."
+      cue: "모자라지 않고 딱 필요한 만큼은 되는 — 최고는 아니어도 기준을 넘는다"
+      tag: "준비 기준"
+      distractorsEn: ["accurate", "accountable"]
+      distractorsKo: ["정확한", "책임 있는"]
+      chips: [["ad", "e", "quate"]]
+      decoyChips: ["accu", "gate"]
     - id: w-watch
-      en: "watching"
-      ipa: "/ˈwɑːtʃɪŋ/"
+      en: "watch"
+      ipa: "/wɑːtʃ/"
       ko: "지켜보다"
       icon: "magnify"
       example: "I'm watching his rate, effort, and oxygen during the trial."
+      exKo: "시험 동안 호흡수, 호흡 노력, 산소를 지켜보고 있어요."
+      cue: "눈을 떼지 않고 변화가 생기는지 곁에서 살피는 일 — 진정 중단과 SBT 내내 한다"
+      tag: "호흡 관찰"
+      distractorsEn: ["wash", "wait"]
+      distractorsKo: ["기다리다", "씻기다"]
+      chips: [["watch"]]
+      decoyChips: ["wash"]
     - id: w-rate
       en: "rate"
       ipa: "/reɪt/"
       ko: "속도(호흡수)"
       icon: "chartup"
       example: "I'm watching his rate, effort, and oxygen during the trial."
+      exKo: "시험 동안 호흡수, 호흡 노력, 산소를 지켜보고 있어요."
+      cue: "1분 동안 몇 번인지 세는 값 — 맥박과 숨 쉬는 횟수가 모두 이렇게 불린다"
+      tag: "호흡 관찰"
+      distractorsEn: ["range", "depth"]
+      distractorsKo: ["범위(허용 폭)", "깊이(호흡 깊이)"]
+      chips: [["rate"]]
+      decoyChips: ["rare"]
     - id: w-effort
       en: "effort"
       ipa: "/ˈɛfərt/"
       ko: "노력(호흡 노력)"
       icon: "stetho"
       example: "I'm watching his rate, effort, and oxygen during the trial."
+      exKo: "시험 동안 호흡수, 호흡 노력, 산소를 지켜보고 있어요."
+      cue: "숨 쉴 때 가슴과 목을 얼마나 쓰는지 눈으로 보고 판단하는 정도"
+      tag: "호흡 관찰"
+      distractorsEn: ["effect", "effusion"]
+      distractorsKo: ["효과(치료 효과)", "삼출(흉막 삼출)"]
+      chips: [["ef", "fort"]]
+      decoyChips: ["af", "fect"]
     - id: w-rising
       en: "rising"
       ipa: "/ˈraɪzɪŋ/"
       ko: "상승하는"
       icon: "chartup"
       example: "A rising rate with accessory muscle use can signal he's tiring."
+      exKo: "호흡수가 오르고 보조근육을 쓰는 건 지치고 있다는 신호일 수 있어요."
+      cue: "수치가 점점 위로 올라가는 중일 때 붙이는 진행형 말"
+      tag: "호흡 관찰"
+      distractorsEn: ["raising", "rinsing"]
+      distractorsKo: ["일으키는", "안정되는"]
+      chips: [["ris", "ing"]]
+      decoyChips: ["rais", "ding"]
     - id: w-accessorymuscle
       en: "accessory muscle"
       ipa: "/ækˈsɛsəri ˈmʌsəl/"
       ko: "보조근육"
       icon: "me"
       example: "A rising rate with accessory muscle use can signal he's tiring."
+      exKo: "호흡수가 오르고 보조근육을 쓰는 건 지치고 있다는 신호일 수 있어요."
+      cue: "횡격막만으로 모자랄 때 목과 어깨에서 거들어 주는 근육"
+      tag: "호흡 관찰"
+      distractorsEn: ["accessory nerve", "abdominal muscle"]
+      distractorsKo: ["보조신경", "복부근육"]
+      chips: [["ac", "ces", "sory"], ["mus", "cle"]]
+      decoyChips: ["ax", "cel"]
     - id: w-signal
       en: "signal"
       ipa: "/ˈsɪɡnəl/"
       ko: "신호를 보내다"
       icon: "siren"
       example: "A rising rate with accessory muscle use can signal he's tiring."
+      exKo: "호흡수가 오르고 보조근육을 쓰는 건 지치고 있다는 신호일 수 있어요."
+      cue: "수치나 표정이 지금 이상하다고 알려 주는 경고를 읽을 때 쓰는 동사"
+      tag: "호흡 관찰"
+      distractorsEn: ["sign", "assign"]
+      distractorsKo: ["서명하다", "배정하다"]
+      chips: [["sig", "nal"]]
+      decoyChips: ["sin", "nel"]
     - id: w-tiring
       en: "tiring"
       ipa: "/ˈtaɪərɪŋ/"
       ko: "지치는"
       icon: "board"
       example: "A rising rate with accessory muscle use can signal he's tiring."
+      exKo: "호흡수가 오르고 보조근육을 쓰는 건 지치고 있다는 신호일 수 있어요."
+      cue: "숨 쉬는 근육의 힘이 빠져 가는 중이라는 뜻의 현재진행형"
+      tag: "호흡 관찰"
+      distractorsEn: ["tearing", "trying"]
+      distractorsKo: ["찢어지는", "시도하는"]
+      chips: [["tir", "ing"]]
+      decoyChips: ["tear", "ring"]
     - id: w-distress
       en: "distress"
       ipa: "/dɪˈstrɛs/"
       ko: "곤란(호흡곤란)"
       icon: "siren"
       example: "If he shows distress, we'll stop the trial and rest him."
-    - id: w-stop
-      en: "stop"
-      ipa: "/stɑːp/"
-      ko: "멈추다"
-      icon: "gear"
-      example: "If he shows distress, we'll stop the trial and rest him."
+      exKo: "곤란한 모습을 보이면 시험을 멈추고 쉬게 할게요."
+      cue: "얼굴과 호흡에서 힘들어 하는 모습이 겉으로 드러난 상태"
+      tag: "호흡 관찰"
+      distractorsEn: ["stress", "address"]
+      distractorsKo: ["긴장(정신 긴장)", "무기력(근력 저하)"]
+      chips: [["dis", "tress"]]
+      decoyChips: ["di", "press"]
     - id: w-rest
       en: "rest"
       ipa: "/rɛst/"
       ko: "쉬게 하다"
       icon: "bell"
       example: "If he shows distress, we'll stop the trial and rest him."
+      exKo: "곤란한 모습을 보이면 시험을 멈추고 쉬게 할게요."
+      cue: "지친 근육이 힘을 되찾도록 기계가 다시 일을 맡아 주는 것"
+      tag: "호흡 관찰"
+      distractorsEn: ["reset", "resist"]
+      distractorsKo: ["재설정하다", "저항하다"]
+      chips: [["rest"]]
+      decoyChips: ["west"]
     - id: w-deflate
-      en: "deflating"
-      ipa: "/dɪˈfleɪtɪŋ/"
+      en: "deflate"
+      ipa: "/dɪˈfleɪt/"
       ko: "바람을 빼다"
       icon: "gear"
       example: "I'm deflating the cuff to check for airflow around the tube."
+      exKo: "튜브 주변으로 공기가 새는지 보려고 커프 바람을 빼고 있어요."
+      cue: "풍선처럼 부푼 것의 공기를 빼서 줄이는 동작 — 튜브 근처 커프에 한다"
+      tag: "기도·커프"
+      distractorsEn: ["inflate", "deflect"]
+      distractorsKo: ["바람을 넣다", "바람을 막다"]
+      chips: [["de", "flate"]]
+      decoyChips: ["in", "fate"]
     - id: w-cuff
       en: "cuff"
       ipa: "/kʌf/"
       ko: "커프"
-      icon: board
+      icon: "board"
       example: "I'm deflating the cuff to check for airflow around the tube."
+      exKo: "튜브 주변으로 공기가 새는지 보려고 커프 바람을 빼고 있어요."
+      cue: "기관튜브 끝 근처에서 부풀어 기도 벽과의 틈을 막는 작은 풍선"
+      tag: "기도·커프"
+      distractorsEn: ["cough", "cup"]
+      distractorsKo: ["기침", "컵"]
+      chips: [["cuff"]]
+      decoyChips: ["puff"]
     - id: w-airflow
       en: "airflow"
       ipa: "/ˈɛrfloʊ/"
       ko: "공기 흐름"
       icon: "monitor"
       example: "I'm deflating the cuff to check for airflow around the tube."
+      exKo: "튜브 주변으로 공기가 새는지 보려고 커프 바람을 빼고 있어요."
+      cue: "튜브 바깥의 틈으로 지나가는 공기 — 귀로 듣거나 수치로 잰다"
+      tag: "기도·커프"
+      distractorsEn: ["airway", "blood flow"]
+      distractorsKo: ["기도", "혈류"]
+      chips: [["air", "flow"]]
+      decoyChips: ["hair", "glow"]
     - id: w-tube
       en: "tube"
       ipa: "/tuːb/"
       ko: "관(튜브)"
-      icon: board
+      icon: "board"
       example: "I'm deflating the cuff to check for airflow around the tube."
+      exKo: "튜브 주변으로 공기가 새는지 보려고 커프 바람을 빼고 있어요."
+      cue: "입이나 코를 거쳐 기관 안에 넣어 둔 속이 빈 관"
+      tag: "기도·커프"
+      distractorsEn: ["stent", "shunt"]
+      distractorsKo: ["주머니(백)", "바늘(주사)"]
+      chips: [["tube"]]
+      decoyChips: ["tub"]
     - id: w-leak
       en: "leak"
       ipa: "/liːk/"
       ko: "새는 것(누출)"
       icon: "monitor"
       example: "A good leak suggests his airway isn't too swollen for extubation."
+      exKo: "새는 소리가 잘 나면 기도가 발관하기에 너무 붓지 않았다는 뜻이에요."
+      cue: "밀폐가 덜 돼서 틈으로 공기가 빠져나가는 현상"
+      tag: "기도·커프"
+      distractorsEn: ["bleed", "clot"]
+      distractorsKo: ["응고(핏덩이)", "출혈(피 나옴)"]
+      chips: [["leak"]]
+      decoyChips: ["leek"]
     - id: w-suggest
       en: "suggest"
       ipa: "/səɡˈdʒɛst/"
       ko: "시사하다"
       icon: "bulb"
       example: "A good leak suggests his airway isn't too swollen for extubation."
+      exKo: "새는 소리가 잘 나면 기도가 발관하기에 너무 붓지 않았다는 뜻이에요."
+      cue: "딱 잘라 말하진 않고 그럴 가능성이 있다고 가리키는 동사"
+      tag: "소통·기록"
+      distractorsEn: ["suspect", "select"]
+      distractorsKo: ["선택하다", "단정하다"]
+      chips: [["sug", "gest"]]
+      decoyChips: ["sig", "jest"]
     - id: w-airway
       en: "airway"
       ipa: "/ˈɛrweɪ/"
       ko: "기도"
       icon: "stetho"
       example: "A good leak suggests his airway isn't too swollen for extubation."
+      exKo: "새는 소리가 잘 나면 기도가 발관하기에 너무 붓지 않았다는 뜻이에요."
+      cue: "입과 코에서 폐까지 공기가 지나는 통로 — 막히면 가장 먼저 확보할 곳"
+      tag: "기도·커프"
+      distractorsEn: ["artery", "abdomen"]
+      distractorsKo: ["동맥", "복부"]
+      chips: [["air", "way"]]
+      decoyChips: ["hair", "wag"]
     - id: w-swollen
       en: "swollen"
       ipa: "/ˈswoʊlən/"
       ko: "부은"
       icon: "board"
       example: "A good leak suggests his airway isn't too swollen for extubation."
+      exKo: "새는 소리가 잘 나면 기도가 발관하기에 너무 붓지 않았다는 뜻이에요."
+      cue: "염증이나 자극으로 조직이 부풀어 오른 상태 — 후두가 이러면 길이 좁아진다"
+      tag: "기도·커프"
+      distractorsEn: ["swallowed", "bruised"]
+      distractorsKo: ["삼킨", "멍든"]
+      chips: [["swol", "len"]]
+      decoyChips: ["swal", "low"]
     - id: w-extubation
       en: "extubation"
       ipa: "/ˌɛkstuːˈbeɪʃən/"
       ko: "발관"
-      icon: board
+      icon: "board"
       example: "A good leak suggests his airway isn't too swollen for extubation."
+      exKo: "새는 소리가 잘 나면 기도가 발관하기에 너무 붓지 않았다는 뜻이에요."
+      cue: "인공호흡기 튜브를 기관에서 빼는 처치 — 삽관과 반대 방향"
+      tag: "기도·커프"
+      distractorsEn: ["intubation", "extension"]
+      distractorsKo: ["삽관", "연장"]
+      chips: [["ex", "tu", "ba", "tion"]]
+      decoyChips: ["in", "sion"]
     - id: w-makesure
       en: "make sure"
       ipa: "/meɪk ʃʊr/"
       ko: "확실히 하다"
       icon: "check"
       example: "This helps us make sure he can breathe once the tube is out."
+      exKo: "관이 빠진 뒤에도 숨을 잘 쉴 수 있는지 확실히 하는 데 도움이 돼요."
+      cue: "빠뜨린 게 없는지 한 번 더 따져 안심할 수 있게 하는 표현"
+      tag: "소통·기록"
+      distractorsEn: ["make sense", "make room"]
+      distractorsKo: ["말이 되다", "자리를 내다"]
+      chips: [["make"], ["sure"]]
+      decoyChips: ["take", "shore"]
     - id: w-tubeisout
       en: "the tube is out"
       ipa: "/ðə tuːb ɪz aʊt/"
       ko: "관이 빠진 상태"
-      icon: board
+      icon: "board"
       example: "This helps us make sure he can breathe once the tube is out."
+      exKo: "관이 빠진 뒤에도 숨을 잘 쉴 수 있는지 확실히 하는 데 도움이 돼요."
+      cue: "발관 직후, 튜브가 더는 기도에 없는 상태를 가리키는 절"
+      tag: "기도·커프"
+      distractorsEn: ["the tube is in", "the tube is stuck"]
+      distractorsKo: ["관이 들어간 상태", "관이 막힌 상태"]
+      chips: [["the"], ["tube"], ["is"], ["out"]]
+      decoyChips: ["in", "oat"]
     - id: w-highflow
       en: "high-flow cannula"
       ipa: "/haɪ floʊ ˈkænjələ/"
       ko: "고유량 비강캐뉼라"
       icon: "monitor"
       example: "Let's have the high-flow cannula ready at the bedside."
+      exKo: "고유량 캐뉼라를 침상 곁에 준비해 둡시다."
+      cue: "코에 대는 가는 관으로 따뜻하고 습한 산소를 많은 양으로 내보내는 장치"
+      tag: "장비·산소"
+      distractorsEn: ["low-flow cannula", "high-flow mask"]
+      distractorsKo: ["저유량 비강캐뉼라", "고유량 마스크"]
+      chips: [["high-", "flow"], ["can", "nu", "la"]]
+      decoyChips: ["pan", "mula"]
     - id: w-ready
       en: "ready"
       ipa: "/ˈrɛdi/"
       ko: "준비된"
       icon: "check"
       example: "Let's have the high-flow cannula ready at the bedside."
+      exKo: "고유량 캐뉼라를 침상 곁에 준비해 둡시다."
+      cue: "필요할 때 바로 쓸 수 있도록 갖춰 둔 상태 — 장비와 사람 모두에게"
+      tag: "장비·산소"
+      distractorsEn: ["steady", "rapid"]
+      distractorsKo: ["꾸준한", "빠른"]
+      chips: [["rea", "dy"]]
+      decoyChips: ["rid", "day"]
     - id: w-bedside
       en: "bedside"
       ipa: "/ˈbɛdsaɪd/"
       ko: "침상 곁"
       icon: "home"
       example: "Let's have the high-flow cannula ready at the bedside."
+      exKo: "고유량 캐뉼라를 침상 곁에 준비해 둡시다."
+      cue: "침대 바로 옆자리 — 장비를 두거나 보호자가 앉는 곳"
+      tag: "장비·산소"
+      distractorsEn: ["bedpan", "bedrest"]
+      distractorsKo: ["침상 변기", "침상 안정"]
+      chips: [["bed", "side"]]
+      decoyChips: ["bad", "sigh", "beside"]
     - id: w-niv
       en: "NIV"
       ipa: "/ɛn aɪ viː/"
       ko: "비침습 환기"
       icon: "monitor"
       example: "Set up NIV as a backup in case he needs more support."
+      exKo: "더 많은 지지가 필요할 경우를 대비해 NIV를 예비로 준비하세요."
+      cue: "기관 삽관 없이 얼굴에 맞는 마스크로 압력을 줘서 호흡을 돕는 방식의 약어"
+      tag: "장비·산소"
+      distractorsEn: ["NPO", "ECG"]
+      distractorsKo: ["금식 유지", "심전도 검사"]
+      chips: [["NIV"]]
+      decoyChips: ["NPO"]
     - id: w-backup
       en: "backup"
       ipa: "/ˈbækʌp/"
       ko: "예비(대비책)"
       icon: "shield"
       example: "Set up NIV as a backup in case he needs more support."
+      exKo: "더 많은 지지가 필요할 경우를 대비해 NIV를 예비로 준비하세요."
+      cue: "주된 방법이 안 통할 때 곧바로 바꿔 쓰려고 미리 마련해 두는 것"
+      tag: "장비·산소"
+      distractorsEn: ["workup", "setup"]
+      distractorsKo: ["검사(워크업)", "설치(세팅)"]
+      chips: [["back", "up"]]
+      decoyChips: ["pack", "cup"]
     - id: w-support
       en: "support"
       ipa: "/səˈpɔːrt/"
-      ko: "지지"
+      ko: "보조(지지)"
       icon: "shield"
       example: "Set up NIV as a backup in case he needs more support."
+      exKo: "더 많은 지지가 필요할 경우를 대비해 NIV를 예비로 준비하세요."
+      cue: "기계나 장치가 환자의 호흡 일을 덜어 주는 도움"
+      tag: "장비·산소"
+      distractorsEn: ["supply", "surge"]
+      distractorsKo: ["공급(보급품)", "급증(서지)"]
+      chips: [["sup", "port"]]
+      decoyChips: ["sap", "part"]
     - id: w-confirm
       en: "confirm"
       ipa: "/kənˈfɜːrm/"
       ko: "확인하다"
       icon: "check"
       example: "I'll confirm suction and the reintubation kit are within reach."
+      exKo: "흡인기와 재삽관 세트가 손닿는 곳에 있는지 확인할게요."
+      cue: "눈으로 직접 보고 틀림없음을 못 박아 두는 동사 — 위치나 수치에 쓴다"
+      tag: "소통·기록"
+      distractorsEn: ["conform", "confine"]
+      distractorsKo: ["순응하다", "가두다"]
+      chips: [["con", "firm"]]
+      decoyChips: ["can", "form"]
     - id: w-suction
       en: "suction"
       ipa: "/ˈsʌkʃən/"
       ko: "흡인"
       icon: "gear"
       example: "I'll confirm suction and the reintubation kit are within reach."
+      exKo: "흡인기와 재삽관 세트가 손닿는 곳에 있는지 확인할게요."
+      cue: "관 끝에 음압을 걸어 입과 기도의 분비물을 빨아내는 장치와 그 동작"
+      tag: "장비·산소"
+      distractorsEn: ["section", "suture"]
+      distractorsKo: ["절개", "봉합"]
+      chips: [["suc", "tion"]]
+      decoyChips: ["sec", "sion"]
     - id: w-reintubationkit
       en: "reintubation kit"
       ipa: "/ˌriːɪntuːˈbeɪʃən kɪt/"
       ko: "재삽관 세트"
-      icon: board
+      icon: "board"
       example: "I'll confirm suction and the reintubation kit are within reach."
+      exKo: "흡인기와 재삽관 세트가 손닿는 곳에 있는지 확인할게요."
+      cue: "실패했을 때 바로 다시 관을 넣으려고 한데 모아 둔 물품 한 벌"
+      tag: "장비·산소"
+      distractorsEn: ["central line kit", "tracheostomy kit"]
+      distractorsKo: ["중심정맥관 세트", "기관절개 세트"]
+      chips: [["re", "intub", "ation"], ["kit"]]
+      decoyChips: ["ex", "ition"]
     - id: w-withinreach
       en: "within reach"
       ipa: "/wɪˈðɪn riːtʃ/"
       ko: "손닿는 곳에"
       icon: "pushpin"
       example: "I'll confirm suction and the reintubation kit are within reach."
+      exKo: "흡인기와 재삽관 세트가 손닿는 곳에 있는지 확인할게요."
+      cue: "팔만 뻗으면 닿는 거리에 둔다는 뜻의 전치사구 — 급할 때를 대비해"
+      tag: "장비·산소"
+      distractorsEn: ["out of reach", "within sight"]
+      distractorsKo: ["손이 닿지 않는 곳에", "시야 안에"]
+      chips: [["with", "in"], ["reach"]]
+      decoyChips: ["wish", "beach"]
     - id: w-secretion
       en: "secretions"
       ipa: "/sɪˈkriːʃənz/"
       ko: "분비물"
       icon: "board"
       example: "His secretions are minimal and clear right now."
+      exKo: "지금은 분비물이 적고 맑아요."
+      cue: "기관과 입에서 끈적하게 올라오는 것 — 색과 양을 차트에 적는다"
+      tag: "분비물·기침"
+      distractorsEn: ["excretion", "section"]
+      distractorsKo: ["배설물", "절개"]
+      chips: [["se", "cre", "tions"]]
+      decoyChips: ["ex", "sec"]
     - id: w-minimal
       en: "minimal"
       ipa: "/ˈmɪnɪməl/"
       ko: "최소한의"
       icon: "board"
       example: "His secretions are minimal and clear right now."
+      exKo: "지금은 분비물이 적고 맑아요."
+      cue: "아주 조금뿐이라 거의 신경 쓸 필요가 없는 정도"
+      tag: "분비물·기침"
+      distractorsEn: ["maximal", "moderate"]
+      distractorsKo: ["최대한의", "중등도의"]
+      chips: [["min", "i", "mal"]]
+      decoyChips: ["max", "mel"]
     - id: w-clear
       en: "clear"
       ipa: "/klɪr/"
-      ko: "맑은"
+      ko: "맑은·없애다"
       icon: "check"
       example: "His secretions are minimal and clear right now."
+      exKo: "지금은 분비물이 적고 맑아요."
+      cue: "탁하거나 막힌 데 없이 투명하다는 뜻, 또는 막힌 것을 치워 낸다는 뜻"
+      tag: "분비물·기침"
+      distractorsEn: ["cloudy", "clog"]
+      distractorsKo: ["탁한·막다", "굳은·붙이다"]
+      chips: [["clear"]]
+      decoyChips: ["clean"]
     - id: w-strongcough
       en: "strong cough"
       ipa: "/strɔːŋ kɔːf/"
       ko: "강한 기침"
       icon: "stetho"
       example: "He has a strong cough, so he can protect his own airway."
+      exKo: "기침이 강해서 스스로 기도를 지킬 수 있어요."
+      cue: "가래를 스스로 뱉어낼 만큼 세게 터져 나오는 반사"
+      tag: "분비물·기침"
+      distractorsEn: ["wet cough", "dry cough"]
+      distractorsKo: ["축축한 기침", "마른 기침"]
+      chips: [["strong"], ["cough"]]
+      decoyChips: ["long", "rough"]
     - id: w-protect
       en: "protect"
       ipa: "/prəˈtɛkt/"
       ko: "보호하다"
       icon: "shield"
       example: "He has a strong cough, so he can protect his own airway."
+      exKo: "기침이 강해서 스스로 기도를 지킬 수 있어요."
+      cue: "해로운 것이 들어오지 못하게 막아 주는 일 — 기침과 삼킴이 기도에 해 주는 일"
+      tag: "분비물·기침"
+      distractorsEn: ["project", "protest"]
+      distractorsKo: ["계획하다", "항의하다"]
+      chips: [["pro", "tect"]]
+      decoyChips: ["per", "text"]
     - id: w-weakcough
       en: "weak cough"
       ipa: "/wiːk kɔːf/"
       ko: "약한 기침"
       icon: "board"
       example: "Weak cough or heavy secretions would make me cautious about extubating."
+      exKo: "기침이 약하거나 분비물이 많으면 발관에 신중해질 거예요."
+      cue: "분비물을 밀어낼 힘이 모자라 소리만 작게 나는 기침"
+      tag: "분비물·기침"
+      distractorsEn: ["weak pulse", "wet cough"]
+      distractorsKo: ["약한 맥박", "축축한 기침"]
+      chips: [["weak"], ["cough"]]
+      decoyChips: ["week", "rough"]
     - id: w-heavysecretion
       en: "heavy secretions"
       ipa: "/ˈhɛvi sɪˈkriːʃənz/"
       ko: "많은 분비물"
       icon: "board"
       example: "Weak cough or heavy secretions would make me cautious about extubating."
+      exKo: "기침이 약하거나 분비물이 많으면 발관에 신중해질 거예요."
+      cue: "색은 둘째 치고 양이 많아서 계속 빨아내야 하는 상태"
+      tag: "분비물·기침"
+      distractorsEn: ["thick secretions", "clear secretions"]
+      distractorsKo: ["끈적한 분비물", "맑은 분비물"]
+      chips: [["heav", "y"], ["se", "cre", "tions"]]
+      decoyChips: ["lea", "sion"]
     - id: w-cautious
       en: "cautious"
       ipa: "/ˈkɔːʃəs/"
       ko: "신중한"
       icon: "shield"
       example: "Weak cough or heavy secretions would make me cautious about extubating."
+      exKo: "기침이 약하거나 분비물이 많으면 발관에 신중해질 거예요."
+      cue: "서두르지 않고 위험을 먼저 따져 보는 태도"
+      tag: "위험·예방"
+      distractorsEn: ["conscious", "curious"]
+      distractorsKo: ["의식이 있는", "호기심 많은"]
+      chips: [["cau", "tious"]]
+      decoyChips: ["con", "ceous"]
     - id: w-sortout
       en: "sort out"
       ipa: "/sɔːrt aʊt/"
       ko: "가려내다"
       icon: "magnify"
       example: "Let's sort out whether this is cardiac, respiratory, or anxiety-driven."
+      exKo: "이게 심장 때문인지, 호흡 때문인지, 불안 때문인지 가려봅시다."
+      cue: "뒤섞인 원인 중에서 진짜가 무엇인지 하나씩 구분해 내는 구동사"
+      tag: "원인 감별"
+      distractorsEn: ["sit out", "set out"]
+      distractorsKo: ["빠지다", "나서다"]
+      chips: [["sort"], ["out"]]
+      decoyChips: ["soft", "our"]
     - id: w-cardiac
       en: "cardiac"
       ipa: "/ˈkɑːrdiæk/"
       ko: "심장의"
       icon: "stetho"
       example: "Let's sort out whether this is cardiac, respiratory, or anxiety-driven."
+      exKo: "이게 심장 때문인지, 호흡 때문인지, 불안 때문인지 가려봅시다."
+      cue: "심근과 혈관 쪽 문제를 가리키는 형용사 — 폐가 아니라 이쪽"
+      tag: "원인 감별"
+      distractorsEn: ["cranial", "carotid"]
+      distractorsKo: ["두개의", "경동맥의"]
+      chips: [["car", "di", "ac"]]
+      decoyChips: ["cor", "ic"]
     - id: w-respiratory
       en: "respiratory"
       ipa: "/ˈrɛspərətɔːri/"
       ko: "호흡의"
       icon: "stetho"
       example: "Let's sort out whether this is cardiac, respiratory, or anxiety-driven."
+      exKo: "이게 심장 때문인지, 호흡 때문인지, 불안 때문인지 가려봅시다."
+      cue: "폐와 기도 쪽 문제를 가리키는 형용사 — 심장이 아니라 이쪽"
+      tag: "원인 감별"
+      distractorsEn: ["circulatory", "laboratory"]
+      distractorsKo: ["순환의", "검사실의"]
+      chips: [["respi", "ra", "tory"]]
+      decoyChips: ["ri", "tor"]
     - id: w-anxietydriven
       en: "anxiety-driven"
       ipa: "/æŋˈzaɪəti ˈdrɪvən/"
       ko: "불안에서 비롯된"
       icon: "bulb"
       example: "Let's sort out whether this is cardiac, respiratory, or anxiety-driven."
+      exKo: "이게 심장 때문인지, 호흡 때문인지, 불안 때문인지 가려봅시다."
+      cue: "몸이 아니라 마음의 걱정이 숨 가쁨을 일으켰다는 뜻의 합성어"
+      tag: "원인 감별"
+      distractorsEn: ["pain-driven", "fever-driven"]
+      distractorsKo: ["통증에서 비롯된", "열에서 비롯된"]
+      chips: [["anxi", "ety-", "dri", "ven"]]
+      decoyChips: ["fear", "dry"]
     - id: w-heartrate
       en: "heart rate"
       ipa: "/hɑːrt reɪt/"
       ko: "심박수"
       icon: "stetho"
       example: "His blood pressure and heart rate spiked, which points to a cardiac cause."
+      exKo: "혈압과 심박수가 급등한 걸 보니 심장 원인을 가리키네요."
+      cue: "1분에 심장이 뛰는 횟수 — 모니터 숫자로 본다"
+      tag: "원인 감별"
+      distractorsEn: ["heart sound", "heart rhythm"]
+      distractorsKo: ["심음", "심장 리듬"]
+      chips: [["heart"], ["rate"]]
+      decoyChips: ["hear", "rake"]
     - id: w-spike
-      en: "spiked"
-      ipa: "/spaɪkt/"
+      en: "spike"
+      ipa: "/spaɪk/"
       ko: "급등하다"
       icon: "chartup"
       example: "His blood pressure and heart rate spiked, which points to a cardiac cause."
+      exKo: "혈압과 심박수가 급등한 걸 보니 심장 원인을 가리키네요."
+      cue: "그래프에서 수치가 짧은 시간에 위로 쑥 솟는 것 — 스트레스나 허혈이 올 때"
+      tag: "원인 감별"
+      distractorsEn: ["spill", "spare"]
+      distractorsKo: ["쏟아지다", "아끼다"]
+      chips: [["spike"]]
+      decoyChips: ["spoke"]
     - id: w-pointsto
       en: "points to"
       ipa: "/pɔɪnts tuː/"
       ko: "가리키다"
       icon: "bulb"
       example: "His blood pressure and heart rate spiked, which points to a cardiac cause."
+      exKo: "혈압과 심박수가 급등한 걸 보니 심장 원인을 가리키네요."
+      cue: "수치나 소견이 어느 쪽 원인인지 손가락으로 짚듯 방향을 말해 주는 구동사"
+      tag: "원인 감별"
+      distractorsEn: ["pulls out", "lines up"]
+      distractorsKo: ["뽑아내다", "줄 세우다"]
+      chips: [["points"], ["to"]]
+      decoyChips: ["paints", "too"]
     - id: w-report
       en: "report"
       ipa: "/rɪˈpɔːrt/"
       ko: "보고하다"
       icon: "speech"
       example: "I'll report the pattern so we can adjust the weaning plan."
+      exKo: "이 양상을 보고해서 이탈 계획을 조정할 수 있게 할게요."
+      cue: "본 것을 팀이나 의사에게 정식으로 알리는 일"
+      tag: "소통·기록"
+      distractorsEn: ["repeat", "record"]
+      distractorsKo: ["반복하다", "기록하다"]
+      chips: [["re", "port"]]
+      decoyChips: ["pro", "part"]
     - id: w-pattern
       en: "pattern"
       ipa: "/ˈpætərn/"
       ko: "양상"
       icon: "chartup"
       example: "I'll report the pattern so we can adjust the weaning plan."
+      exKo: "이 양상을 보고해서 이탈 계획을 조정할 수 있게 할게요."
+      cue: "수치 하나가 아니라 여러 번 보인 모양과 흐름"
+      tag: "원인 감별"
+      distractorsEn: ["patient", "partner"]
+      distractorsKo: ["환자", "동반자"]
+      chips: [["pat", "tern"]]
+      decoyChips: ["pet", "term"]
     - id: w-adjust
       en: "adjust"
       ipa: "/əˈdʒʌst/"
       ko: "조정하다"
       icon: "gear"
       example: "I'll report the pattern so we can adjust the weaning plan."
+      exKo: "이 양상을 보고해서 이탈 계획을 조정할 수 있게 할게요."
+      cue: "그대로 두지 않고 상황에 맞게 조금 고쳐 맞추는 일"
+      tag: "재활·계획"
+      distractorsEn: ["adopt", "adhere"]
+      distractorsKo: ["채택하다", "고수하다"]
+      chips: [["ad", "just"]]
+      decoyChips: ["add", "jest"]
     - id: w-weaningplan
       en: "weaning plan"
       ipa: "/ˈwiːnɪŋ plæn/"
       ko: "이탈 계획"
       icon: "chartup"
       example: "I'll report the pattern so we can adjust the weaning plan."
+      exKo: "이 양상을 보고해서 이탈 계획을 조정할 수 있게 할게요."
+      cue: "인공호흡기에서 벗어나는 단계를 팀이 미리 짜 둔 일정"
+      tag: "재활·계획"
+      distractorsEn: ["nursing plan", "weekly plan"]
+      distractorsKo: ["간호 계획", "주간 계획"]
+      chips: [["wean", "ing"], ["plan"]]
+      decoyChips: ["wane", "play"]
     - id: w-anxiety
       en: "anxiety"
       ipa: "/æŋˈzaɪəti/"
       ko: "불안"
       icon: "bulb"
       example: "Sometimes anxiety alone can make him fail the trial."
+      exKo: "가끔은 불안만으로도 시험에 실패할 수 있어요."
+      cue: "걱정과 두려움이 몸의 반응으로 번지는 마음 상태"
+      tag: "원인 감별"
+      distractorsEn: ["anger", "anemia"]
+      distractorsKo: ["분노", "빈혈"]
+      chips: [["anx", "i", "ety"]]
+      decoyChips: ["ang", "ity"]
     - id: w-extubate
       en: "extubate"
       ipa: "/ˈɛkstuːbeɪt/"
       ko: "발관하다"
-      icon: board
+      icon: "board"
       example: "Weak cough or heavy secretions would make me cautious about extubating."
+      exKo: "기침이 약하거나 분비물이 많으면 발관에 신중해질 거예요."
+      cue: "삽관되어 있던 관을 기도에서 빼 주는 동작"
+      tag: "기도·커프"
+      distractorsEn: ["intubate", "exhale"]
+      distractorsKo: ["삽관하다", "내쉬다"]
+      chips: [["ex", "tu", "bate"]]
+      decoyChips: ["in", "bite"]
     - id: w-wakeup
       en: "wake up"
       ipa: "/weɪk ʌp/"
       ko: "깨어나다"
       icon: "bulb"
       example: "We're holding sedation to see how he wakes up."
+      exKo: "진정제를 보류하고 얼마나 깨는지 볼게요."
+      cue: "진정제 약효가 풀려 의식이 서서히 돌아오는 과정"
+      tag: "진정·각성"
+      distractorsEn: ["warm up", "wind up"]
+      distractorsKo: ["몸을 풀다", "마무리하다"]
+      chips: [["wake"], ["up"]]
+      decoyChips: ["woke", "cup"]
     - id: w-agitation
       en: "agitation"
       ipa: "/ˌædʒɪˈteɪʃən/"
       ko: "초조·동요"
       icon: "siren"
       example: "Watch for agitation so he doesn't pull at his lines."
+      exKo: "라인을 잡아당기지 않도록 초조한 모습을 지켜봐 주세요."
+      cue: "손발을 가만두지 못하고 안절부절못하는 상태 — 깨어나는 중에 흔하다"
+      tag: "진정·각성"
+      distractorsEn: ["irritation", "alteration"]
+      distractorsKo: ["자극·염증", "변화"]
+      chips: [["ag", "i", "ta", "tion"]]
+      decoyChips: ["ac", "sion"]
     - id: w-pull
       en: "pull"
       ipa: "/pʊl/"
       ko: "잡아당기다"
       icon: "gear"
       example: "Watch for agitation so he doesn't pull at his lines."
+      exKo: "라인을 잡아당기지 않도록 초조한 모습을 지켜봐 주세요."
+      cue: "라인이나 튜브를 손으로 끌어당겨 빼 버리려는 행동"
+      tag: "진정·각성"
+      distractorsEn: ["push", "pour"]
+      distractorsKo: ["밀어내다", "쏟아붓다"]
+      chips: [["pull"]]
+      decoyChips: ["pill"]
     - id: w-line
       en: "lines"
       ipa: "/laɪnz/"
       ko: "라인(관들)"
-      icon: board
+      icon: "board"
       example: "Watch for agitation so he doesn't pull at his lines."
+      exKo: "라인을 잡아당기지 않도록 초조한 모습을 지켜봐 주세요."
+      cue: "수액이나 약을 넣는 정맥관, 압을 재는 동맥관 같은 관들"
+      tag: "진정·각성"
+      distractorsEn: ["leads", "limbs"]
+      distractorsKo: ["전극(리드선)", "팔다리(사지)"]
+      chips: [["lines"]]
+      decoyChips: ["lanes"]
     - id: w-unsafe
       en: "unsafe"
       ipa: "/ʌnˈseɪf/"
       ko: "안전하지 않은"
       icon: "siren"
       example: "If he becomes unsafe or unstable, we'll restart sedation at half dose."
+      exKo: "안전하지 않거나 불안정해지면 절반 용량으로 진정제를 재개할게요."
+      cue: "그대로 두면 환자가 다칠 위험이 있다고 판단할 때"
+      tag: "진정·각성"
+      distractorsEn: ["unsure", "unseen"]
+      distractorsKo: ["확신이 없는", "보이지 않는"]
+      chips: [["un", "safe"]]
+      decoyChips: ["in", "sage"]
     - id: w-unstable
       en: "unstable"
       ipa: "/ʌnˈsteɪbəl/"
       ko: "불안정한"
       icon: "chartup"
       example: "If he becomes unsafe or unstable, we'll restart sedation at half dose."
+      exKo: "안전하지 않거나 불안정해지면 절반 용량으로 진정제를 재개할게요."
+      cue: "수치가 흔들려 안심할 수 없는, 판단 기준이 되는 상태"
+      tag: "진정·각성"
+      distractorsEn: ["unable", "unreliable"]
+      distractorsKo: ["할 수 없는", "믿을 수 없는"]
+      chips: [["un", "sta", "ble"]]
+      decoyChips: ["in", "tab"]
     - id: w-restart
       en: "restart"
       ipa: "/riːˈstɑːrt/"
       ko: "다시 시작하다"
       icon: "gear"
       example: "If he becomes unsafe or unstable, we'll restart sedation at half dose."
+      exKo: "안전하지 않거나 불안정해지면 절반 용량으로 진정제를 재개할게요."
+      cue: "중단했던 점적을 다시 켜는 일 — 원래 양의 반으로"
+      tag: "진정·각성"
+      distractorsEn: ["restrain", "restore"]
+      distractorsKo: ["억제하다", "복원하다"]
+      chips: [["re", "start"]]
+      decoyChips: ["pre", "stark"]
     - id: w-halfdose
       en: "half dose"
       ipa: "/hæf doʊs/"
       ko: "절반 용량"
       icon: "pill"
       example: "If he becomes unsafe or unstable, we'll restart sedation at half dose."
+      exKo: "안전하지 않거나 불안정해지면 절반 용량으로 진정제를 재개할게요."
+      cue: "원래 쓰던 양의 반으로 줄여 다시 시작할 때의 양"
+      tag: "진정·각성"
+      distractorsEn: ["full dose", "double dose"]
+      distractorsKo: ["전체 용량", "두 배 용량"]
+      chips: [["half"], ["dose"]]
+      decoyChips: ["hall", "rose"]
     - id: w-vitals
       en: "vitals"
       ipa: "/ˈvaɪtəlz/"
       ko: "활력징후"
       icon: "chartup"
       example: "No agitation so far, vitals are stable."
+      exKo: "지금까지 초조한 모습 없고 활력징후도 안정적이에요."
+      cue: "혈압, 맥박, 호흡수, 체온, 산소포화도 같은 기본 수치 묶음"
+      tag: "호흡 관찰"
+      distractorsEn: ["vitamins", "vials"]
+      distractorsKo: ["비타민", "약병"]
+      chips: [["vi", "tals"]]
+      decoyChips: ["vo", "tails"]
     - id: w-warm
       en: "warm"
       ipa: "/wɔːrm/"
       ko: "따뜻한"
       icon: "board"
       example: "The high-flow gives him warm oxygen and gentle support without a tube."
+      exKo: "고유량 장치가 튜브 없이 따뜻한 산소와 부드러운 지지를 줘요."
+      cue: "차고 건조한 공기와 달리 체온에 가깝게 데워진 — 고유량 산소가 이렇다"
+      tag: "장비·산소"
+      distractorsEn: ["wet", "worn"]
+      distractorsKo: ["젖은", "낡은"]
+      chips: [["warm"]]
+      decoyChips: ["worm"]
     - id: w-gentle
       en: "gentle"
       ipa: "/ˈdʒɛntəl/"
       ko: "부드러운"
       icon: "shield"
       example: "The high-flow gives him warm oxygen and gentle support without a tube."
+      exKo: "고유량 장치가 튜브 없이 따뜻한 산소와 부드러운 지지를 줘요."
+      cue: "세지 않고 순하게 걸리는 — 압력이 약한 도움에 붙는 말"
+      tag: "장비·산소"
+      distractorsEn: ["gradual", "general"]
+      distractorsKo: ["점진적인", "일반적인"]
+      chips: [["gen", "tle"]]
+      decoyChips: ["gan", "tel"]
     - id: w-prevent
       en: "prevent"
       ipa: "/prɪˈvɛnt/"
       ko: "예방하다"
       icon: "shield"
       example: "This helps prevent him from needing the tube back in."
+      exKo: "이것이 튜브가 다시 필요해지는 것을 예방하는 데 도움이 돼요."
+      cue: "문제가 생기기 전에 미리 막는 일"
+      tag: "위험·예방"
+      distractorsEn: ["present", "prevail"]
+      distractorsKo: ["제시하다", "우세하다"]
+      chips: [["pre", "vent"]]
+      decoyChips: ["pro", "rent"]
     - id: w-mask
       en: "mask"
       ipa: "/mæsk/"
       ko: "마스크"
-      icon: board
+      icon: "board"
       example: "The mask is a preventive step, not a sign that he's failing."
+      exKo: "이 마스크는 예방적 조치이지, 상태가 나빠진다는 신호가 아니에요."
+      cue: "코와 입을 덮어 산소나 압력을 전달하는 얼굴 장비"
+      tag: "장비·산소"
+      distractorsEn: ["gown", "glove"]
+      distractorsKo: ["가운", "장갑"]
+      chips: [["mask"]]
+      decoyChips: ["task"]
     - id: w-preventive
       en: "preventive"
       ipa: "/prɪˈvɛntɪv/"
       ko: "예방적인"
       icon: "shield"
       example: "The mask is a preventive step, not a sign that he's failing."
+      exKo: "이 마스크는 예방적 조치이지, 상태가 나빠진다는 신호가 아니에요."
+      cue: "병이 나기 전에 미리 걸어 두는 조치를 설명하는 형용사"
+      tag: "위험·예방"
+      distractorsEn: ["preventable", "protective"]
+      distractorsKo: ["예방할 수 있는", "보호하는"]
+      chips: [["pre", "vent", "ive"]]
+      decoyChips: ["pro", "ent"]
     - id: w-fail
-      en: "failing"
-      ipa: "/ˈfeɪlɪŋ/"
-      ko: "실패하는"
+      en: "fail"
+      ipa: "/feɪl/"
+      ko: "실패하다"
       icon: "siren"
-      example: "The mask is a preventive step, not a sign that he's failing."
+      example: "He's failed repeated trials, so we need a longer-term weaning plan."
+      exKo: "반복해서 시험에 실패해서 장기적인 이탈 계획이 필요해요."
+      cue: "시도했지만 기준을 못 채워 중단하게 되는 결과 — 시험이 그렇게 끝날 때"
+      tag: "위험·예방"
+      distractorsEn: ["fall", "fill"]
+      distractorsKo: ["넘어지다", "채우다"]
+      chips: [["fail"]]
+      decoyChips: ["foil"]
     - id: w-risk
       en: "risk"
       ipa: "/rɪsk/"
       ko: "위험"
       icon: "siren"
       example: "Because he's higher risk, this support helps him avoid reintubation."
+      exKo: "고위험군이라서 이 지지가 재삽관을 피하는 데 도움이 돼요."
+      cue: "나쁜 일이 일어날 가능성의 크기"
+      tag: "위험·예방"
+      distractorsEn: ["rise", "rash"]
+      distractorsKo: ["상승", "발진"]
+      chips: [["risk"]]
+      decoyChips: ["rusk"]
     - id: w-avoid
       en: "avoid"
       ipa: "/əˈvɔɪd/"
       ko: "피하다"
       icon: "shield"
       example: "Because he's higher risk, this support helps him avoid reintubation."
+      exKo: "고위험군이라서 이 지지가 재삽관을 피하는 데 도움이 돼요."
+      cue: "일부러 하지 않거나 겪지 않도록 길을 돌아가는 일"
+      tag: "위험·예방"
+      distractorsEn: ["void", "avail"]
+      distractorsKo: ["비우다", "이용하다"]
+      chips: [["a", "void"]]
+      decoyChips: ["ab", "oid"]
     - id: w-reintubation
       en: "reintubation"
       ipa: "/ˌriːɪntuːˈbeɪʃən/"
       ko: "재삽관"
-      icon: board
+      icon: "board"
       example: "Because he's higher risk, this support helps him avoid reintubation."
+      exKo: "고위험군이라서 이 지지가 재삽관을 피하는 데 도움이 돼요."
+      cue: "빼 두었던 관을 실패 때문에 다시 기도에 넣는 일을 가리키는 명사"
+      tag: "위험·예방"
+      distractorsEn: ["intubation", "extubation"]
+      distractorsKo: ["삽관", "발관"]
+      chips: [["re", "intub", "ation"]]
+      decoyChips: ["ex", "ition"]
     - id: w-fit
       en: "fit"
       ipa: "/fɪt/"
       ko: "맞음(밀착)"
-      icon: board
+      icon: "board"
       example: "I'll adjust the fit so it's comfortable and sealing well."
+      exKo: "편안하고 잘 밀폐되도록 맞춤을 조정할게요."
+      cue: "마스크가 얼굴선에 틈 없이 들어맞는 정도"
+      tag: "장비·산소"
+      distractorsEn: ["size", "shape"]
+      distractorsKo: ["크기(치수)", "모양(형태)"]
+      chips: [["fit"]]
+      decoyChips: ["fat"]
     - id: w-comfortable
       en: "comfortable"
       ipa: "/ˈkʌmftərbəl/"
       ko: "편안한"
       icon: "board"
       example: "I'll adjust the fit so it's comfortable and sealing well."
+      exKo: "편안하고 잘 밀폐되도록 맞춤을 조정할게요."
+      cue: "아프거나 거슬리지 않아 오래 있어도 괜찮다고 느끼는"
+      tag: "소통·기록"
+      distractorsEn: ["comparable", "compatible"]
+      distractorsKo: ["비교할 만한", "호환되는"]
+      chips: [["com", "fort", "a", "ble"]]
+      decoyChips: ["par", "ta"]
     - id: w-seal
-      en: "sealing"
-      ipa: "/ˈsiːlɪŋ/"
-      ko: "밀폐되는"
+      en: "seal"
+      ipa: "/siːl/"
+      ko: "밀폐(밀착)"
       icon: "shield"
       example: "I'll adjust the fit so it's comfortable and sealing well."
+      exKo: "편안하고 잘 밀폐되도록 맞춤을 조정할게요."
+      cue: "공기가 새지 않도록 틈 없이 막혀 있는 상태"
+      tag: "장비·산소"
+      distractorsEn: ["seat", "scar"]
+      distractorsKo: ["자리(좌석)", "흉터(자국)"]
+      chips: [["seal"]]
+      decoyChips: ["sail"]
     - id: w-riskfactor
       en: "risk factors"
       ipa: "/rɪsk ˈfæktərz/"
       ko: "위험인자"
       icon: "chartup"
       example: "His risk factors include weak cough and a prolonged intubation."
+      exKo: "위험인자에는 약한 기침과 장기화된 삽관이 포함돼요."
+      cue: "병이나 실패 확률을 높이는 개인의 조건 — 나이, 삽관 기간 같은 것"
+      tag: "위험·예방"
+      distractorsEn: ["risk scores", "risk levels"]
+      distractorsKo: ["위험 점수", "위험 수준"]
+      chips: [["risk"], ["fac", "tors"]]
+      decoyChips: ["disk", "tor"]
     - id: w-prolonged
       en: "prolonged"
       ipa: "/prəˈlɔːŋd/"
       ko: "장기화된"
       icon: "chartup"
       example: "His risk factors include weak cough and a prolonged intubation."
+      exKo: "위험인자에는 약한 기침과 장기화된 삽관이 포함돼요."
+      cue: "예상보다 훨씬 길게 이어진 — 삽관 기간 앞에 붙는 말"
+      tag: "위험·예방"
+      distractorsEn: ["profound", "prolapsed"]
+      distractorsKo: ["깊은", "탈출된"]
+      chips: [["pro", "longed"]]
+      decoyChips: ["per", "lunged"]
     - id: w-intubation
       en: "intubation"
       ipa: "/ˌɪntuːˈbeɪʃən/"
       ko: "삽관"
-      icon: board
+      icon: "board"
       example: "His risk factors include weak cough and a prolonged intubation."
+      exKo: "위험인자에는 약한 기침과 장기화된 삽관이 포함돼요."
+      cue: "기관에 튜브를 넣어 인공호흡기에 연결하기 위한 처치"
+      tag: "기도·커프"
+      distractorsEn: ["extubation", "incubation"]
+      distractorsKo: ["발관", "배양"]
+      chips: [["in", "tu", "ba", "tion"]]
+      decoyChips: ["ex", "sion"]
     - id: w-higherrisk
       en: "higher-risk"
       ipa: "/ˈhaɪər rɪsk/"
       ko: "고위험의"
       icon: "siren"
       example: "I'd put him in the higher-risk category for reintubation."
+      exKo: "재삽관 고위험군으로 분류하겠어요."
+      cue: "같은 상황에서 남보다 실패 확률이 더 높은 쪽에 속하는"
+      tag: "위험·예방"
+      distractorsEn: ["lower-risk", "higher-rate"]
+      distractorsKo: ["저위험의", "고비율의"]
+      chips: [["high", "er-", "risk"]]
+      decoyChips: ["low", "rick"]
     - id: w-flag
       en: "flag"
       ipa: "/flæg/"
       ko: "표시하다(알리다)"
       icon: "pushpin"
       example: "I'll flag this to the team so we watch him closely tonight."
+      exKo: "오늘 밤 세심히 지켜보도록 팀에 알릴게요."
+      cue: "다른 사람이 놓치지 않도록 눈에 띄게 표시해 두거나 알리는 동사"
+      tag: "소통·기록"
+      distractorsEn: ["flush", "flip"]
+      distractorsKo: ["세척하다(씻어내다)", "뒤집다(방향 바꿈)"]
+      chips: [["flag"]]
+      decoyChips: ["flog"]
     - id: w-closely
       en: "closely"
       ipa: "/ˈkloʊsli/"
       ko: "세심하게"
       icon: "magnify"
       example: "I'll flag this to the team so we watch him closely tonight."
-    - id: w-tonight
-      en: "tonight"
-      ipa: "/təˈnaɪt/"
-      ko: "오늘 밤"
-      icon: "calendar"
-      example: "I'll flag this to the team so we watch him closely tonight."
+      exKo: "오늘 밤 세심히 지켜보도록 팀에 알릴게요."
+      cue: "눈을 떼지 않고 바짝 붙어서 자세히 하는 방식"
+      tag: "호흡 관찰"
+      distractorsEn: ["clearly", "slowly"]
+      distractorsKo: ["분명하게", "천천히"]
+      chips: [["close", "ly"]]
+      decoyChips: ["lose", "ry"]
     - id: w-intubate
       en: "intubated"
       ipa: "/ˈɪntuːbeɪtɪd/"
       ko: "삽관된"
-      icon: board
+      icon: "board"
       example: "His cough is weak, and he was intubated a long time."
+      exKo: "기침이 약하고, 삽관 기간도 길었어요."
+      cue: "기관 안에 튜브가 들어가 있어 말을 못 하는 상태 — 환자를 가리킬 때"
+      tag: "기도·커프"
+      distractorsEn: ["extubated", "incubated"]
+      distractorsKo: ["발관된", "배양된"]
+      chips: [["in", "tu", "bat", "ed"]]
+      decoyChips: ["ex", "bit"]
     - id: w-handoff
       en: "handoff"
       ipa: "/ˈhændɔːf/"
       ko: "인계"
       icon: "speech"
       example: "I'll report the risk factors at handoff."
+      exKo: "인계 때 위험인자를 보고할게요."
+      cue: "교대할 때 환자 상태와 할 일을 다음 사람에게 넘기는 보고"
+      tag: "소통·기록"
+      distractorsEn: ["handout", "handwash"]
+      distractorsKo: ["유인물", "손 씻기"]
+      chips: [["hand", "off"]]
+      decoyChips: ["land", "of"]
     - id: w-muscle
       en: "muscles"
       ipa: "/ˈmʌsəlz/"
       ko: "근육"
       icon: "me"
       example: "His breathing muscles weaken after being on the vent for a while."
+      exKo: "인공호흡기를 한동안 달고 있으면 호흡근이 약해져요."
+      cue: "숨 쉬는 일을 하는 횡격막과 늑간처럼 힘을 내는 조직"
+      tag: "재활·계획"
+      distractorsEn: ["tendons", "nerves"]
+      distractorsKo: ["힘줄", "신경"]
+      chips: [["mus", "cles"]]
+      decoyChips: ["mas", "cle"]
     - id: w-weaken
       en: "weaken"
       ipa: "/ˈwiːkən/"
       ko: "약해지다"
       icon: "board"
       example: "His breathing muscles weaken after being on the vent for a while."
+      exKo: "인공호흡기를 한동안 달고 있으면 호흡근이 약해져요."
+      cue: "서서히 힘이 빠지고 기능이 떨어지는 변화"
+      tag: "재활·계획"
+      distractorsEn: ["waken", "widen"]
+      distractorsKo: ["깨우다", "넓어지다"]
+      chips: [["weak", "en"]]
+      decoyChips: ["week", "on"]
     - id: w-vent
       en: "vent"
       ipa: "/vɛnt/"
-      ko: "인공호흡기(구어)"
+      ko: "인공호흡기(줄임말)"
       icon: "monitor"
       example: "His breathing muscles weaken after being on the vent for a while."
+      exKo: "인공호흡기를 한동안 달고 있으면 호흡근이 약해져요."
+      cue: "병동에서 흔히 줄여 부르는 기계의 별명 — on the ○○처럼 쓴다"
+      tag: "장비·산소"
+      distractorsEn: ["vest", "vein"]
+      distractorsKo: ["정맥(혈관 이름)", "조끼(보호 장비)"]
+      chips: [["vent"]]
+      decoyChips: ["went"]
     - id: w-moving
       en: "moving"
       ipa: "/ˈmuːvɪŋ/"
       ko: "움직이는(활동)"
       icon: "gear"
       example: "Getting him moving early helps rebuild that strength."
+      exKo: "일찍 움직이게 하는 것이 그 힘을 다시 키우는 데 도움이 돼요."
+      cue: "침대에 누워만 있지 않고 몸을 일으켜 활동하게 하는 재활의 첫걸음"
+      tag: "재활·계획"
+      distractorsEn: ["removing", "moaning"]
+      distractorsKo: ["제거하는(떼어냄)", "신음하는(앓는 소리)"]
+      chips: [["mov", "ing"]]
+      decoyChips: ["mop", "ning"]
     - id: w-rebuild
       en: "rebuild"
       ipa: "/riːˈbɪld/"
       ko: "다시 키우다"
       icon: "gear"
       example: "Getting him moving early helps rebuild that strength."
+      exKo: "일찍 움직이게 하는 것이 그 힘을 다시 키우는 데 도움이 돼요."
+      cue: "줄어든 힘을 훈련으로 처음 수준까지 되찾는 일"
+      tag: "재활·계획"
+      distractorsEn: ["rebound", "rebuke"]
+      distractorsKo: ["반등하다", "꾸짖다"]
+      chips: [["re", "build"]]
+      decoyChips: ["pre", "built"]
     - id: w-strength
       en: "strength"
       ipa: "/strɛŋkθ/"
       ko: "힘"
       icon: "trophy"
       example: "Getting him moving early helps rebuild that strength."
+      exKo: "일찍 움직이게 하는 것이 그 힘을 다시 키우는 데 도움이 돼요."
+      cue: "근육이 낼 수 있는 힘의 세기 — 재활로 회복하려는 목표"
+      tag: "재활·계획"
+      distractorsEn: ["length", "balance"]
+      distractorsKo: ["길이", "균형"]
+      chips: [["strength"]]
+      decoyChips: ["strange"]
     - id: w-physicaltherapy
       en: "physical therapy"
       ipa: "/ˈfɪzɪkəl ˈθɛrəpi/"
       ko: "물리치료"
       icon: "trophy"
       example: "We'll bring in physical therapy to work on his breathing muscles."
+      exKo: "호흡근을 다루도록 물리치료를 연계할게요."
+      cue: "침상에서 팔다리와 호흡근을 움직여 주는 재활 전문 치료팀"
+      tag: "재활·계획"
+      distractorsEn: ["speech therapy", "physical exam"]
+      distractorsKo: ["언어치료", "신체검진"]
+      chips: [["phys", "i", "cal"], ["ther", "a", "py"]]
+      decoyChips: ["fis", "cil"]
     - id: w-movement
       en: "movements"
       ipa: "/ˈmuːvmənts/"
       ko: "움직임들"
       icon: "gear"
       example: "Even small movements each day can help him get stronger."
-    - id: w-strong
-      en: "strong"
-      ipa: "/strɔːŋ/"
-      ko: "강한"
-      icon: "trophy"
-      example: "Even small movements each day can help him get stronger."
+      exKo: "매일의 작은 움직임도 더 강해지는 데 도움이 될 수 있어요."
+      cue: "누운 채로 하는 작은 팔다리 동작 하나하나"
+      tag: "재활·계획"
+      distractorsEn: ["moments", "treatments"]
+      distractorsKo: ["순간들", "치료들"]
+      chips: [["move", "ments"]]
+      decoyChips: ["mood", "men"]
     - id: w-exercise
       en: "exercises"
       ipa: "/ˈɛksərsaɪzɪz/"
       ko: "운동"
       icon: "trophy"
       example: "Physical therapy will guide him through safe exercises each day."
+      exKo: "물리치료가 매일 안전한 운동을 이끌어 줄 거예요."
+      cue: "근력을 되찾으려고 정해진 동작을 반복하는 것"
+      tag: "재활·계획"
+      distractorsEn: ["exposures", "expenses"]
+      distractorsKo: ["노출", "비용"]
+      chips: [["ex", "er", "cis", "es"]]
+      decoyChips: ["ac", "ise"]
     - id: w-tracheostomy
       en: "tracheostomy"
       ipa: "/ˌtreɪkiˈɑːstəmi/"
       ko: "기관절개"
-      icon: board
+      icon: "board"
       example: "A tracheostomy can actually make him more comfortable for longer support."
+      exKo: "기관절개가 오히려 장기 지지에서 더 편안하게 만들어 줄 수 있어요."
+      cue: "목 앞쪽을 열어 기관에 직접 튜브를 넣어 두는 구멍과 시술"
+      tag: "기도·커프"
+      distractorsEn: ["tracheitis", "tonsillectomy"]
+      distractorsKo: ["기관염", "편도절제술"]
+      chips: [["trache", "os", "tomy"]]
+      decoyChips: ["ot", "ous"]
     - id: w-plan
       en: "plan"
       ipa: "/plæn/"
       ko: "계획"
       icon: "chartup"
       example: "It's part of the plan, not a step backward."
+      exKo: "이건 계획의 일부이지, 후퇴가 아니에요."
+      cue: "앞으로 어떤 순서로 할지 팀이 미리 정해 둔 일정"
+      tag: "재활·계획"
+      distractorsEn: ["pain", "panel"]
+      distractorsKo: ["통증", "패널"]
+      chips: [["plan"]]
+      decoyChips: ["plane"]
     - id: w-communication
       en: "communication"
       ipa: "/kəˌmjuːnɪˈkeɪʃən/"
       ko: "의사소통"
       icon: "speech"
       example: "It often makes weaning and communication easier for him."
-    - id: w-team
-      en: "team"
-      ipa: "/tiːm/"
-      ko: "팀"
-      icon: "shield"
-      example: "We'll talk with the whole team before deciding on timing."
+      exKo: "이탈과 의사소통을 더 쉽게 만들어 주는 경우가 많아요."
+      cue: "말과 글과 몸짓으로 서로 뜻을 주고받는 일 — 기관절개 뒤 글자판으로 되찾기도 한다"
+      tag: "소통·기록"
+      distractorsEn: ["complication", "compensation"]
+      distractorsKo: ["합병증", "보상"]
+      chips: [["com", "muni", "cation"]]
+      decoyChips: ["pli", "sion"]
     - id: w-document
       en: "document"
       ipa: "/ˈdɑːkjəmənt/"
       ko: "기록하다"
       icon: "pencil"
       example: "I'll document that extubation is delayed due to heavy secretions."
+      exKo: "분비물이 많아서 발관이 지연됐다고 기록할게요."
+      cue: "나중에 누가 봐도 알 수 있게 차트에 정식으로 남기는 일"
+      tag: "소통·기록"
+      distractorsEn: ["dictate", "deposit"]
+      distractorsKo: ["받아쓰다", "맡기다"]
+      chips: [["doc", "u", "ment"]]
+      decoyChips: ["dog", "mint"]
     - id: w-delay
-      en: "delayed"
-      ipa: "/dɪˈleɪd/"
-      ko: "지연된"
+      en: "delay"
+      ipa: "/dɪˈleɪ/"
+      ko: "지연"
       icon: "chartup"
       example: "I'll document that extubation is delayed due to heavy secretions."
+      exKo: "분비물이 많아서 발관이 지연됐다고 기록할게요."
+      cue: "예정보다 늦어지는 일, 또는 일부러 미루는 일"
+      tag: "소통·기록"
+      distractorsEn: ["relay", "decay"]
+      distractorsKo: ["중계", "감쇠"]
+      chips: [["de", "lay"]]
+      decoyChips: ["pre", "lag"]
     - id: w-note
       en: "notes"
       ipa: "/noʊts/"
       ko: "기록(메모)"
       icon: "pencil"
       example: "Clear notes help the next shift understand the plan."
+      exKo: "명확한 기록이 다음 근무조가 계획을 이해하는 데 도움이 돼요."
+      cue: "나중에 읽을 사람을 위해 차트에 간단히 적어 둔 글"
+      tag: "소통·기록"
+      distractorsEn: ["nodes", "notices"]
+      distractorsKo: ["림프절(마디)", "공지(알림)"]
+      chips: [["notes"]]
+      decoyChips: ["votes"]
     - id: w-shift
       en: "shift"
       ipa: "/ʃɪft/"
       ko: "교대근무"
       icon: "calendar"
       example: "Clear notes help the next shift understand the plan."
-    - id: w-reason
-      en: "reason"
-      ipa: "/ˈriːzən/"
-      ko: "이유"
-      icon: "bulb"
-      example: "Let's make sure the reason is in the chart for the whole team."
+      exKo: "명확한 기록이 다음 근무조가 계획을 이해하는 데 도움이 돼요."
+      cue: "간호사가 한 번에 일하는 시간 묶음 — 낮번, 밤번"
+      tag: "소통·기록"
+      distractorsEn: ["schedule", "sheet"]
+      distractorsKo: ["일정표", "기록지"]
+      chips: [["shift"]]
+      decoyChips: ["shaft"]
     - id: w-chart
       en: "chart"
       ipa: "/tʃɑːrt/"
       ko: "차트"
       icon: "pencil"
       example: "Let's make sure the reason is in the chart for the whole team."
+      exKo: "팀 전체를 위해 이유가 차트에 적혀 있는지 확인합시다."
+      cue: "환자의 모든 기록이 모여 있는 문서 — 전자든 종이든"
+      tag: "소통·기록"
+      distractorsEn: ["charge", "chest"]
+      distractorsKo: ["요금", "가슴"]
+      chips: [["chart"]]
+      decoyChips: ["chat"]
     - id: w-reorient
-      en: "reorienting"
-      ipa: "/riːˈɔːriɛntɪŋ/"
+      en: "reorient"
+      ipa: "/riˈɔːriˌɛnt/"
       ko: "재지남력을 제공하다"
       icon: "bulb"
       example: "Let's try reorienting him and bringing family to the bedside."
-    - id: w-family
-      en: "family"
-      ipa: "/ˈfæməli/"
-      ko: "가족"
-      icon: "home"
-      example: "Let's try reorienting him and bringing family to the bedside."
+      exKo: "재지남력을 도와주고 가족을 침상 곁으로 데려와 봅시다."
+      cue: "지금이 언제이고 여기가 어디인지 다시 알려 주는 일 — 섬망 환자에게"
+      tag: "진정·각성"
+      distractorsEn: ["reorder", "reorganize"]
+      distractorsKo: ["순서를 다시 정하다", "조직을 다시 짜다"]
+      chips: [["re", "ori", "ent"]]
+      decoyChips: ["ar", "ant"]
     - id: w-noise
       en: "noise"
       ipa: "/nɔɪz/"
       ko: "소음"
       icon: "speaker"
       example: "Reducing noise and keeping a day-night routine can calm his delirium."
+      exKo: "소음을 줄이고 낮밤 일과를 지키는 것이 섬망을 진정시킬 수 있어요."
+      cue: "크고 불필요한 소리 — 알람과 대화가 밤을 어지럽힌다"
+      tag: "진정·각성"
+      distractorsEn: ["nose", "nausea"]
+      distractorsKo: ["코", "메스꺼움"]
+      chips: [["noise"]]
+      decoyChips: ["poise"]
     - id: w-routine
       en: "routine"
       ipa: "/ruːˈtiːn/"
       ko: "규칙적인 일과"
       icon: "calendar"
       example: "Reducing noise and keeping a day-night routine can calm his delirium."
+      exKo: "소음을 줄이고 낮밤 일과를 지키는 것이 섬망을 진정시킬 수 있어요."
+      cue: "매일 같은 시간에 되풀이하도록 짜 둔 하루의 틀 — 낮에는 밝게, 밤에는 어둡게"
+      tag: "진정·각성"
+      distractorsEn: ["rotation", "protocol"]
+      distractorsKo: ["교대 순환 근무", "처리 지침서"]
+      chips: [["rou", "tine"]]
+      decoyChips: ["rot", "tune"]
     - id: w-calm
       en: "calm"
       ipa: "/kɑːm/"
-      ko: "진정시키다"
+      ko: "차분한·가라앉히다"
       icon: "board"
       example: "Reducing noise and keeping a day-night routine can calm his delirium."
+      exKo: "소음을 줄이고 낮밤 일과를 지키는 것이 섬망을 진정시킬 수 있어요."
+      cue: "들뜨거나 두려워하지 않고 평온한 모습 — 섬망 환자 곁에서 만들어 주려는 분위기"
+      tag: "진정·각성"
+      distractorsEn: ["alarm", "clamp"]
+      distractorsKo: ["경보·울리게 하다", "집게·고정하다"]
+      chips: [["calm"]]
+      decoyChips: ["palm"]
     - id: w-delirium
       en: "delirium"
       ipa: "/dɪˈlɪriəm/"
       ko: "섬망"
       icon: "bulb"
       example: "Reducing noise and keeping a day-night routine can calm his delirium."
+      exKo: "소음을 줄이고 낮밤 일과를 지키는 것이 섬망을 진정시킬 수 있어요."
+      cue: "중환자실에서 갑자기 생기는 혼돈과 주의력 저하 — 낮과 밤이 뒤바뀐다"
+      tag: "진정·각성"
+      distractorsEn: ["dementia", "delusion"]
+      distractorsKo: ["치매", "망상"]
+      chips: [["de", "lir", "i", "um"]]
+      decoyChips: ["dim", "ion"]
     - id: w-nondrug
       en: "non-drug"
       ipa: "/nɑːn drʌg/"
       ko: "비약물의"
       icon: "pill"
       example: "Non-drug measures first can help him tolerate weaning better."
+      exKo: "비약물 조치를 먼저 하면 이탈을 더 잘 견디는 데 도움이 돼요."
+      cue: "약을 쓰지 않고 환경과 사람으로 하는 방식을 설명하는 말"
+      tag: "진정·각성"
+      distractorsEn: ["non-stop", "non-verbal"]
+      distractorsKo: ["쉬지 않는", "비언어적"]
+      chips: [["non-", "drug"]]
+      decoyChips: ["nun", "drag"]
     - id: w-measure
       en: "measures"
       ipa: "/ˈmɛʒərz/"
       ko: "조치"
       icon: "chartup"
       example: "Non-drug measures first can help him tolerate weaning better."
+      exKo: "비약물 조치를 먼저 하면 이탈을 더 잘 견디는 데 도움이 돼요."
+      cue: "문제를 해결하려고 취하는 구체적인 행동 하나하나"
+      tag: "진정·각성"
+      distractorsEn: ["measles", "pressures"]
+      distractorsKo: ["홍역", "압력들"]
+      chips: [["meas", "ures"]]
+      decoyChips: ["mass", "ores"]
     - id: w-tolerate
       en: "tolerate"
       ipa: "/ˈtɑːləreɪt/"
       ko: "견디다"
       icon: "shield"
       example: "Non-drug measures first can help him tolerate weaning better."
+      exKo: "비약물 조치를 먼저 하면 이탈을 더 잘 견디는 데 도움이 돼요."
+      cue: "힘들어도 문제없이 받아들이고 버텨 내는 일 — 시험을 끝까지 마칠 수 있는지"
+      tag: "이탈·SBT"
+      distractorsEn: ["terminate", "translate"]
+      distractorsKo: ["종결하다", "번역하다"]
+      chips: [["tol", "er", "ate"]]
+      decoyChips: ["tal", "ite"]
     - id: w-stridor
       en: "stridor"
       ipa: "/ˈstraɪdɔːr/"
       ko: "협착음"
       icon: "siren"
       example: "That stridor means his upper airway is swelling and narrowing."
+      exKo: "저 협착음은 상기도가 붓고 좁아지고 있다는 뜻이에요."
+      cue: "좁아진 상기도를 지나는 공기가 내는 높은 쌕쌕 소리 — 숨을 들이쉴 때 들린다"
+      tag: "위기 대응"
+      distractorsEn: ["wheeze", "rhonchi"]
+      distractorsKo: ["천명음", "건성라음"]
+      chips: [["stri", "dor"]]
+      decoyChips: ["stra", "dore"]
     - id: w-swell
       en: "swelling"
       ipa: "/ˈswɛlɪŋ/"
       ko: "붓는 것"
       icon: "board"
       example: "That stridor means his upper airway is swelling and narrowing."
+      exKo: "저 협착음은 상기도가 붓고 좁아지고 있다는 뜻이에요."
+      cue: "염증 때문에 조직이 부풀어 올라 공간이 줄어드는 것"
+      tag: "위기 대응"
+      distractorsEn: ["swallowing", "sweating"]
+      distractorsKo: ["삼키는 것", "땀 흘리는 것"]
+      chips: [["swell", "ing"]]
+      decoyChips: ["spell", "ling"]
     - id: w-narrow
       en: "narrowing"
       ipa: "/ˈnæroʊɪŋ/"
       ko: "좁아지는"
       icon: "board"
       example: "That stridor means his upper airway is swelling and narrowing."
+      exKo: "저 협착음은 상기도가 붓고 좁아지고 있다는 뜻이에요."
+      cue: "통로가 점점 가늘어져 공기가 지나기 힘들어지는 상태"
+      tag: "위기 대응"
+      distractorsEn: ["widening", "hollowing"]
+      distractorsKo: ["넓어지는", "비어가는"]
+      chips: [["nar", "row", "ing"]]
+      decoyChips: ["bar", "bow"]
     - id: w-nebulized
       en: "nebulized"
       ipa: "/ˈnɛbjəlaɪzd/"
       ko: "분무된"
       icon: "pill"
       example: "Give nebulized epinephrine and call the airway team now."
+      exKo: "에피네프린을 분무하고 지금 기도팀을 불러 주세요."
+      cue: "약을 안개처럼 미세하게 만들어 숨으로 들이마시게 한"
+      tag: "위기 대응"
+      distractorsEn: ["nauseated", "sterilized"]
+      distractorsKo: ["메스꺼운", "소독된"]
+      chips: [["neb", "u", "lized"]]
+      decoyChips: ["nub", "lyzed"]
     - id: w-epinephrine
       en: "epinephrine"
       ipa: "/ˌɛpɪˈnɛfrɪn/"
       ko: "에피네프린"
       icon: "pill"
       example: "Give nebulized epinephrine and call the airway team now."
+      exKo: "에피네프린을 분무하고 지금 기도팀을 불러 주세요."
+      cue: "아나필락시스와 상기도 부종에 쓰는 아드레날린 계열의 약"
+      tag: "위기 대응"
+      distractorsEn: ["norepinephrine", "ephedrine"]
+      distractorsKo: ["노르에피네프린", "에페드린"]
+      chips: [["ep", "i", "neph", "rine"]]
+      decoyChips: ["er", "ren"]
     - id: w-cart
       en: "cart"
       ipa: "/kɑːrt/"
       ko: "카트"
-      icon: board
+      icon: "board"
       example: "Have the reintubation cart ready in case he obstructs."
+      exKo: "막힐 경우를 대비해 재삽관 카트를 준비해 두세요."
+      cue: "비상 물품을 서랍마다 담아 바퀴로 끌고 오는 보관함"
+      tag: "장비·산소"
+      distractorsEn: ["chart", "cast"]
+      distractorsKo: ["차트", "깁스"]
+      chips: [["cart"]]
+      decoyChips: ["dart"]
     - id: w-obstruct
-      en: "obstructs"
-      ipa: "/əbˈstrʌkts/"
+      en: "obstruct"
+      ipa: "/əbˈstrʌkt/"
       ko: "막다(폐색되다)"
       icon: "siren"
       example: "Have the reintubation cart ready in case he obstructs."
+      exKo: "막힐 경우를 대비해 재삽관 카트를 준비해 두세요."
+      cue: "통로를 완전히 가로막아 공기가 못 지나게 되는 것"
+      tag: "위기 대응"
+      distractorsEn: ["construct", "instruct"]
+      distractorsKo: ["건설하다(세우다)", "지시하다(가르치다)"]
+      chips: [["ob", "struct"]]
+      decoyChips: ["con", "stuck"]
     - id: w-bag
       en: "bag"
       ipa: "/bæg/"
       ko: "백으로 환기하다"
       icon: "gear"
       example: "Bag him with 100 percent oxygen while we prepare to reintubate."
+      exKo: "재삽관을 준비하는 동안 100퍼센트 산소로 백 환기하세요."
+      cue: "마스크에 연결된 주머니를 손으로 짜서 숨을 대신 불어 넣는 일"
+      tag: "위기 대응"
+      distractorsEn: ["page", "bind"]
+      distractorsKo: ["(의사를) 호출하다", "(환자를) 이송하다"]
+      chips: [["bag"]]
+      decoyChips: ["bug"]
     - id: w-percent
       en: "percent"
       ipa: "/pərˈsɛnt/"
       ko: "퍼센트"
       icon: "chartup"
       example: "Bag him with 100 percent oxygen while we prepare to reintubate."
+      exKo: "재삽관을 준비하는 동안 100퍼센트 산소로 백 환기하세요."
+      cue: "100이 전체일 때의 비율 — 산소 농도를 말할 때 붙인다"
+      tag: "장비·산소"
+      distractorsEn: ["present", "pressure"]
+      distractorsKo: ["현재", "압력"]
+      chips: [["per", "cent"]]
+      decoyChips: ["pro", "sent"]
     - id: w-prepare
       en: "prepare"
       ipa: "/prɪˈpɛr/"
       ko: "준비하다"
       icon: "check"
       example: "Bag him with 100 percent oxygen while we prepare to reintubate."
+      exKo: "재삽관을 준비하는 동안 100퍼센트 산소로 백 환기하세요."
+      cue: "필요한 것을 미리 갖춰 놓는 일 — 급박한 상황이 오기 전에"
+      tag: "위기 대응"
+      distractorsEn: ["prefer", "repair"]
+      distractorsKo: ["선호하다", "수리하다"]
+      chips: [["pre", "pare"]]
+      decoyChips: ["pro", "pale"]
     - id: w-reintubate
       en: "reintubate"
       ipa: "/ˌriːɪnˈtuːbeɪt/"
       ko: "재삽관하다"
-      icon: board
+      icon: "board"
       example: "Bag him with 100 percent oxygen while we prepare to reintubate."
+      exKo: "재삽관을 준비하는 동안 100퍼센트 산소로 백 환기하세요."
+      cue: "기도를 못 지키는 환자에게 관을 다시 넣는 응급 처치"
+      tag: "위기 대응"
+      distractorsEn: ["intubate", "extubate"]
+      distractorsKo: ["삽관하다", "발관하다"]
+      chips: [["re", "in", "tu", "bate"]]
+      decoyChips: ["ex", "bite"]
     - id: w-laryngoscope
       en: "laryngoscope"
       ipa: "/ləˈrɪŋɡəskoʊp/"
       ko: "후두경"
-      icon: board
+      icon: "board"
       example: "I've got the tube, laryngoscope, and suction ready."
+      exKo: "튜브, 후두경, 흡인기를 준비해 뒀어요."
+      cue: "삽관할 때 입안으로 넣어 성대를 눈으로 보게 해 주는 불빛 달린 기구"
+      tag: "장비·산소"
+      distractorsEn: ["stethoscope", "bronchoscope"]
+      distractorsKo: ["청진기", "기관지경"]
+      chips: [["la", "ryn", "go", "scope"]]
+      decoyChips: ["lar", "cope"]
     - id: w-physician
       en: "physician"
       ipa: "/fɪˈzɪʃən/"
       ko: "의사"
       icon: "stetho"
       example: "Call the physician to the bedside stat for the airway."
+      exKo: "기도 때문에 의사를 즉시 침상으로 불러 주세요."
+      cue: "의사를 가리키는 격식 있는 낱말 — 호출과 보고에서 자주 쓴다"
+      tag: "소통·기록"
+      distractorsEn: ["physicist", "technician"]
+      distractorsKo: ["물리학자", "기술자"]
+      chips: [["phy", "si", "cian"]]
+      decoyChips: ["fis", "tion"]
     - id: w-stat
       en: "stat"
       ipa: "/stæt/"
-      ko: "즉시"
+      ko: "즉시(응급)"
       icon: "siren"
       example: "Call the physician to the bedside stat for the airway."
+      exKo: "기도 때문에 의사를 즉시 침상으로 불러 주세요."
+      cue: "지금 당장, 한 순간도 미루지 말고 — 호출과 오더 끝에 붙는 약어"
+      tag: "위기 대응"
+      distractorsEn: ["PRN", "BID"]
+      distractorsKo: ["필요할 때", "하루 두 번"]
+      chips: [["stat"]]
+      decoyChips: ["star"]
     - id: w-alert
       en: "alert"
       ipa: "/əˈlɜːrt/"
       ko: "각성된"
       icon: "bulb"
       example: "If he's alert with a manageable airway, we can trial rescue NIV briefly."
+      exKo: "각성돼 있고 기도가 다룰 만하면 잠시 구조 NIV를 시도할 수 있어요."
+      cue: "눈을 뜨고 주변과 말에 정확히 반응하는 의식 상태"
+      tag: "진정·각성"
+      distractorsEn: ["alarmed", "altered"]
+      distractorsKo: ["놀란", "의식이 달라진"]
+      chips: [["a", "lert"]]
+      decoyChips: ["al", "art"]
     - id: w-manageable
       en: "manageable"
       ipa: "/ˈmænɪdʒəbəl/"
       ko: "다룰 만한"
       icon: "check"
       example: "If he's alert with a manageable airway, we can trial rescue NIV briefly."
+      exKo: "각성돼 있고 기도가 다룰 만하면 잠시 구조 NIV를 시도할 수 있어요."
+      cue: "벅차지 않아 지금 가진 수단으로 대처할 수 있는"
+      tag: "위기 대응"
+      distractorsEn: ["available", "acceptable"]
+      distractorsKo: ["이용 가능한", "받아들일 수 있는"]
+      chips: [["man", "age", "a", "ble"]]
+      decoyChips: ["mat", "ple"]
     - id: w-briefly
       en: "briefly"
       ipa: "/ˈbriːfli/"
       ko: "잠시"
       icon: "calendar"
       example: "If he's alert with a manageable airway, we can trial rescue NIV briefly."
+      exKo: "각성돼 있고 기도가 다룰 만하면 잠시 구조 NIV를 시도할 수 있어요."
+      cue: "길지 않게, 아주 짧은 시간 동안만"
+      tag: "위기 대응"
+      distractorsEn: ["broadly", "bluntly"]
+      distractorsKo: ["널리", "곧바로"]
+      chips: [["brief", "ly"]]
+      decoyChips: ["grief", "ry"]
     - id: w-deteriorate
-      en: "deteriorating"
-      ipa: "/dɪˈtɪəriəreɪtɪŋ/"
-      ko: "악화되는"
+      en: "deteriorate"
+      ipa: "/dɪˈtɪriəˌreɪt/"
+      ko: "악화되다"
       icon: "siren"
       example: "But if he keeps deteriorating, we reintubate without delay."
+      exKo: "하지만 계속 악화되면 지체 없이 재삽관할게요."
+      cue: "나빠지는 방향으로 점점 기울어 가는 것 — 환자 상태에 대해 쓴다"
+      tag: "위기 대응"
+      distractorsEn: ["determine", "deliberate"]
+      distractorsKo: ["결정하다", "숙고하다"]
+      chips: [["de", "terior", "ate"]]
+      decoyChips: ["di", "rite"]
     - id: w-timelimit
       en: "time limit"
       ipa: "/taɪm ˈlɪmɪt/"
       ko: "시간 제한"
       icon: "calendar"
       example: "Let's set a short time limit so we don't lose the window."
+      exKo: "기회를 놓치지 않도록 짧은 시간 제한을 정합시다."
+      cue: "이 시점까지 안 되면 다음 단계로 간다고 미리 정해 두는 한계"
+      tag: "위기 대응"
+      distractorsEn: ["time stamp", "time zone"]
+      distractorsKo: ["시각 기록", "시간대"]
+      chips: [["time"], ["lim", "it"]]
+      decoyChips: ["tide", "list"]
     - id: w-lose
       en: "lose"
       ipa: "/luːz/"
       ko: "놓치다"
       icon: "siren"
       example: "Let's set a short time limit so we don't lose the window."
+      exKo: "기회를 놓치지 않도록 짧은 시간 제한을 정합시다."
+      cue: "기회나 소중한 것을 붙잡지 못하고 잃어버리는 일"
+      tag: "위기 대응"
+      distractorsEn: ["loosen", "load"]
+      distractorsKo: ["느슨하게 하다", "싣다"]
+      chips: [["lose"]]
+      decoyChips: ["loose"]
     - id: w-window
       en: "window"
       ipa: "/ˈwɪndoʊ/"
       ko: "기회의 창"
       icon: "calendar"
       example: "Let's set a short time limit so we don't lose the window."
+      exKo: "기회를 놓치지 않도록 짧은 시간 제한을 정합시다."
+      cue: "개입해서 결과를 바꿀 수 있는 짧은 시간대 — 이걸 놓치면 늦는다"
+      tag: "위기 대응"
+      distractorsEn: ["windpipe", "shadow"]
+      distractorsKo: ["기관(숨관)", "그림자(음영)"]
+      chips: [["win", "dow"]]
+      decoyChips: ["wan", "dew"]
     - id: w-repeated
       en: "repeated"
       ipa: "/rɪˈpiːtɪd/"
       ko: "반복된"
       icon: "chartup"
       example: "He's failed repeated trials, so we need a longer-term weaning plan."
+      exKo: "반복해서 시험에 실패해서 장기적인 이탈 계획이 필요해요."
+      cue: "같은 일이 되풀이돼 여러 번 일어난"
+      tag: "재활·계획"
+      distractorsEn: ["repaired", "rejected"]
+      distractorsKo: ["수리된", "거부된"]
+      chips: [["re", "peat", "ed"]]
+      decoyChips: ["pre", "pair"]
     - id: w-longterm
       en: "longer-term"
       ipa: "/ˈlɔːŋɡər tɜːrm/"
       ko: "장기적인"
       icon: "calendar"
       example: "He's failed repeated trials, so we need a longer-term weaning plan."
+      exKo: "반복해서 시험에 실패해서 장기적인 이탈 계획이 필요해요."
+      cue: "당장이 아니라 몇 주, 몇 달을 내다보는 계획에 붙는 말"
+      tag: "재활·계획"
+      distractorsEn: ["shorter-term", "long-distance"]
+      distractorsKo: ["단기적인", "장거리의"]
+      chips: [["long", "er-", "term"]]
+      decoyChips: ["lung", "turn"]
     - id: w-discuss
       en: "discuss"
       ipa: "/dɪˈskʌs/"
       ko: "논의하다"
       icon: "speech"
       example: "Let's discuss a tracheostomy to support a gradual wean."
+      exKo: "점진적인 이탈을 지지하도록 기관절개를 논의해 봅시다."
+      cue: "서로 의견을 주고받으며 결정을 위해 이야기하는 일"
+      tag: "소통·기록"
+      distractorsEn: ["discard", "disrupt"]
+      distractorsKo: ["버리다", "중단시키다"]
+      chips: [["dis", "cuss"]]
+      decoyChips: ["dys", "cuff"]
     - id: w-gradual
       en: "gradual"
       ipa: "/ˈɡrædʒuəl/"
       ko: "점진적인"
       icon: "chartup"
       example: "Let's discuss a tracheostomy to support a gradual wean."
+      exKo: "점진적인 이탈을 지지하도록 기관절개를 논의해 봅시다."
+      cue: "급하게 한 번에 바꾸지 않고 조금씩 단계적으로 하는"
+      tag: "재활·계획"
+      distractorsEn: ["grateful", "gradient"]
+      distractorsKo: ["고마워하는", "경사도"]
+      chips: [["grad", "u", "al"]]
+      decoyChips: ["grid", "tal"]
     - id: w-multidisciplinary
       en: "multidisciplinary"
       ipa: "/ˌmʌltiˈdɪsəplɪˌnɛri/"
       ko: "다학제의"
       icon: "shield"
       example: "I'll bring the multidisciplinary team together to reset the goals."
+      exKo: "목표를 재설정하도록 다학제 팀을 모을게요."
+      cue: "의사, 간호사, 치료사 등 여러 분야 전문가가 함께 참여하는"
+      tag: "소통·기록"
+      distractorsEn: ["multidimensional", "multifunctional"]
+      distractorsKo: ["다차원의", "다기능의"]
+      chips: [["multi", "disci", "plinary"]]
+      decoyChips: ["mal", "plan"]
     - id: w-reset
       en: "reset"
       ipa: "/riːˈsɛt/"
       ko: "재설정하다"
       icon: "gear"
       example: "I'll bring the multidisciplinary team together to reset the goals."
+      exKo: "목표를 재설정하도록 다학제 팀을 모을게요."
+      cue: "처음 상태로 되돌려 다시 맞추는 일 — 목표나 알람에 쓴다"
+      tag: "재활·계획"
+      distractorsEn: ["rest", "recess"]
+      distractorsKo: ["쉬다", "후퇴하다"]
+      chips: [["re", "set"]]
+      decoyChips: ["pre", "sit"]
     - id: w-goal
       en: "goals"
       ipa: "/ɡoʊlz/"
       ko: "목표"
       icon: "trophy"
       example: "I'll bring the multidisciplinary team together to reset the goals."
+      exKo: "목표를 재설정하도록 다학제 팀을 모을게요."
+      cue: "어디까지 도달할지 팀과 환자가 합의해 둔 도착점"
+      tag: "재활·계획"
+      distractorsEn: ["roles", "gauze"]
+      distractorsKo: ["역할들", "거즈"]
+      chips: [["goals"]]
+      decoyChips: ["coals"]
     - id: w-increase
-      en: "increasing"
-      ipa: "/ɪnˈkriːsɪŋ/"
-      ko: "증가시키는"
+      en: "increase"
+      ipa: "/ɪnˈkriːs/"
+      ko: "늘리다"
       icon: "chartup"
       example: "The weaning is increasing his cardiac workload and causing ischemia."
+      exKo: "이탈이 심장 부담을 늘려서 허혈을 일으키고 있어요."
+      cue: "양이나 정도를 더 크게 만드는 일"
+      tag: "위기 대응"
+      distractorsEn: ["decrease", "incline"]
+      distractorsKo: ["줄이다", "기울이다"]
+      chips: [["in", "crease"]]
+      decoyChips: ["de", "create"]
     - id: w-workload
       en: "workload"
       ipa: "/ˈwɜːrkloʊd/"
       ko: "부담(작업량)"
       icon: "chartup"
       example: "The weaning is increasing his cardiac workload and causing ischemia."
+      exKo: "이탈이 심장 부담을 늘려서 허혈을 일으키고 있어요."
+      cue: "심장이나 근육이 해내야 하는 일의 양"
+      tag: "위기 대응"
+      distractorsEn: ["overload", "workflow"]
+      distractorsKo: ["과부하(초과)", "흐름(업무 순서)"]
+      chips: [["work", "load"]]
+      decoyChips: ["wark", "road"]
     - id: w-cause
-      en: "causing"
-      ipa: "/ˈkɔːzɪŋ/"
-      ko: "일으키는"
+      en: "cause"
+      ipa: "/kɔːz/"
+      ko: "일으키다"
       icon: "siren"
       example: "The weaning is increasing his cardiac workload and causing ischemia."
+      exKo: "이탈이 심장 부담을 늘려서 허혈을 일으키고 있어요."
+      cue: "어떤 결과가 생기게 만드는 것"
+      tag: "위기 대응"
+      distractorsEn: ["cure", "close"]
+      distractorsKo: ["치료하다", "닫다"]
+      chips: [["cause"]]
+      decoyChips: ["pause"]
     - id: w-ischemia
       en: "ischemia"
       ipa: "/ɪˈskiːmiə/"
       ko: "허혈"
       icon: "stetho"
       example: "The weaning is increasing his cardiac workload and causing ischemia."
-    - id: w-heart
-      en: "heart"
-      ipa: "/hɑːrt/"
-      ko: "심장"
-      icon: "stetho"
-      example: "Let's put him back on full support to rest his heart."
+      exKo: "이탈이 심장 부담을 늘려서 허혈을 일으키고 있어요."
+      cue: "혈류가 모자라 조직에 산소가 닿지 않는 상태 — 심전도에서 ST 변화로 본다"
+      tag: "위기 대응"
+      distractorsEn: ["anemia", "hypoxia"]
+      distractorsKo: ["빈혈", "저산소증"]
+      chips: [["is", "che", "mia"]]
+      decoyChips: ["es", "mea"]
     - id: w-twelvelead
       en: "twelve-lead"
       ipa: "/twɛlv liːd/"
       ko: "12유도"
       icon: "monitor"
       example: "I'll get a twelve-lead and notify the physician right away."
+      exKo: "12유도 심전도를 찍고 즉시 의사에게 알릴게요."
+      cue: "가슴과 팔다리에 전극을 붙여 심장의 전기 활동을 열두 방향에서 본 기록"
+      tag: "위기 대응"
+      distractorsEn: ["three-lead", "five-lead"]
+      distractorsKo: ["3유도", "5유도"]
+      chips: [["twelve-", "lead"]]
+      decoyChips: ["twelfth", "bead"]
     - id: w-notify
       en: "notify"
       ipa: "/ˈnoʊtɪfaɪ/"
       ko: "알리다"
       icon: "speech"
       example: "I'll get a twelve-lead and notify the physician right away."
+      exKo: "12유도 심전도를 찍고 즉시 의사에게 알릴게요."
+      cue: "누군가에게 일어난 일을 연락해서 알아야 할 사람이 알게 하는 일"
+      tag: "소통·기록"
+      distractorsEn: ["notice", "modify"]
+      distractorsKo: ["알아차리다", "수정하다"]
+      chips: [["no", "ti", "fy"]]
+      decoyChips: ["na", "fry"]
     - id: w-aggressively
       en: "aggressively"
       ipa: "/əˈɡrɛsɪvli/"
       ko: "적극적으로"
       icon: "gear"
       example: "Suction him aggressively to clear the aspirated material now."
+      exKo: "지금 적극적으로 흡인해서 흡인된 내용물을 없애 주세요."
+      cue: "머뭇거리지 않고 힘을 다해 강하게 밀어붙이는 방식"
+      tag: "위기 대응"
+      distractorsEn: ["progressively", "excessively"]
+      distractorsKo: ["점차적으로", "과도하게"]
+      chips: [["ag", "gres", "sive", "ly"]]
+      decoyChips: ["ap", "sion"]
     - id: w-aspirated
       en: "aspirated"
       ipa: "/ˈæspəreɪtɪd/"
       ko: "흡인된"
       icon: "board"
       example: "Suction him aggressively to clear the aspirated material now."
+      exKo: "지금 적극적으로 흡인해서 흡인된 내용물을 없애 주세요."
+      cue: "삼킨 것이나 위 내용물이 기도로 잘못 들어간 — 폐렴 위험"
+      tag: "위기 대응"
+      distractorsEn: ["irritated", "expired"]
+      distractorsKo: ["자극된", "만료된"]
+      chips: [["as", "pi", "rat", "ed"]]
+      decoyChips: ["es", "rit"]
     - id: w-material
       en: "material"
       ipa: "/məˈtɪəriəl/"
       ko: "물질(내용물)"
       icon: "board"
       example: "Suction him aggressively to clear the aspirated material now."
+      exKo: "지금 적극적으로 흡인해서 흡인된 내용물을 없애 주세요."
+      cue: "기도로 들어간 음식이나 위 내용물처럼 정체를 따지지 않고 부르는 것"
+      tag: "위기 대응"
+      distractorsEn: ["manual", "matter"]
+      distractorsKo: ["설명서(매뉴얼)", "문제(사안)"]
+      chips: [["ma", "te", "ri", "al"]]
+      decoyChips: ["me", "ni"]
     - id: w-turn
       en: "turn"
       ipa: "/tɜːrn/"
       ko: "돌리다"
       icon: "gear"
       example: "Turn him on his side and give high-flow oxygen."
+      exKo: "옆으로 돌리고 고유량 산소를 주세요."
+      cue: "누운 환자를 한쪽 옆으로 몸을 돌려 눕히는 동작"
+      tag: "위기 대응"
+      distractorsEn: ["lift", "tilt"]
+      distractorsKo: ["들어 올리다", "기울이다"]
+      chips: [["turn"]]
+      decoyChips: ["burn"]
     - id: w-side
       en: "side"
       ipa: "/saɪd/"
       ko: "옆(측면)"
-      icon: board
+      icon: "board"
       example: "Turn him on his side and give high-flow oxygen."
+      exKo: "옆으로 돌리고 고유량 산소를 주세요."
+      cue: "몸의 앞이나 뒤가 아니라 좌우 한쪽, 환자를 눕힐 때의 방향"
+      tag: "위기 대응"
+      distractorsEn: ["site", "slide"]
+      distractorsKo: ["부위(위치)", "미끄러짐"]
+      chips: [["side"]]
+      decoyChips: ["wide"]
     - id: w-completely
       en: "completely"
       ipa: "/kəmˈpliːtli/"
       ko: "완전히"
       icon: "siren"
       example: "If he obstructs completely, we prepare to reintubate immediately."
+      exKo: "완전히 막히면 즉시 재삽관을 준비할게요."
+      cue: "조금도 남기지 않고 전부 — 기도가 틈 없이 막힐 때"
+      tag: "위기 대응"
+      distractorsEn: ["partially", "correctly"]
+      distractorsKo: ["부분적으로", "정확하게"]
+      chips: [["com", "plete", "ly"]]
+      decoyChips: ["con", "lite"]
     - id: w-immediately
       en: "immediately"
       ipa: "/ɪˈmiːdiətli/"
       ko: "즉시"
       icon: "siren"
       example: "If he obstructs completely, we prepare to reintubate immediately."
+      exKo: "완전히 막히면 즉시 재삽관을 준비할게요."
+      cue: "기다리지 않고 바로 — 응급 호출 뒤에 해야 할 때"
+      tag: "위기 대응"
+      distractorsEn: ["immensely", "inevitably"]
+      distractorsKo: ["엄청나게", "필연적으로"]
+      chips: [["im", "medi", "ate", "ly"]]
+      decoyChips: ["in", "ous"]

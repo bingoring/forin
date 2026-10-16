@@ -14,4 +14,5 @@
 | 검토 B | icu-weaning-extubation | opus | 214,277 | 16.7분 | 고칠 것 43(안전 18·정답 둘 6) |
 | 저작 B | or-malignant-hyperthermia | sonnet | 273,415 | 20.3분 | 문장 105·order 21, 위반 0 |
 | 검토 B | or-timeout | opus | 213,011 | 14.0분 | 고칠 것 122(안전 32·정답 둘 6, 빈칸 60) |
-| 판정 A | icu-eol-goals | fable | (대기) | | 심각 4(비속어 3·ko 오역 3), 품사 불일치 약 110, 안전 사실 오류 0 |
+| 판정 A | icu-eol-goals | fable | 219,871 | 13.6분 | 심각 4(비속어 3·ko 오역 3), 품사 불일치 약 110, 안전 사실 오류 0 |
+| 수정 | icu-weaning-extubation | sonnet | 253,512 | 8.9분 | A 38·B 43 전부 반영, 변경 목록 48, 위반 0 |
