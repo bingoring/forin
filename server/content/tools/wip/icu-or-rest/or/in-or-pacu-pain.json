@@ -1,0 +1,446 @@
+{
+ "theme": "or-pacu-pain",
+ "situations": [
+  {
+   "title": "통증 척도 사정",
+   "tagline": "It hurts, but I don't really know how to put a number on it.",
+   "room": "PACU",
+   "brief": "통증 점수를 사정하세요.",
+   "role": "patient",
+   "skills": [
+    "통증 척도 사용",
+    "통증 사정",
+    "환자 소통"
+   ],
+   "keyPhrases": [
+    "On a scale of zero to ten, where is your pain right now?",
+    "Zero is none, and ten is the worst you can imagine.",
+    "It's okay to give me your best estimate."
+   ],
+   "goals": [
+    "0-10 척도로 통증 점수를 사정한다",
+    "환자가 편하게 표현하도록 돕는다"
+   ]
+  },
+  {
+   "title": "진통제 투여 확인",
+   "tagline": "When can I get something for this pain? It's really bothering me.",
+   "room": "PACU",
+   "brief": "진통제 투여 여부와 시각을 확인하세요.",
+   "role": "patient",
+   "skills": [
+    "진통제 확인",
+    "투여 시각 확인",
+    "환자 안내"
+   ],
+   "keyPhrases": [
+    "You had pain medicine about thirty minutes ago.",
+    "Let me check when you're due for the next dose.",
+    "I'll get you something as soon as it's safe."
+   ],
+   "goals": [
+    "마지막 진통제 투여와 다음 투여 시각을 확인한다",
+    "환자에게 계획을 안내한다"
+   ]
+  },
+  {
+   "title": "통증 부위 사정",
+   "tagline": "It doesn't hurt where they operated — it's more up in my shoulder.",
+   "room": "PACU",
+   "brief": "통증 부위를 사정하세요.",
+   "role": "patient",
+   "skills": [
+    "부위 사정",
+    "통증 양상 확인",
+    "감별"
+   ],
+   "keyPhrases": [
+    "Can you point to exactly where it hurts?",
+    "Is that different from your surgery site?",
+    "Tell me if the pain moves anywhere else."
+   ],
+   "goals": [
+    "통증 부위와 수술 부위 일치 여부를 사정한다",
+    "방사 여부와 양상을 확인한다"
+   ]
+  },
+  {
+   "title": "비약물 완화",
+   "tagline": "Is there anything besides pills that could help me feel more comfortable?",
+   "room": "PACU",
+   "brief": "비약물적 통증 완화 중재를 제공하세요.",
+   "role": "patient",
+   "skills": [
+    "비약물 중재",
+    "체위 조정",
+    "환자 교육"
+   ],
+   "keyPhrases": [
+    "Let's try repositioning and some cold or warmth.",
+    "Slow, deep breaths can ease the discomfort.",
+    "I can adjust your pillows to support the area."
+   ],
+   "goals": [
+    "체위·냉온·호흡 등 비약물 중재를 적용한다",
+    "환자에게 방법을 안내한다"
+   ]
+  },
+  {
+   "title": "진통 효과 재평가",
+   "tagline": "The medicine helped a little, but the ache is starting to come back.",
+   "room": "PACU",
+   "brief": "진통 효과를 재평가하세요.",
+   "role": "patient",
+   "skills": [
+    "효과 재평가",
+    "통증 재사정",
+    "계획 조정"
+   ],
+   "keyPhrases": [
+    "How does your pain compare to before the medicine?",
+    "What number would you give it now?",
+    "Let's see if we need to adjust your plan."
+   ],
+   "goals": [
+    "투약 전후 통증 변화를 재평가한다",
+    "필요 시 계획 조정을 안내한다"
+   ]
+  },
+  {
+   "title": "통증 소통 안내",
+   "tagline": "I don't want to be a bother by asking for pain medicine too often.",
+   "room": "PACU",
+   "brief": "통증을 제때 알리도록 소통을 안내하세요.",
+   "role": "patient",
+   "skills": [
+    "통증 소통 교육",
+    "환자 격려",
+    "안내"
+   ],
+   "keyPhrases": [
+    "Please tell me whenever your pain changes.",
+    "You're never bothering us by asking.",
+    "Managing pain early helps you recover faster."
+   ],
+   "goals": [
+    "통증을 제때 표현하도록 격려한다",
+    "조기 통증 조절의 이점을 설명한다"
+   ]
+  },
+  {
+   "title": "다중 진통 병용",
+   "tagline": "Why are you giving me Tylenol too? Won't the strong stuff be enough?",
+   "room": "PACU",
+   "brief": "다중 진통제 병용의 이유를 환자에게 설명하세요.",
+   "role": "patient",
+   "skills": [
+    "multimodal 설명",
+    "약물 교육",
+    "환자 소통"
+   ],
+   "keyPhrases": [
+    "We combine a few medicines that work in different ways.",
+    "This lets us use less of the strong opioids.",
+    "Together they control pain better with fewer side effects."
+   ],
+   "goals": [
+    "다중 진통 병용의 원리를 설명한다",
+    "opioid 사용을 줄이는 이점을 안내한다"
+   ]
+  },
+  {
+   "title": "PCA 사용 교육",
+   "tagline": "So I just press this button whenever it hurts? What if I press it too much?",
+   "room": "PACU",
+   "brief": "PCA 사용법을 환자에게 교육하세요.",
+   "role": "patient",
+   "skills": [
+    "PCA 교육",
+    "안전 설명",
+    "환자 확인"
+   ],
+   "keyPhrases": [
+    "Press this button when you feel pain, and it gives a set dose.",
+    "It has safety limits, so you can't overdose yourself.",
+    "Only you should press it — not family."
+   ],
+   "goals": [
+    "PCA 사용법과 안전 한계를 교육한다",
+    "본인만 누르도록 안내한다"
+   ]
+  },
+  {
+   "title": "마약성 진통 호흡 감시",
+   "tagline": "I feel so groggy and heavy after that shot... is that normal?",
+   "room": "PACU",
+   "brief": "마약성 진통제 투여 후 호흡과 진정 수준을 감시하세요.",
+   "role": "patient",
+   "skills": [
+    "opioid 감시",
+    "호흡 사정",
+    "진정 수준 평가"
+   ],
+   "keyPhrases": [
+    "Some drowsiness is normal after opioid pain medicine.",
+    "Take a nice deep breath for me now and then.",
+    "I'll be checking your breathing closely."
+   ],
+   "goals": [
+    "opioid 투여 후 호흡과 진정 수준을 감시한다",
+    "환자를 안심시키며 반응을 확인한다"
+   ]
+  },
+  {
+   "title": "신경블록 잔여 효과",
+   "tagline": "My whole arm is still completely numb — will I ever get the feeling back?",
+   "room": "PACU",
+   "brief": "신경블록의 잔여 효과를 환자에게 설명하세요.",
+   "role": "patient",
+   "skills": [
+    "block 잔여 설명",
+    "안전 교육",
+    "환자 안심"
+   ],
+   "keyPhrases": [
+    "The numbness is from the nerve block and it's expected.",
+    "Feeling will slowly return over several hours.",
+    "Protect the arm since you can't feel it right now."
+   ],
+   "goals": [
+    "신경블록 잔여 마비의 경과를 설명한다",
+    "감각 없는 부위 보호를 안내한다"
+   ]
+  },
+  {
+   "title": "소아 통증 사정",
+   "tagline": "She keeps crying and won't tell me what's wrong — is she in pain?",
+   "room": "PACU",
+   "brief": "소아 환자의 통증을 사정하며 보호자와 소통하세요.",
+   "role": "family",
+   "skills": [
+    "소아 통증 사정",
+    "보호자 소통",
+    "관찰 사정"
+   ],
+   "keyPhrases": [
+    "We can use her face and behavior to gauge her pain.",
+    "Has she been guarding or crying more than usual?",
+    "Let's use a faces scale she can point to."
+   ],
+   "goals": [
+    "얼굴·행동 척도로 소아 통증을 사정한다",
+    "보호자의 관찰을 사정에 반영한다"
+   ]
+  },
+  {
+   "title": "내성 환자 통증 관리",
+   "tagline": "I've been on pain meds for years, so the usual dose barely touches this.",
+   "room": "PACU",
+   "brief": "진통제 내성이 있는 환자의 통증을 관리하세요.",
+   "role": "patient",
+   "skills": [
+    "내성 사정",
+    "용량 조정 소통",
+    "팀 협의"
+   ],
+   "keyPhrases": [
+    "Thank you for telling me about your usual medicines.",
+    "We'll factor in your tolerance when we dose you.",
+    "Let's set a realistic comfort goal together."
+   ],
+   "goals": [
+    "평소 복용 이력과 내성을 사정한다",
+    "현실적 통증 목표를 함께 설정한다"
+   ]
+  },
+  {
+   "title": "통증-불안 구분",
+   "tagline": "My heart's racing and I feel awful — I can't tell if it's the pain or just panic.",
+   "room": "PACU",
+   "brief": "통증과 불안을 구분해 사정하세요.",
+   "role": "patient",
+   "skills": [
+    "통증-불안 감별",
+    "사정",
+    "정서 지지"
+   ],
+   "keyPhrases": [
+    "Let's figure out if this is pain, worry, or both.",
+    "Where do you feel it, and what makes it worse?",
+    "Slow breaths with me — tell me what changes."
+   ],
+   "goals": [
+    "통증과 불안을 구분해 사정한다",
+    "정서적 지지와 함께 원인에 맞게 대응한다"
+   ]
+  },
+  {
+   "title": "진통 부작용 감시",
+   "tagline": "The pain's better, but now I feel really nauseous and itchy.",
+   "room": "PACU",
+   "brief": "진통제 부작용을 감시하고 대응하세요.",
+   "role": "patient",
+   "skills": [
+    "부작용 감시",
+    "증상 사정",
+    "대응 안내"
+   ],
+   "keyPhrases": [
+    "Nausea and itching can come from opioid pain medicine.",
+    "Tell me how strong the nausea is right now.",
+    "We have medicine to ease these side effects."
+   ],
+   "goals": [
+    "오심·소양감 등 부작용을 사정한다",
+    "대응 방법을 안내하고 조치한다"
+   ]
+  },
+  {
+   "title": "통증 조절 실패 재계획",
+   "tagline": "Nothing you've given me is working — the pain just won't let up.",
+   "room": "PACU",
+   "brief": "통증 조절에 실패한 환자의 계획을 재수립하세요.",
+   "role": "patient",
+   "skills": [
+    "통증 재사정",
+    "계획 재수립",
+    "팀 협의"
+   ],
+   "keyPhrases": [
+    "I hear you — your pain isn't controlled yet.",
+    "Let's reassess and talk to the team about a new plan.",
+    "We won't stop until you're more comfortable."
+   ],
+   "goals": [
+    "조절되지 않는 통증을 재사정한다",
+    "팀과 새 진통 계획을 논의한다"
+   ]
+  },
+  {
+   "title": "마약 과다 호흡 억제",
+   "tagline": "His respirations are down to six and he's barely rousable — I think it's the opioids.",
+   "room": "PACU",
+   "brief": "마약성 진통제 과다로 인한 호흡 억제에 대응하세요.",
+   "role": "colleague",
+   "skills": [
+    "호흡 억제 인지",
+    "naloxone 준비",
+    "응급 협조"
+   ],
+   "keyPhrases": [
+    "His respiratory rate is six and he's hard to wake.",
+    "Let's stimulate him and support his breathing.",
+    "Get naloxone ready and call for help."
+   ],
+   "goals": [
+    "opioid에 의한 호흡 억제를 인지한다",
+    "호흡 지원과 naloxone 준비를 협조한다"
+   ]
+  },
+  {
+   "title": "조절 불가 급성 통증",
+   "tagline": "The pain is a ten and it's getting worse no matter what you do — please help me.",
+   "room": "PACU",
+   "brief": "조절되지 않는 급성 통증을 사정하고 대응하세요.",
+   "role": "patient",
+   "skills": [
+    "난치 통증 사정",
+    "원인 감별",
+    "긴급 보고"
+   ],
+   "keyPhrases": [
+    "Your pain is severe and getting worse — I take that seriously.",
+    "Let me check for anything new like bleeding or swelling.",
+    "I'm calling the team to escalate your care right now."
+   ],
+   "goals": [
+    "심하고 악화되는 통증을 사정한다",
+    "합병증 가능성을 감별하고 팀에 긴급 보고한다"
+   ]
+  },
+  {
+   "title": "통증 뒤 출혈 징후",
+   "tagline": "The pain near my incision suddenly got much worse and it feels swollen and tight.",
+   "room": "PACU",
+   "brief": "통증 뒤 출혈 징후를 사정하고 대응하세요.",
+   "role": "patient",
+   "skills": [
+    "출혈 징후 사정",
+    "상처 관찰",
+    "긴급 보고"
+   ],
+   "keyPhrases": [
+    "Let me look at your incision and the swelling.",
+    "Sudden worsening pain and swelling can mean bleeding.",
+    "I'm checking your vitals and calling the surgeon now."
+   ],
+   "goals": [
+    "통증 악화와 부종에서 출혈 징후를 사정한다",
+    "활력징후를 확인하고 외과의에게 긴급 보고한다"
+   ]
+  },
+  {
+   "title": "구획증후군 통증",
+   "tagline": "The pain in my leg is way out of proportion, and my toes are starting to tingle.",
+   "room": "PACU",
+   "brief": "구획증후군을 의심하며 통증을 사정하고 긴급 대응하세요.",
+   "role": "patient",
+   "skills": [
+    "compartment 사정",
+    "5P 확인",
+    "긴급 보고"
+   ],
+   "keyPhrases": [
+    "Pain this severe and out of proportion concerns me.",
+    "Can you feel and move your toes, and is there tingling?",
+    "I'm calling the surgeon immediately — this can't wait."
+   ],
+   "goals": [
+    "불균형한 통증과 이상 감각으로 구획증후군을 의심한다",
+    "5P를 사정하고 외과의에게 긴급 보고한다"
+   ]
+  },
+  {
+   "title": "naloxone 필요 판단",
+   "tagline": "His RR is five and sats are dropping — do we push naloxone now?",
+   "room": "PACU",
+   "brief": "naloxone 투여 필요성을 판단하고 협조하세요.",
+   "role": "colleague",
+   "skills": [
+    "naloxone 적응 판단",
+    "용량 협의",
+    "응급 협조"
+   ],
+   "keyPhrases": [
+    "His respiratory rate is five and sats are falling.",
+    "Let's give a small dose of naloxone and titrate.",
+    "Keep supporting his breathing while it takes effect."
+   ],
+   "goals": [
+    "호흡 억제에 대한 naloxone 적응증을 판단한다",
+    "소량 적정 투여와 호흡 지원을 협조한다"
+   ]
+  },
+  {
+   "title": "통증 급증 합병증 신호",
+   "tagline": "This is a totally different, sharper pain than before — something feels really wrong.",
+   "room": "PACU",
+   "brief": "급증한 통증에서 합병증 신호를 사정하고 대응하세요.",
+   "role": "patient",
+   "skills": [
+    "통증 변화 사정",
+    "합병증 감별",
+    "긴급 보고"
+   ],
+   "keyPhrases": [
+    "A sudden, different kind of pain is important to check.",
+    "Let me look at your incision, breathing, and vitals.",
+    "I'm escalating this to the team right away."
+   ],
+   "goals": [
+    "통증 양상 변화에서 합병증 신호를 감별한다",
+    "활력·상처를 확인하고 팀에 긴급 보고한다"
+   ]
+  }
+ ]
+}

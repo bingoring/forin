@@ -1,0 +1,446 @@
+{
+ "theme": "or-preop-meds",
+ "situations": [
+  {
+   "title": "항응고제 종류 확인",
+   "tagline": "I take a blood thinner every morning, but I couldn't tell you the exact name.",
+   "room": "Preop Holding",
+   "brief": "환자가 복용 중인 항응고제 종류를 정확히 파악하세요.",
+   "role": "patient",
+   "skills": [
+    "투약력 확인",
+    "개방형 질문",
+    "정보 정리"
+   ],
+   "keyPhrases": [
+    "Can you tell me the name of the blood thinner you take?",
+    "Do you have the pill bottle or a medication list with you?",
+    "Is it a daily pill, or something you take now and then?"
+   ],
+   "goals": [
+    "복용 중인 항응고제 이름과 종류를 확인한다",
+    "확인한 정보를 기록으로 정리한다"
+   ]
+  },
+  {
+   "title": "마지막 복용 시각 확인",
+   "tagline": "I think I took my last dose yesterday morning, but I'm not totally sure.",
+   "room": "Preop Holding",
+   "brief": "항응고제의 최종 복용 시각을 확인하세요.",
+   "role": "patient",
+   "skills": [
+    "투약 시각 확인",
+    "시간 표현",
+    "재확인"
+   ],
+   "keyPhrases": [
+    "When did you take your last dose?",
+    "Was that this morning, or yesterday?",
+    "Let me write down the exact time you remember."
+   ],
+   "goals": [
+    "마지막 복용 날짜와 시각을 구체적으로 확인한다",
+    "불확실하면 다른 단서로 시각을 좁힌다"
+   ]
+  },
+  {
+   "title": "경구 혈당약 중단 확인",
+   "tagline": "The office told me to skip my diabetes pills this morning — did I do that right?",
+   "room": "Preop Holding",
+   "brief": "수술 당일 경구 혈당약을 중단했는지 확인하세요.",
+   "role": "patient",
+   "skills": [
+    "투약 중단 확인",
+    "지시 재확인",
+    "안심"
+   ],
+   "keyPhrases": [
+    "Did you take any of your diabetes pills this morning?",
+    "The plan was to hold them today — is that what you did?",
+    "You did the right thing by skipping them."
+   ],
+   "goals": [
+    "당일 경구 혈당약 복용 여부를 확인한다",
+    "올바른 중단이면 안심시키고 기록한다"
+   ]
+  },
+  {
+   "title": "수술일 인슐린 조정",
+   "tagline": "How much insulin was I supposed to take this morning before surgery?",
+   "room": "Preop Holding",
+   "brief": "수술 당일 아침 인슐린 용량을 어떻게 조정했는지 확인하세요.",
+   "role": "patient",
+   "skills": [
+    "인슐린 용량 확인",
+    "지시 설명",
+    "수치 확인"
+   ],
+   "keyPhrases": [
+    "How much insulin did you take this morning?",
+    "Did you take your usual dose, or a smaller one?",
+    "Let's compare that with what your doctor asked you to do."
+   ],
+   "goals": [
+    "아침 인슐린 종류와 실제 투여 용량을 확인한다",
+    "지시된 조정과 일치하는지 대조한다"
+   ]
+  },
+  {
+   "title": "항혈소판제 복용 확인",
+   "tagline": "I take a baby aspirin every day for my heart — should I have stopped it?",
+   "room": "Preop Holding",
+   "brief": "아스피린 등 항혈소판제 복용 여부를 확인하세요.",
+   "role": "patient",
+   "skills": [
+    "항혈소판제 확인",
+    "복용 목적 파악",
+    "정보 전달"
+   ],
+   "keyPhrases": [
+    "Do you take aspirin or any other blood-thinning pill?",
+    "Is that a daily baby aspirin for your heart?",
+    "When was the last time you took it?"
+   ],
+   "goals": [
+    "항혈소판제 복용 여부와 목적을 확인한다",
+    "마지막 복용 시각을 기록한다"
+   ]
+  },
+  {
+   "title": "입실 전 혈당 측정",
+   "tagline": "Do you need to check my sugar again before I go back?",
+   "room": "Preop Holding",
+   "brief": "수술실 입실 전 혈당을 측정하고 설명하세요.",
+   "role": "patient",
+   "skills": [
+    "혈당 측정 안내",
+    "절차 설명",
+    "수치 소통"
+   ],
+   "keyPhrases": [
+    "I'm going to check your blood sugar before we go in.",
+    "You'll feel a quick little poke on your finger.",
+    "Your number looks good — let me tell you what it is."
+   ],
+   "goals": [
+    "입실 전 혈당을 측정하고 절차를 안내한다",
+    "결과 수치를 환자에게 설명한다"
+   ]
+  },
+  {
+   "title": "와파린 중단 브릿징",
+   "tagline": "I stopped my warfarin, but I've been giving myself those belly shots — is that still the plan?",
+   "room": "Preop Holding",
+   "brief": "와파린 중단 후 헤파린 bridging을 제대로 이행했는지 확인하세요.",
+   "role": "patient",
+   "skills": [
+    "bridging 확인",
+    "자가주사 이력 확인",
+    "지시 대조"
+   ],
+   "keyPhrases": [
+    "When did you take your last warfarin dose?",
+    "Have you been giving yourself the heparin shots as planned?",
+    "When was your last injection?"
+   ],
+   "goals": [
+    "와파린 중단 시점과 bridging 헤파린 이행을 확인한다",
+    "마지막 주사 시각을 기록하고 지시와 대조한다"
+   ]
+  },
+  {
+   "title": "DOAC 중단 시점",
+   "tagline": "My kidneys aren't great, so when exactly was I supposed to stop that new blood thinner?",
+   "room": "Preop Holding",
+   "brief": "신기능을 고려해 DOAC 중단 시점이 적절했는지 확인하세요.",
+   "role": "patient",
+   "skills": [
+    "DOAC 중단 확인",
+    "신기능 관련 설명",
+    "시각 확인"
+   ],
+   "keyPhrases": [
+    "Which blood thinner do you take, and when was your last dose?",
+    "Because of your kidneys, the timing matters a lot.",
+    "Let me confirm this with the anesthesia team."
+   ],
+   "goals": [
+    "DOAC 종류와 마지막 복용 시각을 확인한다",
+    "신기능을 고려한 중단 적정성을 팀과 확인한다"
+   ]
+  },
+  {
+   "title": "메트포르민 조영 병용",
+   "tagline": "I take metformin — is that a problem with the dye they're using today?",
+   "room": "Preop Holding",
+   "brief": "조영제 사용 예정 환자의 메트포르민 병용 위험을 확인하세요.",
+   "role": "patient",
+   "skills": [
+    "약물-조영제 상호작용 확인",
+    "위험 설명",
+    "팀 확인"
+   ],
+   "keyPhrases": [
+    "When did you last take your metformin?",
+    "We may hold it around the time of the contrast dye.",
+    "I'll flag this with the team before we proceed."
+   ],
+   "goals": [
+    "메트포르민 마지막 복용과 조영제 병용 여부를 확인한다",
+    "위험을 설명하고 팀에 보고한다"
+   ]
+  },
+  {
+   "title": "인슐린 펌프 착용",
+   "tagline": "I have an insulin pump on — do I keep it running during surgery?",
+   "room": "Preop Holding",
+   "brief": "인슐린 펌프 착용 환자의 수술 중 펌프 관리 계획을 확인하세요.",
+   "role": "patient",
+   "skills": [
+    "펌프 착용 확인",
+    "관리 계획 설명",
+    "팀 조율"
+   ],
+   "keyPhrases": [
+    "Can you show me where your pump is placed?",
+    "What's your current basal rate set to?",
+    "The team will decide whether to keep it running or switch over."
+   ],
+   "goals": [
+    "펌프 위치와 기저 주입률을 확인한다",
+    "수술 중 펌프 관리 계획을 팀과 조율한다"
+   ]
+  },
+  {
+   "title": "상시 스테로이드 복용",
+   "tagline": "I've been on prednisone for years — will I need a stress dose today?",
+   "room": "Preop Holding",
+   "brief": "상시 스테로이드 복용 환자의 스트레스 용량 필요 여부를 확인하세요.",
+   "role": "patient",
+   "skills": [
+    "스테로이드 복용력 확인",
+    "스트레스 용량 설명",
+    "팀 보고"
+   ],
+   "keyPhrases": [
+    "How long have you been taking steroids?",
+    "What's your usual daily dose?",
+    "I'll let the team know you may need a stress dose."
+   ],
+   "goals": [
+    "스테로이드 종류·용량·복용 기간을 확인한다",
+    "스트레스 용량 필요성을 팀에 전달한다"
+   ]
+  },
+  {
+   "title": "항혈소판 중단 심장 위험",
+   "tagline": "They told me to stop my heart medicine, but won't that put my heart at risk?",
+   "room": "Preop Holding",
+   "brief": "항혈소판제 중단 시 혈전 위험과 출혈 위험의 균형을 설명하고 확인하세요.",
+   "role": "patient",
+   "skills": [
+    "위험 균형 설명",
+    "불안 완화",
+    "팀 확인"
+   ],
+   "keyPhrases": [
+    "I understand you're worried about stopping your heart medicine.",
+    "The team weighs your clot risk against bleeding during surgery.",
+    "Let me confirm the plan with your cardiologist and anesthesia."
+   ],
+   "goals": [
+    "중단에 대한 환자의 불안을 확인하고 설명한다",
+    "심장 위험을 팀과 확인해 계획을 재확인한다"
+   ]
+  },
+  {
+   "title": "금식 중 저혈당 증상",
+   "tagline": "I've been fasting since midnight and now I feel shaky and sweaty.",
+   "room": "Preop Holding",
+   "brief": "금식 중 저혈당 증상을 호소하는 환자를 사정하고 대응하세요.",
+   "role": "patient",
+   "skills": [
+    "저혈당 증상 사정",
+    "혈당 측정",
+    "신속 대응"
+   ],
+   "keyPhrases": [
+    "Tell me exactly how you're feeling right now.",
+    "I'm going to check your blood sugar right away.",
+    "Stay with me — we'll treat this quickly if it's low."
+   ],
+   "goals": [
+    "저혈당 증상을 사정하고 즉시 혈당을 측정한다",
+    "필요 시 신속히 처치하고 팀에 보고한다"
+   ]
+  },
+  {
+   "title": "한약·보조제 출혈 위험",
+   "tagline": "I only take some herbal supplements — those don't really count, do they?",
+   "room": "Preop Holding",
+   "brief": "비처방 한약·보조제의 출혈 위험 인자를 다시 확인하세요.",
+   "role": "patient",
+   "skills": [
+    "보조제 이력 확인",
+    "출혈 위험 설명",
+    "정보 정리"
+   ],
+   "keyPhrases": [
+    "Even herbal supplements can matter before surgery.",
+    "Can you list everything you take, including vitamins and teas?",
+    "Some of these can increase bleeding, so we need to know."
+   ],
+   "goals": [
+    "복용 중인 모든 보조제·한약을 확인한다",
+    "출혈 위험이 있는 성분을 파악해 기록한다"
+   ]
+  },
+  {
+   "title": "약물 중단 지시 미이행",
+   "tagline": "Heads up — bed 4 took his full dose of apixaban this morning; the hold order wasn't followed.",
+   "room": "Preop Holding",
+   "brief": "중단 지시가 이행되지 않은 사실을 발견해 팀에 보고하세요.",
+   "role": "colleague",
+   "skills": [
+    "미이행 확인",
+    "SBAR 보고",
+    "위험 전달"
+   ],
+   "keyPhrases": [
+    "The patient in bed 4 didn't hold his blood thinner as ordered.",
+    "He took a full dose about six hours ago.",
+    "I wanted to flag this before the case moves forward."
+   ],
+   "goals": [
+    "미중단 사실과 마지막 복용 시각을 정확히 파악한다",
+    "팀에 SBAR로 신속히 보고한다"
+   ]
+  },
+  {
+   "title": "항응고제 미중단 응급 출혈",
+   "tagline": "He never stopped his warfarin and now he's oozing everywhere — can we get the reversal agent ready?",
+   "room": "OR 2",
+   "brief": "항응고제 미중단 환자의 출혈에 대비해 역전제를 긴급 준비하세요.",
+   "role": "colleague",
+   "skills": [
+    "역전제 준비",
+    "응급 협조",
+    "신속 보고"
+   ],
+   "keyPhrases": [
+    "He didn't hold his warfarin and he's bleeding more than expected.",
+    "Can we get vitamin K and reversal agent to the room now?",
+    "I'll draw a stat coag panel and stay on it."
+   ],
+   "goals": [
+    "미중단으로 인한 출혈 위험을 팀에 전달한다",
+    "역전제와 응급 준비를 신속히 협조한다"
+   ]
+  },
+  {
+   "title": "심한 고혈당·DKA 의심",
+   "tagline": "His sugar is over 400 and he's got ketones — I think we should hold the case.",
+   "room": "Preop Holding",
+   "brief": "DKA가 의심되는 고혈당 환자의 수술 보류를 팀과 논의하세요.",
+   "role": "colleague",
+   "skills": [
+    "DKA 징후 인지",
+    "수술 보류 제안",
+    "응급 보고"
+   ],
+   "keyPhrases": [
+    "His glucose is over 400 with ketones and he's breathing fast.",
+    "I'm concerned this could be DKA.",
+    "Should we hold the case and start treatment first?"
+   ],
+   "goals": [
+    "DKA 의심 징후를 확인하고 팀에 보고한다",
+    "수술 보류 여부를 함께 판단한다"
+   ]
+  },
+  {
+   "title": "저혈당 의식 저하",
+   "tagline": "Her sugar just came back at 38 and she's barely responding — I need help here.",
+   "room": "Preop Holding",
+   "brief": "저혈당으로 의식이 저하된 환자에게 응급 처치를 시행하세요.",
+   "role": "colleague",
+   "skills": [
+    "급성 저혈당 처치",
+    "D50 투여 협조",
+    "응급 호출"
+   ],
+   "keyPhrases": [
+    "Her blood sugar is 38 and she's not responding well.",
+    "Can we push D50 and recheck in a few minutes?",
+    "I need another set of hands right now."
+   ],
+   "goals": [
+    "저혈당에 따른 의식 저하를 즉시 인지한다",
+    "D50 투여 등 응급 처치를 신속히 협조한다"
+   ]
+  },
+  {
+   "title": "이중 항혈소판 스텐트 응급",
+   "tagline": "He's on dual antiplatelets for a recent stent — stopping both worries me for stent thrombosis.",
+   "room": "Preop Holding",
+   "brief": "최근 스텐트 환자의 이중 항혈소판제 중단에 따른 혈전 위험에 대응하세요.",
+   "role": "colleague",
+   "skills": [
+    "스텐트 혈전 위험 평가",
+    "중단 위험 전달",
+    "팀 협의"
+   ],
+   "keyPhrases": [
+    "He had a drug-eluting stent placed just two months ago.",
+    "Stopping both antiplatelets raises the risk of stent thrombosis.",
+    "Can we loop in cardiology before we proceed?"
+   ],
+   "goals": [
+    "스텐트 시기와 이중 항혈소판 중단 위험을 파악한다",
+    "심장내과와 협의해 계획을 조정한다"
+   ]
+  },
+  {
+   "title": "와파린 INR 위험 상승",
+   "tagline": "Her INR came back at 4.8 — that's way too high for surgery; I'm calling it up now.",
+   "room": "Preop Holding",
+   "brief": "위험 수준으로 상승한 INR을 긴급히 보고하세요.",
+   "role": "colleague",
+   "skills": [
+    "INR 해석",
+    "위험 수치 보고",
+    "수술 지연 제안"
+   ],
+   "keyPhrases": [
+    "Her INR just resulted at 4.8.",
+    "That's too high to proceed safely today.",
+    "I'm reporting this to anesthesia and the surgeon now."
+   ],
+   "goals": [
+    "위험 수준의 INR을 신속히 인지한다",
+    "팀에 보고하고 수술 지연 여부를 논의한다"
+   ]
+  },
+  {
+   "title": "인슐린 펌프 오작동 고혈당",
+   "tagline": "My pump's been alarming all morning and now my sugar reading is really high.",
+   "room": "Preop Holding",
+   "brief": "인슐린 펌프 오작동으로 고혈당이 발생한 환자에게 긴급히 대응하세요.",
+   "role": "patient",
+   "skills": [
+    "펌프 오작동 확인",
+    "고혈당 대응",
+    "안심"
+   ],
+   "keyPhrases": [
+    "Let's look at your pump and your last blood sugar together.",
+    "I'm going to recheck your sugar and tell the team right away.",
+    "We'll manage this — try not to worry."
+   ],
+   "goals": [
+    "펌프 오작동과 고혈당 상태를 확인한다",
+    "즉시 혈당을 재측정하고 팀에 보고한다"
+   ]
+  }
+ ]
+}

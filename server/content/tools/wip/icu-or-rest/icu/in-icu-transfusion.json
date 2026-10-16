@@ -1,0 +1,446 @@
+{
+ "theme": "icu-transfusion",
+ "situations": [
+  {
+   "title": "수혈 전 확인·동의",
+   "tagline": "Let's double-check this unit against his ID and blood type together.",
+   "room": "ICU 병상",
+   "brief": "이중확인과 혈액형 대조로 수혈 전 확인과 동의를 완료하세요.",
+   "role": "colleague",
+   "skills": [
+    "이중확인",
+    "혈액형 대조",
+    "동의 확인"
+   ],
+   "keyPhrases": [
+    "Two of us will verify the patient ID and unit at the bedside.",
+    "Blood type, unit number, and expiration all match.",
+    "Consent is signed and in the chart."
+   ],
+   "goals": [
+    "두 명이 환자와 혈액을 이중확인한다",
+    "동의서와 혈액형 일치를 확인한다"
+   ]
+  },
+  {
+   "title": "수혈 시작·초기 감시",
+   "tagline": "Start it slow for the first fifteen minutes and stay at the bedside with me.",
+   "room": "ICU 병상",
+   "brief": "초반 활력징후를 감시하며 수혈을 천천히 시작하세요.",
+   "role": "colleague",
+   "skills": [
+    "수혈 시작",
+    "초기 감시",
+    "활력 관찰"
+   ],
+   "keyPhrases": [
+    "I'll run it slow for the first fifteen minutes.",
+    "Baseline vitals are recorded before we start.",
+    "I'll stay at the bedside and reassess vitals shortly."
+   ],
+   "goals": [
+    "수혈을 저속으로 시작한다",
+    "초반 활력을 관찰하고 기록한다"
+   ]
+  },
+  {
+   "title": "수혈 반응 징후 인지",
+   "tagline": "He says he feels flushed and short of breath — is this a reaction?",
+   "room": "ICU 병상",
+   "brief": "발열과 발진, 호흡곤란 등 수혈 반응 징후를 인지하세요.",
+   "role": "colleague",
+   "skills": [
+    "수혈 반응 인지",
+    "징후 사정",
+    "조기 대응"
+   ],
+   "keyPhrases": [
+    "Fever, rash, or dyspnea can signal a transfusion reaction.",
+    "I'm stopping the transfusion and keeping the line open with saline.",
+    "I'll take a full set of vitals and notify the provider."
+   ],
+   "goals": [
+    "수혈 반응의 초기 징후를 인지한다",
+    "즉시 중단하고 보고한다"
+   ]
+  },
+  {
+   "title": "혈액 성분 종류 이해",
+   "tagline": "Remind me — what does each component actually replace for this patient?",
+   "room": "ICU 병상",
+   "brief": "RBC와 FFP, 혈소판 등 혈액 성분의 종류와 목적을 이해하세요.",
+   "role": "colleague",
+   "skills": [
+    "혈액 성분 이해",
+    "적응증 판단",
+    "교육"
+   ],
+   "keyPhrases": [
+    "Packed red cells raise oxygen-carrying capacity.",
+    "FFP replaces clotting factors, platelets treat thrombocytopenia.",
+    "Cryoprecipitate is for low fibrinogen."
+   ],
+   "goals": [
+    "성분별 목적과 적응증을 구분한다",
+    "환자에게 맞는 성분을 설명한다"
+   ]
+  },
+  {
+   "title": "혈액 취급·보관",
+   "tagline": "This unit's been out a while — do we still have time to start it?",
+   "room": "ICU 병상",
+   "brief": "온도와 시간 규정을 지켜 혈액을 취급하고 보관하세요.",
+   "role": "colleague",
+   "skills": [
+    "혈액 보관",
+    "시간 관리",
+    "규정 준수"
+   ],
+   "keyPhrases": [
+    "Blood must be started within thirty minutes of leaving the fridge.",
+    "It has to be infused within four hours of hanging.",
+    "If we can't start it, I'll send it back to the blood bank."
+   ],
+   "goals": [
+    "혈액 보관과 시간 규정을 확인한다",
+    "규정 초과 시 적절히 반납한다"
+   ]
+  },
+  {
+   "title": "수혈 중 활력 주기 기록",
+   "tagline": "Keep the monitor on him and log vitals on the transfusion schedule.",
+   "room": "ICU 병상",
+   "brief": "모니터를 유지하며 수혈 중 활력징후를 주기적으로 기록하세요.",
+   "role": "colleague",
+   "skills": [
+    "활력 기록",
+    "주기 감시",
+    "모니터 관찰"
+   ],
+   "keyPhrases": [
+    "I'll record vitals at fifteen minutes, then hourly.",
+    "Temperature is stable and there's no new tachycardia.",
+    "The monitor is on and alarms are set."
+   ],
+   "goals": [
+    "정해진 주기로 활력을 기록한다",
+    "모니터 이상을 감시한다"
+   ]
+  },
+  {
+   "title": "급성 용혈반응 초기 대응",
+   "tagline": "He's got back pain, chills, and dark urine — stop that blood right now!",
+   "room": "ICU 병상",
+   "brief": "즉시 중단하고 급성 용혈반응에 초기 대응하세요.",
+   "role": "colleague",
+   "skills": [
+    "용혈반응 인지",
+    "즉시 중단",
+    "초기 대응"
+   ],
+   "keyPhrases": [
+    "I'm stopping the transfusion and disconnecting the tubing.",
+    "I'll keep the line open with normal saline.",
+    "Send the unit and a blood sample back for a reaction workup."
+   ],
+   "goals": [
+    "급성 용혈반응을 인지하고 즉시 중단한다",
+    "생리식염수 유지와 검체 반납을 시행한다"
+   ]
+  },
+  {
+   "title": "TACO와 TRALI 감별",
+   "tagline": "She's desaturating an hour into the unit — is this TACO or TRALI?",
+   "room": "ICU 병상",
+   "brief": "수혈 관련 호흡곤란에서 TACO와 TRALI를 감별하세요.",
+   "role": "colleague",
+   "skills": [
+    "TACO·TRALI 감별",
+    "호흡 사정",
+    "원인 판단"
+   ],
+   "keyPhrases": [
+    "TACO points to volume overload with hypertension.",
+    "TRALI is non-cardiogenic with normal filling pressures.",
+    "Either way, I'm stopping the transfusion and supporting oxygenation."
+   ],
+   "goals": [
+    "TACO와 TRALI를 임상적으로 감별한다",
+    "수혈 중단과 산소화 지지를 시행한다"
+   ]
+  },
+  {
+   "title": "대량수혈 비율 관리",
+   "tagline": "We're running the massive transfusion protocol — keep the ratio at one-to-one-to-one.",
+   "room": "ICU 병상",
+   "brief": "1:1:1 비율을 유지하며 대량수혈을 관리하세요.",
+   "role": "colleague",
+   "skills": [
+    "대량수혈 비율",
+    "성분 조율",
+    "프로토콜 관리"
+   ],
+   "keyPhrases": [
+    "I'm giving plasma, platelets, and red cells at a one-to-one-to-one ratio.",
+    "I'll track each unit and warm the products.",
+    "Next cooler is on the way from the blood bank."
+   ],
+   "goals": [
+    "1:1:1 비율로 성분을 투여한다",
+    "투여 단위와 가온을 관리한다"
+   ]
+  },
+  {
+   "title": "응고검사 해석·성분 선택",
+   "tagline": "His INR is up and fibrinogen is low — which products should we give?",
+   "room": "ICU 병상",
+   "brief": "INR과 fibrinogen을 해석해 적절한 혈액 성분을 선택하세요.",
+   "role": "colleague",
+   "skills": [
+    "응고검사 해석",
+    "성분 선택",
+    "판단 근거"
+   ],
+   "keyPhrases": [
+    "The elevated INR calls for plasma or PCC.",
+    "Low fibrinogen means we should give cryoprecipitate.",
+    "I'll recheck coags after correction."
+   ],
+   "goals": [
+    "응고검사 결과를 해석한다",
+    "결과에 맞는 성분을 선택한다"
+   ]
+  },
+  {
+   "title": "저칼슘·시트르산 독성 감시",
+   "tagline": "After all these units, watch his calcium — citrate can drop it fast.",
+   "room": "ICU 병상",
+   "brief": "대량수혈에 따른 저칼슘과 시트르산 독성을 감시하세요.",
+   "role": "colleague",
+   "skills": [
+    "저칼슘 감시",
+    "시트르산 독성",
+    "대량수혈 관리"
+   ],
+   "keyPhrases": [
+    "Citrate binds calcium, so I'll monitor ionized calcium.",
+    "Watch for perioral tingling and a prolonged QT.",
+    "I'll have calcium ready to replace per protocol."
+   ],
+   "goals": [
+    "대량수혈 중 이온화 칼슘을 감시한다",
+    "저칼슘 징후를 인지하고 보충을 준비한다"
+   ]
+  },
+  {
+   "title": "항응고 역전 관리",
+   "tagline": "He's bleeding on warfarin — let's reverse him with PCC and vitamin K.",
+   "room": "ICU 병상",
+   "brief": "PCC와 vitamin K로 항응고를 역전하고 출혈을 관리하세요.",
+   "role": "colleague",
+   "skills": [
+    "항응고 역전",
+    "PCC 투여",
+    "출혈 관리"
+   ],
+   "keyPhrases": [
+    "I'll give four-factor PCC and IV vitamin K now.",
+    "I'll recheck the INR after reversal.",
+    "For his DOAC, we may need the specific reversal agent."
+   ],
+   "goals": [
+    "적절한 역전제로 항응고를 되돌린다",
+    "역전 후 INR을 재확인한다"
+   ]
+  },
+  {
+   "title": "혈소판 수혈 적응 판단",
+   "tagline": "His platelets are low but he's not bleeding — do we transfuse or wait?",
+   "room": "ICU 병상",
+   "brief": "역치를 기준으로 혈소판 수혈 적응 여부를 판단하세요.",
+   "role": "colleague",
+   "skills": [
+    "혈소판 역치",
+    "적응 판단",
+    "출혈 위험 평가"
+   ],
+   "keyPhrases": [
+    "The prophylactic threshold is usually ten thousand.",
+    "Before a procedure, we aim for a higher count.",
+    "Active bleeding changes the threshold entirely."
+   ],
+   "goals": [
+    "상황별 혈소판 수혈 역치를 판단한다",
+    "출혈 위험과 시술 여부를 반영한다"
+   ]
+  },
+  {
+   "title": "알레르기·발열 반응 관리",
+   "tagline": "She got hives with the last unit — should we premedicate this time?",
+   "room": "ICU 병상",
+   "brief": "전처치로 알레르기와 발열 반응을 예방하고 관리하세요.",
+   "role": "colleague",
+   "skills": [
+    "반응 관리",
+    "전처치",
+    "증상 완화"
+   ],
+   "keyPhrases": [
+    "For mild hives, I'll pause and give an antihistamine.",
+    "We can premedicate before the next unit.",
+    "If she develops wheezing, I'll stop and escalate."
+   ],
+   "goals": [
+    "알레르기·발열 반응을 관리한다",
+    "필요 시 전처치를 시행한다"
+   ]
+  },
+  {
+   "title": "수혈 거부 환자 관리",
+   "tagline": "I need you to know — my faith means I can't accept any blood products.",
+   "room": "ICU 병상",
+   "brief": "대안과 소통으로 수혈을 거부하는 환자를 존중하며 관리하세요.",
+   "role": "patient",
+   "skills": [
+    "자기결정 존중",
+    "대안 소통",
+    "문서화"
+   ],
+   "keyPhrases": [
+    "I respect your decision and I'll document your wishes.",
+    "Let's talk about blood-conservation options with your team.",
+    "We can maximize iron and minimize blood draws."
+   ],
+   "goals": [
+    "환자의 수혈 거부 의사를 존중한다",
+    "대안과 소통 계획을 세운다"
+   ]
+  },
+  {
+   "title": "대량수혈 프로토콜 발동·조율",
+   "tagline": "Activate the MTP — I need the team, the cooler, and roles assigned now!",
+   "room": "ICU 병상",
+   "brief": "MTP 팀을 발동하고 대량수혈 프로토콜을 조율하세요.",
+   "role": "colleague",
+   "skills": [
+    "MTP 발동",
+    "팀 조율",
+    "역할 분담"
+   ],
+   "keyPhrases": [
+    "I'm activating the massive transfusion protocol now.",
+    "You track products, you push blood, I'll run the rapid infuser.",
+    "Blood bank, send the next cooler and keep them coming."
+   ],
+   "goals": [
+    "MTP를 발동하고 역할을 분담한다",
+    "성분 추적과 공급을 조율한다"
+   ]
+  },
+  {
+   "title": "급성 용혈 아나필락시스 위기",
+   "tagline": "She's hypotensive with stridor right after the unit — this is anaphylaxis, get epi!",
+   "room": "ICU 병상",
+   "brief": "급성 용혈과 아나필락시스를 소생술로 대응하세요.",
+   "role": "colleague",
+   "skills": [
+    "아나필락시스 대응",
+    "소생",
+    "즉시 중단"
+   ],
+   "keyPhrases": [
+    "Stop the transfusion — I'm giving IM epinephrine now.",
+    "I'm opening fluids wide and calling the code team.",
+    "Airway is compromised, prepare to intubate."
+   ],
+   "goals": [
+    "수혈을 즉시 중단하고 에피네프린을 투여한다",
+    "기도와 순환을 소생술로 지지한다"
+   ]
+  },
+  {
+   "title": "DIC 출혈·혈전 동반 위기",
+   "tagline": "He's oozing from every site and his labs scream DIC — we have to treat the cause!",
+   "room": "ICU 병상",
+   "brief": "성분 보충과 원인 치료로 DIC의 출혈과 혈전을 동시에 관리하세요.",
+   "role": "colleague",
+   "skills": [
+    "DIC 관리",
+    "성분 보충",
+    "원인 치료"
+   ],
+   "keyPhrases": [
+    "He's bleeding from every puncture site — this is DIC.",
+    "I'll replace fibrinogen, platelets, and plasma per the labs.",
+    "The key is treating the underlying trigger."
+   ],
+   "goals": [
+    "DIC를 인지하고 성분을 보충한다",
+    "근본 원인 치료를 조율한다"
+   ]
+  },
+  {
+   "title": "TRALI 급성 호흡부전 위기",
+   "tagline": "She's in acute respiratory failure right after the plasma — this is TRALI!",
+   "room": "ICU 병상",
+   "brief": "환기 지지로 TRALI에 의한 급성 호흡부전을 관리하세요.",
+   "role": "colleague",
+   "skills": [
+    "TRALI 인지",
+    "환기 지지",
+    "즉시 중단"
+   ],
+   "keyPhrases": [
+    "Stop the transfusion — this is TRALI, not overload.",
+    "She needs lung-protective ventilation and high oxygen.",
+    "Report the reaction to the blood bank."
+   ],
+   "goals": [
+    "TRALI를 인지하고 수혈을 중단한다",
+    "폐보호 환기로 호흡부전을 지지한다"
+   ]
+  },
+  {
+   "title": "대량수혈 저칼슘 심정지 위기",
+   "tagline": "His QT is stretching and he's about to arrest — push the calcium, now!",
+   "room": "ICU 병상",
+   "brief": "칼슘 투여와 소생술로 대량수혈 중 저칼슘 심정지에 대응하세요.",
+   "role": "colleague",
+   "skills": [
+    "저칼슘 심정지",
+    "칼슘 투여",
+    "소생"
+   ],
+   "keyPhrases": [
+    "Ionized calcium is critically low — I'm pushing calcium now.",
+    "Start compressions and call the code.",
+    "Keep giving calcium with each round of products."
+   ],
+   "goals": [
+    "심각한 저칼슘을 인지하고 칼슘을 투여한다",
+    "소생술을 시작하고 팀을 소집한다"
+   ]
+  },
+  {
+   "title": "수혈 불응 지속출혈 목표 소통",
+   "tagline": "We keep transfusing but he keeps bleeding — I need to talk with you about what's realistic.",
+   "room": "ICU 상담실",
+   "brief": "예후와 윤리를 고려해 수혈 불응 지속출혈의 치료 목표를 소통하세요.",
+   "role": "family",
+   "skills": [
+    "목표 소통",
+    "예후 설명",
+    "공감"
+   ],
+   "keyPhrases": [
+    "Despite everything, the bleeding isn't stopping.",
+    "I want to be honest with you about what we're seeing.",
+    "Let's talk about what he would want."
+   ],
+   "goals": [
+    "지속출혈의 예후를 솔직히 설명한다",
+    "가족과 치료 목표를 함께 정한다"
+   ]
+  }
+ ]
+}
