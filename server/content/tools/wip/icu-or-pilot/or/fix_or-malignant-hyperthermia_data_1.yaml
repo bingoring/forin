@@ -1,0 +1,119 @@
+# 문장 패치(s=상황 0부터, i=문장 0부터). dko=오답 둘 전체. blank_rep={옛 선택지: 새 선택지}(자리 유지).
+# blank={answer, opts}: 정답 위치를 돌려 놓는다.
+sentences:
+  # ---- S0 MH 가족력 선별
+  - {s: 0, i: 1, why: "helps us + 동사원형으로 질문하는 목적을 밝히는 모양이에요. 묻는 까닭을 알면 환자가 낯선 가족 병력도 더 열심히 떠올려요.", blank_rep: {cost: reversal, fee: therapy}}
+  - {s: 0, i: 3, chunks: ["I need to", "ask about", "your family's medical history", "before surgery", "."]}
+  - {s: 0, i: 4, dko: ["흡연력이 있으면 마취팀에 알릴게요.", "수술력이 있으면 마취팀에 알릴게요."], decoy: "a positive allergy test", blank_rep: {thank: follow, invite: visit}}
+  # ---- S1 유발 약물 인지
+  - {s: 1, i: 1, blank_rep: {table: invoice, schedule: roster, gown: waiver}}
+  - {s: 1, i: 2, dko: ["숯 필터가 기계에 달려 있는지 확인합시다.", "산소 유량이 기계에서 올라가 있는지 확인합시다."], decoy: "by hand"}
+  - {s: 1, i: 3, dko: ["이번 주엔 휘발성 마취제와 석시닐콜린을 전부 피하고 있어요.", "이 방에선 휘발성 마취제와 석시닐콜린을 전부 피하고 있어요."], decoy: "this week"}
+  - {s: 1, i: 4, decoy: "at the bedside"}
+  # ---- S2 dantrolene 위치 확인
+  - {s: 2, i: 0, dko: ["이 방에는 단트롤렌이 왜 보관되어 있나요?", "이 방에는 단트롤렌이 몇 개 보관되어 있나요?"], blank_rep: {sold: ordered}}
+  - {s: 2, i: 1, decoy: "at the desk"}
+  - {s: 2, i: 2, dko: ["마취 유도 전에 서늘한 곳에 두고 싶어요.", "마취 유도 전에 깨끗한 곳에 두고 싶어요."], decoy: "on the cart", blank_rep: {visible: locked, labeled: frozen}}
+  - s: 2
+    i: 3
+    en: "This room's MH cart is stocked with a full supply of dantrolene."
+    ko: "이 방 MH 카트에 단트롤렌이 정량 전부 구비돼 있어요."
+    chunks: ["This room's MH cart", "is stocked", "with a full supply", "of dantrolene", "."]
+    words: [w-cart, w-stock, w-dantrolene]
+    why: "is stocked with는 수동태라 누가 채웠는지가 아니라 지금 무엇으로 채워져 있는지를 말해요. a full supply는 일부가 아니라 정량 전부라는 뜻이라 위기에 모자라지 않는다는 보고가 돼요."
+    decoy: "of gauze"
+    dko: ["이 방 MH 카트에 멸균수가 정량 전부 구비돼 있어요.", "이 방 MH 카트에 단트롤렌이 여분 한 상자 구비돼 있어요."]
+    blank_rep: {closet: freezer, drawer: warmer}
+  - {s: 2, i: 4, decoy: "from the lab"}
+  # ---- S3 MH 카트 점검
+  - {s: 3, i: 0, blank_rep: {decorate: return}}
+  - {s: 3, i: 1, blank_rep: {visitor: consent, parking: allergy}}
+  - {s: 3, i: 2, ko: "전부 구비되어 있고 유효기한도 남아 있어요.", dko: ["전부 구비되어 있고 라벨도 붙어 있어요.", "전부 청소되어 있고 유효기한도 남아 있어요."]}
+  - {s: 3, i: 4, blank_rep: {registration: transport, dietary: linen, billing: security}}
+  # ---- S4 체온 지속 감시
+  - {s: 4, i: 1, dko: ["호흡을 지속적으로 추세 관찰할 거예요.", "소변량을 지속적으로 추세 관찰할 거예요."]}
+  - {s: 4, i: 4, chunks: ["Temperature's trending up", "slowly", ", but", "we're staying on top of it", "."]}
+  # ---- S5 EtCO2 감시
+  - {s: 5, i: 0, blank_rep: {loudly: loosely}}
+  - {s: 5, i: 3, dko: ["지난 몇 시간 동안 EtCO2가 계속 오르고 있어요.", "지난 몇 분 동안 심박수가 계속 오르고 있어요."], chunks: ["The EtCO2", "has been", "climbing", "for the last few minutes", "."]}
+  - {s: 5, i: 4, dko: ["피부색이 비정상적으로 보이는 순간 마취팀에 알릴게요.", "환자 자세가 비정상적으로 보이는 순간 마취팀에 알릴게요."], blank_rep: {reason: room}}
+  # ---- S6 EtCO2 상승 조기 인지
+  - {s: 6, i: 1, ko: "이 양상을 보면 초기 MH가 의심돼요.", dko: ["이 양상을 보면 초기 감염이 의심돼요.", "이 환자를 보면 초기 MH가 의심돼요."], decoy: "about the schedule"}
+  - {s: 6, i: 2, dko: ["마취팀에 경고하고 기록합시다.", "마취팀에 경고하고 정리합시다."]}
+  - {s: 6, i: 3, blank_rep: {alarm: drop}}
+  - {s: 6, i: 4, decoy: "by the bed"}
+  # ---- S7 masseter 근강직 관찰
+  - {s: 7, i: 2, dko: ["다른 징후를 살피며 장갑을 준비합시다.", "다른 징후를 살피며 차트를 준비합시다."], blank_rep: {paint: park}}
+  - {s: 7, i: 4, chunks: ["I'm reporting this", "early", "in case", "it's an MH warning sign", "."]}
+  # ---- S8 빈맥·부정맥 감시
+  - {s: 8, i: 3, chunks: ["His heart rate", "jumped", "ten points", "in the last two minutes", "."]}
+  - {s: 8, i: 4, chunks: ["If the rhythm", "turns unstable", ", we treat it", "alongside the MH workup", "."]}
+  # ---- S9 대사성 산증 확인
+  - {s: 9, i: 2, blank_rep: {paste: fold, pour: push, ship: pull}}
+  # ---- S10 MH 감수성 환자 준비
+  - {s: 10, i: 0, blank_rep: {expired: antidote}}
+  - s: 10
+    i: 2
+    ko: "믿고 맡기셔도 돼요 — 저희가 이 상황에 대비해 왔어요."
+    dko: ["믿고 맡기셔도 돼요 — 저희가 이 상황을 공지해 왔어요.", "믿고 맡기셔도 돼요 — 저희가 이 상황을 신고해 왔어요."]
+    why: "in safe hands는 돌봄을 맡겨도 안전하다는 관용구로, 불안한 환자에게 안심을 줘요. we've prepared는 현재완료라 미리 준비해 온 일이 지금 도움이 된다는 뜻이에요."
+    decoy: "for the surgeon"
+  - {s: 10, i: 4, decoy: "for the visitors", blank_rep: {hungry: rushed, proud: alone}}
+  # ---- S11 유발약 회피 마취
+  - {s: 11, i: 1, dko: ["기계는 세척되어 있고 기화기는 라벨돼 있어요.", "침대는 세척되어 있고 기화기는 꺼져 있어요."], decoy: "are full"}
+  - {s: 11, i: 2, ko: "TIVA는 뽑아 놓고 준비됐어요.", dko: ["TIVA는 닫아 놓고 준비됐어요.", "TIVA는 주문해 놓고 준비됐어요."]}
+  - {s: 11, i: 3, dko: ["모니터가 기계에서 제거됐는지 다시 확인합시다.", "회로가 기계에서 교체됐는지 다시 확인합시다."]}
+  - {s: 11, i: 4, dko: ["케이스 내내 TIVA가 조용하게 유지되도록 할게요.", "케이스 내내 수액이 부드럽게 유지되도록 할게요."], decoy: "on the pump", blank_rep: {loudly: briefly, lazily: nervously}}
+  # ---- S12 냉각 물품 준비
+  - {s: 12, i: 1, blank: {answer: ready, opts: [ready, returned, stored, unplugged]}}
+  - {s: 12, i: 2, decoy: "in the freezer"}
+  - s: 12
+    i: 4
+    ko: "전부 배치되어 있어서 MH로 선언하는 순간 바로 식힐 수 있어요."
+    dko: ["전부 청소되어 있어서 MH로 선언하는 순간 바로 식힐 수 있어요.", "전부 배치되어 있어서 MH로 선언하는 순간 바로 꺼낼 수 있어요."]
+  # ---- S13 고칼륨 감시
+  - {s: 13, i: 0, ko: "지금 칼륨 수치 검사를 보냅시다.", dko: ["지금 칼륨 수치 검사를 팀에 알립시다.", "지금 칼륨 수치 검사지를 뽑읍시다."], decoy: "to pharmacy"}
+  - {s: 13, i: 3, blank: {answer: treat, opts: [treat, ignore, hide, skip]}}
+  # ---- S14 미오글로빈뇨 관찰
+  - {s: 14, i: 2, decoy: "and send a page", blank_rep: {hide: skip, paint: ignore, sell: forget}}
+  - {s: 14, i: 3, chunks: ["The color's", "gotten darker", "over the last hour", "."], blank: {answer: darker, opts: [darker, lighter, clearer, paler]}}
+  - {s: 14, i: 4, dko: ["약국에 알리고 차트에 기록되게 할게요.", "팀에 알리고 화이트보드에 기록되게 할게요."], blank_rep: {freezer: shelf, basket: drawer}}
+  # ---- S15 MH 위기 발동
+  - {s: 15, i: 0, dko: ["이건 악성 고열이에요 — 지금 시간을 적을게요.", "이건 악성 고열이에요 — 지금 카트를 열게요."]}
+  - {s: 15, i: 1, dko: ["MH 카트를 가져오고 여기서 도움을 요청하세요.", "MH 카트를 열어 두고 지금 도움을 요청하세요."]}
+  - {s: 15, i: 2, dko: ["모든 가온 장치를 즉시 멈추세요.", "모든 비필수 작업을 즉시 멈추세요."], decoy: "unneeded talk"}
+  - {s: 15, i: 3, dko: ["지금 선언할게요 — 이건 MH이고, 지금 기록을 시작합니다.", "지금 선언할게요 — 이건 MH이고, 지금 타이머를 시작합니다."]}
+  - s: 15
+    i: 4
+    ko: "누군가 수술실 데스크에 연락해서 일손을 더 불러 주세요."
+    dko: ["누군가 수술실 데스크에 연락해서 얼음을 더 부탁해 주세요.", "누군가 수술실 데스크에 연락해서 물을 더 가져와 주세요."]
+    decoy: "more gloves"
+    why: "Someone call …은 손이 빈 사람 누구든 바로 움직이게 하는 위기 구어체예요. 가능하면 'Maria, call the OR desk'처럼 이름을 붙이면 더 확실하게 맡겨져요. more hands는 실제 손이 아니라 일을 거들 사람을 뜻하는 관용 표현이에요."
+  # ---- S16 dantrolene 혼합 투여
+  - s: 16
+    i: 0
+    ko: "모두 손을 보태 지금 단트롤렌을 녹여 조제합니다."
+    dko: ["모두 손을 보태 지금 단트롤렌을 가져옵니다.", "모두 손을 보태 지금 단트롤렌에 라벨을 붙입니다."]
+  - {s: 16, i: 1, dko: ["체중에 따라 섞고 필요하면 반복합니다.", "체중에 따라 바이알을 세고 필요하면 반복합니다."]}
+  - {s: 16, i: 3, dko: ["당신이 이걸 주입하는 동안 다음 주사기를 채울게요.", "당신이 이걸 주입하는 동안 다음 바이알을 따 둘게요."], decoy: "label this one", blank_rep: {last: used}}
+  - {s: 16, i: 4, dko: ["반응할 때까지 계속 섞고 반복할게요.", "반응할 때까지 계속 바이알을 따고 반복할게요."]}
+  # ---- S17 급속 냉각 시행
+  - {s: 17, i: 1, dko: ["서혜부와 겨드랑이에 찬 수건을 대세요.", "서혜부와 겨드랑이에 냉각 패드를 대세요."]}
+  - {s: 17, i: 2, dko: ["과냉각되기 전에 체온을 재 보세요.", "과냉각되기 전에 팀에 알려 주세요."]}
+  - s: 17
+    i: 3
+    en: "Let's pack ice around the groin and axillae right now."
+    chunks: ["Let's pack ice", "around the groin", "and axillae", "right now", "."]
+    dko: ["지금 바로 서혜부와 겨드랑이에 찬 거즈를 대 봅시다.", "지금 바로 서혜부와 겨드랑이에 찬 수액 백을 대 봅시다."]
+  # ---- S18 고칼륨 부정맥 대응
+  - {s: 18, i: 0, ko: "칼륨 수치가 위험할 만큼 높아요.", dko: ["혈당 수치가 위험할 만큼 높아요.", "나트륨 수치가 위험할 만큼 높아요."]}
+  - {s: 18, i: 1, ko: "칼슘, 인슐린과 포도당, 그리고 프로토콜에 따른 중탄산염이요.", dko: ["칼슘, 인슐린과 포도당, 그리고 프로토콜 카드 낭독이요.", "칼슘, 인슐린과 포도당, 그리고 프로토콜 시간 기록이요."]}
+  # ---- S19 대사성 산증 교정
+  - {s: 19, i: 1, dko: ["과호흡시키고 프로토콜에 따라 혈액가스를 보내 주세요.", "과호흡시키고 프로토콜 카드를 크게 읽어 주세요."]}
+  - {s: 19, i: 2, dko: ["치료 후에 혈액가스를 비교합시다.", "치료 후에 결과를 공유합시다."], decoy: "from the art line"}
+  - {s: 19, i: 4, blank: {answer: resampling, opts: [resampling, paging, guessing, ignoring]}}
+  # ---- S20 위기 후 중환자 이송
+  - {s: 20, i: 0, decoy: "extra fluids", blank_rep: {waking: crashing}}
+  - {s: 20, i: 2, blank_rep: {search: ask}}
+  - {s: 20, i: 3, dko: ["일어난 모든 일을 외과 팀에 설명해 줄게요.", "일어난 모든 일을 중환자실 팀에 적어 줄게요."]}
+  - {s: 20, i: 4, decoy: "in the PACU", blank_rep: {awake: unstable, calm: febrile}}
