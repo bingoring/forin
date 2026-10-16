@@ -1837,12 +1837,12 @@ situations:
     - 중심 맥박 프로브가 제자리에 있습니다.
     - 중심 체온 프로브가 준비실에 있습니다.
     blank:
-      answer: core
+      answer: temperature
       options:
-      - en: core
-      - en: skin
-      - en: room
-      - en: surface
+      - en: temperature
+      - en: pressure
+      - en: oxygen
+      - en: volume
   - en: We'll trend the temp continuously.
     ko: 체온을 지속적으로 추세 관찰할 거예요.
     chunks:
@@ -2805,12 +2805,12 @@ situations:
     - 알레르기 병력이 있으니 유발 약제를 피합니다.
     - MH 병력이 있으니 유발 음식을 피합니다.
     blank:
-      answer: history
+      answer: triggering
       options:
-      - en: wish
-      - en: size
-      - en: history
-      - en: price
+      - en: spare
+      - en: extra
+      - en: triggering
+      - en: expired
   - en: We have a special plan and medications ready for you.
     ko: 당신을 위한 특별한 계획과 약물을 준비해 두었어요.
     chunks:
@@ -3044,12 +3044,12 @@ situations:
     - 모니터가 기계에서 제거됐는지 다시 확인합시다.
     - 기화기가 침대에서 제거됐는지 다시 확인합시다.
     blank:
-      answer: removed
+      answer: vaporizers
       options:
-      - en: painted
-      - en: weighed
-      - en: removed
-      - en: counted
+      - en: cables
+      - en: screens
+      - en: vaporizers
+      - en: monitors
   - en: I'll keep the TIVA running smoothly for the whole case.
     ko: 케이스 내내 TIVA가 부드럽게 유지되도록 할게요.
     chunks:
@@ -3175,12 +3175,12 @@ situations:
     - 빨리 식혀야 하면 전부 문 앞에 있어요.
     - 빨리 식혀야 하면 전부 냉동실에 있어요.
     blank:
-      answer: cool
+      answer: fast
       options:
-      - en: wait
-      - en: sleep
-      - en: cool
-      - en: hide
+      - en: quietly
+      - en: lightly
+      - en: fast
+      - en: gently
   - en: Let's set up cold IV bags too, before we need them.
     ko: 필요해지기 전에 찬 정맥 수액 백도 준비합시다.
     chunks:
@@ -3279,7 +3279,7 @@ situations:
     decoy: with lunch
     distractorsKo:
     - 지금 칼륨 수치를 읽읍시다.
-    - 지금 칼륨 수치를 원무과에 보냅시다.
+    - 지금 칼륨 수치를 약국에 보냅시다.
     blank:
       answer: level
       options:
@@ -3308,12 +3308,12 @@ situations:
     - MH에서는 고칼륨혈증이 자주 올 수 있어요.
     - 수술에서는 고칼륨혈증이 빨리 오를 수 있어요.
     blank:
-      answer: rise
+      answer: Hyperkalemia
       options:
-      - en: wait
-      - en: shrink
-      - en: rise
-      - en: hide
+      - en: Hyponatremia
+      - en: Hypocalcemia
+      - en: Hyperkalemia
+      - en: Hypokalemia
   - en: Watch the rhythm for peaked T waves.
     ko: 뾰족한 T파가 있는지 리듬을 지켜보세요.
     chunks:
@@ -3440,7 +3440,7 @@ situations:
       answer: urine
       options:
       - en: saliva
-      - en: tears
+      - en: mucus
       - en: urine
       - en: sweat
   - en: That suggests myoglobinuria from muscle breakdown.
@@ -3785,10 +3785,10 @@ situations:
     blank:
       answer: repeat
       options:
-      - en: retire
+      - en: relabel
       - en: repeat
-      - en: rest
-      - en: relax
+      - en: rewrap
+      - en: rinse
   - en: Keep mixing — we'll need a lot of vials.
     ko: 계속 섞어 주세요 — 바이알이 많이 필요할 거예요.
     chunks:
@@ -3918,10 +3918,10 @@ situations:
     blank:
       answer: surface
       options:
-      - en: deep
+      - en: gradual
       - en: surface
-      - en: central
-      - en: internal
+      - en: ambient
+      - en: passive
   - en: Ice packs to the groin and axillae.
     ko: 서혜부와 겨드랑이에 얼음팩을 대세요.
     chunks:
@@ -4315,12 +4315,12 @@ situations:
     - 지난 혈액가스에서는 감염이 더 나빠지고 있었어요.
     - 지난 소변검사에서는 산증이 더 나빠지고 있었어요.
     blank:
-      answer: showed
+      answer: acidosis
       options:
-      - en: broke
-      - en: sold
-      - en: showed
-      - en: hid
+      - en: anemia
+      - en: dehydration
+      - en: acidosis
+      - en: infection
   - en: We'll keep resampling until the numbers look better.
     ko: 수치가 나아질 때까지 계속 재채취할게요.
     chunks:
