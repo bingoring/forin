@@ -1,0 +1,396 @@
+# 문장 단위 수정 — 키는 "상황index.문장index"(0부터). 있는 키만 바꾼다.
+# was: 바꾸기 전 en(안전장치). blank.wrong 은 정답이 아닌 선택지 3개.
+sentences:
+  # ---------------- A S1~S5: 지킬 수 없는 약속 문장 4개 + 어색한 문장 1개
+  "8.3":
+    was: "She won't suffer — we prepare medication before we start."
+    en: "We prepare medication before we start, so we can keep her from suffering."
+    ko: "시작 전에 약을 미리 준비해서 고통스럽지 않게 해 드릴 수 있어요."
+    chunks: ["We prepare medication", "before we start", ",", "so we can keep her", "from suffering", "."]
+    words: [w-prepare, w-medication, w-start, w-keep, w-suffer]
+    why: "before we start로 순서를, so we can으로 목적을 붙여요. 고통이 없을 거라고 장담하지 않고 우리가 미리 하는 일을 말해서, 지킬 수 있는 약속이 돼요."
+    decoy: "the room key"
+    dKo: ["시작 전에 약을 미리 준비해서 아버님이 고통스럽지 않게 해 드릴 수 있어요.", "시작 전에 약을 미리 준비해서 가족분들이 고통스럽지 않게 해 드릴 수 있어요."]
+    blank: {answer: suffering, wrong: [sliding, sinking, spoiling]}
+  "8.4":
+    was: "Some breaths may look irregular, but she won't feel that."
+    en: "Some breaths may look irregular, but that's expected and we'll keep her comfortable."
+    ko: "숨이 불규칙해 보일 수 있지만 예상된 일이고, 편안하게 해 드릴 거예요."
+    chunks: ["Some breaths", "may look irregular", ",", "but that's expected", "and we'll keep her", "comfortable", "."]
+    words: [w-breath, w-look, w-irregular, w-expect, w-keep, w-comfortable]
+    why: "may look로 눈에 보이는 모습이라고 한정하고, expected로 이상이 아니라는 점을 알린 뒤 we'll keep her comfortable로 우리가 할 일을 약속해요. 환자가 느끼지 못한다고 단정하지 않아요."
+    decoy: "in the next bed"
+    dKo: ["맥박이 불규칙해 보일 수 있지만 예상된 일이고, 편안하게 해 드릴 거예요.", "숨이 불규칙해 보일 수 있지만 예상된 일이고, 아버님을 편안하게 해 드릴 거예요."]
+    blank: {answer: breaths, wrong: [lights, nights, words]}
+  "7.5":
+    was: "Nothing will happen faster than your family is ready for."
+    en: "We won't take any step faster than your family is ready for."
+    ko: "가족분들이 준비되시기 전에 서둘러 다음 단계로 넘어가지 않을게요."
+    chunks: ["We won't take", "any step", "faster than", "your family", "is ready for", "."]
+    words: [w-step, w-faster, w-ready]
+    why: "faster than…is ready for는 비교 구문으로 속도의 상한을 가족의 준비에 맞춘다는 뜻이에요. 상태가 어떻게 변할지는 약속하지 않고, 의료진이 정할 수 있는 단계의 속도만 약속해서 지킬 수 있는 말이 돼요."
+    decoy: "at the same time"
+    dKo: ["가족분들이 준비되시기 전에 서둘러 다음 검사로 넘어가지 않을게요.", "따님이 준비되시기 전에 서둘러 다음 단계로 넘어가지 않을게요."]
+    blank: {answer: faster, wrong: [louder, stronger, higher]}
+  "15.5":
+    was: "I won't leave this room until she's comfortable again."
+    en: "I'm staying right here while we get her comfortable again."
+    ko: "다시 편안해지시도록 하는 동안 제가 바로 여기 있을게요."
+    chunks: ["I'm staying", "right here", "while we get her", "comfortable again", "."]
+    words: [w-stay, w-comfortable]
+    why: "right here로 위치를, while we get her…로 기간을 처치가 이어지는 동안으로 잡아요. 다른 호출이 와도 무조건 못 떠난다는 약속 대신, 지금 하고 있는 일에 붙인 약속이에요."
+    decoy: "by the elevator"
+    dKo: ["다시 편안해지시도록 하는 동안 제가 바로 밖에 있을게요.", "다시 편안해지시도록 하는 동안 저희 팀이 바로 여기 있을게요."]
+    blank: {answer: comfortable, wrong: [independent, upright, hungry]}
+  "16.5":
+    was: "It's okay to disagree and still both be right to love her."
+    en: "It's okay to disagree when you both love her this much."
+    ko: "두 분 다 이만큼 사랑하시니 의견이 다를 수 있어요, 괜찮아요."
+    chunks: ["It's okay", "to disagree", "when you both", "love her", "this much", "."]
+    words: [w-disagree, w-both, w-love]
+    why: "It's okay to disagree로 의견이 다른 것 자체를 문제 삼지 않아요. when you both love her this much로 갈등의 이유를 사랑으로 돌려, 누가 틀렸다는 평가를 피해요."
+    decoy: "about the menu"
+    dKo: ["두 분 다 이만큼 걱정하시니 의견이 다를 수 있어요, 괜찮아요.", "두 분 다 이만큼 사랑하시니 의견을 나눌 수 있어요, 괜찮아요."]
+    blank: {answer: disagree, wrong: [wait, decide, pray]}
+  # ---------------- A S6~S10, K1, K2, judge ko
+  "9.3":
+    ko: "초조함을 덜어 드릴 만큼만 약을 드려요."
+    dKo: ["기침을 덜어 드릴 만큼만 약을 드려요.", "허기를 덜어 드릴 만큼만 약을 드려요."]
+    decoy: "before visitors arrive"
+  "1.4":
+    ko: "의학적 선택지만이 아니라 그분의 가치관도 생각해 보세요."
+    dKo: ["의학적 선택지만이 아니라 그분의 취미도 생각해 보세요.", "의학적 소견만이 아니라 그분의 가치관도 생각해 보세요."]
+    blank: {answer: values, wrong: [reports, vitals, habits]}
+    decoy: "or the cost"
+  "8.5":
+    ko: "이 과정을 단계적 이탈(terminal weaning)이라고 하는데, 천천히 부드럽게 진행해요."
+    dKo: ["이 과정을 단계적 이탈(terminal weaning)이라고 하는데, 천천히 가족과 함께 진행해요.", "이 장면을 단계적 이탈(terminal weaning)이라고 하는데, 천천히 부드럽게 진행해요."]
+    decoy: "at the nurses' station"
+  "20.3":
+    ko: "이렇게 젊은 분을 잃는 건 다르게 느껴지고, 그 마음은 당연해요."
+    dKo: ["이렇게 갑작스럽게 잃는 건 다르게 느껴지고, 그 마음은 당연해요.", "이렇게 젊은 분이 아프면 다르게 느껴지고, 그 마음은 당연해요."]
+    blank: {answer: young, wrong: [tall, loud, quiet]}
+    decoy: "in this city"
+  "13.4":
+    ko: "어떤 날은 마음이 더 무겁게 느껴질 수 있고, 그것도 괜찮아요."
+    dKo: ["어떤 밤은 마음이 더 무겁게 느껴질 수 있고, 그것도 괜찮아요.", "어떤 날은 마음이 더 바쁘게 느껴질 수 있고, 그것도 괜찮아요."]
+    blank: {answer: heavier, wrong: [warmer, louder, colder]}
+    decoy: "than the nights"
+  "6.2":
+    ko: "지금 의사 선생님께 어떤 질문을 하시도록 도와드릴까요?"
+    dKo: ["지금 약사 선생님께 어떤 질문을 하시도록 도와드릴까요?", "내일 의사 선생님께 어떤 질문을 하시도록 도와드릴까요?"]
+    blank: {answer: doctor, wrong: [pharmacist, dietitian, chaplain]}
+    decoy: "the billing office"
+  "9.1":
+    ko: "목표는 편안함이지, 무언가를 앞당기려는 게 아니에요."
+    dKo: ["목표는 안전함이지, 무언가를 앞당기려는 게 아니에요.", "목표는 편안함이지, 무언가를 바꾸려는 게 아니에요."]
+    decoy: "for the chart"
+  "4.1":
+    ko: "청각은 흔히 마지막까지 남는 감각이라 목소리가 중요해요."
+    dKo: ["청각은 흔히 마지막까지 남는 감각이라 손길이 중요해요.", "시각은 흔히 마지막까지 남는 감각이라 목소리가 중요해요."]
+    decoy: "in the room"
+  "20.2":
+    ko: "매 단계마다 당신과 그분 가족을 지지해드릴게요."
+    dKo: ["매 단계마다 당신과 그분 가족을 안내해드릴게요.", "매일 아침 당신과 그분 가족을 지지해드릴게요."]
+    decoy: "at your house"
+    blank: {answer: step, wrong: [door, season, floor]}
+  "2.0":
+    ko: "불편한 기색이 있는지 표정과 호흡을 유심히 살펴보고 있어요."
+    dKo: ["졸린 기색이 있는지 표정과 호흡을 유심히 살펴보고 있어요.", "불편한 기색이 있는지 표정과 자세를 유심히 살펴보고 있어요."]
+    blank: {answer: discomfort, wrong: [recovery, improvement, hunger]}
+    decoy: "on the monitor"
+  # ---------------- B: 안전
+  "7.3":
+    decoy: "by the sink"
+    dKo: ["다음으로, 준비되시면 가족분들을 병실로 모실게요.", "마지막으로, 준비되시면 호흡관을 제거할게요."]
+  "0.3":
+    dKo: ["보험 서류에 그분이 원하신 것과 원치 않으신 것이 정확히 나와 있어요.", "차트에 그분이 드신 것과 드시지 않은 것이 정확히 나와 있어요."]
+  "19.6":
+    dKo: ["의사 2인이 삼킴 능력 없음을 확인함.", "의사 3인이 의사결정 능력 없음을 확인함."]
+    decoy: "last Tuesday"
+  "17.1":
+    dKo: ["한때 도움이 됐던 치료들이 이제는 오히려 오래 걸리고 있어요.", "한때 도움이 됐던 검사들이 이제는 오히려 해가 되고 있어요."]
+    blank: {answer: harm, wrong: [delay, sleep, noise]}
+    decoy: "in the past week"
+  "9.0":
+    dKo: ["안정되어 보이실 때까지 곁에서 지켜봐 드릴게요.", "안정되어 보이실 때까지 담요를 덮어 드릴게요."]
+    blank: {answer: settled, wrong: [pale, thin, yellow]}
+    decoy: "on his chart"
+  "15.3":
+    dKo: ["몸이 쉬고 있어요 — 약이 이제 듣기 시작하고 있어요.", "가족분들이 적응하고 있어요 — 약이 이제 듣기 시작하고 있어요."]
+    decoy: "on her wrist"
+  "8.0":
+    decoy: "at the bedside"
+    dKo: ["관을 빼기 전에 약을 드려서 조용하게 계시도록 할게요.", "관을 빼기 전에 약을 드려서 아버님이 편안하게 계시도록 할게요."]
+  "7.4":
+    decoy: "from the doorway"
+  "0.1":
+    decoy: "in this room"
+    blank: {answer: comfortable, wrong: [awake, conscious, waiting]}
+  # ---------------- B: 정답 둘
+  "3.0":
+    dKo: ["지금 저희의 모든 초점은 그분의 안전함과 존엄이에요.", "지금 저희의 모든 초점은 가족분의 편안함과 존엄이에요."]
+    decoy: "her lab results"
+  "1.0":
+    dKo: ["의사 선생님이 다음 단계를 함께 계획하려고 만나고 싶어 해요.", "팀에서 다음 주 일정을 함께 계획하려고 만나고 싶어 해요."]
+    decoy: "this morning"
+  "1.3":
+    dKo: ["아버님이 직접 말씀하실 수 있다면 뭐라고 하셨을까요?", "어머님이 직접 말씀하실 수 있다면 누구를 부르셨을까요?"]
+    blank: {answer: speak, wrong: [pay, shop, cook]}
+  "0.6":
+    dKo: ["지시서 내용이 병원 규정과 맞는지 함께 확인해볼게요.", "지시서 내용이 의사 선생님 설명과 맞는지 함께 확인해볼게요."]
+    decoy: "with the doctor"
+  "16.1":
+    dKo: ["그분이 무엇을 두려워하셨을지에 집중해봐요.", "그분이 무엇을 기억하셨을지에 집중해봐요."]
+    decoy: "on Friday"
+  "6.6":
+    dKo: ["잠시 멈추고 여기까지 질문이 있으신지 확인해볼까요.", "잠시 멈추고 처음부터 이해가 되시는지 확인해볼까요."]
+  "15.1":
+    dKo: ["이런 일은 밤에 있을 수 있고, 제가 바로 조절하고 있어요.", "이런 일은 있을 수 있고, 의사 선생님이 바로 조절하고 있어요."]
+    decoy: "on this floor"
+  "13.3":
+    dKo: ["잘못된 게 아니에요 — 애도는 장례가 오기를 기다리지 않아요.", "잘못된 게 아니에요 — 애도는 밤이 오기를 기다리지 않아요."]
+    blank: {answer: wait, wrong: [stop, rest, break]}
+    decoy: "for the weekend"
+  "11.6":
+    dKo: ["그들의 역할은 저희를 평가하는 게 아니라 함께 일하는 거예요.", "그들의 역할은 저희를 대신하는 게 아니라 가족과 함께 일하는 거예요."]
+    decoy: "on weekends"
+  "9.4":
+    dKo: ["빨리 진행시키거나 멈추려는 게 아니에요.", "빨리 진행시키거나 숨기려는 게 아니에요."]
+    decoy: "over the weekend"
+  "0.4":
+    dKo: ["DNR이라고 해서 목욕을 멈춘다는 뜻은 아니에요.", "DNR이라고 해서 면회를 멈춘다는 뜻은 아니에요."]
+    blank: {answer: stop, wrong: [start, enjoy, try]}
+    decoy: "to wait"
+  "6.1":
+    blank: {answer: hoped, wrong: [planned, guessed, promised]}
+    decoy: "from the ICU"
+  "15.2":
+    blank: {answer: here, wrong: [downstairs, away, upstairs]}
+    decoy: "in the hallway"
+    why: "Stay with her는 명령처럼 보여도 가족이 곁에 있어도 된다는 허락이에요. I'm right here로 간호사도 같은 공간에 있다고 말해 가족이 혼자 남겨졌다고 느끼지 않아요. she'll settle은 약이 들면 가라앉기를 바라는 기대를 말하는 거라, 결과를 보장하는 말로 쓰지는 않아요."
+  "20.4":
+    blank: {answer: understand, wrong: [ignore, spend, borrow]}
+    decoy: "at their school"
+  "14.2":
+    blank: {answer: pressure, wrong: [deposit, charge, menu]}
+    decoy: "at the door"
+    why: "no pressure로 선택을 강요하지 않는다고 먼저 말해요. 기증은 본인이 미리 정해 두었다면 그 뜻이 우선이고, 그렇지 않을 때는 가족의 결정을 따르는 일이라, whatever you decide로 선택이 가족의 몫임을 분명히 해요."
+  "14.6":
+    blank: {answer: answer, wrong: [leave, shop, vote]}
+    decoy: "for the form"
+  "13.6":
+    blank: {answer: counselor, wrong: [surgeon, pharmacist, cashier]}
+    decoy: "this winter"
+  "5.0":
+    blank: {answer: goodbye, wrong: [please, hello, "yes"]}
+    decoy: "before the doctor"
+  "11.5":
+    blank: {answer: visit, wrong: [bill, park, vote]}
+    decoy: "next month"
+  "12.2":
+    blank: {answer: honor, wrong: [print, copy, delay]}
+    decoy: "your neighbors"
+  "14.4":
+    blank: {answer: separately, wrong: [publicly, loudly, together]}
+    chunks: ["The donation team will speak", "with you", "separately", ",", "if you're open to it", "."]
+    decoy: "in the elevator"
+  "4.5":
+    blank: {answer: quietly, wrong: [loudly, formally, angrily]}
+    decoy: "to the nurse"
+  "5.5":
+    decoy: "at the desk"
+  "7.2":
+    decoy: "at every meal"
+  "18.2":
+    blank: {answer: hear, wrong: [smell, taste, count]}
+    decoy: "to the doctor"
+  # ---------------- B: ⑤ 뒤집기·길이·되풀이
+  "2.1":
+    dKo: ["그 소리는 밤에 흔히 나는 것이고 저희가 완화해드릴 수 있어요.", "그 소리는 이 시기에 흔히 나는 것이고 저희가 확인해드릴 수 있어요."]
+    decoy: "in the morning"
+  "3.4":
+    dKo: ["포기하는 게 아니라 이제 천천히 돌봐드리는 거예요.", "포기하는 게 아니라 다른 방식으로 씻겨드리는 거예요."]
+  "4.2":
+    dKo: ["필요하신 게 있으면 언제든 복도 끝에 있을게요.", "필요하신 게 있으면 언제든 바로 옆에 있을게요."]
+    blank: {answer: outside, wrong: [downstairs, away, upstairs]}
+    decoy: "for a moment"
+  "4.3":
+    dKo: ["밤이든 낮이든 원하시는 만큼 전화하셔도 돼요.", "주말이든 평일이든 원하시는 만큼 곁에 계셔도 돼요."]
+    blank: {answer: stay, wrong: [park, eat, work]}
+    decoy: "for dinner"
+  "5.6":
+    dKo: ["돌아가신 후에도 살아계실 때와 같은 존중으로 방문객을 대해드릴게요.", "돌아가신 후에도 살아계실 때와 같은 존중으로 가족분을 대해드릴게요."]
+    decoy: "in the room"
+  "6.0":
+    dKo: ["더 짧은 말로 설명해드릴게요.", "더 자세한 말로 설명해드릴게요."]
+    decoy: "for your neighbor"
+  "7.0":
+    dKo: ["치료들을 서서히 철회하면서 그동안 계속 따뜻하게 해드릴게요.", "치료들을 서서히 철회하면서 그동안 계속 기록해드릴게요."]
+    blank: {answer: gradually, wrong: [secretly, suddenly, quickly]}
+    decoy: "in the lobby"
+  "10.2":
+    dKo: ["계속 조절해서 조용한 상태를 유지시켜드려요.", "계속 조절해서 깨끗한 상태를 유지시켜드려요."]
+    decoy: "until the weekend"
+  "10.5":
+    dKo: ["매시간 척도로 통증을 점수화해서 확인해요.", "매시간 그림으로 편안함을 점수화해서 확인해요."]
+    blank: {answer: scale, wrong: [timer, thermometer, stethoscope]}
+    decoy: "on the chart"
+  "13.1":
+    dKo: ["작별 전에 미리 정리하는 것은 아주 인간적인 거예요.", "작별 전에 미리 걱정하는 것은 아주 인간적인 거예요."]
+    blank: {answer: human, wrong: [brief, rare, quiet]}
+    decoy: "at the airport"
+  "14.5":
+    dKo: ["무엇을 결정하시든 그분이 받는 식사는 달라지지 않아요.", "무엇을 결정하시든 가족이 받는 돌봄은 달라지지 않아요."]
+    decoy: "the mail"
+  "16.6":
+    chunks: ["Let's", "slow down", "and hear", "each of your concerns", "."]
+    dKo: ["잠시 천천히, 두 분의 질문을 각각 들어볼게요.", "잠시 천천히, 두 분의 걱정을 한꺼번에 들어볼게요."]
+    blank: {answer: concerns, wrong: [schedules, tests, visits]}
+    decoy: "at the table"
+  "18.0":
+    dKo: ["저는 바로 여기 곁에 있고, 소리는 낮출게요.", "저는 바로 여기 문 앞에 있고, 떠나지 않을게요."]
+    blank: {answer: here, wrong: [upstairs, outside, aside]}
+    decoy: "by the window"
+  # ---------------- B: 빈칸 문법·동떨어짐
+  "0.5":
+    blank: {answer: keeping, wrong: [finding, calling, leaving]}
+    decoy: "from home"
+  "1.2":
+    blank: {answer: write, wrong: [throw, turn, keep]}
+    decoy: "the pharmacist"
+  "3.3":
+    blank: {answer: feels, wrong: [walks, eats, looks]}
+    decoy: "in the morning"
+  "6.4":
+    blank: {answer: same, wrong: [first, last, next]}
+    decoy: "to the nurse"
+  "7.1":
+    blank: {answer: First, wrong: [Later, Tomorrow, Yesterday]}
+    decoy: "from the cabinet"
+  "10.0":
+    blank: {answer: distress, wrong: [healing, fever, thirst]}
+    decoy: "on the chart"
+  "10.1":
+    blank: {answer: relaxed, wrong: [tense, stiff, curled]}
+    decoy: "the monitor"
+  "11.3":
+    blank: {answer: end, wrong: [rich, young, brave]}
+    decoy: "just for children"
+  "12.0":
+    blank: {answer: rituals, wrong: [medications, visitors, schedules]}
+    decoy: "what music"
+  "12.4":
+    blank: {answer: chaplain, wrong: [surgeon, dietitian, pharmacist]}
+    decoy: "or a taxi"
+  "13.0":
+    blank: {answer: normal, wrong: [hidden, small, minor]}
+    decoy: "of illness"
+  "13.2":
+    blank: {answer: chaplains, wrong: [surgeons, dietitians, pharmacists]}
+    decoy: "and lawyers"
+  "15.0":
+    blank: {answer: breathing, wrong: [swelling, itching, swallowing]}
+    decoy: "in the corridor"
+  "15.4":
+    blank: {answer: helps, wrong: [hurts, fails, stops]}
+    decoy: "across the room"
+  "16.4":
+    blank: {answer: situation, wrong: [surgery, diagnosis, treatment]}
+    decoy: "last night"
+  "17.6":
+    blank: {answer: ethics, wrong: [nutrition, pharmacy, radiology]}
+    decoy: "with the front desk"
+  "18.3":
+    blank: {answer: stay, wrong: [work, move, sleep]}
+    decoy: "at the station"
+  "18.5":
+    blank: {answer: slowing, wrong: [racing, rising, shaking]}
+    decoy: "of this building"
+  "19.0":
+    blank: {answer: surrogate, wrong: [insurance, pharmacy, address]}
+    decoy: "the school board"
+  "19.2":
+    blank: {answer: process, wrong: [rumor, calendar, habit]}
+    decoy: "in the break room"
+  "19.4":
+    blank: {answer: documented, wrong: [delivered, signed, notified]}
+    decoy: "in the cabinet"
+  "20.1":
+    blank: {answer: specialists, wrong: [teachers, drivers, coaches]}
+    decoy: "with her neighbors"
+  # ---------------- 나머지 decoy (for the family/team/nurse/doctor/staff/now/a while/the day 편중 해소)
+  "2.2":
+    decoy: "a warm blanket"
+  "3.1":
+    decoy: "at the pharmacy"
+  "4.4":
+    decoy: "about the weather"
+  "5.2":
+    decoy: "any allergies"
+  "6.2x": {}
+  "7.0x": {}
+  "8.1":
+    decoy: "Her schedule may change"
+  "9.5":
+    decoy: "by the door"
+  "10.3":
+    decoy: "in the dark"
+  "10.6":
+    decoy: "the pillows"
+  "11.0":
+    decoy: "in billing"
+  "11.1":
+    decoy: "and with transport"
+  "11.4":
+    decoy: "with your lawyer"
+  "12.1":
+    decoy: "and parking"
+  "12.3":
+    decoy: "as paperwork does"
+  "12.5":
+    decoy: "every Tuesday"
+  "12.6":
+    decoy: "from the kitchen"
+  "13.5":
+    decoy: "from home"
+  "14.0":
+    decoy: "some nurses"
+  "14.1":
+    decoy: "at the clinic"
+  "14.3":
+    decoy: "on the phone"
+  "15.6":
+    decoy: "calling a taxi"
+  "16.0":
+    decoy: "from afar"
+  "16.2":
+    decoy: "in the conference room"
+  "16.3":
+    decoy: "to the radio"
+  "17.0":
+    decoy: "at the nurses' desk"
+  "17.2":
+    decoy: "to the lobby"
+  "17.3":
+    decoy: "not later"
+  "17.4":
+    decoy: "last year"
+  "17.5":
+    decoy: "at this hour"
+  "18.1":
+    decoy: "in the next room"
+  "18.4":
+    decoy: "by the stairs"
+  "18.6":
+    decoy: "in the hall"
+  "19.1":
+    decoy: "his bus route"
+  "19.5":
+    decoy: "at noon"
+  "20.0":
+    decoy: "at the hospital"
+  "20.5":
+    decoy: "for her colleagues"
+  "20.6":
+    decoy: "to the parking lot"
