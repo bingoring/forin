@@ -6,9 +6,13 @@
 **Decisions (audit):** [DECISIONS.md](DECISIONS.md)
 **Last updated:** 2026-10-16
 
-> ▶️ **ICU·OR 나머지 66주제 한 번에 저작 — Workflow 실행 중(2026-10-16, 사용자 opt-in).** 주제마다 Sonnet 저작 A‖B → combine → Opus 검토 A‖B
-> (+ Fable 표본 icu-post-arrest·or-massive-transfusion) → Sonnet 수정. ICU v45b 8주제도 다시 저작. 작업 공간 `server/content/tools/wip/icu-or-rest/`,
-> 브랜치 `content/icu-or-onepass-rest`. 정본 합치기·커밋은 결과 확인 뒤. 배포: PR #18 prod promote 완료, PR #19 staging 배포·seed 완료 → prod promote 승인 대기 → prod seed.
+> ⏸️ **다음 세션 시작점 (2026-10-16 인계) — ICU·OR 나머지 66주제 한 번에 저작, Workflow 중단(사용자 지시).**
+> - 상태·재개 방법 정본: [`server/content/tools/wip/icu-or-rest/README.md`](../../../../server/content/tools/wip/icu-or-rest/README.md) (재개용 `workflow.js`·`args.json` 같은 폴더, 브랜치 `content/icu-or-onepass-rest`, 마지막 커밋 `cab025e`).
+> - **ICU 8주제 A·B 저작 끝** (ards-proning·arrhythmia·cardiogenic·hemodynamics·mech-ventilation·resp-support·sedation·shock) → combine부터. **2주제 A만**(airway·delirium) → B부터.
+>   끊긴 4주제(infection-prevention·pain-nonverbal·post-arrest·sepsis)는 처음부터. 나머지 ICU 19 + OR 33 미착수. 정본에는 아직 아무것도 안 합침.
+> - Workflow 주의: 파이프라인이라 TaskStop 말고는 새 에이전트를 막을 수 없고 멈추면 돌던 것도 끊김 → **topics를 10~15개씩 잘라** 돌릴 것. 새 세션에서 Workflow opt-in 재확인.
+> - 배포: PR #18(파일럿 4주제·비속어 정리·V21)·#19(keyPhrase 8건·W18~W21) **prod promote 완료**, prod seed 실행(승인 후 진행) — 다음 세션에서 결과 확인.
+> - 비용 참고: 주제당 Fable 빼고 약 122만 토큰, 66주제 약 8,000만. 이번 중단까지 저작 약 20회분(약 450만) 사용.
 
 > 🔧 **파일럿 후속(2026-10-16, 사용자 결정 '제안대로'):** PR #18 머지 → staging 배포·seed 완료, prod promote 승인 대기. keyPhrase 8건 바꿈·1건 유지
 > (단정 위로 4 완곡화, 기증 = 전문팀 연결 + 상황 brief·goal 정렬, rescue NIV에 'if the physician agrees', vaporizers removed, MH 선언은 마취과 — 같은 상황 비KP 1문장 포함),
@@ -108,7 +112,12 @@
 > - [x] ~~v22 발음 루프 최종 교차 리뷰~~ — 2026-10-10 실행, [`pronunciation/cross-review.md`](02-construction/pronunciation/cross-review.md): 차단 1(durationMs 0 — 고침)·중요 5·사소 14. 중요 처리(2026-10-10): I5 음절 라벨 철자(`c2c4f27`)·I2 `pronunciationEnabled`로 진입점 숨김, 못 읽으면 보임(`b23cb30`)·I3 `/stt` 검증 공유+무대본 평가 1회, 실패 시 STT 폴백(`46160f0`, 로컬 Azure 스모크 200·scored)·I4 참조 생성 사용자별 일일 200(UTC, `SPEECH_REFERENCE_DAILY_LIMIT`, 캐시 히트 제외, Redis fail-open, 429 `reference_quota_exceeded`)(`81a8051`). I1 Android 녹음 — expo-audio `useAudioStream` PCM16 → 앱에서 RIFF 헤더(`lib/wav.ts`, Android 전용 `useWavRecorder.android.ts`, 대화 화면도), 16kHz 아니면 보간(`86b5989`). 앱 함수로 만든 WAV를 로컬 서버 `/pronunciation`에 보내 200·overall 95·durationMs 4408 확인. **Android 실기 미확인**(에뮬레이터 AVD 없음 — 발음·대화 녹음 200, 파형, 9.5초 자동 정지, R7 임시 파일 삭제, 보간 경로 음질). **사소 14건·I4 (c)·rateLimit 처리(2026-10-10, 상세는 cross-review §6):** S1 origin 허용집합 8종+모바일 `PronOrigin`(`bf4ce01`)·S2 advisory lock(`a58a038`)·S9 공백 문장 400(`8fcc8aa`)·S4 STT 15초 상한/S10 실제 샘플레이트 Content-Type/S11 캐시 쓰기 실패 로그/S13 주석/S14b 로케일 1회(`996e458`)·I4(c) 마이그레이션 `000044_speech_reference_last_used`+`cmd/speechrefgc`(`9c57fd6`, 스케줄 미등록)·rateLimit `TRUSTED_PROXY_HOPS`(기본 staging/prod 1, 그 외 0)+유휴 정리(`1380df9`)·S3/S5/S8 모바일(`f77bd66`, 문구 `pron.tryNo` 4개 언어). **안 함:** S6 다음 문장 배선·S7 약물명 하이라이트(진입점별 정책/새 계약 — 보류, build-spec §7)·S14 a/c/d. **I4 (b)(참조를 커리큘럼 문장으로 제한)는 정책 결정이라 남김.** 남은 것: I4 (b), 계정·이력 삭제 경로(자유 발화 문장 보존), Android 실기.
 > - [x] ~~CI 실 DB 테스트~~ — 2026-10-10 server CI에 Postgres 16 서비스(`fb8988a`), 약 50개 DB 테스트가 CI에서 실행·통과(PR #14). contract drift도 고침(`317e8d7`).
 > - [ ] 커리큘럼 v3 fan-out: WARD·미태깅 140건·라이브 전환.
-> - [ ] 다른 부서 v46 콘텐츠(이번 결정은 ER만).
+> - [ ] **ICU·OR 나머지 66주제 한 번에 저작**(진행 중 — 위 인계, `wip/icu-or-rest/README.md`) → 정본 합치기·검사·시뮬레이터·PR·배포.
+> - [ ] 26개 부서(v44부터) 한 번에 저작 — 부서당 약 5,000만, 합계 약 11억 토큰. ICU·OR 결과를 보고 범위·순서 결정(사용자).
+> - [ ] `briefing.line` 연결: 시드 스키마(`cmd/gencontent/seeds.go`)·gencontent·`merge_dept_lessons.py`/`export_dept_lessons.py`에 `line` 필드 → 그 뒤 ER부터 저작(지시서에 추가).
+> - [ ] 결정 대기 keyPhrase: ICU 기증 "There's no pressure — we'll follow whatever you decide."(본인 기증 등록은 가족이 못 뒤집음, UAGA), OR 다른 주제 "Talk to him gently — he can hear you."(단정), 그리고 ICU·OR 66주제 검토가 새로 낼 목록.
+> - [ ] ER 정본 W18~W21 경고 수백 건(decoy·빈칸 오답 되풀이, 어간 되풀이, slider 편향, 확인 뒤집는 빈칸 오답) 정리 여부 — 사용자 결정.
+> - [ ] 검사기에 없는 것: 문장 decoy·빈칸·오답 ko의 비속어 검사(V21은 단어 오답 조각만), slider '응답 고르기' 허용 기준 문서화(사용자 허용 2026-10-16).
 > - [ ] 스토어: iOS 1.0.0(19) **altool로 업로드 완료(2026-10-12, Delivery 97d374c7…)** — Apple 처리 후 TestFlight 확인 필요. ASC `/v1/builds` 403이 남아 EAS submit은 막힘(배포 §12.8) — ASC 상단 '대한민국 규정 준수 요구 사항' 완료 필요. Android Play 신원 확인.
 > - [ ] 모바일 전체 jest를 한 번에 돌리면 부하로 매번 다른 스위트가 시간 초과(따로 돌리면 통과) — 원인 미확인.
 > **T8 시뮬레이터 대조 완료(2026-10-09):** 대화 E 같음, C6 고침 2건(본문 스크롤·윗줄 덮음 — 사용자 결정, §7). 대시 표기 공백 대시로 통일(사용자 결정, `b42e320`).
