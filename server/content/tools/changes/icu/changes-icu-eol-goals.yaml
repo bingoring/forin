@@ -610,3 +610,63 @@ changes:
   - en
   - ipa
   why: 헤드워드를 구(by yourself)로 — yourself 만으로는 '혼자서'가 안 나온다(결정 11)
+- kind: sentence
+  situation: 인공호흡기 철회 중 증상 급변 관리
+  index: 2
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-10-16 사용자 결정): she''ll settle(결과 장담) → we''ll keep her comfortable; −w-settle +w-comfortable'
+- kind: word-remove
+  id: w-settle
+  why: 'keyPhrase 교체(2026-10-16 사용자 결정): 바꾼 문장에 settle이 없어 어느 문장도 태그하지 않게 됐다'
+- kind: sentence
+  situation: 임종 급변·가족 위기 대응
+  index: 0
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-10-16 사용자 결정): I won''t leave(지킬 수 없는 약속) → I''ll stay as long as I can; −w-leave +w-stay'
+- kind: sentence
+  situation: 임종 급변·가족 위기 대응
+  index: 1
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-10-16 사용자 결정): he''s not in pain(단정) → he seems comfortable(관찰); −w-pain +w-comfortable'
+- kind: word
+  id: w-passing
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-16 사용자 결정): 예문을 바꾼 문장으로'
+- kind: sentence
+  situation: 임종 급변·가족 위기 대응
+  index: 2
+  fields:
+  - en
+  - ko
+  - chunks
+  why: 'keyPhrase 교체(2026-10-16 사용자 결정): he can hear you(단정) → he may still hear you'
+- kind: sentence
+  situation: 장기기증 옵션 소통
+  index: 0
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-10-16 사용자 결정): 간호사가 기증을 먼저 권하지 않음(CMS — OPO·지정 요청자) → 원하면 기증 전문가에게 연결; −w-option −w-meaningful +w-specialist'
+- kind: word
+  id: w-donation
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-16 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word-remove
+  id: w-meaningful
+  why: 'keyPhrase 교체(2026-10-16 사용자 결정): 바꾼 문장에 meaningful이 없어 어느 문장도 태그하지 않게 됐다'

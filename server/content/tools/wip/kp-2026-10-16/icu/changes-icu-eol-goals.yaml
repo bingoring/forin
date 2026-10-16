@@ -1,0 +1,672 @@
+theme: icu-eol-goals
+changes:
+- kind: word-remove
+  id: w-father
+  why: 너무 쉬움 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-family
+  why: 너무 쉬움 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-mother
+  why: 너무 쉬움 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-doctor
+  why: 너무 쉬움 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-room
+  why: 너무 쉬움 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-see
+  why: 너무 쉬움 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-hand
+  why: 너무 쉬움 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-night
+  why: 너무 쉬움 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-time
+  why: 너무 쉬움 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-body
+  why: 너무 쉬움 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-good
+  why: 너무 쉬움 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-hour
+  why: 너무 쉬움 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-today
+  why: 너무 쉬움 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-day
+  why: 너무 쉬움 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-other
+  why: 너무 쉬움 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-week
+  why: 너무 쉬움 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-again
+  why: 너무 쉬움 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-thing
+  why: 너무 쉬움 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-over
+  why: 너무 쉬움 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-go
+  why: 너무 쉬움 — 어느 문장도 태그하지 않게 됐다
+- kind: word
+  id: w-like
+  fields:
+  - ko
+  why: want와 ko가 같은 '원하다'라 듣고 뜻 고르기에서 정답이 둘이 된다
+- kind: word
+  id: w-list
+  fields:
+  - ko
+  why: 차트에 항목이 적혀 있다는 뜻 — '기록하다'는 document와 겹치고 뜻도 어긋난다
+- kind: word
+  id: w-dnr
+  fields:
+  - ko
+  why: DNR은 '거부'가 아니라 소생술을 하지 않는다는 지시
+- kind: word
+  id: w-check
+  fields:
+  - ko
+  why: confirm과 ko가 같은 '확인하다'라 정답이 둘이 된다
+- kind: word
+  id: w-manage
+  fields:
+  - ko
+  why: adjust와 ko가 같은 '조절하다'라 정답이 둘이 된다
+- kind: word
+  id: w-heavy
+  fields:
+  - ko
+  why: hard와 ko가 같은 '힘든'이라 정답이 둘이 된다 — 문장은 마음이 무거운 날
+- kind: word
+  id: w-matter
+  fields:
+  - ko
+  why: important와 ko가 같은 '중요하다/중요한'이라 정답이 둘이 된다
+- kind: word
+  id: w-settle
+  fields:
+  - ko
+  why: settled와 ko가 같은 '안정되다/안정된'이라 정답이 둘이 된다
+- kind: word
+  id: w-weaning
+  fields:
+  - ko
+  why: weaning은 젖떼기식 '이유'가 아니라 호흡기 지원을 단계적으로 떼는 것
+- kind: word
+  id: w-put
+  fields:
+  - ko
+  why: put that in plainer terms는 '놓다'가 아니라 말로 표현하다
+- kind: word
+  id: w-restlessness
+  fields:
+  - ko
+  why: restlessness는 가만히 있지 못하는 초조·불안 — '불안정함'은 상태 불안정으로 읽힌다
+- kind: word
+  id: w-speed
+  fields:
+  - ko
+  why: hasten의 ko와 같은 '앞당기다/서두르게 하다' 계열을 가르고 뜻을 분명히
+- kind: word-add
+  id: w-speak
+  why: w-mother(쉬운 단어)를 태그에서 빼면 이 문장에 가르칠 단어가 없어 — 문장에 이미 있는 speak
+- kind: word-add
+  id: w-meeting
+  why: w-meet(만나다) 태그 4문장 중 3문장이 명사 meeting — 헤드워드 ko와 어긋나 명사를 별도 단어로
+- kind: sentence
+  situation: 사전연명의향·DNR 확인
+  index: 0
+  fields:
+  - words
+  why: '쉬운 단어 태그를 빼거나 헤드워드를 맞춘다: −w-father'
+- kind: sentence
+  situation: 사전연명의향·DNR 확인
+  index: 6
+  fields:
+  - words
+  - chunks
+  why: '쉬운 단어 태그를 빼거나 헤드워드를 맞춘다: −w-family / chunks 구 경계 정리(검토)'
+- kind: sentence
+  situation: 목표설정 대화 준비 지원
+  index: 1
+  fields:
+  - words
+  why: '쉬운 단어 태그를 빼거나 헤드워드를 맞춘다: −w-mother'
+- kind: sentence
+  situation: 목표설정 대화 준비 지원
+  index: 2
+  fields:
+  - words
+  why: '쉬운 단어 태그를 빼거나 헤드워드를 맞춘다: −w-doctor'
+- kind: sentence
+  situation: 목표설정 대화 준비 지원
+  index: 3
+  fields:
+  - words
+  why: '쉬운 단어 태그를 빼거나 헤드워드를 맞춘다: w-mother→w-speak'
+- kind: sentence
+  situation: 목표설정 대화 준비 지원
+  index: 5
+  fields:
+  - words
+  why: '쉬운 단어 태그를 빼거나 헤드워드를 맞춘다: w-meet→w-meeting'
+- kind: sentence
+  situation: 목표설정 대화 준비 지원
+  index: 6
+  fields:
+  - words
+  why: '쉬운 단어 태그를 빼거나 헤드워드를 맞춘다: w-meet→w-meeting'
+- kind: sentence
+  situation: 임종기 증상 사정
+  index: 4
+  fields:
+  - words
+  why: '쉬운 단어 태그를 빼거나 헤드워드를 맞춘다: −w-room'
+- kind: sentence
+  situation: 임종기 증상 사정
+  index: 6
+  fields:
+  - words
+  why: '쉬운 단어 태그를 빼거나 헤드워드를 맞춘다: −w-see'
+- kind: sentence
+  situation: 가족 면회·임종 지지
+  index: 0
+  fields:
+  - words
+  why: '쉬운 단어 태그를 빼거나 헤드워드를 맞춘다: −w-hand'
+- kind: sentence
+  situation: 가족 면회·임종 지지
+  index: 1
+  fields:
+  - words
+  - ko
+  why: '쉬운 단어 태그를 빼거나 헤드워드를 맞춘다: −w-go / ko 오역·어색한 번역 수정(검토)'
+- kind: sentence
+  situation: 가족 면회·임종 지지
+  index: 3
+  fields:
+  - words
+  why: '쉬운 단어 태그를 빼거나 헤드워드를 맞춘다: −w-night'
+- kind: sentence
+  situation: 사후 처치·존엄 관리
+  index: 0
+  fields:
+  - words
+  why: '쉬운 단어 태그를 빼거나 헤드워드를 맞춘다: −w-time'
+- kind: sentence
+  situation: 목표설정 회의 소통 지원
+  index: 2
+  fields:
+  - words
+  - ko
+  why: '쉬운 단어 태그를 빼거나 헤드워드를 맞춘다: −w-doctor / ko 오역·어색한 번역 수정(검토)'
+- kind: sentence
+  situation: 목표설정 회의 소통 지원
+  index: 3
+  fields:
+  - words
+  why: '쉬운 단어 태그를 빼거나 헤드워드를 맞춘다: −w-body'
+- kind: sentence
+  situation: 목표설정 회의 소통 지원
+  index: 5
+  fields:
+  - words
+  why: '쉬운 단어 태그를 빼거나 헤드워드를 맞춘다: w-meet→w-meeting'
+- kind: sentence
+  situation: 연명치료 중단 계획 실행
+  index: 5
+  fields:
+  - words
+  - en
+  - ko
+  - chunks
+  why: '쉬운 단어 태그를 빼거나 헤드워드를 맞춘다: −w-family / 환자 상태가 아니라 의료진이 정할 수 있는 단계의 속도만 약속하도록 고침(검토 A S3)'
+- kind: sentence
+  situation: 인공호흡기 철회 준비
+  index: 2
+  fields:
+  - words
+  why: '쉬운 단어 태그를 빼거나 헤드워드를 맞춘다: −w-time'
+- kind: sentence
+  situation: 인공호흡기 철회 준비
+  index: 6
+  fields:
+  - words
+  - chunks
+  why: '쉬운 단어 태그를 빼거나 헤드워드를 맞춘다: −w-time / chunks 구 경계 정리(검토)'
+- kind: sentence
+  situation: 임종기 진정·진통 적정
+  index: 5
+  fields:
+  - words
+  - chunks
+  why: '쉬운 단어 태그를 빼거나 헤드워드를 맞춘다: −w-body / chunks 구 경계 정리(검토)'
+- kind: sentence
+  situation: 죽음의 질 지표 관리
+  index: 0
+  fields:
+  - words
+  why: '쉬운 단어 태그를 빼거나 헤드워드를 맞춘다: −w-body'
+- kind: sentence
+  situation: 죽음의 질 지표 관리
+  index: 4
+  fields:
+  - words
+  why: '쉬운 단어 태그를 빼거나 헤드워드를 맞춘다: −w-good'
+- kind: sentence
+  situation: 죽음의 질 지표 관리
+  index: 5
+  fields:
+  - words
+  why: '쉬운 단어 태그를 빼거나 헤드워드를 맞춘다: −w-hour'
+- kind: sentence
+  situation: 완화의료팀 협진 연계
+  index: 4
+  fields:
+  - words
+  why: '쉬운 단어 태그를 빼거나 헤드워드를 맞춘다: −w-family'
+- kind: sentence
+  situation: 완화의료팀 협진 연계
+  index: 5
+  fields:
+  - words
+  why: '쉬운 단어 태그를 빼거나 헤드워드를 맞춘다: −w-time, −w-today'
+- kind: sentence
+  situation: 문화·종교 임종 요구 반영
+  index: 0
+  fields:
+  - words
+  why: '쉬운 단어 태그를 빼거나 헤드워드를 맞춘다: −w-family'
+- kind: sentence
+  situation: 문화·종교 임종 요구 반영
+  index: 1
+  fields:
+  - words
+  why: '쉬운 단어 태그를 빼거나 헤드워드를 맞춘다: −w-time'
+- kind: sentence
+  situation: 문화·종교 임종 요구 반영
+  index: 6
+  fields:
+  - words
+  why: '쉬운 단어 태그를 빼거나 헤드워드를 맞춘다: −w-family'
+- kind: sentence
+  situation: 가족 예기 애도 지원
+  index: 4
+  fields:
+  - words
+  - ko
+  why: '쉬운 단어 태그를 빼거나 헤드워드를 맞춘다: −w-day, −w-other / ko 오역·어색한 번역 수정(검토)'
+- kind: sentence
+  situation: 가족 예기 애도 지원
+  index: 6
+  fields:
+  - words
+  why: '쉬운 단어 태그를 빼거나 헤드워드를 맞춘다: −w-week'
+- kind: sentence
+  situation: 장기기증 옵션 소통
+  index: 0
+  fields:
+  - words
+  why: '쉬운 단어 태그를 빼거나 헤드워드를 맞춘다: −w-family'
+- kind: sentence
+  situation: 장기기증 옵션 소통
+  index: 3
+  fields:
+  - words
+  why: '쉬운 단어 태그를 빼거나 헤드워드를 맞춘다: −w-time'
+- kind: sentence
+  situation: 장기기증 옵션 소통
+  index: 6
+  fields:
+  - words
+  why: '쉬운 단어 태그를 빼거나 헤드워드를 맞춘다: −w-time, −w-today'
+- kind: sentence
+  situation: 인공호흡기 철회 중 증상 급변 관리
+  index: 3
+  fields:
+  - words
+  why: '쉬운 단어 태그를 빼거나 헤드워드를 맞춘다: −w-body'
+- kind: sentence
+  situation: 인공호흡기 철회 중 증상 급변 관리
+  index: 5
+  fields:
+  - words
+  - en
+  - ko
+  - chunks
+  why: '쉬운 단어 태그를 빼거나 헤드워드를 맞춘다: −w-room, −w-again / ''I won''t leave this room until…'' 무조건 약속을 처치 중 곁에 있겠다는 말로 고침(검토 A S4)'
+- kind: sentence
+  situation: 인공호흡기 철회 중 증상 급변 관리
+  index: 6
+  fields:
+  - words
+  - chunks
+  why: '쉬운 단어 태그를 빼거나 헤드워드를 맞춘다: −w-thing, −w-over / chunks 구 경계 정리(검토)'
+- kind: sentence
+  situation: 무의미한 치료 요구 갈등
+  index: 5
+  fields:
+  - words
+  why: '쉬운 단어 태그를 빼거나 헤드워드를 맞춘다: −w-body'
+- kind: sentence
+  situation: 임종 급변·가족 위기 대응
+  index: 5
+  fields:
+  - words
+  - chunks
+  why: '쉬운 단어 태그를 빼거나 헤드워드를 맞춘다: −w-go / chunks 구 경계 정리(검토)'
+- kind: sentence
+  situation: 젊은 환자 임종 특수 상황
+  index: 2
+  fields:
+  - words
+  - ko
+  why: '쉬운 단어 태그를 빼거나 헤드워드를 맞춘다: −w-family / ko 오역·어색한 번역 수정(검토)'
+- kind: sentence
+  situation: 목표설정 대화 준비 지원
+  index: 4
+  fields:
+  - ko
+  why: ko 오역·어색한 번역 수정(검토)
+- kind: sentence
+  situation: 임종기 증상 사정
+  index: 0
+  fields:
+  - ko
+  why: ko 오역·어색한 번역 수정(검토)
+- kind: sentence
+  situation: 임종기 증상 사정
+  index: 3
+  fields:
+  - chunks
+  why: chunks 구 경계 정리(검토)
+- kind: sentence
+  situation: 편안함 중심 간호
+  index: 5
+  fields:
+  - chunks
+  why: chunks 구 경계 정리(검토)
+- kind: sentence
+  situation: 목표설정 회의 소통 지원
+  index: 4
+  fields:
+  - words
+  why: 뜻이 다른 자리에 붙은 태그를 뺌(결정 11)
+- kind: sentence
+  situation: 목표설정 회의 소통 지원
+  index: 6
+  fields:
+  - words
+  why: 뜻이 다른 자리에 붙은 태그를 뺌(결정 11)
+- kind: sentence
+  situation: 연명치료 중단 계획 실행
+  index: 3
+  fields:
+  - chunks
+  why: chunks 구 경계 정리(검토)
+- kind: sentence
+  situation: 인공호흡기 철회 준비
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 보장형 안심('She won't suffer')을 지킬 수 있는 약속으로 고침(검토 A S1)
+- kind: sentence
+  situation: 인공호흡기 철회 준비
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: '''she won''t feel that'' 단정을 ''expected + keep her comfortable''로 고침(검토 A S2)'
+- kind: sentence
+  situation: 인공호흡기 철회 준비
+  index: 5
+  fields:
+  - ko
+  why: ko 오역·어색한 번역 수정(검토)
+- kind: sentence
+  situation: 임종기 진정·진통 적정
+  index: 1
+  fields:
+  - ko
+  why: ko 오역·어색한 번역 수정(검토)
+- kind: sentence
+  situation: 임종기 진정·진통 적정
+  index: 3
+  fields:
+  - ko
+  why: ko 오역·어색한 번역 수정(검토)
+- kind: sentence
+  situation: 임종기 진정·진통 적정
+  index: 6
+  fields:
+  - words
+  why: 뜻이 다른 자리에 붙은 태그를 뺌(결정 11)
+- kind: sentence
+  situation: 죽음의 질 지표 관리
+  index: 3
+  fields:
+  - words
+  why: 뜻이 다른 자리에 붙은 태그를 뺌(결정 11)
+- kind: sentence
+  situation: 완화의료팀 협진 연계
+  index: 6
+  fields:
+  - words
+  why: 뜻이 다른 자리에 붙은 태그를 뺌(결정 11)
+- kind: sentence
+  situation: 문화·종교 임종 요구 반영
+  index: 5
+  fields:
+  - words
+  why: 뜻이 다른 자리에 붙은 태그를 뺌(결정 11)
+- kind: sentence
+  situation: 장기기증 옵션 소통
+  index: 4
+  fields:
+  - chunks
+  why: chunks 구 경계 정리(검토)
+- kind: sentence
+  situation: 가족 내 목표 불일치 위기
+  index: 3
+  fields:
+  - words
+  why: 뜻이 다른 자리에 붙은 태그를 뺌(결정 11)
+- kind: sentence
+  situation: 가족 내 목표 불일치 위기
+  index: 5
+  fields:
+  - en
+  - ko
+  - chunks
+  why: 부자연스러운 영어를 고침(검토 A S5)
+- kind: sentence
+  situation: 가족 내 목표 불일치 위기
+  index: 6
+  fields:
+  - chunks
+  why: chunks 구 경계 정리(검토)
+- kind: sentence
+  situation: 젊은 환자 임종 특수 상황
+  index: 3
+  fields:
+  - ko
+  why: ko 오역·어색한 번역 수정(검토)
+- kind: sentence
+  situation: 젊은 환자 임종 특수 상황
+  index: 5
+  fields:
+  - chunks
+  why: chunks 구 경계 정리(검토)
+- kind: sentence
+  situation: 젊은 환자 임종 특수 상황
+  index: 6
+  fields:
+  - chunks
+  why: chunks 구 경계 정리(검토)
+- kind: word
+  id: w-clean
+  fields:
+  - ko
+  why: 문장에 형용사(keep her clean)와 동사(clean and dress)가 함께 있어 ko를 '깨끗한·씻다'로(판정 A)
+- kind: word
+  id: w-rush
+  fields:
+  - ko
+  why: 문장이 명사(no rush)라 ko를 '서두름'으로(판정 A)
+- kind: word
+  id: w-once
+  fields:
+  - ko
+  - example
+  why: ko를 태그 문장(once helped·once meant)에 맞게 '한때'로, 예문도 같은 문장으로(결정 11)
+- kind: word
+  id: w-happen
+  fields:
+  - example
+  why: 예문이 바뀐 문장(검토 A S1~S5)을 따라 예문을 맞춤
+- kind: word
+  id: w-faster
+  fields:
+  - example
+  why: 예문이 바뀐 문장(검토 A S1~S5)을 따라 예문을 맞춤
+- kind: word
+  id: w-suffer
+  fields:
+  - example
+  why: 예문이 바뀐 문장(검토 A S1~S5)을 따라 예문을 맞춤
+- kind: word
+  id: w-prepare
+  fields:
+  - example
+  why: 예문이 바뀐 문장(검토 A S1~S5)을 따라 예문을 맞춤
+- kind: word
+  id: w-breath
+  fields:
+  - example
+  why: 예문이 바뀐 문장(검토 A S1~S5)을 따라 예문을 맞춤
+- kind: word
+  id: w-irregular
+  fields:
+  - example
+  why: 예문이 바뀐 문장(검토 A S1~S5)을 따라 예문을 맞춤
+- kind: word
+  id: w-entire
+  fields:
+  - ko
+  why: ko '온전한'이 the entire time 의 뜻과 어긋나 '꼬박'으로(결정 11 — '내내'는 w-throughout 의 ko)
+- kind: word
+  id: w-best
+  fields:
+  - ko
+  why: ko를 '가장 잘'에서 문장들(do our best·what's best)에 맞게 '최선·가장 좋은'으로(결정 11)
+- kind: word
+  id: w-page
+  fields:
+  - en
+  - ko
+  - ipa
+  why: 헤드워드를 구(on the same page)로 — page 만으로는 '같은 내용'이라는 뜻이 안 나온다(결정 11)
+- kind: word
+  id: w-through
+  fields:
+  - ko
+  why: ko '헤쳐서'가 with you through it·through every step 의 뜻과 어긋나 '거쳐서'로(결정 11)
+- kind: word
+  id: w-choose
+  fields:
+  - ko
+  why: ko '편들다'는 choose sides 라는 구의 뜻 — 헤드워드 뜻 '고르다'로(결정 11)
+- kind: word
+  id: w-disagree
+  fields:
+  - example
+  why: 예문이 바뀐 문장(검토 A S1~S5)을 따라 예문을 맞춤
+- kind: word
+  id: w-lack
+  fields:
+  - ko
+  why: ko '없다'를 lack 의 뜻에 맞게 '결여하다'로(결정 11)
+- kind: word
+  id: w-yourself
+  fields:
+  - en
+  - ipa
+  why: 헤드워드를 구(by yourself)로 — yourself 만으로는 '혼자서'가 안 나온다(결정 11)
+- kind: sentence
+  situation: 인공호흡기 철회 중 증상 급변 관리
+  index: 2
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-10-16 사용자 결정): she''ll settle(결과 장담) → we''ll keep her comfortable; −w-settle +w-comfortable'
+- kind: word-remove
+  id: w-settle
+  why: 'keyPhrase 교체(2026-10-16 사용자 결정): 바꾼 문장에 settle이 없어 어느 문장도 태그하지 않게 됐다'
+- kind: sentence
+  situation: 임종 급변·가족 위기 대응
+  index: 0
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-10-16 사용자 결정): I won''t leave(지킬 수 없는 약속) → I''ll stay as long as I can; −w-leave +w-stay'
+- kind: sentence
+  situation: 임종 급변·가족 위기 대응
+  index: 1
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-10-16 사용자 결정): he''s not in pain(단정) → he seems comfortable(관찰); −w-pain +w-comfortable'
+- kind: word
+  id: w-passing
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-16 사용자 결정): 예문을 바꾼 문장으로'
+- kind: sentence
+  situation: 임종 급변·가족 위기 대응
+  index: 2
+  fields:
+  - en
+  - ko
+  - chunks
+  why: 'keyPhrase 교체(2026-10-16 사용자 결정): he can hear you(단정) → he may still hear you'
+- kind: sentence
+  situation: 장기기증 옵션 소통
+  index: 0
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-10-16 사용자 결정): 간호사가 기증을 먼저 권하지 않음(CMS — OPO·지정 요청자) → 원하면 기증 전문가에게 연결; −w-option −w-meaningful +w-specialist'
+- kind: word
+  id: w-donation
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-16 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word-remove
+  id: w-meaningful
+  why: 'keyPhrase 교체(2026-10-16 사용자 결정): 바꾼 문장에 meaningful이 없어 어느 문장도 태그하지 않게 됐다'

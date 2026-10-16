@@ -85275,7 +85275,7 @@
     - 의학용어 과용 금지
   keyPhrases:
     - We're doing a trigger-free anesthetic.
-    - The machine is flushed and the vaporizers are off.
+    - The machine is flushed and the vaporizers are removed.
     - TIVA is drawn up and ready.
   acuity: routine
   steps: []
@@ -85334,27 +85334,27 @@
             - en: exam
             - en: scan
             - en: anesthetic
-    - en: The machine is flushed and the vaporizers are off.
-      ko: 기계는 세척되어 있고 기화기는 꺼져 있어요.
+    - en: The machine is flushed and the vaporizers are removed.
+      ko: 기계는 세척되어 있고 기화기는 제거되어 있어요.
       chunks:
         - The machine
         - is flushed
         - and the vaporizers
-        - are off
+        - are removed
         - .
       words:
         - w-machine
         - w-flush
         - w-vaporizer
-        - w-off
+        - w-remove
       goal: 2
       tag: 기계 상태
       icon: gear
-      why: is flushed는 수동태라 누가 했는지보다 지금 상태가 어떤지를 말해요. flushed와 off를 and로 묶어 유발 약물이 남지 않았는지를 한 문장에 보고해요.
+      why: is flushed와 are removed는 수동태라 누가 했는지보다 지금 상태가 어떤지를 말해요. 기화기는 꺼 둔 것(off)이 아니라 제거됐다(removed)고 보고해야 유발 가스가 나올 여지가 없다는 뜻이 돼요.
       decoy: are full
       distractorsKo:
-        - 기계는 세척되어 있고 기화기는 라벨돼 있어요.
-        - 침대는 세척되어 있고 기화기는 꺼져 있어요.
+        - 기계는 세척되어 있고 기화기는 라벨되어 있어요.
+        - 침대는 세척되어 있고 기화기는 제거되어 있어요.
       blank:
         answer: flushed
         options:
@@ -85447,7 +85447,6 @@
         - w-machine
         - w-flush
         - w-vaporizer
-        - w-off
         - w-remove
       why: 기화기를 꺼 둔 것과 제거하거나 쓰지 못하게 해 둔 것은 달라요. 유발 가스가 나올 여지가 남지 않도록 병원 체크리스트와 기계 지침대로 처리해요. 이미 준비 중인 케이스를 그냥 포기할 일도 아니에요.
       cue: For an MH-susceptible patient, anesthesia says the machine is flushed and the vaporizers are turned off, but they're still mounted on the machine.
@@ -85488,9 +85487,9 @@
           icon: board
           ko: 저희는 유발약 없는 마취를 할 거예요
           note: 방침
-        - en: The machine is flushed and the vaporizers are off.
+        - en: The machine is flushed and the vaporizers are removed.
           icon: gear
-          ko: 기계는 세척됐고 기화기는 꺼져 있어요
+          ko: 기계는 세척됐고 기화기는 제거됐어요
           note: 상태
         - en: Let's double-check the vaporizers are removed from it.
           icon: check
@@ -86293,7 +86292,7 @@
     - 환자를 배려하며 명확히 소통
     - 의학용어 과용 금지
   keyPhrases:
-    - This is malignant hyperthermia — I'm declaring it.
+    - Anesthesia has declared malignant hyperthermia — I'm getting the MH cart.
     - Get the MH cart and call for help now.
     - Stop all triggering agents immediately.
   acuity: critical
@@ -86328,31 +86327,35 @@
     riskyPhrases: []
   theme: or-malignant-hyperthermia
   sentences:
-    - en: This is malignant hyperthermia — I'm declaring it.
-      ko: 이건 악성 고열이에요 — 지금 선언할게요.
+    - en: Anesthesia has declared malignant hyperthermia — I'm getting the MH cart.
+      ko: 마취과에서 악성 고열을 선언했어요 — 제가 MH 카트를 가져올게요.
       chunks:
-        - This is
+        - Anesthesia has declared
         - malignant hyperthermia
-        - — I'm declaring it
+        - —
+        - I'm getting
+        - the MH cart
         - .
       words:
-        - w-mhfull
         - w-declare
+        - w-mhfull
+        - w-mh
+        - w-cart
       goal: 1
-      tag: 위기 선언
+      tag: 선언 전달
       icon: siren
-      why: I'm declaring it은 진단을 말하는 데서 한 걸음 나아가 팀 전체가 프로토콜로 움직이게 하는 선언이에요. 한 사람이 큰 소리로 선언해야 모두가 같은 때에 시작해요.
-      decoy: I'm drawing it
+      why: MH 선언은 마취과가 내리는 판단이라, 간호사는 has declared로 이미 내려진 선언을 팀에 알려요. 곧바로 I'm getting the MH cart로 자기가 맡은 일을 밝혀, 같은 일을 둘이 하거나 빠뜨리지 않게 해요.
+      decoy: the OR schedule
       distractorsKo:
-        - 이건 악성 고열이에요 — 지금 시간을 적을게요.
-        - 이건 악성 고열이에요 — 지금 카트를 열게요.
+        - 마취과에서 악성 고열을 선언했어요 — 제가 얼음팩을 가져올게요.
+        - 외과에서 악성 고열을 선언했어요 — 제가 MH 카트를 가져올게요.
       blank:
-        answer: declaring
+        answer: declared
         options:
-            - en: drawing
-            - en: filing
-            - en: packing
-            - en: declaring
+            - en: declared
+            - en: excluded
+            - en: reversed
+            - en: treated
     - en: Get the MH cart and call for help now.
       ko: MH 카트를 가져오고 지금 도움을 요청하세요.
       chunks:
@@ -86408,10 +86411,10 @@
             - en: immediately
             - en: eventually
             - en: politely
-    - en: I'm calling it — this is MH, and we start the protocol now.
-      ko: 지금 선언할게요 — 이건 MH이고, 지금 프로토콜을 시작합니다.
+    - en: Anesthesia is calling it — this is MH, and we start the protocol now.
+      ko: 마취과가 선언했어요 — 이건 MH이고, 지금 프로토콜을 시작합니다.
       chunks:
-        - I'm calling it
+        - Anesthesia is calling it
         - — this is MH
         - ', and we start'
         - the protocol now
@@ -86422,11 +86425,11 @@
       goal: 1
       tag: 프로토콜 시작
       icon: siren
-      why: calling it은 판단을 확정해 말한다는 관용구예요. we start the protocol now로 선언 바로 다음 행동이 프로토콜 시작임을 이어 말해 팀이 선언과 동시에 움직이게 해요.
+      why: calling it은 판단을 확정해 말한다는 관용구인데, 그 판단은 마취과 몫이라 Anesthesia is calling it으로 누가 정했는지 밝혀요. we start the protocol now로 선언을 받자마자 팀이 프로토콜을 시작한다고 이어 말해요.
       decoy: the report
       distractorsKo:
-        - 지금 선언할게요 — 이건 MH이고, 지금 기록을 시작합니다.
-        - 지금 선언할게요 — 이건 MH이고, 지금 타이머를 시작합니다.
+        - 마취과가 선언했어요 — 이건 MH이고, 지금 기록을 시작합니다.
+        - 마취과가 선언했어요 — 이건 MH이고, 지금 타이머를 시작합니다.
       blank:
         answer: protocol
         options:
@@ -86470,15 +86473,15 @@
         - w-cart
         - w-call
         - w-help
-      why: 위기 선언은 분명하고 단정적으로 해요. could be와 looks like는 팀이 움직일 신호가 되지 못해요. 마취과가 MH로 판단했다면 'I'm declaring it'처럼 선언하는 말투로 바로 말하고, 곧이어 할 일(카트, 도움 요청)을 붙여요.
-      cue: EtCO2 is rising, the jaw is tight, and the heart rate is up. The anesthesiologist decides it's MH and speaks to the whole room.
+      why: MH 선언은 마취과가 내리는 판단이에요. 선언이 나왔다면 간호사는 might be·looks like로 흐리지 않고 has declared로 분명히 전한 뒤, 곧바로 맡은 일(카트, 도움 요청)을 붙여요.
+      cue: EtCO2 is rising, the jaw is tight, and the heart rate is up. The anesthesiologist has just declared MH, and you tell the room.
       scale:
-        - This could possibly be MH, but I'm really not sure yet.
-        - This looks a lot like MH, so let's keep an eye on it.
-        - This is malignant hyperthermia — I'm declaring it.
+        - Anesthesia thinks this might be MH, but they aren't sure yet.
+        - Anesthesia says this looks like MH, so let's keep watching it.
+        - Anesthesia has declared MH — I'm getting the MH cart now.
       answerAt: 2
-      example: This is malignant hyperthermia — I'm declaring it. Get the MH cart and call for help.
-      exKo: 악성 고열이에요 — 선언합니다. MH 카트를 가져오고 도움을 요청하세요.
+      example: Anesthesia has declared malignant hyperthermia — I'm getting the MH cart. Call for help.
+      exKo: 마취과에서 악성 고열을 선언했어요 — 제가 MH 카트를 가져올게요. 도움을 요청해 주세요.
     - kind: context
       words:
         - w-declare
@@ -86496,30 +86499,30 @@
           ok: true
         - who: 대기실 보호자에게
           icon: me
-          en: I'm declaring that your husband has malignant hyperthermia.
+          en: Anesthesia has declared malignant hyperthermia for your husband.
           ok: false
           fix: He's having a serious reaction to the anesthesia, and we're treating it right now.
   order:
     tag: 대화 흐름
     icon: compass
     ko: MH 위기 발동 4문장 순서
-    why: 먼저 선언하고, Because of that으로 선언의 첫 결과인 유발 약제 중단을 말하고, While the agents are being stopped로 중단과 동시에 하는 카트·도움 요청을 이어요. 마지막 줄은 that cart로 그 카트를 가리켜 100% 산소와 단트롤렌 혼합을 시작한다고 닫아요. 앞 줄을 가리키는 말 때문에 줄 순서가 하나예요.
+    why: 1줄에서 마취과의 선언을 알리고 바로 카트를 가지러 가요. 2줄의 Because of that은 1줄의 선언을 받아 유발 약제 중단을 말하고, 3줄의 While the agents are being stopped는 2줄의 중단을 받아 도움을 요청해요. 4줄은 1줄의 카트와 3줄의 도움을 함께 받아 단트롤렌 혼합을 시작하니 순서가 하나예요.
     lines:
-        - en: This is malignant hyperthermia — I'm declaring it.
+        - en: Anesthesia has declared malignant hyperthermia — I'm getting the MH cart.
           icon: siren
-          ko: 이건 악성 고열이에요 — 선언합니다
-          note: 선언
+          ko: 마취과에서 악성 고열을 선언했어요 — 카트를 가져올게요
+          note: 전달
         - en: Because of that, we stop all triggering agents immediately.
           icon: siren
           ko: 그래서 모든 유발 약제를 즉시 멈춰요
           note: 중단
-        - en: While the agents are being stopped, get the MH cart and call for help.
+        - en: While the agents are being stopped, someone call for help.
           icon: bell
-          ko: 약제를 멈추는 동안 MH 카트를 가져오고 도움을 요청하세요
+          ko: 약제를 멈추는 동안 누군가 도움을 요청해 주세요
           note: 요청
-        - en: Go 100% oxygen at high flow and mix dantrolene from that cart.
-          icon: board
-          ko: 산소를 100% 고유량으로 걸고 그 카트의 단트롤렌을 섞어요
+        - en: With the cart here and help on the way, start mixing dantrolene.
+          icon: pill
+          ko: 카트가 왔고 도움도 오고 있으니 단트롤렌 혼합을 시작해요
           note: 처치
 - id: SCN-OR-00726
   profession: ""

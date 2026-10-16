@@ -8183,7 +8183,7 @@
   difficulty: 3
   skills: [급성 호흡부전 판단, 구조 NIV, 재삽관 결정]
   keyPhrases:
-    - "If he's alert with a manageable airway, we can trial rescue NIV briefly."
+    - "If he's alert with a manageable airway, we can trial rescue NIV briefly if the physician agrees."
     - "But if he keeps deteriorating, we reintubate without delay."
     - "Let's set a short time limit so we don't lose the window."
   goals:
@@ -8192,16 +8192,16 @@
   acuity: critical
   persona: { name: Andre Wallace, ageRange: 40s, sub: "동료 간호사", mood: anxious, personality: 신속한 결정을 원함, speakingStyle: 선택지를 묻는다, gender: male }
   sentences:
-    - en: "If he's alert with a manageable airway, we can trial rescue NIV briefly."
-      ko: "각성돼 있고 기도가 다룰 만하면 잠시 구조 NIV를 시도할 수 있어요."
-      chunks: ["If he's alert", "with a manageable airway", ", we can trial", "rescue NIV briefly", "."]
-      words: [w-alert, w-manageable, w-airway, w-trial, w-niv, w-briefly]
+    - en: "If he's alert with a manageable airway, we can trial rescue NIV briefly if the physician agrees."
+      ko: "각성돼 있고 기도가 다룰 만하면, 의사가 동의할 경우 잠시 구조 NIV를 시도할 수 있어요."
+      chunks: ["If he's alert", "with a manageable airway", ", we can trial", "rescue NIV briefly", "if the physician agrees", "."]
+      words: [w-alert, w-manageable, w-airway, w-trial, w-niv, w-briefly, w-physician]
       goal: 1
       tag: "구조 NIV"
       icon: "monitor"
-      why: "If절의 두 조건(각성, 다룰 만한 기도)이 시도의 전제이고, briefly가 짧게만 한다는 한도를 붙여요."
+      why: "If절의 두 조건(각성, 다룰 만한 기도)이 시도의 전제이고, briefly가 짧게만 한다는 한도를 붙여요. 끝의 if the physician agrees로 구조 NIV는 의사가 정하는 일임을 밝혀, 간호사는 제안하되 혼자 시작하지 않아요."
       decoy: "by the window"
-      distractorsKo: ["각성돼 있고 기도가 다룰 만하면 잠시 구조 NIV를 준비해 둘 수 있어요.", "각성돼 있고 기도가 다룰 만하면 잠시 구조 NIV를 설명할 수 있어요."]
+      distractorsKo: ["각성돼 있고 기도가 다룰 만하면, 의사가 도착할 경우 잠시 구조 NIV를 시도할 수 있어요.", "각성돼 있고 기도가 다룰 만하면, 의사가 동의할 경우 잠시 구조 NIV를 설명할 수 있어요."]
       blank:
         answer: "briefly"
         options:
@@ -8331,11 +8331,11 @@
     tag: 대화 흐름
     icon: monitor
     ko: 발관 직후 호흡부전 판단 4문장 순서
-    why: 시도의 근거를 말하고, 시도에 시간 제한을 걸고, 제한을 넘어 악화될 때의 행동을 말한 뒤, 그 결정을 빨리 내리도록 호출을 요청해요.
+    why: 의사 동의를 전제로 시도의 근거를 말하고, 2줄의 that으로 그 시도에 시간 제한을 걸고, 제한을 넘어 악화될 때의 행동을 말한 뒤, 그 결정을 빨리 내리도록 호출을 요청해요.
     lines:
-    - en: If he's alert with a manageable airway, we can trial rescue NIV briefly.
+    - en: If he's alert, we can trial rescue NIV briefly if the physician agrees.
       icon: play
-      ko: 각성돼 있고 기도가 괜찮으면 잠시 구조 NIV를 해 볼 수 있어요
+      ko: 각성돼 있으면 의사가 동의할 때 잠시 구조 NIV를 해 볼 수 있어요
       note: 시도
     - en: Let's set a short time limit on that, so we don't lose the window.
       icon: calendar
@@ -35589,37 +35589,37 @@
   title: 장기기증 옵션 소통
   tagline: "Someone mentioned donation — is that even something we can consider now?"
   room: 상담실
-  brief: 해당 시 장기기증 옵션을 존중과 신중함으로 제안하고 가족의 질문에 응하세요.
+  brief: 가족이 장기기증을 물으면 존중하며 받고, 기증 전문 조정팀과 연결해 질문에 응하세요.
   role: family
   difficulty: 2
   skills: [장기기증 안내, 존중 소통, 절차 설명]
   keyPhrases:
-    - "Donation is an option some families find meaningful."
+    - "If you'd like, a donation specialist can talk with you about it."
     - "A specialized team can explain what it would involve."
     - "There's no pressure — we'll follow whatever you decide."
   goals:
-    - 장기기증 옵션을 존중하며 제안한다
+    - 가족의 기증 질문을 존중하며 받고 먼저 권하지 않는다
     - 전문 조정팀 연계와 절차를 안내한다
   acuity: routine
   persona: { name: Kevin Doyle, ageRange: 40s, sub: "환자 아들", mood: worried, personality: 의미를 찾으려 함, speakingStyle: 기증이 가능한지 조심스럽게 묻는다, gender: male }
   sentences:
-    - en: "Donation is an option some families find meaningful."
-      ko: "장기기증은 어떤 가족들에게는 의미 있게 느껴지는 선택지예요."
-      chunks: ["Donation is", "an option", "some families find", "meaningful", "."]
-      words: [w-donation, w-option, w-meaningful]
+    - en: "If you'd like, a donation specialist can talk with you about it."
+      ko: "원하시면 기증 전문가가 그 이야기를 나눠 드릴 수 있어요."
+      chunks: ["If you'd like", ",", "a donation specialist", "can talk with you", "about it", "."]
+      words: [w-donation, w-specialist]
       goal: 1
-      tag: "선택지 소개"
-      icon: "star"
-      why: "some families find meaningful로 모든 가족이 아니라 일부가 느끼는 것이라고 말해서 권유가 아니라 정보로 들려요. an option이라는 말로 선택이라는 점을 분명히 해요."
-      decoy: "some nurses"
-      distractorsKo: ["장기기증은 어떤 가족들에게는 부담스럽게 느껴지는 선택지예요", "장기기증은 어떤 환자들에게는 의미 있게 느껴지는 선택지예요"]
+      tag: "전문가 연결"
+      icon: "speech"
+      why: "If you'd like로 먼저 가족의 뜻을 묻고, 기증 이야기는 간호사가 권하지 않고 기증 전문가에게 이어 줘요. 미국에서는 장기조달기관(OPO)이나 훈련받은 지정 요청자가 기증을 꺼내도록 규정돼 있어서예요."
+      decoy: "about the bill"
+      distractorsKo: ["원하시면 기증 전문가가 그 서류를 보내 드릴 수 있어요", "원하시면 사회복지사가 그 이야기를 나눠 드릴 수 있어요"]
       blank:
-        answer: "option"
+        answer: "donation"
         options:
-          - {en: "order"}
-          - {en: "outcome"}
-          - {en: "option"}
-          - {en: "opinion"}
+          - {en: "donation"}
+          - {en: "billing"}
+          - {en: "discharge"}
+          - {en: "insurance"}
     - en: "A specialized team can explain what it would involve."
       ko: "전문팀이 그게 어떤 과정인지 설명해드릴 수 있어요."
       chunks: ["A specialized team", "can explain", "what it", "would involve", "."]
@@ -35759,19 +35759,19 @@
     tag: 대화 흐름
     icon: compass
     ko: 장기기증 안내 4문장 순서
-    why: 선택지로 소개하고, 원하면 설명해 줄 팀이 있다고 알리고, 3줄의 them은 2줄의 팀을, 4줄의 that decision은 3줄의 결정을 가리켜요. 팀 이야기를 들은 뒤의 결정과 시간 보장이 뒤에 와서 순서가 하나예요.
+    why: 기증은 간호사가 권하지 않고, 원하면 전문가가 이야기한다는 연결로 시작해요. 2줄의 That specialist는 1줄의 전문가를, 3줄의 that team은 2줄의 치료팀을, 4줄의 that decision은 3줄의 결정을 가리켜 순서가 하나예요.
     lines:
-    - en: Donation is an option some families find meaningful.
-      icon: star
-      ko: 기증은 어떤 가족에게는 의미 있게 느껴지는 선택지예요
-      note: 소개
-    - en: A specialized team can explain what it would involve, if you'd like.
+    - en: If you'd like, a donation specialist can talk with you about it.
+      icon: speech
+      ko: 원하시면 기증 전문가가 그 이야기를 나눠 드릴 수 있어요
+      note: 연결
+    - en: That specialist works separately from his care team.
       icon: stetho
-      ko: 원하시면 전문팀이 어떤 과정인지 설명해드릴 수 있어요
-      note: 안내
-    - en: Whatever you decide after hearing them, we'll respect it and his care won't change.
+      ko: 그 전문가는 그분의 치료팀과 따로 일해요
+      note: 분리
+    - en: Whatever you decide, that team will keep caring for him the same way.
       icon: shield
-      ko: 그분들 이야기를 들은 뒤 어떻게 결정하셔도 존중하고, 돌봄은 달라지지 않아요
+      ko: 어떻게 결정하셔도 그 치료팀은 똑같이 돌봐 드려요
       note: 보장
     - en: Take your time with that decision; there's no need to answer today.
       icon: calendar
@@ -35788,7 +35788,7 @@
   keyPhrases:
     - "I'm giving her medication right now to ease her breathing."
     - "This can happen and I'm managing it immediately."
-    - "Stay with her — I'm right here and she'll settle."
+    - "Stay with her — I'm right here, and we'll keep her comfortable."
   goals:
     - 급변한 호흡곤란을 즉시 완화 약물로 조절한다
     - 위기 순간에 가족을 안정시킨다
@@ -35829,22 +35829,22 @@
           - {en: "moving"}
           - {en: "wrapping"}
           - {en: "opening"}
-    - en: "Stay with her — I'm right here and she'll settle."
-      ko: "곁에 계세요 — 저도 바로 여기 있고, 곧 안정되실 거예요."
-      chunks: ["Stay", "with her", "—", "I'm right here", "and she'll settle", "."]
-      words: [w-stay, w-settle]
+    - en: "Stay with her — I'm right here, and we'll keep her comfortable."
+      ko: "곁에 계세요 — 저도 바로 여기 있고, 저희가 편안하게 해드릴게요."
+      chunks: ["Stay", "with her", "—", "I'm right here", ",", "and we'll keep her", "comfortable", "."]
+      words: [w-stay, w-comfortable]
       goal: 2
       tag: "곁 안내"
       icon: "handshake2"
-      why: "Stay with her는 명령처럼 보여도 가족이 곁에 있어도 된다는 허락이에요. I'm right here로 간호사도 같은 공간에 있다고 말해 가족이 혼자 남겨졌다고 느끼지 않아요. she'll settle은 약이 들면 가라앉기를 바라는 기대를 말하는 거라, 결과를 보장하는 말로 쓰지는 않아요."
+      why: "Stay with her는 곁에 있어도 된다는 허락이고, I'm right here로 간호사도 함께 있다고 알려요. we'll keep her comfortable은 곧 가라앉는다는 장담 대신 팀이 할 일을 약속하는 말이라, 결과를 보장하지 않고도 안심을 줘요."
       decoy: "in the hallway"
-      distractorsKo: ["곁에 계세요 — 저도 바로 여기 있고, 곧 설명드릴 거예요", "곁에 계세요 — 저도 바로 밖에 있고, 곧 안정되실 거예요"]
+      distractorsKo: ["곁에 계세요 — 저도 바로 밖에 있고, 저희가 편안하게 해드릴게요", "곁에 계세요 — 저도 바로 여기 있고, 저희가 깨끗하게 해드릴게요"]
       blank:
         answer: "here"
         options:
           - {en: "here"}
           - {en: "downstairs"}
-          - {en: "away"}
+          - {en: "outside"}
           - {en: "upstairs"}
     - en: "Her body is adjusting — the medication is starting to work."
       ko: "몸이 적응하고 있어요 — 약이 이제 듣기 시작하고 있어요."
@@ -35952,7 +35952,7 @@
     tag: 대화 흐름
     icon: compass
     ko: 호흡 급변 대응 4문장 순서
-    why: 먼저 곁에 있으라고 하고 약을 주고, 3줄의 That medication은 2줄의 약을 가리켜요. 4줄의 she's settling은 3줄에서 처음 나오는 안정되는 상황이라 마지막에 와요.
+    why: 먼저 곁에 있으라고 하고 약을 주고, 3줄의 That medication은 2줄의 약을 가리켜요. 4줄의 Now that she's more comfortable은 3줄에서 약이 듣기 시작한 결과라 마지막에 와요.
     lines:
     - en: First, please stay with her — I'm right here.
       icon: handshake2
@@ -35966,9 +35966,9 @@
       icon: stetho
       ko: 그 약이 듣기 시작하고 몸이 적응하고 있어요
       note: 경과
-    - en: Now that she's settling, you did exactly the right thing calling me over.
+    - en: Now that she's more comfortable, you did exactly the right thing calling me over.
       icon: star
-      ko: 안정되고 계시니, 저를 불러주신 게 정확히 맞았어요
+      ko: 더 편안해지셨으니, 저를 불러주신 게 정확히 맞았어요
       note: 인정
 - theme: icu-eol-goals
   title: 가족 내 목표 불일치 위기
@@ -36386,42 +36386,42 @@
   difficulty: 3
   skills: [급성 위기 지지, 임종 동행, 정서 안정]
   keyPhrases:
-    - "I'm right here with you and I won't leave."
-    - "His passing looks peaceful and he's not in pain."
-    - "Take a breath — you can talk to him, he can hear you."
+    - "I'm right here with you, and I'll stay as long as I can."
+    - "His passing looks peaceful, and he seems comfortable."
+    - "Take a breath — you can talk to him; he may still hear you."
   goals:
     - 급성 위기에 놓인 가족을 곁에서 안정시킨다
     - 임종 순간 존엄과 평온을 지킨다
   acuity: critical
   persona: { name: Monica Reyes, ageRange: 40s, sub: "환자 딸", mood: panic, personality: 감정에 무너짐, speakingStyle: 흐느끼며 감당 못 하겠다고 말한다, gender: female }
   sentences:
-    - en: "I'm right here with you and I won't leave."
-      ko: "저는 바로 여기 곁에 있고, 떠나지 않을게요."
-      chunks: ["I'm right here", "with you", "and I won't", "leave", "."]
-      words: [w-leave]
+    - en: "I'm right here with you, and I'll stay as long as I can."
+      ko: "저는 바로 여기 곁에 있고, 할 수 있는 한 오래 함께 있을게요."
+      chunks: ["I'm right here", "with you", ",", "and I'll stay", "as long as I can", "."]
+      words: [w-stay]
       goal: 1
       tag: "곁 약속"
       icon: "handshake2"
-      why: "I'm right here로 현재의 존재를 먼저 말하고, I won't leave로 앞으로의 약속을 이어요. 위기에서는 설명보다 곁에 있겠다는 짧은 말이 먼저 필요해요."
+      why: "I'm right here로 지금 곁에 있다는 것을 먼저 말하고, as long as I can으로 지킬 수 있는 만큼만 약속해요. 다른 환자나 호출로 자리를 비울 수도 있는 간호사에게는 절대 떠나지 않겠다는 말보다 정직한 약속이에요."
       decoy: "by the window"
-      distractorsKo: ["저는 바로 여기 곁에 있고, 소리는 낮출게요", "저는 바로 여기 문 앞에 있고, 떠나지 않을게요"]
+      distractorsKo: ["저는 바로 여기 문 앞에 있고, 할 수 있는 한 오래 함께 있을게요", "저는 바로 여기 곁에 있고, 교대할 때까지 함께 있을게요"]
       blank:
         answer: "here"
         options:
           - {en: "here"}
           - {en: "upstairs"}
           - {en: "outside"}
-          - {en: "aside"}
-    - en: "His passing looks peaceful and he's not in pain."
-      ko: "그분의 임종은 평온해 보이고 통증도 없으세요."
-      chunks: ["His passing looks", "peaceful", "and he's not", "in pain", "."]
-      words: [w-passing, w-peaceful, w-pain]
+          - {en: "downstairs"}
+    - en: "His passing looks peaceful, and he seems comfortable."
+      ko: "그분의 임종은 평온해 보이고, 편안하신 것 같아요."
+      chunks: ["His passing looks", "peaceful", ",", "and he seems", "comfortable", "."]
+      words: [w-passing, w-peaceful, w-comfortable]
       goal: 2
       tag: "임종 고지"
       icon: "shield"
-      why: "passing은 죽음을 부드럽게 돌려 쓴 말이라 슬픔에 잠긴 가족에게 덜 날카롭게 전해져요. looks peaceful은 눈에 보이는 모습이고 he's not in pain은 지금 평가한 상태를 알리는 말이라, 통증이 없다고 말하려면 표정·호흡 같은 평가 근거가 있어야 해요."
+      why: "passing은 죽음을 부드럽게 돌려 쓴 말이라 슬픔에 잠긴 가족에게 덜 날카롭게 전해져요. looks와 seems는 눈에 보이는 모습을 말하는 동사라, 통증이 없다고 단정하지 않고 지금 관찰한 편안함만 전해요."
       decoy: "in the next room"
-      distractorsKo: ["그분의 임종은 평온해 보이고 열도 없으세요", "그분의 임종은 평온해 보이고 아드님도 곁에 계세요"]
+      distractorsKo: ["그분의 얼굴은 평온해 보이고, 편안하신 것 같아요", "그분의 임종은 평온해 보이고, 조용하신 것 같아요"]
       blank:
         answer: "peaceful"
         options:
@@ -36429,23 +36429,23 @@
           - {en: "crowded"}
           - {en: "bright"}
           - {en: "peaceful"}
-    - en: "Take a breath — you can talk to him, he can hear you."
-      ko: "숨을 한 번 쉬어보세요 — 말을 거셔도 되고, 그분이 들으실 수 있어요."
-      chunks: ["Take a breath", "—", "you can talk", "to him", ",", "he can hear you", "."]
+    - en: "Take a breath — you can talk to him; he may still hear you."
+      ko: "숨을 한 번 쉬어보세요 — 말을 거셔도 되고, 그분이 아직 들으실 수도 있어요."
+      chunks: ["Take a breath", "—", "you can talk", "to him;", "he may still hear you", "."]
       words: [w-breath, w-talk, w-hear]
       goal: 1
       tag: "침착 안내"
       icon: "speech"
-      why: "Take a breath는 감정이 큰 사람에게 잠깐 멈추라는 짧은 안내예요. he can hear you는 임종 때 청각이 마지막까지 남을 수 있다는 점을 가족이 할 수 있는 행동으로 바꿔 말한 표현이라, 확실한 사실이라기보다 말을 걸어도 좋다는 권유로 써요."
+      why: "Take a breath는 감정이 큰 사람에게 잠깐 멈추라는 짧은 안내예요. he may still hear you는 청각이 마지막까지 남을 수 있다는 점을 may로 열어 두고 말해, 장담하지 않으면서 말을 걸어도 좋다고 권해요."
       decoy: "to the neighbors"
-      distractorsKo: ["숨을 한 번 쉬어보세요 — 손을 잡으셔도 되고, 그분이 느끼실 수 있어요", "물을 한 번 마셔보세요 — 말을 거셔도 되고, 그분이 들으실 수 있어요"]
+      distractorsKo: ["숨을 한 번 쉬어보세요 — 손을 잡으셔도 되고, 그분이 아직 들으실 수도 있어요", "물을 한 번 마셔보세요 — 말을 거셔도 되고, 그분이 아직 들으실 수도 있어요"]
       blank:
         answer: "hear"
         options:
           - {en: "hear"}
+          - {en: "see"}
+          - {en: "answer"}
           - {en: "smell"}
-          - {en: "taste"}
-          - {en: "count"}
     - en: "Yes, he's dying, and I'll stay right here with you through it."
       ko: "네, 임종이 다가오고 있고, 그 시간 내내 곁에 있을게요."
       chunks: ["Yes", ",", "he's dying", ",", "and I'll stay", "right here", "with you", "through it", "."]
@@ -36561,9 +36561,9 @@
       icon: stetho
       ko: 호흡이 느려지는 건 이 과정의 일부예요
       note: 설명
-    - en: As his breathing changes, keep talking to him; hearing is often the last sense to go.
+    - en: As his breathing changes, keep talking to him; hearing may be the last sense to go.
       icon: speech
-      ko: 호흡이 달라지는 동안 계속 말을 걸어주세요, 청각은 마지막까지 남는 경우가 많아요
+      ko: 호흡이 달라지는 동안 계속 말을 걸어주세요, 청각은 마지막까지 남을 수 있어요
       note: 권유
     - en: Talking to him, or just sitting quietly, is exactly what he needs.
       icon: star

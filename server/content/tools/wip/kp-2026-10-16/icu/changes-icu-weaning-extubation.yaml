@@ -1,0 +1,306 @@
+theme: icu-weaning-extubation
+changes:
+- kind: word
+  id: w-watch
+  fields:
+  - en
+  - ipa
+  why: 활용형(watching)을 원형으로 — 문장은 watch·watching 둘 다 쓴다
+- kind: word
+  id: w-deflate
+  fields:
+  - en
+  - ipa
+  why: 활용형(deflating)을 원형으로
+- kind: word
+  id: w-deteriorate
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 활용형(deteriorating)을 원형으로 / ko를 원형에 맞춰 '악화되다'로
+- kind: word
+  id: w-fail
+  fields:
+  - en
+  - ipa
+  - ko
+  - example
+  why: 활용형(failing)을 원형으로, ko도 원형에 맞춤 — 문장은 fail·failed·failing을 섞어 쓴다 / 예문이 '상태가 나빠지다' 뜻(he's failing)이라 ko와 어긋나 — 시험 실패 뜻의 문장으로
+- kind: word
+  id: w-seal
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 활용형(sealing)을 원형으로 — 문장은 sealing(형용)과 the seal(명사)이라 ko를 '밀폐(밀착)'로
+- kind: word
+  id: w-increase
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 활용형(increasing)을 원형으로, ko도 원형에 맞춤
+- kind: word
+  id: w-cause
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 활용형(causing)을 원형으로, ko도 원형에 맞춤
+- kind: word
+  id: w-spike
+  fields:
+  - en
+  - ipa
+  why: 활용형(spiked)을 원형으로
+- kind: word
+  id: w-reorient
+  fields:
+  - en
+  - ipa
+  why: 활용형(reorienting)을 원형으로
+- kind: word
+  id: w-obstruct
+  fields:
+  - en
+  - ipa
+  why: 활용형(obstructs)을 원형으로
+- kind: word
+  id: w-delay
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 문장 3개 중 2개가 명사(the delay·without delay)라 형용 헤드워드(delayed/지연된)를 명사 원형으로
+- kind: word
+  id: w-comeoff
+  fields:
+  - ko
+  why: ko '이탈하다'가 w-wean과 같아 듣고 뜻 고르기에서 정답이 둘이 된다 — '(기계를) 떼다'로 가름
+- kind: word
+  id: w-vent
+  fields:
+  - ko
+  why: ko가 w-ventilator와 같아 정답이 둘이 된다 — 줄임말임을 드러내 가름('벤트(구어)'는 음차일 뿐이라 '인공호흡기(줄임말)'로)
+- kind: word
+  id: w-calm
+  fields:
+  - ko
+  why: ko '진정시키다'가 w-sedation(진정)과 겹치고 형용사 용법(calm and quiet·calmer)을 못 담는다
+- kind: word
+  id: w-clear
+  fields:
+  - ko
+  why: 문장 5개 중 3개가 동사(clear his secretions·the material·doesn't clear)라 형용사 ko만으로는 모자라다
+- kind: word
+  id: w-support
+  fields:
+  - ko
+  why: ko '지지'는 인공호흡 맥락(full support·more support)의 '보조'를 못 담는다
+- kind: word
+  id: w-stat
+  fields:
+  - ko
+  why: ko '즉시'가 w-immediately와 같아 듣고 뜻 고르기에서 정답이 둘이 된다 — '즉시(응급)'로 가름
+- kind: sentence
+  situation: 발관 직후 호흡부전 급변
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 발관 뒤 이미 생긴 호흡부전에 rescue NIV를 조건 없이 '해 보자'고 하면 ERS/ATS 2017과 어긋나 — NIV가 재삽관을 늦추면 안 된다는 문장으로
+- kind: sentence
+  situation: 발관 후 HFNC 전환 관리
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: HFNC가 기도를 열어 둔다는 설명은 틀림 — 고유량 산소를 주어 호흡을 돕는다로
+- kind: sentence
+  situation: 발관 전 커프리크 확인
+  index: 5
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 발관을 미룰지는 의사·팀이 정함 — 간호사가 미루는 것처럼 읽히지 않게 '의사에게 알린다'로
+- kind: sentence
+  situation: 진정 중단 안전 수행
+  index: 5
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: '''안절부절''만으로 진정제를 재개하는 것은 SAT 실패 기준보다 낮음 — 라인을 당기는 안전 위험 행동으로'
+- kind: sentence
+  situation: 발관 물품·산소 준비
+  index: 3
+  fields:
+  - chunks
+  why: 구 경계를 가로지른 조각 나누기를 바로잡음
+- kind: sentence
+  situation: 재삽관 위험 평가·소통
+  index: 3
+  fields:
+  - chunks
+  why: 구 경계를 가로지른 조각 나누기를 바로잡음
+- kind: sentence
+  situation: 발관 직후 호흡부전 급변
+  index: 4
+  fields:
+  - chunks
+  why: 구 경계를 가로지른 조각 나누기를 바로잡음
+- kind: sentence
+  situation: 발관 후 흡인 기도폐색 위기
+  index: 5
+  fields:
+  - chunks
+  why: 구 경계를 가로지른 조각 나누기를 바로잡음
+- kind: word-remove
+  id: w-family
+  why: 너무 쉬움(공통 쉬운 단어 또는 간호사가 이미 아는 말) — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-tonight
+  why: 너무 쉬움(공통 쉬운 단어 또는 간호사가 이미 아는 말) — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-team
+  why: 너무 쉬움(공통 쉬운 단어 또는 간호사가 이미 아는 말) — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-stop
+  why: 너무 쉬움(공통 쉬운 단어 또는 간호사가 이미 아는 말) — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-heart
+  why: 너무 쉬움(공통 쉬운 단어 또는 간호사가 이미 아는 말) — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-strong
+  why: 너무 쉬움(공통 쉬운 단어 또는 간호사가 이미 아는 말) — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-reason
+  why: 너무 쉬움(공통 쉬운 단어 또는 간호사가 이미 아는 말) — 어느 문장도 태그하지 않게 됐다
+- kind: sentence
+  situation: SBT 중 호흡양상 관찰
+  index: 2
+  fields:
+  - words
+  why: w-stop 태그를 뺌 — 너무 쉬운 단어
+- kind: sentence
+  situation: 재삽관 위험 평가·소통
+  index: 2
+  fields:
+  - words
+  why: w-tonight 태그를 뺌 — 너무 쉬운 단어
+- kind: sentence
+  situation: 재삽관 위험 평가·소통
+  index: 5
+  fields:
+  - words
+  why: w-tonight 태그를 뺌 — 너무 쉬운 단어
+- kind: sentence
+  situation: 흡기근 약화 재활 연계
+  index: 4
+  fields:
+  - words
+  why: w-strong 태그를 뺌 — 너무 쉬운 단어
+- kind: sentence
+  situation: 기관절개 전환 시점 논의
+  index: 5
+  fields:
+  - words
+  why: w-team 태그를 뺌 — 너무 쉬운 단어
+- kind: sentence
+  situation: 발관 지연 원인 문서화
+  index: 2
+  fields:
+  - words
+  why: w-team, w-reason 태그를 뺌 — 너무 쉬운 단어
+- kind: sentence
+  situation: 섬망·불안으로 인한 이탈 지연
+  index: 0
+  fields:
+  - words
+  why: w-family 태그를 뺌 — 너무 쉬운 단어
+- kind: sentence
+  situation: 섬망·불안으로 인한 이탈 지연
+  index: 3
+  fields:
+  - words
+  why: w-tonight 태그를 뺌 — 너무 쉬운 단어
+- kind: sentence
+  situation: 섬망·불안으로 인한 이탈 지연
+  index: 4
+  fields:
+  - words
+  why: w-family 태그를 뺌 — 너무 쉬운 단어
+- kind: sentence
+  situation: 발관 후 상기도 부종 stridor 위기
+  index: 1
+  fields:
+  - words
+  why: w-team 태그를 뺌 — 너무 쉬운 단어
+- kind: sentence
+  situation: 발관 후 상기도 부종 stridor 위기
+  index: 3
+  fields:
+  - words
+  why: w-team 태그를 뺌 — 너무 쉬운 단어
+- kind: sentence
+  situation: 발관 실패 응급 재삽관
+  index: 3
+  fields:
+  - words
+  why: w-team 태그를 뺌 — 너무 쉬운 단어
+- kind: sentence
+  situation: 반복 SBT 실패 장기 이탈
+  index: 2
+  fields:
+  - words
+  why: w-team 태그를 뺌 — 너무 쉬운 단어
+- kind: sentence
+  situation: 반복 SBT 실패 장기 이탈
+  index: 5
+  fields:
+  - words
+  why: w-team 태그를 뺌 — 너무 쉬운 단어
+- kind: sentence
+  situation: 이탈 중 심근허혈 유발
+  index: 1
+  fields:
+  - words
+  why: w-heart 태그를 뺌 — 너무 쉬운 단어
+- kind: sentence
+  situation: 이탈 중 심근허혈 유발
+  index: 4
+  fields:
+  - words
+  why: w-heart 태그를 뺌 — 너무 쉬운 단어
+- kind: sentence
+  situation: 발관 직후 호흡부전 급변
+  index: 0
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-10-16 사용자 결정): 구조 NIV는 의사 결정 — if the physician agrees를 붙임; +w-physician'
+- kind: word
+  id: w-alert
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-16 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-manageable
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-16 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-briefly
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-16 사용자 결정): 예문을 바꾼 문장으로'

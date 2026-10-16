@@ -53,6 +53,11 @@ v46 (학습 화면 핸드오프 1:1 — `lesson-fidelity-v46/build-spec-index.md
     V19 상황의 order(순서 배열 카드)는 ko·why가 있고 줄이 정확히 4개, 줄마다 en·icon이 있고 en이
         겹치지 않는다. tag·icon과 줄의 ko·note는 있으면 비어 있지 않다. 문장 없는 상황에 order만 있으면 오류
     V14 (더함) context의 word와 ko는 함께 있거나 함께 없다. swap의 ko는 있으면 비어 있지 않다
+    W18~W21 (주제 단위 경고, 2026-10-16 ICU·OR 파일럿 — 검토가 주제마다 되풀이해 잡던 것):
+      W18 같은 문장 decoy가 주제에서 4번 이상, 같은 빈칸 오답이 주제에서 4번 이상 — 보기만 해도 오답
+      W19 문장 distractorsKo에만 나오는 낱말(어간 = 한글 앞 두 음절)이 주제에서 6번 이상(의문사·숫자 8번) — 조사만 떼면 숨는다
+      W20 slider가 5개 이상인 주제에서 정답 칸 하나에 70% 넘게 몰렸거나, 정답이 가장 긴 보기인 것이 70% 넘음 — 읽지 않고 고른다
+      W21 빈칸 오답이 확인·처치를 뒤집는 말(ignore·skip·forget·pretend·overlook·neglect·dismiss) — 넣어 읽으면 위험한 지시가 되기 쉽다
     V21 단어의 chips·decoyChips 조각이 비속어·성적인 말이 아니다(2026-10-16 ICU·OR 파일럿 — 단어를 잘게
         자르다 `cum`·`ass`·`anal`·`sux` 같은 조각이 ER 정본에도 들어가 있었다. 검토가 한 번 놓쳤다)
 
@@ -1420,6 +1425,71 @@ class Violation:
         return f"[{self.rule}] {self.dept}/{self.theme}/{self.title!r}: {self.detail}"
 
 
+# W18~W21 — 주제 단위 경고(2026-10-16 ICU·OR 파일럿).
+NEGATING_BLANKS = frozenset("ignore ignored ignoring skip skipped skipping forget forgot forgetting pretend pretending overlook overlooked neglect neglected dismiss dismissed".split())
+_KO_QUESTION_OR_NUMBER = re.compile(r"^(무엇|어디|언제|누가|누구|왜|어떻|몇|얼마|[0-9]|한|두|세|네|다섯|여섯|일곱|여덟|아홉|열)")
+
+
+def _ko_stems(text: str) -> set[str]:
+    """한국어 낱말의 어간 근사 — 한글만 남긴 앞 두 음절(설명하다·설명드리다 → 설명)."""
+    out = set()
+    for tok in re.findall(r"[가-힣]+", text or ""):
+        out.add(tok[:2] if len(tok) >= 2 else tok)
+    return out
+
+
+def check_theme_repetition(seeds: list[dict]) -> list[tuple[str, str]]:
+    """한 주제의 시드 전부를 보고 W18~W21을 낸다. 시드는 같은 주제의 것만 넘긴다."""
+    out: list[tuple[str, str]] = []
+    decoys: collections.Counter = collections.Counter()
+    blank_wrong: collections.Counter = collections.Counter()
+    ko_only: collections.Counter = collections.Counter()
+    slider_pos: collections.Counter = collections.Counter()
+    slider_longest = n_slider = 0
+    for seed in seeds:
+        for sent in seed.get("sentences") or []:
+            d = (sent.get("decoy") or "").strip().lower()
+            if d:
+                decoys[d] += 1
+            blank = sent.get("blank") if isinstance(sent.get("blank"), dict) else {}
+            ans = _norm(blank.get("answer") or "")
+            for o in blank.get("options") or []:
+                en = _norm((o or {}).get("en") or "") if isinstance(o, dict) else ""
+                if en and en != ans:
+                    blank_wrong[en] += 1
+                    if en in NEGATING_BLANKS:
+                        out.append(("W21", f"{seed.get('title')!r}: blank option {en!r} negates a check or treatment — read the sentence with it"))
+            mine = _ko_stems(sent.get("ko") or "")
+            for dk in sent.get("distractorsKo") or []:
+                for st in _ko_stems(str(dk)) - mine:
+                    ko_only[st] += 1
+        for n in seed.get("nuance") or []:
+            if isinstance(n, dict) and n.get("kind") == "slider" and isinstance(n.get("scale"), list) and isinstance(n.get("answerAt"), int):
+                sc, at = n["scale"], n["answerAt"]
+                if 0 <= at < len(sc):
+                    n_slider += 1
+                    slider_pos[at] += 1
+                    if len(str(sc[at])) >= max(len(str(x)) for x in sc) and len(set(len(str(x)) for x in sc)) > 1:
+                        slider_longest += 1
+    for d, c in decoys.items():
+        if c >= 4:
+            out.append(("W18", f"decoy {d!r} used {c} times in this theme (max 3)"))
+    for o, c in blank_wrong.items():
+        if c >= 4:
+            out.append(("W18", f"blank wrong option {o!r} used {c} times in this theme (max 3)"))
+    for st, c in ko_only.items():
+        cap = 7 if _KO_QUESTION_OR_NUMBER.match(st) else 5
+        if c > cap:
+            out.append(("W19", f"distractorsKo-only stem {st!r} appears {c} times in this theme (max {cap})"))
+    if n_slider >= 5:
+        at, c = slider_pos.most_common(1)[0]
+        if c / n_slider > 0.7:
+            out.append(("W20", f"{c}/{n_slider} sliders put the answer at position {at} — mix the answer position"))
+        if slider_longest / n_slider > 0.7:
+            out.append(("W20", f"{slider_longest}/{n_slider} sliders have the answer as the longest option — even out the lengths"))
+    return out
+
+
 def verify_dept(
     dept: str,
     lexicon: dict[str, dict[str, dict]],
@@ -1598,6 +1668,16 @@ def verify_dept(
                 violations.append(
                     Violation(dept, theme, title, "V4", f"keyPhrase not found verbatim among sentences: {kp!r}")
                 )
+
+    # W18~W21 — 주제 단위 되풀이·편향 경고.
+    by_theme: dict[str, list[dict]] = collections.defaultdict(list)
+    for seed in seeds:
+        if theme_filter and seed.get("theme") != theme_filter:
+            continue
+        by_theme[seed.get("theme")].append(seed)
+    for theme, tseeds in by_theme.items():
+        for rule, detail in check_theme_repetition(tseeds):
+            v45_warnings.append(Violation(dept, theme, "-", rule, detail))
 
     # V7 — theme 단위 경고. 그 theme의 모든 시드가 아직 2차를 안 거쳤으면(부분 실행) 대부분의
     # 은행 단어가 "안 쓰임"으로 잡히는 것이 정상이다 — 오류가 아니라 경고인 이유이기도 하다.
@@ -2248,6 +2328,8 @@ def run_selftest() -> int:
                   v46_seed(lambda s: s.update(ko="밴드 확인", distractorsKo=["차트를 확인할게", "약을 줄게요"])), "", False))
     cases.append(("W17 (the blank answer is much longer than every other option)", _LEX_BASE,
                   v46_seed(lambda s: s["blank"].update(options=[{"en": "wristband"}, {"en": "pen"}, {"en": "bed"}, {"en": "cup"}])), "W17", True))
+    cases.append(("W21 (a blank option that negates the check — warning)", _LEX_BASE,
+                  v46_seed(lambda s: s["blank"]["options"][1].update(en="ignore")), "W21", True))
     cases.append(("V11 (bare on as a sentence tag reads as a boolean)", _LEX_BASE, v46_seed(lambda s: s.update(tag=True)), "V11", False))
     for name, mut in (
         ("three lines", lambda o: o["lines"].pop()),
