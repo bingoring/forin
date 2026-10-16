@@ -4,7 +4,8 @@
     python3 combine_halves.py <작업 폴더> <주제>
 
 A(`<주제>.A.yaml`)의 단어·뉘앙스를 바탕으로, B(`<주제>.B.yaml`)의 문장 v46 필드와 상황 `order:`를 얹어
-`<주제>.yaml`을 쓴다. 두 파일의 상황 제목·문장 en이 어긋나면 멈춘다(둘 다 문장을 바꾸면 안 된다).
+`<주제>.yaml`을 쓴다. 두 파일의 상황 제목·문장 en·ko·chunks·goal이 어긋나면 멈춘다(둘 다 문장을 바꾸면 안 된다).
+문장 `words`(단어 태그)는 A 것을 쓴다 — A가 결정 11 정리로 쉬운 단어 태그를 뺄 수 있다.
 """
 import sys, yaml
 
@@ -20,7 +21,7 @@ def main(d: str, t: str) -> int:
         if sa["title"] != sb["title"] or len(sa["sentences"]) != len(sb["sentences"]):
             sys.exit(f"상황이 어긋난다: {sa['title']} / {sb['title']}")
         for xa, xb in zip(sa["sentences"], sb["sentences"]):
-            for k in ("en", "ko", "chunks", "words", "goal"):
+            for k in ("en", "ko", "chunks", "goal"):
                 if xa.get(k) != xb.get(k):
                     sys.exit(f"문장 {k}가 다르다: {sa['title']}: {xa.get('en')}")
             for k in V46:
