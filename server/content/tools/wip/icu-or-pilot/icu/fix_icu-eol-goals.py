@@ -80,7 +80,8 @@ for key, p in sorted(sent_patch.items(), key=lambda kv: tuple(map(int, kv[0].spl
             x["words"].remove(w)
     if "dKo" in p:
         assert len(p["dKo"]) == 2
-        x["distractorsKo"] = p["dKo"]
+        # 기존 오답은 끝 마침표가 없다 — 정답(ko)만 마침표가 있으면 모양으로 가려지므로 같은 모양으로 맞춘다
+        x["distractorsKo"] = [o.rstrip(".") for o in p["dKo"]]
     if "blank" in p:
         b = p["blank"]
         assert len(b["wrong"]) == 3
@@ -209,7 +210,7 @@ WORD_WHY = {
     "w-best": "ko를 '가장 잘'에서 문장들(do our best·what's best)에 맞게 '최선·가장 좋은'으로(결정 11)",
     "w-choose": "ko '편들다'는 choose sides 라는 구의 뜻 — 헤드워드 뜻 '고르다'로(결정 11)",
     "w-once": "ko를 태그 문장(once helped·once meant)에 맞게 '한때'로, 예문도 같은 문장으로(결정 11)",
-    "w-entire": "ko '온전한'이 the entire time 의 뜻과 어긋나 '꼬박·내내'로(결정 11)",
+    "w-entire": "ko '온전한'이 the entire time 의 뜻과 어긋나 '꼬박'으로(결정 11 — '내내'는 w-throughout 의 ko)",
     "w-through": "ko '헤쳐서'가 with you through it·through every step 의 뜻과 어긋나 '거쳐서'로(결정 11)",
     "w-lack": "ko '없다'를 lack 의 뜻에 맞게 '결여하다'로(결정 11)",
     "w-rush": "문장이 명사(no rush)라 ko를 '서두름'으로(판정 A)",
