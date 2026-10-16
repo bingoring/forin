@@ -1,0 +1,85 @@
+- t: "항생제 재투여 계획"
+  s:
+  - {tag: "재투여 시점", icon: pill, why: "Based on the drug — 재투여 간격이 약마다 달라서 약에 따라 시점을 말해요.", decoy: "Based on the room", dko: ["수술에 따라 몇 시간 뒤 재투여가 예정돼 있습니다.", "약물에 따라 몇 시간 뒤 재투여가 요청돼 있습니다."], ans: "hours", wr: [days, weeks, months]}
+  - {tag: "타이머 약속", icon: bell, why: "so we don't miss …는 목적을 말해요 — 사람의 기억이 아니라 도구에 의지하겠다는 안전장치예요.", decoy: "because we", dko: ["재투여를 놓치지 않게 달력에 적어 둘게요.", "수액을 놓치지 않게 타이머를 맞춰 둘게요."], ans: "set", wr: [hide, lose, sell]}
+  - {tag: "보고 요청", icon: speech, why: "Let me know는 '알려 주세요'를 부드럽게 말하는 관용구예요 — 길어지면 재투여 시점이 앞당겨질 수 있어 미리 알려 달라는 거예요.", decoy: "Tell me when", dko: ["회의가 예정보다 길어지면 알려 주세요.", "케이스가 예정보다 길어지면 전화해 주세요."], ans: "case", wr: [meeting, lunch, break]}
+  - {tag: "인계 기록", icon: pencil, why: "so the next team knows — 교대할 때 기억은 사라져도 기록은 남아요. 이어받는 팀을 위한 문장이에요.", decoy: "so the patient", dko: ["다음 팀이 알 수 있게 재투여 시각을 보고할게요.", "다음 팀이 알 수 있게 재투여 장소를 기록할게요."], ans: "document", wr: [delete, hide, erase]}
+  - {tag: "사전 계획", icon: calendar, why: "before this gets long — 길어진 뒤에 허둥대지 말고 미리 정해 두자는 뜻이에요. gets long은 becomes long의 구어체예요.", decoy: "the antibiotic refill", dko: ["케이스가 길어지기 전에 항생제 재투여를 예약합시다.", "케이스가 끝나기 전에 항생제 재투여를 계획합시다."], ans: "plan", wr: [store, paint, film]}
+  o:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "항생제 재투여 계획 4문장 순서"
+    why: "긴 케이스를 예상하고, 재투여를 미리 계획하자고 하고, 시점을 짚은 뒤, 그 시각에 맞춰 타이머를 맞춰요."
+    lines:
+    - {en: "This is going to be a long case.", icon: calendar, ko: "이번 케이스는 길어질 거예요", note: 예상}
+    - {en: "So let's plan the redose now.", icon: pill, ko: "그러니 재투여를 지금 계획합시다", note: 계획}
+    - {en: "Based on the drug, it's due in a few hours.", icon: pill, ko: "약에 따라 몇 시간 뒤가 시점입니다", note: 시점}
+    - {en: "I'll set a timer for that time.", icon: bell, ko: "그 시각에 맞춰 타이머를 맞출게요", note: 타이머}
+- t: "타임아웃 참여 저조"
+  s:
+  - {tag: "집중 요청", icon: speaker, why: "be present는 몸만이 아니라 주의까지 여기에 있으라는 뜻이에요 — 타임아웃은 한 사람이라도 딴짓하면 의미가 줄어요.", decoy: "and be quiet", dko: ["다들 멈추고 이 자리에서 대기해 주셔야 합니다.", "다들 모이고 이 자리에 집중해 주셔야 합니다."], ans: "pause", wr: [leave, eat, sleep]}
+  - {tag: "참여 이유", icon: bulb, why: "only works if …는 '조건이 채워질 때만'이라는 뜻이에요 — 참여를 청하는 이유를 효과로 설명해요.", decoy: "if I decide", dko: ["타임아웃은 집도의가 참여해야 효과가 있습니다.", "타임아웃은 모두가 앉아야 효과가 있습니다."], ans: "participate", wr: [leave, hide, disappear]}
+  - {tag: "시간 요청", icon: calendar, why: "thirty seconds처럼 구체적인 짧은 시간을 말하면 거절하기 어려워요. worth it은 들일 만하다는 설득 한마디예요.", decoy: "twenty minutes", dko: ["삼 분만 씁시다 — 그럴 가치가 있어요.", "삼십 초만 씁시다 — 그럴 시간이 있어요."], ans: "take", wr: [waste, skip, cut]}
+  - {tag: "참여 요구", icon: me, why: "not just watch는 지켜보기(수동)와 참여(능동)를 대비해 원하는 행동을 분명히 해요.", decoy: ", not just speak", dko: ["다들 듣기만 하지 말고 참여해야 합니다.", "다들 지켜만 보지 말고 서명해야 합니다."], ans: "watch", wr: [wait, nod, sit]}
+  - {tag: "시간 설득", icon: calendar, why: "It only takes + 시간 + to 동사로 부담이 작다는 걸 보여 줘요 — only가 '겨우'라는 뉘앙스를 더해요.", decoy: "to be seated", dko: ["이 자리에 있는 데는 일 분밖에 안 걸립니다.", "이 자리에 모이는 데는 삼십 초밖에 안 걸립니다."], ans: "only", wr: [always, never, often]}
+  o:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "타임아웃 참여 저조 4문장 순서"
+    why: "멈춰 달라고 청하고, 모두 참여해야 효과가 있다고 이유를 대고, 부담이 작다고 설득한 뒤 감사해요."
+    lines:
+    - {en: "Everyone, please pause for this time-out.", icon: speaker, ko: "여러분, 이 타임아웃을 위해 멈춰 주세요", note: 요청}
+    - {en: "It only works if we all participate.", icon: bulb, ko: "모두 참여해야만 효과가 있어요", note: 이유}
+    - {en: "That only takes thirty seconds.", icon: calendar, ko: "그건 삼십 초면 돼요", note: 설득}
+    - {en: "Thank you for taking part.", icon: star, ko: "참여해 주셔서 감사합니다", note: 감사}
+- t: "시술 변경 재확인"
+  s:
+  - {tag: "재실시", icon: redo, why: "Since 절로 이유를 먼저 말해요 — 변경이 곧 재확인의 근거라는 걸 팀이 바로 알아요.", decoy: "Since the lights changed", dko: ["일정이 바뀌었으니 타임아웃을 다시 합시다.", "계획이 바뀌었으니 인계를 다시 합시다."], ans: "changed", wr: [ended, expired, arrived]}
+  - {tag: "새 시술 확인", icon: check, why: "Everyone + 동사 원형은 한 사람이 아니라 전원에게 거는 직접적인 지시예요. 새로 정해진 것이어서 new를 붙여요.", decoy: "the old chart", dko: ["새 시술과 부위를 마취과가 확인해 주세요.", "새 시술과 부위를 모두 소개해 주세요."], ans: "confirm", wr: [forget, delay, hide]}
+  - {tag: "의견 일치", icon: compass, why: "aligned는 '한 방향으로 맞춰진'이라는 뜻이에요 — 모두가 같은 이해를 가졌는지 확인하고 싶을 때 써요.", decoy: "all seated", dko: ["마치기 전에 다 같이 일치했으면 합니다.", "계속하기 전에 다 같이 모였으면 합니다."], ans: "aligned", wr: [seated, dressed, tired]}
+  - {tag: "변경 이유", icon: redo, why: "so가 앞뒤를 원인에서 결과로 이어요 — 시술이 바뀌면 이전 타임아웃은 더 유효하지 않다는 논리예요.", decoy: ", so we want", dko: ["예약이 바뀌었으니 새 타임아웃이 필요합니다.", "시술이 바뀌었으니 새 가운이 필요합니다."], ans: "changed", wr: [ended, closed, doubled]}
+  - {tag: "일치 확인", icon: handshake2, why: "aligned on + 대상 — 무엇에 대해 일치하는지(on the new plan)를 붙여야 같은 이해를 확인하는 말이 돼요.", decoy: "nobody is", dko: ["새 지침에 모두 일치하는지 확인합시다.", "새 계획을 모두 읽었는지 확인합시다."], ans: "plan", wr: [chart, badge, room]}
+  o:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "시술 변경 재확인 4문장 순서"
+    why: "변경을 알리고, 그래서 새 타임아웃이 필요하다고 하고, 새 내용을 확인시키고, 일치했는지 점검해요."
+    lines:
+    - {en: "The plan just changed.", icon: redo, ko: "계획이 방금 바뀌었어요", note: 알림}
+    - {en: "So we need a new time-out.", icon: compass, ko: "그래서 새 타임아웃이 필요해요", note: 결론}
+    - {en: "Everyone confirm the new procedure and site.", icon: check, ko: "새 시술과 부위를 모두 확인해 주세요", note: 확인}
+    - {en: "Thanks — I want us all aligned on that before we continue.", icon: handshake2, ko: "감사합니다 — 계속하기 전에 그것에 다 같이 일치했으면 해요", note: 일치}
+- t: "검체 처리 사전 확인"
+  s:
+  - {tag: "처리 명확화", icon: lab, why: "how each specimen should be handled는 의문사절이 목적어예요 — 방법을 하나씩 정하자는 뜻이고, clarify는 불명확함을 풀어 준다는 느낌이에요.", decoy: "how each patient", dko: ["검체마다 어떻게 보관해야 할지 명확히 합시다.", "검체마다 어떻게 다뤄야 할지 질문합시다."], ans: "clarify", wr: [avoid, forget, ignore]}
+  - {tag: "냉동·영구", icon: lab, why: "which … and which …로 둘을 갈라 말해요 — frozen은 수술 중 바로 판독하고 permanent는 나중에 정밀 검사로 가는 경로예요.", decoy: "to storage", dko: ["어떤 것이 냉동으로 가고 어떤 것이 영구 고정으로 가는지 전달하세요.", "어떤 것이 냉동으로 가고 어떤 것이 영구 고정으로 가는지 설명하세요."], ans: "Confirm", wr: [Forget, Ignore, Avoid]}
+  - {tag: "라벨·기록", icon: pencil, why: "label and document로 두 동작을 한 흐름으로 묶고 carefully를 끝에 붙여 — 꼼꼼함이 라벨 오류를 막는다는 걸 강조해요.", decoy: "and deliver", dko: ["각각을 조심스럽게 포장하고 기록할게요.", "각각을 조심스럽게 라벨링하고 전달할게요."], ans: "carefully", wr: [loudly, rarely, randomly]}
+  - {tag: "계획 확인", icon: check, why: "the specimen plan처럼 명사 두 개를 붙여 '검체 처리 계획'을 한마디로 줄여요 — 앞으로 할 일의 이름을 함께 정해요.", decoy: "the staffing plan", dko: ["더 나아가기 전에 검체 처리 계획을 공유합시다.", "더 나아가기 전에 검체 처리 순서를 확인합시다."], ans: "specimen", wr: [staffing, lunch, parking]}
+  - {tag: "처리 약속", icon: lab, why: "right away는 '지금 바로'예요 — 라벨을 미뤄 두면 검체가 뒤섞일 수 있어 곧바로 붙이는 습관을 말해요.", decoy: "and weigh it", dko: ["각 검체를 조심스럽게 다루고 바로 포장할게요.", "각 검체를 조심스럽게 다루고 바로 라벨을 확인할게요."], ans: "handle", wr: [sell, drop, count]}
+  o:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "검체 처리 사전 확인 4문장 순서"
+    why: "처리 방법을 정하자고 하고, 냉동과 영구의 경로를 가르고, 각각을 바로 라벨링하고, 기록까지 약속해요."
+    lines:
+    - {en: "Let's clarify how each specimen should be handled.", icon: lab, ko: "검체마다 어떻게 다룰지 명확히 합시다", note: 제안}
+    - {en: "Confirm which go to frozen and which to permanent.", icon: lab, ko: "어떤 것이 냉동, 어떤 것이 영구인지 확인하세요", note: 경로}
+    - {en: "I'll label each one right away.", icon: pencil, ko: "각각 바로 라벨을 붙일게요", note: 라벨}
+    - {en: "Then I'll document where every one goes.", icon: board, ko: "그리고 하나하나 어디로 가는지 기록할게요", note: 기록}
+- t: "타임아웃 중 부위 불일치"
+  s:
+  - {tag: "즉시 정지", icon: siren, why: "Stop everything은 하던 손을 모두 멈추라는 큰 신호예요 — 이유(discrepancy)를 뒤에 붙여 왜 멈추는지 바로 알려요.", decoy: "a visitor here", dko: ["다 멈추세요 — 저기 불일치가 있습니다.", "다 멈추세요 — 여기 질문이 있습니다."], ans: "discrepancy", wr: [visitor, distraction, delay]}
+  - {tag: "불일치 보고", icon: cross, why: "don't match처럼 사실을 그대로 말해요 — 누구를 탓하지 않고 두 문서의 불일치만 짚어요.", decoy: "and the schedule", dko: ["표시된 쪽과 영상이 일치하지 않습니다.", "표시된 쪽과 팔찌가 일치하지 않습니다."], ans: "match", wr: [arrive, open, exist]}
+  - {tag: "진행 중단", icon: lock, why: "Nothing이 주어이므로 동사는 긍정형(proceeds)이에요 — 영어는 부정어를 주어에 두면 not을 또 쓰지 않아요. fully는 절반의 해결을 막아요.", decoy: "Nobody leaves", dko: ["이게 완전히 해결될 때까지 아무도 퇴실하지 않습니다.", "이게 완전히 설명될 때까지 아무것도 진행하지 않습니다."], ans: "fully", wr: [barely, rarely, never]}
+  - {tag: "정지·이유", icon: siren, why: "Everyone stop 뒤 대시로 이유를 이어요 — 짧은 명령에 근거 한 줄이 위급 상황의 기본 틀이에요.", decoy: "— the door", dko: ["다들 멈추세요 — 부위가 영상과 일치하지 않습니다.", "마취과 멈추세요 — 부위가 동의서와 일치하지 않습니다."], ans: "consent", wr: [invoice, menu, wristband]}
+  - {tag: "진행 보류", icon: lock, why: "We won't … until로 약속을 못 박고 앞 문장의 discrepancy를 this discrepancy로 다시 가리켜 같은 문제임을 분명히 해요.", decoy: "because this", dko: ["이 불일치가 완전히 접수될 때까지 진행하지 않겠습니다.", "이 불일치가 완전히 해결될 때까지 철수하지 않겠습니다."], ans: "proceed", wr: [leave, sleep, talk]}
+  o:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "타임아웃 중 부위 불일치 4문장 순서"
+    why: "먼저 모두 멈추게 하고, 불일치를 알리고, 서류를 함께 보자고 하고, 해결 전 진행하지 않는다는 원칙으로 닫아요."
+    lines:
+    - {en: "Stop everything — we have a discrepancy here.", icon: siren, ko: "다 멈추세요 — 여기 불일치가 있습니다", note: 정지}
+    - {en: "The marked side and the consent don't match.", icon: cross, ko: "표시된 쪽과 동의서가 일치하지 않습니다", note: 보고}
+    - {en: "Let's pull up the consent and look at it together.", icon: board, ko: "동의서를 불러와 함께 봅시다", note: 대조}
+    - {en: "That's our plan — nothing proceeds until it's resolved.", icon: lock, ko: "그게 우리 계획입니다 — 해결될 때까지 아무것도 진행하지 않아요", note: 원칙}

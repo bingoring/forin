@@ -1,0 +1,103 @@
+# 상황 0~5. 문장 순서는 base와 같다. d = distractorsKo, a = blank answer, o = 오답 선택지 셋.
+0:
+  s:
+    - {tag: "가족력 질문", icon: board, why: "Has any … reacted는 살면서 한 번이라도 있었는지 묻는 현재완료 모양이에요. any family member로 범위를 넓혀야 환자가 직접 겪지 않은 친척의 마취 사고까지 떠올려요.", decoy: "to antibiotics", d: ["가족 중 누군가 수술에 나쁘게 반응한 적이 있나요?", "친구 중 누군가 마취에 나쁘게 반응한 적이 있나요?"], a: "badly", o: ["slowly", "calmly", "rarely"]}
+    - {tag: "이유 설명", icon: shield, why: "helps us + 동사원형은 이 질문이 누구를 위한 것인지 우리를 도와준다는 모양으로 풀어 줘요. 묻는 까닭을 알면 환자가 낯선 가족 병력도 더 열심히 떠올려요.", decoy: "pay for", d: ["이건 약물 알레르기 위험을 선별하는 데 도움이 됩니다.", "이건 저혈압 위험을 선별하는 데 도움이 됩니다."], a: "risk", o: ["cost", "fee", "rate"]}
+    - {tag: "증상 질문", icon: faceWorried, why: "Any …?는 Have you had any …?를 줄인 구어 질문이라 짧게 묻고 바로 답을 들을 수 있어요. high fevers와 muscle problems를 함께 말해 두면 MH의 두 대표 증상을 같이 떠올리게 해요.", decoy: "at home", d: ["마취 중에 저혈압이나 근육 문제가 있었나요?", "마취 중에 고열이나 피부 문제가 있었나요?"], a: "muscle", o: ["skin", "bone", "nerve"]}
+    - {tag: "질문 이유", icon: pencil, why: "I need to는 내 취향이 아니라 절차상 해야 하는 일이라는 모양이에요. before surgery로 시점을 밝히면 지금 묻는 것이 수술 준비의 일부라는 점이 전해져요.", decoy: "before dinner", d: ["입원 전에 가족 병력을 여쭤봐야 해요.", "수술 전에 가족 연락처를 여쭤봐야 해요."], a: "history", o: ["insurance", "expenses", "supplies"]}
+    - {tag: "보고 약속", icon: bell, why: "I'll은 말하는 순간 정한 약속이라 다음에 일어날 일을 바로 알려 줘요. if there's a positive family history라는 조건을 붙여 병력이 확인될 때 마취팀이 계획을 바꾼다는 흐름이 분명해져요.", decoy: "the front desk", d: ["가족력이 있으면 외과팀에 알릴게요.", "가족력이 있으면 약국에 알릴게요."], a: "notify", o: ["replace", "thank", "invite"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "수술 전 MH 가족력 질문 4문장 순서"
+    why: "왜 묻는지 먼저 밝히고, 질문을 던진 뒤, That으로 질문의 범위를 구체화하고, all of that으로 들은 것을 전부 마취팀에 넘긴다고 닫아요. 3줄의 That과 4줄의 all of that은 앞 줄이 있어야 가리킬 것이 생겨서 순서가 하나예요."
+    lines:
+      - {en: "I need to ask about your family's medical history before surgery.", icon: board, ko: "수술 전에 가족 병력을 여쭤봐야 해요", note: "시작"}
+      - {en: "Has anyone in your family ever had a bad reaction to anesthesia?", icon: faceWorried, ko: "가족 중에 마취 부작용을 겪은 분이 있나요?", note: "질문"}
+      - {en: "That includes any high fever or muscle problem during a past surgery.", icon: stetho, ko: "과거 수술 중 고열이나 근육 문제도 포함돼요", note: "범위"}
+      - {en: "I'll pass all of that on to the anesthesia team.", icon: bell, ko: "들은 걸 전부 마취팀에 전할게요", note: "전달"}
+1:
+  s:
+    - {tag: "유발 요인", icon: siren, why: "are MH triggers로 두 약을 한 문장에 묶어 정의해서 외울 목록이 짧아져요. MH는 유전적 감수성이 있는 사람이 이런 약에 노출될 때 시작되기 때문에 약 이름이 곧 경고 신호예요.", decoy: "MH reports", d: ["휘발성 마취제와 석시닐콜린은 알레르기 유발 요인입니다.", "휘발성 마취제와 석시닐콜린은 MH 진단 기준입니다."], a: "triggers", o: ["symptoms", "labels", "results"]}
+    - {tag: "계획 안내", icon: board, why: "trigger-free처럼 명사 뒤에 -free를 붙이면 그것이 없다는 형용사가 돼요. We'll use는 이 케이스에서 쓸 방법을 팀에 미리 선언하는 말이에요.", decoy: "for this unit", d: ["이 병동은 유발약 없는 기법을 쓸 거예요.", "이 케이스는 유발약 없는 기기를 쓸 거예요."], a: "technique", o: ["gown", "table", "schedule"]}
+    - {tag: "기계 확인", icon: check, why: "Let's confirm은 지시가 아니라 함께 확인하자는 제안 모양이라 팀원이 부담 없이 같이 봐요. off the machine은 마취기에서 분리되었거나 꺼진 상태를 뜻해요.", decoy: "in the hall", d: ["유발 약물이 선반에서 치워져 있는지 확인합시다.", "유발 약물이 목록에서 빠져 있는지 확인합시다."], a: "machine", o: ["monitor", "pump", "table"]}
+    - {tag: "회피 선언", icon: shield, why: "We're avoiding은 지금 하고 있는 일을 진행형으로 말해 팀이 같은 방침을 따르게 해요. all을 붙여 일부가 아니라 전부라는 범위를 분명히 해요.", decoy: "tomorrow", d: ["오전에는 휘발성 마취제와 석시닐콜린을 전부 피하고 있어요.", "저녁에는 휘발성 마취제와 석시닐콜린을 전부 피하고 있어요."], a: "avoiding", o: ["counting", "storing", "labeling"]}
+    - {tag: "팀 공유", icon: speech, why: "which drugs we're avoiding은 which 뒤에 주어와 동사가 이어지는 간접 의문이라 어순이 평서문이에요. whole team이라고 해야 마취과·간호·외과가 모두 같은 정보를 가져요.", decoy: "the front desk", d: ["어떤 약물을 피하는지 외과팀에 알립시다.", "어떤 약물을 피하는지 약국 전체에 알립시다."], a: "whole", o: ["other", "same", "new"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "유발약 회피 준비 4문장 순서"
+    why: "방침을 먼저 선언하고, That means로 그 뜻을 풀고, they로 앞서 말한 약을 가리키며 기계에서 빠졌는지 확인한 뒤, it's confirmed로 확인된 사실을 팀에 알려요. 각 줄이 앞 줄의 말을 받아서 순서가 하나예요."
+    lines:
+      - {en: "We're doing a trigger-free technique for this case.", icon: board, ko: "이 케이스는 유발약 없는 기법으로 해요", note: "방침"}
+      - {en: "That means no volatile agents and no succinylcholine today.", icon: shield, ko: "오늘은 휘발성 마취제와 석시닐콜린을 쓰지 않아요", note: "의미"}
+      - {en: "Let's confirm they're all off the machine.", icon: check, ko: "전부 기계에서 빠졌는지 확인합시다", note: "확인"}
+      - {en: "Let's tell the rest of the team that it's confirmed.", icon: speech, ko: "확인됐다고 나머지 팀에 알립시다", note: "공유"}
+2:
+  s:
+    - {tag: "위치 질문", icon: compass, why: "Where is … stored?는 수동태 질문이라 누가 보관했는지가 아니라 지금 어디 있는지에 초점을 둬요. for this room으로 방마다 위치가 다를 수 있다는 점을 짚어요.", decoy: "for this shift", d: ["이 방에는 단트롤렌이 언제 보관되어 있나요?", "이 방에는 단트롤렌이 몇 개 보관되어 있나요?"], a: "stored", o: ["sold", "signed", "tested"]}
+    - {tag: "수량 확인", icon: check, why: "enough는 명사 앞에서 수량이 충분하다는 뜻이고, on hand는 지금 바로 쓸 수 있게 갖고 있다는 관용구예요. 위기에서는 창고에 있는 양이 아니라 손에 있는 양이 중요해요.", decoy: "at lunch", d: ["충분한 장갑이 있는지 확인합시다.", "충분한 주사기가 있는지 확인합시다."], a: "enough", o: ["empty", "expired", "broken"]}
+    - {tag: "접근성", icon: pushpin, why: "I want it + 형용사는 그것이 어떤 상태이길 바란다는 요청 모양이라 지시보다 부드럽고 분명해요. before we induce로 마감을 못 박아 환자가 잠든 뒤에는 늦다는 점을 알려요.", decoy: "after rounds", d: ["마취 유도 전에 눈에 띄는 곳에 두고 싶어요.", "마취 유도 전에 깨끗한 곳에 두고 싶어요."], a: "accessible", o: ["visible", "labeled", "sterile"]}
+    - {tag: "재고 안내", icon: board, why: "stocks는 상비해 둔다는 동사로, 지금 쓰고 있다는 뜻이 아니라 방에 갖춰 둔 수량을 말하는 현재형이에요. in the cart로 위치를 붙이면 필요할 때 어디서 꺼낼지 알 수 있어요.", decoy: "in the closet", d: ["이 방은 서랍에 단트롤렌 열두 바이알을 구비하고 있어요.", "이 방은 창고에 단트롤렌 열두 바이알을 구비하고 있어요."], a: "cart", o: ["closet", "drawer", "fridge"]}
+    - {tag: "재고 보충", icon: bell, why: "If we're low의 low는 형용사로, 재고가 적은 상태를 말해요. ask … to send more 모양은 직접 가져오는 게 아니라 약국에 부탁한다는 순서를 보여 줘요.", decoy: "after lunch", d: ["부족하면 병동에 더 보내 달라고 바로 요청할게요.", "부족하면 외과에 더 보내 달라고 바로 요청할게요."], a: "pharmacy", o: ["radiology", "laundry", "security"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "단트롤렌 재고 점검 4문장 순서"
+    why: "위치를 먼저 찾아야 거기 있는 바이알을 셀 수 있고, 센 결과가 부족해야 약국에 요청하며, 요청해서 온 것까지 포함해 those라고 가리키며 유도 전에 손닿게 두자고 닫아요. 각 줄이 앞 줄에서 나온 말을 받아 순서가 하나예요."
+    lines:
+      - {en: "First, let's find where the dantrolene is stored in this room.", icon: compass, ko: "먼저 이 방에서 단트롤렌이 어디 있는지 찾읍시다", note: "위치"}
+      - {en: "Count how many vials are there on hand.", icon: check, ko: "거기에 바이알이 몇 개인지 세 보세요", note: "수량"}
+      - {en: "If we're short, I'll ask pharmacy to send more right away.", icon: bell, ko: "부족하면 약국에 바로 더 요청할게요", note: "보충"}
+      - {en: "I want all of those accessible before we induce.", icon: pushpin, ko: "그 전부를 유도 전에 손닿게 두고 싶어요", note: "접근성"}
+3:
+  s:
+    - {tag: "카트 점검", icon: check, why: "inventory는 여기서 명사가 아니라 동사로, 목록과 맞춰 센다는 뜻이에요. together로 한 사람이 혼자 보지 않고 둘이 같이 봐서 빠뜨림을 줄여요.", decoy: "the supply closet", d: ["MH 카트를 함께 청소합시다.", "MH 카트를 함께 이동합시다."], a: "inventory", o: ["clean", "move", "weigh"]}
+    - {tag: "품목 열거", icon: board, why: "동사 없이 명사만 늘어놓는 것은 점검표를 소리 내어 읽을 때의 말투예요. and는 마지막 항목 앞에만 붙어 목록이 끝났다는 신호를 줘요.", decoy: "and the call light", d: ["단트롤렌, 멸균수, 찬 생리식염수, 그리고 비상 연락표요.", "단트롤렌, 멸균수, 찬 생리식염수, 그리고 청소 도구요."], a: "protocol", o: ["visitor", "supply", "parking"]}
+    - {tag: "상태 보고", icon: check, why: "Everything's는 Everything is의 줄임말이고, stocked와 in date를 and로 묶어 수량과 유효기한 두 가지를 한 번에 보고해요. in date는 유효기한 안이라는 뜻으로 expired와 반대예요.", decoy: "and in use", d: ["전부 구비되어 있고 라벨도 붙였어요.", "전부 청소되어 있고 유효기한도 지났어요."], a: "stocked", o: ["missing", "broken", "soiled"]}
+    - {tag: "부족 대응", icon: bell, why: "looks low는 확인한 결과를 말하는 모양이고, so let's는 그 결과로 할 일을 제안해요. before the next case로 다음 케이스에서 같은 부족이 반복되기 전에 끝내자는 시점을 정해요.", decoy: "after rounds", d: ["장갑 개수가 부족해 보이니 다음 케이스 전에 채워 넣읍시다.", "바이알 라벨이 부족해 보이니 다음 케이스 전에 채워 넣읍시다."], a: "restock", o: ["discard", "relabel", "rinse"]}
+    - {tag: "보충 방법", icon: pill, why: "so the cart's fully stocked는 so가 목적을 이끌어 앞의 행동이 무엇을 위한 것인지 알려 줘요. pull … from pharmacy는 새로 만드는 게 아니라 이미 있는 재고를 꺼내 온다는 뜻이에요.", decoy: "from the lab", d: ["카트가 완전히 채워지도록 창고에서 바이알을 더 꺼내 옵시다.", "카트가 완전히 채워지도록 약국에서 장갑을 더 꺼내 옵시다."], a: "pharmacy", o: ["registration", "dietary", "billing"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "MH 카트 점검 4문장 순서"
+    why: "함께 점검하자고 시작하고, 바이알을 목록과 맞춰 센 뒤, That count로 센 결과를 받아 부족하면 약국에 요청하고, they로 그 바이알이 오면 채워 넣는다는 순서예요. 각 줄이 앞 줄의 결과를 받아 순서가 하나예요."
+    lines:
+      - {en: "Let's inventory the MH cart together.", icon: check, ko: "MH 카트를 함께 점검합시다", note: "시작"}
+      - {en: "First, let's count every vial against the list on the card.", icon: board, ko: "먼저 카드 목록과 맞춰 바이알을 다 세 봅시다", note: "세기"}
+      - {en: "That count looks low, so I'll ask pharmacy for more right away.", icon: bell, ko: "개수가 부족해 보여서 약국에 바로 요청할게요", note: "요청"}
+      - {en: "Once they arrive, we'll restock the cart before the next case.", icon: pill, ko: "도착하면 다음 케이스 전에 카트를 채워요", note: "보충"}
+4:
+  s:
+    - {tag: "장비 보고", icon: monitor, why: "is in place는 장비가 제 위치에서 쓸 수 있는 상태라는 보고 모양이에요. core를 붙여 피부가 아니라 몸속 온도를 재는 프로브라는 점이 분명해져요.", decoy: "on hold", d: ["중심 혈압 프로브가 제자리에 있습니다.", "중심 체온 프로브가 준비실에 있습니다."], a: "core", o: ["skin", "room", "surface"]}
+    - {tag: "지속 감시", icon: chartup, why: "trend는 여기서 명사가 아니라 동사로, 수치를 시간의 흐름 속에서 본다는 뜻이에요. continuously를 붙이면 한 번 재고 끝내지 않고 계속 본다는 뜻이 돼요.", decoy: "every week", d: ["혈압을 지속적으로 추세 관찰할 거예요.", "체온을 지속적으로 그래프에 옮길 거예요."], a: "continuously", o: ["rarely", "hourly", "daily"]}
+    - {tag: "즉시 보고", icon: siren, why: "Any sudden rise로 조건을 짧게 던지고 we call it out으로 행동을 잇는 구어체예요. call out은 팀 전체가 듣게 소리 내어 알린다는 구동사라 조용히 적어 두는 것과 달라요.", decoy: "for the chart", d: ["갑작스러운 알람이 있으면 즉시 알립니다.", "갑작스러운 정전이 있으면 즉시 알립니다."], a: "immediately", o: ["quietly", "eventually", "rarely"]}
+    - {tag: "감시 약속", icon: monitor, why: "watch … and flag는 두 동사를 and로 이어 지켜보는 일과 알리는 일을 한 사람이 맡는다는 모양이에요. flag는 눈에 띄게 표시해 다른 사람이 놓치지 않게 한다는 뜻이에요.", decoy: "in color", d: ["차트를 지켜보다가 체온에 갑작스러운 변화가 있으면 표시할게요.", "모니터를 지켜보다가 혈압에 갑작스러운 변화가 있으면 표시할게요."], a: "temperature", o: ["pressure", "volume", "position"]}
+    - {tag: "상황 공유", icon: chartup, why: "but으로 나쁜 소식 뒤에 대응을 붙이는 모양이고, staying on top of it은 상황을 잡고 있다는 관용구예요. 상승을 숨기지 않고 말하면서 팀이 계속 보고 있다는 신호를 줘요.", decoy: "overnight", d: ["맥박이 천천히 오르고 있지만 계속 주시하고 있어요.", "체온이 천천히 오르고 있지만 계속 설명하고 있어요."], a: "staying", o: ["sitting", "standing", "running"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "체온 지속 감시 4문장 순서"
+    why: "프로브가 제자리에 있어야 추세를 계속 볼 수 있고, 그 추세에서 갑작스러운 상승이 나오면 소리 내어 알리며, 그렇게 알린 것은 팀 전체가 듣는다는 말로 닫아요. So·in it·call out이 앞 줄을 받아 순서가 하나예요."
+    lines:
+      - {en: "The core temperature probe is in place.", icon: monitor, ko: "중심 체온 프로브가 제자리에 있어요", note: "장비"}
+      - {en: "So we can watch the trend continuously.", icon: chartup, ko: "그래서 추세를 계속 볼 수 있어요", note: "추세"}
+      - {en: "Any sudden rise in it, and I'll call it out immediately.", icon: siren, ko: "거기서 갑작스러운 상승이 있으면 즉시 알릴게요", note: "보고"}
+      - {en: "Anything I call out, the whole team will hear.", icon: speech, ko: "제가 외친 건 팀 전체가 들을 거예요", note: "공유"}
+5:
+  s:
+    - {tag: "감시 지시", icon: monitor, why: "명령문은 주어 없이 동사로 바로 시작해서 바쁜 현장에서 짧게 지시해요. closely를 붙이면 가끔 보는 게 아니라 눈을 떼지 말라는 뜻이에요.", decoy: "in the hall", d: ["혈압 추세를 면밀히 지켜보세요.", "산소 추세를 면밀히 지켜보세요."], a: "closely", o: ["loudly", "rarely", "briefly"]}
+    - {tag: "의미 설명", icon: bulb, why: "can be는 항상 그렇다는 뜻이 아니라 가능성을 말해서 과장 없이 경고해요. unexplained는 다른 이유로 설명되지 않는다는 뜻이라 단순한 상승과 구별돼요.", decoy: "the last", d: ["원인 불명의 기침이 첫 MH 징후일 수 있어요.", "원인 불명의 상승이 첫 감염 징후일 수 있어요."], a: "first", o: ["last", "final", "worst"]}
+    - {tag: "보고 약속", icon: bell, why: "any climb의 any는 크기와 상관없이 오르기만 하면이라는 뜻이에요. flag … right away는 판단을 미루지 않고 바로 알린다는 약속이에요.", decoy: "on paper", d: ["새는 게 있으면 바로 알릴게요.", "울리는 게 있으면 바로 알릴게요."], a: "climb", o: ["leak", "jam", "spill"]}
+    - {tag: "경과 보고", icon: chartup, why: "has been climbing은 현재완료 진행형이라 시작은 과거이고 지금도 계속된다는 뜻이에요. for the last few minutes로 기간을 붙이면 일시적인 흔들림이 아니라 추세라는 근거가 돼요.", decoy: "since yesterday", d: ["지난 몇 시간 동안 EtCO2가 계속 오르고 있어요.", "지난 몇 분 동안 혈압이 계속 오르고 있어요."], a: "climbing", o: ["holding", "resting", "waiting"]}
+    - {tag: "보고 시점", icon: bell, why: "the moment 뒤에 절이 오면 ~하는 바로 그 순간이라는 접속사처럼 쓰여요. 기준을 이상해 보이는 순간으로 정해 두면 확신이 설 때까지 기다리다 늦는 일을 막아요.", decoy: "the surgeon", d: ["추세가 비정상적으로 보이는 순간 외과팀에 알릴게요.", "추세가 비정상적으로 보이는 순간 약국에 알릴게요."], a: "moment", o: ["reason", "way", "cause"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "EtCO2 감시 4문장 순서"
+    why: "지켜보라는 지시가 먼저, 그다음 무엇을 찾는지 설명하고, So로 그 결과 오르면 바로 알리겠다고 약속하고, after that으로 알린 뒤에도 이상하면 마취팀에 바로 간다고 이어요. 각 줄이 앞 줄을 받아 순서가 하나예요."
+    lines:
+      - {en: "Watch the EtCO2 trend closely.", icon: monitor, ko: "EtCO2 추세를 면밀히 지켜보세요", note: "지시"}
+      - {en: "An unexplained rise can be the first MH sign.", icon: bulb, ko: "원인 불명의 상승이 첫 MH 징후일 수 있어요", note: "이유"}
+      - {en: "So I'll flag any climb right away.", icon: bell, ko: "그래서 오르면 바로 알릴게요", note: "약속"}
+      - {en: "Anything that looks abnormal after that goes straight to anesthesia.", icon: siren, ko: "그 뒤에도 이상해 보이면 곧장 마취팀에 가요", note: "보고"}

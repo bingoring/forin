@@ -1,308 +1,357 @@
 w-member:
-  cue: "가족이나 팀처럼 어떤 모임에 속한 한 사람을 가리킬 때 (명사)"
+  cue: 가족이나 팀처럼 어떤 모임에 속한 한 사람을 가리킬 때 (명사)
   tag: 선별
   distractorsEn: [number, manager]
   distractorsKo: [대표자, 보호자]
-  chips: [[mem, ber]]
+  chips:
+  - [mem, ber]
   decoyChips: [num, men]
 w-react:
-  cue: "약이나 마취에 몸이 평소와 다르게 나타내는 변화를 말할 때 (동사)"
+  cue: 약이나 마취에 몸이 평소와 다르게 나타내는 변화를 말할 때 (동사)
   tag: 선별
   distractorsEn: [recover, relapse]
   distractorsKo: [회복하다, 재발하다]
-  chips: [[re, act]]
+  chips:
+  - [re, act]
   decoyChips: [rec, ant]
 w-anesthesia:
-  cue: "수술 중 통증과 의식을 없애 주는 처치 — 마취과가 맡는 영역"
+  cue: 수술 중 통증과 의식을 없애 주는 처치 — 마취과가 맡는 영역
   tag: 선별
-  distractorsEn: [analgesia, anesthetic]
+  distractorsEn: [analgesia, amnesia]
   distractorsKo: [진통, 진정]
-  chips: [[an, es, the, sia]]
+  chips:
+  - [an, es, the, sia]
   decoyChips: [anal, ges]
 w-screen:
-  cue: "증상이 없어도 위험이 있는지 미리 질문으로 걸러 낼 때 (동사)"
+  cue: 증상이 없어도 위험이 있는지 미리 질문으로 걸러 낼 때 (동사)
   tag: 선별
   distractorsEn: [scream, screw]
   distractorsKo: [진단하다, 치료하다]
-  chips: [[screen]]
+  chips:
+  - [screen]
   decoyChips: [scream]
 w-mhfull:
-  cue: "특정 마취 약에 근육이 폭주해 체온이 치솟는 유전성 응급 — 풀네임"
+  cue: 특정 마취 약에 근육이 폭주해 체온이 치솟는 유전성 응급 — 풀네임
   tag: 선별
   distractorsEn: [malignant hypothermia, serotonin syndrome]
   distractorsKo: [악성 저체온, 악성 증후군]
-  chips: [[ma, lig, nant], [hy, per, ther, mia]]
+  chips:
+  - [ma, lig, nant]
+  - [hyper, thermia]
   decoyChips: [hypo, nent]
 w-risk:
-  cue: "나쁜 일이 생길 가능성 — 선별하는 이유가 되는 것 (명사)"
+  cue: 나쁜 일이 생길 가능성 — 선별하는 이유가 되는 것 (명사)
   tag: 선별
   distractorsEn: [rush, rest]
   distractorsKo: [원인, 증상]
-  chips: [[risk]]
+  chips:
+  - [risk]
   decoyChips: [rick]
 w-fever:
-  cue: "체온이 정상보다 올라가는 증상 — 38도 넘는 열 (명사)"
+  cue: 체온이 정상보다 올라가는 증상 — 38도 넘는 열 (명사)
   tag: 선별
   distractorsEn: [fewer, feeler]
   distractorsKo: [오한, 두통]
-  chips: [[fe, ver]]
+  chips:
+  - [fe, ver]
   decoyChips: [few, vor]
 w-muscle:
-  cue: "몸을 움직이게 하는 조직 — 뻣뻣해지거나 녹을 수 있는 곳 (명사)"
+  cue: 몸을 움직이게 하는 조직 — 뻣뻣해지거나 녹을 수 있는 곳 (명사)
   tag: 선별
   distractorsEn: [mussel, marrow]
   distractorsKo: [관절, 인대]
-  chips: [[mus, cle]]
+  chips:
+  - [mus, cle]
   decoyChips: [mas, cel]
 w-history:
-  cue: "환자와 가족이 과거에 앓았거나 겪은 일을 정리한 기록 (명사)"
+  cue: 환자와 가족이 과거에 앓았거나 겪은 일을 정리한 기록 (명사)
   tag: 선별
   distractorsEn: [hysteria, registry]
   distractorsKo: [증상, 경과]
-  chips: [[his, to, ry]]
+  chips:
+  - [his, to, ry]
   decoyChips: [mys, tor]
 w-surgery:
-  cue: "수술실에서 칼로 몸을 열어 치료하는 처치 (명사)"
+  cue: 수술실에서 칼로 몸을 열어 치료하는 처치 (명사)
   tag: 선별
-  distractorsEn: [surgeon, surgical]
-  distractorsKo: [시술, 진료]
-  chips: [[sur, ge, ry]]
+  distractorsEn: [surgeon, sorcery]
+  distractorsKo: [마취, 입원]
+  chips:
+  - [sur, ge, ry]
   decoyChips: [sir, gen]
 w-notify:
-  cue: "정해진 사람에게 공식적으로 알려 줘서 대비하게 할 때 (동사)"
+  cue: 정해진 사람에게 공식적으로 알려 줘서 대비하게 할 때 (동사)
   tag: 선별
   distractorsEn: [modify, justify]
   distractorsKo: [승인하다, 요청하다]
-  chips: [[no, ti, fy]]
+  chips:
+  - - "no"
+    - ti
+    - fy
   decoyChips: [not, fi]
 w-team:
-  cue: "수술 한 건을 함께 맡은 마취과·간호사·집도의 무리 (명사)"
+  cue: 수술 한 건을 함께 맡은 마취과·간호사·집도의 무리 (명사)
   tag: 선별
   distractorsEn: [steam, term]
   distractorsKo: [병동, 과]
-  chips: [[team]]
+  chips:
+  - [team]
   decoyChips: [teem]
 w-volatile:
-  cue: "기화기로 증기를 만들어 흡입시키는 마취 가스 앞에 붙는 말 (형용사)"
+  cue: 기화기로 증기를 만들어 흡입시키는 마취 가스 앞에 붙는 말 (형용사)
   tag: 유발약
   distractorsEn: [vulnerable, versatile]
-  distractorsKo: [취약한, 불안정한]
-  chips: [[vol, a, tile]]
+  distractorsKo: [취약한, 투명한]
+  chips:
+  - [vol, a, tile]
   decoyChips: [val, til]
 w-agent:
-  cue: "특정 효과를 내려고 몸에 쓰는 약이나 물질 (명사)"
+  cue: 특정 효과를 내려고 몸에 쓰는 약이나 물질 (명사)
   tag: 유발약
   distractorsEn: [urgent, agenda]
   distractorsKo: [환자, 시술]
-  chips: [[a, gent]]
+  chips:
+  - [a, gent]
   decoyChips: [ur, jent]
 w-succinylcholine:
-  cue: "기관 삽관 때 근육을 순간적으로 이완시키는 약 — MH를 유발할 수 있는 약"
+  cue: 기관 삽관 때 근육을 순간적으로 이완시키는 약 — MH를 유발할 수 있는 약
   tag: 유발약
-  distractorsEn: [rocuronium, vecuronium]
+  distractorsEn: [cisatracurium, dexmedetomidine]
   distractorsKo: [로쿠로늄, 프로포폴]
-  chips: [[suc, ci, nyl], [cho, line]]
+  chips:
+  - [suc, ci, nyl, choline]
   decoyChips: [sux, chol]
 w-mh:
-  cue: "악성 고열을 줄여 부르는 약자 — 팀이 급히 말할 때"
+  cue: 악성 고열을 줄여 부르는 약자 — 팀이 급히 말할 때
   tag: 유발약
   distractorsEn: [MS, NG]
-  distractorsKo: [고열, 위기]
-  chips: [[MH]]
+  distractorsKo: [악성 저체온(약자), 악성 증후군(약자)]
+  chips:
+  - [MH]
   decoyChips: [HM]
 w-trigger:
-  cue: "MH 발작을 일으킬 수 있어서 피해야 하는 약 (명사)"
+  cue: MH 발작을 일으킬 수 있어서 피해야 하는 약 (명사)
   tag: 유발약
   distractorsEn: [triage, trigeminal]
   distractorsKo: [해독제, 증상]
-  chips: [[trig, ger]]
+  chips:
+  - [trig, ger]
   decoyChips: [tri, gar]
 w-technique:
-  cue: "약을 어떤 조합과 방식으로 쓸지 정한 마취의 방법 (명사)"
+  cue: 약을 어떤 조합과 방식으로 쓸지 정한 마취의 방법 (명사)
   tag: 유발약
   distractorsEn: [technology, tension]
   distractorsKo: [기록, 장비]
-  chips: [[tech, nique]]
+  chips:
+  - [tech, nique]
   decoyChips: [tek, neek]
 w-case:
-  cue: "수술실에서 오늘 하는 수술 한 건을 팀끼리 부르는 말 (명사)"
+  cue: 수술실에서 오늘 하는 수술 한 건을 팀끼리 부르는 말 (명사)
   tag: 유발약
   distractorsEn: [cause, cast]
   distractorsKo: [수술실, 수술 순서]
-  chips: [[case]]
+  chips:
+  - [case]
   decoyChips: [cash]
 w-confirm:
-  cue: "맞는지 소리 내어 말해서 모두가 같은 정보를 갖게 할 때 (동사)"
+  cue: 맞는지 소리 내어 말해서 모두가 같은 정보를 갖게 할 때 (동사)
   tag: 유발약
   distractorsEn: [conform, convert]
-  distractorsKo: [변경하다, 승인하다]
-  chips: [[con, firm]]
+  distractorsKo: [변경하다, 취소하다]
+  chips:
+  - [con, firm]
   decoyChips: [form, fine]
 w-machine:
-  cue: "마취 가스와 산소를 섞어 환자에게 보내 주는 수술실 장비 (명사)"
+  cue: 마취 가스와 산소를 섞어 환자에게 보내 주는 수술실 장비 (명사)
   tag: 유발약
   distractorsEn: [magazine, marine]
-  distractorsKo: [기구, 튜브]
-  chips: [[ma, chine]]
+  distractorsKo: [튜브, 필터]
+  chips:
+  - [ma, chine]
   decoyChips: [mar, shine]
 w-off:
-  cue: "스위치나 밸브가 닫혀서 작동하지 않는 상태 (형용사)"
+  cue: 스위치나 밸브가 닫혀서 작동하지 않는 상태 (형용사)
   tag: 유발약
-  distractorsEn: ["on", "of"]
+  distractorsEn:
+  - "on"
+  - out
   distractorsKo: [켜진, 열린]
-  chips: [["off"]]
-  decoyChips: ["of"]
+  chips:
+  - - "off"
+  decoyChips: [of]
 w-avoid:
-  cue: "써서는 안 되는 약을 일부러 안 쓰고 피할 때 (동사)"
+  cue: 써서는 안 되는 약을 일부러 안 쓰고 피할 때 (동사)
   tag: 유발약
   distractorsEn: [avert, await]
   distractorsKo: [줄이다, 바꾸다]
-  chips: [[a, void]]
-  decoyChips: [a, voyd]
+  chips:
+  - [a, void]
+  decoyChips: [ab, voyd]
 w-drug:
-  cue: "환자에게 쓰는 약이나 약물을 통틀어 부르는 말 (명사)"
+  cue: 환자에게 쓰는 약이나 약물을 통틀어 부르는 말 (명사)
   tag: 유발약
   distractorsEn: [drag, drain]
   distractorsKo: [독약, 용량]
-  chips: [[drug]]
+  chips:
+  - [drug]
   decoyChips: [drag]
 w-dantrolene:
-  cue: "MH 치료의 핵심이 되는 약 — 카트에 가루 바이알로 들어 있다"
+  cue: MH 치료의 핵심이 되는 약 — 카트에 가루 바이알로 들어 있다
   tag: 카트·재고
-  distractorsEn: [dexmedetomidine, dobutamine]
+  distractorsEn: [dobutamine, dopamine]
   distractorsKo: [도부타민, 아트로핀]
-  chips: [[dan, tro, lene]]
+  chips:
+  - [dan, tro, lene]
   decoyChips: [den, tril]
 w-store:
-  cue: "약을 정해진 자리에 두어 필요할 때 찾게 할 때 (동사)"
+  cue: 약을 정해진 자리에 두어 필요할 때 찾게 할 때 (동사)
   tag: 카트·재고
   distractorsEn: [stir, stare]
   distractorsKo: [폐기하다, 주문하다]
-  chips: [[store]]
+  chips:
+  - [store]
   decoyChips: [stor]
 w-vial:
-  cue: "가루나 주사액이 담긴 작은 유리병 (명사)"
+  cue: 가루나 주사액이 담긴 작은 유리병 (명사)
   tag: 카트·재고
   distractorsEn: [vital, trial]
-  distractorsKo: [앰풀, 주사기]
-  chips: [[vi, al]]
+  distractorsKo: [주사기, 수액줄]
+  chips:
+  - [vi, al]
   decoyChips: [vit, el]
 w-enough:
-  cue: "필요한 양을 채우고도 모자라지 않는 정도 (형용사)"
+  cue: 필요한 양을 채우고도 모자라지 않는 정도 (형용사)
   tag: 카트·재고
   distractorsEn: [enormous, tough]
-  distractorsKo: [여분의, 적절한]
-  chips: [[e, nough]]
+  distractorsKo: [여분의, 불필요한]
+  chips:
+  - [e, nough]
   decoyChips: [en, nuff]
 w-accessible:
-  cue: "급할 때 바로 손이 닿아 쓸 수 있는 자리에 있는 (형용사)"
+  cue: 급할 때 바로 손이 닿아 쓸 수 있는 자리에 있는 (형용사)
   tag: 카트·재고
   distractorsEn: [acceptable, accountable]
-  distractorsKo: [사용 가능한, 눈에 띄는]
-  chips: [[ac, ces, si, ble]]
+  distractorsKo: [허가된, 눈에 띄는]
+  chips:
+  - [ac, ces, si, ble]
   decoyChips: [ex, cep]
 w-induce:
-  cue: "환자를 잠들게 하려고 마취를 시작하는 일 (동사)"
+  cue: 환자를 잠들게 하려고 마취를 시작하는 일 (동사)
   tag: 카트·재고
   distractorsEn: [reduce, produce]
   distractorsKo: [마취를 깨우다, 마취를 줄이다]
-  chips: [[in, duce]]
+  chips:
+  - [in, duce]
   decoyChips: [re, deuce]
 w-cart:
-  cue: "응급 물품을 서랍에 담아 수술실로 밀고 오는 바퀴 달린 수레 (명사)"
+  cue: 응급 물품을 서랍에 담아 수술실로 밀고 오는 바퀴 달린 수레 (명사)
   tag: 카트·재고
   distractorsEn: [card, chart]
   distractorsKo: [침대, 선반]
-  chips: [[cart]]
+  chips:
+  - [cart]
   decoyChips: [card]
 w-low:
-  cue: "정해 둔 기준 수량보다 적게 남은 (형용사)"
+  cue: 정해 둔 기준 수량보다 적게 남은 (형용사)
   tag: 카트·재고
   distractorsEn: [slow, loan]
   distractorsKo: [넉넉한, 만료된]
-  chips: [[low]]
+  chips:
+  - [low]
   decoyChips: [row]
 w-pharmacy:
-  cue: "병원에서 약을 조제하고 내보내 주는 부서 (명사)"
+  cue: 병원에서 약을 조제하고 내보내 주는 부서 (명사)
   tag: 카트·재고
   distractorsEn: [pharmacist, therapy]
   distractorsKo: [약 처방, 재고 창고]
-  chips: [[phar, ma, cy]]
+  chips:
+  - [phar, ma, cy]
   decoyChips: [far, mac]
 w-send:
-  cue: "필요한 물건이나 검체를 다른 곳으로 보낼 때 (동사)"
+  cue: 필요한 물건이나 검체를 다른 곳으로 보낼 때 (동사)
   tag: 카트·재고
   distractorsEn: [spend, sand]
   distractorsKo: [받다, 반납하다]
-  chips: [[send]]
+  chips:
+  - [send]
   decoyChips: [sand]
 w-inventory:
-  cue: "카트에 있는 물건의 종류와 수를 하나씩 세어 확인하는 일 (동사)"
+  cue: 카트에 있는 물건의 종류와 수를 하나씩 세어 확인하는 일 (동사)
   tag: 카트·재고
-  distractorsEn: [inventor, invent]
+  distractorsEn: [invoice, interval]
   distractorsKo: [주문하다, 교체하다]
-  chips: [[in, ven, to, ry]]
+  chips:
+  - [in, ven, to, ry]
   decoyChips: [ten, tor]
 w-sterile:
-  cue: "균이 하나도 없게 처리해서 주사나 수술에 안전한 (형용사)"
+  cue: 균이 하나도 없게 처리해서 주사나 수술에 안전한 (형용사)
   tag: 카트·재고
   distractorsEn: [stable, steroid]
-  distractorsKo: [소독된, 일회용의]
-  chips: [[ster, ile]]
+  distractorsKo: [오염된, 일회용의]
+  chips:
+  - [ster, ile]
   decoyChips: [stir, ial]
 w-saline:
-  cue: "소금을 녹인 투명한 수액 — 냉각할 땐 차갑게 쓴다 (명사)"
+  cue: 소금을 녹인 투명한 수액 — 냉각할 땐 차갑게 쓴다 (명사)
   tag: 카트·재고
   distractorsEn: [saliva, solution]
-  distractorsKo: [포도당액, 링거액]
-  chips: [[sa, line]]
+  distractorsKo: [포도당액, 증류수]
+  chips:
+  - [sa, line]
   decoyChips: [sal, lane]
 w-protocol:
-  cue: "비상 때 누가 무엇을 어떤 순서로 하는지 정해 둔 지침 (명사)"
+  cue: 비상 때 누가 무엇을 어떤 순서로 하는지 정해 둔 지침 (명사)
   tag: 카트·재고
-  distractorsEn: [procedure, prototype]
+  distractorsEn: [prototype, protein]
   distractorsKo: [처방전, 점검표]
-  chips: [[pro, to, col]]
+  chips:
+  - [pro, to, col]
   decoyChips: [pre, cal]
 w-card:
-  cue: "카트에 붙여 두고 순서를 훑어보게 만든 빳빳한 종이 (명사)"
+  cue: 카트에 붙여 두고 순서를 훑어보게 만든 빳빳한 종이 (명사)
   tag: 카트·재고
   distractorsEn: [cart, chart]
   distractorsKo: [라벨, 차트]
-  chips: [[card]]
+  chips:
+  - [card]
   decoyChips: [cord]
 w-stock:
-  cue: "물건을 필요한 만큼 채워 두는 일 (동사)"
+  cue: 물건을 필요한 만큼 채워 두는 일 (동사)
   tag: 카트·재고
   distractorsEn: [shock, stack]
   distractorsKo: [비우다, 폐기하다]
-  chips: [[stock]]
+  chips:
+  - [stock]
   decoyChips: [stack]
 w-date:
-  cue: "약병에 찍혀 있어서 그 날을 지나면 못 쓰는 날짜 (명사)"
+  cue: 약병에 찍혀 있어서 그 날을 지나면 못 쓰는 날짜 (명사)
   tag: 카트·재고
   distractorsEn: [data, dose]
   distractorsKo: [용량, 제조사]
-  chips: [[date]]
+  chips:
+  - [date]
   decoyChips: [data]
 w-restock:
-  cue: "비어 가는 카트에 같은 물건을 다시 채워 넣을 때 (동사)"
+  cue: 비어 가는 카트에 같은 물건을 다시 채워 넣을 때 (동사)
   tag: 카트·재고
   distractorsEn: [restore, reorder]
   distractorsKo: [반납하다, 교체하다]
-  chips: [[re, stock]]
-  decoyChips: [re, stack]
+  chips:
+  - [re, stock]
+  decoyChips: [ra, stack]
 w-count:
-  cue: "카트 속 바이알을 세어 나온 숫자 (명사)"
+  cue: 카트 속 바이알을 세어 나온 숫자 (명사)
   tag: 카트·재고
   distractorsEn: [court, cost]
   distractorsKo: [용량, 무게]
-  chips: [[count]]
+  chips:
+  - [count]
   decoyChips: [court]
 w-pull:
-  cue: "약국 선반이나 보관함에서 필요한 물건을 빼서 가져올 때 (동사)"
+  cue: 약국 선반이나 보관함에서 필요한 물건을 빼서 가져올 때 (동사)
   tag: 카트·재고
   distractorsEn: [push, pool]
   distractorsKo: [밀어 넣다, 돌려주다]
-  chips: [[pull]]
+  chips:
+  - [pull]
   decoyChips: [pool]

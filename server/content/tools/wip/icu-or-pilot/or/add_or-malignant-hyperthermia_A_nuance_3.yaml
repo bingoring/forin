@@ -1,0 +1,105 @@
+MH 감수성 환자 준비:
+  - kind: slider
+    words: [w-plan, w-medication, w-ready, w-prepare, w-safe, w-known, w-risk, w-precaution]
+    cue: "Patient: \"My brother had MH under anesthesia. I'm scared. Is something going to happen to me?\""
+    scale: ["Don't worry — nothing is going to happen.", "We've planned for this: we'll avoid the triggers and have the medicine ready.", "It's a dangerous condition and you could have a crisis."]
+    answerAt: 1
+    why: "'아무 일도 없을 거예요'는 지킬 수 없는 약속이에요. 반대로 위험만 강조하면 겁만 커져요. 이미 세워 둔 계획(유발 약 피하기, 약 준비)을 구체적으로 말해서 안심시켜요."
+    example: "We've planned for this: we'll avoid the triggers and have the medicine ready."
+    exKo: "미리 계획해 뒀어요 — 유발 약은 피하고 약은 준비해 둘게요."
+  - kind: context
+    words: [w-risk]
+    word: risk
+    ko: 위험
+    scenes:
+      - {who: 간호사 → 마취과, icon: speech, en: "Known MH risk in this room — please plan a trigger-free anesthetic.", ok: true}
+      - {who: 마취 전 차트, icon: board, en: "MH risk: positive family history; trigger-free anesthetic planned.", ok: true}
+      - {who: 불안한 환자에게, icon: me, en: "You're a high MH risk, so something could go very wrong.", ok: false, fix: "Because of your family history, we'll take extra steps to keep you safe."}
+    why: "risk는 의료진끼리는 계획을 세우는 출발점이에요. 환자에게 '크게 잘못될 수 있다'고 하면 무서움만 남아요. 그 위험 때문에 우리가 무엇을 따로 준비하는지를 말해 줘요."
+유발약 회피 마취:
+  - kind: slider
+    words: [w-machine, w-flush, w-vaporizer, w-off, w-remove]
+    cue: "For an MH-susceptible patient, anesthesia says the machine is flushed and the vaporizers are turned off, but they're still mounted on the machine."
+    scale: ["Off is good enough — let's go.", "Turned off isn't the same as removed — let's remove or disable them per the checklist.", "We can't do this case at all."]
+    answerAt: 1
+    why: "기화기를 꺼 둔 것과 제거하거나 쓰지 못하게 해 둔 것은 달라요. 유발 가스가 나올 여지가 남지 않도록 병원 체크리스트와 기계 지침대로 처리해요. 이미 준비 중인 케이스를 그냥 포기할 일도 아니에요."
+    example: "They're off, but let's remove or disable the vaporizers per the checklist."
+    exKo: "꺼져 있긴 하지만 체크리스트대로 기화기를 빼거나 못 쓰게 해 둡시다."
+  - kind: context
+    words: [w-vaporizer]
+    word: vaporizer
+    ko: 기화기
+    scenes:
+      - {who: 마취과 → 간호사, icon: speech, en: "The vaporizers are out and the machine is flushed.", ok: true}
+      - {who: 마취 기록, icon: board, en: "MH prep: machine flushed; vaporizers removed; TIVA set up.", ok: true}
+      - {who: 불안한 환자에게, icon: me, en: "We took out the vaporizers because the gas they make could set off your MH.", ok: false, fix: "We're not using breathing gas for your sleep medicine — it will go in through your IV instead."}
+    why: "vaporizer는 마취팀이 장비를 확인할 때 쓰는 이름이에요. 환자에게는 장비 이름과 원인을 설명하기보다, 어떻게 재울 것인지를 쉬운 말로 말해 줘요."
+냉각 물품 준비:
+  - kind: slider
+    words: [w-stage, w-saline, w-ice, w-cool, w-fast, w-reach, w-blanket]
+    cue: "Before an MH-risk case, anesthesia asks if the cooling supplies are ready. They're in the supply room down the hall."
+    scale: ["They're down the hall — we can fetch them if we need them.", "I'll stage cold saline, ice packs, and the cooling blanket in the room within reach.", "We'll bring them after the temperature goes up."]
+    answerAt: 1
+    why: "위기가 선언되면 바로 식혀야 해서 복도 끝 창고에서 가져올 시간이 없어요. 냉각 물품을 미리 방 안 손닿는 곳에 배치해 둬요."
+    example: "I'll stage cold saline and ice packs within reach."
+    exKo: "찬 생리식염수와 얼음팩을 손닿는 곳에 미리 둘게요."
+  - kind: context
+    words: [w-stage]
+    word: stage
+    ko: 미리 배치하다
+    scenes:
+      - {who: 간호사 → 마취과, icon: speech, en: "Let's stage the cold saline and ice before induction.", ok: true}
+      - {who: 준비 체크리스트, icon: board, en: "MH setup: cooling supplies staged in room.", ok: true}
+      - {who: 불안한 환자에게, icon: me, en: "We've staged ice packs in case your body temperature skyrockets.", ok: false, fix: "We've set out some extra supplies just in case — it's a routine precaution."}
+    why: "stage는 필요한 순간에 쓰도록 미리 가까이 둔다는 팀 안의 말이에요. 환자에게 '체온이 치솟을 때를 대비했다'고 하면 불안하게 들려요. 늘 하는 준비처럼 담담하게 말해요."
+고칼륨 감시:
+  - kind: pair
+    words: [w-send, w-potassium, w-level, w-hyperkalemia, w-rise, w-fast, w-mh, w-watch, w-rhythm, w-peaked, w-wave]
+    pairs: [["Hyperkalemia can", "rise fast in MH"], ["Send", "a potassium level"], ["Watch the rhythm for", "peaked T waves"]]
+    decoys: ["in the hallway"]
+    why: "MH에서는 근육이 깨지며 칼륨이 빠르게 오를 수 있어요(rise fast). 그래서 칼륨 수치를 보내고(send a level), 리듬에서 뾰족한 T파(peaked T waves)가 나오는지 지켜봐요."
+  - kind: context
+    words: [w-hyperkalemia]
+    word: hyperkalemia
+    ko: 고칼륨혈증
+    scenes:
+      - {who: 간호사 → 마취과, icon: speech, en: "Hyperkalemia can build fast in MH — let's send a level now.", ok: true}
+      - {who: 마취 기록, icon: board, en: "Hyperkalemia treated per protocol; repeat potassium sent.", ok: true}
+      - {who: 대기실 보호자에게, icon: me, en: "He has hyperkalemia, which can stop the heart if we don't act.", ok: false, fix: "One of the salts in his blood is too high, so we're checking it and treating it right away."}
+    why: "hyperkalemia는 팀 안에서는 한마디로 통하는 정확한 말이에요. 보호자에게는 병명과 최악의 결과를 같이 들려주지 말고, 무엇이 높은지와 지금 하고 있는 일을 말해요."
+미오글로빈뇨 관찰:
+  - kind: slider
+    words: [w-urine, w-dark, w-colored, w-suggest, w-myoglobinuria, w-note, w-output, w-lab, w-send]
+    cue: "In an MH crisis, the urine in the bag has turned dark and cola-colored. You're updating the team."
+    scale: ["The urine looks a little different.", "The urine is cola-colored — that suggests myoglobinuria. I'm noting output and sending labs.", "His kidneys have already failed."]
+    answerAt: 1
+    why: "콜라색 소변은 근육이 깨졌다는 단서라서 색, 가능한 의미, 하고 있는 일(배출량 기록, 검사 보냄)을 함께 말해요. '조금 다르다'는 너무 약하고, 확인되지 않은 '신장이 망가졌다'는 단정이에요."
+    example: "The urine is cola-colored — that suggests myoglobinuria. I'm sending labs."
+    exKo: "소변이 콜라색이에요 — 미오글로빈뇨를 시사해요. 검사 보낼게요."
+  - kind: context
+    words: [w-suggest]
+    word: suggest
+    ko: 시사하다
+    scenes:
+      - {who: 간호사 → 마취과, icon: speech, en: "Cola-colored urine suggests myoglobinuria — I'll send labs.", ok: true}
+      - {who: 마취 기록, icon: board, en: "Dark urine suggests muscle breakdown; output recorded hourly.", ok: true}
+      - {who: 대기실 보호자에게, icon: me, en: "The dark urine suggests his muscles are breaking down and his kidneys may fail.", ok: false, fix: "His urine is dark, so we're checking his muscles and kidneys carefully."}
+    why: "suggest는 아직 확정이 아니라 '그럴 가능성을 가리킨다'는 조심스러운 임상 표현이에요. 보호자에게 근육 파괴와 신부전까지 한꺼번에 말하면 확정처럼 들려요. 지금 무엇을 확인하는지를 먼저 전해요."
+MH 위기 발동:
+  - kind: slider
+    words: [w-declare, w-mhfull, w-mh, w-cart, w-call, w-help]
+    cue: "EtCO2 is rising, the jaw is tight, and the heart rate is up. The anesthesiologist decides it's MH and speaks to the whole room."
+    scale: ["I think maybe this could be MH?", "This is malignant hyperthermia — I'm declaring it. Get the MH cart and call for help now.", "Oh no, it's MH, it's MH!"]
+    answerAt: 1
+    why: "위기 선언은 분명하고 차분하게 해요. '아닐 수도 있다'는 말투는 팀이 움직일 신호가 되지 못하고, 소리만 지르면 무엇을 할지 알려 주지 못해요. 선언하는 말에 바로 할 일(카트, 도움 요청)을 붙여요."
+    example: "This is malignant hyperthermia — I'm declaring it. Get the MH cart and call for help."
+    exKo: "악성 고열이에요 — 선언합니다. MH 카트를 가져오고 도움을 요청하세요."
+  - kind: context
+    words: [w-declare]
+    word: declare
+    ko: 선언하다
+    scenes:
+      - {who: 마취과 → 팀, icon: speech, en: "I'm declaring MH — everyone to the cart.", ok: true}
+      - {who: 위기 기록, icon: board, en: "MH declared at 1032; dantrolene started.", ok: true}
+      - {who: 대기실 보호자에게, icon: me, en: "I'm declaring that your husband has malignant hyperthermia.", ok: false, fix: "He's having a serious reaction to the anesthesia, and we're treating it right now."}
+    why: "declare는 팀이 한꺼번에 위기 모드로 들어가라는 신호예요. 보호자에게는 '선언한다'는 공식적인 말 대신, 지금 무슨 일이 일어났고 무엇을 하고 있는지를 말해 줘요."
