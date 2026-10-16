@@ -9,7 +9,7 @@ v44(문장·단어)만 있던 주제 4개를 v45(단어 회상 재료·뉘앙스
 | icu-weaning-extubation | `8b4b57d` | 81 (A 38·B 43) | 18 | 117만 |
 | or-timeout | `3d0a3a5` | 157 (A 35·B 122) | 32 | 107만 |
 | icu-eol-goals (Fable 판정) | `a6ae700` | 약 360 (Opus 199 + Fable 추가) | 8+ | 183만(판정 42만 포함) |
-| or-malignant-hyperthermia (Fable 판정) | (이 커밋) | Opus 68 + Fable 추가 | 23+ | 161만(판정 38만 포함) |
+| or-malignant-hyperthermia (Fable 판정) | `706e3de` | Opus 68 + Fable 추가 | 23+ | 161만(판정 38만 포함) |
 
 합계 568만 토큰. 단계별: 저작 A 92만·B 102만, Opus 검토 A 77만·B 87만, Fable 판정 80만, 수정 130만.
 
