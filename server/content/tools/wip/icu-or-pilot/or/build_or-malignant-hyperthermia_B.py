@@ -43,5 +43,5 @@ if not miss:
                 for w in set(re.findall(r'[가-힣A-Za-z0-9]+', d)):
                     w2 = re.sub(r'(은|는|이|가|을|를|에|에서|의|도|과|와|로|으로|만|에게|께)$', '', w)
                     if w2 not in kws and w not in kw: cnt[w2] += 1
-    open(D + 'check-B-table.txt', 'w').write('\n'.join(rows))
-    open(D + 'check-B-freq.txt', 'w').write('\n'.join(f'{c} {w}' for w, c in cnt.most_common(60)))
+    open('/private/tmp/claude-501/-Users-ywyeom-private-forin/4f761496-057c-44fb-9edf-c2b06d77c247/scratchpad/mh-B-table.txt', 'w').write('\n'.join(rows))
+    open('/private/tmp/claude-501/-Users-ywyeom-private-forin/4f761496-057c-44fb-9edf-c2b06d77c247/scratchpad/mh-B-freq.txt', 'w').write('\n'.join(f'{c} {w}' for w, c in cnt.most_common(60)))

@@ -3,7 +3,7 @@
   s:
     - {tag: "방침 안내", icon: board, why: "trigger-free는 -free로 그것이 없다는 뜻의 형용사를 만들어요. anesthetic은 여기서 명사로, 마취약이나 마취 방법 자체를 가리켜요.", decoy: "a quick", d: ["저희는 유발약 없는 수술을 할 거예요.", "저희는 유발약 없는 검사를 할 거예요."], a: "anesthetic", o: ["surgery", "exam", "scan"]}
     - {tag: "기계 상태", icon: gear, why: "is flushed는 수동태라 누가 했는지보다 지금 상태가 어떤지를 말해요. flushed와 off를 and로 묶어 유발 약물이 남지 않았는지를 한 문장에 보고해요.", decoy: "are labeled", d: ["기계는 세척되어 있고 모니터는 꺼져 있어요.", "침대는 세척되어 있고 기화기는 꺼져 있어요."], a: "flushed", o: ["stocked", "packed", "labeled"]}
-    - {tag: "약물 준비", icon: pill, why: "drawn up은 주사기에 약을 뽑아 담았다는 구동사예요. is … and ready처럼 수동태에 형용사를 이어 약이 이미 준비된 상태라는 것을 한 번에 말해요.", decoy: "and signed", d: ["TIVA는 준비되어 포장해 두었어요.", "TIVA는 준비되어 주문해 두었어요."], a: "ready", o: ["empty", "late", "spoiled"]}
+    - {tag: "약물 준비", icon: pill, why: "drawn up은 주사기에 약을 뽑아 담았다는 구동사예요. is … and ready처럼 수동태에 형용사를 이어 약이 이미 준비된 상태라는 것을 한 번에 말해요.", decoy: "and signed", d: ["TIVA는 준비되어 닫아 두었어요.", "TIVA는 준비되어 주문해 두었어요."], a: "ready", o: ["empty", "late", "spoiled"]}
     - {tag: "이중 확인", icon: check, why: "double-check는 이미 본 것을 한 번 더 본다는 뜻이라 유발 약물처럼 틀리면 치명적인 항목에 써요. are removed from은 완료된 상태를 확인하는 수동태예요.", decoy: "from the wall", d: ["모니터가 기계에서 제거됐는지 다시 확인합시다.", "기화기가 침대에서 제거됐는지 다시 확인합시다."], a: "removed", o: ["counted", "painted", "weighed"]}
     - {tag: "유지 약속", icon: pill, why: "keep + 목적어 + -ing는 그것이 계속 그 상태로 있게 하겠다는 모양이에요. for the whole case로 중간에 끊기지 않고 케이스 끝까지라는 범위를 말해요.", decoy: "for an hour", d: ["케이스 내내 TIVA가 조용하게 유지되도록 할게요.", "회복실에서 TIVA가 부드럽게 유지되도록 할게요."], a: "smoothly", o: ["loudly", "lazily", "rarely"]}
   order:
@@ -35,11 +35,11 @@
       - {en: "So we can start the moment we call it.", icon: siren, ko: "그래서 콜하는 순간 바로 시작할 수 있어요", note: "결과"}
 13:
   s:
-    - {tag: "검사 의뢰", icon: lab, why: "send a potassium level은 혈액을 검사실로 보내 칼륨 수치를 받는다는 뜻의 줄임말이에요. now를 문장 끝에 두어 MH에서는 칼륨이 빨리 오를 수 있어 미루지 않는다는 점을 담아요.", decoy: "with lunch", d: ["지금 칼륨 수치를 읽읍시다.", "지금 칼륨 수치를 외과에 보냅시다."], a: "level", o: ["bill", "note", "label"]}
+    - {tag: "검사 의뢰", icon: lab, why: "send a potassium level은 혈액을 검사실로 보내 칼륨 수치를 받는다는 뜻의 줄임말이에요. now를 문장 끝에 두어 MH에서는 칼륨이 빨리 오를 수 있어 미루지 않는다는 점을 담아요.", decoy: "with lunch", d: ["지금 칼륨 수치를 읽읍시다.", "지금 칼륨 수치를 원무과에 보냅시다."], a: "level", o: ["bill", "note", "label"]}
     - {tag: "위험 설명", icon: chartup, why: "can rise는 늘 그렇다는 뜻이 아니라 그럴 수 있다는 가능성 표현이에요. fast in MH로 일반 상황보다 빠르다는 점을 짚어 칼륨 확인을 서두르는 이유가 돼요.", decoy: "in sleep", d: ["MH에서는 고칼륨혈증이 자주 올 수 있어요.", "수술에서는 고칼륨혈증이 빨리 오를 수 있어요."], a: "rise", o: ["hide", "wait", "shrink"]}
     - {tag: "감시 지시", icon: monitor, why: "Watch A for B는 A를 보면서 B가 나타나는지 찾으라는 모양이에요. peaked T waves는 고칼륨혈증이 심장에 영향을 주기 시작했을 때 심전도에 나타나는 신호예요.", decoy: "for loud alarms", d: ["뾰족한 T파가 있는지 호흡을 지켜보세요.", "뾰족한 T파가 있는지 소변을 지켜보세요."], a: "waves", o: ["leads", "cables", "pads"]}
     - {tag: "대응 약속", icon: shield, why: "comes back high의 come back은 보낸 검사의 결과가 돌아온다는 뜻이에요. treat it right away는 결과를 보고 끝내지 않고 바로 처치로 이어 가겠다는 약속이에요.", decoy: "by phone", d: ["혈당 수치가 높게 나오면 바로 처치할게요.", "나트륨 수치가 높게 나오면 바로 처치할게요."], a: "treat", o: ["record", "repeat", "relabel"]}
-    - {tag: "계속 감시", icon: monitor, why: "keep + -ing는 한 번 보고 끝내지 않고 계속한다는 모양이에요. in case 뒤의 is building은 아직 확인되지 않았지만 쌓이는 중일 수 있다는 가능성이라 감시를 멈추지 않는 이유가 돼요.", decoy: "from the door", d: ["고칼륨혈증이 심해지고 있을 경우를 대비해 호흡을 계속 지켜봅시다.", "고칼륨혈증이 심해지고 있을 경우를 대비해 혈압을 계속 지켜봅시다."], a: "building", o: ["leaving", "ending", "resting"]}
+    - {tag: "계속 감시", icon: monitor, why: "keep + -ing는 한 번 보고 끝내지 않고 계속한다는 모양이에요. in case 뒤의 is building은 아직 확인되지 않았지만 쌓이는 중일 수 있다는 가능성이라 감시를 멈추지 않는 이유가 돼요.", decoy: "from the door", d: ["고칼륨혈증이 심해지고 있을 경우를 대비해 호흡을 계속 지켜봅시다.", "고칼륨혈증이 심해지고 있을 경우를 대비해 맥박을 계속 지켜봅시다."], a: "building", o: ["leaving", "ending", "resting"]}
   order:
     tag: "대화 흐름"
     icon: compass
@@ -53,10 +53,10 @@
 14:
   s:
     - {tag: "소변 변화", icon: faceWorried, why: "is turning은 진행형이라 지금 색이 변하는 중이라는 뜻이에요. cola-colored처럼 쉬운 비유를 붙이면 색 이름을 모르는 팀원도 같은 색을 떠올려요.", decoy: "milky", d: ["땀이 콜라색으로 어둡게 변하고 있어요.", "소변이 콜라색으로 탁하게 변하고 있어요."], a: "urine", o: ["sweat", "saliva", "tears"]}
-    - {tag: "원인 설명", icon: bulb, why: "suggests는 단정하지 않고 가능성을 가리키는 동사라 검사로 확인하기 전의 판단에 알맞아요. from muscle breakdown은 원인을 밝히는 말로, 근육이 깨지면서 나온 물질이 소변 색을 바꾼다는 설명이에요.", decoy: "from a kidney stone", d: ["이건 근육 파괴로 인한 혈뇨를 시사해요.", "이건 근육 파괴로 인한 미오글로빈뇨를 확인해요."], a: "breakdown", o: ["growth", "repair", "rest"]}
+    - {tag: "원인 설명", icon: bulb, why: "suggests는 단정하지 않고 가능성을 가리키는 동사라 검사로 확인하기 전의 판단에 알맞아요. from muscle breakdown은 원인을 밝히는 말로, 근육이 깨지면서 나온 물질이 소변 색을 바꾼다는 설명이에요.", decoy: "from a kidney stone", d: ["이건 근육 파괴로 인한 혈뇨를 시사해요.", "이건 근육 파괴로 인한 탈수를 시사해요."], a: "breakdown", o: ["growth", "repair", "rest"]}
     - {tag: "기록·검사", icon: pencil, why: "note와 send를 and로 묶어 기록하는 일과 검체를 보내는 일을 함께 하자는 모양이에요. output은 여기서 소변 배출량을, labs는 검사실로 보내는 혈액·소변 검사를 통틀어 가리켜요.", decoy: "and send flowers", d: ["체온을 기록하고 검사를 보냅시다.", "배출량을 기록하고 사진을 보냅시다."], a: "note", o: ["hide", "paint", "sell"]}
     - {tag: "변화 추이", icon: chartup, why: "has gotten + 비교급은 지금까지 점점 변해 왔다는 현재완료 모양이에요. over the last hour로 기간을 붙이면 한 번 본 색이 아니라 시간에 따른 변화라는 근거가 돼요.", decoy: "over the weekend", d: ["지난 두 시간 동안 색깔이 더 어두워졌어요.", "지난 한 시간 동안 양이 더 적어졌어요."], a: "last", o: ["next", "first", "whole"]}
-    - {tag: "보고·기록", icon: bell, why: "flag this for the team은 다른 사람이 놓치지 않게 알리는 일이고, make sure it's in the chart는 기록이 빠지지 않게 챙기겠다는 약속이에요. 두 일을 and로 묶으면 구두 전달과 기록이 모두 이루어져요.", decoy: "on the wall", d: ["약국에 알리고 차트에 기록되게 할게요.", "팀에 알리고 모니터에 표시되게 할게요."], a: "chart", o: ["freezer", "closet", "basket"]}
+    - {tag: "보고·기록", icon: bell, why: "flag this for the team은 다른 사람이 놓치지 않게 알리는 일이고, make sure it's in the chart는 기록이 빠지지 않게 챙기겠다는 약속이에요. 두 일을 and로 묶으면 구두 전달과 기록이 모두 이루어져요.", decoy: "on the wall", d: ["약국에 알리고 차트에 기록되게 할게요.", "팀에 알리고 약국에 기록되게 할게요."], a: "chart", o: ["freezer", "closet", "basket"]}
   order:
     tag: "대화 흐름"
     icon: compass
@@ -69,10 +69,10 @@
       - {en: "I'll flag all of this for the team and make sure it's in the chart.", icon: bell, ko: "이 모두를 팀에 알리고 차트에 남길게요", note: "기록"}
 15:
   s:
-    - {tag: "위기 선언", icon: siren, why: "I'm declaring it은 진단을 말하는 데서 한 걸음 나아가 팀 전체가 프로토콜로 움직이게 하는 선언이에요. 한 사람이 큰 소리로 선언해야 모두가 같은 때에 시작해요.", decoy: "I'm drawing it", d: ["이건 악성 고열이에요 — 지금 설명할게요.", "이건 악성 고열이에요 — 지금 확인할게요."], a: "declaring", o: ["drawing", "filing", "packing"]}
+    - {tag: "위기 선언", icon: siren, why: "I'm declaring it은 진단을 말하는 데서 한 걸음 나아가 팀 전체가 프로토콜로 움직이게 하는 선언이에요. 한 사람이 큰 소리로 선언해야 모두가 같은 때에 시작해요.", decoy: "I'm drawing it", d: ["이건 악성 고열이에요 — 지금 설명할게요.", "이건 악성 고열이에요 — 지금 공유할게요."], a: "declaring", o: ["drawing", "filing", "packing"]}
     - {tag: "지시", icon: siren, why: "명령문 Get과 call을 and로 이어 두 일을 동시에 시키는 모양이에요. call for help는 누구를 콕 집지 않고 도울 수 있는 사람이면 누구든 오게 한다는 표현이에요.", decoy: "for a break", d: ["MH 카트를 가져오고 여기서 도움을 요청하세요.", "MH 카트를 가져오고 크게 도움을 요청하세요."], a: "Get", o: ["Wash", "Pack", "Sort"]}
     - {tag: "중단 지시", icon: siren, why: "명령문 Stop으로 시작해 가장 먼저 해야 할 일을 앞에 둬요. all과 immediately가 일부만, 나중에가 되지 않게 범위와 시점을 못 박아요.", decoy: "in the hall", d: ["모든 휴대폰 알림을 즉시 끄세요.", "모든 방송 안내를 즉시 멈추세요."], a: "immediately", o: ["quietly", "politely", "gently"]}
-    - {tag: "프로토콜 시작", icon: siren, why: "calling it은 판단을 확정해 말한다는 관용구예요. we start the protocol now로 선언 바로 다음 행동이 프로토콜 시작임을 이어 말해 팀이 선언과 동시에 움직이게 해요.", decoy: "the report", d: ["지금 설명할게요 — 이건 MH이고, 지금 프로토콜을 시작합니다.", "지금 확인할게요 — 이건 MH이고, 지금 프로토콜을 시작합니다."], a: "protocol", o: ["report", "lesson", "survey"]}
+    - {tag: "프로토콜 시작", icon: siren, why: "calling it은 판단을 확정해 말한다는 관용구예요. we start the protocol now로 선언 바로 다음 행동이 프로토콜 시작임을 이어 말해 팀이 선언과 동시에 움직이게 해요.", decoy: "the report", d: ["지금 설명할게요 — 이건 MH이고, 지금 프로토콜을 시작합니다.", "지금 보고할게요 — 이건 MH이고, 지금 프로토콜을 시작합니다."], a: "protocol", o: ["report", "lesson", "survey"]}
     - {tag: "인력 요청", icon: bell, why: "Someone call …처럼 누구에게 시키는지 정하지 않으면 서로 미룰 수 있어서, 위기에서는 사람을 지정해 말하는 편이 좋아요. more hands는 실제 손이 아니라 일을 거들 사람을 뜻하는 관용 표현이에요.", decoy: "the front desk", d: ["누군가 약국 데스크에 연락해서 손을 더 불러 주세요.", "누군가 수술실 데스크에 연락해서 물을 더 가져와 주세요."], a: "hands", o: ["lights", "forms", "chairs"]}
   order:
     tag: "대화 흐름"

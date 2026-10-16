@@ -9,4 +9,5 @@
 | 저작 B | or-timeout | sonnet | 222,284 | 14.0분 | 문장 105·order 21, 위반 0 |
 | 검토 A | icu-eol-goals | opus | 201,347 | 14.0분 | 고칠 것 약 105 + 결정11 11, 비속어 decoyChips 4, keyPhrase 결정 5 |
 | 검토 B | icu-eol-goals | opus | 230,063 | 16.0분 | 고칠 것 94(안전 8·정답 둘 28), decoy 'for the family' 47회 |
-| 검토 A | icu-weaning-extubation | opus | (대기) | | 고칠 것 38, keyPhrase 결정 1(rescue NIV) |
+| 검토 A | icu-weaning-extubation | opus | 190,160 | 12.8분 | 고칠 것 38, keyPhrase 결정 1(rescue NIV) |
+| 검토 A | or-timeout | opus | (대기) | | 고칠 것 35(결정11 9·v45 26), keyPhrase ko 오역(on hold) |

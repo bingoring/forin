@@ -1300,7 +1300,7 @@ situations:
     decoy: the front desk
     distractorsKo:
     - 가족력이 있으면 외과팀에 알릴게요.
-    - 가족력이 있으면 약국에 알릴게요.
+    - 가족력이 있으면 원무과에 알릴게요.
     blank:
       answer: notify
       options:
@@ -1433,8 +1433,8 @@ situations:
     why: We're avoiding은 지금 하고 있는 일을 진행형으로 말해 팀이 같은 방침을 따르게 해요. all을 붙여 일부가 아니라 전부라는 범위를 분명히 해요.
     decoy: tomorrow
     distractorsKo:
-    - 오전에는 휘발성 마취제와 석시닐콜린을 전부 피하고 있어요.
-    - 저녁에는 휘발성 마취제와 석시닐콜린을 전부 피하고 있어요.
+    - 아침엔 휘발성 마취제와 석시닐콜린을 전부 피하고 있어요.
+    - 저녁엔 휘발성 마취제와 석시닐콜린을 전부 피하고 있어요.
     blank:
       answer: avoiding
       options:
@@ -1464,7 +1464,7 @@ situations:
     decoy: the front desk
     distractorsKo:
     - 어떤 약물을 피하는지 외과팀에 알립시다.
-    - 어떤 약물을 피하는지 약국 전체에 알립시다.
+    - 어떤 약물을 피하는지 병동 전체에 알립시다.
     blank:
       answer: whole
       options:
@@ -1621,7 +1621,7 @@ situations:
     decoy: after lunch
     distractorsKo:
     - 부족하면 병동에 더 보내 달라고 바로 요청할게요.
-    - 부족하면 외과에 더 보내 달라고 바로 요청할게요.
+    - 부족하면 응급실에 더 보내 달라고 바로 요청할게요.
     blank:
       answer: pharmacy
       options:
@@ -1675,9 +1675,9 @@ situations:
     blank:
       answer: inventory
       options:
-      - en: clean
-      - en: move
-      - en: weigh
+      - en: sanitize
+      - en: relocate
+      - en: decorate
       - en: inventory
   - en: Dantrolene, sterile water, cold saline, and the protocol card.
     ko: 단트롤렌, 멸균수, 찬 생리식염수, 그리고 프로토콜 카드요.
@@ -1754,7 +1754,7 @@ situations:
     why: looks low는 확인한 결과를 말하는 모양이고, so let's는 그 결과로 할 일을 제안해요. before the next case로 다음 케이스에서 같은 부족이 반복되기 전에 끝내자는 시점을 정해요.
     decoy: after rounds
     distractorsKo:
-    - 장갑 개수가 부족해 보이니 다음 케이스 전에 채워 넣읍시다.
+    - 거즈 개수가 부족해 보이니 다음 케이스 전에 채워 넣읍시다.
     - 바이알 라벨이 부족해 보이니 다음 케이스 전에 채워 넣읍시다.
     blank:
       answer: restock
@@ -1784,7 +1784,7 @@ situations:
     decoy: from the lab
     distractorsKo:
     - 카트가 완전히 채워지도록 창고에서 바이알을 더 꺼내 옵시다.
-    - 카트가 완전히 채워지도록 약국에서 장갑을 더 꺼내 옵시다.
+    - 카트가 완전히 채워지도록 약국에서 거즈를 더 꺼내 옵시다.
     blank:
       answer: pharmacy
       options:
@@ -1834,7 +1834,7 @@ situations:
     why: is in place는 장비가 제 위치에서 쓸 수 있는 상태라는 보고 모양이에요. core를 붙여 피부가 아니라 몸속 온도를 재는 프로브라는 점이 분명해져요.
     decoy: on hold
     distractorsKo:
-    - 중심 혈압 프로브가 제자리에 있습니다.
+    - 중심 맥박 프로브가 제자리에 있습니다.
     - 중심 체온 프로브가 준비실에 있습니다.
     blank:
       answer: core
@@ -1860,15 +1860,15 @@ situations:
     why: trend는 여기서 명사가 아니라 동사로, 수치를 시간의 흐름 속에서 본다는 뜻이에요. continuously를 붙이면 한 번 재고 끝내지 않고 계속 본다는 뜻이 돼요.
     decoy: every week
     distractorsKo:
-    - 혈압을 지속적으로 추세 관찰할 거예요.
+    - 호흡을 지속적으로 추세 관찰할 거예요.
     - 체온을 지속적으로 그래프에 옮길 거예요.
     blank:
       answer: continuously
       options:
-      - en: daily
+      - en: periodically
       - en: continuously
-      - en: rarely
-      - en: hourly
+      - en: occasionally
+      - en: sporadically
   - en: Any sudden rise, we call it out immediately.
     ko: 갑작스러운 상승이 있으면 즉시 알립니다.
     chunks:
@@ -1918,7 +1918,7 @@ situations:
     decoy: in color
     distractorsKo:
     - 차트를 지켜보다가 체온에 갑작스러운 변화가 있으면 표시할게요.
-    - 모니터를 지켜보다가 혈압에 갑작스러운 변화가 있으면 표시할게요.
+    - 모니터를 지켜보다가 소변에 갑작스러운 변화가 있으면 표시할게요.
     blank:
       answer: temperature
       options:
@@ -1946,7 +1946,7 @@ situations:
     decoy: overnight
     distractorsKo:
     - 맥박이 천천히 오르고 있지만 계속 주시하고 있어요.
-    - 체온이 천천히 오르고 있지만 계속 설명하고 있어요.
+    - 체온이 천천히 오르고 있지만 계속 걱정하고 있어요.
     blank:
       answer: staying
       options:
@@ -1996,7 +1996,7 @@ situations:
     why: 명령문은 주어 없이 동사로 바로 시작해서 바쁜 현장에서 짧게 지시해요. closely를 붙이면 가끔 보는 게 아니라 눈을 떼지 말라는 뜻이에요.
     decoy: in the hall
     distractorsKo:
-    - 혈압 추세를 면밀히 지켜보세요.
+    - 맥박 추세를 면밀히 지켜보세요.
     - 산소 추세를 면밀히 지켜보세요.
     blank:
       answer: closely
@@ -2026,7 +2026,7 @@ situations:
     decoy: the last
     distractorsKo:
     - 원인 불명의 기침이 첫 MH 징후일 수 있어요.
-    - 원인 불명의 상승이 첫 감염 징후일 수 있어요.
+    - 원인 불명의 상승이 첫 출혈 징후일 수 있어요.
     blank:
       answer: first
       options:
@@ -2078,7 +2078,7 @@ situations:
     decoy: since yesterday
     distractorsKo:
     - 지난 몇 시간 동안 EtCO2가 계속 오르고 있어요.
-    - 지난 몇 분 동안 혈압이 계속 오르고 있어요.
+    - 지난 몇 분 동안 수치가 계속 오르고 있어요.
     blank:
       answer: climbing
       options:
@@ -2107,7 +2107,7 @@ situations:
     decoy: the surgeon
     distractorsKo:
     - 추세가 비정상적으로 보이는 순간 외과팀에 알릴게요.
-    - 추세가 비정상적으로 보이는 순간 약국에 알릴게요.
+    - 추세가 비정상적으로 보이는 순간 검사실에 알릴게요.
     blank:
       answer: moment
       options:
@@ -2345,7 +2345,7 @@ situations:
     why: tight jaw처럼 쉬운 말로 말해 두면 masseter 같은 전문어를 모르는 팀원도 같은 것을 봐요. can be는 단정이 아닌 가능성이라 이 징후 하나로 MH를 선언하지 않고 주의를 돌리는 말이에요.
     decoy: a minor
     distractorsKo:
-    - 뻣뻣한 턱이 조기 감염 징후일 수 있어요.
+    - 뻣뻣한 턱이 조기 탈수 징후일 수 있어요.
     - 뻣뻣한 목이 조기 MH 징후일 수 있어요.
     blank:
       answer: tight
@@ -2478,7 +2478,7 @@ situations:
     why: with ectopy는 오르는 심박수에 이소성 박동이 함께 있다는 점을 붙여, 빈맥만 말할 때보다 정보가 많아요. is climbing은 진행형이라 지금 변하는 중이라는 뜻이에요.
     decoy: with caution
     distractorsKo:
-    - 혈압이 이소성 박동과 함께 오르고 있어요.
+    - 체온이 이소성 박동과 함께 오르고 있어요.
     - 심박수가 두통과 함께 오르고 있어요.
     blank:
       answer: ectopy
@@ -2506,7 +2506,7 @@ situations:
     why: correlate A with B는 두 수치가 함께 움직이는지 맞춰 본다는 모양이에요. 심박·EtCO2·체온이 같이 오를 때 MH 가능성이 커져서 하나만 보지 않고 묶어 봐요.
     decoy: with the report
     distractorsKo:
-    - 리듬을 EtCO2와 혈압과 연관지어 봅시다.
+    - 리듬을 혈액가스와 체온과 연관지어 봅시다.
     - 리듬을 산소와 체온과 연관지어 봅시다.
     blank:
       answer: correlate
@@ -2589,7 +2589,7 @@ situations:
     decoy: along the hallway
     distractorsKo:
     - 리듬이 불안정해지면 폐 검사와 함께 처치합니다.
-    - 혈압이 불안정해지면 MH 검사와 함께 처치합니다.
+    - 호흡이 불안정해지면 MH 검사와 함께 처치합니다.
     blank:
       answer: unstable
       options:
@@ -2666,7 +2666,7 @@ situations:
     why: With the rising temperature로 근거를 먼저 놓고 this fits로 판단을 말하는 순서예요. fits는 확정이 아니라 들어맞는다는 뜻이라 임상 그림을 말하는 표현이에요.
     decoy: the new alarm
     distractorsKo:
-    - 혈압 상승과 함께 이건 MH에 부합해요.
+    - 맥박 상승과 함께 이건 MH에 부합해요.
     - 체온 상승과 함께 이건 감염에 부합해요.
     blank:
       answer: fits
@@ -2721,7 +2721,7 @@ situations:
     why: and로 두 변화를 이어 말하고 it correlates with로 둘이 같이 움직인다고 짚어요. 연관된다는 것은 같이 움직인다는 뜻이지 한쪽이 다른 쪽의 원인이라는 증명은 아니에요.
     decoy: with the long wait
     distractorsKo:
-    - pH가 떨어지고 있고 혈압 상승과 연관돼요.
+    - pH가 떨어지고 있고 심박수 상승과 연관돼요.
     - 칼륨이 떨어지고 있고 체온 상승과 연관돼요.
     blank:
       answer: correlates
@@ -2856,7 +2856,7 @@ situations:
     why: in safe hands는 믿고 맡겨도 된다는 관용구로, 돌봄이 안전하다는 뜻이에요. we've prepared는 현재완료라 미리 준비해 온 일이 지금 도움이 된다는 뜻이에요.
     decoy: for lunch
     distractorsKo:
-    - 안전한 손에 맡겨져 있어요 — 저희가 이걸 설명해 왔어요.
+    - 안전한 손에 맡겨져 있어요 — 저희가 이걸 공지해 왔어요.
     - 안전한 손에 맡겨져 있어요 — 저희가 이걸 주문해 왔어요.
     blank:
       answer: safe
@@ -2889,10 +2889,10 @@ situations:
     blank:
       answer: precautions
       options:
-      - en: visits
+      - en: expenses
       - en: precautions
-      - en: forms
-      - en: charges
+      - en: paperwork
+      - en: statements
   - en: I want you to feel safe — our whole team is ready for you.
     ko: 안심하셨으면 해요 — 저희 팀 전체가 준비되어 있어요.
     chunks:
@@ -3014,7 +3014,7 @@ situations:
     why: drawn up은 주사기에 약을 뽑아 담았다는 구동사예요. is … and ready처럼 수동태에 형용사를 이어 약이 이미 준비된 상태라는 것을 한 번에 말해요.
     decoy: and signed
     distractorsKo:
-    - TIVA는 준비되어 포장해 두었어요.
+    - TIVA는 준비되어 닫아 두었어요.
     - TIVA는 준비되어 주문해 두었어요.
     blank:
       answer: ready
@@ -3279,7 +3279,7 @@ situations:
     decoy: with lunch
     distractorsKo:
     - 지금 칼륨 수치를 읽읍시다.
-    - 지금 칼륨 수치를 외과에 보냅시다.
+    - 지금 칼륨 수치를 원무과에 보냅시다.
     blank:
       answer: level
       options:
@@ -3385,7 +3385,7 @@ situations:
     decoy: from the door
     distractorsKo:
     - 고칼륨혈증이 심해지고 있을 경우를 대비해 호흡을 계속 지켜봅시다.
-    - 고칼륨혈증이 심해지고 있을 경우를 대비해 혈압을 계속 지켜봅시다.
+    - 고칼륨혈증이 심해지고 있을 경우를 대비해 맥박을 계속 지켜봅시다.
     blank:
       answer: building
       options:
@@ -3462,7 +3462,7 @@ situations:
     decoy: from a kidney stone
     distractorsKo:
     - 이건 근육 파괴로 인한 혈뇨를 시사해요.
-    - 이건 근육 파괴로 인한 미오글로빈뇨를 확인해요.
+    - 이건 근육 파괴로 인한 탈수를 시사해요.
     blank:
       answer: breakdown
       options:
@@ -3542,7 +3542,7 @@ situations:
     decoy: on the wall
     distractorsKo:
     - 약국에 알리고 차트에 기록되게 할게요.
-    - 팀에 알리고 모니터에 표시되게 할게요.
+    - 팀에 알리고 약국에 기록되게 할게요.
     blank:
       answer: chart
       options:
@@ -3591,7 +3591,7 @@ situations:
     decoy: I'm drawing it
     distractorsKo:
     - 이건 악성 고열이에요 — 지금 설명할게요.
-    - 이건 악성 고열이에요 — 지금 확인할게요.
+    - 이건 악성 고열이에요 — 지금 공유할게요.
     blank:
       answer: declaring
       options:
@@ -3674,7 +3674,7 @@ situations:
     decoy: the report
     distractorsKo:
     - 지금 설명할게요 — 이건 MH이고, 지금 프로토콜을 시작합니다.
-    - 지금 확인할게요 — 이건 MH이고, 지금 프로토콜을 시작합니다.
+    - 지금 보고할게요 — 이건 MH이고, 지금 프로토콜을 시작합니다.
     blank:
       answer: protocol
       options:
@@ -3752,15 +3752,15 @@ situations:
     why: All hands는 모두가 손을 보탠다는 관용구이고, 뒤의 -ing는 지금 진행 중인 일을 간결하게 말하는 모양이에요. reconstituting은 가루 약에 멸균수를 섞어 주사할 수 있는 액으로 만드는 일이에요.
     decoy: upstairs
     distractorsKo:
-    - 마취팀만 손을 보태 지금 단트롤렌을 재구성합니다.
+    - 둘이 손을 보태 지금 단트롤렌을 재구성합니다.
     - 간호사만 손을 보태 지금 단트롤렌을 재구성합니다.
     blank:
       answer: reconstituting
       options:
       - en: reconstituting
-      - en: counting
-      - en: labeling
-      - en: ordering
+      - en: reorganizing
+      - en: relabeling
+      - en: recounting
   - en: We dose by weight and repeat as needed.
     ko: 체중에 따라 투여하고 필요하면 반복합니다.
     chunks:
@@ -3808,7 +3808,7 @@ situations:
     why: Keep + -ing 명령은 멈추지 말고 이어서 하라는 뜻이에요. a lot of는 많은 수량을 말하는 표현이라 한 병으로 끝나지 않는다는 이유를 알려요.
     decoy: of boxes
     distractorsKo:
-    - 계속 섞어 주세요 — 장갑이 많이 필요할 거예요.
+    - 계속 섞어 주세요 — 거즈가 많이 필요할 거예요.
     - 계속 섞어 주세요 — 주사기가 많이 필요할 거예요.
     blank:
       answer: mixing
@@ -3862,7 +3862,7 @@ situations:
     decoy: with a nurse
     distractorsKo:
     - 반응할 때까지 계속 투여하고 알릴게요.
-    - 반응할 때까지 계속 투여하고 기록할게요.
+    - 반응할 때까지 계속 투여하고 보관할게요.
     blank:
       answer: repeating
       options:
@@ -3913,7 +3913,7 @@ situations:
     why: 명령문 Start 뒤에 두 가지를 and로 이어 안에서와 밖에서 동시에 식히라는 뜻이에요. surface cooling은 몸 겉면에서 열을 빼는 방법이라 정맥으로 들어가는 찬 수액과 서로 보완돼요.
     decoy: and bed rest
     distractorsKo:
-    - 찬 정맥 수액과 표면 체온 기록을 시작하세요.
+    - 찬 정맥 수액과 표면 체온 측정을 시작하세요.
     - 찬 정맥 수액과 표면 소독을 시작하세요.
     blank:
       answer: surface
@@ -3940,8 +3940,8 @@ situations:
     why: 명사만 나열하고 to로 어디에 대는지 말하는 짧은 지시문이에요. groin과 axillae는 큰 혈관이 피부 가까이 지나는 곳이라 얼음이 열을 빨리 빼앗아요.
     decoy: in the box
     distractorsKo:
-    - 서혜부와 겨드랑이 얼음팩을 확인하세요.
-    - 서혜부와 겨드랑이 얼음팩을 세어 주세요.
+    - 서혜부와 겨드랑이 얼음팩을 정리하세요.
+    - 서혜부와 겨드랑이 얼음을 세어 주세요.
     blank:
       answer: packs
       options:
@@ -3966,8 +3966,8 @@ situations:
     why: Stop + -ing는 하던 일을 그만두라는 뜻이에요(to + 동사원형이 오면 하려고 멈춘다는 뜻이라 달라요). before we overshoot는 목표 체온을 지나쳐 너무 내려가기 전에라는 뜻이에요.
     decoy: at the door
     distractorsKo:
-    - 과냉각되기 전에 체온을 확인하세요.
-    - 과냉각되기 전에 시간을 기록하세요.
+    - 과냉각되기 전에 체온을 재 보세요.
+    - 과냉각되기 전에 시간을 재세요.
     blank:
       answer: cooling
       options:
@@ -3995,7 +3995,7 @@ situations:
     decoy: for the nurse
     distractorsKo:
     - 지금 바로 서혜부와 겨드랑이 얼음을 세어 봅시다.
-    - 지금 바로 서혜부와 겨드랑이 얼음팩을 확인해 봅시다.
+    - 지금 바로 서혜부와 겨드랑이 얼음팩을 정리해 봅시다.
     blank:
       answer: ice
       options:
@@ -4022,8 +4022,8 @@ situations:
     why: so 뒤에 절이 오면 앞의 행동의 목적을 나타내요. closely는 수치를 가끔 보는 게 아니라 눈을 떼지 말라는 뜻으로, 멈출 순간을 놓치지 않기 위한 거예요.
     decoy: from the door
     distractorsKo:
-    - 과냉각 전에 보고할 수 있게 체온을 면밀히 지켜보세요.
-    - 과냉각 전에 기록할 수 있게 체온을 면밀히 지켜보세요.
+    - 과냉각 전에 알릴 수 있게 체온을 면밀히 지켜보세요.
+    - 과냉각 전에 정할 수 있게 체온을 면밀히 지켜보세요.
     blank:
       answer: closely
       options:
@@ -4100,7 +4100,7 @@ situations:
     why: per protocol은 개인 판단이 아니라 정해진 프로토콜의 용량과 순서를 따른다는 뜻이에요. 약 이름만 부르는 것은 구두 지시에서 쓰는 짧은 형식이라 용량은 프로토콜 카드를 따라요.
     decoy: per bottle
     distractorsKo:
-    - 칼슘, 포도당을 곁들인 인슐린, 그리고 프로토콜 카드 확인이요.
+    - 칼슘, 포도당을 곁들인 인슐린, 그리고 프로토콜 카드 낭독이요.
     - 칼슘, 포도당을 곁들인 인슐린, 그리고 프로토콜에 따른 혈액가스요.
     blank:
       answer: per
@@ -4127,7 +4127,7 @@ situations:
     why: Watch A for B는 A를 보면서 B가 나타나는지 찾으라는 모양이에요. rhythm changes는 고칼륨혈증이 심장에 영향을 줄 때 모니터에 드러나는 신호라 계속 봐야 해요.
     decoy: for paper jams
     distractorsKo:
-    - 혈압 변화가 있는지 모니터를 지켜보세요.
+    - 호흡 변화가 있는지 모니터를 지켜보세요.
     - 리듬 변화가 있는지 약병을 지켜보세요.
     blank:
       answer: monitor
@@ -4156,7 +4156,7 @@ situations:
     decoy: to help the team
     distractorsKo:
     - 시간을 아끼려면 먼저 칼슘을 주입합시다.
-    - 기록을 남기려면 먼저 칼슘을 주입합시다.
+    - 순서를 정하려면 먼저 칼슘을 주입합시다.
     blank:
       answer: heart
       options:
@@ -4184,7 +4184,7 @@ situations:
     decoy: the report
     distractorsKo:
     - 혈압이 계속 바뀌면 프로토콜을 반복합니다.
-    - 리듬이 계속 바뀌면 프로토콜을 확인합니다.
+    - 리듬이 계속 바뀌면 프로토콜을 복사합니다.
     blank:
       answer: repeat
       options:
@@ -4259,8 +4259,8 @@ situations:
     why: 명령문 두 개를 and로 이어 환기와 약물이라는 두 처치를 함께 시키는 모양이에요. per protocol은 용량과 방법을 개인 판단이 아니라 정해진 절차에 맞춘다는 뜻이에요.
     decoy: per request
     distractorsKo:
-    - 환기를 확인하고 프로토콜에 따라 기록해 주세요.
-    - 과호흡을 확인하고 프로토콜에 따라 서명해 주세요.
+    - 환기를 점검하고 프로토콜에 따라 서명해 주세요.
+    - 과호흡을 점검하고 프로토콜에 따라 보관해 주세요.
     blank:
       answer: per
       options:
@@ -4285,7 +4285,7 @@ situations:
     why: re-가 붙은 resample은 같은 검사를 다시 한다는 뜻이라 처음 결과와 비교할 수 있어요. after treatment는 처치가 효과가 있었는지 확인하는 시점을 정해 줘요.
     decoy: after lunch
     distractorsKo:
-    - 치료 후에 혈액가스를 설명합시다.
+    - 치료 후에 혈액가스를 소개합시다.
     - 치료 후에 결과를 공유합시다.
     blank:
       answer: resample
@@ -4337,8 +4337,8 @@ situations:
     why: keep + -ing로 한 번에 끝내지 않고 계속한다는 뜻이에요. until the numbers look better는 횟수가 아니라 결과가 기준이라, 좋아질 때까지 이어 간다는 뜻이에요.
     decoy: with a nurse
     distractorsKo:
-    - 수치가 나아질 때까지 계속 확인할게요.
-    - 수치가 나아질 때까지 계속 설명할게요.
+    - 수치가 나아질 때까지 계속 정리할게요.
+    - 수치가 나아질 때까지 계속 보관할게요.
     blank:
       answer: resampling
       options:

@@ -19,7 +19,7 @@
 7:
   s:
     - {tag: "소견 보고", icon: stetho, why: "There's … 모양은 새로 발견한 것을 처음 꺼내는 말이라 보고의 첫 문장으로 알맞아요. after induction으로 마취 유도 직후라는 시점을 붙이면 어떤 약과 이어지는지 따져 볼 수 있어요.", decoy: "in the hallway", d: ["유도 후에 교근 통증이 있어요.", "유도 후에 눈꺼풀 강직이 있어요."], a: "rigidity", o: ["swelling", "bleeding", "numbness"]}
-    - {tag: "의미 설명", icon: bulb, why: "tight jaw처럼 쉬운 말로 말해 두면 masseter 같은 전문어를 모르는 팀원도 같은 것을 봐요. can be는 단정이 아닌 가능성이라 이 징후 하나로 MH를 선언하지 않고 주의를 돌리는 말이에요.", decoy: "a minor", d: ["뻣뻣한 턱이 조기 감염 징후일 수 있어요.", "뻣뻣한 목이 조기 MH 징후일 수 있어요."], a: "tight", o: ["sore", "swollen", "dry"]}
+    - {tag: "의미 설명", icon: bulb, why: "tight jaw처럼 쉬운 말로 말해 두면 masseter 같은 전문어를 모르는 팀원도 같은 것을 봐요. can be는 단정이 아닌 가능성이라 이 징후 하나로 MH를 선언하지 않고 주의를 돌리는 말이에요.", decoy: "a minor", d: ["뻣뻣한 턱이 조기 탈수 징후일 수 있어요.", "뻣뻣한 목이 조기 MH 징후일 수 있어요."], a: "tight", o: ["sore", "swollen", "dry"]}
     - {tag: "추가 관찰", icon: monitor, why: "Let's watch … and prep는 지켜보는 일과 준비하는 일을 같이 하자는 모양이에요. other signs라고 하면 이 하나로 끝내지 않고 다른 단서도 함께 찾으라는 뜻이에요.", decoy: "for other staff", d: ["다른 징후를 살피며 장갑을 준비합시다.", "다른 환자를 살피며 카트를 준비합시다."], a: "prep", o: ["clean", "paint", "weigh"]}
     - {tag: "현황 보고", icon: stetho, why: "but으로 이상한 소견과 정상 소견을 한 문장에 나란히 놓으면 전체 그림이 한 번에 전달돼요. so far는 지금까지는이라는 뜻이라 상황이 바뀔 수 있다는 단서를 남겨요.", decoy: "by now", d: ["손은 뻣뻣하지만 나머지는 아직 이완돼 보여요.", "턱은 뻣뻣하지만 나머지는 아직 창백해 보여요."], a: "relaxed", o: ["pale", "flushed", "swollen"]}
     - {tag: "조기 보고", icon: bell, why: "in case 뒤에 절이 오면 그럴 수도 있으니 미리라는 뜻이라, 확신이 없어도 보고해도 된다는 근거를 줘요. early를 붙여 완전히 확인되기 전에 알린다는 점을 분명히 해요.", decoy: "it's an allergy", d: ["감염 경고 징후일 수 있어 조기에 보고하고 있어요.", "알레르기 경고 징후일 수 있어 조기에 보고하고 있어요."], a: "reporting", o: ["cleaning", "moving", "signing"]}
@@ -35,11 +35,11 @@
       - {en: "Along with that, let's watch for other signs and prep the cart.", icon: monitor, ko: "그와 함께 다른 징후를 살피고 카트를 준비합시다", note: "준비"}
 8:
   s:
-    - {tag: "소견 보고", icon: chartup, why: "with ectopy는 오르는 심박수에 이소성 박동이 함께 있다는 점을 붙여, 빈맥만 말할 때보다 정보가 많아요. is climbing은 진행형이라 지금 변하는 중이라는 뜻이에요.", decoy: "with caution", d: ["혈압이 이소성 박동과 함께 오르고 있어요.", "심박수가 두통과 함께 오르고 있어요."], a: "ectopy", o: ["pain", "cough", "rash"]}
-    - {tag: "종합 판단", icon: compass, why: "correlate A with B는 두 수치가 함께 움직이는지 맞춰 본다는 모양이에요. 심박·EtCO2·체온이 같이 오를 때 MH 가능성이 커져서 하나만 보지 않고 묶어 봐요.", decoy: "with the report", d: ["리듬을 EtCO2와 혈압과 연관지어 봅시다.", "리듬을 산소와 체온과 연관지어 봅시다."], a: "correlate", o: ["print", "label", "rename"]}
+    - {tag: "소견 보고", icon: chartup, why: "with ectopy는 오르는 심박수에 이소성 박동이 함께 있다는 점을 붙여, 빈맥만 말할 때보다 정보가 많아요. is climbing은 진행형이라 지금 변하는 중이라는 뜻이에요.", decoy: "with caution", d: ["체온이 이소성 박동과 함께 오르고 있어요.", "심박수가 두통과 함께 오르고 있어요."], a: "ectopy", o: ["pain", "cough", "rash"]}
+    - {tag: "종합 판단", icon: compass, why: "correlate A with B는 두 수치가 함께 움직이는지 맞춰 본다는 모양이에요. 심박·EtCO2·체온이 같이 오를 때 MH 가능성이 커져서 하나만 보지 않고 묶어 봐요.", decoy: "with the report", d: ["리듬을 혈액가스와 체온과 연관지어 봅시다.", "리듬을 산소와 체온과 연관지어 봅시다."], a: "correlate", o: ["print", "label", "rename"]}
     - {tag: "보고 약속", icon: siren, why: "any run of …는 한두 박동이 아니라 연속해서 이어지는 구간을 말하는 표현이에요. call out은 팀이 다 듣게 소리 내어 알린다는 뜻이라 모니터만 보고 있는 것과 달라요.", decoy: "of the alarm", d: ["알람이 연속으로 오면 바로 알릴게요.", "기침이 연속으로 오면 바로 알릴게요."], a: "call", o: ["write", "hand", "sort"]}
     - {tag: "변화 보고", icon: chartup, why: "jumped는 올랐다보다 짧은 시간에 확 올랐다는 느낌의 동사예요. ten points와 in the last two minutes로 크기와 기간을 숫자로 말하면 막연한 느낌이 아니라 판단할 수 있는 보고가 돼요.", decoy: "over the weekend", d: ["지난 5분 동안 심박수가 열 포인트 급증했어요.", "지난 2분 동안 혈압이 열 포인트 급증했어요."], a: "jumped", o: ["slipped", "drifted", "settled"]}
-    - {tag: "동시 대응", icon: shield, why: "turns unstable의 turn은 상태가 변해서 ~가 된다는 뜻이에요. alongside는 MH 검사를 끝낸 뒤가 아니라 같은 시간에 병행한다는 뜻이라 불안정한 리듬의 처치를 미루지 않게 해요.", decoy: "along the hallway", d: ["리듬이 불안정해지면 폐 검사와 함께 처치합니다.", "혈압이 불안정해지면 MH 검사와 함께 처치합니다."], a: "unstable", o: ["steady", "quiet", "regular"]}
+    - {tag: "동시 대응", icon: shield, why: "turns unstable의 turn은 상태가 변해서 ~가 된다는 뜻이에요. alongside는 MH 검사를 끝낸 뒤가 아니라 같은 시간에 병행한다는 뜻이라 불안정한 리듬의 처치를 미루지 않게 해요.", decoy: "along the hallway", d: ["리듬이 불안정해지면 폐 검사와 함께 처치합니다.", "호흡이 불안정해지면 MH 검사와 함께 처치합니다."], a: "unstable", o: ["steady", "quiet", "regular"]}
   order:
     tag: "대화 흐름"
     icon: compass
@@ -53,9 +53,9 @@
 9:
   s:
     - {tag: "검사 결과", icon: lab, why: "shows는 검사가 보여 주는 결과를 주어로 삼아 내 의견이 아니라 데이터가 말한다는 모양이에요. mixed acidosis는 호흡성과 대사성 원인이 함께 있다는 뜻이에요.", decoy: "an old sample", d: ["소변검사에서 혼합성 산증이 보여요.", "혈액가스에서 혼합성 탈수가 보여요."], a: "mixed", o: ["pure", "simple", "chronic"]}
-    - {tag: "종합 판단", icon: compass, why: "With the rising temperature로 근거를 먼저 놓고 this fits로 판단을 말하는 순서예요. fits는 확정이 아니라 들어맞는다는 뜻이라 임상 그림을 말하는 표현이에요.", decoy: "the new alarm", d: ["혈압 상승과 함께 이건 MH에 부합해요.", "체온 상승과 함께 이건 감염에 부합해요."], a: "fits", o: ["hides", "blocks", "replaces"]}
+    - {tag: "종합 판단", icon: compass, why: "With the rising temperature로 근거를 먼저 놓고 this fits로 판단을 말하는 순서예요. fits는 확정이 아니라 들어맞는다는 뜻이라 임상 그림을 말하는 표현이에요.", decoy: "the new alarm", d: ["맥박 상승과 함께 이건 MH에 부합해요.", "체온 상승과 함께 이건 감염에 부합해요."], a: "fits", o: ["hides", "blocks", "replaces"]}
     - {tag: "사정 반영", icon: board, why: "factor A into B는 A를 B의 판단 재료에 넣는다는 구동사 모양이에요. crisis assessment는 지금 위기가 어디까지 왔는지를 한 번에 보는 판단이에요.", decoy: "into the supply list", d: ["이걸 위기 일정에 반영합시다.", "이걸 위기 예산에 반영합시다."], a: "factor", o: ["paste", "pour", "ship"]}
-    - {tag: "연관 설명", icon: chartup, why: "and로 두 변화를 이어 말하고 it correlates with로 둘이 같이 움직인다고 짚어요. 연관된다는 것은 같이 움직인다는 뜻이지 한쪽이 다른 쪽의 원인이라는 증명은 아니에요.", decoy: "with the long wait", d: ["pH가 떨어지고 있고 혈압 상승과 연관돼요.", "칼륨이 떨어지고 있고 체온 상승과 연관돼요."], a: "correlates", o: ["competes", "argues", "plays"]}
+    - {tag: "연관 설명", icon: chartup, why: "and로 두 변화를 이어 말하고 it correlates with로 둘이 같이 움직인다고 짚어요. 연관된다는 것은 같이 움직인다는 뜻이지 한쪽이 다른 쪽의 원인이라는 증명은 아니에요.", decoy: "with the long wait", d: ["pH가 떨어지고 있고 심박수 상승과 연관돼요.", "칼륨이 떨어지고 있고 체온 상승과 연관돼요."], a: "correlates", o: ["competes", "argues", "plays"]}
     - {tag: "소견 추가", icon: pencil, why: "we're building은 앞의 assessment를 꾸미는 관계절로, 위기 사정이 한 번에 끝나는 게 아니라 쌓아 가는 중이라는 뜻이에요. add는 새 소견을 기존 판단에 합친다는 뜻이에요.", decoy: "to the visitor log", d: ["이 소견을 지금 만들고 있는 위기 목록에 더할게요.", "이 소견을 지금 읽고 있는 위기 사정에 더할게요."], a: "finding", o: ["bill", "photo", "label"]}
   order:
     tag: "대화 흐름"
@@ -71,8 +71,8 @@
   s:
     - {tag: "이유 설명", icon: shield, why: "Because of + 명사는 이유를 먼저 말해서 환자가 조치를 지시가 아니라 이유 있는 결정으로 받아들여요. your를 붙여 환자 본인의 이야기라는 점을 분명히 해요.", decoy: "of your age", d: ["알레르기 병력이 있으니 유발 약제를 피합니다.", "MH 병력이 있으니 유발 음식을 피합니다."], a: "history", o: ["price", "wish", "size"]}
     - {tag: "준비 안내", icon: board, why: "have … ready는 이미 준비해 둔 상태를 말하는 모양이라 불안한 환자에게 지금 안심할 근거를 줘요. special plan으로 이 환자를 위해 따로 짠 계획이라는 점을 알려요.", decoy: "for the team", d: ["당신을 위한 특별한 계획과 음식을 준비해 두었어요.", "당신을 위한 특별한 침대와 약물을 준비해 두었어요."], a: "plan", o: ["menu", "gown", "bed"]}
-    - {tag: "안심 말", icon: handshake2, why: "in safe hands는 믿고 맡겨도 된다는 관용구로, 돌봄이 안전하다는 뜻이에요. we've prepared는 현재완료라 미리 준비해 온 일이 지금 도움이 된다는 뜻이에요.", decoy: "for lunch", d: ["안전한 손에 맡겨져 있어요 — 저희가 이걸 설명해 왔어요.", "안전한 손에 맡겨져 있어요 — 저희가 이걸 주문해 왔어요."], a: "safe", o: ["small", "busy", "empty"]}
-    - {tag: "예방 안내", icon: shield, why: "known은 이미 확인된 위험이라는 뜻이라 막연한 걱정이 아니라는 점을 분명히 해요. extra precautions는 평소 안전 절차에 더한 조치이고, we'll로 병원이 책임지고 한다고 말해요.", decoy: "extra charges", d: ["알려진 알레르기 위험이 있으니 추가 예방조치를 취할 거예요.", "알려진 MH 위험이 있으니 추가 서류를 작성할 거예요."], a: "precautions", o: ["forms", "charges", "visits"]}
+    - {tag: "안심 말", icon: handshake2, why: "in safe hands는 믿고 맡겨도 된다는 관용구로, 돌봄이 안전하다는 뜻이에요. we've prepared는 현재완료라 미리 준비해 온 일이 지금 도움이 된다는 뜻이에요.", decoy: "for lunch", d: ["안전한 손에 맡겨져 있어요 — 저희가 이걸 공지해 왔어요.", "안전한 손에 맡겨져 있어요 — 저희가 이걸 주문해 왔어요."], a: "safe", o: ["small", "busy", "empty"]}
+    - {tag: "예방 안내", icon: shield, why: "known은 이미 확인된 위험이라는 뜻이라 막연한 걱정이 아니라는 점을 분명히 해요. extra precautions는 평소 안전 절차에 더한 조치이고, we'll로 병원이 책임지고 한다고 말해요.", decoy: "extra charges", d: ["알려진 알레르기 위험이 있으니 추가 예방조치를 취할 거예요.", "알려진 MH 위험이 있으니 추가 서류를 작성할 거예요."], a: "precautions", o: ["paperwork", "statements", "expenses"]}
     - {tag: "안심 말", icon: handshake2, why: "I want you to + 동사원형은 내 바람을 말하는 모양이라 지시보다 따뜻해요. feel safe는 안전하다는 사실보다 환자가 느끼는 감정을 먼저 말해 공감을 보여요.", decoy: "for lunch", d: ["안심하셨으면 해요 — 저희 팀 전체가 출근해 있어요.", "안심하셨으면 해요 — 저희 병원 전체가 준비되어 있어요."], a: "safe", o: ["tired", "hungry", "proud"]}
   order:
     tag: "대화 흐름"
