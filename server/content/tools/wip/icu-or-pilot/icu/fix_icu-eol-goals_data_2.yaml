@@ -1,0 +1,219 @@
+# 단어 단위 수정. dEn/dKo/decoyChips/cue/ko/en/ipa/chips 등 있는 필드만 바꾼다.
+# v44 필드(en·ko·ipa·icon·example)를 바꾼 것은 스크립트가 changes 에 적는다.
+words:
+  # ---- 비속어 decoyChips (최우선) + 소리만 흉내 낸 조각
+  w-grimace: {decoyChips: [grin, ice]}
+  w-welcome: {decoyChips: [fare, comb]}
+  w-better: {decoyChips: [bat, biter]}
+  w-enough: {decoyChips: [rough, nuff]}
+  w-differently: {decoyChips: [fur, ant]}
+  # ---- A 단어: 정답 둘·동의어·비단어 (distractorsEn/Ko)
+  w-chart: {distractorsKo: [처방전, 동의서]}
+  w-meeting: {distractorsKo: [회진, 교대], distractorsEn: [meaning, greeting]}
+  w-confirm: {distractorsKo: [추측하다, 수정하다]}
+  w-want: {distractorsKo: [거절하다, 모르다], distractorsEn: [wash, wait]}
+  w-medication: {distractorsEn: [meditation, dedication]}
+  w-alongside: {distractorsEn: [inside, amidst]}
+  w-deeply: {distractorsEn: [deadly, deftly]}
+  w-focus: {distractorsEn: [fossil, locus]}
+  w-uncomfortable: {distractorsEn: [unaccountable, unreachable]}
+  w-welcome: {distractorsKo: [귀찮은, 난처한], distractorsEn: [wealthy, wicked]}
+  w-watch: {distractorsKo: [닦다, 옮기다]}
+  w-surrogate: {distractorsKo: [참관인, 담당 의사]}
+  w-medicine: {distractorsKo: [약학, 간호학], distractorsEn: [medium, medic]}
+  # ---- distractorsEn 품사 맞추기 (A 목록 + judge A 표)
+  w-specialize: {distractorsEn: [specify, socialize]}
+  w-specialist: {distractorsEn: [socialist, specialty]}
+  w-withdraw: {distractorsEn: [withhold, withstand]}
+  w-meaningful: {distractorsEn: [merciful, beautiful]}
+  w-laugh: {distractorsEn: [cough, leave]}
+  w-dress: {distractorsEn: [drape, press]}
+  w-coordinate: {distractorsEn: [consolidate, cooperate]}
+  w-manage: {distractorsEn: [massage, menace]}
+  w-prior: {distractorsEn: [proper, prime]}
+  w-symptom: {distractorsEn: [system, syndrome]}
+  w-distress: {distractorsEn: [address, duress]}
+  w-document: {distractorsEn: [comment, torment]}
+  w-organ: {distractorsEn: [origin, organism]}
+  w-life: {distractorsEn: [line, lift]}
+  w-ethics: {distractorsEn: [optics, economics]}
+  w-physician: {distractorsEn: [physicist, physique]}
+  w-ahead: {distractorsEn: [aside, abroad]}
+  w-listen: {distractorsEn: [glisten, lessen]}
+  w-interest: {distractorsEn: [interval, intrigue]}
+  w-notice: {distractorsEn: [nourish, notify]}
+  w-honor: {distractorsEn: [hover, harbor]}
+  w-goodbye: {distractorsEn: [goodness, goodwill]}
+  w-pressure: {distractorsEn: [pleasure, treasure]}
+  w-keep: {distractorsEn: [kneel, peep]}
+  w-ask: {distractorsEn: [bask, act]}
+  w-common: {distractorsEn: [comic, solemn]}
+  w-calm: {distractorsEn: [cold, clammy]}
+  w-long: {distractorsEn: [along, lately]}
+  w-sense: {distractorsEn: [scent, sentence]}
+  w-labored: {distractorsEn: [labeled, layered]}
+  w-matter: {distractorsEn: [batter, natter]}
+  w-palliative: {distractorsEn: [curative, preventive]}
+  w-titrate: {distractorsEn: [irritate, taper]}
+  w-dnr: {distractorsEn: [DNI, POLST]}
+  w-respond: {distractorsEn: [respect, respire]}
+  w-moment: {distractorsEn: [movement, momentum]}
+  w-tomorrow: {distractorsEn: [tomato, tonight]}
+  w-list: {distractorsEn: [lift, lick]}
+  w-meet: {distractorsEn: [melt, merge]}
+  w-plan: {distractorsEn: [plant, plug]}
+  w-step: {distractorsEn: [stop, stem]}
+  w-together: {distractorsEn: [altogether, tonight]}
+  w-think: {distractorsEn: [thank, thrill]}
+  w-write: {distractorsEn: [wrap, wring]}
+  w-sign: {distractorsEn: [sigh, silk]}
+  w-discomfort: {distractorsEn: [discharge, discount]}
+  w-comfort: {distractorsEn: [compost, compound]}
+  w-help: {distractorsEn: [hurt, hop]}
+  w-like: {distractorsEn: [lick, lock]}
+  w-care: {distractorsEn: [cure, carve]}
+  w-bed: {distractorsEn: [bud, bell]}
+  w-leave: {distractorsEn: [live, lean]}
+  w-hold: {distractorsEn: [fold, hoist]}
+  w-talk: {distractorsEn: [walk, stalk]}
+  w-outside: {distractorsEn: [inside, outset]}
+  w-need: {distractorsEn: [feed, heed]}
+  w-remember: {distractorsEn: [remind, remake]}
+  w-respect: {distractorsEn: [prospect, respite]}
+  w-death: {distractorsEn: [depth, deck]}
+  w-simple: {distractorsEn: [single, supple]}
+  w-once: {distractorsEn: [twice, often]}
+  w-pause: {distractorsEn: [cause, pace]}
+  w-check: {distractorsEn: [chuck, chop]}
+  w-throughout: {distractorsEn: [thoroughly, altogether]}
+  w-first: {distractorsEn: [fast, firmly]}
+  w-priority: {distractorsEn: [majority, property]}
+  w-next: {distractorsEn: [nearly, neatly]}
+  w-remove: {distractorsEn: [remain, remix]}
+  w-happen: {distractorsEn: [harden, hammer]}
+  w-faster: {distractorsEn: [fainter, fatter]}
+  w-expect: {distractorsEn: [inspect, expel]}
+  w-whole: {distractorsEn: [holy, wild]}
+  w-entire: {distractorsEn: [elite, empty]}
+  w-until: {distractorsEn: [unless, unlike]}
+  w-slow: {distractorsEn: [slip, slam]}
+  w-guide: {distractorsEn: [guard, guess]}
+  w-tell: {distractorsEn: [sell, tear]}
+  w-work: {distractorsEn: [walk, wake]}
+  w-quiet: {distractorsEn: [quick, quaint]}
+  w-look: {distractorsEn: [lock, loom]}
+  w-loose: {distractorsEn: [lousy, loyal]}
+  w-tense: {distractorsEn: [tender, dense]}
+  w-support: {distractorsEn: [sport, supper]}
+  w-quality: {distractorsEn: [quantity, quarantine]}
+  w-visit: {distractorsEn: [vanish, vent]}
+  w-ritual: {distractorsEn: [rival, refusal]}
+  w-important: {distractorsEn: [impatient, imposing]}
+  w-around: {distractorsEn: [across, amid]}
+  w-bring: {distractorsEn: [brand, blink]}
+  w-grieve: {distractorsEn: [greet, groove]}
+  w-wrong: {distractorsEn: [long, strong]}
+  w-wait: {distractorsEn: [wail, wade]}
+  w-alone: {distractorsEn: [along, alike]}
+  w-follow: {distractorsEn: [swallow, wallow]}
+  w-settle: {distractorsEn: [saddle, shuttle]}
+  w-start: {distractorsEn: [stare, startle]}
+  w-call: {distractorsEn: [fall, curl]}
+  w-clear: {distractorsEn: [clean, clever]}
+  w-both: {distractorsEn: [each, either]}
+  w-love: {distractorsEn: [live, lose]}
+  w-through: {distractorsEn: [toward, beyond]}
+  w-kind: {distractorsEn: [king, kiln]}
+  w-situation: {distractorsEn: [station, solution]}
+  w-disagree: {distractorsEn: [disappear, disgrace]}
+  w-hear: {distractorsEn: [heal, hurt]}
+  w-fight: {distractorsEn: [fit, flit]}
+  w-harm: {distractorsEn: [farm, charm]}
+  w-shift: {distractorsEn: [shut, shred]}
+  w-try: {distractorsEn: [dry, tie]}
+  w-less: {distractorsEn: [lastly, lest]}
+  w-hard: {distractorsEn: [harsh, hasty]}
+  w-passing: {distractorsEn: [passage, passion]}
+  w-strong: {distractorsEn: [strange, stern]}
+  w-locate: {distractorsEn: [allocate, relocate]}
+  w-attempt: {distractorsEn: [attack, attitude]}
+  w-consult: {distractorsEn: [consent, conflict]}
+  w-review: {distractorsEn: [revue, revenue]}
+  w-easy: {distractorsEn: [edgy, early]}
+  w-way: {distractorsEn: [wage, wave]}
+  w-young: {distractorsEn: [yellow, yearly]}
+  w-real: {distractorsEn: [regal, ready]}
+  w-own: {distractorsEn: [open, only]}
+  w-carry: {distractorsEn: [marry, parry]}
+  w-speak: {distractorsEn: [spark, spread]}
+  w-grimace: {distractorsEn: [grin, grind]}
+  # ---- distractorsKo 보강
+  w-best: {ko: "최선·가장 좋은", distractorsKo: [가장 흔한, 가장 빠른]}
+  w-choose: {ko: 고르다, cue: "누구 편에 설지 고르라는 압박을 받을 때"}
+  w-once:
+    ko: 한때
+    distractorsKo: [늘, 다시]
+    cue: "예전에는 도움이 됐던 치료가 이제는 아니라고, 시간의 차이를 말할 때"
+    example_from: "17.1"
+  w-entire: {ko: "꼬박·내내"}
+  w-through: {ko: 거쳐서}
+  w-lack: {ko: 결여하다}
+  w-rush: {ko: 서두름, distractorsKo: [기다림, 멈춤]}
+  w-clean: {ko: "깨끗한·씻다"}
+  w-page:
+    en: on the same page
+    ipa: "/ɑn ðə seɪm peɪdʒ/"
+    ko: 같은 이해를 공유하는
+    chips: [["on"], ["the"], ["same"], ["page"]]
+    distractorsEn: [on the same stage, on the same pace]
+    distractorsKo: [다른 의견을 가진, 같은 일정을 따르는]
+    decoyChips: [plane, pace]
+  w-yourself:
+    en: by yourself
+    ipa: "/baɪ jɔːrˈsɛlf/"
+    ko: 혼자서
+    chips: [[by], [your, self]]
+    distractorsEn: [to yourself, for yourself]
+    decoyChips: [you, shelf]
+    cue: "혼자 힘으로 떠안는 일이 아니라고 가족에게 말할 때"
+  # ---- cue (ko를 감싸기만 한 것 → 장면으로, 약속을 가르치던 것 → 지킬 수 있는 말로)
+  w-light: {cue: "임종이 가까운 병실을 어둡고 차분하게 만들며 줄이는 것을 말할 때"}
+  w-chair: {cue: "오래 서 있는 보호자에게 침대 옆 자리를 권할 때"}
+  w-illness: {cue: "치료 목표가 바뀌며 치료 대상에서 빠지는 원래의 질환을 말할 때"}
+  w-symptom: {cue: "호흡곤란·통증처럼 환자가 호소하는 불편을 팀이 돕는다고 소개할 때"}
+  w-kid: {cue: "어린 자녀들이 어른 생각보다 상황을 알아챈다고 부모에게 말할 때"}
+  w-child: {cue: "아동생활전문가가 곁에서 도와줄, 환자의 어린 가족을 말할 때"}
+  w-tube: {cue: "인공호흡기에서 환자 입으로 이어진 줄을 곧 뺄 거라고 가족에게 알릴 때"}
+  w-space: {cue: "기도나 의례를 위해 조용히 쓸 방 한 켠을 내어 줄 때"}
+  w-posture: {cue: "누운 모습만 봐도 몸이 풀렸는지 가늠할 때"}
+  w-muscle: {cue: "손발을 만져 보며 굳은 데가 없는지 살필 때"}
+  w-tomorrow: {cue: "완화의료팀 방문을 오늘이 아니면 그다음 날로 잡는다고 알릴 때"}
+  w-specialist: {cue: "아이들 마음을 돕는 직군의 사람을 가족에게 소개할 때"}
+  w-ethics: {cue: "의견이 갈리는 어려운 결정을 병원 안에서 함께 따져 줄 팀을 말할 때"}
+  w-important: {cue: "가족이 무엇을 우선으로 여기는지 물어볼 때"}
+  w-order: {cue: "소생술 여부처럼 의사가 서명해 효력이 생긴 문서를 가리킬 때"}
+  w-think: {cue: "결정을 서두르지 않게 가족에게 시간을 두고 떠올려 보라고 권할 때"}
+  w-care: {cue: "곁에서 몸과 마음을 살피는 일을 가족에게 약속할 때"}
+  w-long: {cue: "밤낮 상관없이 머물러도 된다고 가족에게 넉넉히 허락할 때"}
+  w-first: {cue: "철회 순서를 설명하며 도움 안 되는 약부터라고 운을 뗄 때"}
+  w-next: {cue: "다음 순서로 호흡관 제거를 알릴 때"}
+  w-slowly: {cue: "조금씩 단계를 밟아 진행한다고 가족을 안심시킬 때"}
+  w-speed: {cue: "진행을 재촉하려는 게 아니라고 약의 목적을 분명히 할 때"}
+  w-slow: {cue: "임종의 속도를 일부러 늘리려는 것도 아니라고 말할 때"}
+  w-donation: {cue: "장기나 조직을 남에게 내어 주는 선택지를 가족에게 소개할 때"}
+  w-follow: {cue: "가족이 내린 뜻을 존중해 그대로 이어 가겠다고 말할 때"}
+  w-separately: {cue: "다른 사람 없이 따로 자리를 잡아 이야기할 수 있다고 알릴 때"}
+  w-clear: {cue: "눈에 보이는 사실이라 누구 편도 들지 않는다고 말을 열 때"}
+  w-kind: {cue: "비슷한 처지의 어떤 부류를 가리키며 환자의 예전 말을 물을 때"}
+  w-concern: {cue: "가족이 마음속에 품은 불안을 하나씩 들어 주겠다고 할 때"}
+  w-try: {cue: "무엇이든 해 보려는 노력이 이제는 괴로움을 더한다고 말할 때"}
+  w-document: {cue: "알고 있는 사실을 하나도 빼지 않고 차트에 적어 두자고 할 때"}
+  w-review: {cue: "위원회가 사례를 다시 따져 보는 중이라고 차트에 남길 때"}
+  w-easy: {cue: "빠르고 편한 해결책은 없다고 가족 앞에서 먼저 인정할 때"}
+  w-faster: {cue: "가족이 준비되기 전에 서두르지 않겠다고 할 때"}
+  w-alone: {cue: "곁에 아무도 없이 버티지 않아도 된다고 가족에게 말할 때"}
+  w-carefully: {cue: "몸을 함부로 다루지 않으려 손길을 아끼며 다룬다고 말할 때"}
+  w-stay: {cue: "약으로 환자가 그 상태를 이어 가도록 한다고 말할 때"}
+  w-suffer: {cue: "시작 전에 약을 준비해 두는 이유를 가족에게 설명할 때"}
+  w-hearing: {cue: "마지막까지 남을 수 있는 감각을 가족에게 알릴 때"}
+  w-settle: {cue: "급변한 증상이 약으로 가라앉기를 기다리며 가족 곁에 있을 때"}
