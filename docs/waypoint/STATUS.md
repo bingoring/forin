@@ -4,7 +4,14 @@
 **PRD:** [prd.md](prd.md) | [prd-tech.md](prd-tech.md)
 **Design handoff:** [inputs/design-handoff_v42/](inputs/design-handoff_v42/README.md) (최신) · [v40](inputs/design-handoff_v40/README.md) · [v39](inputs/design-handoff_v39/README.md) · [v38](inputs/design-handoff_v38/README.md) · [v22](inputs/design-handoff_v22/README.md)
 **Decisions (audit):** [DECISIONS.md](DECISIONS.md)
-**Last updated:** 2026-10-15
+**Last updated:** 2026-10-16
+
+> 🧪 **ICU·OR 한 번에 저작 파일럿 착수(2026-10-16, 사용자 결정).** v44만 있는 주제를 v45(단어 회상·뉘앙스)+v46(문장 낱장·order·오답 재설계)까지
+> 한 번에 — 주제마다 Sonnet 저작 A(단어·뉘앙스) ‖ B(문장 낱장·order) → `combine_halves.py` → Opus 검토 A ‖ B → Sonnet 수정 → `--replace` 합치기.
+> 대상 ICU `icu-eol-goals`·`icu-weaning-extubation`, OR `or-timeout`·`or-malignant-hyperthermia`(저장소 `server/content/tools/wip/icu-or-pilot/`).
+> v44→v45+v46 `--replace` 한 번 합치기는 사본에서 왕복 동일 확인. **표본 판정은 Fable 유지**(사용자 재확인 — Opus는 이미 검토자라 독립성이 없음).
+> `briefing.line`은 시드 스키마·gencontent·합치기에 연결돼 있지 않아 빠짐(연결 작업 필요). 브리프 되풀이 상한을 모든 낱말 규칙으로 갱신.
+> 목적: 단계별 토큰 실측 → 26개 부서 규모 산정. 이미 v45 저작된 ICU 8주제(`wip/icu-v45b`)의 처리(v46만 얹기 vs 폐기)는 따로 결정.
 
 > 🔧 **홈 화면 나이트 근무 라디오 입구 제거(2026-10-15, 사용자 결정).** 완성도가 아직 낮아서 홈 카드(v38)만 뺐다. `/night` 화면·서버 API·문구는 그대로 둔다.
 > 같은 날 일터 탭 6칸 변경은 production 채널 OTA로 배포(빌드 19~21과 iOS 지문 `3e73ea75` 일치).
