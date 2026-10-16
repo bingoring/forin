@@ -1,0 +1,389 @@
+# 상황 번호(0부터) → nuance 문항
+- sit: 0
+  items:
+    - kind: slider
+      words: [w-verify]
+      cue: "Nurse: \"I'll read each number off the vent, and you compare every one against the flowsheet, line by line.\""
+      scale: ["glance at", "check", "verify"]
+      answerAt: 2
+      why: "숫자를 하나하나 맞대어 틀린 데가 없는지 따져 보는 일은 verify예요. check는 이상이 없는지 훑어보는 정도이고, glance at은 슬쩍 보는 것이라 설정 기록 확인에는 약해요."
+      example: "Please verify the settings on the flowsheet before we chart them."
+      exKo: "기록하기 전에 기록지에서 설정을 재확인해 주세요."
+    - kind: context
+      words: [w-chart]
+      word: chart
+      ko: 기록하다
+      scenes:
+        - {who: 동료 간호사에게, icon: monitor, en: "Let's chart these settings after we both confirm them.", ok: true}
+        - {who: 기록 지시, icon: board, en: "Chart the FiO2 and PEEP exactly as set on the vent.", ok: true}
+        - {who: 가족에게, icon: me, en: "I'll chart his Vt, FiO2, and PEEP per protocol.", ok: false, fix: "I'll write down his settings so everyone on the team can see them."}
+      why: "의료진끼리는 chart를 동사로 짧게 쓰고 Vt·FiO2 같은 약어도 통해요. 가족에게는 약어와 protocol이 낯설고 사무적으로 들리니, 무엇을 하는지 풀어서 말해요."
+- sit: 1
+  items:
+    - kind: slider
+      words: [w-cuff, w-seal, w-hurt]
+      cue: "Nurse: \"The cuff pressure is just right — no air gets past it, and it isn't pressing hard on his airway wall.\""
+      scale: ["leaks", "seals", "injures"]
+      answerAt: 1
+      why: "커프 압력이 너무 낮으면 공기가 새고(leaks), 너무 높으면 기관 벽을 다치게 해요(injures). 새지도 해치지도 않는 적정 압력이 seals예요."
+      example: "The cuff seals the airway so the breaths go into his lungs."
+      exKo: "커프가 기도를 막아 줘서 숨이 폐로 들어가요."
+    - kind: swap
+      words: [w-tube, w-lip]
+      who: 가족에게 · 튜브 위치 설명
+      icon: me
+      before: ["Your husband's breathing tube is ", "ETT 22 at the lip", "."]
+      options: ["ETT 22 at the lip", "in the right place", "positioned per protocol"]
+      answer: "in the right place"
+      notes: {"ETT 22 at the lip": "차트에 적는 말이에요. 가족은 약어도 숫자의 뜻도 알아듣기 어려워요.", "in the right place": "가족이 바로 이해하는 쉬운 말이에요. 확인한 사실을 그대로 전해요.", "positioned per protocol": "사무적으로 들려서, 정작 위치가 맞는지는 알려 주지 못해요."}
+      why: "튜브 깊이를 숫자로 확인했더라도 가족에게는 결과를 쉬운 말로 전해요. 숫자는 차트와 의료진끼리의 말이에요."
+      ko: 남편분의 숨관은 제 위치에 있어요
+- sit: 2
+  items:
+    - kind: pair
+      words: [w-water, w-trap, w-circuit]
+      pairs: [["water", "trap"], ["breathing", "circuit"]]
+      decoys: ["wristband"]
+      why: "회로에 고인 물을 받아 내는 장치는 water trap, 호흡기와 환자를 잇는 전체 관은 breathing circuit이라고 불러요."
+    - kind: context
+      words: [w-condensation]
+      word: condensation
+      ko: 응결
+      scenes:
+        - {who: 동료 간호사에게, icon: monitor, en: "There's condensation in the circuit, so I'll drain the trap.", ok: true}
+        - {who: 차트 기록, icon: board, en: "Condensation noted in the tubing, drained, no leak found.", ok: true}
+        - {who: 가족에게, icon: me, en: "Condensation is pooling at the expiratory limb of his circuit.", ok: false, fix: "That's just water from his warm breath, and I'll empty it away from him."}
+      why: "의료진끼리는 condensation, expiratory limb 같은 정확한 말로 충분해요. 가족에게는 낯설고 문제처럼 들리니, 따뜻한 숨에서 생긴 물이라고 풀어 말해요."
+- sit: 3
+  items:
+    - kind: slider
+      words: [w-diminished]
+      cue: "Nurse: \"The right side sounds normal, but on the left I hear much less air than before, though not none.\""
+      scale: ["clear", "diminished", "absent"]
+      answerAt: 1
+      why: "소리가 아주 없지는 않지만 평소보다 줄었으면 diminished예요. 소리가 전혀 안 들릴 때만 absent라고 하고, 둘은 의미가 달라서 보고도 달라져요."
+      example: "Breath sounds are diminished on the left side."
+      exKo: "왼쪽 호흡음이 감소돼 있어요."
+    - kind: swap
+      words: [w-diminished, w-depth]
+      who: 가족에게 · 사정 결과 설명
+      icon: me
+      before: ["I hear ", "diminished breath sounds", ", so I'll check the tube depth."]
+      options: ["diminished breath sounds", "less air going in on one side", "BS decreased on the left"]
+      answer: "less air going in on one side"
+      notes: {"diminished breath sounds": "의료진끼리 쓰는 정확한 말이에요. 가족에게는 뜻이 바로 와닿지 않아요.", "less air going in on one side": "무슨 일이 일어났는지 쉬운 말로 알려 줘요. 이어지는 '튜브 깊이 확인'과도 자연스럽게 이어져요.", "BS decreased on the left": "차트용 약어라 말로 하면 알아듣기 어려워요."}
+      why: "같은 소견도 의료진에게는 diminished breath sounds, 가족에게는 쉬운 말로 풀어 전해요."
+      ko: 한쪽으로 공기가 덜 들어가는 소리가 나서 튜브 깊이를 확인할게요
+- sit: 4
+  items:
+    - kind: pair
+      words: [w-oxygen, w-carbondioxide, w-level]
+      pairs: [["SpO2", "oxygen level"], ["EtCO2", "carbon dioxide"]]
+      decoys: ["heart rhythm"]
+      why: "SpO2는 혈중 산소 수준을, EtCO2는 숨을 내쉴 때 나오는 이산화탄소를 보여 줘요. 두 수치가 보는 것이 달라요."
+    - kind: context
+      words: [w-stable]
+      word: stable
+      ko: 안정적인
+      scenes:
+        - {who: 동료 간호사에게, icon: monitor, en: "Both numbers are stable on the monitor right now.", ok: true}
+        - {who: 차트 기록, icon: board, en: "SpO2 and EtCO2 stable, no alarms overnight.", ok: true}
+        - {who: 가족에게, icon: me, en: "His SpO2 and EtCO2 are stable within set parameters.", ok: false, fix: "His oxygen and breathing numbers are holding steady."}
+      why: "의료진끼리는 stable을 수치와 함께 짧게 말해요. 가족에게 SpO2, EtCO2, parameters를 늘어놓으면 알아듣기 어려우니, 산소와 호흡 수치가 유지되고 있다고 풀어 말해요."
+- sit: 5
+  items:
+    - kind: slider
+      words: [w-uncomfortable, w-cough]
+      cue: "Nurse to the patient: \"Suctioning will make you cough, and it will feel ___ for a few seconds, but it passes quickly.\""
+      scale: ["mild", "uncomfortable", "painful"]
+      answerAt: 1
+      why: "흡인은 기침을 일으키고 몇 초간 불편한 게 보통이에요. painful이라고 하면 겁을 주고, mild라고 줄여 말하면 실제와 달라서 신뢰를 잃어요."
+      example: "It may feel uncomfortable for a few seconds."
+      exKo: "몇 초 동안 불편하실 수 있어요."
+    - kind: context
+      words: [w-suction]
+      word: suction
+      ko: 흡인하다
+      scenes:
+        - {who: 동료 간호사에게, icon: monitor, en: "Watch his SpO2 while I suction him.", ok: true}
+        - {who: 차트 기록, icon: board, en: "Suctioned for thick white secretions, SpO2 stable throughout.", ok: true}
+        - {who: 환자에게, icon: me, en: "I'm going to suction the secretions from your endotracheal tube now.", ok: false, fix: "I'm going to clear the mucus from your breathing tube now, and you might cough."}
+      why: "의료진끼리는 suction과 secretions 같은 정확한 말이 빠르고 분명해요. 환자에게는 endotracheal tube, secretions가 어렵고 차갑게 들리니 무엇을 하는지, 어떤 느낌일지 풀어 말해요."
+- sit: 6
+  items:
+    - kind: slider
+      words: [w-gradually]
+      cue: "Nurse: \"We won't switch everything at once. We'll cut the machine's help in small steps over several hours.\""
+      scale: ["abruptly", "gradually", "completely"]
+      answerAt: 1
+      why: "조금씩 단계적으로 줄이는 것이 gradually예요. 한꺼번에 바꾸는 것은 abruptly, 전부 넘기는 것은 completely라서 뜻이 달라요."
+      example: "We are gradually letting him do more of the work."
+      exKo: "호흡하는 일을 점차 더 스스로 하게 하고 있어요."
+    - kind: swap
+      words: [w-mode, w-tolerate, w-own]
+      who: 가족에게 · 모드 설명
+      icon: me
+      before: ["He's on ", "SIMV", " now, and we'll watch how he tolerates it."]
+      options: ["SIMV", "a mode where he breathes some on his own", "SIMV mode per orders"]
+      answer: "a mode where he breathes some on his own"
+      notes: {"SIMV": "의료진이 쓰는 약어예요. 가족은 무슨 뜻인지 알 수 없어요.", "a mode where he breathes some on his own": "모드의 핵심을 쉬운 말로 풀었어요. 이어지는 '잘 견디는지 본다'와도 자연스러워요.", "SIMV mode per orders": "약어에 처방이 붙어 더 사무적으로 들려요."}
+      why: "모드 이름은 약어라 가족에게는 의미가 없어요. 환자가 일부를 스스로 숨 쉬는 방식이라고 풀어 설명해요."
+      ko: 이제 일부는 스스로 숨 쉬는 모드로 두고, 잘 견디는지 지켜볼게요
+- sit: 7
+  items:
+    - kind: slider
+      words: [w-peep, w-collapse]
+      cue: "Nurse: \"His air sacs keep collapsing at the end of each breath, so the PEEP is probably ___.\""
+      scale: ["too low", "just right", "too high"]
+      answerAt: 0
+      why: "PEEP이 너무 낮으면 호흡 사이에 폐포가 쭈그러들어요. 반대로 너무 높으면 폐가 과팽창하거나 혈압이 떨어질 수 있어서, 조금씩 올리며 반응을 봐요."
+      example: "We raised the PEEP so his air sacs stay open."
+      exKo: "폐포가 열려 있도록 PEEP를 올렸어요."
+    - kind: context
+      words: [w-peep]
+      word: PEEP
+      ko: 호기말양압
+      scenes:
+        - {who: 동료 간호사에게, icon: monitor, en: "After we raised the PEEP, his oxygen came up.", ok: true}
+        - {who: 차트 기록, icon: board, en: "PEEP increased in small steps with improved oxygenation.", ok: true}
+        - {who: 가족에게, icon: me, en: "We titrated PEEP to recruit alveoli and improve oxygenation.", ok: false, fix: "We raised the pressure that keeps his air sacs open, and his oxygen got better."}
+      why: "PEEP, titrate, recruit alveoli는 의료진끼리는 정확하고 짧은 말이에요. 가족에게는 어려워서, 폐포가 열려 있게 하는 압력을 올렸다고 풀어 말해요."
+- sit: 8
+  items:
+    - kind: pair
+      words: [w-kink, w-need, w-suction, w-high, w-pressure, w-airway]
+      pairs: [["kinked", "tube"], ["he needs", "suctioning"], ["high", "airway pressure"]]
+      decoys: ["wristband"]
+      why: "고압 경보의 흔한 원인을 말할 때는 꺾인 튜브(kinked tube), 흡인이 필요한 상태(he needs suctioning), 그리고 경보가 가리키는 high airway pressure를 짝지어 써요."
+    - kind: swap
+      words: [w-alarm, w-pressure, w-high]
+      who: 가족에게 · 경보 설명
+      icon: me
+      before: ["That alarm means ", "his peak airway pressure is elevated", ", and I'm checking why."]
+      options: ["his peak airway pressure is elevated", "the machine wants me to take a closer look", "a pressure limit was exceeded"]
+      answer: "the machine wants me to take a closer look"
+      notes: {"his peak airway pressure is elevated": "정확하지만 가족에게는 어려운 말이에요. 걱정만 키울 수 있어요.", "the machine wants me to take a closer look": "무엇을 하고 있는지 쉬운 말로 알려 줘요. 위험하지 않다고 단정하지 않고, 확인 중이라는 사실만 전해요.", "a pressure limit was exceeded": "기계 사양 설명이라 가족에게는 의미가 없고 차갑게 들려요."}
+      why: "경보 소리에 놀란 가족에게는 전문 용어 대신 지금 무엇을 확인하는지 쉬운 말로 알려요. 괜찮다고 장담하지는 않아요."
+      ko: 기계가 더 자세히 봐 달라고 알리는 거라, 제가 이유를 확인하고 있어요
+- sit: 9
+  items:
+    - kind: slider
+      words: [w-against, w-sync]
+      cue: "Nurse: \"He's gasping, coughing, and straining on every breath. He's ___.\""
+      scale: ["slightly off", "out of sync", "fighting the vent"]
+      answerAt: 2
+      why: "숨마다 기침하고 힘을 주며 기계와 맞서면 fighting the vent라고 해요. 박자가 조금 어긋난 정도는 a bit off, 박자가 맞지 않는 상태는 out of sync예요."
+      example: "He is fighting the vent, so I'll check the settings."
+      exKo: "기계와 싸우고 있어서 설정을 확인할게요."
+    - kind: context
+      words: [w-sync]
+      word: sync
+      ko: 동조
+      scenes:
+        - {who: 동료 간호사에게, icon: monitor, en: "He's out of sync with the vent, so I'll adjust the trigger.", ok: true}
+        - {who: 차트 기록, icon: board, en: "Pt out of sync with vent, trigger sensitivity adjusted.", ok: true}
+        - {who: 환자에게, icon: me, en: "You're out of sync with the vent, with breath stacking and double triggering.", ok: false, fix: "The machine and your breathing aren't matching well yet, and I'm adjusting it."}
+      why: "breath stacking, double triggering은 의료진끼리 쓰는 정확한 말이에요. 깨어 있는 환자에게 그대로 말하면 겁이 나니, 기계와 호흡이 아직 잘 안 맞고 조정 중이라고 풀어 말해요."
+- sit: 10
+  items:
+    - kind: slider
+      words: [w-gentle, w-ventilation]
+      cue: "Nurse: \"For injured lungs we use small breaths and a low plateau pressure. It's called ___ ventilation.\""
+      scale: ["gentle", "standard", "aggressive"]
+      answerAt: 0
+      why: "손상된 폐에는 작은 일회호흡량과 낮은 고평부압으로 부드럽게 환기하는 폐보호 전략을 써요. gentle이 그 느낌을 담은 말이고, aggressive는 반대 방향이에요."
+      example: "Gentle ventilation protects his injured lungs."
+      exKo: "부드러운 환기가 손상된 폐를 보호해요."
+    - kind: swap
+      words: [w-tidalvolume, w-small, w-protect, w-injure, w-lung, w-damage]
+      who: 가족에게 · 폐보호 환기 설명
+      icon: me
+      before: ["We use ", "low tidal volume ventilation", " to protect his injured lungs from more damage."]
+      options: ["low tidal volume ventilation", "smaller breaths than usual", "LTVV per protocol"]
+      answer: "smaller breaths than usual"
+      notes: {"low tidal volume ventilation": "정식 명칭이라 의료진끼리는 정확해요. 가족에게는 길고 어려워요.", "smaller breaths than usual": "무엇을 어떻게 하는지 쉬운 말로 알려 줘요. 이어지는 '폐를 보호하려고'와도 자연스러워요.", "LTVV per protocol": "약어와 protocol이라 가족에게는 의미가 없어요."}
+      why: "폐보호 환기의 핵심은 평소보다 작은 호흡이라는 점이에요. 가족에게는 정식 명칭 대신 그 핵심을 쉬운 말로 전해요."
+      ko: 손상된 폐가 더 다치지 않도록 평소보다 작은 호흡을 쓰고 있어요
+- sit: 11
+  items:
+    - kind: slider
+      words: [w-promising]
+      cue: "Nurse to the family: \"His RSBI is trending the right way and the trial is going well, but he hasn't been extubated yet. His numbers look ___.\""
+      scale: ["possible", "promising", "guaranteed"]
+      answerAt: 1
+      why: "결과가 좋아 보이지만 아직 확정은 아닐 때 promising이 맞아요. 가족에게 guaranteed라고 하면 지킬 수 없는 약속이 되고, 발관은 의료진이 판단해요."
+      example: "His numbers look promising, so I'll flag him for the team."
+      exKo: "수치가 희망적이라 팀에 알려둘게요."
+    - kind: context
+      words: [w-trial]
+      word: trial
+      ko: 시도
+      scenes:
+        - {who: 동료 간호사에게, icon: monitor, en: "He's on a spontaneous breathing trial, so watch his rate and effort.", ok: true}
+        - {who: 차트 기록, icon: board, en: "Pt tolerated the breathing trial on minimal support.", ok: true}
+        - {who: 가족에게, icon: me, en: "He's undergoing a spontaneous breathing trial per protocol.", ok: false, fix: "We're giving him a short test of breathing mostly on his own."}
+      why: "spontaneous breathing trial은 의료진끼리 정확하고 짧은 이름이에요. 가족에게는 per protocol까지 붙으면 차갑게 들리니, 스스로 숨 쉬어 보는 짧은 시험이라고 풀어 말해요."
+- sit: 12
+  items:
+    - kind: slider
+      words: [w-carbondioxide, w-high, w-allow]
+      cue: "Nurse: \"We're allowing his carbon dioxide to run ___ on purpose, as long as his pH stays in a safe range.\""
+      scale: ["lower than usual", "a bit high", "dangerously high"]
+      answerAt: 1
+      why: "permissive hypercapnia는 폐를 보호하려고 이산화탄소를 조금 높게 두는 것이에요. 위험할 만큼 높게 두는 것이 아니고, pH가 안전 범위인 동안에만 해요."
+      example: "We allow his carbon dioxide to run a bit high on purpose."
+      exKo: "일부러 이산화탄소가 조금 높게 두고 있어요."
+    - kind: swap
+      words: [w-carbondioxide, w-purpose, w-protect, w-lung, w-ph, w-closely]
+      who: 가족에게 · permissive hypercapnia 설명
+      icon: me
+      before: ["We're ", "permitting hypercapnia", " on purpose to protect his lungs, and we're watching his pH closely."]
+      options: ["permitting hypercapnia", "letting his carbon dioxide run a little high", "tolerating PaCO2 elevation"]
+      answer: "letting his carbon dioxide run a little high"
+      notes: {"permitting hypercapnia": "의료진끼리 쓰는 정확한 말이에요. 가족에게는 낯설어요.", "letting his carbon dioxide run a little high": "무엇을 일부러 하는지 쉬운 말로 알려 줘요. 이어지는 '폐를 보호하려고'와도 자연스러워요.", "tolerating PaCO2 elevation": "차트에 어울리는 말이라 가족에게는 어렵고 차갑게 들려요."}
+      why: "왜 수치를 일부러 두는지는 가족이 가장 궁금해하는 부분이에요. 용어 대신 무엇을 어떻게 두는지, 왜 두는지를 쉬운 말로 전해요."
+      ko: 폐를 보호하려고 일부러 이산화탄소가 조금 높게 두고 있고, pH를 자세히 보고 있어요
+- sit: 13
+  items:
+    - kind: slider
+      words: [w-dip, w-brief]
+      cue: "Nurse: \"His oxygen fell for a few seconds after the suction and came back up on its own. That's ___.\""
+      scale: ["a brief dip", "a lasting drop", "a crash"]
+      answerAt: 0
+      why: "흡인 후 산소가 몇 초 떨어졌다 스스로 돌아오는 것은 brief dip이에요. 오래 이어지거나 회복되지 않으면 lasting drop이라 보고가 필요해요."
+      example: "A brief dip after suctioning is common."
+      exKo: "흡인 후에 잠깐 떨어지는 건 흔해요."
+    - kind: context
+      words: [w-dip]
+      word: dip
+      ko: 잠깐 떨어짐
+      scenes:
+        - {who: 동료 간호사에게, icon: monitor, en: "He had a brief dip after suction, but it's coming back up.", ok: true}
+        - {who: 차트 기록, icon: board, en: "Brief SpO2 dip after suctioning, recovered with extra breaths.", ok: true}
+        - {who: 가족에게, icon: me, en: "He had a transient dip in saturation post-suction.", ok: false, fix: "His oxygen dropped for a moment after the suction, and it's already coming back."}
+      why: "의료진끼리는 transient dip, saturation, post-suction 같은 말이 빠르고 정확해요. 가족에게는 어려워서 무엇이 얼마나 일어났는지 풀어 말해요."
+- sit: 14
+  items:
+    - kind: pair
+      words: [w-increase, w-rate, w-ventilation, w-call, w-physician, w-number, w-gas, w-assessment]
+      pairs: [["increase", "the rate to improve his ventilation"], ["call", "the physician with the numbers"], ["document", "the gas and my assessment"]]
+      decoys: ["the wristband color"]
+      why: "가스 결과를 본 뒤에는 호흡수를 늘려 환기를 개선하자고 제안하고, 수치를 가지고 의사에게 연락하고, 결과와 사정을 기록해요."
+    - kind: swap
+      words: [w-paco2, w-ph, w-gas, w-call, w-physician]
+      who: 가족에게 · 혈액가스 결과 설명
+      icon: me
+      before: ["On this gas, ", "PaCO2 is up and pH is down", ", so I'm calling the physician."]
+      options: ["PaCO2 is up and pH is down", "carbon dioxide is building up and his blood is a little more acidic", "hypercapnic with respiratory acidosis"]
+      answer: "carbon dioxide is building up and his blood is a little more acidic"
+      notes: {"PaCO2 is up and pH is down": "의료진끼리 쓰는 말이에요. 가족에게는 수치 이름이 의미가 없어요.", "carbon dioxide is building up and his blood is a little more acidic": "결과의 뜻을 쉬운 말로 풀었어요. 이어지는 '의사에게 전화한다'와도 자연스러워요.", "hypercapnic with respiratory acidosis": "진단명에 가까운 말이라 가족에게는 어렵고 무겁게 들려요."}
+      why: "PaCO2가 오르고 pH가 내려간 것은 이산화탄소가 쌓여 피가 더 산성이 됐다는 뜻이에요. 가족에게는 결과의 의미를 이렇게 풀어 전해요."
+      ko: 이번 검사에서 이산화탄소가 쌓이고 피가 조금 더 산성이라, 의사에게 전화할게요
+- sit: 15
+  items:
+    - kind: pair
+      words: [w-displacement, w-obstruction, w-pneumothorax, w-equipment]
+      pairs: [["D", "displacement"], ["O", "obstruction"], ["P", "pneumothorax"], ["E", "equipment"]]
+      decoys: ["resuscitation"]
+      why: "DOPE는 갑자기 산소가 떨어질 때 원인을 순서대로 떠올리는 약자예요. D는 튜브 위치 이탈, O는 폐색, P는 기흉, E는 장비 문제를 가리켜요."
+    - kind: context
+      words: [w-displacement]
+      word: displacement
+      ko: 위치 이탈
+      scenes:
+        - {who: 동료 간호사에게, icon: monitor, en: "Check for tube displacement first, then obstruction.", ok: true}
+        - {who: 차트 기록, icon: board, en: "No tube displacement, ETT 22 at the lip.", ok: true}
+        - {who: 가족에게, icon: me, en: "There's no displacement of his endotracheal tube.", ok: false, fix: "His breathing tube hasn't slipped out of place."}
+      why: "tube displacement는 의료진끼리 정확하고 짧은 말이에요. 가족에게는 endotracheal tube와 displacement가 어려우니, 숨관이 제자리에 있다고 풀어 말해요."
+- sit: 16
+  items:
+    - kind: slider
+      words: [w-diminished, w-sound, w-pneumothorax]
+      cue: "Nurse: \"On the left side I hear no breath sounds at all, the pressures keep climbing, and the trachea is shifting.\""
+      scale: ["equal", "diminished", "absent"]
+      answerAt: 2
+      why: "소리가 아예 들리지 않으면 absent예요. 줄었지만 들리면 diminished이고, 한쪽이 안 들리면서 압력이 오르고 기관이 밀리면 긴장성 기흉을 의심해 바로 도움을 불러요."
+      example: "Diminished breath sounds and high pressures point to a pneumothorax."
+      exKo: "호흡음 감소와 높은 압력은 기흉을 가리켜요."
+    - kind: swap
+      words: [w-pneumothorax, w-emergency]
+      who: 가족에게 · 기흉 설명
+      icon: me
+      before: ["He has a ", "pneumothorax", ", and we're acting on it right now."]
+      options: ["pneumothorax", "pocket of air squeezing his lung", "tension PTX"]
+      answer: "pocket of air squeezing his lung"
+      notes: {"pneumothorax": "의료진끼리 쓰는 정확한 말이에요. 가족에게는 낯설고 무겁게 들려요.", "pocket of air squeezing his lung": "무슨 일이 일어났는지 쉬운 말로 알려 줘요. 이어지는 '지금 조치한다'와도 자연스러워요.", "tension PTX": "약어라 가족에게는 의미가 없어요."}
+      why: "기흉은 폐 바깥으로 공기가 새어 폐를 누르는 상태예요. 가족에게는 이름보다 무슨 일이 생겼고 지금 무엇을 하는지를 쉬운 말로 전해요."
+      ko: 폐를 누르는 공기 주머니가 생겨서, 지금 바로 조치하고 있어요
+- sit: 17
+  items:
+    - kind: pair
+      words: [w-disconnect, w-bag, w-oxygen, w-page, w-respiratory]
+      pairs: [["disconnect", "from the vent"], ["bag", "him with 100 percent oxygen"], ["page", "respiratory and the charge nurse"]]
+      decoys: ["a new wristband"]
+      why: "인공호흡기가 멈췄을 때의 순서는 먼저 인공호흡기에서 분리하고(disconnect), 백으로 100퍼센트 산소를 주고(bag), 도움을 호출해요(page)."
+    - kind: context
+      words: [w-bag]
+      word: bag
+      ko: 백으로 환기시키다
+      scenes:
+        - {who: 동료 간호사에게, icon: monitor, en: "Bag him with 100 percent oxygen while I get the backup vent.", ok: true}
+        - {who: 차트 기록, icon: board, en: "Pt bagged by hand on 100 percent O2 after vent failure.", ok: true}
+        - {who: 가족에게, icon: me, en: "We're bagging him manually via the resuscitation bag.", ok: false, fix: "A nurse is breathing for him by hand with a squeeze bag while we get another machine."}
+      why: "bag은 의료진끼리 동사로 쓰는 짧고 정확한 말이에요. 가족에게는 manually, resuscitation bag이 어려우니, 손으로 대신 숨을 불어 넣어 주고 있다고 풀어 말해요."
+- sit: 18
+  items:
+    - kind: slider
+      words: [w-weak, w-effort]
+      cue: "Nurse: \"Since the tube came out, he barely moves any air. His own breathing effort is ___, so he needs full support.\""
+      scale: ["weak", "adequate", "strong"]
+      answerAt: 0
+      why: "숨을 거의 못 쉬는 상태는 weak한 호흡 노력이에요. adequate나 strong이면 스스로 버틸 수 있는 정도지만, 그렇지 않으면 바로 완전한 보조가 필요해요."
+      example: "His own effort looks weak, so he needs full support."
+      exKo: "스스로 하는 호흡이 약해서 완전한 보조가 필요해요."
+    - kind: swap
+      words: [w-extubate, w-prepare, w-reintubate]
+      who: 가족에게 · 자가발관 설명
+      icon: me
+      before: ["He ", "self-extubated", ", and we're helping him breathe and getting ready to put it back."]
+      options: ["self-extubated", "pulled his breathing tube out", "had an unplanned extubation"]
+      answer: "pulled his breathing tube out"
+      notes: {"self-extubated": "의료진끼리 쓰는 정확한 말이에요. 가족에게는 낯설고 비난처럼 들릴 수도 있어요.", "pulled his breathing tube out": "무슨 일이 있었는지 쉬운 말로 알려 줘요. 이어지는 '다시 넣을 준비'와도 자연스러워요.", "had an unplanned extubation": "보고서에 어울리는 말이라 가족에게는 차갑게 들려요."}
+      why: "자가발관은 환자가 스스로 튜브를 빼 버린 일이에요. 가족에게는 사실을 쉬운 말로 전하고, 지금 숨을 도우며 다시 넣을 준비를 하고 있다고 알려요."
+      ko: 숨관을 뽑아 버려서, 숨을 도와주면서 다시 넣을 준비를 하고 있어요
+- sit: 19
+  items:
+    - kind: slider
+      words: [w-deepen, w-sedation]
+      cue: "Nurse to the physician: \"He's fighting the vent hard and his oxygen is falling. I think we need to ___ his sedation.\""
+      scale: ["lighten", "maintain", "deepen"]
+      answerAt: 2
+      why: "기계와 심하게 싸우며 산소가 떨어질 때는 진정을 더 깊게 하는 것(deepen)을 의사에게 제안해요. 약을 쓰는 결정과 용량은 의사의 처방으로 정해져요."
+      example: "I think we need to deepen sedation."
+      exKo: "진정을 더 깊게 해야 할 것 같아요."
+    - kind: context
+      words: [w-sedation]
+      word: sedation
+      ko: 진정
+      scenes:
+        - {who: 의사에게, icon: stetho, en: "I think we need more sedation, because he's fighting the vent.", ok: true}
+        - {who: 차트 기록, icon: board, en: "Sedation increased per physician order, pt calmer on vent.", ok: true}
+        - {who: 가족에게, icon: me, en: "We're escalating his sedation with a paralytic adjunct.", ok: false, fix: "We're giving him more medicine to keep him calm and comfortable while the machine breathes for him."}
+      why: "의료진끼리는 sedation, paralytic adjunct 같은 정확한 말이 빠르고 분명해요. 가족에게는 어렵고 무겁게 들리니, 편안하게 해 주는 약이라고 풀어 말해요."
+- sit: 20
+  items:
+    - kind: pair
+      words: [w-escalate, w-prone, w-consult, w-team, w-gather, w-gas, w-ratio]
+      pairs: [["escalate", "to proning"], ["consult", "the ECMO team"], ["gather", "the latest gases and P/F ratio"]]
+      decoys: ["the visitor list"]
+      why: "산소가 계속 오르지 않을 때는 조치 단계를 높이고(escalate), 전문팀에 자문을 구하고(consult), 그에 필요한 최신 결과를 모아 둬요(gather)."
+    - kind: swap
+      words: [w-prone, w-oxygenation]
+      who: 가족에게 · 복와위 설명
+      icon: me
+      before: ["We're ", "proning him", " to help his oxygen."]
+      options: ["proning him", "gently turning him onto his stomach", "positioning him prone per protocol"]
+      answer: "gently turning him onto his stomach"
+      notes: {"proning him": "의료진끼리 쓰는 짧은 말이에요. 가족에게는 낯설어요.", "gently turning him onto his stomach": "무엇을 하는지 쉬운 말로 알려 줘요. 이어지는 '산소를 돕기 위해'와도 자연스러워요.", "positioning him prone per protocol": "사무적이고 어려운 말이라 가족이 놀랄 수 있어요."}
+      why: "복와위는 엎드린 자세로 돌려 눕혀 폐 뒤쪽이 열리게 하는 방법이에요. 가족에게는 무엇을 하는지 쉬운 말로 알려요."
+      ko: 산소가 좋아지도록 조심스럽게 엎드린 자세로 돌려 눕힐 거예요

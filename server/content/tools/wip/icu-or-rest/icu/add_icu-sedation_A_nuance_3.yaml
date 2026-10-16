@@ -1,0 +1,130 @@
+- situation: "진정 깊이와 섬망 연계 관리"
+  items:
+    - kind: slider
+      words: [w-delirium, w-risk]
+      cue: "Nurse: \"He doesn't know where he is and keeps talking to someone who isn't there.\""
+      scale: [oriented, confused, delirious]
+      answerAt: 2
+      why: "갑자기 주의력이 흐려지고 없는 사람에게 말을 걸면 섬망(delirious)을 의심해요. 섬망은 CAM-ICU 같은 도구로 확인하고, 깊은 진정은 섬망 위험을 키우는 요인이라 진정을 얕게 맞추는 것이 예방의 한 축이에요."
+      example: "Deep sedation can worsen his delirium risk."
+      exKo: "깊은 진정은 섬망 위험을 악화시킬 수 있어요."
+    - kind: context
+      words: [w-delirium]
+      word: delirium
+      ko: 섬망
+      scenes:
+        - {who: 동료 간호사에게, icon: speech, en: "His delirium risk is high — let's lighten him and reassess.", ok: true}
+        - {who: 차트 기록, icon: board, en: "Delirium screen positive; sedation lightened, early mobility ordered.", ok: true}
+        - {who: 보호자에게, icon: me, en: "He's at high risk for hyperactive ICU delirium secondary to deep sedation.", ok: false, fix: "He might get confused and restless, and heavy sleep medicine makes that more likely."}
+      why: "의료진끼리는 delirium과 선별 결과를 짧게 전해요. 가족에게는 hyperactive, secondary to 같은 말이 낯서니, 어떤 모습이 나타날 수 있고 왜 그런지를 쉬운 말로 풀어 줘요."
+- situation: "프로포폴 주입 증후군 인지"
+  items:
+    - kind: slider
+      words: [w-lactate, w-rise, w-trend]
+      cue: "Lab: \"Lactate was 2.1, then 3.4, and now 5.2 on high-dose propofol.\""
+      scale: [dropping, holding, rising]
+      answerAt: 2
+      why: "젖산이 계속 오르면 rising이에요. 고용량 프로포폴 중 젖산·산증이 오르면 PRIS를 의심해서 프로포폴을 멈추고 다른 약으로 바꾸는 것을 바로 의사와 정해요. 수치 하나보다 방향이 중요해요."
+      example: "Rising lactate and acidosis on high-dose propofol suggest PRIS."
+      exKo: "고용량 프로포폴 중 젖산과 산증이 오르면 PRIS가 의심돼요."
+    - kind: context
+      words: [w-propofol]
+      word: propofol
+      ko: 프로포폴
+      scenes:
+        - {who: 동료 간호사에게, icon: speech, en: "Stop the propofol now — his lactate is jumping.", ok: true}
+        - {who: 차트 기록, icon: board, en: "Propofol stopped at 0310 for rising lactate; MD notified.", ok: true}
+        - {who: 보호자에게, icon: me, en: "Propofol is causing a propofol infusion syndrome with lactic acidosis.", ok: false, fix: "The sleep medicine may be hurting his body, so we're stopping it and giving him a different one."}
+      why: "의료진끼리는 약 이름과 이유를 한 번에 짧게 말해요. 가족에게는 PRIS와 lactic acidosis를 그대로 던지면 겁만 주고, 단정하는 말이 되니 약이 몸에 부담이 될 수 있어 바꾼다고 말해요."
+- situation: "과진정 호흡정지·저혈압 위기"
+  items:
+    - kind: pair
+      words: [w-bagvent, w-call, w-open, w-airway]
+      pairs: [[bag, him now], [call for, help], [open, the airway]]
+      decoys: [the Foley]
+      why: "숨이 멈췄으면 bag him now, 혼자 하기 어려우면 call for help, 마스크 호흡이 들어가려면 먼저 open the airway예요. 급한 순간일수록 동사와 대상이 짧게 딱 맞는 말을 써요."
+    - kind: context
+      words: [w-pressure]
+      word: pressure
+      ko: 혈압
+      scenes:
+        - {who: 동료 간호사에게, icon: speech, en: "Pressure's crashing — start the fluids and call for help.", ok: true}
+        - {who: 차트 기록, icon: board, en: "Pressure 68/40; fluids started; MD notified.", ok: true}
+        - {who: 보호자에게, icon: me, en: "His pressure is unstable and we are initiating resuscitation.", ok: false, fix: "His blood pressure dropped very low, so we're giving him fluid and getting more help."}
+      why: "의료진끼리는 pressure라는 한 단어와 수치로 급한 상황을 전해요. 가족에게는 unstable, resuscitation이 무섭고 막연하게 들리니, 무슨 일이 생겼고 지금 무엇을 하는지를 쉬운 말로 말해요."
+- situation: "신경근차단 병용 심부진정 관리"
+  items:
+    - kind: slider
+      words: [w-aware, w-light, w-deep]
+      cue: "Nurse: \"He's paralyzed, but he's tearing up and his heart rate just jumped when I suctioned.\""
+      scale: [deeply sedated, lightly sedated, awake and aware]
+      answerAt: 2
+      why: "마비되어 있으면 움직임으로 깨어 있음을 알 수 없어서, 눈물·심박과 혈압 상승·땀이 단서예요. 깨어 있는 것으로 의심하고 바로 알려요. 신경근차단제를 쓰는 동안은 충분히 깊은 진정을 먼저 확인해요."
+      example: "A paralyzed patient can be aware if sedation is too light."
+      exKo: "진정이 너무 얕으면 마비된 환자도 의식이 있을 수 있어요."
+    - kind: context
+      words: [w-paralytic]
+      word: paralytic
+      ko: 마비제
+      scenes:
+        - {who: 동료 간호사에게, icon: speech, en: "Confirm adequate sedation before every dose of paralytic.", ok: true}
+        - {who: 차트 기록, icon: board, en: "Paralytic given; sedation adequate, BIS 45.", ok: true}
+        - {who: 보호자에게, icon: me, en: "A paralytic prevents all skeletal muscle activity, including the diaphragm.", ok: false, fix: "The medicine keeps his muscles still so the ventilator can breathe for him, and we're keeping him asleep."}
+      why: "의료진끼리는 paralytic 한 단어로 어떤 약인지 통하고, 투약 전 진정 확인이 약속이에요. 가족에게는 skeletal muscle, diaphragm이 무섭게 들리니, 약이 무엇을 하고 환자를 어떻게 돌보는지를 쉬운 말로 알려 줘요."
+- situation: "진정 부족 자가발관 위험 급변"
+  items:
+    - kind: slider
+      words: [w-reach, w-tube, w-light]
+      cue: "Nurse: \"He's moving his arms around, but he isn't reaching for anything yet.\""
+      scale: [settled, restless, reaching for the tube]
+      answerAt: 1
+      why: "팔을 이리저리 움직이기 시작하면 restless 단계예요. 튜브를 잡으려 하면 바로 곁에 붙어 안전을 확보하고 진정을 다시 평가해요. 진정이 너무 얕으면 자가발관 위험이 커져요."
+      example: "He's reaching for the tube — hold his hands, keep him safe."
+      exKo: "튜브를 잡으려고 해요 — 손을 잡아주고 안전하게 지켜주세요."
+    - kind: context
+      words: [w-airway]
+      word: airway
+      ko: 기도
+      scenes:
+        - {who: 동료 간호사에게, icon: speech, en: "Let's protect the airway before he pulls anything out.", ok: true}
+        - {who: 차트 기록, icon: board, en: "Airway secure; ETT taped at 22 cm at the lip.", ok: true}
+        - {who: 보호자에게, icon: me, en: "We must secure the airway to prevent unplanned extubation.", ok: false, fix: "We're making sure his breathing tube stays safely in place."}
+      why: "의료진끼리는 airway와 튜브 위치를 숫자로 말해야 정확해요. 가족에게는 unplanned extubation이 무섭고 낯서니, 호흡관이 안전하게 있도록 챙기고 있다고 쉬운 말로 알려 줘요."
+- situation: "덱스 서맥·저혈압 급변"
+  items:
+    - kind: slider
+      words: [w-heart, w-pause, w-rate]
+      cue: "Nurse: \"His heart rate is 72 and his pressure is 120 over 70 on dex.\""
+      scale: [continue, watch closely, pause it]
+      answerAt: 0
+      why: "심박 72에 혈압이 정상이면 처방대로 계속해도 돼요. 심박이 많이 느려지거나 혈압이 떨어지면 주입을 멈추고 의사를 불러요. 멈추는 기준은 병원 프로토콜과 처방을 따라요."
+      example: "If his heart rate drops too far, we'll pause the infusion."
+      exKo: "심박수가 너무 떨어지면 주입을 멈출게요."
+    - kind: context
+      words: [w-infusion]
+      word: infusion
+      ko: 주입
+      scenes:
+        - {who: 동료 간호사에게, icon: speech, en: "I'm holding the infusion — his heart rate is thirty-six.", ok: true}
+        - {who: 차트 기록, icon: board, en: "Infusion held at 0215 for HR 36; MD notified.", ok: true}
+        - {who: 보호자에게, icon: me, en: "The infusion is being discontinued secondary to bradycardia.", ok: false, fix: "We paused the medicine because it slowed his heart too much, and the doctor is coming."}
+      why: "의료진끼리는 infusion을 멈춘 시각과 이유를 짧게 적고 말해요. 가족에게는 discontinued, secondary to가 딱딱하고 낯서니, 왜 멈췄고 누가 오는지를 쉬운 말로 알려 줘요."
+- situation: "난치성 초조 위기 관리"
+  items:
+    - kind: slider
+      words: [w-refractory, w-agitation, w-single]
+      cue: "Nurse: \"He's had three different agents and he's still thrashing.\""
+      scale: [settling, restless, refractory]
+      answerAt: 2
+      why: "약을 여러 개 써도 듣지 않으면 refractory예요. 약제 하나를 더 올리기보다 의사와 다중 방식 진정 계획을 세우고, 그동안 환자와 라인을 안전하게 지켜요."
+      example: "This is refractory agitation, so a single agent clearly isn't enough."
+      exKo: "이건 난치성 초조라서 약제 하나로는 분명히 부족해요."
+    - kind: context
+      words: [w-agent]
+      word: agent
+      ko: 약제
+      scenes:
+        - {who: 동료 간호사에게, icon: speech, en: "One agent isn't touching this — let's add a second agent.", ok: true}
+        - {who: 차트 기록, icon: board, en: "Refractory agitation despite propofol; second agent added per MD.", ok: true}
+        - {who: 보호자에게, icon: me, en: "He's refractory to monotherapy, so we're adding a second agent.", ok: false, fix: "One medicine isn't enough to calm him, so the doctor is adding another."}
+      why: "의료진끼리는 agent라는 말로 약 한 가지를 가리켜요. 가족에게는 monotherapy, refractory가 어렵고 차갑게 들리니, 약 하나로는 모자라 하나를 더한다고 쉬운 말로 알려 줘요."

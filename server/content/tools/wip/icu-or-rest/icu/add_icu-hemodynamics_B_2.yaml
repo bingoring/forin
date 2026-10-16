@@ -1,0 +1,134 @@
+# 상황 6~12
+- s: 6
+  sents:
+    - {tag: "적정 설명", icon: pill, why: "adjusting … to keep…으로 조절과 목적을 한 문장에 담아요. 승압제는 반응에 따라 조금씩 올리고 내리는 약이라 adjust가 자연스러워요.", decoy: "all day", dk: ["맥박을 안전한 범위로 유지하려고 약 용량을 조정하고 있어요", "혈압을 좁은 범위로 유지하려고 약 용량을 조정하고 있어요"], ans: "adjusting", wr: ["labeling", "hanging", "storing"]}
+    - {tag: "팀 공유", icon: speech, why: "update A on B는 A에게 B를 알린다는 틀이에요. 약을 올리는 동안 반응을 팀과 계속 공유해야 다음 조절이 안전해요.", decoy: "about the order", dk: ["환자분이 어떻게 주무시는지 팀에 알려 드릴게요", "환자분이 언제 반응하는지 팀에 알려 드릴게요"], ans: "responding", wr: ["resting", "moving", "eating"]}
+    - {tag: "목표 설명", icon: star, why: "main target처럼 목표 앞에 main을 붙이면 여러 수치 중 우선순위를 알려 줘요. 승압제 용량은 평균 동맥압 목표를 기준으로 맞춰요.", decoy: "of the day", dk: ["지금은 심박수가 가장 중요한 목표예요", "지금은 평균 압력이 가장 쉬운 목표예요"], ans: "target", wr: ["alarm", "limit", "habit"]}
+    - {tag: "용량 설명", icon: pill, why: "in small steps는 한 번에 크게 올리지 않고 반응을 보며 조금씩 조절한다는 뜻이에요. 승압제 적정의 기본 방식이에요.", decoy: "every hour", dk: ["용량을 하나씩 늘리면서 자세히 지켜보고 있어요", "용량을 조금씩 늘리면서 자세히 기록하고 있어요"], ans: "steps", wr: ["bags", "hours", "beds"]}
+    - {tag: "경과 보고", icon: check, why: "The medication is working은 효과를 현재진행형으로 말하고, 뒤의 staying steady가 그 근거를 보여 줘요. 쉼표로 이어 원인과 결과를 붙였어요.", decoy: "last night", dk: ["약이 잘 듣고 있어서 지금 혈압이 높게 유지되고 있어요", "약이 잘 듣고 있어서 지금 맥박이 안정적으로 유지되고 있어요"], ans: "staying", wr: ["going", "getting", "turning"]}
+    - {tag: "소통 약속", icon: speech, why: "keep you updated는 한 번이 아니라 계속 알려 준다는 약속이에요. every time은 변화 하나하나마다라는 뜻이라 가족이 소외감을 덜 느껴요.", decoy: "if you ask", dk: ["변화가 있을 때마다 계속 보여 드릴게요", "밤마다 계속 알려 드릴게요"], ans: "every time", wr: ["last time", "half time", "one time"]}
+    - {tag: "대응 계획", icon: bell, why: "If 절로 조건을 먼저 밝히고 we'll로 약속하면 이 경우엔 이렇게 한다는 계획이 분명해져요. 더 떨어질 때 빠르게 보강해야 해서 quickly를 붙였어요.", decoy: "this morning", dk: ["맥박이 더 떨어지면 빠르게 보조 약물을 추가할게요", "혈압이 더 떨어지면 빠르게 보조 인력을 추가할게요"], ans: "further", wr: ["evenly", "briefly", "partly"]}
+  order:
+    tag: "적정 흐름"
+    icon: compass
+    ko: "승압제를 올리는 중 설명하는 4문장 순서"
+    why: "목표를 먼저 말하고, 조금씩 올리는 방법을 잇고, 지금까지의 경과를 보고한 뒤, 달라지면 어떻게 할지로 닫아요."
+    lines:
+      - {en: "Her average pressure is our main target right now.", icon: star, ko: "지금은 평균 압력이 가장 중요한 목표예요", note: 목표}
+      - {en: "To keep it in a safe range, we're increasing the dose in small steps.", icon: pill, ko: "안전한 범위를 위해 용량을 조금씩 늘려요", note: 방법}
+      - {en: "So far the medication is working, and her pressure is staying steady.", icon: check, ko: "지금까지 약이 잘 듣고 혈압이 안정적이에요", note: 경과}
+      - {en: "If that changes, we'll add more support quickly.", icon: bell, ko: "그게 달라지면 빠르게 보조를 더할게요", note: 대비}
+- s: 7
+  sents:
+    - {tag: "약 추가", icon: pill, why: "a second medication처럼 second를 쓰면 기존 약을 대체하는 게 아니라 하나가 더해진다는 뜻이에요.", decoy: "for a week", dk: ["혈압을 보조하려고 약을 두 개 더 추가하고 있어요", "맥박을 보조하려고 약을 하나 더 추가하고 있어요"], ans: "second", wr: ["spare", "sample", "quiet"]}
+    - {tag: "병용 설명", icon: gear, why: "not instead of it은 대체가 아니라 추가라는 대비를 부정으로 짚어서 환자가 첫 약이 중단된 걸로 오해하지 않게 해요.", decoy: "like the others", dk: ["이건 마지막 약을 대신하는 게 아니라 같이 작용하는 거예요", "이건 처음 약을 대신하는 게 아니라 따로 작용하는 거예요"], ans: "alongside", wr: ["against", "behind", "without"]}
+    - {tag: "관찰 약속", icon: magnify, why: "watch for는 어떤 일이 생기는지 주의해서 본다는 뜻이고, how she responds가 그 대상이에요. 새 약은 처음 반응을 가장 눈여겨봐요.", decoy: "this morning", dk: ["그가 어떻게 반응하는지 자세히 지켜볼게요", "그녀가 언제 일어나는지 자세히 지켜볼게요"], ans: "responds", wr: ["arrives", "sleeps", "leaves"]}
+    - {tag: "오해 방지", icon: shield, why: "not a sign of worsening은 가족이 가장 걱정하는 해석을 먼저 짚고 바로 치우는 말이에요. 상태가 실제로 나빠졌다면 그렇게 말하지 말고 솔직히 설명해야 해요.", decoy: "of surgery", dk: ["수액을 하나 더 쓰는 건 나빠졌다는 신호가 아니라 흔한 단계예요", "승압제를 하나 더 쓰는 건 나빠졌다는 신호가 아니라 다음 단계예요"], ans: "step", wr: ["habit", "meal", "visit"]}
+    - {tag: "감시 항목", icon: stetho, why: "heart rate and blood pressure처럼 감시할 항목을 구체적으로 말하면 가족이 무엇을 보고 있는지 알 수 있어요.", decoy: "for the rest", dk: ["이 새 약을 쓰는 동안 호흡수와 혈압을 자세히 지켜봐요", "이 오래된 약을 쓰는 동안 심박수와 혈압을 자세히 지켜봐요"], ans: "rate", wr: ["size", "color", "speech"]}
+    - {tag: "소통 약속", icon: speech, why: "let you know는 inform의 쉬운 말이에요. as soon as를 쓰면 정해진 시각이 아니라 일이 생긴 즉시라는 기준을 줘요.", decoy: "in the morning", dk: ["결과가 보이면 바로 알려 드릴게요", "변화가 보이면 저녁에 알려 드릴게요"], ans: "change", wr: ["result", "visitor", "delay"]}
+    - {tag: "병용 이점", icon: pill, why: "often은 늘 그렇다는 보장이 아니라 흔히 그렇다는 정도라, 과장 없이 병용의 이점을 설명해요.", decoy: "most days", dk: ["약 세 가지가 같이 작용하면 하나보다 더 도움이 될 때가 많아요", "약 두 가지가 같이 작용하면 하나보다 더 빠를 때가 많아요"], ans: "together", wr: ["separately", "slowly", "randomly"]}
+  order:
+    tag: "설명 흐름"
+    icon: compass
+    ko: "두 번째 승압제를 설명하는 4문장 순서"
+    why: "추가 사실을 먼저 알리고, 대체가 아니라는 점을 잇고, 나빠진 신호가 아니라는 안심을 준 뒤, 변화를 알리겠다고 약속해요."
+    lines:
+      - {en: "We're adding a second medication to support her pressure.", icon: pill, ko: "혈압을 보조하려고 약을 하나 더 추가해요", note: 추가}
+      - {en: "It works alongside the first drip, not instead of it.", icon: gear, ko: "처음 약을 대신하지 않고 같이 작용해요", note: 병용}
+      - {en: "Using two together is a normal step, not a sign of worsening.", icon: shield, ko: "두 가지를 쓰는 건 나빠진 신호가 아니에요", note: 안심}
+      - {en: "Once they're both running, I'll let you know as soon as we see a change.", icon: speech, ko: "둘이 들어가면 변화가 보이는 대로 알릴게요", note: 약속}
+- s: 8
+  sents:
+    - {tag: "수치 보고", icon: lab, why: "picked up은 늘다·좋아지다를 뜻하는 구동사예요. about 40 mls an hour처럼 시간당 양을 함께 말해야 소변량이 충분한지 판단할 수 있어요.", decoy: "since noon", dk: ["소변량이 시간당 약 30밀리리터로 늘었어요", "수분 섭취가 시간당 약 40밀리리터로 늘었어요"], ans: "output", wr: ["intake", "pressure", "weight"]}
+    - {tag: "호전 설명", icon: chartup, why: "which is reassuring은 앞 문장 전체를 받는 관계절이에요. 젖산이 내려가는 흐름은 조직 산소 공급이 나아진다는 신호라 안심시키는 말로 이어져요.", decoy: "at noon", dk: ["혈당 수치가 내려가고 있어서 안심이 돼요", "젖산 수치가 안정되고 있어서 안심이 돼요"], ans: "reassuring", wr: ["confusing", "exciting", "tiring"]}
+    - {tag: "종합 해석", icon: chartup, why: "Together these suggest…는 단서 둘을 합쳐 결론을 내는 말이에요. suggest는 확정이 아니라 시사한다는 정도라 단정하지 않아요.", decoy: "in the chart", dk: ["이 두 가지를 보면 호흡이 좋아지고 있다는 뜻이에요", "이 두 가지를 보면 관류가 달라지고 있다는 뜻이에요"], ans: "improving", wr: ["waiting", "closing", "shrinking"]}
+    - {tag: "의미 설명", icon: stetho, why: "Good urine output means…처럼 수치 = 의미 구조로 말하면 비전문가도 이해해요. 신장은 혈류가 충분할 때 소변을 만들어서 소변량이 관류의 지표가 돼요.", decoy: "in the bed", dk: ["소변량이 잘 나온다는 건 폐에 혈액이 충분히 간다는 뜻이에요", "소변량이 잘 나온다는 건 신장에 혈액이 천천히 간다는 뜻이에요"], ans: "kidneys", wr: ["lungs", "eyes", "bones"]}
+    - {tag: "의미 설명", icon: lab, why: "can mean은 항상은 아니지만 그럴 수 있다는 가능성의 표현이에요. 젖산은 산소가 모자란 조직이 만드는 부산물이라 높으면 관류 문제를 의심해요.", decoy: "in the room", dk: ["젖산이 높으면 피부에 산소가 충분히 가지 않는다는 뜻일 수 있어요", "젖산이 높으면 조직에 수분이 충분히 가지 않는다는 뜻일 수 있어요"], ans: "oxygen", wr: ["sugar", "salt", "water"]}
+    - {tag: "인계 보고", icon: handshake2, why: "in both numbers에서 both는 하나가 아니라 둘 다 전한다는 뜻이에요. 소변량과 젖산을 함께 인계하면 관류 판단이 끊기지 않아요.", decoy: "by phone", dk: ["인계할 때 세 수치의 추세를 보고할게요", "인계할 때 두 수치의 추세를 기록할게요"], ans: "both", wr: ["some", "few", "odd"]}
+    - {tag: "지표 설명", icon: chartup, why: "help us know if…는 지표가 판단을 돕는 도구라는 뜻이에요. 지표만 보고 정하지 않고 환자 상태와 함께 본다는 뉘앙스가 담겨요.", decoy: "for the family", dk: ["이 감염 지표들이 치료가 효과가 있는지 알려 줘요", "이 관류 지표들이 수액이 효과가 있는지 알려 줘요"], ans: "treatment", wr: ["schedule", "visit", "meal"]}
+  order:
+    tag: "해석 흐름"
+    icon: compass
+    ko: "소변량과 젖산으로 관류를 설명하는 4문장 순서"
+    why: "첫 수치를 말하고, 같은 방향의 두 번째 수치를 잇고, 둘을 합쳐 결론을 내린 뒤, 인계로 닫아야 해석이 한 줄로 이어져요."
+    lines:
+      - {en: "Her urine output has picked up to about 40 mls an hour.", icon: lab, ko: "소변량이 시간당 약 40밀리리터로 늘었어요", note: 첫째}
+      - {en: "Her lactate is moving the same way, trending down, which is reassuring.", icon: chartup, ko: "젖산도 같은 쪽으로 내려가 안심이 돼요", note: 둘째}
+      - {en: "Together, these two numbers suggest her perfusion is improving.", icon: stetho, ko: "두 수치를 보면 관류가 좋아지고 있어요", note: 결론}
+      - {en: "So I'll report that improving trend at handoff.", icon: handshake2, ko: "그래서 좋아지는 추세를 인계에서 보고할게요", note: 인계}
+- s: 9
+  sents:
+    - {tag: "파형 해석", icon: monitor, why: "overdamped는 파형이 둔하게 눌려 보이는 상태예요. falsely low처럼 가짜로 낮다고 말해야 실제 혈압이 낮다는 뜻으로 오해하지 않아요.", decoy: "in the cuff", dk: ["파형이 과소감쇠돼 보여서 수치가 실제보다 낮게 나올 수 있어요", "파형이 과감쇠돼 보여서 수치가 실제보다 늦게 나올 수 있어요"], ans: "falsely", wr: ["truly", "barely", "slowly"]}
+    - {tag: "점검 방법", icon: gear, why: "fast-flush test는 라인을 빠르게 씻어 파형이 얼마나 빨리 가라앉는지 보는 검사예요. do a … test to check는 검사를 해서 확인한다는 목적이에요.", decoy: "for the pump", dk: ["빠른 플러시 테스트로 펌프를 확인해 볼게요", "빠른 알람 테스트로 시스템을 확인해 볼게요"], ans: "system", wr: ["schedule", "chart", "bed"]}
+    - {tag: "점검 항목", icon: magnify, why: "A, B, or C 목록으로 말하면 점검할 항목을 한눈에 전달해요. 공기 방울·꼬임·헐거운 연결은 파형을 둔하게 만드는 흔한 원인이에요.", decoy: "in the pole", dk: ["공기 방울이나 소음, 헐거운 연결부가 있는지 살펴볼게요", "혈전이나 꼬임, 헐거운 연결부가 있는지 살펴볼게요"], ans: "loose", wr: ["wet", "cold", "dry"]}
+    - {tag: "오류 원인", icon: monitor, why: "can make … look…은 처럼 보이게 만들 수 있다는 틀이에요. than it really is로 실제 값과 보이는 값의 차이를 말하면, 파형만 믿으면 안 되는 이유가 전달돼요.", decoy: "on the line", dk: ["과감쇠된 파형은 실제보다 맥박을 더 낮게 보이게 할 수 있어요", "과감쇠된 파형은 실제보다 압력을 더 빠르게 보이게 할 수 있어요"], ans: "lower", wr: ["louder", "wider", "older"]}
+    - {tag: "결과 예측", icon: monitor, why: "Once …, … should…는 먼저 할 일 뒤에 기대되는 결과를 말하는 틀이에요. should는 100%가 아니라 그럴 것이라는 기대라 확인 전에 단정하지 않아요.", decoy: "next week", dk: ["라인을 플러시하면 파형이 더 빨라질 거예요", "라인을 플러시하면 화면이 더 선명해질 거예요"], ans: "sharper", wr: ["softer", "slower", "heavier"]}
+    - {tag: "재확인", icon: check, why: "again과 once를 함께 쓰면 조치 후 다시 확인한다는 순서가 분명해져요. 플러시 뒤 값이 달라지면 그 값을 새 기준으로 삼아요.", decoy: "all day", dk: ["시스템이 정상으로 보이면 라벨을 다시 확인할게요", "시스템이 깨끗해 보이면 수치를 다시 확인할게요"], ans: "again", wr: ["alone", "twice", "only"]}
+    - {tag: "감사", icon: star, why: "Thanks for -ing는 ~해 줘서 고맙다를 말하는 틀이에요. 잘못된 값을 잡아 준 행동을 구체적으로 짚으면 서로 보고하기 쉬운 팀 문화가 만들어져요.", decoy: "for the call", dk: ["잘못된 수치를 기록하기 전에 잡아 줘서 고마워요", "잘못된 수치를 신뢰하기 전에 말해 줘서 고마워요"], ans: "catching", wr: ["carrying", "charging", "cleaning"]}
+  order:
+    tag: "점검 흐름"
+    icon: compass
+    ko: "파형이 눌려 보일 때 말하는 4문장 순서"
+    why: "이상한 파형을 알리고, 검사로 확인하고, 원인을 찾는 점검을 이은 뒤, 모두 끝난 다음 파형과 수치를 다시 확인해요."
+    lines:
+      - {en: "The waveform looks overdamped, so the reading may be falsely low.", icon: monitor, ko: "파형이 눌려 보여 수치가 실제보다 낮을 수 있어요", note: 발견}
+      - {en: "Let me do a fast-flush test to check the system.", icon: gear, ko: "빠른 플러시 테스트로 시스템을 확인할게요", note: 검사}
+      - {en: "While I do that, I'll look for air bubbles, kinks, or a loose connection.", icon: magnify, ko: "그동안 공기 방울, 꼬임, 헐거운 연결을 볼게요", note: 점검}
+      - {en: "Once all of that is done, the waveform should look sharper, and I'll recheck the number.", icon: check, ko: "다 끝나면 파형이 선명해질 테고 수치를 다시 볼게요", note: 재확인}
+- s: 10
+  sents:
+    - {tag: "감량 설명", icon: pill, why: "as her pressure holds의 as는 하는 동안, ~함에 따라예요. 혈압이 유지되는 것을 확인하면서 줄인다는 조건이 안전한 감량의 핵심이에요.", decoy: "this week", dk: ["맥박이 유지되는 걸 보면서 약을 서서히 줄이고 있어요", "혈압이 오르는 걸 보면서 약을 서서히 줄이고 있어요"], ans: "lowering", wr: ["labeling", "ordering", "storing"]}
+    - {tag: "대비 설명", icon: magnify, why: "in case는 일이 생기기 전에 미리 대비한다는 뜻이에요(if와 달라요). 감량 중에는 다시 떨어질 때를 대비해 감시 강도를 유지해요.", decoy: "this evening", dk: ["맥박이 다시 떨어질 경우를 대비해 자세히 지켜볼게요", "혈압이 다시 떨어질 경우를 대비해 조용히 지켜볼게요"], ans: "case", wr: ["fact", "place", "time"]}
+    - {tag: "단계 감량", icon: pill, why: "not all at once처럼 대비를 부정으로 붙이면 조금씩이라는 점을 한 번 더 강조해요. 급히 줄이면 혈압이 다시 떨어질 수 있어요.", decoy: "as before", dk: ["한 번에 줄이지 않고 매시간 줄여요", "한 번에 줄이지 않고 하나씩 줄여요"], ans: "all", wr: ["one", "half", "some"]}
+    - {tag: "호전 설명", icon: check, why: "a good sign that …은 that절이 신호의 내용이라는 구조예요. 보조가 덜 필요하다는 건 몸이 스스로 혈압을 지탱하기 시작했다는 뜻이에요.", decoy: "from the unit", dk: ["몸이 예전만큼 보조가 필요하지 않다는 작은 신호예요", "가족이 예전만큼 보조가 필요하지 않다는 좋은 신호예요"], ans: "support", wr: ["space", "sleep", "noise"]}
+    - {tag: "안전망 설명", icon: shield, why: "we can go back up처럼 can을 쓰면 올릴 수 있는 길이 열려 있다는 안전망을 알려 줘요. 감량은 되돌릴 수 있어서 환자와 가족의 불안이 줄어요.", decoy: "in the chart", dk: ["맥박이 떨어지면 바로 다시 올릴 수 있어요", "혈압이 흔들리면 바로 다시 올릴 수 있어요"], ans: "away", wr: ["over", "out", "down"]}
+    - {tag: "용어 설명", icon: bulb, why: "We call this …는 낯선 용어를 환자 말로 풀어 줄 때 쓰는 틀이에요. weaning은 약을 서서히 줄이는 과정을 뜻하는 말이에요.", decoy: "by hand", dk: ["이걸 적정이라고 부르는데 신중하게 진행해요", "이걸 이탈이라고 부르는데 조용하게 진행해요"], ans: "weaning", wr: ["flushing", "charting", "labeling"]}
+    - {tag: "격려", icon: star, why: "Turning the corner는 고비를 넘기다라는 관용 표현이에요. takes time으로 서두르지 않게 기대를 조절하고 good start로 희망을 남겨요.", decoy: "last year", dk: ["고비를 넘기는 데는 시간이 걸리지만 이 약은 좋은 시작이에요", "고비를 넘기는 데는 시간이 걸리지만 이 추세는 좋은 신호예요"], ans: "corner", wr: ["wheel", "knob", "tap"]}
+  order:
+    tag: "감량 흐름"
+    icon: compass
+    ko: "승압제를 줄이는 중 말하는 4문장 순서"
+    why: "혈압이 유지돼 줄이기 시작했다고 알리고, 조금씩 줄이는 방법을 잇고, 다시 떨어질 때를 대비하고, 그때는 올릴 수 있다고 안심시켜요."
+    lines:
+      - {en: "Her pressure is holding, so we're slowly lowering the medication.", icon: pill, ko: "혈압이 유지돼서 약을 서서히 줄이고 있어요", note: 감량}
+      - {en: "We lower it in small steps, not all at once.", icon: gear, ko: "한 번에 줄이지 않고 조금씩 줄여요", note: 방법}
+      - {en: "I'll watch closely in case her pressure drops again.", icon: magnify, ko: "혈압이 다시 떨어질 때를 대비해 지켜볼게요", note: 대비}
+      - {en: "If it does, we can go back up right away.", icon: shield, ko: "그러면 바로 다시 올릴 수 있어요", note: 안전망}
+- s: 11
+  sents:
+    - {tag: "약 설명", icon: stetho, why: "helps his heart pump…는 help + 목적어 + 동사원형이라 to를 쓰지 않아요. 도부타민은 심장 수축력을 높이는 강심제예요.", decoy: "by itself", dk: ["이 약은 폐가 더 효과적으로 뛰도록 도와줘요", "이 약은 심장이 더 오래 뛰도록 도와줘요"], ans: "effectively", wr: ["expensively", "eagerly", "evenly"]}
+    - {tag: "부작용 설명", icon: monitor, why: "It can …, so we …는 이럴 수 있어서 그래서 ~한다는 인과 틀이에요. 도부타민은 심박수를 올리거나 부정맥을 만들 수 있어서 리듬 감시가 따라와요.", decoy: "all night", dk: ["호흡수를 빠르게 할 수 있어서 리듬을 자세히 지켜봐요", "심박수를 빠르게 할 수 있어서 리듬을 조용히 지켜봐요"], ans: "rhythm", wr: ["weight", "height", "diet"]}
+    - {tag: "경과 안내", icon: chartup, why: "We'll see if …는 결과를 지켜보겠다는 말이라 약속 대신 관찰 계획을 전해요. over the next hour로 평가 시점을 정해 가족이 기다릴 시간을 알아요.", decoy: "by tonight", dk: ["다음 두 시간 동안 순환이 좋아지는지 볼게요", "다음 한 시간 동안 호흡이 좋아지는지 볼게요"], ans: "improves", wr: ["repeats", "expires", "arrives"]}
+    - {tag: "이유 설명", icon: stetho, why: "wasn't …, so we're …는 과거의 원인과 지금의 조치를 so로 잇는 틀이에요. 심박출량이 모자라면 장기로 가는 혈류가 줄어서 약으로 힘을 보태요.", decoy: "last week", dk: ["심장이 산소를 충분히 내보내지 못해서 보조 약을 추가하고 있어요", "심장이 혈액을 충분히 내보내지 못해서 보조 인력을 추가하고 있어요"], ans: "enough", wr: ["little", "extra", "fresh"]}
+    - {tag: "감시 이유", icon: stetho, why: "for any irregular heartbeat의 any는 조금이라도라는 뜻이라 작은 이상도 놓치지 않겠다는 태도를 보여요.", decoy: "at every visit", dk: ["이 약을 쓰는 동안 빠른 심박이 있는지 자세히 지켜봐요", "이 약을 쓰는 동안 불규칙한 호흡이 있는지 자세히 지켜봐요"], ans: "irregular", wr: ["irritable", "irrelevant", "immediate"]}
+    - {tag: "호전 설명", icon: check, why: "with + 명사 + 비교급 형용사는 ~한 채로라는 부대 상황이에요. warmer hands and feet은 말초 순환이 나아졌다는 눈에 보이는 근거예요.", decoy: "this afternoon", dk: ["얼굴이 따뜻해지면서 순환이 벌써 좋아 보여요", "손발이 붉어지면서 순환이 벌써 좋아 보여요"], ans: "warmer", wr: ["wider", "wetter", "wilder"]}
+    - {tag: "감시 약속", icon: monitor, why: "keep -ing는 중간에 멈추지 않고 이어 간다는 뜻이고 through the night는 밤 내내라는 범위예요. 강심제 투여 중에는 야간에도 감시 강도를 유지해요.", decoy: "at lunch", dk: ["밤새 심박수와 호흡을 계속 확인할게요", "밤새 심박수와 리듬을 계속 기록할게요"], ans: "through", wr: ["until", "after", "before"]}
+  order:
+    tag: "설명 흐름"
+    icon: compass
+    ko: "도부타민을 시작하며 설명하는 4문장 순서"
+    why: "왜 추가하는지를 먼저 말하고, 약이 하는 일을 잇고, 부작용과 감시를 알린 뒤, 효과를 보는 시간으로 닫아요."
+    lines:
+      - {en: "His heart wasn't pumping enough blood, so we're adding support.", icon: stetho, ko: "심장이 혈액을 충분히 못 내보내 보조를 더해요", note: 이유}
+      - {en: "This medication helps his heart pump more effectively.", icon: pill, ko: "이 약은 심장이 더 효과적으로 뛰도록 도와요", note: 작용}
+      - {en: "It can speed up the heart rate, so we watch the rhythm closely.", icon: monitor, ko: "심박수가 빨라질 수 있어 리듬을 지켜봐요", note: 감시}
+      - {en: "While we watch, we'll see if his circulation improves over the next hour.", icon: chartup, ko: "지켜보면서 다음 한 시간 순환을 볼게요", note: 평가}
+- s: 12
+  sents:
+    - {tag: "투여 제한", icon: lock, why: "peripherally only for a short time처럼 부사로 방식과 기간을 함께 제한해요. 승압제가 혈관 밖으로 새면 조직이 상할 수 있어서 말초 투여는 가능하면 짧게 하고 중심라인을 서둘러 확보해요.", decoy: "on weekdays", dk: ["처음에는 저용량 승압제만 짧은 시간 동안 줄 수 있어요", "야간에는 저용량 승압제만 짧은 시간 동안 줄 수 있어요"], ans: "only", wr: ["also", "even", "slowly"]}
+    - {tag: "정맥로 조건", icon: cross, why: "has to는 선택이 아닌 필수 조건이에요. proximal IV는 팔 아래쪽 작은 정맥보다 굵은 근위부 정맥이라 약이 새어도 위험이 덜해요.", decoy: "like before", dk: ["새 근위 정맥로여야 하고, 자리를 자세히 지켜봐요", "좋은 근위 정맥로여야 하고, 팔을 자세히 지켜봐요"], ans: "watch", wr: ["wash", "weigh", "wrap"]}
+    - {tag: "필요 설명", icon: cross, why: "still은 지금 말초로 줘도 상황이 끝난 게 아니라는 뜻이에요. as soon as possible을 문장 끝에 둬서 서두른다는 점이 마지막까지 남아요.", decoy: "by the end", dk: ["그래도 말초정맥 확보가 최대한 빨리 필요해요", "그래도 중심정맥 장비가 최대한 빨리 필요해요"], ans: "central", wr: ["local", "outer", "spare"]}
+    - {tag: "중단 기준", icon: siren, why: "If 절에 관찰 기준을, 주절에 멈춘다는 행동을 넣어 이럴 때는 이렇게를 분명히 했어요. 승압제가 혈관 밖으로 샌 침윤은 조직 손상으로 이어질 수 있어 right away를 붙여요.", decoy: "for the family", dk: ["자리가 빨갛거나 가려우면 바로 주입을 멈춰요", "자리가 파랗거나 부으면 바로 주입을 멈춰요"], ans: "swollen", wr: ["itchy", "wet", "small"]}
+    - {tag: "이전 계획", icon: redo, why: "Once …는 ~하는 즉시, ~한 뒤에라는 순서의 접속사예요. move … over는 약을 한 라인에서 다른 라인으로 옮긴다는 뜻의 구동사예요.", decoy: "this week", dk: ["중심정맥로가 확보되면 약물을 위쪽으로 옮길게요", "중심정맥로가 확보되면 펌프를 그쪽으로 옮길게요"], ans: "placed", wr: ["labeled", "charted", "tested"]}
+    - {tag: "한계 설명", icon: bulb, why: "only a temporary bridge, not a long-term plan처럼 not으로 대비를 걸어 임시 조치라는 점을 못 박아요. 말초 투여를 오래 두지 않는다는 안전 기준과 이어져요.", decoy: "for now", dk: ["이건 임시로 잇는 것일 뿐, 야간 계획은 아니에요", "이건 응급으로 잇는 것일 뿐, 장기적인 계획은 아니에요"], ans: "temporary", wr: ["private", "tiny", "quiet"]}
+    - {tag: "표시 이유", icon: pushpin, why: "flag the chart는 기록에 눈에 띄는 표시를 남긴다는 말이에요. so everyone knows는 모두가 알 수 있게라는 목적이라 인계 때 라인 용도가 헷갈리지 않아요.", decoy: "by phone", dk: ["이 라인이 말초 전용이라는 걸 모두 알도록 침대에 표시할게요", "이 라인이 말초 전용이라는 걸 모두 알도록 벽에 표시할게요"], ans: "everyone", wr: ["someone", "few", "only"]}
+  order:
+    tag: "투여 흐름"
+    icon: compass
+    ko: "말초로 승압제를 줄 때 설명하는 4문장 순서"
+    why: "제한을 먼저 밝히고, 정맥로 조건을 잇고, 문제가 보이면 멈춘다는 기준을 세운 뒤, 중심라인이 확보되면 옮긴다고 닫아요."
+    lines:
+      - {en: "We can run low-dose pressors peripherally only for a short time.", icon: lock, ko: "말초로는 저용량 승압제를 짧게만 줄 수 있어요", note: 제한}
+      - {en: "It has to be a good, proximal IV, and we watch the site closely.", icon: cross, ko: "좋은 근위 정맥로여야 하고 자리를 지켜봐요", note: 조건}
+      - {en: "If the site looks red or swollen, we stop the infusion right away.", icon: siren, ko: "자리가 빨갛거나 부으면 바로 주입을 멈춰요", note: 중단}
+      - {en: "Either way, once central access is placed, we'll move the drip over.", icon: redo, ko: "어느 쪽이든 중심라인이 확보되면 옮길게요", note: 이전}

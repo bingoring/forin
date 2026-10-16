@@ -1,0 +1,90 @@
+- title: 인공호흡기 설정 확인·기록
+  s:
+  - {t: "설정 점검", i: gear, w: "Let's는 상대에게 시키지 않고 같이 하자는 모양이고, together가 한 사람이 혼자 보지 않는다는 점을 분명히 해요. 네 가지 설정을 둘이 맞춰 보면 한 사람의 착오가 기록으로 넘어가지 않아요.", d: "for the nurse", k: ["모드, 호흡수, FiO2, PEEP를 같이 확인해요", "모드, 일회호흡량, FiO2, 침대 높이를 같이 확인해요"], a: "tidal volume", o: ["humidifier", "bed height", "tube size"]}
+  - {t: "역할 분담", i: handshake2, w: "I'll ... and you ...는 두 사람의 역할을 나눠 말하는 모양이에요. 읽는 사람과 확인하는 사람이 다르면 같은 착각을 둘이 함께 하기 어려워요.", d: "from memory", k: ["제가 숫자를 적어줄 테니 흐름기록지에서 확인해 주세요", "제가 이름을 불러줄 테니 흐름기록지에서 확인해 주세요"], a: "flowsheet", o: ["whiteboard", "visitor log", "pharmacy list"]}
+  - {t: "설정값 보고", i: monitor, w: "set은 팀이 정해 둔 설정값이라는 뜻이고 환자에게서 잰 측정값과는 달라요. 설정값과 측정값을 구분해서 말해야 기록할 때 서로 섞이지 않아요.", d: "for tonight", k: ["FiO2는 40퍼센트, PEEP는 5로 측정돼 있어요", "FiO2는 40퍼센트, 시계는 5로 설정돼 있어요"], a: "percent", o: ["liters", "degrees", "breaths"]}
+  - {t: "기록 약속", i: pencil, w: "exactly as는 확인한 값에서 벗어나지 않고 그대로 옮긴다는 모양이에요. 기억에 의존하거나 어림해서 쓰면 실제 설정과 기록이 어긋날 수 있어요.", d: "in my notes", k: ["확인한 그대로 설정값을 보고할게요", "확인한 그대로 차트 번호를 기록할게요"], a: "exactly", o: ["roughly", "partly", "almost"]}
+  - {t: "설정 보고", i: monitor, w: "and로 설정값과 평가를 한 문장에 묶으면 숫자만 읽을 때보다 판단까지 전달돼요. looks good은 확정이 아니라 지금 보기에 적절하다는 완곡한 평가라 변화가 생기면 다시 말하기 쉬워요.", d: "every day", k: ["호흡수는 분당 14회로 설정돼 있고, 압력도 적절해요", "호흡수는 분당 14회로 설정돼 있고, 온도도 적절해요"], a: "rate", o: ["volume", "pressure", "alarm"]}
+  - {t: "대조 확인", i: check, w: "make sure는 빠뜨리지 않고 확인하겠다는 모양이고, match는 두 곳의 값이 같은지 대조한다는 말이에요. 기계 화면과 기록지를 맞춰 봐야 옮겨 적다 생긴 오류가 잡혀요.", d: "after rounds", k: ["흐름기록지 날짜가 인공호흡기 화면과 일치하는지 확인해요", "흐름기록지 숫자가 인공호흡기 시간과 일치하는지 확인해요"], a: "match", o: ["replace", "block", "hide"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "인공호흡기 설정 확인 4문장 순서"
+    why: "먼저 함께 보자고 시작하고, 화면의 숫자를 읽고, 그 숫자를 기록지와 대조한 뒤, 일치하면 기록해요. 뒤 줄이 앞 줄의 숫자를 가리키는 말(those numbers, they)로 이어져서 순서가 하나예요."
+    lines:
+    - {en: "First, let's go through the vent settings together.", icon: gear, ko: "먼저 설정을 같이 살펴봐요", note: "시작"}
+    - {en: "I'll read each number off the vent display.", icon: monitor, ko: "화면에서 숫자를 하나씩 읽을게요", note: "읽기"}
+    - {en: "Please verify those numbers on the flowsheet.", icon: check, ko: "그 숫자를 기록지에서 확인해 주세요", note: "대조"}
+    - {en: "Once they match, I'll chart them exactly as we confirmed.", icon: pencil, ko: "일치하면 확인한 그대로 기록할게요", note: "기록"}
+- title: 기관튜브 위치·고정 확인
+  s:
+  - {t: "위치 설명", i: magnify, w: "which is where it should be는 앞의 수치가 기준에 맞다는 판단을 덧붙이는 관계절이에요. 숫자만 말하면 가족은 그 값이 괜찮은지 알 수 없어서 판단을 같이 말해 줘요.", d: "on his chart", k: ["튜브가 입술 위치 22센티미터에 표시돼 있는데, 처음 보는 위치예요", "튜브가 입술 위치 22센티미터에 표시돼 있는데, 보셔도 돼요"], a: "centimeters", o: ["inches", "millimeters", "feet"]}
+  - {t: "커프 점검", i: gear, w: "so it seals는 확인하는 이유를 so로 이어 말하는 모양이에요. 커프 압력은 너무 낮으면 새고 너무 높으면 기도 점막을 상하게 해서, 둘 다 피하려고 확인한다는 이유를 같이 말해요.", d: "with the doctor", k: ["커프 압력을 확인해서 막히지 않으면서도 새지 않게 할게요", "커프 압력을 확인해서 아프지 않으면서도 빠지지 않게 할게요"], a: "seals", o: ["leaks", "slips", "blocks"]}
+  - {t: "고정 안심", i: shield, w: "so로 이유와 결과를 이어서 테이프가 튼튼하다는 사실이 걱정에 대한 답이 되게 말해요. 다만 실제로는 계속 확인한다는 말을 함께 해야 안심이 방심이 되지 않아요.", d: "by the window", k: ["테이프가 새로 붙어 있어서 튜브가 밀려나지 않을 거예요", "테이프가 잘 고정돼 있어서 튜브가 접히지 않을 거예요"], a: "secure", o: ["wet", "torn", "old"]}
+  - {t: "고정 설명", i: bandage, w: "keep A from -ing는 A가 어떤 일을 하지 못하게 막는다는 모양이에요. 환자가 움직이는 상황을 직접 말하면 가족이 무엇을 걱정하는지 알아주는 느낌을 받아요.", d: "for the family", k: ["이 테이프와 고정대가 있어서 기침해도 튜브가 밀리지 않아요", "이 테이프와 거즈가 있어서 움직여도 튜브가 밀리지 않아요"], a: "shifting", o: ["bleeding", "leaking", "drying"]}
+  - {t: "반복 확인", i: magnify, w: "often은 한 번 확인하고 끝내지 않고 계속 본다는 뜻이에요. nothing has changed로 목적을 말해 주면 가족은 확인이 불안해서가 아니라 변화를 일찍 잡으려는 것임을 알아요.", d: "before lunch", k: ["삽관 깊이와 커프 모양을 자주 확인해서 변화가 없는지 봐요", "삽관 날짜와 커프 압력을 자주 확인해서 변화가 없는지 봐요"], a: "depth", o: ["color", "brand", "label"]}
+  - {t: "존중 말걸기", i: speech, w: "even though는 진정 상태라 대답을 못 들어도 설명한다는 양보를 나타내요. 환자가 들을 수 있다고 보고 만지기 전에 알리는 것이 환자 존중의 기본이에요.", d: "to the team", k: ["진정 중이셔도 튜브를 만지기 전에 이름을 먼저 말씀드릴게요", "진정 중이셔도 손을 만지기 전에 뭘 할 건지 먼저 말씀드릴게요"], a: "before", o: ["after", "unless", "until"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "튜브 걱정하는 가족 응대 4문장 순서"
+    why: "걱정에 공감하고, 지금 위치가 맞다고 알린 뒤, 테이프가 그 위치를 지킨다고 설명하고, 앞의 둘(위치와 고정)을 계속 확인하겠다고 약속해요. 뒤 줄의 there와 both가 앞 줄을 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "I know it's scary to watch the breathing tube.", icon: faceWorried, ko: "호흡 튜브를 보는 게 무서우시죠", note: "공감"}
+    - {en: "Right now it's marked at 22 centimeters at his lip, exactly where it should be.", icon: magnify, ko: "지금 입술 22센티미터에 표시돼 있고, 딱 맞는 위치예요", note: "위치"}
+    - {en: "The tape holds it there, so it won't shift when he moves.", icon: bandage, ko: "테이프가 거기에 붙잡아서 움직여도 밀리지 않아요", note: "고정"}
+    - {en: "I'll keep checking both, and I'll tell you if anything changes.", icon: check, ko: "둘 다 계속 확인하고 변하면 알려드릴게요", note: "약속"}
+- title: 회로 연결·습화 점검
+  s:
+  - {t: "정상 설명", i: shield, w: "condensation is normal은 먼저 정상이라고 알려 불안을 줄이고, and로 하는 일을 이어 말해요. away from him을 붙이면 물이 환자 쪽으로 흐르지 않게 한다는 안전 이유가 전해져요.", d: "of the room", k: ["그 물기는 정상이에요, 보호자분과 먼 쪽으로 빼드릴게요", "그 물기는 정상이에요, 환자분과 먼 쪽으로 닦아드릴게요"], a: "drain", o: ["clamp", "tape", "rinse"]}
+  - {t: "연결 점검", i: gear, w: "every connection은 하나도 빠뜨리지 않고 본다는 뜻이고, so there are no leaks로 목적을 말해요. 회로 어디서든 새면 설정한 만큼 환기가 전달되지 않아서 연결부위를 전부 확인해요.", d: "in his room", k: ["회로에 막힌 곳이 없는지 연결부위를 다 확인하고 있어요", "회로에 새는 곳이 없는지 연결부위를 두 번 확인하고 있어요"], a: "leaks", o: ["clots", "stains", "noises"]}
+  - {t: "가습 이유", i: shield, w: "keep A from -ing는 어떤 일이 생기지 않게 막는 기능을 말해요. 삽관하면 코와 입이 하던 가습을 못 하므로 기계가 대신해 준다는 이유를 알려 주면 가족이 장치를 이해해요.", d: "by the bed", k: ["가습기가 기도가 부어오르지 않게 해줘요", "가습기가 피부가 건조해지지 않게 해줘요"], a: "humidifier", o: ["monitor", "charger", "scale"]}
+  - {t: "전체 점검", i: magnify, w: "from end to end는 한쪽만이 아니라 처음부터 끝까지 빠짐없이 본다는 표현이에요. still을 넣으면 이전에 괜찮았던 연결이 지금도 유지되는지 다시 본다는 뜻이 돼요.", d: "from the wall", k: ["튜빙을 끝까지 따라가며 꼬이지 않았는지 확인할게요", "전선을 끝까지 따라가며 잘 연결돼 있는지 확인할게요"], a: "trace", o: ["label", "replace", "measure"]}
+  - {t: "안심 설명", i: shield, w: "just는 특별한 문제가 아니라 단순히 수분일 뿐이라는 뜻으로 가족의 걱정을 줄여요. not a problem을 덧붙여 걱정해도 되는지에 대한 답을 분명히 해요.", d: "for the day", k: ["튜빙에 있는 물은 입에서 나온 침일 뿐이라 문제는 아니에요", "튜빙 밖에 있는 물은 호흡에서 나온 수분일 뿐이라 문제는 아니에요"], a: "breath", o: ["mouth", "skin", "nose"]}
+  - {t: "즉시 처치", i: check, w: "now를 넣어 미룰 일이 아니라 바로 한다고 알려요. so it doesn't back up은 비우는 이유를 말하는 목적절로, 고인 물이 회로를 거슬러 기도로 들어가는 것을 막는다는 뜻이에요.", d: "for his wife", k: ["물트랩을 지금 비워서 모니터 쪽으로 역류하지 않게 할게요", "물트랩을 지금 비워서 바닥으로 넘치지 않게 할게요"], a: "airway", o: ["mouth", "chest", "stomach"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "회로 물기 설명과 처치 4문장 순서"
+    why: "물이 보인다고 먼저 알리고, 그것이 정상 수분이라고 설명한 뒤, 그래도 지금 빼겠다고 하고, 그 다음에 연결부위를 확인해요. still과 After that이 앞 줄을 이어서 순서가 하나예요."
+    lines:
+    - {en: "I see some water in the tubing.", icon: magnify, ko: "튜빙에 물이 좀 보이네요", note: "발견"}
+    - {en: "That is normal moisture from his breath.", icon: shield, ko: "호흡에서 나온 정상적인 수분이에요", note: "설명"}
+    - {en: "I'll still drain it now, away from him.", icon: check, ko: "그래도 지금 환자분과 먼 쪽으로 뺄게요", note: "처치"}
+    - {en: "After that, I'll check each connection for leaks.", icon: gear, ko: "그 다음 연결부위마다 새는 곳이 없는지 볼게요", note: "점검"}
+- title: 호흡음·흉곽 상승 사정
+  s:
+  - {t: "청진·관찰", i: stetho, w: "both lungs는 한쪽만 듣지 않고 양쪽을 비교한다는 뜻이에요. how the chest rises를 함께 보면 소리만으로는 놓치는 양쪽 환기의 차이를 잡을 수 있어요.", d: "with a light", k: ["양쪽 폐 소리를 듣고 흉곽이 오르는 모습도 만져볼게요", "양쪽 폐 소리를 듣고 흉곽이 오르는 속도도 볼게요"], a: "chest", o: ["neck", "arm", "hip"]}
+  - {t: "상태 보고", i: stetho, w: "are equal on both sides는 비교 결과를 말하는 모양이라 좋다는 평가보다 구체적인 사정 소견이에요. right now를 붙이면 지금 시점의 소견이라 상태가 변하면 다시 말해야 한다는 뜻이 남아요.", d: "this morning", k: ["지금은 양쪽 맥박이 똑같아요", "지금은 양쪽 손 온도가 똑같아요"], a: "equal", o: ["faint", "loud", "rough"]}
+  - {t: "조건 대응", i: magnify, w: "If ..., I'll ...은 어떤 소견이 나오면 무엇을 할지 미리 말하는 조건문이에요. 한쪽 호흡음이 줄면 튜브가 한쪽 기관지로 들어갔을 수 있어서 깊이를 확인한다는 임상 이유가 있어요.", d: "after lunch", k: ["한쪽 소리가 거칠어지면 튜브 깊이를 확인할게요", "양쪽 소리가 줄어들면 튜브 깊이를 확인할게요"], a: "diminished", o: ["fine", "normal", "healthy"]}
+  - {t: "환자 안내", i: speech, w: "I'm going to ...는 곧 할 일을 미리 알리는 모양이고, so로 환자가 할 일을 이어 말해요. 청진하는 동안 숨을 어떻게 쉬면 되는지 알려 주면 환자가 긴장해서 숨을 참는 일이 줄어요.", d: "for the doctor", k: ["지금 가슴 소리를 들을 테니 깊게 숨 쉬어 주세요", "지금 등 소리를 들을 테니 평소처럼 숨 쉬어 주세요"], a: "normally", o: ["quickly", "loudly", "twice"]}
+  - {t: "변화 비교", i: chartup, w: "compare A to B는 두 시점의 소견을 나란히 놓고 본다는 뜻이에요. 호흡음은 한 번의 소리보다 이전과의 차이가 중요해서 last assessment를 기준으로 삼아요.", d: "with his family", k: ["이전 사정 결과와 비교해서 달라진 게 있는지 물어볼게요", "이전 면담 결과와 비교해서 달라진 게 있는지 볼게요"], a: "changed", o: ["missing", "charted", "signed"]}
+  - {t: "소견 보고", i: stetho, w: "even은 양쪽이 같은 정도라는 뜻이고 crackles와 wheezing은 소리를 직접 이름으로 말해요. 막연히 괜찮다고 하는 대신 본 것과 들은 것을 구체적으로 말하면 다음 교대자가 비교할 수 있어요.", d: "by the window", k: ["흉곽이 천천히 올라오고, 수포음이나 천명음도 안 들려요", "흉곽이 고르게 올라오고, 수포음이나 심잡음도 안 들려요"], a: "even", o: ["deep", "slow", "shallow"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "호흡음 사정 4문장 순서"
+    why: "듣고 보겠다고 시작하고, 결과를 말하고, 그 결과를 이전 사정과 비교하고, 비교 내용을 기록해요. 3줄의 that과 4줄의 the comparison이 앞 줄을 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "I'll listen to both lungs and watch how the chest rises.", icon: stetho, ko: "양쪽 폐 소리를 듣고 흉곽 움직임을 볼게요", note: "사정"}
+    - {en: "Breath sounds are equal on both sides right now.", icon: check, ko: "지금은 양쪽 호흡음이 똑같아요", note: "결과"}
+    - {en: "I'll compare that with his last assessment.", icon: chartup, ko: "그걸 이전 사정과 비교할게요", note: "비교"}
+    - {en: "I'll chart the comparison for the next nurse.", icon: pencil, ko: "그 비교 결과를 다음 간호사를 위해 기록할게요", note: "기록"}
+- title: SpO2·EtCO2 모니터
+  s:
+  - {t: "수치 평가", i: monitor, w: "for him을 붙여 정상 범위를 일반 기준이 아니라 이 환자 기준으로 말해요. 환자마다 목표 산소포화도가 다를 수 있어서 수치와 함께 그 환자에게 맞는지를 같이 말해야 해요.", d: "on the screen", k: ["산소포화도가 96퍼센트인데, 이 환자분께는 처음 보는 수치예요", "산소포화도가 96퍼센트인데, 이 환자분께는 살펴볼 수치예요"], a: "percent", o: ["degrees", "beats", "liters"]}
+  - {t: "수치 설명", i: chartup, w: "how well he's ...는 정도를 나타내는 의문사절이 명사처럼 쓰이는 모양이에요. second value라고 하면 첫 번째 수치(산소)와 구별돼서 가족이 모니터의 두 숫자를 헷갈리지 않아요.", d: "on the bed", k: ["이 세 번째 수치는 이산화탄소를 얼마나 잘 배출하는지 보여줘요", "이 두 번째 수치는 수분을 얼마나 잘 배출하는지 보여줘요"], a: "clearing", o: ["storing", "absorbing", "inhaling"]}
+  - {t: "감시 보고", i: monitor, w: "closely는 얼마나 주의 깊게 보는지를 말해요. 지금 안정적이라는 말과 계속 지켜본다는 말을 함께 해야 안심하되 방심하지 않게 돼요.", d: "in the hall", k: ["두 소리 모두 자세히 지켜보고 있는데 안정적이에요", "두 수치 모두 하루 종일 지켜보고 있는데 안정적이에요"], a: "stable", o: ["rising", "falling", "high"]}
+  - {t: "용어 구분", i: monitor, w: "A tells us B, and C tells us D는 두 수치의 역할을 나란히 대비해 말하는 모양이에요. 이름이 비슷한 약어는 한 문장에서 각각 무엇을 알려 주는지 같이 설명해야 가족이 혼동하지 않아요.", d: "every hour", k: ["SpO2는 체온을, EtCO2는 이산화탄소 배출이 얼마나 잘 되는지를 알려줘요", "SpO2는 산소 수준을, EtCO2는 질소 배출이 얼마나 잘 되는지를 알려줘요"], a: "oxygen", o: ["sugar", "mood", "stress"]}
+  - {t: "안심 약속", i: shield, w: "Small ups and downs are normal은 정상 범위의 흔들림을 먼저 알려 가족이 숫자가 움직일 때마다 놀라지 않게 해요. 뒤의 I'll let you know는 필요할 때는 알린다는 약속이라 안심하되 방심하지 않게 돼요.", d: "in the morning", k: ["작은 깜빡임은 정상이고, 주의가 필요하면 바로 알려드릴게요", "작은 오르내림은 정상이고, 결과가 나오면 바로 알려드릴게요"], a: "normal", o: ["urgent", "painful", "rare"]}
+  - {t: "경고 안내", i: bell, w: "If A or B, I'll ...은 두 가지 변화 중 하나만 생겨도 알아챈다는 or 조건이에요. right away on this monitor는 즉시성과 장소를 함께 말해 가족이 지금 누가 무엇으로 지켜보는지 알게 해요.", d: "in the hall", k: ["산소가 떨어지거나 이산화탄소가 오르면 이 침대에서 바로 알아챌 거예요", "산소가 떨어지거나 혈당이 오르면 이 모니터에서 바로 알아챌 거예요"], a: "dips", o: ["rises", "stays", "jumps"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "모니터 두 수치 설명 4문장 순서"
+    why: "모니터의 두 숫자를 먼저 소개하고, 첫 번째를 설명한 뒤, 두 번째를 설명하고, 둘 중 하나라도 변하면 알리겠다고 맺어요. second가 first를 전제하고 either가 둘을 전제해서 순서가 하나예요."
+    lines:
+    - {en: "These two numbers on the monitor show how he's breathing.", icon: monitor, ko: "모니터의 이 두 숫자가 호흡 상태를 보여줘요", note: "소개"}
+    - {en: "The first one is his oxygen level, at 96 percent.", icon: chartup, ko: "첫 번째는 산소 수준으로 96퍼센트예요", note: "첫째"}
+    - {en: "The second one shows how well he's breathing out carbon dioxide.", icon: chartup, ko: "두 번째는 이산화탄소를 잘 내보내는지 보여줘요", note: "둘째"}
+    - {en: "If either number changes, I'll catch it right away.", icon: bell, ko: "어느 쪽이든 변하면 바로 알아챌게요", note: "약속"}

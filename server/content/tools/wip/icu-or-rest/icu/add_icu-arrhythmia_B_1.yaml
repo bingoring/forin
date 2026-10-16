@@ -1,0 +1,126 @@
+0:
+  s:
+  - {tag: 파형 확보, icon: monitor, why: "so we get…으로 목적을 붙이면 환자에게 선을 만지는 이유가 바로 전달돼요.", decoy: "a quiet room", dk: ["리드 위치를 다시 잡아서 긴 파형이 나오게 할게요", "리드 위치를 다시 잡아서 새 파형이 나오게 할게요"], ans: clean, opts: [long, fast, wide]}
+  - {tag: 원인 설명, icon: bandage, why: "keep -ing는 한 번이 아니라 계속 되풀이되는 일을 말할 때 써요.", decoy: "in the morning", dk: ["땀이나 로션 때문에 패치가 자꾸 헐거워져요", "땀이나 털 때문에 패치가 자꾸 빨개져요"], ans: loosening, opts: [tightening, itching, drying]}
+  - {tag: 아티팩트, icon: chartup, why: "not your heart으로 환자가 가장 걱정하는 쪽을 먼저 지워 줘요.", decoy: "a little tape", dk: ["저 삐뚤빼뚤한 선 일부는 그냥 움직임이지 기계 문제가 아니에요", "저 삐뚤빼뚤한 선 일부는 그냥 움직임이지 전선 문제가 아니에요"], ans: movement, opts: [weight, color, heat]}
+  - {tag: 접촉 중요, icon: monitor, why: "accurately는 동사 뒤 끝자리에서 \"어떻게 읽는지\"를 말해 줘요.", decoy: "to the nurse", dk: ["접촉이 잘 되면 모니터가 빠르게 읽어요", "접촉이 잘 되면 간호사가 정확하게 읽어요"], ans: accurately, opts: [slowly, early, softly]}
+  - {tag: 협조 요청, icon: me, why: "Try to…는 명령 대신 부탁으로 들려서 환자가 부담 없이 따라와요.", decoy: "close to me", dk: ["이 리드를 고치는 동안 다리를 가만히 있어 주세요", "이 패치를 고치는 동안 팔을 가만히 있어 주세요"], ans: still, opts: [high, loose, dry]}
+  - {tag: 피부 준비, icon: bandage, why: "first를 넣으면 \"붙이기 전에\"라는 순서가 분명해져요.", decoy: "the old gel", dk: ["패치가 더 잘 붙도록 피부를 먼저 말릴게요", "패치가 더 잘 붙도록 가슴을 먼저 닦을게요"], ans: clean, opts: [mark, press, warm]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 패치가 자꾸 떨어지는 환자 응대 4문장 순서
+    why: 문제 원인을 먼저 말하고, 해결 방법(피부 닦기), 협조 요청, 마지막에 그렇게 하는 이유를 이어 말하면 환자가 납득해요.
+    lines:
+    - {en: "These patches keep loosening because of sweat.", icon: bandage, ko: "땀 때문에 패치가 자꾸 헐거워져요", note: 원인}
+    - {en: "So I'll clean the skin first, then press on fresh patches.", icon: check, ko: "그래서 피부를 먼저 닦고 새 패치를 붙일게요", note: 방법}
+    - {en: "Please hold your arm still while I press them on.", icon: me, ko: "붙이는 동안 팔을 가만히 있어 주세요", note: 협조}
+    - {en: "That way the monitor can read you accurately.", icon: monitor, ko: "그러면 모니터가 정확하게 읽을 수 있어요", note: 이유}
+1:
+  s:
+  - {tag: 변화 알림, icon: bell, why: "has changed는 지금 눈에 보이는 변화를 말해 현재 상태와 이어 줘요.", decoy: "a long report", dk: ["리듬이 바뀌었어요, 지금 리포트를 출력할게요", "맥박이 바뀌었어요, 지금 스트립을 출력할게요"], ans: strip, opts: [photo, label, bill]}
+  - {tag: 기준 비교, icon: chartup, why: "baseline은 그 환자의 평소 상태 — 변화를 판단하는 기준이 돼요.", decoy: "to his chart", dk: ["기존 약과 비교해 볼게요", "기존 사진과 비교해 볼게요"], ans: baseline, opts: [bedside, weekly, spare]}
+  - {tag: 기록·보고, icon: pencil, why: "document와 notify를 and로 묶으면 두 가지를 다 하겠다는 말이 돼요.", decoy: "the charge team", dk: ["복사하고 담당의에게 알릴게요", "출력하고 담당의에게 알릴게요"], ans: document, opts: [copy, scan, sign]}
+  - {tag: 리듬 판단, icon: stetho, why: "It looks like는 확진이 아니라 \"그렇게 보인다\"는 소견이라 판독은 의사 몫으로 남아요.", decoy: "from yesterday", dk: ["오래된 심방세동 같아요", "새로 생긴 심방조동 같아요"], ans: atrial, opts: [venous, renal, nasal]}
+  - {tag: 12유도, icon: monitor, why: "to confirm은 하려는 목적을 밝혀요 — 12유도는 리듬을 확정하려고 가져오는 검사예요.", decoy: "for the doctor", dk: ["12유도 심전도를 가져와서 리듬을 설명할게요", "12유도 심전도를 가져와서 날짜를 확인할게요"], ans: rhythm, opts: [name, weight, bed]}
+  - {tag: 차트 표시, icon: pushpin, why: "I've already는 \"벌써 해 놨다\"는 완료의 느낌이라 듣는 사람이 안심하고 다음 일로 넘어가요.", decoy: "on the door", dk: ["이미 차트에 표시해서 약사가 보게 해뒀어요", "이미 모니터에 표시해서 의사가 보게 해뒀어요"], ans: flagged, opts: [folded, sealed, hidden]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 새 부정맥을 발견하고 동료에게 알리는 4문장 순서
+    why: 변화를 알리고 스트립을 뽑은 뒤, 기준 파형과 비교해 판단하고, 마지막에 기록과 보고로 닫아요.
+    lines:
+    - {en: "His rhythm just changed — I'm printing a strip.", icon: bell, ko: "리듬이 바뀌었어요, 스트립을 출력하고 있어요", note: 변화}
+    - {en: "Compare it with his baseline tracing.", icon: chartup, ko: "그걸 기존 파형과 비교해 보세요", note: 비교}
+    - {en: "Against that, this looks like new-onset a-fib.", icon: stetho, ko: "그와 비교하면 새로 생긴 심방세동 같아요", note: 판단}
+    - {en: "I'll document all of that and notify the physician.", icon: pencil, ko: "이 모두를 기록하고 담당의에게 알릴게요", note: 보고}
+2:
+  s:
+  - {tag: 약 준비, icon: pill, why: "per protocol은 \"병원 절차대로\"라는 뜻이라 임의로 하는 게 아님을 분명히 해요.", decoy: "for tonight", dk: ["병동 규칙에 따라 아미오다론 로딩 용량을 준비할게요", "약사 안내에 따라 아미오다론 로딩 용량을 준비할게요"], ans: prepare, opts: [explain, mark, store]}
+  - {tag: 확인 말하기, icon: check, why: "concentration과 rate를 and로 묶어 \"둘 다\"라고 말하면 상대도 두 값을 함께 떠올려요.", decoy: "the bag size", dk: ["농도와 주입 속도를 설명할게요", "농도와 주입 속도를 적어 둘게요"], ans: concentration, opts: [color, height, size]}
+  - {tag: 감시 안내, icon: monitor, why: "I'm -ing 현재진행형은 \"지금 지켜보는 중\"이라 곁에 있다는 안심을 줘요.", decoy: "after the dose", dk: ["로딩하는 동안 리듬과 혈압을 기록하고 있어요", "로딩하는 동안 리듬과 혈압을 설명하고 있어요"], ans: watching, opts: [sharing, naming, weighing]}
+  - {tag: 정맥관, icon: gear, why: "or로 선택지를 주면 \"어느 쪽이든 가능하다\"는 뜻이 돼요 — 정맥관 종류가 하나만은 아니에요.", decoy: "a small cuff", dk: ["이건 중심정맥관이나 큰 말초 정맥주사로 기록돼요", "이건 중심정맥관이나 큰 말초 정맥주사로 확인돼요"], ans: peripheral, opts: [bedside, urinary, nasal]}
+  - {tag: 호출 요청, icon: bell, why: "right away는 \"기다리지 말고 바로\"라는 시급함을 한마디로 전해요.", decoy: "in the hall", dk: ["펌프 알람이 울리면 바로 불러 주세요", "수액이 새면 바로 불러 주세요"], ans: blood, opts: [body, breath, skin]}
+  - {tag: 시간 안내, icon: calendar, why: "takes about…은 \"대략\"이라는 about 덕분에 정확한 시간이 아니라 어림값임을 알려 줘요.", decoy: "a few hours", dk: ["로딩 용량은 주입되는 데 이 분 정도 걸려요", "로딩 용량은 주입되는 데 삼십 분 정도 걸려요"], ans: ten, opts: [two, thirty, forty]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 항부정맥제 로딩을 준비하고 주입하는 4문장 순서
+    why: 약을 준비하고, 걸기 전에 농도·속도를 확인한 뒤, 주입 중에 감시하고, 변화가 생기면 호출하도록 마무리해요.
+    lines:
+    - {en: "I'll prepare the amiodarone loading dose per protocol.", icon: pill, ko: "프로토콜에 따라 아미오다론 로딩 용량을 준비할게요", note: 준비}
+    - {en: "Before I hang it, I'll confirm the concentration and rate.", icon: check, ko: "걸기 전에 농도와 속도를 확인할게요", note: 확인}
+    - {en: "Once it's running, I'll watch his rhythm and pressure closely.", icon: monitor, ko: "들어가기 시작하면 리듬과 혈압을 잘 지켜볼게요", note: 감시}
+    - {en: "If either one changes, call me right away.", icon: bell, ko: "둘 중 하나라도 변하면 바로 불러 주세요", note: 호출}
+3:
+  s:
+  - {tag: 동시 확인, icon: stetho, why: "together는 두 수치를 한꺼번에 보는 이유를 전해요 — 서로 영향을 주기 때문이에요.", decoy: "every hour", dk: ["심박수와 체온을 함께 확인하고 있어요", "심박수와 혈압을 따로 확인하고 있어요"], ans: together, opts: [slowly, softly, alone]}
+  - {tag: 원리 설명, icon: chartup, why: "can sometimes는 \"항상은 아니지만 그럴 수 있다\"는 완곡한 말이라 환자를 겁주지 않아요.", decoy: "right now", dk: ["빠른 리듬은 가끔 열을 낮출 수 있어요", "빠른 리듬은 가끔 통증을 낮출 수 있어요"], ans: sometimes, opts: [always, never, hardly]}
+  - {tag: 증상 요청, icon: faceWorried, why: "Tell me if…는 \"이럴 때 알려 달라\"고 환자의 역할을 구체적으로 정해 줘요.", decoy: "for a minute", dk: ["더 어지럽거나 열이 나면 말씀해 주세요", "더 어지럽거나 가려우면 말씀해 주세요"], ans: breath, opts: [time, money, space]}
+  - {tag: 상태 알림, icon: monitor, why: "than normal로 비교 기준을 주면 \"얼마나 빠른지\"가 환자에게 바로 전달돼요.", decoy: "all night", dk: ["지금 심장이 어제보다 빠르게 뛰고 있어요", "지금 심장이 평소보다 불규칙하게 뛰고 있어요"], ans: faster, opts: [slower, louder, deeper]}
+  - {tag: 경과 관찰, icon: calendar, why: "Let's see…는 \"함께 지켜보자\"는 말투라 환자도 같은 편으로 느껴요.", decoy: "at the door", dk: ["앞으로 몇 분간 호흡이 어떻게 반응하는지 볼게요", "앞으로 몇 분간 통증이 어떻게 반응하는지 볼게요"], ans: pressure, opts: [skin, mood, hair]}
+  - {tag: 보고 약속, icon: bell, why: "if this doesn't settle로 조건을 말하면 \"가라앉으면 그대로, 아니면 알린다\"는 기준이 분명해져요.", decoy: "right away", dk: ["이게 가라앉지 않으면 의사에게 설명할게요", "이게 가라앉지 않으면 의사에게 맡길게요"], ans: settle, opts: [return, spread, start]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 빠른 맥박과 혈압을 환자에게 설명하는 4문장 순서
+    why: 지금 상태를 알리고, 그 영향을 설명한 뒤, 함께 보는 이유와 환자가 알려 줄 증상으로 이어가요.
+    lines:
+    - {en: "Your heart is beating faster than normal right now.", icon: stetho, ko: "지금 심장이 평소보다 빠르게 뛰고 있어요", note: 상태}
+    - {en: "That can sometimes lower your pressure.", icon: chartup, ko: "그러면 가끔 혈압이 낮아질 수 있어요", note: 영향}
+    - {en: "So I'm checking your blood pressure along with it.", icon: monitor, ko: "그래서 혈압도 함께 확인하고 있어요", note: 확인}
+    - {en: "If you feel dizzy or short of breath at any point, tell me.", icon: faceWorried, ko: "어지럽거나 숨이 차면 언제든 말씀해 주세요", note: 요청}
+4:
+  s:
+  - {tag: 채혈 안내, icon: lab, why: "now를 문장 끝에 두면 \"지금 바로\" 한다는 시점이 분명해져요.", decoy: "for the chart", dk: ["지금 칼륨과 마그네슘 수치를 설명할게요", "지금 칼륨과 마그네슘 수치를 적을게요"], ans: draw, opts: [weigh, count, sign]}
+  - {tag: 원인 설명, icon: chartup, why: "can trigger는 \"그럴 수 있다\"는 가능성이라 전해질이 유일한 원인이라는 뜻은 아니에요.", decoy: "this winter", dk: ["전해질이 낮으면 이런 기침을 유발할 수 있어요", "전해질이 낮으면 이런 발진을 유발할 수 있어요"], ans: trigger, opts: [stop, treat, count]}
+  - {tag: 결과 보고, icon: pencil, why: "anticipate는 지시가 나기 전에 미리 준비해 둔다는 뜻이라 간호사의 선제적 태도를 보여 줘요.", decoy: "the old one", dk: ["결과를 보고하고 퇴원을 예상해 둘게요", "결과를 보고하고 식사를 예상해 둘게요"], ans: report, opts: [translate, borrow, weigh]}
+  - {tag: 원인 구분, icon: magnify, why: "not structural로 \"심장 구조 문제는 아니다\"를 덧붙이면 걱정을 한 단계 덜어 줘요.", decoy: "in the heart", dk: ["이런 리듬은 대개 구조적 문제가 아니라 소음 때문이에요", "이런 리듬은 대개 구조적 문제가 아니라 수면 때문이에요"], ans: often, opts: [never, seldom, rarely]}
+  - {tag: 응급 의뢰, icon: siren, why: "as a stat draw의 stat은 \"즉시\"라는 의료 약어 — 검사실이 이 채혈을 먼저 처리해요.", decoy: "in the bag", dk: ["이건 추가 채혈로 검사실에 보낼게요", "이건 재채혈로 검사실에 보낼게요"], ans: send, opts: [wash, read, sign]}
+  - {tag: 다음 단계, icon: lab, why: "Once…로 시작하면 \"이게 끝나면 그다음\"이라는 순서가 한 문장에 담겨요.", decoy: "this morning", dk: ["결과가 나오면 낮은 걸 설명할 수 있어요", "결과가 나오면 낮은 걸 기록할 수 있어요"], ans: low, opts: [high, new, wet]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 전해질 채혈부터 보충까지 설명하는 4문장 순서
+    why: 이유를 말하고, 채혈하고, 검사실로 보낸 뒤, 결과가 나오면 보충한다는 임상 순서예요.
+    lines:
+    - {en: "Low electrolytes can trigger these rhythms.", icon: chartup, ko: "전해질이 낮으면 이런 리듬이 생길 수 있어요", note: 이유}
+    - {en: "So I'll draw a potassium and magnesium level now.", icon: lab, ko: "그래서 지금 칼륨과 마그네슘 수치를 뽑을게요", note: 채혈}
+    - {en: "Once it's drawn, I'll send it to the lab as stat.", icon: siren, ko: "뽑으면 응급으로 검사실에 보낼게요", note: 의뢰}
+    - {en: "Once the results are back, we can replace what's low.", icon: pill, ko: "결과가 나오면 낮은 걸 보충할 수 있어요", note: 보충}
+5:
+  s:
+  - {tag: 환자 먼저, icon: stetho, why: "before silencing the alarm으로 순서를 못 박아 \"알람보다 환자가 먼저\"라는 원칙을 말해요.", decoy: "after rounds", dk: ["차트를 쓰기 전에 가서 환자부터 확인할게요", "전화를 받기 전에 가서 환자부터 확인할게요"], ans: alarm, opts: [phone, chart, door]}
+  - {tag: 진짜 경보, icon: siren, why: "real, not artifact처럼 두 말을 맞세우면 \"이건 진짜\"라는 판정이 분명해져요.", decoy: "by the bed", dk: ["이건 진짜예요, 아티팩트가 아니에요, 지금 전화하고 있어요", "이건 진짜예요, 아티팩트가 아니에요, 지금 기록하고 있어요"], ans: real, opts: [small, old, early]}
+  - {tag: 우선순위, icon: bell, why: "that signal danger는 alarms를 꾸며서 \"어떤 알람\"인지 좁혀 줘요.", decoy: "at night", dk: ["위험을 알리는 전화부터 우선순위를 정할게요", "위험을 알리는 결과부터 우선순위를 정할게요"], ans: danger, opts: [weather, color, music]}
+  - {tag: 경보 피로, icon: monitor, why: "turn out to be는 \"알고 보니 ~이다\"라는 뜻이라 처음 울릴 때는 판단을 미루는 말투예요.", decoy: "very rare", dk: ["이런 경보들은 대부분 무해한 연습으로 판명돼요", "이런 경보들은 대부분 무해한 장난으로 판명돼요"], ans: harmless, opts: [costly, bright, heavy]}
+  - {tag: 예외 강조, icon: siren, why: "But으로 앞의 \"대부분 잡음\"을 뒤집어 이 경우만은 예외라고 강하게 말해요.", decoy: "in a minute", dk: ["하지만 체온이 갑자기 떨어지는 건 절대 아티팩트가 아니에요", "하지만 심박수가 갑자기 떨어지는 건 절대 농담이 아니에요"], ans: heart, opts: [lung, hand, skin]}
+  - {tag: 알람 정리, icon: bell, why: "Let's로 시작하면 지시가 아니라 \"같이 하자\"는 제안으로 들려요.", decoy: "this chart", dk: ["이건 적고 진짜인 것들은 계속 지켜볼게요", "이건 옮기고 진짜인 것들은 계속 지켜볼게요"], ans: silence, opts: [name, pack, paint]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 텔레메트리 알람에 대응하는 4문장 순서
+    why: 환자부터 확인하고, 위험 신호는 진짜로 다루고, 아티팩트로 확인되면 끄고 나머지를 계속 지켜봐요.
+    lines:
+    - {en: "I'll go check the patient before silencing the alarm.", icon: stetho, ko: "알람을 끄기 전에 환자부터 확인할게요", note: 확인}
+    - {en: "A sudden drop in heart rate is never artifact, so I'm assessing him now.", icon: siren, ko: "심박수가 갑자기 떨어지는 건 아티팩트가 아니라서 지금 사정하고 있어요", note: 사정}
+    - {en: "He's stable, and that tracing was just movement.", icon: monitor, ko: "안정적이고 그 파형은 움직임이었어요", note: 판단}
+    - {en: "So let's silence it and keep watching the real ones.", icon: bell, ko: "그러니 그건 끄고 진짜인 것들은 계속 지켜봐요", note: 정리}
+6:
+  s:
+  - {tag: 리듬 보고, icon: monitor, why: "a rate in the 150s처럼 \"대\"를 붙여 말하면 정확한 값이 아니라 범위로 전달돼요.", decoy: "in the 90s", dk: ["심박수 120대의 심방세동이에요", "심박수 150대의 심방조동이에요"], ans: rate, opts: [dose, bed, room]}
+  - {tag: 계획 공유, icon: pill, why: "We'll start…and watch…로 \"시작\"과 \"감시\"를 한 문장에 묶어 계획을 한눈에 말해요.", decoy: "a bolus", dk: ["속도 조절을 시작하고 체온을 지켜볼게요", "속도 조절을 시작하고 소변을 지켜볼게요"], ans: pressure, opts: [voice, hair, bed]}
+  - {tag: 악화 감시, icon: faceWorried, why: "any signs는 \"어떤 징후든\"이라 하나라도 놓치지 않겠다는 뜻이에요.", decoy: "very slowly", dk: ["불안정해지는 징후가 있는지 계속 기록할게요", "불안정해지는 징후가 있는지 계속 설명할게요"], ans: unstable, opts: [tired, hungry, cold]}
+  - {tag: 약 설명, icon: pill, why: "to slow…는 약을 주는 목적을 밝혀서 \"왜 이 약인지\"를 함께 전해요.", decoy: "to raise", dk: ["심실 속도를 늦추려고 베타차단제를 적고 있어요", "심실 속도를 늦추려고 베타차단제를 설명하고 있어요"], ans: slow, opts: [raise, count, cover]}
+  - {tag: 부작용 감시, icon: chartup, why: "as the rate comes down은 \"속도가 내려가는 동안\"이라 두 변화가 함께 일어남을 알려 줘요.", decoy: "for her sleep", dk: ["열이 내려오면서 혈압이 떨어지는지 지켜보세요", "통증이 내려오면서 혈압이 떨어지는지 지켜보세요"], ans: blood, opts: [body, brain, skin]}
+  - {tag: 다음 단계, icon: siren, why: "If…, we'll move straight to…로 \"이 조건이면 곧바로\"라는 다음 단계를 미리 알려 줘요.", decoy: "to the ward", dk: ["그가 불안정해지면 바로 심율동전환으로 갈 거예요", "남편이 불안정해지면 바로 심율동전환으로 갈 거예요"], ans: cardioversion, opts: [lunch, dinner, bed]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 새 심방세동 빈맥을 다루는 4문장 순서
+    why: 상태를 말하고, 약으로 속도를 늦추고, 혈압 변화를 지켜보다가 불안정해지면 전기적 치료로 넘어가요.
+    lines:
+    - {en: "She's in a-fib with a rate in the 150s.", icon: monitor, ko: "심박수 150대의 심방세동이에요", note: 상태}
+    - {en: "We're giving a beta-blocker to slow the ventricular rate.", icon: pill, ko: "심실 속도를 늦추려고 베타차단제를 주고 있어요", note: 약}
+    - {en: "Watch for her blood pressure dropping as it comes down.", icon: chartup, ko: "내려오면서 혈압이 떨어지는지 지켜보세요", note: 감시}
+    - {en: "If her pressure drops and she becomes unstable, we'll move straight to cardioversion.", icon: siren, ko: "혈압이 떨어지고 불안정해지면 바로 심율동전환으로 갈 거예요", note: 다음}

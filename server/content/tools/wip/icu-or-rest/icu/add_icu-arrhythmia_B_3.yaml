@@ -1,0 +1,126 @@
+14:
+  s:
+  - {tag: 검사 제안, icon: lab, why: "Let's get…으로 시작하면 지시가 아니라 \"같이 해 보자\"는 제안으로 들려요.", decoy: "a chest film", dk: ["12유도 심전도와 심근효소를 정리해 봐요", "12유도 심전도와 심근효소를 촬영해 봐요"], ans: cardiac, opts: [dental, legal, visual]}
+  - {tag: 원인 감별, icon: magnify, why: "rule out은 \"가능성을 검사로 지워 간다\"는 숙어로, 허혈이 있다고 단정하는 말이 아니에요.", decoy: "as the cure", dk: ["감염이 원인인지 배제해야 해요", "탈수가 원인인지 배제해야 해요"], ans: ischemia, opts: [hunger, rumor, luck]}
+  - {tag: 기준 비교, icon: chartup, why: "this tracing과 his baseline을 맞세워 \"지금 것 대 평소 것\"을 비교한다고 알려 줘요.", decoy: "to the chart", dk: ["이 파형을 내 것과 비교해 볼게요", "이 사진을 기존 것과 비교해 볼게요"], ans: tracing, opts: [blanket, ticket, bracelet]}
+  - {tag: 검사 설명, icon: lab, why: "will tell us if…는 \"수치가 알려 준다\"고 사물을 주어로 써서 판단의 근거가 검사임을 보여 줘요.", decoy: "by itself", dk: ["효소 수치를 보면 폐 손상이 있는지 알 수 있어요", "혈액형을 보면 심장 손상이 있는지 알 수 있어요"], ans: heart, opts: [foot, hair, skin]}
+  - {tag: 판단 기준, icon: stetho, why: "isn't just…로 \"그것만이 아니다\"를 말해 허혈이면 원인이 더 무겁다는 걸 에둘러 전해요.", decoy: "a small one", dk: ["허혈이라면 그냥 배터리 문제가 아니에요", "허혈이라면 그냥 기계 문제가 아니에요"], ans: electrolyte, opts: [battery, machine, paper]}
+  - {tag: 즉시 보고, icon: bell, why: "right away는 \"기다리지 말고 바로\"라는 시급함을 한마디로 전해요.", decoy: "at noon", dk: ["세 결과 모두 담당의에게 바로 보고할게요", "네 결과 모두 담당의에게 바로 보고할게요"], ans: both, opts: [some, few, many]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 부정맥의 허혈 원인을 확인하는 4문장 순서
+    why: 검사를 정하고, 지금 심전도를 기준과 비교한 뒤, 효소로 손상을 확인하고, 두 결과를 함께 보고해요.
+    lines:
+    - {en: "Let's get a 12-lead and cardiac enzymes.", icon: lab, ko: "12유도 심전도와 심근효소를 확인해 봐요", note: 검사}
+    - {en: "I'll compare this tracing to his baseline first.", icon: chartup, ko: "먼저 이 파형을 기존 것과 비교해 볼게요", note: 비교}
+    - {en: "After that, his enzymes will tell us if there's heart damage.", icon: magnify, ko: "그 뒤 효소 수치로 심장 손상이 있는지 알 수 있어요", note: 확인}
+    - {en: "I'll report both results to the physician right away.", icon: bell, ko: "두 결과 모두 담당의에게 바로 보고할게요", note: 보고}
+15:
+  s:
+  - {tag: 상태 선언, icon: siren, why: "dash(—) 뒤에 필요한 처치를 붙여 \"왜 지금 이것인가\"를 한 문장으로 말해요.", decoy: "an easy one", dk: ["불안정해요, 동기화 심율동전환이 준비됐어요", "불안정해요, 동기화 심율동전환이 가능해요"], ans: synchronized, opts: [silent, heavy, hidden]}
+  - {tag: 안전 확인, icon: check, why: "Make sure는 \"빠뜨리지 말고 꼭\"이라는 뜻의 확인 지시이고, before we shock이 확인 시점을 정해 줘요.", decoy: "after the shock", dk: ["기록하기 전에 동기화가 켜져 있는지 확인하세요", "출력하기 전에 동기화가 켜져 있는지 확인하세요"], ans: sync, opts: [radio, fan, lamp]}
+  - {tag: 진정 조건, icon: pill, why: "if she's awake enough으로 \"의식이 있을 때만\"이라는 진정제의 조건을 말해요.", decoy: "after the call", dk: ["충분히 깨어 있으면 진정제를 적어요", "충분히 깨어 있으면 진정제를 설명해요"], ans: sedation, opts: [candy, gifts, tickets]}
+  - {tag: 상태 보고, icon: faceWorried, why: "dropping fast and getting confused처럼 -ing 두 개를 이어 지금 나빠지는 중임을 알려 줘요.", decoy: "very slowly", dk: ["체온이 빠르게 떨어지고 있고 혼란스러워하고 있어요", "혈압이 빠르게 떨어지고 있고 졸려하고 있어요"], ans: confused, opts: [bored, hungry, cold]}
+  - {tag: 물러서기, icon: siren, why: "stand clear는 \"몸이 닿지 않게 떨어져 서라\"는 안전 숙어이고, before I deliver로 곧 충격이 온다는 신호를 줘요.", decoy: "near the bed", dk: ["제가 기록을 남기기 전에 모두 물러서 주세요", "제가 소리를 내기 전에 모두 물러서 주세요"], ans: clear, opts: [tall, firm, quiet]}
+  - {tag: 충전·확인, icon: gear, why: "숫자 에너지와 sync light를 한 문장에 묶어 충전값과 동기화 상태를 같이 읽게 해요.", decoy: "a second time", dk: ["100줄로 충전하고 동기화 표시등을 기록하세요", "100줄로 충전하고 동기화 표시등을 촬영하세요"], ans: joules, opts: [volts, watts, amps]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 불안정 빈맥의 동기화 심율동전환 4문장 순서
+    why: 상태를 선언하고, 진정 후 동기화와 충전을 확인하고, 마지막에 모두 물러서게 한 뒤 충격을 줘요.
+    lines:
+    - {en: "She's unstable — we need synchronized cardioversion.", icon: siren, ko: "불안정해요, 동기화 심율동전환이 필요해요", note: 선언}
+    - {en: "I'll give sedation if she's awake enough.", icon: pill, ko: "충분히 깨어 있으면 진정제를 줄게요", note: 진정}
+    - {en: "Once she's sedated, make sure the sync is on and charge to one hundred joules.", icon: gear, ko: "진정되면 동기화가 켜졌는지 확인하고 100줄로 충전하세요", note: 충전}
+    - {en: "Everyone stand clear before I deliver the shock.", icon: shield, ko: "제가 충격을 주기 전에 모두 물러서 주세요", note: 물러서기}
+16:
+  s:
+  - {tag: 심정지 선언, icon: siren, why: "dash(—) 뒤에 명령을 바로 붙이고 now로 끝내 \"지금 당장\"의 급박함을 전해요.", decoy: "a slow one", dk: ["심실세동이고 의식이 없어요, 지금 흉부압박을 시작하세요", "심실빈맥이고 맥박이 없어요, 지금 흉부압박을 시작하세요"], ans: pulseless, opts: [stable, awake, talking]}
+  - {tag: 제세동 콜, icon: gear, why: "\"Charge to 200 and clear.\"처럼 두 동작만 이어 말하는 짧은 콜아웃이라 소란 속에서도 한 번에 들려요.", decoy: "and sync", dk: ["200으로 충전하고 소리치세요", "200으로 충전하고 사진 찍으세요"], ans: clear, opts: [clap, clean, click]}
+  - {tag: 즉시 재개, icon: siren, why: "immediately를 문장 끝에 두어 충격 뒤 압박을 쉬지 않고 이어 간다는 점을 강조해요.", decoy: "after the pulse", dk: ["충격 후에는 즉시 심폐소생술 시간을 재세요", "충격 후에는 즉시 심폐소생술 기록을 시작하세요"], ans: immediately, opts: [politely, quietly, cheerfully]}
+  - {tag: 이유 설명, icon: stetho, why: "so로 \"맥박이 없으니 그래서 압박\"이라는 이유와 행동을 이어 말해요.", decoy: "for oxygen", dk: ["호흡이 없으니 흉부압박을 시작할게요", "의식이 없으니 흉부압박을 시작할게요"], ans: pulse, opts: [answer, music, phone]}
+  - {tag: 물러서기, icon: shield, why: "clear the bed처럼 clear를 동사로 써서 \"침상에서 손을 떼라\"는 뜻을 짧게 말해요.", decoy: "the cart", dk: ["다시 청소하기 전에 모두 침상에서 물러서 주세요", "다시 사진을 찍기 전에 모두 침상에서 물러서 주세요"], ans: bed, opts: [wall, door, stairs]}
+  - {tag: 약 투여 주기, icon: pill, why: "every few minutes는 정확한 분이 아니라 \"몇 분 간격으로 되풀이\"라는 주기를 말해요.", decoy: "at home", dk: ["수술 동안 몇 분마다 에피네프린을 투여해요", "식사 동안 몇 분마다 에피네프린을 투여해요"], ans: code, opts: [party, class, lunch]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 무맥성 심실세동 제세동 4문장 순서
+    why: 압박을 시작하고, 압박하며 충전한 뒤 충격하고, 충격 직후 압박을 재개하고, 다음 충격 전에 다시 물러서게 해요.
+    lines:
+    - {en: "He's in v-fib and pulseless — start compressions now.", icon: siren, ko: "심실세동이고 맥박이 없어요, 지금 흉부압박을 시작하세요", note: 압박}
+    - {en: "Keep pushing while the defibrillator charges to 200, then everyone clear.", icon: gear, ko: "제세동기가 200으로 충전되는 동안 압박을 계속하고, 이어서 모두 물러서세요", note: 충전}
+    - {en: "Resume CPR immediately after the shock.", icon: siren, ko: "충격 후에는 즉시 심폐소생술을 재개하세요", note: 재개}
+    - {en: "Everybody clear the bed before we shock again.", icon: shield, ko: "다시 충격을 주기 전에 모두 침상에서 물러서 주세요", note: 재충격}
+17:
+  s:
+  - {tag: 상태 보고, icon: monitor, why: "dangerously를 붙여 \"느리다\"는 사실에 위험하다는 판단까지 한 번에 담아요.", decoy: "in the 90s", dk: ["완전방실차단이고 혈압이 위험할 정도로 낮아요", "완전방실차단이고 체온이 위험할 정도로 낮아요"], ans: dangerously, opts: [happily, politely, loudly]}
+  - {tag: 페이싱 지시, icon: siren, why: "Place와 start를 and로 이어 붙이는 일과 시작하는 일을 한 번에 지시해요.", decoy: "and sync it", dk: ["페이서 패드를 붙이고 경피 페이싱을 설명하세요", "페이서 패드를 붙이고 경피 페이싱을 기록하세요"], ans: transcutaneous, opts: [transparent, transport, transit]}
+  - {tag: 도움 요청, icon: bell, why: "I'm calling for…는 \"지금 부르는 중\"이라 상대가 이미 움직였음을 알려 줘요.", decoy: "to the unit", dk: ["경정맥 페이싱 기록을 요청하고 있어요", "경정맥 페이싱 사진을 요청하고 있어요"], ans: calling, opts: [waiting, hoping, paying]}
+  - {tag: 위중 보고, icon: faceWorried, why: "barely와 could…any minute으로 \"겨우 버티는 중이며 곧 나빠질 수 있다\"는 위급함을 전해요.", decoy: "all night", dk: ["겨우 숨 쉬고 있고 언제든 심정지가 올 수 있어요", "겨우 관류되고 있고 언제든 졸도가 올 수 있어요"], ans: barely, opts: [fully, nicely, proudly]}
+  - {tag: 이유 설명, icon: chartup, why: "won't…much longer로 \"오래 못 간다\"는 시간 한계를 말해 서둘러야 하는 이유를 줘요.", decoy: "for a week", dk: ["이 약으로는 혈압을 오래 버틸 수 없어요", "이 리듬으로는 체중을 오래 버틸 수 없어요"], ans: longer, opts: [louder, wider, heavier]}
+  - {tag: 동시 진행, icon: bell, why: "while I start pacing으로 \"내가 이걸 하는 동안 당신은 저걸\"이라는 역할 분담을 말해요.", decoy: "by the door", dk: ["제가 차트를 시작하는 동안 순환기내과에 전화해 주세요", "제가 청소를 시작하는 동안 순환기내과에 전화해 주세요"], ans: phone, opts: [table, wall, floor]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 완전방실차단 환자의 페이싱을 시작하는 4문장 순서
+    why: 상태를 말하고, 위험한 이유를 밝히고, 페이싱을 시작한 뒤, 다음 지원을 요청해요.
+    lines:
+    - {en: "He's in complete heart block with a dangerously slow rate.", icon: monitor, ko: "완전방실차단이고 심박수가 위험할 정도로 느려요", note: 상태}
+    - {en: "This rhythm won't support his blood pressure much longer.", icon: chartup, ko: "이 리듬으로는 혈압을 오래 버틸 수 없어요", note: 이유}
+    - {en: "So place the pacer pads and start transcutaneous pacing.", icon: siren, ko: "그러니 페이서 패드를 붙이고 경피 페이싱을 시작하세요", note: 페이싱}
+    - {en: "I'm calling for transvenous pacing backup.", icon: bell, ko: "경정맥 페이싱 백업을 요청하고 있어요", note: 지원}
+18:
+  s:
+  - {tag: 응급 처치, icon: siren, why: "dash(—) 뒤에 \"무엇을, 어떻게, 언제\"(IV magnesium, now)만 남긴 짧은 명령이에요.", decoy: "by mouth", dk: ["심방세동이에요, 지금 정맥으로 마그네슘을 주세요", "저혈당이에요, 지금 정맥으로 마그네슘을 주세요"], ans: torsades, opts: [sinus rhythm, asystole, a coma]}
+  - {tag: 장비 준비, icon: pill, why: "in case she deteriorates로 지금 쓰는 게 아니라 \"혹시 나빠지면\" 쓸 대비임을 밝혀요.", decoy: "at the door", dk: ["깨어날 경우를 대비해 제세동기를 준비해 주세요", "퇴원할 경우를 대비해 제세동기를 준비해 주세요"], ans: ready, opts: [wet, loud, empty]}
+  - {tag: 약 중단, icon: pill, why: "Stop any…immediately로 \"하나라도 즉시 끊어라\"는 단호한 지시를 짧게 전해요.", decoy: "in an hour", dk: ["PR을 연장시키는 약물은 즉시 중단하세요", "QT를 연장시키는 음식은 즉시 중단하세요"], ans: drugs, opts: [foods, games, books]}
+  - {tag: 상태 보고, icon: monitor, why: "keeps -ing로 한 번이 아니라 계속 되풀이되는 상황임을 말해 심각성을 전해요.", decoy: "by itself", dk: ["호흡이 계속 위험한 상태로 갑자기 바뀌고 있어요", "리듬이 계속 느린 상태로 갑자기 바뀌고 있어요"], ans: dangerous, opts: [quiet, lovely, cheap]}
+  - {tag: 투여 보고, icon: pill, why: "over a few minutes로 천천히 몇 분간 주입한다는 방식을 같이 보고해요.", decoy: "in the hall", dk: ["몇 분에 걸쳐 마그네슘 2그램을 기록하고 있어요", "몇 분에 걸쳐 마그네슘 2그램을 설명하고 있어요"], ans: pushing, opts: [reading, paying, guessing]}
+  - {tag: 대기 지시, icon: siren, why: "Stay ready to…로 \"지금은 아니지만 바로 할 수 있게\" 대기 상태를 지시해요.", decoy: "very quietly", dk: ["완전 회복으로 바뀌면 바로 충격을 줄 수 있게 대기하세요", "완전 정전으로 바뀌면 바로 충격을 줄 수 있게 대기하세요"], ans: arrest, opts: [sleep, dinner, visit]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 토르사드 응급 대응 4문장 순서
+    why: 상황을 보고하고, 진단과 함께 마그네슘을 주고, 원인 약을 끊은 뒤, 심정지에 대비해 충격을 준비해요.
+    lines:
+    - {en: "Her rhythm keeps breaking into these dangerous runs.", icon: monitor, ko: "리듬이 계속 위험한 상태로 갑자기 바뀌고 있어요", note: 보고}
+    - {en: "That's torsades — give IV magnesium now.", icon: siren, ko: "토르사드예요, 지금 정맥으로 마그네슘을 주세요", note: 마그네슘}
+    - {en: "Along with that, stop any QT-prolonging drugs immediately.", icon: pill, ko: "그와 함께 QT를 연장시키는 약물은 즉시 중단하세요", note: 약 중단}
+    - {en: "Stay ready to shock if this turns into full arrest.", icon: siren, ko: "완전 심정지로 바뀌면 바로 충격을 줄 수 있게 대기하세요", note: 대기}
+19:
+  s:
+  - {tag: 상황 보고, icon: siren, why: "repeated shocks로 횟수를 먼저 말하고 dash(—) 뒤에 \"그래서 이건 전기폭풍\"이라는 판단을 붙여요.", decoy: "a long one", dk: ["약을 반복해서 받았어요, 이건 전기폭풍이에요", "충격을 반복해서 받았어요, 이건 정전이에요"], ans: repeated, opts: [silent, gentle, private]}
+  - {tag: 치료 계획, icon: pill, why: "on board는 \"몸에 들어가 있는\" 상태를 뜻해서 약이 이미 투여된 상태를 말해요.", decoy: "by mouth", dk: ["더 빠른 진정과 항부정맥제 투여가 필요해요", "더 쉬운 진정과 항부정맥제 투여가 필요해요"], ans: deeper, opts: [colder, shorter, cheaper]}
+  - {tag: 협진 요청, icon: handshake2, why: "Let's get… and coordinate…로 함께 요청하고 조율하자는 협력의 말투예요.", decoy: "in the morning", dk: ["순환기내과와 함께 퇴근 시간을 조율해 봐요", "순환기내과와 함께 다음 휴가를 조율해 봐요"], ans: coordinate, opts: [decorate, donate, dilute]}
+  - {tag: 판단 근거, icon: chartup, why: "means we need…로 횟수라는 사실에서 \"그래서 달라져야 한다\"는 결론을 이끌어 내요.", decoy: "this week", dk: ["한 시간에 두 번 충격이면 다른 접근이 필요하다는 뜻이에요", "하루에 네 번 충격이면 다른 접근이 필요하다는 뜻이에요"], ans: Four, opts: [Seven, Twelve, Thirty]}
+  - {tag: 진정 강화, icon: pill, why: "before the next episode로 \"다음 발작이 오기 전에 미리\"라는 선제 조치의 시점을 말해요.", decoy: "after rounds", dk: ["다음 회진이 오기 전에 진정을 늘릴게요", "다음 식사가 오기 전에 진정을 늘릴게요"], ans: episode, opts: [dinner, visit, shift]}
+  - {tag: 팀 공유, icon: bell, why: "call for와 update를 and로 이어 요청과 공유를 한 문장에 담아요.", decoy: "a small one", dk: ["세 번째 항부정맥제를 요청하고 팀에 알려요", "여섯 번째 항부정맥제를 요청하고 팀에 알려요"], ans: second, opts: [tenth, twelfth, twentieth]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 전기폭풍에 단계적으로 대응하는 4문장 순서
+    why: 상황을 판단하고, 필요한 치료를 말한 뒤, 진정을 먼저 늘리고, 협진과 팀 공유로 마무리해요.
+    lines:
+    - {en: "He's had four shocks this hour — this is an electrical storm.", icon: siren, ko: "한 시간에 충격을 네 번 받았어요, 이건 전기폭풍이에요", note: 판단}
+    - {en: "That means we need deeper sedation and antiarrhythmics on board.", icon: pill, ko: "그러니 더 깊은 진정과 항부정맥제 투여가 필요해요", note: 필요}
+    - {en: "To start, I'll increase his sedation before the next episode.", icon: pill, ko: "먼저 다음 발작이 오기 전에 진정을 늘릴게요", note: 진정}
+    - {en: "Let's get cardiology and coordinate the next steps.", icon: handshake2, ko: "순환기내과와 함께 다음 단계를 조율해 봐요", note: 협진}
+20:
+  s:
+  - {tag: 이상 보고, icon: monitor, why: "dash(—) 뒤에 \"그래서 심박수가 떨어진다\"는 결과를 붙여 상황의 급함을 한 문장에 담아요.", decoy: "very quickly", dk: ["페이서 스파이크가 캡처되지 않고 혈압이 떨어지고 있어요", "페이서 알람이 캡처되지 않고 심박수가 떨어지고 있어요"], ans: dropping, opts: [growing, singing, hiding]}
+  - {tag: 즉시 조치, icon: gear, why: "increase와 check를 and로 이어 \"올리고 점검한다\"는 두 가지 조치를 한 번에 말해요.", decoy: "the dial", dk: ["출력을 늘리고 침대 상태를 확인할게요", "출력을 늘리고 알람 상태를 확인할게요"], ans: output, opts: [price, menu, distance]}
+  - {tag: 대비 지시, icon: shield, why: "in case this fails로 \"실패할지도 모르니 미리\"라는 대비의 이유를 밝혀요.", decoy: "by the bed", dk: ["비가 올 경우를 대비해 백업 페이싱을 준비해 주세요", "손님이 올 경우를 대비해 백업 페이싱을 준비해 주세요"], ans: backup, opts: [paper, public, slow]}
+  - {tag: 점검 요청, icon: check, why: "make sure they're secure로 \"확실히 고정됐는지\" 결과까지 확인하라고 말해요.", decoy: "for noise", dk: ["전선을 확인하고 깨끗한지 봐 주세요", "전선을 확인하고 따뜻한지 봐 주세요"], ans: wires, opts: [pipes, hoses, chairs]}
+  - {tag: 진행 보고, icon: monitor, why: "before he loses more beats로 지금 문제를 푸는 이유가 더 잃기 전이라는 시급함을 말해요.", decoy: "in a minute", dk: ["시간을 더 잃기 전에 페이서 문제를 해결하고 있어요", "피를 더 잃기 전에 페이서 문제를 해결하고 있어요"], ans: beats, opts: [pages, coins, keys]}
+  - {tag: 호출 지시, icon: bell, why: "If this doesn't fix it, call…로 \"조건 + 바로 할 행동\"을 한 문장에 담아요.", decoy: "a long one", dk: ["이걸로 고쳐지지 않으면 백업 모니터를 요청하세요", "이걸로 고쳐지지 않으면 백업 침대를 요청하세요"], ans: pacer, opts: [pillow, printer, pitcher]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 페이싱 캡처 실패에 대응하는 4문장 순서
+    why: 문제를 보고하고, 출력과 연결을 조치한 뒤, 실패에 대비해 백업을 준비하고, 그래도 안 되면 백업을 불러요.
+    lines:
+    - {en: "The pacer spikes aren't capturing — his rate is dropping.", icon: monitor, ko: "페이서 스파이크가 캡처되지 않고 심박수가 떨어지고 있어요", note: 보고}
+    - {en: "I'll increase the output and check the connections.", icon: gear, ko: "출력을 늘리고 연결 상태를 확인할게요", note: 조치}
+    - {en: "Get backup pacing ready in case that fails.", icon: shield, ko: "그게 실패할 경우를 대비해 백업 페이싱을 준비해 주세요", note: 대비}
+    - {en: "If it still doesn't capture, call for a backup pacer now.", icon: bell, ko: "그래도 캡처되지 않으면 백업 페이서를 요청하세요", note: 호출}

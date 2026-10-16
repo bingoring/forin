@@ -1,0 +1,90 @@
+5:
+  s:
+  - {tag: 스토마 관리, icon: bandage, why: "\"to keep …\"로 목적을 붙이면 세척과 교체가 피부를 지키려는 일이라는 이유가 전해져요.", decoy: "on his chest", dk: ["스토마를 세척하고 장갑을 교체해 피부를 건조하게 유지해요", "스토마를 세척하고 드레싱을 교체해 피부를 부드럽게 유지해요"], ans: stoma, opts: [mouth, ear, wrist]}
+  - {tag: 피부 사정, icon: magnify, why: "\"redness or breakdown\"처럼 or로 두 가지를 이으면 둘 중 하나만 보여도 살펴야 할 소견이라는 뜻이 돼요.", decoy: "with a light", dk: ["부위 주변 피부에 부기나 손상이 있는지 확인하고 있어요", "부위 주변 피부에 발적이나 흉터가 있는지 확인하고 있어요"], ans: redness, opts: [coughing, hunger, noise]}
+  - {tag: 드레싱 효과, icon: bandage, why: "\"helps prevent\"는 확실히 막는다는 단정이 아니라 도움이 된다는 완곡한 효과를 말해요.", decoy: "with tape", dk: ["수분을 흡수하는 드레싱이 피부 감염을 예방하는 데 도움이 돼요", "수분을 흡수하는 드레싱이 피부 냄새를 예방하는 데 도움이 돼요"], ans: irritation, opts: [bleeding, tension, swelling]}
+  - {tag: 사전 설명, icon: speech, why: "\"about to\"는 곧 일어날 일을 말해서 환자가 손길을 미리 예상하도록 도와요.", decoy: "for his comfort", dk: ["부위 주변을 곧 만질 거라고 알려 드려요", "부위 주변을 곧 재 볼 거라고 알려 드려요"], ans: around, opts: [inside, beyond, behind]}
+  - {tag: 소견 보고, icon: magnify, why: "\"but\"으로 걱정되는 소견 뒤에 안심되는 소견을 이으면 둘을 나눠 전할 수 있어요.", decoy: "under the dressing", dk: ["삼출물이 좀 있지만 상처 가장자리는 빨개 보여요", "삼출물이 좀 있지만 상처 가장자리는 말라 보여요"], ans: clean, opts: [red, swollen, dark]}
+  - {tag: 기록, icon: pencil, why: "\"each shift\"처럼 교대마다 기록하면 다음 근무자가 상처의 변화를 이어서 비교할 수 있어요.", decoy: "by hand", dk: ["매 근무마다 체중 변화를 기록해요", "매 근무마다 수액 균형을 기록해요"], ans: assessment, opts: [photo, supply, budget]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 기관절개 부위를 관리하고 기록하는 4문장 순서
+    why: 먼저 알리고 세척과 교체를 하고, 새 드레싱 뒤에 피부를 살핀 다음, 본 것을 기록하는 순서예요.
+    lines:
+    - {en: "Before I touch anything, I let him know I'm about to clean around the site.", icon: speech, ko: "손대기 전에 부위 주변을 곧 닦을 거라고 알려 드려요", note: 설명}
+    - {en: "I clean the stoma and change the dressing to keep the skin dry.", icon: bandage, ko: "스토마를 세척하고 드레싱을 교체해 피부를 건조하게 둬요", note: 세척}
+    - {en: "Once the dressing is fresh, I check the skin around it for redness or breakdown.", icon: magnify, ko: "드레싱이 새것이 되면 주변 피부의 발적과 손상을 확인해요", note: 사정}
+    - {en: "From what I see, I document the wound assessment each shift.", icon: pencil, ko: "본 내용으로 매 근무마다 상처 사정을 기록해요", note: 기록}
+6:
+  s:
+  - {tag: 장비 준비, icon: gear, why: "\"Let's have … ready\"는 함께 준비하자는 제안이라 요청처럼 들리면서 팀 전체의 일로 만들어요.", decoy: "on the shelf", dk: ["비디오 후두경과 장갑을 준비해 둬요", "비디오 후두경과 테이프를 준비해 둬요"], ans: ready, opts: [clean, open, labeled]}
+  - {tag: 예비 계획, icon: shield, why: "\"as a rescue option\"의 as는 \"~로서\"라서 이 장비의 역할이 주력이 아니라 구조용임을 밝혀 줘요.", decoy: "for the night", dk: ["첫 선택으로 성문상 기도기를 준비해 둘게요", "임시 옵션으로 성문상 기도기를 준비해 둘게요"], ans: rescue, opts: [routine, daily, simple]}
+  - {tag: 합의, icon: handshake2, why: "\"plan A, B, and C\"처럼 단계를 문자로 부르면 팀 모두가 같은 이름으로 다음 수를 떠올려요.", decoy: "with the nurses", dk: ["시작하기 전에 계획 A와 B에 합의해요", "시작하기 전에 역할 A, B, C에 합의해요"], ans: agree, opts: [bet, joke, quarrel]}
+  - {tag: 이유 설명, icon: shield, why: "\"so\"로 앞의 판단과 뒤의 행동을 이으면 왜 장비를 더 가져오는지 이유가 한 문장에 담겨요.", decoy: "from the OR", dk: ["기도가 좁아 보여서 예비 장비를 가져오고 있어요", "기도가 까다로워 보여서 예비 인력을 데려오고 있어요"], ans: tricky, opts: [clear, stable, normal]}
+  - {tag: 역할 정리, icon: speech, why: "\"talk through\"는 처음부터 끝까지 훑어 본다는 뜻이라 실패한 경우의 순서까지 미리 맞춰 둔다는 말이에요.", decoy: "in the hallway", dk: ["첫 시도가 실패하면 언제 교대할지 미리 이야기해요", "첫 시도가 실패하면 어디에 설지 미리 이야기해요"], ans: fails, opts: [starts, waits, rests]}
+  - {tag: 위치 유지, icon: pushpin, why: "\"within reach\"는 손만 뻗으면 닿는 거리라서 위급할 때 장비를 찾느라 시간을 쓰지 않는다는 말이에요.", decoy: "behind the curtain", dk: ["예비 흡인 카트를 손 닿는 곳에 둘게요", "응급 약물 카트를 손 닿는 곳에 둘게요"], ans: difficult, opts: [spare, clean, locked]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 어려운 기도를 예상하고 준비하는 4문장 순서
+    why: 어려워 보여 카트를 곁에 두고, 그 카트의 장비를 준비하고, 구조 기구를 더한 뒤, 계획 A·B·C를 합의하며 마무리해요.
+    lines:
+    - {en: "His airway looks tricky, so I'll keep the difficult airway cart within reach.", icon: shield, ko: "기도가 까다로워 보여서 어려운 기도 카트를 곁에 둘게요", note: 판단}
+    - {en: "From that cart, let's have the video laryngoscope and bougie ready.", icon: gear, ko: "그 카트에서 비디오 후두경과 부지를 준비해 둬요", note: 장비}
+    - {en: "On top of those, I'll set up a supraglottic airway as a rescue option.", icon: pushpin, ko: "그에 더해 구조 옵션으로 성문상 기도기를 준비할게요", note: 예비}
+    - {en: "With the gear in place, let's agree on plan A, B, and C before we start.", icon: handshake2, ko: "장비가 갖춰졌으니 시작 전에 계획 A, B, C에 합의해요", note: 합의}
+7:
+  s:
+  - {tag: 목적 설명, icon: chartup, why: "\"to build a reserve\"는 왜 미리 산소를 채우는지 설명해서 삽관 중 안전 여유를 만든다는 걸 알려요.", decoy: "at the door", dk: ["몇 분간 전산소화해서 환자를 안정시킬게요", "몇 분간 전산소화해서 상태를 점검해 둘게요"], ans: reserve, opts: [budget, schedule, report]}
+  - {tag: 산소 유지, icon: bulb, why: "\"leave … on\"의 on은 계속 켜 둔 상태를 말해서 삽관 시도 중에도 산소가 이어진다는 뜻이에요.", decoy: "under his chin", dk: ["수액 주입을 위해 비강 캐뉼라는 계속 씌워 둘게요", "환자 안정을 위해 비강 캐뉼라는 계속 씌워 둘게요"], ans: nasal, opts: [oral, eye, ear]}
+  - {tag: 효과 설명, icon: chartup, why: "\"buys us\"는 돈이 아니라 시간을 사 준다는 비유라 산소가 의사에게 여유를 만들어 주는 효과를 말해요.", decoy: "for the team", dk: ["이게 이송 중 더 안전한 시간을 벌어줘요", "이게 삽관 시도 중 더 많은 공간을 벌어줘요"], ans: safe, opts: [short, busy, empty]}
+  - {tag: 사전 준비, icon: shield, why: "\"before we push …\"는 약을 넣기 전에 끝낼 일이라는 순서를 분명히 해서 산소 확보가 먼저임을 알려요.", decoy: "from the cart", dk: ["약물을 주입하기 전에 모니터를 붙여 드릴게요", "약물을 주입하기 전에 담요를 덮어 드릴게요"], ans: mask, opts: [blanket, pillow, towel]}
+  - {tag: 사전 설명, icon: speech, why: "\"will help him …\"처럼 미래형으로 말하면 아직 하지 않은 일이 어떤 도움이 되는지 미리 안심시켜 줘요.", decoy: "with a smile", dk: ["시작하기 전에 이게 잠드는 걸 더 편하게 해 줄 거라고 말해 드려요", "시작하기 전에 이게 누워 있기를 더 편하게 해 줄 거라고 말해 드려요"], ans: easier, opts: [faster, louder, later]}
+  - {tag: 효과 설명, icon: monitor, why: "\"higher\"는 비교급이라 원래보다 더 높다는 뜻이고, 수치가 떨어지는 속도를 늦춘다는 의미를 담아요.", decoy: "on the monitor", dk: ["캐뉼라로 주는 추가 산소가 시도 중 환자를 더 편하게 유지해 줘요", "캐뉼라로 주는 추가 산소가 시도 중 기도를 더 깨끗하게 유지해 줘요"], ans: cannula, opts: [stethoscope, thermometer, tourniquet]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 삽관 전 산소를 채우는 과정을 설명하는 4문장 순서
+    why: 환자에게 먼저 알리고, 마스크로 전산소화한 뒤, 약 투여 전에 캐뉼라를 유지하고, 그 산소가 주는 여유를 말해요.
+    lines:
+    - {en: "I tell him this will help him breathe easier before we start.", icon: speech, ko: "시작하기 전에 숨쉬기가 더 편해질 거라고 말해 드려요", note: 설명}
+    - {en: "After that, I'll put the mask on him and preoxygenate for a few minutes.", icon: shield, ko: "그 다음 마스크를 씌우고 몇 분간 전산소화할게요", note: 전산소화}
+    - {en: "Before we push any medication, let's leave a nasal cannula on for apneic oxygenation.", icon: bulb, ko: "약물 주입 전에 apneic 산소화용 비강 캐뉼라를 둬요", note: 유지}
+    - {en: "That extra oxygen buys us more safe time during the intubation attempt.", icon: chartup, ko: "그 추가 산소가 삽관 시도 중 안전한 시간을 벌어줘요", note: 효과}
+8:
+  s:
+  - {tag: 사전 대비, icon: shield, why: "\"have … ready\"는 약을 미리 손 닿는 곳에 둔다는 뜻이고, \"before we start\"가 시점을 못 박아 줘요.", decoy: "on the pump", dk: ["산소를 최적화하고 승압제를 준비해 둔 다음 시작해요", "체위를 최적화하고 승압제를 준비해 둔 다음 시작해요"], ans: volume, opts: [name, color, mood]}
+  - {tag: 위험 설명, icon: bell, why: "\"so\" 앞에 이유를 먼저 말하면 왜 미리 약을 준비하는지가 설명으로 이어져요.", decoy: "during the move", dk: ["수술 전후 저혈압은 흔해서 즉시 주입식 승압제를 준비해요", "이송 전후 저혈압은 흔해서 즉시 주입식 승압제를 준비해요"], ans: hypotension, opts: [hypothermia, tachycardia, anemia]}
+  - {tag: 감시 계획, icon: monitor, why: "\"closely\"는 가끔이 아니라 계속 눈을 떼지 않고 본다는 뜻이라 감시의 강도를 말해 줘요.", decoy: "from the bed", dk: ["전 과정 동안 혈압을 면밀히 기록할게요", "전 과정 동안 혈압을 면밀히 알려 드릴게요"], ans: closely, opts: [quietly, randomly, politely]}
+  - {tag: 조건 처치, icon: bandage, why: "\"if\" 절로 조건을 붙이면 모든 환자에게 하는 일이 아니라 용적이 부족해 보일 때만 하는 처치라는 걸 알려요.", decoy: "from the bag", dk: ["소변이 적어 보이면 수액 볼루스를 줄게요", "체온이 낮아 보이면 수액 볼루스를 줄게요"], ans: bolus, opts: [bottle, bucket, basin]}
+  - {tag: 위험 설명, icon: bell, why: "\"right after\"는 삽관 직후의 짧은 구간을 콕 집어서 그때 가장 조심하라는 시점을 알려 줘요.", decoy: "on the unit", dk: ["삽관 직후 갑작스러운 기침은 흔해서 계속 대비해요", "삽관 직후 갑작스러운 구토는 흔해서 계속 대비해요"], ans: ready, opts: [busy, quiet, late]}
+  - {tag: 소리 내어 알림, icon: speaker, why: "\"call out\"은 혼잣말이 아니라 팀 전체가 들을 수 있게 크게 말한다는 뜻이라 변화 공유에 쓰여요.", decoy: "for the record", dk: ["혈압이 계속 떨어지면 시간을 소리 내어 알릴게요", "혈압이 계속 떨어지면 약 이름을 소리 내어 알릴게요"], ans: numbers, opts: [colors, names, jokes]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 삽관 전후 저혈압에 대비하는 4문장 순서
+    why: 위험을 먼저 말하고, 그래서 미리 준비하고, 진행 중 혈압을 지켜보다가, 계속 떨어지고 용적이 낮을 때 볼루스를 주는 순서예요.
+    lines:
+    - {en: "Peri-intubation hypotension is common, so we prepare for it before we start.", icon: bell, ko: "삽관 전후 저혈압은 흔해서 시작 전에 대비해요", note: 위험}
+    - {en: "For that reason, let's optimize his volume and have a pressor ready.", icon: shield, ko: "그래서 용적을 최적화하고 승압제를 준비해 둬요", note: 준비}
+    - {en: "Once we begin, I'll watch his blood pressure closely and call out any drop.", icon: monitor, ko: "시작하면 혈압을 면밀히 보고 떨어지면 소리 내어 알릴게요", note: 감시}
+    - {en: "If it keeps dropping and his volume looks low, I'll give a fluid bolus.", icon: bandage, ko: "계속 떨어지고 용적이 낮아 보이면 수액 볼루스를 줄게요", note: 처치}
+9:
+  s:
+  - {tag: 조기 판단, icon: siren, why: "\"so\"로 이유와 결론을 이으면 부종이 빠르다는 점이 곧바로 조기 삽관의 근거가 돼요.", decoy: "in the OR", dk: ["기도 외상은 빠르게 부을 수 있어서 조기 삽관이 더 안전해요", "기도 감염은 빠르게 부을 수 있어서 조기 삽관이 더 안전해요"], ans: swell, opts: [bleed, dry, harden]}
+  - {tag: 경고 징후, icon: siren, why: "\"warning signs to act now\"는 명사 뒤에 to 부정사를 붙여 그래서 무엇을 해야 하는지까지 한 번에 알려요.", decoy: "from the burn", dk: ["쉰 목소리와 기침은 지금 행동해야 한다는 경고 징후예요", "쉰 목소리와 열은 지금 행동해야 한다는 경고 징후예요"], ans: hoarse, opts: [loud, cheerful, funny]}
+  - {tag: 팀 알림, icon: bell, why: "\"alert\"는 단순히 말하는 게 아니라 주의를 끌어 팀이 바로 움직이게 하는 동사예요.", decoy: "in the ICU", dk: ["화상이 커지기 전에 확인해야 한다고 팀에 알릴게요", "관이 막히기 전에 확보해야 한다고 팀에 알릴게요"], ans: secure, opts: [clean, measure, record]}
+  - {tag: 위험 예고, icon: siren, why: "\"could be\"는 확정이 아니라 가능성을 말하는 완곡한 표현이라 팀이 미리 대비하게 만들어요.", decoy: "for the family", dk: ["출혈이 심해지면 어려운 기도가 될 수 있어요", "분비물이 심해지면 어려운 기도가 될 수 있어요"], ans: difficult, opts: [simple, familiar, quiet]}
+  - {tag: 호출 보고, icon: bell, why: "\"now\"와 \"before\"를 함께 쓰면 지금 부르는 이유가 더 나빠지기 전이라는 시간 압박으로 전해져요.", decoy: "at the desk", dk: ["환자가 지치기 전에 지금 마취과를 호출하고 있어요", "회진 전에 지금 마취과를 호출하고 있어요"], ans: worse, opts: [loud, dark, crowded]}
+  - {tag: 지연 경고, icon: siren, why: "\"even\"은 그 정도만 늦어도라는 뜻이라 아주 짧은 지연도 위험하다는 점을 강조해요.", decoy: "with the swelling", dk: ["조금만 더 기다려도 기도가 부을 수 있어요", "조금만 더 기다려도 호흡이 느려질 수 있어요"], ans: "close off", opts: ["dry out", "clean out", "warm up"]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 기도 화상 환자를 조기에 확보하는 4문장 순서
+    why: 경고 징후를 먼저 알아채고, 그것이 부종 때문임을 짚고, 조기 삽관과 호출로 이어지며, 호출한 동안 팀이 기도 확보를 준비해요.
+    lines:
+    - {en: "His hoarse voice and stridor are warning signs to act now.", icon: siren, ko: "쉰 목소리와 협착음은 지금 행동하라는 경고 징후예요", note: 징후}
+    - {en: "Those signs can mean the swelling from airway burns is coming on rapidly.", icon: faceWorried, ko: "그 징후는 기도 화상 부종이 빠르게 오고 있다는 뜻일 수 있어요", note: 원인}
+    - {en: "So early intubation is safer, and I'm calling anesthesia now.", icon: bell, ko: "그래서 조기 삽관이 더 안전하고 지금 마취과를 호출해요", note: 호출}
+    - {en: "While they're on the way, I'll alert the team to secure the airway before it closes.", icon: shield, ko: "그들이 오는 동안 기도가 막히기 전에 확보하라고 팀에 알릴게요", note: 준비}

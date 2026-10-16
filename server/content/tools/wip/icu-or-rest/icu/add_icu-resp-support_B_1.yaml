@@ -1,0 +1,90 @@
+0:
+  s:
+  - {tag: 산소 시작, icon: monitor, why: "I'm -ing 현재진행형에 right now를 붙이면 \"지금 하고 있다\"는 즉각성이 전해져 환자가 안심해요.", decoy: "with the cart", dk: ["지금 산소를 걸어드리고 수치를 적어둘게요", "지금 산소를 걸어드리고 수치를 알려드릴게요"], ans: levels, opts: [tubes, lines, sites]}
+  - {tag: 호흡 요청, icon: me, why: "I need you to…는 환자가 해야 할 일을 분명히 말하는 틀이고, while I assess you로 이유를 붙이면 협조가 쉬워져요.", decoy: "for the chart", dk: ["제가 설명하는 동안 저와 함께 천천히 숨을 쉬어 주세요", "제가 사정하는 동안 보호자와 함께 천천히 숨을 쉬어 주세요"], ans: slow, opts: [quick, loud, heavy]}
+  - {tag: 상태 설명, icon: chartup, why: "a bit low로 정도를 낮춰 말하면 사실은 전하면서 겁은 덜 줘요.", decoy: "at the desk", dk: ["혈압이 조금 낮아서 호흡을 지지해 드릴 거예요", "체온이 조금 낮아서 호흡을 지지해 드릴 거예요"], ans: low, opts: [high, tight, loud]}
+  - {tag: 관찰 중, icon: stetho, why: "listening to…and watching…처럼 두 동작을 and로 이으면 몸을 살피는 중이라는 안심이 돼요.", decoy: "on the screen", dk: ["지금 폐를 청진하면서 얼마나 빠르게 숨 쉬는지 보고 있어요", "지금 폐를 청진하면서 얼마나 크게 숨 쉬는지 보고 있어요"], ans: lungs, opts: [heart, belly, throat]}
+  - {tag: 모니터 안내, icon: monitor, why: "both로 두 수치가 다 보인다고 하면 하나도 놓치지 않는다는 안심이 돼요.", decoy: "next to you", dk: ["심박수와 산소 수치 둘 다 지금 간호사실에 나오고 있어요", "심박수와 호흡수 둘 다 지금 모니터에 나오고 있어요"], ans: monitor, opts: [chart, wall, tray]}
+  - {tag: 단계 계획, icon: gear, why: "based on…으로 기준을 밝히면 정해진 대로가 아니라 내 상태에 맞춘다고 느껴요.", decoy: "from the cart", dk: ["마스크로 시작해서 체중에 따라 조정할게요", "마스크로 시작해서 식사에 따라 조정할게요"], ans: respond, opts: [sleep, eat, dress]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 저산소 환자에게 산소를 걸고 반응을 보는 4문장 순서
+    why: 상태와 조치를 먼저 말하고, 함께 숨 쉬도록 안내한 뒤, 그 호흡 후 수치를 다시 확인하고, 여전히 낮으면 지지를 늘린다고 이어요.
+    lines:
+    - {en: "Your oxygen is a bit low, so I'm putting a mask on you.", icon: monitor, ko: "산소가 조금 낮아서 마스크를 씌울게요", note: 조치}
+    - {en: "Breathe slowly with me while it settles in.", icon: me, ko: "자리 잡는 동안 저와 천천히 숨 쉬어 주세요", note: 안내}
+    - {en: "After a few of those breaths, I'll check your levels again.", icon: check, ko: "그렇게 몇 번 숨 쉰 뒤 수치를 다시 확인할게요", note: 확인}
+    - {en: "If that number is still low, we'll support your breathing more.", icon: shield, ko: "그 수치가 아직 낮으면 호흡을 더 지지해 드릴게요", note: 계획}
+1:
+  s:
+  - {tag: 장치 설명, icon: gear, why: "to make…easier로 목적을 붙이면 낯선 장치가 나를 돕는다는 쪽으로 들려요.", decoy: "from the wall", dk: ["고유량 장치는 따뜻하고 가습된 산소를 줘서 말하기를 편하게 해줘요", "고유량 장치는 따뜻하고 가습된 산소를 줘서 잠들기를 편하게 해줘요"], ans: warm, opts: [cold, bright, heavy]}
+  - {tag: 설정 완료, icon: check, why: "I've set은 \"이미 맞춰 놨다\"는 완료의 느낌이라 환자가 안심해요.", decoy: "by the bed", dk: ["몸에 맞게 유량과 산소 수치를 설명했어요", "나이에 맞게 유량과 산소 수치를 설정했어요"], ans: body, opts: [skin, mind, size]}
+  - {tag: 불편 안심, icon: faceWorried, why: "at first, but…으로 지금의 불편을 인정한 뒤 이유를 대면 설득보다 공감으로 들려요.", decoy: "in the room", dk: ["처음엔 세게 느껴지지만 힘을 덜 들이고 말하게 도와줘요", "처음엔 시끄럽게 느껴지지만 힘을 덜 들이고 숨 쉬게 도와줘요"], ans: strong, opts: [weak, sticky, slow]}
+  - {tag: 설정 순서, icon: gear, why: "comes first, and then…은 순서를 한 문장에 담는 틀이라 설정 순서를 말할 때 그대로 써요.", decoy: "by the sink", dk: ["먼저 유량을 맞추고 그다음 알람 소리를 거기에 맞게 설정해요", "먼저 유량을 맞추고 그다음 화면 밝기를 거기에 맞게 설정해요"], ans: first, opts: [last, second, alone]}
+  - {tag: 가습 이유, icon: bulb, why: "keeps A from -ing는 \"A가 …하지 않게 막는다\"는 틀이라 장치의 보호 역할을 말할 때 써요.", decoy: "from the shelf", dk: ["가습기가 이 따뜻한 공기가 기도를 뜨겁게 만들지 않게 해줘요", "가습기가 이 따뜻한 공기가 기도를 답답하게 만들지 않게 해줘요"], ans: drying, opts: [heating, filling, cooling]}
+  - {tag: 곧 편해짐, icon: check, why: "once…는 \"그 일이 끝나면\"이라는 조건이라 지금은 어색해도 곧 나아진다는 기대를 줘요.", decoy: "near the door", dk: ["몸이 소리에 적응하면 힘을 덜 들이고 숨 쉬게 될 거예요", "몸이 유량에 적응하면 힘을 덜 들이고 걷게 될 거예요"], ans: adjusts, opts: [sleeps, moves, leans]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 고유량 장치 시작을 설명하는 4문장 순서
+    why: 장치를 시작한다고 알리고, 처음의 센 느낌을 미리 말한 뒤, 그 느낌이 가라앉고 나면 숨쉬기가 편해진다고 이어요.
+    lines:
+    - {en: "I'm starting you on a high-flow nasal cannula.", icon: gear, ko: "고유량 비강캐뉼러를 시작할게요", note: 시작}
+    - {en: "It may feel strong at first, but the air is warm and humid.", icon: faceWorried, ko: "처음엔 세게 느껴져도 공기는 따뜻하고 촉촉해요", note: 안심}
+    - {en: "That strong feeling should ease as your body adjusts to it.", icon: bulb, ko: "그 센 느낌은 몸이 적응하면 가라앉을 거예요", note: 적응}
+    - {en: "When that happens, you'll breathe with less effort.", icon: check, ko: "그렇게 되면 힘을 덜 들이고 숨 쉬게 될 거예요", note: 결과}
+2:
+  s:
+  - {tag: 끈 조정, icon: gear, why: "so it seals는 목적을, without -ing는 피할 점을 붙여 한 문장에 두 목표를 말해요.", decoy: "for the nurse", dk: ["너무 세게 누르지 않으면서 밀착되도록 끈을 확인할게요", "너무 세게 누르지 않으면서 밀착되도록 패드를 조정할게요"], ans: seals, opts: [slips, shifts, opens]}
+  - {tag: 핏 이유, icon: shield, why: "stops A from -ing 틀로 좋은 핏이 하는 일을 한 줄로 설명해요.", decoy: "in the box", dk: ["핏이 잘 맞으면 가장자리로 소리가 나지 않아요", "핏이 잘 맞으면 가장자리로 냄새가 나지 않아요"], ans: leaking, opts: [sliding, cracking, fogging]}
+  - {tag: 피부 보호, icon: bandage, why: "to protect…로 이유를 먼저 밝히면 환자는 물건이 아니라 나를 지키는 조치로 받아들여요.", decoy: "with some tape", dk: ["콧등을 보호하도록 패드를 확인할게요", "뺨을 보호하도록 패드를 붙일게요"], ans: protect, opts: [warm, press, clean]}
+  - {tag: 끈 느슨히, icon: gear, why: "a little은 조금만이라는 말이라 밀착을 완전히 풀지 않는다는 뜻을 전해요.", decoy: "at the head", dk: ["이마를 너무 세게 누르지 않도록 이 끈을 조금 느슨하게 할게요", "턱을 너무 세게 누르지 않도록 이 끈을 조금 느슨하게 할게요"], ans: loosen, opts: [shorten, lift, move]}
+  - {tag: 패드 역할, icon: bandage, why: "rubbing your skin raw처럼 결과를 말하면 패드가 필요한 이유가 구체적으로 와닿아요.", decoy: "on the pillow", dk: ["이 패드가 마스크에 피부가 뜨거워지지 않게 해줘요", "이 패드가 마스크에 피부가 미끄러지지 않게 해줘요"], ans: skin, opts: [hair, eyes, teeth]}
+  - {tag: 누기 보고, icon: bell, why: "Tell me if…는 어떤 때 알려 달라고 환자의 역할을 정해 주고, right away는 바로 반응하겠다는 약속이에요.", decoy: "when you wake", dk: ["바람이 새는 느낌이 있으면 알려주세요, 바로 끈 상태를 확인할게요", "바람이 새는 소리가 있으면 알려주세요, 바로 밀착 상태를 확인할게요"], ans: leaking, opts: [rubbing, itching, heating]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: NIV 마스크를 씌우고 핏을 맞추는 4문장 순서
+    why: 마스크를 씌우고 끈을 맞춘 뒤, 새거나 눌리면 말해 달라고 하고, 그에 따라 끈을 풀고, 마지막으로 패드로 피부를 지켜요.
+    lines:
+    - {en: "First, I'll put the mask on and adjust the straps.", icon: gear, ko: "먼저 마스크를 씌우고 끈을 조정할게요", note: 착용}
+    - {en: "Tell me if you feel any air leaking or too much pressure.", icon: bell, ko: "바람이 새거나 너무 눌리는 느낌이 있으면 말해 주세요", note: 요청}
+    - {en: "If you do, I'll check the seal and loosen the strap a little.", icon: check, ko: "그러면 밀착을 확인하고 끈을 조금 느슨하게 할게요", note: 조정}
+    - {en: "After that adjustment, I'll add padding to protect your nose.", icon: bandage, ko: "그렇게 조정한 뒤 코를 보호하도록 패드를 붙일게요", note: 보호}
+3:
+  s:
+  - {tag: 장치 비교, icon: board, why: "a little ↔ more 대비로 두 장치의 차이를 한 문장에 보여줘요.", decoy: "at night", dk: ["비강캐뉼러는 산소를 조금 주고, 이 마스크는 더 따뜻하게 줘요", "비강캐뉼러는 산소를 조금 주고, 이 마스크는 더 조용히 줘요"], ans: more, opts: [less, half, none]}
+  - {tag: 단계 상승, icon: chartup, why: "step up은 계단을 한 칸 올라가듯 단계를 올린다는 말이라 필요가 늘 때만 올린다는 뜻이에요.", decoy: "to the wall", dk: ["산소 요구량이 늘어나면 장치 설명을 드려요", "산소 요구량이 늘어나면 장치 위치를 바꿔요"], ans: increase, opts: [drop, fade, shrink]}
+  - {tag: 마스크 설명, icon: shield, why: "the highest 같은 최상급은 여러 장치 중 가장 높은 단계임을 못 박고, without a machine은 기계 연결이 아니라는 뜻이에요.", decoy: "on the floor", dk: ["이 비재호흡마스크는 가습 없이 가장 높은 산소를 전달해요", "이 비재호흡마스크는 기계 없이 가장 빠른 산소를 전달해요"], ans: highest, opts: [lowest, slowest, oldest]}
+  - {tag: 변경 이유, icon: check, why: "because로 이유를 먼저 밝혀야 장치를 바꾼 게 갑작스럽지 않게 들려요.", decoy: "from the unit", dk: ["산소 수치가 더 지지가 필요해서 침대를 바꿨어요", "산소 수치가 더 지지가 필요해서 장치를 옮겼어요"], ans: switched, opts: [cleaned, moved, covered]}
+  - {tag: 단계 정리, icon: chartup, why: "the lowest ↔ the highest 최상급 짝으로 사다리의 양 끝을 알려 줘요.", decoy: "in the unit", dk: ["캐뉼러가 가장 낮은 단계고, 비재호흡마스크가 가장 비싼 단계예요", "캐뉼러가 가장 낮은 단계고, 비재호흡마스크가 가장 시끄러운 단계예요"], ans: lowest, opts: [newest, loudest, oldest]}
+  - {tag: 단계 하강, icon: check, why: "can은 \"그럴 수 있다\"는 가능성이라 확정이 아니라 좋아질 때의 계획이라는 점을 알려요.", decoy: "from the cart", dk: ["좋아지면 더 작은 방으로 옮길 수 있어요", "좋아지면 더 작은 병실로 옮길 수 있어요"], ans: improve, opts: [sleep, wake, eat]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 산소 장치 단계를 올리고 내리는 4문장 순서
+    why: 가장 낮은 단계로 시작하고, 부족하면 마스크로, 그래도 부족하면 가장 높은 단계로 올린 뒤, 좋아지면 다시 내려요.
+    lines:
+    - {en: "Your oxygen is low, so we're starting you on a nasal cannula.", icon: monitor, ko: "산소가 낮아서 비강캐뉼러로 시작해요", note: 시작}
+    - {en: "If that isn't enough, we'll step you up to a mask.", icon: chartup, ko: "그걸로 부족하면 마스크로 올려요", note: 상승}
+    - {en: "If the mask still isn't enough, we'll use the non-rebreather, the highest step.", icon: shield, ko: "마스크로도 부족하면 가장 높은 단계인 비재호흡마스크를 써요", note: 최고}
+    - {en: "Once you improve from that step, we'll step you back down.", icon: check, ko: "그 단계에서 좋아지면 다시 단계를 낮춰요", note: 하강}
+4:
+  s:
+  - {tag: 호흡 관찰, icon: magnify, why: "how hard로 정도를 말하면 \"숨이 찬가\"보다 구체적인 관찰이 돼요.", decoy: "on that chart", dk: ["얼마나 자주 숨 쉬는지 보고 있어요", "얼마나 깊게 숨 쉬는지 보고 있어요"], ans: hard, opts: [loud, far, late]}
+  - {tag: 징후 설명, icon: stetho, why: "tells me는 \"그것이 신호다\"라는 틀이라 몸의 반응을 읽는 이유를 짚어 줘요.", decoy: "to the side", dk: ["목 근육을 쓰는 건 호흡에 시간이 많이 든다는 뜻이에요", "목 근육을 쓰는 건 호흡에 소리가 많이 난다는 뜻이에요"], ans: effort, opts: [noise, space, water]}
+  - {tag: 지지 약속, icon: shield, why: "If…, we'll…로 조건과 약속을 짝지으면 환자가 \"힘들면 도움이 온다\"고 예상할 수 있어요.", decoy: "in time", dk: ["졸리기 시작하면 지지를 더 해드릴게요", "아프기 시작하면 지지를 더 해드릴게요"], ans: support, opts: [food, water, ice]}
+  - {tag: 추가 관찰, icon: magnify, why: "also는 앞서 한 관찰에 더한다는 표시라 목 말고 다른 부위도 본다는 뜻이에요.", decoy: "on the left", dk: ["손과 발도 확인해서 호흡에 힘이 더 드는지 봐요", "어깨와 배도 확인해서 호흡이 더 빨라지는지 봐요"], ans: shoulders, opts: [fingers, knees, ankles]}
+  - {tag: 이른 징후, icon: bell, why: "early sign은 아직 위험해지기 전의 신호라서 겁을 주지 않고 대비하자는 말로 들려요.", decoy: "in your chest", dk: ["호흡 근육이 떨리기 시작하면 도움이 더 필요하다는 이른 징후예요", "호흡 근육이 지치기 시작하면 물이 더 필요하다는 이른 징후예요"], ans: early, opts: [late, rare, final]}
+  - {tag: 선제 대응, icon: magnify, why: "before you get too tired처럼 before로 시점을 앞당겨 말하면 \"늦기 전에 챙기겠다\"는 안심이 돼요.", decoy: "with the team", dk: ["너무 추워지기 전에 지지해 드릴 수 있게 세심히 지켜볼게요", "너무 지치기 전에 지지해 드릴 수 있게 가족과 함께 지켜볼게요"], ans: closely, opts: [quietly, briefly, calmly]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 호흡 노력을 관찰하고 지치기 전에 대응하는 4문장 순서
+    why: 호흡 노력을 보고 있다고 알리고, 보조근 사용 같은 징후를 짚고, 그 징후가 심해지면 지지를 늘리며, 늦기 전에 돕겠다는 말로 마무리해요.
+    lines:
+    - {en: "I'm watching how hard you're working to breathe.", icon: magnify, ko: "얼마나 힘들게 숨 쉬는지 보고 있어요", note: 관찰}
+    - {en: "Using your neck muscles is one sign of that effort, so I'm checking your shoulders too.", icon: stetho, ko: "목 근육을 쓰는 건 그 노력의 한 징후라 어깨도 확인해요", note: 징후}
+    - {en: "If those signs get worse, we'll give you more support.", icon: shield, ko: "그 징후가 심해지면 지지를 더 해드릴게요", note: 지지}
+    - {en: "That way, we can help before you get too tired.", icon: bell, ko: "그렇게 하면 너무 지치기 전에 도울 수 있어요", note: 이유}

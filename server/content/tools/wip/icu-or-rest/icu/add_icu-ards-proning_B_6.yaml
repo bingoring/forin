@@ -1,0 +1,53 @@
+# [tag, icon, why, decoy, ko1, ko2, ans, w1,w2,w3]
+situations:
+- title: 난치성 저산소증 ECMO 의뢰
+  s:
+  - [상태 요약, chartup, '''despite''로 앞선 치료가 효과가 없었다는 점을 한 단어에 담아요. 의뢰 사유를 짧고 분명하게 말해요.', in the unit, 복와위와 최대 환기에도 계속 빈혈이에요., 복와위와 최대 환기에도 계속 열이 나요., hypoxic, anemic, feverish, dizzy]
+  - [의뢰 기준, check, '''meets criteria''는 기준을 충족했다는 사실을 짧게 전하고 ''now''로 시점을 알려요.', to the unit, 지금 ECMO 팀에 자문을 구할 기준을 설명해 드려요., 지금 ECMO 팀에 자문을 구할 기준을 적어 둘게요., ECMO, burn, renal, psych]
+  - [자료 준비, board, '''for the referral''로 모으는 이유를 밝혀요. 의뢰할 때는 가스 결과, P/F 비율, 환기 설정이 판단 자료예요.', for the doctor, '의뢰를 위해 혈액가스, P/F 비율, 가족 연락처를 모을게요.', '의뢰를 위해 혈액가스, P/F 비율, 보험 정보를 모을게요.', settings, photos, stickers, receipts]
+  - [한계 설명, chartup, '''Even at''은 최대 조건에서도라는 뜻이라 더 올릴 여지가 없다는 점을 보여요. ''come up''은 수치가 오른다는 구어 표현이에요.', since morning, FiO2를 100퍼센트로 해도 열이 오르지 않아요., FiO2를 100퍼센트로 해도 혈압이 오르지 않아요., numbers, fevers, moods, weights]
+  - [연락 약속, speech, '''and''로 두 행동을 이어 연락과 요약을 함께 하겠다고 말해요. 요약은 의뢰받는 쪽이 경과를 빨리 파악하게 해요.', on the phone, ECMO 코디네이터에게 연락해서 가족 상황을 요약할게요., ECMO 코디네이터에게 연락해서 약 목록을 요약할게요., course, diet, hobbies, birthday]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: ECMO 의뢰 4문장 순서
+    why: 치료에도 계속 저산소증이라는 사실로 시작해, 의뢰 기준을 충족한다고 판단하고, 자료를 모은 뒤 코디네이터에게 연락해요.
+    lines:
+    - [He remains hypoxic despite proning and maximal ventilation., chartup, 복와위와 최대 환기에도 계속 저산소증이에요, 상태]
+    - [This meets criteria to consult the ECMO team now., check, 지금 ECMO 팀에 자문을 구할 기준을 충족해요, 기준]
+    - ['I''ll gather his gases, P/F ratio, and vent settings for the referral.', board, '의뢰를 위해 혈액가스, P/F 비율, 인공호흡기 설정을 모을게요', 자료]
+    - ['With that gathered, I''ll call the ECMO coordinator and summarize his course.', speech, 그게 모이면 ECMO 코디네이터에게 연락해서 경과를 요약할게요, 연락]
+- title: 기흉·기압손상 동반 위기
+  s:
+  - [의심 소견, stetho, '''suggest''는 단정하지 않고 의심한다는 뜻이에요. 압력이 높고 호흡음이 한쪽만 다르면 기흉을 먼저 생각해요.', in the lungs, 압력이 높고 양쪽 동공이 다르면 기흉이 의심돼요., 압력이 높고 양쪽 팔 혈압이 다르면 기흉이 의심돼요., unequal, loud, rapid, wet]
+  - [처치 준비, siren, '''and''로 두 행동을 이어 말하면 환기 설정을 조정하면서 다음 처치를 준비한다는 뜻이 전해져요. 흉관은 의사가 넣고 간호사는 준비를 맡아요.', with the monitor, 소음을 낮추고 흉관 삽입을 준비할게요., 조명을 낮추고 흉관 삽입을 준비할게요., chest, feeding, nasal, ear]
+  - [의사 호출, speech, '''call''과 ''set up''을 and로 이어 연락과 준비를 함께 한다고 말해요. 감압은 의사가 시행하는 처치예요.', to the room, 의사한테 연락하고 조명을 준비할게요., 의사한테 연락하고 장갑을 준비할게요., decompression, documentation, discussion, demonstration]
+  - [소견 보고, stetho, '''isn''t moving the same''은 한쪽이 덜 움직인다는 관찰을 짧게 말해요. ''on both sides''로 비교한 범위를 밝혀요.', at the head, 양쪽 눈이 똑같이 움직이지 않아요., 양쪽 다리가 똑같이 움직이지 않아요., chest, arms, legs, eyes]
+  - [물품 준비, gear, '''ready''는 바로 쓸 수 있게 준비해 둔다는 뜻이에요. ''at the bedside''로 장소를 밝혀 의사가 오면 바로 시행해요.', for the doctor, 침상 곁에 흡인 트레이를 준비해 둘게요., 침상 곁에 드레싱 트레이를 준비해 둘게요., bedside, doorway, window, corner]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 기흉 의심 대응 4문장 순서
+    why: 소견으로 기흉을 의심하고, 흉부 움직임으로 뒷받침한 뒤, 의사를 부르고 감압을 준비하며, 그에 맞춰 흉관 트레이를 침상 곁에 준비해요.
+    lines:
+    - [High pressures with unequal breath sounds suggest a pneumothorax., stetho, 압력이 높고 양쪽 호흡음이 다르면 기흉이 의심돼요, 의심]
+    - ['That fits, because his chest isn''t moving the same on both sides.', stetho, '맞아요, 양쪽 흉부가 똑같이 움직이지 않으니까요', 근거]
+    - [So I'll call the physician and set up for decompression., speech, 그러니 의사한테 연락하고 감압을 준비할게요, 호출]
+    - ['For that, I''ll get the chest tube tray ready at the bedside.', gear, 그걸 위해 침상 곁에 흉관 트레이를 준비해 둘게요, 준비]
+- title: 복와위 중 안면 압박괴사 위기
+  s:
+  - [즉시 조치, siren, '''needs…right away''는 필요한 일과 시점을 한 문장에 담아요. 깊어진 압박 손상은 같은 곳이 계속 눌리지 않게 하는 것이 먼저예요.', at the foot, 깊은 베개 자국이라 머리 위치를 바로 바꿔야 해요., 깊은 멍이라 머리 위치를 바로 바꿔야 해요., head, hands, feet, knees]
+  - [압박 해소, bandage, '''offload''는 눌리는 힘을 그 부위에서 없앤다는 의료 표현이에요. 패딩을 더하는 것만으로는 부족하고 눌림 자체를 줄여야 해요.', by the door, 바로 담요를 더하고 그 부위 압박을 없애 줄게요., 바로 수건을 더하고 그 부위 압박을 없애 줄게요., padding, soap, gauze, lotion]
+  - [자문·기록, pencil, '''and''로 자문과 기록을 이어 말하면 두 일을 함께 한다는 뜻이에요. 단계를 적어 두면 이후 변화를 같은 기준으로 비교할 수 있어요.', for the unit, 상처 관리팀에 자문을 구하고 손상 날짜를 기록할게요., 상처 관리팀에 자문을 구하고 손상 크기를 기록할게요., stage, price, name, owner]
+  - [변화 보고, magnify, '''than it looked yesterday''로 비교 기준을 말하면 변화를 객관적으로 전할 수 있어요. ''deeper''는 나빠졌다는 뜻이에요.', at the corner, 이 자국이 어제 봤을 때보다 더 붉어졌어요., 이 자국이 어제 봤을 때보다 더 따뜻해졌어요., deeper, wider, darker, warmer]
+  - [체위 일정, calendar, '''from now on''은 지금부터 계속한다는 뜻이에요. 정해진 간격으로 체위를 바꾸면 같은 곳이 오래 눌리지 않아요.', for the night, 이제부터는 한 시간마다 침대를 조정할게요., 이제부터는 한 시간마다 조명을 조정할게요., position, lights, gown, blanket]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 안면 압박 손상 대응 4문장 순서
+    why: 어제보다 깊어진 변화를 알리고, 머리 위치를 바꾸고, 그다음 패딩과 압박 해소를 하고, 마지막으로 상처 관리팀에 자문해요.
+    lines:
+    - [This mark is deeper than it looked yesterday., magnify, 이 자국이 어제 봤을 때보다 더 깊어졌어요, 변화]
+    - [This deep pressure injury needs the head repositioned right away., siren, 깊은 압박 손상이라 머리 위치를 바로 바꿔야 해요, 조치]
+    - ['Once it''s repositioned, let''s add padding and offload that area immediately.', bandage, 위치를 바꾸면 바로 패딩을 더하고 그 부위 압박을 없애 줘요, 해소]
+    - ['With that done, I''ll consult wound care and document the stage of injury.', pencil, 그게 끝나면 상처 관리팀에 자문을 구하고 손상 단계를 기록할게요, 자문]

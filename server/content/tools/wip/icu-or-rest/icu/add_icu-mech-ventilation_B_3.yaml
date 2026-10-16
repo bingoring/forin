@@ -1,0 +1,90 @@
+- title: 폐보호 환기 적용
+  s:
+  - {t: "원리 설명", i: bulb, w: "actually는 예상과 반대라는 점을 알리는 부사예요. 작은 호흡이 폐를 보호한다는 말은 보호자의 직관과 달라서, 이 부사로 의외라는 점을 먼저 인정하고 이유를 말해요.", d: "for the staff", k: ["숨을 더 천천히 주는 게 오히려 손상된 폐를 추가 손상에서 보호해요", "숨을 더 작게 주는 게 오히려 손상된 폐를 추가 감염에서 보호해요"], a: "injured", o: ["healthy", "tiny", "sleepy"]}
+  - {t: "목표 설명", i: gear, w: "to avoid -ing는 피하고 싶은 결과를 말하는 목적 표현이에요. plateau pressure를 낮게 두는 이유가 과팽창을 막기 위해서라는 인과가 한 문장에 담겨요.", d: "for now", k: ["폐가 건조해지지 않게 고평부압을 낮게 유지해요", "폐가 과팽창되지 않게 가습을 낮게 유지해요"], a: "plateau", o: ["cuff", "water", "tank"]}
+  - {t: "공감 설명", i: faceWorried, w: "It feels counterintuitive는 가족의 직관이 틀린 것이 아니라 그렇게 느낄 수 있다고 인정하는 말이에요. but 뒤에 이유를 이어서 설득이 아니라 이해로 이어지게 해요.", d: "at the bedside", k: ["직관과는 다르게 느껴지겠지만, 부드러운 마사지가 회복을 도와요", "직관과는 다르게 느껴지겠지만, 부드러운 환기가 식욕을 도와요"], a: "gentle", o: ["rapid", "cold", "hot"]}
+  - {t: "의도 설명", i: bulb, w: "than you might expect는 상대의 예상을 먼저 짚고 그것과 다르다고 말하는 비교 모양이에요. on purpose를 끝에 붙여 이것이 실수나 부족이 아니라 계획이라는 점을 분명히 해요.", d: "from the cart", k: ["예상보다 작은 일회호흡량을 밤에만 쓰고 있어요", "예상보다 작은 일회호흡량을 잠시 쓰고 있어요"], a: "expect", o: ["like", "need", "hope"]}
+  - {t: "조건 대응", i: magnify, w: "If ... too high, we ...는 어떤 값이 넘으면 무엇을 하는지 기준을 미리 말하는 조건문이에요. to protect his lungs로 용량을 낮추는 목적을 붙여서 수치를 조절하는 이유가 환자의 안전이라는 점을 알려요.", d: "at dawn", k: ["경보가 너무 자주 울리면 폐를 보호하려고 용량을 낮춰요", "고평부압이 너무 오르면 감염을 막으려고 용량을 낮춰요"], a: "protect", o: ["check", "test", "rest"]}
+  - {t: "공감 설명", i: faceWorried, w: "can feel slow는 보호자가 느끼는 답답함을 인정하는 말이에요. but으로 이어서 느린 속도의 이유가 회복할 시간이라는 점을 말하면 기다림이 의미 있게 들려요.", d: "in the night", k: ["이 부드러운 방식은 답답하게 느껴져도 폐가 회복할 시간을 줘요", "이 부드러운 방식은 느리게 느껴져도 의사가 쉴 시간을 줘요"], a: "heal", o: ["grow", "stretch", "shrink"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "폐보호 환기 설명 4문장 순서"
+    why: "작은 호흡을 일부러 쓴다고 말하고, That's because로 이유를 설명하고, To avoid that으로 압력 관리를 말한 뒤, it이 압력을 가리키며 기다림이 느려도 회복 시간이라고 맺어요. 뒤 줄이 앞 줄을 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "We're using smaller breaths on purpose.", icon: bulb, ko: "작은 호흡을 일부러 쓰고 있어요", note: "의도"}
+    - {en: "That's because big breaths can overstretch his injured lungs.", icon: shield, ko: "큰 호흡은 손상된 폐를 과하게 늘릴 수 있어서예요", note: "이유"}
+    - {en: "To avoid that, we keep the plateau pressure low.", icon: gear, ko: "그걸 피하려고 고평부압을 낮게 유지해요", note: "관리"}
+    - {en: "Keeping it low can feel slow, but it gives his lungs time to heal.", icon: faceWorried, ko: "낮게 유지하면 느리게 느껴져도 회복할 시간을 줘요", note: "공감"}
+- title: 자발호흡 능력 사정
+  s:
+  - {t: "평가 목적", i: magnify, w: "Let's check ... to see ...는 확인할 것과 목적을 한 문장에 함께 말하는 모양이에요. RSBI는 호흡수를 일회호흡량으로 나눈 값이라서 스스로 숨 쉴 준비가 됐는지 가늠하는 지표예요.", d: "for the chart", k: ["스스로 얼마나 오래 숨 쉬는지 보려고 RSBI를 확인해요", "스스로 얼마나 잘 걷는지 보려고 RSBI를 확인해요"], a: "RSBI", o: ["weight", "height", "age"]}
+  - {t: "관찰 보고", i: monitor, w: "during은 그 시도가 이어지는 동안 계속 본다는 시간 범위를 말해요. rate와 effort는 숫자와 보이는 힘듦을 함께 보겠다는 뜻이라서 수치만으로는 놓치는 피로를 잡을 수 있어요.", d: "at the desk", k: ["이 자발호흡 시도 동안 맥박수와 호흡 노력을 지켜보고 있어요", "이 식사 시도 동안 호흡수와 호흡 노력을 지켜보고 있어요"], a: "effort", o: ["mood", "diet", "weight"]}
+  - {t: "보고 약속", i: speech, w: "look promising은 확정이 아니라 좋아질 가능성을 말하는 신중한 표현이에요. so I'll flag him for the team은 결정은 팀이 한다는 뜻이라 간호사가 단독으로 약속하지 않아요.", d: "this afternoon", k: ["표정이 밝아서 팀에 보고해둘게요", "수치가 희망적이라 팀에 표시해둘게요"], a: "promising", o: ["perfect", "final", "random"]}
+  - {t: "의사소통", i: speech, w: "yes-or-no questions는 말을 할 수 없는 환자도 신호 하나로 답하게 하는 질문 형태예요. 한 번 쥐기처럼 동작과 횟수를 미리 정해 주면 환자가 답을 어떻게 해야 하는지 헷갈리지 않아요.", d: "in a row", k: ["예/아니요로 답할 수 있는 질문을 몇 개 할 건데, 맞으면 제 손을 두 번 꽉 쥐어 주세요", "예/아니요로 답할 수 있는 질문을 몇 개 할 건데, 맞으면 눈을 한 번 깜빡여 주세요"], a: "questions", o: ["tests", "games", "orders"]}
+  - {t: "안심 말", i: faceWorried, w: "Take your time은 속도 압박을 풀어 주는 관용 표현이에요. I'm watching과 there's no rush를 이어 말하면 환자가 천천히 해도 안전하다고 느껴 답하기가 쉬워져요.", d: "again soon", k: ["천천히 하세요, 제가 도와드릴 테니 서두르지 않아도 돼요", "천천히 하세요, 제가 지켜보고 있으니 걱정하지 않아도 돼요"], a: "rush", o: ["pain", "fear", "doubt"]}
+  - {t: "소견 보고", i: check, w: "steady and unlabored는 규칙적이고 애쓰는 모습이 없다는 두 가지 관찰을 and로 묶은 말이에요. which is a great sign으로 앞의 관찰이 왜 좋은지 해석을 덧붙여 가족이 의미를 알아요.", d: "over time", k: ["표정이 안정적이고 힘들어 보이지 않는데, 아주 좋은 징후예요", "호흡이 안정적이고 힘들어 보이지 않는데, 처음 보는 징후예요"], a: "steady", o: ["slow", "fast", "weak"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "자발호흡 시도 평가 4문장 순서"
+    why: "무엇을 확인하는지 말하고, 시도 내내 지켜본다고 말하고, So far로 지금까지의 소견을 말한 뒤, Based on that으로 소견을 근거로 팀에 알린다고 맺어요. So far와 Based on that이 앞 줄을 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "Let's check his RSBI to see how well he's breathing on his own.", icon: magnify, ko: "스스로 얼마나 잘 숨 쉬는지 RSBI로 확인해요", note: "목적"}
+    - {en: "I'm watching his rate and effort throughout the test.", icon: monitor, ko: "검사 내내 호흡수와 노력을 지켜보고 있어요", note: "관찰"}
+    - {en: "So far, his breathing looks steady and unlabored, which is a great sign.", icon: check, ko: "지금까지 호흡이 안정적이고 편해 보여서 좋은 징후예요", note: "소견"}
+    - {en: "Based on that, I'll flag him for the team.", icon: speech, ko: "그걸 근거로 팀에 보고해둘게요", note: "보고"}
+- title: permissive hypercapnia 이해
+  s:
+  - {t: "의도 설명", i: bulb, w: "allowing은 막을 수 있는 것을 일부러 두고 본다는 뜻이에요. on purpose를 끝에 붙이면 높은 수치가 방치가 아니라 계획된 선택이라는 점이 분명해져요.", d: "from the lab", k: ["일부러 방 온도가 조금 높게 유지되도록 두고 있어요", "오늘만 이산화탄소가 조금 높게 유지되도록 두고 있어요"], a: "allowing", o: ["forcing", "helping", "asking"]}
+  - {t: "조건 설명", i: shield, w: "As long as는 이 조건이 유지되는 동안만 성립한다는 뜻이에요. 이산화탄소를 높게 두는 방식은 pH가 안전 범위일 때만 허용되므로 조건을 함께 말해야 방치가 아니라 관리라는 것이 전해져요.", d: "in the lab", k: ["혈액 산소가 안전한 범위에 있는 한, 이렇게 하는 게 폐를 보호해요", "혈액 pH가 안전한 범위에 있는 한, 이렇게 하는 게 신장을 보호해요"], a: "safe", o: ["new", "wide", "long"]}
+  - {t: "정도 설명", i: bulb, w: "deliberate trade-off는 얻는 것과 감수하는 것을 맞바꾼 의도적인 선택이라는 뜻이에요. and we're monitoring it closely로 감수하는 부분을 계속 감시한다고 덧붙여 걱정을 줄여요.", d: "from the desk", k: ["의도적인 약속이고, 자세히 계속 지켜보고 있어요", "의도적인 절충이고, 자세히 계속 설명하고 있어요"], a: "deliberate", o: ["random", "secret", "painful"]}
+  - {t: "주의 설명", i: shield, w: "Chasing은 목표 수치를 억지로 따라가는 모습을 그리는 동사예요. could actually hurt는 가능성을 완곡하게 말하고 예상과 다를 수 있다는 actually로 이 방식의 이유를 알려요.", d: "for the unit", k: ["여기서 정상 수치만 믿다가는 오히려 폐를 더 다치게 할 수 있어요", "여기서 정상 수치만 쫓다가는 오히려 간을 더 다치게 할 수 있어요"], a: "lungs", o: ["heart", "skin", "eyes"]}
+  - {t: "검사 설명", i: lab, w: "to make sure는 확인의 목적을 말하는 표현이에요. 혈액가스는 pH와 이산화탄소를 직접 보여 주는 검사라서 수치를 높게 두는 동안 안전 범위를 벗어나지 않는지 자주 확인해요.", d: "after dinner", k: ["혈당이 원하는 범위에 있는지 확인하려고 혈액가스를 자주 검사해요", "pH가 원하는 범위에 있는지 의사에게 알리려고 혈액가스를 자주 검사해요"], a: "pH", o: ["weight", "pulse", "height"]}
+  - {t: "설명 약속", i: speech, w: "in plain terms는 전문 용어 없이 쉬운 말로라는 뜻이에요. so you always know why는 설명하는 목적이 가족이 이유를 늘 알도록 하는 것이라는 점을 밝혀서 의도적으로 높게 두는 이유에 대한 신뢰를 지켜요.", d: "on the phone", k: ["왜 이렇게 두는지 항상 아실 수 있게 변화를 그림으로 설명해 드릴게요", "왜 이렇게 두는지 항상 아실 수 있게 약 변화를 쉬운 말로 설명해 드릴게요"], a: "explain", o: ["write", "show", "repeat"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "높은 이산화탄소를 두는 이유 4문장 순서"
+    why: "일부러 높게 둔다고 말하고, 그것이 pH가 안전할 때 폐를 보호한다고 설명하고, That's why로 혈액가스를 자주 본다고 이은 뒤, each result로 그 결과를 쉬운 말로 알려 주겠다고 맺어요. 뒤 줄이 앞 줄을 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "We're allowing his carbon dioxide to run a bit high on purpose.", icon: bulb, ko: "일부러 이산화탄소가 조금 높게 유지되도록 두고 있어요", note: "의도"}
+    - {en: "That protects his lungs as long as his blood pH stays in a safe range.", icon: shield, ko: "pH가 안전한 범위면 그게 폐를 보호해요", note: "이유"}
+    - {en: "That's why we check his blood gas often.", icon: lab, ko: "그래서 혈액가스를 자주 확인해요", note: "검사"}
+    - {en: "I'll share each result and explain it in plain terms.", icon: speech, ko: "결과마다 쉬운 말로 설명해 드릴게요", note: "약속"}
+- title: 흡인 후 산소화 회복 관리
+  s:
+  - {t: "안심 설명", i: shield, w: "brief와 common으로 일시적이고 흔한 일이라는 점을 두 번 알려 가족의 놀람을 줄여요. and I'm helping him recover는 지켜보기만 하는 것이 아니라 지금 도움을 주는 중이라는 행동을 함께 전해요.", d: "at the door", k: ["흡인 후 목소리가 잠깐 떨리는 건 흔한 일이라, 회복을 돕고 있어요", "흡인 후 산소가 잠깐 떨어지는 건 흔한 일이라, 간호사를 돕고 있어요"], a: "recover", o: ["relax", "sleep", "wake"]}
+  - {t: "회복 처치", i: gear, w: "a few extra breaths of oxygen은 평소보다 몇 번 더라는 양과 산소라는 내용을 정확히 말해요. to bring it back up은 이 처치의 목적이 떨어진 수치를 되돌리는 것이라는 점을 알려요.", d: "for the team", k: ["통증이 다시 가라앉게 추가로 몇 번 더 숨을 넣어드릴게요", "혈압이 다시 올라오게 추가로 몇 번 더 숨을 넣어드릴게요"], a: "oxygen", o: ["sedation", "fluid", "medicine"]}
+  - {t: "경과 보고", i: chartup, w: "already는 예상보다 빠르게라는 뜻이고 climbing back은 떨어졌던 곳에서 올라오는 중이라는 진행 상태를 말해요. 회복이 진행 중이라는 사실을 정상에 도달했다는 말과 구분해서 전해요.", d: "in the end", k: ["소리가 벌써 정상으로 다시 돌아오고 있어요", "수치가 벌써 어제 수준으로 다시 올라오고 있어요"], a: "climbing", o: ["drifting", "jumping", "sinking"]}
+  - {t: "공감 격려", i: faceWorried, w: "That was a lot for you는 환자가 방금 겪은 일의 무게를 인정하는 말이에요. but you're doing great로 칭찬을 잇고 마지막에 할 일을 짧게 주어서 숨이 가쁜 환자도 따라 하기 쉬워요.", d: "from now on", k: ["많이 힘드셨을 텐데 아주 잘하고 계세요, 어깨 풀고 숨 쉬세요", "많이 놀라셨을 텐데 아주 잘하고 계세요, 긴장 풀고 숨 쉬세요"], a: "breathe", o: ["smile", "wait", "count"]}
+  - {t: "처치 설명", i: gear, w: "a couple of extra breaths는 두어 번이라는 뜻으로 소량의 추가라는 점을 알려요. on the bag처럼 도구를 말하면 가족이 지금 손에 든 것이 무엇인지 알게 돼요.", d: "from the wall", k: ["백으로 몇 번 더 숨을 넣어서 더 편하게 쉬게 돕고 있어요", "백으로 몇 번 더 숨을 넣어서 더 빨리 잠들게 돕고 있어요"], a: "faster", o: ["louder", "heavier", "darker"]}
+  - {t: "안심 설명", i: shield, w: "expected and temporary는 미리 예상된 일이고 곧 지나간다는 두 가지 근거를 and로 묶었어요. not a sign that ...으로 가족이 가장 두려워하는 해석을 직접 부정해요. 다만 계속 지켜본다는 말과 함께 해야 해요.", d: "by itself", k: ["이 소음은 예상됐던 일시적인 거지, 뭔가 잘못됐다는 징후는 아니에요", "이 하락은 예상됐던 일시적인 거지, 뭔가 바뀌었다는 징후는 아니에요"], a: "temporary", o: ["sudden", "hidden", "painful"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "흡인 후 산소 회복 설명 4문장 순서"
+    why: "흡인 뒤 산소가 잠깐 떨어졌다고 말하고, That으로 흔한 일이라 알리며 돕는 중이라고 하고, 이어 수치가 올라온다고 보고한 뒤, So로 그러니 일시적인 하락이었다고 맺어요. So가 앞 줄의 회복을 근거로 삼아서 순서가 하나예요."
+    lines:
+    - {en: "His oxygen dipped briefly after the suctioning.", icon: monitor, ko: "흡인 후 산소가 잠깐 떨어졌어요", note: "상황"}
+    - {en: "That's common, and I'm giving him a few extra breaths on the bag.", icon: gear, ko: "흔한 일이라 백으로 몇 번 더 숨을 넣고 있어요", note: "처치"}
+    - {en: "His number is already climbing back to normal.", icon: chartup, ko: "수치가 벌써 정상으로 올라오고 있어요", note: "경과"}
+    - {en: "So the dip was temporary, not a sign that something's wrong.", icon: shield, ko: "그러니 일시적인 하락이지 문제의 징후는 아니에요", note: "안심"}
+- title: ABG 통합 환기 조정 소통
+  s:
+  - {t: "수치 보고", i: lab, w: "is up, is dropping은 수치의 방향을 짧은 진행형으로 말해 의사가 바로 변화를 알아듣게 해요. 보고할 때는 해석보다 PaCO2와 pH처럼 값을 먼저 말하는 것이 정확해요.", d: "from the lab", k: ["이번 가스 결과에서 PaCO2는 올랐고 혈압은 떨어지고 있어요", "이번 가스 결과에서 PaO2는 올랐고 pH는 떨어지고 있어요"], a: "gas", o: ["scan", "film", "chart"]}
+  - {t: "제안 표현", i: speech, w: "I'd suggest는 명령이 아니라 의사에게 의견을 내는 완곡한 표현이에요. 간호사는 처방을 직접 바꾸지 않으므로 수치를 근거로 제안하는 말투를 써요.", d: "for his comfort", k: ["산소를 개선하려면 호흡수를 늘리는 걸 제안하고 싶어요", "소리를 개선하려면 호흡수를 늘리는 걸 제안하고 싶어요"], a: "suggest", o: ["order", "demand", "decide"]}
+  - {t: "호출 준비", i: speech, w: "with the numbers and my recommendation은 전화하며 가져갈 정보 두 가지를 말해요. 수치만이 아니라 제안까지 준비하면 의사가 짧은 통화로 바로 결정할 수 있어요.", d: "after lunch", k: ["수치와 제 사진을 가지고 의사에게 전화할게요", "수치와 제 차트를 가지고 의사에게 전화할게요"], a: "numbers", o: ["photos", "questions", "complaints"]}
+  - {t: "문제 구분", i: magnify, w: "but은 앞의 좋은 소견과 뒤의 문제를 대비시켜 어디에 집중해야 하는지 알려요. 산소화와 환기는 다른 문제라서 산소가 괜찮아도 이산화탄소 배출이 안 되면 따로 말해야 해요.", d: "for the shift", k: ["산소는 괜찮아 보이는데, 지금 문제는 혈압이에요", "맥박은 괜찮아 보이는데, 지금 문제는 환기예요"], a: "ventilation", o: ["circulation", "digestion", "medication"]}
+  - {t: "해석 설명", i: bulb, w: "Putting A together with B는 두 정보를 합쳐서 본다는 뜻이에요. tells the whole story는 검사 수치 하나만으로는 알 수 없고 환자의 실제 모습과 함께 볼 때 의미가 정해진다는 말이에요.", d: "in one page", k: ["가스 결과를 식사 양상과 같이 보면 전체 상황이 보여요", "가스 결과를 호흡 양상과 같이 보면 전체 일정이 보여요"], a: "pattern", o: ["tube", "mask", "bag"]}
+  - {t: "기록 약속", i: pencil, w: "document 뒤에 세 가지를 나열해 무엇을 남기는지 구체적으로 말해요. 결과·사정·계획을 함께 쓰면 다음 교대자가 왜 그 계획이 나왔는지 따라갈 수 있어요.", d: "by memo", k: ["가스 결과와 제 사정, 그리고 의사의 계획을 보고할게요", "가스 결과와 제 사정, 그리고 의사의 일정을 정리할게요"], a: "document", o: ["review", "repeat", "announce"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "ABG 결과 보고와 기록 4문장 순서"
+    why: "가스 수치를 먼저 말하고, So로 문제가 산소가 아니라 환기라고 정리하고, 그 수치로 전화해 제안하고, 마지막에 Afterward로 통화 뒤 계획까지 기록해요. 뒤 줄이 앞 줄을 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "His PaCO2 is up and his pH is dropping on this gas.", icon: lab, ko: "이번 가스에서 PaCO2는 올랐고 pH는 떨어지고 있어요", note: "수치"}
+    - {en: "So the problem is his ventilation, not his oxygen.", icon: magnify, ko: "그러니 문제는 산소가 아니라 환기예요", note: "해석"}
+    - {en: "I'll call the physician with these numbers and suggest increasing the rate.", icon: speech, ko: "이 수치로 의사에게 전화해 호흡수 증가를 제안할게요", note: "제안"}
+    - {en: "Afterward, I'll document the gas, my assessment, and the physician's plan.", icon: pencil, ko: "그 뒤 가스, 사정, 의사의 계획을 기록할게요", note: "기록"}

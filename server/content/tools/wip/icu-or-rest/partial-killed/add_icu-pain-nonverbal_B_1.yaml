@@ -1,0 +1,70 @@
+- title: CPOT 통증 사정
+  s:
+  - {t: "도구 설명", i: monitor, w: "looks at 뒤에 항목을 쉼표로 나열해 CPOT가 보는 범위를 한 문장에 담아요. 마지막 항목 앞의 and가 목록의 끝을 알려 줘요.", d: "at the alarm", k: ["CPOT는 표정과 체온, 인공호흡기 순응을 봐요.", "CPOT는 표정과 근긴장, 인공호흡기 알람을 봐요."], a: "tension", o: ["mass", "growth", "length"]}
+  - {t: "관찰 제안", i: magnify, w: "Let's …는 함께 하자는 제안 모양이에요. watch로 지켜보고 note로 적어 두는 두 동작을 and가 한 흐름으로 이어요.", d: "his monitor", k: ["손을 지켜보고 뻣뻣한 근육이 있는지 봐요.", "얼굴을 지켜보고 뻣뻣한 관절이 있는지 봐요."], a: "face", o: ["chart", "pump", "bed"]}
+  - {t: "점수 해석", i: chartup, w: "that은 앞의 관찰 두 가지를 한꺼번에 가리키며 그것들이 점수로 이어진다고 말해요. and로 두 징후를 한 호흡에 나열해요.", d: "on the screen", k: ["입술을 깨물고 뻣뻣해지면 그것도 점수에 들어가요.", "이마를 찌푸리고 떨고 있으면 그것도 점수에 들어가요."], a: "furrowed", o: ["raised", "bruised", "pale"]}
+  - {t: "순응 평가", i: stetho, w: "fight the vent는 호흡기와 호흡이 맞지 않는 모습을 그림처럼 말해요. so that scores too로 앞의 관찰을 점수로 바로 연결해요.", d: "with the nurse", k: ["인공호흡기와 많이 씨름해도 그것도 점수예요.", "침대와 조금 씨름해도 그것도 점수예요."], a: "fighting", o: ["matching", "tolerating", "following"]}
+  - {t: "합산·기록", i: pencil, w: "total은 여기서 동사로 '합산하다'예요. and document it으로 합산 바로 뒤에 기록까지 한 흐름에 묶어요.", d: "the alarm", k: ["점수를 평균내서 기록해요.", "점수를 합산해서 보고해요."], a: "total", o: ["erase", "hide", "copy"]}
+  - {t: "점수 해석", i: chartup, w: "A CPOT of four처럼 of로 점수를 붙이고 means로 그 점수의 뜻을 풀어요. yet이 붙어 앞으로 달라질 수 있다는 여지를 남겨요.", d: "this shift", k: ["CPOT가 4점이면 호흡이 아직 조절되지 않은 거예요.", "CPOT가 4점이면 구토가 아직 조절되지 않은 거예요."], a: "controlled", o: ["charted", "reported", "scored"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "CPOT 사정 4문장 순서"
+    why: "먼저 징후를 관찰하고, 본 징후마다 점수가 생기고, 그 점수들을 더한 뒤, 합계가 기준을 넘으면 알려요. 2줄의 each sign은 1줄의 관찰을, 3줄의 them은 2줄의 점수를, 4줄의 that total은 3줄의 합계를 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "First, let's watch his face and body for signs of pain.", icon: magnify, ko: "먼저 얼굴과 몸에 통증 징후가 있는지 지켜봐요", note: "관찰"}
+    - {en: "Each sign we see earns a point on the CPOT.", icon: chartup, ko: "보이는 징후마다 CPOT에서 1점씩 받아요", note: "점수"}
+    - {en: "Once we add them up, let's document the total.", icon: pencil, ko: "다 더하면 합계를 기록해요", note: "기록"}
+    - {en: "If that total is above two, let's tell the physician.", icon: bell, ko: "그 합계가 2점을 넘으면 의사에게 알려요", note: "보고"}
+- title: BPS 등 행동척도 이해
+  s:
+  - {t: "도구 설명", i: monitor, w: "scores는 여기서 항목마다 점수를 매긴다는 동사예요. 세 가지를 쉼표로 이어 BPS가 보는 영역을 한눈에 보여 줘요.", d: "the alarm", k: ["BPS는 표정과 다리 움직임, 인공호흡기 순응도를 봐요.", "BPS는 표정과 팔 움직임, 인공호흡기 알람 소리를 봐요."], a: "movement", o: ["position", "weight", "length"]}
+  - {t: "도구 비교", i: board, w: "Some … others …로 두 부류를 나란히 놓아 비교해요. as long as 대신 if we're consistent로 일관성이 둘 다 괜찮은 조건이라고 알려요.", d: "on the floor", k: ["어떤 병동은 CPOT를, 어떤 병동은 RASS를 써요 — 일관되면 둘 다 괜찮아요.", "어떤 병동은 CPOT를, 어떤 병동은 BPS를 써요 — 기록하면 둘 다 괜찮아요."], a: "consistent", o: ["careful", "finished", "private"]}
+  - {t: "원리 설명", i: bulb, w: "let us assess처럼 let us 뒤에 원형을 써서 '할 수 있게 해 준다'는 뜻이에요. without words가 이 도구의 쓸모를 한마디로 알려 줘요.", d: "in groups", k: ["행동척도는 말 없이도 진정을 사정하게 해줘요.", "행동척도는 말 없이도 통증을 설명하게 해줘요."], a: "assess", o: ["describe", "explain", "report"]}
+  - {t: "환자 상태", i: faceWorried, w: "but으로 못 하는 것과 여전히 하는 것을 대비해요. still tell us a lot에서 still이 말은 못 해도 정보는 있다는 점을 살려 줘요.", d: "at night", k: ["말은 못 해도 다리와 얼굴이 많은 걸 알려줘요.", "말은 못 해도 팔과 눈이 많은 걸 알려줘요."], a: "speak", o: ["swallow", "chew", "cough"]}
+  - {t: "일관성 제안", i: handshake2, w: "Let's pick …은 함께 고르자는 제안이에요. our unit validated가 앞의 tool을 꾸며 '우리 병동이 검증한' 도구라고 한정해요.", d: "the team", k: ["우리 병동이 검증한 도구를 골라서 새로 써요.", "우리 병동이 검증한 도구를 모아서 일관되게 써요."], a: "validated", o: ["ordered", "borrowed", "printed"]}
+  - {t: "팀 합의", i: handshake2, w: "as long as는 '…하기만 하면'이라는 조건이에요. the same one의 one이 앞의 scale을 대신 받아 반복을 피해요.", d: "on paper", k: ["어느 척도든 팀 전체가 다른 걸 쓰면 돼요.", "어느 척도든 간호사 모두가 같은 걸 쓰면 돼요."], a: "uses", o: ["buys", "needs", "saves"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "행동척도 선택 4문장 순서"
+    why: "환자가 말을 못 한다는 문제를 먼저 꺼내고, 그래서 행동척도를 쓴다고 이어 가고, 척도가 여럿이니 하나를 고르자고 하고, 마지막으로 그 선택을 팀이 지키자고 닫아요. 2줄의 that은 1줄의 문제를, 3줄의 either one은 2줄의 척도들을, 4줄의 that one은 3줄의 선택을 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "He can't tell us where it hurts.", icon: faceWorried, ko: "어디가 아픈지 말해 주지 못해요", note: "문제"}
+    - {en: "That's why we use a behavior scale like CPOT or BPS.", icon: board, ko: "그래서 CPOT나 BPS 같은 행동척도를 써요", note: "도구"}
+    - {en: "Either one works, so let's pick the one our unit validated.", icon: check, ko: "둘 다 되니 우리 병동이 검증한 걸 골라요", note: "선택"}
+    - {en: "Then let's all use that one every time.", icon: handshake2, ko: "그다음에는 모두 그걸 매번 써요", note: "일관"}
+- title: 진통제 정규 투여·기록
+  s:
+  - {t: "투여 원칙", i: pill, w: "keeps his pain from breaking through는 'keep A from B'로 A가 B하지 못하게 막는다는 모양이에요. 정규 투여의 목적을 한 문장에 담아요.", d: "for the pharmacy", k: ["정해진 시간에 투여하면 통증이 줄어들지 않아요.", "정해진 시간에 투여하면 통증이 뚫고 올라오지 않아요."], a: "Scheduled", o: ["Delayed", "Random", "Single"]}
+  - {t: "방법 비교", i: board, w: "works better than …은 두 방법을 비교하는 모양이에요. alone이 붙어 PRN 하나만 쓸 때와 견줘요.", d: "at home", k: ["정해진 간격으로 주는 진통이 마취만 쓰는 것보다 더 나아요.", "PRN만 쓰는 것보다 정해진 간격으로 주는 진정이 더 나아요."], a: "better", o: ["longer", "later", "faster"]}
+  - {t: "투약 일정", i: calendar, w: "every four hours는 반복 간격을 말하는 모양이에요. right on schedule로 시간에 맞춰 주는 것이 핵심임을 덧붙여요.", d: "by the window", k: ["기저 아편유사제를 매 6시간마다 정해진 시간에 맞춰 드려요.", "기저 진정제를 매 4시간마다 정해진 시간에 맞춰 드려요."], a: "four", o: ["many", "every", "full"]}
+  - {t: "기록 제안", i: pencil, w: "document each dose and his response처럼 투여와 반응을 and로 묶어 한 쌍으로 기록하자고 해요. 반응이 빠지면 효과를 못 따져요.", d: "of the patient", k: ["매 투여와 혈압을 기록해요.", "매 처방과 반응을 기록해요."], a: "response", o: ["weight", "address", "visitor"]}
+  - {t: "기록 내용", i: pencil, w: "I'm charting …은 지금 하는 일을 알리는 현재진행 모양이에요. 시간·용량·반응 세 가지를 쉼표로 나열해요.", d: "in his room", k: ["시간과 투여량, 체온을 차팅해요.", "시간과 처방량, 반응을 차팅해요."], a: "dose", o: ["bed", "name", "route"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "정규 투여·기록 4문장 순서"
+    why: "정규 투여가 필요한 이유를 먼저 말하고, 그 간격대로 주고, 준 것을 기록하고, 마지막으로 기록을 보고 재평가해요. 2줄의 that은 1줄의 원칙을, 3줄의 each one은 2줄의 투여를, 4줄의 those notes는 3줄의 기록을 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "Scheduled dosing keeps his pain from breaking through.", icon: pill, ko: "정해진 시간에 투여하면 통증이 뚫고 올라오지 않아요", note: "원칙"}
+    - {en: "So let's give it every four hours, right on time.", icon: calendar, ko: "그러니 4시간마다 정시에 드려요", note: "투여"}
+    - {en: "Let's chart each one with his response.", icon: pencil, ko: "하나하나 반응과 함께 차팅해요", note: "기록"}
+    - {en: "Then those notes tell us if the plan is working.", icon: chartup, ko: "그러면 그 기록이 계획이 효과 있는지 알려 줘요", note: "평가"}
+- title: 처치 전 예방 진통
+  s:
+  - {t: "선투약", i: pill, w: "before we turn and change the dressing처럼 before 뒤에 두 동작을 and로 이어 약을 주는 시점을 정해요. Let's give로 함께 하자고 권해요.", d: "after lunch", k: ["돌려눕히고 드레싱을 바꾸기 전에 진통제를 확인할게요.", "돌려눕히고 마사지를 하기 전에 진통제를 드릴게요."], a: "analgesia", o: ["anesthesia", "antibiotic", "ointment"]}
+  - {t: "사전 안내", i: speech, w: "I'll tell you before I touch you처럼 before 뒤에 일어날 일을 넣어 미리 알린다고 약속해요. when we finish로 끝나는 때도 알려요.", d: "to the family", k: ["만지기 전에 먼저 말씀드리고, 끝나면 기록할게요.", "움직이기 전에 먼저 말씀드리고, 끝나면 알려드릴게요."], a: "touch", o: ["wake", "wash", "weigh"]}
+  - {t: "효과 설명", i: bulb, w: "Pre-medicating은 처치 전에 약을 주는 일을 한 낱말로 말해요. reduces 뒤에 두 가지 목적을 and로 묶어 이유를 보여 줘요.", d: "to the bed", k: ["처치 전 진통제를 주면 처치 통증과 구토가 줄어요.", "처치 전 진통제를 주면 호흡 통증과 초조가 줄어요."], a: "agitation", o: ["infection", "swelling", "bleeding"]}
+  - {t: "약 안내", i: pill, w: "I'm giving you medicine now는 지금 하는 일을 알리는 현재진행 모양이에요. before the dressing change starts가 약을 주는 시점을 알려 줘요.", d: "by the nurse", k: ["드레싱 교환 시작 전에 지금 약을 확인할게요.", "드레싱 교환 시작 전에 지금 물을 드릴게요."], a: "medicine", o: ["blanket", "pillow", "message"]}
+  - {t: "시간 맞춤", i: calendar, w: "time the dose to peak는 약의 최고 효과 시점을 처치에 맞춘다는 뜻이에요. during the procedure가 그 시점을 알려 줘요.", d: "on the shift", k: ["처치 중에 효과가 사라지도록 투여 시간을 맞출게요.", "처치 중에 효과가 최고조에 이르도록 투여 기록을 맞출게요."], a: "peak", o: ["fade", "start", "reset"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "처치 전 진통 4문장 순서"
+    why: "환자에게 곧 할 일을 알리고, 그에 앞서 진통제를 주고, 효과가 오르길 기다린 뒤, 처치를 시작해요. 2줄의 it은 1줄의 처치를, 3줄의 that은 2줄의 투여를 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "First, I'm going to tell you we're about to change your dressing.", icon: speech, ko: "먼저 곧 드레싱을 바꾸겠다고 말씀드릴게요", note: "안내"}
+    - {en: "Before we do it, I'll give you something for the pain.", icon: pill, ko: "하기 전에 통증 약을 드릴게요", note: "투약"}
+    - {en: "Once that has had time to work, we'll begin.", icon: calendar, ko: "그게 듣기 시작하면 시작할게요", note: "대기"}
+    - {en: "I'll tell you when we're finished.", icon: check, ko: "끝나면 알려드릴게요", note: "마무리"}

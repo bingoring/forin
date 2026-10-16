@@ -1,0 +1,131 @@
+- situation: "쇼크 초기 관류 사정"
+  items:
+    - kind: slider
+      words: [w-alertness]
+      cue: "Patient: \"I'm really sleepy, but yes, I know where I am when you ask.\""
+      scale: [alert, drowsy, obtunded]
+      answerAt: 1
+      why: "졸려 하지만 부르면 대답하는 상태가 drowsy예요. alert는 또렷이 깨어 있는 상태, obtunded는 자극에도 반응이 둔해진 더 낮은 단계예요. 쇼크에서는 의식 수준이 떨어지는 것이 관류 저하의 이른 신호라 단계를 구분해서 보고해요."
+      example: "She's drowsy, but she answers to her name."
+      exKo: "졸려 하지만 이름을 부르면 대답해요."
+    - kind: context
+      words: [w-circulation]
+      word: circulation
+      ko: 순환
+      scenes:
+        - {who: 동료 간호사에게, icon: speech, en: "Her circulation looks poor — cool hands and slow cap refill.", ok: true}
+        - {who: 차트 기록, icon: board, en: "Circulation impaired: extremities cool, cap refill 4 sec.", ok: true}
+        - {who: 환자에게, icon: me, en: "Your circulation is compromised, and we are concerned about perfusion.", ok: false, fix: "Not enough blood is reaching your hands and feet, so we're watching you closely."}
+      why: "의료진끼리는 circulation, cap refill 같은 말이 짧고 정확해요. 환자에게는 compromised, perfusion 같은 말이 무섭고 낯서니, 어디로 피가 덜 가는지를 쉬운 말로 풀어 줘요."
+- situation: "젖산 채혈·경향 추적"
+  items:
+    - kind: slider
+      words: [w-trend, w-improve]
+      cue: "Colleague: \"His lactate was 6.2, and two hours later it's 3.1.\""
+      scale: [worsening, stalled, improving]
+      answerAt: 2
+      why: "젖산이 6.2에서 3.1로 내려갔다면 관류가 나아지는 쪽(improving)이에요. 거의 그대로면 stalled, 오르면 worsening이에요. 숫자 하나보다 시간에 따른 방향(trend)을 함께 보고해요."
+      example: "His lactate is improving — down from six to three."
+      exKo: "젖산이 나아지고 있어요 — 6에서 3으로 내려갔어요."
+    - kind: context
+      words: [w-lactate]
+      word: lactate
+      ko: 젖산
+      scenes:
+        - {who: 동료 간호사에게, icon: speech, en: "His lactate is 4.2 — I'm sending a repeat stat.", ok: true}
+        - {who: 차트 기록, icon: board, en: "Lactate 4.2 at 0600; repeat pending.", ok: true}
+        - {who: 보호자에게, icon: me, en: "His lactate is 4.2, indicating tissue hypoperfusion.", ok: false, fix: "A blood test shows his body isn't getting enough oxygen to its tissues, so we're checking it again."}
+      why: "의료진끼리는 lactate 한 단어와 수치면 충분해요. 가족에게는 수치와 hypoperfusion만 던지면 겁만 주고 뜻이 전해지지 않으니, 그 검사가 무엇을 보여 주는지부터 말해요."
+- situation: "대량 수액 볼루스 투여 협조"
+  items:
+    - kind: slider
+      words: [w-stop, w-lung]
+      cue: "Nurse: \"Her lungs just started to crackle, and her oxygen level is falling.\""
+      scale: [stop the bolus, slow the bolus, finish the bolus]
+      answerAt: 0
+      why: "수액을 넣는 중에 폐에서 새로 수포음이 들리고 산소포화도가 떨어지면 수액 과부하 신호라서, 볼루스를 멈추고 바로 의사에게 알려요. 폐 소리가 깨끗하고 혈압이 오르면 처방된 양을 끝까지 넣어요."
+      example: "I'm stopping the bolus and calling the doctor now."
+      exKo: "볼루스를 멈추고 지금 의사에게 연락할게요."
+    - kind: context
+      words: [w-bolus]
+      word: bolus
+      ko: 볼루스
+      scenes:
+        - {who: 동료 간호사에게, icon: speech, en: "The bolus is running wide open — his pressure's coming up.", ok: true}
+        - {who: 차트 기록, icon: board, en: "500 mL saline bolus infused; MAP up from 58 to 66.", ok: true}
+        - {who: 보호자에게, icon: me, en: "We're giving a rapid crystalloid bolus to expand his intravascular volume.", ok: false, fix: "We're giving him fluid quickly through his IV to help raise his blood pressure."}
+      why: "의료진끼리는 bolus가 '짧은 시간에 한꺼번에 넣는 수액'을 뜻하는 정확한 말이에요. 가족에게는 crystalloid, intravascular 같은 말이 어렵고 차갑게 들리니, 무엇을 왜 하는지를 쉬운 말로 풀어요."
+- situation: "쇼크 유형 병력 청취"
+  items:
+    - kind: pair
+      words: [w-pass, w-cause, w-start]
+      pairs: [[pass, it along], [figure out, the cause], [started, two days ago]]
+      decoys: [the Foley]
+      why: "들은 정보를 다음 사람에게 넘길 때는 pass it along, 원인을 알아내는 것은 figure out the cause, 증상이 언제 시작됐는지는 started two days ago처럼 말해요."
+    - kind: context
+      words: [w-symptom]
+      word: symptom
+      ko: 증상
+      scenes:
+        - {who: 동료 간호사에게, icon: speech, en: "She has no other symptoms besides the fever.", ok: true}
+        - {who: 차트 기록, icon: board, en: "Pt denies other symptoms; fever x2 days.", ok: true}
+        - {who: 환자에게, icon: me, en: "Do you manifest any constitutional symptoms or exhibit rigors?", ok: false, fix: "Have you had any chills or shaking?"}
+      why: "의료진끼리는 symptoms, denies 같은 말이 간결하고 정확해요. 환자에게 manifest, constitutional, rigors를 쓰면 질문 자체를 못 알아들어요. 오한이나 떨림처럼 몸에서 느낀 것을 직접 물어요."
+- situation: "시간당 소변량 모니터"
+  items:
+    - kind: slider
+      words: [w-urine, w-output]
+      cue: "Foley bag: only 8 mL over the past hour for a 70 kg man."
+      scale: [low output, oliguria, anuria]
+      answerAt: 1
+      why: "소변이 시간당 대략 체중 1kg당 0.5mL보다 적으면(70kg이면 약 35mL 아래) 핍뇨, 즉 oliguria라고 해요. 거의 한 방울도 안 나오는 anuria와 구분해서 보고해요."
+      example: "He's oliguric — only 8 mL this hour."
+      exKo: "핍뇨 상태예요 — 이번 시간에 8mL뿐이에요."
+    - kind: context
+      words: [w-output]
+      word: output
+      ko: 배출량
+      scenes:
+        - {who: 동료 간호사에게, icon: speech, en: "Her urine output is 15 mL this hour — I'm flagging it.", ok: true}
+        - {who: 차트 기록, icon: board, en: "Urine output 15 mL/hr, below target x2h.", ok: true}
+        - {who: 보호자에게, icon: me, en: "Her urine output is below target, indicating renal hypoperfusion.", ok: false, fix: "She's making less urine than we'd like, which tells us her kidneys need more blood flow."}
+      why: "의료진끼리는 urine output과 mL/hr 수치가 가장 빠르고 정확해요. 가족에게는 below target, hypoperfusion이 무슨 뜻인지 알기 어려우니, 소변이 적다는 사실과 그 의미를 쉬운 말로 이어서 말해요."
+- situation: "말초·중심 체온차 관찰"
+  items:
+    - kind: slider
+      words: [w-cool, w-cold, w-warm]
+      cue: "Nurse: \"His feet feel like ice, much colder than his chest.\""
+      scale: [warm, cool, cold]
+      answerAt: 2
+      why: "차가운 정도는 warm, cool, cold 순서로 세져요. 얼음처럼 느껴지고 가슴보다 훨씬 차면 cold예요. 발은 차고 가슴은 따뜻한 차이는 말초로 가는 혈류가 줄었다는 단서가 돼요."
+      example: "His feet are cold, but his chest is warm."
+      exKo: "발은 차갑지만 가슴은 따뜻해요."
+    - kind: swap
+      words: [w-cold, w-flow]
+      who: "환자에게 · 발이 차가운 이유 설명"
+      icon: me
+      before: ["Your feet are cold because ", "peripheral perfusion", " is down."]
+      options: [the blood flow to them, peripheral perfusion, distal perfusion deficit]
+      answer: the blood flow to them
+      notes: {the blood flow to them: "피가 그쪽으로 덜 간다는 뜻이 바로 들려요. 환자가 이해하는 말이에요.", peripheral perfusion: "의료진끼리의 말이에요. 환자는 무슨 뜻인지 모를 수 있어요.", distal perfusion deficit: "더 어렵고 차가운 말이라 겁만 줄 수 있어요."}
+      why: "같은 설명이라도 환자에게는 '그쪽으로 가는 피'처럼 눈에 그려지는 말을 써요. perfusion은 의료진끼리 쓰는 말이에요."
+      ko: 발이 차가운 건 그쪽으로 가는 피가 줄었기 때문이에요
+- situation: "저혈량 쇼크 출혈원 감별"
+  items:
+    - kind: slider
+      words: [w-belly, w-firm, w-abdomen]
+      cue: "Nurse: \"His belly is hard like a board, and he guards when I touch it.\""
+      scale: [soft, firm, rigid]
+      answerAt: 2
+      why: "배가 판자처럼 딱딱하고 만지면 막으려 하면 rigid예요. firm은 눌렀을 때 단단하지만 풀리는 정도, soft는 말랑한 상태예요. 출혈 환자의 배가 점점 단단해지는 것은 바로 보고할 소견이에요."
+      example: "His belly is firmer than an hour ago."
+      exKo: "한 시간 전보다 배가 더 단단해졌어요."
+    - kind: context
+      words: [w-transfusion]
+      word: transfusion
+      ko: 수혈
+      scenes:
+        - {who: 동료 간호사에게, icon: speech, en: "He'll need a transfusion if his hemoglobin keeps dropping.", ok: true}
+        - {who: 차트 기록, icon: board, en: "Transfusion ordered for Hgb 6.8; consent on chart.", ok: true}
+        - {who: 보호자에게, icon: me, en: "He requires an emergent transfusion of packed red cells for acute blood loss anemia.", ok: false, fix: "He's lost a lot of blood, so we're giving him blood through his IV right now."}
+      why: "의료진끼리는 transfusion, Hgb 같은 말이 짧고 정확해요. 가족에게는 packed red cells, anemia 같은 말을 늘어놓기보다, 피를 많이 잃어서 피를 넣고 있다고 쉽게 말해요."

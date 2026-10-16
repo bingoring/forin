@@ -1,0 +1,90 @@
+5:
+  s:
+  - {tag: 검사 설명, icon: stetho, why: "how much…는 \"양이 얼마인지\"를 알려 준다는 뜻이라 검사가 무엇을 재는지 한 줄로 설명돼요.", decoy: "in the lab", dk: ["이 동맥혈가스는 소변에 산소와 이산화탄소가 얼마나 있는지 보여줘요", "이 동맥혈가스는 혈액에 산소와 이산화탄소가 언제 생기는지 보여줘요"], ans: blood, opts: [urine, saliva, sweat]}
+  - {tag: 폐 기능, icon: stetho, why: "if…well enough는 \"충분한가\"를 묻는 틀이라 결과를 좋다/나쁘다보다 충분한가로 해석해요.", decoy: "for the lab", dk: ["심장이 공기를 잘 움직이고 있는지 알려줘요", "폐가 피를 잘 움직이고 있는지 알려줘요"], ans: lungs, opts: [heart, belly, brain]}
+  - {tag: 결과 활용, icon: gear, why: "fine-tune은 크게 바꾸는 게 아니라 조금씩 맞춘다는 뜻이라 결과를 쓰는 방식을 알려 줘요.", decoy: "for the report", dk: ["결과가 침대 위치를 미세 조정하는 데 도움이 돼요", "결과가 방 온도를 미세 조정하는 데 도움이 돼요"], ans: oxygen, opts: [diet, sleep, mood]}
+  - {tag: 채혈 안내, icon: bandage, why: "a small…sample은 \"조금만\"이라는 말이라 통증과 출혈에 대한 불안을 덜어 줘요.", decoy: "with a pen", dk: ["손목 동맥에서 소량의 혈액을 검사실로 보낼게요", "손목 동맥에서 소량의 혈액을 얼음에 넣을게요"], ans: small, opts: [dark, warm, thick]}
+  - {tag: 검사 목적, icon: chartup, why: "how well…and…로 \"받아들이기\"와 \"내보내기\" 두 기능을 한 문장에 담아요.", decoy: "at the station", dk: ["이 검사는 산소를 얼마나 잘 받아들이고 이산화탄소를 얼마나 잘 만드는지 알려줘요", "이 검사는 수분을 얼마나 잘 받아들이고 이산화탄소를 얼마나 잘 내보내는지 알려줘요"], ans: oxygen, opts: [sugar, salt, iron]}
+  - {tag: 쉬운 설명, icon: bulb, why: "in plain words는 전문용어를 풀어 말하겠다는 약속이라 환자가 결과를 이해하고 질문하기 쉬워요.", decoy: "by hand", dk: ["숫자가 무슨 뜻인지 쉬운 말로 적어 드릴게요", "숫자가 무슨 뜻인지 가족에게 설명해 드릴게요"], ans: plain, opts: [fancy, medical, strange]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 동맥혈가스 검사를 설명하는 4문장 순서
+    why: 채혈을 먼저 알리고, 검사가 무엇을 보여 주는지 설명한 뒤, 그 수치를 산소 조절에 쓴다고 말하고, 조정 내용을 쉽게 풀어 주겠다고 마무리해요.
+    lines:
+    - {en: "I'm going to draw a small blood sample from your wrist artery for a test.", icon: bandage, ko: "검사를 위해 손목 동맥에서 소량의 혈액을 채혈할게요", note: 채혈}
+    - {en: "That test gives us numbers for how well you're taking in oxygen and clearing out carbon dioxide.", icon: chartup, ko: "그 검사는 산소를 받아들이고 이산화탄소를 내보내는 정도를 숫자로 알려줘요", note: 설명}
+    - {en: "Those numbers help me fine-tune your oxygen support.", icon: gear, ko: "그 숫자는 산소 지지를 미세 조정하는 데 도움이 돼요", note: 활용}
+    - {en: "I'll walk you through that adjustment in plain words.", icon: bulb, ko: "그 조정은 쉬운 말로 차근차근 설명해 드릴게요", note: 설명}
+6:
+  s:
+  - {tag: 지수 설명, icon: chartup, why: "combines A and B는 두 수치를 합쳐 하나로 본다는 뜻이라 지수의 정의를 짧게 말해요.", decoy: "from the log", dk: ["그의 ROX 지수는 산소화와 맥박수를 결합한 값이에요", "그의 ROX 지수는 체온과 호흡수를 결합한 값이에요"], ans: combines, opts: [separates, divides, replaces]}
+  - {tag: 추세 해석, icon: chartup, why: "suggests는 \"~로 보인다\"는 완곡한 말이라 지수 하나로 확정하지 않고 추세로 판단한다는 느낌을 줘요.", decoy: "on the board", dk: ["ROX가 오르는 건 고유량 치료가 시작되고 있다는 뜻이에요", "ROX가 오르는 건 고유량 치료가 비싸지고 있다는 뜻이에요"], ans: succeeding, opts: [starting, ending, changing]}
+  - {tag: 경고 신호, icon: bell, why: "warns me he may need…의 may는 확정이 아니라 가능성이라 \"미리 대비\"하는 말투예요.", decoy: "on the monitor", dk: ["낮거나 떨어지는 값은 장비 점검이 필요할 수 있다는 경고예요", "낮거나 떨어지는 값은 면회 제한이 필요할 수 있다는 경고예요"], ans: escalation, opts: [humidity, paperwork, visitors]}
+  - {tag: 호전 설명, icon: chartup, why: "so로 앞의 두 변화를 원인으로 묶어 지수가 오르는 이유를 한 문장에 설명해요.", decoy: "for now", dk: ["맥박은 내려가고 산소포화도는 유지되고 있어서 ROX가 오르고 있어요", "호흡수는 내려가고 체온은 유지되고 있어서 ROX가 오르고 있어요"], ans: down, opts: [up, high, loud]}
+  - {tag: 보고 약속, icon: bell, why: "flag it은 \"눈에 띄게 알린다\"는 뜻이고 right away는 기다리지 않겠다는 약속이에요.", decoy: "on a note", dk: ["체온이 떨어지면 바로 팀에 표시해서 알릴게요", "ROX 지수가 떨어지면 바로 팀에 사진을 찍어서 알릴게요"], ans: drops, opts: [rises, climbs, holds]}
+  - {tag: 추적 계획, icon: calendar, why: "hourly는 \"매시간\"이라는 빈도를 한 낱말로 말해 주고, any downward trend는 작은 하락도 놓치지 않겠다는 말이에요.", decoy: "with the log", dk: ["그의 체온을 매시간 추적하고 하락 추세는 보고할게요", "그의 ROX 지수를 매시간 추적하고 하락 추세는 사진으로 보고할게요"], ans: hourly, opts: [slowly, quietly, openly]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: ROX 지수를 설명하고 변화에 대응하는 4문장 순서
+    why: 지수가 무엇인지 먼저 말하고, 오를 때의 뜻, 떨어질 때의 뜻을 대비해 보인 뒤, 떨어지면 바로 알리겠다고 이어요.
+    lines:
+    - {en: "His ROX index combines his oxygenation and his respiratory rate.", icon: chartup, ko: "그의 ROX 지수는 산소화와 호흡수를 결합한 값이에요", note: 정의}
+    - {en: "If it keeps rising, that suggests the high-flow is working.", icon: check, ko: "계속 오르면 고유량이 잘 듣고 있다는 뜻이에요", note: 상승}
+    - {en: "If it drops instead, that warns me he may need escalation.", icon: bell, ko: "대신 떨어지면 단계 상승이 필요할 수 있다는 경고예요", note: 하락}
+    - {en: "In that case, I'll flag it to the team right away.", icon: bell, ko: "그 경우에는 바로 팀에 알릴게요", note: 보고}
+7:
+  s:
+  - {tag: 적응 조건, icon: shield, why: "who can protect…은 환자를 설명하는 관계절이라 \"어떤 환자\"에게 맞는지 조건을 붙여요.", decoy: "in this room", dk: ["NIV는 각성돼 있고 약을 스스로 챙길 수 있는 환자에게 필요해요", "NIV는 각성돼 있고 기도를 스스로 보호할 수 있는 어르신에게 필요해요"], ans: alert, opts: [tall, young, quiet]}
+  - {tag: 부적합 판단, icon: bell, why: "make him a poor candidate처럼 \"원인 → 결과\"를 동사 make로 이으면 이유 설명이 짧아져요.", decoy: "at lunch", dk: ["분비물이 많고 두통이 있어서 좋은 대상자가 아니에요", "분비물이 많고 기침이 있어서 좋은 대상자가 아니에요"], ans: confusion, opts: [hunger, thirst, boredom]}
+  - {tag: 대안 판단, icon: bulb, why: "should consider는 \"검토하자\"는 완곡한 제안이라 결정은 의사 몫으로 남겨 두는 말투예요.", decoy: "in the corner", dk: ["보호자 협조가 안 되면 대신 삽관을 고려해야 해요", "협조가 안 되면 대신 삽관을 설명해야 해요"], ans: cooperate, opts: [sit, smile, stand]}
+  - {tag: 부적합 기준, icon: shield, why: "isn't a good fit for…는 \"안 된다\"고 단정하는 대신 \"잘 맞지 않는다\"고 말해 완곡하게 전달해요.", decoy: "in the bed", dk: ["약을 스스로 챙기지 못하는 환자는 NIV에 잘 맞지 않아요", "기도를 스스로 보호하지 못하는 환자는 수술에 잘 맞지 않아요"], ans: airway, opts: [skin, bed, hands]}
+  - {tag: 사전 선별, icon: magnify, why: "before we start는 시작 전에 걸러 낸다는 시점을 밝혀 안전을 먼저 챙긴다는 인상을 줘요.", decoy: "on the ward", dk: ["회진하기 전에 마스크가 안전하지 않은 환자를 식별하고 있어요", "교대하기 전에 마스크가 안전하지 않은 환자를 식별하고 있어요"], ans: unsafe, opts: [unhappy, uneasy, unlucky]}
+  - {tag: 안전 판단, icon: bell, why: "so로 이유 뒤에 결론을 붙이고 right now로 \"지금은\"이라 한정해 상황이 바뀌면 달라질 수 있음을 알려요.", decoy: "for the night", dk: ["본인 분비물을 스스로 삼키지 못해서 지금은 NIV가 안전하지 않아요", "본인 분비물을 스스로 제거하지 못해서 지금은 이동이 안전하지 않아요"], ans: secretions, opts: [sheets, plates, mail]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: NIV가 안전하지 않은 환자를 판단하는 4문장 순서
+    why: 적응 조건을 먼저 말하고, 환자의 문제를 짚은 뒤, 그 문제들이 부적합 사유임을 말하고, 대안을 검토하자고 이어요.
+    lines:
+    - {en: "NIV only works for patients who are alert and can protect their airway.", icon: shield, ko: "NIV는 각성돼 있고 기도를 스스로 보호하는 환자에게만 잘 맞아요", note: 조건}
+    - {en: "He is confused and can't clear his own secretions.", icon: magnify, ko: "그는 혼돈이 있고 분비물을 스스로 제거하지 못해요", note: 사정}
+    - {en: "Those two problems make him a poor candidate for NIV.", icon: bell, ko: "그 두 문제 때문에 NIV 대상자로 좋지 않아요", note: 판단}
+    - {en: "If he can't cooperate either, we should consider intubation instead.", icon: bulb, ko: "협조도 안 되면 대신 삽관을 고려해야 해요", note: 대안}
+8:
+  s:
+  - {tag: 장치 목적, icon: gear, why: "that's built up은 \"쌓여 있는\"이라는 뜻이라 문제의 원인이 지금까지 쌓인 것임을 쉽게 말해 줘요.", decoy: "in the corner", dk: ["이 BiPAP은 쌓인 열을 불어내도록 도와줘요", "이 BiPAP은 쌓인 이산화탄소를 불어내도록 가르쳐줘요"], ans: blow, opts: [wipe, pour, pull]}
+  - {tag: 호흡 지지, icon: shield, why: "don't have to…는 \"…하지 않아도 된다\"는 뜻이라 환자의 부담이 줄어든다는 안심이 돼요.", decoy: "during rounds", dk: ["매 호흡을 지지해줘서 폐가 그렇게 오래 일하지 않아도 돼요", "매 호흡을 지지해줘서 심장이 그렇게 힘들게 일하지 않아도 돼요"], ans: work, opts: [run, climb, shout]}
+  - {tag: 단계 완화, icon: chartup, why: "As…는 \"…함에 따라\"라는 뜻이라 상태가 변하는 만큼 같이 조정한다는 약속이에요.", decoy: "on the wall", dk: ["호흡이 좋아지면 설정값을 낮춰서 기록할게요", "호흡이 좋아지면 조명을 낮춰서 완화할게요"], ans: settings, opts: [lights, sounds, drapes]}
+  - {tag: 원인 설명, icon: stetho, why: "makes it harder to…는 \"…하기 더 어렵게 만든다\"는 틀이라 병 때문에 힘든 것이지 환자 탓이 아님을 알려요.", decoy: "at home", dk: ["감기 때문에 스스로 이산화탄소를 불어내기가 더 힘들어요", "COPD 때문에 스스로 이산화탄소를 불어내기가 더 무서워요"], ans: harder, opts: [easier, safer, faster]}
+  - {tag: 작동 원리, icon: gear, why: "a push on every breath in은 들숨마다 압력이 한 번씩 더해진다는 그림이라 장치 작동을 몸으로 느끼게 설명해 줘요.", decoy: "from behind", dk: ["BiPAP이 들숨마다 밀어주고 기침도 도와줘요", "BiPAP이 들숨마다 밀어주고 대화도 도와줘요"], ans: push, opts: [pull, tap, rest]}
+  - {tag: 압력 완화, icon: check, why: "ease back은 \"조금씩 줄인다\"는 뜻이라 갑자기 끊지 않는다는 안심을 줘요.", decoy: "for the team", dk: ["진정되고 수치가 좋아지면 압력을 낮춰서 확인할게요", "진정되고 수치가 좋아지면 온도를 낮춰서 완화할게요"], ans: calm, opts: [sit, lie, kneel]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: COPD 환자에게 BiPAP을 설명하는 4문장 순서
+    why: 왜 힘든지 먼저 짚고, 그래서 장치가 하는 일을 말한 뒤, 폐가 쉬는 효과를 설명하고, 좋아지면 압력을 줄인다고 마무리해요.
+    lines:
+    - {en: "Your COPD makes it harder to blow off carbon dioxide on your own.", icon: stetho, ko: "COPD 때문에 스스로 이산화탄소를 불어내기가 더 힘들어요", note: 원인}
+    - {en: "That's why this BiPAP gives you a push on every breath in.", icon: gear, ko: "그래서 이 BiPAP이 들숨마다 밀어줘요", note: 장치}
+    - {en: "That gives your lungs a chance to rest.", icon: shield, ko: "그러면 폐가 쉴 수 있어요", note: 효과}
+    - {en: "Once they've rested and your numbers improve, I'll ease the pressure back.", icon: chartup, ko: "폐가 쉬고 수치가 좋아지면 압력을 낮춰 완화할게요", note: 완화}
+9:
+  s:
+  - {tag: 원리 설명, icon: gear, why: "so you can…은 목적을 붙여 장치가 나를 위해 일한다고 들리게 해요.", decoy: "from the room", dk: ["이 CPAP이 폐포에서 체액을 밀어내서 잠을 잘 수 있게 해줘요", "이 CPAP이 폐포에서 체액을 밀어내서 말을 할 수 있게 해줘요"], ans: fluid, opts: [dust, food, ice]}
+  - {tag: 심장 부담, icon: shield, why: "also는 앞의 효과에 더하는 또 다른 이점을 붙이는 말이라 장치의 이득이 하나가 아님을 알려요.", decoy: "in your arm", dk: ["등에 걸리는 부담도 완화해줘요", "심장에 걸리는 소리도 완화해줘요"], ans: strain, opts: [noise, itch, smell]}
+  - {tag: 협조 요청, icon: me, why: "Try to…는 명령 대신 부탁으로 들리고, you'll feel relief soon은 그렇게 하면 좋아진다는 약속이에요.", decoy: "against the wall", dk: ["기계에 맞춰 숨을 쉬어 보세요, 곧 의사가 올 거예요", "기계에 맞춰 숨을 쉬어 보세요, 곧 식사가 올 거예요"], ans: relief, opts: [heat, wind, hunger]}
+  - {tag: 이중 효과, icon: chartup, why: "takes some strain off는 \"부담을 덜어낸다\"는 숙어라 some으로 정도를 낮춰 과장하지 않아요.", decoy: "at the foot", dk: ["폐로 공기를 밀어넣는 것도 목 부담을 덜어줘요", "폐로 공기를 밀어넣는 것도 눈 부담을 덜어줘요"], ans: heart, opts: [eyes, feet, skin]}
+  - {tag: 압력 효과, icon: shield, why: "so oxygen can get in은 막는 목적을 산소가 들어갈 길로 설명해서 이유가 한눈에 보여요.", decoy: "at the bed", dk: ["압력이 폐포에 가래가 차는 것을 막아서 산소가 들어갈 수 있게 해줘요", "압력이 폐포에 체액이 차는 것을 막아서 피가 들어갈 수 있게 해줘요"], ans: filling, opts: [leaving, drying, shrinking]}
+  - {tag: 곧 편해짐, icon: check, why: "should는 100% 약속이 아니라 \"그럴 것 같다\"는 기대라 환자에게 거짓 약속을 하지 않아요.", decoy: "from the bag", dk: ["폐에서 체액이 제거되면서 곧 따뜻해질 거예요", "폐에서 체액이 제거되면서 곧 조용해질 거예요"], ans: clears, opts: [grows, spreads, thickens]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 폐부종 환자에게 CPAP을 설명하는 4문장 순서
+    why: 장치가 하는 일을 먼저 말하고, 기계에 맞춰 숨 쉬어 달라고 부탁한 뒤, 그러면 체액이 빠지고 편해진다고 말하고, 심장 부담까지 이어요.
+    lines:
+    - {en: "This CPAP uses pressure to push the fluid out of your air sacs.", icon: gear, ko: "이 CPAP은 압력으로 폐포의 체액을 밀어내요", note: 원리}
+    - {en: "Try to breathe with the machine, not against it.", icon: me, ko: "기계에 맞서지 말고 맞춰서 숨 쉬어 보세요", note: 요청}
+    - {en: "If you do, the fluid should clear and you'll feel relief soon.", icon: check, ko: "그러면 체액이 빠지고 곧 편안해질 거예요", note: 기대}
+    - {en: "Once that happens, your heart won't have to work as hard either.", icon: shield, ko: "그렇게 되면 심장도 그렇게 힘들게 일하지 않아도 돼요", note: 심장}

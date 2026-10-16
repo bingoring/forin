@@ -1,0 +1,354 @@
+theme: icu-resp-support
+changes:
+- kind: word-remove
+  id: w-now
+  why: 공통 쉬운 단어 목록 — 어느 문장도 태그하지 않게 됨
+- kind: word-remove
+  id: w-patient
+  why: 공통 쉬운 단어 목록 — 어느 문장도 태그하지 않게 됨
+- kind: word-remove
+  id: w-body
+  why: 공통 쉬운 단어 목록 — 어느 문장도 태그하지 않게 됨
+- kind: word-remove
+  id: w-good
+  why: 공통 쉬운 단어 목록 — 어느 문장도 태그하지 않게 됨
+- kind: word-remove
+  id: w-head
+  why: 공통 쉬운 단어 목록 — 어느 문장도 태그하지 않게 됨
+- kind: word-remove
+  id: w-hour
+  why: 공통 쉬운 단어 목록 — 어느 문장도 태그하지 않게 됨
+- kind: word-remove
+  id: w-climb
+  why: rise와 같은 뜻(오르는)이라 듣고 뜻 고르기에서 정답이 둘이 됨 — 어느 문장도 태그하지 않게 됨
+- kind: word-remove
+  id: w-easy
+  why: 너무 쉬움 — 어느 문장도 태그하지 않게 됨
+- kind: word-remove
+  id: w-give
+  why: 너무 쉬움 — 어느 문장도 태그하지 않게 됨
+- kind: word-remove
+  id: w-try
+  why: 너무 쉬움 — 어느 문장도 태그하지 않게 됨
+- kind: word-remove
+  id: w-use
+  why: 너무 쉬움 — 어느 문장도 태그하지 않게 됨
+- kind: word-remove
+  id: w-first
+  why: 너무 쉬움 — 어느 문장도 태그하지 않게 됨
+- kind: word-remove
+  id: w-help
+  why: 너무 쉬움 — 어느 문장도 태그하지 않게 됨
+- kind: word-remove
+  id: w-soon
+  why: 너무 쉬움 — 어느 문장도 태그하지 않게 됨
+- kind: word
+  id: w-setup
+  fields:
+  - ko
+  why: prepare와 ko가 둘 다 '준비하다'라 듣고 뜻 고르기에서 정답이 둘이 됨
+- kind: word
+  id: w-clear
+  fields:
+  - ko
+  why: remove와 ko가 둘 다 '제거하다'라 정답이 둘이 됨
+- kind: word
+  id: w-relief
+  fields:
+  - ko
+  why: comfort와 ko가 둘 다 '편안함'이라 정답이 둘이 됨
+- kind: word
+  id: w-control
+  fields:
+  - ko
+  why: secure와 ko가 겹침('확보')
+- kind: word
+  id: w-suction
+  fields:
+  - ko
+  why: aspiration과 ko가 둘 다 '흡인'이라 정답이 둘이 됨
+- kind: word
+  id: w-rise
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 활용형 헤드워드(rising)를 원형으로, climb 정리와 함께 ko를 가름
+- kind: word
+  id: w-fall
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 활용형 헤드워드(falling)를 원형으로, drop과 ko가 둘 다 '떨어지는'이라 가름
+- kind: word
+  id: w-bleed
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 활용형 헤드워드(bleeding)를 원형으로
+- kind: sentence
+  situation: 저산소성 호흡부전 초기 사정
+  index: 0
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: now'
+- kind: sentence
+  situation: 저산소성 호흡부전 초기 사정
+  index: 3
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: now'
+- kind: sentence
+  situation: 저산소성 호흡부전 초기 사정
+  index: 4
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: now'
+- kind: sentence
+  situation: HFNC 설정·적용
+  index: 0
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: easy'
+- kind: sentence
+  situation: HFNC 설정·적용
+  index: 1
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: body'
+- kind: sentence
+  situation: HFNC 설정·적용
+  index: 2
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: first, help'
+- kind: sentence
+  situation: HFNC 설정·적용
+  index: 3
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: first'
+- kind: sentence
+  situation: HFNC 설정·적용
+  index: 5
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: body'
+- kind: sentence
+  situation: 산소전달장치 단계 이해
+  index: 3
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: now'
+- kind: sentence
+  situation: 호흡노력·보조근 사용 관찰
+  index: 1
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: use'
+- kind: sentence
+  situation: 호흡노력·보조근 사용 관찰
+  index: 2
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: give'
+- kind: sentence
+  situation: 호흡노력·보조근 사용 관찰
+  index: 4
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: help'
+- kind: sentence
+  situation: ABG 채혈·기초 해석
+  index: 2
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: help'
+- kind: sentence
+  situation: HFNC ROX index 반응 평가
+  index: 3
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: climb'
+- kind: sentence
+  situation: HFNC ROX index 반응 평가
+  index: 5
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: hour'
+- kind: sentence
+  situation: NIV 적응증·금기 판단
+  index: 0
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: patient'
+- kind: sentence
+  situation: NIV 적응증·금기 판단
+  index: 3
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: patient'
+- kind: sentence
+  situation: NIV 적응증·금기 판단
+  index: 4
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: patient'
+- kind: sentence
+  situation: 고탄산 호흡부전 BiPAP
+  index: 0
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: help'
+- kind: sentence
+  situation: 고탄산 호흡부전 BiPAP
+  index: 4
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: help'
+- kind: sentence
+  situation: 심인성 폐부종 CPAP
+  index: 2
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: try, soon'
+- kind: sentence
+  situation: 심인성 폐부종 CPAP
+  index: 5
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: soon'
+- kind: sentence
+  situation: NIV 부조화·불내성 관리
+  index: 2
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: help, good'
+- kind: sentence
+  situation: NIV 중 흡인 위험 관리
+  index: 1
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: head'
+- kind: sentence
+  situation: NIV 중 흡인 위험 관리
+  index: 4
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: head'
+- kind: sentence
+  situation: NIV에서 삽관 전환 판단
+  index: 2
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: now'
+- kind: sentence
+  situation: 면역저하 환자 NIV 선택
+  index: 0
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: patient'
+- kind: sentence
+  situation: 면역저하 환자 NIV 선택
+  index: 4
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: now'
+- kind: sentence
+  situation: 산소 목표 개별화
+  index: 0
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: good'
+- kind: sentence
+  situation: HFNC·NIV 중 급성 악화
+  index: 0
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: now'
+- kind: sentence
+  situation: HFNC·NIV 중 급성 악화
+  index: 3
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: first'
+- kind: sentence
+  situation: HFNC·NIV 중 급성 악화
+  index: 4
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: now'
+- kind: sentence
+  situation: NIV 지연 호흡정지 임박
+  index: 0
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: now'
+- kind: sentence
+  situation: NIV 지연 호흡정지 임박
+  index: 3
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: now'
+- kind: sentence
+  situation: NIV 지연 호흡정지 임박
+  index: 4
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: now'
+- kind: sentence
+  situation: 심한 고탄산 의식저하 위기
+  index: 2
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: now'
+- kind: sentence
+  situation: 마스크 불내성 극심 저산소
+  index: 2
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: now'
+- kind: sentence
+  situation: 마스크 불내성 극심 저산소
+  index: 4
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: now'
+- kind: sentence
+  situation: 마스크 불내성 극심 저산소
+  index: 5
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: now'
+- kind: sentence
+  situation: 대량 각혈 동반 호흡부전
+  index: 0
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: good'
+- kind: sentence
+  situation: 대량 각혈 동반 호흡부전
+  index: 1
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: give'
+- kind: sentence
+  situation: 대량 각혈 동반 호흡부전
+  index: 2
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: now'
+- kind: sentence
+  situation: 대량 각혈 동반 호흡부전
+  index: 5
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: now'
+- kind: sentence
+  situation: 완화 목적 호흡곤란 관리
+  index: 2
+  fields:
+  - words
+  why: '쉬운 단어 태그 빼기: now'

@@ -1,0 +1,138 @@
+- situation: "CAM-ICU 선별 시행"
+  items:
+    - kind: pair
+      words: [w-screen, w-squeeze, w-document]
+      pairs: [["screen", "for delirium"], ["squeeze", "my hand twice"], ["document", "the result"]]
+      decoys: ["the ceiling"]
+      why: "screen은 '걸러 보다'라 for delirium과, squeeze는 손을 '꽉 쥐다'라 my hand twice와, document는 결과를 '기록으로 남기다'라 the result와 짝이에요."
+    - kind: context
+      words: [w-delirious]
+      word: "delirious"
+      ko: "섬망 상태인"
+      scenes:
+        - {who: "의료진끼리 보고", icon: stetho, en: "CAM-ICU positive — he screens delirious.", ok: true}
+        - {who: "차트 기록", icon: board, en: "Pt screens delirious on CAM-ICU this shift.", ok: true}
+        - {who: "딸에게 설명", icon: me, en: "Your father is delirious and not making sense.", ok: false, fix: "Your father is confused right now — it's called delirium, and we're looking for the cause."}
+      why: "의료진끼리는 'screens delirious'가 짧고 정확해요. 가족에게는 'delirious'가 '헛소리한다'처럼 들려 마음을 다치게 하니, 상태를 풀어서 설명해요."
+- situation: "지남력·환경 조정"
+  items:
+    - kind: pair
+      words: [w-tuesday, w-hospital, w-blind]
+      pairs: [["Today is", "Tuesday morning"], ["You're in", "the hospital"], ["I'll open", "the blinds"]]
+      decoys: ["a loud voice"]
+      why: "지남력을 도울 때는 날짜(Today is …), 장소(You're in …), 그리고 낮밤을 알려 줄 행동(open the blinds)을 짧게 알려 줘요."
+    - kind: context
+      words: [w-confused]
+      word: "confused"
+      ko: "혼란스러운"
+      scenes:
+        - {who: "차트 기록", icon: board, en: "Pt confused, oriented to person only.", ok: true}
+        - {who: "야간 의사 콜", icon: monitor, en: "Still confused overnight, no new deficits.", ok: true}
+        - {who: "환자에게", icon: me, en: "Sir, you are confused — please stop asking.", ok: false, fix: "It's normal to feel mixed up here. I'm right here to help."}
+      why: "차트에서 'confused'는 간결한 사정 용어예요. 환자 면전에서 'you are confused'라고 단정하면 무시당한 느낌이 들어요. 겪는 느낌('feel mixed up')으로 말해요."
+- situation: "수면 위생 중재"
+  items:
+    - kind: pair
+      words: [w-dim, w-alarm, w-door]
+      pairs: [["dim", "the lights"], ["silence", "the alarm"], ["close", "the door"]]
+      decoys: ["the weekend"]
+      why: "밤에는 빛은 dim(어둡게), 알람은 silence(소리 끄기), 문은 close(닫기) — 동사마다 어울리는 목적어가 달라요."
+    - kind: context
+      words: [w-cluster]
+      word: "cluster"
+      ko: "몰아서 하다"
+      scenes:
+        - {who: "야간 인계", icon: bell, en: "I'll cluster his care at 0200 so he can sleep after.", ok: true}
+        - {who: "차트 기록", icon: board, en: "Care clustered at 0200 to protect sleep.", ok: true}
+        - {who: "환자에게", icon: me, en: "I need to cluster your care now, so hold still.", ok: false, fix: "I'll do everything in one visit so you can sleep afterward."}
+      why: "동료·차트에서는 'cluster care'가 익숙한 간호 용어예요. 환자에게는 뜻이 안 와닿으니, 한 번에 끝내고 푹 잘 수 있다는 이점으로 풀어 말해요."
+- situation: "조기 이동·활동 격려"
+  items:
+    - kind: slider
+      words: [w-sit]
+      cue: "RN: \"He's been in bed for days and is still weak. What's our first step today?\""
+      scale: ["sit at bedside", "stand at bedside", "walk the hall"]
+      answerAt: 0
+      why: "조기 이동은 침상 가장자리에 앉기 → 서기 → 걷기 순으로 단계를 올려요. 앉아서 어지럼 없이 버티는지부터 봐요."
+      example: "Let's get him sitting at the edge of the bed first."
+      exKo: "먼저 침대 가장자리에 앉혀봐요."
+    - kind: context
+      words: [w-closely]
+      word: "closely"
+      ko: "면밀히"
+      scenes:
+        - {who: "동료 간호사에게", icon: monitor, en: "Watch his heart rate closely while he sits up.", ok: true}
+        - {who: "차트 기록", icon: board, en: "Tolerated sitting at bedside; monitored closely, HR stable.", ok: true}
+        - {who: "환자에게", icon: me, en: "We'll be watching you closely in case you get worse.", ok: false, fix: "I'll stay right beside you while you sit up."}
+      why: "동료·차트에서 'closely'는 면밀한 관찰을 뜻하는 정상 표현이에요. 환자에게 '나빠질까 봐 지켜본다'고 하면 불안만 커져요. 곁에 있겠다는 말로 바꿔요."
+- situation: "가족 참여·안심"
+  items:
+    - kind: pair
+      words: [w-hold, w-remind]
+      pairs: [["hold", "his hand"], ["remind", "him where he is"]]
+      decoys: ["the weather"]
+      why: "hold는 손을 '잡다'라 his hand와, remind는 '다시 알려 주다'라 where he is와 짝이에요."
+    - kind: context
+      words: [w-familiar]
+      word: "familiar"
+      ko: "익숙한"
+      scenes:
+        - {who: "딸에게", icon: me, en: "Hearing a familiar voice helps him stay oriented.", ok: true}
+        - {who: "차트 기록", icon: board, en: "Familiar voice at bedside; pt calmer.", ok: true}
+        - {who: "딸에게 (딱딱한 설명)", icon: me, en: "Familiar stimuli at bedside reduce delirium incidence.", ok: false, fix: "Hearing your voice and seeing familiar things helps him feel safe."}
+      why: "차트나 의료진 사이에서는 'familiar stimuli'가 통해요. 가족에게는 통계 같은 말투가 차갑게 들려서, 듣고 보는 것이 안심이 된다고 쉬운 말로 풀어요."
+- situation: "유발요인 스크리닝"
+  items:
+    - kind: slider
+      words: [w-cause]
+      cue: "Resident: \"It could be pain or retention — we haven't checked his bladder yet.\""
+      scale: ["could be", "is likely", "is certainly"]
+      answerAt: 0
+      why: "아직 확인하지 못한 원인은 could be처럼 가능성으로만 말해요. 확인 전에 certainly라고 하면 다른 원인을 놓치게 돼요."
+      example: "It could be pain or retention."
+      exKo: "통증이나 요저류일 수 있어요."
+    - kind: context
+      words: [w-delirium]
+      word: "delirium"
+      ko: "섬망"
+      scenes:
+        - {who: "야간 의사 콜", icon: monitor, en: "Let's rule out causes before we call it delirium.", ok: true}
+        - {who: "차트 기록", icon: board, en: "Delirium not diagnosed until reversible causes are addressed.", ok: true}
+        - {who: "보호자에게", icon: me, en: "Don't worry, it's just delirium.", ok: false, fix: "He's very confused right now, and we're looking for the cause."}
+      why: "'just delirium'은 섬망을 가볍게 만들고 원인을 찾지 않는 것처럼 들려요. 보호자에게는 지금 무엇을 하고 있는지를 말해요."
+- situation: "저활동형 섬망 인지"
+  items:
+    - kind: slider
+      words: [w-withdrawn, w-quiet]
+      cue: "Day RN: \"He hasn't spoken or made eye contact all shift, and he's barely moving.\""
+      scale: ["calm", "quiet", "withdrawn"]
+      answerAt: 2
+      why: "조용하다고 다 같은 게 아니에요. 말·눈맞춤·움직임이 모두 줄었다면 quiet이 아니라 위축(withdrawn)이고, 저활동형 섬망을 의심해요."
+      example: "He's withdrawn and not making eye contact."
+      exKo: "위축돼서 눈을 마주치지 않아요."
+    - kind: context
+      words: [w-withdrawn]
+      word: "withdrawn"
+      ko: "위축된"
+      scenes:
+        - {who: "근무 인계", icon: bell, en: "He's been withdrawn all shift — no eye contact.", ok: true}
+        - {who: "차트 기록", icon: board, en: "Pt withdrawn, minimal speech, CAM-ICU positive.", ok: true}
+        - {who: "보호자에게", icon: me, en: "He's withdrawn and hypoactive — probably delirium.", ok: false, fix: "He's been very quiet and not himself today."}
+      why: "의료진끼리는 'withdrawn'이 사정 용어예요. 가족에게는 성격이 닫힌 사람처럼 들리고 겁도 주니, 평소와 다르다는 사실만 부드럽게 전해요."
+- situation: "과활동형 초조 비약물 관리"
+  items:
+    - kind: pair
+      words: [w-take, w-lower, w-sit]
+      pairs: [["take", "a slow breath"], ["lower", "our voices"], ["sit", "down together"]]
+      decoys: ["of the answer"]
+      why: "진정시키는 말은 숨은 take(들이쉬다), 목소리는 lower(낮추다), 자리는 sit(앉다) — 행동마다 어울리는 말이 달라요."
+    - kind: swap
+      words: [w-safe]
+      who: "초조한 환자에게"
+      icon: me
+      before: ["Sir, ", "calm down", " — you're safe."]
+      options: ["calm down", "I'm right here", "stop yelling"]
+      answer: "I'm right here"
+      notes: {"calm down": "듣는 사람이 무시당했다고 느껴 대개 더 흥분해요.", "I'm right here": "곁에 있다는 사실을 알려 줘서 안심시켜요.", "stop yelling": "꾸짖는 말이라 긴장을 키워요."}
+      why: "'Calm down'은 대개 역효과예요. 곁에 있다는 것과 안전하다는 사실을 알려 주는 말이 진정에 도움이 돼요."
+      ko: "선생님, 제가 바로 여기 있어요 — 안전해요."

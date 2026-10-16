@@ -1,0 +1,170 @@
+- situation: "저용량 승압제 말초 일시 투여 판단"
+  items:
+    - kind: slider
+      words: [w-swollen, w-stop, w-infusion, w-site]
+      cue: "Nurse: \"The IV site is red and swollen, and the arm feels tight.\""
+      scale: [keep watching, slow the rate, stop the infusion]
+      answerAt: 2
+      why: "자리가 빨갛고 붓는 건 약이 혈관 밖으로 새고 있다는 신호일 수 있어요. 속도를 줄이는 게 아니라 바로 주입을 멈추고 의사에게 알려요."
+      example: "If the site looks red or swollen, we stop the infusion right away."
+      exKo: "자리가 빨갛거나 부으면 바로 주입을 멈춰요."
+    - kind: context
+      words: [w-peripheral]
+      word: peripheral
+      ko: 말초의
+      scenes:
+        - {who: 의사와 상의, icon: stetho, en: "Can we run low-dose norepi peripherally until the central line is in?", ok: true}
+        - {who: 차트 기록, icon: board, en: "Norepinephrine via proximal peripheral IV, site checked and clear.", ok: true}
+        - {who: 보호자에게, icon: me, en: "He's receiving vasopressor therapy via a peripheral venous catheter pending central access.", ok: false, fix: "The medicine is going in through a small IV in his arm for now, until we place a bigger line."}
+      why: "peripheral venous catheter, central access는 의료진끼리는 정확한 말이에요. 보호자에게는 길고 딱딱해요. 지금은 팔의 작은 정맥관으로 넣고 곧 더 큰 관을 넣는다고 쉽게 풀어요."
+- situation: "수액 반응성 평가"
+  items:
+    - kind: slider
+      words: [w-response, w-passive, w-raise]
+      cue: "Nurse: \"After the passive leg raise, her pressure and pulse pressure barely moved.\""
+      scale: [little response, some response, big response]
+      answerAt: 0
+      why: "다리를 올려도 압력이 거의 변하지 않으면 수액을 더 줘도 크게 오르지 않을 가능성이 높아요. 큰 반응이 있으면 수액에 반응하는 쪽이에요. 최종 판단은 다른 지표와 함께 의사가 해요."
+      example: "If there's little response, another bolus may not help much."
+      exKo: "반응이 거의 없으면 수액을 더 줘도 큰 도움이 안 될 수 있어요."
+    - kind: context
+      words: [w-responsive]
+      word: responsive
+      ko: 반응하는
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "She looks fluid responsive on the passive leg raise.", ok: true}
+        - {who: 차트 기록, icon: board, en: "Passive leg raise positive, pt fluid responsive, bolus ordered per MD.", ok: true}
+        - {who: 보호자에게, icon: me, en: "She is fluid responsive per the passive leg raise.", ok: false, fix: "When we raised her legs, her blood pressure went up, so extra fluid will probably help."}
+      why: "fluid responsive, passive leg raise는 의료진끼리는 정확한 말이에요. 보호자에게는 무슨 검사인지 모르고 차갑게 들려요. 다리를 올렸더니 혈압이 올랐다는 눈에 보이는 결과로 풀어요."
+- situation: "승압제 무중단 이중펌프 전환"
+  items:
+    - kind: slider
+      words: [w-pressure, w-drop, w-speed, w-pump, w-switch]
+      cue: "Nurse: \"Her pressure dipped during the switch, and the new pump is already running.\""
+      scale: [wait and see, titrate the new pump up, stop both pumps]
+      answerAt: 1
+      why: "전환 중 압력이 떨어지면 새 펌프를 처방 범위 안에서 올려서 맞춰요. 그냥 기다리거나 두 펌프를 다 멈추면 약이 끊겨 혈압이 더 떨어질 수 있어요."
+      example: "If her pressure drops during the switch, I'll speed up the new pump."
+      exKo: "전환하는 동안 압력이 떨어지면 새 펌프 속도를 올릴게요."
+    - kind: context
+      words: [w-overlap]
+      word: overlap
+      ko: 겹치다
+      scenes:
+        - {who: 동료 간호사, icon: monitor, en: "I'll overlap the two pumps for a moment so there's no gap in the drip.", ok: true}
+        - {who: 차트 기록, icon: board, en: "Pumps overlapped during the switch, no gap in the infusion.", ok: true}
+        - {who: 보호자에게, icon: me, en: "We overlapped the two infusion pumps to avoid a gap in vasopressor delivery.", ok: false, fix: "We ran both pumps together for a moment so the medicine never stopped."}
+      why: "overlap, vasopressor delivery는 의료진끼리는 정확한 말이에요. 보호자에게는 딱딱하고 어려워요. 두 펌프를 잠깐 같이 돌려서 약이 끊기지 않았다고 쉽게 풀어요."
+- situation: "불응성 쇼크 다중 승압"
+  items:
+    - kind: slider
+      words: [w-escalate, w-map, w-max]
+      cue: "Nurse: \"Her MAP is still low on max norepi plus vasopressin.\""
+      scale: [keep watching, escalate now, wait for rounds]
+      answerAt: 1
+      why: "승압제를 최대로 써도 MAP이 낮으면 혼자 지켜보거나 회진까지 기다리지 않고 바로 상급에 알려요. SBAR로 상황·배경·평가·제안을 정리해서 전해요."
+      example: "I'm escalating this now using SBAR."
+      exKo: "지금 SBAR로 상황을 보고해서 에스컬레이션할게요."
+    - kind: swap
+      words: [w-escalate, w-sbar, w-map]
+      who: "의사에게 · 상황 보고"
+      icon: stetho
+      before: ["Her MAP is still low, so I'm ", "letting you know", " using SBAR."]
+      options: [letting you know, escalating, complaining]
+      answer: escalating
+      notes: {letting you know: "단순히 알린다는 뜻이라 판단과 도움을 요청한다는 느낌이 약해요.", escalating: "지금 상태가 내 선을 넘으니 판단과 도움을 상급에 요청한다는 정확한 말이에요.", complaining: "불평하는 것처럼 들려서 보고에 맞지 않아요."}
+      why: "escalate는 단순 전달이 아니라 더 높은 담당자의 판단과 도움을 요청한다는 뜻이에요."
+      ko: MAP이 아직 낮아서 SBAR로 상급에 올리고 있어요
+- situation: "노르에피 말초 침윤 조직괴사 위험"
+  items:
+    - kind: pair
+      words: [w-stop, w-physician, w-elevate]
+      pairs: [["stop", "the infusion"], ["call", "the physician"], ["elevate", "the arm"]]
+      decoys: ["the wristband"]
+      why: "승압제가 새는 것 같으면 먼저 주입을 멈추고, 의사나 병원 지침에 따라 알리고, 많은 병원 지침에서 해당 팔다리를 높이 들어 올려요. phentolamine 같은 해독제는 의사의 처방이 필요해요."
+    - kind: context
+      words: [w-extravasation]
+      word: extravasation
+      ko: 혈관외 유출
+      scenes:
+        - {who: 의사 호출, icon: stetho, en: "I'm concerned about extravasation. The norepi was running peripherally and the hand is blanched.", ok: true}
+        - {who: 차트 기록, icon: board, en: "Norepinephrine extravasation at the IV site, infusion stopped, MD notified.", ok: true}
+        - {who: 보호자에게, icon: me, en: "He has an extravasation of vasopressor with a risk of tissue necrosis.", ok: false, fix: "The medicine leaked out of the vein into his hand, so we stopped it and we're treating it."}
+      why: "extravasation, tissue necrosis는 의료진끼리는 정확한 말이에요. 보호자에게는 무섭고 어려워요. 약이 혈관 밖으로 샜고, 멈추고 치료하고 있다는 사실을 쉬운 말로 알려 줘요."
+- situation: "승압제 급성 중단 혈압 붕괴"
+  items:
+    - kind: slider
+      words: [w-hand]
+      cue: "Nurse: \"Her pressor line pulled out and her pressure is dropping fast.\""
+      scale: [tell the charge nurse later, ask a colleague when free, call for help right now]
+      answerAt: 2
+      why: "승압제가 끊겨 혈압이 빠르게 떨어지면 혼자 해결하려 하지 말고 바로 도움을 요청해요. 'extra hands'는 손이 더 필요하다는 말이에요."
+      example: "Call for help, we need extra hands on this."
+      exKo: "도움을 요청해 주세요. 손이 더 필요해요."
+    - kind: swap
+      words: [w-push, w-fluid, w-regain]
+      who: "동료 간호사 · 응급 지시"
+      icon: siren
+      before: ["Please ", "give", " fluids while I regain access."]
+      options: [give, push, offer]
+      answer: push
+      notes: {give: "맞는 말이지만 빠르게 넣으라는 속도 지시가 없어요.", push: "수액을 빠르게 밀어 넣으라는 급한 지시를 담은 정확한 말이에요.", offer: "권하는 느낌이라 환자에게 쓸 말이지 응급 지시로 맞지 않아요."}
+      why: "응급에서는 동료에게 속도와 급함까지 한 단어로 전해야 해요. push가 '빠르게 밀어 넣어라'는 뜻이에요."
+      ko: 제가 다시 확보하는 동안 수액을 빠르게 넣어 주세요
+- situation: "승압 중 급성 서맥 심정지 전조"
+  items:
+    - kind: slider
+      words: [w-crash, w-rate]
+      cue: "Nurse: \"Her heart rate is dropping fast and her pressure is falling with it.\""
+      scale: [slowing, dropping, crashing]
+      answerAt: 2
+      why: "심박수가 빠르게 떨어지면서 혈압까지 내려가는 상황은 crashing이에요. slowing은 천천히 느려질 때, dropping은 눈에 띄게 내려갈 때라 이 장면보다 약해요."
+      example: "Her heart rate is crashing into the 30s."
+      exKo: "심박수가 30대로 급격히 떨어지고 있어요."
+    - kind: context
+      words: [w-code]
+      word: code
+      ko: 코드(응급 소집)
+      scenes:
+        - {who: 의사에게 전화, icon: stetho, en: "I need you now. She's bradycardic in the 30s and I'm about to call a code.", ok: true}
+        - {who: 차트 기록, icon: board, en: "Code called for symptomatic bradycardia, atropine given per ACLS.", ok: true}
+        - {who: 보호자에게, icon: me, en: "We've called a code on your wife, and the code team is in the room.", ok: false, fix: "Her heart is slowing down dangerously, so a team of specialists is coming to help her right now."}
+      why: "code는 의료진끼리는 소생팀을 부르는 정확한 신호예요. 가족에게는 그 말이 무슨 뜻인지 모르고 갑자기 무섭게 들려요. 지금 무슨 일이 있고 누가 도우러 오는지 쉬운 말로 알려 줘요."
+- situation: "승압 불응 하이드로코르티손 추가"
+  items:
+    - kind: slider
+      words: [w-resort, w-standard]
+      cue: "Family: \"Is the steroid the last thing you can try?\""
+      scale: [a last resort, a standard step, an optional extra]
+      answerAt: 1
+      why: "승압제를 써도 혈압이 낮은 이런 쇼크에서 스테로이드를 추가하는 건 흔한 단계이지 마지막 수단이 아니에요. 그렇다고 아무 일 아니라는 뜻은 아니니, 계속 자세히 본다고 함께 말해요."
+      example: "It's a standard step in this kind of shock, not a last resort."
+      exKo: "이런 종류의 쇼크에서는 흔한 단계이지 마지막 수단은 아니에요."
+    - kind: context
+      words: [w-steroid]
+      word: steroid
+      ko: 스테로이드
+      scenes:
+        - {who: 의사와 상의, icon: stetho, en: "Should we add a steroid, since she's still on two pressors?", ok: true}
+        - {who: 차트 기록, icon: board, en: "Steroid (hydrocortisone) started for pressor-refractory shock.", ok: true}
+        - {who: 보호자에게, icon: me, en: "We're initiating stress-dose corticosteroid therapy for relative adrenal insufficiency.", ok: false, fix: "It's a medicine that helps her body respond to the blood pressure medicines."}
+      why: "stress-dose corticosteroid, relative adrenal insufficiency는 의료진끼리는 정확한 말이에요. 보호자에게는 어렵고 겁나요. 이 약이 무엇을 돕는지만 쉽게 말해 줘요."
+- situation: "임계 저관류 기계보조 고려"
+  items:
+    - kind: slider
+      words: [w-critical, w-lactate]
+      cue: "Colleague: \"She's on max support and her lactate is still climbing. How sick is she?\""
+      scale: [unwell, very sick, critically ill]
+      answerAt: 2
+      why: "최대 보조에도 젖산이 계속 오르면 critically ill이 정확한 표현이에요. 가족에게도 줄여서 말하지 않고, 같은 사실을 더 쉬운 말로 풀어 전해요."
+      example: "She's critically underperfused despite maximal support."
+      exKo: "최대한의 보조에도 불구하고 관류가 심각하게 부족한 상태예요."
+    - kind: context
+      words: [w-ecmo]
+      word: ECMO
+      ko: 체외막산소공급
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "She's on max pressors and her lactate is rising. Should we call the ECMO team?", ok: true}
+        - {who: 차트 기록, icon: board, en: "ECMO team notified, family updated at bedside.", ok: true}
+        - {who: 보호자에게, icon: me, en: "She's a candidate for VA-ECMO given her refractory shock.", ok: false, fix: "A machine can take over some of the heart's work while she recovers, and the team is getting ready for it."}
+      why: "VA-ECMO, refractory shock은 의료진끼리는 정확한 말이에요. 가족에게는 약어와 진단명이 겁나고 어려워요. 기계가 무슨 일을 대신하는지와 지금 무엇을 준비하는지를 쉬운 말로 풀어요."

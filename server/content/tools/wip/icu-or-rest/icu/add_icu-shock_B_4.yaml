@@ -1,0 +1,108 @@
+- title: 다장기부전 동반 불응성 쇼크
+  s:
+  - {t: "상태 보고", i: monitor, w: "despite는 앞의 처치에도 불구하고 결과가 달라지지 않았다는 전치사예요. maximal support를 먼저 말하면 더 할 수 있는 처치가 이미 다 쓰였다는 맥락이 전해져요.", d: "at the hospital", k: ["최대한의 지지 요법에도 불구하고 신부전 상태예요", "최소한의 지지 요법에도 불구하고 다장기부전 상태예요"], a: "maximal", o: ["minimal", "limited", "partial"]}
+  - {t: "목표 재설정", i: compass, w: "We need to …는 해야 할 일을 팀 전체의 말로 하는 모양이에요. goals of treatment를 다시 본다는 것은 치료를 늘릴지 줄일지가 아니라 환자에게 맞는 방향을 다시 묻는다는 뜻이에요.", d: "on the unit", k: ["치료 일정을 재사정해야 해요", "치료 목표를 재사정할 수 있어요"], a: "goals", o: ["costs", "rooms", "shifts"]}
+  - {t: "회의 제안", i: handshake2, w: "Let's bring … together는 사람들을 한자리에 모으자는 제안이에요. for a plan으로 목적을 밝히면 가족이 회의를 통보가 아니라 함께 정하는 자리로 받아들여요.", d: "by the window", k: ["식사를 위해 팀과 가족을 함께 모아요", "계획을 위해 팀과 사회복지사를 함께 모아요"], a: "family", o: ["students", "visitors", "vendors"]}
+  - {t: "장기 상태", i: stetho, w: "are both failing은 둘 다 동시에 나빠지고 있다는 진행형이에요. both를 넣으면 한 장기가 아니라 여러 장기가 함께 영향받는다는 점이 분명해져요.", d: "in her chart", k: ["신장과 폐가 둘 다 기능부전이 되고 있어요", "신장과 간이 둘 다 검사를 받고 있어요"], a: "liver", o: ["lungs", "brain", "skin"]}
+  - {t: "처치 한계", i: board, w: "This is despite …는 앞 문장이 가리킨 상황이 어떤 처치에도 불구하고 생겼다고 덧붙이는 모양이에요. fluids and pressors처럼 구체적으로 말하면 어떤 처치를 이미 했는지 가족이 알 수 있어요.", d: "at noon", k: ["최대한의 수액과 항생제에도 불구하고 이래요", "최소한의 수액과 승압제에도 불구하고 이래요"], a: "fluids", o: ["visits", "meals", "calls"]}
+  - {t: "의사 합류", i: speech, w: "ask the physician to join은 간접 요청 모양이에요. 중요한 논의에 의사가 직접 함께하도록 부탁하면 가족이 같은 설명을 두 번 듣지 않아도 돼요.", d: "after lunch", k: ["이 대화에 함께하도록 가족에게 요청할게요", "이 대화를 녹음하도록 의사에게 요청할게요"], a: "join", o: ["record", "cancel", "observe"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "다장기부전 논의 4문장 순서"
+    why: "상태를 먼저 말하고, 그것이 장기 기능에 어떤 뜻인지 설명하고, 목표를 다시 봐야 한다고 한 뒤, 가족과 의사를 함께 모은다고 해요. 2줄의 That은 1줄의 상태를, 4줄의 plan은 3줄의 goals를 이어받아서 순서가 하나예요."
+    lines:
+    - {en: "She's now in multi-organ failure despite maximal support.", icon: monitor, ko: "최대한의 지지 요법에도 다장기부전 상태예요", note: "상태"}
+    - {en: "That means her kidneys and liver are both failing.", icon: stetho, ko: "그건 신장과 간이 둘 다 기능부전이라는 뜻이에요", note: "의미"}
+    - {en: "We need to reassess our goals of treatment.", icon: compass, ko: "치료 목표를 재사정해야 해요", note: "목표"}
+    - {en: "Let's bring the team and family together for a plan, and I'll ask the physician to join.", icon: handshake2, ko: "계획을 위해 팀과 가족을 모으고 의사도 합류하도록 요청할게요", note: "회의"}
+- title: 대량 출혈 쇼크 대량수혈 발동
+  s:
+  - {t: "프로토콜 발동", i: siren, w: "Activate는 명령문으로 지금 해야 할 일을 바로 말해요. massive transfusion protocol은 출혈이 심할 때 혈액제제를 정해진 구성으로 빠르게 공급하는 병원 절차예요.", d: "in the unit", k: ["제가 대량수혈 프로토콜을 활성화할게요", "대량수혈 프로토콜을 활성화하라고 하셨어요"], a: "massive", o: ["minor", "simple", "basic"]}
+  - {t: "제제 요청", i: lab, w: "the cooler with …는 with로 운반함 안에 든 것을 말하는 모양이에요. 농축적혈구와 혈장과 혈소판을 나열하면 어떤 제제가 필요한지 혈액은행이 바로 알아요.", d: "in the lab", k: ["농축적혈구, 혈장, 혈소판이 든 수레가 필요해요", "농축적혈구, 혈장, 혈소판이 든 냉장 운반함이 필요하대요"], a: "cooler", o: ["heater", "printer", "locker"]}
+  - {t: "역할 배정", i: handshake2, w: "so the products keep flowing은 so와 keep …ing로 목적을 말하는 모양이에요. 대량수혈은 여러 일이 한꺼번에 생겨서 역할을 나누어야 혈액제제가 끊기지 않아요.", d: "outside the room", k: ["혈액제제가 계속 공급되도록 병실을 배정해요", "혈액제제가 계속 보관되도록 역할을 배정해요"], a: "roles", o: ["rooms", "rules", "rates"]}
+  - {t: "혈액은행 연락", i: speech, w: "right now는 지금 바로를 뜻하는 강조 표현이에요. 혈액제제는 준비하는 데 시간이 걸려서 혈액은행에 일찍 알릴수록 공급이 끊기지 않아요.", d: "from the hall", k: ["지금 바로 혈액은행에 연락하라고 할게요", "지금 바로 혈액은행에 직접 찾아갈게요"], a: "call", o: ["carry", "count", "clean"]}
+  - {t: "투여 순서", i: pill, w: "first … then …은 순서를 알리는 연결 표현이에요. 어떤 제제를 어떤 순서로 주는지 말해 주면 옆에서 준비하는 사람이 다음 제제를 미리 챙길 수 있어요.", d: "by the bed", k: ["먼저 농축적혈구를 주고 그다음 혈장을 줄 수 있어요", "먼저 농축적혈구를 주고 그다음 혈장을 주자고 해요"], a: "first", o: ["last", "only", "twice"]}
+  - {t: "개수 기록", i: pencil, w: "running count는 계속 이어서 세는 누적 수라는 뜻이에요. 대량수혈은 짧은 시간에 여러 단위를 쓰기 때문에 매번 세어야 몇 개가 들어갔는지 팀이 같은 숫자를 알아요.", d: "of the shift", k: ["매 단위마다 계속 온도를 재어 볼게요", "매 단위마다 계속 이름을 말해 볼게요"], a: "unit", o: ["room", "shift", "visit"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "대량수혈 발동 4문장 순서"
+    why: "발동을 먼저 말하고, 혈액은행에 연락하고, 그곳에서 올 운반함을 요청하고, 제제가 끊기지 않게 역할을 나눠요. 2줄의 that은 1줄의 발동을, 3줄의 them은 2줄의 혈액은행을, 4줄의 those products는 3줄의 제제를 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "Activate the massive transfusion protocol.", icon: siren, ko: "대량수혈 프로토콜을 활성화하세요", note: "발동"}
+    - {en: "I'm calling the blood bank right now about that.", icon: speech, ko: "그 일로 지금 바로 혈액은행에 연락하고 있어요", note: "연락"}
+    - {en: "I need the cooler with packed cells, plasma, and platelets from them.", icon: lab, ko: "그쪽에서 농축적혈구, 혈장, 혈소판이 든 냉장 운반함이 필요해요", note: "요청"}
+    - {en: "Let's assign roles so those products keep flowing.", icon: handshake2, ko: "그 제제가 계속 공급되도록 역할을 배정해요", note: "역할"}
+- title: 심장압전 응급 심낭천자 보조
+  s:
+  - {t: "소견 판단", i: stetho, w: "this looks like …는 소견을 근거로 가능성을 말하는 모양이에요. 심음이 둔탁하고 혈압이 낮은 두 가지가 함께 있으면 심장압전을 의심할 수 있어요.", d: "in the cart", k: ["둔탁한 폐음과 낮은 혈압 — 심장압전처럼 보여요", "둔탁한 심음과 낮은 맥압 — 심장압전처럼 보여요"], a: "Muffled", o: ["Loud", "Bounding", "Crisp"]}
+  - {t: "시술 준비", i: scalpel, w: "set up과 prime은 모두 쓸 수 있게 준비해 둔다는 뜻이에요. 심낭천자는 급할 때 하는 시술이라 트레이와 모니터를 미리 준비해 두면 의사가 바로 시작할 수 있어요.", d: "on the table", k: ["심낭천자 트레이를 준비하고 모니터도 준비해 주세요", "심낭천자 트레이를 준비하고 모니터도 준비하자고 할게요"], a: "prime", o: ["print", "praise", "pack"]}
+  - {t: "보조 준비", i: check, w: "ready to …는 어떤 일을 할 준비가 됐다는 모양이에요. assist and document처럼 두 역할을 함께 말하면 의사가 간호사의 역할을 바로 알아요.", d: "in the hall", k: ["시술을 보조하고 안내할 준비가 됐어요", "시술을 보조하고 촬영할 준비가 됐어요"], a: "assist", o: ["audit", "applaud", "announce"]}
+  - {t: "추가 소견", i: stetho, w: "too는 앞에서 말한 소견에 더해서라는 뜻이에요. 목 정맥이 부풀어 보이는 것은 심장압전에서 함께 나타날 수 있는 소견이라 앞의 두 소견을 뒷받침해요.", d: "at night", k: ["다리 정맥도 팽창되어 보여요", "목 정맥도 붉어져 보여요"], a: "neck", o: ["leg", "arm", "hand"]}
+  - {t: "멸균 준비", i: shield, w: "sterile은 균이 없게 처리된 상태를 뜻해요. 심낭천자는 몸 안으로 들어가는 시술이라 트레이를 열 때부터 멸균 상태를 지켜야 해요.", d: "for you", k: ["지금 멸균 트레이를 가져올게요", "지금 멸균 트레이를 열라고 해요"], a: "sterile", o: ["metal", "paper", "large"]}
+  - {t: "기록 시작", i: pencil, w: "I'm charting은 지금 하고 있는 일을 말하는 현재진행형이에요. 응급 시술에서는 시간과 활력징후를 그 자리에서 기록해야 나중에 처치와 변화를 맞춰 볼 수 있어요.", d: "in the car", k: ["시간과 소변량을 기록하고 있어요", "시간과 활력징후를 전하고 있어요"], a: "charting", o: ["charging", "changing", "chasing"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "응급 심낭천자 보조 4문장 순서"
+    why: "소견으로 심장압전을 말하고, 시술 준비를 하고, 그 시술을 위해 멸균 트레이를 열고, 보조와 기록 준비가 됐다고 알려요. 3줄의 it은 2줄의 심낭천자를, 4줄의 procedure는 앞의 준비 전체를 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "Muffled heart sounds and low pressure — this looks like tamponade.", icon: stetho, ko: "둔탁한 심음과 낮은 혈압 — 심장압전처럼 보여요", note: "판단"}
+    - {en: "I'll set up for a pericardiocentesis and prime the monitor.", icon: scalpel, ko: "심낭천자를 준비하고 모니터도 준비할게요", note: "준비"}
+    - {en: "I'll open the sterile tray for it now.", icon: shield, ko: "그걸 위해 지금 멸균 트레이를 열게요", note: "멸균"}
+    - {en: "I'm ready to assist and document the procedure.", icon: check, ko: "시술을 보조하고 기록할 준비가 됐어요", note: "보조"}
+- title: 긴장성 기흉 응급 감압
+  s:
+  - {t: "소견 판단", i: siren, w: "this is …는 소견 뒤에 진단을 단호하게 말하는 모양이에요. 호흡음이 없고 저혈압이라는 두 소견이 함께 있으면 긴장성 기흉으로 바로 판단해 응급 감압으로 넘어가요.", d: "behind the screen", k: ["호흡음이 없고 고열이에요 — 긴장성 기흉이에요", "호흡음이 없고 빈맥이에요 — 긴장성 기흉이에요"], a: "hypotension", o: ["hypertension", "hypothermia", "hypoglycemia"]}
+  - {t: "바늘 요청", i: scalpel, w: "Get은 명령문으로 가져오라는 뜻이에요. for immediate decompression으로 목적을 붙이면 가져오는 사람이 왜 급한지 바로 알고 움직여요.", d: "from the cart", k: ["즉각 감압을 위해 바늘을 가져오라고 하세요", "즉각 감압을 위해 바늘을 가져오자고 해요"], a: "needle", o: ["bandage", "stretcher", "blanket"]}
+  - {t: "재사정 계획", i: stetho, w: "After decompression은 감압이 끝난 뒤라는 시점이에요. 감압 후에는 호흡음이 돌아오는지와 활력징후가 나아지는지를 봐야 처치가 효과가 있었는지 알 수 있어요.", d: "at his side", k: ["감압 후에 호흡음과 의식을 재사정할게요", "감압 후에 호흡음과 활력징후를 전할게요"], a: "vitals", o: ["labs", "drains", "tubes"]}
+  - {t: "산소 변화", i: monitor, w: "on one side는 한쪽에서만이라는 뜻으로 양쪽이 아니라는 점을 알려 줘요. 긴장성 기흉은 한쪽 폐가 공기에 눌려서 생기므로 어느 쪽에 문제가 있는지 함께 말해요.", d: "on the left", k: ["한쪽에서 혈당이 빠르게 떨어지고 있어요", "양쪽에서 산소포화도가 빠르게 떨어지고 있어요"], a: "oxygen", o: ["pain", "glucose", "temperature"]}
+  - {t: "준비 완료", i: check, w: "I have … ready는 이미 준비해 두었다는 결과를 말하는 모양이에요. 의사가 시작할 때 바로 쓸 수 있다고 알리면 감압이 빨라져요.", d: "in my hand", k: ["문 옆에 바늘을 준비해 뒀어요", "침상 옆에 바늘을 준비하는 중이에요"], a: "bedside", o: ["desk", "door", "closet"]}
+  - {t: "처치 결과", i: chartup, w: "are back은 사라졌던 것이 돌아왔다는 뜻이에요. 감압 후에 호흡음이 돌아오는 것은 공기가 빠져 폐가 다시 펴졌다는 신호라서 결과를 바로 말해 팀이 확인해요.", d: "on the chart", k: ["감압 후에 심음이 다시 돌아왔어요", "감압 전에 호흡음이 다시 돌아왔어요"], a: "back", o: ["gone", "quiet", "faint"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "긴장성 기흉 감압 4문장 순서"
+    why: "소견으로 진단을 말하고, 바늘을 요청하고, 준비됐다고 알리고, 감압 후에 재사정하겠다고 해요. 3줄의 it은 2줄의 바늘을, 4줄의 After that은 앞의 감압을 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "Absent breath sounds and hypotension — this is a tension pneumothorax.", icon: siren, ko: "호흡음이 없고 저혈압이에요 — 긴장성 기흉이에요", note: "진단"}
+    - {en: "Get the needle for immediate decompression.", icon: scalpel, ko: "즉각 감압을 위해 바늘을 가져오세요", note: "요청"}
+    - {en: "I have it ready at the bedside.", icon: check, ko: "침상 옆에 준비해 뒀어요", note: "준비"}
+    - {en: "After that, I'll reassess his breath sounds and vitals.", icon: stetho, ko: "그 후에 호흡음과 활력징후를 재사정할게요", note: "재사정"}
+- title: 쇼크 후 심정지 임박
+  s:
+  - {t: "코드 호출", i: siren, w: "peri-arrest는 심정지 직전이라는 뜻이에요. 상태를 먼저 말한 뒤 call로 바로 행동을 이어서 말하면 듣는 사람이 왜 부르는지 알고 움직여요.", d: "to the room", k: ["심정지 임박이에요 — 제가 지금 코드팀을 호출할게요", "심정지 임박이에요 — 지금 코드팀을 호출해 주실래요?"], a: "call", o: ["comb", "cook", "copy"]}
+  - {t: "역할 분담", i: handshake2, w: "You take …, I'll …은 역할을 나누는 짧은 모양이에요. 소생 중에는 누가 무엇을 맡는지가 바로 분명해야 해서 문장을 짧게 끊어 말해요.", d: "for you", k: ["흉부압박을 맡아 주실래요? 저는 기도를 맡을게요", "흉부압박은 제가 맡을게요, 기도는 맡아 주시겠어요?"], a: "manage", o: ["mention", "mark", "mop"]}
+  - {t: "카트·기록", i: pencil, w: "Someone get …은 누구든 해 달라는 요청이에요. 소생 중에는 시간과 처치를 적는 일도 한 사람이 맡아야 해서 카트와 기록을 함께 부탁해요.", d: "near the door", k: ["제가 응급 카트를 가져오고 기록을 시작할게요", "누가 응급 카트를 가져오고 기록을 시작해 주실래요?"], a: "documenting", o: ["decorating", "debating", "dancing"]}
+  - {t: "상태 보고", i: monitor, w: "just dropped는 방금 떨어졌다는 뜻이에요. to nothing으로 정도까지 말하면 상태가 한계에 이르렀다는 점이 한 번에 전해져요.", d: "in the lobby", k: ["맥박이 방금 완전히 떨어졌어요", "산소가 방금 완전히 떨어졌어요"], a: "dropped", o: ["rose", "jumped", "climbed"]}
+  - {t: "패드 준비", i: scalpel, w: "grab은 급하게 가져온다는 뜻의 구어 동사예요. now를 붙이면 지금 바로 한다는 점이 분명하고, 제세동기 패드는 필요할 때 바로 붙일 수 있게 먼저 챙겨 둬요.", d: "by the bed", k: ["지금 제세동기 패드를 가져와 주실래요?", "지금 제세동기 패드를 가져오라고 할게요"], a: "grab", o: ["greet", "grind", "grow"]}
+  - {t: "호출 요청", i: speech, w: "Someone needs to …는 누가 하는지 정하지 않고 할 일만 말하는 모양이에요. 위급할 때는 부를 사람을 정하느라 지체하지 않고 할 일부터 소리 내어 알려요.", d: "at the desk", k: ["저는 코드팀을 호출해야 해요", "누군가 코드팀을 호출할 수 있어요"], a: "page", o: ["pay", "pack", "paint"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "심정지 임박 대응 4문장 순서"
+    why: "혈압 변화를 먼저 말하고, 그래서 코드팀을 호출하고, 호출 뒤에 압박과 기도 역할을 나누고, 카트와 패드를 챙겨요. 2줄의 so는 1줄의 변화를 이어받아서 순서가 정해져요."
+    lines:
+    - {en: "Her pressure just dropped to nothing.", icon: monitor, ko: "혈압이 방금 완전히 떨어졌어요", note: "상태"}
+    - {en: "She's peri-arrest, so call the code team now.", icon: siren, ko: "심정지 임박이니 지금 코드팀을 호출하세요", note: "호출"}
+    - {en: "You take compressions, I'll manage the airway.", icon: handshake2, ko: "흉부압박을 맡아 주시고, 저는 기도를 맡을게요", note: "역할"}
+    - {en: "I'll grab the defibrillator pads, and someone get the crash cart.", icon: scalpel, ko: "제가 제세동기 패드를 가져올 테니 누가 응급 카트를 가져와 주세요", note: "장비"}
+- title: 소생 목표와 무의미성 갈등
+  s:
+  - {t: "공감", i: faceWorried, w: "I understand …로 먼저 공감을 말하고 and로 포기하지 않는다는 약속을 이었어요. 가족은 치료를 줄이는 이야기를 들을 때 버려진다고 느끼기 쉬워서 곁을 지키겠다는 말을 함께 해요.", d: "in the room", k: ["이게 얼마나 놀라운 일인지 이해해요, 그리고 저희는 포기하지 않아요", "이게 얼마나 힘든 일인지 이해해요, 그리고 저희는 계속 연락드릴게요"], a: "hard", o: ["rare", "odd", "new"]}
+  - {t: "대화 시작", i: speech, w: "what he would have wanted는 would have로 그분이 지금 말할 수 있다면 원했을 것을 가정해 말하는 모양이에요. 가족이 자기 뜻이 아니라 환자의 뜻을 떠올리게 해요.", d: "for the family", k: ["그분이 무엇을 좋아했을지에 대해 이야기하고 싶어요", "그분이 무엇을 원했을지에 대해 이야기해 보시겠어요?"], a: "wanted", o: ["feared", "owed", "hated"]}
+  - {t: "함께 결정", i: handshake2, w: "Let's는 함께 하자는 제안이고 together가 결정을 혼자 내리지 않는다는 점을 분명히 해요. makes sense는 환자에게 맞는다는 뜻으로 의학적 최선만이 기준이 아니라는 말이에요.", d: "next to the desk", k: ["지금 어떤 돌봄이 그분께 맞는지 함께 지켜봐요", "지금 어떤 병실이 그분께 맞는지 함께 결정해요"], a: "together", o: ["quickly", "quietly", "slowly"]}
+  - {t: "가족 공감", i: faceWorried, w: "I know this is …는 상대가 겪는 일을 알아준다는 공감 모양이에요. very를 넣어 가볍게 넘기지 않고 가족의 부담을 있는 그대로 인정해요.", d: "at the window", k: ["가족분들께 지금이 정말 바쁜 시간이라는 걸 알아요", "친구분들께 지금이 정말 힘든 시간이라는 걸 알아요"], a: "family", o: ["friends", "neighbors", "colleagues"]}
+  - {t: "가치 질문", i: bulb, w: "what matters most to him은 그분에게 가장 중요한 것을 묻는 모양이에요. 의료진이 답을 정해 주지 않고 가족에게 환자의 가치를 말하게 하면 결정이 환자 중심이 돼요.", d: "of his life", k: ["그분께 가장 걱정되는 게 무엇인지 말씀해 주시겠어요?", "그분께 가장 중요한 게 무엇인지 적어 주시겠어요?"], a: "most", o: ["least", "less", "little"]}
+  - {t: "지지 약속", i: shield, w: "whatever는 어떤 것이든이라는 뜻이라 가족의 선택을 미리 평가하지 않는다는 약속이 돼요. all of you를 넣으면 한 사람이 아니라 가족 모두의 뜻을 존중한다는 말이에요.", d: "from the team", k: ["당신에게 알맞게 느껴지는 결정이라면 무엇이든 지지할게요", "여러분 모두에게 알맞게 보이는 결정이라면 무엇이든 지지할게요"], a: "support", o: ["suspect", "survey", "summon"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "목표 논의 4문장 순서"
+    why: "공감으로 시작하고, 환자가 원했을 것을 이야기하자고 하고, 그게 무엇이었을지 묻고, 가족이 내리는 결정을 지지한다고 약속해요. 3줄의 that은 2줄의 what he would have wanted를 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "I know this is a very hard time for your family.", icon: faceWorried, ko: "가족분들께 지금이 정말 힘든 시간이라는 걸 알아요", note: "공감"}
+    - {en: "I want to talk about what he would have wanted.", icon: speech, ko: "그분이 무엇을 원했을지 이야기하고 싶어요", note: "제안"}
+    - {en: "Can you tell me what that would have been?", icon: bulb, ko: "그게 무엇이었을지 말씀해 주시겠어요?", note: "질문"}
+    - {en: "We'll support whatever decision feels right for all of you.", icon: shield, ko: "여러분 모두에게 알맞게 느껴지는 결정이라면 무엇이든 지지할게요", note: "약속"}

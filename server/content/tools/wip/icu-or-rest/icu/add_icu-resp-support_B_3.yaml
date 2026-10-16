@@ -1,0 +1,90 @@
+10:
+  s:
+  - {tag: 설정 조정, icon: gear, why: "so the machine follows…로 목적을 붙여 설정을 만지는 이유가 \"내 호흡에 맞추려는 것\"임을 알려요.", decoy: "from the rail", dk: ["기계가 호흡을 따라가도록 설정값을 확인할게요", "기계가 몸짓을 따라가도록 설정값을 조정할게요"], ans: follows, opts: [fights, blocks, chases]}
+  - {tag: 호흡 코칭, icon: me, why: "with it, not against it처럼 \"A가 아니라 B\"로 대비하면 바라는 행동이 선명해져요.", decoy: "in the chair", dk: ["기계에 맞서지 말고 집중해서 함께 숨 쉬도록 코칭해 드릴게요", "기계에 맞서지 말고 이완해서 함께 앉도록 코칭해 드릴게요"], ans: relax, opts: [sing, smile, wave]}
+  - {tag: 약물 설명, icon: pill, why: "A little…can help는 효과를 단정하지 않고 \"도움이 될 수 있다\"고 말해 약에 대한 부담을 낮춰요.", decoy: "before lunch", dk: ["물을 조금 마시면 마스크를 더 잘 견디는 데 도움이 돼요", "약을 조금 쓰면 마스크를 더 잘 고르는 데 도움이 돼요"], ans: tolerate, opts: [choose, clean, carry]}
+  - {tag: 불일치 대응, icon: gear, why: "When…, I…는 \"그럴 때마다 이렇게 한다\"는 습관을 말해 환자가 예측할 수 있어요.", decoy: "in the pocket", dk: ["기계와 호흡이 안 맞을 때 설정값을 확인해요", "기계와 호흡이 안 맞을 때 마스크를 조정해요"], ans: match, opts: [touch, meet, travel]}
+  - {tag: 이완 요청, icon: me, why: "let the machine do some of the work는 환자가 애쓰지 않아도 된다는 허락이라 긴장을 풀게 해요.", decoy: "for a while", dk: ["턱을 이완하고 기계가 일을 좀 하게 두세요", "어깨를 이완하고 간호사가 일을 좀 하게 두세요"], ans: shoulders, opts: [fingers, ankles, knees]}
+  - {tag: 패턴 맞춤, icon: magnify, why: "so I can…은 지켜보는 이유를 밝혀 감시가 아니라 맞춰 주려는 것임을 알려요.", decoy: "from the door", dk: ["숨 쉬는 걸 보고 있어서 맞서지 않고 패턴을 기록할 수 있어요", "숨 쉬는 걸 보고 있어서 맞서지 않고 순서를 따라갈 수 있어요"], ans: pattern, opts: [color, mood, name]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: NIV 불일치를 줄이는 4문장 순서
+    why: 안 맞을 때 설정을 조정한다고 알리고, 그동안 이완을 부탁하고, 그래도 힘들면 약을 쓸 수 있다고 말한 뒤, 계속 지켜보겠다고 마무리해요.
+    lines:
+    - {en: "When the machine and your breathing don't match, I adjust the settings.", icon: gear, ko: "기계와 호흡이 안 맞을 때 설정값을 조정해요", note: 조정}
+    - {en: "While I do that, try to relax your shoulders and let the machine do some of the work.", icon: me, ko: "제가 그러는 동안 어깨를 이완하고 기계가 일을 좀 하게 두세요", note: 이완}
+    - {en: "If that's still hard, a little medication can help you tolerate the mask.", icon: pill, ko: "그래도 힘들면 약을 조금 쓰는 게 마스크를 견디는 데 도움이 돼요", note: 약물}
+    - {en: "Through all of that, I'll keep watching how you breathe.", icon: magnify, ko: "그 모든 과정에서 숨 쉬는 모습을 계속 지켜볼게요", note: 관찰}
+11:
+  s:
+  - {tag: 위험 설명, icon: bell, why: "can은 \"그럴 수 있다\"는 가능성이라 모든 환자에게 일어난다고 단정하지 않아요.", decoy: "from the bag", dk: ["약이 위로 들어가서 흡인 위험을 높일 수 있어요", "공기가 위로 들어가서 낙상 위험을 높일 수 있어요"], ans: stomach, opts: [arm, knee, ear]}
+  - {tag: 예방 조치, icon: shield, why: "to decompress로 목적을 붙여 위관을 \"왜\" 고려하는지 알려요. consider는 최종 결정을 의사에게 남기는 말투예요.", decoy: "on the bed rail", dk: ["머리를 올리고 보호를 위해 위관을 고려해요", "머리를 올리고 감압을 위해 위관을 설명해요"], ans: gastric, opts: [urinary, dental, spinal]}
+  - {tag: 구토 대응, icon: bell, why: "If he vomits, we…은 \"조건 → 즉시 행동\" 한 쌍이라 비상 때 그대로 입에서 나오고, fast는 지체하지 않는다는 뜻이에요.", decoy: "for him", dk: ["재채기하면 마스크를 제거하고 빠르게 기도를 확보해요", "딸꾹질하면 마스크를 제거하고 빠르게 기도를 확보해요"], ans: vomits, opts: [sneezes, yawns, sleeps]}
+  - {tag: 상태 보고, icon: magnify, why: "so I'm watching…으로 관찰 결과와 지금 하는 일을 이어 말하면 동료가 이유를 바로 알아들어요.", decoy: "on his chart", dk: ["위가 단단해 보여서 흡인 위험을 지켜보고 있어요", "위가 팽만해 보여서 감염 위험을 지켜보고 있어요"], ans: distended, opts: [sunken, flat, clean]}
+  - {tag: 체위 이유, icon: shield, why: "to lower the risk of…로 \"위험을 낮춘다\"고 말하면 위험을 없앤다는 과장 없이 정확해요.", decoy: "in the hall", dk: ["욕창 위험을 낮추려고 머리를 올려두고 있어요", "탈수 위험을 낮추려고 머리를 올려두고 있어요"], ans: vomiting, opts: [bleeding, falling, itching]}
+  - {tag: 응급 대응, icon: bell, why: "act fast to…는 \"서둘러 …한다\"는 틀이고 and로 두 목적을 묶어 기도와 폐를 함께 지키는 이유를 말해요.", decoy: "from the chart", dk: ["기침을 시작하면 빠르게 기도를 확보하고 폐를 보호해요", "울기 시작하면 빠르게 기도를 확보하고 폐를 보호해요"], ans: protect, opts: [warm, wash, paint]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: NIV 중 흡인 위험을 관리하는 4문장 순서
+    why: 위험의 원인을 먼저 말하고, 그 위험을 낮추는 조치를 말한 뒤, 조치 중 관찰 결과를 보고하고, 악화될 때의 대응으로 마무리해요.
+    lines:
+    - {en: "Air from the mask can push into his stomach and raise his aspiration risk.", icon: bell, ko: "마스크의 공기가 위로 들어가 흡인 위험을 높일 수 있어요", note: 위험}
+    - {en: "To lower that risk, we keep his head up and consider a gastric tube.", icon: shield, ko: "그 위험을 낮추려고 머리를 올리고 위관을 고려해요", note: 예방}
+    - {en: "With his head up, I'm watching whether his stomach looks distended.", icon: magnify, ko: "머리를 올린 채 위가 팽만해 보이는지 지켜보고 있어요", note: 관찰}
+    - {en: "If that distension gets worse and he vomits, we remove the mask and clear his airway fast.", icon: bell, ko: "팽만이 심해지고 구토하면 마스크를 제거하고 빠르게 기도를 확보해요", note: 대응}
+12:
+  s:
+  - {tag: 악화 보고, icon: chartup, why: "isn't improving과 is rising을 and로 묶으면 나쁜 신호 두 가지를 한 번에 보고해요.", decoy: "on his chart", dk: ["혈압이 좋아지지 않고 호흡 일량이 오르고 있어요", "동맥혈가스가 좋아지지 않고 호흡 소리가 커지고 있어요"], ans: rising, opts: [dropping, ending, hiding]}
+  - {tag: 삽관 판단, icon: bell, why: "shouldn't delay…는 \"미루지 말자\"는 부정형이라 결단을 재촉하면서도 \"하자\"보다 완곡해요.", decoy: "in his room", dk: ["이건 NIV 실패 징후라서 회진을 지연하면 안 돼요", "이건 NIV 실패 징후라서 검사를 지연하면 안 돼요"], ans: failure, opts: [setup, comfort, cleaning]}
+  - {tag: 보고 약속, icon: pencil, why: "report A to B now는 \"무엇을·누구에게·언제\"가 한 줄에 다 들어가 비상 보고의 모범 틀이에요.", decoy: "with the form", dk: ["지금 실패 사진을 의사에게 보고할게요", "지금 실패 지표를 의사에게 정리해 드릴게요"], ans: report, opts: [print, copy, sign]}
+  - {tag: 지속 악화, icon: chartup, why: "even with…on은 \"그런데도\"라는 뜻이라 치료 중에도 나빠진다는 점을 강조해요.", decoy: "on the left", dk: ["안경을 쓰고 있어도 호흡 일량이 계속 오르고 있어요", "마스크를 쓰고 있어도 호흡 소리가 계속 커지고 있어요"], ans: rising, opts: [sliding, fading, ending]}
+  - {tag: 의견 표현, icon: bulb, why: "I don't want to…는 직접 \"해야 한다\"고 하는 대신 내 바람으로 표현해 의사에게 부담 없이 의견을 낼 수 있어요.", decoy: "at this hour", dk: ["이 실패 징후가 계속되면 채혈을 지연하고 싶지 않아요", "이 실패 징후가 계속되면 면회를 지연하고 싶지 않아요"], ans: intubation, opts: [lunch, rounds, visits]}
+  - {tag: 보고 완료, icon: check, why: "already는 \"이미 해 놨다\"는 완료 표시라 동료가 같은 일을 또 하지 않아도 된다는 정보가 돼요.", decoy: "from the desk", dk: ["이미 의사에게 연락했고 들리는 지표를 전부 보고했어요", "이미 의사에게 연락했고 보이는 지표를 전부 사진으로 보고했어요"], ans: paged, opts: [thanked, greeted, waved]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: NIV 실패 징후를 보고하는 4문장 순서
+    why: 악화 소견을 말하고, 그것이 실패 징후라며 의사를 호출하고, 호출 후 보이는 지표를 보고하고, 보고 뒤에도 계속되면 삽관을 미루지 말자고 의견을 내요.
+    lines:
+    - {en: "His gas isn't improving, and his work of breathing keeps rising even with the mask on.", icon: chartup, ko: "가스가 좋아지지 않고 마스크를 써도 호흡 일량이 계속 올라요", note: 소견}
+    - {en: "Those are signs of NIV failure, so I'm paging the physician now.", icon: bell, ko: "그건 NIV 실패 징후라서 지금 의사를 호출하고 있어요", note: 호출}
+    - {en: "I'll report every indicator I'm seeing as soon as they call back.", icon: pencil, ko: "연락이 오면 보이는 지표를 전부 보고할게요", note: 보고}
+    - {en: "If the signs continue after that report, I don't want to delay intubation.", icon: bulb, ko: "그 보고 뒤에도 징후가 계속되면 삽관을 지연하고 싶지 않아요", note: 의견}
+13:
+  s:
+  - {tag: 선택 이유, icon: shield, why: "can avoid는 \"피할 수 있다\"는 가능성 표현이라 NIV가 감염을 완전히 막는다는 과장을 피해요.", decoy: "in the wing", dk: ["면역저하 환자에게는 NIV가 인공호흡기 소음을 피하게 해줄 수 있어요", "어린이에게는 NIV가 인공호흡기 감염을 피하게 해줄 수 있어요"], ans: infections, opts: [noises, bills, rashes]}
+  - {tag: 비교 설명, icon: chartup, why: "may reduce…compared to…는 \"…에 비해 줄일 수도 있다\"는 비교를 조심스럽게 말하는 틀이에요.", decoy: "in the long run", dk: ["조기 NIV가 삽관에 비해 비용을 줄일 수 있어요", "조기 NIV가 수술에 비해 위험을 줄일 수 있어요"], ans: intubation, opts: [surgery, dialysis, biopsy]}
+  - {tag: 감시 약속, icon: magnify, why: "so we don't miss the window는 \"놓치지 않으려고\"라는 뜻이라 감시의 목적이 타이밍에 있다고 알려요.", decoy: "for the family", dk: ["식사 시간을 놓치지 않도록 세심히 지켜볼게요", "단계 상승 시점을 놓치지 않도록 가족과 함께 지켜볼게요"], ans: window, opts: [door, chair, mirror]}
+  - {tag: 감염 위험, icon: shield, why: "while he's…는 \"…인 동안\"이라는 한정이라 지금 상태 동안에만 해당하는 이유임을 밝혀요.", decoy: "at this stage", dk: ["면역저하 상태인 동안 인공호흡기를 피하면 비용을 낮춰요", "면역저하 상태인 동안 인공호흡기를 피하면 소음 위험을 낮춰요"], ans: risk, opts: [smell, speed, color]}
+  - {tag: 수치 비교, icon: chartup, why: "compare A to B는 기준선과 현재를 나란히 놓는다는 뜻이라 추세 판단의 방법을 말해요.", decoy: "on paper", dk: ["NIV 시작 전과 지금 체중을 비교하고 있어요", "NIV 시작 전과 어제 수치를 비교하고 있어요"], ans: before, opts: [after, during, since]}
+  - {tag: 여유 설명, icon: bulb, why: "still have a window는 \"아직 시간이 있다\"는 안심이면서, 그 시간은 한정되어 있다는 긴장도 담아요.", decoy: "in this ward", dk: ["일찍 실패하기 시작해도 면회할 시간창은 아직 있어요", "일찍 졸리기 시작해도 단계를 올릴 시간창은 아직 있어요"], ans: fail, opts: [smile, wait, speak]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 면역저하 환자의 조기 NIV를 설명하는 4문장 순서
+    why: 위험 요인을 먼저 말하고, 그래서 조기 NIV를 택한 이유를 설명한 뒤, 수치를 비교해 반응을 보고, 그 수치가 나빠져도 단계 상승 여지가 있다고 이어요.
+    lines:
+    - {en: "He's immunocompromised, and a ventilator can raise his infection risk.", icon: shield, ko: "면역저하 상태라 인공호흡기가 감염 위험을 높일 수 있어요", note: 위험}
+    - {en: "That's why we're trying early NIV before intubation.", icon: bulb, ko: "그래서 삽관 전에 조기 NIV를 시도하고 있어요", note: 선택}
+    - {en: "I'm comparing his numbers now to how they looked before we started it.", icon: chartup, ko: "시작 전과 지금의 수치를 비교하고 있어요", note: 비교}
+    - {en: "If those numbers start to fail, we still have a window for escalation.", icon: bell, ko: "그 수치가 나빠지기 시작해도 단계를 올릴 시간창은 있어요", note: 여지}
+14:
+  s:
+  - {tag: 오해 바로잡기, icon: bulb, why: "isn't always는 \"항상은 아니다\"는 부분 부정이라 \"산소는 나쁘다\"는 오해 없이 균형을 알려요.", decoy: "for some", dk: ["산소가 많다고 항상 좋은 건 아니에요, 너무 많으면 졸릴 수 있어요", "물이 많다고 항상 좋은 건 아니에요, 너무 많으면 해가 될 수 있어요"], ans: harm, opts: [noise, thirst, itching]}
+  - {tag: 목표 설정, icon: chartup, why: "rather than…은 \"…하기보다\"라는 대비라 선택을 설명하고 \"무엇을 하지 않겠다\"까지 말해요.", decoy: "from now on", dk: ["항상 최대로 하기보다 산소포화도 범위를 기록해요", "항상 최대로 하기보다 체온 범위를 목표로 해요"], ans: range, opts: [color, price, label]}
+  - {tag: 개별 목표, icon: check, why: "For him은 모든 환자 공통이 아니라 이 환자에게 맞춘 목표라는 뜻이에요 — 숫자는 환자마다 달라요.", decoy: "in the morning", dk: ["이 환자에게는 체온 36에서 37이 목표예요", "이 환자에게는 맥박 60에서 90이 목표예요"], ans: saturation, opts: [temperature, height, weight]}
+  - {tag: 장기 위험, icon: bell, why: "over time은 \"서서히\"라는 뜻이라 지금 당장이 아니라 쌓이면 문제가 된다는 시간 감각을 줘요.", decoy: "in the end", dk: ["산소가 너무 많으면 시간이 지나며 피부에 해가 될 수 있어요", "산소가 너무 많으면 순식간에 폐에 해가 될 수 있어요"], ans: lungs, opts: [eyes, knees, hair]}
+  - {tag: 설정·조정, icon: gear, why: "to match는 \"맞추도록\"이라는 짧은 목적 표현이라 조정이 목표 범위를 따라간다는 점을 알려요.", decoy: "on the dial", dk: ["목표 산소포화도 범위를 설정하고 거기에 맞게 유량을 확인하고 있어요", "목표 체온 범위를 설정하고 거기에 맞게 유량을 조정하고 있어요"], ans: adjusting, opts: [counting, copying, cleaning]}
+  - {tag: 불필요 판단, icon: check, why: "don't need to…if…already는 \"이미 충분하면 더 할 필요 없다\"는 조건문이라 과잉 처치를 피하는 이유를 말해요.", decoy: "for him", dk: ["산소포화도가 이미 범위 안에 있으면 소리를 최대로 할 필요는 없어요", "산소포화도가 이미 범위 안에 있으면 조명을 최대로 할 필요는 없어요"], ans: oxygen, opts: [light, sound, heat]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 산소 목표 범위를 정하고 맞추는 4문장 순서
+    why: 산소가 많다고 좋은 게 아니라는 원칙을 먼저 말하고, 이 환자의 목표를 정한 뒤, 유량을 거기에 맞추고, 이미 범위 안이면 더 올릴 필요 없다고 마무리해요.
+    lines:
+    - {en: "More oxygen isn't always better; too much can harm his lungs over time.", icon: bulb, ko: "산소가 많다고 늘 좋은 건 아니에요, 너무 많으면 시간이 지나 폐에 해가 돼요", note: 원칙}
+    - {en: "So for him, a saturation of 92 to 96 is our goal.", icon: chartup, ko: "그래서 이 환자는 산소포화도 92에서 96이 목표예요", note: 목표}
+    - {en: "I'm adjusting the flow to match that range.", icon: gear, ko: "유량을 그 범위에 맞게 조정하고 있어요", note: 조정}
+    - {en: "Once the flow matches that, he's already in range, so we don't need to max out his oxygen.", icon: check, ko: "유량이 맞으면 이미 범위 안이라 산소를 최대로 할 필요 없어요", note: 유지}

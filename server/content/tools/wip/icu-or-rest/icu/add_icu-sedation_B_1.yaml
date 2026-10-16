@@ -1,0 +1,108 @@
+- title: RASS 척도 사정
+  s:
+  - t: 함께 평가
+    i: chartup
+    w: Let's …는 함께 하자는 제안 모양이에요. before we adjust로 점수 매기기가 약을 만지기 전 단계라는 순서를 밝혀 줘요.
+    d: by the window
+    k: [약물을 조정하기 전에 따로 RASS 점수를 매겨봐요., 약물을 꺼내기 전에 같이 RASS 점수를 매겨봐요.]
+    a: adjust
+    o: [refill, relabel, rewind]
+  - t: 반응 관찰
+    i: magnify
+    w: opens his eyes to voice처럼 to 뒤에 자극을 쓰면 무엇에 반응하는지 말해요. doesn't sustain이 붙어 눈 뜸이 잠깐이라는 점까지 전해요.
+    d: in the doorway
+    k: [촉감에 눈은 뜨지만 그 상태를 유지하지 못해요., 목소리에 손은 움직이지만 그 상태를 유지하지 못해요.]
+    a: eyes
+    o: [lips, hands, fingers]
+  - t: 점수 판정
+    i: board
+    w: That puts him at …는 앞의 관찰이 낳은 결론을 말하는 모양이에요. about이 붙어 척도 값을 어림으로 말하는 완충이 돼요.
+    d: to the left
+    k: ['그럼 대략 마이너스 2, 깊게 진정된 상태예요.', '그럼 대략 마이너스 4, 가볍게 진정된 상태예요.']
+    a: lightly
+    o: [deeply, heavily, fully]
+  - t: 목표 비교
+    i: chartup
+    w: so로 앞의 목표와 현재 상태를 이어서 결론을 말해요. than he should be는 있어야 할 수준과 비교하는 모양이에요.
+    d: in this bed
+    k: ['내일 목표는 0에서 마이너스 1인데, 지금은 그보다 더 깊어요.', '어제 목표는 0에서 마이너스 1이었는데, 지금은 그보다 더 깊어요.']
+    a: target
+    o: [dose, scale, alarm]
+  - t: 재평가 계획
+    i: monitor
+    w: recheck him in fifteen minutes처럼 시간을 함께 말하면 다음 확인이 언제인지 팀이 알 수 있어요. hold는 지금 상태를 바꾸지 않고 둔다는 뜻이에요.
+    d: on the monitor
+    k: [이 속도를 유지하고 5분 뒤에 다시 확인해봐요., 이 속도를 유지하고 10분 뒤에 다시 확인해봐요.]
+    a: rate
+    o: [scale, score, label]
+  - t: 환자 안내
+    i: speech
+    w: be about to …는 곧 하려는 일을 미리 알리는 모양이에요. 진정된 환자에게도 이름을 부르고 하려는 일을 말해 주면 놀람을 줄여요.
+    d: from the door
+    k: [이름을 부르고 지금부터 닦아보겠다고 말해줄게요., 이름을 적고 지금부터 확인해보겠다고 말해줄게요.]
+    a: name
+    o: [bed, room, age]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: RASS 사정 4문장 순서
+    why: 먼저 환자에게 하려는 일을 알리고, 목소리에 반응하는 모습을 관찰하고, That으로 그 관찰을 점수로 옮긴 뒤, So로 다음 행동을 정해요. 3줄의 That과 4줄의 So가 앞 줄을 받아서 순서가 하나예요.
+    lines:
+    - {en: 'First, I''ll say his name and tell him I''m about to check on him.', icon: speech, ko: 먼저 이름을 부르고 확인하겠다고 말해줄게요, note: 안내}
+    - {en: He opens his eyes to my voice but doesn't keep them open., icon: magnify, ko: 목소리에 눈은 뜨지만 계속 뜨고 있지 못해요, note: 관찰}
+    - {en: 'That puts him at about a minus two, lightly sedated.', icon: board, ko: '그럼 대략 마이너스 2, 가볍게 진정된 상태예요', note: 판정}
+    - {en: So let's recheck him in fifteen minutes., icon: monitor, ko: 그러니 15분 뒤에 다시 확인해봐요, note: 계획}
+- title: 프로포폴 주입 관리
+  s:
+  - t: 주입 보고
+    i: pill
+    w: is running at …는 지금 진행 중인 주입을 말하는 현재진행 모양이에요. 약 이름 뒤에 단위까지 읽어 주면 받는 사람이 같은 값을 받아 적어요.
+    d: from the pharmacy
+    k: [프로포폴이 킬로그램당 분당 25마이크로그램으로 시작되었어요., 프로포폴이 킬로그램당 분당 25마이크로그램으로 처방되어 있어요.]
+    a: running
+    o: [resting, rolling, drifting]
+  - t: 농도 대조
+    i: lab
+    w: matches는 두 가지가 일치한다는 뜻이라 백의 표시와 펌프 설정을 맞대어 본다는 말이 돼요. Let's로 둘이 함께 한다고 제안해서 독립 확인 느낌을 줘요.
+    d: in the supply room
+    k: [백에 있는 이름이 펌프와 일치하는지 확인해봐요., 라인에 있는 농도가 펌프와 일치하는지 확인해봐요.]
+    a: concentration
+    o: [temperature, color, weight]
+  - t: 역할 분담
+    i: handshake2
+    w: I'll …, while you …는 두 사람이 동시에 각자 맡는 일을 나눠 말하는 모양이에요. 용량을 조절하는 동안 한 사람이 혈압을 따로 지켜봐 줘요.
+    d: after the shift
+    k: [혈압은 제가 적을 테니 용량은 titrate 해주세요., 혈압은 제가 볼 테니 용량은 따로 설명해 주세요.]
+    a: pressure
+    o: [count, type, bank]
+  - t: 수치 확인
+    i: check
+    w: checks out은 확인해 보니 맞다는 숙어예요. so로 앞의 펌프 표시를 근거로 삼아서 왜 맞다고 하는지 이유를 이어 줘요.
+    d: by the bed
+    k: [백에 25로 뜨니까 그 숫자는 맞아요., 펌프에 25로 뜨니까 그 숫자는 크네요.]
+    a: number
+    o: [color, sound, shape]
+  - t: 속도 유지
+    i: monitor
+    w: so we can …은 앞의 관찰이 이 결정의 근거라는 연결이에요. for now를 붙여 영구적인 결정이 아니라 지금 기준이라는 완충을 둬요.
+    d: in the evening
+    k: [혈압이 안정적이니 지금 속도를 기록해도 되겠어요., 혈압이 안정적이니 지금 속도를 확인해도 되겠어요.]
+    a: stable
+    o: [low, weak, high]
+  - t: 호출 기준
+    i: bell
+    w: If절에 조건을 먼저 밝히고 call me와 we'll slow로 할 일을 이어요. 호출과 조치가 한 문장에 있어 무엇이 일어나면 무엇을 하는지 한눈에 들어와요.
+    d: at the pump
+    k: ['혈압이 떨어지면 저를 불러주세요, 그러면 주입을 늦출까요?', '혈압이 떨어지면 저를 불러주세요, 그러면 주입을 늦추겠다고 했어요.']
+    a: drops
+    o: [rises, climbs, jumps]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 프로포폴 주입 확인 4문장 순서
+    why: 현재 주입 값을 읽어 주고, 그 값이 백의 농도와 맞는지 확인하자고 하고, 그 확인에 이어 혈압을 보며 유지한다고 하고, 마지막으로 떨어질 때의 호출 기준을 말해요. 3줄의 that은 2줄의 확인을, 4줄의 it은 3줄의 혈압을 가리켜서 순서가 하나예요.
+    lines:
+    - {en: 'First, the propofol is running at twenty-five micrograms per kilo per minute.', icon: pill, ko: 먼저 프로포폴이 킬로그램당 분당 25마이크로그램으로 주입되고 있어요, note: 보고}
+    - {en: Let's confirm the bag matches the pump., icon: lab, ko: 백이 펌프와 일치하는지 확인해봐요, note: 대조}
+    - {en: 'With that confirmed, I''ll watch his pressure while you titrate.', icon: monitor, ko: 그게 확인되면 용량을 조절하는 동안 제가 혈압을 볼게요, note: 분담}
+    - {en: 'If it drops, call me and we''ll slow the drip.', icon: bell, ko: '그게 떨어지면 저를 불러주세요, 주입을 늦출게요', note: 호출}

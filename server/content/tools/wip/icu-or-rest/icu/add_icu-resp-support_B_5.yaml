@@ -1,0 +1,18 @@
+20:
+  s:
+  - {tag: 바람 존중, icon: star, why: "honor his wish는 \"뜻을 따른다\"는 격식 있는 동사라 환자의 결정을 앞세운다는 존중을 전해요.", decoy: "with the team", dk: ["그의 바람을 기록하고 편안하게 해드리는 데 집중할게요", "그의 바람을 존중하고 깨끗하게 해드리는 데 집중할게요"], ans: wish, opts: [diet, shift, bill]}
+  - {tag: 증상 완화, icon: pill, why: "can ease는 \"덜어 줄 수 있다\"는 가능성 표현이라 완치가 아니라 편안함을 약속해요.", decoy: "at home", dk: ["부드러운 산소와 약으로 불안을 완화해 드릴 수 있어요", "부드러운 산소와 약으로 기침을 완화해 드릴 수 있어요"], ans: breathlessness, opts: [itching, noise, hunger]}
+  - {tag: 목표 설명, icon: star, why: "A, not B는 \"B가 아니라 A\"라는 대비라 목표가 바뀌었음을 한 번에 보여줘요.", decoy: "in his case", dk: ["지금 목표는 침습적인 검사가 아니라 그의 편안함이에요", "지금 걱정은 침습적인 치료가 아니라 그의 편안함이에요"], ans: invasive, opts: [expensive, regular, daily]}
+  - {tag: 지속 약속, icon: star, why: "keep -ing는 \"계속 …하겠다\"는 다짐이라 끝까지 곁에 있겠다는 약속이고, only로 초점을 좁혀요.", decoy: "in this room", dk: ["계속 그의 바람을 기록하고 오직 편안함에만 집중할게요", "계속 그의 바람을 존중하고 오직 식사에만 집중할게요"], ans: wishes, opts: [meals, visits, rooms]}
+  - {tag: 튜브 없이, icon: bulb, why: "without any tubes는 \"튜브 없이도\"라는 뜻이라 침습 처치를 피하는 선택의 장점을 말해요.", decoy: "from the wall", dk: ["이 부드러운 산소가 약 없이도 숨참을 완화해줄 수 있어요", "이 부드러운 산소가 튜브 없이도 기침을 완화해줄 수 있어요"], ans: tubes, opts: [blankets, visitors, rules]}
+  - {tag: 약 투여, icon: pill, why: "keep him comfortable and free of…는 \"…없이 편안하게\"라는 틀이라 약의 목적을 환자 입장에서 말해요.", decoy: "by his side", dk: ["편안하고 불안 없이 있도록 약을 드리고 있어요", "편안하고 기침 없이 있도록 약을 드리고 있어요"], ans: pain, opts: [noise, light, smell]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 완화 목적의 호흡곤란 관리를 설명하는 4문장 순서
+    why: 환자의 바람을 존중한다고 먼저 말하고, 그래서 목표가 편안함임을 밝힌 뒤, 목표를 이루는 방법(산소와 약)을 말하고, 튜브 없이 편안하고 통증 없는 상태를 약속해요.
+    lines:
+    - {en: "We'll honor his wish and focus on keeping him comfortable.", icon: star, ko: "그의 바람을 존중하고 편안하게 해드리는 데 집중할게요", note: 존중}
+    - {en: "That's why our goal now is his comfort, not more invasive treatment.", icon: star, ko: "그래서 지금 목표는 침습적인 치료가 아니라 편안함이에요", note: 목표}
+    - {en: "To reach that goal, we can ease his breathlessness with gentle oxygen and medication.", icon: pill, ko: "그 목표를 위해 부드러운 산소와 약으로 숨참을 완화할 수 있어요", note: 방법}
+    - {en: "That way he stays comfortable and free of pain, without any tubes.", icon: bulb, ko: "그러면 튜브 없이 편안하고 통증 없이 지낼 수 있어요", note: 약속}

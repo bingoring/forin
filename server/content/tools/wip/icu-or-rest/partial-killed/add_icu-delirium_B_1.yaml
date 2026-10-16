@@ -1,0 +1,37 @@
+- n: 0
+  s:
+  - {tag: "선별 시작", icon: magnify, why: "Let's로 열면 혼자가 아니라 같이 하는 일이 되고, baseline부터 보면 이후 변화를 견줄 기준이 생겨요.", decoy: "for the lab", dko: ["어제 정신 상태부터 CAM-ICU를 시작할게요", "기저 통증 점수부터 CAM-ICU를 시작할게요"], ans: baseline, wrong: [target, worst, discharge]}
+  - {tag: "1단계 확인", icon: check, why: "First로 순서를 알리고, acute change와 fluctuating course는 CAM-ICU 첫 항목을 가리키는 표현이에요.", decoy: "in his labs", dko: ["먼저 급성 변화나 변동하는 혈압이 있는지 확인해요", "먼저 급성 통증이나 변동하는 경과가 있는지 확인해요"], ans: fluctuating, wrong: [predictable, constant, gradual]}
+  - {tag: "다음 단계", icon: board, why: "next를 끝에 붙이면 지금 단계가 끝나고 이어질 단계가 있다는 신호예요. inattention과 disorganized thinking은 CAM-ICU 항목 이름이에요.", decoy: "every hour", dko: ["다음으로 졸림과 사고 와해를 확인해요", "다음으로 부주의와 기억 상실을 확인해요"], ans: inattention, wrong: [infection, incontinence, intubation]}
+  - {tag: "주의력 시험", icon: monitor, why: "can't 뒤에 동사 원형으로 못 하는 동작을 구체적으로 보고하면, 판정 근거가 그대로 전해져요.", decoy: "his arm", dko: ["환자가 제 팔을 두 번 쥐라는 요청에 응하지 못해요", "환자가 제 손을 세 번 쥐라는 요청에 응하지 못해요"], ans: twice, wrong: [once, rarely, daily]}
+  - {tag: "결과 해석", icon: chartup, why: "That means로 앞의 관찰을 결론으로 이어요. feature는 CAM-ICU의 평가 항목을 부르는 말이에요.", decoy: "a lot", dko: ["그건 수면 항목이 양성이라는 뜻이에요", "그건 주의력 항목이 기록됐다는 뜻이에요"], ans: attention, wrong: [memory, vision, hearing]}
+  - {tag: "판정 규칙", icon: shield, why: "If절 뒤에 현재형으로 말하면 '그 조건이면 늘 그렇게 판정한다'는 규칙이 돼요. screen은 선별검사로 걸러 낸다는 동사예요.", decoy: "by the nurse", dko: ["세 항목이 양성이면 섬망으로 판정돼요", "두 항목이 양성이면 치매로 판정돼요"], ans: delirious, wrong: [agitated, anxious, drowsy]}
+  - {tag: "기록·공유", icon: pencil, why: "I'll은 지금 맡겠다는 말이고, document와 update를 한 문장에 묶으면 결과가 팀에 끊김 없이 전해져요.", decoy: "the pharmacy", dko: ["결과를 기록하고 약사에게 알릴게요", "결과를 확인하고 팀에 알릴게요"], ans: result, wrong: [rumor, recipe, receipt]}
+  order:
+    tag: "선별 흐름"
+    icon: compass
+    ko: "CAM-ICU 선별 4단계 순서"
+    why: "기준이 되는 상태를 먼저 보고, 시험을 한 뒤, 결과를 해석하고, 마지막에 기록과 공유로 닫아요. 뒤 줄은 앞 줄을 가리켜 순서가 정해져요."
+    lines:
+    - {en: "Let's start with his baseline mental status.", icon: magnify, ko: "기저 정신 상태부터 시작해요", note: 기준}
+    - {en: "I'll ask him to squeeze my hand twice.", icon: board, ko: "손을 두 번 쥐어 보라고 할게요", note: 시험}
+    - {en: "He can't do it, so his attention feature is positive.", icon: chartup, ko: "못 해서 주의력 항목이 양성이에요", note: 해석}
+    - {en: "I'll document that result and update the team.", icon: pencil, ko: "그 결과를 기록하고 팀에 알릴게요", note: 공유}
+- n: 1
+  s:
+  - {tag: "위치 알림", icon: hospital, why: "날짜·요일과 장소를 한 문장에 함께 말해 주면 환자가 '지금, 여기'를 한 번에 다시 잡아요.", decoy: "on Friday night", dko: ["금요일 아침이고, 여기는 병원 중환자실이에요", "화요일 아침이고, 여기는 병원 응급실이에요"], ans: Tuesday, wrong: [Friday, Sunday, yesterday]}
+  - {tag: "단서 배치", icon: calendar, why: "where you can see them으로 환자가 직접 볼 수 있는 자리임을 알려, 설명에서 끝나지 않고 스스로 확인하게 해요.", decoy: "by the door", dko: ["잘 보이는 곳에 시계와 달력을 걸어드렸어요", "잘 보이는 곳에 시계와 사진을 놓아드렸어요"], ans: calendar, wrong: [camera, calculator, canvas]}
+  - {tag: "스스로 확인", icon: bulb, why: "anytime you feel confused는 혼란스러울 때마다 쓰라는 허락이에요. 환자에게 '물어봐야 한다'는 부담을 덜어요.", decoy: "at the clock", dko: ["혼란스러우실 때 언제든 시계를 보세요", "혼란스러우실 때 언제든 저를 부르세요"], ans: confused, wrong: [nervous, curious, careful]}
+  - {tag: "낮 알림", icon: bell, why: "I'll open ... so you know로 행동과 목적을 같이 말해요. 블라인드를 여는 이유가 '낮이라는 걸 알게 하려고'라는 뜻이에요.", decoy: "the curtains", dko: ["낮인 걸 아시도록 블라인드를 닦아드릴게요", "낮인 걸 아시도록 병실 문을 열어드릴게요"], ans: daytime, wrong: [midnight, bedtime, weekend]}
+  - {tag: "밤 예고", icon: speaker, why: "It'll로 앞으로 일어날 일을 미리 알려 주면, 어두워지는 것이 이상한 일이 아니라 예정된 일로 느껴져요.", decoy: "all day", dko: ["오늘 밤엔 다시 밝고 조용해질 거예요", "오늘 밤엔 다시 어둡고 시끄러워질 거예요"], ans: tonight, wrong: [tomorrow, yesterday, anytime]}
+  - {tag: "이유 설명", icon: star, why: "daylight가 몸에 '깨어 있을 때'를 알려 준다고 설명하면, 낮에 깨어 있는 것을 도와야 하는 이유가 전해져요.", decoy: "to be asleep", dko: ["햇빛은 눈이 깨어 있을 시간임을 알려줘요", "소리는 몸이 깨어 있을 시간임을 알려줘요"], ans: daylight, wrong: [moonlight, firelight, spotlight]}
+  order:
+    tag: "재지남"
+    icon: compass
+    ko: "혼란스러운 환자를 다시 안내하는 순서"
+    why: "먼저 지금이 언제이고 어디인지 알려 주고, 볼 수 있는 단서를 둔 뒤 그것을 쓰라고 권하고, 낮밤 단서로 마무리해요."
+    lines:
+    - {en: "It's Tuesday morning, and you're in the hospital.", icon: hospital, ko: "화요일 아침이고 병원이에요", note: 위치}
+    - {en: "I put a clock where you can see it.", icon: calendar, ko: "잘 보이는 곳에 시계를 뒀어요", note: 단서}
+    - {en: "You can look at it anytime you feel confused.", icon: bulb, ko: "혼란스러울 때 언제든 보세요", note: 권유}
+    - {en: "I'll open the blinds so you know it's daytime.", icon: bell, ko: "낮인 걸 아시도록 블라인드를 열게요", note: 낮밤}
