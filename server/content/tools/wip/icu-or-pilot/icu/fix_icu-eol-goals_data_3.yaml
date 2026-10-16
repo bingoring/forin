@@ -22,9 +22,10 @@ nuance:
     n: 0
     kind: slider
     set:
-      scale: [briskly, carefully, tenderly]
+      scale: [roughly, carefully, gently]
       answerAt: 2
-      why: "돌아가신 분을 대할 때는 서두르지 않고 손길을 다정하게 해요. briskly는 재빠르게, carefully는 실수 없이, tenderly는 아끼며 부드럽게라는 뜻이라 가족이 보는 앞에서는 tenderly가 마음에 닿아요."
+      cue: "You're turning her after death while her daughter whispers, \"Please be soft with her.\""
+      why: "돌아가신 분을 대할 때는 서두르지 않고 손길을 다정하게 해요. roughly는 거칠게, carefully는 실수 없이 신중하게, gently는 힘을 빼고 부드럽게라는 뜻이라, 딸이 부드럽게 해 달라고 할 때는 gently가 마음에 닿아요."
   - {sit: 5, n: 2, kind: swap, set: {ko: "제가 이 일을 하는 동안 곁에 계셔도 되고, 잠시 나가 계셔도 돼요 — 편하신 대로요"}}
   - sit: 6
     n: 0
@@ -97,13 +98,13 @@ order:
     why: "먼저 살피고 있다고 알리고, 불편해 보이면 약을 조절하고, 3줄의 it은 2줄의 약이 듣는지 다시 보는 것을 가리켜요. 마지막 줄의 the change는 2줄의 조절이 있어야 말할 수 있고, 결과를 알리는 말이라 마지막에 와요."
   3:
     lines:
-      3: {en: "In fact, I'd like you to stay as long as you want — I'll bring you a chair.", ko: "오히려 원하는 만큼 계셨으면 해요 — 의자를 가져다드릴게요"}
+      3: {en: "In fact, please stay as long as you want — I'll bring a chair.", ko: "오히려 원하는 만큼 계세요 — 의자를 가져다드릴게요"}
     why: "목표를 먼저 말하고, That means로 그 목표가 무엇을 뜻하는지 풀어요. 3줄의 None of this는 앞 두 줄 전체를 가리키고, 4줄의 In fact는 그 부정(떠나야 한다는 뜻이 아님)을 받아 오히려 머물러도 된다고 말해요."
   4:
     lines:
-      1: {en: "While you're with her, hearing is often the last sense to go, so please keep talking to her.", ko: "곁에 계시는 동안, 청각은 흔히 마지막까지 남으니 계속 말을 걸어주세요"}
+      1: {en: "While you're with her, keep talking — hearing is often the last sense to go.", ko: "곁에 계시는 동안 계속 말을 걸어주세요 — 청각은 흔히 마지막까지 남아요"}
       2: {en: "Even quiet words like that can comfort her.", ko: "그렇게 조용한 말도 위안이 돼요"}
-    why: "곁에 머물러도 된다고 허락한 뒤, 2줄의 While you're with her로 그 허락을 받아 말을 걸라고 권하고, 3줄의 like that은 2줄의 말 걸기를 가리켜 조용한 말도 괜찮다고 낮춰 줘요. 4줄의 those quiet moments는 3줄의 quiet words를 가리켜서 순서가 하나예요."
+    why: "곁에 머물러도 된다고 허락한 뒤, 2줄의 While you're with her로 그 허락을 받아 계속 말을 걸라고 권하고, 3줄의 like that은 2줄의 keep talking을 가리켜 조용한 말도 괜찮다고 낮춰 줘요. 4줄의 those quiet moments는 3줄의 quiet words를 가리켜서 순서가 하나예요."
   5:
     lines:
       1: {en: "When you've said your goodbyes, I'll clean and dress him carefully.", ko: "작별을 마치시면 조심스럽게 씻기고 옷을 입혀드릴게요"}
@@ -124,7 +125,7 @@ order:
     why: "감정을 정상이라고 말한 뒤, 2줄의 It이 그 감정을 가리켜 죽음 전에도 시작될 수 있다고 알려요. 3줄의 Because it starts early가 2줄의 내용을 이유로 받고, 4줄의 the heavier days가 3줄에서 처음 나와요."
   14:
     lines:
-      2: {en: "Whatever you decide after hearing from them, we'll respect it, and it won't change his care.", ko: "그분들 이야기를 들은 뒤 어떻게 결정하셔도 존중하고, 돌봄은 달라지지 않아요"}
+      2: {en: "Whatever you decide after hearing them, we'll respect it and his care won't change.", ko: "그분들 이야기를 들은 뒤 어떻게 결정하셔도 존중하고, 돌봄은 달라지지 않아요"}
       3: {en: "Take your time with that decision; there's no need to answer today.", ko: "그 결정은 천천히 생각하세요, 오늘 답하실 필요는 없어요"}
     why: "선택지로 소개하고, 원하면 설명해 줄 팀이 있다고 알리고, 3줄의 them은 2줄의 팀을, 4줄의 that decision은 3줄의 결정을 가리켜요. 팀 이야기를 들은 뒤의 결정과 시간 보장이 뒤에 와서 순서가 하나예요."
   15:
@@ -132,13 +133,13 @@ order:
       3: {en: "Now that she's settling, you did exactly the right thing calling me over.", ko: "안정되고 계시니, 저를 불러주신 게 정확히 맞았어요"}
   16:
     lines:
-      1: {en: "Because of that love, I'd like to hear each of your concerns, one at a time.", ko: "그 사랑 때문에, 두 분의 걱정을 한 분씩 듣고 싶어요"}
+      1: {en: "Because of that love, I'd like to hear each of your concerns in turn.", ko: "그 사랑 때문에, 두 분의 걱정을 차례로 듣고 싶어요"}
     why: "먼저 두 사람을 모두 인정하고, 2줄의 that love가 그 인정을 받아 한 명씩 듣겠다고 하고, 3줄의 them이 그 걱정들을 가리켜요. 4줄의 that은 3줄의 환자의 뜻에 집중하자는 제안을 가리켜서 마지막에 와요."
   17:
     lines:
       3: {en: "If it helps, we can ask the ethics team if that fits what he'd want.", ko: "도움이 되면 그게 그분의 뜻에 맞는지 윤리팀에 물어볼 수 있어요"}
   18:
     lines:
-      2: {en: "As his breathing changes, you can talk to him; hearing is often the last sense to go.", ko: "호흡이 달라지는 동안 말을 거셔도 돼요, 청각은 마지막까지 남는 경우가 많아요"}
+      2: {en: "As his breathing changes, keep talking to him; hearing is often the last sense to go.", ko: "호흡이 달라지는 동안 계속 말을 걸어주세요, 청각은 마지막까지 남는 경우가 많아요"}
       3: {en: "Talking to him, or just sitting quietly, is exactly what he needs.", ko: "말을 걸거나 조용히 앉아 계신 것이 그분께 필요한 거예요"}
-    why: "가족의 질문에 먼저 솔직히 답하고, 2줄에서 호흡 변화를 설명해요. 3줄의 As his breathing changes는 2줄의 호흡 변화를 가리키고, 4줄의 Talking to him은 3줄의 you can talk to him을 가리켜서 마지막에 와요."
+    why: "가족의 질문에 먼저 솔직히 답하고, 2줄에서 호흡 변화를 설명해요. 3줄의 As his breathing changes는 2줄의 호흡 변화를 가리키고, 4줄의 Talking to him은 3줄의 keep talking to him을 가리켜서 마지막에 와요."
