@@ -11,7 +11,7 @@
 > - **ICU 8주제 A·B 저작 끝** (ards-proning·arrhythmia·cardiogenic·hemodynamics·mech-ventilation·resp-support·sedation·shock) → combine부터. **2주제 A만**(airway·delirium) → B부터.
 >   끊긴 4주제(infection-prevention·pain-nonverbal·post-arrest·sepsis)는 처음부터. 나머지 ICU 19 + OR 33 미착수. 정본에는 아직 아무것도 안 합침.
 > - Workflow 주의: 파이프라인이라 TaskStop 말고는 새 에이전트를 막을 수 없고 멈추면 돌던 것도 끊김 → **topics를 10~15개씩 잘라** 돌릴 것. 새 세션에서 Workflow opt-in 재확인.
-> - 배포: PR #18(파일럿 4주제·비속어 정리·V21)·#19(keyPhrase 8건·W18~W21) **prod promote 완료**, prod seed 실행(승인 후 진행) — 다음 세션에서 결과 확인.
+> - 배포: PR #18(파일럿 4주제·비속어 정리·V21)·#19(keyPhrase 8건·W18~W21) **prod promote 완료**, prod seed 완료(2026-10-16) — 운영 ER 비속어 조각 정리·keyPhrase 결정 반영됨.
 > - 비용 참고: 주제당 Fable 빼고 약 122만 토큰, 66주제 약 8,000만. 이번 중단까지 저작 약 20회분(약 450만) 사용.
 
 > 🔧 **파일럿 후속(2026-10-16, 사용자 결정 '제안대로'):** PR #18 머지 → staging 배포·seed 완료, prod promote 승인 대기. keyPhrase 8건 바꿈·1건 유지
