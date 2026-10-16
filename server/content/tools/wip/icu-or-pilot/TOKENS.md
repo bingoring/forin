@@ -6,4 +6,4 @@
 | 저작 B | icu-weaning-extubation | sonnet | 260,829 | 17.7분 | 문장 126·order 21, 위반 0 |
 | 저작 A | icu-weaning-extubation | sonnet | 247,799 | 21.0분 | 단어 175·뉘앙스 42, 결정11 변경 16, 위반 0 |
 | 저작 A | or-malignant-hyperthermia | sonnet | 218,632 | 12.5분 | 단어 182·뉘앙스 43, 결정11 변경 48, 위반 0 |
-| 저작 B | or-timeout | sonnet | (대기) | | 문장 105·order 21, 위반 0 |
+| 저작 B | or-timeout | sonnet | 222,284 | 14.0분 | 문장 105·order 21, 위반 0 |
