@@ -1,0 +1,48 @@
+# chunks 구 경계(비KP), 결정 11 태그 정리, why(사실·과장) 수정.
+sentences:
+  "0.6":
+    chunks: ["Let's confirm", "the directive", "matches", "what your family understands", "."]
+  "2.3":
+    chunks: ["Her breathing sounds labored", ",", "but that", "doesn't always mean", "she's in pain", "."]
+  "3.5":
+    chunks: ["There's a chair", "right by the bed", "if you'd like", "to sit", "."]
+  "7.3":
+    chunks: ["Next", "we'll remove", "the breathing tube", "when you're ready", "."]
+  "8.6":
+    chunks: ["I'm", "watching her", "the entire time", "we do this", "."]
+  "9.5":
+    chunks: ["His body", "will guide", "how much medication", "he needs", "."]
+  "15.6":
+    chunks: ["You did", "exactly", "the right thing", "calling me over", "."]
+  "18.5":
+    chunks: ["His breathing", "is slowing", ",", "and that's part", "of how this goes", "."]
+  "20.5":
+    chunks: ["We can help you", "find", "the right words", "for her children", "."]
+  "20.6":
+    chunks: ["You won't have to", "carry this", "by yourself", "."]
+  # 결정 11 — 뜻이 다른 자리에 붙은 태그를 뺀다
+  "6.6":
+    drop_words: [w-sense]
+  "16.3":
+    drop_words: [w-side]
+  "6.4":
+    drop_words: [w-once]
+  "11.6":
+    drop_words: [w-work]
+  "12.5":
+    drop_words: [w-work]
+  "10.3":
+    drop_words: [w-look]
+  "9.6":
+    drop_words: [w-best]
+  # why — 사실·과장·단정 합리화
+  "0.0":
+    why: "completed는 이미 끝난 일을 말하는 과거형이에요. 사전의향서는 아버님이 직접 작성하신 문서이고 DNR은 그 뜻에 따라 나온 지시라는 점이 한 문장에서 분명해져서, 가족이 병원의 결정이 아니라 환자 본인의 뜻으로 받아들여요."
+  "5.2":
+    why: "Let me know if…는 요청이 아니라 가족이 말할 기회를 여는 모양이에요. honor는 존중하고 따른다는 동사라, 가능한 범위에서 가족의 관습을 따르겠다는 뜻을 담아요."
+  "11.1":
+    why: "with를 두 번 반복해 증상과 결정이라는 두 가지 도움을 나란히 보여 줘요. help with decisions로 결정을 돕는다고 말해, 팀이 결정을 대신 내린다는 말은 하지 않아요."
+  "18.1":
+    why: "passing은 죽음을 부드럽게 돌려 쓴 말이라 슬픔에 잠긴 가족에게 덜 날카롭게 전해져요. looks peaceful은 눈에 보이는 모습이고 he's not in pain은 지금 평가한 상태를 알리는 말이라, 통증이 없다고 말하려면 표정·호흡 같은 평가 근거가 있어야 해요."
+  "18.2":
+    why: "Take a breath는 감정이 큰 사람에게 잠깐 멈추라는 짧은 안내예요. he can hear you는 임종 때 청각이 마지막까지 남을 수 있다는 점을 가족이 할 수 있는 행동으로 바꿔 말한 표현이라, 확실한 사실이라기보다 말을 걸어도 좋다는 권유로 써요."

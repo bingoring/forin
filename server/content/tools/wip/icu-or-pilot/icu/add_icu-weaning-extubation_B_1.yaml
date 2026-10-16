@@ -1,0 +1,55 @@
+# 상황 0~4. 문장 순서는 base와 같다. d = distractorsKo, a = blank answer, o = 오답 선택지 셋.
+0:
+  s:
+    - {tag: "진정 중단", icon: pill, why: "First로 순서를 먼저 못 박고 pause(잠시 멈춤)라고 해야 끊는 게 아니라 일시적이라는 뜻이 가족에게 전해져요.", decoy: "for the doctor", d: ["먼저 진정제를 잠시 멈추고 얼마나 설 수 있는지 봅니다.", "먼저 진정제를 잠시 멈추고 얼마나 숨쉴 수 있는지 봅니다."], a: "awake", o: ["tired", "stable", "weak"]}
+    - {tag: "시험 설명", icon: stetho, why: "Then은 앞 단계 다음이라는 표시이고, on his own이 기계 도움 없이라는 핵심을 짚어 줘요.", decoy: "by phone", d: ["그다음엔 시험 삼아 스스로 숨쉬게 해서 통증이 있는지 봅니다.", "그다음엔 시험 삼아 스스로 숨쉬게 해서 기침이 나는지 봅니다."], a: "readiness", o: ["comfort", "hearing", "weight"]}
+    - {tag: "확인 이유", icon: calendar, why: "help us know가 확인은 결정을 돕는 재료라는 뜻이라, 가족이 매일 검사하는 이유를 납득해요.", decoy: "to the family", d: ["이 매일의 확인이 언제 병실을 옮길 수 있는지 알려줍니다.", "이 매일의 확인이 언제 가족이 면회할 수 있는지 알려줍니다."], a: "daily", o: ["weekly", "nightly", "monthly"]}
+    - {tag: "현재 상태", icon: monitor, why: "still이 지금은 아직 달고 있다는 뜻을 살려 가족의 조급함을 낮춰요.", decoy: "at the door", d: ["아직 인공호흡기를 달고 있지만, 열이 났는지 매일 확인하고 있어요.", "아직 인공호흡기를 달고 있지만, 혈압이 올랐는지 매일 확인하고 있어요."], a: "still", o: ["never", "almost", "often"]}
+    - {tag: "기대 조정", icon: compass, why: "날짜를 단정하지 않고 시험 결과에 달렸다고 말하면 지키지 못할 약속을 피해요.", decoy: "for each visit", d: ["정해진 날짜는 아직 없어요, 매번 면회에서 어떻게 하는지에 달려 있습니다.", "정해진 날짜는 아직 없어요, 매번 아침에 어떻게 하는지에 달려 있습니다."], a: "trial", o: ["visit", "shift", "meal"]}
+    - {tag: "단계 안내", icon: board, why: "I'll explain each step은 하나씩 알려 주겠다는 약속이라 불안한 가족에게 예측 가능성을 줘요.", decoy: "after the shift", d: ["오늘 무엇을 준비하면 되는지 알 수 있도록 단계마다 설명해 드릴게요.", "내일 무엇을 예상하면 되는지 알 수 있도록 단계마다 설명해 드릴게요."], a: "expect", o: ["prepare", "refuse", "report"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "SAT·SBT 설명 4문장 순서"
+    why: "진정제를 멈추고 깨우는 단계가 먼저여야 자발호흡 시험을 말할 수 있고, 시험 결과가 이탈 판단의 근거이며, 그 모든 과정이 매일 반복된다는 말로 닫아요."
+    lines:
+      - {en: "First, we pause his sedation so he can wake up.", icon: pill, ko: "먼저 진정제를 멈춰 깨웁니다", note: "진정 중단"}
+      - {en: "Once he's awake, we let him breathe on his own for a trial.", icon: stetho, ko: "깨면 스스로 숨쉬는 시험을 해요", note: "자발호흡"}
+      - {en: "That trial tells us if he's ready to come off the ventilator.", icon: monitor, ko: "그 시험이 호흡기를 뗄 준비도를 알려요", note: "판단"}
+      - {en: "We repeat all of this every day until he is.", icon: calendar, ko: "준비될 때까지 매일 반복해요", note: "반복"}
+1:
+  s:
+    - {tag: "기준 확인", icon: check, why: "if로 아직 모른다는 걸 밝히고 Let's로 같이 확인하자고 하면 지시가 아니라 협업 제안으로 들려요.", decoy: "in the hallway", d: ["산소 요구량이 퇴원할 만큼 충분히 낮은지 확인해 봅시다.", "산소 요구량이 전원할 만큼 충분히 낮은지 확인해 봅시다."], a: "requirement", o: ["allergy", "schedule", "supplier"]}
+    - {tag: "기준 판정", icon: chartup, why: "without pressors가 약 없이 안정적이라는 조건을 붙여 stable의 의미를 정확하게 해 줘요.", decoy: "with the pump", d: ["승압제 없이 체온이 안정적이라 그 기준은 충족됐어요.", "승압제 없이 혈압이 안정적이라 그 기준은 검토됐어요."], a: "stable", o: ["falling", "painful", "swollen"]}
+    - {tag: "의식 평가", icon: bulb, why: "which tells us가 관찰(지시를 따름)을 결론(의식 상태)으로 잇는 연결 표현이에요.", decoy: "on the chart", d: ["지시를 잘 따르는 걸 보니 영양 상태가 충분해요.", "지시를 잘 따르는 걸 보니 피부 상태가 충분해요."], a: "adequate", o: ["unusual", "painful", "expensive"]}
+    - {tag: "항목 점검", icon: board, why: "one by one은 빠뜨리지 않고 차례로 보겠다는 태도를 보여 줘요.", decoy: "at the front", d: ["이탈 스크리닝 항목을 세 번씩 훑어봅시다.", "이탈 스크리닝 항목을 맨 먼저 훑어봅시다."], a: "item", o: ["alarm", "drip", "cart"]}
+    - {tag: "결과 정리", icon: pushpin, why: "look met처럼 look을 쓰면 추정 표현이고, so I'll로 판단에서 행동으로 이어져요.", decoy: "from the unit", d: ["세 기준이 다 충족된 것 같아서 내일 시험 대상으로 표시할게요.", "두 기준이 다 충족된 것 같아서 오늘 시험 대상으로 표시할게요."], a: "trial", o: ["bath", "meal", "nap"]}
+    - {tag: "팀 공유", icon: handshake2, why: "at rounds로 공유 시점을 정해 두면 막연한 약속이 아니라 구체적인 약속이 돼요.", decoy: "for the visitors", d: ["회진 때 약사에게 스크리닝 결과를 공유할게요.", "퇴근 때 팀에 스크리닝 결과를 공유할게요."], a: "result", o: ["cost", "label", "design"]}
+  order:
+    tag: "대화 흐름"
+    icon: board
+    ko: "이탈 준비도 스크리닝 4문장 순서"
+    why: "항목을 하나씩 보자고 연 뒤 확인한 결과를 말하고, 그 결과를 받아 나머지 기준을 확인하며, 모두 충족됐다는 결론으로 시험 대상 표시를 말해요."
+    lines:
+      - {en: "Let's go through the weaning screen one item at a time.", icon: board, ko: "스크리닝 항목을 하나씩 봅시다", note: "시작"}
+      - {en: "His oxygen requirement is low and his blood pressure is stable.", icon: monitor, ko: "산소 요구량은 낮고 혈압은 안정적이에요", note: "확인"}
+      - {en: "Both of those are met, and he's following commands too.", icon: bulb, ko: "둘 다 충족, 지시도 따라요", note: "추가 확인"}
+      - {en: "That makes all three criteria met, so I'll flag him for a trial.", icon: pushpin, ko: "세 기준 충족이라 시험 대상 표시할게요", note: "결론"}
+2:
+  s:
+    - {tag: "관찰 항목", icon: monitor, why: "세 항목을 나열해 무엇을 보는지 구체적으로 말하면 동료가 어디에 주의할지 바로 알아요.", decoy: "after the shift", d: ["식사 동안 호흡수, 호흡 노력, 산소를 지켜보고 있어요.", "회진 동안 호흡수, 호흡 노력, 산소를 지켜보고 있어요."], a: "trial", o: ["bath", "meal", "transfer"]}
+    - {tag: "실패 신호", icon: bell, why: "can signal은 가능성을 말하는 표현이라, 단정하지 않으면서 주의를 불러요.", decoy: "to the bedside", d: ["호흡수가 오르고 보조근육을 쓰는 건 아프다는 신호일 수 있어요.", "호흡수가 오르고 보조근육을 쓰는 건 흥분하고 있다는 신호일 수 있어요."], a: "tiring", o: ["hungry", "thirsty", "chilly"]}
+    - {tag: "중단 기준", icon: siren, why: "If로 조건을 앞에 두고 stop the trial을 바로 이어서, 중단 기준과 행동이 한 문장에 담겨요.", decoy: "and call his family", d: ["곤란한 모습을 보이면 시험을 멈추고 앉게 할게요.", "졸린 모습을 보이면 시험을 멈추고 쉬게 할게요."], a: "distress", o: ["hunger", "interest", "thirst"]}
+    - {tag: "경과 설명", icon: chartup, why: "but으로 나쁜 점과 괜찮은 점을 나란히 두고 for now로 지금만의 평가임을 표시해요.", decoy: "in his room", d: ["호흡수는 오르고 있지만 아직 얼굴색은 괜찮아 보여요.", "호흡수는 오르고 있지만 아직 기분은 괜찮아 보여요."], a: "okay", o: ["heavy", "loud", "slow"]}
+    - {tag: "판단 보류", icon: magnify, why: "a little longer가 기간을 짧게 한정해서, 방치가 아니라 의도된 관찰임을 보여 줘요.", decoy: "to the pharmacy", d: ["조금 더 지켜본 뒤에 식사할게요.", "조금 더 쉰 뒤에 결정할게요."], a: "longer", o: ["louder", "harder", "faster"]}
+    - {tag: "전체 평가", icon: board, why: "alone과 whole picture가 짝을 이뤄, 숫자 하나가 아니라 종합해서 판단한다는 뜻이에요.", decoy: "for the family", d: ["빠른 호흡수 하나만으로는 아직 실패 신호가 아니에요, 전체적인 모습을 기록하고 있어요.", "빠른 호흡수 하나만으로는 아직 실패 신호가 아니에요, 어제 모습을 지켜보고 있어요."], a: "alone", o: ["again", "today", "still"]}
+  order:
+    tag: "대화 흐름"
+    icon: monitor
+    ko: "SBT 관찰 소통 4문장 순서"
+    why: "무엇을 보는지 먼저 알리고, 그 수치 하나의 의미를 짚은 뒤, 종합해서 본다고 설명하고, 중단 기준으로 닫아요."
+    lines:
+      - {en: "I'm watching his rate, effort, and oxygen during the trial.", icon: monitor, ko: "시험 동안 호흡수, 노력, 산소를 봐요", note: "관찰"}
+      - {en: "That includes his rate, which is climbing, but that number alone doesn't tell us much.", icon: chartup, ko: "호흡수는 오르지만 그것만으론 몰라요", note: "수치"}
+      - {en: "So I'm looking at the whole picture, including how hard he's working.", icon: magnify, ko: "그래서 노력까지 전체를 봐요", note: "종합"}
+      - {en: "If any of that gets worse, we'll stop the trial and rest him.", icon: siren, ko: "나빠지면 시험을 멈추고 쉬게 해요", note: "중단"}

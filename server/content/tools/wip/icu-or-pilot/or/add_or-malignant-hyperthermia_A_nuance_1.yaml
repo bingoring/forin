@@ -1,0 +1,92 @@
+MH 가족력 선별:
+  - kind: slider
+    words: [w-history, w-notify, w-team, w-react]
+    cue: "Patient: \"My cousin got really hot during an operation once, but nobody ever told us what it was.\""
+    scale: ["That's probably nothing — we don't need to mention it.", "Thank you — I'll note that and tell the anesthesia team.", "Then you definitely have malignant hyperthermia."]
+    answerAt: 1
+    why: "정확한 병명을 몰라도 가족이 마취 중 심한 고열을 겪었다면 가족력 양성 가능성으로 보고 마취팀에 알려요. '별일 아니에요'로 넘기지도, 검사 없이 '당신은 MH예요'라고 단정하지도 않아요."
+    example: "Thank you — I'll note that and tell the anesthesia team."
+    exKo: "알려 주셔서 감사합니다 — 기록해 두고 마취팀에 알릴게요."
+  - kind: context
+    words: [w-history]
+    word: history
+    ko: 병력
+    scenes:
+      - {who: 간호사 → 마취과, icon: speech, en: "Positive family history of MH — her brother had a reaction under anesthesia.", ok: true}
+      - {who: 마취 전 차트, icon: board, en: "Family history: father with unexplained high fever during surgery.", ok: true}
+      - {who: 불안한 환자에게, icon: me, en: "Your family history is positive for MH, so you're a high-risk patient.", ok: false, fix: "Because someone in your family reacted badly to anesthesia, we'll plan yours extra carefully."}
+    why: "history는 의료진끼리와 차트에서는 'positive family history'처럼 짧고 정확하게 써요. 환자에게 같은 표현을 그대로 들려주면 '고위험 환자'라는 말만 남아 겁이 나요. 가족에게 어떤 일이 있었는지, 그래서 무엇을 다르게 하는지를 풀어서 말해요."
+유발 약물 인지:
+  - kind: pair
+    words: [w-avoid, w-confirm, w-tell, w-volatile, w-succinylcholine, w-trigger, w-machine]
+    pairs: [["Avoid", "volatile agents and succinylcholine"], ["Confirm", "the triggers are off the machine"], ["Tell", "everyone before we start"]]
+    decoys: ["as soon as"]
+    why: "MH 유발 요인은 휘발성 마취 가스와 석시닐콜린이에요. 피할 약을 정하고(avoid), 기계에서 꺼져 있는지 확인하고(confirm), 시작 전에 모두에게 알려(tell) 같은 계획으로 움직여요."
+  - kind: context
+    words: [w-trigger]
+    word: trigger
+    ko: 유발 요인
+    scenes:
+      - {who: 마취과 → 팀, icon: speech, en: "No triggers on this case — the vaporizers are out and succinylcholine is off the cart.", ok: true}
+      - {who: 마취 기록, icon: board, en: "MH precautions: trigger-free anesthetic, no triggers given.", ok: true}
+      - {who: 불안한 환자에게, icon: me, en: "We'll avoid every trigger of your MH, which can make your muscles break down and your temperature shoot up.", ok: false, fix: "We'll use medicines that are safe for you — ones that won't set off your MH."}
+    why: "trigger는 팀 안에서 MH를 일으키는 약을 부르는 정확한 말이에요. 환자에게는 근육이 녹고 체온이 치솟는다는 설명까지 한꺼번에 들려주지 말고, 무엇을 쓰는지(안전한 약)를 먼저 말해 줘요."
+dantrolene 위치 확인:
+  - kind: slider
+    words: [w-dantrolene, w-store, w-cart, w-accessible]
+    cue: "The anesthesiologist asks, \"Where's the dantrolene?\" You know it lives on the MH cart, but you haven't looked in this room today."
+    scale: ["I think it's on the MH cart.", "It should be on the MH cart.", "It's on the MH cart — I checked it this morning."]
+    answerAt: 2
+    why: "단트롤렌은 MH 때 몇 분 안에 써야 하는 약이라 '아마'나 '그럴 거예요'로 답하면 안 돼요. 직접 확인한 사실만 말해서 마취과가 위치를 믿고 움직이게 해요."
+    example: "It's on the MH cart by the door — I checked it this morning."
+    exKo: "문 옆 MH 카트에 있어요 — 오늘 아침에 확인했어요."
+  - kind: pair
+    words: [w-store, w-pharmacy, w-send, w-low]
+    pairs: [["Ask pharmacy to", "send more vials"], ["The dantrolene is", "stored on the MH cart"], ["If we're", "low on vials"]]
+    decoys: ["to the patient's bedside"]
+    why: "pharmacy에는 send를 부탁하고, 약은 카트에 stored(보관)돼 있고, 수가 모자라면 low예요. 부족하면 바로 약국에 요청해서 카트를 채워요."
+  - kind: context
+    words: [w-induce]
+    word: induce
+    ko: 마취를 유도하다
+    scenes:
+      - {who: 마취과 → 팀, icon: speech, en: "Dantrolene is on the cart, so we can induce.", ok: true}
+      - {who: 마취 기록, icon: board, en: "Dantrolene confirmed accessible; to induce at 0745.", ok: true}
+      - {who: 불안한 환자에게, icon: me, en: "We're going to induce you in a minute, so just relax.", ok: false, fix: "In a minute we'll give you medicine that helps you fall asleep."}
+    why: "induce는 마취과와 수술팀이 쓰는 말이에요. 환자에게 'we'll induce you'라고 하면 낯설고 차갑게 들려서, '잠들게 도와주는 약을 드릴게요'처럼 풀어서 말해요."
+MH 카트 점검:
+  - kind: slider
+    words: [w-inventory, w-sterile, w-date, w-restock, w-case]
+    cue: "During the MH cart check, everything is complete, but the sterile water on the cart is past its expiration date. The next case starts soon."
+    scale: ["I'll note it and replace it at next month's check.", "I'll replace it now, before the next case.", "Cancel the day's surgeries."]
+    answerAt: 1
+    why: "MH 카트는 위기 때 바로 쓰는 물품이라 유효기한이 지난 것은 다음 케이스 전에 교체해요. 다음 점검으로 미루면 급한 때 쓸 수 없고, 수술을 다 취소할 만큼 과하게 대응할 일도 아니에요."
+    example: "The sterile water is expired — I'll replace it before the next case."
+    exKo: "멸균수가 기한이 지났어요 — 다음 케이스 전에 바꿔 놓을게요."
+  - kind: context
+    words: [w-inventory]
+    word: inventory
+    ko: 재고 조사하다
+    scenes:
+      - {who: 간호사 → 마취과, icon: speech, en: "Let's inventory the MH cart together before the first case.", ok: true}
+      - {who: 점검 기록, icon: board, en: "MH cart inventory completed; all items in date.", ok: true}
+      - {who: 대기 중인 환자에게, icon: me, en: "We need to inventory the dantrolene, so please wait here.", ok: false, fix: "We're just double-checking our emergency supplies — it'll only take a moment."}
+    why: "inventory는 의료진끼리 물품을 하나씩 세고 확인할 때 쓰는 말이에요. 환자에게 'dantrolene 재고를 조사한다'고 하면 무슨 일인가 싶어 걱정돼요. 응급 물품을 다시 확인하는 중이라는 정도로 말해요."
+체온 지속 감시:
+  - kind: slider
+    words: [w-trend, w-slowly, w-stay, w-watch, w-tempabbr]
+    cue: "Over the last half hour the core temp has crept up a little. The EtCO2 and heart rate are steady, and nothing else has changed."
+    scale: ["Temp is stable — nothing to report.", "Temp is trending up slowly — I'm staying on top of it.", "Temp is spiking — I'm declaring MH!"]
+    answerAt: 1
+    why: "천천히 오르는 추세는 숨기지 않고 말하면서 계속 지켜봐요. 다른 징후가 없는데 MH를 선언하지는 않아요. 갑자기 오르거나 EtCO2·맥박도 같이 오르면 그때 즉시 알려요."
+    example: "Temp is trending up slowly, but I'm staying on top of it."
+    exKo: "체온이 천천히 오르고 있지만 계속 지켜보고 있어요."
+  - kind: context
+    words: [w-flag]
+    word: flag
+    ko: 표시하다
+    scenes:
+      - {who: 간호사 → 마취과, icon: speech, en: "I'll flag any sudden change in core temp right away.", ok: true}
+      - {who: 마취 기록, icon: board, en: "Temp flagged at 0940: gradual rise noted; anesthesia aware.", ok: true}
+      - {who: 보호자에게, icon: me, en: "I flagged his temperature, which could mean his body is overheating dangerously.", ok: false, fix: "His temperature is a little higher than before, so we're watching it closely."}
+    why: "flag는 팀 안에서 '눈에 띄게 표시해 알린다'는 말이에요. 보호자에게는 확인되지 않은 최악의 가능성까지 보태지 말고, 지금 달라진 점과 지켜보고 있다는 사실만 전해요."

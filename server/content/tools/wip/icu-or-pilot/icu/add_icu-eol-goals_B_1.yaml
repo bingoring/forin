@@ -1,0 +1,38 @@
+- title: 사전연명의향·DNR 확인
+  s:
+  - {t: "문서 확인", i: board, w: "completed는 이미 끝난 일을 말하는 과거형이라 아버님이 미리 직접 작성해 둔 문서라는 점이 분명해져요. 환자 본인이 한 일로 말하면 가족이 문서를 병원의 결정이 아니라 본인의 뜻으로 받아들여요.", d: "last week", k: ["어머님은 사전연명의향서와 DNR 지시를 작성하셨어요", "아버님은 사전연명의향서와 DNR 지시를 설명받으셨어요"], a: "completed", o: ["canceled", "rejected", "postponed"]}
+  - {t: "범위 설명", i: shield, w: "That means로 문서의 말을 풀어 주고, but으로 하지 않는 것과 계속하는 것을 한 문장에 함께 말해요. 중단되는 처치만 말하면 가족이 돌봄 전체가 끝나는 것으로 오해해요.", d: "for now", k: ["그건 심폐소생술은 안 한다는 뜻이지만, 어머님은 편안하게 계속 돌봐드릴 거예요", "그건 심폐소생술은 안 한다는 뜻이지만, 소식은 계속 알려드릴 거예요"], a: "comfortable", o: ["conscious", "stable", "awake"]}
+  - {t: "문서 대조", i: magnify, w: "Let's go through는 함께 하나씩 짚자는 권유 모양이라 일방적인 통보로 들리지 않아요. exactly를 넣으면 대충이 아니라 문서에 적힌 그대로 확인하겠다는 뜻이 돼요.", d: "he mentioned", k: ["그분이 원하신 것과 원치 않으신 것을 차례로 짚어볼게요", "그분이 말씀하신 것과 적으신 것을 정확히 짚어볼게요"], a: "exactly", o: ["roughly", "quickly", "briefly"]}
+  - {t: "차트 근거", i: board, w: "The chart lists는 근거가 말이 아니라 기록에 있다고 밝히는 모양이에요. 가족의 기억이 아니라 문서를 기준으로 삼으면 의견 충돌 없이 환자의 뜻을 확인할 수 있어요.", d: "that he said", k: ["차트에 그분이 원하신 것과 원치 않으신 것이 대략 나와 있어요", "차트에 그분 가족이 원하신 것과 원치 않으신 것이 정확히 나와 있어요"], a: "lists", o: ["hides", "cancels", "replaces"]}
+  - {t: "오해 방지", i: faceWorried, w: "doesn't mean은 흔한 오해를 먼저 꺼내 바로잡는 모양이에요. DNR이 심폐소생술에 대한 지시일 뿐이라는 점을 분명히 해야 가족이 통증 치료까지 끝난다고 걱정하지 않아요.", d: "to wait", k: ["DNR이라고 해서 통증 치료를 늦춘다는 뜻은 아니에요", "DNR이라고 해서 면회를 멈춘다는 뜻은 아니에요"], a: "stop", o: ["delay", "forget", "refuse"]}
+  - {t: "돌봄 약속", i: shield, w: "keep 뒤에 -ing를 붙이면 지금 하는 일을 계속한다는 모양이에요. 통증 치료와 편안함 유지를 함께 약속하면 돌봄이 이어진다는 확신이 가족에게 전해져요.", d: "from home", k: ["통증 치료는 계속하면서 몸을 닦아 드릴 거예요", "호흡 치료는 계속하면서 편안하게 해드릴 거예요"], a: "keeping", o: ["leaving", "moving", "asking"]}
+  - {t: "이해 확인", i: check, w: "Let's confirm은 가족을 점검하는 말이 아니라 함께 맞춰 보자는 모양이에요. 문서와 가족의 이해가 다를 수 있어서, 지시를 따르기 전에 서로 같은 뜻으로 알고 있는지 확인해요.", d: "with the doctor", k: ["지시서 내용이 가족분들 기억과 맞는지 함께 확인해볼게요", "지시서 내용이 의사 선생님 설명과 맞는지 함께 확인해볼게요"], a: "matches", o: ["replaces", "follows", "becomes"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "DNR 지시서 확인 4문장 순서"
+    why: "지시서를 함께 보자고 시작하고, It says로 내용을 읽은 뒤, That으로 오해를 풀고, all of that으로 가족의 이해와 맞는지 묻는 순서예요. 앞 줄이 뒤 줄이 가리키는 말의 전제라 순서가 하나예요."
+    lines:
+    - {en: "I'd like to go over your father's directive with you.", icon: board, ko: "아버님의 지시서를 함께 살펴보고 싶어요", note: "시작"}
+    - {en: "It says he does not want CPR if his heart stops.", icon: cross, ko: "심장이 멈추면 심폐소생술을 원치 않으신다고 적혀 있어요", note: "내용"}
+    - {en: "That does not mean we will stop treating his pain.", icon: shield, ko: "그렇다고 통증 치료를 멈추는 건 아니에요", note: "오해 방지"}
+    - {en: "Does all of that match what your family understands?", icon: check, ko: "이 모든 게 가족분들 이해와 맞나요?", note: "확인"}
+- title: 목표설정 대화 준비 지원
+  s:
+  - {t: "회의 안내", i: handshake2, w: "so we can은 만나는 목적을 함께라는 말로 풀어 주는 모양이에요. 결정을 미리 정해 놓고 통보하는 자리가 아니라 같이 계획하는 자리라고 알리면 가족의 부담이 줄어요.", d: "this morning", k: ["팀에서 다음 단계를 함께 계획하려고 이야기하고 싶어 해요", "팀에서 다음 단계를 함께 계획하려고 방문하고 싶어 해요"], a: "plan", o: ["cancel", "avoid", "forget"]}
+  - {t: "생각 정리", i: bulb, w: "It helps to …는 해야 한다는 지시가 아니라 도움이 되는 방법을 알려 주는 모양이에요. matters most로 환자에게 중요한 것을 떠올리게 하면 회의에서 의학 용어보다 환자의 뜻이 중심이 돼요.", d: "to your sister", k: ["아버님께 가장 중요한 게 무엇인지 생각해보시면 도움이 돼요", "어머님께 가장 편한 게 무엇인지 생각해보시면 도움이 돼요"], a: "matters", o: ["happens", "changes", "remains"]}
+  - {t: "질문 준비", i: pencil, w: "write down은 미리 적어 두라는 구동사예요. 가족이 긴장하면 회의 중에 질문을 잊기 쉬워서 적어 두면 묻고 싶은 것을 놓치지 않아요.", d: "for the nurse", k: ["간호사에게 묻고 싶은 질문을 적어두셔도 좋아요", "의사 선생님께 묻고 싶은 질문을 외워두셔도 좋아요"], a: "write", o: ["throw", "cross", "keep"]}
+  - {t: "환자 입장", i: speech, w: "if she could speak for herself는 사실과 다른 가정을 나타내는 would 문장이에요. 가족이 자기 생각이 아니라 환자 본인의 목소리로 생각하게 해서, 결정을 대신 내려 주지 않고 환자의 뜻을 찾게 돕는 질문이에요.", d: "to us", k: ["아버님이 직접 말씀하실 수 있다면 뭐라고 하셨을까요?", "어머님이 직접 결정하실 수 있다면 어떻게 하셨을까요?"], a: "herself", o: ["himself", "yourself", "ourselves"]}
+  - {t: "가치관", i: compass, w: "not just는 앞의 것만이 아니라 뒤의 것도 있다는 모양이에요. 선택지만 비교하면 결정이 어려워서 환자가 어떤 사람이었는지를 먼저 떠올리게 해요.", d: "or the cost", k: ["의학적 선택지보다 그분의 취미를 먼저 생각해보세요", "의학적 선택지보다 그분의 가치관을 나중에 생각해보세요"], a: "values", o: ["rooms", "habits", "reports"]}
+  - {t: "약속", i: shield, w: "make sure는 빠뜨리지 않고 챙기겠다는 약속의 모양이에요. 질문에 답이 돌아온다는 확신을 주면 가족이 회의 중에 묻는 것을 덜 망설여요.", d: "by tomorrow", k: ["회의에서 질문하신 것을 반드시 적어 드릴게요", "회의 뒤에 질문하신 것에 반드시 답을 드릴게요"], a: "answered", o: ["ignored", "repeated", "removed"]}
+  - {t: "안심 말", i: handshake2, w: "There's no …는 그런 것은 없다고 단정하는 모양이라, 질문해도 된다는 허락을 분명하게 줘요. wrong을 질문 앞에 붙여 질문의 수준을 평가하지 않겠다고 알려요.", d: "of yours", k: ["이 회의에 가져오시기에 이른 질문이란 없어요", "이 회의에 가져오시기에 어려운 질문이란 없어요"], a: "wrong", o: ["early", "heavy", "empty"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "가족 회의 준비 4문장 순서"
+    why: "회의 목적을 먼저 알리고, 그 회의에서 가족이 할 일로 환자의 입장을 떠올리게 한 뒤, 질문 적기를 권하고 그것에 반드시 답하겠다고 약속해요. 3줄의 them과 4줄의 them은 앞 줄의 질문을 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "The team would like to meet with your family soon.", icon: handshake2, ko: "팀에서 곧 가족분들과 만나고 싶어 해요", note: "안내"}
+    - {en: "Before that, it helps to think about what matters most to your mother.", icon: bulb, ko: "그 전에 어머님께 가장 중요한 게 무엇인지 생각해보면 도움이 돼요", note: "생각"}
+    - {en: "You can write down any questions that come to mind as you do that.", icon: pencil, ko: "그러다 떠오르는 질문은 적어두셔도 좋아요", note: "질문"}
+    - {en: "I'll make sure the team answers them at the meeting.", icon: shield, ko: "회의에서 팀이 답하도록 제가 챙길게요", note: "약속"}

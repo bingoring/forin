@@ -1,0 +1,78 @@
+dantrolene 혼합 투여:
+  - kind: pair
+    words: [w-dose, w-weight, w-mix, w-vial, w-push, w-repeat, w-respond]
+    pairs: [["Dose by", "weight"], ["Mix the next vial while", "you push this one"], ["Repeat until he", "responds"]]
+    decoys: ["as soon as"]
+    why: "단트롤렌은 체중(weight)에 맞춰 용량을 정해 투여해요. 한 사람이 주입(push)하는 동안 다른 사람이 다음 바이알을 섞고(mix), 환자가 반응할 때까지 반복해요(repeat)."
+  - kind: context
+    words: [w-dose]
+    word: dose
+    ko: 투여하다
+    scenes:
+      - {who: 마취과 → 팀, icon: speech, en: "Dose by weight, and keep the vials coming.", ok: true}
+      - {who: 위기 기록, icon: board, en: "Dantrolene dosed by weight; repeat doses given as needed.", ok: true}
+      - {who: 대기실 보호자에게, icon: me, en: "We've dosed him with dantrolene by weight and we'll keep repeating it.", ok: false, fix: "We've given him the medicine that treats this, and we'll give more as he needs it."}
+    why: "dose는 약의 양을 정해 넣는다는 임상 동사예요. 보호자에게 '체중별로 dose했다'고 하면 약 이름과 계산 방식만 들려요. 어떤 약이 어떤 목적으로 들어가고 있는지를 쉬운 말로 전해요."
+급속 냉각 시행:
+  - kind: pair
+    words: [w-start, w-iv, w-saline, w-surface, w-cool, w-ice, w-groin, w-axillae, w-stop, w-overshoot]
+    pairs: [["Start", "cold IV saline"], ["Ice packs to", "the groin and axillae"], ["Stop cooling before", "we overshoot"]]
+    decoys: ["if it"]
+    why: "냉각은 찬 정맥 수액으로 안에서(start cold IV saline), 얼음을 서혜부와 겨드랑이처럼 큰 혈관이 지나는 곳에 대서 겉에서 해요. 목표 온도에 닿기 전에 멈춰야 지나치게 식지 않아요(stop before we overshoot)."
+  - kind: context
+    words: [w-overshoot]
+    word: overshoot
+    ko: 지나치게 식히다
+    scenes:
+      - {who: 마취과 → 팀, icon: speech, en: "Watch the temp — stop cooling before we overshoot.", ok: true}
+      - {who: 위기 기록, icon: board, en: "Active cooling stopped at target to avoid overshoot.", ok: true}
+      - {who: 보호자에게, icon: me, en: "We're careful not to overshoot, so we stop the ice before he gets too cold.", ok: false, fix: "We'll stop cooling once his temperature is down enough, so he doesn't get too cold."}
+    why: "overshoot는 목표를 지나쳐 버린다는 팀 안의 짧은 말이에요. 보호자에게는 이 말 대신, 언제 멈추고 왜 멈추는지를 쉬운 말로 풀어 줘요."
+고칼륨 부정맥 대응:
+  - kind: pair
+    words: [w-push, w-calcium, w-first, w-protect, w-heart, w-insulin, w-glucose, w-bicarb, w-protocol]
+    pairs: [["Push calcium", "first to protect the heart"], ["Insulin goes in with", "glucose"], ["Bicarb per", "protocol"]]
+    decoys: ["since the"]
+    why: "고칼륨에서 칼슘은 먼저 주입해 심장을 보호하고(push calcium first to protect the heart), 인슐린은 포도당과 함께 써서 칼륨을 세포 안으로 옮겨요. 중탄산염은 프로토콜(per protocol)대로 써요."
+  - kind: context
+    words: [w-protect]
+    word: protect
+    ko: 보호하다
+    scenes:
+      - {who: 마취과 → 팀, icon: speech, en: "Push calcium first to protect the heart.", ok: true}
+      - {who: 위기 기록, icon: board, en: "Calcium given to protect the myocardium during hyperkalemia.", ok: true}
+      - {who: 대기실 보호자에게, icon: me, en: "We gave calcium to protect his heart from the potassium surge.", ok: false, fix: "We gave a medicine to keep his heart steady while we fix his blood salts."}
+    why: "protect the heart는 칼슘이 심장 근육을 안정시키려고 들어간다는 팀 안의 표현이에요. 보호자에게는 약 이름과 '칼륨 급증'을 떼어 놓고, 심장을 안정시키는 약을 쓴다는 목적만 말해요."
+대사성 산증 교정:
+  - kind: slider
+    words: [w-acidosis, w-severe, w-gas, w-resample, w-treatment, w-bicarbonate, w-hyperventilate]
+    cue: "After treatment, the repeat blood gas shows the pH is better, but it's still low."
+    scale: ["The gas looks fine now — we can stop checking.", "It's better but still low — let's keep treating and resample the gas.", "The treatment didn't work — stop everything."]
+    answerAt: 1
+    why: "좋아지는 중이라고 해서 검사를 멈추면 다시 나빠져도 알 수 없어요. 아직 낮다면 치료를 이어 가고 혈액가스를 다시 채취해 흐름을 봐요. 치료가 실패했다고 단정해 모두 멈출 일도 아니에요."
+    example: "It's better but still low — let's keep treating and resample the gas."
+    exKo: "나아지고 있지만 아직 낮아요 — 치료를 이어 가고 혈액가스를 다시 채취합시다."
+  - kind: context
+    words: [w-severe]
+    word: severe
+    ko: 심각한
+    scenes:
+      - {who: 마취과 → 팀, icon: speech, en: "The acidosis is severe on this gas — hyperventilate and give bicarbonate per protocol.", ok: true}
+      - {who: 혈액가스 기록, icon: board, en: "ABG: severe acidosis; bicarbonate given per protocol.", ok: true}
+      - {who: 대기실 보호자에게, icon: me, en: "It's a severe acidosis, which means his blood is dangerously acidic.", ok: false, fix: "His blood has become much more acidic than it should be, and we're treating it right now."}
+    why: "severe는 의료진끼리 '수치가 많이 벗어나 지금 처치한다'는 뜻으로 담담하게 써요. 보호자에게 'severe acidosis'를 그대로 들려주면 병명과 위험만 남아요. 무슨 일이고 무엇을 하는지로 말해요."
+위기 후 중환자 이송:
+  - kind: pair
+    words: [w-full, w-mh, w-handoff, w-continue, w-dantrolene, w-watch, w-recrudescence, w-walk, w-icu, w-team, w-happen]
+    pairs: [["Give ICU a full", "MH handoff"], ["Continue dantrolene and watch for", "recrudescence"], ["I'll walk the ICU team through", "everything that happened"]]
+    decoys: ["as soon as"]
+    why: "중환자실에는 빠진 것 없이 full MH handoff를 해요. 위기가 가라앉아도 단트롤렌을 이어 가며 재발(recrudescence)을 지켜보고, 무슨 일이 있었는지는 직접 설명(walk through)해요."
+  - kind: context
+    words: [w-stable]
+    word: stable
+    ko: 안정된
+    scenes:
+      - {who: 마취과 → ICU 팀, icon: speech, en: "He's stable now, but we're keeping dantrolene running.", ok: true}
+      - {who: 위기 기록, icon: board, en: "Hemodynamically stable post-MH; transferred to ICU on dantrolene.", ok: true}
+      - {who: 대기실 보호자에게, icon: me, en: "He's hemodynamically stable post-MH, so he's out of danger.", ok: false, fix: "He's doing better and his numbers are steady now, though we'll watch him closely in the ICU."}
+    why: "stable은 의료진끼리 수치가 일정하게 유지된다는 뜻이지 위험이 완전히 끝났다는 뜻은 아니에요. 보호자에게 'out of danger'라고 하면 지킬 수 없는 안심이 돼요. 좋아졌지만 계속 지켜본다고 말해요."

@@ -1,0 +1,418 @@
+사전연명의향·DNR 확인:
+- kind: pair
+  words:
+  - w-directive
+  - w-cpr
+  pairs:
+  - - advance
+    - directive
+  - - code
+    - status
+  - - chest
+    - compressions
+  decoys:
+  - paperwork
+  why: advance directive는 환자가 미리 써 둔 문서, code status는 지금 소생술을 할지 정해 둔 상태(Full code / DNR), chest compressions는 CPR의 가슴압박이에요. 차트와 가족 대화에서 이 세 말을 구분해 써요.
+- kind: context
+  words:
+  - w-dnr
+  word: DNR
+  ko: 소생술 하지 않음
+  scenes:
+  - who: 차트 기록
+    icon: board
+    en: DNR order in place per MD; comfort measures continue.
+    ok: true
+  - who: 아들에게
+    icon: me
+    en: He's a DNR, so no ACLS if he codes.
+    ok: false
+    fix: His DNR means we won't do CPR, but we'll keep treating his pain.
+  - who: 의사에게 확인
+    icon: stetho
+    en: Can you confirm his DNR status before transfer?
+    ok: true
+  why: 의료진끼리는 DNR·ACLS·code 같은 약어가 정확하고 빨라요. 가족에게는 그 지시가 실제로 무엇을 하고 무엇을 계속하는지 풀어서 말해요.
+- kind: swap
+  words:
+  - w-dnr
+  - w-treat
+  who: 가족에게 · DNR 의미 풀기
+  icon: me
+  before:
+  - 'DNR doesn''t mean we''ll stop treating his pain. It means we '
+  - will not initiate ACLS if he arrests
+  - .
+  options:
+  - will not initiate ACLS if he arrests
+  - won't do CPR if his heart stops
+  - won't be treating him anymore
+  answer: won't do CPR if his heart stops
+  notes:
+    will not initiate ACLS if he arrests: 의료진끼리는 정확하지만 가족은 ACLS가 무엇인지 모른다.
+    won't do CPR if his heart stops: DNR이 실제로 막는 것(심정지 때 소생술)만 쉬운 말로 정확히 말한다.
+    won't be treating him anymore: DNR을 치료 중단으로 오해하게 만든다 — 앞 문장과도 어긋난다.
+  why: DNR은 심정지 때 소생술을 하지 않는다는 지시예요. 치료를 멈춘다는 뜻이 아니라는 점을 먼저 말하고, 막는 것이 무엇인지 쉬운 말로 이어 주세요.
+  ko: 소생술은 안 한다는 뜻이에요 — 심장이 멈추더라도요
+목표설정 대화 준비 지원:
+- kind: slider
+  words:
+  - w-question
+  cue: 'Son: "I''m not sure I understand why the antibiotics aren''t working."'
+  scale:
+  - question
+  - concern
+  - objection
+  answerAt: 0
+  why: 이해가 안 돼서 묻는 건 question, 마음이 불편해서 꺼내는 건 concern, 결정 자체에 반대하는 건 objection이에요. 가족이 말을 꺼냈을 때 어느 쪽인지 읽어야 답이 달라져요.
+  example: There's no wrong question to bring to this meeting.
+  exKo: 이 회의에 가져오시기에 잘못된 질문이란 없어요.
+- kind: context
+  words:
+  - w-meeting
+  word: meeting
+  ko: 회의
+  scenes:
+  - who: 의사 → 간호사
+    icon: stetho
+    en: Family meeting at 2 p.m. — can you join?
+    ok: true
+  - who: 보호자에게
+    icon: me
+    en: We'll hold a multidisciplinary goals-of-care meeting.
+    ok: false
+    fix: The team would like to sit down with you and talk about the next steps.
+  - who: 차트 기록
+    icon: board
+    en: Family meeting held; plan reviewed with daughter.
+    ok: true
+  why: 의료진끼리는 goals-of-care meeting 같은 정식 이름을 쓰지만, 가족에게는 누구와 무엇을 이야기하는 자리인지 쉬운 말로 알려 주는 편이 덜 부담스러워요.
+임종기 증상 사정:
+- kind: slider
+  words:
+  - w-discomfort
+  cue: She grimaces once while being turned, then settles.
+  scale:
+  - discomfort
+  - pain
+  - distress
+  answerAt: 0
+  why: 움직일 때 잠깐 찡그리는 정도는 discomfort, 계속 이어지는 아픔은 pain, 강한 괴로움이 겉으로 보이면 distress예요. 임종기에는 말을 못 하는 환자의 표정과 호흡으로 단계를 읽어요.
+  example: I'm watching her face and breathing closely for any sign of discomfort.
+  exKo: 표정과 호흡을 계속 유심히 살펴보고 있어요, 불편한 기색이 있는지요.
+- kind: context
+  words:
+  - w-labored
+  word: labored
+  ko: 힘겨운
+  scenes:
+  - who: 차트 기록
+    icon: board
+    en: Breathing labored with accessory muscle use.
+    ok: true
+  - who: 딸에게
+    icon: me
+    en: Her breathing is labored, with accessory muscle use.
+    ok: false
+    fix: Her breathing looks like hard work, but that doesn't always mean she's in pain.
+  - who: 의사 콜
+    icon: monitor
+    en: Resp rate 28, labored — can you come assess her?
+    ok: true
+  why: labored는 차트와 의사 보고에서 정확한 말이에요. 가족에게는 근육 사용 같은 용어를 늘어놓기보다 눈에 보이는 모습과 의미를 함께 말해 주세요.
+- kind: swap
+  words:
+  - w-sound
+  - w-ease
+  who: 딸에게 · 숨소리 설명
+  icon: me
+  before:
+  - 'That sound is common at this stage, and we can '
+  - do nothing about it
+  - .
+  options:
+  - do nothing about it
+  - ease it with medication
+  - make it stop completely
+  answer: ease it with medication
+  notes:
+    do nothing about it: 가족이 걱정하는 소리를 손쓸 수 없다고 말하는 셈이라 불안을 키운다.
+    ease it with medication: 임종기 분비물 소리는 약으로 줄일 수 있다는 사실을 말해 준다.
+    make it stop completely: 완전히 없앤다는 약속은 지킬 수 없다.
+  why: 임종기에 목에서 나는 소리는 분비물 때문에 흔하고, 약으로 줄일 수 있어요. 가족이 그 소리를 환자의 고통으로 오해하지 않게 설명해 주되, 완전히 없앤다고 약속하지는 마세요.
+  ko: 그 소리는 이 시기에 흔하고, 약으로 줄여 드릴 수 있어요
+편안함 중심 간호:
+- kind: slider
+  words:
+  - w-comfort
+  cue: 'Daughter: "So she won''t be in any pain at all?"'
+  scale:
+  - we'll watch for pain
+  - we'll keep her comfortable
+  - she'll never feel anything
+  answerAt: 1
+  why: '''편안하게 해 드릴 거예요''는 우리가 할 일을 약속하는 말이에요. ''never feel anything'' 같은 절대적 약속은 지킬 수 없고, ''we''ll watch for pain''만 말하면 가족에게는 소극적으로 들려요.'
+  example: We'll treat pain, keep her clean, and stop tests that don't help.
+  exKo: 통증은 치료하고, 청결히 해드리고, 도움이 안 되는 검사는 멈출게요.
+- kind: context
+  words:
+  - w-focus
+  word: focus
+  ko: 초점
+  scenes:
+  - who: 호스피스 계획
+    icon: board
+    en: 'Plan of care: focus on comfort measures only.'
+    ok: true
+  - who: 아들에게
+    icon: me
+    en: We're discontinuing the focus on curative treatment.
+    ok: false
+    fix: Our focus now is her comfort, and we'll keep caring for her.
+  - who: 인계
+    icon: speech
+    en: Goals changed — focus is comfort, no more labs.
+    ok: true
+  why: 의료진끼리는 'curative / comfort measures only' 같은 표현이 정확해요. 가족에게는 포기가 아니라 돌봄의 방향이 바뀐 것이라는 말로 설명해요.
+- kind: swap
+  words:
+  - w-treat
+  - w-illness
+  who: 딸에게 · 돌봄의 방향
+  icon: me
+  before:
+  - 'We''re changing what we''re treating — from the illness to '
+  - her lab values
+  - .
+  options:
+  - her lab values
+  - how she feels
+  - the underlying pathology
+  answer: how she feels
+  notes:
+    her lab values: 수치를 치료한다는 뜻이라 편안함 중심 돌봄의 정반대다.
+    how she feels: 병이 아니라 환자가 느끼는 것을 치료한다는 방향 전환을 쉬운 말로 보여 준다.
+    the underlying pathology: 병을 가리키는 말이라 '병에서 병으로' 바뀐다는 이상한 문장이 된다.
+  why: 편안함 중심 돌봄은 병이 아니라 환자가 느끼는 증상을 치료 대상으로 삼는 거예요. 가족에게는 쉬운 말로 방향이 바뀌었다고 알려 주세요.
+  ko: 병이 아니라 그분이 어떻게 느끼시는지를 치료하는 쪽으로 바꾸고 있어요
+가족 면회·임종 지지:
+- kind: slider
+  words:
+  - w-quietly
+  - w-talk
+  cue: 'Wife whispers: "Can he still hear me?"'
+  scale:
+  - talk loudly
+  - talk quietly
+  - stay silent
+  answerAt: 1
+  why: 임종기에는 청각이 마지막까지 남을 수 있다고 알려져 있어요. 큰 소리로 밀어붙이기보다 조용히 천천히 말을 걸고, 가족이 침묵해야 한다고 느끼지 않게 해 주세요.
+  example: Talking to her, even quietly, can still comfort her.
+  exKo: 조용히 말을 걸어드리는 것만으로도 그분께 위안이 돼요.
+- kind: context
+  words:
+  - w-stay
+  word: stay
+  ko: 곁에 머무르다
+  scenes:
+  - who: 면회 정책 안내
+    icon: board
+    en: Family may stay at the bedside during end of life.
+    ok: true
+  - who: 아내에게
+    icon: me
+    en: Visitation hours state that you may stay only until 8 p.m.
+    ok: false
+    fix: You can stay as long as you'd like, day or night.
+  - who: 인계
+    icon: speech
+    en: Wife wants to stay overnight — set up the recliner.
+    ok: true
+  why: 많은 병원이 임종기에는 면회 시간을 풀어 줘요. 규정 문구를 읽어 주는 것보다 가족이 곁에 머물러도 된다는 허락을 먼저 말해 주세요.
+- kind: swap
+  words:
+  - w-cry
+  - w-laugh
+  who: 가족에게 · 감정 허용
+  icon: me
+  before:
+  - 'It''s all right to cry, and it''s all right to '
+  - stay composed
+  - ' remembering her.'
+  options:
+  - stay composed
+  - laugh
+  - hold back
+  answer: laugh
+  notes:
+    stay composed: 감정을 참으라는 뜻으로 읽혀 가족을 더 힘들게 한다.
+    laugh: 슬퍼도 추억을 떠올리며 웃을 수 있다고 허락하는 말이라 가족의 마음을 풀어 준다.
+    hold back: 눈물이든 웃음이든 억누르라는 말이라 위로가 아니라 지시처럼 들린다.
+  why: 임종 곁에서는 울음과 웃음이 함께 올 수 있어요. 어느 쪽도 괜찮다고 먼저 말해 주면 가족이 눈치 보지 않아요.
+  ko: 우셔도 괜찮고, 그분을 떠올리며 웃으셔도 괜찮아요
+사후 처치·존엄 관리:
+- kind: slider
+  words:
+  - w-gently
+  - w-carefully
+  cue: You're turning her after death while her daughter watches.
+  scale:
+  - quickly
+  - carefully
+  - gently
+  answerAt: 2
+  why: 돌아가신 분을 대할 때는 서두르지 않고 다정하게 다뤄요. carefully는 실수 없이, gently는 힘을 빼고 부드럽게라는 뜻이라 가족이 보는 앞에서는 gently가 마음에 닿아요.
+  example: I'll care for him gently and respectfully.
+  exKo: 다정하고 정중하게 그분을 돌봐드릴게요.
+- kind: context
+  words:
+  - w-respect
+  word: respect
+  ko: 존중
+  scenes:
+  - who: 병원 지침
+    icon: board
+    en: Postmortem care is performed with dignity and respect.
+    ok: true
+  - who: 딸에게
+    icon: me
+    en: We will now commence postmortem care, with respect, per protocol.
+    ok: false
+    fix: I'll care for him with the same respect as before.
+  - who: 후배 간호사에게
+    icon: speech
+    en: Talk to him as you work — treat him with respect.
+    ok: true
+  why: postmortem care는 의료진끼리 쓰는 정식 이름이에요. 가족에게는 절차 이름보다 어떻게 대할지를 따뜻하게 말해 주세요.
+- kind: swap
+  words:
+  - w-welcome
+  - w-stay
+  who: 딸에게 · 사후 처치 동석
+  icon: me
+  before:
+  - 'You''re welcome to stay while I do this, or '
+  - leave immediately
+  - ' — whatever feels right.'
+  options:
+  - leave immediately
+  - step out
+  - go home
+  answer: step out
+  notes:
+    leave immediately: 가족을 내쫓는 말투로 들려 선택권을 준 앞 문장과 어긋난다.
+    step out: 잠시 자리를 비워도 된다는 부드러운 선택지라 앞 문장과 이어진다.
+    go home: 병원을 떠나라는 말이라 아직 곁에 머물고 싶은 가족에게 상처가 된다.
+  why: 사후 처치 중에 곁에 있을지 잠시 나가 있을지는 가족이 정해요. 어느 쪽이든 괜찮다고 두 선택지를 함께 줘요.
+  ko: 제가 이 일을 하는 동안 곁에 계셔도 되고, 잠시 나가 계셔도 돼요
+목표설정 회의 소통 지원:
+- kind: slider
+  words:
+  - w-simple
+  - w-term
+  cue: 'Son: "Can you say that without the medical words?"'
+  scale:
+  - in medical shorthand
+  - in plainer terms
+  - in writing
+  answerAt: 1
+  why: '''plainer terms''는 의학 용어를 빼고 더 쉽게 다시 말해 주겠다는 부드러운 표현이에요. 가족이 용어 때문에 헷갈렸을 때 간호사가 이어 주는 말이에요.'
+  example: Let me put that in plainer terms for you.
+  exKo: 더 쉬운 말로 설명해드릴게요.
+- kind: context
+  words:
+  - w-recover
+  word: recover
+  ko: 회복하다
+  scenes:
+  - who: 의사 → 간호사
+    icon: stetho
+    en: His kidneys are not expected to recover.
+    ok: true
+  - who: 아내에게
+    icon: me
+    en: His renal function shows no capacity to recover.
+    ok: false
+    fix: His kidneys aren't recovering the way we hoped.
+  - who: 차트 기록
+    icon: board
+    en: Organs not recovering despite max support.
+    ok: true
+  why: 의료진끼리는 정확한 장기 이름과 수치를 말하지만, 가족에게는 결론을 쉬운 말로 먼저 말해 주세요. 그다음 궁금한 것을 물을 수 있게 시간을 줘요.
+- kind: swap
+  words:
+  - w-confusing
+  - w-explain
+  who: 아들에게 · 회의 후 다시 설명
+  icon: me
+  before:
+  - 'I can explain anything that felt '
+  - unclear to the physicians
+  - ' in the meeting.'
+  options:
+  - unclear to the physicians
+  - confusing
+  - incorrect
+  answer: confusing
+  notes:
+    unclear to the physicians: 의사들이 헷갈렸다는 뜻이라 가족의 상황과 맞지 않는다.
+    confusing: 가족이 헷갈렸던 부분을 다시 설명해 주겠다는 자연스러운 말이다.
+    incorrect: 회의 내용이 틀렸다는 뜻이 되어 가족이 의사를 불신하게 만든다.
+  why: 회의에서 용어가 어려워도 가족은 되묻기 어려워해요. '헷갈렸던 부분'이라고 말하면 가족 잘못이 아니라는 느낌을 줘요.
+  ko: 회의에서 헷갈리셨던 부분은 무엇이든 다시 설명해 드릴 수 있어요
+연명치료 중단 계획 실행:
+- kind: slider
+  words:
+  - w-withdraw
+  - w-stop
+  cue: 'Daughter: "Are you going to just turn everything off?"'
+  scale:
+  - stop at once
+  - withdraw gradually
+  - never withdraw
+  answerAt: 1
+  why: 연명치료 철회(withdraw)는 보통 증상을 조절하면서 단계적으로 진행해요. 한꺼번에 다 끈다는 인상을 주지 않도록 gradually라고 설명해 주세요.
+  example: We'll withdraw the treatments gradually and keep him comfortable throughout.
+  exKo: 치료들을 서서히 철회하면서 그동안 계속 편안하게 해드릴게요.
+- kind: context
+  words:
+  - w-withdraw
+  word: withdraw
+  ko: 철회하다
+  scenes:
+  - who: 의사 지시
+    icon: board
+    en: Withdraw life-sustaining treatment per family decision.
+    ok: true
+  - who: 보호자에게
+    icon: me
+    en: We're going to withdraw support now.
+    ok: false
+    fix: We'll take away the treatments slowly and keep him comfortable the whole time.
+  - who: 인계
+    icon: speech
+    en: Plan to withdraw vent support at 3 p.m.
+    ok: true
+  why: withdraw는 의료진끼리 쓰는 정확한 말이에요. 가족에게 'withdraw support'만 말하면 돌봄까지 끊는 것처럼 들릴 수 있어서, 편안함을 이어 간다는 말을 함께 해요.
+- kind: swap
+  words:
+  - w-expect
+  - w-step
+  - w-happen
+  who: 가족에게 · 각 단계 설명
+  icon: me
+  before:
+  - 'I''ll explain what to expect before each step '
+  - is executed
+  - .
+  options:
+  - is executed
+  - happens
+  - is carried out per protocol
+  answer: happens
+  notes:
+    is executed: 처치를 '실행'한다는 말은 가족에게 차갑게 들린다.
+    happens: 쉬운 동사로 앞으로 일어날 일을 예고해 준다.
+    is carried out per protocol: 의료진끼리 쓰는 절차 말투라 가족과는 거리가 멀다.
+  why: 철회 과정에서는 다음에 무슨 일이 생길지 모르는 것이 가장 불안해요. 단계마다 미리 알려 주겠다는 약속이 가족의 불안을 덜어요.
+  ko: 각 단계가 있기 전에 무엇을 예상하시면 되는지 미리 설명해 드릴게요

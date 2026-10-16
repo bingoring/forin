@@ -1,0 +1,85 @@
+- t: "타임아웃 중 이견 제기"
+  s:
+  - {tag: "감사·정지", icon: handshake2, why: "Thank you for speaking up을 먼저 말하면 이견을 낸 사람이 위축되지 않아요 — 그다음 stop and check로 행동을 정해요.", decoy: "for waiting", dko: ["도와주셔서 감사합니다 — 멈추고 확인합시다.", "말씀해 주셔서 감사합니다 — 멈추고 정리합시다."], ans: "check", wr: [sign, leave, guess]}
+  - {tag: "동의서 확인", icon: board, why: "pull up은 서류나 화면을 '꺼내 띄우다'는 구동사예요 — 기억이 아니라 기록으로 확인하자는 뜻이에요.", decoy: "the roster", dko: ["수술 일정을 불러와서 함께 확인합시다.", "동의서를 불러와서 마취과와 확인합시다."], ans: "consent", wr: [roster, invoice, menu]}
+  - {tag: "진행 보류", icon: lock, why: "No one + 현재형 동사는 개인 의견이 아니라 팀의 원칙처럼 들려요.", decoy: "No one leaves", dko: ["이게 해결될 때까지 아무도 퇴근하지 않습니다.", "이게 해결될 때까지 아무도 서명하지 않습니다."], ans: "resolved", wr: [hidden, opened, packed]}
+  - {tag: "신중 선언", icon: shield, why: "I'd rather A than B로 두 선택을 견줘요 — 완곡하게 '추측은 하지 않겠다'는 뜻을 전해요.", decoy: "than wait", dko: ["추측하기보다는 멈추고 기다리겠습니다.", "서두르기보다는 멈추고 확인하겠습니다."], ans: "guess", wr: [argue, hide, complain]}
+  - {tag: "해결 우선", icon: compass, why: "any further는 '조금이라도 더'를 강조해요 — 해결 전에는 한 걸음도 안 간다는 뜻이에요.", decoy: "Let's schedule this", dko: ["더 나아가기 전에 이걸 설명합시다.", "더 나아가기 전에 이걸 기록합시다."], ans: "resolve", wr: [forget, ignore, shelve]}
+  o:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "타임아웃 중 이견 제기 4문장 순서"
+    why: "이견을 꺼내고, 감사와 함께 멈추고, 서류로 함께 확인하고, 모두가 납득할 때까지 시작하지 않는다는 원칙으로 닫아요."
+    lines:
+    - {en: "Hold on — I'm not sure the consent matches.", icon: faceWorried, ko: "잠깐만요 — 동의서가 맞는지 모르겠어요", note: 이견}
+    - {en: "Thank you for speaking up — let's stop and check.", icon: handshake2, ko: "말씀해 주셔서 감사합니다 — 멈추고 확인합시다", note: 감사}
+    - {en: "Let's pull up the consent and check it together.", icon: board, ko: "동의서를 불러와 함께 확인합시다", note: 확인}
+    - {en: "Nobody starts until we're all satisfied with it.", icon: lock, ko: "모두가 그것에 납득할 때까지 아무도 시작하지 않아요", note: 원칙}
+- t: "영상 좌우 대조"
+  s:
+  - {tag: "영상 대조", icon: monitor, why: "verify + 절(imaging matches …)로 무엇을 맞춰 보는지 문장 안에 담아요 — 영상과 표시를 짝지어 보는 거예요.", decoy: "the invoice", dko: ["영상이 표시된 부위와 일치하는지 발표합시다.", "영상이 표시된 부위와 일치하는지 집도의께 물어봅시다."], ans: "verify", wr: [forget, erase, delay]}
+  - {tag: "영상 좌우", icon: magnify, why: "labeled left를 먼저 보고하고 does that match…?로 묻는 틀이에요 — 이상하다고 단정하지 않고 확인을 청해요.", decoy: "our budget", dko: ["필름은 왼쪽으로 표시돼 있습니다 — 우리 일정과 일치하나요?", "차트는 왼쪽으로 표시돼 있습니다 — 우리 계획과 일치하나요?"], ans: "plan", wr: [team, budget, bed]}
+  - {tag: "전원 확인", icon: speech, why: "I want everyone to …는 요청을 '내가 원한다'로 낮춰 말해 지시보다 부드러워요. 드레이프를 덮으면 부위가 가려지기 때문에 그 전에 확인해요.", decoy: "to sign", dko: ["소독하기 전에 모두 확인해 주셨으면 합니다.", "드레이프를 덮기 전에 모두 서명해 주셨으면 합니다."], ans: "drape", wr: [leave, eat, transfer]}
+  - {tag: "영상 대조", icon: monitor, why: "not the left처럼 맞는 쪽과 아닌 쪽을 한 문장에서 함께 말해 좌우 혼동을 막아요.", decoy: "the chart", dko: ["차트는 오른쪽과 일치합니다, 왼쪽이 아니라.", "영상은 오른쪽과 일치합니다, 동의서는 아직입니다."], ans: "matches", wr: [misses, hides, blocks]}
+  - {tag: "함께 대조", icon: handshake2, why: "before 절이 확인의 마감 시점을 정해요 — 자세를 잡기 전이 편하게 되돌릴 수 있는 마지막 때예요.", decoy: "before we discharge", dko: ["환자 자세를 잡기 전에 함께 연습합시다.", "환자 자세를 잡기 전에 각자 대조합시다."], ans: "position", wr: [discharge, greet, weigh]}
+  o:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "영상 좌우 대조 4문장 순서"
+    why: "대조를 제안하고, 영상과 표시를 보고하고, 전원의 확인을 받은 뒤, 자세를 잡자고 넘겨요."
+    lines:
+    - {en: "Let's check the imaging against the marked side.", icon: monitor, ko: "영상을 표시된 쪽과 대조해 봅시다", note: 제안}
+    - {en: "The films are labeled right, and the mark is on the right too.", icon: magnify, ko: "필름도 오른쪽, 표시도 오른쪽입니다", note: 보고}
+    - {en: "Does everyone agree that they match?", icon: check, ko: "둘이 일치한다는 데 모두 동의하시나요?", note: 동의}
+    - {en: "Thanks — we'll position him now.", icon: star, ko: "감사합니다 — 이제 자세를 잡겠습니다", note: 진행}
+- t: "예상 출혈·수혈 논의"
+  s:
+  - {tag: "출혈 예고", icon: siren, why: "anticipate는 'expect'보다 격식 있는 '미리 대비한다'는 뜻이에요 — 예고하는 말이 곧 준비 요청이에요.", decoy: "for this week", dko: ["이번 케이스는 상당한 감염이 예상됩니다.", "다음 케이스는 상당한 출혈이 예상됩니다."], ans: "anticipate", wr: [ignore, disregard, forget]}
+  - {tag: "혈액 준비", icon: lab, why: "on hold는 쓰지 않고 따로 잡아 둔 상태예요 — 필요하면 바로 가져올 수 있도록 확보돼 있다는 뜻이에요.", decoy: "are on ice", dko: ["혈액형·교차 검사는 끝났고, 팩은 도착 중입니다.", "혈액형·교차 검사는 접수됐고, 팩은 보류 중입니다."], ans: "done", wr: [late, wrong, pending]}
+  - {tag: "정맥로 확보", icon: check, why: "large-bore는 굵은 카테터라 빠른 수액·수혈에 써요. make sure는 끝까지 챙기겠다는 약속이에요.", decoy: "is on order", dko: ["굵은 정맥로가 확보되도록 요청하겠습니다.", "굵은 카트가 확보되도록 하겠습니다."], ans: "place", wr: [doubt, error, pain]}
+  - {tag: "혈액 준비", icon: lab, why: "make sure + 절로 점검 대상을 통째로 말해요 — ready는 '있다'가 아니라 '바로 쓸 수 있다'까지 확인하게 해요.", decoy: "are stored", dko: ["시작 전에 혈액 팩이 도착했는지 확인합시다.", "시작 전에 수액 팩이 준비됐는지 확인합시다."], ans: "ready", wr: [empty, spoiled, lost]}
+  - {tag: "확인 약속", icon: check, why: "I'll confirm은 직접 눈으로 보겠다는 약속이에요 — in place는 위치까지 제대로라는 뜻이에요.", decoy: "is on the cart", dko: ["정맥로가 확보돼 있다고 전달할게요.", "정맥로가 확보돼 있는지 물어볼게요."], ans: "line", wr: [bag, bed, sign]}
+  o:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "예상 출혈·수혈 논의 4문장 순서"
+    why: "출혈을 예고하고, 혈액 준비 상태를 알리고, 그 혈액을 빨리 줄 정맥로를 확인하고, 시작 전 준비를 다짐해요."
+    lines:
+    - {en: "We anticipate significant blood loss for this case.", icon: siren, ko: "이번 케이스는 상당한 출혈이 예상됩니다", note: 예고}
+    - {en: "So type and cross is done, and units are on hold.", icon: lab, ko: "그래서 혈액형·교차 검사는 끝났고 팩은 보류 중입니다", note: 혈액}
+    - {en: "To give those units fast, I'll confirm large-bore access is in place.", icon: check, ko: "그 팩을 빨리 주도록 굵은 정맥로 확보를 확인할게요", note: 정맥로}
+    - {en: "Let's make sure all of that is ready before we start.", icon: handshake2, ko: "시작 전에 그게 다 준비됐는지 확인합시다", note: 마무리}
+- t: "이식물·특수 기구 확인"
+  s:
+  - {tag: "이식물 확인", icon: gear, why: "here와 matches 두 가지를 and로 묶어 보고해요 — 있는 것(여기)과 맞는 것(크기)을 따로 말해야 해요.", decoy: "and the cost", dko: ["이식물은 여기 있고 크기는 라벨과 일치합니다.", "이식물은 저기 있고 크기는 계획과 일치합니다."], ans: "implant", wr: [tray, cart, chart]}
+  - {tag: "기구 보고", icon: scalpel, why: "open and ready — 멸균 포장을 연 것과 바로 쓸 수 있음을 함께 말해야 준비 보고가 돼요.", decoy: "and counted", dko: ["일반 기구는 전부 개봉돼 준비됐습니다.", "특수 기구는 전부 포장돼 준비됐습니다."], ans: "open", wr: [dirty, broken, missing]}
+  - {tag: "장비 질문", icon: gear, why: "we still need는 equipment를 꾸미는 관계절이에요 — 아직 빠진 것만 묻는 말이라 대답이 짧아져요.", decoy: "we can return", dko: ["아직 더 치워야 할 장비가 있나요?", "아직 더 가져와야 할 직원이 있나요?"], ans: "still", wr: [never, hardly, rarely]}
+  - {tag: "크기 재확인", icon: redo, why: "one more time은 이미 본 것을 다시 본다는 뜻이에요 — 크기는 한 번 틀리면 되돌리기 어려워 반복 확인이 표준이에요.", decoy: "each morning", dko: ["이식물 크기를 한 번 더 주문합시다.", "이식물 크기를 두 번 더 확인합시다."], ans: "size", wr: [price, date, owner]}
+  - {tag: "확인 약속", icon: check, why: "I'll check that …은 보고를 받는 데서 그치지 않고 직접 눈으로 확인하겠다는 약속이에요.", decoy: "that all gowns", dko: ["기구가 전부 개봉돼 준비됐다고 알려 줄게요.", "가운이 전부 개봉돼 준비됐는지 확인할게요."], ans: "check", wr: [doubt, deny, forget]}
+  o:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "이식물·특수 기구 확인 4문장 순서"
+    why: "이식물 확인을 제안하고, 그 이식물의 상태를 보고하고, 함께 쓸 기구를 알린 뒤, 빠진 장비를 물어요."
+    lines:
+    - {en: "Before we start, let's confirm the implant.", icon: gear, ko: "시작 전에 이식물을 확인합시다", note: 제안}
+    - {en: "It's here, and the size matches the plan.", icon: check, ko: "여기 있고 크기도 계획과 맞습니다", note: 보고}
+    - {en: "For that implant, the special instruments are open and ready.", icon: scalpel, ko: "그 이식물용 특수 기구는 개봉돼 준비됐습니다", note: 기구}
+    - {en: "With all of that here, any equipment we still need?", icon: speech, ko: "그게 다 있다면 더 필요한 장비가 있나요?", note: 질문}
+- t: "알레르기 팀 공유"
+  s:
+  - {tag: "알레르기 알림", icon: bell, why: "documented는 차트에 기록된 사실이라는 뜻이에요 — 환자 말만이 아니라 근거가 있다는 신호예요.", decoy: "a signed", dko: ["이 보호자는 라텍스 알레르기가 기록돼 있습니다.", "이 환자는 라텍스 알레르기로 입원돼 있습니다."], ans: "allergy", wr: [mask, order, form]}
+  - {tag: "물품 확인", icon: shield, why: "Please confirm + 절은 지금 쓰는 것이 맞는지 확인을 청하는 틀이에요 — 알레르기 대응은 말로 확인해야 끝나요.", decoy: "we're counting", dko: ["라텍스 없는 물품을 쓰고 있는지 세어 주세요.", "라텍스 없는 물품을 주문하고 있는지 확인해 주세요."], ans: "confirm", wr: [pretend, forget, hide]}
+  - {tag: "인지 공유", icon: bulb, why: "be aware는 '알고 있는 상태가 되라'는 상태 표현이에요 — 듣고 넘기지 말고 머릿속에 두라는 부탁이에요.", decoy: "be seated", dko: ["진행하기 전에 다 함께 서명합시다.", "식사하기 전에 다 함께 인지합시다."], ans: "aware", wr: [seated, silent, sorry]}
+  - {tag: "팀 공유", icon: speaker, why: "Everyone on the team을 주어로 — 한두 명이 아니라 전원이 알아야 한다는 범위를 맨 앞에서 정해요.", decoy: "afraid", dko: ["병동 전체가 라텍스 알레르기를 인지해야 합니다.", "팀 전체가 라텍스 알레르기를 점검해야 합니다."], ans: "aware", wr: [proud, tired, angry]}
+  - {tag: "진행 보류", icon: lock, why: "won't … until로 확인이 끝나야만 진행한다는 조건을 못 박아요 — confirmed는 누군가 말로 확인했다는 뜻이에요.", decoy: "because the supplies", dko: ["물품이 라텍스 없는 것으로 기록될 때까지 진행하지 않겠습니다.", "물품이 라텍스 없는 것으로 확인될 때까지 주문하지 않겠습니다."], ans: "confirmed", wr: [ordered, opened, counted]}
+  o:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "알레르기 팀 공유 4문장 순서"
+    why: "알레르기를 알리고, 전원이 인지하게 하고, 그에 맞춰 물품 확인을 청한 뒤, 확인 전에는 진행하지 않는다고 닫아요."
+    lines:
+    - {en: "Everyone, this patient has a documented latex allergy.", icon: bell, ko: "여러분, 이 환자는 라텍스 알레르기가 기록돼 있습니다", note: 알림}
+    - {en: "Everyone on the team should be aware of it.", icon: speaker, ko: "팀 모두가 그걸 알고 있어야 합니다", note: 인지}
+    - {en: "With that in mind, please confirm we're using latex-free supplies.", icon: shield, ko: "그걸 염두에 두고 라텍스 없는 물품인지 확인해 주세요", note: 확인}
+    - {en: "We won't proceed until the supplies are confirmed.", icon: lock, ko: "물품이 확인될 때까지 진행하지 않겠습니다", note: 원칙}

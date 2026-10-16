@@ -1,0 +1,118 @@
+마취 전 sign-in:
+  - kind: pair
+    words: [w-mark, w-site, w-consent, w-name, w-dob]
+    pairs: [[mark, the surgical site], [obtain, informed consent], [state, your name and date of birth]]
+    decoys: [the monitor]
+    why: "수술 부위는 mark the surgical site(집도의가 직접 표시), 동의는 obtain informed consent(환자가 위험과 이득을 듣고 받아들인 뒤 서명), 신원은 이름과 생년월일을 직접 말하게 해서(state) 확인해요. 환자 팔찌만 보고 넘어가지 않아요."
+  - kind: context
+    words: [w-induce]
+    word: induce
+    ko: 마취를 유도하다
+    scenes:
+      - {who: 마취과 → 팀, icon: speech, en: "Consent is signed, site is marked — anesthesia, are you ready to induce?", ok: true}
+      - {who: 마취 기록, icon: board, en: "Consent verified at sign-in; anesthesia to induce at 0745.", ok: true}
+      - {who: 불안한 환자에게, icon: me, en: "In a moment we'll induce you.", ok: false, fix: "In a moment we'll give you medicine that helps you fall asleep."}
+    why: "induce는 마취과·팀끼리 쓰는 말이에요. 환자에게 'we'll induce you'라고 하면 낯설고 차갑게 들려서, '잠들게 도와주는 약을 드릴게요'처럼 풀어서 말해요."
+절개 전 팀 정지:
+  - kind: slider
+    words: [w-attention, w-stop, w-pause]
+    cue: "Side conversations are still going on and the surgeon is reaching for the scalpel. Nothing is wrong yet — the circulating nurse starts the time-out."
+    scale: ["May I have a moment?", "Can I have everyone's attention, please?", "Everyone stop right now!"]
+    answerAt: 1
+    why: "아직 위험한 일이 벌어진 게 아니라면, 타임아웃은 정중하지만 분명하게 'Can I have everyone's attention, please?'로 시작해요. 'Stop right now'는 틀린 부위처럼 즉시 끊어야 할 때 아껴 두는 말이고, 'May I have a moment?'는 너무 약해서 소음 속에 묻혀요."
+    example: "Can I have everyone's attention, please? It's time for our time-out."
+    exKo: "다들 잠깐 주목해 주시겠어요? 타임아웃 시간입니다."
+  - kind: context
+    words: [w-timeout]
+    word: time-out
+    ko: 타임아웃
+    scenes:
+      - {who: 순환 간호사 → 팀, icon: speech, en: "Time-out, everyone — eyes and ears on me.", ok: true}
+      - {who: 수술 기록, icon: board, en: "Time-out completed at 0742, all team members present.", ok: true}
+      - {who: 마취 직전 환자에게, icon: me, en: "We're doing a time-out for the Universal Protocol verification elements.", ok: false, fix: "We're pausing for a quick safety check — your name, your surgery, and which side."}
+    why: "타임아웃은 팀과 기록에서는 정식 용어예요. 환자에게는 'Universal Protocol verification elements'처럼 제도 이름을 들이대지 말고, 무엇을 확인하는지 쉬운 말로 풀어 줘요."
+환자·부위·시술 재확인:
+  - kind: pair
+    words: [w-procedure, w-site, w-agree, w-knee, w-arthroscopy]
+    pairs: [["Procedure is", "a right knee arthroscopy"], ["The site is", "marked on the right knee"], ["Everyone", "agrees, correct?"]]
+    decoys: [in the recovery room]
+    why: "타임아웃에서는 시술 이름(a right knee arthroscopy), 부위 표시(marked on the right knee), 팀의 동의(Everyone agrees)를 한 줄씩 소리 내어 말해요. 말없이 끄덕이는 것이 아니라 각자 대답해요."
+  - kind: context
+    words: [w-agree]
+    word: agree
+    ko: 동의하다
+    scenes:
+      - {who: 순환 간호사 → 팀, icon: speech, en: "Does everyone agree this is the right knee?", ok: true}
+      - {who: 타임아웃 기록, icon: board, en: "Team agreed on patient, procedure, and site.", ok: true}
+      - {who: 마취 직전 환자에게, icon: me, en: "Do you agree that the pre-incision verification elements are accurate?", ok: false, fix: "Does that sound right to you — your right knee, today's surgery?"}
+    why: "팀끼리는 'Does everyone agree...?'가 정확한 확인 질문이에요. 환자에게는 'pre-incision verification elements' 같은 말 대신, 환자가 바로 답할 수 있는 쉬운 질문으로 바꿔요."
+팀원 역할 소개:
+  - kind: pair
+    words: [w-circulating, w-nurse, w-scrub, w-tech, w-anesthesia]
+    pairs: [[circulating nurse, brings supplies and documents], [scrub tech, hands instruments to the surgeon], [anesthesia, watches the airway and breathing]]
+    decoys: [closes the incision]
+    why: "순환 간호사는 멸균 영역 밖에서 물품을 가져오고 기록하고, 스크럽 테크는 멸균 영역에서 기구를 건네고, 마취과는 기도와 호흡을 지켜요. 절개를 닫는 것은 집도의의 일이에요."
+  - kind: context
+    words: [w-case]
+    word: case
+    ko: 수술 케이스
+    scenes:
+      - {who: 순환 간호사 → 팀, icon: speech, en: "The case is a right knee scope — does everyone know their role?", ok: true}
+      - {who: 수술 기록, icon: board, en: "Case started at 0750 after time-out.", ok: true}
+      - {who: 대기하던 환자에게, icon: me, en: "You're our first case of the day.", ok: false, fix: "You're our first surgery of the day, and we'll take good care of you."}
+    why: "case는 팀끼리 수술 한 건을 부르는 말이에요. 환자에게 'you're our first case'라고 하면 사람이 아니라 건수로 불리는 느낌이라, 'surgery'나 이름으로 말해요."
+예방적 항생제 확인:
+  - kind: slider
+    words: [w-antibiotic, w-give, w-time, w-note]
+    cue: "The surgeon asks, \"Were the antibiotics given?\" The anesthesia record shows 07:32, and incision is planned for 07:50."
+    scale: ["Probably around seven-thirty.", "I think it was seven-thirty.", "Yes — given at 07:32."]
+    answerAt: 2
+    why: "항생제는 보통 절개 전 60분 이내(vancomycin이나 fluoroquinolone 계열은 120분 이내)에 주도록 권장돼요. 그 창 안인지 판단하려면 '대충 7시 반쯤'이 아니라 기록된 정확한 시각으로 답해야 해요."
+    example: "Yes, cefazolin was given at 07:32."
+    exKo: "네, cefazolin은 07:32에 투여됐습니다."
+  - kind: context
+    words: [w-document]
+    word: document
+    ko: 기록하다
+    scenes:
+      - {who: 순환 간호사 → 집도의, icon: speech, en: "I've documented the dose and time.", ok: true}
+      - {who: 마취 기록, icon: board, en: "Documented: cefazolin 2 g IV at 0732.", ok: true}
+      - {who: 환자에게, icon: me, en: "I've documented your antibiotic administration time for medicolegal purposes.", ok: false, fix: "You've had your antibiotic to help prevent infection, and I wrote down the time."}
+    why: "'documented'는 의료진끼리와 기록에서 자연스러운 말이에요. 환자에게 'medicolegal purposes'를 말하면 법적 문제처럼 들려 불안해져요. 감염을 막는 약이라는 이유와 함께 쉽게 알려 줘요."
+종료 sign-out:
+  - kind: pair
+    words: [w-count, w-sponge, w-label, w-specimen, w-send]
+    pairs: [[count, the sponges], [label, the specimen], [send, it to pathology]]
+    decoys: [the incision]
+    why: "닫기 전에 거즈(sponge)를 세고, 검체는 라벨을 붙인 다음 병리과로 보내요. 거즈·날카로운 물품·기구 계수는 절개를 닫기 시작하기 전에 맞는지 확인하는 것이 원칙이에요."
+  - kind: context
+    words: [w-count]
+    word: count
+    ko: 계수
+    scenes:
+      - {who: 순환 간호사 → 집도의, icon: speech, en: "Counts are correct — sponges, sharps, and instruments.", ok: true}
+      - {who: 수술 기록, icon: board, en: "Final counts correct, verified by two nurses.", ok: true}
+      - {who: 수술 후 보호자에게, icon: me, en: "The counts were correct, so we closed.", ok: false, fix: "Everything went smoothly, and the surgeon will come talk with you soon."}
+    why: "count는 수술팀이 몸 안에 남은 물품이 없는지 맞춰 보는 절차의 말이에요. 보호자는 이 용어가 낯설고 '왜 세었지?' 하고 걱정할 수 있어서, 전체 경과를 쉬운 말로 알려 줘요."
+타임아웃 중 이견 제기:
+  - kind: slider
+    words: [w-speak, w-stop, w-check, w-guess]
+    cue: "During time-out the circulating nurse isn't sure the consent lists the same side the surgeon just said, but she doesn't want to guess."
+    scale: ["Quick question?", "Can we stop and check?", "Stop — this is wrong."]
+    answerAt: 1
+    why: "확실하지 않을 때는 추측하지 않고 'Can we stop and check?'처럼 멈추고 확인하자고 말해요. 불일치를 확인한 뒤라면 더 단호하게 'Stop'이라고 해도 돼요. 'Quick question?'은 너무 가벼워서 넘어가기 쉬워요."
+    example: "Can we stop and check the consent before we go on?"
+    exKo: "진행하기 전에 멈추고 동의서를 확인할 수 있을까요?"
+  - kind: swap
+    words: [w-pull, w-consent, w-confirm]
+    who: "순환 간호사 → 집도의 · 타임아웃 중"
+    icon: speech
+    before: ["", "You're wrong", " — let's pull up the consent and confirm together."]
+    options: [You're wrong, Something doesn't match here, You made a mistake]
+    answer: Something doesn't match here
+    notes:
+      Something doesn't match here: "사람이 아니라 불일치를 사실대로 말한다. 함께 확인하자는 말로 자연스럽게 이어진다."
+      You're wrong: "아직 확인하지 않은 채 상대를 틀렸다고 단정한다. 방어적으로 만들어 확인이 늦어진다."
+      You made a mistake: "탓하는 말이라 확인보다 변명이 먼저 나온다."
+    why: "안전 문제를 말할 때는 사람을 지적하지 않고 눈앞의 불일치를 사실대로 말해요. 그래야 멈추고 함께 확인하기가 쉬워요."
+    ko: 뭔가 맞지 않는 게 있어요 — 동의서를 불러와서 함께 확인해요

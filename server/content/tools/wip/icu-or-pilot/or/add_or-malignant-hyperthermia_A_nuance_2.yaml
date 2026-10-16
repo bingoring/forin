@@ -1,0 +1,87 @@
+EtCO2 감시:
+  - kind: slider
+    words: [w-etco2, w-unexplained, w-rise, w-climb, w-tell, w-anesthesia]
+    cue: "The EtCO2 has climbed a few points over several minutes. Ventilation settings haven't changed and nothing in the case explains it. You're the nurse watching the monitor."
+    scale: ["It's probably nothing — I'll look again in half an hour.", "That's an unexplained rise — I'm telling anesthesia right away.", "He's definitely in an MH crisis — start the dantrolene!"]
+    answerAt: 1
+    why: "원인을 모르는 EtCO2 상승은 MH의 이른 징후 중 하나라서 바로 마취과에 알려요. 혼자 '별것 아니겠지'로 미루지도, 마취과가 판단하기 전에 MH를 확정해 약을 달라고 하지도 않아요."
+    example: "That's an unexplained rise in EtCO2 — I'm telling anesthesia right away."
+    exKo: "원인 모를 EtCO2 상승이에요 — 지금 바로 마취과에 알릴게요."
+  - kind: context
+    words: [w-unexplained]
+    word: unexplained
+    ko: 원인을 알 수 없는
+    scenes:
+      - {who: 간호사 → 마취과, icon: speech, en: "I have an unexplained rise in EtCO2 — can you check his ventilation?", ok: true}
+      - {who: 마취 기록, icon: board, en: "Unexplained EtCO2 rise noted at 1015; anesthesia notified.", ok: true}
+      - {who: 대기실 보호자에게, icon: me, en: "Your husband has an unexplained rise in EtCO2, which can be an early MH sign.", ok: false, fix: "One of his breathing numbers has shifted a little, so the team is checking it carefully."}
+    why: "unexplained는 의료진끼리 '다른 이유가 안 보인다'는 정확한 표현이에요. 대기실 보호자에게 EtCO2와 MH를 그대로 말하면 이해하지 못한 채 겁만 커져요. 지금 무엇을 살피는지 쉬운 말로 알려 줘요."
+EtCO2 상승 조기 인지:
+  - kind: slider
+    words: [w-etco2, w-rise, w-despite, w-adequate, w-ventilation, w-pattern, w-think, w-early, w-mh, w-alert]
+    cue: "EtCO2 keeps rising even though anesthesia has increased the ventilation, and the heart rate is creeping up too."
+    scale: ["Say nothing until the temperature goes up.", "This pattern makes me think early MH — let's alert the team and get the cart ready.", "Declare MH and give dantrolene on your own."]
+    answerAt: 1
+    why: "체온은 늦게 오를 수 있어서 기다리면 늦어요. 간호사가 먼저 MH 가능성을 말하고 팀과 카트를 준비해요. 진단과 단트롤렌 투여 결정은 마취과가 해요."
+    example: "This pattern makes me think early MH — let's alert anesthesia and get the cart ready."
+    exKo: "이 양상은 초기 MH 같아요 — 마취과에 알리고 카트를 준비합시다."
+  - kind: context
+    words: [w-early]
+    word: early
+    ko: 이른
+    scenes:
+      - {who: 간호사 → 마취과, icon: speech, en: "This could be early MH — EtCO2 is rising despite good ventilation.", ok: true}
+      - {who: 마취 기록, icon: board, en: "Early MH signs noted: rising EtCO2, heart rate up.", ok: true}
+      - {who: 대기실 보호자에게, icon: me, en: "Your husband may be in early malignant hyperthermia, a dangerous reaction.", ok: false, fix: "His body is reacting to the anesthesia in a way we need to look into right away."}
+    why: "early MH는 의료진끼리 '아직 초기라 지금 움직이면 된다'는 신호로 써요. 보호자에게 병명과 '위험한 반응'을 한꺼번에 던지면 놀라기만 해요. 지금 확인 중이라는 사실만 차분히 전해요."
+masseter 근강직 관찰:
+  - kind: slider
+    words: [w-masseter, w-rigidity, w-induction, w-tight, w-jaw, w-sign, w-report, w-prep, w-cart]
+    cue: "After induction, anesthesia says the jaw is unusually tight and it's hard to open the mouth. The other vitals look normal so far."
+    scale: ["It's just a tight jaw — no need to mention it.", "Let's report it now and have the MH cart ready.", "I'm starting dantrolene myself."]
+    answerAt: 1
+    why: "마취 유도 뒤의 교근 강직은 MH의 초기 징후일 수 있어서, 다른 징후가 없어도 바로 보고하고 카트를 준비해요. 대수롭지 않게 넘기지도, 간호사가 단독으로 단트롤렌을 시작하지도 않아요."
+    example: "Let's report the tight jaw to the team and have the MH cart ready."
+    exKo: "턱이 뻣뻣한 걸 팀에 보고하고 MH 카트를 준비합시다."
+  - kind: context
+    words: [w-rigid]
+    word: rigid
+    ko: 경직된
+    scenes:
+      - {who: 간호사 → 마취과, icon: speech, en: "His jaw feels rigid — I'm reporting it now.", ok: true}
+      - {who: 마취 기록, icon: board, en: "Masseter rigid after induction; MH precautions started.", ok: true}
+      - {who: 대기실 보호자에게, icon: me, en: "His jaw is rigid, which could be the first sign of a life-threatening reaction.", ok: false, fix: "His jaw muscles are tight right now, and the team is already checking everything carefully."}
+    why: "rigid는 근육이 굳은 상태를 정확히 말하는 임상 표현이에요. 보호자에게 '생명을 위협하는 반응의 첫 징후'라고 하면 아직 확인되지 않은 최악을 그대로 전하게 돼요. 지금 보이는 상태와 팀이 살피고 있다는 점을 말해요."
+빈맥·부정맥 감시:
+  - kind: slider
+    words: [w-heart, w-rate, w-jump, w-ectopy, w-etco2, w-correlate]
+    cue: "On the monitor, the heart rate has gone up about thirty beats in a few minutes, with extra ectopic beats. EtCO2 is up too."
+    scale: ["His heart rate is a bit up.", "His rate jumped about thirty in a few minutes, with ectopy, and EtCO2 is climbing too.", "His heart is acting up — it's bad!"]
+    answerAt: 1
+    why: "마취과가 MH 가능성을 따지려면 숫자, 변한 속도, 함께 변한 다른 수치가 필요해요. '조금 올랐다'는 정보가 모자라고 '나쁘다'는 감정만 전해요."
+    example: "His rate jumped about thirty in a few minutes, and EtCO2 is climbing too."
+    exKo: "몇 분 새 맥박이 30쯤 뛰었고 EtCO2도 오르고 있어요."
+  - kind: context
+    words: [w-correlate]
+    word: correlate
+    ko: 연관짓다
+    scenes:
+      - {who: 간호사 → 마취과, icon: speech, en: "Let's correlate the rhythm with EtCO2 and temp.", ok: true}
+      - {who: 마취 기록, icon: board, en: "Rhythm changes correlate with rising EtCO2 per anesthesia.", ok: true}
+      - {who: 대기실 보호자에게, icon: me, en: "His rhythm changes correlate with a possible MH crisis.", ok: false, fix: "His heartbeat changes line up with the other numbers we're watching, so we're keeping a very close eye on him."}
+    why: "correlate는 두 수치가 함께 움직이는지 맞춰 볼 때 의료진이 쓰는 말이에요. 보호자에게 'MH 위기와 correlate한다'고 하면 아직 판단이 끝나지 않은 말이 확정처럼 들려요. 다른 수치들과 함께 지켜보고 있다는 사실만 전해요."
+대사성 산증 확인:
+  - kind: pair
+    words: [w-ph, w-drop, w-fit, w-mh, w-finding, w-add, w-crisis, w-assessment]
+    pairs: [["The pH is", "dropping"], ["This finding", "fits MH"], ["Add this to", "the crisis assessment"]]
+    decoys: ["whether the"]
+    why: "pH는 dropping(떨어지는 중)이고, 체온·EtCO2와 함께 보면 이 소견은 MH에 fits(부합)해요. 확인한 소견은 위기 사정(assessment)에 add해서 팀이 같은 그림을 보게 해요."
+  - kind: context
+    words: [w-acidosis]
+    word: acidosis
+    ko: 산증
+    scenes:
+      - {who: 간호사 → 마취과, icon: speech, en: "Mixed acidosis on the gas — that fits with MH.", ok: true}
+      - {who: 혈액가스 기록, icon: board, en: "ABG: mixed acidosis, pH down, potassium up.", ok: true}
+      - {who: 대기실 보호자에게, icon: me, en: "He has mixed acidosis, so his blood is turning dangerously acidic.", ok: false, fix: "His blood has become more acidic than it should be, and we're treating it right now."}
+    why: "acidosis는 혈액가스를 읽는 의료진에게는 한마디로 통하는 말이에요. 보호자에게는 'mixed acidosis'를 풀어서, 지금 무엇이 일어났고 무엇을 하고 있는지로 말해요."

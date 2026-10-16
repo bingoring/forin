@@ -1,0 +1,62 @@
+# 빈칸 패치(B 목록 C장): s, i, answer(빈칸 이동이면 새 정답), opts = 선택지 네 개(정답 포함). 정답 위치는 스크립트가 돌려 놓는다.
+blanks:
+  - {s: 0, i: 0, opts: [confirm, print, file, scan]}
+  - {s: 0, i: 3, answer: sign-in, opts: [sign-in, sign-out, time-out, consent]}
+  - {s: 0, i: 4, answer: together, opts: [together, quickly, again, later]}
+  - {s: 1, i: 3, opts: [leave, discharge, begin, close]}
+  - {s: 1, i: 4, opts: [seated, stopped, gowned, leaving]}
+  - {s: 2, i: 1, answer: arthroscopy, opts: [arthroscopy, arthroplasty, arthrocentesis, osteotomy]}
+  - {s: 2, i: 4, opts: [agrees, doubts, guesses, assumes]}
+  - {s: 3, i: 0, opts: [circulating, scrub, charge, recovery]}
+  - {s: 3, i: 1, answer: role, opts: [role, schedule, badge, shift]}
+  - {s: 3, i: 2, opts: [set, done, gowned, paged]}
+  - {s: 3, i: 3, opts: [ready, scrubbed, paged, gowned]}
+  - {s: 3, i: 4, opts: [role, badge, count, tray]}
+  - {s: 4, i: 2, opts: [documented, scheduled, requested, ordered]}
+  - {s: 4, i: 4, answer: exact, opts: [exact, usual, rough, planned]}
+  - {s: 5, i: 1, opts: [labeled, frozen, weighed, bagged]}
+  - {s: 5, i: 2, opts: [recovery, transport, pathology, radiology]}
+  - {s: 5, i: 4, opts: [correctly, partly, twice, neatly]}
+  - {s: 6, i: 1, opts: [consent, schedule, roster, images]}
+  - {s: 6, i: 2, opts: [resolved, reported, recorded, posted]}
+  - {s: 6, i: 4, opts: [resolve, schedule, document, report]}
+  - {s: 7, i: 0, opts: [verify, announce, document, mention]}
+  - {s: 7, i: 1, opts: [plan, schedule, roster, team]}
+  - {s: 7, i: 2, opts: [leave, drape, close, transfer]}
+  - {s: 8, i: 0, opts: [anticipate, report, measure, record]}
+  - {s: 8, i: 3, opts: [ready, stored, counted, labeled]}
+  - {s: 9, i: 1, opts: [open, wrapped, sorted, stacked]}
+  - {s: 9, i: 2, answer: bring, opts: [bring, send, check, lock]}
+  - {s: 9, i: 4, opts: [check, note, announce, document]}
+  - {s: 10, i: 1, opts: [confirm, announce, record, mention]}
+  - {s: 10, i: 2, opts: [seated, silent, scrubbed, aware]}
+  - {s: 10, i: 3, answer: team, opts: [team, floor, unit, list]}
+  - {s: 11, i: 0, answer: redosing, opts: [redosing, extubation, discharge, suturing]}
+  - {s: 11, i: 1, opts: [set, stop, pause, borrow]}
+  - {s: 11, i: 3, opts: [document, change, shorten, round]}
+  - {s: 11, i: 4, opts: [plan, order, chart, label]}
+  - {s: 12, i: 0, opts: [pause, move, rush, chat]}
+  - {s: 12, i: 1, opts: [participate, watch, wait, disagree]}
+  - {s: 14, i: 0, opts: [clarify, change, guess, copy]}
+  - {s: 14, i: 1, answer: frozen, opts: [frozen, culture, storage, cytology]}
+  - {s: 14, i: 2, opts: [carefully, quickly, twice, together]}
+  - {s: 14, i: 3, opts: [specimen, staffing, imaging, transport]}
+  - {s: 14, i: 4, opts: [handle, count, weigh, bag]}
+  - {s: 15, i: 1, answer: consent, opts: [consent, schedule, roster, films]}
+  - {s: 15, i: 2, opts: [fully, partly, mostly, briefly]}
+  - {s: 15, i: 3, opts: [consent, schedule, roster, imaging]}
+  - {s: 15, i: 4, opts: [proceed, leave, sign, chart]}
+  - {s: 16, i: 2, opts: [confirm, note, count, poll]}
+  - {s: 16, i: 3, opts: [quickly, privately, silently, separately]}
+  - {s: 16, i: 4, opts: [still, also, just, even]}
+  - {s: 17, i: 0, opts: [concern, complaint, compliment, preference]}
+  - {s: 17, i: 2, opts: [pause, sit, wait, move]}
+  - {s: 17, i: 3, opts: [spoke, stood, backed, showed]}
+  - {s: 18, i: 0, opts: [wrong, sterile, prepped, marked]}
+  - {s: 18, i: 1, answer: re-confirm, opts: [re-confirm, re-schedule, re-order, re-label]}
+  - {s: 19, i: 0, opts: [prophylactic, therapeutic, discharge, outpatient]}
+  - {s: 19, i: 3, opts: [antibiotics, fluids, consents, instruments]}
+  - {s: 20, i: 0, opts: [vitals, labs, meds, orders]}
+  - {s: 20, i: 1, opts: [stabilize, discuss, document, reposition]}
+  - {s: 20, i: 3, opts: [vitals, labs, meds, chart]}
+  - {s: 20, i: 4, answer: stabilize, opts: [stabilize, organize, restock, relocate]}

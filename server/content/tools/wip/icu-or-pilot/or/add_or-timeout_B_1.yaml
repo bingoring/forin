@@ -1,0 +1,102 @@
+- t: "마취 전 sign-in"
+  s:
+  - {tag: "신원 확인", icon: me, why: "문장 끝 please가 지시를 정중한 부탁으로 바꿔요 — 팀원에게 확인을 청할 때의 어조예요.", decoy: "for the team", dko: ["보호자분 이름과 생년월일 확인 부탁드립니다.", "집도의 선생님 이름과 생년월일 확인 부탁드립니다."], ans: "confirm", wr: [cancel, delay, skip]}
+  - {tag: "부위·동의", icon: pushpin, why: "marked, signed 같은 과거분사로 '지금 확인된 상태'를 보고해요 — 누가 했는지보다 상태가 핵심이에요.", decoy: "and gown is changed", dko: ["수술 부위는 소독됐고 동의서는 서명됐습니다.", "수술 부위는 표시됐고 동의서는 복사됐습니다."], ans: "signed", wr: [lost, torn, hidden]}
+  - {tag: "알레르기", icon: bell, why: "Any known …?은 팀 전체에 던지는 열린 질문이에요 — 아는 사람이 있으면 말하라는 신호예요.", decoy: "after the pause", dko: ["마취 유도 전에 새로 생긴 알레르기가 있나요?", "입실 전에 알려진 알레르기가 있나요?"], ans: "induce", wr: [discharge, extubate, transfer]}
+  - {tag: "소리 내어 읽기", icon: speaker, why: "out loud는 눈으로만 보지 않고 모두가 듣게 하겠다는 뜻이에요 — 못 들은 사람이 없게 하는 방법이에요.", decoy: "to myself", dko: ["sign-out 목록의 항목을 하나씩 소리 내어 읽을게요.", "sign-in 목록의 항목을 하나씩 팀에게 나눠 줄게요."], ans: "read", wr: [skip, erase, hide]}
+  - {tag: "함께 확인", icon: handshake2, why: "Let's는 지시가 아닌 제안이고, together가 확인을 팀 전체의 일로 만들어요.", decoy: "this alone", dko: ["회의 전에 이걸 함께 확인해요.", "시작 전에 이걸 함께 정리해요."], ans: "confirm", wr: [cancel, forget, erase]}
+  o:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "마취 전 sign-in 4문장 순서"
+    why: "먼저 팀을 모아 시작을 알리고, 읽는 방식을 밝힌 뒤 확인을 받고, 끝났음을 알려 마무리해요."
+    lines:
+    - {en: "Everyone, let's do our sign-in before we induce.", icon: compass, ko: "마취 전에 sign-in을 합시다", note: 시작}
+    - {en: "I'll read each item out loud.", icon: speaker, ko: "항목을 소리 내어 읽을게요", note: 방식}
+    - {en: "Please confirm each one as I read it.", icon: check, ko: "읽는 대로 하나씩 확인해 주세요", note: 확인}
+    - {en: "Thanks, everyone — that's the sign-in done.", icon: star, ko: "감사합니다, sign-in 끝났습니다", note: 마무리}
+- t: "절개 전 팀 정지"
+  s:
+  - {tag: "정지 요청", icon: siren, why: "stop and do는 '멈추고 → 타임아웃을 한다'는 두 동작을 한 문장에 담아요.", decoy: "and do our rounds", dko: ["지금 멈추고 회의를 합시다.", "지금 쉬고 타임아웃을 합시다."], ans: "time-out", wr: [count, handoff, scrub]}
+  - {tag: "주목 요청", icon: speaker, why: "Can I have …?는 명령보다 부드럽게 말문을 여는 정중한 요청이라 팀 분위기를 해치지 않아요.", decoy: "your signature", dko: ["다들 잠깐 모여 주시겠어요?", "선생님들 잠깐 주목해 주시겠어요?"], ans: "attention", wr: [signature, badge, initials]}
+  - {tag: "진행 보류", icon: lock, why: "won't … until은 확인이 끝나야만 시작한다는 조건을 못 박아요 — 한 사람의 확인으로는 풀리지 않아요.", decoy: "because we've all", dko: ["다 함께 준비할 때까지 시작하지 않겠습니다.", "마취팀이 확인할 때까지 시작하지 않겠습니다."], ans: "until", wr: [because, although, after]}
+  - {tag: "잠시 멈춤", icon: compass, why: "pause for ~로 멈추는 목적을 바로 붙여요 — 그냥 멈추라는 말보다 왜 멈추는지 분명해요.", decoy: "for our lunch", dko: ["시작하기 전에 인계를 위해 잠시 멈춥시다.", "퇴근하기 전에 타임아웃을 위해 잠시 멈춥시다."], ans: "begin", wr: [leave, discharge, eat]}
+  - {tag: "전원 정지", icon: shield, why: "need + 사람 + 과거분사(stopped)는 '멈춘 상태여야 한다'는 요구예요 — 직접 명령보다 조건을 말하는 방식이에요.", decoy: "everyone seated", dko: ["이 타임아웃을 시작하기 전에 모두 모여야 합니다.", "이 타임아웃을 시작하기 전에 마취팀이 멈춰야 합니다."], ans: "stopped", wr: [seated, sleeping, leaving]}
+  o:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "절개 전 팀 정지 4문장 순서"
+    why: "주목을 끌고, 곧 절개임을 알린 뒤, 멈추자고 청하고, 확인이 끝나야 시작한다는 원칙으로 닫아요."
+    lines:
+    - {en: "Can I have everyone's attention, please?", icon: speaker, ko: "다들 잠깐 주목해 주시겠어요?", note: 주목}
+    - {en: "We're about to make the first incision.", icon: scalpel, ko: "곧 첫 절개를 합니다", note: 알림}
+    - {en: "So let's stop and do our time-out.", icon: siren, ko: "그러니 멈추고 타임아웃을 합시다", note: 정지}
+    - {en: "Nobody starts until all of that is confirmed.", icon: lock, ko: "그게 다 확인될 때까지 아무도 시작하지 않아요", note: 원칙}
+- t: "환자·부위·시술 재확인"
+  s:
+  - {tag: "신원 확인", icon: me, why: "이름과 생년월일 두 가지로 확인했다고 보고하는 틀이에요 — 병실·침상 번호는 환자 식별자가 아니라서 들어가지 않아요.", decoy: ", bed number confirmed", dko: ["환자는 John Miller이고, 생년월일은 기록됐습니다.", "보호자는 John Miller이고, 생년월일은 확인됐습니다."], ans: "confirmed", wr: [pending, missing, unknown]}
+  - {tag: "시술 확인", icon: scalpel, why: "Procedure is …로 시술명·부위·방식을 한 줄에 말해요 — 좌우(right)를 빼지 않고 소리 내어 말하는 것이 타임아웃의 핵심이에요.", decoy: "a sterile", dko: ["시술은 오른쪽 무릎 관절경 수술 첫 건입니다.", "시술은 오늘 오후 관절경 수술입니다."], ans: "Procedure", wr: [Patient, Surgeon, Specimen]}
+  - {tag: "부위 확인", icon: pushpin, why: "문장 끝 everyone agree?는 질문형 꼬리라서 말없이 넘어가지 않고 소리 내어 동의를 받게 해요.", decoy: "— anyone missing", dko: ["부위는 오른쪽 무릎에 표시돼 있습니다 — 집도의도 동의하시나요?", "부위는 오른쪽 무릎에 표시돼 있습니다 — 모두 보이시나요?"], ans: "agree", wr: [speak, stop, wait]}
+  - {tag: "함께 확인", icon: handshake2, why: "procedure and the site처럼 확인할 대상을 소리 내어 이름 부르면, 막연한 '다 확인했죠?'보다 빠뜨림이 줄어요.", decoy: "the paperwork", dko: ["시술과 부위를 함께 설명합시다.", "시술과 부위를 집도의와 확인합시다."], ans: "procedure", wr: [specimen, antibiotic, instrument]}
+  - {tag: "최종 동의", icon: check, why: "문장 끝 correct?는 Yes/No로 답하게 만드는 확인 꼬리예요 — 침묵이 아니라 대답을 받아야 해요.", decoy: ", okay", dko: ["마취과는 이게 오른쪽 무릎이라는 데 동의하시죠, 맞나요?", "모두 이게 오른쪽 무릎이라는 걸 들으셨죠, 맞나요?"], ans: "agrees", wr: [doubts, guesses, forgets]}
+  o:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "환자·부위·시술 재확인 4문장 순서"
+    why: "환자를 먼저 확인하고, 그 환자의 시술을 말하고, 그 무릎의 표시를 보고한 뒤, 전원의 동의를 받아요."
+    lines:
+    - {en: "Patient is John Miller, date of birth confirmed.", icon: me, ko: "환자는 John Miller, 생년월일 확인됐습니다", note: 환자}
+    - {en: "His procedure is a right knee arthroscopy.", icon: scalpel, ko: "그의 시술은 오른쪽 무릎 관절경입니다", note: 시술}
+    - {en: "The site is marked on that knee.", icon: pushpin, ko: "그 무릎에 부위가 표시돼 있습니다", note: 부위}
+    - {en: "Does everyone agree with all of that?", icon: check, ko: "이 모든 것에 모두 동의하시나요?", note: 동의}
+- t: "팀원 역할 소개"
+  s:
+  - {tag: "자기소개", icon: me, why: "I'm + 직책 + for this case — 이름보다 역할을 먼저 밝히는 것이 수술실 소개의 틀이에요.", decoy: "for this shift", dko: ["저는 이번 케이스의 스크럽 간호사입니다.", "저는 이번 병동의 순환 간호사입니다."], ans: "circulating", wr: [sterile, sleeping, waiting]}
+  - {tag: "역할 확인", icon: board, why: "make sure + 절은 '직접 확인하자'는 부드러운 제안이에요 — 역할이 모호하면 지연과 실수가 생겨요.", decoy: "everyone brings", dko: ["모두가 자기 장비를 알도록 확인합시다.", "모두가 자기 자리를 알도록 확인합시다."], ans: "knows", wr: [forgets, hides, leaves]}
+  - {tag: "준비 확인", icon: check, why: "역할을 하나씩 부르고 all set?으로 묶어요 — 부르지 않으면 대답하지 않는 사람이 생겨요.", decoy: ", and student", dko: ["스크럽 테크, 마취과, 간호사 — 다 준비되셨나요?", "스크럽 테크, 마취과, 집도의 — 다 도착하셨나요?"], ans: "set", wr: [gone, late, tired]}
+  - {tag: "준비 보고", icon: check, why: "both ready처럼 대상을 둘로 짚어 보고해요 — 누가 준비됐는지 빠뜨리지 않고 알려요.", decoy: "are both here", dko: ["집도의와 마취팀 모두 도착했습니다.", "집도의와 간호팀 모두 준비됐습니다."], ans: "ready", wr: [absent, missing, sleepy]}
+  - {tag: "역할 확인", icon: handshake2, why: "I'll은 내가 맡겠다는 선언이고, before 절이 확인이 끝나야 시작한다는 순서를 못 박아요.", decoy: "each badge", dko: ["케이스를 시작하기 전에 각자의 장비를 확인할게요.", "케이스를 시작하기 전에 각자의 역할을 설명할게요."], ans: "role", wr: [badge, apron, locker]}
+  o:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "팀원 역할 소개 4문장 순서"
+    why: "소개를 제안하고, 자신부터 소개하고, 다른 역할을 차례로 청하고, 모두가 분명해졌음을 확인하며 닫아요."
+    lines:
+    - {en: "Let's go around and introduce ourselves and our roles.", icon: speech, ko: "돌아가며 이름과 역할을 소개합시다", note: 제안}
+    - {en: "I'll start — I'm the circulating nurse.", icon: me, ko: "제가 먼저 — 저는 순환 간호사입니다", note: 소개}
+    - {en: "Scrub tech, anesthesia, surgeon — please go next.", icon: board, ko: "스크럽 테크, 마취과, 집도의 — 다음 분 부탁드려요", note: 차례}
+    - {en: "Thank you — everyone's role is clear now.", icon: star, ko: "감사합니다 — 모두의 역할이 분명해졌네요", note: 마무리}
+- t: "예방적 항생제 확인"
+  s:
+  - {tag: "투여 보고", icon: pill, why: "were given + at the time noted — 약 이름보다 '언제'를 짚어 보고하고, 끝의 yes로 질문에 직답을 줘요.", decoy: "were ordered", dko: ["항생제는 예정된 시각에 투여됐습니다, 네.", "항생제는 기록된 병실에서 투여됐습니다, 네."], ans: "given", wr: [ordered, stored, labeled]}
+  - {tag: "시간 확인", icon: calendar, why: "within the … window는 정확한 분 대신 '허용 범위 안'을 말하는 표현이에요 — 약마다 권장 시점이 달라서 범위로 확인해요.", decoy: "before transport", dko: ["그건 마취 전 권장 시간 창 안이었습니다.", "그건 도착 전 권장 시간 창 안이었습니다."], ans: "recommended", wr: [previous, closing, visiting]}
+  - {tag: "기록 보고", icon: pencil, why: "I've documented는 현재완료라서 '이미 기록해 두었다'는 결과를 알려요 — 용량과 시각이 있어야 재투여 시점을 계산할 수 있어요.", decoy: "the label", dko: ["투여량과 시각을 보고했습니다.", "투여량과 위치를 기록했습니다."], ans: "documented", wr: [forgotten, ignored, lost]}
+  - {tag: "투여 확인", icon: check, why: "뒤에 절(the antibiotics were given on time)을 붙여 무엇을 확인하는지 통째로 말해요 — 막연한 확인보다 분명해요.", decoy: "were counted", dko: ["항생제가 제때 투여됐는지 예측합시다.", "항생제가 제때 도착했는지 확인합시다."], ans: "given", wr: [requested, refused, mixed]}
+  - {tag: "기록 약속", icon: pencil, why: "exact는 '대략'을 막는 한 단어예요 — 재투여와 다음 팀의 판단이 이 시각에 기대요.", decoy: "on the door", dko: ["정확한 시각을 화이트보드에 적어 둘게요.", "정확한 이름을 차트에 적어 둘게요."], ans: "write", wr: [erase, skip, lose]}
+  o:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "예방적 항생제 확인 4문장 순서"
+    why: "확인을 먼저 청하고, 투여 사실을 답하고, 그 시각이 범위 안임을 짚은 뒤, 기록으로 마무리해요."
+    lines:
+    - {en: "Let's confirm the antibiotics were given on time.", icon: check, ko: "항생제가 제때 투여됐는지 확인합시다", note: 확인}
+    - {en: "Antibiotics were given at the time noted, yes.", icon: pill, ko: "기록된 시각에 투여됐습니다, 네", note: 답변}
+    - {en: "That time was within the recommended window.", icon: calendar, ko: "그 시각은 권장 시간 창 안이었습니다", note: 범위}
+    - {en: "Good, I'll document the dose and time now.", icon: pencil, ko: "좋아요, 지금 투여량과 시각을 기록할게요", note: 기록}
+- t: "종료 sign-out"
+  s:
+  - {tag: "계수 보고", icon: check, why: "counts가 복수인 것은 기구와 거즈의 계수가 따로 있기 때문이에요 — 둘 다 맞아야 '맞다'고 말할 수 있어요.", decoy: "are printed", dko: ["기구와 바늘 계수가 맞습니다.", "기구와 거즈 계수가 적혔습니다."], ans: "correct", wr: [pending, missing, unclear]}
+  - {tag: "검체 보고", icon: lab, why: "labeled와 ready를 and로 묶어요 — 라벨이 붙어야 보낼 수 있다는 순서가 문장 안에 있어요.", decoy: "and ready to open", dko: ["검체는 포장이 됐고 보낼 준비가 됐습니다.", "검체는 라벨이 붙었고 받을 준비가 됐습니다."], ans: "labeled", wr: [lost, spilled, expired]}
+  - {tag: "우려 확인", icon: gear, why: "Any … concerns?는 열린 질문이라 '문제없죠?' 같은 닫힌 질문보다 불편한 말을 꺼내기 쉬워요.", decoy: "to bill", dko: ["회복실을 위해 다뤄야 할 약 우려가 있나요?", "수술실을 위해 다뤄야 할 장비 우려가 있나요?"], ans: "recovery", wr: [lunch, billing, parking]}
+  - {tag: "재확인", icon: redo, why: "one more time은 이미 센 것을 다시 센다는 뜻이에요 — 닫기 전이 마지막 기회라서 반복이 곧 안전이에요.", decoy: "each morning", dko: ["봉합 전에 계수를 한 번 더 인계합시다.", "봉합 전에 계수를 두 번 더 확인합시다."], ans: "close", wr: [leave, clean, transfer]}
+  - {tag: "기록 약속", icon: pencil, why: "that 절로 기록할 내용을 통째로 담아요 — correctly는 라벨의 정확성까지 확인했다는 뜻을 더해요.", decoy: "is stored correctly", dko: ["검체가 올바르게 보관됐다고 기록할게요.", "검체가 올바르게 라벨됐다고 보고할게요."], ans: "correctly", wr: [partly, slowly, quietly]}
+  o:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "종료 sign-out 4문장 순서"
+    why: "닫기 전 계수를 확인하자고 하고, 결과를 보고한 뒤, 검체 상태를 알리고, 회복실을 위한 우려를 물어요."
+    lines:
+    - {en: "Before we close, let's confirm the counts.", icon: redo, ko: "닫기 전에 계수를 확인합시다", note: 제안}
+    - {en: "Instrument and sponge counts are correct.", icon: check, ko: "기구와 거즈 계수가 맞습니다", note: 계수}
+    - {en: "That's the counts — the specimen is labeled and ready to send.", icon: lab, ko: "계수는 됐고, 검체는 라벨이 붙어 보낼 준비가 됐습니다", note: 검체}
+    - {en: "With all of that done, any equipment concerns for recovery?", icon: gear, ko: "다 끝났으니 회복실을 위한 장비 우려가 있나요?", note: 우려}

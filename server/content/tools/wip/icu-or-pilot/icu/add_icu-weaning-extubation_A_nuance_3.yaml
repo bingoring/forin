@@ -1,0 +1,129 @@
+- situation: "섬망·불안으로 인한 이탈 지연"
+  items:
+    - kind: pair
+      words: [w-noise, w-routine, w-family]
+      pairs: [[reduce, noise], [stick to, a day-night routine], [bring, family to the bedside]]
+      decoys: [with the nurse]
+      why: "섬망을 줄이는 약 없는 방법의 대표 세 가지예요. 소음은 reduce, 낮에는 밝게 밤에는 어둡게 하는 일과는 stick to, 익숙한 얼굴인 가족은 bring family to the bedside로 말해요."
+    - kind: context
+      words: [w-calm]
+      word: calm
+      ko: 차분한
+      scenes:
+        - {who: 차트 기록, icon: board, en: "Pt calm, reorients to name and place.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Let's keep things calm and quiet tonight.", ok: true}
+        - {who: 섬망 환자에게, icon: me, en: "You need to calm down, sir.", ok: false, fix: "You're safe, and I'm right here with you."}
+      why: "섬망이 있는 환자에게 calm down이라고 다그치면 오히려 더 불안해해요. 동료에게 환경을 calm하게 유지하자고 말하는 것은 괜찮지만, 환자에게는 안전하다는 말과 곁에 있다는 말로 안심시켜요."
+- situation: "발관 후 상기도 부종 stridor 위기"
+  items:
+    - kind: slider
+      words: [w-obstruct, w-stridor]
+      cue: "RN: \"The stridor was loud a minute ago. Now he's quiet, and I can barely see his chest move.\""
+      scale: [narrowing, nearly blocked, completely blocked]
+      answerAt: 2
+      why: "stridor가 점점 커지다가 갑자기 조용해지면 좋아진 것이 아니라 공기가 거의 지나가지 못한다는 신호일 수 있어요. 가슴 움직임까지 거의 없으면 완전 폐색을 의심하고 바로 도움을 불러요."
+      example: "If he obstructs completely, we reintubate."
+      exKo: "완전히 막히면 재삽관할게요."
+    - kind: context
+      words: [w-stridor]
+      word: stridor
+      ko: 협착음
+      scenes:
+        - {who: 의사 호출, icon: stetho, en: "He has new inspiratory stridor and he's tiring.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "His stridor is louder — bring the cart.", ok: true}
+        - {who: 가족에게, icon: me, en: "He has inspiratory stridor from laryngeal edema.", ok: false, fix: "He's making a high whistling sound when he breathes in because his throat is swollen, and we're treating it right now."}
+      why: "inspiratory stridor, laryngeal edema는 의료진끼리의 정확한 말이에요. 가족에게는 무슨 소리인지, 왜 나는지, 지금 무엇을 하는지를 쉬운 말로 풀어 말해요."
+- situation: "발관 실패 응급 재삽관"
+  items:
+    - kind: slider
+      words: [w-stat]
+      cue: "Nurse on the phone: \"He's dusky, and the bag isn't moving air. Come to bed 6 ...\""
+      scale: [when you can, soon, stat]
+      answerAt: 2
+      why: "stat은 지금 당장이라는 뜻이에요. soon이나 when you can은 몇 분 기다려도 된다는 신호로 들려서, 기도 응급에서는 위급함이 전달되지 않아요."
+      example: "Call the physician to the bedside stat."
+      exKo: "의사를 즉시 침상으로 불러 주세요."
+    - kind: swap
+      words: [w-physician, w-reintubate]
+      who: "가족에게 · 응급 상황 알림"
+      icon: me
+      before: ["The ", "physician", " is coming to put the breathing tube back in."]
+      options: [physician, doctor, attending of record]
+      answer: doctor
+      notes: {physician: "의료진끼리, 호출이나 서류에서 쓰는 격식 있는 말이에요. 가족에게는 딱딱하게 들린다.", doctor: "가족에게 가장 자연스럽고 따뜻해요. 누가 오는지 분명히 전해진다.", attending of record: "행정 서류용 호칭이라 가족은 누구를 가리키는지 모른다."}
+      why: "응급 상황일수록 가족에게는 짧고 쉬운 말이 필요해요. 의료진끼리는 physician, 가족에게는 doctor가 자연스러워요."
+      ko: 의사 선생님이 곧 호흡관을 다시 넣으러 오고 있어요
+- situation: "발관 직후 호흡부전 급변"
+  items:
+    - kind: slider
+      words: [w-deteriorate, w-window]
+      cue: "Right after extubation: SpO2 84 and falling, exhausted, using every muscle to breathe."
+      scale: [mention it at rounds, call the physician, call for help stat]
+      answerAt: 2
+      why: "발관 직후 호흡부전은 기회의 창이 짧아요. 이런 모습이면 라운딩 때 말할 일이 아니라 즉시 도움을 요청할 일이에요. 판단이 늦어지면 재삽관도 더 위험해져요."
+      example: "We won't lose the window — call me the moment he looks worse."
+      exKo: "기회를 놓치지 않을게요, 상태가 나빠지는 순간 저를 불러 주세요."
+    - kind: context
+      words: [w-deteriorate]
+      word: deteriorate
+      ko: 악화되다
+      scenes:
+        - {who: 의사 보고, icon: stetho, en: "If he keeps deteriorating, we reintubate.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "He's deteriorating — SpO2 is 86 and falling.", ok: true}
+        - {who: 가족에게, icon: me, en: "He's deteriorating and may need to be reintubated.", ok: false, fix: "He's getting worse, and we may need to put the breathing tube back in."}
+      why: "deteriorate는 의료진끼리는 정확하고 짧은 임상어예요. 가족에게는 차갑게 들리고 reintubated도 낯서니, getting worse와 쉬운 설명으로 바꿔 말해요."
+- situation: "반복 SBT 실패 장기 이탈"
+  items:
+    - kind: slider
+      words: [w-longterm]
+      cue: "Team: \"He's failed three trials, so now we're planning in weeks, not days.\""
+      scale: [short-term, longer-term, permanent]
+      answerAt: 1
+      why: "며칠이 아니라 몇 주 단위로 계획하는 것은 longer-term이에요. permanent는 영구적이라는 뜻이라 기관절개를 하더라도 이탈을 포기한다는 뜻은 아니므로 사실보다 무거워요."
+      example: "We need a longer-term weaning plan."
+      exKo: "장기적인 이탈 계획이 필요해요."
+    - kind: context
+      words: [w-plan]
+      word: plan
+      ko: 계획
+      scenes:
+        - {who: 의사 회진, icon: stetho, en: "We need a longer-term weaning plan.", ok: true}
+        - {who: 다학제 회의, icon: handshake2, en: "Let's reset the plan and the goals.", ok: true}
+        - {who: 가족에게, icon: me, en: "Per protocol, he failed SBT x3, so the plan is to transition to a trach.", ok: false, fix: "He hasn't been able to manage the breathing tests yet, so we're making a longer plan."}
+      why: "SBT x3, transition to a trach 같은 표기는 의료진끼리 기록하고 회의할 때 쓰는 말이에요. 가족에게는 몇 번 해 봤는지와 앞으로 무엇을 하는지를 문장으로 풀어 말해요."
+- situation: "이탈 중 심근허혈 유발"
+  items:
+    - kind: pair
+      words: [w-twelvelead, w-notify, w-physician, w-rest, w-heart]
+      pairs: [[obtain, a 12-lead], [notify, the physician], [rest, his heart]]
+      decoys: [weaning]
+      why: "이탈 중 허혈이 의심되면 12유도 심전도를 obtain하고, 의사에게 notify하고, 심장을 rest시키려고 다시 완전 지지로 돌려요. 동사가 목적어와 짝을 이루는 대표 표현이에요."
+    - kind: context
+      words: [w-ischemia]
+      word: ischemia
+      ko: 허혈
+      scenes:
+        - {who: 의사에게, icon: stetho, en: "ST depressions suggest ischemia — let's stop the wean.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "I'm worried about ischemia, so I'm getting a 12-lead.", ok: true}
+        - {who: 가족에게, icon: me, en: "He has myocardial ischemia secondary to the weaning stress.", ok: false, fix: "His heart isn't getting enough blood flow while he works hard to breathe, so we've stopped the test."}
+      why: "myocardial ischemia, secondary to는 의료진끼리의 정확한 말이에요. 가족에게는 심장에 피가 모자랐다는 뜻과 그래서 무엇을 했는지를 쉬운 말로 설명해요."
+- situation: "발관 후 흡인 기도폐색 위기"
+  items:
+    - kind: slider
+      words: [w-aggressively]
+      cue: "Nurse: \"He's gurgling, and there's vomit in his mouth and airway.\""
+      scale: [gently, firmly, aggressively]
+      answerAt: 2
+      why: "구토물이 기도로 들어가 막히려 할 때는 머뭇거리지 않고 aggressively 흡인해요. 평소의 일상적인 석션은 조심스럽게 해야 하지만, 이런 응급에서는 속도가 먼저예요."
+      example: "Suction him aggressively to clear the material now."
+      exKo: "지금 적극적으로 흡인해서 내용물을 없애 주세요."
+    - kind: swap
+      words: [w-aspirated, w-suction]
+      who: "가족에게 · 응급 처치 설명"
+      icon: me
+      before: ["I'm suctioning because he ", "aspirated", " and we need to clear it."]
+      options: [aspirated, got stomach contents in his airway, sustained a gastric aspiration event]
+      answer: got stomach contents in his airway
+      notes: {aspirated: "의료진 용어예요. 가족은 무슨 일이 일어났는지 모른다.", "got stomach contents in his airway": "무엇이 어디로 들어갔는지 쉬운 말로 알려 줘요. 왜 흡인하는지도 바로 이해된다.", sustained a gastric aspiration event: "차트나 보고서에 쓰는 말이라 가족에게는 사무적이고 어려워요."}
+      why: "응급 중에도 가족에게는 무슨 일인지 짧고 쉬운 말로 알려 줘요. aspirated는 의료진끼리의 말이에요."
+      ko: 위 내용물이 기도로 들어가서 흡인하며 없애는 중이에요

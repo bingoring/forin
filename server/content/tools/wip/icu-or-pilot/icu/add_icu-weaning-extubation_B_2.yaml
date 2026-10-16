@@ -1,0 +1,73 @@
+# 상황 3~6
+3:
+  s:
+    - {tag: "커프 점검", icon: gear, why: "to check for로 목적을 함께 말하면 커프를 빼는 행동이 왜 필요한지 곁에 있는 사람도 바로 알아요.", decoy: "inside the room", d: ["입 주변으로 공기가 새는지 보려고 커프 바람을 빼고 있어요.", "목 주변으로 공기가 새는지 보려고 커프 바람을 빼고 있어요."], a: "deflating", o: ["inflating", "replacing", "tapping"]}
+    - {tag: "결과 해석", icon: chartup, why: "suggests는 결과를 확정이 아니라 단서로 말하는 동사라서 해석이 과장되지 않아요.", decoy: "in the bag", d: ["새는 소리가 잘 나면 입안이 발관하기에 너무 붓지 않았다는 뜻이에요.", "새는 소리가 잘 나면 기도가 퇴원하기에 너무 붓지 않았다는 뜻이에요."], a: "swollen", o: ["dry", "warm", "long"]}
+    - {tag: "목적 설명", icon: shield, why: "make sure he can breathe once the tube is out은 빼기 전에 빼도 안전한지 확인하는 것이 목적이라는 말이에요.", decoy: "after the visit", d: ["관이 빠진 뒤에도 말을 잘 할 수 있는지 확실히 하는 데 도움이 돼요.", "관이 빠지기 전에도 숨을 잘 쉴 수 있는지 확실히 하는 데 도움이 돼요."], a: "out", o: ["in", "tied", "wet"]}
+    - {tag: "청진 방법", icon: stetho, why: "while로 두 동작을 동시에 한다고 말해서 지금 무엇을 하는 중인지 분명해요.", decoy: "from the door", d: ["튜브 주변으로 공기가 지나가게 하면서 목에서 소리를 기록하고 있어요.", "튜브 주변으로 공기가 지나가게 하면서 목에서 소리를 세고 있어요."], a: "neck", o: ["wrist", "knee", "ear"]}
+    - {tag: "위험 신호", icon: siren, why: "No … at all로 전혀 없다는 점을 강조하고, can mean으로 가능성만 말해서 단정은 피해요.", decoy: "for the shift", d: ["새는 소리가 전혀 없으면 지금 기도가 너무 말랐다는 뜻일 수 있어요.", "새는 소리가 전혀 없으면 내일 기도가 너무 부었다는 뜻일 수 있어요."], a: "leak", o: ["fever", "rash", "smell"]}
+    - {tag: "보고 계획", icon: handshake2, why: "if절로 보고 조건을, so we can으로 그 보고의 목적을 달아서 이유가 분명한 약속이 돼요.", decoy: "at the desk", d: ["새는 정도가 작으면 팀장에게 알려서 하루 더 기다릴 수 있게 할게요.", "새는 정도가 작으면 의사에게 알려서 한 시간 더 기다릴 수 있게 할게요."], a: "small", o: ["loud", "wet", "new"]}
+  order:
+    tag: "대화 흐름"
+    icon: stetho
+    ko: "커프리크 확인 4문장 순서"
+    why: "커프를 빼는 목적을 먼저 밝히고, 빠진 동안 소리를 듣고, 들은 결과를 해석한 뒤, 그 해석이 발관 후 호흡에 주는 의미로 닫아요."
+    lines:
+      - {en: "I'm deflating the cuff to check for airflow around the tube.", icon: gear, ko: "공기가 새는지 보려고 커프를 빼요", note: "목적"}
+      - {en: "While it's down, I listen at his neck for air escaping.", icon: stetho, ko: "빼 둔 동안 목에서 소리를 들어요", note: "청진"}
+      - {en: "If I hear it, that good leak suggests his airway isn't too swollen.", icon: chartup, ko: "들리면 기도가 덜 부었다는 뜻이에요", note: "해석"}
+      - {en: "That tells us he can breathe once the tube is out.", icon: shield, ko: "관을 빼도 숨쉴 수 있다는 근거예요", note: "의미"}
+4:
+  s:
+    - {tag: "장비 준비", icon: gear, why: "Let's have … ready는 같이 준비하자는 표현이고, at the bedside가 놓아 둘 위치를 알려 줘요.", decoy: "in the lab", d: ["고유량 캐뉼라를 침상 곁에 걸어 둡시다.", "고유량 캐뉼라를 침상 곁에 닦아 둡시다."], a: "ready", o: ["empty", "closed", "loud"]}
+    - {tag: "예비 준비", icon: shield, why: "as a backup in case …는 지금 쓰려는 게 아니라 만약을 위한 준비라는 뜻이에요.", decoy: "after discharge", d: ["더 많은 시간이 필요할 경우를 대비해 NIV를 예비로 준비하세요.", "더 많은 지지가 필요할 경우를 대비해 NIV를 먼저 준비하세요."], a: "backup", o: ["bonus", "habit", "gift"]}
+    - {tag: "응급 장비", icon: siren, why: "within reach는 필요한 순간 바로 손이 닿는 거리라는 뜻이고, confirm은 눈으로 직접 본다는 책임을 말해요.", decoy: "in storage", d: ["흡인기와 재삽관 세트가 복도 끝에 있는지 확인할게요.", "흡인기와 재삽관 세트가 병동 입구에 있는지 확인할게요."], a: "reintubation", o: ["restraint", "rehydration", "relaxation"]}
+    - {tag: "장비 점검", icon: check, why: "double-check는 이미 한 확인을 한 번 더 한다는 뜻이고, before we start가 그 시점을 정해요.", decoy: "after the call", d: ["시작하기 전에 수액 유량계를 다시 확인합시다.", "시작하기 전에 산소 마스크를 다시 확인합시다."], a: "oxygen", o: ["saline", "steam", "ink"]}
+    - {tag: "대체 준비", icon: shield, why: "in case 절이 마스크를 준비하는 이유를 밝히고, alone은 캐뉼라 하나만으로는이라는 뜻을 짚어요.", decoy: "for the visitors", d: ["캐뉼라만으로 부족할 경우를 대비해 가운도 준비해 둘게요.", "캐뉼라만으로 부족할 경우를 대비해 거즈도 준비해 둘게요."], a: "mask", o: ["pillow", "towel", "blanket"]}
+    - {tag: "준비 완료", icon: check, why: "Everything's set 뒤에 대시로 목록을 이어서 무엇이 준비됐는지 구체적으로 보고해요.", decoy: "for tonight", d: ["침대, 흡인기, 예비 산소까지 다 준비됐어요.", "카트, 흡인기, 예비 전원까지 다 준비됐어요."], a: "set", o: ["heavy", "quiet", "late"]}
+  order:
+    tag: "대화 흐름"
+    icon: gear
+    ko: "발관 물품 준비 4문장 순서"
+    why: "전체 목표를 먼저 말하고, 필요한 장비를 열거한 뒤, 그 위에 응급 장비 확인을 얹고, 확인이 끝났다는 말로 시작 신호를 줘요."
+    lines:
+      - {en: "Let's get everything ready at the bedside before we extubate.", icon: gear, ko: "발관 전에 침상에 모두 준비해요", note: "목표"}
+      - {en: "That means the high-flow cannula, with NIV set up as a backup.", icon: shield, ko: "고유량 캐뉼라와 예비 NIV예요", note: "장비"}
+      - {en: "With that in place, I'll confirm suction and the reintubation kit are within reach.", icon: siren, ko: "흡인기와 재삽관 세트가 손닿는지 볼게요", note: "응급"}
+      - {en: "Once those are confirmed, we're ready to start.", icon: check, ko: "확인되면 시작할 수 있어요", note: "시작"}
+5:
+  s:
+    - {tag: "분비물 상태", icon: lab, why: "minimal과 clear 두 형용사로 양과 상태를 함께 보고하면 발관 판단에 필요한 정보가 한 번에 전해져요.", decoy: "in the bag", d: ["지금은 분비물이 적고 끈적해요.", "지금은 분비물이 적고 하얘요."], a: "clear", o: ["thick", "bloody", "yellow"]}
+    - {tag: "기침 평가", icon: stetho, why: "so가 강한 기침이라는 근거에서 기도 보호라는 결론으로 이어 줘요.", decoy: "for the nurse", d: ["기침이 강해서 스스로 앉을 수 있어요.", "기침이 강해서 스스로 호출벨을 누를 수 있어요."], a: "protect", o: ["block", "close", "wash"]}
+    - {tag: "위험 조건", icon: bell, why: "would는 아직 일어나지 않은 가정이라, 지금 환자가 아니라 판단 기준을 설명하는 말이에요.", decoy: "for his lunch", d: ["기침이 약하거나 분비물이 많으면 수술에 신중해질 거예요.", "기침이 약하거나 열이 높으면 발관에 신중해질 거예요."], a: "cautious", o: ["curious", "sleepy", "eager"]}
+    - {tag: "흡인 설명", icon: gear, why: "so we can see로 흡인의 목적이 양을 확인하는 것임을 밝히고, now가 지금 진행 중임을 알려요.", decoy: "to the sink", d: ["실제로 무슨 색인지 보려고 지금 흡인하고 있어요.", "실제로 어디에 있는지 보려고 지금 흡인하고 있어요."], a: "really", o: ["hardly", "rarely", "barely"]}
+    - {tag: "기침 강도", icon: stetho, why: "strong enough to ~는 기준을 넘었다는 뜻이라, 강하다는 사실보다 충분하다는 판단을 전해요.", decoy: "for the shift", d: ["기침이 충분히 강해서 스스로 소변을 배출할 수 있어요.", "기침이 충분히 강해서 스스로 분비물을 닦을 수 있어요."], a: "strong", o: ["loud", "wet", "short"]}
+    - {tag: "지속 확인", icon: calendar, why: "keep ~ing는 한 번이 아니라 계속한다는 뜻이고, every hour가 간격을 정해 줘요.", decoy: "at the desk", d: ["결정하기 전에 매시간 소변을 계속 확인할게요.", "퇴근하기 전에 매시간 분비물을 계속 확인할게요."], a: "hour", o: ["week", "year", "month"]}
+  order:
+    tag: "대화 흐름"
+    icon: lab
+    ko: "분비물·기침 사정 4문장 순서"
+    why: "먼저 흡인해서 양을 확인하고, 그 결과를 말한 뒤, 기침 평가를 얹고, 둘을 합쳐 계속 확인하겠다는 말로 닫아요."
+    lines:
+      - {en: "I'm suctioning now so we can see how much is really there.", icon: gear, ko: "양을 보려고 지금 흡인해요", note: "흡인"}
+      - {en: "That tells me his secretions are minimal and clear.", icon: lab, ko: "분비물은 적고 맑아요", note: "결과"}
+      - {en: "On top of that, he has a strong cough, so he can protect his airway.", icon: stetho, ko: "기침도 강해 기도를 지킬 수 있어요", note: "기침"}
+      - {en: "With both of those looking good, I'll keep checking every hour before we decide.", icon: calendar, ko: "둘 다 좋지만 결정 전 매시간 확인해요", note: "지속 확인"}
+6:
+  s:
+    - {tag: "원인 감별", icon: magnify, why: "세 후보를 나열하고 sort out으로 하나씩 가려내자고 하면 막연한 걱정이 구조화된 질문이 돼요.", decoy: "in the lab", d: ["이게 심장 때문인지, 호흡 때문인지, 소음 때문인지 가려봅시다.", "이게 신장 때문인지, 호흡 때문인지, 불안 때문인지 가려봅시다."], a: "cardiac", o: ["renal", "hepatic", "skeletal"]}
+    - {tag: "심장 소견", icon: chartup, why: "which points to로 앞의 관찰을 해석으로 이어서, 근거와 결론이 한 문장에 놓여요.", decoy: "for the shift", d: ["혈압과 호흡수가 급등한 걸 보니 심장 원인을 가리키네요.", "혈압과 심박수가 서서히 오른 걸 보니 심장 원인을 가리키네요."], a: "spiked", o: ["settled", "softened", "flattened"]}
+    - {tag: "보고 의도", icon: handshake2, why: "so we can adjust로 보고의 목적을 밝혀, 단순 전달이 아니라 계획 수정을 위한 보고임을 알려요.", decoy: "to the patient", d: ["이 양상을 보고해서 이탈 계획을 취소할 수 있게 할게요.", "이 양상을 보고해서 식이 계획을 조정할 수 있게 할게요."], a: "adjust", o: ["memorize", "publish", "translate"]}
+    - {tag: "호흡 감별", icon: stetho, why: "without any cardiac changes가 한쪽 원인이 빠진 조건이라, 어느 쪽 원인인지 가르는 기준이 돼요.", decoy: "for the lab", d: ["신장 변화 없이 호흡만 힘들어 보이면 아마 호흡 문제일 거예요.", "혈압 변화 없이 호흡만 힘들어 보이면 아마 호흡 문제일 거예요."], a: "labored", o: ["calm", "quiet", "regular"]}
+    - {tag: "불안 요인", icon: faceWorried, why: "alone이 다른 원인 없이 불안만으로도라는 뜻이라, 실패가 곧 몸의 문제라는 단정을 풀어 줘요.", decoy: "to the family", d: ["가끔은 소음만으로도 시험에 실패할 수 있어요.", "보통은 불안만으로도 시험에 실패할 수 있어요."], a: "anxiety", o: ["hunger", "boredom", "curiosity"]}
+    - {tag: "추이 관찰", icon: chartup, why: "trend는 값 하나가 아니라 변화의 흐름을 본다는 동사이고, for the next hour가 기간을 정해요.", decoy: "to the pharmacy", d: ["다음 두 시간 동안 활력징후 추이를 보고 가라앉는지 볼게요.", "다음 한 시간 동안 활력징후 추이를 보고 졸리는지 볼게요."], a: "settles", o: ["spreads", "sleeps", "shrinks"]}
+  order:
+    tag: "대화 흐름"
+    icon: magnify
+    ko: "SBT 실패 원인 소통 4문장 순서"
+    why: "원인 후보를 나열해 문제를 구조화하고, 관찰한 소견을 말한 뒤, 그 소견이 가라앉는지 추이를 보고, 추이가 무엇을 보이든 보고한다는 말로 닫아요."
+    lines:
+      - {en: "Let's sort out why he failed — cardiac, respiratory, or anxiety?", icon: magnify, ko: "실패 원인을 가려 봅시다", note: "문제 제기"}
+      - {en: "His blood pressure and heart rate spiked, which points to a cardiac cause.", icon: chartup, ko: "혈압·심박수 급등은 심장 원인이에요", note: "소견"}
+      - {en: "To see if that settles, I'll trend his vitals for the next hour.", icon: chartup, ko: "가라앉는지 한 시간 추이를 봐요", note: "추이"}
+      - {en: "Whatever that shows, I'll report the pattern so we can adjust the weaning plan.", icon: handshake2, ko: "결과와 상관없이 보고해 계획을 조정해요", note: "보고"}

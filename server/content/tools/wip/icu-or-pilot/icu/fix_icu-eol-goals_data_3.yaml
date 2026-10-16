@@ -1,0 +1,145 @@
+# 뉘앙스·order 수정. nuance 의 n 은 그 상황 nuance 목록의 순번(0부터), kind 는 확인용.
+nuance:
+  - {sit: 0, n: 2, kind: swap, set: {ko: "DNR은 통증 치료를 멈춘다는 뜻이 아니라, 심장이 멈추면 심폐소생술을 하지 않는다는 뜻이에요"}}
+  - sit: 2
+    n: 2
+    kind: swap
+    set:
+      options: ["do nothing about it", "ease it with repositioning and medication", "make it stop completely"]
+      answer: "ease it with repositioning and medication"
+      notes:
+        "do nothing about it": "가족이 걱정하는 소리를 손쓸 수 없다고 말하는 셈이라 불안을 키운다."
+        "ease it with repositioning and medication": "자세를 바꾸고 약을 써서 줄여 볼 수 있다는 현실적인 말이다. 완전히 없앤다는 약속은 하지 않는다."
+        "make it stop completely": "완전히 없앤다는 약속은 지킬 수 없다."
+      why: "임종기에 목에서 나는 소리는 분비물 때문에 흔하고, 환자는 대개 이 소리 때문에 괴로워하지 않아요. 자세를 바꾸고 약을 써서 줄여 볼 수 있다고 말해 주되, 완전히 없앤다고 약속하지는 마세요."
+      ko: "그 소리는 이 시기에 흔하고, 자세를 바꾸고 약을 써서 줄여 볼 수 있어요"
+  - sit: 4
+    n: 1
+    kind: context
+    scene_en: {1: "Per our end-of-life visitation policy, family members may stay at the bedside."}
+    set: {ko: 머무르다}
+  - sit: 5
+    n: 0
+    kind: slider
+    set:
+      scale: [roughly, carefully, gently]
+      answerAt: 2
+      cue: "You're turning her after death while her daughter whispers, \"Please be soft with her.\""
+      why: "돌아가신 분을 대할 때는 서두르지 않고 손길을 다정하게 해요. roughly는 거칠게, carefully는 실수 없이 신중하게, gently는 힘을 빼고 부드럽게라는 뜻이라, 딸이 부드럽게 해 달라고 할 때는 gently가 마음에 닿아요."
+  - {sit: 5, n: 2, kind: swap, set: {ko: "제가 이 일을 하는 동안 곁에 계셔도 되고, 잠시 나가 계셔도 돼요 — 편하신 대로요"}}
+  - sit: 6
+    n: 0
+    kind: slider
+    set:
+      scale: ["in clinical terms", "in plainer terms", "in the simplest words"]
+      answerAt: 1
+      why: "'plainer terms'는 의학 용어를 빼고 더 쉽게 다시 말해 주겠다는 부드러운 표현이에요. 'the simplest words'는 그보다 더 줄인 가장 쉬운 말이라, 용어 때문에 헷갈린 가족에게는 먼저 plainer terms로 바꿔 보고 더 필요하면 줄여 가요."
+  - sit: 7
+    n: 0
+    kind: slider
+    set:
+      why: "연명치료 철회(withdraw)는 이 장면처럼 증상을 조절하면서 순서대로 진행해요. 한꺼번에 다 끈다는 인상을 주지 않도록 gradually라고 설명해 주세요."
+  - sit: 8
+    n: 0
+    kind: slider
+    set:
+      scale: ["slightly uneven", "irregular", "gasping"]
+      answerAt: 1
+      why: "임종기에는 숨이 쉬었다 멈췄다 하는 불규칙한 호흡이 흔해요. irregular는 간격이 일정하지 않다는 뜻이고, gasping은 헐떡이며 힘겹게 들이쉰다는 뜻이라 간격이 아니라 괴로움 쪽을 말해요."
+  - sit: 10
+    n: 1
+    kind: context
+    scene_en: {1: "Her CPOT is 0, so the patient is comfortable per scale."}
+    scene_fix: {1: "She looks relaxed, and that tells me she's comfortable."}
+  - sit: 14
+    n: 1
+    kind: context
+    scene_en: {1: "He may be eligible for donation after circulatory death per OPO criteria."}
+    set:
+      why: "의료진끼리의 기준과 용어를 가족에게 그대로 말하면 어렵고, 결정을 재촉하는 것처럼 들려요. 기증 이야기는 치료팀과 분리된 팀이 가족이 원할 때 하고, 어떤 결정이든 지금의 돌봄은 그대로라고 말해 줘요."
+  - sit: 15
+    n: 1
+    kind: context
+    scene_en: {2: "Pt gasping after extubation — PRN given, can you come immediately?"}
+  - sit: 16
+    n: 0
+    kind: slider
+    set: {words: [w-choose]}
+  - sit: 16
+    n: 1
+    kind: context
+    replace:
+      words: [w-disagree]
+      word: disagree
+      ko: 의견이 다르다
+      scenes:
+        - {who: 차트 기록, icon: board, en: "Son and daughter disagree on plan; ethics consult requested.", ok: true}
+        - {who: 두 자녀에게, icon: me, en: "Your disagreement is impeding the plan of care.", ok: false, fix: "It's okay to disagree — you both love her deeply."}
+        - {who: 윤리팀에게, icon: speech, en: "We have two surrogates who disagree — can you see them today?", ok: true}
+      why: "차트와 윤리팀 호출에서는 disagree가 정확하고 짧아요. 가족에게 '두 분의 의견 차이가 돌봄 계획을 방해한다'고 하면 탓하는 말로 들려요. 의견이 달라도 괜찮다고 먼저 인정해 주세요."
+  - sit: 17
+    n: 1
+    kind: context
+    scene_en:
+      1: "Aggressive interventions now cause iatrogenic harm."
+      2: "Family asks for more treatment that may cause harm — we need ethics input."
+  - sit: 19
+    n: 1
+    kind: context
+    scene_fix: {1: "Did he ever tell you what he'd want if he got this sick? That would really help us."}
+    set:
+      why: "surrogate(대리결정자)는 환자를 대신해 결정할 사람을 가리키는 정확한 말이에요. 주에 따라 가까운 친구도 대리결정자가 될 수 있으니, 방문한 친구에게는 절차를 늘어놓기보다 환자가 무엇을 원했을지 물어보세요. 윤리위원회는 결정하는 곳이 아니라 자문하고 검토를 돕는 곳이에요."
+order:
+  1:
+    why: "회의 목적을 먼저 알리고, 그 전에 가족이 할 일로 환자의 입장을 떠올리게 한 뒤, 질문 적기를 권하고 그것에 반드시 답하겠다고 약속해요. 3줄의 as you do that은 2줄의 생각하기를, 4줄의 them은 3줄의 질문을 가리켜서 순서가 하나예요."
+  2:
+    lines:
+      3: {en: "I'll tell you what I saw and whether the change helped.", ko: "제가 본 것과 바꾼 것이 도움이 됐는지 말씀드릴게요"}
+    why: "먼저 살피고 있다고 알리고, 불편해 보이면 약을 조절하고, 3줄의 it은 2줄의 약이 듣는지 다시 보는 것을 가리켜요. 마지막 줄의 the change는 2줄의 조절이 있어야 말할 수 있고, 결과를 알리는 말이라 마지막에 와요."
+  3:
+    lines:
+      3: {en: "In fact, please stay as long as you want — I'll bring a chair.", ko: "오히려 원하는 만큼 계세요 — 의자를 가져다드릴게요"}
+    why: "목표를 먼저 말하고, That means로 그 목표가 무엇을 뜻하는지 풀어요. 3줄의 None of this는 앞 두 줄 전체를 가리키고, 4줄의 In fact는 그 부정(떠나야 한다는 뜻이 아님)을 받아 오히려 머물러도 된다고 말해요."
+  4:
+    lines:
+      1: {en: "While you're with her, keep talking — hearing is often the last sense to go.", ko: "곁에 계시는 동안 계속 말을 걸어주세요 — 청각은 흔히 마지막까지 남아요"}
+      2: {en: "Even quiet words like that can comfort her.", ko: "그렇게 조용한 말도 위안이 돼요"}
+    why: "곁에 머물러도 된다고 허락한 뒤, 2줄의 While you're with her로 그 허락을 받아 계속 말을 걸라고 권하고, 3줄의 like that은 2줄의 keep talking을 가리켜 조용한 말도 괜찮다고 낮춰 줘요. 4줄의 those quiet moments는 3줄의 quiet words를 가리켜서 순서가 하나예요."
+  5:
+    lines:
+      1: {en: "When you've said your goodbyes, I'll clean and dress him carefully.", ko: "작별을 마치시면 조심스럽게 씻기고 옷을 입혀드릴게요"}
+    why: "작별 시간을 먼저 주고, 작별을 마치면 몸을 정리하겠다고 알리고, 3줄의 that은 그 정리를, 4줄의 Whatever you choose는 3줄의 두 선택을 가리켜요. 앞 줄이 뒤 줄의 전제라 순서가 하나예요."
+  6:
+    lines:
+      3: {en: "If it doesn't, we can go over it again as many times as you like.", ko: "그렇지 않다면 원하는 만큼 다시 짚어볼 수 있어요"}
+    why: "쉬운 말로 바꾸겠다고 예고하고, 쉬운 말로 내용을 전한 뒤, 3줄의 that은 2줄의 내용을 가리켜 이해를 묻고, 4줄의 If it doesn't는 3줄의 질문에 대한 답을 받아 재설명을 제안해요. 앞 줄이 뒤 줄의 전제라 순서가 하나예요."
+  9:
+    lines:
+      0: {en: "The goal is comfort, not to hasten anything.", ko: "목표는 편안함이지, 무언가를 앞당기려는 게 아니에요"}
+      1: {en: "So we give just enough medication to ease his restlessness.", ko: "그래서 초조함을 덜 만큼만 약을 드려요"}
+  11:
+    why: "팀을 소개하고, 3줄의 To do that은 2줄의 편안함과 지지를 가리켜 방법을 말하고, 4줄의 that conversation은 3줄의 대화를 가리켜서 일정을 묻는 질문이 마지막에 와요."
+  13:
+    lines:
+      2: {en: "Because it starts early, some days will feel heavier than others along the way.", ko: "일찍 시작되기 때문에, 가는 동안 어떤 날은 더 무겁게 느껴질 거예요"}
+    why: "감정을 정상이라고 말한 뒤, 2줄의 It이 그 감정을 가리켜 죽음 전에도 시작될 수 있다고 알려요. 3줄의 Because it starts early가 2줄의 내용을 이유로 받고, 4줄의 the heavier days가 3줄에서 처음 나와요."
+  14:
+    lines:
+      2: {en: "Whatever you decide after hearing them, we'll respect it and his care won't change.", ko: "그분들 이야기를 들은 뒤 어떻게 결정하셔도 존중하고, 돌봄은 달라지지 않아요"}
+      3: {en: "Take your time with that decision; there's no need to answer today.", ko: "그 결정은 천천히 생각하세요, 오늘 답하실 필요는 없어요"}
+    why: "선택지로 소개하고, 원하면 설명해 줄 팀이 있다고 알리고, 3줄의 them은 2줄의 팀을, 4줄의 that decision은 3줄의 결정을 가리켜요. 팀 이야기를 들은 뒤의 결정과 시간 보장이 뒤에 와서 순서가 하나예요."
+  15:
+    lines:
+      3: {en: "Now that she's settling, you did exactly the right thing calling me over.", ko: "안정되고 계시니, 저를 불러주신 게 정확히 맞았어요"}
+  16:
+    lines:
+      1: {en: "Because of that love, I'd like to hear each of your concerns in turn.", ko: "그 사랑 때문에, 두 분의 걱정을 차례로 듣고 싶어요"}
+    why: "먼저 두 사람을 모두 인정하고, 2줄의 that love가 그 인정을 받아 한 명씩 듣겠다고 하고, 3줄의 them이 그 걱정들을 가리켜요. 4줄의 that은 3줄의 환자의 뜻에 집중하자는 제안을 가리켜서 마지막에 와요."
+  17:
+    lines:
+      3: {en: "If it helps, we can ask the ethics team if that fits what he'd want.", ko: "도움이 되면 그게 그분의 뜻에 맞는지 윤리팀에 물어볼 수 있어요"}
+  18:
+    lines:
+      2: {en: "As his breathing changes, keep talking to him; hearing is often the last sense to go.", ko: "호흡이 달라지는 동안 계속 말을 걸어주세요, 청각은 마지막까지 남는 경우가 많아요"}
+      3: {en: "Talking to him, or just sitting quietly, is exactly what he needs.", ko: "말을 걸거나 조용히 앉아 계신 것이 그분께 필요한 거예요"}
+    why: "가족의 질문에 먼저 솔직히 답하고, 2줄에서 호흡 변화를 설명해요. 3줄의 As his breathing changes는 2줄의 호흡 변화를 가리키고, 4줄의 Talking to him은 3줄의 keep talking to him을 가리켜서 마지막에 와요."

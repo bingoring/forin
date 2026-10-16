@@ -1,0 +1,80 @@
+words:
+  # 비속어·불쾌 조각
+  - {id: w-anesthesia, set: {chips: [[anes, the, sia]], decoyChips: [ana, ges]}}
+  - {id: w-anesthetic, set: {decoyChips: [ana, thic]}}
+  - {id: w-assessment, set: {decoyChips: [sas, ses]}}
+  - {id: w-succinylcholine, set: {decoyChips: [suk, chol]}}
+  - {id: w-rigidity, set: {decoyChips: [fri, gat]}}
+  - {id: w-rigid, set: {decoyChips: [ra, gat]}}
+  - {id: w-potassium, set: {decoyChips: [pod, sas]}}
+  # distractorsEn — 정답으로도 맞는 것·비단어·품사 불일치
+  - {id: w-rigidity, set: {distractorsEn: [rapidity, validity]}}
+  - {id: w-crisis, set: {distractorsEn: [critic, crease]}}
+  - {id: w-handoff, set: {distractorsEn: [handout, standoff]}}
+  - {id: w-rigid, set: {distractorsEn: [rapid, frigid]}}
+  - {id: w-avoid, set: {distractorsEn: [avail, await]}}
+  - {id: w-alert, set: {distractorsEn: [alter, assert]}}
+  - {id: w-fever, set: {distractorsEn: [fervor, feeler]}}
+  - {id: w-agent, set: {distractorsEn: [agency, agenda]}}
+  - {id: w-trigger, set: {distractorsEn: [triage, tremor]}}
+  - {id: w-vial, set: {distractorsEn: [dial, trial]}}
+  - {id: w-low, set: {distractorsEn: [slow, lone]}}
+  - {id: w-inventory, set: {distractorsEn: [invent, interview]}}
+  - {id: w-sterile, set: {distractorsEn: [stable, fragile]}}
+  - {id: w-temp, set: {distractorsEn: [temperament, pressure]}}
+  - {id: w-probe, set: {distractorsEn: [robe, globe]}}
+  - {id: w-call, set: {distractorsEn: [cull, crawl], distractorsKo: [기록해 두다, 문자로 보내다]}}
+  - {id: w-closely, set: {distractorsEn: [clearly, loosely]}}
+  - {id: w-sign, set: {distractorsEn: [sigh, signal]}}
+  - {id: w-climb, set: {distractorsEn: [cling, clip]}}
+  - {id: w-tell, set: {distractorsEn: [yell, sell]}}
+  - {id: w-abnormal, set: {distractorsEn: [abysmal, abdominal]}}
+  - {id: w-despite, set: {distractorsEn: [beside, inside]}}
+  - {id: w-think, set: {distractorsEn: [thank, sink]}}
+  - {id: w-heart, set: {distractorsEn: [hearth, heat]}}
+  - {id: w-rate, set: {distractorsEn: [race, gate]}}
+  - {id: w-add, set: {distractorsEn: [aid, nod]}}
+  - {id: w-known, set: {distractorsEn: [grown, shown]}}
+  - {id: w-safe, set: {distractorsEn: [sane, sage]}}
+  - {id: w-remove, set: {distractorsEn: [revoke, remind]}}
+  - {id: w-urine, set: {distractorsEn: [urinal, ureter]}}
+  - {id: w-dark, set: {distractorsEn: [damp, stark]}}
+  - {id: w-help, set: {distractorsEn: [helm, heap]}}
+  - {id: w-full, set: {distractorsEn: [foul, dull]}}
+  - {id: w-happen, set: {distractorsEn: [hamper, harden]}}
+  - {id: w-fast, set: {distractorsEn: [past, last]}}
+  - {id: w-wave, set: {distractorsEn: [wage, wake]}}
+  - {id: w-surface, set: {distractorsEn: [service, surplus]}}
+  - {id: w-flush, set: {distractorsEn: [flash, flick]}}
+  - {id: w-stable, set: {distractorsEn: [static, stale]}}
+  - {id: w-weight, set: {distractorsEn: [height, width]}}
+  - {id: w-mix, set: {distractorsEn: [fix, miss]}}
+  # distractorsKo
+  - {id: w-level, set: {distractorsKo: [비율, 위치]}}
+  - {id: w-bicarb, set: {distractorsKo: [탄산가스(약칭), 탄산칼슘(약칭)]}}
+  - {id: w-medication, set: {ko: 약(투약용), distractorsKo: [처방전, 치료법]}}
+  # cue
+  - {id: w-mh, set: {cue: 그 응급의 두 글자 약자 — 카트·프로토콜 이름에 붙는다}}
+  - {id: w-first, set: {cue: 순서의 맨 앞 — 징후도 처치 순서도 (형용사·부사)}}
+  - {id: w-tempabbr, set: {cue: 체온을 한 음절로 줄인 수술실 말 (구어)}}
+  - {id: w-hyperkalemia, set: {cue: MH에서 근육이 깨지며 생기는 전해질 이상 — T파가 뾰족해지는 원인 (명사)}}
+  - {id: w-calcium, set: {cue: 심근 세포막을 안정시키려고 고칼륨 때 먼저 쓰는 전해질 약 (명사)}}
+  # 결정 11
+  - id: w-critical
+    set:
+      en: critically
+      ipa: /ˈkrɪtɪkli/
+      ko: 위험할 만큼
+      cue: 수치가 생명이 위험할 정도로 벗어났다고 강조할 때 (부사)
+      distractorsEn: [chronically, cynically]
+      distractorsKo: [만성적으로, 가볍게]
+      chips: [[crit, i, cal, ly]]
+  - id: w-reconstitute
+    set:
+      ko: (가루약을) 녹여 조제하다
+      distractorsKo: [(가루약을) 나눠 담다, (가루약을) 계량하다]
+  - id: w-cart
+    set:
+      example: "This room's MH cart is stocked with a full supply of dantrolene."
+      exKo: 이 방 MH 카트에 단트롤렌이 정량 전부 구비돼 있어요.
+  - {id: w-output, set: {decoyChips: [in, pit]}}

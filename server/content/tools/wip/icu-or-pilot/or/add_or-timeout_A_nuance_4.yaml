@@ -1,0 +1,94 @@
+응급 타임아웃 생략 압박:
+  - kind: slider
+    words: [w-emergency, w-confirm, w-quick, w-critical, w-worth]
+    cue: "A trauma case with active bleeding. The surgeon snaps, \"Skip the time-out — there's no time!\""
+    scale: ["Skip it.", "Keep it quick, but do it.", "Hold everything for a full, slow time-out."]
+    answerAt: 1
+    why: "응급이어도 타임아웃은 생략하지 않아요. 환자·부위·알레르기·혈액 확보처럼 핵심만 짧게 확인하면 몇 초면 되고, 틀린 환자나 틀린 부위를 막아 줘요. 끝까지 느리게 다 하자고 붙잡는 것도 출혈 환자에게는 맞지 않아요."
+    example: "Even in an emergency, we confirm the critical items quickly."
+    exKo: "응급 상황이라도 중대한 항목은 신속히 확인합니다."
+  - kind: context
+    words: [w-quick]
+    word: quick
+    ko: 신속한
+    scenes:
+      - {who: 순환 간호사 → 집도의, icon: speech, en: "Quick time-out: patient, site, allergies, blood — go.", ok: true}
+      - {who: 수술 기록, icon: board, en: "Quick time-out documented — patient, site, allergies confirmed.", ok: true}
+      - {who: 깨어 있는 응급 환자에게, icon: me, en: "No time — I'll do a quick time-out, so hold still.", ok: false, fix: "I'm going to check a couple of things with you very quickly — your name and where it hurts."}
+    why: "quick은 팀끼리 '짧게, 핵심만'이라는 약속이에요. 깨어 있는 응급 환자에게 'No time'이라고 하면 더 겁나게 해요. 서두르는 상황이어도 이름과 아픈 곳처럼 환자가 바로 답할 수 있는 질문으로 부드럽게 물어요."
+팀 침묵 속 오류 방치:
+  - kind: slider
+    words: [w-voice, w-concern, w-speak, w-pause, w-proceed]
+    cue: "The patient is draped and the surgeon is about to cut the left knee, but the consent and the mark both say right."
+    scale: ["I have a concern about this.", "I'm uncomfortable — can we pause?", "This is a safety issue — I'm stopping the line."]
+    answerAt: 2
+    why: "TeamSTEPPS의 CUS(Concerned·Uncomfortable·Safety issue)는 단계가 올라가는 말이에요. 환자 안전이 곧 위험해지는 순간에는 'This is a safety issue'처럼 마지막 단계로 바로 말해도 돼요."
+    example: "This is a safety issue — I need to stop and double-check."
+    exKo: "이건 안전 문제예요 — 멈추고 재확인해야 합니다."
+  - kind: context
+    words: [w-concern]
+    word: concern
+    ko: 우려
+    scenes:
+      - {who: 순환 간호사 → 집도의, icon: speech, en: "I have a concern about the site before we proceed.", ok: true}
+      - {who: 안전 보고 기록, icon: board, en: "Concern raised at time-out; team paused and resolved it.", ok: true}
+      - {who: 마취 직전 환자에게, icon: me, en: "I have a concern that you may be at risk for wrong-site surgery.", ok: false, fix: "I want to double-check which side we're operating on — I'd rather be sure."}
+    why: "팀 안에서 'I have a concern'은 안전하게 말을 꺼내는 표준 표현이에요. 환자에게 'wrong-site surgery' 위험을 먼저 말하면 겁만 주니, 확인하려는 이유와 방법을 쉽게 말해요."
+wrong-site 임박 차단:
+  - kind: slider
+    words: [w-stop, w-scalpel, w-put, w-down, w-wrong]
+    cue: "The scalpel is already against the skin on the unmarked side."
+    scale: ["Doctor, can we double-check the site?", "Stop — that is the wrong site.", "Stop right now — put the scalpel down."]
+    answerAt: 2
+    why: "메스가 이미 피부에 닿아 있는 순간에는 질문형으로 돌려 말할 시간이 없어요. 'Stop right now — put the scalpel down'처럼 짧고 직접적으로 멈추게 해요. 피부를 가르기 전이라면 'Stop — that is the wrong site'로도 충분해요."
+    example: "Stop right now — put the scalpel down."
+    exKo: "지금 당장 멈추세요 — 메스를 내려놓으세요."
+  - kind: swap
+    words: [w-stop, w-other, w-mark, w-side]
+    who: "순환 간호사 → 집도의 · 절개 직전"
+    icon: speech
+    before: ["Doctor, ", "I might be wrong, but", " the mark is on the other side."]
+    options: ["I might be wrong, but", "Stop right now —", "You always do this —"]
+    answer: "Stop right now —"
+    notes:
+      "Stop right now —": "짧고 직접적인 명령이라 즉시 행동이 멈춘다. 사람을 탓하지 않고 사실만 말한다."
+      "I might be wrong, but": "시간이 없을 때는 망설이는 말이 몇 초를 잡아먹는다. 상대도 '아니겠지' 하고 계속할 수 있다."
+      "You always do this —": "사실이 아닌 비난이라 방어를 부르고, 지금 필요한 행동을 늦춘다."
+    why: "절개 직전에는 완곡한 표현이 시간을 잡아먹어요. 'Stop right now'처럼 짧고 직접적으로 멈추게 한 다음, 표시가 반대쪽이라는 사실을 말해요."
+    ko: 선생님, 지금 당장 멈추세요 — 표시는 반대쪽에 있습니다
+항생제 누락 절개 임박:
+  - kind: slider
+    words: [w-prophylactic, w-antibiotic, w-hold, w-incision, w-give]
+    cue: "Anesthesia notices the prophylactic antibiotic has not gone in, and the surgeon is picking up the scalpel."
+    scale: ["Proceed anyway.", "Hold the incision until it is given.", "Cancel the case."]
+    answerAt: 1
+    why: "예방적 항생제는 절개 전에 들어가 있어야 효과가 있어요. 빠졌다면 절개를 잠시 보류하고 투여한 뒤 진행해요. 그냥 진행하면 예방 효과를 놓치고, 취소까지는 필요 없어요."
+    example: "Let's hold the incision until the antibiotics are given."
+    exKo: "항생제가 투여될 때까지 절개를 보류합시다."
+  - kind: context
+    words: [w-hold]
+    word: hold
+    ko: 보류하다
+    scenes:
+      - {who: 순환 간호사 → 집도의, icon: speech, en: "Can we hold the incision until they're given?", ok: true}
+      - {who: 마취 기록, icon: board, en: "Incision on hold until antibiotic given at 0749.", ok: true}
+      - {who: 깨어 있는 환자에게, icon: me, en: "We're going to hold your incision.", ok: false, fix: "We're going to wait a moment for your antibiotic before we start."}
+    why: "hold는 팀끼리 '잠시 멈춰 두자'는 짧은 말이에요. 환자에게 'hold your incision'이라고 하면 무슨 뜻인지 알 수 없고 몸을 붙잡는 느낌이라, 잠깐 기다리는 이유를 쉬운 말로 해요."
+타임아웃 후 상태 급변:
+  - kind: slider
+    words: [w-vital, w-change, w-hold, w-incision, w-reassess]
+    cue: "Right after the time-out, the BP drops from 118/72 to 82/50 and the heart rate jumps. The surgeon is ready to cut."
+    scale: ["Proceed as planned.", "Hold the incision and reassess.", "Cancel and wake the patient up."]
+    answerAt: 1
+    why: "활력징후가 갑자기 나빠졌다면 절개를 보류하고 마취과와 함께 원인을 재평가해요. 그냥 진행하면 불안정한 환자에게 수술 스트레스를 더하고, 곧바로 취소하는 것은 아직 안정시키려는 시도도 하기 전이라 이르죠."
+    example: "His vitals just changed — let's hold the incision and reassess."
+    exKo: "활력징후가 방금 바뀌었습니다 — 절개를 보류하고 재평가합시다."
+  - kind: context
+    words: [w-stabilize]
+    word: stabilize
+    ko: 안정시키다
+    scenes:
+      - {who: 마취과 → 집도의, icon: speech, en: "Give us a moment to stabilize him before you cut.", ok: true}
+      - {who: 마취 기록, icon: board, en: "Pt hypotensive after time-out; stabilized with fluids and a vasopressor, then proceeded.", ok: true}
+      - {who: 대기실 가족에게, icon: me, en: "We're working to stabilize his hemodynamics before we proceed.", ok: false, fix: "His blood pressure dropped, so we're pausing to bring it back up before we start."}
+    why: "stabilize는 마취과와 수술팀이 쓰는 정확한 말이에요. 가족에게는 'hemodynamics' 같은 말이 알아듣기 어렵고 불안을 키워서, 혈압이 떨어졌고 지금 올리고 있다고 쉽고 사실대로 말해요."

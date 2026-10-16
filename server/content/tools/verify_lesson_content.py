@@ -53,6 +53,8 @@ v46 (학습 화면 핸드오프 1:1 — `lesson-fidelity-v46/build-spec-index.md
     V19 상황의 order(순서 배열 카드)는 ko·why가 있고 줄이 정확히 4개, 줄마다 en·icon이 있고 en이
         겹치지 않는다. tag·icon과 줄의 ko·note는 있으면 비어 있지 않다. 문장 없는 상황에 order만 있으면 오류
     V14 (더함) context의 word와 ko는 함께 있거나 함께 없다. swap의 ko는 있으면 비어 있지 않다
+    V21 단어의 chips·decoyChips 조각이 비속어·성적인 말이 아니다(2026-10-16 ICU·OR 파일럿 — 단어를 잘게
+        자르다 `cum`·`ass`·`anal`·`sux` 같은 조각이 ER 정본에도 들어가 있었다. 검토가 한 번 놓쳤다)
 
 Go는 `omitempty` 문자열이라 `why: ""`와 키 없음을 구별하지 못해 공백만 있는 값만 잡는다. 이 검사기는
 키를 보므로 빈 문자열도 잡는다 — 저작 단계에서 더 엄격한 쪽이 이 도구다.
@@ -891,6 +893,11 @@ def assembles_to(chunks: list[str], en: str) -> bool:
 # v45 — 회상 재료(단어)와 뉘앙스(상황). Go 쪽 content/nuance.go 와 규칙을 맞춘다.
 # ---------------------------------------------------------------------------
 
+# V21 — 조각으로 보이면 안 되는 말. 정답 조각(chips)은 정답 낱말의 일부라 막지 않는다(assess의 as·sess는 괜찮다).
+OFFENSIVE_CHIPS = frozenset("""
+ass arse anal anus butt cum cunt cock dick fag fuck homo jizz naff nig piss porn rape shit slut sux tit tits twat wank whore
+""".split())
+
 V45_WORD_FIELDS = ("exKo", "cue", "tag", "distractorsEn", "distractorsKo", "chips", "decoyChips")
 # NbIcon 이 그리는 이름. 정본은 mobile/src/components/nb/NbIcon.tsx 의 `NbIconName` 유니온이고, 그 파일이
 # 있으면 거기서 읽는다(모바일 contentIcons 테스트와 같은 방식) — 손으로 적은 목록은 새 아이콘(faceWorried,
@@ -990,6 +997,8 @@ def check_word_v45(w: dict) -> list[tuple[str, str]]:
     for d in w.get("decoyChips") or []:
         if _norm(d) in real:
             out.append(("V13", f"word {wid!r}: decoy chip {d!r} is one of the answer's own fragments"))
+        if _norm(d) in OFFENSIVE_CHIPS:
+            out.append(("V21", f"word {wid!r}: decoy chip {d!r} is offensive — pick another fragment"))
     if en and en.lower() in str(w.get("cue") or "").lower():
         out.append(("V13", f"word {wid!r}: cue gives the answer {en!r} away"))
     elif en and _stems(en) & _stems(w.get("cue") or ""):
@@ -2132,6 +2141,8 @@ def run_selftest() -> int:
                   v45_lex(lambda ws: ws[0].update(distractorsEn=["Wristband", "armband"])), v45_seed(good_nuance), "V13", False))
     cases.append(("V13 (a decoy chip is a real fragment)",
                   v45_lex(lambda ws: ws[0].update(decoyChips=[ws[0]["chips"][0][0]])), v45_seed(good_nuance), "V13", False))
+    cases.append(("V21 (an offensive decoy chip)",
+                  v45_lex(lambda ws: ws[0].update(decoyChips=["ass"])), v45_seed(good_nuance), "V21", False))
     cases.append(("V13 (the cue gives the answer away)",
                   v45_lex(lambda ws: ws[0].update(cue="wristband을 확인")), v45_seed(good_nuance), "V13", False))
     cases.append(("V14 (a v45 situation with no nuance)", v45_lex(), v45_seed(None), "V14", False))
