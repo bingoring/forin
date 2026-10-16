@@ -23,3 +23,4 @@
 | 판정 B | or-malignant-hyperthermia | fable | 170,894 | 12.9분 | 고칠 것 32(안전 11·정답 5), S16 order 유발약 중단↔도움 요청 순서 문제 제기 |
 | 판정 A | or-malignant-hyperthermia | fable | 210,654 | 17.8분 | 약 70건, 비속어 decoyChips 4(Opus 놓침), slider 정답 가장 긺 13/14 |
 | 수정 | icu-eol-goals | sonnet | 489,416 | 28.0분 | 4목록(Opus A·B + Fable A·B) 약 360건 반영, 변경 목록 113, 위반 0 |
+| 수정 | or-malignant-hyperthermia | sonnet | 331,230 | 21.5분 | 4목록 반영, 변경 목록 60, 위반 0 |

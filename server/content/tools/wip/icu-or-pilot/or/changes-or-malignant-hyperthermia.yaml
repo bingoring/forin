@@ -61,7 +61,8 @@ changes:
   index: 3
   fields:
   - words
-  why: '태그 빼기: w-family'
+  - chunks
+  why: '태그 빼기: w-family / 조각을 구 경계에서'
 - kind: sentence
   situation: MH 가족력 선별
   index: 4
@@ -85,7 +86,10 @@ changes:
   index: 3
   fields:
   - words
-  why: '태그 빼기: w-room'
+  - en
+  - ko
+  - chunks
+  why: '태그 빼기: w-room / twelve vials는 MHAUS 권고(20 mg 36바이알·Ryanodex 3바이알)와 맞지 않는 수치 — 정량 전부로 / 조각을 구 경계에서'
 - kind: sentence
   situation: MH 카트 점검
   index: 1
@@ -97,19 +101,22 @@ changes:
   index: 3
   fields:
   - words
-  why: '태그 빼기: w-minute'
+  - chunks
+  why: '태그 빼기: w-minute / 조각을 구 경계에서'
 - kind: sentence
   situation: 빈맥·부정맥 감시
   index: 3
   fields:
   - words
-  why: '태그 빼기: w-minute'
+  - chunks
+  why: '태그 빼기: w-minute / 조각을 구 경계에서'
 - kind: sentence
   situation: MH 감수성 환자 준비
   index: 2
   fields:
   - words
-  why: '태그 빼기: w-hand'
+  - ko
+  why: '태그 빼기: w-hand / ''안전한 손에 맡겨져''는 직역'
 - kind: sentence
   situation: 냉각 물품 준비
   index: 2
@@ -127,13 +134,15 @@ changes:
   index: 4
   fields:
   - words
-  why: '태그 빼기: w-call'
+  - ko
+  why: '태그 빼기: w-call / ''콜하는 순간''은 뜻이 흐림 → MH로 선언하는 순간'
 - kind: sentence
   situation: 미오글로빈뇨 관찰
   index: 3
   fields:
   - words
-  why: '태그 빼기: w-hour'
+  - chunks
+  why: '태그 빼기: w-hour / 조각을 구 경계에서'
 - kind: sentence
   situation: MH 위기 발동
   index: 1
@@ -151,13 +160,15 @@ changes:
   index: 4
   fields:
   - words
-  why: '태그 빼기: w-get, w-hand'
+  - ko
+  why: '태그 빼기: w-get, w-hand / ''손을 더 불러''는 어색 → 일손'
 - kind: sentence
   situation: dantrolene 혼합 투여
   index: 0
   fields:
   - words
-  why: '태그 빼기: w-hand'
+  - ko
+  why: '태그 빼기: w-hand / reconstitute → 녹여 조제(재구성 직역 정리)'
 - kind: sentence
   situation: dantrolene 혼합 투여
   index: 1
@@ -175,13 +186,16 @@ changes:
   index: 3
   fields:
   - words
-  why: '태그 빼기: w-pack'
+  - en
+  - chunks
+  why: '태그 빼기: w-pack / pack ice to → around(자연스러운 영어) / 조각을 구 경계에서'
 - kind: sentence
   situation: 고칼륨 부정맥 대응
   index: 0
   fields:
   - words
-  why: '태그 빼기: w-high'
+  - ko
+  why: '태그 빼기: w-high / ''위중하게 높아요''는 어색 → 위험할 만큼'
 - kind: sentence
   situation: 대사성 산증 교정
   index: 3
@@ -239,3 +253,73 @@ changes:
 - kind: word-remove
   id: w-lot
   why: 너무 쉬움 — 목록 밖 쉬운 말(a lot of); 어느 문장도 태그하지 않게 됨
+- kind: word
+  id: w-cart
+  fields:
+  - example
+  why: 문장 2.3 'twelve vials'(MHAUS 권고량과 다른 수치)를 정량 전부로 바꿔 예문도 교체
+- kind: word
+  id: w-medication
+  fields:
+  - ko
+  why: w-drug(약물)와 ko가 겹쳐 듣고 뜻 고르기에서 정답이 둘 — 투약용 약으로 가름
+- kind: word
+  id: w-reconstitute
+  fields:
+  - ko
+  why: 재구성은 약 설명서식 직역 — 임상에서 쓰는 '녹여 조제하다'로
+- kind: word
+  id: w-critical
+  fields:
+  - en
+  - ko
+  - ipa
+  why: 문장이 critically(부사) — 헤드워드를 부사로(id는 그대로)
+- kind: sentence
+  situation: MH 카트 점검
+  index: 2
+  fields:
+  - ko
+  why: in date는 유효기한 안 — ko '유효기한도 지났어요'는 뜻이 반대
+- kind: sentence
+  situation: 체온 지속 감시
+  index: 4
+  fields:
+  - chunks
+  why: 조각을 구 경계에서
+- kind: sentence
+  situation: EtCO2 상승 조기 인지
+  index: 1
+  fields:
+  - ko
+  why: '''조기 MH가 생각나요'' → 초기 MH가 의심돼요'
+- kind: sentence
+  situation: masseter 근강직 관찰
+  index: 4
+  fields:
+  - chunks
+  why: 조각을 구 경계에서
+- kind: sentence
+  situation: 빈맥·부정맥 감시
+  index: 4
+  fields:
+  - chunks
+  why: 조각을 구 경계에서
+- kind: sentence
+  situation: 유발약 회피 마취
+  index: 2
+  fields:
+  - ko
+  why: '''준비되어 뽑아 두었어요'' 어순 정리'
+- kind: sentence
+  situation: 고칼륨 감시
+  index: 0
+  fields:
+  - ko
+  why: send a level = 검사를 보내다
+- kind: sentence
+  situation: 고칼륨 부정맥 대응
+  index: 1
+  fields:
+  - ko
+  why: '''포도당을 곁들인 인슐린'' → 인슐린과 포도당'
