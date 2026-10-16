@@ -1,0 +1,125 @@
+- situation: "SAT·SBT 개념·일정 이해"
+  items:
+    - kind: slider
+      words: [w-awake]
+      cue: "Nurse: \"He opens his eyes when I call his name, then drifts back to sleep.\""
+      scale: [drowsy, awake, alert]
+      answerAt: 0
+      why: "눈은 뜨지만 곧 다시 잠드는 상태는 drowsy예요. awake는 눈을 뜨고 깨어 있다는 뜻이고, alert는 주변과 말에 정확히 반응할 만큼 또렷하다는 뜻이라 한 단계 더 높아요. 진정제를 멈춘 뒤에는 이 차이를 구분해서 전해요."
+      example: "He's still drowsy, but he opens his eyes to my voice."
+      exKo: "아직 졸려 하지만 제 목소리에 눈을 떠요."
+    - kind: context
+      words: [w-trial]
+      word: trial
+      ko: 시험(시도)
+      scenes:
+        - {who: 회진 보고, icon: stetho, en: "He passed his spontaneous breathing trial this morning.", ok: true}
+        - {who: 차트 기록, icon: board, en: "Pt tolerated a 30-minute breathing trial on minimal support.", ok: true}
+        - {who: 가족에게, icon: me, en: "He'll undergo a spontaneous breathing trial per protocol once he meets criteria.", ok: false, fix: "Today we'll give him a short trial of breathing on his own."}
+      why: "의료진끼리는 spontaneous breathing trial이라는 정식 이름이 정확하고 짧아요. 가족에게는 protocol, criteria 같은 말이 낯설고 차갑게 들리니, 무엇을 하는지 풀어서 말해 줘요."
+- situation: "이탈 준비도 스크리닝"
+  items:
+    - kind: pair
+      words: [w-oxygen, w-requirement, w-followcommands, w-pressor]
+      pairs: [[low, oxygen requirement], [follows, commands], ["off", pressors]]
+      decoys: [a wristband]
+      why: "이탈 준비도를 말할 때는 산소 요구량이 low, 지시는 follows commands, 혈압은 승압제에서 벗어났다는 뜻으로 off pressors라고 해요. 간호사끼리 스크리닝 항목을 읽을 때 그대로 나오는 짝이에요."
+    - kind: context
+      words: [w-stable]
+      word: stable
+      ko: 안정적인
+      scenes:
+        - {who: 회진 보고, icon: stetho, en: "He's hemodynamically stable off pressors.", ok: true}
+        - {who: 차트 기록, icon: board, en: "Pt stable on minimal vent settings, no pressors.", ok: true}
+        - {who: 가족에게, icon: me, en: "He's hemodynamically stable per our weaning parameters.", ok: false, fix: "His blood pressure is holding steady without any extra medicine."}
+      why: "hemodynamically stable은 의료진끼리 쓰는 정확한 말이지만 가족에게는 어렵고 사무적으로 들려요. 가족에게는 혈압이 무엇 없이 어떻게 유지되는지로 풀어 말해요."
+- situation: "SBT 중 호흡양상 관찰"
+  items:
+    - kind: slider
+      words: [w-rate, w-watch]
+      cue: "Colleague: \"His rate is 28, but his effort looks easy and his sats are holding.\""
+      scale: [keep watching, call the doctor, stop the trial]
+      answerAt: 0
+      why: "빠른 호흡수 하나만으로는 시험을 멈출 이유가 되지 않아요. 호흡 노력, 산소포화도, 표정, 심박수까지 함께 보면서 계속 지켜보고, 여럿이 나빠지면 그때 의사를 불러요."
+      example: "A fast rate alone isn't a reason to stop."
+      exKo: "빠른 호흡수 하나만으로는 중단할 이유가 안 돼요."
+    - kind: context
+      words: [w-tiring]
+      word: tiring
+      ko: 지치는
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "I think he's tiring — rate in the 30s and using his accessory muscles.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "He's tiring, so let's stop the trial and rest him.", ok: true}
+        - {who: 가족에게, icon: me, en: "He's tiring — his work of breathing is elevated and he's using accessory muscles.", ok: false, fix: "His breathing muscles are getting tired, so we're giving them a rest."}
+      why: "work of breathing, accessory muscles 같은 말은 의료진끼리는 정확하지만 가족에게는 겁만 줘요. 가족에게는 근육이 지쳐서 쉬게 해 준다는 쉬운 말로 설명해요."
+- situation: "발관 전 커프리크 확인"
+  items:
+    - kind: pair
+      words: [w-deflate, w-leak, w-swollen, w-airway]
+      pairs: [[deflate, the cuff], [listen, for a leak], [swollen, upper airway]]
+      decoys: [the wristband]
+      why: "커프 리크 검사는 deflate the cuff로 바람을 빼고, 튜브 옆으로 공기가 새는 소리를 listen for a leak하는 순서예요. 새는 소리가 거의 없으면 swollen upper airway, 즉 상기도가 부었을 가능성을 의심해요."
+    - kind: swap
+      words: [w-swollen, w-airway]
+      who: "가족에게 · 검사 목적 설명"
+      icon: me
+      before: ["We're checking whether his airway is too ", "edematous", " to take the tube out."]
+      options: [edematous, swollen, damaged]
+      answer: swollen
+      notes: {edematous: "의료진 용어(부종)예요. 가족은 못 알아듣는다.", swollen: "쉬운 말이면서 사실에 맞아요. 부은 정도를 확인하는 검사라고 전해요.", damaged: "영구적으로 다친 것처럼 들려서 사실보다 겁을 줘요."}
+      why: "검사의 목적은 기도가 부어 있는지 보는 것이에요. 가족에게는 edematous보다 swollen이 쉽고 정확해요."
+      ko: 관을 빼기엔 기도가 너무 부은 건 아닌지 확인하고 있어요
+- situation: "발관 물품·산소 준비"
+  items:
+    - kind: pair
+      words: [w-highflow, w-reintubationkit, w-suction]
+      pairs: [[high-flow, cannula], [reintubation, kit], [wall, suction]]
+      decoys: [the lunch tray]
+      why: "발관 전에 침상에 갖춰 두는 것들이에요. high-flow cannula는 코로 많은 양의 산소를 주는 장치, reintubation kit는 다시 관을 넣을 물품 세트, wall suction은 벽에 달린 흡인 연결구예요."
+    - kind: context
+      words: [w-ready]
+      word: ready
+      ko: 준비된
+      scenes:
+        - {who: 동료 간호사, icon: monitor, en: "Suction's ready at the bedside, and I've got the kit open.", ok: true}
+        - {who: 의사에게, icon: stetho, en: "Everything is ready — NIV, high-flow, and the reintubation cart.", ok: true}
+        - {who: 가족에게, icon: me, en: "The reintubation kit is ready at his bedside in case he fails extubation.", ok: false, fix: "We have extra equipment ready, just to be safe."}
+      why: "재삽관 세트가 준비됐다는 말은 의료진에게는 당연한 점검이지만, 가족에게 그대로 말하면 실패를 예상하는 것처럼 들려요. 가족에게는 만일을 위한 준비라고 말해요."
+- situation: "분비물·기침력 사정"
+  items:
+    - kind: slider
+      words: [w-secretion, w-minimal]
+      cue: "Nurse: \"Just a tiny bit of thin white secretion when I suction.\""
+      scale: [scant, moderate, copious]
+      answerAt: 0
+      why: "분비물의 양은 보통 scant(아주 소량), small, moderate, copious(매우 많음)처럼 단계로 적어요. 석션할 때 겨우 보이는 정도면 scant예요. 'minimal'과 같은 쪽이에요."
+      example: "Secretions are scant and clear this morning."
+      exKo: "오늘 아침 분비물은 소량이고 맑아요."
+    - kind: context
+      words: [w-cautious]
+      word: cautious
+      ko: 신중한
+      scenes:
+        - {who: 의사에게, icon: stetho, en: "I'd be cautious about extubating with that weak cough.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Let's be cautious — his secretions are heavy this morning.", ok: true}
+        - {who: 가족에게, icon: me, en: "I'm cautious about extubating him given his weak cough and aspiration risk.", ok: false, fix: "We're taking it slowly because his cough is still weak."}
+      why: "weak cough, aspiration risk 같은 말은 의료진끼리는 판단 근거로 정확하지만 가족에게는 겁을 줘요. 가족에게는 왜 서두르지 않는지만 쉬운 말로 알려 줘요."
+- situation: "SBT 실패 원인 감별"
+  items:
+    - kind: slider
+      words: [w-spike, w-heartrate]
+      cue: "Monitor: heart rate went from 78 to 132 within two minutes."
+      scale: [drift up, climb, spike]
+      answerAt: 2
+      why: "아주 짧은 시간에 가파르게 솟으면 spike예요. drift up은 천천히 오르는 것, climb은 꾸준히 오르는 것이라 속도가 달라요. 속도를 정확히 말해야 심장 원인을 의심하는 근거가 돼요."
+      example: "His heart rate spiked as soon as the trial started."
+      exKo: "시험이 시작되자마자 심박수가 급등했어요."
+    - kind: context
+      words: [w-anxiety]
+      word: anxiety
+      ko: 불안
+      scenes:
+        - {who: 의사에게 질문, icon: stetho, en: "Could the failed trial be anxiety rather than cardiac?", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Anxiety alone can drive his rate up, but let's make sure it isn't cardiac.", ok: true}
+        - {who: 환자에게, icon: me, en: "Your tachypnea is anxiety-driven.", ok: false, fix: "You're breathing fast because you're nervous, and that's very common."}
+      why: "tachypnea, anxiety-driven은 의료진끼리의 말이에요. 환자에게는 이유를 단정하듯 던지지 말고, 긴장해서 숨이 빨라질 수 있다는 걸 쉬운 말로 알려 줘요."

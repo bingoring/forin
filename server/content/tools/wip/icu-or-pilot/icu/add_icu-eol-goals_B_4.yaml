@@ -1,0 +1,114 @@
+- title: 인공호흡기 철회 중 증상 급변 관리
+  s:
+  - {t: "즉시 처치", i: pill, w: "I'm giving은 진행형이라 지금 이 순간 하고 있다는 뜻이에요. right now와 to ease her breathing으로 시점과 목적을 함께 말해, 급한 상황에서도 가족이 무슨 일인지 알 수 있어요.", d: "for the family", k: ["지금 바로 약을 드려서 몸을 편안하게 해드릴게요", "지금 바로 약을 드려서 자세를 편안하게 해드릴게요"], a: "breathing", o: ["thinking", "walking", "reading"]}
+  - {t: "상황 설명", i: shield, w: "This can happen은 드문 사고가 아니라 있을 수 있는 일이라고 알려요. I'm managing it immediately로 지금 처치 중이라고 말해, 설명과 행동이 동시에 전달돼요.", d: "for the family", k: ["이런 소리는 있을 수 있고, 제가 바로 조절하고 있어요", "이런 일은 있을 수 있고, 간호사가 바로 조절하고 있어요"], a: "managing", o: ["moving", "wrapping", "opening"]}
+  - {t: "곁 안내", i: handshake2, w: "Stay with her는 명령처럼 보여도 가족이 곁에 있어도 된다는 허락이에요. I'm right here로 간호사도 같은 공간에 있다고 말해 가족이 혼자 남겨졌다고 느끼지 않아요.", d: "for now", k: ["곁에 계세요 — 저도 바로 여기 있고, 곧 설명드릴 거예요", "곁에 계세요 — 저도 바로 밖에 있고, 곧 안정되실 거예요"], a: "here", o: ["outside", "upstairs", "downstairs"]}
+  - {t: "경과 설명", i: pill, w: "is starting to는 아직 시작 단계라는 뜻이라 이미 다 됐다고 과장하지 않고 변화의 방향만 말해요. 몸의 적응과 약의 효과를 한 문장에 묶어 가족이 상황이 나아지는 중임을 알아요.", d: "for the family", k: ["몸이 쉬고 있어요 — 약이 이제 듣기 시작하고 있어요", "몸이 적응하고 있어요 — 약을 이제 준비하기 시작하고 있어요"], a: "starting", o: ["learning", "hoping", "pretending"]}
+  - {t: "호흡 안내", i: faceWorried, w: "Breathe with me는 시범을 보이며 함께 하자는 말이라 가족이 혼자 감정을 다스리라는 압박을 받지 않아요. if that helps로 선택권을 남겨 강요하지 않아요.", d: "for the doctor", k: ["괜찮으시면 저와 함께 잠시 앉아볼까요", "괜찮으시면 저와 함께 잠시 물을 마셔볼까요"], a: "moment", o: ["month", "season", "decade"]}
+  - {t: "곁 약속", i: shield, w: "I won't leave는 의지를 담은 won't라 단순한 예측이 아니라 약속이에요. until she's comfortable again으로 기준을 시간이 아니라 환자의 상태로 잡아 줘요.", d: "for the family", k: ["그분이 다시 편안해지실 때까지 이 병동을 떠나지 않을게요", "제가 다시 편안해질 때까지 이 방을 떠나지 않을게요"], a: "comfortable", o: ["independent", "upright", "hungry"]}
+  - {t: "인정·격려", i: star, w: "You did exactly the right thing으로 가족의 행동을 구체적으로 인정해요. calling me over라는 -ing 표현으로 무엇을 잘했는지 짚어서, 다음에도 주저하지 않고 부르도록 도와요.", d: "for the family", k: ["당직자를 불러주신 게 정확히 맞는 판단이었어요", "저를 도와주신 게 정확히 맞는 판단이었어요"], a: "thing", o: ["word", "place", "name"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "호흡 급변 대응 4문장 순서"
+    why: "먼저 곁에 있으라고 하고 약을 주고, 3줄의 That medication은 2줄의 약을 가리켜요. 4줄의 she's settling은 3줄에서 처음 나오는 안정되는 상황이라 마지막에 와요."
+    lines:
+    - {en: "First, please stay with her — I'm right here.", icon: handshake2, ko: "먼저 곁에 계세요, 저도 바로 여기 있어요", note: "곁"}
+    - {en: "I'm giving her medication right now to ease her breathing.", icon: pill, ko: "지금 약을 드려 호흡을 편하게 해드리고 있어요", note: "처치"}
+    - {en: "That medication is starting to work, and her body is adjusting.", icon: stetho, ko: "그 약이 듣기 시작하고 몸이 적응하고 있어요", note: "경과"}
+    - {en: "Now that she's settling, I want you to know you did exactly the right thing calling me over.", icon: star, ko: "안정되고 계시니, 저를 불러주신 게 정확히 맞았다는 걸 알아주세요", note: "인정"}
+- title: 가족 내 목표 불일치 위기
+  s:
+  - {t: "공감", i: handshake2, w: "It's clear…는 간호사의 판단이 아니라 눈에 보이는 사실을 말하는 모양이라 누구 편도 들지 않아요. you both로 두 사람을 똑같이 인정해 갈등의 양쪽을 모두 존중해요.", d: "for the team", k: ["두 분 다 그분을 오래 알고 지내신 게 분명해요", "두 분 다 그분을 깊이 걱정하시는 게 분명해요"], a: "clear", o: ["brief", "quiet", "busy"]}
+  - {t: "환자 뜻", i: compass, w: "would have wanted는 이미 지난 과거에 환자가 바랐을 일을 가정하는 모양이에요. 가족의 바람이 아니라 환자 본인의 뜻을 기준으로 삼자는 제안이에요.", d: "for the family", k: ["그분이 무엇을 두려워하셨을지에 집중해봐요", "그분이 무엇을 말씀하셨을지에 집중해봐요"], a: "focus", o: ["wait", "laugh", "vote"]}
+  - {t: "윤리팀 소개", i: handshake2, w: "can help us work through…together로 윤리팀을 누가 이기는지 가리는 심판이 아니라 함께 풀어 가는 조력자로 소개해요. work through는 어려운 문제를 하나씩 풀어 나간다는 구동사예요.", d: "for the family", k: ["윤리팀이 함께 이 문제를 설명하도록 도와드릴 수 있어요", "원목팀이 함께 이 문제를 헤쳐나가도록 도와드릴 수 있어요"], a: "together", o: ["alone", "apart", "quickly"]}
+  - {t: "중립 선언", i: shield, w: "No one here is choosing sides로 두 사람 모두에게 중립이라고 먼저 밝혀 방어를 낮춰요. we're listening to both of you로 말뿐 아니라 실제로 하는 행동을 이어서 말해요.", d: "for the team", k: ["여기 누구도 편을 들지 않아요 — 두 분 말씀을 다 적고 있어요", "여기 누구도 서두르지 않아요 — 두 분 말씀을 다 듣고 있어요"], a: "sides", o: ["notes", "seats", "turns"]}
+  - {t: "과거 발언", i: speech, w: "What did she say when…으로 환자가 이전에 한 말을 사실로 묻는 질문이에요. 가족의 추측이 아니라 환자가 실제로 말한 것을 모으려는 질문이라 환자의 뜻을 찾는 데 도움이 돼요.", d: "last night", k: ["예전에 이런 상황에 대해 말씀하셨을 때 누구와 계셨나요?", "예전에 이런 병원에 대해 말씀하셨을 때 뭐라고 하셨나요?"], a: "situation", o: ["recipe", "vacation", "weather"]}
+  - {t: "의견 차 허용", i: handshake2, w: "It's okay to disagree로 의견이 다른 것 자체를 문제 삼지 않아요. still both be right to love her는 양쪽 모두 사랑에서 나온 의견이라고 인정해 누가 틀렸다는 평가를 피해요.", d: "for the team", k: ["의견이 달라도 괜찮고, 둘 다 그분을 걱정해서 그런 거예요", "의견이 달라도 괜찮고, 둘 다 그분을 잘 아셔서 그런 거예요"], a: "disagree", o: ["decide", "pray", "wait"]}
+  - {t: "차례 듣기", i: speech, w: "slow down은 속도를 늦춘다는 뜻으로 갈등이 높아졌을 때 말다툼을 멈추는 신호예요. each of your concerns로 한 사람씩 걱정을 들어 주겠다고 하면 누구의 말도 묻히지 않아요.", d: "for the team", k: ["잠시 천천히, 두 분의 질문을 각각 들어볼게요", "잠시 천천히, 두 분의 걱정을 각각 적어볼게요"], a: "concerns", o: ["jokes", "bills", "lunches"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "가족 갈등 중재 4문장 순서"
+    why: "먼저 두 사람을 모두 인정하고, 한 명씩 듣겠다고 하고, 3줄의 them이 그 걱정들을 가리켜요. 4줄의 that은 3줄의 환자의 뜻에 집중하자는 제안을 가리켜서 마지막에 와요."
+    lines:
+    - {en: "It's clear you both love her deeply.", icon: handshake2, ko: "두 분 다 그분을 깊이 사랑하시는 게 분명해요", note: "공감"}
+    - {en: "I'd like to hear each of your concerns, one at a time.", icon: speech, ko: "두 분의 걱정을 한 분씩 듣고 싶어요", note: "경청"}
+    - {en: "After we've heard them, let's focus on what she would have wanted.", icon: compass, ko: "다 듣고 나서 그분이 무엇을 원하셨을지에 집중해봐요", note: "기준"}
+    - {en: "If we need more help with that, the ethics team can work through it with us.", icon: shield, ko: "그게 더 필요하면 윤리팀이 함께 풀어갈 수 있어요", note: "지원"}
+- title: 무의미한 치료 요구 갈등
+  s:
+  - {t: "공감", i: handshake2, w: "I hear는 동의가 아니라 들었다는 뜻이라 먼저 가족의 마음을 인정하고 반박하지 않아요. how much you want…는 바람의 크기를 짚어 그 마음이 틀리지 않았다고 알려요.", d: "for the team", k: ["얼마나 계속 쉬어주시길 바라시는지 이해해요", "얼마나 계속 지켜봐주시길 바라시는지 이해해요"], a: "fighting", o: ["hiding", "shouting", "bargaining"]}
+  - {t: "사실 설명", i: stetho, w: "once helped와 now causing harm의 once와 now가 과거와 현재를 대비해 같은 치료의 의미가 달라졌다고 보여 줘요. 치료가 잘못이라는 평가가 아니라 시간이 지나 달라진 사실이라고 말해요.", d: "for the family", k: ["한때 도움이 됐던 치료들이 이제는 오히려 비싸지고 있어요", "얼마 전 도움이 됐던 치료들이 이제는 오히려 해가 되고 있어요"], a: "harm", o: ["noise", "delay", "debt"]}
+  - {t: "돌봄 지속", i: shield, w: "won't stop caring으로 가족이 가장 두려워하는 버림받음을 먼저 부정해요. our focus shifts to…로 돌봄은 계속되고 초점만 옮겨 간다고 설명해요.", d: "for the team", k: ["돌봄을 멈추지는 않아요 — 다만 초점이 안전함으로 옮겨가는 거예요", "돌봄을 멈추지는 않아요 — 다만 초점이 일상으로 옮겨가는 거예요"], a: "shifts", o: ["falls", "grows", "rests"]}
+  - {t: "사실 전달", i: stetho, w: "more, not less로 방향을 비교해 지금 시도가 고통을 덜어 주는 쪽이 아니라 더하는 쪽이라고 분명히 말해요. 주어를 we로 써서 누구의 탓도 아닌 지금의 상황으로 전해요.", d: "for the family", k: ["지금 시도하는 모든 것이 그분을 덜 외롭게 하는 게 아니라 더 외롭게 해요", "그동안 시도한 모든 것이 그분을 덜 힘들게 하는 게 아니라 더 힘들게 해요"], a: "suffer", o: ["sleep", "walk", "eat"]}
+  - {t: "의미 전환", i: compass, w: "once meant와 now it means로 같은 말 fighting의 뜻이 시간에 따라 바뀌었다고 말해요. 싸운다는 가족의 말을 버리지 않고 뜻을 새로 채워 줘요.", d: "for the family", k: ["한때는 싸운다는 게 더 많은 면회를 뜻했지만, 지금은 편안함을 뜻해요", "한때는 싸운다는 게 더 많은 치료를 뜻했지만, 지금은 휴식을 뜻해요"], a: "treatment", o: ["visits", "food", "paperwork"]}
+  - {t: "공감", i: faceWorried, w: "I know how hard it is to…로 어려운 소식을 전하기 전에 듣는 사람의 감정을 먼저 인정해요. isn't responding은 몸이 치료에 반응하지 않는다는 사실을 돌려 말하되 숨기지 않는 표현이에요.", d: "for the family", k: ["몸이 반응하지 않는다는 걸 말하는 게 얼마나 힘든 일인지 알아요", "몸이 아프다는 걸 듣는 게 얼마나 힘든 일인지 알아요"], a: "hard", o: ["long", "far", "early"]}
+  - {t: "윤리팀 제안", i: handshake2, w: "Let's talk with는 함께 가자는 권유라 병원이 일방적으로 결정하는 게 아니라 상의한다는 뜻이에요. what's best for him으로 기준이 가족이나 병원이 아니라 환자라고 말해요.", d: "for the family", k: ["원목님과 함께 그분께 가장 좋은 게 무엇인지 이야기해봐요", "윤리팀과 함께 그분께 가장 쉬운 게 무엇인지 이야기해봐요"], a: "ethics", o: ["billing", "parking", "laundry"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "치료 요구 갈등 응대 4문장 순서"
+    why: "먼저 가족의 마음을 인정하고, 치료가 해가 되고 있다는 사실을 전하고, 3줄의 That's why가 그 사실을 이유로 이어요. 4줄의 that은 3줄의 초점 이동을 가리켜서 마지막에 와요."
+    lines:
+    - {en: "I hear how much you want us to keep fighting for him.", icon: handshake2, ko: "얼마나 계속 싸워주시길 바라시는지 이해해요", note: "공감"}
+    - {en: "The treatments that once helped are now causing harm, and I know that is hard to hear.", icon: stetho, ko: "한때 도움이 됐던 치료가 이제 해가 되고 있어요, 듣기 힘드실 거 알아요", note: "사실"}
+    - {en: "That's why we won't stop caring for him — our focus shifts to his comfort.", icon: shield, ko: "그래서 돌봄은 멈추지 않고 초점이 편안함으로 옮겨가요", note: "이유"}
+    - {en: "If it would help, we can talk with the ethics team about whether that fits what he would want.", icon: compass, ko: "원하시면 그게 그분의 뜻에 맞는지 윤리팀과 이야기할 수 있어요", note: "제안"}
+- title: 임종 급변·가족 위기 대응
+  s:
+  - {t: "곁 약속", i: handshake2, w: "I'm right here로 현재의 존재를 먼저 말하고, I won't leave로 앞으로의 약속을 이어요. 위기에서는 설명보다 곁에 있겠다는 짧은 말이 먼저 필요해요.", d: "for the doctor", k: ["저는 바로 여기 곁에 있고, 곧 돌아올게요", "저는 바로 여기 문 앞에 있고, 떠나지 않을게요"], a: "here", o: ["outside", "upstairs", "downstairs"]}
+  - {t: "임종 고지", i: shield, w: "passing은 죽음을 부드럽게 돌려 쓴 말이라 슬픔에 잠긴 가족에게 덜 날카롭게 전해져요. looks peaceful과 he's not in pain처럼 보이는 것과 현재 상태를 구체적으로 말해 가족이 지켜보며 느끼는 걱정에 답해요.", d: "for the family", k: ["그분의 임종은 평온해 보이고 열도 없으세요", "그분의 임종은 평온해 보이고 아드님도 곁에 계세요"], a: "peaceful", o: ["noisy", "crowded", "bright"]}
+  - {t: "침착 안내", i: speech, w: "Take a breath는 감정이 큰 사람에게 잠깐 멈추라는 짧은 안내예요. he can hear you는 임종 때 청각이 남아 있을 수 있다는 점을 가족이 할 수 있는 행동으로 바꿔 말한 표현이에요.", d: "for a minute", k: ["숨을 한 번 쉬어보세요 — 손을 잡으셔도 되고, 그분이 느끼실 수 있어요", "물을 한 번 마셔보세요 — 말을 거셔도 되고, 그분이 들으실 수 있어요"], a: "hear", o: ["smell", "taste", "copy"]}
+  - {t: "솔직한 답", i: shield, w: "Yes로 가족의 질문에 돌려 말하지 않고 바로 답해요. he's dying이라고 분명히 말한 뒤 I'll stay…through it으로 혼자가 아니라는 약속을 이어 사실과 곁을 함께 줘요.", d: "for the family", k: ["네, 임종이 다가오고 있고, 그 시간 내내 밖에 있을게요", "네, 호흡이 느려지고 있고, 그 시간 내내 곁에 있을게요"], a: "stay", o: ["move", "pay", "drive"]}
+  - {t: "감정 허용", i: faceWorried, w: "You don't have to be strong은 강해야 한다는 가족의 부담을 직접 풀어 줘요. just be with him으로 해야 할 일을 곁에 있는 것 하나로 줄여 과제를 단순하게 만들어요.", d: "for the family", k: ["지금 서두르실 필요 없어요 — 그냥 곁에 계셔주시면 돼요", "지금 강해지실 필요 없어요 — 그냥 잠시 앉아 계시면 돼요"], a: "strong", o: ["early", "busy", "dressed"]}
+  - {t: "변화 설명", i: stetho, w: "that's part of how this goes는 지금 보이는 변화가 이 과정의 일부라고 알려 줘요. breathing is slowing으로 눈앞에서 일어나는 일을 먼저 말해 가족이 설명 없이 지켜보는 불안을 덜어요.", d: "for a while", k: ["맥박이 느려지고 있는데, 그건 이 과정의 일부예요", "호흡이 얕아지고 있는데, 그건 이 과정의 일부예요"], a: "slowing", o: ["echoing", "freezing", "glowing"]}
+  - {t: "인정", i: star, w: "You're doing exactly what he needs로 가족이 지금 하는 행동을 구체적으로 인정해요. just being here로 특별한 일을 하지 않아도 곁에 있는 것이 충분하다고 알려 줘요.", d: "for the family", k: ["아이들에게 필요한 걸 지금 하고 계세요 — 곁에 있는 것만으로도요", "그분께 필요한 걸 지금 하고 계세요 — 말을 거는 것만으로도요"], a: "doing", o: ["making", "taking", "getting"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "임종 급변 가족 지지 4문장 순서"
+    why: "가족의 질문에 먼저 솔직히 답하고, 2줄의 that은 1줄의 임종을 가리켜 호흡 변화를 설명해요. 3줄의 all of that은 앞 두 줄을, 4줄의 Talking to him은 3줄의 you can talk to him을 가리켜서 마지막에 와요."
+    lines:
+    - {en: "Yes, he is dying, and I'm right here with you.", icon: shield, ko: "네, 임종이 다가오고 있고 저는 바로 곁에 있어요", note: "답"}
+    - {en: "His breathing is slowing, and that is part of how this goes.", icon: stetho, ko: "호흡이 느려지는 건 이 과정의 일부예요", note: "설명"}
+    - {en: "Through all of that, you can talk to him; hearing is often the last sense to go.", icon: speech, ko: "그 모든 동안 말을 거셔도 돼요, 청각은 마지막까지 남는 경우가 많아요", note: "권유"}
+    - {en: "Talking to him, or just sitting quietly, is exactly what he needs — you don't have to be strong.", icon: star, ko: "말을 걸거나 조용히 앉아 계신 것이 그분께 필요한 거예요, 강하실 필요 없어요", note: "인정"}
+- title: 대리결정 부재·윤리위원회 연계
+  s:
+  - {t: "절차 사유", i: board, w: "no identified surrogate로 확인된 대리결정자가 없다는 사실을, so로 그 결과인 윤리위원회 필요로 이어요. 차트에 쓰는 말은 이유와 결과를 한 문장에 묶어 읽는 사람이 바로 이해하게 해요.", d: "for the family", k: ["확인된 대리결정자가 없어서 사회복지사가 필요해요", "확인된 대리결정자가 없어서 법률팀이 필요해요"], a: "surrogate", o: ["insurance", "password", "passport"]}
+  - {t: "기록 요청", i: pencil, w: "Let's document는 담당자 한 사람이 아니라 팀이 함께 기록하자는 권유예요. everything we know about…으로 확실한 것만이 아니라 알고 있는 모든 단서를 적으라는 범위를 말해요.", d: "for the family", k: ["알고 있는 사전 의사를 전부 확인해둡시다", "알고 있는 사전 병력을 전부 기록해둡시다"], a: "wishes", o: ["debts", "hobbies", "addresses"]}
+  - {t: "절차 약속", i: compass, w: "follow the process로 개인의 판단이 아니라 정해진 절차를 따른다고 밝혀요. in his best interest는 대리인이 없을 때 결정의 기준이 환자의 최선의 이익이라는 뜻이에요.", d: "for the family", k: ["그분께 최선인 결정을 내리는 일정을 따를게요", "그분께 최선인 결정을 서류로 남기는 절차를 따를게요"], a: "process", o: ["schedule", "menu", "rumor"]}
+  - {t: "가족 탐색", i: magnify, w: "차트식 문장이라 We 같은 주어와 be동사를 줄여 짧게 적어요. after multiple attempts로 몇 번 찾아봤는지 근거를 같이 적어 찾으려는 노력이 있었음이 드러나요.", d: "in the unit", k: ["여러 차례 시도했으나 가까운 지인을 찾지 못함", "한 차례 시도했으나 가까운 가족을 찾지 못함"], a: "multiple", o: ["private", "random", "rapid"]}
+  - {t: "기록 부재", i: board, w: "차트식 문장이라 are를 줄인 not documented 형태예요. anywhere in the chart로 일부가 아니라 차트 전체를 찾아봤다는 범위를 밝혀 기록이 없다는 결론에 근거를 줘요.", d: "for the family", k: ["사전 의사가 병동 어디에도 기록되어 있지 않음", "사전 병력이 차트 어디에도 기록되어 있지 않음"], a: "documented", o: ["delivered", "painted", "framed"]}
+  - {t: "자문 상태", i: board, w: "placed는 의뢰를 넣었다는 병원 용어이고 awaiting은 지금 기다리는 중이라는 상태 표시예요. 차트는 한 일과 지금 상태를 대시로 나눠 적어 다음 근무자가 이어 갈 수 있게 해요.", d: "for the family", k: ["법률자문 의뢰함 — 위원회 검토 대기 중", "윤리자문 의뢰함 — 병동 회의 대기 중"], a: "awaiting", o: ["avoiding", "attending", "adopting"]}
+  - {t: "판단 능력", i: stetho, w: "Two physicians로 판정한 사람 수를 먼저 밝혀 한 사람의 판단이 아니라는 근거를 줘요. lacks는 현재 능력이 없다는 뜻의 동사이고 confirmed가 확인을 마쳤다는 과거형이에요.", d: "for the family", k: ["간호사 2인이 의사결정 능력 없음을 확인함", "의사 3인이 의사결정 능력 없음을 확인함"], a: "physicians", o: ["pharmacists", "chaplains", "lawyers"]}
+  order:
+    tag: "차트 흐름"
+    icon: compass
+    ko: "대리결정자 부재 기록 4문장 순서"
+    why: "먼저 능력 판정을 쓰고, 2줄의 that이 그 판정을 이유로 삼아 대리인을 찾은 결과를 써요. 3줄의 the same search가 2줄의 탐색을 가리키고, 4줄의 both가 2·3줄 결과를 받아 의뢰로 이어서 순서가 하나예요."
+    lines:
+    - {en: "Two physicians confirmed he lacks decision-making capacity.", icon: stetho, ko: "의사 2인이 의사결정 능력 없음을 확인함", note: "판정"}
+    - {en: "Because of that, we looked for a surrogate; no next of kin was located after multiple attempts.", icon: magnify, ko: "그래서 대리인을 찾았으나 여러 차례 시도에도 가까운 가족을 찾지 못함", note: "탐색"}
+    - {en: "In the same search, his prior wishes were not documented anywhere in the chart.", icon: board, ko: "같은 탐색에서 사전 의사도 차트 어디에도 기록돼 있지 않음", note: "기록"}
+    - {en: "With no surrogate and no documented wishes, an ethics consult was placed.", icon: compass, ko: "대리인도 기록된 의사도 없어 윤리자문을 의뢰함", note: "의뢰"}
+- title: 젊은 환자 임종 특수 상황
+  s:
+  - {t: "공감", i: handshake2, w: "There is no easy way로 쉬운 방법이 없다는 사실을 먼저 인정해 위로를 서두르지 않아요. you don't have to face it alone으로 혼자가 아니라는 말을 이어요.", d: "for the family", k: ["쉬운 방법은 없지만, 혼자 기다리지 않으셔도 돼요", "빠른 방법은 없지만, 혼자 감당하지 않으셔도 돼요"], a: "easy", o: ["cheap", "safe", "free"]}
+  - {t: "전문가 소개", i: handshake2, w: "Child life specialists는 아이들의 이해를 돕는 전문가 직군 이름이에요. can help you talk with는 대신 말해 주는 게 아니라 부모가 직접 말하도록 돕는다는 뜻이에요.", d: "for the family", k: ["아동생활전문가가 자녀분들과 놀아주시는 걸 도와드릴 수 있어요", "상담사가 자녀분들과 이야기하시는 걸 도와드릴 수 있어요"], a: "specialists", o: ["electricians", "cooks", "guards"]}
+  - {t: "지지 약속", i: shield, w: "through every step으로 일부 구간이 아니라 전 과정이라는 범위를 말해요. you and her family를 함께 부르면 말하는 사람과 환자의 가족 모두를 지지 대상에 넣어요.", d: "for the day", k: ["매 단계마다 가족분과 함께 안내해드릴게요", "매일 아침 가족분과 함께 지지해드릴게요"], a: "step", o: ["floor", "door", "season"]}
+  - {t: "공감", i: faceWorried, w: "this young으로 나이가 슬픔의 특별함을 만든다고 짚어요. that's real은 그 느낌이 상상이나 과장이 아니라고 확인해 주는 말이에요.", d: "for the family", k: ["이렇게 갑작스럽게 잃는 건 다르게 느껴지고, 그건 실제예요", "이렇게 젊은 나이에 아프면 다르게 느껴지고, 그건 실제예요"], a: "young", o: ["tall", "loud", "fast"]}
+  - {t: "아이 이해", i: bulb, w: "often은 늘이 아니라 흔히라는 정도라 아이들이 모든 걸 안다고 단정하지 않아요. in their own way로 어른과 같은 방식은 아니지만 나름의 이해가 있다고 말해요.", d: "for the family", k: ["아이들은 저희가 생각하는 것보다 나름의 방식으로 더 많이 기억해요", "어른들은 저희가 생각하는 것보다 나름의 방식으로 더 많이 이해해요"], a: "understand", o: ["ignore", "imagine", "borrow"]}
+  - {t: "말 찾기", i: speech, w: "find the right words는 정답이 하나 있는 게 아니라 알맞은 표현을 함께 찾는다는 뜻이에요. We can help you로 대신 말하는 게 아니라 부모의 말을 돕는다는 점을 분명히 해요.", d: "for the family", k: ["자녀분들께 할 알맞은 책을 찾도록 도와드릴 수 있어요", "조카분들께 할 알맞은 말을 찾도록 도와드릴 수 있어요"], a: "words", o: ["books", "toys", "gifts"]}
+  - {t: "곁 약속", i: shield, w: "carry this는 무거운 짐을 나르는 비유라 감당해야 할 슬픔을 짐으로 말해요. by yourself로 혼자라는 점을 짚어 함께라는 뜻을 반대편에서 전해요.", d: "for the day", k: ["이걸 혼자 결정하실 필요는 없어요", "이걸 모두 짊어지실 필요는 없어요"], a: "carry", o: ["sign", "hide", "read"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "젊은 환자 가족 지지 4문장 순서"
+    why: "먼저 쉬운 방법이 없다고 인정하고, 2줄의 That이 그 말을 받아 젊은 나이의 상실을 짚어요. 3줄에서 자녀를 처음 말하고, 4줄의 them이 3줄의 아이들을 가리켜서 마지막에 와요."
+    lines:
+    - {en: "There is no easy way, and you don't have to face it alone.", icon: handshake2, ko: "쉬운 방법은 없지만 혼자 감당하지 않으셔도 돼요", note: "공감"}
+    - {en: "That is especially true when someone this young is lost.", icon: faceWorried, ko: "이렇게 젊은 분을 잃을 때는 더욱 그래요", note: "인정"}
+    - {en: "Her children may understand more than we expect, in their own way.", icon: bulb, ko: "자녀분들은 생각보다 나름의 방식으로 더 많이 이해할 수 있어요", note: "아이들"}
+    - {en: "Child life specialists can help you find the right words for them.", icon: handshake2, ko: "아동생활전문가가 그들에게 할 알맞은 말을 찾도록 도와드려요", note: "지원"}

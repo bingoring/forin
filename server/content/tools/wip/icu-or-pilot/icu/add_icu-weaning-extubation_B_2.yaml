@@ -6,7 +6,7 @@
     - {tag: "목적 설명", icon: shield, why: "make sure he can breathe once the tube is out은 빼기 전에 빼도 안전한지 확인하는 것이 목적이라는 말이에요.", decoy: "after the visit", d: ["관이 빠진 뒤에도 말을 잘 할 수 있는지 확실히 하는 데 도움이 돼요.", "관이 빠지기 전에도 숨을 잘 쉴 수 있는지 확실히 하는 데 도움이 돼요."], a: "out", o: ["in", "tied", "wet"]}
     - {tag: "청진 방법", icon: stetho, why: "while로 두 동작을 동시에 한다고 말해서 지금 무엇을 하는 중인지 분명해요.", decoy: "from the door", d: ["튜브 주변으로 공기가 지나가게 하면서 목에서 소리를 기록하고 있어요.", "튜브 주변으로 공기가 지나가게 하면서 목에서 소리를 세고 있어요."], a: "neck", o: ["wrist", "knee", "ear"]}
     - {tag: "위험 신호", icon: siren, why: "No … at all로 전혀 없다는 점을 강조하고, can mean으로 가능성만 말해서 단정은 피해요.", decoy: "for the shift", d: ["새는 소리가 전혀 없으면 지금 기도가 너무 말랐다는 뜻일 수 있어요.", "새는 소리가 전혀 없으면 내일 기도가 너무 부었다는 뜻일 수 있어요."], a: "leak", o: ["fever", "rash", "smell"]}
-    - {tag: "보고 계획", icon: handshake2, why: "if절로 보고 조건을, so we can으로 그 보고의 목적을 달아서 이유가 분명한 약속이 돼요.", decoy: "at the desk", d: ["새는 정도가 작으면 가족에게 알려서 하루 더 기다릴 수 있게 할게요.", "새는 정도가 작으면 의사에게 알려서 한 시간 더 기다릴 수 있게 할게요."], a: "small", o: ["loud", "wet", "new"]}
+    - {tag: "보고 계획", icon: handshake2, why: "if절로 보고 조건을, so we can으로 그 보고의 목적을 달아서 이유가 분명한 약속이 돼요.", decoy: "at the desk", d: ["새는 정도가 작으면 팀장에게 알려서 하루 더 기다릴 수 있게 할게요.", "새는 정도가 작으면 의사에게 알려서 한 시간 더 기다릴 수 있게 할게요."], a: "small", o: ["loud", "wet", "new"]}
   order:
     tag: "대화 흐름"
     icon: stetho
@@ -33,13 +33,13 @@
     lines:
       - {en: "Let's get everything ready at the bedside before we extubate.", icon: gear, ko: "발관 전에 침상에 모두 준비해요", note: "목표"}
       - {en: "That means the high-flow cannula, with NIV set up as a backup.", icon: shield, ko: "고유량 캐뉼라와 예비 NIV예요", note: "장비"}
-      - {en: "With all of that in place, I'll confirm suction and the reintubation kit are within reach.", icon: siren, ko: "흡인기와 재삽관 세트가 손닿는지 볼게요", note: "응급"}
+      - {en: "With that in place, I'll confirm suction and the reintubation kit are within reach.", icon: siren, ko: "흡인기와 재삽관 세트가 손닿는지 볼게요", note: "응급"}
       - {en: "Once those are confirmed, we're ready to start.", icon: check, ko: "확인되면 시작할 수 있어요", note: "시작"}
 5:
   s:
     - {tag: "분비물 상태", icon: lab, why: "minimal과 clear 두 형용사로 양과 상태를 함께 보고하면 발관 판단에 필요한 정보가 한 번에 전해져요.", decoy: "in the bag", d: ["지금은 분비물이 적고 끈적해요.", "지금은 분비물이 적고 하얘요."], a: "clear", o: ["thick", "bloody", "yellow"]}
     - {tag: "기침 평가", icon: stetho, why: "so가 강한 기침이라는 근거에서 기도 보호라는 결론으로 이어 줘요.", decoy: "for the nurse", d: ["기침이 강해서 스스로 앉을 수 있어요.", "기침이 강해서 스스로 호출벨을 누를 수 있어요."], a: "protect", o: ["block", "close", "wash"]}
-    - {tag: "위험 조건", icon: bell, why: "would는 아직 일어나지 않은 가정이라, 지금 환자가 아니라 판단 기준을 설명하는 말이에요.", decoy: "for his lunch", d: ["기침이 약하거나 분비물이 많으면 퇴원에 신중해질 거예요.", "기침이 약하거나 열이 높으면 발관에 신중해질 거예요."], a: "cautious", o: ["curious", "sleepy", "eager"]}
+    - {tag: "위험 조건", icon: bell, why: "would는 아직 일어나지 않은 가정이라, 지금 환자가 아니라 판단 기준을 설명하는 말이에요.", decoy: "for his lunch", d: ["기침이 약하거나 분비물이 많으면 수술에 신중해질 거예요.", "기침이 약하거나 열이 높으면 발관에 신중해질 거예요."], a: "cautious", o: ["curious", "sleepy", "eager"]}
     - {tag: "흡인 설명", icon: gear, why: "so we can see로 흡인의 목적이 양을 확인하는 것임을 밝히고, now가 지금 진행 중임을 알려요.", decoy: "to the sink", d: ["실제로 무슨 색인지 보려고 지금 흡인하고 있어요.", "실제로 어디에 있는지 보려고 지금 흡인하고 있어요."], a: "really", o: ["hardly", "rarely", "barely"]}
     - {tag: "기침 강도", icon: stetho, why: "strong enough to ~는 기준을 넘었다는 뜻이라, 강하다는 사실보다 충분하다는 판단을 전해요.", decoy: "for the shift", d: ["기침이 충분히 강해서 스스로 소변을 배출할 수 있어요.", "기침이 충분히 강해서 스스로 분비물을 닦을 수 있어요."], a: "strong", o: ["loud", "wet", "short"]}
     - {tag: "지속 확인", icon: calendar, why: "keep ~ing는 한 번이 아니라 계속한다는 뜻이고, every hour가 간격을 정해 줘요.", decoy: "at the desk", d: ["결정하기 전에 매시간 소변을 계속 확인할게요.", "퇴근하기 전에 매시간 분비물을 계속 확인할게요."], a: "hour", o: ["week", "year", "month"]}
@@ -51,13 +51,13 @@
     lines:
       - {en: "I'm suctioning now so we can see how much is really there.", icon: gear, ko: "양을 보려고 지금 흡인해요", note: "흡인"}
       - {en: "That tells me his secretions are minimal and clear.", icon: lab, ko: "분비물은 적고 맑아요", note: "결과"}
-      - {en: "On top of that, he has a strong cough, so he can protect his own airway.", icon: stetho, ko: "기침도 강해 기도를 지킬 수 있어요", note: "기침"}
+      - {en: "On top of that, he has a strong cough, so he can protect his airway.", icon: stetho, ko: "기침도 강해 기도를 지킬 수 있어요", note: "기침"}
       - {en: "With both of those looking good, I'll keep checking every hour before we decide.", icon: calendar, ko: "둘 다 좋지만 결정 전 매시간 확인해요", note: "지속 확인"}
 6:
   s:
     - {tag: "원인 감별", icon: magnify, why: "세 후보를 나열하고 sort out으로 하나씩 가려내자고 하면 막연한 걱정이 구조화된 질문이 돼요.", decoy: "in the lab", d: ["이게 심장 때문인지, 호흡 때문인지, 소음 때문인지 가려봅시다.", "이게 신장 때문인지, 호흡 때문인지, 불안 때문인지 가려봅시다."], a: "cardiac", o: ["renal", "hepatic", "skeletal"]}
     - {tag: "심장 소견", icon: chartup, why: "which points to로 앞의 관찰을 해석으로 이어서, 근거와 결론이 한 문장에 놓여요.", decoy: "for the shift", d: ["혈압과 호흡수가 급등한 걸 보니 심장 원인을 가리키네요.", "혈압과 심박수가 서서히 오른 걸 보니 심장 원인을 가리키네요."], a: "spiked", o: ["settled", "softened", "flattened"]}
-    - {tag: "보고 의도", icon: handshake2, why: "so we can adjust로 보고의 목적을 밝혀, 단순 전달이 아니라 계획 수정을 위한 보고임을 알려요.", decoy: "to the patient", d: ["이 양상을 보고해서 이탈 계획을 취소할 수 있게 할게요.", "이 양상을 보고해서 퇴원 계획을 조정할 수 있게 할게요."], a: "adjust", o: ["memorize", "publish", "translate"]}
+    - {tag: "보고 의도", icon: handshake2, why: "so we can adjust로 보고의 목적을 밝혀, 단순 전달이 아니라 계획 수정을 위한 보고임을 알려요.", decoy: "to the patient", d: ["이 양상을 보고해서 이탈 계획을 취소할 수 있게 할게요.", "이 양상을 보고해서 식이 계획을 조정할 수 있게 할게요."], a: "adjust", o: ["memorize", "publish", "translate"]}
     - {tag: "호흡 감별", icon: stetho, why: "without any cardiac changes가 한쪽 원인이 빠진 조건이라, 어느 쪽 원인인지 가르는 기준이 돼요.", decoy: "for the lab", d: ["신장 변화 없이 호흡만 힘들어 보이면 아마 호흡 문제일 거예요.", "혈압 변화 없이 호흡만 힘들어 보이면 아마 호흡 문제일 거예요."], a: "labored", o: ["calm", "quiet", "regular"]}
     - {tag: "불안 요인", icon: faceWorried, why: "alone이 다른 원인 없이 불안만으로도라는 뜻이라, 실패가 곧 몸의 문제라는 단정을 풀어 줘요.", decoy: "to the family", d: ["가끔은 소음만으로도 시험에 실패할 수 있어요.", "보통은 불안만으로도 시험에 실패할 수 있어요."], a: "anxiety", o: ["hunger", "boredom", "curiosity"]}
     - {tag: "추이 관찰", icon: chartup, why: "trend는 값 하나가 아니라 변화의 흐름을 본다는 동사이고, for the next hour가 기간을 정해요.", decoy: "to the pharmacy", d: ["다음 두 시간 동안 활력징후 추이를 보고 가라앉는지 볼게요.", "다음 한 시간 동안 활력징후 추이를 보고 졸리는지 볼게요."], a: "settles", o: ["spreads", "sleeps", "shrinks"]}

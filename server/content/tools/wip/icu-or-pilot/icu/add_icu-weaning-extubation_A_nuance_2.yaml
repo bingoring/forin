@@ -1,0 +1,133 @@
+- situation: "진정 중단 안전 수행"
+  items:
+    - kind: pair
+      words: [w-restart, w-halfdose, w-watch, w-pull, w-line, w-vitals]
+      pairs: [[restart, at half dose], [watch, his vitals], [pull, at his lines]]
+      decoys: [to the pharmacy]
+      why: "진정 중단 중에는 restart at half dose, 즉 전에 쓰던 양의 절반으로 다시 시작하는 기준을 미리 정해 두고, watch his vitals로 활력징후를 보며, 깨어나는 환자가 pull at his lines로 관을 잡아당기지 않는지 살펴요."
+    - kind: context
+      words: [w-agitation]
+      word: agitation
+      ko: 초조
+      scenes:
+        - {who: 인계, icon: speech, en: "No agitation overnight, RASS stayed at zero.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Watch for agitation as he wakes up.", ok: true}
+        - {who: 가족에게, icon: me, en: "He's displaying agitation as the sedation wears off.", ok: false, fix: "He's restless as he wakes up, which is common, and we're staying right with him."}
+      why: "agitation과 RASS(진정·초조 척도)는 의료진끼리 쓰는 정확한 말이에요. 가족에게는 displaying agitation이 사람을 증상으로만 보는 것처럼 들리니, 안절부절한 모습이 흔하다고 안심시키며 쉬운 말로 전해요."
+- situation: "발관 후 HFNC 전환 관리"
+  items:
+    - kind: slider
+      words: [w-highflow, w-support]
+      cue: "Nurse: \"He needs more than a regular nasal cannula, but not a mask yet.\""
+      scale: [nasal cannula, high-flow, NIV mask]
+      answerAt: 1
+      why: "산소 장치는 nasal cannula, high-flow, NIV 마스크 순으로 지원 강도가 올라가요. 일반 코삽입관보다 더 필요하지만 마스크 압력까지는 아닐 때가 high-flow예요."
+      example: "He's on high-flow for now, not NIV."
+      exKo: "지금은 NIV가 아니라 고유량 산소를 쓰고 있어요."
+    - kind: swap
+      words: [w-highflow, w-warm]
+      who: "가족에게 · 장치 설명"
+      icon: me
+      before: ["The ", "HFNC", " is helping him breathe without the tube."]
+      options: [HFNC, warm oxygen in his nose, respiratory support modality]
+      answer: warm oxygen in his nose
+      notes: {HFNC: "의료진 약어예요. 가족은 무슨 장치인지 모른다.", "warm oxygen in his nose": "무엇이 어디로 들어가는지 쉬운 말로 알려 줘요. 따뜻하고 많은 양의 산소라는 특징도 담겨요.", respiratory support modality: "차트에 쓰는 말이라 가족에게는 사무적이고 어려워요."}
+      why: "가족은 장치 이름보다 지금 무엇이 그를 돕는지 알고 싶어 해요. 약어보다 코로 들어가는 따뜻한 산소라고 말하면 튜브가 아니라는 점도 분명해져요."
+      ko: 코로 들어가는 따뜻한 산소가 튜브 없이 숨 쉬는 걸 돕고 있어요
+- situation: "발관 후 예방 NIV 적용"
+  items:
+    - kind: slider
+      words: [w-risk]
+      cue: "Chart: age 72, COPD, and many days on the ventilator."
+      scale: [low risk, moderate risk, high risk]
+      answerAt: 2
+      why: "고령, 만성 폐질환(COPD), 인공호흡기를 오래 단 기간은 모두 발관 뒤 다시 관을 넣게 될 위험을 높이는 조건이에요. 이런 환자는 예방적으로 NIV를 적용하는 후보로 봐요."
+      example: "He's high risk for needing the tube again."
+      exKo: "그는 튜브가 다시 필요해질 위험이 높아요."
+    - kind: context
+      words: [w-mask]
+      word: mask
+      ko: 마스크
+      scenes:
+        - {who: 동료 간호사, icon: monitor, en: "Check the mask seal — he's leaking by the nose.", ok: true}
+        - {who: 의사에게, icon: stetho, en: "I'd put the mask on right after extubation, before he tires out.", ok: true}
+        - {who: 가족에게, icon: me, en: "We had to put the mask on because he's failing extubation.", ok: false, fix: "The mask is just extra help to keep him from needing the tube again."}
+      why: "예방적 마스크를 실패의 신호처럼 말하면 사실과 달라요. 가족에게는 예방 목적의 도움이라는 점을 분명히 말해요."
+- situation: "재삽관 위험 평가·소통"
+  items:
+    - kind: slider
+      words: [w-closely, w-watch]
+      cue: "Family: \"Is he doing badly?\"  You: \"No — he's higher risk, so we're staying closer.\""
+      scale: [routine checks, closer watching, one-on-one care]
+      answerAt: 1
+      why: "고위험이라고 해서 곧 실패한다는 뜻은 아니에요. 평소보다 더 자주, 더 가까이 본다는 뜻이에요. 가족에게는 이 구분을 분명히 해 주면 불안이 줄어요."
+      example: "We're watching him closely tonight."
+      exKo: "오늘 밤은 세심히 지켜보고 있어요."
+    - kind: context
+      words: [w-riskfactor]
+      word: risk factors
+      ko: 위험인자
+      scenes:
+        - {who: 인계, icon: speech, en: "Risk factors for reintubation: weak cough and prolonged intubation.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "He has multiple risk factors, so let's keep the kit at the bedside tonight.", ok: true}
+        - {who: 가족에게, icon: me, en: "He has several risk factors for reintubation failure.", ok: false, fix: "A few things make it more likely he'll need the tube again, so we're watching him closely."}
+      why: "risk factors, reintubation failure는 의료진끼리의 정확한 말이에요. 가족에게 그대로 말하면 이미 실패한 것처럼 들려서, 무엇이 가능성을 높이는지와 그래서 무엇을 하는지로 풀어 말해요."
+- situation: "흡기근 약화 재활 연계"
+  items:
+    - kind: slider
+      words: [w-weaken, w-muscle]
+      cue: "After many days on the ventilator, his breathing muscles lost strength."
+      scale: [a little tired, weakened, wasted away]
+      answerAt: 1
+      why: "푹 쉬면 회복되는 피로는 tired, 호흡기를 오래 달아 힘이 실제로 줄어든 것은 weakened예요. wasted away는 더 극단적으로 말라 사라지는 뜻이라 지금 설명에는 과해요."
+      example: "His muscles have weakened after so many days on the vent."
+      exKo: "호흡기를 오래 달아서 근육이 약해졌어요."
+    - kind: swap
+      words: [w-muscle, w-weaken, w-ventilator]
+      who: "가족에게 · 재활 필요성 설명"
+      icon: me
+      before: ["It's common to have ", "ICU-acquired weakness", " after so many days on the ventilator."]
+      options: [ICU-acquired weakness, weak muscles, atrophy]
+      answer: weak muscles
+      notes: {"ICU-acquired weakness": "의료진 용어예요. 가족에게는 길고 어렵다.", "weak muscles": "쉬운 말이고 사실에 맞아요. 재활로 다시 키울 수 있다는 흐름으로 이어진다.", atrophy: "근육이 실제로 줄어든다는 뜻이라 지금 설명에는 겁을 줘요."}
+      why: "중환자실에서 오래 지낸 뒤 근육이 약해지는 일은 흔해요. 가족에게는 전문 용어보다 weak muscles라고 말하고 재활로 이어 가요."
+      ko: 인공호흡기를 오래 달고 나면 근육이 약해지는 건 흔한 일이에요
+- situation: "기관절개 전환 시점 논의"
+  items:
+    - kind: slider
+      words: [w-tracheostomy, w-plan]
+      cue: "Family: \"So the breathing test failed again?\""
+      scale: [a failure, a setback, a planned step]
+      answerAt: 2
+      why: "오래 인공호흡기가 필요한 환자에게 기관절개는 실패가 아니라 미리 계획하는 다음 단계예요. 입으로 넣은 튜브보다 편안한 경우가 많고, 가족에게 이렇게 말하면 걱정이 줄어요."
+      example: "A tracheostomy is a planned step, not a failure."
+      exKo: "기관절개는 실패가 아니라 계획된 단계예요."
+    - kind: context
+      words: [w-comfortable]
+      word: comfortable
+      ko: 편안한
+      scenes:
+        - {who: 동료 간호사, icon: monitor, en: "He'll be more comfortable with a trach than with the tube in his mouth.", ok: true}
+        - {who: 의사 회진, icon: stetho, en: "A trach is usually more comfortable for longer-term ventilation.", ok: true}
+        - {who: 가족에게, icon: me, en: "It's a more comfortable airway interface that reduces his sedation requirement.", ok: false, fix: "It's usually easier on him than the tube in his mouth, so he can have less sedation."}
+      why: "airway interface, sedation requirement 같은 말은 의료진끼리의 말이에요. 가족에게는 어떤 점이 환자에게 편한지만 쉬운 말로 설명해요."
+- situation: "발관 지연 원인 문서화"
+  items:
+    - kind: slider
+      words: [w-delay]
+      cue: "Chart note: extubation planned for 8 AM, moved to 2 PM because of heavy secretions."
+      scale: [slightly later, delayed, cancelled]
+      answerAt: 1
+      why: "일정이 뒤로 밀렸을 뿐 취소가 아니면 delayed라고 쓰고 사유를 함께 적어요. cancelled는 하지 않기로 했다는 뜻이라 다음 근무조가 오해해요."
+      example: "Extubation was delayed due to heavy secretions."
+      exKo: "분비물이 많아 발관이 지연됐어요."
+    - kind: swap
+      words: [w-delay, w-extubation, w-heavysecretion]
+      who: "차트 기록 · 지연 사유"
+      icon: board
+      before: ["Extubation ", "put off", " due to heavy secretions."]
+      options: [put off, delayed, scrapped]
+      answer: delayed
+      notes: {"put off": "일상 대화에서 쓰는 말이에요. 차트에서는 표준 용어가 읽는 사람에게 더 분명하다.", delayed: "차트에 쓰는 표준 용어예요. 미뤄졌다는 뜻이 분명하고 사유와 함께 적기 좋다.", scrapped: "아예 없던 일로 했다는 뜻이라 사실과 달라요."}
+      why: "차트는 다음 근무조도 읽어요. 일정이 미뤄졌을 때는 delayed로 쓰고 이유를 함께 적어 두면 오해가 없어요."
+      ko: 분비물이 많아 발관이 지연됨
