@@ -1,0 +1,263 @@
+인공호흡기 철회 준비:
+  - kind: slider
+    words: [w-irregular]
+    cue: "Her breathing pauses for several seconds, then starts again on its own."
+    scale: [slightly uneven, irregular, labored]
+    answerAt: 1
+    why: "임종기에는 숨이 쉬었다 멈췄다 하는 불규칙한 호흡이 흔해요. irregular는 간격이 일정하지 않다는 뜻이고, labored는 애써서 힘겹게 쉰다는 뜻이라 서로 달라요."
+    example: "Some breaths may look irregular, but she won't feel that."
+    exKo: "숨이 불규칙해 보일 수 있지만 그분은 그걸 느끼지 못하세요."
+  - kind: context
+    words: [w-weaning]
+    word: weaning
+    ko: 단계적 이탈
+    scenes:
+      - {who: 의사 지시, icon: board, en: "Begin terminal weaning of ventilator support; comfort meds first.", ok: true}
+      - {who: 딸에게, icon: me, en: "We'll start your mother's terminal weaning of FiO2 and PEEP now.", ok: false, fix: "We'll slowly lower the breathing machine's support, and we call this terminal weaning."}
+      - {who: 호흡치료사에게, icon: monitor, en: "Ready to start terminal weaning when the family is in the room?", ok: true}
+    why: "terminal weaning은 인공호흡기 지원을 천천히 줄이는 방법을 가리키는 의료진의 말이에요. 가족에게는 FiO2·PEEP 같은 설정 이름보다 무슨 일이 일어나는지를 쉬운 말로 알려 주세요."
+
+임종기 진정·진통 적정:
+  - kind: slider
+    words: [w-settled, w-restlessness]
+    cue: "He's picking at the sheets and can't lie still."
+    scale: [settled, restless, agitated]
+    answerAt: 1
+    why: "가만히 못 있고 뒤척이는 건 restless, 더 심해져 소리를 내거나 몸부림치면 agitated예요. 임종기의 초조에는 통증·섬망·소변이 찬 것 같은 원인이 있을 수 있어서 먼저 살펴봐요."
+    example: "We give just enough medication to ease his restlessness."
+    exKo: "불안정한 느낌을 덜어드릴 만큼만 약을 드려요."
+  - kind: context
+    words: [w-titrate]
+    word: titrate
+    ko: 적정하다
+    scenes:
+      - {who: 완화의료 지시, icon: board, en: "Titrate the infusion to comfort per palliative orders.", ok: true}
+      - {who: 아내에게, icon: me, en: "We titrate the infusion to his CPOT and RASS scores.", ok: false, fix: "We adjust the medication a little at a time until he looks settled."}
+      - {who: 인계, icon: speech, en: "Titrate up if he looks uncomfortable again.", ok: true}
+    why: "titrate는 반응을 보며 약을 조금씩 맞추는 정확한 말이라 의료진끼리는 이 한마디로 충분해요. 가족에게는 점수 이름보다 무엇을 보고 약을 조절하는지 쉬운 말로 알려 주세요."
+
+죽음의 질 지표 관리:
+  - kind: slider
+    words: [w-distress]
+    cue: "Fists clenched, brow furrowed, moaning with each breath."
+    scale: [peaceful, uncomfortable, in distress]
+    answerAt: 2
+    why: "표정과 몸짓이 이 정도면 괴로움이 겉으로 드러난 것이라 distress예요. 바로 증상 조절 약을 쓰고 의사에게 알려야 해요. 말을 못 하는 환자는 이런 신호로 평가해요."
+    example: "I check her face, breathing, and body for any sign of distress."
+    exKo: "표정과 호흡, 몸 전체를 살펴서 힘들어하는 기색이 있는지 확인해요."
+  - kind: context
+    words: [w-comfortable]
+    word: comfortable
+    ko: 편안한
+    scenes:
+      - {who: 차트 기록, icon: board, en: "CPOT 0 — pt appears comfortable, no grimacing.", ok: true}
+      - {who: 딸에게, icon: me, en: "His CPOT is 0, so the patient is comfortable per scale.", ok: false, fix: "He looks relaxed, and that tells me he's comfortable."}
+      - {who: 인계, icon: speech, en: "Resting comfortable, meds on schedule.", ok: true}
+    why: "CPOT는 말을 못 하는 환자의 통증을 표정·몸 움직임으로 점수화하는 도구예요. 차트에는 점수가 정확하지만, 가족에게는 점수보다 환자의 모습이 무엇을 뜻하는지 말해 주세요."
+
+완화의료팀 협진 연계:
+  - kind: slider
+    words: [w-palliative]
+    cue: "Wife: \"I want him to keep getting treatment, but I also want his symptoms controlled.\""
+    scale: [curative care, palliative care, hospice]
+    answerAt: 1
+    why: "palliative care(완화의료)는 치료와 함께 증상과 삶의 질을 돌보는 팀이에요. hospice는 치료 중심에서 편안함 중심으로 바꾼 뒤의 돌봄을 가리켜요. 질문을 받은 가족에게는 두 가지가 동시에 가능하다고 말해 줄 수 있어요."
+    example: "Palliative care isn't just for the end — it's about quality of life."
+    exKo: "완화의료는 임종기만을 위한 게 아니라 삶의 질에 관한 거예요."
+  - kind: context
+    words: [w-palliative]
+    word: palliative
+    ko: 완화의료의
+    scenes:
+      - {who: 협진 의뢰, icon: board, en: "Palliative care consulted for symptom management and goals of care.", ok: true}
+      - {who: 아들에게, icon: me, en: "Palliative care will address your father's symptom burden and prognosis.", ok: false, fix: "The palliative care team helps with symptoms and with decisions ahead."}
+      - {who: 인계, icon: speech, en: "Palliative team coming tomorrow — hold the family meeting until then.", ok: true}
+    why: "의료진끼리는 symptom burden·prognosis 같은 말이 정확해요. 가족에게는 완화의료팀이 무엇을 도와주는지를 먼저 쉬운 말로 알려 주세요."
+  - kind: swap
+    words: [w-coordinate, w-everyone, w-page]
+    who: "가족에게 · 소통 정리"
+    icon: me
+    before: ["I'll coordinate so ", "the team can work independently", "."]
+    options: [the team can work independently, everyone is on the same page, each person decides alone]
+    answer: everyone is on the same page
+    notes: {"the team can work independently": "조율한다는 앞 말과 반대로 팀이 따로 움직인다는 뜻이다.", "everyone is on the same page": "관계자 모두가 같은 내용을 안다는 뜻의 자연스러운 관용 표현이다.", "each person decides alone": "조율의 반대이고 가족을 불안하게 한다."}
+    why: "여러 팀이 한 환자를 보면 서로 다른 말을 들을까 걱정돼요. 'on the same page'는 모두가 같은 내용을 알고 있다는 뜻으로, 가족을 안심시키는 말이에요."
+    ko: 제가 조율해서 모두가 같은 내용을 공유하도록 할게요
+
+문화·종교 임종 요구 반영:
+  - kind: slider
+    words: [w-wish]
+    cue: "Daughter: \"It's not required, but we'd feel better if we could pray together.\""
+    scale: [a wish, a custom, a requirement]
+    answerAt: 0
+    why: "필수가 아니라 있으면 마음이 편하겠다는 말은 wish예요. 가족의 전통으로 정해진 것은 custom, 꼭 해야 하는 것은 requirement로 말해요. 어느 쪽이든 의료진은 가능한 범위에서 존중하고 원목 등과 연결해요."
+    example: "I'll let the team know so we can honor your wishes."
+    exKo: "팀에 알려서 바라시는 바를 지킬 수 있도록 할게요."
+  - kind: context
+    words: [w-honor]
+    word: honor
+    ko: 존중하다
+    scenes:
+      - {who: 차트 기록, icon: board, en: "Family rituals honored at bedside; chaplain notified.", ok: true}
+      - {who: 가족에게, icon: me, en: "We will honor your religious practices insofar as policy permits.", ok: false, fix: "We'll honor your wishes and work around what you need."}
+      - {who: 동료에게, icon: speech, en: "Please honor the family's request for quiet prayer.", ok: true}
+    why: "'insofar as policy permits'는 규정을 앞세워 차갑게 들려요. 가족에게는 먼저 존중하겠다는 마음을 말하고, 안전 범위는 필요할 때 따로 설명해요."
+
+가족 예기 애도 지원:
+  - kind: slider
+    words: [w-normal, w-loss]
+    cue: "Wife: \"I keep crying, and he isn't even gone yet. Is something wrong with me?\""
+    scale: [a normal reaction, a warning sign, a disorder]
+    answerAt: 0
+    why: "죽음 전에 시작되는 슬픔(anticipatory grief)은 가족에게 흔한 반응이에요. 이상한 것이 아니라고 먼저 말해 주면 죄책감을 덜어 줄 수 있어요."
+    example: "What you're feeling is a normal part of loss."
+    exKo: "지금 느끼시는 감정은 상실에 따르는 정상적인 반응이에요."
+  - kind: context
+    words: [w-grief]
+    word: grief
+    ko: 애도
+    scenes:
+      - {who: 차트 기록, icon: board, en: "Family tearful; anticipatory grief expected, counselor at bedside.", ok: true}
+      - {who: 아내에게, icon: me, en: "You are exhibiting symptoms of anticipatory grief.", ok: false, fix: "Grief doesn't wait for death to start, and what you're feeling is normal."}
+      - {who: 인계, icon: speech, en: "Daughter has a lot of grief — please check in with her.", ok: true}
+    why: "의료진끼리 쓰는 'anticipatory grief'를 가족에게 '증상'처럼 말하면 병이 있다는 뜻으로 들려요. 슬픔이 자연스러운 반응이라는 말로 풀어 주세요."
+
+장기기증 옵션 소통:
+  - kind: slider
+    words: [w-pressure]
+    cue: "Son: \"Is the team going to push us to say yes?\""
+    scale: [an option, a request, pressure]
+    answerAt: 0
+    why: "미국 병원에서는 기증 이야기를 훈련받은 별도 팀(장기조달기관 OPO)이 꺼내요. 간호사가 먼저 권하거나 결정을 재촉하지 않고, 선택지일 뿐이며 압박이 없다고 분명히 말해요."
+    example: "There's no pressure — we'll follow whatever you decide."
+    exKo: "압박은 전혀 없어요 — 결정하시는 대로 따를게요."
+  - kind: context
+    words: [w-donation]
+    word: donation
+    ko: 기증
+    scenes:
+      - {who: 차트 기록, icon: board, en: "Donation referral called in per policy; donation team will approach family.", ok: true}
+      - {who: 아들에게, icon: me, en: "We need your decision on donation by the end of the day.", ok: false, fix: "The donation team is separate from his care team and will speak with you only if you're open to it."}
+      - {who: 동료에게, icon: speech, en: "Donation team is here — please give the family some space.", ok: true}
+    why: "기증 결정을 재촉하면 가족은 압박을 느껴요. 기증 논의는 치료팀과 분리된 팀이 맡고, 가족이 원할 때 하며, 어떤 결정이든 지금의 돌봄은 그대로라고 말해 줘요."
+
+인공호흡기 철회 중 증상 급변 관리:
+  - kind: slider
+    words: [w-give, w-medication]
+    cue: "After extubation she starts gasping and her face tightens."
+    scale: [keep watching, give medication now, call a code]
+    answerAt: 1
+    why: "철회 중 호흡곤란이나 괴로운 표정이 보이면 미리 정해 둔 증상 조절 약을 바로 줘요. 지켜보기만 하면 괴로움이 길어지고, 소생술 호출은 이미 정한 치료 목표와 맞지 않아요."
+    example: "I'm giving her medication right now to ease her breathing."
+    exKo: "지금 바로 약을 드려서 호흡을 편안하게 해드릴게요."
+  - kind: context
+    words: [w-immediately]
+    word: immediately
+    ko: 즉시
+    scenes:
+      - {who: 차트 기록, icon: board, en: "Dyspnea noted; medication given immediately, pt settled.", ok: true}
+      - {who: 딸에게, icon: me, en: "This is an expected, self-limiting response, and I'm intervening immediately.", ok: false, fix: "This can happen, and I'm managing it immediately."}
+      - {who: 의사에게 호출, icon: monitor, en: "Pt gasping after extubation — I need orders immediately.", ok: true}
+    why: "의사에게는 상황의 긴급함을 정확히 전하는 말이 필요해요. 가족 앞에서는 병리 용어보다 지금 바로 돕고 있다는 사실을 짧고 차분하게 말해요."
+
+가족 내 목표 불일치 위기:
+  - kind: slider
+    words: [w-choose, w-side]
+    cue: "Son and daughter both look at you: \"Tell him he's wrong.\""
+    scale: [taking sides, staying neutral, avoiding the topic]
+    answerAt: 1
+    why: "가족이 서로 다른 의견일 때 간호사는 한쪽 편을 들지 않고 두 사람의 이야기를 모두 들어 줘요. 피하지도 않고, 환자가 무엇을 원했는지로 대화를 돌려요."
+    example: "No one here is choosing sides — we're listening to both of you."
+    exKo: "여기 누구도 편을 들지 않아요 — 두 분 말씀을 다 듣고 있어요."
+  - kind: context
+    words: [w-both]
+    word: both
+    ko: 둘 다
+    scenes:
+      - {who: 차트 기록, icon: board, en: "Son and daughter disagree on plan; both at bedside, ethics consult requested.", ok: true}
+      - {who: 두 자녀에게, icon: me, en: "Both of you need to calm down.", ok: false, fix: "It's clear you both love her deeply."}
+      - {who: 윤리팀에게, icon: speech, en: "We have two surrogates who disagree — can you see both today?", ok: true}
+    why: "갈등 상황에서 'calm down'은 감정을 무시하는 말로 들려요. 두 사람 모두 환자를 사랑해서 하는 이야기라는 점을 먼저 인정해 주면 대화가 풀려요."
+
+무의미한 치료 요구 갈등:
+  - kind: slider
+    words: [w-hear, w-want]
+    cue: "Daughter: \"Why can't you just keep trying?\""
+    scale: [I'll think about it, I know how much you want this, I agree we should keep going]
+    answerAt: 1
+    why: "가족의 마음에 공감하는 것과 의미 없는 치료에 동의하는 것은 달라요. 'I agree'는 그 치료를 계속하겠다는 약속처럼 들려요. 마음은 인정하되 치료 방향은 의료진이 설명해요."
+    example: "I hear how much you want us to keep fighting for him."
+    exKo: "얼마나 계속 싸워주시길 바라시는지 이해해요."
+  - kind: context
+    words: [w-harm]
+    word: harm
+    ko: 해
+    scenes:
+      - {who: 차트 기록, icon: board, en: "Further interventions likely to cause harm without benefit.", ok: true}
+      - {who: 딸에게, icon: me, en: "Aggressive interventions are now iatrogenically harmful.", ok: false, fix: "The treatments that once helped are now causing harm."}
+      - {who: 윤리팀 호출, icon: speech, en: "Family asks for more care that may cause harm — we need ethics input.", ok: true}
+    why: "차트에는 정확한 전문 용어가 맞지만, 가족에게는 치료가 이제 해가 된다는 사실을 쉬운 말로 직접 알려야 해요."
+  - kind: swap
+    words: [w-fight, w-mean, w-comfort]
+    who: "딸에게 · 싸운다는 뜻의 변화"
+    icon: me
+    before: ["Fighting for him once meant more treatment — now it means ", "medical futility", "."]
+    options: [medical futility, comfort, letting go]
+    answer: comfort
+    notes: {"medical futility": "차가운 전문 용어라 가족의 마음에 닿지 않는다.", "comfort": "싸운다는 말의 뜻이 편안함을 지켜 주는 일로 바뀐다는 점을 따뜻하게 말한다.", "letting go": "포기를 연상시켜 가족이 버려진 느낌을 받을 수 있다."}
+    why: "싸운다는 말은 가족에게 사랑의 표현이에요. 그 말을 부정하지 않고, 지금은 편안함을 지키는 일이 그 뜻이라고 이어서 말해 주세요."
+    ko: 한때는 싸운다는 게 더 많은 치료를 뜻했지만, 지금은 편안함을 뜻해요
+
+임종 급변·가족 위기 대응:
+  - kind: slider
+    words: [w-dying]
+    cue: "Daughter, panicking: \"Is he dying right now?\""
+    scale: [he's getting worse, he's dying, he has died]
+    answerAt: 1
+    why: "임종이 다가오면 에둘러 말하지 말고 사실을 부드럽게 말해요. 'dying'을 분명히 말하면서 곁에 있겠다는 말을 함께 해요. 돌아가신 뒤에도 died를 한 번은 분명히 말해요."
+    example: "Yes, he's dying, and I'll stay right here with you through it."
+    exKo: "네, 임종이 다가오고 있고, 그 시간 내내 곁에 있을게요."
+  - kind: context
+    words: [w-dying]
+    word: dying
+    ko: 죽어가는
+    scenes:
+      - {who: 차트 기록, icon: board, en: "Pt actively dying; family at bedside, comfort meds on board.", ok: true}
+      - {who: 딸에게, icon: me, en: "He is actively dying with Cheyne-Stokes respirations.", ok: false, fix: "Yes, he's dying, and I'll stay right here with you through it."}
+      - {who: 인계, icon: speech, en: "Actively dying — keep the room quiet, wife won't leave.", ok: true}
+    why: "차트에는 'actively dying'이 정확해요. 가족에게는 체인스토크스 호흡 같은 용어보다 사실을 짧고 따뜻하게 말하고 곁에 있겠다고 해 주세요."
+
+대리결정 부재·윤리위원회 연계:
+  - kind: pair
+    words: [w-kin, w-consult, w-capacity]
+    pairs: [[next, of kin], [ethics, consult], [decision-making, capacity]]
+    decoys: [the chart]
+    why: "next of kin은 가까운 친족, ethics consult는 윤리자문 의뢰, decision-making capacity는 환자가 스스로 결정할 판단 능력이에요. 대리결정자가 없는 환자의 차트에서 자주 만나는 말이에요."
+  - kind: context
+    words: [w-surrogate]
+    word: surrogate
+    ko: 대리결정자
+    scenes:
+      - {who: 차트 기록, icon: board, en: "No surrogate identified; ethics consulted.", ok: true}
+      - {who: 방문한 친구에게, icon: me, en: "He's unbefriended, with no surrogate, so we'll go to committee.", ok: false, fix: "He doesn't have anyone named to speak for him, so the ethics committee will help decide what's best for him."}
+      - {who: 의사에게, icon: stetho, en: "Do we have a surrogate, or do we proceed under the hospital's policy?", ok: true}
+    why: "surrogate(대리결정자)는 환자를 대신해 결정할 사람을 가리키는 정확한 말이에요. 병원 밖 사람에게는 용어를 풀어서 설명하고, 환자의 개인정보는 필요한 범위만 알려요."
+
+젊은 환자 임종 특수 상황:
+  - kind: slider
+    words: [w-kid, w-understand, w-word]
+    cue: "Husband: \"Should we tell the kids, or protect them?\""
+    scale: [hide it, tell them honestly, let them decide alone]
+    answerAt: 1
+    why: "아이들은 말하지 않아도 분위기를 알아채요. 나이에 맞는 솔직한 말로 알려 주는 편이 좋고, 아동생활전문가(child life specialist)가 그 말을 찾는 일을 도와줄 수 있어요."
+    example: "Kids often understand more than we expect, in their own way."
+    exKo: "아이들은 저희가 생각하는 것보다 나름의 방식으로 더 많이 이해해요."
+  - kind: context
+    words: [w-kid]
+    word: kid
+    ko: 아이
+    scenes:
+      - {who: 차트 기록, icon: board, en: "Kids (ages 4 and 7) updated by child life specialist.", ok: true}
+      - {who: 남편에게, icon: me, en: "Minors often display delayed grief, so the kids may need psych eval.", ok: false, fix: "Kids often understand more than we expect, and we can help you find the words."}
+      - {who: 인계, icon: speech, en: "Husband worried the kids will be scared — involve child life.", ok: true}
+    why: "의료진끼리는 'minor'·'psych eval' 같은 행정·진단 말이 정확해요. 아버지에게는 아이들이 이미 알아채고 있다는 현실과 도울 방법을 쉬운 말로 알려 주세요."

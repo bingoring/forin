@@ -1,0 +1,89 @@
+영상 좌우 대조:
+  - kind: pair
+    words: [w-label, w-film, w-match, w-mark, w-drape]
+    pairs: [["The films are labeled", "left"], ["Imaging matches", "the marked site"], ["Confirm before we", "drape"]]
+    decoys: [tomorrow's schedule]
+    why: "영상 필름의 좌우 표기(labeled left)가 수술 계획과 몸에 표시한 부위(the marked site)와 맞는지 보고, 드레이프(drape)를 덮기 전에 확인해요. 드레이프를 덮은 뒤에는 표시를 다시 보기 어려워요."
+  - kind: context
+    words: [w-verify]
+    word: verify
+    ko: 대조하다
+    scenes:
+      - {who: 순환 간호사 → 집도의, icon: speech, en: "Let's verify the imaging against the marked side.", ok: true}
+      - {who: 수술 기록, icon: board, en: "Imaging verified with site marking in the OR.", ok: true}
+      - {who: 마취 직전 환자에게, icon: me, en: "We'll verify imaging concordance with the operative-site marking.", ok: false, fix: "We're double-checking your X-ray against the mark on your knee."}
+    why: "verify는 의료진끼리, 기록에서 자연스러운 정확한 말이에요. 환자에게는 'imaging concordance'처럼 전문 용어를 쓰지 말고, 엑스레이와 무릎의 표시를 다시 확인한다고 쉽게 말해요."
+예상 출혈·수혈 논의:
+  - kind: slider
+    words: [w-anticipate, w-significant, w-blood, w-loss]
+    cue: "Revision hip replacement: the surgeon expects about 1,500 mL of blood loss. Type and cross is done."
+    scale: [minimal, moderate, significant]
+    answerAt: 2
+    why: "1,500 mL는 대략 성인 혈액량의 30%에 해당해서 'significant blood loss'로 부르고, 이런 케이스에서는 혈액을 미리 준비해 둬요. 'minimal'은 수십~수백 mL 수준일 때 써요."
+    example: "We anticipate significant blood loss for this case."
+    exKo: "이번 케이스는 상당한 출혈이 예상됩니다."
+  - kind: pair
+    words: [w-type, w-cross, w-access, w-unit, w-hold]
+    pairs: [[type and, cross], [large-bore, IV access], [blood units, on hold]]
+    decoys: [discharge]
+    why: "수혈 전에는 type and cross(혈액형 검사와 교차 적합 검사)를 하고, 굵은 정맥로(large-bore IV access)를 잡고, 혈액 팩은 on hold(혈액은행이 이 환자를 위해 따로 잡아 둔 상태)로 확인해요."
+  - kind: context
+    words: [w-access]
+    word: access
+    ko: 정맥로
+    scenes:
+      - {who: 마취과 → 순환 간호사, icon: speech, en: "I want good large-bore access before we start.", ok: true}
+      - {who: 마취 기록, icon: board, en: "Access: 18g x2, right and left forearm.", ok: true}
+      - {who: 깨어 있는 환자에게, icon: me, en: "We'll establish vascular access in both forearms.", ok: false, fix: "We'll place two IV lines in your arms, just in case we need to give you fluids or blood."}
+    why: "access는 의료진끼리 정맥로를 부르는 말이에요. 환자에게는 'vascular access'처럼 말하면 어렵고, 팔에 IV를 두 개 넣는 이유를 겁주지 않게 쉽게 설명해요."
+이식물·특수 기구 확인:
+  - kind: pair
+    words: [w-implant, w-size, w-instrument, w-open, w-ready, w-bring, w-equipment]
+    pairs: [["confirm the implant", "size"], ["all instruments are", "open and ready"], ["bring in the", "missing equipment"]]
+    decoys: [tomorrow's schedule]
+    why: "타임아웃에서는 이식물(implant)의 크기를 계획과 대조하고, 특수 기구가 개봉돼 준비됐는지 보고, 부족한 장비는 지금 가져와요(bring in). 절개 후에 찾으러 나가면 수술이 멈춰요."
+  - kind: context
+    words: [w-implant]
+    word: implant
+    ko: 이식물
+    scenes:
+      - {who: 집도의 → 순환 간호사, icon: speech, en: "Is the right implant size open and on the table?", ok: true}
+      - {who: 수술 기록, icon: board, en: "Implant size 4 verified against the plan, lot number documented.", ok: true}
+      - {who: 환자에게, icon: me, en: "Please be advised the implant is a cobalt-chrome tibial component.", ok: false, fix: "The new knee part is ready, and it matches your surgeon's plan."}
+    why: "implant는 팀이 이식물을 확인할 때 쓰는 정확한 말이에요. 환자에게 소재와 부품 이름까지 늘어놓으면 알아듣기 어려워서, '새 무릎 부품이 준비돼 계획과 맞다'처럼 핵심만 쉽게 말해요."
+알레르기 팀 공유:
+  - kind: slider
+    words: [w-latex, w-allergy, w-aware, w-proceed, w-supply, w-confirm]
+    cue: "A latex allergy is in the chart, but nobody has confirmed what the gloves and trays on the field are made of."
+    scale: ["FYI, she has a latex allergy.", "Everyone should be aware of the latex allergy.", "We won't proceed until the supplies are confirmed latex-free."]
+    answerAt: 2
+    why: "기록에 라텍스 알레르기가 있는데 물품이 아직 확인되지 않았다면, 알려 주는 것만으로 끝내지 않고 확인되기 전에는 진행하지 않겠다고 분명히 말해요. 라텍스는 장갑·튜브·카테터 등 많은 물품에 들어 있을 수 있어요."
+    example: "We won't proceed until the supplies are confirmed latex-free."
+    exKo: "물품이 라텍스 없는 것으로 확인될 때까지 진행하지 않겠습니다."
+  - kind: context
+    words: [w-aware]
+    word: aware
+    ko: 인지하는
+    scenes:
+      - {who: 순환 간호사 → 팀, icon: speech, en: "Everyone on the team should be aware of the latex allergy.", ok: true}
+      - {who: 수술 기록, icon: board, en: "Time-out: team aware of documented latex allergy.", ok: true}
+      - {who: 불안한 환자에게, icon: me, en: "Be aware that your latex allergy puts you at risk of anaphylaxis.", ok: false, fix: "We saw your latex allergy in your chart, and we've set up latex-free supplies for you."}
+    why: "팀끼리는 'be aware'로 모두가 알고 있게 하자고 말해요. 환자에게 같은 말로 아나필락시스 위험을 던지면 겁만 주니, 이미 확인했고 조치했다는 안심되는 사실을 먼저 말해요."
+항생제 재투여 계획:
+  - kind: slider
+    words: [w-redose, w-due, w-hour, w-antibiotic]
+    cue: "Cefazolin went in at 07:32. It's now 11:15 and the case is still running."
+    scale: [not due yet, due soon, overdue]
+    answerAt: 1
+    why: "cefazolin은 보통 약 4시간 간격으로 재투여해요. 07:32에 줬다면 11:32쯤이 재투여 시각이라, 11:15는 곧 시간이 되는 'due soon'이에요. 약마다 간격이 다르니 어떤 약인지부터 확인해요."
+    example: "The antibiotic redose is due soon — I'll set a timer."
+    exKo: "항생제 재투여 시간이 곧 돼요 — 타이머를 맞춰 둘게요."
+  - kind: context
+    words: [w-redose]
+    word: redose
+    ko: 재투여하다
+    scenes:
+      - {who: 마취과 → 순환 간호사, icon: speech, en: "We're due to redose the antibiotic at eleven thirty.", ok: true}
+      - {who: 마취 기록, icon: board, en: "Cefazolin 2 g redosed at 1132.", ok: true}
+      - {who: 수술 중 가족 대기실에서 보호자에게, icon: me, en: "We're going to redose him now.", ok: false, fix: "We're giving him another dose of the antibiotic to keep protecting him from infection."}
+    why: "redose는 팀끼리 쓰는 짧은 말이에요. 보호자에게 'redose him'이라고만 하면 이유 없이 약을 더 쓴다는 느낌이라, 감염을 막기 위한 추가 투여라고 풀어서 알려요."

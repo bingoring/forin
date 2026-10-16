@@ -1,0 +1,73 @@
+# 상황 7~10
+7:
+  s:
+    - {tag: "진정 보류", icon: pill, why: "holding은 끊는 게 아니라 잠시 보류한다는 뜻이고, to see how로 목적을 함께 말해요.", decoy: "for the family", d: ["진정제를 보류하고 얼마나 숨쉬는지 볼게요.", "진정제를 보류하고 얼마나 쉬는지 볼게요."], a: "see", o: ["ask", "tell", "guess"]}
+    - {tag: "초조 관찰", icon: faceWorried, why: "Watch for는 어떤 징후를 찾으며 지켜보라는 표현이고, so he doesn't로 안전이 이유임을 알려요.", decoy: "in the hall", d: ["이불을 잡아당기지 않도록 초조한 모습을 지켜봐 주세요.", "옷을 잡아당기지 않도록 초조한 모습을 지켜봐 주세요."], a: "agitation", o: ["snoring", "hiccups", "yawning"]}
+    - {tag: "재개 기준", icon: siren, why: "unsafe or unstable이 재개 기준이고, 두 조건 중 하나만 맞아도 행동한다는 뜻을 or가 담아요.", decoy: "for the doctor", d: ["안전하지 않거나 불안정해지면 의사에게 즉시 연락해 알릴게요.", "안전하지 않거나 불안정해지면 활력징후를 두 번 더 재볼게요."], a: "unsafe", o: ["unaware", "unwilling", "unclear"]}
+    - {tag: "현재 상황", icon: monitor, why: "so로 진정제를 멈춘 사실과 지켜보는 행동을 원인과 결과로 이어 줘요.", decoy: "at lunch", d: ["지금 가족이 나갔으니 지켜보고 있어요.", "어젯밤 진정제를 멈췄으니 지켜보고 있어요."], a: "paused", o: ["charted", "labeled", "ordered"]}
+    - {tag: "경과 보고", icon: chartup, why: "so far로 지금까지만의 보고임을 한정해서, 이후에 변할 수 있다는 여지를 남겨요.", decoy: "for his bath", d: ["어제는 초조한 모습 없고 활력징후도 안정적이에요.", "지금까지 초조한 모습 없고 보호자도 안정적이에요."], a: "stable", o: ["falling", "rising", "borderline"]}
+    - {tag: "재개 행동", icon: siren, why: "restless라는 관찰 뒤에 대시로 조치를 이어 붙여, 판단과 행동이 한 흐름으로 들려요.", decoy: "for the visitors", d: ["안절부절못하고 있어서 먼저 의사에게 보고할게요.", "안절부절못하고 있어서 활력징후를 다시 확인할게요."], a: "restless", o: ["sleepy", "hungry", "chilly"]}
+  order:
+    tag: "대화 흐름"
+    icon: pill
+    ko: "진정 중단 수행 4문장 순서"
+    why: "진정제를 보류한다는 선언 뒤에 무엇을 지켜보는지 말하고, 지금까지의 상태를 보고하며, 그 상태가 바뀌면 어떻게 할지로 닫아요."
+    lines:
+      - {en: "We're holding sedation to see how he wakes up.", icon: pill, ko: "얼마나 깨는지 보려고 진정제를 보류해요", note: "보류"}
+      - {en: "I'm watching for agitation so he doesn't pull at his lines.", icon: faceWorried, ko: "라인을 당기지 않게 초조함을 봐요", note: "관찰"}
+      - {en: "So far, he's shown none of that, and his vitals are stable.", icon: chartup, ko: "지금까진 없고 활력징후도 안정적이에요", note: "현재"}
+      - {en: "If that changes, we'll restart sedation at half dose.", icon: siren, ko: "달라지면 절반 용량으로 재개해요", note: "재개"}
+8:
+  s:
+    - {tag: "장치 설명", icon: monitor, why: "warm과 gentle 같은 감각 형용사가 가족에게 장치가 거칠지 않다는 안심을 줘요.", decoy: "inside a mask", d: ["고유량 장치가 튜브 없이 따뜻한 산소와 강한 지지를 줘요.", "고유량 장치가 튜브 없이 시원한 산소와 부드러운 지지를 줘요."], a: "warm", o: ["cold", "dry", "thick"]}
+    - {tag: "관찰 설명", icon: magnify, why: "to make sure it's enough로 지켜보는 이유를 밝혀, 불안한 가족이 이 관찰의 의미를 이해해요.", decoy: "for the visit", d: ["충분한지 확인하려고 호흡수와 체온을 지켜보고 있어요.", "충분한지 확인하려고 맥박과 산소를 지켜보고 있어요."], a: "breathing", o: ["walking", "eating", "sleeping"]}
+    - {tag: "목적 설명", icon: shield, why: "helps prevent는 도움이 된다는 정도의 표현이라, 반드시 막는다는 과장을 피해요.", decoy: "for his food", d: ["이것이 마스크가 다시 필요해지는 것을 예방하는 데 도움이 돼요.", "이것이 튜브가 다시 필요해지는 것을 설명하는 데 도움이 돼요."], a: "tube", o: ["mask", "line", "drain"]}
+    - {tag: "장치 설명", icon: monitor, why: "without needing the tube로 가족이 가장 걱정하는 튜브를 짚어서 안심시켜요.", decoy: "for his lunch", d: ["고유량 마스크가 튜브 없이도 기도를 열어 둬요.", "고유량 캐뉼라가 약 없이도 기도를 열어 둬요."], a: "airway", o: ["mouth", "eyes", "hands"]}
+    - {tag: "경과 보고", icon: chartup, why: "look good처럼 look을 쓰고 so far로 지금까지만이라고 한정해서, 지켜보는 중이라는 여지를 남겨요.", decoy: "in the lab", d: ["지금까지 고유량 장치로 혈압이 좋아 보여요.", "어제까지 고유량 장치로 산소 수치가 좋아 보여요."], a: "levels", o: ["tanks", "hoses", "labels"]}
+    - {tag: "밀착 관찰", icon: magnify, why: "keep a close eye on은 눈을 떼지 않고 지켜본다는 관용구이고, so he doesn't need이 그 목적이에요.", decoy: "for the family", d: ["튜브가 다시 필요하지 않도록 면밀히 기록하고 있어요.", "마스크가 다시 필요하지 않도록 면밀히 지켜보고 있어요."], a: "eye", o: ["ear", "hand", "foot"]}
+  order:
+    tag: "대화 흐름"
+    icon: monitor
+    ko: "발관 후 고유량 설명 4문장 순서"
+    why: "장치가 주는 것을 먼저 설명해야 지켜보는 이유가 이어지고, 지금까지의 수치를 말한 뒤, 이 모든 것의 목적으로 닫아요."
+    lines:
+      - {en: "The high-flow gives him warm oxygen and gentle support without a tube.", icon: monitor, ko: "튜브 없이 따뜻한 산소와 부드러운 지지를 줘요", note: "장치"}
+      - {en: "I'm watching his breathing rate and oxygen to make sure it's enough.", icon: magnify, ko: "충분한지 호흡수와 산소를 지켜봐요", note: "관찰"}
+      - {en: "So far, his oxygen levels look good on it.", icon: chartup, ko: "지금까지 산소 수치는 좋아 보여요", note: "경과"}
+      - {en: "That's how we're helping prevent him from needing the tube back.", icon: shield, ko: "그렇게 튜브가 다시 필요한 것을 막아요", note: "목적"}
+9:
+  s:
+    - {tag: "예방 설명", icon: shield, why: "A, not B 구조로 오해(상태 악화)를 먼저 풀어 주면 가족의 불안이 줄어요.", decoy: "for the doctor", d: ["이 마스크는 예방적 조치이지, 약이 부족하다는 신호가 아니에요.", "이 마스크는 예방적 조치이지, 퇴원한다는 신호가 아니에요."], a: "preventive", o: ["painful", "permanent", "pointless"]}
+    - {tag: "이유 설명", icon: shield, why: "Because로 이유를 앞에 놓으면 마스크를 쓰는 근거인 위험도가 먼저 전해져요.", decoy: "to the bed", d: ["고위험군이라서 이 지지가 재입원을 피하는 데 도움이 돼요.", "야간이라서 이 지지가 재삽관을 피하는 데 도움이 돼요."], a: "avoid", o: ["cause", "invite", "require"]}
+    - {tag: "착용 조정", icon: gear, why: "so it's … and sealing well로 조정의 두 목표(편안함과 밀폐)를 한 번에 알려요.", decoy: "to the wall", d: ["편안하고 잘 보이도록 맞춤을 조정할게요.", "편안하고 조용하도록 맞춤을 조정할게요."], a: "sealing", o: ["leaking", "humming", "fogging"]}
+    - {tag: "안심 말하기", icon: faceWorried, why: "here to help, not because …로 목적을 먼저 말하고 오해를 지워 줘요.", decoy: "for the nurses", d: ["이 마스크는 그를 돕기 위한 거예요, 의사가 바빠서가 아니에요.", "이 마스크는 그를 돕기 위한 거예요, 비용 때문이 아니에요."], a: "wrong", o: ["late", "loud", "cold"]}
+    - {tag: "위험 설명", icon: bell, why: "so we're being extra careful로 위험이라는 사실에서 행동(더 조심함)으로 이어 줘요.", decoy: "from the unit", d: ["마스크가 다시 필요할 위험이 높아서 더 신경 쓰고 있어요.", "산소가 다시 필요할 위험이 높아서 더 신경 쓰고 있어요."], a: "careful", o: ["curious", "polite", "quiet"]}
+    - {tag: "재확인 약속", icon: calendar, why: "again과 in a few minutes로 한 번에 끝내지 않고 시간을 두고 다시 본다는 약속이에요.", decoy: "for his rest", d: ["확실히 하려고 몇 분 뒤에 피부 상태를 다시 확인할게요.", "확실히 하려고 몇 분 뒤에 습도 상태를 다시 확인할게요."], a: "seal", o: ["scale", "stamp", "sink"]}
+  order:
+    tag: "대화 흐름"
+    icon: shield
+    ko: "예방적 NIV 설명 4문장 순서"
+    why: "오해를 먼저 풀고, 마스크가 필요한 이유를 잇고, 편하게 맞추는 조치를 말한 뒤, 밀폐를 다시 보겠다는 약속으로 닫아요."
+    lines:
+      - {en: "The mask is a preventive step, not a sign that he's failing.", icon: shield, ko: "마스크는 예방 조치이지 악화 신호가 아니에요", note: "오해 해소"}
+      - {en: "That's because he's higher risk, and this support helps him avoid reintubation.", icon: bell, ko: "고위험이라 재삽관을 피하게 도와요", note: "이유"}
+      - {en: "To keep it working well, I'll adjust the fit so it's comfortable and sealing well.", icon: gear, ko: "편하고 잘 밀폐되게 조정할게요", note: "조정"}
+      - {en: "I'll check the seal again in a few minutes to be sure.", icon: calendar, ko: "몇 분 뒤 밀폐를 다시 확인할게요", note: "재확인"}
+10:
+  s:
+    - {tag: "위험인자", icon: bell, why: "include는 전부가 아니라 일부를 든다는 동사라서, 더 있을 수 있음을 열어 둬요.", decoy: "for his bed", d: ["위험인자에는 약한 기침과 장기화된 입원이 포함돼요.", "위험인자에는 약한 식욕과 장기화된 삽관이 포함돼요."], a: "prolonged", o: ["painful", "planned", "pleasant"]}
+    - {tag: "위험 분류", icon: chartup, why: "I'd put him in …은 I'd로 판단을 단정하지 않고 의견으로 내놓는 말투예요.", decoy: "on the unit", d: ["재입원 고위험군으로 분류하겠어요.", "재수술 고위험군으로 분류하겠어요."], a: "reintubation", o: ["readmission", "relocation", "retirement"]}
+    - {tag: "팀 알림", icon: handshake2, why: "so we로 알리는 목적이 팀이 함께 지켜보는 것임을 밝혀요.", decoy: "from the lab", d: ["오늘 밤 세심히 지켜보도록 가족에게 알릴게요.", "오늘 밤 세심히 지켜보도록 약사에게 알릴게요."], a: "closely", o: ["quickly", "loudly", "politely"]}
+    - {tag: "근거 설명", icon: chartup, why: "weak cough와 a long time을 and로 나란히 놓아, 위험을 높이는 두 근거를 함께 보고해요.", decoy: "for a while ago", d: ["기침이 약하고, 입원 기간도 길었어요.", "열이 심하고, 삽관 기간도 길었어요."], a: "weak", o: ["wet", "loud", "dry"]}
+    - {tag: "인계 보고", icon: handshake2, why: "at handoff로 보고 시점을 정해 두면 다음 근무조가 이어서 알 수 있어요.", decoy: "to his family", d: ["회진 때 위험인자를 보고할게요.", "인계 때 약물을 보고할게요."], a: "handoff", o: ["lunch", "dinner", "bedtime"]}
+    - {tag: "경과 설명", icon: monitor, why: "given the risk가 그 위험을 감안하면이라는 이유를 짧게 붙이는 말이에요.", decoy: "from the door", d: ["비용을 고려해서 오늘 밤 세심히 지켜보고 있어요.", "위험을 고려해서 오늘 낮 세심히 지켜보고 있어요."], a: "given", o: ["despite", "without", "after"]}
+  order:
+    tag: "대화 흐름"
+    icon: bell
+    ko: "재삽관 위험 소통 4문장 순서"
+    why: "위험인자를 먼저 말해야 분류의 근거가 되고, 분류가 팀 알림과 밤 동안의 관찰로, 다시 인계로 이어져요."
+    lines:
+      - {en: "His risk factors include weak cough and a prolonged intubation.", icon: bell, ko: "위험인자는 약한 기침과 긴 삽관이에요", note: "근거"}
+      - {en: "Given that, I'd put him in the higher-risk category for reintubation.", icon: chartup, ko: "그래서 재삽관 고위험군으로 봐요", note: "분류"}
+      - {en: "So I'll flag this to the team so we watch him closely tonight.", icon: handshake2, ko: "오늘 밤 지켜보도록 팀에 알려요", note: "팀 알림"}
+      - {en: "I'll pass all of that on at handoff so the next shift keeps watching.", icon: handshake2, ko: "다음 근무조도 보도록 인계해요", note: "인계"}

@@ -1,0 +1,91 @@
+# 상황 11~15
+11:
+  s:
+    - {tag: "원인 설명", icon: stetho, why: "after being on the vent for a while이 원인이 시간임을 알려서, 환자나 가족 탓이 아니라는 인상을 줘요.", decoy: "in the unit", d: ["인공호흡기를 한동안 달고 있으면 식욕이 약해져요.", "인공호흡기를 한동안 달고 있으면 시력이 약해져요."], a: "weaken", o: ["itch", "heal", "grow"]}
+    - {tag: "조기 활동", icon: play, why: "Getting him moving early처럼 동명사를 주어로 쓰면 활동 자체가 주제가 되어 권유가 부드러워져요.", decoy: "for the bed", d: ["일찍 씻기는 것이 그 힘을 다시 키우는 데 도움이 돼요.", "일찍 움직이게 하는 것이 그 열을 다시 낮추는 데 도움이 돼요."], a: "rebuild", o: ["remove", "rename", "reduce"]}
+    - {tag: "재활 연계", icon: handshake2, why: "bring in은 다른 팀을 불러 참여시킨다는 구동사예요.", decoy: "from home", d: ["호흡근을 다루도록 영양팀을 연계할게요.", "호흡근을 다루도록 약사를 연계할게요."], a: "physical", o: ["music", "art", "play"]}
+    - {tag: "안심 설명", icon: shield, why: "It's common을 문장 앞에 두면 흔한 일이라는 점이 먼저 전해져서 가족이 자책하거나 놀라지 않아요.", decoy: "in the room", d: ["인공호흡기를 오래 달면 피부가 약해지는 건 흔한 일이에요.", "마스크를 오래 달면 근육이 약해지는 건 흔한 일이에요."], a: "common", o: ["rare", "odd", "hard"]}
+    - {tag: "격려", icon: trophy, why: "Even이 작은 움직임이라도 괜찮다는 뜻이라 부담을 낮추고 시작을 권해요.", decoy: "in the bed", d: ["매일의 작은 식사도 더 강해지는 데 도움이 될 수 있어요.", "매주의 작은 움직임도 더 강해지는 데 도움이 될 수 있어요."], a: "small", o: ["quick", "loud", "sudden"]}
+    - {tag: "일정 안내", icon: calendar, why: "guide him through는 곁에서 단계별로 이끈다는 표현이라, 혼자 하지 않는다는 안심을 줘요.", decoy: "in the hall", d: ["물리치료가 매주 안전한 운동을 이끌어 줄 거예요.", "의사가 매일 안전한 운동을 이끌어 줄 거예요."], a: "safe", o: ["heavy", "painful", "risky"]}
+  order:
+    tag: "대화 흐름"
+    icon: stetho
+    ko: "호흡근 약화 설명 4문장 순서"
+    why: "약해지는 원인을 먼저 설명하고, 흔한 일이며 일찍 움직이는 게 도움이라고 안심시킨 뒤, 안전하게 하려고 물리치료를 연계하고, 매일 이끌어 준다고 닫아요."
+    lines:
+      - {en: "His breathing muscles weaken after being on the vent for a while.", icon: stetho, ko: "호흡기를 오래 달면 호흡근이 약해져요", note: "원인"}
+      - {en: "That's common, and moving early helps rebuild that strength.", icon: play, ko: "흔한 일이고 일찍 움직이면 도움이 돼요", note: "안심"}
+      - {en: "To make that safe, we'll bring in physical therapy.", icon: handshake2, ko: "안전하게 하려고 물리치료를 연계해요", note: "연계"}
+      - {en: "They'll guide him through safe exercises each day.", icon: calendar, ko: "매일 안전한 운동을 이끌어 줘요", note: "일정"}
+12:
+  s:
+    - {tag: "기관절개 설명", icon: shield, why: "actually가 가족이 예상하는 것(더 나빠짐)과 다를 수 있다는 점을 짚어 줘요.", decoy: "for the surgeon", d: ["기관절개가 오히려 단기 지지에서 더 편안하게 만들어 줄 수 있어요.", "기관절개가 오히려 장기 지지에서 더 조용하게 만들어 줄 수 있어요."], a: "comfortable", o: ["tired", "hungry", "thirsty"]}
+    - {tag: "오해 해소", icon: faceWorried, why: "doesn't mean A, it means B 구조로 가족이 떠올릴 오해를 먼저 부정하고 실제 뜻을 알려요.", decoy: "to the surgeon", d: ["나빠진다는 뜻이 아니라, 더 긴 면회를 계획한다는 뜻이에요.", "나빠진다는 뜻이 아니라, 더 긴 여정을 설명한다는 뜻이에요."], a: "longer", o: ["lower", "louder", "lighter"]}
+    - {tag: "장점 설명", icon: speech, why: "often은 늘 그렇다가 아니라 흔히 그렇다는 정도를 알려서 과장을 막아요.", decoy: "for the family", d: ["이탈과 면회를 더 쉽게 만들어 주는 경우가 많아요.", "퇴원과 의사소통을 더 쉽게 만들어 주는 경우가 많아요."], a: "easier", o: ["slower", "rarer", "louder"]}
+    - {tag: "비교 설명", icon: chartup, why: "usually와 more … than 비교로 일반적인 경향을 말해서, 모든 환자에게 해당한다는 단정을 피해요.", decoy: "in the neck", d: ["기관절개가 보통 입으로 넣는 튜브보다 더 저렴해요.", "기관절개가 가끔 입으로 넣는 튜브보다 더 편안해요."], a: "usually", o: ["sadly", "quickly", "partly"]}
+    - {tag: "오해 해소", icon: faceWorried, why: "part of the plan이라고 먼저 말해서 후퇴가 아니라 예정된 단계로 틀을 바꿔 줘요.", decoy: "for the surgeon", d: ["이건 계획의 일부이지, 실수가 아니에요.", "이건 계획의 일부이지, 퇴원이 아니에요."], a: "backward", o: ["upward", "sideways", "late"]}
+    - {tag: "팀 협의", icon: handshake2, why: "before deciding on timing으로 결정 전에 협의한다는 순서를 약속해요.", decoy: "about the bill", d: ["시기를 정하기 전에 담당의 한 분과 이야기할게요.", "비용을 정하기 전에 팀 전체와 이야기할게요."], a: "timing", o: ["name", "color", "shape"]}
+  order:
+    tag: "대화 흐름"
+    icon: shield
+    ko: "기관절개 논의 4문장 순서"
+    why: "기관절개의 장점을 먼저 말하고, 그 근거로 후퇴가 아님을 안심시킨 뒤, 계획이라는 말을 이어받아 팀 협의로 닫아요."
+    lines:
+      - {en: "A tracheostomy can actually make him more comfortable for longer support.", icon: shield, ko: "기관절개가 장기 지지를 더 편하게 해요", note: "장점"}
+      - {en: "It often makes weaning and communication easier for him.", icon: speech, ko: "이탈과 의사소통도 쉬워지는 경우가 많아요", note: "이점"}
+      - {en: "Given all that, it's not a step backward — it's part of the plan.", icon: faceWorried, ko: "그러니 후퇴가 아니라 계획의 일부예요", note: "안심"}
+      - {en: "As part of that plan, we'll talk with the whole team before deciding on timing.", icon: handshake2, ko: "그 계획대로 팀과 시기를 의논해요", note: "협의"}
+13:
+  s:
+    - {tag: "기록 내용", icon: pencil, why: "due to로 지연의 원인을 같이 적어야 다음 근무조가 이유를 알아요.", decoy: "for the rounds", d: ["분비물이 많아서 퇴원이 지연됐다고 기록할게요.", "열이 높아서 발관이 지연됐다고 기록할게요."], a: "delayed", o: ["started", "repeated", "planned"]}
+    - {tag: "기록 이유", icon: pencil, why: "help A understand B 구조로 기록의 목적이 읽는 사람의 이해에 있음을 말해요.", decoy: "for the audit", d: ["명확한 기록이 보호자가 계획을 이해하는 데 도움이 돼요.", "명확한 기록이 다음 근무조가 비용을 이해하는 데 도움이 돼요."], a: "next", o: ["last", "first", "same"]}
+    - {tag: "기록 확인", icon: check, why: "make sure는 이미 했다고 가정하지 않고 확인하자는 표현이고, for the whole team이 누구를 위한 기록인지 알려요.", decoy: "in the lab", d: ["팀 전체를 위해 이름이 차트에 적혀 있는지 확인합시다.", "팀 전체를 위해 이유가 처방에 적혀 있는지 확인합시다."], a: "reason", o: ["price", "size", "color"]}
+    - {tag: "기록 중", icon: pencil, why: "so everyone's on the same page는 모두가 같은 정보를 갖는다는 관용구예요.", decoy: "for the audit", d: ["모두가 같은 내용을 알도록 지금 투약 사유를 차트에 남기고 있어요.", "가족이 같은 내용을 알도록 지금 지연 사유를 차트에 남기고 있어요."], a: "page", o: ["floor", "shelf", "wall"]}
+    - {tag: "인계 이유", icon: handshake2, why: "holding off는 일단 미룬다는 구동사이고, why로 알려야 할 핵심이 이유임을 짚어요.", decoy: "for his lunch", d: ["다음 근무조가 언제 미루는지 알아야 해요.", "가족이 왜 미루는지 알아야 해요."], a: "Next", o: ["Last", "First", "Same"]}
+    - {tag: "기록 내용", icon: pencil, why: "note 뒤에 두 항목(분비물과 계획)을 and로 이어 적을 내용을 구체적으로 말해요.", decoy: "for the audit", d: ["분비물과 비용을 차트에 기록할게요.", "소변과 계획을 차트에 기록할게요."], a: "plan", o: ["price", "party", "pump"]}
+  order:
+    tag: "대화 흐름"
+    icon: pencil
+    ko: "발관 지연 기록 4문장 순서"
+    why: "무엇을 적을지 말하고, 그런 기록이 왜 필요한지 잇고, 그것을 이루려고 차트를 확인한 뒤, 차트에 있으면 다음 근무조가 안다는 결과로 닫아요."
+    lines:
+      - {en: "I'll document that extubation is delayed due to heavy secretions.", icon: pencil, ko: "분비물 때문에 발관이 지연됐다고 기록해요", note: "기록"}
+      - {en: "Clear notes like that help the next shift understand the plan.", icon: pencil, ko: "그런 기록이 다음 근무조의 이해를 도와요", note: "이유"}
+      - {en: "To make that happen, let's make sure the reason is in the chart.", icon: check, ko: "그러려면 이유가 차트에 있는지 확인해요", note: "확인"}
+      - {en: "Once it's there, the next shift will know why we're holding off.", icon: handshake2, ko: "있으면 왜 미루는지 알게 돼요", note: "결과"}
+14:
+  s:
+    - {tag: "비약물 조치", icon: shield, why: "Let's try는 효과가 보장되진 않지만 시도해 보자는 제안이에요.", decoy: "to the waiting room", d: ["재지남력을 도와주고 가족을 대기실로 안내해 봅시다.", "재지남력을 도와주고 담당의를 침상 곁으로 데려와 봅시다."], a: "bedside", o: ["hallway", "lobby", "cafeteria"]}
+    - {tag: "환경 조절", icon: bulb, why: "동명사 둘을 and로 묶어서 환경 조치 두 가지를 한 주어로 말해요.", decoy: "for the nurses", d: ["소음을 줄이고 식사 일과를 지키는 것이 섬망을 진정시킬 수 있어요.", "소음을 줄이고 낮밤 일과를 지키는 것이 통증을 진정시킬 수 있어요."], a: "delirium", o: ["nausea", "hiccups", "cough"]}
+    - {tag: "우선 순서", icon: board, why: "first가 약보다 비약물 조치를 앞에 두라는 순서를 알려요.", decoy: "in the unit", d: ["비약물 조치를 먼저 하면 퇴원을 더 잘 견디는 데 도움이 돼요.", "비약물 조치를 먼저 하면 통증을 더 잘 견디는 데 도움이 돼요."], a: "tolerate", o: ["avoid", "refuse", "forget"]}
+    - {tag: "환경 조성", icon: bulb, why: "calm and quiet 두 형용사로 어떤 분위기를 만들지 구체적으로 말해요.", decoy: "for the doctor", d: ["오늘 밤은 침대를 낮게 하고 조용하고 차분하게 유지할게요.", "내일은 조명을 어둡게 하고 조용하고 차분하게 유지할게요."], a: "dim", o: ["flash", "wipe", "label"]}
+    - {tag: "가족 효과", icon: handshake2, why: "seems to로 관찰에 근거한 추정임을 표시해서 과장하지 않아요.", decoy: "for the visitors", d: ["침상 곁의 간호사가 무엇보다 재지남력에 도움이 되는 것 같아요.", "침상 곁의 가족이 무엇보다 식욕에 도움이 되는 것 같아요."], a: "seems", o: ["refuses", "hopes", "fails"]}
+    - {tag: "재시도 제안", icon: play, why: "so로 이유(더 차분함)에서 제안(재시도)으로 이어지는 흐름을 보여 줘요.", decoy: "for lunch", d: ["오늘은 더 차분해서 다시 면회를 시도해 봅시다.", "어제는 더 차분해서 다시 시험을 시도해 봅시다."], a: "calmer", o: ["hungrier", "warmer", "thinner"]}
+  order:
+    tag: "대화 흐름"
+    icon: shield
+    ko: "섬망 이탈 지연 대응 4문장 순서"
+    why: "비약물 조치를 먼저 하자고 제안하고, 그 구체적 내용을 말한 뒤, 가족의 효과를 덧붙이고, 그 결과 차분해졌으니 시험을 다시 하자고 닫아요."
+    lines:
+      - {en: "Let's try non-drug measures first to help him tolerate weaning.", icon: shield, ko: "비약물 조치를 먼저 해 봅시다", note: "제안"}
+      - {en: "That means reducing noise, dimming the lights, and keeping a day-night routine.", icon: bulb, ko: "소음·조명을 줄이고 낮밤을 지켜요", note: "내용"}
+      - {en: "On top of those, family at the bedside seems to reorient him best.", icon: handshake2, ko: "침상 곁 가족이 재지남력에 가장 도움이에요", note: "가족"}
+      - {en: "With all of that, he's calmer today, so let's try the trial again.", icon: play, ko: "그래서 차분해졌으니 다시 시험해요", note: "재시도"}
+15:
+  s:
+    - {tag: "상황 인지", icon: siren, why: "That stridor로 방금 들은 소리를 가리키고 means로 소리를 해석으로 바로 연결해요.", decoy: "for the doctor", d: ["저 협착음은 하기도가 붓고 좁아지고 있다는 뜻이에요.", "저 기침은 상기도가 붓고 좁아지고 있다는 뜻이에요."], a: "stridor", o: ["gurgle", "snore", "hiccup"]}
+    - {tag: "응급 지시", icon: siren, why: "명령문은 주어 없이 동사로 시작해서 급한 상황에서 짧고 분명하게 지시해요.", decoy: "to the lab", d: ["에피네프린을 분무하고 지금 약사를 불러 주세요.", "에피네프린을 분무하고 지금 간병인을 불러 주세요."], a: "airway", o: ["cardiac", "stroke", "dialysis"]}
+    - {tag: "대비 지시", icon: shield, why: "in case 절이 카트를 준비해 두는 이유를 알려서, 아직 일어나지 않은 일에 대비한다는 뜻이 분명해요.", decoy: "for the visitors", d: ["퇴원할 경우를 대비해 재삽관 카트를 준비해 두세요.", "깨어날 경우를 대비해 재삽관 카트를 준비해 두세요."], a: "ready", o: ["open", "empty", "new"]}
+    - {tag: "상황 보고", icon: siren, why: "getting louder로 변화 방향을 말하고 대시 뒤에 필요한 도움을 바로 이어서, 상태와 요청이 한 문장에 담겨요.", decoy: "for his lunch", d: ["기침이 점점 커지고 있어요, 지금 기도팀이 필요해요.", "협착음이 점점 커지고 있어요, 지금 영양팀이 필요해요."], a: "louder", o: ["longer", "wetter", "faster"]}
+    - {tag: "처치 설명", icon: pill, why: "right now와 to reduce로 지금 하는 처치와 그 목적을 함께 말해요.", decoy: "at the bedside", d: ["열을 줄이려고 지금 에피네프린을 분무하고 있어요.", "통증을 줄이려고 지금 에피네프린을 분무하고 있어요."], a: "reduce", o: ["cause", "hide", "ignore"]}
+    - {tag: "준비 보고", icon: check, why: "in case he obstructs completely로 대비하는 상황이 가장 심한 경우임을 분명히 해요.", decoy: "for the rounds", d: ["완전히 막힐 경우를 대비해 의사가 준비돼 있어요.", "부분적으로 막힐 경우를 대비해 카트가 준비돼 있어요."], a: "ready", o: ["empty", "wet", "late"]}
+  order:
+    tag: "대화 흐름"
+    icon: siren
+    ko: "발관 후 stridor 대응 4문장 순서"
+    why: "소리를 해석해 상황을 알리고, 치료와 호출을 지시하고, 치료와 함께 재삽관 카트를 준비하게 한 뒤, 악화를 바로 알리라는 말로 닫아요."
+    lines:
+      - {en: "That stridor means his upper airway is swelling and narrowing.", icon: siren, ko: "저 협착음은 상기도가 붓는다는 뜻이에요", note: "상황"}
+      - {en: "Give nebulized epinephrine and call the airway team now.", icon: pill, ko: "에피네프린 분무하고 기도팀을 부르세요", note: "지시"}
+      - {en: "Alongside that, have the reintubation cart ready in case he obstructs.", icon: shield, ko: "막힐 때를 대비해 카트를 준비하세요", note: "대비"}
+      - {en: "With all of that in place, keep watching him and tell me the moment the stridor gets louder.", icon: bell, ko: "협착음이 커지면 바로 알려 주세요", note: "감시"}
