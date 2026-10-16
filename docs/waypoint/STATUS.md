@@ -6,6 +6,10 @@
 **Decisions (audit):** [DECISIONS.md](DECISIONS.md)
 **Last updated:** 2026-10-16
 
+> ▶️ **ICU·OR 나머지 66주제 한 번에 저작 — Workflow 실행 중(2026-10-16, 사용자 opt-in).** 주제마다 Sonnet 저작 A‖B → combine → Opus 검토 A‖B
+> (+ Fable 표본 icu-post-arrest·or-massive-transfusion) → Sonnet 수정. ICU v45b 8주제도 다시 저작. 작업 공간 `server/content/tools/wip/icu-or-rest/`,
+> 브랜치 `content/icu-or-onepass-rest`. 정본 합치기·커밋은 결과 확인 뒤. 배포: PR #18 prod promote 완료, PR #19 staging 배포·seed 완료 → prod promote 승인 대기 → prod seed.
+
 > 🔧 **파일럿 후속(2026-10-16, 사용자 결정 '제안대로'):** PR #18 머지 → staging 배포·seed 완료, prod promote 승인 대기. keyPhrase 8건 바꿈·1건 유지
 > (단정 위로 4 완곡화, 기증 = 전문팀 연결 + 상황 brief·goal 정렬, rescue NIV에 'if the physician agrees', vaporizers removed, MH 선언은 마취과 — 같은 상황 비KP 1문장 포함),
 > slider '응답 고르기' 허용. 검사기 W18~W21(decoy·빈칸 오답 되풀이, 오답 ko 어간 되풀이, slider 정답 위치·길이 편향, 확인 뒤집는 빈칸 오답) 추가 — 새 주제 0건 목표,
