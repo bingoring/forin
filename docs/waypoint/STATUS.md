@@ -6,6 +6,12 @@
 **Decisions (audit):** [DECISIONS.md](DECISIONS.md)
 **Last updated:** 2026-10-16
 
+> 🔧 **파일럿 후속(2026-10-16, 사용자 결정 '제안대로'):** PR #18 머지 → staging 배포·seed 완료, prod promote 승인 대기. keyPhrase 8건 바꿈·1건 유지
+> (단정 위로 4 완곡화, 기증 = 전문팀 연결 + 상황 brief·goal 정렬, rescue NIV에 'if the physician agrees', vaporizers removed, MH 선언은 마취과 — 같은 상황 비KP 1문장 포함),
+> slider '응답 고르기' 허용. 검사기 W18~W21(decoy·빈칸 오답 되풀이, 오답 ko 어간 되풀이, slider 정답 위치·길이 편향, 확인 뒤집는 빈칸 오답) 추가 — 새 주제 0건 목표,
+> 기존 ER은 경고 수백 건(정리 미정). 남은 결정 거리: ICU 기증 keyPhrase "we'll follow whatever you decide"(본인 기증 등록은 가족이 뒤집을 수 없음, UAGA),
+> OR 다른 주제의 "…he can hear you". ICU v45b 8주제는 한 번에 저작으로 다시 함.
+
 > ✅ **ICU·OR 한 번에 저작 파일럿 완료(2026-10-16).** 4주제 정본 합침(ICU weaning `8b4b57d`·eol-goals `a6ae700`, OR timeout `3d0a3a5`·MH),
 > 부서 검사 위반 0·경고 0, Go 테스트 통과. 합계 568만 토큰(주제당 Fable 빼고 평균 약 122만, 벽시계 약 1시간) → 35주제 부서 약 4,300만,
 > ICU·OR 나머지 66주제 약 8,000만, v44부터 필요한 26개 부서 약 11억. Opus 검토 고칠 것 81~360건/주제, **응급·임종 주제에서 오답 안전 실패 집중**
