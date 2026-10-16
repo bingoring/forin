@@ -14,15 +14,14 @@ context 21개 세 장면의 `word` 포함 여부(21/21 포함), distractorsEn �
 | 4 | chips | 4 | 대체로 형태소 단위. `read+y`(ready)·`col+ored` 정도만 어색(고칠 정도 아님) |
 | 5 | 뉘앙스 사실 | 3 | MHAUS 핵심(유발약, EtCO2·교근 강직 조기 징후, 체온은 늦은 징후, 체중 기반 용량, 고칼륨 처치, 재발 감시)은 맞음. 단 dantrolene slider의 단서와 정답이 모순, 냉각 멈춤 시점 why가 지침과 어긋남 |
 | 6 | 뉘앙스 설계 | 3 | slider 14개 중 13개 정답이 가운데(읽지 않고도 맞힘), 순서가 깨진 slider 1, pair 정답 둘 1, context `word`가 어색함의 원인이 아닌 것 1 |
-| 7 | v44 정리(결정 11) | 3 | 변경 48건은 대체로 타당. 그러나 틀린 ko 2건(`reconstitute` 재구성하다, 카트 점검 "유효기한도 지났어요")과 부사 헤드워드 1건(`critical`)을 놓침. 사실이 아닌 수치 문장 1 |
+| 7 | v44 정리(결정 11) | 3 | 변경 48건은 대체로 타당. 그러나 틀린 ko 1건(카트 점검 "유효기한도 지났어요"), 직역 ko 1건(`reconstitute` 재구성하다)과 부사 헤드워드 1건(`critical`)을 놓침. 사실이 아닌 수치 문장 1 |
 
 ## 사실 오류·심각한 문제
 
 1. **`MH 카트 점검` 문장 2 `Everything's stocked and in date.` ko "유효기한도 지났어요"** — 뜻이 반대(만료)입니다. 응급 카트 점검 문장이라 안전 문제. (아래 결정 11-1)
 2. **`dantrolene 위치 확인` slider — 단서와 정답이 모순.** cue가 "you haven't looked in this room today"인데 정답(answerAt 2)이 "It's on the MH cart — I checked it this morning." 확인하지 않은 응급약 위치를 "확인했다"고 말하라고 가르칩니다. why("직접 확인한 사실만 말해")와도 어긋남. (고칠 것 N-1)
 3. **`dantrolene 위치 확인` 문장 3 "twelve vials"** — 판정: **사실과 맞지 않는 수치, 지울 것.** MHAUS 권장 비치량은 20 mg 제제(Dantrium·Revonto) 36 바이알 또는 250 mg 제제(Ryanodex) 3 바이알이어서 12는 어느 쪽에도 맞지 않고, 오히려 "열두 개면 충분"으로 읽힙니다. 숫자를 넣지 말고 "정량 전부"로 바꿉니다. keyPhrase 아님 → 문장 수정 가능. (결정 11-3)
-4. **`dantrolene 혼합 투여` 문장 0 ko "재구성합니다" / 단어 `w-reconstitute` ko "재구성하다"** — 약제에서 reconstitute는 가루약을 녹여 주사액으로 만드는 일(용해·조제)입니다. "재구성"은 틀린 뜻. (결정 11-2)
-5. **`급속 냉각 시행` pair why "목표 온도에 닿기 전에 멈춰야"** — MHAUS는 목표 체온(약 38°C)에 **이르면** 능동 냉각을 멈추라고 합니다. "닿기 전"은 너무 일찍 멈추라는 뜻으로 읽힘. 같은 상황 context 차트 장면("stopped at target")과도 어긋남. (고칠 것 N-3)
+4. **`급속 냉각 시행` pair why "목표 온도에 닿기 전에 멈춰야"** — MHAUS는 목표 체온(약 38°C)에 **이르면** 능동 냉각을 멈추라고 합니다. "닿기 전"은 너무 일찍 멈추라는 뜻으로 읽힘. 같은 상황 context 차트 장면("stopped at target")과도 어긋남. (고칠 것 N-3)
 
 판정 요청 항목:
 - **"체온은 늦게 오를 수 있다"(EtCO2 상승 조기 인지 slider why)** — 판정: **사실, 그대로 둠.** MHAUS도 고체온을 흔히 늦게 나타나는 징후로 설명합니다.
@@ -51,6 +50,8 @@ MHAUS 대조 결과(이상 없음): 유발약 = 휘발성 마취 가스 + 석시
 
 **N-7** `고칼륨 부정맥 대응` · context · 어색한 장면의 원인이 `protect`가 아니라 "calcium"·"potassium surge"임("protect his heart"는 보호자에게도 쉬운 말). TASK 9 모양이 아님 · `word`를 `protocol`(ko 프로토콜, words [w-protocol])로 바꾸고 장면을: 마취과→팀 "Bicarb per protocol — push calcium first." ✓ / 위기 기록 "Hyperkalemia treated per protocol: calcium, insulin with glucose, bicarbonate." ✓ / 대기실 보호자에게 "We're managing his hyperkalemia per protocol." ✕, fix "We're following a well-tested plan to bring his blood salts back to normal." why도 protocol에 맞춰 다시.
 
+(같은 모양, 판단 요청: `위기 후 중환자 이송` context `stable`은 어색함이 "hemodynamically·post-MH·out of danger"에 있고, `급속 냉각 시행` context `overshoot`의 ✕ 장면은 보호자에게도 거의 통함 — N-7처럼 word가 어색함의 원인인지 다시 볼 것.)
+
 **N-8** `MH 감수성 환자 준비` · context 첫 장면 "Known MH risk in this room" — 위험은 방이 아니라 환자 · "Known MH risk for this patient — please plan a trigger-free anesthetic."
 
 **N-9** distractorsEn — 정답으로도 맞거나 뜻이 겹치는 오답:
@@ -61,21 +62,11 @@ MHAUS 대조 결과(이상 없음): 유발약 = 휘발성 마취 가스 + 석시
 - `w-alert` `alarm`(경보하다, 뜻 겹침) → `alter`
 - `w-handoff` `hand-on`(없는 말) → `standoff`
 
-**N-10** distractorsEn 품사 불일치(정답 품사 → 바꿀 오답 → 제안): agent(명) urgent→`agency` · vial(명) vital→`dial` · low(형) loan→`lone` · inventory(동) interval→`interview` · sterile(형) steroid→`senile` · probe(명) prove·prone→`robe`·`globe` · temperature(명) temporal→`temperament` · fever(명) fewer→`fervor` · call(동) cell→`cull` · closely(부) closet→`clearly` · sign(명) sing→`sigh` · climb(동) climate→`clamp` · tell(동) tall·tent→`toll`·`sell` · abnormal(형) anomaly→`abysmal` · think(동) thin→`sink` · heart(명) heard→`heat` · rate(명) rare·rave→`race`·`rage` · add(동) odd→`nod` · known(형) knock→`grown` · safe(형) save→`sane` · remove(동) remote→`revoke` · urine(명) urgent→`urinal` · dark(형) dart·dash→`damp`·`stark` · help(명) held·heal→`helm`·`heap` · full(형) fool→`foul` · happen(동) happy→`hamper` · fast(부) fact→`past` · wave(명) wove→`wake` · surface(명) suffice→`surplus` · stable(형) stage→`stale`. (despite는 전치사라 그대로 둠.)
+**N-10** distractorsEn 품사 불일치(정답 품사 → 바꿀 오답 → 제안): agent(명) urgent→`agency` · vial(명) vital→`dial` · low(형) loan→`lone` · inventory(동) invoice·interval→`invent`·`interview` · sterile(형) steroid→`senile` · probe(명) prove·prone→`robe`·`globe` · temperature(명) temporal→`temperament` · fever(명) fewer→`fervor` · call(동) cell→`cull` · closely(부) closet→`clearly` · sign(명) sing→`sigh` · climb(동) climate→`clamp` · tell(동) tall·tent→`toll`·`sell` · abnormal(형) anomaly→`abysmal` · think(동) thin→`sink` · heart(명) heard→`heat` · rate(명) rare·rave→`race`·`rage` · add(동) odd→`nod` · known(형) knock→`grown` · safe(형) save→`sane` · remove(동) remote→`revoke` · urine(명) urgent→`urinal` · dark(형) dart·dash→`damp`·`stark` · help(명) held·heal→`helm`·`heap` · full(형) fool→`foul` · happen(동) happy→`hamper` · fast(부) fact→`past` · wave(명) wove→`wake` · surface(명) suffice→`surplus` · flush(동) fresh→`flick` · stable(형) stage→`stale`. (despite는 전치사라 그대로 둠.)
 
 **N-11** distractorsKo · `w-call` "조용히 기록하다"·"속삭여 전달하다"는 읽기만 해도 걸러짐 → "기록해 두다"·"문자로 보내다". `w-bicarb` "이산화탄소(약칭)"은 약칭이 아닌 말에 붙인 이름표 → "탄산가스(약칭)"·"탄산칼슘(약칭)"처럼 하나만 약칭 꼴로, 또는 "중탄산칼륨"·"탄산칼슘".
 
 **N-12** cue · `w-hyperkalemia` "혈액 속 칼륨이 너무 높아…"는 ko 되풀이 → "MH에서 근육이 깨지며 생기는 전해질 이상 — T파가 뾰족해지는 원인". `w-calcium` "심장 막"은 심막(pericardium)으로 읽힘 → "심근 세포막".
-
-**N-13** chunks(keyPhrase 아닌 문장만) · 구를 끊은 조각:
-- MH 가족력 선별 3 `about your family's / medical history` → `about your family's medical history`
-- 체온 지속 감시 4 `, but we're staying / on top of it` → `, but / we're staying on top of it`
-- EtCO2 감시 3 `for the last / few minutes` → `for the last few minutes`
-- masseter 4 `it's an MH / warning sign` → `in case / it's an MH warning sign`
-- 빈맥·부정맥 3 `in the last / two minutes` → `in the last two minutes`
-- 빈맥·부정맥 4 `If the rhythm turns / unstable` → `If the rhythm turns unstable`
-- 미오글로빈뇨 3 `over the last / hour` → `over the last hour`
-(chunks를 바꾸면 그 문장의 B 필드 — decoy·blank — 가 조각에 맞는지 B 쪽도 다시 확인)
 
 ## 고칠 것 — 결정 11 (v44 단어·문장)
 
@@ -85,9 +76,9 @@ MHAUS 대조 결과(이상 없음): 유발약 = 휘발성 마취 가스 + 석시
 - 이 문장을 예문으로 쓰는 단어 `w-stock`·`w-date`의 `exKo`를 같은 새 ko로
 - changes 파일에 `{kind: sentence, situation: "MH 카트 점검", index: 2, fields: [ko]}`·`{kind: word, id: w-stock/w-date, …}`(exKo는 v45 필드라 V16 대상인지 확인) 기록
 
-**11-2** `w-reconstitute` · ko "재구성하다" → **"(가루약을) 녹여 조제하다"**; distractorsKo → "(가루약을) 나눠 담다"·"(가루약을) 계량하다"; exKo "모두 손을 보태 지금 단트롤렌을 녹여 조제합니다." 문장 `dantrolene 혼합 투여` 0(keyPhrase — ko만) ko도 같은 말로, 그 문장 distractorsKo 둘("둘이…"·"간호사만…")도 새 ko 틀로 다시 쓰기. changes에 word ko·sentence ko 기록.
+**11-2** `w-reconstitute` · ko "재구성하다"는 약 설명서식 직역이라 간호사가 쓰는 말이 아님(틀린 뜻까지는 아님) → **"(가루약을) 녹여 조제하다"**; distractorsKo → "(가루약을) 나눠 담다"·"(가루약을) 계량하다"; exKo "모두 손을 보태 지금 단트롤렌을 녹여 조제합니다." 문장 `dantrolene 혼합 투여` 0(keyPhrase — ko만) ko도 같은 말로, 그 문장 distractorsKo 둘("둘이…"·"간호사만…")도 새 ko 틀로 다시 쓰기. changes에 word ko·sentence ko 기록.
 
-**11-3** `dantrolene 위치 확인` 문장 3(keyPhrase 아님) · "twelve vials" 삭제 · en → "The MH cart for this room stocks the full supply of dantrolene." / ko "이 방 MH 카트에 단트롤렌이 정량 전부 구비돼 있어요." / chunks `The MH cart for this room / stocks the full supply / of dantrolene / .` / words [w-cart, w-stock, w-dantrolene](vial 태그는 문장 1에 남아 상황 단어 수 유지 — 다시 셀 것). 이 문장을 예문으로 쓰는 `w-cart` example·exKo도 교체. B 필드(blank·decoy·distractorsKo·order 줄)도 새 문장으로 다시 써야 함 — B 검토와 맞출 것.
+**11-3** `dantrolene 위치 확인` 문장 3(keyPhrase 아님) · "twelve vials" 삭제 · en → "This room's MH cart is stocked with a full supply of dantrolene." / ko "이 방 MH 카트에 단트롤렌이 정량 전부 구비돼 있어요." / chunks `This room's MH cart / is stocked / with a full supply / of dantrolene / .` / words [w-cart, w-stock, w-dantrolene](vial 태그는 문장 1에 남아 상황 단어 수 유지 — 다시 셀 것). 이 문장을 예문으로 쓰는 `w-cart` example·exKo도 교체. B 필드(blank·decoy·distractorsKo·order 줄)도 새 문장으로 다시 써야 함 — B 검토와 맞출 것.
 
 **11-4** `w-critical` · 헤드워드가 형용사인데 문장(고칼륨 부정맥 대응 0)은 `critically` → 헤드워드를 부사로: en `critically`, ipa /ˈkrɪtɪkli/, ko "위험할 만큼", cue "수치가 생명이 위험할 정도로 벗어났다고 강조할 때 (부사)", distractorsEn [chronically, cynically], distractorsKo [만성적으로, 가볍게], chips [[crit, i, cal, ly]]. id는 그대로.
 
@@ -97,9 +88,17 @@ MHAUS 대조 결과(이상 없음): 유발약 = 휘발성 마취 가스 + 석시
 
 **11-7** `MH 감수성 환자 준비` 문장 2(keyPhrase — ko만) · "안전한 손에 맡겨져 있어요"는 직역 → "믿고 맡기셔도 돼요 — 저희가 이 상황에 대비해 왔어요." distractorsKo 둘, `w-safe`·`w-prepare` exKo도 맞출 것.
 
-**11-8** `MH 위기 발동` 문장 4(keyPhrase 아님) · 그 문장의 why가 "누구에게 시키는지 정하지 않으면 서로 미룬다"며 문장 자체를 나쁜 예로 설명함 → 가르칠 문장으로 맞지 않음. en "Can you call the OR desk and get us more hands in here?"(ko "수술실 데스크에 연락해서 일손을 더 불러 주시겠어요?")로 바꾸거나, en을 두면 why를 문장과 맞게 고칠 것(B 몫). ko "손을 더 불러"는 어느 쪽이든 "일손을 더 불러"로.
+**11-8** `MH 위기 발동` 문장 4 · ko "손을 더 불러 주세요" → "일손을 더 불러 주세요"(distractorsKo 둘도 같은 틀로). en은 자연스러우니 그대로. (참고: 이 문장의 why가 "누구에게 시키는지 정하지 않으면 서로 미룬다"며 문장을 나쁜 예처럼 설명함 — why는 B 몫.)
 
-**11-9** `w-rate` · ko "맥박수"는 heart rate 전체의 뜻(heart는 따로 태그) → "수·속도(심박수의 '수')" 쪽으로, distractorsKo도 "세기"·"간격"처럼 rate 자리의 말로.
+**11-9** chunks(v44 필드, keyPhrase 아닌 문장만 — changes에 `fields: [chunks]`로 기록) · 구를 끊은 조각:
+- MH 가족력 선별 3 `about your family's / medical history` → `about your family's medical history`
+- 체온 지속 감시 4 `, but we're staying / on top of it` → `, but / we're staying on top of it`
+- EtCO2 감시 3 `for the last / few minutes` → `for the last few minutes`
+- masseter 4 `it's an MH / warning sign` → `in case / it's an MH warning sign`
+- 빈맥·부정맥 3 `in the last / two minutes` → `in the last two minutes`
+- 빈맥·부정맥 4 `If the rhythm turns / unstable` → `If the rhythm turns unstable`
+- 미오글로빈뇨 3 `over the last / hour` → `over the last hour`
+(chunks를 바꾸면 그 문장의 B 필드 — decoy·blank — 가 조각에 맞는지 B 쪽도 다시 확인)
 
 변경 목록(changes 48건) 판정: 쉬운 말 13개 제거·태그 4곳(monitor·pack·call 2)·ko 10건 모두 타당. 다만 `need`·`get`·`high`를 뺀 기준이면 `think`·`happen`·`add`·`start`·`stop`·`help`·`heart`·`blood`도 같은 수준입니다. 확실하지 않아 고칠 것에는 넣지 않습니다(상황당 8개 조건 때문에 빼려면 대체 단어가 필요).
 
@@ -111,4 +110,4 @@ MHAUS 대조 결과(이상 없음): 유발약 = 휘발성 마취 가스 + 석시
 
 ## 종합
 
-고칠 것: 뉘앙스·재료 13항목(N-9·N-10은 묶음으로 오답 약 36개) + 결정 11 9건. 사실 문제 5건(특히 "유효기한도 지났어요", dantrolene slider 모순, twelve vials)은 반드시 고친 뒤 내보낼 것. 고치고 나면 내보내도 됩니다. keyPhrase 1건(vaporizers off)은 사용자 결정.
+고칠 것: 뉘앙스·재료 12항목(N-9·N-10은 묶음으로 오답 약 38개) + 결정 11 9건(11-9는 chunks 7문장 묶음). 사실 문제 4건(특히 "유효기한도 지났어요", dantrolene slider 모순, twelve vials)은 반드시 고친 뒤 내보낼 것. 고치고 나면 내보내도 됩니다. keyPhrase 1건(vaporizers off)은 사용자 결정.
