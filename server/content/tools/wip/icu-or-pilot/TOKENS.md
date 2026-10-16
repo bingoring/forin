@@ -18,4 +18,5 @@
 | 수정 | icu-weaning-extubation | sonnet | 253,512 | 8.9분 | A 38·B 43 전부 반영, 변경 목록 48, 위반 0 |
 | 판정 B | icu-eol-goals | fable | 195,102 | 16.8분 | 고칠 것 29(안전 1·정답 둘 2), 안전 항목은 Opus 목록에 이미 있음 |
 | 수정 | or-timeout | sonnet | 229,815 | 7.8분 | A 35·B 122 전부 반영, 변경 목록 70, 위반 0 |
-| 검토 A | or-malignant-hyperthermia | opus | (대기) | | 고칠 것 21묶음, 심각 4(ko 반대·미확인 확인·12바이알·냉각 why), slider 정답 가운데 13/14, keyPhrase 결정 1(vaporizers off) |
+| 검토 A | or-malignant-hyperthermia | opus | 189,498 | 11.9분 | 고칠 것 21묶음, 심각 4(ko 반대·미확인 확인·12바이알·냉각 why), slider 정답 가운데 13/14, keyPhrase 결정 1(vaporizers off) |
+| 검토 B | or-malignant-hyperthermia | opus | (대기) | | 고칠 것 47(안전 23·정답 둘 15) |
