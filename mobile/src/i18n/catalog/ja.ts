@@ -424,7 +424,7 @@ export const ja: Record<string, string> = {
 
   // ── lounge (staff lounge: feed, compose, share) ───────────────────
   'lounge.title': 'スタッフラウンジ',
-  'lounge.subtitle': '同じ仕事で海外へ行く仲間の休憩室',
+  'lounge.restRoom': '休憩室',
   'lounge.write': '投稿',
   'lounge.searchHint': '投稿・人・タグを探す…',
   'lounge.filterAll': 'すべて',
@@ -1289,6 +1289,8 @@ export const ja: Record<string, string> = {
   'lab.whyLabel': 'なぜ?',
   'lab.mastery': '習熟',
   'lab.nbTitle': '復習ノート',
+  'lab.shelf.handoff': '申し送りノート',
+  'lab.shelf.slang': 'スラング',
   'lab.dueToday': '今日の分',
   'lab.today': '今日',
   'lab.nCards': '{n}枚',

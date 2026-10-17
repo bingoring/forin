@@ -26,6 +26,7 @@ import { NbIcon } from '@/components/nb/NbIcon';
 import { BottomSheet } from '@/components/BottomSheet';
 import { LoungeCard } from '@/components/lounge/LoungeCard';
 import { NbButton, NbChip, NbMemo, nbText } from '@/components/nb/NbUI';
+import { RestRoomCard } from '@/components/lounge/RestRoomCard';
 import { RULE_COLOR, RULE_H, TOP_INSET, nb, nbFonts } from '@/theme/nb';
 import { useT } from '@/i18n';
 
@@ -143,7 +144,8 @@ export default function Lounge() {
           {t('lounge.write')}
         </NbButton>
       </View>
-      <Text style={[nbText.body(11, nb.soft), { marginTop: 2 }]}>{t('lounge.subtitle')}</Text>
+      {/* 휴게실(v48) — 게임 허브 입구가 한 줄 설명을 대신한다. */}
+      <RestRoomCard />
 
       {/* Written on a ruled line rather than boxed — and a real input, because the
           handoff's line is where you type, not a button that opens somewhere to type. */}

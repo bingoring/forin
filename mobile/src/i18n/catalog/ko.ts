@@ -445,7 +445,7 @@ export const ko: Record<string, string> = {
 
   // ── lounge (스태프 라운지: feed, compose, share) ────────────────────────────
   'lounge.title': '스태프 라운지',
-  'lounge.subtitle': '해외로 가는 같은 직업 동료들의 휴게실',
+  'lounge.restRoom': '휴게실',
   'lounge.write': '글쓰기',
   'lounge.searchHint': '글·사람·태그 찾기…',
   'lounge.filterAll': '전체',
@@ -1346,6 +1346,8 @@ export const ko: Record<string, string> = {
   'lab.whyLabel': '왜?',
   'lab.mastery': '숙련',
   'lab.nbTitle': '복습 노트',
+  'lab.shelf.handoff': '인계 노트',
+  'lab.shelf.slang': '슬랭',
   'lab.dueToday': '오늘 복습할 것',
   'lab.today': '오늘',
   'lab.nCards': '{n}장',

@@ -18,6 +18,7 @@ import { Collapsible, DisclosureChevron } from '@/components/Collapsible';
 import { playSfx } from '@/lib/sfx';
 import { NbIcon } from '@/components/nb/NbIcon';
 import { NbButton, NbChip, NbIndexTabs, NbMark, NbMemo, NbPaper, NbStamp, NbTag, nbText } from '@/components/nb/NbUI';
+import { MaterialShelf } from '@/components/lab/MaterialShelf';
 import { RULE_COLOR, RULE_H, TOP_INSET, nb, nbFonts } from '@/theme/nb';
 import { space, type as typeScale } from '@/theme/tokens';
 import { t, type Translate, useLocale, useT } from '@/i18n';
@@ -269,6 +270,8 @@ export default function Lab() {
             <View style={{ gap: space.md }}>
               {title}
               {tabs}
+              {/* 자료 선반(v48) — 인계 노트·슬랭, 교정 노트 탭에서만. */}
+              <MaterialShelf />
               {/* Today's review, as a taped page with the count stamped on it. The stamp
                   is the whole hero: a number you can see from across the room is what
                   makes a spaced-repetition queue feel finite. */}

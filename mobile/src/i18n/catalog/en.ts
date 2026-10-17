@@ -427,7 +427,7 @@ export const en: Record<string, string> = {
 
   // ── lounge (staff lounge: feed, compose, share) ───────────────────
   'lounge.title': 'Staff lounge',
-  'lounge.subtitle': 'A break room for people leaving for the same job abroad',
+  'lounge.restRoom': 'Break room',
   'lounge.write': 'Write',
   'lounge.searchHint': 'Search posts, people, tags...',
   'lounge.filterAll': 'All',
@@ -1313,6 +1313,8 @@ export const en: Record<string, string> = {
   'lab.whyLabel': 'Why?',
   'lab.mastery': 'Mastery',
   'lab.nbTitle': 'Review notes',
+  'lab.shelf.handoff': 'Handoff notes',
+  'lab.shelf.slang': 'Slang',
   'lab.dueToday': 'Due today',
   'lab.today': 'TODAY',
   'lab.nCards': '{n}',
