@@ -99,6 +99,12 @@ const DEPT_NB_ICON: Record<string, NbIconName> = {
   ORIENT: 'compass',
 };
 
+/** The department doodle for a department CODE the server sent (ER, ICU …) — the same
+ *  table as {@link deptNbIcon}, without guessing the code from an id. */
+export function deptCodeNbIcon(code?: string): NbIconName {
+  return (code && DEPT_NB_ICON[code.toUpperCase()]) || 'stetho';
+}
+
 /** The department doodle for a scenario/event id — see {@link DEPT_NB_ICON}. */
 export function deptNbIcon(contentID?: string): NbIconName {
   const code = deptCodeOf(contentID);
