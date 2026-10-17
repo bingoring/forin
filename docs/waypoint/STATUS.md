@@ -2,9 +2,9 @@
 
 **Framework:** [Waypoint](https://github.com/bingoring/waypoint)
 **PRD:** [prd.md](prd.md) | [prd-tech.md](prd-tech.md)
-**Design handoff:** [inputs/design-handoff_v42/](inputs/design-handoff_v42/README.md) (최신) · [v40](inputs/design-handoff_v40/README.md) · [v39](inputs/design-handoff_v39/README.md) · [v38](inputs/design-handoff_v38/README.md) · [v22](inputs/design-handoff_v22/README.md)
+**Design handoff:** [inputs/design-handoff_v48/](inputs/design-handoff_v48/README.md) (최신) · [v47](inputs/design-handoff_v47/README.md) · [v42](inputs/design-handoff_v42/README.md) · [v40](inputs/design-handoff_v40/README.md) · [v39](inputs/design-handoff_v39/README.md) · [v38](inputs/design-handoff_v38/README.md) · [v22](inputs/design-handoff_v22/README.md)
 **Decisions (audit):** [DECISIONS.md](DECISIONS.md)
-**Last updated:** 2026-10-16
+**Last updated:** 2026-10-17
 
 > ⏸️ **다음 세션 시작점 (2026-10-16 인계) — ICU·OR 나머지 66주제 한 번에 저작, Workflow 중단(사용자 지시).**
 > - 상태·재개 방법 정본: [`server/content/tools/wip/icu-or-rest/README.md`](../../../../server/content/tools/wip/icu-or-rest/README.md) (재개용 `workflow.js`·`args.json` 같은 폴더, 브랜치 `content/icu-or-onepass-rest`, 마지막 커밋 `cab025e`).
@@ -13,6 +13,12 @@
 > - Workflow 주의: 파이프라인이라 TaskStop 말고는 새 에이전트를 막을 수 없고 멈추면 돌던 것도 끊김 → **topics를 10~15개씩 잘라** 돌릴 것. 새 세션에서 Workflow opt-in 재확인.
 > - 배포: PR #18(파일럿 4주제·비속어 정리·V21)·#19(keyPhrase 8건·W18~W21) **prod promote 완료**, prod seed 완료(2026-10-16) — 운영 ER 비속어 조각 정리·keyPhrase 결정 반영됨.
 > - 비용 참고: 주제당 Fable 빼고 약 122만 토큰, 66주제 약 8,000만. 이번 중단까지 저작 약 20회분(약 450만) 사용.
+
+> 🚩 **홈 "달력 한 장 + 버튼 하나"(v47·v48) — 착수 (2026-10-17, 새 콘텐츠 진행보다 먼저 — 사용자).** 핸드오프 v47·v48 반입.
+> 홈 = 상단 줄(아바타·연속 불꽃·호출 배지) · 근무 달력(탭하면 그날 도장) · 이어서 버튼 하나. 문구 원칙 "설명 배제"로 31곳 정리.
+> 구 홈 Extras는 라운지 휴게실(게임) · 리뷰랩 자료 선반(인수인계·슬랭)으로. 사용자 결정: 과별 출근 카드는 입구 없이 제거(맵 도달 불가),
+> 그림 없는 이관(오늘의 문장·할 일·멘토·복습 미리보기)은 홈에서만 빼고 보류, 휴게실은 실제 게임 2개만·순위 비움, 메인 레포는 브랜치 + PR.
+> 스펙 [`02-construction/home-calendar-v47/`](02-construction/home-calendar-v47/build-spec-index.md) T1~T5.
 
 > 🔧 **파일럿 후속(2026-10-16, 사용자 결정 '제안대로'):** PR #18 머지 → staging 배포·seed 완료, prod promote 승인 대기. keyPhrase 8건 바꿈·1건 유지
 > (단정 위로 4 완곡화, 기증 = 전문팀 연결 + 상황 brief·goal 정렬, rescue NIV에 'if the physician agrees', vaporizers removed, MH 선언은 마취과 — 같은 상황 비KP 1문장 포함),
