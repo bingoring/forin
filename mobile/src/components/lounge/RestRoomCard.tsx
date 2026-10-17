@@ -36,7 +36,7 @@ export function RestRoomCard() {
             ))}
           </View>
         </View>
-        <Text style={{ fontFamily: nbFonts.hand, fontSize: 18, color: nb.soft }}>›</Text>
+        <NbIcon name="chevronRight" size={15} color={nb.soft} />
       </NbPaper>
     </Pressable>
   );

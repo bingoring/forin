@@ -225,7 +225,7 @@ export function PassportIdPage({ lang, job, ava, name, nameDone, onPickLang, onP
         {/* progress note */}
         <View style={{ marginTop: 14 }}>
           {allDone ? (
-            <NbMemo color={nb.green} rot={0.3}><Text style={nbText.hand(13.5)}><Text style={{ color: nb.green }}>{t('onb.id.readyBold')}</Text> {t('onb.id.readyRest')}</Text></NbMemo>
+            <NbMemo color={nb.green} rot={0.3}><Text style={nbText.hand(13.5)}><Text style={{ color: nb.green }}>{t('onb.id.readyBold')}</Text></Text></NbMemo>
           ) : (
             <NbMemo rot={0.3}><Text style={nbText.hand(13.5)}>{t((['onb.id.stepLang', 'onb.id.stepJob', 'onb.id.stepAva', 'onb.id.stepName'] as const)[nextEmpty])} · {fields.filter(Boolean).length}/4</Text></NbMemo>
           )}

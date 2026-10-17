@@ -2,14 +2,14 @@
 //
 //   SL:116-122  머리 — 앰버 원 58(-4°, 문장 아이콘) + 형광펜 한국어 뜻 18.5 · ✎ 단서 13.5.
 //               listen이면 같은 원이 파란 스피커 버튼(누르면 재생), 머리는 "이 문장의 뜻은?" 21.
-//   SL:26-44    listen — 파형 18막대 + "탭해서 다시 듣기 · 2회"(실제로 두 번, 결정 9) · A/B/C 원 선택지 3
+//   SL:26-44    listen — 파형 18막대(다시 듣기는 실제로 두 번, 결정 9 — v47에서 안내 문구는 뺐다) · A/B/C 원 선택지 3
 //   SL:46-62    build  — 형광 조립 줄(아래 2px, 결과색) · 빈 상태 "첫단어 _ _ _ _ _" · 조각마다 빼기 ·
 //               흰 종이 칩(하드 그림자) · 쓴 칩은 빗금 + 점선
 //   SL:64-81    blank  — 폭 110 빈칸(아래 2.5px 파랑 → 결과색, 틀리면 정답을 빨강으로) · 2×2 아이콘 카드
 //   SL:82-103   order  — 번호 원 26 · 점선→실선 줄 상자 · 줄 아이콘 17 · 다시 누르면 그 번호 취소 · 결과색
 //   SL:124-142  해설   — 점선 구분 · GOOD/RETRY 이중선 도장(nb-ok, -10°) · 정답 문장 + 스피커 · 뜻 ·
 //               "왜?" 파란 좌측 바 · 노란 "따라 말하기" 필
-//   SL:215-226  DONE 장 — 파란 이중선 도장 96 · 바로 맞힘/틀림 집계 · 안내
+//   SL:215-226  DONE 장 — 파란 이중선 도장 96 · 바로 맞힘/틀림 집계(v47: 안내 줄 뺌)
 //   SL:239-256  판정 버튼 — 아직 헷갈려요(앰버, 왼쪽 뜯김) / 외웠어요·이제 알겠어요(초록, 오른쪽 뜯김)
 //
 // 글리프(✎ ✓ ✕)는 NbIcon으로 그린다(결정 4). 문구는 화면이 넘긴 번역(i18n)이다.
@@ -123,14 +123,11 @@ function ListenPrompt({ card, answer, onAnswer, result, locked, plays, onPlay, v
   card: Extract<SheetCard, { type: 'listen' }>; answer: string | null; onAnswer: (a: string) => void; result: Result; locked: boolean;
   plays: number; onPlay?: () => void; voice: Voice;
 }) {
-  const t = useT();
-  const left = Math.max(0, REPLAYS - Math.max(0, plays - 1));
   return (
     <View style={{ marginTop: 12 }}>
       <Pressable testID="sent-replay" onPress={onPlay} disabled={!onPlay} style={{ flexDirection: 'row', alignItems: 'center', gap: 3, height: 26, paddingHorizontal: 6 }}>
         <Wave voice={voice} />
         <View style={{ flex: 1 }} />
-        <Text testID="sent-replay-left" numberOfLines={1} style={[nbText.hand(12, nb.soft), { flexShrink: 0 }]}>{t('sent.replay', { n: left })}</Text>
       </Pressable>
       <View style={{ marginTop: 12 }}>
         {card.options.map((o, i) => {
@@ -165,7 +162,6 @@ function ListenPrompt({ card, answer, onAnswer, result, locked, plays, onPlay, v
 function BuildPrompt({ card, built, onAnswer, result, locked }: {
   card: Extract<SheetCard, { type: 'build' }>; built: number[]; onAnswer: (a: number[]) => void; result: Result; locked: boolean;
 }) {
-  const t = useT();
   const line = result ? (result === 'wrong' ? nb.red : nb.green) : 'rgba(62,54,43,.5)';
   return (
     <View style={{ marginTop: 12 }}>
@@ -202,7 +198,6 @@ function BuildPrompt({ card, built, onAnswer, result, locked }: {
           );
         })}
       </View>
-      <Text style={[nbText.hand(12.5, nb.soft), { marginTop: 8 }]}>{t('sent.buildHint')}</Text>
     </View>
   );
 }
@@ -260,10 +255,8 @@ function BlankPrompt({ card, answer, onAnswer, result, locked }: {
 function OrderPrompt({ card, seq, onAnswer, result, locked }: {
   card: Extract<SheetCard, { kind: 'order' }>; seq: number[]; onAnswer: (a: number[]) => void; result: Result; locked: boolean;
 }) {
-  const t = useT();
   return (
     <View style={{ marginTop: 12 }}>
-      <Text style={nbText.hand(13, nb.soft)}>{t('sent.orderHint')}</Text>
       {card.shuffled.map((li, i) => {
         const l = card.order.lines[li];
         const pos = seq.indexOf(li);
@@ -388,10 +381,6 @@ export function SentDoneSheet({ known, fuzzy }: { known: number; fuzzy: number }
           <Text testID="sent-done-wrong" style={nbText.hand(24, nb.red)}>{String(fuzzy)}</Text>
           <Text style={nbText.body(10.5, nb.soft)}>{t('sent.wrong')}</Text>
         </View>
-      </View>
-      <View style={{ marginTop: 10, flexDirection: 'row', alignItems: 'center', gap: 4, justifyContent: 'center' }}>
-        <Text style={[nbText.hand(13.5, nb.soft), { textAlign: 'center', flexShrink: 1 }]}>{t('sent.doneNote')}</Text>
-        <NbIcon name="pencil" size={13} color={nb.soft} />
       </View>
     </View>
   );

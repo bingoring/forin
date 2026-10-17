@@ -141,11 +141,11 @@ export function HomeCalendar({ month, days, today, selected, onSelect, onMonth, 
       <NbPaper rot={-0.4} tape tapeLeft={150} style={{ paddingTop: 16, paddingHorizontal: 13, paddingBottom: 13 }}>
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
           <Pressable onPress={() => onMonth(-1)} hitSlop={8} testID="home-cal-prev" style={arrowBox}>
-            <Text style={{ fontFamily: nbFonts.hand, fontSize: 19, color: SOFT }}>‹</Text>
+            <NbIcon name="chevronLeft" size={15} color={SOFT} />
           </Pressable>
           <Text style={{ flex: 1, textAlign: 'center', fontFamily: nbFonts.hand, fontSize: 24, color: INK }}>{monthLabel(month, today)}</Text>
           <Pressable onPress={() => onMonth(1)} hitSlop={8} testID="home-cal-next" style={arrowBox}>
-            <Text style={{ fontFamily: nbFonts.hand, fontSize: 19, color: SOFT }}>›</Text>
+            <NbIcon name="chevronRight" size={15} color={SOFT} />
           </Pressable>
         </View>
 

@@ -29,7 +29,7 @@ import { NbButton, NbPaper, NbTag, nbText } from '@/components/nb/NbUI';
 import { deptNbIcon, deptSpineColor } from '@/data/campus';
 import type { BinderRect } from '@/data/journeyBinderFly';
 import { nb, nbFonts } from '@/theme/nb';
-import { type Translate, useT } from '@/i18n';
+import { useT } from '@/i18n';
 import type { JourneyCurriculum } from './JourneyMap';
 import { BuildingTabs, shelfBuildings, useBuildingLabel } from './BuildingTabs';
 import { measureBinderRect } from './measureBinderRect';
@@ -69,20 +69,6 @@ export function isTopicDone(c: JourneyCurriculum): boolean {
 }
 
 // ── 내 부서 — 책상에 펼쳐 둔 바인더 ──────────────────────────────────────────
-
-/** 참조의 `주제 2/6 완료 · 지금 '중증 응대' 13/34` 한 줄. 진행 중인 주제가 없으면
- *  뒷부분을 지어내지 않고 앞부분만 낸다. */
-function goalSubline(t: Translate, curricula: JourneyCurriculum[]): string {
-  const done = curricula.filter(isTopicDone).length;
-  const head = t('journey.goalTopics', { done, total: curricula.length });
-  const cur = curricula.find((c) => c.resume);
-  if (!cur) return head;
-  return `${head} · ${t('journey.goalNow', {
-    name: cur.name ?? cur.themeKey ?? '',
-    done: cur.done ?? 0,
-    total: cur.total ?? 0,
-  })}`;
-}
 
 /** 주제를 순서대로 n묶음으로 나눈다 — 앞 묶음부터 하나씩 더 받는다(35 → 6·6·6·6·6·5).
  *  주제가 n개보다 적으면 주제 하나가 한 칸이다(빈 칸을 지어내지 않는다). */
@@ -161,9 +147,6 @@ function GoalDeptCard({ goalDept, goalCurricula, inferred, onOpen, onChangeGoal 
             {/* 추론된 목표는 저장되지 않는다(J4) — 학습자가 고르기 전까지는 티를 낸다. */}
             {!!inferred && <NbTag color={nb.soft}>{t('journey.inferredTag')}</NbTag>}
           </View>
-          <Text numberOfLines={1} style={[nbText.body(10.5, nb.soft), { marginTop: 2 }]}>
-            {goalSubline(t, goalCurricula)}
-          </Text>
         </View>
 
         <NbButton variant="ink" size="sm" iconRight="chevronRight" iconColor={nb.paper} onPress={() => onOpen(goalDept)}>
@@ -350,7 +333,6 @@ export function BinderShelf({ goalDept, goalBuilding, goalCurricula, entries, in
 
       <View style={{ paddingHorizontal: 20 }}>
         <Text style={[nbText.hand(16), { marginTop: 4 }]}>{t('journey.shelfHeading')}</Text>
-        <Text style={[nbText.body(10.5, nb.soft), { marginTop: 2 }]}>{t('journey.shelfHint')}</Text>
 
         {!!active && (
           <BuildingTabs tabs={buildings} active={active.building} onPick={setPicked} />

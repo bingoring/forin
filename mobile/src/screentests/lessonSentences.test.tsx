@@ -241,7 +241,8 @@ describe('문장장', () => {
     // the first listen and two replays — then the speaker does nothing
     expect(byID(current(tree.root), 'sheet-icon-press')[0].props.onPress).toBeUndefined();
     expect(byID(current(tree.root), 'sent-replay')[0].props.disabled).toBe(true);
-    expect(texts(byID(current(tree.root), 'sent-replay-left')[0]).join('')).toBe('탭해서 다시 듣기 · 0회');
+    // v47: no "탭해서 다시 듣기 · n회" line — the limit is the disabled speaker, not a sentence.
+    expect(byID(current(tree.root), 'sent-replay-left')).toHaveLength(0);
     // the authored wrong meanings
     expect(texts(current(tree.root))).toEqual(expect.arrayContaining(['지금 약을 드릴게요', '차트에 기록했어요']));
   });
@@ -326,7 +327,7 @@ describe('문장장', () => {
     await press(byID(current(tree.root), 'sent-opt-0')[0]); await pressID(tree.root, 'sent-check'); await pressID(tree.root, 'sent-known');
     await press(byID(current(tree.root), 'sent-opt-0')[0]); await pressID(tree.root, 'sent-check'); await pressID(tree.root, 'sent-known');
     const cur = () => current(tree.root);
-    expect(texts(cur())).toEqual(expect.arrayContaining(['대화 순서', '통증 사정 4문장 순서', '말할 순서대로 탭하세요 · 다시 누르면 취소']));
+    expect(texts(cur())).toEqual(expect.arrayContaining(['대화 순서', '통증 사정 4문장 순서']));
     const lines = ['Use this scale.', 'Rate your pain.', 'Is it getting worse?', 'Thank you.'];
     await pressLabel(cur(), 'sent-order-', `?${lines[1]}`);
     expect(allText(cur())).toContain(`1${lines[1]}`);

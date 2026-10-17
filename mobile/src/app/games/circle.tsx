@@ -15,7 +15,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { Animated, Easing, PanResponder, Pressable, Text, View, type LayoutChangeEvent } from 'react-native';
 import { Stack, useRouter } from 'expo-router';
 import Svg, { Circle, Line, Path } from 'react-native-svg';
-import { NbButton, NbMemo, NbPaper, NbSheet, nbText } from '@/components/nb/NbUI';
+import { NbButton, NbPaper, NbSheet, nbText } from '@/components/nb/NbUI';
 import { NbIcon } from '@/components/nb/NbIcon';
 import { TOP_INSET, nb, nbFonts } from '@/theme/nb';
 import { recordBest, useBestScore } from '@/lib/gameScores';
@@ -255,7 +255,6 @@ export default function CircleGame() {
       <View style={{ marginTop: 13, marginHorizontal: 20 }}>
         <NbButton variant="yellow" size="lg" full icon="pencil" onPress={retry}>{t('games.circleRetry')}</NbButton>
       </View>
-      <NbMemo rot={-0.3} color={nb.blue} style={{ marginTop: 12, marginHorizontal: 20 }}>{t('games.circleScoring')}</NbMemo>
     </NbSheet>
   );
 }
