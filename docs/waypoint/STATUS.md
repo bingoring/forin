@@ -20,7 +20,7 @@
 > 리뷰랩 자료 선반(인계 노트·슬랭, 새 항목 배지)으로. 문구 "설명 배제" 21키 삭제·2키 축약, 고아 키 30개 정리. 사용자 결정: 과별 출근 카드는
 > 입구 없이 제거(맵 도달 불가), 그림 없는 이관은 홈에서만 빼고 보류, 메인 레포는 브랜치 + PR. 구현 중 발견: 오늘의 상황판(`/board`) 입구가
 > 홈 버튼 하나뿐이라 함께 사라졌다 — 사용자 결정으로 다음 핸드오프까지 입구 없이 둔다. 검증: go test(실 DB)·계약·tsc·jest 1,335 그린, 로컬 스모크 홈·달력 단정 통과, iOS 시뮬레이터
-> 런타임이 없어 Expo 웹으로 화면 확인. 브랜치 `feat/home-calendar-v47` → PR. 배포 순서: 서버 promote → OTA.
+> 런타임이 없어 Expo 웹으로 화면 확인. PR #20 머지(`3dec716`) → staging 스모크 151/0 → **prod promote + production OTA 완료**(배포 §12.9).
 > 스펙 [`02-construction/home-calendar-v47/`](02-construction/home-calendar-v47/build-spec-index.md).
 
 > 🔧 **파일럿 후속(2026-10-16, 사용자 결정 '제안대로'):** PR #18 머지 → staging 배포·seed 완료, prod promote 승인 대기. keyPhrase 8건 바꿈·1건 유지

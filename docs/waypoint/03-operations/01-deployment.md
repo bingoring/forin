@@ -881,3 +881,11 @@ android 빌드는 여전히 0개다).
   - **2026-10-12 후속**: 무료 앱 계약이 "활성화됨(새로운 계약 사용 가능)"이었고 갱신(효력 10/12) 후에도 ASC API가 **`/v1/builds`만** 403 `REQUIRED_AGREEMENTS_MISSING_OR_EXPIRED`(`/v1/apps`·`/v1/betaGroups`는 200). `eas submit`도 이유 없이 ERRORED(`f55c595b…`, error·log 없음). **우회: EAS 빌드 아티팩트 IPA를 받아 `xcrun altool --validate-app` → VERIFY SUCCEEDED, `--upload-app`(API 키, `API_PRIVATE_KEYS_DIR=~/private`) → UPLOAD SUCCEEDED, Delivery `97d374c7-e512-4535-99e5-dc93787dd40d`.** 즉 업로드 경로는 열려 있고 막힌 것은 EAS가 쓰는 빌드 조회 API였다. 남은 계정 경고: ASC 비즈니스 상단 "대한민국 법에 따른 규정 준수 요구 사항"(미완료 — `/v1/builds` 403의 후보).
 - 새 설정: `TRUSTED_PROXY_HOPS`(staging·prod 기본 1 — GFE가 붙인 X-Forwarded-For 오른쪽 값), `SPEECH_REFERENCE_DAILY_LIMIT`(기본 200). `cmd/speechrefgc`는 스케줄 미등록.
 
+### 12.9 홈 v47·v48 릴리스 (2026-10-17)
+
+- **master 반영**: PR #20(`feat/home-calendar-v47`)을 머지 커밋 `3dec716`으로 합침. master CI 4종(server·contract·mobile·deploy) 그린.
+- **staging**: `deploy.yml`(run 39037611250) — 스모크 **151/0**(새 단정 `todayOne dept/deptProgress`·달력 항목 `dept` 포함), `staging-verified-3dec716…` 태그.
+  마이그레이션·콘텐츠 변경 없음 → seed 불필요.
+- **prod**: `promote.yml` image_tag=`3dec716…`(run 39038152584, 사용자 승인) 성공 — 리비전 `forin-api-prod-00066` 100%, `/readyz` 200, `/auth/dev` 404.
+- **OTA**: `ota.yml` production(run 39039526895, 사용자 승인) 성공 — iOS group `9d9962ab…` runtimeVersion `3e73ea75…`(TestFlight 1.0.0 빌드 19~21과 같은 지문 → 도달),
+  android group `4ef34e62…` runtimeVersion `7d074d78…`(android 빌드 없음 — 받을 기기 없음). 서버를 먼저 올린 뒤 OTA(새 홈이 서버의 새 필드를 읽는다).
