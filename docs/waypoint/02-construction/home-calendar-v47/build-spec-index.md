@@ -1,6 +1,6 @@
 # Build Spec — 홈 "달력 한 장 + 버튼 하나"(v47) · 설명 문구 배제 · 구 홈 진입점 재배치(v48)
 
-    status: READY (2026-10-17 — 결정은 §3, 사용자 답변 반영)
+    status: IMPLEMENTED (2026-10-17 — 브랜치 feat/home-calendar-v47, 결정은 §3, 검증·편차는 §4·§5)
     depth: standard
     inputs: inputs/design-handoff_v47/07_NOTEBOOK_REDESIGN.md (끝 두 절: 홈 전면 개편 · 화면 문구 원칙)
             inputs/design-handoff_v47/reference/forin-notebook-home3.jsx        (★ HomeCal — 새 파일)
@@ -160,9 +160,9 @@ v48은 홈에서 빠지는 구 Extras를 탭으로 흡수한다 — 게임 허�
 | extras L340 원 그리기 채점 메모 | `games.circleScoring` | 삭제 |
 | journey2 L416 `주제 2/6 완료 · 지금 …` | `journey.goalTopics`·`journey.goalNow` | 삭제 |
 | journey2 L434~435 서가 제목·힌트 | `journey.shelfHeading`·`journey.shelfHint` | `서가` / 힌트 삭제 |
-| journey2 L318·551 `실전 첫 상황 · 직접 말하기 · 약 6분 · +60 XP` | 구현 시 확인 | `6분 · +60 XP` |
-| journey2 L242 우표 줄 부제(모든 우표 모음·n번째 상황 · 약 6분·잠김 사유) | 구현 시 확인 | 삭제 |
-| journey L288 `스피킹 4/6 — 발음 연습이 여기에 반영돼요` | 구현 시 확인 | `스피킹 4/6` |
+| journey2 L318·551 `실전 첫 상황 · 직접 말하기 · 약 6분 · +60 XP` | 앱에 없음 | — |
+| journey2 L242 우표 줄 부제(모든 우표 모음·n번째 상황 · 약 6분·잠김 사유) | 앱에 없음 | — |
+| journey L288 `스피킹 4/6 — 발음 연습이 여기에 반영돼요` | 앱에 없음 | — |
 | sent-live L31 `탭해서 다시 듣기 · 2회` | `sent.replay` | 삭제(파형 + 횟수 표시는 유지) |
 | sent-live L60 / words-live 빈칸 | `sent.buildHint`·`recall.fillHint` | 삭제 |
 | sent-live L86 | `sent.orderHint` | 삭제 |
@@ -170,30 +170,37 @@ v48은 홈에서 빠지는 구 Extras를 탭으로 흡수한다 — 게임 허�
 | words-live L300 | `recall.missedNote` | 삭제 |
 | lounge L156 | `lounge.shareSub` | 삭제 |
 | lounge L257 `동료가 되면 서로의 학습 현황을…` | `colleagueAdd.note` | 삭제 |
-| mainloop L133 `이번 미션 ✎` | 구현 시 확인 | ✎ 삭제 |
+| mainloop L133 `이번 미션 ✎` | 앱에 없음 | — |
 | onboarding-flow L380·448·483 태그 3 | `onb.flight.tag`·`onb.flight.backTag`·`onb.commute.tag` | 삭제 |
 | onboarding-flow2 L184 | `onb.id.readyRest` | 삭제 |
 | onboarding L74 | `onb.job.sub` | 삭제 |
 | profile L222 | `growth.bandHint` | 삭제 |
 | profile L274 | `colleagueAdd.sub` | 삭제 |
-| quiz·session·social·placement·mainloop L193 등 | 구현 시 grep | 앱에 있으면 같은 처리 |
+| quiz2·quiz3·session·social·placement·mainloop L193 | 앱에 없음(grep) | — |
+| (원칙 적용) words 빈칸 `띄어쓰기는 자동` | `recall.fillAutoSpace` | 삭제 — fillHint와 한 줄 |
 
-"구현 시 확인" 행은 T4에서 화면 코드를 대조해 표를 채운다(보고서에 남김). 시안에만 있고 앱에 없는 문구는 할 일이 없다.
+T4 결과: 21키 삭제·2키 축약(4개 언어), 홈 교체로 고아가 된 키 30개(홈 모듈·탐험 모드 설정)도 삭제. 시안에만 있고 앱에 없는 문구는 할 일이 없었다.
 
 ## §4. 체크리스트
 
-- [ ] T1 서버 `todayOne.dept`·`deptProgress`, `CalendarEntry.dept` + 단위 테스트 · `go test ./...` · `make contract` 드리프트 0
-- [ ] T1 스모크: `/me/home` todayOne.dept 존재, `/me/calendar` 항목 dept
-- [ ] T2 NbIcon `pager`·`fire` (참조 `forin-notebook.jsx` 경로 그대로) · 아이콘 허용 집합 테스트
-- [ ] T2 HomeCal(F1) + 렌더 테스트(R2~R6 각각 깨뜨려 확인) · 나 탭 탐험 모드 행 숨김
-- [ ] T3 휴게실 카드(F2) · 자료 선반(F3) + 렌더 테스트
-- [ ] T4 문구 표(F4) 처리 · i18n 4개 언어 키 패리티 테스트 그린
-- [ ] mobile `tsc --noEmit` · jest 전체 그린
-- [ ] T5 시뮬레이터: nbh3-a(호출 있음)·nbh3-b(날짜 선택·호출 없음), 라운지, 리뷰랩 — 캡처 나란히
-- [ ] PR · CI 4종 그린 · 머지 → staging(서버) · OTA 여부 결정(서버 필드가 prod에 먼저 있어야 함 — promote 뒤 OTA)
+- [x] T1 서버 `todayOne.dept`·`deptProgress`, `CalendarEntry.dept`(events.ward 조인) + 단위 테스트·DB 테스트 · `go test ./...`(실 DB 포함) · `make contract`(swag rc5) 재생성 — 커밋 `ce02786`
+- [x] T1 스모크 단정 2(todayOne dept/deptProgress, 클리어 항목 dept) — 로컬 실서버에서 통과
+- [x] T2 NbIcon `pager`·`fire` · 검사기 폴백 목록에도 추가
+- [x] T2 HomeCal(F1) + `homeCal.test`(R2~R6·결정 7·8) · 호출 배지 `pagingCall.test` 재작성 · 콜드스타트 테스트 기준 교체 · 나 탭 탐험 모드 행 숨김 — 규칙 2개는 일부러 깨뜨려 테스트가 잡는 것 확인 — `d5efe4e`
+- [x] T3 휴게실 카드(F2) · 자료 선반(F3) + `oldHomeDoors.test` — `3b88834`
+- [x] T4 문구 표(F4) · i18n 4개 언어 · 텍스트 글리프 → NbIcon chevron — `59a1ef9`
+- [x] mobile `tsc --noEmit` 0 · jest 177 스위트 1,335건 그린
+- [~] T5 시뮬레이터 대조 — **이 Mac에 iOS 시뮬레이터 런타임이 없어(런타임 0개) Expo 웹으로 대신 확인**: 로컬 Postgres·Redis·시드·API(ENV=dev) +
+  `expo start --web`, 402×874. 웹은 `expo-secure-store`가 없어 부팅이 멈추므로 브라우저 안에서만 저장소를 localStorage로 바꿔 끼운 뒤
+  개발 로그인(앱 코드 무변경). 홈(상단 줄·호출 배지·10월 달력·오늘 동그라미·이브닝 글리프·선택 칸·도장 줄 ER×2·이어서 버튼 후광)·
+  라운지 휴게실·리뷰랩 자료 선반 확인. **실기기/시뮬레이터 미확인**: 페이저 흔들림·후광 숨쉬기 네이티브 드라이버, 작은 기기(SE) 높이.
+- [ ] PR · CI 4종 그린 · 머지 → staging(서버) · prod promote 뒤 OTA(모바일이 새 서버 필드를 읽는다 — 서버 먼저)
 
 ## §5. 편차·미해결
 
 - 맵 엔진 도달 불가(결정 2) — 앱 크기·유지보수 비용은 그대로 남는다. 다시 열지 지울지는 따로 정한다.
 - 이관 보류 4종(결정 3)의 서버 필드는 홈이 읽지 않는 채로 남는다.
 - 휴게실 순위 자리 비움(결정 4).
+- **오늘의 상황판(`/board`) 입구가 사라짐(구현 중 발견).** 홈의 '라운지' 바로가기 버튼은 라운지 탭이 아니라 `/board`(일일 상황판·광고
+  보상 판 충전)로 가는 유일한 입구였다. 시안대로 홈에서 빼면서 상황판은 도달 불가 — 다시 열지(어디에) 사용자 결정 필요.
+- 로컬 스모크 123/9: 실패 9는 환경(Azure 음성 키 없음 7, LLM 공급자 없음 1, 빈 DB 새 계정의 여정 클리어 0 1). 홈·달력 단정은 통과.
