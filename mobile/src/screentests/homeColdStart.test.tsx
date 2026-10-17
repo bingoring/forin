@@ -5,8 +5,8 @@
 // promising "서버를 깨우고 있어요", followed by a home screen that was blank apart from
 // one line of failure text — with nothing to press. Killing the app was the only move.
 jest.mock('react-native-worklets', () => ({ createWorkletRuntime: () => ({}), createSerializable: (v: unknown) => v, runOnJS: (f: unknown) => f, runOnUI: (f: unknown) => f, isWorkletFunction: () => false }));
-// The home screen draws the LiveWard, which draws the avatar sprite. Its motion is not
-// what these tests are about — whether the screen recovers from a cold start is.
+// Motion is not what these tests are about — whether the screen recovers from a cold
+// start is.
 jest.mock('react-native-reanimated', () => {
   const { View } = require('react-native') as typeof import('react-native');
   return {
@@ -39,7 +39,7 @@ jest.mock('expo-router', () => {
 });
 
 /** How many times the fake server refuses before it comes up. */
-const mockServer: { calls: number; failures: number; nameFails?: boolean } = { failures: 0, calls: 0 };
+const mockServer: { calls: number; failures: number; calendarFails?: boolean } = { failures: 0, calls: 0 };
 const mockHome = {
   date: '2026-08-31', done: false, firstRun: false, streak: 3, week: [1, 0, 1, 1, 0, 1, 1],
   level: 4, xp: 420, situationsWaiting: 2, colleagues: [], colleagueTotal: 0,
@@ -53,21 +53,22 @@ jest.mock('@/api/client', () => ({
       return mockHome;
     },
     acceptPage: async () => ({ scenarioId: '', bonusXp: 0, already: false }),
-    // The heading asks for the learner's display name alongside the home read. It must
-    // never be able to fail the page — the screen catches it — but it does have to exist,
-    // or Promise.all rejects on an undefined function and the wait becomes an error.
-    me: async () => {
-      if (mockServer.nameFails) throw new Error('nope');
-      return { profile: { displayName: '지민' } };
+    // The work calendar is read alongside the home. It must never be able to fail the
+    // page — a home without its month is still a home (home-calendar-v47 R1).
+    calendar: async () => {
+      if (mockServer.calendarFails) throw new Error('nope');
+      return { month: '2026-08', days: [] };
     },
-    colleaguePrefs: async () => ({ shareStatus: true, shareWeekly: true, shareWard: true }),
-    handoff: async () => ({ notes: [], unread: 0 }),
   },
 }));
 
 import { act, create, type ReactTestInstance } from 'react-test-renderer';
 import Home from '@/app/(tabs)/index';
 import { trackMounts } from '@/testing/mountRegistry';
+
+/** Something only the LOADED screen draws, whatever the day's data: the calendar's
+ *  month arrows (v47 home). */
+const loaded = (root: ReactTestInstance) => root.findAll((n) => n.props?.testID === 'home-cal-prev').length > 0;
 
 const track = trackMounts();
 
@@ -117,10 +118,8 @@ test('a waking server is a wait, not a failure', async () => {
   await waitForRetries(tree);
   // It came up on its own. No tap, no relaunch.
   expect(mockServer.calls).toBeGreaterThan(2);
-  // A module only the LOADED screen has. The point of the test is that the wait ends in a
-  // home, not in a blank page — so the sentinel has to be something the screen always
-  // draws, whatever the day's data looks like. (v29: 과별 출근 카드 replaced 오늘의 상황.)
-  expect(texts(tree.root)).toContain('과별 출근 카드');
+  // The point of the test is that the wait ends in a home, not in a blank page.
+  expect(loaded(tree.root)).toBe(true);
 });
 
 test('a warm server never mentions waking', async () => {
@@ -142,7 +141,7 @@ test('a server that never comes up leaves a way out', async () => {
   // And the button works: the server comes up, the tap loads the screen.
   mockServer.failures = 0;
   await act(async () => { retry!.props.onPress(); });
-  expect(texts(tree.root)).toContain('과별 출근 카드');
+  expect(loaded(tree.root)).toBe(true);
 });
 
 test('it gives up rather than retrying forever', async () => {
@@ -155,15 +154,12 @@ test('it gives up rather than retrying forever', async () => {
   expect(texts(tree.root).some((x) => x.includes('불러오지 못'))).toBe(true);
 });
 
-test('the name is decoration: losing it must not lose the home', async () => {
-  // The heading asks for the display name alongside the home read. It is the only request
-  // on this screen that nothing depends on — so it is caught, and the notebook is simply
-  // titled without a name, which is what a learner who never set one sees anyway.
-  mockServer.calls = 0; mockServer.failures = 0; mockServer.nameFails = true;
+test('the calendar is decoration: losing it must not lose the home', async () => {
+  // The month is read alongside the home and is the only request here nothing else
+  // depends on — so it is caught, and the grid simply draws without activity.
+  mockServer.calls = 0; mockServer.failures = 0; mockServer.calendarFails = true;
   const tree = await mount();
-  const out = texts(tree.root);
-  expect(out).toContain('과별 출근 카드');
-  expect(out).toContain('나의 근무 수첩');
-  expect(out).not.toContain('홈을 불러오지 못했어요. (로그인·서버 확인)');
-  mockServer.nameFails = false;
+  expect(loaded(tree.root)).toBe(true);
+  expect(texts(tree.root)).not.toContain('홈을 불러오지 못했어요. (로그인·서버 확인)');
+  mockServer.calendarFails = false;
 });

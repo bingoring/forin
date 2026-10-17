@@ -3438,6 +3438,11 @@ export interface components {
         };
         "github_com_bingoring_forin_server_internal_domain_progress.CalendarEntry": {
             cleared?: boolean;
+            /**
+             * @description Dept is the scenario's department code (its event's ward, upper-cased), so a day's
+             *     stamps can show which department each one came from. Empty when unknown.
+             */
+            dept?: string;
             /** @description local hour it started, 0-23 */
             hour?: number;
             scenarioId?: string;
@@ -3766,6 +3771,10 @@ export interface components {
             name?: string;
             relation?: components["schemas"]["github_com_bingoring_forin_server_internal_domain_colleague.Relation"];
         };
+        /**
+         * @description DeptProgress is that department track's passed themes over its theme count — the
+         *     same count the journey's free-roam chip shows — for the home button's ring.
+         */
         "internal_adapters_http.homeProgress": {
             done?: number;
             total?: number;
@@ -3808,6 +3817,13 @@ export interface components {
         };
         "internal_adapters_http.homeTodayOne": {
             chapter?: string;
+            /**
+             * @description Dept is the department code of the theme being continued, so the home button can
+             *     draw that department's doodle instead of guessing one (v47 HomeCal). The raw code,
+             *     not a label — the client already maps codes to icons and four languages.
+             */
+            dept?: string;
+            deptProgress?: components["schemas"]["internal_adapters_http.homeProgress"];
             kind?: string;
             progress?: components["schemas"]["internal_adapters_http.homeProgress"];
             scenarioId?: string;

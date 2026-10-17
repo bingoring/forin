@@ -738,7 +738,7 @@ export default function PassportRoute() {
     <Page>
       <Gutter />
       <BackChip onPress={() => goBack('lang')} />
-      <Header title={t('onb.job.title')} sub={t('onb.job.sub')} />
+      <Header title={t('onb.job.title')} />
       <View style={{ paddingTop: 2, paddingLeft: 34, paddingRight: 24 }}>
         {JOBS.map((j) => (
           <Pressable key={j.code} onPress={() => j.ready && pickJob(j.code)} disabled={!j.ready}>
@@ -846,9 +846,6 @@ export default function PassportRoute() {
         <Text style={[nbText.mono(10.5, nb.soft), { marginTop: 7, fontFamily: nbFonts.monoBold }]}>
           {mirrored ? `${D.apt}\u2013ICN · FORIN AIR 027` : `ICN\u2013${D.apt} · FORIN AIR 026`}
         </Text>
-        <View style={{ marginTop: 14 }}>
-          <NbTag color={nb.blue} rot={-2}>{mirrored ? t('onb.flight.backTag') : t('onb.flight.tag')}</NbTag>
-        </View>
       </View>
     </Page>
   );
@@ -913,9 +910,6 @@ export default function PassportRoute() {
       <View style={{ position: 'absolute', left: 34, right: 24, top: height * 0.58, alignItems: 'center' }}>
         <Text style={nbText.hand(25)}>{t('onb.commute.title')}</Text>
         <Text style={[nbText.mono(10.5, nb.soft), { marginTop: 7, fontFamily: nbFonts.monoBold }]}>{`DAY 1 · ${D.stampCode} GENERAL HOSPITAL`}</Text>
-        <View style={{ marginTop: 14 }}>
-          <NbTag color={nb.blue} rot={-2}>{t('onb.commute.tag')}</NbTag>
-        </View>
       </View>
     </Page>
   );

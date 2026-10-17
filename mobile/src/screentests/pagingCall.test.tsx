@@ -1,20 +1,16 @@
-// 오늘의 호출 (v27) — on the surface that actually renders it.
+// 오늘의 호출 (v27) — on the surface that actually renders it: since v47 the home's call
+// BADGE (a ringing pager in the top row, components/home/HomeCal CallBadge). The badge has
+// no words of its own; its line is its accessibility label.
 //
-// This file used to mount `components/home/PagingCall`, the navy pixel pager. The home
-// screen does not render it any more: v29 replaced it with the taped red-pen note the home
-// page draws itself (PageNote in app/(tabs)/index.tsx). So the suite was green while
-// guarding a component nobody could see — and one of the rules it guarded HAD been lost in
-// the port: an expired call was still being drawn, offering an action that could no longer
-// be taken. The pixel component is deleted and the rules now sit on the live note.
-//
-// The rules the note owns (the rest belong to the server: which scenario, when it was
+// The rules the badge owns (the rest belong to the server: which scenario, when it was
 // issued, how long is left, whether it was answered, what the bonus is worth):
 //
 //  · An expired, unanswered call is not drawn at all.
 //  · An ACCEPTED call outlives its countdown — the window is for deciding, and dropping
-//    the note at 00:00 would strand somebody mid-conversation with no way back.
-//  · Taking the call is not answering it. "Answered" used to be set on the tap, so walking
-//    straight out of the scenario still reported +40 XP.
+//    the badge at 00:00 would strand somebody mid-conversation with no way back.
+//  · Taking the call is not answering it, and the server is asked FIRST — entering before
+//    it answers would let an expired call still be played.
+//  · An answered call is gone.
 jest.mock('react-native-worklets', () => ({
   createWorkletRuntime: () => ({}), createSerializable: (v: unknown) => v,
   runOnJS: (f: unknown) => f, runOnUI: (f: unknown) => f, isWorkletFunction: () => false,
@@ -34,10 +30,8 @@ jest.mock('@/api/client', () => ({
       unreadCheers: 0, pendingRequests: 0,
       page: mockPage.value,
     }),
-    me: async () => ({ profile: { displayName: '지민' } }),
-    colleaguePrefs: async () => ({ shareStatus: true, shareWeekly: true, shareWard: true }),
-    handoff: async () => ({ notes: [], unread: 0 }),
-    acceptPage: async () => ({ scenarioId: 'SCN-ER-00002' }),
+    calendar: async () => ({ month: '2026-09', days: [] }),
+    acceptPage: async () => { mockNav.push('accept'); return { scenarioId: 'SCN-ER-00002' }; },
   },
 }));
 jest.mock('expo-router', () => {
@@ -78,66 +72,39 @@ async function mount(over: Partial<typeof PAGE> = {}) {
   return tree;
 }
 
-function texts(root: ReactTestInstance): string[] {
-  return root
-    .findAll((n) => String(n.type) === 'Text', { deep: true })
-    .flatMap((n) => n.children.filter((c): c is string => typeof c === 'string'));
-}
+const badge = (root: ReactTestInstance) => root.findAll((n) => n.props?.testID === 'home-call' && typeof n.props?.onPress === 'function')[0];
 
-/** Presses the pressable whose rendered text contains `label`. */
-async function press(root: ReactTestInstance, label: string) {
-  const hits = root.findAll(
-    (n) => typeof n.props?.onPress === 'function' && texts(n).some((x) => x.includes(label)),
-    { deep: true },
-  );
-  expect(hits.length).toBeGreaterThan(0);
-  await act(async () => { hits[hits.length - 1].props.onPress(); });
-}
-
-test('the note carries the summons, the bonus and how long is left', async () => {
+test('an open call rings, and says what it is to a screen reader', async () => {
   const tree = await mount();
-  const out = texts(tree.root).join(' ');
-  expect(out).toContain('3병동 환자 통증 호소');
-  // The bonus arrives as three Text children ("+", "40", " XP"), so the join carries the
-  // spaces between them — what matters is that the number is on the page beside the call.
-  expect(out).toMatch(/\+\s*40\s+XP/);
-  // Minutes, not a ticking clock: the number came from the server on this read and the
-  // note is one line in a page, not a device with a display.
-  expect(out).toMatch(/4[23]분 남음/);
+  const b = badge(tree.root);
+  expect(b).toBeDefined();
+  expect(b.props.accessibilityLabel).toContain('3병동 환자 통증 호소');
 });
 
 test('an expired call is not drawn at all', async () => {
-  // A note offering an action that cannot be taken is worse than no note. This is the
-  // rule the port lost — it was guarded on the pixel pager, which nothing rendered.
+  // A badge offering an action that cannot be taken is worse than no badge.
   const tree = await mount({ secondsLeft: 0 });
-  expect(texts(tree.root).join(' ')).not.toContain('3병동 환자 통증 호소');
+  expect(badge(tree.root)).toBeUndefined();
 });
 
 test('an accepted call outlives its countdown', async () => {
   // The window is for DECIDING. Once taken, the scenario is theirs to finish.
   const tree = await mount({ accepted: true, secondsLeft: 0 });
-  const out = texts(tree.root).join(' ');
-  expect(out).toContain('3병동 환자 통증 호소');
-  expect(out).toContain('이어서');
+  expect(badge(tree.root)).toBeDefined();
 });
 
-test('taking the call is not answering it', async () => {
+test('taking the call asks the server first, and is not answering it', async () => {
   const tree = await mount();
-  await press(tree.root, '응답!');
+  await act(async () => { badge(tree.root).props.onPress(); });
   await act(async () => { await Promise.resolve(); });
-
-  // It entered the scenario…
+  // Accepted on the server, THEN into the scenario.
+  expect(mockNav[0]).toBe('accept');
   expect(mockNav.join(' ')).toContain('SCN-ER-00002');
-  // …and the note now offers a way back IN, not a receipt. The bonus is the server's to
-  // grant on the next home read.
-  const out = texts(tree.root).join(' ');
-  expect(out).toContain('이어서');
-  expect(out).not.toContain('응답 완료');
+  // …and the badge stays: it is the way back in until the server says it was answered.
+  expect(badge(tree.root)).toBeDefined();
 });
 
-test('an answered call says so, and cannot be answered again', async () => {
+test('an answered call is gone', async () => {
   const tree = await mount({ answered: true });
-  const out = texts(tree.root).join(' ');
-  expect(out).toContain('응답 완료');
-  expect(out).not.toContain('지금 응답');
+  expect(badge(tree.root)).toBeUndefined();
 });

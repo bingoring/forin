@@ -14,7 +14,7 @@ import { NbIcon } from '@/components/nb/NbIcon';
 import { NbPaper, nbText } from '@/components/nb/NbUI';
 import { nb, nbFonts } from '@/theme/nb';
 import { useT } from '@/i18n';
-import { BAND_STYLE, BANDS, bandLabelKey, usesShifts, type Band } from '@/data/shifts';
+import { BAND_STYLE, BANDS, bandLabelKey, type Band } from '@/data/shifts';
 import type { CalendarDay } from '@/api/client';
 import { monthWeeks } from '@/data/monthGrid';
 
@@ -111,9 +111,6 @@ export function ActivityCalendar({ month, days, job, selected, onSelect, onMonth
           </View>
         ))}
       </View>
-      {usesShifts(job) && (
-        <Text style={[nbText.body(9.5, nb.placeholder), { marginTop: 5 }]}>{t('growth.bandHint')}</Text>
-      )}
     </View>
   );
 }

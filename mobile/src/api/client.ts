@@ -261,6 +261,8 @@ export type StationDetail = paths['/me/journey/stations/{themeKey}']['get']['res
 /** One thing the learner touched on a day. `hour` is local, 0-23. */
 export interface CalendarEntry {
   scenarioId: string; title: string; cleared: boolean; hour: number;
+  /** The scenario's department code (its event's ward), for the home calendar's stamps. */
+  dept?: string;
 }
 
 /**
@@ -499,7 +501,13 @@ export type ReviewGrade = 'again' | 'hard' | 'good' | 'easy';
 export interface HomeShift { shift: 'DAY' | 'EVENING'; deptLabel: string }
 /** `progress` is the current chapter's required-step completion (runs, not raw steps), so
  *  the card can draw a real "이어서 하기" progress bar. */
-export interface HomeTodayOne { chapter: string; title: string; kind: string; scenarioId?: string; progress?: { done: number; total: number } }
+export interface HomeTodayOne {
+  chapter: string; title: string; kind: string; scenarioId?: string; progress?: { done: number; total: number };
+  /** Department code of the theme being continued (v47 home button's doodle). */
+  dept?: string;
+  /** That department track's passed themes / theme count (the button's ring). */
+  deptProgress?: { done: number; total: number };
+}
 /** The day's work brief. The two server-derived tasks; the 오늘의 문장 task is tracked
  *  client-side (see lib/dailyBrief). */
 export interface HomeBrief { reviewCount: number; reviewTarget: number; reviewDone: boolean; curriculumDone: boolean }

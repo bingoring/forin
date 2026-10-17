@@ -1,4 +1,7 @@
-// NOTE (v29): the home screen does NOT render LiveWard any more.
+// NOTE (v47): the home screen renders no live ward at all — v47 puts it on hold (kept on
+// the HomeV2 artboard). Neither LiveWard nor LiveWardNb is mounted anywhere today.
+//
+// Earlier (v29): the home screen did NOT render LiveWard.
 //
 // It is pixel-art sprites, and a sprite on a paper page is the one thing the notebook line
 // forbids — see app/(tabs)/index.tsx. The component and these tests are kept because
@@ -44,7 +47,7 @@ jest.mock('expo-secure-store', () => ({ getItemAsync: async () => null, setItemA
 
 import { act, create, type ReactTestInstance } from 'react-test-renderer';
 import { LiveWard } from '@/components/home/LiveWard';
-import { SHIFT_LABEL, moodAt, msUntilNextMood } from '@/data/wardMood';
+import { moodAt, msUntilNextMood } from '@/data/wardMood';
 import { setAvatar } from '@/lib/avatar';
 
 function texts(root: ReactTestInstance): string[] {
@@ -173,47 +176,4 @@ test('changing the avatar changes the nurse', async () => {
   await act(async () => { await setAvatar({ scrub: '#FDE68A' }); });
   const after = fills(mount({ now: at(10) }).root);
   expect(after).toContain('#FDE68A');
-});
-
-// ── one source ────────────────────────────────────────────────────────────
-test('the shift badge reads the same clock as the ward', () => {
-  const { readFileSync } = require('fs') as typeof import('fs');
-  const { join } = require('path') as typeof import('path');
-  const src = readFileSync(join(__dirname, '..', 'app', '(tabs)', 'index.tsx'), 'utf8');
-  // The badge takes its NAME from the device clock and its DEPARTMENT from the server —
-  // the department is the current curriculum step's, which the phone cannot know.
-  // v29 draws them in one handwritten line rather than a badge, so the check is on where
-  // each half comes FROM, which is the invariant — not on the component that used to hold
-  // them.
-  expect(src).toMatch(/SHIFT_LABEL\[moodAt\(new Date\(\)\)\]/);
-  expect(src).toMatch(/dept: home\.shift\.deptLabel/);
-  // The dice roll it replaced.
-  expect(src).not.toMatch(/shift: home\.shift\.shift/);
-  expect(SHIFT_LABEL.night).toBe('NIGHT'); // a value the server's two-way coin flip had no room for
-});
-
-test('the home card is 이어서 하기 (v37): coordinate, step count, hatched bar, 계속', () => {
-  const { readFileSync } = require('fs') as typeof import('fs');
-  const { join } = require('path') as typeof import('path');
-  const src = readFileSync(join(__dirname, '..', 'app', '(tabs)', 'index.tsx'), 'utf8');
-  // v37 replaced the tall taped "curriculum in progress" card with the compact HomeV2
-  // ContinueCard: a siren, "이어서 하기 · {coordinate}", "{title} — {done}/{total} 단계",
-  // a pencil-hatched progress bar (NbGauge), and a 계속 button.
-  expect(src).toMatch(/t\('home\.resumeLabel'\)/);
-  expect(src).toMatch(/home\.todayOne\.chapter/); // the coordinate rides on the label line
-  expect(src).toMatch(/t\('home\.resumeStep'/); // title + N/M 단계 in one line
-  expect(src).toMatch(/t\('home\.resumeCta'\)/);
-  expect(src).toMatch(/<NbGauge value=\{/); // the hatched progress bar, not a flat fill
-  expect(src).toMatch(/name="siren"/);
-  // The old vertical framing is gone.
-  expect(src).not.toMatch(/t\('home\.curriculumTab'\)/);
-});
-
-test('홈이 라이브 병동을 노트북 라인으로 다시 마운트한다 (v37)', () => {
-  // v29 dropped LiveWard because it was pixel sprites on a paper page; v37 brings the ward
-  // back as LiveWardNb, which walks NbCharacter (the notebook figure), so it belongs.
-  const { readFileSync } = require('fs') as typeof import('fs');
-  const { join } = require('path') as typeof import('path');
-  const src = readFileSync(join(__dirname, '..', 'app', '(tabs)', 'index.tsx'), 'utf8');
-  expect(src).toMatch(/<LiveWardNb/);
 });

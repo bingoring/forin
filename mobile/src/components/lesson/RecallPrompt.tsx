@@ -47,7 +47,6 @@ export function RecallPrompt({ card, pool, answer, onAnswer, result, inert }: {
   /** The dim sheet underneath or the torn copy: drawn, not answered. */
   inert?: boolean;
 }) {
-  const t = useT();
   const locked = result != null || !!inert;
   const id = (s: string) => (inert ? undefined : s);
 
@@ -124,7 +123,6 @@ export function RecallPrompt({ card, pool, answer, onAnswer, result, inert }: {
     const picked = (answer as string[] | null) ?? [];
     const chips = fragmentPool(w);
     const left = picked.slice();
-    const multiword = (w.chips ?? []).length > 1;
     return (
       <View style={{ marginTop: 12 }}>
         <View testID={id('recall-built')} style={{
@@ -151,9 +149,6 @@ export function RecallPrompt({ card, pool, answer, onAnswer, result, inert }: {
             );
           })}
         </View>
-        <Text style={[nbText.hand(12.5, nb.soft), { marginTop: 8 }]}>
-          {multiword ? `${t('recall.fillHint')} · ${t('recall.fillAutoSpace')}` : t('recall.fillHint')}
-        </Text>
       </View>
     );
   }

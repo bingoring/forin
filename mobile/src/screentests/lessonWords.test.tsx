@@ -297,7 +297,7 @@ test('fill: each fragment is its own marked piece; tapping one takes that piece 
   expect(texts(built())).toEqual(['route', 'en']);
 });
 
-test('fill: a used chip is hatched and dashed, an unused one casts a hard 1×2 shadow; the hint says spaces are automatic', async () => {
+test('fill: a used chip is hatched and dashed, an unused one casts a hard 1×2 shadow; no hint underneath', async () => {
   const tree = await mount();
   await toFill(tree);
   await pressID(tree.root, 'recall-chip-en');
@@ -311,7 +311,8 @@ test('fill: a used chip is hatched and dashed, an unused one casts a hard 1×2 s
     expect.objectContaining({ left: '100%', top: 2, width: 1, backgroundColor: 'rgba(62,54,43,.2)' }),
     expect.objectContaining({ top: '100%', left: 1, height: 2, backgroundColor: 'rgba(62,54,43,.2)' }),
   ]);
-  expect(texts(tree.root)).toContain('조각을 눌러 순서대로 붙여요 · 다시 누르면 빼요 · 띄어쓰기는 자동');
+  // v47 설명 배제: no operating hint under the chips.
+  expect(texts(tree.root).some((x) => x.includes('조각을 눌러'))).toBe(false);
 });
 
 test('fill: a wrong build shows 내 답 struck through under the explanation', async () => {
@@ -436,8 +437,8 @@ test('the last card records STEP 1 with the missed words and goes on to STEP 2',
   expect(byID(tree.root, 'recall-done')).toHaveLength(1);
   expect(texts(byID(tree.root, 'recall-right-count')[0])).toEqual(['4']);
   expect(texts(byID(tree.root, 'recall-wrong-count')[0])).toEqual(['1']);
-  expect(texts(byID(tree.root, 'recall-missed-note')[0]).join('').trim()).toBe('틀린 단어는 STEP 2 문장에 다시 나와요');
-  expect(icons(byID(tree.root, 'recall-missed-note')[0], 'pencil')).toHaveLength(1);
+  // v47 설명 배제: the "틀린 단어는 STEP 2 문장에 다시 나와요" note is gone; the counts say it.
+  expect(byID(tree.root, 'recall-missed-note')).toHaveLength(0);
   // The DONE stamp: 96 on a double ring, DONE 24 down in the flow (not centred).
   const stamp = hostID(tree.root, 'recall-done-stamp')[0];
   expect(flat(stamp)).toMatchObject({ width: 96, height: 96, borderWidth: 1, borderColor: nb.green });

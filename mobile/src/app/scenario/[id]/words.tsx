@@ -187,13 +187,6 @@ export default function LessonWordsRoute() {
           <Text style={nbText.body(10.5, nb.soft)}>{t('recall.wrong')}</Text>
         </View>
       </View>
-      {/* WL L300: only when something was answered wrong (`fuzzy` there is the wrong answers). */}
-      {wrong > 0 && (
-        <Text testID="recall-missed-note" style={[nbText.hand(13.5, nb.soft), { marginTop: 10, textAlign: 'center' }]}>
-          {`${t('recall.missedNote')} `}
-          <InlineIcon dy={2}><NbIcon name="pencil" size={13} color={nb.soft} /></InlineIcon>
-        </Text>
-      )}
     </View>
   );
 

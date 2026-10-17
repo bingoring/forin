@@ -8,7 +8,7 @@ import { ActivityIndicator, Alert, Pressable, ScrollView, Share, Text, TextInput
 import { Stack, useRouter } from 'expo-router';
 import * as Clipboard from 'expo-clipboard';
 import { NbIcon } from '@/components/nb/NbIcon';
-import { NbButton, NbMemo, NbPaper, NbTag, nbText } from '@/components/nb/NbUI';
+import { NbButton, NbPaper, NbTag, nbText } from '@/components/nb/NbUI';
 import { RULE_COLOR, RULE_H, nb, nbFonts } from '@/theme/nb';
 import { api, type CodePreview, type InviteCode } from '@/api/client';
 import { useT } from '@/i18n';
@@ -71,7 +71,6 @@ export default function ColleagueAddScreen() {
         </Pressable>
         <View style={{ flex: 1, minWidth: 0 }}>
           <Text numberOfLines={1} style={nbText.hand(24)}>{t('colleagueAdd.title')}</Text>
-          <Text numberOfLines={1} style={[nbText.body(11, nb.soft), { marginTop: 2 }]}>{t('colleagueAdd.sub')}</Text>
         </View>
       </View>
 
@@ -177,9 +176,6 @@ export default function ColleagueAddScreen() {
           {sending ? t('colleagueAdd.sending') : t('colleagueAdd.sendRequest')}
         </NbButton>
 
-        <NbMemo color={nb.blue} rot={-0.3} style={{ marginTop: 14 }}>
-          <Text style={nbText.hand(13.5)}>{t('colleagueAdd.note')}</Text>
-        </NbMemo>
       </ScrollView>
     </View>
   );
