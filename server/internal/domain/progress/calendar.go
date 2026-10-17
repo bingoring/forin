@@ -58,6 +58,9 @@ type CalendarEntry struct {
 	Title      string `json:"title"`
 	Cleared    bool   `json:"cleared"`
 	Hour       int    `json:"hour"` // local hour it started, 0-23
+	// Dept is the scenario's department code (its event's ward, upper-cased), so a day's
+	// stamps can show which department each one came from. Empty when unknown.
+	Dept string `json:"dept,omitempty"`
 }
 
 // ClearedScenario is one scenario the learner cleared, with the AI grade (−1 when the run

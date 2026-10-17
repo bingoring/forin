@@ -825,6 +825,11 @@ components:
       properties:
         cleared:
           type: boolean
+        dept:
+          description: |-
+            Dept is the scenario's department code (its event's ward, upper-cased), so a day's
+            stamps can show which department each one came from. Empty when unknown.
+          type: string
         hour:
           description: local hour it started, 0-23
           type: integer
@@ -1364,6 +1369,9 @@ components:
           $ref: '#/components/schemas/github_com_bingoring_forin_server_internal_domain_colleague.Relation'
       type: object
     internal_adapters_http.homeProgress:
+      description: |-
+        DeptProgress is that department track's passed themes over its theme count — the
+        same count the journey's free-roam chip shows — for the home button's ring.
       properties:
         done:
           type: integer
@@ -1438,6 +1446,14 @@ components:
       properties:
         chapter:
           type: string
+        dept:
+          description: |-
+            Dept is the department code of the theme being continued, so the home button can
+            draw that department's doodle instead of guessing one (v47 HomeCal). The raw code,
+            not a label — the client already maps codes to icons and four languages.
+          type: string
+        deptProgress:
+          $ref: '#/components/schemas/internal_adapters_http.homeProgress'
         kind:
           type: string
         progress:

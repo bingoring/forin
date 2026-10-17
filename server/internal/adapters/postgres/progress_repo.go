@@ -298,9 +298,11 @@ func (r *ProgressRepo) CalendarEntries(
 		        EXTRACT(HOUR FROM (a.started_at AT TIME ZONE $4))::int AS h,
 		        a.scenario_id,
 		        COALESCE(s.title, a.scenario_id) AS title,
-		        (a.state = 'cleared') AS cleared
+		        (a.state = 'cleared') AS cleared,
+		        COALESCE(UPPER(e.ward), '') AS dept
 		   FROM scenario_attempts a
 		   LEFT JOIN scenarios s ON s.id = a.scenario_id
+		   LEFT JOIN events e ON e.id = s.event_id
 		  WHERE a.user_id = $1 AND a.started_at >= $2 AND a.started_at < $3
 		  ORDER BY a.started_at`,
 		userID, from, to, tzName)
@@ -314,7 +316,7 @@ func (r *ProgressRepo) CalendarEntries(
 	for rows.Next() {
 		var e progress.CalendarEntry
 		var d string
-		if err := rows.Scan(&d, &e.Hour, &e.ScenarioID, &e.Title, &e.Cleared); err != nil {
+		if err := rows.Scan(&d, &e.Hour, &e.ScenarioID, &e.Title, &e.Cleared, &e.Dept); err != nil {
 			return nil, nil, err
 		}
 		entries = append(entries, e)

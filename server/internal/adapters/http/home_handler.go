@@ -41,6 +41,13 @@ type homeTodayOne struct {
 	Kind       string        `json:"kind"`
 	ScenarioID string        `json:"scenarioId,omitempty"`
 	Progress   *homeProgress `json:"progress,omitempty"`
+	// Dept is the department code of the theme being continued, so the home button can
+	// draw that department's doodle instead of guessing one (v47 HomeCal). The raw code,
+	// not a label — the client already maps codes to icons and four languages.
+	Dept string `json:"dept,omitempty"`
+	// DeptProgress is that department track's passed themes over its theme count — the
+	// same count the journey's free-roam chip shows — for the home button's ring.
+	DeptProgress *homeProgress `json:"deptProgress,omitempty"`
 }
 
 // homeProgress is the current chapter's required-step completion, so the home card can draw
@@ -357,6 +364,7 @@ func currentStep(j learning.Journey, p learning.Progress, loc string) (dept, dep
 	// (should be impossible — Resume only ever names a theme this same engine's
 	// catalog holds) must not fall through into an empty-chapter card below.
 	var stationName, deptCode string
+	var deptDone, deptTotal int
 	found := false
 outer:
 	for _, tg := range j.Tracks(p) {
@@ -366,6 +374,12 @@ outer:
 			}
 			stationName = i18n.Tr(loc, cs.ThemeKey, cs.Name)
 			deptCode = tg.Dept
+			deptTotal = len(tg.Curricula)
+			for _, other := range tg.Curricula {
+				if other.State == "passed" {
+					deptDone++
+				}
+			}
 			found = true
 			break outer
 		}
@@ -405,6 +419,10 @@ outer:
 				Kind:       st.Kind,
 				ScenarioID: st.ScenarioID,
 				Progress:   &homeProgress{Done: done, Total: total},
+				Dept:       deptCode,
+			}
+			if deptTotal > 0 {
+				one.DeptProgress = &homeProgress{Done: deptDone, Total: deptTotal}
 			}
 			break
 		}
