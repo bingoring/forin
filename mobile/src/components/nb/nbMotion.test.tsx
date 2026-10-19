@@ -15,7 +15,8 @@ import { Animated, Easing, Pressable, View } from 'react-native';
 import { act, create } from 'react-test-renderer';
 import {
   CSS_EASE, NB_BAR_TRANSITION, NB_CHIP_PRESS, NB_MOTION, NB_PRESS, NbEnter, nbPressTransform, swipeOutSpec,
-  useNbColorTransition, useNbPress, useNbShake, useNbSwipeOut, useNbTear, type MotionSpec,
+  useNbColorTransition, useNbMotion, useNbPress, useNbShake, useNbSwipeOut, useNbTear, type MotionSpec,
+  stampSpec, useV48Loop, useV48Press, V48_BREATHE, V48_GO_SHADOW, V48_LIFT, V48_MOTION, V48_PRESS,
 } from './nbMotion';
 import { trackMounts } from '../../testing/mountRegistry';
 
@@ -27,7 +28,11 @@ const css = [
   'forin-notebook-lesson-nuance.jsx',
   'forin-notebook-lesson.jsx',
   'forin-notebook-ui.jsx',
-].map((f) => readFileSync(join(REF, f), 'utf8')).join('\n');
+].map((f) => readFileSync(join(REF, f), 'utf8')).join('\n')
+  // v48 키트(핸드오프 v49)의 `#v48-kit-css`. `--r`은 요소마다 달라 stampSpec(rot)의 rot로 서니
+  // 대조에서는 기본값(-8deg)으로 푼다.
+  + '\n' + readFileSync(join(__dirname, '..', '..', '..', '..', 'docs', 'dlc', 'projects', 'forin', 'inputs', 'design-handoff_v49', 'reference', 'forin-notebook-v48-kit.jsx'), 'utf8')
+    .replace(/var\(--r,(-?[\d.]+deg)\)/g, '$1');
 
 // ── 참조 CSS 읽기 ──────────────────────────────────────────────────────────
 
@@ -152,6 +157,112 @@ test.each([
   ['pop', 'nbl-pop', 'nbl-pop'],
 ] as const)('%s is the reference %s, value for value', (key, kf, cls) => {
   expectSpecMatches(NB_MOTION[key], kf, cls);
+});
+
+// ── v48 키트 ──────────────────────────────────────────────────────────────
+
+test.each([
+  ['pop', 'v48-pop', 'v48-pop'],
+  ['wiggle', 'v48-wiggle', 'v48-wiggle'],
+  ['tap', 'v48-tap', 'v48-tap'],
+] as const)('v48 %s is the kit\'s %s, value for value', (key, kf, cls) => {
+  expectSpecMatches(V48_MOTION[key], kf, cls);
+});
+
+test('v48 stamp: 1.15 → 1, .35s ease-out, the rotation stays put', () => {
+  expectSpecMatches(stampSpec(-8), 'v48-stamp', 'v48-done');
+  // Any other --r is the same motion at that angle.
+  expect(stampSpec(-10).tracks.find((t) => t.prop === 'rotate')!.values).toEqual(['-10deg', '-10deg']);
+});
+
+test('v48 pop starts 12px low and clear, over .32s on cubic-bezier(.3,.7,.3,1)', () => {
+  expect(css).toContain('@keyframes v48-pop{0%{transform:translateY(12px);opacity:0}100%{transform:none;opacity:1}}');
+  expect(css).toContain('.v48-pop{animation:v48-pop .32s cubic-bezier(.3,.7,.3,1) both}');
+});
+
+test('v48 wiggle waits .4s and runs once', () => {
+  expect(cssRule('v48-wiggle')).toBe('animation:v48-wiggle .7s ease-in-out .4s 1 both');
+  expect(V48_MOTION.wiggle.delay).toBe(400);
+  expect(V48_MOTION.wiggle.duration).toBe(700);
+});
+
+test('v48 breathe: 2.4s ease-in-out, a 7px .55 halo at 50% and no halo at the ends, 2px 3px hard shadow', () => {
+  expect(css).toContain('@keyframes v48-breathe{0%,100%{box-shadow:0 0 0 0 rgba(249,227,123,.0),2px 3px 0 rgba(62,54,43,.25)}50%{box-shadow:0 0 0 7px rgba(249,227,123,.55),2px 3px 0 rgba(62,54,43,.25)}}');
+  const tm = timingOf('v48-go');
+  expect(V48_BREATHE.duration).toBe(tm.duration);
+  expect(V48_BREATHE.duration).toBe(2400);
+  sameEasing(V48_BREATHE.easing, tm.easing);
+  expect(V48_BREATHE.spread).toBe(7);
+  expect(V48_BREATHE.color).toBe('rgba(249,227,123,.55)');
+  expect([V48_GO_SHADOW.dx, V48_GO_SHADOW.dy, V48_GO_SHADOW.color]).toEqual([2, 3, 'rgba(62,54,43,.25)']);
+});
+
+test('v48 press and lift are the kit\'s (.12s +2,+3,-1deg · .14s -3px,-2deg)', () => {
+  expect(css).toContain('.v48-go:active,.v48-press:active{transform:translate(2px,3px) rotate(-1deg)!important}');
+  expect(css).toContain('.v48-press{transition:transform .12s;cursor:pointer}');
+  expect(css).toContain('.v48-lift{transition:transform .14s;cursor:pointer}.v48-lift:active{transform:translateY(-3px) rotate(-2deg)!important}');
+  expect([V48_PRESS.duration, V48_PRESS.dx, V48_PRESS.dy, V48_PRESS.rot]).toEqual([120, 2, 3, -1]);
+  expect([V48_LIFT.duration, V48_LIFT.dy, V48_LIFT.rot]).toEqual([140, -3, -2]);
+});
+
+test('v48 press sinks over .12s from its resting tilt; lift rises', () => {
+  let press!: ReturnType<typeof useV48Press>;
+  let lift!: ReturnType<typeof useV48Press>;
+  function Both() {
+    press = useV48Press('press', -0.5);
+    lift = useV48Press('lift');
+    return <><Animated.View style={{ transform: press.transform }} /><Animated.View style={{ transform: lift.transform }} /></>;
+  }
+  const tree = mount(<Both />);
+  const [a, b] = tree.root.findAllByType(Animated.View);
+  expect(now(a)).toMatchObject({ translateX: 0, translateY: 0, rotate: '-0.5deg' });
+  act(() => press.onPressIn());
+  act(() => lift.onPressIn());
+  advance(150);
+  expect(now(a)).toMatchObject({ translateX: 2, translateY: 3, rotate: '-1deg' });
+  expect(now(b)).toMatchObject({ translateX: 0, translateY: -3, rotate: '-2deg' });
+  act(() => press.onPressOut());
+  advance(150);
+  expect(now(a)).toMatchObject({ translateX: 0, translateY: 0, rotate: '-0.5deg' });
+});
+
+test('v48 wiggle holds its 0% frame for .4s, then plays once', () => {
+  function Dot() { return <Animated.View style={useNbMotion(V48_MOTION.wiggle, { auto: true }).style} />; }
+  const tree = mount(<Dot />);
+  const view = tree.root.findByType(Animated.View);
+  advance(390);
+  expect(now(view).rotate).toBe('0deg');
+  advance(10 + 140); // 400ms delay + 20% of .7s
+  expect(String(now(view).rotate)).toMatch(/^-1[34](\.\d+)?deg$/);
+  advance(700);
+  expect(now(view).rotate).toBe('0deg');
+});
+
+test('v48 breathe loops 0 → 1 → 0 on the native driver', () => {
+  let p!: Animated.Value;
+  function Halo() { p = useV48Loop('breathe'); return <Animated.View style={{ opacity: p }} />; }
+  mount(<Halo />);
+  const val = () => (p as unknown as { __getValue(): number }).__getValue();
+  expect(val()).toBeCloseTo(0);
+  advance(1200);
+  expect(val()).toBeCloseTo(1, 1);
+  advance(1200);
+  expect(val()).toBeCloseTo(0, 1);
+  advance(1200);
+  expect(val()).toBeCloseTo(1, 1); // and again — it repeats
+  expect(timings.every((t) => t.useNativeDriver === true && t.duration === 1200)).toBe(true);
+});
+
+test('v48 tap loops 5px · .94 each second', () => {
+  let p!: Animated.Value;
+  function Tap() { p = useV48Loop('tap'); return <Animated.View />; }
+  mount(<Tap />);
+  const val = () => (p as unknown as { __getValue(): number }).__getValue();
+  advance(500);
+  expect(val()).toBeCloseTo(1, 1);
+  advance(500);
+  expect(val()).toBeCloseTo(0, 1);
+  expect(timings[0].duration).toBe(500);
 });
 
 test('swipe-out flies -120% of the card, measured', () => {

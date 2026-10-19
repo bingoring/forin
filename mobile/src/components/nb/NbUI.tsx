@@ -446,14 +446,20 @@ export function NbInkStamp({ children }: { children?: ReactNode }) {
  *  rings: the box's own 1pt border, and a 1pt ring inset by 2 (the outer line + the gap). */
 export const DOUBLE_RING = { line: 1, gap: 1 } as const;
 
-export function NbDoubleRing({ color, radius }: { color: string; radius: number }) {
-  const inset = DOUBLE_RING.line + DOUBLE_RING.gap;
+export function NbDoubleRing({ color, radius, line = DOUBLE_RING.line, gap = DOUBLE_RING.gap }: {
+  color: string;
+  radius: number;
+  /** 줄 굵기 · 줄 사이 틈(기본 1 · 1 = `3px double`). v48 Done은 `2.5px double`이라 1 · .5. */
+  line?: number;
+  gap?: number;
+}) {
+  const inset = line + gap;
   return (
     // Absolute children are placed inside the parent's border, so the outer line is already
     // behind us: the inset from here is just the gap.
     <View pointerEvents="none" style={{
-      position: 'absolute', left: DOUBLE_RING.gap, top: DOUBLE_RING.gap, right: DOUBLE_RING.gap, bottom: DOUBLE_RING.gap,
-      borderRadius: Math.max(0, radius - inset), borderWidth: DOUBLE_RING.line, borderColor: color,
+      position: 'absolute', left: gap, top: gap, right: gap, bottom: gap,
+      borderRadius: Math.max(0, radius - inset), borderWidth: line, borderColor: color,
     }} />
   );
 }
