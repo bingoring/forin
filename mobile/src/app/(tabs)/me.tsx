@@ -581,30 +581,8 @@ export default function Me() {
           </NbPaper>
         </View>
 
-        {/* 공개 — 라이브 병동에 나를 익명으로 띄울지. 기본은 공개이고 언제든 끌 수 있다.
-            낯선 사람에게 보이는 유일한 것이라 별도 스위치로 둔다(동료 공개와 분리). */}
-        <View style={{ marginTop: space.sm }}>
-          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 8 }}>
-            <NbIcon name="shield" size={17} />
-            <Text style={{ fontFamily: nbFonts.hand, fontSize: 18.9, color: C }}>{t('settings.privacy.section')}</Text>
-          </View>
-          <NbPaper rot={-0.2}>
-            <Pressable
-              onPress={toggleWard}
-              style={{ flexDirection: 'row', alignItems: 'center', gap: 12, paddingVertical: 11, paddingHorizontal: 13 }}
-            >
-              <View style={{ flex: 1 }}>
-                <Text style={{ fontFamily: nbFonts.hand, fontSize: 17.6, color: C }}>{t('settings.privacy.wardTitle')}</Text>
-                <Text style={{ fontFamily: nbFonts.body, fontSize: 10, color: nb.soft, marginTop: 2 }}>
-                  {wardVisible ? t('settings.privacy.wardOn') : t('settings.privacy.wardOff')}
-                </Text>
-              </View>
-              <View style={{ width: 40, height: 21, borderWidth: 1.7, borderColor: nb.ink, borderRadius: 2, flexDirection: 'row', flexShrink: 0, justifyContent: wardVisible ? 'flex-end' : 'flex-start' }}>
-                <View style={{ width: 18, backgroundColor: wardVisible ? nb.ink : 'rgba(62,54,43,.35)' }} />
-              </View>
-            </Pressable>
-          </NbPaper>
-        </View>
+        {/* 공개(라이브 병동에 나 표시) 섹션 숨김 — 라이브 병동이 홈에서 빠져 숨김(사용자 결정 2026-10-19,
+            디자인 지시서 §8). 살리면 JSX만 되돌린다(git 기록; 값·toggleWard·키는 그대로 있다). */}
 
         {/* 탐험 모드 행은 뺐다(home-calendar-v47 결정 2) — 이 스위치가 켜던 유일한 입구인 홈의 과별
             출근 카드가 v47에서 사라져, 켜도 바뀌는 것이 없다. 값과 useExploreMode는 남겨 둔다. */}
