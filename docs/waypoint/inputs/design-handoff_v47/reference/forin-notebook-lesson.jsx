@@ -81,7 +81,7 @@
           <div style={{ minWidth: 0, flex: 1 }}>
             <span style={{ fontFamily: MONO, fontSize: 10, fontWeight: 700, color: c.soft }}>STEP {i + 1}</span>
             <span style={{ fontFamily: HW, fontSize: 16, color: c.soft, marginLeft: 6, textDecoration: 'line-through' }}>{s.label}</span>
-            <div style={{ fontSize: 10.5, color: c.soft, marginTop: 2, whiteSpace: 'nowrap' }}>내 레벨에선 건너뛰어요</div>
+            <div style={{ fontSize: 10.5, color: c.soft, marginTop: 2, whiteSpace: 'nowrap' }}>건너뜀</div>
           </div>
           <NbButton variant="dashed" size="sm">그래도 할래요</NbButton>
         </div>
@@ -234,7 +234,6 @@
           {/* 조립 슬롯 — 큰 청크 종이 */}
           <div style={{ padding: '18px 20px 0' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-              <NbIcon name="speech" size={16}/><span style={{ fontFamily: HW, fontSize: 14.5, color: c.soft }}>조각을 순서대로 붙이세요</span>
             </div>
             <NbPaper rot={-0.5} style={{ marginTop: 8, padding: '14px 12px', minHeight: 92, display: 'flex', flexWrap: 'wrap', gap: 8, alignContent: 'flex-start' }}>
               {chunks.map((ch, i) => ch[1]
@@ -313,7 +312,7 @@
           <Head title="STEP 2 · 문장" sub="유형 · 순서 배열" right={<NbTag color={c.blue} fill style={{ fontSize: 11 }}>4 / 5</NbTag>}/>
           <div style={{ marginTop: 12 }}><StepTrack done={1} active={1}/></div>
           <div style={{ padding: '16px 20px 0' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}><NbIcon name="compass" size={16}/><span style={{ fontFamily: HW, fontSize: 14.5, color: c.soft }}>공감 → 이유 → 확인 → 감사 순서로 놓으세요</span></div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}><NbIcon name="compass" size={16}/><span style={{ fontFamily: HW, fontSize: 14.5, color: c.soft }}>공감 → 이유 → 확인 → 감사</span></div>
             {lines.map((l, i) => (
               <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 10, marginTop: 11 }}>
                 <span style={{ width: 28, height: 28, borderRadius: '50%', border: `1.8px solid ${l[2] ? c.green : c.soft}`, color: l[2] ? c.green : c.soft, fontFamily: HW, fontSize: 15, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, background: l[2] ? 'rgba(95,141,90,.12)' : 'transparent' }}>{l[2] ? i + 1 : '?'}</span>

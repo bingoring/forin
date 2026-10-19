@@ -104,7 +104,7 @@
             <span style={{ fontSize: 11, color: c.soft }}>0명 · 전체 ›</span>
           </div>
           <div style={{ ...paper(-0.4), marginTop: 8, padding: '12px 14px' }}>
-            <div style={{ fontFamily: HW, fontSize: 15.5, color: c.soft, lineHeight: 1.35 }}>아직 동료가 없어요. 코드를 주고받아 서로의 학습을 응원해 보세요.</div>
+            <div style={{ fontFamily: HW, fontSize: 15.5, color: c.soft, lineHeight: 1.35 }}>아직 동료가 없어요</div>
             <div style={{ display: 'flex', alignItems: 'center', marginTop: 10, paddingTop: 9, borderTop: `1.3px dashed rgba(62,54,43,.18)` }}>
               <div>
                 <div style={{ fontSize: 10, color: c.soft }}>내 초대 코드</div>

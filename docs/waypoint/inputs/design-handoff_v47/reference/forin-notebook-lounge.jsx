@@ -80,7 +80,23 @@
             <div style={{ flex: 1 }}/>
             <div style={{ ...paper(1), padding: '5px 12px', fontFamily: HW, fontSize: 14.5, color: c.ink, background: 'rgba(249,227,123,.5)' }}>글쓰기 ✎</div>
           </div>
-          <div style={{ fontSize: 11, color: c.soft, marginTop: 2 }}>해외로 가는 같은 직업 동료들의 휴게실</div>
+          {/* 휴게실 — 쉬는 시간 게임 진입 (구 홈 Extras) */}
+          <div style={{ ...paper(-0.6), marginTop: 12, padding: '11px 13px', display: 'flex', alignItems: 'center', gap: 11, cursor: 'pointer', background: 'rgba(169,203,227,.22)' }}>
+            {pin(64)}
+            <div style={{ width: 46, height: 46, borderRadius: '50%', border: `1.8px solid ${c.ink}`, background: c.paper, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}><NbIcon name="coffee" size={28}/></div>
+            <div style={{ minWidth: 0, flex: 1 }}>
+              <div style={{ fontFamily: HW, fontSize: 19, color: c.ink, lineHeight: 1 }}>휴게실</div>
+              <div style={{ display: 'flex', gap: 6, marginTop: 6 }}>
+                {['plane', 'compass', 'run', 'trophy'].map((ic, i) => (
+                  <span key={ic} style={{ width: 26, height: 26, borderRadius: 5, background: c.paper, border: '1.2px solid #E0D6C0', display: 'flex', alignItems: 'center', justifyContent: 'center', transform: `rotate(${i % 2 ? 3 : -3}deg)` }}><NbIcon name={ic} size={17}/></span>
+                ))}
+              </div>
+            </div>
+            <div style={{ textAlign: 'center', flexShrink: 0 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 3, justifyContent: 'center' }}><NbIcon name="trophy" size={15}/><span style={{ fontFamily: MONO, fontSize: 13, fontWeight: 700, color: c.ink }}>#4</span></div>
+              <div style={{ fontFamily: HW, fontSize: 18, color: c.soft, marginTop: 1 }}>›</div>
+            </div>
+          </div>
           {/* 검색 + 필터 */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 12, padding: '6px 4px', borderBottom: `2px solid rgba(62,54,43,.45)` }}>
             <NbIcon name="magnify" size={16}/>

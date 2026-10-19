@@ -29,7 +29,7 @@
             </div>
           </div>
           <div style={{ fontFamily: HW, fontSize: 26, color: c.ink, marginTop: 16, lineHeight: 1.3 }}>첫 출근 전,<br/>수간호사 면담이 있어요</div>
-          <div style={{ fontSize: 12, color: c.soft, marginTop: 7, lineHeight: 1.6 }}>5분 진단으로 딱 맞는 시작점을 찾아드려요.<br/>못해도 괜찮아요 — 배치일 뿐, 점수가 아니에요.</div>
+          <div style={{ fontSize: 12, color: c.soft, marginTop: 7, lineHeight: 1.6 }}><br/></div>
         </div>
         <div style={{ padding: '16px 24px 0' }}>
           {[['speech', '듣고 답하기 3문항', '환자 발화를 듣고 자연스러운 응답 고르기'], ['mic', '따라 말하기 2문항', '핵심 문장 발음 · 유창성 측정'], ['pencil', '병원 어휘 3문항', '임상 용어 이해도']].map((r, i) => (
@@ -97,7 +97,6 @@
               </div>
             </NbPaper>
           ))}
-          <div style={{ marginTop: 12, textAlign: 'center', fontFamily: HW, fontSize: 12.5, color: c.soft }}>진단 중엔 정답을 알려주지 않아요 — 부담 없이!</div>
         </div>
         <div style={{ position: 'absolute', left: 24, right: 24, bottom: 34 }}>
           <NbButton variant="ink" size="lg" full>다음 ›</NbButton>

@@ -200,7 +200,7 @@
             </div>
             <div style={{ fontFamily: HW, fontSize: 13.5, color: c.soft, marginTop: 8 }}>어젯밤 어머니가 돌아가셨어요 — 라고 전해야 해요</div>
           </NbPaper>
-          <div style={{ fontFamily: HW, fontSize: 14.5, color: c.soft, marginTop: 14 }}>바꿀 말 — 하나만 골라 위에 얹어요</div>
+          <div style={{ fontFamily: HW, fontSize: 14.5, color: c.soft, marginTop: 14 }}>바꿀 말</div>
           <div style={{ display: 'flex', gap: 8, marginTop: 8, flexWrap: 'wrap' }}>
             {SWAP.options.map((o, i) => {
               const on = pick === o, ok = res && o === SWAP.answer, bad = res && on && !ok;

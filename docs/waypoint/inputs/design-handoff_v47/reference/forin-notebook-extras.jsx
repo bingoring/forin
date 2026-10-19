@@ -184,7 +184,6 @@
           ))}
         </div>
         <div style={{ margin: '14px 20px 20px' }}>
-          <NbMemo color={c.green} rot={-0.3}><b style={{ color: c.green }}>수집 보상</b> 10장마다 히든 카드(진짜 위험한 코드들) 개봉 — 30장이면 '은어 마스터' 칭호</NbMemo>
         </div>
       </Frame>
     );
@@ -241,7 +240,6 @@
             <div style={{ marginTop: 11 }}><NbButton variant="yellow" size="md" full icon="pager">Jiyoon에게 도전장 보내기</NbButton></div>
           </NbPaper>
           <div style={{ margin: '13px 20px 0' }}>
-            <NbMemo rot={0.3}>여기선 공부 얘기 금지 — 점수만 남아요. 도전장을 받으면 같은 판으로 대결!</NbMemo>
           </div>
         </div>
       </Frame>
@@ -289,7 +287,6 @@
         {/* 파워 게이지 — 타이밍 탭 */}
         <NbPaper rot={0.4} style={{ margin: '12px 20px 0', padding: '12px 14px' }}>
           <div style={{ display: 'flex', alignItems: 'baseline' }}>
-            <span style={{ fontFamily: HW, fontSize: 15, color: c.ink }}>파워 게이지 — 초록 구간에서 탭!</span>
             <div style={{ flex: 1 }}/>
             <span style={{ fontFamily: MONO, fontSize: 10, fontWeight: 700, color: c.green }}>PERFECT ×1.5</span>
           </div>
@@ -384,7 +381,6 @@
         <div style={{ margin: '12px 20px 0' }}>
           <NbPaper rot={-0.3} style={{ padding: '13px 14px', textAlign: 'center', background: 'rgba(233,196,90,.18)', cursor: 'pointer' }}>
             <div style={{ fontFamily: HW, fontSize: 21, color: c.ink }}><NbIcon name="run" size={19}/> 점프!</div>
-            <div style={{ fontSize: 10.5, color: c.soft, marginTop: 3 }}>짧게 누르면 낮게 · 오래 누를수록 높게</div>
             {/* 홀드 게이지 */}
             <div style={{ marginTop: 9, height: 9, border: `1.5px solid ${c.ink}`, position: 'relative' }}>
               <div style={{ position: 'absolute', inset: 1.5, width: '45%', background: 'repeating-linear-gradient(-45deg, rgba(95,141,90,.7) 0 5px, rgba(95,141,90,.4) 5px 10px)' }}/>
@@ -508,12 +504,10 @@
           {!ui.started && (
             <div style={{ position: 'absolute', left: 0, right: 0, top: '52%', textAlign: 'center', zIndex: 3 }}>
               <div style={{ fontFamily: HW, fontSize: 23, color: c.ink }}>탭해서 시작</div>
-              <div style={{ fontSize: 11.5, color: c.soft, marginTop: 4 }}>탭할 때마다 공이 위로 튀어요 — 넣으면 반대쪽 골대로!</div>
             </div>
           )}
         </div>
         <div style={{ margin: '12px 20px 0' }}>
-          <NbMemo rot={-0.3} color={c.blue}><b style={{ color: c.blue }}>규칙</b> 골을 넣으면 카메라가 반대편으로 미끄러지며 다음 골대가 나타나요. 왼→오른→왼 번갈아 연속 기록!</NbMemo>
         </div>
       </Frame>
     );

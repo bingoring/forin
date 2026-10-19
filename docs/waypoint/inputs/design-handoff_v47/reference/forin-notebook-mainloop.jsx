@@ -103,13 +103,11 @@
               <span style={{ fontFamily: HW, fontSize: 12.5, color: c.soft, whiteSpace: 'nowrap' }}>약 3분</span>
             </div>
             <div style={{ fontFamily: HW, fontSize: 21, color: c.ink, marginTop: 9, lineHeight: 1.3 }}>흉통 환자가 접수대 앞에서<br/>가슴을 움켜쥐고 있어요</div>
-            <div style={{ fontSize: 11.5, color: c.soft, marginTop: 5 }}>통증 사정 → 안심 표현까지 2턴 대화</div>
             <div onClick={() => go(1)} style={{ marginTop: 12 }}>
               <NbButton variant="ink" size="lg" full>출근해서 맡기 ✎</NbButton>
             </div>
           </NbPaper>
           <div style={{ marginTop: 13 }}>
-            <NbMemo rot={0.3} color={c.blue}><b style={{ color: c.blue }}>데모</b> 홈 → 준비 → 대화(감정 전환) → 결과 → 리뷰랩 적립까지 클릭으로 이어져요.</NbMemo>
           </div>
         </div>
       </div>
@@ -174,7 +172,7 @@
         </div>
         {/* 선택지 */}
         <div style={{ padding: '13px 22px 0' }}>
-          <div style={{ fontFamily: HW, fontSize: 15, color: c.soft }}>어떻게 답할까요? — 쪽지를 골라 붙이세요</div>
+          <div style={{ fontFamily: HW, fontSize: 15, color: c.soft }}>어떻게 답할까요?</div>
           {t.opts.map((o, i) => (
             <div key={i} onClick={() => pick(i)}>
               <NbPaper rot={i % 2 ? 0.6 : -0.6} style={{ marginTop: 11, padding: '12px 13px', cursor: 'pointer',
@@ -189,8 +187,6 @@
               </NbPaper>
             </div>
           ))}
-          {picked == null && (
-          )}
         </div>
       </div>
     );
@@ -221,7 +217,7 @@
             </NbPaper>
           ))}
           <div style={{ marginTop: 13 }}>
-            <NbMemo rot={0.3} color={c.blue}>{goodCount < TURNS.length ? <span>아쉬운 답변 <b>{TURNS.length - goodCount}개</b>가 교정 노트로 적립돼요 →</span> : <span>완벽해요! 표현 카드가 리뷰랩에 저장돼요 →</span>}</NbMemo>
+            <NbMemo rot={0.3} color={c.blue}>{goodCount < TURNS.length ? <span>아쉬운 답변 <b>{TURNS.length - goodCount}개</b>가 교정 노트로 적립돼요 →</span> : <span>완벽해요! ✎</span>}</NbMemo>
           </div>
           <div onClick={() => go(4)} style={{ marginTop: 14 }}>
             <NbButton variant="ink" size="lg" full>리뷰랩에 적립 보기 ✎</NbButton>

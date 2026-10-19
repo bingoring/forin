@@ -49,7 +49,7 @@
               <div style={{ position: 'absolute', top: -7, right: -13, fontFamily: HW, fontSize: 13, color: c.red, transform: 'rotate(8deg)' }}>꾹!</div>
             </div>
             <div style={{ fontFamily: HW, fontSize: 17, color: c.ink, marginTop: 9 }}>눌러서 녹음</div>
-            <div style={{ fontSize: 11, color: c.soft, marginTop: 2 }}>조용한 곳에서 · 최대 10초</div>
+            <div style={{ fontSize: 11, color: c.soft, marginTop: 2 }}>최대 10초</div>
           </div>
           {/* 회차 점수 */}
           <div style={{ ...paper(0.4), marginTop: 24, padding: '13px 15px' }}>
@@ -192,7 +192,6 @@
             <div style={{ flex: 1, background: c.ink, color: c.paper, borderRadius: 3, padding: '11px 0', textAlign: 'center', fontFamily: HW, fontSize: 16, boxShadow: '2px 2px 0 rgba(62,54,43,.3)', transform: 'rotate(0.4deg)' }}>다음 문장 ›</div>
           </div>
           <div style={{ marginTop: 11, border: `1.6px dashed #B9A8DC`, borderRadius: 3, padding: '10px 0', textAlign: 'center', fontFamily: HW, fontSize: 15, color: '#8A76B8', background: 'rgba(195,177,232,.12)' }}>☐ 약한 음소만 드릴하기</div>
-          <div style={{ textAlign: 'center', fontFamily: HW, fontSize: 13, color: c.soft, marginTop: 6 }}>드릴 기능은 곷 제공돼요</div>
         </div>
       </div>
     );

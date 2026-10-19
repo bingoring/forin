@@ -41,7 +41,6 @@
             </div>
           </NbPaper>
           <div style={{ flex: 1 }}/>
-          <NbMemo rot={0.3} style={{ alignSelf: 'stretch' }}>실제 병원 상황 속에서 <b style={{ color: c.blue }}>대화로</b> 현지 언어를 익히는 직업 시뮬레이터예요.</NbMemo>
           <NbButton variant="ink" size="lg" full icon="pencil" iconColor="#FFFdf4" style={{ alignSelf: 'stretch', marginTop: 14 }}>새 수첩 만들기</NbButton>
           <div style={{ fontFamily: HW, fontSize: 14, color: c.soft, marginTop: 12 }}>이미 수첩이 있어요 · <span style={{ textDecoration: 'underline', textUnderlineOffset: 3, color: c.ink }}>로그인</span></div>
         </div>

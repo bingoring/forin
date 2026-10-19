@@ -153,7 +153,7 @@
             <NbIcon name="siren" size={22}/>
             <div style={{ minWidth: 0, flex: 1 }}>
               <div style={{ fontFamily: HW, fontSize: 16, color: c.ink, lineHeight: 1.1 }}>중증 응대 — 5번째 우표</div>
-              <div style={{ fontSize: 10.5, color: c.soft, marginTop: 2 }}>빨간 실이 여기까지 왔어요 · 상황 3개 남음</div>
+              <div style={{ fontSize: 10.5, color: c.soft, marginTop: 2 }}>상황 3개 남음</div>
             </div>
             <NbButton variant="ink" size="sm">이어서 ›</NbButton>
           </NbPaper>
@@ -248,7 +248,6 @@
             );
           })}
           <div style={{ marginTop: 14 }}>
-            <NbMemo rot={0.3} color={c.blue}><b style={{ color: c.blue }}>추천 순서</b> 주제 2의 SBAR가 끝나면 3(이중 확인)이 열려요 — 실제 약국 업무 순서 그대로.</NbMemo>
           </div>
         </div>
       </Frame>
@@ -419,15 +418,6 @@
               {[1, 1, .38, 0, 0, 0].map((p, i) => <div key={i} style={{ flex: 1, height: 7, border: `1.2px solid ${c.ink}`, borderRadius: 2, overflow: 'hidden', transform: `rotate(${i % 2 ? .8 : -.8}deg)` }}><div style={{ width: p * 100 + '%', height: '100%', background: p === 1 ? c.green : c.amber }}/></div>)}
             </div>
           </NbPaper></div>
-          {/* 공통 필수 — 얇은 바인더 */}
-          <div style={{ marginTop: 12, display: 'flex', alignItems: 'center', gap: 10, padding: '9px 12px', border: `1.4px dashed ${c.green}`, borderRadius: 3, background: 'rgba(95,141,90,.06)' }}>
-            <NbIcon name="shield" size={18}/>
-            <div style={{ minWidth: 0, flex: 1 }}>
-              <div style={{ fontFamily: HW, fontSize: 15, color: c.ink, lineHeight: 1.1 }}>공통 필수</div>
-              <div style={{ fontSize: 10.5, color: c.soft, marginTop: 1 }}>손위생·환자 확인·SBAR 기본</div>
-            </div>
-            <span style={{ fontFamily: HW, fontSize: 12, color: c.green, border: `2px double ${c.green}`, borderRadius: '50%', width: 32, height: 32, display: 'inline-flex', alignItems: 'center', justifyContent: 'center', transform: 'rotate(-12deg)', flexShrink: 0 }}>완료</span>
-          </div>
           {/* 서가 — 건물 간지(인덱스 탭)로 나눔 */}
           <div style={{ fontFamily: HW, fontSize: 16, color: c.ink, marginTop: 16 }}>서가</div>
           <div style={{ display: 'flex', alignItems: 'flex-end', gap: 3, marginTop: 12, padding: '0 2px' }}>
@@ -461,7 +451,6 @@
           ))}
           </div>
           <div style={{ marginTop: 20 }}>
-            <NbMemo rot={0.3} color={c.blue}><b style={{ color: c.blue }}>추천</b> ER 근무 예정이면 ER → ICU(인계 상대) → 약국(콜백 상대) 순이 실무에 가까워요. 물론 순서는 자유!</NbMemo>
           </div>
         </div>
       </Frame>

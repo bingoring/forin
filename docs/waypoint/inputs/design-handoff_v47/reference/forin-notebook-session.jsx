@@ -227,7 +227,6 @@
             </div>
             <div style={{ fontFamily: HW, fontSize: 14.5, color: c.soft, marginTop: 8 }}>0에서 10까지, 통증이 얼마나 심한가요?</div>
           </NbPaper>
-          <div style={{ marginTop: 20, fontFamily: HW, fontSize: 14.5, color: c.soft }}>낱말 칩 — 누르면 빈칸에 붙어요</div>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 9, marginTop: 9 }}>
             {['bad', 'strong', 'much', 'painful'].map((w, i) => (
               <NbPaper key={w} rot={i % 2 ? 0.8 : -0.8} style={{ padding: '8px 16px', cursor: 'pointer', ...(i === 0 ? { boxShadow: '0 2px 6px rgba(62,54,43,.14), 0 0 0 2px ' + c.blue } : {}) }}>

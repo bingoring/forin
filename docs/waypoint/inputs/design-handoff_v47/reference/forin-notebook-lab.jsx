@@ -63,6 +63,18 @@
           </div>
           <SectionTabs active={0}/>
           <div style={{ flex: 1, overflowY: 'auto', borderTop: `1.5px solid ${c.ink}`, padding: '14px 20px 20px' }}>
+            {/* 자료 선반 — 구 홈 Extras (인계 노트 · 슬랭) */}
+            <div style={{ display: 'flex', gap: 9, marginBottom: 14 }}>
+              {[['board', '인계 노트', 2, 'rgba(249,227,123,.38)'], ['speech', '슬랭', 6, 'rgba(95,141,90,.16)']].map((s, i) => (
+                <div key={s[1]} style={{ ...paper(i % 2 ? 0.7 : -0.7), flex: 1, padding: '10px 0 8px', textAlign: 'center', background: s[3], cursor: 'pointer' }}>
+                  <div style={{ position: 'relative', display: 'inline-block' }}>
+                    <NbIcon name={s[0]} size={28}/>
+                    {s[2] > 0 && <span style={{ position: 'absolute', right: -9, top: -5, minWidth: 16, height: 16, borderRadius: 99, background: c.red, color: '#fff', fontSize: 9.5, fontWeight: 800, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0 3px', border: `1.5px solid ${c.paper}` }}>{s[2]}</span>}
+                  </div>
+                  <div style={{ fontFamily: HW, fontSize: 14.5, color: c.ink, marginTop: 3, whiteSpace: 'nowrap' }}>{s[1]}</div>
+                </div>
+              ))}
+            </div>
             {/* 오늘의 복습 히어로 */}
             <div style={{ ...paper(-0.6), padding: '14px 15px' }}>
               <div style={{ position: 'absolute', top: -10, left: 118, width: 74, height: 20, background: c.tape, transform: 'rotate(-4deg)' }}/>
@@ -73,7 +85,7 @@
                 </div>
                 <div style={{ minWidth: 0, flex: 1 }}>
                   <div style={{ fontFamily: HW, fontSize: 19, color: c.ink, lineHeight: 1.15 }}>잊어버리기 전에 다시 보기</div>
-                  <div style={{ fontSize: 11, color: c.soft, marginTop: 3 }}>간격 반복 · D+3 카드 2장 포함 · 약 4분</div>
+                  <div style={{ fontSize: 11, color: c.soft, marginTop: 3 }}>약 4분</div>
                 </div>
                 <div style={{ background: c.ink, color: c.paper, fontFamily: HW, fontSize: 15, padding: '9px 14px', borderRadius: 3, boxShadow: '2px 2px 0 rgba(62,54,43,.25)', flexShrink: 0 }}>시작 ✎</div>
               </div>
@@ -202,7 +214,7 @@
                 <div style={{ flexShrink: 0 }}><NbIcon name="mic" size={18}/></div>
               </div>
             ))}
-            <div style={{ marginTop: 12, textAlign: 'center', fontFamily: HW, fontSize: 13.5, color: c.soft }}>아래로 내리면 계속 이어져요 · 123개 더</div>
+            <div style={{ marginTop: 12, textAlign: 'center', fontFamily: HW, fontSize: 13.5, color: c.soft }}>123개 더</div>
           </div>
         </div>
       </Frame>

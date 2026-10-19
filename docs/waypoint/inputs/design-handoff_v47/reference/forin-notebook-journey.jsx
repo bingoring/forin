@@ -194,7 +194,6 @@
               <NbIcon name="pushpin" size={16}/>
               <div style={{ minWidth: 0, flex: 1 }}>
                 <div style={{ fontFamily: HW, fontSize: 16, color: c.ink, lineHeight: 1.1 }}>{sheet} 정거장</div>
-                <div style={{ fontSize: 10.5, color: c.soft, marginTop: 2 }}>탭하면 상세 바텀시트(B 아트보드)로 열려요 — 닫으려면 탭</div>
               </div>
               <NbButton variant="paper" size="sm">열기 ›</NbButton>
             </NbPaper>
@@ -242,7 +241,6 @@
             </NbPaper>
           ))}
           <div style={{ marginTop: 12 }}>
-            <NbMemo rot={0.3} color={c.blue}><b style={{ color: c.blue }}>통과전</b> 구간 시험을 통과하면 PASSED 도장 + OR 정거장이 열려요.</NbMemo>
           </div>
         </div>
       </Frame>
@@ -291,7 +289,6 @@
               </NbPaper>
             </div>
           ))}
-          <NbMemo rot={-0.3} color={c.green}><b style={{ color: c.green }}>연동</b> ICU 구간을 통과하면 'NCLEX 본시험' 준비도가 +8% 올라가요.</NbMemo>
         </div>
       </Frame>
     );
