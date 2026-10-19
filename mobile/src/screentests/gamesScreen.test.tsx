@@ -23,16 +23,17 @@ function texts(root: ReactTestInstance): string[] {
     .flatMap((n) => n.children.filter((c): c is string => typeof c === 'string'));
 }
 
-test('the hub lists the games and gates by the daily limit', () => {
+test('the hub shows two tiles, plays as dots, and Locked chips for the unbuilt games', () => {
   let tree!: ReturnType<typeof create>;
   act(() => { tree = create(<GameHub />); });
   const all = texts(tree.root).join(' ');
+  expect(tree.root.findAllByProps({ testID: 'games-tile-circle' }).length).toBeGreaterThan(0);
+  expect(tree.root.findAllByProps({ testID: 'games-tile-hoops' }).length).toBeGreaterThan(0);
+  expect(tree.root.findAll((n) => n.props.testID === 'v48-locked' && typeof n.type === 'string').length).toBe(2); // plane · pen cap, no copy
+  expect(tree.root.findAllByProps({ testID: 'games-dot-on' }).length + tree.root.findAllByProps({ testID: 'games-dot-off' }).length).toBeGreaterThan(0);
   act(() => { tree.unmount(); });
-  expect(all).toContain('탭탭 슛'); // the new playable game
-  expect(all).toContain('완벽한 원 그리기'); // the other playable game
-  expect(all).toContain('종이비행기 날리기'); // a 준비 중 game is still listed
-  expect(all).toContain('준비 중'); // ...and marked not-ready
-  expect(all).toContain('시작');
+  expect(all).not.toContain('준비 중');
+  expect(all).not.toContain('시작');
 });
 
 test('using up the daily plays offers a rewarded ad for more', () => {

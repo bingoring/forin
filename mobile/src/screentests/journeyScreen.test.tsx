@@ -74,7 +74,7 @@ function hostNodesWithTestId(root: ReactTestInstance, id: string): ReactTestInst
  *  finds its rows by testID rather than mocking the screen it is wiring into. */
 function pressByText(root: ReactTestInstance, label: string): ReactTestInstance {
   const hit = root.findAll(
-    (n) => typeof n.props?.onPress === 'function' && texts(n).includes(label),
+    (n) => typeof n.props?.onPress === 'function' && (texts(n).includes(label) || n.props?.accessibilityLabel === label),
     { deep: true },
   )[0];
   if (!hit) throw new Error(`no pressable with text "${label}"`);

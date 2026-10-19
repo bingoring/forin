@@ -413,6 +413,14 @@ func (r *ProgressRepo) DueCards(ctx context.Context, userID string, today time.T
 	return out, nil
 }
 
+// CountCards counts the learner's whole deck (saved) and the cards at full mastery.
+func (r *ProgressRepo) CountCards(ctx context.Context, userID string) (total, mastered int, err error) {
+	err = r.pool.QueryRow(ctx,
+		`SELECT count(*), count(*) FILTER (WHERE mastery_pips >= 3) FROM review_cards WHERE user_id = $1`,
+		userID).Scan(&total, &mastered)
+	return total, mastered, err
+}
+
 func (r *ProgressRepo) GetCardForUser(ctx context.Context, userID, cardID string) (*progress.ReviewCard, error) {
 	d, err := r.q.GetCardForUser(ctx, sqlc.GetCardForUserParams{UserID: userID, ID: cardID})
 	if errors.Is(err, pgx.ErrNoRows) {

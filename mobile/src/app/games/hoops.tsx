@@ -416,7 +416,7 @@ export default function HoopsGame() {
         </Pressable>
         <View style={{ flex: 1 }} />
         {onFire && <NbTag color={nb.red} rot={-3}>{t('games.hoopsFire')}</NbTag>}
-        <Text style={nbText.hand(13, nb.soft)}>{t('games.hoopsBestLabel')}</Text>
+        <NbIcon name="trophy" size={15} />
         <Text style={{ fontFamily: nbFonts.mono, fontSize: 15, fontWeight: '700', color: nb.ink }}>{Math.max(best ?? 0, hud.score)}</Text>
       </View>
 

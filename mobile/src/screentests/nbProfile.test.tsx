@@ -140,21 +140,36 @@ test('a step already taken is TICKED, and the one you are on is ringed', async (
     (n) => typeof n.type !== 'string' && (n.type as { name?: string })?.name === 'NbIcon' && n.props?.name === 'check',
     { deep: true },
   );
-  expect(ticks.length).toBeGreaterThan(0);
-  expect(ticks.every((n) => n.props.color === nb.green)).toBe(true);
+  // Done stamps (v48 badge circles) draw an uncoloured check of their own; the career
+  // path's ticks are the ones that pass a colour.
+  const careerTicks = ticks.filter((n) => n.props.color !== undefined);
+  expect(careerTicks.length).toBeGreaterThan(0);
+  expect(careerTicks.every((n) => n.props.color === nb.green)).toBe(true);
   // Exactly one ring, and it says where you are in words too — a colour alone is not a
   // label, and this row is read at a glance.
   expect(styled(tree.root, (s) => s.borderColor === '#C99A1E' && s.borderWidth === 2).length).toBe(1);
   expect(texts(tree.root)).toContain('HERE');
 });
 
-test('a title you have not earned shows no name, and no card', async () => {
-  // An unclaimed title is a blank space on the page rather than a card you own — and
-  // printing its name would give away the thing you are meant to discover.
+test('a title you have not earned is a Locked circle with no name', async () => {
+  // v48: an unclaimed title is a dashed Locked circle — no name (printing it would give
+  // away the thing you are meant to discover) and no '???' text either.
   const tree = await mount();
-  expect(texts(tree.root)).toContain('???');
-  expect(styled(tree.root, (s) => s.borderStyle === 'dashed' && s.backgroundColor === 'transparent').length)
-    .toBeGreaterThan(0);
+  expect(tree.root.findAllByProps({ testID: 'v48-locked' }).length).toBeGreaterThan(0);
+  expect(texts(tree.root)).not.toContain('???');
+});
+
+test('earned badges are Done stamps; the streak is a fire Pill', async () => {
+  const tree = await mount();
+  expect(tree.root.findAllByProps({ testID: 'v48-done' }).length).toBeGreaterThan(0);
+  expect(tree.root.findAllByProps({ testID: 'v48-pill' }).length).toBeGreaterThan(0);
+});
+
+test('settings rows are IconDot + title + value, and the sound control is a pill', async () => {
+  const tree = await mount();
+  expect(tree.root.findAllByProps({ testID: 'v48-icondot' }).length).toBeGreaterThanOrEqual(5);
+  expect(tree.root.findAllByProps({ testID: 'me-sfx-pill' }).length).toBeGreaterThan(0);
+  expect(tree.root.findAllByProps({ testID: 'me-no-colleagues-dot' }).length).toBeGreaterThan(0);
 });
 
 test('what is issued is typed; what you fill in is written', async () => {

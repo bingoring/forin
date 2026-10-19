@@ -842,6 +842,19 @@ export const api = {
     return (data?.cards ?? []) as ReviewCard[];
   },
 
+  /** The review lab's read: today's due cards PLUS the whole deck's counts. `saved` (every
+   *  card) and `mastered` (3 pips) come from the server — the due list is capped and
+   *  due-only, so neither can be counted from it. Absent (undefined) on an older server;
+   *  the lab then draws no number rather than the due list's length. */
+  async reviewOverview(): Promise<{ cards: ReviewCard[]; saved?: number; mastered?: number }> {
+    const { data } = await http.get('/me/review');
+    return {
+      cards: (data?.cards ?? []) as ReviewCard[],
+      saved: typeof data?.total === 'number' ? data.total : undefined,
+      mastered: typeof data?.mastered === 'number' ? data.mastered : undefined,
+    };
+  },
+
   /** Grade a review card (SM-2); returns the new mastery pips. */
   async gradeReview(id: string, grade: ReviewGrade): Promise<{ masteryPips: number; intervalDays: number }> {
     const { data } = await http.post(`/me/review/${id}/grade`, { grade });

@@ -26,6 +26,7 @@ import { nb, nbFonts } from '@/theme/nb';
 import { faceOf } from '@/data/reviewCardFace';
 import { api, type ReviewCard, type ReviewGrade } from '@/api/client';
 import { type Translate, useT } from '@/i18n';
+import { GradeRow } from '@/components/lab/GradeRow';
 import { usePronunciationEnabled } from '@/data/pronunciationFlag';
 import { TASK_SCREEN } from '@/theme/transitions';
 
@@ -262,15 +263,8 @@ export default function ReviewSession() {
           ) : (
             <View style={{ marginTop: 18 }}>
               <Text style={[nbText.hand(15, nb.soft), { textAlign: 'center', marginBottom: 9 }]}>{t('review.howWell')}</Text>
-              <View style={{ flexDirection: 'row', gap: 8 }}>
-                {GRADES.map(({ g, labelKey, color }, i) => (
-                  <Pressable key={g} onPress={() => grade(g)} disabled={busy} style={{ flex: 1 }}>
-                    <View style={[styles.srs, { borderColor: color, transform: [{ rotate: i % 2 ? '0.6deg' : '-0.6deg' }] }]}>
-                      <Text numberOfLines={1} style={[nbText.hand(16.5, color), { lineHeight: 18 }]}>{t(labelKey)}</Text>
-                    </View>
-                  </Pressable>
-                ))}
-              </View>
+              {/* 리뷰랩 카드와 같은 얼굴 넷(찡그림·보통·웃음·신남) + 모노 간격 — 같은 판단이라 같은 모양. */}
+              <GradeRow gap={8} disabled={busy} onGrade={(g) => grade(g)} />
             </View>
           )}
         </ScrollView>
@@ -354,12 +348,6 @@ const styles = {
   ctxNpc: {
     marginTop: 8, paddingVertical: 7, paddingHorizontal: 9,
     borderWidth: 1.3, borderStyle: 'dashed', borderColor: 'rgba(62,54,43,.25)',
-  } as const,
-
-  /** Four paper buttons, each in its own pen. */
-  srs: {
-    borderWidth: 1.8, borderRadius: 4, backgroundColor: nb.paper,
-    paddingVertical: 10, alignItems: 'center',
   } as const,
 
   toastWrap: { position: 'absolute', left: 0, right: 0, bottom: 30, alignItems: 'center', paddingHorizontal: 20 } as const,
