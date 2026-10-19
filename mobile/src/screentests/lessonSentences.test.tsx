@@ -236,13 +236,15 @@ describe('문장장', () => {
     await pressID(current(tree.root), 'sheet-icon-press');
     await act(async () => { mockSpeech.opts.onStart?.(); mockSpeech.opts.onBoundary?.(); });
     expect(scales()).toEqual(rest);
+    // the remaining replays sit beside the waveform
+    expect(texts(byID(current(tree.root), 'sent-replay-left')[0]).join('')).toBe('다시 듣기 · 2회');
     for (let k = 0; k < 2; k++) await pressID(current(tree.root), 'sheet-icon-press');
     expect(mockSpoken.filter((s) => s === 'Use this scale.')).toHaveLength(3);
     // the first listen and two replays — then the speaker does nothing
     expect(byID(current(tree.root), 'sheet-icon-press')[0].props.onPress).toBeUndefined();
     expect(byID(current(tree.root), 'sent-replay')[0].props.disabled).toBe(true);
-    // v47: no "탭해서 다시 듣기 · n회" line — the limit is the disabled speaker, not a sentence.
-    expect(byID(current(tree.root), 'sent-replay-left')).toHaveLength(0);
+    // v47 3차: "다시 듣기 · n회" is back (the old "탭해서" instruction stays out) — the count runs down to 0.
+    expect(texts(byID(current(tree.root), 'sent-replay-left')[0]).join('')).toBe('다시 듣기 · 0회');
     // the authored wrong meanings
     expect(texts(current(tree.root))).toEqual(expect.arrayContaining(['지금 약을 드릴게요', '차트에 기록했어요']));
   });

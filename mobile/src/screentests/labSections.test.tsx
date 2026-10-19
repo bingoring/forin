@@ -447,7 +447,7 @@ function isDown(root: ReactTestInstance, label: string): boolean {
 
 test('the card list is virtualized — a window of cards is mounted, not the pile', async () => {
   // Fifty due cards is an ordinary week of practice. Mounting all of them cost 5,431
-  // host nodes, and the "복습 등급이 뭔가요?" disclosure animates a HEIGHT — a layout
+  // host nodes, and the per-card context disclosure animates a HEIGHT — a layout
   // property the native driver cannot touch — so every frame of that animation re-laid
   // out the whole scroll content. That was the lag this tab was reported for.
   // Memoizing would not have helped: the work is layout, not render.

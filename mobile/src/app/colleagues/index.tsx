@@ -11,16 +11,14 @@
 //   · 이번 주 함께 목표 (a shared weekly goal with its own gauge) — there is no group
 //     goal on the server, and a gauge filled from a number we invented would be the one
 //     widget on the page that lies.
-//   · 현지 근무중 (a green "working abroad" pill) — Colleague carries no such field. It
-//     is also the entry point for the mentor feature, which is why the memo at the bottom
-//     says the matching is still being prepared rather than showing a pill that is always
-//     off.
+//   · 현지 근무중 (a green "working abroad" pill) — Colleague carries no such field, and a
+//     pill that is always off would be as much a lie as a gauge filled from an invented number.
 import { useCallback, useState } from 'react';
 import { ActivityIndicator, Alert, Pressable, ScrollView, Text, View } from 'react-native';
 import { Stack, useFocusEffect, useRouter } from 'expo-router';
 import * as Clipboard from 'expo-clipboard';
 import { NbIcon, type NbIconName } from '@/components/nb/NbIcon';
-import { NbButton, NbMemo, NbPaper, NbPolaroid, NbSheet, NbTag, nbText } from '@/components/nb/NbUI';
+import { NbButton, NbPaper, NbPolaroid, NbSheet, NbTag, nbText } from '@/components/nb/NbUI';
 import { NbAvatar } from '@/components/nb/NbAvatar';
 import { avatarSpecFromSeed, normalizeAvatarSpec } from '@/data/nbAvatar';
 import { nb, nbFonts } from '@/theme/nb';
@@ -200,10 +198,6 @@ export default function ColleaguesScreen() {
               </NbPaper>
             </Pressable>
           ))}
-
-          <NbMemo color={nb.blue} rot={0.3} style={{ marginTop: 14 }}>
-            <Text style={nbText.hand(13.5)}>{t('colleague.mentorSoon')}</Text>
-          </NbMemo>
         </ScrollView>
       )}
 

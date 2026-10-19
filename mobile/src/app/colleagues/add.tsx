@@ -46,10 +46,10 @@ export default function ColleagueAddScreen() {
     setSending(true);
     try {
       const res = await api.addColleague(pretty(input));
-      if (res.autoAccepted) Alert.alert(t('colleagueAdd.connected'), t('colleagueAdd.connectedBody'));
+      if (res.autoAccepted) Alert.alert(t('colleagueAdd.connected'));
       else if (res.alreadyLinked) Alert.alert(t('colleagueAdd.already'));
       else if (res.alreadyRequested) Alert.alert(t('colleagueAdd.alreadySent'), t('colleagueAdd.waiting'));
-      else Alert.alert(t('colleagueAdd.sent'), t('colleagueAdd.sentBody'));
+      else Alert.alert(t('colleagueAdd.sent'));
       router.back();
     } catch {
       Alert.alert(t('colleagueAdd.failed'), t('colleagueAdd.failedBody'));

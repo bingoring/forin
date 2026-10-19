@@ -45,7 +45,6 @@ function EmptyState({ dept }: { dept: string }) {
     <View style={styles.center}>
       <NbIcon name="mic" size={34} color={nb.soft} />
       <Text style={styles.emptyTitle}>{dept ? t('list.emptyInDept', { dept }) : t('speak.listEmpty')}</Text>
-      <Text style={styles.emptyHint}>{dept ? t('list.emptyInDeptHint') : t('speak.listEmptyHint')}</Text>
     </View>
   );
 }

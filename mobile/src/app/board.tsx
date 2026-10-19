@@ -19,7 +19,7 @@ import { ActivityIndicator, Modal, Pressable, ScrollView, Text, View } from 'rea
 import { Stack, useFocusEffect, useRouter } from 'expo-router';
 import { api, type BoardCard } from '@/api/client';
 import { NbIcon, type NbIconName } from '@/components/nb/NbIcon';
-import { NbButton, NbChip, NbMemo, NbPaper, NbTag, nbText } from '@/components/nb/NbUI';
+import { NbButton, NbChip, NbPaper, NbTag, nbText } from '@/components/nb/NbUI';
 import { RULE_COLOR, RULE_H, TOP_INSET, nb, nbFonts } from '@/theme/nb';
 import { PLACE_SCREEN } from '@/theme/transitions';
 import { resetLabel } from '@/data/boardReset';
@@ -241,7 +241,6 @@ export default function Board() {
             <Text style={[nbText.hand(16), { textAlign: 'center' }]}>
               {t('board.emptyDept', { dept: DEPT_META[filter] ? t(DEPT_META[filter].nameKey) : filter })}
             </Text>
-            <Text style={nbText.hand(14, nb.soft)}>{t('board.emptyTomorrow')}</Text>
           </View>
         )}
 
@@ -253,18 +252,11 @@ export default function Board() {
               <NbIcon name={capReached ? 'check' : 'star'} size={26} color={capReached ? nb.green : '#C99A1E'} />
               <View style={{ flex: 1, minWidth: 0 }}>
                 <Text style={nbText.hand(17)}>{capReached ? t('board.rewardsDone') : t('board.watchAd')}</Text>
-                <Text style={[nbText.body(10.5, nb.soft), { marginTop: 2 }]}>
-                  {capReached ? t('board.midnight') : t('board.quietHint')}
-                </Text>
               </View>
               {topping && <ActivityIndicator color={nb.ink} />}
             </NbPaper>
           </Pressable>
         )}
-
-        <NbMemo color={nb.blue} rot={-0.3}>
-          <Text style={nbText.hand(13.5)}>{t('board.rotationNote', { n: cards.length })}</Text>
-        </NbMemo>
       </ScrollView>
 
       {/* rewarded-ad stub overlay */}

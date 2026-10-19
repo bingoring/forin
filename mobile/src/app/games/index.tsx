@@ -8,7 +8,7 @@ import { useState } from 'react';
 import { Stack, useRouter, type Href } from 'expo-router';
 import { Pressable, ScrollView, Text, View } from 'react-native';
 import { NbIcon, type NbIconName } from '@/components/nb/NbIcon';
-import { NbButton, NbMemo, NbPaper, NbSheet, NbTag, nbText } from '@/components/nb/NbUI';
+import { NbButton, NbPaper, NbSheet, NbTag, nbText } from '@/components/nb/NbUI';
 import { TOP_INSET, nb } from '@/theme/nb';
 import {
   AD_PLAYS_GRANT, canGrantPlays, grantPlaysFromAd, playAllowance, playsLeft, startPlay,
@@ -58,8 +58,6 @@ export default function GameHub() {
       </View>
 
       <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingHorizontal: 20, paddingBottom: 40 }}>
-        <Text style={[nbText.body(11, nb.soft), { marginTop: 4 }]}>{t('games.sub')}</Text>
-
         {GAMES.map((g, i) => (
           <GameRow key={g.id} game={g} index={i} canPlay={!!g.route && left > 0} outOfPlays={left <= 0}
             onStart={() => { if (!g.route) return; startPlay(); router.push(g.route); }} />
@@ -81,8 +79,6 @@ export default function GameHub() {
           </NbPaper>
         )}
 
-        <NbMemo rot={0.3} style={{ marginTop: 15 }}>{t('games.rankingSoon')}</NbMemo>
-        <NbMemo rot={-0.3} color={nb.blue} style={{ marginTop: 11 }}>{t('games.noStudy')}</NbMemo>
       </ScrollView>
     </NbSheet>
   );

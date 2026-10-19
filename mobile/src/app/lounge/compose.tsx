@@ -133,9 +133,6 @@ export default function Compose() {
           </Pressable>
           <View style={{ flex: 1, minWidth: 0 }}>
             <Text numberOfLines={1} style={nbText.hand(23)}>{sharing ? t('lounge.shareTitle') : t('lounge.composeTitle')}</Text>
-            {!sharing && (
-              <Text numberOfLines={1} style={[nbText.body(11, nb.soft), { marginTop: 2 }]}>{t('lounge.composeSub')}</Text>
-            )}
           </View>
         </View>
 

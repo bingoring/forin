@@ -502,7 +502,6 @@ export default function HoopsGame() {
         {phase === 'ready' && (
           <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, top: '48%', alignItems: 'center' }}>
             <Text style={nbText.hand(23)}>{t('games.hoopsTapStart')}</Text>
-            <Text style={[nbText.body(11.5, nb.soft), { marginTop: 4, textAlign: 'center', paddingHorizontal: 30 }]}>{t('games.hoopsTapDunk')}</Text>
           </View>
         )}
         {phase === 'over' && (
@@ -519,12 +518,6 @@ export default function HoopsGame() {
           </View>
         )}
       </Pressable>
-
-      <View style={{ marginHorizontal: 20, marginBottom: 16 }}>
-        <View style={{ borderWidth: 1.4, borderStyle: 'dashed', borderColor: nb.blue, borderRadius: 3, backgroundColor: `${nb.blue}10`, paddingVertical: 8, paddingHorizontal: 11, transform: [{ rotate: '-0.3deg' }] }}>
-          <Text style={nbText.hand(13.5)}><Text style={{ color: nb.blue }}>{t('games.hoopsRuleLabel')} </Text>{t('games.hoopsRule')}</Text>
-        </View>
-      </View>
     </NbSheet>
   );
 }

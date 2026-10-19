@@ -770,8 +770,8 @@ export default function PassportRoute() {
   const destPage = (
     <Page>
       <Gutter />
-      <BackChip onPress={() => goBack('job')} />
-      <Header title={t('onb.dest.title')} sub={t('onb.dest.sub')} />
+      <BackChip onPress={() => goBack('id')} />
+      <Header title={t('onb.dest.title')} />
       <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 13, paddingTop: 16, paddingLeft: 34, paddingRight: 24 }}>
         {DESTS.map((d) => {
           const open = isDestinationReady(d.id);

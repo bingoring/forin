@@ -215,7 +215,6 @@ export default function LessonHubRoute() {
         <View style={{ marginTop: 16, marginHorizontal: 20 }}>
           <View style={{ flexDirection: 'row', alignItems: 'baseline', gap: 8 }}>
             <Text style={nbText.hand(17)}>{t('lesson.hub.steps', { n: g.total })}</Text>
-            <Text numberOfLines={1} style={[plain(10.5, nb.soft), { flexShrink: 1 }]}>{t(`lesson.hub.level${band}`)}</Text>
             <View style={{ flex: 1 }} />
             <Text testID="lesson-gauge-count" style={nbText.monoBold(11, nb.soft)}>{`${g.done}/${g.total}`}</Text>
           </View>
@@ -273,7 +272,7 @@ function Ticket({ t, step, index, onOpen, onOptIn }: {
             <Text numberOfLines={1} style={[nbText.hand(16, nb.soft), { marginLeft: 6, flexShrink: 1 }, skip ? { textDecorationLine: 'line-through' } : null]}>{label}</Text>
           </View>
           <Text numberOfLines={1} style={[plain(10.5, nb.soft), { marginTop: 2 }]}>
-            {skip ? t('lesson.hub.skipNote') : t('lesson.hub.emptyNote')}
+            {skip ? t('lesson.step.skip') : t('lesson.hub.emptyNote')}
           </Text>
         </View>
         {skip && <NbButton variant="dashed" size="sm" onPress={onOptIn}>{t('lesson.hub.optIn')}</NbButton>}
