@@ -16,11 +16,11 @@ import { ActivityIndicator, Pressable, ScrollView, StyleSheet, Text, View } from
 import { Stack, useFocusEffect, useRouter } from 'expo-router';
 import { NbAvatar } from '@/components/nb/NbAvatar';
 import { NbIcon } from '@/components/nb/NbIcon';
-import { NbButton, NbIndexTabs, NbMemo, NbPaper, nbText } from '@/components/nb/NbUI';
+import { NbButton, NbIndexTabs, NbPaper, nbText } from '@/components/nb/NbUI';
 import { RULE_COLOR, RULE_H, TOP_INSET, nb, nbFonts } from '@/theme/nb';
 import { PLACE_SCREEN } from '@/theme/transitions';
 import { AVATAR_AXES, DEFAULT_AVATAR_SPEC, randomAvatarSpec, type AvatarSpec } from '@/data/nbAvatar';
-import { hasChosenAvatar, myAvatar, saveAvatar } from '@/lib/nbAvatar';
+import { myAvatar, saveAvatar } from '@/lib/nbAvatar';
 import { useMyAvatar } from '@/hooks/useMyAvatar';
 import { playSfx } from '@/lib/sfx';
 import { useT } from '@/i18n';
@@ -83,9 +83,6 @@ export default function AvatarPicker() {
           </Pressable>
           <View style={{ flex: 1, minWidth: 0 }}>
             <Text numberOfLines={1} style={nbText.hand(23)}>{t('avatar.title')}</Text>
-            <Text numberOfLines={1} style={[nbText.body(11, nb.soft), { marginTop: 2 }]}>
-              {hasChosenAvatar() ? t('avatar.sub') : t('avatar.subFirstTime')}
-            </Text>
           </View>
         </View>
 
@@ -142,10 +139,6 @@ export default function AvatarPicker() {
             </Pressable>
           );
         })}
-
-        <NbMemo color={nb.blue} rot={-0.3} style={{ marginTop: 6 }}>
-          <Text style={nbText.hand(13.5)}>{t('avatar.note')}</Text>
-        </NbMemo>
       </ScrollView>
     </Page>
   );

@@ -9,7 +9,7 @@ import { ActivityIndicator, FlatList, Pressable, StyleSheet, Text, View } from '
 import { useRouter } from 'expo-router';
 import { api, type ModelAnswerGroup } from '@/api/client';
 import { NbIcon } from '@/components/nb/NbIcon';
-import { NbPaper, nbText } from '@/components/nb/NbUI';
+import { NbButton, NbPaper, nbText } from '@/components/nb/NbUI';
 import { RULE_COLOR, RULE_H, TOP_INSET, nb, nbFonts } from '@/theme/nb';
 import { ModelAnswerGroupRow } from '@/components/model/ModelAnswerGroupRow';
 import { ModelAnswerHero } from '@/components/model/ModelAnswerHero';
@@ -135,7 +135,11 @@ export function ModelAnswerList({ embedded = false, above, focusScenario }: {
       {state === 'loading' ? (
         <View style={styles.center}><ActivityIndicator color={nb.ink} /></View>
       ) : state === 'error' ? (
-        <View style={styles.center}><Text style={styles.emptyHint}>{t('model.emptyHint')}</Text></View>
+        <View style={styles.center}>
+          <NbIcon name="bell" size={26} color={nb.red} />
+          <Text style={styles.emptyHint}>{t('list.loadFailed')}</Text>
+          <NbButton variant="paper" onPress={reload}>{t('list.retry')}</NbButton>
+        </View>
       ) : (
         <FlatList
           ref={listRef}
@@ -164,7 +168,6 @@ export function ModelAnswerList({ embedded = false, above, focusScenario }: {
             <View style={styles.center}>
               <NbIcon name="pencil" size={32} color={nb.soft} />
               <Text style={styles.emptyTitle}>{t('model.empty')}</Text>
-              <Text style={styles.emptyHint}>{t('model.emptyHint')}</Text>
             </View>
           }
           ListFooterComponent={
@@ -196,7 +199,13 @@ export function ModelAnswerList({ embedded = false, above, focusScenario }: {
               {above}
               {headerInner}
               {state === 'loading' && <ActivityIndicator color={nb.ink} style={{ marginTop: 24 }} />}
-              {state === 'error' && <Text style={styles.emptyHint}>{t('model.emptyHint')}</Text>}
+              {state === 'error' && (
+                <View style={styles.center}>
+                  <NbIcon name="bell" size={26} color={nb.red} />
+                  <Text style={styles.emptyHint}>{t('list.loadFailed')}</Text>
+                  <NbButton variant="paper" onPress={reload}>{t('list.retry')}</NbButton>
+                </View>
+              )}
             </View>
           }
           renderItem={({ item, index }) => (
@@ -212,8 +221,7 @@ export function ModelAnswerList({ embedded = false, above, focusScenario }: {
               <View style={styles.center}>
                 <NbIcon name="pencil" size={32} color={nb.soft} />
                 <Text style={styles.emptyTitle}>{t('model.empty')}</Text>
-                <Text style={styles.emptyHint}>{t('model.emptyHint')}</Text>
-              </View>
+                </View>
             ) : null
           }
         />

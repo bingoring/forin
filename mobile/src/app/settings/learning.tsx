@@ -94,7 +94,6 @@ export default function LearningSettings() {
           </Pressable>
           <View style={{ flex: 1, minWidth: 0 }}>
             <Text numberOfLines={1} style={nbText.hand(23)}>{t('learn.title')}</Text>
-            <Text numberOfLines={1} style={[nbText.body(11, nb.soft), { marginTop: 2 }]}>{t('learn.sub')}</Text>
           </View>
         </View>
 

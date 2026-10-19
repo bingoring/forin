@@ -186,12 +186,13 @@ test('a failed save says so and stays on the screen', async () => {
   expect(mockBack).toBe(0);
 });
 
-test('a learner who never chose a face is told theirs was rolled', async () => {
+test('a learner who never chose a face gets a rolled one — and no sentence says so', async () => {
   clearAvatar();
   adoptAvatar('user-2', null);
   const tree = await mount();
   const out = texts(tree.root).join(' ');
-  expect(out).toContain('처음 얼굴은 무작위로 골라뒀어요');
+  // v47 설명 배제 3차: the subtitle that said "처음 얼굴은 무작위로 골라뒀어요" is gone.
+  expect(out).not.toContain('처음 얼굴은 무작위로');
   // …and it is a real face, not the default one dressed up as a choice.
   expect(preview(tree).props.spec).toBeTruthy();
 });

@@ -1139,7 +1139,7 @@ export default function DialogueRoute() {
                   onChangeText={setDraft}
                   editable={!pending && rec === 'idle'}
                   // L97: two lines, broken where the handoff breaks them.
-                  placeholder={rec === 'recording' ? t('dialogue.tapMicAgain') : t('dialogue.inputPlaceholder')}
+                  placeholder={rec === 'recording' ? t('dialogue.listening') : t('dialogue.inputPlaceholder')}
                   placeholderTextColor={nb.placeholder}
                   style={{ flex: 1, fontFamily: nbFonts.hand, fontSize: 16, lineHeight: 20.8, color: nb.ink, paddingVertical: 0 }}
                   onSubmitEditing={sendDraft}
@@ -1202,7 +1202,6 @@ export default function DialogueRoute() {
       <BottomSheet visible={wrapUp} onClose={() => setWrapUp(false)}>
         <View style={{ padding: 18, gap: 12 }}>
           <Text style={nbText.hand(20)}>{t('dialogue.wrapUpTitle')}</Text>
-          <Text style={nbText.body(12.5, nb.soft)}>{t('dialogue.wrapUpBody')}</Text>
           <View style={{ flexDirection: 'row', gap: 9 }}>
             <View style={{ flex: 1 }}>
               <NbButton variant="paper" full onPress={() => setWrapUp(false)}>

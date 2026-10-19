@@ -34,11 +34,11 @@ import { TASK_SCREEN } from '@/theme/transitions';
 // The colour is the PEN each answer is written in — red for "again", amber for hard, blue
 // for good, green for easy. Same four colours the review lab's SRS row uses, because it is
 // the same judgement.
-const GRADES: { g: ReviewGrade; labelKey: string; color: string; blurbKey: string }[] = [
-  { g: 'again', labelKey: 'lab.again', color: nb.red, blurbKey: 'lab.againSub' },
-  { g: 'hard', labelKey: 'lab.hard', color: '#C77E2E', blurbKey: 'lab.hardSub' },
-  { g: 'good', labelKey: 'lab.good', color: nb.blue, blurbKey: 'lab.goodSub' },
-  { g: 'easy', labelKey: 'lab.easy', color: nb.green, blurbKey: 'lab.easySub' },
+const GRADES: { g: ReviewGrade; labelKey: string; color: string }[] = [
+  { g: 'again', labelKey: 'lab.again', color: nb.red },
+  { g: 'hard', labelKey: 'lab.hard', color: '#C77E2E' },
+  { g: 'good', labelKey: 'lab.good', color: nb.blue },
+  { g: 'easy', labelKey: 'lab.easy', color: nb.green },
 ];
 
 /** The SM-2 next-interval, humanised. */
@@ -58,7 +58,7 @@ export default function ReviewSession() {
   const [idx, setIdx] = useState(0);
   const [revealed, setRevealed] = useState(false);
   const [graded, setGraded] = useState(0); // how many completed this session
-  const [toast, setToast] = useState<{ label: string; color: string; blurb: string; next: string } | null>(null);
+  const [toast, setToast] = useState<{ label: string; color: string; next: string } | null>(null);
   const [busy, setBusy] = useState(false);
 
   useFocusEffect(
@@ -84,7 +84,7 @@ export default function ReviewSession() {
     let interval = 1;
     try { const r = await api.gradeReview(card.id, g); interval = r.intervalDays; } catch { /* best-effort */ }
     // A short confirmation so the card does not just vanish silently, then advance.
-    setToast({ label: t(meta.labelKey), color: meta.color, blurb: t(meta.blurbKey), next: nextLabel(t, interval) });
+    setToast({ label: t(meta.labelKey), color: meta.color, next: nextLabel(t, interval) });
     setTimeout(() => {
       setToast(null);
       setBusy(false);
@@ -263,11 +263,10 @@ export default function ReviewSession() {
             <View style={{ marginTop: 18 }}>
               <Text style={[nbText.hand(15, nb.soft), { textAlign: 'center', marginBottom: 9 }]}>{t('review.howWell')}</Text>
               <View style={{ flexDirection: 'row', gap: 8 }}>
-                {GRADES.map(({ g, labelKey, color, blurbKey }, i) => (
+                {GRADES.map(({ g, labelKey, color }, i) => (
                   <Pressable key={g} onPress={() => grade(g)} disabled={busy} style={{ flex: 1 }}>
                     <View style={[styles.srs, { borderColor: color, transform: [{ rotate: i % 2 ? '0.6deg' : '-0.6deg' }] }]}>
                       <Text numberOfLines={1} style={[nbText.hand(16.5, color), { lineHeight: 18 }]}>{t(labelKey)}</Text>
-                      <Text numberOfLines={1} style={styles.srsSub}>{t(blurbKey)}</Text>
                     </View>
                   </Pressable>
                 ))}
@@ -285,7 +284,6 @@ export default function ReviewSession() {
               <NbTag color={toast.color} fill rot={-2}>{toast.label}</NbTag>
               <Text numberOfLines={1} style={nbText.hand(17)}>{toast.next}</Text>
             </View>
-            <Text numberOfLines={2} style={[nbText.body(11, nb.soft), { marginTop: 5, textAlign: 'center' }]}>{toast.blurb}</Text>
           </NbPaper>
         </View>
       )}
@@ -361,9 +359,8 @@ const styles = {
   /** Four paper buttons, each in its own pen. */
   srs: {
     borderWidth: 1.8, borderRadius: 4, backgroundColor: nb.paper,
-    paddingTop: 9, paddingBottom: 6, alignItems: 'center',
+    paddingVertical: 10, alignItems: 'center',
   } as const,
-  srsSub: { fontFamily: nbFonts.body, fontSize: 9, color: nb.soft, marginTop: 3 } as const,
 
   toastWrap: { position: 'absolute', left: 0, right: 0, bottom: 30, alignItems: 'center', paddingHorizontal: 20 } as const,
   toast: { minWidth: 250, paddingVertical: 12, paddingHorizontal: 16, alignItems: 'center' } as const,

@@ -108,9 +108,9 @@ export default function SlangDeckScreen() {
           )}
         </View>
 
-        <NbMemo color={deck?.master ? nb.green : nb.soft} rot={-0.3} style={{ marginTop: 15 }}>
-          {deck?.master ? t('slang.master') : t('slang.reward')}
-        </NbMemo>
+        {!!deck?.master && (
+          <NbMemo color={nb.green} rot={-0.3} style={{ marginTop: 15 }}>{t('slang.master')}</NbMemo>
+        )}
       </ScrollView>
     </NbSheet>
   );

@@ -69,7 +69,6 @@ export function MatchQuiz({ quiz, onExit, onComplete, progress }: { quiz: QuizDe
       }
     >
       {!!c.context && <ContextBox text={c.context} />}
-      <Text style={{ fontFamily: nbFonts.body, fontSize: 11, color: nb.soft, textAlign: 'center', marginBottom: 10 }}>{t('quiz.matchHint')}</Text>
 
       {/* matching board: left chips | SVG connectors | right chips */}
       <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>

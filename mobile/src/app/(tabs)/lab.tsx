@@ -31,11 +31,11 @@ const C = nb.ink;
 // `etaKey` is the roughly-when-you'll-see-it-again shown UNDER the label: <1분 / 10분 /
 // 1일 / 4일. It is the SM-2 first-step estimate, printed so the choice is legible before
 // it is made; the real interval the server returns is confirmed in the toast afterward.
-const GRADES: { g: ReviewGrade; labelKey: string; bg: string; color: string; etaKey: string; blurbKey: string; guideKey: string }[] = [
-  { g: 'again', labelKey: 'lab.again', bg: '#FCA5A5', color: nb.red, etaKey: 'lab.etaAgain', blurbKey: 'lab.againSub', guideKey: 'lab.againBody' },
-  { g: 'hard', labelKey: 'lab.hard', bg: '#FFF3EE', color: '#C77E2E', etaKey: 'lab.etaHard', blurbKey: 'lab.hardSub', guideKey: 'lab.hardBody' },
-  { g: 'good', labelKey: 'lab.good', bg: 'rgba(168,217,151,.4)', color: nb.blue, etaKey: 'lab.etaGood', blurbKey: 'lab.goodSub', guideKey: 'lab.goodBody' },
-  { g: 'easy', labelKey: 'lab.easy', bg: 'rgba(249,227,123,.5)', color: nb.green, etaKey: 'lab.etaEasy', blurbKey: 'lab.easySub', guideKey: 'lab.easyBody' },
+const GRADES: { g: ReviewGrade; labelKey: string; bg: string; color: string; etaKey: string }[] = [
+  { g: 'again', labelKey: 'lab.again', bg: '#FCA5A5', color: nb.red, etaKey: 'lab.etaAgain' },
+  { g: 'hard', labelKey: 'lab.hard', bg: '#FFF3EE', color: '#C77E2E', etaKey: 'lab.etaHard' },
+  { g: 'good', labelKey: 'lab.good', bg: 'rgba(168,217,151,.4)', color: nb.blue, etaKey: 'lab.etaGood' },
+  { g: 'easy', labelKey: 'lab.easy', bg: 'rgba(249,227,123,.5)', color: nb.green, etaKey: 'lab.etaEasy' },
 ];
 // humanize the SM-2 next-interval into a friendly "next review" label.
 function nextLabel(t: Translate, days: number): string {
@@ -115,8 +115,7 @@ export default function Lab() {
   // Which third is under a finger right now. Held here rather than in each tab so
   // the row cannot end up with two faces down at once.
   const [pressedTab, setPressedTab] = useState<Section | null>(null);
-  const [guideOpen, setGuideOpen] = useState(false);
-  const [toast, setToast] = useState<{ label: string; bg: string; blurb: string; next: string } | null>(null);
+  const [toast, setToast] = useState<{ label: string; bg: string; next: string } | null>(null);
   // The 🎙 직접 말하기 연습 summary. null while unknown or unavailable — the block
   // is simply absent then, rather than drawing an empty distribution that reads
   // as "you scored nothing".
@@ -169,7 +168,7 @@ export default function Lab() {
     let interval = 1;
     try { const r = await api.gradeReview(id, g); interval = r.intervalDays; } catch { /* best-effort; refreshes on next focus */ }
     // Confirm the grade so the card doesn't just silently disappear.
-    setToast({ label: t(meta.labelKey), bg: meta.bg, blurb: t(meta.blurbKey), next: nextLabel(t, interval) });
+    setToast({ label: t(meta.labelKey), bg: meta.bg, next: nextLabel(t, interval) });
     setTimeout(() => setToast(null), 1600);
   };
 
@@ -283,40 +282,12 @@ export default function Lab() {
                   <Text style={[nbText.hand(19), { lineHeight: 22 }]}>
                     {cards.length > 0 ? t('lab.beforeYouForget') : t('lab.nothingDue')}
                   </Text>
-                  <Text numberOfLines={2} style={[nbText.body(11, nb.soft), { marginTop: 3 }]}>
-                    {t('lab.heroSub', { name: t('lab.likeALocal') })}
-                  </Text>
                 </View>
                 {cards.length > 0 && (
                   <NbButton variant="ink" icon="pencil" iconColor={nb.paper} onPress={() => router.push('/review')}>
                     {t('common.start')}
                   </NbButton>
                 )}
-              </NbPaper>
-
-              {/* 복습 등급 안내 — explains 다시/어려움/알맞음/쉬움 (collapsible reference) */}
-              <NbPaper rot={0.4}>
-                <View>
-                  <Pressable onPress={() => setGuideOpen((v) => !v)} style={{ flexDirection: 'row', alignItems: 'center', gap: 8, paddingVertical: 11, paddingHorizontal: 13 }}>
-                    <Text style={[nbText.hand(16.5), { flex: 1, minWidth: 0 }]}>{t('lab.gradeGuideQ')}</Text>
-                    <NbIcon name={guideOpen ? 'chevronUp' : 'chevronDown'} size={14} color={nb.soft} />
-                  </Pressable>
-                  <Collapsible open={guideOpen} style={{ borderTopWidth: guideOpen ? 1.3 : 0, borderTopColor: 'rgba(62,54,43,.18)' }}>
-                    <View style={{ paddingHorizontal: 13, paddingBottom: 13, gap: 8 }}>
-                      <Text style={[nbText.body(11), { marginTop: 10 }]}>{t('lab.gradeGuideBody')}</Text>
-                      {GRADES.map(({ g, labelKey, bg, guideKey }) => (
-                        <View key={g} style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 8 }}>
-                          {/* Each grade in its own pen, the same four the session uses. */}
-                          <View style={{ minWidth: 54, alignItems: 'center', borderWidth: 1.6, borderRadius: 3, borderColor: bg, paddingVertical: 2, paddingHorizontal: 7 }}>
-                            <Text numberOfLines={1} style={nbText.hand(14, bg)}>{t(labelKey)}</Text>
-                          </View>
-                          <Text style={[nbText.body(10.5), { flex: 1, minWidth: 0 }]}>{t(guideKey)}</Text>
-                        </View>
-                      ))}
-                      <Text style={nbText.body(10, nb.soft)}>{t('lab.pipsHelp', { mastered: t('lab.mastered') })}</Text>
-                    </View>
-                  </Collapsible>
-                </View>
               </NbPaper>
 
               {/* Three counts on plain paper. The handoff fills none of them — a coloured
@@ -385,7 +356,6 @@ export default function Lab() {
                 </View>
                 <Text style={{ fontFamily: nbFonts.hand, fontSize: 17.6, color: C }}>{toast.next}</Text>
               </View>
-              <Text style={{ fontFamily: nbFonts.body, fontSize: 11, color: nb.soft, marginTop: 6, textAlign: 'center' }}>{toast.blurb}</Text>
             </View>
           </Shadowed>
         </View>
@@ -531,7 +501,6 @@ function PhraseCard({ card, onGrade }: { card: ReviewCard; onGrade: (id: string,
                 <View style={{ marginTop: 8, paddingTop: 8, borderTopWidth: 1, borderTopColor: 'rgba(62,54,43,.16)' }}>
                   <Text style={nbText.hand(13, nb.soft)}>{t('lab.theySaid')}</Text>
                   <Text style={[nbText.body(11.5), { marginTop: 2 }]}>{ctx.npc}</Text>
-                  <Text style={[nbText.hand(13, nb.soft), { marginTop: 3 }]}>{t('lab.andYouAnswered')}</Text>
                 </View>
               )}
             </NbMemo>

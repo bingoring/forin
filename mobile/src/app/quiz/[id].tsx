@@ -183,11 +183,9 @@ function SentenceQuiz({ quiz, onExit, onComplete, progress }: { quiz: NonNullabl
         </View>
       </NbPaper>
 
-      {/* The word chips. Written label, because it names what to do rather than what
-          this is: 낱말 칩 — 누르면 빈칸에 붙어요. */}
+      {/* The word chips — no label above them; they are the only thing that can fill the blanks. */}
       <View style={{ marginTop: 18 }}>
-        <Text style={nbText.hand(15, nb.soft)}>{t('quiz.wordChips')}</Text>
-        <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 9, marginTop: 8 }}>
+        <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 9 }}>
           {tiles.map((tile, ti) => (
             <WordTile key={ti} word={tile.word} used={usedTiles.has(ti)} rot={ti % 2 ? 0.8 : -0.8} onPress={() => placeTile(ti)} />
           ))}

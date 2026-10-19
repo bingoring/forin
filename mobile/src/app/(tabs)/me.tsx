@@ -6,7 +6,7 @@ import { useCallback, useState } from 'react';
 import { ActivityIndicator, Alert, Pressable, ScrollView, Text, View , useWindowDimensions } from 'react-native';
 import { useFocusEffect, useRouter } from 'expo-router';
 import { NbIcon } from '@/components/nb/NbIcon';
-import { NbButton, NbGauge, NbMark, NbPaper, NbStamp, NbTag, nbText } from '@/components/nb/NbUI';
+import { NbButton, NbGauge, NbPaper, NbStamp, NbTag, nbText } from '@/components/nb/NbUI';
 import { RULE_COLOR, RULE_H, nb, nbFonts } from '@/theme/nb';
 import { PixelButton } from '@/components/PixelButton';
 import { PixelChip } from '@/components/PixelChip';
@@ -195,7 +195,7 @@ export default function Me() {
   if (state !== 'ok' || !progress) {
     return (
       <View style={{ flex: 1, backgroundColor: nb.paper, alignItems: 'center', justifyContent: 'center', gap: 12, padding: 24 }}>
-        {state === 'loading' ? <ActivityIndicator color={C} /> : <Text style={{ fontFamily: nbFonts.body, fontSize: typeScale.body, color: nb.soft, textAlign: 'center' }}>프로필을 불러오지 못했어요. (로그인·서버 확인)</Text>}
+        {state === 'loading' ? <ActivityIndicator color={C} /> : <Text style={{ fontFamily: nbFonts.body, fontSize: typeScale.body, color: nb.soft, textAlign: 'center' }}>{t('me.loadFailed')}</Text>}
       </View>
     );
   }
@@ -513,35 +513,6 @@ export default function Me() {
           </View>
         </View>
 
-        {/* review lab teaser → review tab */}
-        <Pressable onPress={() => router.push('/lab')}>
-          <NbPaper rot={-0.5} style={{ padding: 14, gap: 10 }}>
-              <View style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 10 }}>
-                <NbPaper rot={-2} style={{ width: 40, height: 40, alignItems: 'center', justifyContent: 'center' }}>
-                  <NbIcon name="lab" size={21} />
-                </NbPaper>
-                <View style={{ flex: 1 }}>
-                  <Text style={{ fontFamily: nbFonts.hand, fontSize: 18.9, color: C }}>리뷰랩 · 오답노트</Text>
-                  <Text style={{ fontFamily: nbFonts.body, fontSize: 11, color: nb.ink, marginTop: 4, lineHeight: 16 }}>AI가 교정한 문장이 <Text style={{ fontFamily: nbFonts.hand }}>{t('lab.likeALocal')}</Text> 카드로 변환됐어요.</Text>
-                </View>
-              </View>
-              {/* One card, as it appears in the lab: struck out in red pen, then the
-                  correction under a highlighter. */}
-              <View style={{ borderWidth: 1.3, borderStyle: 'dashed', borderColor: 'rgba(62,54,43,.25)', borderRadius: 3, paddingVertical: 8, paddingHorizontal: 10 }}>
-                <Text style={[nbText.body(11, nb.soft), { textDecorationLine: 'line-through', textDecorationColor: nb.red }]}>I want to ask about your pain.</Text>
-                <View style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 5, marginTop: 3 }}>
-                  <Text style={[nbText.hand(14, nb.red), { transform: [{ rotate: '-4deg' }] }]}>{'\u2192'}</Text>
-                  <NbMark textStyle={{ fontFamily: nbFonts.bodyMid, fontSize: 12 }}>Can you tell me about your pain?</NbMark>
-                </View>
-              </View>
-              <View style={{ alignItems: 'flex-end' }}>
-                <NbButton variant="yellow" size="sm" iconRight="chevronRight" onPress={() => router.push('/lab')}>
-                  {t('me.openLab')}
-                </NbButton>
-              </View>
-          </NbPaper>
-        </Pressable>
-
         {/* 언어 — UI 언어와 배우는 언어는 별개 축이다(R1). UI는 여기서 바꾸고,
             배우는 언어는 온보딩에서 고른 나라가 정하므로 읽기 전용으로 보여준다(R3). */}
         <View style={{ marginTop: space.sm }}>
@@ -557,9 +528,6 @@ export default function Me() {
               >
                 <View style={{ flex: 1 }}>
                   <Text style={{ fontFamily: nbFonts.hand, fontSize: 17.6, color: C }}>{t('settings.language.appTitle')}</Text>
-                  <Text style={{ fontFamily: nbFonts.body, fontSize: 10, color: nb.soft, marginTop: 2 }}>
-                    {t('settings.language.appSubOn', { name: LOCALE_META[locale].name })}
-                  </Text>
                 </View>
                 <Text numberOfLines={1} style={nbText.hand(16)}>{LOCALE_META[locale].name}</Text>
                 <NbIcon name="chevronRight" size={15} color={nb.soft} />
@@ -602,9 +570,6 @@ export default function Me() {
             >
               <View style={{ flex: 1 }}>
                 <Text style={{ fontFamily: nbFonts.hand, fontSize: 17.6, color: C }}>{t('settings.sound.title')}</Text>
-                <Text style={{ fontFamily: nbFonts.body, fontSize: 10, color: nb.soft, marginTop: 2 }}>
-                  {sfxOn ? t('settings.sound.on') : t('settings.sound.off')}
-                </Text>
               </View>
               {/* An INK toggle, as the handoff draws it: a pen-outlined slot with a solid
                   block in it. No RN Switch anywhere in this app, and a platform switch
@@ -658,7 +623,6 @@ export default function Me() {
             >
               <View style={{ flex: 1 }}>
                 <Text style={{ fontFamily: nbFonts.hand, fontSize: 17.6, color: C }}>{t('settings.account.signOut')}</Text>
-                <Text style={{ fontFamily: nbFonts.body, fontSize: 10, color: nb.soft, marginTop: 2 }}>{t('settings.account.signOutSub')}</Text>
               </View>
               {signingOut
                 ? <ActivityIndicator color={nb.ink} />

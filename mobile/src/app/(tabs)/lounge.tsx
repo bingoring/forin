@@ -219,9 +219,6 @@ export default function Lounge() {
             <Text style={[nbText.hand(17), { textAlign: 'center' }]}>
               {posts.length === 0 ? t('lounge.empty') : t('lounge.emptyFiltered')}
             </Text>
-            <Text style={[nbText.hand(14, nb.soft), { textAlign: 'center' }]}>
-              {posts.length === 0 ? t('lounge.emptyHint') : t('lounge.emptyFilteredHint')}
-            </Text>
           </View>
         }
         ListFooterComponent={
@@ -257,9 +254,9 @@ export default function Lounge() {
                 {reported.has(menuFor.id) ? t('lounge.reported') : t('lounge.report')}
               </NbButton>
             )}
-            <Text style={[nbText.body(10.5, nb.soft), { textAlign: 'center' }]}>
-              {menuFor.mine ? t('lounge.deleteNote') : t('lounge.reportNote')}
-            </Text>
+            {!menuFor.mine && (
+              <Text style={[nbText.body(10.5, nb.soft), { textAlign: 'center' }]}>{t('lounge.reportNote')}</Text>
+            )}
           </View>
         )}
       </BottomSheet>

@@ -279,7 +279,7 @@ export function PassportIdPage({ lang, job, ava, name, nameDone, onPickLang, onP
         </Picker>
       )}
       {picker === 'ava' && (
-        <Picker title={t('onb.id.pickAva')} hint={t('onb.id.avaHint')}>
+        <Picker title={t('onb.id.pickAva')}>
           <View style={{ flexDirection: 'row', flexWrap: 'wrap', marginTop: 12 }}>
             {avaOpts.map((p, i) => {
               const on = ava === p;

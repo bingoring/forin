@@ -46,7 +46,6 @@ export function SessionSpeechReviewCard({
       ) : (
         <View style={styles.empty}>
           <Text style={[nbText.hand(16), { textAlign: 'center' }]}>{t('speak.empty')}</Text>
-          <Text style={[nbText.body(11, nb.soft), { textAlign: 'center', marginTop: 3 }]}>{t('speak.emptyHint')}</Text>
         </View>
       )}
 
