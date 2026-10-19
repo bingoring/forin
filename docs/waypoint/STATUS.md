@@ -6,6 +6,13 @@
 **Decisions (audit):** [DECISIONS.md](DECISIONS.md)
 **Last updated:** 2026-10-17
 
+> 🎨 **v49 홈 v47 풍 맞추기 구현(2026-10-19).** 핸드오프 v49(개정 지시서 응답) 1:1 — 공통 신호 키트 `components/nb/V48.tsx`(Go·GoBar·Ring·Done·Locked·IconDot·NewDot·Pill·Chev,
+> breathe·press·lift·pop·stamp·wiggle·tap 참조 키프레임 대조·reduce motion), 홈 '이어서' 바를 키트로 합침. 일터(G Go 원·연필 원·바인더 들림, E 링·도장·색 칩 범례, H 후광·GoBar),
+> 리뷰랩(GoBar 히어로·알약 2·얼굴 등급 버튼·카드 기울며 넘어감·Chev 맥락), 휴게실(2×2 타일·노란 점 5칸·Locked 칩·🏆), 나(홈 아바타 원·불꽃 알약·같은 원 격자·IconDot 설정 행).
+> **리뷰랩 '복습 대기 = 저장' 버그 원인 수정** — 서버 `GET /me/review`에 덱 총수·마스터 수(`ReviewRepo.CountCards`) 추가 → server 배포 필요. 사용자 결정으로 입구 없는 화면
+> (상황판·루트·나이트·내부/엘리베이터·온보딩 옛 페이지) 삭제·나 › 공개 숨김. 지도 엔진 `src/map/**` 70파일 약 1.46만 줄은 고아로 남김(삭제 결정 대기). Build Spec `copy-declutter-v47/v49-build-spec.md`.
+> 검증: tsc 0·jest 177 스위트(간헐 1 단독 통과)·go test·시뮬레이터 4화면.
+
 > 🧹 **v47 설명 배제 3차(2026-10-19, 사용자 요청).** 갱신된 v47 핸드오프 반입(`0bf3b66` — 2차 정리 30곳·진입점 재배치·서가 공통 필수 행 제거) 후,
 > 전 화면 감사 3건(일터·학습 / 라운지·리뷰랩·나 / 온보딩·게임·기타) → 앱 적용: 설명 키 74개 지움·약 45개 줄임(4개 언어), '다시 듣기 · n회' 되살림(1차에서 같이 사라짐),
 > 온보딩 목적지 뒤로 버그·모범답안 오류 표시 버그 수정, 고아 키 정리. tsc 0·jest 177 스위트 통과, 시뮬레이터 리뷰랩 확인. 브랜치 `fix/copy-declutter-v47`.
