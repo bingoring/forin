@@ -25,14 +25,14 @@ import { CurlSweep, PageCurl } from '@/components/nb/PageCurl';
 import { SocialSignIn } from '@/components/auth/SocialSignIn';
 import { RULE_COLOR, RULE_H, TOP_INSET, cover, nb, nbFonts } from '@/theme/nb';
 import { isDestinationReady } from '@/data/destinations';
-import { DESTS, JOBS, LEVELS } from '@/data/onboardingChoices';
+import { DESTS, LEVELS } from '@/data/onboardingChoices';
 import { keyframeInputRange, keyframeSegments } from '@/data/keyframes';
 import { clearDraft, loadDraft, passportStep, saveDraft } from '@/lib/onboardingDraft';
 import { saveAvatar } from '@/lib/nbAvatar';
 import { type AvatarSpec } from '@/data/nbAvatar';
 import { PassportIdPage, ID_LANGS, ID_JOBS, type IdLang, type IdJob } from '@/components/onboarding/PassportIdPage';
 import { syncOnboarded } from '@/lib/auth';
-import { LOCALES, LOCALE_META, getLocale, localeWasChosen, setLocale, useT, type Locale } from '@/i18n';
+import { getLocale, setLocale, useT, type Locale } from '@/i18n';
 
 /** Passport green and its gold. Only this screen uses them — a passport is not a page of
  *  the notebook, it is the object the notebook came in. */
@@ -43,9 +43,8 @@ const GOLD_SOFT = cover.goldSoft;
 const CREAM_TEXT = cover.cream;
 
 type Step =
-  // 'id' is the v36 여권 발급 page (language·job·avatar·name in one). 'lang'/'job' are the
-  // old separate pages it replaced — kept defined but no longer reached.
-  | 'cover' | 'id' | 'lang' | 'job' | 'dest' | 'closing' | 'flight'
+  // 'id' is the v36 여권 발급 page (language·job·avatar·name in one).
+  | 'cover' | 'id' | 'dest' | 'closing' | 'flight'
   | 'immigration' | 'approved' | 'commute' | 'flightBack'
   /** A returning learner: the cover closes and the splash takes over. */
   | 'welcomeBack';
@@ -450,10 +449,8 @@ export default function PassportRoute() {
   // Resting at 1 = "no slide in progress", so the live page sits where it was laid out.
   const slide = useMemo(() => new Animated.Value(1), []);
   // Pre-answered from whatever the app is already showing — which is the device's
-  // language on a first launch. `touchedLang` is only for the "matched to your device"
-  // note: once they have chosen, saying it would be wrong.
+  // language on a first launch.
   const [lang, setLang] = useState<Locale>(getLocale());
-  const [touchedLang, setTouchedLang] = useState(localeWasChosen());
   const [job, setJob] = useState<string | null>(null);
   const [dest, setDest] = useState<string | null>(null);
   const [lvl, setLvl] = useState<string | null>(null);
@@ -533,7 +530,6 @@ export default function PassportRoute() {
 
   const pickLang = (code: Locale) => {
     setLang(code);
-    setTouchedLang(true);
     // Applied immediately, not at the end: the rest of the journey is written in it, and
     // a language that only takes effect after onboarding would have the learner answering
     // three questions in a language they just rejected.
@@ -668,17 +664,6 @@ export default function PassportRoute() {
     </Page>
   );
 
-  /**
-   * Which language the app speaks.
-   *
-   * FIRST, before the job: everything after this page is written in the answer, and asking
-   * in one language then switching mid-journey reads as the app changing its mind. It
-   * arrives pre-answered — the app already opens in the device's language (i18n/store:
-   * stored choice → device → ko) — so this page is a confirmation, not a blank.
-   *
-   * Built like the destination page, minus the stamp: a stamp means a border was crossed,
-   * and choosing a language is not that.
-   */
   // v36 여권 발급 — one ID page fills language·job·avatar·name, then 다음 장 넘기기 → 목적지.
   const idPage = (
     <Page>
@@ -695,75 +680,6 @@ export default function PassportRoute() {
         onName={(n, done) => { setName(n); setNameDone(done); if (done) void saveDraft({ name: n }); }}
         onNext={() => go('dest')}
       />
-    </Page>
-  );
-
-  const langPage = (
-    <Page>
-      <Gutter />
-      <BackChip onPress={() => goBack('cover')} />
-      <Header title={t('onb.lang.title')} sub={t('onb.lang.sub')} />
-      <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 13, paddingTop: 16, paddingLeft: 34, paddingRight: 24 }}>
-        {LOCALES.map((code, i) => {
-          const meta = LOCALE_META[code];
-          const on = lang === code;
-          return (
-            <Pressable key={code} onPress={() => pickLang(code)} style={{ width: (width - 58 - 13) / 2 }}>
-              <NbPaper rot={i % 2 ? 0.5 : -0.45} style={[
-                { paddingTop: 14, paddingBottom: 11, paddingHorizontal: 6, alignItems: 'center', opacity: on ? 1 : 0.7 },
-                on ? chosen : null,
-              ]}>
-                <Text style={[nbText.hand(19), { lineHeight: 22 }]}>{meta.name}</Text>
-                <Text numberOfLines={1} style={[nbText.body(9.5, nb.soft), { marginTop: 2 }]}>{meta.sub}</Text>
-                {/* Said only on the one the device chose, and only until the learner
-                    picks: it explains why this card came pre-selected. */}
-                {on && !touchedLang && (
-                  <View style={{ marginTop: 5 }}><NbTag color={nb.blue} rot={-1.5}>{t('onb.lang.detected')}</NbTag></View>
-                )}
-              </NbPaper>
-            </Pressable>
-          );
-        })}
-      </View>
-      <View style={{ position: 'absolute', left: 34, right: 24, bottom: 34 }}>
-        <Dots at={1} />
-        <View style={{ marginTop: 13 }}>
-          <NbButton variant="ink" size="lg" full iconRight="chevronRight" onPress={() => go('job')}>{t('onb.lang.next')}</NbButton>
-        </View>
-      </View>
-    </Page>
-  );
-
-  const jobPage = (
-    <Page>
-      <Gutter />
-      <BackChip onPress={() => goBack('lang')} />
-      <Header title={t('onb.job.title')} />
-      <View style={{ paddingTop: 2, paddingLeft: 34, paddingRight: 24 }}>
-        {JOBS.map((j) => (
-          <Pressable key={j.code} onPress={() => j.ready && pickJob(j.code)} disabled={!j.ready}>
-            <NbPaper rot={j.rot} style={[
-              { marginTop: 11, paddingVertical: 12, paddingHorizontal: 14, flexDirection: 'row', alignItems: 'center', gap: 12, opacity: j.ready ? 1 : 0.5 },
-              job === j.code ? chosen : null,
-            ]}>
-              <NbIcon name={j.icon} size={28} />
-              <View style={{ flex: 1, minWidth: 0 }}>
-                {job === j.code
-                  ? <NbMark textStyle={{ fontSize: 18.5 }}>{t(j.nameKey)}</NbMark>
-                  : <Text style={[nbText.hand(18.5), { lineHeight: 20 }]}>{t(j.nameKey)}</Text>}
-                <Text style={[nbText.body(10.5, nb.soft), { marginTop: 2 }]}>{t(j.subKey)}</Text>
-              </View>
-              {job === j.code ? <NbCheck done /> : j.ready ? <NbCheck /> : <NbTag color={nb.soft} rot={2}>{t('onb.soon')}</NbTag>}
-            </NbPaper>
-          </Pressable>
-        ))}
-      </View>
-      <View style={{ position: 'absolute', left: 34, right: 24, bottom: 34 }}>
-        <Dots at={2} />
-        <View style={{ marginTop: 13, opacity: job ? 1 : 0.45 }}>
-          <NbButton variant="ink" size="lg" full iconRight="chevronRight" disabled={!job} onPress={() => go('dest')}>{t('onb.job.next')}</NbButton>
-        </View>
-      </View>
     </Page>
   );
 
@@ -915,7 +831,7 @@ export default function PassportRoute() {
   );
 
   const PAGES: Record<Step, React.ReactNode> = {
-    cover, id: idPage, lang: langPage, job: jobPage, dest: destPage, closing: destPage, flight: flight(false),
+    cover, id: idPage, dest: destPage, closing: destPage, flight: flight(false),
     immigration: immigrationPage(false), approved, commute, flightBack: flight(true),
     // The cover again, with the back cover coming over it — see the render below.
     welcomeBack: cover,

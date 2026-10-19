@@ -59,7 +59,8 @@ export type NbIconName =
   | 'calendar'
   | 'lock'
   | 'pencil'
-  | 'play';
+  | 'play'
+  | 'run';
 
 export function NbIcon({ name, size = 20, color = nb.ink }: {
   name: NbIconName | string;
@@ -230,6 +231,10 @@ export function NbIcon({ name, size = 20, color = nb.ink }: {
     // own colour so a dimmed button dims it too.
     play: (
       <G><Path {...P} d="M7.5 5.5 L18 12 L7.5 18.5 Z"/></G>
+    ),
+    // v48 휴게실 게임 타일의 달리는 사람 — forin-notebook.jsx L36 `run`, 같은 path.
+    run: (
+      <G><Circle {...P} cx="15" cy="5.3" r="2.1" fill={nb.wash.red}/><Path {...P} d="M8 10.5 L13 9 L14.5 12.5 L11.5 15 L13 19.5 M14.5 12.5 L18 14.5 M11.5 15 L7.5 17.5 M5.5 12.5 L8.8 11.8"/></G>
     ),
   };
   return (

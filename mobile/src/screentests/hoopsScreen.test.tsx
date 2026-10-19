@@ -55,5 +55,6 @@ test('the ready screen shows the tap prompt and the best score before play', asy
   await act(async () => { tree.unmount(); });
 
   expect(all).toContain('탭해서 시작'); // ready prompt
-  expect(all).toContain('최고 26'); // best from the mocked store
+  expect(all).toContain('26'); // best from the mocked store — 🏆 아이콘 + 숫자(v49)
+  expect(all).not.toContain('최고');
 });

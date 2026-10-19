@@ -53,6 +53,8 @@ export type MotionSpec = {
   origin?: string;
   /** transform 트랙은 CSS 함수 순서대로. opacity는 어디에 있어도 된다. */
   tracks: MotionTrack[];
+  /** `animation-delay` (ms). 지연 동안은 0% 프레임에 머문다(`both`). */
+  delay?: number;
 };
 
 const T = (prop: MotionProp, stops: number[], values: (number | string)[]): MotionTrack => ({ prop, stops, values });
@@ -227,7 +229,7 @@ export function useNbMotion(spec: MotionSpec, opts: { auto?: boolean; onEnd?: ()
       return;
     }
     values.forEach((v) => v.setValue(0));
-    const anim = Animated.parallel(
+    const run = Animated.parallel(
       s.tracks.map((t, i) => Animated.sequence(
         keyframeSegments(s.duration, t.stops).map((seg) => Animated.timing(values[i], {
           toValue: seg.toValue,
@@ -237,6 +239,7 @@ export function useNbMotion(spec: MotionSpec, opts: { auto?: boolean; onEnd?: ()
         })),
       )),
     );
+    const anim = s.delay ? Animated.sequence([Animated.delay(s.delay), run]) : run;
     running.current = anim;
     anim.start(({ finished }) => {
       if (running.current === anim) running.current = null;
@@ -378,4 +381,85 @@ export function nbPressTransform(p: Animated.Value, rot: number) {
     { translateY: p.interpolate({ inputRange: [0, 1], outputRange: [0, NB_PRESS.dy] }) },
     { rotate: p.interpolate({ inputRange: [0, 1], outputRange: [`${rot}deg`, '0deg'] }) },
   ];
+}
+
+// ── v48 신호 키트의 모션 ─────────────────────────────────────────────────────
+//
+// 정본: docs/dlc/projects/forin/inputs/design-handoff_v49/reference/forin-notebook-v48-kit.jsx
+//   (`#v48-kit-css` — v48-breathe · v48-pop · v48-stamp · v48-wiggle · v48-tap · .v48-press · .v48-lift)
+// 값은 그 CSS 그대로이고, nbMotion.test가 그 파일을 직접 읽어 대조한다.
+// 기존 `.nb-press`(60ms · 1.5,2 · 0°)와 값이 다르다 — 사용처는 그대로 두고 키트만 이 값을 쓴다.
+
+/** `.v48-pop` — `v48-pop .32s cubic-bezier(.3,.7,.3,1) both`: 0% translateY(12px) opacity 0 → 100% none. */
+/** `.v48-wiggle` — `v48-wiggle .7s ease-in-out .4s 1 both`. */
+/** `.v48-tap` — `v48-tap 1s ease-in-out infinite`: 0%,100% translateY(0) · 50% translateY(5px) scale(.94). */
+export const V48_MOTION = {
+  pop: {
+    duration: 320, easing: Easing.bezier(0.3, 0.7, 0.3, 1),
+    tracks: [T('translateY', [0, 1], [12, 0]), T('opacity', [0, 1], [0, 1])],
+  },
+  wiggle: {
+    duration: 700, easing: CSS_EASE.easeInOut, delay: 400,
+    tracks: [T('rotate', [0, 0.2, 0.4, 0.6, 0.8, 1], ['0deg', '-14deg', '12deg', '-8deg', '4deg', '0deg'])],
+  },
+  tap: {
+    duration: 1000, easing: CSS_EASE.easeInOut,
+    tracks: [T('translateY', [0, 0.5, 1], [0, 5, 0]), T('scale', [0, 0.5, 1], [1, 0.94, 1])],
+  },
+} satisfies Record<string, MotionSpec>;
+
+/** `.v48-done` — `v48-stamp .35s ease-out both`: 0% scale(1.15) rotate(var(--r)) → 100% scale(1) rotate(var(--r)).
+ *  `--r`은 요소마다 달라서(Done의 rot) 회전 트랙이 그 값으로 서 있는다. */
+export function stampSpec(rot: number): MotionSpec {
+  return {
+    duration: 350, easing: CSS_EASE.easeOut,
+    tracks: [T('scale', [0, 1], [1.15, 1]), T('rotate', [0, 1], [`${rot}deg`, `${rot}deg`])],
+  };
+}
+
+/** `v48-breathe 2.4s ease-in-out infinite` — 0%,100% 후광 0 · 50% `0 0 0 7px rgba(249,227,123,.55)`. */
+export const V48_BREATHE = { duration: 2400, easing: CSS_EASE.easeInOut, spread: 7, color: 'rgba(249,227,123,.55)' } as const;
+/** `.v48-go` 의 하드 그림자 — `2px 3px 0 rgba(62,54,43,.25)`. */
+export const V48_GO_SHADOW = { dx: 2, dy: 3, color: 'rgba(62,54,43,.25)' } as const;
+/** `.v48-press:active{translate(2px,3px) rotate(-1deg)}` `transition: transform .12s` */
+export const V48_PRESS = { duration: 120, easing: CSS_EASE.ease, dx: 2, dy: 3, rot: -1 } as const;
+/** `.v48-lift:active{translateY(-3px) rotate(-2deg)}` `transition: transform .14s` */
+export const V48_LIFT = { duration: 140, easing: CSS_EASE.ease, dy: -3, rot: -2 } as const;
+
+/** 반복 모션 — breathe(2.4s) · tap(1s). 0 → 1(절반) → 0 을 계속 돈다.
+ *  모션 줄이기가 켜져 있으면 돌지 않고 0(쉬는 값)에 선다. 키프레임 구간마다 이징을 다시 거는
+ *  CSS처럼 절반씩 따로 건다. */
+export function useV48Loop(kind: 'breathe' | 'tap'): Animated.Value {
+  const reduce = useReduceMotion();
+  const [p] = useState(() => new Animated.Value(0));
+  useEffect(() => {
+    p.setValue(0);
+    if (reduce) return;
+    const total = kind === 'breathe' ? V48_BREATHE.duration : V48_MOTION.tap.duration;
+    const half = (to: number) => Animated.timing(p, { toValue: to, duration: total / 2, easing: CSS_EASE.easeInOut, useNativeDriver: true });
+    const loop = Animated.loop(Animated.sequence([half(1), half(0)]));
+    loop.start();
+    return () => loop.stop();
+  }, [kind, p, reduce]);
+  return p;
+}
+
+/**
+ * 눌림 · 들림 — `.v48-press` / `.v48-lift` 의 transform 전환. `p`(0 놓임 · 1 눌림)가 transform을 끈다.
+ * 놓임 회전 `rest`는 눌리면 CSS가 transform 전체를 바꾸므로(`!important`) 눌림 값으로 간다.
+ */
+export function useV48Press(kind: 'press' | 'lift' = 'press', rest = 0) {
+  const spec = kind === 'press' ? V48_PRESS : V48_LIFT;
+  const [p] = useState(() => new Animated.Value(0));
+  const to = (toValue: number) => {
+    if (reduceMotion) { p.setValue(toValue); return; }
+    Animated.timing(p, { toValue, duration: spec.duration, easing: spec.easing, useNativeDriver: true }).start();
+  };
+  const dx = kind === 'press' ? V48_PRESS.dx : 0;
+  const transform = [
+    { translateX: p.interpolate({ inputRange: [0, 1], outputRange: [0, dx] }) },
+    { translateY: p.interpolate({ inputRange: [0, 1], outputRange: [0, kind === 'press' ? V48_PRESS.dy : V48_LIFT.dy] }) },
+    { rotate: p.interpolate({ inputRange: [0, 1], outputRange: [`${rest}deg`, `${spec.rot}deg`] }) },
+  ];
+  return { p, transform, onPressIn: () => to(1), onPressOut: () => to(0) };
 }

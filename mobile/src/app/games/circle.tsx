@@ -184,7 +184,12 @@ export default function CircleGame() {
             <Text style={nbText.mono(14, remain < 2 ? nb.red : nb.ink)}>{remain.toFixed(1)}</Text>
           </View>
         )}
-        {best != null && <Text style={nbText.mono(12, nb.soft)}>{t('games.hoopsBest', { n: best })}</Text>}
+        {best != null && (
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 3 }}>
+            <NbIcon name="trophy" size={14} />
+            <Text style={nbText.mono(12, nb.ink)}>{best}</Text>
+          </View>
+        )}
       </View>
 
       <Text style={[nbText.hand(19), { textAlign: 'center', marginTop: 10, paddingHorizontal: 20 }]}>{t('games.circleHint')}</Text>

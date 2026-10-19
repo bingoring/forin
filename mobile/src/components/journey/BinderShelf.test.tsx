@@ -166,7 +166,7 @@ describe('BinderShelf', () => {
     expect(onOpen).not.toHaveBeenCalled();
 
     const resume = tree.root.findAll(
-      (n) => typeof n.props?.onPress === 'function' && texts(n).includes('이어서'),
+      (n) => typeof n.props?.onPress === 'function' && (texts(n).includes('이어서') || n.props?.accessibilityLabel === '이어서'),
       { deep: true },
     )[0];
     expect(resume).toBeTruthy();

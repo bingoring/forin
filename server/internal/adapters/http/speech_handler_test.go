@@ -262,6 +262,10 @@ func (f *fakeReviewRepo) DueCards(ctx context.Context, userID string, today time
 	return nil, nil
 }
 
+func (f *fakeReviewRepo) CountCards(ctx context.Context, userID string) (int, int, error) {
+	return 0, 0, nil
+}
+
 func (f *fakeReviewRepo) GetCardForUser(ctx context.Context, userID, cardID string) (*progress.ReviewCard, error) {
 	if f.owned[cardID] != userID {
 		return nil, nil

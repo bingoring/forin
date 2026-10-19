@@ -9,7 +9,7 @@ jest.mock('react-native-worklets', () => ({
 
 import { AccessibilityInfo, Animated, View } from 'react-native';
 import { act, create } from 'react-test-renderer';
-import { NbEnter, useNbPress, useNbShake, useNbTear } from './nbMotion';
+import { NbEnter, useNbMotion, useNbPress, useNbShake, useNbTear, useV48Loop, useV48Press, V48_MOTION, stampSpec } from './nbMotion';
 import { trackMounts } from '../../testing/mountRegistry';
 
 const track = trackMounts();
@@ -63,4 +63,34 @@ test('entrances land on their last frame, shakes and presses do not travel', asy
   expect(now(t2.root.findByType(Animated.View)).translateX).toBe(0);
   act(() => press.onPressIn());
   expect((press.p as unknown as { __getValue(): number }).__getValue()).toBe(1);
+});
+
+test('v48: the repeating motions (breathe · tap) stand still; one-shots land on their last frame', async () => {
+  const timing = jest.spyOn(Animated, 'timing');
+  let breathe!: Animated.Value;
+  let tap!: Animated.Value;
+  let press!: ReturnType<typeof useV48Press>;
+  function Kit() {
+    breathe = useV48Loop('breathe');
+    tap = useV48Loop('tap');
+    press = useV48Press('press');
+    const stamp = useNbMotion(stampSpec(-10), { auto: true }).style;
+    const wiggle = useNbMotion(V48_MOTION.wiggle, { auto: true }).style;
+    return <><Animated.View style={stamp} /><Animated.View style={wiggle} /></>;
+  }
+  const tree = await mount(<Kit />);
+  const val = (v: Animated.Value) => (v as unknown as { __getValue(): number }).__getValue();
+  // Loops: never started, resting value.
+  expect(val(breathe)).toBe(0);
+  expect(val(tap)).toBe(0);
+  expect(timing).not.toHaveBeenCalled();
+  // One-shots: the stamp is at 1 / rotation kept, the wiggle at rest.
+  const [stamp, wiggle] = tree.root.findAllByType(Animated.View);
+  expect(now(stamp)).toMatchObject({ scale: 1, rotate: '-10deg' });
+  expect(now(wiggle)).toMatchObject({ rotate: '0deg' });
+  // Press goes straight to its value, no 120ms travel.
+  act(() => press.onPressIn());
+  expect(val(press.p)).toBe(1);
+  expect(timing).not.toHaveBeenCalled();
+  timing.mockRestore();
 });

@@ -84,6 +84,8 @@ const mockBulk = Array.from({ length: 50 }, (_, i) => ({
 // the jest.mock factory below is hoisted above them all and may only close over names
 // with that prefix.
 const mockPending = { on: false };
+// Flipped by the pills test: an older server that sends no deck totals.
+const mockNoDeckTotals = { on: false };
 const mockSpeak = {
   total: 128,
   low: 12,
@@ -95,10 +97,14 @@ const mockModels = { total: 34, groups: [], more: 30 };
 
 jest.mock('@/api/client', () => ({
   api: {
-    reviewDue: async () => {
-      if (mockManyCards.on) return mockBulk.map((c) => ({ ...c }));
-      if (mockUniform.on) return [{ ...mockCard }, { ...mockCard, id: 'r9' }];
-      return [{ ...mockCard }, { ...mockCardIcu }, { ...mockCardTip }];
+    // The whole deck's counts ride on the same read as the due page (`saved`/`mastered`).
+    // 14 saved of which 6 mastered, against 3 due: the pills must show the DECK, never the
+    // length of the due list (which is what 저장 used to print).
+    reviewOverview: async () => {
+      const cards = mockManyCards.on ? mockBulk.map((c) => ({ ...c }))
+        : mockUniform.on ? [{ ...mockCard }, { ...mockCard, id: 'r9' }]
+          : [{ ...mockCard }, { ...mockCardIcu }, { ...mockCardTip }];
+      return mockNoDeckTotals.on ? { cards } : { cards, saved: 14, mastered: 6 };
     },
     // A promise that never settles is what "still in flight" actually is. Returning
     // undefined or rejecting would test a different state.
@@ -129,6 +135,9 @@ function texts(root: ReactTestInstance): string[] {
 
 /** Trees mounted by this file, torn down in afterEach. */
 const mounted: ReturnType<typeof create>[] = [];
+
+/** The daily-review hero (the GoBar) — present when something is due. */
+const hasHero = (root: ReactTestInstance) => root.findAll((n) => n.props?.testID === 'lab-hero', { deep: true }).length > 0;
 
 /** Renders the tab with every summary already resolved. */
 async function mount() {
@@ -192,7 +201,7 @@ test('the three sections are one tab row, and 교정 노트 opens first', async 
   expect(out).toContain('말하기');
   expect(out).toContain('모범답안');
   // The default section's content — the daily-review hero — is on screen…
-  expect(out).toContain('잊어버리기 전에 다시 보기');
+  expect(hasHero(tree.root)).toBe(true);
   // …and the other two sections' are not. This is the half that a source-level
   // check cannot make: everything used to render at once.
   expect(out.some((x) => x.includes('가장 급한'))).toBe(false);
@@ -298,7 +307,7 @@ test('tapping 말하기 lands on the LIST, not a summary of it', async () => {
   // The list's own controls come with it — the sort dropdown opens on 낮은순.
   expect(out.some((x) => x === '낮은순')).toBe(true);
   // …and the 교정 노트 content is gone rather than merely scrolled past.
-  expect(out).not.toContain('잊어버리기 전에 다시 보기');
+  expect(hasHero(tree.root)).toBe(false);
   expect(out.some((x) => x.includes('Can you tell me about your pain?'))).toBe(false);
 });
 
@@ -307,34 +316,30 @@ test('tapping 모범답안 swaps again, and 교정 노트 comes back', async () 
   await act(async () => { tab(tree.root, '모범답안').props.onPress(); });
   // Again the list itself: a scenario group, not a block linking to one.
   expect(texts(tree.root).some((x) => x.includes('흉통 환자 트리아지'))).toBe(true);
-  expect(texts(tree.root)).not.toContain('잊어버리기 전에 다시 보기');
+  expect(hasHero(tree.root)).toBe(false);
   await act(async () => { tab(tree.root, '교정 노트').props.onPress(); });
   const back = texts(tree.root);
-  expect(back).toContain('잊어버리기 전에 다시 보기');
+  expect(hasHero(tree.root)).toBe(true);
   expect(back.some((x) => x.includes('Can you tell me about your pain?'))).toBe(true);
 });
 
-test('a card names the scene it came from without being tapped', async () => {
+test('a card folds its scene behind the Chev at the end of the source line', async () => {
   const tree = await mount();
-  // Scoped to the 맥락 HEADER, and that scoping is the whole test. Collapsible keeps
-  // its children mounted and clipped on purpose (it has to measure them to animate
-  // height), so the expanded content is in the tree whether or not it is on screen —
-  // a page-wide `toContain` here passes even with the scene line still hidden behind
-  // the chevron, which is exactly the assertion this replaced.
-  // v29 writes the scene as a pencil line with a pencil doodle instead of labelling it
-  // 맥락 — on paper the note IS the context, and a label saying so is chrome. The header
-  // is therefore found by the line it carries.
-  const header = tree.root.findAll(
-    (n) => typeof n.type === 'function' && n.props?.onPress !== undefined
-      && texts(n).some((x) => x.includes('통증 양상을 묻는 장면')),
-    { deep: true },
-  ).slice(-1)[0];
-  // v26 puts 맥락 at the top of the card body as a plain line: the corrected sentence
-  // means little without the situation that prompted it. The collapsed row used to
-  // show the scenario TITLE ("흉통 환자 트리아지") — the label of the scenario, not
-  // the scene the learner was in.
-  expect(texts(header)).toContain('흉통 환자에게 통증 양상을 묻는 장면');
-  expect(texts(header)).not.toContain('흉통 환자 트리아지');
+  // v48: the scene is no longer printed on every card. The source line (dept · kind) ends in
+  // a ⌄ and the pencil line is behind it — folded, it is not even mounted (the old Collapsible
+  // kept it mounted and clipped, and animated a HEIGHT).
+  const sources = tree.root.findAll((n) => n.props?.testID === 'lab-card-source' && typeof n.type !== 'string', { deep: true });
+  expect(sources.length).toBeGreaterThan(0);
+  expect(tree.root.findAll((n) => n.props?.testID === 'v48-chev', { deep: true }).length).toBeGreaterThan(0);
+  expect(texts(tree.root).some((x) => x.includes('통증 양상을 묻는 장면'))).toBe(false);
+  await act(async () => { sources[0].props.onPress(); });
+  // Unfolded: the pencil line arrives in a V48Pop.
+  expect(tree.root.findAll((n) => n.props?.testID === 'lab-card-ctx', { deep: true }).length).toBeGreaterThan(0);
+  expect(texts(tree.root).some((x) => x.includes('통증 양상을 묻는 장면'))).toBe(true);
+  // The scenario TITLE is not the line — the scene the learner was in is.
+  expect(texts(tree.root)).not.toContain('흉통 환자 트리아지');
+  await act(async () => { sources[0].props.onPress(); });
+  expect(texts(tree.root).some((x) => x.includes('통증 양상을 묻는 장면'))).toBe(false);
 });
 
 test('a tab whose count is still loading shows no number at all', async () => {
@@ -525,32 +530,95 @@ test('every section has exactly one tab row — the section tabs, never a nested
   expect(tabRows()).toBe(1);
 });
 
-// 교정 노트의 등급 버튼(다시/어려움/알맞음/쉬움)이 핸드오프처럼 색과 예상 간격을
-// 갖는지. 이전엔 색 없는 paper/ink 버튼이었고 간격도 없었다.
-test('each SRS grade is written in its own pen, with the interval it means', async () => {
+// v48: 등급 넷은 글자가 아니라 얼굴이다 — 찡그림·보통·웃음·신남 + 모노 간격. 이름은 접근성 라벨로만.
+test('each SRS grade is a face in its own pen, with the interval it means and no word on it', async () => {
   // eslint-disable-next-line @typescript-eslint/no-require-imports
   const { nb } = require('@/theme/nb') as typeof import('@/theme/nb');
-  const flat = (s: unknown): Record<string, unknown> => {
+  const flat = (x: unknown): Record<string, unknown> => {
     const out: Record<string, unknown> = {};
-    const walk = (x: unknown) => Array.isArray(x) ? x.forEach(walk) : x && typeof x === 'object' ? Object.assign(out, x) : undefined;
-    walk(s);
+    const walk = (y: unknown) => Array.isArray(y) ? y.forEach(walk) : y && typeof y === 'object' ? Object.assign(out, y) : undefined;
+    walk(x);
     return out;
   };
   const tree = await mount();
-  // '다시' appears in both the collapsible grade GUIDE and the button; collect every
-  // colour it is drawn in and require the button's pen among them.
-  const colours = (label: string): unknown[] => tree.root.findAll(
-    (n) => String(n.type) === 'Text' && n.children.length === 1 && n.children[0] === label,
-    { deep: true },
-  ).map((n) => flat(n.props.style).color);
-  expect(colours('다시')).toContain(nb.red);
-  expect(colours('알맞음')).toContain(nb.blue);
-  expect(colours('쉬움')).toContain(nb.green);
+  const btn = (g: string) => tree.root.findAll((n) => n.props?.testID === `grade-${g}` && typeof n.type !== 'string', { deep: true })[0];
+  const faces = (g: string) => btn(g).findAll((n) => String(n.props?.testID ?? '').startsWith('grade-face-'), { deep: true });
+  ['again', 'hard', 'good', 'easy'].forEach((g, i) => {
+    expect(btn(g)).toBeTruthy();
+    expect(faces(g).some((n) => n.props.testID === `grade-face-${i}`)).toBe(true);
+  });
+  expect(btn('again').props.accessibilityLabel).toBe('다시');
+  expect(btn('easy').props.accessibilityLabel).toBe('쉬움');
+  // The interval is the only text on a button, in mono, in the answer's pen.
+  const eta = (g: string, label: string) => {
+    const hit = btn(g).findAll((n) => String(n.type) === 'Text' && n.children[0] === label, { deep: true })[0];
+    expect(hit).toBeTruthy();
+    return flat(hit.props.style);
+  };
+  expect(eta('again', '<1분').color).toBe(nb.red);
+  expect(eta('good', '1일').color).toBe(nb.blue);
+  expect(eta('easy', '4일').color).toBe(nb.green);
+  expect(String(eta('hard', '10분').fontFamily)).toContain('Mono');
+  // No word on the button — the label is not drawn as text.
+  expect(texts(btn('again'))).toEqual(['<1분']);
+});
 
-  // …and the estimated next interval sits under each one.
+test('the hero is a GoBar with the day\'s card count stamped on the left', async () => {
+  const tree = await mount();
+  expect(hasHero(tree.root)).toBe(true);
+  const stamp = tree.root.findAll((n) => n.props?.testID === 'lab-hero-stamp', { deep: true })[0];
+  expect(texts(stamp)).toEqual(['오늘', '3장']);
+  // The aside count that used to sit in the title row is gone.
+  expect(texts(tree.root).some((x) => x.includes('오늘 복습할 것'))).toBe(false);
+});
+
+// The bug this replaces: 저장된 카드 and 복습 대기 both printed `cards.length` — the due list,
+// capped at 50 and due-only — and 마스터 counted pips on that same list. The deck's own
+// counts now come from the server.
+test('the pills are the DECK: 저장 and 마스터 come from the server, not from the due list', async () => {
+  const tree = await mount();
+  const pills = tree.root.findAll((n) => typeof n.type === 'string' && n.props?.testID === 'v48-pill', { deep: true });
+  expect(pills).toHaveLength(2);
+  expect(texts(pills[0])).toEqual(['14']);
+  expect(texts(pills[1])).toEqual(['6']);
+  // 3 cards are due; none of the three old MiniStat labels survives.
   const out = texts(tree.root);
-  expect(out).toContain('<1분');
-  expect(out).toContain('10분');
-  expect(out).toContain('1일');
-  expect(out).toContain('4일');
+  expect(out).not.toContain('복습 대기');
+  expect(out).not.toContain('저장된 카드');
+});
+
+test('a server that sends no deck totals gets no pills — never the due list\'s length', async () => {
+  mockNoDeckTotals.on = true;
+  try {
+    const tree = await mount();
+    expect(tree.root.findAll((n) => typeof n.type === 'string' && n.props?.testID === 'v48-pill', { deep: true })).toHaveLength(0);
+  } finally {
+    mockNoDeckTotals.on = false;
+  }
+});
+
+test('mastery pips fill with the stamp, and carry no 숙련 label', async () => {
+  const tree = await mount();
+  // mockCard has 1 pip, mockCardIcu 1, mockCardTip 1 (spread from mockCard).
+  expect(tree.root.findAll((n) => typeof n.type === 'string' && n.props?.testID === 'lab-pip-on', { deep: true }).length).toBe(3);
+  expect(tree.root.findAll((n) => typeof n.type === 'string' && n.props?.testID === 'lab-pip', { deep: true }).length).toBe(6);
+  expect(texts(tree.root)).not.toContain('숙련');
+});
+
+test('a grade tilts the card away toward its side, and only then leaves the queue', async () => {
+  jest.useFakeTimers();
+  try {
+    const tree = await mount();
+    const graded = () => texts(tree.root).includes('I want to ask about your pain.');
+    const grade = (g: string) => tree.root.findAll((n) => n.props?.testID === `grade-${g}` && typeof n.type !== 'string', { deep: true })[0];
+    expect(graded()).toBe(true);
+    // 다시 → left. The card is still there while it tilts…
+    await act(async () => { grade('again').props.onPress(); });
+    expect(graded()).toBe(true);
+    // …and is gone once the 400ms transition has run.
+    await act(async () => { jest.advanceTimersByTime(600); });
+    expect(graded()).toBe(false);
+  } finally {
+    jest.useRealTimers();
+  }
 });

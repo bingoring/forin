@@ -15,6 +15,7 @@ import { NbIcon, type NbIconName } from '@/components/nb/NbIcon';
 import { NbAvatar } from '@/components/nb/NbAvatar';
 import { NbPaper } from '@/components/nb/NbUI';
 import { useReduceMotion } from '@/components/nb/nbMotion';
+import { GoBar, Ring } from '@/components/nb/V48';
 import { monthWeeks } from '@/data/monthGrid';
 import { deptCodeNbIcon } from '@/data/campus';
 import type { AvatarSpec } from '@/data/nbAvatar';
@@ -287,55 +288,27 @@ export function ContinueBar({ dept, ring, cells, label, onPress }: {
   label: string;
   onPress(): void;
 }) {
-  const reduce = useReduceMotion();
-  const breathe = useRef(new Animated.Value(0)).current;
-  useEffect(() => {
-    if (reduce) return;
-    const half = (to: number) => Animated.timing(breathe, { toValue: to, duration: 1200, easing: Easing.inOut(Easing.ease), useNativeDriver: true });
-    const loop = Animated.loop(Animated.sequence([half(1), half(0)]));
-    loop.start();
-    return () => loop.stop();
-  }, [breathe, reduce]);
-  const R = 25;
-  const C = 2 * Math.PI * R;
   const icon: NbIconName = deptCodeNbIcon(dept);
+  // Built from the v48 signal kit (GoBar · Ring), with the home's own values: the halo breathes
+  // around the whole bar (home3), the bar carries a hard shadow (4px 5px .28), 14/16 padding,
+  // a 58 ring (r25 · 5) and a 54 ▶. The breathe halo is .45 here (home3), the kit's is .55.
   return (
-    <Pressable onPress={onPress} accessibilityRole="button" accessibilityLabel={label} testID="home-continue">
-      {({ pressed }) => (
-        <View style={{ transform: pressed ? [{ translateX: 2 }, { translateY: 3 }, { rotate: '-1deg' }] : [{ rotate: '-0.5deg' }] }}>
-          {/* 숨쉬는 노란 후광: 0 0 0 7px rgba(249,227,123,.45), 2.4s. */}
-          <Animated.View pointerEvents="none" testID="home-continue-halo"
-            style={{ position: 'absolute', left: -7, right: -7, top: -7, bottom: -7, borderRadius: 13, borderWidth: 7, borderColor: 'rgba(249,227,123,.45)', opacity: breathe }} />
-          {/* 하드 그림자 4px 5px rgba(62,54,43,.28). */}
-          {!pressed && <View pointerEvents="none" style={{ position: 'absolute', left: 4, right: -4, top: 5, bottom: -5, borderRadius: 6, backgroundColor: 'rgba(62,54,43,.28)' }} />}
-          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 14, paddingVertical: 14, paddingHorizontal: 16, backgroundColor: INK, borderRadius: 6 }}>
-            <View style={{ width: 58, height: 58 }}>
-              <Svg viewBox="0 0 58 58" width={58} height={58} style={{ position: 'absolute' }}>
-                <Circle cx="29" cy="29" r={R} fill={PAPER} stroke="rgba(255,253,244,.25)" strokeWidth={5} />
-                {ring > 0 && (
-                  <Circle cx="29" cy="29" r={R} fill="none" stroke={YELLOW} strokeWidth={5} strokeLinecap="round"
-                    strokeDasharray={`${C * Math.min(1, ring)} 999`} transform="rotate(-90 29 29)" testID="home-continue-ring" />
-                )}
-              </Svg>
-              <View style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, alignItems: 'center', justifyContent: 'center' }}>
-                <NbIcon name={icon} size={30} />
-              </View>
-            </View>
-            <View style={{ flex: 1, flexDirection: 'row', gap: 5 }}>
-              {[0, 1, 2, 3, 4].map((i) => (
-                <View key={i} testID={i < cells ? 'home-continue-cell-on' : 'home-continue-cell-off'}
-                  style={{ flex: 1, height: 9, borderRadius: 3, backgroundColor: i < cells ? YELLOW : 'rgba(255,253,244,.22)', transform: [{ rotate: i % 2 ? '2deg' : '-2deg' }] }} />
-              ))}
-            </View>
-            <View style={{ width: 54, height: 54, borderRadius: 27, backgroundColor: YELLOW, borderWidth: 2, borderColor: PAPER, alignItems: 'center', justifyContent: 'center' }}>
-              <Svg viewBox="0 0 24 24" width={26} height={26}>
-                <Path d="M8.5 5.5 L18.5 12 L8.5 18.5 Z" fill={INK} stroke={INK} strokeWidth={2} strokeLinejoin="round" />
-              </Svg>
-            </View>
-          </View>
-        </View>
-      )}
-    </Pressable>
+    <GoBar
+      testID="home-continue" accessibilityLabel={label} onPress={onPress}
+      halo="bar" haloColor="rgba(249,227,123,.45)" shadow pad={{ v: 14, h: 16 }} gap={14} goSize={54}
+      left={
+        <Ring pct={ring} size={58} box={58} r={25} width={5} track="rgba(255,253,244,.25)" arcTestID="home-continue-ring">
+          <NbIcon name={icon} size={30} />
+        </Ring>
+      }
+    >
+      <View style={{ flexDirection: 'row', gap: 5 }}>
+        {[0, 1, 2, 3, 4].map((i) => (
+          <View key={i} testID={i < cells ? 'home-continue-cell-on' : 'home-continue-cell-off'}
+            style={{ flex: 1, height: 9, borderRadius: 3, backgroundColor: i < cells ? YELLOW : 'rgba(255,253,244,.22)', transform: [{ rotate: i % 2 ? '2deg' : '-2deg' }] }} />
+        ))}
+      </View>
+    </GoBar>
   );
 }
 
