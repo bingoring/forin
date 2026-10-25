@@ -1,0 +1,152 @@
+# 단어·뉘앙스·order 수정
+words:
+  w-eye:
+    en: keep a close eye on
+    ipa: "/kiːp ə ˌkloʊs ˈaɪ ɑn/"
+    ko: 주의 깊게 지켜보다
+    cue: 징후가 바뀌는지 한 번 보고 끝내지 않고 내내 살피겠다고 할 때
+    chips: [[keep], [a], [close], [eye], ["on"]]
+    decoyChips: [clothes, ear]
+    distractorsEn: [keep a close lid on, keep a cool head on]
+    distractorsKo: [단단히 덮어 두다, 침착하게 버티다]
+  w-rate: {ko: 분당 횟수}
+  w-large:
+    ko: 굵은
+    distractorsKo: [가는, 짧은]
+    cue: 흉부 감압처럼 바늘의 굵기를 강조해 고를 때 붙이는 말
+  w-volume: {ko: 용적}
+  w-cause: {cue: 증상과 병력을 들으며 쇼크를 일으킨 배경을 찾을 때 쓰는 동사}
+  w-compression:
+    en: compression
+    ipa: "/kəmˈprɛʃən/"
+    chips: [[com, pres, sion]]
+    distractorsEn: [compensation, concession]
+    decoyChips: [con, press]
+  w-grab: {distractorsEn: [graze, grade]}
+  w-circulation: {distractorsEn: [circumference, calculation]}
+  w-fit: {decoyChips: [fist]}
+  w-diarrhea: {decoyChips: [day, are]}
+  w-update: {distractorsKo: [경과를 묻다, 경과를 적다]}
+  w-report: {distractorsKo: [확인하다, 기다리다]}
+  w-call: {distractorsKo: [기다리다, 기록하다]}
+  w-chart: {distractorsKo: [차트를 읽다, 차트를 출력하다]}
+  w-get: {distractorsKo: [치우다, 닦다]}
+  w-stat: {cue: 검체를 보내며 차례를 건너뛰어 가장 먼저 처리해 달라고 붙이는 약어}
+  w-temperature: {cue: 가슴은 따뜻한데 발은 차가울 때 두 부위를 비교하는 값}
+  w-number: {cue: pH 같은 검사 값 자체를 가리켜, 원인을 고치는 것보다 덜 중요하다고 할 때}
+  w-intervention: {cue: 수액·승압제처럼 상태를 바꾸려고 한 일 — 그 뒤에 동맥혈가스를 다시 본다}
+  w-already: {cue: 수액을 3리터나 벌써 줬다고 강조할 때}
+  w-unit: {cue: 적혈구 팩을 하나, 둘 셀 때 쓰는 말}
+  w-sense: {cue: "'make ___'로 이 돌봄이 지금 환자에게 맞는지 말할 때 쓰는 명사"}
+  w-physician: {cue: 수혈 처방을 받으려고 간호사가 전화하는 상대}
+  w-tongue: {cue: 입 안에서 맛을 보고 말을 돕는 근육 — 부으면 기도를 막을 수 있다}
+dEn_override:
+  w-lung: [lump, lunch]
+  w-role: [rule, rope]
+  w-unit: [suit, user]
+  w-hard: [harsh, hasty]
+tag_general: [w-early, w-enough, w-instead, w-also, w-second, w-again, w-already, w-next, w-after]
+word_remove: [w-whatever, w-feel, w-right]
+# en이 바뀐 문장을 example로 쓰던 단어의 새 예문 (s, i)
+example_to:
+  w-recheck: [14, 5]
+nuance:
+  - {s: 2, kind: slider, set: {cue: "Nurse: \"His lungs just started to crackle, and his oxygen level is falling.\""}}
+  - {s: 3, kind: pair, set: {decoys: [a deep breath]}}
+  - s: 4
+    kind: slider
+    set:
+      cue: "Foley bag: only 8 mL over the past hour for a 70 kg woman."
+      example: "She's oliguric — only 8 mL this hour."
+  - s: 5
+    kind: swap
+    set:
+      options: [the blood flow to them, peripheral perfusion, distal extremity perfusion]
+      notes:
+        the blood flow to them: 피가 그쪽으로 덜 간다는 뜻이 바로 들려요. 환자가 이해하는 말이에요.
+        peripheral perfusion: 의료진끼리의 말이에요. 환자는 무슨 뜻인지 모를 수 있어요.
+        distal extremity perfusion: 더 어렵고 차가운 말이라 겁만 줄 수 있어요.
+  - s: 7
+    kind: slider
+    set:
+      words: [w-hypotensive]
+      cue: "Colleague: \"Her MAP is 48 after two liters, and her knees are mottled.\""
+      scale: [borderline, hypotensive, profoundly hypotensive]
+      answerAt: 2
+      why: MAP가 목표(대개 65) 바로 아래면 borderline, 65 아래로 머물면 hypotensive, 50 아래로 떨어지고 무릎에 얼룩(모틀링)까지 보이면 profoundly hypotensive예요. 정도를 수치와 함께 말해야 승압제 결정이 빨라져요.
+      example: "She's profoundly hypotensive — MAP 48 after two liters."
+      exKo: 심한 저혈압이에요 — 2리터를 주고도 MAP 48이에요.
+  - s: 9
+    kind: context
+    scene_fix: {index: 2, fix: "We put a needle into his chest to let the trapped air out so his lung can open up."}
+  - {s: 13, kind: pair, set: {decoys: [off the monitor]}}
+  - s: 14
+    kind: slider
+    set:
+      example: "That's a mild acidosis, but let's keep watching the trend."
+      exKo: 경미한 산증이지만 추세는 계속 지켜봐요.
+  - s: 17
+    kind: slider
+    set:
+      cue: "Nurse: \"Her heart sounds are faint, as if I'm hearing them through a pillow.\""
+      example: "Her heart sounds are muffled, and her neck veins are up."
+  - s: 17
+    kind: context
+    scene_fix: {index: 2, fix: "We've set out the sterile tools the doctor needs to drain the fluid around her heart."}
+  - s: 18
+    kind: context
+    scene_fix: {index: 2, fix: "We put a needle into his chest to let the trapped air out."}
+    set:
+      why: 의료진끼리는 needle 한 단어로 어떤 처치인지 바로 통해요. 가족에게는 large-bore, pleural decompression 같은 말이 낯설고 무섭게 들리니, 가슴에 바늘을 넣어 갇힌 공기를 뺐다고 쉽게 말해요.
+  - s: 20
+    kind: context
+    scene_set:
+      index: 2
+      en: "We're awaiting your decision on withdrawal of life-sustaining therapy."
+      fix: "Take the time you need — we'll talk through this decision together."
+    set:
+      why: 의료진끼리는 decision, code status, withdrawal 같은 말로 상황이 간결하게 통해요. 가족 앞에서 withdrawal of life-sustaining therapy처럼 말하면 차갑고 통보처럼 들리니, 시간을 주고 함께 이야기하겠다고 말해요.
+order:
+  - s: 2
+    lines:
+      2: {ko: 들어가는 동안 폐에서 수포음이 들리면 멈출게요}
+  - s: 4
+    why: 측정 방법을 먼저 말하고, 그 백으로 잰 이번 시간의 수치를 보고하고, 목표와 견줘 평가한 뒤 기록과 알림을 약속해요. 2줄의 that bag은 1줄의 폴리 백을, 3줄의 That은 2줄의 수치를, 4줄의 it은 3줄의 평가를 가리켜서 순서가 하나예요.
+    lines:
+      1: {en: "With that bag, she's made about 20 mls this hour.", ko: 그 백으로 재니 이번 시간에 약 20mL가 나왔어요}
+  - s: 5
+    why: 간호사가 만져 본 관찰에서 시작해 원인을 설명하고, 그래서 순환을 확인한다고 이은 뒤 계속 확인하겠다고 약속해요. 2줄의 This는 1줄의 관찰을, 3줄의 So는 2줄의 설명을, 4줄의 that은 3줄의 확인을 가리켜서 순서가 하나예요.
+    lines:
+      0: {ko: 지금 만져 보니 발이 많이 차가워요}
+  - s: 9
+    why: 소견을 먼저 말하고, 그것이 긴장성 기흉으로 보인다고 판단하고, 의사를 부르며, 의사가 오는 동안 바늘을 요청해요. 2줄의 That은 1줄의 소견을, 4줄의 he는 3줄의 의사를 가리켜서 순서가 하나예요.
+    lines:
+      3: {en: "While he's on his way, I need a large needle at the bedside.", ko: 그분이 오는 동안 침상 옆에 굵은 바늘이 필요해요}
+  - s: 10
+    why: 산소 변화를 먼저 말하고, 그래서 폐를 살피겠다고 하고, 폐 소리가 젖어 있으면 수액을 멈춘다고 한 뒤, 그렇지 않으면 적은 양을 준다고 해요. 2줄의 So는 1줄의 변화를, 3줄의 they는 2줄의 폐를, 4줄의 don't는 3줄의 sound wet을 이어받아서 순서가 하나예요.
+    lines:
+      1: {en: "So let's check her lungs before the next bolus.", ko: 그러니 다음 볼루스 전에 폐를 확인해요}
+      2: {ko: 폐에서 수포음이 들리면 수액을 보류해요}
+  - s: 11
+    why: 증상을 먼저 말하고, 그것을 아나필락시스로 판단하며, 원인 약을 중단하고 에피네프린을 주고, 끝으로 기도와 재발을 지켜본다고 해요. 2줄의 This는 1줄의 증상을 가리키고, 4줄의 airway와 second reaction은 3줄의 처치 뒤에 이어지는 감시라서 순서가 하나예요.
+  - s: 12
+    lines:
+      1: {ko: 젖산이 6에서 4로 떨어져서 잘 제거되고 있어요}
+      3: {ko: 정체되면 소생 치료를 다시 평가해요}
+  - s: 15
+    why: 상태를 먼저 말하고, 그것이 장기 기능에 어떤 뜻인지 설명하고, 목표를 다시 봐야 한다고 한 뒤, 가족과 의사를 함께 모은다고 해요. 2줄의 That은 1줄의 상태를 이어받고, 4줄은 3줄의 목표 재검토를 위해 사람들을 모으는 일이라 순서가 하나예요.
+    lines:
+      2: {ko: 치료 목표를 다시 검토해야 해요}
+      3: {en: "Let's bring the team and family together, with the physician too.", ko: 팀과 가족을 함께 모으고 의사도 함께해요}
+  - s: 17
+    why: 소견으로 심장압전을 말하고, 시술 준비를 하고, 그 시술을 위해 멸균 트레이를 열고, 트레이가 열린 상태에서 보조와 기록 준비가 됐다고 알려요. 3줄의 it은 2줄의 심낭천자를, 4줄의 With the tray open은 3줄에서 연 트레이를 가리켜서 순서가 하나예요.
+    lines:
+      3: {en: "With the tray open, I'm ready to assist and document.", ko: 트레이를 열었으니 시술을 보조하고 기록할 준비가 됐어요}
+  - s: 19
+    why: 혈압 변화를 먼저 말하고, 그래서 코드팀을 호출하고, 호출 뒤에 압박과 기도 역할을 나누고, 시작하는 동안 패드와 카트를 챙겨요. 2줄의 so는 1줄의 변화를 이어받고, 4줄의 While you start는 3줄에서 맡긴 압박을 가리켜서 순서가 정해져요.
+    lines:
+      3: {en: "While you start, I'll grab the pads; someone get the crash cart.", ko: 시작하는 동안 제가 패드를 가져올게요, 누가 응급 카트를 가져와 주세요}
+  - s: 20
+    why: 공감으로 시작하고, 환자가 원했을 것을 이야기하자고 하고, 그게 무엇이었을지 묻고, 그 결정을 함께 풀어 가며 가족 모두를 돕겠다고 약속해요. 3줄의 that은 2줄의 what he would have wanted를 가리키고, 4줄의 this decision은 그 이야기에서 나오는 결정이라 순서가 하나예요.
+    lines:
+      3: {en: "We'll support all of you as we work through this decision together.", ko: 이 결정을 함께 풀어 가는 동안 가족분들 모두를 도울게요}

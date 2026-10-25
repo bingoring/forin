@@ -1,0 +1,88 @@
+# 단어 재료 수정 (A: W-1~W-5, D11-1~6)
+words:
+  # W-1 품사가 다른 distractorsEn (※ 표시 단어는 D11-1로 삭제되므로 제외)
+  w-hurt: {distractorsEn: [hunt, hurl]}
+  w-secure: {distractorsEn: [obscure, severe]}
+  w-often: {distractorsEn: [seldom, rarely]}
+  w-drain: {distractorsEn: [train, strain]}
+  w-circuit: {distractorsEn: [circle, conduit]}
+  w-lung: {distractorsEn: [lunch, lump]}
+  w-rise: {distractorsEn: [raise, rinse], cue: "숨을 넣을 때 가슴 양편이 똑같이 부푸는지 볼 때 쓰는 말"}
+  w-equal: {distractorsEn: [usual, unequal]}
+  w-change: {distractorsEn: [charge, chafe], ko: 바꾸다, cue: "어제와 달라진 점이 생기거나, 값을 일부러 고쳐 두는 일"}
+  w-even: {distractorsEn: [uneven, steep]}
+  w-clear: {distractorsEn: [clean, cleave]}
+  w-stable: {distractorsEn: [unstable, sterile]}
+  w-suction: {distractorsEn: [suture, swallow]}
+  w-cough: {distractorsEn: [coach, gasp]}
+  w-quick: {distractorsEn: [quiet, quaint]}
+  w-safe: {distractorsEn: [same, sage]}
+  w-own: {distractorsEn: [only, other]}
+  w-support: {distractorsEn: [supply, report]}
+  w-finetune: {distractorsEn: [finalize, define]}
+  w-open: {distractorsEn: [even, opaque]}
+  w-step: {distractorsEn: [stem, stamp]}
+  w-high: {distractorsEn: [huge, light]}
+  w-cause: {distractorsEn: [course, case]}
+  w-stiff: {distractorsEn: [still, stuffy]}
+  w-sync: {distractorsEn: [sink, cinch]}
+  w-effort: {distractorsEn: [effect, offer]}
+  w-against: {distractorsEn: [among, amid]}
+  w-small: {distractorsEn: [smart, smooth]}
+  w-damage: {distractorsEn: [dosage, drainage]}
+  w-low: {distractorsEn: [loud, slow]}
+  w-heal: {distractorsEn: [heave, heed], ko: 낫다}
+  w-trial: {distractorsEn: [trail, triad]}
+  w-flag: {distractorsEn: [flap, flash], ko: 알려 두다, distractorsKo: [지워 두다, 미뤄 두다]}
+  w-steady: {distractorsEn: [steamy, sturdy]}
+  w-sign: {distractorsEn: [sigh, site]}
+  w-purpose: {distractorsEn: [proposal, purchase]}
+  w-deliberate: {distractorsEn: [delicate, desperate]}
+  w-common: {distractorsEn: [uncommon, comical]}
+  w-extra: {distractorsEn: [external, extreme]}
+  w-fast: {distractorsEn: [first, last]}
+  w-expect: {distractorsEn: [expand, export]}
+  w-drop: {distractorsEn: [drip, droop]}
+  w-increase: {distractorsEn: [decrease, incise]}
+  w-point: {distractorsEn: [paint, print], cue: "호흡음이 안 들리고 압력이 높은 소견이 기흉으로 이어진다고 짚어 말할 때"}
+  w-needle: {distractorsEn: [noodle, nozzle]}
+  w-ready: {distractorsEn: [heavy, rusty], chips: [[ready]]}
+  w-shift: {distractorsEn: [sift, shirk]}
+  w-bedside: {distractorsEn: [roadside, bedrock], cue: "고장 난 인공호흡기 앞으로 도움을 불러올 때 '여기로' 오라고 말하는 자리"}
+  w-cart: {distractorsEn: [card, chart]}
+  w-weak: {distractorsEn: [meek, bleak], cue: "자가발관 뒤 공기가 거의 안 움직일 때 환자 스스로의 호흡 노력을 말하는 말"}
+  w-calm: {distractorsEn: [clammy, numb]}
+  w-despite: {distractorsEn: [beyond, except]}
+  w-gather: {distractorsEn: [lather, gauge], cue: "ECMO팀에 전화하기 전에 최근 ABG와 P/F 비율을 한곳에 챙겨 둘 때"}
+  w-sedated: {distractorsEn: [seated, sated]}
+  w-dry: {distractorsEn: [drip, dye]}
+  # W-2 정답으로도 맞는 distractorsEn
+  w-alarm: {distractorsEn: [charm, aroma]}
+  w-avoid: {distractorsEn: [await, avow]}
+  w-overstretch: {distractorsEn: [overstate, overshoot]}
+  w-reintubate: {distractorsEn: [reinstate, reiterate], distractorsKo: [재발관하다, 재흡인하다]}
+  w-emergency: {distractorsEn: [agency, efficiency]}
+  # W-3 distractorsKo
+  w-tubing: {distractorsKo: [파이프, 필터]}
+  w-paco2: {distractorsKo: [동맥혈산소분압, 호기말이산화탄소], cue: "ABG에서 환기가 충분한지 보는 항목으로, 오르면 호흡수를 늘려요", chips: [[Pa, CO2]], decoyChips: [Pe, O2]}
+  w-extubate: {distractorsKo: [삽관하다, 절개하다]}
+  w-team: {distractorsKo: [개인, 환자]}
+  w-injure: {distractorsKo: [회복되게 하다, 감염되게 하다]}
+  # W-4 ko를 되풀이하는 cue (w-call은 D11-1로 삭제)
+  w-side: {cue: "청진할 때 왼편과 오른편을 나눠 말하며 서로 견줄 때"}
+  w-moment: {cue: "흡인할 때 기침이 오래가지 않는다고 환자를 안심시키며 쓰는 말"}
+  w-dip: {cue: "흡인 직후 SpO2가 85까지 내려갔다 곧 돌아왔을 때 동료에게 하는 말"}
+  w-fall: {cue: "부조화가 심해지면서 SpO2 숫자가 계속 낮아지는 것을 보고할 때"}
+  w-page: {cue: "급할 때 무선 장치나 방송으로 중환자전담의와 호흡치료팀을 불러낼 때"}
+  w-intensivist: {cue: "부조화가 심해 진정 심화를 상의할 ICU 담당 의사"}
+  w-maximal: {cue: "FiO2 100퍼센트와 높은 PEEP로도 산소가 안 오를 때 설정값에 붙이는 말"}
+  w-escalate: {cue: "복와위나 ECMO처럼 다음 치료로 넘어가자고 제안할 때"}
+  w-prone: {cue: "난치성 저산소증에서 등 쪽 폐를 열려고 배를 아래로 향해 눕히는 자세"}
+  w-carefully: {cue: "기흉이 의심되는 환자를 백으로 환기하며 압력을 살필 때"}
+  # W-5 chips
+  w-hypoxic: {chips: [[hyp, ox, ic]], decoyChips: [hyper, ax]}
+  w-recommendation: {chips: [[re, com, mend, ation]]}
+  # D11-3
+  w-rsbi: {ko: 빠르고 얕은 호흡 지수}
+# D11-1 은행에서 삭제(상황마다 서로 다른 단어 8개 이상은 검사기가 확인한다)
+remove: [w-read, w-number, w-tell, w-ask, w-touch, w-move, w-water, w-need, w-call, w-question, w-problem, w-blood]

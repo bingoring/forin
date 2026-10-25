@@ -1,0 +1,118 @@
+# 상황 7~13 문장 수정
+sent:
+# --- S7 분포성 쇼크 초기 소생
+- s: 7
+  i: 0
+  blank: {answer: hypotensive, options: [hypotensive, comfortable, cooperative, talkative]}
+  dko: ["먼저 수액을 주고 저혈압이 유지되는지 15분마다 혈압을 재요", "승압제를 시작할 중심정맥관 위치부터 점검해요"]
+- {s: 7, i: 1, decoy: "and vasodilates"}
+- {s: 7, i: 2, dko: ["진행하면서 평균동맥압을 15분마다 잴게요", "진행하면서 평균동맥압 목표를 같이 정할게요"]}
+- s: 7
+  i: 3
+  chunks: ["Her blood pressure", "is", "still low", "after two liters", "."]
+  blank: {answer: liters, options: [hours, doses, liters, meals]}
+- s: 7
+  i: 4
+  en: "I'll have norepinephrine ready if fluids aren't enough."
+  ko: "수액만으로 충분하지 않을 때를 대비해 노르에피네프린을 준비해 둘게요."
+  chunks: ["I'll have", "norepinephrine ready", "if fluids", "aren't enough", "."]
+  words: [w-norepinephrine, w-ready, w-fluid, w-enough]
+  tag: "승압제 준비"
+  why: "if fluids aren't enough는 수액으로 충분하지 못한 경우라는 조건이고, have … ready는 바로 쓸 수 있게 준비해 둔다는 모양이에요. 승압제는 처방이 있어야 시작하므로 간호사는 먼저 준비만 해 둔다고 말해요."
+  decoy: "from the pump"
+  dko: ["수액만으로 충분하지 않은지 15분마다 혈압으로 판단할게요", "노르에피네프린을 걸 중심정맥관 위치부터 먼저 점검할게요"]
+  blank: {answer: ready, options: [ready, cold, fast, empty]}
+- {s: 7, i: 5, dko: ["15분마다 혈압을 팀에 알릴게요", "15분마다 혈압 커프 자리를 바꿔 줄게요"]}
+# --- S8 심인성 쇼크
+- s: 8
+  i: 2
+  blank: {answer: instead, options: [instead, inside, outside, because]}
+- {s: 8, i: 3, chunks: ["His oxygen", "has been dropping", "since this morning", "."]}
+- {s: 8, i: 5, dko: ["지금은 이전 수액 볼루스를 보류할게요", "지금은 다음 수액 볼루스를 걸 때 폐음을 들어요"]}
+# --- S9 폐색성 쇼크 인지
+- s: 9
+  i: 1
+  dko: ["작은 기흉처럼 보이고 지금 바로 감압이 필요해요", "긴장성 기흉처럼 보이고 감압 후 흉관이 필요해요"]
+- s: 9
+  i: 2
+  dko: ["응급 바늘 감압을 위해 큰 바늘을 가져올게요", "응급 바늘 감압을 마치면 흉관을 준비할게요"]
+  blank: {answer: calling, options: [calling, called, calls, call]}
+- {s: 9, i: 3, chunks: ["I can't hear", "any", "breath sounds", "on his right side", "."]}
+- s: 9
+  i: 5
+  ko: "지금 바로 침상 옆에 굵은 바늘이 필요해요."
+  decoy: "in the garage"
+  dko: ["굵은 바늘을 쓰고 침상 옆 통에 버려요", "굵은 바늘이 올 때까지 환자 곁을 지켜요"]
+  blank: {answer: need, options: [need, found, dropped, lost]}
+# --- S10 수액 과다와 부족
+- s: 10
+  i: 0
+  decoy: "with the chart"
+  dko: ["다음 볼루스를 건 다음에도 폐와 산소포화도를 봐요", "다음 볼루스 전에 폐와 산소포화도를 의논해요"]
+  blank: {answer: reassess, options: [reassess, relabel, restock, reorder]}
+- s: 10
+  i: 1
+  dko: ["수포음이 생기는지 볼루스 때마다 들어요", "수포음은 폐에 물이 찬 신호예요"]
+  blank: {answer: fluids, options: [fluids, visitors, lights, beds]}
+- s: 10
+  i: 2
+  ko: "폐부종으로 넘어가지 않게 하면서 충분한 용적을 채우고 싶어요."
+  dko: ["폐렴으로 넘어가지 않게 하면서 충분한 용적을 채우고 싶어요", "폐부종으로 넘어가지 않게 하면서 충분한 산소를 채우고 싶어요"]
+  decoy: "at lunch"
+- {s: 10, i: 3, chunks: ["Her oxygen", "has dropped", "a little", "in the last hour", "."]}
+- {s: 10, i: 4, decoy: "for the visit", dko: ["호흡수는 포화도보다 먼저 변하기도 해요", "호흡수도 자세히 적고 있어요"]}
+- {s: 10, i: 5, decoy: "from the cafeteria"}
+# --- S11 아나필락시스 쇼크
+- {s: 11, i: 0, decoy: "from the closet"}
+- s: 11
+  i: 1
+  dko: ["에피네프린을 놓은 뒤 혈압을 재 주세요", "에피네프린을 근육주사한 시각을 적어 주세요"]
+- s: 11
+  i: 2
+  decoy: "on her birthday"
+  dko: ["기도가 부어오르면 바로 의사에게 알릴게요", "기도가 부어오르는지 목소리도 들어 볼게요"]
+- s: 11
+  i: 4
+  dko: ["기도를 열어 두려고 산소를 연결해요", "기도를 열어 두려고 흡인기를 준비해요"]
+  blank: {answer: airway, options: [airway, chart, eyes, window]}
+- {s: 11, i: 5, chunks: ["I'll", "monitor her", "for a second reaction", "."]}
+# --- S12 젖산 클리어런스
+- s: 12
+  i: 0
+  ko: "젖산이 6에서 4로 떨어져서 잘 제거되고 있어요."
+  dko: ["젖산이 8에서 4로 떨어져서 잘 제거되고 있어요", "젖산이 6에서 2로 떨어져서 잘 제거되고 있어요"]
+- s: 12
+  i: 2
+  ko: "정체되면 소생 치료를 다시 평가해요."
+  dko: ["정체되는지 보려고 두 시간마다 다시 재요", "정체는 소생이 부족하다는 신호예요"]
+  blank: {answer: resuscitation, options: [resuscitation, resistance, resignation, reservation]}
+- {s: 12, i: 3, chunks: ["That's", "a good drop", "in just two hours", "."]}
+- s: 12
+  i: 4
+  en: "I'll check it again after the next bolus."
+  ko: "다음 볼루스 후에 다시 확인할게요."
+  chunks: ["I'll check it", "again", "after the next bolus", "."]
+  words: [w-check, w-again, w-next, w-bolus]
+  why: "again을 붙여 이미 한 번 확인했음을 분명히 해요. after the next bolus로 시점을 정해야 처치에 따른 변화를 같은 기준으로 볼 수 있어요."
+  dko: ["다음 채혈 후에 다시 확인할게요", "다음 볼루스 후에 다시 계산할게요"]
+  blank: {answer: again, options: [again, always, almost, already]}
+# --- S13 승압제 시작 시점
+- s: 13
+  i: 1
+  dko: ["이제 승압제를 시작할 시점인 걸 확신해요", "이제 승압제를 시작할 시점이라고 가족에게 알려요"]
+  blank: {answer: pressor, options: [pressor, pressure, pleasure, pastor]}
+- {s: 13, i: 2, dko: ["노르에피네프린을 확인하려고 의사에게 연락하고 있어요", "노르에피네프린을 권고하면서 혈압을 한 번 더 재요"], decoy: "at the printer"}
+- s: 13
+  i: 3
+  decoy: "for the bed"
+  blank: {answer: fluid, options: [fluid, oxygen, urine, plasma]}
+- {s: 13, i: 4, chunks: ["Her pressure", "hasn't responded", "to any of it", "."]}
+- s: 13
+  i: 5
+  en: "I'll ask the physician to order norepinephrine now."
+  ko: "지금 노르에피네프린을 처방해 달라고 의사에게 요청할게요."
+  chunks: ["I'll ask", "the physician", "to order norepinephrine", "now", "."]
+  words: [w-ask, w-physician, w-order, w-norepinephrine]
+  why: "ask the physician to …는 간접 요청 모양으로 직접 명령하지 않고 부탁하는 말이에요. 승압제는 의사가 처방하는 약이어서 간호사는 처방해 달라고 의사에게 요청해요."
+  decoy: "at the pharmacy"
+  dko: ["노르에피네프린 처방이 나오면 바로 라인에 걸게요", "노르에피네프린을 걸 중심정맥관 위치를 점검할게요"]

@@ -9,7 +9,7 @@ Sonnet 저작 A(단어·뉘앙스) ‖ B(문장 낱장·order) → `combine_halv
 | 상태 | 주제 |
 |---|---|
 | **정본 합침(2026-10-25 묶음 1)** | icu-ards-proning · icu-arrhythmia · icu-cardiogenic |
-| A·B 저작 끝남 → **combine부터** | icu-hemodynamics · icu-mech-ventilation · icu-resp-support · icu-sedation · icu-shock |
+| **정본 합침(2026-10-26 묶음 2)** | icu-hemodynamics · icu-mech-ventilation · icu-resp-support · icu-sedation · icu-shock |
 | A만 끝남 → **B 저작부터** | icu-airway · icu-delirium |
 | 저작 중 끊김 → **처음부터** | icu-infection-prevention · icu-pain-nonverbal · icu-post-arrest(Fable 표본) · icu-sepsis |
 | 미착수 | ICU 나머지 19 + OR 33 전부(or-massive-transfusion = Fable 표본) |
@@ -38,3 +38,13 @@ Sonnet 저작 A(단어·뉘앙스) ‖ B(문장 낱장·order) → `combine_halv
   | icu-cardiogenic | 80(3) | 55(24) | 94 | 264→255 |
   fix_*.py는 수정 전 원본을 세션 scratchpad 백업에서 읽는다(재실행 불가 — 결과 yaml이 정본).
 - keyPhrase 결정 대기(en·chunks 미변경): ards S19.1(RT 역할)·S16.0/16.2(앙와위 전 압박)·S10.2(good lung) · arrhythmia 12.1(won't→shouldn't feel)·13.1(most likely)·11.1(safe margin)·12.0(DOAC) · cardiogenic 급성 출혈 "Hold the heparin…"(why에 오더·프로토콜 명시로 임시 대응).
+- **묶음 2 (ICU 5주제, 2026-10-26)**: 같은 공정. 수정 지시에 고치기 전 원본 `<주제>.pre-fix.yaml`을 작업 폴더에 남기게 해 fix 스크립트를 다시 돌릴 수 있다. 합치기 폴더 `merge-icu-b2/`.
+  | 주제 | 검토 A(안전) | 검토 B(안전) | changes | 단어 |
+  |---|---|---|---|---|
+  | icu-hemodynamics | 74(14) | 47(15) | 100 | 171→168 |
+  | icu-mech-ventilation | 142(5) | 43(21) | 93 | 207→195 |
+  | icu-resp-support | 93(3) | 67(18) | 97 | 188→184 |
+  | icu-sedation | 88(6) | 83(19) | 120 | 217→208 |
+  | icu-shock | 145(3) | 67(34) | 118 | 254→251 |
+- keyPhrase 결정 대기 추가(en·chunks 미변경): hemodynamics PPV 방향("variation drops"→high)·"Start atropine"→Give·"falsely low" · mech-ventilation 1.2 won't move·8.2 still getting oxygen·19.2 draw up·2.4 just moisture·8.3 isn't an emergency·9.1 간호사 직접 조정 · resp-support 9.2 relief soon·13.0 avoid infections·16.2 escalated sooner · sedation 18.1 bolus per order·19.1 orders for atropine · shock 20.0 not giving up·12.1 10% clearance·17.1 prime the monitor·15.1 goals of care. 그 밖에 구 경계를 끊은 keyPhrase chunks 보고 다수(fix-*-A.md).
+- 남은 작은 일: hemodynamics 11상황 "We call this weaning" ko "이탈"(w-wean ko는 "서서히 끊다"로 바뀜), resp-support 16.0 ko "심정지" vs 제목 "호흡정지 임박", resp-support 3.4 "non-rebreather is the highest"(비기계 장치 중 최고).

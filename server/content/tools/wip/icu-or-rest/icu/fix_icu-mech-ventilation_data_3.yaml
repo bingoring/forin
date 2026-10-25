@@ -1,0 +1,110 @@
+# 뉘앙스(N-1~N-17)와 order 줄(O-1~O-4, B의 S19·C7·C14). 상황은 0부터, kind로 위치를 확인한다.
+nuance:
+  - {si: 10, kind: slider, set: {
+      cue: "Nurse to the family: \"For injured lungs we use small breaths and a low plateau pressure. In plain words, we keep his ventilation ___.\"",
+      answerAt: 0,
+      why_append: " 정식 이름은 lung-protective(저일회호흡량) ventilation이에요."}}
+  - {si: 6, kind: slider, set: {
+      scale: [gradually, quickly, abruptly], answerAt: 0,
+      why: "몇 시간에 걸쳐 조금씩 줄이면 gradually예요. quickly는 빨리, abruptly는 한꺼번에 갑자기라 이 장면과 달라요."}}
+  - {si: 9, kind: slider, replace: {why: ["a bit off", "slightly off"]}}
+  - {si: 11, kind: slider, set: {
+      cue: "Nurse to the family: \"His breathing test is going well, but the tube isn't out yet. His numbers look ___.\""}}
+  - {si: 12, kind: slider, set: {exKo: "일부러 이산화탄소를 조금 높게 두고 있어요."}}
+  - {si: 12, kind: swap, set: {ko: "폐를 보호하려고 일부러 이산화탄소를 조금 높게 두고 있고, pH를 자세히 보고 있어요"}}
+  - {si: 18, kind: swap, set: {ko: "직접 숨관을 빼셨는데, 숨을 도와주면서 다시 넣을 준비를 하고 있어요"}}
+  - {si: 14, kind: pair, set: {decoys: ["into the cuff"]}}
+  - {si: 20, kind: pair, set: {
+      pairs: [[escalate, to proning], [consult, the ECMO team], [trend, the P/F ratio]],
+      decoys: [into the water trap],
+      words: [w-escalate, w-prone, w-consult, w-team, w-ratio],
+      why: "산소가 오르지 않으면 조치 단계를 높이고(escalate), 전문팀에 자문을 구하고(consult), P/F 비율의 흐름을 계속 봐요(trend)."}}
+  - {si: 2, kind: pair, set: {decoys: [cuff]}}
+  - {si: 8, kind: pair, set: {decoys: [flowsheet]}}
+  - {si: 17, kind: pair, set: {decoys: [to the bedside]}}
+  - {si: 4, kind: context, set: {
+      word: EtCO2, ko: 호기말 이산화탄소, words: [w-carbondioxide],
+      scenes: [
+        {who: 동료 간호사에게, icon: monitor, en: "EtCO2 is 38 and holding on the monitor.", ok: true},
+        {who: 차트 기록, icon: board, en: "EtCO2 35–40 overnight, no alarms.", ok: true},
+        {who: 가족에게, icon: me, en: "His EtCO2 is 38 right now.", ok: false, fix: "The number that shows how well he's breathing out carbon dioxide is right where we want it."}],
+      why: "EtCO2는 의료진끼리 짧고 정확한 말이지만, 가족에게는 무엇을 보는 숫자인지부터 풀어 말해요."}}
+  - {si: 5, kind: context, set: {
+      word: secretions, ko: 분비물, words: [w-suction],
+      scenes: [
+        {who: 동료 간호사에게, icon: monitor, en: "He has thick secretions, so let's suction him.", ok: true},
+        {who: 차트 기록, icon: board, en: "Suctioned for thick white secretions; SpO2 stable throughout.", ok: true},
+        {who: 환자에게, icon: me, en: "I'm going to clear your secretions now.", ok: false, fix: "I'm going to clear the mucus from your breathing tube now, and you might cough."}],
+      why: "secretions는 의료진끼리 정확한 말이지만 환자에게는 낯설어요. mucus(가래)처럼 쉬운 말과 어떤 느낌일지를 함께 말해요."}}
+  - {si: 7, kind: context, set: {
+      word: titrate, ko: 조금씩 맞춰 조정하다, words: [w-peep],
+      scenes: [
+        {who: 동료 간호사에게, icon: monitor, en: "We titrated the PEEP up by 2, and his sats came up.", ok: true},
+        {who: 차트 기록, icon: board, en: "PEEP titrated to 10; SpO2 improved to 94%.", ok: true},
+        {who: 가족에게, icon: me, en: "We titrated his PEEP to recruit more alveoli.", ok: false, fix: "We slowly raised the pressure that keeps his air sacs open, and his oxygen got better."}],
+      why: "titrate는 의료진끼리 '조금씩 맞춰 조정했다'는 정확한 말이지만 가족에게는 어려워요. 무엇을 어떻게 바꿨는지 풀어 말해요."}}
+  - {si: 9, kind: context, set: {
+      word: double triggering, ko: 이중 촉발, words: [w-trigger],
+      scenes: [
+        {who: 동료 간호사에게, icon: monitor, en: "He's double triggering — look at the waveform.", ok: true},
+        {who: 차트 기록, icon: board, en: "Double triggering noted; flow adjusted per RT.", ok: true},
+        {who: 환자에게, icon: me, en: "You're double triggering the vent.", ok: false, fix: "Your breaths and the machine aren't matching yet, and I'm adjusting it."}],
+      why: "double triggering은 파형을 보고 의료진끼리 쓰는 말이에요. 깨어 있는 환자에게는 기계와 호흡이 아직 안 맞고 조정 중이라고 풀어 말해요."}}
+  - {si: 11, kind: context, set: {
+      word: SBT, ko: 자발호흡시험, words: [w-trial],
+      scenes: [
+        {who: 동료 간호사에게, icon: monitor, en: "He's on an SBT, so watch his rate and effort.", ok: true},
+        {who: 차트 기록, icon: board, en: "SBT 30 min on PS 5/PEEP 5, tolerated.", ok: true},
+        {who: 가족에게, icon: me, en: "He's on an SBT right now.", ok: false, fix: "We're giving him a short test of breathing mostly on his own."}],
+      why: "SBT는 의료진끼리 쓰는 약어예요. 가족에게는 스스로 숨 쉬어 보는 짧은 시험이라고 풀어 말해요."}}
+  - {si: 13, kind: context, set: {
+      word: desat, ko: 산소포화도 저하, words: [w-dip],
+      scenes: [
+        {who: 동료 간호사에게, icon: monitor, en: "He desatted to 85 with suctioning, but he's coming back up.", ok: true},
+        {who: 차트 기록, icon: board, en: "Desat to 85% with suctioning; recovered with bagging.", ok: true},
+        {who: 가족에게, icon: me, en: "He desatted after suctioning.", ok: false, fix: "His oxygen dropped for a moment after the suction, and it's already coming back."}],
+      why: "desat은 의료진끼리 쓰는 줄임말이라 가족은 알아듣지 못해요. 무엇이 얼마나 떨어졌다 돌아오는지 풀어 말해요."}}
+  - {si: 2, kind: context, set: {
+      word: rainout, ko: 회로 응축수, words: [w-condensation],
+      scenes: [
+        {who: 동료 간호사에게, icon: monitor, en: "There's rainout in the circuit, so I'll drain the trap.", ok: true},
+        {who: 차트 기록, icon: board, en: "Rainout in tubing drained to water trap; no leak found.", ok: true},
+        {who: 가족에게, icon: me, en: "That's just rainout in his circuit.", ok: false, fix: "That's just water from his warm breath, and I'll empty it away from him."}],
+      why: "rainout은 호흡치료사·간호사가 회로에 맺힌 물을 부르는 말이라 가족은 알아듣지 못해요."}}
+  - {si: 19, kind: context, set: {
+      word: paralytic, ko: 근이완제, words: [w-paralyze],
+      scenes: [
+        {who: 의사에게, icon: stetho, en: "If deeper sedation doesn't work, should we add a paralytic?", ok: true},
+        {who: 차트 기록, icon: board, en: "Sedation deepened, then paralytic started per order.", ok: true},
+        {who: 가족에게, icon: me, en: "We're starting a paralytic.", ok: false, fix: "We're giving him medicine that relaxes all his muscles so the machine can breathe for him, along with medicine to keep him asleep."}],
+      why: "paralytic은 의료진끼리 정확한 말이지만 가족에게는 무섭게 들려요. 근육을 쉬게 하는 약과 함께 재우는 약도 준다는 것을 같이 말해요."}}
+
+order:
+  - {si: 1, line: 2, set: {en: "The tape holds it there, so it's much less likely to shift when he moves.", ko: "테이프가 거기에 붙잡아서 움직여도 밀릴 가능성이 훨씬 적어요"}}
+  - si: 4
+    line: 3
+    set: {en: "If either number changes, the monitor will alarm and I'll check right away.", ko: "어느 쪽이든 변하면 모니터가 경보를 울리고 제가 바로 확인할게요"}
+    why_replace: ["알리겠다고 맺어요", "모니터가 경보를 울리고 바로 확인하겠다고 맺어요"]
+  - si: 7
+    line: 3
+    set: {en: "That's because PEEP holds his air sacs open between breaths.", ko: "PEEP가 호흡 사이에도 폐포를 열어둬서 그래요"}
+    why_replace: ["마지막에 That's why로 PEEP의 원리를 설명해요. After that과 That's why가", "마지막에 That's because로 산소가 좋아진 이유를 PEEP의 원리로 설명해요. After that과 That's because가"]
+  - si: 8
+    line: 1
+    set: {en: "It may not be an emergency, but I need to find out why right away.", ko: "응급이 아닐 수도 있지만 지금 바로 이유를 찾아야 해요", note: 주의}
+    why_replace: ["응급은 아니지만 원인을 찾겠다고 하고", "응급이 아닐 수도 있지만 바로 이유를 찾아야 한다고 하고"]
+  - si: 13
+    line: 3
+    set: {en: "So the dip was brief, and I'll keep watching his number.", ko: "그러니 잠깐 떨어진 것이고, 수치는 계속 지켜볼게요", note: 관찰, icon: monitor}
+    why_replace: ["So로 그러니 일시적인 하락이었다고 맺어요", "So로 그러니 잠깐의 하락이었고 계속 지켜보겠다고 맺어요"]
+  - si: 15
+    line: 2
+    set: {en: "Start with the tube while you bag, and I'll listen for equal breath sounds.", ko: "백 환기를 하면서 튜브부터 보세요, 저는 양쪽 호흡음을 들을게요"}
+    why_whole: "먼저 분리하고 백 환기를 시작하고, 환기를 이어 가는 동안(while you keep bagging) 원인을 따져 보고, 백 환기를 하며 튜브부터(Start with … while you bag) 보라고 한 뒤, 무엇을 찾든(Whatever we find) 수치가 돌아올 때까지 환기를 이어요. Start with는 앞 줄의 원인 목록을, Whatever we find는 앞 줄의 확인 결과를 가리켜서 순서가 하나예요."
+  - si: 18
+    lines:
+      - {en: "He self-extubated — start bag-mask ventilation with 100 percent oxygen.", icon: siren, ko: "자가발관됐어요 — 100퍼센트 산소로 백-마스크 환기를 시작하세요", note: 환기}
+      - {en: "Call the airway team and bring the intubation cart in.", icon: bell, ko: "기도팀을 부르고 삽관 카트를 가져오세요", note: 호출}
+      - {en: "Keep bagging while they come, and I'll assess his own breathing.", icon: stetho, ko: "그들이 오는 동안 계속 백 환기하세요, 저는 스스로 하는 호흡을 사정할게요", note: 사정}
+      - {en: "If I find his own effort is weak, he needs full support until they arrive.", icon: shield, ko: "스스로 하는 노력이 약하면 그들이 올 때까지 완전한 보조가 필요해요", note: 판단}
+    why: "발관을 알리고 바로 백-마스크 환기를 시작하고, 기도팀과 삽관 카트를 곧바로 부르고, 그들이 오는 동안 환기를 이어 가며 스스로 하는 호흡을 사정하고, 사정에서 노력이 약하면 그들이 올 때까지 완전한 보조가 필요하다고 판단해요. they와 I find가 앞 줄을 가리켜서 순서가 하나예요."

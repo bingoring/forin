@@ -1,0 +1,39 @@
+# 단어 수정 (A 검토 W1~W12 + distractorsEn 품사 표)
+words:
+  w-level: {ko: "높이, 수평"}
+  w-line: {distractorsEn: [lead, lane]}
+  w-drip: {ko: "점적 약물"}
+  w-update: {ko: "새 소식을 알려 주다", distractorsKo: ["소식을 미뤄 두다", "소식을 물어보다"]}
+  w-wean: {ko: "(약을) 서서히 끊다"}
+  w-off: {decoyChips: ["of"]}
+  w-proximal: {decoyChips: [proc, some]}
+  w-restart: {decoyChips: [rye, star], cue: "라인이 빠져 끊겼던 승압제를 새 라인으로 다시 돌리는 일"}
+  w-organ: {decoyChips: [ore, gum]}
+  w-flat: {decoyChips: [flap], distractorsEn: [fast, flaky]}
+  w-small: {cue: "두 수치가 몇 점밖에 안 벌어졌을 때 붙이는 말"}
+  w-low: {cue: "목표선에 못 미치는 혈압을 말할 때"}
+  w-reassess: {cue: "처치 뒤 처음 사정한 항목을 한 번 더 살피는 일"}
+  w-right: {distractorsEn: [light, bright]}
+  w-soon: {distractorsEn: [seldom, once]}
+  w-enough: {distractorsEn: [tough, rough]}
+  w-increase: {distractorsEn: [decrease, incline]}
+  w-second: {distractorsEn: [secret, secure]}
+  w-bubble: {distractorsEn: [rubble, trouble]}
+  w-flush: {distractorsEn: [flash, flinch]}
+  w-rate: {distractorsEn: [range, ratio]}
+  w-site: {distractorsEn: [sight, side]}
+  w-access: {distractorsEn: [excess, abscess]}
+  w-place: {distractorsEn: [pace, plan]}
+  w-response: {distractorsEn: [respite, repose]}
+  w-elevate: {distractorsEn: [alleviate, evaluate]}
+  w-hand: {distractorsEn: [band, land]}
+  w-document: {distractorsEn: [comment, dominate]}
+  w-crash: {distractorsEn: [crush, clash]}
+  w-matter: {distractorsEn: [mutter, batter]}
+remove: [w-blood, w-color, w-first]
+change_why:
+  w-level: "ko '수평/눈금'은 문장 4개(at the level of your heart 등)의 뜻 '높이'를 담지 못함 — '높이, 수평'으로"
+  w-drip: "ko '정맥 주입'이 w-infusion '주입'과 거의 같아 듣고 뜻 고르기에서 정답이 둘이 된다 — '점적 약물'로 가름"
+  w-update: "ko '알려주다'가 w-tell '알리다'와 같아 정답이 둘이 된다 — '새 소식을 알려 주다'로 가름"
+  w-wean: "ko '(약을) 이탈하다'는 어색한 한국어 — '(약을) 서서히 끊다'로"
+remove_why: "쉬운 단어 태그 빼기(결정 11) — 어느 문장도 태그하지 않게 됐다"

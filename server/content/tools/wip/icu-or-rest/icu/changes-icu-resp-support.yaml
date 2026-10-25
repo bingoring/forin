@@ -56,7 +56,7 @@ changes:
   id: w-relief
   fields:
   - ko
-  why: comfort와 ko가 둘 다 '편안함'이라 정답이 둘이 됨
+  why: ko를 증상 완화(숨이 편해짐)에 맞게 — comfort(편안함)와 겹치지 않으면서 '안도감'이라는 틀린 뜻도 피함(fix-icu-resp-support-A)
 - kind: word
   id: w-control
   fields:
@@ -117,7 +117,7 @@ changes:
   index: 1
   fields:
   - words
-  why: '쉬운 단어 태그 빼기: body'
+  why: '쉬운 단어 태그 빼기: body / 쉬운·잘못 붙은 단어 태그 정리'
 - kind: sentence
   situation: HFNC 설정·적용
   index: 2
@@ -129,19 +129,23 @@ changes:
   index: 3
   fields:
   - words
-  why: '쉬운 단어 태그 빼기: first'
+  - en
+  - ko
+  - chunks
+  why: '쉬운 단어 태그 빼기: first / 틀리거나 부자연스러운 문장 수정(검토 A) / 구 경계에서 다시 쪼갬 / 쉬운·잘못 붙은 단어 태그 정리'
 - kind: sentence
   situation: HFNC 설정·적용
   index: 5
   fields:
   - words
-  why: '쉬운 단어 태그 빼기: body'
+  why: '쉬운 단어 태그 빼기: body / 쉬운·잘못 붙은 단어 태그 정리'
 - kind: sentence
   situation: 산소전달장치 단계 이해
   index: 3
   fields:
   - words
-  why: '쉬운 단어 태그 빼기: now'
+  - ko
+  why: '쉬운 단어 태그 빼기: now / 틀리거나 부자연스러운 문장 수정(검토 A) / 쉬운·잘못 붙은 단어 태그 정리'
 - kind: sentence
   situation: 호흡노력·보조근 사용 관찰
   index: 1
@@ -153,13 +157,13 @@ changes:
   index: 2
   fields:
   - words
-  why: '쉬운 단어 태그 빼기: give'
+  why: '쉬운 단어 태그 빼기: give / 쉬운·잘못 붙은 단어 태그 정리'
 - kind: sentence
   situation: 호흡노력·보조근 사용 관찰
   index: 4
   fields:
   - words
-  why: '쉬운 단어 태그 빼기: help'
+  why: '쉬운 단어 태그 빼기: help / 쉬운·잘못 붙은 단어 태그 정리'
 - kind: sentence
   situation: ABG 채혈·기초 해석
   index: 2
@@ -183,7 +187,7 @@ changes:
   index: 0
   fields:
   - words
-  why: '쉬운 단어 태그 빼기: patient'
+  why: '쉬운 단어 태그 빼기: patient / 쉬운·잘못 붙은 단어 태그 정리'
 - kind: sentence
   situation: NIV 적응증·금기 판단
   index: 3
@@ -195,7 +199,7 @@ changes:
   index: 4
   fields:
   - words
-  why: '쉬운 단어 태그 빼기: patient'
+  why: '쉬운 단어 태그 빼기: patient / 쉬운·잘못 붙은 단어 태그 정리'
 - kind: sentence
   situation: 고탄산 호흡부전 BiPAP
   index: 0
@@ -207,7 +211,10 @@ changes:
   index: 4
   fields:
   - words
-  why: '쉬운 단어 태그 빼기: help'
+  - en
+  - ko
+  - chunks
+  why: '쉬운 단어 태그 빼기: help / 틀리거나 부자연스러운 문장 수정(검토 A) / 구 경계에서 다시 쪼갬 / 쉬운·잘못 붙은 단어 태그 정리'
 - kind: sentence
   situation: 심인성 폐부종 CPAP
   index: 2
@@ -219,7 +226,8 @@ changes:
   index: 5
   fields:
   - words
-  why: '쉬운 단어 태그 빼기: soon'
+  - ko
+  why: '쉬운 단어 태그 빼기: soon / 틀리거나 부자연스러운 문장 수정(검토 A)'
 - kind: sentence
   situation: NIV 부조화·불내성 관리
   index: 2
@@ -237,7 +245,7 @@ changes:
   index: 4
   fields:
   - words
-  why: '쉬운 단어 태그 빼기: head'
+  why: '쉬운 단어 태그 빼기: head / 쉬운·잘못 붙은 단어 태그 정리'
 - kind: sentence
   situation: NIV에서 삽관 전환 판단
   index: 2
@@ -255,7 +263,8 @@ changes:
   index: 4
   fields:
   - words
-  why: '쉬운 단어 태그 빼기: now'
+  - chunks
+  why: '쉬운 단어 태그 빼기: now / 구 경계에서 다시 쪼갬 / 쉬운·잘못 붙은 단어 태그 정리'
 - kind: sentence
   situation: 산소 목표 개별화
   index: 0
@@ -285,13 +294,16 @@ changes:
   index: 0
   fields:
   - words
-  why: '쉬운 단어 태그 빼기: now'
+  why: '쉬운 단어 태그 빼기: now / 쉬운·잘못 붙은 단어 태그 정리'
 - kind: sentence
   situation: NIV 지연 호흡정지 임박
   index: 3
   fields:
   - words
-  why: '쉬운 단어 태그 빼기: now'
+  - en
+  - ko
+  - chunks
+  why: '쉬운 단어 태그 빼기: now / 틀리거나 부자연스러운 문장 수정(검토 A) / 구 경계에서 다시 쪼갬 / 쉬운·잘못 붙은 단어 태그 정리'
 - kind: sentence
   situation: NIV 지연 호흡정지 임박
   index: 4
@@ -327,7 +339,8 @@ changes:
   index: 0
   fields:
   - words
-  why: '쉬운 단어 태그 빼기: good'
+  - ko
+  why: '쉬운 단어 태그 빼기: good / 틀리거나 부자연스러운 문장 수정(검토 A)'
 - kind: sentence
   situation: 대량 각혈 동반 호흡부전
   index: 1
@@ -352,3 +365,185 @@ changes:
   fields:
   - words
   why: '쉬운 단어 태그 빼기: now'
+- kind: word
+  id: w-rate
+  fields:
+  - ko
+  why: ko를 문장 속 뜻에 맞게(fix-icu-resp-support-A)
+- kind: word
+  id: w-percentage
+  fields:
+  - example
+  why: 예문으로 쓰던 문장이 바뀌어 새 문장으로
+- kind: word
+  id: w-fit
+  fields:
+  - ko
+  why: ko를 문장 속 뜻에 맞게(fix-icu-resp-support-A)
+- kind: word
+  id: w-wrist
+  fields:
+  - example
+  why: 예문으로 쓰던 문장이 바뀌어 새 문장으로
+- kind: word
+  id: w-draw
+  fields:
+  - example
+  why: 예문으로 쓰던 문장이 바뀌어 새 문장으로
+- kind: word
+  id: w-dangerous
+  fields:
+  - en
+  - ko
+  - ipa
+  why: 헤드워드를 문장 속 제 모습(부사)으로; ko를 문장 속 뜻에 맞게(fix-icu-resp-support-A); 헤드워드에 맞춤
+- kind: word
+  id: w-aggressive
+  fields:
+  - en
+  - ko
+  - ipa
+  why: 헤드워드를 문장 속 제 모습(부사)으로; ko를 문장 속 뜻에 맞게(fix-icu-resp-support-A); 헤드워드에 맞춤
+- kind: word-remove
+  id: w-need
+  why: 너무 쉬움 — 어느 문장도 태그하지 않게 됨(공통 쉬운 단어 목록 · fix-icu-resp-support-A)
+- kind: word-remove
+  id: w-slow
+  why: 너무 쉬움 — 어느 문장도 태그하지 않게 됨(공통 쉬운 단어 목록 · fix-icu-resp-support-A)
+- kind: word-remove
+  id: w-start
+  why: 너무 쉬움 — 어느 문장도 태그하지 않게 됨(공통 쉬운 단어 목록 · fix-icu-resp-support-A)
+- kind: word-remove
+  id: w-nose
+  why: 너무 쉬움 — 어느 문장도 태그하지 않게 됨(공통 쉬운 단어 목록 · fix-icu-resp-support-A)
+- kind: sentence
+  situation: 저산소성 호흡부전 초기 사정
+  index: 1
+  fields:
+  - words
+  why: 쉬운·잘못 붙은 단어 태그 정리
+- kind: sentence
+  situation: 저산소성 호흡부전 초기 사정
+  index: 5
+  fields:
+  - words
+  why: 쉬운·잘못 붙은 단어 태그 정리
+- kind: sentence
+  situation: HFNC 설정·적용
+  index: 4
+  fields:
+  - ko
+  why: 틀리거나 부자연스러운 문장 수정(검토 A)
+- kind: sentence
+  situation: NIV 마스크 착용·핏
+  index: 1
+  fields:
+  - ko
+  why: 틀리거나 부자연스러운 문장 수정(검토 A)
+- kind: sentence
+  situation: NIV 마스크 착용·핏
+  index: 2
+  fields:
+  - words
+  why: 쉬운·잘못 붙은 단어 태그 정리
+- kind: sentence
+  situation: 산소전달장치 단계 이해
+  index: 1
+  fields:
+  - words
+  why: 쉬운·잘못 붙은 단어 태그 정리
+- kind: sentence
+  situation: 산소전달장치 단계 이해
+  index: 5
+  fields:
+  - chunks
+  why: 구 경계에서 다시 쪼갬
+- kind: sentence
+  situation: 호흡노력·보조근 사용 관찰
+  index: 3
+  fields:
+  - chunks
+  why: 구 경계에서 다시 쪼갬
+- kind: sentence
+  situation: ABG 채혈·기초 해석
+  index: 3
+  fields:
+  - en
+  - chunks
+  why: 틀리거나 부자연스러운 문장 수정(검토 A) / 구 경계에서 다시 쪼갬
+- kind: sentence
+  situation: HFNC ROX index 반응 평가
+  index: 2
+  fields:
+  - words
+  why: 쉬운·잘못 붙은 단어 태그 정리
+- kind: sentence
+  situation: 고탄산 호흡부전 BiPAP
+  index: 2
+  fields:
+  - ko
+  why: 틀리거나 부자연스러운 문장 수정(검토 A)
+- kind: sentence
+  situation: 고탄산 호흡부전 BiPAP
+  index: 5
+  fields:
+  - ko
+  why: 틀리거나 부자연스러운 문장 수정(검토 A)
+- kind: sentence
+  situation: NIV 중 흡인 위험 관리
+  index: 3
+  fields:
+  - chunks
+  why: 구 경계에서 다시 쪼갬
+- kind: sentence
+  situation: 면역저하 환자 NIV 선택
+  index: 5
+  fields:
+  - words
+  why: 쉬운·잘못 붙은 단어 태그 정리
+- kind: sentence
+  situation: 산소 목표 개별화
+  index: 5
+  fields:
+  - words
+  why: 쉬운·잘못 붙은 단어 태그 정리
+- kind: sentence
+  situation: NIV 지연 호흡정지 임박
+  index: 5
+  fields:
+  - en
+  - ko
+  - chunks
+  why: 틀리거나 부자연스러운 문장 수정(검토 A) / 구 경계에서 다시 쪼갬
+- kind: sentence
+  situation: 마스크 불내성 극심 저산소
+  index: 1
+  fields:
+  - words
+  why: 쉬운·잘못 붙은 단어 태그 정리
+- kind: sentence
+  situation: 대량 각혈 동반 호흡부전
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 틀리거나 부자연스러운 문장 수정(검토 A) / 구 경계에서 다시 쪼갬 / 쉬운·잘못 붙은 단어 태그 정리
+- kind: sentence
+  situation: 완화 목적 호흡곤란 관리
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  why: 틀리거나 부자연스러운 문장 수정(검토 A) / 구 경계에서 다시 쪼갬
+- kind: sentence
+  situation: 완화 목적 호흡곤란 관리
+  index: 5
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 틀리거나 부자연스러운 문장 수정(검토 A) / 구 경계에서 다시 쪼갬 / 쉬운·잘못 붙은 단어 태그 정리

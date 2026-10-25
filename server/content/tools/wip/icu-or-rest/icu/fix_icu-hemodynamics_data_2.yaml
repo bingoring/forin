@@ -1,0 +1,133 @@
+# 뉘앙스·order 수정 (A 검토 N1~N17 + B 검토 order·안전). sit=상황 번호(1부터), i=뉘앙스 번호(0부터)
+nuance:
+  - {sit: 1, i: 0, kind: pair, set: {decoys: ["into the vein"]}}
+  - {sit: 1, i: 1, kind: context, scenes_patch: {0: {en: "The waveform looks dampened, so I'm checking the line for bubbles."}}}
+  - sit: 2
+    i: 0
+    kind: slider
+    set:
+      scale: [note it and keep watching, recheck the cuff size, call the doctor]
+      answerAt: 0
+  - sit: 3
+    i: 0
+    kind: slider
+    set:
+      scale: [note it for later, mention it at handoff, fix the rate before you start]
+      answerAt: 2
+      why: "라벨·처방·백이 맞아도 펌프 속도가 처방과 다르면 시작하기 전에 바로잡고 다시 확인해요. 나중으로 미루거나 인계 때 말하고 넘어가지 않아요."
+  - sit: 3
+    i: 1
+    kind: swap
+    set:
+      notes:
+        "double-check": "고위험 약 인수 때 쓰는 확인 요청 말이에요. 실제 독립 이중 확인은 값을 불러 주지 않고 두 사람이 각자 따로 처방·라벨·펌프를 대조해요."
+        "glance at": "슬쩍 훑어본다는 느낌이라 고위험 약에는 약해요."
+        "look at": "말은 되지만 '따로 한 번 더 확인'한다는 뜻이 안 나와요."
+      why: "승압제 같은 고위험 약물은 두 사람이 따로 확인하는 절차(independent double-check)가 흔해요. 인수 전에 그 확인을 청할 때는 double-check라고 해야 뜻이 분명해져요."
+  - {sit: 6, i: 0, kind: pair, set: {decoys: ["into the vein"]}}
+  - sit: 8
+    i: 0
+    kind: slider
+    set:
+      example: "Adding a second pressor is a normal next step when one isn't enough."
+      exKo: "약 하나로 부족할 때 승압제를 하나 더 쓰는 건 흔한 다음 단계예요."
+  - {sit: 6, i: 1, kind: context, scenes_patch: {0: {en: "Re-level the line and zero it so the reading is accurate."}}}
+  - sit: 10
+    i: 0
+    kind: pair
+    set:
+      decoys: ["the cuff size"]
+      why: "동맥압 파형이 둔해지는 흔한 원인은 공기 방울, 관의 꼬임, 헐거운 연결부예요. 공기 방울은 환자 쪽 밸브를 잠그고 바깥 포트로 플러시해서 빼요 — 환자 쪽으로 밀어 넣지 않아요. 헐거운 연결부는 조이고, 꼬임은 펴서 해결해요."
+  - {sit: 10, i: 1, kind: context, scenes_patch: {0: {en: "The trace looks overdamped, so let's check for bubbles before the fast-flush test."}}}
+  - sit: 11
+    i: 1
+    kind: swap
+    options_replace: {"stopping cold": "switching off"}
+    notes_rename: {"stopping cold": "switching off"}
+    set_notes: {"switching off": "끈다는 뜻이라 '조금씩'과 맞지 않아요."}
+  - sit: 13
+    i: 0
+    kind: slider
+    set:
+      cue: "Nurse: \"The IV site is pale and swollen, and the arm feels tight.\""
+      why: "자리가 창백하고 붓는 건 약이 혈관 밖으로 새고 있다는 신호일 수 있어요. 속도를 줄이는 게 아니라 바로 주입을 멈추고 의사에게 알려요."
+  - sit: 15
+    i: 0
+    kind: slider
+    set:
+      scale: [wait and see, titrate the new pump up, call the doctor stat]
+      answerAt: 1
+      why: "전환 중 압력이 떨어지면 새 펌프를 처방 범위 안에서 올려서 맞춰요. 그냥 기다리면 약이 모자라 혈압이 더 떨어질 수 있고, 그래도 안 되면 바로 의사를 불러요."
+  - sit: 16
+    i: 0
+    kind: slider
+    set:
+      scale: [wait for rounds, keep watching, escalate now]
+      answerAt: 2
+  - sit: 18
+    i: 0
+    kind: slider
+    set:
+      why: "승압제가 끊겨 혈압이 빠르게 떨어지면 혼자 해결하려 하지 말고 바로 도움을 요청해요. 'extra hands'는 일손이 더 필요하다는 말이에요."
+  - sit: 20
+    i: 0
+    kind: slider
+    set:
+      scale: [an optional extra, a standard step, a last resort]
+      answerAt: 1
+  - sit: 20
+    i: 1
+    kind: context
+    scenes_patch:
+      2:
+        en: "We're starting a stress-dose steroid for relative adrenal insufficiency."
+        fix: "We're starting a steroid that helps her body respond to the blood pressure medicines."
+  - sit: 21
+    i: 1
+    kind: context
+    scenes_patch:
+      2:
+        fix: "A machine can take over some of the heart's work to give it time to rest, and the team is getting ready for it."
+order:
+  - sit: 5
+    lines_patch:
+      1: {en: "To keep watching it, I'm charting the vitals every hour.", ko: "계속 지켜보려고 매시간 활력징후를 기록하고 있어요", note: 기록, icon: pencil}
+  - sit: 8
+    set:
+      why: "추가 사실을 먼저 알리고, 대체가 아니라는 점을 잇고, 왜 병용하는지를 흔한 다음 단계라고 사실대로 설명한 뒤, 변화를 알리겠다고 약속해요."
+    lines_patch:
+      2: {en: "That combination is a normal next step when one isn't enough.", ko: "그 병용은 약 하나로 부족할 때 흔한 다음 단계예요", note: 단계, icon: shield}
+  - sit: 10
+    set:
+      why: "이상한 파형을 알리고, 공기 방울·꼬임·연결부를 먼저 점검해 정리한 뒤, 그다음에 fast-flush 검사를 하고, 괜찮아 보이면 파형과 수치를 다시 확인해요. 공기가 남은 채 플러시하면 방울을 환자 쪽으로 밀어 넣을 수 있어서 점검이 먼저예요."
+    lines_patch:
+      1: {en: "First, I'll look for air bubbles, kinks, or a loose connection.", ko: "먼저 공기 방울, 꼬임, 헐거운 연결을 볼게요", note: 점검, icon: magnify}
+      2: {en: "With those cleared, let me do a fast-flush test to check the system.", ko: "그게 정리되면 빠른 플러시 테스트로 시스템을 확인할게요", note: 검사, icon: gear}
+      3: {en: "If it looks right, the waveform should be sharper, and I'll recheck the number.", ko: "괜찮아 보이면 파형이 선명해질 테고 수치를 다시 볼게요", note: 재확인, icon: check}
+  - sit: 13
+    lines_patch:
+      2: {en: "If the site looks pale or swollen, we stop the infusion right away.", ko: "자리가 창백하거나 부으면 바로 주입을 멈춰요", note: 중단, icon: siren}
+  - sit: 18
+    lines_patch:
+      1: {ko: "도움을 요청해 주세요, 일손이 더 필요해요"}
+  - sit: 16
+    set:
+      why: "상황을 먼저 보고하고, 곧바로 SBAR로 에스컬레이션한 뒤, 그 보고에서 되돌릴 수 있는 원인을 다시 평가하자고 방향을 잡고, 구체적으로 무엇을 확인하는지로 닫아요."
+    lines_patch:
+      1: {en: "I'm escalating this now using SBAR.", ko: "지금 SBAR로 상급자에게 보고할게요", note: 보고, icon: speech}
+      2: {en: "In my report, I'll say we should reassess for a reversible cause.", ko: "보고에서 되돌릴 수 있는 원인을 다시 평가해야 한다고 말할게요", note: 방향, icon: magnify}
+      3: {en: "That means checking for bleeding, infection, or anything else reversible.", ko: "출혈, 감염 등 되돌릴 원인을 확인한다는 뜻이에요", note: 확인, icon: bulb}
+  - sit: 17
+    set:
+      why: "먼저 주입을 멈추고, 의사에게 알리며 팔을 올리고, 의사와 통화하는 동안 처방될 해독제를 말한 뒤, 마지막에 기록해야 응급 조치가 지연되지 않아요."
+    lines_patch:
+      2: {en: "With the physician on the phone, we'll likely need phentolamine to treat the extravasation.", ko: "의사와 통화하면 펜톨아민이 필요할 거예요", note: 처치, icon: pill}
+  - sit: 19
+    lines_patch:
+      3: {en: "We keep preparing for CPR even if her rate picks up after the first dose.", ko: "첫 투여 뒤 심박수가 올라도 CPR 준비는 계속해요", note: 대비, icon: shield}
+  - sit: 20
+    lines_patch:
+      2: {en: "Adding it then is a standard step in shock, not a last resort.", ko: "그때 추가하는 건 쇼크에서 흔한 단계이지 마지막 수단은 아니에요", note: 안심, icon: shield}
+  - sit: 21
+    lines_patch:
+      2: {en: "Their machine can take over some of the heart's work to give it time to rest.", ko: "그 장비가 심장 일 일부를 대신해 심장이 쉴 시간을 줘요", note: 설명, icon: stetho}

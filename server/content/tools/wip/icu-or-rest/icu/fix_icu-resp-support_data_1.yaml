@@ -1,0 +1,106 @@
+# 단어 수정 (fix-icu-resp-support-A: W-1~W-5, W11-1~W11-8)
+remove:
+  - w-need
+  - w-start
+  - w-slow
+  - w-nose
+words:
+  # W-1 품사가 다른 distractorsEn
+  w-check: {distractorsEn: [chart, choke]}
+  w-low: {distractorsEn: [slow, loud]}
+  w-hard: {distractorsEn: [harshly, heavily]}
+  w-work: {distractorsEn: [walk, worry]}
+  w-rate:
+    distractorsEn: [race, rank]
+    ko: 분당 횟수
+    distractorsKo: [지속 시간, 깊이]
+  w-warm: {distractorsEn: [worn, wary]}
+  w-strong: {distractorsEn: [strict, strange]}
+  w-effort: {distractorsEn: [effect, export]}
+  w-dry: {distractorsEn: [dim, wry]}
+  w-fit:
+    distractorsEn: [fist, kit]
+    ko: 적합도
+    exKo: 적합도가 좋으면 가장자리로 바람이 새지 않아요.
+  w-edge: {distractorsEn: [ledge, hedge]}
+  w-skin: {distractorsEn: [sink, shin]}
+  w-rub: {distractorsEn: [rob, rip]}
+  w-device: {distractorsEn: [divider, advice]}
+  w-increase: {distractorsEn: [decrease, encase]}
+  w-high: {distractorsEn: [huge, light]}
+  w-tire: {distractorsEn: [tie, hire]}
+  w-result: {distractorsEn: [remnant, resort]}
+  w-wrist: {distractorsEn: [waist, crest]}
+  w-move: {distractorsEn: [mope, prove]}
+  w-mean: {distractorsEn: [moan, lean]}
+  w-warn: {distractorsEn: [wane, earn]}
+  w-flag:
+    distractorsEn: [flash, flap]
+    cue: 수치가 떨어지면 팀이 놓치지 않게 눈에 띄게 알려 두는 일
+  w-trend: {distractorsEn: [tread, trench]}
+  w-alert: {distractorsEn: [inert, overt]}
+  w-poor: {distractorsEn: [pure, proud]}
+  w-instead: {distractorsEn: [instantly, inside]}
+  w-identify:
+    distractorsEn: [intensify, modify]
+    decoyChips: [ad, dan]
+  w-safe: {distractorsEn: [same, sane]}
+  w-build: {distractorsEn: [bulge, bind]}
+  w-calm: {distractorsEn: [claim, cram]}
+  w-fluid: {distractorsEn: [flute, flush]}
+  w-coach: {distractorsEn: [crouch, coast]}
+  w-remove: {distractorsEn: [renew, remind]}
+  w-fast: {distractorsEn: [last, vastly]}
+  w-harm: {distractorsEn: [charm, farm]}
+  w-target: {distractorsEn: [forget, budget]}
+  w-cause: {distractorsEn: [pause, accuse]}
+  w-bedside: {distractorsEn: [bedtime, bedpan]}
+  w-consciousness: {distractorsEn: [conscience, conciseness]}
+  w-position: {distractorsEn: [petition, partition]}
+  w-honor: {distractorsEn: [hover, hone]}
+  w-wish: {distractorsEn: [dish, wisp]}
+  w-focus: {distractorsEn: [fuss, foster]}
+  w-comfort: {distractorsEn: [compost, conflict]}
+  # W-2 정답으로도 맞거나 너무 가까운 distractorsEn
+  w-percentage: {distractorsEn: [percentile, parentage]}
+  w-finetune: {distractorsEn: [fast-track, front-load]}
+  w-ventilator: {distractorsEn: [incubator, nebulizer]}
+  w-sign: {distractorsEn: [design, sigh]}
+  w-vomit: {distractorsEn: [omit, cough]}
+  w-depressed: {distractorsEn: [depressive, compressed]}
+  # W-3 distractorsKo
+  w-physician: {distractorsKo: [간호사, 약사]}
+  w-team: {distractorsKo: [가족, 환자]}
+  w-max: {distractorsKo: [최소로 하다, 그대로 두다]}
+  # W-4 cue가 ko를 되풀이
+  w-oxygen: {cue: 벽 배관이나 통에서 공급해 포화도를 올리는 기본 치료 기체 — 수치가 떨어지면 가장 먼저 거는 것}
+  w-listen: {cue: 가슴에 도구를 대고 폐에서 나는 소리에 귀 기울이는 동작}
+  w-respond: {cue: 마스크를 대고 나서 몸이 나아지는 기색을 보이는지 지켜볼 때}
+  w-match: {cue: 장비 값을 몸이 필요로 하는 양과 꼭 들어맞게 하는 일}
+  # W-5 decoyChips (뜻 없는 한 글자)
+  w-avoid: {decoyChips: [ov, vyd]}
+  w-against: {decoyChips: [un, gaint]}
+  w-emergent: {decoyChips: [im, mirg]}
+  # W11-2 dangerous -> dangerously
+  w-dangerous:
+    en: dangerously
+    ipa: /ˈdeɪndʒərəsli/
+    ko: 위험할 정도로
+    chips: [[dan, ger, ous, ly]]
+    distractorsEn: [generously, anxiously]
+    distractorsKo: [적당할 정도로, 충분할 정도로]
+    cue: 수치가 생명을 위협할 만큼 낮다고 강조할 때 쓰는 말
+  # W11-3 aggressive -> aggressively
+  w-aggressive:
+    en: aggressively
+    ipa: /əˈɡrɛsɪvli/
+    ko: 적극적으로
+    chips: [[ag, gres, sive, ly]]
+    distractorsEn: [progressively, excessively]
+    distractorsKo: [소극적으로, 수동적으로]
+    cue: 망설이지 않고 강하게 밀어붙이듯 석션할 때
+  # W11-4 relief
+  w-relief:
+    ko: 편해짐
+    distractorsKo: [답답함, 어지럼]
+    cue: 숨 막히던 답답함이 풀리는 것
