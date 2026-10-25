@@ -27,6 +27,12 @@ jest.mock('expo-router', () => {
 import { act, create, type ReactTestInstance } from 'react-test-renderer';
 import { MaterialShelf } from '@/components/lab/MaterialShelf';
 import { RestRoomCard } from '@/components/lounge/RestRoomCard';
+import { trackMounts } from '@/testing/mountRegistry';
+
+// The shelf's NewDot wiggles once on mount (v49, .4s delay): a tree left mounted fires that
+// native-driver animation after this file's module registry is gone, and it crashed an
+// unrelated suite on master CI (guidedTarget, `findNodeHandle` of undefined).
+const track = trackMounts();
 
 const byID = (root: ReactTestInstance, id: string) => root.findAll((n) => n.props?.testID === id);
 const has = (root: ReactTestInstance, id: string) => byID(root, id).length > 0;
@@ -35,7 +41,7 @@ const texts = (root: ReactTestInstance) => root.findAll((n) => String(n.type) ==
 
 async function draw(el: React.ReactElement) {
   let tree!: ReturnType<typeof create>;
-  await act(async () => { tree = create(el); });
+  await act(async () => { tree = track(create(el)); });
   await act(async () => { await Promise.resolve(); await Promise.resolve(); });
   return tree;
 }
