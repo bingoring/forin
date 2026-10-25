@@ -4,7 +4,12 @@
 **PRD:** [prd.md](prd.md) | [prd-tech.md](prd-tech.md)
 **Design handoff:** [inputs/design-handoff_v48/](inputs/design-handoff_v48/README.md) (최신) · [v47](inputs/design-handoff_v47/README.md) · [v42](inputs/design-handoff_v42/README.md) · [v40](inputs/design-handoff_v40/README.md) · [v39](inputs/design-handoff_v39/README.md) · [v38](inputs/design-handoff_v38/README.md) · [v22](inputs/design-handoff_v22/README.md)
 **Decisions (audit):** [DECISIONS.md](DECISIONS.md)
-**Last updated:** 2026-10-17
+**Last updated:** 2026-10-25
+
+> 🔧 **master mobile CI 간헐 실패 원인 수정(2026-10-25).** `387db54`의 `guidedTarget.test` 실패(`findNodeHandle` of undefined)는 그 파일 탓이 아니었다 —
+> `oldHomeDoors.test`(홈 v48 자료 선반)가 트리를 언마운트하지 않아, v49에서 `NewDot`에 붙은 한 번 흔들림(.4s 지연, 네이티브 드라이버)이 파일이 끝난 뒤
+> 같은 워커의 다음 파일 실행 중에 터졌다(`mountRegistry` 머리말의 다섯 번째 사례). 순서 고정 재현(3/3) → `trackMounts` 적용 → 재현 0/3, 전체 jest 3회 그린.
+> 마운트하고 언마운트하지 않는 나머지 두 파일(typewriter·nbInlineSelect)은 같은 방법으로 확인해 새는 타이머 없음. "간헐 1"은 이것이었다.
 
 > 🎨 **v49 홈 v47 풍 맞추기 구현(2026-10-19).** 핸드오프 v49(개정 지시서 응답) 1:1 — 공통 신호 키트 `components/nb/V48.tsx`(Go·GoBar·Ring·Done·Locked·IconDot·NewDot·Pill·Chev,
 > breathe·press·lift·pop·stamp·wiggle·tap 참조 키프레임 대조·reduce motion), 홈 '이어서' 바를 키트로 합침. 일터(G Go 원·연필 원·바인더 들림, E 링·도장·색 칩 범례, H 후광·GoBar),
