@@ -8,7 +8,8 @@ Sonnet 저작 A(단어·뉘앙스) ‖ B(문장 낱장·order) → `combine_halv
 
 | 상태 | 주제 |
 |---|---|
-| A·B 저작 끝남 → **combine부터** | icu-ards-proning · icu-arrhythmia · icu-cardiogenic · icu-hemodynamics · icu-mech-ventilation · icu-resp-support · icu-sedation · icu-shock |
+| **정본 합침(2026-10-25 묶음 1)** | icu-ards-proning · icu-arrhythmia · icu-cardiogenic |
+| A·B 저작 끝남 → **combine부터** | icu-hemodynamics · icu-mech-ventilation · icu-resp-support · icu-sedation · icu-shock |
 | A만 끝남 → **B 저작부터** | icu-airway · icu-delirium |
 | 저작 중 끊김 → **처음부터** | icu-infection-prevention · icu-pain-nonverbal · icu-post-arrest(Fable 표본) · icu-sepsis |
 | 미착수 | ICU 나머지 19 + OR 33 전부(or-massive-transfusion = Fable 표본) |
@@ -25,3 +26,15 @@ Sonnet 저작 A(단어·뉘앙스) ‖ B(문장 낱장·order) → `combine_halv
    → `changes-<주제>.yaml`을 `../../changes/<부서>/`로 복사 → `go run ./cmd/gencontent` →
    `verify_lesson_content.py --dept <부서> --baseline HEAD --changes changes/<부서>` 위반 0 → `go test ./...` → 시뮬레이터 표본 → PR.
 4. 검토(fix-*.md)·판정(judge-*.md)의 **keyPhrase 결정 필요** 항목을 모아 사용자에게 묻는다(파일럿 9건 패턴: 단정 위로, 기증 제안, 의사 판단을 간호사 1인칭으로 등).
+
+## 묶음 진행 기록 (2026-10-25~, Workflow 없이 메인 세션이 서브에이전트로 같은 단계를 돌림)
+
+- 이 기기에는 PyYAML이 없어 세션 venv의 python을 썼다. workflow.js의 ROOT(`/Users/ywyeom/private/forin`)는 다른 기기 경로라 프롬프트에서 바꿔 넘겼다.
+- **묶음 1 (ICU 3주제)**: combine·verify 통과 → Opus 검토 A‖B → Sonnet 수정 → 메인 세션이 verify 재실행 + keyPhrase en 원문 대조(63/63) → `merge-icu/`로 합침.
+  | 주제 | 검토 A(안전) | 검토 B(안전) | changes | 단어 |
+  |---|---|---|---|---|
+  | icu-ards-proning | 142(8) | 77(38) | 120 | 262→251 |
+  | icu-arrhythmia | 158(6) | 80(56) | 121 | 267→264 |
+  | icu-cardiogenic | 80(3) | 55(24) | 94 | 264→255 |
+  fix_*.py는 수정 전 원본을 세션 scratchpad 백업에서 읽는다(재실행 불가 — 결과 yaml이 정본).
+- keyPhrase 결정 대기(en·chunks 미변경): ards S19.1(RT 역할)·S16.0/16.2(앙와위 전 압박)·S10.2(good lung) · arrhythmia 12.1(won't→shouldn't feel)·13.1(most likely)·11.1(safe margin)·12.0(DOAC) · cardiogenic 급성 출혈 "Hold the heparin…"(why에 오더·프로토콜 명시로 임시 대응).

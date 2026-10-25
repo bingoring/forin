@@ -162,7 +162,8 @@ changes:
   index: 1
   fields:
   - words
-  why: 쉬운 단어 태그 빼기
+  - chunks
+  why: 쉬운 단어 태그 빼기 / 구 경계에서 다시 쪼갬
 - kind: sentence
   situation: 심인성 쇼크 초기 사정
   index: 4
@@ -192,13 +193,16 @@ changes:
   index: 1
   fields:
   - words
-  why: 쉬운 단어 태그 빼기
+  - chunks
+  why: 쉬운 단어 태그 빼기 / 구 경계에서 다시 쪼갬
 - kind: sentence
   situation: 수분 균형·체중 모니터
   index: 1
   fields:
   - words
-  why: 쉬운 단어 태그 빼기
+  - en
+  - chunks
+  why: 쉬운 단어 태그 빼기 / 틀리거나 부자연스러운 문장 수정(검토 A) / 구 경계에서 다시 쪼갬
 - kind: sentence
   situation: 수분 균형·체중 모니터
   index: 3
@@ -228,7 +232,9 @@ changes:
   index: 2
   fields:
   - words
-  why: 쉬운 단어 태그 빼기
+  - ko
+  - chunks
+  why: 쉬운 단어 태그 빼기 / 틀리거나 부자연스러운 문장 수정(검토 A) / 구 경계에서 다시 쪼갬
 - kind: sentence
   situation: IABP 타이밍·증강 파형 확인
   index: 0
@@ -246,7 +252,7 @@ changes:
   index: 1
   fields:
   - words
-  why: 쉬운 단어 태그 빼기
+  why: 쉬운 단어 태그 빼기 / 쉬운·잘못 붙은 단어 태그 정리
 - kind: sentence
   situation: 기계보조 중 항응고 모니터
   index: 4
@@ -282,4 +288,218 @@ changes:
   index: 1
   fields:
   - words
-  why: 쉬운 단어 태그 빼기
+  - en
+  - ko
+  - chunks
+  why: 쉬운 단어 태그 빼기 / 틀리거나 부자연스러운 문장 수정(검토 A) / 구 경계에서 다시 쪼갬 / 쉬운·잘못 붙은 단어 태그 정리
+- kind: word
+  id: w-pressure
+  fields:
+  - ko
+  why: ko를 문장 속 뜻에 맞게(fix-icu-cardiogenic-A)
+- kind: word
+  id: w-confirm
+  fields:
+  - ko
+  why: ko를 문장 속 뜻에 맞게(fix-icu-cardiogenic-A)
+- kind: word
+  id: w-run
+  fields:
+  - ko
+  why: ko를 문장 속 뜻에 맞게(fix-icu-cardiogenic-A)
+- kind: word
+  id: w-away
+  fields:
+  - en
+  - ko
+  - ipa
+  why: 헤드워드를 문장 속 제 모습(right away)으로; ko를 문장 속 뜻에 맞게(fix-icu-cardiogenic-A); 헤드워드에 맞춤
+- kind: word
+  id: w-short
+  fields:
+  - ko
+  why: ko를 문장 속 뜻에 맞게(fix-icu-cardiogenic-A)
+- kind: word
+  id: w-drink
+  fields:
+  - example
+  why: 예문으로 쓰던 문장이 바뀌어 새 문장으로
+- kind: word
+  id: w-injured
+  fields:
+  - ko
+  why: ko를 문장 속 뜻에 맞게(fix-icu-cardiogenic-A)
+- kind: word
+  id: w-insertion
+  fields:
+  - ko
+  why: ko를 문장 속 뜻에 맞게(fix-icu-cardiogenic-A)
+- kind: word
+  id: w-further
+  fields:
+  - ko
+  - example
+  why: ko를 문장 속 뜻에 맞게(fix-icu-cardiogenic-A); 예문으로 쓰던 문장이 바뀌어 새 문장으로
+- kind: word
+  id: w-grab
+  fields:
+  - ko
+  why: ko를 문장 속 뜻에 맞게(fix-icu-cardiogenic-A)
+- kind: word
+  id: w-saturated
+  fields:
+  - ko
+  why: ko를 문장 속 뜻에 맞게(fix-icu-cardiogenic-A)
+- kind: word
+  id: w-everything
+  fields:
+  - example
+  why: 예문으로 쓰던 문장이 바뀌어 새 문장으로
+- kind: word-remove
+  id: w-here
+  why: 너무 쉬움 또는 어느 문장도 태그하지 않게 됨(공통 쉬운 단어 목록·문장 수정)
+- kind: word-remove
+  id: w-head
+  why: 너무 쉬움 또는 어느 문장도 태그하지 않게 됨(공통 쉬운 단어 목록·문장 수정)
+- kind: word-remove
+  id: w-more
+  why: 너무 쉬움 또는 어느 문장도 태그하지 않게 됨(공통 쉬운 단어 목록·문장 수정)
+- kind: word-remove
+  id: w-large
+  why: 너무 쉬움 또는 어느 문장도 태그하지 않게 됨(공통 쉬운 단어 목록·문장 수정)
+- kind: word-remove
+  id: w-small
+  why: 너무 쉬움 또는 어느 문장도 태그하지 않게 됨(공통 쉬운 단어 목록·문장 수정)
+- kind: word-remove
+  id: w-behind
+  why: 너무 쉬움 또는 어느 문장도 태그하지 않게 됨(공통 쉬운 단어 목록·문장 수정)
+- kind: word-remove
+  id: w-eye
+  why: 너무 쉬움 또는 어느 문장도 태그하지 않게 됨(공통 쉬운 단어 목록·문장 수정)
+- kind: word-remove
+  id: w-next
+  why: 너무 쉬움 또는 어느 문장도 태그하지 않게 됨(공통 쉬운 단어 목록·문장 수정)
+- kind: word-remove
+  id: w-lot
+  why: 너무 쉬움 또는 어느 문장도 태그하지 않게 됨(공통 쉬운 단어 목록·문장 수정)
+- kind: sentence
+  situation: 심인성 쇼크 초기 사정
+  index: 5
+  fields:
+  - words
+  why: 쉬운·잘못 붙은 단어 태그 정리
+- kind: sentence
+  situation: 12유도 심전도 신속 확보
+  index: 3
+  fields:
+  - words
+  why: 쉬운·잘못 붙은 단어 태그 정리
+- kind: sentence
+  situation: 폐부종 체위·산소 협조
+  index: 1
+  fields:
+  - words
+  why: 쉬운·잘못 붙은 단어 태그 정리
+- kind: sentence
+  situation: 폐부종 체위·산소 협조
+  index: 5
+  fields:
+  - chunks
+  why: 구 경계에서 다시 쪼갬
+- kind: sentence
+  situation: 말초 관류·모틀링 관찰
+  index: 1
+  fields:
+  - chunks
+  why: 구 경계에서 다시 쪼갬
+- kind: sentence
+  situation: 말초 관류·모틀링 관찰
+  index: 3
+  fields:
+  - chunks
+  why: 구 경계에서 다시 쪼갬
+- kind: sentence
+  situation: 밀리논과 도부타민 선택 상황
+  index: 0
+  fields:
+  - words
+  why: 쉬운·잘못 붙은 단어 태그 정리
+- kind: sentence
+  situation: IABP 삽입 전 준비·설명
+  index: 1
+  fields:
+  - words
+  why: 쉬운·잘못 붙은 단어 태그 정리
+- kind: sentence
+  situation: IABP 삽입 전 준비·설명
+  index: 3
+  fields:
+  - chunks
+  - words
+  why: 구 경계에서 다시 쪼갬 / 쉬운·잘못 붙은 단어 태그 정리
+- kind: sentence
+  situation: IABP 타이밍·증강 파형 확인
+  index: 1
+  fields:
+  - chunks
+  why: 구 경계에서 다시 쪼갬
+- kind: sentence
+  situation: IABP 타이밍·증강 파형 확인
+  index: 4
+  fields:
+  - words
+  why: 쉬운·잘못 붙은 단어 태그 정리
+- kind: sentence
+  situation: 우심부전 동반 관리
+  index: 2
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 틀리거나 부자연스러운 문장 수정(검토 A) / 구 경계에서 다시 쪼갬 / 쉬운·잘못 붙은 단어 태그 정리
+- kind: sentence
+  situation: 우심부전 동반 관리
+  index: 4
+  fields:
+  - words
+  why: 쉬운·잘못 붙은 단어 태그 정리
+- kind: sentence
+  situation: 기계보조 중 항응고 모니터
+  index: 1
+  fields:
+  - chunks
+  why: 구 경계에서 다시 쪼갬
+- kind: sentence
+  situation: 불응성 심인성 쇼크 ECMO 고려
+  index: 1
+  fields:
+  - chunks
+  why: 구 경계에서 다시 쪼갬
+- kind: sentence
+  situation: 심실빈맥·세동 동반 급변
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 틀리거나 부자연스러운 문장 수정(검토 A) / 구 경계에서 다시 쪼갬 / 쉬운·잘못 붙은 단어 태그 정리
+- kind: sentence
+  situation: 기계보조 중 급성 출혈
+  index: 1
+  fields:
+  - ko
+  why: 틀리거나 부자연스러운 문장 수정(검토 A)
+- kind: sentence
+  situation: 기계보조 환자 이송 관리
+  index: 1
+  fields:
+  - chunks
+  why: 구 경계에서 다시 쪼갬
+- kind: sentence
+  situation: 회복 불가 심부전 목표 전환
+  index: 4
+  fields:
+  - words
+  why: 쉬운·잘못 붙은 단어 태그 정리

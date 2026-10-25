@@ -1,0 +1,42 @@
+# 단어 수정 데이터 — distractorsEn 표는 fix-icu-ards-proning-A.md 의 W-표에서 읽는다
+words:
+  w-train-of-four:
+    ko: "네 번 연속 자극 검사"
+    distractorsKo: ["단일 자극 반응 검사", "강직 자극 반응 검사"]
+  w-tof:
+    ko: "연속 자극 반응 수"
+    distractorsKo: ["진정 단계 점수", "통증 단계 점수"]
+  w-sat:
+    ko: "포화도 수치(약칭)"
+    distractorsKo: ["맥박 수치(약칭)", "혈압 수치(약칭)"]
+  w-below:
+    ko: "밑도는"
+    distractorsKo: ["웃도는", "맞먹는"]
+  w-pressure:
+    ko: "압력(압박)"
+    distractorsKo: ["마찰(문지름)", "습기(축축함)"]
+  w-rate:
+    cue: "영양액이 펌프로 한 시간에 얼마만큼씩 들어가는지 정해 둔 값"
+  w-moist:
+    cue: "마르지 않고 물기가 알맞게 남아 있는 상태 — 눈에 연고를 넣는 이유"
+  w-overdistension:
+    decoyChips: ["dys", "tent"]
+decoy_chip_replace:
+  w-venous: {noose: nose}
+  w-ready: {die: dye}
+  w-depth: {death: debt}
+  w-gather: {gat: gad}
+  w-call: {cull: cell}
+remove:
+  # D-10 확실 + D-11
+  - w-tonight
+  - w-again
+  - w-before
+  - w-first
+  - w-give
+  - w-get
+  - w-need
+  - w-soon
+  - w-second
+  - w-cricoid
+  - w-flat
