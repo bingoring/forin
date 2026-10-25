@@ -22,14 +22,16 @@
 // `entries`가 이미 목표 부서를 뺀 나머지 전부다 — 서버의 `freeRoam`은 목표를 빼고 온다.
 // 그래서 목표 부서는 서가에 다시 그리지 않는다. 그래도 방어적으로 한 번 더 걸러 둔다.
 import { useRef, useState } from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { Animated, Pressable, Text, View } from 'react-native';
 import type { FreeRoamEntry } from '@/api/client';
 import { NbIcon } from '@/components/nb/NbIcon';
-import { NbButton, NbPaper, NbTag, nbText } from '@/components/nb/NbUI';
+import { NbPaper, NbTag, nbText } from '@/components/nb/NbUI';
+import { Go, IconDot } from '@/components/nb/V48';
+import { useV48Press } from '@/components/nb/nbMotion';
 import { deptNbIcon, deptSpineColor } from '@/data/campus';
 import type { BinderRect } from '@/data/journeyBinderFly';
 import { nb, nbFonts } from '@/theme/nb';
-import { type Translate, useT } from '@/i18n';
+import { useT } from '@/i18n';
 import type { JourneyCurriculum } from './JourneyMap';
 import { BuildingTabs, shelfBuildings, useBuildingLabel } from './BuildingTabs';
 import { measureBinderRect } from './measureBinderRect';
@@ -69,20 +71,6 @@ export function isTopicDone(c: JourneyCurriculum): boolean {
 }
 
 // ── 내 부서 — 책상에 펼쳐 둔 바인더 ──────────────────────────────────────────
-
-/** 참조의 `주제 2/6 완료 · 지금 '중증 응대' 13/34` 한 줄. 진행 중인 주제가 없으면
- *  뒷부분을 지어내지 않고 앞부분만 낸다. */
-function goalSubline(t: Translate, curricula: JourneyCurriculum[]): string {
-  const done = curricula.filter(isTopicDone).length;
-  const head = t('journey.goalTopics', { done, total: curricula.length });
-  const cur = curricula.find((c) => c.resume);
-  if (!cur) return head;
-  return `${head} · ${t('journey.goalNow', {
-    name: cur.name ?? cur.themeKey ?? '',
-    done: cur.done ?? 0,
-    total: cur.total ?? 0,
-  })}`;
-}
 
 /** 주제를 순서대로 n묶음으로 나눈다 — 앞 묶음부터 하나씩 더 받는다(35 → 6·6·6·6·6·5).
  *  주제가 n개보다 적으면 주제 하나가 한 칸이다(빈 칸을 지어내지 않는다). */
@@ -143,32 +131,31 @@ function GoalDeptCard({ goalDept, goalCurricula, inferred, onOpen, onChangeGoal 
       }}
     >
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-        {/* 아이콘 액자 — 부서 색을 옅게 깐다(참조: rgba(199,81,70,.12)를 ER 색에서 뽑았다). */}
-        <View style={{
-          width: 44, height: 44, borderWidth: 1.6, borderColor: nb.ink,
-          backgroundColor: `${spine}1F`, alignItems: 'center', justifyContent: 'center',
-          transform: [{ rotate: '-3deg' }],
-        }}>
-          <NbIcon name={deptNbIcon(`SCN-${goalDept}-00001`)} size={26} />
-        </View>
+        {/* v48 — 아이콘 원(IconDot 46, 부서 색을 옅게 깐다). */}
+        <IconDot name={deptNbIcon(`SCN-${goalDept}-00001`)} size={46} bg={`${spine}24`} rot={-5} />
 
         <View style={{ flex: 1, minWidth: 0 }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-            <Text numberOfLines={1} style={[nbText.hand(19), { flexShrink: 1 }]}>
-              {t('journey.goalBinder', { dept: t(`dept.short.${goalDept}`) })}
+            <Text numberOfLines={1} style={[nbText.hand(21), { flexShrink: 1, lineHeight: 21 }]}>
+              {t(`dept.short.${goalDept}`)}
             </Text>
-            <NbTag color={GOAL_RING} rot={-2}>{t('journey.mineTag')}</NbTag>
             {/* 추론된 목표는 저장되지 않는다(J4) — 학습자가 고르기 전까지는 티를 낸다. */}
             {!!inferred && <NbTag color={nb.soft}>{t('journey.inferredTag')}</NbTag>}
           </View>
-          <Text numberOfLines={1} style={[nbText.body(10.5, nb.soft), { marginTop: 2 }]}>
-            {goalSubline(t, goalCurricula)}
-          </Text>
         </View>
 
-        <NbButton variant="ink" size="sm" iconRight="chevronRight" iconColor={nb.paper} onPress={() => onOpen(goalDept)}>
-          {t('journey.resumeAction')}
-        </NbButton>
+        {/* 목표 바꾸기 — 이 화면이 목표를 바꾸는 유일한 입구(V2·J5). v48: 글 링크 → 연필 IconDot. */}
+        <Pressable
+          testID="binder-shelf-change-goal"
+          onPress={onChangeGoal}
+          hitSlop={8}
+          accessibilityRole="button"
+          accessibilityLabel={t('journey.changeGoal')}
+          style={{ alignSelf: 'flex-start', marginTop: -4 }}
+        >
+          <IconDot name="pencil" size={30} rot={6} />
+        </Pressable>
+        <Go size={46} onPress={() => onOpen(goalDept)} accessibilityLabel={t('journey.resumeAction')} testID="binder-shelf-resume" />
       </View>
 
       {/* 진행 막대 — 참조 G처럼 한 줄 6칸, 칸 하나 = 이어진 주제 한 묶음. */}
@@ -177,19 +164,6 @@ function GoalDeptCard({ goalDept, goalCurricula, inferred, onOpen, onChangeGoal 
           {groups.map((g, i) => <TopicSegment key={g[0]?.themeKey || i} group={g} index={i} />)}
         </View>
       )}
-
-      <Pressable
-        testID="binder-shelf-change-goal"
-        onPress={onChangeGoal}
-        hitSlop={8}
-        accessibilityRole="button"
-        accessibilityLabel={t('journey.changeGoal')}
-        style={{ alignSelf: 'flex-start', marginTop: 10 }}
-      >
-        <Text style={[nbText.body(12, nb.blue), { textDecorationLine: 'underline' }]}>
-          {t('journey.changeGoal')}
-        </Text>
-      </Pressable>
     </NbPaper>
   );
 }
@@ -225,6 +199,7 @@ function Binder({ entry, index, width, onOpen }: {
   // 잰다** — 서가가 스크롤되므로 마운트 때 잰 값은 아래쪽 줄에서 거짓이 된다
   // (`measureBinderRect.ts`의 주석). 좌표가 늦거나 안 오면 연출 없이 그냥 연다.
   const viewRef = useRef<View>(null);
+  const lift = useV48Press('lift');
 
   const onPress = () => {
     measureBinderRect(viewRef, (rect) => {
@@ -240,10 +215,14 @@ function Binder({ entry, index, width, onOpen }: {
       ref={viewRef}
       testID={`binder-shelf-card-${dept}`}
       onPress={onPress}
+      onPressIn={lift.onPressIn}
+      onPressOut={lift.onPressOut}
       accessibilityRole="button"
       accessibilityLabel={t(`dept.${dept}`)}
       style={{ width, height, transform: [{ rotate: `${BINDER_TILT[index % BINDER_TILT.length]}deg` }] }}
     >
+      {/* v48 lift — 눌리면 위로 3px · -2°. 꽂힌 기울기는 바깥 Pressable이 지닌다(좌표 재기도 거기서). */}
+      <Animated.View style={{ position: 'absolute', left: 0, top: 0, right: 0, bottom: 0, transform: lift.transform }}>
       {/* 바인더 몸통 — 오른쪽 모서리만 더 둥글다(참조: 3px 6px 6px 3px). */}
       <View style={{
         position: 'absolute', left: 0, top: 0, right: 0, bottom: 0,
@@ -301,6 +280,7 @@ function Binder({ entry, index, width, onOpen }: {
       }}>
         {pct > 0 && <View style={{ width: `${pct}%`, height: '100%', backgroundColor: spine }} />}
       </View>
+      </Animated.View>
     </Pressable>
   );
 }
@@ -350,7 +330,6 @@ export function BinderShelf({ goalDept, goalBuilding, goalCurricula, entries, in
 
       <View style={{ paddingHorizontal: 20 }}>
         <Text style={[nbText.hand(16), { marginTop: 4 }]}>{t('journey.shelfHeading')}</Text>
-        <Text style={[nbText.body(10.5, nb.soft), { marginTop: 2 }]}>{t('journey.shelfHint')}</Text>
 
         {!!active && (
           <BuildingTabs tabs={buildings} active={active.building} onPick={setPicked} />
@@ -366,9 +345,6 @@ export function BinderShelf({ goalDept, goalBuilding, goalCurricula, entries, in
           >
             <View style={{ flexDirection: 'row', alignItems: 'baseline', gap: 8 }}>
               <Text numberOfLines={1} style={nbText.hand(17)}>{label(active.building)}</Text>
-              <Text numberOfLines={1} style={nbText.body(10.5, nb.soft)}>
-                {t('journey.buildingPanel', { binders: active.entries.length, done: active.passed, total: active.total })}
-              </Text>
             </View>
         {/* 이 View 자신은 패딩이 없다 — onLayout이 재는 폭이 곧 바인더가 나눠 가질 폭이다. */}
         <View testID="binder-shelf-rows" onLayout={(e) => setShelfWidth(e.nativeEvent.layout.width)}>

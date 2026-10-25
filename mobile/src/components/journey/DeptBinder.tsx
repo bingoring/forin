@@ -20,8 +20,9 @@
 // (아무 표시 없음) — 그 외의 어떤 문구도 지어내지 않는다.
 import { useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
-import { NbButton, NbInkStamp, NbPaper, NbTag, nbText } from '@/components/nb/NbUI';
-import { NbIcon } from '@/components/nb/NbIcon';
+import { NbPaper, nbText } from '@/components/nb/NbUI';
+import { Done, Go, IconDot, Ring } from '@/components/nb/V48';
+import { NbIcon, type NbIconName } from '@/components/nb/NbIcon';
 import { nb, nbFonts } from '@/theme/nb';
 import { useT } from '@/i18n';
 import type { JourneyCurriculum } from './JourneyMap';
@@ -46,20 +47,6 @@ function SectionLabel({ children }: { children: string }) {
   return (
     <Text style={[nbText.hand(15, nb.soft), { marginTop: 18, marginBottom: 8 }]}>
       {children}
-    </Text>
-  );
-}
-
-// ── 1. 부서 표지 — 격자 위 ───────────────────────────────────────────────────
-
-function BinderSummary({ curricula }: { curricula: JourneyCurriculum[] }) {
-  const t = useT();
-  const themes = curricula.length;
-  const situations = curricula.reduce((a, c) => a + (c.total ?? 0), 0);
-  const stamps = curricula.reduce((a, c) => a + (c.done ?? 0), 0);
-  return (
-    <Text style={[nbText.body(11, nb.soft), { marginBottom: 10 }]}>
-      {t('journey.binderSummary', { themes, situations, stamps })}
     </Text>
   );
 }
@@ -125,14 +112,15 @@ function Hatch({ color }: { color: string }) {
   );
 }
 
-function LegendDot({ color }: { color: string }) {
-  return <View style={{ width: 9, height: 9, backgroundColor: color, marginRight: 4 }} />;
+/** v48 범례 칩 — 글·숫자 없이 색만(16×9, 라운드 2). 셋째는 '남음'의 옅은 잉크. */
+function LegendChip({ color }: { color: string }) {
+  return <View style={{ width: 16, height: 9, borderRadius: 2, backgroundColor: color, borderWidth: 1, borderColor: 'rgba(62,54,43,.3)' }} />;
 }
 
 function ProgressGauge({ curricula }: { curricula: JourneyCurriculum[] }) {
   const t = useT();
   const total = curricula.length;
-  const { done, active, rest } = countPhases(curricula);
+  const { done, active } = countPhases(curricula);
   // 0으로 나누지 않는다 — 주제가 없는 부서는 빈 게이지를 그린다.
   const pct = (n: number): `${number}%` => (total > 0 ? `${(n / total) * 100}%` : '0%');
   const ticks = total > 0 ? Math.max(0, Math.ceil(total / TICK_EVERY) - 1) : 0;
@@ -162,23 +150,13 @@ function ProgressGauge({ curricula }: { curricula: JourneyCurriculum[] }) {
       </View>
 
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginTop: 5 }}>
-        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-          <LegendDot color={nb.green} />
-          <Text style={nbText.hand(12.5, nb.soft)}>
-            {t('journey.gaugeDone')} <Text style={nbText.hand(12.5)}>{done}</Text>
-          </Text>
-        </View>
-        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-          <LegendDot color={GAUGE_ACTIVE} />
-          <Text style={nbText.hand(12.5, nb.soft)}>
-            {t('journey.gaugeActive')} <Text style={nbText.hand(12.5)}>{active}</Text>
-          </Text>
-        </View>
-        <Text style={nbText.hand(12.5, nb.soft)}>{t('journey.gaugeRest', { n: rest })}</Text>
+        <LegendChip color={nb.green} />
+        <LegendChip color={GAUGE_ACTIVE} />
+        <LegendChip color="rgba(62,54,43,.16)" />
         <View style={{ flex: 1 }} />
-        <Text style={nbText.mono(11, nb.ink)}>
+        <Text style={nbText.mono(12, nb.ink)}>
           {done}
-          <Text style={{ color: nb.soft }}>{`/${total} ${t('journey.gaugeUnit')}`}</Text>
+          <Text style={{ color: nb.soft }}>{`/${total}`}</Text>
         </Text>
       </View>
     </View>
@@ -277,27 +255,24 @@ function BinderCard({ c, index, onPress }: { c: JourneyCurriculum; index: number
           {isResume && (
             <View
               testID="theme-card-ring"
-              style={{ position: 'absolute', top: -1, left: -1, right: -1, bottom: -1, borderWidth: 2, borderColor: TAB_AMBER, pointerEvents: 'none' }}
+              style={{ position: 'absolute', top: -1, left: -1, right: -1, bottom: -1, borderWidth: 2.5, borderColor: nb.marker, pointerEvents: 'none' }}
             />
           )}
-          {/* 윗줄: 주제 아이콘 + 주제 이름 + 상태 표시. 상태는 세 가지뿐이다(§4) — 잠금은 없다. */}
+          {/* 윗줄: 주제 아이콘 + 주제 이름 + 상태 신호. v48 — 글 태그 없이 모양으로 말한다:
+              진행 = Ring(아이콘을 두른다) + Go, 완료 = Done, 나머지 = IconDot. 잠금·다음은 없다(§4). */}
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
             {/* 아이콘이 없으면 부르지 않는다 — 모르는 이름의 NbIcon은 별로 조용히 떨어진다.
                 이름이 NbIcon에 있는지는 theme/contentIcons.test.ts가 레지스트리째 지킨다. */}
-            {!!c.icon && <NbIcon name={c.icon} size={19} />}
+            {isResume
+              ? <Ring pct={total > 0 ? done / total : 0} size={38}>{!!c.icon && <NbIcon name={c.icon} size={18} />}</Ring>
+              : !!c.icon && <IconDot name={c.icon as NbIconName} size={32} rot={index % 2 ? 4 : -4} />}
             <Text numberOfLines={2} style={[nbText.hand(isResume ? 18 : 16.5), { flex: 1, minWidth: 0 }]}>
               {name}
             </Text>
             {isDone ? (
-              <View testID="theme-done-stamp" style={{ transform: [{ rotate: '-12deg' }] }}>
-                <NbInkStamp>{t('journey.themeDone')}</NbInkStamp>
-              </View>
+              <View testID="theme-done-stamp"><Done size={34} /></View>
             ) : isResume ? (
-              <View testID="theme-resume-badge">
-                {/* 태그는 상태를, 버튼은 동작을 말한다. 둘 다 '이어하기'·'이어서'로
-                    두었더니 같은 말이 한 카드에 두 번 나왔다 — 실기에서 확인했다. */}
-                <NbTag color={TAB_AMBER}>{t('journey.resumeLabel')}</NbTag>
-              </View>
+              <View testID="theme-resume-badge"><Go size={42} onPress={onPress} accessibilityLabel={t('journey.resumeAction')} /></View>
             ) : null}
           </View>
 
@@ -317,18 +292,12 @@ function BinderCard({ c, index, onPress }: { c: JourneyCurriculum; index: number
             </View>
           )}
 
-          {/* 아랫줄: done/total + 진행 중이면 이어서 버튼. */}
+          {/* 아랫줄: done/total. */}
           <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 8 }}>
             <Text style={nbText.mono(11, nb.ink)}>
               {done}
               <Text style={{ color: nb.soft }}>{` / ${total}`}</Text>
             </Text>
-            <View style={{ flex: 1 }} />
-            {isResume && (
-              <NbButton variant="ink" size="sm" onPress={onPress}>
-                {t('journey.resumeAction')}
-              </NbButton>
-            )}
           </View>
         </NbPaper>
       </Pressable>
@@ -393,7 +362,6 @@ export function DeptBinder({ curricula, onPress }: {
 }) {
   return (
     <View testID="dept-binder">
-      <BinderSummary curricula={curricula} />
       <ProgressGauge curricula={curricula} />
       <BinderList curricula={curricula} onPress={onPress} />
     </View>

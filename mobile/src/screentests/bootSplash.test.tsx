@@ -89,8 +89,8 @@ test('the launch screen and the onboarding splash are the same component', () =>
 test('the wait is silent until it is long enough to wonder about', () => {
   // A warm launch is over in well under the slow threshold; telling that learner the
   // server is waking up would be noise, and untrue.
-  expect(texts(mount(false).root).some((x) => x.includes('서버를 깨우고'))).toBe(false);
-  expect(texts(mount(true).root).some((x) => x.includes('서버를 깨우고'))).toBe(true);
+  expect(texts(mount(false).root).some((x) => x.includes('조금만 기다려'))).toBe(false);
+  expect(texts(mount(true).root).some((x) => x.includes('조금만 기다려'))).toBe(true);
 });
 
 test('it says what is happening, not "loading"', () => {

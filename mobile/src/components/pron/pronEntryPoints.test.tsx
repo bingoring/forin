@@ -66,9 +66,7 @@ describe.each(cases)('%s', (_name, el) => {
 test.each([
   'app/review.tsx',
   'app/(tabs)/lab.tsx',
-  'app/(tabs)/index.tsx',
   'app/slang/index.tsx',
-  'app/night/index.tsx',
   'components/lesson/SentContext.tsx',
   'components/lesson/SentSwap.tsx',
   'components/lesson/SentPassed.tsx',

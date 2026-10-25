@@ -337,9 +337,8 @@ function ResultActions({ onRetry, onNext, nextDisabled }: { onRetry: () => void;
       </View>
       {/* Rendered, deliberately dead — the drill screen is not built (business-logic-model
           §1). Announced rather than hidden: it is the answer to "so what do I do about
-          the two bad phonemes", and the note below says when. */}
+          the two bad phonemes". The lock says it is not open yet; no note repeats it. */}
       <NbButton variant="dashed" full disabled icon="lock" onPress={() => {}}>{t('pron.drill')}</NbButton>
-      <Text style={[nbText.hand(13, nb.soft), { textAlign: 'center' }]}>{t('pron.drillSoon')}</Text>
     </View>
   );
 }

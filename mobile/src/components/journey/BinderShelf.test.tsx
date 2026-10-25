@@ -166,7 +166,7 @@ describe('BinderShelf', () => {
     expect(onOpen).not.toHaveBeenCalled();
 
     const resume = tree.root.findAll(
-      (n) => typeof n.props?.onPress === 'function' && texts(n).includes('이어서'),
+      (n) => typeof n.props?.onPress === 'function' && (texts(n).includes('이어서') || n.props?.accessibilityLabel === '이어서'),
       { deep: true },
     )[0];
     expect(resume).toBeTruthy();
@@ -189,10 +189,11 @@ describe('BinderShelf', () => {
     expect(texts(chosenTree.root)).not.toContain('추정');
   });
 
-  it('computes the goal card’s topic progress from completed topics, not total situations', () => {
-    const tree = mount(<BinderShelf {...baseProps()} />);
-    // 3개 주제 중 완료(done>=total>0)는 t1 하나뿐 — t3은 total 0이라 완료로 세지 않는다.
-    expect(texts(tree.root)).toContain('주제 1/3 완료');
+  // v47 문구 원칙(설명 배제): `주제 n/m 완료 · 지금 …` 줄은 지웠다 — 진도는 막대가 이미 말한다.
+  it('목표 카드는 진도를 문장으로 되풀이하지 않는다 (v47)', () => {
+    const cur = curriculum({ themeKey: 'x', name: '중증 응대', resume: true, done: 13, total: 34 });
+    const tree = mount(<BinderShelf {...baseProps()} goalCurricula={[cur]} />);
+    expect(texts(tree.root).some((s) => /주제 \d+\/\d+ 완료/.test(s) || s.includes('13/34'))).toBe(false);
   });
 
   // ── 핸드오프 v42 BinderShelf와 맞춰야 하는 것들 ───────────────────────────
@@ -275,12 +276,6 @@ describe('BinderShelf', () => {
   it('진행 중인 주제가 없으면 현재 주제를 지어내지 않는다', () => {
     const tree = mount(<BinderShelf {...baseProps()} goalCurricula={[curriculum({ done: 3, total: 3 })]} />);
     expect(texts(tree.root).some((s) => s.includes('지금'))).toBe(false);
-  });
-
-  it('진행 중인 주제가 있으면 그 이름과 진도를 함께 말한다', () => {
-    const cur = curriculum({ themeKey: 'x', name: '중증 응대', resume: true, done: 13, total: 34 });
-    const tree = mount(<BinderShelf {...baseProps()} goalCurricula={[cur]} />);
-    expect(texts(tree.root).some((s) => s.includes('중증 응대') && s.includes('13/34'))).toBe(true);
   });
 
   // 바인더 라벨은 짧은 쪽을 쓴다. `dept.ICU`는 '중환자실 ICU'라 한 줄에 4개인 바인더

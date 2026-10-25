@@ -43,14 +43,11 @@ test('the scale dot grows 18 → 26 over .15s, its centre held on the axis (marg
 
 const word = (chips: string[][]): LessonWord => ({ id: 'w', en: chips.map((c) => c.join('')).join(' '), ko: '뜻', chips, decoyChips: ['zz'] });
 
-test('fill: the hint adds 띄어쓰기는 자동 only when the answer is more than one word', () => {
-  const one: RecallCard = { kind: 'word', word: word([['hypo', 'tens', 'ive']]), type: 'fill' };
-  let tree!: ReturnType<typeof create>;
-  act(() => { tree = track(create(<RecallPrompt card={one} pool={[]} answer={null} onAnswer={() => {}} result={null} />)); });
-  expect(texts(tree.root)).toContain('조각을 눌러 순서대로 붙여요 · 다시 누르면 빼요');
+test('fill: no operating hint under the chips (v47 설명 배제)', () => {
   const two: RecallCard = { kind: 'word', word: word([['en'], ['route']]), type: 'fill' };
-  act(() => { tree.update(<RecallPrompt card={two} pool={[]} answer={null} onAnswer={() => {}} result={null} />); });
-  expect(texts(tree.root)).toContain('조각을 눌러 순서대로 붙여요 · 다시 누르면 빼요 · 띄어쓰기는 자동');
+  let tree!: ReturnType<typeof create>;
+  act(() => { tree = track(create(<RecallPrompt card={two} pool={[]} answer={null} onAnswer={() => {}} result={null} />)); });
+  expect(texts(tree.root).some((x) => x.includes('조각을 눌러') || x.includes('띄어쓰기'))).toBe(false);
 });
 
 test('an inert copy answers nothing and carries no test ids', () => {

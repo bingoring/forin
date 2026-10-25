@@ -4,20 +4,24 @@
 // self-rates recall (다시/어려움/알맞음/쉬움 → POST /me/review/{id}/grade), which
 // advances the spaced-repetition schedule; graded cards leave today's queue.
 // A speaker button reads the corrected line (expo-speech). 1:1 in spirit with v17 ScreenReviewLab.
-import { useCallback, useMemo, useState } from 'react';
-import { ActivityIndicator, FlatList, Pressable, ScrollView, Text, View, useWindowDimensions } from 'react-native';
+// v49 (handoff v48-lab): the screen speaks in the shared signal kit — GoBar hero, Pill counts,
+// Chev-folded context, stamped mastery pips, faces for the four grades, NewDot on the shelf.
+import { useCallback, useMemo, useRef, useState } from 'react';
+import { ActivityIndicator, Animated, FlatList, Pressable, ScrollView, Text, View, useWindowDimensions } from 'react-native';
 import { useFocusEffect, useRouter } from 'expo-router';
 import * as Speech from 'expo-speech';
-import { PixelButton } from '@/components/PixelButton';
 import { api, type ModelAnswerSummary, type ReviewCard, type ReviewGrade, type SpeakSummary, type SpokenSentence } from '@/api/client';
 import { FIcon, type FIconName } from '@/components/FIcon';
 import { SpeakList } from '@/components/speak/SpeakList';
 import { ModelAnswerList } from '@/components/model/ModelAnswerList';
 import { faceOf } from '@/data/reviewCardFace';
-import { Collapsible, DisclosureChevron } from '@/components/Collapsible';
 import { playSfx } from '@/lib/sfx';
 import { NbIcon } from '@/components/nb/NbIcon';
-import { NbButton, NbChip, NbIndexTabs, NbMark, NbMemo, NbPaper, NbStamp, NbTag, nbText } from '@/components/nb/NbUI';
+import { NbChip, NbDoubleRing, NbIndexTabs, NbMark, NbMemo, NbPaper, NbTag, nbText } from '@/components/nb/NbUI';
+import { Chev, GoBar, Pill, V48Pop } from '@/components/nb/V48';
+import { CSS_EASE, stampSpec, useNbMotion, useReduceMotion, useV48Press } from '@/components/nb/nbMotion';
+import { GradeRow } from '@/components/lab/GradeRow';
+import { MaterialShelf } from '@/components/lab/MaterialShelf';
 import { RULE_COLOR, RULE_H, TOP_INSET, nb, nbFonts } from '@/theme/nb';
 import { space, type as typeScale } from '@/theme/tokens';
 import { t, type Translate, useLocale, useT } from '@/i18n';
@@ -25,16 +29,13 @@ import { usePronunciationEnabled } from '@/data/pronunciationFlag';
 
 const C = nb.ink;
 // Keys, not t(...): evaluated once at import (see i18n/module-scope.test.ts).
-// `color` is the PEN each answer is written in — red for 다시, amber for 어려움, blue for
-// 알맞음, green for 쉬움 (the handoff's four, and the same four the review SESSION uses).
-// `etaKey` is the roughly-when-you'll-see-it-again shown UNDER the label: <1분 / 10분 /
-// 1일 / 4일. It is the SM-2 first-step estimate, printed so the choice is legible before
-// it is made; the real interval the server returns is confirmed in the toast afterward.
-const GRADES: { g: ReviewGrade; labelKey: string; bg: string; color: string; etaKey: string; blurbKey: string; guideKey: string }[] = [
-  { g: 'again', labelKey: 'lab.again', bg: '#FCA5A5', color: nb.red, etaKey: 'lab.etaAgain', blurbKey: 'lab.againSub', guideKey: 'lab.againBody' },
-  { g: 'hard', labelKey: 'lab.hard', bg: '#FFF3EE', color: '#C77E2E', etaKey: 'lab.etaHard', blurbKey: 'lab.hardSub', guideKey: 'lab.hardBody' },
-  { g: 'good', labelKey: 'lab.good', bg: 'rgba(168,217,151,.4)', color: nb.blue, etaKey: 'lab.etaGood', blurbKey: 'lab.goodSub', guideKey: 'lab.goodBody' },
-  { g: 'easy', labelKey: 'lab.easy', bg: 'rgba(249,227,123,.5)', color: nb.green, etaKey: 'lab.etaEasy', blurbKey: 'lab.easySub', guideKey: 'lab.easyBody' },
+// Only the toast's label + tint live here now; the four buttons themselves (a face + the
+// interval, no words) are components/lab/GradeRow, shared with the review session.
+const GRADES: { g: ReviewGrade; labelKey: string; bg: string }[] = [
+  { g: 'again', labelKey: 'lab.again', bg: '#FCA5A5' },
+  { g: 'hard', labelKey: 'lab.hard', bg: '#FFF3EE' },
+  { g: 'good', labelKey: 'lab.good', bg: 'rgba(168,217,151,.4)' },
+  { g: 'easy', labelKey: 'lab.easy', bg: 'rgba(249,227,123,.5)' },
 ];
 // humanize the SM-2 next-interval into a friendly "next review" label.
 function nextLabel(t: Translate, days: number): string {
@@ -108,14 +109,17 @@ export default function Lab() {
   const t = useT();
   const router = useRouter();
   const [cards, setCards] = useState<ReviewCard[]>([]);
+  // The WHOLE deck's counts, from the server (the due list is capped and due-only, so it can
+  // answer neither). undefined = the server did not say → the pills are not drawn at all
+  // rather than drawn with the due list's length, which is what this used to print as "saved".
+  const [deck, setDeck] = useState<{ saved?: number; mastered?: number }>({});
   const [state, setState] = useState<'loading' | 'error' | 'ok'>('loading');
   const [filter, setFilter] = useState('ALL');
   const [section, setSection] = useState<Section>('notes');
   // Which third is under a finger right now. Held here rather than in each tab so
   // the row cannot end up with two faces down at once.
   const [pressedTab, setPressedTab] = useState<Section | null>(null);
-  const [guideOpen, setGuideOpen] = useState(false);
-  const [toast, setToast] = useState<{ label: string; bg: string; blurb: string; next: string } | null>(null);
+  const [toast, setToast] = useState<{ label: string; bg: string; next: string } | null>(null);
   // The 🎙 직접 말하기 연습 summary. null while unknown or unavailable — the block
   // is simply absent then, rather than drawing an empty distribution that reads
   // as "you scored nothing".
@@ -134,8 +138,8 @@ export default function Lab() {
   useFocusEffect(
     useCallback(() => {
       let alive = true;
-      api.reviewDue()
-        .then((c) => { if (alive) { setCards(c); setState('ok'); } })
+      api.reviewOverview()
+        .then((o) => { if (alive) { setCards(o.cards); setDeck({ saved: o.saved, mastered: o.mastered }); setState('ok'); } })
         .catch(() => { if (alive) setState('error'); });
       // Separate from the card read and deliberately not awaited with it: the
       // speaking summary failing must not turn the whole tab into the error state.
@@ -168,7 +172,7 @@ export default function Lab() {
     let interval = 1;
     try { const r = await api.gradeReview(id, g); interval = r.intervalDays; } catch { /* best-effort; refreshes on next focus */ }
     // Confirm the grade so the card doesn't just silently disappear.
-    setToast({ label: t(meta.labelKey), bg: meta.bg, blurb: t(meta.blurbKey), next: nextLabel(t, interval) });
+    setToast({ label: t(meta.labelKey), bg: meta.bg, next: nextLabel(t, interval) });
     setTimeout(() => setToast(null), 1600);
   };
 
@@ -222,8 +226,6 @@ export default function Lab() {
     );
   }
 
-  const mastered = cards.filter((c) => c.masteryPips >= 3).length;
-
   // The notes list is VIRTUALIZED, and that is a performance fix, not a style choice.
   //
   // Fifty due cards is an ordinary week of practice, and the screen mounted all of them:
@@ -237,15 +239,11 @@ export default function Lab() {
   // A FlatList mounts a window of rows instead. The header — title, tabs, hero, grade
   // guide, mini stats, filter chips — rides along as ListHeaderComponent so it still
   // scrolls with the list rather than becoming a fixed bar the design never asked for.
+  // 헤더 보조 카운트('오늘 복습할 것 n')는 v48에서 지웠다 — 같은 수가 히어로 도장과 탭에 있다.
   const title = (
     <View style={{ flexDirection: 'row', alignItems: 'baseline' }}>
       <Text style={nbText.hand(30)}>{t('lab.nbTitle')}</Text>
       <View style={{ flex: 1 }} />
-      {cards.length > 0 && (
-        <Text numberOfLines={1} style={nbText.hand(14.5, nb.soft)}>
-          {t('lab.dueToday')} <Text style={{ color: nb.red }}>{cards.length}</Text>
-        </Text>
-      )}
     </View>
   );
   const tabs = (
@@ -269,61 +267,38 @@ export default function Lab() {
             <View style={{ gap: space.md }}>
               {title}
               {tabs}
-              {/* Today's review, as a taped page with the count stamped on it. The stamp
-                  is the whole hero: a number you can see from across the room is what
-                  makes a spaced-repetition queue feel finite. */}
-              <NbPaper rot={-0.6} tape tapeLeft={118} style={{ paddingVertical: 14, paddingHorizontal: 15, flexDirection: 'row', alignItems: 'center', gap: 11 }}>
-                {cards.length > 0 && (
-                  <NbStamp color={nb.red} rot={-8} size={54} top={t('lab.today')} bottom={t('lab.nCards', { n: cards.length })} />
-                )}
-                <View style={{ flex: 1, minWidth: 0 }}>
-                  <Text style={[nbText.hand(19), { lineHeight: 22 }]}>
-                    {cards.length > 0 ? t('lab.beforeYouForget') : t('lab.nothingDue')}
+              {/* 자료 선반(v48) — 인계 노트·슬랭, 교정 노트 탭에서만. */}
+              <MaterialShelf />
+              {/* 오늘의 복습 — 홈 '이어서' 바 모양(화면의 주 행동 하나). 왼쪽은 오늘 장수를 찍은 빨간
+                  도장이고, 바 전체가 시작이다. 대기 카드가 없으면 바 대신 한 줄만. */}
+              {cards.length > 0 ? (
+                <GoBar
+                  testID="lab-hero"
+                  accessibilityLabel={t('common.start')}
+                  onPress={() => router.push('/review')}
+                  left={<HeroStamp top={t('lab.today')} bottom={t('lab.nCards', { n: cards.length })} />}
+                >
+                  <Text style={{ fontFamily: nbFonts.monoBold, fontSize: 13, color: 'rgba(255,253,244,.75)' }}>
+                    {t('lab.estMin', { n: Math.max(1, Math.round(cards.length * 0.8)) })}
                   </Text>
-                  <Text numberOfLines={2} style={[nbText.body(11, nb.soft), { marginTop: 3 }]}>
-                    {t('lab.heroSub', { name: t('lab.likeALocal') })}
-                  </Text>
-                </View>
-                {cards.length > 0 && (
-                  <NbButton variant="ink" icon="pencil" iconColor={nb.paper} onPress={() => router.push('/review')}>
-                    {t('common.start')}
-                  </NbButton>
-                )}
-              </NbPaper>
+                </GoBar>
+              ) : (
+                <NbPaper rot={-0.6} style={{ paddingVertical: 14, paddingHorizontal: 15 }}>
+                  <Text style={[nbText.hand(19), { lineHeight: 22 }]}>{t('lab.nothingDue')}</Text>
+                </NbPaper>
+              )}
 
-              {/* 복습 등급 안내 — explains 다시/어려움/알맞음/쉬움 (collapsible reference) */}
-              <NbPaper rot={0.4}>
-                <View>
-                  <Pressable onPress={() => setGuideOpen((v) => !v)} style={{ flexDirection: 'row', alignItems: 'center', gap: 8, paddingVertical: 11, paddingHorizontal: 13 }}>
-                    <Text style={[nbText.hand(16.5), { flex: 1, minWidth: 0 }]}>{t('lab.gradeGuideQ')}</Text>
-                    <NbIcon name={guideOpen ? 'chevronUp' : 'chevronDown'} size={14} color={nb.soft} />
-                  </Pressable>
-                  <Collapsible open={guideOpen} style={{ borderTopWidth: guideOpen ? 1.3 : 0, borderTopColor: 'rgba(62,54,43,.18)' }}>
-                    <View style={{ paddingHorizontal: 13, paddingBottom: 13, gap: 8 }}>
-                      <Text style={[nbText.body(11), { marginTop: 10 }]}>{t('lab.gradeGuideBody')}</Text>
-                      {GRADES.map(({ g, labelKey, bg, guideKey }) => (
-                        <View key={g} style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 8 }}>
-                          {/* Each grade in its own pen, the same four the session uses. */}
-                          <View style={{ minWidth: 54, alignItems: 'center', borderWidth: 1.6, borderRadius: 3, borderColor: bg, paddingVertical: 2, paddingHorizontal: 7 }}>
-                            <Text numberOfLines={1} style={nbText.hand(14, bg)}>{t(labelKey)}</Text>
-                          </View>
-                          <Text style={[nbText.body(10.5), { flex: 1, minWidth: 0 }]}>{t(guideKey)}</Text>
-                        </View>
-                      ))}
-                      <Text style={nbText.body(10, nb.soft)}>{t('lab.pipsHelp', { mastered: t('lab.mastered') })}</Text>
-                    </View>
-                  </Collapsible>
+              {/* 숫자 둘, 알약으로 — 저장(덱 전체) · 마스터(3점). 서버가 총수를 주지 않으면 그리지 않는다. */}
+              {(deck.saved !== undefined || deck.mastered !== undefined) && (
+                <View style={{ flexDirection: 'row', gap: 8 }}>
+                  {deck.saved !== undefined && (
+                    <View accessible accessibilityLabel={`${t('lab.savedCards')} ${deck.saved}`}><Pill icon="lab" n={deck.saved} /></View>
+                  )}
+                  {deck.mastered !== undefined && (
+                    <View accessible accessibilityLabel={`${t('lab.mastered')} ${deck.mastered}`}><Pill icon="star" n={deck.mastered} /></View>
+                  )}
                 </View>
-              </NbPaper>
-
-              {/* Three counts on plain paper. The handoff fills none of them — a coloured
-                  tile per stat made three equal facts look like three different kinds of
-                  thing — and puts the ONE number that asks for action in red. */}
-              <View style={{ flexDirection: 'row', gap: 9 }}>
-                <MiniStat label={t('lab.savedCards')} value={cards.length} rot={-0.5} />
-                <MiniStat label={t('lab.mastered')} value={mastered} rot={0.4} />
-                <MiniStat label={t('lab.dueCards')} value={cards.length} rot={-0.4} accent={nb.red} />
-              </View>
+              )}
 
               {/* category filter */}
               {cats.length > 1 && (
@@ -344,7 +319,7 @@ export default function Lab() {
           // separate children, so the two gaps it used to cover are set explicitly.
           ListHeaderComponentStyle={{ marginBottom: space.md }}
           ItemSeparatorComponent={() => <View style={{ height: space.md }} />}
-          renderItem={({ item }) => <PhraseCard card={item} onGrade={grade} />}
+          renderItem={({ item, index }) => <PhraseCard card={item} onGrade={grade} rot={index % 2 ? 0.5 : -0.5} />}
           ListEmptyComponent={
             <View style={{ alignItems: 'center', paddingVertical: 40, gap: 8 }}>
               <NbIcon name="pencil" size={34} color={nb.soft} />
@@ -382,7 +357,6 @@ export default function Lab() {
                 </View>
                 <Text style={{ fontFamily: nbFonts.hand, fontSize: 17.6, color: C }}>{toast.next}</Text>
               </View>
-              <Text style={{ fontFamily: nbFonts.body, fontSize: 11, color: nb.soft, marginTop: 6, textAlign: 'center' }}>{toast.blurb}</Text>
             </View>
           </Shadowed>
         </View>
@@ -448,10 +422,64 @@ function SectionTabs({ section, onSelect, cardCount, speak, models }: {
   );
 }
 
-function PhraseCard({ card, onGrade }: { card: ReviewCard; onGrade: (id: string, g: ReviewGrade) => void }) {
+/** 히어로 왼쪽의 도장 — 종이색 바탕 52 원 · 3px double 빨강 · -8°, '오늘' 9/800 + 장수 Gaegu 19.
+ *  잉크 바 위에 놓이므로 NbStamp(투명·.9)가 아니라 종이를 깔았다. */
+function HeroStamp({ top, bottom }: { top: string; bottom: string }) {
+  return (
+    <View testID="lab-hero-stamp" style={{
+      width: 52, height: 52, borderRadius: 26, backgroundColor: nb.paper, borderWidth: 1, borderColor: nb.red,
+      alignItems: 'center', justifyContent: 'center', transform: [{ rotate: '-8deg' }], flexShrink: 0,
+    }}>
+      <NbDoubleRing color={nb.red} radius={26} />
+      <Text numberOfLines={1} style={{ fontFamily: nbFonts.bodyHeavy, fontSize: 9, color: nb.red, width: 100, textAlign: 'center' }}>{top}</Text>
+      <Text numberOfLines={1} style={{ fontFamily: nbFonts.hand, fontSize: 19, lineHeight: 19, color: nb.red, width: 100, textAlign: 'center' }}>{bottom}</Text>
+    </View>
+  );
+}
+
+/** 숙련 점 — 12px · 1.6 테두리. 채워진 점은 초록으로 차며 쾅(`.v48-done`, 1.15 → 1, 회전 없음). */
+function Pip({ filled }: { filled: boolean }) {
+  const { style } = useNbMotion(stampSpec(0), { auto: filled });
+  return (
+    <Animated.View
+      testID={filled ? 'lab-pip-on' : 'lab-pip'}
+      style={[{
+        width: 12, height: 12, borderRadius: 6, borderWidth: 1.6,
+        borderColor: filled ? nb.green : 'rgba(62,54,43,.3)', backgroundColor: filled ? nb.green : 'transparent',
+      }, filled ? style : null]}
+    />
+  );
+}
+
+/** 듣기(파랑) · 말하기(잉크) 36 원 — 눌리면 `.v48-press`. */
+function RoundAction({ kind, onPress, label }: { kind: 'speak' | 'say'; onPress: () => void; label: string }) {
+  const press = useV48Press('press');
+  const ink = kind === 'say';
+  return (
+    <Pressable onPress={onPress} onPressIn={press.onPressIn} onPressOut={press.onPressOut} hitSlop={4}
+      accessibilityRole="button" accessibilityLabel={label} testID={ink ? 'lab-card-say' : 'lab-card-listen'}>
+      <Animated.View style={{ transform: press.transform }}>
+        {ink && <View pointerEvents="none" style={{ position: 'absolute', left: 1.5, top: 2, width: 36, height: 36, borderRadius: 18, backgroundColor: 'rgba(62,54,43,.3)' }} />}
+        <View style={{
+          width: 36, height: 36, borderRadius: 18, alignItems: 'center', justifyContent: 'center',
+          backgroundColor: ink ? nb.ink : 'rgba(169,196,224,.45)', borderWidth: ink ? 0 : 1.6, borderColor: nb.blue,
+        }}>
+          <NbIcon name={ink ? 'mic' : 'speaker'} size={19} color={ink ? nb.paper : undefined} />
+        </View>
+      </Animated.View>
+    </Pressable>
+  );
+}
+
+/** 카드가 넘어가는 길 — `transform .4s ease, opacity .4s ease`: 왼쪽(다시·어려움)이면 -40px · -6°,
+ *  오른쪽이면 +40px · +6°로 기울며 사라진다. 키프레임이 아니라 전환이라 nbMotion 명세 밖. */
+const AWAY = { duration: 400, dx: 40, rot: 6 } as const;
+
+function PhraseCard({ card, onGrade, rot = -0.5 }: { card: ReviewCard; onGrade: (id: string, g: ReviewGrade) => void; rot?: number }) {
   const pronOn = usePronunciationEnabled();
   const t = useT();
   const router = useRouter();
+  const reduce = useReduceMotion();
   const speak = () => Speech.speak(card.back, { language: 'en-US', rate: 0.92 });
   // Task 10 fix: SoT 04_SCREENS.md:397 describes THIS card (the review-lab
   // list's PhraseCard) as carrying "🎤 따라 말하기" — Task 9 wired a mic action
@@ -467,7 +495,6 @@ function PhraseCard({ card, onGrade }: { card: ReviewCard; onGrade: (id: string,
       `/pronunciation/${encodeURIComponent(card.back.slice(0, 40))}?referenceText=${encodeURIComponent(card.back)}&origin=review&reviewCardId=${encodeURIComponent(card.id)}&ctx=${encodeURIComponent(card.context?.title || card.topicTag || '')}&step=${encodeURIComponent(t('lab.likeALocal'))}`
     );
   };
-  const { tag } = splitTag(card.topicTag);
   const dept = deptOf(card);
   const kind = kindOf(card);
   // The strip has to say SOMETHING about where the card came from. Department when we
@@ -477,63 +504,57 @@ function PhraseCard({ card, onGrade }: { card: ReviewCard; onGrade: (id: string,
   const face = faceOf(card.source);
   const [showCtx, setShowCtx] = useState(false);
   const ctx = card.context;
+  // 맥락은 출처 줄 끝의 ⌄ 뒤에 접혀 있다(v48). 펼치면 아래에서 톡 올라온다.
   const hasCtx = !!ctx && (!!ctx.title || !!ctx.situation || !!ctx.npc);
-  // Collapsed shows a one-line glance: the situation tagline, else the scenario name,
-  // else (a free-dialogue card) the line they were answering.
-  const ctxSummary = ctx?.situation || ctx?.title || ctx?.npc || '';
-  // There is detail to open when the memo holds more than that one line — the full
-  // situation (with the scenario name above it) or the NPC exchange.
-  const ctxExpandable = !!ctx && (!!ctx.situation || !!ctx.npc);
+  const ctxLine = ctx?.situation || ctx?.title || ctx?.npc || '';
+
+  // 등급을 누르면 카드가 그 방향으로 기울며 넘어간 뒤 큐에서 빠진다. 모션 줄이기면 바로.
+  const away = useRef(new Animated.Value(0)).current;
+  const [dir, setDir] = useState<-1 | 1>(-1);
+  const [leaving, setLeaving] = useState(false);
+  const pick = (g: ReviewGrade, index: number) => {
+    if (leaving) return;
+    if (reduce) { onGrade(card.id, g); return; }
+    setDir(index < 2 ? -1 : 1);
+    setLeaving(true);
+    Animated.timing(away, { toValue: 1, duration: AWAY.duration, easing: CSS_EASE.ease, useNativeDriver: true })
+      .start(() => onGrade(card.id, g));
+  };
+  const awayStyle = {
+    opacity: away.interpolate({ inputRange: [0, 1], outputRange: [1, 0] }),
+    transform: [
+      { translateX: away.interpolate({ inputRange: [0, 1], outputRange: [0, dir * AWAY.dx] }) },
+      { rotate: away.interpolate({ inputRange: [0, 1], outputRange: ['0deg', `${dir * AWAY.rot}deg`] }) },
+    ],
+  };
+
   return (
-    <NbPaper rot={-0.5} style={{ paddingTop: 12, paddingBottom: 10, paddingHorizontal: 14 }}>
-      {/* Where it came from, and which kind of card. Printed small at the top the way a
-          filed note carries its source.
-          The red 복습 badge that used to sit here is gone: it was drawn on every card and
-          could never be anything else — this list is GET /me/review, which returns only
-          what is due, so the badge said "due" on a screen where being due is the entry
-          condition. Its place goes to the KIND (교정 / 제안), which does vary and is one
-          of the filter chips. */}
-      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 7 }}>
-        <Text numberOfLines={1} style={{ flex: 1, minWidth: 0, fontFamily: nbFonts.bodyBold, fontSize: 10, color: nb.blue }}>
+    <Animated.View testID="lab-card" style={awayStyle}>
+    <NbPaper rot={rot} style={{ paddingTop: 12, paddingBottom: 10, paddingHorizontal: 14 }}>
+      {/* 출처 줄 — 과 · 종류(교정/제안) · 끝에 ⌄. 줄 전체가 맥락을 연다. 빨간 점·태그는 지웠다:
+          이 목록은 GET /me/review라 전부 '오늘 복습'이고(그 배지는 늘 참이라 정보가 없었다),
+          하위 태그는 아무도 쓰지 않는다. 종류는 칩이 걸러내는 축이라 남긴다. */}
+      <Pressable
+        onPress={() => hasCtx && setShowCtx((v) => !v)} disabled={!hasCtx} testID="lab-card-source"
+        accessibilityRole={hasCtx ? 'button' : undefined} accessibilityState={hasCtx ? { expanded: showCtx } : undefined}
+        style={{ flexDirection: 'row', alignItems: 'center', gap: 7 }}
+      >
+        <Text numberOfLines={1} style={{ flex: 1, minWidth: 0, fontFamily: nbFonts.bodyBold, fontSize: 10.5, color: nb.blue }}>
           {headerLabel}
         </Text>
-        {!!tag && <NbTag color={nb.soft}>{tag}</NbTag>}
         <NbTag color={face.correction ? nb.red : nb.green}>{t(KIND_LABEL[kind])}</NbTag>
-      </View>
-
-      {/* 맥락 — which scene this came from, written in as a pencil note. Collapsed it is
-          ONE line: the situation tagline (or, with none, the scene's name). The DETAIL —
-          the scene's name above the full situation, and the NPC turn being answered — is
-          behind the tap. It used to show the whole situation collapsed and only the name
-          on expand, which is backwards: the summary is what you glance at, the detail is
-          what you open. */}
-      {hasCtx && (
-        <View style={{ marginTop: 8 }}>
-          <Pressable
-            onPress={() => ctxExpandable && setShowCtx((v) => !v)}
-            disabled={!ctxExpandable}
-            style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}
-          >
-            <NbIcon name="pencil" size={13} color={nb.soft} />
-            <Text numberOfLines={1} style={[nbText.hand(14, nb.soft), { flex: 1, minWidth: 0 }]}>
-              {ctxSummary}
-            </Text>
-            {ctxExpandable && <NbIcon name={showCtx ? 'chevronUp' : 'chevronDown'} size={12} color={nb.soft} />}
-          </Pressable>
-          <Collapsible open={showCtx}>
-            <NbMemo color={nb.soft} rot={0.3} style={{ marginTop: 8 }}>
-              {!!ctx?.title && !!ctx?.situation && <Text style={[nbText.hand(15), { marginBottom: 3 }]}>{ctx.title}</Text>}
-              {!!ctx?.situation && <Text style={nbText.body(11, nb.soft)}>{ctx.situation}</Text>}
-              {!!ctx?.npc && (
-                <View style={{ marginTop: 8, paddingTop: 8, borderTopWidth: 1, borderTopColor: 'rgba(62,54,43,.16)' }}>
-                  <Text style={nbText.hand(13, nb.soft)}>{t('lab.theySaid')}</Text>
-                  <Text style={[nbText.body(11.5), { marginTop: 2 }]}>{ctx.npc}</Text>
-                  <Text style={[nbText.hand(13, nb.soft), { marginTop: 3 }]}>{t('lab.andYouAnswered')}</Text>
-                </View>
-              )}
-            </NbMemo>
-          </Collapsible>
-        </View>
+        {hasCtx && <Chev open={showCtx} />}
+      </Pressable>
+      {hasCtx && showCtx && (
+        <V48Pop testID="lab-card-ctx" style={{ marginTop: 7 }}>
+          <Text style={nbText.hand(14, nb.soft)}>{`\u270E ${ctxLine}`}</Text>
+          {!!ctx?.npc && ctxLine !== ctx.npc && (
+            <View style={{ marginTop: 6, paddingTop: 6, borderTopWidth: 1, borderTopColor: 'rgba(62,54,43,.16)' }}>
+              <Text style={nbText.hand(13, nb.soft)}>{t('lab.theySaid')}</Text>
+              <Text style={[nbText.body(11.5), { marginTop: 2 }]}>{ctx.npc}</Text>
+            </View>
+          )}
+        </V48Pop>
       )}
 
       {/* What was said, struck out in red pen — but only when it is something that WAS
@@ -555,12 +576,10 @@ function PhraseCard({ card, onGrade }: { card: ReviewCard; onGrade: (id: string,
         <View style={{ flex: 1, minWidth: 0 }}>
           <NbMark textStyle={{ fontFamily: nbFonts.bodyMid, fontSize: 14.5, lineHeight: 22 }}>{card.back}</NbMark>
         </View>
-        <Pressable onPress={speak} hitSlop={8}><NbIcon name="speaker" size={17} /></Pressable>
-        {pronOn && <Pressable onPress={practicePronunciation} hitSlop={8}><NbIcon name="mic" size={17} /></Pressable>}
       </View>
 
       {/* 왜? — the reason, in blue pen. It is the only part of the card that teaches
-          anything transferable, so it is not a footnote. */}
+          anything transferable, so it is not a footnote. (v48: unchanged.) */}
       {!!card.note && (
         <NbMemo color={nb.blue} rot={-0.3} style={{ marginTop: 9 }}>
           <Text style={nbText.hand(13.5)}>
@@ -570,44 +589,18 @@ function PhraseCard({ card, onGrade }: { card: ReviewCard; onGrade: (id: string,
         </NbMemo>
       )}
 
-      {/* 숙련 — three pips. Round here rather than square: on paper a filled circle is a
-          pencil dot, and the squares belonged to the pixel line's progress boxes. */}
-      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, marginTop: 10 }}>
-        <Text style={nbText.body(10, nb.soft)}>{t('lab.mastery')}</Text>
-        {[0, 1, 2].map((i) => (
-          <View
-            key={i}
-            style={{
-              width: 9, height: 9, borderRadius: 4.5, borderWidth: 1.5,
-              borderColor: i < card.masteryPips ? nb.green : nb.soft,
-              backgroundColor: i < card.masteryPips ? 'rgba(95,141,90,.4)' : 'transparent',
-            }}
-          />
-        ))}
+      {/* 숙련 점(글자 없이) + 듣기(파랑 원) · 말하기(잉크 원). */}
+      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginTop: 10 }}>
+        {[0, 1, 2].map((i) => <Pip key={i} filled={i < card.masteryPips} />)}
+        <View style={{ flex: 1 }} />
+        <RoundAction kind="speak" onPress={speak} label={t('model.listenAll')} />
+        {pronOn && <RoundAction kind="say" onPress={practicePronunciation} label={t('model.repeatAfter')} />}
       </View>
 
-      {/* The four SRS answers (핸드오프 LabNotes). Each is a paper key with its label in
-          its own pen and the estimated next interval under it — <1분 / 10분 / 1일 / 4일 —
-          so the learner reads what the choice means before committing to it. The three
-          buttons used to be one paper/ink pair with no colour and no eta at all. */}
-      <View style={{ flexDirection: 'row', gap: 6, marginTop: 12 }}>
-        {GRADES.map(({ g, labelKey, color, etaKey }) => (
-          <View key={g} style={{ flex: 1 }}>
-            <Pressable onPress={() => onGrade(card.id, g)}>
-              {({ pressed }) => (
-                <NbPaper rot={0} style={{
-                  alignItems: 'center', paddingVertical: 7, paddingHorizontal: 4,
-                  transform: pressed ? [{ translateX: 1 }, { translateY: 1.5 }] : undefined,
-                }}>
-                  <Text numberOfLines={1} style={nbText.hand(14.5, color)}>{t(labelKey)}</Text>
-                  <Text numberOfLines={1} style={[nbText.body(9, nb.soft), { marginTop: 1 }]}>{t(etaKey)}</Text>
-                </NbPaper>
-              )}
-            </Pressable>
-          </View>
-        ))}
-      </View>
+      {/* 등급 넷 — 얼굴 + 모노 간격. 누르면 카드가 그 방향으로 기울며 넘어간다. */}
+      <GradeRow onGrade={pick} disabled={leaving} style={{ marginTop: 10 }} />
     </NbPaper>
+    </Animated.View>
   );
 }
 
@@ -661,19 +654,6 @@ function BlockUnavailable({ titleKey }: { titleKey: string }) {
         <Text style={{ fontFamily: nbFonts.body, fontSize: 10.5, color: nb.soft, lineHeight: 16 }}>{t('lab.blockUnavailable')}</Text>
       </View>
     </Shadowed>
-  );
-}
-
-/** One count on a slip of paper. The label is above the number, as the handoff sets it:
- *  you read what it is, then how many. */
-function MiniStat({ label, value, rot, accent }: { label: string; value: number; rot: number; accent?: string }) {
-  return (
-    <View style={{ flex: 1 }}>
-      <NbPaper rot={rot} style={{ paddingVertical: 8, alignItems: 'center' }}>
-        <Text numberOfLines={1} style={nbText.body(10, nb.soft)}>{label}</Text>
-        <Text numberOfLines={1} style={nbText.hand(21, accent ?? nb.ink)}>{value}</Text>
-      </NbPaper>
-    </View>
   );
 }
 

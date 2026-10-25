@@ -3,10 +3,10 @@
 // summary, a career-path stepper, the title collection, and a review-lab teaser.
 // 1:1 in spirit with the v17 handoff ScreenProfile, scaled to live data.
 import { useCallback, useState } from 'react';
-import { ActivityIndicator, Alert, Pressable, ScrollView, Text, View , useWindowDimensions } from 'react-native';
+import { ActivityIndicator, Alert, Animated, Pressable, ScrollView, Text, View , useWindowDimensions } from 'react-native';
 import { useFocusEffect, useRouter } from 'expo-router';
-import { NbIcon } from '@/components/nb/NbIcon';
-import { NbButton, NbGauge, NbMark, NbPaper, NbStamp, NbTag, nbText } from '@/components/nb/NbUI';
+import { NbIcon, type NbIconName } from '@/components/nb/NbIcon';
+import { NbButton, NbGauge, NbPaper, NbStamp, NbTag, nbText } from '@/components/nb/NbUI';
 import { RULE_COLOR, RULE_H, nb, nbFonts } from '@/theme/nb';
 import { PixelButton } from '@/components/PixelButton';
 import { PixelChip } from '@/components/PixelChip';
@@ -24,7 +24,8 @@ import { NbAvatar } from '@/components/nb/NbAvatar';
 import { adoptAvatar } from '@/lib/nbAvatar';
 import { setWardVisible, useWardVisible } from '@/lib/wardPresence';
 import { NameSheet } from '@/components/me/NameSheet';
-import { useExploreMode } from '@/hooks/useExploreMode';
+import { Done, IconDot, Locked, Pill } from '@/components/nb/V48';
+import { useV48Press } from '@/components/nb/nbMotion';
 
 const C = nb.ink;
 
@@ -63,7 +64,6 @@ export default function Me() {
   // 탐험 모드(Task 15) — 부서 인테리어를 쓸지. 기기 로컬, 기본 켬. 인테리어가 아직
   // 간호사 직업군에만 있어, 다른 직업군에 언제 붙을지 미정인 지금은 데모에서 껐다
   // 켜 볼 수 있는 스위치로 둔다.
-  const explore = useExploreMode();
 
   useFocusEffect(
     useCallback(() => {
@@ -137,11 +137,6 @@ export default function Me() {
     if (!next) void api.wardLeave().catch(() => {});
   };
 
-  const toggleExplore = () => {
-    playSfx('tap');
-    explore.setEnabled(!explore.enabled);
-  };
-
   // Sign out — drops the session on this device, so confirm first. On success we
   // navigate away and the screen unmounts, so `signingOut` is only cleared on failure.
   // 앱 언어. useLocale()을 구독하므로 여기서 바꾸면 화면이 즉시 다시 그려진다 —
@@ -202,7 +197,7 @@ export default function Me() {
   if (state !== 'ok' || !progress) {
     return (
       <View style={{ flex: 1, backgroundColor: nb.paper, alignItems: 'center', justifyContent: 'center', gap: 12, padding: 24 }}>
-        {state === 'loading' ? <ActivityIndicator color={C} /> : <Text style={{ fontFamily: nbFonts.body, fontSize: typeScale.body, color: nb.soft, textAlign: 'center' }}>프로필을 불러오지 못했어요. (로그인·서버 확인)</Text>}
+        {state === 'loading' ? <ActivityIndicator color={C} /> : <Text style={{ fontFamily: nbFonts.body, fontSize: typeScale.body, color: nb.soft, textAlign: 'center' }}>{t('me.loadFailed')}</Text>}
       </View>
     );
   }
@@ -264,12 +259,10 @@ export default function Me() {
               {/* Tapping the portrait edits it. The pencil is the only thing that says so —
                   an ID photo does not otherwise look interactive. */}
               <Pressable onPress={() => { playSfx('tap'); router.push('/avatar'); }} style={{ alignSelf: 'flex-start' }}>
-                <NbPaper rot={-2} style={{ paddingTop: 6, paddingHorizontal: 6, paddingBottom: 3 }}>
-                  {/* The v32 portrait. The pixel sprite it replaced lived on the device
-                      only, so it reset on reinstall and nobody else could see it — and
-                      this face now turns up on other people's screens. */}
-                  <NbAvatar spec={myFace ?? undefined} size={78} />
-                </NbPaper>
+                {/* v48: the same round portrait as the home top row (2px ink ring). */}
+                <View testID="me-face" style={{ width: 74, height: 74, borderRadius: 37, overflow: 'hidden', borderWidth: 2, borderColor: nb.ink, backgroundColor: nb.paper }}>
+                  <NbAvatar spec={myFace ?? undefined} size={70} />
+                </View>
                 <View style={{ position: 'absolute', bottom: -4, right: -6, backgroundColor: 'rgba(249,227,123,.9)', borderWidth: 1.5, borderColor: nb.ink, borderRadius: 3, width: 21, height: 21, alignItems: 'center', justifyContent: 'center' }}>
                   <NbIcon name="pencil" size={12} />
                 </View>
@@ -295,14 +288,12 @@ export default function Me() {
                 </Pressable>
                 <Text style={{ fontFamily: nbFonts.monoBold, fontSize: 9.5, letterSpacing: 2, color: nb.soft, marginTop: 6 }}>RANK</Text>
                 <Text numberOfLines={1} style={[nbText.hand(19), { marginTop: 1 }]}>{career.label}</Text>
-                {!!equippedTitle && (
-                  <View style={{ marginTop: 4 }}>
-                    <NbTag color="#7C3AED">{t(equippedTitle.nameKey)}</NbTag>
+                {(!!equippedTitle || streakCurrent > 0) && (
+                  <View style={{ marginTop: 6, flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', gap: 5 }}>
+                    {!!equippedTitle && <NbTag color="#7C3AED">{t(equippedTitle.nameKey)}</NbTag>}
+                    {streakCurrent > 0 && <Pill icon="fire" n={streakCurrent} style={{ transform: [{ rotate: '-1.5deg' }], paddingVertical: 2, paddingLeft: 6, paddingRight: 9 }} />}
                   </View>
                 )}
-                <Text numberOfLines={1} style={[nbText.body(10.5, nb.soft), { marginTop: 3 }]}>
-                  {t('me.postedAt', { lang: (enLevel ? `EN ${enLevel}` : 'EN'), place: t('country.us') })}
-                </Text>
                 {/* The level, as a pencil gauge. A filled bar is a progress bar; hatching is
                     something somebody drew in. */}
                 <View style={{ marginTop: 10 }}>
@@ -314,6 +305,11 @@ export default function Me() {
                   <View style={{ marginTop: 4 }}>
                     <NbGauge value={(inLevel / ECON.xpPerLevel) * 100} />
                   </View>
+                  {!!enLevel && (
+                    <View style={{ flexDirection: 'row', marginTop: 8 }}>
+                      <Text style={{ fontFamily: nbFonts.hand, fontSize: 13.5, color: nb.green, borderWidth: 1.5, borderColor: nb.green, borderRadius: 2, paddingHorizontal: 8, paddingVertical: 1 }}>{`EN ${enLevel}`}</Text>
+                    </View>
+                  )}
                 </View>
               </View>
           {/* Nothing below the identity block. Reputation gauges lived here and were asked
@@ -323,22 +319,13 @@ export default function Me() {
         </NbPaper>
 
         {/* growth summary → 성장 리포트 상세 (/growth) */}
-        <Pressable onPress={() => router.push('/growth')}>
-          {/* Washed green, as the handoff draws it: the one banner on this page that is an
-              invitation rather than a record, so it is the one with a colour. */}
-          <NbPaper rot={0.5} bg="rgba(95,141,90,.13)" style={{ padding: 14, flexDirection: 'row', alignItems: 'center', gap: 12 }}>
-              <View style={{ width: 38, height: 38, alignItems: 'center', justifyContent: 'center' }}>
-                <NbIcon name="chartup" size={22} />
-              </View>
-              <View style={{ flex: 1, minWidth: 0 }}>
-                <Text numberOfLines={1} style={nbText.hand(17)}>{t('me.growthTitle')}</Text>
-                <Text numberOfLines={1} style={[nbText.body(11, nb.soft), { marginTop: 3 }]}>
-                  {t('me.growthSub', { lv: level, xp: xp.toLocaleString(), n: streakCurrent })}
-                </Text>
-              </View>
-              <NbIcon name="chevronRight" size={16} color={nb.soft} />
+        <PressRow testID="me-growth" onPress={() => router.push('/growth')}>
+          <NbPaper rot={0.5} style={{ paddingVertical: 10, paddingHorizontal: 12, flexDirection: 'row', alignItems: 'center', gap: 11 }}>
+            <IconDot name="chartup" size={38} bg="rgba(185,211,174,.5)" rot={-5} />
+            <Text numberOfLines={1} style={[nbText.hand(18.5), { flex: 1 }]}>{t('me.growthTitle')}</Text>
+            <NbIcon name="chevronRight" size={16} color={nb.soft} />
           </NbPaper>
-        </Pressable>
+        </PressRow>
 
         {/* 내 동료 — 관리 소유권은 프로필에 있다(홈은 오늘 활동만 보여주고 여기로 보낸다) */}
         <View>
@@ -347,16 +334,18 @@ export default function Me() {
               <NbIcon name="handshake2" size={17} />
               <Text style={nbText.hand(17)}>{t('me.colleaguesTitle')}</Text>
             </View>
-            <Pressable onPress={() => router.push('/colleagues')} hitSlop={6} style={{ flexDirection: 'row', alignItems: 'center', gap: 3 }}>
-              <Text numberOfLines={1} style={nbText.hand(14, nb.soft)}>{t('me.colleaguesAll', { n: colleagues.length })}</Text>
-              <NbIcon name="chevronRight" size={12} color={nb.soft} />
+            <Pressable onPress={() => router.push('/colleagues')} hitSlop={10} testID="me-colleagues-all" accessibilityRole="button" accessibilityLabel={t('me.colleaguesTitle')}>
+              <NbIcon name="chevronRight" size={16} color={nb.soft} />
             </Pressable>
           </View>
           <NbPaper rot={0.4} style={{ padding: 12 }}>
               {colleagues.length === 0 ? (
-                <Text style={nbText.hand(15, nb.soft)}>
-                  {t('me.noColleagues')}
-                </Text>
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+                  <View testID="me-no-colleagues-dot" style={{ width: 40, height: 40, borderRadius: 20, borderWidth: 1.6, borderStyle: 'dashed', borderColor: 'rgba(62,54,43,.35)', alignItems: 'center', justifyContent: 'center', opacity: 0.7 }}>
+                    <NbIcon name="handshake2" size={22} />
+                  </View>
+                  <Text style={nbText.hand(16, nb.soft)}>{t('me.noColleagues')}</Text>
+                </View>
               ) : (
                 <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
                   {colleagues.slice(0, 8).map((c) => (
@@ -373,18 +362,20 @@ export default function Me() {
                   ))}
                 </View>
               )}
-              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 12, paddingTop: 11, borderTopWidth: 2, borderTopColor: C + '22' }}>
-                <View style={{ flex: 1, minWidth: 0 }}>
-                  <Text style={nbText.body(10, nb.soft)}>{t('me.myCode')}</Text>
-                  {/* The code is TYPED — it is issued, not written, and it has to be read
-                      out loud to somebody. */}
-                  <Text style={{ fontFamily: nbFonts.monoBold, fontSize: 15, letterSpacing: 2, color: nb.ink, marginTop: 2 }}>
-                    {invite?.code ?? '· · · ·'}
-                  </Text>
-                </View>
-                <NbButton variant="yellow" size="sm" icon="handshake2" onPress={() => router.push('/colleagues/add')}>
-                  {t('me.addColleague')}
-                </NbButton>
+              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginTop: 10, paddingTop: 9, borderTopWidth: 1.3, borderStyle: 'dashed', borderTopColor: 'rgba(62,54,43,.18)' }}>
+                {/* The code is TYPED — it is issued, not written, and it has to be read
+                    out loud to somebody. v48 drops its caption: a code needs no label. */}
+                <Text style={{ flex: 1, fontFamily: nbFonts.monoBold, fontSize: 17, letterSpacing: 1, color: nb.ink }}>
+                  {invite?.code ?? '· · · ·'}
+                </Text>
+                <PressRow testID="me-add-colleague" label={t('me.addColleague')} onPress={() => router.push('/colleagues/add')}>
+                  <View style={{ width: 40, height: 40 }}>
+                    <View pointerEvents="none" style={{ position: 'absolute', left: 1.5, top: 2, width: 40, height: 40, borderRadius: 20, backgroundColor: 'rgba(62,54,43,.28)' }} />
+                    <View style={{ width: 40, height: 40, borderRadius: 20, backgroundColor: nb.marker, borderWidth: 1.7, borderColor: nb.ink, alignItems: 'center', justifyContent: 'center' }}>
+                      <Text style={{ fontFamily: nbFonts.hand, fontSize: 24, color: nb.ink, lineHeight: 28 }}>+</Text>
+                    </View>
+                  </View>
+                </PressRow>
               </View>
           </NbPaper>
         </View>
@@ -434,54 +425,18 @@ export default function Me() {
               <NbIcon name="star" size={17} color="#C99A1E" />
               <Text style={nbText.hand(17)}>{t('title.section')}</Text>
             </View>
-            <Text numberOfLines={1} style={nbText.hand(14, nb.soft)}>{titles.filter((x) => x.got).length} / {titles.length}</Text>
+            <Text numberOfLines={1} style={nbText.mono(12, nb.soft)}>{titles.filter((x) => x.got).length}/{titles.length}</Text>
           </View>
-          <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
-            {/* A grid, not a list. Fifteen full-width rows ran to roughly 700px and
-                pushed everything under it off the screen; four per row is about 280.
-                Nothing is lost — the description and the equip button already lived in
-                the detail sheet a tap away, so the row was carrying text nobody could
-                act on from there. */}
-            {titles.map((tt) => {
-              const isEq = equipped === tt.id;
-              return (
-                <Pressable key={tt.id} onPress={() => openTitle(tt.id)} style={{ width: '22.5%' }}>
-                  <NbPaper
-                    rot={tt.got ? -0.7 : 0.5}
-                    bg={tt.got ? undefined : 'transparent'}
-                    style={[
-                      { aspectRatio: 0.86, alignItems: 'center', justifyContent: 'center', gap: 3, paddingHorizontal: 3 },
-                      // Equipped: a violet edge, the one colour this grid uses for "the
-                      // one on your card". Locked: no paper at all — an unclaimed title is
-                      // a blank space on the page rather than a card you own.
-                      isEq ? { borderWidth: 2, borderColor: '#7C3AED' } : null,
-                      tt.got ? null : { borderStyle: 'dashed', borderColor: 'rgba(62,54,43,.25)' },
-                    ]}
-                  >
-                    {/* A locked title is dimmed rather than tinted: the doodle carries its
-                        own watercolour fill, and a colour override would only reach the
-                        stroke. */}
-                    <View style={{ opacity: tt.got ? 1 : 0.3 }}>
-                      <NbIcon name={tt.nbIcon} size={22} />
-                    </View>
-                    <Text
-                      numberOfLines={2}
-                      style={[nbText.hand(12, tt.got ? nb.ink : nb.soft), { lineHeight: 14, textAlign: 'center' }]}
-                    >
-                      {tt.got ? t(tt.nameKey) : '???'}
-                    </Text>
-                    {/* The equipped one says so on the tile: it is the single title the
-                        card shows, and hunting for it in a grid of fifteen is the one
-                        thing the list did better. */}
-                    {isEq && (
-                      <View style={{ position: 'absolute', top: -6, right: -6 }}>
-                        <NbTag color="#7C3AED" fill rot={-3}>{t('title.equippedShort')}</NbTag>
-                      </View>
-                    )}
-                  </NbPaper>
-                </Pressable>
-              );
-            })}
+          {/* v48: one circle grid for titles and missions — earned = Done + its doodle,
+              locked = Locked (no name; the name would give the title away). The equipped
+              one carries a lilac ring instead of a tag. */}
+          <View style={{ flexDirection: 'row', flexWrap: 'wrap', rowGap: 12, marginTop: 2 }}>
+            {titles.map((tt) => (
+              <Pressable key={tt.id} testID={`title-${tt.id}`} onPress={() => openTitle(tt.id)} style={{ width: '25%', alignItems: 'center' }}>
+                <BadgeCircle got={tt.got} icon={tt.nbIcon} on={equipped === tt.id} i={titles.indexOf(tt)} />
+                {tt.got && <Text numberOfLines={1} style={[nbText.hand(12.5), { marginTop: 5 }]}>{t(tt.nameKey)}</Text>}
+              </Pressable>
+            ))}
           </View>
         </View>
 
@@ -492,62 +447,20 @@ export default function Me() {
               <NbIcon name="magnify" size={17} />
               <Text style={nbText.hand(19)}>{t('me.hiddenMissions')}</Text>
             </View>
-            <Text style={{ fontFamily: nbFonts.body, fontSize: 11, color: nb.soft }}>{foundIds.size} / {MISSIONS.length}</Text>
+            <Text style={nbText.mono(12, nb.soft)}>{foundIds.size}/{MISSIONS.length}</Text>
           </View>
-          <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
-            {MISSIONS.map((m) => {
+          <View style={{ flexDirection: 'row', flexWrap: 'wrap', rowGap: 12, marginTop: 2 }}>
+            {MISSIONS.map((m, i) => {
               const done = foundIds.has(m.id);
               return (
-                <Pressable key={m.id} onPress={() => openMission(m.id)} style={{ width: '31.5%' }}>
-                  {/* Found: a green-washed slip with its own doodle. Not found: a dim slip
-                      with a pencilled "?" — the mission's name IS the reward, so the tile
-                      cannot show it. */}
-                  <NbPaper
-                    rot={done ? -0.8 : 0.5}
-                    bg={done ? 'rgba(95,141,90,.15)' : undefined}
-                    style={[{ paddingTop: 14, paddingBottom: 10, alignItems: 'center' }, done ? null : { opacity: 0.5 }]}
-                  >
-                    {done
-                      ? <NbIcon name={m.nbIcon} size={22} />
-                      : <Text style={nbText.hand(19, nb.soft)}>?</Text>}
-                    <Text numberOfLines={1} style={[nbText.hand(13.5, done ? nb.ink : nb.soft), { marginTop: 4 }]}>
-                      {done ? t(m.nameKey) : '???'}
-                    </Text>
-                  </NbPaper>
+                <Pressable key={m.id} testID={`mission-${m.id}`} onPress={() => openMission(m.id)} style={{ width: '25%', alignItems: 'center' }}>
+                  <BadgeCircle got={done} icon={m.nbIcon} i={i} />
+                  {done && <Text numberOfLines={1} style={[nbText.hand(12.5), { marginTop: 5 }]}>{t(m.nameKey)}</Text>}
                 </Pressable>
               );
             })}
           </View>
         </View>
-
-        {/* review lab teaser → review tab */}
-        <Pressable onPress={() => router.push('/lab')}>
-          <NbPaper rot={-0.5} style={{ padding: 14, gap: 10 }}>
-              <View style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 10 }}>
-                <NbPaper rot={-2} style={{ width: 40, height: 40, alignItems: 'center', justifyContent: 'center' }}>
-                  <NbIcon name="lab" size={21} />
-                </NbPaper>
-                <View style={{ flex: 1 }}>
-                  <Text style={{ fontFamily: nbFonts.hand, fontSize: 18.9, color: C }}>리뷰랩 · 오답노트</Text>
-                  <Text style={{ fontFamily: nbFonts.body, fontSize: 11, color: nb.ink, marginTop: 4, lineHeight: 16 }}>AI가 교정한 문장이 <Text style={{ fontFamily: nbFonts.hand }}>{t('lab.likeALocal')}</Text> 카드로 변환됐어요.</Text>
-                </View>
-              </View>
-              {/* One card, as it appears in the lab: struck out in red pen, then the
-                  correction under a highlighter. */}
-              <View style={{ borderWidth: 1.3, borderStyle: 'dashed', borderColor: 'rgba(62,54,43,.25)', borderRadius: 3, paddingVertical: 8, paddingHorizontal: 10 }}>
-                <Text style={[nbText.body(11, nb.soft), { textDecorationLine: 'line-through', textDecorationColor: nb.red }]}>I want to ask about your pain.</Text>
-                <View style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 5, marginTop: 3 }}>
-                  <Text style={[nbText.hand(14, nb.red), { transform: [{ rotate: '-4deg' }] }]}>{'\u2192'}</Text>
-                  <NbMark textStyle={{ fontFamily: nbFonts.bodyMid, fontSize: 12 }}>Can you tell me about your pain?</NbMark>
-                </View>
-              </View>
-              <View style={{ alignItems: 'flex-end' }}>
-                <NbButton variant="yellow" size="sm" iconRight="chevronRight" onPress={() => router.push('/lab')}>
-                  {t('me.openLab')}
-                </NbButton>
-              </View>
-          </NbPaper>
-        </Pressable>
 
         {/* 언어 — UI 언어와 배우는 언어는 별개 축이다(R1). UI는 여기서 바꾸고,
             배우는 언어는 온보딩에서 고른 나라가 정하므로 읽기 전용으로 보여준다(R3). */}
@@ -556,43 +469,11 @@ export default function Me() {
             <NbIcon name="speech" size={17} />
             <Text style={{ fontFamily: nbFonts.hand, fontSize: 18.9, color: C }}>{t('settings.language.section')}</Text>
           </View>
-          <NbPaper rot={-0.3}>
-            <View>
-              <Pressable
-                onPress={() => setLangOpen(true)}
-                style={{ flexDirection: 'row', alignItems: 'center', gap: 12, paddingVertical: 11, paddingHorizontal: 13 }}
-              >
-                <View style={{ flex: 1 }}>
-                  <Text style={{ fontFamily: nbFonts.hand, fontSize: 17.6, color: C }}>{t('settings.language.appTitle')}</Text>
-                  <Text style={{ fontFamily: nbFonts.body, fontSize: 10, color: nb.soft, marginTop: 2 }}>
-                    {t('settings.language.appSubOn', { name: LOCALE_META[locale].name })}
-                  </Text>
-                </View>
-                <Text numberOfLines={1} style={nbText.hand(16)}>{LOCALE_META[locale].name}</Text>
-                <NbIcon name="chevronRight" size={15} color={nb.soft} />
-              </Pressable>
-              {/* 학습 설정 — the three onboarding answers, changeable.
-                  This row used to be a dead end: it printed the target language and said
-                  it "was decided by the country you chose in onboarding", which is true
-                  and unhelpful to somebody whose job or country has since changed. There
-                  was no path at all (Build Spec learning-tracks P1). */}
-              <Pressable
-                onPress={() => { playSfx('tap'); router.push('/settings/learning'); }}
-                style={{ flexDirection: 'row', alignItems: 'center', gap: 12, paddingVertical: 10, paddingHorizontal: 13, borderTopWidth: 1.3, borderStyle: 'dashed', borderTopColor: 'rgba(62,54,43,.18)' }}
-              >
-                <View style={{ flex: 1 }}>
-                  <Text style={{ fontFamily: nbFonts.hand, fontSize: 16.2, color: C }}>{t('learn.entry')}</Text>
-                  <Text numberOfLines={1} style={{ fontFamily: nbFonts.body, fontSize: 10, color: nb.soft, marginTop: 2 }}>
-                    {t('learn.entrySub', {
-                      dest: destination ? t(`onb.dest.${destination}`) : '—',
-                      level: enLevel || '—',
-                    })}
-                  </Text>
-                </View>
-                <NbIcon name="chevronRight" size={15} color={nb.soft} />
-              </Pressable>
-            </View>
-          </NbPaper>
+          <SettingRow icon="speech" title={t('settings.language.appTitle')} rot={-0.3} testID="me-set-lang" onPress={() => setLangOpen(true)}
+            right={<View style={{ flexDirection: 'row', alignItems: 'center', gap: 3 }}><Text numberOfLines={1} style={nbText.hand(15.5)}>{LOCALE_META[locale].name}</Text><NbIcon name="chevronRight" size={16} color={nb.soft} /></View>} />
+          {/* 학습 설정 — the three onboarding answers, changeable (Build Spec learning-tracks P1). */}
+          <SettingRow icon="compass" title={t('learn.entry')} rot={0.3} testID="me-set-learn" onPress={() => { playSfx('tap'); router.push('/settings/learning'); }}
+            right={<Text style={nbText.mono(12.5, nb.soft)}>EN-US</Text>} />
         </View>
 
         {/* 소리 — 효과음이 생겼으니 끌 수단도 있어야 한다. 병원/야근 환경에서
@@ -602,77 +483,25 @@ export default function Me() {
             <NbIcon name="speaker" size={17} />
             <Text style={{ fontFamily: nbFonts.hand, fontSize: 18.9, color: C }}>{t('settings.sound.section')}</Text>
           </View>
-          <NbPaper rot={0.3}>
-            <Pressable
-              onPress={toggleSfx}
-              style={{ flexDirection: 'row', alignItems: 'center', gap: 12, paddingVertical: 11, paddingHorizontal: 13 }}
-            >
-              <View style={{ flex: 1 }}>
-                <Text style={{ fontFamily: nbFonts.hand, fontSize: 17.6, color: C }}>{t('settings.sound.title')}</Text>
-                <Text style={{ fontFamily: nbFonts.body, fontSize: 10, color: nb.soft, marginTop: 2 }}>
-                  {sfxOn ? t('settings.sound.on') : t('settings.sound.off')}
-                </Text>
+          <SettingRow icon="speaker" title={t('settings.sound.title')} rot={-0.3} testID="me-set-sfx" onPress={toggleSfx}
+            right={(
+              <View testID="me-sfx-pill" style={{ flexDirection: 'row', borderWidth: 1.6, borderColor: nb.ink, borderRadius: 99, overflow: 'hidden', flexShrink: 0 }}>
+                <View style={{ paddingVertical: 3, paddingHorizontal: 9, backgroundColor: sfxOn ? nb.ink : 'transparent' }}>
+                  <NbIcon name="speaker" size={17} color={sfxOn ? nb.paper : undefined} />
+                </View>
+                <View style={{ paddingVertical: 3, paddingHorizontal: 9, backgroundColor: sfxOn ? 'transparent' : nb.ink }}>
+                  <NbIcon name="speaker" size={17} color={sfxOn ? undefined : nb.paper} />
+                  <View style={{ position: 'absolute', left: 6, right: 6, top: '50%', height: 2, backgroundColor: nb.red, transform: [{ rotate: '-35deg' }] }} />
+                </View>
               </View>
-              {/* An INK toggle, as the handoff draws it: a pen-outlined slot with a solid
-                  block in it. No RN Switch anywhere in this app, and a platform switch
-                  here would be the one control not drawn by hand. */}
-              <View style={{ width: 40, height: 21, borderWidth: 1.7, borderColor: nb.ink, borderRadius: 2, flexDirection: 'row', flexShrink: 0, justifyContent: sfxOn ? 'flex-end' : 'flex-start' }}>
-                <View style={{ width: 18, backgroundColor: sfxOn ? nb.ink : 'rgba(62,54,43,.35)' }} />
-              </View>
-            </Pressable>
-          </NbPaper>
+            )} />
         </View>
 
-        {/* 공개 — 라이브 병동에 나를 익명으로 띄울지. 기본은 공개이고 언제든 끌 수 있다.
-            낯선 사람에게 보이는 유일한 것이라 별도 스위치로 둔다(동료 공개와 분리). */}
-        <View style={{ marginTop: space.sm }}>
-          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 8 }}>
-            <NbIcon name="shield" size={17} />
-            <Text style={{ fontFamily: nbFonts.hand, fontSize: 18.9, color: C }}>{t('settings.privacy.section')}</Text>
-          </View>
-          <NbPaper rot={-0.2}>
-            <Pressable
-              onPress={toggleWard}
-              style={{ flexDirection: 'row', alignItems: 'center', gap: 12, paddingVertical: 11, paddingHorizontal: 13 }}
-            >
-              <View style={{ flex: 1 }}>
-                <Text style={{ fontFamily: nbFonts.hand, fontSize: 17.6, color: C }}>{t('settings.privacy.wardTitle')}</Text>
-                <Text style={{ fontFamily: nbFonts.body, fontSize: 10, color: nb.soft, marginTop: 2 }}>
-                  {wardVisible ? t('settings.privacy.wardOn') : t('settings.privacy.wardOff')}
-                </Text>
-              </View>
-              <View style={{ width: 40, height: 21, borderWidth: 1.7, borderColor: nb.ink, borderRadius: 2, flexDirection: 'row', flexShrink: 0, justifyContent: wardVisible ? 'flex-end' : 'flex-start' }}>
-                <View style={{ width: 18, backgroundColor: wardVisible ? nb.ink : 'rgba(62,54,43,.35)' }} />
-              </View>
-            </Pressable>
-          </NbPaper>
-        </View>
+        {/* 공개(라이브 병동에 나 표시) 섹션 숨김 — 라이브 병동이 홈에서 빠져 숨김(사용자 결정 2026-10-19,
+            디자인 지시서 §8). 살리면 JSX만 되돌린다(git 기록; 값·toggleWard·키는 그대로 있다). */}
 
-        {/* 탐험 모드(Task 15) — 부서 인테리어를 쓸지, 기기 로컬로 켜고 끈다. 인테리어가
-            지금 간호사 직업군에만 있어, 다른 직업군에 언제 붙을지 미정인 동안 데모에서
-            껐다 켜 볼 수 있어야 한다. */}
-        <View style={{ marginTop: space.sm }}>
-          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 8 }}>
-            <NbIcon name="hospital" size={17} />
-            <Text style={{ fontFamily: nbFonts.hand, fontSize: 18.9, color: C }}>{t('settings.explore.section')}</Text>
-          </View>
-          <NbPaper rot={0.3}>
-            <Pressable
-              onPress={toggleExplore}
-              style={{ flexDirection: 'row', alignItems: 'center', gap: 12, paddingVertical: 11, paddingHorizontal: 13 }}
-            >
-              <View style={{ flex: 1 }}>
-                <Text style={{ fontFamily: nbFonts.hand, fontSize: 17.6, color: C }}>{t('settings.explore.title')}</Text>
-                <Text style={{ fontFamily: nbFonts.body, fontSize: 10, color: nb.soft, marginTop: 2 }}>
-                  {explore.enabled ? t('settings.explore.on') : t('settings.explore.off')}
-                </Text>
-              </View>
-              <View style={{ width: 40, height: 21, borderWidth: 1.7, borderColor: nb.ink, borderRadius: 2, flexDirection: 'row', flexShrink: 0, justifyContent: explore.enabled ? 'flex-end' : 'flex-start' }}>
-                <View style={{ width: 18, backgroundColor: explore.enabled ? nb.ink : 'rgba(62,54,43,.35)' }} />
-              </View>
-            </Pressable>
-          </NbPaper>
-        </View>
+        {/* 탐험 모드 행은 뺐다(home-calendar-v47 결정 2) — 이 스위치가 켜던 유일한 입구인 홈의 과별
+            출근 카드가 v47에서 사라져, 켜도 바뀌는 것이 없다. 값과 useExploreMode는 남겨 둔다. */}
 
         {/* 계정 — 로그아웃 (그 전까진 로그인 화면으로 돌아갈 경로가 없었다) */}
         <View style={{ marginTop: space.sm }}>
@@ -680,21 +509,8 @@ export default function Me() {
             <NbIcon name="lock" size={17} />
             <Text style={{ fontFamily: nbFonts.hand, fontSize: 18.9, color: C }}>{t('settings.account.section')}</Text>
           </View>
-          <NbPaper rot={-0.3} style={{ opacity: signingOut ? 0.6 : 1 }}>
-            <Pressable
-              onPress={confirmSignOut}
-              disabled={signingOut}
-              style={{ flexDirection: 'row', alignItems: 'center', gap: 12, paddingVertical: 11, paddingHorizontal: 13 }}
-            >
-              <View style={{ flex: 1 }}>
-                <Text style={{ fontFamily: nbFonts.hand, fontSize: 17.6, color: C }}>{t('settings.account.signOut')}</Text>
-                <Text style={{ fontFamily: nbFonts.body, fontSize: 10, color: nb.soft, marginTop: 2 }}>{t('settings.account.signOutSub')}</Text>
-              </View>
-              {signingOut
-                ? <ActivityIndicator color={nb.ink} />
-                : <NbIcon name="chevronRight" size={15} color={nb.soft} />}
-            </Pressable>
-          </NbPaper>
+          <SettingRow icon="lock" title={t('settings.account.signOut')} rot={0.3} testID="me-set-signout" disabled={signingOut} onPress={confirmSignOut}
+            right={signingOut ? <ActivityIndicator color={nb.ink} /> : <NbIcon name="chevronRight" size={16} color={nb.soft} />} />
         </View>
       </ScrollView>
 
@@ -777,6 +593,44 @@ function Rules() {
       {Array.from({ length: Math.ceil(height / RULE_H) }).map((_, i) => (
         <View key={i} style={{ position: 'absolute', left: 0, right: 0, top: (i + 1) * RULE_H, height: 1, backgroundColor: RULE_COLOR }} />
       ))}
+    </View>
+  );
+}
+
+/** `.v48-press` — pressed rows sink 2/3px and tilt. */
+function PressRow({ onPress, children, testID, label, disabled }: { onPress: () => void; children: React.ReactNode; testID?: string; label?: string; disabled?: boolean }) {
+  const press = useV48Press('press');
+  return (
+    <Pressable onPress={onPress} onPressIn={press.onPressIn} onPressOut={press.onPressOut} disabled={disabled} testID={testID}
+      accessibilityRole="button" accessibilityLabel={label}>
+      <Animated.View style={{ transform: press.transform }}>{children}</Animated.View>
+    </Pressable>
+  );
+}
+
+/** v48 settings row: IconDot + title + value, each on its own slip. */
+function SettingRow({ icon, title, right, rot, onPress, testID, disabled }: {
+  icon: NbIconName; title: string; right?: React.ReactNode; rot: number; onPress: () => void; testID?: string; disabled?: boolean;
+}) {
+  return (
+    <View style={{ marginTop: 9, opacity: disabled ? 0.6 : 1 }}>
+      <PressRow onPress={onPress} testID={testID} disabled={disabled}>
+        <NbPaper rot={rot} style={{ paddingVertical: 9, paddingHorizontal: 12, flexDirection: 'row', alignItems: 'center', gap: 11 }}>
+          <IconDot name={icon} size={34} rot={rot * 8} />
+          <Text numberOfLines={1} style={[nbText.hand(17.5), { flex: 1, minWidth: 0 }]}>{title}</Text>
+          {right}
+        </NbPaper>
+      </PressRow>
+    </View>
+  );
+}
+
+/** A title/mission circle: earned = Done + doodle (lilac ring when equipped), locked = Locked. */
+function BadgeCircle({ got, icon, on, i }: { got: boolean; icon: NbIconName; on?: boolean; i: number }) {
+  if (!got) return <Locked size={46} />;
+  return (
+    <View style={{ borderRadius: 26, borderWidth: on ? 3 : 0, borderColor: '#C3B1E8', margin: on ? -3 : 0 }}>
+      <Done size={46} icon={icon} rot={i % 2 ? 6 : -6} />
     </View>
   );
 }

@@ -111,10 +111,10 @@ describe('DeptBinder', () => {
       curriculum({ themeKey: 'c', track: 'depth', resume: false }),
     ];
     const tree = mount(<DeptBinder curricula={curricula} onPress={jest.fn()} />);
-    // 태그는 상태를, 버튼은 동작을 말한다 — 같은 카드에서 '진행중'과 '이어서'가
-    // 서로 다른 일을 한다. 한때 둘 다 '이어하기'·'이어서'여서 같은 말이 두 번 나왔다.
-    expect(texts(tree.root).filter((s) => s === '진행중')).toHaveLength(1);
-    expect(texts(tree.root).filter((s) => s === '이어서')).toHaveLength(1);
+    // v48 — 글 태그 없이 신호로: 진행 주제는 Ring + Go 하나, '진행중' 글은 없다.
+    expect(texts(tree.root).filter((s) => s === '진행중')).toHaveLength(0);
+    expect(tree.root.findAll((n) => typeof n.type === 'string' && n.props?.testID === 'v48-ring')).toHaveLength(1);
+    expect(card(tree.root, 'b').findAll((n) => n.props?.testID === 'v48-go').length).toBeGreaterThan(0);
     const badges = tree.root.findAll((n) => typeof n.type === 'string' && n.props?.testID === 'theme-resume-badge');
     expect(badges).toHaveLength(1);
     // Attached to the flagged card, not any other.
@@ -279,7 +279,7 @@ describe('DeptBinder', () => {
     expect(tree.root.findAll((n) => typeof n.type === 'string' && n.props?.testID === 'gauge-tick')).toHaveLength(0);
   });
 
-  it('범례가 세 숫자를 말하고, 합이 주제 수와 같다', () => {
+  it('범례는 숫자 없는 색 칩이고, 끝에 d/t만 남는다', () => {
     const tree = mount(
       <DeptBinder
         curricula={[
@@ -291,8 +291,8 @@ describe('DeptBinder', () => {
       />,
     );
     const shown = texts(tree.root).join(' ');
-    expect(shown).toContain('남음 1');
-    expect(shown).toContain('/3 주제');
+    expect(shown).not.toContain('남음');
+    expect(shown).toContain('/3');
   });
 });
 

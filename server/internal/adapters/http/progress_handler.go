@@ -186,7 +186,15 @@ func (h *progressHandler) due(w http.ResponseWriter, r *http.Request) {
 		httpx.Error(w, http.StatusInternalServerError, "could not load review")
 		return
 	}
-	httpx.JSON(w, http.StatusOK, map[string]any{"cards": cards})
+	// The whole deck, alongside the due page: `total` = every saved card, `mastered` = those
+	// at 3 pips. The lab shows both as "저장 · 마스터"; the due list (capped at 50, due-only)
+	// cannot answer either, and the lab used to print its length as "saved".
+	total, mastered, err := h.review.CountCards(r.Context(), uid)
+	if err != nil {
+		httpx.Error(w, http.StatusInternalServerError, "could not load review")
+		return
+	}
+	httpx.JSON(w, http.StatusOK, map[string]any{"cards": cards, "total": total, "mastered": mastered})
 }
 
 // @Summary Grade a review card (SM-2 spaced repetition)

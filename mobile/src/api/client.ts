@@ -261,6 +261,8 @@ export type StationDetail = paths['/me/journey/stations/{themeKey}']['get']['res
 /** One thing the learner touched on a day. `hour` is local, 0-23. */
 export interface CalendarEntry {
   scenarioId: string; title: string; cleared: boolean; hour: number;
+  /** The scenario's department code (its event's ward), for the home calendar's stamps. */
+  dept?: string;
 }
 
 /**
@@ -499,7 +501,13 @@ export type ReviewGrade = 'again' | 'hard' | 'good' | 'easy';
 export interface HomeShift { shift: 'DAY' | 'EVENING'; deptLabel: string }
 /** `progress` is the current chapter's required-step completion (runs, not raw steps), so
  *  the card can draw a real "이어서 하기" progress bar. */
-export interface HomeTodayOne { chapter: string; title: string; kind: string; scenarioId?: string; progress?: { done: number; total: number } }
+export interface HomeTodayOne {
+  chapter: string; title: string; kind: string; scenarioId?: string; progress?: { done: number; total: number };
+  /** Department code of the theme being continued (v47 home button's doodle). */
+  dept?: string;
+  /** That department track's passed themes / theme count (the button's ring). */
+  deptProgress?: { done: number; total: number };
+}
 /** The day's work brief. The two server-derived tasks; the 오늘의 문장 task is tracked
  *  client-side (see lib/dailyBrief). */
 export interface HomeBrief { reviewCount: number; reviewTarget: number; reviewDone: boolean; curriculumDone: boolean }
@@ -620,10 +628,6 @@ export interface SlangDeck {
   collectedCount: number; total: number; masterAt: number; master: boolean;
   todayCard?: SlangCard; collectableToday: boolean; collected: SlangCard[];
 }
-
-/** One 오늘 밤의 이야기; text is server-resolved to the caller's locale. */
-export interface NightStory { id: string; title: string; body: string; keyLine: string; keyGloss: string }
-export interface NightRadio { total: number; index: number; story?: NightStory }
 
 /** A follow-up note from a patient met in a cleared scenario (환자 인수인계 노트). */
 export type HandoffKind = 'gratitude' | 'followup' | 'review';
@@ -793,15 +797,6 @@ export const api = {
     return data as SlangDeck;
   },
 
-  // ── 나이트 근무 라디오 (오늘 밤의 이야기) ──────────────────────────────────
-  /** Tonight's story; `i` offsets from today's for 다음 이야기. */
-  async night(i = 0): Promise<NightRadio> {
-    let tz: string | undefined;
-    try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone; } catch { tz = undefined; }
-    const { data } = await http.get('/night', { params: { i, ...(tz ? { tz } : {}) } });
-    return data as NightRadio;
-  },
-
   /** 환자 인수인계 노트: the inbox. Opening it may generate one waiting note, so the
    *  server resolves note text to the caller's locale (pass it as a hint). */
   async handoff(): Promise<HandoffInbox> {
@@ -845,6 +840,19 @@ export const api = {
   async reviewDue(): Promise<ReviewCard[]> {
     const { data } = await http.get('/me/review');
     return (data?.cards ?? []) as ReviewCard[];
+  },
+
+  /** The review lab's read: today's due cards PLUS the whole deck's counts. `saved` (every
+   *  card) and `mastered` (3 pips) come from the server — the due list is capped and
+   *  due-only, so neither can be counted from it. Absent (undefined) on an older server;
+   *  the lab then draws no number rather than the due list's length. */
+  async reviewOverview(): Promise<{ cards: ReviewCard[]; saved?: number; mastered?: number }> {
+    const { data } = await http.get('/me/review');
+    return {
+      cards: (data?.cards ?? []) as ReviewCard[],
+      saved: typeof data?.total === 'number' ? data.total : undefined,
+      mastered: typeof data?.mastered === 'number' ? data.mastered : undefined,
+    };
   },
 
   /** Grade a review card (SM-2); returns the new mastery pips. */
@@ -934,12 +942,6 @@ export const api = {
   async scenario(id: string): Promise<ScenarioDetail> {
     const { data } = await http.get(`/scenarios/${id}`);
     return data as ScenarioDetail;
-  },
-
-  /** Today's situation board — a daily-rotated set of scenario cards (global). */
-  async boardToday(profession = 'nurse'): Promise<BoardCard[]> {
-    const { data } = await http.get(`/board/today?profession=${profession}`);
-    return (data as { scenarios: BoardCard[] }).scenarios ?? [];
   },
 
   /** Department situation cards (dept-scoped scenarios, tagged 완료/긴급/신규),

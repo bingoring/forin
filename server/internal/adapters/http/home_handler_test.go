@@ -62,6 +62,37 @@ func TestCurrentStep_HappyPathOnACampusDept(t *testing.T) {
 	}
 }
 
+// The home button (v47 HomeCal) draws the department's doodle and a ring of that
+// department's track: the raw code travels (the client owns icons and labels), and the
+// ring counts passed themes over the WHOLE track, not just the theme being continued.
+func TestCurrentStep_CarriesDeptCodeAndTrackProgress(t *testing.T) {
+	j := homeJourneyStub{
+		resume: learning.StepRef{Theme: "icu-sedation", Found: true},
+		tracks: []learning.TrackGroup{
+			{Dept: "ER", Curricula: []learning.CurriculumState{{ThemeKey: "core-safety-er", State: "passed"}}},
+			{Dept: "ICU", Curricula: []learning.CurriculumState{
+				{ThemeKey: "core-safety-icu", State: "passed"},
+				{ThemeKey: "core-family-icu", State: "passed"},
+				{ThemeKey: "icu-sedation", State: "here"},
+				{ThemeKey: "icu-weaning", State: "open"},
+			}},
+		},
+		steps: map[learning.ThemeKey][]learning.StepState{
+			"icu-sedation": {{Kind: "dlg", Name: "진정 평가", ScenarioID: "SCN-ICU-1", State: "now"}},
+		},
+	}
+	_, _, one := currentStep(j, learning.Progress{}, "ko")
+	if one == nil {
+		t.Fatal("expected a card")
+	}
+	if one.Dept != "ICU" {
+		t.Errorf("dept is the track's raw code, got %q", one.Dept)
+	}
+	if one.DeptProgress == nil || one.DeptProgress.Done != 2 || one.DeptProgress.Total != 4 {
+		t.Errorf("ring counts passed themes over the ICU track only: got %+v", one.DeptProgress)
+	}
+}
+
 // Resuming into a floorless department (GEN — J9) must never leak the raw
 // department code onto the screen. campus.Of("GEN") fails, so deptLabel must
 // degrade to "" rather than "GEN", and the chapter must drop the "dept · "

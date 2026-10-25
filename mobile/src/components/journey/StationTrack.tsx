@@ -25,7 +25,9 @@ import type { JourneyStep } from '@/api/client';
 import { useMyAvatar } from '@/hooks/useMyAvatar';
 import { NbAvatar } from '@/components/nb/NbAvatar';
 import { NbIcon, type NbIconName } from '@/components/nb/NbIcon';
-import { NbButton, NbPaper, nbText } from '@/components/nb/NbUI';
+import { nbText } from '@/components/nb/NbUI';
+import { GoBar, IconDot } from '@/components/nb/V48';
+import { useV48Loop } from '@/components/nb/nbMotion';
 import { NbStampNode, type NbStampState } from '@/components/nb/NbStampNode';
 import { NbYarn, type YarnPoint } from '@/components/nb/NbYarn';
 import { STEP_META, type StepKind } from '@/data/campus';
@@ -512,6 +514,7 @@ export function StationTrack({ steps, onStepPress }: {
                 accessibilityLabel={stepLabel(t, step)}
                 style={{ position: 'absolute', left: p.x - 31, top: p.y - 31 }}
               >
+                {stampState === 'here' && <StampHalo animate={animate} />}
                 <NbStampNode
                   state={stampState}
                   icon={iconForStep(step)}
@@ -577,22 +580,47 @@ export function StationTrack({ steps, onStepPress }: {
             testID="stamp-current-card"
             style={{ position: 'absolute', left: 16, right: 16, bottom: 20 + BOTTOM_SAFE_PAD }}
           >
-            <NbPaper rot={-0.4} tape tapeLeft={120} style={{ paddingVertical: 10, paddingHorizontal: 13, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-              <View style={{ width: 40, height: 40, backgroundColor: 'rgba(233,196,90,.28)', borderWidth: 1.6, borderColor: nb.marker, alignItems: 'center', justifyContent: 'center', transform: [{ rotate: '-4deg' }] }}>
-                <NbIcon name={iconForStep(nowStep)} size={22} />
-              </View>
-              <View style={{ minWidth: 0, flex: 1 }}>
-                <Text numberOfLines={1} style={nbText.hand(16)}>{`${nowIndex + 1} · ${stepLabel(t, nowStep)}`}</Text>
-                {!!sub && <Text numberOfLines={1} style={[nbText.body(10.5, nb.soft), { marginTop: 2 }]}>{sub}</Text>}
-              </View>
-              <NbButton variant="ink" size="sm" icon="pencil" onPress={() => pressStep(nowIndex, nowStep)}>
-                {t('common.start')}
-              </NbButton>
-            </NbPaper>
+            <GoBar
+              onPress={() => pressStep(nowIndex, nowStep)}
+              left={<IconDot name={iconForStep(nowStep)} size={42} bg={nb.marker} border={nb.paper} rot={-5} />}
+              accessibilityLabel={stepLabel(t, nowStep)}
+              testID="stamp-current-bar"
+              halo={motionOn ? 'go' : false}
+            >
+              <Text numberOfLines={1} style={{ fontFamily: nbFonts.hand, fontSize: 18, color: nb.paper, lineHeight: 20 }}>{stepLabel(t, nowStep)}</Text>
+              <Text numberOfLines={1} style={{ fontFamily: nbFonts.monoBold, fontSize: 11, color: 'rgba(255,253,244,.6)', marginTop: 3 }}>
+                {[String(nowIndex + 1), sub].filter(Boolean).join(' · ')}
+              </Text>
+            </GoBar>
           </View>
         );
       })()}
     </>
+  );
+}
+
+/** v48 — 지금 우표 뒤의 숨 쉬는 노란 후광(`inset -8`, 원, rgba(249,227,123,.35), `.v48-go` breathe). */
+function StampHalo({ animate }: { animate: boolean }) {
+  const d = STAMP_SIZE + 16;
+  return (
+    <View pointerEvents="none" testID="stamp-here-halo" style={{ position: 'absolute', left: -8, top: -8, width: d, height: d }}>
+      {animate && <HaloPulse d={d} />}
+      <View style={{ width: d, height: d, borderRadius: d / 2, backgroundColor: 'rgba(249,227,123,.35)' }} />
+    </View>
+  );
+}
+
+/** 후광의 숨 쉬는 바깥 테(0 → 7px). 모션이 켜져 있을 때만 마운트한다(반복 타이밍이 reduce motion을 어기지 않게). */
+function HaloPulse({ d }: { d: number }) {
+  const p = useV48Loop('breathe');
+  const sp = 7;
+  return (
+    <Animated.View
+      style={{
+        position: 'absolute', left: -sp, top: -sp, width: d + 2 * sp, height: d + 2 * sp, borderRadius: (d + 2 * sp) / 2,
+        backgroundColor: 'rgba(249,227,123,.55)', opacity: p,
+      }}
+    />
   );
 }
 

@@ -115,8 +115,6 @@ export function GuidedInput({ mode, onMode, rec, onMicDown, onMicUp, draft, onDr
                   <Text numberOfLines={1} style={{ fontFamily: nbFonts.mono, fontSize: 11, color: nb.ink }}>{w}</Text>
                 </Pressable>
               ))}
-              <View style={{ flex: 1 }} />
-              <Text numberOfLines={1} style={nbText.hand(12.5, nb.soft)}>{t('guided.chipHint')}</Text>
             </View>
           )}
         </NbPaper>

@@ -377,11 +377,11 @@ test('no pixel-line residue: no navy page, no pixel or flat icon sets, no hard K
   expect(src).not.toMatch(/이어서 대화할까요|번 주고받은 기록/);
 });
 
-test('the free input’s placeholder breaks where the handoff breaks it (L97 <br/>)', async () => {
+test('the free input’s placeholder is one short line (v47 3차: no two-line instruction)', async () => {
   const tree = await mount();
   const { TextInput } = require('react-native') as typeof import('react-native');
   const input = tree.root.findByType(TextInput);
-  expect(input.props.placeholder).toBe('자유롭게 영어로 답하거나\n마이크로 말해보세요…');
+  expect(input.props.placeholder).toBe('영어로 답하기…');
   expect(flat(input.props.style)).toMatchObject({ fontSize: 16, lineHeight: 20.8 });
 });
 

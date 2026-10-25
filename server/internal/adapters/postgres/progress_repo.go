@@ -298,9 +298,11 @@ func (r *ProgressRepo) CalendarEntries(
 		        EXTRACT(HOUR FROM (a.started_at AT TIME ZONE $4))::int AS h,
 		        a.scenario_id,
 		        COALESCE(s.title, a.scenario_id) AS title,
-		        (a.state = 'cleared') AS cleared
+		        (a.state = 'cleared') AS cleared,
+		        COALESCE(UPPER(e.ward), '') AS dept
 		   FROM scenario_attempts a
 		   LEFT JOIN scenarios s ON s.id = a.scenario_id
+		   LEFT JOIN events e ON e.id = s.event_id
 		  WHERE a.user_id = $1 AND a.started_at >= $2 AND a.started_at < $3
 		  ORDER BY a.started_at`,
 		userID, from, to, tzName)
@@ -314,7 +316,7 @@ func (r *ProgressRepo) CalendarEntries(
 	for rows.Next() {
 		var e progress.CalendarEntry
 		var d string
-		if err := rows.Scan(&d, &e.Hour, &e.ScenarioID, &e.Title, &e.Cleared); err != nil {
+		if err := rows.Scan(&d, &e.Hour, &e.ScenarioID, &e.Title, &e.Cleared, &e.Dept); err != nil {
 			return nil, nil, err
 		}
 		entries = append(entries, e)
@@ -409,6 +411,14 @@ func (r *ProgressRepo) DueCards(ctx context.Context, userID string, today time.T
 		out = append(out, card)
 	}
 	return out, nil
+}
+
+// CountCards counts the learner's whole deck (saved) and the cards at full mastery.
+func (r *ProgressRepo) CountCards(ctx context.Context, userID string) (total, mastered int, err error) {
+	err = r.pool.QueryRow(ctx,
+		`SELECT count(*), count(*) FILTER (WHERE mastery_pips >= 3) FROM review_cards WHERE user_id = $1`,
+		userID).Scan(&total, &mastered)
+	return total, mastered, err
 }
 
 func (r *ProgressRepo) GetCardForUser(ctx context.Context, userID, cardID string) (*progress.ReviewCard, error) {

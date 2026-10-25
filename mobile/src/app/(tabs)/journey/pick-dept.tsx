@@ -83,11 +83,12 @@ export default function PickDept() {
         </Pressable>
         <View style={{ flex: 1, minWidth: 0 }}>
           <Text numberOfLines={1} style={nbText.hand(24)}>{t('journey.pickDeptTitle')}</Text>
-          {/* inferred가 참이면 아직 학습자의 선택이 아니라 서버 추론이다 — 문구를
-              권유형으로 바꾼다(§2). */}
-          <Text numberOfLines={1} style={[nbText.body(12, nb.soft), { marginTop: 2 }]}>
-            {t(inferred ? 'journey.pickDeptInferredHint' : 'journey.pickDeptHint')}
-          </Text>
+          {/* inferred가 참이면 아직 학습자의 선택이 아니라 서버 추론이다 — 그때만 한 줄. */}
+          {inferred && (
+            <Text numberOfLines={1} style={[nbText.body(12, nb.soft), { marginTop: 2 }]}>
+              {t('journey.pickDeptInferredHint')}
+            </Text>
+          )}
         </View>
       </View>
 

@@ -126,7 +126,7 @@ test('그래도 할래요 opens the skipped step and makes it the next one', asy
 test('an unwritten step offers no 그래도 할래요 and is not counted', async () => {
   const tree = await mount(lesson('A2', ['empty', 'empty', 'now', 'lock'], [0, 0, 4, 4]));
   expect(pressable(ticket(tree, 'words'), '그래도 할래요')).toHaveLength(0);
-  expect(texts(ticket(tree, 'words'))).toContain('이 상황은 아직 준비 중이에요');
+  expect(texts(ticket(tree, 'words'))).toContain('준비 중');
   expect(gaugeCount(tree)).toBe('0/2');
 });
 

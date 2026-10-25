@@ -12,7 +12,7 @@ import { ActivityIndicator, Alert, Pressable, ScrollView, Text, View } from 'rea
 import { Stack, useFocusEffect, useLocalSearchParams, useRouter } from 'expo-router';
 
 import { NbIcon } from '@/components/nb/NbIcon';
-import { NbButton, NbMemo, NbPaper, NbPolaroid, NbSheet, NbTag, nbText } from '@/components/nb/NbUI';
+import { NbButton, NbPaper, NbPolaroid, NbSheet, NbTag, nbText } from '@/components/nb/NbUI';
 import { NbAvatar } from '@/components/nb/NbAvatar';
 import { avatarSpecFromSeed, normalizeAvatarSpec } from '@/data/nbAvatar';
 import { nb, nbFonts } from '@/theme/nb';
@@ -182,10 +182,6 @@ export default function ColleagueDetailScreen() {
             {t('colleague.sendCheer')}
           </NbButton>
         </View>
-
-        <NbMemo color={nb.blue} rot={-0.3} style={{ marginTop: 12 }}>
-          <Text style={nbText.hand(13.5)}>{t('colleague.mentorSoon')}</Text>
-        </NbMemo>
 
         {/* Quiet, and at the bottom: removing somebody is not one of the two things this
             page is for. */}

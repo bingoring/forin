@@ -137,7 +137,11 @@ test('the stack behind the card is as deep as the work left', async () => {
 test('grading files the grade and says when the card comes back', async () => {
   const tree = await mount();
   await press(tree.root, '정답 보기');
-  await press(tree.root, '알맞음');
+  // The four buttons are the lab's faces — no word on them — so the grade is found by id.
+  const good = tree.root.findAll((n) => n.props?.testID === 'grade-good' && typeof n.type !== 'string', { deep: true });
+  expect(good.length).toBeGreaterThan(0);
+  expect(good[0].props.accessibilityLabel).toBe('알맞음');
+  await act(async () => { good[0].props.onPress(); });
   await act(async () => { await Promise.resolve(); });
 
   expect(mockGraded).toEqual(['c1:good']);

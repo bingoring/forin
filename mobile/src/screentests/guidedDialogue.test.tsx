@@ -147,7 +147,7 @@ test('the mic is HELD: recording while down, transcribed into a pending line on 
   await act(async () => { mic().props.onPressIn(); });
   await flush();
   expect(mockRec.log).toEqual(['prepare', 'record']);
-  expect(texts(tree.root)).toContain('듣는 중… 손을 떼면 끝나요');
+  expect(texts(tree.root)).toContain('듣는 중…');
   // The release reaches the mic WHILE it records — the mic is the one control that must
   // stay live then.
   await act(async () => { mic().props.onPressOut(); });
@@ -182,7 +182,8 @@ test('타이핑 opens the writing card; word chips insert; 보내기 sends with 
   const tree = await mount();
   await act(async () => { press(tree.root, 'guided-mode-type').props.onPress(); });
   const card = host(tree.root, 'guided-typing-card')[0];
-  expect(texts(card)).toEqual(expect.arrayContaining(['영어로 적어보세요', '단어 칩 탭 → 삽입', 'Where', 'it hurt']));
+  expect(texts(card)).toEqual(expect.arrayContaining(['영어로 적어보세요', 'Where', 'it hurt']));
+  expect(texts(card)).not.toContain('단어 칩 탭 → 삽입');
   const input = tree.root.findByType(TextInput);
   expect(flat(input.props.style)).toMatchObject({ borderBottomWidth: 2, borderBottomColor: 'rgba(62,54,43,.45)', fontFamily: 'Pretendard', fontSize: 15, minHeight: 30 });
   // 보내기 is soft and faded until there is a line (L179).

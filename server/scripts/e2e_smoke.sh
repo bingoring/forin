@@ -388,6 +388,10 @@ ph=$(pj "('phrase' not in d) or bool(d['phrase'].get('en') and d['phrase'].get('
 [ "$ph" = "True" ] && ok "phrase absent or complete" || bad "phrase present but hollow"
 t1=$(pj "('todayOne' not in d) or bool(d['todayOne'].get('title'))")
 [ "$t1" = "True" ] && ok "todayOne absent or titled" || bad "todayOne present but untitled"
+# v47 HomeCal draws the continued department's doodle and a ring of that track: the
+# code must be a code (upper-case letters) and the ring a real fraction of a real track.
+t1d=$(pj "('todayOne' not in d) or (d['todayOne'].get('dept','').isupper() and 0 <= d['todayOne'].get('deptProgress',{}).get('done',-1) <= d['todayOne'].get('deptProgress',{}).get('total',0))")
+[ "$t1d" = "True" ] && ok "todayOne carries dept code + track progress" || bad "todayOne dept/deptProgress missing or out of range"
 # done is the inverse of having a next step — the rest card replaces the hero.
 inv=$(pj "d.get('done') == ('todayOne' not in d)")
 [ "$inv" = "True" ] && ok "done ⇔ no todayOne (rest card state)" || bad "done/todayOne disagree"
@@ -434,6 +438,9 @@ hasentry=$(pj "all(len(x.get('entries',[])) == x.get('sessions') for x in d.get(
 [ "$hasentry" = "True" ] && ok "every day's entries match its session count" || bad "entries/sessions disagree"
 titled=$(pj "all(e.get('title') for x in d.get('days',[]) for e in x['entries'])")
 [ "$titled" = "True" ] && ok "every entry carries a title (joined server-side)" || bad "entry without a title"
+# The day's stamps (v47 home) need each cleared entry's department, joined server-side.
+cdept=$(pj "any(e.get('dept','').isupper() for x in d.get('days',[]) for e in x['entries'] if e.get('cleared'))")
+[ "$cdept" = "True" ] && ok "cleared entries carry a dept code" || bad "no cleared entry has a dept code"
 hours=$(pj "all(0 <= e.get('hour', -1) <= 23 for x in d.get('days',[]) for e in x['entries'])")
 [ "$hours" = "True" ] && ok "hours are local 0-23" || bad "hour out of range"
 run GET "/me/calendar?month=2020-01&tz=Asia/Seoul"

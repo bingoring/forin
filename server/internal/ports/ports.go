@@ -89,6 +89,10 @@ type ProgressRepo interface {
 type ReviewRepo interface {
 	DueCards(ctx context.Context, userID string, today time.Time, limit int) ([]progress.ReviewCard, error)
 	GetCardForUser(ctx context.Context, userID, cardID string) (*progress.ReviewCard, error)
+	// CountCards is the learner's WHOLE deck, not just what is due: every saved card, and
+	// how many of them have reached full mastery (3 pips). DueCards is capped and filtered
+	// by date, so neither number can be derived from it.
+	CountCards(ctx context.Context, userID string) (total, mastered int, err error)
 	SaveSchedule(ctx context.Context, cardID string, s progress.Schedule, masteryPips int) error
 	// CreateCard inserts a card + its initial (due-today) schedule, returns the card id.
 	CreateCard(ctx context.Context, c NewReviewCard) (string, error)

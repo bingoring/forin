@@ -53,11 +53,14 @@ export type NbIconName =
   | 'stetho'
   | 'plane'
   | 'coffee'
+  | 'pager'
+  | 'fire'
   | 'gear'
   | 'calendar'
   | 'lock'
   | 'pencil'
-  | 'play';
+  | 'play'
+  | 'run';
 
 export function NbIcon({ name, size = 20, color = nb.ink }: {
   name: NbIconName | string;
@@ -204,6 +207,13 @@ export function NbIcon({ name, size = 20, color = nb.ink }: {
     coffee: (
       <G><Path {...P} d="M5.5 8.5 H16 V15 Q16 18.5 10.75 18.5 Q5.5 18.5 5.5 15 Z" fill={nb.wash.peach}/><Path {...P} d="M16 10 H18 Q19.8 10 19.8 12 Q19.8 14 18 14 H16"/><Path {...P} d="M8.5 3.5 Q7.5 5 8.5 6.5 M12 3.5 Q11 5 12 6.5"/></G>
     ),
+    // 홈 상단 줄(v47 HomeCal): 호출 배지의 페이저와 연속 출근 알약의 불꽃.
+    pager: (
+      <G><Rect {...P} x="3.5" y="7" width="17" height="11" rx="2" fill={nb.wash.yellow}/><Rect {...P} x="6.5" y="9.8" width="7.5" height="5" rx="1" fill="#fff" strokeWidth={1.4}/><Circle cx="17.3" cy="12.5" r="1.1" fill={nb.ink} stroke="none"/><Path {...P} d="M17.5 4 Q19.8 4.8 20.5 7 M15.5 5.2 Q17 5.8 17.5 7"/></G>
+    ),
+    fire: (
+      <G><Path {...P} d="M12 3.5 C13 6.8 16.5 8.3 16.5 12.8 C16.5 16.5 14.6 19 12 19 C9.4 19 7.5 16.5 7.5 12.8 C7.5 10.4 8.9 8.7 9.9 7.2 C10.3 8.5 11.2 9.1 11.2 9.1 C11.2 7 11.5 5 12 3.5 Z" fill={nb.wash.red}/><Path d="M12 11.8 C13.2 13.2 13.8 14.2 13.8 15.5 C13.8 16.9 13 17.8 12 17.8 C11 17.8 10.2 16.9 10.2 15.5 C10.2 14.2 10.9 13.1 12 11.8 Z" fill={nb.wash.yellow} stroke="none"/></G>
+    ),
     gear: (
       <G><Path {...P} d="M12 3.5 V6 M12 18 V20.5 M3.5 12 H6 M18 12 H20.5 M6 6 L7.8 7.8 M16.2 16.2 L18 18 M18 6 L16.2 7.8 M7.8 16.2 L6 18"/><Circle {...P} cx="12" cy="12" r="5" fill={nb.wash.blue}/><Circle cx="12" cy="12" r="1.6" fill={nb.ink} stroke="none"/></G>
     ),
@@ -221,6 +231,10 @@ export function NbIcon({ name, size = 20, color = nb.ink }: {
     // own colour so a dimmed button dims it too.
     play: (
       <G><Path {...P} d="M7.5 5.5 L18 12 L7.5 18.5 Z"/></G>
+    ),
+    // v48 휴게실 게임 타일의 달리는 사람 — forin-notebook.jsx L36 `run`, 같은 path.
+    run: (
+      <G><Circle {...P} cx="15" cy="5.3" r="2.1" fill={nb.wash.red}/><Path {...P} d="M8 10.5 L13 9 L14.5 12.5 L11.5 15 L13 19.5 M14.5 12.5 L18 14.5 M11.5 15 L7.5 17.5 M5.5 12.5 L8.8 11.8"/></G>
     ),
   };
   return (
