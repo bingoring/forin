@@ -4,7 +4,14 @@
 **PRD:** [prd.md](prd.md) | [prd-tech.md](prd-tech.md)
 **Design handoff:** [inputs/design-handoff_v48/](inputs/design-handoff_v48/README.md) (최신) · [v47](inputs/design-handoff_v47/README.md) · [v42](inputs/design-handoff_v42/README.md) · [v40](inputs/design-handoff_v40/README.md) · [v39](inputs/design-handoff_v39/README.md) · [v38](inputs/design-handoff_v38/README.md) · [v22](inputs/design-handoff_v22/README.md)
 **Decisions (audit):** [DECISIONS.md](DECISIONS.md)
-**Last updated:** 2026-10-25
+**Last updated:** 2026-10-26
+
+> 🔨 **ICU·OR 한 번에 저작 재개 — ICU 8주제 정본 합침(2026-10-25~26, 브랜치 `content/icu-or-onepass-rest`).** Workflow 없이 메인 세션이 같은 공정을
+> 서브에이전트로 돌린다(사용자: "조금씩 진행하고 보고"). 묶음 1(ards-proning·arrhythmia·cardiogenic) + 묶음 2(hemodynamics·mech-ventilation·resp-support·sedation·shock):
+> 합치기·검사 → Opus 검토 A‖B → Sonnet 수정 → **메인 세션이 검사 재실행 + keyPhrase en 원문 대조(주제마다 63/63)** → 정본 합침 → gencontent·부서 검사(위반 0, 새 주제 경고 0)·go test·모바일 콘텐츠 테스트.
+> 검토가 잡은 안전 항목 273건(응급 문장 오답이 처치를 다른 일로 바꾸거나 같은 틀을 되풀이하는 갈래가 대부분)을 반영. keyPhrase en은 손대지 않음 —
+> **결정 대기 27건**(재개 문서 `server/content/tools/wip/icu-or-rest/README.md`에 목록). 남은 ICU: airway·delirium(B 저작부터), 끊긴 4주제(처음부터), 미착수 19 · OR 33 전부.
+> 이 기기 메모: 시스템 python에 PyYAML이 없어 세션 venv를 쓴다. workflow.js의 ROOT는 다른 기기 경로.
 
 > 🔧 **master mobile CI 간헐 실패 원인 수정(2026-10-25).** `387db54`의 `guidedTarget.test` 실패(`findNodeHandle` of undefined)는 그 파일 탓이 아니었다 —
 > `oldHomeDoors.test`(홈 v48 자료 선반)가 트리를 언마운트하지 않아, v49에서 `NewDot`에 붙은 한 번 흔들림(.4s 지연, 네이티브 드라이버)이 파일이 끝난 뒤
