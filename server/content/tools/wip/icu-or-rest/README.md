@@ -48,3 +48,9 @@ Sonnet 저작 A(단어·뉘앙스) ‖ B(문장 낱장·order) → `combine_halv
   | icu-shock | 145(3) | 67(34) | 118 | 254→251 |
 - keyPhrase 결정 대기 추가(en·chunks 미변경): hemodynamics PPV 방향("variation drops"→high)·"Start atropine"→Give·"falsely low" · mech-ventilation 1.2 won't move·8.2 still getting oxygen·19.2 draw up·2.4 just moisture·8.3 isn't an emergency·9.1 간호사 직접 조정 · resp-support 9.2 relief soon·13.0 avoid infections·16.2 escalated sooner · sedation 18.1 bolus per order·19.1 orders for atropine · shock 20.0 not giving up·12.1 10% clearance·17.1 prime the monitor·15.1 goals of care. 그 밖에 구 경계를 끊은 keyPhrase chunks 보고 다수(fix-*-A.md).
 - 남은 작은 일: hemodynamics 11상황 "We call this weaning" ko "이탈"(w-wean ko는 "서서히 끊다"로 바뀜), resp-support 16.0 ko "심정지" vs 제목 "호흡정지 임박", resp-support 3.4 "non-rebreather is the highest"(비기계 장치 중 최고).
+
+## keyPhrase 결정 처리 (2026-10-26, 사용자 '추천대로')
+위 결정 대기 27건 중 — 바꿈 21건(ards S19.1·S16.0·S10.2, arrhythmia 12.1·13.1·11.1·12.0, hemodynamics PPV high·Give atropine, mech-ventilation 1.2·8.2·9.1(RT에게 요청)·19.2,
+resp-support 9.2·13.0·16.2(We need to escalate now), sedation 18.1(PRN per order)·19.1(get orders), shock 20.0(caring for him)·17.1(pressure line)·15.1(goals of care)),
+keyPhrase 아니던 2건 바로 고침(mech-ventilation 2.4 drain·8.3 doesn't always mean), 그대로 4건(ards S16.2, cardiogenic heparin, hemodynamics falsely low, shock 10% — why 보강).
+작업 `../kp-2026-10-26/`, 딸린 order·nuance·예문·v46 필드 함께. 은행에서 w-bit·w-draw·w-treatment 제거. 남은 결정 대기 없음.
