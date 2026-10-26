@@ -1,0 +1,655 @@
+theme: icu-sedation
+changes:
+- kind: word
+  id: w-light
+  fields:
+  - ko
+  why: ko '가벼운/얕은'의 '얕은'이 w-shallow '얕은'과 겹쳐 듣고 뜻 고르기에서 정답이 둘이 된다 — light는 '가벼운'으로 가름
+- kind: word
+  id: w-sustain
+  fields:
+  - ko
+  why: ko '유지하다'가 w-hold·w-keep과 같아 정답이 셋이 된다 — sustain은 '지속하다'로 가름
+- kind: word
+  id: w-hold
+  fields:
+  - ko
+  why: ko '유지하다'가 w-sustain·w-keep과 같다 — hold(속도·목표를 지키다)는 '고수하다'로 가름
+- kind: word
+  id: w-target
+  fields:
+  - ko
+  why: ko '목표'가 w-goal과 같아 정답이 둘이 된다 — target은 '목표치'로 가름
+- kind: word
+  id: w-check
+  fields:
+  - ko
+  why: ko '확인하다'가 w-confirm과 같아 정답이 둘이 된다 — check는 '점검하다'로 가름
+- kind: word
+  id: w-pause
+  fields:
+  - ko
+  why: ko '멈추다'가 w-stop과 같아 정답이 둘이 된다 — pause는 '잠시 멈추다'로 가름
+- kind: word
+  id: w-stop
+  fields:
+  - ko
+  why: ko '멈추다'가 w-pause와 같아 정답이 둘이 된다 — stop은 '중단하다'로 가름
+- kind: word
+  id: w-rise
+  fields:
+  - ko
+  why: ko '오르다'가 w-climb과 같아 정답이 둘이 된다 — rise는 '올라가다'로 가름
+- kind: word
+  id: w-adequate
+  fields:
+  - ko
+  why: ko '충분한'이 w-enough와 같아 정답이 둘이 된다 — adequate는 '적절한'으로 가름
+- kind: word
+  id: w-drip
+  fields:
+  - ko
+  why: ko '(정맥) 주입'이 w-infusion '주입'과 거의 같다 — drip은 '점적 주입'으로 가름
+- kind: word
+  id: w-settle
+  fields:
+  - ko
+  why: ko '안정되다'가 w-stable '안정적인'과 겹친다 — settle(들뜬 것이 가라앉다)은 '가라앉다'로 가름
+- kind: word
+  id: w-put
+  fields:
+  - ko
+  why: ko '놓다/두다'는 'puts him at minus two'(점수에 해당시키다) 뜻을 못 담는다
+- kind: word
+  id: w-open
+  fields:
+  - ko
+  why: ko '뜨다'는 'Open the airway'(기도를 열다) 문장을 못 담는다
+- kind: word
+  id: w-multimodal
+  fields:
+  - ko
+  why: ko '다약제의/다중양식의'가 어색하고 뜻이 흐리다 — '다중 방식의'
+- kind: word
+  id: w-awareness
+  fields:
+  - ko
+  why: ko '의식/각성 인지'가 w-awakening '각성'과 겹친다 — awareness는 '의식 인지'로 가름
+- kind: word
+  id: w-stay
+  fields:
+  - ko
+  why: ko '머무르다/유지되다'의 '유지되다'가 w-keep·w-hold와 겹친다 — '머무르다'로
+- kind: word
+  id: w-need
+  fields:
+  - ko
+  why: 문장 대부분(We need to…, if needed)이 동사 쓰임이라 ko '필요'를 '필요하다'로
+- kind: word
+  id: w-climb
+  fields:
+  - ko
+  why: ko '오르다'가 w-rise와 같아 정답이 둘이 된다 — climb은 '서서히 오르다'로 가름
+- kind: word-remove
+  id: w-drink
+  why: 간호사가 이미 아는 쉬운 말이라 가르칠 값이 없다 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-eye
+  why: 간호사가 이미 아는 쉬운 말이라 가르칠 값이 없다 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-fifteen
+  why: 간호사가 이미 아는 쉬운 말이라 가르칠 값이 없다 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-hand
+  why: 너무 쉬움(공통 쉬운 단어 목록) — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-hear
+  why: 간호사가 이미 아는 쉬운 말이라 가르칠 값이 없다 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-help
+  why: 간호사가 이미 아는 쉬운 말이라 가르칠 값이 없다 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-hour
+  why: 너무 쉬움(공통 쉬운 단어 목록) — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-minute
+  why: 너무 쉬움(공통 쉬운 단어 목록) — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-morning
+  why: 너무 쉬움(공통 쉬운 단어 목록) — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-name
+  why: 너무 쉬움(공통 쉬운 단어 목록) — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-patient
+  why: 너무 쉬움(공통 쉬운 단어 목록) — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-sit
+  why: 간호사가 이미 아는 쉬운 말이라 가르칠 값이 없다 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-sleep
+  why: 간호사가 이미 아는 쉬운 말이라 가르칠 값이 없다 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-thank
+  why: 간호사가 이미 아는 쉬운 말이라 가르칠 값이 없다 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-thirty
+  why: 간호사가 이미 아는 쉬운 말이라 가르칠 값이 없다 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-today
+  why: 너무 쉬움(공통 쉬운 단어 목록) — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-wife
+  why: 간호사가 이미 아는 쉬운 말이라 가르칠 값이 없다 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-zero
+  why: 너무 쉬움(공통 쉬운 단어 목록) — 어느 문장도 태그하지 않게 됐다
+- kind: sentence
+  situation: RASS 척도 사정
+  index: 1
+  fields:
+  - words
+  why: 너무 쉬운 말(또는 가르칠 값이 없는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: RASS 척도 사정
+  index: 3
+  fields:
+  - words
+  why: 너무 쉬운 말(또는 가르칠 값이 없는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: RASS 척도 사정
+  index: 4
+  fields:
+  - words
+  why: 너무 쉬운 말(또는 가르칠 값이 없는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: RASS 척도 사정
+  index: 5
+  fields:
+  - words
+  why: 너무 쉬운 말(또는 가르칠 값이 없는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 진정 목표 설정 이해
+  index: 0
+  fields:
+  - words
+  why: 너무 쉬운 말(또는 가르칠 값이 없는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: RASS 목표 맞춤 적정
+  index: 1
+  fields:
+  - words
+  why: 너무 쉬운 말(또는 가르칠 값이 없는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: RASS 목표 맞춤 적정
+  index: 2
+  fields:
+  - words
+  why: 너무 쉬운 말(또는 가르칠 값이 없는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 덱스메데토미딘 적용
+  index: 3
+  fields:
+  - words
+  why: 너무 쉬운 말(또는 가르칠 값이 없는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 덱스메데토미딘 적용
+  index: 4
+  fields:
+  - words
+  why: 너무 쉬운 말(또는 가르칠 값이 없는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 진정 중단 이탈 연계
+  index: 3
+  fields:
+  - words
+  why: 너무 쉬운 말(또는 가르칠 값이 없는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 금단·알코올 병력 진정 조정
+  index: 0
+  fields:
+  - words
+  why: 너무 쉬운 말(또는 가르칠 값이 없는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 금단·알코올 병력 진정 조정
+  index: 1
+  fields:
+  - words
+  why: 너무 쉬운 말(또는 가르칠 값이 없는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 금단·알코올 병력 진정 조정
+  index: 5
+  fields:
+  - words
+  why: 너무 쉬운 말(또는 가르칠 값이 없는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 금단·알코올 병력 진정 조정
+  index: 6
+  fields:
+  - words
+  why: 너무 쉬운 말(또는 가르칠 값이 없는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 진정 깊이와 섬망 연계 관리
+  index: 4
+  fields:
+  - words
+  why: 너무 쉬운 말(또는 가르칠 값이 없는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 진정 깊이와 섬망 연계 관리
+  index: 5
+  fields:
+  - words
+  why: 너무 쉬운 말(또는 가르칠 값이 없는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 과진정 호흡정지·저혈압 위기
+  index: 1
+  fields:
+  - words
+  why: 너무 쉬운 말(또는 가르칠 값이 없는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 과진정 호흡정지·저혈압 위기
+  index: 4
+  fields:
+  - words
+  why: 너무 쉬운 말(또는 가르칠 값이 없는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 신경근차단 병용 심부진정 관리
+  index: 1
+  fields:
+  - words
+  why: 너무 쉬운 말(또는 가르칠 값이 없는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 진정 부족 자가발관 위험 급변
+  index: 0
+  fields:
+  - words
+  why: 너무 쉬운 말(또는 가르칠 값이 없는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 진정 부족 자가발관 위험 급변
+  index: 5
+  fields:
+  - words
+  why: 너무 쉬운 말(또는 가르칠 값이 없는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 덱스 서맥·저혈압 급변
+  index: 0
+  fields:
+  - words
+  why: 너무 쉬운 말(또는 가르칠 값이 없는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 덱스 서맥·저혈압 급변
+  index: 4
+  fields:
+  - words
+  why: 너무 쉬운 말(또는 가르칠 값이 없는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 난치성 초조 위기 관리
+  index: 1
+  fields:
+  - words
+  why: 너무 쉬운 말(또는 가르칠 값이 없는 말) 태그를 뺌 — 문장은 그대로
+- kind: word
+  id: w-hold
+  fields:
+  - ko
+  why: ko '고수하다'는 19.2 'hold the infusion'(주입을 보류하다)을 거꾸로 읽게 한다 — '지키다/보류하다' (A W2·안전)
+- kind: word
+  id: w-order
+  fields:
+  - ko
+  why: ko '지시/처방'이 w-command '지시'와 겹쳐 정답이 둘 — 처방으로 가름 (A W4)
+- kind: word
+  id: w-coma
+  fields:
+  - example
+  why: 고친 문장에 맞춰 예문을 새 문장으로 (A·B 반영)
+- kind: word
+  id: w-wake
+  fields:
+  - example
+  why: 고친 문장에 맞춰 예문을 새 문장으로 (A·B 반영)
+- kind: word
+  id: w-close
+  fields:
+  - ko
+  why: 7.3 'a close eye'의 close는 '면밀한'이지 거리가 아니다 (A W3)
+- kind: word
+  id: w-finish
+  fields:
+  - example
+  why: 고친 문장에 맞춰 예문을 새 문장으로 (A·B 반영)
+- kind: word
+  id: w-restart
+  fields:
+  - example
+  why: 고친 문장에 맞춰 예문을 새 문장으로 (A·B 반영)
+- kind: word
+  id: w-lighten
+  fields:
+  - example
+  why: 고친 문장에 맞춰 예문을 새 문장으로 (A·B 반영)
+- kind: word
+  id: w-alarm
+  fields:
+  - example
+  why: 고친 문장에 맞춰 예문을 새 문장으로 (A·B 반영)
+- kind: word
+  id: w-sensor
+  fields:
+  - example
+  why: 고친 문장에 맞춰 예문을 새 문장으로 (A·B 반영)
+- kind: word
+  id: w-show
+  fields:
+  - example
+  why: 고친 문장에 맞춰 예문을 새 문장으로 (A·B 반영)
+- kind: word-remove
+  id: w-tell
+  why: 너무 쉬움 — 간호사가 이미 아는 말이다 (A W1)
+- kind: word-remove
+  id: w-give
+  why: 너무 쉬움 — 간호사가 이미 아는 말이다 (A W1)
+- kind: word-remove
+  id: w-use
+  why: 너무 쉬움 — 17.4를 고치며 태그도 없어졌다 (A W1)
+- kind: word-remove
+  id: w-put
+  why: 너무 쉬움 — 간호사가 이미 아는 말이다 (A W1)
+- kind: word-remove
+  id: w-number
+  why: 너무 쉬움 — 간호사가 이미 아는 말이다 (A W1)
+- kind: word-remove
+  id: w-long
+  why: 너무 쉬움 — 간호사가 이미 아는 말이다 (A W1)
+- kind: word-remove
+  id: w-second
+  why: 너무 쉬움 — 간호사가 이미 아는 말이다 (A W1)
+- kind: word-remove
+  id: w-scale
+  why: 17.4를 고쳐 어느 문장도 태그하지 않게 됐다 (A S13)
+- kind: word-remove
+  id: w-emergency
+  why: 13.6을 고쳐 어느 문장도 태그하지 않게 됐다 (A S11)
+- kind: sentence
+  situation: RASS 척도 사정
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 (A W1)
+- kind: sentence
+  situation: RASS 척도 사정
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 (A W1)
+- kind: sentence
+  situation: 프로포폴 주입 관리
+  index: 2
+  fields:
+  - ko
+  why: ko의 영어 titrate를 한국어로 (A K1)
+- kind: sentence
+  situation: 프로포폴 주입 관리
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 (A W1)
+- kind: sentence
+  situation: 통증 우선 평가
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 (A W1)
+- kind: sentence
+  situation: 통증 우선 평가
+  index: 5
+  fields:
+  - ko
+  - chunks
+  why: ko의 영어 analgesia-first를 한국어로, chunks의 this를 명사에 붙임 (A S1)
+- kind: sentence
+  situation: 진정 목표 설정 이해
+  index: 0
+  fields:
+  - ko
+  why: ko의 영어 light sedation을 한국어로 (A K3)
+- kind: sentence
+  situation: 진정 목표 설정 이해
+  index: 5
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: '''wake toward us''는 성립하지 않는 영어 — 말을 걸면 깨어날 수 있다는 문장으로 (A S2)'
+- kind: sentence
+  situation: 진정 중 활력·기도 감시
+  index: 1
+  fields:
+  - ko
+  why: end-tidal CO2는 분압이 아니라 호기말 값 (A K4)
+- kind: sentence
+  situation: 진정 중 활력·기도 감시
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 (A W1)
+- kind: sentence
+  situation: 진정제 라인·호환성 확인
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 (A W1)
+- kind: sentence
+  situation: 진정제 라인·호환성 확인
+  index: 4
+  fields:
+  - chunks
+  why: 형용사와 명사를 끊은 chunks를 구 단위로 (A S3)
+- kind: sentence
+  situation: RASS 목표 맞춤 적정
+  index: 4
+  fields:
+  - ko
+  - chunks
+  why: ko의 영어 titrate를 한국어로, 명사구를 끊은 chunks를 바로잡음 (A S4)
+- kind: sentence
+  situation: 덱스메데토미딘 적용
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 (A W1)
+- kind: sentence
+  situation: 덱스메데토미딘 적용
+  index: 1
+  fields:
+  - ko
+  why: ko의 영어 titrate를 한국어로 (A K2)
+- kind: sentence
+  situation: 덱스메데토미딘 적용
+  index: 3
+  fields:
+  - ko
+  why: ko가 close를 거리로 옮긴 오역 — '면밀히' (A S5)
+- kind: sentence
+  situation: 아편유사제 진통 적정
+  index: 3
+  fields:
+  - chunks
+  why: 복합명사 pain score를 끊은 chunks를 바로잡음 (A S6)
+- kind: sentence
+  situation: 아편유사제 진통 적정
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 (A W1)
+- kind: sentence
+  situation: 프로포폴 장기 사용 감시
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 (A W1)
+- kind: sentence
+  situation: 진정 중단 이탈 연계
+  index: 1
+  fields:
+  - words
+  why: 태그 정리 (A)
+- kind: sentence
+  situation: 진정 중단 이탈 연계
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: '[안전] 시험 직후 원래 설정으로 되돌린다는 말은 프로토콜과 반대 — 필요할 때만 다시 시작 (A S7)'
+- kind: sentence
+  situation: 진정 중단 이탈 연계
+  index: 5
+  fields:
+  - ko
+  - words
+  why: ko의 번역투 대명사 '그에게'를 '환자분께'로 (A S8)
+- kind: sentence
+  situation: 진정제 내성 용량 증가 관리
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 (A W1)
+- kind: sentence
+  situation: 금단·알코올 병력 진정 조정
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 (A W1)
+- kind: sentence
+  situation: 금단·알코올 병력 진정 조정
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  why: '[안전] 깨어난다는 단정은 지킬 수 없는 약속 — can으로 (A S9)'
+- kind: sentence
+  situation: 금단·알코올 병력 진정 조정
+  index: 4
+  fields:
+  - ko
+  why: ko의 번역투 '그를 … 그 자체의 약으로'를 자연스럽게 (A S10)
+- kind: sentence
+  situation: 금단·알코올 병력 진정 조정
+  index: 6
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: '[안전] 알람을 미리 별일 아니라고 단정하지 않고 와서 확인한다고 (A S11)'
+- kind: sentence
+  situation: 진정 깊이와 섬망 연계 관리
+  index: 1
+  fields:
+  - ko
+  why: 빠진 목적어를 더함 (A K8)
+- kind: sentence
+  situation: 프로포폴 주입 증후군 인지
+  index: 3
+  fields:
+  - words
+  why: 태그 정리 (A)
+- kind: sentence
+  situation: 과진정 호흡정지·저혈압 위기
+  index: 0
+  fields:
+  - ko
+  why: '''백밸브마스크를 해줘요''를 자연스럽게 (A K5)'
+- kind: sentence
+  situation: 과진정 호흡정지·저혈압 위기
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: '[안전] 어느 주입인지 밝혀 수액·승압제를 끄는 것으로 들리지 않게 (A S12)'
+- kind: sentence
+  situation: 신경근차단 병용 심부진정 관리
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: '[안전] 마비 환자용 진정 척도는 없다 — 처리 뇌파(BIS) 감시를 더하는 문장으로 (A S13)'
+- kind: sentence
+  situation: 진정 부족 자가발관 위험 급변
+  index: 0
+  fields:
+  - words
+  why: 태그 정리 (A)
+- kind: sentence
+  situation: 진정 부족 자가발관 위험 급변
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 (A W1)
+- kind: sentence
+  situation: 진정 부족 자가발관 위험 급변
+  index: 3
+  fields:
+  - ko
+  why: ko의 번역투 '그가'를 '환자가'로 (A S14)
+- kind: sentence
+  situation: 진정 부족 자가발관 위험 급변
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 (A W1)
+- kind: sentence
+  situation: 진정 부족 자가발관 위험 급변
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 (A W1)
+- kind: sentence
+  situation: 덱스 서맥·저혈압 급변
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기 (A W1)
+- kind: sentence
+  situation: 난치성 초조 위기 관리
+  index: 1
+  fields:
+  - ko
+  why: w-multimodal ko와 맞춤 (A K6)
+- kind: sentence
+  situation: 난치성 초조 위기 관리
+  index: 2
+  fields:
+  - ko
+  why: 번역투 '그와 라인들을'을 '환자와'로 (A K7)
+- kind: sentence
+  situation: 진정 부족 자가발관 위험 급변
+  index: 1
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-10-26 사용자 결정): Give a bolus(처방 범위 없이 주는 듯함) → Give a PRN bolus per order; +w-order'
+- kind: sentence
+  situation: 덱스 서맥·저혈압 급변
+  index: 1
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-10-26 사용자 결정): Let''s give(처방 전 투여처럼 들림) → Let''s get orders for; +w-order'
+- kind: word
+  id: w-atropine
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-26 사용자 결정): 예문을 바꾼 문장으로'

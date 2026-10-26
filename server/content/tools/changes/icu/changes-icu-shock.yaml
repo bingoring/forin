@@ -647,3 +647,68 @@ changes:
   fields:
   - chunks
   why: 구 경계를 끊은 chunks를 구 단위로 바로잡음 — 문장은 그대로
+- kind: sentence
+  situation: 소생 목표와 무의미성 갈등
+  index: 0
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-10-26 사용자 결정): not giving up on him(치료 전부를 약속하는 것처럼 들림) → not giving up on caring for him; +w-care'
+- kind: word
+  id: w-understand
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-26 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-hard
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-26 사용자 결정): 예문을 바꾼 문장으로'
+- kind: sentence
+  situation: 심장압전 응급 심낭천자 보조
+  index: 1
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-10-26 사용자 결정): prime the monitor(모니터는 prime하지 않음) → prime the pressure line; −w-monitor(다른 문장에서 계속 씀) +w-pressure'
+- kind: word
+  id: w-set
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-26 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-pericardiocentesis
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-26 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-tray
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-26 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-prime
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-26 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word-remove
+  id: w-treatment
+  why: 'keyPhrase 교체(2026-10-26 사용자 결정): 바꾼 문장에 treatment가 없어 어느 문장도 태그하지 않게 됐다'
+- kind: sentence
+  situation: 다장기부전 동반 불응성 쇼크
+  index: 1
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-10-26 사용자 결정): goals of treatment → goals of care(정식 표현); −w-treatment +w-care'
+- kind: word
+  id: w-goal
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-26 사용자 결정): 예문을 바꾼 문장으로'

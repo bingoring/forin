@@ -616,3 +616,57 @@ changes:
   fields:
   - words
   why: 뜻이 다른 태그를 빼거나 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 기흉·기압손상 동반 위기
+  index: 1
+  fields:
+  - en
+  - ko
+  - chunks
+  why: 'keyPhrase 교체(2026-10-26 사용자 결정): 간호사가 직접 설정을 바꾸는 지시처럼 들림 → 호흡치료사에게 요청하고 흉관은 함께 준비'
+- kind: sentence
+  situation: 복와위 중 심정지 긴급 앙와위 전환
+  index: 0
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-10-26 사용자 결정): so we can start compressions(돌린 뒤에만 압박하는 것처럼 들림 — AHA 2020은 빨리 못 돌리면 복와위 CPR 허용) → as fast as we safely can; −w-start −w-compression(다른 문장에서 계속 씀) +w-fast +w-safely'
+- kind: word
+  id: w-code
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-26 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-flip
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-26 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-compression
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-26 사용자 결정): 옛 예문 문장을 바꿔 그 단어가 없어짐 — 같은 상황의 다른 문장으로 옮김'
+- kind: sentence
+  situation: PEEP·recruitment 반응 평가
+  index: 2
+  fields:
+  - en
+  - chunks
+  why: 'keyPhrase 교체(2026-10-26 사용자 결정): the good lung(ARDS에 따로 좋은 폐가 있는 듯함) → the healthier parts of the lung; ko는 이미 "덜 손상된 폐 부위"라 그대로'
+- kind: word
+  id: w-watch
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-26 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-overdistension
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-26 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-harm
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-26 사용자 결정): 예문을 바꾼 문장으로'
