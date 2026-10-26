@@ -1,0 +1,90 @@
+10:
+  s:
+  - {tag: 교체 준비, icon: gear, why: "\"same-size\"는 크기를 똑같이 맞춘다는 뜻이라 교체가 막힐 때 바로 같은 관을 쓸 수 있어요.", decoy: "on the bedside table", dk: ["윤활제와 동일 크기 예비 기관절개관을 준비해 둘게요", "거즈와 동일 크기 예비 기관절개관을 준비해 둘게요"], ans: obturator, opts: [thermometer, pacemaker, tourniquet]}
+  - {tag: 대비 설명, icon: shield, why: "\"in case\" 절은 일어나지 않을 수도 있지만 대비해 둔다는 말이라 장비를 미리 세팅한 이유가 돼요.", decoy: "next to the bed", dk: ["토할 경우를 대비해 흡인과 산소가 준비돼 있어요", "기침할 경우를 대비해 흡인과 산소가 준비돼 있어요"], ans: desaturates, opts: [overheats, sleeps, shivers]}
+  - {tag: 위험 설명, icon: shield, why: "\"carry more risk\"는 위험을 더 안고 간다는 표현이라 첫 교체가 특히 조심할 일이라는 이유가 돼요.", decoy: "in the daytime", dk: ["첫 교체는 시간이 더 걸려서 기도 카트를 가까이 둬요", "첫 교체는 비용이 더 커서 기도 카트를 가까이 둬요"], ans: risk, opts: [cost, noise, weight]}
+  - {tag: 환자 안심, icon: speech, why: "\"so I'll go slowly\"처럼 이유 뒤에 행동을 말하면 환자가 느린 속도를 불안이 아니라 배려로 받아들여요.", decoy: "from the start", dk: ["첫 교체라서 천천히 진행하며 단계마다 보고할게요", "첫 교체라서 천천히 진행하며 단계마다 확인할게요"], ans: slowly, opts: [loudly, blindly, silently]}
+  - {tag: 역할 분담, icon: handshake2, why: "\"while you …\"는 두 사람이 동시에 하는 일을 한 문장에 묶어 누가 무엇을 하는지 나눠 말해 줘요.", decoy: "on his shoulder", dk: ["기존 드레싱을 빼는 동안 스토마를 눌러 지혈할게요", "기존 거즈를 빼는 동안 스토마를 눌러 지혈할게요"], ans: pressure, opts: [distance, silence, breath]}
+  - {tag: 감시 지시, icon: monitor, why: "\"closely\"는 눈을 떼지 말고 계속 보라는 뜻이라 교체 중 산소포화도 변화를 놓치지 않게 해요.", decoy: "from the doorway", dk: ["새 기관절개관이 확인될 때까지 산소 수치를 면밀히 측정해요", "새 기관절개관이 확인될 때까지 산소 수치를 면밀히 알려 줘요"], ans: confirmed, opts: [cleaned, ordered, delivered]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 첫 기관절개관 교체를 돕는 4문장 순서
+    why: 위험 때문에 장비를 준비하고, 환자에게 천천히 설명하고, 기존 관을 빼는 동안 눌러 주고, 새 관이 들어간 뒤 산소를 지켜봐요.
+    lines:
+    - {en: "First changes carry more risk, so I'll have the obturator and a backup trach ready.", icon: shield, ko: "첫 교체는 위험이 더 커서 폐쇄자와 예비 관을 준비해 둘게요", note: 준비}
+    - {en: "With that set, I'll tell him I'm going slowly and explain each step.", icon: speech, ko: "준비가 되면 천천히 하며 단계마다 설명한다고 말해 드려요", note: 설명}
+    - {en: "I'll hold pressure at the stoma while you remove the old tube.", icon: handshake2, ko: "기존 튜브를 빼는 동안 스토마를 눌러 지혈할게요", note: 지혈}
+    - {en: "Once the new one is in, keep watching his oxygen levels closely.", icon: monitor, ko: "새 관이 들어가면 산소 수치를 계속 면밀히 지켜봐요", note: 감시}
+11:
+  s:
+  - {tag: 위치 확인, icon: check, why: "\"Let's confirm …\"은 둘 이상을 함께 점검하자는 제안이라 깊이와 커프를 같이 본다는 뜻이에요.", decoy: "by the head", dk: ["이중내강 튜브 깊이와 커프 압력을 확인해요", "이중내강 튜브 길이와 커프 위치를 확인해요"], ans: depth, opts: [price, weight, texture]}
+  - {tag: 이유 설명, icon: shield, why: "\"so\"로 앞의 사실과 뒤의 결론을 이으면 위치가 중요한 이유가 구조에서 나온다는 걸 보여 줘요.", decoy: "on the chart", dk: ["각 내강이 다른 폐를 환기시키므로 모양 선택이 중요해요", "각 내강이 다른 폐를 환기시키므로 크기 선택이 중요해요"], ans: placement, opts: [packaging, pricing, wording]}
+  - {tag: 청진 목적, icon: stetho, why: "\"to verify …\"로 목적을 붙이면 청진이 그냥 듣는 게 아니라 분리를 확인하는 검사라는 걸 알려요.", decoy: "from the front", dk: ["심장 소리를 확인하려고 청진할게요", "장 소리를 확인하려고 청진할게요"], ans: isolation, opts: [rotation, vibration, expiration]}
+  - {tag: 사용 이유, icon: hospital, why: "\"needs … for …\"는 필요한 대상과 용도를 한 번에 말해서 왜 특수 튜브인지 설명해 줘요.", decoy: "for the transfer", dk: ["이 환자는 검사 중 한쪽 폐 환기를 위해 이 튜브가 필요해요", "이 환자는 수술 후 한쪽 폐 환기를 위해 이 튜브가 필요해요"], ans: "one-lung", opts: ["one-hand", "one-way", "one-step"]}
+  - {tag: 점검 항목, icon: gear, why: "\"both\"와 복수 \"cuffs\"로 양쪽을 모두 확인한다고 말해서 한쪽만 보고 끝내지 않는다는 뜻이에요.", decoy: "with the syringe", dk: ["양쪽 커프가 알맞은 압력으로 연결됐는지 확인할게요", "양쪽 커프가 알맞은 위치에 있는지 확인할게요"], ans: cuffs, opts: [cables, straps, lenses]}
+  - {tag: 분리 청진, icon: stetho, why: "\"separately\"는 한쪽씩 따로 본다는 뜻이라 두 폐를 섞지 않고 각각 소리를 비교한다는 말이에요.", decoy: "from behind", dk: ["한쪽을 잠그고 호흡 횟수를 따로따로 확인할게요", "한쪽을 잠그고 폐 소리를 따로따로 설명할게요"], ans: separately, opts: [loudly, secretly, angrily]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 이중내강 튜브를 확인하는 4문장 순서
+    why: 구조 때문에 위치가 중요하다고 먼저 말하고, 깊이와 커프를 확인한 뒤, 한쪽씩 막아 청진하고, 확인되면 한쪽 폐 환기에 쓸 수 있어요.
+    lines:
+    - {en: "Each lumen ventilates a different lung, so placement is critical.", icon: lab, ko: "각 내강이 다른 폐를 환기시켜서 위치가 중요해요", note: 이유}
+    - {en: "Because of that, let's confirm the double-lumen tube depth and cuff positions.", icon: check, ko: "그래서 이중내강 튜브 깊이와 커프 위치를 확인해요", note: 확인}
+    - {en: "Once those are right, I'll clamp one side to check the lung sounds separately.", icon: stetho, ko: "그게 맞으면 한쪽을 잠그고 폐 소리를 따로 확인할게요", note: 청진}
+    - {en: "After both sides check out, this tube is ready for one-lung ventilation during surgery.", icon: hospital, ko: "양쪽이 확인되면 수술 중 한쪽 폐 환기에 쓸 준비가 돼요", note: 사용}
+12:
+  s:
+  - {tag: 필수 조건, icon: lock, why: "\"must\"는 선택이 아니라 반드시 지켜야 하는 조건을 말하고, \"before\"가 그 일이 먼저임을 못 박아요.", decoy: "for the patient", dk: ["발성밸브를 달기 전에 손을 완전히 씻어야 해요", "발성밸브를 달기 전에 호흡을 완전히 확인해야 해요"], ans: valve, opts: [glove, hat, belt]}
+  - {tag: 확인 순서, icon: check, why: "\"first\"를 끝에 붙이면 밸브를 달기 전에 가장 먼저 해야 할 확인이라는 순서를 알려 줘요.", decoy: "in his bed", dk: ["먼저 튜브 주변 피부가 깨끗한지 확인해요", "먼저 튜브 주변으로 새는 곳이 없는지 확인해요"], ans: around, opts: [behind, beyond, under]}
+  - {tag: 중단 기준, icon: siren, why: "\"if he struggles\"처럼 중단할 조건을 미리 말해 두면 문제가 생겼을 때 망설이지 않고 밸브를 뺄 수 있어요.", decoy: "on the bed", dk: ["맥박을 지켜보다가 힘겨워하면 밸브를 바로 제거할게요", "표정을 지켜보다가 힘겨워하면 밸브를 바로 제거할게요"], ans: struggles, opts: [sleeps, smiles, waves]}
+  - {tag: 환자 안내, icon: speech, why: "\"now that …\"은 앞 조건이 갖춰진 지금이라는 뜻이라 커프를 뺀 것이 말할 수 있는 이유임을 알려 줘요.", decoy: "to the family", dk: ["커프가 빠졌으니 이제 숨 쉬어 볼 수 있다고 알려 드려요", "커프가 빠졌으니 이제 웃어 볼 수 있다고 알려 드려요"], ans: talk, opts: [sing, shout, laugh]}
+  - {tag: 즉시 제거, icon: siren, why: "\"right away\"는 망설임 없이 곧바로라는 뜻이라 호흡곤란 신호가 보이면 지체 없이 밸브를 뺀다는 약속이에요.", decoy: "with gloves on", dk: ["졸린 기색이 보이면 바로 밸브를 빼요", "배고픈 기색이 보이면 바로 밸브를 빼요"], ans: distress, opts: [laughter, hunger, thirst]}
+  - {tag: 시도 조건, icon: lock, why: "\"only when\"은 조건이 모두 갖춰질 때만 한다는 제한이라 의식과 호흡 중 하나라도 모자라면 시도하지 않아요.", decoy: "at night", dk: ["의식이 또렷하고 스스로 잘 숨쉴 때만 말하기를 시도해요", "의식이 또렷하고 스스로 잘 숨쉴 때만 앉기를 시도해요"], ans: alert, opts: [hungry, angry, cheerful]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 기관절개 발성밸브를 적용하는 4문장 순서
+    why: 의식과 호흡이 좋을 때만 시도하고, 커프를 먼저 빼고, 튜브 주변 호흡을 확인한 뒤, 밸브를 달고 지켜보다 힘겨워하면 바로 빼요.
+    lines:
+    - {en: "We only try the valve when he's alert and breathing well on his own.", icon: lock, ko: "의식이 또렷하고 스스로 잘 숨쉴 때만 밸브를 시도해요", note: 조건}
+    - {en: "With that true, the cuff must be fully deflated before the valve goes on.", icon: gear, ko: "그렇다면 밸브를 달기 전에 커프를 완전히 빼야 해요", note: 커프}
+    - {en: "With the cuff down, let's confirm he can breathe around the tube.", icon: check, ko: "커프가 빠지면 튜브 주변으로 숨 쉴 수 있는지 확인해요", note: 확인}
+    - {en: "Once the valve is on, I'll watch his breathing and take it off right away if he struggles.", icon: siren, ko: "밸브를 달면 호흡을 보다가 힘겨워하면 바로 뺄게요", note: 감시}
+13:
+  s:
+  - {tag: 예방 처치, icon: shield, why: "\"to reduce …\"는 하는 이유를 말해서 침대를 높이는 것이 편의가 아니라 폐렴 예방 처치임을 알려요.", decoy: "for the nurse", dk: ["숨쉬기를 편하게 하려고 침대 머리를 계속 높여 둬요", "소음을 줄이려고 침대 머리를 계속 높여 둬요"], ans: elevated, opts: [cleaned, covered, painted]}
+  - {tag: 확인 이유, icon: gear, why: "\"so … don't\"처럼 so 뒤에 부정을 붙이면 막으려는 결과를 말해서 확인하는 이유가 분명해져요.", decoy: "around the neck", dk: ["공기가 밖으로 새지 않도록 커프압을 확인해요", "가스가 밖으로 새지 않도록 커프압을 확인해요"], ans: secretions, opts: [visitors, pillows, gloves]}
+  - {tag: 예방 효과, icon: shield, why: "\"lowers his risk\"는 위험을 없애는 게 아니라 낮춘다는 표현이라 과장 없이 효과를 말해요.", decoy: "at bedtime", dk: ["규칙적인 손 위생이 인공호흡기 폐렴 위험을 낮춰 줘요", "규칙적인 발 관리가 인공호흡기 폐렴 위험을 낮춰 줘요"], ans: mouth, opts: [foot, hair, nail]}
+  - {tag: 체위 변경, icon: me, why: "\"instead of\"는 하지 않는 일과 대신 하는 일을 한 문장에 놓아 방법의 차이를 선명하게 해 줘요.", decoy: "during the day", dk: ["평평하게 눕혀 두는 대신 자주 이불을 바꿔 드려요", "평평하게 눕혀 두는 대신 자주 양말을 바꿔 드려요"], ans: flat, opts: [cold, alone, awake]}
+  - {tag: 구강 위생, icon: check, why: "\"brush\"와 \"swab\"를 and로 이으면 칫솔질과 면봉 닦기를 둘 다 한다는 뜻이고, \"on a schedule\"이 규칙성을 말해요.", decoy: "with a cloth", dk: ["일정에 따라 머리를 빗겨 드리고 입안을 면봉으로 닦아 드려요", "일정에 따라 이를 닦아 드리고 눈을 면봉으로 닦아 드려요"], ans: swab, opts: [paint, shave, tape]}
+  - {tag: 효과 정리, icon: chartup, why: "\"All of this\"는 앞에서 말한 여러 처치를 한꺼번에 가리키는 말이라 하나하나의 이유를 한 문장으로 묶어 줘요.", decoy: "in the long run", dk: ["이 모든 게 튜브로 인한 출혈 가능성을 낮춰 줘요", "이 모든 게 튜브로 인한 욕창 가능성을 낮춰 줘요"], ans: chance, opts: [price, habit, speed]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 인공호흡기 폐렴을 예방하는 4문장 순서
+    why: 침대 머리 높이기부터 시작해 커프압 확인과 구강 관리를 더하고, 마지막에 전체의 효과를 한 문장으로 묶어요.
+    lines:
+    - {en: "I keep the head of his bed elevated to reduce aspiration.", icon: shield, ko: "흡인을 줄이려고 침대 머리를 계속 높여 둬요", note: 체위}
+    - {en: "On top of that, the cuff pressure is checked so secretions don't slip past.", icon: gear, ko: "그에 더해 분비물이 새지 않도록 커프압을 확인해요", note: 커프압}
+    - {en: "Along with both of those, we brush his teeth and swab his mouth on a schedule.", icon: check, ko: "그 둘과 함께 일정에 따라 이를 닦고 입안을 면봉으로 닦아요", note: 구강}
+    - {en: "All of this lowers his chance of getting pneumonia from the tube.", icon: chartup, ko: "이 모든 게 튜브로 인한 폐렴 가능성을 낮춰 줘요", note: 효과}
+14:
+  s:
+  - {tag: 위치 숙지, icon: magnify, why: "\"review where …\"는 의문사 절을 목적어로 써서 무엇이 어디에 있는지를 함께 확인하자고 말해요.", decoy: "in his room", dk: ["기도 카트 안에 구조 장치가 몇 개 있는지 점검해요", "기도 카트 안에 구조 장치가 언제 쓰이는지 점검해요"], ans: rescue, opts: [cleaning, cooking, writing]}
+  - {tag: 역할 분담, icon: handshake2, why: "\"You …, I'll …\"로 두 사람을 대비시키면 누가 무엇을 맡는지 겹치지 않게 나눌 수 있어요.", decoy: "in the next room", dk: ["흡인은 당신이, 청소는 응급 상황 동안 제가 관리할게요", "흡인은 당신이, 장비는 응급 상황 동안 제가 관리할게요"], ans: medications, opts: [meals, laundry, visitors]}
+  - {tag: 사전 숙지, icon: star, why: "\"should\"는 의무라기보다 그렇게 하는 것이 맞다는 권고라 팀 규범을 부드럽게 말해요.", decoy: "on the day", dk: ["위기가 닥치기 전에 모두 자기 위치를 알아 둬야 해요", "위기가 닥치기 전에 모두 자기 순서를 알아 둬야 해요"], ans: role, opts: [salary, hobby, birthday]}
+  - {tag: 위치 안내, icon: pushpin, why: "\"in the top drawer\"처럼 정확한 위치를 말하면 급할 때 동료가 되묻지 않고 바로 꺼낼 수 있어요.", decoy: "in the corner", dk: ["부지와 흡인 카테터는 맨 위 서랍에 있어요", "장갑과 비디오 스코프는 맨 위 서랍에 있어요"], ans: top, opts: [bottom, middle, empty]}
+  - {tag: 호출 담당, icon: bell, why: "\"the one who …\"로 담당을 콕 집어 말하면 위급할 때 누가 부를지 서로 미루지 않아요.", decoy: "by phone", dk: ["필요하면 약을 요청하는 건 제가 할게요", "필요하면 서류를 요청하는 건 제가 할게요"], ans: calls, opts: [writes, sells, hides]}
+  - {tag: 훈련 목적, icon: trophy, why: "\"so no one …\"은 하는 목적을 부정문으로 말해 훈련이 실수를 막기 위한 것임을 보여 줘요.", decoy: "at the bedside", dk: ["나중에 아무도 잊지 않도록 이 훈련을 해 봐요", "나중에 아무도 늦지 않도록 이 훈련을 해 봐요"], ans: hesitates, opts: [laughs, complains, leaves]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 기도 응급 카트와 역할을 숙지하는 4문장 순서
+    why: 역할을 알아 두라는 원칙을 먼저 말하고, 역할을 나누고, 장비 위치를 알려 주고, 전체를 훈련으로 묶어 마무리해요.
+    lines:
+    - {en: "Everyone should know their role before a crisis hits.", icon: star, ko: "위기가 닥치기 전에 모두 자기 역할을 알아야 해요", note: 원칙}
+    - {en: "That means you handle suction and I'll manage medications.", icon: handshake2, ko: "그러니 흡인은 당신이, 약물은 제가 관리할게요", note: 분담}
+    - {en: "With roles set, the bougie and video scope are in the top drawer.", icon: pushpin, ko: "역할이 정해졌으니 부지와 비디오 스코프는 맨 위 서랍에 있어요", note: 위치}
+    - {en: "Let's run through all of this as a drill so no one hesitates later.", icon: trophy, ko: "나중에 아무도 주저하지 않도록 이 모든 걸 훈련해 봐요", note: 훈련}

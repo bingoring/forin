@@ -1,0 +1,117 @@
+# 상황 14~20 문장 수정
+sent:
+# --- S14 산-염기
+- {s: 14, i: 3, chunks: ["His pH", "is low", "and his CO2", "is also dropping", "."]}
+- {s: 14, i: 4, words_remove: [w-cause]}
+- {s: 14, i: 5, chunks: ["I'll recheck", "his gas", "after the next intervention", "."]}
+# --- S15 다장기부전
+- {s: 15, i: 0, dko: ["최대한의 지지 요법에도 불구하고 신부전 상태예요", "최대한의 지지 요법에도 불구하고 저혈압 상태예요"]}
+- s: 15
+  i: 1
+  ko: "치료 목표를 다시 검토해야 해요."
+  dko: ["치료 일정을 다시 검토해야 해요", "치료 목표를 다음 주에 다시 검토해야 해요"]
+- s: 15
+  i: 3
+  ko: "신장과 간이 둘 다 지금 기능을 잃어 가고 있어요."
+  dko: ["신장과 폐가 둘 다 지금 기능을 잃어 가고 있어요", "신장과 간이 둘 다 지금 검사를 받고 있어요"]
+- s: 15
+  i: 4
+  dko: ["최대한의 수액과 항생제에도 불구하고 이래요", "최대한의 수액과 진통제에도 불구하고 이래요"]
+  blank: {answer: fluids, options: [fluids, oxygen, steroids, vitamins]}
+# --- S16 대량수혈
+- s: 16
+  i: 0
+  dko: ["대량수혈이 켜지면 혈액은행이 준비해요", "프로토콜 발동 시각을 남겨 두세요"]
+  blank: {answer: protocol, options: [protocol, poster, folder, binder]}
+- {s: 16, i: 1, dko: ["농축적혈구, 혈장, 혈소판이 든 수레가 필요해요", "농축적혈구, 혈장, 혈소판이 든 운반함을 받으면 서명할게요"]}
+- {s: 16, i: 2, words_remove: [w-flow]}
+- s: 16
+  i: 3
+  decoy: "on the roof"
+  dko: ["바로 운반함 놓을 자리를 비울게요", "혈액은행 번호를 바로 찾아 둘게요"]
+  blank: {answer: call, options: [call, called, calls, calling]}
+- s: 16
+  i: 4
+  en: "We're giving packed cells and plasma together, one to one."
+  ko: "농축적혈구와 혈장을 1:1로 함께 주고 있어요."
+  chunks: ["We're giving", "packed cells and plasma", "together", ", one to one", "."]
+  words: [w-give, w-packed, w-cell, w-plasma, w-together]
+  tag: "투여 비율"
+  why: "together, one to one은 적혈구와 혈장을 같은 비율로 함께 준다는 말이에요. 대량수혈은 혈장을 뒤로 미루지 않고 적혈구와 함께 주는 것이 원칙이라, 순서가 아니라 비율을 말해요."
+  decoy: "in the cooler"
+  dko: ["농축적혈구와 혈장을 두 사람이 함께 서명하고 있어요", "농축적혈구와 혈장을 1:1로 함께 세고 있어요"]
+  blank: {answer: giving, options: [giving, labeling, counting, warming]}
+- s: 16
+  i: 5
+  ko: "들어가는 단위를 하나도 빠짐없이 누적해서 세어 둘게요."
+  dko: ["들어가는 단위의 온도를 하나도 빠짐없이 재어 둘게요", "들어가는 단위의 이름을 하나도 빠짐없이 불러 둘게요"]
+# --- S17 심장압전
+- {s: 17, i: 0, dko: ["둔탁한 폐음과 낮은 혈압 — 심장압전처럼 보여요", "둔탁한 심음과 낮은 혈압 — 기흉처럼 보여요"]}
+- {s: 17, i: 1, dko: ["심낭천자 트레이를 준비하고 동의서를 챙길게요", "심낭천자 트레이를 펴면서 손 위생을 할게요"]}
+- s: 17
+  i: 3
+  en: "Her neck veins look distended too."
+  chunks: ["Her neck veins", "look distended", "too", "."]
+- s: 17
+  i: 4
+  decoy: "for lunch"
+  dko: ["지금 멸균 트레이를 가져올게요", "열면서 손부터 씻을게요"]
+- s: 17
+  i: 5
+  en: "I'm charting the time and her vitals."
+  chunks: ["I'm charting", "the time", "and her vitals", "."]
+# --- S18 긴장성 기흉
+- s: 18
+  i: 1
+  decoy: "for the photo"
+  dko: ["즉각 감압이 끝나면 바늘을 통에 버리세요", "즉각 감압을 위해 침대 높이를 올리세요"]
+- {s: 18, i: 2, dko: ["감압 후에 호흡음과 활력징후를 흐름표에 적을게요", "감압 후에 호흡음과 활력징후를 전할게요"]}
+- s: 18
+  i: 3
+  en: "His oxygen is dropping fast, and his chest isn't rising on one side."
+  ko: "산소포화도가 빠르게 떨어지고, 한쪽 가슴이 잘 올라오지 않아요."
+  chunks: ["His oxygen", "is dropping fast", ", and his chest", "isn't rising", "on one side", "."]
+  words: [w-oxygen, w-drop, w-fast, w-side]
+  why: "A, and B로 두 소견을 이어 말해요. 긴장성 기흉은 한쪽 폐가 공기에 눌려 그쪽 가슴이 덜 올라오고, 산소포화도는 환자 전체의 값이라 한쪽만 따로 떨어지지 않아요. on one side로 어느 쪽 가슴인지 함께 말해요."
+  decoy: "for a week"
+  dko: ["산소포화도가 빠르게 떨어지고, 한쪽 팔이 잘 올라오지 않아요", "혈당이 빠르게 떨어지고, 한쪽 가슴이 잘 올라오지 않아요"]
+- s: 18
+  i: 4
+  dko: ["침상 옆에 소독 솜도 뒀어요", "침상 옆에 바늘을 준비하는 중이에요"]
+  blank: {answer: ready, options: [ready, labeled, wrapped, boxed]}
+# --- S19 쇼크 후 심정지 임박
+- s: 19
+  i: 0
+  decoy: "with a smile"
+  dko: ["심정지 임박이에요 — 코드팀이 오면 상황을 보고하세요", "심정지 임박이라서 코드팀이 빨리 와야 해요"]
+  blank: {answer: call, options: [call, called, calls, calling]}
+- s: 19
+  i: 1
+  dko: ["흉부압박은 2분마다 교대하고, 저는 기도를 맡을게요", "흉부압박을 맡아 주시면, 교대는 2분 뒤에 할게요"]
+  blank: {answer: manage, options: [manage, measure, mention, mark]}
+- s: 19
+  i: 2
+  dko: ["누가 응급 카트를 가져오면 서랍을 열어 주세요", "누가 응급 카트 위 기록지를 대신 찾아 주세요"]
+  blank: {answer: documenting, options: [documenting, dispensing, disinfecting, discharging]}
+- s: 19
+  i: 4
+  chunks: ["I'll grab", "the defibrillator pads", "now", "."]
+  decoy: "for the weekend"
+  dko: ["패드를 붙일 가슴을 먼저 닦을게요", "패드를 붙인 다음 리듬을 살필게요"]
+  blank: {answer: grab, options: [grab, charge, label, clean]}
+- s: 19
+  i: 5
+  dko: ["누군가 코드팀을 안내해야 해요", "누군가 코드팀 호출 시각을 알려야 해요"]
+  blank: {answer: page, options: [page, pack, pass, pace]}
+# --- S20 소생 목표
+- {s: 20, i: 0, words_remove: [w-give]}
+- {s: 20, i: 3, chunks: ["I know", "this is", "a very hard time", "for your family", "."]}
+- s: 20
+  i: 5
+  en: "We'll support all of you as we work through this decision together."
+  ko: "이 결정을 함께 풀어 가는 동안 가족분들 모두를 도울게요."
+  chunks: ["We'll support", "all of you", "as we work through", "this decision", "together", "."]
+  words: [w-decision, w-together]
+  why: "all of you를 넣으면 한 사람이 아니라 가족 모두를 돕겠다는 말이에요. as we work through this decision together는 결정을 대신 내려 주겠다는 것이 아니라 함께 풀어 간다는 뜻이라, 가족의 결정권을 존중하면서도 무엇이든 해 주겠다는 약속은 하지 않아요."
+  decoy: "in the cafeteria"
+  dko: ["이 일정을 함께 풀어 가는 동안 가족분들 모두를 도울게요", "이 결정을 함께 풀어 가는 동안 가족 중 두 분을 도울게요"]

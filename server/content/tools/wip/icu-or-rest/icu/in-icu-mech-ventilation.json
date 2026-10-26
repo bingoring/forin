@@ -1,0 +1,446 @@
+{
+ "theme": "icu-mech-ventilation",
+ "situations": [
+  {
+   "title": "인공호흡기 설정 확인·기록",
+   "tagline": "Hey, can you double-check the vent settings with me before we chart them?",
+   "room": "ICU BED 3",
+   "brief": "모드, TV, FiO2, PEEP를 순서대로 점검하고 정확히 기록하세요.",
+   "role": "colleague",
+   "skills": [
+    "환기 설정 점검",
+    "수치 기록",
+    "팀 확인"
+   ],
+   "keyPhrases": [
+    "Let's confirm the mode, tidal volume, FiO2, and PEEP together.",
+    "I'll read the numbers off and you verify them on the flowsheet.",
+    "The FiO2 is set at 40 percent with a PEEP of 5."
+   ],
+   "goals": [
+    "인공호흡기 핵심 설정 항목을 빠짐없이 확인한다",
+    "확인한 값을 정확한 용어로 기록하고 공유한다"
+   ]
+  },
+  {
+   "title": "기관튜브 위치·고정 확인",
+   "tagline": "Is the breathing tube still in the right spot? I keep worrying it'll slip.",
+   "room": "ICU BED 3",
+   "brief": "cuff 압력, 삽관 깊이, 튜브 고정 상태를 확인하고 가족에게 설명하세요.",
+   "role": "family",
+   "skills": [
+    "튜브 위치 확인",
+    "고정 상태 점검",
+    "가족 설명"
+   ],
+   "keyPhrases": [
+    "The tube is marked at 22 centimeters at his lip, which is where it should be.",
+    "I'm checking the cuff pressure so it seals without hurting him.",
+    "The tape is secure, so the tube won't move out of place."
+   ],
+   "goals": [
+    "튜브 깊이와 cuff 상태를 표준 방법으로 확인한다",
+    "가족이 안심하도록 고정 상태를 쉽게 설명한다"
+   ]
+  },
+  {
+   "title": "회로 연결·습화 점검",
+   "tagline": "There's water pooling in this tubing — is that going to be a problem?",
+   "room": "ICU BED 3",
+   "brief": "회로 누출과 물고임을 점검하고 습화 상태를 안전하게 유지하세요.",
+   "role": "family",
+   "skills": [
+    "회로 점검",
+    "습화 관리",
+    "안전 설명"
+   ],
+   "keyPhrases": [
+    "That condensation is normal, and I'll drain it away from him.",
+    "I'm checking every connection so there are no leaks in the circuit.",
+    "The humidifier keeps his airway from drying out."
+   ],
+   "goals": [
+    "회로 누출과 물고임을 점검하고 조치한다",
+    "습화 장치의 목적을 가족에게 설명한다"
+   ]
+  },
+  {
+   "title": "호흡음·흉곽 상승 사정",
+   "tagline": "The night nurse said his left side wasn't moving as well — can you listen again?",
+   "room": "ICU BED 3",
+   "brief": "양측 호흡음과 흉곽 상승을 사정해 균등 환기를 확인하세요.",
+   "role": "colleague",
+   "skills": [
+    "호흡음 청진",
+    "흉곽 사정",
+    "소견 공유"
+   ],
+   "keyPhrases": [
+    "I'll listen to both lungs and watch how the chest rises.",
+    "Breath sounds are equal on both sides right now.",
+    "If one side sounds diminished, I'll check the tube depth."
+   ],
+   "goals": [
+    "양측 호흡음과 흉곽 상승을 체계적으로 사정한다",
+    "비대칭 소견 시 다음 확인 단계를 판단한다"
+   ]
+  },
+  {
+   "title": "SpO2·EtCO2 모니터",
+   "tagline": "His oxygen number dipped a little — should we be doing anything?",
+   "room": "ICU BED 3",
+   "brief": "SpO2와 EtCO2 지표를 해석해 산소화와 환기 상태를 함께 판단하세요.",
+   "role": "family",
+   "skills": [
+    "산소화 모니터",
+    "환기 지표 해석",
+    "가족 설명"
+   ],
+   "keyPhrases": [
+    "His oxygen is at 96 percent, which is a good number for him.",
+    "This second value shows how well he's clearing carbon dioxide.",
+    "I'm watching both numbers closely and they're stable."
+   ],
+   "goals": [
+    "SpO2와 EtCO2가 각각 무엇을 의미하는지 구분한다",
+    "지표 변화를 가족에게 안심되게 설명한다"
+   ]
+  },
+  {
+   "title": "기관 흡인 협조",
+   "tagline": "Can you bump his oxygen up first? I'm going to suction him now.",
+   "room": "ICU BED 3",
+   "brief": "무균 흡인 전 전산소화를 하고 흡인 절차에 협조하세요.",
+   "role": "colleague",
+   "skills": [
+    "무균 흡인",
+    "전산소화",
+    "협업"
+   ],
+   "keyPhrases": [
+    "I'll pre-oxygenate him before you pass the catheter.",
+    "Let's keep this sterile so we don't introduce any infection.",
+    "Watch his oxygen while I suction, and stop if he desaturates."
+   ],
+   "goals": [
+    "흡인 전 전산소화의 필요성을 이해하고 수행한다",
+    "무균 술기로 흡인을 협조한다"
+   ]
+  },
+  {
+   "title": "모드 전환 이해",
+   "tagline": "The doctor switched him from AC to SIMV — what does that actually change for him?",
+   "room": "ICU BED 5",
+   "brief": "AC, SIMV, PSV의 목적과 환자 반응 차이를 설명하고 관찰하세요.",
+   "role": "family",
+   "skills": [
+    "환기 모드 이해",
+    "환자 반응 관찰",
+    "가족 교육"
+   ],
+   "keyPhrases": [
+    "This new mode lets him take some of his own breaths.",
+    "We're gradually letting him do more of the work of breathing.",
+    "I'll watch how he tolerates the change over the next hour."
+   ],
+   "goals": [
+    "주요 환기 모드의 목적 차이를 설명한다",
+    "모드 전환 후 환자 반응을 관찰하고 판단한다"
+   ]
+  },
+  {
+   "title": "PEEP 적정 산소화 개선",
+   "tagline": "They keep adjusting that pressure setting — is his oxygen finally getting better?",
+   "room": "ICU BED 5",
+   "brief": "PEEP titration 과정을 이해하고 산소화 개선 반응을 평가하세요.",
+   "role": "family",
+   "skills": [
+    "PEEP 조정 이해",
+    "산소화 평가",
+    "가족 소통"
+   ],
+   "keyPhrases": [
+    "We're fine-tuning the pressure to keep his lungs open.",
+    "After raising the PEEP, his oxygen improved to a safer level.",
+    "We change it in small steps and watch how he responds."
+   ],
+   "goals": [
+    "PEEP titration의 목적과 방법을 이해한다",
+    "조정 후 산소화 반응을 지표로 평가한다"
+   ]
+  },
+  {
+   "title": "기도내압 상승 경보 감별",
+   "tagline": "That high-pressure alarm won't stop — what's making it go off?",
+   "room": "ICU BED 5",
+   "brief": "저항과 순응도 원인을 구분해 기도내압 상승 경보를 단계적으로 감별하세요.",
+   "role": "family",
+   "skills": [
+    "고압 알람 감별",
+    "저항 순응도 구분",
+    "팀 보고"
+   ],
+   "keyPhrases": [
+    "That alarm tells me his airway pressure is high, so I'm finding out why.",
+    "I'll check if the tube is kinked or if he needs suctioning first.",
+    "He's still getting oxygen while I work through the causes."
+   ],
+   "goals": [
+    "고압 알람의 저항성과 순응도 원인을 구분한다",
+    "원인별 대응을 순서대로 시행하고 보고한다"
+   ]
+  },
+  {
+   "title": "인공호흡기 부조화 인지",
+   "tagline": "He looks like he's fighting the machine — is he uncomfortable?",
+   "room": "ICU BED 5",
+   "brief": "trigger와 flow 부조화를 인지해 환자-인공호흡기 비동기를 파악하세요.",
+   "role": "family",
+   "skills": [
+    "환기 비동기 인지",
+    "파형 관찰",
+    "원인 판단"
+   ],
+   "keyPhrases": [
+    "It looks like his breathing and the machine aren't quite in sync.",
+    "I'll adjust the trigger and flow so it matches his effort better.",
+    "We want the ventilator to work with him, not against him."
+   ],
+   "goals": [
+    "trigger와 flow 부조화의 징후를 인지한다",
+    "부조화 원인을 파형과 함께 판단한다"
+   ]
+  },
+  {
+   "title": "폐보호 환기 적용",
+   "tagline": "Why is the machine giving him such small breaths now?",
+   "room": "ICU BED 5",
+   "brief": "저 TV와 plateau압 관리를 통한 폐보호 환기의 원리를 설명하세요.",
+   "role": "family",
+   "skills": [
+    "폐보호 환기",
+    "plateau압 관리",
+    "가족 교육"
+   ],
+   "keyPhrases": [
+    "Smaller breaths actually protect his injured lungs from more damage.",
+    "We keep the plateau pressure low to avoid overstretching the lungs.",
+    "It feels counterintuitive, but gentle ventilation helps him heal."
+   ],
+   "goals": [
+    "저 TV 폐보호 환기의 원리를 설명한다",
+    "plateau압 관리의 안전 목표를 이해한다"
+   ]
+  },
+  {
+   "title": "자발호흡 능력 사정",
+   "tagline": "Can you take a look — do you think he's ready to breathe more on his own?",
+   "room": "ICU BED 5",
+   "brief": "RSBI와 호흡노력을 평가해 자발호흡 능력을 사정하세요.",
+   "role": "colleague",
+   "skills": [
+    "자발호흡 평가",
+    "RSBI 산출",
+    "소견 공유"
+   ],
+   "keyPhrases": [
+    "Let's check his RSBI to see how well he's breathing on his own.",
+    "I'm watching his rate and effort during this spontaneous trial.",
+    "His numbers look promising, so I'll flag him for the team."
+   ],
+   "goals": [
+    "RSBI로 자발호흡 능력을 정량적으로 평가한다",
+    "호흡노력 징후를 통합해 판단한다"
+   ]
+  },
+  {
+   "title": "permissive hypercapnia 이해",
+   "tagline": "His carbon dioxide is high — shouldn't you be worried about that?",
+   "room": "ICU BED 5",
+   "brief": "pH 허용범위를 소통하며 permissive hypercapnia의 근거를 설명하세요.",
+   "role": "family",
+   "skills": [
+    "허용성 고탄산 설명",
+    "pH 목표 소통",
+    "가족 안심"
+   ],
+   "keyPhrases": [
+    "We're allowing his carbon dioxide to run a bit high on purpose.",
+    "As long as his blood pH stays in a safe range, this protects his lungs.",
+    "It's a deliberate trade-off, and we're monitoring it closely."
+   ],
+   "goals": [
+    "permissive hypercapnia의 근거를 설명한다",
+    "허용 가능한 pH 범위를 가족과 소통한다"
+   ]
+  },
+  {
+   "title": "흡인 후 산소화 회복 관리",
+   "tagline": "His oxygen dropped right after suctioning — is he okay?",
+   "room": "ICU BED 5",
+   "brief": "흡인 후 desaturation에 대응해 산소화 회복을 관리하세요.",
+   "role": "family",
+   "skills": [
+    "흡인 후 산소화",
+    "desaturation 대응",
+    "가족 설명"
+   ],
+   "keyPhrases": [
+    "A brief oxygen dip after suctioning is common, and I'm helping him recover.",
+    "I'll give him a few extra breaths of oxygen to bring it back up.",
+    "His number is already climbing back to normal."
+   ],
+   "goals": [
+    "흡인 후 desaturation의 원인과 대응을 이해한다",
+    "산소화 회복 과정을 가족에게 설명한다"
+   ]
+  },
+  {
+   "title": "ABG 통합 환기 조정 소통",
+   "tagline": "The latest gas came back — his CO2 is still climbing, should we change the vent?",
+   "room": "ICU BED 5",
+   "brief": "ABG 결과를 통합해 설정 변경 필요성을 의사에게 보고하세요.",
+   "role": "colleague",
+   "skills": [
+    "ABG 해석",
+    "환기 조정 판단",
+    "의사 보고"
+   ],
+   "keyPhrases": [
+    "His PaCO2 is up and his pH is dropping on this gas.",
+    "I'd suggest increasing the rate to improve his ventilation.",
+    "I'll call the physician with the numbers and my recommendation."
+   ],
+   "goals": [
+    "ABG 결과를 환기 상태와 통합해 해석한다",
+    "설정 변경 제안을 근거와 함께 보고한다"
+   ]
+  },
+  {
+   "title": "급성 산소포화도 붕괴 DOPE 감별",
+   "tagline": "His sats are crashing — the alarms are all going off, what do we do?!",
+   "room": "ICU BED 5",
+   "brief": "DOPE 순서로 튜브, 폐색, 기흉, 장비 원인을 신속히 감별하세요.",
+   "role": "colleague",
+   "skills": [
+    "DOPE 감별",
+    "급성 저산소 대응",
+    "위기 소통"
+   ],
+   "keyPhrases": [
+    "Let's run DOPE — check displacement, obstruction, pneumothorax, equipment.",
+    "Disconnect from the vent and bag him with 100 percent oxygen now.",
+    "I'll listen for equal breath sounds while you check the tube."
+   ],
+   "goals": [
+    "DOPE 순서로 급성 산소포화도 붕괴 원인을 감별한다",
+    "감별 중 수동 환기로 산소화를 유지한다"
+   ]
+  },
+  {
+   "title": "고평탄압 기흉 위기",
+   "tagline": "His plateau pressure just shot up and his chest looks uneven — I think it's a pneumothorax.",
+   "room": "ICU BED 5",
+   "brief": "기압손상을 인지하고 긴장성 기흉 감압을 준비하세요.",
+   "role": "colleague",
+   "skills": [
+    "기압손상 인지",
+    "기흉 감압 준비",
+    "팀 보고"
+   ],
+   "keyPhrases": [
+    "Diminished breath sounds and high pressures point to a pneumothorax.",
+    "I'm calling the physician and setting up for needle decompression.",
+    "Get the chest tube tray ready while we bag him carefully."
+   ],
+   "goals": [
+    "기압손상과 기흉의 위기 징후를 인지한다",
+    "감압 처치를 신속히 준비하고 보고한다"
+   ]
+  },
+  {
+   "title": "인공호흡기 완전 고장 수동 환기",
+   "tagline": "The ventilator just died — grab the bag, we have to breathe for him by hand!",
+   "room": "ICU BED 5",
+   "brief": "인공호흡기 고장 시 즉시 bag 환기로 전환하고 백업을 확보하세요.",
+   "role": "colleague",
+   "skills": [
+    "수동 환기 전환",
+    "백업 확보",
+    "위기 대응"
+   ],
+   "keyPhrases": [
+    "Disconnect and start bagging him with the resuscitation bag now.",
+    "I'll call respiratory for a backup ventilator immediately.",
+    "Keep a steady rate while I get help to the bedside."
+   ],
+   "goals": [
+    "인공호흡기 고장 시 즉시 수동 환기로 전환한다",
+    "백업 장비 확보와 인력 요청을 동시에 수행한다"
+   ]
+  },
+  {
+   "title": "우발적 자가발관 대응",
+   "tagline": "He pulled his tube out — he's gasping, we need help in here now!",
+   "room": "ICU BED 5",
+   "brief": "우발적 자가발관에 대응해 산소화를 유지하고 재삽관을 준비하세요.",
+   "role": "colleague",
+   "skills": [
+    "자가발관 대응",
+    "산소화 유지",
+    "재삽관 준비"
+   ],
+   "keyPhrases": [
+    "He self-extubated — start bag-mask ventilation with 100 percent oxygen.",
+    "Call the airway team and bring the intubation cart in.",
+    "I'll assess his own breathing while we prepare to reintubate."
+   ],
+   "goals": [
+    "우발적 자가발관 시 즉시 산소화를 확보한다",
+    "재삽관 필요성을 판단하고 준비한다"
+   ]
+  },
+  {
+   "title": "심한 부조화 진정 심화 판단",
+   "tagline": "He's completely fighting the vent and desatting — do we need to deepen his sedation?",
+   "room": "ICU BED 5",
+   "brief": "심한 부조화 상황에서 진정 심화 필요성을 판단하고 위기 소통하세요.",
+   "role": "colleague",
+   "skills": [
+    "부조화 위기 판단",
+    "진정 심화 소통",
+    "팀 협업"
+   ],
+   "keyPhrases": [
+    "He's severely dyssynchronous and his oxygen is falling.",
+    "I think we need to deepen sedation and possibly paralyze him.",
+    "I'll page the intensivist while you draw up the medication."
+   ],
+   "goals": [
+    "심한 부조화 위기의 진정 심화 필요성을 판단한다",
+    "처치 결정을 팀과 신속히 소통한다"
+   ]
+  },
+  {
+   "title": "난치성 저산소증 구조요법 전환",
+   "tagline": "We've maxed out the vent and he's still hypoxic — is it time to talk proning or ECMO?",
+   "room": "ICU BED 5",
+   "brief": "난치성 저산소증에서 proning과 ECMO 에스컬레이션을 판단하고 소통하세요.",
+   "role": "colleague",
+   "skills": [
+    "구조요법 판단",
+    "에스컬레이션 소통",
+    "팀 협업"
+   ],
+   "keyPhrases": [
+    "His oxygenation isn't responding despite maximal ventilator support.",
+    "We should escalate to proning and consult the ECMO team.",
+    "I'll gather his latest gases and P/F ratio for the call."
+   ],
+   "goals": [
+    "난치성 저산소증에서 구조요법 전환 시점을 판단한다",
+    "proning과 ECMO 에스컬레이션을 팀과 소통한다"
+   ]
+  }
+ ]
+}

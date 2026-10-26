@@ -1,0 +1,127 @@
+- situation: "삽관 물품 준비·점검"
+  items:
+    - kind: slider
+      words: [w-light, w-check]
+      cue: "Colleague: \"The laryngoscope light is dim and flickering.\""
+      scale: [just write it down and go on, change the blade right away, cancel the whole intubation]
+      answerAt: 1
+      why: "삽관 직전에 후두경 불빛이 어둡거나 깜박이면 쓰는 도중 꺼질 수 있어서, 시작 전에 블레이드나 건전지를 바로 바꿔요. 메모만 하고 넘어가면 위험하고, 삽관을 통째로 취소할 일은 아니에요."
+      example: "The light is flickering, so I'm changing the blade now."
+      exKo: "불빛이 깜박여서 지금 블레이드를 바꾸고 있어요."
+    - kind: context
+      words: [w-check]
+      word: check
+      ko: 확인하다
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "I'll check the cuff and the laryngoscope light before we start.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Can you check the suction with me?", ok: true}
+        - {who: 가족에게, icon: me, en: "I'm running a pre-intubation equipment check, including cuff integrity and light function.", ok: false, fix: "I'm checking all the equipment so everything is ready to help him breathe."}
+      why: "의료진끼리는 cuff integrity 같은 말로 짧고 정확하게 확인 사항을 주고받아요. 가족에게는 그 말이 낯설고 무슨 일인지 겁만 줘요. 무엇을 왜 확인하는지를 쉬운 말로 알려 줘요."
+- situation: "RSI 약물 준비 보조"
+  items:
+    - kind: slider
+      words: [w-syringe, w-label]
+      cue: "Colleague: \"The paralytic syringe has no label on it.\""
+      scale: [use it as it is, label it yourself, discard it and redraw]
+      answerAt: 2
+      why: "라벨이 없는 주사기는 안에 무슨 약이 몇 용량 들었는지 확인할 수 없어서 쓰지 않아요. 기억으로 라벨을 붙이는 것도 안 되고, 버리고 새로 준비해 확인해요."
+      example: "An unlabeled syringe never gets used."
+      exKo: "라벨이 없는 주사기는 절대 쓰지 않아요."
+    - kind: context
+      words: [w-dose]
+      word: dose
+      ko: 용량
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "The induction dose is drawn up and labeled.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Can you double-check the dose with me before I push?", ok: true}
+        - {who: 가족에게, icon: me, en: "We calculated the induction dose from his ideal body weight with a mg per kilogram correction.", ok: false, fix: "He'll get a medicine to make him sleep, and we've checked the dose carefully."}
+      why: "의료진끼리는 체중 기준과 mg/kg 같은 계산을 그대로 말해도 되지만, 가족에게는 숫자와 단위가 어렵고 부담만 돼요. 어떤 약인지와 확인했다는 사실만 쉬운 말로 전해요."
+- situation: "삽관 체위·BURP 보조"
+  items:
+    - kind: pair
+      words: [w-sniffing, w-burp]
+      pairs: [["sniffing", "position"], ["BURP", "maneuver"]]
+      decoys: ["the pulse"]
+      why: "sniffing position은 머리를 받치고 목을 살짝 굽혀 입·인두·후두가 한 줄에 가깝게 놓이게 하는 삽관 자세예요. BURP는 후두를 뒤(Backward)·위(Upward)·오른쪽(Rightward)으로 눌러(Pressure) 성대가 더 잘 보이게 하는 조작(maneuver)이에요."
+    - kind: context
+      words: [w-view]
+      word: view
+      ko: 시야
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "I can't get a good view of the cords yet.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Adjust the pressure, I am trying to improve my view.", ok: true}
+        - {who: 가족에게, icon: me, en: "The laryngoscopic view is grade three, so we're switching to an alternative device.", ok: false, fix: "We're placing him in the best position so the doctor can see his airway clearly."}
+      why: "의료진끼리는 view나 grade 같은 말로 성대가 얼마나 보이는지 짧게 주고받아요. 가족에게는 등급이 무슨 뜻인지 알 수 없어 불안만 키워요. 지금 무엇을 하는지만 쉬운 말로 알려 줘요."
+- situation: "삽관 후 위치 확인 협조"
+  items:
+    - kind: slider
+      words: [w-capnography, w-sound]
+      cue: "Colleague: \"The tube fogs up with each breath. Is that enough?\""
+      scale: [fogging is enough, listen to both sides, confirm with waveform CO2]
+      answerAt: 2
+      why: "튜브에 김이 서리거나 소리가 들리는 것만으로는 기관 안에 있다고 단정할 수 없어요. 지속되는 파형 이산화탄소(capnography)가 가장 믿을 만한 확인이고, 흉부 청진과 엑스레이를 함께 봐요."
+      example: "Sustained waveform capnography confirms the tube is in the trachea."
+      exKo: "지속되는 파형 캡노그래피가 튜브가 기관 안에 있음을 확인해 줘요."
+    - kind: context
+      words: [w-secure]
+      word: secure
+      ko: 고정하다
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "The tube is secured at twenty-two at the teeth.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Can you secure the tube while I call for the X-ray?", ok: true}
+        - {who: 가족에게, icon: me, en: "The endotracheal tube is secured with a commercial holder at the dentition per protocol.", ok: false, fix: "We've taped the breathing tube firmly so it stays in place."}
+      why: "의료진끼리는 보관 위치 숫자나 holder 같은 말로 고정 상태를 짧게 알려요. 가족에게는 dentition이나 protocol 같은 말이 딱딱해요. 튜브를 단단히 붙여 두었다고 쉬운 말로 알려 줘요."
+- situation: "기관절개관 기본 관리"
+  items:
+    - kind: pair
+      words: [w-retie, w-humidify, w-clear]
+      pairs: [["retie", "the trach ties"], ["humidify", "the oxygen"], ["clear", "the secretions"]]
+      decoys: ["the call light"]
+      why: "기관절개관 끈은 풀리거나 느슨해지면 다시 묶고(retie), 산소는 가습해서(humidify) 분비물이 마르지 않게 하고, 쌓인 분비물은 치워서(clear) 기도를 확보해요."
+    - kind: context
+      words: [w-snug]
+      word: snug
+      ko: 꼭 맞는
+      scenes:
+        - {who: 인계, icon: board, en: "Trach ties are snug with one finger's room underneath.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Make the ties snug but not tight.", ok: true}
+        - {who: 환자에게, icon: me, en: "Your trach flange is secured with ties kept snug to a one-finger breadth.", ok: false, fix: "I'm tying the strap so it's snug but comfortable around your neck."}
+      why: "의료진끼리는 flange나 one-finger breadth 같은 말로 정확하게 정도를 전해요. 환자에게는 용어가 낯설고 목에 뭔가 걸린 느낌만 커져요. 어떻게 묶는지와 편안한지를 쉬운 말로 알려 줘요."
+- situation: "기관절개 부위 드레싱·피부"
+  items:
+    - kind: slider
+      words: [w-redness, w-skin]
+      cue: "Nurse: \"The skin around the stoma is a little pink, with no warmth, no pain, and no drainage.\""
+      scale: [chart it and keep watching, change the dressing now, call the provider right away]
+      answerAt: 0
+      why: "경미하게 분홍빛이고 열감·통증·삼출물이 없으면 기록하고 피부를 깨끗하고 건조하게 유지하면서 계속 지켜봐요. 발적이 퍼지거나 열감·악취·고름 같은 삼출물이 생기면 그때 의료진에게 알려요."
+      example: "The redness is mild, so I'll chart it and keep watching."
+      exKo: "발적이 경미해서 기록해 두고 계속 지켜볼게요."
+    - kind: context
+      words: [w-drainage]
+      word: drainage
+      ko: 삼출물
+      scenes:
+        - {who: 인계, icon: board, en: "Scant serous drainage at the stoma, no odor.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "There's some drainage on the old dressing. Can you grab a new one?", ok: true}
+        - {who: 환자에게, icon: me, en: "You have serosanguineous drainage from the peristomal wound.", ok: false, fix: "A little fluid is coming from around the opening, so I'm putting on a fresh dressing."}
+      why: "의료진끼리는 serous나 peristomal 같은 말로 삼출물의 성질과 위치를 정확하게 전해요. 환자에게는 용어가 어렵고 상처가 심한 것처럼 들려요. 무엇이 보이고 무엇을 하는지만 쉬운 말로 알려 줘요."
+- situation: "예상 어려운 기도 준비"
+  items:
+    - kind: slider
+      words: [w-difficult, w-bougie, w-backup]
+      cue: "Colleague: \"He has a short neck, a small mouth opening, and a big tongue.\""
+      scale: [use the standard setup, add a bougie, bring the full difficult airway cart]
+      answerAt: 2
+      why: "목이 짧고 입이 잘 안 벌어지고 혀가 크면 어려운 기도를 예상해야 해요. 부지 하나로 끝내지 않고 비디오 후두경, 성문상 기도기, 구조 장비까지 갖춘 어려운 기도 카트와 A·B·C 계획을 준비해요."
+      example: "I expect a difficult airway, so let's bring the full cart."
+      exKo: "어려운 기도가 예상되니 카트를 통째로 가져와요."
+    - kind: context
+      words: [w-backup]
+      word: backup
+      ko: 예비
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "I'll bring the backup airway gear before we start.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Can you grab the backup supraglottic airway too?", ok: true}
+        - {who: 가족에게, icon: me, en: "We have staged a backup SGA and a front-of-neck access kit in case of a CICO.", ok: false, fix: "We have extra equipment ready just in case, which is routine for a tricky airway."}
+      why: "의료진끼리는 SGA, CICO 같은 약어로 준비 상태를 한 줄에 전해요. 가족에게는 약어가 무슨 뜻인지 알 수 없고 큰일이 난 것처럼 들려요. 여분의 장비가 준비돼 있다는 것만 쉬운 말로 알려 줘요."

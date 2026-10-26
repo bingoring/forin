@@ -1,0 +1,168 @@
+# 문장 수정. 키는 "상황.문장". blank: [정답, 오답 3개] (정답 자리는 옛 자리를 따른다). words_remove/words_add는 태그 증감.
+"0.0": {decoy: "his pillow"}
+"0.2": {words_remove: [w-put]}
+"0.5": {words_remove: [w-tell]}
+
+"1.1": {dKo: ["백에 있는 농도가 펌프와 일치하는지 약사에게 물어봐요.", "백에 있는 농도가 펌프와 일치하는지 수간호사에게 보고해요."],
+        why: "Let's confirm은 백의 표시와 펌프 설정을 맞대어 보자는 제안이에요. 고위험 약은 두 사람이 각자 따로 확인하는 것이 원칙이에요."}
+"1.2": {ko: "혈압은 제가 볼 테니 용량을 적정해 주세요.", dKo: ["혈압은 제가 볼 테니 펌프 화면은 같이 읽어 주세요.", "혈압은 제가 볼 테니 용량을 따로 설명해 주세요."], decoy: "his temperature"}
+"1.3": {dKo: ["펌프에 25로 뜨니까 그 숫자를 인계에 적어요.", "펌프에 25로 뜨니까 그 숫자는 크네요."], words_remove: [w-number, w-check], blank: [number, battery, cable, clamp]}
+"1.4": {blank: [stable, unstable, low, weak]}
+"1.5": {dKo: ["혈압이 떨어지면 저를 불러주세요, 프로포폴이 혈압을 낮추거든요.", "혈압이 떨어지면 저를 불러주세요, 제가 바로 옆 병상에 있을게요."]}
+
+"2.0": {decoy: "his cough"}
+"2.3": {words_remove: [w-give]}
+"2.5": {ko: "이 진통 우선 지시를 나머지 팀에게도 전달할게요.",
+        chunks: ["I'll pass", "this analgesia-first order", "along", "to the rest of the team", "."],
+        dKo: ["이 진통 우선 지시를 다음 근무조에게도 전달할게요.", "이 진통 우선 지시를 약사에게도 전달할게요."]}
+
+"3.0": {ko: "오늘 목표는 가벼운 진정, 대략 0에서 마이너스 1이에요.",
+        dKo: ["어제 목표는 가벼운 진정, 대략 0에서 마이너스 1이었어요.", "이틀 뒤 목표는 가벼운 진정, 대략 0에서 마이너스 1이에요."]}
+"3.2": {blank: [safer, cleaner, warmer, faster]}
+"3.3": {decoy: "this visiting plan"}
+"3.4": {blank: [drowsy, alert, awake, dizzy]}
+"3.5": {en: "Light sedation isn't the same as a coma, and he can still wake up when we talk to him.",
+        ko: "가벼운 진정은 혼수와 달라요, 말을 걸면 여전히 깨어날 수 있어요.",
+        chunks: ["Light sedation isn't", "the same as a coma", ", and he can still wake up", "when we talk to him", "."],
+        words: [w-light, w-sedation, w-coma, w-wake],
+        why: "isn't the same as …는 두 상태를 구분해 안심시키는 모양이에요. when we talk to him을 붙여 말을 걸면 깨어난다는 구체적인 근거를 줘요.",
+        dKo: ["가벼운 진정은 수술과 달라요, 말을 걸면 여전히 깨어날 수 있어요.", "가벼운 진정은 혼수와 달라요, 만지면 여전히 깨어날 수 있어요."],
+        blank: [wake, walk, work, wait]}
+
+"4.1": {ko: "산소포화도랑 호기말 이산화탄소를 지켜봐요.",
+        dKo: ["산소포화도랑 호기말 이산화탄소 센서를 먼저 붙여요.", "산소포화도랑 호기말 이산화탄소 알람 범위를 맞춰요."]}
+"4.2": {dKo: ["혹시 모르니 기도 확보 장비가 어디 있는지 알려 주세요.", "혹시 모르니 기도 확보 장비 점검표를 봐 두세요."], decoy: "the cleaning supplies", blank: [equipment, schedule, uniform, invoice]}
+"4.3": {blank: [shallow, deep, rapid, wet]}
+"4.4": {dKo: ["백마스크는 침상 옆 산소에 연결해요.", "백마스크는 침상 옆에 있는지 봐 둬요."], blank: [keep, label, wrap, wash], decoy: "the suction canister"}
+"4.5": {words_remove: [w-tell], blank: [listening, writing, tasting, smelling]}
+
+"5.1": {dKo: ["안전하게 전용 루멘을 먼저 플러시해요.", "안전하게 전용 루멘에 라벨을 붙여요."], words_remove: [w-give]}
+"5.2": {dKo: ["시작하기 전에 호환성 표를 약사와 같이 볼게요.", "시작하기 전에 호환성 표가 최신판인지 볼게요."], blank: [compatibility, orientation, destination, vaccination]}
+"5.3": {dKo: ["이 라인에는 이미 네 가지가 들어가고 있으니 짝마다 확인해봐요.", "이 라인에는 이미 세 가지가 들어가고 있으니 라인마다 이름표를 붙여요."], decoy: "each label"}
+"5.4": {chunks: ["If it's not compatible", ", we'll run it", "through", "a separate access", "."],
+        dKo: ["호환이 안 되면 약사에게 대체 약을 물어봐요.", "호환이 안 되면 책임간호사에게 보고해요."]}
+
+"6.1": {blank: [rate, room, paperwork, chart]}
+"6.4": {ko: "한 번에 크게 바꾸지 말고 조금씩 적정해요.",
+        chunks: ["Let's", "titrate", "in small steps", "instead of one big jump", "."],
+        dKo: ["한 번에 크게 바꾸지 말고 조금씩 바꾼 값을 남겨요.", "한 번에 크게 바꾸지 말고 조금씩 바꿀 폭을 정해요."]}
+
+"7.0": {words_remove: [w-give]}
+"7.1": {ko: "적정하면서 서맥과 저혈압을 지켜봐요.",
+        dKo: ["적정하기 전에 심전도와 혈압 커프를 연결해요.", "적정하면서 서맥·저혈압 알람 기준을 맞춰 둬요."],
+        blank: [bradycardia, tachypnea, hyperthermia, hypoglycemia]}
+"7.2": {blank: [follow, refuse, resist, reverse]}
+"7.3": {ko: "첫 한 시간 동안 심박수를 면밀히 지켜봐요.",
+        dKo: ["첫 한 시간 동안 심박수 알람 소리를 키워 둬요.", "첫 한 시간 동안 심박수 화면을 크게 띄워요."], decoy: "his skin color"}
+"7.5": {dKo: ["심박수가 너무 떨어지면 멈출 기준을 붙일게요.", "심박수가 너무 떨어지면 주입량을 차트에 적을게요."], blank: [pause, prime, prepare, flush]}
+
+"8.0": {blank: [still, never, seldom, barely]}
+"8.1": {dKo: ["소량 볼루스를 추가하기 전에 날록손 위치를 확인해요.", "소량 볼루스를 추가하되 호흡수 알람을 켜요."], decoy: "his IV site"}
+"8.3": {chunks: ["Let's reassess", "his pain score", "after", "this next dose", "."]}
+"8.4": {words_remove: [w-tell], blank: [surprised, injured, exposed, restrained]}
+"8.5": {dKo: ["아편유사제는 통증을 줄이지만 너무 빨리 올리면 호흡이 거칠어질 수 있어요.", "아편유사제는 통증을 줄이지만 너무 빨리 올리면 잠이 너무 깊어질 수 있어요."], blank: [breathing, talking, blinking, hearing]}
+
+"9.0": {blank: [triglycerides, ketones, eosinophils, platelets]}
+"9.1": {dKo: ["젖산을 확인하려고 동맥혈 채혈을 준비해요.", "젖산을 확인하고 산증이면 팀에 공유해요."], blank: [acidosis, alkalosis, syndrome, rhythm], decoy: "a glucose"}
+"9.3": {dKo: ["이 약을 쓰는 동안 매시간 중성지방 수치를 추적해봐요.", "이 약을 쓰는 동안 매일 칼륨 수치를 추적해봐요."], blank: [trend, tweak, trim, tame]}
+"9.5": {words_remove: [w-long]}
+
+"10.0": {dKo: ["자발각성시험을 위해 진정을 멈출 시각을 정할게요.", "자발호흡시험을 위해 진정을 잠시 멈출게요."]}
+"10.1": {words_remove: [w-pair], blank: [pair, compare, confuse, contrast]}
+"10.2": {dKo: ["초조해하거나 자가발관하지 않도록 튜브 고정을 점검해요.", "초조해하거나 자가발관하지 않도록 침상 옆에 한 명 더 불러요."], blank: [agitated, drowsy, dizzy, nauseated], decoy: "or pull his gown"}
+"10.4": {en: "Once we finish the trial, we'll restart his medicine if he needs it.",
+         ko: "시험이 끝나면 필요할 때 약을 다시 시작해 드릴게요.",
+         chunks: ["Once we finish", "the trial", ", we'll restart his medicine", "if he needs it", "."],
+         words: [w-finish, w-trial, w-restart, w-medicine, w-need],
+         tag: "재시작 조건", icon: pill,
+         why: "Once …는 앞 일이 끝난 뒤라는 시점이고, if he needs it으로 필요할 때만 다시 시작한다는 조건을 달아요. 무조건 곧 되돌려 놓겠다는 약속 대신 상태를 보고 정한다는 말이에요.",
+         decoy: "by the wall",
+         dKo: ["시험이 끝나면 필요할 때 모니터를 다시 켜 드릴게요.", "시험이 끝나면 필요할 때 약을 다시 설명해 드릴게요."],
+         blank: [restart, reject, retype, retire]}
+"10.5": {ko: "잠깐 스스로 깰 수 있는지 확인하는 거라고 환자분께 말씀드릴게요.",
+         dKo: ["잠깐 스스로 깰 수 있는지 확인하는 거라고 가족에게 말씀드릴게요.", "잠깐 스스로 걸을 수 있는지 확인하는 거라고 환자분께 말씀드릴게요."],
+         words_remove: [w-tell]}
+
+"11.2": {blank: [comfort, appetite, hearing, posture]}
+"11.3": {decoy: "and lean on his family first"}
+
+"12.1": {words_remove: [w-second], dKo: ["프로포폴을 더 올리기 전에 중성지방 수치를 봐요.", "프로포폴을 더 올리는 대신 두 번째 약제를 팀과 상의해요."], blank: [pushing, pausing, picking, peeling], decoy: "instead of waiting overnight"}
+"12.0": {blank: [tolerant, allergic, anemic, diabetic]}
+"12.2": {dKo: ["약제를 조합하면 더 짧은 시간에도 조절이 나아질 수 있어요.", "약제를 조합하면 더 낮은 용량으로도 잠이 길어질 수 있어요."]}
+"12.3": {blank: [doubled, halved, dropped, held],
+         why: "has doubled는 이미 두 배가 되었다는 현재완료 모양이에요. since yesterday로 언제부터인지를, still not settled의 still이 올렸는데도 여전히라는 뜻을 더해요."}
+
+"13.0": {words_remove: [w-tell], dKo: ["남편분이 술을 드셨던 것을 알려주셔서 다행이에요.", "남편분이 약을 드셨던 것을 알려주셔서 감사해요."]}
+"13.2": {dKo: ["금단 징후가 보이면 아내분께도 알려 달라고 할게요.", "금단 징후가 언제 나오는지 아내분께 설명할게요."], blank: [withdrawal, allergy, pregnancy, jaundice], decoy: "for allergy signs"}
+"13.3": {en: "Being sedated isn't the same as a coma, and he can wake up as we lighten it.",
+         ko: "진정 상태는 혼수와 달라요, 약을 줄여 가면 깨어나실 수 있어요.",
+         chunks: ["Being sedated isn't", "the same as a coma", ", and he can wake up", "as we lighten it", "."],
+         why: "isn't the same as …는 비슷해 보이는 두 상태를 구분해 걱정을 덜어 줘요. he can wake up은 can으로 깨어날 가능성만 말해, 지킬 수 없는 약속을 피해요.",
+         dKo: ["진정 상태는 수술과 달라요, 약을 줄여 가면 깨어나실 수 있어요.", "진정 상태는 혼수와 달라요, 몸을 돌리면 깨어나실 수 있어요."]}
+"13.4": {ko: "진정은 차분하게 해 주지만, 통증은 진통제로 따로 다뤄요.",
+         dKo: ["진정은 차분하게 해 주지만, 통증은 의사가 따로 다뤄요.", "진정은 차분하게 해 주지만, 구역은 구역약으로 따로 다뤄요."],
+         blank: [medicine, hospital, mattress, bathtub]}
+"13.6": {en: "If you hear his monitor alarm, it may just be a sensor slipping, but we'll come and check.",
+         ko: "모니터 알람이 울리면 센서가 살짝 빠진 것일 수도 있지만, 저희가 와서 확인할게요.",
+         chunks: ["If you hear", "his monitor alarm", ", it may just be", "a sensor slipping", ", but we'll come and check", "."],
+         words: [w-monitor, w-alarm, w-sensor],
+         why: "it may just be …의 may는 가능성만 말하는 완충이에요. but we'll come and check으로 알람을 가볍게 넘기지 않고 직접 와서 본다고 약속해요.",
+         dKo: ["모니터 알람이 울리면 배터리가 살짝 나간 것일 수도 있지만, 저희가 와서 확인할게요.", "모니터 알람이 울리면 센서가 살짝 빠진 것일 수도 있지만, 간호사실로 와서 알려 주세요."],
+         blank: [sensor, curtain, window, ceiling]}
+
+"14.0": {blank: [worsen, lower, measure, improve]}
+"14.1": {ko: "목표 쪽으로 진정을 가볍게 하고 다시 평가해봐요.",
+         dKo: ["목표 쪽으로 진정을 가볍게 하기 전에 통증부터 살펴요.", "목표 쪽으로 진정을 가볍게 하고 가족에게 알려요."], decoy: "and call his wife"}
+
+"15.1": {dKo: ["지금 프로포폴을 멈추고 남은 약은 반납해야 해요.", "지금 프로포폴을 멈춘 시각을 남겨야 해요."], blank: [switch, split, share, shrink]}
+"15.2": {dKo: ["CK, 칼륨, 심장 리듬 검사 용기를 즉시 준비해요.", "CK, 칼륨, 심장 리듬 결과를 즉시 인계해요."]}
+"15.3": {words_remove: [w-trend]}
+"15.4": {dKo: ["프로포폴을 멈추는 동안 대체 약제를 약국에 요청해요.", "프로포폴을 멈추는 동안 대체 약제 라벨을 붙여요."], decoy: "the backup pump"}
+
+"16.0": {ko: "무호흡이에요 — 진정제를 멈추고 지금 백마스크로 환기해 주세요.",
+         dKo: ["호흡이 아주 느려요 — 진정제를 멈추고 지금 백마스크로 환기해 주세요.", "산소포화도가 떨어져요 — 진정제를 멈추고 지금 백마스크로 환기해 주세요."],
+         blank: [apneic, athletic, artistic, academic]}
+"16.1": {dKo: ["맥박이 빨라지고 있어요, 수액을 시작하고 도움을 요청해요.", "소변이 줄고 있어요, 수액을 시작하고 도움을 요청해요."]}
+"16.2": {dKo: ["기도를 확보하기 전에 흡인기를 켜 줘요.", "기도를 확보하고 산소포화도를 다시 봐 줘요."]}
+"16.3": {en: "Turn off the sedation drip until we're sure he's stable.",
+         ko: "안정된 게 확실할 때까지 진정제 주입을 꺼 두세요.",
+         chunks: ["Turn off", "the sedation drip", "until we're sure", "he's stable", "."],
+         words: [w-sedation, w-drip, w-stable],
+         why: "turn off는 전원이나 흐름을 끈다는 구동사예요. the sedation drip이라고 어느 주입인지 밝혀, 수액이나 승압제가 아니라 진정제 주입만 끄라는 뜻이 돼요.",
+         dKo: ["진정제 주입을 끈 시각을 차트에 적어 두세요.", "진정제 주입을 끈 펌프에 중단 표시를 붙여 두세요."]}
+"16.4": {dKo: ["손이 더 필요해요, 응급 카트를 가져와야 해요.", "손이 더 필요해요, 보호자는 나가 주세요."]}
+
+"17.0": {dKo: ["수술하는 동안에는 반드시 깊은 진정을 확보해야 해요.", "마비된 동안에는 반드시 눈 보호를 확보해야 해요."], blank: [paralyzed, punctual, polite, puzzled]}
+"17.2": {dKo: ["마비제를 줄 때마다 눈꺼풀 테이프가 붙었는지 먼저 확인해요.", "마비제를 준 뒤에는 신경자극기로 반응을 확인해요."], decoy: "before every shift change"}
+"17.3": {dKo: ["마비된 채로 의식이 있는 건 흔하니 절대 그 위험을 감수하지 않아요.", "마비된 채로 의식이 있는 건 끔찍하니 절대 진정 펌프를 비워 두지 않아요."]}
+"17.4": {en: "Since RASS won't show much while he's paralyzed, let's add BIS monitoring.",
+         ko: "마비된 동안에는 RASS로 잘 드러나지 않으니 BIS 감시를 더해요.",
+         chunks: ["Since RASS", "won't show much", "while he's paralyzed", ", let's add", "BIS monitoring", "."],
+         words: [w-rass, w-show, w-paralyze, w-monitor],
+         tag: "감시 추가", icon: monitor,
+         why: "since는 이유를 앞에 두는 접속사예요. RASS는 움직임에 기대는 척도라 마비된 환자에게는 드러나는 것이 적어서, BIS 같은 처리 뇌파 감시를 병원 프로토콜에 따라 더해요.",
+         dKo: ["마비된 동안에는 RASS를 매기기 오래 걸리니 BIS 감시를 더해요.", "마비된 동안에는 RASS가 차트에 없으니 BIS 감시를 더해요."]}
+
+"18.0": {words_remove: [w-hold], dKo: ["라인을 잡으려고 해요 — 손을 잡아주고 안전하게 지켜주세요.", "침대에서 나오려고 해요 — 손을 잡아주고 안전하게 지켜주세요."], blank: [reaching, reading, resting, rocking]}
+"18.1": {words_remove: [w-give], dKo: ["지금 볼루스를 준비하고 처방을 대조해요.", "지금 볼루스 용량을 의사와 다시 맞춰요."], blank: [bolus, bonus, bullet, balloon]}
+"18.2": {decoy: "the bed rails"}
+"18.3": {ko: "환자가 안정될 때까지 두 명이 침상 옆에 있어야 해요.",
+         dKo: ["환자가 안정될 때까지 세 명이 침상 옆에 있어야 해요.", "환자가 안정될 때까지 보호자는 잠시 물러나 주세요."]}
+"18.4": {words_remove: [w-tell], blank: [light, heavy, bright, tight],
+         why: "This tells us는 어떤 일이 무엇을 알려 준다는 모양이에요. too light for this moment로 진정이 늘 얕은 것이 아니라 지금 상황에 부족했다는 뜻을 한정해요."}
+"18.5": {words_remove: [w-tell]}
+
+"19.0": {dKo: ["혈압이 70대예요 — 덱스메데토미딘을 멈춰주세요.", "호흡수가 8회예요 — 덱스메데토미딘을 멈춰주세요."]}
+"19.1": {words_remove: [w-give], dKo: ["아트로핀과 수액을 줄 라인이 잘 나오는지 살펴요.", "아트로핀과 수액을 준비하고 처방을 대조해요."]}
+"19.2": {dKo: ["제가 주입을 멈추는 동안 의사가 오면 안내해요.", "제가 주입을 멈추는 동안 의사 호출 번호를 찾아봐요."]}
+"19.3": {dKo: ["심박수가 올라와도 덱스메데토미딘은 처방을 확인하고 다시 켜요.", "덱스메데토미딘을 멈춘 시각을 펌프 옆 차트에 적어요."]}
+"19.4": {dKo: ["수액이 다 들어가면 몇 분 안에 새 백으로 바꿔요.", "수액은 계속 주고 혈압 커프는 자동 측정으로 맞춰요."], decoy: "his oxygen level"}
+
+"20.0": {dKo: ["여러 약제를 써도 통증이 줄지 않아요 — 단계를 높여봐요.", "약제 하나로는 진정되지 않아요 — 단계를 높여봐요."]}
+"20.1": {ko: "손이 더 필요하고 다중 방식 진정 계획이 필요해요.",
+         dKo: ["손이 더 필요하고 보호자 설명이 필요해요.", "손이 더 필요하고 다중 방식 진정 평가가 필요해요."],
+         blank: [multimodal, multiyear, multilevel, multicolor]}
+"20.2": {ko: "지시를 받는 동안 환자와 라인들을 안전하게 지켜주세요.",
+         dKo: ["의사가 오는 동안 환자와 라인들을 안전하게 지켜주세요.", "보안팀이 오는 동안 환자와 라인들을 안전하게 지켜주세요."], decoy: "and the monitor"}
+"20.3": {dKo: ["장비를 넘어뜨리지 않도록 복도를 정리해요.", "장비를 넘어뜨리지 않도록 카트 바퀴를 잠가요."]}
+"20.5": {dKo: ["환자가 침대에서 나오기 전에 보안팀과 의사를 불러주세요.", "라인이 빠지기 전에 보안팀과 의사를 불러주세요."]}

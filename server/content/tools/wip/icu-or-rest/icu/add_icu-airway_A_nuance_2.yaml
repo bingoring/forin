@@ -1,0 +1,143 @@
+- situation: "삽관 전 전산소화·apneic 산소"
+  items:
+    - kind: slider
+      words: [w-preoxygenate, w-sat]
+      cue: "Colleague: \"He's still at 88 percent and breathing hard on the mask.\""
+      scale: [push the drugs now, keep preoxygenating, take the mask off]
+      answerAt: 1
+      why: "산소포화도가 아직 낮은 채로 약을 넣으면 삽관 중 금방 더 떨어져요. 포화도가 충분히 오를 때까지 전산소화를 이어 가고, 마스크를 벗기면 예비량을 쌓지 못해요."
+      example: "His sats are still low, so we keep preoxygenating."
+      exKo: "산소포화도가 아직 낮아서 전산소화를 계속해요."
+    - kind: context
+      words: [w-oxygen]
+      word: oxygen
+      ko: 산소
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "I'll keep the nasal cannula on so he gets oxygen during the attempt.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Can you turn up the oxygen while I set up?", ok: true}
+        - {who: 환자에게, icon: me, en: "We are maximizing your oxygen reserve with a non-rebreather mask at high flow.", ok: false, fix: "This mask gives you extra oxygen so breathing is easier when we start."}
+      why: "의료진끼리는 reserve나 non-rebreather 같은 말로 상태와 장비를 짧게 말해요. 환자에게는 용어가 낯설어 무슨 일이 일어나는지 알 수 없어요. 마스크가 숨쉬기를 편하게 해 준다고 쉬운 말로 알려 줘요."
+- situation: "삽관 전후 혈역학 붕괴 대비"
+  items:
+    - kind: pair
+      words: [w-fluid, w-bolus, w-pushdose, w-pressor]
+      pairs: [["fluid", "bolus"], ["push-dose", "pressor"]]
+      decoys: ["the sedation"]
+      why: "삽관 전후 저혈압에는 용적이 부족해 보이면 수액 볼루스(fluid bolus)를 주고, 혈압이 급히 떨어지면 소량을 주사기로 바로 주입하는 승압제(push-dose pressor)를 써요."
+    - kind: context
+      words: [w-hypotension]
+      word: hypotension
+      ko: 저혈압
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "Peri-intubation hypotension is common, so the pressor is ready.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Watch for hypotension right after the induction drug.", ok: true}
+        - {who: 가족에게, icon: me, en: "He may develop post-induction hypotension requiring vasopressor support.", ok: false, fix: "His blood pressure may drop after the sleeping medicine, so we're ready to treat it right away."}
+      why: "의료진끼리는 post-induction이나 vasopressor 같은 말로 짧게 말해요. 가족에게는 용어가 어렵고 무슨 위험인지 알 수 없어요. 혈압이 떨어질 수 있고 바로 대비돼 있다는 것만 쉬운 말로 알려 줘요."
+- situation: "화상·부종 기도 조기 확보 판단"
+  items:
+    - kind: slider
+      words: [w-hoarse, w-stridor, w-call]
+      cue: "Nurse: \"He has soot around his nose, a hoarse voice, and stridor.\""
+      scale: [reassess in an hour, ask anesthesia to see him later, call anesthesia now]
+      answerAt: 2
+      why: "그을음, 쉰 목소리, 협착음은 기도 화상으로 곧 부어오를 수 있다는 경고예요. 부종은 빠르게 진행해 기도를 막을 수 있으니 기다리지 않고 마취과를 바로 불러 기도 확보를 의논해요."
+      example: "Soot and stridor mean we call anesthesia right now."
+      exKo: "그을음과 협착음이 있으면 지금 바로 마취과를 불러요."
+    - kind: context
+      words: [w-stridor]
+      word: stridor
+      ko: 협착음
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "He has stridor at rest and his voice is hoarse.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Do you hear that stridor when he breathes in?", ok: true}
+        - {who: 가족에게, icon: me, en: "Your husband has inspiratory stridor with impending airway compromise.", ok: false, fix: "He's making a high noisy sound when he breathes in, which means his airway is getting narrow."}
+      why: "의료진끼리는 inspiratory stridor와 airway compromise처럼 짧고 정확한 말로 위험을 알려요. 가족에게는 같은 말이 무슨 뜻인지 모르고 갑자기 겁만 줘요. 어떤 소리가 나는지와 무슨 뜻인지를 쉬운 말로 풀어 줘요."
+- situation: "기관절개관 교체 보조"
+  items:
+    - kind: slider
+      words: [w-desaturate]
+      cue: "Colleague: \"His sat dropped to 86 during the trach change.\""
+      scale: [keep going quietly, pause and give oxygen, take the cuff down]
+      answerAt: 1
+      why: "교체 중 산소포화도가 떨어지면 서두르지 말고 멈춰서 산소를 먼저 주고 상태를 안정시켜요. 조용히 계속하면 더 떨어질 수 있고, 커프를 내리는 것은 이 상황의 해결책이 아니에요."
+      example: "He's desaturating, so we pause and give oxygen."
+      exKo: "산소포화도가 떨어지고 있어서 멈추고 산소를 줘요."
+    - kind: context
+      words: [w-first]
+      word: first
+      ko: 처음
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "This is his first trach change, so keep the airway cart close.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Who is going to hold the tube first?", ok: true}
+        - {who: 환자에게, icon: me, en: "For your first change, the obturator and a same-size backup trach are staged at the bedside.", ok: false, fix: "This is the first time we're changing it, so we'll go slowly and tell you each step."}
+      why: "의료진끼리는 obturator나 same-size backup처럼 준비 목록을 그대로 말해도 돼요. 환자에게는 용어가 낯설고 걱정만 커져요. 처음이라 천천히 하고 단계마다 설명한다고 쉬운 말로 알려 줘요."
+- situation: "특수 튜브 관리"
+  items:
+    - kind: slider
+      words: [w-placement, w-lung, w-verify]
+      cue: "Colleague: \"The bronchoscope confirms the tube position, and both lungs sound right.\""
+      scale: [go ahead to surgery, adjust and recheck placement, pull the tube out]
+      answerAt: 0
+      why: "기관지경으로 위치가 확인되고 양쪽 폐 소리도 맞으면 위치가 맞는 거라 수술 준비를 이어 가요. 위치가 의심스러울 때만 조정해서 다시 확인하고, 튜브를 빼는 것은 이 상황에 맞지 않아요."
+      example: "Placement is confirmed, so we can go ahead to surgery."
+      exKo: "위치가 확인됐으니 수술로 진행해도 돼요."
+    - kind: context
+      words: [w-lung]
+      word: lung
+      ko: 폐
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "Each lumen ventilates a different lung.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Can you listen to each lung while I clamp?", ok: true}
+        - {who: 환자에게, icon: me, en: "We will use one-lung ventilation to collapse the operative lung.", ok: false, fix: "A special tube lets us rest one lung while the surgeon works, and you'll be asleep."}
+      why: "의료진끼리는 one-lung ventilation이나 operative lung처럼 짧고 정확한 말을 써요. 환자에게는 폐를 접는다는 말이 겁나고 낯설어요. 수술 중 한쪽 폐를 쉬게 하고 환자는 잠들어 있다고 쉽게 풀어 줘요."
+- situation: "기관절개 발성밸브 적용"
+  items:
+    - kind: slider
+      words: [w-distress, w-valve]
+      cue: "Colleague: \"With the valve on, he's gasping and using his neck muscles.\""
+      scale: [coach him to breathe slowly, take the valve off now, wait one more minute]
+      answerAt: 1
+      why: "밸브를 달고 숨을 헐떡이며 목 근육까지 쓰면 호흡곤란이에요. 참고 견디게 하거나 더 기다리지 말고 밸브를 바로 빼요. 밸브는 의식이 또렷하고 스스로 잘 숨쉴 때만 써요."
+      example: "He is struggling, so I take the valve off right away."
+      exKo: "힘겨워해서 바로 밸브를 빼요."
+    - kind: context
+      words: [w-valve]
+      word: valve
+      ko: 밸브
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "Confirm the cuff is deflated before placing the speaking valve.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Can you hand me the valve? He wants to try talking.", ok: true}
+        - {who: 가족에게, icon: me, en: "A one-way speaking valve redirects exhaled airflow through the upper airway and vocal cords.", ok: false, fix: "It's a small cap that lets air go out through his mouth so he can try to talk."}
+      why: "의료진끼리는 one-way나 exhaled airflow처럼 작동 원리를 짧게 말해도 돼요. 가족에게는 원리가 어렵고 무슨 장치인지 와닿지 않아요. 무엇을 하는 작은 장치인지를 쉬운 말로 알려 줘요."
+- situation: "흡인성 폐렴 예방 기도관리"
+  items:
+    - kind: pair
+      words: [w-elevate, w-swab]
+      pairs: [["elevate", "the head of the bed"], ["swab", "the mouth"]]
+      decoys: ["the infusion pump"]
+      why: "흡인을 줄이려면 침대 머리를 높이고(elevate the head of the bed), 구강간호로 입안을 면봉으로 닦아(swab the mouth) 인공호흡기 폐렴 위험을 낮춰요."
+    - kind: context
+      words: [w-aspiration]
+      word: aspiration
+      ko: 흡인
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "I keep the head of the bed up to reduce aspiration.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Regular mouth care helps lower his aspiration risk.", ok: true}
+        - {who: 가족에게, icon: me, en: "His aspiration risk is high, so we've instituted head-of-bed elevation per the VAP bundle.", ok: false, fix: "We keep his head up so spit doesn't slip down into his lungs and cause an infection."}
+      why: "의료진끼리는 VAP bundle이나 head-of-bed elevation 같은 말로 예방 조치를 짧게 전해요. 가족에게는 약어가 낯설고 위험하다는 말만 남아요. 왜 머리를 높이는지를 쉬운 말로 풀어 줘요."
+- situation: "기도 응급 카트 숙지·소통"
+  items:
+    - kind: pair
+      words: [w-call, w-manage]
+      pairs: [["call", "for help"], ["manage", "the medications"]]
+      decoys: ["the drawer"]
+      why: "응급 상황에서는 역할을 미리 나눠요. 도움이 필요하면 누가 부를지 정해 두고(call for help), 약물은 한 사람이 맡아 관리해요(manage the medications)."
+    - kind: context
+      words: [w-drill]
+      word: drill
+      ko: 훈련
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "Let's run a drill so no one hesitates in a real crisis.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Are you free for the airway drill after shift?", ok: true}
+        - {who: 가족에게, icon: me, en: "That was a mock airway drill using high-fidelity simulation, ma'am.", ok: false, fix: "That was just a practice drill, so everyone knows what to do if there's an emergency."}
+      why: "의료진끼리는 high-fidelity simulation처럼 훈련 방식을 정확히 말해도 돼요. 가족에게는 같은 말이 낯설고 갑자기 큰일이 난 듯 들려요. 그냥 연습이었다고 쉬운 말로 알려 줘요."

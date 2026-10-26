@@ -1,0 +1,90 @@
+0:
+  s:
+  - {tag: 장비 점검, icon: gear, why: "I'll 뒤에 동사 둘을 and로 이으면 점검할 항목이 둘이라는 걸 미리 알려 줘요.", decoy: "on the monitor", dk: ["후두경 날을 테스트하고 튜브 커프를 확인할게요", "후두경 불빛을 테스트하고 튜브 길이를 확인할게요"], ans: cuff, opts: [clamp, tape, label]}
+  - {tag: 상태 보고, icon: check, why: "\"set up\"과 \"working\"을 and로 이으면 설치와 작동을 따로 확인했다는 뜻이 돼요.", decoy: "near the door", dk: ["흡인기는 침상 곁에 설치돼 있고 충전됩니다", "흡인기는 침상 곁에 설치돼 있고 점검 중입니다"], ans: bedside, opts: [doorway, window, counter]}
+  - {tag: 준비 보고, icon: pill, why: "\"I've got …\"처럼 현재완료로 말하면 이미 챙겨 놓았다는 결과를 알려 줘요.", decoy: "from the pharmacy", dk: ["튜브 세 사이즈와 약물을 준비해 뒀어요", "튜브 두 사이즈와 장갑을 준비해 뒀어요"], ans: sizes, opts: [brands, colors, boxes]}
+  - {tag: 대비 설명, icon: shield, why: "\"in case\"는 쓰게 될지 모르지만 미리 대비한다는 이유를 짧게 붙여 줘요.", decoy: "right after use", dk: ["혹시 필요할 경우를 대비해 백밸브마스크를 바꿔 둘게요", "혹시 필요할 경우를 대비해 백밸브마스크를 닦아 둘게요"], ans: "bag-valve mask", opts: ["pulse oximeter", "face shield", stethoscope]}
+  - {tag: 위치 조정, icon: gear, why: "\"before we start\"로 시점을 먼저 밝히면 시작 전에 끝내 둘 일이라는 게 분명해져요.", decoy: "by the sink", dk: ["시작하기 전에 침대를 더 가까이 끌어다 놓을게요", "시작하기 전에 기도 카트를 더 천천히 끌어다 놓을게요"], ans: closer, opts: [slower, higher, faster]}
+  - {tag: 이상 보고, icon: bell, why: "\"Tell me if …\"는 지시보다 부탁으로 들려서 동료가 작은 이상도 부담 없이 말하게 해요.", decoy: "in the drawer", dk: ["트레이에 뭔가 젖어 보이면 말해 주세요", "트레이에 뭔가 이상한 냄새가 나면 말해 주세요"], ans: tray, opts: [cart, drawer, chart]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 삽관 물품을 꺼내고 점검하는 4문장 순서
+    why: 장비를 먼저 펼쳐 놓고, 불빛과 커프를 시험한 뒤, 흡인기까지 확인하고, 마지막에 이상이 보이면 말해 달라고 닫아요.
+    lines:
+    - {en: "We may need to intubate soon, so let's lay out the airway equipment.", icon: bell, ko: "곧 삽관할 수 있으니 기도 장비를 펼쳐 둬요", note: 준비}
+    - {en: "Once it's out, I'll test the laryngoscope light and check the cuff.", icon: gear, ko: "꺼내 놓으면 후두경 불빛과 커프를 확인할게요", note: 점검}
+    - {en: "After those checks, I'll confirm the suction is working at the bedside.", icon: check, ko: "그 점검 뒤에 침상 곁 흡인기가 작동하는지 볼게요", note: 확인}
+    - {en: "That's everything, so tell me if anything on the tray looks off.", icon: magnify, ko: "이게 전부예요, 트레이에 이상해 보이는 게 있으면 말해 주세요", note: 요청}
+1:
+  s:
+  - {tag: 약물 준비, icon: pill, why: "\"separate\" 한 단어로 두 약을 섞지 않고 따로 준비했다는 안전 이유가 전해져요.", decoy: "for each patient", dk: ["진정제와 근이완제를 각각 다른 상자에 나눠서 준비했어요", "진정제와 근이완제를 각각 다른 주사기에 나눠서 보관했어요"], ans: separate, opts: [spare, loose, large]}
+  - {tag: 라벨 확인, icon: pencil, why: "\"Each\"는 하나도 빠짐없이라는 뜻이고, 이름과 용량을 한 쌍으로 말해 둘 다 적혀 있음을 알려 줘요.", decoy: "in black ink", dk: ["각 약병에는 약물 이름과 용량이 표시돼 있어요", "각 상자에는 약물 이름과 용량이 표시돼 있어요"], ans: labeled, opts: [sealed, taped, covered]}
+  - {tag: 이중 확인, icon: check, why: "\"with you\"로 확인하는 사람을 둘로 말하면 혼자 판단하지 않고 같이 본다는 약속이 돼요.", decoy: "from the chart", dk: ["주입하기 전에 라벨을 같이 확인할게요", "주입하기 전에 약병을 같이 확인할게요"], ans: doses, opts: [vials, labels, bags]}
+  - {tag: 투여 순서, icon: pill, why: "\"first\"를 끝에 붙여 가장 먼저라는 순서를 말해요. 유도 약제가 나가고 근이완제가 뒤따라요.", decoy: "by the bed", dk: ["유도 약제가 먼저 투여되도록 표시돼 있어요", "유도 약제가 먼저 투여될 준비 중이에요"], ans: agent, opts: [label, tray, cart]}
+  - {tag: 순서 안내, icon: handshake2, why: "\"right after\"는 앞 일이 끝나자마자라는 뜻이라 두 약 사이 간격이 짧다는 걸 알려요.", decoy: "in the bag", dk: ["그 다음에 근이완제를 바로 확인해 드릴게요", "그 다음에 근이완제를 바로 읽어 드릴게요"], ans: paralytic, opts: [antibiotic, antacid, vitamin]}
+  - {tag: 농도 확인, icon: check, why: "\"double-check\"은 이미 본 것을 한 번 더 본다는 뜻이라 약 준비에서 흔한 안전 습관이에요.", decoy: "in the syringe", dk: ["시작하기 전에 라벨을 다시 한번 확인해요", "시작하기 전에 유통기한을 다시 한번 확인해요"], ans: concentration, opts: [temperature, brand, color]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 약물을 준비하고 확인한 뒤 건네는 4문장 순서
+    why: 약을 따로 준비하고, 라벨을 함께 읽어 확인한 다음, 유도 약제가 먼저 나가고 근이완제를 바로 건네는 순서예요.
+    lines:
+    - {en: "I've drawn up both drugs, each in its own syringe.", icon: pill, ko: "두 약을 각각 따로 주사기에 준비했어요", note: 준비}
+    - {en: "Each one is labeled, so let's read the names and doses together.", icon: pencil, ko: "라벨이 붙어 있으니 이름과 용량을 같이 읽어요", note: 확인}
+    - {en: "Once we both agree, the induction agent goes first.", icon: check, ko: "둘 다 맞다고 하면 유도 약제가 먼저 들어가요", note: 합의}
+    - {en: "I'll hand you the paralytic right after that.", icon: handshake2, ko: "그 직후에 근이완제를 건네드릴게요", note: 전달}
+2:
+  s:
+  - {tag: 체위 설명, icon: me, why: "\"for the best view\"로 목적을 붙이면 자세를 바꾸는 이유가 시야 확보라는 걸 환자도 알 수 있어요.", decoy: "to help him rest", dk: ["최선의 시야를 위해 옆으로 누운 자세로 눕혀 드릴게요", "최선의 안정을 위해 스니핑 자세로 눕혀 드릴게요"], ans: sniffing, opts: [recovery, lateral, seated]}
+  - {tag: 요청 확인, icon: speech, why: "\"how …\" 절로 물으면 예·아니오가 아니라 세기와 정도를 의사가 직접 말하게 이끌어요.", decoy: "for the next try", dk: ["BURP 압박을 언제 조정하길 원하는지 말씀해 주세요", "BURP 압박을 누가 조정하길 원하는지 말씀해 주세요"], ans: adjusted, opts: [recorded, measured, repeated]}
+  - {tag: 방향 지시, icon: compass, why: "방향 세 개를 쉼표로 이어 말하면 순서대로 한 번에 누르는 하나의 동작이라는 걸 알려 줘요.", decoy: "with both hands", dk: ["지금 연골에 천천히, 부드럽게, 일정하게 압박을 주세요", "지금 연골에 살살, 가볍게, 짧게 압박을 주세요"], ans: cartilage, opts: [forehead, shoulder, tongue]}
+  - {tag: 자세 준비, icon: me, why: "\"supported and aligned\"처럼 분사 둘을 이으면 이미 끝난 상태를 보고하는 말이 돼요.", decoy: "for the scan", dk: ["어깨를 지지하고 정렬해 뒀어요", "다리를 지지하고 정렬해 뒀어요"], ans: supported, opts: [shaved, cleaned, covered]}
+  - {tag: 조정 요청, icon: speech, why: "\"more … or less\"로 양쪽을 다 열어 두면 상대가 어느 쪽이든 편하게 말할 수 있어요.", decoy: "right now", dk: ["불빛을 더 밝게 하거나 덜 필요하면 알려 주세요", "흡인을 더 세게 하거나 덜 필요하면 알려 주세요"], ans: pressure, opts: [suction, light, space]}
+  - {tag: 시야 보고, icon: magnify, why: "\"can see\"처럼 지각 동사를 쓰면 보이는 대로 알리는 말이라 팀이 다음 단계를 준비해요.", decoy: "the chart", dk: ["이제 혀가 보여요", "이제 목젖이 보여요"], ans: cords, opts: [lips, nose, chin]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 삽관 시야를 확보하도록 돕는 4문장 순서
+    why: 자세를 먼저 잡고, 연골 압박을 주고, 압박 정도를 묻다가, 성대가 보이면 그 압박을 유지하는 순서예요.
+    lines:
+    - {en: "I'll place him in the sniffing position for the best view.", icon: me, ko: "최선의 시야를 위해 스니핑 자세로 눕혀 드릴게요", note: 자세}
+    - {en: "Once he's in it, I'll give backward, upward, rightward pressure on the cartilage.", icon: compass, ko: "그 자세가 되면 연골에 뒤로 위로 오른쪽으로 압박할게요", note: 압박}
+    - {en: "Tell me if you need more pressure or less to see the cords.", icon: speech, ko: "성대를 보려면 압박이 더 필요한지 덜 필요한지 말해 주세요", note: 조정}
+    - {en: "Once the cords are in view, I'll hold that pressure steady.", icon: magnify, ko: "성대가 보이면 그 압박을 그대로 유지할게요", note: 유지}
+3:
+  s:
+  - {tag: 위치 확인, icon: check, why: "\"sustained\"는 한두 번이 아니라 계속 이어지는 변화라는 뜻이라 확인의 근거가 돼요.", decoy: "by the doctor", dk: ["캡노그래피에서 색 변화가 지속되어 기도 위치를 설명했어요", "캡노그래피에서 색 변화가 지속되어 기도 위치를 보고했어요"], ans: color, opts: [sound, smell, weight]}
+  - {tag: 청진 소견, icon: stetho, why: "\"equal bilaterally\"는 양쪽이 같다는 말이라 튜브가 한쪽 폐로만 들어가지 않았다는 근거가 돼요.", decoy: "over the heart", dk: ["호흡음이 양측에서 동일하고 장 소리는 들리지 않아요", "호흡음이 아래쪽에서 동일하고 위 소리는 들리지 않아요"], ans: gastric, opts: [cardiac, bowel, nasal]}
+  - {tag: 검사 목적, icon: lab, why: "\"to check …\"처럼 to + 동사로 목적을 먼저 말하면 왜 이 검사를 하는지 동료가 바로 이해해요.", decoy: "with the team", dk: ["튜브 깊이를 기록하기 위해 흉부 엑스레이를 처방할게요", "튜브 깊이를 설명하기 위해 흉부 엑스레이를 처방할게요"], ans: depth, opts: [color, brand, label]}
+  - {tag: 결과 공유, icon: speech, why: "\"right away\"는 결과를 쌓아 두지 않고 곧바로 전한다는 뜻이라 팀의 판단이 빨라져요.", decoy: "on the board", dk: ["이 일정을 바로 팀과 공유할게요", "이 목록을 바로 팀과 공유할게요"], ans: results, opts: [plans, notes, rules]}
+  - {tag: 기록, icon: pencil, why: "\"Let's\"로 시작하면 지시가 아니라 같이 하자는 제안이라 동료가 부담 없이 따라와요.", decoy: "on the door", dk: ["알레르기를 차트에 기록해요", "체중을 차트에 기록해요"], ans: chart, opts: [bag, bed, room]}
+  - {tag: 고정 보고, icon: lock, why: "숫자와 단위를 붙여 말하면 깊이가 누구에게나 똑같이 읽혀서 교대 때 다시 확인하기 쉬워요.", decoy: "to the pillow", dk: ["튜브는 22센티미터에서 고정되고 끈으로 묶여 있어요", "튜브는 22센티미터에서 고정되고 홀더로 붙어 있어요"], ans: taped, opts: [stitched, glued, stapled]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 삽관 후 위치를 확인하고 알리는 4문장 순서
+    why: 캡노그래피로 먼저 확인하고, 청진으로 보강한 뒤, 고정과 엑스레이를 하고, 마지막에 팀에 공유하고 기록해요.
+    lines:
+    - {en: "I see sustained color change on the capnography.", icon: check, ko: "캡노그래피에서 색 변화가 계속 보여요", note: 확인}
+    - {en: "Along with that, breath sounds are equal on both sides.", icon: stetho, ko: "그와 함께 호흡음이 양쪽에서 같아요", note: 청진}
+    - {en: "With both of those checked, I'll tape the tube and order a chest X-ray.", icon: lab, ko: "둘 다 확인했으니 튜브를 고정하고 흉부 엑스레이를 처방할게요", note: 고정}
+    - {en: "Once the X-ray is back, I'll share it with the team and chart it.", icon: pencil, ko: "엑스레이가 나오면 팀에 공유하고 차트에 기록할게요", note: 공유}
+4:
+  s:
+  - {tag: 끈 고정, icon: gear, why: "\"snug but …\"처럼 but으로 두 조건을 이으면 너무 조이지도 느슨하지도 않게 하라는 균형을 말해요.", decoy: "near the stoma", dk: ["기관절개관 끈은 깔끔히 하되 손가락 하나 들어갈 공간은 남겨 둬요", "기관절개관 끈은 부드럽게 하되 손가락 하나 들어갈 공간은 남겨 둬요"], ans: snug, opts: [damp, bright, long]}
+  - {tag: 가습 이유, icon: bulb, why: "\"prevents … from -ing\" 구문은 무엇이 일어나지 않게 막는지를 한 문장에 담아요.", decoy: "in the room", dk: ["가습된 산소가 점막이 마르는 것을 막아 줘요", "가습된 산소가 목구멍이 마르는 것을 막아 줘요"], ans: Humidified, opts: [Filtered, Pressurized, Bottled]}
+  - {tag: 흡인 원칙, icon: shield, why: "\"only when\"이 붙으면 매번이 아니라 필요할 때만이라는 조건이 분명해져요.", decoy: "with the catheter", dk: ["기도를 확보해야 할 때만 재빨리 흡인해요", "기도를 확보해야 할 때만 꼼꼼히 흡인해요"], ans: gently, opts: [slowly, loudly, shortly]}
+  - {tag: 사전 설명, icon: speech, why: "\"let him know\"로 먼저 알리면 갑작스러운 흡인이 주는 놀람과 불안을 줄여요.", decoy: "for his family", dk: ["시작하기 전에 소독할 시간이라고 알려 드려요", "시작하기 전에 체위를 바꿀 시간이라고 알려 드려요"], ans: suction, opts: [bath, meal, rest]}
+  - {tag: 점검 주기, icon: calendar, why: "\"every shift\"는 근무 교대마다라는 뜻이라 인계할 때마다 끈 상태를 본다는 규칙을 한 구로 말해요.", decoy: "at the door", dk: ["매 근무마다 끈을 확인하고 더러우면 다시 묶어요", "매 근무마다 끈을 확인하고 젖었으면 다시 묶어요"], ans: shift, opts: [meal, visit, drink]}
+  - {tag: 물 확인, icon: bulb, why: "\"make sure\"는 직접 눈으로 보고 확인하는 행동을 말해서 \"괜찮다\"고 말할 근거가 돼요.", decoy: "on the wall", dk: ["가습기에 물이 새는지 확인해요", "가습기에 물이 맑은지 확인해요"], ans: enough, opts: [cold, warm, salty]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 기관절개관 일상 관리를 설명하는 4문장 순서
+    why: 끈을 먼저 살피고, 가습기 물을 확인한 뒤, 분비물이 묽어졌으니 필요할 때만 흡인하고, 그때마다 먼저 알려요.
+    lines:
+    - {en: "I check the trach ties every shift and retie them if they're loose.", icon: calendar, ko: "매 근무마다 끈을 확인하고 느슨하면 다시 묶어요", note: 끈}
+    - {en: "With that done, I make sure the humidifier has enough water.", icon: bulb, ko: "그게 끝나면 가습기에 물이 충분한지 확인해요", note: 가습}
+    - {en: "That humid air keeps his secretions loose, so I only suction when he needs it.", icon: shield, ko: "그 습기가 분비물을 묽게 해서 필요할 때만 흡인해요", note: 흡인}
+    - {en: "When that time comes, I let him know before I start.", icon: speech, ko: "그때가 오면 시작하기 전에 알려 드려요", note: 설명}

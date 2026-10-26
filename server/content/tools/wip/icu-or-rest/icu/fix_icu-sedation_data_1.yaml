@@ -1,0 +1,55 @@
+# 단어 수정 (A: W1~W6, C·D, cue / 검토 B 없음). dEn=distractorsEn, dKo=distractorsKo
+remove: [w-tell, w-give, w-use, w-put, w-number, w-long, w-second, w-scale, w-emergency]
+words:
+  # ---- distractorsEn 품사 맞춤 (A C절 표)
+  w-minus: {dEn: [minute, mucus], decoyChips: [my, nos]}
+  w-light: {dEn: [tight, slight]}
+  w-pump: {dEn: [pulp, pulse]}
+  w-titrate: {dEn: [tolerate, iterate]}
+  w-stable: {dEn: [stale, feeble]}
+  w-medicine: {dEn: [medal, machine]}
+  w-calm: {dEn: [clammy, balmy]}
+  w-command: {dEn: [comment, comma]}
+  w-safe: {dEn: [sane, same]}
+  w-breathe: {dEn: [bathe, breed], decoyChips: [bri, ate, breath]}
+  w-shallow: {dEn: [sallow, hollow]}
+  w-bedside: {dEn: [bedsore, bedrail]}
+  w-access: {dEn: [excess, abscess]}
+  w-awake: {dEn: [asleep, aloof]}
+  w-step: {dEn: [stem, stew], tag: "정도·수량"}
+  w-rouse: {dEn: [douse, roam]}
+  w-balance: {dEn: [ballot, bounce]}
+  w-comfort: {dEn: [effort, compost]}
+  w-dose: {dEn: [dove, dome]}
+  w-lactate: {dEn: [lactose, latex]}
+  w-monitor: {dEn: [mentor, minister]}
+  w-finish: {dEn: [furnish, finesse]}
+  w-lower: {dEn: [loosen, layer]}
+  w-high: {dEn: [shy, nigh], cue: "프로포폴을 더 올리지 말자고 할 때, 또는 용량 앞에 붙여 '고용량'을 만들 때 쓰는 말"}
+  w-fluid: {dEn: [flute, fluoride]}
+  w-fast: {dEn: [first, far]}
+  w-aware: {dEn: [aloof, awash]}
+  w-adequate: {dEn: [accurate, adjacent]}
+  w-paralytic: {dEn: [parasite, paraffin]}
+  w-physician: {dEn: [physicist, musician]}
+  w-multiple: {dEn: [minimal, mutual], tag: "정도·수량", cue: "약을 몇 가지째 쓰는데도 진정되지 않는다고 의사에게 보고할 때 'agents' 앞에 붙는 말"}
+  w-extra: {dEn: [external, exact], tag: "정도·수량", cue: "난동이 심해 사람을 더 불러 달라고 할 때 'hands' 앞에 붙는 말"}
+  w-multimodal: {dEn: [multicolored, multilingual]}
+  w-refractory: {dEn: [respiratory, reflective]}
+  w-single: {dEn: [simple, sizable], tag: "정도·수량", cue: "약 하나로는 초조가 안 잡혀 다른 약을 더해야 한다고 할 때 'agent' 앞에 붙는 말"}
+  # ---- D1~D3
+  w-adjust: {dEn: [adjourn, adjoin]}
+  w-dexmedetomidine: {decoyChips: [dax, dime]}
+  w-bolus: {decoyChips: [bi, loss]}
+  w-cardiac: {decoyChips: [cor, dee]}
+  w-need: {decoyChips: [neat]}
+  # ---- W2·W3·W4
+  w-hold: {ko: "지키다/보류하다", dKo: ["바꾸다/재개하다", "높이다/추가하다"], cue: "속도나 목표는 그대로 지키고, 약은 주지 않고 잠시 미뤄 둘 때 쓰는 동사"}
+  w-close: {ko: "면밀한", cue: "첫 한 시간 동안 심박수에서 눈을 떼지 말자고 할 때 'eye' 앞에 붙는 형용사", dKo: ["느슨한", "대략적인"], tag: "정도·수량"}
+  w-order: {ko: "처방", dKo: ["보고", "기록"]}
+  # ---- W6 태그, C 절 cue
+  w-common: {tag: "정도·수량", cue: "한 약을 여러 날 쓰면 내성이 생기는 게 이상한 일이 아니라고 동료를 안심시킬 때"}
+  w-enough: {tag: "정도·수량", cue: "세 번째 약까지 써도 가라앉지 않자 '이걸로는 모자라다'고 할 때"}
+  w-small: {tag: "정도·수량"}
+  w-closely: {tag: "정도·수량"}
+  w-early: {cue: "프로포폴을 오래 쓰는 환자에게서 PRIS가 막 시작될 때 놓치기 쉽다고 할 때"}

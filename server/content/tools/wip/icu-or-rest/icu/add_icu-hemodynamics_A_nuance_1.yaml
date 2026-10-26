@@ -1,0 +1,119 @@
+- situation: "동맥압 라인 파형·영점 사정"
+  items:
+    - kind: pair
+      words: [w-zero, w-level, w-waveform]
+      pairs: [["zero", "to air"], ["level", "with your heart"], ["watch", "the waveform"]]
+      decoys: ["the patient's name"]
+      why: "동맥압 라인은 트랜스듀서를 환자 심장 높이(phlebostatic axis)에 맞추고, 대기에 열어 놓은 채 영점을 잡은 뒤 파형을 봐요. 영점은 'zero to air', 높이는 'level with the heart'로 짝지어 외워 두면 좋아요."
+    - kind: context
+      words: [w-waveform]
+      word: waveform
+      ko: 파형
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "The waveform looks dampened, so I'm re-zeroing the line.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "The waveform looks off. Can you check the setup with me?", ok: true}
+        - {who: 환자에게, icon: me, en: "Your arterial waveform shows a blunted upstroke and a lost dicrotic notch.", ok: false, fix: "The wavy line on the screen looks a little off, so I'm checking the setup."}
+      why: "의료진끼리는 파형의 모양을 정확한 말로 짚는 게 빠르고 좋아요. 환자에게는 upstroke나 dicrotic notch 같은 말이 낯설고 겁만 줘요. 화면의 선이 어떻게 보이는지와 지금 무엇을 하는지를 쉬운 말로 알려 줘요."
+- situation: "NIBP와 동맥압 값 불일치 확인"
+  items:
+    - kind: slider
+      words: [w-difference, w-small, w-normal]
+      cue: "Colleague: \"The cuff and the line are a few points apart, and the waveform looks clean.\""
+      scale: [recheck the cuff size, note it and move on, call the doctor]
+      answerAt: 1
+      why: "커프와 라인이 몇 mmHg 안팎으로 다르고 파형도 깨끗하면 흔한 차이라 기록하고 계속 지켜봐요. 차이가 크거나 파형이 이상하면 그때 커프 위치와 크기, 라인 상태를 점검하고 팀에 알려요."
+      example: "A small difference between the two readings can be normal."
+      exKo: "두 수치 사이의 작은 차이는 정상일 수 있어요."
+    - kind: context
+      words: [w-reading]
+      word: reading
+      ko: 측정값
+      scenes:
+        - {who: 팀 인계, icon: stetho, en: "The cuff reading and the A-line reading are within a few points of each other.", ok: true}
+        - {who: 차트 기록, icon: board, en: "Cuff reading and arterial reading differ slightly, line being trusted per the team.", ok: true}
+        - {who: 환자에게, icon: me, en: "Your NIBP reading and the A-line reading are discordant, so I'm escalating.", ok: false, fix: "The arm cuff and the line don't match perfectly, so I'm checking which one to trust."}
+      why: "NIBP, A-line, discordant, escalating은 의료진끼리는 정확하고 짧은 말이지만 환자에게는 뜻이 안 통하고 큰일이 난 것처럼 들려요. 어떤 두 수치를 비교하는지와 지금 무엇을 확인하는지를 쉬운 말로 풀어 줘요."
+- situation: "승압제 주입 라인·펌프 확인"
+  items:
+    - kind: slider
+      words: [w-pump, w-match, w-order]
+      cue: "Colleague: \"The label, the order and the bag all match, but the pump rate doesn't match the order.\""
+      scale: [mention it at handoff, fix the rate before you start, sign off anyway]
+      answerAt: 1
+      why: "라벨·처방·백이 맞아도 펌프 속도가 처방과 다르면 시작하기 전에 바로잡고 다시 확인해요. 인계 때로 미루거나 그냥 서명하지 않아요."
+      example: "The pump rate matches the order exactly."
+      exKo: "펌프 속도가 처방과 정확히 맞아요."
+    - kind: swap
+      words: [w-check, w-label, w-pump, w-bag]
+      who: "동료 간호사 · 인수 전 확인 요청"
+      icon: monitor
+      before: ["Before I take over, can you ", "look at", " the bag label and the pump rate with me?"]
+      options: [look at, double-check, glance at]
+      answer: double-check
+      notes: {look at: "말은 되지만 '따로 한 번 더 확인'한다는 뜻이 안 나와요.", double-check: "두 사람이 각자 다시 확인한다는 뜻이라 고위험 약물 인수에 맞아요.", glance at: "슬쩍 훑어본다는 느낌이라 고위험 약에는 약해요."}
+      why: "승압제 같은 고위험 약물은 두 사람이 따로 확인하는 절차(independent double-check)가 흔해요. 요청할 때 double-check라고 해야 그 뜻이 분명해져요."
+      ko: 인수받기 전에 백 라벨과 펌프 속도를 같이 이중 확인해 줄래요?
+    - kind: context
+      words: [w-verify]
+      word: verify
+      ko: 검증하다
+      scenes:
+        - {who: 동료 간호사, icon: monitor, en: "Let's verify the concentration and the rate against the order before I take over the pump.", ok: true}
+        - {who: 차트 기록, icon: board, en: "Norepinephrine concentration and pump rate verified with second RN.", ok: true}
+        - {who: 환자에게, icon: me, en: "I'm just going to verify the vasopressor concentration against the MAR before I start the infusion.", ok: false, fix: "I'm checking the medicine bag against the doctor's order to make sure it's exactly right."}
+      why: "동료끼리는 concentration, MAR 같은 말로 빠르게 확인하는 게 정확해요. 환자에게는 어떤 말도 낯설어서, 무엇을 무엇과 맞춰 보는지 쉬운 말로 풀어 주면 안심이 돼요."
+- situation: "MAP 목표 환자·가족 설명"
+  items:
+    - kind: slider
+      words: [w-drop]
+      cue: "Nurse: \"His average pressure slipped a couple of points and then came right back up.\""
+      scale: [dips, drops, crashes]
+      answerAt: 0
+      why: "몇 점 잠깐 내려갔다 돌아오는 정도는 dip이에요. drop은 눈에 띄게 내려가 대응이 필요한 정도이고, crash는 급격히 곤두박질치는 응급 상황이라 이 장면에는 맞지 않아요."
+      example: "His pressure dips a little and comes right back."
+      exKo: "혈압이 조금 내려갔다가 바로 돌아와요."
+    - kind: context
+      words: [w-organ]
+      word: organ
+      ko: 장기
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "MAP is holding on low-dose norepi and the organs look well perfused.", ok: true}
+        - {who: 차트 기록, icon: board, en: "MAP at goal, end-organ perfusion adequate.", ok: true}
+        - {who: 보호자에게, icon: me, en: "His end-organ perfusion hinges on keeping the MAP above target.", ok: false, fix: "His organs need a steady flow of blood, and this medicine helps us keep it going."}
+      why: "end-organ perfusion, MAP above target은 의료진끼리는 정확하고 짧아요. 보호자에게는 낯설고 차갑게 들려요. 장기가 충분한 피를 받도록 약이 돕고 있다는 쉬운 말로 풀어요."
+- situation: "시간당 활력징후 경향 기록"
+  items:
+    - kind: slider
+      words: [w-trend]
+      cue: "Nurse: \"Her pressure has come down a little each hour, three hours in a row.\""
+      scale: [drifting down, dropping, plummeting]
+      answerAt: 0
+      why: "한 번에 크게 떨어진 게 아니라 조금씩 계속 내려오는 건 drifting down(trending down)이에요. dropping은 눈에 띄게 떨어질 때, plummeting은 급락할 때라 이 장면보다 세요."
+      example: "Her pressure is trending down slowly."
+      exKo: "혈압이 서서히 내려가는 추세예요."
+    - kind: swap
+      words: [w-trend]
+      who: "동료 간호사 · 인계 보고"
+      icon: stetho
+      before: ["Her BP has been ", "going down a bit", " over the last three hours."]
+      options: [going down a bit, trending down, tanking]
+      answer: trending down
+      notes: {going down a bit: "말은 되지만 '시간에 따라 계속'이라는 추세의 뜻이 약해서 인계에서 흐려져요.", trending down: "여러 번 잰 값이 계속 내려간다는 간호사끼리의 정확한 말이에요.", tanking: "구어이고 과장돼서 인계 보고에는 맞지 않아요."}
+      why: "인계에서는 한 수치보다 흐름이 중요해서 trending down처럼 방향을 담은 말이 정확해요."
+      ko: 지난 세 시간 동안 혈압이 계속 내려가는 추세예요
+- situation: "중심정맥압 측정 준비"
+  items:
+    - kind: pair
+      words: [w-measure, w-flat, w-breathe]
+      pairs: [["measure", "at end-expiration"], ["lie", "flat"], ["breathe", "in and out"]]
+      decoys: ["into the sink"]
+      why: "중심정맥압은 호흡에 따른 흉강 압력 변화가 가장 적은 날숨 끝(end-expiration)에서 읽어요. 보통 평평하게 눕힌 자세에서 재고, 환자에게는 평소처럼 숨 쉬면 된다고 안내해요."
+    - kind: context
+      words: [w-accurate]
+      word: accurate
+      ko: 정확한
+      scenes:
+        - {who: 동료 간호사, icon: monitor, en: "Zero the line and re-level it so the reading is accurate.", ok: true}
+        - {who: 차트 기록, icon: board, en: "CVP measured at end-expiration with transducer leveled, reading accurate.", ok: true}
+        - {who: 환자에게, icon: me, en: "The CVP is accurate only if the transducer is leveled to the phlebostatic axis and zeroed to atmosphere.", ok: false, fix: "I'll line the sensor up with your heart so the number is accurate."}
+      why: "phlebostatic axis, zeroed to atmosphere는 의료진끼리의 정확한 말이에요. 환자에게는 센서를 심장 높이에 맞춘다고만 쉽게 말해도 충분해요."

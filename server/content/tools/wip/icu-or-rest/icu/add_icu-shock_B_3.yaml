@@ -1,0 +1,90 @@
+- title: 수액 과다와 부족 경계 판단
+  s:
+  - {t: "재사정 제안", i: stetho, w: "before the next bolus는 다음 수액을 넣기 전에라는 시점 표현이에요. 수액을 더 넣을지는 폐와 산소 반응을 본 뒤에 정해야 해서 다음 볼루스 앞에 재사정을 둬요.", d: "on the left", k: ["첫 볼루스 전에 폐와 산소포화도를 재사정해요", "다음 볼루스 전에 폐와 산소포화도를 의논해요"], a: "lungs", o: ["liver", "legs", "eyes"]}
+  - {t: "중단 기준", i: shield, w: "If절이 수액을 보류하는 조건을 미리 정해 줘요. developing은 아직 생기는 중이라는 뜻이라 완전히 나빠지기 전에 멈추는 기준이 돼요.", d: "in bed", k: ["천명음이 생기면 수액을 보류해요", "발열이 생기면 수액을 보류해요"], a: "crackles", o: ["rashes", "fevers", "tremors"]}
+  - {t: "목표 균형", i: bulb, w: "without …ing는 어떤 일을 하지 않으면서라는 모양이에요. 수액은 충분해야 하지만 폐부종으로 넘어가면 안 된다는 두 목표를 한 문장에 담아요.", d: "at night", k: ["폐렴으로 기울지 않게 충분한 용량을 원해요", "폐부종으로 기울지 않게 충분한 산소를 원해요"], a: "volume", o: ["sedation", "privacy", "traffic"]}
+  - {t: "산소 변화", i: chartup, w: "in the last hour는 지금부터 한 시간 전까지의 기간이에요. a little로 정도를 말해도 변화의 방향이 중요해서 추세로 함께 알려요.", d: "of the day", k: ["지난 한 시간 동안 산소포화도가 많이 떨어졌어요", "지난 두 시간 동안 산소포화도가 조금 떨어졌어요"], a: "little", o: ["lot", "ton", "bunch"]}
+  - {t: "호흡수 관찰", i: monitor, w: "also는 앞서 말한 확인에 더해서라는 뜻이에요. 호흡수는 폐에 물이 차기 시작할 때 산소포화도보다 먼저 변하기도 해서 함께 지켜봐요.", d: "on the chart", k: ["맥박수도 자세히 지켜보고 있어요", "호흡수도 자세히 적고 있어요"], a: "closely", o: ["quietly", "loosely", "briefly"]}
+  - {t: "소량 투여", i: pill, w: "smaller는 기존보다 적은 양이라는 비교급이에요. 폐에 물이 찰 위험이 있을 때는 수액을 한 번에 많이 넣지 않고 적게 주고 반응을 다시 봐요.", d: "from the pump", k: ["더 적은 볼루스를 주고 의논할게요", "더 적은 볼루스를 주고 의식을 재사정할게요"], a: "reassess", o: ["restart", "rewind", "remark"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "수액 과다·부족 판단 4문장 순서"
+    why: "산소 변화를 먼저 말하고, 폐를 살피겠다고 하고, 폐 소리가 젖어 있으면 수액을 멈춘다고 한 뒤, 그렇지 않으면 적은 양을 준다고 해요. 3줄의 they는 2줄의 폐를, 4줄의 don't는 3줄의 sound wet을 이어받아서 순서가 하나예요."
+    lines:
+    - {en: "Her oxygen has dropped a little in the last hour.", icon: chartup, ko: "지난 한 시간 동안 산소포화도가 조금 떨어졌어요", note: "변화"}
+    - {en: "Let's check her lungs before the next bolus.", icon: stetho, ko: "다음 볼루스 전에 폐를 확인해요", note: "확인"}
+    - {en: "If they sound wet, we hold the fluids.", icon: shield, ko: "폐에서 습성 음이 들리면 수액을 보류해요", note: "보류"}
+    - {en: "If they don't, we'll give a smaller bolus.", icon: pill, ko: "그렇지 않으면 더 적은 볼루스를 줘요", note: "투여"}
+- title: 아나필락시스 쇼크 대응
+  s:
+  - {t: "원인 중단", i: siren, w: "Stop the …은 주어 없이 바로 행동을 말하는 명령문이에요. 대시 뒤에 이유를 붙이면 듣는 사람이 왜 멈추는지 알고 바로 움직여요.", d: "from the pump", k: ["항생제를 중단하세요 — 정맥염이에요", "항생제를 중단하세요 — 약물 열이에요"], a: "anaphylaxis", o: ["phlebitis", "bradycardia", "hypoglycemia"]}
+  - {t: "에피네프린", i: pill, w: "IM은 근육주사를 줄인 말이고 now는 기다리지 않는다는 뜻이에요. 아나필락시스는 몇 분 안에 기도와 혈압이 나빠질 수 있어서 에피네프린을 가장 먼저 줘요.", d: "in the unit", k: ["제가 지금 바로 에피네프린을 근육주사할게요", "지금 바로 에피네프린을 근육주사하라고 하셨어요"], a: "Give", o: ["Gave", "Giving", "Given"]}
+  - {t: "기도 감시", i: stetho, w: "watch A for B는 B가 생기는지 A를 지켜본다는 모양이에요. 아나필락시스에서는 기도가 부으면 숨쉬기 어려워지므로 어디를 무엇 때문에 보는지 함께 말해요.", d: "with a light", k: ["기도가 건조하지 않은지 자세히 지켜보고 있어요", "피부가 부어오르지 않는지 자세히 지켜보고 있어요"], a: "swelling", o: ["dryness", "bleeding", "itching"]}
+  - {t: "증상 보고", i: faceWorried, w: "are swelling은 지금 진행 중인 변화를 나타내는 현재진행형이에요. fast를 붙이면 속도를 전해서 팀이 얼마나 급한지 바로 알아요.", d: "on her pillow", k: ["입술과 손이 빠르게 부어오르고 있어요", "입술과 혀가 빠르게 갈라지고 있어요"], a: "tongue", o: ["hands", "feet", "ears"]}
+  - {t: "기도 확보", i: shield, w: "keep A open은 A를 계속 열린 상태로 둔다는 모양이에요. 부어오르는 기도는 막힐 수 있어서 필요한 일을 I need to로 분명하게 말해요.", d: "for her", k: ["입을 열린 상태로 유지해야 해요", "문을 열린 상태로 유지해야 해요"], a: "airway", o: ["window", "curtain", "door"]}
+  - {t: "재발 대비", i: monitor, w: "a second reaction은 처음 반응이 가라앉은 뒤 다시 나타나는 반응이에요. 아나필락시스는 증상이 좋아진 뒤에 다시 나빠질 수 있어서 처치 후에도 계속 지켜봐요.", d: "at home", k: ["재출혈이 있는지 계속 살펴볼게요", "재감염이 있는지 계속 살펴볼게요"], a: "second", o: ["third", "slow", "mild"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "아나필락시스 대응 4문장 순서"
+    why: "증상을 먼저 말하고, 그것을 아나필락시스로 판단하며, 원인 약을 중단하고 에피네프린을 주고, 끝으로 기도와 재발을 지켜본다고 해요. 2줄의 This는 1줄의 증상을, 4줄의 first는 3줄의 처치를 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "Her lips and tongue are swelling fast.", icon: faceWorried, ko: "입술과 혀가 빠르게 부어오르고 있어요", note: "증상"}
+    - {en: "This looks like anaphylaxis.", icon: siren, ko: "이건 아나필락시스처럼 보여요", note: "판단"}
+    - {en: "Stop the antibiotic and give IM epinephrine now.", icon: pill, ko: "항생제를 중단하고 지금 바로 에피네프린을 근육주사하세요", note: "처치"}
+    - {en: "I'll keep her airway open and monitor her for a second reaction.", icon: stetho, ko: "기도를 열어 두고 재악화가 있는지 살펴볼게요", note: "감시"}
+- title: 젖산 클리어런스 목표 평가
+  s:
+  - {t: "수치 변화", i: chartup, w: "from A to B로 수치가 어디서 어디로 변했는지 말해요. so it's clearing은 숫자 변화를 곧바로 해석해 줘서 듣는 사람이 의미를 따로 계산하지 않아도 돼요.", d: "on the monitor", k: ["젖산이 8에서 4로 떨어져서 회복되고 있어요", "혈당이 6에서 4로 떨어져서 회복되고 있어요"], a: "dropped", o: ["rose", "jumped", "climbed"]}
+  - {t: "목표 제시", i: board, w: "at least는 그 이상이면 좋다는 최소 기준이에요. 클리어런스는 시간이 지나며 수치가 얼마나 줄었는지 보는 값이라 퍼센트로 목표를 정해 소통해요.", d: "per hour", k: ["최소 20퍼센트 클리어런스를 목표로 하고 있어요", "최소 50퍼센트 클리어런스를 목표로 하고 있어요"], a: "least", o: ["most", "best", "worst"]}
+  - {t: "재평가 기준", i: bulb, w: "If it stalls는 더 나아지지 않고 멈춘 경우라는 조건이에요. 소생이 제대로 되지 않을 때 무엇을 할지 미리 말해 두면 팀이 같은 기준으로 움직여요.", d: "at the desk", k: ["정체되면 소생 반응을 가족에게 알려요", "빨라지면 소생 반응을 재평가해요"], a: "resuscitation", o: ["visitation", "celebration", "education"]}
+  - {t: "경과 평가", i: star, w: "That's a good …은 앞에서 말한 변화를 평가하는 문장이에요. in just는 짧은 시간 안에라는 강조라서 하락이 빨랐다는 점이 전해져요.", d: "of coffee", k: ["열두 시간 만에 좋은 하락폭이에요", "이틀 만에 좋은 하락폭이에요"], a: "hours", o: ["days", "weeks", "months"]}
+  - {t: "재검 약속", i: lab, w: "recheck는 다시 확인한다는 동사이고 again을 붙여 이미 한 번 쟀음을 분명히 해요. after the next bolus로 시점을 정해야 처치에 따른 변화를 볼 수 있어요.", d: "for the nurse", k: ["다음 채혈 후에 다시 재확인할게요", "다음 볼루스 후에 다시 계산할게요"], a: "recheck", o: ["relabel", "reorder", "restock"]}
+  - {t: "계획 조정", i: compass, w: "adjust는 상황에 맞춰 조금 바꾼다는 동사예요. 클리어런스가 정체될 때 계획을 바꾸겠다고 하면 같은 방법만 반복하지 않겠다는 약속이 돼요.", d: "in the room", k: ["클리어런스가 정체되면 일정을 조정할게요", "클리어런스가 정체되면 계획을 발표할게요"], a: "adjust", o: ["admit", "adopt", "assign"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "젖산 클리어런스 4문장 순서"
+    why: "목표를 먼저 말하고, 실제 수치 변화를 보여 주고, 그 변화를 평가한 뒤, 정체될 때의 계획을 말해요. 3줄의 That은 2줄의 수치 변화를, 4줄의 it은 2줄의 clearing을 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "We're aiming for at least a 10 percent clearance.", icon: board, ko: "최소 10퍼센트 클리어런스를 목표로 하고 있어요", note: "목표"}
+    - {en: "Her lactate dropped from 6 to 4, so it's clearing.", icon: chartup, ko: "젖산이 6에서 4로 떨어져서 회복되고 있어요", note: "수치"}
+    - {en: "That's a good drop in just two hours.", icon: star, ko: "두 시간 만에 좋은 하락폭이에요", note: "평가"}
+    - {en: "If it stalls, we reassess our resuscitation.", icon: compass, ko: "정체되면 소생 반응을 재평가해요", note: "계획"}
+- title: 승압제 시작 시점 소통
+  s:
+  - {t: "상황 보고", i: monitor, w: "remained는 계속 그 상태라는 뜻이고 despite는 앞의 처치에도 불구하고라는 전치사예요. 수액을 충분히 줬는데도 저혈압이라는 점이 승압제를 말하는 근거가 돼요.", d: "in the bed", k: ["충분한 휴식에도 불구하고 계속 저혈압이에요", "충분한 수액에도 불구하고 계속 빈맥이에요"], a: "hypotensive", o: ["febrile", "anemic", "jaundiced"]}
+  - {t: "의견 제시", i: bulb, w: "I think it's time to …는 지시가 아니라 의견으로 시점을 제안하는 모양이에요. 간호사가 승압제를 직접 정하지 않고 의사가 판단하도록 부드럽게 말하는 방식이에요.", d: "for her", k: ["이제 승압제를 시작할 시점이라고 확신해요", "이제 승압제를 시작할 시점인지 궁금해요"], a: "pressor", o: ["pillow", "pitcher", "printer"]}
+  - {t: "의사 호출", i: speech, w: "to recommend는 연락하는 목적을 추천이라고 밝혀요. 승압제는 의사의 처방이 있어야 하므로 간호사는 상태를 근거로 시작을 권하는 방식으로 말해요.", d: "on the phone", k: ["노르에피네프린을 확인하려고 의사에게 연락하고 있어요", "노르에피네프린을 권고하려고 의사에게 문자하고 있어요"], a: "recommend", o: ["remember", "repair", "rename"]}
+  - {t: "수액 이력", i: board, w: "already had는 이미 받았다는 현재완료예요. three liters of fluid처럼 총량을 말하면 수액이 충분했는데도 반응이 없다는 근거가 구체적으로 전해져요.", d: "since morning", k: ["이미 수액을 2리터나 맞았어요", "이미 수혈을 3단위나 맞았어요"], a: "fluid", o: ["food", "milk", "juice"]}
+  - {t: "반응 없음", i: chartup, w: "hasn't responded to는 아직 반응이 없었다는 현재완료 부정이에요. any of it으로 지금까지의 처치 전체를 가리켜서 혈압이 모든 시도에 반응하지 않았다는 뜻이 돼요.", d: "to us", k: ["의식이 그중 어느 것에도 반응하지 않았어요", "소변이 그중 어느 것에도 반응하지 않았어요"], a: "responded", o: ["replied", "returned", "rested"]}
+  - {t: "처방 요청", i: speech, w: "ask him to …는 간접 요청 모양으로 직접 명령하지 않고 부탁하는 말이에요. 승압제는 의사가 처방하는 약이어서 간호사는 처방해 달라고 요청해요.", d: "on his list", k: ["지금 노르에피네프린을 확인하도록 요청할게요", "지금 노르에피네프린을 보관하도록 요청할게요"], a: "order", o: ["observe", "outline", "oppose"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "승압제 시작 소통 4문장 순서"
+    why: "상황을 먼저 보고하고, 그것이 수액에 반응이 없다는 근거를 대고, 그래서 승압제 시점을 말한 뒤 의사에게 요청해요. 2줄의 any of it은 1줄의 수액을, 4줄의 So는 3줄의 의견을 이어받아서 순서가 하나예요."
+    lines:
+    - {en: "She's remained hypotensive despite adequate fluids.", icon: monitor, ko: "충분한 수액에도 계속 저혈압이에요", note: "상황"}
+    - {en: "Her pressure hasn't responded to any of it.", icon: chartup, ko: "혈압이 그 어느 것에도 반응하지 않았어요", note: "근거"}
+    - {en: "I think it's time to start a pressor.", icon: bulb, ko: "이제 승압제를 시작할 시점인 것 같아요", note: "의견"}
+    - {en: "So I'm calling the physician to recommend norepinephrine.", icon: speech, ko: "그래서 노르에피네프린을 권고하려고 의사에게 연락하고 있어요", note: "요청"}
+- title: 쇼크 중 산-염기 교정 판단
+  s:
+  - {t: "가스 결과", i: lab, w: "shows는 검사가 보여 주는 결과를 말할 때 쓰는 동사예요. severe와 high로 정도까지 함께 말하면 듣는 사람이 결과의 심각성을 한 번에 알아요.", d: "on the printout", k: ["동맥혈가스에서 심한 호흡성 산증과 높은 젖산이 보여요", "동맥혈가스에서 심한 대사성 산증과 높은 혈당이 보여요"], a: "metabolic", o: ["respiratory", "cardiac", "hepatic"]}
+  - {t: "우선순위", i: compass, w: "not just는 이것만은 아니라는 대비예요. 산증의 숫자를 고치는 것보다 원인인 관류 저하를 해결하는 것이 먼저라는 우선순위를 함께 말해요.", d: "at the bedside", k: ["우선순위는 pH가 아니라 소변을 바로잡는 거예요", "우선순위는 pH가 아니라 관류를 계산하는 거예요"], a: "priority", o: ["problem", "process", "preference"]}
+  - {t: "중탄산염", i: pill, w: "only in specific situations로 쓰는 경우를 좁혀서 말했어요. 중탄산염은 모든 산증에 쓰지 않고 정해진 상황에서 의사가 판단한다는 점을 완곡하게 전해요.", d: "on the unit", k: ["특정 상황에서만 중탄산염을 정리할게요", "특정 시간에만 중탄산염을 고려할게요"], a: "consider", o: ["cancel", "carry", "coach"]}
+  - {t: "가스 해석", i: lab, w: "is also dropping에서 also는 pH만이 아니라 CO2도 같은 방향으로 움직인다는 뜻이에요. 두 수치가 함께 떨어지는 모양을 말하면 해석의 단서가 돼요.", d: "in the lab", k: ["pH가 낮고 칼륨도 함께 떨어지고 있어요", "pH가 낮고 칼슘도 함께 떨어지고 있어요"], a: "dropping", o: ["rising", "jumping", "climbing"]}
+  - {t: "원인 우선", i: bulb, w: "matters more than은 비교급으로 무엇이 더 중요한지 말하는 모양이에요. 숫자를 맞추는 일보다 원인을 해결하는 일에 집중하자는 뜻을 간결하게 전해요.", d: "for us", k: ["숫자보다 시간을 바로잡는 게 더 중요해요", "숫자보다 원인을 바로잡는 게 더 쉬워요"], a: "matters", o: ["costs", "changes", "weighs"]}
+  - {t: "재검 계획", i: lab, w: "recheck his gas는 같은 검사를 다시 한다는 말이에요. after the next intervention으로 처치와 연결해 말하면 처치가 효과가 있었는지 같은 기준으로 비교할 수 있어요.", d: "on the floor", k: ["다음 회진 후에 동맥혈가스를 재확인할게요", "다음 처치 후에 동맥혈가스를 따로 모아 둘게요"], a: "intervention", o: ["interview", "interval", "invoice"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "산-염기 교정 판단 4문장 순서"
+    why: "가스 결과를 먼저 말하고, 그래서 관류를 바로잡는 것이 우선이라고 하고, 그것이 숫자보다 중요하다고 강조한 뒤, 그 처치 후에 재검을 약속해요. 3줄의 That은 2줄의 관류를, 4줄의 After that은 앞의 처치를 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "His gas shows a severe metabolic acidosis with a high lactate.", icon: lab, ko: "동맥혈가스에서 심한 대사성 산증과 높은 젖산이 보여요", note: "결과"}
+    - {en: "So the priority is fixing the perfusion, not just the pH.", icon: compass, ko: "그러니 우선순위는 pH만이 아니라 관류를 바로잡는 거예요", note: "우선"}
+    - {en: "That matters more than the number on the gas.", icon: bulb, ko: "그게 가스 숫자보다 더 중요해요", note: "강조"}
+    - {en: "After that, I'll recheck his gas to see if it helped.", icon: lab, ko: "그 후에 도움이 됐는지 동맥혈가스를 재확인할게요", note: "재검"}

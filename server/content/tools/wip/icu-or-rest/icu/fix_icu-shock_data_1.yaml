@@ -1,0 +1,53 @@
+# 상황 0~6 문장 수정 (s=상황 번호, i=문장 번호). dko=distractorsKo 둘. blank={answer, options}
+sent:
+# --- S0 쇼크 초기 관류 사정
+- {s: 0, i: 2, decoy: "in these signs", words_remove: [w-keep]}
+- {s: 0, i: 4, decoy: "how many"}
+# --- S1 젖산
+- {s: 1, i: 0, dko: ["젖산을 재검해서 경향을 정리할게요", "젖산을 재검해서 검사실에 보낼게요"]}
+- {s: 1, i: 1, decoy: "are improving"}
+- {s: 1, i: 2, decoy: "on the board"}
+- {s: 1, i: 3, chunks: ["His last lactate", "was", "four point two", "."]}
+- {s: 1, i: 4, dko: ["지금 바로 검사실에 알릴게요", "지금 바로 검사실 라벨을 붙일게요"]}
+- {s: 1, i: 5, chunks: ["Let's", "compare it", "to the first draw", "."]}
+# --- S2 대량 수액 볼루스
+- s: 2
+  i: 0
+  blank: {answer: bolus, options: [bolus, sample, report, record]}
+  dko: ["수액 볼루스를 걸면서 라인 연결을 살필게요", "수액 볼루스가 끝나면 빈 백을 뺄게요"]
+- {s: 2, i: 1, dko: ["다 들어가면 혈압과 맥박을 다시 재요", "들어가는 동안 혈압과 맥박을 적어 둬요"]}
+- {s: 2, i: 2, dko: ["과부하 되지 않도록 체중도 함께 잴게요", "과부하 되지 않도록 들어간 양을 따져 봐요"]}
+- s: 2
+  i: 3
+  blank: {answer: hanging, options: [hanging, labeling, warming, carrying]}
+- s: 2
+  i: 5
+  ko: "폐에서 수포음이 들리면 다 들어가기 전에라도 멈출게요."
+  dko: ["볼루스를 걸 때 폐음을 먼저 들어 보고 시작할게요", "볼루스가 끝나는 대로 양쪽 폐음을 한 번 더 들을게요"]
+  blank: {answer: early, options: [early, neatly, politely, softly]}
+  why: "if절에 조건을 분명히 달았어요. early를 붙여 다 들어가기 전에라도 멈춘다는 뜻을 더했고, 폐에서 젖은 소리가 들리는 것은 수액이 너무 많이 들어갔다는 신호라서 멈추는 기준으로 미리 말해 둬요."
+# --- S3 쇼크 유형 병력 청취
+- {s: 3, i: 0, dko: ["증상이 어디서 시작됐는지 말씀해 주시겠어요?", "증상이 언제 마지막으로 있었는지 말씀해 주시겠어요?"]}
+- {s: 3, i: 3, chunks: ["Have you been", "vomiting", "or having diarrhea", "?"]}
+- {s: 3, i: 4, decoy: "by the sink"}
+# --- S4 시간당 소변량
+- s: 4
+  i: 2
+  dko: ["목표보다 낮은지 매시간 소변량을 볼게요", "팀에 알린 다음 흐름표도 채울게요"]
+  blank: {answer: flag, options: [flag, fold, wrap, pin]}
+- s: 4
+  i: 4
+  dko: ["목표를 시간당 30mL로 적었어요", "목표는 신장 관류를 보려는 기준이에요"]
+  blank: {answer: target, options: [target, visit, room, shift]}
+- {s: 4, i: 5, chunks: ["I'll", "document it", "every hour", "on the flow sheet", "."]}
+# --- S5 말초·중심 체온차
+- s: 5
+  i: 1
+  blank: {answer: gap, options: [gap, joke, song, fee]}
+- {s: 5, i: 2, dko: ["계속 살펴보면서 가족에게도 알릴게요", "계속 살펴보면서 차트에 적을게요"]}
+- s: 5
+  i: 3
+  ko: "지금 만져 보니 발이 많이 차가워요."
+  dko: ["지금 만져 보니 손이 많이 차가워요", "지금 만져 보니 발이 많이 부어 있어요"]
+# --- S6 저혈량 쇼크
+- {s: 6, i: 3, chunks: ["His belly", "is getting", "firmer", "than an hour ago", "."]}

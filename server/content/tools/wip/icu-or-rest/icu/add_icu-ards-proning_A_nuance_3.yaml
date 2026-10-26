@@ -1,0 +1,134 @@
+- sit: 14
+  items:
+  - kind: slider
+    words: [w-closely]
+    cue: "He was just turned back onto his back. For the first hour you want eyes on the monitor every few minutes."
+    scale: [rarely, regularly, closely]
+    answerAt: 2
+    why: "앙와위로 돌린 직후는 산소가 다시 떨어질 수 있는 시기라 수치를 바짝 지켜봐야 해요(closely). rarely나 regularly는 간격이 너무 느슨해요."
+    example: "Let's watch his sats closely afterward."
+    exKo: "그 후에 산소포화도를 자세히 지켜볼게요."
+  - kind: context
+    words: [w-watch]
+    word: watch
+    ko: 지켜보다
+    scenes:
+      - {who: 동료에게, icon: monitor, en: "Watch his sats closely for the next hour.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Tolerated supination; continue to watch SpO2 closely.", ok: true}
+      - {who: 가족에게, icon: me, en: "We will watch his saturations and observe his P/F trajectory post-supination.", ok: false, fix: "We're going to keep a close eye on his oxygen for the next few hours."}
+    why: "동료와 차트에서는 watch 뒤에 무엇을 보는지 짧게 붙여요. 가족에게는 saturation·P/F trajectory 같은 말을 쓰지 않고 '산소를 계속 지켜본다'로 말해요."
+- sit: 15
+  items:
+  - kind: slider
+    words: [w-suddenly]
+    cue: "No warning at all. His sats were 96 a minute ago and are 78 now."
+    scale: [bit by bit, quickly, suddenly]
+    answerAt: 2
+    why: "경고 없이 한순간에 떨어졌다면 suddenly예요. quickly는 빠르지만 내려가는 과정이 보일 때 쓰고, bit by bit은 천천히 조금씩이라 이 상황과 달라요. 갑작스런 하락은 튜브 문제를 먼저 의심해요."
+    example: "His sats dropped fast, so something changed suddenly."
+    exKo: "산소포화도가 빠르게 떨어졌으니 갑자기 뭔가 바뀐 거예요."
+  - kind: context
+    words: [w-sat]
+    word: sat
+    ko: 사트(수치)
+    scenes:
+      - {who: 동료에게, icon: monitor, en: "His sats dropped to 78. Check the tube first.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Sats 78 while prone; FiO2 increased to 100 percent.", ok: true}
+      - {who: 가족에게, icon: me, en: "Your husband's sats are 78, which is a critical desaturation.", ok: false, fix: "His oxygen level dropped, and we're working on it right now."}
+    why: "sats는 의료진끼리 쓰는 줄임말이라 동료와 차트에서는 빠르고 정확해요. 가족에게는 줄임말과 desaturation이라는 말 대신 '산소 수치가 떨어져서 지금 조치하고 있다'로 전해요."
+- sit: 16
+  items:
+  - kind: slider
+    words: [w-call]
+    cue: "He is prone, pulseless and unresponsive."
+    scale: [tell a nurse, ask for help, call the code]
+    answerAt: 2
+    why: "맥박과 반응이 없으면 코드를 불러 팀 전체를 소집해야 해요(call the code). 간호사에게 알리거나 도움을 청하는 정도로는 소생팀이 오지 않아요."
+    example: "Call the code and flip him supine."
+    exKo: "코드를 부르고 앙와위로 뒤집을게요."
+  - kind: context
+    words: [w-compression]
+    word: compression
+    ko: 흉부 압박
+    scenes:
+      - {who: 동료에게, icon: monitor, en: "Start compressions as soon as he's supine.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Chest compressions started after he was flipped supine.", ok: true}
+      - {who: 가족에게, icon: me, en: "The team is performing compressions with a two minute rhythm check cycle.", ok: false, fix: "The team is pressing on his chest to keep his blood moving to his brain and heart. We'll update you the moment we can."}
+    why: "동료와 차트에서는 compressions 한 단어로 충분해요. 가족에게는 rhythm check cycle 같은 절차 용어 대신 '가슴을 눌러 피를 돌게 하고 있다'처럼 무엇을 하는지 말해요."
+- sit: 17
+  items:
+  - kind: slider
+    words: [w-out]
+    cue: "Only the tip of the tube is still inside him, and it is slipping."
+    scale: [loose, partly out, out]
+    answerAt: 1
+    why: "끝만 남고 일부가 빠진 상태는 partly out이에요. loose는 고정만 느슨한 정도이고, out은 튜브가 완전히 빠진 상태라 곧바로 기도 확보가 필요해요."
+    example: "The tube is out. Turn him supine immediately to manage the airway."
+    exKo: "튜브가 빠졌어요. 바로 앙와위로 돌려서 기도를 관리할게요."
+  - kind: swap
+    words: [w-reintubate]
+    who: "보호자에게 · 우발적 발관 설명"
+    icon: me
+    before: ["His breathing tube came out, and we are ", "reintubating him", " right now."]
+    options: [putting the tube back in, reintubating him, repeating the intubation procedure]
+    answer: putting the tube back in
+    notes: {putting the tube back in: "가족이 알아듣는 말로 지금 무엇을 하는지 정확히 전해요.", reintubating him: "의료진끼리의 말이라 가족은 뜻을 몰라요.", repeating the intubation procedure: "절차 이름을 나열한 말이라 가족에게는 딱딱하고 무엇을 하는지 와닿지 않아요."}
+    why: "발관은 가족에게도 숨기지 말고 사실대로 알려야 해요. 다만 reintubate는 의료 용어라 '튜브를 다시 넣고 있다'처럼 쉬운 말로 풀어 전해요."
+    ko: "호흡 튜브가 빠져서 지금 다시 넣고 있어요"
+- sit: 18
+  items:
+  - kind: slider
+    words: [w-consult]
+    cue: "He is hypoxic despite proning and maximal ventilation. You want the ECMO team's opinion, but the primary team stays in charge."
+    scale: [mention, consult, take over]
+    answerAt: 1
+    why: "의견을 구하되 주치 팀이 계속 책임지면 consult예요. mention은 가볍게 언급만 하는 것이고, take over는 ECMO 팀이 환자 관리를 넘겨받는 것이라 뜻이 달라요."
+    example: "This meets criteria to consult the ECMO team now."
+    exKo: "지금 ECMO 팀에 자문을 구할 기준을 충족해요."
+  - kind: context
+    words: [w-referral]
+    word: referral
+    ko: 의뢰
+    scenes:
+      - {who: 동료에게, icon: monitor, en: "I'll send the ECMO referral now.", ok: true}
+      - {who: 차트 기록, icon: board, en: "ECMO referral placed after P/F stayed below 80 on maximal ventilation.", ok: true}
+      - {who: 가족에게, icon: me, en: "We've initiated an extracorporeal membrane oxygenation referral.", ok: false, fix: "We're asking the ECMO team to see him. They can take over some of the work of his lungs for a while."}
+    why: "동료와 차트에서는 ECMO referral이 짧고 정확해요. 가족에게는 extracorporeal membrane oxygenation 같은 긴 이름 대신 ECMO 팀이 어떤 도움을 주는지 쉬운 말로 풀어 줘요."
+- sit: 19
+  items:
+  - kind: slider
+    words: [w-unequal]
+    cue: "Breath sounds are clearly louder on the right than on the left."
+    scale: [slightly off, unequal, absent]
+    answerAt: 1
+    why: "한쪽이 분명히 더 크게 들리면 unequal이에요. slightly off는 거의 차이가 없을 때, absent는 한쪽이 아예 안 들릴 때라 더 위급한 소견이에요."
+    example: "High pressures with unequal breath sounds suggest a pneumothorax."
+    exKo: "압력이 높고 양쪽 호흡음이 다르면 기흉이 의심돼요."
+  - kind: context
+    words: [w-pneumothorax]
+    word: pneumothorax
+    ko: 기흉
+    scenes:
+      - {who: 동료에게, icon: monitor, en: "I'm worried about a pneumothorax, his pressures are up.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Possible pneumothorax; chest x-ray ordered.", ok: true}
+      - {who: 가족에게, icon: me, en: "He has a tension pneumothorax and may need emergent needle decompression.", ok: false, fix: "Some air has leaked outside his lung and is squeezing it, so the doctor needs to drain it right away."}
+    why: "동료와 차트에서는 pneumothorax가 정확하고 짧아요. 가족에게는 tension·needle decompression 같은 말보다 '폐 밖에 공기가 새서 눌러 빼야 한다'로 풀어 말해요."
+- sit: 20
+  items:
+  - kind: slider
+    words: [w-immediately]
+    cue: "The skin on his cheek just broke open and the mask is still pressing on it."
+    scale: [at some point, in an hour, immediately]
+    answerAt: 2
+    why: "피부가 벗겨졌는데 계속 눌리고 있으면 지체할 이유가 없어요. immediately로 바로 압박을 없애야 해요. at some point나 in an hour는 그동안 손상이 더 깊어질 수 있어요."
+    example: "Let's add padding and offload that area immediately."
+    exKo: "바로 패딩을 더하고 그 부위 압박을 없애 줄게요."
+  - kind: context
+    words: [w-offload]
+    word: offload
+    ko: 압박을 없애다
+    scenes:
+      - {who: 동료에게, icon: monitor, en: "Offload the cheek and turn his head to the left.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Cheek offloaded with foam padding, head turned left.", ok: true}
+      - {who: 가족에게, icon: me, en: "We have offloaded the pressure injury over his left zygoma.", ok: false, fix: "We've moved his head and padded his cheek so nothing presses on the sore spot."}
+    why: "동료와 차트에서는 offload가 '그 부위 하중을 없앤다'는 뜻으로 짧고 정확해요. 가족에게는 offload와 zygoma 같은 말 대신 무엇을 어떻게 했는지 쉬운 말로 전해요."

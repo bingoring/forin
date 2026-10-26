@@ -1,0 +1,115 @@
+# 상황 0~5 — 문장 낱장 필드(tag/icon/why/decoy/dk/ans/wr)와 순서 카드
+- s: 0
+  sents:
+    - {tag: "처치 설명", icon: gear, why: "so we get…으로 목적을 붙이면 왜 손대는지가 바로 전달돼요. re-level과 zero는 서로 다른 두 단계예요.", decoy: "to be safe", dk: ["다시 수평을 맞추고 라인 영점을 잡아서 빠른 수치가 나오게 할게요", "다시 수평을 맞추고 라인 영점을 잡아서 정확한 심박이 나오게 할게요"], ans: "accurate", wr: ["average", "early", "extra"]}
+    - {tag: "위치 설명", icon: monitor, why: "at the level of처럼 기준점을 짚어 말하면 어디에 맞춘다는 건지 분명해져요. 동맥압 트랜스듀서는 심장 높이(우심방 위치)에 맞춰요.", decoy: "near the pump", dk: ["모니터는 심장 높이에 맞춰 있어야 해요", "알람 장치는 심장 높이에 맞춰 있어야 해요"], ans: "level", wr: ["edge", "side", "back"]}
+    - {tag: "이상 발견", icon: magnify, why: "a little off처럼 완곡하게 말하면 환자가 놀라지 않으면서도 확인이 필요하다는 점은 전해져요.", decoy: "on the wall", dk: ["수치가 조금 이상해 보여서 장치 구성을 확인해 볼게요", "파형이 아주 이상해 보여서 장치 구성을 확인해 볼게요"], ans: "setup", wr: ["alarm", "order", "pole"]}
+    - {tag: "사전 안내", icon: me, why: "만지기 전에 touch your arm을 먼저 말하면 갑작스러운 접촉에 놀라지 않아요. for a moment는 금방 끝난다는 신호예요.", decoy: "on the pillow", dk: ["라인을 조정하는 동안 잠깐 손을 만질게요", "라인을 조정하는 동안 오래 팔을 만질게요"], ans: "touch", wr: ["wrap", "raise", "wash"]}
+    - {tag: "안심", icon: shield, why: "at all을 붙이면 조금도 아프지 않다는 뜻까지 한 번에 닿아서 환자의 걱정이 가라앉아요.", decoy: "for you", dk: ["전혀 춥지 않을 거예요", "전혀 늦지 않을 거예요"], ans: "hurt", wr: ["itch", "slip", "shake"]}
+    - {tag: "경과 안내", icon: chartup, why: "more accurate soon은 지금 수치가 덜 정확할 수 있다는 점과 곧 바로잡힌다는 점을 함께 알려요.", decoy: "by the window", dk: ["곧 맥박 수치가 더 정확하게 나올 거예요", "곧 혈압 수치가 더 높게 나올 거예요"], ans: "number", wr: ["cuff", "alarm", "pole"]}
+    - {tag: "지켜보는 중", icon: monitor, why: "closely를 더하면 대충이 아니라 계속 집중해서 보고 있다는 뜻이라 환자의 불안이 줄어요.", decoy: "for the alarm", dk: ["펌프를 자세히 지켜보면서 다 괜찮은지 확인하고 있어요", "모니터를 자세히 지켜보면서 다 끝났는지 확인하고 있어요"], ans: "closely", wr: ["rarely", "barely", "lately"]}
+  order:
+    tag: "처치 순서"
+    icon: compass
+    ko: "동맥압 파형이 이상할 때 말하는 4문장 순서"
+    why: "이상을 먼저 알리고, 무엇을 할지 말한 뒤, 기대되는 결과와 이후 관찰로 이어지면 환자가 흐름을 따라올 수 있어요."
+    lines:
+      - {en: "The waveform looks a little off.", icon: monitor, ko: "파형이 조금 이상해 보여요", note: 발견}
+      - {en: "So I'm going to re-level and zero the line.", icon: gear, ko: "그래서 수평을 맞추고 영점을 잡을게요", note: 조치}
+      - {en: "After that, your number should look more accurate.", icon: chartup, ko: "그러면 수치가 더 정확해질 거예요", note: 결과}
+      - {en: "Once it does, I'll keep a close eye on it.", icon: magnify, ko: "그렇게 되면 계속 자세히 지켜볼게요", note: 관찰}
+- s: 1
+  sents:
+    - {tag: "값 비교", icon: magnify, why: "두 값을 나란히 놓고 비교하면 어느 쪽이 이상한지 판단하기 쉬워요. 커프는 간헐 측정, 동맥압 라인은 박동마다 이어서 재요.", decoy: "against the bed", dk: ["커프 수치와 동맥압 라인을 기록해 볼게요", "맥박 수치와 동맥압 라인을 비교해 볼게요"], ans: "cuff", wr: ["pump", "bag", "label"]}
+    - {tag: "안심 설명", icon: shield, why: "can be를 쓰면 항상 정상이라는 단정이 아니라 가능성만 열어 두는 말이라, 차이가 클 때 다시 확인하자는 말로 이어 가기 쉬워요.", decoy: "in the room", dk: ["두 수치 사이에 작은 차이는 일정할 수 있어요", "두 수치 사이에 작은 차이는 설명할 수 있어요"], ans: "normal", wr: ["rare", "urgent", "slow"]}
+    - {tag: "팀 공유", icon: speech, why: "we're trusting처럼 우리라고 말하면 팀 전체가 같은 값을 기준으로 판단해요. 값이 갈릴 때는 기준을 맞춰야 같은 처치를 해요.", decoy: "about the cuff", dk: ["지금은 어느 커프를 신뢰하는지 팀에 알릴게요", "나중에는 어느 수치를 신뢰하는지 팀에 알릴게요"], ans: "reading", wr: ["room", "shift", "bed"]}
+    - {tag: "차이 설명", icon: monitor, why: "might와 a little로 폭을 줄여 말하면 환자가 수치 하나에 놀라지 않아요.", decoy: "on the chart", dk: ["다리 커프는 라인과 조금 다르게 나올 수 있어요", "팔 커프는 라인과 조금 늦게 나올 수 있어요"], ans: "differently", wr: ["slowly", "loudly", "gently"]}
+    - {tag: "위치 점검", icon: check, why: "to be sure it's reading correctly처럼 확인하는 이유를 먼저 밝혀 줘요. 커프가 헐겁거나 위치가 다르면 값이 달라질 수 있어요.", decoy: "of the bed", dk: ["빨리 재고 있는지 확인하려고 커프 위치를 점검할게요", "제대로 울리고 있는지 확인하려고 커프 위치를 점검할게요"], ans: "correctly", wr: ["gradually", "randomly", "quietly"]}
+    - {tag: "값 판단", icon: check, why: "since로 이유를 붙이면 팀이 왜 그 값을 기준으로 삼는지 바로 이해해요. 동맥압 라인은 박동마다 재서 파형이 안정적일 때 더 믿을 만해요.", decoy: "in the cuff", dk: ["지금은 더 빠른 동맥압 라인을 신뢰할게요", "내일까지는 더 일관된 동맥압 라인을 신뢰할게요"], ans: "consistent", wr: ["convenient", "expensive", "familiar"]}
+    - {tag: "경과 약속", icon: speech, why: "as soon as로 시점을 조건에 묶으면 막연한 곧보다 환자가 기다릴 기준을 알 수 있어요.", decoy: "after the shift", dk: ["팀이 어느 방법을 따를지 정하면 바로 알려 드릴게요", "팀이 어느 수치를 따를지 정하면 저녁에 알려 드릴게요"], ans: "decides", wr: ["reports", "wonders", "argues"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "커프와 라인 수치가 다를 때 말하는 4문장 순서"
+    why: "차이를 먼저 알리고, 비교로 이유를 찾은 뒤, 어느 값을 믿을지 정하고, 마지막에 팀에 공유해야 판단이 따라와요."
+    lines:
+      - {en: "Your arm cuff and the line show different numbers.", icon: monitor, ko: "팔 커프와 라인 수치가 서로 달라요", note: 발견}
+      - {en: "To find out why, I'll compare the two readings side by side.", icon: magnify, ko: "이유를 찾으려고 두 수치를 나란히 비교할게요", note: 비교}
+      - {en: "From what I see, the arterial line is more consistent, so I'll trust it for now.", icon: check, ko: "라인이 더 일관되니 지금은 그걸 신뢰할게요", note: 판단}
+      - {en: "I'll tell the team which reading we chose.", icon: speech, ko: "어느 수치를 골랐는지 팀에 알릴게요", note: 보고}
+- s: 2
+  sents:
+    - {tag: "공동 확인", icon: lock, why: "Let's로 시작하면 지시가 아니라 함께 하는 확인으로 들려서 동료가 부담 없이 같이 봐요. 승압제는 보통 전용 중심라인으로 줘요.", decoy: "with the pump", dk: ["노르에피네프린 백이 전용 중심라인 옆에 걸려 있는지 같이 확인해요", "노르에피네프린이 전용 중심라인으로 들어가는 속도를 같이 확인해요"], ans: "dedicated", wr: ["disposable", "portable", "temporary"]}
+    - {tag: "이중 확인", icon: check, why: "verify는 check보다 대조해 맞는지 확인한다는 뜻이 강해서 고위험 약물 인계에 어울려요.", decoy: "of the bag", dk: ["유효기간과 펌프 설정을 확인할게요", "농도와 펌프 전원을 확인할게요"], ans: "concentration", wr: ["expiration", "location", "temperature"]}
+    - {tag: "라벨 확인", icon: pencil, why: "확인이 끝난 결과를 사실로 말하는 문장이라, 처방과 백 두 가지를 짚어 상대가 무엇을 봤는지 알 수 있어요.", decoy: "to the pump", dk: ["라벨이 처방과 펌프에 맞는지 확인했어요", "라벨이 환자와 백에 맞는지 확인했어요"], ans: "matches", wr: ["covers", "hides", "blocks"]}
+    - {tag: "안전 규칙", icon: shield, why: "always를 앞에 두면 개인 습관이 아니라 병동 규칙이라는 뜻이라, 동료의 확인 요청이 불신으로 들리지 않아요.", decoy: "once more", dk: ["이런 고위험 약물은 항상 세 번 확인해요", "이런 고위험 펌프는 항상 두 번 확인해요"], ans: "high-alert", wr: ["high-speed", "high-rise", "high-level"]}
+    - {tag: "설정 확인", icon: gear, why: "exactly를 붙이면 대충 맞는 게 아니라 처방 속도와 같다는 뜻이에요. 속도 오류는 바로 혈압 변동으로 이어져요.", decoy: "on the screen", dk: ["펌프 크기가 처방과 정확히 맞아요", "펌프 속도가 라벨과 정확히 맞아요"], ans: "exactly", wr: ["roughly", "partly", "slowly"]}
+    - {tag: "서명 약속", icon: pencil, why: "once we both…로 조건을 달면 두 사람이 함께 확인해야 서명한다는 절차가 분명해져요. 독립 이중 확인은 각자 따로 봐야 해요.", decoy: "before the shift", dk: ["우리 셋 다 설정을 확인하면 서명할게요", "우리 둘 다 설정을 확인하면 기록할게요"], ans: "once", wr: ["until", "unless", "though"]}
+    - {tag: "인계 허락", icon: handshake2, why: "you're clear to…는 해도 된다는 허가를 분명히 내주는 말이라, 확인이 끝난 뒤 인계 시점이 모호해지지 않아요.", decoy: "to the desk", dk: ["좋아요, 다 맞네요. 모니터 인계받으셔도 돼요", "좋아요, 다 정리됐네요. 펌프 인계받으셔도 돼요"], ans: "everything", wr: ["everyone", "anything", "something"]}
+  order:
+    tag: "확인 순서"
+    icon: compass
+    ko: "승압제 펌프를 인계받기 전 4문장 순서"
+    why: "라인 확인 뒤에 농도와 설정을 보고, 라벨까지 맞는 걸 확인한 다음에야 서명하고 인계해야 안전해요."
+    lines:
+      - {en: "Let's confirm the norepinephrine is running through the dedicated central line.", icon: lock, ko: "노르에피네프린이 전용 중심라인으로 들어가는지 확인해요", note: 라인}
+      - {en: "With the line confirmed, I'll verify the concentration and the pump settings.", icon: gear, ko: "라인 확인 뒤 농도와 펌프 설정을 확인할게요", note: 설정}
+      - {en: "With those checked, I can see the label matches the order and the bag.", icon: pencil, ko: "그걸 보고 나니 라벨이 처방과 백에 맞아요", note: 라벨}
+      - {en: "Since we both agree, I'll sign off, and you're clear to take over the pump.", icon: handshake2, ko: "둘 다 동의하니 서명할게요, 인계받으셔도 돼요", note: 인계}
+- s: 3
+  sents:
+    - {tag: "수치 의미", icon: chartup, why: "tells us if…로 수치가 의미하는 바를 한 문장에 풀어 주면 가족이 숫자 대신 몸 상태로 이해해요. 평균 동맥압은 장기로 가는 혈류 압력의 지표예요.", decoy: "of his heart", dk: ["평균 압력을 보면 피부에 혈액이 충분히 가는지 알 수 있어요", "최고 압력을 보면 장기에 혈액이 충분히 가는지 알 수 있어요"], ans: "average", wr: ["highest", "lowest", "daily"]}
+    - {tag: "목표 설명", icon: star, why: "aiming to를 쓰면 보장이 아니라 목표라는 뜻이라, 가족에게 과한 약속을 하지 않으면서 방향을 알려요.", decoy: "at all times", dk: ["그 체온을 안전한 범위 안에서 유지하려고 해요", "그 수치를 좁은 범위 안에서 유지하려고 해요"], ans: "aiming", wr: ["waiting", "guessing", "racing"]}
+    - {tag: "약 설명", icon: pill, why: "helps us hold처럼 약이 혼자 해결하는 게 아니라 의료진과 함께 수치를 붙들어 둔다는 구도로 말해요.", decoy: "all night", dk: ["이 수액이 목표 수치를 안정적으로 유지하게 도와줘요", "이 약이 목표 수치를 안정적으로 올리게 도와줘요"], ans: "steady", wr: ["shaky", "sharp", "brief"]}
+    - {tag: "이유 설명", icon: bulb, why: "to heal well의 to + 동사는 하기 위해라는 목적이에요. 안정적인 혈류가 있어야 회복에 필요한 산소와 영양이 계속 전달돼요.", decoy: "for a week", dk: ["근육이 잘 회복되려면 안정적인 혈액 공급이 필요해요", "장기가 잘 회복되려면 안정적인 산소 공급이 필요해요"], ans: "supply", wr: ["sample", "count", "test"]}
+    - {tag: "대응 설명", icon: bell, why: "right away를 문장 끝에 두면 낮아지면 곧장 조치한다는 속도가 마지막까지 남아요. If 절은 조건, 뒤는 우리가 하는 행동이에요.", decoy: "for an hour", dk: ["평균 압력이 조금 낮아지면 바로 약 용량을 조정해요", "심박이 너무 낮아지면 바로 약 용량을 조정해요"], ans: "drops", wr: ["rises", "jumps", "climbs"]}
+    - {tag: "감시 이유", icon: monitor, why: "so we can…은 그래서 ~할 수 있도록이라는 목적 표현이에요. 자주 보는 이유를 목적으로 밝히면 계속 확인하는 모습이 불안이 아니라 대비로 보여요.", decoy: "in the log", dk: ["자주 그 알람을 확인해서 변화가 있으면 빨리 대응해요", "자주 그 수치를 확인해서 알람이 울리면 빨리 대응해요"], ans: "quickly", wr: ["quietly", "politely", "loudly"]}
+    - {tag: "설명 약속", icon: speech, why: "any new number처럼 any를 쓰면 좋은 수치든 나쁜 수치든 숨기지 않고 전한다는 뜻이라 신뢰가 쌓여요.", decoy: "to the doctor", dk: ["수치가 바뀌는 걸 보면 바로 보여 드릴게요", "수치가 바뀌는 걸 보면 내일 설명해 드릴게요"], ans: "explain", wr: ["repeat", "print", "translate"]}
+  order:
+    tag: "설명 흐름"
+    icon: compass
+    ko: "가족에게 혈압 목표를 설명하는 4문장 순서"
+    why: "수치의 뜻을 먼저 풀고, 왜 목표를 두는지, 약이 어떻게 돕는지, 떨어지면 어떻게 하는지로 이어야 가족이 따라와요."
+    lines:
+      - {en: "The average pressure tells us if his organs are getting enough blood.", icon: chartup, ko: "평균 압력으로 장기에 혈액이 가는지 알 수 있어요", note: 의미}
+      - {en: "That is why we aim to keep that number in a safe range.", icon: star, ko: "그래서 그 수치를 안전한 범위로 유지하려 해요", note: 목표}
+      - {en: "This is where the medication helps: it holds that number steady.", icon: pill, ko: "여기서 약이 그 수치를 안정적으로 잡아 줘요", note: 약}
+      - {en: "If that changes, we adjust the medication right away.", icon: bell, ko: "그게 변하면 바로 약 용량을 조정해요", note: 대응}
+- s: 4
+  sents:
+    - {tag: "경향 보고", icon: chartup, why: "has been -ing는 지금까지 이어진 변화를 말하는 현재완료진행형이라, 한 번의 수치가 아니라 흐름을 짚어요.", decoy: "since lunch", dk: ["지난 두 시간 동안 혈압이 서서히 떨어지는 추세예요", "지난 세 시간 동안 혈압이 급격히 떨어지는 추세예요"], ans: "slowly", wr: ["suddenly", "sharply", "briefly"]}
+    - {tag: "기록 이유", icon: pencil, why: "to catch any change early처럼 기록의 목적을 말하면 환자가 매시간 재는 번거로움을 이해해요. 빠른 발견이 악화 대응의 핵심이에요.", decoy: "at noon", dk: ["변화를 일찍 잡으려고 매시간 섭취량을 기록하고 있어요", "변화를 일찍 잡으려고 매시간 활력징후를 확인하고 있어요"], ans: "early", wr: ["twice", "gently", "fully"]}
+    - {tag: "핵심 설명", icon: chartup, why: "more than any single…은 비교 대상을 낮춰서 수치 하나에 놀라지 말고 흐름을 보라는 방향을 줘요.", decoy: "like before", dk: ["단 하나의 알람보다 추세가 더 중요해요", "단 하나의 수치보다 기록이 더 중요해요"], ans: "trend", wr: ["alarm", "label", "order"]}
+    - {tag: "기록 방식", icon: pencil, why: "exact time을 함께 적어 두면 추세를 해석할 때 간격이 정확해져요. 경향 판단은 수치뿐 아니라 시각에도 의존해요.", decoy: "on paper", dk: ["첫 수치를 잰 정확한 시각을 기록에 남길게요", "각 수치를 잰 정확한 시각을 메모에 남길게요"], ans: "exact", wr: ["rough", "early", "usual"]}
+    - {tag: "보고 기준", icon: bell, why: "If 절에 보고 기준을 걸고 right away를 붙이면 언제 움직일지가 분명해요. 악화 추세는 한 수치보다 먼저 알려야 할 신호예요.", decoy: "after lunch", dk: ["추세가 한 번 떨어지면 바로 의사에게 알릴게요", "추세가 계속 변하면 바로 의사에게 알릴게요"], ans: "dropping", wr: ["rising", "pausing", "stopping"]}
+    - {tag: "인계 약속", icon: handshake2, why: "hand off는 책임을 다음 근무자에게 넘기는 말이고, clearly를 더하면 숫자뿐 아니라 흐름의 의미까지 전한다는 뜻이에요.", decoy: "by phone", dk: ["인계할 때 처방을 명확히 전달할게요", "인계할 때 추세를 매번 전달할게요"], ans: "clearly", wr: ["loosely", "slowly", "closely"]}
+    - {tag: "안심 설명", icon: shield, why: "on its own은 그것만으로는이라는 한정이라, 낮은 수치를 무시하라는 뜻이 아니라 판단 근거를 하나로 두지 않는다는 뜻이에요.", decoy: "at home", dk: ["낮은 수치 하나만으로는 놀랄 일이 아니에요. 기록이 중요하니까요", "낮은 수치 하나만으로는 놀랄 일이 아니에요. 시간이 중요하니까요"], ans: "counts", wr: ["waits", "hurts", "fades"]}
+  order:
+    tag: "보고 흐름"
+    icon: compass
+    ko: "혈압 하강 추세를 설명하는 4문장 순서"
+    why: "추세를 말하고, 매시간 기록하는 이유를 잇고, 단일 수치보다 흐름이 중요하다는 해석 뒤에, 계속되면 의사에게 알린다고 닫아요."
+    lines:
+      - {en: "Her blood pressure has been slowly trending down over the last three hours.", icon: chartup, ko: "지난 세 시간 동안 혈압이 서서히 떨어졌어요", note: 추세}
+      - {en: "That is why I'm charting the vitals every hour.", icon: pencil, ko: "그래서 매시간 활력징후를 기록하고 있어요", note: 기록}
+      - {en: "Looking at those entries side by side, the trend matters more than any single reading.", icon: bulb, ko: "기록을 나란히 보면 한 수치보다 추세가 중요해요", note: 해석}
+      - {en: "If that trend keeps dropping, I'll call the doctor right away.", icon: bell, ko: "그 추세가 계속 떨어지면 바로 의사에게 알릴게요", note: 보고}
+- s: 5
+  sents:
+    - {tag: "자세 안내", icon: me, why: "position you flat처럼 목적어를 바로 쓰면 환자에게 내가 무엇을 할지 분명히 알려요. 중심정맥압은 몸의 높이가 기준이라 자세가 값에 영향을 줘요.", decoy: "next to me", dk: ["정확한 수치가 나오게 자세를 비스듬하게 잡아 드릴게요", "빠른 수치가 나오게 자세를 평평하게 잡아 드릴게요"], ans: "flat", wr: ["upright", "sideways", "forward"]}
+    - {tag: "영점 설명", icon: gear, why: "at the right level로 정확한 기준 높이를 가리켜요. 영점은 대기압을 0으로 기준 잡는 단계라 높이가 틀리면 이후 값이 모두 어긋나요.", decoy: "at the top", dk: ["먼저 올바른 높이에서 라인 영점을 확인할게요", "먼저 올바른 높이에서 모니터 영점을 맞출게요"], ans: "level", wr: ["speed", "price", "angle"]}
+    - {tag: "측정 시점", icon: lab, why: "end-expiration은 호흡 중 흉강 압력이 가장 안정적인 순간이라 중심정맥압을 여기서 읽어요.", decoy: "at night", dk: ["빠른 값을 얻기 위해 날숨 끝에서 측정해요", "정확한 값을 얻기 위해 날숨 끝에서 기록해요"], ans: "true", wr: ["fast", "double", "loud"]}
+    - {tag: "안심", icon: shield, why: "only를 넣으면 짧게 끝난다는 점이 강조돼서 환자의 긴장이 풀려요. 평소 호흡을 유지해야 날숨 끝 값이 안정적으로 읽혀요.", decoy: "at the sink", dk: ["십 분이면 끝나니까 평소대로 숨 쉬셔도 돼요", "잠깐이면 끝나니까 평소대로 말씀하셔도 돼요"], ans: "normally", wr: ["loudly", "heavily", "twice"]}
+    - {tag: "협조 요청", icon: me, why: "when to hold still처럼 when to + 동사는 언제 ~할지를 뜻해서, 지금 움직이지 말라는 게 아니라 순간을 알려 주겠다는 말이에요.", decoy: "for a while", dk: ["주사를 놓는 동안 언제 가만히 계셔야 하는지 알려 드릴게요", "수치를 재는 동안 언제 눈 감고 계셔야 하는지 알려 드릴게요"], ans: "reading", wr: ["shower", "meal", "nap"]}
+    - {tag: "표시 설명", icon: pencil, why: "so we measure the same spot에서 so는 목적이라, 표시하는 이유가 일관성이라는 걸 알려 줘요. 같은 기준점에서 재야 추세를 비교할 수 있어요.", decoy: "with a pen", dk: ["매번 같은 사람이 측정하도록 가슴에 높이를 표시할게요", "매번 같은 자리에서 측정하도록 가슴에 이름을 적을게요"], ans: "chest", wr: ["head", "foot", "knee"]}
+    - {tag: "결과 안내", icon: monitor, why: "show up on은 화면에 나타난다는 뜻의 구동사예요. in a moment로 기다릴 시간이 짧다고 알려서 환자가 가만히 있게 도와요.", decoy: "by the bed", dk: ["잠시 후 차트에 수치가 나올 거예요", "내일 모니터에 수치가 나올 거예요"], ans: "number", wr: ["answer", "message", "light"]}
+  order:
+    tag: "준비 순서"
+    icon: compass
+    ko: "중심정맥압을 재기 전 4문장 순서"
+    why: "자세를 먼저 잡고, 높이를 표시하고, 그 지점에서 영점을 맞춘 뒤, 마지막으로 가만히 있을 순간을 알려야 값이 정확해요."
+    lines:
+      - {en: "I'll position you flat so the reading is accurate.", icon: me, ko: "정확하도록 자세를 평평하게 잡을게요", note: 자세}
+      - {en: "With you flat, I'm marking the level on your chest.", icon: pencil, ko: "누운 상태에서 가슴에 높이를 표시할게요", note: 표시}
+      - {en: "I'll zero the line at that mark.", icon: gear, ko: "그 표시에서 라인 영점을 맞출게요", note: 영점}
+      - {en: "Once the line is zeroed, I'll tell you when to hold still.", icon: play, ko: "영점 뒤 언제 가만히 계실지 알려 드릴게요", note: 협조}

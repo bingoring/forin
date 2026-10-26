@@ -1,0 +1,112 @@
+# 각 문장: [tag, icon, why, decoy, 오답ko1, 오답ko2, 빈칸 정답, 오답1, 오답2, 오답3]
+# order lines: [en, icon, ko, note]
+situations:
+- title: "심인성 쇼크 초기 사정"
+  s:
+  - ["사정 안내", "stetho", "지금 하는 일을 소리 내어 말하면 불안한 환자가 상황을 따라올 수 있어요. 호흡·혈압·순환은 쇼크 사정의 기본 세 축이에요.", "your temperature", "숨쉬는 것, 혈압, 의식을 확인하고 있어요.", "숨쉬는 것, 피부, 순환을 확인하고 있어요.", "circulation", "hearing", "vision", "swallowing"]
+  - ["상태 설명", "chartup", "수치를 숨기지 않고 'a little low'로 정도를 함께 전하면 사실을 알리면서도 환자가 놀라지 않게 해요.", "this morning", "지금 심박이 조금 빨라요.", "지금 산소가 조금 낮아요.", "pressure", "sugar", "count", "flow"]
+  - ["소견 설명", "stetho", "'hear'로 직접 들은 소견임을 밝히고 'we'll help'를 바로 붙여, 나쁜 소견을 알리면서 곧 도움이 간다는 점을 전해요.", "some noise in your chest", "배에 물이 조금 찬 소리가 들려서, 저희가 도와드릴게요.", "폐에 물이 조금 찬 소리가 들려서, 저희가 알려드릴게요.", "fluid", "air", "dust", "smoke"]
+  - ["청진 안내", "stetho", "'closely'를 문장 끝에 붙여 서두르지 않고 꼼꼼히 듣는다는 인상을 줘요. 청진 전에 하는 말은 환자의 긴장을 풀어 줘요.", "to your back", "배와 폐 소리를 자세히 들어볼게요.", "심장과 등 소리를 자세히 들어볼게요.", "closely", "quickly", "casually", "lightly"]
+  - ["의식 확인", "me", "말 대신 손을 쥐게 하면 말을 못 하는 환자도 반응할 수 있어요. 'if you can hear me'는 그 반응을 의식 확인으로 연결해요.", "Lift your hand", "제 목소리 들리시면 제 눈을 보세요.", "제 목소리 들리시면 제 발을 꽉 쥐어보세요.", "Squeeze", "Release", "Shake", "Pat"]
+  - ["곁에서 안심", "shield", "'I'm right here'는 곁에 있겠다는 약속이고, 팀 소식을 계속 전하겠다는 말이 더해져 혼자가 아니라는 안심을 줘요.", "your family", "제가 바로 문 앞에 있고, 팀에 계속 알릴게요.", "제가 바로 여기 있고, 팀과 계속 의논할게요.", "updated", "busy", "quiet", "away"]
+  - ["보고", "speech", "'now'를 붙여 미루지 않고 바로 보고한다는 뜻을 전해요. 변화(changes)를 구체적으로 짚으면 무엇을 알리는지 분명해져요.", "to the supervisor", "이 서류들을 지금 의사에게 보고할게요.", "이 소리들을 지금 의사에게 보고할게요.", "changes", "sheets", "curtains", "lights"]
+  order:
+    tag: "대화 흐름"
+    icon: "compass"
+    ko: "초기 사정과 보고 4문장 순서"
+    why: "확인한 일을 먼저 말하고, 나온 소견을 알린 뒤, 의사에게 보고한다고 전해요. 마지막에 의사가 정할 다음 단계를 말해 환자의 불안을 덜어요."
+    lines:
+    - ["I'm checking your breathing, blood pressure, and circulation.", "stetho", "호흡, 혈압, 순환을 확인하고 있어요", "확인"]
+    - ["Your blood pressure is a little low right now.", "chartup", "지금 혈압이 조금 낮아요", "소견"]
+    - ["I'm reporting that low pressure to the doctor now.", "speech", "그 낮은 혈압을 지금 의사에게 보고할게요", "보고"]
+    - ["He'll tell us what to do next, and I'll keep you updated.", "shield", "다음 할 일은 의사가 알려 줄 거고 계속 알려드릴게요", "안심"]
+- title: "강심제 주입 준비"
+  s:
+  - ["농도 확인", "pill", "'against the order'로 기준이 처방임을 밝혀요. 고위험 약은 처방 기준으로 농도를 맞춰 보는 것이 안전 절차예요.", "against the chart", "도부타민 속도를 처방과 대조해서 확인할게요.", "도부타민 이름을 처방과 대조해서 확인할게요.", "concentration", "expiration", "packaging", "supplier"]
+  - ["이중 확인", "check", "수동태로 쓰면 누가 했는지보다 '라벨 부착과 이중 확인이 끝났다'는 결과가 앞에 와요. 고위험 약은 다른 간호사와 독립적으로 재확인하는 것이 기본이에요.", "by the pharmacy", "수액 라인에 라벨을 붙이고 다른 간호사와 함께 재확인했어요.", "수액백에 날짜를 적고 다른 간호사와 함께 재확인했어요.", "labeled", "weighed", "shaken", "cooled"]
+  - ["모니터 필요", "monitor", "'continuous'로 간격을 두고 재는 것이 아니라 계속 본다는 점을 분명히 해요. 강심제는 심박과 혈압에 바로 영향을 주기 때문이에요.", "respiratory", "지속적인 심장·산소 모니터링이 필요해요.", "지속적인 심장·체온 모니터링이 필요해요.", "needs", "wants", "likes", "fears"]
+  - ["순서 안내", "monitor", "'before we start'로 모니터 연결이 주입보다 먼저임을 못 박아요. 반응을 바로 볼 수 있어야 안전하게 시작할 수 있어요.", "on oxygen", "검사를 시작하기 전에 모니터부터 연결할게요.", "채혈을 시작하기 전에 모니터부터 연결할게요.", "monitor", "scale", "stretcher", "commode"]
+  - ["용량 원칙", "gear", "'start low and titrate'는 낮게 시작해 반응에 따라 올린다는 표준 표현이에요. 강심제는 반응을 보며 용량을 맞추는 약이에요.", "to his weight", "낮은 용량부터 시작해서 체중을 보며 조절할게요.", "낮은 용량부터 시작해서 식사를 보며 조절할게요.", "response", "schedule", "weekend", "appetite"]
+  - ["주입 중 관찰", "magnify", "'once it's running'으로 관찰이 주입이 돌아가는 때부터 이어진다고 알려요. 강심제는 심박수를 올릴 수 있어 시작 직후 변화를 놓치면 안 돼요.", "his temperature", "주입이 시작되면 체온을 자세히 지켜볼게요.", "주입이 시작되면 소변량을 자세히 지켜볼게요.", "running", "empty", "labeled", "unplugged"]
+  order:
+    tag: "대화 흐름"
+    icon: "pill"
+    ko: "강심제 주입 준비 4문장 순서"
+    why: "처방과 농도를 먼저 맞추고, 라벨과 이중 확인을 마친 뒤, 모니터를 연결하고 나서 낮은 용량으로 시작해요. 확인이 끝나기 전에는 주입하지 않아요."
+    lines:
+    - ["I'll confirm the dobutamine concentration against the order.", "pill", "도부타민 농도를 처방과 대조해서 확인할게요", "농도 확인"]
+    - ["The bag with that concentration is labeled and double-checked with another nurse.", "check", "그 농도의 수액백은 라벨을 붙이고 다른 간호사와 재확인해요", "이중 확인"]
+    - ["With that done, I'm putting him on the monitor before we start the drip.", "monitor", "그게 끝나면 주입 전에 모니터부터 연결할게요", "모니터"]
+    - ["I'll start low and titrate to his response.", "gear", "낮게 시작해서 반응을 보며 조절할게요", "시작"]
+- title: "12유도 심전도 신속 확보"
+  s:
+  - ["즉시 시행", "monitor", "'right now'로 지체 없이 하겠다고 말해요. 가슴 통증에서는 12유도 심전도를 빨리 얻는 것이 첫 단계예요.", "the machine", "지금 바로 5유도 심전도를 확보할게요.", "지금 바로 3유도 심전도를 확보할게요.", "ECG", "ultrasound", "X-ray", "CT scan"]
+  - ["증상 보고", "faceWorried", "'started about ten minutes ago'처럼 시작 시점을 짧게 보고하면 의사가 치료 시간대를 판단하기 쉬워요.", "since lunch", "가슴 통증이 약 20분 전에 시작됐어요.", "등 통증이 약 10분 전에 시작됐어요.", "chest", "back", "leg", "head"]
+  - ["판독 포인트", "magnify", "'ST changes'는 심전도에서 허혈을 가리키는 소견이에요. 'suggest'를 쓰면 진단을 단정하지 않고 의사의 판단을 남겨 둬요.", "for any noise", "허혈을 시사하는 T파 변화가 있는지 보고 있어요.", "부정맥을 시사하는 ST 변화가 있는지 보고 있어요.", "ischemia", "infection", "anxiety", "dehydration"]
+  - ["부착 요령", "check", "'exactly right'로 위치가 정확해야 한다는 점을 강조해요. 전극 위치가 틀리면 파형이 달라져 잘못 읽힐 수 있어요.", "for a quick scan", "깨끗한 파형을 위해 유도선을 단단히 붙여야 해요.", "깨끗한 파형을 위해 종이를 정확히 넣어야 해요.", "exactly", "roughly", "barely", "randomly"]
+  - ["즉시 보고", "speech", "'immediately'를 끝에 붙여 의사에게 가는 시점이 지금임을 분명히 해요. 허혈이 의심되는 심전도는 의사가 바로 봐야 해요.", "for the chart", "이 기록을 즉시 의사에게 보여줄게요.", "이 보고서를 즉시 의사에게 보여줄게요.", "immediately", "gently", "politely", "kindly"]
+  - ["기록 처리", "pencil", "'a copy for the chart'로 사본이 기록용임을 먼저 밝히면 무엇을 출력하는지 오해가 없어요.", "for the patient", "차트에 넣을 사본을 바로 복사할게요.", "차트에 넣을 사본을 바로 스캔할게요.", "copy", "label", "receipt", "ticket"]
+  order:
+    tag: "대화 흐름"
+    icon: "compass"
+    ko: "심전도 확보 4문장 순서"
+    why: "통증 시작 시점을 먼저 확인하고, 심전도를 바로 찍은 뒤, 허혈 소견을 살펴서 의사에게 즉시 보여줘요."
+    lines:
+    - ["His chest pain started about ten minutes ago.", "faceWorried", "가슴 통증이 약 10분 전에 시작됐어요", "증상"]
+    - ["So I'll get a 12-lead ECG right now.", "monitor", "그래서 지금 바로 12유도 심전도를 확보할게요", "시행"]
+    - ["I'm looking at it for any ST changes that suggest ischemia.", "magnify", "허혈을 시사하는 ST 변화가 있는지 보고 있어요", "판독"]
+    - ["Either way, I'll show this to the physician immediately.", "speech", "어느 쪽이든 이걸 즉시 의사에게 보여줄게요", "보고"]
+- title: "폐부종 체위·산소 협조"
+  s:
+  - ["체위 변경", "me", "'Let's'로 함께 하자는 말투를 써서 환자가 도움을 받아들이기 쉬워요. 상체를 세우면 폐에 수분이 찬 환자의 호흡이 한결 편해져요.", "to rest", "식사가 편하도록 상체를 세워서 앉혀드릴게요.", "통증이 줄도록 상체를 세워서 앉혀드릴게요.", "easier", "louder", "longer", "shorter"]
+  - ["침대 조절", "gear", "'a little more'은 한 번에 크게 올리지 않고 조금씩 올린다는 뜻이에요. 올리는 정도를 말해 주면 환자가 놀라지 않아요.", "the blanket", "침대 난간을 조금 더 올려드릴게요.", "침대 커튼을 조금 더 올려드릴게요.", "head", "rail", "curtain", "blanket"]
+  - ["산소 조절", "monitor", "'turning up'은 지금 하는 조정을 알리는 표현이고, 'watching your levels'를 붙여 올린 뒤 반응을 확인한다는 것까지 전해요.", "your diet", "산소를 올리면서 안색을 지켜볼게요.", "산소를 올리면서 맥박을 지켜볼게요.", "levels", "clothes", "pillows", "snacks"]
+  - ["호전 알림", "star", "'already'를 붙여 빠르게 좋아졌다는 점을 짚어 주면 환자가 안도해요. 실제 수치로 확인된 호전만 전해야 해요.", "is checked", "산소 수치를 벌써 확인했어요.", "산소 줄이 벌써 연결됐어요.", "better", "worse", "lower", "louder"]
+  - ["증상 알림 요청", "bell", "'Tell me if'로 환자가 먼저 알릴 기준을 정해 줘요. 숨이 더 찰 때 바로 알리게 하면 악화를 놓치지 않아요.", "if you hear", "가슴이 더 아픈 느낌이 들면 말씀해 주세요.", "어지러운 느낌이 더 들면 말씀해 주세요.", "breath", "time", "money", "patience"]
+  - ["호흡 코칭", "speaker", "'for me'를 붙이면 지시가 부탁처럼 들려서 숨찬 환자가 따라 하기 쉬워요. 'slow, deep'은 호흡 코칭에서 가장 흔한 표현이에요.", "for a while", "천천히 깊게 팔을 들어보세요.", "천천히 깊게 눈을 감아보세요.", "deep", "loud", "long", "soft"]
+  order:
+    tag: "대화 흐름"
+    icon: "compass"
+    ko: "자세와 산소 지원 4문장 순서"
+    why: "자세를 먼저 세워 주고 침대를 더 올린 다음, 산소를 올리며 수치를 보고, 좋아진 수치를 환자에게 알려요."
+    lines:
+    - ["Let's sit you upright to make breathing easier.", "me", "호흡이 편하도록 상체를 세워서 앉혀드릴게요", "체위"]
+    - ["I'll raise the head of your bed a little more.", "gear", "침대 머리 쪽을 조금 더 올려드릴게요", "침대"]
+    - ["With you up like this, I'm turning up your oxygen and watching your levels.", "monitor", "이렇게 앉으신 채로 산소를 올리며 수치를 지켜볼게요", "산소"]
+    - ["Your oxygen level looks better already.", "star", "산소 수치가 벌써 좋아졌어요", "호전"]
+- title: "수분 균형·체중 모니터"
+  s:
+  - ["이유 설명", "shield", "'to protect your heart'로 이유를 먼저 밝히면 귀찮은 기록이 환자 자신을 위한 일로 들려요. 'in and out'은 섭취량과 배출량을 함께 센다는 뜻이에요.", "your skin", "피부를 보호하려고 들어오고 나가는 수분을 추적해요.", "심장을 보호하려고 들어오고 나가는 약을 추적해요.", "fluids", "visits", "meals", "steps"]
+  - ["섭취량 질문", "speech", "'exactly how much'로 대략이 아니라 정확한 양을 묻고 있어요. 수분 기록은 마신 양이 정확해야 쓸모가 있어요.", "you ate", "어제 정확히 얼마나 드셨는지 말씀해 주시겠어요?", "오늘 정확히 몇 시에 드셨는지 말씀해 주시겠어요?", "exactly", "vaguely", "freely", "daily"]
+  - ["체중 이유", "chartup", "'tell us if'로 체중이 알려 주는 정보를 한 줄로 말해요. 하루 사이에 체중이 갑자기 늘면 수분이 쌓였을 수 있다는 뜻이에요.", "is running out", "매일 재는 체온이 수분이 쌓이고 있는지 알려줘요.", "매일 재는 체중이 영양이 쌓이고 있는지 알려줘요.", "building", "draining", "leaking", "flowing"]
+  - ["측정 규칙", "calendar", "'the same time'을 강조하면 매일 비교가 되도록 조건을 맞춘다는 이유가 전해져요. 같은 시각·같은 조건에서 재야 체중 변화를 믿을 수 있어요.", "after lunch", "매일 저녁 같은 시간에 체중을 재요.", "매일 아침 같은 시간에 혈압을 재요.", "weigh", "wake", "feed", "bathe"]
+  - ["부종 확인", "magnify", "'for any swelling'은 있는지 없는지를 열어 두고 보는 표현이라 환자에게 부담이 덜해요. 다리 부종은 수분이 쌓였는지 보는 눈에 띄는 단서예요.", "your hands", "다리에 멍이 있는지 확인하고 있어요.", "팔에 부종이 있는지 확인하고 있어요.", "swelling", "bruising", "rash", "redness"]
+  - ["소견 의미", "bulb", "'tells us'로 부종이 수치처럼 하나의 정보라는 점을 말해요. 의학 용어 없이 '심장이 수분을 감당하는 정도'로 풀어 주면 이해하기 쉬워요.", "how your skin", "이 체중이 심장이 수분을 얼마나 감당하고 있는지 알려줘요.", "이 부종이 폐가 수분을 얼마나 감당하고 있는지 알려줘요.", "handling", "spilling", "hiding", "wasting"]
+  order:
+    tag: "대화 흐름"
+    icon: "compass"
+    ko: "수분 균형 설명 4문장 순서"
+    why: "이유를 먼저 말하면 이어지는 체중 측정, 섭취량 질문, 다리 확인이 환자를 위한 일로 들려요. 마지막에 확인 결과가 의미하는 바로 마무리해요."
+    lines:
+    - ["We track your fluids in and out to protect your heart.", "shield", "심장을 보호하려고 들어오고 나가는 수분을 추적해요", "이유"]
+    - ["For that, we weigh you at the same time every morning.", "calendar", "그래서 매일 아침 같은 시간에 체중을 재요", "체중"]
+    - ["What you drink counts too, so can you tell me exactly how much today?", "speech", "마시는 양도 중요하니 오늘 정확히 얼마나 드셨는지 말씀해 주시겠어요?", "섭취량"]
+    - ["Last, I'm checking your legs for any swelling.", "magnify", "마지막으로 다리에 부종이 있는지 확인하고 있어요", "부종"]
+- title: "말초 관류·모틀링 관찰"
+  s:
+  - ["소견 설명", "faceWorried", "'can be'로 징후일 수 있다고만 말해 확정 진단처럼 들리지 않게 해요. 모틀링은 말초 순환이 떨어질 때 나타날 수 있는 소견이에요.", "a bruise", "그 얼룩덜룩한 반점은 감염이 있다는 징후일 수 있어요.", "그 얼룩덜룩한 멍은 순환이 나쁘다는 징후일 수 있어요.", "circulation", "nutrition", "posture", "vision"]
+  - ["소견 전달", "me", "'from your knees down'으로 범위를 알려 주면 어디까지 변했는지 환자도 함께 볼 수 있어요. 차가운 피부는 팔다리로 가는 혈류가 줄었는지 보는 소견이에요.", "from your elbows", "팔꿈치 아래로 피부가 서늘하게 느껴져요.", "무릎 아래로 피부가 축축하게 느껴져요.", "cool", "warm", "dry", "rough"]
+  - ["범위 확인", "magnify", "'how far up'으로 반점의 위쪽 경계를 확인한다고 알려요. 모틀링이 번지는 범위는 쇼크가 얼마나 진행됐는지 가늠하는 단서예요.", "your back", "모틀링이 다리 아래로 어디까지 내려갔는지 확인하고 있어요.", "모틀링이 팔 위로 어디까지 올라왔는지 확인하고 있어요.", "up", "down", "across", "around"]
+  - ["맥박 확인", "stetho", "'also'로 앞서 한 확인에 더해 하는 일임을 알려 줘요. 'both'로 양쪽을 다 본다고 말하면 한쪽만 보는 게 아니라는 안심도 줘요.", "on your wrists", "양쪽 손의 맥박도 함께 확인하고 있어요.", "양쪽 발의 온도도 함께 확인하고 있어요.", "pulses", "nails", "socks", "straps"]
+  - ["보고 약속", "speech", "'any changes'는 작은 변화도 놓치지 않고 알리겠다는 뜻이에요. 'right away'로 보고를 미루지 않겠다는 약속까지 담아요.", "in my notes", "통증이 있으면 바로 팀에 보고할게요.", "알람이 울리면 바로 팀에 보고할게요.", "changes", "visitors", "noises", "snacks"]
+  - ["죄책감 덜기", "handshake2", "원인이 환자 탓이 아님을 먼저 밝히면 자책을 덜어 줘요. 이어서 'we're watching it closely'로 팀이 지켜보고 있다는 안심을 줘요.", "so don't worry", "환자분이 그렇게 말한 게 아니에요, 저희가 자세히 지켜보고 있어요.", "환자분이 그렇게 만든 게 아니에요, 저희가 조용히 지켜보고 있어요.", "caused", "ordered", "planned", "wanted"]
+  order:
+    tag: "대화 흐름"
+    icon: "compass"
+    ko: "말초 관류 설명과 보고 4문장 순서"
+    why: "본 것을 먼저 말하고, 그 뜻을 풀어 준 뒤, 환자 탓이 아니라고 안심시켜요. 마지막에 그래서 변화를 바로 보고하겠다고 약속해요."
+    lines:
+    - ["I see mottled patches, and your skin feels cool from your knees down.", "me", "얼룩덜룩한 반점이 보이고 무릎 아래로 피부가 서늘해요", "소견"]
+    - ["Those patches can be a sign of poor circulation.", "faceWorried", "그 반점은 순환이 나쁘다는 징후일 수 있어요", "설명"]
+    - ["It's not something you caused — we're watching it closely.", "handshake2", "환자분이 만든 게 아니에요, 저희가 자세히 지켜보고 있어요", "안심"]
+    - ["That's why I'll report any changes to the team right away.", "speech", "그래서 변화가 있으면 바로 팀에 보고할게요", "보고"]

@@ -1,0 +1,446 @@
+{
+ "theme": "icu-hemodynamics",
+ "situations": [
+  {
+   "title": "동맥압 라인 파형·영점 사정",
+   "tagline": "Nurse, that wavy line on the monitor keeps looking different — is something wrong with my blood pressure?",
+   "room": "ICU BED 3",
+   "brief": "트랜스듀서 위치와 영점을 확인하고 동맥압 파형의 이상 여부를 사정하세요.",
+   "role": "patient",
+   "skills": [
+    "동맥압 라인 관리",
+    "영점 조정",
+    "파형 사정"
+   ],
+   "keyPhrases": [
+    "I'm going to re-level and zero the line so we get an accurate reading.",
+    "The transducer needs to sit at the level of your heart.",
+    "The waveform looks a little off, so let me check the setup."
+   ],
+   "goals": [
+    "트랜스듀서 위치와 영점을 정확히 맞춘다",
+    "정상 파형과 이상 파형을 구분해 보고한다"
+   ]
+  },
+  {
+   "title": "NIBP와 동맥압 값 불일치 확인",
+   "tagline": "The cuff on my arm said one number but the screen shows another — which one is right?",
+   "room": "ICU BED 3",
+   "brief": "커프 혈압과 동맥압 라인 값을 비교하고 차이를 팀에 보고하세요.",
+   "role": "patient",
+   "skills": [
+    "NIBP 비교",
+    "동맥압 라인 검증",
+    "팀 보고"
+   ],
+   "keyPhrases": [
+    "Let me compare the cuff reading with the arterial line.",
+    "A small difference between the two can be normal.",
+    "I'll let the team know which reading we're trusting right now."
+   ],
+   "goals": [
+    "커프와 라인 값의 차이를 확인하고 원인을 판단한다",
+    "신뢰할 값을 정해 팀에 보고한다"
+   ]
+  },
+  {
+   "title": "승압제 주입 라인·펌프 확인",
+   "tagline": "Can you double-check the norepi line with me before I take over the pump?",
+   "room": "ICU BED 4",
+   "brief": "승압제 전용 중심라인과 농도, 라벨을 점검하고 펌프 설정을 확인하세요.",
+   "role": "colleague",
+   "skills": [
+    "승압제 라인 점검",
+    "펌프 확인",
+    "라벨 검증"
+   ],
+   "keyPhrases": [
+    "Let's confirm the norepinephrine is running through the dedicated central line.",
+    "I'll verify the concentration and the pump settings.",
+    "The label matches the order and the bag."
+   ],
+   "goals": [
+    "전용 중심라인과 농도, 라벨을 정확히 점검한다",
+    "펌프 설정을 확인하고 이중 점검한다"
+   ]
+  },
+  {
+   "title": "MAP 목표 환자·가족 설명",
+   "tagline": "The doctor keeps mentioning a target for his 'average pressure' — what does that actually mean for him?",
+   "room": "ICU BED 4",
+   "brief": "목표 MAP의 의미를 가족이 이해하기 쉬운 말로 설명하세요.",
+   "role": "family",
+   "skills": [
+    "MAP 목표 설명",
+    "보호자 교육",
+    "쉬운 용어 사용"
+   ],
+   "keyPhrases": [
+    "The average pressure tells us if his organs are getting enough blood.",
+    "We're aiming to keep that number in a safe range.",
+    "The medication helps us hold that target steady."
+   ],
+   "goals": [
+    "MAP의 의미를 쉬운 말로 전달한다",
+    "목표 수치를 관리하는 이유를 가족에게 이해시킨다"
+   ]
+  },
+  {
+   "title": "시간당 활력징후 경향 기록",
+   "tagline": "How have her numbers been trending over the last few hours?",
+   "room": "ICU BED 5",
+   "brief": "시간당 활력징후 추세를 인지하고 정확히 문서화하세요.",
+   "role": "colleague",
+   "skills": [
+    "활력징후 추세 인지",
+    "문서화",
+    "팀 인계"
+   ],
+   "keyPhrases": [
+    "Her blood pressure has been slowly trending down over the last three hours.",
+    "I'm charting the vitals every hour to catch any change early.",
+    "The trend matters more than any single reading."
+   ],
+   "goals": [
+    "시간당 추세를 정확히 인지한다",
+    "변화를 문서화하고 인계한다"
+   ]
+  },
+  {
+   "title": "중심정맥압 측정 준비",
+   "tagline": "You're laying my bed flat again — is this for another measurement?",
+   "room": "ICU BED 5",
+   "brief": "자세와 영점, 측정 시점을 정렬해 중심정맥압 측정을 준비하세요.",
+   "role": "patient",
+   "skills": [
+    "CVP 측정 준비",
+    "영점 조정",
+    "자세 정렬"
+   ],
+   "keyPhrases": [
+    "I'll position you flat so the reading is accurate.",
+    "I need to zero the line at the right level first.",
+    "We measure at end-expiration to get the true value."
+   ],
+   "goals": [
+    "자세와 영점을 정확히 맞춘다",
+    "올바른 측정 시점에 CVP를 측정한다"
+   ]
+  },
+  {
+   "title": "노르에피네프린 적정",
+   "tagline": "Her pressure keeps dropping — is that medication going to be enough?",
+   "room": "ICU BED 4",
+   "brief": "MAP 목표를 유지하도록 노르에피네프린 용량을 조정하고 팀에 보고하세요.",
+   "role": "family",
+   "skills": [
+    "승압제 적정",
+    "MAP 목표 관리",
+    "팀 보고"
+   ],
+   "keyPhrases": [
+    "We're adjusting the medication to keep her blood pressure in a safe range.",
+    "I'll update the team on how she's responding.",
+    "Her average pressure is our main target right now."
+   ],
+   "goals": [
+    "MAP 목표에 맞춰 용량을 단계적으로 조정한다",
+    "반응과 관류 지표를 팀에 정확히 보고한다"
+   ]
+  },
+  {
+   "title": "바소프레신 병용 도입",
+   "tagline": "They're adding a second drip now — is she getting worse?",
+   "room": "ICU BED 4",
+   "brief": "이차 승압제 바소프레신 시작 시점을 판단하고 감시 항목을 확인하세요.",
+   "role": "family",
+   "skills": [
+    "바소프레신 병용",
+    "승압제 감시",
+    "팀 소통"
+   ],
+   "keyPhrases": [
+    "We're adding a second medication to support her pressure.",
+    "This works alongside the first drip, not instead of it.",
+    "I'll watch closely for how she responds."
+   ],
+   "goals": [
+    "이차 승압제 시작 시점을 판단한다",
+    "병용 시 감시 지표를 확인하고 소통한다"
+   ]
+  },
+  {
+   "title": "소변량·젖산 관류지표 통합 해석",
+   "tagline": "What's her urine output and lactate been doing since we started the pressors?",
+   "room": "ICU BED 4",
+   "brief": "소변량과 젖산 등 관류지표를 통합해 관류 개선 여부를 판단하세요.",
+   "role": "colleague",
+   "skills": [
+    "관류지표 해석",
+    "소변량·젖산 통합",
+    "SBAR 보고"
+   ],
+   "keyPhrases": [
+    "Her urine output has picked up to about 40 mls an hour.",
+    "The lactate is trending down, which is reassuring.",
+    "Together these suggest her perfusion is improving."
+   ],
+   "goals": [
+    "관류지표를 통합해 해석한다",
+    "관류 개선 여부를 팀에 보고한다"
+   ]
+  },
+  {
+   "title": "동맥압 파형 감쇠 감별",
+   "tagline": "This trace looks damped to me — can you take a look before we trust the number?",
+   "room": "ICU BED 6",
+   "brief": "under/over-damped 파형 문제를 감별하고 원인을 해결하세요.",
+   "role": "colleague",
+   "skills": [
+    "파형 감쇠 감별",
+    "문제해결",
+    "라인 점검"
+   ],
+   "keyPhrases": [
+    "The waveform looks overdamped, so the reading may be falsely low.",
+    "Let me do a fast-flush test to check the system.",
+    "I'll look for air bubbles, kinks, or a loose connection."
+   ],
+   "goals": [
+    "under/over-damped 파형을 감별한다",
+    "원인을 해결하고 값을 검증한다"
+   ]
+  },
+  {
+   "title": "승압제 감량·이탈 시도",
+   "tagline": "So the drip is finally coming down — does that mean she's turning the corner?",
+   "room": "ICU BED 4",
+   "brief": "weaning 기준에 따라 승압제를 감량하고 저혈압 재발을 감시하세요.",
+   "role": "family",
+   "skills": [
+    "승압제 이탈",
+    "weaning 기준",
+    "저혈압 감시"
+   ],
+   "keyPhrases": [
+    "We're slowly lowering the medication as her pressure holds.",
+    "I'll watch closely in case her blood pressure drops again.",
+    "We reduce it in small steps, not all at once."
+   ],
+   "goals": [
+    "weaning 기준에 따라 단계적으로 감량한다",
+    "저혈압 재발을 조기에 감시한다"
+   ]
+  },
+  {
+   "title": "도부타민 강심제 추가",
+   "tagline": "They mentioned his heart isn't pumping strongly enough — what's this new medicine for?",
+   "room": "ICU BED 7",
+   "brief": "저심박출을 판단해 도부타민을 추가하고 부정맥 발생을 감시하세요.",
+   "role": "family",
+   "skills": [
+    "강심제 추가",
+    "저심박출 판단",
+    "부정맥 감시"
+   ],
+   "keyPhrases": [
+    "This medication helps his heart pump more effectively.",
+    "It can speed up the heart rate, so we watch the rhythm closely.",
+    "We'll see if his circulation improves over the next hour."
+   ],
+   "goals": [
+    "저심박출을 판단해 강심제를 추가한다",
+    "강심제 투여 중 부정맥을 감시한다"
+   ]
+  },
+  {
+   "title": "저용량 승압제 말초 일시 투여 판단",
+   "tagline": "Central access isn't in yet — are we okay to run low-dose pressors through this peripheral line for now?",
+   "room": "ICU BED 6",
+   "brief": "말초 승압제 투여 프로토콜의 한계를 인지하고 일시 투여 여부를 판단하세요.",
+   "role": "colleague",
+   "skills": [
+    "말초 승압제 판단",
+    "프로토콜 한계 인지",
+    "침윤 감시"
+   ],
+   "keyPhrases": [
+    "We can run low-dose pressors peripherally only for a short time.",
+    "It has to be a good, proximal IV, and we watch the site closely.",
+    "We still need central access placed as soon as possible."
+   ],
+   "goals": [
+    "말초 투여 프로토콜의 한계를 인지한다",
+    "일시 투여 여부와 감시 계획을 판단한다"
+   ]
+  },
+  {
+   "title": "수액 반응성 평가",
+   "tagline": "Do you want to do a passive leg raise before we give another bolus?",
+   "room": "ICU BED 4",
+   "brief": "passive leg raise와 맥압변이를 해석해 수액 반응성을 평가하세요.",
+   "role": "colleague",
+   "skills": [
+    "수액 반응성 평가",
+    "PLR 해석",
+    "맥압변이 해석"
+   ],
+   "keyPhrases": [
+    "Let's do a passive leg raise and watch the pressure response.",
+    "If the pulse pressure variation drops, she's likely fluid responsive.",
+    "This helps us decide if another bolus will actually help."
+   ],
+   "goals": [
+    "PLR와 맥압변이를 해석한다",
+    "수액 반응성을 판단해 팀과 소통한다"
+   ]
+  },
+  {
+   "title": "승압제 무중단 이중펌프 전환",
+   "tagline": "The bag's almost empty — let's do a double-pump swap so the titration doesn't drop.",
+   "room": "ICU BED 4",
+   "brief": "titration이 끊기지 않도록 이중펌프로 승압제 라인을 교체하세요.",
+   "role": "colleague",
+   "skills": [
+    "이중펌프 전환",
+    "무중단 titration",
+    "라인 교체"
+   ],
+   "keyPhrases": [
+    "I'll start the new pump before stopping the old one.",
+    "We overlap them so there's no gap in the drip.",
+    "Watch the pressure while we make the switch."
+   ],
+   "goals": [
+    "무중단으로 이중펌프를 전환한다",
+    "교체 중 혈압 변화를 감시한다"
+   ]
+  },
+  {
+   "title": "불응성 쇼크 다중 승압",
+   "tagline": "Give me the picture — what's she on and where's her pressure sitting?",
+   "room": "ICU BED 4",
+   "brief": "고용량 병용 승압을 관리하고 원인을 재평가하며 SBAR로 보고하세요.",
+   "role": "colleague",
+   "skills": [
+    "다중 승압제 관리",
+    "원인 재평가",
+    "SBAR 보고"
+   ],
+   "keyPhrases": [
+    "She's on max norepinephrine plus vasopressin and her MAP is still low.",
+    "We should reassess for a reversible cause.",
+    "I'm escalating this now using SBAR."
+   ],
+   "goals": [
+    "고용량 병용 승압을 관리한다",
+    "원인을 재평가하고 SBAR로 보고한다"
+   ]
+  },
+  {
+   "title": "노르에피 말초 침윤 조직괴사 위험",
+   "tagline": "Her hand is going pale and cold around the IV — I think the norepi is infiltrating.",
+   "room": "ICU BED 6",
+   "brief": "승압제 침윤을 인지하고 phentolamine 등 처치와 에스컬레이션을 수행하세요.",
+   "role": "colleague",
+   "skills": [
+    "침윤 인지",
+    "phentolamine 처치",
+    "에스컬레이션"
+   ],
+   "keyPhrases": [
+    "Stop the infusion — this looks like an infiltration.",
+    "We need phentolamine to treat the extravasation.",
+    "I'm calling the physician and elevating the arm."
+   ],
+   "goals": [
+    "승압제 침윤을 조기에 인지한다",
+    "phentolamine 처치와 에스컬레이션을 수행한다"
+   ]
+  },
+  {
+   "title": "승압제 급성 중단 혈압 붕괴",
+   "tagline": "The line got pulled and her pressure just crashed — we need access back now!",
+   "room": "ICU BED 4",
+   "brief": "라인 이탈로 인한 혈압 붕괴 위기에 대응하고 승압 경로를 신속히 재확보하세요.",
+   "role": "colleague",
+   "skills": [
+    "라인 이탈 대응",
+    "혈압 붕괴 관리",
+    "경로 재확보"
+   ],
+   "keyPhrases": [
+    "The pressor line is out and her pressure is bottoming out.",
+    "Get me another line — we need to restart the drip immediately.",
+    "Push fluids while I regain access."
+   ],
+   "goals": [
+    "라인 이탈 위기에 즉각 대응한다",
+    "승압 경로를 신속히 재확보한다"
+   ]
+  },
+  {
+   "title": "승압 중 급성 서맥 심정지 전조",
+   "tagline": "Her heart rate is dropping into the 30s — this looks like a pre-arrest, call it!",
+   "room": "ICU BED 4",
+   "brief": "급성 서맥과 심정지 전조를 인지해 즉각 보고하고 소생을 준비하세요.",
+   "role": "colleague",
+   "skills": [
+    "서맥 인지",
+    "심정지 전조 대응",
+    "소생 준비"
+   ],
+   "keyPhrases": [
+    "Her heart rate is crashing into the 30s.",
+    "Call the code team and get the crash cart.",
+    "Start atropine and prepare for CPR."
+   ],
+   "goals": [
+    "심정지 전조를 즉각 인지한다",
+    "보고와 소생 준비를 신속히 수행한다"
+   ]
+  },
+  {
+   "title": "승압 불응 하이드로코르티손 추가",
+   "tagline": "Now they're adding a steroid too — is that a sign things are getting desperate?",
+   "room": "ICU BED 4",
+   "brief": "부신 보조를 위한 하이드로코르티손 추가의 근거를 가족에게 설명하세요.",
+   "role": "family",
+   "skills": [
+    "스테로이드 보조 설명",
+    "근거 소통",
+    "보호자 교육"
+   ],
+   "keyPhrases": [
+    "The steroid helps her body respond to the blood pressure medications.",
+    "We add it when the pressure stays low despite the drips.",
+    "It's a standard step in this kind of shock, not a last resort."
+   ],
+   "goals": [
+    "하이드로코르티손 추가의 근거를 설명한다",
+    "가족의 불안을 완화하며 소통한다"
+   ]
+  },
+  {
+   "title": "임계 저관류 기계보조 고려",
+   "tagline": "Her perfusion is critical despite everything — we should call the ECMO team.",
+   "room": "ICU BED 4",
+   "brief": "임계 저관류 상황에서 ECMO 등 상급치료로의 에스컬레이션을 준비하고 소통하세요.",
+   "role": "colleague",
+   "skills": [
+    "기계보조 고려",
+    "ECMO 에스컬레이션",
+    "팀 조율"
+   ],
+   "keyPhrases": [
+    "She's critically underperfused despite maximal support.",
+    "We should activate the ECMO team now.",
+    "I'll get everything ready and update the family."
+   ],
+   "goals": [
+    "임계 저관류를 인지하고 에스컬레이션한다",
+    "ECMO 등 상급치료를 준비하고 소통한다"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,133 @@
+- sit: 0
+  items:
+  - kind: slider
+    words: [w-severe]
+    cue: "Doctor to the family: \"His P/F ratio is 80 right now.\""
+    scale: [mild, moderate, severe]
+    answerAt: 2
+    why: "P/F 비율이 100 이하면 중증(severe) ARDS로 분류해요. mild는 200~300, moderate는 100~200 사이로, 같은 '폐가 안 좋다'여도 단계가 달라요."
+    example: "His lung injury is severe right now."
+    exKo: "지금 폐 손상이 심한 상태예요."
+  - kind: context
+    words: [w-improve]
+    word: improve
+    ko: 호전되다
+    scenes:
+      - {who: 의사 회진, icon: monitor, en: "His P/F ratio has improved since we proned him.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Oxygenation improved overnight; P/F 90 to 140.", ok: true}
+      - {who: 가족에게, icon: me, en: "Your son's PaO2 to FiO2 index has improved by fifty points.", ok: false, fix: "He's improving a little. The oxygen in his blood is better than it was yesterday."}
+    why: "의료진끼리와 차트에서는 수치를 그대로 말해도 되지만, 가족에게는 PaO2·FiO2 같은 지표를 풀어서 '산소가 좋아지고 있다'로 말해요."
+- sit: 1
+  items:
+  - kind: slider
+    words: [w-confirm]
+    cue: "Doctor: \"Make sure the plateau pressure is under 30. I need a clear yes or no.\""
+    scale: [glance at, check, confirm]
+    answerAt: 2
+    why: "목표(30 미만)에 맞는지 예·아니오로 못 박는 일은 confirm이에요. check는 수치를 살펴보는 정도, glance at은 대충 훑는 정도라 이 지시보다 약해요."
+    example: "I'll confirm the plateau pressure after every vent change."
+    exKo: "인공호흡기 설정을 바꿀 때마다 고평부압을 확인해 둘게요."
+  - kind: context
+    words: [w-setting]
+    word: setting
+    ko: 설정값
+    scenes:
+      - {who: 의사에게, icon: monitor, en: "The ventilator settings haven't changed since rounds.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Ventilator settings checked and unchanged.", ok: true}
+      - {who: 가족에게, icon: me, en: "His ventilator settings are TV 420, RR 22, PEEP 10, FiO2 60.", ok: false, fix: "The breathing machine is set to give him small, gentle breaths to protect his lungs."}
+    why: "의료진에게는 TV·RR·PEEP 같은 약어로 설정을 읊어도 통하지만, 가족에게는 숫자 나열이 무슨 뜻인지 전해지지 않아요. 무엇을 위한 설정인지 풀어 말하세요."
+- sit: 2
+  items:
+  - kind: slider
+    words: [w-candidate]
+    cue: "P/F 165 on PEEP 12, just above the usual cutoff of 150. No spine, abdomen or other contraindications."
+    scale: [poor, possible, good]
+    answerAt: 1
+    why: "복와위의 흔한 기준은 P/F 150 미만이에요. 기준선 바로 위에 금기가 없으면 '대상이 될 수도 있다' 정도라 possible이 맞아요. good은 기준을 분명히 채울 때, poor는 금기가 있을 때 써요."
+    example: "He's a possible candidate for proning."
+    exKo: "그는 복와위 대상이 될 수도 있어요."
+  - kind: context
+    words: [w-contraindication]
+    word: contraindication
+    ko: 금기
+    scenes:
+      - {who: 의료진끼리, icon: monitor, en: "Recent spinal surgery is a contraindication to proning.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Proning contraindication checklist done; no contraindication found.", ok: true}
+      - {who: 가족에게, icon: me, en: "His unstable T12 fracture is an absolute contraindication to the prone position.", ok: false, fix: "Because of his back injury, turning him onto his stomach would not be safe, so we won't do it."}
+    why: "금기라는 말은 의료진 사이에서는 정확하지만, 가족에게는 척추 위치와 용어를 풀어서 '왜 안전하지 않은지'로 전해야 해요."
+- sit: 3
+  items:
+  - kind: slider
+    words: [w-grab]
+    cue: "Charge nurse to a colleague. Everyone is calm and already in the room."
+    scale: ["Pillows, now.", "Can you grab some?", "If it's no bother..."]
+    answerAt: 1
+    why: "같은 방의 동료에게는 'Can you ...?'가 자연스럽고 가벼운 부탁이에요. 명령형만 쓰면 퉁명스럽게 들리고, 'If it's no bother...'는 준비가 한창일 때는 불필요하게 돌려 말해요."
+    example: "Can you grab extra pillows for the turn?"
+    exKo: "돌릴 때 쓸 베개를 좀 더 가져다줄래요?"
+  - kind: context
+    words: [w-secure]
+    word: secure
+    ko: 고정하다
+    scenes:
+      - {who: 동료에게, icon: monitor, en: "Secure the tube and lines before we turn him.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Lines and ETT secured prior to prone positioning.", ok: true}
+      - {who: 가족에게, icon: me, en: "We are securing the endotracheal tube and central venous catheters prior to prone positioning.", ok: false, fix: "We're taping his breathing tube and IV lines down so nothing gets pulled when we turn him."}
+    why: "동료와 차트에서는 ETT·central line 같은 약어와 secure가 정확하고 빨라요. 가족에게는 관 이름 대신 '호흡 튜브와 주사 라인을 단단히 붙인다'로 풀어 말해요."
+- sit: 4
+  items:
+  - kind: slider
+    words: [w-redness]
+    cue: "The forehead is red and the color does not fade when I press on it."
+    scale: [a pink flush, lasting redness, broken skin]
+    answerAt: 1
+    why: "눌러도 사라지지 않는 붉은 자국은 압박 손상 1단계의 신호라 '지속되는 발적(lasting redness)'이에요. 잠깐 붉다 사라지면 가벼운 홍조, 피부가 벗겨졌으면 이미 상처예요."
+    example: "Any redness on the face needs padding adjusted right away."
+    exKo: "얼굴에 발적이 있으면 바로 패딩을 조정해야 해요."
+  - kind: context
+    words: [w-pressure]
+    word: pressure
+    ko: 압박
+    scenes:
+      - {who: 동료에게, icon: monitor, en: "Check for pressure areas on his forehead and chest.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Pressure areas: forehead and cheek, no skin breakdown.", ok: true}
+      - {who: 가족에게, icon: me, en: "He has non-blanchable erythema from pressure over his forehead.", ok: false, fix: "The skin on his forehead is red from the pressure of lying face-down, and we're padding it and watching it closely."}
+    why: "동료와 차트에는 non-blanchable erythema 같은 정확한 용어가 맞지만, 가족에게는 피부가 눌려서 붉어졌고 어떻게 돌보는지를 쉬운 말로 전해요."
+- sit: 5
+  items:
+  - kind: slider
+    words: [w-better]
+    cue: "SpO2 went from 93 to 94 on the same settings."
+    scale: [barely better, clearly better, hugely better]
+    answerAt: 0
+    why: "93에서 94로는 거의 차이가 없어요. barely better가 사실에 맞고, clearly·hugely는 눈에 띄는 개선에만 써요. 과장하면 팀이 반응을 잘못 읽어요."
+    example: "His numbers look better than they did an hour ago."
+    exKo: "한 시간 전보다 수치가 더 좋아 보여요."
+  - kind: context
+    words: [w-trend]
+    word: trend
+    ko: 추세
+    scenes:
+      - {who: 동료에게, icon: monitor, en: "The trend is going the right way after the turn.", ok: true}
+      - {who: 차트 기록, icon: board, en: "SpO2 trend improved after proning.", ok: true}
+      - {who: 가족에게, icon: me, en: "The saturation trend shows a favorable P/F response to proning.", ok: false, fix: "His oxygen has been getting better over the last few hours since we turned him."}
+    why: "동료와 차트에서는 trend 하나로 흐름을 정확히 전할 수 있어요. 가족에게는 saturation·P/F 같은 용어를 빼고 '산소가 좋아지고 있다'로 풀어 말해요."
+- sit: 6
+  items:
+  - kind: slider
+    words: [w-call]
+    cue: "Monitors are beeping and five people are about to turn him. Everyone has to hear the lead."
+    scale: [mumble softly, say quietly, call out]
+    answerAt: 2
+    why: "여러 명이 동시에 움직여야 하고 모니터 소리가 있으니 구령은 모두가 들을 만큼 또렷하게 외쳐야 해요(call out). 작게 말하면 타이밍이 어긋나요."
+    example: "I'll call out the count for the roll."
+    exKo: "돌리는 구령을 소리 내어 외칠게요."
+  - kind: context
+    words: [w-roll]
+    word: roll
+    ko: 굴려 돌리다
+    scenes:
+      - {who: 팀 구령, icon: monitor, en: "On three, we roll him toward me.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Pt rolled prone with five staff, no lines dislodged.", ok: true}
+      - {who: 가족에게, icon: me, en: "We are going to log-roll him onto his stomach using a five-person technique.", ok: false, fix: "We're going to gently turn him onto his stomach together, and we'll protect all his tubes."}
+    why: "팀 구령과 차트에서는 roll이 정확한 동작어예요. 가족에게는 'log-roll', 'five-person technique' 같은 기법 이름보다 무엇을 하는지 부드럽게 알려 주는 편이 좋아요."

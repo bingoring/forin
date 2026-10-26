@@ -1,0 +1,90 @@
+15:
+  s:
+  - {tag: 재평가, icon: magnify, why: "Let's…는 \"함께 하자\"는 제안형이라 팀이 같이 움직이자는 말이고, right now가 시급함을 더해요.", decoy: "from the bed", dk: ["지금 바로 기도, 호흡, 순환을 재평가해요", "지금 바로 기도, 호흡, 의식을 재평가해요"], ans: breathing, opts: [hearing, vision, posture]}
+  - {tag: 즉시 조치, icon: bell, why: "두 동사(turn up·call)를 and로 이은 명령문이라 \"둘 다, 바로\"라는 급박함이 전해지고, immediately는 대기 없이라는 뜻이에요.", decoy: "with a form", dk: ["FiO2를 올렸고 즉시 의사에게 연락했어요", "FiO2를 올릴까요, 즉시 의사에게 연락할까요?"], ans: immediately, opts: [quietly, calmly, politely]}
+  - {tag: 다음 단계, icon: bulb, why: "If…, we prepare…는 \"안 되면 다음\"의 사전 계획이라 지체 없이 움직이겠다는 신호이고, without delay는 한 덩어리 숙어예요.", decoy: "at the door", dk: ["산소포화도가 떨어지면 지체 없이 삽관을 준비해요", "숨소리가 약해지면 지체 없이 삽관을 준비해요"], ans: respond, opts: [eat, smile, sneeze]}
+  - {tag: 우선순위, icon: check, why: "first before anything else는 \"무엇보다 먼저\"라는 우선순위 강조라 급할수록 기본(기도·호흡)부터라는 순서를 알려요.", decoy: "in his hand", dk: ["의사가 오기 전에 기도와 호흡을 재평가하고 있어요", "교대하기 전에 기도와 호흡을 재평가하고 있어요"], ans: airway, opts: [posture, hearing, diet]}
+  - {tag: 재확인, icon: magnify, why: "so I'm checking…으로 관찰(원인)과 행동(결과)을 이어 말하면 동료가 왜 움직이는지 바로 알아요.", decoy: "with the team", dk: ["혈압이 빠르게 떨어져서 지금 다시 전부 확인하고 있어요", "산소가 서서히 떨어져서 지금 다시 전부 확인하고 있어요"], ans: dropped, opts: [rose, jumped, stalled]}
+  - {tag: 진행 보고, icon: check, why: "I've already…and we're…ing는 \"끝낸 일\"과 \"지금 하는 일\"을 한 문장에 구분해 현재 상황을 보고해요.", decoy: "from the unit", dk: ["이미 의사에게 연락했고 즉시 삽관 카트를 준비하고 있어요", "이미 의사에게 연락했고 즉시 삽관 장비를 점검하고 있어요"], ans: called, opts: [visited, thanked, greeted]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 급성 악화에 대응하는 4문장 순서
+    why: 기도·호흡 재평가를 먼저 하고, 그 결과로 FiO2를 올리고 의사를 부르고, 반응이 없을 때의 계획을 말한 뒤, 그 계획을 의사가 이미 아는 상태에서 장비를 세팅한다고 마무리해요.
+    lines:
+    - {en: "His oxygen dropped fast, so I'm reassessing his airway and breathing first.", icon: magnify, ko: "산소가 빠르게 떨어져서 기도와 호흡을 먼저 재평가하고 있어요", note: 재평가}
+    - {en: "Based on that check, turn the FiO2 up and call the physician immediately.", icon: bell, ko: "그 확인에 따라 FiO2를 올리고 즉시 의사에게 연락해요", note: 조치}
+    - {en: "If he doesn't respond to the higher FiO2, we prepare for intubation without delay.", icon: bulb, ko: "올린 FiO2에도 반응이 없으면 지체 없이 삽관을 준비해요", note: 계획}
+    - {en: "The physician already knows about that plan, so we're setting up the airway equipment now.", icon: check, ko: "의사가 그 계획을 이미 알고 있어서 지금 기도 장비를 세팅하고 있어요", note: 준비}
+16:
+  s:
+  - {tag: 환기 시작, icon: bell, why: "start…now는 군더더기 없이 동사로 시작하는 명령문이고, about to는 \"곧 …할 것 같다\"는 임박 표현이에요.", decoy: "for the record", dk: ["곧 교대가 올 것 같아요, 지금 백밸브마스크 환기를 시작해요", "곧 의사가 올 것 같아요, 지금 백밸브마스크 환기를 시작해요"], ans: arrest, opts: [sleep, cry, shout]}
+  - {tag: 코드 호출, icon: bell, why: "두 명령을 and로 이어 \"부르고, 가져와라\"는 동시 지시를 한 줄에 담아요.", decoy: "on the wall", dk: ["코드를 불렀고 삽관 카트를 침상 옆으로 가져왔어요", "코드를 부를까요, 삽관 카트를 침상 옆으로 가져올까요?"], ans: intubation, opts: [dressing, laundry, linen]}
+  - {tag: 반성·지시, icon: bell, why: "should have + 과거분사는 \"그랬어야 했다\"는 후회 표현이라 탓하기보다 지금 서두르자는 말로 쓰여요. 세미콜론 뒤에 바로 행동을 이어요.", decoy: "at the foot", dk: ["더 일찍 알렸어야 했어요, 지금 바로 기도를 확보해요", "더 조용히 말했어야 했어요, 지금 바로 기도를 확보해요"], ans: escalated, opts: [explained, argued, apologized]}
+  - {tag: 판단 선언, icon: bell, why: "barely there는 \"거의 없다\"를 일상어로 말해 수치 없이도 위급함을 전하고, treat this as…는 팀이 같이 움직이게 하는 선언이에요.", decoy: "at this point", dk: ["아까 호흡이 거의 없어서 심정지로 다뤄요", "지금 소리가 거의 없어서 심정지로 다뤄요"], ans: breathing, opts: [hearing, vision, speech]}
+  - {tag: 환기 중, icon: bell, why: "while we wait…은 \"기다리는 동안\"이라 빈 시간에도 멈추지 않고 환기를 이어 간다는 뜻이에요.", decoy: "by the door", dk: ["의사를 기다리는 동안 지금 백밸브로 환기하고 있어요", "혈액검사를 기다리는 동안 지금 백밸브로 환기하고 있어요"], ans: bagging, opts: [bathing, bandaging, boarding]}
+  - {tag: 기도 확보, icon: shield, why: "secure…immediately는 \"기도를 확실히, 바로\"라는 짧은 명령이고, Let's로 팀이 함께 한다는 느낌을 줘요.", decoy: "for the team", dk: ["즉시 기도를 확보하고 침상 옆 키트를 확인해요", "즉시 기도를 확보하고 침상 옆 키트에서 꺼내요"], ans: bedside, opts: [hallway, entrance, lobby]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 호흡정지 임박 환자에게 대응하는 4문장 순서
+    why: 환기를 바로 시작하고, 환기 중인 상태에서 코드를 부르고 카트를 부르고, 카트를 기다리며 환기를 이어 가고, 카트가 오면 기도를 확보해요.
+    lines:
+    - {en: "He's about to arrest, so start bag-mask ventilation now.", icon: bell, ko: "곧 심정지가 올 것 같아서 지금 백밸브마스크 환기를 시작해요", note: 환기}
+    - {en: "With him bagged, call the code and get the intubation cart to the bedside.", icon: bell, ko: "환기를 하는 동안 코드를 부르고 삽관 카트를 침상 옆으로 가져와요", note: 호출}
+    - {en: "I'm bagging him now while we wait for that cart.", icon: gear, ko: "그 카트를 기다리는 동안 지금 백밸브로 환기하고 있어요", note: 유지}
+    - {en: "When it arrives, let's secure his airway immediately.", icon: shield, ko: "카트가 오면 즉시 기도를 확보해요", note: 확보}
+17:
+  s:
+  - {tag: 원인 설명, icon: bulb, why: "is from…은 \"…때문이다\"라는 원인 표현이고, severe로 정도를 같이 보고해요.", decoy: "in his chart", dk: ["저하된 식욕은 심한 이산화탄소 마취 상태 때문이에요", "저하된 체온은 심한 이산화탄소 마취 상태 때문이에요"], ans: consciousness, opts: [appetite, mood, memory]}
+  - {tag: 삽관 이유, icon: bell, why: "can no longer…는 \"이제는 못 한다\"는 변화를 담아 전에는 됐다는 뜻을 더하고, so로 결론을 이어요.", decoy: "from the shelf", dk: ["더 이상 약을 스스로 먹지 못해서 삽관을 준비해요", "더 이상 말을 스스로 하지 못해서 삽관을 준비해요"], ans: airway, opts: [wallet, schedule, privacy]}
+  - {tag: 환기 지지, icon: shield, why: "Support…now는 동사로 시작하는 명령문이고, while we set up…은 그 사이에도 멈추지 말라는 뜻이에요.", decoy: "for the shift", dk: ["의사를 기다리는 동안 지금 환기를 지지해줘요", "카트를 정리하는 동안 지금 환기를 지지해줘요"], ans: tube, opts: [shift, lunch, visit]}
+  - {tag: 진행 속도, icon: chartup, why: "is depressing…fast는 \"지금 진행 중\"이라 현재진행형으로 속도를 말해 급박함을 전달해요.", decoy: "in his sleep", dk: ["심한 이산화탄소 마취 상태가 기억을 빠르게 저하시키고 있어요", "심한 이산화탄소 마취 상태가 걸음을 빠르게 저하시키고 있어요"], ans: fast, opts: [quietly, gently, softly]}
+  - {tag: 선제 준비, icon: shield, why: "before he stops…는 \"…하기 전에\"라는 시점 표현이라 늦기 전에 움직인다는 뜻이에요.", decoy: "with the cart", dk: ["완전히 잠들기 전에 기도를 보호하려고 준비하고 있어요", "퇴근하기 전에 기도를 보호하려고 준비하고 있어요"], ans: breathing, opts: [talking, walking, eating]}
+  - {tag: 상태 보고, icon: chartup, why: "so high that…은 \"너무 …해서 …할 정도\"라는 결과 구문이라 수치 없이도 심각한 정도를 전해요.", decoy: "at the moment", dk: ["체온이 너무 높아서 더 이상 정상적으로 반응하지 않아요", "CO2가 너무 높아서 더 이상 정상적으로 먹지 않아요"], ans: normally, opts: [quickly, quietly, often]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 고탄산 의식저하 위기에 대응하는 4문장 순서
+    why: 상태를 먼저 보고하고, 그것이 무엇인지 설명한 뒤, 그 때문에 삽관을 준비해야 한다고 말하고, 그래서 지금 환기를 지지하라고 지시해요.
+    lines:
+    - {en: "His CO2 is so high that he's no longer responding normally.", icon: chartup, ko: "CO2가 너무 높아서 더 이상 정상적으로 반응하지 않아요", note: 상태}
+    - {en: "That's severe carbon dioxide narcosis, and it's depressing his consciousness fast.", icon: bulb, ko: "그건 심한 이산화탄소 마취 상태고 의식을 빠르게 저하시키고 있어요", note: 원인}
+    - {en: "Because of that, he can no longer protect his airway, so we prepare to intubate.", icon: bell, ko: "그 때문에 기도를 스스로 보호하지 못해서 삽관을 준비해요", note: 판단}
+    - {en: "That's why you should support his ventilation now while we set up for the tube.", icon: shield, ko: "그래서 튜브를 준비하는 동안 지금 환기를 지지해야 해요", note: 지시}
+18:
+  s:
+  - {tag: 상황 보고, icon: bell, why: "dangerously low는 \"위험할 만큼 낮은\"이라는 부사+형용사 조합이라 수치 대신 위급 정도를 한 번에 전달해요.", decoy: "in his bed", dk: ["마스크를 견디지 못하고 혈압이 위험할 정도로 낮아요", "마스크를 견디지 못하고 맥박이 위험할 정도로 빨라요"], ans: tolerate, opts: [afford, remember, finish]}
+  - {tag: 단계 전환, icon: bell, why: "so we move to…는 앞의 이유 뒤에 결정을 붙이는 틀이라 결정의 근거를 함께 말해요.", decoy: "from the unit", dk: ["비침습 지지가 시끄러워서 삽관으로 넘어가요", "비침습 지지가 비싸서 삽관으로 넘어가요"], ans: failing, opts: [beeping, shaking, buzzing]}
+  - {tag: 처치 준비, icon: pill, why: "prepare…and secure…now는 두 동작을 한 번에 묶은 팀 지시라 Let's로 함께 시작해요.", decoy: "at his side", dk: ["진정을 준비했고 지금 기도를 확보했어요", "진정을 준비할까요, 지금 기도를 확보할까요?"], ans: sedation, opts: [paperwork, lunch, laundry]}
+  - {tag: 패턴 보고, icon: magnify, why: "every time…은 \"…할 때마다\"라는 반복 표현이라 원인과 결과의 연결을 짚어 줘요.", decoy: "in the dark", dk: ["마스크를 잡아당길 때마다 맥박이 계속 떨어져요", "침대를 잡아당길 때마다 산소가 계속 떨어져요"], ans: mask, opts: [blanket, curtain, sleeve]}
+  - {tag: 위험 판단, icon: bell, why: "our biggest risk처럼 최상급으로 우선순위를 못 박아 팀이 한 곳에 집중하게 해요.", decoy: "in this case", dk: ["비침습 지지가 실패해서 극심한 저혈압이 지금 가장 큰 위험이에요", "비침습 지지가 실패해서 극심한 통증이 지금 가장 큰 위험이에요"], ans: hypoxia, opts: [hypertension, dehydration, hypothermia]}
+  - {tag: 준비 이유, icon: pill, why: "so we can…safely는 \"…할 수 있도록\"이라는 목적 표현이라 진정을 준비하는 이유가 안전에 있다고 밝혀요.", decoy: "by his bed", dk: ["빠르게 기도를 확보할 수 있도록 지금 진정을 준비하고 있어요", "조용히 기도를 확보할 수 있도록 지금 진정을 준비하고 있어요"], ans: safely, opts: [openly, loudly, rarely]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 마스크 불내성과 극심한 저산소에 대응하는 4문장 순서
+    why: 상태를 먼저 보고하고, 그것이 비침습 지지의 실패임을 말해 삽관으로 넘어가고, 그에 맞춰 진정을 준비하고, 준비가 되면 기도를 확보해요.
+    lines:
+    - {en: "He can't tolerate the mask, and his oxygen is dangerously low.", icon: bell, ko: "마스크를 견디지 못하고 산소가 위험할 정도로 낮아요", note: 상태}
+    - {en: "That means non-invasive support is failing, so we move to intubation.", icon: bell, ko: "그건 비침습 지지가 실패하고 있다는 뜻이라 삽관으로 넘어가요", note: 전환}
+    - {en: "For that, let's prepare sedation now.", icon: pill, ko: "그러려면 지금 진정을 준비해요", note: 준비}
+    - {en: "Once it's ready, let's secure his airway.", icon: shield, ko: "준비가 되면 기도를 확보해요", note: 확보}
+19:
+  s:
+  - {tag: 체위 지시, icon: shield, why: "with the bleeding lung down은 \"…한 채로\"라는 with 구문이라 체위를 한 번에 설명하고, to protect…로 이유까지 붙여요.", decoy: "for the doctor", dk: ["좋은 쪽 폐를 보호하도록 출혈하는 폐를 아래로 체위를 잡았어요", "좋은 쪽 폐를 보호하도록 출혈하는 폐를 아래로 체위를 잡을까요?"], ans: protect, opts: [warm, wash, weigh]}
+  - {tag: 흡인·산소, icon: gear, why: "두 동사(suction·give)를 and로 이은 명령문이라 \"한꺼번에\" 하라는 뜻이고, aggressively는 망설이지 말라는 부사예요.", decoy: "for him", dk: ["적극적으로 흡인하고 가습 산소를 줘요", "적극적으로 흡인하고 따뜻한 산소를 줘요"], ans: aggressively, opts: [politely, quietly, cheerfully]}
+  - {tag: 호출 지시, icon: bell, why: "Call for…and notify…now는 \"누구에게 무엇을\"을 이어 말하는 비상 호출 틀이고, emergent는 \"긴급한\"이라는 정식 의료 형용사예요.", decoy: "on the unit", dk: ["응급 기도 확보를 요청했고 지금 의사에게 알렸어요", "응급 기도 확보를 요청할까요, 지금 의사에게 알릴까요?"], ans: notify, opts: [thank, greet, invite]}
+  - {tag: 체위 변경, icon: shield, why: "so the bleeding lung stays…는 \"…하도록\"이라는 목적절이라 체위를 바꾸는 이유가 폐 보호에 있음을 알려요.", decoy: "with a sheet", dk: ["출혈하는 폐가 아래에서 관찰되도록 환자를 돌리고 있어요", "출혈하는 폐가 아래에서 따뜻해지도록 환자를 돌리고 있어요"], ans: turning, opts: [calling, weighing, bathing]}
+  - {tag: 흡인 중, icon: gear, why: "to keep…clear of…는 \"…가 없게 유지한다\"는 틀이라 흡인의 목적을 말해요.", decoy: "at his side", dk: ["기도가 가래로 막히지 않게 적극적으로 흡인하고 있어요", "기도가 침으로 막히지 않게 적극적으로 흡인하고 있어요"], ans: blood, opts: [dust, paper, hair]}
+  - {tag: 상황 선언, icon: bell, why: "This is…, so I'm…ing는 상황을 규정(선언)한 뒤 바로 행동을 이어 말해 팀이 이유를 알게 해요.", decoy: "at the head", dk: ["이건 응급 기도 상황이라 지금 의사에게 알렸어요", "이건 응급 기도 상황이라 지금 의사에게 알릴까요?"], ans: situation, opts: [meeting, ceremony, schedule]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 대량 각혈 환자에게 대응하는 4문장 순서
+    why: 체위로 좋은 폐를 보호하고, 그 상태에서 흡인과 산소를 하고, 그래도 응급 기도 상황임을 알려 의사를 부르고, 그 호출에서 응급 기도 확보를 요청해요.
+    lines:
+    - {en: "Position him with the bleeding lung down to protect the good lung.", icon: shield, ko: "좋은 쪽 폐를 보호하도록 출혈하는 폐를 아래로 체위를 잡아요", note: 체위}
+    - {en: "With him positioned like that, suction aggressively and give high-flow oxygen.", icon: gear, ko: "그 체위에서 적극적으로 흡인하고 고유량 산소를 줘요", note: 처치}
+    - {en: "Even with that suction and oxygen, this is an emergent airway situation, so I'm notifying the physician now.", icon: bell, ko: "그 흡인과 산소에도 응급 기도 상황이라 지금 의사에게 알리고 있어요", note: 알림}
+    - {en: "On that call, ask for emergent airway control.", icon: bell, ko: "그 호출에서 응급 기도 확보를 요청해요", note: 요청}

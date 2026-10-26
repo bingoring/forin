@@ -1,0 +1,108 @@
+- title: 급성 산소포화도 붕괴 DOPE 감별
+  s:
+  - {t: "점검 순서", i: check, w: "Let's는 팀이 함께 한다는 모양이고, DOPE는 위치 이탈·폐색·기흉·장비의 머리글자를 딴 암기 틀이에요. 급할 때 원인을 순서 없이 뒤지지 않고 같은 순서로 빠짐없이 확인하게 해 줘요.", d: "near the sink", k: ["ABC 순서로 봐요 — 위치 이탈, 폐색, 기흉, 장비를 확인해요", "FAST 순서로 봐요 — 위치 이탈, 폐색, 기흉, 장비를 확인해요"], a: "DOPE", o: ["SOAP", "TIPS", "MOVE"]}
+  - {t: "즉시 지시", i: siren, w: "명령문은 주어 없이 동사로 시작해 급한 상황에서 짧고 분명해요. Disconnect와 bag이 and로 이어져 분리 다음 환기라는 순서가 들리고, now가 끝에 붙어 지체 없이 하라는 뜻이에요.", d: "for the nurse", k: ["인공호흡기에서 분리하고 지금 100퍼센트 산소로 백 환기를 시작할게요", "인공호흡기에서 분리하고 지금 100퍼센트 산소로 마스크 환기를 시작하세요"], a: "vent", o: ["bed", "cart", "rail"]}
+  - {t: "역할 분담", i: handshake2, w: "while you ...는 두 사람이 동시에 각자 다른 일을 한다는 모양이에요. 한 사람은 튜브를, 다른 사람은 호흡음을 확인하면 위기 상황에서 확인이 겹치지 않고 빨라요.", d: "by the monitor", k: ["카트를 가져오는 동안 저는 양쪽 호흡음이 같은지 들을게요", "튜브를 확인하는 동안 저는 양쪽 호흡음이 큰지 들을게요"], a: "equal", o: ["loud", "faint", "wet"]}
+  - {t: "점검 지시", i: check, w: "Check for ..., in that order는 항목을 나열한 뒤 순서를 고정하는 명령문이에요. 위치 이탈과 폐색은 튜브에서 가장 흔하고 바로 풀 수 있는 원인이라 앞에 둬요.", d: "on the tray", k: ["튜브 위치 이탈, 폐색, 기흉, 장비 고장을 한꺼번에 확인하세요", "튜브 위치 이탈, 폐색, 기흉, 장비 고장을 거꾸로 확인하세요"], a: "obstruction", o: ["irritation", "hydration", "medication"]}
+  - {t: "환기 유지", i: gear, w: "Keep -ing는 하던 일을 멈추지 않고 이어 가라는 명령이에요. steadily는 일정하게라는 뜻이라서 원인을 찾는 동안에도 환기가 흔들리지 않게 해요.", d: "at the foot of the bed", k: ["제가 카트를 가져오는 동안 계속 안정적으로 백 환기를 해주세요", "제가 빠르게 서류를 확인하는 동안 계속 안정적으로 백 환기를 해주세요"], a: "bagging", o: ["charting", "resting", "smiling"]}
+  - {t: "경과 보고", i: chartup, w: "now that은 앞의 행동이 지금의 결과가 된 이유라는 뜻을 담은 접속 표현이에요. 환기를 시작하자 수치가 오른다고 보고하면 원인이 기계 쪽일 가능성을 팀이 좁힐 수 있어요.", d: "on the floor", k: ["백 환기를 하니 호흡수가 다시 올라오고 있어요", "백 환기를 하니 체온이 다시 올라오고 있어요"], a: "bagging", o: ["turning", "moving", "lifting"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "급성 산소포화도 하락 대응 4문장 순서"
+    why: "먼저 분리하고 백 환기를 시작하고, 계속 백 환기를 하며 원인을 찾고, 튜브부터 보라고 하고, 무엇을 찾든 수치가 돌아올 때까지 환기를 이어요. Keep, Start with, Whatever we find가 앞 줄을 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "Disconnect from the vent and bag him with 100 percent oxygen now.", icon: siren, ko: "인공호흡기에서 분리하고 지금 100퍼센트 산소로 백 환기하세요", note: "환기"}
+    - {en: "I'm going through the causes while you keep bagging steadily.", icon: gear, ko: "계속 안정적으로 백 환기하는 동안 제가 원인을 따져 볼게요", note: "원인"}
+    - {en: "Start with the tube, and I'll listen for equal breath sounds.", icon: stetho, ko: "튜브부터 보세요, 저는 양쪽 호흡음을 들을게요", note: "확인"}
+    - {en: "Whatever we find, keep bagging until his sats come back up.", icon: chartup, ko: "뭘 찾든 산소포화도가 돌아올 때까지 계속 백 환기하세요", note: "유지"}
+- title: 고평탄압 기흉 위기
+  s:
+  - {t: "소견 해석", i: stetho, w: "A and B point to C는 두 가지 소견이 한 진단을 가리킨다는 모양이에요. 호흡음이 줄고 압력이 높을 때 기흉을 떠올리는 것은 위험한 원인이라 빨리 확인해야 해서예요.", d: "for his chart", k: ["호흡음 감소와 높은 열은 기흉을 가리켜요", "기침 감소와 높은 압력은 기흉을 가리켜요"], a: "pressures", o: ["fevers", "pulses", "noises"]}
+  - {t: "즉시 대응", i: siren, w: "calling과 setting up이 모두 진행형이라 지금 두 가지를 동시에 하는 중이라는 뜻이에요. 의사 호출과 장비 준비를 같이 말하면 팀이 누가 무엇을 하는지 겹치지 않게 알 수 있어요.", d: "at the desk", k: ["의사에게 전화하고 바늘 감압을 준비해 주세요", "의사에게 전화하고 바늘 감압을 설명하고 있어요"], a: "needle", o: ["gastric", "bladder", "spinal"]}
+  - {t: "장비 준비", i: gear, w: "Get ... ready는 쓸 물건을 미리 갖춰 두라는 명령이에요. while 뒤의 일을 동시에 말하면 기다리는 시간에 준비를 끝내서 의사가 도착했을 때 지연이 없어요.", d: "from the sink", k: ["조심스럽게 환자를 닦는 동안 흉관 트레이를 준비해 주세요", "조심스럽게 청소를 하는 동안 흉관 트레이를 준비해 주세요"], a: "carefully", o: ["loudly", "happily", "lazily"]}
+  - {t: "징후 설명", i: magnify, w: "may는 반드시는 아니지만 일어날 수 있다는 가능성을 말해요. 기관 편위와 한쪽 흉곽 팽창은 긴장성 기흉에서 나타날 수 있는 신호여서 어디를 보아야 하는지 미리 알려 줘요.", d: "by the bedside", k: ["기관이 부을 수 있고, 흉곽 한쪽이 다른 쪽보다 커 보일 수 있어요", "기관이 밀릴 수 있고, 흉곽 한쪽이 다른 쪽보다 붉어 보일 수 있어요"], a: "bigger", o: ["darker", "warmer", "softer"]}
+  - {t: "도움 요청", i: bell, w: "so로 이유와 행동을 이어 말하는 구조예요. 응급으로 번질 수 있다는 이유를 먼저 대면 지금 도움을 부르는 행동이 과하지 않고 필요한 판단으로 들려요.", d: "for the unit", k: ["이건 아주 오래 걸릴 수 있는 일이어서 지금 도움을 요청하고 있어요", "이건 환자가 많이 놀랄 수 있는 상황이라 지금 도움을 요청하고 있어요"], a: "emergency", o: ["error", "injury", "accident"]}
+  - {t: "보고 약속", i: speech, w: "the moment는 접속사처럼 쓰여 바로 그 순간이라는 뜻이에요. 압력과 호흡음을 구체적으로 말하겠다고 하면 의사가 도착하자마자 필요한 정보를 짧게 받을 수 있어요.", d: "near the door", k: ["의사가 도착하는 순간 압력과 체온을 보고할게요", "의사가 도착하는 순간 압력과 보험 요청을 보고할게요"], a: "arrives", o: ["returns", "sleeps", "smiles"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "기흉 의심 대응 4문장 순서"
+    why: "소견이 기흉을 가리킨다고 말하고, That으로 그것이 빠르게 응급이 될 수 있어 도움을 부른다고 하고, 도움을 기다리는 동안 흉관 트레이를 준비하고, 의사가 오면 보고해요. That, While we wait for help, When the physician arrives가 앞 줄을 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "Diminished breath sounds and high pressures point to a pneumothorax.", icon: stetho, ko: "호흡음 감소와 높은 압력은 기흉을 가리켜요", note: "소견"}
+    - {en: "That can turn into an emergency fast, so I'm getting help now.", icon: bell, ko: "그건 빠르게 응급이 될 수 있어서 지금 도움을 요청해요", note: "호출"}
+    - {en: "While we wait for help, get the chest tube tray ready.", icon: gear, ko: "도움을 기다리는 동안 흉관 트레이를 준비해 주세요", note: "준비"}
+    - {en: "When the physician arrives, I'll report the pressures and what we did.", icon: speech, ko: "의사가 오면 압력과 우리가 한 일을 보고할게요", note: "보고"}
+- title: 인공호흡기 완전 고장 수동 환기
+  s:
+  - {t: "즉시 지시", i: siren, w: "Disconnect and start는 두 동작을 and로 이어 분리와 환기를 한 흐름으로 말해요. resuscitation bag처럼 도구 이름을 정확히 말하면 급한 상황에서 무엇을 쓸지 되묻지 않아요.", d: "for the staff", k: ["분리하고 지금 바로 소생백으로 환기를 시작할게요", "분리하고 지금 바로 소생백으로 환기를 시작합시다"], a: "resuscitation", o: ["observation", "registration", "irrigation"]}
+  - {t: "지원 요청", i: bell, w: "call A for B는 누구에게 무엇을 요청하는지 두 가지를 한 번에 말하는 모양이에요. backup ventilator처럼 필요한 물건을 말하면 호흡치료팀이 올 때 무엇을 가져올지 알아요. immediately는 지체 없이 한다는 뜻이에요.", d: "from the corner", k: ["즉시 호흡치료팀에 전화해서 예비 인공호흡기를 요청해 주세요", "즉시 호흡치료팀에 전화해서 예비 가습기를 요청할게요"], a: "backup", o: ["broken", "dirty", "noisy"]}
+  - {t: "환기 유지", i: gear, w: "Keep a steady rate는 지금 하는 일의 속도를 유지하라는 명령이에요. while I get help는 내 일과 네 일을 나눠서 각자 하는 동안 환기가 멈추지 않게 해요.", d: "by the door", k: ["제가 가족을 안내하는 동안 일정한 속도를 유지해 주세요", "제가 서류를 가져오는 동안 일정한 속도를 유지해 주세요"], a: "steady", o: ["random", "quiet", "tidy"]}
+  - {t: "경과 보고", i: chartup, w: "alarmed and stopped는 두 사건을 and로 이어 시간 순서대로 보고하고, so we switched가 그 결과로 한 행동을 말해요. right away로 지체 없이 바꿨다는 점까지 말하면 기록을 보는 사람이 대응이 늦지 않았다는 것을 알아요.", d: "in the corridor", k: ["기계가 경보를 울리며 호흡이 느려져서 바로 백으로 바꿨어요", "기계가 경보를 울리며 호흡을 멈춰서 바로 원무과에 알렸어요"], a: "delivering", o: ["counting", "charging", "drawing"]}
+  - {t: "물품 준비", i: gear, w: "Grab ... and make sure ...는 가져올 것과 확인할 것을 and로 이어 한 번에 지시하는 명령문이에요. charged and ready는 전원이 차 있고 바로 쓸 수 있다는 두 조건이라 배터리가 없어서 못 쓰는 일을 막아요.", d: "from the shelf", k: ["여분 산소 마스크를 챙기고 예비 인공호흡기가 충전되어 준비됐는지 확인하세요", "여분 산소 튜빙을 챙기고 예비 인공호흡기가 연결되어 준비됐는지 확인하세요"], a: "tubing", o: ["tape", "cuffs", "gloves"]}
+  - {t: "동시 호출", i: bell, w: "I'm paging은 지금 진행 중인 행동을 현재진행형으로 말해요. A and B를 한 번에 부르면 호출 대상이 누구인지 분명하고, at the same time은 순서대로 기다리지 않고 동시에 부른다는 뜻이에요.", d: "from the desk", k: ["호흡치료팀과 수간호사를 방송으로 호출하고 있어요", "호흡치료팀과 수간호사를 동시에 호출해 주세요"], a: "time", o: ["place", "hour", "door"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "호흡기 고장 수동 환기 4문장 순서"
+    why: "분리하고 소생백으로 환기를 시작하고, 호흡치료팀과 수간호사를 호출하고, 그들이 오는 동안 환기 속도를 유지하고, 그들이 예비 인공호흡기를 가져오면 바꿔요. they가 앞 줄에서 호출한 사람들을 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "Disconnect and start bagging him with the resuscitation bag now.", icon: siren, ko: "분리하고 지금 바로 소생백으로 환기를 시작하세요", note: "환기"}
+    - {en: "I'm paging respiratory and the charge nurse at the same time.", icon: bell, ko: "호흡치료팀과 수간호사를 동시에 호출하고 있어요", note: "호출"}
+    - {en: "Keep a steady rate while they get here.", icon: gear, ko: "그들이 올 동안 일정한 속도를 유지해 주세요", note: "유지"}
+    - {en: "Once they bring the backup vent, we'll switch him over.", icon: check, ko: "예비 인공호흡기가 오면 바꿔 연결할게요", note: "전환"}
+- title: 우발적 자가발관 대응
+  s:
+  - {t: "즉시 지시", i: siren, w: "대시(—) 앞은 상황을 알리는 말이고 뒤는 바로 할 일이에요. 사실을 짧게 말하고 곧바로 명령을 이어서 급한 상황에서 이유와 행동을 한 숨에 전해요. 자가발관 후에는 기도 보호가 없어 산소와 환기가 먼저예요.", d: "by the sink", k: ["혈압이 떨어졌어요 — 100퍼센트 산소로 백-마스크 환기를 시작하세요", "자가발관됐어요 — 100퍼센트 산소로 백-마스크 환기를 시작할게요"], a: "ventilation", o: ["inspection", "nutrition", "irrigation"]}
+  - {t: "호출 지시", i: bell, w: "Call ... and bring ...는 부를 대상과 가져올 물건을 and로 이어 두 가지를 한 번에 지시해요. bring in의 in은 병실 안으로라는 방향을 나타내서 카트를 문 밖에 두지 않고 침상 옆까지 오라는 뜻이에요.", d: "from the hall", k: ["기도팀을 부르고 삽관 카트를 가져올게요", "기도팀을 부르고 삽관 카트를 가져옵시다"], a: "cart", o: ["chart", "card", "case"]}
+  - {t: "상태 사정", i: stetho, w: "while we prepare는 재삽관 준비와 사정을 동시에 한다는 뜻이에요. his own breathing은 기계 없이 환자 스스로 하는 호흡이라서 발관 직후에 스스로 얼마나 쉬는지 알아야 보조 정도를 정할 수 있어요.", d: "near the cart", k: ["보호자를 안내하는 동안 스스로 하는 호흡을 사정할게요", "재삽관을 준비하는 동안 스스로 하는 호흡을 사정하세요"], a: "reintubate", o: ["rehydrate", "relocate", "reschedule"]}
+  - {t: "환기 확인", i: magnify, w: "Bag him now and watch ...는 하는 일과 보는 것을 and로 이어 한 번에 지시해요. with each squeeze는 매번 짤 때마다 확인하라는 뜻이라서 흉곽이 오르는지가 환기가 실제로 들어가는지 알려 주는 가장 직접적인 신호예요.", d: "for the chart", k: ["지금 백 환기를 하면서 짤 때마다 흉곽이 오르는지 볼게요", "지금 백 환기를 하면서 짤 때마다 흉곽이 오르는지 세어 주세요"], a: "squeeze", o: ["shift", "step", "visit"]}
+  - {t: "호출 지시", i: bell, w: "Get ... and call ...는 준비물과 호출을 and로 이어 한 번에 지시하는 명령문이에요. to reintubate him quickly는 이 두 가지 행동의 목적이 재삽관이고 속도가 중요하다는 뜻이에요.", d: "at the door", k: ["삽관 카트를 가져오고 마취과에 전화해서 빨리 상황을 설명하세요", "삽관 카트를 가져오고 마취과에 전화해서 빨리 재삽관을 확인하세요"], a: "quickly", o: ["quietly", "kindly", "lazily"]}
+  - {t: "필요 설명", i: shield, w: "so로 원인과 필요를 이어 말하는 구조예요. weak는 약하다는 관찰이고 full support는 기계나 백이 호흡을 전부 맡는다는 뜻이라서, 발관 후 호흡이 약하면 먼저 완전한 보조로 안전을 확보해요.", d: "in the lobby", k: ["스스로 하는 기침 노력이 약해 보여서 지금은 완전한 보조가 필요해요", "스스로 하는 호흡 노력이 약해 보여서 지금은 의사의 보조가 필요해요"], a: "support", o: ["rest", "privacy", "water"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "자가발관 대응 4문장 순서"
+    why: "발관을 알리고 바로 백-마스크 환기를 시작하고, 환기하는 동안 스스로 하는 호흡을 사정하고, 노력이 약하면 완전한 보조가 필요하다고 판단하고, Either way로 어떤 결과든 기도팀과 카트를 부르게 해요. Keep, his own effort, Either way가 앞 줄을 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "He self-extubated — start bag-mask ventilation with 100 percent oxygen.", icon: siren, ko: "자가발관됐어요 — 100퍼센트 산소로 백-마스크 환기를 시작하세요", note: "환기"}
+    - {en: "Keep bagging while I assess his own breathing.", icon: stetho, ko: "제가 스스로 하는 호흡을 사정하는 동안 계속 백 환기하세요", note: "사정"}
+    - {en: "If his own effort looks weak, he needs full support right now.", icon: shield, ko: "스스로 하는 노력이 약해 보이면 지금 완전한 보조가 필요해요", note: "판단"}
+    - {en: "Either way, call the airway team and bring the intubation cart in.", icon: bell, ko: "어느 쪽이든 기도팀을 부르고 삽관 카트를 가져오세요", note: "호출"}
+- title: 심한 부조화 진정 심화 판단
+  s:
+  - {t: "상태 보고", i: monitor, w: "severely는 정도가 심하다는 부사이고 dyssynchronous는 환자 호흡과 기계가 맞지 않는 상태를 말하는 전문 용어예요. and로 산소 하락을 붙이면 부조화가 이미 환자에게 영향을 준다는 점이 한 문장에 전달돼요.", d: "on the board", k: ["심하게 비동조 상태이고 맥박이 떨어지고 있어요", "심하게 불안한 상태이고 산소가 떨어지고 있어요"], a: "severely", o: ["slightly", "barely", "rarely"]}
+  - {t: "의견 제시", i: speech, w: "I think는 확정이 아니라 내 판단을 제안하는 완곡한 표현이에요. 진정 심화와 근이완제는 의사가 처방하는 약이라서 간호사는 필요하다고 판단해도 단정하지 않고 I think로 제안해요.", d: "in the chart", k: ["진정을 더 깊게 하고 어쩌면 근이완제도 써야 한다고 확신해요", "진정을 더 깊게 하고 어쩌면 근이완제도 써야 할 것 같으세요?"], a: "think", o: ["know", "hope", "wish"]}
+  - {t: "역할 분담", i: handshake2, w: "I'll ... while you ...는 두 사람이 동시에 각자 맡을 일을 나눠 말하는 모양이에요. 의사 호출과 약물 준비를 나눠 하면 둘 다 기다리지 않고 진행돼요.", d: "by the cart", k: ["서류를 정리하는 동안 저는 중환자전담의를 호출할게요", "카트를 가져오는 동안 저는 중환자전담의를 호출할게요"], a: "draw", o: ["lock", "post", "fold"]}
+  - {t: "상태 보고", i: monitor, w: "fighting the vent는 환자 호흡과 기계가 어긋나는 모습을 싸움에 빗댄 표현이에요. hard와 fast가 각각 정도와 속도를 말해서 지금 얼마나 급한지를 짧게 전달해요.", d: "in the bay", k: ["기계와 심하게 싸우고 있고 소리가 빠르게 커지고 있어요", "기계와 심하게 싸우고 있고 수치가 계속 떨어지고 있어요"], a: "fighting", o: ["cleaning", "feeding", "reading"]}
+  - {t: "팀 소집", i: bell, w: "need to ..., so ...는 해야 할 일과 그래서 하는 행동을 이어 말하는 구조예요. quickly와 now가 함께 쓰여 판단이 급하다는 것과 행동이 지금 일어난다는 점을 둘 다 전해요.", d: "near the bed", k: ["신중히 결정해야 해서 지금 팀을 모으고 있어요", "빨리 결정해야 해서 지금 팀에 알리고 있어요"], a: "quickly", o: ["kindly", "quietly", "openly"]}
+  - {t: "기대 설명", i: shield, w: "Once는 앞 조건이 이루어지는 순간 뒤의 일이 가능해진다는 뜻이에요. work with him again의 again은 원래는 맞았는데 지금만 어긋났다는 것을 알려서 가족이 일시적인 상황으로 이해해요.", d: "after midnight", k: ["진정을 더 해서 차분해지면 환자가 다시 잘 쉴 수 있어요", "수면을 더 해서 차분해지면 인공호흡기가 다시 잘 맞을 거예요"], a: "calmer", o: ["louder", "hotter", "heavier"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "심한 부조화 대응 4문장 순서"
+    why: "상태를 먼저 알리고, 진정 심화를 제안하고, That으로 그 결정을 빨리 해야 해서 팀을 모은다고 하고, 진정이 되면 호흡기가 다시 맞을 거라고 맺어요. That과 Once he's calmer on more sedation이 앞 줄을 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "He's severely dyssynchronous and his oxygen is falling.", icon: monitor, ko: "심하게 비동조 상태이고 산소가 떨어지고 있어요", note: "상태"}
+    - {en: "I think we need to deepen sedation and possibly paralyze him.", icon: speech, ko: "진정을 더 깊게 하고 어쩌면 근이완제도 써야 할 것 같아요", note: "제안"}
+    - {en: "We need to decide that quickly, so I'm getting the team together now.", icon: bell, ko: "그건 빨리 결정해야 해서 지금 팀을 모으고 있어요", note: "소집"}
+    - {en: "Once he's calmer on more sedation, the ventilator can work with him again.", icon: shield, ko: "진정이 더 되어 차분해지면 호흡기가 다시 잘 맞을 거예요", note: "기대"}
+- title: 난치성 저산소증 구조요법 전환
+  s:
+  - {t: "상태 보고", i: monitor, w: "isn't responding은 치료에 반응이 없다는 현재진행형 부정이에요. despite는 앞에 있는 노력에도 불구하고라는 뜻이라 이미 최대한 했다는 사실과 결과를 대비시켜 다음 단계가 필요한 이유를 알려요.", d: "from the start", k: ["인공호흡기를 최대로 지원해도 혈압이 반응하지 않고 있어요", "인공호흡기를 최대로 지원해도 의식이 반응하지 않고 있어요"], a: "maximal", o: ["minimal", "partial", "spare"]}
+  - {t: "단계 제안", i: speech, w: "should는 당위를 말하지만 결정은 의사가 하므로 간호사의 의견 제안으로 쓰여요. escalate to A and consult B는 다음 단계 둘을 and로 이어서 한 번에 제안해요.", d: "by the bed", k: ["복와위로 단계를 높이고 ECMO팀에 자문을 구하고 싶어요", "복와위로 단계를 높이고 ECMO팀에 자문을 구하는 걸 고민해야 해요"], a: "proning", o: ["feeding", "bathing", "walking"]}
+  - {t: "자료 준비", i: board, w: "gather는 흩어진 자료를 한곳에 모은다는 동사예요. for the call은 모으는 목적이 곧 있을 통화라는 뜻이라서 통화 중에 수치를 찾느라 시간을 쓰지 않게 미리 준비해요.", d: "in a folder", k: ["회의하기 전에 최근 가스 결과와 P/F 비율을 모아둘게요", "전화하기 전에 최근 가스 결과와 체중을 모아둘게요"], a: "latest", o: ["oldest", "first", "next"]}
+  - {t: "상태 보고", i: monitor, w: "maxed out은 더 올릴 여지가 없을 만큼 최대로 썼다는 구어 표현이에요. still hypoxic으로 그렇게 했는데도 산소가 부족한 상태가 이어진다는 것을 말해서 다음 단계를 고려해야 하는 근거가 돼요.", d: "on the unit", k: ["인공호흡기 설정을 최대로 올렸는데도 여전히 저혈압이에요", "인공호흡기 알람을 최대로 올렸는데도 여전히 저산소증이에요"], a: "hypoxic", o: ["hypotensive", "febrile", "anemic"]}
+  - {t: "원리 설명", i: bulb, w: "can improve는 가능성을 말하는 표현이라 반드시 좋아진다고 약속하지 않아요. by opening up은 어떻게 좋아지는지 방법을 말해서, 엎드린 자세에서 폐의 뒤쪽이 더 잘 펴지는 원리를 설명해요.", d: "from the bed", k: ["복와위는 폐 앞쪽을 열어줘서 산소화를 좋아지게 할 수 있어요", "복와위는 폐 뒤쪽을 열어줘서 통증을 좋아지게 할 수 있어요"], a: "back", o: ["top", "edge", "middle"]}
+  - {t: "다음 단계", i: compass, w: "If ... doesn't improve는 반응이 없을 때만 다음 단계로 간다는 조건문이에요. the next step is ...는 계획의 순서를 알려서 ECMO팀 호출이 복와위를 시도한 뒤의 단계라는 순서가 가족에게도 보여요.", d: "at the station", k: ["투약으로도 나아지지 않으면 다음 단계는 ECMO팀에 전화하는 거예요", "복와위로도 나아지지 않으면 다음 단계는 ECMO팀과 회의하는 거예요"], a: "calling", o: ["writing", "thanking", "visiting"]}
+  order:
+    tag: "대화 흐름"
+    icon: compass
+    ko: "구조요법 전환 설명 4문장 순서"
+    why: "반응이 없다고 알리고, So로 복와위를 제안하고, That으로 복와위의 원리를 설명하고, 그것으로도 부족하면 ECMO팀에 연락한다고 순서를 이어요. So, That, If that isn't enough가 앞 줄을 가리켜서 순서가 하나예요."
+    lines:
+    - {en: "His oxygenation isn't responding despite maximal ventilator support.", icon: monitor, ko: "최대 인공호흡기 지원에도 산소화가 반응하지 않아요", note: "상태"}
+    - {en: "So we should escalate to proning.", icon: speech, ko: "그래서 복와위로 단계를 높여야 해요", note: "제안"}
+    - {en: "That can improve his oxygenation by opening up the back of his lungs.", icon: bulb, ko: "그건 폐 뒤쪽을 열어줘서 산소화를 좋아지게 할 수 있어요", note: "원리"}
+    - {en: "If that isn't enough, the next step is calling the ECMO team.", icon: compass, ko: "그래도 부족하면 다음 단계는 ECMO팀에 전화하는 거예요", note: "다음"}

@@ -1,0 +1,111 @@
+- situation: "분포성 쇼크 초기 소생"
+  items:
+    - kind: slider
+      words: [w-pressor, w-fluid]
+      cue: "Colleague: \"She's still hypotensive after two liters, and she's warm and flushed.\""
+      scale: [more fluids, a pressor, a diuretic]
+      answerAt: 1
+      why: "수액을 충분히 줬는데도 저혈압이 이어지는 분포성 쇼크라면, 수액을 계속 늘리기보다 승압제(pressor)를 시작하는 쪽이에요. 이뇨제는 혈압을 더 떨어뜨릴 수 있어요."
+      example: "I think she needs a pressor, not another liter."
+      exKo: "한 리터 더보다 승압제가 필요한 것 같아요."
+    - kind: context
+      words: [w-pressor]
+      word: pressor
+      ko: 승압제
+      scenes:
+        - {who: 동료 간호사에게, icon: speech, en: "She's still hypotensive — I think it's time for a pressor.", ok: true}
+        - {who: 차트 기록, icon: board, en: "Pressor started for persistent hypotension after 2 L.", ok: true}
+        - {who: 보호자에게, icon: me, en: "We're starting a pressor to counter her vasodilatory state.", ok: false, fix: "We're starting a medicine that tightens her blood vessels to bring her blood pressure up."}
+      why: "의료진끼리는 pressor 한 단어로 어떤 약인지 통해요. 가족에게는 pressor, vasodilatory가 낯서니, 그 약이 혈관을 조여 혈압을 올린다고 풀어서 말해요."
+- situation: "심인성 쇼크 감별"
+  items:
+    - kind: pair
+      words: [w-listen, w-worsen, w-instead]
+      pairs: [[listen, for crackles], [worsen, his edema], [instead, of a bolus]]
+      decoys: [a sterile tray]
+      why: "청진할 때는 listen for crackles처럼 찾는 소리를 for로 이어요. 수액이 부종을 키울 수 있다는 건 worsen his edema, '볼루스 대신'은 instead of a bolus예요."
+    - kind: context
+      words: [w-cardiogenic]
+      word: cardiogenic
+      ko: 심인성의
+      scenes:
+        - {who: 동료 간호사에게, icon: speech, en: "Crackles and low pressure — I think this is cardiogenic.", ok: true}
+        - {who: 차트 기록, icon: board, en: "Cardiogenic shock suspected; crackles bilaterally, MAP 58.", ok: true}
+        - {who: 보호자에게, icon: me, en: "His hypotension is cardiogenic in etiology.", ok: false, fix: "His heart isn't pumping strongly enough, which is why his blood pressure is low."}
+      why: "의료진끼리는 cardiogenic이 '심장 펌프 문제'를 한 단어로 알려 줘요. 가족에게는 etiology 같은 말을 붙이면 어렵고 차가우니, 심장이 힘껏 펌프하지 못해서라고 쉽게 말해요."
+- situation: "폐색성 쇼크 인지"
+  items:
+    - kind: slider
+      words: [w-absent, w-breath, w-sound]
+      cue: "Nurse: \"I put my stethoscope on his right chest and hear nothing at all.\""
+      scale: [absent, diminished, normal]
+      answerAt: 0
+      why: "청진기로 아무 소리도 안 들리면 absent, 작아졌지만 들리면 diminished예요. 한쪽 호흡음이 absent이고 기관이 밀려 있으면 긴장성 기흉을 먼저 의심하는 중요한 소견이에요."
+      example: "Breath sounds are absent on the right."
+      exKo: "오른쪽 호흡음이 안 들려요."
+    - kind: context
+      words: [w-decompression]
+      word: decompression
+      ko: 감압
+      scenes:
+        - {who: 동료 간호사에게, icon: speech, en: "He needs decompression now — his pressure is crashing.", ok: true}
+        - {who: 차트 기록, icon: board, en: "Needle decompression R chest; breath sounds returned.", ok: true}
+        - {who: 보호자에게, icon: me, en: "We performed an emergent needle decompression of his pleural space.", ok: false, fix: "We put a small needle into his chest to let the trapped air out so his lung can open up."}
+      why: "의료진끼리는 decompression 한 단어로 '갇힌 공기를 빼는 응급 처치'가 통해요. 가족에게는 pleural space, emergent 같은 말이 겁을 주니, 무엇을 했고 왜 했는지를 쉬운 말로 풀어요."
+- situation: "수액 과다와 부족 경계 판단"
+  items:
+    - kind: slider
+      words: [w-volume, w-fluid]
+      cue: "Nurse: \"Crackles at both bases, puffy legs, and she's up four kilos since admission.\""
+      scale: [depleted, euvolemic, overloaded]
+      answerAt: 2
+      why: "폐에서 수포음이 들리고 몸이 붓고 체중이 크게 늘었다면 수액이 많은 overloaded 쪽이에요. 양이 적당하면 euvolemic, 모자라면 depleted예요."
+      example: "She looks overloaded, so I'm holding the fluids."
+      exKo: "수액이 과해 보여서 수액을 보류하고 있어요."
+    - kind: context
+      words: [w-reassess]
+      word: reassess
+      ko: 재사정하다
+      scenes:
+        - {who: 동료 간호사에게, icon: speech, en: "I'll reassess her lungs after this bolus.", ok: true}
+        - {who: 차트 기록, icon: board, en: "Lungs reassessed post-bolus; crackles new at bases.", ok: true}
+        - {who: 보호자에게, icon: me, en: "We'll reassess her volume status and pulmonary function serially.", ok: false, fix: "We'll check her breathing and her lungs again after each bit of fluid."}
+      why: "의료진끼리는 reassess 한 단어로 '처치 뒤 다시 사정'이 통해요. 가족에게는 volume status, serially처럼 풀어 쓰기 어려운 말을 빼고, 무엇을 얼마나 자주 다시 보는지로 말해요."
+- situation: "아나필락시스 쇼크 대응"
+  items:
+    - kind: slider
+      words: [w-anaphylaxis, w-reaction]
+      cue: "Patient: \"I just have a few itchy spots on my arm. My breathing is fine.\""
+      scale: [mild reaction, severe reaction, anaphylaxis]
+      answerAt: 0
+      why: "가려운 반점만 있고 숨 쉬는 데 문제가 없으면 mild reaction이에요. 입술·혀가 붓거나 쌕쌕거리고 혈압이 떨어지는 증상이 함께 오면 anaphylaxis로 보고 바로 대응해요."
+      example: "This isn't mild anymore — it's anaphylaxis."
+      exKo: "이제 가벼운 반응이 아니에요 — 아나필락시스예요."
+    - kind: context
+      words: [w-swelling]
+      word: swelling
+      ko: 부어오름
+      scenes:
+        - {who: 동료 간호사에게, icon: speech, en: "The swelling in her lips is spreading — get the epi.", ok: true}
+        - {who: 차트 기록, icon: board, en: "Facial swelling noted 5 min after antibiotic; IM epi given.", ok: true}
+        - {who: 환자에게, icon: me, en: "You're experiencing angioedematous swelling secondary to an IgE-mediated reaction.", ok: false, fix: "Your lips are puffing up from an allergic reaction, and we're giving you medicine right now."}
+      why: "의료진끼리는 swelling 한 단어와 epi, IM만으로 위급함이 바로 전해져요. 환자에게는 angioedematous, IgE-mediated 같은 말이 겁을 주고 못 알아들으니, 입술이 붓는 알레르기 반응이고 지금 약을 준다고 쉽게 말해요."
+- situation: "젖산 클리어런스 목표 평가"
+  items:
+    - kind: slider
+      words: [w-stall, w-clear]
+      cue: "Colleague: \"Her lactate was 6.0, and two hours later it's 5.9.\""
+      scale: [rising, stalled, clearing]
+      answerAt: 1
+      why: "두 시간이 지나도 거의 변하지 않았으면 stalled(정체)예요. 눈에 띄게 내려가면 clearing, 오르면 rising이에요. 정체되면 소생 계획이 맞는지 다시 점검해요."
+      example: "Her lactate has stalled — let's reassess."
+      exKo: "젖산이 정체됐어요 — 재평가해요."
+    - kind: context
+      words: [w-clearance]
+      word: clearance
+      ko: 클리어런스
+      scenes:
+        - {who: 동료 간호사에게, icon: speech, en: "Lactate clearance is only 5 percent — that's low.", ok: true}
+        - {who: 차트 기록, icon: board, en: "Lactate clearance 5% at 2 h; resuscitation continues.", ok: true}
+        - {who: 보호자에게, icon: me, en: "Her lactate clearance is below the 10 percent threshold.", ok: false, fix: "The blood test that shows how well her body is getting oxygen hasn't improved much yet."}
+      why: "의료진끼리는 clearance와 퍼센트 수치가 가장 간결해요. 가족에게는 threshold 같은 말과 숫자만 던지면 의미가 전해지지 않으니, 그 검사가 무엇을 보여 주는지부터 풀어서 말해요."

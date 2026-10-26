@@ -1,0 +1,135 @@
+- sit: 7
+  items:
+  - kind: slider
+    words: [w-slip]
+    cue: "The mark on the tube moved 1 cm away from the lip since the last check, but the tube is still in."
+    scale: [nudged, slipped, fell out]
+    answerAt: 1
+    why: "표시가 1cm 움직였다면 튜브가 자리를 벗어나기 시작한 것이라 slipped예요. 아직 완전히 빠진 것은 아니니 fell out은 아니고, nudged는 이동을 너무 작게 말해요."
+    example: "I'll mark the tube at the lip so I can spot any slipping."
+    exKo: "입술 위치에 튜브를 표시해서 미끄러짐을 바로 알아챌게요."
+  - kind: context
+    words: [w-securement]
+    word: securement
+    ko: 고정 상태
+    scenes:
+      - {who: 동료에게, icon: monitor, en: "Securement looks good, tube is at 23 at the lip.", ok: true}
+      - {who: 차트 기록, icon: board, en: "ETT securement checked, depth 23 cm at the lip.", ok: true}
+      - {who: 가족에게, icon: me, en: "The securement of his endotracheal tube is intact and the depth is unchanged.", ok: false, fix: "His breathing tube is taped down firmly and hasn't moved."}
+    why: "동료와 차트에서는 securement·depth 같은 항목어가 정확해요. 가족에게는 이 말이 무슨 뜻인지 모르니 '튜브가 단단히 붙어 있고 움직이지 않았다'로 풀어 말해요."
+- sit: 8
+  items:
+  - kind: slider
+    words: [w-distended]
+    cue: "His belly is visibly swollen and tight when I press on it."
+    scale: [a bit full, distended, rock hard]
+    answerAt: 1
+    why: "눈에 띄게 부풀고 팽팽하면 distended예요. a bit full은 약간 찬 정도이고, rock hard(널빤지처럼 굳은 배)는 복막 자극을 시사하는 훨씬 급한 소견이에요."
+    example: "His belly looks distended, so I'll hold the feeds."
+    exKo: "배가 팽창돼 보이니 영양 공급을 멈출게요."
+  - kind: swap
+    words: [w-aspiration]
+    who: "보호자에게 · 영양 공급 설명"
+    icon: me
+    before: ["We're careful with his feeds because lying face-down raises the risk of ", "aspiration", "."]
+    options: [food going into his lungs, aspiration, a bad stomachache]
+    answer: food going into his lungs
+    notes: {food going into his lungs: "aspiration의 뜻을 보호자가 알아듣는 말로 정확히 풀어 줘요.", aspiration: "의료진끼리의 말이라 가족은 뜻을 몰라요.", a bad stomachache: "복통은 aspiration과 다른 문제라 사실과 달라요."}
+    why: "aspiration은 의료 용어예요. 가족에게는 '음식이 폐로 들어간다'처럼 무슨 일이 생기는지로 풀어 말해야 왜 조심하는지 이해해요."
+    ko: "엎드려 있으면 음식이 폐로 들어갈 위험이 커서 영양 공급을 조심하고 있어요"
+- sit: 9
+  items:
+  - kind: slider
+    words: [w-deeply, w-sedated]
+    cue: "He is on a paralytic infusion, so he cannot show any sign that he is awake."
+    scale: [lightly sedated, moderately sedated, deeply sedated]
+    answerAt: 2
+    why: "근육이 마비돼 있으면 깨어 있어도 표현하지 못해요. 그래서 마비제를 쓰는 동안은 깊은 진정(deeply sedated)이 필요하고, 가볍거나 중간 정도면 환자가 의식이 있는데도 알리지 못할 위험이 있어요."
+    example: "Because he's paralyzed, he must be deeply sedated at all times."
+    exKo: "약물로 마비돼 있으니 항상 깊이 진정돼 있어야 해요."
+  - kind: context
+    words: [w-paralyzed]
+    word: paralyzed
+    ko: 마비된(약물로)
+    scenes:
+      - {who: 동료에게, icon: monitor, en: "He's paralyzed, so we rely on the monitor, not his movement.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Pt paralyzed on cisatracurium; TOF 2 of 4.", ok: true}
+      - {who: 가족에게, icon: me, en: "Your father is currently pharmacologically paralyzed.", ok: false, fix: "We've given him medicine that keeps his muscles still so the breathing machine can work, and we're giving him sedation and pain medicine to keep him comfortable."}
+    why: "동료와 차트에서는 paralyzed가 정확한 임상어예요. 가족에게는 '약으로 근육을 쉬게 한다'로 풀고, 편안하도록 진정·진통을 하고 있다는 점을 함께 말해요."
+- sit: 10
+  items:
+  - kind: slider
+    words: [w-improve]
+    cue: "Compliance went from 28 to 29 mL per cmH2O after the recruitment maneuver."
+    scale: [edged up, improved, improved a lot]
+    answerAt: 0
+    why: "28에서 29로는 아주 작은 변화라 edged up이 사실에 맞아요. improved a lot처럼 말하면 수기가 효과 있었다고 팀이 잘못 읽어요."
+    example: "His compliance improved after the recruitment maneuver."
+    exKo: "폐포 동원 수기 후에 순응도가 좋아졌어요."
+  - kind: context
+    words: [w-oxygenation]
+    word: oxygenation
+    ko: 산소화
+    scenes:
+      - {who: 동료에게, icon: monitor, en: "Oxygenation improved at the same PEEP.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Oxygenation better after recruitment, PEEP unchanged.", ok: true}
+      - {who: 가족에게, icon: me, en: "His oxygenation index and compliance both improved post-recruitment.", ok: false, fix: "His lungs are taking in oxygen better after the treatment."}
+    why: "동료와 차트에서는 oxygenation이 짧고 정확해요. 가족에게는 index·compliance 같은 지표 이름보다 '폐가 산소를 더 잘 받아들인다'로 전해요."
+- sit: 11
+  items:
+  - kind: slider
+    words: [w-substantially]
+    cue: "After the first prone session his P/F went from 140 to 145."
+    scale: [slightly, moderately, substantially]
+    answerAt: 0
+    why: "P/F가 140에서 145로 거의 그대로면 slightly예요. substantially는 눈에 띄는 큰 개선에만 써요. 응답자 판단을 흐리지 않으려면 정도를 사실대로 말해요."
+    example: "His oxygenation improved substantially, so he's a proning responder."
+    exKo: "산소화가 상당히 좋아져서 복와위 응답자예요."
+  - kind: context
+    words: [w-session]
+    word: session
+    ko: 회차
+    scenes:
+      - {who: 동료에게, icon: monitor, en: "We'll plan another prone session for tonight.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Prone session two started at 20:00.", ok: true}
+      - {who: 가족에게, icon: me, en: "Subsequent prone sessions will be scheduled by the intensivist based on P/F response.", ok: false, fix: "We plan to turn him onto his stomach again tonight, because it seems to be helping his breathing."}
+    why: "동료와 차트에서는 session을 번호와 시각과 함께 간단히 써요. 가족에게는 intensivist·P/F 같은 말을 빼고 '오늘 밤 다시 엎드려 눕힌다'처럼 무슨 일인지 말해요."
+- sit: 12
+  items:
+  - kind: slider
+    words: [w-drop]
+    cue: "MAP went from 72 to 66 right after the turn, and he is otherwise stable."
+    scale: [dipped, dropped, plunged]
+    answerAt: 0
+    why: "일시적으로 조금 내려간 정도는 dipped예요. dropped는 눈에 띄는 하락, plunged는 급격하고 크게 떨어질 때라 같은 '떨어졌다'여도 무게가 달라요."
+    example: "His blood pressure dropped after we turned him."
+    exKo: "돌린 뒤 혈압이 떨어졌어요."
+  - kind: context
+    words: [w-fluid]
+    word: fluid
+    ko: 수액
+    scenes:
+      - {who: 동료에게, icon: monitor, en: "I'll start fluids per protocol and recheck his pressure.", ok: true}
+      - {who: 차트 기록, icon: board, en: "Fluid bolus 250 mL given; MAP 66 to 75.", ok: true}
+      - {who: 가족에게, icon: me, en: "We are giving IV fluid for intravascular volume expansion to augment venous return.", ok: false, fix: "We're giving him some extra fluid through his IV to bring his blood pressure back up."}
+    why: "동료와 차트에서는 fluid bolus처럼 양과 방법을 짧게 써요. 가족에게는 intravascular volume expansion 같은 말 대신 '정맥으로 수액을 더 준다'로 말해요."
+- sit: 13
+  items:
+  - kind: slider
+    words: [w-swelling]
+    cue: "Both eyelids and cheeks are visibly puffy, but the eyes are not bulging."
+    scale: [puffiness, swelling, severe edema]
+    answerAt: 1
+    why: "눈꺼풀과 뺨이 눈에 띄게 부었지만 눈이 튀어나오지 않았다면 swelling이에요. puffiness는 살짝 붓는 정도, severe edema는 훨씬 심하게 부은 상태예요."
+    example: "Facial swelling is common when he's face-down."
+    exKo: "엎드려 있으면 얼굴 부종이 흔해요."
+  - kind: swap
+    words: [w-facial]
+    who: "보호자에게 · 안면 부종 설명"
+    icon: me
+    before: ["His face has ", "facial edema", " from lying face-down."]
+    options: [some puffiness, facial edema, a swollen-up disaster]
+    answer: some puffiness
+    notes: {some puffiness: "가족이 알아듣는 쉬운 말이면서 사실을 그대로 전해요.", facial edema: "의료진끼리의 말이라 가족은 뜻을 몰라요.", a swollen-up disaster: "사실보다 무겁게 들려 가족의 불안만 키워요."}
+    why: "같은 부종도 의료진끼리는 facial edema, 가족에게는 some puffiness로 말해요. 쉬운 말은 겁을 주지 않으면서 사실을 그대로 전해요."
+    ko: "엎드려 있어서 얼굴이 조금 부어 있어요"

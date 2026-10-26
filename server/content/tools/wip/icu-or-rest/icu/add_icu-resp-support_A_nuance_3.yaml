@@ -1,0 +1,138 @@
+"면역저하 환자 NIV 선택":
+  - kind: pair
+    words: [w-compare, w-window]
+    pairs: [[compare, his numbers before and after], [miss, the window for escalation]]
+    decoys: [by tomorrow]
+    why: "NIV 시작 전후 수치를 비교하고(compare), 단계를 올릴 시간창을 놓치지 않도록(miss the window) 지켜봐요."
+  - kind: context
+    words: [w-immunocompromised]
+    word: immunocompromised
+    ko: 면역저하
+    scenes:
+      - {who: 차트 기록, icon: board, en: "Immunocompromised pt on NIV, neutropenic precautions in place.", ok: true}
+      - {who: 환자에게, icon: me, en: "You're immunocompromised and at high risk of ventilator-associated pneumonia.", ok: false, fix: "Your body has a harder time fighting infection right now, so we're being extra careful."}
+      - {who: 동료 인계, icon: speech, en: "He's immunocompromised, so we're trying to avoid intubation if it's safe.", ok: true}
+    why: "의료진끼리는 'immunocompromised'가 정확하고 짧아요. 환자에게는 'VAP' 같은 약어와 높은 위험이라는 말 대신 왜 조심하는지를 쉬운 말로 설명하세요."
+"산소 목표 개별화":
+  - kind: slider
+    words: [w-saturation, w-max]
+    cue: "His SpO2 is 100 on high flow, and his goal is 92 to 96."
+    scale: [too little, enough, too much]
+    answerAt: 2
+    why: "목표가 92~96인데 100이면 목표보다 많이 주고 있는 거예요(과산소). 산소는 많을수록 좋은 것이 아니라 목표 범위가 중요해요."
+    example: "He's at 100, so that's too much oxygen for his goal."
+    exKo: "100이라서 그의 목표에는 산소가 너무 많아요."
+  - kind: context
+    words: [w-target]
+    word: target
+    ko: 목표로 하다
+    scenes:
+      - {who: 차트 기록, icon: board, en: "Target SpO2 92-96% ordered.", ok: true}
+      - {who: 보호자에게, icon: me, en: "We're titrating to a target SpO2 of 92 to 96 percent.", ok: false, fix: "We're giving him just enough oxygen: not too little, not too much."}
+      - {who: 동료 인계, icon: speech, en: "His target sat is 92 to 96, so turn it down if he goes above that.", ok: true}
+    why: "의료진끼리는 목표 수치를 숫자로 짧게 말해요. 보호자에게는 'titrating'이나 퍼센트 대신 왜 산소를 조절하는지를 쉬운 말로 설명하세요."
+"HFNC·NIV 중 급성 악화":
+  - kind: slider
+    words: [w-immediately]
+    cue: "His sats fell from 94 to 82 in two minutes on high-flow, and he's not responding."
+    scale: [soon, promptly, immediately]
+    answerAt: 2
+    why: "몇 분 사이에 크게 떨어지고 반응도 없으면 immediately예요. soon은 곧 하겠다는 여유 있는 말이라 이 상황에는 약해요."
+    example: "Call the physician immediately."
+    exKo: "즉시 의사를 호출하세요."
+  - kind: context
+    words: [w-reassess]
+    word: reassess
+    ko: 재평가하다
+    scenes:
+      - {who: 차트 기록, icon: board, en: "Pt reassessed after FiO2 increase, no improvement.", ok: true}
+      - {who: 보호자에게, icon: me, en: "We need to reassess his ABCs and escalate his respiratory support.", ok: false, fix: "We're checking his breathing again right now and getting the doctor."}
+      - {who: 동료와, icon: speech, en: "Reassess his airway and breathing first, before anything else.", ok: true}
+    why: "의료진끼리는 'reassess'와 ABC가 곧 행동 순서예요. 보호자에게는 약어 대신 지금 무엇을 하는지를 쉬운 말로 알려 주세요."
+"NIV 지연 호흡정지 임박":
+  - kind: slider
+    words: [w-arrest, w-breath]
+    cue: "He's breathing about 6 times a minute, shallow and hard to wake."
+    scale: [slow breathing, barely breathing, not breathing]
+    answerAt: 1
+    why: "숨이 있지만 겨우 있는 정도면 barely breathing이에요. not breathing은 숨이 없는 상태라 바로 심폐소생을 시작해요."
+    example: "He's barely breathing, so start bag-mask ventilation."
+    exKo: "숨을 겨우 쉬고 있으니 백밸브마스크 환기를 시작해요."
+  - kind: context
+    words: [w-secure]
+    word: secure
+    ko: 확보하다
+    scenes:
+      - {who: 차트 기록, icon: board, en: "Airway secured with a 7.5 ETT; color change confirmed on the CO2 detector.", ok: true}
+      - {who: 보호자에게, icon: me, en: "We need to secure his airway with an endotracheal tube.", ok: false, fix: "We're putting a breathing tube in to keep his airway open."}
+      - {who: 동료와, icon: speech, en: "Secure the airway before we move him to CT.", ok: true}
+    why: "의료진끼리는 'secure the airway'가 곧 삽관이라는 뜻으로 통해요. 보호자에게는 '기관 내 튜브' 같은 말 대신 무엇을 하는지를 쉬운 말로 알려 주세요."
+"심한 고탄산 의식저하 위기":
+  - kind: slider
+    words: [w-severe]
+    cue: "He's sleepy but wakes up when you call his name, and his CO2 is only a little above his usual."
+    scale: [mild, moderate, severe]
+    answerAt: 0
+    why: "이름을 부르면 깨고 이산화탄소가 평소보다 조금만 높으면 mild예요. 의식이 거의 없어 깨우기 힘든 상태는 severe예요."
+    example: "He has mild narcosis, so we're watching him closely."
+    exKo: "경미한 마취 상태라서 세심히 지켜보고 있어요."
+  - kind: context
+    words: [w-narcosis]
+    word: narcosis
+    ko: 마취 상태
+    scenes:
+      - {who: 의사 콜, icon: monitor, en: "CO2 narcosis. He's barely rousable on 2 liters.", ok: true}
+      - {who: 보호자에게, icon: me, en: "He has severe CO2 narcosis from hypercapnic respiratory failure.", ok: false, fix: "There's too much carbon dioxide in his blood, and it's making him very sleepy."}
+      - {who: 차트 기록, icon: board, en: "Pt with CO2 narcosis, intubated for airway protection.", ok: true}
+    why: "의료진끼리는 'CO2 narcosis'가 정확하고 짧아요. 보호자에게는 용어 대신 몸에서 무슨 일이 생겼는지를 쉬운 말로 설명하세요."
+"마스크 불내성 극심 저산소":
+  - kind: slider
+    words: [w-dangerous]
+    cue: "His sats are slowly drifting down into the mid 80s while he fights the mask."
+    scale: [worrying, dangerous, critical]
+    answerAt: 1
+    why: "worrying은 지켜볼 단계, dangerous는 곧 처치가 필요한 단계, critical은 생명이 위독한 단계예요. 수치가 계속 내려가며 마스크도 못 견디면 dangerous예요."
+    example: "His oxygen is dangerous right now, so prepare for intubation."
+    exKo: "지금 산소가 위험한 수준이라 삽관을 준비해요."
+  - kind: context
+    words: [w-sedation]
+    word: sedation
+    ko: 진정
+    scenes:
+      - {who: 의사 콜, icon: monitor, en: "Preparing sedation now. We'll push when the airway equipment is ready.", ok: true}
+      - {who: 환자에게, icon: me, en: "We'll start procedural sedation with induction agents and a paralytic.", ok: false, fix: "We'll give you medicine to make you sleepy and comfortable while we place the tube."}
+      - {who: 차트 기록, icon: board, en: "Sedation given prior to intubation, airway secured on first attempt.", ok: true}
+    why: "의료진끼리는 'sedation'과 약 이름이 곧 처치 순서예요. 환자에게는 '유도제'·'근이완제' 같은 말 대신 무엇이 어떻게 느껴질지를 쉬운 말로 알려 주세요."
+"대량 각혈 동반 호흡부전":
+  - kind: slider
+    words: [w-aggressive]
+    cue: "Large amounts of blood are filling his mouth and airway."
+    scale: [gently, firmly, aggressively]
+    answerAt: 2
+    why: "기도가 피로 차오르면 석션을 아주 적극적으로(aggressively) 해요. gently는 소량의 분비물을 닦을 때 쓰는 힘이에요."
+    example: "Suction aggressively until the airway is clear."
+    exKo: "기도가 비워질 때까지 적극적으로 석션하세요."
+  - kind: context
+    words: [w-emergent]
+    word: emergent
+    ko: 응급의
+    scenes:
+      - {who: 의사 콜, icon: monitor, en: "This is an emergent airway. Please come now.", ok: true}
+      - {who: 보호자에게, icon: me, en: "This is an emergent airway situation, so we're notifying the physician.", ok: false, fix: "His airway is in danger, so the doctors are acting right now."}
+      - {who: 차트 기록, icon: board, en: "Emergent intubation performed for massive hemoptysis.", ok: true}
+    why: "의료진끼리는 'emergent'가 곧 '지금 당장'이라는 신호예요. 보호자에게는 이 말이 막연하니 무슨 위험이고 누가 무엇을 하는지를 쉬운 말로 알려 주세요."
+"완화 목적 호흡곤란 관리":
+  - kind: pair
+    words: [w-ease, w-honor, w-focus]
+    pairs: [[ease, his breathlessness], [honor, his wishes], [focus, on his comfort]]
+    decoys: [the breathing tube]
+    why: "완화 돌봄에서는 숨참을 덜어 주고(ease), 환자의 바람을 존중하고(honor), 편안함에 집중해요(focus)."
+  - kind: context
+    words: [w-comfort]
+    word: comfort
+    ko: 편안함
+    scenes:
+      - {who: 차트 기록, icon: board, en: "Pt DNI, comfort measures only, tolerating oxygen by cannula.", ok: true}
+      - {who: 보호자에게, icon: me, en: "He's on comfort measures only, so we aren't going to treat anything else.", ok: false, fix: "We're focusing on keeping him comfortable, and we'll keep treating anything that bothers him."}
+      - {who: 야간 인계, icon: speech, en: "Keep him comfortable. He's DNI, comfort measures only.", ok: true}
+    why: "의료진끼리 'comfort measures only'는 치료 목표를 한 줄로 알려요. 보호자에게 그대로 말하면 '아무것도 안 해 준다'로 들릴 수 있어요. 불편한 증상은 계속 돌본다는 것을 함께 말해 주세요."

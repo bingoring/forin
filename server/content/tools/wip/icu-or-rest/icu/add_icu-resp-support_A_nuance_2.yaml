@@ -1,0 +1,116 @@
+"HFNC ROX index 반응 평가":
+  - kind: pair
+    words: [w-rise, w-fall]
+    pairs: [["a rising ROX", "the high-flow is working"], ["a falling ROX", "he may need escalation"]]
+    decoys: [the mask is leaking]
+    why: "ROX는 산소화와 호흡수를 합친 값이라, 오르면 고유량 산소가 잘 듣고 있다는 쪽, 떨어지면 단계를 올려야 할 수 있다는 쪽 신호예요."
+  - kind: context
+    words: [w-rox]
+    word: ROX
+    ko: ROX 지수
+    scenes:
+      - {who: 차트 기록, icon: board, en: "ROX index trending up since the start of HFNC.", ok: true}
+      - {who: 보호자에게, icon: me, en: "His ROX index is dropping, which suggests HFNC failure.", ok: false, fix: "His breathing effort is going up compared to his oxygen, so we're watching him very closely."}
+      - {who: 동료 인계, icon: speech, en: "Keep an eye on his ROX and call me if it keeps dropping.", ok: true}
+    why: "의료진끼리는 지표 이름으로 짧고 정확하게 말해요. 보호자에게는 지표 이름과 '실패' 같은 말 대신, 지금 무엇을 보고 있는지를 쉬운 말로 알려 주세요."
+"NIV 적응증·금기 판단":
+  - kind: slider
+    words: [w-candidate]
+    cue: "He's drowsy but follows simple commands, and he clears his secretions only weakly."
+    scale: [ideal, borderline, poor]
+    answerAt: 1
+    why: "각성돼 협조되고 분비물도 잘 제거하면 ideal, 분비물을 못 제거하고 혼돈이 있으면 poor예요. 졸리지만 간단한 지시는 따르고 약하게라도 가래를 낸다면 그 사이, borderline이에요."
+    example: "He's a borderline candidate, so I'd watch him very closely."
+    exKo: "그는 경계선상 대상자라서 아주 세심히 지켜보겠어요."
+  - kind: context
+    words: [w-candidate]
+    word: candidate
+    ko: 대상자
+    scenes:
+      - {who: 차트 기록, icon: board, en: "Not a candidate for NIV due to altered mental status.", ok: true}
+      - {who: 보호자에게, icon: me, en: "He is a poor candidate for NIV given his airway protection deficit.", ok: false, fix: "He's too sleepy to use the mask safely right now, so we may need a breathing tube."}
+      - {who: 의사 콜, icon: monitor, en: "She's a good candidate for BiPAP. She's alert and cooperative.", ok: true}
+    why: "의료진끼리는 'candidate'로 적합 여부를 간단히 말해요. 보호자에게는 '기도 보호 결함' 같은 말 대신 왜 마스크가 안전하지 않은지를 쉬운 말로 설명하세요."
+"고탄산 호흡부전 BiPAP":
+  - kind: pair
+    words: [w-blow, w-ease]
+    pairs: [[blow off, carbon dioxide], [ease, the settings down]]
+    decoys: [the bed rails]
+    why: "숨을 내쉬어 이산화탄소를 내보내는 것을 'blow off'라고 해요. 호흡이 좋아지면 설정값을 천천히 'ease down' 해요."
+  - kind: context
+    words: [w-setting]
+    word: settings
+    ko: 설정값
+    scenes:
+      - {who: 의사 콜, icon: monitor, en: "Settings are IPAP 14 and EPAP 6 right now, and he's still working hard.", ok: true}
+      - {who: 환자에게, icon: me, en: "Your settings are IPAP 14 and EPAP 6 with a backup rate of 12, which gives adequate tidal volumes.", ok: false, fix: "I set the machine to push a bit more air in with each breath you take."}
+      - {who: 차트 기록, icon: board, en: "BiPAP settings reviewed; IPAP titrated to work of breathing.", ok: true}
+    why: "의료진끼리는 IPAP·EPAP 같은 설정값을 숫자로 말해요. 환자에게는 숫자와 용어 대신 기계가 무엇을 해 주는지를 쉬운 말로 설명해야 해요."
+"심인성 폐부종 CPAP":
+  - kind: pair
+    words: [w-push, w-ease]
+    pairs: [[push, fluid out of the air sacs], [ease, the strain on your heart]]
+    decoys: [the call light]
+    why: "CPAP의 압력이 폐포의 체액을 밀어내고(push), 심장의 부담을 덜어줘요(ease)."
+  - kind: context
+    words: [w-strain]
+    word: strain
+    ko: 부담
+    scenes:
+      - {who: 차트 기록, icon: board, en: "Reduced cardiac strain on CPAP, pt more comfortable.", ok: true}
+      - {who: 보호자에게, icon: me, en: "The mask relieves LV strain by lowering preload and afterload.", ok: false, fix: "The mask eases the load on his heart so it doesn't have to work as hard."}
+      - {who: 동료 인계, icon: speech, en: "Watch the strain on his heart, and let me know if his pressure drops on CPAP.", ok: true}
+    why: "의료진끼리는 전부하·후부하 같은 용어로 말해도 되지만, 보호자에게는 '심장이 덜 힘들게 도와주는 것'이라고 쉬운 말로 풀어 주세요."
+"NIV 부조화·불내성 관리":
+  - kind: slider
+    words: [w-tolerate]
+    cue: "He keeps the mask on, but he grimaces and checks the straps often."
+    scale: [accepts, tolerates, fights]
+    answerAt: 1
+    why: "불편해도 마스크를 쓰고 있으면 tolerates예요. accepts는 거의 불편 없이 받아들이는 상태, fights는 기계와 맞서며 벗으려는 상태예요."
+    example: "He tolerates the mask, but he's not comfortable yet."
+    exKo: "마스크를 견디고는 있지만 아직 편하지는 않아요."
+  - kind: swap
+    words: [w-medication]
+    who: "환자에게 · 약 설명"
+    icon: me
+    before: ["I may give you a little ", "sedative", " to help you tolerate the mask."]
+    options: [medicine, sedative, knockout drug]
+    answer: medicine
+    notes: {medicine: "처음에는 환자가 듣기 편한 쉬운 말로 시작해요. 약 이름을 물으면 정확히 알려 드려요.", sedative: "정확한 약 종류이지만 처음 듣는 환자에게는 '재운다'로 들려 겁이 날 수 있어요.", knockout drug: "정신을 잃게 한다는 뜻으로 들려 불안과 오해를 키워요."}
+    why: "정확한 약 이름은 묻는 환자에게 설명하되, 처음 말할 때는 환자가 편하게 알아듣는 말로 시작해요."
+    ko: 마스크를 더 잘 견디도록 약을 조금 드릴 수 있어요
+"NIV 중 흡인 위험 관리":
+  - kind: pair
+    words: [w-decompress, w-remove]
+    pairs: [[elevate, the head of the bed], [decompress, the stomach], [remove, the mask]]
+    decoys: [the nasal bridge]
+    why: "침대 머리를 올리고(elevate), 위를 감압하고(decompress), 구토하면 마스크를 제거해요(remove). 각각 흡인 위험을 줄이는 행동이에요."
+  - kind: context
+    words: [w-aspiration]
+    word: aspiration
+    ko: 흡인
+    scenes:
+      - {who: 의사 콜, icon: monitor, en: "He's distended and nauseous. Worried about aspiration on the mask.", ok: true}
+      - {who: 환자에게, icon: me, en: "You're at risk for aspiration pneumonitis due to gastric insufflation.", ok: false, fix: "If you throw up with the mask on, it could go into your lungs, so we're keeping you propped up."}
+      - {who: 차트 기록, icon: board, en: "High aspiration risk on NIV; HOB elevated.", ok: true}
+    why: "의료진끼리는 'aspiration'이 정확하고 짧아요. 환자에게는 '폐렴'·'위 팽창' 같은 용어 대신 토하면 어떻게 되는지와 지금 무엇을 하는지를 쉬운 말로 알려 주세요."
+"NIV에서 삽관 전환 판단":
+  - kind: slider
+    words: [w-failure, w-sign]
+    cue: "His ABG is worse after an hour on the mask, his breathing rate is higher, and he is tiring."
+    scale: [a concern, a warning sign, NIV failure]
+    answerAt: 2
+    why: "한 시간 뒤에도 가스가 좋아지지 않고 호흡 일이 늘면 NIV 실패 징후예요. 'a concern'은 아직 지켜볼 정도의 걱정일 때 쓰는 말이에요."
+    example: "These are signs of NIV failure, so I'm calling the physician."
+    exKo: "NIV 실패 징후라서 의사에게 연락하고 있어요."
+  - kind: swap
+    words: [w-report, w-gas]
+    who: "의사에게 · 전화 보고"
+    icon: monitor
+    before: ["I'm calling about Mr. Lee. His ABG ", "isn't great", " after an hour on BiPAP."]
+    options: [is worse, isn't great, got a bit different]
+    answer: is worse
+    notes: {is worse: "어느 쪽으로 변했는지 분명해서 의사가 바로 판단할 수 있어요.", isn't great: "애매해서 얼마나 나쁜지, 나빠졌는지 그대로인지 알 수 없어요.", got a bit different: "방향이 없어서 좋아졌는지 나빠졌는지 알 수 없고, 급한 상황이 아닌 것처럼 들려요."}
+    why: "보고는 구체적이고 방향이 분명해야 해요. 의사는 그 한 문장으로 삽관 전환 여부를 생각하기 시작해요."
+    ko: 그의 ABG가 BiPAP 한 시간 뒤 더 나빠졌어요

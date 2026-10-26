@@ -1,0 +1,113 @@
+- situation: "노르에피네프린 적정"
+  items:
+    - kind: slider
+      words: [w-increase, w-step]
+      cue: "Nurse: \"Her pressure is a little under goal, so I'm turning the norepi up by a small step.\""
+      scale: [nudge, increase, crank up]
+      answerAt: 0
+      why: "승압제는 처방 범위 안에서 조금씩 올리며 반응을 봐요. 이 장면은 작은 단계라 nudge가 맞고, crank up은 크게 올린다는 느낌이라 어울리지 않아요."
+      example: "I'm increasing the dose in small steps."
+      exKo: "용량을 조금씩 늘리고 있어요."
+    - kind: swap
+      words: [w-adjust, w-medication]
+      who: "보호자에게 · 약 조절 설명"
+      icon: me
+      before: ["We're ", "titrating", " the medication to keep her pressure in a safe range."]
+      options: [titrating, adjusting, playing with]
+      answer: adjusting
+      notes: {titrating: "의료진끼리의 정확한 말이에요. 보호자에게는 낯설어요.", adjusting: "쉬운 말이고 조금씩 맞춘다는 뜻이 살아 있어요.", playing with: "장난치듯 들려서 위험한 약에는 맞지 않아요."}
+      why: "의료진끼리는 titrate가 정확하지만, 보호자에게는 adjust처럼 쉬운 말로 같은 뜻을 전해요."
+      ko: 혈압이 안전한 범위에 있도록 약을 조절하고 있어요
+- situation: "바소프레신 병용 도입"
+  items:
+    - kind: slider
+      words: [w-add, w-normal, w-step]
+      cue: "Family: \"Is it serious that she needs a second medicine?\""
+      scale: [no big deal, a common step we watch closely, very bad news]
+      answerAt: 1
+      why: "승압제를 하나 더 쓰는 건 이런 쇼크에서 흔한 단계이지만, 그만큼 상태가 심하다는 뜻이기도 해요. '별일 아니다'라고 하면 나중에 속았다고 느끼실 수 있어요. 흔한 다음 단계이고 계속 자세히 보고 있다고 솔직하게 말해요."
+      example: "Adding a second pressor is a normal step."
+      exKo: "승압제를 하나 더 쓰는 건 흔한 단계예요."
+    - kind: context
+      words: [w-support]
+      word: support
+      ko: 보조
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "She's still on norepi, so I'd like to add vasopressin for more pressor support.", ok: true}
+        - {who: 차트 기록, icon: board, en: "Vasopressin added for additional pressor support, MAP at goal.", ok: true}
+        - {who: 보호자에게, icon: me, en: "She requires escalating vasopressor support to maintain end-organ perfusion.", ok: false, fix: "The medicine gives her blood pressure extra help so her body keeps getting enough blood."}
+      why: "pressor support, end-organ perfusion은 의료진끼리는 정확한 말이에요. 보호자에게는 무겁고 차갑게 들려요. 약이 혈압에 어떤 도움을 주는지를 쉬운 말로 풀어 줘요."
+- situation: "소변량·젖산 관류지표 통합 해석"
+  items:
+    - kind: slider
+      words: [w-perfusion, w-improve]
+      cue: "Nurse: \"Urine output is up, lactate is down, and her hands are warmer.\""
+      scale: [perfusion is improving, perfusion is back to normal, she's out of shock]
+      answerAt: 0
+      why: "지표 두세 개가 좋아져도 '좋아지는 중'이지 '다 해결'은 아니에요. 정상으로 돌아왔다거나 쇼크를 벗어났다고 하기엔 이르니, improving이 사실에 맞는 온도예요."
+      example: "Together these suggest her perfusion is improving."
+      exKo: "이 두 가지를 보면 관류가 좋아지고 있다는 뜻이에요."
+    - kind: context
+      words: [w-perfusion]
+      word: perfusion
+      ko: 관류
+      scenes:
+        - {who: 의료진 보고, icon: stetho, en: "Perfusion is improving: urine output up and lactate down.", ok: true}
+        - {who: 차트 기록, icon: board, en: "Perfusion markers improving, urine output and lactate trending in the right direction.", ok: true}
+        - {who: 보호자에게, icon: me, en: "Her tissue perfusion index is improving per the lactate clearance.", ok: false, fix: "Her organs are getting more blood, and the blood tests show it."}
+      why: "perfusion, lactate clearance는 의료진끼리는 정확한 말이에요. 가족에게는 어렵고 차가워요. 장기가 더 많은 피를 받고 있고 검사에서도 보인다고 쉽게 풀어요."
+- situation: "동맥압 파형 감쇠 감별"
+  items:
+    - kind: pair
+      words: [w-flush, w-loose, w-connection, w-kink, w-air, w-bubble]
+      pairs: [["flush", "out the air bubbles"], ["tighten", "the loose connection"], ["straighten", "the kink"]]
+      decoys: ["the patient's name"]
+      why: "동맥압 파형이 둔해지는 흔한 원인은 공기 방울, 관의 꼬임, 헐거운 연결부예요. 방울은 플러시로 빼고, 헐거운 연결부는 조이고, 꼬임은 펴서 해결해요."
+    - kind: context
+      words: [w-overdamped]
+      word: overdamped
+      ko: 과감쇠된
+      scenes:
+        - {who: 동료 간호사, icon: monitor, en: "The trace looks overdamped, so let's fast-flush it and check for bubbles.", ok: true}
+        - {who: 의사에게 보고, icon: stetho, en: "The A-line looks overdamped, so the pressures may be reading falsely low.", ok: true}
+        - {who: 환자에게, icon: me, en: "Your arterial trace is overdamped with a blunted upstroke.", ok: false, fix: "The line on the screen isn't showing your pressure sharply, so I'm fixing it."}
+      why: "overdamped, upstroke는 의료진끼리는 정확하고 짧은 말이에요. 환자에게는 무슨 뜻인지 알기 어려워요. 화면의 선이 선명하지 않아서 고치고 있다고 쉬운 말로 알려 줘요."
+- situation: "승압제 감량·이탈 시도"
+  items:
+    - kind: slider
+      words: [w-reduce, w-step]
+      cue: "Nurse: \"We'll lower the dose a little, wait, and watch her pressure before the next step.\""
+      scale: [gradually, quickly, abruptly]
+      answerAt: 0
+      why: "승압제는 조금 줄이고 혈압이 버티는지 본 뒤 다음 단계로 가요. 한꺼번에 끊으면(abruptly) 혈압이 다시 떨어질 수 있어서 gradually가 맞는 속도예요."
+      example: "We reduce it in small steps, not all at once."
+      exKo: "한 번에 줄이지 않고 조금씩 줄여요."
+    - kind: swap
+      words: [w-wean, w-reduce]
+      who: "보호자에게 · 감량 설명"
+      icon: me
+      before: ["We're ", "discontinuing", " the medication in small steps."]
+      options: [discontinuing, weaning, stopping cold]
+      answer: weaning
+      notes: {discontinuing: "완전히 중단한다는 뜻이라 '조금씩 줄이는' 과정과 맞지 않아요.", weaning: "서서히 줄여서 몸이 스스로 버티게 하는 과정이라는 정확한 말이에요.", stopping cold: "한 번에 끊는다는 뜻이라 오히려 반대예요."}
+      why: "wean은 도움을 서서히 줄여 몸이 스스로 서도록 하는 과정이에요. 한 번에 끊는 게 아니라는 뜻이 이 말에 담겨 있어요."
+      ko: 약을 조금씩 서서히 줄여 가고 있어요
+- situation: "도부타민 강심제 추가"
+  items:
+    - kind: slider
+      words: [w-speed, w-rate, w-rhythm]
+      cue: "Nurse: \"His heart rate crept up a few beats and the rhythm is still regular.\""
+      scale: [an expected effect, a reason to stop it, an emergency]
+      answerAt: 0
+      why: "도부타민은 심박수를 올릴 수 있어서 조금 빨라지는 건 예상되는 효과예요. 리듬이 불규칙해지거나 많이 빨라지면 그때 의사에게 알려요."
+      example: "It can speed up the heart rate, so we watch the rhythm closely."
+      exKo: "심박수를 빠르게 할 수 있어서 리듬을 자세히 지켜봐요."
+    - kind: context
+      words: [w-circulation]
+      word: circulation
+      ko: 순환
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "His circulation is improving, with warmer extremities and better pulses.", ok: true}
+        - {who: 차트 기록, icon: board, en: "Circulation improved, extremities warm.", ok: true}
+        - {who: 보호자에게, icon: me, en: "His peripheral circulation and cardiac output are improving on the inotrope.", ok: false, fix: "His blood is getting out to his hands and feet better now, and they feel warmer."}
+      why: "peripheral circulation, cardiac output, inotrope은 의료진끼리는 정확한 말이에요. 보호자에게는 어렵고 차가워요. 손발이 따뜻해진 것처럼 눈에 보이는 변화로 쉽게 풀어요."

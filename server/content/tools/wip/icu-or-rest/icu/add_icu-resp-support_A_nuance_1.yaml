@@ -1,0 +1,106 @@
+"저산소성 호흡부전 초기 사정":
+  - kind: slider
+    words: [w-low]
+    cue: "Nurse to a calm patient who is talking easily, SpO2 just under his goal:"
+    scale: [mildly low, moderately low, severely low]
+    answerAt: 0
+    why: "수치가 목표보다 조금 낮을 뿐이고 환자가 편하게 말하면 mildly low예요. severely low는 바로 대응해야 할 정도일 때만 써요. 같은 '낮다'도 온도가 달라요."
+    example: "Your oxygen is mildly low, so we'll turn it up a little."
+    exKo: "산소가 약간 낮아서 조금 올려 드릴게요."
+  - kind: context
+    words: [w-support]
+    word: support
+    ko: 지지하다
+    scenes:
+      - {who: 차트 기록, icon: board, en: "Pt on HFNC for respiratory support, tolerating well.", ok: true}
+      - {who: 겁먹은 환자에게, icon: me, en: "You need ventilatory support for hypoxemic respiratory failure.", ok: false, fix: "Your oxygen is a bit low, so we're going to support your breathing."}
+      - {who: 의사 콜, icon: monitor, en: "He's sating 88 on a non-rebreather. Does he need more support?", ok: true}
+    why: "의료진끼리는 'ventilatory support' 같은 임상어가 정확하지만, 겁먹은 환자에게는 어렵고 무섭게 들려요. 쉬운 말로 풀어 주세요."
+"HFNC 설정·적용":
+  - kind: slider
+    words: [w-strong]
+    cue: "Patient: \"The air is a lot, but I can handle it.\""
+    scale: [gentle, firm, forceful]
+    answerAt: 1
+    why: "견딜 만하지만 뚜렷하게 느껴지면 가운데인 firm이에요. gentle은 거의 못 느끼는 정도, forceful은 견디기 힘들 만큼 거센 느낌이에요."
+    example: "The airflow may feel firm at first, and most people get used to it."
+    exKo: "처음엔 바람이 꽤 세게 느껴질 수 있는데, 대부분 곧 적응해요."
+  - kind: context
+    words: [w-humidify]
+    word: humidified
+    ko: 가습된
+    scenes:
+      - {who: 차트 기록, icon: board, en: "HFNC with heated, humidified oxygen at 40 L/min, FiO2 0.5.", ok: true}
+      - {who: 환자에게, icon: me, en: "Your airway mucosa is being humidified to improve mucociliary clearance.", ok: false, fix: "The warm, moist air keeps your throat from drying out."}
+      - {who: 야간 인계, icon: speech, en: "She's on humidified high-flow, so keep an eye on the water chamber.", ok: true}
+    why: "의료진끼리는 정확한 임상어가 좋지만, 환자에게 '점막'·'점액섬모 청소' 같은 말은 알아듣기 어려워요. 따뜻하고 촉촉한 공기라고 풀어 주세요."
+"NIV 마스크 착용·핏":
+  - kind: slider
+    words: [w-fit, w-press]
+    cue: "Patient: \"It's pressing so hard on my nose I can't stand it.\""
+    scale: [loose, snug, too tight]
+    answerAt: 2
+    why: "새지 않으면서 누르지 않는 알맞은 상태가 snug예요. 환자가 아프다고 할 만큼 누르면 too tight라서 피부 손상 위험이 있어요."
+    example: "Let me make it less tight so it still seals."
+    exKo: "밀착은 유지하면서 덜 조이게 해 드릴게요."
+  - kind: context
+    words: [w-leak]
+    word: leak
+    ko: 새다
+    scenes:
+      - {who: 차트 기록, icon: board, en: "Mask leak noted at the lower edge; refit and checked the seal.", ok: true}
+      - {who: 환자에게, icon: me, en: "There is a 38 L/min unintentional leak at the mask interface.", ok: false, fix: "A little air is slipping out around the edges, so I'm fixing the fit."}
+      - {who: 동료 인계, icon: speech, en: "Watch for leak around the bridge of his nose.", ok: true}
+    why: "의료진끼리는 수치로 말해도 되지만, 환자에게 'L/min'이나 'interface' 같은 말은 알아듣기 어려워요. 무슨 일이고 지금 무엇을 하는지 쉬운 말로 알려 주세요."
+"산소전달장치 단계 이해":
+  - kind: slider
+    words: [w-nonrebreather, w-cannula]
+    cue: "His sats keep falling on a simple mask, and he needs the most oxygen you can give without a machine."
+    scale: [nasal cannula, simple mask, non-rebreather]
+    answerAt: 2
+    why: "비강캐뉼러는 소량, 단순마스크는 중간, 비재호흡마스크는 기계 없이 줄 수 있는 가장 높은 산소를 줘요."
+    example: "He's on a non-rebreather right now."
+    exKo: "지금 비재호흡마스크를 쓰고 있어요."
+  - kind: context
+    words: [w-step]
+    word: step
+    ko: 단계를 올리다
+    scenes:
+      - {who: 차트 기록, icon: board, en: "Stepped up from nasal cannula to non-rebreather at 15 L/min.", ok: true}
+      - {who: 환자에게, icon: me, en: "We will step up your FiO2 titration to keep your PaO2 above 60.", ok: false, fix: "We're giving you a bigger mask because you need more oxygen."}
+      - {who: 동료와, icon: speech, en: "If his sats keep dropping, we'll step up to a non-rebreather.", ok: true}
+    why: "의료진끼리는 FiO2·PaO2 같은 말로 정확히 말하지만, 환자에게는 왜 장치를 바꾸는지를 쉬운 말로 설명해야 해요."
+"호흡노력·보조근 사용 관찰":
+  - kind: slider
+    words: [w-effort]
+    cue: "He's using his neck muscles, his belly is pulling in, and he can say only two words at a time."
+    scale: [easy, increased, labored]
+    answerAt: 2
+    why: "목 근육을 쓰고 짧게밖에 말하지 못하면 labored예요. easy는 힘이 거의 안 드는 호흡, increased는 힘이 늘었지만 아직 말은 이어지는 정도예요."
+    example: "His breathing is labored, and he's using his neck muscles."
+    exKo: "호흡이 힘겨워 보이고 목 근육을 쓰고 있어요."
+  - kind: context
+    words: [w-tire]
+    word: tire
+    ko: 지치다
+    scenes:
+      - {who: 차트 기록, icon: board, en: "Pt beginning to tire, accessory muscle use noted.", ok: true}
+      - {who: 환자에게, icon: me, en: "Your respiratory muscles will tire and fail soon.", ok: false, fix: "Your breathing muscles are getting tired, so we'll give you more support."}
+      - {who: 의사 콜, icon: monitor, en: "If he tires out, we'll need to escalate. Please come see him.", ok: true}
+    why: "의료진끼리는 상태를 그대로 말해도 되지만, 환자에게 '곧 실패한다'는 말은 겁만 줘요. 사실은 그대로, 대신 무엇을 해 줄지를 함께 말해 주세요."
+"ABG 채혈·기초 해석":
+  - kind: pair
+    words: [w-oxygen, w-carbondioxide]
+    pairs: [[oxygenation, PaO2], [ventilation, PaCO2]]
+    decoys: [the pulse]
+    why: "산소화(oxygenation)는 PaO2로, 환기(ventilation)는 PaCO2로 봐요. 그래서 ABG로 산소와 이산화탄소 문제를 구분해요."
+  - kind: swap
+    words: [w-carbondioxide]
+    who: "환자에게 · 결과 설명"
+    icon: me
+    before: ["Your blood gas shows ", "hypercapnia", " right now."]
+    options: [too much carbon dioxide, hypercapnia, a lethal CO2 level]
+    answer: too much carbon dioxide
+    notes: {too much carbon dioxide: "환자가 알아듣는 말로 사실 그대로 전해요.", hypercapnia: "의료진끼리 쓰는 말이라 환자는 뜻을 모르고 불안해해요.", a lethal CO2 level: "사실보다 무겁고 위협적으로 들려 겁을 줘요."}
+    why: "같은 결과라도 환자에게는 쉬운 말로, 의료진끼리는 임상어로 말해요."
+    ko: 지금 이산화탄소가 너무 많은 걸로 나와요

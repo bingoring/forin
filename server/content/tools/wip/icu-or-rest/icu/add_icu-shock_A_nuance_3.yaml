@@ -1,0 +1,146 @@
+- situation: "승압제 시작 시점 소통"
+  items:
+    - kind: pair
+      words: [w-recommend, w-ask, w-respond]
+      pairs: [[recommend, norepinephrine], [ask, for an order], [respond, to fluids]]
+      decoys: [a Foley bag]
+      why: "의사에게 약을 권할 때는 recommend 뒤에 바로 약 이름을 붙여요. 처방을 요청할 때는 ask for an order, 수액에 혈압이 반응하는지는 respond to fluids라고 말해요."
+    - kind: context
+      words: [w-hypotensive]
+      word: hypotensive
+      ko: 저혈압의
+      scenes:
+        - {who: 동료 간호사에게, icon: speech, en: "She's still hypotensive after three liters — I'd start a pressor.", ok: true}
+        - {who: 차트 기록, icon: board, en: "Remains hypotensive despite 3 L crystalloid; MD notified.", ok: true}
+        - {who: 보호자에게, icon: me, en: "She remains hypotensive and refractory to fluid resuscitation.", ok: false, fix: "Her blood pressure is still too low, even after a lot of fluid."}
+      why: "의료진끼리는 hypotensive가 '혈압이 낮다'를 한 단어로 정확히 전해요. 가족에게는 refractory, resuscitation을 붙이면 어렵고 차가우니, 수액을 많이 줬는데도 혈압이 아직 낮다고 쉬운 말로 풀어요."
+- situation: "쇼크 중 산-염기 교정 판단"
+  items:
+    - kind: slider
+      words: [w-acidosis, w-severe, w-ph]
+      cue: "Nurse: \"His pH is 7.34, only a little low.\""
+      scale: [mild, moderate, severe]
+      answerAt: 0
+      why: "정상(약 7.35~7.45)보다 아주 조금 낮은 정도면 mild acidosis예요. 정상에서 멀어질수록 moderate, severe로 올라가요."
+      example: "That's a mild acidosis, nothing dramatic."
+      exKo: "경미한 산증이에요, 크게 걱정할 정도는 아니에요."
+    - kind: context
+      words: [w-acidosis]
+      word: acidosis
+      ko: 산증
+      scenes:
+        - {who: 동료 간호사에게, icon: speech, en: "His gas shows a severe metabolic acidosis — lactate is 9.", ok: true}
+        - {who: 차트 기록, icon: board, en: "ABG: metabolic acidosis, pH 7.08, lactate 9.0.", ok: true}
+        - {who: 보호자에게, icon: me, en: "His blood is in a state of profound metabolic acidosis.", ok: false, fix: "His blood has become too acidic because his body isn't getting enough oxygen."}
+      why: "의료진끼리는 acidosis와 pH 수치만으로 상태가 정확히 전해져요. 가족에게는 profound metabolic acidosis가 무슨 뜻인지 알기 어려우니, 피가 너무 산성이 됐고 이유가 무엇인지 쉬운 말로 풀어요."
+- situation: "다장기부전 동반 불응성 쇼크"
+  items:
+    - kind: slider
+      words: [w-fail, w-kidney]
+      cue: "Nurse: \"Her kidney function is getting worse every hour, but she's still making a little urine.\""
+      scale: [strained, failing, failed]
+      answerAt: 1
+      why: "소변이 아직 조금 나오지만 기능이 시간마다 나빠지고 있으면 failing(진행 중)이에요. 부담을 받는 정도면 strained, 기능을 완전히 잃은 상태는 failed예요."
+      example: "Her kidneys are failing, but they're not done yet."
+      exKo: "신장이 기능을 잃어 가고 있지만 아직 끝난 건 아니에요."
+    - kind: context
+      words: [w-support]
+      word: support
+      ko: 지지 요법
+      scenes:
+        - {who: 동료 간호사에게, icon: speech, en: "She's on maximal support, and she's still getting worse.", ok: true}
+        - {who: 차트 기록, icon: board, en: "Multi-organ failure despite maximal support; family meeting planned.", ok: true}
+        - {who: 보호자에게, icon: me, en: "She's failing despite maximal vasopressor and ventilatory support.", ok: false, fix: "Her body is getting all the help the machines and medicines can give, but her organs are still getting weaker."}
+      why: "의료진끼리는 maximal support가 '쓸 수 있는 보조 치료를 최대로 쓰는 중'이라는 뜻으로 바로 통해요. 가족에게는 vasopressor, ventilatory를 늘어놓지 말고, 기계와 약이 몸을 돕고 있는데도 장기가 약해진다고 쉬운 말로 말해요."
+- situation: "대량 출혈 쇼크 대량수혈 발동"
+  items:
+    - kind: slider
+      words: [w-massive]
+      cue: "Nurse: \"There's a little blood on the dressing, maybe 20 mL.\""
+      scale: [slight, serious, massive]
+      answerAt: 0
+      why: "드레싱에 조금 묻은 정도면 slight예요. 계속 늘어서 처치가 필요하면 serious, 짧은 시간에 혈액을 많이 잃는 대량 출혈이 massive예요. massive는 대량수혈 프로토콜을 켜는 상황에 쓰는 말이에요."
+      example: "This is a massive bleed — activate the protocol."
+      exKo: "대량 출혈이에요 — 프로토콜을 활성화하세요."
+    - kind: context
+      words: [w-protocol]
+      word: protocol
+      ko: 프로토콜
+      scenes:
+        - {who: 동료 간호사에게, icon: speech, en: "Call it — activate the massive transfusion protocol.", ok: true}
+        - {who: 차트 기록, icon: board, en: "Massive transfusion protocol activated at 0214.", ok: true}
+        - {who: 보호자에게, icon: me, en: "We've initiated our massive transfusion protocol per hospital policy.", ok: false, fix: "We're giving him a lot of blood as fast as we safely can."}
+      why: "의료진끼리는 protocol 한 단어로 정해진 절차를 켜는 것이 통해요. 가족에게는 per hospital policy 같은 행정적인 말이 차갑게 들리니, 지금 무엇을 하고 있는지를 쉬운 말로 말해요."
+- situation: "심장압전 응급 심낭천자 보조"
+  items:
+    - kind: slider
+      words: [w-muffle, w-heart, w-sound]
+      cue: "Nurse: \"His heart sounds are faint, as if I'm hearing them through a pillow.\""
+      scale: [clear, muffled, absent]
+      answerAt: 1
+      why: "솜 너머로 듣는 듯 작고 먹먹하면 muffled예요. 심장 주위에 액체가 고여 소리가 가려질 때의 소견이고, 저혈압·목정맥 팽창과 함께 오면 심장압전을 의심해요."
+      example: "His heart sounds are muffled, and his neck veins are up."
+      exKo: "심음이 둔탁하고 목 정맥이 팽창돼 있어요."
+    - kind: context
+      words: [w-tray]
+      word: tray
+      ko: 시술 트레이
+      scenes:
+        - {who: 동료 간호사에게, icon: speech, en: "The pericardiocentesis tray is open — I'm ready to assist.", ok: true}
+        - {who: 차트 기록, icon: board, en: "Pericardiocentesis tray opened and checked; procedure timed.", ok: true}
+        - {who: 보호자에게, icon: me, en: "We've prepared the pericardiocentesis tray and sterile field for drainage.", ok: false, fix: "We've set out the sterile tools the doctor needs to drain the fluid around his heart."}
+      why: "의료진끼리는 tray 한 단어로 시술 도구 세트가 통해요. 가족에게는 pericardiocentesis, sterile field 같은 말이 낯서니, 의사가 쓸 소독된 도구를 준비했고 무엇을 하려는지를 쉬운 말로 풀어요."
+- situation: "긴장성 기흉 응급 감압"
+  items:
+    - kind: pair
+      words: [w-absent, w-tension, w-needle]
+      pairs: [[absent, breath sounds], [tension, pneumothorax], [needle, decompression]]
+      decoys: [a fluid bolus]
+      why: "absent breath sounds는 숨소리가 안 들린다는 뜻, tension pneumothorax는 긴장성 기흉, needle decompression은 바늘로 공기를 빼는 처치예요. 인계할 때 세 덩어리로 말하면 막힘이 없어요."
+    - kind: context
+      words: [w-needle]
+      word: needle
+      ko: 바늘
+      scenes:
+        - {who: 동료 간호사에게, icon: speech, en: "Get me a needle — he needs decompression now.", ok: true}
+        - {who: 차트 기록, icon: board, en: "Needle decompression R chest; breath sounds returned.", ok: true}
+        - {who: 보호자에게, icon: me, en: "A large-bore needle was inserted for pleural decompression.", ok: false, fix: "We put a thin needle into his chest to let the trapped air out."}
+      why: "의료진끼리는 needle 한 단어로 어떤 처치인지 바로 통해요. 가족에게는 large-bore, pleural decompression 같은 말이 낯설고 무섭게 들리니, 가슴에 가는 바늘을 넣어 갇힌 공기를 뺐다고 쉽게 말해요."
+- situation: "쇼크 후 심정지 임박"
+  items:
+    - kind: slider
+      words: [w-arrest]
+      cue: "Nurse: \"She still has a faint pulse, but her pressure is 50 and she's barely responding.\""
+      scale: [declining, peri-arrest, arrested]
+      answerAt: 1
+      why: "아직 맥은 있지만 곧 멈출 것 같으면 peri-arrest예요. 맥이 없고 반응이 없는 상태가 arrested, 그보다 덜 급하게 나빠지는 정도가 declining이에요."
+      example: "She's peri-arrest — I need help in here."
+      exKo: "심정지 임박이에요 — 도움이 필요해요."
+    - kind: context
+      words: [w-code]
+      word: code
+      ko: 코드(소생팀 호출)
+      scenes:
+        - {who: 동료 간호사에게, icon: speech, en: "Call a code — she's peri-arrest.", ok: true}
+        - {who: 차트 기록, icon: board, en: "Code called at 0312; compressions started.", ok: true}
+        - {who: 보호자에게, icon: me, en: "We called a code on your husband, and the code team is working on him.", ok: false, fix: "Your husband is very sick right now, so a special team of doctors and nurses came to help right away."}
+      why: "의료진끼리는 code가 소생팀을 부르는 약속된 말이에요. 가족에게는 code가 무슨 뜻인지 모르고 겁만 커질 수 있으니, 지금 상태가 위중해서 전문 팀이 도우러 왔다고 쉬운 말로 말해요."
+- situation: "소생 목표와 무의미성 갈등"
+  items:
+    - kind: slider
+      words: [w-hard]
+      cue: "Family member: \"This is a tough decision, but we're managing.\""
+      scale: [difficult, painful, devastating]
+      answerAt: 0
+      why: "'힘들지만 감당하고 있다'는 정도면 difficult예요. 마음이 아프면 painful, 삶이 무너질 만큼이면 devastating이에요. 공감 표현은 가족이 쓰는 말의 강도에 맞춰 고르세요."
+      example: "I know this is a difficult time for your family."
+      exKo: "가족분들께 지금이 힘든 시간이라는 걸 알아요."
+    - kind: context
+      words: [w-decision]
+      word: decision
+      ko: 결정
+      scenes:
+        - {who: 동료 간호사에게, icon: speech, en: "The family needs time with this decision.", ok: true}
+        - {who: 차트 기록, icon: board, en: "Family discussing code status decision; chaplain at bedside.", ok: true}
+        - {who: 보호자에게, icon: me, en: "You must make a decision now regarding withdrawal of life-sustaining therapy.", ok: false, fix: "Take the time you need — we'll talk through what feels right for him."}
+      why: "의료진끼리는 decision과 code status 같은 말로 상황이 간결하게 통해요. 가족에게는 must, now, withdrawal 같은 말이 압박처럼 들리니, 시간을 주고 함께 이야기하겠다는 말로 옮겨요."

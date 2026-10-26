@@ -1,0 +1,134 @@
+# 문장 수정. 키는 "상황.문장"(0부터). expect는 고치기 전 en의 앞부분(위치 확인용).
+# keyPhrase(각 상황 0~2번 문장)는 en·chunks를 바꾸지 않는다 — ko·v46 필드만.
+"0.0": {expect: "Let's confirm", decoy: "Let's conform"}
+"0.1": {expect: "I'll read", ko: "제가 숫자를 불러줄 테니 기록지에서 확인해 주세요.",
+  dKo: ["제가 숫자를 적어줄 테니 기록지에서 확인해 주세요", "제가 이름을 불러줄 테니 기록지에서 확인해 주세요"]}
+"0.2": {expect: "The FiO2", decoy: "with a PIP"}
+"0.5": {expect: "Let's make sure", ko: "기록지 숫자가 인공호흡기 화면과 일치하는지 확인해요.",
+  dKo: ["기록지 날짜가 인공호흡기 화면과 일치하는지 확인해요", "기록지 숫자가 인공호흡기 시간과 일치하는지 확인해요"]}
+"1.0": {expect: "The tube is marked",
+  dKo: ["튜브가 입술 위치 22센티미터에 표시돼 있는데, 처음 보는 위치예요", "튜브가 입술 위치 22센티미터에 표시돼 있는데, 어제와 같아요"]}
+"2.0": {expect: "That condensation",
+  dKo: ["그 물기는 정상이에요, 보호자와 먼 쪽으로 빼드릴게요", "그 물기는 정상이에요, 환자분과 먼 쪽으로 닦아드릴게요"]}
+"2.3": {expect: "I'll trace", decoy: "from end to side"}
+"2.4": {expect: "This water", blank: {answer: breath, options: [skin, nose, breath, hair]}}
+"2.5": {expect: "I'll empty", chunks: ["I'll empty", "the water trap now", "so it doesn't back up", "into his airway", "."],
+  blank: {answer: airway, options: [mouth, ears, stomach, airway]}}
+"3.1": {expect: "Breath sounds", decoy: "is equal"}
+"4.0": {expect: "His oxygen is", decoy: "of him",
+  dKo: ["산소포화도가 96퍼센트인데, 이 환자분께는 새 수치예요", "산소포화도가 96퍼센트인데, 이 환자분께는 살펴볼 수치예요"]}
+"4.5": {expect: "If his oxygen dips",
+  en: "If his oxygen dips or his carbon dioxide climbs, this monitor will alarm and I'll check on him right away.",
+  ko: "산소가 떨어지거나 이산화탄소가 오르면 이 모니터가 경보를 울리고, 제가 바로 와서 확인할 거예요.",
+  chunks: ["If his oxygen dips", "or his carbon dioxide climbs,", "this monitor will alarm", "and I'll check on him", "right away", "."],
+  words: [w-oxygen, w-carbondioxide, w-climb, w-monitor, w-check],
+  why: "If A or B는 두 변화 중 하나만 생겨도 뒤의 일이 이어지는 or 조건이에요. 경보는 모니터가 울리고 확인은 내가 한다고 역할을 나눠 말해서, 늘 화면 앞에 있다는 지킬 수 없는 약속을 피해요.",
+  decoy: "this monitor will charge",
+  dKo: ["산소가 떨어지거나 혈당이 오르면 이 모니터가 경보를 울리고, 제가 바로 와서 확인할 거예요", "산소가 떨어지거나 이산화탄소가 오르면 이 모니터가 꺼지고, 제가 바로 와서 확인할 거예요"],
+  blank: {answer: dips, options: [jumps, dips, rises, stays]}}
+"5.0": {expect: "I'll pre-oxygenate",
+  dKo: ["카테터를 넣기 전에 먼저 흡인 압력을 맞출게요", "카테터를 넣기 전에 먼저 손 위생을 할게요"]}
+"5.2": {expect: "Watch his oxygen",
+  dKo: ["제가 환자를 돌리는 동안 산소를 봐주시고, 포화도가 떨어지면 멈춰 주세요", "제가 장갑 끼는 동안 산소를 봐주시고, 포화도가 떨어지면 멈춰 주세요"]}
+"5.5": {expect: "I always use",
+  en: "I use sterile technique every time I suction to protect his airway.",
+  ko: "기도를 보호하려고 흡인할 때마다 무균술을 지켜요.",
+  chunks: ["I use sterile technique", "every time", "I suction", "to protect his airway", "."],
+  words: [w-sterile, w-suction, w-airway, w-protect],
+  why: "every time은 예외가 없다는 뜻이에요. 무균술은 흡인할 때마다 지키는 기본이고, to protect his airway로 목적을 함께 말하면 환자와 가족이 왜 그렇게까지 하는지 알아요.",
+  decoy: "in the drawer",
+  dKo: ["피부를 보호하려고 흡인할 때마다 무균술을 지켜요", "기도를 보호하려고 흡인할 때마다 무균술을 보여드려요"],
+  blank: {answer: airway, options: [airway, skin, eyes, hands]}}
+"7.1": {expect: "After raising", decoy: "at a safer level"}
+"7.2": {expect: "We change it", decoy: "in small stairs"}
+"7.4": {expect: "His oxygen level", decoy: "an hour away"}
+"7.5": {expect: "We raised", decoy: "by small stops"}
+"8.0": {expect: "That alarm", blank: {answer: why, options: [why, who, whom, when]}}
+"8.3": {expect: "This alarm isn't",
+  dKo: ["이 경보는 응급상황이 아니라, 제가 좀 더 자세히 써야 한다는 뜻이에요", "이 경보는 응급상황이 아니라, 제가 좀 더 자세히 알려드려야 한다는 뜻이에요"],
+  blank: {answer: emergency, options: [accident, emergency, injury, order]}}
+"8.5": {expect: "I'll report", decoy: "of the team"}
+"9.1": {expect: "I'll adjust", blank: {answer: trigger, options: [humidity, filter, trigger, screen]}}
+"9.2": {expect: "We want",
+  dKo: ["인공호흡기가 가족에게 맞서지 않고 함께 작동하게 하고 싶어요", "인공호흡기가 환자분에게 맞서지 않고 조용히 작동하게 하고 싶어요"]}
+"9.3": {expect: "When he fights",
+  en: "When he fights the vent like this, it can mean the settings need a small change, or that he needs suctioning or comfort.",
+  ko: "이렇게 기계와 싸우듯 하는 건 설정을 조금 바꿔야 한다는 뜻일 수도, 흡인이나 편안하게 해 드리는 게 필요하다는 뜻일 수도 있어요.",
+  chunks: ["When he fights the vent", "like this,", "it can mean", "the settings need a small change,", "or that he needs", "suctioning or comfort", "."],
+  words: [w-small, w-change, w-suction],
+  why: "it can mean A, or that B는 원인을 하나로 단정하지 않고 둘 이상 열어 두는 모양이에요. 기계와 싸우는 이유는 설정 말고도 분비물이나 불편함일 수 있어서, 가족에게 원인을 설정 하나로 좁혀 말하지 않아요.",
+  dKo: ["이렇게 기계와 싸우듯 하는 건 설정을 크게 바꿔야 한다는 뜻일 수도, 흡인이나 편안하게 해 드리는 게 필요하다는 뜻일 수도 있어요", "이렇게 기계와 싸우듯 하는 건 설정을 조금 바꿔야 한다는 뜻일 수도, 식사나 편안하게 해 드리는 게 필요하다는 뜻일 수도 있어요"],
+  blank: {answer: suctioning, options: [suctioning, bathing, feeding, visitors]}}
+"10.4": {expect: "If the plateau",
+  dKo: ["고평부압이 너무 오르면 폐가 상할 수 있어서 바로 확인해야 해요", "고평부압이 너무 오르면 감염을 막으려고 용량을 낮춰요"],
+  blank: {answer: protect, options: [test, fill, protect, check]}}
+"10.5": {expect: "This gentle",
+  dKo: ["이 부드러운 방식은 느리게 느껴져도 열이 내릴 시간을 줘요", "이 부드러운 방식은 느리게 느껴져도 의사가 쉴 시간을 줘요"]}
+"11.2": {expect: "His numbers", decoy: "from the team",
+  dKo: ["표정이 밝아서 팀에 보고해둘게요", "수치가 희망적이라 가족에게 알려둘게요"]}
+"12.2": {expect: "It's a deliberate", decoy: "closing", words_remove: [w-monitor]}
+"12.3": {expect: "Chasing", chunks: ["Chasing a normal number", "here", "could actually hurt", "his lungs more", "."]}
+"12.5": {expect: "I'll explain", decoy: "in plan terms"}
+"13.2": {expect: "His number", blank: {answer: climbing, options: [walking, jumping, sinking, climbing]}}
+"13.3": {expect: "That was a lot",
+  dKo: ["많이 힘드셨을 텐데 아주 잘하고 계세요, 잠깐 눈 감고 쉬세요", "많이 힘드셨을 텐데 아주 잘하고 계세요, 긴장 풀고 제 손 잡으세요"]}
+"13.5": {expect: "This dip",
+  en: "This dip is expected after suctioning, and I'm watching to make sure it comes back up.",
+  ko: "흡인 후 이렇게 떨어지는 건 예상된 일이고, 다시 올라오는지 지켜보고 있어요.",
+  chunks: ["This dip is expected", "after suctioning,", "and I'm watching", "to make sure", "it comes back up", "."],
+  words: [w-dip, w-expect, w-suction, w-watch],
+  why: "expected로 미리 예상된 일이라고 알리되, and I'm watching to make sure로 그냥 두는 것이 아니라 회복되는지 확인 중이라고 이어요. 안심하는 말과 지켜보는 행동을 함께 말해야 방심으로 들리지 않아요.",
+  decoy: "after the visit",
+  dKo: ["체위 변경 후 이렇게 떨어지는 건 예상된 일이고, 다시 올라오는지 지켜보고 있어요", "목욕 후 이렇게 떨어지는 건 예상된 일이고, 다시 올라오는지 지켜보고 있어요"],
+  blank: {answer: expected, options: [expected, unusual, hidden, final]}}
+"14.5": {expect: "I'll document", blank: {answer: document, options: [schedule, repeat, announce, document]}}
+"15.1": {expect: "Disconnect from the vent",
+  dKo: ["인공호흡기에서 분리하고 지금 백에 100퍼센트 산소 튜빙을 연결하세요", "인공호흡기에서 분리하면 백으로 폐가 얼마나 뻣뻣한지 느낄 수 있어요"]}
+"15.2": {expect: "I'll listen for equal",
+  dKo: ["튜브를 확인하는 동안 저는 양쪽 흉곽이 같이 오르는지 볼게요", "튜브를 확인하는 동안 저는 양쪽 호흡음이 큰지 들을게요"]}
+"15.3": {expect: "Check for tube",
+  dKo: ["튜브 위치 이탈, 폐색, 기흉, 장비 고장을 한꺼번에 확인하세요", "튜브 위치 이탈, 폐색, 기흉, 장비 고장은 DOPE예요"]}
+"15.4": {expect: "Keep bagging",
+  chunks: ["Keep bagging steadily", "while I run through", "the causes", "fast", "."],
+  dKo: ["제가 빠르게 원인을 찾는 동안 계속 안정적으로 백 환기 횟수를 세 주세요", "제가 조용히 원인을 찾는 동안 계속 안정적으로 백 환기를 해주세요"]}
+"16.1": {expect: "I'm calling the physician",
+  dKo: ["의사에게 전화하고 흉관 트레이도 가져오고 있어요", "의사에게 전화하고 알람을 확인하고 있어요"],
+  blank: {answer: needle, options: [needle, paper, quiet, room]}}
+"16.2": {expect: "Get the chest tube",
+  dKo: ["조심스럽게 백 환기를 하는 동안 바늘 감압 키트를 준비해 주세요", "조심스럽게 백 환기를 하는 동안 혈압을 계속 지켜봐 주세요"]}
+"16.4": {expect: "This can turn", blank: {answer: emergency, options: [emergency, error, answer, appointment]}}
+"16.5": {expect: "I'll report the pressures", blank: {answer: arrives, options: [smiles, arrives, sneezes, sleeps]}}
+"17.0": {expect: "Disconnect and start",
+  dKo: ["분리하고 지금 바로 소생백에 산소를 연결하세요", "분리하기 전에 소생백이 준비됐는지 보세요"]}
+"17.1": {expect: "I'll call respiratory",
+  dKo: ["즉시 호흡치료팀에 전화해서 예비 인공호흡기를 요청했어요", "호흡치료팀에 전화하면 예비 인공호흡기를 바로 가져와 줘요"]}
+"17.2": {expect: "Keep a steady", decoy: "to the beside",
+  dKo: ["제가 도움을 부르는 동안 흉곽이 오르는지도 봐 주세요", "제가 도움을 부르는 동안 백 짜는 횟수를 세어 주세요"]}
+"17.3": {expect: "The machine alarmed",
+  dKo: ["기계가 경보를 울리며 호흡이 느려져서 바로 백으로 바꿨어요", "기계가 경보를 울리며 호흡을 멈춰서 바로 팀을 불렀어요"]}
+"17.5": {expect: "I'm paging", decoy: "at same time",
+  dKo: ["호흡치료팀과 수간호사를 방송으로 호출하고 있어요", "호흡치료팀과 수간호사를 동시에 호출했어요"]}
+"18.0": {expect: "He self-extubated",
+  dKo: ["자가발관됐어요 — 100퍼센트 산소를 연결한 백-마스크를 가져오세요", "자가발관됐어요 — 빠진 튜브는 버리지 말고 침상 옆에 두세요"],
+  blank: {answer: ventilation, options: [nutrition, infusion, ventilation, inspection]}}
+"18.1": {expect: "Call the airway",
+  dKo: ["기도팀을 부르고 흡인기를 켜 두세요", "기도팀을 부를 때 삽관 카트 위치도 알려 주세요"]}
+"18.2": {expect: "I'll assess",
+  dKo: ["재삽관을 준비하는 동안 산소포화도를 계속 지켜볼게요", "재삽관을 준비하는 동안 흡인기를 미리 켜고 확인해 둘게요"]}
+"18.3": {expect: "Bag him now",
+  dKo: ["백 환기를 시작하기 전에 마스크를 코와 입에 꼭 맞춰 주세요", "지금 백 환기를 하면서 다른 손으로 턱을 들어 주세요"]}
+"18.4": {expect: "Get the intubation",
+  dKo: ["삽관 카트를 가져오고 마취과에 전화해서 빨리 상황을 설명하세요", "삽관 카트를 가져오고 흡인기와 산소가 켜졌는지 보세요"]}
+"19.1": {expect: "I think we need",
+  dKo: ["진정을 더 깊게 하고 어쩌면 근이완제도 써야 한다고 확신해요", "진정을 더 깊게 하고 어쩌면 근이완제도 써야 할까요?"]}
+"19.2": {expect: "I'll page the intensivist",
+  dKo: ["약물을 뽑기 전에 저는 중환자전담의를 호출할게요", "약물을 뽑는 동안 저는 호흡치료사를 호출할게요"]}
+"19.4": {expect: "We need to decide",
+  dKo: ["빨리 정리해야 해서 지금 팀을 모으고 있어요", "빨리 결정해야 해서 지금 가족을 모으고 있어요"]}
+"20.0": {expect: "His oxygenation isn't", ko: "인공호흡기 지원을 최대로 해도 산소화가 반응하지 않고 있어요.",
+  dKo: ["인공호흡기 지원을 최대로 해도 혈압이 반응하지 않고 있어요", "인공호흡기 지원을 최대로 해도 의식이 반응하지 않고 있어요"]}
+"20.1": {expect: "We should escalate",
+  dKo: ["복와위로 단계를 높이고 ECMO팀에 결과를 알려야 해요", "복와위로 바꾸려면 자세 변경 인력이 다섯 명 필요해요"]}
+"20.2": {expect: "I'll gather", decoy: "of the call"}
+"20.4": {expect: "Proning can improve",
+  dKo: ["복와위는 폐 뒤쪽을 열어줘서 가래가 잘 빠지게 할 수 있어요", "복와위는 폐 뒤쪽을 열어줘서 통증을 좋아지게 할 수 있어요"]}

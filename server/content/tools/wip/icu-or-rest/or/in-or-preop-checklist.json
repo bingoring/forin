@@ -1,0 +1,446 @@
+{
+ "theme": "or-preop-checklist",
+ "situations": [
+  {
+   "title": "체크리스트 항목 순차 점검",
+   "tagline": "Let's go through your pre-op checklist together, step by step.",
+   "room": "Pre-op Holding",
+   "brief": "수술 전 체크리스트를 항목별로 순차 확인하세요.",
+   "role": "patient",
+   "skills": [
+    "체크리스트 확인",
+    "환자 안내",
+    "순차 점검"
+   ],
+   "keyPhrases": [
+    "I'm going to confirm a few things before your surgery.",
+    "Can you tell me your name and date of birth?",
+    "What procedure are you having today?"
+   ],
+   "goals": [
+    "체크리스트 항목을 순서대로 확인한다",
+    "환자에게 각 단계를 설명한다"
+   ]
+  },
+  {
+   "title": "검사 결과 도착 확인",
+   "tagline": "Have all the required labs and imaging come back for this patient?",
+   "room": "Pre-op Holding",
+   "brief": "수술에 필요한 검사와 영상이 모두 도착했는지 확인하세요.",
+   "role": "colleague",
+   "skills": [
+    "검사 확인",
+    "결과 대조",
+    "팀 소통"
+   ],
+   "keyPhrases": [
+    "Are all the labs and imaging back in the chart?",
+    "The CBC and type-and-screen are both here.",
+    "I'll flag anything that's still pending."
+   ],
+   "goals": [
+    "필수 검사와 영상 도착 여부를 확인한다",
+    "누락된 결과를 팀에 알린다"
+   ]
+  },
+  {
+   "title": "정맥로 개통 확인",
+   "tagline": "Let me check that your IV line is working well before we go in.",
+   "room": "Pre-op Holding",
+   "brief": "정맥로가 잘 개통되어 있고 수액이 흐르는지 확인하세요.",
+   "role": "patient",
+   "skills": [
+    "IV 확인",
+    "수액 점검",
+    "환자 안내"
+   ],
+   "keyPhrases": [
+    "I'm checking that your IV is running well.",
+    "Let me know if you feel any burning at the site.",
+    "This line will give you fluids and medication during surgery."
+   ],
+   "goals": [
+    "정맥로 개통과 수액 흐름을 확인한다",
+    "삽입 부위 이상 여부를 점검한다"
+   ]
+  },
+  {
+   "title": "장신구·의치 제거 확인",
+   "tagline": "Before surgery, we'll need to remove any jewelry, dentures, or metal you have on.",
+   "room": "Pre-op Holding",
+   "brief": "금속 장신구와 의치를 제거했는지 확인하세요.",
+   "role": "patient",
+   "skills": [
+    "환자 안내",
+    "제거 확인",
+    "안전 점검"
+   ],
+   "keyPhrases": [
+    "Do you have any rings, piercings, or dentures on?",
+    "We remove metal so it doesn't interfere with the equipment.",
+    "I'll keep your belongings in a labeled bag for you."
+   ],
+   "goals": [
+    "금속 장신구와 의치 제거를 확인한다",
+    "제거 이유를 환자에게 설명한다"
+   ]
+  },
+  {
+   "title": "방광 비움 확인",
+   "tagline": "Have you had a chance to empty your bladder before we take you in?",
+   "room": "Pre-op Holding",
+   "brief": "배뇨 또는 도뇨로 방광이 비워졌는지 확인하세요.",
+   "role": "patient",
+   "skills": [
+    "배뇨 확인",
+    "환자 안내",
+    "수술 준비"
+   ],
+   "keyPhrases": [
+    "Have you emptied your bladder recently?",
+    "If not, I can help you to the restroom now.",
+    "This keeps you comfortable during the procedure."
+   ],
+   "goals": [
+    "배뇨 또는 도뇨 상태를 확인한다",
+    "필요 시 배뇨를 돕는다"
+   ]
+  },
+  {
+   "title": "예방적 항생제 준비",
+   "tagline": "Is the prophylactic antibiotic drawn up and ready to give before incision?",
+   "room": "OR 3",
+   "brief": "절개 전 예방적 항생제를 정해진 시각에 투여할 수 있게 준비하세요.",
+   "role": "colleague",
+   "skills": [
+    "항생제 준비",
+    "시각 확인",
+    "팀 소통"
+   ],
+   "keyPhrases": [
+    "The pre-op antibiotic is ready to give.",
+    "We need it in within 60 minutes before incision.",
+    "I'll document the exact time it goes in."
+   ],
+   "goals": [
+    "예방적 항생제를 절개 전 투여 준비한다",
+    "투여 시각을 기록한다"
+   ]
+  },
+  {
+   "title": "혈액형·교차적합 미완료",
+   "tagline": "The type-and-crossmatch isn't back yet, and this case may need blood.",
+   "room": "OR 3",
+   "brief": "수혈 준비가 누락된 상태를 즉시 팀에 보고하세요.",
+   "role": "colleague",
+   "skills": [
+    "수혈 준비",
+    "누락 보고",
+    "팀 소통"
+   ],
+   "keyPhrases": [
+    "The crossmatch is still incomplete.",
+    "Should we hold until blood is available?",
+    "I'll call the blood bank to expedite it."
+   ],
+   "goals": [
+    "교차적합 미완료 상태를 보고한다",
+    "혈액은행에 신속 처리를 요청한다"
+   ]
+  },
+  {
+   "title": "필수 검사 결과 누락",
+   "tagline": "A required lab is missing—can we proceed, or do we need to hold?",
+   "room": "Pre-op Holding",
+   "brief": "필수 검사 결과 누락 시 수술 진행 가부를 판단하도록 보고하세요.",
+   "role": "colleague",
+   "skills": [
+    "검사 확인",
+    "가부 판단",
+    "보고"
+   ],
+   "keyPhrases": [
+    "The required potassium level isn't back yet.",
+    "Do we hold the case until it results?",
+    "I'll let the surgeon and anesthesia know."
+   ],
+   "goals": [
+    "누락된 필수 검사를 확인해 보고한다",
+    "진행 가부 결정을 팀과 조율한다"
+   ]
+  },
+  {
+   "title": "인공관절·심박동기 정보",
+   "tagline": "Do you have any implants like a joint replacement or a pacemaker?",
+   "room": "Pre-op Holding",
+   "brief": "이식물과 기기 정보를 확인해 수술팀에 전달하세요.",
+   "role": "patient",
+   "skills": [
+    "이식물 확인",
+    "정보 전달",
+    "문진"
+   ],
+   "keyPhrases": [
+    "Do you have a pacemaker or any metal implants?",
+    "When and where was it placed?",
+    "I'll pass this to the surgical team."
+   ],
+   "goals": [
+    "이식물과 기기 정보를 확인한다",
+    "확인된 정보를 수술팀에 전달한다"
+   ]
+  },
+  {
+   "title": "항생제 투여 시각 지연",
+   "tagline": "The antibiotic timing is slipping—we need it in before incision.",
+   "room": "OR 3",
+   "brief": "항생제 투여가 절개 60분 이내에 들어가도록 시각을 조정하세요.",
+   "role": "colleague",
+   "skills": [
+    "항생제 관리",
+    "시각 조정",
+    "팀 소통"
+   ],
+   "keyPhrases": [
+    "The antibiotic hasn't gone in yet.",
+    "Can we give it now, before incision?",
+    "I'll adjust the timing and document it."
+   ],
+   "goals": [
+    "항생제 투여 시각 지연을 확인한다",
+    "절개 60분 내로 투여를 조정한다"
+   ]
+  },
+  {
+   "title": "정맥로 불량 재확보",
+   "tagline": "This IV isn't running well, so I'm going to place a new line for you.",
+   "room": "Pre-op Holding",
+   "brief": "불량한 정맥로를 재확보하고 적절한 부위를 선택하세요.",
+   "role": "patient",
+   "skills": [
+    "IV 재확보",
+    "부위 선택",
+    "환자 안내"
+   ],
+   "keyPhrases": [
+    "This line isn't flowing well, so I'll start a new one.",
+    "You'll feel a small pinch.",
+    "I'm choosing a better spot for the surgery."
+   ],
+   "goals": [
+    "불량 정맥로를 재확보한다",
+    "수술에 적합한 부위를 선택한다"
+   ]
+  },
+  {
+   "title": "의치·보청기 제거 거부",
+   "tagline": "I understand it's uncomfortable, but we do need the dentures out before surgery.",
+   "room": "Pre-op Holding",
+   "brief": "의치와 보청기 제거의 필요성을 환자에게 설명하세요.",
+   "role": "patient",
+   "skills": [
+    "환자 설명",
+    "설득",
+    "안전 안내"
+   ],
+   "keyPhrases": [
+    "The dentures need to come out for your airway to stay safe.",
+    "We'll keep them labeled and return them in recovery.",
+    "It's only for a short time during the procedure."
+   ],
+   "goals": [
+    "제거의 안전상 필요성을 설명한다",
+    "환자의 우려를 듣고 안심시킨다"
+   ]
+  },
+  {
+   "title": "수술 전 VTE 예방 확인",
+   "tagline": "I'm putting compression sleeves on your legs to prevent blood clots during surgery.",
+   "room": "Pre-op Holding",
+   "brief": "수술 전 혈전 예방 조치가 적용되었는지 확인하세요.",
+   "role": "patient",
+   "skills": [
+    "VTE 예방",
+    "기구 적용",
+    "환자 안내"
+   ],
+   "keyPhrases": [
+    "These sleeves gently squeeze your legs to prevent clots.",
+    "Have you been given a blood thinner today?",
+    "I'll confirm the VTE prevention orders."
+   ],
+   "goals": [
+    "혈전 예방 조치 적용을 확인한다",
+    "압박 기구 사용을 환자에게 설명한다"
+   ]
+  },
+  {
+   "title": "당뇨 환자 혈당 조절",
+   "tagline": "Let me check your blood sugar before surgery to make sure it's in a safe range.",
+   "room": "Pre-op Holding",
+   "brief": "수술 전 당뇨 환자의 혈당을 확인하고 관리하세요.",
+   "role": "patient",
+   "skills": [
+    "혈당 확인",
+    "당뇨 관리",
+    "환자 안내"
+   ],
+   "keyPhrases": [
+    "I'm going to check your blood sugar now.",
+    "Did you take your insulin or diabetes pills this morning?",
+    "We'll adjust if the number is too high or low."
+   ],
+   "goals": [
+    "수술 전 혈당을 확인한다",
+    "필요 시 혈당 조절 조치를 취한다"
+   ]
+  },
+  {
+   "title": "기록 간 정보 불일치",
+   "tagline": "The consent and the chart don't match—let's reconcile this before we start.",
+   "room": "Pre-op Holding",
+   "brief": "기록 간 정보 불일치를 발견해 조정하세요.",
+   "role": "colleague",
+   "skills": [
+    "기록 대조",
+    "불일치 조정",
+    "팀 소통"
+   ],
+   "keyPhrases": [
+    "The consent says left, but the chart says right.",
+    "We need to stop and verify before proceeding.",
+    "I'll get the surgeon to confirm the correct side."
+   ],
+   "goals": [
+    "기록 간 불일치를 확인한다",
+    "정확한 정보로 기록을 조정한다"
+   ]
+  },
+  {
+   "title": "검사 이상치 수술 지연",
+   "tagline": "This lab value is critical—I'm reporting it now before we go any further.",
+   "room": "OR 3",
+   "brief": "위험한 검사치를 즉시 보고해 수술 지연 여부를 판단하세요.",
+   "role": "colleague",
+   "skills": [
+    "검사 판독",
+    "즉시 보고",
+    "위기 소통"
+   ],
+   "keyPhrases": [
+    "The potassium is critically high at 6.8.",
+    "We should hold the case until this is corrected.",
+    "I'm calling the surgeon and anesthesia right now."
+   ],
+   "goals": [
+    "위험 검사치를 즉시 보고한다",
+    "수술 지연 여부 결정을 조율한다"
+   ]
+  },
+  {
+   "title": "항생제 미투여 절개 임박",
+   "tagline": "Hold on—the antibiotic still hasn't gone in and we're about to make the incision.",
+   "room": "OR 3",
+   "brief": "절개 직전 항생제 누락을 차단하고 투여를 확보하세요.",
+   "role": "colleague",
+   "skills": [
+    "누락 차단",
+    "즉시 조치",
+    "팀 소통"
+   ],
+   "keyPhrases": [
+    "Stop—the antibiotic hasn't been given yet.",
+    "Can we hold incision until it's infused?",
+    "I'm giving it now and documenting the time."
+   ],
+   "goals": [
+    "절개 전 항생제 누락을 차단한다",
+    "즉시 투여하고 시각을 기록한다"
+   ]
+  },
+  {
+   "title": "교차혈액 없이 출혈 수술",
+   "tagline": "We have no crossmatched blood and this bleeding case is starting—we need product now.",
+   "room": "OR 3",
+   "brief": "혈액이 확보되지 않은 채 출혈 수술이 임박한 상황에 긴급 대응하세요.",
+   "role": "colleague",
+   "skills": [
+    "긴급 수혈 조율",
+    "혈액은행 소통",
+    "위기 대응"
+   ],
+   "keyPhrases": [
+    "We have no crossmatched blood available.",
+    "Can we release emergency O-negative now?",
+    "I'm activating the massive transfusion protocol."
+   ],
+   "goals": [
+    "혈액 미확보 상태를 긴급 보고한다",
+    "응급 혈액 확보를 조율한다"
+   ]
+  },
+  {
+   "title": "심박동기 환자 소작 위험",
+   "tagline": "This patient has a pacemaker—we need to manage the cautery risk before we cut.",
+   "room": "OR 3",
+   "brief": "심박동기 환자에게서 전기소작 위험을 경고하고 대비하세요.",
+   "role": "colleague",
+   "skills": [
+    "이식 기기 안전",
+    "소작 위험 경고",
+    "팀 소통"
+   ],
+   "keyPhrases": [
+    "The patient has a pacemaker—cautery could interfere with it.",
+    "We should use bipolar and place the pad away from the device.",
+    "Do we need cardiology or a magnet on standby?"
+   ],
+   "goals": [
+    "심박동기의 전기소작 위험을 경고한다",
+    "안전한 소작 대비책을 조율한다"
+   ]
+  },
+  {
+   "title": "응급 체크리스트 생략 압박",
+   "tagline": "I know we're rushing, but we can't skip the safety checks—let's do the time-out.",
+   "room": "OR 3",
+   "brief": "응급 상황에서도 필수 안전 항목을 사수하도록 대응하세요.",
+   "role": "colleague",
+   "skills": [
+    "안전 사수",
+    "speak-up",
+    "팀 소통"
+   ],
+   "keyPhrases": [
+    "We still need the time-out even in an emergency.",
+    "It only takes thirty seconds to confirm the essentials.",
+    "Patient, site, and procedure—let's verify together."
+   ],
+   "goals": [
+    "필수 안전 항목 생략 압박에 대응한다",
+    "최소한의 타임아웃을 완수한다"
+   ]
+  },
+  {
+   "title": "이식물 정보 불명 응급",
+   "tagline": "We don't know what implant this patient has—we need to work around the unknown safely.",
+   "room": "OR 3",
+   "brief": "미상 이식물 정보 부재 상황에 안전하게 대응하세요.",
+   "role": "colleague",
+   "skills": [
+    "이식물 대응",
+    "정보 확보",
+    "위기 판단"
+   ],
+   "keyPhrases": [
+    "We can't confirm what implant is in place.",
+    "Let's get imaging and assume it's MRI-unsafe for now.",
+    "I'll try to reach the family or prior records."
+   ],
+   "goals": [
+    "미상 이식물 상황을 파악한다",
+    "정보 부재 하 안전 조치를 조율한다"
+   ]
+  }
+ ]
+}

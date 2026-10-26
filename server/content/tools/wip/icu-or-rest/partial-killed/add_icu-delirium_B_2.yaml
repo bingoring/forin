@@ -1,0 +1,54 @@
+- n: 2
+  s:
+  - {tag: "야간 환경", icon: bulb, why: "Let's로 함께 하자고 권하고, overnight 한 단어로 '밤 시간 동안'이라는 기간을 붙여요.", decoy: "before rounds", dko: ["불을 어둡게 낮추고 밤새 TV 소리도 줄여요", "불을 어둡게 낮추고 밤새 대화 소리도 줄여요"], ans: dim, wrong: [clean, move, wipe]}
+  - {tag: "소음 줄이기", icon: speaker, why: "quietly를 끝에 두어 문을 닫는 방식까지 약속해요. 문 닫는 소리도 잠을 깨울 수 있어요.", decoy: "the window", dko: ["라디오를 끄고 문도 조용히 닫을게요", "TV를 끄고 창문도 조용히 닫을게요"], ans: quietly, wrong: [firmly, twice, early]}
+  - {tag: "근거 설명", icon: shield, why: "원인과 결과를 현재형 한 문장으로 말하면 '대체로 그렇다'는 사실 진술이 돼요. lowers risk가 한 덩어리로 쓰여요.", decoy: "in his bed", dko: ["좋은 식사는 섬망 위험을 낮춰요", "좋은 수면은 출혈 위험을 낮춰요"], ans: risk, wrong: [room, tray, order]}
+  - {tag: "케어 묶기", icon: calendar, why: "so we don't로 묶는 목적을 이어 말해요. repeatedly는 방해가 여러 번 쌓인다는 느낌이에요.", decoy: "for his sleep", dko: ["검사를 묶어서 반복해서 깨우지 않을게요", "케어를 묶어서 반복해서 씻기지 않을게요"], ans: repeatedly, wrong: [suddenly, briefly, loudly]}
+  - {tag: "라운드 묶기", icon: board, why: "group A and B into one round는 따로 하던 일을 한 번 들어갈 때 같이 한다는 구조예요. 정해진 시간이 겹치는 일에 쓰는 말이에요.", decoy: "on the unit", dko: ["채혈과 활력징후를 한 라운드로 묶을게요", "투약과 활력징후를 두 라운드로 묶을게요"], ans: vitals, wrong: [visitors, valuables, videos]}
+  - {tag: "기대 효과", icon: star, why: "That way로 앞의 계획이 낳을 결과를 이어 말해요. through most of the night는 밤 대부분 동안 쭉 이어진다는 뜻이에요.", decoy: "at the bedside", dko: ["그러면 낮 대부분을 편히 쉴 수 있어요", "그러면 밤 내내 편히 움직일 수 있어요"], ans: rest, wrong: [walk, eat, talk]}
+  order:
+    tag: "수면 보호"
+    icon: compass
+    ko: "수면을 지키자고 제안하는 4문장 순서"
+    why: "이유를 먼저 말하고, 환경을 바꾸자고 제안한 뒤, 그 조용함을 지킬 방법을 더하고, 기대 효과로 닫아요. 줄마다 앞 줄을 가리켜 순서가 정해져요."
+    lines:
+    - {en: "Good sleep lowers his delirium risk.", icon: shield, ko: "좋은 수면은 섬망 위험을 낮춰요", note: 이유}
+    - {en: "So let's dim the lights and lower the alarms overnight.", icon: bulb, ko: "그러니 밤새 불과 알람 소리를 줄여요", note: 제안}
+    - {en: "To protect that quiet, I'll group his medications and vitals into one round.", icon: calendar, ko: "그 조용함을 지키려고 투약과 활력징후를 묶을게요", note: 방법}
+    - {en: "That way he can rest through most of the night.", icon: star, ko: "그러면 밤 대부분을 편히 쉴 수 있어요", note: 효과}
+- n: 3
+  s:
+  - {tag: "이동 제안", icon: chartup, why: "Let's get him up to ~는 일으켜 앉히는 단계를 같이 하자는 제안이에요. today로 오늘의 목표를 분명히 해요.", decoy: "to the chair", dko: ["내일은 침대 가장자리까지 앉혀볼게요", "오늘은 침대 머리맡까지 앉혀볼게요"], ans: today, wrong: [tomorrow, tonight, Monday]}
+  - {tag: "역할 분담", icon: handshake2, why: "I'll ..., while you ...로 두 사람이 맡을 일을 한 문장에 나눠요. support와 steady 모두 흔들리지 않게 잡아 준다는 뜻인데, 대상이 라인과 환자로 달라요.", decoy: "the bed rail", dko: ["라인은 제가 잡을 테니 몸은 천천히 눕혀 주세요", "라인은 제가 잡을 테니 몸은 따뜻하게 덮어 주세요"], ans: steady, wrong: [wash, weigh, shave]}
+  - {tag: "감시 요청", icon: monitor, why: "대상(his monitor)과 방식(closely)을 한 번에 지시해요. as he sits up처럼 몸을 움직이는 순간을 짚어 주면 가장 살필 때가 분명해져요.", decoy: "from the door", dko: ["누워 있는 동안 모니터를 잘 지켜봐 주세요", "밥 먹는 동안 모니터를 잘 지켜봐 주세요"], ans: sits, wrong: [stands, wakes, looks]}
+  - {tag: "근거 설명", icon: shield, why: "helps 뒤에 동사 원형 둘(prevent and shorten)로 효과 두 가지를 말해요. 예방(막기)과 단축(줄이기)은 서로 다른 효과예요.", decoy: "all night", dko: ["조기 이동은 통증을 예방하고 기간도 줄여줘요", "조기 이동은 섬망을 예방하고 기침도 줄여줘요"], ans: mobility, wrong: [monitoring, medicine, massage]}
+  - {tag: "격려", icon: star, why: "a few minutes와 can make a real difference로 작은 시작도 의미 있다고 격려해요. can이라 과장 없이 가능성을 말해요.", decoy: "each hour", dko: ["잠깐 서 있는 것만으로도 큰 차이가 있어요", "잠깐 앉아 있는 것만으로도 큰 위험이 있어요"], ans: difference, wrong: [mistake, decision, profit]}
+  - {tag: "단계적 계획", icon: chartup, why: "a little more each day로 한 번에 크게가 아니라 날마다 조금씩 늘린다고 말해요. We'll은 팀이 함께 하는 약속이에요.", decoy: "at night", dko: ["매일 식사량을 조금씩 늘려볼게요", "매주 활동량을 조금씩 늘려볼게요"], ans: activity, wrong: [appetite, visitors, volume]}
+  order:
+    tag: "이동 흐름"
+    icon: compass
+    ko: "조기 이동 시작에서 확대까지 순서"
+    why: "먼저 오늘의 목표를 밝히고, 움직일 때 역할을 나누고, 앉은 뒤에 모니터를 보고, 잘 견디면 활동을 늘려요. now that과 if가 앞 줄을 이어 순서가 정해져요."
+    lines:
+    - {en: "Let's get him up to the edge of the bed today.", icon: chartup, ko: "오늘은 침대 가장자리까지 앉혀봐요", note: 목표}
+    - {en: "I'll support his lines while you help him sit up.", icon: handshake2, ko: "앉는 걸 도우시는 동안 라인은 제가 잡을게요", note: 분담}
+    - {en: "Now that he's sitting, watch his monitor closely.", icon: monitor, ko: "이제 앉았으니 모니터를 잘 봐 주세요", note: 감시}
+    - {en: "If he does well, we'll increase his activity a little more each day.", icon: star, ko: "잘 견디면 활동을 매일 조금씩 늘려요", note: 확대}
+- n: 4
+  s:
+  - {tag: "가족 역할", icon: speech, why: "Your familiar voice로 가족만 할 수 있는 역할을 짚어 줘요. helps keep him oriented는 지금이 언제이고 여기가 어디인지 놓치지 않게 돕는다는 뜻이에요.", decoy: "to the nurse", dko: ["익숙한 목소리가 수면을 유지하는 데 정말 도움이 돼요", "익숙한 냄새가 지남력을 유지하는 데 정말 도움이 돼요"], ans: familiar, wrong: [loud, sharp, hoarse]}
+  - {tag: "안심 말", icon: faceWorried, why: "may seem ... but ...으로 지금 보이는 모습과 가능성을 맞세워요. can으로 단정하지 않아, 가족에게 거짓 확신을 주지 않아요.", decoy: "in the room", dko: ["혼란스러워 보이셔도 손을 잡으면 진정될 수 있어요", "피곤해 보이셔도 목소리를 들으면 진정될 수 있어요"], ans: calm, wrong: [tire, teach, test]}
+  - {tag: "대화 권유", icon: speech, why: "Just ... can be로 특별한 말이 필요 없다고 부담을 덜어요. soothing은 불안을 부드럽게 가라앉힌다는 느낌이에요.", decoy: "with the staff", dko: ["그냥 오늘 하루 노래를 불러주는 것만으로도 편안해져요", "그냥 오늘 날씨 이야기를 들려주는 것만으로도 편안해져요"], ans: soothing, wrong: [tiring, boring, painful]}
+  - {tag: "가족 행동", icon: handshake2, why: "You can ...은 허락하는 말이라 가족이 해도 되는지 망설이지 않게 해요. remind는 새로 알려 주는 게 아니라 다시 떠올려 주는 거예요.", decoy: "his mask", dko: ["손을 잡고 지금 몇 시인지 알려주셔도 좋아요", "어깨를 잡고 지금 어디에 있는지 알려주셔도 좋아요"], ans: where, wrong: [who, why, how]}
+  - {tag: "물건 부탁", icon: star, why: "if you can을 끝에 붙이면 요청이 의무가 아니라 부탁으로 들려요. 익숙한 물건은 환자가 자기 자리를 알아보게 도와요.", decoy: "from the unit", dko: ["가능하면 가족 사진이나 슬리퍼를 가져다주세요", "가능하면 가족 편지나 안경을 가져다주세요"], ans: photo, wrong: [badge, ticket, bill]}
+  - {tag: "이유 설명", icon: home, why: "things from home처럼 어디서 온 물건인지를 뒤에 붙여 명사를 꾸며요. here가 낯선 병실을 가리켜 익숙함의 가치가 커진다는 말이 돼요.", decoy: "from the shop", dko: ["집에서 가져온 익숙한 향기가 여기서 큰 차이를 만들어요", "직장에서 가져온 익숙한 물건이 여기서 큰 차이를 만들어요"], ans: home, wrong: [work, school, church]}
+  order:
+    tag: "가족 참여"
+    icon: compass
+    ko: "가족에게 도울 방법을 안내하는 순서"
+    why: "먼저 혼란스러워 보여도 목소리가 닿는다고 안심시키고, 대화를 권하고, 물건을 부탁한 뒤, 그 물건의 가치로 닫아요. so·besides·like that이 앞 줄을 이어요."
+    lines:
+    - {en: "He may seem confused, but hearing you can calm him.", icon: faceWorried, ko: "혼란스러워 보여도 목소리를 들으면 진정될 수 있어요", note: 안심}
+    - {en: "So just talking about your day can be soothing.", icon: speech, ko: "그러니 하루 이야기만 해도 편안해져요", note: 권유}
+    - {en: "Besides talking, bring in a family photo if you can.", icon: star, ko: "대화 말고도 가능하면 가족 사진을 가져다주세요", note: 부탁}
+    - {en: "Familiar things like that make a real difference here.", icon: home, ko: "그런 익숙한 물건이 여기서 큰 차이를 만들어요", note: 이유}

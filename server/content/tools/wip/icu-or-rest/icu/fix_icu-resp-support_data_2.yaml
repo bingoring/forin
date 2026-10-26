@@ -1,0 +1,275 @@
+# 문장 수정 (fix-icu-resp-support-A·B). 키 = "상황.문장" (0부터). words 는 통째 교체, words_remove 는 일부만 빼기.
+"0.3":
+  expect: "I'm listening"
+  blank: {answer: lungs, options: [lungs, stomach, belly, throat]}
+"0.5":
+  expect: "We'll start you"
+  blank: {answer: respond, options: [cough, swallow, respond, sweat]}
+"1.3":
+  expect: "The flow rate"
+  en: "The flow rate is set first, and then the oxygen percentage is adjusted to your target."
+  ko: "먼저 유량을 설정하고, 그다음 목표에 맞게 산소 퍼센트를 조정해요."
+  chunks: ["The flow rate", "is set first,", "and then the oxygen percentage", "is adjusted to your target", "."]
+  words: [w-flow, w-oxygen, w-percentage, w-set, w-adjust]
+  why: "is set first, and then…은 설정 순서를 한 문장에 담는 틀이고, adjusted to your target으로 산소 퍼센트를 맞추는 기준이 목표라는 점을 밝혀요."
+  dk: ["먼저 유량을 설정하고, 그다음 목표에 맞게 알람 소리를 조정해요.", "먼저 유량을 설정하고, 그다음 목표에 맞게 화면 밝기를 조정해요."]
+  blank: {answer: first, options: [last, second, alone, first]}
+"1.4":
+  expect: "The humidifier keeps"
+  ko: "가습기 덕분에 이 따뜻한 공기가 기도를 마르게 하지 않아요."
+  dk: ["가습기 덕분에 이 따뜻한 공기가 기도를 뜨겁게 하지 않아요.", "가습기 덕분에 이 따뜻한 공기가 기도를 답답하게 하지 않아요."]
+  blank: {answer: airway, options: [airway, ears, toes, elbows]}
+"1.5":
+  expect: "You'll breathe"
+  words_remove: [w-adjust]
+  blank: {answer: adjusts, options: [returns, adjusts, listens, belongs]}
+"2.1":
+  expect: "A good fit"
+  ko: "적합도가 좋으면 가장자리로 바람이 새지 않아요."
+  dk: ["적합도가 좋으면 가장자리로 물이 새지 않아요.", "적합도가 좋으면 가장자리로 냄새가 나지 않아요."]
+"2.2":
+  expect: "I'll add padding"
+  words_remove: [w-nose]
+"2.3":
+  expect: "Let's loosen"
+  blank: {answer: loosen, options: [shorten, tighten, loosen, twist]}
+"3.1":
+  expect: "We step up"
+  dk: ["경보가 늘어나면 장치 단계를 올려요.", "산소 요구량이 늘어나면 팀에 장치를 물어봐요."]
+"3.3":
+  expect: "I switched"
+  ko: "산소 수치에 지금 더 많은 지지가 필요해서 장치를 바꿨어요."
+  dk: ["산소 수치에 지금 더 많은 지지가 필요해서 침대를 바꿨어요.", "산소 수치에 지금 더 많은 지지가 필요해서 장치를 닦았어요."]
+"3.5":
+  expect: "As you improve"
+  chunks: ["As you improve,", "we can", "step back down", "to a smaller device", "."]
+  dk: ["좋아지면 더 조용한 장치로 단계를 낮출 수 있어요.", "좋아지면 더 새로운 장치로 단계를 낮출 수 있어요."]
+  blank: {answer: improve, options: [worsen, improve, tire, panic]}
+"4.2":
+  expect: "If you start"
+  blank: {answer: support, options: [exercise, supplies, warnings, support]}
+"4.3":
+  expect: "I'm also checking"
+  chunks: ["I'm also checking", "your shoulders", "and belly", "for extra breathing effort", "."]
+"4.4":
+  expect: "If your breathing muscles"
+  blank: {answer: early, options: [old, early, odd, exact]}
+"5.1":
+  expect: "It tells me"
+  blank: {answer: lungs, options: [kidneys, lungs, arteries, muscles]}
+"5.3":
+  expect: "I'm drawing"
+  en: "I'm drawing a small blood sample from the artery in your wrist."
+  chunks: ["I'm drawing", "a small blood sample", "from the artery", "in your wrist", "."]
+"6.0":
+  expect: "His ROX index"
+  blank: {answer: combines, options: [separates, ignores, replaces, combines]}
+"6.3":
+  expect: "His rate is down"
+  dk: ["호흡수는 내려가고 체온은 유지되고 있어서 ROX가 오르고 있어요.", "호흡수는 내려가고 체중은 유지되고 있어서 ROX가 오르고 있어요."]
+"6.4":
+  expect: "If the ROX index drops"
+  decoy: "with the chart"
+"6.5":
+  expect: "I'm tracking"
+  dk: ["그의 체중을 매시간 추적하고 하락 추세는 보고할게요.", "그의 호흡수를 매시간 추적하고 하락 추세는 보고할게요."]
+"7.0":
+  expect: "NIV needs"
+  blank: {answer: alert, options: [older, anxious, alert, obese]}
+"7.2":
+  expect: "If he can't cooperate"
+  dk: ["열이 나면 대신 삽관을 고려해야 해요.", "협조가 안 되면 대신 삽관을 서둘러야 해요."]
+"7.4":
+  expect: "I'm identifying"
+  dk: ["시작하기 전에 마스크 크기가 안 맞는 환자를 식별하고 있어요.", "시작하기 전에 마스크가 안전하지 않은 환자를 안내하고 있어요."]
+"7.5":
+  expect: "He can't clear"
+  blank: {answer: secretions, options: [allergies, medications, pressures, secretions]}
+"8.2":
+  expect: "As your breathing improves"
+  ko: "호흡이 좋아지면 설정값을 조금씩 낮출게요."
+  dk: ["호흡이 좋아지면 설정값을 조금씩 점검할게요.", "호흡이 좋아지면 조명을 조금씩 낮출게요."]
+"8.4":
+  expect: "The BiPAP gives you"
+  en: "The BiPAP gives you a push on every breath in and keeps your airways open as you breathe out."
+  ko: "BiPAP이 들숨마다 밀어주고 날숨에는 기도가 열려 있게 해줘요."
+  chunks: ["The BiPAP gives you", "a push on every breath in", "and keeps your airways open", "as you breathe out", "."]
+  words: [w-bipap, w-push, w-breath, w-airway]
+  why: "a push on every breath in은 들숨마다 압력이 한 번씩 더해진다는 그림이고, keeps your airways open은 날숨 동안 기도가 열려 있다는 뜻이라 장치 작동을 몸으로 느끼게 설명해 줘요."
+  dk: ["BiPAP이 들숨마다 밀어주고 날숨에는 입이 열려 있게 해줘요.", "BiPAP이 들숨마다 밀어주고 날숨에는 기도가 따뜻하게 해줘요."]
+"8.5":
+  expect: "As you calm down"
+  ko: "진정되고 수치가 좋아지면 압력을 조금씩 낮출게요."
+  dk: ["진정되고 수치가 좋아지면 압력을 조금씩 설명할게요.", "진정되고 수치가 좋아지면 온도를 조금씩 낮출게요."]
+"9.0":
+  expect: "This CPAP pushes"
+  blank: {answer: fluid, options: [fluid, oxygen, blood, sugar]}
+"9.1":
+  expect: "It also eases"
+  blank: {answer: strain, options: [rhythm, strain, murmur, valve]}
+"9.5":
+  expect: "You should feel"
+  ko: "폐에서 체액이 빠지면서 곧 조금 편해지실 거예요."
+  dk: ["폐에서 체액이 빠지면서 곧 조금 따뜻해지실 거예요.", "폐에서 체액이 빠지면서 곧 조금 조용해지실 거예요."]
+"10.0":
+  expect: "Let's adjust"
+  blank: {answer: follows, options: [fights, blocks, pushes, follows]}
+"10.1":
+  expect: "I'll coach you"
+  blank: {answer: relax, options: [relax, panic, resist, cough]}
+"10.2":
+  expect: "A little medication"
+  dk: ["약을 조금 쓰면 마스크를 쓰고 더 잘 자는 데 도움이 돼요.", "약을 조금 쓰면 마스크를 더 잘 고르는 데 도움이 돼요."]
+"10.5":
+  expect: "I'm watching"
+  blank: {answer: pattern, options: [pattern, posture, pulse, temperature]}
+"11.2":
+  expect: "If he vomits"
+  blank: {answer: vomits, options: [vomits, sneezes, yawns, hiccups]}
+"11.3":
+  expect: "His stomach looks"
+  chunks: ["His stomach", "looks distended,", "so I'm watching", "for aspiration risk", "."]
+  dk: ["위가 팽만해 보여서 낙상 위험을 지켜보고 있어요.", "위가 팽만해 보여서 감염 위험을 지켜보고 있어요."]
+"11.4":
+  expect: "I'm keeping his head up"
+  words_remove: [w-low]
+"11.5":
+  expect: "If he starts vomiting"
+  blank: {answer: protect, options: [damage, protect, expose, flood]}
+"12.1":
+  expect: "These are signs"
+  why: "shouldn't delay…는 '미루지 말자'는 부정형이라 지체의 위험을 짚어 결단을 재촉해요. so로 징후를 근거로 이어 붙이면 이유가 분명해져요."
+  dk: ["이건 NIV 실패 징후라서 보고를 지연하면 안 돼요.", "이건 NIV 실패 징후라서 팀 호출을 지연하면 안 돼요."]
+"12.2":
+  expect: "I'll report"
+  decoy: "on the clipboard"
+"12.4":
+  expect: "I don't want"
+  dk: ["이 실패 징후가 계속되면 호출을 지연하고 싶지 않아요.", "이 실패 징후가 계속되면 면회를 지연하고 싶지 않아요."]
+"12.5":
+  expect: "I already paged"
+  dk: ["이미 의사에게 연락했고 들리는 지표를 전부 보고했어요.", "이미 의사에게 연락했고 보이는 지표를 전부 정리했어요."]
+  blank: {answer: paged, options: [avoided, replaced, paged, doubted]}
+"13.3":
+  expect: "Avoiding a ventilator"
+  blank: {answer: risk, options: [cure, cost, pace, risk]}
+"13.4":
+  expect: "I'm comparing"
+  chunks: ["I'm comparing", "his numbers now", "to how they looked", "before we started NIV", "."]
+  blank: {answer: comparing, options: [checking, comparing, charting, changing]}
+"14.1":
+  expect: "Let's target"
+  blank: {answer: range, options: [range, rhythm, label, signal]}
+"14.2":
+  expect: "For him"
+  dk: ["이 병동에서는 산소포화도 92에서 96이 목표예요.", "이 환자에게는 산소포화도 92에서 96이 평균이에요."]
+"14.5":
+  expect: "We don't need"
+  blank: {answer: oxygen, options: [oxygen, alarms, calories, visits]}
+"15.0":
+  expect: "Let's reassess"
+  dk: ["지금 바로 기도, 호흡, 산소를 볼 장비를 가져와요.", "지금 바로 기도, 호흡, 산소를 적을 종이를 가져와요."]
+"15.1":
+  expect: "Turn the FiO2"
+  dk: ["FiO2를 올리고 즉시 흡인을 준비해요.", "FiO2를 올리고 즉시 산소포화도를 다시 봐요."]
+"15.2":
+  expect: "If he doesn't respond"
+  blank: {answer: respond, options: [respond, cough, vomit, swallow]}
+"15.3":
+  expect: "I'm reassessing"
+  dk: ["다른 무엇보다 먼저 기도와 모니터 연결을 확인하고 있어요.", "다른 무엇보다 먼저 기도와 호흡 장비를 점검하고 있어요."]
+"15.5":
+  expect: "I've already called"
+  dk: ["이미 의사에게 연락했고 즉시 수액을 준비하고 있어요.", "이미 의사에게 연락했고 즉시 모니터를 확인하고 있어요."]
+  blank: {answer: called, options: [scolded, blamed, called, questioned]}
+"16.0":
+  expect: "He's about to arrest"
+  blank: {answer: arrest, options: [recover, arrest, relax, improve]}
+"16.1":
+  expect: "Call the code"
+  dk: ["코드를 부르고 흡인기를 침상 옆으로 가져와요.", "코드를 부르고 산소통을 침상 옆으로 가져와요."]
+  blank: {answer: intubation, options: [transport, isolation, intubation, feeding]}
+"16.2":
+  expect: "We should have escalated"
+  why: "should have + 과거분사는 '그랬어야 했다'는 후회 표현이에요. 위기 한복판에서는 탓으로 들릴 수 있어 보통 사후 디브리핑에서 쓰고, 이 문장에서는 세미콜론 뒤에 바로 이어지는 행동 지시가 핵심이에요."
+  dk: ["더 일찍 기록했어야 했어요, 지금 바로 기도를 확보해요.", "더 조용히 말했어야 했어요, 지금 바로 기도를 확보해요."]
+"16.3":
+  expect: "His breathing is barely"
+  en: "His breathing is barely there now, so we treat this as a respiratory arrest."
+  ko: "지금 호흡이 거의 없어서 호흡정지로 대응해요."
+  chunks: ["His breathing", "is barely there now,", "so we treat this", "as a respiratory arrest", "."]
+  words: [w-breath, w-respiratory, w-arrest]
+  why: "barely there는 '거의 없다'를 일상어로 말해 수치 없이도 위급함을 전하고, treat this as…는 팀이 같이 움직이게 하는 선언이에요. 숨이 거의 없는 상태는 심정지가 아니라 호흡정지로 이름 붙여요."
+  dk: ["아까 호흡이 거의 없어서 호흡정지로 대응해요.", "지금 소리가 거의 없어서 호흡정지로 대응해요."]
+"16.5":
+  expect: "Let's secure his airway"
+  en: "Let's get the airway kit to the bedside and secure his airway immediately."
+  ko: "기도 키트를 침상 옆으로 가져오고 즉시 기도를 확보해요."
+  chunks: ["Let's get", "the airway kit", "to the bedside", "and secure his airway", "immediately", "."]
+  words: [w-secure, w-airway, w-immediately, w-bedside]
+  why: "Let's get…and secure…는 장비를 먼저 침상 옆에 두고 이어서 기도를 확보하는 순서를 한 문장에 담고, immediately가 지체 없음을 못 박아요."
+  dk: ["기도 키트를 침상 옆으로 가져오고 즉시 모니터를 켜요.", "수액을 침상 옆으로 가져오고 즉시 기도를 확보해요."]
+  blank: {answer: immediately, options: [eventually, immediately, gradually, occasionally]}
+"17.1":
+  expect: "He can no longer"
+  blank: {answer: airway, options: [kidneys, airway, spine, vision]}
+"17.3":
+  expect: "Severe carbon dioxide narcosis"
+  blank: {answer: depressing, options: [improving, restoring, depressing, protecting]}
+"17.5":
+  expect: "His CO2 is so high"
+  blank: {answer: normally, options: [loudly, normally, often, rarely]}
+"18.1":
+  expect: "Non-invasive support is failing"
+  words_remove: [w-move]
+"18.2":
+  expect: "Let's prepare sedation"
+  dk: ["진정을 준비하고 지금 산소를 미리 줘요.", "진정을 준비하고 지금 흡인기를 켜 둬요."]
+  blank: {answer: sedation, options: [discharge, sedation, dialysis, physiotherapy]}
+"19.0":
+  expect: "Position him"
+  ko: "좋은 쪽 폐를 보호하도록 출혈하는 쪽 폐가 아래로 가게 눕혀 주세요."
+  dk: ["좋은 쪽 폐를 보호하도록 출혈하는 쪽 폐 옆에 거즈를 준비해 주세요.", "좋은 쪽 폐를 보호하도록 출혈하는 쪽 폐 쪽에 모니터를 챙겨 주세요."]
+  blank: {answer: protect, options: [collapse, soak, protect, clamp]}
+"19.1":
+  expect: "Suction aggressively"
+  blank: {answer: aggressively, options: [gently, slowly, occasionally, aggressively]}
+"19.2":
+  expect: "Call for emergent"
+  dk: ["응급 기도 확보를 요청하고 지금 산소를 더 올려요.", "응급 기도 확보를 요청하고 지금 흡인기를 더 가져와요."]
+  blank: {answer: notify, options: [notify, question, scold, replace]}
+"19.3":
+  expect: "We're turning him"
+  en: "We're turning him so the bleeding lung stays down and the good lung stays clear."
+  ko: "출혈하는 폐는 아래로, 좋은 쪽 폐는 깨끗하게 유지되도록 환자를 돌리고 있어요."
+  chunks: ["We're turning him", "so the bleeding lung", "stays down", "and the good lung", "stays clear", "."]
+  words: [w-bleed, w-lung, w-clear]
+  why: "so the bleeding lung stays down and the good lung stays clear는 '…하도록'이라는 목적절이라, 출혈 쪽을 아래로 두는 이유가 좋은 쪽 폐를 깨끗이 지키는 데 있음을 알려요."
+  dk: ["출혈하는 폐는 아래로, 좋은 쪽 폐는 따뜻하게 유지되도록 환자를 돌리고 있어요.", "출혈하는 폐는 아래로, 좋은 쪽 폐는 깨끗하게 유지되도록 환자를 닦고 있어요."]
+  blank: {answer: turning, options: [calling, turning, weighing, bathing]}
+"19.4":
+  expect: "I'm suctioning aggressively"
+  blank: {answer: blood, options: [oxygen, humidity, blood, warmth]}
+"19.5":
+  expect: "This is an emergent"
+  dk: ["이건 응급 기도 상황이라 지금 흡인을 계속하고 있어요.", "이건 응급 기도 상황이라 지금 기도 카트를 부르고 있어요."]
+"20.0":
+  expect: "We'll honor his wish"
+  blank: {answer: wish, options: [symptoms, wish, diagnosis, history]}
+"20.4":
+  expect: "This gentle oxygen"
+  en: "This gentle oxygen can ease his breathlessness without a breathing tube."
+  ko: "이 부드러운 산소가 호흡관 없이도 숨참을 완화해줄 수 있어요."
+  chunks: ["This gentle oxygen", "can ease", "his breathlessness", "without a breathing tube", "."]
+  why: "without a breathing tube는 '호흡관 없이도'라는 뜻이라 침습 처치 없이 쓸 수 있는 선택의 장점을 말해요."
+  dk: ["이 부드러운 산소가 약 없이도 숨참을 완화해줄 수 있어요.", "이 부드러운 산소가 호흡관 없이도 가려움을 완화해줄 수 있어요."]
+  blank: {answer: gentle, options: [harsh, gentle, sharp, rough]}
+"20.5":
+  expect: "We're giving medication"
+  en: "We're giving medication to keep him comfortable and breathing as easily as we can."
+  ko: "편안하게 지내시고 최대한 수월하게 숨 쉬시도록 약을 드리고 있어요."
+  chunks: ["We're giving medication", "to keep him comfortable", "and breathing", "as easily as we can", "."]
+  words: [w-medication, w-comfortable, w-breath]
+  why: "keep him comfortable and breathing as easily as we can는 약의 목적을 편안함과 수월한 숨쉬기로 말하고, 증상이 없어진다고 약속하지 않아요."
+  dk: ["편안하게 지내시고 최대한 수월하게 말하시도록 약을 드리고 있어요.", "편안하게 지내시고 최대한 수월하게 걸으시도록 약을 드리고 있어요."]
+  blank: {answer: comfortable, options: [anxious, comfortable, restless, upset]}
