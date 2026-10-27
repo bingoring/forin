@@ -29,7 +29,7 @@ fix-*.md는 열지 않았음. 단어 216개 전부·뉘앙스 42개 전부·chun
 
 ### A. 뉘앙스
 1. 체온·전해질 모니터 · pair · `send a`/`metabolic panel`이 `send a potassium`으로도 성립 · 왼쪽을 `comprehensive`로("comprehensive metabolic panel"; comprehensive temperature ✕, comprehensive potassium ✕, comprehensive the trend line ✕). why도 "send와 함께" 대신 "CMP(comprehensive metabolic panel)라 부른다"로.
-2. 재가온 단계 관리 · pair · `watch for hyperkalemia`가 성립 · 셋째 짝을 `half a degree`/`per hour`로, 둘째 왼쪽을 `cause rebound`로(`rebound slowly`도 동사+부사로 읽힘). 결과: [rewarm, slowly] [cause rebound, hyperkalemia] [half a degree, per hour], decoys [the cooling]. 전 결합 확인: rewarm hyperkalemia ✕ · rewarm per hour ✕ · cause rebound slowly ✕ · cause rebound per hour ✕ · half a degree slowly ✕ · half a degree hyperkalemia ✕ · ×the cooling 전부 ✕.
+2. 재가온 단계 관리 · pair · `watch for hyperkalemia`가 성립 · 셋째 짝을 `half a degree`/`per hour`로, 둘째 왼쪽을 `cause rebound`로(`rebound slowly`도 동사+부사로 읽힘). 결과: [rewarm, slowly] [cause rebound, hyperkalemia] [half a degree, per hour], decoys [the cooling]. why도 새 셋째 짝(시간당 반 도 정도의 느린 재가온)을 설명하도록 다시 씀. 전 결합 확인: rewarm hyperkalemia ✕ · rewarm per hour ✕ · cause rebound slowly ✕ · cause rebound per hour ✕ · half a degree slowly ✕ · half a degree hyperkalemia ✕ · ×the cooling 전부 ✕.
 3. 재가온 단계 관리 · pair why · "(AHA는 시간당 0.25~0.5도)" — AHA 2020은 "천천히 재가온·발열 예방"만 말하고 수치는 ERC/ESICM·병원 프로토콜 쪽. 확신 없는 귀속이니 "병원 프로토콜은 대개 시간당 0.25~0.5도"로.
 4. 냉각 중 부정맥 위기 · context(rhythm) fix · "fast and irregular" · "His heartbeat went into a fast, dangerous rhythm, so we're treating it right away."
 5. 냉각 중 부정맥 위기 · slider why · "깊은 저체온에서는" · "목표 하한(32도) 근처의 저체온에서도 서맥이 흔해요. 혈압이 떨어지거나 불안정하면…"
@@ -54,16 +54,16 @@ fix-*.md는 열지 않았음. 단어 216개 전부·뉘앙스 42개 전부·chun
 |---|---|---|---|
 | w-breathe | breathe(v) | breadth(n) | → breach |
 | w-adequate | adequate(adj) | advocate(n/v) | → delicate |
-| w-equal | equal(adj) | equip(v), equate(v) | → [even, unequal] |
+| w-equal | equal(adj) | equip(v), equate(v) | → [eager, unequal] |
 | w-document | document(v) | doctor(n) | → discount |
 | w-initial | initial(adj) | initiate(v) | → impartial |
-| w-activate | activate(v) | activity(n) | → actuate |
+| w-activate | activate(v) | activity(n) | → agitate |
 | w-continuous | continuous(adj) | continent(n) | → contentious |
 | w-maximal | maximal(adj) | maxima(n) | → marginal |
 | w-choose | choose(v) | loose(adj) | → chase |
-| w-drop | drop(v) | drug(n) | → dip |
-| w-transport | transport(n) | transfuse(v) | → transfer |
-| w-harm | harm(v) | farm(n), hard(adj) | → [hurt, charm] |
+| w-drop | drop(v) | drug(n) | → drill |
+| w-transport | transport(n) | transfuse(v) | → transcript |
+| w-harm | harm(v) | farm(n), hard(adj) | → [hark, charm] |
 | w-point | point(v) | pint(n) | → pinch |
 | w-poor | poor(adj) | pour(v), power(n) | → [pure, pale] |
 | w-wake | wake(v) | wage(n) | → wane |
@@ -75,7 +75,7 @@ fix-*.md는 열지 않았음. 단어 216개 전부·뉘앙스 42개 전부·chun
 | w-treat | treat(v) | threat(n) | → trace |
 | w-convert | convert(v) | convent(n) | → convict |
 | w-fight | fight(v) | flight(n), fright(n) | → [fetch, flinch] |
-| w-avoid | avoid(v) | devoid(adj) | → evade |
+| w-avoid | avoid(v) | devoid(adj) | → abide |
 | w-honor | honor(v) | horror(n), honey(n) | → [hone, harbor] |
 | w-trend | trend(n) | tread(v), tend(v) | → [trench, blend] |
 | w-arrest | arrest(n) | resist(v), wrest(v) | → [unrest, crest] |
@@ -84,15 +84,15 @@ fix-*.md는 열지 않았음. 단어 216개 전부·뉘앙스 42개 전부·chun
 | w-soon | soon(adv) | sun(n), soap(n) | → [seldom, sorely] |
 | w-dose | dose(n) | doze(v) | → dough |
 | w-pump | pump(n) | jump(v) | → pulp |
-| w-lower | lower(v) | power(n), tower(n) | → [lessen, loosen] |
-| w-gather | gather(v) | rather(adv), bather(n) | → [garner, lather] |
+| w-lower | lower(v) | power(n), tower(n) | → [loiter, loosen] |
+| w-gather | gather(v) | rather(adv), bather(n) | → [gauge, lather] |
 | w-follow | follow(v) | fellow(n), hollow(adj) | → [swallow, bellow] |
 | w-result | result(n) | reset(v), resolve(v) | → [receipt, insult] |
 | w-probe | probe(n) | prove(v), prone(adj) | → [prod, prong] |
 | w-cell | cell(n) | sell(v) | → sill |
 | w-serum | serum(n) | serene(adj), severe(adj) | → [sermon, syrup] |
-| w-shift | shift(n) | sift(v) | → drift |
-| w-rate | rate(n) | rare(adj) | → ratio |
+| w-shift | shift(n) | sift(v) | → thrift |
+| w-rate | rate(n) | rare(adj) | → rote |
 | w-team | team(n) | tame(adj/v) | → beam |
 | w-comfort | comfort(n) | comport(v) | → conflict |
 | w-meds | meds(n) | meets(v), mends(v) | → [beds, mats] |
@@ -106,7 +106,7 @@ fix-*.md는 열지 않았음. 단어 216개 전부·뉘앙스 42개 전부·chun
 | w-steady | steady(adj) | study(n/v) | → stealthy |
 | w-bedside | bedside(n) | besides(adv) | → bedsheet |
 | w-reposition | reposition(v) | repetition(n) | → repossess |
-(같은 품사 읽기가 있어 넘긴 것: label/table(v), care/cure, change/charge, drip/drop, secure/secret, shiver/shaver — shiver는 en이 동사·ko가 명사라 품사 기준이 갈림.)
+대체안은 동의어 시험(정답으로도 맞는가)·길이 규칙·은행 단어 중복까지 통과한 것. (같은 품사 읽기가 있어 넘긴 것: label/table(v), care/cure, change/charge, drip/drop, secure/secret, shiver/shaver — shiver는 en이 동사·ko가 명사라 품사 기준이 갈림.)
 
 ### D. cue·decoyChips·v45 필드
 19. w-pressure · cue "혈압의 뒤쪽 낱말"이 blood pressure를 통해 정답을 사실상 드러냄 · "혈관 벽을 누르는 힘, 커프로 재는 그 값"으로.
@@ -121,14 +121,14 @@ fix-*.md는 열지 않았음. 단어 216개 전부·뉘앙스 42개 전부·chun
 26. w-meds · ko "약들"이 어색 · ko "약(구어)" 또는 "투약 약(meds)".
 27. w-crash · ko "무너지다(크래시)"인데 문장은 타동("crashing his pressure") · ko "무너뜨리다(크래시)".
 28. w-tomorrow · 공통 쉬운 말 목록의 today·morning과 같은 급 · 태그 제거·은행 삭제(연명과 중단 윤리 갈등은 10→9로 V3 유지). w-team·w-brain도 간호사가 아는 말이라 같은 처리를 권하나 "확실한 것만" 기준에서는 tomorrow만 확실.
-29. 재관류 PCI 이송·조율 s3 ko "모든 수액이 펌프에…" · w-drip ko를 바꿨으니 문장 ko도 "모든 지속주입 약이 펌프에 걸려 있고 표시도 명확해요"로(비-keyPhrase, en·chunks 불변).
+29. 재관류 PCI 이송·조율 s3 ko "모든 수액이 펌프에…" · w-drip ko를 바꿨으니 문장 ko도 "모든 지속주입 약이 펌프에 걸려 있고 표시도 명확해요"로(비-keyPhrase, en·chunks 불변). **문장 ko를 바꾸면 그 문장의 distractorsKo 둘도 새 ko 틀에 맞춰 다시 쓸 것.**
 30. w-pressor/w-vasopressor 가름 · "승압제" vs "혈관수축성 승압제"는 뜻이 실제로 갈리지 않음(vasopressor가 곧 승압제) · 저우선. 듣기 문제에서 둘이 같이 나오지 않으면 실해 없음. 굳이 가르려면 pressor를 "승압제(구어 pressor)"로.
 - 저작자 변경 목록 중 과하거나 틀린 것: 없음(12개 제거 타당, 헤드워드 tight→tightly·neurological→neurologically 타당).
 
 ## keyPhrase 문장 — 사용자 결정 필요(en은 고칠 대상 아님)
 - 냉각 중 부정맥 위기 s0 "Deep hypothermia is causing bradycardia and now VT." — TTM 32~36도는 경도 저체온. "deep"은 사실과 어긋남.
 - 냉각 중 부정맥 위기 s2 "Cold hearts resist drugs, so temperature matters here." — 약물·제세동 저항은 주로 30도 미만에서 뚜렷. TTM 범위에서는 과장.
-- TTM 냉각 유도·유지 관리 s1 "Once there, we hold the temperature tightly stable." — 영어가 어색(hold it tightly controlled / keep it steady). 문장 ko "팽팽하게"도 뜻이 틀림(ko만이라도 "빈틈없이"로 바꿀지 결정).
+- TTM 냉각 유도·유지 관리 s1 "Once there, we hold the temperature tightly stable." — 영어가 어색(hold it tightly controlled / keep it steady). 문장 ko "팽팽하게"도 뜻이 틀림(ko만이라도 "빈틈없이"로 바꿀지 결정 — 바꾸면 그 문장 distractorsKo 둘도 새 ko에 맞춰 다시 씀).
 - chunks 구 경계(보고만): 12유도 s1 `Send troponin / and / a full…`, ROSC 후 환기 s1 `Keep his CO2 / in / the normal range`, TTM 냉각 유도 s2 `Avoid overshooting / below / the target range`, K 전해질 s1 `Rewarming can cause / rebound / hyperkalemia`, 재가온 단계 s2 `Controlled rewarming / protects his / recovery`, 체온·전해질 s2 `Watch for trends / , not just / single values`, 재가온 중 혈압 붕괴 s2 `Slow the rewarming rate / while we stabilize / him`.
 
 ## 두어도 됨(저작자 메모 항목에 대한 판단)
