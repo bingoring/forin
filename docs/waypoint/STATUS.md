@@ -8,7 +8,7 @@
 
 > 🔨 **ICU 한 번에 저작 묶음 3 — 4주제 합침(2026-10-27).** airway·delirium·infection-prevention·pain-nonverbal: 저작 A‖B → Opus 검토 A‖B(안전 179건) → Sonnet 수정 →
 > keyPhrase 원문 63/63 대조 → keyPhrase 결정 22건(사용자 '추천대로': 바꿈 18·유지 4) 반영 → 정본 합침, ICU 위반 0(새 주제 경고 0). V21 금칙어 확대·영어 오답까지 검사 → 정본 ER 21·ICU 3·OR 1건 정리.
-> 남은 ICU: post-arrest·sepsis·미착수 19 · OR 33. 기록 `server/content/tools/wip/icu-or-rest/README.md`.
+> **운영 반영 완료(2026-10-27, PR #27 staging seed → prod promote → prod seed).** 남은 ICU: post-arrest·sepsis·미착수 19 · OR 33. 기록 `server/content/tools/wip/icu-or-rest/README.md`.
 
 > ✅ **ICU keyPhrase 결정 대기 27건 처리(2026-10-26, 사용자 '추천대로').** 바꿈 21(보장·약속 완곡화, 업무범위 — RT에게 요청·처방 받기·PRN per order,
 > 사실 — PPV 높으면 반응·DOAC 처방대로·goals of care·pressure line 등), keyPhrase 아닌 2건 바로 고침, 그대로 4(why 보강 1). 딸린 order·뉘앙스·예문·v46 필드는 Opus가 함께 고침,
