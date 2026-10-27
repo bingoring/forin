@@ -30,7 +30,7 @@
   - kind: pair
     words: [w-page, w-document]
     pairs: [[page, the intensivist right now], [document, every dose change with the time], [prepare, a second bag before the first one runs out]]
-    decoys: [the unit's coffee machine]
+    decoys: [up the hallway]
     why: "도움을 청할 때는 page(호출), 승압제는 용량이 바뀔 때마다 시각과 함께 document(기록), 약이 끊기지 않게 다음 약은 미리 prepare(준비)해요."
   - kind: context
     words: [w-intensivist]
@@ -54,7 +54,7 @@
 "패혈증 유발 DIC·출혈 위기":
   - kind: slider
     words: [w-bleed]
-    cue: "Chart: \"Slow ooze at the line site, controlled with a few minutes of pressure.\""
+    cue: "Chart: \"A little blood keeps seeping around the line, and it stops with a few minutes of pressure.\""
     scale: [oozing, bleeding, hemorrhage]
     answerAt: 0
     why: "oozing은 천천히 배어 나오는 정도, bleeding은 뚜렷하게 피가 나는 정도, hemorrhage는 많은 양이 급히 나는 심한 출혈이에요. 눌러서 잡히는 가벼운 출혈은 oozing이에요."
@@ -114,17 +114,17 @@
     scale: [creep up, climb, spike]
     answerAt: 0
     why: "칼륨이 조금씩 오르는 건 creep up, 뚜렷하게 오르는 건 climb, 짧은 시간에 치솟는 건 spike예요. 칼륨은 오르는 속도와 높이 모두 심장 리듬에 영향을 주니 추세를 함께 보고하세요."
-    example: "His potassium is climbing, so we need the renal team now."
-    exKo: "칼륨이 오르고 있어서 지금 신장내과팀이 필요해요."
+    example: "His potassium is creeping up, so let's recheck it soon."
+    exKo: "칼륨이 조금씩 오르고 있으니 곧 다시 확인해 봅시다."
   - kind: context
     words: [w-potassium]
     word: potassium
     ko: 칼륨
     scenes:
       - {who: 동료에게, icon: monitor, en: "His potassium is climbing and the EKG is changing. Call renal now.", ok: true}
-      - {who: 환자에게, icon: me, en: "Serum potassium is critically hyperkalemic with peaked T waves.", ok: false, fix: "A mineral in your blood that affects your heart is too high, so we're treating it right away."}
+      - {who: 환자에게, icon: me, en: "Serum potassium is critically high with peaked T waves on the EKG.", ok: false, fix: "A mineral in your blood that affects your heart is too high, so we're treating it right away."}
       - {who: 보호자에게, icon: me, en: "His potassium, a mineral that affects his heart rhythm, is getting too high.", ok: true}
-    why: "팀끼리는 hyperkalemic, peaked T waves가 정확하고 짧아요. 환자에게는 칼륨이 무엇이고 왜 급한지를 심장과 연결해 쉬운 말로 설명해요."
+    why: "팀끼리는 peaked T waves, EKG 변화 같은 말이 정확하고 짧아요. 환자에게는 칼륨이 무엇이고 왜 급한지를 심장과 연결해 쉬운 말로 설명해요."
   - kind: swap
     words: [w-electrolyte]
     who: "가족에게 · 투석 이유"
@@ -142,8 +142,8 @@
     scale: [stay put, creep, spread]
     answerAt: 0
     why: "stay put은 번지지 않고 그대로, creep은 천천히 번짐, spread는 눈에 띄게 퍼지는 것이에요. 괴사성 연조직 감염은 spread가 빠른 게 문제라, 펜으로 경계를 표시해 두고 변화를 봐요."
-    example: "The redness is spreading beyond the pen line."
-    exKo: "붉은 부위가 펜으로 그은 선을 넘어 퍼지고 있어요."
+    example: "The redness has stayed put since this morning."
+    exKo: "붉은 부위는 아침부터 그대로예요."
   - kind: context
     words: [w-source]
     word: source

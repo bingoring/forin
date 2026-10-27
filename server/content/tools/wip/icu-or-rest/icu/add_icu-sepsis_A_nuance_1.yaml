@@ -30,7 +30,7 @@
   - kind: pair
     words: [w-draw]
     pairs: [[draw, blood from two different sites], [clean, the skin with chlorhexidine first], [tell, the patient why before you start]]
-    decoys: [the cart's wheels]
+    decoys: [into the hallway]
     why: "배양용 혈액은 서로 다른 두 부위에서 뽑고(draw), 피부는 클로르헥시딘 등으로 먼저 소독하며(clean), 환자에게는 시작 전에 이유를 설명해요(tell). 소독이 부실하면 피부 균이 섞여 결과가 흐려져요."
   - kind: context
     words: [w-antibiotic]
@@ -73,10 +73,10 @@
     words: [w-broad]
     who: "가족에게 · 항생제 설명"
     icon: me
-    before: ["We're giving a ", "broad-spectrum", " antibiotic to cover the likely infection."]
-    options: [wide-reaching, broad-spectrum, empiric]
-    answer: wide-reaching
-    notes: {wide-reaching: "여러 종류의 균에 듣는다는 뜻을 쉬운 말로 전한다.", broad-spectrum: "의료진끼리 쓰는 정확한 말. 가족에게는 'spectrum'이 낯설다.", empiric: "'원인균 확인 전에 쓰는'이라는 임상 용어. 가족에게는 추측으로 들려 불안하다."}
+    before: ["We're giving ", "a broad-spectrum antibiotic", " to cover the likely infection."]
+    options: [an antibiotic that covers many germs, a broad-spectrum antibiotic, an empiric antibiotic]
+    answer: an antibiotic that covers many germs
+    notes: {an antibiotic that covers many germs: "여러 종류의 균에 듣는다는 뜻을 쉬운 말로 전한다.", a broad-spectrum antibiotic: "의료진끼리 쓰는 정확한 말. 가족에게는 'spectrum'이 낯설다.", an empiric antibiotic: "'원인균 확인 전에 쓰는'이라는 임상 용어. 가족에게는 추측으로 들려 불안하다."}
     why: "같은 약이라도 가족에게는 쉬운 말로 풀고, 의료진끼리는 broad-spectrum·empiric 같은 정확한 용어를 써요."
     ko: "가능성 있는 감염을 덮으려고 여러 균에 듣는 항생제를 쓰고 있어요"
 "초기 수액 소생 협조":
@@ -142,8 +142,8 @@
     scale: [cold, cool, warm, hot]
     answerAt: 1
     why: "손발이 차고 창백하면 말초 관류가 떨어졌다는 신호예요. cold는 얼음장 같은 차가움, cool은 정상보다 서늘한 정도, warm은 따뜻해서 관류가 좋아졌다는 뜻이에요."
-    example: "His hands are warm and pink, which is a good sign."
-    exKo: "손이 따뜻하고 분홍빛이라 좋은 징후예요."
+    example: "His hands are cool and pale, so I'm worried about his circulation."
+    exKo: "손이 차고 창백해서 순환이 걱정돼요."
   - kind: context
     words: [w-reassess]
     word: reassess
@@ -177,7 +177,7 @@
     word: drip
     ko: 점적 주입
     scenes:
-      - {who: 의사에게 보고, icon: monitor, en: "Start the norepinephrine drip at a low rate and titrate to a MAP of 65.", ok: true}
+      - {who: 의사 처방, icon: monitor, en: "Start the norepinephrine drip at a low rate and titrate to a MAP of 65.", ok: true}
       - {who: 보호자에게, icon: me, en: "We're starting a norepinephrine drip, titrating to a MAP of 65.", ok: false, fix: "This medicine runs through his IV and helps keep his blood pressure up."}
       - {who: 보호자에게, icon: me, en: "This drip helps keep his blood pressure up while his body recovers.", ok: true}
     why: "팀끼리는 약 이름, 속도, 목표 혈압(MAP)까지 말하는 게 정확해요. 가족에게는 수치와 약어를 빼고 '이 약이 무엇을 해 주는지'를 말해 주세요."
