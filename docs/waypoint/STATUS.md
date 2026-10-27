@@ -8,7 +8,7 @@
 
 > ✅ **ICU keyPhrase 결정 대기 27건 처리(2026-10-26, 사용자 '추천대로').** 바꿈 21(보장·약속 완곡화, 업무범위 — RT에게 요청·처방 받기·PRN per order,
 > 사실 — PPV 높으면 반응·DOAC 처방대로·goals of care·pressure line 등), keyPhrase 아닌 2건 바로 고침, 그대로 4(why 보강 1). 딸린 order·뉘앙스·예문·v46 필드는 Opus가 함께 고침,
-> 정본 keyPhrases 21줄 교체 → 7주제 `--replace` → ICU 위반 0(경고 18은 파일럿 주제의 기존 W18·W21). 기록 `server/content/tools/wip/icu-or-rest/README.md` 끝.
+> 정본 keyPhrases 21줄 교체 → 7주제 `--replace` → ICU 위반 0(경고 18은 파일럿 주제의 기존 W18·W21). **PR #25·#26 운영 반영 완료(2026-10-27, staging seed → prod promote → prod seed).** 기록 `server/content/tools/wip/icu-or-rest/README.md` 끝.
 
 > 🔨 **ICU·OR 한 번에 저작 재개 — ICU 8주제 정본 합침(2026-10-25~26, 브랜치 `content/icu-or-onepass-rest`).** Workflow 없이 메인 세션이 같은 공정을
 > 서브에이전트로 돌린다(사용자: "조금씩 진행하고 보고"). 묶음 1(ards-proning·arrhythmia·cardiogenic) + 묶음 2(hemodynamics·mech-ventilation·resp-support·sedation·shock):
