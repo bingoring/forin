@@ -48,7 +48,8 @@ changes:
   id: w-medicine
   fields:
   - ko
-  why: 같은 ko(약)인 drug와 정답이 둘이 되지 않게 가른다 — 항응고제 문장의 약제
+  - example
+  why: 같은 ko(약)인 drug와 정답이 둘이 되지 않게 가른다 — 항응고제 문장의 약제 / 예문으로 쓰던 문장이 바뀌거나 쓰임이 맞지 않아 새 문장으로
 - kind: word-remove
   id: w-body
   why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(공통 쉬운 단어 목록)
@@ -102,12 +103,6 @@ changes:
 - kind: word-remove
   id: w-warm
   why: 너무 쉬움 — 간호사가 이미 아는 쉬운 형용사·대명사라 가르칠 값이 없다(목록 밖 판단분)
-- kind: word
-  id: w-realistic
-  fields:
-  - en
-  - ipa
-  why: 헤드워드를 문장 속 부사형으로(문장은 realistically)
 - kind: word-remove
   id: w-family
   why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(공통 쉬운 단어 목록)
@@ -134,7 +129,8 @@ changes:
   index: 4
   fields:
   - words
-  why: 쉬운 단어 태그 빼기
+  - chunks
+  why: 쉬운 단어 태그 빼기 / 구 경계에서 다시 쪼갬(검토 A)
 - kind: sentence
   situation: 신독성 약물 검토
   index: 3
@@ -182,7 +178,10 @@ changes:
   index: 3
   fields:
   - words
-  why: 쉬운 단어 태그 빼기
+  - en
+  - ko
+  - chunks
+  why: 쉬운 단어 태그 빼기 / 사실·안전·자연스러움 문제로 문장 수정(검토 A·B)
 - kind: sentence
   situation: 항응고 기초 감시
   index: 5
@@ -212,7 +211,8 @@ changes:
   index: 3
   fields:
   - words
-  why: 쉬운 단어 태그 빼기
+  - chunks
+  why: 쉬운 단어 태그 빼기 / 구 경계에서 다시 쪼갬(검토 A)
 - kind: sentence
   situation: 시간당 초여과량 적정
   index: 4
@@ -254,7 +254,8 @@ changes:
   index: 5
   fields:
   - words
-  why: 쉬운 단어 태그 빼기
+  - chunks
+  why: 쉬운 단어 태그 빼기 / 구 경계에서 다시 쪼갬(검토 A)
 - kind: sentence
   situation: 저혈압 동반 CRRT 관리
   index: 0
@@ -266,7 +267,8 @@ changes:
   index: 3
   fields:
   - words
-  why: 쉬운 단어 태그 빼기
+  - ko
+  why: 쉬운 단어 태그 빼기 / ko를 en에 맞게 고침(검토 A)
 - kind: sentence
   situation: 저혈압 동반 CRRT 관리
   index: 4
@@ -290,7 +292,8 @@ changes:
   index: 4
   fields:
   - words
-  why: 쉬운 단어 태그 빼기
+  - ko
+  why: 쉬운 단어 태그 빼기 / ko를 en에 맞게 고침(검토 A)
 - kind: sentence
   situation: 약물 투석 청소 고려
   index: 1
@@ -308,7 +311,8 @@ changes:
   index: 5
   fields:
   - words
-  why: 쉬운 단어 태그 빼기
+  - chunks
+  why: 쉬운 단어 태그 빼기 / 구 경계에서 다시 쪼갬(검토 A)
 - kind: sentence
   situation: CRRT 중 저체온·영양 손실 관리
   index: 3
@@ -362,7 +366,10 @@ changes:
   index: 5
   fields:
   - words
-  why: 쉬운 단어 태그 빼기
+  - en
+  - ko
+  - chunks
+  why: 쉬운 단어 태그 빼기 / 사실·안전·자연스러움 문제로 문장 수정(검토 A·B)
 - kind: sentence
   situation: 급성 폐부종 응급 초여과
   index: 4
@@ -386,7 +393,8 @@ changes:
   index: 4
   fields:
   - words
-  why: 쉬운 단어 태그 빼기
+  - ko
+  why: 쉬운 단어 태그 빼기 / ko를 en에 맞게 고침(검토 A)
 - kind: sentence
   situation: 신대체 지속 여부 목표 논의
   index: 0
@@ -399,3 +407,133 @@ changes:
   fields:
   - words
   why: 쉬운 단어 태그 빼기
+- kind: word
+  id: w-fluid
+  fields:
+  - ko
+  why: ko를 문장 속 뜻에 맞게(검토 A 결정 11)
+- kind: word
+  id: w-thinner
+  fields:
+  - en
+  - ipa
+  why: 헤드워드를 문장 속 제 모습으로(검토 A 결정 11); 헤드워드에 맞춤
+- kind: word
+  id: w-alarm
+  fields:
+  - example
+  why: 예문으로 쓰던 문장이 바뀌거나 쓰임이 맞지 않아 새 문장으로
+- kind: word
+  id: w-emergency
+  fields:
+  - example
+  why: 예문으로 쓰던 문장이 바뀌거나 쓰임이 맞지 않아 새 문장으로
+- kind: word
+  id: w-critical
+  fields:
+  - en
+  - ko
+  - ipa
+  - example
+  why: 헤드워드를 문장 속 제 모습으로(검토 A 결정 11); ko를 문장 속 뜻에 맞게(검토 A 결정 11); 헤드워드에 맞춤; 예문으로 쓰던 문장이 바뀌거나 쓰임이 맞지 않아 새 문장으로
+- kind: word
+  id: w-different
+  fields:
+  - en
+  - ko
+  - ipa
+  why: 헤드워드를 문장 속 제 모습으로(검토 A 결정 11); ko를 문장 속 뜻에 맞게(검토 A 결정 11); 헤드워드에 맞춤
+- kind: word
+  id: w-calorie
+  fields:
+  - example
+  why: 예문으로 쓰던 문장이 바뀌거나 쓰임이 맞지 않아 새 문장으로
+- kind: word
+  id: w-increase
+  fields:
+  - example
+  why: 예문으로 쓰던 문장이 바뀌거나 쓰임이 맞지 않아 새 문장으로
+- kind: word
+  id: w-pull
+  fields:
+  - ko
+  why: ko를 문장 속 뜻에 맞게(검토 A 결정 11)
+- kind: word
+  id: w-risk
+  fields:
+  - example
+  why: 예문으로 쓰던 문장이 바뀌거나 쓰임이 맞지 않아 새 문장으로
+- kind: word
+  id: w-apply
+  fields:
+  - ko
+  why: ko를 문장 속 뜻에 맞게(검토 A 결정 11)
+- kind: sentence
+  situation: 수분·전해질 균형 기록
+  index: 0
+  fields:
+  - ko
+  why: ko를 en에 맞게 고침(검토 A)
+- kind: sentence
+  situation: CRRT 개념·목적 이해
+  index: 1
+  fields:
+  - ko
+  why: ko를 en에 맞게 고침(검토 A)
+- kind: sentence
+  situation: CRRT 회로·접근 관찰
+  index: 0
+  fields:
+  - ko
+  why: ko를 en에 맞게 고침(검토 A)
+- kind: sentence
+  situation: CRRT 회로·접근 관찰
+  index: 3
+  fields:
+  - ko
+  why: ko를 en에 맞게 고침(검토 A)
+- kind: sentence
+  situation: CRRT 회로·접근 관찰
+  index: 4
+  fields:
+  - chunks
+  why: 구 경계에서 다시 쪼갬(검토 A)
+- kind: sentence
+  situation: 회로 응고·압력 경보 대응
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 사실·안전·자연스러움 문제로 문장 수정(검토 A·B)
+- kind: sentence
+  situation: CRRT 중 저체온·영양 손실 관리
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 사실·안전·자연스러움 문제로 문장 수정(검토 A·B)
+- kind: sentence
+  situation: 고칼륨혈증 응급 CRRT 연계
+  index: 4
+  fields:
+  - chunks
+  why: 구 경계에서 다시 쪼갬(검토 A)
+- kind: sentence
+  situation: 시트르산 축적 위기
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 사실·안전·자연스러움 문제로 문장 수정(검토 A·B)
+- kind: sentence
+  situation: 카테터 관련 대량출혈·감염 위기
+  index: 2
+  fields:
+  - words
+  why: 태그 정리

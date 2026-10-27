@@ -1,0 +1,326 @@
+# 문장 수정 — fix-icu-aki-crrt-A·B. 키 = "상황번호.문장번호"(0부터). expect = 현재 en의 앞부분.
+# dk = distractorsKo [X1, X2] (null이면 그대로)
+"0.5":
+  expect: "I'll report the trend"
+  blank: {answer: change, options: [change, visitor, menu, bill]}
+"1.0":
+  expect: "Daily weights show"
+  ko: 매일 체중을 재면 몸에 여분의 체액이 고여 있는지 알 수 있어요.
+  decoy: daily labs
+  dk: [매일 체중을 재면 몸에 여분의 열이 고여 있는지 알 수 있어요., 매일 혈압을 재면 몸에 여분의 체액이 고여 있는지 알 수 있어요.]
+"1.1":
+  expect: "We measure everything"
+  blank: {answer: balance, options: [balance, weigh, change, hide]}
+"1.2":
+  expect: "This helps us protect"
+  blank: {answer: protect, options: [protect, replace, scan, clean]}
+"1.4":
+  expect: "Even small amounts"
+  chunks: [Even, small amounts, add up, over a full day, .]
+  dk: [작은 물방울도 하루 종일 쌓이면 커져요., null]
+"2.1":
+  expect: "We're reviewing his list"
+  blank: {answer: doses, options: [doses, pillows, alerts, tests]}
+"2.2":
+  expect: "We'll avoid drugs"
+  dk: [손상을 더 나쁘게 만들 수 있는 음식은 피할 거예요., null]
+"2.5":
+  expect: "If a drug isn't safe"
+  decoy: for the family
+  blank: {answer: doctor, options: [doctor, visitor, manager, chaplain]}
+  dk: [지금 그 약이 안전하지 않으면 가족이 다른 것을 선택할 거예요., null]
+"3.1":
+  expect: "It's gentler on the blood pressure"
+  ko: 일반 투석보다 혈압에 부담이 덜해요.
+  dk: [일반 투석보다 호흡에 부담이 덜해요., 일반 투석보다 체온에 부담이 덜해요.]
+"3.2":
+  expect: "It removes extra fluid"
+  blank: {answer: waste, options: [waste, fat, gas, oil]}
+"3.5":
+  expect: "We can't promise"
+  blank: {answer: time, options: [time, oxygen, pain, water]}
+"4.0":
+  expect: "This large catheter"
+  ko: 이 큰 카테터가 혈액을 기계로 보냈다가 다시 몸으로 돌려보내요.
+  dk: [이 큰 카테터가 약물을 기계로 보냈다가 다시 몸으로 돌려보내요., 이 큰 카테터가 혈액을 침대로 보냈다가 다시 몸으로 돌려보내요.]
+"4.3":
+  expect: "There's one line"
+  ko: 한 라인은 혈액을 빼내고 다른 라인은 다시 돌려보내요.
+  dk: [한 라인은 혈액을 빼내고 다른 라인은 약물을 돌려보내요., 한 라인은 산소를 빼내고 다른 라인은 다시 돌려보내요.]
+"4.4":
+  expect: "The catheter site should stay"
+  chunks: [The catheter site, should stay, "clean, dry,", and free of redness, .]
+  dk: [null, 주사 부위는 깨끗하고 건조하며 발적 없이 유지돼야 해요.]
+"5.0":
+  expect: "We use a small amount"
+  dk: [필터가 굳지 않게 하는 항응고제를 보여 드릴게요., null]
+"5.1":
+  expect: "I watch closely"
+  dk: [null, 돌아가는 동안 출혈 징후가 있는지 자세히 적어 둬요.]
+"5.3":
+  expect: "This medicine works only"
+  en: We dose this medicine carefully so it protects the filter without thinning his blood too much.
+  ko: 이 약은 필터를 지키면서 피가 너무 묽어지지 않게 용량을 조심스럽게 맞춰요.
+  chunks: [We dose, this medicine carefully, so it protects, the filter, without thinning, his blood too much, .]
+  words: [w-dose, w-medicine, w-protect, w-filter, w-blood]
+  tag: 용량 조절
+  icon: pill
+  why: "'so it protects … without thinning'은 약을 쓰는 목적과 넘지 말아야 할 선을 한 문장에 담아요. 'carefully'가 용량을 조심스럽게 맞춘다는 점을 전해요."
+  decoy: for the lab
+  dk: [이 약은 튜브를 지키면서 피가 너무 묽어지지 않게 용량을 조심스럽게 맞춰요., 이 약은 필터를 지키면서 소변이 너무 묽어지지 않게 용량을 조심스럽게 맞춰요.]
+  blank: {answer: carefully, options: [carefully, quickly, randomly, freely]}
+"5.4":
+  expect: "I check his gums"
+  dk: ["잇몸, 소변, 대변에 피가 섞이면 의사에게 알려요.", "잇몸, 소변, 대변에 피가 섞였는지 차트에 적어요."]
+"5.5":
+  expect: "If I see more bleeding"
+  dk: [의사에게 알린 뒤에는 출혈 양을 계속 지켜봐요., 평소 출혈 양은 근무 시작 때 먼저 봐 둬요.]
+"6.0":
+  expect: "Let's review the blood flow"
+  dk: [혈류 속도와 투석액 설정값을 화면에 띄워봅시다., 혈류 속도와 투석액 설정값을 인계 때 넘깁시다.]
+"6.2":
+  expect: "I'll confirm the prescription"
+  dk: [처방이 현재 오더와 일치하면 시작할게요., 처방과 비교하려고 오더 화면을 열게요.]
+"6.3":
+  expect: "Blood flow is 150"
+  why: "'is running at'은 지금 돌고 있는 실제 값이라는 표현이에요."
+  dk: ["혈류는 150이고, 투석액은 시간당 2리터로 도는지 화면을 읽을게요.", null]
+"6.4":
+  expect: "Net removal is 100"
+  blank: {answer: now, options: [now, lunch, sure, later]}
+  dk: [지금은 순 제거량이 시간당 100밀리리터인지 읽어요., null]
+"6.5":
+  expect: "I'll page the team"
+  why: "'if'로 조건을 걸어 필요할 때만 부른다는 기준이 돼요. 'page'는 병원에서 호출기나 메시지로 의료진을 부르는 말이에요."
+  dk: [설정을 바꿔야 하는지 오더부터 확인할게요., 설정을 바꾸게 되면 바뀐 값을 기록할게요.]
+"7.3":
+  expect: "Small, slow changes"
+  chunks: ["Small, slow", "changes", "are safer", "than big, fast ones", "."]
+"7.5":
+  expect: "If it drops further"
+  dk: [더 떨어지는지 보려고 혈압을 자주 잴 거예요., 멈춘 뒤에는 혈압이 오르는지 지켜볼 거예요.]
+"8.0":
+  expect: "We monitor the systemic"
+  why: "'systemic and circuit'을 짝지어 말하면 몸 전체와 회로 두 곳을 함께 본다는 뜻이 돼요. 'closely'는 자주 본다는 뉘앙스예요."
+  dk: [전신·회로 칼슘 비율을 매번 그래프로 그려요., 전신·회로 칼슘 비율을 인계 때 꼭 말해요.]
+"8.1":
+  expect: "Watch for signs of citrate"
+  why: "'Watch for signs of'는 확정이 아니라 징후를 찾으라는 지시 표현이에요. 시트르산이 쌓이면 산염기 상태와 칼슘 비율에 변화가 함께 나타나요."
+  dk: [산염기 결과지에 시트르산 축적 징후를 표시해 두세요., 시트르산 축적 징후를 보려면 산염기 검사를 먼저 보내요.]
+"8.2":
+  expect: "Let's adjust the calcium"
+  blank: {answer: adjust, options: [adjust, chart, count, store]}
+"8.3":
+  expect: "A rising ratio"
+  blank: {answer: building, options: [building, burning, drying, lighting]}
+"8.5":
+  expect: "I'll recheck the ratio"
+  decoy: for the family
+  blank: {answer: dose, options: [dose, order, vial, bed]}
+  dk: [null, 용량을 조정한 뒤 바뀐 값을 차트에 적을게요.]
+"9.2":
+  expect: "I'll recheck the levels"
+  decoy: for the chart
+  blank: {answer: levels, options: [levels, tubes, vials, meals]}
+  dk: [조정한 뒤 수치를 차트에 적을게요., 조정한 뒤 수치를 교대 때 넘길게요.]
+"9.3":
+  expect: "Low potassium can cause"
+  why: "'can cause'는 가능성이라 반드시 생긴다는 뜻은 아니에요. 'dangerous'를 붙여 저칼륨이 부정맥으로 이어질 수 있다는 무게를 동료에게 전해요."
+"9.4":
+  expect: "We give small doses"
+  dk: [정맥으로 주기 전에 펌프 속도부터 맞춰요., null]
+"9.5":
+  expect: "I'll flag any level"
+  blank: {answer: flag, options: [flag, copy, weigh, bill]}
+"10.1":
+  expect: "Let's check the access"
+  blank: {answer: check, options: [check, wrap, count, weigh]}
+  dk: [접근·귀환·필터 압력을 사진으로 남깁시다., 필터 압력을 재기 전에 손부터 씻읍시다.]
+"10.2":
+  expect: "We'll flush or plan"
+  dk: [중단 시간을 최소화하려고 세척하거나 회로 교체를 팀에 알릴 거예요., null]
+"10.3":
+  expect: "Most alarms mean pressure"
+  en: Most alarms are pressure alarms, but an air or blood leak alarm is an emergency.
+  ko: 알람은 대부분 압력 알람이지만, 공기나 혈액 누출 알람은 응급이에요.
+  chunks: [Most alarms, "are pressure alarms,", but an air or blood leak alarm, is an emergency, .]
+  words: [w-alarm, w-pressure, w-emergency, w-blood]
+  tag: 경보 이해
+  icon: bell
+  why: "'Most … but'은 흔한 경우를 말한 뒤 예외를 바로 붙여 균형을 잡아요. 어느 경보든 바로 확인해야 하고, 공기·혈액 누출은 곧 응급이라는 뜻이에요."
+  decoy: at night
+  dk: ["알람은 대부분 온도 알람이지만, 공기나 혈액 누출 알람은 응급이에요.", "알람은 대부분 압력 알람이지만, 소변이나 혈액 누출 알람은 응급이에요."]
+  blank: {answer: pressure, options: [pressure, power, battery, volume]}
+"10.4":
+  expect: "I'll trace the lines"
+  dk: [환자부터 기계까지 라인을 따라간 뒤 정리할게요., 라인을 따라가려고 장갑부터 낄게요.]
+"10.5":
+  expect: "If flushing doesn't help"
+  chunks: ["If flushing", "doesn't help,", "we prepare", "a new circuit", "."]
+  dk: [null, 세척해도 소용없으면 팀과 먼저 상의해요.]
+"11.0":
+  expect: "His pressure is fragile"
+  decoy: for his comfort
+  dk: [null, 체온이 낮아서 지금은 체액 제거를 최소화할 거예요.]
+"11.2":
+  expect: "We may pause net removal"
+  dk: [혈압이 더 떨어지는지 자주 잴 수도 있어요., 순 제거를 멈춘 뒤에는 혈압을 다시 볼 수도 있어요.]
+"11.3":
+  expect: "Even a small volume shift"
+  ko: 지금은 적은 체액량 변화도 혈압을 떨어뜨릴 수 있어요.
+  dk: [지금은 적은 체액량 변화도 산소를 떨어뜨릴 수 있어요., 지금은 적은 체액량 변화도 혈당을 떨어뜨릴 수 있어요.]
+"11.4":
+  expect: "We'll go slowly"
+  blank: {answer: slowly, options: [slowly, quietly, home, upstairs]}
+  dk: [null, 천천히 진행해야 작은 변화마다 혈압이 버틸 수 있어요.]
+"11.5":
+  expect: "If he stays stable"
+  blank: {answer: resume, options: [resume, reduce, restrict, reverse]}
+  dk: [안정을 유지하면 나중에 체중이 줄기 시작할 수 있어요., 안정을 유지하는지 한 시간 더 지켜볼 거예요.]
+"12.1":
+  expect: "Regular dialysis is faster"
+  blank: {answer: faster, options: [faster, smaller, quieter, older]}
+"12.3":
+  expect: "Both do the same basic job"
+  dk: [둘 다 혈액을 깨끗이 하고 체액을 재는 같은 기본 역할을 해요., null]
+"12.4":
+  expect: "Continuous treatment is easier"
+  ko: 지속 치료가 불안정한 심장에 부담이 덜해요.
+  dk: [지속 치료가 불안정한 폐에 부담이 덜해요., 지속 치료가 불안정한 신장에 부담이 덜해요.]
+"13.1":
+  expect: "Let's confirm the renal dosing"
+  dk: [지속 투석 중인 환자의 신장 용량을 인계 메모에 넣읍시다., 지속 투석 중인 환자의 신장 용량 표를 가져옵시다.]
+"13.2":
+  expect: "We'll adjust timing"
+  dk: [null, 수치가 효과적으로 유지되는지 혈중 농도로 볼 거예요.]
+"13.3":
+  expect: "Some antibiotics wash out"
+  blank: {answer: antibiotics, options: [antibiotics, inhalers, vaccines, eye drops]}
+  dk: [일부 항생제는 CRRT에서 빨리 빠져나가서 혈중 농도를 재요., 일부 항생제는 CRRT에서 빨리 빠져나가서 약국과 상의해요.]
+"13.4":
+  expect: "I'll check with pharmacy"
+  blank: {answer: pharmacy, options: [pharmacy, security, housekeeping, radiology]}
+  dk: [다음 용량은 약국과 확인한 시간에 줄게요., 다음 용량 전에 약국 번호를 찾아 둘게요.]
+"13.5":
+  expect: "We time doses"
+  chunks: ["We time", "doses", "around the CRRT schedule,", "not the clock alone", "."]
+  dk: [시계만이 아니라 CRRT 일정도 화이트보드에 함께 써 둬요., CRRT 일정이 바뀌면 시계와 상관없이 용량 시점도 다시 맞춰요.]
+"14.2":
+  expect: "We watch his temperature"
+  dk: [null, 치료 중에는 체온과 영양을 가족과도 이야기해요.]
+"14.4":
+  expect: "We increase his calories"
+  en: The dietitian adjusts his calories and protein to make up for what CRRT takes out.
+  ko: 영양사가 CRRT가 빼내는 만큼 칼로리와 단백질을 조정해요.
+  chunks: [The dietitian adjusts, his calories and protein, to make up, for what CRRT takes out, .]
+  words: [w-adjust, w-calorie, w-make, w-crrt, w-take]
+  dk: [영양사가 수술이 빼내는 만큼 칼로리와 단백질을 조정해요., 영양사가 CRRT가 빼내는 만큼 칼로리와 운동을 조정해요.]
+  blank: {answer: calories, options: [calories, visitors, curtains, slippers]}
+  why: "'make up for'는 빠져나간 만큼 채워 넣는다는 뜻의 구동사예요. 'what CRRT takes out'은 손실을 쉬운 말로 풀고, 'The dietitian'은 조정하는 사람을 분명히 해요."
+"15.0":
+  expect: "His potassium is critically high"
+  dk: [칼륨 수치가 위험할 정도로 높아서 심전도를 찍었어요., 심전도 변화가 있어서 칼륨 수치를 다시 보냈어요.]
+"15.2":
+  expect: "I'll coordinate emergent"
+  blank: {answer: potassium, options: [potassium, phosphate, glucose, sodium]}
+  why: "'coordinate'는 직접 하기보다 여러 팀을 맞춘다는 뜻이에요. 'emergent'는 지금 바로 해야 하는 응급이라는 임상 표현이에요."
+"15.4":
+  expect: "I'll pull the crash cart"
+  chunks: [I'll pull, the crash cart, while, we set up, .]
+  dk: [준비하는 동안 응급 카트의 제세동기를 켤게요., 응급 카트를 가져온 뒤 패드를 붙일게요.]
+"15.5":
+  expect: "Once potassium drops"
+  blank: {answer: recheck, options: [recheck, fold, file, copy]}
+"16.0":
+  expect: "The circuit clotted"
+  dk: [null, 회로가 응고돼서 새 회로를 가져왔어요.]
+"16.1":
+  expect: "Let's assess his hemoglobin"
+  dk: [혈색소를 평가해야 수혈이 필요한지 알 수 있어요., 새 회로를 빨리 준비해야 중단 시간이 줄어요.]
+"16.3":
+  expect: "This is a real blood loss"
+  blank: {answer: real, options: [real, rare, planned, cheap]}
+"16.4":
+  expect: "I'll send a stat"
+  dk: [null, 즉시 혈색소를 보내야 수혈 필요 여부를 알 수 있어요.]
+"16.5":
+  expect: "We prime the new circuit"
+  dk: [재시작 전에 새 회로를 충전한 시각을 차트에 남겨요., 재시작 전에 새 회로를 충전하려고 식염수 백을 걸어요.]
+"17.1":
+  expect: "He's developing metabolic alkalosis"
+  dk: [심한 빈혈과 낮은 이온화 칼슘이 진행되고 있어요., null]
+  blank: {answer: calcium, options: [calcium, potassium, magnesium, phosphate]}
+"17.2":
+  expect: "Let's reduce citrate"
+  blank: {answer: reduce, options: [reduce, pack, report, relay]}
+  dk: [지금 시트르산을 줄여야 총-이온화 칼슘 비율이 내려가요., 지금 프로토콜대로 칼슘을 주면 이온화 칼슘이 올라가요.]
+"17.3":
+  expect: "This isn't the same as his kidney"
+  en: This comes from citrate building up, not from his kidneys getting worse.
+  ko: 이건 시트르산이 쌓여서 생긴 것이지, 신장이 나빠져서가 아니에요.
+  chunks: [This comes, "from citrate building up,", not from his kidneys, getting worse, .]
+  words: [w-citrate, w-build, w-kidney, w-worse]
+  tag: 구분 설명
+  icon: compass
+  why: "'not from'은 헷갈리기 쉬운 두 원인을 갈라 줘요. 'This comes from'이 원인을 먼저 짚어서 가족이 신장이 나빠진 것으로 오해하지 않아요."
+  decoy: as before
+  dk: ["이건 시트르산이 쌓여서 생긴 것이지, 폐가 나빠져서가 아니에요.", "이건 칼륨이 쌓여서 생긴 것이지, 신장이 나빠져서가 아니에요."]
+  blank: {answer: worse, options: [worse, older, taller, smaller]}
+"17.5":
+  expect: "Once the ratio comes down"
+  en: Once the ratio comes down, the risk from low calcium drops too.
+  ko: 비율이 내려가면 저칼슘으로 인한 위험도 함께 줄어요.
+  chunks: [Once the ratio, "comes down,", the risk from low calcium, drops too, .]
+  words: [w-ratio, w-risk, w-low, w-calcium, w-drop]
+  tag: 위험 감소
+  icon: chartup
+  why: "'Once'는 조건이 이루어진 뒤의 변화를 말해요. 'risk from'은 위험의 원인을 짚어 주고, 'too'는 비율과 위험이 함께 움직인다는 뜻이에요."
+  decoy: as it stays
+  dk: [비율이 내려가면 감염으로 인한 위험도 함께 줄어요., 비율이 내려가면 출혈로 인한 위험도 함께 줄어요.]
+  blank: {answer: risk, options: [risk, pain, noise, cost]}
+"18.0":
+  expect: "He's in fluid overload"
+  dk: [그는 과부하로 폐부종이 와서 산소를 올렸어요., 그는 용량 과부하라서 흉부 사진을 찍었어요.]
+"18.2":
+  expect: "Let's increase net ultrafiltration"
+  blank: {answer: watching, options: [watching, guessing, counting, timing]}
+  dk: [null, 혈압이 버티면 순 초여과량을 더 늘립시다.]
+"18.4":
+  expect: "I'll sit him upright"
+  blank: {answer: sit, options: [sit, carry, turn, dress]}
+  dk: [지금은 그를 세워 앉혀야 숨쉬기가 편해요., 지금은 산소를 늘려야 산소포화도가 올라가요.]
+"18.5":
+  expect: "As we pull fluid off"
+  blank: {answer: easier, options: [easier, louder, colder, shorter]}
+"19.0":
+  expect: "The dialysis catheter site is bleeding"
+  decoy: is clotting
+  dk: [투석 카테터 부위에서 출혈이 심해서 눌렀어요., 카테터 부위 출혈이 심해서 거즈가 필요해요.]
+"19.1":
+  expect: "Let's apply firm pressure"
+  icon: bandage
+  dk: [단단히 압박하려고 장갑부터 끼고 시작합시다., 단단히 압박해야 카테터 부위 출혈이 멎어요.]
+"19.2":
+  expect: "We may need to hold CRRT"
+  words_remove: [w-hold]
+  dk: [CRRT를 중단하기 전에 혈액을 돌려줄지 의사와 정해야 할 수도 있어요., CRRT를 중단하면 회로 혈액을 먼저 돌려줘야 할 수도 있어요.]
+"19.3":
+  expect: "I'm holding pressure now"
+  dk: [압박을 유지하는 동안 출혈 시작 시각을 알려 주세요., 도움이 오면 압박을 넘겨 드리고 출혈량을 적을게요.]
+"19.4":
+  expect: "The site looks red and warm"
+  ko: 부위가 붉고 따뜻해 보이는데, 감염일 수 있어요.
+  dk: ["부위가 붉고 차갑게 보이는데, 감염일 수 있어요.", "부위가 붉고 따뜻해 보이는데, 탈수일 수 있어요."]
+"19.5":
+  expect: "Once bleeding stops"
+  dk: [출혈이 멎으면 재시작 전에 드레싱을 새로 붙여요., 출혈이 멎어도 재시작은 의사와 정해요.]
+"20.0":
+  expect: "We understand how hard"
+  blank: {answer: machine, options: [machine, bed, scale, phone]}
+"20.1":
+  expect: "The team can share"
+  blank: {answer: recovery, options: [recovery, surgery, visiting, discharge]}
+"20.2":
+  expect: "Let's talk about what he would want"
+  decoy: by tonight
+  dk: [그가 무엇을 원할지 이야기하고 함께 메모를 남깁시다., null]
