@@ -815,3 +815,90 @@ changes:
   fields:
   - chunks
   why: 끊긴 chunks(in order / of danger)를 구 단위로
+- kind: sentence
+  situation: 전해질 패널 추세 사정
+  index: 0
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-10-27 사용자 결정): how his body is balancing(무엇의 균형인지 없는 자동사) → how well his body is keeping them balanced; +w-keep'
+- kind: word
+  id: w-check
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-27 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-electrolyte
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-27 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-balance
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-27 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word-remove
+  id: w-ensure
+  why: 'keyPhrase 교체(2026-10-27 사용자 결정): 바꾼 문장에 ensure가 없어 어느 문장도 태그하지 않게 됐다'
+- kind: sentence
+  situation: 종양용해증후군 대사 관리
+  index: 1
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-10-27 사용자 결정): ensure aggressive fluids(잘 안 쓰는 결합) → start aggressive fluids; −w-ensure(은행에서 지움) +w-start'
+- kind: word
+  id: w-aggressive
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-27 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-fluid
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-27 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word-remove
+  id: w-activate
+  why: 'keyPhrase 교체(2026-10-27 사용자 결정): 바꾼 문장에 activate가 없어 어느 문장도 태그하지 않게 됐다'
+- kind: sentence
+  situation: 생명위협 고칼륨혈증 위기
+  index: 2
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-10-27 사용자 결정): activate emergent dialysis(activate는 팀·코드에 씀) → call for emergent dialysis; −w-activate(은행에서 지움) +w-call'
+- kind: word
+  id: w-emergent
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-27 사용자 결정): 예문을 바꾼 문장으로'
+- kind: sentence
+  situation: 정맥 보충 안전 투여
+  index: 0
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-27 사용자 결정): keyPhrase 전치사 at을 목적어와 떼어 놓은 chunks(and at / a safe concentration)를 구 단위로'
+- kind: sentence
+  situation: 교정 중 재검·모니터
+  index: 1
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-27 사용자 결정): keyPhrase over-를 혼자 떼어 놓은 chunks(avoid over- / or under-correcting)를 구 단위로'
+- kind: sentence
+  situation: 급격 저나트륨 경련 위기
+  index: 0
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-27 사용자 결정): keyPhrase 수식어 둘을 갈라 놓은 chunks(from acute / severe hyponatremia)를 구 단위로'
+- kind: sentence
+  situation: 저칼슘 후두경련·발작 위기
+  index: 2
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-27 사용자 결정): keyPhrase 형용사-명사를 끊은 chunks(the ionized / calcium)를 구 단위로'
