@@ -1,0 +1,196 @@
+"젖산 클리어런스 재평가":
+  - kind: slider
+    words: [w-strong, w-response]
+    cue: "Lab: \"Lactate 4.0 at the start, 3.8 after two hours of fluids and pressors.\""
+    scale: [slight response, partial response, strong response]
+    answerAt: 0
+    why: "젖산이 4.0에서 3.8로 거의 내려가지 않았다면 치료에 대한 반응이 미미한 거예요. 6에서 2로 크게 떨어지는 것이 strong response예요. 반응이 약하면 팀이 계획을 다시 살펴야 해요."
+    example: "A strong response means his lactate is dropping with treatment."
+    exKo: "강한 반응이란 치료에 따라 젖산이 떨어지고 있다는 뜻이에요."
+  - kind: context
+    words: [w-improve]
+    word: improve
+    ko: 개선하다
+    scenes:
+      - {who: 동료에게, icon: monitor, en: "If perfusion starts to improve, his lactate should come down. Recheck in two hours.", ok: true}
+      - {who: 보호자에게, icon: me, en: "Lactate clearance didn't improve at the two-hour mark.", ok: false, fix: "His blood test hasn't gotten better yet, so we're adjusting his treatment."}
+      - {who: 보호자에게, icon: me, en: "His numbers are starting to improve, which tells us the treatment is working.", ok: true}
+    why: "팀끼리는 clearance처럼 압축된 말이 빠르고 정확해요. 가족에게는 수치가 좋아졌는지, 그래서 무엇을 하는지를 쉬운 말로 이어서 말해 주세요."
+  - kind: swap
+    words: [w-resuscitation]
+    who: "가족에게 · 재검사 이유"
+    icon: me
+    before: ["We recheck it to make sure the ", "resuscitation", " is working."]
+    options: [treatment, resuscitation, resus]
+    answer: treatment
+    notes: {treatment: "가족이 바로 이해하는 말. 지금 하는 치료가 듣는지 확인한다는 뜻이 전해진다.", resuscitation: "의료진에게는 소생 처치 전반이지만, 가족은 심폐소생술(CPR)로 듣고 크게 놀랄 수 있다.", resus: "팀끼리 쓰는 줄임말. 가족 앞에서 말하면 알아듣지 못한다."}
+    why: "resuscitation은 일반인에게 CPR을 떠올리게 해요. 가족에게는 '치료'처럼 정확하고 덜 놀라운 말을 고르세요."
+    ko: "치료가 효과가 있는지 확인하려고 다시 검사해요"
+"감염원 제거 조율":
+  - kind: slider
+    words: [w-faster]
+    cue: "Family: \"Will he get better as soon as the drain goes in?\""
+    scale: [slightly, noticeably, instantly]
+    answerAt: 1
+    why: "고인 감염 액체를 빼내면 감염이 훨씬 빨리 좋아지는 경우가 많지만, 즉시 호전된다고 약속할 수는 없어요. '눈에 띄게(noticeably)'가 정직하면서 희망도 주는 말이에요."
+    example: "After the drain is placed, he often gets noticeably better."
+    exKo: "배액관을 넣고 나면 눈에 띄게 좋아지는 경우가 많아요."
+  - kind: context
+    words: [w-coordinate]
+    word: coordinate
+    ko: 조율하다
+    scenes:
+      - {who: 동료에게, icon: monitor, en: "I'll coordinate with IR so the drain gets placed as soon as possible.", ok: true}
+      - {who: 보호자에게, icon: me, en: "I'll coordinate across disciplines to facilitate source control per protocol.", ok: false, fix: "I'll talk with the procedure team and let you know what time it will be."}
+      - {who: 보호자에게, icon: me, en: "I'll coordinate with the procedure team and keep you updated.", ok: true}
+    why: "팀끼리는 coordinate와 약어(IR)가 효율적이에요. 가족에게는 disciplines, source control 같은 말을 빼고 누구와 무엇을 하는지, 언제 알려 줄지를 말해 주세요."
+  - kind: swap
+    words: [w-infected]
+    who: "가족에게 · 배액 설명"
+    icon: me
+    before: ["The team is planning to remove the ", "purulent collection", " to help him recover."]
+    options: [infected fluid, purulent collection, loculated collection]
+    answer: infected fluid
+    notes: {infected fluid: "가족이 바로 이해하는 말. 왜 배액이 회복에 도움이 되는지 이어진다.", purulent collection: "고름이 고인 곳을 가리키는 영상·외과 용어. 가족에게는 낯설다.", loculated collection: "칸막이로 나뉜 고임을 가리키는 영상 판독 용어. 병상 설명에는 맞지 않는다."}
+    why: "배액 대상도 가족에게는 '감염된 액체'처럼 눈에 그려지는 말로 설명해요."
+    ko: "회복을 돕기 위해 감염된 액체를 빼낼 계획이에요"
+"항생제 스튜어드십·조정":
+  - kind: slider
+    words: [w-resistant]
+    cue: "Lab report: \"Resistant to every antibiotic tested.\""
+    scale: [sensitive, resistant, pan-resistant]
+    answerAt: 2
+    why: "sensitive는 약에 듣는 균, resistant는 어떤 약에 듣지 않는 균이에요. 검사한 약 전부에 듣지 않으면 pan-resistant라고 해요. 한국어 '내성'으로는 이 단계가 잘 안 구분돼요."
+    example: "The culture showed a resistant bacteria, so we changed the antibiotic."
+    exKo: "배양에서 내성균이 나와서 항생제를 바꿨어요."
+  - kind: context
+    words: [w-narrow]
+    word: narrow
+    ko: 좁히다
+    scenes:
+      - {who: 약사에게, icon: monitor, en: "We can narrow the antibiotic now that the cultures are back.", ok: true}
+      - {who: 보호자에게, icon: me, en: "We're de-escalating to narrow-spectrum coverage per the sensitivities.", ok: false, fix: "Now that we know the germ, we can switch to a medicine aimed right at it."}
+      - {who: 보호자에게, icon: me, en: "We're narrowing his antibiotic to one that targets the exact germ.", ok: true}
+    why: "팀끼리는 narrow-spectrum, sensitivities가 정확하고 빨라요. 가족에게는 '균을 알았으니 그 균에 맞는 약으로 바꾼다'처럼 이유를 중심으로 말해 주세요."
+  - kind: swap
+    words: [w-resistance]
+    who: "가족에게 · 내성 설명"
+    icon: me
+    before: ["Using a more targeted drug lowers the chance of ", "MDRO emergence", " later."]
+    options: [germs that stop responding, MDRO emergence, resistance selection]
+    answer: germs that stop responding
+    notes: {germs that stop responding: "약이 듣지 않는 균이 생긴다는 뜻을 가족이 바로 이해한다.", MDRO emergence: "다제내성균 출현을 뜻하는 감염관리 약어. 가족에게는 무슨 말인지 알 수 없다.", resistance selection: "내성이 선택되는 과정을 말하는 전문 용어. 병상 설명에는 낯설다."}
+    why: "내성은 일반인에게 어려운 개념이라 '약이 듣지 않는 균'이라는 결과로 풀어 말해요."
+    ko: "더 표적화된 약을 쓰면 나중에 약이 듣지 않는 균이 생길 가능성이 줄어요"
+"스테로이드 보조 판단":
+  - kind: slider
+    words: [w-consider]
+    cue: "Doctor: \"If the pressure keeps needing support, we may add low-dose steroids.\""
+    scale: [dismiss, consider, administer]
+    answerAt: 1
+    why: "consider는 아직 확정하지 않고 상황을 보며 검토하는 단계예요. dismiss는 아예 접는 것, administer는 이미 주는 것이에요. 스테로이드는 승압제 용량이 계속 높을 때 고려해요."
+    example: "We're considering low-dose steroids to help stabilize him."
+    exKo: "그분을 안정시키는 데 도움이 되도록 저용량 스테로이드를 고려하고 있어요."
+  - kind: context
+    words: [w-monitor]
+    word: monitor
+    ko: 감시하다
+    scenes:
+      - {who: 동료에게, icon: monitor, en: "Monitor his glucose and pressure closely after the first dose.", ok: true}
+      - {who: 보호자에게, icon: me, en: "Continuous hemodynamic monitoring will be maintained throughout administration.", ok: false, fix: "We'll keep a close eye on his blood pressure and heart rate the whole time."}
+      - {who: 보호자에게, icon: me, en: "We'll monitor him closely while he's on it.", ok: true}
+    why: "스테로이드는 혈당을 올릴 수 있어 팀끼리는 혈당과 혈압을 같이 감시해요. 가족에게는 hemodynamic 같은 말 대신 무엇을 지켜보는지를 쉬운 말로 말해 주세요."
+  - kind: swap
+    words: [w-vasopressor]
+    who: "가족에게 · 승압제 용량 설명"
+    icon: me
+    before: ["His blood pressure still needs ", "high-dose vasopressors", " even after the fluids."]
+    options: [strong medicine to hold it up, high-dose vasopressors, maxed-out pressors]
+    answer: strong medicine to hold it up
+    notes: {strong medicine to hold it up: "약이 무엇을 하는지 쉬운 말로 전한다.", high-dose vasopressors: "정확한 용어라 팀끼리는 좋지만 가족에게는 낯설다.", maxed-out pressors: "'더 쓸 수 있는 약이 없다'로 들려 가족을 불필요하게 절망시킬 수 있다."}
+    why: "가족에게는 약 이름보다 '그 약이 무엇을 하는지'가 중요하고, 아직 가능한 치료를 암시하는 말은 조심해서 써야 해요."
+    ko: "수액을 줬는데도 혈압을 받치려면 강한 약이 필요해요"
+"장기부전 진행 모니터":
+  - kind: slider
+    words: [w-rise]
+    cue: "Chart: \"Bilirubin 1.0, then 1.1, then 1.2 over two days.\""
+    scale: [creep up, climb, spike]
+    answerAt: 0
+    why: "조금씩 오르는 건 creep up, 뚜렷하게 오르는 건 climb, 급격히 치솟는 건 spike예요. 장기 수치는 방향과 속도를 함께 말해야 팀이 얼마나 서둘러야 할지 알아요."
+    example: "Let's flag the rising creatinine to the team."
+    exKo: "오르는 크레아티닌을 팀에 표시해 둡시다."
+  - kind: context
+    words: [w-escalate]
+    word: escalate
+    ko: 상향 조정하다
+    scenes:
+      - {who: 차트 기록, icon: board, en: "Worsening organ function; plan to escalate vasopressor support.", ok: true}
+      - {who: 보호자에게, icon: me, en: "We are escalating his care because his organs are failing.", ok: false, fix: "His organs are struggling, so we're adding more support right away."}
+      - {who: 의사에게 보고, icon: monitor, en: "Two organs are failing at once. I need you to escalate his care now.", ok: true}
+    why: "팀끼리는 escalate가 짧고 정확한 업무 용어예요. 가족에게는 관료적이고 차갑게 들려서, 지금 무엇을 더 하는지로 풀어 말해 주세요."
+  - kind: swap
+    words: [w-intensivist]
+    who: "가족에게 · 의사 호출 안내"
+    icon: me
+    before: ["I'm calling the ", "intensivist", " now to come see him."]
+    options: [ICU doctor, intensivist, critical care attending]
+    answer: ICU doctor
+    notes: {ICU doctor: "가족이 누구인지 바로 알아듣는 말. 무엇을 하는 의사인지도 분명하다.", intensivist: "중환자 전담의를 가리키는 정확한 직책이라 팀끼리는 좋지만 가족에게는 낯설다.", critical care attending: "직책을 풀어 쓴 정식 호칭. 팀 내 보고에는 맞지만 가족에게는 무겁고 길다."}
+    why: "직책 이름은 팀끼리의 말이고, 가족에게는 그 사람이 무슨 일을 하는지 보이는 호칭이 좋아요."
+    ko: "지금 중환자실 의사를 불러서 환자를 보게 할게요"
+"수액 과부하 균형":
+  - kind: slider
+    words: [w-swelling]
+    cue: "Chart: \"A dent stays in the skin when I press on his ankle.\""
+    scale: [puffiness, swelling, edema]
+    answerAt: 2
+    why: "puffiness는 가벼운 부은 느낌, swelling은 일반적인 부기, edema는 누르면 자국이 남는 부종을 가리키는 의료 용어예요. 자국이 남는 소견은 차트에 edema로 적어요."
+    example: "He has pitting edema in both legs."
+    exKo: "양쪽 다리에 누르면 자국이 남는 부종이 있어요."
+  - kind: context
+    words: [w-balance]
+    word: balance
+    ko: 균형을 맞추다
+    scenes:
+      - {who: 동료에게, icon: monitor, en: "His fluid balance is positive by three liters, so let's start taking some off.", ok: true}
+      - {who: 보호자에게, icon: me, en: "His cumulative fluid balance is positive three liters with pitting edema.", ok: false, fix: "He's holding on to a lot of extra water, so we're helping his body let it go."}
+      - {who: 보호자에게, icon: me, en: "We balance the fluid we give with the fluid we take off.", ok: true}
+    why: "팀끼리는 balance가 들어온 양과 나간 양의 차이를 뜻하는 압축된 용어예요. 가족에게는 수치 대신 몸이 물을 붙들고 있다는 말로 풀어 주세요."
+  - kind: swap
+    words: [w-swelling]
+    who: "동료에게 · 인계"
+    icon: monitor
+    before: ["He's ", "swollen", " and his lungs sound wet."]
+    options: [volume overloaded, swollen, puffy]
+    answer: volume overloaded
+    notes: {volume overloaded: "수액이 과하게 쌓인 상태를 정확히 가리키는 인계용 용어. 다음 조치(이뇨·수액 감량)로 이어진다.", swollen: "눈에 보이는 상태만 말해 원인(수액 과부하)이 빠진다.", puffy: "일상어에 가까워 인계에서는 정보가 부족하다."}
+    why: "인계에서는 눈에 보이는 상태보다 그 원인을 담은 정확한 용어가 다음 조치를 알려 줘요."
+    ko: "그분은 수액 과부하 상태이고 폐에서 젖은 소리가 나요"
+"면역저하 패혈증 특수 관리":
+  - kind: slider
+    words: [w-aggressively]
+    cue: "Doctor: \"Cultures, broad antibiotics, and fluids, all within the hour.\""
+    scale: [cautiously, promptly, aggressively]
+    answerAt: 2
+    why: "면역이 떨어진 환자의 감염은 천천히 지켜보지 않아요. 배양, 광범위 항생제, 수액을 한꺼번에 서둘러 하는 것이 aggressively(적극적으로)이고, cautiously는 정반대 접근이에요."
+    example: "In immunocompromised patients, we treat infections aggressively."
+    exKo: "면역저하 환자의 감염은 적극적으로 치료해요."
+  - kind: context
+    words: [w-precaution]
+    word: precautions
+    ko: 예방 조치
+    scenes:
+      - {who: 방문객에게, icon: me, en: "Please follow the isolation precautions before you enter his room.", ok: true}
+      - {who: 가족에게, icon: me, en: "Neutropenic precautions are in place per protocol.", ok: false, fix: "Please wear a gown and gloves and wash your hands before you come in."}
+      - {who: 환자에게, icon: me, en: "We take extra precautions to protect you from new germs.", ok: true}
+    why: "팀끼리는 neutropenic precautions 한마디로 통하지만, 가족은 무엇을 해야 하는지 몰라요. 가운, 장갑, 손 씻기처럼 해야 할 행동으로 말해 주세요."
+  - kind: swap
+    words: [w-whitecount]
+    who: "가족에게 · 면역 설명"
+    icon: me
+    before: ["Because his ", "ANC is very low", ", even a small infection can become serious fast."]
+    options: [body can't fight germs well, ANC is very low, neutropenia is profound]
+    answer: body can't fight germs well
+    notes: {body can't fight germs well: "백혈구가 낮은 이유와 결과를 가족이 바로 이해한다.", ANC is very low: "호중구 절대수 약어. 팀끼리는 쓰지만 가족은 숫자의 뜻을 모른다.", neutropenia is profound: "정확한 진단 용어지만 가족에게는 낯설고 무겁게 들린다."}
+    why: "혈액 수치 약어는 가족에게 '그래서 몸이 균과 잘 못 싸운다'는 결과로 풀어 줘야 이해돼요."
+    ko: "몸이 균과 잘 싸우지 못해서 작은 감염도 빠르게 심각해질 수 있어요"

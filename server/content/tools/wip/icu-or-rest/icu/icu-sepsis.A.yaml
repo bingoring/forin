@@ -5527,6 +5527,59 @@ situations:
     - w-explain
     - w-confused
     goal: 1
+  nuance:
+  - kind: slider
+    words:
+    - w-alert
+    cue: 'Chart: "Opens his eyes when I say his name, then falls back asleep."'
+    scale:
+    - alert
+    - drowsy
+    - comatose
+    answerAt: 1
+    why: alert는 깨어 있고 또렷한 상태, drowsy는 부르면 깨지만 금방 다시 잠드는 상태, comatose는 깨워도 눈을 뜨지 않는 상태예요. 한국어로는 다 '의식이 처진다'로 뭉뚱그려도 영어 차트에서는 단계가 달라요.
+    example: He's alert and talking, but he gets drowsy between questions.
+    exKo: 의식은 또렷하고 말도 하지만, 질문 사이사이에 졸려 해요.
+  - kind: context
+    words:
+    - w-confused
+    word: confused
+    ko: 혼란스러운
+    scenes:
+    - who: 의사에게 보고
+      icon: monitor
+      en: He's newly confused, breathing at twenty-six, and his pressure is soft.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Sir, you're confused and you don't know where you are.
+      ok: false
+      fix: Sir, you're in the hospital, and I'm your nurse. I'm here to help you.
+    - who: 차트 기록
+      icon: board
+      en: Pt confused, oriented to person only, restless overnight.
+      ok: true
+    why: 의료진끼리는 confused가 정확하고 간결한 사정 용어예요. 하지만 환자 본인에게 "you're confused"라고 직접 말하면 겁을 먹거나 방어적이 돼요. 있는 곳과 내가 누구인지를 차분히 알려 주는 게 기본이에요.
+  - kind: swap
+    words:
+    - w-breathingrate
+    who: 가족에게 · 호흡 설명
+    icon: me
+    before:
+    - 'His '
+    - respiratory rate
+    - ' is faster than normal.'
+    options:
+    - breathing
+    - respiratory rate
+    - RR
+    answer: breathing
+    notes:
+      breathing: 가족이 바로 알아듣는 말. 사실을 그대로 전하면서 겁주지 않는다.
+      respiratory rate: 정확하지만 의료진끼리의 말이라 가족에게는 딱딱하게 들린다.
+      RR: 차트 약어. 입으로 말하면 가족은 무슨 뜻인지 모른다.
+    why: 같은 사실도 가족에게는 쉬운 말로, 의료진끼리는 정확한 용어나 약어로 말해요.
+    ko: 그분 호흡이 평소보다 빨라요
 - title: 젖산·혈액배양 채취
   sentences:
   - en: We draw these cultures before antibiotics so we can find the exact bug.
@@ -5607,6 +5660,60 @@ situations:
     - w-cause
     - w-treat
     goal: 1
+  nuance:
+  - kind: pair
+    words:
+    - w-draw
+    pairs:
+    - - draw
+      - blood from two different sites
+    - - clean
+      - the skin with chlorhexidine first
+    - - tell
+      - the patient why before you start
+    decoys:
+    - the cart's wheels
+    why: 배양용 혈액은 서로 다른 두 부위에서 뽑고(draw), 피부는 클로르헥시딘 등으로 먼저 소독하며(clean), 환자에게는 시작 전에 이유를 설명해요(tell). 소독이 부실하면 피부 균이 섞여 결과가 흐려져요.
+  - kind: context
+    words:
+    - w-antibiotic
+    word: antibiotics
+    ko: 항생제
+    scenes:
+    - who: 의사에게 보고
+      icon: monitor
+      en: Cultures are drawn, so we can start the antibiotics now.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Pt is being initiated on empiric broad-spectrum antibiotics, pending cultures.
+      ok: false
+      fix: We'll start a strong medicine to fight the infection right after the blood draw.
+    - who: 환자에게
+      icon: me
+      en: We take the blood first, then start your antibiotics right away.
+      ok: true
+    why: 의료진끼리는 empiric, broad-spectrum 같은 정확한 용어가 좋지만, 환자에게는 차트 문체가 낯설고 겁을 줘요. 순서(채혈 먼저, 바로 이어서 항생제)를 쉬운 말로 말해 주세요.
+  - kind: swap
+    words:
+    - w-culture
+    who: 환자에게 · 검사 설명
+    icon: me
+    before:
+    - 'We need to send '
+    - blood cultures
+    - ' before the antibiotic.'
+    options:
+    - a few blood samples
+    - blood cultures
+    - BCx
+    answer: a few blood samples
+    notes:
+      a few blood samples: 환자가 바로 이해하는 말. 왜 피를 뽑는지 설명을 이어 가기 좋다.
+      blood cultures: 정확한 용어라 의료진끼리는 좋지만, 처음 듣는 환자에게는 설명 없이 쓰면 낯설다.
+      BCx: 차트 약어. 말로 하면 환자는 알아듣지 못한다.
+    why: 환자에게는 '무엇을 하는지'를 쉬운 말로 먼저 하고, 용어는 그다음에 덧붙여요.
+    ko: 항생제 전에 피를 몇 번 뽑아 검사실에 보내야 해요
 - title: 광범위 항생제 신속 투여
   sentences:
   - en: We're giving broad antibiotics right now to cover the likely infection.
@@ -5679,6 +5786,59 @@ situations:
     - w-quickly
     - w-safely
     goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-likely
+    cue: 'Doctor: "Fever, high white count, a cough, and a spot on the chest film — pneumonia is the probable source."'
+    scale:
+    - possibly
+    - likely
+    - certainly
+    answerAt: 1
+    why: possibly는 가능성만 열어 둔 말, likely는 가능성이 높지만 확정은 아닌 말, certainly는 확신이에요. 배양 결과가 나오기 전에는 certainly라고 하지 않아요.
+    example: This is likely a lung infection, but the cultures will tell us for sure.
+    exKo: 폐 감염일 가능성이 높지만, 확실한 건 배양 결과가 알려 줄 거예요.
+  - kind: context
+    words:
+    - w-delay
+    word: delay
+    ko: 지연시키다
+    scenes:
+    - who: 차트 기록
+      icon: board
+      en: No delay in antibiotics — cultures drawn, first dose hung.
+      ok: true
+    - who: 보호자에게
+      icon: me
+      en: Every hour of delay in antibiotics raises the risk of dying.
+      ok: false
+      fix: We're doing everything we can to get his antibiotic in without delay.
+    - who: 보호자에게
+      icon: me
+      en: We're working hard not to delay his antibiotic.
+      ok: true
+    why: 의료진끼리는 시간 지연의 위험을 수치로 말해도 되지만, 불안한 가족에게 위험 통계를 먼저 들이대면 겁만 줘요. 지금 하고 있는 일을 말해 주세요. 그리고 '절대 안 늦는다'고 약속하지는 마세요.
+  - kind: swap
+    words:
+    - w-broad
+    who: 가족에게 · 항생제 설명
+    icon: me
+    before:
+    - 'We''re giving a '
+    - broad-spectrum
+    - ' antibiotic to cover the likely infection.'
+    options:
+    - wide-reaching
+    - broad-spectrum
+    - empiric
+    answer: wide-reaching
+    notes:
+      wide-reaching: 여러 종류의 균에 듣는다는 뜻을 쉬운 말로 전한다.
+      broad-spectrum: 의료진끼리 쓰는 정확한 말. 가족에게는 'spectrum'이 낯설다.
+      empiric: '''원인균 확인 전에 쓰는''이라는 임상 용어. 가족에게는 추측으로 들려 불안하다.'
+    why: 같은 약이라도 가족에게는 쉬운 말로 풀고, 의료진끼리는 broad-spectrum·empiric 같은 정확한 용어를 써요.
+    ko: 가능성 있는 감염을 덮으려고 여러 균에 듣는 항생제를 쓰고 있어요
 - title: 초기 수액 소생 협조
   sentences:
   - en: We're giving fluids to raise his blood pressure and improve circulation.
@@ -5755,6 +5915,59 @@ situations:
     - w-fluid
     - w-work
     goal: 1
+  nuance:
+  - kind: slider
+    words:
+    - w-low
+    cue: 'Doctor: "His blood pressure is 78 over 40, even after the first liter."'
+    scale:
+    - mildly low
+    - fairly low
+    - very low
+    answerAt: 2
+    why: 혈압이 낮다고 해도 정도가 달라요. 78/40은 쇼크로 이어질 수 있는 아주 낮은 수치라 mildly나 fairly로 말하면 심각성이 전해지지 않아요.
+    example: His blood pressure was very low when he arrived.
+    exKo: 도착했을 때 혈압이 아주 낮았어요.
+  - kind: context
+    words:
+    - w-fluid
+    word: fluids
+    ko: 수액
+    scenes:
+    - who: 의사에게 보고
+      icon: monitor
+      en: Fluids are running wide open, and I'll reassess his pressure after the bolus.
+      ok: true
+    - who: 보호자에게
+      icon: me
+      en: Pt is fluid-responsive and volume depleted, so fluids are being bolused.
+      ok: false
+      fix: He's getting extra fluid through his IV because his blood pressure is low.
+    - who: 보호자에게
+      icon: me
+      en: We're giving him fluids through his IV to help his blood pressure.
+      ok: true
+    why: 의료진끼리는 fluid-responsive, bolus 같은 말이 정확하고 빨라요. 가족에게는 같은 상황을 '혈압이 낮아서 정맥으로 수액을 더 주고 있다'로 풀어 주세요.
+  - kind: swap
+    words:
+    - w-wet
+    who: 가족에게 · 폐 소리 설명
+    icon: me
+    before:
+    - 'If we hear '
+    - crackles
+    - ' in his lungs, we''ll slow the fluids down.'
+    options:
+    - wet sounds
+    - crackles
+    - rales
+    answer: wet sounds
+    notes:
+      wet sounds: 가족이 바로 떠올릴 수 있는 말. 왜 수액을 줄이는지 이해가 된다.
+      crackles: 청진 용어라 간호사끼리는 정확하지만 가족에게는 낯설다.
+      rales: 미국 의료진이 crackles와 같은 뜻으로 쓰는 말이지만, 가족에게는 더 낯설다.
+    why: 폐에서 나는 소리도 가족에게는 쉬운 말로, 팀끼리는 청진 용어로 말해요.
+    ko: 폐에서 젖은 소리가 들리면 수액을 줄일게요
 - title: 감염원 병력·부위 사정
   sentences:
   - en: Can you tell me where you've had pain, redness, or a fever?
@@ -5835,6 +6048,60 @@ situations:
     - w-recent
     - w-wound
     goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-pain
+    cue: 'Patient: "It''s a dull ache when I pee, but I can still walk around fine."'
+    scale:
+    - ache
+    - pain
+    - agony
+    answerAt: 0
+    why: 한국어로는 다 '아프다'지만 영어는 강도가 달라요. 걸어 다닐 수 있는 둔한 불편은 ache, 일상이 어려운 정도는 pain, 견디기 힘든 극심한 고통은 agony예요.
+    example: A dull ache when you urinate can be a sign of infection.
+    exKo: 소변볼 때 둔하게 아픈 것도 감염의 신호일 수 있어요.
+  - kind: context
+    words:
+    - w-wound
+    word: wound
+    ko: 상처
+    scenes:
+    - who: 차트 기록
+      icon: board
+      en: Red, swollen wound on the left calf with drainage.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Is there any dehiscence or purulent drainage at the wound?
+      ok: false
+      fix: Is anything leaking or opening up where you had your stitches?
+    - who: 환자에게
+      icon: me
+      en: I'll check your wounds one by one, and tell me if anything hurts.
+      ok: true
+    why: 환자에게 dehiscence나 purulent 같은 말을 쓰면 알아듣지 못해요. 실밥 자리가 새거나 벌어졌는지처럼 눈에 보이는 말로 물어야 정확한 대답을 들어요.
+  - kind: swap
+    words:
+    - w-redness
+    - w-line
+    who: 환자에게 · 라인 부위 질문
+    icon: me
+    before:
+    - 'Is there any '
+    - erythema
+    - ' around the line?'
+    options:
+    - redness
+    - erythema
+    - rubor
+    answer: redness
+    notes:
+      redness: 환자가 직접 볼 수 있는 말이라 정확한 대답을 얻기 쉽다.
+      erythema: 의료진끼리의 정확한 용어. 환자는 무슨 뜻인지 되묻는다.
+      rubor: 염증의 전통적 징후를 가리키는 라틴어 계열 용어라 병상에서 환자에게는 맞지 않는다.
+    why: 환자에게 묻는 말은 환자가 직접 보고 느낄 수 있는 단어여야 해요.
+    ko: 라인 주변이 빨갛게 보이나요?
 - title: 활력·관류 재평가
   sentences:
   - en: I'm rechecking his blood pressure, heart rate, and how warm his skin is.
@@ -5911,6 +6178,60 @@ situations:
     - w-check
     - w-stable
     goal: 1
+  nuance:
+  - kind: slider
+    words:
+    - w-warm
+    cue: 'Chart: "Fingers and toes feel cool and look pale."'
+    scale:
+    - cold
+    - cool
+    - warm
+    - hot
+    answerAt: 1
+    why: 손발이 차고 창백하면 말초 관류가 떨어졌다는 신호예요. cold는 얼음장 같은 차가움, cool은 정상보다 서늘한 정도, warm은 따뜻해서 관류가 좋아졌다는 뜻이에요.
+    example: His hands are warm and pink, which is a good sign.
+    exKo: 손이 따뜻하고 분홍빛이라 좋은 징후예요.
+  - kind: context
+    words:
+    - w-reassess
+    word: reassess
+    ko: 재평가하다
+    scenes:
+    - who: 동료에게
+      icon: monitor
+      en: I'll reassess his pressure, lactate, and capillary refill after the bolus.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Your clinical trajectory will be reassessed against SOFA parameters every fifteen minutes.
+      ok: false
+      fix: We'll keep checking you every few minutes to see how you're doing.
+    - who: 보호자에게
+      icon: me
+      en: We'll keep reassessing him to make sure he's moving in the right direction.
+      ok: true
+    why: 팀끼리는 reassess가 짧고 정확한 업무 용어예요. 환자에게는 SOFA 같은 점수 이야기보다 '계속 살펴본다'는 말이 안심이 돼요.
+  - kind: swap
+    words:
+    - w-circulation
+    who: 가족에게 · 관류 설명
+    icon: me
+    before:
+    - 'His hands and feet are warmer, so his '
+    - perfusion
+    - ' is better.'
+    options:
+    - blood flow
+    - perfusion
+    - microcirculation
+    answer: blood flow
+    notes:
+      blood flow: 가족이 바로 이해하는 말. 손발이 따뜻해졌다는 근거와 이어진다.
+      perfusion: 조직에 피가 가는 정도를 말하는 의료진끼리의 정확한 용어. 가족에게는 낯설다.
+      microcirculation: 아주 가는 혈관 수준의 순환을 말하는 전문 용어라 병상 설명에는 과하다.
+    why: 같은 좋아짐도 가족에게는 '혈류가 좋아졌다'처럼 쉬운 말이 닿아요.
+    ko: 손발이 따뜻해졌으니 혈류가 좋아졌어요
 - title: 패혈성 쇼크 승압 시작
   sentences:
   - en: His blood pressure isn't responding to fluids alone, so we're adding a medication.
@@ -5988,6 +6309,59 @@ situations:
     - w-pressure
     - w-need
     goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-dose
+    cue: 'Order: "Start norepinephrine at the lowest rate, then go up only as his pressure needs."'
+    scale:
+    - trace dose
+    - low dose
+    - full dose
+    answerAt: 1
+    why: 승압제는 낮은 용량으로 시작해 목표 혈압(보통 평균동맥압 65 이상)에 맞춰 조금씩 올려요. 처음부터 full dose로 가지 않고, 효과가 없는 trace 수준에 머물지도 않아요.
+    example: We start at a low dose and go up only as needed.
+    exKo: 낮은 용량으로 시작해서 필요한 만큼만 올려요.
+  - kind: context
+    words:
+    - w-drip
+    word: drip
+    ko: 점적 주입
+    scenes:
+    - who: 의사에게 보고
+      icon: monitor
+      en: Start the norepinephrine drip at a low rate and titrate to a MAP of 65.
+      ok: true
+    - who: 보호자에게
+      icon: me
+      en: We're starting a norepinephrine drip, titrating to a MAP of 65.
+      ok: false
+      fix: This medicine runs through his IV and helps keep his blood pressure up.
+    - who: 보호자에게
+      icon: me
+      en: This drip helps keep his blood pressure up while his body recovers.
+      ok: true
+    why: 팀끼리는 약 이름, 속도, 목표 혈압(MAP)까지 말하는 게 정확해요. 가족에게는 수치와 약어를 빼고 '이 약이 무엇을 해 주는지'를 말해 주세요.
+  - kind: swap
+    words:
+    - w-bloodpressure
+    who: 가족에게 · 혈압 설명
+    icon: me
+    before:
+    - 'His '
+    - MAP
+    - ' is low, so we''re adding this drip.'
+    options:
+    - blood pressure
+    - MAP
+    - mean arterial pressure
+    answer: blood pressure
+    notes:
+      blood pressure: 가족이 아는 말. 왜 약을 추가하는지가 바로 이어진다.
+      MAP: 평균동맥압 약어. 팀끼리는 쓰지만 가족은 무슨 숫자인지 모른다.
+      mean arterial pressure: 풀어 쓴 정식 용어지만 가족에게는 여전히 낯설고 길다.
+    why: 숫자와 약어는 팀끼리의 말이고, 가족에게는 혈압이라는 친숙한 단어가 먼저예요.
+    ko: 혈압이 낮아서 이 약을 추가하고 있어요
 - title: 젖산 클리어런스 재평가
   sentences:
   - en: A falling lactate tells us his circulation is improving with treatment.
@@ -6064,6 +6438,60 @@ situations:
     - w-plan
     - w-team
     goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-strong
+    - w-response
+    cue: 'Lab: "Lactate 4.0 at the start, 3.8 after two hours of fluids and pressors."'
+    scale:
+    - slight response
+    - partial response
+    - strong response
+    answerAt: 0
+    why: 젖산이 4.0에서 3.8로 거의 내려가지 않았다면 치료에 대한 반응이 미미한 거예요. 6에서 2로 크게 떨어지는 것이 strong response예요. 반응이 약하면 팀이 계획을 다시 살펴야 해요.
+    example: A strong response means his lactate is dropping with treatment.
+    exKo: 강한 반응이란 치료에 따라 젖산이 떨어지고 있다는 뜻이에요.
+  - kind: context
+    words:
+    - w-improve
+    word: improve
+    ko: 개선하다
+    scenes:
+    - who: 동료에게
+      icon: monitor
+      en: If perfusion starts to improve, his lactate should come down. Recheck in two hours.
+      ok: true
+    - who: 보호자에게
+      icon: me
+      en: Lactate clearance didn't improve at the two-hour mark.
+      ok: false
+      fix: His blood test hasn't gotten better yet, so we're adjusting his treatment.
+    - who: 보호자에게
+      icon: me
+      en: His numbers are starting to improve, which tells us the treatment is working.
+      ok: true
+    why: 팀끼리는 clearance처럼 압축된 말이 빠르고 정확해요. 가족에게는 수치가 좋아졌는지, 그래서 무엇을 하는지를 쉬운 말로 이어서 말해 주세요.
+  - kind: swap
+    words:
+    - w-resuscitation
+    who: 가족에게 · 재검사 이유
+    icon: me
+    before:
+    - 'We recheck it to make sure the '
+    - resuscitation
+    - ' is working.'
+    options:
+    - treatment
+    - resuscitation
+    - resus
+    answer: treatment
+    notes:
+      treatment: 가족이 바로 이해하는 말. 지금 하는 치료가 듣는지 확인한다는 뜻이 전해진다.
+      resuscitation: 의료진에게는 소생 처치 전반이지만, 가족은 심폐소생술(CPR)로 듣고 크게 놀랄 수 있다.
+      resus: 팀끼리 쓰는 줄임말. 가족 앞에서 말하면 알아듣지 못한다.
+    why: resuscitation은 일반인에게 CPR을 떠올리게 해요. 가족에게는 '치료'처럼 정확하고 덜 놀라운 말을 고르세요.
+    ko: 치료가 효과가 있는지 확인하려고 다시 검사해요
 - title: 감염원 제거 조율
   sentences:
   - en: Antibiotics work best when we also remove the source of infection.
@@ -6145,6 +6573,59 @@ situations:
     - w-better
     - w-faster
     goal: 1
+  nuance:
+  - kind: slider
+    words:
+    - w-faster
+    cue: 'Family: "Will he get better as soon as the drain goes in?"'
+    scale:
+    - slightly
+    - noticeably
+    - instantly
+    answerAt: 1
+    why: 고인 감염 액체를 빼내면 감염이 훨씬 빨리 좋아지는 경우가 많지만, 즉시 호전된다고 약속할 수는 없어요. '눈에 띄게(noticeably)'가 정직하면서 희망도 주는 말이에요.
+    example: After the drain is placed, he often gets noticeably better.
+    exKo: 배액관을 넣고 나면 눈에 띄게 좋아지는 경우가 많아요.
+  - kind: context
+    words:
+    - w-coordinate
+    word: coordinate
+    ko: 조율하다
+    scenes:
+    - who: 동료에게
+      icon: monitor
+      en: I'll coordinate with IR so the drain gets placed as soon as possible.
+      ok: true
+    - who: 보호자에게
+      icon: me
+      en: I'll coordinate across disciplines to facilitate source control per protocol.
+      ok: false
+      fix: I'll talk with the procedure team and let you know what time it will be.
+    - who: 보호자에게
+      icon: me
+      en: I'll coordinate with the procedure team and keep you updated.
+      ok: true
+    why: 팀끼리는 coordinate와 약어(IR)가 효율적이에요. 가족에게는 disciplines, source control 같은 말을 빼고 누구와 무엇을 하는지, 언제 알려 줄지를 말해 주세요.
+  - kind: swap
+    words:
+    - w-infected
+    who: 가족에게 · 배액 설명
+    icon: me
+    before:
+    - 'The team is planning to remove the '
+    - purulent collection
+    - ' to help him recover.'
+    options:
+    - infected fluid
+    - purulent collection
+    - loculated collection
+    answer: infected fluid
+    notes:
+      infected fluid: 가족이 바로 이해하는 말. 왜 배액이 회복에 도움이 되는지 이어진다.
+      purulent collection: 고름이 고인 곳을 가리키는 영상·외과 용어. 가족에게는 낯설다.
+      loculated collection: 칸막이로 나뉜 고임을 가리키는 영상 판독 용어. 병상 설명에는 맞지 않는다.
+    why: 배액 대상도 가족에게는 '감염된 액체'처럼 눈에 그려지는 말로 설명해요.
+    ko: 회복을 돕기 위해 감염된 액체를 빼낼 계획이에요
 - title: 항생제 스튜어드십·조정
   sentences:
   - en: The culture shows the exact bacteria, so we can narrow the antibiotic.
@@ -6225,6 +6706,59 @@ situations:
     - w-fully
     - w-effect
     goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-resistant
+    cue: 'Lab report: "Resistant to every antibiotic tested."'
+    scale:
+    - sensitive
+    - resistant
+    - pan-resistant
+    answerAt: 2
+    why: sensitive는 약에 듣는 균, resistant는 어떤 약에 듣지 않는 균이에요. 검사한 약 전부에 듣지 않으면 pan-resistant라고 해요. 한국어 '내성'으로는 이 단계가 잘 안 구분돼요.
+    example: The culture showed a resistant bacteria, so we changed the antibiotic.
+    exKo: 배양에서 내성균이 나와서 항생제를 바꿨어요.
+  - kind: context
+    words:
+    - w-narrow
+    word: narrow
+    ko: 좁히다
+    scenes:
+    - who: 약사에게
+      icon: monitor
+      en: We can narrow the antibiotic now that the cultures are back.
+      ok: true
+    - who: 보호자에게
+      icon: me
+      en: We're de-escalating to narrow-spectrum coverage per the sensitivities.
+      ok: false
+      fix: Now that we know the germ, we can switch to a medicine aimed right at it.
+    - who: 보호자에게
+      icon: me
+      en: We're narrowing his antibiotic to one that targets the exact germ.
+      ok: true
+    why: 팀끼리는 narrow-spectrum, sensitivities가 정확하고 빨라요. 가족에게는 '균을 알았으니 그 균에 맞는 약으로 바꾼다'처럼 이유를 중심으로 말해 주세요.
+  - kind: swap
+    words:
+    - w-resistance
+    who: 가족에게 · 내성 설명
+    icon: me
+    before:
+    - 'Using a more targeted drug lowers the chance of '
+    - MDRO emergence
+    - ' later.'
+    options:
+    - germs that stop responding
+    - MDRO emergence
+    - resistance selection
+    answer: germs that stop responding
+    notes:
+      germs that stop responding: 약이 듣지 않는 균이 생긴다는 뜻을 가족이 바로 이해한다.
+      MDRO emergence: 다제내성균 출현을 뜻하는 감염관리 약어. 가족에게는 무슨 말인지 알 수 없다.
+      resistance selection: 내성이 선택되는 과정을 말하는 전문 용어. 병상 설명에는 낯설다.
+    why: 내성은 일반인에게 어려운 개념이라 '약이 듣지 않는 균'이라는 결과로 풀어 말해요.
+    ko: 더 표적화된 약을 쓰면 나중에 약이 듣지 않는 균이 생길 가능성이 줄어요
 - title: 스테로이드 보조 판단
   sentences:
   - en: His pressure still needs high vasopressor support despite fluids.
@@ -6304,6 +6838,59 @@ situations:
     - w-escalate
     - w-agent
     goal: 1
+  nuance:
+  - kind: slider
+    words:
+    - w-consider
+    cue: 'Doctor: "If the pressure keeps needing support, we may add low-dose steroids."'
+    scale:
+    - dismiss
+    - consider
+    - administer
+    answerAt: 1
+    why: consider는 아직 확정하지 않고 상황을 보며 검토하는 단계예요. dismiss는 아예 접는 것, administer는 이미 주는 것이에요. 스테로이드는 승압제 용량이 계속 높을 때 고려해요.
+    example: We're considering low-dose steroids to help stabilize him.
+    exKo: 그분을 안정시키는 데 도움이 되도록 저용량 스테로이드를 고려하고 있어요.
+  - kind: context
+    words:
+    - w-monitor
+    word: monitor
+    ko: 감시하다
+    scenes:
+    - who: 동료에게
+      icon: monitor
+      en: Monitor his glucose and pressure closely after the first dose.
+      ok: true
+    - who: 보호자에게
+      icon: me
+      en: Continuous hemodynamic monitoring will be maintained throughout administration.
+      ok: false
+      fix: We'll keep a close eye on his blood pressure and heart rate the whole time.
+    - who: 보호자에게
+      icon: me
+      en: We'll monitor him closely while he's on it.
+      ok: true
+    why: 스테로이드는 혈당을 올릴 수 있어 팀끼리는 혈당과 혈압을 같이 감시해요. 가족에게는 hemodynamic 같은 말 대신 무엇을 지켜보는지를 쉬운 말로 말해 주세요.
+  - kind: swap
+    words:
+    - w-vasopressor
+    who: 가족에게 · 승압제 용량 설명
+    icon: me
+    before:
+    - 'His blood pressure still needs '
+    - high-dose vasopressors
+    - ' even after the fluids.'
+    options:
+    - strong medicine to hold it up
+    - high-dose vasopressors
+    - maxed-out pressors
+    answer: strong medicine to hold it up
+    notes:
+      strong medicine to hold it up: 약이 무엇을 하는지 쉬운 말로 전한다.
+      high-dose vasopressors: 정확한 용어라 팀끼리는 좋지만 가족에게는 낯설다.
+      maxed-out pressors: '''더 쓸 수 있는 약이 없다''로 들려 가족을 불필요하게 절망시킬 수 있다.'
+    why: 가족에게는 약 이름보다 '그 약이 무엇을 하는지'가 중요하고, 아직 가능한 치료를 암시하는 말은 조심해서 써야 해요.
+    ko: 수액을 줬는데도 혈압을 받치려면 강한 약이 필요해요
 - title: 장기부전 진행 모니터
   sentences:
   - en: His SOFA score is trending up, so organ function is worsening.
@@ -6381,6 +6968,59 @@ situations:
     - w-shift
     - w-immediately
     goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-rise
+    cue: 'Chart: "Bilirubin 1.0, then 1.1, then 1.2 over two days."'
+    scale:
+    - creep up
+    - climb
+    - spike
+    answerAt: 0
+    why: 조금씩 오르는 건 creep up, 뚜렷하게 오르는 건 climb, 급격히 치솟는 건 spike예요. 장기 수치는 방향과 속도를 함께 말해야 팀이 얼마나 서둘러야 할지 알아요.
+    example: Let's flag the rising creatinine to the team.
+    exKo: 오르는 크레아티닌을 팀에 표시해 둡시다.
+  - kind: context
+    words:
+    - w-escalate
+    word: escalate
+    ko: 상향 조정하다
+    scenes:
+    - who: 차트 기록
+      icon: board
+      en: Worsening organ function; plan to escalate vasopressor support.
+      ok: true
+    - who: 보호자에게
+      icon: me
+      en: We are escalating his care because his organs are failing.
+      ok: false
+      fix: His organs are struggling, so we're adding more support right away.
+    - who: 의사에게 보고
+      icon: monitor
+      en: Two organs are failing at once. I need you to escalate his care now.
+      ok: true
+    why: 팀끼리는 escalate가 짧고 정확한 업무 용어예요. 가족에게는 관료적이고 차갑게 들려서, 지금 무엇을 더 하는지로 풀어 말해 주세요.
+  - kind: swap
+    words:
+    - w-intensivist
+    who: 가족에게 · 의사 호출 안내
+    icon: me
+    before:
+    - 'I''m calling the '
+    - intensivist
+    - ' now to come see him.'
+    options:
+    - ICU doctor
+    - intensivist
+    - critical care attending
+    answer: ICU doctor
+    notes:
+      ICU doctor: 가족이 누구인지 바로 알아듣는 말. 무엇을 하는 의사인지도 분명하다.
+      intensivist: 중환자 전담의를 가리키는 정확한 직책이라 팀끼리는 좋지만 가족에게는 낯설다.
+      critical care attending: 직책을 풀어 쓴 정식 호칭. 팀 내 보고에는 맞지만 가족에게는 무겁고 길다.
+    why: 직책 이름은 팀끼리의 말이고, 가족에게는 그 사람이 무슨 일을 하는지 보이는 호칭이 좋아요.
+    ko: 지금 중환자실 의사를 불러서 환자를 보게 할게요
 - title: 수액 과부하 균형
   sentences:
   - en: Now that he's more stable, we're carefully removing extra fluid.
@@ -6460,6 +7100,59 @@ situations:
     - w-stay
     - w-steady
     goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-swelling
+    cue: 'Chart: "A dent stays in the skin when I press on his ankle."'
+    scale:
+    - puffiness
+    - swelling
+    - edema
+    answerAt: 2
+    why: puffiness는 가벼운 부은 느낌, swelling은 일반적인 부기, edema는 누르면 자국이 남는 부종을 가리키는 의료 용어예요. 자국이 남는 소견은 차트에 edema로 적어요.
+    example: He has pitting edema in both legs.
+    exKo: 양쪽 다리에 누르면 자국이 남는 부종이 있어요.
+  - kind: context
+    words:
+    - w-balance
+    word: balance
+    ko: 균형을 맞추다
+    scenes:
+    - who: 동료에게
+      icon: monitor
+      en: His fluid balance is positive by three liters, so let's start taking some off.
+      ok: true
+    - who: 보호자에게
+      icon: me
+      en: His cumulative fluid balance is positive three liters with pitting edema.
+      ok: false
+      fix: He's holding on to a lot of extra water, so we're helping his body let it go.
+    - who: 보호자에게
+      icon: me
+      en: We balance the fluid we give with the fluid we take off.
+      ok: true
+    why: 팀끼리는 balance가 들어온 양과 나간 양의 차이를 뜻하는 압축된 용어예요. 가족에게는 수치 대신 몸이 물을 붙들고 있다는 말로 풀어 주세요.
+  - kind: swap
+    words:
+    - w-swelling
+    who: 동료에게 · 인계
+    icon: monitor
+    before:
+    - 'He''s '
+    - swollen
+    - ' and his lungs sound wet.'
+    options:
+    - volume overloaded
+    - swollen
+    - puffy
+    answer: volume overloaded
+    notes:
+      volume overloaded: 수액이 과하게 쌓인 상태를 정확히 가리키는 인계용 용어. 다음 조치(이뇨·수액 감량)로 이어진다.
+      swollen: 눈에 보이는 상태만 말해 원인(수액 과부하)이 빠진다.
+      puffy: 일상어에 가까워 인계에서는 정보가 부족하다.
+    why: 인계에서는 눈에 보이는 상태보다 그 원인을 담은 정확한 용어가 다음 조치를 알려 줘요.
+    ko: 그분은 수액 과부하 상태이고 폐에서 젖은 소리가 나요
 - title: 면역저하 패혈증 특수 관리
   sentences:
   - en: Because his immune system is low, we treat any infection very aggressively.
@@ -6540,6 +7233,59 @@ situations:
     - w-enter
     - w-wash
     goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-aggressively
+    cue: 'Doctor: "Cultures, broad antibiotics, and fluids, all within the hour."'
+    scale:
+    - cautiously
+    - promptly
+    - aggressively
+    answerAt: 2
+    why: 면역이 떨어진 환자의 감염은 천천히 지켜보지 않아요. 배양, 광범위 항생제, 수액을 한꺼번에 서둘러 하는 것이 aggressively(적극적으로)이고, cautiously는 정반대 접근이에요.
+    example: In immunocompromised patients, we treat infections aggressively.
+    exKo: 면역저하 환자의 감염은 적극적으로 치료해요.
+  - kind: context
+    words:
+    - w-precaution
+    word: precautions
+    ko: 예방 조치
+    scenes:
+    - who: 방문객에게
+      icon: me
+      en: Please follow the isolation precautions before you enter his room.
+      ok: true
+    - who: 가족에게
+      icon: me
+      en: Neutropenic precautions are in place per protocol.
+      ok: false
+      fix: Please wear a gown and gloves and wash your hands before you come in.
+    - who: 환자에게
+      icon: me
+      en: We take extra precautions to protect you from new germs.
+      ok: true
+    why: 팀끼리는 neutropenic precautions 한마디로 통하지만, 가족은 무엇을 해야 하는지 몰라요. 가운, 장갑, 손 씻기처럼 해야 할 행동으로 말해 주세요.
+  - kind: swap
+    words:
+    - w-whitecount
+    who: 가족에게 · 면역 설명
+    icon: me
+    before:
+    - 'Because his '
+    - ANC is very low
+    - ', even a small infection can become serious fast.'
+    options:
+    - body can't fight germs well
+    - ANC is very low
+    - neutropenia is profound
+    answer: body can't fight germs well
+    notes:
+      body can't fight germs well: 백혈구가 낮은 이유와 결과를 가족이 바로 이해한다.
+      ANC is very low: 호중구 절대수 약어. 팀끼리는 쓰지만 가족은 숫자의 뜻을 모른다.
+      neutropenia is profound: 정확한 진단 용어지만 가족에게는 낯설고 무겁게 들린다.
+    why: 혈액 수치 약어는 가족에게 '그래서 몸이 균과 잘 못 싸운다'는 결과로 풀어 줘야 이해돼요.
+    ko: 몸이 균과 잘 싸우지 못해서 작은 감염도 빠르게 심각해질 수 있어요
 - title: 다제내성 의심 경험적 확대
   sentences:
   - en: Because of his risk factors, we're broadening the antibiotic coverage.
@@ -6618,6 +7364,60 @@ situations:
     - w-focused
     - w-antibiotic
     goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-recent
+    cue: 'Chart: "He left the hospital two days ago after a two-week stay."'
+    scale:
+    - distant
+    - recent
+    - ongoing
+    answerAt: 1
+    why: recent는 얼마 지나지 않은 일을 뜻해요. 최근 입원이나 항생제 사용은 내성균 위험 요인이라, 의심되면 처음 항생제를 넓게 시작해요. distant는 오래전, ongoing은 지금도 계속되는 일이에요.
+    example: His recent hospital stay puts him at higher risk.
+    exKo: 최근 입원했던 일이 그분의 위험을 높여요.
+  - kind: context
+    words:
+    - w-resistant
+    word: resistant
+    ko: 내성이 있는
+    scenes:
+    - who: 동료에게
+      icon: monitor
+      en: Past MRSA means we should cover for resistant organisms until the cultures return.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: You carry resistant organisms, so we are broadening empiric coverage per the antibiogram.
+      ok: false
+      fix: Some germs you've had before didn't respond to certain antibiotics, so we're starting a wider one.
+    - who: 보호자에게
+      icon: me
+      en: His past infections were resistant to some antibiotics, so we're starting a wider one.
+      ok: true
+    why: 팀끼리는 resistant organisms, antibiogram이 정확하고 빨라요. 환자에게는 약이 잘 듣지 않았던 경험을 쉬운 말로 풀어 이유를 말해 주세요.
+  - kind: swap
+    words:
+    - w-resistant
+    - w-bacteria
+    who: 가족에게 · 내성균 설명
+    icon: me
+    before:
+    - 'This helps make sure we treat any '
+    - resistant bacteria
+    - .
+    options:
+    - germs that resist medicine
+    - resistant bacteria
+    - MDR pathogens
+    answer: germs that resist medicine
+    notes:
+      germs that resist medicine: 약이 잘 듣지 않는 균이라는 뜻을 가족이 바로 이해한다.
+      resistant bacteria: 정확한 용어. 팀끼리는 좋지만 가족에게는 설명이 필요하다.
+      MDR pathogens: 다제내성 병원체를 뜻하는 감염관리 약어라 가족에게는 낯설다.
+    why: 내성균은 가족에게 '약이 듣지 않는 균'이라는 풀이와 함께 말해야 이해돼요.
+    ko: 약이 잘 안 듣는 균까지 확실히 치료할 수 있어요
 - title: 불응성 패혈성 쇼크 다중승압
   sentences:
   - en: He's on multiple pressors and still not maintaining his pressure.
@@ -6690,6 +7490,61 @@ situations:
     - w-dose
     - w-add
     goal: 2
+  nuance:
+  - kind: pair
+    words:
+    - w-page
+    - w-document
+    pairs:
+    - - page
+      - the intensivist right now
+    - - document
+      - every dose change with the time
+    - - prepare
+      - a second bag before the first one runs out
+    decoys:
+    - the unit's coffee machine
+    why: 도움을 청할 때는 page(호출), 승압제는 용량이 바뀔 때마다 시각과 함께 document(기록), 약이 끊기지 않게 다음 약은 미리 prepare(준비)해요.
+  - kind: context
+    words:
+    - w-intensivist
+    word: intensivist
+    ko: 중환자전담의
+    scenes:
+    - who: 동료에게
+      icon: monitor
+      en: Page the intensivist now. His pressure won't hold even on three pressors.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: The intensivist will be paged for refractory vasoplegic shock.
+      ok: false
+      fix: A doctor who specializes in critical care is coming to see you right away.
+    - who: 보호자에게
+      icon: me
+      en: The intensivist, our ICU specialist doctor, is on the way to see him.
+      ok: true
+    why: 팀끼리는 intensivist와 질환명을 그대로 쓰는 게 빨라요. 환자에게는 어떤 의사인지, 왜 오는지를 쉬운 말로 풀어 주세요. 가족에게는 직함에 한마디 풀이를 붙이면 좋아요.
+  - kind: swap
+    words:
+    - w-pressor
+    who: 가족에게 · 승압제 설명
+    icon: me
+    before:
+    - 'He''s on three '
+    - pressors
+    - ', but his blood pressure is still too low.'
+    options:
+    - medicines that raise his blood pressure
+    - pressors
+    - vasoactive agents
+    answer: medicines that raise his blood pressure
+    notes:
+      medicines that raise his blood pressure: 약이 무엇을 하는지가 분명하다. 그냥 '혈압약'이라고 하면 혈압을 낮추는 약으로 오해한다.
+      pressors: 팀끼리의 줄임말. 가족에게는 무슨 약인지 알 수 없다.
+      vasoactive agents: 혈관에 작용하는 약 전체를 가리키는 정식 용어. 가족에게는 낯설고 막연하다.
+    why: 가족에게 '혈압약'이라고 하면 혈압을 낮추는 약으로 들려요. 혈압을 올려 주는 약이라고 분명히 말해 주세요.
+    ko: 혈압을 올리는 약을 세 가지 쓰고 있는데도 아직 혈압이 너무 낮아요
 - title: 패혈증 유발 DIC·출혈 위기
   sentences:
   - en: He's bleeding from multiple sites and his clotting labs are abnormal.
@@ -6770,6 +7625,59 @@ situations:
     - w-wait
     - w-platelet
     goal: 1
+  nuance:
+  - kind: slider
+    words:
+    - w-bleed
+    cue: 'Chart: "Slow ooze at the line site, controlled with a few minutes of pressure."'
+    scale:
+    - oozing
+    - bleeding
+    - hemorrhage
+    answerAt: 0
+    why: oozing은 천천히 배어 나오는 정도, bleeding은 뚜렷하게 피가 나는 정도, hemorrhage는 많은 양이 급히 나는 심한 출혈이에요. 눌러서 잡히는 가벼운 출혈은 oozing이에요.
+    example: There is some oozing at the line site, so keep a close eye on it.
+    exKo: 라인 부위에서 피가 조금 배어 나오니 잘 지켜보세요.
+  - kind: context
+    words:
+    - w-unit
+    word: units
+    ko: 단위
+    scenes:
+    - who: 혈액은행에
+      icon: monitor
+      en: Please send four units of red cells to ICU bed 3.
+      ok: true
+    - who: 보호자에게
+      icon: me
+      en: He's on unit one of the MTP at a one-to-one-to-one ratio.
+      ok: false
+      fix: We're giving him blood and clotting products right now because he's bleeding.
+    - who: 보호자에게
+      icon: me
+      en: He needs several units of blood right now, and we're getting them.
+      ok: true
+    why: 혈액은행과는 필요한 units 수를 정확히 말해야 해요. 가족에게 MTP나 비율 같은 말을 하면 상황을 이해하지 못한 채 겁만 나요. 무엇을 왜 주는지 말해 주세요.
+  - kind: swap
+    words:
+    - w-bleed
+    who: 가족에게 · 출혈 설명
+    icon: me
+    before:
+    - 'He''s '
+    - hemorrhaging
+    - ' from several places.'
+    options:
+    - bleeding
+    - hemorrhaging
+    - exsanguinating
+    answer: bleeding
+    notes:
+      bleeding: 가족이 아는 말. 사실을 그대로 전하면서 필요 이상으로 겁주지 않는다.
+      hemorrhaging: 정확한 용어지만 가족에게는 낯설고 무겁게 들린다.
+      exsanguinating: '''피를 다 쏟는다''는 극단적인 임상어라 가족에게 쓰면 큰 충격을 준다.'
+    why: 출혈은 정도를 정확히 전하되, 가족에게는 아는 말로 시작하고 필요하면 이어서 설명해요.
+    ko: 여러 부위에서 피가 나고 있어요
 - title: 급성 호흡부전 ARDS 진행
   sentences:
   - en: His oxygen is dropping fast despite high support.
@@ -6843,6 +7751,59 @@ situations:
     - w-page
     - w-anesthesia
     goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-labored
+    cue: 'Chart: "Using his neck and belly muscles with every breath, nostrils flaring."'
+    scale:
+    - comfortable
+    - labored
+    - exhausted
+    answerAt: 1
+    why: labored는 숨 쉬는 데 보조근육까지 쓰며 힘겹게 애쓰는 상태예요. comfortable은 편하게 쉬는 것, exhausted는 애쓰다 지쳐 호흡이 곧 무너질 수 있는 더 위험한 단계예요.
+    example: His breathing looks very labored right now.
+    exKo: 지금 호흡이 아주 힘겨워 보여요.
+  - kind: context
+    words:
+    - w-intubation
+    word: intubation
+    ko: 삽관
+    scenes:
+    - who: 호흡치료사에게
+      icon: monitor
+      en: Intubation cart's at the bedside. He's tiring out.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: You'll be sedated and paralyzed for intubation shortly.
+      ok: false
+      fix: We'll give you medicine to make you sleepy, then place a breathing tube to help you breathe.
+    - who: 보호자에게
+      icon: me
+      en: He's tiring, so he may need a breathing tube. That's called intubation.
+      ok: true
+    why: 팀끼리는 intubation 한마디면 충분해요. 의식이 있는 환자에게 sedated, paralyzed는 겁나는 말이라, 무슨 약을 왜 쓰고 무엇을 하는지를 쉽게 말해 주세요.
+  - kind: swap
+    words:
+    - w-ventilation
+    who: 가족에게 · 호흡 보조 안내
+    icon: me
+    before:
+    - 'We may need to escalate his '
+    - ventilation
+    - .
+    options:
+    - breathing support
+    - ventilation
+    - ventilatory support
+    answer: breathing support
+    notes:
+      breathing support: 가족이 바로 이해하는 말. 호흡을 더 돕겠다는 뜻이 분명하다.
+      ventilation: 의료진 용어. 가족은 방 환기처럼 들을 수 있다.
+      ventilatory support: 정식 용어지만 길고 낯설어 가족에게는 맞지 않는다.
+    why: ventilation은 일반인에게 '환기'처럼 들려요. 가족에게는 '호흡 보조'처럼 하는 일이 보이는 말로 해 주세요.
+    ko: 그분 호흡 보조를 늘려야 할 수도 있어요
 - title: 급성 신손상 CRRT 필요
   sentences:
   - en: He's making almost no urine and his potassium is climbing.
@@ -6918,6 +7879,59 @@ situations:
     - w-potassium
     - w-higher
     goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-climb
+    cue: 'Chart: "Potassium 5.2, then 5.3, then 5.4 over the shift."'
+    scale:
+    - creep up
+    - climb
+    - spike
+    answerAt: 0
+    why: 칼륨이 조금씩 오르는 건 creep up, 뚜렷하게 오르는 건 climb, 짧은 시간에 치솟는 건 spike예요. 칼륨은 오르는 속도와 높이 모두 심장 리듬에 영향을 주니 추세를 함께 보고하세요.
+    example: His potassium is climbing, so we need the renal team now.
+    exKo: 칼륨이 오르고 있어서 지금 신장내과팀이 필요해요.
+  - kind: context
+    words:
+    - w-potassium
+    word: potassium
+    ko: 칼륨
+    scenes:
+    - who: 동료에게
+      icon: monitor
+      en: His potassium is climbing and the EKG is changing. Call renal now.
+      ok: true
+    - who: 환자에게
+      icon: me
+      en: Serum potassium is critically hyperkalemic with peaked T waves.
+      ok: false
+      fix: A mineral in your blood that affects your heart is too high, so we're treating it right away.
+    - who: 보호자에게
+      icon: me
+      en: His potassium, a mineral that affects his heart rhythm, is getting too high.
+      ok: true
+    why: 팀끼리는 hyperkalemic, peaked T waves가 정확하고 짧아요. 환자에게는 칼륨이 무엇이고 왜 급한지를 심장과 연결해 쉬운 말로 설명해요.
+  - kind: swap
+    words:
+    - w-electrolyte
+    who: 가족에게 · 투석 이유
+    icon: me
+    before:
+    - 'He needs dialysis to control fluid and '
+    - electrolytes
+    - .
+    options:
+    - body salts
+    - electrolytes
+    - serum chemistries
+    answer: body salts
+    notes:
+      body salts: 몸속 염분 성분을 가족이 이해하는 말로 풀어 준다.
+      electrolytes: 정확한 용어라 팀끼리는 좋다. 가족에게는 설명을 붙여야 한다.
+      serum chemistries: 혈액 화학 검사 항목 전체를 뜻하는 약식 용어. 가족에게는 무슨 말인지 알 수 없다.
+    why: 전해질은 가족에게 '몸속 염분 같은 성분'처럼 풀어 말하면 투석이 왜 필요한지 이해가 돼요.
+    ko: 수액과 몸속 염분 수치를 조절하려면 투석이 필요해요
 - title: 괴사성 감염 응급 수술 조율
   sentences:
   - en: The infection is spreading fast and the tissue is dying.
@@ -6994,6 +8008,59 @@ situations:
     - w-team
     - w-arrive
     goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-spread
+    cue: 'Chart: "The red edge marked with a pen this morning hasn''t moved."'
+    scale:
+    - stay put
+    - creep
+    - spread
+    answerAt: 0
+    why: stay put은 번지지 않고 그대로, creep은 천천히 번짐, spread는 눈에 띄게 퍼지는 것이에요. 괴사성 연조직 감염은 spread가 빠른 게 문제라, 펜으로 경계를 표시해 두고 변화를 봐요.
+    example: The redness is spreading beyond the pen line.
+    exKo: 붉은 부위가 펜으로 그은 선을 넘어 퍼지고 있어요.
+  - kind: context
+    words:
+    - w-source
+    word: source
+    ko: 감염원
+    scenes:
+    - who: 외과 의사에게
+      icon: monitor
+      en: Source control is the priority, and the source is the left thigh.
+      ok: true
+    - who: 보호자에게
+      icon: me
+      en: Source control via radical debridement is indicated for the necrotic focus.
+      ok: false
+      fix: The surgeons need to remove the infected tissue to stop it from spreading.
+    - who: 보호자에게
+      icon: me
+      en: The source of the infection is his leg, so surgery will remove it.
+      ok: true
+    why: 팀끼리는 source control, debridement가 정확하고 짧아요. 가족에게는 감염이 어디서 오는지, 수술이 무엇을 없애는지를 쉬운 말로 설명해요.
+  - kind: swap
+    words:
+    - w-septic
+    who: 가족에게 · 수술 시급성
+    icon: me
+    before:
+    - 'This can turn '
+    - septic
+    - ' within hours if we don''t get him to the OR now.'
+    options:
+    - life-threatening
+    - septic
+    - bacteremic
+    answer: life-threatening
+    notes:
+      life-threatening: 왜 서둘러야 하는지 가족이 바로 이해한다.
+      septic: 정확한 임상어. 가족에게는 의미가 모호하고 무섭게만 들릴 수 있다.
+      bacteremic: 혈액에 균이 있다는 정확한 용어. 가족에게는 낯설다.
+    why: 급박한 이유는 숨기지 말되, 용어보다 결과를 말하면 가족이 결정을 서두르는 이유를 이해해요.
+    ko: 지금 수술실로 가지 않으면 몇 시간 안에 생명이 위험해질 수 있어요
 - title: 다장기부전 목표 재설정
   sentences:
   - en: His organs are struggling despite everything we're doing.
@@ -7061,3 +8128,56 @@ situations:
     words:
     - w-want
     goal: 2
+  nuance:
+  - kind: slider
+    words:
+    - w-struggle
+    cue: 'Nurse to family: "His kidneys, liver, and lungs have all stopped working, even with the machines."'
+    scale:
+    - tire
+    - struggle
+    - fail
+    answerAt: 2
+    why: 장기부전 상황에서는 완곡하게만 말하면 가족이 지금의 심각성을 오해해요. tire나 struggle은 아직 버티는 느낌이고, 기능을 잃었다면 fail이라고 분명히 말해야 해요.
+    example: His organs are failing, and I want to be honest about that.
+    exKo: 그분의 장기들이 기능을 잃어 가고 있어요, 그 점은 솔직하게 말씀드리고 싶어요.
+  - kind: context
+    words:
+    - w-option
+    word: options
+    ko: 선택지
+    scenes:
+    - who: 팀 회의
+      icon: board
+      en: 'Let''s lay out the options for the family: full support or comfort-focused care.'
+      ok: true
+    - who: 보호자에게
+      icon: me
+      en: The options are full code, DNR, or comfort measures only.
+      ok: false
+      fix: We can keep doing everything, or we can focus on keeping him comfortable. We'd like to hear what he would want.
+    - who: 보호자에게
+      icon: me
+      en: The team can help you weigh the options with care and honesty.
+      ok: true
+    why: 팀끼리는 full code, DNR 같은 분류가 정확해요. 가족에게 그대로 말하면 차갑고 결정을 강요하는 느낌이에요. 쉬운 말로 선택의 의미를 풀고 환자가 원했을 것을 함께 묻는 것이 좋아요.
+  - kind: swap
+    words:
+    - w-organ
+    who: 가족에게 · 장기 상태 설명
+    icon: me
+    before:
+    - 'His '
+    - organs are very sick
+    - ' despite everything we''re doing.'
+    options:
+    - organs are failing
+    - organs are very sick
+    - organs have entered multi-system failure
+    answer: organs are failing
+    notes:
+      organs are failing: 상태를 정확하게 전하면서도 쉬운 말이다. 가족이 현실을 이해하고 결정을 준비할 수 있다.
+      organs are very sick: 부드럽지만 얼마나 심각한지가 전해지지 않아 가족이 회복을 기대하게 만들 수 있다.
+      organs have entered multi-system failure: 정확한 임상 진단명이지만 가족에게는 차갑고 어렵다.
+    why: 위중한 상황일수록 완곡어로 돌려 말하면 가족이 오해해요. 쉬운 말로 사실을 분명히, 따뜻하게 말해 주세요.
+    ko: 저희가 다 하고 있는데도 장기들이 기능을 잃어 가고 있어요
