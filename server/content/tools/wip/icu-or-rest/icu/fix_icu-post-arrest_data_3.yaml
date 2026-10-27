@@ -12,7 +12,7 @@ sent:
 # --- S16 재가온 중 혈압 붕괴 위기
 - {s: 16, i: 1, d1: "수액을 빠르게 주입하고 지금 의사를 호출합시다.", d2: "수액을 빠르게 주입하고 지금 승압제를 올립시다.", blank: {answer: bolus, options: [bolus, chart, tally, scan]}}
 - {s: 16, i: 2, d1: "재가온을 늦추기 전에 혈압을 재세요.", d2: "재가온 속도를 늦춘 뒤 15분마다 혈압을 재세요.", blank: {answer: stabilize, options: [stabilize, weigh, photograph, sterilize]}}
-- {s: 16, i: 4, d1: "혈압을 지켜보면서 두 번째 수액 볼루스를 적고 있어요.", decoy: "to the chart", blank: {answer: bolus, options: [bolus, label, sample, survey]}}
+- {s: 16, i: 4, d1: "혈압을 지켜보면서 첫 번째 수액 볼루스를 주고 있어요.", decoy: "to the chart", blank: {answer: bolus, options: [bolus, label, sample, survey]}}
 - {s: 16, i: 5, d1: "혈압이 안정될 때까지 15분마다 잽시다.", d2: "재가온 속도를 늦추기 전에 팀에 혈압을 알립시다."}
 # --- S17 냉각 중 부정맥 위기
 - {s: 17, i: 1, d1: "부정맥을 처치하면서 제세동 패드를 붙여 둡시다.", d2: "부정맥을 처치하는 동안 심전도도 찍읍시다.", blank: {answer: arrhythmia, options: [arrhythmia, rash, seizure, infection]}}

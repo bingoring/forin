@@ -71,13 +71,19 @@ changes:
   index: 4
   fields:
   - words
-  why: 쉬운 w-new 태그 뺌
+  - en
+  - ko
+  - chunks
+  why: 쉬운 w-new 태그 뺌 / 사실·안전·약속 문제로 문장 수정(검토 A) / 태그 정리
 - kind: sentence
   situation: 스테로이드 보조 판단
   index: 4
   fields:
   - words
-  why: 쉬운 w-hour 태그 뺌
+  - en
+  - ko
+  - chunks
+  why: 쉬운 w-hour 태그 뺌 / 사실·안전·약속 문제로 문장 수정(검토 A)
 - kind: sentence
   situation: 장기부전 진행 모니터
   index: 2
@@ -131,7 +137,10 @@ changes:
   index: 4
   fields:
   - words
-  why: 쉬운 w-hand 태그 뺌
+  - en
+  - ko
+  - chunks
+  why: 쉬운 w-hand 태그 뺌 / 사실·안전·약속 문제로 문장 수정(검토 A)
 - kind: sentence
   situation: 다제내성 의심 경험적 확대
   index: 3
@@ -149,7 +158,8 @@ changes:
   index: 1
   fields:
   - words
-  why: 쉬운 w-see 태그 뺌
+  - ko
+  why: 쉬운 w-see 태그 뺌 / ko를 en에 맞게 고침(검토 A)
 - kind: sentence
   situation: 불응성 패혈성 쇼크 다중승압
   index: 2
@@ -209,7 +219,8 @@ changes:
   index: 4
   fields:
   - words
-  why: 쉬운 w-wrong 태그 뺌; 쉬운 w-answer 태그 뺌; 쉬운 w-talk 태그 뺌
+  - chunks
+  why: 쉬운 w-wrong 태그 뺌; 쉬운 w-answer 태그 뺌; 쉬운 w-talk 태그 뺌 / 구 경계에서 다시 쪼갬(검토 A)
 - kind: word
   id: w-check
   fields:
@@ -286,7 +297,8 @@ changes:
   fields:
   - en
   - ipa
-  why: 활용형을 원형으로
+  - example
+  why: 활용형을 원형으로 / 예문으로 쓰던 문장이 바뀌어 새 문장으로
 - kind: word-remove
   id: w-minute
   why: 너무 쉬움 — 어느 문장도 태그하지 않게 됐다
@@ -429,7 +441,8 @@ changes:
   fields:
   - en
   - ipa
-  why: 활용형을 원형으로
+  - ko
+  why: 활용형을 원형으로 / ko를 문장 속 뜻에 맞게(검토 A 결정 11)
 - kind: word
   id: w-update
   fields:
@@ -551,7 +564,7 @@ changes:
   id: w-steady
   fields:
   - ko
-  why: ko '안정된'이 w-stable '안정적인'과 같아 정답이 겹친다 — 가름
+  why: ko '안정된'이 w-stable '안정적인'과 같아 정답이 겹친다 — 가름 / ko를 문장 속 뜻에 맞게(검토 A 결정 11)
 - kind: word
   id: w-precaution
   fields:
@@ -578,13 +591,15 @@ changes:
   fields:
   - en
   - ipa
-  why: 복수형을 원형으로
+  - example
+  why: 복수형을 원형으로 / 예문으로 쓰던 문장이 바뀌어 새 문장으로
 - kind: word
   id: w-enter
   fields:
   - en
   - ipa
-  why: 활용형을 원형으로
+  - example
+  why: 활용형을 원형으로 / 예문으로 쓰던 문장이 바뀌어 새 문장으로
 - kind: word
   id: w-broaden
   fields:
@@ -641,11 +656,6 @@ changes:
   - ko
   why: 활용형을 원형으로; 활용형(progressing)을 원형으로 바꾸며 ko도 원형 뜻으로
 - kind: word
-  id: w-therapy
-  fields:
-  - ko
-  why: ko '치료(요법)'가 w-treatment '치료'와 겹친다 — '요법'으로 가름
-- kind: word
   id: w-climb
   fields:
   - en
@@ -674,7 +684,7 @@ changes:
   - en
   - ipa
   - ko
-  why: 활용형을 원형으로; 활용형(dying)을 원형으로 바꾸며 ko도 원형 뜻으로
+  why: 활용형을 원형으로; 활용형(dying)을 원형으로 바꾸며 ko도 원형 뜻으로 / ko를 문장 속 뜻에 맞게(검토 A 결정 11)
 - kind: word
   id: w-arrive
   fields:
@@ -720,3 +730,90 @@ changes:
 - kind: word-remove
   id: w-talk
   why: 너무 쉬움 — 어느 문장도 태그하지 않게 됐다
+- kind: word
+  id: w-delay
+  fields:
+  - example
+  why: 예문으로 쓰던 문장이 바뀌어 새 문장으로
+- kind: word
+  id: w-treatment
+  fields:
+  - example
+  why: 예문으로 쓰던 문장이 바뀌어 새 문장으로
+- kind: word
+  id: w-support
+  fields:
+  - ko
+  why: ko를 문장 속 뜻에 맞게(검토 A 결정 11)
+- kind: word
+  id: w-current
+  fields:
+  - example
+  why: 예문으로 쓰던 문장이 바뀌어 새 문장으로
+- kind: word
+  id: w-round
+  fields:
+  - ko
+  why: ko를 문장 속 뜻에 맞게(검토 A 결정 11)
+- kind: word
+  id: w-escalate
+  fields:
+  - example
+  why: 예문으로 쓰던 문장이 바뀌어 새 문장으로
+- kind: word
+  id: w-agent
+  fields:
+  - example
+  why: 예문으로 쓰던 문장이 바뀌어 새 문장으로
+- kind: word
+  id: w-wear
+  fields:
+  - example
+  why: 예문으로 쓰던 문장이 바뀌어 새 문장으로
+- kind: word
+  id: w-gown
+  fields:
+  - example
+  why: 예문으로 쓰던 문장이 바뀌어 새 문장으로
+- kind: word
+  id: w-wash
+  fields:
+  - example
+  why: 예문으로 쓰던 문장이 바뀌어 새 문장으로
+- kind: word-remove
+  id: w-therapy
+  why: 17.2의 therapy는 부서(호흡치료팀)라 가르칠 단어가 아님 — 태그를 뺐다
+- kind: word-remove
+  id: w-fully
+  why: 9.4 문장 수정으로 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-effect
+  why: 9.4 문장 수정으로 어느 문장도 태그하지 않게 됐다
+- kind: sentence
+  situation: 젖산·혈액배양 채취
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  why: 사실·안전·약속 문제로 문장 수정(검토 A)
+- kind: sentence
+  situation: 광범위 항생제 신속 투여
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  why: 사실·안전·약속 문제로 문장 수정(검토 A)
+- kind: sentence
+  situation: 감염원 병력·부위 사정
+  index: 0
+  fields:
+  - ko
+  why: ko를 en에 맞게 고침(검토 A)
+- kind: sentence
+  situation: 급성 호흡부전 ARDS 진행
+  index: 2
+  fields:
+  - words
+  why: 태그 정리

@@ -70,6 +70,18 @@ for wid, (offs, alts) in rows.items():
             cur[cur.index(o)] = alts[i]
         elif o not in cur:
             print('  [row mismatch]', wid, 'offender', o, 'not in', cur)
+# Fable 표에서 A 표가 덮지 못한 나머지 오답(예: harm의 farm, trend의 tread, result의 reset)
+for wid, ans, off, alt in re.findall(r"^\| (w-[\w-]+) \| (.*?) \| (.*?) \| → (.*?) \|$", txtJ, re.M):
+    if wid not in W:
+        continue
+    alts = parse_alts(alt)
+    offs = [re.sub(r"\(.*?\)", "", t).strip() for t in off.split(',')]
+    cur = W[wid]['distractorsEn']
+    for o in offs:
+        if o in cur:
+            spare = [a for a in alts if a not in cur and a != W[wid]['en']]
+            if spare:
+                cur[cur.index(o)] = spare[0]
 for wid, lst in d4['dEn_set'].items():
     W[wid]['distractorsEn'] = lst
 removed = set(d4['word_remove'])
