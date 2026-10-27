@@ -62,6 +62,19 @@ keyPhrase 아니던 2건 바로 고침(mech-ventilation 2.4 drain·8.3 doesn't a
   | icu-airway | 40(9) | 106(55·22) |
   | icu-delirium | 33(3) | 79(33·18) |
   | icu-pain-nonverbal | 37(6) | 67(21·21) |
-  keyPhrase 결정 22건(사용자 '추천대로') — 바꿈 18(작업 `../kp-2026-10-27/`), 그대로 4(colors·nebulized epi·secure him·comfortable·naloxone 중 5 — 위 표 참고). 모든 keyPhrase 원문 63/63 대조 후 합침.
+  keyPhrase 결정 22건(사용자 '추천대로', 한 건이 두 문장을 묶어 문장으로는 23) — 바꾼 문장 18(작업 `../kp-2026-10-27/`), 그대로 둔 문장 5(colors·nebulized epi·secure him·comfortable·naloxone). 모든 keyPhrase 원문 63/63 대조 후 합침.
   V21 금칙어 확대 + distractorsEn까지 검사 → 정본 ER 21·ICU 3·OR 1건 함께 정리.
-  남은 ICU: post-arrest(Fable 표본)·sepsis(처음부터)·미착수 19 · OR 33 전부.
+  남은 ICU: post-arrest(Fable 표본)·sepsis(처음부터)·미착수 19 · OR 33 전부. → 묶음 4로 이어짐.
+
+- **묶음 4 (ICU 4주제, 2026-10-27, 이 세션)**: post-arrest(Fable 표본 판정 A·B 포함)·sepsis·aki-crrt·electrolytes, 모두 처음부터. 같은 공정.
+  B 저작 지시에 앞선 묶음에서 많이 걸린 안전 실패 유형(확인 대상만 바꾸기·판단 기준 바꾸기·정답에 말 덧붙이기·엉뚱한 빈칸 오답)을 미리 적었으나, 검토 B 안전 지적은 여전히 많았다.
+  | 주제 | 검토 A(안전) | 검토 B(안전·정답 둘) | Fable 판정 | changes(수정 후) |
+  |---|---|---|---|---|
+  | icu-post-arrest | 41(3) | 95(48·35) | A 84건(pair 둘 다 정답 둘) · B 70(2·12) | 70 |
+  | icu-aki-crrt | 46(3) | 97(46·32) | — | 99 |
+  | icu-electrolytes | 68(5) | 58(26·18) | — | 145 |
+  | icu-sepsis | 38(4) | 48(18·4) + 빈칸 100문장 다시 | — | 145 |
+  메인 세션 조정: post-arrest 16.4 오답 "볼루스를 적고 있어요"(처치를 기록으로 바꿈) → "첫 번째 볼루스를 주고 있어요".
+  keyPhrase 결정(사용자 '추천대로', 2026-10-27): 바꿈 9(post-arrest Deep hypothermia→Overcooling below our target·tightly controlled·potassium shifts /
+  aki-crrt metabolic alkalosis→acidosis(w-alkalosis→w-acidosis, 상황 17 tagline·brief도)·ionized calcium / electrolytes balanced·start·call for / sepsis fever 분리),
+  그대로 3(Cold hearts·central line·MTP ready), keyPhrase chunks 구 경계 다시 자르기 허용, electrolytes 17.5·15.5 "오면 보고·상의" 오답은 다음 단계라 유지. 작업 `../kp-2026-10-27b/`.
