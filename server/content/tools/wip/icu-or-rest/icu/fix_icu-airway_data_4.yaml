@@ -1,0 +1,179 @@
+# 단어·뉘앙스·order 수정
+words:
+  w-hold:
+    ko: "잡고 있다"
+    cue: "손으로 붙잡아 움직이지 않게 받쳐 두는 동사"
+    distractorsKo: ["놓아 주다", "문지르다"]
+    distractorsEn: [fold, howl]
+  w-reoxygenate:
+    cue: "산소포화도가 떨어진 뒤에 다시 산소를 충분히 채워 주는 일"
+  w-overinflate:
+    cue: "출혈을 누르려고 커프에 평소보다 훨씬 많이 공기를 넣어 부풀리는 일"
+  w-epinephrine:
+    cue: "심정지나 아나필락시스·기도 부종 때 쓰는 강한 승압·기관지 확장 약"
+  w-crisis:
+    distractorsEn: [critic, cursor]
+  w-bagmask:
+    distractorsEn: ["gas-mask", "nasal-mask"]
+  w-periintubation:
+    en: "peri-intubation"
+    chips: [["peri-", intub, ation]]
+    decoyChips: ["pre-", tuba]
+    distractorsEn: ["post-intubation", "pre-intubation"]
+    distractorsKo: ["발관 전후의", "수술 전후의"]
+  w-label:
+    distractorsEn: [labored, leveled]
+  w-safer:
+    chips: [[saf, er]]
+    decoyChips: [sav, est]
+  w-number:
+    cue: "모니터나 검사에서 측정해 나온 값"
+  w-bradycardia:
+    chips: [[brady, car, dia]]
+    decoyChips: [bran, dye]
+  w-desaturate:
+    decoyChips: [dee, sit]
+  w-deflate:
+    decoyChips: [dee, flap]
+  w-device:
+    decoyChips: [dee, vise]
+  w-cricothyrotomy:
+    decoyChips: [cry, tome]
+  w-surgery:
+    ko: "외과"
+    cue: "수술을 맡는 진료과 — 급할 때 전화로 부르는 팀"
+    distractorsKo: ["내과", "영상의학과"]
+  w-drug:
+    ko: "약(성분)"
+  w-bedside:
+    tag: "체위·시야"
+  w-past:
+    tag: "일반 표현"
+# 품사·불쾌한 오답 교체 (옛 값 -> 새 값) — 표에 없는 것
+dEn_swap:
+  w-hoarse: {hearse: hollow}
+  w-struggle: {strangle: straggle}
+  w-swab: {stab: swap}
+  w-stay: {slay: sway}
+  w-lower: {lover: loosen}
+  w-underneath: {underwear: underway}
+  w-nasal: {nasty: basal}
+  w-swelling: {shelling: spelling, swelter: swallowing}
+# A 표의 대안이 W13(같은 단어의 다른 형태)을 내는 곳은 다른 같은 품사 말로
+dEn_set:
+  w-more: [mere, mare]
+  w-less: [last, lest]
+  w-later: [lower, rather]
+  w-hard: [harsh, hairy]
+tag_general: [closer, anything, after, best, more, less, only, first, safe, easier, higher, common, closely, process, little, longer, slowly, step, old, new, different, right, separately, must, fully, well, own, regular, care, often, instead, chance, later, easily, next, again, safer]
+word_remove: [w-fault]
+
+nuance:
+- {s: 0, kind: context, set: {ko: "점검하다"}}
+- s: 2
+  kind: pair
+  set:
+    why: "sniffing position은 어깨 아래가 아니라 머리 밑을 받쳐 목은 앞으로 굽히고 머리는 뒤로 젖혀 입·인두·후두가 한 줄에 가깝게 놓이게 하는 삽관 자세예요. BURP는 후두를 뒤(Backward)·위(Upward)·오른쪽(Rightward)으로 눌러(Pressure) 성대가 더 잘 보이게 하는 조작(maneuver)이에요."
+- {s: 2, kind: context, scene: {1: {en: "Tell me if the pressure is helping your view."}}}
+- {s: 3, kind: context, scene: {2: {fix: "We've secured the breathing tube firmly so it stays in place."}}, set: {why: "의료진끼리는 몇 cm에서 고정했는지 숫자나 holder 같은 말로 고정 상태를 짧게 알려요. 가족에게는 dentition이나 protocol 같은 말이 딱딱해요. 튜브를 단단히 붙여 두었다고 쉬운 말로 알려 줘요."}}
+- {s: 4, kind: pair, set: {decoys: ["the wristband"]}}
+- s: 10
+  kind: slider
+  set:
+    scale: ["keep going quietly", "give oxygen to face and stoma", "take the cuff down"]
+    why: "교체 중 포화도가 떨어지면 밀어붙이지 말고 산소부터 줘요(관이 빠져 있으면 얼굴과 스토마로). 새 관을 넣은 뒤라면 가짜 길로 들어갔을 수 있으니 EtCO₂로 위치를 확인해요. 커프를 내리는 것은 해결책이 아니에요."
+    example: "He's desaturating, so we give oxygen to his face and stoma."
+    exKo: "산소포화도가 떨어지고 있어서 얼굴과 스토마로 산소를 줘요."
+- s: 10
+  kind: context
+  scene:
+    0: {en: "This is his first trach change, so I've kept the airway cart close."}
+    1: {en: "Is this his first change since the surgery?"}
+- s: 11
+  kind: slider
+  set:
+    scale: ["keep ventilating as planned", "adjust and recheck placement", "pull the tube out"]
+    why: "기관지경으로 위치가 확인되고 양쪽 폐 소리도 맞으면 위치가 맞는 거라 계획대로 환기를 이어 가요. 위치가 의심스러울 때만 조정해서 다시 확인하고, 튜브를 빼는 것은 이 상황에 맞지 않아요."
+    example: "Placement is confirmed, so we keep ventilating as planned."
+    exKo: "위치가 확인됐으니 계획대로 환기를 이어 가요."
+- s: 11
+  kind: context
+  scene:
+    1: {en: "Can you listen to each lung while the doctor clamps?"}
+    2: {who: "가족에게", en: "We are using one-lung ventilation to isolate the affected lung.", fix: "A special tube lets each lung get air separately, so the healthy lung stays protected."}
+  set:
+    why: "의료진끼리는 one-lung ventilation이나 isolate the affected lung처럼 짧고 정확한 말을 써요. 가족에게는 폐를 격리한다는 말이 겁나고 낯설어요. 특수 튜브로 폐를 따로 환기해 건강한 폐를 지킨다고 쉽게 풀어 줘요."
+- s: 12
+  kind: slider
+  set:
+    why: "밸브를 달고 숨을 헐떡이며 목 근육까지 쓰면 호흡곤란이에요. 참고 견디게 하거나 더 기다리지 말고 밸브를 바로 빼요. 밸브는 의식이 또렷하고 스스로 잘 숨쉴 때만 써요. 밸브를 뺀 뒤 커프가 완전히 빠져 있었는지 다시 확인해요 — 커프가 부푼 채 밸브를 달면 숨을 내쉴 길이 없어요."
+- {s: 12, kind: context, scene: {0: {en: "I've confirmed the cuff is deflated before placing the speaking valve."}}}
+- {s: 13, kind: pair, set: {decoys: ["the call light"]}}
+- s: 15
+  kind: slider
+  set:
+    cue: "Doctor: \"Two intubation attempts and the supraglottic airway failed, bag-mask isn't working, and his sat is 70.\""
+    why: "삽관도, 성문상 기도기도, 백마스크도 실패해 산소화가 안 되고 포화도가 계속 떨어지면 계속 시도하거나 기다릴 수 없어요. 이때는 CICO를 선언하고 윤상갑상막절개술 키트를 열어 외과적 기도를 바로 확보해요."
+- {s: 15, kind: context, scene: {0: {en: "This is an airway emergency — I'm opening the cric kit."}}}
+- {s: 16, kind: context, scene: {0: {en: "I think his bradycardia is from hypoxia — he needs oxygen first."}}}
+- {s: 17, kind: context, scene: {0: {en: "He's scared and confused, so I'm talking him through it."}}}
+- {s: 18, kind: context, scene: {0: {en: "The bleeding is heavy, and I'm keeping the airway secured."}}}
+- {s: 19, kind: context, scene: {0: {en: "There's no CO2 — I think the tube is not in the trachea."}}}
+- {s: 20, kind: context, scene: {0: {en: "His airway is obstructing — I'm calling the difficult airway team."}}}
+
+order:
+- s: 0
+  lines:
+    3: {en: "If any of that looks off to you, tell me before we start.", ko: "그중 이상해 보이는 게 있으면 시작하기 전에 말해 주세요"}
+- s: 4
+  lines:
+    3: {en: "With the ties done, I make sure the humidifier has enough water.", ko: "끈 작업이 끝났으니 가습기에 물이 충분한지 확인해요"}
+- s: 5
+  why: "곧 만진다고 먼저 알리고, 옛 드레싱을 뗀 뒤 스토마를 닦고, 열려 있는 동안 피부를 살핀 다음, 새 드레싱을 붙이고 본 것을 기록해요."
+  lines:
+    1: {en: "With the old dressing off, I clean the stoma.", ko: "옛 드레싱을 뗐으니 스토마를 닦아요"}
+    2: {en: "While it's open, I check the skin for redness or breakdown.", ko: "열려 있는 동안 피부에 발적이나 손상이 있는지 확인해요"}
+    3: {en: "Then a fresh dressing goes on, and I document what I saw.", ko: "그다음 새 드레싱을 붙이고 본 것을 기록해요", icon: pencil}
+- s: 6
+  lines:
+    3: {en: "Once we've agreed on that, I'll keep it all within reach of the bed.", ko: "그렇게 합의했으면 그 모두를 침대에서 손 닿는 곳에 둘게요"}
+- s: 8
+  why: "삽관 직후 저혈압이 흔하다고 알리고, 그래서 시작 전에 승압제를 준비한 뒤, 삽관되고 나면 혈압을 지켜보다가, 계속 떨어지면 숫자를 불러요."
+  lines:
+    0: {en: "Sudden hypotension right after intubation is common.", icon: chartup, ko: "삽관 직후 갑작스러운 저혈압은 흔해요", note: "위험"}
+    1: {en: "So let's have a pressor ready before we start.", icon: pill, ko: "그러니 시작하기 전에 승압제를 준비해 둬요", note: "준비"}
+    2: {en: "Once he's intubated, I'll watch his pressure closely.", icon: monitor, ko: "삽관되고 나면 혈압을 면밀히 지켜볼게요", note: "감시"}
+- s: 9
+  lines:
+    1: {en: "Those signs mean the burns are swelling, so early intubation is safer.", ko: "그 징후는 화상이 붓고 있다는 뜻이라 조기 삽관이 더 안전해요"}
+    3: {en: "If we wait for them, his airway could close off.", ko: "그들을 기다리면 기도가 막힐 수 있어요"}
+- s: 10
+  lines:
+    0: {en: "This is his first change, so we'll go slowly and I'll explain each step to him.", ko: "첫 교체라서 천천히 진행하고, 단계마다 환자에게 설명해 드릴게요"}
+    3: {en: "With that ready, I'll hold his head steady while you remove the old tube.", ko: "그게 준비됐으니 기존 튜브를 빼는 동안 머리가 움직이지 않게 잡고 있을게요"}
+- s: 11
+  lines:
+    0: {en: "This patient needs a double-lumen tube for one-lung ventilation to protect the good lung.", ko: "이 환자는 건강한 쪽 폐를 보호하려고 이중내강 튜브로 한쪽 폐 환기가 필요해요"}
+    3: {en: "While you clamp one side, I'll auscultate to verify isolation.", ko: "한쪽을 잠가 주시면 분리됐는지 청진할게요"}
+- s: 12
+  lines:
+    3: {en: "If talking makes him struggle, I take the valve off right away.", ko: "말하다가 힘겨워하면 바로 밸브를 빼요"}
+- s: 13
+  lines:
+    2: {en: "With him turned, we brush his teeth and swab his mouth on a schedule.", ko: "자세를 바꿨으니 일정에 따라 이를 닦고 입안을 면봉으로 닦아요"}
+- s: 14
+  lines:
+    1: {ko: "응급 상황에서는 흡인은 당신이 맡고, 약물은 제가 관리할게요"}
+- s: 15
+  why: "위기 이름을 먼저 선언하고, 지원을 요청한 뒤, 지원이 오는 동안 산소화를 이어 가며 외과적 기도를 준비하고, 시술자가 위치를 표시하면 메스를 바로 쓸 수 있다고 알려요."
+  lines:
+    2: {en: "While backup comes, I'll keep oxygenating as we prepare the surgical airway.", ko: "지원이 오는 동안 외과적 기도를 준비하면서 계속 산소화할게요"}
+    3: {en: "The scalpel is ready as soon as you mark the membrane for it.", icon: scalpel, ko: "그걸 위해 윤상갑상막 위치를 표시하시면 바로 쓸 수 있게 메스가 준비돼 있어요", note: "메스"}
+- s: 16
+  why: "시도를 멈추고 산소화부터 하고, 그동안 심박수를 소리 내어 알리고, 산소로 안 오르면 아트로핀을 줄지 물어보고, 회복되면 다시 시도해요."
+  lines:
+    2: {en: "Should I push atropine for the bradycardia if he still isn't improving after that?", ko: "그래도 호전되지 않으면 서맥에 아트로핀을 주입할까요?"}
+- s: 18
+  lines:
+    2: {en: "Once they're here, I'll keep firm pressure on while you set up the airway cart.", ko: "그들이 오면 당신이 기도 카트를 준비하는 동안 저는 단단히 압박을 유지할게요"}
+    3: {en: "With the cart set up, keep watching for blood loss and call out the numbers.", ko: "카트가 준비되면 출혈이 더 늘어나는지 계속 보고 숫자를 불러 주세요"}

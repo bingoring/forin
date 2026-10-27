@@ -54,3 +54,14 @@ Sonnet 저작 A(단어·뉘앙스) ‖ B(문장 낱장·order) → `combine_halv
 resp-support 9.2·13.0·16.2(We need to escalate now), sedation 18.1(PRN per order)·19.1(get orders), shock 20.0(caring for him)·17.1(pressure line)·15.1(goals of care)),
 keyPhrase 아니던 2건 바로 고침(mech-ventilation 2.4 drain·8.3 doesn't always mean), 그대로 4건(ards S16.2, cardiogenic heparin, hemodynamics falsely low, shock 10% — why 보강).
 작업 `../kp-2026-10-26/`, 딸린 order·nuance·예문·v46 필드 함께. 은행에서 w-bit·w-draw·w-treatment 제거. 남은 결정 대기 없음.
+
+- **묶음 3 (ICU 4주제, 2026-10-27, 이 세션)**: airway·delirium(B 저작부터)·infection-prevention·pain-nonverbal(처음부터). 같은 공정, 수정은 `.pre-fix.yaml`을 읽어 다시 돌릴 수 있음.
+  | 주제 | 검토 A(안전) | 검토 B(안전·정답 둘) |
+  |---|---|---|
+  | icu-infection-prevention | 31(3) | 147(49·27) |
+  | icu-airway | 40(9) | 106(55·22) |
+  | icu-delirium | 33(3) | 79(33·18) |
+  | icu-pain-nonverbal | 37(6) | 67(21·21) |
+  keyPhrase 결정 22건(사용자 '추천대로') — 바꿈 18(작업 `../kp-2026-10-27/`), 그대로 4(colors·nebulized epi·secure him·comfortable·naloxone 중 5 — 위 표 참고). 모든 keyPhrase 원문 63/63 대조 후 합침.
+  V21 금칙어 확대 + distractorsEn까지 검사 → 정본 ER 21·ICU 3·OR 1건 함께 정리.
+  남은 ICU: post-arrest(Fable 표본)·sepsis(처음부터)·미착수 19 · OR 33 전부.

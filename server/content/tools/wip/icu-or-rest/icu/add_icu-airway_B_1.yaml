@@ -1,0 +1,56 @@
+# [tag, icon, why, decoy, ko1, ko2, ans, w1, w2, w3]
+situations:
+- title: 삽관 물품 준비·점검
+  s:
+  - ["장비 점검", gear, "'test'와 'check'를 나란히 쓰면 장비마다 어떤 점검을 하는지 팀에게 분명히 들려요. 삽관 전에는 불빛과 커프를 먼저 봐요.", "the oxygen tubing", "후두경 손잡이를 테스트하고 튜브 커프를 확인할게요.", "후두경 불빛을 테스트하고 튜브 테이프를 확인할게요.", "cuff", "tip", "label", "clamp"]
+  - ["장비 상태", gear, "'set up and working'은 설치와 작동을 한 번에 보고해서 팀이 따로 되묻지 않게 해요. 현재형이라 지금 쓸 수 있다는 뜻이 돼요.", "near the door", "흡인기는 문 앞에 설치돼 있고 작동합니다.", "산소 장비는 침상 곁에 설치돼 있고 작동합니다.", "bedside", "station", "doorway", "storeroom"]
+  - ["준비 보고", pill, "'I've got'은 이미 갖춰 놓았다는 완료 보고예요. 크기를 둘 두는 건 한 사이즈가 안 맞을 때 바로 바꿔 쓰려는 대비예요.", "from the pharmacy", "튜브 세 사이즈와 약물을 준비해 뒀어요.", "마스크 두 사이즈와 약물을 준비해 뒀어요.", "sizes", "brands", "colors", "packs"]
+  - ["만약 대비", shield, "'in case'는 아직 필요하지 않아도 미리 준비한다는 뜻이에요. 응급 장비는 필요해진 뒤가 아니라 손 닿는 곳에 먼저 둬요.", "because he asked", "혹시 필요할 경우를 대비해 흡인 카테터를 꺼내 둘게요.", "혹시 필요할 경우를 대비해 산소 마스크를 꺼내 둘게요.", "lay out", "hand over", "clean up", "carry off"]
+  - ["동선 정리", compass, "'closer'로 거리를 비교해 말하면 카트를 얼마나 옮기는지가 짧게 전달돼요. 'before we start'는 시작 전에 끝낼 일이라는 신호예요.", "after the shift", "시작하기 전에 기도 카트를 더 가까이 옮겨 놓을게요.", "시작하기 전에 약물 카트를 더 가까이 끌어다 놓을게요.", "closer", "heavier", "wider", "older"]
+  - ["이상 보고 요청", speech, "'Tell me if'로 시작하면 이상이 있을 때 말해 달라는 요청이 부드럽게 전달돼요. 'looks off'는 정확한 이름을 몰라도 이상을 말하게 해 줘요.", "about the tray", "트레이에 뭔가 이상해 보이면 알려 주세요.", "서랍에 뭔가 이상해 보이면 말해 주세요.", "tray", "drawer", "shelf", "wrapper"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 삽관 물품 준비 4문장 순서
+    why: 카트를 가까이 옮겨 작업 공간을 만든 뒤 장비를 점검하고, 그걸 보고한 다음 마지막으로 이상이 있으면 말해 달라고 요청해요.
+    lines:
+    - ["Let me pull the airway cart closer before we start.", gear, "시작하기 전에 기도 카트를 더 가까이 끌어다 놓을게요", "카트"]
+    - ["I'll test the laryngoscope light and check the tube cuff on it.", check, "그 위에서 후두경 불빛을 테스트하고 튜브 커프를 확인할게요", "점검"]
+    - ["All of that is set up and working at the bedside.", monitor, "그 모두가 침상 곁에 설치돼 있고 작동해요", "보고"]
+    - ["Tell me if any of that looks off to you.", speech, "그중 이상해 보이는 게 있으면 말해 주세요", "요청"]
+- title: RSI 약물 준비 보조
+  s:
+  - ["약물 준비", pill, "'separate syringes'로 나눠 말하면 두 약을 섞지 않았다는 점이 분명해져요. 진정제가 먼저, 근이완제가 그다음이라 순서가 헷갈리지 않아요.", "in one syringe", "진정제와 승압제를 각각 다른 주사기에 나눠서 준비했어요.", "진정제와 근이완제를 각각 다른 카트에 나눠서 준비했어요.", "separate", "single", "empty", "sterile"]
+  - ["라벨 확인", pencil, "'labeled with'로 무엇이 적혀 있는지 말하면 확인 내용이 구체적이 돼요. 이름과 용량이 함께 있어야 주사기만 보고도 약을 구별해요.", "by the pharmacist", "각 주사기에는 약물 이름과 시간이 표시돼 있어요.", "각 용기에는 약물 이름과 용량이 표시돼 있어요.", "labeled", "stored", "washed", "warmed"]
+  - ["용량 확인", check, "'before you push them'으로 시점을 못 박아 주입 전에 확인한다는 약속이 돼요. 'with you'라 혼자 아니라 둘이 함께 본다는 뜻이에요.", "after you push", "주입하기 전에 용량을 간호사와 함께 확인할게요.", "주입하기 전에 이름을 같이 확인할게요.", "doses", "labels", "names", "prices"]
+  - ["투여 순서", compass, "'to go first'로 순서를 말하면 약마다 언제 들어가는지 팀이 같은 그림을 가져요. 'ready'는 지금 쓸 수 있다는 상태 보고예요.", "to go home", "유도 약제가 먼저 투여될 준비가 됐어요.", "유도 약제가 먼저 주문될 준비가 됐어요.", "first", "last", "twice", "alone"]
+  - ["다음 약 전달", handshake2, "'right after'는 첫 약 바로 뒤에 이어진다는 시간 표현이라 팀의 타이밍을 맞춰요. 'hand you'는 직접 건넨다는 뜻이에요.", "right before", "그 다음에 근이완제를 바로 전해 드릴게요.", "그 다음에 진정제를 바로 건네드릴게요.", "hand", "send", "show", "read"]
+  - ["농도 재확인", magnify, "'double-check'는 이미 본 것을 한 번 더 본다는 말이에요. 농도가 달라지면 같은 양도 용량이 달라져서 시작 전에 맞춰요.", "after we start", "시작하기 전에 라벨을 다시 한번 확인해요.", "시작하기 전에 농도를 한 번 더 말해요.", "double-check", "write down", "give out", "talk about"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: RSI 약물 보조 4문장 순서
+    why: 약을 나눠 준비해 라벨을 확인하고, 시작 전에 농도를 같이 맞춘 뒤, 주입 순서에 따라 약을 건네요.
+    lines:
+    - ["I've drawn up the sedative and the paralytic in separate syringes.", pill, "진정제와 근이완제를 각각 다른 주사기에 준비했어요", "준비"]
+    - ["Each of them is labeled with the drug name and dose.", pencil, "각각에 약물 이름과 용량이 적혀 있어요", "라벨"]
+    - ["Let's double-check the concentration on both before we start.", magnify, "시작하기 전에 둘 다 농도를 다시 확인해요", "확인"]
+    - ["The induction agent goes first, and I'll hand you the other right after.", handshake2, "유도 약제가 먼저고 다른 약은 바로 뒤에 건네드릴게요", "순서"]
+- title: 삽관 체위·BURP 보조
+  s:
+  - ["체위 설명", baby, "'for the best view'로 목적을 붙이면 왜 그 자세인지 의료진에게 바로 이해돼요. 스니핑 자세는 후두 시야를 확보하는 표준 체위예요.", "for his comfort", "최선의 시야를 위해 스니핑 자세로 뒤집어 드릴게요.", "최선의 시야를 위해 옆으로 눕는 자세로 눕혀 드릴게요.", "sniffing", "recovery", "sitting", "standing"]
+  - ["압박 조정", speech, "'how you want'로 묻으면 시술자가 원하는 강도를 직접 말하게 돼요. BURP는 후두 시야를 조정하는 외부 압박 기법이라 시술자의 눈에 맞춰요.", "who will do", "BURP 압박을 어디서 조정하길 원하는지 말씀해 주세요.", "BURP 압박을 어떻게 설명하길 원하는지 말씀해 주세요.", "adjusted", "removed", "repeated", "measured"]
+  - ["압박 방향", compass, "방향 세 가지를 쉼표로 이어 말하면 한 번 듣고 따라 할 수 있어요. 'now'를 끝에 붙여 지금 바로 하라는 지시가 돼요.", "downward", "지금 연골에 뒤로, 아래로, 오른쪽으로 압박을 주세요.", "지금 연골에 뒤로, 위로, 왼쪽으로 압박을 주세요.", "upward", "forward", "inward", "sideways"]
+  - ["자세 상태", check, "'supported and aligned'로 지지와 정렬을 함께 말해 머리 위치에 문제가 없다는 확인이 돼요. 정렬이 되어야 기도 축이 맞아요.", "and removed", "머리를 지지하고 정리해 뒀어요.", "턱을 지지하고 정렬해 뒀어요.", "supported", "lowered", "covered", "turned"]
+  - ["강도 요청", speech, "'more … or less'로 양쪽 방향을 열어 두면 시술자가 편하게 요청할 수 있어요. 압박 강도는 시술자의 시야에 맞춰 달라져요.", "or none", "압박을 더 세게 하거나 덜 필요하면 말해 주세요.", "압박을 더 길게 하거나 덜 필요하면 알려 주세요.", "less", "slower", "longer", "wider"]
+  - ["시야 확보 보고", bulb, "'I can see'로 시야가 확보됐다는 상황을 한마디로 알려 시술자가 다음 단계로 가요. 'now'는 방금 상태가 바뀐 시점을 가리켜요.", "I can hear", "이제 후두개가 보여요.", "이제 성대가 안 보여요.", "cords", "tonsils", "teeth", "tongue"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 삽관 체위·BURP 4문장 순서
+    why: 자세를 먼저 잡아 시야를 만들고, 머리 상태를 확인한 뒤, 압박 방향을 지시하고, 시야가 확보되면 그것을 알려요.
+    lines:
+    - ["I'll place him in the sniffing position for the best view.", baby, "최선의 시야를 위해 스니핑 자세로 눕혀 드릴게요", "체위"]
+    - ["His head is supported and aligned in that position.", check, "그 자세에서 머리가 지지되고 정렬돼 있어요", "확인"]
+    - ["Now apply backward, upward, rightward pressure on the cartilage.", compass, "이제 연골에 뒤로, 위로, 오른쪽으로 압박을 주세요", "지시"]
+    - ["With that pressure I can see the cords.", bulb, "그 압박으로 성대가 보여요", "보고"]

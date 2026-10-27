@@ -59,7 +59,8 @@ changes:
   id: w-calm
   fields:
   - ko
-  why: 태그된 문장 대부분이 형용사('he's calm', 'keep the room calm')라 ko '진정시키다'는 맞지 않고, 같은 ko를 w-deescalate도 가졌다 — '차분한'으로
+  why: 태그된 문장 대부분이 형용사('he's calm', 'keep the room calm')라 ko '진정시키다'는 맞지 않고, 같은 ko를
+    w-deescalate도 가졌다 — '차분한'으로
 - kind: word
   id: w-support
   fields:
@@ -89,17 +90,20 @@ changes:
   id: w-turn
   fields:
   - ko
-  why: 태그된 문장 대부분이 '몸을 돌리다'이고 ko '끄다'는 turn off(w-off와 함께) 한 군데뿐 — '돌리다'로, 해당 두 문장 태그를 뺌
+  why: 태그된 문장 대부분이 '몸을 돌리다'이고 ko '끄다'는 turn off(w-off와 함께) 한 군데뿐 — '돌리다'로, 해당 두 문장
+    태그를 뺌
 - kind: word
   id: w-turn
   fields:
   - example
-  why: example 문장 'I'll turn off the TV and close the door quietly.'에서 이 단어 태그를 뺐으므로 태그된 문장으로 바꿈
+  why: example 문장 'I'll turn off the TV and close the door quietly.'에서 이 단어 태그를 뺐으므로
+    태그된 문장으로 바꿈
 - kind: word
   id: w-calm
   fields:
   - example
-  why: example 문장 'He may seem confused, but hearing you can calm him.'에서 이 단어 태그를 뺐으므로 태그된 문장으로 바꿈
+  why: example 문장 'He may seem confused, but hearing you can calm him.'에서 이 단어 태그를
+    뺐으므로 태그된 문장으로 바꿈
 - kind: word-remove
   id: w-also
   why: 간호사가 이미 아는 기능어·쉬운 말이라 가르칠 값이 없다 — 어느 문장도 태그하지 않게 됐다
@@ -330,7 +334,8 @@ changes:
   index: 2
   fields:
   - words
-  why: '''lighter sedation''의 light는 형용사 비교급 — 명사 헤드워드(빛)와 안 맞아 태그를 뺌(w-lighten이 따로 있다)'
+  why: '''lighter sedation''의 light는 형용사 비교급 — 명사 헤드워드(빛)와 안 맞아 태그를 뺌(w-lighten이 따로
+    있다)'
 - kind: sentence
   situation: 감각 보조 제공
   index: 0
@@ -451,3 +456,315 @@ changes:
   fields:
   - words
   why: '''is turning red''는 ''변하다''라 ''돌리다''와 안 맞음 — 태그를 뺌'
+- kind: sentence
+  situation: CAM-ICU 선별 시행
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  why: CAM-ICU 주의력 검사는 '두 번 쥐기'가 아니라 글자 A가 들릴 때 손을 쥐는 검사다 — 사실 오류(안전). 오역 아님
+- kind: sentence
+  situation: CAM-ICU 선별 시행
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: CAM-ICU의 특징 이름은 '주의력'이 아니라 부주의(Inattention)다 — w-attention은 고아가 돼 삭제
+- kind: sentence
+  situation: 지남력·환경 조정
+  index: 2
+  fields:
+  - chunks
+  why: 청크가 구를 끊지 않게(anytime you feel confused)
+- kind: sentence
+  situation: 수면 위생 중재
+  index: 5
+  fields:
+  - chunks
+  why: 청크가 명사구를 끊지 않게(through most of the night)
+- kind: sentence
+  situation: 유발요인 스크리닝
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 통증·요저류·저산소증은 섬망의 유발요인이지 대안이 아니다 — 사실. w-assume 삭제
+- kind: sentence
+  situation: 과활동형 초조 비약물 관리
+  index: 0
+  fields:
+  - ko
+  why: I hear you는 '목소리가 들린다'가 아니라 '말을 잘 듣고 있다'는 인정이다 — ko 오역
+- kind: sentence
+  situation: 섬망 중 진정 최소화
+  index: 1
+  fields:
+  - ko
+  why: '''얕추고''는 오타 — ko'
+- kind: sentence
+  situation: 억제대 최소화 대안
+  index: 2
+  fields:
+  - chunks
+  why: 청크가 구를 끊지 않게(can watch him closely)
+- kind: sentence
+  situation: 알코올 금단 섬망 감별
+  index: 4
+  fields:
+  - chunks
+  why: 청크가 구를 끊지 않게(A higher CIWA score)
+- kind: sentence
+  situation: 가족에게 섬망 설명·교육
+  index: 1
+  fields:
+  - ko
+  why: en의 permanent가 ko에 빠졌다 — ko
+- kind: sentence
+  situation: 가족에게 섬망 설명·교육
+  index: 3
+  fields:
+  - ko
+  why: presence는 '목소리'가 아니라 곁에 있음 — ko 오역
+- kind: sentence
+  situation: 극심 초조 자타해 위험 위기
+  index: 0
+  fields:
+  - words
+  why: 헤드워드와 뜻·품사가 맞지 않는 쓰임이라 태그를 뺌(A 10번) — 문장은 그대로
+- kind: sentence
+  situation: 극심 초조 자타해 위험 위기
+  index: 1
+  fields:
+  - chunks
+  why: 청크가 구를 끊지 않게(give him space)
+- kind: sentence
+  situation: 극심 초조 자타해 위험 위기
+  index: 2
+  fields:
+  - ko
+  why: 음차('디에스컬레이션')와 어색한 '환자를 확보' — ko
+- kind: sentence
+  situation: 섬망 중 라인·튜브 자가제거 급변
+  index: 3
+  fields:
+  - ko
+  why: '''고정''이 억제로 읽히지 않게 ''붙잡아 주시고''로 — ko(en은 그대로, 사용자 결정 대기)'
+- kind: sentence
+  situation: 섬망 중 라인·튜브 자가제거 급변
+  index: 5
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 빠진 중심정맥관은 다시 밀어 넣지 않고 새 부위에 새로 잡는다(오염·색전) — 안전. w-reinsert 삭제
+- kind: sentence
+  situation: 할로페리돌 사용·QT 감시
+  index: 2
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: '''pull an ECG''는 미국에서 어색하고 w-pull 뜻(뽑다)과 다르다. 청크도 명사구를 끊지 않게; w-pull 태그를 뺌'
+- kind: sentence
+  situation: 할로페리돌 사용·QT 감시
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: QT 연장 맥락의 대안은 작용 시간이 아니라 QT 위험이 적은 약이다 — 사실. w-short·w-acting 삭제
+- kind: sentence
+  situation: 금단 발작·진전섬망 위기
+  index: 1
+  fields:
+  - words
+  why: 헤드워드와 뜻·품사가 맞지 않는 쓰임이라 태그를 뺌(A 10번) — 문장은 그대로
+- kind: sentence
+  situation: 섬망 지속·예후 소통
+  index: 1
+  fields:
+  - words
+  why: w-take('take weeks')·w-week(쉬운 말)의 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 섬망 지속·예후 소통
+  index: 3
+  fields:
+  - ko
+  why: I hear how …는 '들려요' 직역이 아니라 공감 — ko
+- kind: sentence
+  situation: 섬망 지속·예후 소통
+  index: 4
+  fields:
+  - ko
+  - words
+  why: '''뇌를 지지하면서''는 어색한 직역 — ko; w-support 태그도 뺌(''받쳐 주다''와 맞지 않음)'
+- kind: sentence
+  situation: 억제대 관련 손상·질식 위험 위기
+  index: 4
+  fields:
+  - ko
+  why: '''패딩하고''는 외래어 직역 — ko'
+- kind: sentence
+  situation: 억제대 관련 손상·질식 위험 위기
+  index: 5
+  fields:
+  - chunks
+  why: 청크가 구를 끊지 않게(as a restraint-related injury)
+- kind: sentence
+  situation: 감각 보조 제공
+  index: 2
+  fields:
+  - words
+  why: 헤드워드와 뜻·품사가 맞지 않는 쓰임이라 태그를 뺌(A 10번) — 문장은 그대로
+- kind: sentence
+  situation: 억제대 최소화 대안
+  index: 4
+  fields:
+  - words
+  why: 헤드워드와 뜻·품사가 맞지 않는 쓰임이라 태그를 뺌(A 10번) — 문장은 그대로
+- kind: sentence
+  situation: 감각 보조 제공
+  index: 3
+  fields:
+  - words
+  why: w-clear(맑아지다)가 아니라 부사 clearly — 새 단어 w-clearly로 태그(A 10·11번)
+- kind: sentence
+  situation: 수면-각성 주기 회복 전략
+  index: 5
+  fields:
+  - words
+  why: 헤드워드와 뜻·품사가 맞지 않는 쓰임이라 태그를 뺌(A 10번) — 문장은 그대로
+- kind: sentence
+  situation: 섬망 지속·예후 소통
+  index: 0
+  fields:
+  - words
+  why: 헤드워드와 뜻·품사가 맞지 않는 쓰임이라 태그를 뺌(A 10번) — 문장은 그대로
+- kind: sentence
+  situation: 섬망 중 진정 최소화
+  index: 4
+  fields:
+  - words
+  why: w-room은 너무 쉬운 말(공통 쉬운 단어 목록) — 태그를 뺌, 문장은 그대로
+- kind: word
+  id: w-squeeze
+  fields:
+  - example
+  why: 예문으로 쓰던 문장의 en을 바꿨다 — 예문을 새 문장으로
+- kind: word
+  id: w-ask
+  fields:
+  - example
+  why: 예문으로 쓰던 문장의 en을 바꿨다 — 예문을 새 문장으로
+- kind: word
+  id: w-feature
+  fields:
+  - example
+  why: 예문으로 쓰던 문장의 en을 바꿨다 — 예문을 새 문장으로
+- kind: word
+  id: w-positive
+  fields:
+  - example
+  why: 예문으로 쓰던 문장의 en을 바꿨다 — 예문을 새 문장으로
+- kind: word
+  id: w-closely
+  fields:
+  - ko
+  why: 상황 3 context의 ko(면밀히)와 맞춤
+- kind: word
+  id: w-bowel
+  fields:
+  - ko
+  why: '''배변''은 bowel movement 전체의 뜻 — 헤드워드 bowel은 ''장'''
+- kind: word
+  id: w-correct
+  fields:
+  - example
+  why: 예문으로 쓰던 문장의 en을 바꿨다 — 예문을 새 문장으로
+- kind: word
+  id: w-reversible
+  fields:
+  - example
+  why: 예문으로 쓰던 문장의 en을 바꿨다 — 예문을 새 문장으로
+- kind: word
+  id: w-cause
+  fields:
+  - example
+  why: 예문으로 쓰던 문장의 en을 바꿨다 — 예문을 새 문장으로
+- kind: word
+  id: w-take
+  fields:
+  - ko
+  why: 문장이 쓰는 뜻은 '(숨을) 쉬다' — 'take weeks'는 태그를 뺌
+- kind: word
+  id: w-measure
+  fields:
+  - ko
+  why: 목표를 이루려는 구체적 '조치'(비약물 조치)
+- kind: word
+  id: w-tell
+  fields:
+  - ko
+  why: '''말하다''가 w-speak와 같아 정답이 둘이 된다 — 가름'
+- kind: word
+  id: w-deescalate
+  fields:
+  - ko
+  why: '''진정시키다''는 이 주제에서 sedation(진정제)과 같은 말이라 약물 진정으로 오해된다 — 가름'
+- kind: word
+  id: w-secure
+  fields:
+  - ko
+  why: 15-2·16-3 모두 사람·손을 붙잡는 뜻이라 '확보하다'가 아니라 '(안전하게) 고정하다'
+- kind: word
+  id: w-stat
+  fields:
+  - example
+  why: 예문으로 쓰던 문장의 en을 바꿨다 — 예문을 새 문장으로
+- kind: word
+  id: w-ecg
+  fields:
+  - example
+  why: 예문으로 쓰던 문장의 en을 바꿨다 — 예문을 새 문장으로
+- kind: word
+  id: w-escalate
+  fields:
+  - ko
+  why: '''늘리다''가 w-increase와 같아 듣고 뜻 고르기에서 정답이 둘이 된다 — 가름'
+- kind: word
+  id: w-fully
+  fields:
+  - ko
+  why: '''완전히''가 w-completely와 같아 정답이 둘이 된다 — 가름'
+- kind: word-add
+  id: w-clearly
+  why: w-clear 한 헤드워드에 동사·형용사·부사가 섞여 나눔 — 11-3은 부사 clearly(A 11번)
+- kind: word-remove
+  id: w-reinsert
+  why: '16-5 en을 ''place a new line''으로 고쳐 어느 문장도 태그하지 않게 됐다(안전: 빠진 관을 다시 넣지 않음)'
+- kind: word-remove
+  id: w-short
+  why: 17-4 en을 'less QT risk'로 고쳐 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-acting
+  why: 17-4 en을 'less QT risk'로 고쳐 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-attention
+  why: 0-4 en을 'inattention feature'로 고쳐 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-assume
+  why: 5-4 en을 사실에 맞게 고쳐 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-room
+  why: 너무 쉬움(공통 쉬운 단어 목록) — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-week
+  why: 너무 쉬움(공통 쉬운 단어 목록) — 어느 문장도 태그하지 않게 됐다

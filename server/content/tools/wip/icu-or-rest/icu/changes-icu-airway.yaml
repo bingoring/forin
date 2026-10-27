@@ -161,7 +161,8 @@ changes:
   fields:
   - en
   - ipa
-  why: 활용형(marking)을 원형으로
+  - example
+  why: 활용형(marking)을 원형으로 / 이 단어를 예문으로 쓰던 문장을 바꾼 검토 반영에 맞춰 예문을 바꿈
 - kind: word
   id: w-drop
   fields:
@@ -236,7 +237,8 @@ changes:
   id: w-line
   fields:
   - ko
-  why: ko '정렬된'이 w-align과 같아 정답이 둘이 된다 — 가름
+  - example
+  why: ko '정렬된'이 w-align과 같아 정답이 둘이 된다 — 가름 / 이 단어를 예문으로 쓰던 문장을 바꾼 검토 반영에 맞춰 예문을 바꿈
 - kind: word
   id: w-stay
   fields:
@@ -364,8 +366,9 @@ changes:
   situation: 삽관 체위·BURP 보조
   index: 4
   fields:
+  - ko
   - words
-  why: 너무 쉬운 말(또는 가르칠 값이 없는 말) 태그를 뺌 — 문장은 그대로
+  why: 너무 쉬운 말(또는 가르칠 값이 없는 말) 태그를 뺌 — 문장은 그대로 / ko '덜 필요하면'이 어색 — '약하게 해야 하면'
 - kind: sentence
   situation: 삽관 체위·BURP 보조
   index: 5
@@ -382,8 +385,9 @@ changes:
   situation: 기관절개관 기본 관리
   index: 3
   fields:
+  - chunks
   - words
-  why: 너무 쉬운 말(또는 가르칠 값이 없는 말) 태그를 뺌 — 문장은 그대로
+  why: 너무 쉬운 말(또는 가르칠 값이 없는 말) 태그를 뺌 — 문장은 그대로 / 구 경계를 끊은 chunks를 구 단위로 바로잡음 — 문장은 그대로
 - kind: sentence
   situation: 기관절개관 기본 관리
   index: 5
@@ -424,20 +428,27 @@ changes:
   situation: 기관절개관 교체 보조
   index: 3
   fields:
+  - en
+  - ko
+  - chunks
   - words
-  why: 너무 쉬운 말(또는 가르칠 값이 없는 말) 태그를 뺌 — 문장은 그대로
+  why: 너무 쉬운 말(또는 가르칠 값이 없는 말) 태그를 뺌 — 문장은 그대로 / 첫 교체는 보통 의사가 하므로 'I'll go slowly'는 간호사의 업무범위를 넘어 읽힘 — 'we'll go slowly', 설명은 내 몫으로
 - kind: sentence
   situation: 특수 튜브 관리
   index: 3
   fields:
+  - en
+  - ko
+  - chunks
   - words
-  why: 너무 쉬운 말(또는 가르칠 값이 없는 말) 태그를 뺌 — 문장은 그대로
+  why: 너무 쉬운 말(또는 가르칠 값이 없는 말) 태그를 뺌 — 문장은 그대로 / ICU 이중내강관은 수술이 아니라 폐 격리용(장면과 안 맞음) — 건강한 폐를 보호하려는 한쪽 폐 환기로. w-surgery 태그를 뺌
 - kind: sentence
   situation: 기관절개 발성밸브 적용
   index: 3
   fields:
+  - chunks
   - words
-  why: 너무 쉬운 말(또는 가르칠 값이 없는 말) 태그를 뺌 — 문장은 그대로
+  why: 너무 쉬운 말(또는 가르칠 값이 없는 말) 태그를 뺌 — 문장은 그대로 / 구 경계를 끊은 chunks를 구 단위로 바로잡음 — 문장은 그대로
 - kind: sentence
   situation: 기관절개 발성밸브 적용
   index: 4
@@ -484,8 +495,11 @@ changes:
   situation: 삽관·환기 불가 CICO 위기
   index: 4
   fields:
+  - en
+  - ko
+  - chunks
   - words
-  why: 너무 쉬운 말(또는 가르칠 값이 없는 말) 태그를 뺌 — 문장은 그대로
+  why: 너무 쉬운 말(또는 가르칠 값이 없는 말) 태그를 뺌 — 문장은 그대로 / 윤상갑상막을 찾아 표시하는 것은 시술자의 일(업무범위) — 표시하시면 메스가 준비돼 있다로
 - kind: sentence
   situation: 삽관·환기 불가 CICO 위기
   index: 5
@@ -508,14 +522,18 @@ changes:
   situation: 기관절개관 우발적 탈관
   index: 4
   fields:
+  - chunks
   - words
-  why: 너무 쉬운 말(또는 가르칠 값이 없는 말) 태그를 뺌 — 문장은 그대로
+  why: 너무 쉬운 말(또는 가르칠 값이 없는 말) 태그를 뺌 — 문장은 그대로 / 구 경계를 끊은 chunks를 구 단위로 바로잡음 — 문장은 그대로
 - kind: sentence
   situation: 기관절개관 우발적 탈관
   index: 5
   fields:
+  - en
+  - ko
+  - chunks
   - words
-  why: 너무 쉬운 말(또는 가르칠 값이 없는 말) 태그를 뺌 — 문장은 그대로
+  why: 너무 쉬운 말(또는 가르칠 값이 없는 말) 태그를 뺌 — 문장은 그대로 / 17.2(새 스토마는 다시 넣기 어렵다)와 모순되는 지킬 수 없는 약속 — 'more easily'로 정렬의 효과만 말함
 - kind: sentence
   situation: 기관절개 부위 대량 출혈
   index: 3
@@ -546,3 +564,185 @@ changes:
   fields:
   - words
   why: 너무 쉬운 말(또는 가르칠 값이 없는 말) 태그를 뺌 — 문장은 그대로
+- kind: word
+  id: w-drug
+  fields:
+  - ko
+  why: ko '약물(명)'이 어색하고 w-medication '약물'과 겹침 — '약(성분)'
+- kind: word
+  id: w-periintubation
+  fields:
+  - en
+  why: 문장 첫머리의 대문자가 헤드워드에 딸려 옴 — 소문자로
+- kind: word
+  id: w-give
+  fields:
+  - example
+  why: 이 단어를 예문으로 쓰던 문장을 바꾼 검토 반영에 맞춰 예문을 바꿈
+- kind: word
+  id: w-fluid
+  fields:
+  - example
+  why: 이 단어를 예문으로 쓰던 문장을 바꾼 검토 반영에 맞춰 예문을 바꿈
+- kind: word
+  id: w-bolus
+  fields:
+  - example
+  why: 이 단어를 예문으로 쓰던 문장을 바꾼 검토 반영에 맞춰 예문을 바꿈
+- kind: word
+  id: w-slowly
+  fields:
+  - example
+  why: 이 단어를 예문으로 쓰던 문장을 바꾼 검토 반영에 맞춰 예문을 바꿈
+- kind: word
+  id: w-explain
+  fields:
+  - example
+  why: 이 단어를 예문으로 쓰던 문장을 바꾼 검토 반영에 맞춰 예문을 바꿈
+- kind: word
+  id: w-step
+  fields:
+  - example
+  why: 이 단어를 예문으로 쓰던 문장을 바꾼 검토 반영에 맞춰 예문을 바꿈
+- kind: word
+  id: w-hold
+  fields:
+  - ko
+  - example
+  why: ko '누르다'는 바뀐 10.4(머리를 잡아 줌)와 17.4(산소를 대고 있음)에 안 맞음 — '잡고 있다'. 예문도 새 문장으로
+- kind: word
+  id: w-remove
+  fields:
+  - example
+  why: 이 단어를 예문으로 쓰던 문장을 바꾼 검토 반영에 맞춰 예문을 바꿈
+- kind: word
+  id: w-old
+  fields:
+  - example
+  why: 이 단어를 예문으로 쓰던 문장을 바꾼 검토 반영에 맞춰 예문을 바꿈
+- kind: word
+  id: w-ventilation
+  fields:
+  - example
+  why: 이 단어를 예문으로 쓰던 문장을 바꾼 검토 반영에 맞춰 예문을 바꿈
+- kind: word
+  id: w-surgery
+  fields:
+  - ko
+  - example
+  why: '''call surgery''(외과 팀을 부름)에 쓰이므로 ko ''수술''을 ''외과''로'
+- kind: word
+  id: w-clamp
+  fields:
+  - example
+  why: 이 단어를 예문으로 쓰던 문장을 바꾼 검토 반영에 맞춰 예문을 바꿈
+- kind: word
+  id: w-separately
+  fields:
+  - example
+  why: 이 단어를 예문으로 쓰던 문장을 바꾼 검토 반영에 맞춰 예문을 바꿈
+- kind: word
+  id: w-cricothyroid
+  fields:
+  - example
+  why: 이 단어를 예문으로 쓰던 문장을 바꾼 검토 반영에 맞춰 예문을 바꿈
+- kind: word
+  id: w-membrane
+  fields:
+  - example
+  why: 이 단어를 예문으로 쓰던 문장을 바꾼 검토 반영에 맞춰 예문을 바꿈
+- kind: word
+  id: w-atropine
+  fields:
+  - example
+  why: 이 단어를 예문으로 쓰던 문장을 바꾼 검토 반영에 맞춰 예문을 바꿈
+- kind: word
+  id: w-improve
+  fields:
+  - example
+  why: 이 단어를 예문으로 쓰던 문장을 바꾼 검토 반영에 맞춰 예문을 바꿈
+- kind: word
+  id: w-calm
+  fields:
+  - example
+  why: 이 단어를 예문으로 쓰던 문장을 바꾼 검토 반영에 맞춰 예문을 바꿈
+- kind: word
+  id: w-scared
+  fields:
+  - example
+  why: 이 단어를 예문으로 쓰던 문장을 바꾼 검토 반영에 맞춰 예문을 바꿈
+- kind: word
+  id: w-confused
+  fields:
+  - example
+  why: 이 단어를 예문으로 쓰던 문장을 바꾼 검토 반영에 맞춰 예문을 바꿈
+- kind: word
+  id: w-easily
+  fields:
+  - example
+  why: 이 단어를 예문으로 쓰던 문장을 바꾼 검토 반영에 맞춰 예문을 바꿈
+- kind: word-remove
+  id: w-fault
+  why: 17.3을 환자에게 하는 안심 말로 바꾸며("this isn't his fault" 삭제) 어느 문장도 태그하지 않게 됨
+- kind: sentence
+  situation: 기관절개 부위 드레싱·피부
+  index: 4
+  fields:
+  - chunks
+  why: 구 경계를 끊은 chunks를 구 단위로 바로잡음 — 문장은 그대로
+- kind: sentence
+  situation: 삽관 전후 혈역학 붕괴 대비
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 간호사가 용적 상태를 혼자 판단해 볼루스를 주는 말은 처방 없는 투약 — 처방하시면 줄 수 있게 준비해 둔다로
+- kind: sentence
+  situation: 기관절개관 교체 보조
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 기관절개관 교체에서 스토마를 눌러 지혈하는 단계는 없음(사실 오류) — 머리를 잡아 주는 보조 역할로. w-pressure·w-stoma 태그를 뺌
+- kind: sentence
+  situation: 특수 튜브 관리
+  index: 5
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 이중내강관 한쪽을 잠그는 것은 마취과·호흡치료사 등 시술자의 일(업무범위) — 잠가 주시면 폐를 따로 듣는다로
+- kind: sentence
+  situation: 기도 응급 카트 숙지·소통
+  index: 1
+  fields:
+  - ko
+  why: ko '약물은 응급 상황 동안 제가 관리할게요'가 어순이 어색 — '응급 상황에서는 흡인은 당신이 맡고…'(en은 그대로)
+- kind: sentence
+  situation: 삽관 중 저산소·서맥 급변
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  why: 아트로핀 투약 결정은 의사(코드 리더)의 일 — 간호사가 지시하지 않고 "주입할까요?"로 물음
+- kind: sentence
+  situation: 기관절개관 우발적 탈관
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 듣는 사람이 모호하고 숨을 못 쉬는 응급에 '환자 잘못이 아니다'는 어색 — 환자에게 하는 안심 말로. w-fault 태그를 뺌
+- kind: sentence
+  situation: 기관절개 부위 대량 출혈
+  index: 4
+  fields:
+  - chunks
+  why: 구 경계를 끊은 chunks를 구 단위로 바로잡음 — 문장은 그대로

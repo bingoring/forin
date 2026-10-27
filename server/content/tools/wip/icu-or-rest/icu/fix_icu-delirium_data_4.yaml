@@ -1,0 +1,59 @@
+# 뉘앙스·순서 카드 수정. nuance: 키 "상황:항목번호" → 덮어쓸 필드(얕은 병합). order.lines: "상황:줄번호" → 덮어쓸 필드.
+nuance:
+  "0:0":   # 0-3 수정에 맞춤
+    pairs: [[screen, for delirium], [squeeze, my hand on the letter A], [document, the result]]
+    why: "screen은 '걸러 보다'라 for delirium과, squeeze는 손을 '꽉 쥐다'라 my hand on the letter A와, document는 결과를 '기록으로 남기다'라 the result와 짝이에요."
+  "2:0":   # [안전] 야간 알람을 끄지 않고 볼륨만 낮춘다
+    words: [w-off, w-lower, w-door]
+    pairs: [[turn off, the TV], [lower, the alarm volume], [close, the door]]
+    decoys: [the weekend]
+    why: "밤에는 TV는 끄고(turn off), 알람은 끄지 말고 볼륨만 낮추고(lower), 문은 닫아요(close)."
+  "4:0":
+    words: [w-hold, w-remind]
+    pairs: [[hold, his hand], [remind, him of the date]]
+    why: "hold는 손을 '잡다'라 his hand와, remind는 '다시 알려 주다'라 him of the date와 짝이에요."
+  "4:1":
+    scenes_who: {2: "딸에게"}
+  "5:1":
+    scenes_en: {0: "He's CAM-ICU positive — let's find the cause of his delirium.", 1: "CAM-ICU positive for delirium; reversible causes being treated."}
+  "8:1":
+    before: ["Dr. Lee, ", "you need to change", " his lorazepam dose."]
+    options: [you need to change, "I'd suggest we lower", you messed up]
+    answer: "I'd suggest we lower"
+    notes:
+      you need to change: "지시처럼 들려 의사와 마찰이 생기기 쉬워요."
+      "I'd suggest we lower": "의견을 제안으로 말해 협력적이고, 무엇을 바꿀지도 분명해요."
+      you messed up: "비난하는 말투라 방어적인 반응이 나와요."
+    ko: "리 선생님, 로라제팜 용량을 낮추면 어떨까 제안드려요."
+  "11:1":
+    words: [w-clearly]
+  "16:0":
+    words: [w-hold, w-assess, w-page]
+    pairs: [[hold, pressure], [assess, for bleeding], [page, the physician]]
+    decoys: [the ceiling]
+    why: "출혈 부위는 pressure를 hold(유지)하고, 출혈 여부는 assess for(살피기), 의사는 page(호출)해요."
+  "20:0":
+    words: [w-pad, w-reposition, w-document]
+    pairs: [[pad, the wrists], [reposition, him safely], [document, the injury]]
+    why: "억제대를 쓴다면 손목은 pad(패딩), 자세는 reposition(안전하게 바꾸기), 손상은 document(기록)로 이어져요."
+order:
+  "1:2":
+    en: "Along with them, I'll open the blinds so you can see the daylight."
+    ko: "그것들과 함께 햇빛이 보이게 블라인드를 열게요"
+  "4:2":
+    en: "For something to talk about, bring a family photo from home."
+    ko: "이야깃거리로 가족 사진을 집에서 가져다주세요"
+  "4:3":
+    en: "A familiar photo like that helps him feel less lost here."
+    ko: "그런 익숙한 사진이 덜 헤매게 도와줘요"
+  "7:1":
+    en: "Now that I'm here, let's take a slow breath together."
+    ko: "제가 왔으니 천천히 같이 숨을 쉬어요"
+  "7:3":
+    icon: speech
+  "11:2":
+    en: "Now that you can see, can you hear me better with these in?"
+    ko: "이제 잘 보이시니, 이거 끼우고 더 잘 들리세요?"
+  "15:1":
+    en: "While help comes, everyone step back and give him space right now."
+    ko: "도움이 오는 동안 모두 물러나 공간을 주세요, 지금 바로요"

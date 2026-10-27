@@ -1,0 +1,83 @@
+# 뉘앙스·order 수정. nuance: 상황 번호 → 문항 번호 → patch / scene_patch / pair_decoys
+nuance:
+  0:
+    1:
+      scene_patch:
+        1: {en: "CPOT score 4 at rest: grimacing, tense, coughing but tolerating the vent."}
+  3:
+    0:
+      patch: {decoys: ["blood pressure"]}
+    1:
+      patch: {ko: "드레싱 교환 전에 통증약을 드릴게요"}
+  9:
+    0:
+      patch:
+        scale: ["no change", "a small rise", "a big spike"]
+        answerAt: 2
+        why: "쉴 때 1에서 흡인 때 7로 뛰면 처치 때 통증이 크게 솟는 것이에요. CPOT는 3점 이상이면 통증이 있다고 보는 도구라 점수로 강도를 나누지는 않지만, 처치 때만 뛰면 미리 진통하는 근거가 돼요."
+        example: "His CPOT spikes during suctioning, then settles."
+        exKo: "흡인할 때 CPOT가 확 올랐다가 가라앉아요."
+  10:
+    0:
+      patch: {cue: "Nurse: \"He opens his eyes and looks at me when I call him, but only for a few seconds.\""}
+  15:
+    0:
+      patch:
+        example: "This is routine now, so we'll keep checking on schedule."
+        exKo: "지금은 일상적인 상황이라 정해진 간격으로 계속 확인할게요."
+  17:
+    0:
+      patch:
+        cue: "Nurse: \"He looks anxious and fidgets now and then, but his movements aren't vigorous.\""
+        why: "가만히 있지 못하고 불안해 보이지만 움직임이 공격적이지 않으면 RASS +1 restless예요. 잦고 목적 없는 움직임이나 호흡기와 씨름하면 agitated(+2)예요. 튜브를 당기면 very agitated, 사람에게 공격적이면 combative예요. 금단에서는 땀, 빠른 맥박과 함께 안절부절못하는 모습이 흔해요."
+  18:
+    1:
+      patch: {ko: "힘들어하지 않으시게 숨쉬기 편하도록 돕고 있어요"}
+  20:
+    0:
+      patch:
+        scale: ["oriented", "a bit muddled", "confused"]
+        answerAt: 2
+        why: "쉽게 깨어나는데 어디인지 계속 묻는다면 각성 문제가 아니라 지남력이 흐린 confused예요. 가끔 헷갈리다 바로잡으면 a bit muddled, 사람·장소·시간을 다 알면 oriented예요. 새로 생긴 혼란은 약 부작용이나 다른 원인(섬망 포함)을 확인해요."
+
+# order: 상황 번호 → ko·why·tag·icon / lines(전체 교체) / line_patch(줄 번호 → 필드)
+order:
+  3:
+    why: "처치 계획을 먼저 알리고, 곧 약을 준다고 말해요. 약이 들어가면 it이 그 약을 받아 몇 분 기다리고, After those few minutes가 그 대기를 받아 시작 직전에 알려요."
+    line_patch:
+      3: {en: "After those few minutes, I'll tell you before I begin.", ko: "그 몇 분이 지나면 시작하기 전에 말씀드릴게요"}
+  4:
+    why: "하려는 일을 먼저 알리고, 그다음 베개로 받쳐요. With those pillows in place가 앞 줄의 베개를 받아 라인을 정리하고, 마지막에 all of that이 이 모두를 받아 긴장이 풀렸는지 물어요."
+    line_patch:
+      2: {en: "With those pillows in place, I'll straighten your lines so nothing pulls.", ko: "베개가 놓이면 라인이 당기지 않게 정리할게요"}
+  7:
+    why: "모니터를 먼저 띄워 두고, those numbers를 보며 천천히 적정해요. those doses가 투여를 받아 사이마다 재평가하고, 마지막 줄의 those reassessments가 그 재평가를 받아 결과와 상관없이 장 요법으로 닫아요."
+    line_patch:
+      3: {en: "Whatever those reassessments show, opioids slow the gut, so let's start a bowel regimen.", ko: "재평가와 상관없이 장이 느려지니 장 요법을 시작해요"}
+  10:
+    why: "셋이 서로 영향을 준다는 전제가 먼저고, So가 그 전제를 받아 세 도구를 함께 써요. one of those scores가 2번 줄의 세 점수를 받아 하나가 어긋나면 흔들린다는 점을 말하고, that이 그 상황을 가리켜 매 근무조 차팅으로 일찍 잡는다고 닫아요."
+    line_patch:
+      2: {en: "If one of those scores is off, it can throw the others off.", ko: "그 점수 중 하나가 어긋나면 나머지도 흔들릴 수 있어요"}
+  11:
+    why: "용량을 올려도 안 좋아지는 관찰이 먼저고, That이 그 관찰을 받아 신경병증성을 의심해요. If so가 그 의심을 받아 다른 접근이 필요하다고 하고, So로 의사에게 문의해요."
+    line_patch:
+      2: {en: "If so, it often needs a different approach than opioids alone.", ko: "그렇다면 아편유사제만으로는 다른 접근이 필요한 때가 많아요"}
+  13:
+    why: "지속 감시 상태가 먼저고, Because of that이 그 감시를 받아 호흡수가 떨어지면 바로 안다고 이어요. that drop이 그 하락을 받아 신중하게 적정하고, 마지막 줄의 all of that이 앞의 모두를 받아 날록손을 최후의 대비로 둬요."
+    line_patch:
+      1: {en: "Because of that, if his respiratory rate drops, we'll know right away.", ko: "그래서 호흡수가 떨어지면 바로 알 수 있어요"}
+  14:
+    why: "곁에 있는 가족의 관찰이 중요하다고 먼저 인정하고, So가 그 인정을 받아 불편한 징후를 알려 달라고 부탁해요. 가족이 알려 준 것이 통증 사정에 들어간다고 whatever you tell us로 받고, 근무 내내 계속 확인하겠다고 닫아요."
+    line_patch:
+      1: {en: "So tell us if you notice signs he's uncomfortable.", ko: "그러니 불편한 징후를 보시면 말씀해주세요"}
+  15:
+    ko: "급성 심한 통증 4문장 순서"
+    why: "급성 변화를 본 것이 먼저고, This가 그 변화를 받아 바로 의사를 불러요. they가 오는 의사를 받아 그동안 처방대로 진통하고, With the pain covered로 통증을 잡은 뒤 원인을 찾아요. 진통은 진단 때문에 미루지 않되, 상태 변화 보고보다 앞서지 않아요."
+    lines:
+      - {en: "His CPOT just maxed out — something acute is happening.", icon: siren, ko: "CPOT가 최고점이에요, 급성으로 뭔가 일어나요", note: 관찰}
+      - {en: "This isn't routine, so let's get the doctor here fast.", icon: pager, ko: "일상적이지 않으니 빨리 의사를 불러요", note: 호출}
+      - {en: "While they're on the way, I'm giving him something for pain, as ordered.", icon: pill, ko: "오는 동안 처방대로 통증 약을 드려요", note: 진통}
+      - {en: "With the pain covered, let's look for ischemia and check his abdomen and labs.", icon: magnify, ko: "통증을 잡은 뒤 허혈을 찾고 복부와 검사를 확인해요", note: 원인 확인}
+  16:
+    line_patch:
+      3: {ko: "역전 후 날록손 효과가 먼저 떨어지니 자세히 지켜봐요"}

@@ -1,0 +1,99 @@
+# 단어 수정 (A: C·D절). dEn=distractorsEn, dKo=distractorsKo
+remove: [w-level, w-oversedated]
+add_before:
+  w-respond:
+    id: w-time
+    en: time
+    ipa: "/taɪm/"
+    ko: "시간을 맞추다"
+    icon: calendar
+    example: "We'll time the dose to peak during the procedure."
+    exKo: "처치 중에 효과가 최고조에 이르도록 투여 시간을 맞출게요."
+    cue: "약 효과가 가장 셀 때 처치가 겹치도록 투여 시점을 미리 계산해 두는 동사"
+    tag: "투여·기록"
+    distractorsEn: [tame, tune]
+    distractorsKo: ["양을 맞추다", "순서를 바꾸다"]
+    chips: [[time]]
+    decoyChips: [tine]
+words:
+  # ---- distractorsEn 품사 맞춤 (A C절 22번 표)
+  w-furrow: {dEn: [furl, burrow]}
+  w-tense: {dEn: [tend, tease]}
+  w-fight: {dEn: [bite, sigh]}
+  w-total: {dEn: [toll, tote]}
+  w-scale: {dEn: [scare, scalp]}
+  w-speak: {dEn: [sneak, spike]}
+  w-tell: {dEn: [yell, sell]}
+  w-keep: {dEn: [kneel, peep]}
+  w-break: {dEn: [brake, breed]}
+  w-change: {dEn: [charge, chafe]}
+  w-medicine: {dEn: [medic, medal]}
+  w-start: {dEn: [stare, stall]}
+  w-reposition: {dEn: [repossess, recondition]}
+  w-comfort: {dEn: [compost, cohort]}
+  w-low: {dEn: [loud, lone]}
+  w-pull: {dEn: [peel, poll]}
+  w-calm: {dEn: [clammy, balmy]}
+  w-work: {dEn: [walk, warp]}
+  w-plan: {dEn: [plant, plank]}
+  w-check: {dEn: [chase, chew]}
+  w-high: {dEn: [huge, hazy]}
+  w-first: {dEn: [forth, fast]}
+  w-add: {dEn: [aid, nod]}
+  w-titrate: {dEn: [tolerate, irritate]}
+  w-little: {dEn: [brittle, middle]}
+  w-few: {dEn: [fine, faint]}
+  w-need: {dEn: [seed, heed]}
+  w-influence: {dEn: [inflame, inflict]}
+  w-shift: {dEn: [shirt, shelf]}
+  w-resistant: {dEn: [resilient, reluctant]}
+  w-adjuvant: {dEn: [adjutant, adjustment]}
+  w-poor: {dEn: [pure, sore]}
+  w-help: {dEn: [heap, yelp], decoy_replace: {hemp: helm}}
+  w-early: {dEn: [yearly, eerily]}
+  w-sedate: {dEn: [seclude, secede]}
+  w-notice: {dEn: [notify, notate]}
+  w-max: {dEn: [mix, mask]}
+  w-happen: {dEn: [hasten, deepen]}
+  w-urgent: {dEn: [urban, ardent]}
+  w-serious: {dEn: [serial, spurious]}
+  w-abdomen: {dEn: [absence, addendum]}
+  w-barely: {dEn: [bravely, merely]}
+  w-pupil: {dEn: [pupa, puppy]}
+  w-taper: {dEn: [tamper, cater]}
+  w-sweat: {dEn: [swear, sweep]}
+  w-adjunct: {dEn: [advent, adjective], decoy_replace: {junk: just}}
+  w-free: {dEn: [frail, fresh]}
+  w-refractory: {dEn: [satisfactory, reflexive]}
+  w-current: {dEn: [recurrent, curious]}
+  w-hurt: {dEn: [hunt, hurry]}
+  w-suffer: {dEn: [differ, buffer]}
+  w-long: {dEn: [along, wrong]}
+  w-swollen: {dEn: [stolen, sullen], decoy_replace: {sow: sew}}
+  w-worry: {dEn: [worsen, wobble]}
+  w-breathe: {dEn: [bathe, breed], decoyChips: [breath, breadth]}
+  w-spike: {dEn: [spill, spin]}
+  w-aim: {dEn: [aid, ail]}
+  w-slow: {dEn: [slap, stow]}
+  w-hold: {dEn: [hide, fold]}
+  w-fast: {dEn: [vast, last]}
+  # ---- 23·24 정답처럼 읽히는 오답
+  w-sedative: {dEn: [laxative, diuretic]}
+  w-neuropathic: {dEn: [nociceptive, neurotoxic]}
+  # ---- 25 불쾌한·약물 은어 조각
+  w-comfortable: {decoy_replace: {fat: ford}}
+  w-carefully: {decoy_replace: {fool: fell}}
+  w-helpful: {decoy_replace: {fool: full}}
+  w-watch: {decoy_replace: {witch: watt}}
+  # ---- 26 조각이 형태소가 아님, 26-2
+  w-acetaminophen: {chips: [[acet, a, mino, phen]]}
+  w-capnography: {chips: [[cap, "no", gra, phy]]}
+  w-point: {dKo: ["칸", "등급"]}
+  # ---- 30 w-rule → rule out
+  w-rule:
+    en: "rule out"
+    ipa: "/ruːl aʊt/"
+    chips: [[rule], [out]]
+    dEn: ["roll out", "rule in"]
+    decoyChips: [mule, our]
+    cue: "검사로 가능성을 하나씩 지워 없애는 일"

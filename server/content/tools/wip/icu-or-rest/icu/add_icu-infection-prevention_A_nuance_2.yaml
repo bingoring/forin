@@ -1,0 +1,133 @@
+- situation: "도뇨관 필요성 매일 평가"
+  items:
+    - kind: slider
+      words: [w-indication, w-catheter]
+      cue: "Colleague: \"He's alert and walking to the bathroom, but the catheter is still in 'just in case'.\""
+      scale: [swap it for a fresh one, keep it until the weekend, take it out this morning]
+      answerAt: 2
+      why: "'혹시 몰라서'는 소변줄을 둘 이유가 아니에요. 적응증이 없으면 가능한 한 빨리 빼요. 새것으로 바꾸거나 주말까지 두면 필요 없는 카테터 일수만 늘어 요로감염 위험이 쌓여요."
+      example: "There's no reason to keep it in, so let's take it out."
+      exKo: "둘 이유가 없으니 빼요."
+    - kind: context
+      words: [w-indication]
+      word: indication
+      ko: 적응증
+      scenes:
+        - {who: 차트 기록, icon: board, en: "Foley indication: none documented; discontinue.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "What's the indication for the catheter today?", ok: true}
+        - {who: 가족에게, icon: me, en: "The indication for his urinary catheter has resolved per protocol, so we're discontinuing it.", ok: false, fix: "We don't have a medical reason to keep the catheter in anymore, so we're taking it out."}
+      why: "의료진끼리는 indication으로 '유지할 의학적 이유'를 한 단어로 묻고 답해요. 가족에게는 낯선 단어라 무슨 일인지 알기 어려워요. 쉬운 말로 이유와 계획을 알려 줘요."
+- situation: "격리 환자 이송 감염관리"
+  items:
+    - kind: slider
+      words: [w-notify, w-team]
+      cue: "Transporter: \"CT is ready for us. Should I tell them he's on contact isolation?\""
+      scale: [tell them before we leave, tell them once we arrive, keep it off the order]
+      answerAt: 0
+      why: "격리 환자는 출발하기 전에 도착지 팀에 미리 알려요. 그래야 방을 준비하고 보호구를 갖추고 끝난 뒤 소독할 수 있어요. 도착해서 알리거나 오더에 안 적으면 다른 환자와 직원이 노출될 수 있어요."
+      example: "I'll call CT before we leave the unit."
+      exKo: "병동을 나서기 전에 CT에 전화할게요."
+    - kind: context
+      words: [w-cover]
+      word: cover
+      ko: 덮다
+      scenes:
+        - {who: 인계 메모, icon: board, en: "Patient and lines covered with a clean sheet for transport.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Cover his lines before we roll him out.", ok: true}
+        - {who: 가족에게, icon: me, en: "We'll cover him with a barrier drape to contain pathogen shedding en route.", ok: false, fix: "We'll put a clean sheet over him so germs don't spread on the way."}
+      why: "의료진끼리는 barrier·shedding 같은 말로 목적까지 짧게 전해요. 가족에게는 '병원체가 흩날린다'는 말이 겁을 줘요. 무엇을 덮고 왜 하는지를 쉬운 말로 알려 줘요."
+- situation: "MDRO 보균 관리·코호팅"
+  items:
+    - kind: slider
+      words: [w-cohort, w-organism]
+      cue: "Charge nurse: \"Bed 4 has MRSA and bed 7 has VRE. One double room just opened.\""
+      scale: [pair them to free a bed, pair them if beds are close, put them in separate rooms]
+      answerAt: 2
+      why: "코호팅은 같은 균을 가진 환자끼리만 해요. MRSA와 VRE는 다른 균이라 한 방에 두면 서로의 균을 옮길 수 있어요. 병상이 모자라거나 가까워도 다른 균 환자는 따로 두어요."
+      example: "We only cohort patients with the same organism."
+      exKo: "같은 균을 가진 환자끼리만 코호트로 묶어요."
+    - kind: context
+      words: [w-equipment]
+      word: equipment
+      ko: 장비
+      scenes:
+        - {who: 인계 메모, icon: board, en: "Dedicated equipment kept at bedside; flagged for MRSA.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Don't borrow his stethoscope. It's dedicated equipment for bed 4.", ok: true}
+        - {who: 가족에게, icon: me, en: "His equipment is a vector, so nothing leaves this room.", ok: false, fix: "We keep his own supplies in the room so germs don't travel to other patients."}
+      why: "의료진끼리는 전담 장비를 짧게 말해도 통해요. 가족에게 '매개체(vector)'라고 하면 환자가 위험한 존재처럼 들려요. 왜 따로 두는지 쉬운 말로 알려 줘요."
+- situation: "C. difficile 예방·관리"
+  items:
+    - kind: slider
+      words: [w-gel, w-soap]
+      cue: "Visitor: \"Can I just use the hand gel? He has C. diff.\""
+      scale: [wash with soap and water, gel is enough this time, use gel twice instead]
+      answerAt: 0
+      why: "알코올 손소독 젤은 C. diff의 아포를 없애지 못해서, C. diff 환자를 돌본 뒤에는 비누와 물로 씻는 것이 권장돼요. 젤을 한 번 더 쓴다고 해결되지 않아요."
+      example: "For C. diff, we wash with soap and water."
+      exKo: "C. diff에는 비누와 물로 씻어요."
+    - kind: context
+      words: [w-bleach]
+      word: bleach
+      ko: 표백제
+      scenes:
+        - {who: 인계 메모, icon: board, en: "Room cleaned with bleach wipes; C. diff precautions continue.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Grab the bleach wipes. Alcohol won't kill the spores.", ok: true}
+        - {who: 가족에게, icon: me, en: "We use bleach for sporicidal decontamination of every high-touch surface.", ok: false, fix: "We clean the room with a strong bleach cleaner because it kills the germ that alcohol can't."}
+      why: "의료진끼리는 sporicidal·high-touch 같은 말로 청소 방식을 짧게 전해요. 가족에게는 낯선 용어예요. 왜 표백제를 쓰는지 쉬운 말로 알려 줘요."
+- situation: "항생제 관련 이차감염 감시"
+  items:
+    - kind: slider
+      words: [w-fever, w-report]
+      cue: "Nurse: \"He's been on antibiotics for 8 days and just spiked a new fever.\""
+      scale: [recheck it tomorrow, give a fever pill and wait, tell the team right away]
+      answerAt: 2
+      why: "항생제를 오래 쓰는 중에 새로 열이 나면 이차감염 신호일 수 있어서 바로 팀에 보고해요. 내일 다시 재거나 해열제만 주고 기다리면 진단과 치료가 늦어져요."
+      example: "A new fever gets reported right away."
+      exKo: "새로 난 열은 바로 보고해요."
+    - kind: context
+      words: [w-thrush]
+      word: thrush
+      ko: 아구창
+      scenes:
+        - {who: 차트 기록, icon: board, en: "White plaques on tongue c/w oral thrush; provider notified.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "I see thrush on his tongue, so I'm flagging the team.", ok: true}
+        - {who: 가족에게, icon: me, en: "He has oral thrush, a Candida overgrowth secondary to broad-spectrum antibiotic exposure.", ok: false, fix: "He has a yeast infection in his mouth from the antibiotics, and we'll treat it."}
+      why: "의료진끼리는 Candida overgrowth 같은 말로 원인까지 한 번에 전해요. 가족에게는 어렵고 심각하게 들려요. 무엇인지와 치료한다는 계획을 쉬운 말로 알려 줘요."
+- situation: "장치 관련 감염 조기 인지"
+  items:
+    - kind: slider
+      words: [w-redness, w-drainage]
+      cue: "Nurse: \"There's pus draining at the line site and he just spiked a fever.\""
+      scale: [call the provider now, watch it for another shift, wait for morning rounds]
+      answerAt: 0
+      why: "라인 삽입 부위에서 고름이 나오고 열까지 있으면 감염 가능성이 커서 기다리지 않고 바로 의료진을 불러요. 한 근무 더 지켜보거나 회진까지 기다리면 패혈증으로 번질 수 있어요."
+      example: "I'm calling the provider right now."
+      exKo: "지금 바로 의료진을 부를게요."
+    - kind: context
+      words: [w-redness]
+      word: redness
+      ko: 발적
+      scenes:
+        - {who: 차트 기록, icon: board, en: "Redness 2 cm around insertion site; no drainage.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "I'm seeing redness and warmth at the line site.", ok: true}
+        - {who: 가족에게, icon: me, en: "Redness with induration and purulence at the insertion site suggests a device-related infection.", ok: false, fix: "The skin around the line is red and warm, so we're asking the team to look at it."}
+      why: "의료진끼리는 induration·purulence 같은 말로 소견을 짧게 전해요. 가족에게는 낯선 용어라 겁만 줘요. 보이는 것과 다음 행동을 쉬운 말로 알려 줘요."
+- situation: "감염관리 팀 보고·소통"
+  items:
+    - kind: slider
+      words: [w-report, w-surveillance]
+      cue: "Nurse: \"The blood culture just came back with MRSA.\""
+      scale: [wait for the weekly report, mention it at lunch, tell infection control today]
+      answerAt: 2
+      why: "새 양성 배양 결과는 감염관리팀에 그날 바로 알려요. 그래야 격리와 접촉자 확인을 제때 해요. 주간 보고를 기다리거나 구두로 흘리면 확산을 막을 시간을 놓쳐요."
+      example: "I'll call infection control with the result today."
+      exKo: "오늘 결과를 감염관리팀에 전화할게요."
+    - kind: context
+      words: [w-culture]
+      word: culture
+      ko: 배양
+      scenes:
+        - {who: 차트 기록, icon: board, en: "Culture positive for MRSA; infection control notified.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "The culture came back positive for MRSA.", ok: true}
+        - {who: 가족에게, icon: me, en: "Your culture is positive for methicillin-resistant Staphylococcus aureus colonization.", ok: false, fix: "The test we sent to the lab found a germ that's hard to treat, so we're taking extra steps."}
+      why: "의료진끼리는 균 이름과 colonization 같은 말로 결과를 정확히 전해요. 가족에게는 균 이름과 용어가 어렵고 겁을 줘요. 검사 결과가 무슨 뜻인지와 우리가 하는 일을 쉬운 말로 알려 줘요."

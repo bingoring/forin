@@ -1,0 +1,453 @@
+theme: icu-delirium
+changes:
+- kind: word
+  id: w-update
+  fields:
+  - ko
+  why: ko '알리다'가 w-flag와 같아 듣고 뜻 고르기에서 정답이 둘이 된다 — 가름
+- kind: word
+  id: w-flag
+  fields:
+  - ko
+  why: ko '알리다'가 w-update와 같아 정답이 둘이 된다 — 가름
+- kind: word
+  id: w-document
+  fields:
+  - ko
+  why: ko '기록하다'가 w-note와 같아 정답이 둘이 된다 — 가름
+- kind: word
+  id: w-stat
+  fields:
+  - ko
+  why: ko '즉시'가 w-immediately와 같아 정답이 둘이 된다 — '당장'으로 가름
+- kind: word
+  id: w-shorten
+  fields:
+  - ko
+  why: ko '줄이다'가 w-reduce와 같아 정답이 둘이 된다 — shorten은 '단축하다'로 가름
+- kind: word
+  id: w-cluster
+  fields:
+  - ko
+  why: ko '묶다'가 w-group·w-tie와 같아 정답이 셋이 된다 — 가름
+- kind: word
+  id: w-group
+  fields:
+  - ko
+  why: ko '묶다'가 w-cluster·w-tie와 같아 정답이 셋이 된다 — 가름
+- kind: word
+  id: w-danger
+  fields:
+  - ko
+  why: ko '위험'이 w-risk와 같아 정답이 둘이 된다 — danger는 '위험한 상태'로 가름
+- kind: word
+  id: w-risk
+  fields:
+  - ko
+  why: ko '위험'이 w-danger와 같아 정답이 둘이 된다 — risk는 '위험성'으로 가름
+- kind: word
+  id: w-med
+  fields:
+  - ko
+  why: ko '약'이 w-drug '약물'과 거의 같아 정답이 둘이 된다 — med는 '복용약'으로 가름
+- kind: word
+  id: w-lighten
+  fields:
+  - ko
+  why: ko '얕추다'는 우리말이 아니다 — '가볍게 하다'로
+- kind: word
+  id: w-calm
+  fields:
+  - ko
+  why: 태그된 문장 대부분이 형용사('he's calm', 'keep the room calm')라 ko '진정시키다'는 맞지 않고, 같은 ko를 w-deescalate도 가졌다 — '차분한'으로
+- kind: word
+  id: w-support
+  fields:
+  - ko
+  why: '''support his lines/brain''의 뜻을 ''지지하다''는 못 담는다 — ''받쳐 주다'''
+- kind: word
+  id: w-guide
+  fields:
+  - ko
+  why: '''use CIWA to guide dosing''의 ''안내하다''가 어색 — ''이끌다'''
+- kind: word
+  id: w-back
+  fields:
+  - ko
+  why: ko '다시'는 'step back'(뒤로)과 'get back to themselves'(되돌아)를 담지 못한다
+- kind: word
+  id: w-through
+  fields:
+  - ko
+  why: '''talking this through''의 뜻은 ''통해''가 아니라 ''끝까지'''
+- kind: word
+  id: w-replace
+  fields:
+  - ko
+  why: ko '재확보하다'가 w-secure '확보하다'와 거의 같아 정답이 둘이 된다 — '교체하다'로 가름
+- kind: word
+  id: w-turn
+  fields:
+  - ko
+  why: 태그된 문장 대부분이 '몸을 돌리다'이고 ko '끄다'는 turn off(w-off와 함께) 한 군데뿐 — '돌리다'로, 해당 두 문장 태그를 뺌
+- kind: word
+  id: w-turn
+  fields:
+  - example
+  why: example 문장 'I'll turn off the TV and close the door quietly.'에서 이 단어 태그를 뺐으므로 태그된 문장으로 바꿈
+- kind: word
+  id: w-calm
+  fields:
+  - example
+  why: example 문장 'He may seem confused, but hearing you can calm him.'에서 이 단어 태그를 뺐으므로 태그된 문장으로 바꿈
+- kind: word-remove
+  id: w-also
+  why: 간호사가 이미 아는 기능어·쉬운 말이라 가르칠 값이 없다 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-body
+  why: 너무 쉬움(공통 쉬운 단어 목록) — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-come
+  why: 너무 쉬움(공통 쉬운 단어 목록) — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-day
+  why: 너무 쉬움(공통 쉬운 단어 목록) — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-even
+  why: 간호사가 이미 아는 기능어·쉬운 말이라 가르칠 값이 없다 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-every
+  why: 간호사가 이미 아는 기능어·쉬운 말이라 가르칠 값이 없다 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-get
+  why: 간호사가 이미 아는 기능어·쉬운 말이라 가르칠 값이 없다 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-good
+  why: 너무 쉬움(공통 쉬운 단어 목록) — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-hand
+  why: 너무 쉬움(공통 쉬운 단어 목록) — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-here
+  why: 간호사가 이미 아는 기능어·쉬운 말이라 가르칠 값이 없다 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-home
+  why: 너무 쉬움(공통 쉬운 단어 목록) — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-hour
+  why: 너무 쉬움(공통 쉬운 단어 목록) — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-just
+  why: 간호사가 이미 아는 기능어·쉬운 말이라 가르칠 값이 없다 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-know
+  why: 너무 쉬움(공통 쉬운 단어 목록) — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-minute
+  why: 너무 쉬움(공통 쉬운 단어 목록) — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-morning
+  why: 너무 쉬움(공통 쉬운 단어 목록) — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-much
+  why: 간호사가 이미 아는 기능어·쉬운 말이라 가르칠 값이 없다 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-night
+  why: 너무 쉬움(공통 쉬운 단어 목록) — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-now
+  why: 간호사가 이미 아는 기능어·쉬운 말이라 가르칠 값이 없다 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-patient
+  why: 너무 쉬움(공통 쉬운 단어 목록) — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-put
+  why: 간호사가 이미 아는 기능어·쉬운 말이라 가르칠 값이 없다 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-really
+  why: 간호사가 이미 아는 기능어·쉬운 말이라 가르칠 값이 없다 — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-see
+  why: 너무 쉬움(공통 쉬운 단어 목록) — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-time
+  why: 너무 쉬움(공통 쉬운 단어 목록) — 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-today
+  why: 너무 쉬움(공통 쉬운 단어 목록) — 어느 문장도 태그하지 않게 됐다
+- kind: sentence
+  situation: CAM-ICU 선별 시행
+  index: 3
+  fields:
+  - words
+  why: 너무 쉬운 말(공통 쉬운 단어 목록 또는 간호사가 이미 아는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 지남력·환경 조정
+  index: 0
+  fields:
+  - words
+  why: 너무 쉬운 말(공통 쉬운 단어 목록 또는 간호사가 이미 아는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 지남력·환경 조정
+  index: 1
+  fields:
+  - words
+  why: 너무 쉬운 말(공통 쉬운 단어 목록 또는 간호사가 이미 아는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 지남력·환경 조정
+  index: 5
+  fields:
+  - words
+  why: 너무 쉬운 말(공통 쉬운 단어 목록 또는 간호사가 이미 아는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 수면 위생 중재
+  index: 1
+  fields:
+  - words
+  why: '''turn off the TV''는 w-off와 묶인 표현 — turn의 ko를 ''돌리다''로 맞추며 이 문장 태그를 뺌'
+- kind: sentence
+  situation: 수면 위생 중재
+  index: 5
+  fields:
+  - words
+  why: 너무 쉬운 말(공통 쉬운 단어 목록 또는 간호사가 이미 아는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 조기 이동·활동 격려
+  index: 0
+  fields:
+  - words
+  why: 너무 쉬운 말(공통 쉬운 단어 목록 또는 간호사가 이미 아는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 조기 이동·활동 격려
+  index: 4
+  fields:
+  - words
+  why: 너무 쉬운 말(공통 쉬운 단어 목록 또는 간호사가 이미 아는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 조기 이동·활동 격려
+  index: 5
+  fields:
+  - words
+  why: 너무 쉬운 말(공통 쉬운 단어 목록 또는 간호사가 이미 아는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 가족 참여·안심
+  index: 0
+  fields:
+  - words
+  why: 너무 쉬운 말(공통 쉬운 단어 목록 또는 간호사가 이미 아는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 가족 참여·안심
+  index: 1
+  fields:
+  - words
+  why: '''can calm him''은 동사 — 헤드워드를 형용사 ''차분한''으로 맞추며 이 문장 태그를 뺌'
+- kind: sentence
+  situation: 가족 참여·안심
+  index: 2
+  fields:
+  - words
+  why: 너무 쉬운 말(공통 쉬운 단어 목록 또는 간호사가 이미 아는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 가족 참여·안심
+  index: 3
+  fields:
+  - words
+  why: 너무 쉬운 말(공통 쉬운 단어 목록 또는 간호사가 이미 아는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 가족 참여·안심
+  index: 5
+  fields:
+  - words
+  why: 너무 쉬운 말(공통 쉬운 단어 목록 또는 간호사가 이미 아는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 유발요인 스크리닝
+  index: 2
+  fields:
+  - words
+  why: 너무 쉬운 말(공통 쉬운 단어 목록 또는 간호사가 이미 아는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 유발요인 스크리닝
+  index: 5
+  fields:
+  - words
+  why: 너무 쉬운 말(공통 쉬운 단어 목록 또는 간호사가 이미 아는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 저활동형 섬망 인지
+  index: 1
+  fields:
+  - words
+  why: 너무 쉬운 말(공통 쉬운 단어 목록 또는 간호사가 이미 아는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 저활동형 섬망 인지
+  index: 2
+  fields:
+  - words
+  why: 너무 쉬운 말(공통 쉬운 단어 목록 또는 간호사가 이미 아는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 저활동형 섬망 인지
+  index: 3
+  fields:
+  - words
+  why: 너무 쉬운 말(공통 쉬운 단어 목록 또는 간호사가 이미 아는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 저활동형 섬망 인지
+  index: 4
+  fields:
+  - words
+  why: 너무 쉬운 말(공통 쉬운 단어 목록 또는 간호사가 이미 아는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 저활동형 섬망 인지
+  index: 5
+  fields:
+  - words
+  why: 너무 쉬운 말(공통 쉬운 단어 목록 또는 간호사가 이미 아는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 과활동형 초조 비약물 관리
+  index: 0
+  fields:
+  - words
+  why: 너무 쉬운 말(공통 쉬운 단어 목록 또는 간호사가 이미 아는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 과활동형 초조 비약물 관리
+  index: 2
+  fields:
+  - words
+  why: 너무 쉬운 말(공통 쉬운 단어 목록 또는 간호사가 이미 아는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 과활동형 초조 비약물 관리
+  index: 5
+  fields:
+  - words
+  why: 너무 쉬운 말(공통 쉬운 단어 목록 또는 간호사가 이미 아는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 수면-각성 주기 회복 전략
+  index: 1
+  fields:
+  - words
+  why: 너무 쉬운 말(공통 쉬운 단어 목록 또는 간호사가 이미 아는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 섬망 중 진정 최소화
+  index: 2
+  fields:
+  - words
+  why: '''lighter sedation''의 light는 형용사 비교급 — 명사 헤드워드(빛)와 안 맞아 태그를 뺌(w-lighten이 따로 있다)'
+- kind: sentence
+  situation: 감각 보조 제공
+  index: 0
+  fields:
+  - words
+  why: 너무 쉬운 말(공통 쉬운 단어 목록 또는 간호사가 이미 아는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 감각 보조 제공
+  index: 1
+  fields:
+  - words
+  why: 너무 쉬운 말(공통 쉬운 단어 목록 또는 간호사가 이미 아는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 감각 보조 제공
+  index: 3
+  fields:
+  - words
+  why: 너무 쉬운 말(공통 쉬운 단어 목록 또는 간호사가 이미 아는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 감각 보조 제공
+  index: 5
+  fields:
+  - words
+  why: 너무 쉬운 말(공통 쉬운 단어 목록 또는 간호사가 이미 아는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 억제대 최소화 대안
+  index: 5
+  fields:
+  - words
+  why: 너무 쉬운 말(공통 쉬운 단어 목록 또는 간호사가 이미 아는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 알코올 금단 섬망 감별
+  index: 1
+  fields:
+  - words
+  why: 너무 쉬운 말(공통 쉬운 단어 목록 또는 간호사가 이미 아는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 알코올 금단 섬망 감별
+  index: 3
+  fields:
+  - words
+  why: 너무 쉬운 말(공통 쉬운 단어 목록 또는 간호사가 이미 아는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 알코올 금단 섬망 감별
+  index: 5
+  fields:
+  - words
+  why: 너무 쉬운 말(공통 쉬운 단어 목록 또는 간호사가 이미 아는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 가족에게 섬망 설명·교육
+  index: 2
+  fields:
+  - words
+  why: 너무 쉬운 말(공통 쉬운 단어 목록 또는 간호사가 이미 아는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 가족에게 섬망 설명·교육
+  index: 4
+  fields:
+  - words
+  why: 너무 쉬운 말(공통 쉬운 단어 목록 또는 간호사가 이미 아는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 가족에게 섬망 설명·교육
+  index: 5
+  fields:
+  - words
+  why: 너무 쉬운 말(공통 쉬운 단어 목록 또는 간호사가 이미 아는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 극심 초조 자타해 위험 위기
+  index: 1
+  fields:
+  - words
+  why: 너무 쉬운 말(공통 쉬운 단어 목록 또는 간호사가 이미 아는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 극심 초조 자타해 위험 위기
+  index: 3
+  fields:
+  - words
+  why: 너무 쉬운 말(공통 쉬운 단어 목록 또는 간호사가 이미 아는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 섬망 중 라인·튜브 자가제거 급변
+  index: 0
+  fields:
+  - words
+  why: 너무 쉬운 말(공통 쉬운 단어 목록 또는 간호사가 이미 아는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 섬망 중 라인·튜브 자가제거 급변
+  index: 3
+  fields:
+  - words
+  why: 너무 쉬운 말(공통 쉬운 단어 목록 또는 간호사가 이미 아는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 금단 발작·진전섬망 위기
+  index: 0
+  fields:
+  - words
+  why: 너무 쉬운 말(공통 쉬운 단어 목록 또는 간호사가 이미 아는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 섬망 지속·예후 소통
+  index: 1
+  fields:
+  - words
+  why: 너무 쉬운 말(공통 쉬운 단어 목록 또는 간호사가 이미 아는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 섬망 지속·예후 소통
+  index: 5
+  fields:
+  - words
+  why: 너무 쉬운 말(공통 쉬운 단어 목록 또는 간호사가 이미 아는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 억제대 관련 손상·질식 위험 위기
+  index: 0
+  fields:
+  - words
+  why: 너무 쉬운 말(공통 쉬운 단어 목록 또는 간호사가 이미 아는 말) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 억제대 관련 손상·질식 위험 위기
+  index: 2
+  fields:
+  - words
+  why: '''is turning red''는 ''변하다''라 ''돌리다''와 안 맞음 — 태그를 뺌'

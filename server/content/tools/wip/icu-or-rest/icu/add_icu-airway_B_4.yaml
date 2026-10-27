@@ -1,0 +1,91 @@
+situations:
+- title: 기관절개관 교체 보조
+  s:
+  - ["교체 준비", gear, "'same-size backup'은 빠졌을 때 바로 넣을 같은 크기의 예비를 뜻해요. 폐쇄자는 새 관을 삽입할 때 끝을 매끄럽게 해 주는 안내 도구예요.", "for the next shift", "흡인 카테터와 동일 크기 예비 기관절개관을 준비해 둘게요.", "폐쇄자와 동일 크기 예비 흡인 카테터를 준비해 둘게요.", "obturator", "humidifier", "speaking valve", "stethoscope"]
+  - ["위기 대비", shield, "'in case he desaturates'는 일이 생기기 전에 미리 갖춘다는 뜻이에요. 교체하는 동안은 기도가 잠시 비어 포화도가 빠르게 떨어질 수 있어요.", "if he wakes up", "혈압이 떨어질 경우를 대비해 흡인과 산소가 준비돼 있어요.", "열이 오를 경우를 대비해 흡인과 산소가 준비돼 있어요.", "desaturates", "wakes", "sleeps", "sneezes"]
+  - ["위험 설명", siren, "'carry more risk'로 위험을 비교해 알리고 'so'로 대비 행동을 이어요. 첫 교체는 관이 지나는 길이 아직 굳지 않아 새 관이 엉뚱한 곳으로 들어가기 쉬워요.", "because he asked", "첫 교체는 시간이 더 걸려서 기도 카트를 가까이 둬요.", "첫 교체는 위험이 더 커서 응급 약물을 가까이 둬요.", "risk", "cost", "weight", "noise"]
+  - ["환자 안심", speech, "'so'로 이유와 방법을 잇고 'explain each step'으로 환자가 무엇이 일어나는지 알게 해요. 처음 겪는 환자는 예측이 안 돼 불안하니 천천히, 알려 가며 해요.", "and talk loudly", "첫 교체라서 천천히 진행하며 단계마다 기록할게요.", "둘째 교체라서 천천히 진행하며 단계마다 설명할게요.", "explain", "label", "count", "time"]
+  - ["역할 분담", handshake2, "'while you remove'는 상대가 하는 일과 내가 하는 일을 동시에 맞춰요. 스토마를 눌러 주는 사람이 따로 있어야 빼는 사람이 손을 놓지 않아요.", "after you remove", "기존 드레싱을 떼는 동안 스토마를 눌러 지혈할게요.", "기존 튜브를 닦는 동안 스토마를 눌러 지혈할게요.", "pressure", "oxygen", "suction", "lubricant"]
+  - ["감시 요청", monitor, "'until the new trach is confirmed'는 감시를 멈추는 기준을 확인된 시점으로 정해요. 확인 전에는 관이 잘못 들어갔을 수 있어 산소 수치가 먼저 신호를 줘요.", "while he sleeps", "새 기관절개관이 확인될 때까지 혈압 수치를 면밀히 지켜봐요.", "새 기관절개관이 확인될 때까지 산소 통을 면밀히 지켜봐요.", "levels", "tanks", "lines", "filters"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 기관절개관 교체 4문장 순서
+    why: 첫 교체라는 점을 알리며 환자를 안심시키고, 교체 도구를 챙긴 뒤 곁에 흡인과 산소를 두고, 마지막으로 빼는 동안 역할을 나눠요.
+    lines:
+    - ["This is his first change, so I'll go slowly and explain each step.", speech, "첫 교체라서 천천히 진행하며 단계마다 설명할게요", "안심"]
+    - ["I'll have the obturator and a same-size backup trach ready for it.", gear, "그걸 위해 폐쇄자와 동일 크기 예비 기관절개관을 준비해 둘게요", "준비"]
+    - ["Suction and oxygen are set up beside them in case he desaturates.", shield, "포화도가 떨어질 경우를 대비해 그 곁에 흡인과 산소가 있어요", "대비"]
+    - ["With that ready, I'll hold pressure while you remove the old tube.", handshake2, "그게 준비됐으니 기존 튜브를 빼는 동안 제가 눌러 지혈할게요", "분담"]
+- title: 특수 튜브 관리
+  s:
+  - ["위치 확인", check, "'Let's confirm'은 같이 확인하자는 말투예요. 이중내강 튜브는 깊이가 몇 센티만 어긋나도 한쪽 폐가 환기되지 않아서 깊이와 커프를 같이 봐요.", "with the family", "이중내강 튜브 길이와 커프 위치를 확인해요.", "이중내강 튜브 깊이와 커프 모양을 확인해요.", "depth", "color", "brand", "price"]
+  - ["이유 설명", shield, "'so'로 구조(내강마다 다른 폐)와 결론(위치가 중요)을 이어요. 위치가 어긋나면 한쪽 폐가 환기되지 않거나 분리 환기가 깨져요.", "for the surgeon", "각 내강이 다른 폐를 환기시키므로 관 두께가 중요해요.", "각 커프가 다른 폐를 환기시키므로 위치 선정이 중요해요.", "ventilates", "monitors", "protects", "weighs"]
+  - ["청진 확인", stetho, "'to verify'로 청진의 목적을 밝혀요. 한쪽을 막고 반대쪽 폐 소리만 들리는지 들어야 분리 환기가 됐다고 말할 수 있어요.", "to rest the chest", "한쪽이 분리됐는지 확인하려고 청진할게요.", "위쪽이 분리됐는지 확인하려고 청진할게요.", "isolation", "infection", "volume", "color"]
+  - ["사용 이유", hospital, "'needs … for'로 필요한 이유를 밝혀요. 한쪽 폐를 쉬게 해야 하는 흉부 수술에서는 반대쪽 폐만 환기해야 해요.", "after surgery", "이 환자는 수술 중 양쪽 폐 환기를 위해 이 튜브가 필요해요.", "이 환자는 검사 중 한쪽 폐 환기를 위해 이 튜브가 필요해요.", "surgery", "dialysis", "transport", "feeding"]
+  - ["커프압 확인", check, "'to the right pressure'로 정해진 기준이 있다는 점을 말해요. 너무 높으면 점막이 상하고 낮으면 새서 환기가 안 돼요.", "to the top", "양쪽 커프가 알맞은 압력으로 연결됐는지 확인할게요.", "양쪽 라인이 알맞은 압력으로 부풀었는지 확인할게요.", "inflated", "tightened", "loosened", "squeezed"]
+  - ["분리 청진", stetho, "'separately'는 한쪽씩 따로 본다는 뜻이에요. 한쪽을 잠그면 반대쪽 폐 소리만 들려서 어느 쪽이 환기되는지 구분돼요.", "to rest the lung", "한쪽을 잠그고 심장 소리를 따로따로 확인할게요.", "한쪽을 잠그고 폐 소리를 따로따로 기록할게요.", "clamp", "mark", "tape", "label"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 이중내강 튜브 4문장 순서
+    why: 왜 필요한지 먼저 말하고, 구조 때문에 위치가 중요하다고 이유를 이은 뒤, 깊이를 확인하고, 마지막에 한쪽씩 청진해 분리를 검증해요.
+    lines:
+    - ["This patient needs a double-lumen tube for one-lung ventilation during surgery.", hospital, "이 환자는 수술 중 한쪽 폐 환기를 위해 이중내강 튜브가 필요해요", "이유"]
+    - ["Each lumen of it ventilates a different lung, so placement is critical.", shield, "그 각 내강이 다른 폐를 환기시키므로 위치가 중요해요", "구조"]
+    - ["Let's confirm its depth and cuff positions because of that.", check, "그래서 그 깊이와 커프 위치를 확인해요", "확인"]
+    - ["I'll clamp one side and auscultate to verify isolation.", stetho, "한쪽을 잠그고 분리됐는지 청진할게요", "검증"]
+- title: 기관절개 발성밸브 적용
+  s:
+  - ["안전 조건", siren, "'must'로 선택이 아닌 필수 조건임을 밝혀요. 커프가 부풀어 있으면 날숨이 나갈 길이 막혀 환자가 숨을 못 내쉬어요.", "after we leave", "발성밸브를 달기 전에 입안을 완전히 닦아야 해요.", "발성밸브를 달기 전에 손을 완전히 씻어야 해요.", "place", "order", "clean", "wash"]
+  - ["호흡 확인", check, "'first'를 끝에 놓아 다른 일보다 먼저 한다는 점을 강조해요. 관 둘레로 공기가 통해야 밸브를 달아도 날숨이 나갈 수 있어요.", "through his nose", "먼저 튜브 주변으로 삼킬 수 있는지 확인해요.", "먼저 입 주변으로 숨을 쉴 수 있는지 확인해요.", "breathe", "swallow", "cough", "speak"]
+  - ["즉시 제거", siren, "'if he struggles'는 제거의 기준을 환자의 모습으로 정해요. 날숨이 막히면 급히 숨이 차기 때문에 보다가 바로 뺄 수 있어야 해요.", "after he finishes", "맥박을 지켜보다가 힘겨워하면 밸브를 바로 제거할게요.", "호흡을 지켜보다가 졸려하면 밸브를 바로 제거할게요.", "struggles", "sleeps", "eats", "smiles"]
+  - ["환자 안내", speech, "'now that'은 조건이 바뀐 지금이라는 뜻이에요. 커프가 내려가야 소리가 성대를 지나므로 말이 되는 이유를 함께 알려요.", "when he is hungry", "커프가 빠졌으니 이제 웃어 볼 수 있다고 알려 드려요.", "커프가 빠졌으니 이제 눈을 떠 볼 수 있다고 알려 드려요.", "talk", "sit", "stand", "wave"]
+  - ["즉시 제거", siren, "'right away if needed'는 망설이지 않고 바로 뺀다는 약속이에요. 숨을 못 내쉬는 상태는 몇 초 만에 나빠져서 따져 볼 시간이 없어요.", "after one hour", "환자 목소리가 들리면 바로 밸브를 빼요.", "졸려하는 기색이 보이면 바로 밸브를 빼요.", "distress", "snoring", "humming", "hiccups"]
+  - ["적용 조건", check, "'only … when'은 조건이 갖춰질 때만 한다는 제한이에요. 의식이 흐리거나 숨이 불안정하면 밸브로 날숨이 막힐 때 위험해요.", "while he sleeps", "의식이 또렷하고 스스로 잘 걸을 때만 밸브를 시도해요.", "의식이 또렷하고 가족이 곁에 있을 때만 밸브를 시도해요.", "alert", "hungry", "cold", "thirsty"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 발성밸브 적용 4문장 순서
+    why: 시도해도 되는 환자의 조건을 먼저 말하고, 커프를 뺀 뒤 환자에게 말해 보라고 안내하며, 마지막으로 힘들어하면 바로 밸브를 빼겠다고 약속해요.
+    lines:
+    - ["We only try the valve when he's alert and breathing well on his own.", check, "의식이 또렷하고 스스로 잘 숨쉴 때만 밸브를 시도해요", "조건"]
+    - ["The cuff must be fully deflated before we place it.", siren, "그걸 달기 전에 커프를 완전히 빼야 해요", "커프"]
+    - ["I tell him he can try to talk now that the cuff is down.", speech, "커프가 빠졌으니 이제 말해 볼 수 있다고 알려 드려요", "안내"]
+    - ["I watch for any distress and take the valve off right away if needed.", siren, "힘들어하는 기색이 보이면 바로 밸브를 빼요", "감시"]
+- title: 흡인성 폐렴 예방 기도관리
+  s:
+  - ["침상 각도", hospital, "'to reduce'로 목적을 밝혀요. 상체를 높이면 위 내용물이 중력 때문에 올라와 기도로 넘어가는 일이 줄어요.", "to improve his view", "흡인을 줄이려고 침대 난간을 계속 올려 둬요.", "소음을 줄이려고 침대 머리를 계속 높여 둬요.", "elevated", "covered", "warmed", "cleaned"]
+  - ["커프압 확인", check, "'so … don't'는 막으려는 결과를 밝히는 형식이에요. 커프가 느슨하면 구강 분비물이 커프 옆으로 흘러 폐로 내려가요.", "so he can talk", "분비물이 새어 들어가지 않도록 끈 길이를 확인해요.", "소리가 새어 나가지 않도록 커프압을 확인해요.", "pressure", "color", "size", "label"]
+  - ["구강간호 효과", shield, "'lowers his risk'는 확실히 막는다가 아니라 가능성을 낮춘다는 정직한 표현이에요. 입안 세균이 줄면 튜브를 타고 내려가는 세균도 줄어요.", "for his appetite", "규칙적인 피부간호가 인공호흡기 폐렴 위험을 낮춰 줘요.", "규칙적인 구강간호가 요로 감염 위험을 낮춰 줘요.", "pneumonia", "bleeding", "noise", "delirium"]
+  - ["체위 변경", baby, "'instead of'로 하지 않을 것과 할 것을 맞대어요. 오래 평평하게 누워 있으면 분비물이 고여 흡인과 욕창 위험이 커져요.", "while he sleeps", "평평하게 눕혀 두는 대신 자주 이불을 바꿔 드려요.", "앉혀 두는 대신 자주 자세를 바꿔 드려요.", "flat", "alone", "awake", "wet"]
+  - ["구강 청결", calendar, "'on a schedule'은 생각날 때가 아니라 정해진 때에 한다는 뜻이에요. 정해진 간격으로 하면 구강 세균을 꾸준히 줄여요.", "with a straw", "일정에 따라 머리를 빗겨 드리고 입안을 면봉으로 닦아 드려요.", "일정에 따라 이를 닦아 드리고 코안을 면봉으로 닦아 드려요.", "schedule", "whim", "budget", "request"]
+  - ["종합 설명", shield, "'All of this'는 앞서 말한 처치들을 한꺼번에 묶어 가리켜요. 'chance'는 확률을 낮출 뿐 없애는 건 아니라서 과장 없이 말해요.", "from the family", "이 모든 게 마스크로 인한 폐렴 가능성을 낮춰 줘요.", "이 모든 게 튜브로 인한 욕창 가능성을 낮춰 줘요.", "tube", "mask", "bed", "tray"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 흡인 예방 4문장 순서
+    why: 침상 각도로 시작해 자세를 자주 바꾸는 이유를 같은 목적으로 잇고, 구강 청결을 더한 뒤, 이 모두가 폐렴 위험을 낮춘다고 정리해요.
+    lines:
+    - ["I keep the head of his bed elevated to reduce aspiration.", hospital, "흡인을 줄이려고 침대 머리를 계속 높여 둬요", "각도"]
+    - ["We reposition him often instead of leaving him flat for that same reason.", baby, "같은 이유로 평평하게 눕혀 두는 대신 자주 자세를 바꿔 드려요", "체위"]
+    - ["That includes brushing his teeth and swabbing his mouth on a schedule.", calendar, "거기에는 일정에 따라 이를 닦고 입안을 닦는 것도 들어가요", "구강"]
+    - ["All of this lowers his chance of getting pneumonia from the tube.", shield, "이 모든 게 튜브로 인한 폐렴 가능성을 낮춰 줘요", "정리"]
+- title: 기도 응급 카트 숙지·소통
+  s:
+  - ["위치 점검", magnify, "'where'로 시작하는 간접 의문문은 위치를 확인한다는 뜻이에요. 급할 때는 찾는 시간이 곧 환자의 저산소 시간이라 평소에 위치를 익혀 둬요.", "for the next patient", "기도 카트 안에 구조 장치가 몇 개 있는지 점검해요.", "응급 카트 안에 구조 장치가 어디 있는지 점검해요.", "rescue", "training", "broken", "pediatric"]
+  - ["역할 배정", handshake2, "'You … I'll …'로 맞세워 말하면 누가 무엇을 맡는지 겹치지 않아요. 응급 중에는 한 사람이 두 가지를 하다 놓치기 쉬워요.", "in the hallway", "흡인은 당신이, 모니터는 응급 상황 동안 제가 관리할게요.", "산소는 당신이, 약물은 응급 상황 동안 제가 관리할게요.", "suction", "charting", "paperwork", "transport"]
+  - ["역할 숙지", star, "'before a crisis hits'는 위기 전이라는 시점을 강조해요. 위기 중에는 역할을 정할 여유가 없어 평소에 익혀 둬요.", "after the audit", "위기가 닥치기 전에 모두 자기 이름을 알아 둬야 해요.", "위기가 닥치기 전에 모두 자기 장비를 알아 둬야 해요.", "role", "badge", "locker", "password"]
+  - ["위치 안내", pushpin, "'are in'으로 있는 곳을 단정해 말하면 찾는 시간이 줄어요. 서랍 위치를 정해 두면 누가 와도 같은 곳에서 꺼내요.", "on the bed", "부지와 비디오 스코프는 맨 위 선반에 있어요.", "부지와 흡인 카테터는 맨 위 서랍에 있어요.", "drawer", "cabinet", "pocket", "tray"]
+  - ["호출 담당", bell, "'I'll be the one who'로 한 사람을 지정하면 모두가 서로 부를 거라 믿고 아무도 안 부르는 일이 없어요. 'if we need it'은 판단을 팀 모두에게 열어 둬요.", "if I'm not busy", "필요하면 장비를 가져오는 건 제가 할게요.", "필요하면 시간을 기록하는 건 제가 할게요.", "help", "supplies", "blood", "silence"]
+  - ["훈련 제안", run, "'so no one hesitates'는 목적을 부정 형태로 말해요. 훈련으로 몸에 익혀 두면 실제 위기에서 생각하느라 멈추지 않아요.", "to pass the audit", "나중에 아무도 주저하지 않도록 이 장비를 써 봐요.", "나중에 아무도 놀라지 않도록 이 훈련을 해 봐요.", "hesitates", "arrives", "sleeps", "complains"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 기도 응급 카트 4문장 순서
+    why: 역할을 알아야 한다는 원칙을 먼저 말하고, 맡을 일을 나눈 뒤, 나머지 담당을 정하고, 마지막으로 그 모두를 훈련해 보자고 제안해요.
+    lines:
+    - ["Everyone should know their role before a crisis hits.", star, "위기가 닥치기 전에 모두 자기 역할을 알아 둬야 해요", "원칙"]
+    - ["You handle suction, I'll manage medications during an emergency.", handshake2, "흡인은 당신이, 약물은 응급 상황 동안 제가 관리할게요", "배정"]
+    - ["For the rest, I'll be the one who calls for help.", bell, "나머지는 도움을 요청하는 건 제가 할게요", "호출"]
+    - ["Let's run through all of that in a drill so no one hesitates later.", run, "그 모두를 훈련으로 해 봐요, 나중에 아무도 주저하지 않도록요", "훈련"]

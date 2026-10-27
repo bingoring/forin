@@ -1,0 +1,150 @@
+- situation: "손위생·PPE 착탈"
+  items:
+    - kind: slider
+      words: [w-clean, w-gel]
+      cue: "Visitor: \"I only touched the bed rail, and my hands look clean. Can I skip the gel?\""
+      scale: [use the hand gel, skip it this time, wait until you leave]
+      answerAt: 0
+      why: "눈에 보이는 오염이 없어도 환자 주변 물건을 만진 뒤에는 손위생을 해요. 눈에 띄게 더럽지 않다면 알코올 손소독 젤로 충분해요. 한 번 건너뛰거나 나갈 때까지 미루면 그 사이 균이 손에 남아 옮겨 다닐 수 있어요."
+      example: "Please use the gel before you touch him."
+      exKo: "그분을 만지기 전에 젤을 써 주세요."
+    - kind: context
+      words: [w-gown]
+      word: gown
+      ko: 가운
+      scenes:
+        - {who: 인계 메모, icon: board, en: "Contact precautions: gown and gloves on entry.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Can you grab me a gown before we turn him?", ok: true}
+        - {who: 가족에게, icon: me, en: "Don the isolation gown per policy; improper doffing is a reportable compliance event.", ok: false, fix: "Please put this gown on before you go in. It helps keep germs off you and off him."}
+      why: "의료진끼리는 정책 용어로 짧게 말해도 통해요. 가족에게는 don·doff 같은 말과 '보고 대상' 같은 표현이 겁만 주고 무엇을 하라는 건지 흐려요. 해야 할 행동과 이유를 쉬운 말로 알려 줘요."
+- situation: "CLABSI 번들 유지"
+  items:
+    - kind: slider
+      words: [w-dressing, w-infection]
+      cue: "Nurse: \"The edge of the line dressing is lifting and a little damp.\""
+      scale: [write it down for next shift, tape the edge down for now, change it now with sterile technique]
+      answerAt: 2
+      why: "중심라인 드레싱이 젖거나 들뜨거나 더러워지면 정해진 교체 주기를 기다리지 않고 바로 무균 기법으로 교체해요. 테이프로 덧붙이거나 다음 근무로 미루면 균이 라인 주변으로 들어올 틈이 그대로 남아요."
+      example: "A damp dressing gets changed right away."
+      exKo: "젖은 드레싱은 바로 교체해요."
+    - kind: context
+      words: [w-dressing]
+      word: dressing
+      ko: 드레싱
+      scenes:
+        - {who: 차트 기록, icon: board, en: "Dressing dry, intact, and dated.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "The dressing is damp, so I'm changing it now.", ok: true}
+        - {who: 가족에게, icon: me, en: "The occlusive dressing has lost its seal, so we'll perform an aseptic dressing change.", ok: false, fix: "The clear cover over his line has come loose, so I'm putting on a fresh one."}
+      why: "의료진끼리는 occlusive·aseptic 같은 말로 상태와 처치를 짧게 전해요. 가족에게는 낯선 용어라 심각한 일처럼 들려요. 무엇이 어떻게 되어 있고 지금 뭘 하는지만 쉬운 말로 말해 줘요."
+- situation: "CAUTI 예방·조기 제거"
+  items:
+    - kind: slider
+      words: [w-catheter, w-reason]
+      cue: "Nurse: \"She's awake, passing urine without help, and the catheter is still in.\""
+      scale: [keep it until discharge, keep it one more day, ask to remove it today]
+      answerAt: 2
+      why: "소변줄은 꼭 필요한 이유가 있을 때만 두고, 이유가 없어지면 가능한 한 빨리 빼요. 깨어 있고 스스로 소변을 볼 수 있다면 오늘 제거를 문의하는 게 맞아요. 퇴원까지, 혹은 하루 더 두면 그만큼 감염 위험이 쌓여요."
+      example: "She doesn't need the catheter anymore."
+      exKo: "그분은 이제 카테터가 필요 없어요."
+    - kind: context
+      words: [w-catheter]
+      word: catheter
+      ko: 카테터
+      scenes:
+        - {who: 차트 기록, icon: board, en: "Foley catheter day 4; no indication, removal requested.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Does she still need the catheter today?", ok: true}
+        - {who: 가족에게, icon: me, en: "Her indwelling urinary catheter has no remaining indication and carries a CAUTI risk.", ok: false, fix: "She doesn't need the tube anymore, and keeping it in raises the chance of a bladder infection."}
+      why: "의료진끼리는 indwelling·indication·CAUTI 같은 말로 상태를 짧게 전해요. 가족에게는 줄임말과 용어가 낯설고 겁만 줘요. 왜 빼는지를 쉬운 말로 알려 줘요."
+- situation: "VAP 번들 수행"
+  items:
+    - kind: slider
+      words: [w-raise, w-lung]
+      cue: "Colleague: \"His bed is flat while we finish the bath.\""
+      scale: [raise it again right after, leave it flat all shift, lower it a little more]
+      answerAt: 0
+      why: "인공호흡기를 단 환자는 금기가 없으면 침대 머리를 30~45도로 올려 두는 것이 VAP 예방 기본이에요. 씻기는 동안 잠깐 눕혔더라도 끝나면 바로 다시 올려요. 하루 종일 눕혀 두거나 더 내리면 위 내용물이 폐로 넘어갈 위험이 커져요."
+      example: "I'll raise the bed again as soon as we finish."
+      exKo: "끝나자마자 침대를 다시 올릴게요."
+    - kind: swap
+      words: [w-pneumonia, w-ventilator]
+      who: "가족에게 · 구강간호 설명"
+      icon: me
+      before: ["We do mouth care to prevent ", "VAP", " while he's on the breathing machine."]
+      options: [a lung infection, VAP, ventilator-associated pneumonia]
+      answer: a lung infection
+      notes: {a lung infection: "가족이 바로 알아듣는 말. 무엇을 막으려는지 겁주지 않고 전한다.", VAP: "의료진끼리 쓰는 줄임말. 가족에게는 무슨 뜻인지 알 수 없다.", ventilator-associated pneumonia: "정확한 병명이지만 길고 딱딱해서 가족에게는 어렵게 들린다."}
+      why: "같은 내용이라도 의료진끼리는 VAP처럼 줄여 말하고, 가족에게는 무엇을 막으려는지 쉬운 말로 알려 줘요."
+      ko: "인공호흡기를 달고 있는 동안 폐 감염을 막으려고 입 간호를 해요"
+- situation: "격리 유형 이해·표지"
+  items:
+    - kind: pair
+      words: [w-isolation, w-protection]
+      pairs: [["contact", "gown and gloves"], ["airborne", "an N95 and a negative-pressure room"], ["droplet", "a surgical mask"]]
+      decoys: ["bare hands only"]
+      why: "접촉격리는 가운과 장갑, 공기매개격리는 N95와 음압 병실, 비말격리는 수술용 마스크가 기본이에요. 병원마다 표지 색은 달라도 격리 종류별 보호구 원칙은 같아요."
+    - kind: context
+      words: [w-isolation]
+      word: isolation
+      ko: 격리
+      scenes:
+        - {who: 차트 기록, icon: board, en: "Contact isolation: gown and gloves on entry.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Is he still on isolation after the negative swab?", ok: true}
+        - {who: 가족에게, icon: me, en: "Isolation compliance is mandatory, and visitors who break it will be asked to leave.", ok: false, fix: "He's in isolation to keep germs from spreading. Gown and gloves keep you, him, and everyone safe."}
+      why: "의료진끼리는 격리 해제 여부를 짧게 확인하면 돼요. 가족에게 '어기면 나가라'는 식으로 말하면 탓하는 말로 들려요. 왜 필요한지와 함께 모두를 지키려는 것임을 알려 줘요."
+- situation: "환경·기구 소독"
+  items:
+    - kind: slider
+      words: [w-wipe, w-device]
+      cue: "Colleague: \"This pump was just in an isolation room. Can I use it on bed 6?\""
+      scale: [use it right away, hang it back as it is, disinfect it first]
+      answerAt: 2
+      why: "공용 기기는 환자마다 소독한 뒤에 다음 환자에게 써요. 격리실에서 막 나온 기기라면 더 그래요. 그대로 쓰거나 닦지 않고 되돌려 놓으면 균이 환자 사이를 옮겨 다녀요."
+      example: "Disinfect the pump before it goes to the next room."
+      exKo: "다음 병실로 가기 전에 펌프를 소독해요."
+    - kind: context
+      words: [w-disinfect]
+      word: disinfect
+      ko: 소독하다
+      scenes:
+        - {who: 인계 메모, icon: board, en: "Pump and monitor disinfected between patients.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Don't forget to disinfect the BP cuff before bed 6.", ok: true}
+        - {who: 가족에게, icon: me, en: "We disinfect every fomite in this room to reduce environmental bioburden.", ok: false, fix: "We clean everything in the room with a strong cleaner so germs don't spread."}
+      why: "의료진끼리는 fomite·bioburden 같은 전문 용어도 통하지만, 가족에게는 무슨 말인지 알 수 없고 방이 위험한 곳처럼 들려요. 무엇을 왜 하는지를 쉬운 말로 알려 줘요."
+- situation: "중심라인 드레싱·관리 최적화"
+  items:
+    - kind: slider
+      words: [w-loose, w-germ]
+      cue: "Daughter: \"The tape on his neck line is peeling up.\""
+      scale: [thank her and change it now, tell her it's normal, ask her not to look]
+      answerAt: 0
+      why: "가족이 헐거워진 드레싱을 알려 주면 고마움을 표하고 바로 무균 기법으로 교체해요. 헐거운 드레싱은 균이 라인으로 들어갈 길이 돼요. '괜찮다'고 안심시키거나 보지 말라고 하면 위험도 놓치고 신뢰도 잃어요."
+      example: "Thanks for telling me. I'll fix it right away."
+      exKo: "알려 주셔서 고마워요. 바로 고칠게요."
+    - kind: context
+      words: [w-sterile]
+      word: sterile
+      ko: 무균의
+      scenes:
+        - {who: 차트 기록, icon: board, en: "Sterile dressing applied to right IJ line.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Open a sterile kit and a new dressing.", ok: true}
+        - {who: 가족에게, icon: me, en: "Sterile field was maintained with no breach in asepsis throughout the procedure.", ok: false, fix: "We kept everything germ-free while we changed it, so his line is protected."}
+      why: "의료진끼리는 sterile field·breach 같은 말로 무균 유지 여부를 짧게 전해요. 가족에게는 어렵고 딱딱해요. 안전하게 마쳤다는 사실을 쉬운 말로 알려 줘요."
+- situation: "VAP 예방 통합 번들 준수"
+  items:
+    - kind: slider
+      words: [w-bundle, w-element]
+      cue: "Colleague: \"Head elevation and oral care are done, but sedation wasn't paused today.\""
+      scale: [counts as fully met, counts as half met, counts as not met]
+      answerAt: 2
+      why: "번들은 요소를 모두 해야 인정하는 방식으로 집계하는 병원이 많고, 이 문장도 그 기준이에요. 한 요소가 빠지면 그날은 충족으로 세지 않고, 빠진 이유를 기록해요. 반만 인정하거나 충족으로 처리하면 실제보다 좋게 보여요."
+      example: "One missed element means the bundle isn't met."
+      exKo: "요소 하나가 빠지면 번들은 충족이 아니에요."
+    - kind: context
+      words: [w-bundle]
+      word: bundle
+      ko: 번들
+      scenes:
+        - {who: 차트 기록, icon: board, en: "VAP bundle compliance documented, all elements met.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Did we finish every item in the bundle this shift?", ok: true}
+        - {who: 가족에게, icon: me, en: "Your father is non-compliant with the VAP bundle metric this shift.", ok: false, fix: "We're making sure every step of his breathing-tube care gets done today."}
+      why: "의료진끼리는 번들 준수 여부를 지표처럼 말해요. 가족에게 '환자가 준수하지 않는다'고 하면 환자 탓처럼 들리고 무슨 말인지 몰라요. 우리가 무엇을 챙기는지로 바꿔 말해요."

@@ -58,7 +58,7 @@ v46 (학습 화면 핸드오프 1:1 — `lesson-fidelity-v46/build-spec-index.md
       W19 문장 distractorsKo에만 나오는 낱말(어간 = 한글 앞 두 음절)이 주제에서 6번 이상(의문사·숫자 8번) — 조사만 떼면 숨는다
       W20 slider가 5개 이상인 주제에서 정답 칸 하나에 70% 넘게 몰렸거나, 정답이 가장 긴 보기인 것이 70% 넘음 — 읽지 않고 고른다
       W21 빈칸 오답이 확인·처치를 뒤집는 말(ignore·skip·forget·pretend·overlook·neglect·dismiss) — 넣어 읽으면 위험한 지시가 되기 쉽다
-    V21 단어의 chips·decoyChips 조각이 비속어·성적인 말이 아니다(2026-10-16 ICU·OR 파일럿 — 단어를 잘게
+    V21 단어의 decoyChips 조각과 distractorsEn 오답이 비속어·성적인 말·불쾌한 말이 아니다(2026-10-27 ICU 묶음 3에서 목록 확대·오답까지)(2026-10-16 ICU·OR 파일럿 — 단어를 잘게
         자르다 `cum`·`ass`·`anal`·`sux` 같은 조각이 ER 정본에도 들어가 있었다. 검토가 한 번 놓쳤다)
 
 Go는 `omitempty` 문자열이라 `why: ""`와 키 없음을 구별하지 못해 공백만 있는 값만 잡는다. 이 검사기는
@@ -901,6 +901,7 @@ def assembles_to(chunks: list[str], en: str) -> bool:
 # V21 — 조각으로 보이면 안 되는 말. 정답 조각(chips)은 정답 낱말의 일부라 막지 않는다(assess의 as·sess는 괜찮다).
 OFFENSIVE_CHIPS = frozenset("""
 ass arse anal anus butt cum cunt cock dick fag fuck homo jizz naff nig piss porn rape shit slut sux tit tits twat wank whore
+bra bonzo dork dwarf flog grope hearse hell lust oriental slay sow stab strangle tomb tramp underwear witch nasty
 """.split())
 
 V45_WORD_FIELDS = ("exKo", "cue", "tag", "distractorsEn", "distractorsKo", "chips", "decoyChips")
@@ -1004,6 +1005,9 @@ def check_word_v45(w: dict) -> list[tuple[str, str]]:
             out.append(("V13", f"word {wid!r}: decoy chip {d!r} is one of the answer's own fragments"))
         if _norm(d) in OFFENSIVE_CHIPS:
             out.append(("V21", f"word {wid!r}: decoy chip {d!r} is offensive — pick another fragment"))
+    for o in w.get("distractorsEn") or []:
+        if _norm(o) in OFFENSIVE_CHIPS:
+            out.append(("V21", f"word {wid!r}: distractor {o!r} is offensive — pick another word"))
     if en and en.lower() in str(w.get("cue") or "").lower():
         out.append(("V13", f"word {wid!r}: cue gives the answer {en!r} away"))
     elif en and _stems(en) & _stems(w.get("cue") or ""):
@@ -2221,6 +2225,8 @@ def run_selftest() -> int:
                   v45_lex(lambda ws: ws[0].update(distractorsEn=["Wristband", "armband"])), v45_seed(good_nuance), "V13", False))
     cases.append(("V13 (a decoy chip is a real fragment)",
                   v45_lex(lambda ws: ws[0].update(decoyChips=[ws[0]["chips"][0][0]])), v45_seed(good_nuance), "V13", False))
+    cases.append(("V21 (an offensive English distractor)",
+                  v45_lex(lambda ws: ws[0].update(distractorsEn=["grope", "armband"])), v45_seed(good_nuance), "V21", False))
     cases.append(("V21 (an offensive decoy chip)",
                   v45_lex(lambda ws: ws[0].update(decoyChips=["ass"])), v45_seed(good_nuance), "V21", False))
     cases.append(("V13 (the cue gives the answer away)",

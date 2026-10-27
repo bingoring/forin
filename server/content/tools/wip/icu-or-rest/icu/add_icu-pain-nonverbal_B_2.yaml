@@ -1,0 +1,90 @@
+- title: 통증과 초조 감별
+  s:
+  - {t: 감별 평가, i: magnify, w: "tell A from B는 A와 B를 구별한다는 틀이에요. to + 동사원형으로 두 척도를 함께 보는 목적을 먼저 밝혀요.", d: in the notes, k: ["CPOT와 RASS를 확인해서 통증인지 구역인지 구별해요.", "CPOT와 RASS를 확인해서 통증인지 초조인지 설명해요."], a: agitation, o: [fever, nausea, fatigue]}
+  - {t: 초조의 원인, i: bulb, w: "doesn't always mean은 항상은 아니라는 부분 부정이에요. 초조를 곧바로 한 가지 원인으로 단정하지 말고 통증도 살피라는 신호예요.", d: from the nurse, k: ["초조하다고 해서 항상 과진정이거나 감염인 건 아니에요.", "초조하다고 해서 항상 저혈압이거나 섬망인 건 아니에요."], a: delirious, o: [diabetic, anemic, allergic]}
+  - {t: 통증 우선, i: shield, w: "before + -ing로 순서를 밝혀요. 높은 CPOT가 보이면 진정제를 더하기 전에 통증을 먼저 다룬다는 우선순위 규칙이에요.", d: for the night team, k: ["CPOT가 높으면 수액 추가 전에 통증부터 치료해요.", "CPOT가 높으면 진정제 추가 전에 통증부터 보고해요."], a: high, o: [low, steady, flat]}
+  - {t: 우선순위, i: shield, w: "don't just …는 그것만 하지 않는다는 뜻이에요. just 하나로 진정제만 더하는 선택지를 걸러 내요.", d: at the bedside, k: ["기록이 항상 우선이에요 — 진정제만 더 추가하지 않아요.", "통증이 항상 우선이에요 — 진정제만 더 섞지 않아요."], a: sedative, o: [fluids, dressings, pillows]}
+  - {t: 안전 효과, i: shield, w: "this가 앞에서 말한 통증과 초조의 구분을 가리켜요. prevents는 단정적 동사라 구분을 잘하면 불필요한 진정을 막는다는 결과를 분명히 해요.", d: for the team, k: ["이걸 잘 가려내면 낙상을 막을 수 있어요.", "이걸 잘 적어두면 과진정을 막을 수 있어요."], a: oversedation, o: [overfeeding, overheating, overtime]}
+  - {t: 함께 사정, i: handshake2, w: "A, not B alone으로 대비를 붙여 RASS 하나만 보는 습관을 짚어요. together가 두 척도를 한 묶음으로 쓰라는 뜻이에요.", d: in the hallway, k: ["RASS만 보지 말고 CPOT와 RASS를 함께 기록해요.", "RASS만 보지 말고 CPOT와 RASS를 매번 봐요."], a: together, o: [separately, alternately, quietly]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 통증·초조 감별 4문장 순서
+    why: 먼저 관찰을 말하고, that이 그 CPOT를 받아 RASS와 짝을 지어요. 그다음 통증을 먼저 치료하고, 마지막 줄의 that order가 그 순서를 가리켜 과진정 예방으로 닫혀요.
+    lines:
+    - {en: "He looks agitated and his CPOT is high.", icon: faceWorried, ko: "초조해 보이고 CPOT가 높아요", note: 관찰}
+    - {en: "Let's pair that with his RASS to see the whole picture.", icon: chartup, ko: "그걸 RASS와 짝지어 전체를 봐요", note: 함께 보기}
+    - {en: "With a high CPOT, we treat the pain before adding any sedation.", icon: shield, ko: "CPOT가 높으면 진정제 전에 통증을 치료해요", note: 통증 우선}
+    - {en: "Doing it in that order prevents oversedation.", icon: bulb, ko: "그 순서로 하면 과진정을 막아요", note: 효과}
+- title: 아편유사제 적정·부작용 감시
+  s:
+  - {t: 호흡 감시, i: monitor, w: "as + 절은 두 일이 동시에 일어난다는 뜻이에요. 약을 올리는 동안 호흡수를 계속 본다는 안전 감시 규칙이에요.", d: from the doorway, k: ["침상을 정리하면서 호흡수를 지켜봐요.", "아편유사제를 설명하면서 호흡수를 지켜봐요."], a: titrate, o: [weigh, label, sign]}
+  - {t: 천천히 적정, i: calendar, w: "slowly로 속도를, between doses로 재평가 시점을 함께 말해요. 올리는 중에도 매번 다시 보는 안전 습관이에요.", d: on the unit, k: ["조용히 적정하면서 투여 사이사이 재평가해요.", "천천히 적정하면서 병실 사이사이 재평가해요."], a: slowly, o: [quietly, loudly, randomly]}
+  - {t: 변비 예방, i: pill, w: "to + 동사원형으로 목적을 말해요. 아편유사제는 장 운동을 늦추므로 변비 예방을 처음부터 같이 챙기는 것이 기본이에요.", d: on the shelf, k: ["욕창 예방을 위해 장 요법을 시작해요.", "변비 예방을 위해 장 요법을 설명해요."], a: constipation, o: [infection, bruising, swelling]}
+  - {t: 지속 감시, i: monitor, w: "Keep A on B는 A를 B에 둔 채 유지하라는 지시형이에요. 명령문이라 주어 없이 바로 행동으로 시작해요.", d: at the foot, k: ["산소포화도와 호흡수를 모니터에 따로 적어둬요.", "산소포화도와 호흡수를 보호자에게 계속 알려둬요."], a: monitor, o: [wall, shelf, cart]}
+  - {t: 균형, i: compass, w: "balance A against B는 A와 B를 저울질한다는 틀이에요. 진통을 높이면서 호흡억제·변비 같은 부작용을 키우지 않으려는 줄타기를 말해요.", d: at the desk, k: ["좋은 수면과 아편유사제 부작용 사이 균형을 맞춰요.", "좋은 진통과 아편유사제 가격 사이 균형을 맞춰요."], a: balance, o: [trade, share, split]}
+  - {t: 선제 대응, i: pill, w: "before he's constipated로 문제가 생기기 전에 먼저 한다는 예방의 순서를 말해요. now가 미루지 말고 지금 시작하자는 뜻을 더해요.", d: on the cart, k: ["변비가 생기기 전에 지금 완화제를 약사에게 물어봐요.", "변비가 생기기 전에 지금 완화제를 설명해요."], a: constipated, o: [nauseated, bruised, feverish]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 아편유사제 적정 4문장 순서
+    why: 모니터를 먼저 띄워 두고, those numbers를 보며 천천히 적정해요. those doses가 투여를 받아 사이마다 재평가하고, beyond breathing이 호흡 감시를 받아 장 요법을 시작해요.
+    lines:
+    - {en: "Keep his SpO2 and respiratory rate on the monitor.", icon: monitor, ko: "산소포화도와 호흡수를 모니터에 띄워둬요", note: 감시}
+    - {en: "I'm titrating the opioid slowly, dose by dose, while we watch those numbers.", icon: calendar, ko: "그 수치를 보며 천천히 적정해요", note: 적정}
+    - {en: "Between those doses, I reassess his pain each time.", icon: magnify, ko: "그 투여 사이마다 통증을 재평가해요", note: 재평가}
+    - {en: "As for side effects beyond breathing, opioids slow the gut, so let's start a bowel regimen.", icon: pill, ko: "호흡 외 부작용으로 장이 느려지니 장 요법을 시작해요", note: 부작용}
+- title: 다중양식 진통 적용
+  s:
+  - {t: 다중양식, i: pill, w: "lets us use less는 덕분에 적게 쓸 수 있다는 결과를 말해요. 서로 다른 약과 중재를 섞어 한 약의 양을 줄이는 접근이에요.", d: from the pharmacy, k: ["다중양식 진통을 쓰면 아편유사제를 오래 쓸 수 있어요.", "다중양식 마취를 쓰면 아편유사제를 덜 쓸 수 있어요."], a: opioid, o: [fluid, oxygen, salt]}
+  - {t: 기저 조절, i: calendar, w: "adds는 기존 요법 위에 더한다는 동사예요. 정규 투여가 기저를 깔아 주면 그 위에 필요한 약을 덜 얹을 수 있어요.", d: in the med room, k: ["정규 투여하는 아세트아미노펜이 기저 혈압 조절을 더해줘요.", "정규 투여하는 비타민이 기저 통증 조절을 더해줘요."], a: acetaminophen, o: [vitamin, antibiotic, potassium]}
+  - {t: 병용 효과, i: bulb, w: "with fewer side effects가 결과에 붙은 조건이라 안위 향상과 부작용 감소를 한 문장에 묶어요. mechanisms는 약이 듣는 방식(기전)을 가리켜요.", d: for the visit, k: ["기전을 함께 쓰면 부작용은 줄고 수면은 좋아져요.", "기전을 함께 외우면 부작용은 줄고 안위는 좋아져요."], a: comfort, o: [cost, speed, weight]}
+  - {t: 비아편 병용, i: pill, w: "when we add …는 조건을 앞의 결과와 연결하는 절이에요. non-opioid options를 더하는 것이 아편유사제 요구량을 낮춘다는 인과를 말해요.", d: on the shelf, k: ["비아편유사제 선택지를 알리면 아편유사제가 덜 필요해요.", "비아편유사제 선택지를 더하면 수액이 덜 필요해요."], a: add, o: [limit, remove, avoid]}
+  - {t: 총량 감소, i: chartup, w: "usually가 늘 그렇다는 보장이 아니라 보통의 경향이라는 완충을 걸어요. total은 하루에 쓰는 전체량을 말해요.", d: on the chart, k: ["다중양식 진통이 가끔 아편유사제 총 투여량을 낮춰요.", "다중양식 진통이 보통 아편유사제 총 처방 비용을 낮춰요."], a: Multimodal, o: [Intranasal, Transdermal, Sublingual]}
+  - {t: 약국 협의, i: pill, w: "check with는 상대에게 확인받는다는 표현이에요. 새 약은 간호사가 임의로 더하지 않고 처방과 약국 확인을 거친다는 절차를 보여 줘요.", d: at the cart, k: ["정규 아세트아미노펜 처방 추가를 보호자와 확인해봐요.", "정규 아세트아미노펜 처방 설명을 약국과 확인해봐요."], a: pharmacy, o: [radiology, security, billing]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 다중양식 진통 4문장 순서
+    why: 아편유사제만 쓸 때의 문제를 먼저 말하고, that을 받아 약국에 확인해요. 승인되면 처방대로 시작하고, it이 그 약을 받아 총량이 줄어드는 결과로 닫혀요.
+    lines:
+    - {en: "Opioid alone will mean more side effects for him.", icon: faceWorried, ko: "아편유사제만 쓰면 부작용이 더 늘어요", note: 문제}
+    - {en: "To avoid that, let's check with pharmacy about adding a scheduled acetaminophen order.", icon: pill, ko: "그걸 피하려고 정규 아세트아미노펜 추가를 약국과 확인해요", note: 확인}
+    - {en: "If it's approved, we'll start it as written.", icon: check, ko: "승인되면 처방대로 시작해요", note: 시작}
+    - {en: "With it on board, he usually needs less opioid in total.", icon: chartup, ko: "그게 들어가면 보통 총 아편유사제가 줄어요", note: 결과}
+- title: 처치 관련 통증 관리
+  s:
+  - {t: 미리 처치, i: pill, w: "so는 앞의 관찰이 다음 행동의 이유라는 연결어예요. pre-treat는 처치 전에 미리 통증을 다룬다는 압축된 동사예요.", d: for the night shift, k: ["흡인하면 체온이 급증하니 미리 처치해요.", "흡인하면 CPOT가 급증하니 미리 보고해요."], a: spikes, o: [drops, stalls, resets]}
+  - {t: 통증 유발, i: fire, w: "both는 두 처치가 같은 결과를 낸다는 걸 한 단어로 묶어요. spike 같은 동사로 급상승을 짧게 말해요.", d: at the bedside, k: ["흡인과 체위변경 둘 다 졸음을 빠르게 급증시켜요.", "흡인과 체위변경 둘 다 통증을 빠르게 기록해요."], a: Suctioning, o: [Feeding, Charting, Rounding]}
+  - {t: 투여 시점, i: calendar, w: "just before는 처치 바로 앞이라는 좁은 시점을 말해요. small은 소량이라는 뜻이고, 간호사는 처방된 범위 안에서만 맞춰요.", d: from the lab, k: ["처치 직전에 소량의 볼루스 기록을 확인해요.", "처치 직전에 소량의 볼루스 라벨을 확인해요."], a: bolus, o: [drip, patch, tablet]}
+  - {t: 예방 효과, i: bulb, w: "beforehand는 처치 전에라는 부사로, dose 뒤에 붙어 '미리'를 강조해요. keeps … much lower는 낮은 상태를 유지시킨다는 뜻이에요.", d: at the desk, k: ["미리 주는 빠른 투여가 처치 출혈을 훨씬 낮춰줘요.", "미리 주는 빠른 보고가 처치 통증을 훨씬 낮춰줘요."], a: procedural, o: [phantom, joint, mental]}
+  - {t: 직후 재평가, i: magnify, w: "right after는 바로 뒤라는 시점을 좁혀요. 처치가 끝나면 그 효과가 충분했는지 다시 보는 닫는 단계예요.", d: from the unit, k: ["끝난 직후 시트를 재정리해요.", "끝난 직후 안위를 가족에게 알려요."], a: comfort, o: [weight, height, address]}
+  - {t: 마무리 안내, i: star, w: "let him know는 알려 준다는 부드러운 표현이에요. he did well로 수고했다는 인정을 더하면 다음 처치에도 협조가 쉬워져요.", d: from the corner, k: ["끝났다고 알려주고 잘 먹었다고 말해줄게요.", "끝났다고 가족에게 알리고 잘 견뎠다고 말해줄게요."], a: finished, o: [paused, canceled, delayed]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 처치 전후 통증 관리 4문장 순서
+    why: 흡인이 통증을 올린다는 이유가 먼저고, So가 그 이유를 받아 처방대로 직전에 볼루스를 맞춰요. 그 볼루스가 듣고 나서 흡인하고, 끝난 직후 안위를 재평가해요.
+    lines:
+    - {en: "Suctioning makes his CPOT spike.", icon: fire, ko: "흡인하면 CPOT가 급증해요", note: 이유}
+    - {en: "So I'll time a small bolus, as ordered, just before we start.", icon: calendar, ko: "그래서 처방대로 시작 직전에 소량 볼루스를 맞춰요", note: 투여}
+    - {en: "We'll suction him once that bolus has had time to work.", icon: stetho, ko: "볼루스가 듣고 나서 흡인해요", note: 처치}
+    - {en: "Right after we finish, I'll reassess his comfort.", icon: magnify, ko: "끝난 직후 안위를 재평가해요", note: 재평가}
+- title: 통증-진정-섬망 통합 평가
+  s:
+  - {t: 상호 영향, i: compass, w: "each other로 세 가지가 서로 주고받는 관계임을 말해요. all이 셋 모두에게 해당한다는 뜻이에요.", d: on the unit, k: ["통증과 진정, 욕창은 서로 영향을 줘요.", "소변과 진정, 섬망은 서로 영향을 줘요."], a: influence, o: [replace, repel, outlast]}
+  - {t: 세 도구, i: chartup, w: "세 이름을 쉼표와 and로 나열하고 together로 묶어 한 묶음으로 쓰라는 뜻을 전해요. 통증·진정·섬망을 각각 맞는 도구로 본다는 대응이에요.", d: on the whiteboard, k: ["CPOT와 RASS, CAM-ICU를 따로 써요.", "CPOT와 RASS, CAM-ICU를 외워요."], a: together, o: [separately, secretly, silently]}
+  - {t: 점수 연쇄, i: chartup, w: "throw … off는 흐트러뜨린다는 구동사예요. can이 항상이 아니라 그럴 수 있다는 가능성을 말해요.", d: in the room, k: ["차트 하나가 어긋나면 나머지도 함께 어긋날 수 있어요.", "점수 하나가 어긋나면 나머지를 함께 확인할 수 있어요."], a: score, o: [alarm, line, bag]}
+  - {t: 치료 목표, i: trophy, w: "aim for는 목표로 삼는다는 표현이에요. without A or B로 피해야 할 두 가지를 한꺼번에 밝혀요.", d: for the family, k: ["과진정이나 섬망 없이 식사를 목표로 해요.", "과진정이나 열 없이 안위를 목표로 해요."], a: comfort, o: [profit, silence, speed]}
+  - {t: 통증 먼저, i: shield, w: "often이 늘 그런 것이 아니라 많은 경우라는 완충이에요. 통증이 초조의 원인일 때 원인을 치료하면 진정제를 더하지 않아도 되는 이유를 보여 줘요.", d: at the door, k: ["통증부터 치료하면 진정제 없이도 구역이 가라앉는 경우가 많아요.", "통증부터 치료하면 수액 없이도 초조가 가라앉는 경우가 많아요."], a: calms, o: [hides, delays, tracks]}
+  - {t: 근무조 기록, i: pencil, w: "so + 절로 목적을 말해요. the picture는 환자의 전체 상태 흐름을 비유하고, every shift가 기록 주기를 못박아요.", d: from the floor, k: ["매 근무조마다 세 점수를 다 인계해서 흐름을 놓치지 않아요.", "매 근무조마다 세 점수를 다 차팅해서 흐름을 가족과 나눠요."], a: scores, o: [names, beds, rooms]}
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 통합 평가 4문장 순서
+    why: 셋이 서로 영향을 준다는 전제가 먼저고, So가 그 전제를 받아 세 도구를 함께 써요. 점수 하나가 어긋나면 흔들린다는 점을 말하고, that이 그 상황을 가리켜 매 근무조 차팅으로 일찍 잡는다고 닫아요.
+    lines:
+    - {en: "Pain, sedation, and delirium all influence each other.", icon: compass, ko: "통증, 진정, 섬망은 서로 영향을 줘요", note: 전제}
+    - {en: "So we use CPOT, RASS, and CAM-ICU together.", icon: chartup, ko: "그래서 세 도구를 함께 써요", note: 도구}
+    - {en: "If one score is off, it can throw the others off.", icon: faceWorried, ko: "하나가 어긋나면 나머지도 흔들릴 수 있어요", note: 주의}
+    - {en: "Charting all three every shift is how we catch that early.", icon: pencil, ko: "매 근무조 세 개를 차팅해야 일찍 잡아요", note: 기록}

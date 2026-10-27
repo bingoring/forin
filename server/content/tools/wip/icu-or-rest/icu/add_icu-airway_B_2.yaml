@@ -1,0 +1,55 @@
+situations:
+- title: 삽관 후 위치 확인 협조
+  s:
+  - ["위치 확인", monitor, "'sustained'는 한 번 반짝이고 마는 변화가 아니라 숨마다 이어지는 변화라는 뜻이에요. 지속적인 색 변화가 있어야 기관 안이라고 말할 수 있어요.", "on the monitor", "캡노그래피에서 색 변화가 지속되어 튜브 깊이를 확인했어요.", "체온계에서 색 변화가 지속되어 기도 위치를 확인했어요.", "sustained", "sudden", "slight", "brief"]
+  - ["청진 보고", stetho, "'bilaterally'는 양쪽 모두를 한 단어로 말해 줘요. 'no gastric sounds'를 덧붙이면 위로 들어가지 않았다는 점까지 보고돼요.", "in the stomach", "호흡음이 양측에서 동일하고 심장 소리는 들리지 않아요.", "호흡음이 한쪽에서만 들리고 위 소리는 들리지 않아요.", "equal", "louder", "softer", "clearer"]
+  - ["영상 처방", lab, "'to check'로 목적을 붙이면 왜 엑스레이를 찍는지 팀이 이해해요. 깊이는 숨소리와 캡노그래피만으로는 알 수 없어서 영상을 써요.", "to check the lungs", "튜브 깊이를 확인하기 위해 복부 엑스레이를 처방할게요.", "튜브 위치를 확인하기 위해 흉부 엑스레이를 처방할게요.", "order", "cancel", "repeat", "review"]
+  - ["결과 공유", speech, "'right away'는 기다리지 않고 바로 알린다는 뜻이에요. 팀과 공유하면 모두가 같은 확인 결과를 근거로 움직여요.", "at the end of shift", "이 결과를 바로 가족과 공유할게요.", "이 결과를 나중에 팀과 공유할게요.", "share", "hide", "send back", "keep"]
+  - ["기록 제안", pencil, "'Let's'로 시작하면 함께 한다는 제안이라 기록도 팀의 몫이 돼요. 확인한 방법과 결과를 함께 적어요.", "on his wristband", "확인 내용을 차트에 기록해요.", "확인 내용을 처방에 기록해요.", "document", "delete", "discuss", "describe"]
+  - ["고정 보고", bandage, "'secure and taped'로 상태와 방법을 함께 말해 흔들리지 않는다는 점이 분명해요. 22센티미터처럼 숫자를 말하면 나중에 밀렸는지 비교할 수 있어요.", "and loose", "튜브는 22센티미터에서 고정되고 끈으로 묶여 있어요.", "튜브는 24센티미터에서 고정되고 테이프로 붙어 있어요.", "secure", "loose", "short", "clean"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 삽관 확인 보고 4문장 순서
+    why: 캡노그래피로 위치를 먼저 확인하고, 청진으로 뒷받침한 뒤, 고정된 상태를 알리고, 마지막에 기록해요.
+    lines:
+    - ["We have sustained color change on capnography.", monitor, "캡노그래피에서 색 변화가 지속돼요", "캡노"]
+    - ["Breath sounds are equal bilaterally to back that up.", stetho, "그걸 뒷받침하듯 호흡음도 양측에서 같아요", "청진"]
+    - ["With all of that, the tube is secure and taped at twenty-two centimeters.", bandage, "그러니 튜브는 22센티미터에서 고정되고 붙어 있어요", "고정"]
+    - ["Let's document it all in his chart.", pencil, "그 모두를 차트에 기록해요", "기록"]
+- title: 기관절개관 기본 관리
+  s:
+  - ["끈 관리", bandage, "'snug but with a finger's space'처럼 손가락 하나라는 기준을 쓰면 조임의 정도가 눈에 보여요. 너무 조이면 피부가 손상되고 너무 느슨하면 관이 빠질 수 있어요.", "by the window", "기관절개관 끈은 꼭 맞게 하되 손가락 둘 들어갈 공간은 남겨 둬요.", "기관절개관 끈은 꼭 맞게 하되 손바닥 하나 들어갈 공간은 남겨 둬요.", "snug", "loose", "tight", "wet"]
+  - ["가습 이유", fire, "'prevents … from drying out'으로 막는 대상과 이유를 알려요. 분비물이 마르면 끈적해져 관이 막힐 수 있어요.", "from running out", "가습된 산소가 분비물이 굳는 것을 막아 줘요.", "가습된 산소가 피부가 마르는 것을 막아 줘요.", "prevents", "causes", "allows", "needs"]
+  - ["필요시 흡인", stetho, "'only when he needs it'은 정해진 시간마다가 아니라 필요할 때만 한다는 기준이에요. 불필요한 흡인은 점막 손상과 저산소를 부를 수 있어요.", "twice a day", "기도를 확보해야 할 때만 부드럽게 눌러요.", "기도를 확보해야 할 때만 세게 흡인해요.", "gently", "firmly", "quickly", "deeply"]
+  - ["사전 설명", speech, "'let him know'는 환자에게 미리 알린다는 뜻이에요. 'before I start'를 붙이면 놀라지 않게 준비할 시간을 줘요.", "after I start", "시작하기 전에 청소할 시간이라고 알려 드려요.", "시작한 뒤에 흡인할 시간이라고 알려 드려요.", "suction", "cleaning", "walking", "dressing"]
+  - ["끈 점검", check, "'every shift'는 근무마다라는 확인 주기를 말해 줘요. 'if they're loose'로 조건을 달아 느슨할 때만 다시 묶는다는 뜻이 분명해요.", "every hour", "매 근무마다 끈을 닦고 느슨하면 다시 묶어요.", "매 근무마다 끈을 확인하고 더러우면 새로 묶어요.", "retie", "remove", "cut", "tear"]
+  - ["가습기 점검", gear, "'make sure'는 확인했다는 보고를 부드럽게 만든 말이에요. 물이 모자라면 가습이 끊겨 분비물이 마를 수 있어요.", "has a filter", "가습기에 물이 충분하게 있는지 확인해요.", "산소통에 산소가 충분한지 확인해요.", "enough", "less", "extra", "clean"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 기관절개관 관리 4문장 순서
+    why: 환자에게 먼저 알려 놀라지 않게 한 뒤 필요할 때 흡인하고, 그 뒤 끈을 확인하며, 마지막으로 가습기 물을 점검해요.
+    lines:
+    - ["I let him know it's suction time before I start.", speech, "시작하기 전에 흡인할 시간이라고 알려 드려요", "설명"]
+    - ["I suction gently only when he needs it to clear his secretions.", stetho, "필요할 때만 분비물을 치우려고 부드럽게 흡인해요", "흡인"]
+    - ["With the airway clear, I check the ties and retie them if they're loose.", check, "기도가 깨끗하니 끈을 확인하고 느슨하면 다시 묶어요", "끈"]
+    - ["To keep any new secretions moist, I make sure the humidifier has enough water.", gear, "새 분비물이 촉촉하도록 가습기에 물이 충분한지 확인해요", "가습"]
+- title: 기관절개 부위 드레싱·피부
+  s:
+  - ["부위 세척", bandage, "'to keep the skin dry'로 목적을 붙이면 왜 드레싱을 가는지 설명돼요. 젖은 피부는 쉽게 무르고 감염되기 쉬워요.", "in the sink", "스토마를 세척하고 드레싱을 교체해 피부를 부드럽게 유지해요.", "스토마를 세척하고 거즈를 교체해 피부를 건조하게 유지해요.", "dry", "warm", "pale", "bare"]
+  - ["피부 사정", magnify, "'redness or breakdown'으로 찾을 두 가지를 짚어 말하면 사정의 기준이 분명해요. 'around the site'는 살필 위치를 알려 줘요.", "or drainage", "부위 주변 피부에 발적이나 손상이 있는지 닦고 있어요.", "부위 아래 피부에 발적이나 손상이 있는지 확인하고 있어요.", "redness", "hunger", "weight", "color"]
+  - ["드레싱 효과", shield, "'helps prevent'는 확실히 막는다가 아니라 도움이 된다는 완곡한 표현이에요. 수분을 빼 주는 드레싱은 피부가 짓무르는 걸 줄여요.", "can cause", "수분을 흡수하는 드레싱이 피부 자극을 확인하는 데 도움이 돼요.", "수분을 흡수하는 드레싱이 피부 감염을 예방하는 데 도움이 돼요.", "irritation", "infection", "pressure", "bleeding"]
+  - ["사전 설명", speech, "'I'm about to'는 곧 할 일을 알리는 말이라 환자가 놀라지 않아요. 기관절개 부위 가까이 손이 가니 미리 알려요.", "I'm done", "부위 주변을 곧 닦을 거라고 알려 드려요.", "목 주변을 곧 세척할 거라고 알려 드려요.", "about", "ready", "afraid", "going"]
+  - ["삼출물 보고", monitor, "'some drainage, but … clean'처럼 but으로 양면을 말하면 지켜볼 점과 안심할 점이 균형 있게 전달돼요. 가장자리가 깨끗하다는 건 감염 징후가 없다는 단서예요.", "no drainage", "삼출물이 좀 있지만 상처 가운데는 깨끗해 보여요.", "출혈이 좀 있지만 상처 가장자리는 깨끗해 보여요.", "edges", "center", "floor", "corners"]
+  - ["기록", pencil, "'each shift'는 근무마다라는 기록 주기를 보여 줘요. 같은 항목을 계속 기록하면 다음 근무자가 변화를 비교할 수 있어요.", "once a month", "매 근무마다 상처 사정 내용을 점검해요.", "매 근무마다 드레싱 교체 내용을 기록해요.", "document", "delete", "explain", "ignore"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 기관절개 부위 관리 4문장 순서
+    why: 곧 만진다고 먼저 알리고, 세척과 드레싱을 한 뒤, 피부 상태를 살피고, 마지막에 기록해요.
+    lines:
+    - ["I let him know I'm about to clean around the site.", speech, "부위 주변을 곧 닦을 거라고 알려 드려요", "설명"]
+    - ["For that, I clean the stoma and change the dressing.", bandage, "그러려고 스토마를 닦고 드레싱을 바꿔요", "처치"]
+    - ["With the dressing fresh, I'm checking the skin for redness or breakdown.", magnify, "드레싱이 새것이니 피부에 발적이나 손상이 있는지 확인해요", "사정"]
+    - ["I document what I see each shift.", pencil, "본 것을 매 근무마다 기록해요", "기록"]
