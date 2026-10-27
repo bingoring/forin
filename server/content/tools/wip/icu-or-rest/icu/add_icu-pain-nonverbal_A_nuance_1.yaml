@@ -3,11 +3,11 @@
     - kind: slider
       words: [w-tension, w-rigid, w-muscle]
       cue: "Nurse: \"When I bend his arm, he pushes back hard and I can't finish the movement.\""
-      scale: [relaxed, tense, rigid]
+      scale: [relaxed, tense, very tense or rigid]
       answerAt: 2
-      why: "CPOT 근긴장 항목은 팔을 수동으로 굽혀 볼 때의 저항을 봐요. 저항이 없으면 relaxed, 저항이 있어도 움직여지면 tense, 강하게 버텨서 끝까지 움직일 수 없으면 rigid예요."
-      example: "His arm is rigid when I try to bend it."
-      exKo: "팔을 굽히려고 하면 뻣뻣하게 굳어 있어요."
+      why: "CPOT 근긴장 항목은 팔을 수동으로 굽혀 볼 때의 저항을 봐요. 저항이 없으면 relaxed, 저항이 있어도 움직여지면 tense, 아주 강하게 버텨서 끝까지 움직일 수 없으면 very tense or rigid예요."
+      example: "His arm is very tense when I try to bend it."
+      exKo: "팔을 굽히려고 하면 아주 뻣뻣하게 굳어 있어요."
     - kind: context
       words: [w-score]
       word: score
@@ -20,10 +20,10 @@
 - situation: "BPS 등 행동척도 이해"
   items:
     - kind: pair
-      words: [w-behavioral, w-scale, w-vent, w-compliance]
-      pairs: [[behavioral, scale], [vent, compliance], [facial, expression]]
+      words: [w-tool, w-vent, w-compliance]
+      pairs: [[validated, tool], [vent, compliance], [facial, expression]]
       decoys: [speaking]
-      why: "behavioral scale은 말 대신 행동으로 재는 척도이고, vent compliance는 인공호흡기 숨에 환자가 맞춰 오는 정도예요. facial expression(표정)은 BPS와 CPOT가 공통으로 보는 항목이에요."
+      why: "validated tool은 연구로 검증된 평가 도구이고, vent compliance는 인공호흡기 숨에 환자가 맞춰 오는 정도예요. facial expression(표정)은 BPS와 CPOT가 공통으로 보는 항목이에요."
     - kind: context
       words: [w-scale]
       word: scale
@@ -56,9 +56,9 @@
   items:
     - kind: pair
       words: [w-premedicate, w-procedural, w-turn]
-      pairs: [[pre-medicate, before the procedure], [procedural, pain], [turn, onto his side]]
+      pairs: [[pre-medicate, with an analgesic], [procedural, pain], [turn, onto his side]]
       decoys: [at the clock]
-      why: "pre-medicate는 처치 전에 미리 약을 준다는 뜻이라 before the procedure와 함께 써요. procedural pain은 처치 때 생기는 통증이고, turn은 몸을 옆으로 돌려 눕힐 때 쓰는 동사예요."
+      why: "pre-medicate는 처치 전에 미리 약을 준다는 뜻이라 with an analgesic(진통제로)과 함께 써요. procedural pain은 처치 때 생기는 통증이고, turn은 몸을 옆으로 돌려 눕힐 때 쓰는 동사예요."
     - kind: swap
       words: [w-premedicate]
       who: "환자에게 · 처치 전 안내"
@@ -74,9 +74,9 @@
     - kind: slider
       words: [w-tension, w-calm]
       cue: "Nurse: \"His shoulders are tight and his brow is furrowed, but he settles when we reposition him.\""
-      scale: [relaxed, tense, rigid]
+      scale: [relaxed, tense, very tense or rigid]
       answerAt: 1
-      why: "어깨가 굳고 이마를 찌푸리다가 체위를 바꾸면 풀리는 정도면 tense예요. 힘이 완전히 빠져 있으면 relaxed, 팔다리가 막대처럼 굳어 움직이지 않으면 rigid예요. 체위 변경이나 베개 같은 비약물 방법도 통증을 줄이는 중재예요."
+      why: "어깨가 굳고 이마를 찌푸리다가 체위를 바꾸면 풀리는 정도면 tense예요. 힘이 완전히 빠져 있으면 relaxed, 팔다리가 막대처럼 굳어 움직이지 않으면 very tense or rigid예요. 체위 변경이나 베개 같은 비약물 방법도 통증을 줄이는 중재예요."
       example: "His shoulders look tense until we reposition him."
       exKo: "체위를 바꿔 주기 전까지 어깨가 긴장돼 보여요."
     - kind: context

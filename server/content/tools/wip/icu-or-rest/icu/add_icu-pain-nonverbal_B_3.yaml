@@ -20,7 +20,7 @@
   s:
   - {t: 기저 요구량, i: calendar, w: "raises는 원인이 결과를 끌어올린다는 동사예요. 입원 전부터 쓰던 약이 오늘 필요한 기본량을 높인다는 사실을 말해요.", d: at the nurses' door, k: ["집에서 쓰던 아편유사제 때문에 기저 체온이 높아졌어요.", "집에서 쓰던 아편유사제 때문에 기저 요구량을 설명했어요."], a: home, o: [work, office, school]}
   - {t: 병력 확인, i: calendar, w: "was taking은 과거 한동안 계속된 행동을 말하는 과거진행형이에요. long before가 기간의 길이를 강조해 내성 가능성을 짐작하게 해요.", d: from the lobby, k: ["입원하기 직전부터 집에서 아편유사제를 쓰고 있었어요.", "입원하기 오래전부터 집에서 비타민을 쓰고 있었어요."], a: opioids, o: [vitamins, antibiotics, steroids]}
-  - {t: 과소치료 위험, i: shield, w: "Undertreating을 주어로 써서 덜 치료하는 것 자체가 위험을 부른다는 뜻을 짧게 말해요. 내성 환자에게 부족한 투여가 금단까지 이어진다는 경고예요.", d: in the stairwell hall, k: ["충분히 안 주면 낙상과 부족한 조절의 위험이 있어요.", "충분히 안 주면 금단과 부족한 기록의 위험이 있어요."], a: withdrawal, o: [infection, aspiration, bleeding]}
+  - {t: 과소치료 위험, i: shield, w: "Undertreating을 주어로 써서 덜 치료하는 것 자체가 위험을 부른다는 뜻을 짧게 말해요. 내성 환자에게 부족한 투여가 금단까지 이어진다는 경고예요.", d: in the stairwell hall, k: ["충분히 안 주면 낙상과 부족한 조절의 위험이 있어요.", "충분히 안 주면 금단과 부족한 기록의 위험이 있어요."], a: withdrawal, o: [infection, aspiration, falls]}
   - {t: 결과 예측, i: fire, w: "If … don't …, … will …은 조건과 결과를 잇는 기본 문형이에요. cravings는 약을 향한 강한 욕구로, 금단과 함께 나타날 수 있어요.", d: on the counter, k: ["충분히 안 주면 통증과 구역이 급증할 거예요.", "충분히 기록 안 하면 통증과 갈망이 급증할 거예요."], a: cravings, o: [coughing, bruising, dizziness]}
   - {t: 내성 반영, i: gear, w: "account for는 고려에 넣는다는 표현이에요. when we set은 용량을 정하는 시점에 반영한다는 뜻이고, 용량은 처방자와 함께 정해요.", d: on the rail, k: ["병상을 정할 때 내성을 반영해요.", "용량을 정할 때 내성을 설명해요."], a: doses, o: [beds, rooms, shifts]}
   - {t: 내성의 의미, i: chartup, w: "means 뒤에 결과를 이어 내성이 왜 높은 용량으로 이어지는지 설명해요. than most patients로 비교 기준을 보통 환자에 둬요.", d: from the lab, k: ["알레르기 때문에 대부분의 환자보다 더 높은 기저 용량이 필요해요.", "보험 때문에 대부분의 환자보다 더 높은 기저 용량이 필요해요."], a: tolerance, o: [allergy, insurance, diet]}
@@ -37,7 +37,7 @@
 - title: 아편 유발 호흡억제 예방
   s:
   - {t: 지속 감시, i: monitor, w: "help + 동사원형은 ~하는 걸 돕는다는 틀이에요. early가 문장 끝에서 조기 발견의 가치를 강조해요.", d: from the cart, k: ["지속적인 산소포화도와 이산화탄소 감시가 억제를 일찍 기록하게 도와줘요.", "지속적인 산소포화도와 이산화탄소 감시가 감염을 일찍 발견하게 도와줘요."], a: capnography, o: [radiography, audiometry, endoscopy]}
-  - {t: 천천히 적정, i: calendar, w: "Let's …는 함께 하자는 제안이고 and가 적정과 재평가를 한 세트로 묶어요. 호흡억제를 막으려면 올린 뒤 반응을 꼭 확인해야 해요.", d: on the whiteboard, k: ["천천히 정리하고 투여 사이 재평가해요.", "천천히 적정하고 환자 사이 재평가해요."], a: titrate, o: [rinse, stack, rename]}
+  - {t: 천천히 적정, i: calendar, w: "Let's …는 함께 하자는 제안이고 and가 적정과 재평가를 한 세트로 묶어요. 호흡억제를 막으려면 올린 뒤 반응을 꼭 확인해야 해요.", d: on the whiteboard, k: ["천천히 정리하고 투여 사이 재평가해요.", "천천히 적정하고 환자 사이 재평가해요."], a: titrate, o: [rinse, stack, rearrange]}
   - {t: 즉시 인지, i: bell, w: "right away가 바로라는 뜻으로, 지속 감시가 있어야 가능한 약속이에요. we'll know는 감시 장치가 알려 주리라는 전제예요.", d: from the hall, k: ["혈압이 떨어지면 바로 알 수 있어요.", "호흡수가 떨어지면 바로 기록할 수 있어요."], a: know, o: [guess, hope, wonder]}
   - {t: 역전제 준비, i: shield, w: "just in case는 쓸 일이 없기를 바라면서 대비한다는 관용 표현이에요. available은 필요한 순간에 바로 쓸 수 있는 곳에 있다는 뜻이에요.", d: behind the door, k: ["혹시 몰라 베개를 준비해둬요.", "혹시 몰라 날록손 재고를 세어둬요."], a: naloxone, o: [bandages, pillows, linens]}
   - {t: 신중한 적정, i: shield, w: "so he doesn't …는 so + 부정문으로 피하려는 결과를 목적으로 말해요. carefully는 올리는 속도와 확인을 모두 신중히 한다는 뜻이에요.", d: on the sheet, k: ["너무 흥분되지 않도록 신중하게 적정해요.", "너무 진정되지 않도록 신중하게 확인해요."], a: sedated, o: [hungry, thirsty, bored]}

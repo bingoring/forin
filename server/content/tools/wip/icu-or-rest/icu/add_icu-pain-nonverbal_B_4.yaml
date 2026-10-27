@@ -19,11 +19,11 @@
 - title: 금단 통증 급증 관리
   s:
   - {t: 급감량, i: fire, w: "is spiking은 지금 진행 중인 영향을 현재진행형으로 말해요. rapid tapering이 주어라 원인이 감량 속도임을 분명히 해요.", d: from the unit, k: ["급격한 증량이 통증과 금단을 급증시키고 있어요.", "급격한 감량이 통증과 구토를 급증시키고 있어요."], a: tapering, o: [lifting, charting, bathing]}
-  - {t: 금단 징후, i: monitor, w: "세 가지 상태를 and로 이어 금단 징후의 묶음을 한 번에 보고해요. restless는 가만히 있지 못하는 상태예요.", d: on the screen, k: ["혈압이 오르고 땀을 흘리며 안절부절못하고 있어요.", "심박수가 오르고 열이 나며 안절부절못하고 있어요."], a: sweating, o: [coughing, bleeding, itching]}
+  - {t: 금단 징후, i: monitor, w: "세 가지 상태를 and로 이어 금단 징후의 묶음을 한 번에 보고해요. restless는 가만히 있지 못하는 상태예요.", d: on the screen, k: ["혈압이 오르고 땀을 흘리며 안절부절못하고 있어요.", "심박수가 오르고 열이 나며 안절부절못하고 있어요."], a: sweating, o: [coughing, sneezing, itching]}
   - {t: 감량 조절, i: gear, w: "slow the taper는 끊는 속도를 늦춘다는 뜻이에요. and add adjuncts로 속도 조정과 보조 요법을 한 계획에 묶고, 변경은 처방에 따라요.", d: from the pharmacy, k: ["감량을 늦추고 보조 요법을 설명해요.", "감량을 늦추고 가족에게 요법을 알려요."], a: adjuncts, o: [towels, pillows, curtains]}
   - {t: 증상 완화, i: pill, w: "can smooth out은 가능성을 말하는 조동사와 구동사로, 완전히 없애는 것이 아니라 거칠기를 줄인다는 뜻이에요. 클로니딘 투여는 처방에 따라요.", d: from the cabinet, k: ["클로니딘 설명이 금단 증상을 완화해줄 수 있어요.", "클로니딘 투여가 금단 증상을 설명해줄 수 있어요."], a: clonidine, o: [saline, vitamin, calcium]}
-  - {t: 동시 치료, i: shield, w: "both A and B로 두 문제를 한 묶음으로 세워 둘 다 치료 대상이라는 점을 밝혀요. together는 한쪽만 먼저 하지 않는다는 뜻이에요.", d: on the call, k: ["통증과 금단 둘 다 따로 치료해요.", "통증과 금단 둘 다 함께 기록해요."], a: treat, o: [weigh, bill, rename]}
-  - {t: 자주 재평가, i: magnify, w: "often이 빈도를, while 절이 기간을 정해 감량을 조정하는 내내 자주 본다는 범위를 만들어요. 조정 중에 반응이 바뀌기 쉬워서예요.", d: in the hall, k: ["병상을 조정하는 동안 자주 재평가해요.", "감량을 조정하는 동안 가족과 재평가해요."], a: adjust, o: [rename, repair, relabel]}
+  - {t: 동시 치료, i: shield, w: "both A and B로 두 문제를 한 묶음으로 세워 둘 다 치료 대상이라는 점을 밝혀요. together는 한쪽만 먼저 하지 않는다는 뜻이에요.", d: on the call, k: ["통증과 금단 둘 다 따로 치료해요.", "통증과 금단 둘 다 함께 기록해요."], a: treat, o: [weigh, bill, ration]}
+  - {t: 자주 재평가, i: magnify, w: "often이 빈도를, while 절이 기간을 정해 감량을 조정하는 내내 자주 본다는 범위를 만들어요. 조정 중에 반응이 바뀌기 쉬워서예요.", d: in the hall, k: ["병상을 조정하는 동안 자주 재평가해요.", "감량을 조정하는 동안 가족과 재평가해요."], a: adjust, o: [repair, relabel, rewind]}
   order:
     tag: 대화 흐름
     icon: compass
@@ -36,9 +36,9 @@
     - {en: "We'll reassess him often while we adjust it.", icon: magnify, ko: "조정하는 동안 자주 재평가해요", note: 재평가}
 - title: 임종기 통증·호흡곤란 완화
   s:
-  - {t: 목표 설명, i: shield, w: "Our goal is to …로 목표를 말하면 가족이 이제 무엇을 기대하면 되는지 알 수 있어요. free of pain은 통증이 없는 상태를 목표로 삼는다는 뜻이에요.", d: in the family room, k: ["저희 목표는 지금 편안하고 소음 없이 지내시게 하는 거예요.", "저희 목표는 오늘 밤 편안하고 통증 없이 지내시게 하는 거예요."], a: comfortable, o: [alert, upright, busy]}
+  - {t: 목표 설명, i: shield, w: "Our goal is to …로 목표를 말하면 가족이 이제 무엇을 기대하면 되는지 알 수 있어요. free of pain은 통증이 없는 상태를 목표로 삼는다는 뜻이에요.", d: in the family room, k: ["저희 목표는 지금 편안하고 소음 없이 지내시게 하는 거예요.", "저희 목표는 오늘 밤 편안하고 통증 없이 지내시게 하는 거예요."], a: comfortable, o: [energetic, talkative, cheerful]}
   - {t: 치료 방향, i: shield, w: "not on curing him으로 하지 않는 것을 분명히 말해 가족의 기대를 현실에 맞춰요. focus on은 초점을 옮겼다는 뜻이에요.", d: in the corridor, k: ["지금은 설명하는 게 아니라 안위에 집중하고 있어요.", "지금은 낫게 하는 게 아니라 식사에 집중하고 있어요."], a: comfort, o: [rules, supplies, schedules]}
-  - {t: 증상 완화, i: shield, w: "gently는 방식 부사로, 약과 손길 모두 부드럽게 다루겠다는 약속이에요. 호흡곤란도 통증과 함께 치료 대상이라는 점을 밝혀요.", d: at the bedside rail, k: ["통증과 호흡곤란을 부드럽게 설명해줄게요.", "통증과 구토를 부드럽게 다스려줄게요."], a: breathlessness, o: [nausea, itching, dizziness]}
+  - {t: 증상 완화, i: shield, w: "gently는 방식 부사로, 약과 손길 모두 부드럽게 다루겠다는 약속이에요. 호흡곤란도 통증과 함께 치료 대상이라는 점을 밝혀요.", d: at the bedside rail, k: ["통증과 호흡곤란을 부드럽게 설명해줄게요.", "통증과 구토를 부드럽게 다스려줄게요."], a: breathlessness, o: [constipation, restlessness, drowsiness]}
   - {t: 가족 허락, i: handshake2, w: "It's all right to …는 해도 된다고 허락하는 말이에요. 가족이 조심스러워할 때 먼저 허락해 주면 곁에 머물기 쉬워져요.", d: by his side, k: ["가까이 서서 손을 잡으셔도 괜찮아요.", "가까이 앉아서 손을 닦으셔도 괜찮아요."], a: hold, o: [warm, wash, count]}
   - {t: 곁에 머물기, i: handshake2, w: "You can stay close는 곁에 있어도 된다는 허락이에요. 곁에 있다는 느낌이 전해진다는 말은 가족을 위한 위로로, 가능성을 말하는 can으로 전해요.", d: by the door, k: ["가까이서 노래해주세요 — 곁에 계신 걸 느끼실 수 있어요.", "가까이서 이야기해주세요 — 곁에 계신 걸 말씀드릴게요."], a: stay, o: [sleep, work, shop]}
   - {t: 약속, i: shield, w: "keep him calm and free of pain은 상태를 계속 유지하겠다는 약속의 구조예요. the whole time이 중간에 끊기지 않게 계속 살피겠다는 범위를 말해요.", d: in the afternoon, k: ["내내 편안하고 열 없이 지내시게 해드릴게요.", "밤새 편안하고 통증 없이 지내시게 해드릴게요."], a: whole, o: [first, last, next]}
@@ -56,9 +56,9 @@
   s:
   - {t: 불응, i: faceWorried, w: "refractory to …는 치료에 반응하지 않는다는 전문 표현이에요. 팀에는 정확한 임상어지만 가족에게는 쉬운 말로 풀어 전해야 해요.", d: on the chart, k: ["구역이 지금 요법에 불응하고 있어요.", "통증이 이전 요법에 불응하고 있어요."], a: regimen, o: [bandage, bracelet, bedding]}
   - {t: 최대 용량, i: fire, w: "We've maxed는 완료된 행동이 지금까지 영향을 준다는 현재완료예요. still이 그런데도 아프다는 대비를 강조해요. 더 올리는 것은 처방자가 정해요.", d: from the station, k: ["평소 식사를 최대로 줬는데도 여전히 아파해요.", "평소 용량을 최대로 줬는데도 여전히 졸려해요."], a: usual, o: [daily, weekly, nightly]}
-  - {t: 전문팀 협진, i: handshake2, w: "consult는 전문팀에 의견을 구한다는 동사예요. and로 협진과 선택지 검토를 한 계획에 묶고, advanced는 일반 요법보다 한 단계 위를 가리켜요.", d: from the stairs, k: ["영양팀과 상의하고 상급 선택지를 고려해요.", "통증팀과 상의하고 상급 선택지를 설명해요."], a: consult, o: [copy, rename, repeat]}
+  - {t: 전문팀 협진, i: handshake2, w: "consult는 전문팀에 의견을 구한다는 동사예요. and로 협진과 선택지 검토를 한 계획에 묶고, advanced는 일반 요법보다 한 단계 위를 가리켜요.", d: from the stairs, k: ["영양팀과 상의하고 상급 선택지를 고려해요.", "통증팀과 상의하고 상급 선택지를 설명해요."], a: consult, o: [copy, reword, resend]}
   - {t: 제안 가능, i: bulb, w: "might suggest는 가능성을 약하게 말하는 조동사예요. 제안은 통증팀이 하고, 실제 변경은 처방자의 몫이라는 선을 지켜요.", d: on the line, k: ["통증팀이 신경차단술이나 다른 식단을 제안할 수 있어요.", "영양팀이 신경차단술이나 다른 아편유사제를 제안할 수 있어요."], a: block, o: [bath, brace, band]}
-  - {t: 상향 조정, i: chartup, w: "escalate는 지금 요법에서 더 강한 대응으로 넘어간다는 말이에요. keep him from suffering이 목적이라 올리는 이유가 환자의 고통이고, 상향은 처방과 협진을 거쳐요.", d: at the ward desk, k: ["걱정하지 않도록 상향 조정해요.", "고통받지 않도록 상향 설명해요."], a: suffering, o: [bleeding, fainting, vomiting]}
+  - {t: 상향 조정, i: chartup, w: "escalate는 지금 요법에서 더 강한 대응으로 넘어간다는 말이에요. keep him from suffering이 목적이라 올리는 이유가 환자의 고통이고, 상향은 처방과 협진을 거쳐요.", d: at the ward desk, k: ["걱정하지 않도록 상향 조정해요.", "고통받지 않도록 상향 설명해요."], a: suffering, o: [fainting, vomiting, falling]}
   - {t: 협진 요청, i: pager, w: "get A involved는 A를 참여시킨다는 구문이에요. before he suffers any longer가 지금 부르는 이유를 시간 압박으로 말해요.", d: to his bed, k: ["더 오래 고통받기 전에 영양팀을 부를게요.", "더 오래 고통받기 전에 가족을 부를게요."], a: pain, o: [cleaning, laundry, kitchen]}
   order:
     tag: 대화 흐름
@@ -72,11 +72,11 @@
     - {en: "They might suggest a nerve block or a different opioid.", icon: bulb, ko: "신경차단술이나 다른 아편유사제를 제안할 수 있어요", note: 제안}
 - title: 진통제 부작용 급변
   s:
-  - {t: 부작용 의심, i: bulb, w: "may be는 가능성을 말해 원인을 단정하지 않아요. New는 이전엔 없던 변화라는 점을 먼저 짚는 신호예요.", d: on the unit, k: ["오래된 혼란과 팽만이 아편유사제 부작용일 수 있어요.", "새로운 기침과 팽만이 아편유사제 부작용일 수 있어요."], a: confusion, o: [fever, cough, rash]}
+  - {t: 부작용 의심, i: bulb, w: "may be는 가능성을 말해 원인을 단정하지 않아요. New는 이전엔 없던 변화라는 점을 먼저 짚는 신호예요.", d: on the unit, k: ["오래된 혼란과 팽만이 아편유사제 부작용일 수 있어요.", "새로운 기침과 팽만이 아편유사제 부작용일 수 있어요."], a: confusion, o: [dizziness, itchiness, sweating]}
   - {t: 변화 보고, i: magnify, w: "suddenly more …은 변화의 속도와 방향을 함께 보고해요. and로 두 관찰을 이어 한 번에 말하는 보고 모양이에요.", d: from the bed, k: ["서서히 더 혼란스러워하고 배가 부어올라 보여요.", "갑자기 더 졸려하고 배가 부어올라 보여요."], a: swollen, o: [bruised, itchy, flushed]}
   - {t: 요법 재평가, i: magnify, w: "and로 약 요법 재평가와 장마비 확인을 한 계획에 묶어요. check for는 있는지 살피러 확인한다는 뜻으로, 결과가 나오기 전엔 있다고 단정하지 않아요.", d: at the board, k: ["일정을 재평가하고 장마비가 있는지 확인해요.", "요법을 재평가하고 장마비가 있는지 보고해요."], a: ileus, o: [asthma, anemia, gout]}
   - {t: 걱정 표현, i: faceWorried, w: "No A and no B로 없는 것 두 가지를 나란히 놓아 이상 소견을 강조해요. worries me는 이게 가볍지 않다는 간호사의 판단을 드러내는 말이에요.", d: in the hall, k: ["장음도 없고 5일간 대변도 없는 게 걱정돼요.", "장음도 없고 3일간 소변도 없는 게 걱정돼요."], a: stool, o: [sleep, speech, mail]}
-  - {t: 요법 변경, i: pill, w: "may need to는 필요할 가능성을 말해 아직 결정이 아님을 밝혀요. reduce or rotate는 줄이거나 다른 아편유사제로 바꾼다는 두 갈래이고, 변경은 처방자가 정해요.", d: on the whiteboard, k: ["침대를 줄이거나 교체해야 할 수도 있어요.", "아편유사제를 줄이거나 보고해야 할 수도 있어요."], a: rotate, o: [repeat, rename, replay]}
+  - {t: 요법 변경, i: pill, w: "may need to는 필요할 가능성을 말해 아직 결정이 아님을 밝혀요. reduce or rotate는 줄이거나 다른 아편유사제로 바꾼다는 두 갈래이고, 변경은 처방자가 정해요.", d: on the whiteboard, k: ["침대를 줄이거나 교체해야 할 수도 있어요.", "아편유사제를 줄이거나 보고해야 할 수도 있어요."], a: rotate, o: [repeat, reword, replay]}
   - {t: 교체 후 관찰, i: monitor, w: "and로 약 교체와 관찰을 한 흐름으로 묶어요. 바꾼 뒤에 정신 상태를 계속 보는 것이 교체의 안전 확인이에요. 교체는 처방에 따라요.", d: from the lab, k: ["다른 병실로 바꾸고 정신 상태를 지켜봐요.", "다른 아편유사제로 바꾸고 정신 상태를 기록해요."], a: mental, o: [dental, dietary, legal]}
   order:
     tag: 대화 흐름

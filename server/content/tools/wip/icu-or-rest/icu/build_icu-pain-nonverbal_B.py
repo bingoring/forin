@@ -6,6 +6,7 @@ for f in sorted(glob.glob(D + 'add_icu-pain-nonverbal_B_*.yaml')):
     for sit in yaml.safe_load(open(f)):
         assert sit['title'] not in add, sit['title']
         add[sit['title']] = sit
+kfix = yaml.safe_load(open(D + 'add_icu-pain-nonverbal_Bk.yaml'))
 out = copy.deepcopy(base)
 miss = []
 for si, sit in enumerate(out['situations']):
@@ -15,7 +16,7 @@ for si, sit in enumerate(out['situations']):
     assert len(a['s']) == len(sit['sentences']), (sit['title'], len(a['s']))
     for j, (sent, n) in enumerate(zip(sit['sentences'], a['s'])):
         sent['tag'] = n['t']; sent['icon'] = n['i']; sent['why'] = n['w']
-        sent['decoy'] = n['d']; sent['distractorsKo'] = list(n['k'])
+        sent['decoy'] = n['d']; sent['distractorsKo'] = list(kfix.get('%d:%d' % (si, j), n['k']))
         opts = [{'en': n['a']}] + [{'en': e} for e in n['o']]
         assert len(opts) == 4, (sit['title'], j)
         r = (si + j) % 4
