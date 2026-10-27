@@ -1,0 +1,115 @@
+- situation: "원내감염 클러스터 대응"
+  items:
+    - kind: slider
+      words: [w-case, w-outbreak]
+      cue: "Nurse: \"Three patients on our unit grew the same organism this week.\""
+      scale: [tell infection control today, wait for a fourth case, keep it within the unit]
+      answerAt: 0
+      why: "같은 병동에서 같은 균이 일주일에 세 건 나오면 집단발병 가능성이 있어 바로 감염관리팀에 알려요. 사례가 더 늘 때까지 기다리거나 병동 안에서만 알고 있으면 확산을 막을 시간을 잃어요."
+      example: "Three cases of the same organism need a call to infection control."
+      exKo: "같은 균 세 건이면 감염관리팀에 전화해야 해요."
+    - kind: context
+      words: [w-outbreak]
+      word: outbreak
+      ko: 집단발병
+      scenes:
+        - {who: 차트 기록, icon: board, en: "Possible outbreak: three cases, same organism; infection control notified.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "We may have an outbreak on the unit, so call infection control.", ok: true}
+        - {who: 가족에게, icon: me, en: "We are managing a nosocomial outbreak involving multiple index cases.", ok: false, fix: "A few patients picked up the same germ, so we're taking extra steps to protect everyone."}
+      why: "의료진끼리는 nosocomial·index case 같은 말로 상황을 정확히 전해요. 가족에게는 어렵고 병원이 위험한 곳처럼 들려요. 무슨 일이 있고 무엇을 하는지만 쉬운 말로 알려 줘요."
+- situation: "공기매개 병원체 노출 위기"
+  items:
+    - kind: slider
+      words: [w-n95, w-airborne]
+      cue: "Visitor: \"I only have a surgical mask. Is that enough to go in?\""
+      scale: ["yes, for a short visit", "yes, if you stay by the door", "no, you need an N95"]
+      answerAt: 2
+      why: "공기매개격리실에는 수술용 마스크가 아니라 밀착검사를 거친 N95가 필요해요. 잠깐만 들어가거나 문 가까이에만 있어도 공기 중 입자는 막지 못해요."
+      example: "You need an N95 before you go in."
+      exKo: "들어가기 전에 N95가 필요해요."
+    - kind: context
+      words: [w-n95]
+      word: N95
+      ko: N95 마스크
+      scenes:
+        - {who: 인계 메모, icon: board, en: "Airborne isolation: N95 required on entry.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Does anyone need a fit-tested N95 before we go in?", ok: true}
+        - {who: 가족에게, icon: me, en: "N95 respirator fit-testing must be current per OSHA before any entry is permitted.", ok: false, fix: "Let me get you a mask that fits snugly before you go in. It's for your safety."}
+      why: "의료진끼리는 fit-test 상태를 규정 용어로 짧게 확인해요. 가족에게는 규정 이름과 '허가' 같은 말이 딱딱하고 위압적이에요. 왜 필요한지와 직접 챙겨 주는 모습으로 알려 줘요."
+- situation: "다제내성균 패혈증 확산 위기"
+  items:
+    - kind: slider
+      words: [w-spread, w-contact]
+      cue: "Nurse: \"Two more patients on the unit just tested positive for the same resistant germ.\""
+      scale: [screen the contacts now, wait to see who turns positive, move him to another unit]
+      answerAt: 0
+      why: "내성균이 퍼지는 중이면 접촉자를 바로 선별검사하고 주의조치를 강화해요. 양성이 더 나올 때까지 기다리면 그사이 퍼지고, 환자를 다른 병동으로 옮기면 균도 함께 옮겨져요."
+      example: "Let's screen the contacts right away."
+      exKo: "접촉자를 바로 선별검사하죠."
+    - kind: swap
+      words: [w-organism, w-resistant]
+      who: "가족에게 · 격리 설명"
+      icon: me
+      before: ["This ", "resistant organism", " can spread quickly, so we're being extra careful."]
+      options: [resistant organism, germ that's hard to treat, MDRO]
+      answer: germ that's hard to treat
+      notes: {resistant organism: "정확한 말이지만 가족에게는 딱딱하고 낯설다.", germ that's hard to treat: "약이 잘 듣지 않는다는 점이 쉬운 말로 전해진다.", MDRO: "의료진끼리 쓰는 줄임말이라 가족은 알아듣지 못한다."}
+      why: "같은 균이라도 의료진끼리는 MDRO·resistant organism으로 말하고, 가족에게는 치료가 어렵다는 뜻이 전해지는 쉬운 말로 알려 줘요."
+      ko: "이 균은 치료가 어려워서 빨리 퍼질 수 있으니 특히 조심하고 있어요"
+- situation: "주삿바늘 노출사고 대응"
+  items:
+    - kind: slider
+      words: [w-wash, w-site]
+      cue: "Colleague: \"I just stuck myself with a used needle.\""
+      scale: [bandage it and finish your task, wait until your shift ends, wash it with soap and water now]
+      answerAt: 2
+      why: "바늘에 찔리면 곧바로 비누와 물로 씻고 보고해서 노출 후 평가를 받아요. 일을 마저 하거나 근무가 끝나길 기다리면 평가와 예방 약물 시작이 늦어져요."
+      example: "Wash it with soap and water right now."
+      exKo: "지금 바로 비누와 물로 씻어요."
+    - kind: context
+      words: [w-exposure]
+      word: exposure
+      ko: 노출
+      scenes:
+        - {who: 차트 기록, icon: board, en: "Needlestick exposure reported to occupational health; PEP evaluation started.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Report the exposure right away. The sooner PEP starts, the better.", ok: true}
+        - {who: 환자에게, icon: me, en: "Your blood was the source in a percutaneous exposure incident involving staff.", ok: false, fix: "A staff member was accidentally stuck by a needle, and we'd like to ask your permission to test your blood."}
+      why: "의료진끼리는 source·percutaneous 같은 말로 사고를 짧게 전해요. 환자에게는 '당신 피가 원인'처럼 들리는 말이 부담이고 낯설어요. 무슨 일이 있었는지와 검사 동의를 구한다는 점을 쉬운 말로 알려 줘요."
+- situation: "면역저하 보호격리 붕괴 위기"
+  items:
+    - kind: slider
+      words: [w-immune, w-danger]
+      cue: "Visitor: \"I brought him fresh flowers, and I have a bit of a cold.\""
+      scale: [ask her not to visit while sick, let her in with a mask on, let her in if she stays back]
+      answerAt: 0
+      why: "면역이 심하게 떨어진 환자에게는 감기 증상이 있는 방문자를 들이지 않아요. 생화와 화분도 보호환경 병실에는 들이지 않는 것이 권고예요. 마스크를 쓰거나 떨어져 있어도 환자에게는 감염 위험이 남아요."
+      example: "Please don't visit while you're sick."
+      exKo: "아프신 동안에는 방문하지 말아 주세요."
+    - kind: context
+      words: [w-immune]
+      word: immune
+      ko: 면역의
+      scenes:
+        - {who: 차트 기록, icon: board, en: "Immune system severely suppressed; protective isolation in place.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "His immune system is down, so no one with a cough goes in.", ok: true}
+        - {who: 가족에게, icon: me, en: "His immune status is profoundly neutropenic per the latest CBC.", ok: false, fix: "His body can't fight germs well right now, so we're keeping everything extra clean."}
+      why: "의료진끼리는 neutropenic·CBC 같은 말로 상태를 짧게 전해요. 가족에게는 검사 이름과 용어가 어렵고 막막해요. 지금 몸이 어떤 상태고 왜 조심하는지를 쉬운 말로 알려 줘요."
+- situation: "감염 대유행 자원 배분 윤리"
+  items:
+    - kind: slider
+      words: [w-prioritize, w-risk]
+      cue: "Charge nurse: \"One isolation room is open. Bed 3 has airborne TB. Bed 8 has a mild cold.\""
+      scale: [give it to whoever asked first, give it to the sickest-looking patient, give it to the highest transmission risk]
+      answerAt: 2
+      why: "격리실은 전파 위험이 가장 높은 환자에게 먼저 배정해요. 선착순이나 겉모습 기준은 병원 정책이 아니라 개인 판단이고, 공기매개 결핵 같은 환자를 놓치면 다른 사람들이 위험해져요."
+      example: "The highest transmission risk gets the room."
+      exKo: "전파 위험이 가장 높은 환자가 병실을 받아요."
+    - kind: context
+      words: [w-decision]
+      word: decision
+      ko: 결정
+      scenes:
+        - {who: 차트 기록, icon: board, en: "Room decision made per hospital allocation policy; leadership informed.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "This is a tough decision, so let's take it to leadership.", ok: true}
+        - {who: 가족에게, icon: me, en: "Our decision algorithm weights transmission risk, so your mother ranks lower on the list.", ok: false, fix: "I'm sorry, we're short on rooms. The hospital's plan decides who goes first, and we'll watch her closely."}
+      why: "의료진끼리는 우선순위 기준을 숫자처럼 말해도 돼요. 가족에게 '순위가 낮다'고 하면 가족의 불안을 키워요. 미안한 마음과 계속 지켜본다는 약속을 담아 부드럽게 알려 줘요."

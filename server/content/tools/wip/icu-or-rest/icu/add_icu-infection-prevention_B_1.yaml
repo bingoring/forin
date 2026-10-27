@@ -1,0 +1,37 @@
+# 각 문장: [tag, icon, why, decoy, 오답ko1, 오답ko2, 빈칸 정답, 오답1, 오답2, 오답3]
+situations:
+- title: "손위생·PPE 착탈"
+  s:
+  - ["손위생 안내", "shield", "Please로 지시를 부드럽게 하고 'before and after'로 시점을 두 번 짚어, 방문하는 가족이 언제 해야 하는지 한 번에 알려요.", "in the hallway", "식사 전후로 젤로 손을 소독해 주세요.", "검사 전후로 젤로 손을 소독해 주세요.", "gel", "lotion", "cream", "powder"]
+  - ["착용 순서", "board", "'first … then'으로 순서를 말에 담으면 가운이 먼저, 장갑이 나중이라는 걸 따로 설명하지 않아도 돼요. 보호구는 입는 순서가 정해져 있어요.", "at the desk", "들어가시기 전에 가운 상자를 먼저 열고, 그다음 장갑 상자를 여세요.", "들어가시기 전에 가운 위치를 먼저 보고, 그다음 장갑 크기를 고르세요.", "gown", "jacket", "blanket", "towel"]
+  - ["벗는 순서", "board", "벗을 때는 가장 더러워진 장갑을 먼저 벗어요. 'when you leave'로 그 시점을 먼저 밝히면 순서가 따라와요.", "by the door", "나가실 때는 간호사에게 먼저 알리고, 그다음 문을 닫으세요.", "나가실 때는 방문 기록을 먼저 쓰고, 그다음 간호사에게 알리세요.", "remove", "carry", "borrow", "return"]
+  - ["손위생 시점", "bell", "'every time'으로 횟수에 예외가 없음을 알리고, enter or leave로 드나드는 두 시점을 모두 짚어요.", "once a day", "병실에 들어오거나 나갈 때마다 방문 기록을 하세요.", "병실에 들어오거나 나갈 때마다 인터폰을 누르세요.", "hand gel", "hand lotion", "hand dryer", "hand towel"]
+  - ["착용 도움", "bandage", "'Let me help you'로 시작하면 처음 입어 보는 가족도 부담 없이 도움을 받아요. 가운은 뒤쪽 끈을 혼자 묶기 어려워요.", "on the shelf", "가운 사이즈 고르는 걸 도와드릴게요.", "가운 상자 여는 걸 도와드릴게요.", "tie", "fold", "hang", "wash"]
+  - ["젤 설명", "lab", "'can't always'로 비누가 나쁘다는 게 아니라 닿지 못하는 곳이 있다고 말해요. 젤이 왜 쓰이는지 근거를 짧게 전해요.", "for a while", "이 젤은 수건이 늘 닿지는 못하는 세균까지 없애 줘요.", "이 젤은 비누가 늘 닿지는 못하는 냄새까지 없애 줘요.", "germs", "stains", "dust", "smells"]
+  order:
+    tag: "대화 흐름"
+    icon: "compass"
+    ko: "보호구 착용과 퇴실 4문장 순서"
+    why: "먼저 손을 소독하고, 마른 뒤 가운을 입은 다음 장갑을 껴요. 나올 때는 장갑이 먼저, 가운이 그다음이에요."
+    lines:
+    - ["Please clean your hands with the gel before you go in.", "shield", "들어가시기 전에 젤로 손을 소독해 주세요", "손위생"]
+    - ["Once they're dry, put the gown on and tie it in the back.", "board", "마르면 가운을 입고 뒤를 묶으세요", "가운"]
+    - ["With it tied, put the gloves on last.", "check", "묶었으면 장갑을 마지막에 끼세요", "장갑"]
+    - ["On the way out, take the gloves off first, then the gown.", "bell", "나올 때는 장갑을 먼저, 그다음 가운을 벗으세요", "퇴실"]
+- title: "CLABSI 번들 유지"
+  s:
+  - ["라인 설명", "pill", "'lets us give'로 라인이 무엇을 가능하게 하는지부터 말하면 낯선 장치가 덜 무섭게 들려요. 중심정맥관은 약을 큰 정맥으로 보내요.", "from the pharmacy", "이 중심라인으로 팔 정맥에 안전하게 약을 줄 수 있어요.", "이 중심라인으로 큰 정맥에 안전하게 산소를 줄 수 있어요.", "vein", "artery", "muscle", "organ"]
+  - ["이유 설명", "shield", "'to prevent infection'으로 드레싱 관리의 목적을 밝혀요. 드레싱이 젖거나 더러우면 균이 라인 주위로 들어갈 수 있어요.", "to stay comfortable", "통증을 줄이기 위해 드레싱을 깨끗하고 건조하게 유지해요.", "냄새를 막기 위해 드레싱을 깨끗하고 건조하게 유지해요.", "dry", "bright", "quiet", "soft"]
+  - ["매일 평가", "calendar", "'as soon as'로 필요 없어지는 순간 바로 뺀다고 약속해요. 라인은 오래 둘수록 감염 위험이 커져요.", "during the day", "한 시간마다 확인하고, 더 이상 필요 없으면 바로 제거해요.", "세 시간마다 확인하고, 더 이상 필요 없으면 바로 제거해요.", "every day", "every hour", "every minute", "every time"]
+  - ["확인 주기", "magnify", "'every shift'로 확인 간격을 구체적으로 말하면 가족이 안심해요. 'for signs of'는 무엇을 찾는지 알려 줘요.", "for any leaks", "한 시간마다 감염 징후가 있는지 드레싱을 확인할게요.", "매 근무마다 통증 정도가 어떤지 드레싱을 확인할게요.", "shift", "meal", "nap", "snack"]
+  - ["무균 안내", "bandage", "'a sterile technique'은 멸균 상태를 지키는 방법을 가리켜요. 라인 드레싱 교체는 멸균 상태에서 해요.", "at the bedside", "침대 시트를 교체할 때는 무균 기법을 사용해요.", "환자복을 교체할 때는 무균 기법을 사용해요.", "sterile", "gentle", "simple", "basic"]
+  order:
+    tag: "대화 흐름"
+    icon: "compass"
+    ko: "중심라인 관리 설명 4문장 순서"
+    why: "라인이 무엇인지 먼저 소개하고, 감염을 막는 드레싱 관리를 말한 뒤, 매일 필요성을 확인하다가 필요 없어지면 바로 제거한다고 마무리해요."
+    lines:
+    - ["This is a central line, and it goes into a large vein.", "pill", "이건 중심라인이고 큰 정맥으로 들어가요", "소개"]
+    - ["To keep infection out of it, we keep the dressing clean and dry.", "shield", "감염이 안 들어오게 드레싱을 깨끗하고 건조하게 유지해요", "관리"]
+    - ["Each day we check whether the line is still needed.", "calendar", "매일 라인이 아직 필요한지 확인해요", "확인"]
+    - ["Once it isn't, we remove it right away.", "check", "필요 없어지면 바로 제거해요", "제거"]

@@ -1,0 +1,119 @@
+- situation: "투여 후 통증 재평가"
+  items:
+    - kind: slider
+      words: [w-score, w-drop, w-unchanged]
+      cue: "Nurse: \"His CPOT was six before the dose, and now it's one.\""
+      scale: [no change, partial relief, good relief]
+      answerAt: 2
+      why: "점수가 6에서 1로 크게 내려가면 good relief예요. 거의 그대로면 no change, 조금만 내려가 아직 높으면 partial relief예요. 변화가 없으면 계획을 다시 따져 보고 의사에게 알려요."
+      example: "His score dropped from six to one, so the dose worked."
+      exKo: "점수가 6에서 1로 떨어졌으니 투여가 효과가 있었어요."
+    - kind: context
+      words: [w-reassess]
+      word: reassess
+      ko: 재평가하다
+      scenes:
+        - {who: 동료 간호사에게, icon: speech, en: "I'll reassess his CPOT after the dose and let you know.", ok: true}
+        - {who: 차트 기록, icon: board, en: "Reassessed CPOT 2 after analgesia; plan unchanged.", ok: true}
+        - {who: 보호자에게, icon: me, en: "We need to reassess his nociceptive behavior score post-administration.", ok: false, fix: "In a little while I'll check again to see whether the medicine is helping."}
+      why: "의료진끼리는 reassess가 약을 준 뒤 점수를 다시 보는 정해진 단계라 짧게 말해도 돼요. 가족에게는 전문 용어 대신 곧 다시 살펴보겠다는 말을 쉽게 해 줘요."
+- situation: "통증과 초조 감별"
+  items:
+    - kind: slider
+      words: [w-rass, w-agitation]
+      cue: "Nurse: \"RASS plus three — he's pulling at his lines and grimacing.\""
+      scale: [restless, very agitated, combative]
+      answerAt: 1
+      why: "RASS +1은 restless(불안해 보이나 움직임은 공격적이지 않음), +2는 agitated, +3은 very agitated(튜브나 카테터를 잡아당김), +4는 combative(공격적)예요. 초조하면서 CPOT도 높으면 통증이 원인일 수 있어서 진정제를 더하기 전에 통증부터 확인해요."
+      example: "He's very agitated and pulling at his lines."
+      exKo: "많이 초조해하고 라인을 잡아당기고 있어요."
+    - kind: context
+      words: [w-treat]
+      word: treat
+      ko: 치료하다
+      scenes:
+        - {who: 동료 간호사에게, icon: speech, en: "If his CPOT is high, let's treat the pain before we add sedation.", ok: true}
+        - {who: 차트 기록, icon: board, en: "Agitated with CPOT 5; pain treated first with analgesic, RASS 0 afterward.", ok: true}
+        - {who: 보호자에게, icon: me, en: "His agitation is nociceptive, so we treat with opioid analgesia rather than a sedative.", ok: false, fix: "He seems restless because he hurts, so we're giving him pain medicine first."}
+      why: "의료진끼리는 초조의 원인을 통증으로 보고 치료 순서를 정확한 말로 정해요. 가족에게는 왜 그런지와 지금 무엇을 해 주는지를 쉬운 말로 설명해야 겁먹지 않아요."
+- situation: "아편유사제 적정·부작용 감시"
+  items:
+    - kind: slider
+      words: [w-respiratory, w-rate, w-opioid]
+      cue: "Nurse: \"His respiratory rate was sixteen, and now it's eight and he's hard to wake.\""
+      scale: [normal, slowing, depressed, apneic]
+      answerAt: 2
+      why: "호흡수가 크게 줄고 깨우기도 어려우면 호흡억제(depressed)예요. 조금 느려지기만 하면 slowing, 숨을 아예 안 쉬면 apneic이에요. 아편유사제 적정 중에 이런 변화가 보이면 바로 알리고 처방과 프로토콜에 따라 조치해요."
+      example: "His breathing is depressed, so I'm calling the physician now."
+      exKo: "호흡이 억제되어 지금 의사를 부르고 있어요."
+    - kind: pair
+      words: [w-softener, w-side, w-effect, w-rate]
+      pairs: [[stool, softener], [side, effect], [heart, rate]]
+      decoys: [vent]
+      why: "stool softener는 변을 무르게 하는 약이고, side effect는 주된 작용 말고 생기는 부작용이에요. heart rate는 심박수이고 respiratory rate는 호흡수예요."
+    - kind: context
+      words: [w-titrate]
+      word: titrate
+      ko: 적정하다
+      scenes:
+        - {who: 동료 간호사에게, icon: speech, en: "I'm titrating his fentanyl up slowly while I watch his respiratory rate.", ok: true}
+        - {who: 차트 기록, icon: board, en: "Fentanyl titrated per protocol; RR 14, SpO2 98%.", ok: true}
+        - {who: 보호자에게, icon: me, en: "I'm titrating his opioid infusion to a CPOT under three.", ok: false, fix: "We're adjusting his pain medicine a little at a time to keep him comfortable and safe."}
+      why: "의료진끼리는 titrate가 반응을 보며 용량을 조금씩 맞춘다는 뜻의 정확한 말이에요. 가족에게는 CPOT 같은 목표 수치 대신 조금씩 맞춘다는 뜻만 쉬운 말로 알려 줘요."
+- situation: "다중양식 진통 적용"
+  items:
+    - kind: slider
+      words: [w-multimodal, w-opioid, w-add, w-acetaminophen]
+      cue: "Nurse: \"He needs much less morphine since we added scheduled acetaminophen.\""
+      scale: [more opioid, opioid-sparing, opioid-free]
+      answerAt: 1
+      why: "다른 종류의 진통제를 더해 아편유사제를 덜 쓰게 되는 것을 opioid-sparing이라고 해요. 완전히 안 쓰게 되면 opioid-free예요. 다중양식 진통은 부작용을 줄이려고 아편유사제를 덜 쓰는 것이 목표예요."
+      example: "Scheduled acetaminophen has been opioid-sparing for him."
+      exKo: "정규 아세트아미노펜이 그에게는 아편유사제를 덜 쓰게 해 줬어요."
+    - kind: context
+      words: [w-analgesia]
+      word: analgesia
+      ko: 진통
+      scenes:
+        - {who: 동료 간호사에게, icon: speech, en: "Multimodal analgesia means we can cut back on his opioid.", ok: true}
+        - {who: 차트 기록, icon: board, en: "Multimodal analgesia: scheduled acetaminophen plus low-dose opioid as needed.", ok: true}
+        - {who: 보호자에게, icon: me, en: "We started multimodal analgesia combining antipyretic and mu-agonist mechanisms.", ok: false, fix: "We're using a few different kinds of pain medicine together, so he needs less of the strong one."}
+      why: "의료진끼리는 약의 종류와 작용을 묶어 말해야 정확해요. 가족에게는 작용 원리 대신 여러 약을 함께 써서 센 약을 덜 쓴다는 사실을 쉬운 말로 알려 줘요."
+- situation: "처치 관련 통증 관리"
+  items:
+    - kind: slider
+      words: [w-cpot, w-spike, w-suction]
+      cue: "Nurse: \"His CPOT is one at rest, but it jumps to seven during suctioning.\""
+      scale: [mild, moderate, severe]
+      answerAt: 2
+      why: "CPOT는 0~8점이라 7점이면 심한 통증에 가까워요. 처치 때만 급증하고 곧 내려오는 통증이라 처치 전에 미리 처치하는 것이 도움이 돼요. 이보다 약하면 moderate나 mild예요."
+      example: "His pain is severe during suctioning, then settles."
+      exKo: "흡인할 때는 통증이 심하다가 곧 가라앉아요."
+    - kind: context
+      words: [w-procedure]
+      word: procedure
+      ko: 처치
+      scenes:
+        - {who: 동료 간호사에게, icon: speech, en: "Let's pretreat before the procedure so his CPOT stays low.", ok: true}
+        - {who: 차트 기록, icon: board, en: "Pretreated with fentanyl bolus before procedure; CPOT 2 during suctioning.", ok: true}
+        - {who: 보호자에게, icon: me, en: "Prior to the procedure we administered a prophylactic opioid bolus.", ok: false, fix: "Before we do this, I gave him something so it hurts less."}
+      why: "의료진끼리는 약 이름과 시점을 줄여 말해도 정확하게 통해요. 가족에게는 prophylactic이나 bolus 같은 말 대신 아프지 않게 미리 약을 줬다는 사실만 쉬운 말로 알려 줘요."
+- situation: "통증-진정-섬망 통합 평가"
+  items:
+    - kind: slider
+      words: [w-rass, w-sedation]
+      cue: "Nurse: \"He opens his eyes to my voice, but only for a few seconds.\""
+      scale: [alert, drowsy, light sedation, deep sedation]
+      answerAt: 2
+      why: "목소리에 눈을 뜨고 눈을 맞추지만 10초 안에 감기면 RASS -2, light sedation이에요. 10초 넘게 눈을 맞추면 -1 drowsy, 눈 맞춤 없이 목소리에 움직이거나 눈만 뜨면 -3, 목소리에 반응이 없고 몸을 자극해야 움직이면 -4 deep sedation이에요."
+      example: "He's lightly sedated and wakes briefly to voice."
+      exKo: "가볍게 진정되어 있고 목소리에 잠깐 깨어나요."
+    - kind: context
+      words: [w-score]
+      word: score
+      ko: 점수
+      scenes:
+        - {who: 동료 간호사에게, icon: speech, en: "If one score is off, check the other two before you act.", ok: true}
+        - {who: 차트 기록, icon: board, en: "CPOT score 2, RASS score 0, CAM-ICU negative.", ok: true}
+        - {who: 보호자에게, icon: me, en: "His CPOT score is two, his RASS score is zero, and his CAM-ICU is negative.", ok: false, fix: "He's comfortable, awake, and thinking clearly right now."}
+      why: "의료진끼리는 세 점수를 그대로 읽어야 흐름이 정확히 전해져요. 가족에게는 점수 이름이 낯서니 지금 환자가 어떤 상태인지를 쉬운 말로 풀어 줘요."

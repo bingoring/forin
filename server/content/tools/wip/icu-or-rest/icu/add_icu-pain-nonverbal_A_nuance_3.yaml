@@ -1,0 +1,188 @@
+- situation: "신경병증성 통증 인지"
+  items:
+    - kind: pair
+      words: [w-neuropathic, w-opioid, w-dose, w-physician]
+      pairs: [[neuropathic, pain], [opioid, dose], [ask, the physician]]
+      decoys: [gabapentin]
+      why: "neuropathic pain은 신경 자체가 손상돼 생기는 통증이에요. opioid dose는 아편유사제 투여량이고, 약을 바꾸는 일은 ask the physician으로 의사에게 물어서 정해요."
+    - kind: context
+      words: [w-adjuvant]
+      word: adjuvant
+      ko: 보조제
+      scenes:
+        - {who: 동료 간호사에게, icon: speech, en: "Let's consider an adjuvant like gabapentin for the nerve pain.", ok: true}
+        - {who: 차트 기록, icon: board, en: "Opioid-resistant pain; adjuvant gabapentin started per order.", ok: true}
+        - {who: 보호자에게, icon: me, en: "We'd like to add an adjuvant gabapentinoid for his neuropathic pain.", ok: false, fix: "We'd like to add a medicine that works on nerve pain, since the usual pain medicine isn't enough."}
+      why: "의료진끼리는 adjuvant라는 말이 주된 진통제를 거드는 약을 정확히 가리켜요. 가족에게는 계열 이름 대신 신경통에 쓰는 약을 더한다는 이유를 쉬운 말로 알려 줘요."
+- situation: "만성통증·내성 환자 관리"
+  items:
+    - kind: slider
+      words: [w-withdrawal]
+      cue: "Nurse: \"He's yawning and has a runny nose, but his vitals are normal.\""
+      scale: [mild, moderate, severe]
+      answerAt: 0
+      why: "하품과 콧물 같은 가벼운 징후만 있고 활력징후가 정상이면 mild예요. 땀과 떨림, 빠른 맥박이 겹치면 moderate, 심한 초조와 구토·설사까지 가면 severe예요. 오래 쓰던 약이 모자라면 금단이 올 수 있어요."
+      example: "His withdrawal looks mild so far."
+      exKo: "금단은 아직 가벼워 보여요."
+    - kind: context
+      words: [w-tolerance]
+      word: tolerance
+      ko: 내성(견딤)
+      scenes:
+        - {who: 동료 간호사에게, icon: speech, en: "His tolerance is high, so the usual dose won't touch his pain.", ok: true}
+        - {who: 차트 기록, icon: board, en: "Chronic opioid use; tolerance noted; dose titrated to CPOT.", ok: true}
+        - {who: 보호자에게, icon: me, en: "His opioid tolerance means his receptors are desensitized.", ok: false, fix: "He's been on strong pain medicine for so long that his body needs more of it to feel relief."}
+      why: "의료진끼리는 tolerance 한 단어로 오래 쓴 약이 덜 듣는 상태를 말해요. 가족에게는 수용체 같은 말보다 몸이 더 많은 양을 필요로 한다는 사실을 쉬운 말로 알려 줘요."
+- situation: "아편 유발 호흡억제 예방"
+  items:
+    - kind: slider
+      words: [w-capnography, w-respiratory, w-depression]
+      cue: "Nurse: \"His breathing is slow and shallow, and the end-tidal CO2 keeps climbing.\""
+      scale: [breathing well, slowing, hypoventilating, apneic]
+      answerAt: 2
+      why: "호흡이 느리고 얕으면서 호기말 CO2가 오르면 환기가 모자란 hypoventilating이에요. 아직 숨을 쉬고 있으면 apneic은 아니에요. 산소를 주는 중에는 SpO2가 늦게 떨어지므로 capnography가 호흡억제를 더 일찍 알려 줘요."
+      example: "He's hypoventilating, and the capnography shows it."
+      exKo: "환기가 모자라고, 호기말이산화탄소 감시가 그걸 보여 줘요."
+    - kind: context
+      words: [w-naloxone]
+      word: naloxone
+      ko: 날록손
+      scenes:
+        - {who: 동료 간호사에게, icon: speech, en: "Keep naloxone at the bedside while we titrate.", ok: true}
+        - {who: 차트 기록, icon: board, en: "Naloxone available at bedside; RR 14, EtCO2 38.", ok: true}
+        - {who: 보호자에게, icon: me, en: "We have naloxone, an opioid antagonist, ready in case of respiratory depression.", ok: false, fix: "We keep a medicine ready that can quickly undo the pain medicine's effect on his breathing, just in case."}
+      why: "의료진끼리는 약 이름만 말해도 무슨 약인지 바로 통해요. 가족에게는 길항제나 호흡억제 같은 말 대신 무슨 일을 하는 약인지를 쉬운 말로 알려 줘요."
+- situation: "가족의 대리 통증 관찰 활용"
+  items:
+    - kind: slider
+      words: [w-uncomfortable, w-distress]
+      cue: "Wife: \"He keeps rubbing his forehead and sighing — he never does that.\""
+      scale: [comfortable, uncomfortable, distressed, in agony]
+      answerAt: 1
+      why: "이마를 문지르고 한숨을 쉬는 정도면 uncomfortable이에요. 신음하고 침대 난간을 움켜쥐며 얼굴을 잔뜩 찌푸리면 distressed, 쉬고 있을 때도 심하게 괴로워하면 in agony예요. 가족이 평소와 다르다고 말하면 그 자체가 단서예요."
+      example: "He looks uncomfortable, so I'll check his pain score."
+      exKo: "불편해 보이니 통증 점수를 확인해 볼게요."
+    - kind: context
+      words: [w-observation]
+      word: observation
+      ko: 관찰
+      scenes:
+        - {who: 동료 간호사에게, icon: speech, en: "Her observation about his brow matches what I'm seeing.", ok: true}
+        - {who: 차트 기록, icon: board, en: "Family observation: grimacing and restlessness at 0200; CPOT 4.", ok: true}
+        - {who: 보호자에게, icon: me, en: "Thanks — that's a useful collateral observation for our behavioral pain assessment.", ok: false, fix: "Thank you — what you notice about him really helps us understand his pain."}
+      why: "의료진끼리는 가족의 관찰도 기록하고 근거로 쓰는 용어로 말해요. 가족에게는 collateral이나 behavioral 같은 말 대신 보신 것이 큰 도움이 된다고 쉽게 말해야 계속 알려 줘요."
+- situation: "급성 심한 통증 위기"
+  items:
+    - kind: slider
+      words: [w-cpot, w-routine, w-urgent]
+      cue: "Nurse: \"His CPOT is two and holding steady after the scheduled dose.\""
+      scale: [routine, urgent, emergent]
+      answerAt: 0
+      why: "CPOT가 낮고 유지되면 routine이라 정해진 간격으로 계속 평가해요. 갑자기 최고점으로 오르면 urgent로 의사에게 바로 알려요. 호흡이나 혈압까지 흔들리면 emergent로 도움을 즉시 불러요."
+      example: "His pain is routine now, so we'll keep checking."
+      exKo: "통증은 지금 일상적인 수준이라 계속 확인할게요."
+    - kind: context
+      words: [w-urgent]
+      word: urgent
+      ko: 긴급한
+      scenes:
+        - {who: 동료 간호사에게, icon: speech, en: "His pain is sudden and severe — it's urgent, call the physician.", ok: true}
+        - {who: 차트 기록, icon: board, en: "Acute severe pain, CPOT 8; urgent physician notification at 0310.", ok: true}
+        - {who: 보호자에게, icon: me, en: "We've classified this as an urgent surgical abdomen.", ok: false, fix: "We're worried about his belly, so we've called the doctor right away."}
+      why: "의료진끼리는 urgent로 우선순위를 빠르게 전달해요. 가족에게 진단을 앞서 말하면 겁을 줄 수 있으니, 걱정되는 부위와 지금 하고 있는 일을 쉬운 말로 알려 줘요."
+- situation: "아편 과량 호흡억제 위기"
+  items:
+    - kind: slider
+      words: [w-pupil]
+      cue: "Nurse: \"His pupils are tiny, like pinpoints, and he's barely breathing.\""
+      scale: [normal, small, pinpoint]
+      answerAt: 2
+      why: "아편유사제가 과하면 동공이 바늘 끝처럼 아주 작아지고 호흡이 느려지는 것이 전형적인 모습이에요. 다만 동공만으로 판단하지 말고 호흡과 의식 상태를 함께 봐요. 정상 크기면 normal, 조금 작으면 small이에요."
+      example: "His pupils are pinpoint and he's barely breathing."
+      exKo: "동공이 바늘 끝처럼 작고 숨을 거의 안 쉬어요."
+    - kind: context
+      words: [w-reversal]
+      word: reversal
+      ko: 역전
+      scenes:
+        - {who: 동료 간호사에게, icon: speech, en: "The reversal is working — his respiratory rate is up to twelve.", ok: true}
+        - {who: 차트 기록, icon: board, en: "Naloxone given; reversal effective, RR 12, SpO2 96%.", ok: true}
+        - {who: 보호자에게, icon: me, en: "We administered naloxone for respiratory depression, and the reversal was achieved.", ok: false, fix: "He was breathing too slowly from the pain medicine, so we gave him a medicine that wakes up his breathing."}
+      why: "의료진끼리는 reversal이 해독제로 효과를 되돌렸다는 결과를 짧고 정확하게 전해요. 가족에게는 호흡억제나 역전 같은 말 대신 무슨 일이 있었고 무엇을 해서 나아졌는지를 쉬운 말로 알려 줘요."
+- situation: "금단 통증 급증 관리"
+  items:
+    - kind: slider
+      words: [w-restless, w-sweat]
+      cue: "Nurse: \"He can't lie still and keeps shifting, but he isn't pulling at anything.\""
+      scale: [calm, restless, agitated, combative]
+      answerAt: 1
+      why: "가만히 있지 못하고 불안해 보이지만 움직임이 공격적이지 않으면 RASS +1 restless예요. 튜브를 당기면 very agitated, 사람에게 공격적이면 combative예요. 금단에서는 땀, 빠른 맥박과 함께 안절부절못하는 모습이 흔해요."
+      example: "He's restless and sweating, which fits withdrawal."
+      exKo: "안절부절못하고 땀을 흘려서 금단과 맞아요."
+    - kind: context
+      words: [w-taper]
+      word: taper
+      ko: 감량하다
+      scenes:
+        - {who: 동료 간호사에게, icon: speech, en: "We tapered his dose too fast — let's slow the taper.", ok: true}
+        - {who: 차트 기록, icon: board, en: "Opioid taper slowed per order; withdrawal symptoms improving.", ok: true}
+        - {who: 보호자에게, icon: me, en: "We're tapering his opioid per the withdrawal management protocol.", ok: false, fix: "We're lowering his pain medicine a little at a time so his body can adjust."}
+      why: "의료진끼리는 taper가 단계적으로 줄이는 계획이라 한 단어로 통해요. 가족에게는 프로토콜 이름 대신 조금씩 줄여 몸이 적응하게 한다는 이유를 쉬운 말로 알려 줘요."
+- situation: "임종기 통증·호흡곤란 완화"
+  items:
+    - kind: slider
+      words: [w-breathlessness]
+      cue: "Nurse: \"He's gasping for air even though he's lying still.\""
+      scale: [short of breath, struggling to breathe, gasping]
+      answerAt: 2
+      why: "숨이 약간 차면 short of breath, 쉬고 있어도 숨쉬기 위해 애쓰면 struggling to breathe, 헐떡이며 공기를 들이마시려 하면 gasping이에요. 말기의 호흡곤란은 처방에 따라 아편유사제 같은 약으로 줄여 줄 수 있어요."
+      example: "He's gasping, so I'm giving his breathing medicine now."
+      exKo: "헐떡이고 있어서 지금 호흡 약을 드릴게요."
+    - kind: swap
+      words: [w-breathlessness]
+      who: "가족에게 · 임종기 설명"
+      icon: me
+      before: ["We're ", "treating his dyspnea", " so he isn't struggling."]
+      options: [helping him breathe more easily, treating his dyspnea, suppressing his respiratory drive]
+      answer: helping him breathe more easily
+      notes: {helping him breathe more easily: "가족이 바로 알아듣는 쉬운 말. 약의 목적을 그대로 전해요.", treating his dyspnea: "의료진끼리 쓰는 말. 가족에게는 dyspnea가 낯설어요.", suppressing his respiratory drive: "약의 목적과 다르게 들려 가족이 오해하고 겁을 먹어요."}
+      why: "치료 목적은 같아도 가족에게는 의학 용어보다 '숨쉬기가 편해지도록 돕는다'는 쉬운 말이 더 위로가 돼요."
+      ko: 숨쉬기가 편해지도록 돕고 있어요
+- situation: "통증 조절 실패·불응"
+  items:
+    - kind: slider
+      words: [w-refractory, w-max]
+      cue: "Nurse: \"His pain barely changes even after the maximum dose we're allowed to give.\""
+      scale: [responding, partially controlled, refractory]
+      answerAt: 2
+      why: "허용된 최대 용량까지 써도 통증이 거의 변하지 않으면 refractory(불응성)예요. 일부만 좋아지면 partially controlled예요. 이럴 때는 의사에게 알리고 통증팀 같은 전문가의 도움을 구해요."
+      example: "His pain is refractory, so we need a specialist's help."
+      exKo: "통증이 불응성이라 전문가의 도움이 필요해요."
+    - kind: context
+      words: [w-consult]
+      word: consult
+      ko: 상의하다
+      scenes:
+        - {who: 동료 간호사에게, icon: speech, en: "Let's consult pain service — he's not responding to the usual regimen.", ok: true}
+        - {who: 차트 기록, icon: board, en: "Pain service consult requested; physician notified.", ok: true}
+        - {who: 보호자에게, icon: me, en: "We're initiating a multidisciplinary consult for interventional analgesia.", ok: false, fix: "We're asking the pain specialists to help us find something that works better for him."}
+      why: "의료진끼리는 consult가 전문팀에 공식적으로 의견을 구한다는 뜻의 짧은 말이에요. 가족에게는 다학제나 중재 같은 말 대신 전문가에게 도움을 청한다는 사실을 쉬운 말로 알려 줘요."
+- situation: "진통제 부작용 급변"
+  items:
+    - kind: slider
+      words: [w-confused, w-confusion, w-mental]
+      cue: "Nurse: \"He wakes easily, but he keeps asking where he is.\""
+      scale: [alert, drowsy, confused, obtunded]
+      answerAt: 2
+      why: "쉽게 깨어나지만 장소나 상황을 계속 헷갈려 하면 confused예요. 또렷하면 alert, 졸려도 질문에 맞게 답하면 drowsy, 크게 자극해야 겨우 반응하면 obtunded예요. 새로 생긴 혼란은 약 부작용이나 다른 원인을 확인해야 해요."
+      example: "He's confused tonight, which is new for him."
+      exKo: "오늘 밤 혼란스러워하는데 이전에는 없던 모습이에요."
+    - kind: context
+      words: [w-ileus]
+      word: ileus
+      ko: 장마비
+      scenes:
+        - {who: 동료 간호사에게, icon: speech, en: "No bowel sounds and a swollen belly — this could be ileus.", ok: true}
+        - {who: 차트 기록, icon: board, en: "Abdomen distended, bowel sounds absent; ileus suspected, physician notified.", ok: true}
+        - {who: 보호자에게, icon: me, en: "We're concerned about an opioid-induced paralytic ileus.", ok: false, fix: "His gut may have slowed down from the pain medicine, so we're checking his belly."}
+      why: "의료진끼리는 ileus 한 단어로 장 운동이 멈춘 상태를 전해요. 가족에게는 마비성이나 아편유사제 유발 같은 말 대신 장이 느려졌을 수 있다는 점과 지금 확인 중이라는 점을 쉬운 말로 알려 줘요."
