@@ -1,0 +1,78 @@
+# icu-post-arrest 검토 반영 — 문장 S7~S13
+sent:
+# --- S7 shivering 관리
+- {s: 7, i: 0, d2: "떨림은 혈당을 올려서 냉각에 저항해요.", decoy: "and helps"}
+- {s: 7, i: 1, d1: "떨림 억제 프로토콜에 앞서 떨림 점수를 봅시다."}
+- {s: 7, i: 2, d1: "표면 대응가온은 손발을 따뜻하게 해 떨림을 줄여요.", d2: "대응가온과 진정이 안 들으면 약을 더해요.", blank: {answer: sedation, options: [sedation, hydration, nutrition, lighting]}, decoy: "and the chart"}
+- {s: 7, i: 3, blank: {answer: temperature, options: [temperature, platelets, bilirubin, ferritin]}}
+- {s: 7, i: 4, blank: {answer: protocol, options: [protocol, poster, label, binder]}, decoy: "per the family"}
+- {s: 7, i: 5, d1: "떨림이 계속되면 메페리딘을 확인합니다.", blank: {answer: add, options: [add, chart, count, weigh]}}
+# --- S8 재관류 PCI 이송·조율
+- {s: 8, i: 0, d1: "이동 전에 승강기 준비가 됐는지 확인합시다.", blank: {answer: ready, options: [ready, far, busy, locked]}}
+- {s: 8, i: 1, blank: {answer: airway, options: [airway, report, menu, uniform]}}
+- s: 8
+  i: 3
+  ko: "모든 지속주입 약이 펌프에 걸려 있고 표시도 명확해요."
+  d1: "모든 지속주입 약이 펌프에 걸려 있고 줄도 꼬이지 않았어요."
+  d2: "모든 지속주입 약이 펌프에 걸려 있고 서명도 명확해요."
+  decoy: "in the chart"
+  blank: {answer: labeled, options: [labeled, wrapped, stacked, printed]}
+- s: 8
+  i: 5
+  en: "I'll watch the monitor and drips while RT manages the airway during transport."
+  ko: "이송하는 동안 호흡치료사가 기도를 맡고, 저는 모니터와 드립을 지켜볼게요."
+  chunks: ["I'll watch", "the monitor and drips", "while RT manages", "the airway", "during transport", "."]
+  words: [w-monitor, w-drip, w-airway, w-transport]
+  tag: "이송 역할"
+  icon: monitor
+  why: "while로 두 사람이 같은 시간에 맡는 일을 나눠 말해요. 기도는 RT가 맡고 나는 모니터와 드립을 본다고 밝혀, 간호사의 몫을 넘지 않게 해요."
+  decoy: "while the porter manages"
+  d1: "이송하는 동안 약사가 기도를 맡고, 저는 모니터와 드립을 지켜볼게요."
+  d2: "복귀하는 동안 호흡치료사가 기도를 맡고, 저는 모니터와 드립을 지켜볼게요."
+  blank: {answer: airway, options: [airway, lunch, paperwork, uniform]}
+# --- S9 ROSC 후 혈역학 목표 유지
+- {s: 9, i: 0, d1: "MAP 목표치를 팀과 함께 정합시다.", d2: "MAP 목표치를 흐름표에 적읍시다.", blank: {answer: above, options: [above, below, beside, behind]}}
+- {s: 9, i: 1, d2: "관류 유지를 위해 승압제와 수액 기록을 남기세요.", blank: {answer: perfusion, options: [sedation, perfusion, comfort, glucose]}}
+- {s: 9, i: 2, blank: {answer: brain, options: [ears, bones, hair, brain]}, why: "Good perfusion이 주어라 '관류를 잘 유지하는 것'이 원인이고 뇌 보호가 결과라는 인과를 한 문장에 담아요."}
+- s: 9
+  i: 3
+  en: "His MAP dipped below sixty-five, so I'm titrating up now."
+  ko: "MAP가 65 밑으로 떨어져서 지금 올리고 있어요."
+  chunks: ["His MAP dipped", "below sixty-five", ", so I'm titrating up", "now", "."]
+  tag: "조치 보고"
+  icon: pill
+  why: "dipped below ~로 수치가 떨어진 정도를 말하고, so로 지금 하는 조치를 이어 보고해요. 65는 ROSC 후 MAP 목표의 하한으로 많이 쓰는 값이에요."
+  decoy: "over sixty-five"
+  d1: "MAP가 65 밑으로 떨어져서 지금 의사에게 알렸어요."
+  d2: "MAP가 65 밑으로 떨어져서 라인 높이를 봤어요."
+  blank: {answer: dipped, options: [dipped, climbed, jumped, rose]}
+- {s: 9, i: 4, d1: "혈압이 좋아져서 승압제 줄인 시각을 적었어요.", d2: "혈압이 좋아져서 감량을 상의했어요.", decoy: "at noon"}
+# --- S10 ROSC 후 환기·산소 목표
+- {s: 10, i: 0, d2: "ROSC 이후엔 산소 목표를 혈액가스로 맞춰 가세요."}
+- {s: 10, i: 1, d1: "CO2 정상 범위를 팀과 정하세요.", d2: "CO2 정상 범위를 적으세요."}
+- {s: 10, i: 3, d1: "산소 수치가 괜찮으니 ABG를 봅시다.", d2: "산소 수치가 괜찮으니 호흡치료사를 부릅시다."}
+- {s: 10, i: 4, d1: "CO2를 정상으로 유지하려고 혈액가스를 다시 보내요."}
+# --- S11 재가온 단계 관리
+- {s: 11, i: 0, blank: {answer: complications, options: [complications, admissions, billing, visits]}}
+- {s: 11, i: 1, d1: "혈관확장, 저혈압, 고칼륨혈증 변화를 적으세요.", blank: {answer: hyperkalemia, options: [hyperkalemia, constipation, osteoporosis, jaundice]}}
+- {s: 11, i: 2, why: "Controlled를 앞에 두어 '속도를 지키며 하는' 재가온이라는 점을 짚어요. protects 뒤에 his recovery를 붙여 목적도 같이 전해요."}
+- {s: 11, i: 3, chunks: ["We're rewarming", "him", "about half a degree", "per hour", "."]}
+- {s: 11, i: 4, d1: "혈압이 유지되고 있어서 재가온 속도를 그대로 적어요.", blank: {answer: pressure, options: [pressure, height, mood, season]}}
+- {s: 11, i: 5, d1: "냉각하면서 칼륨이 오를 수 있어서 계속 지켜보고 있어요.", d2: "재가온하면서 칼륨이 오를 수 있어서 담당의에게 미리 알렸어요.", blank: {answer: Potassium, options: [Albumin, Sodium, Chloride, Potassium]}}
+# --- S12 발작·경련 감시
+- {s: 12, i: 0, d1: "심정지 이후 발작은 손 씰룩거림처럼 미세할 수 있어요.", d2: "심정지 이후 발작은 입맛 다심처럼 미세할 수 있어요."}
+- {s: 12, i: 1, d1: "비경련성 활동을 위해 뇌파 시각을 정합시다.", d2: "비경련성 활동을 위해 뇌파 전극 자리를 미리 닦읍시다."}
+- {s: 12, i: 2, d1: "비정상적인 움직임은 발작 신호예요.", d2: "비정상적인 움직임은 눈에 먼저 보여요."}
+- s: 12
+  i: 3
+  ko: "조금 전 눈 씰룩거림이 보여서 바로 알렸어요."
+  d1: "조금 전 손 씰룩거림이 보여서 바로 알렸어요."
+  d2: "한 시간 전 눈 씰룩거림이 보여서 바로 알렸어요."
+  why: "a minute ago로 관찰 시점을 밝히고, so로 이미 한 조치(flagged it, 곧 팀에 알림)를 이어 말해요."
+- {s: 12, i: 4, chunks: ["Neurology", "wants", "continuous EEG", "for the next twenty-four hours", "."], d2: "신경과에서 24시간 동안 지속 뇌파를 판독해요."}
+- {s: 12, i: 5, d1: "발작 활동이 있으면 뇌 손상이 더 커질 수 있어요.", d2: "발작 활동은 뇌파에만 잡힐 때도 있어요."}
+# --- S13 K 전해질 변동 관리
+- {s: 13, i: 1, d2: "재가온이 반동성 고혈당을 일으킬 수 있어요.", why: "can cause로 가능성만 말해 겁주지 않으면서, rebound를 앞에 붙여 '데울 때 도로 오르는' 위험임을 짚어요."}
+- {s: 13, i: 2, d2: "칼륨을 자주 재확인하고 결과를 흐름표에 적읍시다."}
+- {s: 13, i: 3, chunks: ["His last potassium", "came back", "at", "three point two", "."], d1: "오늘 칼륨 수치가 3.2로 나왔어요.", d2: "지난 칼륨이 3.2라 보충을 시작했어요.", blank: {answer: potassium, options: [sodium, hemoglobin, calcium, potassium]}}
+- {s: 13, i: 5, chunks: ["Once he's rewarmed", ", I'll recheck", "potassium", "one more time", "."], d2: "재가온이 끝나면 칼륨 보충 여부를 다시 정할게요."}

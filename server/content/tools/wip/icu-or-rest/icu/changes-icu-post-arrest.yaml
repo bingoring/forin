@@ -19,7 +19,7 @@ changes:
   id: w-meds
   fields:
   - ko
-  why: ko '약물'이 w-drug와 같아 정답이 둘이 된다 — meds는 '약들'로 가름
+  why: ko '약물'이 w-drug와 같아 정답이 둘이 된다 — meds는 '약들'로 가름 / ko '약들'이 어색함 — w-drug '약물'과 갈리게 '약(구어)'
 - kind: word
   id: w-neurological
   fields:
@@ -31,12 +31,13 @@ changes:
   id: w-outcome
   fields:
   - ko
-  why: ko '결과'가 w-result와 같아 정답이 둘이 된다 — outcome은 '경과(결과)'로 가름
+  why: ko '경과(결과)'의 '경과'는 진행 과정(course)이라 outcome의 뜻이 아님 — w-result '결과'와 갈리게 '최종 결과'
 - kind: word
   id: w-pressor
   fields:
   - ko
-  why: ko가 w-vasopressor와 겹쳐 정답이 둘이 된다 — pressor는 그대로 두고 vasopressor를 가름
+  - example
+  why: ko가 w-vasopressor와 겹쳐 정답이 둘이 된다 — pressor는 그대로 두고 vasopressor를 가름 / 이 단어를 예문으로 쓰던 문장을 바꾼 검토 반영에 맞춰 예문을 바꿈
 - kind: word
   id: w-shift
   fields:
@@ -57,7 +58,8 @@ changes:
   fields:
   - en
   - ipa
-  why: 형용사 헤드워드(tight)에 부사 문장(tightly)이 묶여 있어 부사로
+  - ko
+  why: ko '단단히(팽팽하게)'는 tightly(체온을 좁은 범위로 엄격하게 유지)의 뜻이 아님 — '엄격하게(빈틈없이)'
 - kind: word
   id: w-vasopressor
   fields:
@@ -181,11 +183,201 @@ changes:
   situation: 연명과 중단 윤리 갈등
   index: 4
   fields:
+  - en
+  - ko
+  - chunks
   - words
-  why: 너무 쉬운 말(공통 목록 또는 판단분) 태그를 뺌 — 문장은 그대로
+  why: 너무 쉬운 말(공통 목록 또는 판단분) 태그를 뺌 — 문장은 그대로 / 'whatever you choose'는 지킬 수 없는 약속이고 20.1(그분이 원했을 것)과 어긋남 — '혼자 고르지 않아도 된다·곁에 있겠다'로
 - kind: sentence
   situation: 연명과 중단 윤리 갈등
   index: 5
   fields:
   - words
-  why: 너무 쉬운 말(공통 목록 또는 판단분) 태그를 뺌 — 문장은 그대로
+  why: 너무 쉬운 말(공통 목록 또는 판단분) 태그를 뺌 — 문장은 그대로 / 너무 쉬운 말(tomorrow) 태그를 뺌 — 문장은 그대로
+- kind: word
+  id: w-control
+  fields:
+  - ko
+  why: 7.2 'can help control it'은 능동이라 ko '조절되다'가 어긋남 — '조절하다'
+- kind: word
+  id: w-rearrest
+  fields:
+  - ko
+  why: ko '재정지'(명사)인데 문장 5.2는 동사('he re-arrests') — '재정지되다'
+- kind: word
+  id: w-crash
+  fields:
+  - ko
+  why: 문장 16.0이 타동('crashing his pressure')이라 ko를 '무너뜨리다'로
+- kind: word
+  id: w-rush
+  fields:
+  - example
+  why: 이 단어를 예문으로 쓰던 문장을 바꾼 검토 반영에 맞춰 예문을 바꿈
+- kind: word
+  id: w-answer
+  fields:
+  - example
+  why: 이 단어를 예문으로 쓰던 문장을 바꾼 검토 반영에 맞춰 예문을 바꿈
+- kind: word
+  id: w-promise
+  fields:
+  - example
+  why: 이 단어를 예문으로 쓰던 문장을 바꾼 검토 반영에 맞춰 예문을 바꿈
+- kind: word
+  id: w-honor
+  fields:
+  - example
+  why: 이 단어를 예문으로 쓰던 문장을 바꾼 검토 반영에 맞춰 예문을 바꿈
+- kind: word
+  id: w-support
+  fields:
+  - example
+  why: 이 단어를 예문으로 쓰던 문장을 바꾼 검토 반영에 맞춰 예문을 바꿈
+- kind: word
+  id: w-choose
+  fields:
+  - example
+  why: 이 단어를 예문으로 쓰던 문장을 바꾼 검토 반영에 맞춰 예문을 바꿈
+- kind: word-remove
+  id: w-belong
+  why: 20.4를 '곁에 있겠다'는 말로 바꾸며("belongs to" 삭제) 어느 문장도 태그하지 않게 됨
+- kind: word-remove
+  id: w-tomorrow
+  why: 너무 쉬움(today·morning과 같은 급) — 14.4·20.5에서 태그를 빼 어느 문장도 태그하지 않게 됨
+- kind: sentence
+  situation: 12유도 심전도·원인 검사
+  index: 1
+  fields:
+  - ko
+  why: ko '전부 보내세요'는 틀림 — 'a full metabolic panel'은 종합 대사 패널(CMP)이라 '종합 대사 패널을 보내세요'로(en은 그대로)
+- kind: sentence
+  situation: TTM 목표체온 준비
+  index: 5
+  fields:
+  - en
+  - ko
+  - chunks
+  why: 단위가 없어 화씨로 읽힐 수 있음 — 'Celsius'를 붙여 '섭씨 36도'로
+- kind: sentence
+  situation: 체온·전해질 모니터
+  index: 5
+  fields:
+  - chunks
+  why: 구 경계를 끊은 chunks를 구 단위로 바로잡음 — 문장은 그대로
+- kind: sentence
+  situation: 진정·통증 관리 기초
+  index: 3
+  fields:
+  - chunks
+  why: 구 경계를 끊은 chunks를 구 단위로 바로잡음 — 문장은 그대로
+- kind: sentence
+  situation: 지속 심전도·혈역학 감시
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 처방 없이 승압제를 올린 말로 읽힘(독단 적정) — 'titrated … per the order'로 처방 범위 안에서 올렸다고. w-titrate 태그를 더함
+- kind: sentence
+  situation: TTM 냉각 유도·유지 관리
+  index: 1
+  fields:
+  - ko
+  why: ko '팽팽하게 안정적으로'는 tightly의 오역 — '좁은 범위에서 엄격하게'(en은 그대로)
+- kind: sentence
+  situation: TTM 냉각 유도·유지 관리
+  index: 4
+  fields:
+  - chunks
+  why: 구 경계를 끊은 chunks를 구 단위로 바로잡음 — 문장은 그대로
+- kind: sentence
+  situation: TTM 냉각 유도·유지 관리
+  index: 5
+  fields:
+  - chunks
+  why: 구 경계를 끊은 chunks를 구 단위로 바로잡음 — 문장은 그대로
+- kind: sentence
+  situation: 재관류 PCI 이송·조율
+  index: 3
+  fields:
+  - ko
+  why: w-drip ko를 '지속주입(드립)'으로 가른 데 맞춰 문장 ko도 '지속주입 약'으로(en·chunks 불변)
+- kind: sentence
+  situation: 재관류 PCI 이송·조율
+  index: 5
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 삽관 환자 이송 중 기도는 보통 호흡치료사(RT)가 맡고 간호사는 모니터·드립을 봄(업무범위)
+- kind: sentence
+  situation: ROSC 후 혈역학 목표 유지
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  why: MAP 기준 60이 같은 상황의 목표(65 이상)와 어긋남 — 65로
+- kind: sentence
+  situation: 재가온 단계 관리
+  index: 3
+  fields:
+  - chunks
+  why: 구 경계를 끊은 chunks를 구 단위로 바로잡음 — 문장은 그대로
+- kind: sentence
+  situation: 발작·경련 감시
+  index: 3
+  fields:
+  - ko
+  why: '''flagged it''은 ''(팀에) 알렸다''인데 ko가 ''표시해 뒀어요''라 행동이 달라짐 — ''바로 알렸어요''(en은 그대로)'
+- kind: sentence
+  situation: 발작·경련 감시
+  index: 4
+  fields:
+  - chunks
+  why: 구 경계를 끊은 chunks를 구 단위로 바로잡음 — 문장은 그대로
+- kind: sentence
+  situation: K 전해질 변동 관리
+  index: 3
+  fields:
+  - chunks
+  why: 구 경계를 끊은 chunks를 구 단위로 바로잡음 — 문장은 그대로
+- kind: sentence
+  situation: K 전해질 변동 관리
+  index: 5
+  fields:
+  - chunks
+  why: 구 경계를 끊은 chunks를 구 단위로 바로잡음 — 문장은 그대로
+- kind: sentence
+  situation: 신경학적 예후 검사 준비
+  index: 4
+  fields:
+  - words
+  why: 너무 쉬운 말(tomorrow, today·morning과 같은 급) 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 신경학적 예후 불량 가족 상담
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 18.1이 '회복 가능성이 낮다'고 말한 상황에서 '아직 모른다'는 같은 대화의 엇갈린 메시지 — 서두르지 않되 징후는 좋지 않다고
+- kind: sentence
+  situation: 신경학적 예후 불량 가족 상담
+  index: 5
+  fields:
+  - en
+  - ko
+  - chunks
+  why: '''We''re not giving up''은 연명 치료 계속으로 들려 치료 목표 대화와 어긋남 — ''계속 돌본다''(버리지 않음)로'
+- kind: sentence
+  situation: 신경학적 예후 불량 가족 상담
+  index: 6
+  fields:
+  - en
+  - chunks
+  why: 의문문인데 끝이 '.'이었음 — '?'로

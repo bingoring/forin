@@ -1,0 +1,83 @@
+# icu-post-arrest 검토 반영 — 문장 S0~S6. s=상황 번호, i=문장 번호. d1/d2=distractorsKo 첫째/둘째 교체. blank={answer, options}
+sent:
+# --- S0 ROSC 직후 안정화 사정
+- {s: 0, i: 0, d1: "기도가 확보됐는지, 산소화가 되는지 확인한 뒤 X선을 찍읍시다.", d2: "기도 확보와 산소화를 보기 전에 모니터부터 붙입시다."}
+- {s: 0, i: 1, d1: "지금 맥박, 혈압, 리듬을 기록하세요.", d2: "지금 맥박, 혈압, 리듬 경보를 맞추세요."}
+- {s: 0, i: 2, blank: {answer: ABCs, options: [ABCs, lines, tubes, beds]}}
+- {s: 0, i: 3, d2: "백 마스크로는 호흡이 충분해 보이지만, 곧 호흡치료사를 부릅시다."}
+- {s: 0, i: 4, blank: {answer: intact, options: [intact, absent, delayed, poor]}}
+# --- S1 12유도 심전도·원인 검사
+- {s: 1, i: 0, d1: "STEMI를 보기 위해 12유도 심전도를 출력하세요."}
+- s: 1
+  i: 1
+  ko: "트로포닌과 종합 대사 패널을 보내세요."
+  d1: "트로포닌과 종합 대사 패널을 챙기세요."
+  d2: "트로포닌과 종합 대사 패널 라벨을 붙이세요."
+  why: "'a full metabolic panel'은 여러 수치를 한 번에 보는 종합 대사 패널을 가리켜요. full이 붙으면 낱개 검사가 아니라 묶음 검사를 요청하는 말이 돼요."
+- s: 1
+  i: 2
+  d2: "STEMI라면 보호자를 안내합니다."
+  blank: {answer: STEMI, options: [STEMI, fracture, seizure, rash]}
+- {s: 1, i: 4, d2: "아직 ST 변화는 없지만 지금 심전도를 순환기내과에 보낼게요."}
+# --- S2 TTM 목표체온 준비
+- {s: 2, i: 2, why: "We'll + 동사로 팀의 약속처럼 말하고, and로 시작 시각과 초기 체온 두 항목을 한 기록으로 묶어요."}
+- {s: 2, i: 3, blank: {answer: plugged, options: [plugged, tucked, boxed, wedged]}}
+- s: 2
+  i: 4
+  decoy: "in the hallway"
+  d1: "프로토콜대로 직장으로 탐침을 넣기 전에 윤활제를 바를게요."
+  blank: {answer: reading, options: [reading, badge, wristband, consent]}
+- s: 2
+  i: 5
+  en: "Target is thirty-six degrees Celsius, and we start the timer now."
+  ko: "목표는 섭씨 36도이고, 지금 타이머를 시작합니다."
+  chunks: ["Target is", "thirty-six degrees Celsius", ", and we start", "the timer", "now", "."]
+  why: "degrees 뒤에 Celsius를 붙여 단위를 분명히 하면 화씨로 잘못 읽을 일이 없어요. 목표 수치와 시작 신호를 and로 묶어, 숫자를 말한 즉시 타이머가 돈다는 것도 전해요."
+  d1: "목표는 섭씨 36도이고, 지금 냉각 로그를 시작합니다."
+  d2: "목표는 섭씨 36도이고, 지금 알람을 설정합니다."
+# --- S3 체온·전해질 모니터
+- s: 3
+  i: 0
+  blank: {answer: core, options: [core, room, air, bath]}
+  d1: "심부체온 경보 범위를 정합시다."
+  why: "Let's + 동사로 팀이 함께 하자고 제안하고, continuously를 끝에 두어 '끊김 없이'라는 방식을 마지막에 못 박아요."
+- {s: 3, i: 1, decoy: ", so chart"}
+- {s: 3, i: 3, blank: {answer: target, options: [target, baseline, midnight, zero]}}
+- {s: 3, i: 4, d1: "변동을 일찍 잡기 위해 패널 튜브를 챙깁시다.", d2: "변동을 일찍 잡기 위해 대사 패널 결과를 추세로 봅시다."}
+- {s: 3, i: 5, chunks: ["Potassium came back", "low", ", so we're replacing it", "now", "."], d1: "칼륨이 낮게 나와서 의사에게 알렸어요.", d2: "칼륨이 낮게 나와서 지금 심전도를 보고 있어요."}
+# --- S4 진정·통증 관리 기초
+- {s: 4, i: 0, d2: "냉각이 불편할 수 있어서 진정 점수를 봅니다."}
+- {s: 4, i: 1, d1: "통증을 관리하고 떨림 점수를 적어 둡시다."}
+- {s: 4, i: 2, blank: {answer: Comfort, options: [Comfort, Warmth, Speed, Delay]}}
+- {s: 4, i: 3, chunks: ["I'll sedate him", "a little more", "before", "we reposition him", "."], d1: "체위를 바꾸기 전에 진정 점수를 볼게요.", blank: {answer: sedate, options: [sedate, hydrate, wash, dress]}}
+- {s: 4, i: 4, blank: {answer: controlled, options: [controlled, overdue, printed, uneven]}}
+- {s: 4, i: 5, d1: "지금은 떨림이 없어서 진정제를 그대로 두고 있어요."}
+# --- S5 지속 심전도·혈역학 감시
+- {s: 5, i: 0, d1: "지속 심전도와 동맥 모니터링 값을 차트에 남기세요.", blank: {answer: arterial, options: [arterial, urinary, dietary, dental]}}
+- {s: 5, i: 1, d1: "리듬이나 혈압 경보를 켜세요.", d2: "리듬 변화나 혈압 하강 기준을 보세요.", blank: {answer: rhythm, options: [rhythm, diet, staffing, parking]}}
+- {s: 5, i: 3, blank: {answer: rhythm, options: [rhythm, mood, diet, skin]}}
+- s: 5
+  i: 4
+  en: "Blood pressure dropped a bit, so I titrated the pressor up per the order."
+  ko: "혈압이 조금 떨어져서 처방 범위 안에서 승압제를 올렸어요."
+  chunks: ["Blood pressure dropped", "a bit", ", so I titrated", "the pressor up", "per the order", "."]
+  words: [w-bloodpressure, w-drop, w-pressor, w-titrate]
+  tag: "조치 보고"
+  icon: pill
+  why: "per the order를 붙이면 처방된 범위 안에서 조절했다는 뜻이라 독단으로 올린 것처럼 들리지 않아요. so로 원인(혈압 하락)과 이미 한 조치를 이어 보고해요."
+  decoy: ", so I rechecked"
+  d1: "혈압이 조금 떨어져서 처방 범위 안에서 승압제를 살폈어요."
+  d2: "혈압이 조금 떨어져서 처방 범위 안에서 라인 높이를 맞췄어요."
+  blank: {answer: pressor, options: [bed, alarm, pressor, monitor]}
+- {s: 5, i: 5, d1: "응급카트와 제세동기 모두 전원이 연결돼 있어요.", blank: {answer: defibrillator, options: [defibrillator, wheelchair, scale, commode]}}
+# --- S6 TTM 냉각 유도·유지 관리
+- s: 6
+  i: 1
+  ko: "도달하면 체온을 좁은 범위에서 엄격하게 유지합니다."
+  d1: "도달하면 혈당을 좁은 범위에서 엄격하게 유지합니다."
+  d2: "도달하면 체온을 좁은 범위에서 엄격하게 지켜봅니다."
+  blank: {answer: temperature, options: [temperature, supply, staffing, lighting]}
+- {s: 6, i: 2, why: "below를 붙여 방향을 못 박아야 '목표를 넘어 더 차가워지는 것'을 막는 지시가 돼요. overshooting만으로는 어느 쪽으로 넘는지 모호해요."}
+- {s: 6, i: 3, blank: {answer: patient, options: [patient, late, seated, quiet]}, decoy: ", so let's regroup"}
+- {s: 6, i: 4, chunks: ["Once we hit", "target", ", I'll switch", "to maintenance mode", "."], d1: "목표에 도달하면 시각을 적어 둘게요.", d2: "목표에 도달하면 체온을 한 번 더 볼게요.", blank: {answer: maintenance, options: [maintenance, night, demo, training]}}
+- {s: 6, i: 5, chunks: ["Temperature", "is steady", "within range", "for the last two hours", "."], blank: {answer: range, options: [range, budget, view, reach]}}

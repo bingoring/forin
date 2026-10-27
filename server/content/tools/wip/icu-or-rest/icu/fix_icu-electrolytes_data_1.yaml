@@ -1,0 +1,152 @@
+# icu-electrolytes 문장 수정. s=상황 번호, i=문장 번호(0부터). d1/d2=distractorsKo 첫째/둘째만, dko=둘 다.
+sent:
+# --- S1 정맥 보충 안전 투여
+- {s: 1, i: 0, blank: {answer: concentration, options: [concentration, distance, temperature, height]}}
+- s: 1
+  i: 4
+  en: "She might feel a little burning in her arm — tell me right away so I can slow it and check the site."
+  ko: "팔이 약간 따끔할 수 있어요 — 바로 말씀해 주시면 속도를 늦추고 주사 부위를 볼게요."
+  chunks: ["She might feel", "a little burning", "in her arm", "— tell me right away", "so I can slow it", "and check the site", "."]
+  words: [w-feel, w-burn, w-arm, w-check, w-site]
+  tag: "증상 안내"
+  icon: faceWorried
+  why: "'tell me right away'를 덧붙이면 따끔거림이 흔해도 붓기·붉어짐·심한 통증이 혈관 밖 누출의 신호일 수 있어 바로 알려 달라는 뜻이 전해져요."
+  decoy: "the bed rail"
+  dko: ["다리가 약간 따끔할 수 있어요 — 바로 말씀해 주시면 속도를 늦추고 주사 부위를 볼게요.", "팔이 약간 따뜻할 수 있어요 — 바로 말씀해 주시면 속도를 늦추고 주사 부위를 볼게요."]
+  blank: {answer: burning, options: [burning, cooling, shaking, drooping]}
+# --- S2
+- {s: 2, i: 5, decoy: "a lab sticker"}
+# --- S4
+- {s: 4, i: 5, blank: {answer: result, options: [result, bill, tray, visitor]}}
+# --- S6
+- {s: 6, i: 5, d1: "제가 혈당 재는 동안 투석 오더 다시 확인해 주시겠어요?", d2: "제가 인슐린 미는 동안 투석 카테터 준비해 주시겠어요?"}
+# --- S7
+- {s: 7, i: 1, blank: {answer: magnesium, options: [magnesium, calcium, iron, zinc]}}
+- {s: 7, i: 2, d2: "둘 다 보충해야 리듬이 다시 안정됩니다."}
+- s: 7
+  i: 5
+  ko: "두 수치가 정상화될 때까지 지속 텔레메트리 유지해 주세요."
+  dko: ["세 수치가 정상화될 때까지 지속 텔레메트리 유지해 주세요.", "두 수치가 정상화된 뒤에도 지속 텔레메트리 유지해 주세요."]
+# --- S8
+- s: 8
+  i: 1
+  d1: "24시간 동안 상승 폭을 제한해야 뇌를 지킬 수 있습니다."
+  blank: {answer: rise, options: [rise, fall, bill, noise]}
+- {s: 8, i: 2, d1: "나트륨 자주 재검하고 결과 공유하겠습니다.", d2: "나트륨을 자주 재검해야 속도를 안전하게 맞춥니다."}
+- s: 8
+  i: 3
+  en: "Correct it slowly — no more than eight to ten mEq/L over twenty-four hours."
+  ko: "천천히 교정합니다 — 24시간에 8에서 10mEq/L를 넘지 않게요."
+  chunks: ["Correct it slowly", "— no more than", "eight to ten mEq/L", "over twenty-four hours", "."]
+  dko: ["천천히 측정합니다 — 24시간에 8에서 10mEq/L를 넘지 않게요.", "천천히 기록합니다 — 24시간에 8에서 10mEq/L를 넘지 않게요."]
+- {s: 8, i: 5, d1: "펌프 속도 맞추고 4시간 뒤 값을 팀에 전하겠습니다.", d2: "펌프 속도 맞추기 전에 이중 확인 받겠습니다."}
+# --- S9
+- {s: 9, i: 2, d1: "경로 정하려고 삼킴 상태부터 확인하겠습니다.", d2: "경로 정하고 재검 시간표를 차트에 남기겠습니다."}
+- s: 9
+  i: 5
+  ko: "교정하는 동안 4~6시간마다 나트륨 재검해 주세요."
+  chunks: ["Recheck", "a sodium", "every four to six hours", "while we correct", "."]
+  dko: ["교정 중 4~6시간마다 재검해야 뇌부종을 막을 수 있어요.", "4~6시간마다 재검 결과를 의사에게 보고합니다."]
+# --- S10
+- {s: 10, i: 1, d1: "마그네슘 보충하고 QT 연장 약물은 약사와 검토하겠습니다.", d2: "마그네슘 보충하고 QT 연장 약물 목록 뽑겠습니다."}
+- s: 10
+  i: 4
+  en: "Check if she's on any antiarrhythmics that prolong the QT further."
+  chunks: ["Check if she's on", "any antiarrhythmics", "that prolong", "the QT further", "."]
+  words: [w-check, w-antiarrhythmic, w-prolong, w-QT, w-further]
+  why: "'Check if'는 있는지 없는지 확인해 달라는 요청이에요. 'prolong the QT further'는 이미 늘어난 QT를 더 늘린다는 뜻이에요."
+  dko: ["QT를 더 늘리는 항부정맥제가 있으면 바로 알려 주세요.", "QT를 더 늘리는 항부정맥제 목록을 약사에게 받아 주세요."]
+  blank: {answer: prolong, options: [prolong, wrap, tie, cut]}
+- {s: 10, i: 5, blank: {answer: draw, options: [draw, dry, wipe, tear]}}
+# --- S11
+- {s: 11, i: 2, d2: "신중하게 보충하고 증상은 차트에 적겠습니다."}
+# --- S12
+- {s: 12, i: 3, blank: {answer: tidal, options: [tidal, gastric, urine, plasma]}}
+- {s: 12, i: 4, decoy: "the lab sheet", blank: {answer: replacing, options: [replacing, measuring, charting, counting]}}
+# --- S13
+- {s: 13, i: 1, d2: "영양은 천천히 늘리고 전해질부터 채혈합니다."}
+- {s: 13, i: 2, d1: "영양 시작하면서 검사 결과를 담당의에게 넘기겠습니다.", d2: "영양 시작하기 전에 검사 수치 먼저 확인하겠습니다."}
+- {s: 13, i: 4, d1: "속도 올리기 전에 인산, 칼륨, 마그네슘 채혈하고 있습니다.", d2: "속도 올리기 전에 인산, 칼륨, 마그네슘 값을 팀에 공유합니다."}
+- s: 13
+  i: 5
+  chunks: ["Keep the calorie goal", "low", "for the first", "couple of days", "."]
+  dko: ["첫 며칠 칼로리 목표는 영양사와 정하겠습니다.", "칼로리를 낮게 두면 재영양 위험이 줄어요."]
+# --- S14
+- {s: 14, i: 1, d1: "적극적인 수액 확보하고 저칼슘 여부를 보고하겠습니다.", d2: "적극적인 수액은 요산을 씻어 내 콩팥을 지켜요."}
+- {s: 14, i: 2, d1: "검사 유심히 모니터하고 신장내과를 일찍 참여시키겠습니다.", d2: "검사를 유심히 봐야 문제를 일찍 잡을 수 있습니다."}
+- s: 14
+  i: 3
+  chunks: ["He started chemo", "yesterday", "for a high", "tumor burden", "."]
+  words: [w-start, w-chemo, w-high, w-tumor, w-burden]
+  blank: {answer: chemo, options: [chemo, dialysis, surgery, antibiotics]}
+- {s: 14, i: 5, d1: "재검 채혈 시각을 4시간 단위로 정해 둘게요.", d2: "안정될 때까지 재검 수치는 전공의에게 전하겠습니다."}
+# --- S15
+- {s: 15, i: 0, blank: {answer: sine, options: [sine, square, triangle, round]}}
+- s: 15
+  i: 3
+  en: "Push the calcium gluconate slowly over a few minutes — don't wait for the pump."
+  ko: "글루콘산칼슘을 몇 분에 걸쳐 천천히 미세요 — 펌프 기다리지 마세요."
+  chunks: ["Push the calcium gluconate", "slowly", "over a few minutes", "— don't wait", "for the pump", "."]
+  words: [w-push, w-calcium, w-slow, w-wait, w-pump]
+  why: "'don't wait for'는 기다리면 안 된다는 직접 지시예요. 응급이라 펌프를 기다리지 않지만 글루콘산칼슘도 2~5분에 걸쳐 밀어요 — 너무 빠르면 서맥·저혈압이 와요. 말초로도 줄 수 있고, 중심 라인이 꼭 필요한 것은 조직 손상이 큰 염화칼슘이에요."
+  dko: ["글루콘산칼슘을 몇 분에 걸쳐 천천히 미세요 — 알람 기다리지 마세요.", "글루콘산칼슘을 몇 분에 걸쳐 천천히 미세요 — 펌프는 제가 가져올게요."]
+- {s: 15, i: 4, d1: "코드 카트는 심정지에 대비하려고 가져왔어요.", d2: "혹시 몰라 코드 카트 병실 입구에 가져다 놨습니다."}
+- {s: 15, i: 5, d1: "신장내과는 투석 카테터를 넣으려고 부르는 거예요.", d2: "신장내과가 오면 카테터 위치를 상의해 주세요."}
+# --- S16
+- s: 16
+  i: 4
+  en: "Give the hundred-mL bolus of three percent saline over ten minutes, per the order."
+  ko: "오더대로 3% 식염수 100mL 볼루스를 10분에 걸쳐 주세요."
+  chunks: ["Give the hundred-mL bolus", "of three percent saline", "over ten minutes", ", per the order", "."]
+  words: [w-give, w-percent, w-saline, w-order]
+  tag: "볼루스 투여"
+  why: "16.1의 'per protocol'을 이어받아 오더를 확인한 볼루스라고 말하고 'over ten minutes'로 속도를 분명히 해요. 경련이 계속되면 같은 용량을 반복하고, 목표는 처음 몇 시간에 4~6 올리는 것까지예요."
+  decoy: "the saline bag"
+  dko: ["오더대로 3% 식염수 100mL 볼루스를 꺼내 오세요.", "오더대로 3% 식염수 100mL 볼루스가 경련을 멈춰 줘요."]
+  blank: {answer: Give, options: [Give, Record, Count, Weigh]}
+# --- S17
+- {s: 17, i: 2, d2: "팀을 급히 참여시켜야 나트륨을 다시 내릴 수 있습니다."}
+- s: 17
+  i: 3
+  chunks: ["His sodium", "went up", "twelve points", "in the last ten hours", "."]
+  words: [w-sodium]
+- {s: 17, i: 5, d1: "신경과와 신장내과는 재교정 때문에 부릅니다.", d2: "신경과와 신장내과가 오면 변화를 보고하겠습니다."}
+# --- S18
+- {s: 18, i: 0, dko: ["토르사드입니다 — 지금 마그네슘 가져올게요.", "토르사드입니다 — 정맥 마그네슘이 이 리듬을 끊어요."], blank: {answer: Torsades, options: [Torsades, telemetry, triage, protocol]}}
+- s: 18
+  i: 1
+  ko: "제세동기 준비하고 도움을 요청하겠습니다."
+  words: [w-defibrillator, w-ready, w-call]
+  dko: ["제세동기는 맥박이 없어지면 바로 씁니다.", "도움을 부르면 코드 팀이 곧바로 와요."]
+- {s: 18, i: 2, blank: {answer: correct, options: [correct, summarize, translate, reprint]}}
+- s: 18
+  i: 4
+  en: "Give two grams of magnesium over fifteen minutes — he still has a pulse."
+  ko: "마그네슘 2그램을 15분에 걸쳐 주세요 — 아직 맥박이 있어요."
+  chunks: ["Give two grams", "of magnesium", "over fifteen minutes", "— he still has", "a pulse", "."]
+  words: [w-give, w-gram, w-magnesium]
+  why: "'over fifteen minutes'로 속도를 분명히 말하고 'he still has a pulse'로 왜 이 속도인지 이유를 붙여요. 맥박이 있으면 몇 분~십여 분에 걸쳐 주고(병원 프로토콜마다 5~60분), 맥박이 없으면 제세동과 함께 1~2분 push로 바꿔요."
+  decoy: "the second vial"
+  dko: ["마그네슘 2그램을 15분에 걸쳐 주기 전에 맥박을 보세요.", "마그네슘 2그램이 토르사드를 끊어 줘요 — 아직 맥박이 있어요."]
+  blank: {answer: pulse, options: [pulse, fever, cough, rash]}
+- s: 18
+  i: 5
+  ko: "침상 곁에 계속 있어 주세요 — 빠르게 재발할 수 있습니다."
+  dko: ["침상 곁에 계속 있어 주세요 — 빠르게 퍼질 수 있습니다.", "침상 곁에 계속 있어 주세요 — 밤사이 재발할 수 있습니다."]
+# --- S19
+- s: 19
+  i: 1
+  ko: "지금 정맥 칼슘 주고 기도를 보호하세요."
+  dko: ["정맥 칼슘이 후두경련을 풀어 기도를 지켜요.", "칼슘이 들어가면 기도를 다시 봐 주세요."]
+- {s: 19, i: 2, d1: "심장 모니터하고 이온화칼슘 결과 알리겠습니다.", d2: "칼슘은 심장 리듬을 바꿔서 모니터합니다."}
+- {s: 19, i: 3, d1: "공기 이동이 잘 안 되고 가래 소리가 심해지고 있습니다."}
+- s: 19
+  i: 5
+  why: "'slowly'와 'through the central line'을 함께 말해 속도와 경로를 한 번에 지시해요. 빠른 칼슘은 정맥과 심장에 부담이 돼요. 글루콘산칼슘은 말초로도 줄 수 있고, 중심 라인이 꼭 필요한 것은 조직 손상이 큰 염화칼슘이에요."
+  dko: ["글루콘산칼슘 밀기 전에 역류를 보세요.", "중심 라인은 칼슘이 새는 걸 막아 줘요."]
+# --- S20
+- {s: 20, i: 1, d1: "칼륨부터 치료하는 이유는 심장을 멈출 수 있어서예요.", d2: "가장 생명을 위협하는 것을 찾으려고 패널을 보겠습니다."}
+- {s: 20, i: 2, d1: "중환자전담의에게 에스컬레이션해야 투석이 결정됩니다.", d2: "중환자전담의에게 에스컬레이션하고 투석실에 알려야 합니다."}
+- s: 20
+  i: 5
+  chunks: ["Let's make", "a list", "and tackle them", "in order of danger", "."]

@@ -226,7 +226,8 @@ changes:
   fields:
   - en
   - ipa
-  why: 복수형(antiarrhythmics)을 단수 원형으로
+  - example
+  why: 복수형(antiarrhythmics)을 단수 원형으로 / 이 단어를 예문으로 쓰던 문장을 바꾼 검토 반영에 맞춰 예문을 바꿈
 - kind: word
   id: w-gram
   fields:
@@ -245,7 +246,8 @@ changes:
   fields:
   - en
   - ipa
-  why: 활용형(tingling)을 원형으로
+  - ko
+  why: 활용형(tingling)을 원형으로 / 헤드워드는 동사인데 ko '저림'은 명사 — '저리다'로
 - kind: word
   id: w-suspect
   fields:
@@ -353,7 +355,7 @@ changes:
   id: w-danger
   fields:
   - ko
-  why: ko '위험'이 w-risk와 같아 정답이 둘이 된다 — 가름
+  why: ko '위험'이 w-risk와 같아 정답이 둘이 된다 — 가름 / ko '위험도'가 w-risk '위험성'과 한국어로 거의 같음 — '위급한 정도'로 가름(20.5 in order of danger)
 - kind: word
   id: w-call
   fields:
@@ -367,8 +369,10 @@ changes:
 - kind: word
   id: w-bring
   fields:
+  - en
+  - ipa
   - ko
-  why: '''bring down the uric acid''(요산을 낮추다) 한 문장에서만 쓰여 ko를 구 뜻에 맞춤'
+  why: '''bring down the uric acid''(요산을 낮추다) 한 문장에서만 쓰여 ko를 구 뜻에 맞춤 / ko ''(수치를) 낮추다''는 bring 혼자의 뜻이 아니라 문장의 bring down 전체 뜻 — 헤드워드를 구(bring down)로. ipa·cue도 맞춤'
 - kind: word-remove
   id: w-away
   why: 간호사가 이미 아는 쉬운 말·기능어이거나 가르칠 값이 없다 — 어느 문장도 태그하지 않게 됐다
@@ -565,8 +569,11 @@ changes:
   situation: 저나트륨 교정 속도 관리
   index: 3
   fields:
+  - en
+  - ko
+  - chunks
   - words
-  why: 너무 쉬운 말 태그를 뺌 — 문장은 그대로
+  why: 너무 쉬운 말 태그를 뺌 — 문장은 그대로 / 'eight to ten'에 단위가 없음 — mEq/L를 붙임
 - kind: sentence
   situation: 저나트륨 교정 속도 관리
   index: 5
@@ -589,8 +596,10 @@ changes:
   situation: 고나트륨 자유수 결핍 교정
   index: 5
   fields:
+  - ko
+  - chunks
   - words
-  why: 너무 쉬운 말 태그를 뺌 — 문장은 그대로
+  why: 너무 쉬운 말 태그를 뺌 — 문장은 그대로 / en은 명령형(Recheck)인데 ko가 1인칭 — '재검해 주세요'. 끊긴 chunks(every four to six / hours)를 한 조각으로
 - kind: sentence
   situation: 저·고칼슘 증상 관리
   index: 4
@@ -613,8 +622,9 @@ changes:
   situation: 재영양증후군 예방 감시
   index: 5
   fields:
+  - chunks
   - words
-  why: 너무 쉬운 말 태그를 뺌 — 문장은 그대로
+  why: 너무 쉬운 말 태그를 뺌 — 문장은 그대로 / 끊긴 chunks(for the first couple / of days)를 구 단위로
 - kind: sentence
   situation: 종양용해증후군 대사 관리
   index: 5
@@ -631,14 +641,20 @@ changes:
   situation: 생명위협 고칼륨혈증 위기
   index: 3
   fields:
+  - en
+  - ko
+  - chunks
   - words
-  why: 너무 쉬운 말 태그를 뺌 — 문장은 그대로
+  why: 너무 쉬운 말 태그를 뺌 — 문장은 그대로 / 글루콘산칼슘 push에 속도가 없어 "칼슘은 push"로만 외워짐(안전) — 몇 분에 걸쳐 천천히
 - kind: sentence
   situation: 급격 저나트륨 경련 위기
   index: 4
   fields:
+  - en
+  - ko
+  - chunks
   - words
-  why: 너무 쉬운 말 태그를 뺌 — 문장은 그대로
+  why: 너무 쉬운 말 태그를 뺌 — 문장은 그대로 / 3% 식염수 100mL는 보통 10분에 걸친 볼루스이고 처방·프로토콜 맥락이 없으면 간호사 단독 지시로 읽힘(안전) — 동사 push를 give로, over ten minutes, per the order. w-push 태그를 뺌
 - kind: sentence
   situation: 급격 저나트륨 경련 위기
   index: 5
@@ -649,8 +665,9 @@ changes:
   situation: 삼투성 탈수초증 위기
   index: 3
   fields:
+  - chunks
   - words
-  why: 너무 쉬운 말 태그를 뺌 — 문장은 그대로
+  why: 너무 쉬운 말 태그를 뺌 — 문장은 그대로 / twelve points(단위)는 w-point(ko 가리키다)와 뜻이 다름 — w-point 태그를 뺌, 끊긴 chunks(in the last ten / hours)를 한 조각으로
 - kind: sentence
   situation: 삼투성 탈수초증 위기
   index: 4
@@ -685,17 +702,116 @@ changes:
   situation: 심한 저마그네슘 TdP 위기
   index: 4
   fields:
+  - en
+  - ko
+  - chunks
   - words
-  why: 너무 쉬운 말 태그를 뺌 — 문장은 그대로
+  why: 너무 쉬운 말 태그를 뺌 — 문장은 그대로 / 1~2분 push는 맥박이 없는 토르사드의 용법인데 이 장면은 맥박이 있음(안전) — 15분에 걸쳐, he still has a pulse. w-push 태그를 뺌
 - kind: sentence
   situation: 저칼슘 후두경련·발작 위기
   index: 1
   fields:
+  - ko
   - words
-  why: 너무 쉬운 말 태그를 뺌 — 문장은 그대로
+  why: 너무 쉬운 말 태그를 뺌 — 문장은 그대로 / en은 명령형(Give … and protect)인데 ko가 1인칭 — '주고 보호하세요'
 - kind: sentence
   situation: 다중 전해질 붕괴 다장기 위기
   index: 3
   fields:
   - words
   why: 너무 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: word
+  id: w-feel
+  fields:
+  - example
+  why: 이 단어를 예문으로 쓰던 문장을 바꾼 검토 반영에 맞춰 예문을 바꿈
+- kind: word
+  id: w-burn
+  fields:
+  - example
+  why: 이 단어를 예문으로 쓰던 문장을 바꾼 검토 반영에 맞춰 예문을 바꿈
+- kind: word
+  id: w-arm
+  fields:
+  - example
+  why: 이 단어를 예문으로 쓰던 문장을 바꾼 검토 반영에 맞춰 예문을 바꿈
+- kind: word
+  id: w-normal
+  fields:
+  - example
+  why: 이 단어를 예문으로 쓰던 문장을 바꾼 검토 반영에 맞춰 예문을 바꿈
+- kind: word
+  id: w-medicine
+  fields:
+  - example
+  why: 이 단어를 예문으로 쓰던 문장을 바꾼 검토 반영에 맞춰 예문을 바꿈
+- kind: word
+  id: w-further
+  fields:
+  - example
+  why: 이 단어를 예문으로 쓰던 문장을 바꾼 검토 반영에 맞춰 예문을 바꿈
+- kind: word
+  id: w-wait
+  fields:
+  - example
+  why: 이 단어를 예문으로 쓰던 문장을 바꾼 검토 반영에 맞춰 예문을 바꿈
+- kind: word
+  id: w-percent
+  fields:
+  - example
+  why: 이 단어를 예문으로 쓰던 문장을 바꾼 검토 반영에 맞춰 예문을 바꿈
+- kind: word-remove
+  id: w-stretch
+  why: 10.4를 임상에서 쓰는 prolong으로 고치며(stretch the QT → prolong the QT) 어느 문장도 태그하지 않게 됨
+- kind: word-remove
+  id: w-yesterday
+  why: today와 같은 급의 쉬운 말(공통 쉬운 단어 목록과 같은 기준) — 14.3 문장은 그대로 두고 태그만 뺌
+- kind: sentence
+  situation: 정맥 보충 안전 투여
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: '"that''s normal"로 끝내면 침윤·혈관 밖 누출·정맥염 신호를 가족이 알리지 않음(안전) — 따끔거리면 바로 알려 달라는 말로. w-normal·w-medicine·w-slow 태그를 뺌'
+- kind: sentence
+  situation: 저칼륨혈증 보충·부정맥 예방
+  index: 5
+  fields:
+  - ko
+  why: en은 명령형(Keep)인데 ko가 1인칭 — '유지해 주세요'
+- kind: sentence
+  situation: 저마그네슘·부정맥 연계
+  index: 4
+  fields:
+  - en
+  - chunks
+  - words
+  why: 임상에서는 QT를 stretch가 아니라 prolong한다 — prolong. w-stretch를 w-prolong으로
+- kind: sentence
+  situation: 종양용해증후군 대사 관리
+  index: 3
+  fields:
+  - chunks
+  - words
+  why: w-yesterday는 쉬운 말이라 태그를 뺌, 복합명사 tumor burden이 끊긴 chunks를 바로잡음
+- kind: sentence
+  situation: 심한 저마그네슘 TdP 위기
+  index: 1
+  fields:
+  - ko
+  - words
+  why: ko '응원 요청'은 cheering으로 읽힘 — '도움을 요청'. call for help는 명사라 w-help 태그를 뺌
+- kind: sentence
+  situation: 심한 저마그네슘 TdP 위기
+  index: 5
+  fields:
+  - ko
+  why: en은 명령형(Stay)인데 ko가 1인칭 '있겠습니다' — '있어 주세요'
+- kind: sentence
+  situation: 다중 전해질 붕괴 다장기 위기
+  index: 5
+  fields:
+  - chunks
+  why: 끊긴 chunks(in order / of danger)를 구 단위로

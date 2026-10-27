@@ -1,0 +1,81 @@
+# icu-post-arrest 검토 반영 — 문장 S14~S20
+sent:
+# --- S14 신경학적 예후 검사 준비
+- {s: 14, i: 1, d2: "신경학적 진찰, 영상검사, 뇌파 일정을 알립시다."}
+- {s: 14, i: 2, blank: {answer: outcome, options: [outcome, costs, schedule, discharge]}}
+- {s: 14, i: 4, words: [w-imaging, w-neuroexam, w-follow], blank: {answer: scheduled, options: [scheduled, canceled, forgotten, billed]}}
+# --- S15 재정지 즉각 소생
+- {s: 15, i: 0, d2: "심실세동이고 맥박이 사라졌어요. 압박하는 동안 패드를 붙이세요.", blank: {answer: pulse, options: [pulse, IV, voice, color]}}
+- {s: 15, i: 1, d1: "제세동기를 충전하는 동안 압박을 계속하세요.", decoy: "the ventilator", blank: {answer: defibrillator, options: [pacemaker, ventilator, pump, defibrillator]}}
+- {s: 15, i: 2, d1: "코드를 부르고 응급카트를 신속히 가져오세요."}
+- {s: 15, i: 5, d2: "역할을 배정했어요. 당신은 압박, 2분마다 교대할게요.", blank: {answer: assigned, options: [assigned, printed, erased, forgotten]}}
+# --- S16 재가온 중 혈압 붕괴 위기
+- {s: 16, i: 1, d1: "수액을 빠르게 주입하고 지금 의사를 호출합시다.", d2: "수액을 빠르게 주입하고 지금 승압제를 올립시다.", blank: {answer: bolus, options: [bolus, chart, tally, scan]}}
+- {s: 16, i: 2, d1: "재가온을 늦추기 전에 혈압을 재세요.", d2: "재가온 속도를 늦춘 뒤 15분마다 혈압을 재세요.", blank: {answer: stabilize, options: [stabilize, weigh, photograph, sterilize]}}
+- {s: 16, i: 4, d1: "혈압을 지켜보면서 두 번째 수액 볼루스를 적고 있어요.", decoy: "to the chart", blank: {answer: bolus, options: [bolus, label, sample, survey]}}
+- {s: 16, i: 5, d1: "혈압이 안정될 때까지 15분마다 잽시다.", d2: "재가온 속도를 늦추기 전에 팀에 혈압을 알립시다."}
+# --- S17 냉각 중 부정맥 위기
+- {s: 17, i: 1, d1: "부정맥을 처치하면서 제세동 패드를 붙여 둡시다.", d2: "부정맥을 처치하는 동안 심전도도 찍읍시다.", blank: {answer: arrhythmia, options: [arrhythmia, rash, seizure, infection]}}
+- {s: 17, i: 3, d1: "리듬이 심실빈맥으로 바뀌어서 제세동 패드를 붙였어요.", d2: "리듬이 심실빈맥으로 바뀐 지 10분째인데 혈압도 떨어지고 있어요.", blank: {answer: pressure, options: [pressure, oxygen, urine, appetite]}}
+- {s: 17, i: 4, d1: "부정맥이 가라앉는지 보려고 12유도 심전도를 찍고 있어요.", blank: {answer: arrhythmia, options: [seizure, cough, arrhythmia, pain]}}
+- {s: 17, i: 5, blank: {answer: target, options: [alarm, bed, lights, target]}}
+# --- S18 신경학적 예후 불량 가족 상담
+- {s: 18, i: 1, d1: "검사 결과는 의미 있는 대화 가능성이 낮음을 가리켜요."}
+- {s: 18, i: 2, d1: "그분이 자신의 치료에 대해 무엇을 꺼렸을지 이야기해 봅시다."}
+- {s: 18, i: 3, blank: {answer: know, options: [know, doubt, hope, deny]}}
+- s: 18
+  i: 4
+  en: "We won't rush that answer, but so far the signs are not good."
+  ko: "그 답을 서두르지는 않겠지만, 지금까지 보이는 징후는 좋지 않아요."
+  chunks: ["We won't rush", "that answer", ", but so far", "the signs", "are not good", "."]
+  words: [w-rush, w-answer]
+  tag: "솔직한 답"
+  icon: shield
+  why: "but 앞뒤로 '서두르지 않겠다'는 약속과 '지금까지의 징후는 좋지 않다'는 사실을 함께 말해, 헛된 희망을 주지 않고 정직하게 전해요."
+  decoy: "that schedule"
+  d1: "그 답을 서두르지는 않겠지만, 지금까지 보이는 징후는 많지 않아요."
+  d2: "그 일정을 서두르지는 않겠지만, 지금까지 보이는 징후는 좋지 않아요."
+  blank: {answer: answer, options: [answer, visit, meal, plan]}
+- s: 18
+  i: 5
+  en: "We'll keep caring for him, and we won't promise more than we know."
+  ko: "그분을 계속 돌볼 거고, 아는 것보다 더 많이 약속하지는 않을게요."
+  chunks: ["We'll keep caring", "for him", ", and we won't promise", "more than", "we know", "."]
+  words: [w-promise]
+  tag: "정직한 약속"
+  icon: handshake2
+  why: "keep caring으로 곁에 있겠다는 약속을 먼저 하고, not more than we know로 확신 없는 것은 약속하지 않는다고 균형을 잡아요."
+  decoy: ", and we won't hide"
+  d1: "그분을 계속 돌볼 거고, 아는 것보다 더 많이 숨기지는 않을게요."
+  d2: "그분을 계속 돌볼 거고, 아는 것보다 더 많이 알리지는 않을게요."
+  blank: {answer: promise, options: [promise, charge, bill, sell]}
+- s: 18
+  i: 6
+  en: "Can you tell me what matters most to him, so we can honor that?"
+  chunks: ["Can you tell me", "what matters most", "to him", ", so we can honor that", "?"]
+  d1: "그분에게 무엇이 가장 힘든지 말씀해 주시면 그걸 존중할게요."
+  blank: {answer: honor, options: [honor, doubt, fix, blame]}
+# --- S19 뇌사 진행 평가 연계
+- {s: 19, i: 1, d1: "프로토콜대로 공식 뇌사 검사 전에 체온을 재 봅시다."}
+- {s: 19, i: 2, d1: "장기기증기관 연락 기준을 먼저 확인할게요."}
+- {s: 19, i: 4, d2: "뇌사가 확인되면 알릴 사람을 먼저 정합니다.", decoy: "Once the chaplain arrives"}
+- {s: 19, i: 5, blank: {answer: carefully, options: [carefully, loudly, hastily, rudely]}}
+# --- S20 연명과 중단 윤리 갈등
+- {s: 20, i: 0, d2: "형제분들께 몹시 힘든 결정이라는 걸 알겠어요.", blank: {answer: hard, options: [urgent, hard, easy, sudden]}}
+- {s: 20, i: 1, d2: "그분 자신이 무엇을 말했을지에 집중합시다."}
+- {s: 20, i: 2, blank: {answer: ethics, options: [ethics, security, billing, laundry]}}
+- {s: 20, i: 3, blank: {answer: love, options: [love, blame, doubt, fear]}}
+- s: 20
+  i: 4
+  en: "You don't have to choose alone, and we'll support your family through this decision."
+  ko: "혼자 고르지 않으셔도 돼요. 이 결정을 내리는 동안 저희가 가족분들 곁에 있을게요."
+  chunks: ["You don't have to", "choose alone", ", and we'll support", "your family", "through this decision", "."]
+  words: [w-choose, w-support, w-decision]
+  tag: "곁에 있기"
+  icon: handshake2
+  why: "You don't have to ~로 혼자 짊어지지 않아도 된다고 부담을 덜어 주고, we'll support ~ through로 결정을 대신하지 않고 곁에서 돕겠다고 약속해요."
+  decoy: ", and we'll decide for"
+  d1: "혼자 고르지 않으셔도 돼요. 이 결정을 내리는 동안 저희가 환자분 곁에 있을게요."
+  d2: "혼자 고르지 않으셔도 돼요. 이 일정을 정하는 동안 저희가 가족분들 곁에 있을게요."
+  blank: {answer: decision, options: [decision, meal, visit, room]}
+- {s: 20, i: 5, words: [w-ethics, w-team], blank: {answer: ethics, options: [ethics, catering, laundry, parking]}}
