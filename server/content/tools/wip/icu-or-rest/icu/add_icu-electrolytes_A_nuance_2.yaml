@@ -1,0 +1,207 @@
+- situation: "고나트륨 자유수 결핍 교정"
+  items:
+    - kind: slider
+      words: [w-water, w-route]
+      cue: "Colleague: \"Sodium 152, dry mouth, drinking poorly, but his gut works. What do we give?\""
+      scale: [a hypertonic saline bolus right now, strict NPO with no fluids at all, free water by mouth or tube]
+      answerAt: 2
+      why: "장이 기능하면 경구나 튜브로 유리수분(free water)을 주는 것이 가장 안전한 보충이에요. 고장성 식염수는 나트륨을 더 올리고, 수분을 아예 끊으면 결핍이 더 깊어져요. 정맥으로 줄 때는 D5W를 써요."
+      example: "We replace free water by mouth or by tube."
+      exKo: "유리수분은 경구나 튜브로 보충해요."
+    - kind: context
+      words: [w-deficit]
+      word: deficit
+      ko: 결핍
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "Free water deficit is estimated at about three liters.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Can you help me calculate the deficit?", ok: true}
+        - {who: 보호자에게, icon: me, en: "Her total body water deficit is estimated using a formula adjusted for hypernatremia.", ok: false, fix: "She's low on water, so we'll replace it slowly."}
+      why: "의료진끼리는 deficit을 계산식과 함께 짧게 말해요. 보호자에게는 total body water나 formula 같은 말이 낯설어요. 수분이 모자라서 천천히 채운다는 것만 쉽게 전해요."
+- situation: "저마그네슘·부정맥 연계"
+  items:
+    - kind: pair
+      words: [w-QT, w-magnesium, w-bedside]
+      pairs: [["QT", "prolonging drugs"], ["magnesium", "sulfate"], ["bedside", "monitoring"]]
+      decoys: ["blood sugar"]
+      why: "QT를 늘리는 약(QT-prolonging drugs)은 저마그네슘일 때 토르사드 위험을 더 키워서 검토해요. 정맥 마그네슘은 황산마그네슘(magnesium sulfate)으로 주고, 위험한 동안은 침상 곁 감시(bedside monitoring)를 유지해요."
+    - kind: context
+      words: [w-monitor]
+      word: monitor
+      ko: 모니터링하다
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "She's on the cardiac monitor, no ectopy so far.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Keep her on the monitor, her QT is climbing.", ok: true}
+        - {who: 보호자에게, icon: me, en: "She remains under continuous monitor surveillance with QTc trending given her arrhythmogenic risk.", ok: false, fix: "She's on a heart monitor so we can see any change in her rhythm right away."}
+      why: "의료진끼리는 monitor, QTc, ectopy 같은 말로 상태를 짧게 전해요. 보호자에게는 QTc, arrhythmogenic 같은 말이 겁을 줘요. 심장 리듬을 계속 보고 있다는 것만 쉽게 알려 줘요."
+- situation: "저·고칼슘 증상 관리"
+  items:
+    - kind: slider
+      words: [w-ionize, w-total]
+      cue: "Colleague: \"Total calcium looks low, but the ionized calcium is 1.2 and he has no symptoms.\""
+      scale: [dangerously low, a little low, within the normal range]
+      answerAt: 2
+      why: "총칼슘은 알부민에 붙은 칼슘까지 합친 값이라 단백질이 낮으면 낮게 나와요. 실제로 쓰이는 것은 이온화칼슘이라서, 이온화칼슘이 정상 범위(대략 1.1~1.3 mmol/L)이면 증상이 없을 때 보충하지 않을 수 있어요."
+      example: "The ionized calcium is normal, so we don't need to replace it."
+      exKo: "이온화칼슘이 정상이라 보충하지 않아도 돼요."
+    - kind: context
+      words: [w-symptom]
+      word: symptom
+      ko: 증상
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "Symptom: tingling around the mouth, resolved after the calcium.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Any other symptom of low calcium besides the spasms?", ok: true}
+        - {who: 환자에게, icon: me, en: "Symptomatology includes paresthesia, carpopedal spasm, and QT prolongation, so symptom monitoring continues.", ok: false, fix: "Tingling and cramps are what we're watching for, so tell me if they come back."}
+      why: "의료진끼리는 symptom을 paresthesia, carpopedal spasm 같은 용어로 정확히 말해요. 환자에게는 이런 말이 하나도 와 닿지 않아요. 어떤 느낌을 말해 달라는 것인지 쉬운 말로 알려 줘요."
+- situation: "저인산혈증 관리"
+  items:
+    - kind: pair
+      words: [w-tidal, w-feed, w-wean]
+      pairs: [["tidal", "volume"], ["feeding", "tube"], ["weaning", "trial"]]
+      decoys: ["water bottle"]
+      why: "인산이 낮으면 호흡근이 약해져 일회호흡량(tidal volume)이 작아 보이고, 인공호흡기 이탈 시도(weaning trial)가 잘 안 돼요. 보충은 경관영양 튜브(feeding tube)나 정맥으로 해요."
+    - kind: context
+      words: [w-replace]
+      word: replace
+      ko: 보충하다
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "Phosphate is 1.1, so we're going to replace it through the IV.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Did you replace the phosphate before the wean?", ok: true}
+        - {who: 보호자에게, icon: me, en: "We are performing phosphate replacement enterally and intravenously per the refeeding protocol.", ok: false, fix: "We're giving his phosphate back through the tube and the IV."}
+      why: "의료진끼리는 enterally, intravenously, protocol 같은 말로 경로와 근거를 짧게 말해요. 보호자에게는 이 용어들이 딱딱하게 들려요. 무엇을 어디로 주는지만 쉽게 알려 줘요."
+- situation: "재영양증후군 예방 감시"
+  items:
+    - kind: pair
+      words: [w-malnourish, w-calorie, w-advance]
+      pairs: [["malnourished", "patient"], ["calorie", "goal"], ["advance", "the feeds slowly"]]
+      decoys: ["pain scale"]
+      why: "몇 주 굶은 영양실조 환자(malnourished patient)는 영양을 다시 시작할 때 재영양증후군 위험이 커요. 그래서 처음엔 칼로리 목표(calorie goal)를 낮게 잡고, 전해질을 확인하면서 영양을 천천히 늘려요(advance the feeds slowly)."
+    - kind: context
+      words: [w-risk]
+      word: risk
+      ko: 위험성
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "High refeeding risk: weeks of poor intake.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "What's his risk for refeeding?", ok: true}
+        - {who: 보호자에게, icon: me, en: "He meets the NICE criteria for elevated risk of refeeding syndrome.", ok: false, fix: "He hasn't eaten well for weeks, so feeding him too fast could be risky."}
+      why: "의료진끼리는 risk를 기준(criteria)과 함께 짧게 말해요. 보호자에게는 NICE 기준 같은 말이 와 닿지 않아요. 왜 천천히 시작하는지, 그 이유만 쉽게 알려 줘요."
+- situation: "종양용해증후군 대사 관리"
+  items:
+    - kind: pair
+      words: [w-tumor, w-aggressive, w-uric]
+      pairs: [["tumor", "lysis"], ["aggressive", "hydration"], ["uric", "acid"]]
+      decoys: ["pressure"]
+      why: "항암 후 종양세포가 한꺼번에 터지는 종양용해(tumor lysis)로 칼륨·인산·요산이 오르고 칼슘은 떨어져요. 신장을 지키려고 수액을 적극적으로 주고(aggressive hydration), 요산(uric acid)은 라스부리케이스로 낮춰요."
+    - kind: context
+      words: [w-ensure]
+      word: ensure
+      ko: 확실히 하다
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "I'll ensure aggressive hydration is running before chemo.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Can you ensure the fluids are running before his chemo?", ok: true}
+        - {who: 보호자에게, icon: me, en: "We will ensure euvolemia via aggressive crystalloid resuscitation.", ok: false, fix: "We're making sure he gets plenty of fluids to protect his kidneys."}
+      why: "의료진끼리는 ensure, euvolemia, crystalloid 같은 말로 수액 관리를 짧게 말해요. 보호자에게는 euvolemia, resuscitation이 낯설고 겁을 줘요. 수액으로 신장을 지킨다는 것만 쉽게 알려 줘요."
+- situation: "생명위협 고칼륨혈증 위기"
+  items:
+    - kind: slider
+      words: [w-sine, w-activate]
+      cue: "Colleague: \"There's a sine wave on the monitor and the potassium is 8.0.\""
+      scale: [send a routine lab and wait for it, treat now and prepare dialysis, recheck the potassium in an hour or so]
+      answerAt: 1
+      why: "사인파는 고칼륨이 심정지 직전까지 간 신호예요. 기다리지 않고 바로 정맥 칼슘을 주고 인슐린·포도당을 이어서 쓰며, 칼륨을 빼기 위한 응급 투석을 준비해요."
+      example: "This is life-threatening, so we treat now and prepare dialysis."
+      exKo: "생명이 위태로우니 바로 치료하고 투석을 준비해요."
+    - kind: context
+      words: [w-stabilize]
+      word: stabilize
+      ko: 안정시키다
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "Calcium was given to stabilize the cardiac membrane.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Give the calcium first to stabilize the heart.", ok: true}
+        - {who: 가족에게, icon: me, en: "Calcium is being administered to stabilize the cardiomyocyte resting membrane potential.", ok: false, fix: "We're giving him calcium right now to protect his heart."}
+      why: "의료진끼리는 stabilize를 membrane potential 같은 작용 원리와 짧게 말해요. 가족에게는 cardiomyocyte, resting membrane potential이 낯설어요. 지금 심장을 지키려고 칼슘을 준다는 것만 쉬운 말로 알려 줘요."
+- situation: "급격 저나트륨 경련 위기"
+  items:
+    - kind: pair
+      words: [w-hypertonic, w-hyponatremia, w-seizure]
+      pairs: [["hypertonic", "saline"], ["severe", "hyponatremia"], ["seizure", "protocol"]]
+      decoys: ["heart rate"]
+      why: "저나트륨 때문에 경련이 나면 프로토콜에 따라 고장성 식염수(3%)를 줘서 나트륨을 빨리 조금 올려요. 다만 총 교정 폭은 제한해서 뇌 손상을 막아요."
+    - kind: context
+      words: [w-limit]
+      word: limit
+      ko: 제한하다
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "Correction is limited to eight over twenty-four hours.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "We need to limit the rise on the first day.", ok: true}
+        - {who: 보호자에게, icon: me, en: "We must limit the sodium delta to mitigate iatrogenic osmotic demyelination.", ok: false, fix: "We have to raise his sodium carefully, because too fast could hurt his brain."}
+      why: "의료진끼리는 limit, delta, iatrogenic 같은 말로 교정 한도를 짧게 주고받아요. 보호자에게는 이 단어들이 무섭고 낯설어요. 천천히 올리는 이유가 뇌를 지키기 위해서라고 쉽게 알려 줘요."
+- situation: "삼투성 탈수초증 위기"
+  items:
+    - kind: pair
+      words: [w-slur, w-neurologic, w-relower]
+      pairs: [["slurred", "speech"], ["neurologic", "changes"], ["relower", "the sodium"]]
+      decoys: ["the pulse"]
+      why: "나트륨을 너무 빨리 올린 뒤 말이 어눌해지거나 혼란이 오면 삼투성 탈수초증의 신경학적 변화(neurologic changes)를 의심해요. 유리수분이나 DDAVP로 나트륨을 다시 낮추는 것을 고려하고, 팀에 급히 알려요."
+    - kind: context
+      words: [w-urgent]
+      word: urgent
+      ko: 급하게
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "Neurology was paged urgently for these new changes.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Page neurology urgently, he's more confused.", ok: true}
+        - {who: 보호자에게, icon: me, en: "Neurology has been consulted on an urgent basis given concern for osmotic demyelination.", ok: false, fix: "We've called the brain specialist right away because he's changed, and we want to act fast."}
+      why: "의료진끼리는 urgent consult, urgently paged처럼 급한 정도를 짧게 말해요. 보호자에게는 '긴급 기준으로 자문' 같은 말이 딱딱하고 불안해요. 왜 급한지와 지금 무엇을 하는지만 쉬운 말로 알려 줘요."
+- situation: "심한 저마그네슘 TdP 위기"
+  items:
+    - kind: slider
+      words: [w-torsades, w-defibrillator]
+      cue: "Colleague: \"Torsades on the monitor and he has no pulse.\""
+      scale: [keep watching for a minute, give magnesium only, defibrillate now and call for help]
+      answerAt: 2
+      why: "맥박이 없는 토르사드는 심정지라서 기다리지 않고 바로 제세동하고 도움을 불러요. 마그네슘 정맥 투여는 이와 함께 이어서 하지만 제세동을 대신하지는 못해요."
+      example: "No pulse, so we defibrillate now and call for help."
+      exKo: "맥박이 없으니 바로 제세동하고 도움을 요청해요."
+    - kind: context
+      words: [w-ready]
+      word: ready
+      ko: 준비된
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "The defibrillator is ready and the magnesium is drawn up.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Is the defibrillator ready?", ok: true}
+        - {who: 보호자에게, icon: me, en: "The unit is armed and ready to cardiovert per the ACLS algorithm.", ok: false, fix: "We have the shock machine at his bedside in case his heart rhythm changes."}
+      why: "의료진끼리는 armed, ready, cardiovert 같은 말로 장비 상태를 짧게 말해요. 보호자에게는 ACLS 알고리즘이나 cardiovert가 낯설고 무섭게 들려요. 장비가 곁에 준비돼 있다는 것만 쉽게 알려 줘요."
+- situation: "저칼슘 후두경련·발작 위기"
+  items:
+    - kind: slider
+      words: [w-stridor, w-intubation]
+      cue: "Colleague: \"His stridor is getting louder and the ionized calcium is 0.7.\""
+      scale: [watch him for another hour or so, give IV calcium and prepare to intubate, order a chest x-ray before anything else]
+      answerAt: 1
+      why: "저칼슘으로 후두경련이 오면 기도가 좁아지고 협착음이 심해져요. 정맥 칼슘을 바로 주고, 기도가 막힐 수 있어 삽관 준비를 같이 해요. 한 시간 지켜보거나 영상검사를 먼저 하면 늦어요."
+      example: "We give IV calcium now and keep the airway cart ready."
+      exKo: "지금 정맥 칼슘을 주고 기도 카트를 준비해 둬요."
+    - kind: context
+      words: [w-airway]
+      word: airway
+      ko: 기도
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "The airway cart is at the bedside and his stridor is getting worse.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Protect his airway while I push the calcium.", ok: true}
+        - {who: 보호자에게, icon: me, en: "The airway is compromised by laryngospasm, so we may need to intubate.", ok: false, fix: "His breathing passage is tightening, so we're ready to help him breathe if needed."}
+      why: "의료진끼리는 airway compromise, laryngospasm 같은 말로 상황을 짧게 전해요. 보호자에게는 compromised나 intubate가 무섭고 낯설어요. 숨길이 좁아지고 있고 숨쉬는 것을 돕겠다고 쉬운 말로 알려 줘요."
+- situation: "다중 전해질 붕괴 다장기 위기"
+  items:
+    - kind: pair
+      words: [w-escalate, w-consider, w-tackle]
+      pairs: [["escalate", "to the intensivist"], ["consider", "dialysis"], ["tackle", "the deadliest problem first"]]
+      decoys: ["a blood sample"]
+      why: "여러 이상이 겹치면 혼자 해결하려 하지 않고 중환자전담의에게 에스컬레이션하고(escalate), 신장 지원이 필요한지 투석을 고려해요(consider dialysis). 가장 생명을 위협하는 문제부터 처리해요(tackle first)."
+    - kind: context
+      words: [w-escalate]
+      word: escalate
+      ko: 상급 보고하다
+      scenes:
+        - {who: 중환자전담의에게, icon: stetho, en: "We escalated because three electrolytes are critical and his organs are failing.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Let's escalate now, he's getting worse.", ok: true}
+        - {who: 가족에게, icon: me, en: "We will escalate care to the critical care team for continuous renal replacement.", ok: false, fix: "We're asking our ICU specialist to take a closer look at him right now."}
+      why: "의료진끼리는 escalate를 가장 빠른 보고 방법으로 써요. 가족에게는 escalate care나 continuous renal replacement가 딱딱하고 두려워요. 전문의가 더 가까이에서 살필 거라는 말로 쉽게 전해요."

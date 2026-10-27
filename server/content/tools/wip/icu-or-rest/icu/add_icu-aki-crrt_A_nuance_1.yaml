@@ -1,0 +1,148 @@
+# 상황 순번(0부터) → nuance 목록
+0:
+  - kind: slider
+    words: [w-drop]
+    cue: "Chart: urine output was steady all morning and dipped a little this hour. Creatinine is unchanged."
+    scale: [dipped a little, fell by half, stopped completely]
+    answerAt: 0
+    why: "한 시간 소폭 줄었고 크레아티닌도 그대로면 dipped a little이 맞아요. 소변량은 몇 시간에 걸쳐 봐야 하니 한 번의 변화만으로 신장이 망가졌다고 단정하지 말고 추세를 이어서 보세요."
+    example: "His urine output dipped a little this hour."
+    exKo: "이번 시간에는 소변량이 조금 줄었어요."
+  - kind: context
+    words: [w-trend]
+    word: trend
+    ko: 추세
+    scenes:
+      - {who: 의사 라운드, icon: monitor, en: "The creatinine trend is going up, so let's look at his kidneys.", ok: true}
+      - {who: 야간 인계, icon: board, en: "The urine output trend over the last six hours is down.", ok: true}
+      - {who: 환자에게, icon: me, en: "Your creatinine trend shows a KDIGO stage 2 injury.", ok: false, fix: "Your kidney numbers have been rising since yesterday, so we're watching them closely."}
+    why: "의료진끼리는 trend와 KDIGO 단계 같은 말이 정확하고 빨라요. 환자에게는 병기 이름 대신 수치가 어떻게 변했고 무엇을 하고 있는지를 쉬운 말로 알려 주세요."
+1:
+  - kind: slider
+    words: [w-weight]
+    cue: "Her weight has gone up a little more each morning for three days."
+    scale: [slightly up, steadily up, suddenly up]
+    answerAt: 1
+    why: "며칠 연속 조금씩 계속 오르면 steadily up이에요. slightly up은 한 번 소폭 오른 정도, suddenly up은 하루 만에 눈에 띄게 늘었을 때라 달라요. 체중 변화는 몸에 붙들린 수분의 단서라 추세로 보고하세요."
+    example: "Her weight is steadily up since Monday."
+    exKo: "그녀의 체중은 월요일부터 꾸준히 늘고 있어요."
+  - kind: swap
+    words: [w-drink]
+    who: "환자에게 · 기록 협조 부탁"
+    icon: me
+    before: ["Please tell us about ", "every oral intake", " you have today."]
+    options: [every oral intake, every sip, every PO fluid]
+    answer: every sip
+    notes: {every sip: "한 모금까지 다 알려 달라는 뜻이 쉽게 전해져요.", every oral intake: "차트용 표현이라 환자에게는 딱딱하고 무슨 뜻인지 모를 수 있어요.", every PO fluid: "PO는 의료진 약어라 환자는 못 알아들어요."}
+    why: "수분 기록은 환자와 가족이 도와야 정확해져요. oral intake·PO 같은 말보다 sip처럼 일상어로 부탁해야 작은 양까지 빠뜨리지 않고 알려 줘요."
+    ko: "오늘 마시는 건 한 모금까지 모두 알려 주세요"
+2:
+  - kind: slider
+    words: [w-worse]
+    cue: "Creatinine has doubled since yesterday, and his urine output has nearly stopped."
+    scale: [a bit worse, clearly worse, critically worse]
+    answerAt: 2
+    why: "크레아티닌이 하루 만에 두 배로 오르고 소변이 거의 멎었다면 신장 손상이 빠르게 진행되는 것이라 critically worse로 바로 보고해야 해요. a bit worse는 소폭 나빠졌을 때 쓰는 말이에요."
+    example: "His labs are critically worse this morning."
+    exKo: "오늘 아침 검사 수치가 매우 위중하게 나빠졌어요."
+  - kind: context
+    words: [w-avoid]
+    word: avoid
+    ko: 피하다
+    scenes:
+      - {who: 약사와 통화, icon: speech, en: "Pharmacy suggests we avoid NSAIDs while his creatinine is rising.", ok: true}
+      - {who: 환자에게, icon: me, en: "Please avoid ibuprofen and other pain relievers unless we say it's okay.", ok: true}
+      - {who: 보호자에게, icon: me, en: "We will avoid administering nephrotoxic agents given his AKI.", ok: false, fix: "We won't give him any medicines that could hurt his kidneys."}
+    why: "avoid는 약사·환자·가족 누구에게나 통하지만, nephrotoxic agents나 AKI 같은 말은 의료진끼리의 말이에요. 가족에게는 '신장에 해로울 수 있는 약'처럼 풀어서 말하세요."
+3:
+  - kind: slider
+    words: [w-recover]
+    cue: "His wife asks, 'Will his kidneys come back?' The team can't say yet, but many patients with AKI do recover."
+    scale: [it's unlikely, it's possible, it's certain]
+    answerAt: 1
+    why: "회복 여부는 아직 모르니 it's certain은 지킬 수 없는 약속이에요. 반대로 it's unlikely는 사실보다 비관적이에요. 많은 환자가 회복하니 it's possible이 정직하면서 희망도 남겨 줘요."
+    example: "It's possible, and we'll keep checking."
+    exKo: "가능성은 있어요. 계속 확인할게요."
+  - kind: swap
+    words: [w-crrt]
+    who: "보호자에게 · CRRT 설명"
+    icon: me
+    before: ["CRRT is ", "a continuous renal replacement therapy", " that does the kidneys' job for a while."]
+    options: [a continuous renal replacement therapy, a slow gentle dialysis machine, a permanent kidney replacement]
+    answer: a slow gentle dialysis machine
+    notes: {a slow gentle dialysis machine: "CRRT의 핵심인 천천히, 부드럽게를 가족이 알아듣는 말로 담았어요.", a continuous renal replacement therapy: "CRRT를 풀어 쓴 전문 용어라 가족에게는 길고 어려워요.", a permanent kidney replacement: "영구적이라는 뜻이라 사실과 달라요. CRRT는 신장이 회복될 때까지 잠시 대신하는 치료예요."}
+    why: "가족에게 CRRT를 설명할 때는 약어를 풀어 쓰기보다 '천천히 대신해 주는 기계'처럼 쉬운 그림으로 말하고, 평생 치료가 아니라는 점을 분명히 하세요."
+    ko: "CRRT는 한동안 신장이 하던 일을 대신해 주는, 천천히 부드럽게 돌아가는 투석 기계예요"
+4:
+  - kind: slider
+    words: [w-redness]
+    cue: "The skin at the edge of the dressing is a little pink. No drainage, no fever."
+    scale: [mild redness, spreading redness, red and draining]
+    answerAt: 0
+    why: "드레싱 가장자리만 살짝 분홍이고 진물과 열이 없으면 mild redness로 기록하고 계속 지켜봐요. 번지거나 진물이 나면 감염을 의심해 바로 보고해야 해요."
+    example: "There's mild redness at the catheter site."
+    exKo: "카테터 부위에 가벼운 발적이 있어요."
+  - kind: context
+    words: [w-line]
+    word: line
+    ko: 라인
+    scenes:
+      - {who: 야간 인계, icon: board, en: "The return line has a kink near the bed rail.", ok: true}
+      - {who: 의사에게, icon: monitor, en: "The access line pressure looks fine right now.", ok: true}
+      - {who: 환자에게, icon: me, en: "Your extracorporeal venous line is kinking at the cannulation interface.", ok: false, fix: "One of your tubes got bent, and I'm straightening it out now."}
+    why: "line은 인계와 의사 보고에서 가장 쉬운 정확한 말이에요. 환자에게는 extracorporeal·cannulation 같은 말이 겁만 주니, 무슨 일이고 무엇을 하는지만 쉽게 전하세요."
+5:
+  - kind: slider
+    words: [w-clot]
+    cue: "The filter looks streaked with dark clots, but blood is still flowing and pressures have only crept up."
+    scale: [a few clots, partly clotted, fully clotted]
+    answerAt: 1
+    why: "줄무늬처럼 응고가 보이지만 피가 아직 흐르고 압력이 조금만 올랐다면 partly clotted예요. fully clotted는 흐름이 막혀 회로를 바꿔야 할 때 쓰고, a few clots는 거의 문제가 없을 때 써요."
+    example: "The filter is partly clotted."
+    exKo: "필터가 일부 응고됐어요."
+  - kind: context
+    words: [w-bleed]
+    word: bleed
+    ko: 출혈하다
+    scenes:
+      - {who: 환자에게, icon: me, en: "Tell us right away if you notice any bleeding, like from your gums.", ok: true}
+      - {who: 야간 인계, icon: board, en: "Watch for bleeding at the catheter site and in his stool.", ok: true}
+      - {who: 의사 호출, icon: monitor, en: "He's bleeding a little, no big deal.", ok: false, fix: "He's bleeding from the catheter site and he's on anticoagulation. Can you come look at it?"}
+    why: "항응고 중에는 출혈이 작아 보여도 부위와 상황을 구체적으로 보고해야 해요. 'no big deal'은 간호사가 중요도를 대신 판단해 버리는 말이라 의사 호출에는 맞지 않아요."
+6:
+  - kind: slider
+    words: [w-net, w-removal]
+    cue: "Order: \"Run net even for the next four hours.\""
+    scale: [no net removal, light net removal, heavy net removal]
+    answerAt: 0
+    why: "net even은 들어가는 양과 빠지는 양을 같게 해서 순 제거가 0이라는 뜻이에요. 혈압이 불안정할 때 잠시 제거를 쉬어 가는 오더라 no net removal이 맞아요."
+    example: "He's running net even right now."
+    exKo: "지금은 순 제거 0으로 돌리고 있어요."
+  - kind: swap
+    words: [w-dialysate, w-rate]
+    who: "환자에게 · 기계 설명"
+    icon: me
+    before: ["I'm checking the ", "dialysate rate", " on your machine."]
+    options: [dialysate rate, speed of the cleaning fluid, DFR]
+    answer: speed of the cleaning fluid
+    notes: {speed of the cleaning fluid: "dialysate를 환자가 아는 '세척액'으로 풀어 무슨 확인인지 전해요.", dialysate rate: "의료진끼리의 말이라 환자는 무슨 뜻인지 몰라요.", DFR: "dialysate flow rate의 약어라 환자는 알아듣지 못해요."}
+    why: "기계 소리나 화면을 신경 쓰는 환자에게는 dialysate 같은 용어보다, 지금 무엇을 확인하는지 쉬운 말로 알려 주면 불안이 줄어요."
+    ko: "기계에서 세척액이 흐르는 속도를 확인하고 있어요"
+7:
+  - kind: slider
+    words: [w-drop]
+    cue: "His pressure has crept down a few points over an hour after we raised the removal rate."
+    scale: [crept down, dropped, crashed]
+    answerAt: 0
+    why: "몇 포인트 서서히 내려갔다면 crept down이에요. dropped는 눈에 띄게 떨어졌을 때, crashed는 갑자기 크게 무너졌을 때라 무게가 달라요. 그래도 제거 속도와 함께 추세를 보고하세요."
+    example: "His pressure crept down after we raised the rate."
+    exKo: "속도를 올린 뒤 혈압이 서서히 내려갔어요."
+  - kind: context
+    words: [w-stable]
+    word: stable
+    ko: 안정된
+    scenes:
+      - {who: 의사 콜, icon: monitor, en: "He's stable on the lower removal rate, and the pressor dose hasn't changed.", ok: true}
+      - {who: 환자에게, icon: me, en: "Your pressure looks stable now, so we can keep going.", ok: true}
+      - {who: 보호자에게, icon: me, en: "He's hemodynamically stable at the moment.", ok: false, fix: "His blood pressure is holding steady right now."}
+    why: "stable은 의료진과 환자 모두에게 쓰는 말이지만, hemodynamically 같은 부사가 붙으면 가족에게는 어려워요. 혈압이 지금 어떤지 쉬운 말로 풀어 주세요."

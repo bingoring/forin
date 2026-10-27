@@ -1,0 +1,130 @@
+- situation: "shivering 관리"
+  items:
+    - kind: slider
+      words: [w-acetaminophen, w-buspirone, w-meperidine, w-protocol]
+      cue: "Nurse: \"He's still shivering after acetaminophen, buspirone, and counterwarming.\""
+      scale: [restart the same two drugs, stop the cooling right away, add meperidine per protocol]
+      answerAt: 2
+      why: "이 병원 프로토콜처럼 떨림 억제는 단계적으로 해요. 표면 대응가온과 아세트아미노펜·부스피론으로도 떨림이 계속되면 다음 단계로 메페리딘을 추가하라고 의사에게 확인해요. 같은 약을 반복하거나 냉각을 갑자기 끊는 건 단계가 아니에요."
+      example: "If shivering continues, we add meperidine next."
+      exKo: "떨림이 계속되면 메페리딘을 추가합니다."
+    - kind: context
+      words: [w-shiver]
+      word: shiver
+      ko: 떨림(오한)
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "He's shivering and his core temperature is climbing.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Is he shivering? Check his jaw and chest.", ok: true}
+        - {who: 가족에게, icon: me, en: "He's exhibiting a thermoregulatory shivering response with increased oxygen consumption.", ok: false, fix: "He's shivering because his body is fighting the cooling, and we're treating it so he stays comfortable."}
+      why: "의료진끼리는 체온과 대사량 같은 말로 짧게 보고해요. 가족에게는 의학 용어보다 몸이 왜 떠는지, 우리가 무엇을 해 주는지를 쉬운 말로 전해요."
+- situation: "재관류 PCI 이송·조율"
+  items:
+    - kind: slider
+      words: [w-drip, w-label, w-trip]
+      cue: "Cath lab tech: \"Before we roll, one of his drips has no label.\""
+      scale: [roll now and label it in the lab, label it before we roll, tell the lab it is probably saline]
+      answerAt: 1
+      why: "라벨 없는 드립은 무슨 약인지 몰라서 이송 중 위험해요. 출발하기 전에 라벨을 붙이고 확인해요. 짐작으로 '식염수일 것'이라고 말하거나 나중에 붙이는 건 안 돼요."
+      example: "All his drips are on the pump and labeled clearly."
+      exKo: "모든 수액이 펌프에 걸려 있고 표시도 명확해요."
+    - kind: context
+      words: [w-transport]
+      word: transport
+      ko: 이송
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "Airway secured for transport, and the cath lab is ready.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Bring the bag valve, and I'll manage the airway during transport.", ok: true}
+        - {who: 가족에게, icon: me, en: "We will perform an intrahospital transport with full monitoring to the interventional suite.", ok: false, fix: "We're taking him to the heart lab now so they can open the blocked artery."}
+      why: "의료진끼리는 transport나 interventional suite 같은 말로 정확하게 주고받아요. 가족에게는 어디로 왜 가는지를 쉬운 말로 알려야 안심해요."
+- situation: "ROSC 후 혈역학 목표 유지"
+  items:
+    - kind: slider
+      words: [w-map, w-titrate, w-vasopressor]
+      cue: "Colleague: \"His MAP is fifty-two, well below our target.\""
+      scale: [titrate the vasopressor up, wean the vasopressor off, stop the IV fluids completely]
+      answerAt: 0
+      why: "ROSC 후에는 저혈압을 피하는 게 중요하고, 많은 병원이 MAP 65 이상을 목표로 해요(병원 프로토콜·처방 범위를 따라요). MAP가 낮으면 승압제를 적정해서 올리고, 승압제를 끄거나 수액을 끊으면 더 떨어져요."
+      example: "His MAP dipped below sixty, so I'm titrating up now."
+      exKo: "MAP가 60 밑으로 떨어져서 지금 올리고 있어요."
+    - kind: context
+      words: [w-perfusion]
+      word: perfusion
+      ko: 관류
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "Perfusion is holding on a low-dose vasopressor.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Check his perfusion, like cap refill and urine output.", ok: true}
+        - {who: 가족에게, icon: me, en: "His cerebral perfusion pressure depends on holding the MAP above sixty-five.", ok: false, fix: "We're keeping enough blood flowing to his brain and his organs."}
+      why: "의료진끼리는 perfusion과 MAP 같은 말로 순환 상태를 한 번에 말해요. 가족에게는 압력 수치보다 뇌와 장기에 피가 잘 흐르게 하고 있다는 사실만 쉽게 전해요."
+- situation: "ROSC 후 환기·산소 목표"
+  items:
+    - kind: slider
+      words: [w-fio2, w-titrate, w-hyperoxia]
+      cue: "Colleague: \"SpO2 is a hundred percent on a FiO2 of a hundred percent.\""
+      scale: [add more oxygen to be safe, keep FiO2 at maximum for now, wean FiO2 down in steps]
+      answerAt: 2
+      why: "ROSC 후에는 산소가 너무 많은 고산소증도 뇌에 해로울 수 있어서, 포화도가 충분하면 FiO2를 단계적으로 내려 목표 범위(AHA는 SpO2 92~98%)에 맞춰요. 더 올리거나 최대로 유지하는 건 반대 방향이에요."
+      example: "Let's titrate his FiO2 down now that his oxygen looks fine."
+      exKo: "산소 수치가 괜찮으니 FiO2를 낮춥시다."
+    - kind: context
+      words: [w-normal]
+      word: normal
+      ko: 정상의
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "Keep his CO2 in the normal range, goal PaCO2 thirty-five to forty-five.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "His last gas was normal, so leave the rate alone.", ok: true}
+        - {who: 가족에게, icon: me, en: "His PaCO2 and PaO2 are normal on the current ventilator settings.", ok: false, fix: "The breathing machine is set so his oxygen and CO2 stay in a healthy range."}
+      why: "의료진끼리는 PaCO2, PaO2 같은 기호와 숫자 범위로 목표를 말해요. 가족에게는 기호 대신 호흡기가 산소와 이산화탄소를 건강한 범위로 맞추고 있다는 정도로 쉽게 말해요."
+- situation: "재가온 단계 관리"
+  items:
+    - kind: pair
+      words: [w-rewarm, w-slowly, w-rebound, w-hyperkalemia]
+      pairs: [[rewarm, slowly], [rebound, hyperkalemia], [watch for, low blood pressure]]
+      decoys: [the cooling]
+      why: "재가온은 천천히(slowly) 해야 해요(AHA는 시간당 0.25~0.5도). 재가온하면 세포 안에 들어갔던 칼륨이 다시 나와 rebound hyperkalemia가 올 수 있어요. 혈관확장으로 혈압이 떨어질 수 있어 low blood pressure도 지켜봐요."
+    - kind: context
+      words: [w-rewarm]
+      word: rewarm
+      ko: 재가온하다
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "We'll rewarm at a quarter degree per hour per protocol.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Hold the rewarm until his pressure is back up.", ok: true}
+        - {who: 가족에게, icon: me, en: "We will initiate controlled rewarm at zero point two five degrees Celsius per hour.", ok: false, fix: "We're warming him back up slowly and carefully so his body stays safe."}
+      why: "의료진끼리는 시간당 재가온 속도를 숫자로 정확히 말해요. 가족에게는 숫자와 단위를 늘어놓지 말고, 천천히 안전하게 데운다는 것만 쉬운 말로 전해요."
+- situation: "발작·경련 감시"
+  items:
+    - kind: slider
+      words: [w-twitch, w-report, w-seizure]
+      cue: "Colleague: \"His left eyelid keeps twitching, and he's sedated.\""
+      scale: [report it to the doctor now, call it a normal reflex, just hold the sedation]
+      answerAt: 0
+      why: "심정지 이후에는 눈꺼풀 씰룩거림처럼 미세한 움직임이 발작일 수 있어요. 정상 반사라고 단정하거나 진정을 임의로 끊지 말고, 본 것을 바로 의사에게 보고해서 뇌파로 확인해요."
+      example: "I noticed some eye twitching a minute ago, so I flagged it."
+      exKo: "조금 전 눈 씰룩거림을 봐서 표시해 뒀어요."
+    - kind: context
+      words: [w-seizure]
+      word: seizure
+      ko: 발작
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "I'm concerned about subtle seizure activity, so can we get continuous EEG?", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Call me if you see any seizure activity.", ok: true}
+        - {who: 가족에게, icon: me, en: "He may be having nonconvulsive electrographic seizure activity.", ok: false, fix: "We're watching for tiny seizures that can happen after the heart stops, and a brain wave test will help us see them."}
+      why: "의료진끼리는 nonconvulsive나 electrographic 같은 정확한 용어로 말해요. 가족에게는 그런 말이 겁만 주니, 무엇을 지켜보고 있고 어떤 검사로 확인하는지를 쉬운 말로 알려 줘요."
+- situation: "K 전해질 변동 관리"
+  items:
+    - kind: slider
+      words: [w-potassium, w-correct, w-cautiously, w-recheck]
+      cue: "Lab: \"His potassium is three point two while he's still cold.\""
+      scale: [replace it all at once, replace cautiously and recheck often, leave it until rewarming ends]
+      answerAt: 1
+      why: "냉각 중에는 칼륨이 세포 안으로 들어가 혈청 수치가 낮게 나와요. 재가온하면 다시 올라 rebound가 올 수 있어서, 한꺼번에 보충하지 않고 신중하게 보충하며 자주 재확인해요(수치와 용량은 처방과 프로토콜을 따라요)."
+      example: "Let's recheck potassium frequently and correct cautiously."
+      exKo: "칼륨을 자주 재확인하고 신중하게 교정합시다."
+    - kind: context
+      words: [w-level]
+      word: level
+      ko: 농도(수준)
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "His potassium level is three point two, and we're correcting it cautiously.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Can you recheck the level after the next bag?", ok: true}
+        - {who: 가족에게, icon: me, en: "His serum level is three point two milliequivalents per liter, below the reference range.", ok: false, fix: "His potassium is a little low from the cooling, and we're replacing it slowly."}
+      why: "의료진끼리는 수치와 단위를 그대로 말해도 통해요. 가족에게는 단위와 기준 범위가 낯서니, 조금 낮고 천천히 채우고 있다는 사실만 쉽게 전해요."

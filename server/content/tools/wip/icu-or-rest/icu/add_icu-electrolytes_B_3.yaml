@@ -1,0 +1,55 @@
+situations:
+- title: 원인 병력·약물 검토
+  s:
+  - ["약물 설명", pill, "'Some medicines'로 범위를 좁히면 모든 약이 문제라는 오해를 막아요. 'like diuretics'처럼 예를 하나 들면 이해가 쉬워요.", "at the pharmacy", "이뇨제 같은 모든 약은 전해질 수치를 바꿀 수 있어요.", "이뇨제 같은 몇몇 음식은 전해질 수치를 바꿀 수 있어요.", "change", "count", "hide", "cost"]
+  - ["원인 탐색", magnify, "'to find the cause'로 목적을 말하면 병력과 약을 묻는 이유가 가족에게 분명해져요. 'reviewing'은 이미 있는 기록을 훑는다는 뜻이에요.", "in the lobby", "원인을 찾으려고 병력과 복용 약을 정리하고 있어요.", "원인을 찾으려고 식사와 복용 약을 살펴보고 있어요.", "cause", "cost", "color", "size"]
+  - ["이유 설명", bulb, "'helps us'로 말하면 알아내는 일이 환자를 위한 것이라는 점이 전해져요. 'correct and prevent'는 지금 고치는 일과 다음에 막는 일을 함께 말해요.", "for the staff", "원인을 알면 고치고 설명하는 데 도움이 돼요.", "원인을 알면 고치고 예방하는 데 시간이 걸려요.", "prevent", "repeat", "copy", "hide"]
+  - ["복용 질문", pill, "'any'를 넣으면 하나라도 있으면 말해 달라는 열린 질문이 돼요. 'at home'은 입원 전에 먹던 약을 묻는다는 뜻이에요.", "at the front desk", "집에서 이뇨제나 혈압약을 사 오셨나요?", "병원에서 이뇨제나 혈압약을 드시나요?", "pills", "tanks", "cups", "jugs"]
+  - ["목록 확인", board, "'so'로 이유를 앞에 두고 'checking the whole list'로 결과를 말하면 왜 다 보는지 알려져요. 'whole'은 빠뜨리지 않는다는 뜻이에요.", "on the wall", "다른 약들도 칼륨과 나트륨을 바꿀 수 있어서 복용 목록 전체를 소개하고 있어요.", "다른 약들도 칼륨과 나트륨을 바꿀 수 있어서 식단 전체를 확인하고 있어요.", "whole", "wet", "torn", "hidden"]
+  - ["원인 해결", check, "'Once'는 조건이 채워지면 다음 단계로 간다는 순서 표현이에요. 'stop it happening again'은 재발 방지를 쉬운 말로 풀어 줘요.", "at night", "원인을 알고 나면 고치고 다시 생기는 걸 설명할 수 있어요.", "원인을 알고 나면 고치고 다시 생기지 않게 지켜볼 수 있어요.", "fix", "wash", "hang", "lift"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 원인 병력 확인 4문장 순서
+    why: 약이 수치를 바꿀 수 있다고 먼저 알리고, 그래서 병력과 약을 살펴본다고 말한 뒤, 복용 약을 묻고, 그 대답이 고치고 막는 데 도움이 된다고 마무리해요.
+    lines:
+    - ["Some medicines, like diuretics, can change her electrolyte levels.", pill, "이뇨제 같은 몇몇 약은 전해질 수치를 바꿀 수 있어요", "배경"]
+    - ["So we're reviewing her history and drugs to find the cause.", magnify, "그래서 원인을 찾으려고 병력과 복용 약을 살펴보고 있어요", "탐색"]
+    - ["That's why I'm asking if she takes any water pills at home.", speech, "그래서 집에서 이뇨제를 드시는지 여쭤보는 거예요", "질문"]
+    - ["Her answer helps us fix it and stop it happening again.", check, "그 대답이 고치고 다시 생기지 않게 막는 데 도움이 돼요", "의미"]
+- title: 교정 중 재검·모니터
+  s:
+  - ["재검 이유", lab, "'to make sure'는 확인이 목적이라는 신호예요. 'working'은 치료가 효과를 내는 중이라는 뜻이에요.", "at noon", "퇴원이 가능한지 확인하려고 수치를 다시 검사해요.", "식사가 잘 되고 있는지 확인하려고 수치를 다시 검사해요.", "working", "ending", "growing", "falling"]
+  - ["빈도 이유", chartup, "'over- or under-correcting'은 과하게와 부족하게를 한 번에 말해요. 'avoid'는 자주 보면 막을 수 있다는 효과를 알려 줘요.", "for the day", "자주 검사하면 과하게 또는 부족하게 먹는 걸 막을 수 있어요.", "자주 검사하면 빠르게 또는 천천히 고치는 걸 막을 수 있어요.", "labs", "visits", "meals", "naps"]
+  - ["안심 설명", shield, "'a normal part of'는 이 과정이 특별한 일이 아니라는 안심을 줘요. 'keeping him safe'는 검사의 목적이 안전이라는 뜻이에요.", "at home", "치료 전 안전을 지키는 정상적인 과정이에요.", "치료 중 비용을 줄이는 정상적인 과정이에요.", "treatment", "breakfast", "visiting", "dressing"]
+  - ["공감 표현", faceWorried, "'I know it feels like'로 먼저 불편함을 인정하면 뒤의 설명을 더 잘 들어요. 'but'으로 이유를 이어 줘요.", "for you", "주사가 많다고 느끼실 텐데, 한 번 한 번이 중요한 걸 알려줘요.", "채혈이 길다고 느끼실 텐데, 한 번 한 번이 중요한 걸 알려줘요.", "important", "funny", "secret", "boring"]
+  - ["속도 조절", gear, "'in either direction'은 오르든 내리든 둘 다 본다는 말이에요. 'slow down or adjust'로 두 가지 대응을 알려 줘요.", "on the wall", "체온이 어느 쪽으로든 너무 빠르게 움직이면 속도를 늦추거나 계획을 조정해요.", "수치가 한쪽으로만 너무 빠르게 움직이면 속도를 늦추거나 계획을 조정해요.", "adjust", "cancel", "share", "print"]
+  - ["결과 공유", bell, "'every time'은 매번 빠짐없이 알린다는 약속이에요. 'keep you updated'는 가족이 묻지 않아도 소식을 준다는 뜻이에요.", "in the hall", "새 방문자가 올 때마다 계속 알려드릴게요.", "새 약이 나올 때마다 계속 알려드릴게요.", "new", "old", "lost", "wet"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 교정 중 재검 설명 4문장 순서
+    why: 재검의 목적을 먼저 말하고, 채혈이 많다는 불편함에 공감하며 중요성을 알린 뒤, 수치가 빠를 때의 대응을 설명하고, 어느 경우든 결과를 계속 알려 주겠다고 마무리해요.
+    lines:
+    - ["We recheck the levels to make sure the correction is working.", lab, "교정이 잘 되고 있는지 확인하려고 수치를 다시 검사해요", "목적"]
+    - ["I know it feels like a lot of blood draws, but each one tells us something important.", faceWorried, "채혈이 많게 느껴지겠지만 한 번 한 번이 중요한 걸 알려줘요", "공감"]
+    - ["If one shows the numbers moving too fast, we slow down or adjust the plan.", gear, "하나라도 수치가 너무 빠르면 속도를 늦추거나 계획을 조정해요", "대응"]
+    - ["I'll keep you updated either way, every time a new result comes back.", bell, "어느 쪽이든 새 결과가 나올 때마다 계속 알려드릴게요", "약속"]
+- title: 증상 사정
+  s:
+  - ["원인 설명", bulb, "'can cause'는 가능성을 말해서 단정하지 않아요. 'like you're feeling'으로 환자가 지금 느끼는 증상과 연결해 줘요.", "in the morning", "전해질 불균형이 지금 느끼시는 것 같은 어지러움을 일으킬 수 있어요.", "전해질 불균형이 지금 느끼시는 것 같은 가려움을 일으킬 수 있어요.", "weakness", "hunger", "anger", "laughter"]
+  - ["근력 확인", stetho, "'so I can'으로 목적을 붙이면 환자가 왜 그 동작을 하는지 알고 따라 해요. 'Can you'는 부탁하는 부드러운 요청이에요.", "with both feet", "이 공을 꽉 잡아보시겠어요? 힘을 확인해볼게요.", "제 팔을 꽉 잡아보시겠어요? 힘을 확인해볼게요.", "squeeze", "wash", "count", "paint"]
+  - ["증상 보고 요청", speech, "'Tell me if'로 시작하면 증상이 있을 때 알려 달라는 요청이 돼요. 세 가지 증상을 짧게 나열해 기억하기 쉬워요.", "after the test", "배가 고프거나, 쥐가 나거나, 심장이 빨리 뛰면 말씀해 주세요.", "혼란스럽거나, 추우시거나, 심장이 빨리 뛰면 말씀해 주세요.", "confused", "hungry", "bored", "proud"]
+  - ["진행 안내", speech, "'I'm going to'는 곧 할 일을 미리 알리는 말이고 'okay?'로 동의를 구해요. 환자가 놀라지 않게 시작 전에 말해요.", "in a minute", "지금 근력을 설명해볼게요, 괜찮으시죠?", "지금 근력을 확인해볼게요, 앉으시죠?", "strength", "color", "weight", "height"]
+  - ["결과 칭찬", star, "'That's a strong squeeze'는 결과를 바로 알려 줘서 환자가 불안하지 않게 해요. 'so'로 다음 행동을 이어 줘요.", "on the left", "힘 있게 잘 잡으셨어요. 위쪽도 확인해볼게요.", "힘 있게 잘 놓으셨어요. 반대쪽도 확인해볼게요.", "side", "door", "wall", "floor"]
+  - ["마무리", check, "'You're doing great'로 격려한 뒤 'done … for now'로 끝났음을 알리면 환자가 쉬어도 돼요. 'for now'는 나중에 다시 볼 수 있다는 여지를 남겨요.", "at lunch", "잘 하고 계세요. 지금은 설명 다 끝났어요.", "잘 하고 계세요. 지금은 식사 다 끝났어요.", "checking", "cleaning", "counting", "drawing"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 근력 사정 4문장 순서
+    why: 증상의 원인을 먼저 설명하고, 그래서 근력을 확인하겠다고 알린 뒤, 손을 잡아 보게 하고, 결과를 알려 주며 마무리해요.
+    lines:
+    - ["Electrolyte imbalances can cause weakness like you're feeling.", bulb, "전해질 불균형이 지금 느끼시는 힘 빠짐을 일으킬 수 있어요", "설명"]
+    - ["Because of that, I'm going to check your strength now, okay?", speech, "그래서 지금 근력을 확인해볼게요, 괜찮으시죠?", "안내"]
+    - ["Can you squeeze my hands as hard as you can?", stetho, "제 손을 있는 힘껏 잡아보시겠어요?", "요청"]
+    - ["That's a strong squeeze, so I'm done checking for now.", star, "힘 있게 잡으셨으니 지금은 확인 다 끝났어요", "마무리"]

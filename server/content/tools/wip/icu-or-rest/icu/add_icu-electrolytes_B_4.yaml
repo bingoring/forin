@@ -1,0 +1,92 @@
+situations:
+- title: 고칼륨혈증 단계별 관리
+  s:
+  - ["1단계 칼슘", pill, "'First'가 첫 단계를 못 박아 팀이 순서를 헷갈리지 않아요. 'to stabilize the heart'로 목적을 말해 칼슘이 칼륨을 낮추는 게 아니라 심장을 보호한다는 점이 분명해요.", "at the bedside", "먼저 칼슘 줘서 혈관을 안정시킵니다.", "먼저 칼슘 줘서 호흡을 안정시킵니다.", "stabilize", "measure", "weigh", "count"]
+  - ["2단계 이동", pill, "'Then'으로 다음 단계를 이어 말하면 순서가 흐트러지지 않아요. 'shift … into the cells'는 칼륨을 몸 밖으로 빼는 게 아니라 세포 안으로 옮긴다는 뜻이에요.", "on the cart", "그다음 인슐린과 포도당으로 혈당을 세포 안으로 넣습니다.", "그다음 인슐린과 포도당으로 칼슘을 세포 안으로 넣습니다.", "cells", "bones", "lungs", "skin"]
+  - ["3단계 배출", pill, "'Finally'가 마지막 단계임을 알려 줘요. 이뇨제와 투석은 칼륨을 실제로 몸 밖으로 내보내는 방법이에요.", "in the lab", "마지막으로 이뇨제나 투석으로 수분을 뺍니다.", "마지막으로 이뇨제나 투석으로 칼륨을 기록합니다.", "remove", "store", "record", "count"]
+  - ["위중 보고", monitor, "수치와 파형을 'with'로 한 문장에 묶어 보고하면 얼마나 급한지 한 번에 전해져요. 'so we're moving fast'는 판단과 행동을 함께 말해요.", "from the lab", "칼륨 6.8, P파 첨예해서 빠르게 진행하고 있습니다.", "칼륨 6.8, T파 평평해서 빠르게 진행하고 있습니다.", "potassium", "sodium", "glucose", "hemoglobin"]
+  - ["투여 보고", pill, "'is running now'는 지금 들어가고 있다는 진행형 보고라서 팀이 따로 묻지 않아요. 'to protect'로 목적을 붙여요.", "on the pump", "신장 보호하려고 글루콘산칼슘 지금 들어가고 있습니다.", "뇌 보호하려고 글루콘산칼슘 지금 들어가고 있습니다.", "protect", "scan", "weigh", "wash"]
+  - ["확인 요청", handshake2, "'while I'로 두 사람이 동시에 일을 나누자고 하면 시간이 아껴져요. 'double-check'는 이미 있는 오더를 한 번 더 본다는 말이에요.", "at the desk", "제가 인슐린 미는 동안 투석 오더 다시 출력해 주시겠어요?", "제가 인슐린 확인하는 동안 투석 오더 다시 확인해 주시겠어요?", "double-check", "print", "copy", "fax"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 고칼륨혈증 단계 4문장 순서
+    why: 칼슘으로 심장을 먼저 안정시키고, 인슐린과 포도당으로 칼륨을 세포 안으로 옮긴 뒤, 투석 같은 방법으로 몸 밖으로 빼고, 마지막 단계의 오더를 확인해 달라고 부탁해요.
+    lines:
+    - ["First we give calcium to stabilize the heart.", pill, "먼저 칼슘을 줘서 심장을 안정시킵니다", "1단계"]
+    - ["Then insulin with glucose to shift potassium into the cells.", pill, "그다음 인슐린과 포도당으로 칼륨을 세포 안으로 넣습니다", "2단계"]
+    - ["Finally we remove it with diuretics or dialysis.", pill, "마지막으로 이뇨제나 투석으로 칼륨을 뺍니다", "3단계"]
+    - ["Can you double-check the dialysis order for that last step?", handshake2, "그 마지막 단계의 투석 오더를 다시 확인해 주시겠어요?", "요청"]
+- title: 저칼륨혈증 보충·부정맥 예방
+  s:
+  - ["위험 설명", monitor, "'can trigger'는 원인과 결과를 이어 말해서 왜 서두르는지 팀이 이해해요. 'dangerous'를 붙여 부정맥이 가볍게 넘길 일이 아니라는 걸 알려요.", "on the chart", "저나트륨은 위험한 부정맥을 유발할 수 있습니다.", "저칼륨은 위험한 폐렴을 유발할 수 있습니다.", "arrhythmias", "pneumonia", "fevers", "rashes"]
+  - ["마그네슘 병행", pill, "'or'로 조건을 걸면 마그네슘이 빠지면 칼륨이 오르지 않는다는 이유가 분명해져요. 'often'은 늘 그런 건 아니지만 흔하다는 뜻이에요.", "in the pharmacy", "마그네슘도 같이 확인하지 않으면 칼륨이 교정되지 않습니다.", "마그네슘도 같이 보충하지 않으면 나트륨이 교정되지 않습니다.", "magnesium", "chloride", "iron", "copper"]
+  - ["계획 공유", monitor, "'Let's … and …'로 보충과 관찰을 한 문장에 묶어 팀이 할 일을 같이 정해요. 'closely'는 리듬 변화를 놓치지 않겠다는 뜻이에요.", "at the nurses' station", "둘 다 준비하고 리듬 유심히 지켜보겠습니다.", "둘 다 확인하고 리듬 유심히 지켜보겠습니다.", "rhythm", "diet", "gown", "bedrail"]
+  - ["상태 보고", monitor, "수치와 모니터 소견을 'with'로 이으면 위험도가 한 번에 전달돼요. 'frequent'는 가끔이 아니라 자주라는 뜻이에요.", "in the chart", "칼륨 2.9, 모니터에 PAC 빈번합니다.", "칼륨 2.9, 모니터에 PVC 간헐적입니다.", "monitor", "tray", "door", "shelf"]
+  - ["투여 경로", pill, "'since'로 이유를 붙이면 왜 중심 라인을 쓰는지 팀이 이해해요. 'would burn'은 말초 정맥에 자극이 크다는 뜻이에요.", "at the bedside", "말초로는 막혀서 중심 라인으로 칼륨 주입하고 있습니다.", "말초로는 차가워서 중심 라인으로 칼륨 주입하고 있습니다.", "burn", "clot", "slip", "bend"]
+  - ["감시 유지", monitor, "'until'로 끝나는 조건을 말해 감시를 언제까지 이어갈지 정해요. 'both levels'는 칼륨과 마그네슘 둘 다를 가리켜요.", "in the room", "세 수치 정상화될 때까지 지속 텔레메트리 유지하겠습니다.", "두 수치 정상화된 뒤에도 지속 텔레메트리 유지하겠습니다.", "telemetry", "oxygen", "fluids", "music"]
+  - ["투여 원칙", shield, "'never'와 'always'를 나란히 쓰면 규칙이 한 번에 기억돼요. 칼륨은 정맥으로 밀어 넣으면 심정지를 일으킬 수 있어서 항상 펌프로 천천히 줘요.", "from the cart", "칼륨은 절대 밀어 넣지 않습니다 — 항상 펌프로 천천히 준비합니다.", "칼륨은 절대 밀어 넣지 않습니다 — 항상 펌프로 천천히 확인합니다.", "pump", "tray", "shelf", "cart"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 저칼륨혈증 보고 4문장 순서
+    why: 수치와 모니터 소견을 먼저 보고하고, 부정맥 위험과 마그네슘 병행을 알린 뒤, 중심 라인으로 펌프를 통해 투여한다고 말하고, 투여가 시작되면 감시를 이어간다고 마무리해요.
+    lines:
+    - ["Her potassium is two point nine with frequent PVCs on the monitor.", monitor, "칼륨 2.9, 모니터에 PVC 빈번합니다", "보고"]
+    - ["That can trigger dangerous arrhythmias, so we often replace magnesium too.", monitor, "그건 위험한 부정맥을 유발할 수 있어서 마그네슘도 같이 보충합니다", "위험"]
+    - ["I'm running the potassium through a central line and always through the pump.", pill, "칼륨은 중심 라인으로, 항상 펌프로 주입하고 있습니다", "투여"]
+    - ["Once it's running, keep her on continuous telemetry until both levels normalize.", monitor, "투여가 시작되면 두 수치가 정상화될 때까지 지속 텔레메트리를 유지해 주세요", "감시"]
+- title: 저나트륨 교정 속도 관리
+  s:
+  - ["위험 설명", shield, "'too quickly'를 쓰면 속도가 위험의 원인이라는 점이 분명해져요. 나트륨을 너무 빨리 올리면 뇌세포가 상할 수 있어서 속도가 핵심이에요.", "in the unit", "나트륨을 너무 빨리 교정하면 폐 손상이 생길 수 있습니다.", "칼륨을 너무 빨리 교정하면 뇌 손상이 생길 수 있습니다.", "brain", "lungs", "liver", "kidneys"]
+  - ["상승 제한", chartup, "'limit … to a safe amount'는 상한을 두고 관리한다는 뜻이에요. 'over 24 hours'로 기간을 붙여 기준이 분명해져요.", "on rounds", "24시간 동안 상승 폭을 안전한 만큼으로 확인합니다.", "24시간 동안 상승 폭을 안전한 만큼으로 설명합니다.", "rise", "drop", "dose", "load"]
+  - ["재검·조정", lab, "'frequently'로 검사를 자주 한다고 말하면 속도를 조정할 근거가 계속 생겨요. 'adjust the rate'는 결과를 보고 펌프를 바꾼다는 뜻이에요.", "at the desk", "나트륨 자주 재검하고 속도 전달하겠습니다.", "나트륨 자주 재검하고 속도 확인하겠습니다.", "rate", "order", "label", "chart"]
+  - ["교정 한도", pill, "대시 뒤에 숫자 한도를 붙이면 지시가 한 번에 정확히 전달돼요. 'no more than'은 넘지 말라는 상한이라는 뜻이에요.", "in the unit", "천천히 재검합니다 — 24시간에 8에서 10을 넘지 않게요.", "천천히 기록합니다 — 24시간에 8에서 10을 넘지 않게요.", "Correct", "Record", "Review", "Repeat"]
+  - ["위험 이유", shield, "'If we push it faster than that'은 조건을 앞에 두고 결과를 뒤에 말해서 이유가 분명해요. 'osmotic demyelination'은 뇌의 신경 껍질이 손상되는 상태예요.", "in the chart", "그보다 빠르게 밀어붙이면 폐부종 위험이 있습니다.", "그보다 빠르게 밀어붙이면 감염 위험이 있습니다.", "push", "wash", "copy", "label"]
+  - ["펌프 설정", gear, "'I'll set'은 내가 직접 한다는 약속이고 'in four hours'는 다음 검사 시점을 정해 줘요. 두 일을 한 문장에 이어 순서가 분명해요.", "at noon", "펌프 속도 확인하고 4시간 뒤 나트륨 재검하겠습니다.", "펌프 알람 맞추고 4시간 뒤 나트륨 재검하겠습니다.", "pump", "bed", "door", "tray"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 저나트륨 교정 4문장 순서
+    why: 빠른 교정의 위험을 먼저 말하고, 그래서 한도를 정하고, 한도 안에 들도록 펌프를 맞춘 뒤, 맞춘 지 4시간 뒤에 재검한다고 말해요.
+    lines:
+    - ["Correcting sodium too quickly can cause brain injury.", shield, "나트륨을 너무 빨리 교정하면 뇌 손상이 생길 수 있습니다", "위험"]
+    - ["So we correct it slowly — no more than eight to ten over twenty-four hours.", chartup, "그래서 천천히 교정합니다 — 24시간에 8에서 10을 넘지 않게요", "한도"]
+    - ["I'll set the pump rate to stay under that limit.", gear, "그 한도를 넘지 않게 펌프 속도를 맞추겠습니다", "설정"]
+    - ["I'll recheck a sodium four hours after the pump is set.", lab, "펌프를 맞추고 4시간 뒤 나트륨을 재검하겠습니다", "재검"]
+- title: 고나트륨 자유수 결핍 교정
+  s:
+  - ["결핍 산정", lab, "'to guide'는 계산이 보충 계획의 길잡이라는 뜻이에요. 'free water deficit'는 몸에 모자란 순수한 물의 양이에요.", "on the chart", "퇴원 계획을 위해 유리수분 결핍을 산정합니다.", "식사 계획을 위해 유리수분 결핍을 산정합니다.", "estimate", "weigh", "label", "sign"]
+  - ["천천히 하강", shield, "'to protect the brain'으로 이유를 붙이면 왜 천천히 내리는지 분명해져요. 나트륨이 급히 내려가면 뇌가 붓기 쉬워요.", "in the unit", "폐 보호하려면 나트륨은 천천히 내려가야 합니다.", "신장 보호하려면 나트륨은 천천히 내려가야 합니다.", "brain", "lungs", "liver", "skin"]
+  - ["경로·재검", compass, "'choose the route and recheck'로 두 가지 할 일을 한 문장에 이어 말해요. 'regularly'는 정해진 간격으로 본다는 뜻이에요.", "at noon", "경로 정하고 수치 규칙적으로 기록하겠습니다.", "경로 확인하고 수치 규칙적으로 재검하겠습니다.", "route", "room", "color", "shirt"]
+  - ["상태 보고", monitor, "'from days of poor intake'로 원인을 붙이면 수치의 배경이 한 번에 전달돼요. 'one fifty-two'처럼 숫자를 둘로 끊어 말해요.", "in the chart", "몇 주간 섭취 부족으로 나트륨 152입니다.", "며칠간 약 부족으로 나트륨 152입니다.", "intake", "sleep", "light", "sound"]
+  - ["보충 경로", pill, "'by mouth, by tube, or IV'처럼 경로를 나열하면 환자 상태에 맞춰 고를 수 있어요. 'D5W'는 5% 포도당 수액을 줄인 말이에요.", "at the bedside", "유리수분은 경구, 튜브, 또는 정맥 D5W로 측정할 수 있습니다.", "유리수분은 경구, 튜브, 또는 정맥 D5W로 설명할 수 있습니다.", "replace", "measure", "label", "weigh"]
+  - ["재검 간격", lab, "'every four to six hours'는 범위로 말해 환자 상태에 따라 간격을 맞출 여지를 줘요. 'while we correct'는 교정하는 내내 이어진다는 뜻이에요.", "on the unit", "교정하는 동안 4~6시간마다 나트륨 결과 보고하겠습니다.", "교정하는 동안 4~6시간마다 나트륨 기록하겠습니다.", "correct", "travel", "eat", "sleep"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 고나트륨 교정 4문장 순서
+    why: 모자란 물의 양을 먼저 산정하고, 그 계산으로 보충 경로를 고른 뒤, 그 경로로 천천히 내려야 하는 이유를 말하고, 교정하는 동안 재검한다고 마무리해요.
+    lines:
+    - ["We estimate her free water deficit to guide replacement.", lab, "보충 계획을 위해 유리수분 결핍을 산정합니다", "산정"]
+    - ["Based on that, let's choose the route: by mouth, by tube, or IV D5W.", compass, "그걸 바탕으로 경구, 튜브, 정맥 D5W 중 경로를 정하겠습니다", "경로"]
+    - ["Sodium should come down slowly through that route to protect the brain.", shield, "그 경로로 뇌 보호하려면 나트륨은 천천히 내려가야 합니다", "이유"]
+    - ["To confirm it's coming down slowly, recheck a sodium every four to six hours.", lab, "천천히 내려가는지 확인하려면 4~6시간마다 나트륨을 재검하세요", "재검"]
+- title: 저마그네슘·부정맥 연계
+  s:
+  - ["위험 연계", monitor, "'with'로 두 소견을 묶으면 위험이 겹친다는 점이 분명해요. 'raises the risk of'는 확정이 아니라 가능성이 높아진다는 표현이에요.", "on the chart", "저마그네슘에 QT 연장이 겹치면 폐렴 위험이 올라갑니다.", "저마그네슘에 QRS 확장이 겹치면 토르사드 위험이 올라갑니다.", "Torsades", "pneumonia", "fever", "stroke"]
+  - ["보충·약물 검토", pill, "'Let's'로 시작해 보충과 약 검토를 같이 하자고 제안해요. 'QT-prolonging'은 QT를 늘리는 약을 한 단어로 줄인 표현이에요.", "in the unit", "마그네슘 확인하고 QT 연장시키는 약물 검토하겠습니다.", "마그네슘 보충하고 QT 연장시키는 음식 검토하겠습니다.", "review", "wash", "sell", "paint"]
+  - ["준비 상태", monitor, "'keep her on the monitor'는 계속 지켜본다는 뜻이고 'have … ready'는 필요하면 바로 쓸 수 있게 준비해 둔다는 뜻이에요.", "at noon", "모니터 유지하고 마그네슘 확인해 두겠습니다.", "모니터 유지하고 마그네슘 보관해 두겠습니다.", "ready", "cold", "empty", "wet"]
+  - ["수치 보고", monitor, "수치와 파형 변화를 'and'로 이어 보고하면 상황이 한 번에 전해져요. 'climbing'은 계속 늘어난다는 진행 표현이에요.", "in the chart", "마그네슘 1.2, PR 계속 늘어나고 있습니다.", "마그네슘 1.2, 심박 계속 늘어나고 있습니다.", "QT", "PR", "QRS", "rate"]
+  - ["약물 확인", magnify, "'Check if'는 있는지 없는지 확인해 달라는 요청이에요. 'stretch the QT further'는 이미 늘어난 QT를 더 늘린다는 뜻이에요.", "at the desk", "QT를 더 늘리는 항부정맥제 복용 중인지 기록해 주세요.", "QRS를 더 늘리는 항부정맥제 복용 중인지 확인해 주세요.", "stretch", "wrap", "tie", "cut"]
+  - ["선제 준비", pill, "'draw up'은 주사기에 약을 미리 뽑아 둔다는 뜻이에요. 'just in case'는 쓰지 않을 수도 있지만 대비한다는 뜻이에요.", "at the nurses' station", "혹시 몰라 2그램 미리 확인해서 침상 곁에 두겠습니다.", "혹시 몰라 2그램 미리 계산해서 침상 곁에 두겠습니다.", "draw", "hang", "wash", "tear"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 저마그네슘 대비 4문장 순서
+    why: 수치와 파형을 먼저 보고하고, 그 위험을 말한 뒤, 그 위험 때문에 마그네슘을 미리 준비하고, 준비가 된 상태에서 QT를 늘리는 약을 확인해 달라고 해요.
+    lines:
+    - ["Her magnesium is one point two and the QT is climbing.", monitor, "마그네슘 1.2, QT 계속 늘어나고 있습니다", "보고"]
+    - ["That puts her at risk for Torsades.", monitor, "그러면 토르사드 위험이 커집니다", "위험"]
+    - ["Because of that risk, I'll draw up two grams and keep them at the bedside.", pill, "그 위험 때문에 2그램을 미리 준비해 침상 곁에 두겠습니다", "준비"]
+    - ["With that at the bedside, check if she's on any antiarrhythmics that stretch the QT further.", magnify, "그걸 침상 곁에 두고, QT를 더 늘리는 항부정맥제를 복용 중인지 확인해 주세요", "확인"]
