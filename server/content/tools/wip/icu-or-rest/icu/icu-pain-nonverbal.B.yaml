@@ -1466,10 +1466,10 @@ situations:
     blank:
       answer: rigid
       options:
-      - en: wet
+      - en: warm
       - en: rigid
-      - en: swollen
-      - en: loose
+      - en: sore
+      - en: tired
   - en: His brow is furrowed and he's tensing — that scores points.
     ko: 이마를 찌푸리고 뻣뻣해지면 그것도 점수에 들어가요.
     chunks:
@@ -1549,9 +1549,9 @@ situations:
       answer: total
       options:
       - en: total
-      - en: reset
-      - en: relabel
-      - en: retype
+      - en: round
+      - en: double
+      - en: repeat
   - en: A CPOT of four means his pain isn't controlled yet.
     ko: CPOT가 4점이면 통증이 아직 조절되지 않은 거예요.
     chunks:
@@ -1929,10 +1929,10 @@ situations:
     blank:
       answer: charting
       options:
-      - en: ordering
-      - en: counting
+      - en: scanning
+      - en: copying
       - en: charting
-      - en: changing
+      - en: printing
   order:
     tag: 대화 흐름
     icon: compass
@@ -1980,12 +1980,12 @@ situations:
     - 돌려눕히고 시트를 바꾸기 전에 진통제를 드릴게요.
     - 닦아 주고 드레싱을 바꾸기 전에 진통제를 드릴게요.
     blank:
-      answer: before
+      answer: analgesia
       options:
-      - en: after
-      - en: during
-      - en: instead
-      - en: before
+      - en: antacids
+      - en: vitamins
+      - en: laxatives
+      - en: analgesia
   - en: I'll tell you before I touch you, and let you know when we finish.
     ko: 만지기 전에 먼저 말씀드리고, 끝나면 알려드릴게요.
     chunks:
@@ -2011,9 +2011,9 @@ situations:
       answer: touch
       options:
       - en: touch
-      - en: lift
       - en: scan
-      - en: pause
+      - en: call
+      - en: page
   - en: Pre-medicating reduces procedural pain and agitation.
     ko: 처치 전 진통제를 주면 처치 통증과 초조가 줄어요.
     chunks:
@@ -2062,14 +2062,14 @@ situations:
     decoy: by the sink
     distractorsKo:
     - 드레싱 교환 시작 전에 지금 이불을 드릴게요.
-    - 드레싱 교환 시작 전에 지금 약을 소개해 드릴게요.
+    - 드레싱 교환 시작 전에 지금 약을 설명해 드릴게요.
     blank:
       answer: medicine
       options:
       - en: juice
-      - en: mail
+      - en: tea
       - en: medicine
-      - en: linen
+      - en: ice
   - en: We'll time the dose to peak during the procedure.
     ko: 처치 중에 효과가 최고조에 이르도록 투여 시간을 맞출게요.
     chunks:
@@ -2172,10 +2172,10 @@ situations:
     blank:
       answer: comfortable
       options:
-      - en: interested
+      - en: attentive
       - en: comfortable
-      - en: informed
-      - en: impressed
+      - en: confident
+      - en: observant
   - en: Comfort measures can lower his pain without more drugs.
     ko: 안위 중재만으로도 약 없이 통증을 낮출 수 있어요.
     chunks:
@@ -2201,8 +2201,8 @@ situations:
     blank:
       answer: lower
       options:
-      - en: count
-      - en: hide
+      - en: mask
+      - en: move
       - en: lower
       - en: raise
   - en: Let's straighten his lines so nothing pulls on him.
@@ -2252,12 +2252,12 @@ situations:
     - 차분하고 정렬이 잘 된 자세가 통증을 풀어줘요.
     - 차분하고 정렬이 잘 된 환경이 긴장을 풀어줘요.
     blank:
-      answer: aligned
+      answer: calm
       options:
-      - en: aligned
-      - en: wrapped
-      - en: crowded
-      - en: centered
+      - en: calm
+      - en: loud
+      - en: rushed
+      - en: tense
   order:
     tag: 대화 흐름
     icon: compass
@@ -2299,15 +2299,15 @@ situations:
     why: Let's reassess …는 투여 후 확인을 함께 하자는 제안이에요. after the dose가 재평가의 기준 시점을 밝혀요.
     decoy: at the nurses' station
     distractorsKo:
-    - 투여 후 CPOT를 복사해요.
-    - 투여 후 CPOT를 출력해요.
+    - 투여 후 CPOT를 팀에 보고해요.
+    - 투여 후 CPOT를 차트에 옮겨 적어요.
     blank:
       answer: reassess
       options:
-      - en: replace
+      - en: relabel
       - en: reassess
-      - en: reorder
-      - en: restart
+      - en: reprint
+      - en: resend
   - en: It's been thirty minutes, so his level should be near peak now.
     ko: 30분이 지나서 이제 최고 농도에 가까울 거예요.
     chunks:
@@ -2389,8 +2389,8 @@ situations:
       options:
       - en: compare
       - en: replace
-      - en: rewrite
-      - en: repaint
+      - en: average
+      - en: copy
   - en: If it's unchanged, we'll reconsider the plan.
     ko: 변화가 없으면 계획을 다시 고려해요.
     chunks:
@@ -2413,10 +2413,10 @@ situations:
     blank:
       answer: reconsider
       options:
-      - en: retitle
+      - en: reorder
       - en: reconsider
       - en: rewrite
-      - en: repeat
+      - en: restate
   order:
     tag: 대화 흐름
     icon: compass
@@ -2463,7 +2463,7 @@ situations:
     decoy: in the notes
     distractorsKo:
     - CPOT와 RASS를 확인해서 통증인지 갈증인지 구별해요.
-    - CPOT와 RASS를 인쇄해서 통증인지 초조인지 구별해요.
+    - CPOT와 RASS를 확인해서 통증인지 초조인지 설명해요.
     blank:
       answer: agitation
       options:
@@ -2519,7 +2519,7 @@ situations:
     decoy: for the night team
     distractorsKo:
     - CPOT가 높으면 수액 추가 전에 통증부터 치료해요.
-    - CPOT가 높으면 진정제 추가 전에 통증부터 공유해요.
+    - CPOT가 낮으면 진정제 추가 전에 통증부터 치료해요.
     blank:
       answer: high
       options:
@@ -2551,10 +2551,10 @@ situations:
     blank:
       answer: sedative
       options:
-      - en: pillow
+      - en: pillows
       - en: sedative
-      - en: dressing
-      - en: blanket
+      - en: fluids
+      - en: dressings
   - en: Sorting this out prevents oversedation.
     ko: 이걸 잘 가려내면 과진정을 막을 수 있어요.
     chunks:
@@ -2598,13 +2598,13 @@ situations:
     why: A, not B alone으로 대비를 붙여 RASS 하나만 보는 습관을 짚어요. together가 두 척도를 한 묶음으로 쓰라는 뜻이에요.
     decoy: in the hallway
     distractorsKo:
-    - RASS만 보지 말고 CPOT와 RASS를 함께 복습해요.
+    - RASS만 보지 말고 CPOT와 RASS를 함께 설명해요.
     - RASS만 보지 말고 CPOT와 RASS를 매번 봐요.
     blank:
       answer: together
       options:
       - en: separately
-      - en: daily
+      - en: alternately
       - en: quietly
       - en: together
   order:
@@ -2652,13 +2652,13 @@ situations:
     decoy: from the doorway
     distractorsKo:
     - 침상을 닦으면서 호흡수를 지켜봐요.
-    - 아편유사제를 소개하면서 호흡수를 지켜봐요.
+    - 아편유사제를 설명하면서 호흡수를 지켜봐요.
     blank:
       answer: titrate
       options:
       - en: weigh
       - en: label
-      - en: wash
+      - en: sign
       - en: titrate
   - en: I'm titrating slowly and reassessing between doses.
     ko: 천천히 적정하면서 투여 사이사이 재평가해요.
@@ -2709,7 +2709,7 @@ situations:
     decoy: on the shelf
     distractorsKo:
     - 욕창 예방을 위해 장 요법을 시작해요.
-    - 변비 예방을 위해 장 요법을 예약해요.
+    - 변비 예방을 위해 장 요법을 의사에게 문의해요.
     blank:
       answer: constipation
       options:
@@ -2740,12 +2740,12 @@ situations:
     - 산소포화도와 호흡수를 모니터에 따로 적어둬요.
     - 산소포화도와 호흡수를 보호자에게 계속 알려둬요.
     blank:
-      answer: respiratory
+      answer: monitor
       options:
-      - en: venous
-      - en: urinary
-      - en: respiratory
-      - en: arterial
+      - en: shelf
+      - en: cart
+      - en: monitor
+      - en: wall
   - en: We balance good analgesia against opioid side effects.
     ko: 좋은 진통과 아편유사제 부작용 사이 균형을 맞춰요.
     chunks:
@@ -2796,7 +2796,7 @@ situations:
     decoy: on the cart
     distractorsKo:
     - 변비가 생기기 전에 지금 완화제를 약사에게 물어봐요.
-    - 변비가 생기기 전에 지금 완화제를 포장해요.
+    - 변비가 생기기 전에 지금 장음을 확인해요.
     blank:
       answer: constipated
       options:
@@ -2808,23 +2808,23 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 아편유사제 적정 4문장 순서
-    why: 모니터를 먼저 띄워 두고, those numbers를 보며 천천히 적정해요. 투여 사이마다 재평가하고, how often we reassess를 받아 장 요법을 시작해 부작용이 쌓이지 않게 해요.
+    why: 모니터를 먼저 띄워 두고, those numbers를 보며 천천히 적정해요. those doses가 투여를 받아 사이마다 재평가하고, beyond breathing이 호흡 감시를 받아 장 요법을 시작해요.
     lines:
     - en: Keep his SpO2 and respiratory rate on the monitor.
       icon: monitor
       ko: 산소포화도와 호흡수를 모니터에 띄워둬요
       note: 감시
-    - en: I'm titrating the opioid slowly while we watch those numbers.
+    - en: I'm titrating the opioid slowly, dose by dose, while we watch those numbers.
       icon: calendar
       ko: 그 수치를 보며 천천히 적정해요
       note: 적정
-    - en: I reassess his pain between each dose.
+    - en: Between those doses, I reassess his pain each time.
       icon: magnify
-      ko: 투여마다 사이에 통증을 재평가해요
+      ko: 그 투여 사이마다 통증을 재평가해요
       note: 재평가
-    - en: Given how often we reassess, let's start a bowel regimen so side effects don't pile up.
+    - en: As for side effects beyond breathing, opioids slow the gut, so let's start a bowel regimen.
       icon: pill
-      ko: 자주 보니 장 요법도 시작해 부작용을 막아요
+      ko: 호흡 외 부작용으로 장이 느려지니 장 요법을 시작해요
       note: 부작용
 - title: 다중양식 진통 적용
   sentences:
@@ -2937,9 +2937,9 @@ situations:
     blank:
       answer: add
       options:
-      - en: hide
-      - en: lose
-      - en: count
+      - en: limit
+      - en: remove
+      - en: avoid
       - en: add
   - en: Multimodal analgesia usually lowers his total opioid dose.
     ko: 다중양식 진통이 보통 아편유사제 총 투여량을 낮춰요.
@@ -3042,7 +3042,7 @@ situations:
     decoy: for the night shift
     distractorsKo:
     - 흡인하면 혈당이 급증하니 미리 처치해요.
-    - 흡인하면 CPOT가 급증하니 미리 예약해요.
+    - 흡인하면 CPOT가 급증하니 미리 보고해요.
     blank:
       answer: spikes
       options:
@@ -3097,7 +3097,7 @@ situations:
     why: just before는 처치 바로 앞이라는 좁은 시점을 말해요. small은 소량이라는 뜻이고, 간호사는 처방된 범위 안에서만 맞춰요.
     decoy: from the lab
     distractorsKo:
-    - 처치 직전에 소량의 볼루스 상자를 옮겨요.
+    - 처치 직전에 소량의 볼루스 처방을 확인해요.
     - 처치 직전에 소량의 볼루스 라벨을 확인해요.
     blank:
       answer: bolus
@@ -3152,14 +3152,14 @@ situations:
     decoy: from the unit
     distractorsKo:
     - 끝난 직후 시트를 갈아요.
-    - 끝난 직후 안위를 사진으로 남겨요.
+    - 끝난 직후 안위를 보호자에게 알려요.
     blank:
       answer: comfort
       options:
-      - en: bed
-      - en: comfort
-      - en: color
       - en: address
+      - en: comfort
+      - en: weight
+      - en: height
   - en: I'll let him know it's finished and he did well.
     ko: 끝났다고 알려주고 잘 견뎠다고 말해줄게요.
     chunks:
@@ -3262,7 +3262,7 @@ situations:
       answer: together
       options:
       - en: separately
-      - en: weekly
+      - en: secretly
       - en: silently
       - en: together
   - en: If one score is off, it can throw the others off too.
@@ -3313,10 +3313,10 @@ situations:
     blank:
       answer: comfort
       options:
-      - en: weight
-      - en: comfort
       - en: speed
-      - en: volume
+      - en: comfort
+      - en: profit
+      - en: silence
   - en: Treating pain first often calms agitation without more sedative.
     ko: 통증부터 치료하면 진정제 없이도 초조가 가라앉는 경우가 많아요.
     chunks:
@@ -3366,14 +3366,14 @@ situations:
     decoy: from the floor
     distractorsKo:
     - 매 근무조마다 세 점수를 다 인계해서 흐름을 놓치지 않아요.
-    - 매 근무조마다 세 점수를 다 차팅해서 흐름을 색으로 나눠요.
+    - 매 근무조마다 세 점수를 다 차팅해서 흐름을 팀에 알려요.
     blank:
-      answer: clear
+      answer: scores
       options:
-      - en: loud
-      - en: heavy
-      - en: tight
-      - en: clear
+      - en: names
+      - en: beds
+      - en: rooms
+      - en: scores
   order:
     tag: 대화 흐름
     icon: compass
@@ -3451,8 +3451,8 @@ situations:
       options:
       - en: high
       - en: low
-      - en: daily
-      - en: usual
+      - en: small
+      - en: modest
   - en: Let's consider an adjuvant like gabapentin.
     ko: 가바펜틴 같은 보조진통제를 고려해봐요.
     chunks:
@@ -3471,14 +3471,14 @@ situations:
     decoy: from the shelf
     distractorsKo:
     - 가바펜틴 같은 보조진통제를 비교해봐요.
-    - 가바펜틴 같은 보조진통제를 공부해봐요.
+    - 가바펜틴 같은 보조진통제를 의사에게 물어봐요.
     blank:
       answer: adjuvant
       options:
-      - en: vaccine
+      - en: antiseptic
       - en: adjuvant
       - en: antibiotic
-      - en: diuretic
+      - en: antacid
   - en: A nerve-type pain often needs a different approach than opioids alone.
     ko: 신경성 통증은 아편유사제만으로는 안 되고 다른 접근이 필요할 때가 많아요.
     chunks:
@@ -3715,7 +3715,7 @@ situations:
     decoy: on the rail
     distractorsKo:
     - 병상을 정할 때 내성을 반영해요.
-    - 용량을 정할 때 내성을 외워요.
+    - 용량을 정할 때 내성을 설명해요.
     blank:
       answer: doses
       options:
@@ -3830,12 +3830,12 @@ situations:
     - 천천히 정리하고 투여 사이 재평가해요.
     - 천천히 적정하고 환자 사이 재평가해요.
     blank:
-      answer: titrate
+      answer: slowly
       options:
-      - en: stack
-      - en: rearrange
-      - en: titrate
-      - en: rinse
+      - en: loudly
+      - en: politely
+      - en: slowly
+      - en: quietly
   - en: If his respiratory rate drops, we'll know right away.
     ko: 호흡수가 떨어지면 바로 알 수 있어요.
     chunks:
@@ -3938,17 +3938,17 @@ situations:
     - 억제가 보이는 순간 날록손으로 역전시킬 준비할게요.
     - 억제가 보이는 순간 날록손으로 역전시킨 걸 적을게요.
     blank:
-      answer: reverse
+      answer: naloxone
       options:
-      - en: wrap
-      - en: label
-      - en: reverse
-      - en: rinse
+      - en: glucose
+      - en: calcium
+      - en: naloxone
+      - en: saline
   order:
     tag: 대화 흐름
     icon: compass
     ko: 호흡억제 예방 4문장 순서
-    why: 지속 감시 상태가 먼저고, 호흡수가 떨어지면 바로 안다는 점으로 이어요. That's why가 그 감시를 받아 신중하게 적정하고, 마지막 줄의 all of that이 앞의 모두를 받아 날록손을 최후의 대비로 둬요.
+    why: 지속 감시 상태가 먼저고, 호흡수가 떨어지면 바로 안다는 점으로 이어요. that drop이 그 하락을 받아 신중하게 적정하고, 마지막 줄의 all of that이 앞의 모두를 받아 날록손을 최후의 대비로 둬요.
     lines:
     - en: He's on continuous SpO2 and capnography.
       icon: monitor
@@ -3958,9 +3958,9 @@ situations:
       icon: bell
       ko: 호흡수가 떨어지면 바로 알아요
       note: 인지
-    - en: That's why we titrate carefully and reassess between doses.
+    - en: We still titrate carefully and reassess between doses to prevent that drop.
       icon: calendar
-      ko: 그래서 신중히 적정하고 투여 사이 재평가해요
+      ko: 그 하락을 막으려 신중히 적정하고 투여 사이 재평가해요
       note: 적정
     - en: As a last backup to all of that, naloxone stays available.
       icon: shield
@@ -4043,12 +4043,12 @@ situations:
     - 불편한 징후를 알아차리시면 의사에게 말씀해주세요.
     - 불편한 소음을 알아차리시면 저희에게 말씀해주세요.
     blank:
-      answer: signs
+      answer: uncomfortable
       options:
-      - en: signs
-      - en: rooms
-      - en: meals
-      - en: visits
+      - en: uncomfortable
+      - en: uninterested
+      - en: unprepared
+      - en: dissatisfied
   - en: When you say he looks distressed, that's a real clue for us.
     ko: 괴로워 보인다고 말씀하시면 그게 저희에게 진짜 단서예요.
     chunks:
@@ -4070,12 +4070,12 @@ situations:
     - 괴로워 보인다고 말씀하시면 그게 저희에게 진짜 걱정이에요.
     - 피곤해 보인다고 말씀하시면 그게 저희에게 진짜 단서예요.
     blank:
-      answer: clue
+      answer: distressed
       options:
-      - en: bill
-      - en: clue
-      - en: rule
-      - en: plan
+      - en: hungry
+      - en: distressed
+      - en: thirsty
+      - en: sleepy
   - en: Your observations add to our pain assessment.
     ko: 가족의 관찰이 저희 통증 사정에 더해져요.
     chunks:
@@ -4097,12 +4097,12 @@ situations:
     - 가족의 관찰이 저희 영양 사정에 더해져요.
     - 가족의 질문이 저희 통증 사정에 더해져요.
     blank:
-      answer: assessment
+      answer: observations
       options:
-      - en: budget
-      - en: menu
-      - en: assessment
-      - en: schedule
+      - en: requests
+      - en: questions
+      - en: observations
+      - en: visits
   - en: We'll keep checking in with you throughout the shift.
     ko: 근무조 내내 계속 가족과 확인할게요.
     chunks:
@@ -4175,12 +4175,12 @@ situations:
     - 혈당이 최고점을 찍었어요 — 급성으로 뭔가 일어나고 있어요.
     - CPOT가 최고점을 찍었어요 — 환자가 뭔가 알아채고 있어요.
     blank:
-      answer: acute
+      answer: maxed
       options:
-      - en: odd
-      - en: rare
-      - en: quiet
-      - en: acute
+      - en: mapped
+      - en: marked
+      - en: moved
+      - en: maxed
   - en: Let's rule out ischemia and give urgent analgesia.
     ko: 허혈을 배제하고 긴급 진통제를 드려요.
     chunks:
@@ -4227,8 +4227,8 @@ situations:
     why: out of nowhere는 갑자기·예고 없이라는 관용 표현이에요. could mean은 단정하지 않으면서도 가볍게 넘기지 말라는 경고예요.
     decoy: at the foot
     distractorsKo:
-    - 갑자기 이런 통증이면 뭔가 심각한 걸 숨길 수 있어요.
-    - 갑자기 이런 통증이면 뭔가 심각한 걸 가르칠 수 있어요.
+    - 갑자기 이런 가려움이면 뭔가 심각한 걸 의미할 수 있어요.
+    - 갑자기 이런 통증이면 뭔가 심각한 걸 놓쳤을 수 있어요.
     blank:
       answer: mean
       options:
@@ -4283,15 +4283,15 @@ situations:
     why: right now와 before anything else를 겹쳐 쓰면 통증 처치가 최우선이라는 뜻이 강해져요. something for pain은 약 이름 대신 목적만 말하는 표현이에요.
     decoy: in the hallway
     distractorsKo:
-    - 다른 걸 하기 전에 지금 바로 통증 안내문을 드릴게요.
-    - 다른 걸 하기 전에 지금 바로 통증 약을 보관할게요.
+    - 다른 걸 하기 전에 지금 바로 통증 약 처방을 확인할게요.
+    - 다른 걸 하기 전에 지금 바로 담당의에게 통증을 알릴게요.
     blank:
-      answer: giving
+      answer: pain
       options:
-      - en: saving
-      - en: hiding
-      - en: wrapping
-      - en: giving
+      - en: fever
+      - en: nausea
+      - en: itching
+      - en: pain
   - en: Let's get the doctor here fast — this isn't routine.
     ko: 빨리 의사를 불러요 — 이건 일상적이지 않아요.
     chunks:
@@ -4364,15 +4364,15 @@ situations:
     why: barely가 거의 ~않는다는 부정 부사라 위급함을 짧게 알려요. bag him and give naloxone now는 호흡 보조와 역전을 한 줄에 묶은 응급 명령문이고, 날록손은 프로토콜과 처방에 따라요.
     decoy: from the crash cart
     distractorsKo:
-    - 숨을 거의 안 쉬어요 — 보호자에게 상황을 전하고 지금 날록손을 확인해요.
-    - 숨을 거의 안 쉬어요 — 백밸브마스크를 가져오고 지금 책임간호사를 불러요.
+    - 숨을 거의 안 쉬어요 — 백밸브마스크로 호흡시키고 지금 날록손을 가져와요.
+    - 숨을 거의 안 쉬어요 — 백밸브마스크로 호흡시키고 지금 주치의를 불러요.
     blank:
       answer: bag
       options:
       - en: bag
-      - en: tag
-      - en: wrap
-      - en: weigh
+      - en: lift
+      - en: turn
+      - en: wake
   - en: Stop the opioid infusion immediately.
     ko: 아편유사제 지속 주입을 즉시 멈춰요.
     chunks:
@@ -4391,8 +4391,8 @@ situations:
     why: 명령문이 Stop으로 시작해 첫 행동이 분명해요. immediately는 지체 없이라는 뜻으로 동사구 뒤에 붙여 강조해요.
     decoy: from the pump room
     distractorsKo:
-    - 아편유사제 지속 주입을 즉시 포장해요.
-    - 아편유사제 지속 주입을 즉시 안내해요.
+    - 아편유사제 지속 주입을 즉시 교체해요.
+    - 아편유사제 지속 주입을 즉시 점검해요.
     blank:
       answer: infusion
       options:
@@ -4448,8 +4448,8 @@ situations:
     why: after reversal은 날록손을 쓴 뒤라는 시점을 밝혀요. 날록손은 아편유사제보다 빨리 사라질 수 있어 역전 뒤에도 감시를 이어요.
     decoy: at the head of the bed
     distractorsKo:
-    - 기도를 지지하고 역전 후 자리를 옮겨요.
-    - 기도를 지지하고 역전 후 조용히 감시해요.
+    - 기도를 지지하고 역전 후 팀에 보고해요.
+    - 기도를 지지하고 역전 후 자세히 기록해요.
     blank:
       answer: airway
       options:
@@ -4515,7 +4515,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 아편 과량 응급 4문장 순서
-    why: 숨을 거의 안 쉰다는 관찰이 먼저고, 호흡 보조와 날록손이 가장 급해요. 그다음 this가 그 과량을 가리켜 주입을 멈추고, After reversal로 역전 뒤 재진정을 감시해요.
+    why: 숨을 거의 안 쉰다는 관찰이 먼저고, 호흡 보조와 날록손이 가장 급해요. 그다음 Alongside that이 그 처치를 받아 주입을 멈추고, After reversal로 역전 뒤 재진정을 감시해요.
     lines:
     - en: He's barely breathing and his pupils are pinpoint.
       icon: magnify
@@ -4525,7 +4525,7 @@ situations:
       icon: stetho
       ko: 프로토콜대로 지금 호흡시키고 날록손을 줘요
       note: 응급 처치
-    - en: Stop the opioid infusion right away so it can't add to this.
+    - en: Alongside that, someone stops the opioid infusion so it can't add to this.
       icon: siren
       ko: 여기에 더하지 않게 주입을 바로 멈춰요
       note: 주입 중단
@@ -4609,14 +4609,14 @@ situations:
     why: slow the taper는 끊는 속도를 늦춘다는 뜻이에요. and add adjuncts로 속도 조정과 보조 요법을 한 계획에 묶고, 변경은 처방에 따라요.
     decoy: from the pharmacy
     distractorsKo:
-    - 감량을 늦추고 보조 요법을 보관해요.
-    - 감량을 늦추고 보조 시트를 추가해요.
+    - 감량을 늦추고 보조 요법을 약사에게 문의해요.
+    - 감량을 늦추고 보조 요법을 팀에 공유해요.
     blank:
       answer: adjuncts
       options:
       - en: towels
       - en: pillows
-      - en: curtains
+      - en: blankets
       - en: adjuncts
   - en: A clonidine dose can smooth out the withdrawal symptoms.
     ko: 클로니딘 투여가 금단 증상을 완화해줄 수 있어요.
@@ -4636,7 +4636,7 @@ situations:
     why: can smooth out은 가능성을 말하는 조동사와 구동사로, 완전히 없애는 것이 아니라 거칠기를 줄인다는 뜻이에요. 클로니딘 투여는 처방에 따라요.
     decoy: from the cabinet
     distractorsKo:
-    - 클로니딘 상자가 금단 증상을 완화해줄 수 있어요.
+    - 클로니딘 투여가 고열을 완화해줄 수 있어요.
     - 클로니딘 투여가 금단 점수를 완화해줄 수 있어요.
     blank:
       answer: clonidine
@@ -4664,14 +4664,14 @@ situations:
     decoy: on the call
     distractorsKo:
     - 통증과 금단 둘 다 따로 치료해요.
-    - 통증과 금단 둘 다 함께 연구해요.
+    - 통증과 금단 둘 다 함께 보고해요.
     blank:
-      answer: treat
+      answer: together
       options:
-      - en: ration
-      - en: treat
-      - en: weigh
-      - en: bill
+      - en: sequentially
+      - en: together
+      - en: separately
+      - en: individually
   - en: Let's reassess him often while we adjust the taper.
     ko: 감량을 조정하는 동안 자주 재평가해요.
     chunks:
@@ -4694,10 +4694,10 @@ situations:
     blank:
       answer: adjust
       options:
-      - en: relabel
-      - en: rewind
+      - en: stop
+      - en: end
       - en: adjust
-      - en: repair
+      - en: finish
   order:
     tag: 대화 흐름
     icon: compass
@@ -4796,15 +4796,15 @@ situations:
     why: gently는 방식 부사로, 약과 손길 모두 부드럽게 다루겠다는 약속이에요. 호흡곤란도 통증과 함께 치료 대상이라는 점을 밝혀요.
     decoy: at the bedside rail
     distractorsKo:
-    - 통증과 호흡곤란을 부드럽게 닦아줄게요.
+    - 통증과 호흡곤란을 빠르게 다스려줄게요.
     - 통증과 구토를 부드럽게 다스려줄게요.
     blank:
-      answer: breathlessness
+      answer: gently
       options:
-      - en: breathlessness
-      - en: constipation
-      - en: restlessness
-      - en: drowsiness
+      - en: gently
+      - en: roughly
+      - en: loudly
+      - en: coldly
   - en: It's all right to sit close and hold his hand.
     ko: 가까이 앉아서 손을 잡으셔도 괜찮아요.
     chunks:
@@ -4827,7 +4827,7 @@ situations:
     blank:
       answer: hold
       options:
-      - en: count
+      - en: wrap
       - en: hold
       - en: warm
       - en: wash
@@ -4856,7 +4856,7 @@ situations:
       answer: stay
       options:
       - en: work
-      - en: shop
+      - en: wander
       - en: stay
       - en: sleep
   - en: We'll keep him calm and free of pain the whole time.
@@ -4891,13 +4891,13 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 임종기 완화 4문장 순서
-    why: 치료 방향이 안위로 옮겨 간 것을 먼저 말하고, Our goal이 그 방향을 받아 목표를 밝혀요. That이 그 목표를 가리켜 통증과 호흡곤란을 부드럽게 다스리고, 마지막에 곁에 머물 수 있다고 허락해요.
+    why: 치료 방향이 안위로 옮겨 간 것을 먼저 말하고, So가 그 방향을 받아 목표를 밝혀요. That이 그 목표를 가리켜 통증과 호흡곤란을 부드럽게 다스리고, 마지막에 곁에 머물 수 있다고 허락해요.
     lines:
     - en: We're focusing on comfort now, not on curing him.
       icon: shield
       ko: 지금은 낫게 하기보다 안위에 집중해요
       note: 방향
-    - en: Our goal is to keep him comfortable and free of pain.
+    - en: So our goal is to keep him comfortable and free of pain.
       icon: star
       ko: 목표는 편안하고 통증 없이 지내시게 하는 거예요
       note: 목표
@@ -4932,12 +4932,12 @@ situations:
     - 가려움이 지금 요법에 불응하고 있어요.
     - 통증이 이전 요법에 불응하고 있어요.
     blank:
-      answer: regimen
+      answer: current
       options:
-      - en: bandage
-      - en: bracelet
-      - en: bedding
-      - en: regimen
+      - en: former
+      - en: prior
+      - en: original
+      - en: current
   - en: We've maxed the usual doses and he's still hurting.
     ko: 평소 용량을 최대로 줬는데도 여전히 아파해요.
     chunks:
@@ -4959,12 +4959,12 @@ situations:
     - 평소 식사를 최대로 줬는데도 여전히 아파해요.
     - 평소 용량을 최대로 줬는데도 여전히 졸려해요.
     blank:
-      answer: usual
+      answer: maxed
       options:
-      - en: usual
-      - en: daily
-      - en: weekly
-      - en: nightly
+      - en: maxed
+      - en: mixed
+      - en: marked
+      - en: moved
   - en: Let's consult pain service and consider advanced options.
     ko: 통증팀과 상의하고 상급 선택지를 고려해요.
     chunks:
@@ -4987,12 +4987,12 @@ situations:
     - 영양팀과 상의하고 상급 선택지를 고려해요.
     - 통증팀과 상의하고 상급 선택지를 비교해요.
     blank:
-      answer: consult
+      answer: advanced
       options:
-      - en: resend
-      - en: consult
-      - en: copy
-      - en: reword
+      - en: routine
+      - en: advanced
+      - en: basic
+      - en: simple
   - en: Pain service might suggest a nerve block or a different opioid.
     ko: 통증팀이 신경차단술이나 다른 아편유사제를 제안할 수 있어요.
     chunks:
@@ -5037,7 +5037,7 @@ situations:
     decoy: at the ward desk
     distractorsKo:
     - 걱정하지 않도록 상향 조정해요.
-    - 고통받지 않도록 상향 예약해요.
+    - 고통받지 않도록 담당의에게 요청해요.
     blank:
       answer: suffering
       options:
@@ -5064,7 +5064,7 @@ situations:
     decoy: to his bed
     distractorsKo:
     - 더 오래 고통받기 전에 영양팀을 부를게요.
-    - 더 오래 고통받기 전에 청소팀을 부를게요.
+    - 더 오래 고통받기 전에 호흡팀을 부를게요.
     blank:
       answer: pain
       options:
@@ -5119,12 +5119,12 @@ situations:
     - 오래된 혼란과 팽만이 아편유사제 부작용일 수 있어요.
     - 새로운 기침과 팽만이 아편유사제 부작용일 수 있어요.
     blank:
-      answer: confusion
+      answer: New
       options:
-      - en: confusion
-      - en: dizziness
-      - en: itchiness
-      - en: sweating
+      - en: New
+      - en: Old
+      - en: Stable
+      - en: Chronic
   - en: He's suddenly more confused and his belly looks swollen.
     ko: 갑자기 더 혼란스러워하고 배가 부어올라 보여요.
     chunks:
@@ -5172,7 +5172,7 @@ situations:
     decoy: at the board
     distractorsKo:
     - 일정을 재평가하고 장마비가 있는지 확인해요.
-    - 요법을 재평가하고 장마비가 있는지 공부해요.
+    - 요법을 재평가하고 장마비가 있는지 보고해요.
     blank:
       answer: ileus
       options:
@@ -5207,7 +5207,7 @@ situations:
       options:
       - en: sleep
       - en: speech
-      - en: mail
+      - en: vision
       - en: stool
   - en: We may need to reduce or rotate the opioid.
     ko: 아편유사제를 줄이거나 교체해야 할 수도 있어요.
@@ -5229,14 +5229,14 @@ situations:
     decoy: on the whiteboard
     distractorsKo:
     - 침대를 줄이거나 교체해야 할 수도 있어요.
-    - 아편유사제를 줄이거나 잠가야 할 수도 있어요.
+    - 수액을 줄이거나 교체해야 할 수도 있어요.
     blank:
-      answer: rotate
+      answer: opioid
       options:
-      - en: rotate
-      - en: repeat
-      - en: reword
-      - en: replay
+      - en: opioid
+      - en: fluid
+      - en: diet
+      - en: bed
   - en: Let's switch to a different opioid and watch his mental status.
     ko: 다른 아편유사제로 바꾸고 정신 상태를 지켜봐요.
     chunks:
@@ -5257,7 +5257,7 @@ situations:
     decoy: from the lab
     distractorsKo:
     - 다른 병실로 바꾸고 정신 상태를 지켜봐요.
-    - 다른 아편유사제로 바꾸고 정신 상태를 녹음해요.
+    - 다른 아편유사제로 바꾸고 정신 상태를 기록해요.
     blank:
       answer: mental
       options:
@@ -5269,13 +5269,13 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 부작용 급변 4문장 순서
-    why: 갑자기 달라진 관찰이 먼저고, 장음과 대변이 없는 소견을 보태요. Together, that이 앞의 소견 전부를 받아 부작용 가능성을 말하고, So로 재평가와 장마비 확인으로 이어요.
+    why: 갑자기 달라진 관찰이 먼저고, On top of that이 그 관찰 위에 장음과 대변이 없는 소견을 보태요. Together, that이 앞의 소견 전부를 받아 부작용 가능성을 말하고, So로 재평가와 장마비 확인으로 이어요.
     lines:
     - en: He's suddenly more confused and his belly looks swollen.
       icon: magnify
       ko: 갑자기 더 혼란스럽고 배가 부어 보여요
       note: 관찰
-    - en: No bowel sounds and no stool in three days worries me.
+    - en: On top of that, no bowel sounds and no stool in three days worries me.
       icon: faceWorried
       ko: 장음도 대변도 3일간 없어서 걱정돼요
       note: 소견
