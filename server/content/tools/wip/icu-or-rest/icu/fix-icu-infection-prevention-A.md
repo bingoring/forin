@@ -11,7 +11,7 @@
 | 2 | distractorsKo·길이 | 4 | 길이는 전부 통과. 정답에 가까운 오답 3건(site↔피부, dressing↔붕대 감기, mean↔보여 주다). 두 오답이 서로 같은 뜻인 것 5건 |
 | 3 | cue | 4 | 정답 영어를 드러낸 단서는 없음. `ko`를 되풀이만 한 단서 8건 |
 | 4 | chips·decoyChips | 4 | 자른 자리는 좋음. 비속어·불쾌한 조각 2건은 꼭 바꿔야 하고(hell, tramp) 6건은 바꾸기를 권함 |
-| 5 | 뉘앙스·문장 사실 | 3 | 뉘앙스 `why`는 대체로 CDC·SHEA와 맞음. 다만 문장에 CDC 관행과 어긋나는 것이 있음(이송 중 가운·장갑, 젤이 비누보다 낫다는 주장, PEP 시작을 간호사가 '오늘' 함, 방문객 N95 밀착검사) |
+| 5 | 뉘앙스·문장 사실 | 3 | 뉘앙스 `why`는 대체로 CDC·SHEA와 맞음. 다만 문장에 CDC 관행과 어긋나는 것이 있음(이송 중 가운·장갑, PEP 시작을 간호사가 '오늘' 함, 아무 N95나 건네기, 방문객 N95 밀착검사) |
 | 6 | 뉘앙스 설계 | 4 | pair는 정답이 하나뿐이고 swap 문법도 맞음. slider 순서가 한 방향으로 가지 않는 것 3건. context는 19개 모두 '3번째 장면·가족에게·전문용어'로 모양이 같음(앱이 섞지 않으면 읽지 않고도 맞힘). S14 장면 대상이 어긋남 |
 | 7 | 결정 11 | 4 | changes 110건은 타당함. 남은 것: w-blame `ko`의 품사, w-sign 뜻 섞임, w-line `ko`가 너무 좁음, w-brush/w-wipe `ko` 겹침 |
 
@@ -31,28 +31,29 @@
 
 ## 사실 오류·심각한 문제
 
-1. **S9 문장 4 "Everyone on transport should wear a gown and gloves."**(비KP) — CDC 2007 격리 지침과 반대다. 접촉주의 환자를 옮길 때는 오염된 보호구를 벗고 손위생을 한 뒤 출발하고, 도착지에서 환자를 다룰 때 새 보호구를 입는다. 가운·장갑을 입은 채 복도를 다니면 오염을 퍼뜨린다. 같은 내용이 order 3번째 줄에도 있다. [안전]
-2. **S0 문장 5 "This gel kills germs that soap can't always reach."**(비KP) — 근거 없는 주장이다(젤이 비누가 닿지 않는 균까지 죽인다). 같은 주제 S11은 C. diff에는 젤이 아니라 비누와 물이라고 가르치므로, 학습자가 젤이 비누보다 언제나 낫다고 잘못 배운다. [안전]
-3. **S18 문장 4 "start the PEP protocol today"**(비KP) — 업무범위 밖이고 시작 시점도 늦다. order 4번째 줄의 "get you evaluated today"도 같은 문제다. [안전]
-4. **S16 문장 3 "Let me grab you a fitted N95"**(비KP) — N95는 본인이 밀착검사를 받은 그 모델·크기를 써야 한다. 아무 N95나 가져다주면 된다고 읽힌다. order 3번째 줄 "a fitted one"도 같다. [안전]
-5. S16 slider `why`: "방문객에게 밀착검사를 거친 N95가 필요" — OSHA 밀착검사는 직원 대상이다. 방문객은 병원 지침에 따라 N95를 받고 착용법을 안내받는다(밀착검사는 하지 않음). 사실 오류.
-6. S2 slider `cue`: "passing urine without help, and the catheter is still in" — 도뇨관이 꽂혀 있으면 스스로 소변을 볼 수 없다. 장면 자체가 말이 안 된다.
-7. S15 context 3번째 장면 "multiple index cases" — index case는 정의상 첫 사례다. 틀린 전문용어이고, `why`가 이를 "정확히 전해요"라고 한다.
-8. S17 swap `ko` "치료가 어려워서 빨리 퍼질 수 있으니" — `en`에 없는 인과(치료가 어렵다 → 빨리 퍼진다)를 만들었다.
+1. **S9 문장 4 "Everyone on transport should wear a gown and gloves."**(비KP) — CDC 2007 격리 지침(III.B.3)과 반대다. 접촉주의 환자를 옮길 때는 오염된 보호구를 벗고 손위생을 한 뒤 출발하고, 도착지에서 환자를 다룰 때 새 보호구를 입는다. 가운·장갑을 입은 채 복도를 다니면 오염을 퍼뜨린다. 같은 내용이 order 3번째 줄에도 있다. [안전]
+2. **S18 문장 4 "start the PEP protocol today"**(비KP) — 업무범위 밖이고 시작 시점도 늦다. order 4번째 줄의 "get you evaluated today"도 같은 문제다. [안전]
+3. **S16 문장 3 "Let me grab you a fitted N95"**(비KP) — 틀렸다기보다 부정확하다. N95는 본인이 밀착검사를 받은 그 모델·크기를 써야 하는데, 아무 N95나 가져다주면 된다고 읽힌다. order 3번째 줄 "a fitted one"도 같다. [안전 — 호흡보호]
+4. S16 slider `why`: "방문객에게 밀착검사를 거친 N95가 필요" — OSHA 밀착검사는 직원 대상이다. 방문객은 병원 지침에 따라 N95를 받고 착용법을 안내받는다(밀착검사는 하지 않음). 사실 오류.
+5. S2 slider `cue`: "passing urine without help, and the catheter is still in" — 도뇨관이 꽂혀 있으면 스스로 소변을 볼 수 없다. 장면 자체가 말이 안 된다.
+6. S15 context 3번째 장면 "multiple index cases" — index case는 정의상 첫 사례다. 틀린 전문용어이고, `why`가 이를 "정확히 전해요"라고 한다.
+7. S17 swap `ko` "치료가 어려워서 빨리 퍼질 수 있으니" — `en`에 없는 인과(치료가 어렵다 → 빨리 퍼진다)를 만들었다.
 
-## 고칠 것 (총 33건, 그중 안전 4건)
+## 고칠 것 — 필수 31건(그중 안전 3건: F1·F4·F7) + 조건부 1건(F5, K1에 따름) + 선택 6건(F2·F14·F23·D11-6·D11-7·D11-9)
+
+셈: F1·F3·F4·F6~F13·F15~F22·F24~F29 = 25건, D11-1~5·D11-10 = 6건. D11-8은 판정이라 세지 않음.
 
 ### 문장 (비KP) — 고칠 en·ko·chunks. 고친 문장은 **v46 필드 전부(tag·icon·why·decoy·distractorsKo 2개·blank)를 새 문장에 맞춰 새로 쓰고**, 그 문장을 example로 쓰는 단어의 `example`·`exKo`도 바꿀 것
 
 - **F1 [안전] S9 "격리 환자 이송 감염관리" 문장 4**
   en `Everyone who handles him at CT should wear a gown and gloves.` / chunks `["Everyone", "who handles him at CT", "should wear", "a gown and gloves", "."]` / ko `CT에서 환자를 다루는 사람은 모두 가운과 장갑을 착용해야 해요.` / words는 그대로 [w-wear, w-gown, w-glove]. **연동(B 몫):** order 3번째 줄 `During the move, everyone on transport should wear a gown and gloves.`도 같은 오류다 → 예: `At CT, everyone who handles him should put on a clean gown and gloves.`
-- **F2 [안전] S0 "손위생·PPE 착탈" 문장 5**
+- **F2 (선택·문구) S0 "손위생·PPE 착탈" 문장 5** — CDC 손위생 지침은 C. diff·노로·눈에 보이는 오염을 빼면 알코올 젤이 비누·물보다 세균을 더 줄인다고 하므로, 주장 방향은 맞다(S11의 C. diff 예외와도 모순 아님). 다만 'soap can't reach'는 실제와 다른 작용 방식처럼 읽힌다. 바꾼다면:
   en `This gel kills most germs if you rub it in until it's dry.` / chunks `["This gel kills", "most germs", "if you rub it in", "until it's dry", "."]` / ko `마를 때까지 문질러 바르면 이 젤이 대부분의 균을 없애 줘요.` / words [w-gel, w-kill, w-germ] (w-soap·w-reach 태그는 뺌 — 두 단어는 11.1·6.3 등 다른 문장에 남음). **단어 example 교체:** w-kill·w-germ → 새 문장, w-soap → `We need soap and water, not just gel, for hand hygiene here.`(exKo는 11.1 ko), w-reach → `A loose dressing lets germs reach the line.`(exKo는 6.3 ko)
 - **F3 S18 "주삿바늘 노출사고 대응" 문장 3**
-  en `Keep washing it with soap and water while I call Employee Health.` / chunks `["Keep washing it", "with soap and water", "while I call", "Employee Health", "."]` / ko `제가 직원 건강관리실에 전화하는 동안 비누와 물로 계속 씻으세요.` / words [w-wash, w-soap]. **연동(B):** order 1번째 줄의 `for a full minute`을 뺄 것
+  en `Keep washing it with soap and water while I call Employee Health.` / chunks `["Keep washing it", "with soap and water", "while I call", "Employee Health", "."]` / ko `제가 직원 건강관리실에 전화하는 동안 비누와 물로 계속 씻으세요.` / words [w-wash, w-soap]. (B: Employee Health는 고유명사라 blank를 두지 말 것) **연동(B):** order 1번째 줄의 `for a full minute`을 뺄 것
 - **F4 [안전] S18 문장 4**
   en `I'll report the exposure so you can be seen for PEP right away.` / chunks `["I'll report", "the exposure", "so you can be seen", "for PEP", "right away", "."]` / ko `바로 PEP 진료를 받으실 수 있게 노출을 보고할게요.` / words [w-report, w-exposure, w-pep] (w-start·w-protocol은 18.2에 남음). **w-exposure example·exKo**를 새 문장으로 바꿀 것. **연동(B):** order 4번째 줄 `we'll start the PEP protocol and get you evaluated today` → 예: `With that report in, Employee Health can evaluate you for PEP right away.`
-- **F5 S19 "면역저하 보호격리 붕괴 위기" 문장 4**
+- **F5 (조건부 — K1을 바꿀 때만) S19 "면역저하 보호격리 붕괴 위기" 문장 4** — K1을 유지하면(병원 정책으로 가운을 요구) 19.4는 틀린 문장이 아니므로 고치지 않는다. K1을 바꾸면 아래처럼 고치고 order 2~4번째 줄도 함께 고친다.
   en `Let's get everyone back to strict hand hygiene and restore precautions now.` / chunks `["Let's get everyone", "back to strict hand hygiene", "and restore", "precautions now", "."]` / ko `모두 다시 철저히 손위생을 하게 하고 지금 주의조치를 복구하죠.` / words [w-strict, w-hygiene, w-restore, w-precaution]. **연동(B):** order 3·4번째 줄의 gowns·gowned(K1 결정에 따름)
 - **F6 S3 "VAP 번들 수행" 문장 4**
   en `We brush his teeth and clean his mouth on a regular schedule.` / chunks `["We brush", "his teeth", "and clean his mouth", "on a regular schedule", "."]` / ko `정해진 일정에 따라 이를 닦고 입안을 깨끗이 해 드려요.` / words [w-brush, w-clean] (+ 선택: w-schedule). **연동(B):** order 3번째 줄의 `every few hours`
@@ -104,6 +105,7 @@
 - **D11-3 w-line** — ko `중심라인`이 너무 좁다(9.0 `cover any lines`는 말초 라인도 포함). ko → `라인(혈관 카테터)`
 - **D11-4 w-brush** — ko `닦다`가 w-wipe `닦아내다`와 겹친다. ko → `칫솔질하다`
 - **D11-5 w-grab** — F7에 맞춰 ko `가져다주다` → `챙기다`
+- **D11-10 w-step·w-measure** — 둘 다 ko가 `조치`로 글자까지 같고, w-precaution `주의(조치)`와도 겹친다(changes가 check/confirm 등을 가른 기준과 같은 문제). w-step → `단계`, w-measure → `대책`. 같은 기준으로 w-germ `세균`·w-bug `균(비격식)`·w-organism `균/유기체`도 봤는데, 수식어로 갈려 있어 그대로 둬도 된다
 - **D11-6**(선택) 쉬운 말 태그 빼기: w-hospital(20.1), w-different(4.1), w-tell(4.1). 빼도 S4는 서로 다른 단어 11개, S20은 17개가 남는다. 어느 문장도 태그하지 않게 되면 은행에서 지울 것
 - **D11-7**(선택) w-cauti 헤드워드 `CAUTIs` → `CAUTI` (chips `[[CAU, TI]]`, distractorsEn `CLABSI`·`CABG`). 문장의 `CAUTIs`는 복수형이라 허용됨
 - **D11-8** changes 110건: 모두 타당함(과하거나 틀린 것 없음)
@@ -199,4 +201,4 @@
 | (판정만) | S10-0 코호팅 · S18-1 PEP 평가 · S18-2 프로토콜 시작 | 맞음. 바꿀 필요 없음 | — |
 
 ## 종합
-안전 4건(F1·F2·F4·F7)과 order의 연동 줄(B 몫)을 고치고, decoyChips `hell`·`tramp`를 바꾸면 내보내도 된다. 뉘앙스 `why`는 CDC·SHEA 관행에 대체로 맞고, 고칠 것은 S16 방문객 밀착검사(F15) 하나다. K1은 order 줄과 함께 결정해야 하므로 먼저 사용자에게 물을 것.
+안전 3건(F1·F4·F7 — F1·F4는 확실, F7은 '부정확'에 가까움)과 order의 연동 줄(B 몫)을 고치고, decoyChips `hell`·`tramp`를 바꾸면 내보내도 된다. 뉘앙스 `why`는 CDC·SHEA 관행에 대체로 맞고, 고칠 것은 S16 방문객 밀착검사(F15) 하나다. K1은 order 줄과 함께 결정해야 하므로 먼저 사용자에게 물을 것.

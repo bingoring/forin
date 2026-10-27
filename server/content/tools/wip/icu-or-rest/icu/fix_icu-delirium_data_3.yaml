@@ -1,0 +1,112 @@
+# 단어 필드 수정 — A 목록 10~12·13~24
+word_fields:
+  # 12. 단어 ko (결정 11)
+  w-bowel:       {ko: "장(창자)"}
+  w-escalate:    {ko: "(단계적으로) 올리다", distractorsKo: ["(단계적으로) 줄이다", "(단계적으로) 끊다"]}
+  w-tell:        {ko: "알려 주다"}
+  w-fully:       {ko: "온전히"}
+  w-deescalate:  {ko: "(긴장을) 누그러뜨리다", distractorsKo: ["(긴장을) 고조시키다", "(상태를) 악화시키다"]}
+  w-secure:      {ko: "(안전하게) 고정하다", distractorsKo: ["(조심스레) 풀다", "(멀리) 버리다"]}
+  w-closely:     {ko: "면밀히"}
+  w-measure:     {ko: "조치"}
+  # 10. w-take ko·cue·오답
+  w-take:        {ko: "(숨을) 쉬다", cue: "초조한 환자에게 같이 천천히 숨 한 번 쉬자고 할 때 쓰는 기본 동사", distractorsKo: ["(숨을) 참다", "(약을) 먹다"]}
+  # 17·18·19 오답·cue
+  w-reposition:  {distractorsKo: ["퇴원시키다", "흔들어 깨우다"]}
+  w-haloperidol: {cue: "섬망 환자의 심한 초조에 단기간 쓰기도 하는 항정신병 약의 이름"}
+  w-anticholinergic: {cue: "아세틸콜린 작용을 막아 노인에게 혼란을 잘 일으키는 약을 통틀어 부르는 말"}
+  # 13~16, 21·22 decoyChips (불쾌·비속·부적절)
+  w-alarm:       {decoyChips: ["ah", "arm"]}
+  w-group:       {decoyChips: ["grip"]}
+  w-med:         {decoyChips: ["mod"]}
+  w-last:        {decoyChips: ["lest"]}
+  w-list:        {decoyChips: ["lost"]}
+  w-withdrawal:  {decoyChips: ["wit", "drew"]}
+  w-least:       {decoyChips: ["feast"]}
+  w-release:     {decoyChips: ["ra", "loose"]}
+  w-stay:        {decoyChips: ["sway"]}
+  w-direct:      {decoyChips: ["dye", "wreck"]}
+  w-fully:       {ko: "온전히", decoyChips: ["fuel", "ie"]}
+  w-oxygen:      {decoyChips: ["ax", "gym"]}
+  w-potassium:   {decoyChips: ["pat", "ash"]}
+  w-help:        {decoyChips: ["helm"]}
+  w-quickly:     {decoyChips: ["quilt", "lie"]}
+  w-control:     {decoyChips: ["can", "tray"]}
+  w-thinking:    {decoyChips: ["thin", "ink"]}
+  w-watch:       {decoyChips: ["wag"]}
+  w-central:     {decoyChips: ["tin", "trail"]}
+  w-physician:   {decoyChips: ["fee", "sit"]}
+
+# 24. cue — 언제·누구에게 장면으로 다시 씀
+cues:
+  w-status: "CAM-ICU를 시작하며 환자의 지금 정신 기능이 어떤지 한마디로 가리킬 때"
+  w-turn: "옆으로 눕히려고 환자의 몸을 돌려 눕힐 때 동료에게 하는 말"
+  w-cluster: "야간 인계에서 처치를 한 번에 몰아서 해 환자를 덜 깨우겠다고 말할 때"
+  w-edge: "처음 일으켜 앉힐 때 환자를 침대 끝 쪽에 앉히겠다고 말할 때"
+  w-support: "일어나 앉는 환자의 수액 라인이 당겨지지 않게 밑에서 받쳐 들겠다고 할 때"
+  w-activity: "환자가 몸 움직이는 양을 하루하루 조금씩 늘려 가겠다고 계획을 말할 때"
+  w-calm: "얌전해 보이는 것과 섬망이 없다는 것은 다르다고 동료에게 짚을 때"
+  w-level: "혈액 검사나 모니터에서 몸속 수치가 정상 범위인지 훑어볼 때"
+  w-lab: "혈액 검사 결과 목록을 열어 섬망의 원인을 찾을 때 쓰는 말"
+  w-often: "원인을 치료하면 혼란이 가라앉는 일이 흔하다고 가족에게 설명할 때"
+  w-full: "소변이 가득 찬 방광이 초조의 숨은 원인일 수 있다고 말할 때"
+  w-contact: "조용한 환자가 근무 내내 눈을 마주치지 않았다고 인계할 때"
+  w-shift: "인계 때 이번 근무 시간 내내 환자가 어땠는지 보고할 때"
+  w-safe: "초조한 환자에게 여기선 아무 일 없을 거라고 안심시킬 때"
+  w-hurt: "불안해하는 환자에게 이곳에서는 아무도 해치지 않는다고 말해 줄 때"
+  w-right: "지금 이 순간이라는 걸 강조해 안심시키는 말의 범위를 한정할 때"
+  w-through: "약을 쓰기 전에 환자의 걱정을 끝까지 말로 풀어 보자고 할 때"
+  w-control: "초조가 더 심해지지 않게 약이나 방법으로 증상을 다스린다고 설명할 때"
+  w-physician: "회진 때 처방을 내는 의사에게 문제를 보고하며 격식 있게 부를 때"
+  w-block: "밤새 방해받지 않고 이어지는 수면 시간대를 지켜 주자고 인계할 때"
+  w-fix: "깊은 진정이 섬망을 해결해 주지는 못한다고 설명할 때"
+  w-lighten: "진정제를 깊은 단계에서 가벼운 단계로 줄이자고 의사와 이야기할 때"
+  w-measure: "약 말고 조명 낮추기·말 걸기 같은 비약물 대처를 가리킬 때"
+  w-goal: "의사와 오늘 환자를 어느 정도 진정 상태로 둘지 정할 때"
+  w-injury: "억제대를 쓰면 손목에 상처나 멍이 생길 수 있다고 경고할 때"
+  w-reassess: "억제대를 쓰는 동안 정해진 시간마다 계속 필요한지 다시 따져 볼 때"
+  w-need: "억제대를 계속 써야 할 이유가 아직 남았는지 근거를 따질 때"
+  w-symptom: "환자에게 나타난 떨림·땀 같은 증상이 언제 시작됐는지 말할 때"
+  w-guide: "CIWA 점수를 보고 약을 얼마나 줄지 정하는 기준으로 삼을 때"
+  w-score: "CIWA를 매기고 동료에게 숫자를 보고할 때"
+  w-quickly: "섬망은 하루 이틀 새에 갑자기 생긴다고 가족에게 알려 줄 때"
+  w-build: "치매는 몇 달에 걸쳐 조금씩 쌓이며 진행된다고 설명할 때"
+  w-slowly: "치매는 오랜 시간에 걸쳐 서서히 진행한다고 섬망과 비교할 때"
+  w-area: "환자 주변의 걸림돌을 치워 안전한 공간을 만들라고 지시할 때"
+  w-everyone: "위기 현장에서 그 자리에 있는 모든 직원에게 한꺼번에 지시할 때"
+  w-apply: "중심정맥관이 빠진 자리를 손으로 힘주어 눌러 지혈할 때"
+  w-iv: "약과 수액을 넣을 정맥 통로가 새로 필요하다고 말할 때"
+  w-anything: "새 정맥로를 잡기 전에는 다른 약을 아무것도 주지 말라고 할 때"
+  w-reduce: "칼륨과 마그네슘을 확인해 부정맥 위험을 낮추려 할 때"
+  w-stat: "처방에 '지금 바로'라고 붙은 심전도를 받았을 때"
+  w-proceed: "위험한 약을 주기 전에 의사와 상의한 뒤 투여를 이어 가자고 할 때"
+  w-benzo: "금단 발작 중에 처방된 진정 약을 가져오라고 동료에게 줄여 부를 때"
+  w-seizure: "환자가 경련하기 시작한 시각을 재서 기록하라고 할 때"
+  w-stop: "발작이 그칠 때까지 약을 이어 가겠다고 목표를 말할 때"
+  w-hope: "섬망이 예상보다 길어져 가족에게 아쉬운 소식을 전할 때"
+  w-red: "억제대에 묶인 환자의 얼굴이 붉게 변할 때 위급함을 알리는 말"
+  w-safely: "억제대를 쓴 환자의 자세를 다치지 않게 바꾸겠다고 말할 때"
+  w-plan: "억제대를 계속 쓸지 말지 정해 둔 계획을 다시 따져 볼 때"
+  w-recheck: "손목에 패드를 댄 뒤 억제대가 너무 조이지 않는지 다시 살펴볼 때"
+
+# 11. 새 단어 (word-add)
+new_words:
+  - id: w-clearly
+    en: clearly
+    ipa: "/ˈklɪrli/"
+    ko: 또렷하게
+    icon: speaker
+    example: Seeing and hearing clearly helps you stay oriented.
+    exKo: 잘 보고 잘 들리면 지남력을 유지하는 데 도움이 돼요.
+    cue: 안경·보청기를 끼운 뒤 잘 보이고 들리는지 물을 때
+    tag: 소통·안심
+    distractorsEn: [cleverly, closely]
+    distractorsKo: [희미하게, 크게]
+    chips: [[clear, ly]]
+    decoyChips: [clean]
+    insert_after: w-clear
+
+# 20. 삭제할 단어(고아가 됨)
+remove_words: [w-reinsert, w-short, w-acting, w-attention, w-assume, w-room, w-week]
+
+# 상황 11 context의 words 교체 등 nuance 수정은 data_4.yaml

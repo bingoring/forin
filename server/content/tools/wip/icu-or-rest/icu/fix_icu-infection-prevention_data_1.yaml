@@ -1,0 +1,131 @@
+# 단어 수정 데이터 (fix-icu-infection-prevention-A.md F24~F29, D11-*)
+words:
+  w-blame:
+    ko: "탓·비난"
+    cue: "잘못을 누구 책임으로 돌리는 일, '누구 ___도 아니에요'처럼 쓰는 명사"
+    distractorsKo: ["칭찬", "용서"]
+  w-line:
+    ko: "라인(혈관 카테터)"
+    distractorsKo: ["흉강 배액 튜브", "위장 영양 튜브"]
+  w-brush:
+    ko: "칫솔질하다"
+  w-grab:
+    ko: "챙기다"
+  w-step:
+    ko: "단계"
+    cue: "번들처럼 큰 일을 이루려고 차례로 밟는 작은 동작 하나"
+  w-measure:
+    ko: "대책"
+    cue: "감염관리팀이 더 하라고 권하는 구체적인 방법 하나하나"
+  w-site:
+    distractorsKo: ["약병", "혈관"]
+  w-dressing:
+    distractorsKo: ["부목", "봉합사"]
+  w-mean:
+    distractorsKo: ["요청하다", "금지하다"]
+  w-wear:
+    distractorsKo: ["벗다", "세탁하다"]
+  w-tighten:
+    distractorsKo: ["풀어 주다", "유지하다"]
+  w-fair:
+    distractorsKo: ["불공평한", "신속한"]
+  w-consistent:
+    distractorsKo: ["즉흥적인", "독립적인"]
+  w-essential:
+    distractorsKo: ["선택적인", "부수적인"]
+  w-check:
+    cue: "매 근무·매일 드레싱이나 적응증을 하나씩 살필 때 쓰는 동사"
+  w-environmental:
+    cue: "병실 공기·표면·물을 대상으로 하는(점검·검토 앞에 붙는)"
+  w-stool:
+    cue: "C. diff가 의심될 때 검사실로 보내는, 환자가 본 변"
+  w-severely:
+    cue: "면역 수치가 아주 크게 떨어졌을 때처럼 정도가 지나친"
+  w-low:
+    cue: "면역이나 수치가 기준보다 밑에 있는"
+  w-weak:
+    cue: "면역이 균을 막아 낼 힘이 모자란"
+  w-quickly:
+    cue: "내성균이 하루 만에 옆 환자에게 번질 만큼 지체 없이"
+# distractorsEn 품사표(F25·F29) — 최종값 둘
+distractorsEn:
+  w-gown: [gauze, crown]
+  w-leave: [lease, heave]
+  w-remove: [renew, revoke]
+  w-enter: [center, render]
+  w-help: [heal, hold]
+  w-tie: [tip, tow]
+  w-kill: [chill, fill]
+  w-vein: [rein, vane]
+  w-dry: [drab, wry]
+  w-check: [cheer, chuck]
+  w-change: [chant, charge]
+  w-early: [yearly, easily]
+  w-lower: [raise, loosen]
+  w-lung: [rung, lump]
+  w-regular: [regal, singular]
+  w-sign: [scene, sigh]
+  w-mean: [lean, mend]
+  w-tell: [sell, yell]
+  w-safe: [same, sane]
+  w-device: [advice, novice]
+  w-bedside: [bedsore, bedtime]
+  w-move: [prove, mow]
+  w-notice: [nourish, notate]
+  w-loose: [close, loud]
+  w-key: [keen, coy]
+  w-break: [brake, brick]
+  w-element: [ailment, elephant]
+  w-meet: [melt, greet]
+  w-count: [mount, cough]
+  w-document: [dominate, augment]
+  w-log: [lob, lag]
+  w-review: [preview, revenue]
+  w-resistant: [resident, reluctant]
+  w-organism: [organ, organist]
+  w-cohort: [comfort, cohere]
+  w-limit: [limp, lift]
+  w-sample: [staple, example]
+  w-start: [stare, stall]
+  w-alcohol: [alkali, alcove]
+  w-course: [source, horse]
+  w-secondary: [sedentary, sanitary]
+  w-yeast: [east, feast]
+  w-watch: [match, catch]
+  w-give: [dive, live]
+  w-identify: [intensify, ignite]
+  w-without: [within, throughout]
+  w-grab: [grade, brag]
+  w-airborne: [airtight, airsick]
+  w-strict: [strident, stark]
+  w-essential: [eventual, potential]
+  w-low: [slow, raw]
+  w-weak: [meek, bleak]
+  w-restore: [restock, rescue]
+  w-escalate: [excavate, escape]
+  w-fair: [faint, frail]
+  w-consistent: [confident, convenient]
+  w-priority: [parity, property]
+  w-pressure: [pleasure, treasure]
+  w-must: [might, may]
+  w-source: [sauce, course]
+  w-immune: [immense, immobile]
+  w-sheet: [sheep, sheath]
+  w-cover: [cower, hover]
+  w-bring: [fling, wring]
+  w-site: [sight, suite]
+  w-spore: [spire, spoke]
+decoy_chip_replace:
+  w-help: {hell: heap}
+  w-transmission: {tramp: trap}
+  w-daily: {die: day}
+  w-diarrhea: {die: dye}
+  w-fit: {"fat-": "fix-"}
+  w-different: {deaf: def}
+  w-cohort: {cow: core}
+  w-precaution: {cow: call}
+  w-watch: {witch: patch}
+decoy_chip_add:
+  w-loose: [lose]
+# 결정 11 — 태그를 빼고 은행에서 지울 쉬운 말(어느 문장도 태그하지 않게 됨)
+remove: [w-hospital, w-different, w-tell]

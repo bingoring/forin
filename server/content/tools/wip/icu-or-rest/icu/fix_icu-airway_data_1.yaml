@@ -1,0 +1,83 @@
+# S0~S6 문장 수정. s=상황 번호, i=문장 번호. d1/d2=distractorsKo 첫째/둘째만 교체, dko=둘 다.
+sent:
+# --- S0 삽관 물품 준비·점검
+- {s: 0, i: 0, d1: "후두경 날을 테스트하고 튜브 커프를 확인할게요."}
+- {s: 0, i: 1, d1: "흡인기는 침상 곁에 설치돼 있고 충전됩니다."}
+- {s: 0, i: 3, blank: {answer: "lay out", options: ["lay out", "throw away", "clean up", "carry off"]}}
+- {s: 0, i: 4, d1: "시작하기 전에 기도 카트를 벽 쪽으로 밀어 놓을게요."}
+- {s: 0, i: 5, d1: "트레이에 뭔가 빠져 보이면 말해 주세요."}
+# --- S1 RSI 약물 준비 보조
+- s: 1
+  i: 0
+  decoy: "in the fridge"
+  why: "'separate syringes'로 나눠 말하면 두 약을 섞지 않았다는 점이 분명해져요. 주사기를 나눠 두면 한 약씩 따로 주입할 수 있어요."
+  blank: {answer: separate, options: [separate, frozen, empty, broken]}
+- s: 1
+  i: 2
+  decoy: "with the pharmacy"
+  d2: "주입이 끝나면 용량을 같이 기록할게요."
+  blank: {answer: doses, options: [doses, prices, colors, rooms]}
+- {s: 1, i: 3, blank: {answer: ready, options: [ready, sorry, late, afraid]}}
+- {s: 1, i: 4, decoy: "to the pharmacist", d1: "그 다음에 근이완제 라벨을 바로 보여 드릴게요.", d2: "그 다음에 근이완제 시각을 바로 적을게요."}
+- s: 1
+  i: 5
+  decoy: "with the family"
+  d1: "시작하기 전에 농도를 차트에 적어요."
+  d2: "시작하기 전에 주사기를 나란히 놓아요."
+  blank: {answer: "double-check", options: ["double-check", "write over", "throw away", "pass around"]}
+# --- S2 삽관 체위·BURP 보조
+- {s: 2, i: 0, icon: hospital}
+- s: 2
+  i: 1
+  why: "'how you want'로 물으면 시술자가 원하는 강도를 직접 말하게 돼요. BURP는 후두 시야를 조정하는 외부 압박 기법이라 시술자의 눈에 맞춰요."
+- {s: 2, i: 2, d1: "지금 연골을 손끝으로 찾아 위치를 짚어 주세요.", d2: "튜브가 들어가면 연골 압박을 천천히 풀어 주세요."}
+- s: 2
+  i: 4
+  ko: "압박을 더 세게 하거나 약하게 해야 하면 알려 주세요."
+  d1: "압박을 더 세게 하거나 약하게 해야 하면 적어 주세요."
+  d2: "압박을 더 길게 하거나 짧게 해야 하면 알려 주세요."
+# --- S3 삽관 후 위치 확인 협조
+- s: 3
+  i: 0
+  d1: "캡노그래피에서 색 변화가 지속되어 엑스레이 결과를 기다려요."
+  blank: {answer: confirming, options: [confirming, cleaning, drying, warming]}
+- s: 3
+  i: 2
+  d1: "튜브 깊이를 확인하기 위해 흉부 엑스레이를 기다릴게요."
+  blank: {answer: depth, options: [depth, color, brand, price]}
+- {s: 3, i: 3, decoy: "with a smile", d1: "이 사진을 바로 팀과 공유할게요."}
+- s: 3
+  i: 4
+  d2: "확인 내용을 게시판에 기록해요."
+  blank: {answer: document, options: [document, delete, fold, hide]}
+- {s: 3, i: 5, decoy: "and labeled"}
+# --- S4 기관절개관 기본 관리
+- {s: 4, i: 0, blank: {answer: ties, options: [ties, labels, sheets, gloves]}}
+- {s: 4, i: 1, icon: shield, blank: {answer: Humidified, options: [Humidified, Filtered, Bottled, Portable]}}
+- s: 4
+  i: 2
+  d1: "흡인하고 나서 양쪽 폐음을 다시 들어 봐요."
+  d2: "흡인할 때는 맞는 크기의 카테터를 골라 써요."
+  blank: {answer: clear, options: [clear, warm, tidy, numb]}
+- {s: 4, i: 3, chunks: ["I let him know", "it's", "suction time", "before I start", "."], decoy: "with a towel"}
+- {s: 4, i: 4, blank: {answer: loose, options: [loose, new, short, white]}}
+- {s: 4, i: 5, d1: "가습기에 물이 깨끗한지 확인해요."}
+# --- S5 기관절개 부위 드레싱·피부
+- s: 5
+  i: 2
+  decoy: "in the drawer"
+  blank: {answer: irritation, options: [irritation, tanning, pressure, bleeding]}
+- {s: 5, i: 3, blank: {answer: about, options: [about, afraid, sorry, proud]}}
+- s: 5
+  i: 4
+  chunks: ["There's some drainage,", "but", "the wound edges", "look clean", "."]
+  blank: {answer: drainage, options: [drainage, odor, crusting, redness]}
+- {s: 5, i: 5, blank: {answer: document, options: [document, delete, lose, hide]}}
+# --- S6 예상 어려운 기도 준비
+- {s: 6, i: 0, blank: {answer: laryngoscope, options: [laryngoscope, stethoscope, microscope, otoscope]}}
+- s: 6
+  i: 1
+  decoy: "with the form"
+  d1: "구조 옵션으로 성문상 기도기 크기를 재 둘게요."
+  d2: "구조 옵션으로 성문상 기도기 윤활제도 준비해 둘게요."
+  blank: {answer: supraglottic, options: [supraglottic, subglottic, sublingual, subcutaneous]}

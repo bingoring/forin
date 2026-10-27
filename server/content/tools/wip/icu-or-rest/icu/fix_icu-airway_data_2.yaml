@@ -1,0 +1,120 @@
+# S7~S13 문장 수정
+sent:
+# --- S7 전산소화·apneic 산소
+- {s: 7, i: 0, d1: "몇 분간 전산소화해서 마스크를 얼굴에 맞춰 둘게요."}
+- s: 7
+  i: 1
+  d1: "apneic 산소화를 위해 비강 캐뉼라 연결관도 살펴 둘게요."
+  blank: {answer: cannula, options: [cannula, swab, bracelet, clamp]}
+- {s: 7, i: 2, decoy: "more paperwork"}
+- {s: 7, i: 3, decoy: "with the blanket", d1: "약물을 주입하기 전에 흡인기를 켜 둘게요."}
+- {s: 7, i: 5, blank: {answer: higher, options: [higher, lower, faster, colder]}}
+# --- S8 혈역학 붕괴 대비
+- s: 8
+  i: 0
+  decoy: "for the family"
+  blank: {answer: ready, options: [ready, hidden, away, returned]}
+- {s: 8, i: 1, decoy: "in the hallway"}
+- s: 8
+  i: 2
+  decoy: "on the board"
+  d1: "시작하기 전에 혈압 기준치를 재 둘게요."
+  d2: "전 과정 동안 혈압을 흐름표에 적을게요."
+  blank: {answer: watch, options: [watch, explain, print, discuss]}
+- s: 8
+  i: 3
+  en: "I'll have a fluid bolus ready to give if you order one."
+  ko: "처방하시면 바로 줄 수 있게 수액 볼루스를 준비해 둘게요."
+  chunks: ["I'll have", "a fluid bolus", "ready to give", "if you order one", "."]
+  words: [w-fluid, w-bolus, w-ready, w-give, w-order]
+  tag: "처방 대기"
+  icon: pill
+  why: "'if you order one'으로 투여 결정은 의사의 처방에 달려 있다고 밝혀요. 'ready to give'는 처방이 떨어지면 바로 줄 수 있게 준비해 둔 상태를 말해요."
+  d1: "처방하시면 바로 줄 수 있게 수액 볼루스 주머니를 확인해 둘게요."
+  d2: "처방하시면 바로 알릴 수 있게 수액 볼루스를 준비해 둘게요."
+- {s: 8, i: 5, d1: "혈압 숫자를 소리 내어 알리면 팀이 화면을 안 봐도 돼요."}
+# --- S9 화상·부종 기도 조기 확보
+- {s: 9, i: 0, decoy: "so his family is here", d2: "기도 화상은 빠르게 부을 수 있어서 조기 삽관 카트를 침상에 둬요."}
+- s: 9
+  i: 1
+  decoy: "to rest at home"
+  d2: "쉰 목소리와 협착음은 기도가 좁아진다는 경고 징후예요."
+  blank: {answer: stridor, options: [stridor, sneezing, yawning, hiccups]}
+- s: 9
+  i: 2
+  decoy: "with the chart"
+  d1: "팀에 알리고 나서 기도 확보 장비를 침상 옆에 가져올게요."
+  d2: "팀이 오는 동안 침상 옆에서 삽관 카트를 열어 둘게요."
+  blank: {answer: secure, options: [secure, weigh, label, mark]}
+- s: 9
+  i: 4
+  decoy: "at the nurses' station"
+  d1: "점심 전에 지금 마취과를 호출하고 있어요."
+  blank: {answer: worse, options: [worse, busy, noisy, crowded]}
+- {s: 9, i: 5, blank: {answer: "close off", options: ["close off", "dry out", "warm up", numb]}}
+# --- S10 기관절개관 교체 보조
+- {s: 10, i: 0, d1: "폐쇄자를 새 관에 끼우고 윤활제를 발라 둘게요.", d2: "예비 기관절개관 커프에 바람을 넣어 새는지 볼게요."}
+- {s: 10, i: 1, blank: {answer: desaturates, options: [desaturates, overheats, dehydrates, shivers]}}
+- s: 10
+  i: 3
+  en: "This is his first change, so we'll go slowly and I'll explain each step to him."
+  ko: "첫 교체라서 천천히 진행하고, 단계마다 환자에게 설명해 드릴게요."
+  chunks: ["This is", "his first change,", "so we'll go slowly", "and I'll explain", "each step to him", "."]
+  why: "'we'll go slowly'는 교체를 맡은 사람과 보조자가 함께 속도를 맞춘다는 말이고, 'I'll explain each step to him'은 내 몫을 환자에게 설명하는 일로 정해요. 처음 겪는 환자는 예측이 안 돼 불안하니 알려 가며 해요."
+  d1: "첫 교체라서 천천히 진행하고, 단계마다 환자에게 정리해 드릴게요."
+  d2: "둘째 교체라서 천천히 진행하고, 단계마다 환자에게 설명해 드릴게요."
+- s: 10
+  i: 4
+  en: "I'll hold his head steady while you remove the old tube."
+  ko: "기존 튜브를 빼는 동안 머리가 움직이지 않게 잡고 있을게요."
+  chunks: ["I'll hold", "his head steady", "while you remove", "the old tube", "."]
+  words: [w-hold, w-remove, w-old, w-tube]
+  why: "'while you remove'는 상대가 하는 일과 내가 하는 일을 동시에 맞춰요. 머리가 움직이면 새 관이 들어갈 길이 어긋날 수 있어서 보조자가 머리를 받쳐 줘요."
+  decoy: "with both hands"
+  d1: "기존 드레싱을 떼는 동안 머리가 움직이지 않게 잡고 있을게요."
+  d2: "기존 튜브를 닦는 동안 머리가 움직이지 않게 잡고 있을게요."
+  blank: {answer: remove, options: [remove, label, clean, count]}
+- {s: 10, i: 5, d1: "새 기관절개관이 확인되면 산소 수치를 흐름표에 적어요.", d2: "새 기관절개관이 확인되면 산소 유량을 원래대로 맞춰요."}
+# --- S11 특수 튜브 관리
+- {s: 11, i: 2, d1: "청진하려고 한쪽 내강 잠금 장치를 챙길게요.", d2: "양쪽이 분리되면 튜브 깊이를 기록할게요."}
+- s: 11
+  i: 3
+  en: "He needs this tube for one-lung ventilation to protect the good lung."
+  ko: "건강한 쪽 폐를 보호하려고 한쪽 폐 환기가 필요해서 이 튜브를 써요."
+  chunks: ["He needs", "this tube", "for one-lung ventilation", "to protect the good lung", "."]
+  words: [w-need, w-tube, w-ventilation, w-lung]
+  why: "'for … to …'로 쓰는 이유(한쪽 폐 환기)와 목적(건강한 폐 보호)을 이어요. 한쪽 폐에 심한 출혈이나 새는 곳이 있을 때 튜브로 양쪽을 갈라 두면 건강한 폐로 피나 공기가 넘어가는 것을 막을 수 있어요."
+  decoy: "in the morning"
+  d1: "오른쪽 폐를 보호하려고 한쪽 폐 환기가 필요해서 이 튜브를 써요."
+  d2: "건강한 쪽 폐를 보호하려고 한쪽 폐 환기가 필요해서 이 기구를 써요."
+  blank: {answer: protect, options: [protect, weigh, wash, tilt]}
+- {s: 11, i: 4, decoy: "to the chart"}
+- s: 11
+  i: 5
+  en: "I'll listen to each lung separately while you clamp one side."
+  ko: "한쪽을 잠가 주시면 양쪽 폐를 따로따로 들어 볼게요."
+  chunks: ["I'll listen", "to each lung", "separately", "while you clamp", "one side", "."]
+  words: [w-lung, w-separately, w-clamp, w-side]
+  why: "'while you clamp one side'는 시술자가 하는 일과 내가 듣는 일을 나눠요. 한쪽을 잠그면 반대쪽 폐 소리만 들려서 어느 쪽이 환기되는지 구분돼요."
+  d1: "한쪽을 잠가 주시면 심장을 따로따로 들어 볼게요."
+  d2: "한쪽을 잠가 주시면 양쪽 폐를 따로따로 기록할게요."
+# --- S12 발성밸브
+- s: 12
+  i: 1
+  d1: "밸브를 달려고 입안 분비물을 먼저 흡인해요."
+  blank: {answer: breathe, options: [breathe, sleep, eat, blink]}
+- s: 12
+  i: 2
+  d1: "밸브를 빼고 나면 호흡과 맥박을 한동안 다시 지켜볼게요."
+  blank: {answer: struggles, options: [struggles, eats, smiles, reads]}
+- {s: 12, i: 3, chunks: ["I tell him", "he can try to talk", "now that", "the cuff is down", "."]}
+- {s: 12, i: 4, decoy: "at the window"}
+- {s: 12, i: 5, d2: "밸브를 시도하려고 의식과 호흡을 흐름표에 적어요."}
+# --- S13 흡인성 폐렴 예방
+- s: 13
+  i: 0
+  why: "'to reduce'로 목적을 밝혀요. 상체를 높이면 중력 덕분에 위 내용물이 기도로 넘어가는 일이 줄어요."
+  d1: "침대 머리를 높일 때 튜브가 당기지 않게 잡아요."
+- {s: 13, i: 1, d1: "분비물이 새어 들어가지 않도록 커프압을 기록해요."}
+- {s: 13, i: 3, icon: hospital}
+- {s: 13, i: 4, blank: {answer: schedule, options: [schedule, whim, budget, dare]}}

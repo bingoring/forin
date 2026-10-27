@@ -1,0 +1,91 @@
+# 순서 카드·뉘앙스 수정 데이터. 키 s = 상황 번호(0부터), lines의 키 = 줄 번호(0부터)
+order:
+  - s: 0   # B S1 [안전] 벗은 뒤 손위생
+    lines:
+      3: {en: "On the way out, gloves off first, then the gown, then clean your hands.", ko: "나올 때는 장갑을 먼저, 그다음 가운을 벗고, 마지막에 손을 소독하세요", note: "퇴실"}
+    why: "먼저 손을 소독하고, 마른 뒤 가운을 입은 다음 장갑을 껴요. 나올 때는 장갑이 먼저, 가운이 그다음이고, 벗은 뒤 다시 손을 소독해요."
+  - s: 3   # B S4 + A F6
+    lines:
+      0: {en: "He's on a breathing machine, so we take small steps to protect his lungs.", ko: "인공호흡기를 달고 있어서 폐를 보호하려고 작은 조치들을 해요"}
+      2: {en: "Next, we brush his teeth and clean his mouth on a regular schedule.", ko: "다음으로 정해진 일정에 따라 이를 닦고 입안을 닦아 드려요"}
+  - s: 4   # B S5
+    lines:
+      3: {en: "Thanks for helping keep them safe — it's never about blame.", ko: "그분들을 지켜 주셔서 감사해요, 탓하는 게 아니에요"}
+  - s: 5   # B S6
+    lines:
+      2: {en: "After he's used them, those same devices get wiped again.", ko: "아버님이 쓰고 나면 그 기기를 다시 닦아요"}
+    why: "질문에 먼저 확답하고, 기기를 침상에 오기 전에 닦는다고 말한 뒤, 쓰고 난 뒤에도 같은 기기를 다시 닦는다고 알리고, 효과로 마무리해요."
+  - s: 7   # B S8
+    lines:
+      2: {en: "So that leaves the sedation break — every element has to be met.", ko: "그럼 진정 중단이 남았는데, 모든 요소가 충족돼야 해요"}
+      3: {en: "Once it's done, I'll log the bundle compliance in the chart.", ko: "끝나면 차트에 번들 준수를 기록할게요"}
+    why: "먼저 항목을 확인하자고 제안하고, 확인된 것을 보고한 뒤, 남은 진정 중단까지 모든 요소가 충족돼야 한다고 짚고, 끝나면 차트에 기록해요."
+  - s: 8   # B S9
+    lines:
+      0: {en: "We check each catheter's indication every morning on rounds.", ko: "매일 아침 회진 때 환자마다 카테터 적응증을 확인해요"}
+  - s: 9   # B S10 + A F1
+    lines:
+      1: {en: "While they get ready, we'll put a clean sheet over him and cover any lines.", ko: "그쪽이 준비하는 동안 깨끗한 시트를 덮고 라인도 덮어요"}
+      2: {en: "At CT, everyone who handles him should put on a clean gown and gloves.", ko: "CT에서는 환자를 다루는 사람 모두가 깨끗한 가운과 장갑을 입어요", note: "착용"}
+    why: "격리 상태를 알리며 먼저 CT에 연락하고, 그쪽이 준비하는 동안 환자와 라인을 덮고, CT에서 환자를 다루는 사람이 새 가운과 장갑을 입고, 끝난 뒤 스캐너를 소독해요."
+  - s: 10  # B S11
+    lines:
+      3: {en: "With their equipment kept apart, let's flag them clearly and reinforce contact precautions.", ko: "장비를 따로 두었으니 이들을 분명히 표시하고 접촉주의를 강화하죠"}
+  - s: 11  # B S12
+    lines:
+      2: {en: "Since gel doesn't kill the spores, we use soap and water for hand hygiene.", ko: "젤은 아포를 못 없애니 손위생은 비누와 물로 해요"}
+    why: "의심되면 검체를 보내고 바로 접촉주의를 시작해요. 젤이 아포에 듣지 않으니 손위생은 비누와 물로 하고, 표면도 같은 이유로 표백제 물티슈를 써요."
+  - s: 12  # B S13
+    lines:
+      2: {en: "To catch them early, let's watch for new fever, diarrhea, or oral thrush.", ko: "그런 감염을 일찍 잡으려고 새로운 열, 설사, 구강 아구창을 지켜보죠"}
+  - s: 13  # B S14
+    lines:
+      2: {en: "If it is, let's check for fever, tenderness, or drainage too.", ko: "그렇다면 열, 압통, 배액도 함께 확인하죠"}
+  - s: 16  # A F7 (order 3번째 줄)
+    lines:
+      2: {en: "For that, grab the N95 you were fit-tested for before you go in.", ko: "그러니 들어가기 전에 밀착검사 받은 N95를 챙기세요"}
+    why: "음압 병실부터 정하고, 들어가는 모두가 N95를 써야 한다는 규칙을 말하고, 밀착검사를 받은 N95를 챙기게 하며, 쓰지 않고 들어간 사람이 있으면 그날 보고해요."
+  - s: 17  # B S18
+    lines:
+      2: {en: "Tightening it means dedicated equipment and strict hand hygiene.", ko: "강화한다는 건 전담 장비와 엄격한 손위생을 뜻해요"}
+  - s: 18  # B S19 + A F3·F4 [안전]
+    lines:
+      0: {en: "First, wash the site well with soap and water.", ko: "먼저 비누와 물로 부위를 잘 씻으세요"}
+      1: {en: "Once it's washed, I'll report the exposure right away.", ko: "씻고 나면 바로 노출을 보고할게요", note: "보고"}
+      2: {en: "With the report in, let's check the source patient's status.", ko: "보고가 들어가면 원환자 상태를 확인하죠", note: "확인"}
+      3: {en: "Based on that, Employee Health will evaluate you for PEP as soon as possible.", ko: "그에 따라 직원 건강관리실이 가능한 한 빨리 PEP 평가를 해 줄 거예요", note: "평가"}
+    why: "먼저 씻고 바로 보고해요. 원환자 상태를 확인한 뒤 직원 건강관리실에서 PEP 평가를 몇 시간 안에 받아요."
+  - s: 20  # B S21
+    lines:
+      2: {en: "If two patients tie at the top, we follow the hospital's policy, not individual judgment.", ko: "두 환자가 최상위에서 같으면 개인 판단이 아니라 병원 정책을 따라요"}
+      3: {en: "If the policy still doesn't settle it, I'll bring it to leadership.", ko: "정책으로도 정해지지 않으면 윗선에 가져갈게요"}
+    why: "부족하다는 사실과 위험 기준을 말하고, 그 기준 아래 위험이 높은 환자가 먼저라고 한 뒤, 같은 위험이면 개인 판단이 아니라 병원 정책을 따르고, 그래도 안 정해지면 윗선에 올려요."
+nuance:
+  - {s: 16, kind: slider, set: {why: "공기매개격리실에는 수술용 마스크가 아니라 N95가 필요해요. 방문객에게는 병원 지침에 따라 N95를 드리고 쓰는 법을 알려 드려요. 잠깐 들어가거나 문 가까이 있어도 수술용 마스크로는 공기 중 입자를 막지 못해요."}}   # F15
+  - s: 2    # F16
+    kind: slider
+    set:
+      cue: "Nurse: \"She's awake, can walk to the bathroom, and the catheter is still in.\""
+      why: "소변줄은 꼭 필요한 이유가 있을 때만 두고, 이유가 없어지면 가능한 한 빨리 빼요. 깨어 있고 스스로 화장실에 갈 수 있다면 오늘 제거를 문의하는 게 맞아요. 퇴원까지, 혹은 하루 더 두면 그만큼 감염 위험이 쌓여요."
+  - s: 15   # F17
+    kind: context
+    scene: {2: {en: "We are managing a nosocomial outbreak involving multiple MDRO cases."}}
+    set: {why: "의료진끼리는 nosocomial 같은 말로 상황을 정확히 전해요. 가족에게는 어렵고 병원이 위험한 곳처럼 들려요. 무슨 일이 있고 무엇을 하는지만 쉬운 말로 알려 줘요."}
+  - s: 14   # F18
+    kind: context
+    scene: {2: {en: "His culture is positive for methicillin-resistant Staphylococcus aureus colonization."}}
+  - s: 17   # F19
+    kind: swap
+    set: {ko: "치료가 어려운 이 균은 빨리 퍼질 수 있어서 특히 조심하고 있어요"}
+  - s: 3    # F20
+    kind: swap
+    set: {ko: "인공호흡기를 달고 있는 동안 폐 감염을 막으려고 구강 간호를 해요"}
+  - s: 5    # F21
+    kind: slider
+    set: {scale: ["disinfect it first", "hang it back as it is", "use it right away"], answerAt: 0}
+  - s: 0    # F22
+    kind: slider
+    set: {scale: ["use the hand gel", "wait until you leave", "skip it this time"], answerAt: 0}
+  - s: 11   # F23
+    kind: slider
+    set: {scale: ["wash with soap and water", "use gel twice instead", "gel is enough this time"], answerAt: 0}
