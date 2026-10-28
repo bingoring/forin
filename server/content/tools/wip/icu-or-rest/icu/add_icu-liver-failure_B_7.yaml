@@ -14,9 +14,9 @@ situations:
     why: 동공 변화를 먼저 알리고, 즉시 식염수와 머리 거상을 지시한 뒤, 투여 사실과 CT 요청을 알리며 의사에게 모든 걸 보고해요.
     lines:
     - ["His pupil just became sluggish, and this is an emergency.", siren, "동공이 방금 둔해졌고, 이건 응급 상황이에요", "선언"]
-    - ["Give the hypertonic saline and elevate his head.", siren, "고장성 식염수를 주고 머리를 높이세요", "지시"]
+    - ["I'm calling neuro and the physician immediately.", pager, "신경팀과 의사에게 즉시 연락하고 있어요", "호출"]
+    - ["While they're on the way, give the hypertonic saline and elevate his head.", siren, "그들이 오는 동안 고장성 식염수를 주고 머리를 높이세요", "지시"]
     - ["I'm pushing it now, and I need a repeat head CT.", pill, "지금 투여하고 있고, 머리 CT를 다시 찍어야 해요", "보고"]
-    - ["I'm calling neuro and the physician immediately about all of it.", pager, "그 모든 걸 신경팀과 의사에게 즉시 연락하고 있어요", "호출"]
 - title: 대량 출혈·응고붕괴 위기
   s:
   - ["제제 요청", bandage, "명령문에 'now'를 붙여 지금 바로 가져오라는 뜻을 분명히 해요. 응고붕괴에서는 혈장, 혈소판, 동결침전제제를 함께 채워요.", "from the", "혈장, 혈소판, 보온 담요를 지금 가져오세요.", "혈장, 새 장갑, 동결침전제제를 지금 가져오세요.", "cryo", "saline", "towels", "gowns"]
@@ -51,5 +51,5 @@ situations:
     lines:
     - ["His mental status just dropped, and he can't protect his airway.", siren, "정신 상태가 방금 떨어졌고, 기도를 지키지 못해요", "보고"]
     - ["I'll get the intubation tray and suction ready.", gear, "삽관 트레이와 흡인 준비를 가져올게요", "준비"]
-    - ["With that ready, let's preoxygenate and position his airway.", gear, "준비되면 예비 산소화하고 기도 자세를 잡읍시다", "산소화"]
+    - ["While that's coming, let's preoxygenate and position his airway.", gear, "그게 오는 동안 예비 산소화하고 기도 자세를 잡읍시다", "산소화"]
     - ["With him positioned like that, I'll hold cricoid pressure while you pass the tube.", handshake2, "그렇게 자세가 잡히면 당신이 튜브를 넣는 동안 윤상연골 압박을 유지할게요", "압박"]

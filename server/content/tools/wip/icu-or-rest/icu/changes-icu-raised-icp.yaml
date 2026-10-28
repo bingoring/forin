@@ -63,7 +63,7 @@ changes:
   id: w-level
   fields:
   - ko
-  why: 남은 문장이 전부 '수평'(drain is level, keep it leveled)이라 ko를 맞춤 — 수치·농도 뜻 문장은 태그를 뺌
+  why: '남은 문장이 전부 ''수평''(drain is level, keep it leveled)이라 ko를 맞춤 — 수치·농도 뜻 문장은 태그를 뺌; A W9: 쓰임이 동사(2.2)·형용사(8.0)·명사(16.0)라 ''수평(을 맞추다)''로'
 - kind: word-remove
   id: w-let
   why: 너무 쉬움 — 어느 문장도 태그하지 않게 됐다
@@ -82,7 +82,7 @@ changes:
   id: w-quiet
   fields:
   - example
-  why: 수정
+  why: 'A S1: 4.1 문장에서 w-quiet 태그를 뺐으므로 예문을 5.0 문장으로'
 - kind: word
   id: w-cough
   fields:
@@ -130,7 +130,7 @@ changes:
   fields:
   - ko
   - example
-  why: 남은 문장이 전부 '처방(된)'이라 ko를 맞춤 — 'in that order' 문장은 태그를 뺌; 예문 문장에서 태그를 뺐으므로 이 말이 쓰인 문장으로 바꿈
+  why: '남은 문장이 전부 ''처방(된)''이라 ko를 맞춤 — ''in that order'' 문장은 태그를 뺌; 예문 문장에서 태그를 뺐으므로 이 말이 쓰인 문장으로 바꿈; A W5: 쓰임이 동사와 명사(16.2 without an order)라 ''처방(하다)''로, 오답 ''처방받다''는 if ordered와 겹쳐 교체'
 - kind: word
   id: w-call
   fields:
@@ -184,8 +184,9 @@ changes:
 - kind: word
   id: w-reposition
   fields:
+  - ko
   - example
-  why: 수정
+  why: 'A W6: ''재위치시키다''가 어색해 ''자세를 다시 잡다''로'
 - kind: word
   id: w-reassess
   fields:
@@ -219,12 +220,9 @@ changes:
   fields:
   - example
   why: 수정
-- kind: word
+- kind: word-remove
   id: w-enough
-  fields:
-  - ko
-  - example
-  why: ko '충분한'이 w-adequate와 같아 정답이 둘이 된다 — enough는 '넉넉한'으로 가름
+  why: 쉬운 말이고 ko '넉넉한'이 enough 뜻이 아님 — 9.1을 고치며 태그가 빠짐
 - kind: word
   id: w-add
   fields:
@@ -337,17 +335,18 @@ changes:
   - en
   - ipa
   why: 활용형을 원형으로
+- kind: word-remove
+  id: w-thirty
+  why: 숫자(공통 목록 zero·ten과 같은 부류) — 14.1 태그 뺌
 - kind: word
   id: w-past
   fields:
   - ko
   - example
   why: 문장에서 'climbs past twenty'라 ko를 맞춤
-- kind: word
+- kind: word-remove
   id: w-twenty
-  fields:
-  - example
-  why: 수정
+  why: 숫자(공통 목록 zero·ten과 같은 부류) — 14.4 태그 뺌
 - kind: word
   id: w-stop
   fields:
@@ -413,6 +412,21 @@ changes:
   - ko
   - ipa
   why: 활용형을 원형으로; 활용형(maxed)을 원형으로 바꾸며 ko도 원형 뜻으로
+- kind: word
+  id: w-medical
+  fields:
+  - ko
+  why: 'A W1: medical therapy(수술이 아닌 내과적 치료)와 맞지 않는 ''의학적인''을 ''내과적인''으로'
+- kind: word
+  id: w-get
+  fields:
+  - ko
+  why: 'A W7: 신경외과 의사를 ''불러오다''(17.3 ko)에 맞춤'
+- kind: word
+  id: w-loop
+  fields:
+  - ko
+  why: 'A W8: ''합류시키다''가 어색해 ''상황을 공유하다''로'
 - kind: word-remove
   id: w-family
   why: 너무 쉬움 — 어느 문장도 태그하지 않게 됐다
@@ -516,11 +530,9 @@ changes:
   - ipa
   - example
   why: 활용형을 원형으로
-- kind: word
+- kind: word-remove
   id: w-separate
-  fields:
-  - example
-  why: 수정
+  why: 20.1에서 'two separate exams'를 뺌 — 어느 문장도 태그하지 않게 됨
 - kind: word-remove
   id: w-talk
   why: 너무 쉬움 — 어느 문장도 태그하지 않게 됐다

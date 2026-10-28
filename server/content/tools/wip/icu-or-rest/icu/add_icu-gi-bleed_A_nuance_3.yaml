@@ -1,0 +1,114 @@
+- situation: "대량출혈 쇼크 대량수혈"
+  items:
+    - kind: slider
+      words: [w-hemorrhagic, w-shock]
+      cue: "Chart note: \"BP crashing, skin cold and clammy, still bleeding heavily.\""
+      scale: [a slow bleed, a heavy bleed, hemorrhagic shock]
+      answerAt: 2
+      why: "출혈로 혈압이 무너지고 피부가 차갑고 축축해지면 출혈성 쇼크로 봐요. 이때는 바로 의사에게 알려요. 대량수혈 프로토콜을 발동할지는 의사가 정하고, 간호사는 그에 맞춰 혈액을 준비하고 기록해요."
+      example: "This is hemorrhagic shock, so the physician is activating the protocol."
+      exKo: "출혈성 쇼크라서 의사가 프로토콜을 발동하고 있어요."
+    - kind: context
+      words: [w-stat]
+      word: stat
+      ko: 당장
+      scenes:
+        - {who: 혈액은행에 전화, icon: stetho, en: "We need the cooler with the first units stat.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Can you get the rapid infuser set up stat?", ok: true}
+        - {who: 환자 가족에게, icon: me, en: "Stat, we're activating the massive transfusion protocol on your father.", ok: false, fix: "He's bleeding a lot, so we're getting blood ready for him right now."}
+      why: "의료진끼리는 stat으로 지금 당장이라는 급함을 한 단어로 전해요. 가족에게 stat, massive transfusion protocol 같은 말은 낯설고 무섭게 들려요. 많이 출혈 중이라 피를 바로 준비한다고 쉬운 말로 알려 줘요."
+- situation: "토혈 기도흡인 위기"
+  items:
+    - kind: slider
+      words: [w-choke, w-airway]
+      cue: "Bedside: \"He's gurgling on blood and can't clear his throat.\""
+      scale: [clearing his throat, choking on blood, not breathing]
+      answerAt: 1
+      why: "피가 목에 고여 숨이 막히는 것은 choking이고, 기도 확보가 가장 먼저예요. 옆으로 눕히고 흡인하면서 도움을 부르고, 이미 숨을 쉬지 않으면 소생 절차로 넘어가요."
+      example: "He's choking on blood, so I'm turning him on his side and suctioning."
+      exKo: "피 때문에 숨이 막혀서 옆으로 눕히고 흡인하고 있어요."
+    - kind: context
+      words: [w-suction]
+      word: suction
+      ko: 흡인하다
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "He's bleeding from the mouth, so I have suction and the intubation tray ready.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Can you hand me the suction while I turn him?", ok: true}
+        - {who: 환자 가족에게, icon: me, en: "We are performing oropharyngeal suctioning to clear blood from his airway.", ok: false, fix: "I'm clearing the blood out of his mouth so he can breathe."}
+      why: "의료진끼리는 suction이라고 짧게 말해도 바로 알아들어요. 가족에게 oropharyngeal suctioning 같은 말은 어렵고 무섭게 들려요. 입안의 피를 빼내서 숨 쉬게 하는 중이라고 쉬운 말로 알려 줘요."
+- situation: "정맥류 불응 출혈 위기"
+  items:
+    - kind: slider
+      words: [w-drip, w-tamponade, w-tips]
+      cue: "Doctor: \"Medications and the balloon aren't controlling the bleed anymore.\""
+      scale: [drips, balloon tamponade, TIPS]
+      answerAt: 2
+      why: "약물(drip), 풍선 탐포네이드, TIPS 순으로 단계가 올라가요. TIPS는 간 안에 션트를 만들어 문맥 압력을 낮추는 시술로, 앞선 치료로 조절되지 않을 때 IR팀이 시행해요. 어떤 단계로 갈지는 의사가 정해요."
+      example: "TIPS is the next step when the drips and the balloon aren't enough."
+      exKo: "주입과 풍선으로 부족하면 다음 단계가 TIPS예요."
+    - kind: context
+      words: [w-transport]
+      word: transport
+      ko: 이송
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "For transport I need a second nurse, the monitor, and blood on the bed.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Can you grab the transport monitor and an airway bag?", ok: true}
+        - {who: 환자 가족에게, icon: me, en: "Intrahospital transport carries a risk of hemodynamic deterioration, but it is necessary.", ok: false, fix: "We're moving him to the procedure room now, and a nurse will stay with him the whole way."}
+      why: "의료진끼리는 transport 한 단어로 이송 준비물과 인력을 말해요. 가족에게 hemodynamic deterioration 같은 말은 위험만 크게 들려 무서워요. 어디로 가고 누가 곁에 있는지를 쉬운 말로 알려 줘요."
+- situation: "재출혈 급변 소생"
+  items:
+    - kind: slider
+      words: [w-drop, w-pressure]
+      cue: "Bedside: \"His pressure fell fast, and he's gray and sweaty.\""
+      scale: [dipping a little, dropping, crashing]
+      answerAt: 2
+      why: "혈압이 조금 내려가면 dipping, 뚜렷하게 내려가면 dropping, 급격히 무너지면 crashing이라고 해요. crashing이면 바로 의사에게 알리고, 수액과 혈액은 지시와 프로토콜대로 빠르게 준비해요."
+      example: "His pressure is crashing, so I'm notifying the physician now."
+      exKo: "혈압이 무너지고 있어서 지금 의사에게 알리고 있어요."
+    - kind: context
+      words: [w-reassess]
+      word: reassess
+      ko: 다시 평가하다
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "I'll reassess his airway and vitals as soon as the blood is up.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Can you reassess his pressure after the second bag?", ok: true}
+        - {who: 환자 가족에게, icon: me, en: "We are reassessing his hemodynamic status after the fluid challenge.", ok: false, fix: "We're checking his blood pressure again right now to see how he's doing."}
+      why: "의료진끼리는 reassess로 치료 뒤 상태를 다시 확인한다고 짧게 말해요. 가족에게 hemodynamic status, fluid challenge 같은 말은 낯설어요. 혈압을 다시 재고 있다고 쉬운 말로 알려 줘요."
+- situation: "응고장애 동반 지속출혈"
+  items:
+    - kind: slider
+      words: [w-ooze, w-everywhere]
+      cue: "Bedside: \"Blood is seeping from every IV site, his mouth, and old wounds.\""
+      scale: [a little ooze, steady ooze, oozing everywhere]
+      answerAt: 2
+      why: "한두 군데에서 조금 스미는 것과 여기저기서 계속 스며 나오는 것은 달라요. 곳곳에서 스며 나오면 응고 인자가 부족하다는 신호일 수 있어서 바로 의사에게 알리고, 혈액 제제는 처방대로 줘요."
+      example: "He's oozing everywhere, so I'm calling the physician now."
+      exKo: "여기저기서 스며 나와서 지금 의사에게 연락할게요."
+    - kind: context
+      words: [w-clot]
+      word: clot
+      ko: 응고
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "Fibrinogen is low, so he can't clot well on his own.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Is he clotting any better after the cryo?", ok: true}
+        - {who: 환자 가족에게, icon: me, en: "His clotting cascade is failing from consumptive coagulopathy.", ok: false, fix: "His blood isn't clotting the way it should, so we're giving him blood products to help."}
+      why: "의료진끼리는 clot 한 단어로 피가 굳는 상태를 말하고 수치와 함께 확인해요. 가족에게 cascade, consumptive coagulopathy 같은 말은 어려워서 겁만 나요. 피가 제대로 굳지 않아 돕고 있다고 쉬운 말로 알려 줘요."
+- situation: "출혈 불응 목표·예후 소통"
+  items:
+    - kind: slider
+      words: [w-honest]
+      cue: "Family: \"Please just tell us the truth, but gently.\""
+      scale: [sugarcoat it all, honest but gentle, blunt and cold]
+      answerAt: 1
+      why: "가족이 진실을 원하면 포장하지 않되 부드럽게 말해요. 예후와 치료 방향은 의사가 설명하고, 간호사는 가족이 이해한 것과 감정을 살피며 의사와 이어 줘요."
+      example: "I want to be honest with you, and I'll stay while we talk."
+      exKo: "솔직하게 말씀드리고 싶어요, 이야기하는 동안 곁에 있을게요."
+    - kind: context
+      words: [w-honest]
+      word: honest
+      ko: 솔직한
+      scenes:
+        - {who: 가족에게, icon: me, en: "I want to be honest with you: the bleeding is very hard to control.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Let's be honest with the family about how sick he is, and let the doctor lead.", ok: true}
+        - {who: 보호자에게, icon: me, en: "Honestly, his odds are poor, and the bleeding probably won't stop.", ok: false, fix: "I want to be honest with you: he is very sick, and the doctor will talk with you about what to expect."}
+      why: "솔직함은 가족에게 중요하지만 말투와 범위가 있어요. 'odds are poor' 같은 말은 차갑고, 예후를 단정하는 일은 의사의 몫이에요. 아픈 정도는 솔직하게 말하되 의사가 설명해 줄 거라고 이어 줘요."

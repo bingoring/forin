@@ -1,0 +1,39 @@
+situations:
+- title: 응고장애 동반 지속출혈
+  s:
+  - ["제제 투여", pill, "세 제제를 쉼표와 and로 이어 빠짐없이 말해요. 'in balance'는 한쪽에 치우치지 않는다는 뜻이에요.", "X1", "혈장이랑 혈소판, 동결침전을 해동하죠.", "혈장이랑 혈소판, 동결침전을 균형 있게 받아 오죠.", "cryo", "saline", "albumin", "iron"]
+  - ["검사 반복", lab, "'Recheck'는 이미 한 검사를 다시 한다는 뜻이에요. 'frequently'가 검사 빈도를 알려요.", "X2", "응고 수치랑 피브리노겐 결과를 자주 의사에게 전해요.", "응고 수치랑 피브리노겐 검체를 자주 검사실로 보내요.", "frequently", "quietly", "politely", "privately"]
+  - ["보온 지시", shield, "'to help'가 목적을 한 구로 붙이는 틀이에요. 'warm'은 체온 유지가 응고를 돕는다는 사실에 기대요.", "X3", "응고를 돕기 위해 이불을 한 장 더 가져와요.", "응고를 돕기 위해 체온을 자주 재요.", "clotting", "hearing", "vision", "digestion"]
+  - ["원리 설명", bulb, "'means'로 증상이 뜻하는 바를 풀어요. 'keep up'은 따라가다, 감당하다라는 구동사예요.", "X4", "여기저기서 스며 나오는 건 혈압이 감당을 못 한다는 뜻이에요.", "여기저기서 스며 나오는 건 신장이 감당을 못 한다는 뜻이에요.", "clotting", "breathing", "immune", "digestive"]
+  - ["원인 보정", compass, "'even worse'는 이미 나쁜 위에 더 나쁘다는 비교예요. 'so'로 원인과 처치를 한 문장에 이어요.", "X5", "체온이 낮고 산증이 있으면 응고가 더 안 되니까 수치부터 다시 뽑아요.", "체온이 낮고 산증이 있으면 응고가 더 안 되니까 원인부터 찾아요.", "worse", "better", "faster", "easier"]
+  - ["비율 설명", chartup, "'in a one-to-one-to-one ratio'는 세 제제의 비율을 숫자로 말해요. 'We're giving'은 지금 하고 있는 일이에요.", "X6", "제제들을 1:1:1 비율로 해동하고 있어요.", "제제들을 1:1:1 비율로 투여하려고 쿨러를 열고 있어요.", "ratio", "rate", "scale", "order"]
+  - ["재검 약속", calendar, "'a fresh set'은 새로 뽑은 검체 한 벌이라는 뜻이에요. 'in twenty minutes'로 시점을 분명히 해요.", "X7", "20분 뒤에 응고 검사 라벨을 붙일게요.", "20분 뒤에 새로 응고 검사 결과를 받으러 갈게요.", "coags", "enzymes", "hormones", "minerals"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 응고장애 동반 지속출혈 4문장 순서
+    why: 스며 나오는 원인을 짚고, 부족한 것을 채우고, 그걸 돕는 보온을 하고, 들어간 뒤 재검을 약속해요.
+    lines:
+    - ["Oozing everywhere means his clotting factors just can't keep up.", bulb, "여기저기서 스며 나오는 건 응고 인자가 감당을 못 한다는 뜻이에요", "원인"]
+    - ["To replace what's missing, let's give plasma, platelets, and cryo in balance.", pill, "부족한 걸 채우려고 혈장이랑 혈소판, 동결침전을 균형 있게 투여하죠", "투여"]
+    - ["Keep him warm to help that along, since a cold patient clots even worse.", shield, "그걸 돕도록 따뜻하게 유지해요, 차가우면 응고가 더 안 되니까요", "보온"]
+    - ["Once those are in, I'll send a fresh set of coags in twenty minutes.", lab, "그게 들어가면 20분 뒤에 새로 응고 검사를 보낼게요", "재검"]
+- title: 출혈 불응 목표·예후 소통
+  s:
+  - ["상황 설명", faceWorried, "'very hard to control'은 어렵다는 점을 숨기지 않는 직접적인 표현이에요. 'with his liver disease'로 원인을 한 구로 붙여요.", "X1", "신장질환 때문에 출혈을 조절하기가 굉장히 어려워요.", "간질환 때문에 통증을 조절하기가 굉장히 어려워요.", "liver", "kidney", "heart", "lung"]
+  - ["대화 시작", speech, "'I want to be honest'는 어려운 이야기를 꺼내기 전에 쓰는 도입이에요. 'what we're facing'은 마주한 상황을 완곡하게 가리켜요.", "X2", "지금 마주한 상황에 대해 자세하게 말씀드리고 싶어요.", "지금 마주한 상황에 대해 먼저 말씀드리고 싶어요.", "honest", "formal", "brief", "quiet"]
+  - ["가치 묻기", handshake2, "'what matters most'는 환자의 가치를 묻는 열린 질문 틀이에요. 'Let's talk'로 함께 이야기하자고 제안해요.", "X3", "지금 그분께 가장 불편한 게 무엇인지 이야기해 보죠.", "지금 가족분께 가장 중요한 게 무엇인지 이야기해 보죠.", "matters", "hurts", "changes", "scares"]
+  - ["경과 설명", chartup, "'We've tried'로 지금까지 한 일을 나열해 가족이 이해하게 해요. 'keeps returning'은 반복해서 다시 생긴다는 뜻이에요.", "X4", "풍선이랑 약물, IR까지 다 준비했지만 출혈이 계속 다시 생겨요.", "풍선이랑 약물, IR까지 다 해봤지만 열이 계속 다시 생겨요.", "IR", "CT", "MRI", "X-ray"]
+  - ["원인 설명", bulb, "'means'로 병이 뜻하는 바를 풀어 줘요. 'on its own'은 스스로라는 뜻이에요.", "X5", "간질환 때문에 몸 스스로 통증을 멈추지 못해요.", "간질환 때문에 몸 스스로 감염을 막지 못해요.", "bleeding", "pain", "itching", "infection"]
+  - ["선택 존중", faceWorried, "'Some … others'로 서로 다른 선택을 나란히 두어 판단하지 않아요. 'both are okay'가 어느 쪽도 틀리지 않다는 말이에요.", "X6", "계속 싸우기를 택하는 가족도 있고, 기다리기를 택하는 가족도 있어요, 둘 다 괜찮아요.", "계속 지켜보기를 택하는 가족도 있고, 편안함을 택하는 가족도 있어요, 둘 다 괜찮아요.", "comfort", "surgery", "transfer", "dialysis"]
+  - ["지지 약속", handshake2, "'Whatever you decide'가 어떤 결정이든 존중한다는 뜻이에요. 'support you and him'으로 가족과 환자 모두를 말해요.", "X7", "무엇을 결정하시든, 그분과 가족분의 짐을 계속 맡아 드릴게요.", "무엇을 결정하시든, 그분과 가족분께 계속 연락드릴게요.", "decide", "feel", "hear", "see"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 불응 출혈 목표 소통 4문장 순서
+    why: 솔직하게 말하겠다고 먼저 알리고, 지금까지의 경과를 설명한 뒤, 선택지를 나란히 놓고, 어떤 결정이든 지지한다고 마무리해요.
+    lines:
+    - ["I want to be honest with you about what we're facing.", speech, "지금 마주한 상황에 대해 솔직하게 말씀드리고 싶어요", "도입"]
+    - ["That's what we're facing: we've tried the balloon, the medications, and IR, and the bleeding keeps returning.", chartup, "그게 상황이에요, 풍선과 약물, IR까지 해봤지만 출혈이 계속 다시 생겨요", "경과"]
+    - ["From here, some families choose to keep fighting, others choose comfort, both are okay.", faceWorried, "여기서부터는 계속 싸우는 가족도 편안함을 택하는 가족도 있고 둘 다 괜찮아요", "선택"]
+    - ["Whatever you decide, we'll support you and him through it.", handshake2, "무엇을 결정하시든 그분과 가족분을 계속 지지해 드릴게요", "지지"]

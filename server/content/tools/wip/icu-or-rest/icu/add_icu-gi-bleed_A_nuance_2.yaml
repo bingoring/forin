@@ -1,0 +1,134 @@
+- situation: "제한적 수혈 목표 판단"
+  items:
+    - kind: slider
+      words: [w-restrictive]
+      cue: "Team plan: \"Transfuse only when the hemoglobin is quite low or he has symptoms.\""
+      scale: [very liberal, fairly moderate, restrictive]
+      answerAt: 2
+      why: "restrictive(제한적) 전략은 꼭 필요할 때만 수혈하도록 기준을 낮게 잡는 방식이에요. liberal(관대한) 전략은 더 높은 수치에서 일찍 수혈해요. 어떤 기준을 쓸지, 수치가 얼마인지는 의사 처방대로 따라요."
+      example: "We follow the restrictive target unless he is bleeding actively."
+      exKo: "활동성 출혈이 아니면 제한적 목표를 따라요."
+    - kind: context
+      words: [w-transfuse]
+      word: transfuse
+      ko: 수혈하다
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "Per your order, we'll transfuse if the hemoglobin falls below the target.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Do we transfuse now, or wait for the repeat hemoglobin?", ok: true}
+        - {who: 환자에게, icon: me, en: "We transfuse at the restrictive threshold, and you're not there yet.", ok: false, fix: "We'll recheck your blood count, and if it drops or you feel worse, the doctors will decide about giving blood."}
+      why: "의료진끼리는 transfuse와 target 같은 말로 수혈 조건을 짧게 말해요. 환자에게 restrictive threshold, 'you're not there yet'은 차갑고 무슨 뜻인지 알기 어려워요. 수치를 다시 확인하고 달라지면 의사가 판단한다고 쉬운 말로 알려 줘요."
+- situation: "PPI 주입 관리"
+  items:
+    - kind: slider
+      words: [w-reduce, w-acid]
+      cue: "Patient: \"Does the PPI drip shut my stomach acid off completely?\""
+      scale: [lowers it a little, lowers it a lot, removes all acid]
+      answerAt: 1
+      why: "PPI는 위산 분비를 크게 줄여서 궤양이 아물 환경을 만들지만, 위산을 완전히 없애지는 못해요. 주입 속도와 기간은 처방대로 지켜요."
+      example: "The PPI lowers acid a lot, so the ulcer has time to heal."
+      exKo: "PPI가 위산을 많이 줄여서 궤양이 아물 시간이 생겨요."
+    - kind: context
+      words: [w-rate]
+      word: rate
+      ko: 속도
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "The PPI is running at the ordered rate, and I'll watch for rebleeding.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Can you double-check the rate on the pump with me?", ok: true}
+        - {who: 환자에게, icon: me, en: "The infusion rate is programmed per the order, with hard dose limits set on the pump.", ok: false, fix: "It's a medicine that drips slowly through your IV to calm your stomach."}
+      why: "의료진끼리는 rate 한 단어로 주입 속도를 확인해요. 환자에게 programmed, hard dose limits 같은 말은 기계 설명이라 무슨 약인지 와닿지 않아요. 어떤 약이 어떻게 들어가는지를 쉬운 말로 알려 줘요."
+- situation: "응고장애 교정"
+  items:
+    - kind: slider
+      words: [w-inr, w-high]
+      cue: "Lab result: \"The INR is a little above the normal range.\""
+      scale: [slightly prolonged, clearly prolonged, severely prolonged]
+      answerAt: 0
+      why: "INR은 피가 굳는 데 걸리는 시간을 표준화한 수치예요. 정상 범위를 조금 넘으면 약간 길어진(slightly prolonged) 정도이고, 높을수록 응고가 오래 걸려 출혈이 잘 멎지 않아요. 교정 여부와 방법은 처방대로 해요."
+      example: "His INR is only slightly prolonged, but we'll recheck it."
+      exKo: "INR이 약간 길어진 정도지만 다시 확인할게요."
+    - kind: context
+      words: [w-coag]
+      word: coag
+      ko: 응고 수치
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "Coags are back: INR is high and platelets are low.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Can you send a repeat set of coags after the plasma?", ok: true}
+        - {who: 환자에게, icon: me, en: "Your coags show a prolonged INR with thrombocytopenia from your liver disease.", ok: false, fix: "Your blood is taking longer than normal to clot, and we're giving you medicine to help."}
+      why: "의료진끼리는 coags 한 단어로 응고 검사 묶음을 가리켜요. 환자에게 prolonged INR, thrombocytopenia 같은 말은 어렵고 겁나요. 피가 평소보다 늦게 굳는다고 쉬운 말로 풀어 주세요."
+- situation: "balloon tamponade 보조"
+  items:
+    - kind: slider
+      words: [w-traction, w-weight]
+      cue: "Nurse checks: \"The traction weight on the tube matches the doctor's order.\""
+      scale: [too little traction, as ordered, too much traction]
+      answerAt: 1
+      why: "견인은 처방된 무게로 유지해야 해요. 너무 약하면 풍선이 출혈 부위를 제대로 눌러 주지 못하고, 너무 세면 식도가 손상될 수 있어요. 무게는 자주 확인하고, 다르면 임의로 바꾸지 말고 바로 의사에게 알려요."
+      example: "The traction weight is as ordered, and I'll check it often."
+      exKo: "견인 무게는 지시대로고, 자주 확인할게요."
+    - kind: context
+      words: [w-balloon]
+      word: balloon
+      ko: 풍선
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "I tested each balloon, and both hold air.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Can you label each balloon port before we insert the tube?", ok: true}
+        - {who: 환자 가족에게, icon: me, en: "The tamponade tube has a gastric and an esophageal balloon that apply direct pressure to the varices.", ok: false, fix: "It's a soft tube with a small balloon that presses on the bleeding spot to slow it down."}
+      why: "의료진끼리는 balloon, port 같은 말로 기구 상태를 짧게 확인해요. 가족에게 gastric, esophageal, varices 같은 말을 한꺼번에 쓰면 무슨 일인지 알 수 없어요. 풍선이 출혈 부위를 눌러 준다고 쉬운 말로 알려 줘요."
+- situation: "하부출혈 감별·검사"
+  items:
+    - kind: slider
+      words: [w-colonoscopy, w-bowel]
+      cue: "Doctor: \"I want to look directly at the lining of the bowel.\""
+      scale: [a blood test, a colonoscopy, emergency surgery]
+      answerAt: 1
+      why: "대장내시경은 항문으로 긴 카메라를 넣어 장 안쪽을 직접 보는 검사라서 출혈 위치를 찾을 때 써요. 혈액검사는 간접적인 정보만 주고, 수술은 훨씬 큰 처치예요."
+      example: "A colonoscopy lets the doctor look right at the bowel wall."
+      exKo: "대장내시경으로 의사가 장벽을 바로 볼 수 있어요."
+    - kind: context
+      words: [w-bowel]
+      word: bowel
+      ko: 장
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "His bowel output is still bloody and bright red.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Can you chart the bowel output and color?", ok: true}
+        - {who: 환자에게, icon: me, en: "The bowel is the likely source, possibly diverticular, and we are evaluating for angioectasia.", ok: false, fix: "The bleeding is coming from somewhere in your lower gut, and we're running tests to find where."}
+      why: "의료진끼리는 bowel output처럼 장 상태를 짧게 보고해요. 환자에게 diverticular, angioectasia 같은 말은 낯설고 불안하게 들려요. 아래쪽 장 어딘가에서 나고 있고 검사로 찾는 중이라고 쉬운 말로 알려 줘요."
+- situation: "재출혈 감시·재평가"
+  items:
+    - kind: slider
+      words: [w-tiredness, w-normal]
+      cue: "Patient: \"I'm a little tired, but I feel okay otherwise.\""
+      scale: [a little tired, very weak, about to faint]
+      answerAt: 0
+      why: "출혈 뒤에는 피곤함이 약간 있을 수 있어요. 하지만 기운이 쭉 빠지거나 곧 쓰러질 것 같다면 훨씬 심각한 신호라서 바로 알려야 해요. 괜찮아 보여도 계속 확인해요."
+      example: "A little tiredness is normal, but tell me if you feel faint."
+      exKo: "약간 피곤한 건 정상이지만, 쓰러질 것 같으면 말씀해 주세요."
+    - kind: swap
+      words: [w-sign, w-well]
+      who: "환자에게 · 회복 설명"
+      icon: me
+      before: ["Feeling well today is ", "a guarantee", ", but we still check every few hours."]
+      options: [a guarantee, a good sign, "proof you're cured"]
+      answer: a good sign
+      notes: {a good sign: "좋은 징후라고 말하되 단정하지 않는다. 그래서 계속 확인한다는 말과 이어진다.", a guarantee: "다시 피가 나지 않는다고 보장하는 말이라 지킬 수 없는 약속이 된다.", "proof you're cured": "다 나았다는 단정이라 틀릴 수 있고 이어지는 'but'과도 맞지 않는다."}
+      why: "컨디션이 좋은 것은 좋은 소식이지만 재출혈이 없다는 보장은 아니에요. 보장이나 완치 같은 말은 지키기 어려운 약속이 되니, 'a good sign'처럼 사실 그대로 말해요."
+      ko: 오늘 컨디션이 좋은 건 좋은 징후예요
+- situation: "IR·내시경 이송 조율"
+  items:
+    - kind: slider
+      words: [w-unstable, w-stabilize]
+      cue: "In the elevator: \"His pressure is dropping and his heart rate is climbing.\""
+      scale: [stable, borderline, unstable]
+      answerAt: 2
+      why: "혈압이 떨어지고 심박이 오르는 중이면 불안정(unstable)한 상태예요. 엘리베이터 안에서 불안정해지면 멈추고 먼저 안정시킨 다음에 이동을 이어 가요."
+      example: "He became unstable in the elevator, so we stopped to stabilize him."
+      exKo: "엘리베이터 안에서 불안정해져서 멈추고 안정시켰어요."
+    - kind: context
+      words: [w-handoff]
+      word: handoff
+      ko: 인계
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "I'll give IR a quick handoff on the bleed and his last hemoglobin.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Do you want a bedside handoff before we move him?", ok: true}
+        - {who: 환자 가족에게, icon: me, en: "I'm giving IR a full SBAR handoff on his hemorrhagic decompensation.", ok: false, fix: "I'm telling the IR team everything about his bleeding so they're ready for him."}
+      why: "의료진끼리는 handoff, SBAR 같은 말로 인계 틀을 짧게 말해요. 가족에게 hemorrhagic decompensation 같은 말은 어렵고 무섭게 들려요. 어떤 정보를 누구에게 전하는지를 쉬운 말로 알려 줘요."

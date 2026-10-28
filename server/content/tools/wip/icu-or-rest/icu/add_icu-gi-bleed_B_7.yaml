@@ -1,0 +1,58 @@
+situations:
+- title: 토혈 기도흡인 위기
+  s:
+  - ["기도 보호", shield, "'to protect'로 옆으로 눕히는 이유를 바로 붙여요. 'We're turning'은 지금 하고 있다고 환자와 가족에게 알려요.", "X1", "기도를 보호하려고 석션 기구를 가져다 둘게요.", "기도를 보호하려고 입 주변 피를 닦아 드릴게요.", "airway", "hair", "voice", "eyes"]
+  - ["상황 보고", siren, "'now'로 지금 하고 있다는 것을, 'is coming'으로 도움이 오는 중임을 말해요. 두 문장을 and로 이어 한 번에 알려요.", "X2", "지금 산소를 올리고 있고 팀이 도우러 오고 있어요.", "지금 흡인하고 있고 팀이 카트를 밀고 오고 있어요.", "coming", "waiting", "leaving", "calling"]
+  - ["곁 지키기", faceWorried, "'right here'로 어디에 있는지 분명히 말해 불안을 줄여요. 'I'll stay'는 곁에 머물겠다는 약속이에요.", "X3", "제가 바로 여기서 손을 잡고 있을게요.", "제가 바로 여기서 문을 잡고 있을게요.", "here", "outside", "upstairs", "downstairs"]
+  - ["우선순위", bulb, "'Choking on blood means'로 위급한 상황을 한 줄로 풀어 줘요. 'before anything else'가 기도가 최우선이라는 뜻이에요.", "X4", "숨이 막히면 기도 확보 뒤에 라인을 잡아요.", "피 때문에 숨이 막히면 기도 확보 뒤에 수혈을 시작해요.", "airway", "wound", "chart", "bed"]
+  - ["조건 설명", compass, "'on his own'은 스스로라는 뜻이에요. 'If … we'll need to'는 조건과 다음 단계를 한 문장에 이어요.", "X5", "삽관을 하고 나면 인공호흡기가 필요해요.", "삽관하기 전에 산소마스크가 필요해요.", "intubate", "X-ray", "scan", "weigh"]
+  - ["도착 안내", pager, "'is on the way'는 지금 오는 중이라는 표현이에요. 'to place'가 오는 목적을 한 구로 밝혀요.", "X6", "의사 선생님이 기관삽관을 위해 약을 가져오고 있어요.", "의사 선생님이 기관삽관 장비를 가지러 가고 있어요.", "breathing", "chest", "drainage", "nasal"]
+  - ["공감·안심", faceWorried, "'I know this is terrifying'으로 두려움부터 인정하고 'but'으로 지금 하는 일을 이어요. 'everything'이 가능한 모든 것을 한다는 뜻이에요.", "X7", "많이 무서우시죠, 그래도 저희가 안전하게 지키려고 지금 이동하고 있어요.", "많이 무서우시죠, 그래도 저희가 안전하게 지키려고 약을 준비하고 있어요.", "safe", "quiet", "dry", "clean"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 토혈 기도흡인 위기 4문장 순서
+    why: 먼저 옆으로 눕혀 기도를 지키고, 흡인하며 도움을 부르고, 그래도 안 되면 삽관이 필요하다고 알리고, 의사가 오는 중임을 말해요.
+    lines:
+    - ["We're turning him on his side to protect his airway.", shield, "기도를 보호하려고 옆으로 눕혀 드릴게요", "체위"]
+    - ["With him on his side, I'm suctioning now and the team is coming to help.", siren, "옆으로 눕힌 채 지금 흡인하고 있고 팀이 도우러 오고 있어요", "흡인"]
+    - ["If that isn't enough and he can't protect his airway on his own, we'll need to intubate.", compass, "그걸로 부족하고 스스로 기도를 못 지키면 삽관이 필요해요", "판단"]
+    - ["For that, the doctor is on the way to place the breathing tube.", pager, "그걸 위해 의사 선생님이 기관삽관을 하러 오고 있어요", "도착"]
+- title: 정맥류 불응 출혈 위기
+  s:
+  - ["유지 지시", monitor, "'Keep … running'은 멈추지 말고 계속 돌리라는 명령이에요. 'until'이 유지가 끝나는 때를 알려요.", "X1", "IR팀이 데려가면 탐포네이드랑 주입을 그대로 옮겨요.", "IR팀이 오기 전에 탐포네이드랑 주입을 다시 정리해요.", "IR", "ICU", "ER", "security"]
+  - ["인계 약속", handshake2, "'a full handoff'는 빠짐없는 인계를 뜻해요. 'along'은 같이 가져간다는 부사예요.", "X2", "전체 인계를 하기 전에 피 번호를 먼저 확인할게요.", "전체 인계를 마치고 빈 쿨러를 돌려놓을게요.", "full", "brief", "early", "formal"]
+  - ["이송 준비", plane, "'Let's stabilize'는 함께 안정시키자는 제안형이에요. 'for transport'가 안정시키는 목적이에요.", "X3", "이송을 위해 이송 침대를 가져오죠.", "이송을 위해 이동용 모니터를 연결하죠.", "transport", "discharge", "visiting", "rounds"]
+  - ["시술 설명", bulb, "'TIPS creates a shunt'처럼 시술 이름을 주어로 두어 무엇을 하는지 설명해요. 'take pressure off'는 압력을 덜어 준다는 구어체예요.", "X4", "TIPS는 간에 풍선을 만들어 정맥류의 압력을 낮춰 줘요.", "TIPS는 위에 션트를 만들어 정맥류의 압력을 낮춰 줘요.", "liver", "lung", "arm", "neck"]
+  - ["상황 설명", faceWorried, "'alone'이 약물만으로는 부족하다는 뜻이에요. 'anymore'는 예전엔 됐지만 이제는 아니라는 변화를 담아요.", "X5", "내시경만으로는 이제 이 출혈을 조절할 수 없어요.", "약물 치료만으로는 이제 이 통증을 조절할 수 없어요.", "Medical", "Surgical", "Dietary", "Physical"]
+  - ["자료 전달", board, "'Let's send … with him'은 환자와 함께 보내자는 제안형이에요. 'most recent'가 가장 최신 자료라는 뜻이에요.", "X6", "가장 최근 검사랑 영상 자료를 출력해 두죠.", "가장 최근 검사랑 영상 자료와 함께 팔찌도 챙기죠.", "imaging", "billing", "charts", "forms"]
+  - ["동행 약속", handshake2, "'ride down'은 함께 아래층으로 간다는 뜻이에요. 'directly'가 중간 사람 없이 직접이라는 말이에요.", "X7", "제가 함께 올라가서 IR팀에 직접 인계할게요.", "제가 함께 내려가서 IR팀 앞에 직접 침대를 세울게요.", "IR", "GI", "ICU", "lab"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 정맥류 불응 출혈 이송 4문장 순서
+    why: 약물만으로는 안 된다고 알리고, 그래서 필요한 시술을 설명한 뒤, 이송을 위해 안정시키고, 도착할 때까지 처치를 유지해요.
+    lines:
+    - ["Medical therapy alone isn't controlling this bleed anymore.", faceWorried, "약물 치료만으로는 이제 이 출혈을 조절할 수 없어요", "상황"]
+    - ["So we need IR, where TIPS creates a shunt in the liver to take pressure off the varices.", bulb, "그래서 IR이 필요해요, TIPS는 간에 션트를 만들어 정맥류 압력을 낮춰 줘요", "설명"]
+    - ["To get him there, let's stabilize his pressure for transport.", plane, "거기까지 가려면 이송을 위해 혈압을 안정시키죠", "안정"]
+    - ["Keep the tamponade and drips running on the way, until IR takes him.", monitor, "가는 동안 IR팀이 데려갈 때까지 탐포네이드랑 주입을 유지해요", "유지"]
+- title: 재출혈 급변 소생
+  s:
+  - ["긴급 지시", siren, "명령형 두 개를 'and'로 이어 짧게 지시해요. 'now'로 지금 당장이라는 긴급성을 줘요.", "X1", "수액을 최대로 열고 지금 피가 오면 받아요.", "수액을 최대로 열고 지금 피가 오는 길을 비워 둬요.", "wide", "high", "long", "hard"]
+  - ["즉시 알림", pager, "'I'm notifying'은 지금 하고 있다는 진행형이에요. 'immediately'가 지체 없이라는 뜻이에요.", "X2", "GI팀이랑 담당의가 오면 즉시 인계하고 있어요.", "GI팀이랑 담당의한테 줄 인계 메모를 즉시 쓰고 있어요.", "notifying", "thanking", "billing", "visiting"]
+  - ["재평가 제안", magnify, "'Let's reassess'는 함께 다시 보자는 제안형이에요. 'airway and vitals'가 평가 대상을 한 구로 묶어요.", "X3", "기도랑 활력징후를 평가할 장비를 가져오죠.", "기도랑 활력징후를 평가하게 침대 머리를 낮추죠.", "airway", "mood", "diet", "hair"]
+  - ["처치 설명", bulb, "'so'로 혈압 저하와 수액 처치를 원인-결과로 이어요. 'wide open'은 최대로 연다는 뜻이에요.", "X4", "맥박이 빠르게 올라가서 수액을 최대로 밀어 넣고 있어요.", "혈압이 빠르게 떨어져서 수액 라인을 더 잡고 있어요.", "pressure", "vision", "balance", "speech"]
+  - ["혈액 요청", pill, "'while'이 검사가 끝나는 동안이라는 동시 상황을 말해요. 'emergency release'는 교차시험 전에 내보내는 혈액이라는 용어예요.", "X5", "혈액형·교차시험이 끝나는 동안 응급 방출 혈액의 수령 서명을 받아요.", "혈액형·교차시험이 끝나는 동안 응급 방출 혈액을 받을 쿨러를 열어 둬요.", "emergency", "routine", "optional", "spare"]
+  - ["지시 전달", pager, "'wants'는 상대의 요청을 전하는 틀이에요. 'a repeat set'은 한 번 더 잰 활력징후를 가리켜요.", "X6", "의사가 다시 모니터를 걸기 전에 전극을 붙이길 원해요.", "의사가 다시 모니터를 걸고 침대 난간을 올리길 원해요.", "monitor", "scale", "bed", "cart"]
+  - ["환자 안심", faceWorried, "'Stay with me'는 환자에게 정신을 놓지 말라는 뜻이에요. 'right now'로 지금 하고 있다는 안심을 줘요.", "X7", "저랑 계속 누워 계세요, 지금 혈압을 다시 올리고 있어요.", "저랑 계속 계세요, 지금 열을 다시 내리고 있어요.", "pressure", "mood", "voice", "weight"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 재출혈 급변 소생 4문장 순서
+    why: 수액으로 먼저 대응하고, 그동안 팀에 알리고, 알려 준 쪽이 원하는 혈액을 말한 뒤, 환자에게 지금 하는 일을 알려 안심시켜요.
+    lines:
+    - ["His pressure dropped fast, so we're pushing fluids wide open.", siren, "혈압이 빠르게 떨어져서 수액을 최대로 밀어 넣고 있어요", "대응"]
+    - ["While that runs, I'm notifying GI and the physician immediately.", pager, "그게 들어가는 동안 GI팀이랑 담당의한테 즉시 알리고 있어요", "알림"]
+    - ["They'll want emergency release blood while type and cross finishes.", pill, "그분들은 교차시험이 끝나는 동안 응급 방출 혈액을 원할 거예요", "혈액"]
+    - ["With all of this moving, stay with me, we're getting your blood pressure back up.", faceWorried, "이 모든 게 진행되는 동안 저랑 계세요, 혈압을 다시 올리고 있어요", "안심"]

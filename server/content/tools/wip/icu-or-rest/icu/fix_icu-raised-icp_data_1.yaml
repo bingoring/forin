@@ -38,8 +38,8 @@ sentences:
     why: "don't flush it으로 하지 말 것을 먼저 못 박고, 대시 뒤에 먼저 할 일을 이어요. then call로 마지막에 신경외과를 부르는 순서까지 말해요."
     decoy: "in the hallway"
     distractorsKo:
-      - "막혔다면 플러싱하지 말고, 먼저 환자 자세를 다시 잡아 재평가한 뒤 신경외과 연락 시각을 적으세요"
-      - "막혔다면 플러싱하지 말고, 환자 자세를 다시 잡아 재평가한 뒤 곁에 계세요"
+      - "막혔다면 플러싱하지 말고, 먼저 환자 자세를 다시 잡아 재평가한 뒤 연락 시각을 남기세요"
+      - "막혔다면 플러싱하지 말고, 먼저 환자 자세를 다시 잡아 재평가한 뒤 신경외과가 올 때까지 곁에 계세요"
     blank: {answer: blocked, options: [blocked, clear, draining, full]}
     swhy: "A S3: 쉼표 나열이라 플러시·재위치·재평가를 하지 말라는 말로도 읽히고 신경외과 보고가 빠져서 문장 교체"
   "9.1":
@@ -53,8 +53,8 @@ sentences:
     decoy: "in the bag"
     distractorsKo:
       - "수액만으로 충분하지 않으면 팀이 승압제 라인부터 열 수 있어요"
-      - "수액만으로 충분하지 않으면 팀이 승압제를 추가한 뒤 혈압을 다시 잴 수 있어요"
-    blank: {answer: fluid, options: [fluid, oxygen, position, sedation]}
+      - "수액만으로 충분하지 않으면 팀이 승압제 농도를 점검할 수 있어요"
+    blank: {answer: fluid, options: [fluid, rest, position, sedation]}
     swhy: "A S4: 순서가 반대 — 정상 혈량(수액)을 먼저 맞추고 모자라면 승압제. w-enough 태그 뺌"
   "10.1":
     en: "This only works as a short-term fix, not as ongoing therapy."
@@ -87,7 +87,7 @@ sentences:
     decoy: "on the phone"
     distractorsKo:
       - "ICP가 이십에 가까워져 그대로 머무르면 진정제를 미리 준비해 두세요"
-      - "다시 진정시킨 다음 ICP가 이십 아래로 내려오는지 지켜보세요"
+      - "프로토콜에 따라 다시 진정시키고 나서 ICP 숫자가 내려오는지 지켜보세요"
     blank: {answer: climbs, options: [climbs, drops, falls, sinks]}
     swhy: "A S7: 깨울 때 잠깐 치솟는 것은 흔함 — 중단 기준은 지속 상승·프로토콜. w-twenty 태그 뺌"
   "16.3":
@@ -100,14 +100,14 @@ sentences:
     decoy: "on the unit"
     distractorsKo:
       - "정말 막혔다고 판단하기 전에 머리를 받쳐 줄 동료를 한 번 부르세요"
-      - "머리 위치를 바꿔도 계속 막혀 있으면 한 번 더 바로 알리세요"
+      - "머리 위치를 바꿔도 계속 막혀 있으면 곧장 담당 의사에게 알리세요"
     blank: {answer: truly, options: [truly, partly, nearly, barely]}
     swhy: "A S8: repositioning이 카테터를 옮기라는 말로도 읽혀 his head를 넣어 분명히"
   "17.4":
     ko: "수술 가능성이 현실이 됐으니 가족에게도 상황을 알려 주세요."
     why: "Loop in은 소통에 끼워 넣는다는 구어 표현이에요. 수술 설명과 동의는 외과의 몫이고, 간호사는 가족이 그 대화에 함께하도록 연락해요."
     distractorsKo:
-      - "수술 가능성이 현실이 됐으니 가족이 오시면 면담실로 모셔 주세요"
+      - "수술 가능성이 현실이 됐으니 가족이 오시면 면담실로 모셔요"
       - "수술 가능성이 현실이 됐으니 설명은 신경외과가 직접 하게 해 주세요"
     swhy: "A S9: '합류시키세요'가 어색해 '상황을 알려 주세요'로"
   "19.4":
@@ -162,7 +162,7 @@ sentences:
   "17.3":
     ko: "지금 신경외과 의사를 침상으로 바로 불러올게요."
     distractorsKo:
-      - "신경외과가 오기 전에 CT를 띄울게요"
+      - "의사가 침상에 오기 전에 CT 영상을 띄울게요"
       - "신경외과가 오면 동공 변화를 말씀드릴게요"
     swhy: "A K2: 과(科)를 데려온다는 말이 어색해 '신경외과 의사를 … 불러올게요'로"
   "7.3":
@@ -193,7 +193,7 @@ sentences:
     ko: "과배액됐다면 즉시 배액관 높이를 다시 맞추고 재평가할게요."
     distractorsKo:
       - "과배액됐다면 즉시 배액관 높이를 다시 맞추고 신경외과에 알려요"
-      - "과배액을 막으려고 이송 전에는 배액관을 꼭 잠가요"
+      - "과배액을 막으려고 이송하는 동안 배액관을 꼭 잠가요"
     swhy: "A K7: 'reposition'이 모호해 ko를 '배액관 높이를 다시 맞추고'로(en은 사용자 결정 대기)"
   "9.2":
     ko: "승압제를 올리기 전에 수액이 충분히 들어갔는지 확인해요."

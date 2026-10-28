@@ -21,7 +21,10 @@ for sit in base["situations"]:
     sit["order"] = {"tag": o["tag"], "icon": o["icon"], "ko": o["ko"], "why": o["why"],
         "lines": [{"en": l[0], "icon": l[1], "ko": l[2], "note": l[3]} for l in o["lines"]]}
 exec(open("fixB_icu-liver-failure_1.py", encoding="utf-8").read())
-for key, v in FIX.items():
+exec(open("fixB_icu-liver-failure_2.py", encoding="utf-8").read())
+exec(open("fixB_icu-liver-failure_3.py", encoding="utf-8").read())
+exec(open("fixB_icu-liver-failure_4.py", encoding="utf-8").read())
+for key, v in list(FIX.items()) + list(FIX2.items()) + list(FIX3.items()) + list(FIX4.items()):
     if not v: continue
     i, j = map(int, key.split("."))
     x = base["situations"][i]["sentences"][j]

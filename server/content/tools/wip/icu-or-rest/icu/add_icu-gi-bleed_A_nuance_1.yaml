@@ -1,0 +1,146 @@
+- situation: "GI 출혈 징후 사정"
+  items:
+    - kind: slider
+      words: [w-bleed, w-blood]
+      cue: "Patient (pointing at the basin): \"The whole basin is full of blood.\""
+      scale: [specks of blood, active bleeding, a massive bleed]
+      answerAt: 2
+      why: "대야가 가득 찰 만큼 토했다면 흔적이 아니라 대량 출혈로 봐야 해요. 같은 bleeding이라도 양에 따라 대응이 달라지니, 곁을 지키면서 기도와 활력징후를 살피고 바로 의사에게 알려요."
+      example: "He vomited a basin of bright red blood, so I'm calling the physician now."
+      exKo: "선홍색 피를 대야 가득 토해서, 지금 의사에게 연락할게요."
+    - kind: context
+      words: [w-vitals]
+      word: vitals
+      ko: 활력징후
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "His vitals are holding, but he vomited once more.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Can you take his vitals again while I call GI?", ok: true}
+        - {who: 환자 가족에게, icon: me, en: "His vitals show tachycardia and borderline hypotension from an ongoing GI hemorrhage.", ok: false, fix: "His heart is beating fast and his blood pressure is a little low, and we're watching him closely."}
+      why: "의료진끼리는 vitals라고 짧게 말해도 통해요. 가족에게 tachycardia, hypotension 같은 말을 쓰면 낯설고 겁만 줘요. 심박과 혈압을 쉬운 말로 풀어 전해요."
+- situation: "대구경 정맥로 확보 협조"
+  items:
+    - kind: pair
+      words: [w-large, w-catheter, w-draw, w-tourniquet]
+      pairs: [["large-bore", "catheter"], ["draw", "blood"], ["apply", "a tourniquet"]]
+      decoys: ["the pump"]
+      why: "large-bore catheter는 굵은 정맥 카테터라 수액과 혈액을 빠르게 넣을 수 있어요. draw blood는 채혈하다, apply a tourniquet은 지혈대를 묶어 정맥이 잘 보이게 하는 동작이에요."
+    - kind: context
+      words: [w-line]
+      word: line
+      ko: 라인
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "Two large-bore lines are in, both flushing well.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Can you check the line in his left arm before we hang the fluids?", ok: true}
+        - {who: 환자 가족에게, icon: me, en: "We've placed bilateral peripheral large-bore lines for rapid volume resuscitation.", ok: false, fix: "We put in two big IVs so we can give fluids and blood quickly."}
+      why: "의료진끼리는 line, large-bore 같은 말로 정맥로 상태를 짧게 주고받아요. 가족에게 bilateral, volume resuscitation 같은 말은 어렵고 무섭게 들려요. 굵은 정맥 주사를 두 개 놓았다고 쉬운 말로 알려 줘요."
+- situation: "수혈 준비·교차시험"
+  items:
+    - kind: slider
+      words: [w-armband, w-tube]
+      cue: "Colleague: \"The name on the tube doesn't match his armband.\""
+      scale: [send it and fix it later, just ask him his name, stop and redraw it]
+      answerAt: 2
+      why: "튜브 이름이 팔찌와 다르면 그 검체는 보내지 않고 새로 채혈해 라벨을 다시 붙이는 것이 원칙이에요. 환자에게 이름을 물어 맞춰 보는 건 도움이 되지만, 이미 잘못 붙은 라벨을 고쳐서 쓰지는 않아요. 세부는 병원 지침대로 해요."
+      example: "The tube doesn't match the armband, so we redraw it."
+      exKo: "튜브가 팔찌와 맞지 않아서 다시 채혈해요."
+    - kind: context
+      words: [w-confirm]
+      word: confirm
+      ko: 확인하다
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "I'll confirm the type and cross with the blood bank before we hang it.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Can you confirm the unit number with me before I spike it?", ok: true}
+        - {who: 환자에게, icon: me, en: "We must confirm your identifiers against the product label per protocol before administration.", ok: false, fix: "We check your name and wristband twice so you get exactly the right blood."}
+      why: "의료진끼리는 type and cross, unit number처럼 확인할 대상을 짧게 말해요. 환자에게 identifiers, administration 같은 말은 낯설고 딱딱해요. 이름과 팔찌를 두 번 확인한다고 쉬운 말로 알려 줘요."
+- situation: "혈역학·Hb 추세 감시"
+  items:
+    - kind: slider
+      words: [w-lightheaded]
+      cue: "Patient: \"Everything is going gray, I think I'm going to pass out.\""
+      scale: [a little lightheaded, very dizzy, about to faint]
+      answerAt: 2
+      why: "어지러움에도 강도가 있어요. lightheaded는 머리가 핑 도는 정도, dizzy는 더 심한 어지러움, faint는 곧 쓰러질 것 같은 단계예요. 눈앞이 어두워지고 쓰러질 것 같다고 하면 눕히고 바로 의사에게 알려요."
+      example: "He feels faint when he sits up, so I laid him back down."
+      exKo: "일어나 앉으면 쓰러질 것 같다고 해서 다시 눕혔어요."
+    - kind: context
+      words: [w-trend]
+      word: trend
+      ko: 추세
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "His hemoglobin trend is down since admission, so I'm watching it closely.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Can you pull the lab trend for the last twelve hours?", ok: true}
+        - {who: 환자 가족에게, icon: me, en: "His hemoglobin trend shows a downward trajectory with a concerning velocity.", ok: false, fix: "His blood count has dipped a little since this morning, and we're rechecking it."}
+      why: "의료진끼리는 trend 한 단어로 수치가 시간에 따라 어느 쪽으로 가는지 말해요. 가족에게 trajectory, velocity 같은 말은 차갑고 불안하게 들려요. 얼마나 달라졌는지와 다시 확인하겠다는 계획을 쉬운 말로 전해요."
+- situation: "NPO·위관 관리"
+  items:
+    - kind: slider
+      words: [w-uncomfortable]
+      cue: "Patient: \"The tube is annoying, but I can handle it.\""
+      scale: [a bit uncomfortable, really uncomfortable, unbearable]
+      answerAt: 0
+      why: "참을 만하다면 약간 불편한(a bit uncomfortable) 정도예요. 불편해도 위를 비우고 출혈을 확인하는 데 필요하다고 설명하고, 참기 힘들 만큼 아프면 바로 알려 달라고 안내해요."
+      example: "It's uncomfortable, but it's protecting your stomach right now."
+      exKo: "불편하신 거 알아요, 그래도 지금은 위를 보호하고 있어요."
+    - kind: context
+      words: [w-stomach]
+      word: stomach
+      ko: 위
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "The stomach is decompressed, but the drainage is still blood-tinged.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Can you check the stomach drainage before you chart it?", ok: true}
+        - {who: 환자에게, icon: me, en: "The tube decompresses your stomach contents so we can assess for mucosal hemorrhage.", ok: false, fix: "The tube empties your stomach so we can see whether it's still bleeding."}
+      why: "의료진끼리는 decompress, blood-tinged 같은 말로 상태를 짧게 보고해요. 환자에게 mucosal hemorrhage 같은 말은 어렵고 무서워요. 관이 위를 비워서 출혈이 계속되는지 보려는 것이라고 쉬운 말로 알려 줘요."
+- situation: "출혈 병력·항응고 검토"
+  items:
+    - kind: pair
+      words: [w-medication, w-thinner, w-ulcer]
+      pairs: [["medication", "list"], ["blood", "thinner"], ["stomach", "ulcer"]]
+      decoys: ["bed alarm"]
+      why: "medication list는 복용 중인 약을 빠짐없이 파악하는 목록이에요. blood thinner는 항응고제·항혈소판제를 흔히 부르는 말이고, stomach ulcer는 위궤양이에요."
+    - kind: context
+      words: [w-dose]
+      word: dose
+      ko: 용량
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "His last dose of warfarin was two days ago, per his wife.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Can you verify the last dose time against his home medication list?", ok: true}
+        - {who: 환자에게, icon: me, en: "Your last supratherapeutic dose is probably why your blood is so thin now.", ok: false, fix: "Thank you for telling us when you took your last dose. It really helps us plan."}
+      why: "의료진끼리는 마지막 복용 시각을 짧고 정확하게 주고받아요. 환자에게 확인되지 않은 원인을 탓하듯 말하면 죄책감만 줘요. 먼저 알려 줘서 고맙다고 하고 치료 계획에 쓴다고 말해요."
+- situation: "정맥류 출혈 초기 관리"
+  items:
+    - kind: slider
+      words: [w-slow, w-octreotide]
+      cue: "Her husband: \"Will the octreotide stop the bleeding and fix her liver?\""
+      scale: [slow the bleeding, stop it for good, cure the liver disease]
+      answerAt: 0
+      why: "옥트레오타이드는 내장으로 가는 혈류를 줄여 정맥류 출혈을 늦추는 약이에요. 출혈을 영구히 멈추거나 간질환을 낫게 하는 약은 아니라서, 보통 내시경 치료와 함께 쓰고 용량은 처방대로 줘요."
+      example: "The octreotide should slow the bleeding while we get her to endoscopy."
+      exKo: "내시경을 하러 가는 동안 옥트레오타이드가 출혈을 줄여 줄 거예요."
+    - kind: context
+      words: [w-airway]
+      word: airway
+      ko: 기도
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "Her airway is protected for now, but I'd like anesthesia nearby for the scope.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Can you watch her airway while I draw the labs?", ok: true}
+        - {who: 환자 가족에게, icon: me, en: "Her airway is compromised, with a high aspiration risk.", ok: false, fix: "We're watching her breathing very closely so she stays safe."}
+      why: "의료진끼리는 airway가 지켜지고 있는지 한 단어로 묻고 답해요. 가족에게 compromised, aspiration risk 같은 말을 그대로 쓰면 지금 당장 위험한 줄 알고 놀라요. 숨 쉬는 것을 가까이서 지켜보고 있다고 쉬운 말로 알려 줘요."
+- situation: "내시경 준비·조율"
+  items:
+    - kind: slider
+      words: [w-standby]
+      cue: "GI doctor: \"Do you have blood available in case he bleeds during the scope?\" (it's crossmatched and ready to send)"
+      scale: [still being prepared, on standby, already running]
+      answerAt: 1
+      why: "standby는 필요할 때 바로 쓸 수 있게 준비해 두고 기다리는 상태예요. 아직 준비 중이면 '준비 중', 이미 환자에게 들어가고 있으면 '주입 중'이라고 말해야 정확해요."
+      example: "Two units are crossmatched and on standby in the blood bank."
+      exKo: "두 팩이 교차시험을 마치고 혈액은행에 대기 중이에요."
+    - kind: context
+      words: [w-scope]
+      word: scope
+      ko: 내시경
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "He's ready for the scope as soon as his pressure is a bit more stable.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Can you grab suction and the scope cart?", ok: true}
+        - {who: 환자 가족에게, icon: me, en: "He's going for an EGD under monitored anesthesia care, and the scope may need therapeutic intervention.", ok: false, fix: "A doctor will look inside his stomach with a thin camera to find the bleeding."}
+      why: "의료진끼리는 scope 한 단어로 내시경을 가리켜요. 가족에게 EGD, monitored anesthesia care 같은 말은 어렵고 겁나요. 가는 카메라로 위 안을 보고 출혈 위치를 찾는다고 쉬운 말로 알려 줘요."

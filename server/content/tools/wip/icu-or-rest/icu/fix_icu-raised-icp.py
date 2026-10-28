@@ -30,6 +30,10 @@ for D in datas:
         sent(k)["blank"] = {"answer": f["answer"], "options": [{"en": o} for o in f["options"]]}
     for k, f in (D.get("dko") or {}).items():
         sent(k)["distractorsKo"] = list(f)
+    for k, f in (D.get("dko_partial") or {}).items():
+        x = sent(k)
+        if f.get("x1"): x["distractorsKo"][0] = f["x1"]
+        if f.get("x2"): x["distractorsKo"][1] = f["x2"]
     for k, v in (D.get("decoy") or {}).items():
         sent(k)["decoy"] = v
     for i, o in (D.get("order") or {}).items():

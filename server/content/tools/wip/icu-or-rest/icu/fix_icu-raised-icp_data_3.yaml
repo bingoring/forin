@@ -1,0 +1,84 @@
+# order 카드 6장(+S14 오타)과 뉘앙스(A N1~N20)
+order:
+  1:
+    lines:
+      2: {en: "To keep that drainage open, we avoid turning his neck.", ko: "그 배액이 잘 되도록 목을 돌리지 않게 해요"}
+    owhy: "B order S1: 3번 줄이 1번 줄 뒤에도 읽혀(it = 머리 자세) 2↔3이 바뀌어도 자연스러워서, 앞 줄의 배액을 가리키게"
+  9:
+    why: "수액으로 먼저 충분히 채우고, 더 넣기 전에 과부하 징후를 살피고, 그래도 모자라면 승압제로 받치고, 과부하 없이 뇌 혈류 균형을 맞춘다고 맺어요."
+    lines:
+      0: {en: "To raise his CPP, we first make sure he's adequately filled.", icon: gear, ko: "CPP를 올리려고 먼저 수액이 충분한지 확인해요", note: 수액}
+      1: {en: "Before I push more, I'll watch for crackles and other overload signs.", icon: lab, ko: "더 넣기 전에 수포음 같은 과부하 징후를 살펴볼게요", note: 감시}
+      2: {en: "If that's still not enough, we support his pressure with a pressor.", icon: chartup, ko: "그래도 모자라면 승압제로 혈압을 받쳐요", note: 승압}
+      3: {en: "That's how I balance flow to his brain without overloading him.", icon: check, ko: "그렇게 과부하 없이 뇌 혈류 균형을 맞춰요", note: 균형}
+    owhy: "B order S9: 임상 순서 오류 — 승압제 먼저·모자라면 수액이 아니라 정상 혈량(수액)을 먼저 맞추고 승압제"
+  12:
+    lines:
+      1: {en: "So the high number on his labs is on purpose.", ko: "그래서 검사지의 높은 수치는 일부러예요"}
+      2: {en: "To hold that number, I check levels often and titrate the hypertonic fluid.", ko: "그 수치를 지키려고 자주 보며 고장성 수액을 적정해요"}
+    owhy: "B order S12: 2번·3번 줄이 서로 바꿔 읽혀서 앞 줄을 가리키는 말(the high number, that number)로 묶음"
+  14:
+    why: "먼저 진정제 보류를 지시대로 하고, 약이 빠지면 잠깐 얕게 해서 검사하고, 그동안 ICP를 지켜보다가, 넘으면 바로 멈추고 다시 진정시켜요."
+    lines:
+      1: {ko: "약이 빠지면 잠깐 진정을 얕게 해서 신경학적 상태를 사정해요"}
+    owhy: "B 오타: '얕추어·얕춰서'를 '얕게 해서'로"
+  15:
+    why: "징후가 뇌탈출이라고 먼저 선언하고, 처치하는 동안 신경외과를 즉시 부르고, 호출이 가는 대로 지시된 고장액과 과호흡을 하고, 수술 가능성에 맞춰 마취과와 수술팀을 움직이는 순서예요."
+    lines:
+      1: {en: "Call neurosurgery stat while I drain the EVD and raise his head.", icon: pager, ko: "제가 EVD를 배액하고 머리를 올리는 동안 신경외과에 즉시 연락하세요", note: 호출}
+      2: {en: "As they're paged, give hypertonic and hyperventilate per order.", icon: pill, ko: "호출하는 대로 지시에 따라 고장액을 주고 과호흡을 시작하세요", note: 지시}
+      3: {en: "With surgery likely, get the anesthesiologist and OR team moving.", icon: siren, ko: "수술 가능성이 크니 마취과와 수술팀을 움직이게 하세요", note: 소집}
+    owhy: "B order S15: 임상 순서 — 신경외과 호출이 맨 끝이 아니라 처치와 동시에 먼저, 'To support that·For that' 고리 제거"
+  16:
+    why: "막힌 것 같으면 먼저 수평·스톱콕·튜빙을 보고, 파동이 없는지 따지고, 정말 막혔다고 하기 전에 머리 위치를 한 번 바꿔 본 뒤, 플러싱 금지와 연락을 말해요."
+    lines:
+      2: {en: "If so, try repositioning his head once before you call it truly blocked.", ko: "그렇다면 정말 막혔다고 판단하기 전에 환자 머리 위치를 한 번 바꿔 보세요"}
+    owhy: "B order S16: 3번 줄이 1번 줄 바로 뒤에도 읽혀 'If so'로 앞 줄(파동 없음)을 가리키게, his head 추가"
+  20:
+    why: "우려되는 소견과 공식 검사 사실을 먼저 알리고, 아직 최종이 아니라고 말하고, 검사 뒤 설명을 약속한 뒤, 그때까지 곁에서 지지하며 준비되면 바람을 이야기한다고 맺어요."
+    lines:
+      1: {en: "It isn't a final diagnosis yet — we're still waiting for the formal exams.", ko: "아직 최종 진단은 아니고 공식적인 검사를 아직 기다리고 있어요"}
+      2: {en: "After the exams are done, the team will explain what the results mean.", ko: "검사가 끝나면 팀이 결과의 의미를 설명해 드릴 거예요"}
+      3: {en: "Until then, we'll support you and talk about his wishes when you're ready.", ko: "그때까지 곁에서 지지하며, 준비되시면 환자분의 바람을 이야기할게요"}
+    owhy: "A S11·B order S20: 20.1에서 '두 번의 검사'를 뺐으니 order도 맞추고, 4번 줄이 3번 줄을 가리키게"
+  8:
+    why: "수평과 튜빙부터 확인하고, 그다음 호흡에 따른 파동을 보고, 막힌 것 같으면 플러싱하지 않는다고 말한 뒤, 자세를 다시 잡아 재평가하고 보고하는 것으로 마무리해요."
+    lines:
+      3: {ko: "자세를 다시 잡고 재평가한 뒤 계속 막혀 있으면 신경외과에 연락할게요"}
+    owhy: "w-reposition ko를 '자세를 다시 잡다'로 바꾼 것에 맞춤"
+  17:
+    lines:
+      2: {ko: "그걸 감안해 지금 신경외과 의사를 침상으로 바로 불러올게요"}
+    owhy: "A K2: 17.3 ko와 맞춤"
+nuance:
+  - {s: 0, kind: slider, w: w-alert, set: {scale: [alert, to voice, to pain, unresponsive], answerAt: 1,
+      why: "AVPU는 의식 수준을 빠르게 네 단계로 나누는 척도예요(신경 ICU 기록은 보통 GCS로 자세히 해요). alert는 스스로 깨어 있는 상태, to voice는 부르면 눈을 뜨는 상태, to pain은 통증 자극에만 반응하는 상태, 마지막 unresponsive는 반응이 없는 상태예요. 소리쳐 불러야 눈을 뜬다면 to voice예요."}}
+  - {s: 1, kind: pair, w: w-keep, set: {pairs: [[keep, "his head up and midline"], [avoid, "sharp turns of his neck"], [check, "that he's still midline after each turn"]], decoys: ["very loudly"]}}
+  - {s: 6, kind: pair, w: w-position, set: {pairs: [[position, "his head up and neck neutral"], [sedation, "deepened if he's agitated"], [mannitol, "given to pull fluid off the brain"]]}}
+  - {s: 7, kind: pair, w: w-confirm, set: {pairs: [[confirm, "that the dose is weight-based"], [trend, "sodium and osmolality over hours"], [hang, "it on the pole after checks"]], decoys: ["very softly"]}}
+  - {s: 13, kind: pair, w: w-clamp, set: {pairs: [[clamp, "the EVD only as protocol says"], [sedate, "him a bit more before CT"], [keep, "the bolus ready for his return"]]}}
+  - {s: 8, kind: slider, w: w-dampen, set: {scale: [flat, dampened, strong], answerAt: 1,
+      why: "flat은 거의 파형이 없는 상태, dampened는 파형이 있지만 약해진 상태, strong은 뚜렷한 파형이에요. 약해진 파형은 막힘이나 위치 문제의 신호일 수 있어서 수평, 튜빙, 파동을 확인하고 신경외과에 알려요."}}
+  - {s: 16, kind: slider, w: w-usually, set: {scale: [rarely, usually, always], answerAt: 1,
+      why: "파동이 없고 ICP가 오르면 보통은 막힘을 뜻하지만 항상은 아니에요. rarely는 드물게, usually는 대부분, always는 예외 없이예요. 그래서 확정하기 전에 머리 위치를 바꿔 보고 재평가한 뒤 신경외과에 알려요."}}
+  - {s: 17, kind: slider, w: w-possibility, set: {scale: [impossibility, possibility, certainty], answerAt: 1,
+      why: "아직 결정은 아니지만 선택지로 올라와 있으므로 possibility(가능성)가 맞아요. impossibility는 불가능, certainty는 확정이라 맞지 않아요. 가족에게는 결정이 아니라 가능성이라고 정직하게 알려요."}}
+  - {s: 18, kind: slider, w: w-rapid, set: {scale: [slow, steady, rapid], answerAt: 2,
+      why: "slow는 천천히, steady는 일정하게, rapid는 급격히예요. 스무 분 만에 크게 떨어졌다면 rapid(급격한)예요. 급격한 악화는 출혈이 커질 수 있다는 신호라 즉시 보고해요."}}
+  - {s: 14, kind: slider, w: w-briefly, set: {scale: [briefly, for hours, indefinitely], answerAt: 0,
+      why: "신경 검사를 위해 진정을 잠깐만 줄이므로 briefly가 맞아요. for hours는 몇 시간, indefinitely는 기한 없이예요. 이때 ICP를 자세히 보고 오르면 다시 진정시켜요."}}
+  - {s: 20, kind: slider, w: w-final, set: {cue: "Not yet confirmed; the formal brain death exams are still pending.", scale: [tentative, probable, final], answerAt: 0,
+      why: "검사가 끝나기 전에는 결과가 아직 확정이 아니라는 뜻으로 tentative(잠정적)가 맞아요. probable은 그럴 가능성이 큰 것, final은 최종이에요. 가족에게는 아직 최종이 아니라고 정직하게 알려요."}}
+  - {s: 10, kind: slider, w: w-brief, set: {cue: "Hyperventilation is used only for a short time as a bridge until other treatments work.",
+      why: "과호흡은 CO2를 낮춰 뇌혈관을 좁혀 뇌압을 잠시 낮춰요. 처방·지시에 따라 짧게(brief) 쓰고 지속적인 요법(ongoing)으로 쓰지 않는 이유는, 오래 쓰면 뇌로 가는 혈류가 줄어 위험하기 때문이에요."}}
+  - {s: 10, kind: swap, w: w-hyperventilation, set: {before_i: {2: " for a short time."}, ko: "잠시 동안 숨을 더 빠르게 쉬게 하고 있어요"}}
+  - {s: 3, kind: swap, w: w-icp, set: {before_i: {0: "That number on the screen is the "}}}
+  - {s: 9, kind: swap, w: w-pressor, set: {before_i: {2: " to protect blood flow to his brain."}, ko: "뇌로 가는 혈류를 지키려고 혈압을 올려 주는 약을 쓰고 있어요"}}
+  - {s: 13, kind: swap, w: w-transport, set: {before_i: {2: "."}, rename_opt: {transport: "transport to CT", "patient transfer": "patient transfer to CT"}}}
+  - {s: 15, kind: swap, w: w-herniation, set: {rename_opt: {"uncal herniation": "transtentorial herniation"}}}
+  - {s: 4, kind: context, w: w-spike, set: {scene_fam: {en: "His ICP spiked to 28 with suctioning.", fix: "His pressure went up for a moment when we suctioned him, and it came right back down."},
+      why: "의료진끼리는 ICP spike가 짧은 급상승을 뜻하는 정확한 말이에요. 하지만 가족에게 약어와 숫자만 말하면 무슨 일인지 모르고 불안해져요. 무슨 일이 있었고 지금 어떤지 쉬운 말로 전해 주세요."}}
+  - {s: 20, kind: context, w: w-concerning, set: {scene_fam: {en: "Your husband's exam is concerning for loss of brainstem reflexes.", fix: "His exam worries us, and we're doing more tests before we can say more."},
+      why: "의료진끼리는 concerning for … 가 간결한 보고지만, 가족에게는 전문 용어로 들려 무슨 뜻인지 알 수 없어요. 걱정된다는 사실과 지금 하는 일을 쉬운 말로 정직하게 말해 주세요."}}
+  - {s: 15, kind: slider, w: w-immediately, set: {
+      why: "뇌탈출이 의심되면 잠시도 미룰 수 없어요. immediately는 지체 없이 바로, quickly는 서두르지만 약간의 여유가 있고, shortly는 곧이에요. 동공이 산대되면 즉시 보고해요."}}

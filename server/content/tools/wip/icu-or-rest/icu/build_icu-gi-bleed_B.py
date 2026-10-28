@@ -22,6 +22,15 @@ for sit in base["situations"]:
     assert len(o["lines"]) == 4
     sit["order"] = {"tag": o["tag"], "icon": o["icon"], "ko": o["ko"], "why": o["why"],
         "lines": [{"en": l[0], "icon": l[1], "ko": l[2], "note": l[3]} for l in o["lines"]]}
+import os
+for fn in sorted(glob.glob(f"fixB_{T}_*.yaml")):
+    for key, v in yaml.safe_load(open(fn, encoding="utf-8")).items():
+        i, j = map(int, key.split("."))
+        x = base["situations"][i]["sentences"][j]
+        if "d" in v: x["distractorsKo"] = v["d"]
+        if "decoy" in v: x["decoy"] = v["decoy"]
+        if "blank" in v:
+            b = v["blank"]; x["blank"] = {"answer": b[0], "options": [{"en": o} for o in b]}
 with open(f"{T}.B.yaml", "w", encoding="utf-8") as f:
     yaml.safe_dump(base, f, allow_unicode=True, sort_keys=False, width=1000)
 print("wrote", f"{T}.B.yaml")
