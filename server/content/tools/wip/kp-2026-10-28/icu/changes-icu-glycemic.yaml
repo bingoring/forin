@@ -519,3 +519,103 @@ changes:
   fields:
   - ko
   why: 검토 반영 — 문장 수정(안전·업무 범위·구 경계·자연스러움)
+- kind: sentence
+  situation: 심한 저혈당 의식저하 위기
+  index: 2
+  fields:
+  - en
+  - ko
+  - chunks
+  why: 'keyPhrase 교체(2026-10-28 사용자 결정): five minutes → fifteen minutes(D50 뒤 재측정 표준 15분, KP 8.0과 숫자 통일)'
+- kind: word
+  id: w-repeat
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-28 사용자 결정): 예문을 바꾼 문장으로'
+- kind: sentence
+  situation: 인슐린 용량사고 위기
+  index: 1
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-10-28 사용자 결정): start dextrose → get dextrose ready(간호사 단독 시작으로 읽힘); −w-start(9.1 등에서 계속 씀)'
+- kind: sentence
+  situation: 급식 중단 후 저혈당 급변
+  index: 1
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-10-28 사용자 결정): Start dextrose → Follow the hypoglycemia protocol(간호사 단독 판단으로 읽힘); −w-start −w-dextrose(9.1·16.1에서 계속 씀) +w-follow +w-protocol'
+- kind: word
+  id: w-immediately
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-28 사용자 결정): 예문을 바꾼 문장으로'
+- kind: sentence
+  situation: 반복 저혈당 프로토콜 재설계
+  index: 0
+  fields:
+  - en
+  - chunks
+  why: 'keyPhrase 교체(2026-10-28 사용자 결정): means → mean(복수 주어 수 일치) — ko는 그대로'
+- kind: word
+  id: w-review
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-28 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-regimen
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-28 사용자 결정): 예문을 바꾼 문장으로'
+- kind: sentence
+  situation: 저혈당 징후 인지
+  index: 0
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-28 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Those shaky / , sweaty feelings / can mean a low sugar / , so let''s check now) → Those shaky, sweaty feelings / can mean / a low sugar / , so let''s check now — 문장은 그대로'
+- kind: sentence
+  situation: 혈당 경향 보고
+  index: 1
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-28 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Let''s look / at the pattern / over the last / several checks together) → Let''s look at / the pattern / over the last several checks / together — 문장은 그대로'
+- kind: sentence
+  situation: 주입에서 피하 전환 관리
+  index: 0
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-28 사용자 결정): keyPhrase chunks가 구 경계를 끊음(We give your first / long-acting shot / before stopping / the drip) → We give / your first long-acting shot / before stopping / the drip — 문장은 그대로'
+- kind: sentence
+  situation: 주입에서 피하 전환 관리
+  index: 1
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-28 사용자 결정): keyPhrase chunks가 구 경계를 끊음(That overlap / keeps your sugar / covered during / the switch) → That overlap / keeps your sugar / covered / during the switch — 문장은 그대로'
+- kind: sentence
+  situation: 혈당 변동성 관리
+  index: 1
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-28 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Smoother insulin adjustments / help level out / the ups / and downs) → Smoother insulin adjustments / help / level out / the ups and downs — 문장은 그대로'
+- kind: sentence
+  situation: POC와 정맥혈당 불일치 인지
+  index: 1
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-28 사용자 결정): keyPhrase chunks가 구 경계를 끊음(If they conflict / , we confirm / with a venous / sample) → If they conflict / , we / confirm / with a venous sample — 문장은 그대로'
+- kind: sentence
+  situation: 혈당 급변·의식변화 감별
+  index: 0
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-28 사용자 결정): keyPhrase chunks가 구 경계를 끊음(First I''ll check his sugar / , since a low / or high / can cause confusion) → First I''ll check his sugar / , since a low or high / can cause / confusion — 문장은 그대로'
