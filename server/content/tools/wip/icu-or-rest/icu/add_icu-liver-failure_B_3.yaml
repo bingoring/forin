@@ -1,0 +1,37 @@
+situations:
+- title: 저혈당·전해질 감시
+  s:
+  - ["혈당 처치", pill, "'if it's low'로 조건을 붙이면 낮을 때만 포도당을 준다는 기준이 분명해져요. 간부전에서는 간이 포도당을 만들지 못해 혈당이 떨어질 수 있어요.", "after it was", "혈당을 재확인하고 쓴 바늘은 용기에 버립시다.", "혈당을 재확인하고 남은 포도당은 냉장고에 넣읍시다.", "dextrose", "saline", "albumin", "oxygen"]
+  - ["전해질 감시", monitor, "'closely'는 한 번 보고 끝내지 않고 계속 살핀다는 뜻이에요. 'I'll'로 담당자가 자신이라고 분명히 밝혀요.", "every so", "전해질을 자세히 공유할게요.", "전해질을 자세히 적어 둘게요.", "electrolytes", "bandages", "linens", "tray"]
+  - ["원인 설명", lab, "'on its own'은 간이 혼자서는 해내지 못한다는 점을 짚어 줘요. 간은 포도당을 저장하고 만들어 혈당을 지켜 줘요.", "for her", "신장이 스스로 혈당을 안정되게 유지하지 못해요.", "간이 스스로 혈압을 안정되게 유지하지 못해요.", "sugar", "salt", "water", "heat"]
+  - ["칼륨 보충", pill, "'so'로 이유와 행동을 이으면 왜 수액에 더하는지 한 번에 전달돼요. 'too'는 앞의 혈당처럼 이것도 낮다는 뜻이에요.", "yet again", "칼륨도 낮아서 다음 수액백에 라벨을 붙일게요.", "칼륨도 낮아서 지난 수액백은 버릴게요.", "bag", "bed", "tray", "shelf"]
+  - ["리듬 감시", stetho, "'for potassium swings'은 무엇 때문에 심장을 보는지 목적을 말해요. 칼륨이 흔들리면 심장 리듬이 먼저 영향을 받을 수 있어요.", "to watch", "칼륨 변동에 대비해서 심장 리듬을 기록합시다.", "칼륨 변동에 대비해서 심장 리듬을 공유합시다.", "rhythm", "murmur", "valve", "size"]
+  - ["의사 보고", pager, "'if the sugar doesn't come up'은 알릴 기준을 말해 줘요. 'flag'는 눈에 띄게 표시해 알린다는 뜻이에요.", "once the", "혈당이 오르지 않으면 의사에게 메모를 남길게요.", "혈당이 오르지 않으면 의사에게 설명할게요.", "physician", "pharmacist", "dietitian", "chaplain"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 저혈당·전해질 4문장 순서
+    why: 간이 혈당을 못 지킨다는 이유를 말하고 포도당을 확인해 주며, 칼륨 보충을 이어 말한 뒤 모든 조치에도 혈당이 안 오르면 의사에게 알려요.
+    lines:
+    - ["Her liver can't keep the sugar stable on its own.", lab, "간이 스스로 혈당을 안정되게 유지하지 못해요", "이유"]
+    - ["That's why let's recheck the glucose and give dextrose if it's low.", pill, "그래서 혈당을 재확인하고 낮으면 포도당을 줍시다", "처치"]
+    - ["Her potassium is low too, so I'll add it to the next bag.", pill, "칼륨도 낮아서 다음 수액백에 추가할게요", "보충"]
+    - ["If the sugar still doesn't come up after all of that, I'll flag this for the physician.", pager, "그 모든 걸 해도 혈당이 오르지 않으면 의사에게 알릴게요", "보고"]
+- title: 감염 징후 감시
+  s:
+  - ["징후 설명", stetho, "'can mean'은 가능성만 말해서 아직 진단이 아니라는 점을 정확히 전해요. 복막염은 열과 배 압통으로 의심하기 시작해요.", "that could", "발열과 흉부 압통은 SBP를 의미할 수 있어요.", "발열과 복부 압통은 폐렴을 의미할 수 있어요.", "belly", "knee", "ankle", "wrist"]
+  - ["검사 제안", lab, "'consider'는 아직 결정이 아니라 선택지로 올려 둔다는 말이에요. 'Let's'로 의료진 모두가 함께한다는 느낌을 줘요.", "for the", "배양 검사를 하고 쓴 용기는 폐기합시다.", "배양 검사를 하고 검체 라벨을 확인합시다.", "diagnostic", "surgical", "routine", "nightly"]
+  - ["보고와 시작", pager, "'notify … and start'는 알리는 일과 시작하는 일을 한 문장에 묶어서 둘 다 바로 한다는 뜻이에요.", "then keep", "의사에게 알리고 환자 위치를 확인할게요.", "의사에게 알리고 보호자 연락처를 확인할게요.", "physician", "pharmacist", "dietitian", "janitor"]
+  - ["체온 보고", chartup, "'spiked to'는 갑자기 올랐다는 변화를 말해요. 'an hour ago'로 시점을 붙이면 의사가 변화 속도를 알 수 있어요.", "to be", "두 시간 전에 체온이 101.5도까지 치솟았어요.", "한 시간 전에 체온이 100.5도까지 치솟았어요.", "temperature", "pulse", "pressure", "oxygen"]
+  - ["혈액 배양", lab, "'times two'는 두 세트를 뜻하고 'from different sites'는 부위를 달리한다는 뜻이에요. 오염인지 진짜 감염인지 가리는 데 도움이 돼요.", "at one", "서로 다른 부위의 혈액 배양에 라벨 붙일게요.", "서로 다른 부위의 혈액 배양을 검사실로 보낼게요.", "cultures", "counts", "gases", "panels"]
+  - ["복수천자 설명", scalpel, "'We may need'은 확정이 아니라 필요할 수 있다는 말이라 환자가 놀라지 않아요. 'to check'로 목적을 먼저 밝혀요.", "if we", "감염 여부를 확인하려면 흉수천자가 필요할 수도 있어요.", "출혈 여부를 확인하려면 복수천자가 필요할 수도 있어요.", "paracentesis", "biopsy", "thoracentesis", "transfusion"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 감염 의심 4문장 순서
+    why: 열이 오른 사실을 먼저 말하고, 그 의미를 설명한 뒤, 확인을 위한 검사를 정하고 모든 내용을 의사에게 알리며 검사를 시작해요.
+    lines:
+    - ["His temperature spiked to 101.5 an hour ago.", chartup, "한 시간 전에 체온이 101.5도까지 치솟았어요", "보고"]
+    - ["With his belly tenderness, that can mean SBP.", stetho, "복부 압통까지 있으니 그건 SBP를 의미할 수 있어요", "의미"]
+    - ["To confirm, let's get cultures from different sites and consider a diagnostic tap.", lab, "확인하려면 서로 다른 부위에서 배양 검사를 하고 진단적 천자를 고려합시다", "검사"]
+    - ["I'll notify the physician about all of that and start the workup.", pager, "그 모든 걸 의사에게 알리고 검사 절차를 시작할게요", "보고"]

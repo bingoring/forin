@@ -1,0 +1,529 @@
+=== S0 DKA 초기 사정
+ [0.0] I'm going to check your hydration, your breathing, and how alert you feel. | 수분 상태랑 호흡, 의식이 얼마나 또렷한지 확인해 볼게요.
+    chunks=["I'm going to check", 'your hydration,', 'your breathing,', 'and how alert you feel', '.'] words=['w-check', 'w-hydration', 'w-breathing', 'w-alert', 'w-feel'] tag=사정 안내 icon=check
+    why='how alert you feel'은 의식 상태를 환자가 느끼는 정도로 묻는 간접 의문절이라 검사처럼 들리지 않고 부드러워요.
+    decoy=your slippers dk=['동료가 수분 상태랑 호흡, 의식이 얼마나 또렷한지 확인해요.', '선배가 수분 상태랑 호흡, 의식이 얼마나 또렷한지 확인해요.'] blank=breathing:['breathing', 'walking', 'bathing', 'dressing']
+ [0.1] Have you been able to keep any fluids down today? | 오늘 물이나 음료를 좀 삼킬 수 있었어요?
+    chunks=['Have you been able', 'to keep', 'any fluids down', 'today', '?'] words=['w-keep', 'w-fluid'] tag=병력 질문 icon=speech
+    why='keep down'은 삼킨 것을 토하지 않고 유지한다는 숙어라 구토가 있는 환자에게 딱 맞아요. 'been able to'가 못 했을 때도 부담 없이 답하게 해요.
+    decoy=for your visitors dk=['어젯밤 물이나 음료를 좀 삼킬 수 있었어요?', '이틀 동안 물이나 음료를 좀 삼킬 수 있었어요?'] blank=keep:['keep', 'pour', 'spill', 'wash']
+ [0.2] Your fast breathing can be your body reacting to acid, so I'm watching it closely. | 숨이 빠른 건 몸이 산에 반응하는 걸 수도 있어서, 제가 잘 지켜보고 있어요.
+    chunks=['Your fast breathing', 'can be your body', 'reacting to acid,', "so I'm watching it closely", '.'] words=['w-fast', 'w-breathing', 'w-react', 'w-acid', 'w-watch', 'w-closely'] tag=원인 설명 icon=lab
+    why='can be'는 확정이 아니라 가능성이라 환자를 겁주지 않고 설명해요. 'reacting to'로 몸이 하는 반응이라는 틀을 줘요.
+    decoy=your morning meal dk=['숨이 빠른 건 몸이 열에 반응하는 걸 수도 있어서, 제가 잘 지켜보고 있어요.', '숨이 빠른 건 몸이 약에 반응하는 걸 수도 있어서, 제가 잘 지켜보고 있어요.'] blank=acid:['acid', 'noise', 'sunlight', 'pollen']
+ [0.3] I'll ask you a few questions to check how alert you are. | 의식이 얼마나 또렷한지 확인하려고 몇 가지 여쭤볼게요.
+    chunks=["I'll ask you", 'a few questions', 'to check how alert', 'you are', '.'] words=['w-ask', 'w-question', 'w-check', 'w-alert'] tag=의식 확인 icon=bulb
+    why='a few questions'는 부담 없는 분량처럼 들려 환자가 협조하기 쉬워요. 'to check'로 질문하는 목적을 먼저 밝혀요.
+    decoy=about your diet dk=['의식이 얼마나 또렷한지 확인하려고 후배가 몇 가지 여쭤봐요.', '의식이 얼마나 또렷한지 확인하려고 의사가 몇 가지 여쭤봐요.'] blank=ask:['ask', 'show', 'tell', 'teach']
+ [0.4] I'm seeing early signs of DKA, so I'll report this to the team right away. | 당뇨병성 케토산증 초기 소견이 보여서, 바로 팀에 보고할게요.
+    chunks=["I'm seeing early signs", 'of DKA,', "so I'll report this", 'to the team right away', '.'] words=['w-sign', 'w-report', 'w-team'] tag=보고 icon=siren
+    why='early signs'는 확정 진단이 아니라 초기 단서라는 뜻이에요. 'this'가 방금 본 소견을 가리켜 무엇을 보고하는지 분명해요.
+    decoy=to his sister dk=['당뇨병성 케토산증 뚜렷한 소견이 보여서, 바로 팀에 보고할게요.', '당뇨병성 케토산증 애매한 소견이 보여서, 바로 팀에 보고할게요.'] blank=signs:['signs', 'causes', 'doses', 'scars']
+ [0.5] I'm right here with you, so try to stay calm. | 제가 바로 옆에 있으니까 최대한 편하게 있으세요.
+    chunks=["I'm right here", 'with you,', 'so try', 'to stay calm', '.'] words=['w-stay', 'w-calm'] tag=곁에 있기 icon=me
+    why='right here with you'는 물리적으로 곁에 있다는 말이라 불안한 환자에게 안심을 줘요. 'try to'는 명령이 아니라 권유로 들려요.
+    decoy=in the hallway dk=['친구가 바로 옆에 있으니까 최대한 편하게 있으세요.', '제가 바로 옆에 있으니까 최대한 조용히 있으세요.'] blank=calm:['calm', 'angry', 'lonely', 'hungry']
+ N0 {'kind': 'slider', 'words': ['w-fast'], 'cue': 'Her breathing rate is 34 breaths a minute, and each breath is deep.', 'scale': ['a little fast', 'fast', 'very fast'], 'answerAt': 2, 'why': '성인의 정상 호흡수는 보통 분당 12~20회예요. 34회에 깊은 호흡이 이어지면 very fast이고, DKA에서는 산을 내보내려는 몸의 반응일 수 있어서 바로 팀에 보고해요.', 'example': 'Her breathing is very fast and deep.', 'exKo': '그녀의 호흡이 아주 빠르고 깊어요.'}
+ N1 {'kind': 'context', 'words': ['w-sign'], 'word': 'sign', 'ko': '징후', 'scenes': [{'who': '의사 라운드', 'icon': 'monitor', 'en': 'He has early signs of DKA — deep, fast breathing and a dry mouth.', 'ok': True}, {'who': '야간 인계', 'icon': 'board', 'en': 'No new signs of fluid overload overnight.', 'ok': True}, {'who': '환자에게', 'icon': 'me', 'en': 'Your Kussmaul respirations are a sign of severe metabolic acidosis.', 'ok': False, 'fix': "Your fast, deep breathing is a sign that your blood has too much acid, and we're treating it."}], 'why': '의료진끼리는 Kussmaul·metabolic acidosis 같은 용어가 정확하고 빨라요. 환자에게는 같은 sign을 쉬운 말로 풀어 무엇이 일어나고 있고 무엇을 하는지 알려 주세요.'}
+ N2 {'kind': 'swap', 'words': ['w-hydration'], 'who': '환자에게 · 첫 사정 설명', 'icon': 'me', 'before': ["I'm checking ", 'your volume status', ' first.'], 'options': ['how dry you are', 'your volume status', 'your hypovolemia'], 'answer': 'how dry you are', 'notes': {'how dry you are': '환자가 바로 알아듣고, 무엇을 보는지 분명해요.', 'your volume status': '의료진끼리 쓰는 말이라 환자는 무슨 뜻인지 모를 수 있어요.', 'your hypovolemia': '어려운 진단명을 환자에게 그대로 던지는 말이라 불안만 키워요.'}, 'why': "탈수 사정은 환자 몸 상태를 묻는 일이라, 진단명 대신 '얼마나 말라 있는지' 같은 쉬운 말로 시작해요.", 'ko': '먼저 몸에 수분이 얼마나 모자란지 확인할게요'}
+ ORDER {'tag': '대화 흐름', 'icon': 'compass', 'ko': 'DKA 초기 사정 4문장 순서', 'why': '무엇을 확인할지 알리고, 수분 상태를 병력으로 묻고, 어느 쪽이든 빠른 숨의 이유를 설명한 뒤, 소견을 보고한다고 알려요.', 'lines': [{'en': "I'm going to check your hydration, your breathing, and how alert you feel.", 'icon': 'check', 'ko': '수분 상태랑 호흡, 의식을 확인해 볼게요', 'note': '사정'}, {'en': 'For your hydration, have you been able to keep any fluids down today?', 'icon': 'speech', 'ko': '수분 상태 때문에, 오늘 물이나 음료를 삼킬 수 있었어요?', 'note': '질문'}, {'en': 'Either way, that fast breathing can be your body reacting to acid.', 'icon': 'lab', 'ko': '어느 쪽이든 그 빠른 숨은 몸이 산에 반응하는 걸 수도 있어요', 'note': '설명'}, {'en': "Because of all that, I'll report these early signs to the team.", 'icon': 'siren', 'ko': '그 모든 걸 바탕으로 이 초기 소견을 팀에 보고할게요', 'note': '보고'}]}
+=== S1 혈당·케톤·ABG 모니터
+ [1.0] We check your sugar, your ketones, and your blood acid every hour to keep you safe. | 안전하게 지켜드리려고 혈당이랑 케톤, 혈액 산도를 매시간 확인하고 있어요.
+    chunks=['We check your sugar,', 'your ketones,', 'and your blood acid', 'every hour', 'to keep you safe', '.'] words=['w-check', 'w-sugar', 'w-ketone', 'w-blood', 'w-acid', 'w-keep', 'w-safe'] tag=모니터 이유 icon=monitor
+    why='to keep you safe'로 반복 검사의 목적을 환자의 안전으로 밝혀 귀찮은 검사라는 느낌을 줄여요. 'every hour'가 간격을 정확히 알려요.
+    decoy=for the nurse dk=['편안하게 지켜드리려고 혈당이랑 케톤, 혈액 산도를 매시간 확인하고 있어요.', '빨리 퇴원시켜 드리려고 혈당이랑 케톤, 혈액 산도를 매시간 확인하고 있어요.'] blank=safe:['safe', 'busy', 'bored', 'cheerful']
+ [1.1] These numbers tell us how your treatment is working. | 이 수치들이 치료가 잘 되고 있는지를 말해줘요.
+    chunks=['These numbers', 'tell us', 'how your treatment', 'is working', '.'] words=['w-number', 'w-tell', 'w-treatment', 'w-work'] tag=수치 해석 icon=chartup
+    why='tell us how'는 숫자가 정보를 준다는 틀이라 수치를 쉬운 말로 풀어줘요. 'working'은 치료가 작동 중이라는 뜻이에요.
+    decoy=your home address dk=['이 수치들이 식사가 잘 되고 있는지를 말해줘요.', '이 수치들이 수액이 잘 들어가고 있는지를 말해줘요.'] blank=working:['working', 'waiting', 'sleeping', 'lasting']
+ [1.2] I'll let you know as soon as your levels start moving the right way. | 수치가 좋은 방향으로 움직이기 시작하면 바로 알려드릴게요.
+    chunks=["I'll let you know", 'as soon as', 'your levels start moving', 'the right way', '.'] words=['w-level', 'w-start', 'w-move', 'w-way'] tag=진행 약속 icon=speech
+    why='as soon as'는 변화가 생긴 순간에 알린다는 약속이에요. 'the right way'는 좋아지는 방향을 쉬운 말로 가리켜요.
+    decoy=your insurance dk=['수치가 좋은 방향으로 움직이기 시작하면 병동 간호사가 알려드려요.', '수치가 좋은 방향으로 움직이기 시작하면 담당 선생님이 알려드려요.'] blank=levels:['levels', 'doses', 'orders', 'lines']
+ [1.3] I'll check your finger stick and draw your labs on schedule. | 정해진 시간에 손끝 혈당이랑 검사 채혈을 할게요.
+    chunks=["I'll check", 'your finger stick', 'and draw your labs', 'on schedule', '.'] words=['w-check', 'w-draw', 'w-lab', 'w-schedule'] tag=채혈 안내 icon=lab
+    why='on schedule'은 정해진 계획대로 한다는 뜻이라 갑자기 채혈하는 게 아니라는 안심을 줘요. 'finger stick'은 손끝 혈당 검사를 부르는 현장 용어예요.
+    decoy=at the front desk dk=['주치의가 정해진 시간에 손끝 혈당이랑 검사 채혈을 해요.', '전문의가 정해진 시간에 손끝 혈당이랑 검사 채혈을 해요.'] blank=draw:['draw', 'wash', 'carry', 'hang']
+ [1.4] Your ketone number is coming down, which means the treatment is working. | 케톤 수치가 내려가고 있는데, 이건 치료가 잘 듣고 있다는 뜻이에요.
+    chunks=['Your ketone number', 'is coming down,', 'which means', 'the treatment is working', '.'] words=['w-ketone', 'w-number', 'w-mean', 'w-treatment', 'w-work'] tag=호전 설명 icon=chartup
+    why='which means'로 수치의 뜻을 바로 이어 설명해요. 'coming down'은 계속 내려가는 중이라는 진행형이에요.
+    decoy=the blood sugar dk=['케톤 수치가 내려가고 있는데, 이건 몸이 잘 쉬고 있다는 뜻이에요.', '케톤 수치가 내려가고 있는데, 이건 환자분이 잘 버티고 있다는 뜻이에요.'] blank=working:['working', 'resting', 'hiding', 'stalling']
+ N0 {'kind': 'slider', 'words': ['w-level'], 'cue': 'Glucose read 480, then 360, then 290 on three hourly checks.', 'scale': ['rising', 'falling steadily', 'dropping suddenly'], 'answerAt': 1, 'why': '세 번 연속 조금씩 내려가면 falling steadily예요. rising은 올라갈 때, dropping suddenly는 한 번에 크게 떨어질 때라 달라요. 시간 순서로 이어 보면 치료 반응이 보여요.', 'example': 'His glucose level is falling steadily.', 'exKo': '그의 혈당 수치는 꾸준히 내려가고 있어요.'}
+ N1 {'kind': 'context', 'words': ['w-number'], 'word': 'number', 'ko': '수치', 'scenes': [{'who': '의사 라운드', 'icon': 'monitor', 'en': 'The ketone numbers are coming down, so the insulin drip is working.', 'ok': True}, {'who': '야간 인계', 'icon': 'board', 'en': 'Sugar numbers stayed between 180 and 220 on the hourly checks.', 'ok': True}, {'who': '환자에게', 'icon': 'me', 'en': 'Your beta-hydroxybutyrate and anion gap numbers are normalizing.', 'ok': False, 'fix': 'Your blood acid and ketone numbers are getting better.'}], 'why': '의료진끼리는 beta-hydroxybutyrate나 anion gap 같은 이름이 정확해요. 환자에게는 어떤 수치가 어떻게 달라졌는지를 쉬운 말로 알려 주세요.'}
+ N2 {'kind': 'swap', 'words': ['w-check'], 'who': '환자에게 · 반복 검사 안내', 'icon': 'me', 'before': ['Time for ', 'your hourly POC glucose', '.'], 'options': ['your hourly finger stick', 'your hourly POC glucose', 'your hourly capillary sampling'], 'answer': 'your hourly finger stick', 'notes': {'your hourly finger stick': '환자가 바로 아는 말이라 무엇을 하는지 전해져요.', 'your hourly POC glucose': 'POC는 의료진 약어라 환자는 알아듣기 어려워요.', 'your hourly capillary sampling': '정확하지만 딱딱하고 낯선 말이에요.'}, 'why': '반복 검사는 환자가 자주 불편해하는 일이라, 낯선 약어 대신 손끝 검사처럼 아는 말로 알려야 협조가 쉬워요.', 'ko': '매시간 하는 손끝 혈당 검사 시간이에요'}
+ ORDER {'tag': '대화 흐름', 'icon': 'compass', 'ko': '혈당·케톤 모니터 설명 4문장 순서', 'why': '무엇을 얼마나 자주 재는지 알리고, 수치의 뜻을 설명한 뒤, 그 수치를 얻는 검사를 안내하고, 결과를 해석해요.', 'lines': [{'en': 'We check your sugar, ketones, and blood acid every hour to keep you safe.', 'icon': 'monitor', 'ko': '안전을 위해 혈당, 케톤, 혈액 산도를 매시간 확인해요', 'note': '안내'}, {'en': 'Those numbers tell us how your treatment is working.', 'icon': 'chartup', 'ko': '그 수치들이 치료가 잘 되고 있는지 알려줘요', 'note': '설명'}, {'en': "To get them, I'll do your finger stick on schedule.", 'icon': 'lab', 'ko': '그 수치를 얻으려고 일정대로 손끝 혈당을 잴게요', 'note': '검사'}, {'en': "So far your ketone number is coming down, which means it's working.", 'icon': 'chartup', 'ko': '지금까지 케톤 수치가 내려가고 있고, 효과가 있다는 뜻이에요', 'note': '해석'}]}
+=== S2 수액 소생 시작
+ [2.0] You lost a lot of fluid, so we're replacing it quickly at first. | 체액을 많이 잃으셔서, 처음에는 빠르게 보충해 드리고 있어요.
+    chunks=['You lost a lot', 'of fluid,', "so we're replacing it", 'quickly at first', '.'] words=['w-lose', 'w-fluid', 'w-replace', 'w-quickly', 'w-first'] tag=이유 설명 icon=board
+    why='so'로 원인과 결과를 이어 환자가 이 수액이 왜 필요한지 바로 알아요. 'at first'가 처음에만 빠르다는 점을 알려 불안을 덜어요.
+    decoy=from the pharmacy dk=['열이 높으셔서, 처음에는 빠르게 보충해 드리고 있어요.', '숨이 차시니까, 처음에는 빠르게 보충해 드리고 있어요.'] blank=lost:['lost', 'spilled', 'donated', 'shared']
+ [2.1] I'll keep watching your blood pressure and urine as the fluids go in. | 수액이 들어가는 동안 혈압이랑 소변량을 계속 지켜볼게요.
+    chunks=["I'll keep watching", 'your blood pressure', 'and urine', 'as the fluids go in', '.'] words=['w-keep', 'w-watch', 'w-blood', 'w-pressure', 'w-urine', 'w-fluid'] tag=감시 안내 icon=monitor
+    why='as the fluids go in'이 감시하는 시점을 수액이 들어가는 동안으로 정해요. 혈압과 소변량은 수액 반응을 보는 지표예요.
+    decoy=the room lights dk=['수액이 들어가는 동안 레지던트가 혈압이랑 소변량을 계속 지켜봐요.', '수액이 들어가는 동안 당직의가 혈압이랑 소변량을 계속 지켜봐요.'] blank=in:['in', 'out', 'off', 'over']
+ [2.2] Tell me if you feel any tightness in your chest or trouble breathing. | 가슴이 답답하거나 숨쉬기 힘들면 바로 말씀해 주세요.
+    chunks=['Tell me', 'if you feel any tightness', 'in your chest', 'or trouble breathing', '.'] words=['w-tell', 'w-feel', 'w-tightness', 'w-chest', 'w-trouble', 'w-breathing'] tag=증상 알림 icon=bell
+    why='Tell me if'는 환자가 해야 할 일을 부담 없이 알려줘요. 가슴 답답함과 숨참은 수액이 너무 많을 때 나올 수 있는 증상이에요.
+    decoy=about your lunch dk=['가슴이 답답하거나 다리가 붓는 것 같으면 바로 말씀해 주세요.', '목이 마르거나 숨쉬기 힘들면 바로 말씀해 주세요.'] blank=tightness:['tightness', 'itching', 'numbness', 'sweating']
+ [2.3] We're starting normal saline now to bring your fluid level back up. | 체액 수준을 다시 올리려고 지금 생리식염수를 시작할게요.
+    chunks=["We're starting normal saline", 'now', 'to bring your fluid level', 'back up', '.'] words=['w-start', 'w-saline', 'w-bring', 'w-fluid', 'w-level'] tag=처치 안내 icon=gear
+    why='to bring … back up'은 낮아진 것을 원래대로 올린다는 뜻이에요. 'now'가 지금 시작한다는 점을 분명히 말해요.
+    decoy=for your breakfast dk=['혈압 수준을 다시 올리려고 지금 생리식염수를 시작할게요.', '소변량을 다시 늘리려고 지금 생리식염수를 시작할게요.'] blank=level:['level', 'color', 'smell', 'temperature']
+ [2.4] I'll check your lungs so we catch any fluid overload early. | 수액 과부하가 있는지 일찍 알아채려고 폐 소리를 확인할게요.
+    chunks=["I'll check your lungs", 'so we catch', 'any fluid overload', 'early', '.'] words=['w-check', 'w-lung', 'w-catch', 'w-fluid', 'w-overload', 'w-early'] tag=폐 확인 icon=stetho
+    why='so we catch … early'는 확인하는 목적을 먼저 밝혀 환자가 놀라지 않게 해요. 'overload'는 수액이 너무 많이 들어간 상태예요.
+    decoy=your belly dk=['폐렴이 있는지 일찍 알아채려고 폐 소리를 확인할게요.', '천명음이 있는지 일찍 알아채려고 폐 소리를 확인할게요.'] blank=overload:['overload', 'shortage', 'leak', 'spill']
+ N0 {'kind': 'slider', 'words': ['w-quickly'], 'cue': 'Order: run the first fluid fast for the first hour, then slow down.', 'scale': ['gradually', 'steadily', 'quickly'], 'answerAt': 2, 'why': 'DKA 첫 수액은 처음 한 시간 동안 빠르게 넣고 이후 속도를 줄이는 것이 일반적이라 quickly예요. 속도는 처방과 프로토콜대로 맞추고 폐 소리와 호흡을 같이 봐요.', 'example': "We're replacing the fluid quickly at first.", 'exKo': '처음에는 수액을 빠르게 보충하고 있어요.'}
+ N1 {'kind': 'context', 'words': ['w-lose'], 'word': 'lose', 'ko': '잃다', 'scenes': [{'who': '의사 라운드', 'icon': 'monitor', 'en': 'She lost a lot of fluid through vomiting and urinating.', 'ok': True}, {'who': '야간 인계', 'icon': 'board', 'en': 'He lost a lot of fluid, so the first bolus is running per protocol.', 'ok': True}, {'who': '환자에게', 'icon': 'me', 'en': 'You lost a large volume of intravascular fluid from osmotic diuresis.', 'ok': False, 'fix': "You lost a lot of water because of the high sugar, so we're giving it back through your IV."}], 'why': '의료진끼리는 intravascular fluid나 osmotic diuresis가 정확해요. 환자에게는 같은 사실을 왜 물을 잃었는지, 무엇으로 채우는지로 쉽게 풀어 주세요.'}
+ N2 {'kind': 'swap', 'words': ['w-saline'], 'who': '환자에게 · 수액 시작 안내', 'icon': 'me', 'before': ["We're starting ", 'isotonic crystalloid', ' to replace what you lost.'], 'options': ['IV fluids', 'isotonic crystalloid', 'a volume expander'], 'answer': 'IV fluids', 'notes': {'IV fluids': '환자가 아는 말이라 무엇을 시작하는지 바로 전해져요.', 'isotonic crystalloid': '수액 종류를 가리키는 전문 용어라 환자는 모르는 말이에요.', 'a volume expander': '다른 종류의 약(혈장 증량제)처럼 들려 오해를 줄 수 있어요.'}, 'why': "환자에게는 수액의 종류 이름보다 '정맥으로 수분을 채운다'는 사실이 중요해서 쉬운 말로 알려요.", 'ko': '잃으신 수분을 보충하려고 수액을 시작할게요'}
+ ORDER {'tag': '대화 흐름', 'icon': 'compass', 'ko': '수액 소생 안내 4문장 순서', 'why': '왜 필요한지 설명하고, 지금 시작함을 알린 뒤, 들어가는 동안 볼 것과 환자가 알려야 할 증상을 말해요.', 'lines': [{'en': "You lost a lot of fluid, so we're replacing it quickly at first.", 'icon': 'board', 'ko': '체액을 많이 잃어서 처음엔 빠르게 보충해요', 'note': '이유'}, {'en': "That's why we're starting normal saline now.", 'icon': 'gear', 'ko': '그래서 지금 생리식염수를 시작해요', 'note': '시작'}, {'en': "As it goes in, I'll keep watching your blood pressure and urine.", 'icon': 'monitor', 'ko': '들어가는 동안 혈압과 소변량을 계속 볼게요', 'note': '감시'}, {'en': 'Tell me about any chest tightness or trouble breathing you notice with it.', 'icon': 'bell', 'ko': '그것 때문에 가슴이 답답하거나 숨쉬기 힘들면 말씀해 주세요', 'note': '알림'}]}
+=== S3 인슐린 주입 준비
+ [3.0] I'm priming a dedicated line for the insulin drip per protocol. | 프로토콜대로 인슐린 주입 전용 라인을 프라이밍하고 있어요.
+    chunks=["I'm priming", 'a dedicated line', 'for the insulin drip', 'per protocol', '.'] words=['w-prime', 'w-line', 'w-insulin', 'w-drip', 'w-protocol'] tag=라인 준비 icon=gear
+    why='dedicated'는 다른 약과 섞이지 않는 전용 라인이라는 뜻이에요. 'per protocol'은 임의가 아니라 병원 지침대로 한다는 안심을 줘요.
+    decoy=for the blood draw dk=['프로토콜대로 담당의가 인슐린 주입 전용 라인을 프라이밍해요.', '프로토콜대로 책임자가 인슐린 주입 전용 라인을 프라이밍해요.'] blank=line:['line', 'pole', 'cart', 'bed']
+ [3.1] Let's double-check the concentration and pump settings together. | 농도랑 펌프 설정을 같이 다시 확인해요.
+    chunks=["Let's double-check", 'the concentration and pump settings', 'together', '.'] words=['w-check', 'w-concentration', 'w-pump', 'w-setting', 'w-together'] tag=이중 확인 icon=check
+    why='Let's'는 함께한다는 틀이라 동료에게 확인을 요청하기 자연스러워요. 농도와 설정은 인슐린에서 가장 위험한 두 변수예요.
+    decoy=the bed alarm dk=['농도랑 펌프 설정을 따로 다시 확인해요.', '농도랑 펌프 설정을 천천히 다시 확인해요.'] blank=pump:['pump', 'door', 'phone', 'window']
+ [3.2] I'll start the infusion once potassium is confirmed safe. | 칼륨이 안전하다고 확인되면 주입을 시작할게요.
+    chunks=["I'll start", 'the infusion', 'once potassium is confirmed', 'safe', '.'] words=['w-start', 'w-infusion', 'w-potassium', 'w-confirm', 'w-safe'] tag=시작 조건 icon=lab
+    why='once'가 시작의 조건을 정해 칼륨을 확인한 뒤에야 시작한다는 순서를 밝혀요. 'confirmed safe'는 추정이 아니라 확인되어야 한다는 뜻이에요.
+    decoy=after the meal dk=['칼륨이 안전하다고 확인되면 야간조가 주입을 시작해요.', '칼륨이 안전하다고 확인되면 주간조가 주입을 시작해요.'] blank=infusion:['infusion', 'transfer', 'discharge', 'dressing']
+ [3.3] Pump's set to the protocol rate, ready to go. | 펌프는 프로토콜 속도로 맞춰졌고, 시작할 준비 됐어요.
+    chunks=["Pump's set", 'to the protocol rate,', 'ready', 'to go', '.'] words=['w-pump', 'w-set', 'w-protocol', 'w-rate', 'w-ready'] tag=펌프 상태 icon=monitor
+    why='set to … rate'는 속도 설정을 말하는 쉬운 표현이에요. 'ready to go'는 시작 직전이라는 구어체예요.
+    decoy=to the doctor dk=['펌프는 프로토콜 속도로 맞춰졌고, 교대할 준비 됐어요.', '펌프는 프로토콜 속도로 맞춰졌고, 이동할 준비 됐어요.'] blank=set:['set', 'locked', 'taped', 'tied']
+ [3.4] Can you confirm the concentration matches the order before we start? | 시작하기 전에 농도가 처방이랑 맞는지 확인해 줄 수 있어요?
+    chunks=['Can you confirm', 'the concentration matches', 'the order', 'before we start', '?'] words=['w-confirm', 'w-concentration', 'w-order', 'w-start'] tag=처방 대조 icon=board
+    why='matches the order'는 처방과 실제가 일치하는지 확인한다는 뜻이에요. 'before we start'로 시점을 시작 전으로 고정해요.
+    decoy=the visiting hours dk=['시작하기 전에 농도가 처방이랑 맞는지 제가 확인해 드릴까요?', '시작하기 전에 농도가 처방이랑 맞는지 약사님이 확인해 줄 수 있어요?'] blank=order:['order', 'menu', 'receipt', 'poster']
+ N0 {'kind': 'slider', 'words': ['w-rate', 'w-pump'], 'cue': 'The order says 5 units an hour, but the pump screen shows 50.', 'scale': ['rounding difference', 'small difference', 'tenfold error'], 'answerAt': 2, 'why': '5와 50은 소수점·자릿수 때문에 생기는 10배 차이라 tenfold error예요. 인슐린은 고위험 약이라 멈추고 처방과 대조해 확인한 뒤 동료와 이중 확인하고 보고해요.', 'example': "That's a tenfold error, so stop and check the order.", 'exKo': '10배 오류예요, 멈추고 처방을 확인하세요.'}
+ N1 {'kind': 'context', 'words': ['w-confirm'], 'word': 'confirm', 'ko': '맞는지 확인하다', 'scenes': [{'who': '동료 간호사에게', 'icon': 'speech', 'en': 'Can you confirm the concentration matches the order before I start?', 'ok': True}, {'who': '약사에게', 'icon': 'speech', 'en': "I'd like to confirm the insulin concentration on this bag.", 'ok': True}, {'who': '환자에게', 'icon': 'me', 'en': "I'm going to confirm your insulin concentration and pump rate against the order.", 'ok': False, 'fix': "I'm double-checking your insulin settings with another nurse so it's safe."}], 'why': "동료·약사에게는 농도와 속도를 처방과 대조한다고 구체적으로 말하는 게 좋아요. 환자에게는 같은 일을 '다시 확인하고 있다'고 쉽게 알려 주세요."}
+ N2 {'kind': 'swap', 'words': ['w-prime'], 'who': '환자에게 · 주입 준비 설명', 'icon': 'me', 'before': ["I'm ", 'priming the line', ' so the insulin goes in safely.'], 'options': ['getting the tubing ready', 'priming the line', 'purging the lumen'], 'answer': 'getting the tubing ready', 'notes': {'getting the tubing ready': '환자가 이해하는 말로 무엇을 하는지 전해요.', 'priming the line': '의료진끼리 쓰는 말이라 환자는 뜻을 몰라요.', 'purging the lumen': '어려운 기술 용어라 환자에게 낯설고 딱딱해요.'}, 'why': "프라이밍은 관 안을 약이나 수액으로 채워 공기를 빼는 일이에요. 환자에게는 용어보다 '준비하고 있다'는 안심이 먼저 전해져야 해요.", 'ko': '인슐린이 안전하게 들어가도록 관을 준비하고 있어요'}
+ ORDER {'tag': '대화 흐름', 'icon': 'compass', 'ko': '인슐린 주입 준비 4문장 순서', 'why': '라인을 준비하고, 준비된 뒤 농도와 설정을 함께 확인하고, 그 확인을 바탕으로 속도를 맞춘 뒤, 칼륨 조건이 충족되면 시작해요.', 'lines': [{'en': "I'm priming a dedicated line for the insulin drip per protocol.", 'icon': 'gear', 'ko': '프로토콜대로 인슐린 전용 라인을 프라이밍하고 있어요', 'note': '준비'}, {'en': "Once it's primed, let's double-check the concentration against the order together.", 'icon': 'check', 'ko': '프라이밍이 끝나면 농도를 처방과 같이 다시 확인해요', 'note': '이중 확인'}, {'en': "Once that's confirmed, the pump gets set to the protocol rate.", 'icon': 'monitor', 'ko': '그게 확인되면 펌프를 프로토콜 속도로 맞춰요', 'note': '설정'}, {'en': "With the pump ready, I'll start the infusion once potassium is confirmed safe.", 'icon': 'lab', 'ko': '펌프가 준비되면 칼륨이 안전하다고 확인되는 대로 시작할게요', 'note': '시작'}]}
+=== S4 인슐린 전 K 확인
+ [4.0] We hold insulin until potassium is safe, so let's confirm the level first. | 칼륨이 안전할 때까지 인슐린을 보류하니까, 먼저 수치부터 확인해요.
+    chunks=['We hold insulin', 'until potassium is safe,', "so let's confirm", 'the level first', '.'] words=['w-hold', 'w-insulin', 'w-potassium', 'w-safe', 'w-confirm', 'w-level', 'w-first'] tag=보류 이유 icon=lab
+    why='until'이 보류의 끝 조건을 정해 수치를 확인하는 이유를 바로 알려요. 'Let's'로 함께 확인하자는 팀 어조예요.
+    decoy=the blood bank dk=['칼륨이 안전할 때까지 인슐린을 보류하니까, 먼저 수치부터 확인해 줄래요?', '칼륨이 안전할 때까지 인슐린을 보류하니까, 제가 먼저 수치부터 확인할게요.'] blank=first:['first', 'twice', 'slowly', 'quietly']
+ [4.1] Insulin drives potassium into cells, so a low value could be dangerous. | 인슐린이 칼륨을 세포 안으로 밀어 넣어서, 수치가 낮으면 위험할 수 있어요.
+    chunks=['Insulin drives potassium', 'into cells,', 'so a low value', 'could be dangerous', '.'] words=['w-insulin', 'w-potassium', 'w-cell', 'w-low', 'w-value', 'w-dangerous'] tag=위험 설명 icon=pill
+    why='drives … into cells'는 인슐린이 칼륨을 세포 안으로 옮긴다는 작용을 쉬운 동사로 풀어요. 'could be'는 가능성 표현이에요.
+    decoy=in the blood bank dk=['인슐린이 칼륨을 소변으로 내보내서, 수치가 낮으면 위험할 수 있어요.', '인슐린이 칼륨을 위장으로 밀어 넣어서, 수치가 낮으면 위험할 수 있어요.'] blank=cells:['cells', 'urine', 'stool', 'sweat']
+ [4.2] If it's low, we'll replace potassium before starting the drip. | 낮으면 주입 시작 전에 칼륨부터 보충할 거예요.
+    chunks=["If it's low,", "we'll replace potassium", 'before starting', 'the drip', '.'] words=['w-low', 'w-replace', 'w-potassium', 'w-start', 'w-drip'] tag=보충 계획 icon=pill
+    why='before starting'으로 보충이 시작보다 앞선다는 순서를 말해요. 'If it's low'는 조건이 칼륨 수치라는 점을 밝혀요.
+    decoy=after breakfast dk=['낮으면 주입 시작 전에 교대자가 칼륨부터 보충해요.', '낮으면 주입 시작 전에 전담자가 칼륨부터 보충해요.'] blank=drip:['drip', 'meal', 'bath', 'walk']
+ [4.3] Let's pull his chart and check the last potassium result. | 차트를 열어서 마지막 칼륨 결과를 확인해요.
+    chunks=["Let's pull", 'his chart', 'and check', 'the last potassium result', '.'] words=['w-pull', 'w-chart', 'w-check', 'w-potassium', 'w-result'] tag=차트 확인 icon=board
+    why='pull his chart'는 차트를 열어 본다는 병원 구어예요. 'the last'는 가장 최근 결과를 가리켜요.
+    decoy=the old film dk=['컴퓨터를 켜서 마지막 칼륨 결과를 확인해요.', '벽 모니터로 마지막 칼륨 결과를 확인해요.'] blank=chart:['chart', 'drawer', 'curtain', 'shoes']
+ [4.4] If potassium comes back low, I'll get the replacement ordered right away. | 칼륨 결과가 낮게 나오면 바로 보충 처방을 받을게요.
+    chunks=['If potassium comes back low,', "I'll get the replacement", 'ordered', 'right away', '.'] words=['w-potassium', 'w-low', 'w-replacement'] tag=낮을 때 보고 icon=siren
+    why='comes back low'는 검사 결과가 나왔는데 낮다는 뜻이에요. 'get the replacement ordered'는 내가 처방을 받아낸다는 뜻이에요.
+    decoy=from the lab dk=['칼륨 결과가 낮게 나오면 바로 팀장님이 보충 처방을 받아요.', '칼륨 결과가 낮게 나오면 바로 팀장이 보충 처방을 받아요.'] blank=ordered:['ordered', 'stored', 'packed', 'mailed']
+ N0 {'kind': 'slider', 'words': ['w-low'], 'cue': 'Potassium is 3.4, just below the normal range.', 'scale': ['a little low', 'clearly low', 'critically low'], 'answerAt': 0, 'why': '정상 하한(보통 3.5 전후)보다 살짝 낮은 정도라 a little low예요. 프로토콜마다 인슐린을 보류하는 기준(예: 3.3 미만)이 있으니 수치를 기준과 비교하고 처방대로 칼륨 보충과 인슐린 시작을 확인해요.', 'example': 'His potassium is a little low.', 'exKo': '그의 칼륨이 약간 낮아요.'}
+ N1 {'kind': 'context', 'words': ['w-potassium'], 'word': 'potassium', 'ko': '칼륨', 'scenes': [{'who': '의사 호출', 'icon': 'speech', 'en': "Potassium is 3.0, so per protocol I'm holding the insulin and need a replacement order.", 'ok': True}, {'who': '야간 인계', 'icon': 'board', 'en': 'Potassium came back at 4.2, so we can start the insulin drip.', 'ok': True}, {'who': '환자에게', 'icon': 'me', 'en': 'Your serum potassium is 3.0 mEq/L, which contraindicates insulin initiation.', 'ok': False, 'fix': "Your potassium is low, so we'll give some through your IV before the insulin starts."}], 'why': "의사에게는 수치와 필요한 처방을 바로 말하는 게 좋아요. 환자에게는 contraindicates 같은 말 대신 '낮아서 먼저 보충한다'로 이유와 순서를 알려 주세요."}
+ N2 {'kind': 'swap', 'words': ['w-dangerous'], 'who': '환자에게 · 왜 먼저 확인하는지', 'icon': 'me', 'before': ['Low potassium can be ', 'arrhythmogenic', ' with insulin.'], 'options': ['risky for your heartbeat', 'arrhythmogenic', 'deadly'], 'answer': 'risky for your heartbeat', 'notes': {'risky for your heartbeat': '무엇이 왜 위험한지 겁주지 않고 정확히 전해요.', 'arrhythmogenic': '부정맥을 일으킨다는 전문 용어라 환자는 모르는 말이에요.', 'deadly': '사실보다 무겁게 들려 불필요하게 겁을 줘요.'}, 'why': '칼륨이 낮은 채 인슐린이 들어가면 칼륨이 더 내려가 심장 리듬에 영향을 줄 수 있어요. 이유는 환자가 이해할 만큼만, 겁주지 않게 말해요.', 'ko': '칼륨이 낮을 때 인슐린이 들어가면 심장 박동에 위험할 수 있어요'}
+ ORDER {'tag': '대화 흐름', 'icon': 'compass', 'ko': '인슐린 전 칼륨 확인 4문장 순서', 'why': '보류 이유를 말하고, 위험을 설명한 뒤, 차트에서 결과를 확인하고, 낮을 때의 보충 계획을 알려요.', 'lines': [{'en': 'We hold insulin until potassium is safe.', 'icon': 'lab', 'ko': '칼륨이 안전할 때까지 인슐린을 보류해요', 'note': '보류'}, {'en': "That's because insulin drives potassium into cells, so a low value could be dangerous.", 'icon': 'pill', 'ko': '인슐린이 칼륨을 세포 안으로 밀어 넣어서 낮으면 위험해서예요', 'note': '위험'}, {'en': "To check, let's pull his chart for the last potassium result.", 'icon': 'board', 'ko': '확인하려고 차트에서 마지막 칼륨 결과를 봐요', 'note': '확인'}, {'en': "Based on what it shows, if it's low we'll replace potassium before starting the drip.", 'icon': 'pill', 'ko': '결과에 따라 낮으면 주입 전에 칼륨부터 보충해요', 'note': '보충'}]}
+=== S5 활력·의식 재평가
+ [5.0] I'm glad you feel clearer, and I'll recheck your vitals to confirm. | 정신이 맑아지셨다니 다행이에요, 확인 차 활력징후를 다시 재볼게요.
+    chunks=["I'm glad", 'you feel clearer,', "and I'll recheck", 'your vitals to confirm', '.'] words=['w-feel', 'w-clear', 'w-recheck', 'w-vital', 'w-confirm'] tag=안심과 재확인 icon=faceWorried
+    why='I'm glad'로 환자의 호전에 먼저 공감한 뒤 확인을 알려요. 'to confirm'이 재측정의 목적을 밝혀요.
+    decoy=for your family dk=['정신이 맑아지셨다니 다행이에요, 확인 차 활력징후를 과장이 다시 재요.', '정신이 맑아지셨다니 다행이에요, 확인 차 활력징후를 교수가 다시 재요.'] blank=glad:['glad', 'sorry', 'afraid', 'upset']
+ [5.1] Can you tell me your name and where you are for me? | 성함이랑 지금 어디 계신지 말씀해 주실 수 있어요?
+    chunks=['Can you tell me', 'your name', 'and where you are', 'for me', '?'] words=['w-tell'] tag=지남력 확인 icon=bulb
+    why=이름과 장소를 묻는 건 의식 상태와 지남력을 보는 표준 질문이에요. 'for me'가 환자를 시험하는 느낌을 덜어요.
+    decoy=your phone number dk=['성함이랑 누구와 오셨는지 말씀해 주실 수 있어요?', '성함이랑 어디서 오셨는지 말씀해 주실 수 있어요?'] blank=tell:['tell', 'ask', 'show', 'give']
+ [5.2] Your numbers are heading the right direction, which is a good sign. | 수치들이 좋은 방향으로 가고 있는데, 이건 좋은 신호예요.
+    chunks=['Your numbers are heading', 'the right direction,', 'which is', 'a good sign', '.'] words=['w-number', 'w-direction', 'w-sign'] tag=호전 설명 icon=chartup
+    why='heading the right direction'은 수치의 방향을 쉬운 말로 풀어요. 'a good sign'으로 수치의 의미를 짧게 정리해요.
+    decoy=a bad dream dk=['수치들이 좋은 방향으로 가고 있는데, 이건 모두 약 덕분이에요.', '수치들이 좋은 방향으로 가고 있는데, 이건 이틀째 계속돼요.'] blank=direction:['direction', 'corner', 'lane', 'side']
+ [5.3] Your blood pressure and heart rate look steadier than before. | 혈압이랑 심박수가 전보다 더 안정적으로 보여요.
+    chunks=['Your blood pressure', 'and heart rate', 'look steadier', 'than before', '.'] words=['w-blood', 'w-pressure', 'w-heart', 'w-rate', 'w-steady'] tag=활력 비교 icon=monitor
+    why='steadier than before'는 전보다 안정적이라는 비교 표현이에요. 혈압과 심박수는 활력징후 중 가장 먼저 보는 두 가지예요.
+    decoy=than your sister dk=['혈압이랑 심박수가 어제보다 더 안정적으로 보여요.', '혈압이랑 심박수가 아침보다 더 안정적으로 보여요.'] blank=steadier:['steadier', 'louder', 'brighter', 'cleaner']
+ [5.4] I'm charting these improvements and letting the team know. | 이렇게 나아진 부분을 기록하고 팀에도 알릴게요.
+    chunks=["I'm charting", 'these improvements', 'and letting the team', 'know', '.'] words=['w-chart', 'w-improvement', 'w-team'] tag=기록과 공유 icon=pencil
+    why='letting the team know'는 한 일을 팀과 공유한다는 뜻이에요. 호전된 부분도 기록해야 흐름이 이어져요.
+    decoy=to the pharmacist dk=['이렇게 나아진 부분을 기록하고 교수님께도 알릴게요.', '이렇게 나아진 부분을 기록하고 약사에게도 알릴게요.'] blank=charting:['charting', 'painting', 'filming', 'framing']
+ N0 {'kind': 'slider', 'words': ['w-improvement'], 'cue': 'He says his name now, but he falls asleep as soon as you stop talking.', 'scale': ['a little better', 'much better', 'fully recovered'], 'answerAt': 0, 'why': '이름은 말하지만 대화가 끊기면 바로 잠드는 정도라 a little better예요. 호전은 단계적이라 회복을 단정하지 말고 계속 재평가하고 변화를 팀에 알려요.', 'example': "There's a little improvement in his alertness.", 'exKo': '의식이 조금 나아졌어요.'}
+ N1 {'kind': 'context', 'words': ['w-recheck'], 'word': 'recheck', 'ko': '다시 확인하다', 'scenes': [{'who': '야간 인계', 'icon': 'board', 'en': 'Recheck vitals and neuro status in one hour.', 'ok': True}, {'who': '의사 호출', 'icon': 'speech', 'en': "I'll recheck his glucose and his neuro status in an hour.", 'ok': True}, {'who': '환자에게', 'icon': 'me', 'en': 'I will recheck your hemodynamic parameters per protocol.', 'ok': False, 'fix': "I'll check your blood pressure and heartbeat again in a little while."}], 'why': '인계와 호출에서는 무엇을 언제 다시 보는지 짧고 정확하게 말해요. 환자에게는 hemodynamic parameters 대신 혈압과 맥박처럼 아는 말로 알려 주세요.'}
+ N2 {'kind': 'swap', 'words': ['w-clear'], 'who': '환자에게 · 의식 호전 전하기', 'icon': 'me', 'before': ["I'm glad you feel ", 'less obtunded', ' than before.'], 'options': ['clearer', 'less obtunded', 'less encephalopathic'], 'answer': 'clearer', 'notes': {'clearer': '환자가 바로 알아듣고 기분 좋게 받아들여요.', 'less obtunded': '의식 저하를 가리키는 의료 용어라 환자는 낯설고 기분이 상할 수 있어요.', 'less encephalopathic': '뇌병증이라는 어려운 진단명이라 환자를 놀라게 할 수 있어요.'}, 'why': '의식이 나아진 걸 전할 때는 환자가 알아듣는 쉬운 비교 표현이 안심을 줘요.', 'ko': '전보다 정신이 맑아지셔서 다행이에요'}
+ ORDER {'tag': '대화 흐름', 'icon': 'compass', 'ko': '활력·의식 재평가 4문장 순서', 'why': '호전에 공감하고 재측정을 알린 뒤, 확인하려고 의식을 묻고, 측정 결과를 설명하고, 그 호전을 기록·공유한다고 말해요.', 'lines': [{'en': "I'm glad you feel clearer, and I'll recheck your vitals to confirm.", 'icon': 'faceWorried', 'ko': '맑아지셔서 다행이에요, 확인 차 활력징후를 다시 잴게요', 'note': '공감'}, {'en': 'To confirm, can you tell me your name and where you are?', 'icon': 'bulb', 'ko': '확인하려고 성함과 계신 곳을 말해 주실래요?', 'note': '질문'}, {'en': 'After checking, your blood pressure and heart rate look steadier than before.', 'icon': 'monitor', 'ko': '재보니 혈압과 심박수가 전보다 안정적으로 보여요', 'note': '결과'}, {'en': "I'm charting these improvements and letting the team know.", 'icon': 'pencil', 'ko': '나아진 부분을 기록하고 팀에도 알려요', 'note': '공유'}]}
+=== S6 DKA 인슐린 주입 적정
+ [6.0] We adjust the insulin so your sugar comes down at a safe pace. | 혈당이 안전한 속도로 내려가도록 인슐린을 조절해요.
+    chunks=['We adjust the insulin', 'so your sugar', 'comes down', 'at a safe pace', '.'] words=['w-adjust', 'w-insulin', 'w-sugar', 'w-safe', 'w-pace'] tag=조절 이유 icon=gear
+    why='so'로 인슐린을 조절하는 목적을 이어 말해 환자가 이유를 바로 알아요. 'a safe pace'는 속도 자체가 안전의 기준이라는 말이에요.
+    decoy=at the bedside dk=['혈당이 안전한 속도로 내려가도록 인턴이 인슐린을 조절해요.', '혈당이 안전한 속도로 내려가도록 사수가 인슐린을 조절해요.'] blank=pace:['pace', 'route', 'brand', 'color']
+ [6.1] Bringing it down too fast can be risky, so we titrate carefully. | 너무 빨리 내리면 위험할 수 있어서, 조심스럽게 적정하고 있어요.
+    chunks=['Bringing it down', 'too fast', 'can be risky,', 'so we titrate carefully', '.'] words=['w-bring', 'w-fast', 'w-risky', 'w-titrate', 'w-carefully'] tag=위험 설명 icon=shield
+    why='can be'는 가능성을 말해 겁주지 않으면서 조심할 이유를 줘요. 'titrate'는 반응을 보며 조금씩 맞춘다는 임상 동사예요.
+    decoy=to your family dk=['너무 빨리 내리면 위험할 수 있어서, 선임이 조심스럽게 적정해요.', '너무 빨리 내리면 위험할 수 있어서, 수간호사가 조심스럽게 적정해요.'] blank=risky:['risky', 'costly', 'noisy', 'lucky']
+ [6.2] I'll recheck your glucose and set the new rate per protocol. | 혈당을 다시 확인하고 프로토콜대로 새 속도를 맞출게요.
+    chunks=["I'll recheck your glucose", 'and set', 'the new rate', 'per protocol', '.'] words=['w-recheck', 'w-glucose', 'w-set', 'w-rate', 'w-protocol'] tag=재확인 icon=monitor
+    why='per protocol'은 임의가 아니라 병원 지침대로 속도를 맞춘다는 안심을 줘요. 'recheck'의 're-'가 앞서 한 측정을 다시 한다는 뜻을 만들어요.
+    decoy=the call light dk=['동료가 혈당을 다시 확인하고 프로토콜대로 새 속도를 맞춰요.', '선배가 혈당을 다시 확인하고 프로토콜대로 새 속도를 맞춰요.'] blank=rate:['rate', 'bed', 'size', 'name']
+ [6.3] We're following the sliding scale exactly as ordered. | 처방된 대로 슬라이딩 스케일을 정확히 따르고 있어요.
+    chunks=["We're following", 'the sliding scale', 'exactly as ordered', '.'] words=['w-follow', 'w-scale', 'w-order'] tag=처방 준수 icon=pencil
+    why='exactly as ordered'는 처방에서 벗어나지 않는다는 뜻이라 환자·가족이 안심해요. 'sliding scale'은 혈당에 따라 용량이 달라지는 방식을 가리켜요.
+    decoy=on the whiteboard dk=['처방된 대로 후배가 슬라이딩 스케일을 정확히 따르고 있어요.', '처방된 대로 의사가 슬라이딩 스케일을 정확히 따라요.'] blank=sliding:['sliding', 'rolling', 'jumping', 'falling']
+ [6.4] Your sugar's dropping steadily, which is exactly what we want. | 혈당이 꾸준히 내려가고 있는데, 이게 바로 저희가 원하는 거예요.
+    chunks=["Your sugar's dropping", 'steadily,', 'which is exactly', 'what we want', '.'] words=['w-sugar', 'w-drop', 'w-steady'] tag=호전 설명 icon=chartup
+    why='exactly what we want'는 수치가 계획대로 움직인다는 짧은 확인이라 환자 불안을 줄여요. 'steadily'는 급락이 아니라 꾸준하다는 점이 핵심이에요.
+    decoy=for your lunch dk=['혈당이 꾸준히 내려가고 있는데, 이게 바로 오늘 계획이에요.', '혈당이 꾸준히 내려가고 있는데, 이게 바로 의사 선생님이 원하는 거예요.'] blank=dropping:['dropping', 'jumping', 'spilling', 'freezing']
+ N0 {'kind': 'slider', 'words': ['w-drop', 'w-pace'], 'cue': 'Glucose fell by only 10 in two hours on the insulin drip.', 'scale': ['slower than goal', 'on target', 'faster than goal'], 'answerAt': 0, 'why': '많은 DKA 프로토콜은 시간당 50~75 mg/dL 정도 하락을 목표로 해요. 2시간에 10이면 목표보다 느린 거라 slower than goal이고, 보고해서 처방과 속도를 확인해요.', 'example': 'His glucose is dropping slower than goal.', 'exKo': '그의 혈당이 목표보다 느리게 내려가고 있어요.'}
+ N1 {'kind': 'context', 'words': ['w-titrate'], 'word': 'titrate', 'ko': '적정하다', 'scenes': [{'who': '의사 라운드', 'icon': 'monitor', 'en': 'Titrate the insulin drip per the DKA protocol.', 'ok': True}, {'who': '약사와 통화', 'icon': 'speech', 'en': 'We titrate it against the hourly glucose, not by guess.', 'ok': True}, {'who': '환자에게', 'icon': 'me', 'en': "I'm going to titrate your insulin infusion based on your serial POC glucose values.", 'ok': False, 'fix': "I'm adjusting your insulin a little at a time based on your sugar checks."}], 'why': "의료진끼리 titrate는 용량을 조금씩 맞춘다는 정확한 말이에요. 환자에게는 serial POC glucose 같은 말 대신 '조금씩 맞춘다'로 알려 주세요."}
+ N2 {'kind': 'swap', 'words': ['w-carefully'], 'who': '환자에게 · 속도를 낮추는 이유', 'icon': 'me', 'before': ["We're bringing your sugar down ", 'in a titrated fashion', '.'], 'options': ['a little at a time', 'in a titrated fashion', 'at a controlled rate'], 'answer': 'a little at a time', 'notes': {'a little at a time': '환자가 이해하는 말로 속도를 조절한다는 뜻이 전해져요.', 'in a titrated fashion': 'titrate를 환자에게 그대로 말하면 낯설고 딱딱해요.', 'at a controlled rate': '틀리진 않지만 얼마나 천천히인지가 흐릿해요.'}, 'why': "혈당을 천천히 내리는 이유를 환자가 이해하면 불안이 줄어요. '조금씩'이 가장 쉽게 전달돼요.", 'ko': '혈당을 조금씩 낮추고 있어요'}
+ ORDER {'tag': '대화 흐름', 'icon': 'compass', 'ko': '인슐린 적정 설명 4문장 순서', 'why': '조절 목적을 말하고, 위험을 설명한 뒤, 그 위험을 피하려는 재확인을 알리고, 결과를 확인해 줘요.', 'lines': [{'en': 'We adjust the insulin so your sugar comes down at a safe pace.', 'icon': 'gear', 'ko': '혈당이 안전한 속도로 내려가도록 인슐린을 조절해요', 'note': '목적'}, {'en': "It's because bringing it down too fast can be risky.", 'icon': 'shield', 'ko': '너무 빨리 내리면 위험할 수 있어서예요', 'note': '이유'}, {'en': "To avoid that, I'll recheck your glucose and set the new rate per protocol.", 'icon': 'monitor', 'ko': '그걸 피하려고 혈당을 다시 확인하고 새 속도를 맞춰요', 'note': '재확인'}, {'en': "So far, your sugar's dropping steadily, which is exactly what we want.", 'icon': 'chartup', 'ko': '지금까지 혈당이 꾸준히 내려가고 있고, 바로 원하는 거예요', 'note': '결과'}]}
+=== S7 K 보정·인슐린 균형
+ [7.0] Let's replace potassium and keep monitoring it closely with the insulin running. | 칼륨을 보충하면서 인슐린이 들어가는 동안 계속 자세히 모니터링해요.
+    chunks=["Let's replace potassium", 'and keep monitoring it closely', 'with the insulin', 'running', '.'] words=['w-replace', 'w-potassium', 'w-keep', 'w-monitor', 'w-closely', 'w-insulin', 'w-run'] tag=동시 관리 icon=monitor
+    why='keep monitoring'은 한 번이 아니라 계속 본다는 뜻이에요. 'with the insulin running'은 인슐린이 들어가는 동안이라는 위험한 시간대를 가리켜요.
+    decoy=in the lobby dk=['칼륨을 보충하면서 인슐린이 들어가는 동안 주치의가 계속 자세히 모니터링해요.', '칼륨을 보충하면서 인슐린이 들어가는 동안 전문의가 계속 자세히 모니터링해요.'] blank=monitoring:['monitoring', 'labeling', 'decorating', 'announcing']
+ [7.1] We may need to slow the insulin if potassium keeps falling. | 칼륨이 계속 떨어지면 인슐린을 늦춰야 할 수도 있어요.
+    chunks=['We may need', 'to slow', 'the insulin', 'if potassium keeps falling', '.'] words=['w-need', 'w-slow', 'w-insulin', 'w-potassium', 'w-fall'] tag=조절 가능성 icon=gear
+    why='may need to'는 확정이 아니라 필요할 수도 있다는 완곡한 표현이에요. 'keeps falling'은 계속 떨어지는 추세를 말해요.
+    decoy=with your family dk=['칼륨이 계속 떨어지면 레지던트가 인슐린을 늦춰야 할 수도 있어요.', '칼륨이 계속 떨어지면 당직의가 인슐린을 늦춰야 할 수도 있어요.'] blank=need:['need', 'hope', 'wish', 'dare']
+ [7.2] I'll draw a repeat level after the replacement to confirm. | 보충한 뒤에 확인차 칼륨 수치를 다시 채혈할게요.
+    chunks=["I'll draw", 'a repeat level', 'after the replacement', 'to confirm', '.'] words=['w-draw', 'w-repeat', 'w-level', 'w-replacement', 'w-confirm'] tag=재검 안내 icon=lab
+    why='repeat level'은 같은 검사를 한 번 더 한다는 뜻이에요. 'to confirm'이 재검의 목적을 밝혀요.
+    decoy=at noon dk=['보충한 뒤에 확인차 칼륨 수치를 담당의가 다시 채혈해요.', '보충한 뒤에 확인차 칼륨 수치를 책임자가 다시 채혈해요.'] blank=replacement:['replacement', 'removal', 'delivery', 'dressing']
+ [7.3] Potassium's back to normal, so we're clear to keep the drip going. | 칼륨이 정상으로 돌아와서, 주입을 계속 진행해도 괜찮아요.
+    chunks=["Potassium's back to normal,", "so we're clear", 'to keep the drip', 'going', '.'] words=['w-potassium', 'w-normal', 'w-clear', 'w-keep', 'w-drip'] tag=진행 허락 icon=check
+    why='clear to'는 계속해도 된다는 허락의 뜻이에요. 'back to normal'이 그 근거를 쉬운 말로 줘요.
+    decoy=for the weekend dk=['칼륨이 정상으로 돌아와서, 면회를 계속 진행해도 괜찮아요.', '칼륨이 정상으로 돌아와서, 검사를 계속 진행해도 괜찮아요.'] blank=drip:['drip', 'diet', 'tour', 'visit']
+ [7.4] If it drops again, we'll pause the insulin and recheck. | 다시 떨어지면 인슐린을 잠시 멈추고 다시 확인할 거예요.
+    chunks=['If it drops again,', "we'll pause", 'the insulin', 'and recheck', '.'] words=['w-drop', 'w-pause', 'w-insulin', 'w-recheck'] tag=조건부 중단 icon=siren
+    why='If it drops again'이 중단의 조건을 분명히 해요. 'pause'는 영구 중단이 아니라 잠시 멈춘다는 뜻이에요.
+    decoy=for dinner dk=['다시 떨어지면 야간조가 인슐린을 잠시 멈추고 다시 확인해요.', '다시 떨어지면 주간조가 인슐린을 잠시 멈추고 다시 확인해요.'] blank=recheck:['recheck', 'refill', 'relabel', 'rewrite']
+ N0 {'kind': 'slider', 'words': ['w-fall'], 'cue': 'Potassium was 4.0, then 3.9, then 3.8 on three checks.', 'scale': ['drifting down', 'falling fast', 'dropping sharply'], 'answerAt': 0, 'why': '0.1씩 천천히 내려가면 drifting down이에요. 인슐린이 들어가는 동안은 칼륨이 계속 내려갈 수 있어서, 방향을 보고 정해진 주기로 재확인해 보고해요.', 'example': 'His potassium is drifting down.', 'exKo': '그의 칼륨이 서서히 내려가고 있어요.'}
+ N1 {'kind': 'context', 'words': ['w-monitor'], 'word': 'monitor', 'ko': '모니터링하다', 'scenes': [{'who': '의사 라운드', 'icon': 'monitor', 'en': 'Monitor potassium closely while the insulin drip is running.', 'ok': True}, {'who': '야간 인계', 'icon': 'board', 'en': "I'll monitor his potassium with every lab draw while the insulin runs.", 'ok': True}, {'who': '환자에게', 'icon': 'me', 'en': 'We will monitor your serum potassium and magnesium levels per protocol.', 'ok': False, 'fix': "We'll check your blood potassium every few hours to keep you safe."}], 'why': "의료진끼리는 무엇을 어떤 주기로 보는지 짧게 말해요. 환자에게는 serum·protocol 대신 '혈액 검사로 자주 확인한다'고 쉬운 말로 전하세요."}
+ N2 {'kind': 'swap', 'words': ['w-pause'], 'who': '환자에게 · 인슐린 조절 안내', 'icon': 'me', 'before': ['We might ', 'hold your insulin', ' if your potassium drops again.'], 'options': ['pause your insulin for a while', 'hold your insulin', 'discontinue your insulin'], 'answer': 'pause your insulin for a while', 'notes': {'pause your insulin for a while': '잠깐 멈췄다 다시 한다는 뜻이 분명해요.', 'hold your insulin': '의료진 어법이라 환자에게는 뜻이 흐릿할 수 있어요.', 'discontinue your insulin': '영구 중단처럼 들려서 사실과 달라요.'}, 'why': "칼륨이 다시 내려가면 인슐린을 잠시 멈추는 것은 일시적인 조치예요. 중단으로 들리지 않게 '잠시'를 분명히 말해요.", 'ko': '칼륨이 다시 떨어지면 인슐린을 잠시 멈출 수 있어요'}
+ ORDER {'tag': '대화 흐름', 'icon': 'compass', 'ko': '칼륨 보정과 인슐린 균형 4문장 순서', 'why': '보충과 감시를 시작하고, 보충 뒤 재검을 하고, 정상이면 계속 진행하고, 다시 떨어질 때의 계획을 알려요.', 'lines': [{'en': "Let's replace potassium and keep monitoring it closely with the insulin running.", 'icon': 'monitor', 'ko': '칼륨을 보충하고 인슐린이 들어가는 동안 계속 자세히 모니터링해요', 'note': '보충'}, {'en': "After the replacement, I'll draw a repeat level to confirm.", 'icon': 'lab', 'ko': '보충한 뒤에 확인차 다시 채혈할게요', 'note': '재검'}, {'en': "Once it's back to normal, we're clear to keep the drip going.", 'icon': 'check', 'ko': '정상으로 돌아오면 주입을 계속해도 돼요', 'note': '진행'}, {'en': "If it drops again after that, we'll pause the insulin and recheck.", 'icon': 'siren', 'ko': '그 뒤에 다시 떨어지면 인슐린을 멈추고 다시 확인해요', 'note': '대비'}]}
+=== S8 anion gap 종결 판단
+ [8.0] The gap has closed, so we can plan the switch to subcutaneous insulin. | 간극이 닫혀서, 이제 피하 인슐린으로 전환할 계획을 세울 수 있어요.
+    chunks=['The gap has closed,', 'so we can plan', 'the switch', 'to subcutaneous insulin', '.'] words=['w-gap', 'w-close', 'w-plan', 'w-switch', 'w-subcutaneous', 'w-insulin'] tag=전환 계획 icon=gear
+    why='so'로 근거(간극이 닫힘)와 결론(전환 계획)을 이었어요. 'plan the switch'는 당장 바꾸는 게 아니라 계획한다는 뜻이에요.
+    decoy=to the pharmacy dk=['간극이 닫혀서, 이제 피하 인슐린으로 전환할 계획을 교대자가 세울 수 있어요.', '간극이 닫혀서, 이제 피하 인슐린으로 전환할 계획을 전담자가 세울 수 있어요.'] blank=switch:['switch', 'pump', 'trip', 'vote']
+ [8.1] We overlap the drip with the first long-acting dose before stopping. | 중단하기 전에 첫 지속형 용량이랑 주입을 겹쳐서 줘요.
+    chunks=['We overlap the drip', 'with the first', 'long-acting dose', 'before stopping', '.'] words=['w-overlap', 'w-drip', 'w-first', 'w-dose', 'w-stop'] tag=겹쳐 투여 icon=pill
+    why='overlap'은 두 가지를 잠시 함께 쓴다는 뜻이에요. 'before stopping'으로 주입을 끊는 시점이 겹친 다음임을 밝혀요.
+    decoy=after dinner dk=['중단하기 전에 팀장이 첫 지속형 용량이랑 주입을 겹쳐서 줘요.', '중단하기 전에 과장이 첫 지속형 용량이랑 주입을 겹쳐서 줘요.'] blank=stopping:['stopping', 'labeling', 'moving', 'weighing']
+ [8.2] Let me confirm he's eating and the labs are stable first. | 먼저 식사가 되는지랑 검사 수치가 안정적인지부터 확인할게요.
+    chunks=['Let me confirm', "he's eating", 'and the labs', 'are stable first', '.'] words=['w-confirm', 'w-lab', 'w-stable', 'w-first'] tag=전환 전 확인 icon=check
+    why='Let me'는 허락을 구하며 내가 하겠다고 알리는 부드러운 표현이에요. 'first'가 전환보다 앞서 확인한다는 순서를 줘요.
+    decoy=on the chart dk=['먼저 식사가 되는지랑 검사 수치가 안정적인지부터 교수가 확인해요.', '먼저 식사가 되는지랑 검사 수치가 안정적인지부터 인턴이 확인해요.'] blank=eating:['eating', 'sleeping', 'walking', 'talking']
+ [8.3] His acid levels are back to normal, so the DKA has resolved. | 산 수치가 정상으로 돌아와서, 케토산증이 해결됐어요.
+    chunks=['His acid levels', 'are back to normal,', 'so the DKA', 'has resolved', '.'] words=['w-acid', 'w-level', 'w-normal', 'w-resolve'] tag=해결 선언 icon=chartup
+    why='so'로 수치가 정상이라는 근거에서 해결됐다는 결론으로 넘어가요. 'resolved'는 병이 해결됐다는 임상 표현이에요.
+    decoy=by the window dk=['산 수치가 정상으로 돌아와서, 케토산증이 많이 좋아졌어요.', '산 수치가 정상으로 돌아와서, 환자분 컨디션이 좋아졌어요.'] blank=resolved:['resolved', 'worsened', 'spread', 'moved']
+ [8.4] Once he's tolerating food, we'll switch him to his home insulin. | 식사를 잘 견디시면, 평소 쓰시던 인슐린으로 바꿔 드릴게요.
+    chunks=["Once he's tolerating food,", "we'll switch him", 'to his home', 'insulin', '.'] words=['w-tolerate', 'w-switch', 'w-insulin'] tag=평소 약 복귀 icon=home
+    why='Once'가 조건(식사를 견딤)을 앞에 세워 전환 시점을 분명히 해요. 'home insulin'은 평소 쓰던 약을 쉬운 말로 가리켜요.
+    decoy=to the nurse dk=['식사를 잘 견디시면, 평소 쓰시던 인슐린으로 사수가 바꿔 드려요.', '식사를 잘 견디시면, 평소 쓰시던 인슐린으로 선임이 바꿔 드려요.'] blank=switch:['switch', 'walk', 'carry', 'mail']
+ N0 {'kind': 'slider', 'words': ['w-tolerate'], 'cue': 'He keeps down juice but feels sick after a few crackers.', 'scale': ['not tolerating', 'tolerating a little', 'tolerating well'], 'answerAt': 1, 'why': '소량은 견디지만 크래커 뒤 메스꺼우면 tolerating a little이에요. 식사가 안정적인지 아직 확실하지 않으니 전환을 서두르지 말고 상태를 팀에 알려요.', 'example': "He's tolerating a little food so far.", 'exKo': '지금까지는 음식을 조금 견디고 있어요.'}
+ N1 {'kind': 'context', 'words': ['w-switch'], 'word': 'switch', 'ko': '전환하다', 'scenes': [{'who': '의사 라운드', 'icon': 'monitor', 'en': "Once the gap has closed, we'll switch him to subcutaneous insulin.", 'ok': True}, {'who': '야간 인계', 'icon': 'board', 'en': 'The plan is to switch to basal-bolus after his next meal.', 'ok': True}, {'who': '환자에게', 'icon': 'me', 'en': 'We will switch your insulin infusion to a subcutaneous basal-bolus regimen.', 'ok': False, 'fix': "Soon we'll move you from the IV insulin to insulin shots, and we'll make the change safely."}], 'why': "의료진끼리는 정맥 주입에서 피하 주사로의 전환을 이렇게 압축해서 말해요. 환자에게는 basal-bolus regimen 대신 '주사로 바꾼다'로 쉽게 설명하세요."}
+ N2 {'kind': 'swap', 'words': ['w-gap'], 'who': '환자에게 · 좋은 소식 전하기', 'icon': 'me', 'before': ['Good news: your ', 'anion gap has closed', '.'], 'options': ['blood acid is back to normal', 'anion gap has closed', 'AG has normalized'], 'answer': 'blood acid is back to normal', 'notes': {'blood acid is back to normal': '환자가 바로 이해하는 말로 좋은 소식이 전해져요.', 'anion gap has closed': '의료진끼리의 수치 이름이라 환자는 의미를 몰라요.', 'AG has normalized': '약어까지 써서 환자가 더 알아듣기 어려워요.'}, 'why': '간극이 닫혔다는 건 혈액의 산이 정상으로 돌아왔다는 뜻이에요. 환자에게는 수치 이름보다 의미를 먼저 말해요.', 'ko': '좋은 소식이에요, 혈액 산도가 정상으로 돌아왔어요'}
+ ORDER {'tag': '대화 흐름', 'icon': 'compass', 'ko': '케토산증 종결과 전환 4문장 순서', 'why': '해결을 알리고, 전환 계획을 말하고, 겹쳐 투여하는 방법을 설명한 뒤, 식사 조건을 걸어 평소 인슐린 복귀를 알려요.', 'lines': [{'en': 'His acid levels are back to normal, so the DKA has resolved.', 'icon': 'chartup', 'ko': '산 수치가 정상으로 돌아와서 케토산증이 해결됐어요', 'note': '해결'}, {'en': 'On that basis, we can plan the switch to subcutaneous insulin.', 'icon': 'gear', 'ko': '그 근거로 피하 인슐린 전환을 계획할 수 있어요', 'note': '계획'}, {'en': 'Before stopping the drip, we overlap it with the first long-acting dose.', 'icon': 'pill', 'ko': '주입을 멈추기 전에 첫 지속형 용량과 겹쳐요', 'note': '겹침'}, {'en': "After that overlap, once he's tolerating food, we'll switch him to his home insulin.", 'icon': 'home', 'ko': '그 뒤 식사를 견디면 평소 인슐린으로 바꿀게요', 'note': '복귀'}]}
+=== S9 HHS 고삼투 관리
+ [9.0] Her sugar and blood are very concentrated, so we're correcting it slowly and safely. | 혈당이랑 혈액이 아주 농축돼 있어서, 천천히 안전하게 교정하고 있어요.
+    chunks=['Her sugar and blood', 'are very concentrated,', "so we're correcting it", 'slowly and safely', '.'] words=['w-sugar', 'w-blood', 'w-concentrate', 'w-correct', 'w-slow', 'w-safe'] tag=교정 설명 icon=lab
+    why='so'로 상태(농축)와 대응(천천히)을 이었어요. 'slowly and safely'는 속도와 안전을 함께 말해 환자를 안심시켜요.
+    decoy=in the lab dk=['혈당이랑 혈액이 아주 농축돼 있어서, 수간호사가 천천히 안전하게 교정하고 있어요.', '혈당이랑 혈액이 아주 농축돼 있어서, 동료가 천천히 안전하게 교정하고 있어요.'] blank=concentrated:['concentrated', 'diluted', 'separated', 'contaminated']
+ [9.1] Going too fast could affect her brain, so we take our time. | 너무 빠르게 하면 뇌에 영향을 줄 수 있어서, 시간을 두고 하고 있어요.
+    chunks=['Going too fast', 'could affect her brain,', 'so we take', 'our time', '.'] words=['w-fast', 'w-affect', 'w-brain', 'w-take'] tag=위험 설명 icon=shield
+    why='could'는 가능성을 말해 겁을 덜어요. 'take our time'은 일부러 서두르지 않는다는 쉬운 관용구예요.
+    decoy=at home dk=['너무 빠르게 하면 신장에 영향을 줄 수 있어서, 시간을 두고 하고 있어요.', '너무 빠르게 하면 심장에 영향을 줄 수 있어서, 시간을 두고 하고 있어요.'] blank=brain:['brain', 'hair', 'nails', 'voice']
+ [9.2] We'll watch her mental status closely as she improves. | 나아지는 동안 의식 상태를 자세히 지켜볼게요.
+    chunks=["We'll watch", 'her mental status', 'closely', 'as she improves', '.'] words=['w-watch', 'w-mental', 'w-status', 'w-closely', 'w-improve'] tag=의식 관찰 icon=bulb
+    why='as she improves'는 좋아지는 과정 전체를 관찰한다는 뜻이에요. 'mental status'는 의식·판단 상태를 가리키는 임상어예요.
+    decoy=on the monitor dk=['나아지는 동안 선배가 의식 상태를 자세히 지켜봐요.', '나아지는 동안 후배가 의식 상태를 자세히 지켜봐요.'] blank=improves:['improves', 'sleeps', 'eats', 'walks']
+ [9.3] Correcting her sodium too quickly could cause brain swelling, so we go slowly. | 나트륨을 너무 빨리 교정하면 뇌부종이 생길 수 있어서, 천천히 하고 있어요.
+    chunks=['Correcting her sodium too quickly', 'could cause brain swelling,', 'so we go', 'slowly', '.'] words=['w-correct', 'w-sodium', 'w-quickly', 'w-cause', 'w-brain', 'w-swell', 'w-slow'] tag=부종 위험 icon=shield
+    why='could cause'는 위험을 가능성으로 말해요. 'so we go slowly'가 위험 때문에 속도를 줄인다는 인과를 밝혀요.
+    decoy=in her room dk=['나트륨을 너무 빨리 교정하면 폐부종이 생길 수 있어서, 천천히 하고 있어요.', '나트륨을 너무 빨리 교정하면 탈수가 생길 수 있어서, 천천히 하고 있어요.'] blank=swelling:['swelling', 'pain', 'itching', 'bruising']
+ [9.4] Her confusion is starting to clear, which tells us she's responding well. | 혼란스러워하시던 게 나아지기 시작했는데, 이건 잘 반응하고 있다는 뜻이에요.
+    chunks=['Her confusion is starting', 'to clear,', 'which tells us', "she's responding well", '.'] words=['w-confusion', 'w-start', 'w-clear', 'w-tell', 'w-respond'] tag=호전 해석 icon=chartup
+    why='starting to'는 막 시작했다는 진행의 표현이에요. 'tells us'는 증상이 신호라는 틀이라 해석이 쉬워요.
+    decoy=for her visit dk=['혼란스러워하시던 게 나아지기 시작했는데, 이건 약이 잘 맞는다는 뜻이에요.', '혼란스러워하시던 게 나아지기 시작했는데, 이건 가족을 알아본다는 뜻이에요.'] blank=responding:['responding', 'complaining', 'resting', 'waiting']
+ N0 {'kind': 'slider', 'words': ['w-correct'], 'cue': 'The plan lowers her sugar and sodium toward normal at a safe pace.', 'scale': ['within minutes', 'within an hour or two', 'over a day or two'], 'answerAt': 2, 'why': 'HHS는 아주 농축된 상태라 하루이틀에 걸쳐 천천히 교정하는 것이 안전해요. 너무 빨리 낮추면 뇌부종 위험이 올라서 over a day or two가 맞아요.', 'example': "We're correcting it over a day or two.", 'exKo': '하루이틀에 걸쳐 교정하고 있어요.'}
+ N1 {'kind': 'context', 'words': ['w-confusion'], 'word': 'confusion', 'ko': '혼란', 'scenes': [{'who': '의사 호출', 'icon': 'speech', 'en': 'New confusion could mean her osmolality is falling too fast.', 'ok': True}, {'who': '야간 인계', 'icon': 'board', 'en': 'Her confusion improved overnight as her sugar came down.', 'ok': True}, {'who': '가족에게', 'icon': 'me', 'en': 'She is exhibiting confusion consistent with hyperosmolar encephalopathy.', 'ok': False, 'fix': "She's been confused because her blood is very concentrated, and it should clear as we treat it."}], 'why': '의료진끼리는 원인을 바로 연결하는 정확한 말이 빨라요. 가족에게는 encephalopathy 같은 진단명 대신 왜 혼란스러운지와 어떻게 나아질지를 쉽게 전하세요.'}
+ N2 {'kind': 'swap', 'words': ['w-concentrate'], 'who': '가족에게 · 상태 설명', 'icon': 'me', 'before': ['Her blood is ', 'hyperosmolar', ' right now.'], 'options': ['very concentrated', 'hyperosmolar', 'thick like syrup'], 'answer': 'very concentrated', 'notes': {'very concentrated': '가족이 이해하고 사실에도 맞는 설명이에요.', 'hyperosmolar': '의료진끼리의 진단 용어라 가족은 뜻을 몰라요.', 'thick like syrup': '실제와 달리 피가 걸쭉하다는 인상을 줘서 정확하지 않아요.'}, 'why': 'HHS의 핵심은 혈액 속 당과 나트륨이 매우 진해진 것이에요. 가족에게는 진한 상태라고만 쉽게 말해도 이유가 전해져요.', 'ko': '지금 혈액이 아주 농축돼 있어요'}
+ ORDER {'tag': '대화 흐름', 'icon': 'compass', 'ko': 'HHS 교정 설명 4문장 순서', 'why': '상태와 교정 방침을 알리고, 서두르지 않는 이유를 설명한 뒤, 관찰을 약속하고, 호전을 해석해요.', 'lines': [{'en': "Her sugar and blood are very concentrated, so we're correcting it slowly and safely.", 'icon': 'lab', 'ko': '혈당과 혈액이 아주 농축돼서 천천히 안전하게 교정해요', 'note': '상태'}, {'en': 'Going too fast could affect her brain, so we take our time.', 'icon': 'shield', 'ko': '너무 빠르면 뇌에 영향을 줄 수 있어서 시간을 둬요', 'note': '이유'}, {'en': "We'll watch her mental status closely the whole time.", 'icon': 'bulb', 'ko': '그동안 의식 상태를 계속 자세히 지켜볼게요', 'note': '관찰'}, {'en': "Her confusion is starting to clear, which tells us she's responding well.", 'icon': 'chartup', 'ko': '혼란이 나아지고 있어 잘 반응한다는 뜻이에요', 'note': '호전'}]}
+=== S10 저혈당 예방·포도당 병용
+ [10.0] Once his sugar reaches the threshold, we add dextrose while continuing insulin. | 혈당이 기준치에 도달하면, 인슐린은 유지하면서 포도당을 추가해요.
+    chunks=['Once his sugar reaches', 'the threshold,', 'we add dextrose', 'while continuing insulin', '.'] words=['w-sugar', 'w-reach', 'w-threshold', 'w-add', 'w-dextrose', 'w-continue', 'w-insulin'] tag=병용 이유 icon=pill
+    why='Once'가 포도당을 더하는 시점을 기준치 도달로 정해요. 'while continuing'은 인슐린을 멈추지 않는다는 점을 한 문장에 담아요.
+    decoy=to the kitchen dk=['혈당이 기준치에 도달하면, 인슐린은 유지하면서 원장님이 포도당을 추가해요.', '혈당이 기준치에 도달하면, 인슐린은 유지하면서 주치의가 포도당을 추가해요.'] blank=threshold:['threshold', 'ceiling', 'doorway', 'border']
+ [10.1] This lets us keep clearing the ketones without dropping too low. | 이렇게 하면 혈당이 너무 낮아지지 않으면서 케톤을 계속 없앨 수 있어요.
+    chunks=['This lets us', 'keep clearing', 'the ketones', 'without dropping too low', '.'] words=['w-keep', 'w-clear', 'w-ketone', 'w-drop', 'w-low'] tag=목적 설명 icon=chartup
+    why='without dropping'은 부작용을 피한다는 조건을 짧게 담아요. 'keep clearing'은 처치가 이어진다는 진행의 뜻이에요.
+    decoy=at the desk dk=['이렇게 하면 혈당이 너무 낮아지지 않으면서 케톤을 빨리 없앨 수 있어요.', '이렇게 하면 혈당이 너무 낮아지지 않으면서 케톤을 충분히 없앨 수 있어요.'] blank=dropping:['dropping', 'jumping', 'spilling', 'climbing']
+ [10.2] I'll recheck the glucose and adjust both drips together. | 혈당을 다시 확인하고 두 주입 속도를 같이 조절할게요.
+    chunks=["I'll recheck the glucose", 'and adjust', 'both drips', 'together', '.'] words=['w-recheck', 'w-glucose', 'w-adjust', 'w-drip', 'w-together'] tag=동시 조절 icon=gear
+    why='both … together'는 두 주입을 한 쌍으로 보고 함께 맞춘다는 뜻이에요. 're-'는 이미 한 확인을 되풀이한다는 접두사예요.
+    decoy=in the morning dk=['혈당을 다시 확인하고 두 주입 속도를 전문의가 같이 조절해요.', '혈당을 다시 확인하고 두 주입 속도를 레지던트가 같이 조절해요.'] blank=recheck:['recheck', 'recount', 'rename', 'retune']
+ [10.3] We watch closely so his sugar doesn't drop too low too fast. | 혈당이 너무 빨리 너무 낮아지지 않도록 자세히 지켜보고 있어요.
+    chunks=['We watch closely', "so his sugar doesn't drop", 'too low', 'too fast', '.'] words=['w-watch', 'w-closely', 'w-sugar', 'w-drop', 'w-low', 'w-fast'] tag=감시 목적 icon=monitor
+    why='so'로 지켜보는 이유(저혈당 예방)를 이었어요. 'too low too fast'는 수치와 속도 두 가지 위험을 함께 짚어요.
+    decoy=in the room dk=['혈당이 너무 빨리 너무 낮아지지 않도록 당직의가 자세히 지켜봐요.', '혈당이 너무 빨리 너무 낮아지지 않도록 담당의가 자세히 지켜봐요.'] blank=low:['low', 'wide', 'tall', 'thick']
+ [10.4] We're still clearing the ketones, so don't stop the insulin yet. | 아직 케톤을 없애는 중이라서, 인슐린을 아직 멈추면 안 돼요.
+    chunks=["We're still clearing", 'the ketones,', "so don't stop", 'the insulin yet', '.'] words=['w-clear', 'w-ketone', 'w-stop', 'w-insulin'] tag=지속 강조 icon=siren
+    why='still'이 아직 치료 중이라는 현재 상태를 말해요. 'yet'은 지금은 멈추지 말라는 뜻을 더해요.
+    decoy=for tonight dk=['아직 혈당이 높은 편이라서, 인슐린을 아직 멈추면 안 돼요.', '아직 산도가 낮은 편이라서, 인슐린을 아직 멈추면 안 돼요.'] blank=clearing:['clearing', 'counting', 'filing', 'moving']
+ N0 {'kind': 'slider', 'words': ['w-fast', 'w-drop'], 'cue': 'Glucose went from 250 to 190 in an hour on insulin and dextrose.', 'scale': ['too slowly', 'at a safe pace', 'too fast'], 'answerAt': 1, 'why': '시간당 60 정도 하락은 많은 프로토콜의 목표(시간당 50~75 mg/dL) 안이라 at a safe pace예요. 포도당을 같이 넣으면서 저혈당을 막고 케톤은 계속 없애요.', 'example': 'His sugar is dropping at a safe pace.', 'exKo': '그의 혈당이 안전한 속도로 내려가고 있어요.'}
+ N1 {'kind': 'context', 'words': ['w-glucose'], 'word': 'glucose', 'ko': '혈당', 'scenes': [{'who': '의사 라운드', 'icon': 'monitor', 'en': 'Recheck the glucose hourly while the dextrose is running.', 'ok': True}, {'who': '야간 인계', 'icon': 'board', 'en': 'Glucose was 190 at 0400, so dextrose was added per protocol.', 'ok': True}, {'who': '환자에게', 'icon': 'me', 'en': 'Your glucose will be maintained within parameters via a dextrose co-infusion.', 'ok': False, 'fix': "We're adding some sugar water to your IV so your glucose stays safe while the insulin keeps working."}], 'why': "의료진끼리는 수치와 시점을 짧게 말해요. 환자에게는 co-infusion 같은 말 대신 '당을 같이 넣어 혈당을 지킨다'로 알려 주세요."}
+ N2 {'kind': 'swap', 'words': ['w-dextrose'], 'who': '환자에게 · 포도당 병용 안내', 'icon': 'me', 'before': ["We're adding ", 'dextrose', " to your IV so your sugar doesn't drop too low."], 'options': ['some sugar water', 'dextrose', 'D5W'], 'answer': 'some sugar water', 'notes': {'some sugar water': '환자가 바로 이해하는 말이에요.', 'dextrose': '정확하지만 환자는 포도당이 뭔지 모를 수 있어요.', 'D5W': '약어라 환자는 알아들을 수 없어요.'}, 'why': '인슐린이 케톤을 없애는 동안 혈당이 너무 낮아지지 않도록 당을 같이 넣어요. 환자에게는 쉬운 말로 이유를 전해요.', 'ko': '혈당이 너무 낮아지지 않게 수액에 당을 더 넣을게요'}
+ ORDER {'tag': '대화 흐름', 'icon': 'compass', 'ko': '포도당 병용 설명 4문장 순서', 'why': '병용 시점을 말하고, 그 목적을 설명한 뒤, 저혈당을 막는 조절을 알리고, 인슐린을 멈추지 말라고 당부해요.', 'lines': [{'en': 'Once his sugar reaches the threshold, we add dextrose while continuing insulin.', 'icon': 'pill', 'ko': '기준치에 도달하면 인슐린은 유지하며 포도당을 추가해요', 'note': '병용'}, {'en': 'This lets us keep clearing the ketones without dropping too low.', 'icon': 'chartup', 'ko': '이러면 너무 낮아지지 않으며 케톤을 계속 없애요', 'note': '목적'}, {'en': "To stay ahead of a drop, I'll recheck the glucose and adjust both drips together.", 'icon': 'gear', 'ko': '떨어지기 전에 대응하려고 혈당을 확인하고 두 주입을 조절해요', 'note': '조절'}, {'en': "Even then, we're still clearing the ketones, so don't stop the insulin yet.", 'icon': 'siren', 'ko': '그때도 케톤을 없애는 중이라 인슐린을 멈추지 마세요', 'note': '당부'}]}
+=== S11 유발원인 동반 치료
+ [11.0] We're looking for a trigger like an infection and treating it alongside the DKA. | 감염 같은 유발 원인을 찾고 있고, 케토산증과 함께 그것도 치료하고 있어요.
+    chunks=["We're looking for a trigger", 'like an infection', 'and treating it', 'alongside the DKA', '.'] words=['w-look', 'w-trigger', 'w-infection', 'w-treat', 'w-alongside'] tag=원인 탐색 icon=magnify
+    why='like an infection'은 유발 원인의 예를 쉬운 말로 들어 줘요. 'alongside'는 원인 치료를 케토산증 치료와 나란히 한다는 뜻이에요.
+    decoy=your breakfast dk=['과식 같은 유발 원인을 찾고 있고, 케토산증과 함께 그것도 치료하고 있어요.', '수면 부족 같은 유발 원인을 찾고 있고, 케토산증과 함께 그것도 치료하고 있어요.'] blank=trigger:['trigger', 'symptom', 'outcome', 'result']
+ [11.1] Fixing the cause helps prevent this from coming back. | 원인을 해결하면 이게 다시 생기는 걸 막는 데 도움이 돼요.
+    chunks=['Fixing the cause', 'helps prevent this', 'from coming', 'back', '.'] words=['w-fix', 'w-cause', 'w-help', 'w-prevent'] tag=재발 방지 icon=shield
+    why='helps prevent'는 확실히 막는다가 아니라 도움이 된다는 정확한 표현이에요. 'coming back'은 재발을 쉬운 말로 풀어요.
+    decoy=by the elevator dk=['원인을 해결하면 퇴원을 준비하는 데 도움이 돼요.', '원인을 해결하면 회복을 앞당기는 데 도움이 돼요.'] blank=cause:['cause', 'name', 'price', 'shape']
+ [11.2] We've started cultures and will adjust treatment based on the results. | 배양 검사를 시작했고, 결과에 따라 치료를 조절할 거예요.
+    chunks=["We've started cultures", 'and will adjust treatment', 'based on', 'the results', '.'] words=['w-start', 'w-culture', 'w-adjust', 'w-treatment', 'w-base', 'w-result'] tag=배양 안내 icon=lab
+    why='based on the results'는 결과가 나오면 그에 맞춰 바꾼다는 뜻이라 지금 약이 끝이 아니라는 설명이 돼요. 'cultures'는 균을 키워 보는 검사예요.
+    decoy=in the supply room dk=['배양 검사를 시작했고, 결과에 따라 면회를 조절할 거예요.', '배양 검사를 시작했고, 결과에 따라 병실을 조절할 거예요.'] blank=started:['started', 'ended', 'closed', 'lost']
+ [11.3] We're checking his blood and urine to find where the infection started. | 감염이 어디서 시작됐는지 찾으려고 혈액이랑 소변을 확인하고 있어요.
+    chunks=["We're checking his blood", 'and urine', 'to find where', 'the infection started', '.'] words=['w-check', 'w-blood', 'w-urine', 'w-find', 'w-infection', 'w-start'] tag=검사 목적 icon=lab
+    why='to find where'로 검사의 목적을 먼저 밝혀요. 혈액과 소변은 감염 위치를 찾는 기본 검체예요.
+    decoy=at the station dk=['열이 왜 나는지 찾으려고 혈액이랑 소변을 확인하고 있어요.', '염증이 얼마나 심한지 찾으려고 혈액이랑 소변을 확인하고 있어요.'] blank=infection:['infection', 'bleeding', 'fracture', 'rash']
+ [11.4] Once we know the cause, we can treat it and lower the risk of this happening again. | 원인을 알면 치료도 하고 다시 생길 위험도 낮출 수 있어요.
+    chunks=['Once we know the cause,', 'we can treat it', 'and lower the risk', 'of this happening again', '.'] words=['w-cause', 'w-treat', 'w-lower', 'w-risk'] tag=치료 전망 icon=chartup
+    why='Once'가 원인을 아는 것이 치료의 전제라는 순서를 줘요. 'lower the risk'는 위험이 없어진다가 아니라 줄어든다는 정직한 표현이에요.
+    decoy=by tomorrow dk=['원인을 알면 치료도 하고 회복 기간도 줄일 수 있어요.', '원인을 알면 치료도 하고 입원 기간도 줄일 수 있어요.'] blank=risk:['risk', 'cost', 'noise', 'size']
+ N0 {'kind': 'slider', 'words': ['w-help', 'w-risk'], 'cue': 'Treating his infection will lower the chance of another DKA episode.', 'scale': ['might help a bit', 'helps lower the risk', "guarantees it won't happen"], 'answerAt': 1, 'why': '원인을 치료하면 재발 위험을 낮출 수 있지만 없애 준다고 약속할 수는 없어요. helps lower the risk가 정확하고, guarantees는 지킬 수 없는 약속이에요.', 'example': 'Treating the cause helps lower the risk.', 'exKo': '원인을 치료하면 위험을 낮추는 데 도움이 돼요.'}
+ N1 {'kind': 'context', 'words': ['w-trigger'], 'word': 'trigger', 'ko': '유발 요인', 'scenes': [{'who': '의사 라운드', 'icon': 'monitor', 'en': "Infection is a common trigger, so let's send cultures.", 'ok': True}, {'who': '야간 인계', 'icon': 'board', 'en': 'No clear trigger yet, and cultures are pending.', 'ok': True}, {'who': '환자에게', 'icon': 'me', 'en': 'The precipitating trigger of your DKA is most likely an infectious etiology.', 'ok': False, 'fix': "Something like an infection may have set this off, so we're running tests to find out."}], 'why': "의료진끼리는 trigger와 원인 추정을 압축해서 말해요. 환자에게는 precipitating·etiology 대신 '이런 것이 시작이 되었을 수 있다'고 쉽게 전해 주세요."}
+ N2 {'kind': 'swap', 'words': ['w-infection'], 'who': '환자에게 · 검사 이유', 'icon': 'me', 'before': ["We're testing for ", 'an infectious etiology', ' that may have set this off.'], 'options': ['an infection', 'an infectious etiology', 'a bacteremia'], 'answer': 'an infection', 'notes': {'an infection': '환자가 이해하는 말로 무엇을 찾는지 전해져요.', 'an infectious etiology': '의료진끼리 쓰는 말이라 환자는 낯설어요.', 'a bacteremia': '혈류 감염이 확인된 것처럼 들려 아직 모르는 진단을 단정해요.'}, 'why': "아직 검사 중이니 확진처럼 들리지 않게 '감염이 있는지 본다'고만 말해요.", 'ko': '시작의 원인이 됐을 수 있는 감염이 있는지 검사하고 있어요'}
+ ORDER {'tag': '대화 흐름', 'icon': 'compass', 'ko': '유발 원인 치료 설명 4문장 순서', 'why': '원인을 찾는다고 알리고, 찾는 방법을 말한 뒤, 원인을 알았을 때의 치료를 설명하고, 재발 방지를 말해요.', 'lines': [{'en': "We're looking for a trigger like an infection and treating it alongside the DKA.", 'icon': 'magnify', 'ko': '감염 같은 유발 원인을 찾고 케토산증과 함께 치료해요', 'note': '탐색'}, {'en': "To find it, we're checking his blood and urine and have started cultures.", 'icon': 'lab', 'ko': '찾으려고 혈액·소변을 확인하고 배양을 시작했어요', 'note': '검사'}, {'en': 'Once we know the cause, we can treat it alongside the DKA.', 'icon': 'gear', 'ko': '원인을 알면 케토산증과 함께 치료할 수 있어요', 'note': '치료'}, {'en': 'Fixing it helps prevent this from coming back.', 'icon': 'shield', 'ko': '그걸 해결하면 다시 생기는 걸 막는 데 도움이 돼요', 'note': '재발'}]}
+=== S12 부신위기 스테로이드 투여
+ [12.0] His body can't make enough stress hormone, so we're giving it now. | 몸이 스트레스 호르몬을 충분히 만들지 못해서, 지금 대신 주고 있어요.
+    chunks=["His body can't make", 'enough stress hormone,', "so we're giving it", 'now', '.'] words=['w-make', 'w-stress', 'w-hormone', 'w-give'] tag=이유 설명 icon=pill
+    why='so'로 원인(호르몬 부족)과 처치(투여)를 이어 환자·가족이 이유를 바로 알아요. 'can't make enough'는 아예 없는 게 아니라 부족하다는 정확한 표현이에요.
+    decoy=in the pharmacy dk=['스트레스 호르몬이 더 필요해져서, 지금 대신 주고 있어요.', '몸이 스트레스 호르몬을 제대로 쓰지 못해서, 지금 대신 주고 있어요.'] blank=body:['body', 'liver', 'skin', 'lungs']
+ [12.1] This steroid can quickly stabilize his blood pressure. | 이 스테로이드가 혈압을 빠르게 안정시켜 줄 수 있어요.
+    chunks=['This steroid', 'can quickly stabilize', 'his blood pressure', '.'] words=['w-steroid', 'w-quickly', 'w-stabilize', 'w-blood', 'w-pressure'] tag=효과 설명 icon=chartup
+    why='can'은 보장이 아니라 가능성이라 과장하지 않아요. 'quickly stabilize'는 급한 혈압 문제라는 점을 짧게 알려요.
+    decoy=his heart rate dk=['이 스테로이드가 통증을 빠르게 가라앉혀 줄 수 있어요.', '이 스테로이드가 열을 빠르게 내려 줄 수 있어요.'] blank=stabilize:['stabilize', 'interrupt', 'replace', 'borrow']
+ [12.2] We'll keep monitoring and give more if his stress level demands it. | 계속 지켜보다가 스트레스 수준이 필요로 하면 더 드릴 거예요.
+    chunks=["We'll keep monitoring", 'and give more', 'if his stress level', 'demands it', '.'] words=['w-keep', 'w-monitor', 'w-give', 'w-stress', 'w-level', 'w-demand'] tag=추가 투여 icon=monitor
+    why='if'로 추가 투여의 조건을 걸어 필요한 만큼만 준다는 설명이 돼요. 'demands it'은 몸의 필요가 기준이라는 뜻이에요.
+    decoy=to the family dk=['계속 지켜보다가 스트레스 수준이 필요로 하면 책임자가 더 줘요.', '계속 지켜보다가 스트레스 수준이 필요로 하면 야간조가 더 줘요.'] blank=give:['give', 'lend', 'sell', 'hide']
+ [12.3] We're giving him a stress dose of steroid right away to support his body. | 몸을 지지하려고 스트레스 용량 스테로이드를 지금 바로 드리고 있어요.
+    chunks=["We're giving him", 'a stress dose', 'of steroid', 'right away to support his body', '.'] words=['w-give', 'w-stress', 'w-dose', 'w-steroid', 'w-support'] tag=투여 안내 icon=siren
+    why='a stress dose'는 평소보다 많은 위기용 용량을 가리키는 임상어예요. 'right away'가 시점을 즉시로 못 박아요.
+    decoy=on the cart dk=['혈압을 지지하려고 스트레스 용량 스테로이드를 지금 바로 드리고 있어요.', '염증을 가라앉히려고 스트레스 용량 스테로이드를 지금 바로 드리고 있어요.'] blank=support:['support', 'blame', 'doubt', 'tire']
+ [12.4] His blood pressure is already responding well to the medicine. | 혈압이 벌써 약에 잘 반응하고 있어요.
+    chunks=['His blood pressure', 'is already', 'responding well', 'to the medicine', '.'] words=['w-blood', 'w-pressure', 'w-respond', 'w-medicine'] tag=반응 확인 icon=chartup
+    why='already'는 예상보다 빠르다는 뜻의 부사예요. 'responding well'은 효과가 보인다는 쉬운 표현이에요.
+    decoy=to the visitors dk=['혈압이 벌써 수액에 잘 반응하고 있어요.', '혈압이 벌써 산소에 잘 반응하고 있어요.'] blank=responding:['responding', 'belonging', 'listening', 'relating']
+ N0 {'kind': 'slider', 'words': ['w-stabilize', 'w-pressure'], 'cue': 'After the first steroid dose, his blood pressure is a little higher but still low.', 'scale': ['still crashing', 'starting to stabilize', 'fully stabilized'], 'answerAt': 1, 'why': '혈압이 조금 올랐지만 아직 낮으면 starting to stabilize예요. 안정됐다고 단정하지 말고 계속 재고, 처방된 수액·약에 따른 반응을 팀에 알려요.', 'example': 'His pressure is starting to stabilize.', 'exKo': '그의 혈압이 안정되기 시작했어요.'}
+ N1 {'kind': 'context', 'words': ['w-support'], 'word': 'support', 'ko': '지지하다', 'scenes': [{'who': '의사 호출', 'icon': 'speech', 'en': 'We gave the stress-dose hydrocortisone to support his blood pressure.', 'ok': True}, {'who': '야간 인계', 'icon': 'board', 'en': 'His pressure needs support overnight from fluids and steroids.', 'ok': True}, {'who': '가족에게', 'icon': 'me', 'en': 'Hemodynamic support is ongoing with stress-dose corticosteroids.', 'ok': False, 'fix': "We're giving him a strong steroid and fluids to help hold his blood pressure up."}], 'why': '의료진끼리는 hemodynamic support처럼 짧은 말이 정확하고 빨라요. 가족에게는 무엇을 줘서 무엇을 돕는지 쉬운 말로 풀어 주세요.'}
+ N2 {'kind': 'swap', 'words': ['w-hormone'], 'who': '가족에게 · 부신 기능 설명', 'icon': 'me', 'before': ["His body can't make enough ", 'cortisol', " when he's this sick."], 'options': ['stress hormone', 'cortisol', 'glucocorticoid'], 'answer': 'stress hormone', 'notes': {'stress hormone': '가족이 이해하는 말로 아플 때 몸에 필요한 호르몬을 설명해요.', 'cortisol': '정확하지만 가족에게는 낯설 수 있어요.', 'glucocorticoid': '약물 계열 이름이라 가족은 알아듣기 어려워요.'}, 'why': '부신위기는 아플 때 필요한 스트레스 호르몬이 부족해 생겨요. 가족에게는 호르몬 이름보다 쉬운 설명이 먼저예요.', 'ko': '아주 아플 때 몸이 스트레스 호르몬을 충분히 만들지 못해요'}
+ ORDER {'tag': '대화 흐름', 'icon': 'compass', 'ko': '부신위기 스테로이드 설명 4문장 순서', 'why': '왜 주는지 설명하고, 약의 효과를 알린 뒤, 추가 투여의 기준을 말하고, 반응이 보이면 알려요.', 'lines': [{'en': "His body can't make enough stress hormone, so we're giving it now.", 'icon': 'pill', 'ko': '스트레스 호르몬이 부족해서 지금 대신 주고 있어요', 'note': '이유'}, {'en': "That's why this steroid can quickly stabilize his blood pressure.", 'icon': 'chartup', 'ko': '그래서 이 스테로이드가 혈압을 빠르게 안정시켜 줄 수 있어요', 'note': '효과'}, {'en': "We'll keep monitoring and give more if his stress level demands it.", 'icon': 'monitor', 'ko': '계속 지켜보다가 필요하면 더 드릴 거예요', 'note': '추가'}, {'en': 'So far, his blood pressure is already responding well to the medicine.', 'icon': 'chartup', 'ko': '지금까지 혈압이 약에 벌써 잘 반응하고 있어요', 'note': '반응'}]}
+=== S13 갑상선기능저하 점액수종 관리
+ [13.0] Her thyroid is very low, which slows her heart and drops her temperature. | 갑상선 기능이 아주 낮아서, 심장이 느려지고 체온이 떨어지고 있어요.
+    chunks=['Her thyroid is very low,', 'which slows her heart', 'and drops', 'her temperature', '.'] words=['w-thyroid', 'w-low', 'w-slow', 'w-heart', 'w-drop', 'w-temperature'] tag=상태 설명 icon=lab
+    why='which'가 앞 문장 전체를 받아 결과를 이어 붙여 원인과 증상을 한 문장에 설명해요. 'drops'는 체온이 내려간다는 쉬운 동사예요.
+    decoy=near the exit dk=['갑상선 기능이 아주 낮아서, 눈이 건조해지고 체온이 떨어지고 있어요.', '갑상선 기능이 아주 낮아서, 심장이 느려지고 시력이 떨어지고 있어요.'] blank=slows:['slows', 'speeds', 'raises', 'warms']
+ [13.1] We're warming her gently and giving thyroid hormone. | 천천히 따뜻하게 해드리면서 갑상선 호르몬을 드리고 있어요.
+    chunks=["We're warming her gently", 'and giving', 'thyroid hormone', '.'] words=['w-warm', 'w-gently', 'w-give', 'w-thyroid', 'w-hormone'] tag=치료 안내 icon=gear
+    why='gently'는 체온을 서서히 올린다는 방식을 알려요. 'and'로 두 처치를 함께 말해 전체 계획이 한눈에 보여요.
+    decoy=at the window dk=['천천히 따뜻하게 해드리면서 주간조가 갑상선 호르몬을 줘요.', '천천히 따뜻하게 해드리면서 교대자가 갑상선 호르몬을 줘요.'] blank=gently:['gently', 'loudly', 'brightly', 'rudely']
+ [13.2] We'll monitor her heart rate and temperature very closely. | 심박수랑 체온을 아주 자세히 지켜볼게요.
+    chunks=["We'll monitor", 'her heart rate', 'and temperature', 'very closely', '.'] words=['w-monitor', 'w-heart', 'w-rate', 'w-temperature', 'w-closely'] tag=감시 약속 icon=monitor
+    why='very closely'는 평소보다 자주 본다는 강조예요. 심박수와 체온은 이 상태에서 가장 먼저 변하는 두 지표예요.
+    decoy=at night dk=['심박수랑 체온을 아주 자세히 전담자가 지켜봐요.', '심박수랑 체온을 아주 자세히 팀장이 지켜봐요.'] blank=monitor:['monitor', 'photograph', 'announce', 'translate']
+ [13.3] Her heart rate is very slow, so we're watching her closely on the monitor. | 심박수가 아주 느려서, 모니터로 자세히 지켜보고 있어요.
+    chunks=['Her heart rate', 'is very slow,', "so we're watching her closely", 'on the monitor', '.'] words=['w-heart', 'w-rate', 'w-slow', 'w-watch', 'w-closely', 'w-monitor'] tag=서맥 설명 icon=monitor
+    why='so'로 이유(느린 맥)와 행동(지켜보기)을 이어요. 'on the monitor'는 화면으로 계속 본다는 뜻이에요.
+    decoy=from the bed dk=['심박수가 아주 느려서, 곁에서 자세히 지켜보고 있어요.', '심박수가 아주 느려서, 과장이 자세히 지켜보고 있어요.'] blank=monitor:['monitor', 'window', 'speaker', 'clock']
+ [13.4] As the hormone takes effect, her energy and temperature should slowly improve. | 호르몬이 효과를 내면서 기운이랑 체온이 서서히 좋아질 거예요.
+    chunks=['As the hormone takes effect,', 'her energy', 'and temperature should slowly', 'improve', '.'] words=['w-hormone', 'w-take', 'w-effect', 'w-energy', 'w-temperature', 'w-slow', 'w-improve'] tag=회복 전망 icon=chartup
+    why='should'는 보장이 아니라 기대라는 정직한 표현이에요. 'slowly'가 급격한 호전을 기대하지 않게 해요.
+    decoy=in a week dk=['호르몬이 효과를 내면서 식욕이랑 체온이 서서히 좋아질 거예요.', '호르몬이 효과를 내면서 기운이랑 목소리가 서서히 좋아질 거예요.'] blank=energy:['energy', 'hunger', 'humor', 'hair']
+ N0 {'kind': 'slider', 'words': ['w-gently', 'w-warm'], 'cue': "She is cold and her pressure is soft, and you're rewarming her.", 'scale': ['gently', 'briskly', 'aggressively'], 'answerAt': 0, 'why': '점액수종에서는 담요 등으로 서서히 데우는 것이 안전하다고 알려져 있어요. 빨리 데우면 혈관이 늘어나 혈압이 더 떨어질 수 있어서 gently가 맞아요.', 'example': "We're warming her gently with blankets.", 'exKo': '담요로 부드럽게 따뜻하게 해드리고 있어요.'}
+ N1 {'kind': 'context', 'words': ['w-temperature'], 'word': 'temperature', 'ko': '체온', 'scenes': [{'who': '의사 호출', 'icon': 'speech', 'en': "Her temperature is 92.1°F, so we're rewarming her slowly with blankets.", 'ok': True}, {'who': '야간 인계', 'icon': 'board', 'en': 'Temperature trended up slowly overnight and is now 95.4°F.', 'ok': True}, {'who': '가족에게', 'icon': 'me', 'en': 'She has a core temperature of 92.1°F, consistent with myxedema coma.', 'ok': False, 'fix': "Her body temperature is very low because her thyroid is so slow, and we're warming her gently."}], 'why': '의료진끼리는 수치와 진단을 함께 말해도 돼요. 가족에게는 myxedema coma 같은 진단명을 바로 던지기보다 체온이 왜 낮은지 쉬운 말로 알려 주세요.'}
+ N2 {'kind': 'swap', 'words': ['w-thyroid'], 'who': '가족에게 · 상태 설명', 'icon': 'me', 'before': ['Her body is ', 'severely hypothyroid', ' right now.'], 'options': ['running very slowly', 'severely hypothyroid', 'in myxedema'], 'answer': 'running very slowly', 'notes': {'running very slowly': '갑상선 기능이 낮아 몸이 느려진 상태를 쉬운 말로 전해요.', 'severely hypothyroid': '의료진끼리의 진단 표현이라 가족은 의미를 몰라요.', 'in myxedema': '생소한 병명이라 가족에게 불안과 혼란만 줄 수 있어요.'}, 'why': '점액수종은 갑상선 호르몬이 아주 낮아 몸 전체가 느려진 상태예요. 가족에게는 병명보다 이 느려진 모습을 먼저 설명해요.', 'ko': '지금 몸의 기능이 아주 느리게 돌아가고 있어요'}
+ ORDER {'tag': '대화 흐름', 'icon': 'compass', 'ko': '점액수종 관리 설명 4문장 순서', 'why': '상태를 설명하고, 치료를 알린 뒤, 호르몬이 듣기 시작할 때의 변화를 말하고, 그 변화를 확인하는 감시를 약속해요.', 'lines': [{'en': 'Her thyroid is very low, which slows her heart and drops her temperature.', 'icon': 'lab', 'ko': '갑상선이 아주 낮아서 심장이 느려지고 체온이 떨어져요', 'note': '상태'}, {'en': "For that, we're warming her gently and giving thyroid hormone.", 'icon': 'gear', 'ko': '그래서 천천히 따뜻하게 하고 호르몬을 드려요', 'note': '치료'}, {'en': 'As the hormone takes effect, her energy and temperature should slowly improve.', 'icon': 'chartup', 'ko': '호르몬이 효과를 내면 기운과 체온이 서서히 좋아져요', 'note': '전망'}, {'en': "To confirm that, we'll monitor her heart rate and temperature very closely.", 'icon': 'monitor', 'ko': '그걸 확인하려고 심박수와 체온을 아주 자세히 지켜볼게요', 'note': '감시'}]}
+=== S14 교정속도 뇌부종 위험 인지
+ [14.0] Correcting too quickly can cause dangerous brain swelling. | 너무 빠르게 교정하면 위험한 뇌부종이 생길 수 있어요.
+    chunks=['Correcting too quickly', 'can cause dangerous', 'brain swelling', '.'] words=['w-correct', 'w-quickly', 'w-cause', 'w-dangerous', 'w-brain', 'w-swell'] tag=위험 설명 icon=shield
+    why='can cause'는 항상이 아니라 일어날 수 있다는 정확한 표현이에요. 'dangerous'가 가볍게 넘기지 말라는 강조예요.
+    decoy=in the waiting area dk=['너무 빠르게 교정하면 위험한 저혈당이 생길 수 있어요.', '너무 빠르게 교정하면 위험한 감염이 생길 수 있어요.'] blank=dangerous:['dangerous', 'famous', 'painful', 'fancy']
+ [14.1] A slow, steady pace is actually the safest way to help him. | 천천히 꾸준한 속도가 사실 가장 안전하게 도와드리는 방법이에요.
+    chunks=['A slow, steady pace', 'is actually', 'the safest way', 'to help him', '.'] words=['w-slow', 'w-steady', 'w-pace', 'w-safe', 'w-way', 'w-help'] tag=속도 근거 icon=shield
+    why='actually'는 느린 게 오히려 낫다는 반전을 줘 환자 가족의 조바심을 풀어요. 'safest'는 최상급으로 안전함을 강조해요.
+    decoy=under the blanket dk=['천천히 꾸준한 속도가 사실 가장 편안하게 도와드리는 방법이에요.', '천천히 꾸준한 속도가 사실 가장 조용하게 도와드리는 방법이에요.'] blank=safest:['safest', 'cheapest', 'quietest', 'loudest']
+ [14.2] We're watching his neuro status while we correct carefully. | 조심스럽게 교정하면서 신경학적 상태를 지켜보고 있어요.
+    chunks=["We're watching", 'his neuro status', 'while we correct', 'carefully', '.'] words=['w-watch', 'w-neuro', 'w-status', 'w-correct', 'w-carefully'] tag=감시 안내 icon=monitor
+    why='while'은 교정과 감시를 동시에 한다는 뜻이에요. 'carefully'가 교정 방식을 알려요.
+    decoy=on the shelf dk=['조심스럽게 교정하면서 신경학적 상태를 교수가 지켜봐요.', '조심스럽게 교정하면서 신경학적 상태를 인턴이 지켜봐요.'] blank=correct:['correct', 'complain', 'borrow', 'paint']
+ [14.3] If we correct him too fast, the swelling risk goes up. | 너무 빠르게 교정하면 부종 위험이 올라가요.
+    chunks=['If we correct him', 'too fast,', 'the swelling risk', 'goes up', '.'] words=['w-correct', 'w-fast', 'w-swell', 'w-risk'] tag=위험 증가 icon=chartup
+    why='If'가 조건을 앞에 세우고 'goes up'이 결과를 쉬운 말로 말해요. 'too fast'는 속도가 원인이라는 점을 짚어요.
+    decoy=in the kitchen dk=['너무 빠르게 교정하면 탈수 위험이 올라가요.', '너무 빠르게 교정하면 감염 위험이 올라가요.'] blank=risk:['risk', 'price', 'speed', 'pile']
+ [14.4] I know it feels slow, but this pace protects his brain. | 느리게 느껴지실 수 있지만, 이 속도가 뇌를 지켜드리는 거예요.
+    chunks=['I know', 'it feels slow,', 'but this pace', 'protects his brain', '.'] words=['w-feel', 'w-slow', 'w-pace', 'w-protect', 'w-brain'] tag=공감 설명 icon=faceWorried
+    why='I know'로 공감부터 하고 'but'으로 이유를 붙여요. 'protects'는 느린 속도가 보호라는 긍정적 표현이에요.
+    decoy=for your trip dk=['느리게 느껴지실 수 있지만, 이 속도가 심장을 지켜드리는 거예요.', '느리게 느껴지실 수 있지만, 이 속도가 폐를 지켜드리는 거예요.'] blank=slow:['slow', 'cold', 'heavy', 'sweet']
+ N0 {'kind': 'slider', 'words': ['w-risk'], 'cue': "Her sodium and sugar are coming down as planned, and her alertness hasn't changed.", 'scale': ['low risk', 'some risk', 'high risk'], 'answerAt': 0, 'why': '계획한 속도로 내려가고 의식 변화가 없으면 뇌부종 위험은 낮은 쪽이에요. 그래도 위험이 없는 건 아니라서 신경학적 확인은 계속하고, 변화가 생기면 바로 보고해요.', 'example': 'The risk is low as long as we go slowly.', 'exKo': '천천히 하는 동안은 위험이 낮아요.'}
+ N1 {'kind': 'context', 'words': ['w-pace'], 'word': 'pace', 'ko': '속도', 'scenes': [{'who': '의사 라운드', 'icon': 'monitor', 'en': 'Keep the correction pace slow so the brain has time to adjust.', 'ok': True}, {'who': '야간 인계', 'icon': 'board', 'en': "The fluid pace is set per protocol, so don't speed it up.", 'ok': True}, {'who': '가족에게', 'icon': 'me', 'en': 'The osmolar correction pace is limited to avoid cerebral edema.', 'ok': False, 'fix': "We're going slowly on purpose, because moving too fast could make his brain swell."}], 'why': '의료진끼리는 pace와 교정 목표를 압축해서 말해요. 가족에게는 osmolar·cerebral edema 대신 천천히 하는 이유를 쉬운 말로 알려 주세요.'}
+ N2 {'kind': 'swap', 'words': ['w-swell'], 'who': '환자에게 · 천천히 하는 이유', 'icon': 'me', 'before': ['Going too fast could cause ', 'cerebral edema', '.'], 'options': ['swelling in your brain', 'cerebral edema', 'intracranial hypertension'], 'answer': 'swelling in your brain', 'notes': {'swelling in your brain': '환자가 이해하는 말로 위험의 이유를 전해요.', 'cerebral edema': '의료진끼리의 정확한 용어라 환자는 모를 수 있어요.', 'intracranial hypertension': '어려운 진단명이라 환자가 놀라고 이해하기 어려워요.'}, 'why': '이유를 알아야 환자가 천천히 하는 치료를 이해하고 기다릴 수 있어요. 겁주지 말고 쉬운 말로 설명해요.', 'ko': '너무 빠르게 하면 뇌가 부을 수 있어요'}
+ ORDER {'tag': '대화 흐름', 'icon': 'compass', 'ko': '교정 속도 설명 4문장 순서', 'why': '위험을 먼저 말하고, 그래서 느린 속도가 안전하다고 설명한 뒤, 그동안의 감시를 알리고, 느리다는 느낌에 공감해요.', 'lines': [{'en': 'Correcting too quickly can cause dangerous brain swelling.', 'icon': 'shield', 'ko': '너무 빠르게 교정하면 위험한 뇌부종이 생길 수 있어요', 'note': '위험'}, {'en': "That's why a slow, steady pace is actually the safest way to help him.", 'icon': 'shield', 'ko': '그래서 느리고 꾸준한 속도가 가장 안전해요', 'note': '근거'}, {'en': "At that pace, we're watching his neuro status while we correct carefully.", 'icon': 'monitor', 'ko': '그 속도로 조심스럽게 교정하며 신경 상태를 봐요', 'note': '감시'}, {'en': 'I know it feels slow, but with all this watching, this pace protects his brain.', 'icon': 'faceWorried', 'ko': '느리게 느껴져도 이렇게 지켜보면서 이 속도가 뇌를 지켜요', 'note': '공감'}]}
+=== S15 DKA 뇌부종 급변 위기
+ [15.0] This sudden change is serious and I'm calling the team right now. | 이렇게 갑작스러운 변화는 심각해서, 지금 바로 팀을 부르고 있어요.
+    chunks=['This sudden change', 'is serious', "and I'm calling the team", 'right now', '.'] words=['w-sudden', 'w-change', 'w-serious', 'w-call', 'w-team'] tag=위기 선언 icon=siren
+    why='serious'가 가볍게 넘길 수 없는 상황이라는 걸 바로 알려요. 'right now'는 지금 즉시 부른다는 뜻이에요.
+    decoy=at the front door dk=['이렇게 갑작스러운 변화는 심각해서, 사수가 지금 바로 팀을 부르고 있어요.', '이렇게 갑작스러운 변화는 심각해서, 선임이 지금 바로 팀을 부르고 있어요.'] blank=sudden:['sudden', 'gradual', 'expected', 'familiar']
+ [15.1] I'm raising the head of the bed and rechecking his neuro status. | 침대 머리를 올리고 신경학적 상태를 다시 확인하고 있어요.
+    chunks=["I'm raising the head", 'of the bed', 'and rechecking', 'his neuro status', '.'] words=['w-raise', 'w-recheck', 'w-neuro', 'w-status'] tag=즉각 처치 icon=gear
+    why='raising the head'는 머리를 높여 뇌압을 낮추는 처치를 쉬운 말로 말해요. 'rechecking'은 앞서 본 것을 다시 본다는 뜻이에요.
+    decoy=of the table dk=['침대 머리를 올리고 신경학적 상태를 수간호사가 다시 확인하고 있어요.', '침대 머리를 올리고 신경학적 상태를 동료가 다시 확인하고 있어요.'] blank=rechecking:['rechecking', 'rewriting', 'repainting', 'renaming']
+ [15.2] We're acting immediately to protect his brain. | 뇌를 지키려고 바로 조치하고 있어요.
+    chunks=["We're acting immediately", 'to protect', 'his brain', '.'] words=['w-act', 'w-immediately', 'w-protect', 'w-brain'] tag=목적 선언 icon=shield
+    why='acting immediately'는 기다리지 않고 바로 움직인다는 뜻이에요. 'to protect'가 행동의 목적을 밝혀요.
+    decoy=by the sink dk=['생명을 지키려고 바로 조치하고 있어요.', '회복을 돕고자 바로 조치하고 있어요.'] blank=protect:['protect', 'admire', 'count', 'trace']
+ [15.3] He was talking a minute ago and now he's barely responding, so I'm escalating this now. | 방금 전까지 말씀하셨는데 지금은 거의 반응이 없으셔서, 바로 상급 보고를 하고 있어요.
+    chunks=['He was talking a minute ago', "and now he's barely responding,", "so I'm escalating", 'this now', '.'] words=['w-respond', 'w-escalate'] tag=급변 보고 icon=siren
+    why='a minute ago'와 'now'의 대비로 변화가 얼마나 빨랐는지 한 문장에 보여줘요. 'barely'는 거의 없다는 정도 부사예요.
+    decoy=this morning dk=['방금 전까지 웃으셨는데 지금은 거의 반응이 없으셔서, 바로 상급 보고를 하고 있어요.', '방금 전까지 눈을 뜨셨는데 지금은 거의 반응이 없으셔서, 바로 상급 보고를 하고 있어요.'] blank=barely:['barely', 'fully', 'easily', 'clearly']
+ [15.4] The doctor is on the way, and I'm staying right at his side. | 의사 선생님이 오고 계시고, 저는 바로 옆에 있을게요.
+    chunks=['The doctor is on the way,', "and I'm staying", 'right at', 'his side', '.'] words=['w-way', 'w-stay', 'w-side'] tag=곁 안심 icon=me
+    why='on the way'는 도움이 오고 있다는 확실한 안심이에요. 'right at his side'는 혼자가 아니라는 신체적 안심이에요.
+    decoy=at the door dk=['가족이 오고 계시고, 저는 바로 옆에 있을게요.', '약사 선생님이 오고 계시고, 저는 바로 옆에 있을게요.'] blank=doctor:['doctor', 'pharmacist', 'chaplain', 'dietitian']
+ N0 {'kind': 'slider', 'words': ['w-sudden', 'w-change'], 'cue': 'His headache got worse, he vomited, and then he became hard to wake, all within the hour.', 'scale': ['no change', 'gradual change', 'sudden change'], 'answerAt': 2, 'why': '한 시간 안에 두통, 구토, 깨우기 힘든 상태로 이어지면 sudden change예요. DKA 치료 중 이런 변화는 뇌부종 신호일 수 있어서 바로 호출해요.', 'example': "This is a sudden change, so I'm calling now.", 'exKo': '갑작스러운 변화라서 지금 호출할게요.'}
+ N1 {'kind': 'context', 'words': ['w-escalate'], 'word': 'escalate', 'ko': '상급 보고하다', 'scenes': [{'who': '야간 간호사 → 담당의', 'icon': 'speech', 'en': 'I need to escalate this now. His neuro status is changing.', 'ok': True}, {'who': '의사 호출', 'icon': 'speech', 'en': "I'm escalating because he went from talking to barely responding.", 'ok': True}, {'who': '가족에게', 'icon': 'me', 'en': 'We are escalating his level of care per rapid response criteria.', 'ok': False, 'fix': "He's getting worse quickly, so I've called more doctors to help right now."}], 'why': '의료진끼리는 escalate가 상급에 올려 도움을 청한다는 정확한 말이에요. 가족에게는 rapid response criteria 대신 무슨 일이 생겼고 무엇을 했는지로 알려 주세요.'}
+ N2 {'kind': 'swap', 'words': ['w-act'], 'who': '가족에게 · 즉각 대응 설명', 'icon': 'me', 'before': ["We're ", 'implementing the cerebral edema protocol', ' right now.'], 'options': ['acting to protect his brain', 'implementing the cerebral edema protocol', 'activating the rapid response'], 'answer': 'acting to protect his brain', 'notes': {'acting to protect his brain': '가족이 이해하는 말로 지금 하는 일이 전해져요.', 'implementing the cerebral edema protocol': '의료진끼리 쓰는 말이라 가족은 의미를 몰라요.', 'activating the rapid response': '팀 호출을 뜻하는 말이라 지금 치료하는 내용은 전해지지 않아요.'}, 'why': '위급할수록 가족에게는 짧고 분명한 말이 필요해요. 절차 이름보다 지금 무엇을 위해 움직이는지를 말해요.', 'ko': '지금 바로 뇌를 지키려고 조치하고 있어요'}
+ ORDER {'tag': '대화 흐름', 'icon': 'compass', 'ko': 'DKA 뇌부종 급변 대응 4문장 순서', 'why': '변화를 알리고, 심각함을 선언하며 팀을 부르고, 뇌를 보호하는 처치를 하고, 곁에 있겠다고 안심시켜요.', 'lines': [{'en': "He was talking a minute ago and now he's barely responding, so I'm escalating this now.", 'icon': 'siren', 'ko': '방금 말씀하셨는데 지금은 거의 반응이 없어서 상급 보고를 해요', 'note': '변화'}, {'en': "This sudden change is serious and I'm calling the team right now.", 'icon': 'siren', 'ko': '이 갑작스러운 변화는 심각해서 지금 바로 팀을 불러요', 'note': '호출'}, {'en': "To protect his brain, I'm raising the head of the bed and rechecking his neuro status.", 'icon': 'gear', 'ko': '뇌를 지키려고 침대 머리를 올리고 신경 상태를 다시 확인해요', 'note': '처치'}, {'en': "The doctor is on the way, and I'm staying right at his side.", 'icon': 'me', 'ko': '의사 선생님이 오고 계시고 저는 바로 옆에 있어요', 'note': '안심'}]}
+=== S16 갑상선폭풍 위기
+ [16.0] Her thyroid is dangerously overactive, causing this fever and racing heart. | 갑상선이 위험할 만큼 너무 활발해져서 열이 나고 심장이 빠르게 뛰고 있어요.
+    chunks=['Her thyroid is dangerously overactive,', 'causing this fever', 'and racing', 'heart', '.'] words=['w-thyroid', 'w-dangerous', 'w-overactive', 'w-cause', 'w-fever', 'w-race', 'w-heart'] tag=상태 설명 icon=lab
+    why='causing'은 원인과 증상을 한 문장에 이어 환자가 상황을 이해하게 해요. 'dangerously'가 위험하다는 강조예요.
+    decoy=on the tray dk=['갑상선이 위험할 만큼 너무 활발해져서 몸이 떨리고 심장이 빠르게 뛰고 있어요.', '갑상선이 위험할 만큼 너무 활발해져서 열이 나고 숨이 차고 있어요.'] blank=overactive:['overactive', 'underactive', 'sleepy', 'lazy']
+ [16.1] We're giving several medicines together to bring it under control. | 조절하려고 여러 약을 같이 드리고 있어요.
+    chunks=["We're giving several medicines", 'together', 'to bring it', 'under control', '.'] words=['w-give', 'w-several', 'w-medicine', 'w-together', 'w-bring', 'w-control'] tag=치료 설명 icon=pill
+    why='together'는 약 여러 개를 동시에 쓴다는 뜻이에요. 'under control'은 통제된다는 관용구예요.
+    decoy=at the pharmacy dk=['조절하려고 여러 약을 선배가 같이 드려요.', '조절하려고 여러 약을 후배가 같이 드려요.'] blank=control:['control', 'pressure', 'review', 'notice']
+ [16.2] We're cooling her and watching her heart continuously. | 체온을 낮춰드리면서 심장을 계속 지켜보고 있어요.
+    chunks=["We're cooling her", 'and watching her heart', 'continuously', '.'] words=['w-cool', 'w-watch', 'w-heart', 'w-continuously'] tag=냉각·감시 icon=monitor
+    why='continuously'는 끊김 없이 본다는 뜻이에요. 냉각과 심장 감시를 한 문장에 묶어 두 가지를 동시에 한다는 점이 전해져요.
+    decoy=in the bath dk=['체온을 낮춰드리면서 심장을 의사가 계속 지켜봐요.', '체온을 낮춰드리면서 심장을 주치의가 계속 지켜봐요.'] blank=watching:['watching', 'carrying', 'tasting', 'trimming']
+ [16.3] Her heart rate is racing and her fever keeps climbing, so this is a crisis. | 심박수가 빠르게 뛰고 열도 계속 오르고 있어서, 이건 위기 상황이에요.
+    chunks=['Her heart rate is racing', 'and her fever keeps climbing,', 'so this is', 'a crisis', '.'] words=['w-heart', 'w-rate', 'w-race', 'w-fever', 'w-climb', 'w-crisis'] tag=위기 선언 icon=siren
+    why='so this is a crisis'로 수치들이 쌓여 위기라는 결론으로 이어져요. 'keeps climbing'은 계속 오른다는 진행형이에요.
+    decoy=in the closet dk=['심박수가 빠르게 뛰고 땀도 계속 나고 있어서, 이건 위기 상황이에요.', '심박수가 빠르게 뛰고 숨도 계속 차고 있어서, 이건 위기 상황이에요.'] blank=crisis:['crisis', 'habit', 'holiday', 'hobby']
+ [16.4] We're starting the antithyroid medicine and beta-blocker right away. | 항갑상선제랑 베타차단제를 바로 시작할게요.
+    chunks=["We're starting", 'the antithyroid medicine', 'and beta-blocker', 'right away', '.'] words=['w-start', 'w-medicine'] tag=투약 시작 icon=pill
+    why='antithyroid'는 갑상선 호르몬 생성을 막는 약을 뜻해요. 'right away'가 시점을 즉시로 정해요.
+    decoy=for her husband dk=['전문의가 항갑상선제랑 베타차단제를 바로 시작해요.', '레지던트가 항갑상선제랑 베타차단제를 바로 시작해요.'] blank=starting:['starting', 'storing', 'labeling', 'counting']
+ N0 {'kind': 'slider', 'words': ['w-race', 'w-heart'], 'cue': 'Her pulse is 110 and she says her heart is beating a bit hard.', 'scale': ['normal', 'a little fast', 'racing'], 'answerAt': 1, 'why': '110은 정상(분당 60~100)보다 조금 높아서 a little fast예요. 갑상선폭풍에서는 훨씬 높아질 수 있어서 racing으로 바뀌는지 계속 재요.', 'example': "Her heart is a little fast, so I'm watching it.", 'exKo': '그녀의 심장이 조금 빨라서 지켜보고 있어요.'}
+ N1 {'kind': 'context', 'words': ['w-control'], 'word': 'control', 'ko': '조절', 'scenes': [{'who': '의사 호출', 'icon': 'speech', 'en': 'We need to bring her heart rate under control with a beta-blocker.', 'ok': True}, {'who': '야간 인계', 'icon': 'board', 'en': 'Her fever is under control after cooling and acetaminophen.', 'ok': True}, {'who': '가족에게', 'icon': 'me', 'en': 'We are working to achieve hemodynamic and thermoregulatory control.', 'ok': False, 'fix': "We're giving her several medicines to bring her heart rate and fever down."}], 'why': '의료진끼리는 control 한마디로 목표를 말해요. 가족에게는 hemodynamic·thermoregulatory 대신 무엇을 낮추려고 무엇을 하는지 쉽게 전하세요.'}
+ N2 {'kind': 'swap', 'words': ['w-overactive'], 'who': '가족에게 · 갑상선 상태', 'icon': 'me', 'before': ['Her thyroid is ', 'in a hypermetabolic state', ' and putting stress on her heart.'], 'options': ['working far too hard', 'in a hypermetabolic state', 'thyrotoxic'], 'answer': 'working far too hard', 'notes': {'working far too hard': '가족이 이해하는 말로 과활성의 뜻이 전해져요.', 'in a hypermetabolic state': '의료진끼리의 말이라 가족은 낯설어요.', 'thyrotoxic': '어려운 진단 용어라 가족에게는 의미가 닿지 않아요.'}, 'why': "갑상선폭풍은 갑상선 호르몬이 너무 많아 몸이 과하게 돌아가는 상태예요. 가족에게는 '너무 무리하게 일한다'처럼 쉬운 비유가 이해를 도와요.", 'ko': '갑상선이 너무 무리하게 일해서 심장에 부담을 주고 있어요'}
+ ORDER {'tag': '대화 흐름', 'icon': 'compass', 'ko': '갑상선폭풍 대응 4문장 순서', 'why': '위기임을 알리고, 원인을 설명한 뒤, 약으로 조절하고, 냉각과 감시를 함께 알려요.', 'lines': [{'en': 'Her heart rate is racing and her fever keeps climbing, so this is a crisis.', 'icon': 'siren', 'ko': '심박수와 열이 계속 올라 위기예요', 'note': '위기'}, {'en': 'Her thyroid is dangerously overactive, causing this.', 'icon': 'lab', 'ko': '갑상선이 위험하게 활발해서 이렇게 돼요', 'note': '원인'}, {'en': "To control it, we're giving several medicines together.", 'icon': 'pill', 'ko': '조절하려고 여러 약을 같이 드려요', 'note': '투약'}, {'en': "Along with them, we're cooling her and watching her heart continuously.", 'icon': 'monitor', 'ko': '그와 함께 체온을 낮추고 심장을 계속 지켜봐요', 'note': '냉각'}]}
+=== S17 부신위기 순환붕괴
+ [17.0] Let's push the stress-dose steroid and start a pressor together now. | 스트레스 용량 스테로이드를 주고 승압제도 같이 시작해요.
+    chunks=["Let's push", 'the stress-dose steroid', 'and start a pressor', 'together now', '.'] words=['w-push', 'w-stress', 'w-steroid', 'w-start', 'w-pressor', 'w-together'] tag=동시 처치 icon=siren
+    why='Let's'는 팀이 함께 움직이자는 부탁이에요. 'together'가 스테로이드와 승압제를 동시에 시작한다는 점을 밝혀요.
+    decoy=near the window dk=['스트레스 용량 스테로이드를 주고 승압제도 제가 시작할게요.', '스트레스 용량 스테로이드를 주고 승압제도 당직의가 시작해요.'] blank=push:['push', 'tape', 'carry', 'wrap']
+ [17.1] I'm giving a fluid bolus while we titrate the vasopressor. | 승압제를 적정하는 동안 수액을 볼루스로 주고 있어요.
+    chunks=["I'm giving", 'a fluid bolus', 'while we titrate', 'the vasopressor', '.'] words=['w-give', 'w-fluid', 'w-bolus', 'w-titrate', 'w-vasopressor'] tag=병행 처치 icon=gear
+    why='while'이 두 처치가 동시에 진행된다는 뜻이에요. 'titrate'는 반응을 보며 용량을 조금씩 맞춘다는 임상 동사예요.
+    decoy=behind the curtain dk=['승압제를 적정하는 동안 수액을 담당의가 볼루스로 주고 있어요.', '승압제를 적정하는 동안 수액을 책임자가 볼루스로 주고 있어요.'] blank=giving:['giving', 'counting', 'wrapping', 'trading']
+ [17.2] Call the intensivist — this is a true adrenal crisis. | 중환자전문의를 불러 주세요, 진짜 부신위기예요.
+    chunks=['Call', 'the intensivist —', 'this is', 'a true adrenal crisis', '.'] words=['w-call', 'w-intensivist', 'w-true', 'w-adrenal', 'w-crisis'] tag=의사 호출 icon=siren
+    why=명령형 'Call'이 짧고 분명해 위급할 때 쓰기 좋아요. 'true'는 진짜 위기라고 강조해 바로 오게 만들어요.
+    decoy=at the pharmacy door dk=['중환자전문의를 불러 주세요, 진짜 위급 상황이에요.', '중환자전문의를 불러 주세요, 진짜 쇼크 상태예요.'] blank=Call:['Call', 'Thank', 'Greet', 'Photograph']
+ [17.3] His pressure crashed suddenly, so this looks like true adrenal crisis. | 혈압이 갑자기 떨어져서, 진짜 부신위기처럼 보여요.
+    chunks=['His pressure crashed suddenly,', 'so this looks', 'like true adrenal', 'crisis', '.'] words=['w-pressure', 'w-crash', 'w-sudden', 'w-true', 'w-adrenal', 'w-crisis'] tag=근거 설명 icon=chartup
+    why='crashed'는 급락을 뜻하는 구어적 동사예요. 'so this looks like'는 근거에서 판단으로 넘어가요.
+    decoy=on the clipboard dk=['혈압이 갑자기 떨어져서, 진짜 쇼크처럼 보여요.', '혈압이 갑자기 떨어져서, 진짜 패혈증처럼 보여요.'] blank=crashed:['crashed', 'climbed', 'jumped', 'soared']
+ [17.4] The pressor is titrating up, and his pressure is starting to respond. | 승압제를 올리고 있고, 혈압이 반응하기 시작했어요.
+    chunks=['The pressor is titrating up,', 'and his pressure', 'is starting', 'to respond', '.'] words=['w-pressor', 'w-titrate', 'w-pressure', 'w-start', 'w-respond'] tag=반응 보고 icon=chartup
+    why='is starting to'는 이제 막 시작했다는 진행의 뜻이에요. 'titrating up'은 용량을 올려 가는 중이라는 뜻이에요.
+    decoy=by the door dk=['승압제를 올리고 있고, 소변이 나오기 시작했어요.', '승압제를 올리고 있고, 의식이 돌아오기 시작했어요.'] blank=respond:['respond', 'complain', 'refuse', 'argue']
+ N0 {'kind': 'slider', 'words': ['w-crash'], 'cue': 'His systolic pressure went from 110 to 62 in ten minutes.', 'scale': ['dipped slightly', 'dropped', 'crashed'], 'answerAt': 2, 'why': '10분 만에 110에서 62로 떨어지면 crashed예요. 부신위기에서는 순환이 갑자기 무너질 수 있어서 바로 호출하고 처방된 수액과 승압제를 준비해요.', 'example': "His pressure crashed, so I'm calling now.", 'exKo': '혈압이 급락해서 지금 호출할게요.'}
+ N1 {'kind': 'context', 'words': ['w-bolus'], 'word': 'bolus', 'ko': '볼루스', 'scenes': [{'who': '의사 호출', 'icon': 'speech', 'en': 'Give a fluid bolus while we set up the vasopressor.', 'ok': True}, {'who': '야간 인계', 'icon': 'board', 'en': 'He got a bolus and the pressor is titrating up.', 'ok': True}, {'who': '가족에게', 'icon': 'me', 'en': 'He received a fluid bolus and is now on a vasopressor infusion.', 'ok': False, 'fix': 'We gave him a lot of fluid quickly through the IV and started a medicine to raise his blood pressure.'}], 'why': '의료진끼리 bolus는 짧은 시간에 한꺼번에 주는 방식을 정확히 가리켜요. 가족에게는 bolus·infusion 대신 무엇을 어떻게 줬는지 쉽게 풀어 주세요.'}
+ N2 {'kind': 'swap', 'words': ['w-pressor'], 'who': '가족에게 · 승압제 설명', 'icon': 'me', 'before': ['We started ', 'a pressor drip', ' for his blood pressure.'], 'options': ['a medicine', 'a pressor drip', 'a vasopressor'], 'answer': 'a medicine', 'notes': {'a medicine': '가족이 바로 이해하고 무엇을 위한 것인지 뒤 문장이 알려 줘요.', 'a pressor drip': '의료진 은어라 가족은 뜻을 몰라요.', 'a vasopressor': '정확한 약 이름이지만 가족에게는 낯설어요.'}, 'why': "위급할 때 가족에게는 약 종류보다 '혈압을 위한 약을 시작했다'는 사실이 먼저예요. 자세한 이름은 물어볼 때 설명해요.", 'ko': '혈압을 위한 약을 시작했어요'}
+ ORDER {'tag': '대화 흐름', 'icon': 'compass', 'ko': '부신위기 순환붕괴 대응 4문장 순서', 'why': '상황을 판단하고, 스테로이드와 승압제를 시작한 뒤, 전문의를 부르고, 반응이 오는지 확인해요.', 'lines': [{'en': 'His pressure crashed suddenly, so this looks like true adrenal crisis.', 'icon': 'chartup', 'ko': '혈압이 갑자기 떨어져서 진짜 부신위기 같아요', 'note': '판단'}, {'en': "Let's push the stress-dose steroid and start a pressor together now.", 'icon': 'siren', 'ko': '스트레스 용량 스테로이드와 승압제를 같이 시작해요', 'note': '처치'}, {'en': 'Call the intensivist to help us titrate the vasopressor.', 'icon': 'siren', 'ko': '승압제 적정을 도울 중환자전문의를 불러 주세요', 'note': '호출'}, {'en': 'Once it is titrating up, his pressure should start to respond.', 'icon': 'chartup', 'ko': '그게 올라가면 혈압이 반응하기 시작할 거예요', 'note': '반응'}]}
+=== S18 심한 저혈당 의식소실 위기
+ [18.0] Check a stat glucose and push D50 now — he's unresponsive. | 지금 즉시 혈당 확인하고 D50 주세요, 반응이 없어요.
+    chunks=['Check', 'a stat glucose', 'and push D50', 'now —', "he's unresponsive", '.'] words=['w-check', 'w-stat', 'w-glucose', 'w-push', 'w-unresponsive'] tag=즉시 처치 icon=siren
+    why='stat'은 즉시를 뜻하는 병원 약어예요. 'now'가 시점을 못 박아 기다리지 않게 해요.
+    decoy=in the parking lot dk=['지금 즉시 혈당 확인하고 D50 주세요, 땀을 많이 흘려요.', '지금 즉시 혈당 확인하고 D50 주세요, 맥박이 빨라요.'] blank=Check:['Check', 'Wrap', 'Paint', 'Fold']
+ [18.1] I'm protecting his airway while the dextrose goes in. | 포도당이 들어가는 동안 기도를 보호하고 있어요.
+    chunks=["I'm protecting", 'his airway', 'while the dextrose', 'goes in', '.'] words=['w-protect', 'w-airway', 'w-dextrose'] tag=기도 보호 icon=gear
+    why='while'이 두 가지를 동시에 한다는 뜻이에요. 'protecting his airway'는 의식이 없을 때 가장 먼저 지켜야 할 것을 말해요.
+    decoy=at the gift shop dk=['포도당이 들어가는 동안 기도를 야간조가 보호해요.', '포도당이 들어가는 동안 기도를 주간조가 보호해요.'] blank=protecting:['protecting', 'greeting', 'grading', 'sketching']
+ [18.2] Recheck the sugar in a few minutes and stay ready to repeat. | 몇 분 뒤에 혈당을 다시 확인하고, 반복할 준비를 하고 있어요.
+    chunks=['Recheck the sugar', 'in a few minutes', 'and stay ready', 'to repeat', '.'] words=['w-recheck', 'w-sugar', 'w-stay', 'w-ready', 'w-repeat'] tag=재확인 icon=monitor
+    why='a few minutes'는 정확한 시간이 아니라 대략적인 짧은 시간을 가리켜요. 'stay ready to repeat'는 한 번으로 끝이 아닐 수 있다는 대비예요.
+    decoy=in the elevator dk=['몇 분 뒤에 혈당을 다시 확인하고, 교대자가 반복할 준비를 해요.', '몇 분 뒤에 혈당을 다시 확인하고, 전담자가 반복할 준비를 해요.'] blank=repeat:['repeat', 'retire', 'rename', 'relocate']
+ [18.3] He was drowsy and now he's completely unresponsive, so his sugar must be critically low. | 졸려하시더니 지금은 아예 반응이 없으셔서, 혈당이 위험할 정도로 낮은 것 같아요.
+    chunks=['He was drowsy', "and now he's completely unresponsive,", 'so his sugar must be', 'critically low', '.'] words=['w-drowsy', 'w-unresponsive', 'w-sugar', 'w-critically', 'w-low'] tag=원인 판단 icon=bulb
+    why='drowsy'와 'completely unresponsive'의 대비로 의식이 나빠진 경과가 보여요. 'must be'는 강한 추정이라 확진이 아님을 알려요.
+    decoy=at lunch dk=['웃으시더니 지금은 아예 반응이 없으셔서, 혈당이 위험할 정도로 낮은 것 같아요.', '말씀하시더니 지금은 아예 반응이 없으셔서, 혈당이 위험할 정도로 낮은 것 같아요.'] blank=drowsy:['drowsy', 'angry', 'cheerful', 'hungry']
+ [18.4] His sugar's coming up, so let's stay by him and recheck it shortly. | 혈당이 올라오고 있으니까, 옆에서 지켜보다가 곧 다시 확인해요.
+    chunks=["His sugar's coming up,", "so let's stay by him", 'and recheck it', 'shortly', '.'] words=['w-sugar', 'w-stay', 'w-recheck', 'w-shortly'] tag=호전 후 관찰 icon=monitor
+    why='so'로 호전을 근거로 계속 곁에 있자는 판단을 이어요. 'shortly'는 곧 하겠다는 뜻이에요.
+    decoy=on the wall dk=['혈당이 올라오고 있으니까, 옆에서 지켜보다가 곧 제가 다시 확인할게요.', '혈당이 올라오고 있으니까, 옆에서 지켜보다가 곧 팀장이 다시 확인해요.'] blank=by:['by', 'on', 'for', 'at']
+ N0 {'kind': 'slider', 'words': ['w-drowsy'], 'cue': 'He opens his eyes to a loud voice, says one word, then drifts off again.', 'scale': ['alert', 'drowsy', 'unresponsive'], 'answerAt': 1, 'why': '큰 소리에 눈은 뜨지만 금방 다시 잠들면 drowsy예요. alert는 또렷이 대화가 이어지는 상태, unresponsive는 불러도 반응이 없는 상태예요. 더 나빠지면 혈당부터 확인해요.', 'example': "He's drowsy, so let's check his sugar now.", 'exKo': '졸려 하시니 지금 혈당을 확인해요.'}
+ N1 {'kind': 'context', 'words': ['w-airway'], 'word': 'airway', 'ko': '기도', 'scenes': [{'who': '의사 호출', 'icon': 'speech', 'en': 'Protect his airway while the dextrose goes in.', 'ok': True}, {'who': '야간 인계', 'icon': 'board', 'en': "Airway is open, but he's still drowsy, and suction is at the bedside.", 'ok': True}, {'who': '가족에게', 'icon': 'me', 'en': 'We are performing airway management and glucose resuscitation.', 'ok': False, 'fix': "We're making sure he can breathe safely while we give him sugar."}], 'why': '의료진끼리는 airway 한 단어로 숨길의 안전을 말해요. 가족에게는 airway management·resuscitation 대신 숨을 안전하게 쉬게 하는 일이라고 쉽게 알려 주세요.'}
+ N2 {'kind': 'swap', 'words': ['w-unresponsive'], 'who': '가족에게 · 현재 상태', 'icon': 'me', 'before': ['He is ', 'obtunded', ' right now because his sugar is so low.'], 'options': ['not waking up', 'obtunded', 'in a hypoglycemic coma'], 'answer': 'not waking up', 'notes': {'not waking up': '가족이 이해하는 말로 지금 보이는 모습을 정확히 전해요.', 'obtunded': '의식 저하를 가리키는 의료 용어라 가족은 모르는 말이에요.', 'in a hypoglycemic coma': '아직 확정하지 않은 상태를 무겁게 단정하는 말이에요.'}, 'why': '가족은 의료 용어보다 눈앞의 모습을 그대로 말해 줄 때 상황을 이해해요. 원인은 혈당이 낮다는 것만 쉽게 덧붙여요.', 'ko': '혈당이 너무 낮아서 지금은 깨어나지 않고 계세요'}
+ ORDER {'tag': '대화 흐름', 'icon': 'compass', 'ko': '심한 저혈당 의식소실 대응 4문장 순서', 'why': '경과로 저혈당을 추정하고, 즉시 확인과 포도당을 주고, 기도를 보호하며, 재확인을 대비해요.', 'lines': [{'en': "He was drowsy and now he's completely unresponsive, so his sugar must be critically low.", 'icon': 'bulb', 'ko': '졸려하더니 아예 반응이 없어서 혈당이 아주 낮은 것 같아요', 'note': '판단'}, {'en': "Check a stat glucose and push D50 now — he's unresponsive.", 'icon': 'siren', 'ko': '즉시 혈당을 확인하고 D50을 주세요', 'note': '처치'}, {'en': "I'm protecting his airway while the dextrose goes in.", 'icon': 'gear', 'ko': '포도당이 들어가는 동안 기도를 보호하고 있어요', 'note': '기도'}, {'en': 'Recheck the sugar in a few minutes and stay ready to repeat.', 'icon': 'monitor', 'ko': '몇 분 뒤에 혈당을 다시 확인하고 반복할 준비를 해요', 'note': '재확인'}]}
+=== S19 점액수종 혼수 위기
+ [19.0] Her thyroid failure has become critical, and we're treating it urgently. | 갑상선 기능부전이 위중해져서, 응급으로 치료하고 있어요.
+    chunks=['Her thyroid failure', 'has become critical,', "and we're treating it", 'urgently', '.'] words=['w-thyroid', 'w-failure', 'w-become', 'w-critical', 'w-treat', 'w-urgently'] tag=위중 설명 icon=siren
+    why='has become critical'은 이미 위중해졌다는 현재완료예요. 'urgently'가 치료의 속도를 말해요.
+    decoy=over the door dk=['갑상선 기능부전이 위중해져서, 과장이 응급으로 치료해요.', '갑상선 기능부전이 위중해져서, 교수가 응급으로 치료해요.'] blank=failure:['failure', 'infection', 'surgery', 'allergy']
+ [19.1] We're giving thyroid hormone and warming and supporting her body. | 갑상선 호르몬을 드리면서 몸을 따뜻하게 하고 지지해 드리고 있어요.
+    chunks=["We're giving", 'thyroid hormone', 'and warming', 'and supporting her body', '.'] words=['w-give', 'w-thyroid', 'w-hormone', 'w-warm', 'w-support'] tag=치료 요약 icon=pill
+    why=세 가지 처치를 'and'로 한 번에 말해 전체 계획을 보여줘요. 'supporting'은 호흡·혈압 등을 곁에서 받치는 일반 표현이에요.
+    decoy=by the stairs dk=['갑상선 호르몬을 드리면서 몸을 따뜻하게 하고 인턴이 지지해요.', '갑상선 호르몬을 드리면서 몸을 따뜻하게 하고 사수가 지지해요.'] blank=supporting:['supporting', 'photographing', 'interviewing', 'admiring']
+ [19.2] We're watching her breathing and heart very closely. | 호흡이랑 심장을 아주 자세히 지켜보고 있어요.
+    chunks=["We're watching her breathing", 'and heart', 'very closely', '.'] words=['w-watch', 'w-breathing', 'w-heart', 'w-closely'] tag=감시 안내 icon=monitor
+    why='very closely'는 평소보다 자주 본다는 강조예요. 호흡과 심장은 이 상태에서 가장 위험한 두 곳이에요.
+    decoy=in the hall dk=['호흡이랑 심장을 아주 자세히 선임이 지켜봐요.', '호흡이랑 심장을 아주 자세히 수간호사가 지켜봐요.'] blank=watching:['watching', 'raising', 'pricing', 'borrowing']
+ [19.3] She won't respond and she feels ice cold, so this is critical. | 반응이 없으시고 얼음처럼 차가우셔서, 위중한 상태예요.
+    chunks=["She won't respond", 'and she feels', 'ice cold,', 'so this is critical', '.'] words=['w-respond', 'w-feel', 'w-critical'] tag=위중 근거 icon=bulb
+    why='won't respond'와 'ice cold'를 나열해 근거를 보여주고 'so'로 결론을 이어요. 'critical'은 위중하다는 의료 표현이에요.
+    decoy=on the whiteboard dk=['반응이 없으시고 숨소리가 약해서, 위중한 상태예요.', '반응이 없으시고 입술이 파래서, 위중한 상태예요.'] blank=critical:['critical', 'famous', 'pleasant', 'official']
+ [19.4] Her body needs the thyroid hormone to wake back up and warm up safely. | 몸이 다시 깨어나고 안전하게 따뜻해지려면 갑상선 호르몬이 필요해요.
+    chunks=['Her body needs', 'the thyroid hormone', 'to wake back up', 'and warm up safely', '.'] words=['w-need', 'w-thyroid', 'w-hormone', 'w-wake', 'w-warm', 'w-safe'] tag=필요 설명 icon=home
+    why='needs … to'는 필요와 목적을 한 틀에 담아요. 'safely'가 서서히 따뜻해져야 한다는 점을 담아요.
+    decoy=by the elevator dk=['몸이 다시 깨어나고 안전하게 따뜻해지려면 시간이 필요해요.', '몸이 다시 깨어나고 안전하게 따뜻해지려면 안정이 필요해요.'] blank=wake:['wake', 'sit', 'stand', 'jump']
+ N0 {'kind': 'slider', 'words': ['w-critical'], 'cue': 'She is cold, barely rousable, and her breathing is slow and shallow.', 'scale': ['concerning', 'serious', 'critical'], 'answerAt': 2, 'why': '차갑고 겨우 깨우며 호흡이 느리고 얕으면 critical이에요. 점액수종 혼수는 생명이 위태로운 상태라 호흡과 의식을 계속 보며 즉시 보고해요.', 'example': "Her condition is critical, so we're treating her urgently.", 'exKo': '상태가 위중해서 응급으로 치료하고 있어요.'}
+ N1 {'kind': 'context', 'words': ['w-urgently'], 'word': 'urgently', 'ko': '응급으로', 'scenes': [{'who': '의사 라운드', 'icon': 'monitor', 'en': 'We need to treat this urgently with IV thyroid hormone.', 'ok': True}, {'who': '야간 인계', 'icon': 'board', 'en': 'Endocrine was called urgently and the steroid is already in.', 'ok': True}, {'who': '가족에게', 'icon': 'me', 'en': 'We are urgently initiating liothyronine and levothyroxine replacement.', 'ok': False, 'fix': "We need to treat this right away, and we're giving her thyroid medicine now."}], 'why': '의료진끼리는 urgently와 약 이름을 짧게 말해도 정확해요. 가족에게는 liothyronine 같은 약 이름 대신 서둘러 갑상선 약을 주고 있다고 쉽게 전하세요.'}
+ N2 {'kind': 'swap', 'words': ['w-warm'], 'who': '가족에게 · 체온 올리는 방법', 'icon': 'me', 'before': ["We're ", 'passively rewarming her', ' with blankets, slowly and safely.'], 'options': ['warming her up', 'passively rewarming her', 'applying external heat to her'], 'answer': 'warming her up', 'notes': {'warming her up': '가족이 이해하는 말로 담요로 서서히 데운다는 뜻이 전해져요.', 'passively rewarming her': '의료진끼리의 용어라 가족은 뜻을 몰라요.', 'applying external heat to her': '가열 장치를 대는 것처럼 들려 사실과 달라요.'}, 'why': "점액수종 혼수에서는 담요 등으로 서서히 데우는 것이 안전해요. 가족에게는 '천천히 데운다'는 점이 전해지면 충분해요.", 'ko': '담요로 천천히 안전하게 몸을 따뜻하게 해 드리고 있어요'}
+ ORDER {'tag': '대화 흐름', 'icon': 'compass', 'ko': '점액수종 혼수 설명 4문장 순서', 'why': '증상으로 위중함을 알리고, 그래서 치료가 급하다고 말하고, 치료 내용을 알린 뒤, 호르몬이 필요한 이유를 설명해요.', 'lines': [{'en': "She won't respond and she feels ice cold, so this is critical.", 'icon': 'siren', 'ko': '반응이 없고 얼음처럼 차가워서 위중해요', 'note': '위중'}, {'en': "That means her thyroid failure has become critical, and we're treating it urgently.", 'icon': 'siren', 'ko': '그래서 갑상선 기능부전이 위중해 응급 치료를 해요', 'note': '설명'}, {'en': "We're giving thyroid hormone and warming and supporting her body.", 'icon': 'pill', 'ko': '호르몬을 드리고 몸을 따뜻하게 지지해요', 'note': '치료'}, {'en': 'Her body needs the thyroid hormone to wake back up and warm up safely.', 'icon': 'home', 'ko': '몸이 깨어나고 안전하게 따뜻해지려면 호르몬이 필요해요', 'note': '이유'}]}
+=== S20 내분비 위기 다장기 악화
+ [20.0] Several of his organs are under stress, and the whole team is involved. | 여러 장기가 스트레스를 받고 있어서, 전체 팀이 함께하고 있어요.
+    chunks=['Several of his organs', 'are under stress,', 'and the whole team', 'is involved', '.'] words=['w-several', 'w-organ', 'w-stress', 'w-team', 'w-involve'] tag=상황 공유 icon=hospital
+    why='Several of'는 일부가 아니라 여러 곳이라는 뜻이에요. 'involved'는 전체 팀이 맡고 있다는 안심을 줘요.
+    decoy=in the supply room dk=['여러 장기가 스트레스를 받고 있어서, 병원 전체가 걱정하고 있어요.', '여러 장기가 스트레스를 받고 있어서, 가족 전체가 함께하고 있어요.'] blank=organs:['organs', 'limbs', 'bones', 'fingers']
+ [20.1] I'll give you a clear update as each specialist weighs in. | 각 전문의 의견이 나올 때마다 명확하게 알려드릴게요.
+    chunks=["I'll give you", 'a clear update', 'as each specialist', 'weighs in', '.'] words=['w-give', 'w-clear', 'w-update', 'w-specialist', 'w-weigh'] tag=소통 약속 icon=speech
+    why='as each … weighs in'은 의견이 나올 때마다라는 뜻이에요. 'clear'가 어렵지 않게 풀어서 말한다는 약속이에요.
+    decoy=at the station dk=['각 전문의 의견이 나올 때마다 동료가 명확하게 알려드려요.', '각 전문의 의견이 나올 때마다 선배가 명확하게 알려드려요.'] blank=specialist:['specialist', 'tourist', 'neighbor', 'stranger']
+ [20.2] We're escalating his care and staying right at his bedside. | 치료를 상급으로 올리면서 침상 곁에 계속 있을게요.
+    chunks=["We're escalating", 'his care', 'and staying right', 'at his bedside', '.'] words=['w-escalate', 'w-care', 'w-stay', 'w-bedside'] tag=곁 약속 icon=me
+    why='escalating'은 치료 단계를 올린다는 임상어예요. 'right at his bedside'가 곁에서 떠나지 않겠다는 뜻이에요.
+    decoy=on the cart dk=['치료를 상급으로 올리면서 가족 곁에 계속 있을게요.', '치료를 상급으로 올리면서 의료진 곁에 계속 있을게요.'] blank=escalating:['escalating', 'photographing', 'decorating', 'calculating']
+ [20.3] His kidneys and lungs are both under strain, so we've called in extra specialists. | 콩팥이랑 폐가 둘 다 무리가 가고 있어서, 전문의를 추가로 불렀어요.
+    chunks=['His kidneys and lungs', 'are both under strain,', "so we've called in", 'extra specialists', '.'] words=['w-kidney', 'w-lung', 'w-strain', 'w-call', 'w-specialist'] tag=전문의 호출 icon=hospital
+    why='both'로 두 장기를 함께 묶어 말해요. 'called in'은 필요해서 불러왔다는 뜻이에요.
+    decoy=near the exit dk=['콩팥이랑 심장이 둘 다 무리가 가고 있어서, 전문의를 추가로 불렀어요.', '간이랑 폐가 둘 다 무리가 가고 있어서, 전문의를 추가로 불렀어요.'] blank=extra:['extra', 'local', 'retired', 'junior']
+ [20.4] I'll keep you updated honestly, even when the news is hard. | 힘든 소식이더라도 솔직하게 계속 알려드릴게요.
+    chunks=["I'll keep you updated", 'honestly,', 'even when', 'the news is hard', '.'] words=['w-keep', 'w-update', 'w-honestly', 'w-news'] tag=정직 약속 icon=faceWorried
+    why='even when'이 나쁜 소식도 숨기지 않겠다는 약속이에요. 'honestly'가 신뢰를 쌓는 핵심 부사예요.
+    decoy=in the waiting area dk=['힘든 소식이더라도 후배가 솔직하게 알려드려요.', '힘든 소식이더라도 의사가 솔직하게 알려드려요.'] blank=hard:['hard', 'boring', 'funny', 'fresh']
+ N0 {'kind': 'slider', 'words': ['w-strain'], 'cue': 'His creatinine rose slightly, and his oxygen needs are the same.', 'scale': ['mild strain', 'significant strain', 'organ failure'], 'answerAt': 0, 'why': '크레아티닌이 조금 오르고 산소 요구량이 그대로면 mild strain이에요. 다장기 악화에서는 변화가 빠를 수 있으니 추세를 계속 보고 달라지면 바로 알려요.', 'example': 'His kidneys are under mild strain right now.', 'exKo': '지금은 콩팥에 가벼운 무리가 가고 있어요.'}
+ N1 {'kind': 'context', 'words': ['w-update'], 'word': 'update', 'ko': '알려주다', 'scenes': [{'who': '가족 면담', 'icon': 'me', 'en': "I'll give you an update as soon as the specialists weigh in.", 'ok': True}, {'who': '야간 인계', 'icon': 'board', 'en': 'Quick update: urine output is down and the kidneys are under strain.', 'ok': True}, {'who': '가족에게', 'icon': 'me', 'en': 'Update: patient with multiorgan dysfunction syndrome, now with AKI and ARDS.', 'ok': False, 'fix': "Here's where things stand: his kidneys and lungs are both struggling, and we're helping them."}], 'why': '인계에서는 약어와 수치를 짧게 전하는 것이 빨라요. 가족에게는 같은 update를 약어 없이 지금 상황과 하는 일 위주로 풀어 주세요.'}
+ N2 {'kind': 'swap', 'words': ['w-news'], 'who': '가족에게 · 나쁜 소식 전하기', 'icon': 'me', 'before': ["I'm sorry — I have ", 'unfavorable findings', ' to share.'], 'options': ['hard news', 'unfavorable findings', 'adverse results'], 'answer': 'hard news', 'notes': {'hard news': '쉬운 말로 공감을 담아 어려운 소식임을 알려요.', 'unfavorable findings': '보고서 같은 딱딱한 말이라 가족에게 차갑게 들려요.', 'adverse results': '의료 문서 표현이라 가족에게 거리감을 줘요.'}, 'why': '나쁜 소식은 먼저 어려운 소식이라는 걸 쉬운 말로 알리면 가족이 마음의 준비를 해요. 숨기지 않고 솔직하게 이어서 설명해요.', 'ko': '죄송하지만 어려운 소식을 전해야 해요'}
+ ORDER {'tag': '대화 흐름', 'icon': 'compass', 'ko': '다장기 악화 가족 설명 4문장 순서', 'why': '상황을 알리고, 전문의를 불렀다고 말한 뒤, 의견이 나올 때마다 알리겠다고 약속하고, 나쁜 소식도 솔직하게 전하겠다고 해요.', 'lines': [{'en': 'Several of his organs are under stress, and the whole team is involved.', 'icon': 'hospital', 'ko': '여러 장기가 스트레스를 받아 전체 팀이 함께해요', 'note': '상황'}, {'en': "His kidneys and lungs are both under strain, so we've called in extra specialists.", 'icon': 'hospital', 'ko': '콩팥과 폐가 둘 다 무리라 전문의를 추가로 불렀어요', 'note': '호출'}, {'en': "I'll give you a clear update as each specialist weighs in.", 'icon': 'speech', 'ko': '전문의 의견이 나올 때마다 명확히 알려드릴게요', 'note': '약속'}, {'en': "Even when what they say is hard, I'll keep you updated honestly.", 'icon': 'faceWorried', 'ko': '그들 말이 힘들어도 솔직하게 계속 알려드릴게요', 'note': '정직'}]}

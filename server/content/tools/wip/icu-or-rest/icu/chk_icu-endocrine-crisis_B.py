@@ -1,6 +1,6 @@
 import yaml,re,collections,sys
 sys.path.insert(0,'.')
-from fixvals_icu_endocrine_crisis_B import NEW
+import importlib.util as _u; _sp=_u.spec_from_file_location("fv","fixvals_icu-endocrine-crisis_B.py"); _m=_u.module_from_spec(_sp); _sp.loader.exec_module(_m); NEW=_m.NEW
 d=yaml.safe_load(open('icu-endocrine-crisis.yaml'))
 P=['께서','에게','에서','으로','이랑','까지','부터','처럼','이나','께','가','이','을','를','은','는','도','만','에','로','랑','와','과','의','나']
 def stem(w):

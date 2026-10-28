@@ -27,3 +27,13 @@ for si,s in enumerate(d['situations']):
                     seen.add(st); cnt[st]+=1; where[st].append(f"{key}X{k+1}")
 print('---')
 for w,c in cnt.most_common(25): print(c,w,' '.join(where[w]))
+print('--- length rule (min<=ko) & ratio, all sentences after NEW')
+for si,s in enumerate(d['situations']):
+    for j,x in enumerate(s['sentences']):
+        key=f"{si}.{j}"; ko=x['ko']
+        xs=[NEW.get((key,k),dk) for k,dk in enumerate(x['distractorsKo'])]
+        bad=[]
+        if min(len(a) for a in xs)>len(ko): bad.append('MIN>KO')
+        for a in xs:
+            if not (len(a)/len(ko)<=1.25 or abs(len(a)-len(ko))<=3): bad.append('RATIO')
+        if bad: print(key,bad,len(ko),[len(a) for a in xs], '(changed)' if any((key,k) in NEW for k in (0,1)) else '(orig)')

@@ -1,6 +1,6 @@
 import yaml,sys
 sys.path.insert(0,'.')
-from fixvals_icu_endocrine_crisis_B import NEW
+import importlib.util as _u; _sp=_u.spec_from_file_location("fv","fixvals_icu-endocrine-crisis_B.py"); _m=_u.module_from_spec(_sp); _sp.loader.exec_module(_m); NEW=_m.NEW
 d=yaml.safe_load(open('icu-endocrine-crisis.yaml'))
 S=[x for s in d['situations'] for x in [s]]
 SAFE_SUBJ="2.1 3.0 3.2 4.2 4.4 6.0 6.1 6.2 7.0 7.1 7.2 7.4 8.1 9.0 10.0 10.2 10.3 12.2 13.1 13.2 13.3 14.2 15.0 15.1 16.1 16.2 16.4 17.0 17.1 18.1 18.2 18.4 19.0 19.1 19.2".split()
