@@ -1,0 +1,126 @@
+7:
+  - kind: slider
+    words: [w-peak]
+    cue: "On steroid days his sugars run highest in the afternoon and ease overnight."
+    scale: [stays flat, peaks, crashes]
+    answerAt: 1
+    why: "스테로이드를 맞은 날은 오후에 혈당이 가장 높아졌다가 내려오는 경우가 많아 peaks가 맞아요. crashes는 급격한 저하를 뜻하니 반대예요."
+    example: "Your sugar peaks in the afternoon."
+    exKo: "혈당이 오후에 가장 높이 올라가요."
+  - kind: context
+    words: [w-steroid]
+    word: steroid
+    ko: 스테로이드
+    scenes:
+      - {who: 의사 라운드, icon: monitor, en: "The steroid dose goes up today, so expect higher sugars.", ok: true}
+      - {who: 인계, icon: board, en: "His sugars rise a few hours after the steroid.", ok: true}
+      - {who: 환자에게, icon: me, en: "Your corticosteroid-induced hyperglycemia reflects peripheral insulin resistance.", ok: false, fix: "The steroid medicine is making your sugar run higher, so we're giving you more insulin to match."}
+    why: "의료진끼리는 steroid와 insulin resistance 같은 말이 빠르고 정확해요. 환자에게는 약이 혈당을 올리고 있고 그래서 인슐린을 더한다는 것만 쉽게 말해 주세요."
+8:
+  - kind: slider
+    words: [w-fast, w-work]
+    cue: "A conscious patient took glucose tablets. You tell her when to expect them to work."
+    scale: [within minutes, within hours, within a day]
+    answerAt: 0
+    why: "빠르게 흡수되는 당은 몇 분 안에 효과가 나기 시작해서 그 뒤에 재확인해요. within hours나 within a day는 너무 늦어서 저혈당이 길어져요."
+    example: "Glucose tablets work within minutes."
+    exKo: "포도당 정제는 몇 분 안에 효과가 나요."
+  - kind: context
+    words: [w-recheck]
+    word: recheck
+    ko: 재확인하다
+    scenes:
+      - {who: 의사에게, icon: speech, en: "I recheck his sugar after each treatment before we change anything.", ok: true}
+      - {who: 인계, icon: board, en: "Recheck her sugar in fifteen minutes after treating the low.", ok: true}
+      - {who: 환자에게, icon: me, en: "Per protocol I'll recheck your POC glucose q15 minutes post-intervention.", ok: false, fix: "I'll check your sugar again in fifteen minutes to make sure the treatment worked."}
+    why: "recheck와 q15·POC·post-intervention은 의료진끼리의 약어와 말이에요. 환자에게는 '15분 뒤에 다시 잰다'처럼 쉽게 말해야 이해돼요."
+9:
+  - kind: slider
+    words: [w-often]
+    cue: "Feeding was just paused and the insulin is still running."
+    scale: [as usual, more often, nonstop]
+    answerAt: 1
+    why: "영양이 멈추면 혈당이 떨어질 수 있어 평소보다 자주 확인하는 게 맞아요. as usual은 위험을 놓치고, nonstop은 현실적이지 않아요."
+    example: "I'll check your sugar more often."
+    exKo: "혈당을 더 자주 확인할게요."
+  - kind: context
+    words: [w-dextrose]
+    word: dextrose
+    ko: 포도당(주사)
+    scenes:
+      - {who: 의사에게, icon: speech, en: "Start dextrose if his sugar is dropping while the feeding is off.", ok: true}
+      - {who: 인계, icon: board, en: "Dextrose is running while his feeding is paused.", ok: true}
+      - {who: 환자에게, icon: me, en: "Per protocol we initiate dextrose ten percent infusion for hypoglycemia prophylaxis.", ok: false, fix: "I'm starting a sugar fluid through your IV to keep your sugar from dropping."}
+    why: "dextrose와 infusion·prophylaxis는 의료진끼리의 말이에요. 환자에게는 '정맥으로 당이 든 수액을 넣어 혈당이 떨어지지 않게 한다'고 쉽게 말하세요."
+10:
+  - kind: slider
+    words: [w-watch]
+    cue: "After the switch to shots, you tell the patient how long you'll watch his sugar closely."
+    scale: [a few minutes, a few hours, a few weeks]
+    answerAt: 1
+    why: "주사로 바꾼 직후 몇 시간은 혈당이 흔들릴 수 있어 몇 시간 동안 자세히 지켜봐요. a few minutes는 너무 짧고 a few weeks는 중환자실 전환 관찰로는 맞지 않아요."
+    example: "I'll watch it for a few hours."
+    exKo: "몇 시간 동안 지켜볼게요."
+  - kind: context
+    words: [w-drip]
+    word: drip
+    ko: 주입
+    scenes:
+      - {who: 의사 라운드, icon: monitor, en: "Keep the drip running until the long-acting shot has had time to work.", ok: true}
+      - {who: 인계, icon: board, en: "The insulin drip is still on, and the shot was given earlier.", ok: true}
+      - {who: 환자에게, icon: me, en: "Your insulin drip will be discontinued once the subcutaneous basal is on board.", ok: false, fix: "We'll keep the insulin drip running until the long-acting shot has started to work, then turn it off."}
+    why: "discontinued·subcutaneous basal은 의료진끼리의 말이에요. 환자에게는 주사가 효과를 낼 때까지 주입을 유지하다가 끈다고 순서를 쉽게 말해 주세요."
+11:
+  - kind: slider
+    words: [w-gently, w-adjustment]
+    cue: "His kidneys are failing, and you explain how big each insulin change will be."
+    scale: [small steps, medium steps, big steps]
+    answerAt: 0
+    why: "신장이 약하면 인슐린이 오래 남아 저혈당이 되기 쉬워서 작게 조금씩 조정해요. big steps는 한 번에 크게 바꾸는 것이라 위험해요."
+    example: "We make small steps with each adjustment."
+    exKo: "조정할 때마다 작게 조금씩 바꿔요."
+  - kind: context
+    words: [w-insulin]
+    word: insulin
+    ko: 인슐린
+    scenes:
+      - {who: 의사 라운드, icon: monitor, en: "Her insulin lasts longer because her kidneys clear it slowly.", ok: true}
+      - {who: 인계, icon: board, en: "Insulin needs are lower with her kidney failure.", ok: true}
+      - {who: 환자에게, icon: me, en: "Your insulin clearance is reduced, so we're decrementing the dose.", ok: false, fix: "Your kidneys remove insulin more slowly, so we're giving you less to keep your sugar from dropping."}
+    why: "clearance·decrementing은 의료진끼리의 말이에요. 환자에게는 신장이 인슐린을 천천히 내보내서 양을 줄인다는 이유만 쉽게 설명하세요."
+12:
+  - kind: slider
+    words: [w-swing, w-steady]
+    cue: "His sugar went 90, then 240, then 110 in one day."
+    scale: [calm, some swings, wild swings]
+    answerAt: 2
+    why: "하루에 크게 오르내렸으면 wild swings예요. 변동성이 크면 급식과 인슐린 시점부터 원인을 찾아봐야 해요. calm은 꾸준히 안정적일 때 써요."
+    example: "He's having wild swings today."
+    exKo: "오늘은 혈당이 크게 오르내려요."
+  - kind: context
+    words: [w-swing]
+    word: swing
+    ko: 변동
+    scenes:
+      - {who: 간호사끼리, icon: board, en: "His sugar swings are worse when the feeding is interrupted.", ok: true}
+      - {who: 의사 라운드, icon: monitor, en: "The swings improved once we matched the insulin to the feeding.", ok: true}
+      - {who: 환자에게, icon: me, en: "Your glycemic swings reflect suboptimal basal pharmacokinetics.", ok: false, fix: "Your sugar has been going up and down, and we're looking for the reason."}
+    why: "swing은 의료진끼리 흔히 쓰는 말이에요. pharmacokinetics 같은 말이 섞이면 환자는 알아듣지 못하니 '오르내린다'로 쉽게 말하세요."
+13:
+  - kind: slider
+    words: [w-settle]
+    cue: "His son asks if the sugars will calm down once the infection clears. Nobody can promise it."
+    scale: [may settle, should settle, definitely settle]
+    answerAt: 1
+    why: "감염이 나으면 대체로 가라앉지만 약속할 수는 없어서 should settle이 맞아요. definitely는 보장처럼 들려서 지킬 수 없는 약속이 돼요."
+    example: "His sugars should settle."
+    exKo: "혈당은 안정될 거예요."
+  - kind: context
+    words: [w-illness]
+    word: illness
+    ko: 병
+    scenes:
+      - {who: 의사 라운드, icon: monitor, en: "His illness is driving the sugars up, not his baseline diabetes.", ok: true}
+      - {who: 인계, icon: board, en: "As the illness settles, his insulin needs usually come down.", ok: true}
+      - {who: 환자에게, icon: me, en: "Your acute illness is precipitating counter-regulatory hormone release.", ok: false, fix: "Being this sick makes your body push your sugar up on its own, and it should ease as you recover."}
+    why: "counter-regulatory hormone은 의료진끼리의 말이에요. 환자에게는 아픈 몸이 혈당을 저절로 올리고 회복하면 나아진다는 정도로 쉽게 말하세요."

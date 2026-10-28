@@ -1,0 +1,104 @@
+situations:
+- title: DKA 초기 사정
+  s:
+  - [사정 안내, check, '''how alert you feel''은 의식 상태를 환자가 느끼는 정도로 묻는 간접 의문절이라 검사처럼 들리지 않고 부드러워요.', your slippers, '동료가 수분 상태랑 호흡, 의식이 얼마나 또렷한지 확인해요.', '선배가 수분 상태랑 호흡, 의식이 얼마나 또렷한지 확인해요.', breathing, walking, bathing, dressing]
+  - [병력 질문, speech, '''keep down''은 삼킨 것을 토하지 않고 유지한다는 숙어라 구토가 있는 환자에게 딱 맞아요. ''been able to''가 못 했을 때도 부담 없이 답하게 해요.', for your visitors, '어젯밤 물이나 음료를 좀 삼킬 수 있었어요?', '이틀 동안 물이나 음료를 좀 삼킬 수 있었어요?', keep, pour, spill, wash]
+  - [원인 설명, lab, '''can be''는 확정이 아니라 가능성이라 환자를 겁주지 않고 설명해요. ''reacting to''로 몸이 하는 반응이라는 틀을 줘요.', your morning meal, '숨이 빠른 건 몸이 열에 반응하는 걸 수도 있어서, 제가 잘 지켜보고 있어요.', '숨이 빠른 건 몸이 약에 반응하는 걸 수도 있어서, 제가 잘 지켜보고 있어요.', acid, noise, sunlight, pollen]
+  - [의식 확인, bulb, '''a few questions''는 부담 없는 분량처럼 들려 환자가 협조하기 쉬워요. ''to check''로 질문하는 목적을 먼저 밝혀요.', about your diet, 의식이 얼마나 또렷한지 확인하려고 후배가 몇 가지 여쭤봐요., 의식이 얼마나 또렷한지 확인하려고 의사가 몇 가지 여쭤봐요., ask, show, tell, teach]
+  - [보고, siren, '''early signs''는 확정 진단이 아니라 초기 단서라는 뜻이에요. ''this''가 방금 본 소견을 가리켜 무엇을 보고하는지 분명해요.', to his sister, '당뇨병성 케토산증 뚜렷한 소견이 보여서, 바로 팀에 보고할게요.', '당뇨병성 케토산증 애매한 소견이 보여서, 바로 팀에 보고할게요.', signs, causes, doses, scars]
+  - [곁에 있기, me, '''right here with you''는 물리적으로 곁에 있다는 말이라 불안한 환자에게 안심을 줘요. ''try to''는 명령이 아니라 권유로 들려요.', in the hallway, 친구가 바로 옆에 있으니까 최대한 편하게 있으세요., 제가 바로 옆에 있으니까 최대한 조용히 있으세요., calm, angry, lonely, hungry]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: DKA 초기 사정 4문장 순서
+    why: 무엇을 확인할지 알리고, 수분 상태를 병력으로 묻고, 어느 쪽이든 빠른 숨의 이유를 설명한 뒤, 소견을 보고한다고 알려요.
+    lines:
+    - ['I''m going to check your hydration, your breathing, and how alert you feel.', check, '수분 상태랑 호흡, 의식을 확인해 볼게요', 사정]
+    - ['For your hydration, have you been able to keep any fluids down today?', speech, '수분 상태 때문에, 오늘 물이나 음료를 삼킬 수 있었어요?', 질문]
+    - ['Either way, that fast breathing can be your body reacting to acid.', lab, 어느 쪽이든 그 빠른 숨은 몸이 산에 반응하는 걸 수도 있어요, 설명]
+    - ['Because of all that, I''ll report these early signs to the team.', siren, 그 모든 걸 바탕으로 이 초기 소견을 팀에 보고할게요, 보고]
+- title: 혈당·케톤·ABG 모니터
+  s:
+  - [모니터 이유, monitor, '''to keep you safe''로 반복 검사의 목적을 환자의 안전으로 밝혀 귀찮은 검사라는 느낌을 줄여요. ''every hour''가 간격을 정확히 알려요.', for the nurse, '편안하게 지켜드리려고 혈당이랑 케톤, 혈액 산도를 매시간 확인하고 있어요.', '빨리 퇴원시켜 드리려고 혈당이랑 케톤, 혈액 산도를 매시간 확인하고 있어요.', safe, busy, bored, cheerful]
+  - [수치 해석, chartup, '''tell us how''는 숫자가 정보를 준다는 틀이라 수치를 쉬운 말로 풀어줘요. ''working''은 치료가 작동 중이라는 뜻이에요.', your home address, 이 수치들이 식사가 잘 되고 있는지를 말해줘요., 이 수치들이 수액이 잘 들어가고 있는지를 말해줘요., working, waiting, sleeping, lasting]
+  - [진행 약속, speech, '''as soon as''는 변화가 생긴 순간에 알린다는 약속이에요. ''the right way''는 좋아지는 방향을 쉬운 말로 가리켜요.', your insurance, 수치가 좋은 방향으로 움직이기 시작하면 병동 간호사가 알려드려요., 수치가 좋은 방향으로 움직이기 시작하면 담당 선생님이 알려드려요., levels, doses, orders, lines]
+  - [채혈 안내, lab, '''on schedule''은 정해진 계획대로 한다는 뜻이라 갑자기 채혈하는 게 아니라는 안심을 줘요. ''finger stick''은 손끝 혈당 검사를 부르는 현장 용어예요.', at the front desk, 주치의가 정해진 시간에 손끝 혈당이랑 검사 채혈을 해요., 전문의가 정해진 시간에 손끝 혈당이랑 검사 채혈을 해요., draw, wash, carry, hang]
+  - [호전 설명, chartup, '''which means''로 수치의 뜻을 바로 이어 설명해요. ''coming down''은 계속 내려가는 중이라는 진행형이에요.', the blood sugar, '케톤 수치가 내려가고 있는데, 이건 몸이 잘 쉬고 있다는 뜻이에요.', '케톤 수치가 내려가고 있는데, 이건 환자분이 잘 버티고 있다는 뜻이에요.', working, resting, hiding, stalling]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 혈당·케톤 모니터 설명 4문장 순서
+    why: 무엇을 얼마나 자주 재는지 알리고, 수치의 뜻을 설명한 뒤, 그 수치를 얻는 검사를 안내하고, 결과를 해석해요.
+    lines:
+    - ['We check your sugar, ketones, and blood acid every hour to keep you safe.', monitor, '안전을 위해 혈당, 케톤, 혈액 산도를 매시간 확인해요', 안내]
+    - [Those numbers tell us how your treatment is working., chartup, 그 수치들이 치료가 잘 되고 있는지 알려줘요, 설명]
+    - ['To get them, I''ll do your finger stick on schedule.', lab, 그 수치를 얻으려고 일정대로 손끝 혈당을 잴게요, 검사]
+    - ['So far your ketone number is coming down, which means it''s working.', chartup, '지금까지 케톤 수치가 내려가고 있고, 효과가 있다는 뜻이에요', 해석]
+- title: 수액 소생 시작
+  s:
+  - [이유 설명, board, '''so''로 원인과 결과를 이어 환자가 이 수액이 왜 필요한지 바로 알아요. ''at first''가 처음에만 빠르다는 점을 알려 불안을 덜어요.', from the pharmacy, '열이 높으셔서, 처음에는 빠르게 보충해 드리고 있어요.', '숨이 차시니까, 처음에는 빠르게 보충해 드리고 있어요.', lost, spilled, donated, shared]
+  - [감시 안내, monitor, '''as the fluids go in''이 감시하는 시점을 수액이 들어가는 동안으로 정해요. 혈압과 소변량은 수액 반응을 보는 지표예요.', the room lights, 수액이 들어가는 동안 레지던트가 혈압이랑 소변량을 계속 지켜봐요., 수액이 들어가는 동안 당직의가 혈압이랑 소변량을 계속 지켜봐요., in, out, 'off', over]
+  - [증상 알림, bell, '''Tell me if''는 환자가 해야 할 일을 부담 없이 알려줘요. 가슴 답답함과 숨참은 수액이 너무 많을 때 나올 수 있는 증상이에요.', about your lunch, 가슴이 답답하거나 다리가 붓는 것 같으면 바로 말씀해 주세요., 목이 마르거나 숨쉬기 힘들면 바로 말씀해 주세요., tightness, itching, numbness, sweating]
+  - [처치 안내, gear, '''to bring … back up''은 낮아진 것을 원래대로 올린다는 뜻이에요. ''now''가 지금 시작한다는 점을 분명히 말해요.', for your breakfast, 혈압 수준을 다시 올리려고 지금 생리식염수를 시작할게요., 소변량을 다시 늘리려고 지금 생리식염수를 시작할게요., level, color, smell, temperature]
+  - [폐 확인, stetho, '''so we catch … early''는 확인하는 목적을 먼저 밝혀 환자가 놀라지 않게 해요. ''overload''는 수액이 너무 많이 들어간 상태예요.', your belly, 폐렴이 있는지 일찍 알아채려고 폐 소리를 확인할게요., 천명음이 있는지 일찍 알아채려고 폐 소리를 확인할게요., overload, shortage, leak, spill]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 수액 소생 안내 4문장 순서
+    why: 왜 필요한지 설명하고, 지금 시작함을 알린 뒤, 들어가는 동안 볼 것과 환자가 알려야 할 증상을 말해요.
+    lines:
+    - ['You lost a lot of fluid, so we''re replacing it quickly at first.', board, 체액을 많이 잃어서 처음엔 빠르게 보충해요, 이유]
+    - [That's why we're starting normal saline now., gear, 그래서 지금 생리식염수를 시작해요, 시작]
+    - ['As it goes in, I''ll keep watching your blood pressure and urine.', monitor, 들어가는 동안 혈압과 소변량을 계속 볼게요, 감시]
+    - [Tell me about any chest tightness or trouble breathing you notice with it., bell, 그것 때문에 가슴이 답답하거나 숨쉬기 힘들면 말씀해 주세요, 알림]
+- title: 인슐린 주입 준비
+  s:
+  - [라인 준비, gear, '''dedicated''는 다른 약과 섞이지 않는 전용 라인이라는 뜻이에요. ''per protocol''은 임의가 아니라 병원 지침대로 한다는 안심을 줘요.', for the blood draw, 프로토콜대로 담당의가 인슐린 주입 전용 라인을 프라이밍해요., 프로토콜대로 책임자가 인슐린 주입 전용 라인을 프라이밍해요., line, pole, cart, bed]
+  - [이중 확인, check, '''Let''s''는 함께한다는 틀이라 동료에게 확인을 요청하기 자연스러워요. 농도와 설정은 인슐린에서 가장 위험한 두 변수예요.', the bed alarm, 농도랑 펌프 설정을 따로 다시 확인해요., 농도랑 펌프 설정을 천천히 다시 확인해요., pump, door, phone, window]
+  - [시작 조건, lab, '''once''가 시작의 조건을 정해 칼륨을 확인한 뒤에야 시작한다는 순서를 밝혀요. ''confirmed safe''는 추정이 아니라 확인되어야 한다는 뜻이에요.', after the meal, 칼륨이 안전하다고 확인되면 야간조가 주입을 시작해요., 칼륨이 안전하다고 확인되면 주간조가 주입을 시작해요., infusion, transfer, discharge, dressing]
+  - [펌프 상태, monitor, '''set to … rate''는 속도 설정을 말하는 쉬운 표현이에요. ''ready to go''는 시작 직전이라는 구어체예요.', to the doctor, '펌프는 프로토콜 속도로 맞춰졌고, 교대할 준비 됐어요.', '펌프는 프로토콜 속도로 맞춰졌고, 이동할 준비 됐어요.', set, locked, taped, tied]
+  - [처방 대조, board, '''matches the order''는 처방과 실제가 일치하는지 확인한다는 뜻이에요. ''before we start''로 시점을 시작 전으로 고정해요.', the visiting hours, '시작하기 전에 농도가 처방이랑 맞는지 제가 확인해 드릴까요?', '시작하기 전에 농도가 처방이랑 맞는지 약사님이 확인해 줄 수 있어요?', order, menu, receipt, poster]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 인슐린 주입 준비 4문장 순서
+    why: 라인을 준비하고, 준비된 뒤 농도와 설정을 함께 확인하고, 그 확인을 바탕으로 속도를 맞춘 뒤, 칼륨 조건이 충족되면 시작해요.
+    lines:
+    - [I'm priming a dedicated line for the insulin drip per protocol., gear, 프로토콜대로 인슐린 전용 라인을 프라이밍하고 있어요, 준비]
+    - ['Once it''s primed, let''s double-check the concentration against the order together.', check, 프라이밍이 끝나면 농도를 처방과 같이 다시 확인해요, 이중 확인]
+    - ['Once that''s confirmed, the pump gets set to the protocol rate.', monitor, 그게 확인되면 펌프를 프로토콜 속도로 맞춰요, 설정]
+    - ['With the pump ready, I''ll start the infusion once potassium is confirmed safe.', lab, 펌프가 준비되면 칼륨이 안전하다고 확인되는 대로 시작할게요, 시작]
+- title: 인슐린 전 K 확인
+  s:
+  - [보류 이유, lab, '''until''이 보류의 끝 조건을 정해 수치를 확인하는 이유를 바로 알려요. ''Let''s''로 함께 확인하자는 팀 어조예요.', the blood bank, '칼륨이 안전할 때까지 인슐린을 보류하니까, 먼저 수치부터 확인해 줄래요?', '칼륨이 안전할 때까지 인슐린을 보류하니까, 제가 먼저 수치부터 확인할게요.', first, twice, slowly, quietly]
+  - [위험 설명, pill, '''drives … into cells''는 인슐린이 칼륨을 세포 안으로 옮긴다는 작용을 쉬운 동사로 풀어요. ''could be''는 가능성 표현이에요.', in the blood bank, '인슐린이 칼륨을 소변으로 내보내서, 수치가 낮으면 위험할 수 있어요.', '인슐린이 칼륨을 위장으로 밀어 넣어서, 수치가 낮으면 위험할 수 있어요.', cells, urine, stool, sweat]
+  - [보충 계획, pill, '''before starting''으로 보충이 시작보다 앞선다는 순서를 말해요. ''If it''s low''는 조건이 칼륨 수치라는 점을 밝혀요.', after breakfast, 낮으면 주입 시작 전에 교대자가 칼륨부터 보충해요., 낮으면 주입 시작 전에 전담자가 칼륨부터 보충해요., drip, meal, bath, walk]
+  - [차트 확인, board, '''pull his chart''는 차트를 열어 본다는 병원 구어예요. ''the last''는 가장 최근 결과를 가리켜요.', the old film, 컴퓨터를 켜서 마지막 칼륨 결과를 확인해요., 벽 모니터로 마지막 칼륨 결과를 확인해요., chart, drawer, curtain, shoes]
+  - [낮을 때 보고, siren, '''comes back low''는 검사 결과가 나왔는데 낮다는 뜻이에요. ''get the replacement ordered''는 내가 처방을 받아낸다는 뜻이에요.', from the lab, 칼륨 결과가 낮게 나오면 바로 팀장님이 보충 처방을 받아요., 칼륨 결과가 낮게 나오면 바로 팀장이 보충 처방을 받아요., ordered, stored, packed, mailed]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 인슐린 전 칼륨 확인 4문장 순서
+    why: 보류 이유를 말하고, 위험을 설명한 뒤, 차트에서 결과를 확인하고, 낮을 때의 보충 계획을 알려요.
+    lines:
+    - [We hold insulin until potassium is safe., lab, 칼륨이 안전할 때까지 인슐린을 보류해요, 보류]
+    - ['That''s because insulin drives potassium into cells, so a low value could be dangerous.', pill, 인슐린이 칼륨을 세포 안으로 밀어 넣어서 낮으면 위험해서예요, 위험]
+    - ['To check, let''s pull his chart for the last potassium result.', board, 확인하려고 차트에서 마지막 칼륨 결과를 봐요, 확인]
+    - ['Based on what it shows, if it''s low we''ll replace potassium before starting the drip.', pill, 결과에 따라 낮으면 주입 전에 칼륨부터 보충해요, 보충]
+- title: 활력·의식 재평가
+  s:
+  - [안심과 재확인, faceWorried, '''I''m glad''로 환자의 호전에 먼저 공감한 뒤 확인을 알려요. ''to confirm''이 재측정의 목적을 밝혀요.', for your family, '정신이 맑아지셨다니 다행이에요, 확인 차 활력징후를 과장이 다시 재요.', '정신이 맑아지셨다니 다행이에요, 확인 차 활력징후를 교수가 다시 재요.', glad, sorry, afraid, upset]
+  - [지남력 확인, bulb, 이름과 장소를 묻는 건 의식 상태와 지남력을 보는 표준 질문이에요. 'for me'가 환자를 시험하는 느낌을 덜어요., your phone number, '성함이랑 누구와 오셨는지 말씀해 주실 수 있어요?', '성함이랑 어디서 오셨는지 말씀해 주실 수 있어요?', tell, ask, show, give]
+  - [호전 설명, chartup, '''heading the right direction''은 수치의 방향을 쉬운 말로 풀어요. ''a good sign''으로 수치의 의미를 짧게 정리해요.', a bad dream, '수치들이 좋은 방향으로 가고 있는데, 이건 모두 약 덕분이에요.', '수치들이 좋은 방향으로 가고 있는데, 이건 이틀째 계속돼요.', direction, corner, lane, side]
+  - [활력 비교, monitor, '''steadier than before''는 전보다 안정적이라는 비교 표현이에요. 혈압과 심박수는 활력징후 중 가장 먼저 보는 두 가지예요.', than your sister, 혈압이랑 심박수가 어제보다 더 안정적으로 보여요., 혈압이랑 심박수가 아침보다 더 안정적으로 보여요., steadier, louder, brighter, cleaner]
+  - [기록과 공유, pencil, '''letting the team know''는 한 일을 팀과 공유한다는 뜻이에요. 호전된 부분도 기록해야 흐름이 이어져요.', to the pharmacist, 이렇게 나아진 부분을 기록하고 교수님께도 알릴게요., 이렇게 나아진 부분을 기록하고 약사에게도 알릴게요., charting, painting, filming, framing]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 활력·의식 재평가 4문장 순서
+    why: 호전에 공감하고 재측정을 알린 뒤, 확인하려고 의식을 묻고, 측정 결과를 설명하고, 그 호전을 기록·공유한다고 말해요.
+    lines:
+    - ['I''m glad you feel clearer, and I''ll recheck your vitals to confirm.', faceWorried, '맑아지셔서 다행이에요, 확인 차 활력징후를 다시 잴게요', 공감]
+    - ['To confirm, can you tell me your name and where you are?', bulb, '확인하려고 성함과 계신 곳을 말해 주실래요?', 질문]
+    - ['After checking, your blood pressure and heart rate look steadier than before.', monitor, 재보니 혈압과 심박수가 전보다 안정적으로 보여요, 결과]
+    - [I'm charting these improvements and letting the team know., pencil, 나아진 부분을 기록하고 팀에도 알려요, 공유]

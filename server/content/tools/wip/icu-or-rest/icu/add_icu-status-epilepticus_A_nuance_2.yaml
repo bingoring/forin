@@ -1,0 +1,153 @@
+- situation: "지속 EEG 모니터 연계"
+  items:
+    - kind: slider
+      words: [w-eeg, w-continuous, w-still]
+      cue: "Family member: \"He stopped shaking, so the seizure must be over, right?\""
+      scale: [the seizure is definitely over, the seizure is definitely still going, the EEG will show if it continues]
+      answerAt: 2
+      why: "몸이 떨지 않아도 뇌에서는 발작이 계속될 수 있어요. 그래서 지속 뇌파로 확인해요. 끝났다고도, 계속된다고도 단정하지 않아요."
+      example: "Even if his body looks still, the EEG can show if the seizure continues."
+      exKo: "몸이 가만히 있어 보여도, 뇌파로 발작이 계속되는지 알 수 있어요."
+    - kind: context
+      words: [w-hidden]
+      word: hidden
+      ko: 숨은
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "Continuous EEG may pick up hidden seizures.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Watch the EEG for any hidden seizure activity.", ok: true}
+        - {who: 가족에게, icon: me, en: "Hidden electrographic seizures may persist without any clinical correlate.", ok: false, fix: "Some seizures don't show on the outside, so the EEG helps us find them."}
+      why: "의료진끼리는 electrographic, clinical correlate 같은 말이 정확해요. 가족에게는 낯설어 겁만 주니, 겉으로 안 보이는 발작이 있고 그래서 뇌파를 본다고 쉽게 전해요."
+- situation: "유발원인 검사·교정"
+  items:
+    - kind: slider
+      words: [w-fever, w-infection, w-send]
+      cue: "Colleague: \"He's seizing and his temperature is climbing.\""
+      scale: [send cultures and look for an infection, assume it's only the seizure, stop seizure drugs until the fever is gone for good]
+      answerAt: 0
+      why: "발열과 발작이 함께 있으면 감염이 유발 요인일 수 있어서 배양검사 등을 보내 원인을 찾아요. 발작 탓이라 단정하고 넘기거나, 열이 내릴 때까지 항경련제를 끊지 않아요."
+      example: "I'll send cultures and labs and treat what we find."
+      exKo: "배양검사와 검사를 보내고, 나온 결과를 치료할게요."
+    - kind: context
+      words: [w-cause]
+      word: cause
+      ko: 원인
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "I'm sending labs to find the cause of the seizure.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Could the cause be his sodium or an infection?", ok: true}
+        - {who: 가족에게, icon: me, en: "We're working up the cause, metabolic versus infectious, with labs and cultures.", ok: false, fix: "We're running tests to find out what caused the seizure."}
+      why: "의료진끼리는 metabolic versus infectious처럼 범주를 짧게 말해도 돼요. 가족에게는 낯선 말이라, 무엇을 왜 검사하는지만 쉽게 전해요."
+- situation: "반복 발작 약물 단계화"
+  items:
+    - kind: slider
+      words: [w-next, w-step, w-ladder]
+      cue: "Colleague: \"The second drug is in and he's seizing again.\""
+      scale: ["wait and see what happens next", "double the second drug on your own now", "tell the team, start the next step"]
+      answerAt: 2
+      why: "계속되는 발작은 정해진 단계를 따라 다음 처방 약으로 지체 없이 넘어가요. 기다리거나 간호사가 임의로 용량을 올리지 않고, 팀에 알려 처방대로 진행해요."
+      example: "If he seizes again, we move to the next step right away."
+      exKo: "또 발작하면 바로 다음 단계로 넘어가요."
+    - kind: context
+      words: [w-ready]
+      word: ready
+      ko: 준비된
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "The next infusion is ready if he seizes again.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Can you get the next drug ready?", ok: true}
+        - {who: 가족에게, icon: me, en: "Next-line agents are on standby, with a propofol drip ready for titration.", ok: false, fix: "We have the next medicine ready, so we can start right away if it comes back."}
+      why: "의료진끼리는 약 이름과 titration 같은 말을 그대로 써도 돼요. 가족에게는 낯설어 불안만 키우니, 다음 약이 준비되어 있다는 사실만 쉽게 전해요."
+- situation: "기도확보 준비·삽관 판단"
+  items:
+    - kind: slider
+      words: [w-protect, w-airway, w-cough, w-decline]
+      cue: "Colleague: \"He's drowsy and gurgling, and he's not coughing when I suction.\""
+      scale: ["call the team, ready airway equipment", "just keep watching him for now and chart it", "try to intubate him yourself"]
+      answerAt: 0
+      why: "의식이 떨어져 기침으로 기도를 지키지 못하면 흡인과 폐쇄 위험이 커요. 삽관 장비를 준비하고 팀(의사·마취과)을 바로 불러요. 지켜보기만 하거나 간호사가 혼자 삽관하지는 않아요."
+      example: "He can't protect his airway, so I'm calling the team now."
+      exKo: "기도를 스스로 보호하지 못해서 지금 팀을 부르고 있어요."
+    - kind: context
+      words: [w-secure]
+      word: secure
+      ko: 확보하다
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "I'd like to secure his airway before he gets worse.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Get the intubation tray so we can secure the airway.", ok: true}
+        - {who: 가족에게, icon: me, en: "We'll secure the airway via rapid sequence intubation with an endotracheal tube.", ok: false, fix: "He's too sleepy to breathe safely on his own, so we'll place a breathing tube to keep his airway safe."}
+      why: "의료진끼리는 rapid sequence intubation 같은 말로 정확하게 말해요. 가족에게는 낯설고 무서우니, 왜 호흡관이 필요한지를 쉬운 말로 전해요."
+    - kind: swap
+      words: [w-intubation]
+      who: "보호자에게 · 삽관 설명"
+      icon: me
+      before: ["He may need ", "intubation", " to keep him safe."]
+      options: [a breathing tube, intubation, airway control via RSI]
+      answer: a breathing tube
+      notes: {a breathing tube: "가족에게 쉬운 말. 무엇을 하는지 바로 이해해요.", intubation: "의료진끼리의 말. 가족은 뜻을 몰라 되묻거나 불안해해요.", airway control via RSI: "약어가 많아 가족에게 더 낯설고 무겁게 들려요."}
+      why: "의료진끼리는 intubation이 정확하지만, 가족에게는 호흡관이라는 쉬운 말로 무엇을 하는지 알려요."
+      ko: "그가 안전하게 숨 쉬도록 호흡관이 필요할 수 있어요"
+- situation: "항경련제 혈중농도·부작용"
+  items:
+    - kind: slider
+      words: [w-therapeutic, w-sedation, w-response]
+      cue: "Colleague: \"His level is in the therapeutic range, but he's getting sleepier.\""
+      scale: [treat it as fine because the level is normal, raise the dose to be safe, report the new sleepiness to the team]
+      answerAt: 2
+      why: "농도가 치료 범위여도 졸음 같은 부작용은 생길 수 있어요. 수치만 보고 괜찮다고 넘기거나 임의로 용량을 올리지 않고, 새로 생긴 변화를 팀에 알려 함께 조정해요."
+      example: "His level is therapeutic, but I'm watching for new sedation."
+      exKo: "수치는 치료 범위지만 새로 생기는 진정을 지켜보고 있어요."
+    - kind: context
+      words: [w-level]
+      word: level
+      ko: 수치
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "His drug level came back in the therapeutic range.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Check his level before the next dose.", ok: true}
+        - {who: 가족에게, icon: me, en: "His serum drug level is within the therapeutic window.", ok: false, fix: "The medicine level in his blood is where we want it to be."}
+      why: "의료진끼리는 serum level, therapeutic window 같은 말이 정확해요. 가족에게는 낯서니, 혈액 속 약 농도가 알맞다고 쉽게 전해요."
+- situation: "비경련성 SE 인지"
+  items:
+    - kind: slider
+      words: [w-persistent, w-unresponsiveness, w-urgent]
+      cue: "Colleague: \"He's lying quietly, not shaking, but he hasn't responded to us for a long time.\""
+      scale: [flag it to neuro and ask for an urgent EEG, assume he is only resting after the seizure, wait until morning rounds]
+      answerAt: 0
+      why: "발작 후에도 오래 반응이 없으면 겉으로 경련이 없어도 비경련성 지속 상태일 수 있어요. 쉬고 있다고 단정하거나 아침까지 기다리지 않고, 팀에 알리고 응급 뇌파를 요청해요."
+      example: "He's quiet but unresponsive, so I'll flag this to the neuro team."
+      exKo: "조용하지만 반응이 없어서 신경과 팀에 알릴게요."
+    - kind: context
+      words: [w-flag]
+      word: flag
+      ko: 알리다
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "I'm flagging persistent unresponsiveness to you.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Please flag this to the neuro team right away.", ok: true}
+        - {who: 가족에게, icon: me, en: "I'm flagging a possible nonconvulsive status for neuro escalation.", ok: false, fix: "I'm letting the brain specialists know right away, because he isn't waking up as he should."}
+      why: "의료진끼리는 flag, escalation 같은 말로 짧게 알려요. 가족에게는 낯설고 무겁게 들리니, 누구에게 왜 알리는지를 쉬운 말로 전해요."
+    - kind: swap
+      words: [w-nonconvulsive, w-ongoing, w-eeg]
+      who: "보호자에게 · EEG 설명"
+      icon: me
+      before: ["He isn't shaking, but the EEG shows ", "ongoing nonconvulsive seizures", "."]
+      options: [that his brain is still having seizures, ongoing nonconvulsive seizures, NCSE]
+      answer: that his brain is still having seizures
+      notes: {that his brain is still having seizures: "가족에게 쉬운 말. 몸이 안 떨어도 뇌에서 발작이 이어진다는 뜻이 전해져요.", ongoing nonconvulsive seizures: "의료진끼리의 말. 가족에게는 길고 낯설어요.", NCSE: "약어라 가족에게는 아무 뜻도 전하지 못해요."}
+      why: "몸이 떨지 않아도 뇌에서 발작이 이어질 수 있다는 점을 가족에게는 쉬운 말로 전해요."
+      ko: "몸은 떨지 않아도 뇌파에서 뇌가 아직 발작 중인 것이 보여요"
+- situation: "발작 관련 손상·흡인 관리"
+  items:
+    - kind: slider
+      words: [w-aspiration, w-fever, w-oxygen]
+      cue: "Colleague: \"He's coughing, his oxygen is low, and now he's running a fever.\""
+      scale: [say it's only from the seizure and just wait, give a fever medicine and move on, suspect aspiration and report it now]
+      answerAt: 2
+      why: "발작 중 분비물이나 토물이 기도로 넘어가면 흡인이 생길 수 있고, 기침·저산소·발열이 징후예요. 발작 탓으로만 돌리거나 열만 내리고 넘기지 않고 바로 보고해 평가받아요."
+      example: "I'm watching for signs of aspiration like low oxygen or fever."
+      exKo: "저산소나 발열 같은 흡인 징후를 지켜보고 있어요."
+    - kind: context
+      words: [w-gently]
+      word: gently
+      ko: 살살
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "I suctioned gently and his airway is clear.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Suction gently so you don't trigger his gag reflex.", ok: true}
+        - {who: 가족에게, icon: me, en: "I'll gently suction his oropharynx with a Yankauer.", ok: false, fix: "I'm gently clearing the mucus from his mouth so he can breathe easier."}
+      why: "의료진끼리는 oropharynx나 Yankauer 같은 말이 정확해요. 가족에게는 낯서니, 무엇을 왜 하는지를 쉬운 말로 전해요."

@@ -1,0 +1,140 @@
+12:
+  - kind: slider
+    words: [w-stabilize, w-pressure]
+    cue: "After the first steroid dose, his blood pressure is a little higher but still low."
+    scale: [still crashing, starting to stabilize, fully stabilized]
+    answerAt: 1
+    why: "혈압이 조금 올랐지만 아직 낮으면 starting to stabilize예요. 안정됐다고 단정하지 말고 계속 재고, 처방된 수액·약에 따른 반응을 팀에 알려요."
+    example: "His pressure is starting to stabilize."
+    exKo: "그의 혈압이 안정되기 시작했어요."
+  - kind: context
+    words: [w-support]
+    word: support
+    ko: 지지하다
+    scenes:
+      - {who: 의사 호출, icon: speech, en: "We gave the stress-dose hydrocortisone to support his blood pressure.", ok: true}
+      - {who: 야간 인계, icon: board, en: "His pressure needs support overnight from fluids and steroids.", ok: true}
+      - {who: 가족에게, icon: me, en: "Hemodynamic support is ongoing with stress-dose corticosteroids.", ok: false, fix: "We're giving him a strong steroid and fluids to help hold his blood pressure up."}
+    why: "의료진끼리는 hemodynamic support처럼 짧은 말이 정확하고 빨라요. 가족에게는 무엇을 줘서 무엇을 돕는지 쉬운 말로 풀어 주세요."
+  - kind: swap
+    words: [w-hormone]
+    who: "가족에게 · 부신 기능 설명"
+    icon: me
+    before: ["His body can't make enough ", "cortisol", " when he's this sick."]
+    options: [stress hormone, cortisol, glucocorticoid]
+    answer: stress hormone
+    notes: {stress hormone: "가족이 이해하는 말로 아플 때 몸에 필요한 호르몬을 설명해요.", cortisol: "정확하지만 가족에게는 낯설 수 있어요.", glucocorticoid: "약물 계열 이름이라 가족은 알아듣기 어려워요."}
+    why: "부신위기는 아플 때 필요한 스트레스 호르몬이 부족해 생겨요. 가족에게는 호르몬 이름보다 쉬운 설명이 먼저예요."
+    ko: "아주 아플 때 몸이 스트레스 호르몬을 충분히 만들지 못해요"
+13:
+  - kind: slider
+    words: [w-gently, w-warm]
+    cue: "She is cold and her pressure is soft, and you're rewarming her."
+    scale: [gently, briskly, aggressively]
+    answerAt: 0
+    why: "점액수종에서는 담요 등으로 서서히 데우는 것이 안전하다고 알려져 있어요. 빨리 데우면 혈관이 늘어나 혈압이 더 떨어질 수 있어서 gently가 맞아요."
+    example: "We're warming her gently with blankets."
+    exKo: "담요로 부드럽게 따뜻하게 해드리고 있어요."
+  - kind: context
+    words: [w-temperature]
+    word: temperature
+    ko: 체온
+    scenes:
+      - {who: 의사 호출, icon: speech, en: "Her temperature is 92.1°F, so we're rewarming her slowly with blankets.", ok: true}
+      - {who: 야간 인계, icon: board, en: "Temperature trended up slowly overnight and is now 95.4°F.", ok: true}
+      - {who: 가족에게, icon: me, en: "She has a core temperature of 92.1°F, consistent with myxedema coma.", ok: false, fix: "Her body temperature is very low because her thyroid is so slow, and we're warming her gently."}
+    why: "의료진끼리는 수치와 진단을 함께 말해도 돼요. 가족에게는 myxedema coma 같은 진단명을 바로 던지기보다 체온이 왜 낮은지 쉬운 말로 알려 주세요."
+  - kind: swap
+    words: [w-thyroid]
+    who: "가족에게 · 상태 설명"
+    icon: me
+    before: ["Her body is ", "severely hypothyroid", " right now."]
+    options: [running very slowly, severely hypothyroid, in myxedema]
+    answer: running very slowly
+    notes: {running very slowly: "갑상선 기능이 낮아 몸이 느려진 상태를 쉬운 말로 전해요.", severely hypothyroid: "의료진끼리의 진단 표현이라 가족은 의미를 몰라요.", in myxedema: "생소한 병명이라 가족에게 불안과 혼란만 줄 수 있어요."}
+    why: "점액수종은 갑상선 호르몬이 아주 낮아 몸 전체가 느려진 상태예요. 가족에게는 병명보다 이 느려진 모습을 먼저 설명해요."
+    ko: "지금 몸의 기능이 아주 느리게 돌아가고 있어요"
+14:
+  - kind: slider
+    words: [w-risk]
+    cue: "Her sodium and sugar are coming down as planned, and her alertness hasn't changed."
+    scale: [low risk, some risk, high risk]
+    answerAt: 0
+    why: "계획한 속도로 내려가고 의식 변화가 없으면 뇌부종 위험은 낮은 쪽이에요. 그래도 위험이 없는 건 아니라서 신경학적 확인은 계속하고, 변화가 생기면 바로 보고해요."
+    example: "The risk is low as long as we go slowly."
+    exKo: "천천히 하는 동안은 위험이 낮아요."
+  - kind: context
+    words: [w-pace]
+    word: pace
+    ko: 속도
+    scenes:
+      - {who: 의사 라운드, icon: monitor, en: "Keep the correction pace slow so the brain has time to adjust.", ok: true}
+      - {who: 야간 인계, icon: board, en: "The fluid pace is set per protocol, so don't speed it up.", ok: true}
+      - {who: 가족에게, icon: me, en: "The osmolar correction pace is limited to avoid cerebral edema.", ok: false, fix: "We're going slowly on purpose, because moving too fast could make his brain swell."}
+    why: "의료진끼리는 pace와 교정 목표를 압축해서 말해요. 가족에게는 osmolar·cerebral edema 대신 천천히 하는 이유를 쉬운 말로 알려 주세요."
+  - kind: swap
+    words: [w-swell]
+    who: "환자에게 · 천천히 하는 이유"
+    icon: me
+    before: ["Going too fast could cause ", "cerebral edema", "."]
+    options: [swelling in your brain, cerebral edema, intracranial hypertension]
+    answer: swelling in your brain
+    notes: {swelling in your brain: "환자가 이해하는 말로 위험의 이유를 전해요.", cerebral edema: "의료진끼리의 정확한 용어라 환자는 모를 수 있어요.", intracranial hypertension: "어려운 진단명이라 환자가 놀라고 이해하기 어려워요."}
+    why: "이유를 알아야 환자가 천천히 하는 치료를 이해하고 기다릴 수 있어요. 겁주지 말고 쉬운 말로 설명해요."
+    ko: "너무 빠르게 하면 뇌가 부을 수 있어요"
+15:
+  - kind: slider
+    words: [w-sudden, w-change]
+    cue: "His headache got worse, he vomited, and then he became hard to wake, all within the hour."
+    scale: [no change, gradual change, sudden change]
+    answerAt: 2
+    why: "한 시간 안에 두통, 구토, 깨우기 힘든 상태로 이어지면 sudden change예요. DKA 치료 중 이런 변화는 뇌부종 신호일 수 있어서 바로 호출해요."
+    example: "This is a sudden change, so I'm calling now."
+    exKo: "갑작스러운 변화라서 지금 호출할게요."
+  - kind: context
+    words: [w-escalate]
+    word: escalate
+    ko: 상급 보고하다
+    scenes:
+      - {who: 야간 간호사 → 담당의, icon: speech, en: "I need to escalate this now. His neuro status is changing.", ok: true}
+      - {who: 의사 호출, icon: speech, en: "I'm escalating because he went from talking to barely responding.", ok: true}
+      - {who: 가족에게, icon: me, en: "We are escalating his level of care per rapid response criteria.", ok: false, fix: "He's getting worse quickly, so I've called more doctors to help right now."}
+    why: "의료진끼리는 escalate가 상급에 올려 도움을 청한다는 정확한 말이에요. 가족에게는 rapid response criteria 대신 무슨 일이 생겼고 무엇을 했는지로 알려 주세요."
+  - kind: swap
+    words: [w-act]
+    who: "가족에게 · 즉각 대응 설명"
+    icon: me
+    before: ["We're ", "implementing the cerebral edema protocol", " right now."]
+    options: [acting to protect his brain, implementing the cerebral edema protocol, activating the rapid response]
+    answer: acting to protect his brain
+    notes: {acting to protect his brain: "가족이 이해하는 말로 지금 하는 일이 전해져요.", implementing the cerebral edema protocol: "의료진끼리 쓰는 말이라 가족은 의미를 몰라요.", activating the rapid response: "팀 호출을 뜻하는 말이라 지금 치료하는 내용은 전해지지 않아요."}
+    why: "위급할수록 가족에게는 짧고 분명한 말이 필요해요. 절차 이름보다 지금 무엇을 위해 움직이는지를 말해요."
+    ko: "지금 바로 뇌를 지키려고 조치하고 있어요"
+16:
+  - kind: slider
+    words: [w-race, w-heart]
+    cue: "Her pulse is 110 and she says her heart is beating a bit hard."
+    scale: [normal, a little fast, racing]
+    answerAt: 1
+    why: "110은 정상(분당 60~100)보다 조금 높아서 a little fast예요. 갑상선폭풍에서는 훨씬 높아질 수 있어서 racing으로 바뀌는지 계속 재요."
+    example: "Her heart is a little fast, so I'm watching it."
+    exKo: "그녀의 심장이 조금 빨라서 지켜보고 있어요."
+  - kind: context
+    words: [w-control]
+    word: control
+    ko: 조절
+    scenes:
+      - {who: 의사 호출, icon: speech, en: "We need to bring her heart rate under control with a beta-blocker.", ok: true}
+      - {who: 야간 인계, icon: board, en: "Her fever is under control after cooling and acetaminophen.", ok: true}
+      - {who: 가족에게, icon: me, en: "We are working to achieve hemodynamic and thermoregulatory control.", ok: false, fix: "We're giving her several medicines to bring her heart rate and fever down."}
+    why: "의료진끼리는 control 한마디로 목표를 말해요. 가족에게는 hemodynamic·thermoregulatory 대신 무엇을 낮추려고 무엇을 하는지 쉽게 전하세요."
+  - kind: swap
+    words: [w-overactive]
+    who: "가족에게 · 갑상선 상태"
+    icon: me
+    before: ["Her thyroid is ", "in a hypermetabolic state", " and putting stress on her heart."]
+    options: [working far too hard, in a hypermetabolic state, thyrotoxic]
+    answer: working far too hard
+    notes: {working far too hard: "가족이 이해하는 말로 과활성의 뜻이 전해져요.", in a hypermetabolic state: "의료진끼리의 말이라 가족은 낯설어요.", thyrotoxic: "어려운 진단 용어라 가족에게는 의미가 닿지 않아요."}
+    why: "갑상선폭풍은 갑상선 호르몬이 너무 많아 몸이 과하게 돌아가는 상태예요. 가족에게는 '너무 무리하게 일한다'처럼 쉬운 비유가 이해를 도와요."
+    ko: "갑상선이 너무 무리하게 일해서 심장에 부담을 주고 있어요"

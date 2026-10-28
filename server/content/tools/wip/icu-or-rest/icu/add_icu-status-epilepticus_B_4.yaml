@@ -1,0 +1,103 @@
+situations:
+- title: 불응성 SE 마취약 주입 위기
+  s:
+  - ["약 설명", pill, "'Yes,'로 가족의 질문을 먼저 인정한 뒤 계획을 말해요. 'continuous'는 한 번이 아니라 계속 들어가는 주입이라는 뜻이에요.", "for the unit", "네, 미다졸람이나 프로포폴 지속주입을 시작한 뒤 지켜보고 있어요.", "네, 미다졸람이나 프로포폴 지속주입을 시작한 뒤 기도를 확인하고 있어요.", "continuous", "yearly", "spare", "signed"]
+  - ["필요 설명", monitor, "'requires'는 꼭 해야 하는 것을 단정하듯 알려 줘요. 'airway secured'는 기도가 확보된 상태를 가리켜요.", "for the bed", "이건 기도확보와 밀착 호흡 감시가 필요해요.", "이건 기도확보와 밀착 신경 감시가 필요해요.", "hemodynamic", "dietary", "financial", "visiting"]
+  - ["적정 약속", pill, "'titrate'는 효과를 보면서 용량을 조금씩 조절한다는 뜻이에요. 'to seizure control'은 조절의 끝 목표를 보여 줘요.", "for the shift", "EEG상 발작 조절이 될 때까지 지켜볼게요.", "EEG상 발작 조절이 될 때까지 의논할게요.", "titrate", "refill", "label", "store"]
+  - ["상태 보고", shield, "'We've'는 현재완료라 이미 끝난 일이 지금도 의미 있다는 뜻이에요. 'before starting'은 순서를 분명히 해요.", "in the unit", "이 주입을 시작하기 전에 침대를 확보했어요.", "이 주입을 시작하기 전에 동의를 확보했어요.", "secured", "weighed", "photographed", "signed"]
+  - ["적정 보고", pill, "'until'은 끝 조건을 말해 계속 조절하는 이유를 알려요. 'shows'는 EEG가 보여 주는 결과를 주어로 삼아요.", "at night", "EEG에서 발작이 조절될 때까지 용량을 지켜보고 있어요.", "EEG에서 발작이 조절될 때까지 용량을 가족께 보여 드리고 있어요.", "titrating", "refilling", "labeling", "storing"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 지속주입 시작 4문장 순서
+    why: 어떤 약을 쓰는지 알리고, 먼저 기도를 확보했다고 말하고, 용량을 조절한다고 알린 뒤, 필요한 감시를 설명해요.
+    lines:
+    - ["We're starting a continuous midazolam or propofol infusion.", pill, "미다졸람이나 프로포폴 지속주입을 시작해요", "약"]
+    - ["Before starting it, we've secured his airway.", shield, "시작하기 전에 기도를 확보했어요", "기도"]
+    - ["With it running, I'll titrate to seizure control on EEG.", pill, "주입 중에 EEG상 발작 조절이 되도록 적정할게요", "적정"]
+    - ["That means he needs close hemodynamic monitoring from here.", monitor, "그러니 이제부터 밀착 혈역학 감시가 필요해요", "감시"]
+- title: 초불응성 SE 관리
+  s:
+  - ["치료 단계", pill, "'target'은 약이 도달해야 할 지점을 목표로 삼는다는 뜻이에요. 'on EEG'는 뇌파로 확인한다는 표시예요.", "for the bed", "약제를 하나 더 추가하고 EEG상 burst suppression을 지켜봐요.", "약제를 하나 더 추가하고 신경과와 burst suppression을 목표로 해요.", "agent", "monitor", "cart", "chair"]
+  - ["혈압 유지", monitor, "'keep … supported'는 상태를 계속 받쳐 준다는 뜻이에요. 'as we deepen'은 약을 깊게 하는 동안 동시에 한다는 뜻이에요.", "for the shift", "주입을 깊게 하는 동안 호흡을 지지해 둡시다.", "주입을 깊게 하는 동안 체온을 지지해 둡시다.", "supported", "printed", "explained", "photographed"]
+  - ["역할 설명", speech, "'will guide'는 앞으로 방향을 잡아 준다는 뜻이에요. 'depth and duration'은 두 가지 기준을 짝지어 말해요.", "in the unit", "마취과 팀이 깊이와 지속시간을 이끌어줄 거예요.", "신경과 팀이 깊이와 종류를 이끌어줄 거예요.", "duration", "location", "price", "color"]
+  - ["상태 보고", monitor, "'even after'는 걱정했던 일이 일어나지 않았다는 놀라움을 담아요. 'stayed stable'은 변하지 않고 유지됐다는 뜻이에요.", "at night", "진정을 깊게 한 뒤에도 맥박은 안정적으로 유지됐어요.", "진정을 깊게 한 뒤에도 체온은 안정적으로 유지됐어요.", "stable", "high", "low", "wide"]
+  - ["계획 설명", compass, "'if'로 조건을 먼저 깔아 다음 단계가 자동이 아니라 결과에 달렸다는 뜻이에요. 'a third agent'는 세 번째 약제를 가리켜요.", "for the day", "burst suppression에 도달하지 못하면 3번째 약제를 의논할게요.", "burst suppression에 도달하지 못하면 3번째 약제를 약국에 요청할게요.", "third", "spare", "daily", "quiet"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 초불응성 관리 4문장 순서
+    why: 약제를 추가하는 계획을 말하고, 주입을 깊게 하는 동안 혈압을 지지하고, 혈압이 유지됐다고 보고한 뒤, 목표에 못 닿을 때의 다음 단계를 말해요.
+    lines:
+    - ["We add another agent and target burst suppression on EEG.", pill, "약제를 추가하고 burst suppression을 목표로 해요", "계획"]
+    - ["Let's keep his pressure supported as we deepen the infusion.", monitor, "주입을 깊게 하는 동안 혈압을 지지해 둡시다", "혈압"]
+    - ["His pressure stayed stable even after we deepened it.", monitor, "깊게 한 뒤에도 혈압은 안정적으로 유지됐어요", "보고"]
+    - ["If that target isn't reached, we'll add a third agent.", compass, "그 목표에 못 닿으면 3번째 약제를 추가할게요", "다음"]
+- title: 발작 중 심한 저산소·서맥 위기
+  s:
+  - ["응급 지시", siren, "명령문은 'Open'·'bag'처럼 동사로 바로 시작해 급할 때 군더더기 없이 말해요. 'now'를 끝에 붙여 지금 바로 하라는 뜻을 분명히 해요.", "for the nurse", "기도를 열고 입 안을 지금 석션하세요.", "기도를 열고 입 안 분비물을 지금 닦으세요.", "airway", "chart", "folder", "window"]
+  - ["응급 지시", siren, "'Call for help'는 혼자 하지 말고 사람을 부르라는 뜻이에요. 'prepare for'는 아직 하지 않았지만 곧 할 수 있게 준비하라는 뜻이에요.", "for the unit", "도움을 요청하고 흡인을 준비하세요.", "도움을 요청하고 산소 장비를 준비하세요.", "intubation", "discharge", "visitation", "lunch"]
+  - ["응급 지시", siren, "'be ready to'는 아직 아니지만 바로 움직일 수 있게 하라는 뜻이에요. 'escalate'는 한 단계 더 높은 처치로 올린다는 임상 동사예요.", "for the shift", "심박수를 지켜보고 소생술 장비를 옮길 준비를 하세요.", "심박수를 지켜보고 소생술을 확대할 방을 준비하세요.", "resuscitation", "registration", "admission", "discharge"]
+  - ["위기 보고", siren, "'while he's still seizing'은 지금도 발작이 이어지는 중이라는 뜻이에요. 'dropping fast'는 빠르게 떨어진다는 위험 신호예요.", "in the bed", "발작이 계속되는 동안 혈압이 빠르게 떨어지고 있어요.", "발작이 계속되는 동안 체온이 빠르게 떨어지고 있어요.", "dropping", "climbing", "jumping", "shaking"]
+  - ["응급 보고", siren, "대시 앞에서 내 준비를 보고하고, 뒤에서 상대에게 바로 할 일을 지시해요. 'I've got'은 이미 갖췄다는 구어 표현이에요.", "for the room", "산소는 준비됐어요 — 지금 코드를 부르세요.", "석션은 준비됐어요 — 지금 코드를 부르세요.", "ready", "full", "wet", "loud"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 저산소·서맥 위기 4문장 순서
+    why: 위기를 먼저 알리고, 기도를 열어 백으로 환기한 뒤, 사람을 부르며 삽관을 준비하고, 소생술 확대에 대비해요.
+    lines:
+    - ["His heart rate is dropping fast while he's still seizing.", siren, "발작 중에 심박수가 빠르게 떨어지고 있어요", "위기"]
+    - ["Open his airway and bag him with high-flow oxygen now.", siren, "기도를 열고 고유량 산소로 지금 백을 짜세요", "환기"]
+    - ["That bagging is why you call for help and prepare for intubation.", siren, "그 백 환기 때문에 도움을 요청하고 삽관을 준비해요", "삽관"]
+    - ["With intubation being prepared, watch the heart rate and be ready to escalate resuscitation.", siren, "삽관 준비 중에 심박수를 보고 소생술 확대에 대비하세요", "대비"]
+- title: 발작 후 뇌부종·ICP 위기
+  s:
+  - ["위험 설명", bulb, "'can cause'는 원인과 결과를 단정하지 않고 가능성으로 말해요. 'raised pressure'는 뇌압이 올라간 상태를 쉬운 말로 가리켜요.", "for the day", "장시간 발작은 뇌부종과 근육통을 일으킬 수 있어요.", "장시간 발작은 뇌출혈과 압력 상승을 일으킬 수 있어요.", "swelling", "color", "weight", "memory"]
+  - ["처치 보고", stetho, "'elevating'은 머리 쪽을 올린다는 뜻이고 'rechecking'은 다시 확인한다는 진행형이에요. 두 동작을 'and'로 묶어요.", "in the unit", "머리를 올리고 호흡 검진을 다시 확인하고 있어요.", "머리를 올리고 피부 검진을 다시 확인하고 있어요.", "elevating", "washing", "combing", "shaving"]
+  - ["검사 제안", magnify, "'Let's'로 팀에 제안해요. 'consider'는 확정이 아니라 검토한다는 뜻이에요.", "for the shift", "영상 검사를 받고 삼투 치료를 의논하죠.", "영상 검사를 받고 삼투 치료를 가족께 알리죠.", "consider", "sign", "rename", "print"]
+  - ["위험 설명", bulb, "'which'가 앞 문장 전체를 받아 설명을 덧붙여요. 'can point to'는 단정하지 않고 가리킬 수 있다는 완곡한 표현이에요.", "at night", "동공이 불균등해 보이는데, 혈압 상승을 가리킬 수 있어요.", "눈꺼풀이 불균등해 보이는데, 뇌압 상승을 가리킬 수 있어요.", "uneven", "dry", "red", "loud"]
+  - ["보고", speech, "'reporting this'의 this는 방금 본 소견을 가리켜요. 'right away'로 지체하지 않고 알린다는 뜻이에요.", "for the day", "바로 신경과 팀에 메시지를 남기고 있어요.", "바로 신경과 팀에 질문하고 있어요.", "neuro", "billing", "dietary", "housekeeping"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 뇌압 위기 설명 4문장 순서
+    why: 위험을 알리고, 머리를 올리며 검진을 다시 하고, 동공 소견을 말한 뒤, 이를 신경과에 보고해요.
+    lines:
+    - ["Prolonged seizures can cause brain swelling and raised pressure.", bulb, "장시간 발작은 뇌부종과 압력 상승을 일으킬 수 있어요", "위험"]
+    - ["I'm elevating his head and rechecking his neuro exam for that.", stetho, "그래서 머리를 올리고 신경학적 검진을 다시 해요", "처치"]
+    - ["On that exam, his pupils look uneven.", stetho, "그 검진에서 동공이 불균등해 보여요", "소견"]
+    - ["I'm reporting that finding to the neuro team right away.", speech, "그 소견을 바로 신경과 팀에 보고하고 있어요", "보고"]
+- title: 항경련 마취 중 혈역학 붕괴
+  s:
+  - ["응급 지시", siren, "'Start'와 'give'를 'and'로 이어 지금 할 두 가지를 한 번에 지시해요. 'to support'는 하는 목적을 붙여요.", "for the shift", "승압제를 시작하고 수액을 줘서 호흡을 지지하세요.", "승압제를 시작하고 수액을 줘서 체온을 지지하세요.", "pressor", "diet", "chart", "tour"]
+  - ["원칙 설명", compass, "'balance A against B'는 둘을 저울에 올려 맞춘다는 표현이에요. 'hemodynamics'는 혈액순환 상태를 한 단어로 말해요.", "for the day", "발작 조절과 호흡 상태 사이에서 균형을 맞춰요.", "발작 조절과 영양 상태 사이에서 균형을 맞춰요.", "balance", "count", "bill", "paint"]
+  - ["재평가", monitor, "'reassess'는 이미 했던 평가를 다시 한다는 뜻이에요. 'with the team'은 혼자 정하지 않는다는 점을 알려요.", "at night", "가족과 함께 주입 속도를 다시 평가하죠.", "약사와 함께 주입 속도를 다시 평가하죠.", "reassess", "rename", "reprint", "relabel"]
+  - ["위기 보고", siren, "'right after'는 앞의 처치 직후에 일어난 변화라는 뜻이에요. 'dropped fast'는 빠르게 떨어졌다는 보고예요.", "in the bed", "주입을 깊게 한 직후 맥박이 빠르게 떨어졌어요.", "주입을 깊게 한 직후 체온이 빠르게 떨어졌어요.", "dropped", "rose", "held", "jumped"]
+  - ["지지 설명", shield, "'while we keep treating'은 한 가지를 하면서 다른 하나를 멈추지 않는다는 뜻이에요. 'to support him'은 하는 목적을 붙여요.", "for the unit", "발작 치료를 계속하는 동안 지금 산소를 줘서 지지하고 있어요.", "발작 치료를 계속하는 동안 지금 자세를 바꿔서 지지하고 있어요.", "now", "daily", "twice", "quietly"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 혈압 붕괴 대응 4문장 순서
+    why: 혈압이 떨어졌다고 알리고, 승압제와 수액으로 받치고, 주입 속도를 팀과 다시 보고, 균형 원칙을 설명해요.
+    lines:
+    - ["His pressure dropped fast right after we deepened the infusion.", siren, "주입을 깊게 한 직후 혈압이 빠르게 떨어졌어요", "위기"]
+    - ["Start a pressor and give fluid to support his pressure right now.", siren, "지금 승압제를 시작하고 수액을 줘서 혈압을 지지하세요", "지지"]
+    - ["With the pressor going in, let's reassess the infusion rate with the team.", monitor, "승압제가 들어가는 중에 팀과 주입 속도를 다시 평가하죠", "재평가"]
+    - ["With that rate in mind, we balance seizure control against his hemodynamics.", compass, "그 속도를 고려해 발작 조절과 혈역학 사이 균형을 맞춰요", "균형"]
+- title: 지속 SE 예후·목표 소통
+  s:
+  - ["솔직한 설명", handshake2, "'serious'와 'honest'를 함께 써서 나쁜 소식을 숨기지 않겠다는 태도를 보여 줘요. 'I'll be honest with you'는 어려운 말 앞에 흔히 붙이는 구예요.", "for the family", "장시간 지속된 발작은 심각한 상황이에요, 천천히 말씀드릴게요.", "장시간 지속된 발작은 심각한 상황이에요, 조용히 말씀드릴게요.", "honest", "loud", "tall", "early"]
+  - ["회복 설명", speech, "'what recovery might look like'는 모양을 그려 보게 하는 표현이라 막연한 불안을 줄여요. 'might'로 아직 확정이 아님을 알려요.", "to the family", "팀이 퇴원이 어떤 모습일지 설명해드릴 거예요.", "팀이 치료가 어떤 모습일지 설명해드릴 거예요.", "recovery", "visiting", "billing", "parking"]
+  - ["가치 묻기", handshake2, "'what matters most to him'은 의학 사실 말고 환자의 가치를 묻는 열린 표현이에요. 'wishes'는 바라는 것을 가리켜요.", "for the day", "환자분이 원하시는 것과 가장 걱정하시는 것에 대해 이야기 나눠요.", "환자분이 원하시는 것과 가장 좋아하시는 것에 대해 이야기 나눠요.", "wishes", "bills", "meals", "parking"]
+  - ["공감", faceWorried, "'I know this is hard to hear'로 상대의 감정을 먼저 인정해요. 'won't hide anything'은 솔직하게 알리겠다는 약속이에요.", "in the room", "듣기 힘드시다는 거 알아요, 아무것도 서두르지 않을게요.", "듣기 힘드시다는 거 알아요, 아무것도 약속하지 않을게요.", "hard", "late", "cold", "loud"]
+  - ["지지 약속", handshake2, "'whatever'는 어떤 것이든 가리지 않고 지지한다는 뜻이에요. 'matters most to your family'는 가족의 가치가 기준이라는 말이에요.", "for the week", "가족분께 가장 걱정되는 게 무엇이든 저희가 지지할게요.", "가족분께 가장 급한 게 무엇이든 저희가 지지할게요.", "support", "count", "copy", "pay"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 예후 소통 4문장 순서
+    why: 상황이 심각하다고 솔직히 알리고, 힘든 마음을 인정한 뒤, 환자의 가치를 묻고, 그에 맞춰 회복 설명을 약속해요.
+    lines:
+    - ["The prolonged seizures are serious, and I'll be honest with you.", handshake2, "장시간 발작은 심각해요, 솔직히 말씀드릴게요", "솔직"]
+    - ["That's hard to hear, I know.", faceWorried, "듣기 힘드시다는 거 알아요", "공감"]
+    - ["Let's talk about his wishes and what matters most to him.", handshake2, "원하는 것과 가장 중요한 것에 대해 이야기해요", "가치"]
+    - ["Based on what matters to him, the team will explain what recovery might look like.", speech, "중요한 것을 바탕으로 회복이 어떨지 설명해드려요", "설명"]
