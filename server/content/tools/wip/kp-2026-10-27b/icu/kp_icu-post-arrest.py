@@ -14,7 +14,7 @@ def other(si, k):
     return (s['en'], s['ko'])
 
 
-def recut(si, title, index, en, chunks, extra=None):
+def recut(si, title, index, en, chunks, extra=None, note=None):
     """en은 그대로 두고 chunks만 구 경계로 다시 자른다(필요하면 decoy도 새 조각 자리에 맞춘다)."""
     s = sent(doc, si, title, index, en)
     assert join_chunks(chunks) == en, (join_chunks(chunks), en)
@@ -26,8 +26,8 @@ def recut(si, title, index, en, chunks, extra=None):
         import re
         assert len(re.findall(r'\b' + re.escape(s['blank']['answer']) + r'\b', en)) == 1
     assert s['decoy'] not in chunks and s['decoy'] not in en, s['decoy']
-    CH.append({'kind': 'sentence', 'situation': title, 'index': index, 'fields': ['chunks'],
-               'why': f"keyPhrase chunks가 구 경계를 끊음({' / '.join(old[:-1])}) → {' / '.join(chunks[:-1])} — 문장은 그대로"})
+    CH.append({'kind': 'sentence', 'situation': title, 'index': index, 'fields': ['chunks'] + sorted(extra or {}),
+               'why': f"keyPhrase chunks가 구 경계를 끊음({' / '.join(old[:-1])}) → {' / '.join(chunks[:-1])} — 문장은 그대로" + (note or '')})
 
 
 # 1. 냉각 중 부정맥 위기 [0]
@@ -66,7 +66,7 @@ replace(doc, CH, 6, T, 1, o, {
     'why': "Once there로 시점을 먼저 깔고, tightly controlled로 체온을 좁은 범위 안에서 계속 조절한다는 뜻을 전해요.",
     'distractorsKo': ['도달하면 혈당을 좁은 범위에서 엄격하게 조절합니다.',
                       '도달하면 체온을 좁은 범위에서 엄격하게 지켜봅니다.'],
-    'blank': blank('temperature', ['sedation', 'nutrition', 'ventilation']),
+    'blank': blank('temperature', ['lighting', 'humidity', 'noise']),
 }, ['en', 'ko', 'chunks', 'words'],
     'hold … tightly stable(어색한 영어) → keep … tightly controlled; −w-stable(5.3에서 계속 씀) +w-control')
 ol = sit(doc, 6, T)['order']
@@ -86,7 +86,7 @@ replace(doc, CH, 11, T, 1, o, {
     'decoy': ', and calcium shifts',
     'distractorsKo': ['혈관확장, 저혈압, 칼륨 변동을 기록하세요.',
                       '혈관확장, 저혈압, 칼륨 변동을 알려 주세요.'],
-    'blank': blank('potassium', ['sodium', 'protein', 'oxygen']),
+    'blank': blank('potassium', ['iron', 'zinc', 'protein']),
     '_moved': {'w-hyperkalemia': other(13, 1)},
 }, ['en', 'ko', 'chunks', 'words'],
     'hyperkalemia shifts(이동하는 것은 칼륨) → potassium shifts; −w-hyperkalemia(13.1에서 계속 씀) +w-potassium')

@@ -1,0 +1,630 @@
+theme: icu-aki-crrt
+changes:
+- kind: word-remove
+  id: w-hour
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(공통 쉬운 단어 목록)
+- kind: word-remove
+  id: w-see
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(공통 쉬운 단어 목록)
+- kind: word
+  id: w-add-up
+  fields:
+  - ko
+  why: 같은 ko(쌓이다)인 build와 정답이 둘이 되지 않게 가른다 — 조금씩 모여 불어나다
+- kind: word-remove
+  id: w-day
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(공통 쉬운 단어 목록)
+- kind: word-remove
+  id: w-home
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(공통 쉬운 단어 목록)
+- kind: word-remove
+  id: w-time
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(공통 쉬운 단어 목록)
+- kind: word-remove
+  id: w-now
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(공통 쉬운 단어 목록)
+- kind: word-remove
+  id: w-doctor
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(공통 쉬운 단어 목록)
+- kind: word-remove
+  id: w-something
+  why: 너무 쉬움 — 간호사가 이미 아는 쉬운 형용사·대명사라 가르칠 값이 없다(목록 밖 판단분)
+- kind: word-remove
+  id: w-else
+  why: 너무 쉬움 — 간호사가 이미 아는 쉬운 형용사·대명사라 가르칠 값이 없다(목록 밖 판단분)
+- kind: word-remove
+  id: w-patient
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(공통 쉬운 단어 목록)
+- kind: word-remove
+  id: w-many
+  why: 너무 쉬움 — 간호사가 이미 아는 쉬운 형용사·대명사라 가르칠 값이 없다(목록 밖 판단분)
+- kind: word-remove
+  id: w-come
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(공통 쉬운 단어 목록)
+- kind: word-remove
+  id: w-small
+  why: 너무 쉬움 — 간호사가 이미 아는 쉬운 형용사·대명사라 가르칠 값이 없다(목록 밖 판단분)
+- kind: word
+  id: w-medicine
+  fields:
+  - ko
+  - example
+  why: 같은 ko(약)인 drug와 정답이 둘이 되지 않게 가른다 — 항응고제 문장의 약제 / 예문으로 쓰던 문장이 바뀌거나 쓰임이 맞지 않아 새 문장으로
+- kind: word-remove
+  id: w-body
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(공통 쉬운 단어 목록)
+- kind: word
+  id: w-confirm
+  fields:
+  - ko
+  why: 같은 ko(확인하다)인 check와 듣고 뜻 고르기에서 정답이 둘이 되지 않게 가른다
+- kind: word-remove
+  id: w-big
+  why: 너무 쉬움 — 간호사가 이미 아는 쉬운 형용사·대명사라 가르칠 값이 없다(목록 밖 판단분)
+- kind: word-remove
+  id: w-minute
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(공통 쉬운 단어 목록)
+- kind: word
+  id: w-level
+  fields:
+  - ko
+  why: 같은 ko(수치)인 number와 정답이 둘이 되지 않게 가른다 — 전해질·항생제 농도
+- kind: word-remove
+  id: w-new
+  why: 너무 쉬움 — 간호사가 이미 아는 쉬운 형용사·대명사라 가르칠 값이 없다(목록 밖 판단분)
+- kind: word
+  id: w-volume
+  fields:
+  - ko
+  why: 같은 ko(용량)인 dose와 정답이 둘이 되지 않게 가른다 — 체액량 이동
+- kind: word-remove
+  id: w-go
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(공통 쉬운 단어 목록)
+- kind: word-remove
+  id: w-easy
+  why: 너무 쉬움 — 간호사가 이미 아는 쉬운 형용사·대명사라 가르칠 값이 없다(목록 밖 판단분)
+- kind: word-remove
+  id: w-cold
+  why: 너무 쉬움 — 간호사가 이미 아는 쉬운 형용사·대명사라 가르칠 값이 없다(목록 밖 판단분)
+- kind: word
+  id: w-set-up
+  fields:
+  - ko
+  why: 같은 ko(준비하다)인 prepare와 정답이 둘이 되지 않게 가른다 — 장비 세팅
+- kind: word
+  id: w-heavy
+  fields:
+  - en
+  - ipa
+  why: 헤드워드를 문장 속 부사형으로(문장은 heavily)
+- kind: word-remove
+  id: w-red
+  why: 너무 쉬움 — 간호사가 이미 아는 쉬운 형용사·대명사라 가르칠 값이 없다(목록 밖 판단분)
+- kind: word-remove
+  id: w-warm
+  why: 너무 쉬움 — 간호사가 이미 아는 쉬운 형용사·대명사라 가르칠 값이 없다(목록 밖 판단분)
+- kind: word-remove
+  id: w-family
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(공통 쉬운 단어 목록)
+- kind: sentence
+  situation: 소변량·크레아티닌 추세 사정
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 소변량·크레아티닌 추세 사정
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 소변량·크레아티닌 추세 사정
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 수분·전해질 균형 기록
+  index: 4
+  fields:
+  - words
+  - chunks
+  why: 쉬운 단어 태그 빼기 / 구 경계에서 다시 쪼갬(검토 A)
+- kind: sentence
+  situation: 신독성 약물 검토
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 신독성 약물 검토
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: CRRT 개념·목적 이해
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: CRRT 개념·목적 이해
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: CRRT 개념·목적 이해
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: CRRT 회로·접근 관찰
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 항응고 기초 감시
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 항응고 기초 감시
+  index: 3
+  fields:
+  - words
+  - en
+  - ko
+  - chunks
+  why: 쉬운 단어 태그 빼기 / 사실·안전·자연스러움 문제로 문장 수정(검토 A·B)
+- kind: sentence
+  situation: 항응고 기초 감시
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: CRRT 처방 파라미터 이해
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: CRRT 처방 파라미터 이해
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: CRRT 처방 파라미터 이해
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 시간당 초여과량 적정
+  index: 3
+  fields:
+  - words
+  - chunks
+  why: 쉬운 단어 태그 빼기 / 구 경계에서 다시 쪼갬(검토 A)
+- kind: sentence
+  situation: 시간당 초여과량 적정
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 시간당 초여과량 적정
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 시트르산 항응고 대사 감시
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: K·PO4 전해질 보정 연계
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: K·PO4 전해질 보정 연계
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 회로 응고·압력 경보 대응
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 회로 응고·압력 경보 대응
+  index: 5
+  fields:
+  - words
+  - chunks
+  why: 쉬운 단어 태그 빼기 / 구 경계에서 다시 쪼갬(검토 A)
+- kind: sentence
+  situation: 저혈압 동반 CRRT 관리
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 저혈압 동반 CRRT 관리
+  index: 3
+  fields:
+  - words
+  - ko
+  why: 쉬운 단어 태그 빼기 / ko를 en에 맞게 고침(검토 A)
+- kind: sentence
+  situation: 저혈압 동반 CRRT 관리
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 간헐 투석과 방식 비교 판단
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 간헐 투석과 방식 비교 판단
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 간헐 투석과 방식 비교 판단
+  index: 4
+  fields:
+  - words
+  - ko
+  why: 쉬운 단어 태그 빼기 / ko를 en에 맞게 고침(검토 A)
+- kind: sentence
+  situation: 약물 투석 청소 고려
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 약물 투석 청소 고려
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 약물 투석 청소 고려
+  index: 5
+  fields:
+  - words
+  - chunks
+  why: 쉬운 단어 태그 빼기 / 구 경계에서 다시 쪼갬(검토 A)
+- kind: sentence
+  situation: CRRT 중 저체온·영양 손실 관리
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: CRRT 중 저체온·영양 손실 관리
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 고칼륨혈증 응급 CRRT 연계
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 회로 응고·실혈 위기
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 회로 응고·실혈 위기
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 회로 응고·실혈 위기
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 시트르산 축적 위기
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 시트르산 축적 위기
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 시트르산 축적 위기
+  index: 5
+  fields:
+  - words
+  - en
+  - ko
+  - chunks
+  why: 쉬운 단어 태그 빼기 / 사실·안전·자연스러움 문제로 문장 수정(검토 A·B)
+- kind: sentence
+  situation: 급성 폐부종 응급 초여과
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 급성 폐부종 응급 초여과
+  index: 5
+  fields:
+  - words
+  why: 헤드워드 ko(정상을 벗어난)와 맞지 않아 태그 빼기
+- kind: sentence
+  situation: 카테터 관련 대량출혈·감염 위기
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 카테터 관련 대량출혈·감염 위기
+  index: 4
+  fields:
+  - words
+  - ko
+  why: 쉬운 단어 태그 빼기 / ko를 en에 맞게 고침(검토 A)
+- kind: sentence
+  situation: 신대체 지속 여부 목표 논의
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 신대체 지속 여부 목표 논의
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: word
+  id: w-fluid
+  fields:
+  - ko
+  why: ko를 문장 속 뜻에 맞게(검토 A 결정 11)
+- kind: word
+  id: w-thinner
+  fields:
+  - en
+  - ipa
+  why: 헤드워드를 문장 속 제 모습으로(검토 A 결정 11); 헤드워드에 맞춤
+- kind: word
+  id: w-alarm
+  fields:
+  - example
+  why: 예문으로 쓰던 문장이 바뀌거나 쓰임이 맞지 않아 새 문장으로
+- kind: word
+  id: w-emergency
+  fields:
+  - example
+  why: 예문으로 쓰던 문장이 바뀌거나 쓰임이 맞지 않아 새 문장으로
+- kind: word
+  id: w-critical
+  fields:
+  - en
+  - ko
+  - ipa
+  - example
+  why: 헤드워드를 문장 속 제 모습으로(검토 A 결정 11); ko를 문장 속 뜻에 맞게(검토 A 결정 11); 헤드워드에 맞춤; 예문으로 쓰던 문장이 바뀌거나 쓰임이 맞지 않아 새 문장으로
+- kind: word
+  id: w-different
+  fields:
+  - en
+  - ko
+  - ipa
+  why: 헤드워드를 문장 속 제 모습으로(검토 A 결정 11); ko를 문장 속 뜻에 맞게(검토 A 결정 11); 헤드워드에 맞춤
+- kind: word
+  id: w-calorie
+  fields:
+  - example
+  why: 예문으로 쓰던 문장이 바뀌거나 쓰임이 맞지 않아 새 문장으로
+- kind: word
+  id: w-increase
+  fields:
+  - example
+  why: 예문으로 쓰던 문장이 바뀌거나 쓰임이 맞지 않아 새 문장으로
+- kind: word
+  id: w-pull
+  fields:
+  - ko
+  why: ko를 문장 속 뜻에 맞게(검토 A 결정 11)
+- kind: word
+  id: w-risk
+  fields:
+  - example
+  why: 예문으로 쓰던 문장이 바뀌거나 쓰임이 맞지 않아 새 문장으로
+- kind: word
+  id: w-apply
+  fields:
+  - ko
+  why: ko를 문장 속 뜻에 맞게(검토 A 결정 11)
+- kind: sentence
+  situation: 수분·전해질 균형 기록
+  index: 0
+  fields:
+  - ko
+  why: ko를 en에 맞게 고침(검토 A)
+- kind: sentence
+  situation: CRRT 개념·목적 이해
+  index: 1
+  fields:
+  - ko
+  why: ko를 en에 맞게 고침(검토 A)
+- kind: sentence
+  situation: CRRT 회로·접근 관찰
+  index: 0
+  fields:
+  - ko
+  why: ko를 en에 맞게 고침(검토 A)
+- kind: sentence
+  situation: CRRT 회로·접근 관찰
+  index: 3
+  fields:
+  - ko
+  why: ko를 en에 맞게 고침(검토 A)
+- kind: sentence
+  situation: CRRT 회로·접근 관찰
+  index: 4
+  fields:
+  - chunks
+  why: 구 경계에서 다시 쪼갬(검토 A)
+- kind: sentence
+  situation: 회로 응고·압력 경보 대응
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 사실·안전·자연스러움 문제로 문장 수정(검토 A·B)
+- kind: sentence
+  situation: CRRT 중 저체온·영양 손실 관리
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 사실·안전·자연스러움 문제로 문장 수정(검토 A·B)
+- kind: sentence
+  situation: 고칼륨혈증 응급 CRRT 연계
+  index: 4
+  fields:
+  - chunks
+  why: 구 경계에서 다시 쪼갬(검토 A)
+- kind: sentence
+  situation: 시트르산 축적 위기
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 사실·안전·자연스러움 문제로 문장 수정(검토 A·B)
+- kind: sentence
+  situation: 카테터 관련 대량출혈·감염 위기
+  index: 2
+  fields:
+  - words
+  why: 태그 정리
+- kind: word-remove
+  id: w-alkalosis
+  why: 'keyPhrase 교체(2026-10-27 사용자 결정): 바꾼 문장에 alkalosis가 없어 어느 문장도 태그하지 않게 됐다'
+- kind: word-add
+  id: w-acidosis
+  why: 'keyPhrase 교체(2026-10-27 사용자 결정): 시트르산 축적의 전형은 음이온차가 늘어난 대사성 산증 — 바꾼 문장이 가르치는 말(w-alkalosis 대신)'
+- kind: sentence
+  situation: 시트르산 축적 위기
+  index: 1
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-10-27 사용자 결정): metabolic alkalosis(시트르산 축적의 전형은 음이온차 대사성 산증 — 알칼리증은 대사가 정상인 과부하 쪽) → metabolic acidosis; −w-alkalosis(은행에서 지움) +w-acidosis(새 단어)'
+- kind: word
+  id: w-develop
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-27 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-metabolic
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-27 사용자 결정): 예문을 바꾼 문장으로'
+- kind: sentence
+  situation: 시트르산 항응고 대사 감시
+  index: 0
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-10-27 사용자 결정): the systemic and circuit calcium ratio(둘 사이의 비처럼 읽힘 — 전신·회로 이온화 칼슘은 따로 재는 값) → his systemic and circuit ionized calcium; −w-ratio(8.3·8.5에서 계속 씀) +w-ionized'
+- kind: word
+  id: w-monitor
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-27 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-systemic
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-27 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-calcium
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-27 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-ratio
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-27 사용자 결정): 옛 예문 문장을 바꿔 그 단어가 없어짐 — 같은 상황의 다른 문장으로 옮김'
+- kind: sentence
+  situation: CRRT 개념·목적 이해
+  index: 1
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-27 사용자 결정): keyPhrase chunks가 구 경계를 끊음(It''s gentler / on the blood pressure / than regular / dialysis) → It''s / gentler / on the blood pressure / than regular dialysis — 문장은 그대로'
+- kind: sentence
+  situation: CRRT 처방 파라미터 이해
+  index: 0
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-27 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Let''s review / the blood flow rate / and dialysate / settings) → Let''s / review / the blood flow rate / and dialysate settings — 문장은 그대로'
+- kind: sentence
+  situation: CRRT 처방 파라미터 이해
+  index: 1
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-27 사용자 결정): keyPhrase chunks가 구 경계를 끊음(His net fluid / removal goal / is set / per hour) → His / net fluid removal goal / is set / per hour — 문장은 그대로(9낱말이라 V8이 넷째 조각을 요구 — 동사구 is set과 용어 net fluid removal goal을 지키려고 His에서 끊음)'
+- kind: sentence
+  situation: 시트르산 항응고 대사 감시
+  index: 1
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-27 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Watch for signs / of citrate accumulation / in his acid-base / status) → Watch for / signs / of citrate accumulation / in his acid-base status — 문장은 그대로'
+- kind: sentence
+  situation: 저혈압 동반 CRRT 관리
+  index: 1
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-27 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Let''s coordinate / the pressor support / with the CRRT / settings) → Let''s / coordinate / the pressor support / with the CRRT settings — 문장은 그대로'
+- kind: sentence
+  situation: 시트르산 축적 위기
+  index: 0
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-27 사용자 결정): keyPhrase chunks가 구 경계를 끊음(The rising / total-to-ionized calcium ratio / suggests citrate accumulation) → The rising total-to-ionized calcium ratio / suggests / citrate accumulation — 문장은 그대로'

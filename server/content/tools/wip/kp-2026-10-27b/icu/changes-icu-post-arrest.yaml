@@ -381,3 +381,132 @@ changes:
   - en
   - chunks
   why: 의문문인데 끝이 '.'이었음 — '?'로
+- kind: word-remove
+  id: w-hypothermia
+  why: 'keyPhrase 교체(2026-10-27 사용자 결정): 바꾼 문장에 hypothermia가 없어 어느 문장도 태그하지 않게 됐다'
+- kind: sentence
+  situation: 냉각 중 부정맥 위기
+  index: 0
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-10-27 사용자 결정): Deep hypothermia(TTM 32~36도는 깊은 저체온이 아님 — 목표 아래로 과냉각된 장면) → Overcooling below our target; −w-hypothermia(은행에서 지움) +w-target'
+- kind: word
+  id: w-bradycardia
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-27 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-vt
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-27 사용자 결정): 예문을 바꾼 문장으로'
+- kind: sentence
+  situation: TTM 냉각 유도·유지 관리
+  index: 1
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-10-27 사용자 결정): hold … tightly stable(어색한 영어) → keep … tightly controlled; −w-stable(5.3에서 계속 씀) +w-control'
+- kind: word
+  id: w-tight
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-27 사용자 결정): 예문을 바꾼 문장으로'
+- kind: sentence
+  situation: 재가온 단계 관리
+  index: 1
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-10-27 사용자 결정): hyperkalemia shifts(이동하는 것은 칼륨) → potassium shifts; −w-hyperkalemia(13.1에서 계속 씀) +w-potassium'
+- kind: word
+  id: w-vasodilation
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-27 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-hypotension
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-27 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-hyperkalemia
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-27 사용자 결정): 옛 예문 문장을 바꿔 그 단어가 없어짐 — 같은 상황의 다른 문장으로 옮김'
+- kind: word
+  id: w-shift
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-27 사용자 결정): 예문을 바꾼 문장으로'
+- kind: sentence
+  situation: 12유도 심전도·원인 검사
+  index: 0
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-27 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Get a twelve-lead ECG / to look / for STEMI) → Get a twelve-lead ECG / to look for / STEMI — 문장은 그대로'
+- kind: sentence
+  situation: 12유도 심전도·원인 검사
+  index: 1
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-27 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Send troponin / and / a full metabolic panel) → Send / troponin / and a full metabolic panel — 문장은 그대로'
+- kind: sentence
+  situation: 체온·전해질 모니터
+  index: 2
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-27 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Watch for trends / , not just / single values) → Watch for / trends / , not just single values — 문장은 그대로'
+- kind: sentence
+  situation: TTM 냉각 유도·유지 관리
+  index: 2
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-27 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Avoid overshooting / below / the target range) → Avoid / overshooting / below the target range — 문장은 그대로'
+- kind: sentence
+  situation: ROSC 후 환기·산소 목표
+  index: 1
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-27 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Keep his CO2 / in / the normal range) → Keep / his CO2 / in the normal range — 문장은 그대로'
+- kind: sentence
+  situation: 재가온 단계 관리
+  index: 2
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-27 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Controlled rewarming / protects his / recovery) → Controlled rewarming / protects / his recovery — 문장은 그대로'
+- kind: sentence
+  situation: K 전해질 변동 관리
+  index: 1
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-27 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Rewarming can cause / rebound / hyperkalemia) → Rewarming / can cause / rebound hyperkalemia — 문장은 그대로'
+- kind: sentence
+  situation: 재가온 중 혈압 붕괴 위기
+  index: 2
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-27 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Slow the rewarming rate / while we stabilize / him) → Slow / the rewarming rate / while we stabilize him — 문장은 그대로'
+- kind: sentence
+  situation: 신경학적 예후 불량 가족 상담
+  index: 2
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-27 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Let''s talk about / what he / would have wanted / for his care) → Let''s / talk about / what he would have wanted / for his care — 문장은 그대로'
+- kind: sentence
+  situation: 연명과 중단 윤리 갈등
+  index: 1
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-27 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Let''s focus on / what he / would have wanted / for himself) → Let''s / focus on / what he would have wanted / for himself — 문장은 그대로'
