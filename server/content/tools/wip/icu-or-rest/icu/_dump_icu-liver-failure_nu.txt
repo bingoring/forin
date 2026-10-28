@@ -1,0 +1,399 @@
+## 0 간부전 사정·의식 관찰
+ SLIDER ['w-oriented'] cue=He gives his name and knows he's in the hospital, but says the year is wrong. | scale=['fully oriented', 'partly oriented', 'not oriented'] at=1
+   why=이름과 장소는 알아도 날짜를 틀리면 일부만 지남력이 있는 상태예요. 사람·장소·시간을 모두 묻고, 어제 기저치와 비교해 달라진 점을 기록해 팀에 알려요.
+   ex=He's only partly oriented this morning. / 그는 오늘 아침 일부만 지남력이 있어요.
+ CONTEXT ['w-confusion'] word=confusion ko=혼란
+   - 의사 라운드 ok=True: New confusion in a liver patient can mean hepatic encephalopathy.
+   - 야간 인계 ok=True: Mild confusion overnight; he is oriented to person only.
+   - 보호자에게 ok=False: Your husband's confusion is a portosystemic encephalopathy with an altered sensorium. ||fix: Your husband's confusion is because his liver isn't filtering toxins well, and we're treating it.
+   why=의료진끼리는 hepatic encephalopathy 같은 용어가 정확하고 빨라요. 보호자에게는 같은 confusion을 간이 독소를 잘 못 걸러서 생긴 일이라고 쉬운 말로 풀어 주세요.
+ SWAP ['w-baseline'] 보호자에게 · 변화 설명 before=["I'm comparing how he is now to ", 'his baseline', ' every shift.'] opts=['how he normally is', 'his baseline', 'his premorbid status'] ans=how he normally is
+   notes={'how he normally is': '보호자가 바로 알아듣고, 무엇과 비교하는지 분명해요.', 'his baseline': '의료진끼리 쓰는 말이라 보호자는 뜻을 모를 수 있어요.', 'his premorbid status': '병이 생기기 전 상태를 뜻하는 격식 있는 말이라 가족 대화에는 딱딱해요.'}
+   why=변화 관찰은 보호자도 도울 수 있는 일이라, 기준 상태를 '평소 모습'처럼 쉬운 말로 알려 주면 협조가 쉬워요.
+   ko=근무 때마다 지금 상태를 평소 모습과 비교하고 있어요
+ ORDER [대화 흐름|compass] 의식 관찰 4문장 순서
+   why=혼란의 원인을 설명해 가족을 안심시킨 뒤 의식을 확인하고, 변화가 있으면 알려 달라 부탁한 다음 그 도움에 고마움을 전해요.
+   1. Confusion can come from the liver affecting the brain. | 혼란은 간이 뇌에 영향을 주면서 생길 수 있어요 | 설명 stetho
+   2. That's why I'll check how alert and oriented he is now. | 그래서 지금 그가 얼마나 각성돼 있고 지남력이 있는지 확인할게요 | 사정 magnify
+   3. Please tell me if he becomes more sleepy or agitated. | 더 졸려하거나 초조해하면 저에게 알려 주세요 | 요청 speech
+   4. It's very helpful when you do that. | 그렇게 해 주시면 큰 도움이 돼요 | 감사 handshake2
+## 1 암모니아·응고·간효소 추적
+ SLIDER ['w-level'] cue=Ammonia came back 80, then 120, then 190 on three checks. | scale=['steady', 'rising', 'spiking'] at=1
+   why=세 번 연속 조금씩 오르면 rising이에요. steady는 변화가 없을 때, spiking은 한 번에 갑자기 치솟을 때예요. 암모니아가 오르면 혼란이 심해질 수 있어 의식 상태를 같이 보고 수치는 의사에게 알려요.
+   ex=Her ammonia level is rising. / 그녀의 암모니아 농도가 오르고 있어요.
+ CONTEXT ['w-high'] word=high ko=높은
+   - 의사 라운드 ok=True: His enzymes are high, so the liver cells are injured.
+   - 야간 인계 ok=True: INR is still high at 2.8, and there's no new bleeding.
+   - 환자에게 ok=False: Your ALT is high enough to indicate hepatocellular necrosis. ||fix: Your liver enzymes are high because the liver cells are stressed.
+   why=의료진끼리는 ALT, hepatocellular necrosis 같은 용어가 정확해요. 환자에게는 같은 high를 간세포가 힘들어서 수치가 높다고 쉬운 말로 알려 주세요.
+ SWAP ['w-clot'] 환자에게 · 검사 설명 before=['This test shows how well ', 'your hemostasis is functioning', '.'] opts=['your blood can clot', 'your hemostasis is functioning', 'your coags are trending'] ans=your blood can clot
+   notes={'your blood can clot': '환자가 바로 알아듣고, 검사가 무엇을 보는지 분명해요.', 'your hemostasis is functioning': '의료진끼리 쓰는 말이라 환자는 무슨 뜻인지 모를 수 있어요.', 'your coags are trending': '응고 수치의 추세를 말하는 의료진 용어라 환자 설명에는 맞지 않아요.'}
+   why=응고 검사는 환자가 출혈과 연결해서 걱정하는 경우가 많아서, 무엇을 보는 검사인지 쉬운 말로 알려야 해요.
+   ko=이 검사는 피가 얼마나 잘 굳는지 보여 줘요
+ ORDER [대화 흐름|compass] 간 검사 설명 4문장 순서
+   why=검사가 무엇을 보여 주는지 먼저 말하고, 세부 의미를 설명한 뒤, 얼마나 자주 하는지와 반복의 이유로 마무리해요.
+   1. These tests show how your liver is working right now. | 이 검사들은 지금 간이 어떻게 일하고 있는지 보여 줘요 | 목적 lab
+   2. The ammonia level relates to the confusion we watch for. | 암모니아 수치는 저희가 지켜보는 혼란과 관련이 있어요 | 의미 pill
+   3. We check that level every morning to track any change. | 변화를 추적하려고 그 수치를 매일 아침 확인해요 | 빈도 calendar
+   4. Repeating the checks tells us if you're improving. | 반복해서 확인하면 좋아지고 있는지 알 수 있어요 | 이유 redo
+## 2 락툴로오스 투여·배변 관리
+ SLIDER ['w-watery'] cue=He has had six thin, shapeless stools since morning, like water. | scale=['formed', 'soft', 'watery'] at=2
+   why=모양 없이 물 같은 변이 하루에 여러 번이면 watery예요. 락툴로오스의 목표는 보통 하루 두세 번의 무른 변이라, 이렇게 묽고 잦으면 탈수와 전해질 이상 위험이 있어 의사에게 알려요. 용량 조정은 처방자가 해요.
+   ex=His stools are watery today. / 오늘 그의 변이 묽어요.
+ CONTEXT ['w-dose'] word=dose ko=용량
+   - 의사 라운드 ok=True: The lactulose dose is titrated to two or three soft stools a day.
+   - 야간 인계 ok=True: The next lactulose dose is due at 0600, and he's had three stools.
+   - 환자에게 ok=False: Your dose is a nonabsorbable disaccharide that acidifies the colon. ||fix: This dose helps your bowels clear the toxins that cloud your thinking.
+   why=의료진끼리는 nonabsorbable disaccharide 같은 약리 용어가 정확해요. 환자에게는 같은 dose를 이 약이 무슨 일을 하는지 쉬운 말로 풀어 주세요.
+ SWAP ['w-bowel'] 환자에게 · 배변 안내 before=['Please tell us each time you have ', 'a defecation', '.'] opts=['a bowel movement', 'a stool', 'a defecation'] ans=a bowel movement
+   notes={'a bowel movement': '환자와 가족이 편하게 알아듣는 표준적인 말이에요.', 'a stool': '차트와 의료진 사이에서 쓰는 말이라 환자 대화에는 약간 딱딱해요.', 'a defecation': '격식을 갖춘 의학 용어라 환자에게는 어색해요.'}
+   why=배변은 민망해하는 환자가 많아서, 담담하고 쉬운 표현을 쓰면 횟수를 더 잘 알려 줘요.
+   ko=배변을 할 때마다 저희에게 알려 주세요
+ ORDER [대화 흐름|compass] 락툴로오스 설명 4문장 순서
+   why=약이 하는 일을 먼저 알리고, 목표를 정한 뒤, 목표를 위해 횟수를 세고, 그 횟수가 넘치면 용량을 조정한다고 말해요.
+   1. Yes, the medicine helps clear the toxins through your bowels. | 네, 이 약은 장을 통해 독소를 맑게 배출하도록 도와줘요 | 설명 pill
+   2. We aim for a few soft stools a day. | 하루에 몇 번 무른 변을 보는 걸 목표로 해요 | 목표 calendar
+   3. To track that, let's count how many times you go today. | 그걸 확인하려고 오늘 몇 번 가시는지 세어 볼게요 | 세기 pencil
+   4. If the count runs high and the stools get watery, we can adjust the dose. | 횟수가 많고 변이 묽어지면 용량을 조정할 수 있어요 | 조정 gear
+## 3 출혈 경향 감시
+ SLIDER ['w-bruise'] cue=The bruise on his arm grew from a coin to the size of a palm in two hours. | scale=['small bruise', 'spreading bruise', 'active bleeding'] at=1
+   why=두 시간 만에 손바닥만큼 커진 멍은 spreading bruise예요. 크기가 계속 커지면 출혈이 진행 중일 수 있어 가장자리를 표시하고 의사에게 알려요. small bruise는 변화가 없는 작은 멍, active bleeding은 피가 계속 새는 경우예요.
+   ex=He has a spreading bruise on his arm. / 그의 팔에 멍이 번지고 있어요.
+ CONTEXT ['w-bleed'] word=bleed ko=출혈하다
+   - 의사 라운드 ok=True: Any new bleed in liver failure is worrying because his INR is already high.
+   - 야간 인계 ok=True: No new bleed overnight, and the oozing at the IV site stopped with pressure.
+   - 환자에게 ok=False: You may spontaneously bleed due to hepatic synthetic dysfunction. ||fix: Your liver makes less of what helps blood clot, so please tell us right away if you bleed.
+   why=의료진끼리는 hepatic synthetic dysfunction 같은 용어가 정확해요. 환자에게는 같은 bleed를 간이 응고를 돕는 물질을 덜 만든다는 쉬운 설명과, 알려 달라는 구체적 행동으로 풀어 주세요.
+ SWAP ['w-site'] 환자에게 · 채혈 후 안내 before=['Please press on ', 'the venipuncture site', ' until I tell you to stop.'] opts=['the spot where the needle went in', 'the venipuncture site', 'the puncture wound'] ans=the spot where the needle went in
+   notes={'the spot where the needle went in': '환자가 어디를 눌러야 하는지 바로 알아들어요.', 'the venipuncture site': '의료진끼리 쓰는 정확한 말이라 환자는 위치를 못 알아들을 수 있어요.', 'the puncture wound': '상처라는 말이 겁을 줘서 필요 이상으로 불안하게 해요.'}
+   why=응고가 느린 환자는 누르는 일이 중요한데, 위치가 분명하게 전해져야 제대로 눌러요.
+   ko=제가 그만하라고 할 때까지 바늘이 들어간 자리를 눌러 주세요
+ ORDER [대화 흐름|compass] 출혈 경향 안내 4문장 순서
+   why=간이 응고인자를 못 만든다는 원인을 말하고, 그래서 생길 멍을 예고한 뒤, 칫솔 같은 예방을 안내하고 새 출혈은 바로 알리라고 마무리해요.
+   1. Your liver makes clotting factors, and it's struggling now. | 간은 응고인자를 만드는데, 지금 힘겨워하고 있어요 | 원인 stetho
+   2. That's why you may notice more bruises on your arms and legs. | 그래서 팔과 다리에 멍이 더 생길 수 있어요 | 예고 bandage
+   3. Please use a soft toothbrush so your gums don't bleed. | 잇몸에서 피가 나지 않게 부드러운 칫솔을 써 주세요 | 예방 lock
+   4. Please tell me right away about any new bleeding, gums included. | 잇몸을 포함해 새로운 출혈이 있으면 바로 알려 주세요 | 알림 bell
+## 4 저혈당·전해질 감시
+ SLIDER ['w-low'] cue=Her glucose is 66 mg/dL and she has no symptoms. | scale=['a bit low', 'low', 'critically low'] at=0
+   why=66은 기준선(70) 바로 아래라 a bit low예요. 증상이 없어도 병원 저혈당 프로토콜대로 처치하고 다시 확인해요. 간부전에서는 혈당이 빨리 더 떨어질 수 있어서 자주 재요.
+   ex=Her glucose is a bit low. / 그녀의 혈당이 조금 낮아요.
+ CONTEXT ['w-sugar'] word=sugar ko=당 수치
+   - 의사 라운드 ok=True: Her sugar keeps dropping because her liver can't make glucose.
+   - 야간 인계 ok=True: Sugar was 62 at 0300; dextrose was given per protocol, and the recheck is pending.
+   - 환자에게 ok=False: Your hepatic gluconeogenesis has failed, so your sugar is unstable. ||fix: Your liver can't hold your sugar steady, so we check it often.
+   why=의료진끼리는 gluconeogenesis 같은 용어가 정확해요. 환자에게는 같은 sugar를 간이 혈당을 못 붙들어서 자주 잰다는 쉬운 말로 알려 주세요.
+ SWAP ['w-potassium'] 환자에게 · 전해질 설명 before=['Your ', 'serum K+', ' is a little low.'] opts=['potassium', 'serum K+', 'hypokalemic status'] ans=potassium
+   notes={'potassium': '환자가 아는 말이라 바로 알아들어요.', 'serum K+': '의료진끼리 쓰는 약어라 환자는 뜻을 모를 수 있어요.', 'hypokalemic status': '어려운 진단 용어라 불안만 키워요.'}
+   why=검사 결과를 환자에게 알릴 때는 약어보다 이름 그대로 쉽게 말해야 이해해요.
+   ko=칼륨이 조금 낮아요
+ ORDER [대화 흐름|compass] 저혈당·전해질 4문장 순서
+   why=간이 혈당을 못 지킨다는 이유를 말하고 포도당을 확인해 주며, 칼륨 보충을 이어 말한 뒤 모든 조치에도 혈당이 안 오르면 의사에게 알려요.
+   1. Her liver can't keep the sugar stable on its own. | 간이 스스로 혈당을 안정되게 유지하지 못해요 | 이유 lab
+   2. So let's recheck the glucose and give dextrose if it's low. | 그러니 혈당을 재확인하고 낮으면 포도당을 줍시다 | 처치 pill
+   3. Her potassium is low too, so I'll add it to the next bag. | 칼륨도 낮아서 다음 수액백에 추가할게요 | 보충 pill
+   4. If the sugar still won't come up after both fixes, I'll flag this for the physician. | 두 조치 뒤에도 혈당이 오르지 않으면 의사에게 알릴게요 | 보고 pager
+## 5 감염 징후 감시
+ SLIDER ['w-fever'] cue=His temperature is 104 F, and he has shaking chills. | scale=['low-grade fever', 'fever', 'high fever'] at=2
+   why=104°F에 오한이 있으면 high fever예요. 바로 의사에게 알리고 처방된 배양 검사 등 감염 평가를 준비해요. 보통 100.4°F(38°C) 이상을 fever로 보고, 그 근처는 low-grade예요.
+   ex=He has a high fever tonight. / 그는 오늘 밤 고열이 있어요.
+ CONTEXT ['w-infection'] word=infection ko=감염
+   - 의사 라운드 ok=True: Rule out infection first, because SBP is common in cirrhosis with ascites.
+   - 야간 인계 ok=True: Cultures were sent, and there's no clear source of infection yet.
+   - 환자에게 ok=False: Your ascitic PMN count suggests a spontaneous peritoneal infection. ||fix: We think the fluid in your belly may have an infection, so we're testing it.
+   why=의료진끼리는 ascitic PMN count 같은 용어가 정확하고 빨라요. 환자에게는 같은 infection을 배 속 물에 감염이 있을 수 있어 검사한다는 쉬운 말로 알려 주세요.
+ SWAP ['w-paracentesis'] 환자에게 · 시술 설명 before=['We may need ', 'a paracentesis', " to see if there's infection."] opts=['a procedure to draw off a little fluid', 'a paracentesis', 'an ascitic tap'] ans=a procedure to draw off a little fluid
+   notes={'a procedure to draw off a little fluid': '환자가 무슨 일을 하는지 바로 알아들어요.', 'a paracentesis': '의료진끼리 쓰는 말이라 환자는 뜻을 모를 수 있어요.', 'an ascitic tap': '복수를 뜻하는 전문 용어라 환자에게는 낯설어요.'}
+   why=시술은 환자가 가장 궁금해하는 부분이라 무엇을 하는지부터 쉬운 말로 알려요. 시술 동의와 위험 설명은 의사가 해요.
+   ko=감염이 있는지 보려고 물을 조금 빼는 시술이 필요할 수도 있어요
+ ORDER [대화 흐름|compass] 감염 의심 4문장 순서
+   why=열이 오른 사실을 먼저 말하고, 그 의미를 설명한 뒤, 확인을 위한 검사를 정하고 모든 내용을 의사에게 알리며 검사를 시작해요.
+   1. His temperature spiked to 101.5 an hour ago. | 한 시간 전에 체온이 101.5도까지 치솟았어요 | 보고 chartup
+   2. With his belly tenderness, that can mean SBP. | 복부 압통까지 있으니 그건 SBP를 의미할 수 있어요 | 의미 stetho
+   3. To confirm, let's get cultures from different sites and consider a diagnostic tap. | 확인하려면 서로 다른 부위에서 배양 검사를 하고 진단적 천자를 고려합시다 | 검사 lab
+   4. I'll notify the physician about all of that and start the workup. | 그 모든 걸 의사에게 알리고 검사 절차를 시작할게요 | 보고 pager
+## 6 간성뇌증 단계별 관리
+ SLIDER ['w-improve'] cue=At 8 a.m. he couldn't give the date. At noon he gives it, but he's still very sleepy. | scale=['unchanged', 'improving', 'recovered'] at=1
+   why=날짜를 말하게 됐지만 아직 많이 졸리면 improving이에요. 다 나은 것은 아니라서 recovered라고 쓰면 안 돼요. 같은 기준으로 계속 기록해 추세를 봐요.
+   ex=His mental status is improving. / 그의 정신 상태가 좋아지고 있어요.
+ CONTEXT ['w-trigger'] word=trigger ko=유발요인
+   - 의사 라운드 ok=True: Look for the trigger: infection, a GI bleed, or electrolytes.
+   - 야간 인계 ok=True: The trigger is likely infection; cultures were sent and antibiotics ordered.
+   - 보호자에게 ok=False: No precipitating factor or trigger has been identified yet. ||fix: We're still looking for what set this off, like an infection or bleeding.
+   why=의료진끼리는 precipitating factor나 trigger가 정확해요. 보호자에게는 같은 trigger를 무엇이 이걸 일으켰는지 찾고 있다는 쉬운 말로 풀어 주세요.
+ SWAP ['w-confusion'] 보호자에게 · 혼란 설명 before=['His ', 'encephalopathy', ' may be from the infection.'] opts=['confusion', 'encephalopathy', 'altered mentation'] ans=confusion
+   notes={'confusion': '보호자가 바로 알아듣는 말이에요.', 'encephalopathy': '의료진끼리 쓰는 말이라 보호자는 어려워해요.', 'altered mentation': '차트용 표현이라 가족 대화에는 딱딱해요.'}
+   why=원인을 단정하지 않고 '일 수 있다'고 말하면서, 쉬운 단어를 쓰면 보호자가 상황을 이해하고 지켜보는 일을 도울 수 있어요.
+   ko=그의 혼란은 감염 때문일 수 있어요
+ ORDER [대화 흐름|compass] 간성뇌증 설명 4문장 순서
+   why=악화 요인을 알리고 원인을 찾아 치료 중이라 말한 뒤, 함께 하는 조치를 덧붙이고 회복에 대한 기대로 마무리해요.
+   1. Things like infection or bleeding can worsen the confusion. | 감염이나 출혈 같은 것들이 혼란을 악화시킬 수 있어요 | 원인 fire
+   2. So we're looking for the trigger and treating it. | 그래서 유발요인을 찾아서 치료하고 있어요 | 조치 magnify
+   3. Alongside that, the lactulose and other steps should help him clear. | 그와 함께 락툴로오스와 다른 조치들이 정신을 맑게 하는 데 도움이 될 거예요 | 병행 pill
+   4. With all of that, his mind usually clears again. | 그 모든 걸 하면 보통 정신이 다시 맑아져요 | 기대 star
+## 7 응고장애·출혈 위험 관리
+ SLIDER ['w-high'] cue=His INR is 4.8, and he's oozing from his IV site. | scale=['mildly high', 'high', 'very high'] at=2
+   why=INR 4.8에 정맥주사 자리에서 스며 나오면 very high예요. 출혈 위험이 크니 바로 의사에게 알려요. 혈장 같은 교정은 처방과 시술 계획에 따라 하고, 간부전에서는 INR이 간의 합성 기능을 보여 주는 값이기도 해요.
+   ex=His INR is very high. / 그의 INR이 매우 높아요.
+ CONTEXT ['w-plasma'] word=plasma ko=혈장
+   - 의사 라운드 ok=True: Give plasma if he bleeds or before an invasive procedure.
+   - 야간 인계 ok=True: Two units of plasma are running, and the INR recheck is due in the morning.
+   - 환자에게 ok=False: Your plasma, specifically FFP, supplies exogenous coagulation factors. ||fix: Plasma is the part of donated blood that carries clotting helpers, and it can help your blood clot.
+   why=의료진끼리는 FFP, exogenous coagulation factors 같은 용어가 정확해요. 환자에게는 같은 plasma를 헌혈 혈액에서 응고를 돕는 부분이라고 쉬운 말로 알려 주세요.
+ SWAP ['w-hold', 'w-firm'] 환자에게 · 시술 후 안내 before=["I'll ", 'apply sustained manual compression', ' at the site.'] opts=['hold firm pressure', 'apply sustained manual compression', 'tamponade the site'] ans=hold firm pressure
+   notes={'hold firm pressure': '환자가 무엇을 하는지 바로 알아들어요.', 'apply sustained manual compression': '정확하지만 긴 의료 용어라 환자에게는 딱딱해요.', 'tamponade the site': '의료진끼리 쓰는 말이라 환자는 못 알아들어요.'}
+   why=처치 중에는 환자가 불안해하기 쉬워서, 하는 일을 짧고 쉬운 동사로 알려 주면 안심이 돼요.
+   ko=그 부위를 단단히 눌러 줄게요
+ ORDER [대화 흐름|compass] 시술 전 출혈 대비 4문장 순서
+   why=INR을 교정하고 혈소판까지 채운 뒤, 라인을 넣은 후 압박을 유지하고, 마지막으로 응고 수치를 다시 확인하며 출혈을 지켜봐요.
+   1. His INR is high, so we'll give plasma before the line. | INR이 높아서 라인을 넣기 전에 혈장을 줄게요 | 교정 pill
+   2. Platelets are also low, so we'll transfuse before the procedure. | 혈소판도 낮아서 시술 전에 수혈할게요 | 수혈 pill
+   3. We'll hold firm pressure at the site after the line goes in. | 라인을 넣은 뒤 부위에 단단히 압박을 유지할게요 | 압박 bandage
+   4. With all of that done, we'll recheck the coags and watch for bleeding. | 그 모든 걸 마치면 응고 수치를 재확인하고 출혈을 지켜볼게요 | 재검 lab
+## 8 뇌부종 위험 감시
+ SLIDER ['w-sluggish'] cue=His right pupil takes several seconds to react to the light. | scale=['brisk', 'sluggish', 'nonreactive'] at=1
+   why=빛에 반응은 하지만 몇 초씩 걸리면 sluggish예요. brisk는 즉각 반응하는 정상, nonreactive는 아예 반응이 없는 경우예요. 새로 생긴 둔한 동공이나 좌우 차이는 뇌압이 오르는 신호일 수 있어 바로 알려요.
+   ex=His right pupil is sluggish. / 그의 오른쪽 동공이 둔해요.
+ CONTEXT ['w-pupil'] word=pupil ko=동공
+   - 의사 라운드 ok=True: The right pupil is sluggish, and I'm worried about early herniation.
+   - 야간 인계 ok=True: Each pupil was equal and reactive at 0200 and 0400.
+   - 보호자에게 ok=False: His right pupil shows anisocoria with a sluggish consensual response. ||fix: The dark center of his right eye is reacting to light more slowly than the left, so we're calling the doctor.
+   why=의료진끼리는 anisocoria, consensual response 같은 용어가 정확해요. 보호자에게는 같은 pupil을 눈 한가운데 검은 부분이라고 풀고, 지금 무엇을 하는지 함께 알려 주세요.
+ SWAP ['w-elevated'] 보호자에게 · 침상 설명 before=['We keep ', 'his cranium elevated', ' to help with brain swelling.'] opts=['his head raised', 'HOB at thirty degrees', 'his cranium elevated'] ans=his head raised
+   notes={'his head raised': '보호자가 바로 알아듣고 무엇을 하는지 분명해요.', 'HOB at thirty degrees': 'HOB은 의료진 약어라 보호자는 뜻을 몰라요.', 'his cranium elevated': '정확하지만 어색한 의학 용어라 가족 대화에는 맞지 않아요.'}
+   why=머리 높이는 보호자가 침대를 낮추지 않도록 알려야 하는 일이라, 쉬운 말과 이유를 함께 전해요.
+   ko=뇌가 붓는 것을 줄이도록 머리를 높여 두고 있어요
+ ORDER [대화 흐름|compass] 뇌부종 감시 4문장 순서
+   why=동공 변화를 먼저 알리고 바로 보고한 뒤, 머리 높이 같은 보호 조치를 이어 가고, 그 모든 과정에서 신경 감시를 계속해요.
+   1. His right pupil looks a little sluggish compared to the left. | 오른쪽 동공이 왼쪽에 비해 조금 둔해 보여요 | 관찰 magnify
+   2. I'm escalating now before this becomes a bigger problem. | 더 큰 문제가 되기 전에 지금 에스컬레이션할게요 | 보고 siren
+   3. Alongside that, let's keep his head elevated and avoid spikes in pressure. | 그와 함께 머리를 높이고 압력이 치솟는 걸 피합시다 | 보호 baby
+   4. Through all of it, let's watch his neuro exam and pupils closely. | 그 모든 과정에서 신경학적 검진과 동공을 자세히 지켜봅시다 | 감시 monitor
+## 9 간신증후군 감시
+ SLIDER ['w-fall'] cue=His urine output was 60, then 45, then 30 mL an hour. | scale=['holding', 'falling', 'nearly stopped'] at=1
+   why=세 번 연속 조금씩 줄면 falling이에요. 소변량이 시간당 0.5mL/kg 아래로 이어지면 신장이 위험하다는 신호라 의사에게 알려요. holding은 변화가 없을 때, nearly stopped는 거의 나오지 않을 때예요.
+   ex=His urine output is falling. / 그의 소변량이 줄고 있어요.
+ CONTEXT ['w-kidney'] word=kidney ko=신장
+   - 의사 라운드 ok=True: His kidney function is declining, so consider hepatorenal syndrome.
+   - 야간 인계 ok=True: Kidney function was stable overnight, and his creatinine was unchanged.
+   - 환자에게 ok=False: Your kidney perfusion is compromised secondary to splanchnic vasodilation. ||fix: Your kidneys aren't getting enough blood flow because of your liver illness.
+   why=의료진끼리는 splanchnic vasodilation 같은 용어가 정확해요. 환자에게는 같은 kidney 문제를 신장에 피가 덜 간다는 쉬운 말로 풀어 주세요.
+ SWAP ['w-albumin'] 환자에게 · 투약 설명 before=["We'll give you ", 'a colloid', ' to help your kidneys.'] opts=['a protein medicine', 'albumin', 'a colloid'] ans=a protein medicine
+   notes={'a protein medicine': '환자가 바로 알아듣고 무엇인지 짐작할 수 있어요.', 'albumin': '정확한 이름이지만 먼저 쉬운 설명을 하고 덧붙이는 편이 좋아요.', 'a colloid': '의료진끼리 쓰는 분류 용어라 환자는 못 알아들어요.'}
+   why=환자에게는 먼저 쉬운 설명을 하고 필요하면 이름을 덧붙여요. 알부민은 헌혈 혈장에서 만든 제제라서 이 점은 의사가 동의 과정에서 설명해요.
+   ko=신장을 돕는 단백질 약을 드릴 거예요
+ ORDER [대화 흐름|compass] 간신증후군 대응 4문장 순서
+   why=신장이 반응하지 않는 상황을 알리고 진단 가능성을 설명한 뒤, 시험적 투여로 반응을 보며, 그 모든 내용을 의사에게 알려요.
+   1. His kidneys are shutting down despite the fluids we've given. | 수액을 줬는데도 신장이 멈춰 가고 있어요 | 상황 stetho
+   2. This can be hepatorenal syndrome if other causes are ruled out. | 다른 원인이 배제되면 간신증후군일 수 있어요 | 진단 lab
+   3. I'll notify the physician about all of that now. | 그 모든 것에 대해 지금 의사에게 알릴게요 | 보고 pager
+   4. Once they order it, let's give the albumin challenge and see if his output responds. | 그들이 처방하면 알부민 시험적 투여를 하고 배출량이 반응하는지 봅시다 | 시험 pill
+## 10 이식 평가 연계
+ SLIDER ['w-urgency'] cue=The center says he is status 1A, the highest priority on the list. | scale=['routine', 'urgent', 'emergent'] at=2
+   why=급성 간부전 환자의 1A는 이식 대기에서 가장 우선순위가 높은 단계라 emergent예요. 순위는 이식센터가 정하고, 간호사는 상태 변화를 바로 보고해요.
+   ex=The urgency is emergent. / 시급성이 아주 높아요.
+ CONTEXT ['w-evaluate'] word=evaluate ko=평가하다
+   - 의사 라운드 ok=True: Transplant surgery will evaluate him this afternoon if he stays stable.
+   - 야간 인계 ok=True: The psychosocial team will evaluate him tomorrow morning.
+   - 보호자에게 ok=False: The multidisciplinary committee will evaluate his candidacy per UNOS criteria. ||fix: The transplant team will look at whether a new liver is the right choice for him.
+   why=의료진끼리는 candidacy, UNOS criteria 같은 용어가 정확해요. 보호자에게는 같은 evaluate를 팀이 무엇을 살펴보는지 쉬운 말로 풀어 주세요.
+ SWAP ['w-list', 'w-decide'] 가족에게 · 대기 명단 설명 before=['The team will decide whether he can be ', 'activated on the registry', ' for a transplant.'] opts=['put on the waiting list', 'listed', 'activated on the registry'] ans=put on the waiting list
+   notes={'put on the waiting list': '가족이 바로 알아듣는 말이에요.', 'listed': '의료진끼리 쓰는 짧은 표현이라 가족은 뜻을 놓칠 수 있어요.', 'activated on the registry': '등록 절차를 가리키는 전문 표현이라 가족 대화에는 어려워요.'}
+   why=가족은 명단에 오르는 것을 곧 이식으로 오해하기 쉬워요. 쉬운 말로 설명하고 명단과 장기 배정은 다르다는 점도 알려요.
+   ko=그를 이식 대기 명단에 올릴 수 있는지 팀이 결정할 거예요
+ ORDER [대화 흐름|compass] 이식 평가 안내 4문장 순서
+   why=이식팀이 평가한다고 알리고 평가 내용을 설명한 뒤, 등록이 곧 이식은 아니라는 점을 바로잡고 질문을 환영하며 마무리해요.
+   1. The transplant team will evaluate whether he's a candidate. | 이식팀이 그가 대상자인지 평가할 거예요 | 평가 hospital
+   2. That evaluation includes tests, imaging, and a psychosocial interview. | 그 평가에는 검사, 영상 검사, 심리사회적 면담이 포함돼요 | 항목 board
+   3. After that evaluation, being listed doesn't mean he'll get an organ right away. | 그 평가 뒤에도 등록됐다고 바로 장기를 받는 건 아니에요 | 안내 shield
+   4. Through every step of that, we'll answer your questions. | 그 모든 단계에서 질문에 답해 드릴게요 | 약속 speech
+## 11 원인별 치료
+ SLIDER ['w-reaction'] cue=Ten minutes into the NAC infusion, he has hives all over, wheezing, and low blood pressure. | scale=['no reaction', 'mild reaction', 'severe reaction'] at=2
+   why=온몸 두드러기와 쌕쌕거림, 저혈압이 함께 오면 severe reaction이에요. 병원 프로토콜대로 주입을 멈추고 바로 도움을 요청해요. 홍조나 가벼운 두드러기만 있으면 mild로 보지만 그것도 처방자에게 알려요.
+   ex=He's having a severe reaction to the infusion. / 그가 주입에 심한 반응을 보이고 있어요.
+ CONTEXT ['w-treatment'] word=treatment ko=치료
+   - 의사 라운드 ok=True: Early treatment with NAC gives the liver the best chance.
+   - 야간 인계 ok=True: Treatment started at 0200 per protocol, and there's been no reaction so far.
+   - 환자에게 ok=False: Your hepatotoxicity requires treatment with an N-acetylcysteine regimen. ||fix: The treatment is a medicine called NAC, and it works best when we start it early.
+   why=의료진끼리는 hepatotoxicity, N-acetylcysteine regimen 같은 용어가 정확해요. 환자에게는 같은 treatment를 어떤 약이고 왜 빨리 시작하는지 쉬운 말로 풀어 주세요.
+ SWAP ['w-acetaminophen'] 환자에게 · 원인 설명 before=['The amount of ', 'APAP', ' in your blood confirms the cause.'] opts=['Tylenol', 'APAP', 'paracetamol'] ans=Tylenol
+   notes={'Tylenol': '미국 환자가 바로 아는 이름이에요.', 'APAP': '의료진 약어라 환자는 모를 수 있어요.', 'paracetamol': '영국 등에서 쓰는 이름이라 미국 병원에서는 낯설어요.'}
+   why=성분명은 acetaminophen이고 의료진은 APAP로 줄여 써요. 환자에게는 약 이름을 아는 말(Tylenol)로 알려야 원인을 이해하고 다른 감기약에도 같은 성분이 있는지 묻기 쉬워요.
+   ko=혈액 속 타이레놀 양이 원인을 확인해 줘요
+ ORDER [대화 흐름|compass] 원인 치료 4문장 순서
+   why=수치로 원인을 확인하고, 치료를 시작한 뒤 용량과 반응을 살피며, 이른 치료가 간에 가장 큰 기회를 준다고 마무리해요.
+   1. His acetaminophen level confirms this was the cause. | 아세트아미노펜 수치가 이게 원인이었다는 걸 확인해 줘요 | 근거 lab
+   2. So let's start the NAC infusion per protocol. | 그러니 프로토콜에 따라 NAC 주입을 시작합시다 | 시작 pill
+   3. I'll confirm the dosing and monitor for reactions as it runs. | 주입되는 동안 용량을 확인하고 반응을 모니터링할게요 | 감시 check
+   4. With that care, early treatment gives the liver the best chance. | 그렇게 살피며 이른 치료를 하면 간에 가장 좋은 기회를 줘요 | 기대 star
+## 12 감염 예방·조기 치료
+ SLIDER ['w-redness'] cue=There's a faint pink spot at the line site, the same size as yesterday. | scale=['slight redness', 'spreading redness', 'redness with pus'] at=0
+   why=어제와 크기가 같은 옅은 발적은 slight redness예요. 그래도 매 근무 부위를 보고, 커지거나 따뜻해지거나 고름이 나오면 바로 알려야 해요.
+   ex=There's slight redness at the site. / 부위에 약간의 발적이 있어요.
+ CONTEXT ['w-sign'] word=sign ko=징후
+   - 의사 라운드 ok=True: Early signs of sepsis are a higher temperature, a faster heart rate, and new confusion.
+   - 야간 인계 ok=True: No new signs of infection at the line site overnight.
+   - 환자에게 ok=False: You meet two SIRS criteria, which is a sign of possible sepsis. ||fix: Your fast heartbeat and fever are a sign that you may have an infection, and we're checking.
+   why=의료진끼리는 SIRS criteria 같은 용어가 정확하고 빨라요. 환자에게는 같은 sign을 어떤 증상이 무엇을 뜻하는지 쉬운 말로 풀어 주세요.
+ SWAP ['w-dressing', 'w-line'] 환자에게 · 드레싱 교체 before=["I'm going to change ", 'your CVC occlusive dressing', ' now.'] opts=['the covering over your line', 'your central line dressing', 'your CVC occlusive dressing'] ans=the covering over your line
+   notes={'the covering over your line': '환자가 바로 알아듣고 무엇을 바꾸는지 분명해요.', 'your central line dressing': '정확하지만 환자에게는 약간 의료 용어 같아요.', 'your CVC occlusive dressing': '약어와 전문 용어가 겹쳐 환자는 못 알아들어요.'}
+   why=드레싱 교체는 무균 술기라 환자 협조가 필요해요. 무엇을 하는지 쉬운 말로 알려 주면 몸을 움직이지 않고 기다려 줘요.
+   ko=라인을 덮은 드레싱을 지금 교체할게요
+ ORDER [대화 흐름|compass] 감염 예방 4문장 순서
+   why=감염에 취약하다는 이유를 먼저 말하고, 예방을 유지하며 감시한 뒤, 징후가 나오면 항생제를 빠르게 시작한다고 말해요.
+   1. His skin and lines are prone to infection right now. | 지금 피부와 라인이 감염에 취약해요 | 이유 shield
+   2. So let's keep up strict hand hygiene and line care. | 그러니 철저한 손 위생과 라인 관리를 유지합시다 | 예방 shield
+   3. I'll watch his vitals and labs for early sepsis. | 조기 패혈증을 위해 활력징후와 검사를 지켜볼게요 | 감시 monitor
+   4. If that watch turns up signs, we'll start antibiotics quickly. | 그 감시에서 징후가 나오면 항생제를 빠르게 시작할게요 | 치료 pill
+## 13 영양·단백 관리
+ SLIDER ['w-little'] cue=He ate about two spoonfuls of the protein shake. | scale=['plenty', 'a little', 'none'] at=1
+   why=두 숟가락 정도면 a little이에요. plenty는 충분히 먹은 경우, none은 전혀 안 먹은 경우예요. 섭취량은 영양팀에 알려 단백질을 어떻게 보충할지 정해요.
+   ex=He ate only a little protein today. / 그는 오늘 단백질을 조금만 먹었어요.
+ CONTEXT ['w-protein'] word=protein ko=단백질
+   - 의사 라운드 ok=True: Don't restrict protein, because malnutrition makes encephalopathy worse.
+   - 야간 인계 ok=True: He drank half of the protein shake at 2100.
+   - 환자에게 ok=False: Your daily protein requirement is 1.2 to 1.5 grams per kilogram of dry weight. ||fix: Eating enough protein, like eggs, chicken, or a shake, protects your muscles.
+   why=의료진끼리는 g/kg 같은 수치 기준이 정확하고 빨라요. 환자에게는 같은 protein을 어떤 음식으로 먹으면 되는지, 왜 필요한지 쉬운 말로 알려 주세요.
+ SWAP ['w-meal'] 환자에게 · 식사 안내 before=['Try to eat ', 'multiple small feedings', ' with some protein.'] opts=['smaller meals more often', 'small frequent meals', 'multiple small feedings'] ans=smaller meals more often
+   notes={'smaller meals more often': '환자가 바로 알아듣는 쉬운 말이에요.', 'small frequent meals': '무난하지만 약간 딱딱해요.', 'multiple small feedings': '영양 처방에서 쓰는 말이라 환자에게는 어색해요.'}
+   why=간경변 환자는 조금씩 자주 먹고 밤 간식을 하는 것이 도움이 되는 경우가 많아서, 쉬운 말로 알려 주면 실천하기 쉬워요.
+   ko=조금씩 자주, 단백질을 곁들여 드셔 보세요
+ ORDER [대화 흐름|compass] 영양 계획 4문장 순서
+   why=단백질을 유지하는 원칙을 말하고, 수치로 조정한다고 알린 뒤, 영양사가 계획을 짜고 매일 이어서 확인한다고 안내해요.
+   1. We usually keep protein up to protect your muscles. | 근육을 지키려고 보통 단백질을 유지해요 | 원칙 star
+   2. We adjust that protein carefully based on your ammonia. | 그 단백질은 암모니아 수치를 근거로 조심스럽게 조정해요 | 조정 lab
+   3. A dietitian will tailor a plan around that adjustment. | 영양사가 그 조정에 맞춰 계획을 짜 줄 거예요 | 계획 handshake2
+   4. The dietitian will follow up with you daily. | 영양사가 매일 당신과 함께 확인할 거예요 | 후속 calendar
+## 14 약물 대사·용량 조정
+ SLIDER ['w-response'] cue=He opens his eyes and answers me when I say his name. | scale=['alert', 'drowsy', 'unresponsive'] at=0
+   why=이름만 불러도 눈을 뜨고 대답하면 alert로 기록해요. 진정제를 쓴 뒤에는 깨우는 데 필요한 자극이 점점 커지는지(drowsy, unresponsive) 같은 기준으로 보고, 간 기능이 나쁘면 약이 오래 남을 수 있어 변화를 바로 알려요.
+   ex=His response to my voice is alert. / 내 목소리에 그가 또렷하게 반응해요.
+ CONTEXT ['w-dose'] word=dose ko=용량
+   - 의사 라운드 ok=True: Let's lower the dose, because his liver won't clear it well.
+   - 야간 인계 ok=True: Tonight's dose was held pending the physician's call because he was too sleepy.
+   - 환자에게 ok=False: Your dose has been hepatically adjusted to a q12h interval. ||fix: We're giving you a smaller dose because your liver clears medicines slowly.
+   why=의료진끼리는 hepatically adjusted, q12h 같은 표기가 정확하고 빨라요. 환자에게는 같은 dose를 왜 줄였는지 쉬운 말로 풀어 주세요.
+ SWAP ['w-sedative'] 보호자에게 · 진정제 설명 before=["We're being careful with ", 'CNS depressants', ' because they can cloud his thinking.'] opts=['medicines that make him sleepy', 'sedatives', 'CNS depressants'] ans=medicines that make him sleepy
+   notes={'medicines that make him sleepy': '보호자가 바로 알아듣고 이유도 이해돼요.', 'sedatives': '알아듣는 가족도 있지만 먼저 쉬운 설명이 안전해요.', 'CNS depressants': '약리 분류 용어라 가족에게는 어렵고 차갑게 들려요.'}
+   why=간이 약을 천천히 처리하면 진정제가 오래 남아 의식이 더 흐려질 수 있어요. 가족에게는 이 이유를 쉬운 말로 알려야 약을 줄이는 계획을 이해해요.
+   ko=그를 졸리게 하는 약은 생각을 흐리게 할 수 있어서 조심하고 있어요
+ ORDER [대화 흐름|compass] 약물 용량 조정 4문장 순서
+   why=간이 약을 못 치우는 이유를 말하고, 조정할 약을 검토하며, 진정제 용량을 낮춘 뒤 나머지 약은 간격을 둔다고 이어요.
+   1. His liver can't clear these medications the way it used to. | 간이 예전처럼 이 약물들을 청소하지 못해요 | 이유 pill
+   2. So let's review which meds need dose adjustment. | 그러니 어떤 약이 용량 조정이 필요한지 검토합시다 | 검토 board
+   3. Let's lower the sedative dose and check his response. | 진정제 용량을 낮추고 반응을 확인합시다 | 감량 gear
+   4. We'll space out the rest of the doses that are hard to clear. | 청소하기 어려운 나머지 약은 간격을 두고 줄게요 | 간격 calendar
+## 15 급성 간부전 뇌부종 뇌탈출 위기
+ SLIDER ['w-immediately'] cue=His left pupil just blew, and he stopped responding to my voice. | scale=['later', 'soon', 'immediately'] at=2
+   why=동공이 갑자기 커지고 반응이 없어지면 뇌탈출 징후일 수 있어서 기다리지 않고 immediately 연락해요. 의사와 신속대응팀을 바로 호출하고 처방된 치료를 준비해요.
+   ex=Call the physician immediately. / 즉시 의사에게 연락하세요.
+ CONTEXT ['w-sluggish'] word=sluggish ko=둔한
+   - 의사 라운드 ok=True: His right pupil is sluggish, and I'm worried about herniation.
+   - 야간 인계 ok=True: Both pupils were sluggish at 0300, and neuro was notified.
+   - 보호자에게 ok=False: Bilateral sluggish pupils with a Cushing response suggest impending uncal herniation. ||fix: His eyes are reacting more slowly to light, which tells us his brain is under pressure.
+   why=의료진끼리는 Cushing response, uncal herniation 같은 용어가 정확해요. 보호자에게는 같은 sluggish를 빛에 더디게 반응한다는 쉬운 말로 풀고, 그것이 무엇을 뜻하는지 알려 주세요.
+ SWAP ['w-emergency'] 보호자에게 · 상황 설명 before=['This is ', 'a little concerning', ", and we're acting on it right now."] opts=['an emergency', 'a little concerning', 'no cause for alarm'] ans=an emergency
+   notes={'an emergency': '상황을 있는 그대로 말하면서 지금 조치 중임을 알려요.', 'a little concerning': '실제보다 가볍게 들려서 가족이 위험을 놓칠 수 있어요.', 'no cause for alarm': '사실과 달라서 신뢰를 잃게 해요.'}
+   why=응급일 때는 상황을 축소하지 않고 분명하게 말하면서 지금 무엇을 하는지 함께 알려야 가족이 이해하고 기다릴 수 있어요.
+   ko=이건 응급 상황이고, 지금 바로 조치하고 있어요
+ ORDER [대화 흐름|compass] 뇌탈출 위기 4문장 순서
+   why=동공 변화를 먼저 알리고, 즉시 식염수와 머리 거상을 지시한 뒤, 투여 사실과 CT 요청을 알리며 의사에게 모든 걸 보고해요.
+   1. His pupil just became sluggish, and this is an emergency. | 동공이 방금 둔해졌고, 이건 응급 상황이에요 | 선언 siren
+   2. I'm calling neuro and the physician immediately. | 신경팀과 의사에게 즉시 연락하고 있어요 | 호출 pager
+   3. While they're on the way, give the hypertonic saline and elevate his head. | 그들이 오는 동안 고장성 식염수를 주고 머리를 높이세요 | 지시 siren
+   4. I'm pushing it now, and I need a repeat head CT. | 지금 투여하고 있고, 머리 CT를 다시 찍어야 해요 | 보고 pill
+## 16 대량 출혈·응고붕괴 위기
+ SLIDER ['w-frequently'] cue=He's actively bleeding and receiving blood products. How often should fibrinogen and coags be rechecked? | scale=['rarely', 'sometimes', 'frequently'] at=2
+   why=활동성 출혈 중 수혈할 때는 응고 수치와 피브리노겐을 자주 재검해서 어떤 제제가 더 필요한지 정해요. 정확한 간격은 대량수혈 프로토콜과 처방을 따라요.
+   ex=We recheck his labs frequently. / 그의 검사를 자주 재확인해요.
+ CONTEXT ['w-product'] word=product ko=혈액제제
+   - 의사 라운드 ok=True: Keep giving blood products in balanced ratios while he's bleeding.
+   - 야간 인계 ok=True: Blood products are on the way from the blood bank.
+   - 보호자에게 ok=False: He's receiving a 1:1:1 ratio of blood products per the massive transfusion protocol. ||fix: He's getting donated blood and the parts of blood that help it clot, to stop the bleeding.
+   why=의료진끼리는 1:1:1 ratio, massive transfusion protocol 같은 용어가 정확하고 빨라요. 보호자에게는 같은 product를 무엇을 왜 주는지 쉬운 말로 풀어 주세요.
+ SWAP ['w-shock', 'w-watch'] 보호자에게 · 상태 설명 before=["We're watching closely for ", 'hemorrhagic shock', '.'] opts=['low blood pressure from blood loss', 'hemorrhagic shock', 'exsanguination'] ans=low blood pressure from blood loss
+   notes={'low blood pressure from blood loss': '보호자가 무슨 일인지 바로 알아들어요.', 'hemorrhagic shock': '의료진끼리 쓰는 말이라 보호자는 뜻을 모를 수 있어요.', 'exsanguination': '피가 다 빠진다는 극단적인 말이라 가족을 심하게 놀라게 해요.'}
+   why=응급 상황일수록 가족이 알아들을 수 있는 말이 필요해요. 위험을 줄이지도 부풀리지도 않으면서 무엇을 지켜보는지 알려 주세요.
+   ko=출혈로 혈압이 떨어지는지 자세히 지켜보고 있어요
+ ORDER [대화 흐름|compass] 대량 출혈 대응 4문장 순서
+   why=상황을 알린 뒤 제제를 가져오게 하고, 균형 있게 수혈하며, 들어가는 동안 수치를 자주 다시 확인해요.
+   1. He's bleeding from everywhere, so we need products fast. | 그가 곳곳에서 출혈하고 있어서 제제가 빨리 필요해요 | 상황 siren
+   2. Get plasma, platelets, and cryo now. | 혈장, 혈소판, 동결침전제제를 지금 가져오세요 | 요청 bandage
+   3. Transfuse them in balanced ratios and keep him warm. | 그것들을 균형 잡힌 비율로 수혈하고 그를 따뜻하게 유지하세요 | 수혈 pill
+   4. Recheck fibrinogen and coags frequently as they go in. | 들어가는 동안 피브리노겐과 응고 수치를 자주 재확인하세요 | 재검 lab
+## 17 급성 의식저하 기도 위기
+ SLIDER ['w-difficult'] cue=His mouth opens only one finger-width, and his neck is stiff. | scale=['routine', 'difficult', 'failed'] at=1
+   why=입이 거의 벌어지지 않고 목이 뻣뻣하면 어려운 기도(difficult airway)를 예상해요. 어려운 기도 카트와 숙련된 도움을 미리 준비해요. failed는 이미 시도했는데 실패한 경우예요.
+   ex=This could be a difficult airway. / 어려운 기도일 수 있어요.
+ CONTEXT ['w-airway'] word=airway ko=기도
+   - 의사 라운드 ok=True: I'm worried about his airway, because he isn't protecting it.
+   - 야간 인계 ok=True: His airway was patent overnight, and he was suctioned twice for secretions.
+   - 보호자에게 ok=False: He has lost his airway protective reflexes and requires definitive airway control. ||fix: He can't keep his airway safe on his own, so a breathing tube will help him.
+   why=의료진끼리는 protective reflexes, definitive airway control 같은 용어가 정확해요. 보호자에게는 같은 airway를 숨길을 스스로 지키지 못한다는 쉬운 말로 풀어 주세요.
+ SWAP ['w-intubation'] 보호자에게 · 삽관 안내 before=['We need to place ', 'an endotracheal tube', ' to help him breathe safely.'] opts=['a breathing tube', 'an endotracheal tube', 'an ET tube'] ans=a breathing tube
+   notes={'a breathing tube': '보호자가 바로 알아듣고 무엇을 하는지 분명해요.', 'an endotracheal tube': '정확한 이름이지만 가족에게는 길고 낯설어요.', 'an ET tube': '약어라 가족은 못 알아들어요.'}
+   why=삽관은 가족이 크게 놀라는 처치라 쉬운 말로 이유와 함께 알려요. 동의와 위험 설명은 의사가 해요.
+   ko=안전하게 숨 쉬도록 돕기 위해 기도에 관을 넣어야 해요
+ ORDER [대화 흐름|compass] 기도 위기 4문장 순서
+   why=기도를 못 지키는 상태를 알리고, 장비를 준비한 뒤 산소화와 자세를 잡으며, 마지막으로 삽관하는 동안 압박을 맡아요.
+   1. His mental status just dropped, and he can't protect his airway. | 정신 상태가 방금 떨어졌고, 기도를 지키지 못해요 | 보고 siren
+   2. I'll get the intubation tray and suction ready. | 삽관 트레이와 흡인 준비를 가져올게요 | 준비 gear
+   3. While that's coming, let's preoxygenate and position his airway. | 그게 오는 동안 예비 산소화하고 기도 자세를 잡읍시다 | 산소화 gear
+   4. With him positioned like that, I'll hold cricoid pressure while you pass the tube. | 그렇게 자세가 잡히면 당신이 튜브를 넣는 동안 윤상연골 압박을 유지할게요 | 압박 handshake2
+## 18 다장기부전 진행 위기
+ SLIDER ['w-spiral'] cue=Within two hours his pressure, oxygen, and urine output all worsened, and they're still dropping fast. | scale=['slowly worsening', 'worsening', 'spiraling'] at=2
+   why=여러 장기가 짧은 시간에 함께 급격히 나빠지면 spiraling이라고 해요. 그때는 혼자 버티지 말고 즉시 의사에게 에스컬레이션하고 도움을 더 불러요. slowly worsening과 worsening은 속도가 느릴 때예요.
+   ex=He is spiraling right now. / 그의 상태가 급격히 나빠지고 있어요.
+ CONTEXT ['w-support'] word=support ko=지지하다
+   - 의사 라운드 ok=True: He needs more support for his lungs and kidneys.
+   - 야간 인계 ok=True: Vent support was increased overnight, and the pressors are unchanged.
+   - 보호자에게 ok=False: He's on maximal multiorgan support with a poor prognosis. ||fix: His body needs a lot of help right now, and machines are supporting his breathing and kidneys.
+   why=의료진끼리는 maximal multiorgan support 같은 표현이 정확하고 빨라요. 보호자에게는 같은 support를 지금 무엇이 몸을 돕고 있는지 쉬운 말로 풀어 주세요. 예후는 의사가 직접 설명해요.
+ SWAP ['w-dialysis'] 보호자에게 · 투석 설명 before=['His kidneys have stopped working well, so he may need ', 'renal replacement therapy', '.'] opts=['dialysis', 'renal replacement therapy', 'CRRT'] ans=dialysis
+   notes={'dialysis': '가족이 가장 잘 아는 말이에요.', 'renal replacement therapy': '정확하지만 가족에게는 길고 어려워요.', 'CRRT': '약어라 가족은 못 알아들어요.'}
+   why=투석은 가족이 이미 알고 있는 경우가 많아서 아는 말을 쓰면 이해가 빨라요. 시작 여부는 의사가 정하고 설명해요.
+   ko=신장이 잘 작동하지 않아서 투석이 필요할 수도 있어요
+ ORDER [대화 흐름|compass] 다장기부전 대응 4문장 순서
+   why=장기들이 동시에 무너진다고 보고하고 의사에게 올린 뒤, 그 지지가 어떤 치료로 이어질지 예고하고, 모든 장기를 지지하며 안정시켜요.
+   1. His kidneys, lungs, and pressure are all failing at once. | 신장, 폐, 혈압이 한꺼번에 기능을 멈추고 있어요 | 보고 siren
+   2. I'm escalating to the physician for more support. | 더 많은 지지를 위해 의사에게 에스컬레이션하고 있어요 | 호출 pager
+   3. That support may mean dialysis and higher vent settings. | 그 지지는 투석과 더 높은 인공호흡기 설정을 뜻할 수도 있어요 | 예고 gear
+   4. Through all of it, we're supporting every organ we can while we stabilize him. | 그 모든 과정에서 그를 안정시키는 동안 가능한 모든 장기를 지지하고 있어요 | 지지 shield
+## 19 응급 이식 조율 위기
+ SLIDER ['w-handoff'] cue=You told the transplant center only his diagnosis and current vitals, with no meds, labs, or lines. | scale=['partial handoff', 'standard handoff', 'full handoff'] at=0
+   why=진단과 활력징후만 전하고 약, 검사, 라인이 빠지면 partial handoff예요. 이식센터 인계에는 진단, 투약, 검사 추이, 라인과 튜브, 가족 상황까지 담아야 안전해요.
+   ex=That was only a partial handoff. / 그건 일부만 인계한 거였어요.
+ CONTEXT ['w-transfer'] word=transfer ko=이송
+   - 의사 라운드 ok=True: The accepting physician is ready, so the transfer is approved.
+   - 야간 인계 ok=True: The transfer to the transplant center is set for 0600.
+   - 보호자에게 ok=False: We're initiating an interfacility transfer under EMTALA. ||fix: We're moving him to the transplant hospital so the liver team there can care for him.
+   why=의료진끼리는 interfacility transfer, EMTALA 같은 용어가 정확해요. 보호자에게는 같은 transfer를 어디로 왜 옮기는지 쉬운 말로 풀어 주세요.
+ SWAP ['w-center', 'w-accept'] 보호자에게 · 이송 안내 before=["He'll go to ", 'the quaternary referral facility', ' once they accept him.'] opts=['the transplant hospital', 'the tertiary transplant center', 'the quaternary referral facility'] ans=the transplant hospital
+   notes={'the transplant hospital': '가족이 바로 알아듣고 어디로 가는지 분명해요.', 'the tertiary transplant center': '의료진끼리 쓰는 분류 표현이라 가족에게는 어려워요.', 'the quaternary referral facility': '행정 용어에 가까워서 가족 대화에는 맞지 않아요.'}
+   why=이송 장소는 가족이 가장 궁금해하는 정보라서 알아듣는 말로 알려요. 받아 주기 전에는 일정이 확정이 아니라는 점도 함께 전해요.
+   ko=그쪽에서 받아 주면 이식병원으로 가게 돼요
+ ORDER [대화 흐름|compass] 응급 이식 이송 4문장 순서
+   why=등록 상태로 급한 이유를 알린 뒤 안정시키고, 이동 물품을 챙기며, 이송 내내 계속 지켜본다고 말해요.
+   1. He's listed as status 1A, so the center wants him now. | 상태 1A로 등록돼서 센터가 지금 그를 원해요 | 이유 pushpin
+   2. So let's stabilize him for immediate transfer. | 그러니 즉각적인 이송을 위해 그를 안정시킵시다 | 안정 run
+   3. For the trip, bring blood and emergency meds. | 이동을 위해 혈액과 응급 약을 가져오세요 | 물품 pill
+   4. We'll monitor him closely during all of it. | 그 모든 과정에서 그를 자세히 모니터링할게요 | 감시 monitor
+## 20 이식 불가 목표·완화 소통
+ SLIDER ['w-pain'] cue=He winces only when he's turned, and says it's sore. | scale=['soreness', 'pain', 'agony'] at=0
+   why=움직일 때만 쓰라리다고 하면 soreness 쪽이에요. 통증은 환자의 말과 통증 척도로 확인하고, 말을 못 하면 표정과 자세 같은 비언어 척도로 평가해서 처방에 따라 완화해요.
+   ex=His soreness comes only when we turn him. / 그는 몸을 돌릴 때만 쓰라려해요.
+ CONTEXT ['w-comfortable'] word=comfortable ko=편안한
+   - 의사 라운드 ok=True: The goal is to keep him comfortable, so we're focusing on symptom control.
+   - 야간 인계 ok=True: He looks comfortable and is sleeping.
+   - 보호자에게 ok=False: He is comfortable, meaning we have achieved adequate symptom palliation. ||fix: He isn't hurting right now, and we'll keep working to keep him comfortable.
+   why=의료진끼리는 symptom palliation 같은 용어가 정확해요. 보호자에게는 같은 comfortable을 지금 아파 보이지 않고 계속 신경 쓰겠다는 쉬운 말로 풀어 주세요.
+ SWAP ['w-safe', 'w-option', 'w-transplant'] 가족에게 · 이식 불가 설명 before=['The transplant team said ', "he isn't a candidate", '.'] opts=["a transplant isn't a safe option for him", "he isn't a candidate", "he's been rejected"] ans=a transplant isn't a safe option for him
+   notes={"a transplant isn't a safe option for him": '이유를 분명히 하면서 가족이 알아들어요.', "he isn't a candidate": '의료진끼리 쓰는 말이라 가족에게는 이유가 전해지지 않아요.', "he's been rejected": '사실과 달리 버려졌다는 느낌을 줘서 상처가 돼요.'}
+   why=이식이 어렵다는 소식은 가족에게 큰 충격이라, 왜 안전하지 않은지를 쉬운 말로 알려야 해요. 이어서 편안함을 위해 할 수 있는 일을 알려 주세요.
+   ko=이식팀은 그에게 이식이 안전한 선택지가 아니라고 했어요
+ ORDER [대화 흐름|compass] 이식 불가 소통 4문장 순서
+   why=나쁜 소식에 공감을 먼저 전하고, 그 뜻을 설명한 뒤, 아직 할 수 있는 일을 알리고 곁에 있어도 된다고 마무리해요.
+   1. This is hard news, and I'm so sorry. | 힘든 소식이고, 정말 유감이에요 | 공감 faceWorried
+   2. It means transplant isn't a safe option for him. | 이식이 그에게 안전한 선택지가 아니라는 뜻이에요 | 설명 speech
+   3. But there is still a lot we can do to keep him comfortable. | 하지만 그를 편안하게 해 드릴 수 있는 게 아직 많아요 | 희망 shield
+   4. Through all of it, you can stay with him as much as you want. | 그 모든 과정에서 원하시는 만큼 그와 함께 있으셔도 돼요 | 허락 home

@@ -29,7 +29,7 @@ D[6] = dict(s=[
 ("위험 신호","siren","'could mean'은 확정이 아니라 가능성이라 가족을 겁주지 않으면서 이유를 줘요. 'Any'는 아주 작은 증상도 말하라는 뜻이에요.","in the leg",
  "갑작스러운 위약감이나 혼란은 뇌부종을 뜻할 수도 있어요.","갑작스러운 위약감이나 혼란은 감염을 뜻할 수도 있어요.","weakness","itching","dryness","hunger"),
 ("즉시 재확인","magnify","'recheck'의 re-는 이전 값과 비교한다는 뜻이에요. 동공과 쥐는 힘은 신경 변화를 빨리 보여 주는 항목이에요.","her skin color",
- "지금 바로 동공과 쥐는 힘을 처음 확인해 볼게요.","지금 바로 동공과 맥박을 다시 확인해 볼게요.","pupils","nails","hair","knees"),
+ "지금 바로 동공과 쥐는 힘을 처음 확인해 볼게요.","지금 바로 동공과 맥박을 다시 확인해 볼게요.","pupils","nails","toes","knees"),
 ("곁에 요청","handshake2","'while we sort this out'은 기다릴 시간을 약속하지 않으면서 이유를 줘요. 'stay close'는 부르면 바로 올 수 있는 거리를 뜻해요.","by the window",
  "저희가 검사를 준비하는 동안 가까이 계셔 주세요.","저희가 상황을 파악하는 동안 복도에서 기다려 주세요.","close","angry","empty","hungry"),
 ], order=dict(ko="출혈 의심 대응 4문장 순서",

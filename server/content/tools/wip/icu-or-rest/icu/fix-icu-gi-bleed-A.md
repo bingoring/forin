@@ -186,7 +186,7 @@ context: 위 19·20·21·22·23·25 말고는 같은 뜻·듣는 사람만 다�
     | ★ w-sick | sick(형) | sock(명), silk(명) | slick, thick |
     | ★ w-sample | sample(명) | simple(형), ample(형) | staple, saddle |
     | ★ w-below | below(전, '미만의') | bellow(동), elbow(명) | beyond, behind |
-    | ★ w-stat | stat(부) | stack(명), stage(명) | PRN, BID |
+    | ★ w-stat | stat(부) | stack(명), stage(명) | prn, bid (차트에서 소문자로도 씀 — 대문자면 대소문자로 걸러짐) |
     | ★ w-chest | chest(명) | cheat(동) | crest |
     | ★ w-check | check(동) | cheek(명) | cheer |
     | ★ w-look | look(동) | luck(명) | lurk |
@@ -263,7 +263,7 @@ context: 위 19·20·21·22·23·25 말고는 같은 뜻·듣는 사람만 다�
 45. `w-catch` → A-3에서 word-remove. `w-moment` → A-10에서 word-remove.
 46. `w-ever` ko '예전에' — "Have you ever had…"의 ever는 '한 번이라도'. → ko `한 번이라도`, distractorsKo `[요즘 들어, 방금 전에]`.
 47. `w-actively` ko '활동적으로' — 사람의 성격·움직임을 말하는 말이라 "actively bleeding"과 안 맞습니다. → ko `활발히`(문장 ko '활동성 출혈'과 통함). distractorsKo 그대로.
-48. `w-through` ko '통해' — 20.6 "support you … through it"은 '그 과정 내내'. → ko `(겪는) 내내`, distractorsKo `[~하기 전에, ~한 뒤에]`.
+48. `w-through` ko '통해' — 20.6 "support you … through it"은 '그 과정 내내'. → ko `내내`, distractorsKo `[~하기 전에, ~한 뒤에]`.
 49. `w-steady` ko '꾸준한'(저작자가 '안정적인'에서 바꿈) — 혈압·수치에 쓰는 steady는 '변동 없는'이지 '꾸준한'(끈기)이 아닙니다. → ko `변동 없는`(w-stable '안정된'과도 갈림).
 50. (선택) `w-birth` ko '생일' → `출생`(date of birth = 생년월일; '생일'은 birthday). `w-way` ko '길' → 구 헤드워드 `on the way`(오는 중인), chips `[["on"], [the], [way]]`, distractorsEn `[in the way, by the way]`.
 
@@ -271,7 +271,7 @@ context: 위 19·20·21·22·23·25 말고는 같은 뜻·듣는 사람만 다�
 
 | 문장 | 현재 en | 문제 | 대안 en | 권고 |
 |---|---|---|---|---|
-| 6.0 | `Yes, let's start the octreotide drip now.` | 간호사가 약 시작을 정하는 어조, `as ordered` 없음(같은 상황 6.1에는 있음) | `Yes, I'll start the octreotide drip as ordered.` (words에 w-order 추가) | **바꿈** |
+| 6.0 | `Yes, let's start the octreotide drip now.` | 간호사가 약 시작을 정하는 어조, `as ordered` 없음(같은 상황 6.1에는 있음) | `Yes, I'll start the octreotide drip as ordered.` (words에 w-order 추가) — 장면 첫마디("do you want … started?")에 더 맞추려면 `Yes, the order's in, so I'll start the octreotide drip now.` | **바꿈** |
 | 15.0 | `Activate MTP and get the cooler now.` | 장면 첫마디가 동료의 "I'm activating MTP"인데 다시 명령형으로 발동을 지시 — 발동은 보통 의사(또는 지침의 지정자) | `MTP is activated — I'll get the cooler now.` (words 그대로) | **바꿈** |
 | 18.0 | `Open the fluids wide and call for blood now.` | 처방 없이 정질액을 최대로 여는 명령형. 위장관 출혈은 혈액 우선, 정질액 과다는 해로움(정맥류면 더) | `Let's run the ordered fluids and call for blood now.` (w-open·w-wide는 18.3도 고치면 태그가 없어져 word-remove) | 바꾸면 더 안전(유지도 가능 — 소생 프로토콜 아래 개방은 흔함) |
 | 8.0 | `For a stable bleed, we usually hold to the restrictive target.` | 간호사 단독 결정처럼 들릴 수 있음 | `For a stable bleed, we follow the ordered restrictive target.` | **유지** — 동료에게 하는 팀 관행 설명이고 `usually`가 붙음. 단 B-16으로 why에 기준을 보충 |
@@ -283,6 +283,10 @@ keyPhrase **ko만** 고칠 것(결정 11 범위 — changes에 `fields: [ko]`, �
 52. (선택) 9.2 ko `주입이 흐르는 동안 금식을 유지하죠` → `주입하는 동안 금식을 유지하죠.`
 
 keyPhrase chunks 구 경계 — **보고만**(en·chunks 고치지 않음): 0.4 `or want to / vomit again`, 3.0 `when the blood / count drops`, 3.1 `and your lab / trends`, 7.1 `and the pre-procedure / checklist done`, 8.0 `to the restrictive / target`, 8.1 `signs of ongoing / bleeding`, 9.0 `at the ordered / rate`, 12.1 `where it's coming / from`, 12.2 `while we sort / this out`, 13.0 `, labs, and any new / bleeding`, 13.1 `or feels / faint`.
+
+## 태그 정리 확인 (V15)
+
+위에서 문장 태그를 빼거나 지우는 단어(w-stay·w-sure·w-away·w-catch·w-moment·w-stop·w-stomach·w-open·w-wide·w-look·w-safe·w-liver)를 뉘앙스 `words:`와 스크립트로 대조했습니다. 걸리는 것은 상황 17 pair의 w-liver뿐이고 B-24에서 뺍니다. 상황 4 context의 w-stomach는 4.x 문장에 남고, 상황 13 slider의 w-tiredness·w-normal은 새 13.5에 남습니다 — 깨지는 것 없음.
 
 ## 종합
 

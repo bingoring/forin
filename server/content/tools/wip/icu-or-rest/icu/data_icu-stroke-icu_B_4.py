@@ -1,7 +1,7 @@
 D = {}
 D[8] = dict(s=[
 ("목표 확인","board","'before we titrate'는 약을 조절하기 전에 먼저 할 일을 정해요. \"Let's\"는 지시가 아니라 함께 한다는 말투라 동료끼리 쓰기 좋아요.","the pump settings",
- "적정하기 전에 침대 높이부터 확인하죠.","적정하기 전에 알람 소리부터 확인하죠.","range","name","color","floor"),
+ "적정하기 전에 화면 밝기부터 확인하죠.","적정하기 전에 알람 소리부터 확인하죠.","range","name","shape","floor"),
 ("약물 지시","pill","'slowly'는 반응을 보며 올리거나 내린다는 뜻이고, 'recheck in five minutes'는 다음 확인 시점을 정해 줘요. 'Please'로 동료에게 요청해요.","on the pump",
  "니카르디핀을 꼼꼼히 적정하고 오 분 뒤에 다시 확인해 주세요.","니카르디핀을 차분히 적정하고 오 분 뒤에 다시 확인해 주세요.","titrate","flush","hang","clamp"),
 ("하락 감시","chartup","'Watch for'는 지켜보다가 이상이 있으면 알리라는 뜻이에요. 'could reduce'는 이미 줄어든 것이 아니라 줄일 수 있는 하락을 미리 잡으라는 말이에요.","any delay",
@@ -23,7 +23,7 @@ D[9] = dict(s=[
 ("급식 튜브","me","'For now'는 영구적인 방법이 아니라 임시라는 점을 알려요. 'small'은 불편을 줄이려고 가는 튜브를 쓴다는 설명이에요.","from the kitchen",
  "지금은 작은 급식 튜브로 물을 공급할 거예요.","지금은 큰 급식 튜브로 영양을 공급할 거예요.","small","huge","loud","heavy"),
 ("목적 설명","shield","'until'은 기한을 시간이 아니라 상태로 정해서 삼킴이 나아지면 튜브가 필요 없다는 뜻을 담아요. 'protects'는 튜브의 목적을 말해요.","from the dust",
- "삼킴이 나아질 때까지 심장을 보호하기 위한 거예요.","삼킴이 나아질 때까지 뇌를 보호하기 위한 거예요.","lungs","teeth","hair","nails"),
+ "삼킴이 나아질 때까지 심장을 보호하기 위한 거예요.","삼킴이 나아질 때까지 뇌를 보호하기 위한 거예요.","lungs","teeth","gums","nails"),
 ("평가 예고","stetho","'will'은 확정된 계획을 말하고 'soon'은 정확한 시각 대신 곧 온다는 뜻이에요. 삼킴 평가는 언어치료사가 맡는 병원이 많아요.","A dietitian",
  "언어치료사가 곧 걷는 기능을 평가할 거예요.","언어치료사가 곧 시력을 평가할 거예요.","evaluate","repair","rename","remove"),
 ("경로 설명","compass","'through her nose and down into her stomach'처럼 지나가는 길을 순서대로 말하면 가족이 튜브의 위치를 그려 볼 수 있어요.","past her throat",
