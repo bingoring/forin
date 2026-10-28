@@ -58,17 +58,17 @@
 | 5-4 | 명령 반응 항목을 바꿈(눈→입·팔, 실패 1) | 가족분 손을 꽉 쥐고 눈을 떠 보시라고 요청해 볼게요. | 제 손을 꽉 쥐고 눈을 떠 보시라고 크게 불러 볼게요. |
 | 5-5 | 의식(깨우기) 기준을 호흡·말로 바꿈(실패 1) | 어제보다 깨우기 힘들어지면 바로 의사 선생님께 연락할게요. | 낮보다 깨우기 힘들어지면 바로 의사 선생님께 연락할게요. |
 | 6-1 | 신경 검진 → 차트·손목 밴드(실패 1·3) | 신경학적 검진을 확인하고 지금 CT실에 연락드릴게요. | 신경학적 검진을 확인하고 지금 담당 간호사께 연락드릴게요. |
-| 6-4 | X2 `동공과 맥박`: 나열 항목을 바꿈(실패 1) | — | 지금 바로 동공을 볼 손전등부터 가져올게요.(앞 단계) |
+| 6-4 | X2 `동공과 맥박`: 나열 항목을 바꿈(실패 1) | — | 동공과 쥐는 힘 결과를 지금 바로 의사께 알릴게요.(뒤 단계) |
 | 7-2 | X2 `느긋하게`: 잘못된 안심 | — | 동공과 반응을 둘이서 번갈아 지켜보고 있어요. |
-| 8-0 | 목표 범위 확인 → 화면 밝기·알람 소리(확인을 빠뜨림) | 적정을 마친 뒤에 목표 범위를 기록하죠. | 적정하기 전에 목표 범위를 화이트보드에 적죠. |
+| 8-0 | 목표 범위 확인 → 화면 밝기·알람 소리(확인을 빠뜨림) | 인계하기 전에 목표 범위부터 확인하죠. | 이송하기 전에 목표 범위부터 확인하죠.(확인은 두고 언제 하는지만 바꿈 — titrate가 들림) |
 | 8-1 | slowly를 지움(위 판정) | 적정하기 전에 니카르디핀 펌프 설정부터 확인해 주세요. | 니카르디핀을 천천히 적정하는 동안 곁을 지켜 주세요. |
 | 9-3 | 튜브 끝 `목까지`(부위)·`입을 통해`(경로) | 코에 넣은 뒤 테이프로 고정해요. | 코로 넣기 전에 길이를 재요. |
 | 9-4 | X1 `시력 검사`: 검사 바꿔치기 | 며칠 뒤에 삼킴 연습을 다시 해 볼 거예요. | — |
 | 9-5 | X1 `따뜻한 음식`: 식이 질감 지시가 사라짐(흡인) | 안전하다고 확인되면 부드러운 음식 목록을 드릴게요. | — |
 | 10-0 | 비타민 K를 채혈 용지·이송 침대로(필수 약을 빠뜨림) | 네, 지금 역전제와 비타민 K를 투여하죠.(뒤 단계) | 네, 지금 역전제와 비타민 K를 처방받죠.(앞 단계) |
-| 10-1 | 응고 검사 → 혈당·전해질(검사 바꿔치기) | 응고 검사 튜브에 라벨을 붙여서 놓아 주세요. | 응고 검사를 채혈한 자리를 꾹 눌러 주세요. |
-| 10-3 | 와파린 → 헤파린(약 이름), INR → 혈당(검사) | 와파린을 복용 중이라 INR 결과가 나오면 바로 알릴게요. | 와파린을 복용 중이라 마지막 복용 시각부터 여쭤볼게요. |
-| 10-5 | 역전 뒤 재검을 몸무게·자세로(재검을 빠뜨림) | 투여하는 동안에는 제가 곁에서 지켜볼게요. | 투여하고 나면 주사 줄을 생리식염수로 씻을게요. |
+| 10-1 | 응고 검사 → 혈당·전해질(검사 바꿔치기) | 응고 검사를 채혈하고 그 자리를 꾹 눌러 주세요. | 응고 검사 튜브에 환자 라벨을 붙여 주세요. |
+| 10-3 | 와파린 → 헤파린(약 이름), INR → 혈당(검사) | 와파린을 복용 중이라 INR 결과가 나오면 바로 알릴게요. | 와파린을 복용 중이라 마지막 복용 시각을 여쭤볼게요.(INR보다 먼저 하라는 뜻이 되지 않게 `부터`를 뺌) |
+| 10-5 | 역전 뒤 재검을 몸무게·자세로(재검을 빠뜨림) | 투여하고 나면 한 시간 동안 반응을 지켜볼게요. | 투여하고 나면 주사 줄을 생리식염수로 씻을게요. |
 | 11-1 | `심해지면`(재발 기준 없앰)·`사라지면`(⑤) | 위약감이 다시 생기면 바로 콜벨을 눌러 주세요. | 위약감이 다시 생기면 바로 손을 들어 주세요. |
 | 12-1 | X1 `편하게 눕혀`·X2 `조용히 지켜봤고`: 안전 조치를 없앰 | 안전하게 조치했고, 지금 의사 선생님이 오고 계세요. | 안전하게 조치했고, 지금 담당 간호사께 알리고 있어요. |
 | 12-2 | X1 `식단을 바꿀`: 항경련제를 식단으로 | 가족분과 함께 지켜보고, 더 생기지 않도록 약을 시작할 수도 있어요. | — |
@@ -76,18 +76,18 @@
 | 14-1 | 응급 약을 담요·차트로(필수 물품을 빠뜨림) | 휴대용 산소통이 가득 찼는지 먼저 볼게요. | 휴대용 산소와 응급 약은 침대 아래에 둘게요. |
 | 14-4 | 백밸브마스크를 체온계·충전기로 | 이송용 모니터 배터리가 찼는지 볼게요. | 이송용 모니터와 백밸브마스크는 발치에 둘게요. |
 | 15-1 | X1 `휴식을`: 처치 바꿔치기 | 압력을 완화하기 위해 수술 동의서를 받을 수도 있어요. | — |
-| 16-0 | 역전 시작을 혈압 측정·라인 확인으로(실패 3) | tPA를 중단하고 즉시 역전제를 가져오세요. | tPA를 중단하고 즉시 역전제 용량을 계산하세요. |
+| 16-0 | 역전 시작을 혈압 측정·라인 확인으로(실패 3) | tPA를 중단하고 역전 중에 활력징후를 재세요. | tPA를 중단하고 역전 중에 출혈 부위를 보세요.(중단은 두고 역전 뒤 단계로 — 가져오기·계산은 실패 3) |
 | 16-2 | 혈압 조절을 의자·조명 조절로(처치가 사라짐) | 지금 바로 동맥관 수치를 띄우죠. | 지금 바로 혈압 커프를 바꾸죠. |
 | 17-0 | 혈관조영 → 수술·전원(시술 바꿔치기) | 즉시 혈관조영을 위해 동의서를 받죠. | 즉시 혈관조영을 위해 이송팀을 부르죠. |
 | 17-1 | 라인을 가운·차트로 | 이동하기 전에 기도와 라인부터 정리하세요. | 이동하기 전에 기도와 라인을 테이프로 고정하세요. |
 | 17-3 | X1 `살짝`: 악화를 줄여 보고(잘못된 안심) | 지난 십 분 사이 왼쪽이 완전히 저렸어요. | — |
-| 17-5 | LKW → 식사 시각, NIHSS → 보험(핵심 정보를 빠뜨림) | 마지막으로 멀쩡했던 시각과 NIHSS 점수를 적어 둘게요. | 마지막으로 멀쩡했던 시각을 가족분께 다시 여쭤볼게요. |
-| 18-0 | 흡인을 거즈·장갑으로 | 삽관 트레이와 흡인은 머리맡에 둘게요. | 삽관 트레이를 열고 손 위생을 할게요. |
+| 17-5 | LKW → 식사 시각, NIHSS → 보험(핵심 정보를 빠뜨림) | 마지막으로 멀쩡했던 시각과 NIHSS 점수를 화면으로 보여드릴게요. | 마지막으로 멀쩡했던 시각을 가족분께 다시 여쭤볼게요.(LKW 재확인 = 앞 단계. 질문으로 바꾼 꼴이라 경계선이니, 고치는 쪽이 더 나은 앞·뒤 단계를 찾으면 그쪽으로) |
+| 18-0 | 흡인을 거즈·장갑으로 | 삽관 트레이와 흡인은 머리맡에 둘게요. | 삽관 트레이와 흡인은 다 쓰면 치워 둘게요. |
 | 18-1 | 기도 위치 잡기를 조명·모니터로 | 사전 산소화하는 동안 흡인을 켜 두죠. | 사전 산소화하면서 마스크를 꼭 맞추죠. |
 | 18-4 | 삽관 순간 튜브 대신 마스크·장갑을 건넴 | 준비되시면 튜브 커프부터 확인해 드릴게요. | 튜브를 건네기 전에 스타일렛을 넣어 둘게요. |
 | 19-0 | FiO2 올리기를 침대·조명으로(산소 처치가 사라짐) | 기도를 흡인하고 흡인 통을 갈죠. | 기도를 흡인하고 산소 줄 연결을 보죠. |
-| 19-4 | ABG → 소변 검사·체중 | 스탯으로 흉부 엑스레이 판을 등 뒤에 넣죠. | ABG 채혈 전에 알렌 검사부터 하죠. |
-| 19-5 | 유량 15 → 20·25 L(용량) | 비재호흡마스크로 바꾸기 전에 백부터 부풀릴게요. | 얼굴에 맞는 비재호흡마스크 크기부터 고를게요. |
+| 19-4 | ABG → 소변 검사·체중 | 스탯으로 흉부 엑스레이 판을 등 뒤에 넣죠. | 스탯으로 흉부 엑스레이와 ABG 결과를 같이 보죠. |
+| 19-5 | 유량 15 → 20·25 L(용량) | 비재호흡마스크로 바꾸고 백이 부푸는지 볼게요. | 맞는 크기의 비재호흡마스크로 바꾸고 백을 채울게요. |
 
 ### B. distractorsKo — 정답 둘(④·실패 4) 6건
 | 곳 | 문제 | 새 값 |
@@ -106,7 +106,7 @@
 ### D. 빈칸 — 안전 5건
 | 곳 | 문제 | 새 값 |
 |---|---|---|
-| 2-4 | `until`·`unless`는 검사 전에(또는 검사에 떨어져도) 얼음을 준다는 말 | 빈칸을 `ice`로 옮기고 오답 `potato`·`corn`·`tortilla` |
+| 2-4 | `until`·`unless`는 검사 전에(또는 검사에 떨어져도) 얼음을 준다는 말 | 빈칸 `once`는 두고 오답을 `because`·`although`·`whereas`로(어느 것도 검사 전 섭취를 지시하지 않음) |
 | 3-3 | `feed`: 삼킴을 확인하지 않은 환자에게 매시간 먹임 | `feed` → `turn` |
 | 5-2 | `feed`: 의식이 처진 환자에게 먹임 | `feed` → `weigh` |
 | 8-1 | `flush`(볼루스)·`clamp`(혈압 조절 중단) | `flush` → `label`, `clamp` → `chart`(`hang`은 그대로) |
@@ -120,7 +120,7 @@
 | 8-0 | `floor`: 혈압 하한(target floor)으로 쓰는 말 | `floor` → `room` |
 | 15-1 | `therapy`: 삼투 요법도 압력을 낮추는 치료 | `therapy` → `bedrest` |
 | 15-2 | `anything`: "doing anything we can"이 같은 뜻 | 빈칸을 `brain`으로 옮기고 오답 `heart`·`lungs`·`kidneys` |
-| 15-3 | `time`: "no time to swell safely"가 뜻이 통함, `money`·`patience`는 동떨어짐 | `time`·`money`·`patience` → `fluid`·`sugar`·`blood` |
+| 15-3 | `time`: "no time to swell safely"가 뜻이 통함, `money`·`patience`는 동떨어짐 | 빈칸을 `swell`로 옮기고 오답 `grow`·`drain`·`breathe`(`move`는 뇌 이동으로 읽혀 피함) |
 | 20-1 | `sudden`·`recent`도 참인 말 | `sudden`·`recent`·`unusual` → `mild`·`small`·`simple` |
 | 20-3 | `afraid of`가 성립(가족이 듣고 싶은 참인 말), `angry of`·`alone of`는 문법으로 걸러짐 | `afraid`·`angry`·`alone` → `proud`·`fond`·`tired` |
 
@@ -134,7 +134,7 @@
 | 1-2 | blanket/pillow/snack | `blanket`·`bath`·`drink` |
 | 1-3 | budget/bill/order | `baseline`·`schedule`·`order` |
 | 2-2 | cut ("cut your lips") | `cut` → `numb` |
-| 6-5 | angry/empty/hungry | `away`·`late`·`up` |
+| 6-5 | angry/empty/hungry | `late`·`up`·`warm`(`away`는 가족을 내보내는 반대말이라 피함) |
 | 7-4 | thank/greet/wave | `follow`·`relieve`·`thank` |
 | 8-5 | remove/refill/replace (re- 두운) | `predict`·`estimate`·`announce` |
 | 9-0 | loud | `loud` → `stiff` |
@@ -156,7 +156,7 @@
 | 17-4 | painting | `painting` → `inspecting` |
 | 17-5 | price/shade/height | `card`·`form`·`sticker` |
 | 18-1 | polish/paint/praise (p- 두운) | `describe`·`document`·`photograph` |
-| 18-2 | tired/hungry/shy ("tired to assist"는 문법으로도 걸러짐) | `unable`·`afraid`·`late` |
+| 18-2 | tired/hungry/shy ("tired to assist"는 문법으로도 걸러짐) | `late`·`scheduled`·`assigned`(`unable`·`afraid`는 보조 거부 = 반대말) |
 | 18-5 | loose/dizzy/funny | `low`·`high`·`short` |
 | 19-0 | rinse/rename/relax (r- 두운) | `read`·`note`·`print` |
 | 19-5 | miles/pounds/inches | `percent`·`drops`·`milliliters` |
@@ -192,7 +192,7 @@
 | 곳 | 지금 | 새 decoy(대신하는 청크) |
 |---|---|---|
 | 0-2 | my badge | `Follow my badge` (Follow my finger) |
-| 1-1 | to the doctor | `from the station` (very closely) |
+| 1-1 | to the doctor | `your meals` (your numbers) |
 | 1-2 | through the line | `a warm blanket` (a medicine) |
 | 1-5 | than we would for a fever | `for a fever` (for a clot) |
 | 2-0 | from a cup | `you eat` (you drink) |
@@ -203,7 +203,7 @@
 | 4-4 | at the monitor | `the side rails` (the head of the bed) |
 | 5-1 | about the room | `letting him` (letting me) |
 | 5-2 | to the light | `sleeps` (responds) |
-| 6-5 | by the window | `Please stay outside` (Please stay close) |
+| 6-5 | by the window | `fix the bed` (sort this out) |
 | 7-4 | with the pager | `the pharmacy` (the doctor) |
 | 8-3 | on the monitor | `one-twenty and one-fifty` (숫자 청크) |
 | 8-4 | right now | `This is a fall` (This is a bleed) |
@@ -227,15 +227,20 @@
 | 19-5 | at the bedside | `to the cardiac monitor` (to the non-rebreather) |
 
 ### K. order 2건
-- **S3 재관류 후 감시:** 3↔4를 바꿔도 자연스럽다("…watching for bleeding." → "A little grogginess … is normal, though."). 3줄을 2줄에 묶을 것:
-  `Even between those checks, a little grogginess after the medicine is normal.`
-  (A 몫 4-1·3-4 사실 문제와 함께 보면, 3줄을 `If you feel groggier than now, that's when to press it.`로 바꾸는 편이 더 안전하다 — 2줄의 call button을 가리킨다.)
+- **S3 재관류 후 감시:** 3↔4를 바꿔도 자연스럽다("…watching for bleeding." → "A little grogginess … is normal, though."). 3줄을 2줄의 call button에 묶는다:
+  3줄 `If you feel groggier than you do now, that's when to press it.`(ko `지금보다 더 몽롱해지면 그때 누르시면 돼요`, note `기준`) — 4줄로 옮기면 `it`이 가리킬 것이 없고, 2줄 앞으로 가도 마찬가지다.
+  order `why`도 "…호출 기준을 알려 준 뒤, 이 모두에 더해 출혈을 지켜본다고 맺어요"로 고친다(3-4 '몽롱함은 정상'이 tPA 뒤에는 위험한 안심이라는 사실 문제도 함께 피함).
 - **S16 tPA 후 대량 뇌출혈:** 3·4줄이 둘 다 `Alongside …`로 시작해 3↔4가 바뀌어도 맞다(파일럿 갈래 3). →
   3줄 `While reversal runs, let's control his blood pressure right now.` /
   4줄 `With reversal and pressure underway, I'm calling neurosurgery and getting him to CT stat.`
 
 ### L. why·tag 1건
 - 11-4 tag `재협착 설명`, 11-5 why "앞 문장의 재협착" — 혈전제거술 직후 문제는 재협착(수개월 뒤 생기는 내막 증식)이 아니라 **재폐색**이다. → tag `재폐색 설명`, why는 "앞 문장의 다시 좁아짐(재폐색)을 가리켜요"로.
+
+### 고치는 쪽에 남길 말
+- W19 여유: 위 A~C를 다 넣으면 `이송` 어간이 정확히 5회(상한)다. 더 쓰지 말 것. `전에`는 3회로 줄었다.
+- decoy 새 값(H~J)은 스크립트로 V18(청크와 같지 않음·`en` 안에 없음)을 보지 않았다. `Follow my badge`·`Keeping your temperature`처럼 `en`과 앞부분이 같은 것이 있으니 반영 뒤 verify를 꼭 다시 돌릴 것.
+- 고칠 값은 처치를 안 건드리면서 ko 틀을 되도록 남기는 쪽으로 골랐다. 그래도 틀이 많이 바뀐 줄(예: 9-3·14-4 X1)은 고치는 쪽이 같은 뜻으로 틀을 더 살려도 된다. 단 앞·뒤 단계·장소·방법 말고 다른 것을 바꾸지 말 것.
 
 ### 참고(고칠 것 아님 — chunks는 B 몫이 아님, 보고만)
 구 경계에서 끊긴 청크: 11-4 `once / more`, 19-3 `after he / aspirated`, 14-3 `for a safe / transfer`, 13-1 `the whole / time`, 5-2 `how he / responds`, 5-1 `letting me / know`.
