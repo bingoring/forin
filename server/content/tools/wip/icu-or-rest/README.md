@@ -78,3 +78,13 @@ keyPhrase 아니던 2건 바로 고침(mech-ventilation 2.4 drain·8.3 doesn't a
   keyPhrase 결정(사용자 '추천대로', 2026-10-27): 바꿈 9(post-arrest Deep hypothermia→Overcooling below our target·tightly controlled·potassium shifts /
   aki-crrt metabolic alkalosis→acidosis(w-alkalosis→w-acidosis, 상황 17 tagline·brief도)·ionized calcium / electrolytes balanced·start·call for / sepsis fever 분리),
   그대로 3(Cold hearts·central line·MTP ready), keyPhrase chunks 구 경계 다시 자르기 허용, electrolytes 17.5·15.5 "오면 보고·상의" 오답은 다음 단계라 유지. 작업 `../kp-2026-10-27b/`.
+
+- **묶음 5 (ICU 4주제, 2026-10-28)**: endocrine-crisis·glycemic·raised-icp·status-epilepticus, 처음부터. Fable 표본 없음(ICU는 묶음 4 post-arrest로 끝).
+  | 주제 | 검토 A(안전) | 검토 B(안전·정답 둘) | changes(수정 후) |
+  |---|---|---|---|
+  | icu-endocrine-crisis | 74(2) | 106(53·15) — 주체만 바꾼 오답 51문장 | 144 |
+  | icu-glycemic | 53(5) — ICU에서 신속대응팀 호출 | 51(12·7) + 빈칸 81·decoy 108 다시 | 100 |
+  | icu-raised-icp | 100(5) | 142(63·15) | 182 |
+  | icu-status-epilepticus | 66(1) | 136(37·14) + 빈칸 60 다시 | 96 |
+  B 저작은 "확인 대상만 바꾸지 말라"를 "처치하는 사람만 바꾸기"로 피해 갔다 → `../../pipeline/TASK.md` B 절에 되풀이된 실패 7가지를 적음(묶음 6부터 저작 지시에 넣음).
+  keyPhrase 결정(사용자 2026-10-28): 안전·사실 6 바꿈(15분 재측정·D50 조건·인슐린 보류·독립 이중 확인·EVD clamp·can mean per protocol), 표현 5 바꿈, 유지 권고 14건도 '검토 대안대로 모두 바꿈'(대안 없는 3건은 유지) → 22문장 바꿈 + keyPhrase chunks 다시 자르기 24문장. 작업 `../kp-2026-10-28/`.
