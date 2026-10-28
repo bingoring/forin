@@ -1,7 +1,7 @@
 import yaml,re,sys,collections,copy
 sys.path.insert(0,"/Users/ywyeom/private/forin/server/content/tools"); sys.path.insert(0,".")
 import verify_lesson_content as v
-from revB2_icu_gi_bleed_vals import KO,BLANK,DECOY,MOVE
+import importlib.util as _u; _s=_u.spec_from_file_location("vals","revB2_icu-gi-bleed_vals.py"); _m=_u.module_from_spec(_s); _s.loader.exec_module(_m); KO,BLANK,DECOY,MOVE=_m.KO,_m.BLANK,_m.DECOY,_m.MOVE # KO,BLANK,DECOY,MOVE
 d=yaml.safe_load(open("icu-gi-bleed.yaml",encoding="utf-8"))
 L=lambda t:len(re.sub(r"\s","",t))
 S={f"{i}.{j}":x for i,s in enumerate(d["situations"]) for j,x in enumerate(s["sentences"])}

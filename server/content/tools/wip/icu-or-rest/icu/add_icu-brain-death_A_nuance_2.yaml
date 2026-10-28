@@ -1,196 +1,331 @@
 6:
-  - kind: slider
-    words: [w-saturation]
-    cue: "His saturation drifts from 99 down to 96 over several minutes."
-    scale: [holding, slipping, plunging]
-    answerAt: 1
-    why: "조금씩 천천히 내려가면 slipping이에요. holding은 그대로일 때, plunging은 빠르게 급락할 때예요. 무호흡 검사를 중단할 기준은 병원 프로토콜과 의사가 정한 대로 따라요."
-    example: "I'm watching his saturation and vitals continuously."
-    exKo: "산소포화도와 활력징후를 계속 지켜보고 있어요."
-  - kind: context
-    words: [w-ready]
-    word: ready
-    ko: 준비된
-    scenes:
-      - {who: 동료 간호사에게, icon: handshake2, en: "The vent is ready to reconnect the moment we need it.", ok: true}
-      - {who: 차트 기록, icon: board, en: "Rescue equipment at bedside and ready; apnea test in progress.", ok: true}
-      - {who: 가족에게, icon: me, en: "We are ready to abort the apnea test and reconnect the ventilator if hypoxemia occurs.", ok: false, fix: "We're ready to put him back on the breathing machine right away if his oxygen level drops."}
-    why: "의료진끼리는 abort, hypoxemia 같은 용어가 정확하고 빨라요. 가족에게는 같은 ready를 산소가 떨어지면 바로 호흡기를 다시 연결한다고 쉬운 말로 풀어 주세요."
-  - kind: swap
-    words: [w-desaturate]
-    who: "의사에게 · 급변 보고"
-    icon: stetho
-    before: ["Sat is ", "tanking", " — I'm reconnecting him."]
-    options: [dropping fast, tanking, going south]
-    answer: dropping fast
-    notes: {dropping fast: "얼마나 빠른지 분명하고 보고에 맞는 중립적인 말이에요.", tanking: "속어라서 수치도 속도도 정확히 전달되지 않아요.", going south: "관용 표현이라 얼마나 나쁜지 모호해요."}
-    why: "급변 보고에서는 속어보다 사실 그대로 짧게 말하는 게 정확해요. 의사가 상황을 바로 판단할 수 있어야 해요."
-    ko: "산소포화도가 빠르게 떨어지고 있어요 — 다시 연결할게요"
+- kind: slider
+  words:
+  - w-saturation
+  cue: His saturation drifts from 99 down to 96 over several minutes.
+  scale:
+  - holding
+  - slipping
+  - plunging
+  answerAt: 1
+  why: 조금씩 천천히 내려가면 slipping이에요. holding은 그대로일 때, plunging은 빠르게 급락할 때예요. 무호흡 검사를 중단할 기준은 병원 프로토콜과 의사가 정한 대로 따라요.
+  example: I'm watching his saturation and vitals continuously.
+  exKo: 산소포화도와 활력징후를 계속 지켜보고 있어요.
+- kind: context
+  words:
+  - w-vent
+  word: vent
+  ko: 호흡기(줄임말)
+  scenes:
+  - who: 동료 간호사에게
+    icon: handshake2
+    en: The vent is ready to reconnect the moment we need it.
+    ok: true
+  - who: 차트 기록
+    icon: board
+    en: Vent off for apnea test; rescue equipment at bedside.
+    ok: true
+  - who: 가족에게
+    icon: me
+    en: He's off the vent for the apnea test, with passive oxygen insufflation.
+    ok: false
+    fix: He's off the breathing machine for a short time for this test, and he's still getting oxygen.
+  why: 의료진끼리는 vent라는 줄임말이 빠르고 정확해요. 가족에게는 같은 vent를 숨쉬기를 돕는 기계(호흡기)라고 쉬운 말로 풀어 주세요.
+- kind: swap
+  words:
+  - w-desaturate
+  who: 의사에게 · 급변 보고
+  icon: stetho
+  before:
+  - 'Sat is '
+  - tanking
+  - ' — I''m reconnecting him.'
+  options:
+  - dropping fast
+  - tanking
+  - going south
+  answer: dropping fast
+  notes:
+    dropping fast: 얼마나 빠른지 분명하고 보고에 맞는 중립적인 말이에요.
+    tanking: 속어라서 수치도 속도도 정확히 전달되지 않아요.
+    going south: 관용 표현이라 얼마나 나쁜지 모호해요.
+  why: 급변 보고에서는 속어보다 사실 그대로 짧게 말하는 게 정확해요. 의사가 상황을 바로 판단할 수 있어야 해요.
+  ko: 산소포화도가 빠르게 떨어지고 있어요 — 다시 연결할게요
 7:
-  - kind: slider
-    words: [w-drop]
-    cue: "His mean pressure falls from 72 to 70 and then comes back up on its own."
-    scale: [dip, drop, plunge]
-    answerAt: 0
-    why: "잠깐 조금 내려갔다가 돌아오면 dip이에요. drop은 눈에 띄게 떨어질 때, plunge는 급락할 때예요. 처치는 처방과 프로토콜 범위 안에서 하고, 변화는 의사에게 알려요."
-    example: "His mean pressure dropped below sixty a few minutes ago."
-    exKo: "몇 분 전 평균 혈압이 육십 아래로 떨어졌어요."
-  - kind: context
-    words: [w-bolus]
-    word: bolus
-    ko: 볼루스
-    scenes:
-      - {who: 의사가 간호사에게, icon: stetho, en: "Give a fluid bolus and reassess his pressure.", ok: true}
-      - {who: 차트 기록, icon: board, en: "Fluid bolus infused; pressure improved, recheck in 15 minutes.", ok: true}
-      - {who: 가족에게, icon: me, en: "We gave a crystalloid bolus for his hypotension.", ok: false, fix: "We gave him extra fluid through his IV to help his blood pressure."}
-    why: "의료진끼리는 bolus, crystalloid 같은 용어가 정확하고 빨라요. 가족에게는 같은 일을 수액을 더 넣어 혈압을 돕고 있다고 쉬운 말로 풀어 주세요."
-  - kind: swap
-    words: [w-bolus]
-    who: "의사에게 · 처치 요청"
+- kind: slider
+  words:
+  - w-drop
+  cue: His mean pressure falls from 72 to 70 and then comes back up on its own.
+  scale:
+  - dip
+  - drop
+  - plunge
+  answerAt: 0
+  why: 잠깐 조금 내려갔다가 돌아오면 dip이에요. drop은 눈에 띄게 떨어질 때, plunge는 급락할 때예요. 처치는 처방과 프로토콜 범위 안에서 하고, 변화는 의사에게 알려요.
+  example: His mean pressure dropped below sixty a few minutes ago.
+  exKo: 몇 분 전 평균 혈압이 육십 아래로 떨어졌어요.
+- kind: context
+  words:
+  - w-bolus
+  word: bolus
+  ko: 볼루스
+  scenes:
+  - who: 의사가 간호사에게
     icon: stetho
-    before: ["Doctor, his pressure is low — I'd like to ", "dump some fluid in", " and recheck."]
-    options: [give a fluid bolus, dump some fluid in, throw fluid at it]
-    answer: give a fluid bolus
-    notes: {give a fluid bolus: "투여 내용이 정확하고, 처방을 받아 하겠다는 요청으로 알맞아요.", dump some fluid in: "양과 방법이 모호하고 부주의하게 들려요.", throw fluid at it: "속어라 처치 내용이 정확히 전달되지 않아요."}
-    why: "수액 투여는 처방과 프로토콜에 따라 해요. 의사에게는 무엇을 하고 싶은지 정확한 용어로 요청해요."
-    ko: "선생님, 혈압이 낮아요 — 수액 볼루스를 주고 다시 확인하고 싶어요"
+    en: Give a fluid bolus and reassess his pressure.
+    ok: true
+  - who: 차트 기록
+    icon: board
+    en: Fluid bolus infused; pressure improved, recheck in 15 minutes.
+    ok: true
+  - who: 가족에게
+    icon: me
+    en: We gave a crystalloid bolus for his hypotension.
+    ok: false
+    fix: We gave him extra fluid through his IV to help his blood pressure.
+  why: 의료진끼리는 bolus, crystalloid 같은 용어가 정확하고 빨라요. 가족에게는 같은 일을 수액을 더 넣어 혈압을 돕고 있다고 쉬운 말로 풀어 주세요.
+- kind: swap
+  words:
+  - w-bolus
+  who: 의사에게 · 처치 요청
+  icon: stetho
+  before:
+  - 'Doctor, his pressure is low — I''d like to '
+  - dump some fluid in
+  - ' and recheck.'
+  options:
+  - give a fluid bolus
+  - dump some fluid in
+  - throw fluid at it
+  answer: give a fluid bolus
+  notes:
+    give a fluid bolus: 투여 내용이 정확하고, 처방을 받아 하겠다는 요청으로 알맞아요.
+    dump some fluid in: 양과 방법이 모호하고 부주의하게 들려요.
+    throw fluid at it: 속어라 처치 내용이 정확히 전달되지 않아요.
+  why: 수액 투여는 처방과 프로토콜에 따라 해요. 의사에게는 무엇을 하고 싶은지 정확한 용어로 요청해요.
+  ko: 선생님, 혈압이 낮아요 — 수액 볼루스를 주고 다시 확인하고 싶어요
 8:
-  - kind: slider
-    words: [w-urine]
-    cue: "He has filled the urine bag twice in one hour, and the urine looks like clear water."
-    scale: [minimal, moderate, profuse]
-    answerAt: 2
-    why: "한 시간에 소변이 이렇게 많고 물처럼 묽으면 profuse예요. 요붕증에서는 많이 나오는 소변이 탈수와 나트륨 상승으로 이어질 수 있어 의사에게 바로 알려요. 약 용량은 처방대로예요."
-    example: "His urine output has doubled in the last hour."
-    exKo: "지난 한 시간 사이 소변량이 두 배로 늘었어요."
-  - kind: context
-    words: [w-sodium]
-    word: sodium
-    ko: 나트륨
-    scenes:
-      - {who: 의사 라운드, icon: stetho, en: "His sodium is climbing, so we'll watch it closely.", ok: true}
-      - {who: 인계 동료에게, icon: handshake2, en: "Sodium was 154 on the last panel, up from 148.", ok: true}
-      - {who: 가족에게, icon: me, en: "Serum sodium is rising because of central diabetes insipidus.", ok: false, fix: "The salt level in his blood is going up because his body is losing too much water."}
-    why: "의료진끼리는 sodium과 diabetes insipidus 같은 용어가 정확하고 빨라요. 가족에게는 같은 sodium을 혈액 속 염분 수치가 오르고 있다고 쉬운 말로 풀어 주세요."
-  - kind: swap
-    words: [w-sodium]
-    who: "가족에게 · 검사 안내"
+- kind: slider
+  words:
+  - w-urine
+  cue: He has filled the urine bag twice in one hour, and the urine looks like clear water.
+  scale:
+  - minimal
+  - moderate
+  - profuse
+  answerAt: 2
+  why: 한 시간에 소변이 이렇게 많고 물처럼 묽으면 profuse예요. 요붕증에서는 많이 나오는 소변이 탈수와 나트륨 상승으로 이어질 수 있어 의사에게 바로 알려요. 약 용량은 처방대로예요.
+  example: His urine output has doubled in the last hour.
+  exKo: 지난 한 시간 사이 소변량이 두 배로 늘었어요.
+- kind: context
+  words:
+  - w-sodium
+  word: sodium
+  ko: 나트륨
+  scenes:
+  - who: 의사 라운드
+    icon: stetho
+    en: His sodium is climbing, so we'll watch it closely.
+    ok: true
+  - who: 인계 동료에게
+    icon: handshake2
+    en: Sodium was 154 on the last panel, up from 148.
+    ok: true
+  - who: 가족에게
     icon: me
-    before: ["We're checking ", "his serum Na", " every few hours."]
-    options: [the salt level in his blood, his serum Na, his natremia profile]
-    answer: the salt level in his blood
-    notes: {the salt level in his blood: "가족이 바로 알아듣고, 무엇을 확인하는지 분명해요.", his serum Na: "차트에 쓰는 약어라 가족은 뜻을 모를 수 있어요.", his natremia profile: "격식 있는 전문 표현이라 가족 설명에는 어색해요."}
-    why: "혈액검사를 자주 하는 이유가 궁금한 가족이 많아요. 무엇을 보는 검사인지 쉬운 말로 알려 주세요."
-    ko: "몇 시간마다 혈액 속 염분 수치를 확인하고 있어요"
+    en: Serum sodium is rising because of central diabetes insipidus.
+    ok: false
+    fix: The salt level in his blood is going up because his body is losing too much water.
+  why: 의료진끼리는 sodium과 diabetes insipidus 같은 용어가 정확하고 빨라요. 가족에게는 같은 sodium을 혈액 속 염분 수치가 오르고 있다고 쉬운 말로 풀어 주세요.
+- kind: swap
+  words:
+  - w-sodium
+  who: 가족에게 · 검사 안내
+  icon: me
+  before:
+  - 'We''re checking '
+  - his serum Na
+  - ' every few hours.'
+  options:
+  - the salt level in his blood
+  - his serum Na
+  - his natremia profile
+  answer: the salt level in his blood
+  notes:
+    the salt level in his blood: 가족이 바로 알아듣고, 무엇을 확인하는지 분명해요.
+    his serum Na: 차트에 쓰는 약어라 가족은 뜻을 모를 수 있어요.
+    his natremia profile: 격식 있는 전문 표현이라 가족 설명에는 어색해요.
+  why: 혈액검사를 자주 하는 이유가 궁금한 가족이 많아요. 무엇을 보는 검사인지 쉬운 말로 알려 주세요.
+  ko: 몇 시간마다 혈액 속 염분 수치를 확인하고 있어요
 9:
-  - kind: slider
-    words: [w-steady]
-    cue: "His temperature has read the same on the last three checks."
-    scale: [steady, drifting, plunging]
-    answerAt: 0
-    why: "세 번 연속 같은 값이면 steady예요. drifting은 조금씩 달라질 때, plunging은 급하게 떨어질 때예요. 체온이 달라지면 보온 처치와 함께 의사에게 알려요."
-    example: "We're keeping his internal balance steady."
-    exKo: "체내 균형을 안정적으로 유지하고 있어요."
-  - kind: context
-    words: [w-potassium]
-    word: potassium
-    ko: 칼륨
-    scenes:
-      - {who: 의사 라운드, icon: stetho, en: "Potassium is low, so we'll replace it per the order.", ok: true}
-      - {who: 차트 기록, icon: board, en: "K 3.2; potassium replacement started per protocol.", ok: true}
-      - {who: 가족에게, icon: me, en: "His serum potassium is hypokalemic at 3.2 mEq/L.", ok: false, fix: "One of the minerals in his blood, potassium, is a little low, and we're replacing it."}
-    why: "의료진끼리는 hypokalemic, mEq/L 같은 용어가 정확하고 빨라요. 가족에게는 같은 potassium을 혈액 속 미네랄이 낮아 채우고 있다고 쉬운 말로 풀어 주세요."
-  - kind: swap
-    words: [w-blanket]
-    who: "가족에게 · 보온 설명"
+- kind: slider
+  words:
+  - w-steady
+  cue: His temperature has read the same on the last three checks.
+  scale:
+  - steady
+  - drifting
+  - plunging
+  answerAt: 0
+  why: 세 번 연속 같은 값이면 steady예요. drifting은 조금씩 달라질 때, plunging은 급하게 떨어질 때예요. 체온이 달라지면 보온 처치와 함께 의사에게 알려요.
+  example: We're keeping his internal balance steady.
+  exKo: 체내 균형을 안정적으로 유지하고 있어요.
+- kind: context
+  words:
+  - w-panel
+  word: panel
+  ko: 검사 패널
+  scenes:
+  - who: 의사 라운드
+    icon: stetho
+    en: Potassium came back low on the last panel.
+    ok: true
+  - who: 차트 기록
+    icon: board
+    en: Panel drawn at 0400; potassium replaced per order.
+    ok: true
+  - who: 가족에게
     icon: me
-    before: ["I've put a ", "forced-air warming unit", " on him to keep his temperature from dropping."]
-    options: [warm blanket, forced-air warming unit, warming apparatus]
-    answer: warm blanket
-    notes: {warm blanket: "가족이 바로 알아듣는 쉬운 말이에요.", forced-air warming unit: "정확한 장비 이름이지만 가족에게는 낯설게 들려요.", warming apparatus: "격식 있는 표현이라 가족 대화에는 딱딱해요."}
-    why: "체온이 떨어지지 않게 하는 일은 가족이 보기에도 돌봄이에요. 장비 이름보다 무엇을 해 주는지 알려 주세요."
-    ko: "체온이 떨어지지 않도록 따뜻한 담요를 덮어 드렸어요"
+    en: His last panel shows hypokalemia.
+    ok: false
+    fix: His last blood test shows that one of his minerals is low.
+  why: 의료진끼리는 panel(여러 항목을 묶은 혈액검사)과 hypokalemia 같은 용어가 정확하고 빨라요. 가족에게는 같은 panel을 혈액검사로, 낮은 수치를 쉬운 말로 풀어 주세요.
+- kind: swap
+  words:
+  - w-blanket
+  who: 가족에게 · 보온 설명
+  icon: me
+  before:
+  - 'I''ve put a '
+  - forced-air warming unit
+  - ' on him to keep his temperature from dropping.'
+  options:
+  - warm blanket
+  - forced-air warming unit
+  - warming apparatus
+  answer: warm blanket
+  notes:
+    warm blanket: 가족이 바로 알아듣는 쉬운 말이에요.
+    forced-air warming unit: 정확한 장비 이름이지만 가족에게는 낯설게 들려요.
+    warming apparatus: 격식 있는 표현이라 가족 대화에는 딱딱해요.
+  why: 체온이 떨어지지 않게 하는 일은 가족이 보기에도 돌봄이에요. 장비 이름보다 무엇을 해 주는지 알려 주세요.
+  ko: 체온이 떨어지지 않도록 따뜻한 담요를 덮어 드렸어요
 10:
-  - kind: slider
-    words: [w-saturation]
-    cue: "His oxygen saturation has stayed at 98 all hour."
-    scale: [low, borderline, good]
-    answerAt: 2
-    why: "한 시간 내내 98이면 good이에요. low는 기준보다 낮을 때, borderline은 경계일 때예요. 폐 보호 환기 설정은 호흡치료팀과 의사가 정하고, 간호사는 수치를 지켜보고 알려요."
-    example: "His oxygen saturation has stayed above ninety-five."
-    exKo: "산소포화도가 구십오 이상으로 유지되고 있어요."
-  - kind: context
-    words: [w-suction]
-    word: suction
-    ko: 흡인하다
-    scenes:
-      - {who: 동료 간호사에게, icon: handshake2, en: "Suction him only as needed, and gently.", ok: true}
-      - {who: 차트 기록, icon: board, en: "Suctioned for scant white secretions; saturation stable.", ok: true}
-      - {who: 가족에게, icon: me, en: "We suction his endotracheal tube to clear bronchial secretions and prevent atelectasis.", ok: false, fix: "We gently clear the mucus from his breathing tube to keep his lungs healthy."}
-    why: "의료진끼리는 endotracheal tube, atelectasis 같은 용어가 정확하고 빨라요. 가족에게는 같은 suction을 호흡관의 분비물을 닦아 낸다고 쉬운 말로 풀어 주세요."
-  - kind: swap
-    words: [w-turn]
-    who: "가족에게 · 체위 변경 설명"
+- kind: slider
+  words:
+  - w-saturation
+  cue: His oxygen saturation has stayed at 98 all hour.
+  scale:
+  - low
+  - borderline
+  - good
+  answerAt: 2
+  why: 한 시간 내내 98이면 good이에요. low는 기준보다 낮을 때, borderline은 경계일 때예요. 폐 보호 환기 설정은 호흡치료팀과 의사가 정하고, 간호사는 수치를 지켜보고 알려요.
+  example: His oxygen saturation has stayed above ninety-five.
+  exKo: 산소포화도가 구십오 이상으로 유지되고 있어요.
+- kind: context
+  words:
+  - w-suction
+  word: suction
+  ko: 흡인하다
+  scenes:
+  - who: 동료 간호사에게
+    icon: handshake2
+    en: Suction him only as needed, and gently.
+    ok: true
+  - who: 차트 기록
+    icon: board
+    en: Suctioned for scant white secretions; saturation stable.
+    ok: true
+  - who: 가족에게
     icon: me
-    before: ["Every two hours we ", "lateralize him", " so he doesn't get sores."]
-    options: [turn him, lateralize him, shift his torso laterally]
-    answer: turn him
-    notes: {turn him: "가족이 바로 알아듣는 쉬운 말이에요.", lateralize him: "어색한 전문 용어라 가족은 무슨 말인지 모를 수 있어요.", shift his torso laterally: "해부학 용어를 늘어놓은 표현이라 가족 대화에는 딱딱해요."}
-    why: "체위 변경은 피부와 폐를 지키는 기본 돌봄이에요. 가족이 보기에 이상하지 않게 쉬운 말로 알려 주세요."
-    ko: "욕창이 생기지 않도록 두 시간마다 몸을 돌려 눕혀 드려요"
+    en: We suction his endotracheal tube to clear bronchial secretions and prevent atelectasis.
+    ok: false
+    fix: We gently clear the mucus from his breathing tube to keep his lungs healthy.
+  why: 의료진끼리는 endotracheal tube, atelectasis 같은 용어가 정확하고 빨라요. 가족에게는 같은 suction을 호흡관의 분비물을 닦아 낸다고 쉬운 말로 풀어 주세요.
+- kind: swap
+  words:
+  - w-turn
+  who: 가족에게 · 체위 변경 설명
+  icon: me
+  before:
+  - 'Every two hours we '
+  - lateralize him
+  - ' so he doesn''t get sores.'
+  options:
+  - turn him
+  - lateralize him
+  - shift his torso laterally
+  answer: turn him
+  notes:
+    turn him: 가족이 바로 알아듣는 쉬운 말이에요.
+    lateralize him: 흔히 쓰지 않는 딱딱한 말이라 가족은 무슨 말인지 모를 수 있어요.
+    shift his torso laterally: 해부학 용어를 늘어놓은 표현이라 가족 대화에는 딱딱해요.
+  why: 체위 변경은 피부와 폐를 지키는 기본 돌봄이에요. 가족이 보기에 이상하지 않게 쉬운 말로 알려 주세요.
+  ko: 욕창이 생기지 않도록 두 시간마다 몸을 돌려 눕혀 드려요
 11:
-  - kind: slider
-    words: [w-together]
-    cue: "The family asks if everyone can stay in the room at the same time."
-    scale: [alone, in turns, all together]
-    answerAt: 2
-    why: "모두 한꺼번에 있고 싶다는 뜻이면 all together예요. 가족이 함께 있고 싶어 하면 병원 규칙과 안전 안에서 최대한 맞춰 주고, 어려운 점은 책임자에게 확인해요."
-    example: "I'll step outside so you can have this time together."
-    exKo: "함께 시간을 보내실 수 있도록 제가 잠시 자리를 비켜 드릴게요."
-  - kind: context
-    words: [w-talk]
-    word: talk
-    ko: 대화하다
-    scenes:
-      - {who: 동료 간호사에게, icon: handshake2, en: "The mother wants to talk to the doctor again before she goes in.", ok: true}
-      - {who: 인계 기록, icon: board, en: "Family asked to talk with the chaplain; consult placed.", ok: true}
-      - {who: 가족에게, icon: me, en: "You can talk to him, but we need the room in ten minutes.", ok: false, fix: "You can talk to him whenever you're ready, and I'll stay close if you need anything."}
-    why: "의료진끼리는 일정과 요청을 짧게 말해도 돼요. 가족에게는 같은 talk를 서두르게 하는 말이 아니라 곁에서 기다려 주는 말로 건네야 해요. 시간을 재촉하면 차갑게 들려요."
-  - kind: swap
-    words: [w-together]
-    who: "가족에게 · 자리 비켜 주기"
-    icon: me
-    before: ["I'll ", "vacate the room", " so you can have this time together."]
-    options: [step outside, vacate the room, leave the premises]
-    answer: step outside
-    notes: {step outside: "자연스럽고 배려가 담긴 말이에요. 곧 돌아올 거라는 느낌도 줘요.", vacate the room: "격식을 차린 말이라 가족과 함께하는 순간에는 차갑게 들려요.", leave the premises: "건물을 떠난다는 뜻이라 맞지 않고 어색해요."}
-    why: "작별의 시간에는 가족이 편하게 있도록 짧고 따뜻한 말로 자리를 비켜 줘요."
-    ko: "함께 시간을 보내실 수 있도록 잠시 밖에 나가 있을게요"
+- kind: slider
+  words:
+  - w-need
+  cue: '"I can''t leave yet — I have to see him one more time," the son says.'
+  scale:
+  - want
+  - need
+  - must
+  answerAt: 1
+  why: 꼭 해야 한다고 느끼지만 절대적인 명령은 아닐 때 need예요. want는 바람 정도, must는 반드시일 때예요. 가족이 꼭 필요하다고 말하는 시간은 병원 규칙과 안전 안에서 최대한 맞춰 주세요.
+  example: Take all the time you need to be with him.
+  exKo: 필요한 만큼 얼마든지 곁에 있어 주셔도 돼요.
+- kind: swap
+  words:
+  - w-together
+  who: 가족에게 · 자리 비켜 주기
+  icon: me
+  before:
+  - 'I''ll '
+  - vacate the room
+  - ' so you can have this time together.'
+  options:
+  - step outside
+  - vacate the room
+  - leave the premises
+  answer: step outside
+  notes:
+    step outside: 자연스럽고 배려가 담긴 말이에요. 곧 돌아올 거라는 느낌도 줘요.
+    vacate the room: 격식을 차린 말이라 가족과 함께하는 순간에는 차갑게 들려요.
+    leave the premises: 건물을 떠난다는 뜻이라 맞지 않고 어색해요.
+  why: 작별의 시간에는 가족이 편하게 있도록 짧고 따뜻한 말로 자리를 비켜 줘요.
+  ko: 함께 시간을 보내실 수 있도록 잠시 밖에 나가 있을게요
 12:
-  - kind: slider
-    words: [w-wish]
-    cue: "The family politely asks whether an elder can pray at the bedside."
-    scale: [hope, request, demand]
-    answerAt: 1
-    why: "정중하게 부탁하는 것은 request예요. hope는 속마음일 때, demand는 강하게 요구할 때예요. 가능한 범위에서 병원 규칙과 안전을 확인하고 맞춰 주세요."
-    example: "Of course — your family's wishes and beliefs come first."
-    exKo: "물론이죠 — 가족의 뜻과 신념이 가장 우선이에요."
-  - kind: context
-    words: [w-process]
-    word: process
-    ko: 절차
-    scenes:
-      - {who: 동료 간호사에게, icon: handshake2, en: "Let's not rush the process; they need time with their elders.", ok: true}
-      - {who: 코디네이터에게, icon: monitor, en: "The family is in the middle of their own decision process.", ok: true}
-      - {who: 가족에게, icon: me, en: "The process requires a decision within the OPO's allotted window.", ok: false, fix: "There's no rush, and we'll follow whatever process feels right to your family."}
-    why: "의료진끼리는 가족의 의사결정 과정을 존중해 달라는 말로 process를 써도 돼요. 가족에게는 같은 process를 기한으로 압박하듯 쓰면 안 돼요. 서두르지 않고 가족의 방식을 따르겠다고 말해요."
-  - kind: swap
-    words: [w-coordinator]
-    who: "가족에게 · 대화 자리 안내"
-    icon: me
-    before: ["I'll ask the coordinator to speak with ", "all of your kin", " together."]
-    options: [all of you, all of your kin, the entirety of your relatives]
-    answer: all of you
-    notes: {all of you: "자연스럽고 가족 모두를 존중하는 말이에요.", all of your kin: "예스럽고 어색한 표현이에요.", the entirety of your relatives: "지나치게 격식 있고 딱딱해요."}
-    why: "문화와 가족 구성이 다양하니, 모두가 함께 들을 수 있다고 쉬운 말로 안내해 주세요."
-    ko: "코디네이터가 여러분 모두와 함께 이야기하도록 부탁드릴게요"
+- kind: slider
+  words:
+  - w-wish
+  cue: The family politely asks whether an elder can pray at the bedside.
+  scale:
+  - hope
+  - request
+  - demand
+  answerAt: 1
+  why: 정중하게 부탁하는 것은 request예요. hope는 속마음일 때, demand는 강하게 요구할 때예요. 가능한 범위에서 병원 규칙과 안전을 확인하고 맞춰 주세요.
+  example: Of course — your family's wishes and beliefs come first.
+  exKo: 물론이죠 — 가족의 뜻과 신념이 가장 우선이에요.
+- kind: swap
+  words:
+  - w-coordinator
+  who: 가족에게 · 대화 자리 안내
+  icon: me
+  before:
+  - 'I''ll ask the coordinator to speak with '
+  - all of your kin
+  - ' together.'
+  options:
+  - all of you
+  - all of your kin
+  - the entirety of your relatives
+  answer: all of you
+  notes:
+    all of you: 자연스럽고 가족 모두를 존중하는 말이에요.
+    all of your kin: 예스럽고 어색한 표현이에요.
+    the entirety of your relatives: 지나치게 격식 있고 딱딱해요.
+  why: 문화와 가족 구성이 다양하니, 모두가 함께 들을 수 있다고 쉬운 말로 안내해 주세요.
+  ko: 코디네이터가 여러분 모두와 함께 이야기하도록 부탁드릴게요

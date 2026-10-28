@@ -1,0 +1,210 @@
+
+=== S0 NIHSS 신경 사정
+ ko: 신경 사정 안내 4문장 순서 | why: 근력 요청으로 시작해 앞 답을 받아 장소·시기 질문으로 넘어가고, 그 답을 받아 눈 추적을 요청한 뒤, 세 가지를 모두 마친 환자에게 감사해요. | tag=대화 흐름 icon=compass
+   - I'm going to check your strength, so please squeeze both of my hands.  (힘을 확인할 테니 제 두 손을 꽉 쥐어 보세요/근력/stetho)
+   - Nice and firm. Now tell me what month it is.  (좋아요 단단하네요 이제 지금 몇 월인지 말해 주세요/지남력/calendar)
+   - Good, that's right. Now follow my finger with just your eyes.  (좋아요 맞아요 이제 눈으로만 제 손가락을 따라와 주세요/눈 추적/magnify)
+   - Thank you for doing all three of those with me.  (세 가지를 모두 함께 해 주셔서 감사해요/감사/star)
+  swap1<->2: Nice and firm. Now tell me what month it is. | I'm going to check your strength, so please squeeze both of my hands. | Good, that's right. Now follow my finger with just your eyes. | Thank you for doing all three of those with me.
+  swap2<->3: I'm going to check your strength, so please squeeze both of my hands. | Good, that's right. Now follow my finger with just your eyes. | Nice and firm. Now tell me what month it is. | Thank you for doing all three of those with me.
+  swap3<->4: I'm going to check your strength, so please squeeze both of my hands. | Nice and firm. Now tell me what month it is. | Thank you for doing all three of those with me. | Good, that's right. Now follow my finger with just your eyes.
+
+=== S1 혈압 목표 관리
+ ko: 혈압 목표 설명 4문장 순서 | why: 범위를 정해 유지하는 이유를 먼저 말하고, 범위를 벗어나면 알람이 울린다고 설명한 뒤, 그 알람 소리만 줄이겠다고 하고, 소리를 줄여도 계속 지켜본다고 맺어요. | tag=대화 흐름 icon=compass
+   - We're keeping your pressure in a specific range to protect your brain.  (뇌를 보호하기 위해 혈압을 정해진 범위로 유지하고 있어요/이유/monitor)
+   - The alarm sounds when it moves outside that range.  (그 범위를 벗어나면 알람이 울려요/알람/bell)
+   - I'll turn down the volume on it, but it stays on.  (그 소리는 줄이지만 알람은 계속 켜 둬요/소리/speaker)
+   - Even with the volume down, we're watching your numbers very closely.  (소리를 줄여도 수치는 아주 자세히 지켜보고 있어요/감시/magnify)
+  swap1<->2: The alarm sounds when it moves outside that range. | We're keeping your pressure in a specific range to protect your brain. | I'll turn down the volume on it, but it stays on. | Even with the volume down, we're watching your numbers very closely.
+  swap2<->3: We're keeping your pressure in a specific range to protect your brain. | I'll turn down the volume on it, but it stays on. | The alarm sounds when it moves outside that range. | Even with the volume down, we're watching your numbers very closely.
+  swap3<->4: We're keeping your pressure in a specific range to protect your brain. | The alarm sounds when it moves outside that range. | Even with the volume down, we're watching your numbers very closely. | I'll turn down the volume on it, but it stays on.
+
+=== S2 삼킴 전 금식·흡인 예방
+ ko: 금식 중 환자 응대 4문장 순서 | why: 목마름에 공감하고, 그 까닭인 흡인 위험을 설명한 뒤, 삼킴 검사 통과 후 얼음 조각을 주겠다고 약속하고, 그때까지 입 안을 적셔 주겠다고 맺어요. | tag=대화 흐름 icon=compass
+   - I know you're thirsty, and I'm not trying to be difficult.  (목마르신 거 알아요 일부러 힘들게 하려는 게 아니에요/공감/faceWorried)
+   - The reason is that water could go into your lungs right now.  (이유는 지금 물이 폐로 들어갈 수 있어서예요/이유/siren)
+   - So I'll give you ice chips once the swallow test clears you.  (그래서 삼킴 검사에서 괜찮다고 나오면 얼음 조각을 드릴게요/약속/check)
+   - Until then, I'll wet a sponge and swab your mouth.  (그때까지는 스펀지를 적셔서 입 안을 닦아 드릴게요/대안/bandage)
+  swap1<->2: The reason is that water could go into your lungs right now. | I know you're thirsty, and I'm not trying to be difficult. | So I'll give you ice chips once the swallow test clears you. | Until then, I'll wet a sponge and swab your mouth.
+  swap2<->3: I know you're thirsty, and I'm not trying to be difficult. | So I'll give you ice chips once the swallow test clears you. | The reason is that water could go into your lungs right now. | Until then, I'll wet a sponge and swab your mouth.
+  swap3<->4: I know you're thirsty, and I'm not trying to be difficult. | The reason is that water could go into your lungs right now. | Until then, I'll wet a sponge and swab your mouth. | So I'll give you ice chips once the swallow test clears you.
+
+=== S3 재관류 후 감시
+ ko: 재관류 후 감시 안내 4문장 순서 | why: 확인 주기와 대상을 먼저 알리고, 그 사이에 이상이 있으면 호출하라고 안내한 뒤, 대비되는 정상 반응을 설명하고, 이 모두에 더해 출혈을 지켜본다고 맺어요. | tag=대화 흐름 icon=compass
+   - I'll be checking you often for any new weakness or headache.  (새로운 위약감이나 두통이 있는지 자주 확인할게요/주기/monitor)
+   - Between those checks, press the call button if anything feels different.  (그 확인 사이에 뭔가 다르게 느껴지면 콜벨을 눌러 주세요/호출/pager)
+   - A little grogginess right after the medicine is normal, though.  (다만 약 직후에 살짝 몽롱한 건 정상이에요/정상/shield)
+   - On top of all that, we're watching closely for any signs of bleeding.  (그 모두에 더해 출혈 징후도 자세히 지켜보고 있어요/감시/magnify)
+  swap1<->2: Between those checks, press the call button if anything feels different. | I'll be checking you often for any new weakness or headache. | A little grogginess right after the medicine is normal, though. | On top of all that, we're watching closely for any signs of bleeding.
+  swap2<->3: I'll be checking you often for any new weakness or headache. | A little grogginess right after the medicine is normal, though. | Between those checks, press the call button if anything feels different. | On top of all that, we're watching closely for any signs of bleeding.
+  swap3<->4: I'll be checking you often for any new weakness or headache. | Between those checks, press the call button if anything feels different. | On top of all that, we're watching closely for any signs of bleeding. | A little grogginess right after the medicine is normal, though.
+
+=== S4 두부 거상·체위
+ ko: 머리 거상 설명 4문장 순서 | why: 머리를 세우는 첫 이점을 말하고, 거기에 이점을 하나 더한 뒤, 두 이점 때문에 각도를 정해 둔다고 이유를 묶고, 그 자세가 불편하면 알려 달라고 요청해요. | tag=대화 흐름 icon=compass
+   - Keeping your head up helps protect your lungs while you recover.  (머리를 세워 두면 회복하는 동안 폐를 보호하는 데 도움이 돼요/이점/me)
+   - Raising it also lowers the pressure inside your head.  (머리를 올리면 머릿속 압력을 낮추는 데도 도움이 돼요/추가/shield)
+   - Because of both of those, we keep the head of the bed raised about thirty degrees.  (그 둘 때문에 침대 머리 쪽을 약 삼십 도 세워 둬요/각도/gear)
+   - Let me know if you feel any discomfort in this position.  (이 자세에서 불편함이 느껴지면 알려주세요/요청/bell)
+  swap1<->2: Raising it also lowers the pressure inside your head. | Keeping your head up helps protect your lungs while you recover. | Because of both of those, we keep the head of the bed raised about thirty degrees. | Let me know if you feel any discomfort in this position.
+  swap2<->3: Keeping your head up helps protect your lungs while you recover. | Because of both of those, we keep the head of the bed raised about thirty degrees. | Raising it also lowers the pressure inside your head. | Let me know if you feel any discomfort in this position.
+  swap3<->4: Keeping your head up helps protect your lungs while you recover. | Raising it also lowers the pressure inside your head. | Let me know if you feel any discomfort in this position. | Because of both of those, we keep the head of the bed raised about thirty degrees.
+
+=== S5 의식 변화 관찰
+ ko: 의식 변화 대응 4문장 순서 | why: 변화를 알려 준 가족에게 감사하며 확인을 시작하고, 깨워서 반응을 본 뒤, 깨어 있는 동안 지시 수행을 확인하고, 이 결과가 나빠지면 즉시 연락한다고 맺어요. | tag=대화 흐름 icon=compass
+   - Thank you for telling me — I'll check his level of alertness now.  (알려주셔서 감사해요 지금 각성 상태를 확인해 볼게요/감사/star)
+   - To do that, I'm going to wake him and see how he responds.  (그러기 위해 제가 깨워서 어떻게 반응하는지 볼게요/각성/stetho)
+   - While he's awake, I'll ask him to squeeze my hand and open his eyes.  (깨어 있는 동안 제 손을 쥐고 눈을 떠 보라고 요청할게요/지시/me)
+   - If any of that shows he's harder to wake, I'll call the doctor right away.  (그중 깨우기 힘들어진 게 보이면 바로 의사 선생님께 연락할게요/보고/pager)
+  swap1<->2: To do that, I'm going to wake him and see how he responds. | Thank you for telling me — I'll check his level of alertness now. | While he's awake, I'll ask him to squeeze my hand and open his eyes. | If any of that shows he's harder to wake, I'll call the doctor right away.
+  swap2<->3: Thank you for telling me — I'll check his level of alertness now. | While he's awake, I'll ask him to squeeze my hand and open his eyes. | To do that, I'm going to wake him and see how he responds. | If any of that shows he's harder to wake, I'll call the doctor right away.
+  swap3<->4: Thank you for telling me — I'll check his level of alertness now. | To do that, I'm going to wake him and see how he responds. | If any of that shows he's harder to wake, I'll call the doctor right away. | While he's awake, I'll ask him to squeeze my hand and open his eyes.
+
+=== S6 tPA 후 출혈 합병증 감시
+ ko: 출혈 의심 대응 4문장 순서 | why: 증상을 심각하게 본다고 알리고, 그래서 검진하며 의사에게 연락한다고 말한 뒤, 그 의사가 영상 촬영을 요청할 수 있다고 안내하고, 이 모든 과정 동안 곁에 있어 달라고 맺어요. | tag=대화 흐름 icon=compass
+   - A worsening headache is something we take very seriously here.  (두통이 심해지는 건 저희가 아주 심각하게 받아들이는 신호예요/강조/siren)
+   - That's why I'm checking her neuro exam and calling the physician now.  (그래서 신경학적 검진을 확인하고 지금 의사 선생님께 연락드려요/보고/pager)
+   - After they look at her, we may need a scan to rule out bleeding.  (그분이 살펴본 뒤 출혈이 아닌지 확인하려고 영상 촬영이 필요할 수도 있어요/검사/magnify)
+   - Please stay close while we sort all of this out.  (저희가 이 모두를 파악하는 동안 가까이 계셔 주세요/요청/handshake2)
+  swap1<->2: That's why I'm checking her neuro exam and calling the physician now. | A worsening headache is something we take very seriously here. | After they look at her, we may need a scan to rule out bleeding. | Please stay close while we sort all of this out.
+  swap2<->3: A worsening headache is something we take very seriously here. | After they look at her, we may need a scan to rule out bleeding. | That's why I'm checking her neuro exam and calling the physician now. | Please stay close while we sort all of this out.
+  swap3<->4: A worsening headache is something we take very seriously here. | That's why I'm checking her neuro exam and calling the physician now. | Please stay close while we sort all of this out. | After they look at her, we may need a scan to rule out bleeding.
+
+=== S7 대뇌부종 진행 감시
+ ko: 뇌부종 감시 4문장 순서 | why: 졸림이 부종 신호일 수 있다고 알리고, 부종이 압력을 올린다고 원리를 설명한 뒤, 그래서 동공을 지켜본다고 잇고, 현재 상태와 변하면 호출하겠다는 약속으로 맺어요. | tag=대화 흐름 icon=compass
+   - Increasing sleepiness can mean the brain is swelling.  (졸림이 심해지는 건 뇌가 부어오르고 있다는 뜻일 수 있어요/신호/siren)
+   - Swelling raises the pressure inside the skull.  (부종은 두개골 안의 압력을 높여요/원리/bulb)
+   - That's why we're watching his pupils and responses very closely.  (그래서 동공과 반응을 아주 자세히 지켜보고 있어요/감시/magnify)
+   - Right now they're equal and reacting well, but I'll page the doctor if that changes.  (지금은 같고 반응도 좋지만 그게 달라지면 의사 선생님을 호출할게요/현황/pager)
+  swap1<->2: Swelling raises the pressure inside the skull. | Increasing sleepiness can mean the brain is swelling. | That's why we're watching his pupils and responses very closely. | Right now they're equal and reacting well, but I'll page the doctor if that changes.
+  swap2<->3: Increasing sleepiness can mean the brain is swelling. | That's why we're watching his pupils and responses very closely. | Swelling raises the pressure inside the skull. | Right now they're equal and reacting well, but I'll page the doctor if that changes.
+  swap3<->4: Increasing sleepiness can mean the brain is swelling. | Swelling raises the pressure inside the skull. | Right now they're equal and reacting well, but I'll page the doctor if that changes. | That's why we're watching his pupils and responses very closely.
+
+=== S8 혈압 변동 정밀 조절
+ ko: 혈압 변동 조절 4문장 순서 | why: 적정 전에 목표 범위를 확인하고, 그 범위의 숫자와 이유를 말한 뒤, 그 상한을 지키도록 약을 천천히 조절하게 하고, 그 확인 사이의 하락을 지켜보게 해요. | tag=대화 흐름 icon=compass
+   - Let's confirm the target range before we titrate.  (적정하기 전에 목표 범위부터 확인하죠/확인/board)
+   - Per the order, that range is under one-sixty because this is a bleed.  (지시에 따라 출혈이라 그 범위는 160 미만이에요/목표/chartup)
+   - To stay under that, please titrate the nicardipine slowly and recheck in five minutes.  (그 아래로 유지하려면 니카르디핀을 천천히 적정하고 오 분 뒤에 다시 확인해 주세요/적정/pill)
+   - Between those checks, watch for any drop that could reduce brain perfusion.  (그 확인 사이에 뇌관류를 줄일 수 있는 하락이 없는지 지켜보세요/감시/magnify)
+  swap1<->2: Per the order, that range is under one-sixty because this is a bleed. | Let's confirm the target range before we titrate. | To stay under that, please titrate the nicardipine slowly and recheck in five minutes. | Between those checks, watch for any drop that could reduce brain perfusion.
+  swap2<->3: Let's confirm the target range before we titrate. | To stay under that, please titrate the nicardipine slowly and recheck in five minutes. | Per the order, that range is under one-sixty because this is a bleed. | Between those checks, watch for any drop that could reduce brain perfusion.
+  swap3<->4: Let's confirm the target range before we titrate. | Per the order, that range is under one-sixty because this is a bleed. | Between those checks, watch for any drop that could reduce brain perfusion. | To stay under that, please titrate the nicardipine slowly and recheck in five minutes.
+
+=== S9 삼킴장애 관리·영양 경로
+ ko: 삼킴장애 영양 안내 4문장 순서 | why: 임시 급식 튜브를 알리고, 그 튜브가 폐를 보호한다고 목적을 말한 뒤, 상태를 보려고 평가가 곧 있다고 잇고, 평가를 통과하면 부드러운 음식부터 시작한다고 맺어요. | tag=대화 흐름 icon=compass
+   - For now, we'll give nutrition through a small feeding tube.  (지금은 작은 급식 튜브로 영양을 공급할 거예요/튜브/me)
+   - This protects her lungs until her swallowing improves.  (이건 삼킴이 나아질 때까지 폐를 보호해요/목적/shield)
+   - To check on that, a speech therapist will evaluate her swallowing soon.  (그걸 보려고 언어치료사가 곧 삼킴을 평가할 거예요/평가/stetho)
+   - Once she passes that, she can start with soft foods.  (그걸 통과하면 부드러운 음식부터 시작할 수 있어요/재개/check)
+  swap1<->2: This protects her lungs until her swallowing improves. | For now, we'll give nutrition through a small feeding tube. | To check on that, a speech therapist will evaluate her swallowing soon. | Once she passes that, she can start with soft foods.
+  swap2<->3: For now, we'll give nutrition through a small feeding tube. | To check on that, a speech therapist will evaluate her swallowing soon. | This protects her lungs until her swallowing improves. | Once she passes that, she can start with soft foods.
+  swap3<->4: For now, we'll give nutrition through a small feeding tube. | This protects her lungs until her swallowing improves. | Once she passes that, she can start with soft foods. | To check on that, a speech therapist will evaluate her swallowing soon.
+
+=== S10 출혈성 뇌졸중 응고 역전
+ ko: 항응고제 역전 4문장 순서 | why: 와파린 복용을 알리며 INR 확인을 먼저 말하고, 그 검사를 채혈해 보내게 한 뒤, 검사하는 동안 역전제를 꺼내 오겠다고 하고, 투여 후 재확인을 약속해요. | tag=대화 흐름 icon=compass
+   - He's on warfarin, so we need to check his INR first.  (와파린을 복용 중이라 먼저 INR부터 확인해야 해요/확인/lab)
+   - Draw a coag panel for that and send it stat.  (그걸 위해 응고 검사를 채혈해서 스탯으로 보내 주세요/검사/lab)
+   - Meanwhile, I'll pull the reversal agent from the Pyxis right now.  (그동안 지금 바로 픽시스에서 역전제를 꺼내 올게요/준비/pill)
+   - Once it's in, we'll recheck his labs in an hour.  (투여하고 나면 한 시간 뒤에 수치를 다시 확인할게요/재확인/calendar)
+  swap1<->2: Draw a coag panel for that and send it stat. | He's on warfarin, so we need to check his INR first. | Meanwhile, I'll pull the reversal agent from the Pyxis right now. | Once it's in, we'll recheck his labs in an hour.
+  swap2<->3: He's on warfarin, so we need to check his INR first. | Meanwhile, I'll pull the reversal agent from the Pyxis right now. | Draw a coag panel for that and send it stat. | Once it's in, we'll recheck his labs in an hour.
+  swap3<->4: He's on warfarin, so we need to check his INR first. | Draw a coag panel for that and send it stat. | Once it's in, we'll recheck his labs in an hour. | Meanwhile, I'll pull the reversal agent from the Pyxis right now.
+
+=== S11 혈전제거 후 재관류 관리
+ ko: 혈전제거 후 안내 4문장 순서 | why: 시술 결과와 주의를 먼저 알리고, 그 이유로 재협착 가능성을 설명한 뒤, 혈압 유지가 도움이 된다고 잇고, 그에 더해 밤새 확인한다고 맺어요. | tag=대화 흐름 icon=compass
+   - The procedure went well, but we still need to watch you closely.  (시술은 잘 됐지만 아직 자세히 지켜봐야 해요/안심/shield)
+   - The reason is that the artery is open again, but it could narrow once more.  (이유는 동맥이 다시 열렸지만 또 좁아질 수 있어서예요/이유/chartup)
+   - Keeping your pressure steady helps prevent that.  (혈압을 안정적으로 유지하면 그걸 예방하는 데 도움이 돼요/예방/shield)
+   - Along with that, I'll check your strength and speech every hour tonight.  (그와 함께 오늘 밤에는 한 시간마다 힘과 말을 확인할게요/사정/calendar)
+  swap1<->2: The reason is that the artery is open again, but it could narrow once more. | The procedure went well, but we still need to watch you closely. | Keeping your pressure steady helps prevent that. | Along with that, I'll check your strength and speech every hour tonight.
+  swap2<->3: The procedure went well, but we still need to watch you closely. | Keeping your pressure steady helps prevent that. | The reason is that the artery is open again, but it could narrow once more. | Along with that, I'll check your strength and speech every hour tonight.
+  swap3<->4: The procedure went well, but we still need to watch you closely. | The reason is that the artery is open again, but it could narrow once more. | Along with that, I'll check your strength and speech every hour tonight. | Keeping your pressure steady helps prevent that.
+
+=== S12 발작 동반 관리
+ ko: 발작 대응 안내 4문장 순서 | why: 발작이었을 수 있다고 먼저 알리고, 안전을 확보하고 의사에게 알린다고 말한 뒤, 안전 확보의 방법을 설명하고, 이후 계획으로 맺어요. | tag=대화 흐름 icon=compass
+   - That may have been a seizure, which can happen after a stroke.  (발작이었을 수 있어요 뇌졸중 후에 생길 수 있는 일이에요/설명/siren)
+   - I've made him safe and I'm notifying the physician now.  (안전하게 조치했고 지금 의사 선생님께 알리고 있어요/조치/pager)
+   - I did that by moving anything he could bump into out of the way.  (부딪힐 만한 건 다 치우는 걸로 그렇게 했어요/방법/shield)
+   - From here, we'll watch him closely and may start a medication to prevent more.  (이제부터 자세히 지켜보고 더 생기지 않도록 약을 시작할 수도 있어요/계획/pill)
+  swap1<->2: I've made him safe and I'm notifying the physician now. | That may have been a seizure, which can happen after a stroke. | I did that by moving anything he could bump into out of the way. | From here, we'll watch him closely and may start a medication to prevent more.
+  swap2<->3: That may have been a seizure, which can happen after a stroke. | I did that by moving anything he could bump into out of the way. | I've made him safe and I'm notifying the physician now. | From here, we'll watch him closely and may start a medication to prevent more.
+  swap3<->4: That may have been a seizure, which can happen after a stroke. | I've made him safe and I'm notifying the physician now. | From here, we'll watch him closely and may start a medication to prevent more. | I did that by moving anything he could bump into out of the way.
+
+=== S13 조기 재활·합병증 예방
+ ko: 조기 재활 설명 4문장 순서 | why: 조기 이동의 이점을 먼저 말하고, 그래서 첫 단계로 걸터앉기를 제안한 뒤, 그 동안 곁에서 돕겠다고 안심시키고, 이 작은 움직임이 나중에 도움이 된다고 맺어요. | tag=대화 흐름 icon=compass
+   - Moving early helps prevent blood clots and pneumonia.  (일찍 움직이면 혈전과 폐렴을 예방하는 데 도움이 돼요/이점/run)
+   - That's why we'll start by sitting up on the edge of the bed.  (그래서 침대 가장자리에 걸터앉는 것부터 시작해요/첫 단계/compass)
+   - We'll go slowly, and I'll support you the whole time while you do that.  (천천히 할 거고 그동안 계속 제가 지지해 드릴게요/안심/handshake2)
+   - Even this little movement now makes recovery easier later.  (이 작은 움직임도 지금 하면 나중에 회복이 더 쉬워져요/동기/star)
+  swap1<->2: That's why we'll start by sitting up on the edge of the bed. | Moving early helps prevent blood clots and pneumonia. | We'll go slowly, and I'll support you the whole time while you do that. | Even this little movement now makes recovery easier later.
+  swap2<->3: Moving early helps prevent blood clots and pneumonia. | We'll go slowly, and I'll support you the whole time while you do that. | That's why we'll start by sitting up on the edge of the bed. | Even this little movement now makes recovery easier later.
+  swap3<->4: Moving early helps prevent blood clots and pneumonia. | That's why we'll start by sitting up on the edge of the bed. | Even this little movement now makes recovery easier later. | We'll go slowly, and I'll support you the whole time while you do that.
+
+=== S14 이송·영상 조율
+ ko: 이송 준비 4문장 순서 | why: 이송 전 라인과 모니터를 확인하자고 시작하고, 그동안 CT에 전화를 부탁한 뒤, 둘 다 끝나면 응급 물품을 챙기겠다고 하고, 모두 갖춰지면 출발 목표를 정해요. | tag=대화 흐름 icon=compass
+   - Let's confirm his lines and monitor are ready for transport.  (이송을 위해 라인과 모니터가 준비됐는지 확인하죠/확인/monitor)
+   - While I do that, can you call CT to confirm they're ready for us?  (제가 그걸 하는 동안 CT에 준비됐는지 전화로 확인해 주시겠어요?/전화/pager)
+   - With both of those done, I'll bring the portable oxygen and emergency meds.  (그 둘이 끝나면 휴대용 산소와 응급 약을 챙겨 올게요/물품/pill)
+   - Once all of that is set, let's aim to leave in ten minutes.  (그 모두가 갖춰지면 십 분 안에 출발하는 걸 목표로 하죠/출발/run)
+  swap1<->2: While I do that, can you call CT to confirm they're ready for us? | Let's confirm his lines and monitor are ready for transport. | With both of those done, I'll bring the portable oxygen and emergency meds. | Once all of that is set, let's aim to leave in ten minutes.
+  swap2<->3: Let's confirm his lines and monitor are ready for transport. | With both of those done, I'll bring the portable oxygen and emergency meds. | While I do that, can you call CT to confirm they're ready for us? | Once all of that is set, let's aim to leave in ten minutes.
+  swap3<->4: Let's confirm his lines and monitor are ready for transport. | While I do that, can you call CT to confirm they're ready for us? | Once all of that is set, let's aim to leave in ten minutes. | With both of those done, I'll bring the portable oxygen and emergency meds.
+
+=== S15 악성 대뇌부종 뇌탈출 위기
+ ko: 뇌탈출 위기 가족 안내 4문장 순서 | why: 상황과 신경외과 호출을 먼저 알리고, 그 이유로 뇌에 여유 공간이 없다고 설명한 뒤, 그래서 수술을 권할 수 있다고 잇고, 의료진이 결정하는 동안 곁에서 소식을 주겠다고 맺어요. | tag=대화 흐름 icon=compass
+   - The swelling is severe, and neurosurgery is being called now.  (부종이 심각해서 지금 신경외과를 부르고 있어요/상황/siren)
+   - That is because his brain doesn't have room to swell safely anymore.  (그건 뇌가 안전하게 부어오를 여유 공간이 없어서예요/이유/board)
+   - Because of that, they may recommend surgery to relieve the pressure.  (그래서 압력을 완화하기 위해 수술을 권할 수도 있어요/수술/scalpel)
+   - While they decide, I'll stay right here and keep you updated every few minutes.  (그분들이 결정하는 동안 제가 여기서 몇 분마다 알려드릴게요/곁에/handshake2)
+  swap1<->2: That is because his brain doesn't have room to swell safely anymore. | The swelling is severe, and neurosurgery is being called now. | Because of that, they may recommend surgery to relieve the pressure. | While they decide, I'll stay right here and keep you updated every few minutes.
+  swap2<->3: The swelling is severe, and neurosurgery is being called now. | Because of that, they may recommend surgery to relieve the pressure. | That is because his brain doesn't have room to swell safely anymore. | While they decide, I'll stay right here and keep you updated every few minutes.
+  swap3<->4: The swelling is severe, and neurosurgery is being called now. | That is because his brain doesn't have room to swell safely anymore. | While they decide, I'll stay right here and keep you updated every few minutes. | Because of that, they may recommend surgery to relieve the pressure.
+
+=== S16 tPA 후 대량 뇌출혈 위기
+ ko: 뇌출혈 위기 대응 4문장 순서 | why: 동공 변화를 보고하게 하고, 그에 따라 tPA 중단과 역전을 지시한 뒤, 그와 함께 혈압을 조절하게 하고, 이 모두와 나란히 신경외과 연락과 CT 이동을 진행해요. | tag=대화 흐름 icon=compass
+   - His right pupil just blew — call it in now.  (오른쪽 동공이 커졌어요 지금 바로 보고하세요/보고/pager)
+   - Given that, stop the tPA and start reversal immediately.  (그러니 tPA를 중단하고 즉시 역전을 시작하세요/지시/siren)
+   - Alongside that, let's control his blood pressure right now.  (그와 함께 지금 바로 혈압을 조절하죠/혈압/monitor)
+   - Alongside both of those, I'm calling neurosurgery and getting him to CT stat.  (그 둘과 함께 신경외과에 연락하고 즉시 CT로 데려갈게요/이동/run)
+  swap1<->2: Given that, stop the tPA and start reversal immediately. | His right pupil just blew — call it in now. | Alongside that, let's control his blood pressure right now. | Alongside both of those, I'm calling neurosurgery and getting him to CT stat.
+  swap2<->3: His right pupil just blew — call it in now. | Alongside that, let's control his blood pressure right now. | Given that, stop the tPA and start reversal immediately. | Alongside both of those, I'm calling neurosurgery and getting him to CT stat.
+  swap3<->4: His right pupil just blew — call it in now. | Given that, stop the tPA and start reversal immediately. | Alongside both of those, I'm calling neurosurgery and getting him to CT stat. | Alongside that, let's control his blood pressure right now.
+
+=== S17 대혈관 급성 악화
+ ko: 급성 악화 시술 준비 4문장 순서 | why: 증상 악화를 알리고, 그에 따라 시술 준비를 지시한 뒤, 이동 전 점검을 시키고, 점검하는 동안 팀에 인계 보고를 해요. | tag=대화 흐름 icon=compass
+   - Her left side just went completely weak in the last ten minutes.  (지난 십 분 사이 왼쪽이 완전히 약해졌어요/변화/chartup)
+   - Given that, let's get her ready for angio immediately.  (그러니 즉시 혈관조영을 위해 준비시키죠/준비/scalpel)
+   - Confirm her airway and lines before we move.  (이동하기 전에 기도와 라인부터 확인하세요/점검/check)
+   - I'll call report to the neuro-interventional team while you do that.  (그걸 하는 동안 신경중재팀에 인계 보고할게요/인계/pager)
+  swap1<->2: Given that, let's get her ready for angio immediately. | Her left side just went completely weak in the last ten minutes. | Confirm her airway and lines before we move. | I'll call report to the neuro-interventional team while you do that.
+  swap2<->3: Her left side just went completely weak in the last ten minutes. | Confirm her airway and lines before we move. | Given that, let's get her ready for angio immediately. | I'll call report to the neuro-interventional team while you do that.
+  swap3<->4: Her left side just went completely weak in the last ten minutes. | Given that, let's get her ready for angio immediately. | I'll call report to the neuro-interventional team while you do that. | Confirm her airway and lines before we move.
+
+=== S18 급성 의식저하 기도 위기
+ ko: 삽관 보조 4문장 순서 | why: 삽관 물품을 갖췄다고 알리고, 그것을 갖춘 상태에서 사전 산소화를 하게 하고, 그동안 산소포화도가 안정적이라고 보고한 뒤, 안정된 걸 근거로 기구를 건넬 준비를 말해요. | tag=대화 흐름 icon=compass
+   - I'll get the intubation tray and suction ready.  (삽관 트레이와 흡인을 준비해 둘게요/준비/gear)
+   - With all of that ready, let's preoxygenate him and position his airway.  (그 모두가 준비됐으니 사전 산소화하고 기도 위치를 잡죠/산소화/monitor)
+   - Sats are holding steady while we do that.  (그걸 하는 동안 산소포화도는 안정적으로 유지되고 있어요/보고/monitor)
+   - Since sats are steady, I'll hand you the tube the moment you're ready.  (수치가 안정적이니 준비되시는 순간 튜브를 건네드릴게요/전달/handshake2)
+  swap1<->2: With all of that ready, let's preoxygenate him and position his airway. | I'll get the intubation tray and suction ready. | Sats are holding steady while we do that. | Since sats are steady, I'll hand you the tube the moment you're ready.
+  swap2<->3: I'll get the intubation tray and suction ready. | Sats are holding steady while we do that. | With all of that ready, let's preoxygenate him and position his airway. | Since sats are steady, I'll hand you the tube the moment you're ready.
+  swap3<->4: I'll get the intubation tray and suction ready. | With all of that ready, let's preoxygenate him and position his airway. | Since sats are steady, I'll hand you the tube the moment you're ready. | Sats are holding steady while we do that.
+
+=== S19 심각 흡인성폐렴 급변
+ ko: 흡인성폐렴 급변 4문장 순서 | why: 산소포화도 하락을 보고하고, 그에 따라 흡인과 FiO2 상승을 지시한 뒤, 산소를 올리는 방법으로 비재호흡마스크를 말하고, 그와 함께 검사를 요청해요. | tag=대화 흐름 icon=compass
+   - His sats dropped into the seventies after he aspirated.  (흡인 후 산소포화도가 70퍼센트대로 떨어졌어요/보고/chartup)
+   - Because of that, suction his airway and let's raise the FiO2.  (그러니 기도를 흡인하고 FiO2를 올리죠/지시/siren)
+   - To raise it, I'll switch him to the non-rebreather at fifteen liters.  (그걸 올리려고 비재호흡마스크로 바꾸고 15리터로 맞출게요/산소/monitor)
+   - Along with that, let's get a stat chest X-ray and an ABG.  (그와 함께 스탯으로 흉부 엑스레이와 ABG를 확인하죠/검사/lab)
+  swap1<->2: Because of that, suction his airway and let's raise the FiO2. | His sats dropped into the seventies after he aspirated. | To raise it, I'll switch him to the non-rebreather at fifteen liters. | Along with that, let's get a stat chest X-ray and an ABG.
+  swap2<->3: His sats dropped into the seventies after he aspirated. | To raise it, I'll switch him to the non-rebreather at fifteen liters. | Because of that, suction his airway and let's raise the FiO2. | Along with that, let's get a stat chest X-ray and an ABG.
+  swap3<->4: His sats dropped into the seventies after he aspirated. | Because of that, suction his airway and let's raise the FiO2. | Along with that, let's get a stat chest X-ray and an ABG. | To raise it, I'll switch him to the non-rebreather at fifteen liters.
+
+=== S20 광범위 뇌손상 목표·예후 소통
+ ko: 예후 소통 4문장 순서 | why: 공감과 정직의 약속으로 시작해 심각한 상태를 알리고, 그래서 편안함에 집중할 수 있다고 선택지를 주고, 이 모두를 생각할 시간을 보장하며 맺어요. | tag=대화 흐름 icon=compass
+   - I wish I had better news, and I'll be honest with you.  (더 좋은 소식이면 좋겠지만 솔직하게 말씀드릴게요/공감/faceWorried)
+   - Here's the hard part: the injury to his brain is very severe.  (어려운 부분은 뇌 손상이 매우 심각하다는 거예요/고지/faceWorried)
+   - Because of how severe that is, we can focus on his comfort instead of more machines.  (그만큼 심각하니 기계를 더 다는 대신 편안함에 집중할 수 있어요/선택/shield)
+   - Take whatever time you need to think about all of that before we decide anything.  (그 모두를 생각할 만큼 시간을 가지세요 결정하기 전에요/시간/coffee)
+  swap1<->2: Here's the hard part: the injury to his brain is very severe. | I wish I had better news, and I'll be honest with you. | Because of how severe that is, we can focus on his comfort instead of more machines. | Take whatever time you need to think about all of that before we decide anything.
+  swap2<->3: I wish I had better news, and I'll be honest with you. | Because of how severe that is, we can focus on his comfort instead of more machines. | Here's the hard part: the injury to his brain is very severe. | Take whatever time you need to think about all of that before we decide anything.
+  swap3<->4: I wish I had better news, and I'll be honest with you. | Here's the hard part: the injury to his brain is very severe. | Take whatever time you need to think about all of that before we decide anything. | Because of how severe that is, we can focus on his comfort instead of more machines.

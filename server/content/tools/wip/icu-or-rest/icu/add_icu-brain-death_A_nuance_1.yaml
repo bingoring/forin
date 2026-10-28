@@ -1,168 +1,278 @@
 0:
-  - kind: slider
-    words: [w-permanently]
-    cue: "The doctors say the damage will never reverse, even with the ventilator."
-    scale: [temporarily, for a while, permanently]
-    answerAt: 2
-    why: "시간이 지나도 되돌아오지 않으면 permanently예요. 뇌사는 뇌 기능이 영구적으로 멈춘 상태이고, 판정은 의사가 정해진 검사로 해요. 간호사는 검사를 돕고 가족 질문에 쉬운 말로 답해요."
-    example: "Brain death means the brain has permanently stopped working."
-    exKo: "뇌사란 뇌가 영구적으로 기능을 멈춘 것을 뜻해요."
-  - kind: context
-    words: [w-explain]
-    word: explain
-    ko: 설명하다
-    scenes:
-      - {who: 동료 간호사에게, icon: handshake2, en: "Let me explain the order of the tests before we start.", ok: true}
-      - {who: 가족에게, icon: me, en: "Let me explain: absent brainstem reflexes and a positive apnea test confirm irreversible loss of brain function.", ok: false, fix: "Let me explain in plain words: his brain has stopped working, and it cannot recover."}
-      - {who: 의사에게 보고, icon: stetho, en: "Can you explain which reflex you want first?", ok: true}
-    why: "의료진끼리는 반사·무호흡 검사 같은 용어로 설명해도 정확해요. 가족에게는 같은 explain을 쉬운 말로 풀어야 해요. 놀란 가족 앞에서 검사 용어를 나열하면 더 혼란스러워져요."
-  - kind: swap
-    words: [w-brain]
-    who: "가족에게 · 뇌사 설명"
-    icon: me
-    before: ["Brain death means ", "he is sleeping deeply", "."]
-    options: [his brain has permanently stopped working, he is sleeping deeply, he is in a very bad coma]
-    answer: his brain has permanently stopped working
-    notes: {his brain has permanently stopped working: "있는 그대로 분명해서 가족이 오해하지 않아요.", he is sleeping deeply: "깊은 잠이라고 하면 깨어날 것처럼 들려 거짓 희망을 줘요.", he is in a very bad coma: "혼수상태와 뇌사는 달라서 가족이 둘을 헷갈리게 돼요."}
-    why: "뇌사는 법적 사망이라서 잠이나 혼수 같은 말로 돌려 말하면 안 돼요. 가족에게 거짓 희망을 주지 않고 사실을 분명하게 말해요."
-    ko: "뇌사란 뇌가 영구적으로 기능을 멈춘 것을 뜻해요"
+- kind: slider
+  words:
+  - w-permanently
+  cue: The doctors say the damage will never reverse, even with the ventilator.
+  scale:
+  - temporarily
+  - for a while
+  - permanently
+  answerAt: 2
+  why: 시간이 지나도 되돌아오지 않으면 permanently예요. 뇌사는 뇌 기능이 영구적으로 멈춘 상태이고, 판정은 의사가 정해진 검사로 해요. 간호사는 검사를 돕고 가족 질문에 쉬운 말로 답해요.
+  example: Brain death means the brain has permanently stopped working.
+  exKo: 뇌사란 뇌가 영구적으로 기능을 멈춘 것을 뜻해요.
+- kind: swap
+  words:
+  - w-brain
+  who: 가족에게 · 뇌사 설명
+  icon: me
+  before:
+  - 'Brain death means '
+  - he is sleeping deeply
+  - .
+  options:
+  - his brain has permanently stopped working
+  - he is sleeping deeply
+  - he is in a very bad coma
+  answer: his brain has permanently stopped working
+  notes:
+    his brain has permanently stopped working: 있는 그대로 분명해서 가족이 오해하지 않아요.
+    he is sleeping deeply: 깊은 잠이라고 하면 깨어날 것처럼 들려 거짓 희망을 줘요.
+    he is in a very bad coma: 혼수상태와 뇌사는 달라서 가족이 둘을 헷갈리게 돼요.
+  why: 뇌사는 법적 사망이라서 잠이나 혼수 같은 말로 돌려 말하면 안 돼요. 가족에게 거짓 희망을 주지 않고 사실을 분명하게 말해요.
+  ko: 뇌사란 뇌가 영구적으로 기능을 멈춘 것을 뜻해요
 1:
-  - kind: slider
-    words: [w-pupil]
-    cue: "The pupil shrinks only a little, and slowly, when the light hits it."
-    scale: [brisk, sluggish, fixed]
-    answerAt: 1
-    why: "빛에 느리고 약하게라도 줄어들면 sluggish예요. brisk는 빠르게 정상 반응, fixed는 전혀 변하지 않을 때예요. 반응이 달라진 것은 본 그대로 기록해 의사에게 알려요."
-    example: "Pupils are fixed and nonreactive on my check."
-    exKo: "제가 확인했을 때 동공은 고정되고 반응이 없습니다."
-  - kind: context
-    words: [w-response]
-    word: response
-    ko: 반응
-    scenes:
-      - {who: 의사에게 보고, icon: stetho, en: "No corneal or gag response noted.", ok: true}
-      - {who: 차트 기록, icon: board, en: "Pupils nonreactive; no motor response to pain.", ok: true}
-      - {who: 가족에게, icon: me, en: "There was no response to noxious stimuli.", ok: false, fix: "He didn't react when we touched his eye or pressed on his nail, and that tells the doctors his brain isn't working."}
-    why: "의료진끼리는 response와 noxious stimuli 같은 용어가 정확하고 빨라요. 가족에게는 같은 일을 무슨 검사를 했고 어떻게 보였는지 쉬운 말로 풀어 주세요."
-  - kind: swap
-    words: [w-corneal]
-    who: "가족에게 · 검사 안내"
+- kind: slider
+  words:
+  - w-pupil
+  cue: The pupil shrinks only a little, and slowly, when the light hits it.
+  scale:
+  - brisk
+  - sluggish
+  - fixed
+  answerAt: 1
+  why: 빛에 느리고 약하게라도 줄어들면 sluggish예요. brisk는 빠르게 정상 반응, fixed는 전혀 변하지 않을 때예요. 반응이 달라진 것은 본 그대로 기록해 의사에게 알려요.
+  example: Pupils are fixed and nonreactive on my check.
+  exKo: 제가 확인했을 때 동공은 고정되고 반응이 없습니다.
+- kind: context
+  words:
+  - w-response
+  word: response
+  ko: 반응
+  scenes:
+  - who: 의사에게 보고
+    icon: stetho
+    en: No corneal or gag response noted.
+    ok: true
+  - who: 차트 기록
+    icon: board
+    en: Pupils nonreactive; no motor response to pain.
+    ok: true
+  - who: 가족에게
     icon: me
-    before: ["The doctor will touch his eye lightly with cotton to check ", "the corneal reflex", "."]
-    options: [whether his eye blinks, the corneal reflex, the trigeminal-facial arc]
-    answer: whether his eye blinks
-    notes: {whether his eye blinks: "가족이 바로 알아듣고, 무엇을 보는지 분명해요.", the corneal reflex: "의료진끼리 쓰는 용어라 가족은 뜻을 모를 수 있어요.", the trigeminal-facial arc: "신경 경로를 가리키는 전문 용어라 가족 설명에는 맞지 않아요."}
-    why: "뇌간반사 검사는 의사가 하고, 간호사는 무엇을 하는지 가족이 알아듣게 옆에서 풀어 줘요."
-    ko: "의사가 솜으로 눈을 살짝 건드려서 눈이 깜박이는지 확인할 거예요"
+    en: There was no response to noxious stimuli.
+    ok: false
+    fix: He didn't react when we touched his eye or pressed on his nail, and that tells the doctors his brain isn't working.
+  why: 의료진끼리는 response와 noxious stimuli 같은 용어가 정확하고 빨라요. 가족에게는 같은 일을 무슨 검사를 했고 어떻게 보였는지 쉬운 말로 풀어 주세요.
+- kind: swap
+  words:
+  - w-corneal
+  who: 가족에게 · 검사 안내
+  icon: me
+  before:
+  - 'The doctor will touch his eye lightly with cotton to check '
+  - the corneal reflex
+  - .
+  options:
+  - whether his eye blinks
+  - the corneal reflex
+  - the trigeminal-facial arc
+  answer: whether his eye blinks
+  notes:
+    whether his eye blinks: 가족이 바로 알아듣고, 무엇을 보는지 분명해요.
+    the corneal reflex: 의료진끼리 쓰는 용어라 가족은 뜻을 모를 수 있어요.
+    the trigeminal-facial arc: 신경 경로를 가리키는 전문 용어라 가족 설명에는 맞지 않아요.
+  why: 뇌간반사 검사는 의사가 하고, 간호사는 무엇을 하는지 가족이 알아듣게 옆에서 풀어 줘요.
+  ko: 의사가 솜으로 눈을 살짝 건드려서 눈이 깜박이는지 확인할 거예요
 2:
-  - kind: slider
-    words: [w-stable]
-    cue: "His pressure and heart rate are the same as an hour ago, with no change."
-    scale: [stable, drifting, dropping]
-    answerAt: 0
-    why: "수치가 한 시간째 그대로면 stable이에요. 무호흡 검사는 혈압·체온·산소 상태 같은 전제 조건이 갖춰진 뒤에 시작하고, 갖춰졌는지는 팀이 함께 확인해요."
-    example: "Vitals are stable before we start the clock."
-    exKo: "시계를 시작하기 전에 활력징후는 안정적이에요."
-  - kind: context
-    words: [w-check]
-    word: check
-    ko: 확인하다
-    scenes:
-      - {who: 의사가 간호사에게, icon: stetho, en: "Please check the baseline gas result before we disconnect.", ok: true}
-      - {who: 차트 기록, icon: board, en: "Rescue equipment checked; baseline gas sent.", ok: true}
-      - {who: 가족에게, icon: me, en: "Before the apnea test, we check his hemodynamics, normothermia, and baseline PaCO2.", ok: false, fix: "Before the breathing test, we check that his blood pressure, temperature, and oxygen are where they should be."}
-    why: "의료진끼리는 hemodynamics, PaCO2 같은 용어가 정확하고 빨라요. 가족에게는 같은 check를 무엇을 확인하는지 쉬운 말로 풀어 주세요."
-  - kind: swap
-    words: [w-preoxygenate]
-    who: "가족에게 · 검사 전 처치 설명"
+- kind: slider
+  words:
+  - w-stable
+  cue: His pressure and heart rate are the same as an hour ago, with no change.
+  scale:
+  - stable
+  - drifting
+  - dropping
+  answerAt: 0
+  why: 수치가 한 시간째 그대로면 stable이에요. 무호흡 검사는 혈압·체온·산소 상태 같은 전제 조건이 갖춰진 뒤에 시작하고, 갖춰졌는지는 팀이 함께 확인해요.
+  example: Vitals are stable before we start the clock.
+  exKo: 시계를 시작하기 전에 활력징후는 안정적이에요.
+- kind: context
+  words:
+  - w-baseline
+  word: baseline
+  ko: 기저의
+  scenes:
+  - who: 의사가 간호사에게
+    icon: stetho
+    en: Draw a baseline gas before we disconnect him.
+    ok: true
+  - who: 차트 기록
+    icon: board
+    en: Baseline gas sent; SpO2 100% on 100% FiO2.
+    ok: true
+  - who: 가족에게
     icon: me
-    before: ["Before the test, I'll ", "preoxygenate him", " so his oxygen level stays safe."]
-    options: [give him extra oxygen, preoxygenate him, oxygenate his alveolar bed]
-    answer: give him extra oxygen
-    notes: {give him extra oxygen: "가족이 바로 알아듣고, 왜 하는지도 분명해요.", preoxygenate him: "의료진끼리 쓰는 말이라 가족은 뜻을 모를 수 있어요.", oxygenate his alveolar bed: "폐포를 가리키는 전문 표현이라 가족 설명에는 맞지 않아요."}
-    why: "검사를 앞두고 가족이 불안해하니, 하는 일을 쉬운 말로 알려 주면 안심과 이해에 도움이 돼요."
-    ko: "검사 전에 산소를 더 드려서 산소 수치가 안전하게 유지되도록 할게요"
+    en: His baseline PaCO2 is normal, so we can begin the apnea test.
+    ok: false
+    fix: His breathing numbers look normal before the test, so we can begin.
+  why: 의료진끼리는 baseline, PaCO2 같은 용어가 정확하고 빨라요. 가족에게는 같은 baseline을 검사 전 숨쉬기 수치가 정상이라고 쉬운 말로 풀어 주세요.
+- kind: swap
+  words:
+  - w-preoxygenate
+  who: 가족에게 · 검사 전 처치 설명
+  icon: me
+  before:
+  - 'Before the test, I''ll '
+  - preoxygenate him
+  - ' so his oxygen level stays safe.'
+  options:
+  - give him extra oxygen
+  - preoxygenate him
+  - oxygenate his alveolar bed
+  answer: give him extra oxygen
+  notes:
+    give him extra oxygen: 가족이 바로 알아듣고, 왜 하는지도 분명해요.
+    preoxygenate him: 의료진끼리 쓰는 말이라 가족은 뜻을 모를 수 있어요.
+    oxygenate his alveolar bed: 폐포를 가리키는 전문 표현이라 가족 설명에는 맞지 않아요.
+  why: 검사를 앞두고 가족이 불안해하니, 하는 일을 쉬운 말로 알려 주면 안심과 이해에 도움이 돼요.
+  ko: 검사 전에 산소를 더 드려서 산소 수치가 안전하게 유지되도록 할게요
 3:
-  - kind: slider
-    words: [w-unclear]
-    cue: "The wife says, \"I follow most of it, but one part is still fuzzy.\""
-    scale: [clear, partly unclear, totally unclear]
-    answerAt: 1
-    why: "대부분은 이해했고 일부만 흐리면 partly unclear예요. 이럴 때는 의사가 다시 설명하도록 연결해 주세요. 판정 내용을 풀어 주는 것은 의사의 일이에요."
-    example: "I'll make sure the doctor explains anything that's still unclear."
-    exKo: "아직 명확하지 않은 부분은 의사가 다시 설명하도록 하겠습니다."
-  - kind: context
-    words: [w-die]
-    word: die
-    ko: 사망하다
-    scenes:
-      - {who: 차트 기록, icon: board, en: "Pt died; brain death declared by the attending.", ok: true}
-      - {who: 인계 동료에게, icon: handshake2, en: "He died this morning, and the OPO is already notified.", ok: true}
-      - {who: 가족에게, icon: me, en: "The patient died. Time of death was 14:05. Please sign here.", ok: false, fix: "He has died. I'm so sorry — his brain has permanently stopped working."}
-    why: "차트와 인계에서는 짧고 건조한 기록이 맞아요. 가족에게는 died를 분명히 말하되 환자를 사람으로 부르고 위로를 먼저 건네야 해요. 서류 이야기부터 꺼내면 차갑게 들려요."
-  - kind: swap
-    words: [w-die]
-    who: "가족에게 · 사망 고지"
-    icon: me
-    before: ["I'm so sorry, but ", "we lost him", "."]
-    options: [he has died, we lost him, he passed on]
-    answer: he has died
-    notes: {he has died: "분명하고 오해가 없어요. 사망 고지에서는 died를 한 번은 분명히 말해요.", we lost him: "아직 어딘가에 있는 것처럼 들려 가족이 살아 있는지 되묻게 돼요.", he passed on: "완곡해서 가족이 사실을 놓칠 수 있어요."}
-    why: "뇌사는 법적 사망이에요. 가족이 사실을 놓치지 않도록 has died를 분명히 말한 뒤에 위로를 건네요."
-    ko: "정말 죄송하지만, 그분은 사망했어요"
+- kind: slider
+  words:
+  - w-unclear
+  cue: The wife says, "I follow most of it, but one part is still fuzzy."
+  scale:
+  - clear
+  - partly unclear
+  - totally unclear
+  answerAt: 1
+  why: 대부분은 이해했고 일부만 흐리면 partly unclear예요. 이럴 때는 의사가 다시 설명하도록 연결해 주세요. 판정 내용을 풀어 주는 것은 의사의 일이에요.
+  example: I'll make sure the doctor explains anything that's still unclear.
+  exKo: 아직 명확하지 않은 부분은 의사가 다시 설명하도록 하겠습니다.
+- kind: swap
+  words:
+  - w-die
+  who: 가족에게 · 사망 고지
+  icon: me
+  before:
+  - 'I''m so sorry, but '
+  - we lost him
+  - .
+  options:
+  - he has died
+  - we lost him
+  - he passed on
+  answer: he has died
+  notes:
+    he has died: 분명하고 오해가 없어요. 사망 고지에서는 died를 한 번은 분명히 말해요.
+    we lost him: 아직 어딘가에 있는 것처럼 들려 가족이 살아 있는지 되묻게 돼요.
+    he passed on: 완곡해서 가족이 사실을 놓칠 수 있어요.
+  why: 뇌사는 법적 사망이에요. 가족이 사실을 놓치지 않도록 has died를 분명히 말한 뒤에 위로를 건네요.
+  ko: 정말 마음이 아프지만, 그분은 사망했어요
 4:
-  - kind: slider
-    words: [w-donation]
-    cue: "Policy: the OPO's designated requestor leads the donation conversation with the family."
-    scale: [leave it to the OPO, hint at it, bring it up yourself]
-    answerAt: 0
-    why: "미국에서는 OPO 담당자(지정 요청자)가 기증 이야기를 하고, 간호사는 병원 정책대로 OPO에 알려요. 간호사가 먼저 가족에게 기증을 꺼내거나 넌지시 말하지 않아요."
-    example: "We don't bring up donation with the family ourselves."
-    exKo: "저희가 먼저 가족에게 기증 이야기를 꺼내지는 않아요."
-  - kind: context
-    words: [w-protocol]
-    word: protocol
-    ko: 규정
-    scenes:
-      - {who: 동료 간호사에게, icon: handshake2, en: "Per protocol, we notify the OPO when a patient meets the clinical triggers.", ok: true}
-      - {who: 차트 기록, icon: board, en: "OPO notified per protocol; call time documented.", ok: true}
-      - {who: 가족에게, icon: me, en: "Per protocol, the OPO has been notified that your son meets its clinical trigger criteria.", ok: false, fix: "This is what the hospital does for every patient like him, and someone will talk with you about it separately."}
-    why: "의료진끼리는 protocol과 clinical trigger 같은 말이 정확하고 빨라요. 가족 앞에서는 같은 protocol을 이 절차가 누구에게나 하는 일이라고 풀어 주세요. 기증 이야기 자체는 OPO 담당자가 해요."
-  - kind: swap
-    words: [w-opo]
-    who: "동료 간호사에게 · 인계"
+- kind: slider
+  words:
+  - w-notify
+  cue: A colleague asks, "Did anyone tell the OPO?" You made the formal call per protocol and charted the time.
+  scale:
+  - mention
+  - inform
+  - notify
+  answerAt: 2
+  why: 정해진 절차에 따라 공식적으로 알리면 notify예요. mention은 말끝에 슬쩍 꺼낼 때, inform은 알려 줄 때예요. 간호사는 병원 정책대로 OPO에 notify하고 시간을 차트에 남겨요. 기증 이야기는 OPO 담당자가 해요.
+  example: The OPO has been notified per protocol.
+  exKo: OPO에는 프로토콜에 따라 통보했어요.
+- kind: context
+  words:
+  - w-protocol
+  word: protocol
+  ko: 규정
+  scenes:
+  - who: 동료 간호사에게
     icon: handshake2
-    before: ["I notified ", "the transplant people", " and charted the time."]
-    options: [the OPO, the transplant people, the donor folks]
-    answer: the OPO
-    notes: {the OPO: "정식 기관 이름이라 정확해요. 인계에서는 누구에게 알렸는지 분명해야 해요.", the transplant people: "이식센터와 OPO를 헷갈리게 하는 두루뭉술한 말이에요.", the donor folks: "가볍고 비전문적인 말투라 인계에는 맞지 않아요."}
-    why: "OPO 통보는 병원 정책에 따라 하고 시간을 차트에 남겨요. 인계에서는 기관 이름을 정확히 말해야 다음 사람이 이어 가요."
-    ko: "OPO에 알렸고 시간은 차트에 남겼어요"
-5:
-  - kind: slider
-    words: [w-rate]
-    cue: "His heart rate is 130 at rest, and he is not moving."
-    scale: [slow, normal, fast]
-    answerAt: 2
-    why: "분당 130회는 빠른 맥박이에요. 맥박의 빠르기 변화는 수치 그대로 기록하고 의사에게 알려요. 판단과 지시는 의료진이 해요."
-    example: "His heart rate and pressure have stayed steady this hour."
-    exKo: "이번 시간 동안 심박수와 혈압이 안정적으로 유지됐어요."
-  - kind: context
-    words: [w-hold]
-    word: hold
-    ko: 유지되다
-    scenes:
-      - {who: 인계 동료에게, icon: handshake2, en: "His pressure is holding on the current dose.", ok: true}
-      - {who: 의사에게 보고, icon: stetho, en: "If his pressure doesn't hold, I'll call you right away.", ok: true}
-      - {who: 가족에게, icon: me, en: "His hemodynamics are holding on vasopressor support.", ok: false, fix: "His blood pressure is staying steady with the medicine we're giving him."}
-    why: "의료진끼리는 hemodynamics, vasopressor 같은 말이 정확하고 빨라요. 가족에게는 같은 hold를 혈압이 유지되고 있다고 쉬운 말로 풀어 주세요."
-  - kind: swap
-    words: [w-pressure]
-    who: "가족에게 · 감시 설명"
+    en: Per protocol, we notify the OPO when a patient meets the clinical triggers.
+    ok: true
+  - who: 차트 기록
+    icon: board
+    en: OPO notified per protocol; call time documented.
+    ok: true
+  - who: 가족에게
     icon: me
-    before: ["We're keeping close watch on ", "his MAP and CVP trends", "."]
-    options: [his blood pressure and heart rate, his MAP and CVP trends, his hemodynamic parameters]
-    answer: his blood pressure and heart rate
-    notes: {his blood pressure and heart rate: "가족이 바로 알아듣고, 무엇을 지켜보는지 분명해요.", his MAP and CVP trends: "의료진끼리 쓰는 약어라 가족은 뜻을 모를 수 있어요.", his hemodynamic parameters: "격식 있는 전문 표현이라 가족 설명에는 딱딱해요."}
-    why: "무엇을 지켜보고 있는지 알면 가족이 덜 불안해해요. 약어 대신 쉬운 말로 알려 주세요."
-    ko: "혈압과 심박수를 계속 지켜보고 있어요"
+    en: Per protocol, the OPO has been notified that your son meets its clinical trigger criteria.
+    ok: false
+    fix: This is what the hospital does for every patient like him, and someone will talk with you about it separately.
+  why: 의료진끼리는 protocol과 clinical trigger 같은 말이 정확하고 빨라요. 가족 앞에서는 같은 protocol을 이 절차가 누구에게나 하는 일이라고 풀어 주세요. 기증 이야기 자체는 OPO 담당자가 해요.
+- kind: swap
+  words:
+  - w-opo
+  who: 동료 간호사에게 · 인계
+  icon: handshake2
+  before:
+  - 'I notified '
+  - the transplant people
+  - ' and charted the time.'
+  options:
+  - the OPO
+  - the transplant people
+  - the donor folks
+  answer: the OPO
+  notes:
+    the OPO: 정식 기관 이름이라 정확해요. 인계에서는 누구에게 알렸는지 분명해야 해요.
+    the transplant people: 이식센터와 OPO를 헷갈리게 하는 두루뭉술한 말이에요.
+    the donor folks: 가볍고 비전문적인 말투라 인계에는 맞지 않아요.
+  why: OPO 통보는 병원 정책에 따라 하고 시간을 차트에 남겨요. 인계에서는 기관 이름을 정확히 말해야 다음 사람이 이어 가요.
+  ko: OPO에 알렸고 시간은 차트에 남겼어요
+5:
+- kind: slider
+  words:
+  - w-rate
+  cue: His heart rate is 130 at rest, and he is not moving.
+  scale:
+  - slow
+  - normal
+  - fast
+  answerAt: 2
+  why: 분당 130회는 빠른 맥박이에요. 맥박의 빠르기 변화는 수치 그대로 기록하고 의사에게 알려요. 판단과 지시는 의료진이 해요.
+  example: His heart rate and pressure have stayed steady this hour.
+  exKo: 이번 시간 동안 심박수와 혈압이 안정적으로 유지됐어요.
+- kind: context
+  words:
+  - w-hold
+  word: hold
+  ko: 유지되다
+  scenes:
+  - who: 인계 동료에게
+    icon: handshake2
+    en: His pressure is holding on the current dose.
+    ok: true
+  - who: 의사에게 보고
+    icon: stetho
+    en: If his pressure doesn't hold, I'll call you right away.
+    ok: true
+  - who: 가족에게
+    icon: me
+    en: His hemodynamics are holding on vasopressor support.
+    ok: false
+    fix: His blood pressure is staying steady with the medicine we're giving him.
+  why: 의료진끼리는 hemodynamics, vasopressor 같은 말이 정확하고 빨라요. 가족에게는 같은 hold를 혈압이 유지되고 있다고 쉬운 말로 풀어 주세요.
+- kind: swap
+  words:
+  - w-pressure
+  who: 가족에게 · 감시 설명
+  icon: me
+  before:
+  - 'We''re keeping close watch on '
+  - his MAP and CVP trends
+  - .
+  options:
+  - his blood pressure and heart rate
+  - his MAP and CVP trends
+  - his hemodynamic parameters
+  answer: his blood pressure and heart rate
+  notes:
+    his blood pressure and heart rate: 가족이 바로 알아듣고, 무엇을 지켜보는지 분명해요.
+    his MAP and CVP trends: 의료진끼리 쓰는 약어라 가족은 뜻을 모를 수 있어요.
+    his hemodynamic parameters: 격식 있는 전문 표현이라 가족 설명에는 딱딱해요.
+  why: 무엇을 지켜보고 있는지 알면 가족이 덜 불안해해요. 약어 대신 쉬운 말로 알려 주세요.
+  ko: 혈압과 심박수를 계속 지켜보고 있어요

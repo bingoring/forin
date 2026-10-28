@@ -19,3 +19,8 @@
 - 같은 ko 쌍 정리: exam=진찰 / test=검사, confirm=맞는지 확인하다 / check=확인하다, steady=일정한 / stable=안정적인, vent=호흡기(줄임말) / ventilator=인공호흡기, volume=용적 / dose=용량, arrange=주선하다 / coordinate=조율하다, honor=받들다 / respect=존중하다, die=사망하다 / death=사망, doctor 삭제(physician=의사).
 - 쓰임이 갈려 문장 태그만 뺀 곳: pressure(부담)·right(권리)·hold(손을 잡다)·bring(자리를 마련)·set(묶음)·support(명사)·step(자리를 비키다)·hear(I hear you). 쉬운 말은 헤드워드 대신 삭제(doctor·time·hour·minute·family·body 등).
 - 새 단어: entirely·completely·belong·whatever(상황 18·11의 단어 수 8개 이상 유지용, 모두 문장에 이미 있는 말).
+
+## 뉘앙스 설계 메모
+- context 6건(상황 0·3·11·12·18·19)은 쓰지 않았습니다. 가족 대상 상황이라 세 장면이 자연스럽게 공유하면서 fix에서 바뀔 전문어가 없었고(억지로 쓰면 압박·차가움을 단어 격식 문제로 포장하게 됨), 각 상황에 swap이 있어 STEP 2는 충족됩니다. 사망 고지에서는 died를 분명히 말해야 해서 die를 "어색한 말"로 두는 context도 뺐습니다(die는 swap에서 다룸).
+- 상황 10 [3] "His oxygen saturation has stayed above ninety-five." 의 stay 태그는 "유지되다" 뜻이라 헤드워드(머물다)와 맞지 않아 태그를 뺐습니다.
+- 슬라이더 21문항은 모두 약함→강함, 정답 칸 0:6·1:7·2:8로 섞었습니다.

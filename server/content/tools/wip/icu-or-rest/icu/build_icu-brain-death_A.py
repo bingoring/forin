@@ -39,6 +39,8 @@ DROP = [
  ("His pressure is holding with the current support.", ['w-support'], 'support가 지지 요법(명사)이라 헤드워드 support(지원하다)와 맞지 않는다'),
  ("I'll step outside so you can have this time together.", ['w-step'], 'step이 자리를 비키다 뜻이라 헤드워드 step(단계)과 맞지 않는다'),
  ("Whatever you're feeling right now is okay.", [], '쉬운 단어 feel을 빼고 whatever를 새로 태그', ['w-whatever']),
+ ("Here, support is withdrawn first, and we wait for the heart to stop.", ['w-support'], 'support가 지지 요법(명사)이라 헤드워드 support(지원하다)와 맞지 않는다'),
+ ("His oxygen saturation has stayed above ninety-five.", ['w-stay'], 'stay가 유지되다 뜻이라 헤드워드 stay(머물다)와 맞지 않는다'),
  ("I hear you, and your family's wishes will be respected.", ['w-hear'], 'I hear you는 공감 표현이라 헤드워드 hear(듣다)와 맞지 않는다'),
 ]
 ADD_WORDS = {

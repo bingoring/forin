@@ -1,224 +1,384 @@
 13:
-  - kind: slider
-    words: [w-page]
-    cue: "A routine lab result needs no action; the coordinator just wants to know by the end of the shift."
-    scale: [leave a message, call, page]
-    answerAt: 0
-    why: "급하지 않은 정보는 메시지로 남기면 돼요. 바로 반응이 필요할 때만 call이나 page로 올려요. 호출 수단은 병원 정책과 코디네이터와 정한 방식에 따라요."
-    example: "I'll page you the moment anything changes."
-    exKo: "무언가 바뀌면 바로 호출할게요."
-  - kind: context
-    words: [w-timeline]
-    word: timeline
-    ko: 일정표
-    scenes:
-      - {who: 코디네이터가 간호사에게, icon: monitor, en: "Can you share the timeline for the next set of labs?", ok: true}
-      - {who: 차트 기록, icon: board, en: "Family updated on timeline; coordinator aware.", ok: true}
-      - {who: 가족에게, icon: me, en: "The timeline is tight, so we need your answer on donation soon.", ok: false, fix: "We'll go through the timeline with you step by step, and you can ask us anything."}
-    why: "의료진끼리는 검사와 일정을 서로 맞추려고 timeline을 말해요. 가족에게는 같은 timeline을 기한으로 압박하며 기증 답을 재촉하는 말로 쓰면 안 돼요. 기증 이야기는 OPO 담당자가 하고, 간호사는 일정을 차분히 안내해요."
-  - kind: swap
-    words: [w-coordinate]
-    who: "코디네이터에게 · 검사 조율"
+- kind: slider
+  words:
+  - w-page
+  cue: A routine lab result needs no action; the coordinator just wants to know by the end of the shift.
+  scale:
+  - leave a message
+  - call
+  - page
+  answerAt: 0
+  why: 급하지 않은 정보는 메시지로 남기면 돼요. 바로 반응이 필요할 때만 call이나 page로 올려요. 호출 수단은 병원 정책과 코디네이터와 정한 방식에 따라요.
+  example: I'll page you the moment anything changes.
+  exKo: 무언가 바뀌면 바로 호출할게요.
+- kind: context
+  words:
+  - w-draw
+  word: draw
+  ko: 채취하다
+  scenes:
+  - who: 코디네이터가 간호사에게
     icon: monitor
-    before: ["His last panel ", "looks wonky", ", so I'd like to coordinate repeat labs with you."]
-    options: [shows a change, looks wonky, is whack]
-    answer: shows a change
-    notes: {shows a change: "무엇이 달라졌는지 사실 그대로 말해 의료진 사이 소통에 맞아요.", looks wonky: "속어라서 무엇이 어떻게 이상한지 전달되지 않아요.", is whack: "비속어에 가까워 전문가 사이 소통에 맞지 않아요."}
-    why: "코디네이터와는 사실 그대로 짧게 말해야 일정을 정확히 맞출 수 있어요. 막연한 속어는 오해를 낳아요."
-    ko: "지난 검사에 변화가 있어서 반복 검사를 함께 조율하고 싶어요"
+    en: Can the next labs be drawn at the bedside?
+    ok: true
+  - who: 차트 기록
+    icon: board
+    en: Labs drawn at 0600 and sent to the lab.
+    ok: true
+  - who: 가족에게
+    icon: me
+    en: We need to draw a coag panel and a type and screen.
+    ok: false
+    fix: We need to take a little more blood for tests.
+  why: 의료진끼리는 검사 이름을 그대로 말하며 draw를 써도 돼요. 가족에게는 같은 일을 검사를 위해 피를 조금 더 뽑는다고 쉬운 말로 풀어 주세요.
+- kind: swap
+  words:
+  - w-coordinate
+  who: 코디네이터에게 · 검사 조율
+  icon: monitor
+  before:
+  - 'His last panel '
+  - looks wonky
+  - ', so I''d like to coordinate repeat labs with you.'
+  options:
+  - shows a change
+  - looks wonky
+  - is whack
+  answer: shows a change
+  notes:
+    shows a change: 무엇이 달라졌는지 사실 그대로 말해 의료진 사이 소통에 맞아요.
+    looks wonky: 속어라서 무엇이 어떻게 이상한지 전달되지 않아요.
+    is whack: 비속어에 가까워 전문가 사이 소통에 맞지 않아요.
+  why: 코디네이터와는 사실 그대로 짧게 말해야 일정을 정확히 맞출 수 있어요. 막연한 속어는 오해를 낳아요.
+  ko: 지난 검사에 변화가 있어서 반복 검사를 함께 조율하고 싶어요
 14:
-  - kind: slider
-    words: [w-document]
-    cue: "The nurse records the time of every single change during the waiting period."
-    scale: [rarely, regularly, continuously]
-    answerAt: 2
-    why: "변화가 있을 때마다 시간을 적으면 continuously에 가까워요. DCD의 대기 시간은 정확히 재고 기록해요. 사망 선언은 이식팀과 별개의 의사가 해요."
-    example: "The waiting period is timed and documented closely."
-    exKo: "대기 시간은 정확히 재고 세심하게 기록해요."
-  - kind: context
-    words: [w-death]
-    word: death
-    ko: 사망
-    scenes:
-      - {who: 의사가 간호사에게, icon: stetho, en: "In DCD, death is declared after circulation stops and the observation period ends.", ok: true}
-      - {who: 차트 기록, icon: board, en: "Time of death 1412; declared by Dr. Park.", ok: true}
-      - {who: 가족에게, icon: me, en: "Circulatory death will be declared at the end of the asystole observation interval.", ok: false, fix: "His heart will stop, and the doctor will tell you the moment he has died."}
-    why: "의료진끼리는 circulatory death, asystole 같은 용어가 정확하고 빨라요. 가족에게는 같은 death를 심장이 멈추고 의사가 알려 줄 거라고 쉬운 말로 풀어 주세요."
-  - kind: swap
-    words: [w-wait]
-    who: "가족에게 · 순서 안내"
+- kind: slider
+  words:
+  - w-document
+  cue: The nurse records the time of every single change during the waiting period.
+  scale:
+  - rarely
+  - regularly
+  - continuously
+  answerAt: 2
+  why: 변화가 있을 때마다 시간을 적으면 continuously에 가까워요. DCD의 대기 시간은 정확히 재고 기록해요. 사망 선언은 이식팀과 별개의 의사가 해요.
+  example: The waiting period is timed and documented closely.
+  exKo: 대기 시간은 정확히 재고 세심하게 기록해요.
+- kind: context
+  words:
+  - w-death
+  word: death
+  ko: 사망
+  scenes:
+  - who: 의사가 간호사에게
+    icon: stetho
+    en: In DCD, death is declared after circulation stops and the observation period ends.
+    ok: true
+  - who: 차트 기록
+    icon: board
+    en: Time of death 1412; declared by Dr. Park.
+    ok: true
+  - who: 가족에게
     icon: me
-    before: ["After the support is stopped, we wait until ", "his heart asystoles", "."]
-    options: [his heart stops, his heart asystoles, his cardiac output ceases]
-    answer: his heart stops
-    notes: {his heart stops: "가족이 바로 알아듣는 쉬운 말이에요.", his heart asystoles: "의료진끼리 쓰는 말이라 가족은 뜻을 모를 수 있어요.", his cardiac output ceases: "격식 있는 전문 표현이라 가족 설명에는 차갑게 들려요."}
-    why: "DCD에서는 지지를 중단한 뒤 심장이 멈추기를 기다려요. 가족이 순서를 이해하도록 쉬운 말로 안내해요."
-    ko: "지지 요법을 중단한 뒤 그의 심장이 멈출 때까지 기다려요"
+    en: Circulatory death will be declared at the end of the asystole observation interval.
+    ok: false
+    fix: His heart will stop, and the doctor will tell you the moment he has died.
+  why: 의료진끼리는 circulatory death, asystole 같은 용어가 정확하고 빨라요. 가족에게는 같은 death를 심장이 멈추고 의사가 알려 줄 거라고 쉬운 말로 풀어 주세요.
+- kind: swap
+  words:
+  - w-wait
+  who: 가족에게 · 순서 안내
+  icon: me
+  before:
+  - 'After the support is stopped, we wait until '
+  - he goes into asystole
+  - .
+  options:
+  - his heart stops
+  - he goes into asystole
+  - his cardiac output ceases
+  answer: his heart stops
+  notes:
+    his heart stops: 가족이 바로 알아듣는 쉬운 말이에요.
+    he goes into asystole: 의료진끼리 쓰는 말(무수축)이라 가족은 뜻을 모를 수 있어요.
+    his cardiac output ceases: 격식 있는 전문 표현이라 가족 설명에는 차갑게 들려요.
+  why: DCD에서는 지지를 중단한 뒤 심장이 멈추기를 기다려요. 가족이 순서를 이해하도록 쉬운 말로 안내해요.
+  ko: 지지 요법을 중단한 뒤 그의 심장이 멈출 때까지 기다려요
 15:
-  - kind: slider
-    words: [w-crash]
-    cue: "His pressure has fallen a little and is still falling slowly."
-    scale: [slightly low, dropping, crashing]
-    answerAt: 1
-    why: "조금씩 계속 내려가면 dropping이에요. slightly low는 살짝 낮을 때, crashing은 걷잡을 수 없이 급락할 때예요. 검사 중단 기준은 프로토콜에 따르고, 변화는 의사에게 바로 알려요."
-    example: "His pressure crashed the moment we started the test."
-    exKo: "검사를 시작하자마자 혈압이 급격히 떨어졌어요."
-  - kind: context
-    words: [w-abort]
-    word: abort
-    ko: 중단하다
-    scenes:
-      - {who: 동료 간호사에게, icon: handshake2, en: "If his sats keep falling, we abort the test.", ok: true}
-      - {who: 차트 기록, icon: board, en: "Apnea test aborted for hypotension; ventilator reconnected.", ok: true}
-      - {who: 가족에게, icon: me, en: "We had to abort the procedure because he became hemodynamically unstable.", ok: false, fix: "We stopped the test early because his blood pressure dropped, and he's back on the breathing machine."}
-    why: "의료진끼리는 abort와 hemodynamically unstable 같은 용어가 정확하고 빨라요. 가족에게는 같은 일을 검사를 일찍 멈췄고 호흡기를 다시 연결했다고 쉬운 말로 풀어 주세요."
-  - kind: swap
-    words: [w-pressure]
-    who: "의사에게 · 급변 보고"
-    icon: stetho
-    before: ["Doctor, his pressure ", "fell off a cliff", " — I stopped the test."]
-    options: [dropped quickly, fell off a cliff, did a nosedive]
-    answer: dropped quickly
-    notes: {dropped quickly: "사실 그대로 짧게 말해 의사가 바로 판단할 수 있어요.", fell off a cliff: "비유라서 얼마나 떨어졌는지 전달되지 않아요.", did a nosedive: "과장된 비유라 정확한 보고에 맞지 않아요."}
-    why: "급변 보고에서는 비유보다 사실 그대로 말해야 해요. 의사가 상황을 바로 파악하고 지시할 수 있어요."
-    ko: "선생님, 혈압이 빠르게 떨어졌어요 — 검사를 중단했어요"
+- kind: slider
+  words:
+  - w-crash
+  cue: His pressure has fallen a little and is still falling slowly.
+  scale:
+  - slightly low
+  - dropping
+  - crashing
+  answerAt: 1
+  why: 조금씩 계속 내려가면 dropping이에요. slightly low는 살짝 낮을 때, crashing은 걷잡을 수 없이 급락할 때예요. 검사 중단 기준은 프로토콜에 따르고, 변화는 의사에게 바로 알려요.
+  example: His pressure crashed the moment we started the test.
+  exKo: 검사를 시작하자마자 혈압이 급격히 떨어졌어요.
+- kind: context
+  words:
+  - w-abort
+  word: abort
+  ko: 중단하다
+  scenes:
+  - who: 동료 간호사에게
+    icon: handshake2
+    en: If his sats keep falling, we abort the test.
+    ok: true
+  - who: 차트 기록
+    icon: board
+    en: Apnea test aborted for hypotension; ventilator reconnected.
+    ok: true
+  - who: 가족에게
+    icon: me
+    en: We had to abort the procedure because he became hemodynamically unstable.
+    ok: false
+    fix: We stopped the test early because his blood pressure dropped, and he's back on the breathing machine.
+  why: 의료진끼리는 abort와 hemodynamically unstable 같은 용어가 정확하고 빨라요. 가족에게는 같은 일을 검사를 일찍 멈췄고 호흡기를 다시 연결했다고 쉬운 말로 풀어 주세요.
+- kind: swap
+  words:
+  - w-pressure
+  who: 의사에게 · 급변 보고
+  icon: stetho
+  before:
+  - 'Doctor, his pressure '
+  - fell off a cliff
+  - ' — I stopped the test.'
+  options:
+  - dropped quickly
+  - fell off a cliff
+  - did a nosedive
+  answer: dropped quickly
+  notes:
+    dropped quickly: 사실 그대로 짧게 말해 의사가 바로 판단할 수 있어요.
+    fell off a cliff: 비유라서 얼마나 떨어졌는지 전달되지 않아요.
+    did a nosedive: 과장된 비유라 정확한 보고에 맞지 않아요.
+  why: 급변 보고에서는 비유보다 사실 그대로 말해야 해요. 의사가 상황을 바로 파악하고 지시할 수 있어요.
+  ko: 선생님, 혈압이 빠르게 떨어졌어요 — 검사를 중단했어요
 16:
-  - kind: slider
-    words: [w-dose]
-    cue: "The infusion is already at the highest dose the order allows, and his pressure is still falling."
-    scale: [low dose, moderate dose, maximum dose]
-    answerAt: 2
-    why: "처방이 허용하는 가장 높은 용량이면 maximum dose예요. 처방 범위 안에서만 올리고, 최대인데도 혈압이 떨어지면 의사를 바로 불러야 해요."
-    example: "His pressure is bottoming out despite the current dose."
-    exKo: "현재 용량으로도 혈압이 바닥까지 떨어지고 있어요."
-  - kind: context
-    words: [w-escalate]
-    word: escalate
-    ko: 상황을 격상시키다
-    scenes:
-      - {who: 동료 간호사에게, icon: handshake2, en: "If the pressure keeps falling, we need to escalate now.", ok: true}
-      - {who: 인계 기록, icon: board, en: "Escalated to the attending for refractory hypotension.", ok: true}
-      - {who: 가족에게, icon: me, en: "We are escalating because his vasopressor requirement exceeds the protocol ceiling.", ok: false, fix: "We're asking the senior doctors to come help right now, and I'll keep you updated."}
-    why: "의료진끼리는 escalate와 vasopressor requirement 같은 용어가 정확하고 빨라요. 가족에게는 같은 일을 선임 의사가 도우러 온다고 쉬운 말로 풀어 주세요."
-  - kind: swap
-    words: [w-physician]
-    who: "의사에게 · 긴급 호출"
-    icon: stetho
-    before: ["Doctor, his pressure is bottoming out. ", "Could you maybe look at him when you get a chance?", ""]
-    options: ["I need you at the bedside now.", "Could you maybe look at him when you get a chance?", "Whenever you're free is fine."]
-    answer: "I need you at the bedside now."
-    notes: {"I need you at the bedside now.": "급할 때는 필요한 일을 직접적으로 말해야 해요. 의사가 바로 움직여요.", "Could you maybe look at him when you get a chance?": "돌려 말해서 급하다는 것이 전달되지 않아요.", "Whenever you're free is fine.": "급하지 않다는 뜻이라 상황과 반대예요."}
-    why: "응급 상황에서는 정중하되 직접적으로 말해요. 돌려 말하면 도움이 늦어져요."
-    ko: "선생님, 혈압이 바닥으로 떨어지고 있어요. 지금 바로 침상으로 와 주세요"
+- kind: slider
+  words:
+  - w-dose
+  cue: The infusion is already at the highest dose the order allows, and his pressure is still falling.
+  scale:
+  - low dose
+  - moderate dose
+  - maximum dose
+  answerAt: 2
+  why: 처방이 허용하는 가장 높은 용량이면 maximum dose예요. 처방 범위 안에서만 올리고, 최대인데도 혈압이 떨어지면 의사를 바로 불러야 해요.
+  example: His pressure is bottoming out despite the current dose.
+  exKo: 현재 용량으로도 혈압이 바닥까지 떨어지고 있어요.
+- kind: context
+  words:
+  - w-escalate
+  word: escalate
+  ko: 상황을 격상시키다
+  scenes:
+  - who: 동료 간호사에게
+    icon: handshake2
+    en: If the pressure keeps falling, we need to escalate now.
+    ok: true
+  - who: 인계 기록
+    icon: board
+    en: Escalated to the attending for refractory hypotension.
+    ok: true
+  - who: 가족에게
+    icon: me
+    en: We are escalating because his vasopressor requirement exceeds the protocol ceiling.
+    ok: false
+    fix: We're asking the senior doctors to come help right now, and I'll keep you updated.
+  why: 의료진끼리는 escalate와 vasopressor requirement 같은 용어가 정확하고 빨라요. 가족에게는 같은 일을 선임 의사가 도우러 온다고 쉬운 말로 풀어 주세요.
+- kind: swap
+  words:
+  - w-physician
+  who: 의사에게 · 긴급 호출
+  icon: stetho
+  before:
+  - 'Doctor, his pressure is bottoming out. '
+  - Could you maybe look at him when you get a chance?
+  - ''
+  options:
+  - I need you at the bedside now.
+  - Could you maybe look at him when you get a chance?
+  - Whenever you're free is fine.
+  answer: I need you at the bedside now.
+  notes:
+    I need you at the bedside now.: 급할 때는 필요한 일을 직접적으로 말해야 해요. 의사가 바로 움직여요.
+    Could you maybe look at him when you get a chance?: 돌려 말해서 급하다는 것이 전달되지 않아요.
+    Whenever you're free is fine.: 급하지 않다는 뜻이라 상황과 반대예요.
+  why: 응급 상황에서는 정중하되 직접적으로 말해요. 돌려 말하면 도움이 늦어져요.
+  ko: 선생님, 혈압이 바닥으로 떨어지고 있어요. 지금 바로 침상으로 와 주세요
 17:
-  - kind: slider
-    words: [w-climb]
-    cue: "Sodium goes up by one or two points at each check, steadily over the shift."
-    scale: [creep, climb, jump]
-    answerAt: 1
-    why: "한 번에 한두 점씩 꾸준히 오르면 climb이에요. creep은 거의 눈에 안 띄게 오를 때, jump는 한 번에 크게 오를 때예요. 교정 속도와 약 용량은 처방자가 정해요."
-    example: "Sodium is climbing every time we check it."
-    exKo: "확인할 때마다 나트륨 수치가 오르고 있어요."
-  - kind: context
-    words: [w-immediately]
-    word: immediately
-    ko: 즉시
-    scenes:
-      - {who: 의사가 간호사에게, icon: stetho, en: "Recheck the sodium immediately after the desmopressin.", ok: true}
-      - {who: 동료 간호사에게, icon: handshake2, en: "If his urine output doubles again, call me immediately.", ok: true}
-      - {who: 가족에게, icon: me, en: "We immediately need to correct his hypernatremia.", ok: false, fix: "We're working on his blood salt level right away, and I'll tell you how it goes."}
-    why: "의료진끼리는 immediately와 hypernatremia 같은 말이 정확하고 빨라요. 가족에게는 같은 일을 혈액 속 염분 수치를 바로 다루고 있다고 쉬운 말로 풀어 주세요."
-  - kind: swap
-    words: [w-urine]
-    who: "의사에게 · 급변 보고"
+- kind: slider
+  words:
+  - w-climb
+  cue: Sodium goes up by one or two points at each check, steadily over the shift.
+  scale:
+  - creep
+  - climb
+  - jump
+  answerAt: 1
+  why: 한 번에 한두 점씩 꾸준히 오르면 climb이에요. creep은 거의 눈에 안 띄게 오를 때, jump는 한 번에 크게 오를 때예요. 교정 속도와 약 용량은 처방자가 정해요.
+  example: Sodium is climbing every time we check it.
+  exKo: 확인할 때마다 나트륨 수치가 오르고 있어요.
+- kind: context
+  words:
+  - w-immediately
+  word: immediately
+  ko: 즉시
+  scenes:
+  - who: 의사가 간호사에게
     icon: stetho
-    before: ["His urine output ", "has gone through the roof", " in the last hour."]
-    options: [has doubled, has gone through the roof, is nuts]
-    answer: has doubled
-    notes: {has doubled: "얼마나 늘었는지 분명해서 의사가 바로 판단할 수 있어요.", has gone through the roof: "비유라서 정확한 양이 전달되지 않아요.", is nuts: "속어라 보고에 맞지 않아요."}
-    why: "요붕증 급변은 수치와 변화 폭이 중요해요. 비유 대신 사실 그대로 보고해요."
-    ko: "지난 한 시간 사이 소변량이 두 배로 늘었어요"
+    en: Recheck the sodium immediately after the desmopressin.
+    ok: true
+  - who: 동료 간호사에게
+    icon: handshake2
+    en: If his urine output doubles again, call me immediately.
+    ok: true
+  - who: 가족에게
+    icon: me
+    en: We immediately need to correct his hypernatremia.
+    ok: false
+    fix: We're working on his blood salt level right away, and I'll tell you how it goes.
+  why: 의료진끼리는 immediately와 hypernatremia 같은 말이 정확하고 빨라요. 가족에게는 같은 일을 혈액 속 염분 수치를 바로 다루고 있다고 쉬운 말로 풀어 주세요.
+- kind: swap
+  words:
+  - w-urine
+  who: 의사에게 · 급변 보고
+  icon: stetho
+  before:
+  - 'His urine output '
+  - has gone through the roof
+  - ' in the last hour.'
+  options:
+  - has doubled
+  - has gone through the roof
+  - is nuts
+  answer: has doubled
+  notes:
+    has doubled: 얼마나 늘었는지 분명해서 의사가 바로 판단할 수 있어요.
+    has gone through the roof: 비유라서 정확한 양이 전달되지 않아요.
+    is nuts: 속어라 보고에 맞지 않아요.
+  why: 요붕증 급변은 수치와 변화 폭이 중요해요. 비유 대신 사실 그대로 보고해요.
+  ko: 지난 한 시간 사이 소변량이 두 배로 늘었어요
 18:
-  - kind: slider
-    words: [w-completely]
-    cue: "The daughter asks, \"Is it okay if we say no?\" and you answer, \"Yes, absolutely.\""
-    scale: [slightly, mostly, completely]
-    answerAt: 2
-    why: "'전적으로 괜찮다'는 completely예요. 기증을 거절해도 괜찮다는 것은 가족이 압박 없이 정할 수 있게 하는 중요한 말이에요. 설득하거나 이유를 캐묻지 않아요."
-    example: "You have every right to say no, and that's completely okay."
-    exKo: "거절하실 권리가 충분히 있고, 그것도 완전히 괜찮아요."
-  - kind: context
-    words: [w-decision]
-    word: decision
-    ko: 결정
-    scenes:
-      - {who: 코디네이터가 간호사에게, icon: monitor, en: "The family will make the decision about donation with the coordinator.", ok: true}
-      - {who: 차트 기록, icon: board, en: "Family verbalized decision to decline donation; OPO notified.", ok: true}
-      - {who: 가족에게, icon: me, en: "Your decision is time-sensitive, and delay may cost another patient their life.", ok: false, fix: "This decision is yours, and whatever you choose, we will support you."}
-    why: "의료진끼리는 가족의 결정을 사실대로 기록하고 전달해요. 가족에게는 같은 decision을 죄책감이나 기한으로 압박하는 말로 쓰면 안 돼요. 결정은 가족의 몫이라고 말하고 곁에서 도와요."
-  - kind: swap
-    words: [w-respect]
-    who: "가족에게 · 결정 존중"
-    icon: me
-    before: ["Whatever you choose, we will respect ", "your non-compliance", "."]
-    options: [your decision, your non-compliance, your noncooperation]
-    answer: your decision
-    notes: {your decision: "가족의 선택을 있는 그대로 존중하는 말이에요.", your non-compliance: "따르지 않는다는 뜻이라 가족을 탓하는 말로 들려요.", your noncooperation: "협조하지 않는다는 뜻이라 가족에게 상처를 줄 수 있어요."}
-    why: "기증을 거절해도 탓하지 않아요. 가족이 어떤 선택을 해도 존중한다고 분명히 말해요."
-    ko: "무엇을 선택하시든 여러분의 결정을 존중할게요"
+- kind: slider
+  words:
+  - w-completely
+  cue: The daughter asks, "Is it okay if we say no?" and you answer, "Yes, absolutely."
+  scale:
+  - slightly
+  - mostly
+  - completely
+  answerAt: 2
+  why: '''전적으로 괜찮다''는 completely예요. 기증을 거절해도 괜찮다는 것은 가족이 압박 없이 정할 수 있게 하는 중요한 말이에요. 설득하거나 이유를 캐묻지 않아요.'
+  example: You have every right to say no, and that's completely okay.
+  exKo: 거절하실 권리가 충분히 있고, 그것도 완전히 괜찮아요.
+- kind: swap
+  words:
+  - w-respect
+  who: 가족에게 · 결정 존중
+  icon: me
+  before:
+  - 'Whatever you choose, we will respect '
+  - your non-compliance
+  - .
+  options:
+  - your decision
+  - your non-compliance
+  - your noncooperation
+  answer: your decision
+  notes:
+    your decision: 가족의 선택을 있는 그대로 존중하는 말이에요.
+    your non-compliance: 따르지 않는다는 뜻이라 가족을 탓하는 말로 들려요.
+    your noncooperation: 협조하지 않는다는 뜻이라 가족에게 상처를 줄 수 있어요.
+  why: 기증을 거절해도 탓하지 않아요. 가족이 어떤 선택을 해도 존중한다고 분명히 말해요.
+  ko: 무엇을 선택하시든 여러분의 결정을 존중할게요
 19:
-  - kind: slider
-    words: [w-slowly]
-    cue: "The wife keeps asking you to repeat things and says she can't take it in."
-    scale: [slowly, evenly, quickly]
-    answerAt: 0
-    why: "충격으로 받아들이기 힘들어하는 가족에게는 slowly 말해요. 속도를 늦추고 한 번에 한 가지씩 말한 뒤 이해했는지 물어봐요."
-    example: "The team will sit down with you and go through it slowly."
-    exKo: "팀이 여러분과 함께 앉아서 천천히 하나씩 설명할 거예요."
-  - kind: context
-    words: [w-confusing]
-    word: confusing
-    ko: 혼란스러운
-    scenes:
-      - {who: 동료 간호사에게, icon: handshake2, en: "It's confusing for families because the monitor still shows a heartbeat.", ok: true}
-      - {who: 차트 기록, icon: board, en: "Family states it is confusing that he looks alive; chaplain consulted.", ok: true}
-      - {who: 가족에게, icon: me, en: "It's confusing because cardiopulmonary function persists on mechanical support despite neurological death.", ok: false, fix: "It's confusing because a machine keeps his heart beating, even though his brain has stopped."}
-    why: "의료진끼리는 cardiopulmonary function 같은 용어가 정확하고 빨라요. 가족에게는 같은 confusing을 기계가 심장을 뛰게 하고 있다고 쉬운 말로 풀어 주세요."
-  - kind: swap
-    words: [w-machine]
-    who: "가족에게 · 심장이 뛰는 이유"
-    icon: me
-    before: ["His heart is still beating because of ", "pressors and a vent", "."]
-    options: [a machine and medicines, pressors and a vent, exogenous cardiopulmonary support]
-    answer: a machine and medicines
-    notes: {a machine and medicines: "가족이 바로 알아듣는 쉬운 말이에요.", pressors and a vent: "의료진끼리 쓰는 말이라 가족은 뜻을 모를 수 있어요.", exogenous cardiopulmonary support: "격식 있는 전문 표현이라 가족 설명에는 차갑게 들려요."}
-    why: "뇌사 상태에서 심장이 뛰는 것을 이해하지 못하는 가족이 많아요. 기계와 약이 돕고 있다고 쉬운 말로 알려 주세요."
-    ko: "기계와 약물이 도와주고 있기 때문에 심장이 아직 뛰고 있어요"
+- kind: slider
+  words:
+  - w-slowly
+  cue: The wife keeps asking you to repeat things and says she can't take it in.
+  scale:
+  - slowly
+  - evenly
+  - quickly
+  answerAt: 0
+  why: 충격으로 받아들이기 힘들어하는 가족에게는 slowly 말해요. 속도를 늦추고 한 번에 한 가지씩 말한 뒤 이해했는지 물어봐요.
+  example: The team will sit down with you and go through it slowly.
+  exKo: 팀이 여러분과 함께 앉아서 천천히 하나씩 설명할 거예요.
+- kind: swap
+  words:
+  - w-machine
+  who: 가족에게 · 심장이 뛰는 이유
+  icon: me
+  before:
+  - 'His heart is still beating because of '
+  - pressors and a vent
+  - .
+  options:
+  - a machine and medicines
+  - pressors and a vent
+  - exogenous cardiopulmonary support
+  answer: a machine and medicines
+  notes:
+    a machine and medicines: 가족이 바로 알아듣는 쉬운 말이에요.
+    pressors and a vent: 의료진끼리 쓰는 말이라 가족은 뜻을 모를 수 있어요.
+    exogenous cardiopulmonary support: 격식 있는 전문 표현이라 가족 설명에는 차갑게 들려요.
+  why: 뇌사 상태에서 심장이 뛰는 것을 이해하지 못하는 가족이 많아요. 기계와 약이 돕고 있다고 쉬운 말로 알려 주세요.
+  ko: 기계와 약물이 도와주고 있기 때문에 심장이 아직 뛰고 있어요
 20:
-  - kind: slider
-    words: [w-urine]
-    cue: "Urine output is only a few drops an hour, and the bag is nearly empty."
-    scale: [scant, adequate, abundant]
-    answerAt: 0
-    why: "한 시간에 몇 방울뿐이면 scant예요. adequate는 충분할 때, abundant는 아주 많을 때예요. 소변량이 줄면 신장 관류를 걱정해 의사와 코디네이터에게 알려요."
-    example: "Let's optimize his perfusion and urine output now."
-    exKo: "지금 관류와 소변량을 최적화해 보죠."
-  - kind: context
-    words: [w-quickly]
-    word: quickly
-    ko: 빠르게
-    scenes:
-      - {who: 동료 간호사에게, icon: handshake2, en: "Call the coordinator so we can escalate quickly.", ok: true}
-      - {who: 차트 기록, icon: board, en: "Pressor weaned quickly as pressure recovered.", ok: true}
-      - {who: 가족에게, icon: me, en: "We need to move quickly because the organs are deteriorating, so please decide about donation.", ok: false, fix: "Take the time you need — we'll walk through everything with you."}
-    why: "의료진끼리는 quickly로 팀이 서둘러야 한다고 말해도 돼요. 가족 앞에서 같은 quickly를 기증 결정을 재촉하는 말로 쓰면 안 돼요. 기증 이야기는 OPO 담당자가 해요."
-  - kind: swap
-    words: [w-kidney]
-    who: "코디네이터에게 · 상태 보고"
-    icon: monitor
-    before: ["The kidneys ", "are conking out on", " the current numbers."]
-    options: [aren't tolerating, are conking out on, are giving up on]
-    answer: aren't tolerating
-    notes: {aren't tolerating: "의료진 사이에서 쓰는 정확한 표현이에요. 수치가 장기에 부담이라는 뜻이 분명해요.", are conking out on: "속어라서 정확한 상태가 전달되지 않아요.", are giving up on: "신장을 사람처럼 말하는 비유라 보고에 맞지 않아요."}
-    why: "코디네이터에게는 장기 상태를 정확한 말로 보고해야 일정을 조율할 수 있어요. 구어체 표현은 오해를 낳아요."
-    ko: "신장이 현재 수치를 견디지 못하고 있어요"
+- kind: slider
+  words:
+  - w-urine
+  cue: Urine output is only a few drops an hour, and the bag is nearly empty.
+  scale:
+  - scant
+  - adequate
+  - abundant
+  answerAt: 0
+  why: 한 시간에 몇 방울뿐이면 scant예요. adequate는 충분할 때, abundant는 아주 많을 때예요. 소변량이 줄면 신장 관류를 걱정해 의사와 코디네이터에게 알려요.
+  example: Let's optimize his perfusion and urine output now.
+  exKo: 지금 관류와 소변량을 최적화해 보죠.
+- kind: context
+  words:
+  - w-perfusion
+  word: perfusion
+  ko: 관류
+  scenes:
+  - who: 동료 간호사에게
+    icon: handshake2
+    en: Let's optimize his perfusion and urine output now.
+    ok: true
+  - who: 차트 기록
+    icon: board
+    en: Perfusion adequate on current pressor dose; urine output stable.
+    ok: true
+  - who: 가족에게
+    icon: me
+    en: His peripheral perfusion is poor, with a capillary refill over three seconds.
+    ok: false
+    fix: His hands and feet aren't getting enough blood flow, so they feel cool.
+  why: 의료진끼리는 perfusion과 capillary refill 같은 용어가 정확하고 빨라요. 가족에게는 같은 perfusion을 혈류가 충분한지로 쉬운 말로 풀어 주세요.
+- kind: swap
+  words:
+  - w-kidney
+  who: 코디네이터에게 · 상태 보고
+  icon: monitor
+  before:
+  - 'The kidneys '
+  - are conking out on
+  - ' the current numbers.'
+  options:
+  - aren't tolerating
+  - are conking out on
+  - are giving up on
+  answer: aren't tolerating
+  notes:
+    aren't tolerating: 의료진 사이에서 쓰는 정확한 표현이에요. 수치가 장기에 부담이라는 뜻이 분명해요.
+    are conking out on: 속어라서 정확한 상태가 전달되지 않아요.
+    are giving up on: 신장을 사람처럼 말하는 비유라 보고에 맞지 않아요.
+  why: 코디네이터에게는 장기 상태를 정확한 말로 보고해야 일정을 조율할 수 있어요. 구어체 표현은 오해를 낳아요.
+  ko: 신장이 현재 수치를 견디지 못하고 있어요
