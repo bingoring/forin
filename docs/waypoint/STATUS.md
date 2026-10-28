@@ -8,7 +8,7 @@
 
 > 🔨 **ICU 한 번에 저작 묶음 4 — 4주제 합침(2026-10-28).** post-arrest(Fable 표본 판정 A·B)·sepsis·aki-crrt·electrolytes, 모두 처음부터: 저작 A‖B → Opus 검토 A‖B(안전 153건) →
 > Sonnet 수정 → keyPhrase 원문 63/63 대조 → keyPhrase 결정 12건(사용자 '추천대로': 바꿈 9 — Overcooling below target·metabolic acidosis(시트르산 축적, 상황 설명도)·fever 분리 등, 유지 3) + keyPhrase chunks 다시 자르기 22문장 → 정본 합침, ICU 위반 0(새 주제 경고 0).
-> 사용량 한도로 서브에이전트가 한 번 끊겼다가 이어서 마침. 묶음 5(endocrine-crisis·glycemic·raised-icp·status-epilepticus) 저작 진행 중. 남은 ICU: 미착수 15 · OR 33. 기록 `server/content/tools/wip/icu-or-rest/README.md`.
+> **PR #28 머지(2026-10-28) — 운영 배포는 사용자 지시로 묶음을 쌓아 두었다가 한 번에(staging seed·prod promote·prod seed 미실행).** 사용량 한도로 서브에이전트가 한 번 끊겼다가 이어서 마침. 묶음 5(endocrine-crisis·glycemic·raised-icp·status-epilepticus) 저작 진행 중. 남은 ICU: 미착수 15 · OR 33. 기록 `server/content/tools/wip/icu-or-rest/README.md`.
 
 > 🔨 **ICU 한 번에 저작 묶음 3 — 4주제 합침(2026-10-27).** airway·delirium·infection-prevention·pain-nonverbal: 저작 A‖B → Opus 검토 A‖B(안전 179건) → Sonnet 수정 →
 > keyPhrase 원문 63/63 대조 → keyPhrase 결정 22건(사용자 '추천대로': 바꿈 18·유지 4) 반영 → 정본 합침, ICU 위반 0(새 주제 경고 0). V21 금칙어 확대·영어 오답까지 검사 → 정본 ER 21·ICU 3·OR 1건 정리.
