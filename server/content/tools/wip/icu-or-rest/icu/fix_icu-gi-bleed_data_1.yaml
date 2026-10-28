@@ -1,0 +1,146 @@
+# A 검토 문장 다시 쓰기·ko만·chunks만 + B 필드(v46) 새로. 위치는 상황 번호 i, 문장 번호 j(pre-fix 기준, 0부터), old 는 옛 en 앞부분으로 확인.
+rewrites:
+  - {i: 8, j: 3, old: "Seven point two is below eight",
+     en: "Seven point two isn't below his ordered threshold, and he's not actively bleeding right now.",
+     ko: "7.2는 처방된 기준치보다 낮지 않고, 지금 활동성 출혈도 없어요.",
+     chunks: ["Seven point two", "isn't below", "his ordered threshold", ", and he's not", "actively bleeding right now", "."],
+     words: [w-below, w-order, w-actively, w-bleed],
+     tag: 기준 설명, icon: chartup,
+     why: "'ordered'를 붙여 기준이 간호사가 아니라 처방에서 나온다고 밝히고, 'not actively bleeding'으로 지금 진행 중인 출혈이 없다는 점을 이어 말해요.",
+     decoy: ", and he not",
+     dko: ["6.2는 처방된 기준치보다 낮지 않고, 지금 활동성 출혈도 없어요.", "7.2는 처방된 용량보다 낮지 않고, 지금 활동성 출혈도 없어요."],
+     blank: {answer: below, wrong: [above, near, beyond]}}
+  - {i: 8, j: 4, old: "We only transfuse",
+     en: "We'll transfuse as ordered if he drops further or becomes symptomatic.",
+     ko: "더 떨어지거나 증상이 생기면 처방에 따라 수혈해요.",
+     chunks: ["We'll transfuse", "as ordered", "if he drops further", "or becomes symptomatic", "."],
+     words: [w-transfuse, w-order, w-drop, w-further, w-symptomatic],
+     tag: 조건 설명, icon: compass,
+     why: "'as ordered'로 수혈은 처방에 따른다고 밝히고, 'if' 절에 더 떨어지는 경우와 증상이 생기는 경우를 이어 알려요.",
+     decoy: "or becoming",
+     dko: ["더 떨어지거나 열이 나면 처방에 따라 수혈해요.", "더 떨어지거나 체중이 늘면 처방에 따라 수혈해요."],
+     blank: {answer: transfuse, wrong: [sedate, discharge, relocate]}}
+  - {i: 13, j: 5, old: "A little tiredness is normal",
+     en: "Some tiredness can be normal after blood loss, but tell me right away if it gets worse.",
+     ko: "피를 많이 흘린 뒤엔 어느 정도 피곤할 수 있지만, 더 심해지면 바로 말씀해 주세요.",
+     chunks: ["Some tiredness", "can be normal", "after blood loss", ", but tell me right away", "if it gets worse", "."],
+     words: [w-tiredness, w-normal, w-blood, w-loss, w-tell, w-worse],
+     tag: 피로 설명, icon: faceWorried,
+     why: "'can be normal'로 단정하지 않고 가능성으로 안심시킨 뒤, 'but tell me right away'로 더 심해지면 바로 알려 달라고 이어 말해요.",
+     decoy: ", but tells me",
+     dko: ["피를 많이 흘린 뒤엔 어느 정도 피곤할 수 있지만, 더 심해지면 바로 간호사실에 말씀해 주세요.", "수술을 한 뒤엔 어느 정도 피곤할 수 있지만, 더 심해지면 바로 말씀해 주세요."],
+     blank: {answer: loss, wrong: [pressure, sugar, type]}}
+  - {i: 4, j: 4, old: "Once your stomach settles",
+     en: "Once your stomach settles and the doctor says it's okay, we'll try small sips of water.",
+     ko: "위가 가라앉고 의사 선생님이 괜찮다고 하면 물을 조금씩 드셔 볼게요.",
+     chunks: ["Once your stomach settles", "and the doctor says it's okay", ", we'll try", "small sips of water", "."],
+     words: [w-stomach, w-settle, w-try, w-sip],
+     tag: 단계 안내, icon: calendar,
+     why: "'and the doctor says it's okay'를 붙여 물을 시작하는 때가 의사의 허락에 달렸다고 알려요. 'small sips'로 아주 조금씩 시작한다는 한계도 말해요.",
+     decoy: "we'll tries",
+     dko: ["위가 가라앉고 의사 선생님이 괜찮다고 하면 주스를 조금씩 드셔 볼게요.", "열이 내리고 의사 선생님이 괜찮다고 하면 물을 조금씩 드셔 볼게요."],
+     blank: {answer: settles, wrong: [aches, burns, cramps]}}
+  - {i: 18, j: 3, old: "His pressure dropped fast",
+     en: "His pressure dropped fast, so we're pushing the ordered fluids until the blood arrives.",
+     ko: "혈압이 빠르게 떨어져서, 혈액이 올 때까지 처방된 수액을 밀어 넣고 있어요.",
+     chunks: ["His pressure dropped fast", ", so we're pushing", "the ordered fluids", "until the blood arrives", "."],
+     words: [w-pressure, w-drop, w-fast, w-push, w-order, w-fluid, w-until, w-blood],
+     tag: 처치 설명, icon: bulb,
+     why: "'so'로 혈압 저하와 수액 처치를 원인과 결과로 잇고, 'the ordered fluids'로 처방된 수액이라고 밝혀요. 'until the blood arrives'는 혈액이 올 때까지 이어 간다는 기한이에요.",
+     decoy: ", so we're pushed",
+     dko: ["혈압이 조금씩 떨어져서, 혈액이 올 때까지 처방된 수액을 밀어 넣고 있어요.", "혈압이 빠르게 떨어져서, 검사 결과가 올 때까지 처방된 수액을 밀어 넣고 있어요."],
+     blank: {answer: pressure, wrong: [temperature, weight, vision]}}
+  - {i: 10, j: 6, old: "We'll hold the scope",
+     en: "GI will decide on the scope timing once they see his new numbers.",
+     ko: "새 수치를 보고 GI팀이 내시경 시점을 정할 거예요.",
+     chunks: ["GI will decide", "on the scope timing", "once they see", "his new numbers", "."],
+     words: [w-decide, w-scope, w-number],
+     tag: 시점 설명, icon: stetho,
+     why: "'GI will decide'로 내시경 시점은 GI팀이 정한다고 역할을 분명히 하고, 'once they see'로 새 수치를 본 뒤라는 조건을 이어 말해요.",
+     decoy: "GI will decides",
+     dko: ["새 수치를 보고 GI팀이 수술 시점을 정할 거예요.", "새 영상을 보고 GI팀이 내시경 시점을 정할 거예요."],
+     blank: {answer: timing, wrong: [dose, route, color]}}
+  - {i: 6, j: 3, old: "This is a variceal bleed from her liver disease",
+     en: "With her liver disease, this is most likely a variceal bleed, not an ulcer.",
+     ko: "간질환이 있어서 궤양보다는 정맥류 출혈일 가능성이 커요.",
+     chunks: ["With her liver disease", ", this is most likely", "a variceal bleed", ", not an ulcer", "."],
+     words: [w-liver, w-disease, w-variceal, w-bleed, w-ulcer],
+     tag: 원인 설명, icon: bulb,
+     why: "'most likely'로 확정하지 않고 가능성이 크다고 말해요. 'With her liver disease'를 앞에 두어 그렇게 보는 근거를 먼저 알려요.",
+     decoy: "a variceal bleeds",
+     dko: ["신장병이 있어서 궤양보다는 정맥류 출혈일 가능성이 커요.", "간질환이 있어서 염증보다는 정맥류 출혈일 가능성이 커요."],
+     blank: {answer: liver, wrong: [kidney, lung, heart]}}
+  - {i: 5, j: 3, old: "You were taking it for a good reason",
+     en: "You were taking it for a good reason, and pausing it now doesn't mean we're blaming you.",
+     ko: "필요해서 드시던 약이에요. 지금 잠시 끊는 건 탓하려는 게 아니에요.",
+     chunks: ["You were taking it", "for a good reason", ", and pausing it now", "doesn't mean", "we're blaming you", "."],
+     words: [w-reason, w-mean, w-blame],
+     tag: 비난 방지, icon: faceWorried,
+     why: "'for a good reason'으로 약이 필요했다는 것을 먼저 인정하고, 'doesn't mean we're blaming you'로 잠시 끊는 것과 탓하는 것을 갈라 말해요.",
+     decoy: "for a good reasons",
+     dko: ["필요해서 드시던 약이에요. 지금 잠시 끊는 건 약이 안 맞아서가 아니에요.", "필요해서 드시던 약이에요. 지금 잠시 끊는 건 비용 때문이 아니에요."],
+     blank: {answer: blaming, wrong: [warning, fixing, testing]}}
+  - {i: 5, j: 4, old: "We're just balancing it",
+     en: "The doctors are balancing it against the bleeding for now.",
+     ko: "지금은 의사 선생님들이 출혈과 견주어 균형을 맞추고 있어요.",
+     chunks: ["The doctors are", "balancing it", "against the bleeding", "for now", "."],
+     words: [w-balance, w-bleed],
+     tag: 상황 설명, icon: bulb,
+     why: "'The doctors are'를 앞세워 약을 조절하는 쪽이 의사라고 밝히고, 'for now'로 지금만의 판단임을 알려요.",
+     decoy: "balancing its",
+     dko: ["지금은 의사 선생님들이 혈압과 견주어 균형을 맞추고 있어요.", "오늘 밤은 의사 선생님들이 출혈과 견주어 균형을 맞추고 있어요."],
+     blank: {answer: bleeding, wrong: [pain, fever, nausea]}}
+  - {i: 14, j: 6, old: "I'll call report the moment",
+     en: "I'll call report to IR before we leave the unit.",
+     ko: "병동을 나서기 전에 IR팀에 전화로 인계할게요.",
+     chunks: ["I'll call report", "to IR", "before we leave", "the unit", "."],
+     words: [w-call, w-report, w-ir, w-before],
+     tag: 보고 약속, icon: speech,
+     why: "'call report'는 전화로 상황을 넘기는 인계 표현이고, 'before we leave'로 출발하기 전에 먼저 알린다는 순서를 말해요.",
+     decoy: "I'll calling report",
+     dko: ["병동을 나서기 전에 IR팀에 문자로 인계할게요.", "병동을 나서기 전에 CT팀에 전화로 인계할게요."],
+     blank: {answer: report, wrong: [security, housekeeping, pharmacy]}}
+  - {i: 14, j: 3, old: "Monitor, oxygen, and a pump bag",
+     en: "Monitor, oxygen, and an Ambu bag all need to travel with him.",
+     ko: "모니터랑 산소, 앰부백까지 다 같이 가져가야 해요.",
+     chunks: ["Monitor, oxygen,", "and an Ambu bag", "all need", "to travel with him", "."],
+     words: [w-monitor, w-oxygen, w-bag, w-travel],
+     tag: 장비 점검, icon: monitor,
+     why: "세 물품을 쉼표와 and로 이어 한 번에 말하고, 'all need to'로 하나도 빠지면 안 된다고 강조해요. 'Ambu bag'은 숨을 못 쉴 때 손으로 짜서 공기를 넣는 백이에요.",
+     decoy: "all needs",
+     dko: ["모니터랑 산소, 앰부백까지 다 따로 가져가야 해요.", "모니터랑 산소, 앰부백까지 다 같이 가져가면 돼요."],
+     blank: {answer: oxygen, wrong: [wheelchair, walker, bedpan]}}
+  - {i: 20, j: 5, old: "Some families choose to keep fighting",
+     en: "Some families choose more treatment, others choose comfort care, and both are okay.",
+     ko: "치료를 더 이어 가기로 하는 가족도 있고, 편안한 돌봄을 택하는 가족도 있어요. 둘 다 괜찮아요.",
+     chunks: ["Some families choose", "more treatment", ", others choose comfort care", ", and both are okay", "."],
+     words: [w-choose, w-comfort],
+     tag: 선택 존중, icon: faceWorried,
+     why: "'Some … others'로 서로 다른 선택을 나란히 두어 어느 쪽도 판단하지 않고, 'both are okay'로 어느 선택도 틀리지 않다고 마무리해요.",
+     decoy: "more treatments",
+     dko: ["치료를 더 이어 가기로 하는 가족도 있고, 수술을 택하는 가족도 있어요. 둘 다 괜찮아요.", "치료를 더 이어 가기로 하는 가족도 있고, 편안한 돌봄을 택하는 의사도 있어요. 둘 다 괜찮아요."],
+     blank: {answer: comfort, wrong: [surgery, transfer, dialysis]}}
+# ko만 고침(문장 en·chunks 그대로). words 에서 뺄 것은 rm_words.
+ko_only:
+  - {i: 18, j: 6, old: "Stay with me", ko: "정신 놓지 마세요, 지금 혈압을 다시 올리고 있어요.", rm_words: [w-stay],
+     dko: ["정신 놓지 마세요, 지금 혈당을 다시 올리고 있어요.", "정신 놓지 마세요, 지금 심박을 다시 올리고 있어요."]}
+  - {i: 1, j: 5, old: "Tourniquet's on", ko: "지혈대 감았어요, 이제 바늘 넣을게요.",
+     dko: ["지혈대 감았어요, 이제 소독할게요.", "소독했어요, 이제 바늘 넣을게요."]}
+  - {i: 2, j: 2, old: "Let's confirm consent", ko: "지금 동의서랑 팔찌를 확인하죠.",
+     dko: ["지금 처방이랑 팔찌를 확인하죠.", "지금 동의서랑 침대 난간을 확인하죠."]}
+  - {i: 8, j: 1, old: "Let's reassess if he shows", ko: "출혈이 계속되는 징후가 보이면 다시 평가하죠.",
+     dko: ["출혈이 계속되는 징후가 보이면 한 시간쯤 뒤에 다시 평가하죠.", "장갑을 끼고 와서 출혈 징후를 다시 평가하죠."]}
+  - {i: 9, j: 2, old: "Let's keep him NPO", ko: "주입하는 동안 금식을 유지하죠.",
+     dko: ["주입하는 동안 금식 팻말을 걸어 두죠.", "주입을 시작하려고 튜브를 씻죠."]}
+chunk_fixes:
+  - {i: 0, j: 3, chunks: ["I'm also checking", "your stool", "for any black or bloody color", "."]}
+  - {i: 4, j: 5, chunks: ["If the drainage turns", "bright red again", ", I'll let the team know", "right away", "."]}
+  - {i: 9, j: 3, chunks: ["The pump is set", "to the exact rate", "the doctor ordered", "."]}
+  - {i: 9, j: 6, chunks: ["I'll flag", "the physician", "if his pressure", "trends down again", "."]}
+  - {i: 12, j: 3, chunks: ["It could be", "from hemorrhoids,", "diverticulosis,", "or something higher up", "."]}
+  - {i: 12, j: 4, chunks: ["A colonoscopy", "will let the doctor", "look directly at", "the bowel", "."]}
+  - {i: 14, j: 5, chunks: ["IR needs", "his weight, allergies,", "and the last hemoglobin value", "."]}
+  - {i: 15, j: 5, chunks: ["We give plasma,", "platelets, and red cells", "in equal amounts", "."]}
+  - {i: 18, j: 4, chunks: ["We need", "emergency release blood", "while type and cross", "finishes", "."]}
+  - {i: 19, j: 4, chunks: ["A cold, acidotic patient", "clots even worse", ", so we fix", "that too", "."]}
+  - {i: 19, j: 5, chunks: ["We're giving", "products", "in a one-to-one-to-one ratio", "."]}
