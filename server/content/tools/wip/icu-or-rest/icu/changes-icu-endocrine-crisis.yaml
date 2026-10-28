@@ -106,7 +106,7 @@ changes:
   id: w-steady
   fields:
   - ko
-  why: 같은 ko(안정적인)인 stable과 가르고, 문장(steadily·steady pace)과 맞춘다
+  why: '같은 ko(안정적인)인 stable과 가르고, 문장(steadily·steady pace)과 맞춘다 / 검토 반영(v46 수정) — ko:  ko를 쓰임에 맞게'
 - kind: word
   id: w-pace
   fields:
@@ -122,7 +122,8 @@ changes:
   fields:
   - en
   - ipa
-  why: 활용형을 원형으로
+  - example
+  why: '활용형을 원형으로 / 검토 반영(v46 수정) — example:  예문이 바뀐 문장이거나 쓰임에 맞는 문장으로'
 - kind: word
   id: w-monitor
   fields:
@@ -173,7 +174,8 @@ changes:
   fields:
   - en
   - ipa
-  why: 활용형을 원형으로
+  - example
+  why: '활용형을 원형으로 / 검토 반영(v46 수정) — example:  예문이 바뀐 문장이거나 쓰임에 맞는 문장으로'
 - kind: word-remove
   id: w-food
   why: 너무 쉬움 — 간호사가 이미 아는 말이라 가르칠 값이 없다(목록 밖 판단분)
@@ -218,7 +220,7 @@ changes:
   fields:
   - en
   - ipa
-  why: 활용형을 원형으로
+  why: '활용형을 원형으로 / 검토 반영(v46 수정) — en:  구동사 헤드워드(문장은 look for·weigh in 으로만 쓴다), ipa:  헤드워드를 바꾸며 발음기호도'
 - kind: word
   id: w-treat
   fields:
@@ -304,8 +306,9 @@ changes:
   id: w-escalate
   fields:
   - en
+  - ko
   - ipa
-  why: 활용형을 원형으로
+  why: '활용형을 원형으로 / 검토 반영(v46 수정) — ko:  ko를 쓰임에 맞게'
 - kind: word-remove
   id: w-doctor
   why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(공통 쉬운 단어 목록)
@@ -331,23 +334,24 @@ changes:
   id: w-pressor
   fields:
   - ko
-  why: 같은 ko(승압제)인 vasopressor와 가른다 — 줄임말
+  why: '같은 ko(승압제)인 vasopressor와 가른다 — 줄임말 / 검토 반영(v46 수정) — ko:  ko를 쓰임에 맞게'
 - kind: word
   id: w-vasopressor
   fields:
   - ko
-  why: 같은 ko(승압제)인 pressor와 가른다 — 정식 이름
+  why: '같은 ko(승압제)인 pressor와 가른다 — 정식 이름 / 검토 반영(v46 수정) — ko:  ko를 쓰임에 맞게'
 - kind: word
   id: w-crash
   fields:
   - en
   - ipa
-  why: 활용형을 원형으로
+  - example
+  why: '활용형을 원형으로 / 검토 반영(v46 수정) — example:  예문이 바뀐 문장이거나 쓰임에 맞는 문장으로'
 - kind: word
   id: w-stat
   fields:
   - ko
-  why: 같은 ko(즉시)인 immediately와 가른다 — 처방 표기
+  why: '같은 ko(즉시)인 immediately와 가른다 — 처방 표기 / 검토 반영(v46 수정) — ko:  ko를 쓰임에 맞게'
 - kind: word-remove
   id: w-ice
   why: 너무 쉬움 — 간호사가 이미 아는 말이라 가르칠 값이 없다(목록 밖 판단분)
@@ -375,7 +379,7 @@ changes:
   fields:
   - en
   - ipa
-  why: 활용형을 원형으로
+  why: '활용형을 원형으로 / 검토 반영(v46 수정) — en:  구동사 헤드워드(문장은 look for·weigh in 으로만 쓴다), ipa:  헤드워드를 바꾸며 발음기호도'
 - kind: word
   id: w-care
   fields:
@@ -394,8 +398,9 @@ changes:
   situation: DKA 초기 사정
   index: 1
   fields:
+  - ko
   - words
-  why: 쉬운 단어 태그 빼기
+  why: 쉬운 단어 태그 빼기 / 검토 반영
 - kind: sentence
   situation: DKA 초기 사정
   index: 2
@@ -442,8 +447,9 @@ changes:
   situation: 인슐린 전 K 확인
   index: 4
   fields:
+  - chunks
   - words
-  why: 쉬운 단어 태그 빼기
+  why: 쉬운 단어 태그 빼기 / 구 경계에서 쪼개도록 chunks 정리
 - kind: sentence
   situation: 활력·의식 재평가
   index: 0
@@ -466,8 +472,9 @@ changes:
   situation: 활력·의식 재평가
   index: 4
   fields:
+  - chunks
   - words
-  why: 쉬운 단어 태그 빼기
+  why: 쉬운 단어 태그 빼기 / 구 경계에서 쪼개도록 chunks 정리
 - kind: sentence
   situation: DKA 인슐린 주입 적정
   index: 0
@@ -479,7 +486,7 @@ changes:
   index: 3
   fields:
   - words
-  why: 쉬운 단어 태그 빼기
+  why: 쉬운 단어 태그 빼기 / 쉬운·뜻이 갈리는 단어 태그 빼기
 - kind: sentence
   situation: anion gap 종결 판단
   index: 2
@@ -490,8 +497,11 @@ changes:
   situation: anion gap 종결 판단
   index: 4
   fields:
+  - en
+  - ko
+  - chunks
   - words
-  why: 쉬운 단어 태그 빼기
+  why: 쉬운 단어 태그 빼기 / 전환·용량은 처방자 몫 — 팀에 물어보는 말로
 - kind: sentence
   situation: HHS 고삼투 관리
   index: 1
@@ -502,8 +512,11 @@ changes:
   situation: HHS 고삼투 관리
   index: 3
   fields:
+  - en
+  - ko
+  - chunks
   - words
-  why: 쉬운 단어 태그 빼기
+  why: 쉬운 단어 태그 빼기 / 나트륨만 말한 설명에 혈당을 더해 같은 상황 다른 문장과 맞춤
 - kind: sentence
   situation: 유발원인 동반 치료
   index: 1
@@ -532,8 +545,11 @@ changes:
   situation: 교정속도 뇌부종 위험 인지
   index: 3
   fields:
+  - en
+  - ko
+  - chunks
   - words
-  why: 쉬운 단어 태그 빼기
+  why: 쉬운 단어 태그 빼기 / "correct him"은 부자연스럽다(교정하는 것은 수치)
 - kind: sentence
   situation: 교정속도 뇌부종 위험 인지
   index: 4
@@ -556,8 +572,9 @@ changes:
   situation: DKA 뇌부종 급변 위기
   index: 4
   fields:
+  - chunks
   - words
-  why: 쉬운 단어 태그 빼기
+  why: 쉬운 단어 태그 빼기 / 구 경계에서 쪼개도록 chunks 정리
 - kind: sentence
   situation: 심한 저혈당 의식소실 위기
   index: 1
@@ -586,8 +603,9 @@ changes:
   situation: 점액수종 혼수 위기
   index: 3
   fields:
+  - chunks
   - words
-  why: 쉬운 단어 태그 빼기
+  why: 쉬운 단어 태그 빼기 / 구 경계에서 쪼개도록 chunks 정리
 - kind: sentence
   situation: 점액수종 혼수 위기
   index: 4
@@ -606,3 +624,170 @@ changes:
   fields:
   - words
   why: 쉬운 단어 태그 빼기
+- kind: word
+  id: w-keep
+  fields:
+  - example
+  why: '검토 반영(v46 수정) — example:  예문이 바뀐 문장이거나 쓰임에 맞는 문장으로'
+- kind: word
+  id: w-fluid
+  fields:
+  - ko
+  why: '검토 반영(v46 수정) — ko:  ko를 쓰임에 맞게'
+- kind: word
+  id: w-sign
+  fields:
+  - ko
+  why: '검토 반영(v46 수정) — ko:  ko를 쓰임에 맞게'
+- kind: word
+  id: w-first
+  fields:
+  - ko
+  why: '검토 반영(v46 수정) — ko:  ko를 쓰임에 맞게'
+- kind: word
+  id: w-concentrate
+  fields:
+  - ko
+  why: '검토 반영(v46 수정) — ko:  ko를 쓰임에 맞게'
+- kind: word
+  id: w-take
+  fields:
+  - ko
+  why: '검토 반영(v46 수정) — ko:  ko를 쓰임에 맞게'
+- kind: word
+  id: w-sodium
+  fields:
+  - example
+  why: '검토 반영(v46 수정) — example:  예문이 바뀐 문장이거나 쓰임에 맞는 문장으로'
+- kind: word
+  id: w-cause
+  fields:
+  - ko
+  - example
+  why: '검토 반영(v46 수정) — ko:  ko를 쓰임에 맞게, example:  예문이 바뀐 문장이거나 쓰임에 맞는 문장으로'
+- kind: word
+  id: w-swell
+  fields:
+  - example
+  why: '검토 반영(v46 수정) — example:  예문이 바뀐 문장이거나 쓰임에 맞는 문장으로'
+- kind: word
+  id: w-sudden
+  fields:
+  - ko
+  why: '검토 반영(v46 수정) — ko:  ko를 쓰임에 맞게'
+- kind: word
+  id: w-drowsy
+  fields:
+  - example
+  why: '검토 반영(v46 수정) — example:  예문이 바뀐 문장이거나 쓰임에 맞는 문장으로'
+- kind: word
+  id: w-critically
+  fields:
+  - example
+  why: '검토 반영(v46 수정) — example:  예문이 바뀐 문장이거나 쓰임에 맞는 문장으로'
+- kind: word
+  id: w-update
+  fields:
+  - ko
+  why: '검토 반영(v46 수정) — ko:  ko를 쓰임에 맞게'
+- kind: word-remove
+  id: w-scale
+  why: 검토 반영 — 6.3 이 sliding scale 에서 insulin protocol 로 바뀌어 어느 문장도 태그하지 않는다(w-protocol 사용)
+- kind: sentence
+  situation: DKA 초기 사정
+  index: 3
+  fields:
+  - chunks
+  why: 구 경계에서 쪼개도록 chunks 정리
+- kind: sentence
+  situation: DKA 인슐린 주입 적정
+  index: 1
+  fields:
+  - ko
+  why: keyPhrase 한국어 번역을 자연스럽게(en·chunks 불변)
+- kind: sentence
+  situation: DKA 인슐린 주입 적정
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: DKA 정맥 점적을 sliding scale 이라 부른 용어 오류 → insulin protocol
+- kind: sentence
+  situation: anion gap 종결 판단
+  index: 0
+  fields:
+  - ko
+  why: keyPhrase 한국어 번역을 자연스럽게(en·chunks 불변)
+- kind: sentence
+  situation: 저혈당 예방·포도당 병용
+  index: 1
+  fields:
+  - words
+  why: 쉬운·뜻이 갈리는 단어 태그 빼기
+- kind: sentence
+  situation: 저혈당 예방·포도당 병용
+  index: 4
+  fields:
+  - words
+  why: 쉬운·뜻이 갈리는 단어 태그 빼기
+- kind: sentence
+  situation: 부신위기 스테로이드 투여
+  index: 2
+  fields:
+  - ko
+  why: keyPhrase 한국어 번역을 자연스럽게(en·chunks 불변)
+- kind: sentence
+  situation: 갑상선기능저하 점액수종 관리
+  index: 3
+  fields:
+  - words
+  why: 쉬운·뜻이 갈리는 단어 태그 빼기
+- kind: sentence
+  situation: 갑상선기능저하 점액수종 관리
+  index: 4
+  fields:
+  - chunks
+  - words
+  why: 검토 반영
+- kind: sentence
+  situation: 교정속도 뇌부종 위험 인지
+  index: 1
+  fields:
+  - ko
+  why: keyPhrase 한국어 번역을 자연스럽게(en·chunks 불변)
+- kind: sentence
+  situation: 부신위기 순환붕괴
+  index: 3
+  fields:
+  - en
+  - chunks
+  why: 관사 빠짐(a true adrenal crisis)과 명사구 끊김
+- kind: sentence
+  situation: 부신위기 순환붕괴
+  index: 4
+  fields:
+  - en
+  - chunks
+  why: 차트 말투(The pressor is titrating up)를 말로
+- kind: sentence
+  situation: 심한 저혈당 의식소실 위기
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  why: 확인 전 원인 단정(must be) → 추정(may be)으로, 문장 안전
+- kind: sentence
+  situation: 내분비 위기 다장기 악화
+  index: 1
+  fields:
+  - words
+  why: 쉬운·뜻이 갈리는 단어 태그 빼기
+- kind: sentence
+  situation: 내분비 위기 다장기 악화
+  index: 2
+  fields:
+  - ko
+  why: keyPhrase 한국어 번역을 자연스럽게(en·chunks 불변)

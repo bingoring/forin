@@ -1,0 +1,112 @@
+7:
+  - kind: slider
+    words: [w-high]
+    cue: "His INR is 4.8, and he's oozing from his IV site."
+    scale: [mildly high, high, very high]
+    answerAt: 2
+    why: "INR 4.8에 정맥주사 자리에서 스며 나오면 very high예요. 출혈 위험이 크니 바로 의사에게 알려요. 혈장 같은 교정은 처방과 시술 계획에 따라 하고, 간부전에서는 INR이 간의 합성 기능을 보여 주는 값이기도 해요."
+    example: "His INR is very high."
+    exKo: "그의 INR이 매우 높아요."
+  - kind: context
+    words: [w-plasma]
+    word: plasma
+    ko: 혈장
+    scenes:
+      - {who: 의사 라운드, icon: monitor, en: "Give plasma if he bleeds or before an invasive procedure.", ok: true}
+      - {who: 야간 인계, icon: board, en: "Two units of plasma are running, and the INR recheck is due in the morning.", ok: true}
+      - {who: 환자에게, icon: me, en: "Your plasma, specifically FFP, supplies exogenous coagulation factors.", ok: false, fix: "Plasma is the part of donated blood that carries clotting helpers, and it can help your blood clot."}
+    why: "의료진끼리는 FFP, exogenous coagulation factors 같은 용어가 정확해요. 환자에게는 같은 plasma를 헌혈 혈액에서 응고를 돕는 부분이라고 쉬운 말로 알려 주세요."
+  - kind: swap
+    words: [w-hold, w-firm]
+    who: "환자에게 · 시술 후 안내"
+    icon: me
+    before: ["I'll ", "apply sustained manual compression", " at the site."]
+    options: [hold firm pressure, apply sustained manual compression, tamponade the site]
+    answer: hold firm pressure
+    notes: {hold firm pressure: "환자가 무엇을 하는지 바로 알아들어요.", apply sustained manual compression: "정확하지만 긴 의료 용어라 환자에게는 딱딱해요.", tamponade the site: "의료진끼리 쓰는 말이라 환자는 못 알아들어요."}
+    why: "처치 중에는 환자가 불안해하기 쉬워서, 하는 일을 짧고 쉬운 동사로 알려 주면 안심이 돼요."
+    ko: "그 부위를 단단히 눌러 줄게요"
+8:
+  - kind: slider
+    words: [w-sluggish]
+    cue: "His right pupil takes several seconds to react to the light."
+    scale: [brisk, sluggish, nonreactive]
+    answerAt: 1
+    why: "빛에 반응은 하지만 몇 초씩 걸리면 sluggish예요. brisk는 즉각 반응하는 정상, nonreactive는 아예 반응이 없는 경우예요. 새로 생긴 둔한 동공이나 좌우 차이는 뇌압이 오르는 신호일 수 있어 바로 알려요."
+    example: "His right pupil is sluggish."
+    exKo: "그의 오른쪽 동공이 둔해요."
+  - kind: context
+    words: [w-pupil]
+    word: pupil
+    ko: 동공
+    scenes:
+      - {who: 의사 라운드, icon: monitor, en: "The right pupil is sluggish, and I'm worried about early herniation.", ok: true}
+      - {who: 야간 인계, icon: board, en: "Each pupil was equal and reactive at 0200 and 0400.", ok: true}
+      - {who: 보호자에게, icon: me, en: "His right pupil shows anisocoria with a sluggish consensual response.", ok: false, fix: "The dark center of his right eye is reacting to light more slowly than the left, so we're calling the doctor."}
+    why: "의료진끼리는 anisocoria, consensual response 같은 용어가 정확해요. 보호자에게는 같은 pupil을 눈 한가운데 검은 부분이라고 풀고, 지금 무엇을 하는지 함께 알려 주세요."
+  - kind: swap
+    words: [w-elevated]
+    who: "보호자에게 · 침상 설명"
+    icon: me
+    before: ["We keep ", "his cranium elevated", " to help with brain swelling."]
+    options: [his head raised, HOB at thirty degrees, his cranium elevated]
+    answer: his head raised
+    notes: {his head raised: "보호자가 바로 알아듣고 무엇을 하는지 분명해요.", HOB at thirty degrees: "HOB은 의료진 약어라 보호자는 뜻을 몰라요.", his cranium elevated: "정확하지만 어색한 의학 용어라 가족 대화에는 맞지 않아요."}
+    why: "머리 높이는 보호자가 침대를 낮추지 않도록 알려야 하는 일이라, 쉬운 말과 이유를 함께 전해요."
+    ko: "뇌가 붓는 것을 줄이도록 머리를 높여 두고 있어요"
+9:
+  - kind: slider
+    words: [w-fall]
+    cue: "His urine output was 60, then 45, then 30 mL an hour."
+    scale: [holding, falling, nearly stopped]
+    answerAt: 1
+    why: "세 번 연속 조금씩 줄면 falling이에요. 소변량이 시간당 0.5mL/kg 아래로 이어지면 신장이 위험하다는 신호라 의사에게 알려요. holding은 변화가 없을 때, nearly stopped는 거의 나오지 않을 때예요."
+    example: "His urine output is falling."
+    exKo: "그의 소변량이 줄고 있어요."
+  - kind: context
+    words: [w-kidney]
+    word: kidney
+    ko: 신장
+    scenes:
+      - {who: 의사 라운드, icon: monitor, en: "His kidney function is declining, so consider hepatorenal syndrome.", ok: true}
+      - {who: 야간 인계, icon: board, en: "Kidney function was stable overnight, and his creatinine was unchanged.", ok: true}
+      - {who: 환자에게, icon: me, en: "Your kidney perfusion is compromised secondary to splanchnic vasodilation.", ok: false, fix: "Your kidneys aren't getting enough blood flow because of your liver illness."}
+    why: "의료진끼리는 splanchnic vasodilation 같은 용어가 정확해요. 환자에게는 같은 kidney 문제를 신장에 피가 덜 간다는 쉬운 말로 풀어 주세요."
+  - kind: swap
+    words: [w-albumin]
+    who: "환자에게 · 투약 설명"
+    icon: me
+    before: ["We'll give you ", "a colloid", " to help your kidneys."]
+    options: [a protein medicine, albumin, a colloid]
+    answer: a protein medicine
+    notes: {a protein medicine: "환자가 바로 알아듣고 무엇인지 짐작할 수 있어요.", albumin: "정확한 이름이지만 먼저 쉬운 설명을 하고 덧붙이는 편이 좋아요.", a colloid: "의료진끼리 쓰는 분류 용어라 환자는 못 알아들어요."}
+    why: "환자에게는 먼저 쉬운 설명을 하고 필요하면 이름을 덧붙여요. 알부민은 헌혈 혈장에서 만든 제제라서 이 점은 의사가 동의 과정에서 설명해요."
+    ko: "신장을 돕는 단백질 약을 드릴 거예요"
+10:
+  - kind: slider
+    words: [w-urgency]
+    cue: "The center says he is status 1A, the highest priority on the list."
+    scale: [routine, urgent, emergent]
+    answerAt: 2
+    why: "급성 간부전 환자의 1A는 이식 대기에서 가장 우선순위가 높은 단계라 emergent예요. 순위는 이식센터가 정하고, 간호사는 상태 변화를 바로 보고해요."
+    example: "The urgency is emergent."
+    exKo: "시급성이 아주 높아요."
+  - kind: context
+    words: [w-evaluate]
+    word: evaluate
+    ko: 평가하다
+    scenes:
+      - {who: 의사 라운드, icon: monitor, en: "Transplant surgery will evaluate him this afternoon if he stays stable.", ok: true}
+      - {who: 야간 인계, icon: board, en: "The psychosocial team will evaluate him tomorrow morning.", ok: true}
+      - {who: 보호자에게, icon: me, en: "The multidisciplinary committee will evaluate his candidacy per UNOS criteria.", ok: false, fix: "The transplant team will look at whether a new liver is the right choice for him."}
+    why: "의료진끼리는 candidacy, UNOS criteria 같은 용어가 정확해요. 보호자에게는 같은 evaluate를 팀이 무엇을 살펴보는지 쉬운 말로 풀어 주세요."
+  - kind: swap
+    words: [w-list, w-decide]
+    who: "가족에게 · 대기 명단 설명"
+    icon: me
+    before: ["The team will decide whether he can be ", "activated on the registry", " for a transplant."]
+    options: [put on the waiting list, listed, activated on the registry]
+    answer: put on the waiting list
+    notes: {put on the waiting list: "가족이 바로 알아듣는 말이에요.", listed: "의료진끼리 쓰는 짧은 표현이라 가족은 뜻을 놓칠 수 있어요.", activated on the registry: "등록 절차를 가리키는 전문 표현이라 가족 대화에는 어려워요."}
+    why: "가족은 명단에 오르는 것을 곧 이식으로 오해하기 쉬워요. 쉬운 말로 설명하고 명단과 장기 배정은 다르다는 점도 알려요."
+    ko: "그를 이식 대기 명단에 올릴 수 있는지 팀이 결정할 거예요"

@@ -1,0 +1,203 @@
+# 문장(A S1~S12·K1~K7, B 9.2 ko)과 거기에 딸린 v46 필드. 키 = 상황번호.문장번호
+sentences:
+  "4.1":
+    en: "Even a small cough or a startle can spike his pressure."
+    ko: "작은 기침이나 깜짝 놀라는 것만으로도 압력이 급상승할 수 있어요."
+    chunks: ["Even a small cough", "or a startle", "can spike", "his pressure", "."]
+    words: [w-cough, w-startle, w-spike, w-pressure]
+    tag: "급상승 요인"
+    icon: fire
+    why: "Even a small…로 작아 보이는 자극도 원인이 된다는 점을 먼저 말해 줘요. can spike는 가능성을 말하는 표현이에요."
+    decoy: "from the bed"
+    distractorsKo:
+      - "작은 기침이나 깜짝 놀라는 것만으로도 맥박이 급상승할 수 있어요"
+      - "작은 기침이나 깜짝 놀라는 것만으로도 체온이 급상승할 수 있어요"
+    blank: {answer: cough, options: [cough, smile, whisper, nap]}
+    swhy: "A S1: 'A quiet cough'는 어색 — 기침 소리 크기와 뇌압은 무관해 문장 교체, w-quiet 태그 뺌"
+  "6.3":
+    en: "No change after position and sedation, so I'll call the provider about mannitol."
+    ko: "체위와 진정 후에도 변화가 없어서 만니톨에 대해 담당 의사에게 연락할게요."
+    chunks: ["No change", "after position and sedation", ", so I'll call", "the provider", "about mannitol", "."]
+    words: [w-change, w-position, w-sedation, w-call, w-mannitol]
+    tag: "연락"
+    icon: pager
+    why: "No change after…로 앞 단계의 결과를 근거로 말하고, so I'll call로 다음 행동을 이어요. 만니톨은 처방이 필요한 약이라 담당 의사에게 먼저 연락해요."
+    decoy: "for the chart"
+    distractorsKo:
+      - "체위와 진정 후에도 변화가 없어서 만니톨 처방부터 확인해 둘게요"
+      - "체위와 진정 후에도 변화가 없으면 만니톨을 단 뒤 소변량을 챙길게요"
+    blank: {answer: position, options: [position, dressing, visiting, bathing]}
+    swhy: "A S2: 명령문 en과 1인칭 ko가 어긋나고 누구에게 요청하는지 없어서 담당 의사에게 연락한다고 분명히"
+  "8.4":
+    en: "If it's blocked, don't flush it — reposition him and reassess first, then call neurosurgery."
+    ko: "막혔다면 플러싱하지 말고, 먼저 환자 자세를 다시 잡아 재평가한 뒤 신경외과에 연락하세요."
+    chunks: ["If it's blocked", ", don't flush it", "— reposition him", "and reassess first", ", then call neurosurgery", "."]
+    words: [w-block, w-flush, w-reposition, w-reassess, w-first, w-call, w-neurosurgery]
+    tag: "막힘 대처"
+    icon: shield
+    why: "don't flush it으로 하지 말 것을 먼저 못 박고, 대시 뒤에 먼저 할 일을 이어요. then call로 마지막에 신경외과를 부르는 순서까지 말해요."
+    decoy: "in the hallway"
+    distractorsKo:
+      - "막혔다면 플러싱하지 말고, 먼저 환자 자세를 다시 잡아 재평가한 뒤 신경외과 연락 시각을 적으세요"
+      - "막혔다면 플러싱하지 말고, 환자 자세를 다시 잡아 재평가한 뒤 곁에 계세요"
+    blank: {answer: blocked, options: [blocked, clear, draining, full]}
+    swhy: "A S3: 쉼표 나열이라 플러시·재위치·재평가를 하지 말라는 말로도 읽히고 신경외과 보고가 빠져서 문장 교체"
+  "9.1":
+    en: "If fluid alone isn't enough, the team may add a pressor."
+    ko: "수액만으로 충분하지 않으면 팀이 승압제를 추가할 수 있어요."
+    chunks: ["If fluid alone", "isn't enough", ", the team may add", "a pressor", "."]
+    words: [w-fluid, w-alone, w-may, w-add, w-pressor]
+    tag: "다음 단계"
+    icon: gear
+    why: "If…alone isn't enough는 그것만으로는 모자랄 때를 말하는 틀이에요. may add로 다음 단계가 가능하다고 가능성의 톤으로 말해요."
+    decoy: "in the bag"
+    distractorsKo:
+      - "수액만으로 충분하지 않으면 팀이 승압제 라인부터 열 수 있어요"
+      - "수액만으로 충분하지 않으면 팀이 승압제를 추가한 뒤 혈압을 다시 잴 수 있어요"
+    blank: {answer: fluid, options: [fluid, oxygen, position, sedation]}
+    swhy: "A S4: 순서가 반대 — 정상 혈량(수액)을 먼저 맞추고 모자라면 승압제. w-enough 태그 뺌"
+  "10.1":
+    en: "This only works as a short-term fix, not as ongoing therapy."
+    ko: "잠깐 쓰는 응급 조치일 뿐, 지속적인 요법은 아니에요."
+    chunks: ["This only works", "as a short-term fix", ", not as", "ongoing therapy", "."]
+    words: [w-work, w-ongoing, w-therapy]
+    tag: "사용 한계"
+    icon: calendar
+    why: "only works as…로 쓸 수 있는 범위를 좁혀 말해요. not as ongoing therapy는 계속하는 치료가 아니라는 대비예요."
+    decoy: "for the family"
+    distractorsKo:
+      - "잠깐 쓰는 응급 조치일 뿐, 처음 하는 요법은 아니에요"
+      - "잠깐 쓰는 응급 조치일 뿐, 약물 요법은 아니에요"
+    blank: {answer: ongoing, options: [ongoing, emergency, rescue, temporary]}
+    swhy: "A S5: '몇 분만'은 틀림(과호흡 효과는 몇 시간 가고 오래 쓰면 뇌허혈 위험) — short-term fix로, chunk 정리"
+  "13.1":
+    ko: "CT로 가기 전에 조금 더 깊게 진정시켜 주세요."
+    distractorsKo:
+      - "CT로 가기 전에 진정제 처방부터 챙겨 주세요"
+      - "CT에서 돌아오면 신경학적 상태를 사정해 주세요"
+    swhy: "A S6: en은 명령문인데 ko가 1인칭('진정시킬게요')이라 명령형으로"
+  "14.4":
+    en: "If ICP climbs past twenty and stays there, stop and re-sedate per protocol."
+    ko: "ICP가 이십을 넘어 그대로 머무르면 멈추고 프로토콜에 따라 다시 진정시키세요."
+    chunks: ["If ICP climbs past twenty", "and stays there", ", stop", "and re-sedate", "per protocol", "."]
+    words: [w-icp, w-climb, w-past, w-stay, w-stop, w-sedate, w-per, w-protocol]
+    tag: "중단 기준"
+    icon: siren
+    why: "past twenty는 기준선을 넘었다는 뜻이고, and stays there로 잠깐 넘는 것과 구분해요. per protocol로 재진정은 병원 프로토콜에 따른다고 못 박아요."
+    decoy: "on the phone"
+    distractorsKo:
+      - "ICP가 이십에 가까워져 그대로 머무르면 진정제를 미리 준비해 두세요"
+      - "다시 진정시킨 다음 ICP가 이십 아래로 내려오는지 지켜보세요"
+    blank: {answer: climbs, options: [climbs, drops, falls, sinks]}
+    swhy: "A S7: 깨울 때 잠깐 치솟는 것은 흔함 — 중단 기준은 지속 상승·프로토콜. w-twenty 태그 뺌"
+  "16.3":
+    en: "Try repositioning his head once before you call it truly blocked."
+    ko: "정말 막혔다고 판단하기 전에 환자 머리 위치를 한 번 바꿔 보세요."
+    chunks: ["Try repositioning", "his head", "once", "before you call it", "truly blocked", "."]
+    tag: "재시도"
+    icon: redo
+    why: "Try ~ing는 시험 삼아 해 보라는 뜻이에요. his head로 카테터가 아니라 환자 머리 자세를 말하고, before you call it truly blocked로 단정하기 전의 단계를 알려요."
+    decoy: "on the unit"
+    distractorsKo:
+      - "정말 막혔다고 판단하기 전에 머리를 받쳐 줄 동료를 한 번 부르세요"
+      - "머리 위치를 바꿔도 계속 막혀 있으면 한 번 더 바로 알리세요"
+    blank: {answer: truly, options: [truly, partly, nearly, barely]}
+    swhy: "A S8: repositioning이 카테터를 옮기라는 말로도 읽혀 his head를 넣어 분명히"
+  "17.4":
+    ko: "수술 가능성이 현실이 됐으니 가족에게도 상황을 알려 주세요."
+    why: "Loop in은 소통에 끼워 넣는다는 구어 표현이에요. 수술 설명과 동의는 외과의 몫이고, 간호사는 가족이 그 대화에 함께하도록 연락해요."
+    distractorsKo:
+      - "수술 가능성이 현실이 됐으니 가족이 오시면 면담실로 모셔 주세요"
+      - "수술 가능성이 현실이 됐으니 설명은 신경외과가 직접 하게 해 주세요"
+    swhy: "A S9: '합류시키세요'가 어색해 '상황을 알려 주세요'로"
+  "19.4":
+    en: "Per orders, we restrict free water if it's SIADH, or replace losses if it's DI."
+    ko: "처방에 따라 SIADH면 수분을 제한하고, 요붕증이면 손실량을 보충해요."
+    chunks: ["Per orders", ", we restrict free water", "if it's SIADH", ", or replace losses", "if it's DI", "."]
+    words: [w-per, w-order, w-restrict, w-siadh, w-replace, w-loss, w-di]
+    tag: "감별 후 처치"
+    icon: gear
+    why: "Per orders로 처방에 따른다는 틀을 먼저 세우고, or로 갈래마다 다른 처치를 한 문장에 말해요. free water는 소금이 섞이지 않은 순수한 물을 가리켜요."
+    decoy: "by the bed"
+    distractorsKo:
+      - "처방에 따라 SIADH면 섭취량부터 계산하고, 요붕증이면 손실량을 보충해요"
+      - "처방에 따라 SIADH면 수분을 제한하고, 요붕증이면 소변량부터 재요"
+    blank: {answer: losses, options: [losses, gains, lines, dressings]}
+    swhy: "A S10: 수분 제한·보충은 처방 사항인데 동료에게 단독 지시처럼 말해서 'Per orders' 추가. w-free 태그 뺌"
+  "20.1":
+    en: "This isn't a final diagnosis yet — we're still waiting for the formal exams."
+    ko: "아직 최종 진단은 아니고, 공식적인 검사를 아직 기다리고 있어요."
+    chunks: ["This isn't a final diagnosis", "yet", "— we're still waiting", "for the formal exams", "."]
+    words: [w-final, w-diagnosis, w-wait, w-formal, w-exam]
+    tag: "진행 설명"
+    icon: calendar
+    why: "This isn't…yet의 yet이 아직 결론이 아니라는 뜻을 만들어요. still waiting for the formal exams는 공식 검사가 남아 있다는 진행 상황을 알려요."
+    decoy: "in the room"
+    distractorsKo:
+      - "아직 최종 진단은 아니고, 공식적인 면담을 아직 기다리고 있어요"
+      - "아직 최종 진단은 아니고, 공식적인 서류를 아직 기다리고 있어요"
+    blank: {answer: formal, options: [formal, casual, optional, private]}
+    swhy: "A S11: 'two separate exams'를 일반 원칙처럼 가르치면 틀림(성인 지침은 1회가 기본, 병원 규정에 따라 다름) — 횟수를 뺌. w-separate 삭제"
+  "20.4":
+    en: "When you're ready, a specialist can talk with you about organ donation, but there's no rush."
+    ko: "준비되시면 전문 담당자가 장기기증에 대해 말씀드릴 수 있지만, 서두르실 필요는 없어요."
+    chunks: ["When you're ready", ", a specialist can talk with you", "about organ donation", ", but there's no rush", "."]
+    words: [w-ready, w-organ, w-donation, w-rush]
+    tag: "장기기증"
+    icon: shield
+    why: "When you're ready로 가족이 준비됐을 때를 말해요. 미국에서는 기증 이야기를 지정 요청자나 장기구득기관(OPO) 담당자가 꺼내도록 정해 두어서, 간호사는 a specialist가 이야기할 수 있다고 연결만 해요."
+    decoy: "in the hall"
+    distractorsKo:
+      - "준비되시면 전문 담당자가 면회 시간에 대해 말씀드릴 수 있지만, 서두르실 필요는 없어요"
+      - "준비되시면 전문 담당자가 병원 규정을 말씀드릴 수 있지만, 서두르실 필요는 없어요"
+    blank: {answer: donation, options: [donation, function, failure, support]}
+    swhy: "A S12: 미국 규정상 기증 요청은 OPO 담당자·지정 요청자가 하므로 병상 간호사가 먼저 꺼내는 문장을 'a specialist can talk with you'로"
+  # --- keyPhrase: ko만 ---
+  "14.0":
+    ko: "잠깐 진정을 얕게 해서 신경학적 상태를 사정할게요."
+    distractorsKo:
+      - "진정을 얕게 하기 전에 신경 상태를 적어 둘게요"
+      - "잠깐 진정을 얕게 한 뒤에 신경학적 상태를 보고할게요"
+    swhy: "A K1·B: 오타 '얕춰서'를 '얕게 해서'로"
+  "17.3":
+    ko: "지금 신경외과 의사를 침상으로 바로 불러올게요."
+    distractorsKo:
+      - "신경외과가 오기 전에 CT를 띄울게요"
+      - "신경외과가 오면 동공 변화를 말씀드릴게요"
+    swhy: "A K2: 과(科)를 데려온다는 말이 어색해 '신경외과 의사를 … 불러올게요'로"
+  "7.3":
+    ko: "혈관 속 수분이 너무 줄지 않게 혈압도 확인할게요."
+    distractorsKo:
+      - "혈관 속 수분이 너무 줄지 않게 커프부터 점검해요"
+      - "혈관 속 수분이 너무 줄지 않게 혈압계 위치를 바로잡을게요"
+    swhy: "A K3: '너무 건조해지지'는 피부가 마른다는 말로 읽혀 '혈관 속 수분이 너무 줄지'로"
+  "13.0":
+    ko: "이송하는 동안 머리를 올려 두고 진정제도 바로 쓸 수 있게 준비해 둘게요."
+    distractorsKo:
+      - "이송하는 동안 머리를 올려 두려고 진정제도 쓸 수 있게 둘이 같이 갈게요"
+      - "이송에서 돌아오면 머리를 올려 두고 진정제도 쓸 수 있게 준비해 둘게요"
+    swhy: "A K4: sedation ready는 진정제를 바로 쓸 수 있게 준비한다는 뜻인데 ko는 '진정 상태를 유지'였음. '세우고'도 '올려 두고'로"
+  "14.2":
+    ko: "가장 안정적일 때 깨우는 시간을 잡아요."
+    distractorsKo:
+      - "가장 안정적일 때 식사 시간을 잡아요"
+      - "가장 안정적일 때 면회 시간을 잡아요"
+    swhy: "A K5: '각성 창을 맞춰요'는 번역투 — '깨우는 시간을 잡아요'로"
+  "1.0":
+    ko: "머리를 올리고 정중선을 유지하면 뇌에서 혈액이 잘 빠져나가요."
+    distractorsKo:
+      - "머리를 올리고 정중선을 유지하면 목에서 혈액이 잘 빠져나가요"
+      - "머리를 올리고 정중선을 유지하면 폐에서 혈액이 잘 빠져나가요"
+    swhy: "A K6: '머리를 세우고'는 앉힌 자세로 읽혀(침상 머리 약 30도) '올리고'로"
+  "16.4":
+    ko: "과배액됐다면 즉시 배액관 높이를 다시 맞추고 재평가할게요."
+    distractorsKo:
+      - "과배액됐다면 즉시 배액관 높이를 다시 맞추고 신경외과에 알려요"
+      - "과배액을 막으려고 이송 전에는 배액관을 꼭 잠가요"
+    swhy: "A K7: 'reposition'이 모호해 ko를 '배액관 높이를 다시 맞추고'로(en은 사용자 결정 대기)"
+  "9.2":
+    ko: "승압제를 올리기 전에 수액이 충분히 들어갔는지 확인해요."
+    distractorsKo:
+      - "승압제를 올린 후에는 혈압을 오 분마다 기록해요"
+      - "승압제를 올리기 전에 수액이 충분한지 의사와 상의해요"
+    swhy: "B 사실: drip은 승압제 점적인데 ko가 '점적 수액을 늘리기 전에'라 뜻이 어긋나 '승압제를 올리기 전에'로"

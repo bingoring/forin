@@ -3539,6 +3539,20 @@ situations:
     - w-hemodynamics
     - w-first
     goal: 1
+    tag: 우선순위
+    icon: compass
+    why: '''first''를 문장 끝에 두어 무엇부터 하는지 분명히 해요. ''Let''s''로 팀이 함께 한다는 느낌을 줘요.'
+    decoy: with the team
+    distractorsKo:
+    - 기도랑 혈역학이 괜찮으면 동의서부터 받죠.
+    - 기도가 괜찮으면 이동 준비부터 하죠.
+    blank:
+      answer: airway
+      options:
+      - en: airway
+      - en: vision
+      - en: hearing
+      - en: appetite
   - en: I'll get consent and the pre-procedure checklist done.
     ko: 동의서랑 시술 전 체크리스트를 끝내 둘게요.
     chunks:
@@ -3552,6 +3566,20 @@ situations:
     - w-checklist
     - w-done
     goal: 2
+    tag: 서류 준비
+    icon: board
+    why: '''get … done''은 일을 끝내 둔다는 구어체 표현이에요. 서류 두 가지를 and로 묶어 한 번에 말해요.'
+    decoy: for the nurse
+    distractorsKo:
+    - 동의서랑 체크리스트가 끝나면 이송 요청을 할게요.
+    - 동의서랑 시술 전 체크리스트를 같이 가져올게요.
+    blank:
+      answer: consent
+      options:
+      - en: consent
+      - en: insurance
+      - en: billing
+      - en: referral
   - en: Blood is on standby if we need it during the scope.
     ko: 시술 중에 필요하면 쓸 수 있게 피를 대기시켜 뒀어요.
     chunks:
@@ -3566,6 +3594,20 @@ situations:
     - w-need
     - w-scope
     goal: 2
+    tag: 혈액 대기
+    icon: lab
+    why: '''on standby''는 바로 쓸 수 있게 대기한다는 표현이에요. ''if we need it''은 필요 여부가 아직 열려 있음을 알려요.'
+    decoy: in the cooler
+    distractorsKo:
+    - 시술 중에 필요하면 쓸 수 있게 피를 데워 뒀어요.
+    - 시술 중에 필요하면 쓸 수 있게 흡인기를 대기시켜 뒀어요.
+    blank:
+      answer: standby
+      options:
+      - en: standby
+      - en: ice
+      - en: loan
+      - en: order
   - en: His sedation plan is ready, and anesthesia is aware of the bleeding.
     ko: 진정 계획은 준비됐고, 마취팀도 출혈 사실을 알고 있어요.
     chunks:
@@ -3582,6 +3624,20 @@ situations:
     - w-aware
     - w-bleed
     goal: 1
+    tag: 팀 공유
+    icon: handshake2
+    why: '''is aware of''는 이미 알고 있다는 상태를 전해요. 문장 하나에 두 가지 준비 상황을 and로 이어요.'
+    decoy: for now
+    distractorsKo:
+    - 진정 계획은 준비됐고, 소화기팀도 출혈 사실을 알고 있어요.
+    - 진정 계획은 준비됐고, 보호자도 출혈 사실을 알고 있어요.
+    blank:
+      answer: sedation
+      options:
+      - en: sedation
+      - en: discharge
+      - en: diet
+      - en: therapy
   - en: I want his pressure a bit more stable before they start.
     ko: 시작하기 전에 혈압이 좀 더 안정됐으면 해요.
     chunks:
@@ -3596,6 +3652,20 @@ situations:
     - w-before
     - w-start
     goal: 1
+    tag: 희망 전달
+    icon: speech
+    why: '''I want''는 요청을 부드럽게 전하는 틀이에요. ''a bit more''가 목표 폭을 작게 잡아 줘요.'
+    decoy: for them
+    distractorsKo:
+    - 시작하기 전에 수액이 좀 더 들어갔으면 해요.
+    - 시작하기 전에 혈액이 좀 더 준비됐으면 해요.
+    blank:
+      answer: pressure
+      options:
+      - en: pressure
+      - en: rash
+      - en: cough
+      - en: appetite
   - en: GI wants to know his last meal time and any allergies.
     ko: GI팀이 마지막 식사 시간이랑 알레르기를 알고 싶어 해요.
     chunks:
@@ -3610,6 +3680,20 @@ situations:
     - w-meal
     - w-allergy
     goal: 2
+    tag: 정보 전달
+    icon: pager
+    why: '''wants to know''는 요청을 전해 듣는 간접 표현이에요. ''any allergies''는 있는지 없는지 열어 두고 묻는 말이에요.'
+    decoy: by phone
+    distractorsKo:
+    - GI팀이 마지막 배변 시간이랑 알레르기를 알고 싶어 해요.
+    - GI팀이 마지막 식사 시간이랑 가족력을 알고 싶어 해요.
+    blank:
+      answer: last
+      options:
+      - en: last
+      - en: first
+      - en: next
+      - en: new
   - en: I'll wheel him down as soon as the team is ready.
     ko: 팀이 준비되는 대로 바로 이동시킬게요.
     chunks:
@@ -3624,6 +3708,42 @@ situations:
     - w-team
     - w-ready
     goal: 2
+    tag: 이송 약속
+    icon: plane
+    why: '''as soon as''는 준비된 순간 바로 움직인다는 약속이에요. ''wheel … down''은 침대나 휠체어로 아래층으로 옮긴다는 구어체예요.'
+    decoy: to the unit
+    distractorsKo:
+    - 팀이 준비되는 대로 바로 침대 난간을 올릴게요.
+    - 팀이 준비되는 대로 바로 모니터를 옮길게요.
+    blank:
+      answer: down
+      options:
+      - en: down
+      - en: up
+      - en: back
+      - en: aside
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 내시경 전 조율 4문장 순서
+    why: 기도와 혈역학부터 확인하고, 서류를 끝내고, 필요할 경우를 대비해 피를 대기시킨 뒤, 팀이 준비되면 이동해요.
+    lines:
+    - en: Let's confirm his airway and hemodynamics first.
+      icon: compass
+      ko: 먼저 기도랑 혈역학 상태부터 확인하죠
+      note: 확인
+    - en: With that settled, I'll get consent and the pre-procedure checklist done.
+      icon: board
+      ko: 그게 끝나면 동의서랑 시술 전 체크리스트를 끝내 둘게요
+      note: 서류
+    - en: Beyond that, blood is on standby if we need it during the scope.
+      icon: lab
+      ko: 그 밖에 시술 중에 필요하면 쓸 피를 대기시켜 뒀어요
+      note: 대기
+    - en: When the team is ready, I'll wheel him down.
+      icon: plane
+      ko: 팀이 준비되면 이동시킬게요
+      note: 이송
 - title: 제한적 수혈 목표 판단
   sentences:
   - en: For a stable bleed, we usually hold to the restrictive target.
@@ -3642,6 +3762,20 @@ situations:
     - w-restrictive
     - w-target
     goal: 1
+    tag: 기준 설명
+    icon: bulb
+    why: '''usually''는 예외가 있을 수 있다는 여지를 줘요. ''hold to''는 기준을 지킨다는 뜻이에요.'
+    decoy: in the unit
+    distractorsKo:
+    - 출혈이 안정적이면 보통 수혈 동의서를 따로 받아요.
+    - 출혈이 안정적이면 보통 체액 균형 목표를 따라요.
+    blank:
+      answer: target
+      options:
+      - en: target
+      - en: schedule
+      - en: budget
+      - en: formula
   - en: Let's reassess if he shows signs of ongoing bleeding.
     ko: 출혈이 계속되는 징후가 있는지 다시 평가하죠.
     chunks:
@@ -3656,6 +3790,20 @@ situations:
     - w-ongoing
     - w-bleed
     goal: 2
+    tag: 재평가 제안
+    icon: magnify
+    why: '''Let''s reassess''는 함께 다시 보자는 제안형이에요. ''signs of ongoing bleeding''은 출혈이 이어지는 단서를 가리켜요.'
+    decoy: at rounds
+    distractorsKo:
+    - 통증이 심해지는 징후가 있는지 다시 평가하죠.
+    - 빈혈이 심해지는 징후가 있는지 다시 평가하죠.
+    blank:
+      answer: bleeding
+      options:
+      - en: bleeding
+      - en: infection
+      - en: fever
+      - en: swelling
   - en: I'll recheck the hemoglobin and his symptoms.
     ko: 헤모글로빈이랑 증상을 다시 확인할게요.
     chunks:
@@ -3668,6 +3816,20 @@ situations:
     - w-hemoglobin
     - w-symptom
     goal: 2
+    tag: 재확인 약속
+    icon: check
+    why: '''recheck''는 이미 본 것을 다시 본다는 뜻이에요. 수치와 증상을 and로 묶어 함께 본다고 알려요.'
+    decoy: in an hour
+    distractorsKo:
+    - 헤모글로빈이랑 혈압을 다시 확인할게요.
+    - 혈소판이랑 증상을 다시 확인할게요.
+    blank:
+      answer: hemoglobin
+      options:
+      - en: hemoglobin
+      - en: sodium
+      - en: calcium
+      - en: creatinine
   - en: Seven point two is below eight, but he's not actively bleeding right now.
     ko: 7.2는 8보다 낮지만, 지금 활동성 출혈은 없어요.
     chunks:
@@ -3682,6 +3844,20 @@ situations:
     - w-bleed
     - w-now
     goal: 1
+    tag: 대비 설명
+    icon: chartup
+    why: '''below eight, but''으로 숫자가 낮다는 사실 뒤에 다른 사실을 붙여 균형을 줘요. ''actively''는 지금 진행 중이라는 뜻이에요.'
+    decoy: this morning
+    distractorsKo:
+    - 7.1은 8보다 낮지만, 어제는 활동성 출혈이 없었어요.
+    - 7.2는 8보다 낮지만, 어제는 활동성 출혈이 없었어요.
+    blank:
+      answer: below
+      options:
+      - en: below
+      - en: above
+      - en: near
+      - en: beyond
   - en: We only transfuse if he drops further or becomes symptomatic.
     ko: 더 떨어지거나 증상이 생기면 그때 수혈해요.
     chunks:
@@ -3696,6 +3872,20 @@ situations:
     - w-further
     - w-symptomatic
     goal: 1
+    tag: 조건 설명
+    icon: compass
+    why: '''only … if''는 조건이 맞을 때만 한다는 한정이에요. ''drops further or becomes symptomatic''은 조건 둘 중 하나만 맞아도 된다는 뜻이에요.'
+    decoy: for him
+    distractorsKo:
+    - 더 떨어지거나 증상이 생기면 그때 혈액을 가져와요.
+    - 더 떨어지거나 증상이 생기면 그때 수혈 동의를 받아요.
+    blank:
+      answer: transfuse
+      options:
+      - en: transfuse
+      - en: sedate
+      - en: discharge
+      - en: relocate
   - en: Chest pain or a racing heart would push us to transfuse sooner.
     ko: 흉통이나 심박이 빨라지면 더 일찍 수혈하게 돼요.
     chunks:
@@ -3712,6 +3902,20 @@ situations:
     - w-transfuse
     - w-sooner
     goal: 2
+    tag: 예외 설명
+    icon: faceWorried
+    why: '''would push us to''는 기준을 앞당기게 만드는 요인이라는 뜻이에요. ''sooner''로 앞당긴다는 방향을 말해요.'
+    decoy: for him
+    distractorsKo:
+    - 흉통이나 심박이 빨라지면 더 일찍 의사를 부르게 돼요.
+    - 흉통이나 심박이 빨라지면 더 일찍 심전도를 찍게 돼요.
+    blank:
+      answer: chest
+      options:
+      - en: chest
+      - en: ankle
+      - en: knee
+      - en: ear
   - en: Otherwise, we watch and repeat labs every six hours.
     ko: 그렇지 않으면 지켜보면서 여섯 시간마다 검사를 반복해요.
     chunks:
@@ -3726,6 +3930,42 @@ situations:
     - w-lab
     - w-hour
     goal: 2
+    tag: 감시 계획
+    icon: calendar
+    why: '''Otherwise''로 앞 조건을 벗어난 경우를 따로 말해요. ''watch and repeat''는 지켜보는 것과 반복 검사를 한꺼번에 묶어요.'
+    decoy: at night
+    distractorsKo:
+    - 그렇지 않으면 지켜보면서 여섯 시간마다 배액을 비워요.
+    - 그렇지 않으면 지켜보면서 여섯 시간마다 라인을 씻어요.
+    blank:
+      answer: six
+      options:
+      - en: six
+      - en: three
+      - en: four
+      - en: two
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 제한적 수혈 판단 4문장 순서
+    why: 현재 수치와 상태를 먼저 말하고, 그 근거로 기준을 설명한 뒤, 검사 감시를 알리고, 예외 증상을 덧붙여요.
+    lines:
+    - en: Seven point two is below eight, but he's not actively bleeding right now.
+      icon: chartup
+      ko: 7.2는 8보다 낮지만 지금 활동성 출혈은 없어요
+      note: 현황
+    - en: Because of that, we hold to the restrictive target for a stable bleed.
+      icon: bulb
+      ko: 그래서 안정적인 출혈엔 제한적 목표를 따라요
+      note: 기준
+    - en: So we watch and repeat labs every six hours.
+      icon: calendar
+      ko: 그래서 지켜보면서 여섯 시간마다 검사를 반복해요
+      note: 감시
+    - en: Whatever the labs show, chest pain or a racing heart would push us to transfuse sooner.
+      icon: faceWorried
+      ko: 검사가 어떻든 흉통이나 빠른 심박은 더 일찍 수혈하게 해요
+      note: 예외
 - title: PPI 주입 관리
   sentences:
   - en: The PPI infusion is started at the ordered rate.
@@ -3742,6 +3982,20 @@ situations:
     - w-order
     - w-rate
     goal: 1
+    tag: 시작 보고
+    icon: pill
+    why: '''is started''는 수동태라 누가 했는지보다 이미 시작됐다는 사실을 알려요. ''at the ordered rate''는 처방 속도를 지켰다는 말이에요.'
+    decoy: on the unit
+    distractorsKo:
+    - PPI 지속주입 라인을 지시된 대로 연결했어요.
+    - PPI 지속주입을 시작한 뒤 속도를 기록했어요.
+    blank:
+      answer: infusion
+      options:
+      - en: infusion
+      - en: chart
+      - en: label
+      - en: badge
   - en: I'll monitor for rebleeding and his vitals.
     ko: 재출혈이랑 활력징후를 모니터링할게요.
     chunks:
@@ -3754,6 +4008,20 @@ situations:
     - w-rebleeding
     - w-vitals
     goal: 2
+    tag: 감시 약속
+    icon: monitor
+    why: '''I''ll monitor for''는 무엇을 살필지 뒤에 바로 붙이는 틀이에요. ''rebleeding''은 한 번 멎은 출혈이 다시 나는 것을 가리켜요.'
+    decoy: by hand
+    distractorsKo:
+    - 재출혈이랑 활력징후를 모니터에 연결할게요.
+    - 재출혈이랑 활력징후를 의사에게 보고할게요.
+    blank:
+      answer: rebleeding
+      options:
+      - en: rebleeding
+      - en: itching
+      - en: hiccups
+      - en: snoring
   - en: Let's keep him NPO while the drip runs.
     ko: 주입이 흐르는 동안 금식을 유지하죠.
     chunks:
@@ -3768,6 +4036,20 @@ situations:
     - w-drip
     - w-run
     goal: 1
+    tag: 금식 유지
+    icon: lock
+    why: '''Let''s keep him NPO''는 금식을 지속하자는 제안형이에요. ''while''이 주입이 도는 동안이라는 기간을 알려요.'
+    decoy: for now
+    distractorsKo:
+    - 주입이 흐르는 동안 라인을 유지하죠.
+    - 주입이 흐르는 동안 체위를 유지하죠.
+    blank:
+      answer: while
+      options:
+      - en: while
+      - en: although
+      - en: whereas
+      - en: because
   - en: The pump is set to the exact rate the doctor ordered.
     ko: 펌프는 의사가 지시한 정확한 속도로 설정돼 있어요.
     chunks:
@@ -3784,6 +4066,20 @@ situations:
     - w-doctor
     - w-order
     goal: 1
+    tag: 설정 설명
+    icon: gear
+    why: '''is set to''는 이미 맞춰 놓았다는 상태 표현이에요. ''exact''는 한 치도 다르지 않다는 강조예요.'
+    decoy: at the bedside
+    distractorsKo:
+    - 펌프는 약사가 지시한 정확한 속도로 설정돼 있어요.
+    - 펌프는 의사가 지시한 정확한 속도로 잠겨 있어요.
+    blank:
+      answer: pump
+      options:
+      - en: pump
+      - en: bag
+      - en: cuff
+      - en: scale
   - en: If his stool turns black again, that could mean the bleeding restarted.
     ko: 대변이 다시 검게 변하면 출혈이 다시 시작된 걸 수도 있어요.
     chunks:
@@ -3801,6 +4097,20 @@ situations:
     - w-bleed
     - w-restart
     goal: 2
+    tag: 위험 신호
+    icon: faceWorried
+    why: '''could mean''은 확정하지 않고 가능성을 말해요. ''again''은 앞서 있었던 일이 반복된다는 뜻이에요.'
+    decoy: in the bed
+    distractorsKo:
+    - 대변이 다시 묽어지면 출혈이 다시 시작된 걸 수도 있어요.
+    - 대변이 다시 검게 변하면 감염이 생긴 걸 수도 있어요.
+    blank:
+      answer: black
+      options:
+      - en: black
+      - en: brown
+      - en: pink
+      - en: gray
   - en: PPIs reduce acid so the ulcer can start to heal.
     ko: PPI는 위산을 줄여서 궤양이 아물기 시작하게 해요.
     chunks:
@@ -3816,6 +4126,20 @@ situations:
     - w-start
     - w-heal
     goal: 1
+    tag: 약 설명
+    icon: bulb
+    why: '''so''가 이유와 결과를 잇는 연결어예요. ''start to heal''은 이제 낫기 시작한다는 뜻이에요.'
+    decoy: in the stomach
+    distractorsKo:
+    - PPI는 통증을 줄여서 궤양이 아물기 시작하게 해요.
+    - PPI는 위산을 줄여서 구역이 사라지기 시작하게 해요.
+    blank:
+      answer: acid
+      options:
+      - en: acid
+      - en: swelling
+      - en: fever
+      - en: gas
   - en: I'll flag the physician if his pressure trends down again.
     ko: 혈압이 다시 떨어지는 추세면 의사한테 알릴게요.
     chunks:
@@ -3832,6 +4156,42 @@ situations:
     - w-down
     - w-again
     goal: 2
+    tag: 보고 약속
+    icon: pager
+    why: '''flag''는 눈에 띄게 알린다는 뜻의 간호 현장어예요. ''trends down''은 한 번이 아니라 계속 내려가는 흐름을 뜻해요.'
+    decoy: at night
+    distractorsKo:
+    - 혈압이 다시 떨어지는 추세면 의사 지시대로 수액을 열게요.
+    - 혈압이 다시 떨어지는 추세면 의사가 오기 전에 다리를 올려 둘게요.
+    blank:
+      answer: pressure
+      options:
+      - en: pressure
+      - en: appetite
+      - en: mood
+      - en: grip
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: PPI 지속주입 4문장 순서
+    why: 시작을 알리고, 약이 하는 일을 설명한 뒤, 금식을 유지하며, 위험 신호가 보이면 알린다고 약속해요.
+    lines:
+    - en: The PPI infusion is started at the ordered rate.
+      icon: pill
+      ko: PPI 지속주입을 지시된 속도로 시작했어요
+      note: 시작
+    - en: It reduces acid so the ulcer can start to heal.
+      icon: bulb
+      ko: 위산을 줄여서 궤양이 아물기 시작하게 해요
+      note: 설명
+    - en: While it runs, let's keep him NPO.
+      icon: lock
+      ko: 그게 흐르는 동안 금식을 유지하죠
+      note: 금식
+    - en: If his stool turns black again, I'll flag the physician.
+      icon: pager
+      ko: 대변이 다시 검게 변하면 의사한테 알릴게요
+      note: 보고
 - title: 응고장애 교정
   sentences:
   - en: Let's give the plasma and platelets as ordered.
@@ -3847,6 +4207,20 @@ situations:
     - w-platelet
     - w-order
     goal: 1
+    tag: 투여 제안
+    icon: pill
+    why: '''Let''s give''는 함께 한다는 제안형이라 지시처럼 들리지 않아요. ''as ordered''가 처방에 따른다는 고정 표현이에요.'
+    decoy: for the lab
+    distractorsKo:
+    - 지시대로 혈장이랑 혈소판을 해동하죠.
+    - 지시대로 혈장이랑 혈소판을 받으러 가죠.
+    blank:
+      answer: ordered
+      options:
+      - en: ordered
+      - en: needed
+      - en: usual
+      - en: scheduled
   - en: I'll recheck the coags after correction.
     ko: 교정 후에 응고 수치를 다시 확인할게요.
     chunks:
@@ -3859,6 +4233,20 @@ situations:
     - w-coag
     - w-correction
     goal: 2
+    tag: 재검 약속
+    icon: lab
+    why: '''recheck''는 이미 한 검사를 다시 한다는 뜻이에요. ''after correction''이 재검 시점을 정해요.'
+    decoy: this hour
+    distractorsKo:
+    - 교정 후에 응고 검체를 다시 채혈할게요.
+    - 교정 후에 응고 수치를 다시 의사에게 알릴게요.
+    blank:
+      answer: coags
+      options:
+      - en: coags
+      - en: cultures
+      - en: lipids
+      - en: enzymes
   - en: We want him corrected before the procedure.
     ko: 시술 전에 교정을 끝내고 싶어요.
     chunks:
@@ -3871,6 +4259,20 @@ situations:
     - w-before
     - w-procedure
     goal: 1
+    tag: 목표 설명
+    icon: compass
+    why: '''We want''은 팀의 바람을 전하는 부드러운 틀이에요. ''corrected''는 이상 수치를 바로잡았다는 뜻이에요.'
+    decoy: on the unit
+    distractorsKo:
+    - 시술 전에 서류를 끝내고 싶어요.
+    - 시술 전에 수액을 끝내고 싶어요.
+    blank:
+      answer: corrected
+      options:
+      - en: corrected
+      - en: weighed
+      - en: measured
+      - en: photographed
   - en: His INR is high, so clotting takes longer than it should.
     ko: INR이 높아서 응고가 원래보다 오래 걸려요.
     chunks:
@@ -3885,6 +4287,20 @@ situations:
     - w-clot
     - w-long
     goal: 1
+    tag: 원인 설명
+    icon: bulb
+    why: '''so''로 수치와 증상의 원인-결과를 한 문장에 이어요. ''longer than it should''는 정상보다 오래라는 비교예요.'
+    decoy: in the blood
+    distractorsKo:
+    - INR이 높아서 검사가 원래보다 오래 걸려요.
+    - INR이 높아서 회복이 원래보다 오래 걸려요.
+    blank:
+      answer: high
+      options:
+      - en: high
+      - en: low
+      - en: normal
+      - en: flat
   - en: Low platelets mean he can't form a good clot on his own.
     ko: 혈소판이 낮으면 스스로 좋은 혈전을 만들지 못해요.
     chunks:
@@ -3900,6 +4316,20 @@ situations:
     - w-form
     - w-clot
     goal: 1
+    tag: 원리 설명
+    icon: bulb
+    why: '''mean''으로 수치가 뜻하는 바를 풀어 줘요. ''on his own''은 도움 없이 스스로라는 뜻이에요.'
+    decoy: for him
+    distractorsKo:
+    - 혈소판이 낮으면 스스로 좋은 혈전을 풀지 못해요.
+    - 백혈구가 낮으면 스스로 좋은 혈전을 만들지 못해요.
+    blank:
+      answer: platelets
+      options:
+      - en: platelets
+      - en: hemoglobin
+      - en: sodium
+      - en: glucose
   - en: Once we transfuse, we'll draw labs again in about an hour.
     ko: 수혈이 끝나면 한 시간쯤 뒤에 다시 검사를 뽑을게요.
     chunks:
@@ -3915,6 +4345,20 @@ situations:
     - w-again
     - w-hour
     goal: 2
+    tag: 후속 계획
+    icon: calendar
+    why: '''Once''가 선행 조건을 알려요. ''about an hour''의 about이 정확한 시각이 아니라 대략이라는 뜻이에요.'
+    decoy: in the morning
+    distractorsKo:
+    - 수혈이 끝나면 한 시간쯤 뒤에 라인을 다시 씻을게요.
+    - 수혈이 끝나면 한 시간쯤 뒤에 빈 팩을 다시 반납할게요.
+    blank:
+      answer: labs
+      options:
+      - en: labs
+      - en: gases
+      - en: urine
+      - en: sputum
   - en: We'll hold the scope until his numbers look safer.
     ko: 수치가 더 안전해질 때까지 내시경은 미룰게요.
     chunks:
@@ -3930,6 +4374,42 @@ situations:
     - w-look
     - w-safe
     goal: 2
+    tag: 연기 설명
+    icon: faceWorried
+    why: '''hold''는 일단 멈춰 둔다는 뜻이라 취소처럼 들리지 않아요. ''until''이 멈춤의 끝을 기준으로 알려요.'
+    decoy: for today
+    distractorsKo:
+    - 수치가 더 안전해질 때까지 이송은 미룰게요.
+    - 수치가 더 안전해질 때까지 가족 면담은 미룰게요.
+    blank:
+      answer: scope
+      options:
+      - en: scope
+      - en: visit
+      - en: shower
+      - en: walk
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 응고장애 교정 4문장 순서
+    why: 원인을 짚고, 시술 전 교정이 목표임을 말하고, 그 방법으로 제제를 투여한 뒤, 교정 후 재검을 약속해요.
+    lines:
+    - en: His INR is high, so clotting takes longer than it should.
+      icon: bulb
+      ko: INR이 높아서 응고가 원래보다 오래 걸려요
+      note: 원인
+    - en: That's why we want him corrected before the procedure.
+      icon: compass
+      ko: 그래서 시술 전에 교정을 끝내고 싶어요
+      note: 목표
+    - en: To get there, let's give the plasma and platelets as ordered.
+      icon: pill
+      ko: 그러려고 지시대로 혈장이랑 혈소판을 투여하죠
+      note: 투여
+    - en: After that, I'll recheck the coags.
+      icon: lab
+      ko: 그 뒤에 응고 수치를 다시 확인할게요
+      note: 재검
 - title: balloon tamponade 보조
   sentences:
   - en: I'll test the balloons and gather the supplies.
@@ -3945,6 +4425,20 @@ situations:
     - w-gather
     - w-supply
     goal: 1
+    tag: 물품 준비
+    icon: gear
+    why: '''I''ll test … and gather''로 두 가지 준비를 한 문장에 순서대로 말해요. ''the supplies''는 그 시술에 필요한 물품 전체를 가리켜요.'
+    decoy: in the tray
+    distractorsKo:
+    - 풍선을 포장지에서 꺼내고 물품을 챙길게요.
+    - 풍선을 카트에 싣고 물품을 챙길게요.
+    blank:
+      answer: supplies
+      options:
+      - en: supplies
+      - en: forms
+      - en: keys
+      - en: charts
   - en: His airway is secured before we insert it.
     ko: 삽입하기 전에 기도를 먼저 확보해요.
     chunks:
@@ -3958,6 +4452,20 @@ situations:
     - w-before
     - w-insert
     goal: 1
+    tag: 순서 설명
+    icon: shield
+    why: '''before we insert''가 순서를 분명히 하는 연결어예요. ''secured''는 기도를 안전하게 확보했다는 뜻이에요.'
+    decoy: at the head
+    distractorsKo:
+    - 삽입하기 전에 윤활제를 먼저 발라요.
+    - 삽입하기 전에 체위를 먼저 잡아요.
+    blank:
+      answer: secured
+      options:
+      - en: secured
+      - en: measured
+      - en: labeled
+      - en: weighed
   - en: Let's mark the traction and monitor closely.
     ko: 견인 위치를 표시하고 자세히 감시하죠.
     chunks:
@@ -3971,6 +4479,20 @@ situations:
     - w-monitor
     - w-closely
     goal: 2
+    tag: 감시 제안
+    icon: monitor
+    why: '''mark''는 표시해 두어 변화를 눈으로 알아보게 한다는 뜻이에요. ''closely''가 감시의 강도를 말해요.'
+    decoy: on the tube
+    distractorsKo:
+    - 견인 무게를 재고 자세히 감시하죠.
+    - 견인 위치를 표시하고 가위를 옆에 두죠.
+    blank:
+      answer: traction
+      options:
+      - en: traction
+      - en: label
+      - en: door
+      - en: floor
   - en: This is a last resort for a variceal bleed that won't stop any other way.
     ko: 이건 다른 방법으로는 멈추지 않는 정맥류 출혈에 쓰는 최후 수단이에요.
     chunks:
@@ -3987,6 +4509,20 @@ situations:
     - w-bleed
     - w-stop
     goal: 1
+    tag: 필요성 설명
+    icon: bulb
+    why: '''last resort''는 다른 방법이 다 듣지 않을 때 쓰는 마지막 수단이라는 표현이에요. ''any other way''로 다른 방법의 한계를 말해요.'
+    decoy: for him
+    distractorsKo:
+    - 이건 다른 방법으로도 멈추지 않는 위궤양 출혈에 쓰는 최후 수단이에요.
+    - 이건 다른 방법으로는 멈추지 않는 정맥류 출혈에 쓰는 마지막 약이에요.
+    blank:
+      answer: variceal
+      options:
+      - en: variceal
+      - en: ulcer
+      - en: nasal
+      - en: rectal
   - en: Too much traction can injure the esophagus, so we check the weight often.
     ko: 견인이 너무 세면 식도가 손상될 수 있어서 무게를 자주 확인해요.
     chunks:
@@ -4004,6 +4540,20 @@ situations:
     - w-weight
     - w-often
     goal: 2
+    tag: 위험 설명
+    icon: faceWorried
+    why: '''Too much''로 과함의 위험을 먼저 말하고 ''so''로 그래서 하는 일을 이어요. ''often''은 정기적인 확인이라는 뜻이에요.'
+    decoy: in the tube
+    distractorsKo:
+    - 견인이 너무 세면 폐가 손상될 수 있어서 무게를 자주 확인해요.
+    - 견인이 너무 세면 식도가 손상될 수 있어서 가위를 옆에 둬요.
+    blank:
+      answer: esophagus
+      options:
+      - en: esophagus
+      - en: kidney
+      - en: spleen
+      - en: liver
   - en: Once both balloons are inflated, we tape the tube in place.
     ko: 풍선 두 개가 다 부풀면 관을 고정해서 테이프로 붙여요.
     chunks:
@@ -4019,6 +4569,20 @@ situations:
     - w-tube
     - w-place
     goal: 1
+    tag: 고정 단계
+    icon: pushpin
+    why: '''Once both''가 두 풍선이 모두 부푼 뒤라는 선행 조건이에요. ''in place''는 제자리에 고정한다는 뜻이에요.'
+    decoy: by hand
+    distractorsKo:
+    - 풍선 두 개가 다 부풀면 관 위치를 엑스레이로 확인해요.
+    - 풍선 두 개가 다 부풀면 견인 무게를 걸어요.
+    blank:
+      answer: tape
+      options:
+      - en: tape
+      - en: wash
+      - en: bend
+      - en: label
   - en: We'll deflate the esophageal balloon on schedule to protect the tissue.
     ko: 조직을 보호하려고 정해진 시간에 식도 풍선의 바람을 빼요.
     chunks:
@@ -4034,6 +4598,42 @@ situations:
     - w-protect
     - w-tissue
     goal: 2
+    tag: 정기 조치
+    icon: calendar
+    why: '''on schedule''은 정해 놓은 간격대로 한다는 뜻이에요. ''to protect''가 목적을 한 구로 붙여요.'
+    decoy: with care
+    distractorsKo:
+    - 조직을 보호하려고 정해진 시간에 입안 석션을 해요.
+    - 조직을 보호하려고 정해진 시간에 코 주변 피부를 살펴요.
+    blank:
+      answer: tissue
+      options:
+      - en: tissue
+      - en: family
+      - en: staff
+      - en: bed
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 풍선 탐포네이드 보조 4문장 순서
+    why: 물품과 풍선을 준비하고, 기도를 확보한 뒤 삽입하고, 풍선을 부풀려 고정한 다음, 정해진 때에 식도 풍선의 바람을 빼요.
+    lines:
+    - en: I'll test the balloons and gather the supplies.
+      icon: gear
+      ko: 풍선을 테스트하고 물품을 챙길게요
+      note: 준비
+    - en: Once the supplies are ready and his airway is secured, we insert the tube.
+      icon: shield
+      ko: 물품이 준비되고 기도가 확보되면 관을 삽입해요
+      note: 삽입
+    - en: Once both balloons are inflated, we tape the tube in place.
+      icon: pushpin
+      ko: 풍선 두 개가 다 부풀면 관을 고정해서 테이프로 붙여요
+      note: 고정
+    - en: Once it's taped, we'll deflate the esophageal balloon on schedule to protect the tissue.
+      icon: calendar
+      ko: 고정되면 조직을 보호하려고 정해진 시간에 식도 풍선의 바람을 빼요
+      note: 관리
 - title: 하부출혈 감별·검사
   sentences:
   - en: Bright red blood usually points to lower down in the gut.
@@ -4051,6 +4651,20 @@ situations:
     - w-point
     - w-gut
     goal: 1
+    tag: 원인 설명
+    icon: bulb
+    why: '''usually''는 예외가 있다는 여지를 줘요. ''points to''는 가능성을 가리킨다는 완곡한 표현이에요.'
+    decoy: in the colon
+    distractorsKo:
+    - 검붉은 피는 보통 소화관 아래쪽에서 나는 거예요.
+    - 선홍색 피는 보통 간 아래쪽에서 나는 거예요.
+    blank:
+      answer: gut
+      options:
+      - en: gut
+      - en: lung
+      - en: brain
+      - en: kidney
   - en: We'll do tests to find exactly where it's coming from.
     ko: 정확히 어디서 나는지 검사로 찾아볼게요.
     chunks:
@@ -4065,6 +4679,20 @@ situations:
     - w-exact
     - w-come
     goal: 1
+    tag: 검사 안내
+    icon: lab
+    why: '''exactly''로 목표가 정확한 위치라는 점을 알려요. ''coming from''은 전치사로 끝나는 구어체 어순이에요.'
+    decoy: by hand
+    distractorsKo:
+    - 정확히 어디서 나는지 찾으려고 채혈부터 할게요.
+    - 정확히 어디서 나는지 검사 동의부터 받을게요.
+    blank:
+      answer: tests
+      options:
+      - en: tests
+      - en: rounds
+      - en: visits
+      - en: handoffs
   - en: I'm watching your vitals while we sort this out.
     ko: 이 문제를 해결하는 동안 활력징후를 지켜보고 있어요.
     chunks:
@@ -4079,6 +4707,20 @@ situations:
     - w-while
     - w-sort
     goal: 2
+    tag: 감시 약속
+    icon: monitor
+    why: '''while we sort this out''은 해결하는 동안이라는 뜻이라 지켜보는 것이 계속된다는 약속이에요. ''I''m watching''은 지금 하고 있는 일이에요.'
+    decoy: by the bed
+    distractorsKo:
+    - 이 문제를 해결하는 동안 이불을 덮어 드리고 있어요.
+    - 이 문제를 해결하는 동안 모니터를 더 가까이 두고 있어요.
+    blank:
+      answer: watching
+      options:
+      - en: watching
+      - en: drying
+      - en: packing
+      - en: moving
   - en: It could be from hemorrhoids, diverticulosis, or something higher up.
     ko: 치핵이나 게실증, 아니면 더 위쪽 문제일 수도 있어요.
     chunks:
@@ -4092,6 +4734,20 @@ situations:
     - w-diverticulosis
     - w-higher
     goal: 1
+    tag: 가능성 설명
+    icon: bulb
+    why: '''could be''는 확정하지 않고 후보를 늘어놓는 표현이에요. ''or something higher up''은 목록의 마지막에 열린 가능성을 남겨요.'
+    decoy: in the gut
+    distractorsKo:
+    - 치핵이나 게실증, 아니면 더 아래쪽 문제일 수도 있어요.
+    - 치핵이나 변비, 아니면 더 위쪽 문제일 수도 있어요.
+    blank:
+      answer: hemorrhoids
+      options:
+      - en: hemorrhoids
+      - en: hernias
+      - en: cramps
+      - en: bruises
   - en: A colonoscopy will let the doctor look directly at the bowel.
     ko: 대장내시경으로 의사가 장을 직접 볼 수 있어요.
     chunks:
@@ -4106,6 +4762,20 @@ situations:
     - w-look
     - w-bowel
     goal: 1
+    tag: 검사 설명
+    icon: stetho
+    why: '''will let the doctor''는 검사가 의사에게 무엇을 가능하게 하는지 말하는 틀이에요. ''directly''는 영상이 아니라 직접 본다는 뜻이에요.'
+    decoy: for the team
+    distractorsKo:
+    - 대장내시경으로 의사가 위를 직접 볼 수 있어요.
+    - CT로 의사가 장을 직접 볼 수 있어요.
+    blank:
+      answer: colonoscopy
+      options:
+      - en: colonoscopy
+      - en: bronchoscopy
+      - en: cystoscopy
+      - en: biopsy
   - en: Your blood pressure and heart rate look steady right now.
     ko: 지금은 혈압이랑 맥박이 안정적으로 보여요.
     chunks:
@@ -4120,6 +4790,20 @@ situations:
     - w-rate
     - w-steady
     goal: 2
+    tag: 상태 안내
+    icon: check
+    why: '''look steady''는 지금 보이는 모습이라는 표현이라 단정하지 않아요. ''right now''로 지금 기준임을 분명히 해요.'
+    decoy: on the monitor
+    distractorsKo:
+    - 지금은 혈압이랑 맥박을 다시 재고 있어요.
+    - 지금은 혈압이랑 맥박을 의사에게 보여 드리고 있어요.
+    blank:
+      answer: blood pressure
+      options:
+      - en: blood pressure
+      - en: mood
+      - en: weight
+      - en: skin
   - en: Keep track of how much blood you see and tell us each time.
     ko: 피가 얼마나 보이는지 기록해 두고 그때마다 말씀해 주세요.
     chunks:
@@ -4135,6 +4819,42 @@ situations:
     - w-tell
     - w-time
     goal: 2
+    tag: 기록 부탁
+    icon: pencil
+    why: '''Keep track of''는 계속 기억하거나 적어 두라는 뜻이에요. ''each time''이 보고의 빈도를 알려요.'
+    decoy: in the bathroom
+    distractorsKo:
+    - 피가 어디서 보이는지 기록해 두고 그때마다 말씀해 주세요.
+    - 변이 얼마나 나오는지 기록해 두고 그때마다 말씀해 주세요.
+    blank:
+      answer: blood
+      options:
+      - en: blood
+      - en: soap
+      - en: water
+      - en: hair
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 하부출혈 감별 4문장 순서
+    why: 피의 색이 뜻하는 바를 먼저 말하고, 가능한 원인을 늘어놓은 뒤, 가려내려는 검사를 알리고, 대표 검사를 설명해요.
+    lines:
+    - en: Bright red blood usually points to lower down in the gut.
+      icon: bulb
+      ko: 선홍색 피는 보통 소화관 아래쪽에서 나는 거예요
+      note: 의미
+    - en: It could be from hemorrhoids, diverticulosis, or something higher up.
+      icon: bulb
+      ko: 치핵이나 게실증, 더 위쪽 문제일 수도 있어요
+      note: 원인
+    - en: To tell which it is, we'll do tests to find exactly where it's coming from.
+      icon: lab
+      ko: 어느 쪽인지 알려고 정확히 어디서 나는지 검사해요
+      note: 검사
+    - en: The main one is a colonoscopy, which lets the doctor look directly at the bowel.
+      icon: stetho
+      ko: 대표 검사는 대장내시경으로 장을 직접 볼 수 있어요
+      note: 설명
 - title: 재출혈 감시·재평가
   sentences:
   - en: We watch his vitals, labs, and any new bleeding closely.

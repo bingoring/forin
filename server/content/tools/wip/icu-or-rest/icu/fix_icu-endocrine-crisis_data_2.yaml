@@ -43,7 +43,7 @@ sent:
   "17.3":
     old: "His pressure crashed suddenly, so this looks like true adrenal crisis."
     en: "His pressure crashed suddenly, so this looks like a true adrenal crisis."
-    chunks: ["His pressure crashed suddenly,", "so this looks like", "a true adrenal crisis", "."]
+    chunks: ["His pressure", "crashed suddenly,", "so this looks like", "a true adrenal crisis", "."]
   "17.4":
     old: "The pressor is titrating up, and his pressure is starting to respond."
     en: "We're titrating the pressor up, and his pressure is starting to respond."
@@ -52,26 +52,24 @@ sent:
   "0.3":
     old: "I'll ask you a few questions to check how alert you are."
     chunks: ["I'll ask you", "a few questions", "to check", "how alert you are", "."]
-  "3.3":
-    old: "Pump's set to the protocol rate, ready to go."
-    chunks: ["Pump's set", "to the protocol rate,", "ready to go", "."]
+  # 3.3(C2)은 "ready to go"를 붙이면 9낱말 문장이 3조각이 되어 V8 위반 — 기존 chunks 유지(보고)
   "4.4":
     old: "If potassium comes back low, I'll get the replacement ordered right away."
-    chunks: ["If potassium comes back low,", "I'll get the replacement ordered", "right away", "."]
+    chunks: ["If potassium", "comes back low,", "I'll get the replacement ordered", "right away", "."]
   "5.4":
     old: "I'm charting these improvements and letting the team know."
-    chunks: ["I'm charting", "these improvements", "and letting the team know", "."]
+    chunks: ["I'm charting", "these improvements", "and letting", "the team know", "."]
   "13.4":
     old: "As the hormone takes effect, her energy and temperature should slowly improve."
-    chunks: ["As the hormone takes effect,", "her energy and temperature", "should slowly improve", "."]
+    chunks: ["As the hormone", "takes effect,", "her energy and temperature", "should slowly improve", "."]
     words_remove: [w-take]
   "15.4":
     old: "The doctor is on the way, and I'm staying right at his side."
-    chunks: ["The doctor is on the way,", "and I'm staying", "right at his side", "."]
+    chunks: ["The doctor", "is on the way,", "and I'm staying", "right at his side", "."]
     blank: {answer: side, options: [side, desk, locker, car]}
   "19.3":
     old: "She won't respond and she feels ice cold, so this is critical."
-    chunks: ["She won't respond", "and she feels ice cold,", "so this is critical", "."]
+    chunks: ["She won't respond", "and she feels ice cold,", "so this", "is critical", "."]
   # --- KP 문장: ko만 (en·chunks 불변) ---
   "0.1":
     old: "Have you been able to keep any fluids down today?"
@@ -115,7 +113,7 @@ sent:
   "7.4": {old: "If it drops again, we'll pause the insulin and recheck.", decoy: "on the clipboard"}
   "8.1": {old: "We overlap the drip with the first long-acting dose before stopping.", decoy: "on the bulletin board"}
   "10.2": {old: "I'll recheck the glucose and adjust both drips together.", decoy: "by the sink"}
-  "10.4": {old: "We're still clearing the ketones, so don't stop the insulin yet.", decoy: "for the visitors"}
+  "10.4b": {old: "We're still clearing the ketones, so don't stop the insulin yet.", decoy: "for the visitors"}
   "13.2": {old: "We'll monitor her heart rate and temperature very closely.", decoy: "in the hallway"}
   "15.3": {old: "He was talking a minute ago and now he's barely responding, so I'm escalating this now.", decoy: "the meal tray"}
   "16.2": {old: "We're cooling her and watching her heart continuously.", decoy: "at the bus stop"}

@@ -1,0 +1,58 @@
+situations:
+- title: 재출혈 감시·재평가
+  s:
+  - ["감시 설명", monitor, "'closely'를 문장 끝에 두어 감시 강도를 분명히 해요. 세 대상을 쉼표로 이어 'any new'로 새 출혈까지 포함해요.", "X1", "활력징후랑 검사 수치, 새로운 출혈을 자세히 의사에게 전해요.", "활력징후랑 검사 수치, 새로운 출혈까지 지켜볼 모니터를 켜요.", "bleeding", "rash", "swelling", "itching"]
+  - ["증상 보고", speech, "'Please tell me'는 정중하게 부탁하는 틀이에요. 'or'로 두 증상 중 하나만 있어도 알리게 해요.", "X2", "열이 나거나 어지러워하시면 바로 말씀해 주세요.", "피를 토하거나 숨이 차시면 바로 말씀해 주세요.", "faint", "hungry", "cheerful", "bored"]
+  - ["재검 약속", lab, "'regularly'는 불규칙하지 않고 정해진 간격이라는 뜻이에요. 'recheck'는 이미 본 것을 다시 본다는 말이에요.", "X3", "혈액 검체를 규칙적으로 검사실에 보낼게요.", "채혈 부위를 규칙적으로 다시 확인할게요.", "count", "type", "bank", "order"]
+  - ["현황 안내", chartup, "'So far'는 지금까지만 보면이라는 한정이라 앞으로를 장담하지 않아요. 'held steady'는 변동 없이 유지됐다는 표현이에요.", "X4", "지금까지는 오늘 아침부터 수치를 자주 확인해 왔어요.", "지금까지는 오늘 아침부터 수액을 안정적으로 유지해 왔어요.", "steady", "low", "high", "wild"]
+  - ["호출 약속", pager, "'If anything changes'는 어떤 변화든 알리겠다는 넓은 조건이에요. 'right away'로 지체 없이를 약속해요.", "X5", "뭔가 필요하시면 바로 찾아뵐게요.", "뭔가 궁금하시면 바로 찾아뵐게요.", "changes", "repeats", "arrives", "expires"]
+  - ["피로 설명", faceWorried, "'is normal'로 먼저 안심시키고 'it's the blood loss'로 이유를 이어요. 'catching up'은 뒤늦게 나타난다는 표현이에요.", "X6", "약간의 피곤함은 정상이에요, 수액이 이제 영향을 주는 거예요.", "약간의 피곤함은 정상이에요, 진정제가 이제 나타나는 거예요.", "loss", "test", "draw", "bag"]
+  - ["안심·경계", shield, "'but we still'로 안심 뒤에도 확인을 계속한다고 균형을 잡아요. 'every few hours'가 확인 간격이에요.", "X7", "오늘 식욕이 좋은 건 좋은 징후지만, 그래도 몇 시간마다 계속 확인해요.", "오늘 컨디션이 좋은 건 좋은 징후지만, 그래도 몇 시간마다 소변을 확인해요.", "good", "bad", "rare", "odd"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 재출혈 감시 설명 4문장 순서
+    why: 무엇을 지켜보는지 먼저 말하고, 지금까지의 결과를 알린 뒤, 좋은 결과에도 확인을 계속한다고 말하고, 변화 시 즉시 알리겠다고 약속해요.
+    lines:
+    - ["We watch his vitals, labs, and any new bleeding closely.", monitor, "활력징후랑 검사 수치, 새로운 출혈까지 자세히 지켜봐요", "감시"]
+    - ["So far his numbers have held steady since this morning.", chartup, "지금까지는 오늘 아침부터 수치가 안정적으로 유지되고 있어요", "현황"]
+    - ["That's a good sign, but we still check every few hours.", shield, "그건 좋은 징후지만 그래도 몇 시간마다 계속 확인해요", "경계"]
+    - ["Whenever those checks show a change, I'll come find you right away.", pager, "그 확인에서 변화가 보이면 바로 찾아뵐게요", "약속"]
+- title: IR·내시경 이송 조율
+  s:
+  - ["인수 준비", plane, "'I'll prep him and confirm'은 두 일을 한 문장에 순서대로 말해요. 'ready to receive'는 받을 준비가 됐다는 표현이에요.", "X1", "환자를 씻기고 IR팀이 받을 준비됐는지 확인할게요.", "환자를 준비시키고 IR팀이 받을 준비되면 출발할게요.", "IR", "OR", "CT", "MRI"]
+  - ["이송 물품", gear, "'Let's bring'은 함께 챙기자는 제안형이에요. 'for transport'로 용도를 한 구로 말해요.", "X2", "이송이 끝나면 피랑 응급약을 반납하죠.", "이송이 끝나면 피랑 빈 가방을 돌려놓죠.", "transport", "discharge", "visiting", "rounds"]
+  - ["인계 약속", handshake2, "'a clear handoff'는 빠짐없이 알아듣게 인계한다는 뜻이에요. 'of his bleeding and vitals'로 인계 내용을 한 구로 밝혀요.", "X3", "인계하기 전에 출혈이랑 활력징후를 한 번 더 잴게요.", "인계한 뒤에 출혈이랑 활력징후를 한 번 더 잴게요.", "bleeding", "mood", "hearing", "hair"]
+  - ["장비 점검", monitor, "세 물품을 쉼표와 and로 이어 한 번에 말해요. 'all need to'가 하나도 빠지면 안 된다는 강조예요.", "X4", "모니터랑 산소, 펌프백까지 다 미리 연결해야 해요.", "모니터랑 산소, 펌프백까지 다 도착하면 내려놓아야 해요.", "oxygen", "laptop", "printer", "charger"]
+  - ["이송 중 대응", siren, "'If … we stop and stabilize first'는 조건과 대응을 한 문장에 담은 구조예요. 'first'가 안정이 먼저라는 우선순위를 말해요.", "X5", "복도에서 불안정해지면 멈추고 먼저 안정시켜요.", "병실 문 앞에서 불안정해지면 멈추고 먼저 안정시켜요.", "unstable", "awake", "cheerful", "hungry"]
+  - ["정보 전달", pager, "'needs'는 상대의 요청을 전하는 틀이에요. 세 항목을 쉼표로 이어 필요한 정보를 한눈에 보여 줘요.", "X6", "IR팀은 키랑 알레르기, 마지막 헤모글로빈 수치가 필요해요.", "IR팀은 체중이랑 보험, 마지막 헤모글로빈 수치가 필요해요.", "weight", "address", "hobbies", "insurance"]
+  - ["보고 약속", speech, "'the moment'는 그 순간 곧바로라는 뜻이에요. 'wheels up'은 이동을 시작한다는 현장 표현이에요.", "X7", "이동을 시작하기 전에 침대 브레이크를 풀게요.", "이동을 시작하는 순간 바로 엘리베이터를 불러요.", "report", "security", "housekeeping", "pharmacy"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: IR 이송 조율 4문장 순서
+    why: 받을 준비를 확인하고, 이송 물품을 챙기고, 출발하는 순간 보고하고, 이동 중 불안정해지면 먼저 안정시켜요.
+    lines:
+    - ["I'll prep him and confirm IR is ready to receive.", plane, "환자를 준비시키고 IR팀이 받을 준비됐는지 확인할게요", "확인"]
+    - ["Let's bring blood and emergency meds for transport.", gear, "이송을 위해 피랑 응급약을 챙기죠", "물품"]
+    - ["Once we have all of that, I'll call report the moment we're wheels up.", speech, "그걸 다 갖추면 이동을 시작하는 순간 바로 보고 전화를 할게요", "보고"]
+    - ["Once we're moving, if he becomes unstable in the elevator, we stop and stabilize first.", siren, "이동 중 엘리베이터에서 불안정해지면 멈추고 먼저 안정시켜요", "대응"]
+- title: 대량출혈 쇼크 대량수혈
+  s:
+  - ["프로토콜 발동", siren, "명령형 두 개를 'and'로 이어 짧게 지시해요. 'now'로 지금 당장이라는 긴급성을 줘요.", "X1", "쿨러가 오면 바로 팩을 확인해요.", "MTP를 발동하고 지금 라인을 열어요.", "cooler", "blanket", "laptop", "badge"]
+  - ["수혈 지시", pill, "'Let's'로 함께 하자고 제안하는 틀이에요. 'balanced ratios'와 'warm'으로 방식과 온도를 한 문장에 말해요.", "X2", "균형 잡힌 비율로 수혈하려고 팩을 순서대로 놓아요.", "균형 잡힌 비율로 수혈하고 빈 팩을 바로 치워요.", "warm", "weigh", "rinse", "shake"]
+  - ["혈압 유지", monitor, "'Keep … up'은 높게 유지하라는 구어체 표현이에요. 'frequently'가 재검 빈도를 알려요.", "X3", "혈압을 유지하면서 자주 검체를 검사실로 보내요.", "혈압을 유지하면서 자주 팔 혈압대를 다시 감아요.", "pressure", "mood", "noise", "humor"]
+  - ["이유 설명", bulb, "'so'로 쇼크라는 상황과 수혈이라는 결정을 이어요. 'before the numbers get worse'가 앞서 움직이는 이유예요.", "X4", "패혈성 쇼크라서 수치가 더 나빠지기 전에 수혈해요.", "출혈성 쇼크라서 수치가 더 나빠지기 전에 혈액을 확보해요.", "hemorrhagic", "septic", "cardiogenic", "anaphylactic"]
+  - ["혈액 요청", pager, "'tell them'으로 상대에게 전할 말까지 지시해요. 'stat'는 즉시라는 의료 약어예요.", "X5", "혈액은행에서 오는 쿨러를 받으러 지금 가요.", "혈액은행에서 오는 쿨러를 병실로 안내해요.", "stat", "here", "there", "first"]
+  - ["제제 설명", chartup, "'in equal amounts'는 같은 양이라는 구체적인 방식이에요. 세 제제를 쉼표로 이어 빠짐없이 말해요.", "X6", "혈장이랑 혈소판, 적혈구를 같은 쿨러에 담아 와요.", "혈장이랑 혈소판, 적혈구를 다 받으면 팩 번호를 맞춰 봐요.", "red cells", "white cells", "skin cells", "fat cells"]
+  - ["기록 요청", pencil, "'Someone needs to'는 구체적 이름 없이 역할을 요청하는 말이에요. 'exact time'은 정확한 시각을 가리켜요.", "X7", "누군가 팩마다 번호를 정확히 맞춰 봐야 해요.", "누군가 팩마다 온도를 정확히 재야 해요.", "log", "weigh", "photograph", "rename"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 대량수혈 진행 4문장 순서
+    why: 이유를 말한 뒤 프로토콜을 발동하고, 쿨러가 오면 제제를 같은 양으로 주며, 들어가는 팩마다 기록해요.
+    lines:
+    - ["This is hemorrhagic shock, so we transfuse before the numbers get worse.", bulb, "출혈성 쇼크라서 수치가 더 나빠지기 전에 수혈해요", "이유"]
+    - ["So activate MTP and get the cooler now.", siren, "그러니 MTP를 발동하고 지금 쿨러를 가져와요", "발동"]
+    - ["When the cooler arrives, we give plasma, platelets, and red cells in equal amounts.", pill, "쿨러가 오면 혈장이랑 혈소판, 적혈구를 같은 양으로 줘요", "투여"]
+    - ["As each one goes in, someone needs to log the unit and the exact time.", pencil, "하나씩 들어갈 때 누군가 팩과 정확한 시간을 기록해야 해요", "기록"]

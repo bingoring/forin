@@ -8,8 +8,11 @@ changes:
 - kind: word
   id: w-quick
   fields:
+  - en
+  - ipa
   - ko
-  why: '같은 ko가 은행에 둘 이상: fast(빠른)와 가른다'
+  - example
+  why: '같은 ko가 은행에 둘 이상: fast(빠른)와 가른다 / 부사 quickly 쪽이 문장 6개 중 4개라 헤드워드를 부사로 바꾼다(형용사로 쓴 1.4·3.4는 태그를 뺀다)'
 - kind: word
   id: w-level
   fields:
@@ -74,7 +77,7 @@ changes:
   id: w-clear
   fields:
   - ko
-  why: '같은 ko가 은행에 둘 이상: remove(제거하다)와 정답이 둘이 되지 않게 가른다 — 문장은 분명하다·나아지다·배출되다'
+  why: '같은 ko가 은행에 둘 이상: remove(제거하다)와 정답이 둘이 되지 않게 가른다 — 문장은 분명하다·나아지다·배출되다 / 11.0 배출 뜻을 덮도록 ko를 가른다'
 - kind: word-remove
   id: w-long
   why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(목록 밖 판단분)
@@ -202,8 +205,9 @@ changes:
   situation: 주입에서 피하 전환 관리
   index: 3
   fields:
+  - chunks
   - words
-  why: 쉬운 단어 태그 빼기
+  why: 쉬운 단어 태그 빼기 / 검토 반영 — 문장 수정(안전·업무 범위·구 경계·자연스러움)
 - kind: sentence
   situation: 신부전 환자 인슐린 조정
   index: 0
@@ -232,8 +236,10 @@ changes:
   situation: 혈당 변동성 관리
   index: 4
   fields:
+  - ko
+  - chunks
   - words
-  why: 쉬운 단어 태그 빼기
+  why: 쉬운 단어 태그 빼기 / 검토 반영 — 문장 수정(안전·업무 범위·구 경계·자연스러움)
 - kind: sentence
   situation: 심한 저혈당 의식저하 위기
   index: 2
@@ -244,14 +250,16 @@ changes:
   situation: 고혈당 위기 DKA 진행 인지
   index: 4
   fields:
+  - chunks
   - words
-  why: 쉬운 단어 태그 빼기
+  why: 쉬운 단어 태그 빼기 / 검토 반영 — 문장 수정(안전·업무 범위·구 경계·자연스러움)
 - kind: sentence
   situation: 급식 중단 후 저혈당 급변
   index: 3
   fields:
+  - chunks
   - words
-  why: 쉬운 단어 태그 빼기
+  why: 쉬운 단어 태그 빼기 / 검토 반영 — 문장 수정(안전·업무 범위·구 경계·자연스러움)
 - kind: sentence
   situation: 반복 저혈당 프로토콜 재설계
   index: 0
@@ -282,3 +290,232 @@ changes:
   fields:
   - words
   why: 쉬운 단어 태그 빼기
+- kind: word
+  id: w-forever
+  fields:
+  - example
+  why: 검토 반영 — 문장을 고쳐 예문을 맞춘다
+- kind: word
+  id: w-stop
+  fields:
+  - example
+  why: 검토 반영 — 문장을 고쳐 예문을 맞춘다
+- kind: word
+  id: w-improve
+  fields:
+  - example
+  why: 검토 반영 — 문장을 고쳐 예문을 맞춘다
+- kind: word
+  id: w-away
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 구 right away를 가르친다(away만으로는 뜻이 안 선다)
+- kind: word
+  id: w-stick
+  fields:
+  - ko
+  why: 두 문장 모두 명사 finger stick인데 ko가 동사였다
+- kind: word
+  id: w-scan
+  fields:
+  - example
+  why: 검토 반영 — 문장을 고쳐 예문을 맞춘다
+- kind: word
+  id: w-skip
+  fields:
+  - example
+  why: 검토 반영 — 문장을 고쳐 예문을 맞춘다
+- kind: word
+  id: w-meal
+  fields:
+  - example
+  why: 검토 반영 — 문장을 고쳐 예문을 맞춘다
+- kind: word
+  id: w-flag
+  fields:
+  - ko
+  why: 문제로 짚어 팀에 알린다는 뜻으로 ko를 바로잡는다
+- kind: word
+  id: w-stable
+  fields:
+  - example
+  why: 검토 반영 — 문장을 고쳐 예문을 맞춘다
+- kind: word-remove
+  id: w-remove
+  why: 검토 반영 — 문장을 고쳐 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-line
+  why: 검토 반영 — 문장을 고쳐 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-trust
+  why: 검토 반영 — 문장을 고쳐 어느 문장도 태그하지 않게 됐다
+- kind: word
+  id: w-call
+  fields:
+  - example
+  why: 검토 반영 — 문장을 고쳐 예문을 맞춘다
+- kind: word-remove
+  id: w-rapid
+  why: 검토 반영 — 문장을 고쳐 어느 문장도 태그하지 않게 됐다
+- kind: word-remove
+  id: w-response
+  why: 검토 반영 — 문장을 고쳐 어느 문장도 태그하지 않게 됐다
+- kind: word
+  id: w-double
+  fields:
+  - en
+  - ipa
+  - ko
+  why: double-check 전체를 가르친다(double만 떼면 '두 번의'가 된다)
+- kind: word
+  id: w-flow
+  fields:
+  - example
+  why: 검토 반영 — 문장을 고쳐 예문을 맞춘다
+- kind: word
+  id: w-sheet
+  fields:
+  - example
+  why: 검토 반영 — 문장을 고쳐 예문을 맞춘다
+- kind: word
+  id: w-regimen
+  fields:
+  - ko
+  why: 처방이 아니라 투여 계획(요법)
+- kind: sentence
+  situation: POC 혈당 측정·기록
+  index: 4
+  fields:
+  - words
+  why: 태그 정리 — 문장 속 뜻이 단어 ko와 달라 태그를 뺀다
+- kind: sentence
+  situation: 인슐린 주입 프로토콜 이해
+  index: 3
+  fields:
+  - words
+  why: 태그 정리 — 문장 속 뜻이 단어 ko와 달라 태그를 뺀다
+- kind: sentence
+  situation: 인슐린 주입 프로토콜 이해
+  index: 6
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 검토 반영 — 문장 수정(안전·업무 범위·구 경계·자연스러움)
+- kind: sentence
+  situation: 저혈당 징후 인지
+  index: 4
+  fields:
+  - words
+  why: 태그 정리 — 문장 속 뜻이 단어 ko와 달라 태그를 뺀다
+- kind: sentence
+  situation: 영양 연계 혈당 관리
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 검토 반영 — 문장 수정(안전·업무 범위·구 경계·자연스러움)
+- kind: sentence
+  situation: 혈당 경향 보고
+  index: 4
+  fields:
+  - ko
+  why: 검토 반영 — 문장 수정(안전·업무 범위·구 경계·자연스러움)
+- kind: sentence
+  situation: 저혈당 예방·교정 프로토콜
+  index: 3
+  fields:
+  - words
+  why: 태그 정리 — 문장 속 뜻이 단어 ko와 달라 태그를 뺀다
+- kind: sentence
+  situation: 주입에서 피하 전환 관리
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 검토 반영 — 문장 수정(안전·업무 범위·구 경계·자연스러움)
+- kind: sentence
+  situation: 혈당 변동성 관리
+  index: 1
+  fields:
+  - words
+  why: 태그 정리 — 문장 속 뜻이 단어 ko와 달라 태그를 뺀다
+- kind: sentence
+  situation: 패혈증 중 혈당 불안정 관리
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  why: 검토 반영 — 문장 수정(안전·업무 범위·구 경계·자연스러움)
+- kind: sentence
+  situation: 패혈증 중 혈당 불안정 관리
+  index: 4
+  fields:
+  - words
+  why: 태그 정리 — 문장 속 뜻이 단어 ko와 달라 태그를 뺀다
+- kind: sentence
+  situation: POC와 정맥혈당 불일치 인지
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 검토 반영 — 문장 수정(안전·업무 범위·구 경계·자연스러움)
+- kind: sentence
+  situation: POC와 정맥혈당 불일치 인지
+  index: 4
+  fields:
+  - words
+  why: 태그 정리 — 문장 속 뜻이 단어 ko와 달라 태그를 뺀다
+- kind: sentence
+  situation: 심한 저혈당 의식저하 위기
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 검토 반영 — 문장 수정(안전·업무 범위·구 경계·자연스러움)
+- kind: sentence
+  situation: 인슐린 용량사고 위기
+  index: 3
+  fields:
+  - chunks
+  - words
+  why: 검토 반영 — 문장 수정(안전·업무 범위·구 경계·자연스러움)
+- kind: sentence
+  situation: 고혈당 위기 DKA 진행 인지
+  index: 2
+  fields:
+  - ko
+  why: 검토 반영 — 문장 수정(안전·업무 범위·구 경계·자연스러움)
+- kind: sentence
+  situation: 고혈당 위기 DKA 진행 인지
+  index: 3
+  fields:
+  - words
+  why: 태그 정리 — 문장 속 뜻이 단어 ko와 달라 태그를 뺀다
+- kind: sentence
+  situation: 급식 중단 후 저혈당 급변
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 검토 반영 — 문장 수정(안전·업무 범위·구 경계·자연스러움)
+- kind: sentence
+  situation: 혈당 급변·의식변화 감별
+  index: 2
+  fields:
+  - ko
+  why: 검토 반영 — 문장 수정(안전·업무 범위·구 경계·자연스러움)

@@ -1,0 +1,112 @@
+3:
+  - kind: slider
+    words: [w-bruise]
+    cue: "The bruise on his arm grew from a coin to the size of a palm in two hours."
+    scale: [small bruise, spreading bruise, active bleeding]
+    answerAt: 1
+    why: "두 시간 만에 손바닥만큼 커진 멍은 spreading bruise예요. 크기가 계속 커지면 출혈이 진행 중일 수 있어 가장자리를 표시하고 의사에게 알려요. small bruise는 변화가 없는 작은 멍, active bleeding은 피가 계속 새는 경우예요."
+    example: "He has a spreading bruise on his arm."
+    exKo: "그의 팔에 멍이 번지고 있어요."
+  - kind: context
+    words: [w-bleed]
+    word: bleed
+    ko: 출혈하다
+    scenes:
+      - {who: 의사 라운드, icon: monitor, en: "Any new bleed in liver failure is worrying because his INR is already high.", ok: true}
+      - {who: 야간 인계, icon: board, en: "No new bleed overnight, and the oozing at the IV site stopped with pressure.", ok: true}
+      - {who: 환자에게, icon: me, en: "You may spontaneously bleed due to hepatic synthetic dysfunction.", ok: false, fix: "Your liver makes less of what helps blood clot, so please tell us right away if you bleed."}
+    why: "의료진끼리는 hepatic synthetic dysfunction 같은 용어가 정확해요. 환자에게는 같은 bleed를 간이 응고를 돕는 물질을 덜 만든다는 쉬운 설명과, 알려 달라는 구체적 행동으로 풀어 주세요."
+  - kind: swap
+    words: [w-site]
+    who: "환자에게 · 채혈 후 안내"
+    icon: me
+    before: ["Please press on ", "the venipuncture site", " until I tell you to stop."]
+    options: [the spot where the needle went in, the venipuncture site, the puncture wound]
+    answer: the spot where the needle went in
+    notes: {the spot where the needle went in: "환자가 어디를 눌러야 하는지 바로 알아들어요.", the venipuncture site: "의료진끼리 쓰는 정확한 말이라 환자는 위치를 못 알아들을 수 있어요.", the puncture wound: "상처라는 말이 겁을 줘서 필요 이상으로 불안하게 해요."}
+    why: "응고가 느린 환자는 누르는 일이 중요한데, 위치가 분명하게 전해져야 제대로 눌러요."
+    ko: "제가 그만하라고 할 때까지 바늘이 들어간 자리를 눌러 주세요"
+4:
+  - kind: slider
+    words: [w-low]
+    cue: "Her glucose is 66 mg/dL and she has no symptoms."
+    scale: [a bit low, low, critically low]
+    answerAt: 0
+    why: "66은 기준선(70) 바로 아래라 a bit low예요. 증상이 없어도 병원 저혈당 프로토콜대로 처치하고 다시 확인해요. 간부전에서는 혈당이 빨리 더 떨어질 수 있어서 자주 재요."
+    example: "Her glucose is a bit low."
+    exKo: "그녀의 혈당이 조금 낮아요."
+  - kind: context
+    words: [w-sugar]
+    word: sugar
+    ko: 당 수치
+    scenes:
+      - {who: 의사 라운드, icon: monitor, en: "Her sugar keeps dropping because her liver can't make glucose.", ok: true}
+      - {who: 야간 인계, icon: board, en: "Sugar was 62 at 0300; dextrose was given per protocol, and the recheck is pending.", ok: true}
+      - {who: 환자에게, icon: me, en: "Your hepatic gluconeogenesis has failed, so your sugar is unstable.", ok: false, fix: "Your liver can't hold your sugar steady, so we check it often."}
+    why: "의료진끼리는 gluconeogenesis 같은 용어가 정확해요. 환자에게는 같은 sugar를 간이 혈당을 못 붙들어서 자주 잰다는 쉬운 말로 알려 주세요."
+  - kind: swap
+    words: [w-potassium]
+    who: "환자에게 · 전해질 설명"
+    icon: me
+    before: ["Your ", "serum K+", " is a little low."]
+    options: [potassium, serum K+, hypokalemic status]
+    answer: potassium
+    notes: {potassium: "환자가 아는 말이라 바로 알아들어요.", "serum K+": "의료진끼리 쓰는 약어라 환자는 뜻을 모를 수 있어요.", hypokalemic status: "어려운 진단 용어라 불안만 키워요."}
+    why: "검사 결과를 환자에게 알릴 때는 약어보다 이름 그대로 쉽게 말해야 이해해요."
+    ko: "칼륨이 조금 낮아요"
+5:
+  - kind: slider
+    words: [w-fever]
+    cue: "His temperature is 104 F, and he has shaking chills."
+    scale: [low-grade fever, fever, high fever]
+    answerAt: 2
+    why: "104°F에 오한이 있으면 high fever예요. 바로 의사에게 알리고 처방된 배양 검사 등 감염 평가를 준비해요. 보통 100.4°F(38°C) 이상을 fever로 보고, 그 근처는 low-grade예요."
+    example: "He has a high fever tonight."
+    exKo: "그는 오늘 밤 고열이 있어요."
+  - kind: context
+    words: [w-infection]
+    word: infection
+    ko: 감염
+    scenes:
+      - {who: 의사 라운드, icon: monitor, en: "Rule out infection first, because SBP is common in cirrhosis with ascites.", ok: true}
+      - {who: 야간 인계, icon: board, en: "Cultures were sent, and there's no clear source of infection yet.", ok: true}
+      - {who: 환자에게, icon: me, en: "Your ascitic PMN count suggests a spontaneous peritoneal infection.", ok: false, fix: "We think the fluid in your belly may have an infection, so we're testing it."}
+    why: "의료진끼리는 ascitic PMN count 같은 용어가 정확하고 빨라요. 환자에게는 같은 infection을 배 속 물에 감염이 있을 수 있어 검사한다는 쉬운 말로 알려 주세요."
+  - kind: swap
+    words: [w-paracentesis]
+    who: "환자에게 · 시술 설명"
+    icon: me
+    before: ["We may need ", "a paracentesis", " to see if there's infection."]
+    options: [a procedure to draw off a little fluid, a paracentesis, an ascitic tap]
+    answer: a procedure to draw off a little fluid
+    notes: {a procedure to draw off a little fluid: "환자가 무슨 일을 하는지 바로 알아들어요.", a paracentesis: "의료진끼리 쓰는 말이라 환자는 뜻을 모를 수 있어요.", an ascitic tap: "복수를 뜻하는 전문 용어라 환자에게는 낯설어요."}
+    why: "시술은 환자가 가장 궁금해하는 부분이라 무엇을 하는지부터 쉬운 말로 알려요. 시술 동의와 위험 설명은 의사가 해요."
+    ko: "감염이 있는지 보려고 물을 조금 빼는 시술이 필요할 수도 있어요"
+6:
+  - kind: slider
+    words: [w-improve]
+    cue: "At 8 a.m. he couldn't give the date. At noon he gives it, but he's still very sleepy."
+    scale: [unchanged, improving, recovered]
+    answerAt: 1
+    why: "날짜를 말하게 됐지만 아직 많이 졸리면 improving이에요. 다 나은 것은 아니라서 recovered라고 쓰면 안 돼요. 같은 기준으로 계속 기록해 추세를 봐요."
+    example: "His mental status is improving."
+    exKo: "그의 정신 상태가 좋아지고 있어요."
+  - kind: context
+    words: [w-trigger]
+    word: trigger
+    ko: 유발요인
+    scenes:
+      - {who: 의사 라운드, icon: monitor, en: "Look for the trigger: infection, a GI bleed, or electrolytes.", ok: true}
+      - {who: 야간 인계, icon: board, en: "The trigger is likely infection; cultures were sent and antibiotics ordered.", ok: true}
+      - {who: 보호자에게, icon: me, en: "No precipitating factor or trigger has been identified yet.", ok: false, fix: "We're still looking for what set this off, like an infection or bleeding."}
+    why: "의료진끼리는 precipitating factor나 trigger가 정확해요. 보호자에게는 같은 trigger를 무엇이 이걸 일으켰는지 찾고 있다는 쉬운 말로 풀어 주세요."
+  - kind: swap
+    words: [w-confusion]
+    who: "보호자에게 · 혼란 설명"
+    icon: me
+    before: ["His ", "encephalopathy", " may be from the infection."]
+    options: [confusion, encephalopathy, altered mentation]
+    answer: confusion
+    notes: {confusion: "보호자가 바로 알아듣는 말이에요.", encephalopathy: "의료진끼리 쓰는 말이라 보호자는 어려워해요.", altered mentation: "차트용 표현이라 가족 대화에는 딱딱해요."}
+    why: "원인을 단정하지 않고 '일 수 있다'고 말하면서, 쉬운 단어를 쓰면 보호자가 상황을 이해하고 지켜보는 일을 도울 수 있어요."
+    ko: "그의 혼란은 감염 때문일 수 있어요"

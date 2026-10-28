@@ -1,0 +1,58 @@
+situations:
+- title: 내시경 준비·조율
+  s:
+  - ["우선순위", compass, "'first'를 문장 끝에 두어 무엇부터 하는지 분명히 해요. 'Let's'로 팀이 함께 한다는 느낌을 줘요.", "with the team", "기도랑 혈역학이 괜찮으면 동의서부터 받죠.", "기도가 괜찮으면 이동 준비부터 하죠.", "airway", "vision", "hearing", "appetite"]
+  - ["서류 준비", board, "'get … done'은 일을 끝내 둔다는 구어체 표현이에요. 서류 두 가지를 and로 묶어 한 번에 말해요.", "for the nurse", "동의서랑 체크리스트가 끝나면 이송 요청을 할게요.", "동의서랑 시술 전 체크리스트를 같이 가져올게요.", "consent", "insurance", "billing", "referral"]
+  - ["혈액 대기", lab, "'on standby'는 바로 쓸 수 있게 대기한다는 표현이에요. 'if we need it'은 필요 여부가 아직 열려 있음을 알려요.", "in the cooler", "시술 중에 필요하면 쓸 수 있게 피를 데워 뒀어요.", "시술 중에 필요하면 쓸 수 있게 흡인기를 대기시켜 뒀어요.", "standby", "ice", "loan", "order"]
+  - ["팀 공유", handshake2, "'is aware of'는 이미 알고 있다는 상태를 전해요. 문장 하나에 두 가지 준비 상황을 and로 이어요.", "for now", "진정 계획은 준비됐고, 소화기팀도 출혈 사실을 알고 있어요.", "진정 계획은 준비됐고, 보호자도 출혈 사실을 알고 있어요.", "sedation", "discharge", "diet", "therapy"]
+  - ["희망 전달", speech, "'I want'는 요청을 부드럽게 전하는 틀이에요. 'a bit more'가 목표 폭을 작게 잡아 줘요.", "for them", "시작하기 전에 수액이 좀 더 들어갔으면 해요.", "시작하기 전에 혈액이 좀 더 준비됐으면 해요.", "pressure", "rash", "cough", "appetite"]
+  - ["정보 전달", pager, "'wants to know'는 요청을 전해 듣는 간접 표현이에요. 'any allergies'는 있는지 없는지 열어 두고 묻는 말이에요.", "by phone", "GI팀이 마지막 배변 시간이랑 알레르기를 알고 싶어 해요.", "GI팀이 마지막 식사 시간이랑 가족력을 알고 싶어 해요.", "last", "first", "next", "new"]
+  - ["이송 약속", plane, "'as soon as'는 준비된 순간 바로 움직인다는 약속이에요. 'wheel … down'은 침대나 휠체어로 아래층으로 옮긴다는 구어체예요.", "to the unit", "팀이 준비되는 대로 바로 침대 난간을 올릴게요.", "팀이 준비되는 대로 바로 모니터를 옮길게요.", "down", "up", "back", "aside"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 내시경 전 조율 4문장 순서
+    why: 기도와 혈역학부터 확인하고, 서류를 끝내고, 필요할 경우를 대비해 피를 대기시킨 뒤, 팀이 준비되면 이동해요.
+    lines:
+    - ["Let's confirm his airway and hemodynamics first.", compass, "먼저 기도랑 혈역학 상태부터 확인하죠", "확인"]
+    - ["With that settled, I'll get consent and the pre-procedure checklist done.", board, "그게 끝나면 동의서랑 시술 전 체크리스트를 끝내 둘게요", "서류"]
+    - ["Beyond that, blood is on standby if we need it during the scope.", lab, "그 밖에 시술 중에 필요하면 쓸 피를 대기시켜 뒀어요", "대기"]
+    - ["When the team is ready, I'll wheel him down.", plane, "팀이 준비되면 이동시킬게요", "이송"]
+- title: 제한적 수혈 목표 판단
+  s:
+  - ["기준 설명", bulb, "'usually'는 예외가 있을 수 있다는 여지를 줘요. 'hold to'는 기준을 지킨다는 뜻이에요.", "in the unit", "출혈이 안정적이면 보통 수혈 동의서를 따로 받아요.", "출혈이 안정적이면 보통 체액 균형 목표를 따라요.", "target", "schedule", "budget", "formula"]
+  - ["재평가 제안", magnify, "'Let's reassess'는 함께 다시 보자는 제안형이에요. 'signs of ongoing bleeding'은 출혈이 이어지는 단서를 가리켜요.", "at rounds", "통증이 심해지는 징후가 있는지 다시 평가하죠.", "빈혈이 심해지는 징후가 있는지 다시 평가하죠.", "bleeding", "infection", "fever", "swelling"]
+  - ["재확인 약속", check, "'recheck'는 이미 본 것을 다시 본다는 뜻이에요. 수치와 증상을 and로 묶어 함께 본다고 알려요.", "in an hour", "헤모글로빈이랑 혈압을 다시 확인할게요.", "혈소판이랑 증상을 다시 확인할게요.", "hemoglobin", "sodium", "calcium", "creatinine"]
+  - ["대비 설명", chartup, "'below eight, but'으로 숫자가 낮다는 사실 뒤에 다른 사실을 붙여 균형을 줘요. 'actively'는 지금 진행 중이라는 뜻이에요.", "this morning", "7.1은 8보다 낮지만, 어제는 활동성 출혈이 없었어요.", "7.2는 8보다 낮지만, 어제는 활동성 출혈이 없었어요.", "below", "above", "near", "beyond"]
+  - ["조건 설명", compass, "'only … if'는 조건이 맞을 때만 한다는 한정이에요. 'drops further or becomes symptomatic'은 조건 둘 중 하나만 맞아도 된다는 뜻이에요.", "for him", "더 떨어지거나 증상이 생기면 그때 혈액을 가져와요.", "더 떨어지거나 증상이 생기면 그때 수혈 동의를 받아요.", "transfuse", "sedate", "discharge", "relocate"]
+  - ["예외 설명", faceWorried, "'would push us to'는 기준을 앞당기게 만드는 요인이라는 뜻이에요. 'sooner'로 앞당긴다는 방향을 말해요.", "for him", "흉통이나 심박이 빨라지면 더 일찍 의사를 부르게 돼요.", "흉통이나 심박이 빨라지면 더 일찍 심전도를 찍게 돼요.", "chest", "ankle", "knee", "ear"]
+  - ["감시 계획", calendar, "'Otherwise'로 앞 조건을 벗어난 경우를 따로 말해요. 'watch and repeat'는 지켜보는 것과 반복 검사를 한꺼번에 묶어요.", "at night", "그렇지 않으면 지켜보면서 여섯 시간마다 배액을 비워요.", "그렇지 않으면 지켜보면서 여섯 시간마다 라인을 씻어요.", "six", "three", "four", "two"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 제한적 수혈 판단 4문장 순서
+    why: 현재 수치와 상태를 먼저 말하고, 그 근거로 기준을 설명한 뒤, 검사 감시를 알리고, 예외 증상을 덧붙여요.
+    lines:
+    - ["Seven point two is below eight, but he's not actively bleeding right now.", chartup, "7.2는 8보다 낮지만 지금 활동성 출혈은 없어요", "현황"]
+    - ["Because of that, we hold to the restrictive target for a stable bleed.", bulb, "그래서 안정적인 출혈엔 제한적 목표를 따라요", "기준"]
+    - ["So we watch and repeat labs every six hours.", calendar, "그래서 지켜보면서 여섯 시간마다 검사를 반복해요", "감시"]
+    - ["Whatever the labs show, chest pain or a racing heart would push us to transfuse sooner.", faceWorried, "검사가 어떻든 흉통이나 빠른 심박은 더 일찍 수혈하게 해요", "예외"]
+- title: PPI 주입 관리
+  s:
+  - ["시작 보고", pill, "'is started'는 수동태라 누가 했는지보다 이미 시작됐다는 사실을 알려요. 'at the ordered rate'는 처방 속도를 지켰다는 말이에요.", "on the unit", "PPI 지속주입 라인을 지시된 대로 연결했어요.", "PPI 지속주입을 시작한 뒤 속도를 기록했어요.", "infusion", "chart", "label", "badge"]
+  - ["감시 약속", monitor, "'I'll monitor for'는 무엇을 살필지 뒤에 바로 붙이는 틀이에요. 'rebleeding'은 한 번 멎은 출혈이 다시 나는 것을 가리켜요.", "by hand", "재출혈이랑 활력징후를 모니터에 연결할게요.", "재출혈이랑 활력징후를 의사에게 보고할게요.", "rebleeding", "itching", "hiccups", "snoring"]
+  - ["금식 유지", lock, "'Let's keep him NPO'는 금식을 지속하자는 제안형이에요. 'while'이 주입이 도는 동안이라는 기간을 알려요.", "for now", "주입이 흐르는 동안 라인을 유지하죠.", "주입이 흐르는 동안 체위를 유지하죠.", "while", "although", "whereas", "because"]
+  - ["설정 설명", gear, "'is set to'는 이미 맞춰 놓았다는 상태 표현이에요. 'exact'는 한 치도 다르지 않다는 강조예요.", "at the bedside", "펌프는 약사가 지시한 정확한 속도로 설정돼 있어요.", "펌프는 의사가 지시한 정확한 속도로 잠겨 있어요.", "pump", "bag", "cuff", "scale"]
+  - ["위험 신호", faceWorried, "'could mean'은 확정하지 않고 가능성을 말해요. 'again'은 앞서 있었던 일이 반복된다는 뜻이에요.", "in the bed", "대변이 다시 묽어지면 출혈이 다시 시작된 걸 수도 있어요.", "대변이 다시 검게 변하면 감염이 생긴 걸 수도 있어요.", "black", "brown", "pink", "gray"]
+  - ["약 설명", bulb, "'so'가 이유와 결과를 잇는 연결어예요. 'start to heal'은 이제 낫기 시작한다는 뜻이에요.", "in the stomach", "PPI는 통증을 줄여서 궤양이 아물기 시작하게 해요.", "PPI는 위산을 줄여서 구역이 사라지기 시작하게 해요.", "acid", "swelling", "fever", "gas"]
+  - ["보고 약속", pager, "'flag'는 눈에 띄게 알린다는 뜻의 간호 현장어예요. 'trends down'은 한 번이 아니라 계속 내려가는 흐름을 뜻해요.", "at night", "혈압이 다시 떨어지는 추세면 의사 지시대로 수액을 열게요.", "혈압이 다시 떨어지는 추세면 의사가 오기 전에 다리를 올려 둘게요.", "pressure", "appetite", "mood", "grip"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: PPI 지속주입 4문장 순서
+    why: 시작을 알리고, 약이 하는 일을 설명한 뒤, 금식을 유지하며, 위험 신호가 보이면 알린다고 약속해요.
+    lines:
+    - ["The PPI infusion is started at the ordered rate.", pill, "PPI 지속주입을 지시된 속도로 시작했어요", "시작"]
+    - ["It reduces acid so the ulcer can start to heal.", bulb, "위산을 줄여서 궤양이 아물기 시작하게 해요", "설명"]
+    - ["While it runs, let's keep him NPO.", lock, "그게 흐르는 동안 금식을 유지하죠", "금식"]
+    - ["If his stool turns black again, I'll flag the physician.", pager, "대변이 다시 검게 변하면 의사한테 알릴게요", "보고"]
