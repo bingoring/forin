@@ -1,0 +1,780 @@
+===  0 GI 출혈 징후 사정
+kind: slider
+words:
+- w-bleed
+- w-blood
+cue: 'Patient (pointing at the basin): "The whole basin is full of blood."'
+scale:
+- specks of blood
+- active bleeding
+- a massive bleed
+answerAt: 2
+why: 대야가 가득 찰 만큼 토했다면 흔적이 아니라 대량 출혈로 봐야 해요. 같은 bleeding이라도 양에 따라 대응이 달라지니, 곁을 지키면서 기도와 활력징후를 살피고 바로 의사에게 알려요.
+example: He vomited a basin of bright red blood, so I'm calling the physician now.
+exKo: 선홍색 피를 대야 가득 토해서, 지금 의사에게 연락할게요.
+
+kind: context
+words:
+- w-vitals
+word: vitals
+ko: 활력징후
+scenes:
+- who: 의사에게 보고
+  icon: stetho
+  en: His vitals are holding, but he vomited once more.
+  ok: true
+- who: 동료 간호사
+  icon: monitor
+  en: Can you take his vitals again while I call GI?
+  ok: true
+- who: 환자 가족에게
+  icon: me
+  en: His vitals show tachycardia and borderline hypotension from an ongoing GI hemorrhage.
+  ok: false
+  fix: His heart is beating fast and his blood pressure is a little low, and we're watching him closely.
+why: 의료진끼리는 vitals라고 짧게 말해도 통해요. 가족에게 tachycardia, hypotension 같은 말을 쓰면 낯설고 겁만 줘요. 심박과 혈압을 쉬운 말로 풀어 전해요.
+
+===  1 대구경 정맥로 확보 협조
+kind: pair
+words:
+- w-large
+- w-catheter
+- w-draw
+- w-tourniquet
+pairs:
+- - large-bore
+  - catheter
+- - draw
+  - blood
+- - apply
+  - a tourniquet
+decoys:
+- the pump
+why: large-bore catheter는 굵은 정맥 카테터라 수액과 혈액을 빠르게 넣을 수 있어요. draw blood는 채혈하다, apply a tourniquet은 지혈대를 묶어 정맥이 잘 보이게 하는 동작이에요.
+
+   COMBOS: large-bore catheter* | large-bore blood | large-bore a tourniquet | large-bore the pump
+   COMBOS: draw catheter | draw blood* | draw a tourniquet | draw the pump
+   COMBOS: apply catheter | apply blood | apply a tourniquet* | apply the pump
+kind: context
+words:
+- w-line
+word: line
+ko: 라인
+scenes:
+- who: 의사에게 보고
+  icon: stetho
+  en: Two large-bore lines are in, both flushing well.
+  ok: true
+- who: 동료 간호사
+  icon: monitor
+  en: Can you check the line in his left arm before we hang the fluids?
+  ok: true
+- who: 환자 가족에게
+  icon: me
+  en: We've placed bilateral peripheral large-bore lines for rapid volume resuscitation.
+  ok: false
+  fix: We put in two big IVs so we can give fluids and blood quickly.
+why: 의료진끼리는 line, large-bore 같은 말로 정맥로 상태를 짧게 주고받아요. 가족에게 bilateral, volume resuscitation 같은 말은 어렵고 무섭게 들려요. 굵은 정맥 주사를 두 개 놓았다고 쉬운 말로 알려 줘요.
+
+===  2 수혈 준비·교차시험
+kind: slider
+words:
+- w-armband
+- w-tube
+cue: 'Nurse: "Before we spike the blood, a second nurse and I read his name and birth date off the armband and the bag, one by one."'
+scale:
+- glance at it
+- check it
+- double-check it
+answerAt: 2
+why: 수혈 전에는 간호사 두 명이 환자 팔찌와 혈액 팩의 이름·생년월일 등을 하나씩 소리 내어 맞춰 보는 것이 일반적이에요. 한 번 슥 보는 정도(glance)나 혼자 확인(check)이 아니라 다시 한 번 확인하는 double-check예요. 세부 절차는 병원 지침대로 해요.
+example: We double-check the armband against the bag before we start.
+exKo: 시작하기 전에 팔찌와 혈액 팩을 다시 한 번 맞춰 봐요.
+
+kind: context
+words:
+- w-confirm
+word: confirm
+ko: 확인하다
+scenes:
+- who: 의사에게 보고
+  icon: stetho
+  en: I'll confirm the type and cross with the blood bank before we hang it.
+  ok: true
+- who: 동료 간호사
+  icon: monitor
+  en: Can you confirm the unit number with me before I spike it?
+  ok: true
+- who: 환자에게
+  icon: me
+  en: We must confirm your identifiers against the product label per protocol before administration.
+  ok: false
+  fix: We check your name and wristband twice so you get exactly the right blood.
+why: 의료진끼리는 type and cross, unit number처럼 확인할 대상을 짧게 말해요. 환자에게 identifiers, administration 같은 말은 낯설고 딱딱해요. 이름과 팔찌를 두 번 확인한다고 쉬운 말로 알려 줘요.
+
+===  3 혈역학·Hb 추세 감시
+kind: slider
+words:
+- w-lightheaded
+cue: 'Patient: "Everything is going gray, I think I''m going to pass out."'
+scale:
+- a little lightheaded
+- very dizzy
+- about to faint
+answerAt: 2
+why: 어지러움에도 강도가 있어요. lightheaded는 머리가 핑 도는 정도, dizzy는 더 심한 어지러움, faint는 곧 쓰러질 것 같은 단계예요. 눈앞이 어두워지고 쓰러질 것 같다고 하면 눕히고 바로 의사에게 알려요.
+example: He feels faint when he sits up, so I laid him back down.
+exKo: 일어나 앉으면 쓰러질 것 같다고 해서 다시 눕혔어요.
+
+kind: context
+words:
+- w-trend
+word: trend
+ko: 추세
+scenes:
+- who: 의사에게 보고
+  icon: stetho
+  en: His hemoglobin trend is down since admission, so I'm watching it closely.
+  ok: true
+- who: 동료 간호사
+  icon: monitor
+  en: Can you pull the lab trend for the last twelve hours?
+  ok: true
+- who: 환자 가족에게
+  icon: me
+  en: His hemoglobin trend shows a downward trajectory with a concerning velocity.
+  ok: false
+  fix: His blood count has dipped a little since this morning, and we're rechecking it.
+why: 의료진끼리는 trend 한 단어로 수치가 시간에 따라 어느 쪽으로 가는지 말해요. 가족에게 trajectory, velocity 같은 말은 차갑고 불안하게 들려요. 얼마나 달라졌는지와 다시 확인하겠다는 계획을 쉬운 말로 전해요.
+
+===  4 NPO·위관 관리
+kind: slider
+words:
+- w-uncomfortable
+cue: 'Patient: "The tube is annoying, but I can handle it."'
+scale:
+- a bit uncomfortable
+- really uncomfortable
+- unbearable
+answerAt: 0
+why: 참을 만하다면 약간 불편한(a bit uncomfortable) 정도예요. 불편해도 위를 비우고 출혈을 확인하는 데 필요하다고 설명하고, 참기 힘들 만큼 아프면 바로 알려 달라고 안내해요.
+example: It's uncomfortable, but it's protecting your stomach right now.
+exKo: 불편하신 거 알아요, 그래도 지금은 위를 보호하고 있어요.
+
+kind: context
+words:
+- w-stomach
+word: stomach
+ko: 위
+scenes:
+- who: 의사에게 보고
+  icon: stetho
+  en: The stomach is decompressed, but the drainage is still blood-tinged.
+  ok: true
+- who: 동료 간호사
+  icon: monitor
+  en: Can you check the stomach drainage before you chart it?
+  ok: true
+- who: 환자에게
+  icon: me
+  en: The tube decompresses your stomach contents so we can assess for mucosal hemorrhage.
+  ok: false
+  fix: The tube empties your stomach so we can see whether it's still bleeding.
+why: 의료진끼리는 decompress, blood-tinged 같은 말로 상태를 짧게 보고해요. 환자에게 mucosal hemorrhage 같은 말은 어렵고 무서워요. 관이 위를 비워서 출혈이 계속되는지 보려는 것이라고 쉬운 말로 알려 줘요.
+
+===  5 출혈 병력·항응고 검토
+kind: pair
+words:
+- w-medication
+- w-thinner
+- w-ulcer
+pairs:
+- - medication
+  - list
+- - blood
+  - thinner
+- - stomach
+  - ulcer
+decoys:
+- bed alarm
+why: medication list는 복용 중인 약을 빠짐없이 파악하는 목록이에요. blood thinner는 항응고제·항혈소판제를 흔히 부르는 말이고, stomach ulcer는 위궤양이에요.
+
+   COMBOS: medication list* | medication thinner | medication ulcer | medication bed alarm
+   COMBOS: blood list | blood thinner* | blood ulcer | blood bed alarm
+   COMBOS: stomach list | stomach thinner | stomach ulcer* | stomach bed alarm
+kind: context
+words:
+- w-dose
+word: dose
+ko: 용량
+scenes:
+- who: 의사에게 보고
+  icon: stetho
+  en: His last dose of warfarin was two days ago, per his wife.
+  ok: true
+- who: 동료 간호사
+  icon: monitor
+  en: Can you verify the last dose time against his home medication list?
+  ok: true
+- who: 환자에게
+  icon: me
+  en: What was the timing of your last anticoagulant dose relative to symptom onset?
+  ok: false
+  fix: When did you last take your blood thinner?
+why: 의료진끼리는 anticoagulant, timing, onset 같은 임상어로 마지막 복용 시각을 짧고 정확하게 주고받아요. 환자에게 같은 질문을 그렇게 하면 무슨 말인지 몰라 대답하기 어려워요. 언제 마지막으로 혈액희석제를 먹었는지 쉬운 말로 물어요.
+
+===  6 정맥류 출혈 초기 관리
+kind: pair
+words:
+- w-prophylactic
+- w-antibiotic
+- w-variceal
+- w-bleed
+pairs:
+- - prophylactic
+  - antibiotic
+- - variceal
+  - bleed
+decoys:
+- a pump
+why: prophylactic antibiotic은 감염을 미리 막으려고 쓰는 예방적 항생제예요. variceal bleed는 식도·위 정맥류에서 나는 출혈이고, 둘 다 처방대로 투여하고 지켜봐요.
+
+   COMBOS: prophylactic antibiotic* | prophylactic bleed | prophylactic a pump
+   COMBOS: variceal antibiotic | variceal bleed* | variceal a pump
+kind: context
+words:
+- w-airway
+word: airway
+ko: 기도
+scenes:
+- who: 의사에게 보고
+  icon: stetho
+  en: Her airway is protected for now, but I'd like anesthesia nearby for the scope.
+  ok: true
+- who: 동료 간호사
+  icon: monitor
+  en: Can you watch her airway while I draw the labs?
+  ok: true
+- who: 환자 가족에게
+  icon: me
+  en: Her airway is compromised, with a high aspiration risk.
+  ok: false
+  fix: We're watching her breathing very closely so she stays safe.
+why: 의료진끼리는 airway가 지켜지고 있는지 한 단어로 묻고 답해요. 가족에게 compromised, aspiration risk 같은 말을 그대로 쓰면 지금 당장 위험한 줄 알고 놀라요. 숨 쉬는 것을 가까이서 지켜보고 있다고 쉬운 말로 알려 줘요.
+
+===  7 내시경 준비·조율
+kind: pair
+words:
+- w-standby
+- w-checklist
+- w-blood
+pairs:
+- - blood
+  - on standby
+- - pre-procedure
+  - checklist
+decoys:
+- the cuff
+why: on standby는 필요할 때 바로 쓸 수 있게 준비해 두고 기다리는 상태예요. pre-procedure checklist는 시술 전에 동의서, 알레르기, 금식 시간 같은 항목을 빠짐없이 확인하는 목록이에요.
+
+   COMBOS: blood on standby* | blood checklist | blood the cuff
+   COMBOS: pre-procedure on standby | pre-procedure checklist* | pre-procedure the cuff
+kind: context
+words:
+- w-scope
+word: scope
+ko: 내시경
+scenes:
+- who: 의사에게 보고
+  icon: stetho
+  en: He's ready for the scope as soon as his pressure is a bit more stable.
+  ok: true
+- who: 동료 간호사
+  icon: monitor
+  en: Can you grab suction and the scope cart?
+  ok: true
+- who: 환자 가족에게
+  icon: me
+  en: He's going for an EGD under monitored anesthesia care, and the scope may need therapeutic intervention.
+  ok: false
+  fix: A doctor will look inside his stomach with a thin camera to find the bleeding.
+why: 의료진끼리는 scope 한 단어로 내시경을 가리켜요. 가족에게 EGD, monitored anesthesia care 같은 말은 어렵고 겁나요. 가는 카메라로 위 안을 보고 출혈 위치를 찾는다고 쉬운 말로 알려 줘요.
+
+===  8 제한적 수혈 목표 판단
+kind: slider
+words:
+- w-restrictive
+cue: 'Team plan: "Transfuse only when the hemoglobin is quite low or he has symptoms."'
+scale:
+- very liberal
+- fairly moderate
+- restrictive
+answerAt: 2
+why: restrictive(제한적) 전략은 꼭 필요할 때만 수혈하도록 기준을 낮게 잡는 방식이에요. liberal(관대한) 전략은 더 높은 수치에서 일찍 수혈해요. 어떤 기준을 쓸지, 수치가 얼마인지는 의사 처방대로 따라요.
+example: We follow the restrictive target unless he is bleeding actively.
+exKo: 활동성 출혈이 아니면 제한적 목표를 따라요.
+
+kind: context
+words:
+- w-transfuse
+word: transfuse
+ko: 수혈하다
+scenes:
+- who: 의사에게 보고
+  icon: stetho
+  en: Per your order, we'll transfuse if the hemoglobin falls below the target.
+  ok: true
+- who: 동료 간호사
+  icon: monitor
+  en: Do we transfuse now, or wait for the repeat hemoglobin?
+  ok: true
+- who: 환자에게
+  icon: me
+  en: We transfuse at the restrictive threshold, and you're not there yet.
+  ok: false
+  fix: We'll recheck your blood count, and if it drops or you feel worse, the doctors will decide about giving blood.
+why: 의료진끼리는 transfuse와 target 같은 말로 수혈 조건을 짧게 말해요. 환자에게 restrictive threshold, 'you're not there yet'은 차갑고 무슨 뜻인지 알기 어려워요. 수치를 다시 확인하고 달라지면 의사가 판단한다고 쉬운 말로 알려 줘요.
+
+===  9 PPI 주입 관리
+kind: slider
+words:
+- w-reduce
+- w-acid
+cue: 'Patient: "Does the PPI drip shut my stomach acid off completely?"'
+scale:
+- lowers it a little
+- lowers it a lot
+- removes all acid
+answerAt: 1
+why: PPI는 위산 분비를 크게 줄여서 궤양이 아물 환경을 만들지만, 위산을 완전히 없애지는 못해요. 주입 속도와 기간은 처방대로 지켜요.
+example: The PPI lowers acid a lot, so the ulcer has time to heal.
+exKo: PPI가 위산을 많이 줄여서 궤양이 아물 시간이 생겨요.
+
+kind: context
+words:
+- w-rate
+word: rate
+ko: 속도
+scenes:
+- who: 의사에게 보고
+  icon: stetho
+  en: The PPI is running at the ordered rate, and I'll watch for rebleeding.
+  ok: true
+- who: 동료 간호사
+  icon: monitor
+  en: Can you double-check the rate on the pump with me?
+  ok: true
+- who: 환자에게
+  icon: me
+  en: The infusion rate is programmed per the order, with hard dose limits set on the pump.
+  ok: false
+  fix: It's a medicine that drips slowly through your IV to calm your stomach.
+why: 의료진끼리는 rate 한 단어로 주입 속도를 확인해요. 환자에게 programmed, hard dose limits 같은 말은 기계 설명이라 무슨 약인지 와닿지 않아요. 어떤 약이 어떻게 들어가는지를 쉬운 말로 알려 줘요.
+
+===  10 응고장애 교정
+kind: slider
+words:
+- w-inr
+- w-high
+cue: 'Lab result: "The INR is a little above the normal range."'
+scale:
+- slightly prolonged
+- clearly prolonged
+- severely prolonged
+answerAt: 0
+why: INR은 피가 굳는 데 걸리는 시간을 표준화한 수치예요. 정상 범위를 조금 넘으면 약간 길어진(slightly prolonged) 정도이고, 높을수록 응고가 오래 걸려 출혈이 잘 멎지 않아요. 교정 여부와 방법은 처방대로 해요.
+example: His INR is only slightly prolonged, but we'll recheck it.
+exKo: INR이 약간 길어진 정도지만 다시 확인할게요.
+
+kind: context
+words:
+- w-coag
+word: coag
+ko: 응고 수치
+scenes:
+- who: 의사에게 보고
+  icon: stetho
+  en: 'Coags are back: INR is high and platelets are low.'
+  ok: true
+- who: 동료 간호사
+  icon: monitor
+  en: Can you send a repeat set of coags after the plasma?
+  ok: true
+- who: 환자에게
+  icon: me
+  en: Your coags show a prolonged INR with thrombocytopenia from your liver disease.
+  ok: false
+  fix: Your blood is taking longer than normal to clot, and we're giving you medicine to help.
+why: 의료진끼리는 coags 한 단어로 응고 검사 묶음을 가리켜요. 환자에게 prolonged INR, thrombocytopenia 같은 말은 어렵고 겁나요. 피가 평소보다 늦게 굳는다고 쉬운 말로 풀어 주세요.
+
+===  11 balloon tamponade 보조
+kind: pair
+words:
+- w-traction
+- w-weight
+- w-balloon
+pairs:
+- - traction
+  - weight
+- - balloon
+  - port
+decoys:
+- the pump
+why: traction weight는 튜브를 당겨 두는 견인 무게로, 처방된 무게를 유지하고 자주 확인해요. balloon port는 풍선에 공기를 넣는 연결구로, 풍선마다 따로 있어서 라벨로 구분해요.
+
+   COMBOS: traction weight* | traction port | traction the pump
+   COMBOS: balloon weight | balloon port* | balloon the pump
+kind: context
+words:
+- w-balloon
+word: balloon
+ko: 풍선
+scenes:
+- who: 의사에게 보고
+  icon: stetho
+  en: I tested each balloon, and both hold air.
+  ok: true
+- who: 동료 간호사
+  icon: monitor
+  en: Can you label each balloon port before we insert the tube?
+  ok: true
+- who: 환자 가족에게
+  icon: me
+  en: The tamponade tube has a gastric and an esophageal balloon that apply direct pressure to the varices.
+  ok: false
+  fix: It's a soft tube with a small balloon that presses on the bleeding spot to slow it down.
+why: 의료진끼리는 balloon, port 같은 말로 기구 상태를 짧게 확인해요. 가족에게 gastric, esophageal, varices 같은 말을 한꺼번에 쓰면 무슨 일인지 알 수 없어요. 풍선이 출혈 부위를 눌러 준다고 쉬운 말로 알려 줘요.
+
+===  12 하부출혈 감별·검사
+kind: pair
+words:
+- w-colonoscopy
+- w-find
+- w-bowel
+pairs:
+- - colonoscopy
+  - prep
+- - bleeding
+  - source
+decoys:
+- a pump
+why: colonoscopy prep은 대장내시경 전에 장을 비우는 준비예요. 출혈이 활발할 때는 방법과 시기를 의사 지시대로 따라요. bleeding source는 피가 나는 위치로, 검사로 이것을 찾아요.
+
+   COMBOS: colonoscopy prep* | colonoscopy source | colonoscopy a pump
+   COMBOS: bleeding prep | bleeding source* | bleeding a pump
+kind: context
+words:
+- w-bowel
+word: bowel
+ko: 장
+scenes:
+- who: 의사에게 보고
+  icon: stetho
+  en: His bowel output is still bloody and bright red.
+  ok: true
+- who: 동료 간호사
+  icon: monitor
+  en: Can you chart the bowel output and color?
+  ok: true
+- who: 환자에게
+  icon: me
+  en: The bowel is the likely source, possibly diverticular, and we are evaluating for angioectasia.
+  ok: false
+  fix: The bleeding is coming from somewhere in your lower gut, and we're running tests to find where.
+why: 의료진끼리는 bowel output처럼 장 상태를 짧게 보고해요. 환자에게 diverticular, angioectasia 같은 말은 낯설고 불안하게 들려요. 아래쪽 장 어딘가에서 나고 있고 검사로 찾는 중이라고 쉬운 말로 알려 줘요.
+
+===  13 재출혈 감시·재평가
+kind: slider
+words:
+- w-tiredness
+- w-normal
+cue: 'Patient: "I''m a little tired, but I feel okay otherwise."'
+scale:
+- a little tired
+- very weak
+- about to faint
+answerAt: 0
+why: 출혈 뒤에는 피곤함이 약간 있을 수 있어요. 하지만 기운이 쭉 빠지거나 곧 쓰러질 것 같다면 훨씬 심각한 신호라서 바로 알려야 해요. 괜찮아 보여도 계속 확인해요.
+example: A little tiredness is normal, but tell me if you feel faint.
+exKo: 약간 피곤한 건 정상이지만, 쓰러질 것 같으면 말씀해 주세요.
+
+kind: swap
+words:
+- w-sign
+- w-well
+who: 환자에게 · 회복 설명
+icon: me
+before:
+- 'Feeling well today is '
+- a guarantee
+- ', but we still check every few hours.'
+options:
+- a guarantee
+- a good sign
+- a sure cure
+answer: a good sign
+notes:
+  a good sign: 좋은 징후라고 말하되 단정하지 않는다. 그래서 계속 확인한다는 말과 이어진다.
+  a guarantee: 다시 피가 나지 않는다고 보장하는 말이라 지킬 수 없는 약속이 된다.
+  a sure cure: 다 나았다는 단정이라 틀릴 수 있고 이어지는 'but'과도 맞지 않는다.
+why: 컨디션이 좋은 것은 좋은 소식이지만 재출혈이 없다는 보장은 아니에요. 보장이나 완치 같은 말은 지키기 어려운 약속이 되니, 'a good sign'처럼 사실 그대로 말해요.
+ko: 오늘 컨디션이 좋은 건 좋은 징후예요
+
+   SWAP: Feeling well today is a guarantee, but we still check every few hours.
+   SWAP: Feeling well today is a good sign, but we still check every few hours.
+   SWAP: Feeling well today is a sure cure, but we still check every few hours.
+===  14 IR·내시경 이송 조율
+kind: slider
+words:
+- w-unstable
+- w-stabilize
+cue: 'In the elevator: "His pressure is dropping and his heart rate is climbing."'
+scale:
+- stable
+- borderline
+- unstable
+answerAt: 2
+why: 혈압이 떨어지고 심박이 오르는 중이면 불안정(unstable)한 상태예요. 엘리베이터 안에서 불안정해지면 멈추고 먼저 안정시킨 다음에 이동을 이어 가요.
+example: He became unstable in the elevator, so we stopped to stabilize him.
+exKo: 엘리베이터 안에서 불안정해져서 멈추고 안정시켰어요.
+
+kind: context
+words:
+- w-handoff
+word: handoff
+ko: 인계
+scenes:
+- who: 의사에게 보고
+  icon: stetho
+  en: I'll give IR a quick handoff on the bleed and his last hemoglobin.
+  ok: true
+- who: 동료 간호사
+  icon: monitor
+  en: Do you want a bedside handoff before we move him?
+  ok: true
+- who: 환자 가족에게
+  icon: me
+  en: I'm giving IR a full SBAR handoff on his hemorrhagic decompensation.
+  ok: false
+  fix: I'm telling the IR team everything about his bleeding so they're ready for him.
+why: 의료진끼리는 handoff, SBAR 같은 말로 인계 틀을 짧게 말해요. 가족에게 hemorrhagic decompensation 같은 말은 어렵고 무섭게 들려요. 어떤 정보를 누구에게 전하는지를 쉬운 말로 알려 줘요.
+
+===  15 대량출혈 쇼크 대량수혈
+kind: slider
+words:
+- w-hemorrhagic
+- w-shock
+cue: 'Chart note: "BP crashing, skin cold and clammy, still bleeding heavily."'
+scale:
+- a slow bleed
+- a heavy bleed
+- hemorrhagic shock
+answerAt: 2
+why: 출혈로 혈압이 무너지고 피부가 차갑고 축축해지면 출혈성 쇼크로 봐요. 이때는 바로 의사에게 알려요. 대량수혈 프로토콜을 발동할지는 의사가 정하고, 간호사는 그에 맞춰 혈액을 준비하고 기록해요.
+example: This is hemorrhagic shock, so the physician is activating the protocol.
+exKo: 출혈성 쇼크라서 의사가 프로토콜을 발동하고 있어요.
+
+kind: context
+words:
+- w-stat
+word: stat
+ko: 당장
+scenes:
+- who: 혈액은행에 전화
+  icon: stetho
+  en: We need the cooler with the first units stat.
+  ok: true
+- who: 동료 간호사
+  icon: monitor
+  en: Can you get the rapid infuser set up stat?
+  ok: true
+- who: 환자 가족에게
+  icon: me
+  en: We're activating the massive transfusion protocol on your father stat.
+  ok: false
+  fix: He's bleeding a lot, so we're getting blood ready for him right now.
+why: 의료진끼리는 stat으로 지금 당장이라는 급함을 한 단어로 전해요. 가족에게 stat, massive transfusion protocol 같은 말은 낯설고 무섭게 들려요. 많이 출혈 중이라 피를 바로 준비한다고 쉬운 말로 알려 줘요.
+
+===  16 토혈 기도흡인 위기
+kind: slider
+words:
+- w-choke
+- w-airway
+cue: 'Bedside: "He''s gurgling on blood and can''t clear his throat."'
+scale:
+- clearing his throat
+- choking on blood
+- not breathing
+answerAt: 1
+why: 피가 목에 고여 숨이 막히는 것은 choking이고, 기도 확보가 가장 먼저예요. 옆으로 눕히고 흡인하면서 도움을 부르고, 이미 숨을 쉬지 않으면 소생 절차로 넘어가요.
+example: He's choking on blood, so I'm turning him on his side and suctioning.
+exKo: 피 때문에 숨이 막혀서 옆으로 눕히고 흡인하고 있어요.
+
+kind: context
+words:
+- w-suction
+word: suction
+ko: 흡인하다
+scenes:
+- who: 의사에게 보고
+  icon: stetho
+  en: He's bleeding from the mouth, so I have suction and the intubation tray ready.
+  ok: true
+- who: 동료 간호사
+  icon: monitor
+  en: Can you hand me the suction while I turn him?
+  ok: true
+- who: 환자 가족에게
+  icon: me
+  en: We are performing oropharyngeal suctioning to clear blood from his airway.
+  ok: false
+  fix: I'm clearing the blood out of his mouth so he can breathe.
+why: 의료진끼리는 suction이라고 짧게 말해도 바로 알아들어요. 가족에게 oropharyngeal suctioning 같은 말은 어렵고 무섭게 들려요. 입안의 피를 빼내서 숨 쉬게 하는 중이라고 쉬운 말로 알려 줘요.
+
+===  17 정맥류 불응 출혈 위기
+kind: pair
+words:
+- w-tamponade
+- w-shunt
+- w-liver
+pairs:
+- - balloon
+  - tamponade
+- - liver
+  - shunt
+decoys:
+- the cooler
+why: balloon tamponade는 풍선을 부풀려 터진 정맥류를 안에서 눌러 출혈을 막는 처치예요. TIPS가 만드는 liver shunt는 간 안에서 문맥압을 낮추는 우회 통로로, 앞선 치료로 조절되지 않을 때 IR팀이 시행해요.
+
+   COMBOS: balloon tamponade* | balloon shunt | balloon the cooler
+   COMBOS: liver tamponade | liver shunt* | liver the cooler
+kind: context
+words:
+- w-transport
+word: transport
+ko: 이송
+scenes:
+- who: 의사에게 보고
+  icon: stetho
+  en: For transport I need a second nurse, the monitor, and blood on the bed.
+  ok: true
+- who: 동료 간호사
+  icon: monitor
+  en: Can you grab the transport monitor and an airway bag?
+  ok: true
+- who: 환자 가족에게
+  icon: me
+  en: Intrahospital transport carries a risk of hemodynamic deterioration, but it is necessary.
+  ok: false
+  fix: We're moving him to the procedure room now, and a nurse will stay with him the whole way.
+why: 의료진끼리는 transport 한 단어로 이송 준비물과 인력을 말해요. 가족에게 hemodynamic deterioration 같은 말은 위험만 크게 들려 무서워요. 어디로 가고 누가 곁에 있는지를 쉬운 말로 알려 줘요.
+
+===  18 재출혈 급변 소생
+kind: slider
+words:
+- w-drop
+- w-pressure
+cue: 'Bedside: "His pressure fell fast, and he''s gray and sweaty."'
+scale:
+- dipping a little
+- dropping
+- crashing
+answerAt: 2
+why: 혈압이 조금 내려가면 dipping, 뚜렷하게 내려가면 dropping, 급격히 무너지면 crashing이라고 해요. crashing이면 바로 의사에게 알리고, 수액과 혈액은 지시와 프로토콜대로 빠르게 준비해요.
+example: His pressure is crashing, so I'm notifying the physician now.
+exKo: 혈압이 무너지고 있어서 지금 의사에게 알리고 있어요.
+
+kind: context
+words:
+- w-reassess
+word: reassess
+ko: 다시 평가하다
+scenes:
+- who: 의사에게 보고
+  icon: stetho
+  en: I'll reassess his airway and vitals as soon as the blood is up.
+  ok: true
+- who: 동료 간호사
+  icon: monitor
+  en: Can you reassess his pressure after the second bag?
+  ok: true
+- who: 환자 가족에게
+  icon: me
+  en: We are reassessing his hemodynamic status after the fluid challenge.
+  ok: false
+  fix: We're checking his blood pressure again right now to see how he's doing.
+why: 의료진끼리는 reassess로 치료 뒤 상태를 다시 확인한다고 짧게 말해요. 가족에게 hemodynamic status, fluid challenge 같은 말은 낯설어요. 혈압을 다시 재고 있다고 쉬운 말로 알려 줘요.
+
+===  19 응고장애 동반 지속출혈
+kind: slider
+words:
+- w-ooze
+- w-everywhere
+cue: 'Bedside: "Just a little blood is seeping from one IV site."'
+scale:
+- a little ooze
+- steady ooze
+- oozing everywhere
+answerAt: 0
+why: 한 군데에서 조금 스미는 것(a little ooze)과 여기저기서 계속 스며 나오는 것은 달라요. 곳곳에서 스며 나오면 응고 인자가 부족하다는 신호일 수 있어서 바로 의사에게 알려요. 조금 스미는 정도라도 양을 계속 확인하고 기록해요.
+example: It's only a little ooze from one site, but I'll keep checking it.
+exKo: 한 군데서 조금 스미는 정도지만 계속 확인할게요.
+
+kind: context
+words:
+- w-clot
+word: clot
+ko: 응고
+scenes:
+- who: 의사에게 보고
+  icon: stetho
+  en: Fibrinogen is low, so he can't clot well on his own.
+  ok: true
+- who: 동료 간호사
+  icon: monitor
+  en: Is he clotting any better after the cryo?
+  ok: true
+- who: 환자 가족에게
+  icon: me
+  en: His clotting cascade is failing from consumptive coagulopathy.
+  ok: false
+  fix: His blood isn't clotting the way it should, so we're giving him blood products to help.
+why: 의료진끼리는 clot 한 단어로 피가 굳는 상태를 말하고 수치와 함께 확인해요. 가족에게 cascade, consumptive coagulopathy 같은 말은 어려워서 겁만 나요. 피가 제대로 굳지 않아 돕고 있다고 쉬운 말로 알려 줘요.
+
+===  20 출혈 불응 목표·예후 소통
+kind: pair
+words:
+- w-honest
+- w-comfort
+pairs:
+- - honest
+  - answer
+- - comfort
+  - measures
+decoys:
+- the pump
+why: honest answer는 가족이 묻는 말에 숨기거나 포장하지 않고 답하는 것이에요. comfort measures는 증상을 덜어 주고 편안하게 하는 데 중심을 둔 돌봄을 뜻하는 말이고, 어떤 방향으로 갈지는 의사와 가족이 함께 정해요.
+
+   COMBOS: honest answer* | honest measures | honest the pump
+   COMBOS: comfort answer | comfort measures* | comfort the pump
+kind: context
+words:
+- w-honest
+word: honest
+ko: 솔직한
+scenes:
+- who: 가족에게
+  icon: me
+  en: 'I want to be honest with you: the bleeding is very hard to control.'
+  ok: true
+- who: 동료 간호사
+  icon: monitor
+  en: Let's be honest with the family about how sick he is, and let the doctor lead.
+  ok: true
+- who: 보호자에게
+  icon: me
+  en: Honestly, his odds are poor, and the bleeding probably won't stop.
+  ok: false
+  fix: 'I want to be honest with you: he is very sick, and the doctor will talk with you about what to expect.'
+why: 솔직함은 가족에게 중요하지만 말투와 범위가 있어요. 'odds are poor' 같은 말은 차갑고, 예후를 단정하는 일은 의사의 몫이에요. 아픈 정도는 솔직하게 말하되 의사가 설명해 줄 거라고 이어 줘요.
+

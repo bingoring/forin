@@ -1,0 +1,168 @@
+6:
+  - kind: slider
+    words: [w-sudden]
+    cue: "Her speech was normal at 2:00, and by 2:05 it was slurred."
+    scale: [gradual, quick, sudden]
+    answerAt: 2
+    why: "몇 분 사이에 갑자기 생긴 새 증상은 sudden이에요. 출혈 같은 악화 신호일 수 있어서, 마지막으로 정상이었던 시각과 함께 바로 의사에게 알려요."
+    example: "Any sudden weakness is a concern."
+    exKo: "갑작스러운 위약감은 걱정스러운 신호예요."
+  - kind: context
+    words: [w-physician]
+    word: physician
+    ko: 의사
+    scenes:
+      - {who: 보호자에게, icon: me, en: "The physician of record has been notified per policy, so please refrain from further inquiry.", ok: false, fix: "I've called her doctor, and I'll tell you what's happening as soon as I know."}
+      - {who: 동료에게, icon: monitor, en: "I'm calling the physician now about her new headache.", ok: true}
+      - {who: 야간 인계, icon: board, en: "Physician notified at 0200 of the neuro change, and orders are pending.", ok: true}
+    why: "의료진끼리는 physician 같은 직함으로 짧게 말하면 돼요. 걱정하는 보호자에게 같은 말을 규정 문구로 전하면 차갑게 들리니, 연락했고 곧 알려 주겠다고 쉽게 말해 주세요."
+  - kind: swap
+    words: [w-scan]
+    who: "보호자에게 · 검사 설명"
+    icon: me
+    before: ["We may need ", "neuroimaging", " to rule out bleeding."]
+    options: ["a scan of her head", "neuroimaging", "a non-contrast head CT"]
+    answer: "a scan of her head"
+    notes: {"a scan of her head": "보호자가 바로 알아듣고, 무엇을 찍는지 분명해요.", neuroimaging: "의료 용어라 보호자에게는 무슨 검사인지 와닿지 않아요.", "a non-contrast head CT": "정확하지만 세부 용어라 놀란 보호자에게는 무겁게 들려요."}
+    why: "놀란 보호자에게는 검사 이름보다 무엇을 보려는 검사인지가 먼저 전달되어야 해요."
+    ko: "출혈이 아닌지 확인하려면 머리 영상 촬영이 필요할 수도 있어요"
+7:
+  - kind: slider
+    words: [w-sleepiness]
+    cue: "He's a little sleepier than an hour ago, but he fully wakes to his name."
+    scale: [slight, marked, deep]
+    answerAt: 0
+    why: "이름에 완전히 깨면 slight 쪽이에요. 그래도 졸림이 늘고 있다는 변화 자체가 뇌부종의 신호일 수 있어서, 지켜보며 사정 간격을 지키고 변화는 의사에게 알려요."
+    example: "His sleepiness is increasing."
+    exKo: "졸림이 심해지고 있어요."
+  - kind: context
+    words: [w-pupil]
+    word: pupil
+    ko: 동공
+    scenes:
+      - {who: 의사 라운드, icon: monitor, en: "Right pupil is five millimeters and sluggish; left is three and brisk.", ok: true}
+      - {who: 야간 인계, icon: board, en: "Pupils equal and reactive this shift, and I'll recheck them every hour.", ok: true}
+      - {who: 보호자에게, icon: me, en: "His anisocoric pupils may indicate uncal herniation.", ok: false, fix: "One of his pupils looks bigger than the other, and we're checking on it right away."}
+    why: "의료진끼리는 크기와 반응을 수치로 짧게 말해요. 보호자에게는 같은 pupil을 anisocoric 같은 용어 대신, 눈동자 크기가 다르다고 쉽게 풀고 바로 조치한다고 알려 주세요."
+  - kind: swap
+    words: [w-swell]
+    who: "보호자에게 · 원인 설명"
+    icon: me
+    before: ["Swelling raises the pressure ", "within the cranial vault", "."]
+    options: ["inside the skull", "within the cranial vault", "intracranially"]
+    answer: "inside the skull"
+    notes: {"inside the skull": "보호자가 바로 이미지를 떠올리는 쉬운 말이에요.", "within the cranial vault": "해부학 용어라 가족에게는 딱딱해요.", intracranially: "부사형 의학 용어라 가족 대화에는 맞지 않아요."}
+    why: "보호자가 왜 졸림이 중요한지 이해하려면 압력이 어디에 생기는지부터 쉬운 말로 알려 주세요."
+    ko: "부종은 두개골 안의 압력을 높여요"
+8:
+  - kind: slider
+    words: [w-drop]
+    cue: "After the last rate change, his pressure went from 175 to 150 over ten minutes."
+    scale: [small drop, steady drop, sharp drop]
+    answerAt: 1
+    why: "시간을 두고 꾸준히 내려가는 것은 steady drop이에요. 짧은 시간에 크게 떨어지면 뇌관류가 줄 수 있어서, 주입 속도는 프로토콜대로 조절하고 의사에게 바로 알려요."
+    example: "Watch for any drop in pressure."
+    exKo: "혈압이 떨어지는지 지켜보세요."
+  - kind: context
+    words: [w-titrate]
+    word: titrate
+    ko: 적정하다
+    scenes:
+      - {who: 의사 라운드, icon: monitor, en: "Please titrate the nicardipine to keep his pressure in range.", ok: true}
+      - {who: 보호자에게, icon: me, en: "We titrate the infusion against his hemodynamic response.", ok: false, fix: "We adjust the medicine a little at a time so his pressure stays in a safe range."}
+      - {who: 동료에게, icon: board, en: "I'll titrate per protocol and recheck his pressure after each change.", ok: true}
+    why: "의료진끼리는 titrate라고 하면 용량을 조금씩 맞춘다는 뜻이 전달돼요. 가족에게는 같은 말을 hemodynamic 같은 용어와 쓰면 어렵고, 조금씩 조절한다고 풀어 주세요."
+  - kind: swap
+    words: [w-slowly]
+    who: "동료에게 · 지시"
+    icon: monitor
+    before: ["Please titrate the nicardipine ", "aggressively", " and recheck in five minutes."]
+    options: ["slowly", "aggressively", "in a rapid fashion"]
+    answer: slowly
+    notes: {slowly: "작은 단계로 조절하며 반응을 보라는 뜻이라 뇌관류 보호에 맞아요.", aggressively: "급하게 크게 바꾸라는 뜻이라 혈압이 급락할 수 있어요.", "in a rapid fashion": "빠르게 바꾸라는 뜻이라 급락 위험이 있어요."}
+    why: "혈압약은 속도를 조금씩 바꾸고 반응을 확인해야 안전해서, 지시에도 속도를 분명히 넣어 주세요."
+    ko: "니카르디핀을 천천히 적정하고 오 분 뒤에 다시 확인해 주세요"
+9:
+  - kind: slider
+    words: [w-improve]
+    cue: "She still coughs when she drinks, but less often than yesterday."
+    scale: [no change, slightly better, fully recovered]
+    answerAt: 1
+    why: "기침이 줄었어도 아직 남아 있으면 slightly better예요. 삼킴이 나아졌는지는 언어치료사 평가와 의사 지시로 확인하므로, 간호사는 관찰한 것을 정확히 알려요."
+    example: "Her swallowing may improve."
+    exKo: "삼킴이 나아질 수 있어요."
+  - kind: context
+    words: [w-tube]
+    word: tube
+    ko: 튜브
+    scenes:
+      - {who: 가족에게, icon: me, en: "The feeding tube goes through her nose into her stomach.", ok: true}
+      - {who: 야간 인계, icon: board, en: "Tube position confirmed per protocol, and tube feeds are running.", ok: true}
+      - {who: 가족에게, icon: me, en: "A nasogastric tube will bypass the oropharyngeal dysphagia.", ok: false, fix: "We'll place a small tube through her nose so she can get food safely."}
+    why: "의료진끼리는 tube 위치를 확인하고 급식 상태를 짧게 전해요. 가족에게는 같은 tube를 nasogastric, dysphagia 같은 용어 대신 코를 통해 위로 들어간다고 쉽게 풀어 주세요."
+  - kind: swap
+    words: [w-evaluate]
+    who: "가족에게 · 계획 설명"
+    icon: me
+    before: ["A speech therapist will ", "appraise her dysphagia", " soon."]
+    options: ["evaluate her swallowing", "appraise her dysphagia", "adjudicate her deglutition"]
+    answer: "evaluate her swallowing"
+    notes: {"evaluate her swallowing": "가족이 알아듣고, 무엇을 평가하는지도 분명해요.", "appraise her dysphagia": "의학 용어를 겹쳐 써서 가족에게는 어렵고 무겁게 들려요.", "adjudicate her deglutition": "판결하다는 말투에 용어까지 겹쳐 어색해요."}
+    why: "가족이 다음 단계를 이해하려면 누가 무엇을 하는지 쉬운 말로 알려 주세요."
+    ko: "언어치료사가 곧 삼킴 기능을 평가할 거예요"
+10:
+  - kind: slider
+    words: [w-stat]
+    cue: "Intracerebral bleed on warfarin: the physician asks for coags."
+    scale: [routine, soon, stat]
+    answerAt: 2
+    why: "출혈 중인 환자의 응고 검사는 결과가 치료를 좌우하므로 stat이에요. 결과에 따른 역전 약 선택과 용량은 처방자가 정하고, 간호사는 신속히 채혈하고 보내요."
+    example: "Send it stat."
+    exKo: "바로 보내 주세요."
+  - kind: context
+    words: [w-reverse]
+    word: reverse
+    ko: 역전시키다
+    scenes:
+      - {who: 의사 라운드, icon: monitor, en: "We need to reverse the warfarin as quickly as we can.", ok: true}
+      - {who: 보호자에게, icon: me, en: "We need to reverse his coagulopathy with factor concentrates.", ok: false, fix: "We're giving medicine to undo the blood thinner so the bleeding slows down."}
+      - {who: 야간 인계, icon: board, en: "The plan is to reverse his anticoagulation and recheck labs in an hour.", ok: true}
+    why: "의료진끼리는 reverse anticoagulation이라고 하면 목적이 분명해요. 가족에게는 같은 reverse를 coagulopathy 같은 용어 대신, 피가 묽어진 걸 되돌린다고 쉽게 풀어 주세요."
+  - kind: swap
+    words: [w-send]
+    who: "동료에게 · 검사 지시"
+    icon: monitor
+    before: ["Draw a coag panel and ", "send it when you can", "."]
+    options: ["send it stat", "send it when you can", "dispatch it routinely"]
+    answer: "send it stat"
+    notes: {"send it stat": "출혈 환자에게 필요한 긴급함을 분명히 전해요.", "send it when you can": "시간 여유가 있다는 말이라 역전 결정이 늦어질 수 있어요.", "dispatch it routinely": "일상 검체처럼 보내라는 뜻이라 긴급함이 전달되지 않아요."}
+    why: "응급 상황의 검사 지시에는 긴급도를 분명히 넣어야 검사실이 순서를 앞당겨요."
+    ko: "응고 검사를 채혈해서 스탯으로 보내 주세요"
+11:
+  - kind: slider
+    words: [w-steady]
+    cue: "With each check, his pressure creeps up a little but is still near the ordered range."
+    scale: [steady, drifting, swinging]
+    answerAt: 1
+    why: "한 방향으로 조금씩 움직이면 drifting이에요. 범위를 벗어나기 전에 추세를 알려야 하고, 범위를 벗어나면 처방과 프로토콜대로 보고해요."
+    example: "Keep his pressure steady."
+    exKo: "혈압을 안정적으로 유지하세요."
+  - kind: context
+    words: [w-watch]
+    word: watch
+    ko: 지켜보다
+    scenes:
+      - {who: 환자에게, icon: me, en: "We still need to watch you closely tonight.", ok: true}
+      - {who: 의사 라운드, icon: monitor, en: "Watch the groin site and his neuro exam closely after the thrombectomy.", ok: true}
+      - {who: 환자에게, icon: me, en: "You will be under continuous neurovascular surveillance, and we will watch for reocclusion.", ok: false, fix: "We'll keep a close eye on your arm, your speech, and the puncture site."}
+    why: "의료진끼리는 감시할 부위와 항목을 용어로 짧게 말해요. 환자에게는 같은 watch를 surveillance, reocclusion 같은 말 대신 무엇을 눈여겨보는지로 쉽게 알려 주세요."
+  - kind: swap
+    words: [w-weakness]
+    who: "환자에게 · 감시 안내"
+    icon: me
+    before: ["Tell me right away if any ", "hemiparesis", " comes back."]
+    options: ["weakness", "hemiparesis", "motor deficit"]
+    answer: weakness
+    notes: {weakness: "환자가 몸에서 느끼는 대로 알릴 수 있는 쉬운 말이에요.", hemiparesis: "한쪽 마비를 뜻하는 전문 용어라 환자는 알아듣기 어려워요.", "motor deficit": "의료진끼리의 용어라 환자가 증상을 말하기 어려워요."}
+    why: "혈전제거 뒤 증상이 돌아오면 바로 알려야 해서, 환자가 알아듣고 말할 수 있는 쉬운 말이 안전해요."
+    ko: "위약감이 다시 생기면 바로 말씀해 주세요"

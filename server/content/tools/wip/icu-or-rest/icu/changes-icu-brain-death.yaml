@@ -1,0 +1,366 @@
+theme: icu-brain-death
+changes:
+- kind: word-remove
+  id: w-doctor
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(공통 쉬운 단어 목록)
+- kind: word
+  id: w-confirm
+  fields:
+  - ko
+  why: 같은 ko(확인하다)인 check와 정답이 둘이 되지 않게 가른다
+- kind: word-remove
+  id: w-answer
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 가르칠 값이 없다(목록 밖 판단분)
+- kind: word-remove
+  id: w-question
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 가르칠 값이 없다(목록 밖 판단분)
+- kind: word
+  id: w-exam
+  fields:
+  - ko
+  why: 같은 ko(검사)인 test와 가르고 문장(exam supplies)과 맞춘다 — 의사가 몸을 직접 살피는 진찰
+- kind: word-remove
+  id: w-begin
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 가르칠 값이 없다(목록 밖 판단분)
+- kind: word
+  id: w-vital
+  fields:
+  - en
+  - ipa
+  - ko
+  why: 문장이 모두 vitals(복수 명사)라 헤드워드를 맞춘다
+- kind: word
+  id: w-die
+  fields:
+  - ko
+  why: 같은 ko(사망)인 death와 품사·뜻이 섞이지 않게 동사로 가른다
+- kind: word-remove
+  id: w-time
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(공통 쉬운 단어 목록)
+- kind: word-remove
+  id: w-ask
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 가르칠 값이 없다(목록 밖 판단분)
+- kind: word-remove
+  id: w-family
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(공통 쉬운 단어 목록)
+- kind: word-remove
+  id: w-hour
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(공통 쉬운 단어 목록)
+- kind: word
+  id: w-support
+  fields:
+  - ko
+  why: 문장 쓰임이 대부분 동사(support you·supporting it)라 ko를 동사로 맞춘다
+- kind: word
+  id: w-steady
+  fields:
+  - ko
+  why: 같은 ko(안정적인)인 stable과 가르고 문장(stayed steady)과 맞춘다
+- kind: word-remove
+  id: w-minute
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(공통 쉬운 단어 목록)
+- kind: word
+  id: w-vent
+  fields:
+  - ko
+  why: 같은 ko(인공호흡기)인 ventilator와 가른다 — 줄임말
+- kind: word
+  id: w-volume
+  fields:
+  - ko
+  why: 같은 ko(용량)인 dose와 가르고 문장(tidal volumes·give volume)과 맞춘다
+- kind: word
+  id: w-panel
+  fields:
+  - ko
+  why: 문장(last panel)의 뜻인 혈액검사 묶음으로 맞춘다
+- kind: word
+  id: w-turn
+  fields:
+  - ko
+  why: 같은 부류의 reposition(자세를 바꾸다)과 가른다 — 몸을 돌려 눕히는 쓰임
+- kind: word-remove
+  id: w-wrong
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 가르칠 값이 없다(목록 밖 판단분)
+- kind: word-remove
+  id: w-way
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 가르칠 값이 없다(목록 밖 판단분)
+- kind: word
+  id: w-talk
+  fields:
+  - ko
+  why: 문장이 "말을 걸다"와 "이야기 나누다"로 갈려 둘을 덮는 대화하다로 맞추고 speak(이야기하다)와 가른다
+- kind: word-remove
+  id: w-outside
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 가르칠 값이 없다(목록 밖 판단분)
+- kind: word-remove
+  id: w-feel
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 가르칠 값이 없다(목록 밖 판단분)
+- kind: word
+  id: w-arrange
+  fields:
+  - ko
+  why: 같은 ko(조율하다)인 coordinate와 가른다 — 자리를 마련하는 쓰임
+- kind: word
+  id: w-honor
+  fields:
+  - ko
+  why: 같은 ko(존중하다)인 respect와 가른다 — 전통·뜻을 받들어 따르는 쓰임
+- kind: word-remove
+  id: w-hard
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 가르칠 값이 없다(목록 밖 판단분)
+- kind: word-remove
+  id: w-body
+  why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(공통 쉬운 단어 목록)
+- kind: word-add
+  id: w-entirely
+  why: entirely — 문장에 이미 있는 말, 쉬운 단어 태그를 빼고 모자란 상황 단어 수를 채운다
+- kind: word-add
+  id: w-completely
+  why: completely — 문장에 이미 있는 말, 쉬운 단어 태그를 빼고 모자란 상황 단어 수를 채운다
+- kind: word-add
+  id: w-whatever
+  why: whatever — 문장에 이미 있는 말, 쉬운 단어 태그를 빼고 모자란 상황 단어 수를 채운다
+- kind: word-add
+  id: w-belong
+  why: belong — 문장에 이미 있는 말, 쉬운 단어 태그를 빼고 모자란 상황 단어 수를 채운다
+- kind: sentence
+  situation: 뇌사 개념·법적 절차 이해
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 뇌사 개념·법적 절차 이해
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 뇌사 개념·법적 절차 이해
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 무호흡 검사 준비
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 가족에게 상태 설명 지원
+  index: 2
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 가족에게 상태 설명 지원
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 장기기증 기관 연계 인지
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 장기기증 기관 연계 인지
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 장기기증 기관 연계 인지
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 장기기증 기관 연계 인지
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 기증 전 신체 유지 기초
+  index: 0
+  fields:
+  - words
+  why: support가 지지 요법(명사)이라 헤드워드 support(지원하다)와 맞지 않는다
+- kind: sentence
+  situation: 기증 전 신체 유지 기초
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 기증 전 신체 유지 기초
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 뇌사 후 혈역학 유지
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 요붕증 관리
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 요붕증 관리
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 체온·전해질 유지
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 체온·전해질 유지
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 가족 사별 지원·소통
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 가족 사별 지원·소통
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 가족 사별 지원·소통
+  index: 3
+  fields:
+  - words
+  why: hold가 손을 잡다 뜻이라 헤드워드 hold(유지되다)와 맞지 않는다
+- kind: sentence
+  situation: 가족 사별 지원·소통
+  index: 4
+  fields:
+  - words
+  why: step이 자리를 비키다 뜻이라 헤드워드 step(단계)과 맞지 않는다
+- kind: sentence
+  situation: 가족 사별 지원·소통
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 feel을 빼고 whatever를 새로 태그
+- kind: sentence
+  situation: 동의·문화적 고려
+  index: 0
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 동의·문화적 고려
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 동의·문화적 고려
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 기증 코디네이터 협업
+  index: 3
+  fields:
+  - words
+  why: set이 묶음 뜻이라 헤드워드 set(준비되다)과 맞지 않는다
+- kind: sentence
+  situation: 기증 코디네이터 협업
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 뇌사 후 순환 붕괴 위기
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 뇌사 후 순환 붕괴 위기
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 심한 요붕증 급변 관리
+  index: 3
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 가족 갈등·기증 거부 상황
+  index: 0
+  fields:
+  - words
+  why: I hear you는 공감 표현이라 헤드워드 hear(듣다)와 맞지 않는다
+- kind: sentence
+  situation: 가족 갈등·기증 거부 상황
+  index: 1
+  fields:
+  - words
+  why: pressure가 부담 뜻이라 헤드워드 pressure(혈압)와 맞지 않는다
+- kind: sentence
+  situation: 가족 갈등·기증 거부 상황
+  index: 3
+  fields:
+  - words
+  why: right가 권리 뜻이라 헤드워드 right(맞는)와 맞지 않는다
+- kind: sentence
+  situation: 가족 갈등·기증 거부 상황
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 family를 빼고 belong을 새로 태그
+- kind: sentence
+  situation: 판정 시점·연명 갈등
+  index: 1
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 판정 시점·연명 갈등
+  index: 2
+  fields:
+  - words
+  why: bring이 자리를 마련하다 뜻이라 헤드워드 bring(올리다)과 맞지 않는다
+- kind: sentence
+  situation: 판정 시점·연명 갈등
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 기증 장기 기능 유지 위기
+  index: 4
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
+- kind: sentence
+  situation: 기증 장기 기능 유지 위기
+  index: 5
+  fields:
+  - words
+  why: 쉬운 단어 태그 빼기
