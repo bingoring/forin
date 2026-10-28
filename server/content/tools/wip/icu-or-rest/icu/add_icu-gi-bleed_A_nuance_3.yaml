@@ -15,7 +15,7 @@
       scenes:
         - {who: 혈액은행에 전화, icon: stetho, en: "We need the cooler with the first units stat.", ok: true}
         - {who: 동료 간호사, icon: monitor, en: "Can you get the rapid infuser set up stat?", ok: true}
-        - {who: 환자 가족에게, icon: me, en: "Stat, we're activating the massive transfusion protocol on your father.", ok: false, fix: "He's bleeding a lot, so we're getting blood ready for him right now."}
+        - {who: 환자 가족에게, icon: me, en: "We're activating the massive transfusion protocol on your father stat.", ok: false, fix: "He's bleeding a lot, so we're getting blood ready for him right now."}
       why: "의료진끼리는 stat으로 지금 당장이라는 급함을 한 단어로 전해요. 가족에게 stat, massive transfusion protocol 같은 말은 낯설고 무섭게 들려요. 많이 출혈 중이라 피를 바로 준비한다고 쉬운 말로 알려 줘요."
 - situation: "토혈 기도흡인 위기"
   items:
@@ -38,14 +38,11 @@
       why: "의료진끼리는 suction이라고 짧게 말해도 바로 알아들어요. 가족에게 oropharyngeal suctioning 같은 말은 어렵고 무섭게 들려요. 입안의 피를 빼내서 숨 쉬게 하는 중이라고 쉬운 말로 알려 줘요."
 - situation: "정맥류 불응 출혈 위기"
   items:
-    - kind: slider
-      words: [w-drip, w-tamponade, w-tips]
-      cue: "Doctor: \"Medications and the balloon aren't controlling the bleed anymore.\""
-      scale: [drips, balloon tamponade, TIPS]
-      answerAt: 2
-      why: "약물(drip), 풍선 탐포네이드, TIPS 순으로 단계가 올라가요. TIPS는 간 안에 션트를 만들어 문맥 압력을 낮추는 시술로, 앞선 치료로 조절되지 않을 때 IR팀이 시행해요. 어떤 단계로 갈지는 의사가 정해요."
-      example: "TIPS is the next step when the drips and the balloon aren't enough."
-      exKo: "주입과 풍선으로 부족하면 다음 단계가 TIPS예요."
+    - kind: pair
+      words: [w-tamponade, w-shunt, w-liver]
+      pairs: [["balloon", "tamponade"], ["liver", "shunt"]]
+      decoys: ["the cooler"]
+      why: "balloon tamponade는 풍선을 부풀려 터진 정맥류를 안에서 눌러 출혈을 막는 처치예요. TIPS가 만드는 liver shunt는 간 안에서 문맥압을 낮추는 우회 통로로, 앞선 치료로 조절되지 않을 때 IR팀이 시행해요."
     - kind: context
       words: [w-transport]
       word: transport
@@ -78,12 +75,12 @@
   items:
     - kind: slider
       words: [w-ooze, w-everywhere]
-      cue: "Bedside: \"Blood is seeping from every IV site, his mouth, and old wounds.\""
+      cue: "Bedside: \"Just a little blood is seeping from one IV site.\""
       scale: [a little ooze, steady ooze, oozing everywhere]
-      answerAt: 2
-      why: "한두 군데에서 조금 스미는 것과 여기저기서 계속 스며 나오는 것은 달라요. 곳곳에서 스며 나오면 응고 인자가 부족하다는 신호일 수 있어서 바로 의사에게 알리고, 혈액 제제는 처방대로 줘요."
-      example: "He's oozing everywhere, so I'm calling the physician now."
-      exKo: "여기저기서 스며 나와서 지금 의사에게 연락할게요."
+      answerAt: 0
+      why: "한 군데에서 조금 스미는 것(a little ooze)과 여기저기서 계속 스며 나오는 것은 달라요. 곳곳에서 스며 나오면 응고 인자가 부족하다는 신호일 수 있어서 바로 의사에게 알려요. 조금 스미는 정도라도 양을 계속 확인하고 기록해요."
+      example: "It's only a little ooze from one site, but I'll keep checking it."
+      exKo: "한 군데서 조금 스미는 정도지만 계속 확인할게요."
     - kind: context
       words: [w-clot]
       word: clot
@@ -95,14 +92,11 @@
       why: "의료진끼리는 clot 한 단어로 피가 굳는 상태를 말하고 수치와 함께 확인해요. 가족에게 cascade, consumptive coagulopathy 같은 말은 어려워서 겁만 나요. 피가 제대로 굳지 않아 돕고 있다고 쉬운 말로 알려 줘요."
 - situation: "출혈 불응 목표·예후 소통"
   items:
-    - kind: slider
-      words: [w-honest]
-      cue: "Family: \"Please just tell us the truth, but gently.\""
-      scale: [sugarcoat it all, honest but gentle, blunt and cold]
-      answerAt: 1
-      why: "가족이 진실을 원하면 포장하지 않되 부드럽게 말해요. 예후와 치료 방향은 의사가 설명하고, 간호사는 가족이 이해한 것과 감정을 살피며 의사와 이어 줘요."
-      example: "I want to be honest with you, and I'll stay while we talk."
-      exKo: "솔직하게 말씀드리고 싶어요, 이야기하는 동안 곁에 있을게요."
+    - kind: pair
+      words: [w-honest, w-comfort]
+      pairs: [["honest", "answer"], ["comfort", "measures"]]
+      decoys: ["the pump"]
+      why: "honest answer는 가족이 묻는 말에 숨기거나 포장하지 않고 답하는 것이에요. comfort measures는 증상을 덜어 주고 편안하게 하는 데 중심을 둔 돌봄을 뜻하는 말이고, 어떤 방향으로 갈지는 의사와 가족이 함께 정해요."
     - kind: context
       words: [w-honest]
       word: honest

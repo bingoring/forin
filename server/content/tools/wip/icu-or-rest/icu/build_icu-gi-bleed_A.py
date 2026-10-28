@@ -11,7 +11,7 @@ KO = {  # id -> (새 ko, 이유)
  "w-check": ("점검하다", "ko '확인하다'가 w-confirm과 같아 듣고 뜻 고르기에서 정답이 둘이 된다 — check는 '점검하다'로 가름"),
  "w-take": ("재다", None),  # 유지(태그 정리만)
  "w-fast": ("빠르게", "두 문장 모두 부사(run fluids faster, dropped fast)라 형용사 ko를 부사로"),
- "w-lab": ("검사(실)", "대부분 labs=검사 수치·검사라 '검사실' 하나로는 안 맞는다"),
+ "w-lab": ("검사", "문장 대부분이 labs=검사 수치·검사라 '검사실'보다 '검사'가 맞는다 — 'the lab'(검사실) 문장은 태그를 뺌"),
  "w-bank": ("혈액은행", "bank는 blood bank로만 쓰인다 — '은행'은 오해를 부른다"),
  "w-get": ("마련하다", "ko '가져오다'가 w-bring과 같아 정답이 둘이 된다 — get은 '마련하다'로 가름"),
  "w-gather": ("모으다", "ko '챙기다'가 w-grab('급히 챙기다')과 거의 같아 가름"),
@@ -29,7 +29,6 @@ KO = {  # id -> (새 ko, 이유)
  "w-flag": ("짚어 알리다", "ko '알리다'가 w-notify와 같아 정답이 둘이 된다 — 가름"),
  "w-notify": ("통보하다", "ko '알리다'가 w-flag와 같아 가름"),
  "w-stat": ("당장", "ko '즉시'가 w-immediately와 같아 정답이 둘이 된다 — 가름"),
- "w-fresh": ("새로운", "ko '새로운'이 w-new와 같아 가름 — new는 '새로 생긴'"),
  "w-new": ("새로 생긴", "ko '새로운'이 w-fresh와 겹쳐 가름"),
  "w-clot": ("응고", "문장 4개 중 3개가 동사·동명사(clotting, clots)라 '혈전'(명사)보다 '응고'가 맞는다"),
  "w-warm": ("따뜻하게 하다", "'데우다'는 'warm the blood'만 담는다 — 'keep him warm'까지 담게"),
@@ -46,7 +45,9 @@ DETAG = set(DETAG_COMMON + DETAG_JUDGE)
 assert len(DETAG_JUDGE) <= 10
 # (상황 인덱스, 문장 인덱스) -> 뺄 단어 — 헤드워드 ko가 그 문장의 뜻과 안 맞는다
 SENT_UNTAG = {
- "w-take": [(1,1),(5,1),(17,0),(17,3)],
+ "w-take": [(1,1),(5,1),(5,3),(17,0),(17,3)],
+ "w-call": [(3,6)],
+ "w-lab": [(1,4)],
  "w-turn": [(4,5),(9,4)],
  "w-right": [(16,2)],
  "w-pressure": [(17,3)],
@@ -64,6 +65,8 @@ SENT_WHY = {
  "w-pressure": "pressure의 ko는 '혈압' — 이 문장의 pressure off는 정맥류 '압력'이라 태그를 뺌",
  "w-rate": "rate의 ko를 '속도'로 맞췄다 — heart rate 문장은 '심박수'라 태그를 뺌",
  "w-hold": "hold의 ko는 '유지되다' — 이 문장의 hold는 '따르다/미루다'라 태그를 뺌",
+ "w-call": "call의 ko는 '연락하다' — call light는 호출 장치(명사)라 태그를 뺌",
+ "w-lab": "lab의 ko는 '검사' — the lab은 검사실이라 태그를 뺌",
  "w-wheel": "wheel의 ko는 '이동시키다' — wheels up은 관용 표현이라 태그를 뺌",
  "w-repeat": "repeat의 ko는 동사 '반복하다' — 이 문장의 repeat는 형용사라 태그를 뺌",
  "w-place": "place의 ko는 '자리' — 이 문장의 place는 동사(삽입하다)라 태그를 뺌",

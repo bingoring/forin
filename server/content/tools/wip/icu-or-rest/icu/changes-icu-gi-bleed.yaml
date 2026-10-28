@@ -19,7 +19,7 @@ changes:
   id: w-lab
   fields:
   - ko
-  why: 대부분 labs=검사 수치·검사라 '검사실' 하나로는 안 맞는다
+  why: 문장 대부분이 labs=검사 수치·검사라 '검사실'보다 '검사'가 맞는다 — 'the lab'(검사실) 문장은 태그를 뺌
 - kind: word
   id: w-bank
   fields:
@@ -105,11 +105,6 @@ changes:
   fields:
   - ko
   why: ko '즉시'가 w-immediately와 같아 정답이 둘이 된다 — 가름
-- kind: word
-  id: w-fresh
-  fields:
-  - ko
-  why: ko '새로운'이 w-new와 같아 가름 — new는 '새로 생긴'
 - kind: word
   id: w-new
   fields:
@@ -251,6 +246,12 @@ changes:
   why: 쉬운 말 태그를 뺌 — 문장은 그대로
 - kind: sentence
   situation: 대구경 정맥로 확보 협조
+  index: 4
+  fields:
+  - words
+  why: lab의 ko는 '검사' — the lab은 검사실이라 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 대구경 정맥로 확보 협조
   index: 5
   fields:
   - words
@@ -297,6 +298,12 @@ changes:
   fields:
   - words
   why: 쉬운 말 태그를 뺌 — 문장은 그대로
+- kind: sentence
+  situation: 혈역학·Hb 추세 감시
+  index: 6
+  fields:
+  - words
+  why: call의 ko는 '연락하다' — call light는 호출 장치(명사)라 태그를 뺌 — 문장은 그대로
 - kind: sentence
   situation: NPO·위관 관리
   index: 1
@@ -356,7 +363,7 @@ changes:
   index: 3
   fields:
   - words
-  why: 쉬운 말 태그를 뺌 — 문장은 그대로
+  why: take의 ko는 '재다'(take vitals) — 이 문장은 맡다·복용하다·데려가다·압력을 낮추다라 태그를 뺌; 쉬운 말 태그를 뺌 — 문장은 그대로
 - kind: sentence
   situation: 출혈 병력·항응고 검토
   index: 4

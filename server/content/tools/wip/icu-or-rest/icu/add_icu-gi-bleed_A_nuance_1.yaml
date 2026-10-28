@@ -37,12 +37,12 @@
   items:
     - kind: slider
       words: [w-armband, w-tube]
-      cue: "Colleague: \"The name on the tube doesn't match his armband.\""
-      scale: [send it and fix it later, just ask him his name, stop and redraw it]
+      cue: "Nurse: \"Before we spike the blood, a second nurse and I read his name and birth date off the armband and the bag, one by one.\""
+      scale: [glance at it, check it, double-check it]
       answerAt: 2
-      why: "튜브 이름이 팔찌와 다르면 그 검체는 보내지 않고 새로 채혈해 라벨을 다시 붙이는 것이 원칙이에요. 환자에게 이름을 물어 맞춰 보는 건 도움이 되지만, 이미 잘못 붙은 라벨을 고쳐서 쓰지는 않아요. 세부는 병원 지침대로 해요."
-      example: "The tube doesn't match the armband, so we redraw it."
-      exKo: "튜브가 팔찌와 맞지 않아서 다시 채혈해요."
+      why: "수혈 전에는 간호사 두 명이 환자 팔찌와 혈액 팩의 이름·생년월일 등을 하나씩 소리 내어 맞춰 보는 것이 일반적이에요. 한 번 슥 보는 정도(glance)나 혼자 확인(check)이 아니라 다시 한 번 확인하는 double-check예요. 세부 절차는 병원 지침대로 해요."
+      example: "We double-check the armband against the bag before we start."
+      exKo: "시작하기 전에 팔찌와 혈액 팩을 다시 한 번 맞춰 봐요."
     - kind: context
       words: [w-confirm]
       word: confirm
@@ -104,18 +104,15 @@
       scenes:
         - {who: 의사에게 보고, icon: stetho, en: "His last dose of warfarin was two days ago, per his wife.", ok: true}
         - {who: 동료 간호사, icon: monitor, en: "Can you verify the last dose time against his home medication list?", ok: true}
-        - {who: 환자에게, icon: me, en: "Your last supratherapeutic dose is probably why your blood is so thin now.", ok: false, fix: "Thank you for telling us when you took your last dose. It really helps us plan."}
-      why: "의료진끼리는 마지막 복용 시각을 짧고 정확하게 주고받아요. 환자에게 확인되지 않은 원인을 탓하듯 말하면 죄책감만 줘요. 먼저 알려 줘서 고맙다고 하고 치료 계획에 쓴다고 말해요."
+        - {who: 환자에게, icon: me, en: "What was the timing of your last anticoagulant dose relative to symptom onset?", ok: false, fix: "When did you last take your blood thinner?"}
+      why: "의료진끼리는 anticoagulant, timing, onset 같은 임상어로 마지막 복용 시각을 짧고 정확하게 주고받아요. 환자에게 같은 질문을 그렇게 하면 무슨 말인지 몰라 대답하기 어려워요. 언제 마지막으로 혈액희석제를 먹었는지 쉬운 말로 물어요."
 - situation: "정맥류 출혈 초기 관리"
   items:
-    - kind: slider
-      words: [w-slow, w-octreotide]
-      cue: "Her husband: \"Will the octreotide stop the bleeding and fix her liver?\""
-      scale: [slow the bleeding, stop it for good, cure the liver disease]
-      answerAt: 0
-      why: "옥트레오타이드는 내장으로 가는 혈류를 줄여 정맥류 출혈을 늦추는 약이에요. 출혈을 영구히 멈추거나 간질환을 낫게 하는 약은 아니라서, 보통 내시경 치료와 함께 쓰고 용량은 처방대로 줘요."
-      example: "The octreotide should slow the bleeding while we get her to endoscopy."
-      exKo: "내시경을 하러 가는 동안 옥트레오타이드가 출혈을 줄여 줄 거예요."
+    - kind: pair
+      words: [w-prophylactic, w-antibiotic, w-variceal, w-bleed]
+      pairs: [["prophylactic", "antibiotic"], ["variceal", "bleed"]]
+      decoys: ["a pump"]
+      why: "prophylactic antibiotic은 감염을 미리 막으려고 쓰는 예방적 항생제예요. variceal bleed는 식도·위 정맥류에서 나는 출혈이고, 둘 다 처방대로 투여하고 지켜봐요."
     - kind: context
       words: [w-airway]
       word: airway
@@ -127,14 +124,11 @@
       why: "의료진끼리는 airway가 지켜지고 있는지 한 단어로 묻고 답해요. 가족에게 compromised, aspiration risk 같은 말을 그대로 쓰면 지금 당장 위험한 줄 알고 놀라요. 숨 쉬는 것을 가까이서 지켜보고 있다고 쉬운 말로 알려 줘요."
 - situation: "내시경 준비·조율"
   items:
-    - kind: slider
-      words: [w-standby]
-      cue: "GI doctor: \"Do you have blood available in case he bleeds during the scope?\" (it's crossmatched and ready to send)"
-      scale: [still being prepared, on standby, already running]
-      answerAt: 1
-      why: "standby는 필요할 때 바로 쓸 수 있게 준비해 두고 기다리는 상태예요. 아직 준비 중이면 '준비 중', 이미 환자에게 들어가고 있으면 '주입 중'이라고 말해야 정확해요."
-      example: "Two units are crossmatched and on standby in the blood bank."
-      exKo: "두 팩이 교차시험을 마치고 혈액은행에 대기 중이에요."
+    - kind: pair
+      words: [w-standby, w-checklist, w-blood]
+      pairs: [["blood", "on standby"], ["pre-procedure", "checklist"]]
+      decoys: ["the cuff"]
+      why: "on standby는 필요할 때 바로 쓸 수 있게 준비해 두고 기다리는 상태예요. pre-procedure checklist는 시술 전에 동의서, 알레르기, 금식 시간 같은 항목을 빠짐없이 확인하는 목록이에요."
     - kind: context
       words: [w-scope]
       word: scope

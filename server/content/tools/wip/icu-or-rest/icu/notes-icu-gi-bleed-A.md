@@ -13,10 +13,16 @@
 9. 재출혈 감시·재평가 #5 "A little tiredness is normal, it's the blood loss catching up with him." — 환자에게 '정상'이라고 안심시키는 문장. 간호사가 쉬운 말로 설명하되 계속 확인한다는 뒷말이 #6에 있으므로 허용 범위이나, 단독 진단처럼 들릴 수 있다.
 10. 토혈 기도흡인 위기 #5 "The doctor is on the way to place the breathing tube." ko "기관삽관" — breathing tube = 기관 튜브(삽관 튜브). 문제 없으나 'place'가 동사라 w-place 태그를 뺐다.
 11. 출혈 불응 목표·예후 소통 #5 "Some families choose to keep fighting, others choose comfort, both are okay." — 가족에게 선택을 제시하는 말로 의사·긴급 상담 맥락을 전제한다. 간호사 단독으로 치료 중단을 권유하지 않는지 확인 필요.
-12. 하부출혈 감별·검사 #3 / 정맥류 #3 등 ko는 이상 없음.
+
+## 판단 거리 (저작자 결정)
+- w-breathe의 en이 `breathing`(ko 숨쉬는) — id는 그대로 두고 문장 "breathing tube"에 맞춰 분사형 형용사 헤드워드로 둠.
+- w-hand(건네다)는 공통 쉬운 목록의 `hand`이지만 문장에서 `hand off`(인계하다) 구로만 쓰여 가르칠 값이 있어 남김.
+- w-bank ko를 '혈액은행'으로, w-tips·w-mtp·w-cooler 같은 긴 ko는 오답을 비슷한 길이의 실제 시술명·절차명으로 맞춤.
+- context의 word는 문장에서 세 장면이 자연스럽게 공유하는 말만 골랐다(vitals·line·confirm·trend·stomach·dose·airway·scope·transfuse·rate·coag·balloon·bowel·handoff·stat·suction·transport·reassess·clot·honest).
+- 8번 문장 하나만 더: 제한적 수혈 상황의 slider/context why에는 수치를 쓰지 않았다(처방대로).
 
 ## 결정 11 정리 요약 (changes-icu-gi-bleed.yaml)
 - 쉬운 말 15개(공통 목록: hour minute time now today morning name doctor family body know go see come good)와 판단분 10개(same here water eat want talk most lot okay still)를 태그에서 빼고 은행에서 지움.
-- 헤드워드 ko 조정 32건(듣고 뜻 고르기 정답 겹침 해소 + 문장과 안 맞는 ko).
-- 헤드워드와 뜻이 안 맞는 문장 태그 16건 제거(take·turn·right·pressure·rate·hold·wheel·repeat·place·clear).
+- 헤드워드 ko 조정 31건(듣고 뜻 고르기 정답 겹침 해소 + 문장과 안 맞는 ko).
+- 헤드워드와 뜻이 안 맞는 문장 태그 20건 안팎 제거(take·turn·right·pressure·rate·hold·wheel·repeat·place·clear·call·lab).
 - 문장 en·ko·chunks는 손대지 않음.

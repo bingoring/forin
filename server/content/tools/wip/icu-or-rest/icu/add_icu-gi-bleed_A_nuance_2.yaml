@@ -57,14 +57,11 @@
       why: "의료진끼리는 coags 한 단어로 응고 검사 묶음을 가리켜요. 환자에게 prolonged INR, thrombocytopenia 같은 말은 어렵고 겁나요. 피가 평소보다 늦게 굳는다고 쉬운 말로 풀어 주세요."
 - situation: "balloon tamponade 보조"
   items:
-    - kind: slider
-      words: [w-traction, w-weight]
-      cue: "Nurse checks: \"The traction weight on the tube matches the doctor's order.\""
-      scale: [too little traction, as ordered, too much traction]
-      answerAt: 1
-      why: "견인은 처방된 무게로 유지해야 해요. 너무 약하면 풍선이 출혈 부위를 제대로 눌러 주지 못하고, 너무 세면 식도가 손상될 수 있어요. 무게는 자주 확인하고, 다르면 임의로 바꾸지 말고 바로 의사에게 알려요."
-      example: "The traction weight is as ordered, and I'll check it often."
-      exKo: "견인 무게는 지시대로고, 자주 확인할게요."
+    - kind: pair
+      words: [w-traction, w-weight, w-balloon]
+      pairs: [["traction", "weight"], ["balloon", "port"]]
+      decoys: ["the pump"]
+      why: "traction weight는 튜브를 당겨 두는 견인 무게로, 처방된 무게를 유지하고 자주 확인해요. balloon port는 풍선에 공기를 넣는 연결구로, 풍선마다 따로 있어서 라벨로 구분해요."
     - kind: context
       words: [w-balloon]
       word: balloon
@@ -76,14 +73,11 @@
       why: "의료진끼리는 balloon, port 같은 말로 기구 상태를 짧게 확인해요. 가족에게 gastric, esophageal, varices 같은 말을 한꺼번에 쓰면 무슨 일인지 알 수 없어요. 풍선이 출혈 부위를 눌러 준다고 쉬운 말로 알려 줘요."
 - situation: "하부출혈 감별·검사"
   items:
-    - kind: slider
-      words: [w-colonoscopy, w-bowel]
-      cue: "Doctor: \"I want to look directly at the lining of the bowel.\""
-      scale: [a blood test, a colonoscopy, emergency surgery]
-      answerAt: 1
-      why: "대장내시경은 항문으로 긴 카메라를 넣어 장 안쪽을 직접 보는 검사라서 출혈 위치를 찾을 때 써요. 혈액검사는 간접적인 정보만 주고, 수술은 훨씬 큰 처치예요."
-      example: "A colonoscopy lets the doctor look right at the bowel wall."
-      exKo: "대장내시경으로 의사가 장벽을 바로 볼 수 있어요."
+    - kind: pair
+      words: [w-colonoscopy, w-find, w-bowel]
+      pairs: [["colonoscopy", "prep"], ["bleeding", "source"]]
+      decoys: ["a pump"]
+      why: "colonoscopy prep은 대장내시경 전에 장을 비우는 준비예요. 출혈이 활발할 때는 방법과 시기를 의사 지시대로 따라요. bleeding source는 피가 나는 위치로, 검사로 이것을 찾아요."
     - kind: context
       words: [w-bowel]
       word: bowel
@@ -108,9 +102,9 @@
       who: "환자에게 · 회복 설명"
       icon: me
       before: ["Feeling well today is ", "a guarantee", ", but we still check every few hours."]
-      options: [a guarantee, a good sign, "proof you're cured"]
+      options: [a guarantee, a good sign, a sure cure]
       answer: a good sign
-      notes: {a good sign: "좋은 징후라고 말하되 단정하지 않는다. 그래서 계속 확인한다는 말과 이어진다.", a guarantee: "다시 피가 나지 않는다고 보장하는 말이라 지킬 수 없는 약속이 된다.", "proof you're cured": "다 나았다는 단정이라 틀릴 수 있고 이어지는 'but'과도 맞지 않는다."}
+      notes: {a good sign: "좋은 징후라고 말하되 단정하지 않는다. 그래서 계속 확인한다는 말과 이어진다.", a guarantee: "다시 피가 나지 않는다고 보장하는 말이라 지킬 수 없는 약속이 된다.", a sure cure: "다 나았다는 단정이라 틀릴 수 있고 이어지는 'but'과도 맞지 않는다."}
       why: "컨디션이 좋은 것은 좋은 소식이지만 재출혈이 없다는 보장은 아니에요. 보장이나 완치 같은 말은 지키기 어려운 약속이 되니, 'a good sign'처럼 사실 그대로 말해요."
       ko: 오늘 컨디션이 좋은 건 좋은 징후예요
 - situation: "IR·내시경 이송 조율"
