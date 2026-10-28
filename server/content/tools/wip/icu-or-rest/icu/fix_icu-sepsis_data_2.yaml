@@ -1,0 +1,165 @@
+# 문장 수정 — 키는 "상황번호.문장번호"(0부터). dk는 [오답1, 오답2](null이면 그대로).
+"1.3":
+  expect: "We're drawing your cultures now"
+  en: "We're drawing your cultures now, and the antibiotic starts right after — we're not delaying your treatment for this."
+  ko: "지금 배양검사를 채취하고 바로 이어서 항생제를 시작해요, 이것 때문에 치료를 미루지 않고 있어요."
+  chunks: ["We're drawing your cultures", "now", ", and the antibiotic starts", "right after", "— we're not delaying", "your treatment", "for this", "."]
+  why: "We're drawing …과 we're not delaying처럼 지금 하고 있는 일을 현재진행형으로 말하면, 앞날을 장담하는 약속이 아니라 지금의 사실을 알려 주는 말이 돼요. right after는 채취 바로 뒤에 항생제가 이어진다는 순서를 보여 줘요."
+  dk:
+    - "지금 배양검사를 채취하고 바로 이어서 항생제를 시작해요, 이것 때문에 퇴원을 미루지 않고 있어요"
+    - "지금 배양검사를 채취하고 바로 이어서 항생제를 시작해요, 이것 때문에 면회를 미루지 않고 있어요"
+"2.3":
+  expect: "We already sent his blood cultures"
+  en: "We already sent his blood cultures, so there's no reason to delay the antibiotic."
+  ko: "혈액배양은 이미 보냈으니, 항생제를 미룰 이유가 없어요."
+  chunks: ["We already sent", "his blood cultures", ", so there's no reason", "to delay the antibiotic", "."]
+  why: "so 앞에 이미 끝난 일(already sent)을 두면 뒤의 there's no reason to …가 근거를 얻어요. to delay 뒤에 약 이름을 붙여 무엇을 미루지 않는지 분명히 말해요."
+  dk:
+    - "혈액배양 결과는 이미 나왔으니, 항생제를 미룰 이유가 없어요"
+    - "동의서는 이미 받았으니, 항생제를 미룰 이유가 없어요"
+"9.4":
+  expect: "We'll keep the current antibiotic until the new one"
+  en: "We'll keep the current antibiotic until the first dose of the new one."
+  ko: "새 항생제의 첫 투여 전까지 지금 항생제를 유지할게요."
+  chunks: ["We'll keep", "the current antibiotic", "until the first dose", "of the new one", "."]
+  words: [w-keep, w-current, w-antibiotic]
+  why: "until the first dose of the new one에서 one은 antibiotic을 대신 받아요. 새 약의 첫 투여 때까지 지금 약을 이어 가므로, 약을 바꾸는 사이에 치료가 비지 않는 순서가 드러나요."
+  decoy: "a spare pillow"
+  dk:
+    - "새 항생제가 약국에 도착할 때까지 지금 항생제를 유지할게요"
+    - "새 항생제의 첫 투여 전까지 지금 항생제 반응을 지켜볼게요"
+"10.4":
+  expect: "If his pressure doesn't respond in an hour"
+  en: "If his pressure still doesn't respond, the team will escalate to the next agent."
+  ko: "그래도 혈압이 반응하지 않으면 팀이 다음 약제로 올릴 거예요."
+  chunks: ["If his pressure", "still doesn't respond", ", the team will escalate", "to the next agent", "."]
+  why: "If …still doesn't respond는 지금 쓰는 약에 반응이 없을 때라는 조건이에요. the team will escalate는 올리는 결정을 의사와 팀이 내린다는 말이라, 간호사가 혼자 정하는 일처럼 들리지 않아요."
+  dk:
+    - "그래도 혈압이 반응하지 않으면 약사가 다음 약제로 올릴 거예요"
+    - "그래도 혈압이 반응하지 않으면 영양팀이 다음 약제로 올릴 거예요"
+"13.4":
+  expect: "Please wear a gown and gloves before entering"
+  en: "Please wash your hands well before entering, and wear a gown and gloves if the sign on his door says to."
+  ko: "들어오시기 전에 손을 잘 씻어 주시고, 병실 문 안내문에 쓰여 있으면 가운과 장갑도 착용해 주세요."
+  chunks: ["Please wash your hands well", "before entering", ", and wear a gown and gloves", "if the sign on his door", "says to", "."]
+  why: "손 씻기를 먼저 말하고 보호구를 뒤에 두면 손 위생 → 보호구 순서가 지켜져요. if the sign on his door says to는 가운과 장갑을 병실 문 안내문에 적힌 대로만 착용하라는 조건이라, 병원 지침을 따른다는 점이 분명해요."
+  dk:
+    - "나가실 때 병실 문 안내문대로 가운과 장갑을 벗어 통에 버리시고, 손을 잘 씻어 주세요"
+    - "들어오시기 전에 손을 잘 씻어 주시고, 병실 침대 옆 안내문에 쓰여 있으면 가운과 장갑도 착용해 주세요"
+"20.4":
+  expect: "There's no wrong answer here"
+  chunks: ["There's no wrong answer", "here", "— let's talk through", "what he would have wanted", "."]
+  dk:
+    - "여기엔 틀린 답이 없어요, 그분이 무엇을 원하셨을지 천천히 적어 봐요"
+    - null
+"4.0":
+  expect: "Can you tell me where you've had pain"
+  ko: "어디가 아프거나 빨갛게 됐는지, 열이 난 적은 있는지 말씀해 주시겠어요?"
+  dk:
+    - "어디가 아프거나 가렵게 됐는지, 열이 난 적은 있는지 말씀해 주시겠어요?"
+    - "어디가 아프거나 빨갛게 됐는지, 기침이 난 적은 있는지 말씀해 주시겠어요?"
+"15.1":
+  expect: "We're seeing multi-organ dysfunction"
+  ko: "다장기 기능장애가 보여서 지금 치료 단계를 올려야 해요."
+  dk:
+    - "혈압 저하가 보여서 지금 치료 단계를 올려야 해요"
+    - "단일 장기 기능장애가 보여서 지금 치료 단계를 올려야 해요"
+"17.2":
+  expect: "Let's prepare for intubation"
+  words_remove: [w-therapy]
+  dk:
+    - "흡인기를 켜고 호흡치료팀을 부릅시다"
+    - "산소를 올리고 호흡치료팀을 부릅시다"
+# ---- distractorsKo만 (A 안전 17문장·B 말투 14·C 3 중 위에 없는 것) ----
+"2.4":
+  expect: "Every minute counts"
+  dk: ["이 첫 한 시간은 분 단위가 중요해서, 안전한 한도 안에서 팀 전체가 빠르게 움직이고 있어요", null]
+"3.2":
+  expect: "If his lungs sound wet"
+  dk: ["폐에서 젖은 소리가 나면 바로 침대 머리를 올려 드릴게요", "폐에서 젖은 소리가 나면 바로 산소포화도도 확인할게요"]
+"4.4":
+  expect: "I'll check your skin"
+  dk: ["피부, 라인, 그리고 최근 상처를 의사와 함께 확인해 볼게요", null]
+"7.1":
+  expect: "We recheck it"
+  dk: ["항생제가 효과가 있는지 확인하려고 다시 검사해요", null]
+"10.2":
+  expect: "Let's confirm the order"
+  dk: ["처방을 확인하고 첫 투여 시각을 기록해 둡시다", "처방을 확인하기 전에 알레르기 기록부터 봅시다"]
+"10.3":
+  expect: "Check the vasopressor dose"
+  dk: [null, "회진 전에 승압제 용량을 확인하세요, 스테로이드 처방은 회진 때 같이 볼 거예요"]
+  decoy: "a paper cup"
+"11.3":
+  expect: "Two organs failing"
+  dk: ["두 장기가 차례로 멈추면 회진 때가 아니라 지금 중환자전담의를 불러야 해요", null]
+"14.2":
+  expect: "We'll narrow it down"
+  dk: ["배양 결과가 안내해 주면 그때 차트에 남길게요", "배양 결과가 나오면 그때 팀과 정할게요"]
+"15.2":
+  expect: "Let's call the intensivist"
+  dk: ["중환자전담의를 부르는 동안 지금 용량을 기록해 둡시다", "중환자전담의를 부르고 도착하면 지금 용량을 보고합시다"]
+"15.4":
+  expect: "Document the pressor doses"
+  dk: ["다음 승압제를 추가하기 전에 라인 연결을 한 번 더 봐 주세요", "다음 승압제를 추가한 뒤에도 용량을 계속 기록해 두세요"]
+  decoy: "the vending machine"
+"16.2":
+  expect: "Let's send a DIC panel"
+  dk: ["DIC 검사 패널을 보내기 전에 검체 라벨을 같이 봅시다", "DIC 검사 패널을 보내고 결과가 나오면 바로 다시 봅시다"]
+"19.3":
+  expect: "This can turn septic"
+  dk: [null, "지금 수술실로 보내지 않으면 몇 시간 안에 혈압이 떨어질 수 있어요"]
+"19.4":
+  expect: "I'll keep monitoring his pressure"
+  dk: ["수술팀이 도착할 때까지 혈압과 젖산을 표에 계속 적을게요", null]
+"0.2":
+  expect: "I'll let the doctor know"
+  dk: ["무엇이든 의사가 정하면 바로 가족분께 알려 드릴게요", null]
+"0.4":
+  expect: "I'll still explain"
+  dk: [null, "지금 혼란스러워 보이셔도 의사가 뭘 하는지 계속 설명해 드릴게요"]
+"6.2":
+  expect: "We'll give it through a central line"
+  dk: [null, "중심정맥관으로 줄 거고, 주입 부위도 매시간 살펴볼게요"]
+"11.1":
+  expect: "Let's flag"
+  dk: [null, "오르는 크레아티닌과 빌리루빈을 약사에게도 알려 둡시다"]
+"16.3":
+  expect: "Please call the blood bank"
+  dk: [null, "지금 혈액은행에 연락해 주세요, 검체는 바로 내려보낼게요"]
+"16.4":
+  expect: "Watch for bleeding"
+  dk: [null, "혈소판을 기다리는 동안 모든 라인 부위의 출혈을 표에 적어 두세요"]
+"17.1":
+  expect: "This is progressing to ARDS"
+  dk: [null, "패혈성 쇼크가 심해져서 환기를 올려야 해요"]
+"17.4":
+  expect: "Get the intubation cart ready"
+  dk: ["삽관 카트를 복도에서 가져오고 지금 마취과를 호출하세요", null]
+"18.1":
+  expect: "He needs continuous dialysis"
+  dk: [null, "수액과 전해질을 조절하려면 투석 카테터가 먼저 필요해요"]
+"18.2":
+  expect: "Let's coordinate"
+  dk: ["투석팀과 조율해서 투석 카테터 위치를 정합시다", "투석팀과 조율해서 시작 시각을 알립시다"]
+"18.4":
+  expect: "Please call the renal team"
+  dk: [null, "소변이 더 줄기 전에 지금 신장내과팀을 불러 주세요"]
+"19.1":
+  expect: "He needs emergency surgery"
+  dk: [null, "조직을 살리려면 지금 바로 응급 수술이 필요해요"]
+"19.2":
+  expect: "Let's alert the OR team"
+  dk: [null, "수술실 팀에 알리고 가족분께 바로 설명합시다"]
+"19.0":
+  expect: "The infection is spreading fast"
+  dk: ["감염이 빠르게 퍼지고 상처가 붓고 있어요", null]
+"3.3":
+  expect: "We started with a large amount"
+  dk: [null, "맥박이 너무 빨라서 처음엔 많은 양의 수액으로 시작했어요"]
+"4.2":
+  expect: "Knowing where the infection started"
+  dk: ["감염이 언제 시작됐는지 알면 정확하게 치료하는 데 도움이 돼요", null]
+"11.4":
+  expect: "I'll chart the trend"
+  decoy: "a warm blanket"

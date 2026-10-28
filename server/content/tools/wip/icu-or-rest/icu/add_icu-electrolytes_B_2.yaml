@@ -1,0 +1,37 @@
+situations:
+- title: 정맥 보충 안전 투여
+  s:
+  - ["안전 설명", shield, "'slowly'와 'at a safe concentration'을 함께 말하면 속도와 농도 두 가지 안전장치가 있다고 전해져요. 'We give'는 팀이 하는 일이라 가족이 안심해요.", "in the hallway", "칼륨은 천천히, 안전한 농도로 준비해요.", "칼륨은 천천히, 안전한 농도로 확인해요.", "potassium", "vitamin", "antibiotic", "iron"]
+  - ["이유 설명", shield, "'to protect'로 목적을 붙이면 왜 라인을 골라 쓰는지 가족이 이해해요. 'right line'은 약에 맞는 정맥 통로라는 뜻이에요.", "in the box", "정맥과 폐를 보호하려고 알맞은 라인으로 들어가요.", "정맥과 피부를 보호하려고 알맞은 라인으로 들어가요.", "protect", "warm", "measure", "test"]
+  - ["감시 안내", monitor, "'while it infuses'는 주입이 진행되는 동안 계속 본다는 시간 표현이에요. 'closely'를 붙이면 곁을 지키는 느낌이 전해져요.", "for the visit", "주입되는 동안 곁에서 유심히 기록하고 있어요.", "주입되는 동안 곁에서 유심히 안내하고 있어요.", "infuses", "expires", "leaks", "melts"]
+  - ["펌프 설명", gear, "'controls exactly'는 사람이 손으로 조절하지 않고 기계가 정해 준 속도를 지킨다는 뜻이에요. 'how fast'로 속도를 짚어 말해요.", "next to her", "이 펌프가 칼륨이 들어가는 시각을 정확히 기록해요.", "이 펌프가 칼륨이 들어가는 횟수를 정확히 세요.", "pump", "bag", "bed", "tray"]
+  - ["증상 안내", faceWorried, "'might feel'은 가능성을 말해 미리 마음의 준비를 시켜요. 'normal with this medicine'은 이 약에서 흔한 느낌이라는 설명이에요.", "after lunch", "다리가 약간 따끔할 수 있는데, 이 약을 쓸 때는 정상이에요.", "팔이 약간 따뜻할 수 있는데, 이 약을 쓸 때는 정상이에요.", "medicine", "bandage", "blanket", "monitor"]
+  - ["부위 확인", magnify, "'I'll check … often'은 간호사가 직접 자주 본다는 약속이에요. 'to make sure'로 확인 이유를 밝혀 가족이 안심해요.", "on the tray", "약이 식지 않는지 확인하려고 주사 부위를 자주 살펴볼게요.", "알람이 울리지 않는지 확인하려고 주사 부위를 자주 살펴볼게요.", "irritating", "closing", "cutting", "freezing"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 칼륨 정맥 투여 안내 4문장 순서
+    why: 칼륨을 천천히 안전한 농도로 준다고 먼저 말하고, 알맞은 라인을 쓰는 이유를 설명한 뒤, 그 라인에 연결된 펌프가 속도를 조절한다고 알리고, 주입이 진행되는 동안 지켜본다고 마무리해요.
+    lines:
+    - ["We give potassium slowly and at a safe concentration.", shield, "칼륨은 천천히, 안전한 농도로 드려요", "방법"]
+    - ["It goes through the right line to protect her vein.", shield, "정맥을 보호하려고 알맞은 라인으로 들어가요", "이유"]
+    - ["That line connects to a pump that controls how fast it goes in.", gear, "그 라인은 들어가는 속도를 조절하는 펌프에 연결돼요", "펌프"]
+    - ["While it infuses, I'll stay close and watch her and the site.", monitor, "주입되는 동안 곁에서 환자분과 주사 부위를 지켜볼게요", "감시"]
+- title: 심전도 전해질 변화 인지
+  s:
+  - ["파형 해석", monitor, "'can mean'은 파형 하나만으로 단정하지 않고 가능성을 말하는 임상 표현이에요. 'peaked T waves'는 고칼륨의 대표 소견이에요.", "on the chart", "P파가 뾰족합니다. 고칼륨 가능성 있습니다.", "T파가 뒤집혔습니다. 고칼륨 가능성 있습니다.", "peaked", "flat", "inverted", "tiny"]
+  - ["QT 해석", monitor, "'can point to'는 여러 원인 중 후보를 가리킨다는 뜻이에요. 저칼륨·저마그네슘·저칼슘을 나열하면 확인해야 할 수치가 한 번에 정리돼요.", "at the desk", "PR 연장은 저칼륨, 저마그네슘, 저칼슘을 시사합니다.", "QT 연장은 저칼륨, 저마그네슘, 고칼슘을 시사합니다.", "magnesium", "iron", "zinc", "copper"]
+  - ["검사·보고", pager, "'stat'은 지금 바로 처리해 달라는 신호예요. 'Let's'로 시작하면 팀이 함께 한다는 느낌을 주고 'tell the team'으로 공유까지 끝내요.", "for his chart", "즉시 전해질 패널 라벨 붙이고 팀에 알리겠습니다.", "즉시 전해질 패널 내고 팀에 물어보겠습니다.", "panel", "chart", "bottle", "printer"]
+  - ["리듬 보고", monitor, "'shows'로 모니터가 보여 주는 사실만 먼저 전하면 해석 전에 근거가 분명해져요. 두 소견을 'and'로 이어 한 번에 보고해요.", "in the room", "리듬 스트립에 P파 첨예, QRS 확장 보입니다.", "리듬 스트립에 T파 첨예, QT 확장 보입니다.", "widened", "shortened", "flattened", "hidden"]
+  - ["선제 조치 보고", check, "'I already grabbed'는 이미 해 두었다는 완료 보고라서 동료가 같은 일을 또 하지 않아요. 'repeat ECG'는 변화를 비교하기 위한 재촬영이에요.", "from the cart", "이미 응급 칼륨 검사와 재촬영 심전도 설명했습니다.", "이미 응급 칼륨 검사와 재촬영 심전도 기록했습니다.", "ECG", "X-ray", "MRI", "biopsy"]
+  - ["호출 요청", pager, "'Can you … while I …'는 두 사람이 동시에 일을 나누자는 요청이에요. 'flag the monitor'는 변화를 놓치지 않게 모니터에 표시한다는 뜻이에요.", "on the phone", "제가 모니터 닦는 동안 전공의 좀 호출해 주시겠어요?", "제가 모니터 설명하는 동안 전공의 좀 호출해 주시겠어요?", "monitor", "door", "curtain", "desk"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 심전도 변화 보고 4문장 순서
+    why: 모니터가 보여 주는 파형을 먼저 알리고, 그 파형이 시사하는 원인을 말한 뒤, 이미 해 둔 검사를 보고하고, 마지막으로 동료에게 호출을 부탁해요.
+    lines:
+    - ["His rhythm strip shows peaked T waves.", monitor, "리듬 스트립에 T파 첨예가 보입니다", "파형"]
+    - ["Peaked T waves like those can mean high potassium.", monitor, "그런 첨예 T파는 고칼륨을 뜻할 수 있습니다", "해석"]
+    - ["That is why I already grabbed a stat potassium.", check, "그래서 이미 응급 칼륨 검사를 냈습니다", "조치"]
+    - ["With the potassium sent, can you page the resident while I flag the monitor?", pager, "제가 모니터 표시하는 동안 전공의 좀 호출해 주시겠어요?", "요청"]

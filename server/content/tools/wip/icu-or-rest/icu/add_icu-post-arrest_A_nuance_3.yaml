@@ -1,0 +1,134 @@
+- situation: "신경학적 예후 검사 준비"
+  items:
+    - kind: slider
+      words: [w-early, w-predict, w-outcome]
+      cue: "Colleague: \"His family asks at hour eighteen if he will wake up.\""
+      scale: [promise he will fully recover, tell them he will not wake, say it is too early to know]
+      answerAt: 2
+      why: "심정지 후 신경학적 예후 판정은 보통 정상체온을 회복한 뒤 72시간 이후에 여러 검사를 종합해 해요. 18시간째에는 회복을 약속하거나 못 깨어난다고 단정하지 말고, 아직 알기 이르다고 정직하게 말해요."
+      example: "We avoid predicting outcome too early."
+      exKo: "너무 이르게 결과를 예측하지 않습니다."
+    - kind: context
+      words: [w-result]
+      word: result
+      ko: 결과
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "The result is back, and we'll put it together with the exam and EEG.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Can you gather the result from radiology?", ok: true}
+        - {who: 가족에게, icon: me, en: "His MRI result shows restricted diffusion in the bilateral basal ganglia, so prognosis is guarded.", ok: false, fix: "One scan can't tell us everything, so we'll look at several tests together before we talk about what to expect."}
+      why: "의료진끼리는 영상 소견 용어를 그대로 쓰지만, 가족에게는 한 검사 결과만으로 단정하지 않고 여러 검사를 종합해 설명한다는 점을 쉬운 말로 알려야 해요."
+- situation: "재정지 즉각 소생"
+  items:
+    - kind: slider
+      words: [w-pulse, w-charge, w-defibrillator]
+      cue: "Colleague: \"He's in VFib and has lost his pulse.\""
+      scale: [start CPR and charge the defibrillator, wait and check again in five minutes, call his family before anything else]
+      answerAt: 0
+      why: "심실세동에 맥박이 없으면 바로 가슴압박을 시작하고 제세동기를 충전해 쇼크 준비를 해요. 기다리거나 가족에게 먼저 연락하는 사이에 소생 가능성이 줄어요."
+      example: "He's in VFib and lost his pulse — start compressions now."
+      exKo: "심실세동이고 맥박이 사라졌어요. 지금 바로 압박을 시작하세요."
+    - kind: context
+      words: [w-shock]
+      word: shock
+      ko: 쇼크(전기충격)
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "Rhythm is VFib, so charge and shock now.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Everybody clear, I'm about to shock.", ok: true}
+        - {who: 가족에게, icon: me, en: "He received an asynchronous biphasic shock at two hundred joules.", ok: false, fix: "His heart stopped again, so we gave it an electric shock to bring back a normal rhythm."}
+      why: "의료진끼리는 파형과 에너지를 숫자로 짧게 말해도 돼요. 가족에게는 joule 같은 단위보다 심장이 다시 멈춰 전기로 되살리려 했다는 사실을 쉬운 말로 알려요."
+- situation: "재가온 중 혈압 붕괴 위기"
+  items:
+    - kind: slider
+      words: [w-rewarm, w-slow, w-pressure]
+      cue: "Monitor: \"BP seventy-two over forty, twenty minutes into rewarming.\""
+      scale: [warm him faster to fix it, hold the fluids and wait, slow the rewarming rate]
+      answerAt: 2
+      why: "재가온으로 혈관이 확장되면 혈압이 갑자기 떨어질 수 있어요. 재가온 속도를 늦추고 수액과 승압제로 혈압을 받쳐요. 더 빨리 데우거나 수액 없이 기다리면 더 나빠져요."
+      example: "Let's slow the rewarming rate until his pressure stabilizes."
+      exKo: "혈압이 안정될 때까지 재가온 속도를 늦춥시다."
+    - kind: context
+      words: [w-bolus]
+      word: bolus
+      ko: 볼루스(급속 주입)
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "I'm giving a fluid bolus and starting the vasopressor.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "I'm hanging the second bolus now.", ok: true}
+        - {who: 가족에게, icon: me, en: "We're administering an isotonic crystalloid bolus for hypotension.", ok: false, fix: "We're giving him fluid quickly through his IV to bring his blood pressure back up."}
+      why: "의료진끼리는 bolus 한마디로 빠른 정량 주입을 뜻해요. 가족에게는 crystalloid나 hypotension 같은 말 대신 수액을 빠르게 넣어 혈압을 올린다고 쉽게 말해요."
+- situation: "냉각 중 부정맥 위기"
+  items:
+    - kind: slider
+      words: [w-bradycardia, w-hypothermia, w-warm, w-slightly]
+      cue: "Colleague: \"His heart rate is thirty-eight at thirty-two degrees.\""
+      scale: [keep cooling exactly as planned, ask the doctor about warming slightly, double the sedation for comfort]
+      answerAt: 1
+      why: "깊은 저체온에서는 서맥이 올 수 있어서, 혈압이 떨어지거나 불안정하면 의사와 목표체온을 약간 올려 가온할지 상의해요. 계획대로만 계속하거나 진정만 늘리는 건 원인을 다루지 않아요."
+      example: "Let's treat the arrhythmia and consider warming him slightly."
+      exKo: "부정맥을 처치하고 약간 가온하는 것도 고려합시다."
+    - kind: context
+      words: [w-rhythm]
+      word: rhythm
+      ko: 리듬(박동)
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "Rhythm just changed to VT with a pressure drop.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Watch his rhythm while I check the pads.", ok: true}
+        - {who: 가족에게, icon: me, en: "His rhythm has degenerated into monomorphic VT with hemodynamic compromise.", ok: false, fix: "His heartbeat became fast and irregular, so we're treating it right away."}
+      why: "의료진끼리는 VT나 혈역학 같은 말로 상황을 바로 공유해요. 가족에게는 용어 대신 심장 박동이 빠르고 불규칙해져 지금 처치 중이라는 사실을 쉬운 말로 알려요."
+- situation: "신경학적 예후 불량 가족 상담"
+  items:
+    - kind: slider
+      words: [w-wake, w-promise, w-chance]
+      cue: "Daughter: \"Just tell me, will he ever wake up?\""
+      scale: ["It's too early to say for sure.", "He will be fine, I promise.", "There is absolutely no chance."]
+      answerAt: 0
+      why: "예후가 불확실할 때 지킬 수 없는 약속이나 근거 없는 단정은 가족에게 상처가 돼요. 아는 것과 모르는 것을 정직하게 말하고 곁에 있겠다고 알려 줘요."
+      example: "I know you're asking if he'll wake up."
+      exKo: "깨어날 수 있을지 묻고 계신 거 알아요."
+    - kind: swap
+      words: [w-poor, w-chance, w-meaningful]
+      who: "가족에게 · 검사 결과 설명"
+      icon: me
+      before: ["The tests point to a ", "zero", " chance of meaningful recovery."]
+      options: [poor, zero, excellent]
+      answer: poor
+      notes: {poor: "검사가 나쁜 쪽을 가리키지만 아직 단정은 아니에요. 정직하면서 희망을 막지 않아요.", zero: "전혀 없다는 단정이라 사실보다 무겁고, 아직 판정이 끝나지 않았다면 틀린 말이 돼요.", excellent: "검사 결과와 반대로 헛된 희망을 줘요."}
+      why: "나쁜 소식은 정직하게 전하되, 확정되지 않은 것은 '낮다(poor)'처럼 사실의 정도에 맞게 말해요."
+      ko: "검사 결과는 의미 있는 회복 가능성이 낮다고 가리켜요"
+- situation: "뇌사 진행 평가 연계"
+  items:
+    - kind: slider
+      words: [w-organ, w-procurement, w-organization]
+      cue: "Colleague: \"The family is asking about organ donation before brain death is confirmed.\""
+      scale: [say the OPO team will speak with them, explain donation yourself in detail, promise that he can donate]
+      answerAt: 0
+      why: "장기기증 논의는 치료팀이 아니라 장기기증기관(OPO) 담당자가 가족에게 따로 접근해야 하고, 뇌사 확정 전에 기증을 약속하면 안 돼요. 기증기관 팀이 직접 이야기할 거라고만 알려요."
+      example: "The organ procurement team will approach the family carefully, not us."
+      exKo: "장기기증팀이 조심스럽게 가족에게 다가갈 거예요, 저희가 아니라."
+    - kind: context
+      words: [w-confirm]
+      word: confirm
+      ko: 확인하다
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "Two physicians must confirm brain death independently.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Let's confirm the testing times before we notify the family.", ok: true}
+        - {who: 가족에게, icon: me, en: "Brain death determination has been confirmed per the uniform criteria.", ok: false, fix: "Two doctors have examined him separately and confirmed that his brain has stopped working. I'm so sorry."}
+      why: "의료진끼리는 determination이나 criteria 같은 말로 정확히 보고해요. 가족에게는 법적 용어보다 의사 두 명이 확인했다는 사실을 쉽고 부드럽게, 위로와 함께 전해요."
+- situation: "연명과 중단 윤리 갈등"
+  items:
+    - kind: slider
+      words: [w-ethics, w-palliative, w-decision]
+      cue: "Son: \"Dad never wanted this, but my sister says we can't give up.\""
+      scale: [pick one side to calm them, bring in ethics and palliative care, ask them to decide quietly later]
+      answerAt: 1
+      why: "가족 의견이 갈리면 간호사는 편을 들지 않고 윤리팀과 완화의료팀 같은 자원을 연결해 대화를 도와요. 한쪽 편을 들거나 조용히 나중에 정하라고 하면 갈등이 커져요."
+      example: "We can bring in the ethics team and palliative care to help."
+      exKo: "윤리팀과 완화의료팀을 불러 도움을 받을 수 있어요."
+    - kind: context
+      words: [w-decision]
+      word: decision
+      ko: 결정
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "The family's decision is to continue current care for now.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "This decision is theirs, so let's support them through it.", ok: true}
+        - {who: 가족에게, icon: me, en: "Surrogate decision-making capacity is established, and substituted judgment applies.", ok: false, fix: "This is your family's decision, and we'll help you work through it together."}
+      why: "의료진끼리는 대리 결정이나 대리 판단 같은 법·윤리 용어로 말해요. 가족에게는 용어 대신 결정은 가족의 몫이고 함께 돕겠다는 말로 따뜻하게 전해요."

@@ -1,0 +1,210 @@
+o0:
+  tag: 대화 흐름
+  icon: compass
+  ko: ROSC 직후 사정 4문장 순서
+  why: ABC 우선순위를 먼저 밝히고, 기도 → 산소 순으로 확인한 뒤, 모두 괜찮으면 기록하면 흐름이 이어져요.
+  lines:
+    - {en: "He has a pulse back, so ABCs come first.", icon: compass, ko: "맥박이 돌아왔으니 ABC가 먼저예요", note: 우선순위}
+    - {en: "Let's confirm the airway is secure.", icon: stetho, ko: "기도가 확보됐는지 확인합시다", note: 기도}
+    - {en: "With that secure, check his oxygen level.", icon: monitor, ko: "그게 확보되면 산소 수치를 확인하세요", note: 산소}
+    - {en: "Once all of that looks good, I'll document it.", icon: pencil, ko: "모두 괜찮으면 기록할게요", note: 기록}
+o1:
+  tag: 대화 흐름
+  icon: compass
+  ko: 12유도 심전도 후 대응 4문장 순서
+  why: 심전도를 찍고, 그것을 읽고, 소견이 있으면 가동하고, 가동이 끝난 뒤 시각을 기록하는 순서예요.
+  lines:
+    - {en: "Get a twelve-lead ECG now.", icon: monitor, ko: "지금 12유도 심전도를 찍으세요", note: 촬영}
+    - {en: "Look at it for ST elevation.", icon: magnify, ko: "그걸로 ST 상승을 보세요", note: 판독}
+    - {en: "If you see it, we activate the cath lab.", icon: siren, ko: "보이면 카테터실을 가동합니다", note: 가동}
+    - {en: "Once that's done, I'll document the time.", icon: pencil, ko: "그게 끝나면 시각을 기록할게요", note: 기록}
+o2:
+  tag: 대화 흐름
+  icon: compass
+  ko: TTM 시작 준비 4문장 순서
+  why: 목표를 합의해야 장비를 맞추고, 장비가 준비돼야 탐침을 넣고, 측정값이 맞아야 타이머를 시작해요.
+  lines:
+    - {en: "Let's confirm our TTM target with the team.", icon: compass, ko: "팀과 TTM 목표를 확인합시다", note: 합의}
+    - {en: "Set up the cooling device once we agree on that.", icon: gear, ko: "합의하면 냉각장비를 준비하세요", note: 장비}
+    - {en: "Place the temperature probe as soon as it's ready.", icon: monitor, ko: "장비가 준비되면 바로 탐침을 넣으세요", note: 탐침}
+    - {en: "When the reading looks right, we start the timer.", icon: check, ko: "측정값이 맞으면 타이머를 시작해요", note: 시작}
+o3:
+  tag: 대화 흐름
+  icon: compass
+  ko: 냉각 중 칼륨 관리 4문장 순서
+  why: 원리를 말하고, 그래서 자주 검사하고, 낮게 나오면 교정한 뒤, 교정이 끝나면 다시 확인해요.
+  lines:
+    - {en: "Cooling shifts potassium into cells.", icon: bulb, ko: "냉각이 칼륨을 세포 안으로 옮겨요", note: 원리}
+    - {en: "That's why we send a metabolic panel often.", icon: lab, ko: "그래서 대사 패널을 자주 보내요", note: 검사}
+    - {en: "If his potassium comes back low, we replace it.", icon: pill, ko: "칼륨이 낮게 나오면 보충해요", note: 교정}
+    - {en: "Once it's replaced, I'll recheck the level.", icon: check, ko: "보충이 끝나면 수치를 재확인할게요", note: 재확인}
+o4:
+  tag: 대화 흐름
+  icon: compass
+  ko: TTM 중 편안함 4문장 순서
+  why: 이유를 말하고, 그래서 진정하고, 편안해지면 체위를 바꾸고, 그 뒤에 통증 점수를 확인해요.
+  lines:
+    - {en: "Cooling can be uncomfortable.", icon: faceWorried, ko: "냉각은 불편할 수 있어요", note: 이유}
+    - {en: "So we sedate him adequately.", icon: pill, ko: "그래서 충분히 진정시켜요", note: 진정}
+    - {en: "Once he's comfortable, we can reposition him.", icon: bandage, ko: "편안해지면 체위를 바꿀 수 있어요", note: 체위}
+    - {en: "I'll check his pain score after that.", icon: chartup, ko: "그 뒤에 통증 점수를 확인할게요", note: 평가}
+o5:
+  tag: 대화 흐름
+  icon: compass
+  ko: 지속 감시 4문장 순서
+  why: 감시를 유지하고, 둘 다 관찰하고, 변화가 보이면 알리고, 정리되면 기록하는 순서예요.
+  lines:
+    - {en: "Keep him on continuous ECG and arterial monitoring.", icon: monitor, ko: "지속 심전도와 동맥 모니터링을 유지하세요", note: 감시}
+    - {en: "Watch both for any rhythm change or dropping pressure.", icon: magnify, ko: "둘 다 리듬 변화나 혈압 하강을 보세요", note: 관찰}
+    - {en: "If you see either, tell me right away.", icon: speaker, ko: "둘 중 하나라도 보이면 바로 말해 주세요", note: 보고}
+    - {en: "Once that's settled, I'll document what you saw.", icon: pencil, ko: "정리되면 본 것을 기록할게요", note: 기록}
+o6:
+  tag: 대화 흐름
+  icon: compass
+  ko: TTM 냉각·유지 4문장 순서
+  why: 냉각을 시작하고, 목표에 닿으면 유지 모드로 바꾸고, 그 상태를 팽팽하게 지키고, 지나친 냉각은 피해요.
+  lines:
+    - {en: "We're inducing cooling toward our target.", icon: monitor, ko: "목표를 향해 냉각을 유도하고 있어요", note: 냉각}
+    - {en: "Once we hit target, I'll switch to maintenance mode.", icon: gear, ko: "목표에 닿으면 유지 모드로 바꿀게요", note: 전환}
+    - {en: "From there, we hold the temperature tightly stable.", icon: lock, ko: "그때부터 체온을 팽팽하게 유지해요", note: 유지}
+    - {en: "That means no overshooting below the range.", icon: shield, ko: "범위 아래로 지나치지 않는다는 뜻이에요", note: 주의}
+o7:
+  tag: 대화 흐름
+  icon: compass
+  ko: 떨림 관리 4문장 순서
+  why: 떨림이 왜 문제인지 말하고, 프로토콜을 따르고, 첫 단계를 쓰고, 부족하면 다음 약을 더해요.
+  lines:
+    - {en: "Shivering raises metabolism and fights the cooling.", icon: fire, ko: "떨림은 대사를 올리고 냉각에 저항해요", note: 이유}
+    - {en: "So we follow the shivering protocol step by step.", icon: board, ko: "그래서 프로토콜을 단계적으로 따라요", note: 프로토콜}
+    - {en: "Its first steps are surface counterwarming and sedation.", icon: bandage, ko: "첫 단계는 표면 대응가온과 진정이에요", note: 첫 단계}
+    - {en: "If those aren't enough, we add meperidine next.", icon: pill, ko: "부족하면 메페리딘을 추가해요", note: 추가}
+o8:
+  tag: 대화 흐름
+  icon: compass
+  ko: PCI 이송 4문장 순서
+  why: 도착 준비를 확인하고, 라인과 기도를 고정하고, 장비를 챙긴 뒤, 이송 중에 기도를 맡아요.
+  lines:
+    - {en: "Let's confirm the cath lab is ready for us.", icon: check, ko: "카테터실이 준비됐는지 확인합시다", note: 확인}
+    - {en: "Once they're ready, secure all lines and the airway.", icon: lock, ko: "준비되면 모든 라인과 기도를 고정하세요", note: 고정}
+    - {en: "With all of that secure, bring the monitor, meds, and a bag valve.", icon: pager, ko: "고정이 끝나면 모니터, 약물, 백밸브마스크를 챙기세요", note: 장비}
+    - {en: "During transport, I'll walk beside the bed and manage the airway.", icon: run, ko: "이송 중에는 침대 옆에서 걸으며 기도를 관리할게요", note: 이송}
+o9:
+  tag: 대화 흐름
+  icon: compass
+  ko: 혈압 목표 유지 4문장 순서
+  why: 떨어진 것을 보고하고, 승압제를 올리고, 목표에 돌아오면 유지하고, 그 이유를 말해 팀을 독려해요.
+  lines:
+    - {en: "His MAP dipped below sixty.", icon: chartup, ko: "MAP가 60 밑으로 떨어졌어요", note: 보고}
+    - {en: "So I'm titrating the vasopressor up now.", icon: pill, ko: "그래서 지금 승압제를 올리고 있어요", note: 조치}
+    - {en: "Once it's back at target, we hold there.", icon: lock, ko: "목표로 돌아오면 거기서 유지해요", note: 유지}
+    - {en: "That protects his brain after arrest.", icon: shield, ko: "그게 심정지 이후 뇌를 보호해요", note: 이유}
+o10:
+  tag: 대화 흐름
+  icon: compass
+  ko: ROSC 후 산소·CO2 4문장 순서
+  why: 산소 목표를 말하고, 수치가 좋으면 FiO2를 낮추고, 다른 수치를 맞추고, 혈액가스로 확인해요.
+  lines:
+    - {en: "Aim for normoxia, not maximal oxygen.", icon: compass, ko: "최대 산소가 아니라 정상산소를 목표로 하세요", note: 목표}
+    - {en: "Since his oxygen looks fine, let's titrate the FiO2 down toward that.", icon: gear, ko: "수치가 괜찮으니 그쪽으로 FiO2를 낮춥시다", note: 조정}
+    - {en: "For the other number, keep his CO2 in the normal range.", icon: monitor, ko: "다른 수치로는 CO2를 정상 범위로 유지하세요", note: CO2}
+    - {en: "His blood gas will tell us if both are at goal.", icon: lab, ko: "혈액가스가 둘 다 목표인지 알려 줘요", note: 확인}
+o11:
+  tag: 대화 흐름
+  icon: compass
+  ko: 재가온 관리 4문장 순서
+  why: 천천히 하라는 원칙을 말하고, 속도를 알리고, 지켜볼 변화를 말한 뒤, 변화가 없으면 속도가 안전하다고 판단해요.
+  lines:
+    - {en: "Rewarm slowly to avoid rebound complications.", icon: fire, ko: "반동 합병증을 막으려면 천천히 재가온하세요", note: 원칙}
+    - {en: "That means about half a degree per hour.", icon: chartup, ko: "한 시간에 반 도 정도라는 뜻이에요", note: 속도}
+    - {en: "As he warms, watch for vasodilation, hypotension, and hyperkalemia.", icon: magnify, ko: "가온되는 동안 혈관확장, 저혈압, 고칼륨혈증을 보세요", note: 관찰}
+    - {en: "If none of those show up, the rate looks safe.", icon: check, ko: "그중 하나도 안 나타나면 속도가 안전해 보여요", note: 판단}
+o12:
+  tag: 대화 흐름
+  icon: compass
+  ko: 발작 감시 4문장 순서
+  why: 미세한 발작을 설명하고, 그래서 뇌파를 하고, 발작이 잡히면 바로 보고하고, 그 뒤 신경과가 기록을 검토해요.
+  lines:
+    - {en: "Post-arrest seizures can be subtle, like eye twitching.", icon: magnify, ko: "심정지 이후 발작은 눈 씰룩거림처럼 미세할 수 있어요", note: 설명}
+    - {en: "So let's consider continuous EEG monitoring.", icon: monitor, ko: "그래서 지속 뇌파 모니터링을 고려합시다", note: 제안}
+    - {en: "If it picks up any seizure activity, I'll report it to the team right away.", icon: siren, ko: "발작 활동이 잡히면 바로 팀에 보고할게요", note: 보고}
+    - {en: "Neurology reviews everything it recorded after that.", icon: speech, ko: "그 뒤 신경과가 기록된 것을 모두 검토해요", note: 검토}
+o13:
+  tag: 대화 흐름
+  icon: compass
+  ko: 칼륨 변동 관리 4문장 순서
+  why: 원리를 말하고, 그래서 자주 재확인하고, 낮으면 천천히 교정하고, 교정과 재가온이 끝나면 한 번 더 확인해요.
+  lines:
+    - {en: "Cooling shifts potassium into cells, lowering serum levels.", icon: bulb, ko: "냉각이 칼륨을 세포 안으로 옮겨 수치를 낮춰요", note: 원리}
+    - {en: "So let's recheck potassium frequently.", icon: lab, ko: "그래서 칼륨을 자주 재확인합시다", note: 재확인}
+    - {en: "If it comes back low, we correct it slowly.", icon: pill, ko: "낮게 나오면 천천히 교정해요", note: 교정}
+    - {en: "Once he's rewarmed and it's corrected, I'll recheck once more.", icon: calendar, ko: "재가온과 교정이 끝나면 한 번 더 확인할게요", note: 마무리}
+o14:
+  tag: 대화 흐름
+  icon: compass
+  ko: 예후 평가 준비 4문장 순서
+  why: 원칙을 말하고, 검사 일정을 잡고, 결과를 모은 뒤에야 가족과 이야기해요.
+  lines:
+    - {en: "Prognostication relies on multiple tests over time.", icon: compass, ko: "예후 판정은 시간을 두고 여러 검사에 의존해요", note: 원칙}
+    - {en: "So let's schedule the neuro exam, imaging, and EEG.", icon: calendar, ko: "그래서 진찰, 영상, 뇌파 일정을 잡읍시다", note: 일정}
+    - {en: "We'll gather all the results once those are done.", icon: board, ko: "그게 끝나면 모든 결과를 모을게요", note: 취합}
+    - {en: "Only then will we talk with the family.", icon: handshake2, ko: "그러고 나서야 가족과 이야기할 거예요", note: 소통}
+o15:
+  tag: 대화 흐름
+  icon: siren
+  ko: 재정지 대응 4문장 순서
+  why: 압박을 먼저 시작하고, 압박이 이어지는 동안 코드를 부르고 제세동기를 가져오고, 충전되면 모두 물러난 뒤 쇼크 후 곧바로 압박을 재개해요.
+  lines:
+    - {en: "He's lost his pulse — start compressions now.", icon: siren, ko: "맥박이 사라졌어요, 지금 압박을 시작하세요", note: 압박}
+    - {en: "Now that compressions are going, someone call the code and I'll grab the defibrillator.", icon: pager, ko: "압박이 시작됐으니 코드를 부르고 제가 제세동기를 가져올게요", note: 호출}
+    - {en: "Once it's charged, everyone clear for the shock.", icon: shield, ko: "충전되면 모두 쇼크를 위해 물러나세요", note: 쇼크}
+    - {en: "Shock delivered — resume compressions right away.", icon: run, ko: "쇼크 후 바로 압박을 재개하세요", note: 재개}
+o16:
+  tag: 대화 흐름
+  icon: compass
+  ko: 재가온 중 혈압 붕괴 4문장 순서
+  why: 상황을 보고하고, 속도를 늦추며 수액을 주입하고, 그 위에 승압제를 시작한 뒤 지켜보며 추가 처치를 해요.
+  lines:
+    - {en: "His pressure dropped fast the moment we started rewarming.", icon: chartup, ko: "재가온을 시작하자마자 혈압이 빠르게 떨어졌어요", note: 보고}
+    - {en: "Slow the rewarming rate and bolus fluids now.", icon: gear, ko: "재가온 속도를 늦추고 지금 수액을 주입하세요", note: 수액}
+    - {en: "With that going in, start a vasopressor now.", icon: pill, ko: "그게 들어가는 동안 지금 승압제를 시작하세요", note: 승압제}
+    - {en: "As that takes effect, I'll watch his pressure and give a second bolus if needed.", icon: monitor, ko: "효과가 나는 동안 혈압을 보며 필요하면 두 번째 볼루스를 줄게요", note: 추가}
+o17:
+  tag: 대화 흐름
+  icon: compass
+  ko: 냉각 중 부정맥 4문장 순서
+  why: 변화를 보고하고, 원인을 짚고, 처치와 가온을 하고, 리듬이 돌아오면 그 목표체온을 유지해요.
+  lines:
+    - {en: "His rhythm just went into VT with a dropping pressure.", icon: siren, ko: "리듬이 심실빈맥으로 바뀌고 혈압도 떨어져요", note: 보고}
+    - {en: "The cold is likely driving it.", icon: fire, ko: "추위가 원인일 가능성이 높아요", note: 원인}
+    - {en: "So let's treat the arrhythmia and consider warming him slightly.", icon: pill, ko: "그래서 처치하고 약간 가온도 고려합시다", note: 처치}
+    - {en: "Once it converts back to sinus, we'll keep the new target.", icon: check, ko: "사이너스로 돌아오면 새 목표를 유지해요", note: 유지}
+o18:
+  tag: 대화 흐름
+  icon: compass
+  ko: 예후 불량 가족 상담 4문장 순서
+  why: 사과와 사실을 먼저 전하고, 가족이 품은 질문을 짚고, 서두르지 않겠다고 답한 뒤, 환자가 중시한 것을 물어요.
+  lines:
+    - {en: "I'm so sorry — his brain injury appears very severe.", icon: faceWorried, ko: "정말 죄송합니다, 뇌 손상이 매우 심각해 보여요", note: 사과}
+    - {en: "I know that raises the question of whether he'll wake up.", icon: speech, ko: "그래서 깨어날지 궁금하실 거 알아요", note: 공감}
+    - {en: "It's too early to know, and we won't rush that answer.", icon: shield, ko: "아직 알기엔 일러요, 그 답을 서두르지 않을게요", note: 솔직}
+    - {en: "Until we know more, can you tell me what matters most to him?", icon: handshake2, ko: "더 알기 전까지 그분께 가장 중요한 걸 말씀해 주시겠어요?", note: 질문}
+o19:
+  tag: 대화 흐름
+  icon: compass
+  ko: 뇌사 평가 진행 4문장 순서
+  why: 소견을 말하고, 그에 따라 공식 검사를 조율하고, 독립 판정을 알린 뒤, 확인되면 가족에게 부드럽게 알려요.
+  lines:
+    - {en: "His neurologic exam suggests progression to brain death.", icon: stetho, ko: "신경학적 진찰이 뇌사로의 진행을 시사해요", note: 소견}
+    - {en: "Given that, let's coordinate formal brain death testing per protocol.", icon: board, ko: "그러니 프로토콜대로 공식 뇌사 검사를 조율합시다", note: 조율}
+    - {en: "Two physicians will perform it independently, per policy.", icon: shield, ko: "두 명의 의사가 독립적으로 진행해요", note: 판정}
+    - {en: "Once it's confirmed, we notify the family gently.", icon: faceWorried, ko: "확인되면 가족에게 부드럽게 알려요", note: 고지}
+o20:
+  tag: 대화 흐름
+  icon: compass
+  ko: 연명과 중단 갈등 대화 4문장 순서
+  why: 힘든 마음을 먼저 알아주고, 환자 본인의 뜻에 초점을 맞추고, 도울 팀을 소개한 뒤, 결정은 가족 몫임을 확인해요.
+  lines:
+    - {en: "I can see this is an incredibly hard decision for the family.", icon: faceWorried, ko: "가족분들께 몹시 힘든 결정이라는 걸 알겠어요", note: 공감}
+    - {en: "Let's focus on what he would have wanted for himself.", icon: compass, ko: "그분 자신이 원했을 것에 집중합시다", note: 초점}
+    - {en: "To help with that, we can bring in the ethics team and palliative care.", icon: handshake2, ko: "그걸 돕기 위해 윤리팀과 완화의료팀을 부를 수 있어요", note: 지원}
+    - {en: "This decision belongs to your family, and we'll support whatever you choose.", icon: shield, ko: "이 결정은 가족 몫이고 어떤 선택이든 지지할게요", note: 존중}

@@ -1,0 +1,193 @@
+"다제내성 의심 경험적 확대":
+  - kind: slider
+    words: [w-recent]
+    cue: "Chart: \"He left the hospital two days ago after a two-week stay.\""
+    scale: [distant, recent, ongoing]
+    answerAt: 1
+    why: "recent는 얼마 지나지 않은 일을 뜻해요. 최근 입원이나 항생제 사용은 내성균 위험 요인이라, 의심되면 처음 항생제를 넓게 시작해요. distant는 오래전, ongoing은 지금도 계속되는 일이에요."
+    example: "His recent hospital stay puts him at higher risk."
+    exKo: "최근 입원했던 일이 그분의 위험을 높여요."
+  - kind: context
+    words: [w-resistant]
+    word: resistant
+    ko: 내성이 있는
+    scenes:
+      - {who: 동료에게, icon: monitor, en: "Past MRSA means we should cover for resistant organisms until the cultures return.", ok: true}
+      - {who: 환자에게, icon: me, en: "You carry resistant organisms, so we are broadening empiric coverage per the antibiogram.", ok: false, fix: "Some germs you've had before didn't respond to certain antibiotics, so we're starting a wider one."}
+      - {who: 보호자에게, icon: me, en: "His past infections were resistant to some antibiotics, so we're starting a wider one.", ok: true}
+    why: "팀끼리는 resistant organisms, antibiogram이 정확하고 빨라요. 환자에게는 약이 잘 듣지 않았던 경험을 쉬운 말로 풀어 이유를 말해 주세요."
+  - kind: swap
+    words: [w-resistant, w-bacteria]
+    who: "가족에게 · 내성균 설명"
+    icon: me
+    before: ["This helps make sure we treat any ", "resistant bacteria", "."]
+    options: [germs that resist medicine, resistant bacteria, MDR pathogens]
+    answer: germs that resist medicine
+    notes: {germs that resist medicine: "약이 잘 듣지 않는 균이라는 뜻을 가족이 바로 이해한다.", resistant bacteria: "정확한 용어. 팀끼리는 좋지만 가족에게는 설명이 필요하다.", MDR pathogens: "다제내성 병원체를 뜻하는 감염관리 약어라 가족에게는 낯설다."}
+    why: "내성균은 가족에게 '약이 듣지 않는 균'이라는 풀이와 함께 말해야 이해돼요."
+    ko: "약이 잘 안 듣는 균까지 확실히 치료할 수 있어요"
+"불응성 패혈성 쇼크 다중승압":
+  - kind: pair
+    words: [w-page, w-document]
+    pairs: [[page, the intensivist right now], [document, every dose change with the time], [prepare, a second bag before the first one runs out]]
+    decoys: [up the hallway]
+    why: "도움을 청할 때는 page(호출), 승압제는 용량이 바뀔 때마다 시각과 함께 document(기록), 약이 끊기지 않게 다음 약은 미리 prepare(준비)해요."
+  - kind: context
+    words: [w-intensivist]
+    word: intensivist
+    ko: 중환자전담의
+    scenes:
+      - {who: 동료에게, icon: monitor, en: "Page the intensivist now. His pressure won't hold even on three pressors.", ok: true}
+      - {who: 환자에게, icon: me, en: "The intensivist will be paged for refractory vasoplegic shock.", ok: false, fix: "A doctor who specializes in critical care is coming to see you right away."}
+      - {who: 보호자에게, icon: me, en: "The intensivist, our ICU specialist doctor, is on the way to see him.", ok: true}
+    why: "팀끼리는 intensivist와 질환명을 그대로 쓰는 게 빨라요. 환자에게는 어떤 의사인지, 왜 오는지를 쉬운 말로 풀어 주세요. 가족에게는 직함에 한마디 풀이를 붙이면 좋아요."
+  - kind: swap
+    words: [w-pressor]
+    who: "가족에게 · 승압제 설명"
+    icon: me
+    before: ["He's on three ", "pressors", ", but his blood pressure is still too low."]
+    options: [medicines that raise his blood pressure, pressors, vasoactive agents]
+    answer: medicines that raise his blood pressure
+    notes: {medicines that raise his blood pressure: "약이 무엇을 하는지가 분명하다. 그냥 '혈압약'이라고 하면 혈압을 낮추는 약으로 오해한다.", pressors: "팀끼리의 줄임말. 가족에게는 무슨 약인지 알 수 없다.", vasoactive agents: "혈관에 작용하는 약 전체를 가리키는 정식 용어. 가족에게는 낯설고 막연하다."}
+    why: "가족에게 '혈압약'이라고 하면 혈압을 낮추는 약으로 들려요. 혈압을 올려 주는 약이라고 분명히 말해 주세요."
+    ko: "혈압을 올리는 약을 세 가지 쓰고 있는데도 아직 혈압이 너무 낮아요"
+"패혈증 유발 DIC·출혈 위기":
+  - kind: slider
+    words: [w-bleed]
+    cue: "Chart: \"A little blood keeps seeping around the line, and it stops with a few minutes of pressure.\""
+    scale: [oozing, bleeding, hemorrhage]
+    answerAt: 0
+    why: "oozing은 천천히 배어 나오는 정도, bleeding은 뚜렷하게 피가 나는 정도, hemorrhage는 많은 양이 급히 나는 심한 출혈이에요. 눌러서 잡히는 가벼운 출혈은 oozing이에요."
+    example: "There is some oozing at the line site, so keep a close eye on it."
+    exKo: "라인 부위에서 피가 조금 배어 나오니 잘 지켜보세요."
+  - kind: context
+    words: [w-unit]
+    word: units
+    ko: 단위
+    scenes:
+      - {who: 혈액은행에, icon: monitor, en: "Please send four units of red cells to ICU bed 3.", ok: true}
+      - {who: 보호자에게, icon: me, en: "He's on unit one of the MTP at a one-to-one-to-one ratio.", ok: false, fix: "We're giving him blood and clotting products right now because he's bleeding."}
+      - {who: 보호자에게, icon: me, en: "He needs several units of blood right now, and we're getting them.", ok: true}
+    why: "혈액은행과는 필요한 units 수를 정확히 말해야 해요. 가족에게 MTP나 비율 같은 말을 하면 상황을 이해하지 못한 채 겁만 나요. 무엇을 왜 주는지 말해 주세요."
+  - kind: swap
+    words: [w-bleed]
+    who: "가족에게 · 출혈 설명"
+    icon: me
+    before: ["He's ", "hemorrhaging", " from several places."]
+    options: [bleeding, hemorrhaging, exsanguinating]
+    answer: bleeding
+    notes: {bleeding: "가족이 아는 말. 사실을 그대로 전하면서 필요 이상으로 겁주지 않는다.", hemorrhaging: "정확한 용어지만 가족에게는 낯설고 무겁게 들린다.", exsanguinating: "'피를 다 쏟는다'는 극단적인 임상어라 가족에게 쓰면 큰 충격을 준다."}
+    why: "출혈은 정도를 정확히 전하되, 가족에게는 아는 말로 시작하고 필요하면 이어서 설명해요."
+    ko: "여러 부위에서 피가 나고 있어요"
+"급성 호흡부전 ARDS 진행":
+  - kind: slider
+    words: [w-labored]
+    cue: "Chart: \"Using his neck and belly muscles with every breath, nostrils flaring.\""
+    scale: [comfortable, labored, exhausted]
+    answerAt: 1
+    why: "labored는 숨 쉬는 데 보조근육까지 쓰며 힘겹게 애쓰는 상태예요. comfortable은 편하게 쉬는 것, exhausted는 애쓰다 지쳐 호흡이 곧 무너질 수 있는 더 위험한 단계예요."
+    example: "His breathing looks very labored right now."
+    exKo: "지금 호흡이 아주 힘겨워 보여요."
+  - kind: context
+    words: [w-intubation]
+    word: intubation
+    ko: 삽관
+    scenes:
+      - {who: 호흡치료사에게, icon: monitor, en: "Intubation cart's at the bedside. He's tiring out.", ok: true}
+      - {who: 환자에게, icon: me, en: "You'll be sedated and paralyzed for intubation shortly.", ok: false, fix: "We'll give you medicine to make you sleepy, then place a breathing tube to help you breathe."}
+      - {who: 보호자에게, icon: me, en: "He's tiring, so he may need a breathing tube. That's called intubation.", ok: true}
+    why: "팀끼리는 intubation 한마디면 충분해요. 의식이 있는 환자에게 sedated, paralyzed는 겁나는 말이라, 무슨 약을 왜 쓰고 무엇을 하는지를 쉽게 말해 주세요."
+  - kind: swap
+    words: [w-ventilation]
+    who: "가족에게 · 호흡 보조 안내"
+    icon: me
+    before: ["We may need to escalate his ", "ventilation", "."]
+    options: [breathing support, ventilation, ventilatory support]
+    answer: breathing support
+    notes: {breathing support: "가족이 바로 이해하는 말. 호흡을 더 돕겠다는 뜻이 분명하다.", ventilation: "의료진 용어. 가족은 방 환기처럼 들을 수 있다.", ventilatory support: "정식 용어지만 길고 낯설어 가족에게는 맞지 않는다."}
+    why: "ventilation은 일반인에게 '환기'처럼 들려요. 가족에게는 '호흡 보조'처럼 하는 일이 보이는 말로 해 주세요."
+    ko: "그분 호흡 보조를 늘려야 할 수도 있어요"
+"급성 신손상 CRRT 필요":
+  - kind: slider
+    words: [w-climb]
+    cue: "Chart: \"Potassium 5.2, then 5.3, then 5.4 over the shift.\""
+    scale: [creep up, climb, spike]
+    answerAt: 0
+    why: "칼륨이 조금씩 오르는 건 creep up, 뚜렷하게 오르는 건 climb, 짧은 시간에 치솟는 건 spike예요. 칼륨은 오르는 속도와 높이 모두 심장 리듬에 영향을 주니 추세를 함께 보고하세요."
+    example: "His potassium is creeping up, so let's recheck it soon."
+    exKo: "칼륨이 조금씩 오르고 있으니 곧 다시 확인해 봅시다."
+  - kind: context
+    words: [w-potassium]
+    word: potassium
+    ko: 칼륨
+    scenes:
+      - {who: 동료에게, icon: monitor, en: "His potassium is climbing and the EKG is changing. Call renal now.", ok: true}
+      - {who: 환자에게, icon: me, en: "Serum potassium is critically high with peaked T waves on the EKG.", ok: false, fix: "A mineral in your blood that affects your heart is too high, so we're treating it right away."}
+      - {who: 보호자에게, icon: me, en: "His potassium, a mineral that affects his heart rhythm, is getting too high.", ok: true}
+    why: "팀끼리는 peaked T waves, EKG 변화 같은 말이 정확하고 짧아요. 환자에게는 칼륨이 무엇이고 왜 급한지를 심장과 연결해 쉬운 말로 설명해요."
+  - kind: swap
+    words: [w-electrolyte]
+    who: "가족에게 · 투석 이유"
+    icon: me
+    before: ["He needs dialysis to control fluid and ", "electrolytes", "."]
+    options: [body salts, electrolytes, serum chemistries]
+    answer: body salts
+    notes: {body salts: "몸속 염분 성분을 가족이 이해하는 말로 풀어 준다.", electrolytes: "정확한 용어라 팀끼리는 좋다. 가족에게는 설명을 붙여야 한다.", serum chemistries: "혈액 화학 검사 항목 전체를 뜻하는 약식 용어. 가족에게는 무슨 말인지 알 수 없다."}
+    why: "전해질은 가족에게 '몸속 염분 같은 성분'처럼 풀어 말하면 투석이 왜 필요한지 이해가 돼요."
+    ko: "수액과 몸속 염분 수치를 조절하려면 투석이 필요해요"
+"괴사성 감염 응급 수술 조율":
+  - kind: slider
+    words: [w-spread]
+    cue: "Chart: \"The red edge marked with a pen this morning hasn't moved.\""
+    scale: [stay put, creep, spread]
+    answerAt: 0
+    why: "stay put은 번지지 않고 그대로, creep은 천천히 번짐, spread는 눈에 띄게 퍼지는 것이에요. 괴사성 연조직 감염은 spread가 빠른 게 문제라, 펜으로 경계를 표시해 두고 변화를 봐요."
+    example: "The redness has stayed put since this morning."
+    exKo: "붉은 부위는 아침부터 그대로예요."
+  - kind: context
+    words: [w-source]
+    word: source
+    ko: 감염원
+    scenes:
+      - {who: 외과 의사에게, icon: monitor, en: "Source control is the priority, and the source is the left thigh.", ok: true}
+      - {who: 보호자에게, icon: me, en: "Source control via radical debridement is indicated for the necrotic focus.", ok: false, fix: "The surgeons need to remove the infected tissue to stop it from spreading."}
+      - {who: 보호자에게, icon: me, en: "The source of the infection is his leg, so surgery will remove it.", ok: true}
+    why: "팀끼리는 source control, debridement가 정확하고 짧아요. 가족에게는 감염이 어디서 오는지, 수술이 무엇을 없애는지를 쉬운 말로 설명해요."
+  - kind: swap
+    words: [w-septic]
+    who: "가족에게 · 수술 시급성"
+    icon: me
+    before: ["This can turn ", "septic", " within hours if we don't get him to the OR now."]
+    options: [life-threatening, septic, bacteremic]
+    answer: life-threatening
+    notes: {life-threatening: "왜 서둘러야 하는지 가족이 바로 이해한다.", septic: "정확한 임상어. 가족에게는 의미가 모호하고 무섭게만 들릴 수 있다.", bacteremic: "혈액에 균이 있다는 정확한 용어. 가족에게는 낯설다."}
+    why: "급박한 이유는 숨기지 말되, 용어보다 결과를 말하면 가족이 결정을 서두르는 이유를 이해해요."
+    ko: "지금 수술실로 가지 않으면 몇 시간 안에 생명이 위험해질 수 있어요"
+"다장기부전 목표 재설정":
+  - kind: slider
+    words: [w-struggle]
+    cue: "Nurse to family: \"His kidneys, liver, and lungs have all stopped working, even with the machines.\""
+    scale: [tire, struggle, fail]
+    answerAt: 2
+    why: "장기부전 상황에서는 완곡하게만 말하면 가족이 지금의 심각성을 오해해요. tire나 struggle은 아직 버티는 느낌이고, 기능을 잃었다면 fail이라고 분명히 말해야 해요."
+    example: "His organs are failing, and I want to be honest about that."
+    exKo: "그분의 장기들이 기능을 잃어 가고 있어요, 그 점은 솔직하게 말씀드리고 싶어요."
+  - kind: context
+    words: [w-option]
+    word: options
+    ko: 선택지
+    scenes:
+      - {who: 팀 회의, icon: board, en: "Let's lay out the options for the family: full support or comfort-focused care.", ok: true}
+      - {who: 보호자에게, icon: me, en: "The options are full code, DNR, or comfort measures only.", ok: false, fix: "We can keep doing everything, or we can focus on keeping him comfortable. We'd like to hear what he would want."}
+      - {who: 보호자에게, icon: me, en: "The team can help you weigh the options with care and honesty.", ok: true}
+    why: "팀끼리는 full code, DNR 같은 분류가 정확해요. 가족에게 그대로 말하면 차갑고 결정을 강요하는 느낌이에요. 쉬운 말로 선택의 의미를 풀고 환자가 원했을 것을 함께 묻는 것이 좋아요."
+  - kind: swap
+    words: [w-organ]
+    who: "가족에게 · 장기 상태 설명"
+    icon: me
+    before: ["His ", "organs are very sick", " despite everything we're doing."]
+    options: [organs are failing, organs are very sick, organs have entered multi-system failure]
+    answer: organs are failing
+    notes: {organs are failing: "상태를 정확하게 전하면서도 쉬운 말이다. 가족이 현실을 이해하고 결정을 준비할 수 있다.", organs are very sick: "부드럽지만 얼마나 심각한지가 전해지지 않아 가족이 회복을 기대하게 만들 수 있다.", organs have entered multi-system failure: "정확한 임상 진단명이지만 가족에게는 차갑고 어렵다."}
+    why: "위중한 상황일수록 완곡어로 돌려 말하면 가족이 오해해요. 쉬운 말로 사실을 분명히, 따뜻하게 말해 주세요."
+    ko: "저희가 다 하고 있는데도 장기들이 기능을 잃어 가고 있어요"

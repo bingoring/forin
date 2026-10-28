@@ -1,0 +1,128 @@
+# [tag, icon, why, decoy, ko1, ko2, ans, w1, w2, w3]
+situations:
+- title: CRRT 중 저체온·영양 손실 관리
+  s:
+  - ["보온 설명", gear, "'so'로 원인과 대책을 이어 말하면 왜 보온기를 쓰는지 바로 이해돼요. 'can'은 모든 경우가 아니라 생길 수 있다는 가능성이에요.", "a cooling fan", "기계가 혈액을 식혀서 보온기와 가운을 써요.", "기계가 혈액을 식혀서 보온기와 양말을 써요.", "warmer", "scale", "mask", "cart"]
+  - ["영양 설명", pill, "'some'으로 일부만 빠진다고 말해 과장하지 않아요. 'adjust'는 영양을 끊는 게 아니라 양을 맞춘다는 뜻이에요.", "his sleep", "CRRT가 수분을 일부 제거해서 영양 공급을 조정해요.", "CRRT가 영양소를 일부 제거해서 수면 시간을 조정해요.", "nutrients", "toxins", "gases", "salts"]
+  - ["지켜볼 것", magnify, "'during treatment'로 기간을 정해 치료 내내 본다는 뜻을 밝혀요. 체온과 영양을 함께 말하면 지켜보는 항목이 둘이라는 점이 분명해져요.", "after treatment", "치료 중에는 체온과 체중을 자세히 지켜봐요.", "치료 중에는 호흡과 영양을 자세히 지켜봐요.", "nutrition", "vision", "mood", "hearing"]
+  - ["증상 이유", faceWorried, "'because'로 춥다는 증상의 이유를 알려 가족이 놀라지 않게 해요. 'may'는 모두가 춥게 느끼는 건 아니라는 뜻이에요.", "because he is lonely", "혈액이 기계를 지나며 식어서 그가 졸리게 느낄 수 있어요.", "혈액이 기계를 지나며 식어서 그가 배고프게 느낄 수 있어요.", "cold", "hungry", "sleepy", "dizzy"]
+  - ["영양 보충", pill, "'make up for'는 빠져나간 만큼 채워 넣는다는 뜻의 구동사예요. 'what CRRT takes out'은 손실을 쉬운 말로 풀어요.", "to cut his meals", "수술이 빼내는 만큼 칼로리를 늘려서 보충해요.", "CRRT가 빼내는 만큼 수면을 늘려서 보충해요.", "increase", "record", "explain", "change"]
+  - ["체온 관리", monitor, "'every hour'는 확인 간격을 못 박고 'as needed'는 필요할 때만 더한다는 기준이에요. 체온을 먼저 확인하고 담요를 더하는 순서가 들려요.", "when he asks", "매시간 체온을 확인하고 필요하면 양말을 더할게요.", "매시간 체온을 기록하고 필요하면 담요를 더할게요.", "blankets", "pillows", "gowns", "curtains"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 저체온·영양 설명 4문장 순서
+    why: 춥게 느끼는 이유를 먼저 말하고, 보온 대책을 알린 뒤, 영양 손실이라는 다른 부작용을 말하고, 칼로리 보충으로 마무리해요.
+    lines:
+    - ["He may feel cold because his blood cools as it passes through the machine.", faceWorried, "혈액이 기계를 지나며 식어서 그가 춥게 느낄 수 있어요", "증상"]
+    - ["To keep him warm, I'll check his temperature every hour and add blankets as needed.", monitor, "따뜻하게 하려고 매시간 체온을 확인하고 필요하면 담요를 더할게요", "보온"]
+    - ["Besides keeping him warm, CRRT also removes some nutrients.", pill, "보온 말고도 CRRT가 영양소를 일부 제거해요", "손실"]
+    - ["So we increase his calories to make up for what it takes out.", pill, "그래서 빠져나간 만큼 칼로리를 늘려서 보충해요", "보충"]
+- title: 고칼륨혈증 응급 CRRT 연계
+  s:
+  - ["상황 보고", siren, "'critically'는 수치가 위험선을 넘었다는 임상 강조어예요. 'with ECG changes'는 수치만이 아니라 심장에 이미 영향이 있다는 신호예요.", "his sodium", "호흡 변화와 함께 칼륨 수치가 위험할 정도로 높아요.", "심전도 변화와 함께 칼슘 수치가 위험할 정도로 높아요.", "potassium", "calcium", "sodium", "glucose"]
+  - ["심장 보호", pill, "'while we prepare'는 CRRT 준비를 기다리지 않고 지금 할 일을 말해 줘요. 'protect the heart'는 칼슘을 주는 이유를 짧게 알려요.", "to calm him", "CRRT를 준비하는 동안 혈압을 올리려고 칼슘을 줍시다.", "CRRT를 준비하는 동안 뇌를 보호하려고 칼슘을 줍시다.", "protect", "measure", "cool", "relax"]
+  - ["투석 연계", handshake2, "'coordinate'는 직접 하기보다 여러 팀을 맞춘다는 뜻이에요. 'emergent'는 정해진 일정보다 앞당겨 한다는 임상 표현이에요.", "the dialysis room", "수분을 제거하려고 응급 투석을 조율할게요.", "독소를 제거하려고 응급 투석을 조율할게요.", "potassium", "phosphate", "glucose", "toxins"]
+  - ["위험 설명", siren, "'within minutes'는 시간이 매우 짧다는 걸 알려 긴급성을 전해요. 'if we don't act fast'는 행동이 결과를 바꾼다는 조건이에요.", "within hours", "빨리 행동하지 않으면 몇 분 안에 호흡이 멈출 수 있어요.", "빨리 행동하지 않으면 몇 분 안에 신장이 멈출 수 있어요.", "heart", "lungs", "liver", "brain"]
+  - ["장비 준비", run, "'pull'은 카트를 끌어온다는 동사라 직접 움직인다는 느낌이 있어요. 'while we set up'은 준비와 동시에 한다는 뜻이에요.", "the wheelchair", "이동하는 동안 응급 카트를 가져올게요.", "마무리하는 동안 응급 카트를 가져올게요.", "crash", "supply", "linen", "laundry"]
+  - ["확정 확인", monitor, "'Once'는 조건이 이루어진 뒤에 한다는 순서를 알려요. 'to confirm'은 수치만이 아니라 심전도로도 확인한다는 뜻이에요.", "before it drops", "칼륨이 떨어지면 심전도를 다시 확인해서 기록해요.", "칼륨이 떨어지면 심전도를 다시 확인해서 보고해요.", "recheck", "record", "print", "file"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 고칼륨혈증 응급 4문장 순서
+    why: 위험한 상황을 먼저 알리고, 칼슘으로 심장을 보호한 뒤, 투석 준비 중 장비를 챙기고, 칼륨이 떨어진 뒤 심전도로 확인해요.
+    lines:
+    - ["His potassium is critically high with ECG changes.", siren, "심전도 변화와 함께 칼륨 수치가 위험할 정도로 높아요", "상황"]
+    - ["Given that, let's give calcium first to protect the heart.", pill, "그러니 먼저 칼슘을 줘서 심장을 보호합시다", "보호"]
+    - ["While we prepare CRRT, I'll pull the crash cart.", run, "CRRT를 준비하는 동안 응급 카트를 가져올게요", "준비"]
+    - ["Once potassium drops after all of that, we recheck an ECG to confirm.", monitor, "그 모든 뒤에 칼륨이 떨어지면 심전도를 다시 확인해요", "확인"]
+- title: 회로 응고·실혈 위기
+  s:
+  - ["상황 보고", siren, "'clotted'는 굳었다는 뜻이고 'lost'는 돌려주지 못했다는 결과예요. 둘을 이어 말하면 원인과 손실이 한 번에 전해져요.", "and we paused", "회로가 파손돼서 그 안의 혈액을 잃었어요.", "회로가 응고돼서 그 안의 약물을 잃었어요.", "clotted", "cooled", "expired", "tilted"]
+  - ["평가·준비", gear, "'assess'는 지금 상태를 먼저 본다는 뜻이고 'fast'는 서두르자는 신호예요. 두 가지를 한 문장에 묶어 동시에 진행해요.", "his weight", "혈색소를 평가하고 빨리 새 카트를 준비합시다.", "체온을 평가하고 빨리 새 회로를 준비합시다.", "hemoglobin", "potassium", "bilirubin", "creatinine"]
+  - ["재시작 목적", run, "'to limit'는 하는 이유를 부정사로 붙여요. 'downtime'은 치료가 끊긴 시간을 한 단어로 말해요.", "to save money", "중단 시간을 줄이려고 CRRT를 조용히 재시작할 거예요.", "비용을 줄이려고 CRRT를 빨리 재시작할 거예요.", "quickly", "quietly", "calmly", "cheaply"]
+  - ["손실 강조", faceWorried, "'not just'는 흔한 오해를 바로잡는 틀이에요. 'real'은 숫자로 확인되는 실제 손실이라는 점을 강조해요.", "for a pause", "이건 치료가 잠시 멈춘 게 아니라 실제 혈액 오염이에요.", "이건 치료가 잠시 멈춘 게 아니라 실제 체액 손실이에요.", "real", "rare", "early", "cheap"]
+  - ["즉시 보고", speech, "'stat'은 지금 당장이라는 병원 약어예요. 'and notify'는 검사를 보낸 뒤 바로 알린다는 순서를 말해요.", "tomorrow", "즉시 혈색소를 받고 의사에게 알릴게요.", "즉시 혈당을 보내고 의사에게 알릴게요.", "notify", "thank", "teach", "greet"]
+  - ["재시작 전 확인", check, "'prime'은 회로를 채워 쓸 수 있게 만든다는 용어예요. 'before we restart'로 시점을 못 박아 재시작 전에 끝낸다는 약속이 돼요.", "after we restart", "재시작 전에 새 회로를 충전하고 모든 라벨을 확인해요.", "재시작 전에 새 회로를 충전하고 모든 알람을 확인해요.", "prime", "empty", "cool", "fold"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 회로 응고·실혈 4문장 순서
+    why: 일어난 일을 알리고, 평가와 준비를 동시에 시작하고, 검사를 보내 의사에게 알린 뒤, 재시작 전 확인으로 마무리해요.
+    lines:
+    - ["The circuit clotted, and we lost the blood inside it.", siren, "회로가 응고돼서 그 안의 혈액을 잃었어요", "상황"]
+    - ["So let's assess his hemoglobin and prepare a new circuit fast.", gear, "그러니 혈색소를 평가하고 빨리 새 회로를 준비합시다", "시작"]
+    - ["I'll send a stat hemoglobin and notify the doctor while you prepare it.", speech, "준비하시는 동안 즉시 혈색소를 보내고 의사에게 알릴게요", "보고"]
+    - ["Once the labs are sent, we prime the new circuit and check every connection before we restart.", check, "검사를 보낸 뒤 재시작 전에 새 회로를 충전하고 연결부를 확인해요", "확인"]
+- title: 시트르산 축적 위기
+  s:
+  - ["축적 해석", chartup, "'suggests'는 비율만으로 단정하지 않는 해석 표현이에요. 'rising'은 한 번의 값이 아니라 오르는 추세를 말해요.", "the dialysate", "총-이온화 칼슘 비율이 오르는 것은 시트르산이 새고 있다는 뜻이에요.", "총-이온화 마그네슘 비율이 오르는 것은 시트르산이 축적되고 있다는 뜻이에요.", "suggests", "prevents", "delays", "cures"]
+  - ["상태 보고", siren, "'developing'은 이미 진행 중이라는 진행형이에요. 알칼리증과 낮은 이온화 칼슘을 함께 말해 두 이상을 한 번에 전해요.", "and low sodium", "대사 산증과 낮은 이온화 칼슘이 진행되고 있어요.", "대사 알칼리증과 낮은 이온화 칼륨이 진행되고 있어요.", "alkalosis", "acidosis", "anemia", "sepsis"]
+  - ["조정 제안", gear, "'reduce … and give …'로 두 일을 이어 말해 함께 해야 한다는 뜻이 돼요. 'now'는 기다리지 말고 지금이라는 신호예요.", "later today", "지금 프로토콜대로 시트르산 속도를 확인하고 칼슘을 줍시다.", "지금 프로토콜대로 시트르산을 줄이고 칼슘 수치를 확인합시다.", "reduce", "review", "record", "report"]
+  - ["구분 설명", compass, "'isn't the same as'는 헷갈리기 쉬운 두 가지를 구분해 줘요. 시트르산 문제는 신장 수치와 따로 보아야 해요.", "as before", "이건 간 수치가 변하는 것과는 달라요.", "이건 체중 수치가 변하는 것과는 달라요.", "kidney", "liver", "heart", "lung"]
+  - ["재확인 약속", check, "'again'은 이미 한 번 잰 값을 다시 본다는 뜻이에요. 'in thirty minutes'로 다음 확인 시점을 정해요.", "in a week", "10분 뒤에 이온화 칼슘을 다시 확인할게요.", "20분 뒤에 이온화 칼슘을 다시 확인할게요.", "thirty", "twenty", "ten", "five"]
+  - ["위험 감소", chartup, "'Once'는 조건이 이루어진 뒤의 변화를 말해요. 'too'는 비율과 위험이 함께 움직인다는 뜻이에요.", "as it stays", "비율이 내려가면 출혈 위험도 함께 줄어요.", "비율이 내려가면 감염 위험도 함께 줄어요.", "risk", "pain", "noise", "cost"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 시트르산 축적 위기 4문장 순서
+    why: 비율이 뜻하는 바를 말하고, 동반된 이상을 알린 뒤, 조정을 제안하고, 조정 뒤 재확인을 약속해요.
+    lines:
+    - ["The rising total-to-ionized calcium ratio suggests citrate accumulation.", chartup, "총-이온화 칼슘 비율이 오르는 것은 시트르산 축적을 뜻해요", "해석"]
+    - ["He's also developing metabolic alkalosis and low ionized calcium.", siren, "그는 대사 알칼리증과 낮은 이온화 칼슘도 진행되고 있어요", "상태"]
+    - ["So let's reduce citrate and give calcium per the protocol now.", gear, "그러니 지금 프로토콜대로 시트르산을 줄이고 칼슘을 줍시다", "조정"]
+    - ["After that, I'll check his ionized calcium again in thirty minutes.", check, "그 뒤 30분 후에 이온화 칼슘을 다시 확인할게요", "재확인"]
+- title: 급성 폐부종 응급 초여과
+  s:
+  - ["상태 보고", siren, "'in fluid overload'는 몸에 체액이 너무 많은 상태를 한마디로 말해요. 'acute'는 갑자기 생겼다는 뜻이에요.", "and low pressure", "그는 용량 과부하로 급성 폐렴이 왔어요.", "그는 용량 과부하로 급성 신부전이 왔어요.", "pulmonary", "cardiac", "hepatic", "cerebral"]
+  - ["긴급 필요", siren, "'need … to'로 필요한 일과 그 목적을 한 문장에 담아요. 'urgent'는 기다릴 수 없다는 강한 표현이에요.", "to rest him", "통증을 줄이려면 긴급하게 체액을 제거해야 해요.", "열을 내리려면 긴급하게 체액을 제거해야 해요.", "relieve", "measure", "explain", "predict"]
+  - ["초여과 증량", gear, "'while'로 두 가지를 동시에 한다는 뜻이에요. 초여과를 늘릴 때 혈압을 같이 보는 건 너무 빨리 빠지는 걸 막으려는 안전장치예요.", "while he rests", "혈압을 확인한 뒤 순 초여과량을 늘립시다.", "혈압을 기록하면서 순 초여과량을 늘립시다.", "watching", "charting", "counting", "timing"]
+  - ["원인 설명", chartup, "'backed up'은 흐르지 못하고 거꾸로 차오른다는 구동사예요. 'made it hard to'는 결과를 쉽게 풀어요.", "into his legs", "여분의 체액이 배로 역류해서 숨쉬기 힘들어졌어요.", "여분의 체액이 폐로 역류해서 걷기 힘들어졌어요.", "lungs", "legs", "arms", "feet"]
+  - ["즉시 조치", run, "'sit him upright'은 상체를 세워 숨쉬기 편하게 한다는 뜻이에요. 'for now'는 다음 치료가 시작되기 전까지의 임시 조치라는 단서예요.", "for the scan", "이송하는 동안 그를 세워 앉히고 산소를 늘릴게요.", "검사하는 동안 그를 세워 앉히고 산소를 늘릴게요.", "sit", "carry", "turn", "lift"]
+  - ["기대 결과", chartup, "'As'는 하는 동안 함께 변한다는 뜻이에요. 'should'는 확정이 아니라 기대라서 과한 약속이 아니에요.", "after he sleeps", "체액을 빼내면 수면이 더 편해질 거예요.", "체액을 빼내면 걷기가 더 편해질 거예요.", "easier", "louder", "lighter", "shorter"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 급성 폐부종 응급 4문장 순서
+    why: 상태를 알리고, 원인을 설명한 뒤, 제거가 필요하다는 판단을 말하고, 시작한 뒤 기대하는 결과를 말해요.
+    lines:
+    - ["He's in fluid overload with acute pulmonary edema.", siren, "그는 용량 과부하로 급성 폐부종이 왔어요", "상태"]
+    - ["That means extra fluid backed up into his lungs and made it hard to breathe.", chartup, "그건 여분의 체액이 폐로 역류해서 숨쉬기 힘들다는 뜻이에요", "원인"]
+    - ["So we need urgent fluid removal to relieve his breathing.", gear, "그래서 호흡을 편하게 하려면 긴급하게 체액을 제거해야 해요", "판단"]
+    - ["Once we start, his breathing should get easier as the fluid comes off.", chartup, "시작하면 체액이 빠지면서 호흡이 더 편해질 거예요", "기대"]
+- title: 카테터 관련 대량출혈·감염 위기
+  s:
+  - ["상황 보고", siren, "'site'는 카테터가 들어간 피부 부위를 가리키는 임상 단어예요. 'heavily'는 양이 많다는 뜻이라 급한 상황임을 알려요.", "near the neck", "투석 카테터 부위에서 열이 심해요.", "투석 카테터 부위가 많이 부어 있어요.", "bleeding", "swelling", "itching", "burning"]
+  - ["압박·평가", gear, "'firm'은 약하게 대지 않고 단단히 누른다는 뜻이에요. 지혈을 먼저 하고 감염 징후를 보는 순서가 문장에 담겨요.", "and rest it", "단단히 압박하고 알레르기 징후를 평가합시다.", "단단히 압박하고 감염 징후를 기록합시다.", "infection", "allergy", "fracture", "seizure"]
+  - ["중단 가능성", pager, "'may need to'는 상황에 따라 필요할 수 있다는 가능성이에요. 'hold'는 끝내는 게 아니라 잠시 세운다는 뜻이에요.", "and call for family", "CRRT를 중단하고 라인 교육을 요청해야 할 수도 있어요.", "CRRT를 중단하고 식이 평가를 요청해야 할 수도 있어요.", "evaluation", "education", "delivery", "inventory"]
+  - ["지금 하는 일", pager, "'I'm holding'처럼 현재진행형으로 말하면 지금 하는 중이라는 뜻이라 동료가 바로 상황을 알아요. 두 행동을 'and'로 이어 동시에 한다고 알려요.", "and waiting", "지금 그녀가 압박을 유지하며 도움을 요청하고 있어요.", "아까 압박을 유지하며 도움을 요청했어요.", "holding", "measuring", "timing", "recording"]
+  - ["감염 징후", faceWorried, "'looks red and warm'은 눈으로 보고 하는 판단이에요. 'can mean'은 가능성이라 확진이 아니라는 뜻이에요.", "cold and pale", "부위가 붉고 차갑게 보이면 감염일 수 있어요.", "부위가 붉고 따뜻해 보이면 탈수일 수 있어요.", "red", "pale", "dry", "clean"]
+  - ["재시작 기준", check, "'Once'는 조건이 이루어진 뒤라는 뜻이에요. 'before we restart'는 재개 전에 반드시 다시 본다는 순서를 못 박아요.", "after we restart", "열이 멎으면 재시작 전에 다시 평가해요.", "출혈이 멎으면 퇴원 전에 다시 평가해요.", "reassess", "rewrite", "rearrange", "rename"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 카테터 출혈 대응 4문장 순서
+    why: 출혈을 알리고, 압박하며 도움을 부른 뒤, 그동안 감염 징후를 평가하고, 출혈이 멎으면 재시작 전 평가를 해요.
+    lines:
+    - ["The dialysis catheter site is bleeding heavily.", siren, "투석 카테터 부위에서 출혈이 심해요", "상황"]
+    - ["I'm holding pressure now and calling for help.", pager, "지금 압박을 유지하며 도움을 요청하고 있어요", "조치"]
+    - ["While I hold it, let's assess the site for infection signs, since red and warm can mean infection.", magnify, "누르는 동안 감염 징후를 평가합시다, 붉고 따뜻하면 감염일 수 있어요", "평가"]
+    - ["Once bleeding stops, we reassess before we restart.", check, "출혈이 멎으면 재시작 전에 다시 평가해요", "재시작"]
+- title: 신대체 지속 여부 목표 논의
+  s:
+  - ["공감 표현", faceWorried, "'how hard it is'는 상대의 감정을 알아준다는 표현이에요. 'this long'은 오랜 시간이 이어졌다는 점을 짚어요.", "in the hospital", "이렇게 오래 그가 병원에 있는 걸 보는 게 얼마나 힘든지 이해해요.", "이렇게 오래 그가 기계에 있는 걸 기다리는 게 얼마나 힘든지 이해해요.", "machine", "bed", "monitor", "ventilator"]
+  - ["회복 전망", compass, "'might'는 확정이 아니라 가능성이라는 정직한 단서예요. 'realistically'는 막연한 희망이 아니라 현실적인 그림을 준다는 뜻이에요.", "can describe the cost", "팀이 퇴원이 현실적으로 어떤 모습일지 알려드릴 수 있어요.", "팀이 회복이 현실적으로 얼마나 걸릴지 알려드릴 수 있어요.", "recovery", "dialysis", "visiting", "discharge"]
+  - ["목표 논의", handshake2, "'what he would want'는 환자의 뜻을 중심에 둔다는 표현이에요. 'together'는 일방적인 통보가 아니라 함께 정한다는 뜻이에요.", "for him", "그가 무엇을 좋아했을지 이야기하고 함께 목표를 정합시다.", "그가 무엇을 원할지 이야기하고 함께 일정을 정합시다.", "goals", "menus", "rules", "dates"]
+  - ["불확실성 인정", shield, "'no easy answer'는 쉬운 해답이 없다고 인정해 거짓 확신을 피해요. 'every family … differently'는 느끼는 방식이 달라도 괜찮다는 뜻이에요.", "for everyone", "쉬운 답은 없고, 의사마다 이걸 다르게 느껴요.", "쉬운 답은 없고, 가족마다 이걸 다르게 설명해요.", "answer", "rule", "map", "sign"]
+  - ["솔직함 약속", handshake2, "'keep being'은 앞으로도 계속한다는 약속의 틀이에요. 'as things change'는 좋은 소식이든 나쁜 소식이든 이어 말한다는 뜻이에요.", "in writing", "상황이 바뀌어도 계속 정중하게 말씀드릴게요.", "상황이 바뀌어도 계속 서면으로 말씀드릴게요.", "things", "days", "tests", "visits"]
+  - ["지지 약속", shield, "'Whatever you decide'는 어떤 결정도 존중한다는 뜻이에요. 'you and him'은 환자뿐 아니라 가족도 돌본다는 말이에요.", "and judge you", "무엇을 결정하시든 저희가 두 분을 안내할게요.", "무엇을 결정하시든 저희가 두 분을 기다릴게요.", "support", "teach", "thank", "visit"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 신대체 목표 논의 4문장 순서
+    why: 가족의 마음을 먼저 알아주고, 회복의 현실적인 그림을 나눈 뒤, 함께 목표를 정하고, 어떤 결정도 지지한다고 말해요.
+    lines:
+    - ["We understand how hard it is to see him on the machine this long.", faceWorried, "이렇게 오래 그가 기계에 있는 걸 보는 게 얼마나 힘든지 이해해요", "공감"]
+    - ["That's why the team can share what recovery might realistically look like.", compass, "그래서 팀이 회복이 현실적으로 어떤 모습일지 알려드릴 수 있어요", "전망"]
+    - ["With that in mind, let's talk about what he would want and set goals together.", handshake2, "그걸 바탕으로 그가 무엇을 원할지 이야기하고 함께 목표를 정합시다", "목표"]
+    - ["Whatever you decide after that, we'll support you and him.", shield, "그 뒤 무엇을 결정하시든 저희가 두 분을 지지할게요", "지지"]

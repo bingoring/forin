@@ -1,0 +1,128 @@
+8:
+  - kind: slider
+    words: [w-ratio, w-rising]
+    cue: "The ratio has climbed on each of the last three checks, but his ionized calcium is still in range."
+    scale: [about the same, steadily higher, far above range]
+    answerAt: 1
+    why: "세 번 연속 올랐지만 이온화 칼슘은 아직 범위 안이니 steadily higher예요. far above range는 범위를 크게 벗어났을 때 쓰는 말이라 달라요. 오르는 추세를 보고하고 프로토콜대로 조정한 뒤 다시 확인하세요."
+    example: "The ratio is steadily higher on each check."
+    exKo: "비율이 검사할 때마다 꾸준히 높아지고 있어요."
+  - kind: swap
+    words: [w-acid-base, w-status]
+    who: "환자에게 · 검사 설명"
+    icon: me
+    before: ["We're checking your ", "acid-base status", " every few hours."]
+    options: [acid-base status, how acidic or basic your blood is, your ABG]
+    answer: how acidic or basic your blood is
+    notes: {how acidic or basic your blood is: "무엇을 보는 검사인지 환자가 이해할 수 있게 풀었어요.", acid-base status: "의료진끼리의 말이라 환자에게는 낯설어요.", your ABG: "동맥혈 가스검사의 약어라 환자는 모르고, 이 상황의 일반 혈액 확인과도 딱 맞지 않아요."}
+    why: "산염기 같은 용어는 환자에게 낯서니 무엇을 보는 검사인지 풀어 말해야 해요. 시트르산 때문에 혈액 상태를 자주 보는 이유도 이해하기 쉬워져요."
+    ko: "몇 시간마다 혈액이 얼마나 산성인지 염기성인지 확인하고 있어요"
+9:
+  - kind: slider
+    words: [w-low]
+    cue: "Potassium is far below normal, and the monitor shows new extra beats."
+    scale: [mildly low, quite low, critically low]
+    answerAt: 2
+    why: "칼륨이 크게 낮고 모니터에 새 조기박동까지 보이면 critically low예요. 낮은 칼륨은 위험한 심장 리듬을 일으킬 수 있어 바로 보고해야 해요. mildly low는 증상 없이 살짝 낮을 때 써요."
+    example: "His potassium is critically low."
+    exKo: "그의 칼륨은 위험할 정도로 낮아요."
+  - kind: context
+    words: [w-level]
+    word: level
+    ko: 농도
+    scenes:
+      - {who: 의사 호출, icon: monitor, en: "The potassium level is back, and it's low.", ok: true}
+      - {who: 약사에게, icon: speech, en: "The phosphate level is still low after the first replacement.", ok: true}
+      - {who: 환자에게, icon: me, en: "Your serum phosphate level indicates hypophosphatemia.", ok: false, fix: "Your phosphate is running low, so we'll give you some through the IV."}
+    why: "level은 의사와 약사에게 수치를 전할 때 정확하고 짧아요. 환자에게는 serum·hypophosphatemia 같은 말 대신 무엇이 얼마나 낮고 무엇을 할 건지를 쉬운 말로 알려 주세요."
+10:
+  - kind: slider
+    words: [w-pressure, w-rising]
+    cue: "Filter pressure is up a little since the morning check, and flows are fine."
+    scale: [a little up, climbing, very high]
+    answerAt: 0
+    why: "조금 올랐고 혈류가 정상이면 a little up이에요. 계속 오르면 필터가 굳고 있다는 신호일 수 있어 그때부터 climbing으로 보고해요. very high는 한계에 가까워 즉시 대응할 때 써요."
+    example: "Filter pressure is up a little."
+    exKo: "필터 압력이 조금 올랐어요."
+  - kind: context
+    words: [w-alarm]
+    word: alarm
+    ko: 알람
+    scenes:
+      - {who: 동료 간호사, icon: board, en: "The filter pressure alarm keeps going off, so I'm tracing the lines.", ok: true}
+      - {who: 의사에게, icon: monitor, en: "The return pressure alarm is firing; I'm flushing the line per protocol.", ok: true}
+      - {who: 겁먹은 환자에게, icon: me, en: "That alarm means the filter is occluding and the circuit may be lost.", ok: false, fix: "That sound just means the machine wants us to check a line, and I'm doing that now."}
+    why: "alarm은 동료와 의사에게는 어느 압력인지 구체적으로 말해요. 겁먹은 환자에게는 회로를 잃을 수 있다는 식의 설명보다, 기계가 확인을 요청하는 것이고 지금 확인 중이라고 차분히 말하세요."
+11:
+  - kind: slider
+    words: [w-fragile]
+    cue: "His pressure drops within minutes of every tiny change, even on a higher pressor dose."
+    scale: [holding steady, a little soft, very fragile]
+    answerAt: 2
+    why: "아주 작은 변화에도 혈압이 금방 떨어지고 승압제를 올려도 그렇다면 very fragile이에요. a little soft는 약간 낮은 정도라 이 정도로 불안정한 상태를 나타내지 못해요."
+    example: "His pressure is very fragile right now."
+    exKo: "지금은 그의 혈압이 매우 위태로워요."
+  - kind: swap
+    words: [w-fragile, w-pressure]
+    who: "보호자에게 · 혈압 설명"
+    icon: me
+    before: ["We're removing fluid slowly because ", "his hemodynamics are labile", " right now."]
+    options: [his hemodynamics are labile, his blood pressure drops easily, his heart is about to give out]
+    answer: his blood pressure drops easily
+    notes: {his blood pressure drops easily: "왜 천천히 빼는지 가족이 이해하고, 사실보다 겁주지도 않아요.", his hemodynamics are labile: "의료진끼리의 말이라 가족은 알아듣지 못해요.", his heart is about to give out: "사실보다 훨씬 무겁게 들려 불필요하게 겁을 줘요."}
+    why: "가족은 왜 천천히 빼는지가 궁금해요. 혈역학 용어 대신 '혈압이 쉽게 떨어진다'고 풀어 말하면 이유가 분명하고 불필요한 공포도 줄어요."
+    ko: "혈압이 쉽게 떨어져서 지금은 체액을 천천히 빼고 있어요"
+12:
+  - kind: slider
+    words: [w-unstable]
+    cue: "He's on a low pressor dose, and his pressure dips only when he's turned, then recovers in a minute."
+    scale: [steady, a little unstable, very unstable]
+    answerAt: 1
+    why: "자세를 바꿀 때만 잠깐 떨어졌다가 곧 회복되면 a little unstable이에요. very unstable은 약을 올려도 계속 흔들릴 때 써요. 이런 차이가 CRRT를 계속할지, 방식을 바꿀지 판단의 근거가 돼요."
+    example: "His pressure is a little unstable when we turn him."
+    exKo: "돌려 눕힐 때는 혈압이 조금 불안정해요."
+  - kind: context
+    words: [w-switch]
+    word: switch
+    ko: 전환하다
+    scenes:
+      - {who: 의사 라운드, icon: monitor, en: "Once he's off pressors, we can switch to intermittent dialysis.", ok: true}
+      - {who: 가족 면담, icon: me, en: "Once he's more stable, we can talk about switching to regular dialysis.", ok: true}
+      - {who: 가족에게 전화, icon: me, en: "We will switch him to IHD once his hemodynamics permit.", ok: false, fix: "When his blood pressure is steadier, we can talk about moving him to regular dialysis."}
+    why: "switch는 의사와 가족 면담에서 모두 자연스러워요. 하지만 IHD나 hemodynamics 같은 약어와 용어는 가족에게 어려워요. 언제, 무엇으로 바꾸는지만 쉬운 말로 전하세요."
+13:
+  - kind: slider
+    words: [w-effective]
+    cue: "The level is in the target range, and the culture grew a germ that this antibiotic kills."
+    scale: [not effective, partly effective, fully effective]
+    answerAt: 2
+    why: "목표 농도 안에 있고 균도 이 항생제에 듣는다면 fully effective예요. CRRT는 항생제를 빼내서 농도가 낮아질 수 있으니 이렇게 확인해야 해요. partly effective는 농도가 모자랄 때 써요."
+    example: "The antibiotic is fully effective at this level."
+    exKo: "이 농도에서는 항생제가 충분히 효과가 있어요."
+  - kind: context
+    words: [w-dose]
+    word: dose
+    ko: 용량
+    scenes:
+      - {who: 약사와 통화, icon: speech, en: "Pharmacy asked us to dose the antibiotic differently while he's on CRRT.", ok: true}
+      - {who: 야간 인계, icon: board, en: "The next dose is due after the circuit change; I'll check with pharmacy.", ok: true}
+      - {who: 환자에게, icon: me, en: "Your renal dose is adjusted for continuous clearance.", ok: false, fix: "We're changing how much antibiotic you get, because the machine takes some of it out."}
+    why: "dose는 약사와 인계에서 정확한 말이에요. 환자에게는 renal dose·clearance 같은 말 대신 약 양이 바뀌는 이유를 쉽게 말하세요. 용량을 바꾸는 판단은 의사와 약사가 한다는 점도 기억하세요."
+14:
+  - kind: slider
+    words: [w-cool]
+    cue: "He says he's a little chilly. His temperature is slightly below baseline, and he isn't shivering."
+    scale: [a little cool, quite cold, dangerously cold]
+    answerAt: 0
+    why: "살짝 서늘하다고 하고 체온도 기준보다 조금 낮을 뿐이며 떨지 않으면 a little cool이에요. 떨림이나 체온 저하가 뚜렷하면 보온을 더하고 보고해야 해요. dangerously cold는 심한 저체온일 때 써요."
+    example: "He's a little cool, so I'm adding a blanket."
+    exKo: "조금 서늘해해서 담요를 더할게요."
+  - kind: context
+    words: [w-temperature]
+    word: temperature
+    ko: 체온
+    scenes:
+      - {who: 간호사 인계, icon: board, en: "I'm checking his temperature every hour while he's on CRRT.", ok: true}
+      - {who: 의사 호출, icon: monitor, en: "His temperature is down since we started CRRT, so I'm adding a warmer.", ok: true}
+      - {who: 환자에게, icon: me, en: "Your core temperature has dropped due to extracorporeal cooling.", ok: false, fix: "The machine cools your blood a little, so I'll bring you a warm blanket."}
+    why: "CRRT는 혈액이 몸 밖 회로를 돌며 식을 수 있어 체온을 자주 봐요. 의료진에게는 수치와 조치를 짧게, 환자에게는 core temperature·extracorporeal 대신 왜 춥고 무엇을 해 주는지 쉬운 말로 알려 주세요."

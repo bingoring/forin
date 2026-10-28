@@ -1,0 +1,1226 @@
+=== S0 ROSC 직후 안정화 사정
+0.0 EN: Let's confirm the airway is secure and he's oxygenating.
+   KO: 기도가 확보됐는지, 산소화가 되는지 먼저 확인합시다.
+   CH: Let's confirm / the airway / is secure / and he's oxygenating / .
+   W: ['w-airway', 'w-secure', 'w-oxygenate'] g1
+   BL: oxygenating <- ['waking', 'bleeding', 'oxygenating', 'coughing']  DEC: the oxygen tank
+   D1: 기도가 확보됐는지, 환기가 되는지 먼저 확인합시다.
+   D2: 기도가 확보됐는지, 체온이 유지되는지 먼저 확인합시다.
+   TAG:안정화 확인 ICON:stetho WHY: Let's로 시작하면 지시가 아니라 팀이 같은 항목을 함께 보자는 말로 들려요.
+0.1 EN: Check his pulse, blood pressure, and rhythm now.
+   KO: 지금 맥박, 혈압, 리듬을 확인하세요.
+   CH: Check his pulse / , blood pressure / , and rhythm now / .
+   W: ['w-pulse', 'w-bloodpressure', 'w-rhythm'] g1
+   BL: rhythm <- ['allergies', 'weight', 'rhythm', 'wristband']  DEC: his chart
+   D1: 지금 맥박, 혈압, 체온을 확인하세요.
+   D2: 지금 맥박, 혈압, 동공을 확인하세요.
+   TAG:활력 확인 ICON:monitor WHY: now를 끝에 두면 '지금 바로'가 마지막에 남아 짧은 지시가 분명해져요.
+0.2 EN: We stabilize ABCs before anything else post-ROSC.
+   KO: ROSC 이후엔 무엇보다 ABC부터 안정화합니다.
+   CH: We stabilize / ABCs / before anything else / post-ROSC / .
+   W: ['w-stabilize', 'w-abcs'] g2
+   BL: ABCs <- ['ABCs', 'scans', 'labs', 'charts']  DEC: after the transfer
+   D1: 수술 이후엔 무엇보다 ABC부터 안정화합니다.
+   D2: 이송 이후엔 무엇보다 ABC부터 안정화합니다.
+   TAG:우선순위 ICON:compass WHY: before anything else는 순서를 못 박는 표현이라 무엇이 먼저인지 팀에 분명히 전해요.
+0.3 EN: His breathing looks adequate on the bag, but let's get him on the ventilator soon.
+   KO: 백 마스크로는 호흡이 충분해 보이지만, 곧 인공호흡기에 연결합시다.
+   CH: His breathing looks adequate / on the bag / , but let's get him / on the ventilator / soon / .
+   W: ['w-breathe', 'w-adequate', 'w-ventilator'] g2
+   BL: adequate <- ['adequate', 'labored', 'noisy', 'uneven']  DEC: on the stretcher
+   D1: 산소 마스크로는 호흡이 충분해 보이지만, 곧 인공호흡기에 연결합시다.
+   D2: 백 마스크로는 호흡이 얕아 보이지만, 곧 인공호흡기에 연결합시다.
+   TAG:상태 설명 ICON:stetho WHY: but 앞뒤로 지금 상태와 다음 계획을 나눠 말하면, 괜찮아 보여도 기계가 곧 필요하다는 흐름이 보여요.
+0.4 EN: Circulation is intact, and his femoral pulses are strong and equal bilaterally.
+   KO: 순환은 온전하고, 양쪽 대퇴 맥박도 강하고 동일해요.
+   CH: Circulation is intact / , and his femoral pulses / are strong / and equal bilaterally / .
+   W: ['w-circulation', 'w-femoral', 'w-pulse', 'w-equal'] g1
+   BL: femoral <- ['pedal', 'brachial', 'carotid', 'femoral']  DEC: and his radial pulses
+   D1: 순환은 온전하고, 양쪽 요골 맥박도 강하고 동일해요.
+   D2: 순환은 온전하고, 양쪽 대퇴 맥박도 강하고 규칙적이에요.
+   TAG:사정 결과 ICON:chartup WHY: 'strong and equal'처럼 형용사 둘을 and로 묶으면 맥박의 세기와 좌우 대칭을 한 번에 보고해요.
+0.5 EN: I'll document our ROSC time and this initial assessment now.
+   KO: ROSC 시각과 이번 초기 사정을 지금 기록할게요.
+   CH: I'll document / our ROSC time / and this initial assessment / now / .
+   W: ['w-document', 'w-initial', 'w-assessment'] g2
+   BL: initial <- ['routine', 'final', 'previous', 'initial']  DEC: our shift change
+   D1: ROSC 시각과 이번 초기 사정을 지금 공유할게요.
+   D2: ROSC 시각과 이번 초기 사정을 지금 복습할게요.
+   TAG:기록 약속 ICON:pencil WHY: I'll + 동사로 바로 하겠다고 말하면 기록이 빠질까 하는 걱정을 덜어요.
+  ORDER 대화 흐름 compass ROSC 직후 사정 4문장 순서 | ABC 우선순위를 먼저 밝히고, 기도 → 산소 순으로 확인한 뒤, 모두 괜찮으면 기록하면 흐름이 이어져요.
+   L0: He has a pulse back, so ABCs come first. | 맥박이 돌아왔으니 ABC가 먼저예요 | 우선순위
+   L1: Let's confirm the airway is secure. | 기도가 확보됐는지 확인합시다 | 기도
+   L2: With that secure, check his oxygen level. | 그게 확보되면 산소 수치를 확인하세요 | 산소
+   L3: Once all of that looks good, I'll document it. | 모두 괜찮으면 기록할게요 | 기록
+  NU[0] slider words=['w-ventilator', 'w-breathe']
+     {'cue': 'Colleague: "He has a pulse, but his breathing is slow and shallow."', 'scale': ['keep watching him closely', 'bag him and prep the vent', 'move him to the floor'], 'answerAt': 1, 'why': 'ROSC 직후 호흡이 느리고 얕으면 스스로 충분히 숨 쉬는 게 아니라서, 백으로 환기를 도우며 인공호흡기를 준비해요. 지켜만 보는 건 위험하고, 병동 이동은 안정화 전에는 말이 안 돼요.', 'example': "His breathing looks adequate on the bag, but let's get him on the ventilator soon.", 'exKo': '백 마스크로는 호흡이 충분해 보이지만, 곧 인공호흡기에 연결합시다.'}
+  NU[1] context words=['w-assessment']
+     {'word': 'assessment', 'ko': '사정(평가)', 'scenes': [{'who': '의사에게 보고', 'icon': 'stetho', 'en': 'Initial assessment: airway secure, pulses present, ventilating on the bag.', 'ok': True}, {'who': '동료 간호사', 'icon': 'monitor', 'en': "I'll finish the assessment while you hook up the vent.", 'ok': True}, {'who': '가족에게', 'icon': 'me', 'en': 'Our initial assessment shows ABCs intact, GCS three T, post-ROSC day zero.', 'ok': False, 'fix': "We've checked his breathing and his heart, and we're getting him settled."}], 'why': '의료진끼리는 ABC나 GCS 같은 약어로 짧게 주고받아요. 가족에게는 그 약어가 무슨 뜻인지 몰라 오히려 불안해져요. 무엇을 살폈는지를 쉬운 말로 알려 줘요.'}
+=== S1 12유도 심전도·원인 검사
+1.0 EN: Get a twelve-lead ECG to look for STEMI.
+   KO: STEMI를 확인하기 위해 12유도 심전도를 찍으세요.
+   CH: Get a twelve-lead ECG / to look / for STEMI / .
+   W: ['w-twelvelead', 'w-stemi'] g1
+   BL: STEMI <- ['anemia', 'sepsis', 'STEMI', 'stroke']  DEC: to look at
+   D1: STEMI를 확인하기 위해 12유도 심전도를 출력하세요.
+   D2: STEMI를 확인하기 위해 12유도 심전도를 비교하세요.
+   TAG:검사 지시 ICON:monitor WHY: 'to look for ~'로 목적을 붙이면 왜 찍는지 알고 같은 말로 요청할 수 있어요.
+1.1 EN: Send troponin and a full metabolic panel.
+   KO: 트로포닌과 대사 패널을 전부 보내세요.
+   CH: Send troponin / and / a full metabolic panel / .
+   W: ['w-troponin', 'w-panel'] g1
+   BL: metabolic <- ['hepatitis', 'metabolic', 'thyroid', 'lipid']  DEC: a blood culture
+   D1: 트로포닌과 대사 패널 튜브를 전부 챙기세요.
+   D2: 트로포닌과 대사 패널 라벨을 전부 붙이세요.
+   TAG:혈액검사 ICON:lab WHY: full을 붙이면 일부가 아니라 패널 전체라는 뜻이라 검사실에 범위가 분명해요.
+1.2 EN: If it's a STEMI, we activate the cath lab.
+   KO: STEMI라면 카테터실을 가동합니다.
+   CH: If it's / a STEMI / , we activate / the cath lab / .
+   W: ['w-stemi', 'w-activate', 'w-cathlab'] g2
+   BL: STEMI <- ['fracture', 'infection', 'seizure', 'STEMI']  DEC: the pharmacy
+   D1: STEMI라면 카테터실에 심전도를 전송합니다.
+   D2: STEMI라면 카테터실에 보호자를 안내합니다.
+   TAG:조건 처치 ICON:siren WHY: If ~, we ~ 구조로 진단과 행동을 짝지어, 진단이 나오면 무엇을 하는지 미리 합의해요.
+1.3 EN: I'll place him on the monitor and pull a rhythm strip too.
+   KO: 모니터에 연결하고 리듬 스트립도 뽑을게요.
+   CH: I'll place him / on the monitor / and pull / a rhythm strip too / .
+   W: ['w-monitor', 'w-rhythm'] g1
+   BL: monitor <- ['monitor', 'scanner', 'scale', 'stretcher']  DEC: on the scale
+   D1: 모니터에 연결하고 리듬 스트립도 붙일게요.
+   D2: 모니터에 연결하고 리듬 스트립도 보여 줄게요.
+   TAG:모니터 연결 ICON:monitor WHY: too를 끝에 붙이면 이미 하는 일에 한 가지를 더한다는 걸 가볍게 알려요.
+1.4 EN: No ST changes yet, but we'll repeat the ECG in an hour.
+   KO: 아직 ST 변화는 없지만 한 시간 뒤 심전도를 다시 찍을게요.
+   CH: No ST changes yet / , but we'll repeat / the ECG / in an hour / .
+   W: ['w-ecg'] g1
+   BL: ECG <- ['culture', 'ECG', 'X-ray', 'lactate']  DEC: during transport
+   D1: 아직 T파 변화는 없지만 한 시간 뒤 심전도를 다시 찍을게요.
+   D2: 아직 ST 변화는 없지만 한 시간 뒤 심전도를 다시 인쇄할게요.
+   TAG:추적 검사 ICON:calendar WHY: yet은 '지금까지는'이라는 뜻이라, 변화가 없어도 끝이 아니라 계속 본다는 뉘앙스를 남겨요.
+1.5 EN: Troponin is trending up, so cardiology is already aware.
+   KO: 트로포닌이 오르는 추세라 순환기내과에 이미 알렸어요.
+   CH: Troponin is trending up / , so cardiology / is already / aware / .
+   W: ['w-troponin', 'w-trend'] g2
+   BL: Troponin <- ['Troponin', 'Creatinine', 'Lactate', 'Ammonia']  DEC: , so neurology
+   D1: 락테이트가 오르는 추세라 순환기내과에 이미 알렸어요.
+   D2: 트로포닌이 오르는 추세라 순환기내과 일정을 이미 잡았어요.
+   TAG:보고 상황 ICON:chartup WHY: so로 이유(수치 상승)와 결과(보고 완료)를 이어, 따로 연락할 필요가 없다는 걸 알려요.
+  ORDER 대화 흐름 compass 12유도 심전도 후 대응 4문장 순서 | 심전도를 찍고, 그것을 읽고, 소견이 있으면 가동하고, 가동이 끝난 뒤 시각을 기록하는 순서예요.
+   L0: Get a twelve-lead ECG now. | 지금 12유도 심전도를 찍으세요 | 촬영
+   L1: Look at it for ST elevation. | 그걸로 ST 상승을 보세요 | 판독
+   L2: If you see it, we activate the cath lab. | 보이면 카테터실을 가동합니다 | 가동
+   L3: Once that's done, I'll document the time. | 그게 끝나면 시각을 기록할게요 | 기록
+  NU[0] slider words=['w-stemi', 'w-activate', 'w-cathlab']
+     {'cue': 'Colleague: "The twelve-lead shows ST elevation in the anterior leads."', 'scale': ['repeat it in an hour', 'just trend the troponin', 'activate the cath lab now'], 'answerAt': 2, 'why': 'ROSC 직후 12유도에서 ST분절 상승이 보이면 STEMI로 보고 카테터실을 바로 가동해요. 심전도 반복이나 트로포닌 추세만 기다리면 막힌 관상동맥을 여는 시간이 늦어져요.', 'example': "If it's a STEMI, we activate the cath lab.", 'exKo': 'STEMI라면 카테터실을 가동합니다.'}
+  NU[1] context words=['w-troponin']
+     {'word': 'troponin', 'ko': '트로포닌', 'scenes': [{'who': '의사에게 보고', 'icon': 'stetho', 'en': 'Troponin is trending up, so cardiology is aware.', 'ok': True}, {'who': '동료 간호사', 'icon': 'monitor', 'en': 'Send the troponin and a full metabolic panel now.', 'ok': True}, {'who': '가족에게', 'icon': 'me', 'en': 'His troponin is elevated with a significant delta at three hours.', 'ok': False, 'fix': 'A blood test shows his heart muscle may be injured, and the heart doctors are already involved.'}], 'why': '의료진끼리는 troponin처럼 검사 이름만 말해도 뜻이 통해요. 가족에게는 검사 이름과 변화량이 어려워서, 무엇을 알아냈고 누가 맡고 있는지를 쉬운 말로 전해요.'}
+=== S2 TTM 목표체온 준비
+2.0 EN: Let's confirm our TTM target temperature with the team.
+   KO: 팀과 함께 TTM 목표체온을 확인합시다.
+   CH: Let's confirm / our TTM target / temperature / with the team / .
+   W: ['w-ttm', 'w-target', 'w-temperature', 'w-team'] g2
+   BL: target <- ['average', 'target', 'minimum', 'starting']  DEC: with the family
+   D1: 팀과 함께 TTM 시작 시각을 확인합시다.
+   D2: 팀과 함께 TTM 모니터 위치를 확인합시다.
+   TAG:목표 합의 ICON:compass WHY: with the team을 붙이면 목표체온을 혼자 정하지 않고 함께 확인한다는 뜻이에요.
+2.1 EN: Set up the cooling device and place the temperature probe.
+   KO: 냉각장비를 준비하고 체온 탐침을 삽입하세요.
+   CH: Set up / the cooling device / and place / the temperature probe / .
+   W: ['w-coolingdevice', 'w-temperature', 'w-probe'] g1
+   BL: probe <- ['bracelet', 'probe', 'cuff', 'filter']  DEC: the humidifier
+   D1: 냉각장비를 점검하고 체온 탐침을 삽입하세요.
+   D2: 냉각장비를 준비하고 체온 탐침을 소독하세요.
+   TAG:장비 준비 ICON:gear WHY: 동사 두 개를 and로 이으면 장비 준비와 탐침 삽입이 한 묶음의 준비 작업임을 보여요.
+2.2 EN: We'll document the start time and initial temperature.
+   KO: 시작 시각과 초기 체온을 기록할게요.
+   CH: We'll document / the start time / and initial temperature / .
+   W: ['w-document', 'w-starttime', 'w-initial', 'w-temperature'] g2
+   BL: initial <- ['average', 'highest', 'initial', 'final']  DEC: the stop time
+   D1: 시작 시각과 초기 체중을 기록할게요.
+   D2: 시작 시각과 초기 체온을 보고할게요.
+   TAG:기록 약속 ICON:pencil WHY: 시작 시각과 초기 체온을 함께 적으면 나중에 냉각 경과를 비교할 기준이 돼요.
+2.3 EN: Grab the cooling pads and make sure the machine is plugged in.
+   KO: 냉각 패드를 가져오고 기계 전원이 꽂혔는지 확인하세요.
+   CH: Grab the cooling pads / and make sure / the machine / is plugged in / .
+   W: ['w-pads'] g1
+   BL: plugged <- ['covered', 'plugged', 'folded', 'labeled']  DEC: the blanket
+   D1: 냉각 패드를 가져오고 기계 물통이 찼는지 확인하세요.
+   D2: 냉각 패드를 가져오고 기계 라벨이 맞는지 확인하세요.
+   TAG:물품 확인 ICON:check WHY: make sure는 '직접 확인해서 틀림없게 하라'는 뜻이라 전원 같은 사소한 빠짐을 막아요.
+2.4 EN: I'll place the probe rectally per protocol and confirm the reading.
+   KO: 프로토콜대로 직장으로 탐침을 넣고 측정값을 확인할게요.
+   CH: I'll place the probe / rectally / per protocol / and confirm the reading / .
+   W: ['w-probe', 'w-protocol', 'w-reading'] g1
+   BL: rectally <- ['nasally', 'centrally', 'rectally', 'orally']  DEC: per policy
+   D1: 프로토콜대로 직장으로 탐침을 넣고 측정값을 읽을게요.
+   D2: 프로토콜대로 직장으로 탐침을 넣고 측정값을 보여 줄게요.
+   TAG:탐침 위치 ICON:stetho WHY: per protocol은 '병원 규정대로'라는 뜻이라 개인 판단이 아니라 정해진 방법임을 알려요.
+2.5 EN: Target is thirty-six degrees, and we start the timer now.
+   KO: 목표는 36도이고, 지금 타이머를 시작합니다.
+   CH: Target is thirty-six degrees / , and we start / the timer / now / .
+   W: ['w-target'] g2
+   BL: timer <- ['printer', 'alarm', 'timer', 'scanner']  DEC: the pager
+   D1: 목표는 36도이고, 지금 냉각 로그를 시작합니다.
+   D2: 목표는 36도이고, 지금 알람을 설정합니다.
+   TAG:목표와 시작 ICON:monitor WHY: 목표 수치와 시작 신호를 and로 한 문장에 묶어, 숫자를 말한 즉시 타이머가 돈다는 걸 분명히 해요.
+  ORDER 대화 흐름 compass TTM 시작 준비 4문장 순서 | 목표를 합의해야 장비를 맞추고, 장비가 준비돼야 탐침을 넣고, 측정값이 맞아야 타이머를 시작해요.
+   L0: Let's confirm our TTM target with the team. | 팀과 TTM 목표를 확인합시다 | 합의
+   L1: Set up the cooling device once we agree on that. | 합의하면 냉각장비를 준비하세요 | 장비
+   L2: Place the temperature probe as soon as it's ready. | 장비가 준비되면 바로 탐침을 넣으세요 | 탐침
+   L3: When the reading looks right, we start the timer. | 측정값이 맞으면 타이머를 시작해요 | 시작
+  NU[0] slider words=['w-probe', 'w-reading', 'w-coolingdevice']
+     {'cue': 'Colleague: "The cooling device is on, but the probe isn\'t giving a reading."', 'scale': ['fix the probe before cooling', 'start cooling and fix it later', 'silence the alarm and wait'], 'answerAt': 0, 'why': '체온 측정값이 없으면 냉각 중 얼마나 식었는지 알 수 없어서 목표를 지나칠 위험이 있어요. 탐침부터 고치고 측정값을 확인한 뒤에 냉각을 시작해요.', 'example': "I'll place the probe rectally per protocol and confirm the reading.", 'exKo': '프로토콜대로 직장으로 탐침을 넣고 측정값을 확인할게요.'}
+  NU[1] context words=['w-protocol']
+     {'word': 'protocol', 'ko': '프로토콜', 'scenes': [{'who': '의사에게 보고', 'icon': 'stetho', 'en': "Per protocol, we'll cool to thirty-six degrees and hold.", 'ok': True}, {'who': '동료 간호사', 'icon': 'monitor', 'en': 'Follow the TTM protocol: probe first, then the pads.', 'ok': True}, {'who': '가족에게', 'icon': 'me', 'en': 'Per protocol we use a rectal probe with a continuous core reading every minute.', 'ok': False, 'fix': 'We follow a careful hospital plan to cool him gently and protect his brain.'}], 'why': '의료진끼리는 protocol 한마디로 정해진 절차를 가리켜요. 가족에게는 탐침 위치와 측정 주기까지 늘어놓으면 무섭고 복잡해요. 왜 하는지를 쉬운 말로 전해요.'}
+=== S3 체온·전해질 모니터
+3.0 EN: Let's track his core temperature continuously.
+   KO: 심부체온을 지속적으로 추적합시다.
+   CH: Let's track / his core temperature / continuously / .
+   W: ['w-temperature', 'w-core', 'w-continuous'] g1
+   BL: core <- ['room', 'air', 'core', 'skin']  DEC: his urine output
+   D1: 심부체온을 지속적으로 기록합시다.
+   D2: 심부체온 그래프를 지속적으로 출력합시다.
+   TAG:체온 추적 ICON:monitor WHY: continuously는 가끔 재는 것이 아니라 끊김 없이 이어서 잰다는 뜻이에요.
+3.1 EN: Cooling shifts potassium, so recheck electrolytes often.
+   KO: 냉각이 칼륨을 이동시키니 전해질을 자주 재확인하세요.
+   CH: Cooling shifts potassium / , so recheck / electrolytes often / .
+   W: ['w-potassium', 'w-recheck', 'w-electrolyte'] g2
+   BL: potassium <- ['potassium', 'ammonia', 'bilirubin', 'insulin']  DEC: , so order
+   D1: 냉각이 나트륨을 이동시키니 전해질을 자주 재확인하세요.
+   D2: 냉각이 칼슘을 이동시키니 전해질을 자주 재확인하세요.
+   TAG:이유와 지시 ICON:lab WHY: so로 이유와 지시를 한 문장에 이어, 왜 자주 봐야 하는지를 같이 전해요.
+3.2 EN: Watch for trends, not just single values.
+   KO: 단일 수치만이 아니라 추세를 보세요.
+   CH: Watch for trends / , not just / single values / .
+   W: ['w-trend', 'w-value'] g1
+   BL: trends <- ['visitors', 'delays', 'trends', 'alarms']  DEC: one alarm
+   D1: 여러 수치만이 아니라 추세를 보세요.
+   D2: 단일 수치만이 아니라 증상을 보세요.
+   TAG:추세 보기 ICON:chartup WHY: not just는 단일 수치를 버리지 않고 시야를 넓혀 달라는 부드러운 대비 표현이에요.
+3.3 EN: His temperature is holding steady at target right now.
+   KO: 지금 체온이 목표에서 안정적으로 유지되고 있어요.
+   CH: His temperature is holding / steady / at target / right now / .
+   W: ['w-temperature', 'w-target'] g1
+   BL: temperature <- ['temperature', 'pulse', 'glucose', 'pressure']  DEC: at bedside
+   D1: 지금 혈압이 목표에서 안정적으로 유지되고 있어요.
+   D2: 지금 체온이 목표에서 안정적으로 표시되고 있어요.
+   TAG:현재 상태 ICON:monitor WHY: is holding은 지금 진행 중인 상태를 말하고, right now가 그 시점을 지금으로 한정해요.
+3.4 EN: Let's send another metabolic panel to catch any shift early.
+   KO: 변동을 일찍 잡기 위해 대사 패널을 또 보냅시다.
+   CH: Let's send / another metabolic panel / to catch / any shift early / .
+   W: ['w-panel'] g2
+   BL: metabolic <- ['thyroid', 'liver', 'metabolic', 'cardiac']  DEC: to avoid
+   D1: 변동을 일찍 잡기 위해 대사 패널을 또 비교합시다.
+   D2: 변동을 일찍 잡기 위해 팀에게 대사 패널을 또 보여 줍시다.
+   TAG:재검 이유 ICON:lab WHY: to catch ~로 목적을 붙이면 왜 또 보내는지 바로 설명돼요.
+3.5 EN: Potassium came back low, so we're replacing it now.
+   KO: 칼륨이 낮게 나와서 지금 보충하고 있어요.
+   CH: Potassium came back low / , so we're replacing / it / now / .
+   W: ['w-potassium'] g2
+   BL: Potassium <- ['Calcium', 'Magnesium', 'Potassium', 'Sodium']  DEC: , so we're repeating
+   D1: 마그네슘이 낮게 나와서 지금 보충하고 있어요.
+   D2: 칼슘이 낮게 나와서 지금 보충하고 있어요.
+   TAG:결과 대응 ICON:pill WHY: so로 결과와 조치를 이어 '낮아서 보충한다'는 인과를 한 번에 전해요.
+  ORDER 대화 흐름 compass 냉각 중 칼륨 관리 4문장 순서 | 원리를 말하고, 그래서 자주 검사하고, 낮게 나오면 교정한 뒤, 교정이 끝나면 다시 확인해요.
+   L0: Cooling shifts potassium into cells. | 냉각이 칼륨을 세포 안으로 옮겨요 | 원리
+   L1: That's why we send a metabolic panel often. | 그래서 대사 패널을 자주 보내요 | 검사
+   L2: If his potassium comes back low, we replace it. | 칼륨이 낮게 나오면 보충해요 | 교정
+   L3: Once it's replaced, I'll recheck the level. | 보충이 끝나면 수치를 재확인할게요 | 재확인
+  NU[0] pair words=['w-core', 'w-potassium', 'w-panel']
+     {'pairs': [['core', 'temperature'], ['serum', 'potassium'], ['send a', 'metabolic panel']], 'decoys': ['the trend line'], 'why': 'core temperature는 피부가 아니라 몸 깊은 곳의 체온이에요. serum potassium은 혈청(혈액의 맑은 부분)에서 잰 칼륨 수치이고, 대사 패널(metabolic panel)은 여러 수치를 한 번에 보내는 검사라 send와 함께 써요.'}
+  NU[1] context words=['w-trend']
+     {'word': 'trend', 'ko': '추세(경향)', 'scenes': [{'who': '의사에게 보고', 'icon': 'stetho', 'en': 'The potassium trend is down since we started cooling.', 'ok': True}, {'who': '동료 간호사', 'icon': 'monitor', 'en': 'Watch the temperature trend, not just one reading.', 'ok': True}, {'who': '가족에게', 'icon': 'me', 'en': 'His potassium trend shows a negative delta of zero point eight over six hours.', 'ok': False, 'fix': 'We check his blood tests often so we can catch any change early.'}], 'why': '의료진끼리는 trend와 변화량 숫자로 흐름을 빠르게 공유해요. 가족에게는 숫자와 단위가 낯설어서, 자주 확인해서 변화를 일찍 잡는다는 정도로 쉽게 말해요.'}
+=== S4 진정·통증 관리 기초
+4.0 EN: Cooling can be uncomfortable, so we sedate adequately.
+   KO: 냉각이 불편할 수 있어서 충분히 진정시킵니다.
+   CH: Cooling can be uncomfortable / , so we sedate / adequately / .
+   W: ['w-uncomfortable', 'w-sedate', 'w-adequate'] g1
+   BL: sedate <- ['sedate', 'monitor', 'hydrate', 'ventilate']  DEC: , so we hurry
+   D1: 재가온이 불편할 수 있어서 충분히 진정시킵니다.
+   D2: 냉각이 불편할 수 있어서 충분히 안내합니다.
+   TAG:이유와 조치 ICON:pill WHY: so 앞에 이유, 뒤에 조치를 두고 adequately로 정도를 말해 불편을 줄이려는 계획이 보여요.
+4.1 EN: Let's manage his pain and monitor for shivering.
+   KO: 통증을 관리하고 떨림을 감시합시다.
+   CH: Let's manage his pain / and monitor / for shivering / .
+   W: ['w-pain', 'w-monitor', 'w-shiver'] g2
+   BL: shivering <- ['shivering', 'coughing', 'vomiting', 'itching']  DEC: for vomiting
+   D1: 통증을 관리하고 구토를 감시합시다.
+   D2: 통증을 평가하고 떨림을 감시합시다.
+   TAG:통증·떨림 ICON:pill WHY: Let's 뒤에 동사 둘을 and로 이어 통증과 떨림을 한 번에 맡겠다는 팀의 말이에요.
+4.2 EN: Comfort during TTM is part of good care.
+   KO: TTM 중 편안함도 좋은 돌봄의 일부입니다.
+   CH: Comfort during TTM / is part / of good care / .
+   W: ['w-comfort', 'w-ttm', 'w-care'] g2
+   BL: Comfort <- ['Paperwork', 'Noise', 'Delay', 'Comfort']  DEC: of good research
+   D1: TTM 중 편안함도 좋은 연구의 일부입니다.
+   D2: TTM 중 편안함은 좋은 돌봄의 전부입니다.
+   TAG:돌봄 원칙 ICON:handshake2 WHY: part of ~는 편안함이 돌봄에 빠질 수 없는 한 부분이라는 뜻이에요.
+4.3 EN: I'll sedate him a little more before we reposition him.
+   KO: 체위를 바꾸기 전에 좀 더 진정시킬게요.
+   CH: I'll sedate him / a little more / before we reposition / him / .
+   W: ['w-sedate', 'w-reposition'] g1
+   BL: sedate <- ['reassure', 'sedate', 'hydrate', 'wash']  DEC: before we transport
+   D1: 체위를 바꾸기 전에 좀 더 안심시킬게요.
+   D2: 이송하기 전에 좀 더 진정시킬게요.
+   TAG:사전 진정 ICON:pill WHY: before ~로 순서를 말해, 체위를 바꾸는 순간의 불편을 미리 줄여 둔다는 계획이 돼요.
+4.4 EN: His pain score looks controlled on the current dose.
+   KO: 지금 용량에서 통증 점수가 잘 조절되는 것 같아요.
+   CH: His pain score / looks / controlled / on the current dose / .
+   W: ['w-pain', 'w-control', 'w-dose'] g2
+   BL: controlled <- ['controlled', 'uncontrolled', 'unclear', 'uneven']  DEC: on the old dose
+   D1: 지금 용량에서 불안 점수가 잘 조절되는 것 같아요.
+   D2: 지금 용량에서 통증 점수가 잘 측정되는 것 같아요.
+   TAG:통증 평가 ICON:chartup WHY: looks ~는 '그렇게 보인다'는 완곡한 평가라 점수를 단정하지 않고 말할 수 있어요.
+4.5 EN: No shivering right now, but I'm watching closely.
+   KO: 지금은 떨림이 없지만 계속 주의 깊게 보고 있어요.
+   CH: No shivering right now / , but I'm watching / closely / .
+   W: ['w-shiver'] g1
+   BL: shivering <- ['vomiting', 'itching', 'shivering', 'coughing']  DEC: this evening
+   D1: 지금은 구토가 없지만 계속 주의 깊게 보고 있어요.
+   D2: 지금은 떨림이 없지만 계속 주의 깊게 적고 있어요.
+   TAG:경과 관찰 ICON:magnify WHY: but으로 '지금은 없다'와 '계속 본다'를 이어, 안심시키되 방심하지 않는다는 뜻이에요.
+  ORDER 대화 흐름 compass TTM 중 편안함 4문장 순서 | 이유를 말하고, 그래서 진정하고, 편안해지면 체위를 바꾸고, 그 뒤에 통증 점수를 확인해요.
+   L0: Cooling can be uncomfortable. | 냉각은 불편할 수 있어요 | 이유
+   L1: So we sedate him adequately. | 그래서 충분히 진정시켜요 | 진정
+   L2: Once he's comfortable, we can reposition him. | 편안해지면 체위를 바꿀 수 있어요 | 체위
+   L3: I'll check his pain score after that. | 그 뒤에 통증 점수를 확인할게요 | 평가
+  NU[0] slider words=['w-pain', 'w-reposition']
+     {'cue': 'Colleague: "His pain score is seven and he grimaces when we turn him."', 'scale': ['give the ordered analgesic', 'wait until the next round', 'turn him more quickly'], 'answerAt': 0, 'why': '체위 변경 때 통증 점수가 높고 찡그리면 처방된 진통제를 먼저 주고 편안해진 뒤 돌려요. 다음 회진까지 기다리거나 빨리 돌리는 건 통증을 키워요.', 'example': "I'll sedate him a little more before we reposition him.", 'exKo': '체위를 바꾸기 전에 좀 더 진정시킬게요.'}
+  NU[1] context words=['w-comfort']
+     {'word': 'comfort', 'ko': '편안함', 'scenes': [{'who': '의사에게 보고', 'icon': 'stetho', 'en': 'His comfort is part of the cooling plan, and his sedation is at goal.', 'ok': True}, {'who': '동료 간호사', 'icon': 'monitor', 'en': "Let's think about his comfort before we turn him.", 'ok': True}, {'who': '가족에게', 'icon': 'me', 'en': 'Comfort measures include a sedation scale target of minus two on the RASS.', 'ok': False, 'fix': "We're keeping him as comfortable as we can while he's being cooled."}], 'why': '의료진끼리는 RASS 같은 진정 척도로 목표를 말해요. 가족에게는 점수 얘기보다 아프거나 불편하지 않게 돌보고 있다는 사실이 중요해요.'}
+=== S5 지속 심전도·혈역학 감시
+5.0 EN: Keep him on continuous ECG and arterial monitoring.
+   KO: 지속 심전도와 동맥 모니터링을 유지하세요.
+   CH: Keep him on / continuous ECG / and arterial monitoring / .
+   W: ['w-continuous', 'w-ecg', 'w-arterial', 'w-monitor'] g1
+   BL: arterial <- ['urinary', 'arterial', 'venous', 'thermal']  DEC: pulse oximetry
+   D1: 지속 심전도와 체온 모니터링을 유지하세요.
+   D2: 지속 심전도와 동맥 모니터링을 점검하세요.
+   TAG:감시 유지 ICON:monitor WHY: Keep him on ~은 감시를 끊지 말고 이어 가라는 지시이고, continuous가 그 방식을 말해요.
+5.1 EN: Watch for any rhythm change or dropping pressure.
+   KO: 리듬 변화나 혈압 하강을 살피세요.
+   CH: Watch for any / rhythm change / or dropping pressure / .
+   W: ['w-rhythm', 'w-change', 'w-drop', 'w-pressure'] g1
+   BL: rhythm <- ['color', 'smell', 'sound', 'rhythm']  DEC: for any fever
+   D1: 리듬 변화나 소변량 감소를 살피세요.
+   D2: 리듬 변화나 혈압 상승을 살피세요.
+   TAG:관찰 지시 ICON:magnify WHY: Watch for any ~는 어떤 변화든 놓치지 말라는 지시라 범위를 넓게 잡아 줘요.
+5.2 EN: Have the crash cart close in case he re-arrests.
+   KO: 재정지에 대비해 응급카트를 가까이 두세요.
+   CH: Have the crash cart / close / in case / he re-arrests / .
+   W: ['w-crashcart', 'w-rearrest'] g2
+   BL: crash cart <- ['lab cart', 'meal cart', 'linen cart', 'crash cart']  DEC: in case of fire
+   D1: 재정지에 대비해 응급카트를 미리 점검하세요.
+   D2: 발작에 대비해 응급카트를 가까이 두세요.
+   TAG:재정지 대비 ICON:siren WHY: in case ~는 일어나지 않아도 미리 준비해 둔다는 말이라, 가능성을 겁주지 않고 준비를 요청해요.
+5.3 EN: His rhythm has been sinus and stable for the last hour.
+   KO: 지난 한 시간 동안 리듬은 사이너스로 안정적이었어요.
+   CH: His rhythm / has been sinus / and stable / for the last hour / .
+   W: ['w-rhythm', 'w-sinus', 'w-stable'] g1
+   BL: sinus <- ['atrial', 'sinus', 'junctional', 'paced']  DEC: since this morning
+   D1: 어젯밤부터 리듬은 사이너스로 안정적이었어요.
+   D2: 지난 한 시간 동안 산소는 정상으로 안정적이었어요.
+   TAG:리듬 경과 ICON:chartup WHY: has been ~ for ~는 지금까지 이어진 상태를 말하는 현재완료라 한 시간 동안의 경과를 한 번에 보고해요.
+5.4 EN: Blood pressure dropped a bit, so I bumped the pressor.
+   KO: 혈압이 조금 떨어져서 승압제를 올렸어요.
+   CH: Blood pressure dropped / a bit / , so I bumped / the pressor / .
+   W: ['w-bloodpressure', 'w-drop', 'w-pressor'] g2
+   BL: pressor <- ['bed', 'alarm', 'pressor', 'monitor']  DEC: , so I rechecked
+   D1: 혈압이 조금 떨어져서 승압제를 확인했어요.
+   D2: 맥박이 조금 떨어져서 승압제를 올렸어요.
+   TAG:조치 보고 ICON:pill WHY: so로 원인(혈압 하락)과 이미 한 조치를 이어 보고하고, 과거형이라 끝난 일임을 알려요.
+5.5 EN: Crash cart and defibrillator are both at the bedside.
+   KO: 응급카트와 제세동기 모두 병상 옆에 있어요.
+   CH: Crash cart / and defibrillator / are both / at the bedside / .
+   W: ['w-crashcart', 'w-defibrillator', 'w-bedside'] g2
+   BL: bedside <- ['stairwell', 'lobby', 'hallway', 'bedside']  DEC: at the door
+   D1: 응급카트와 제세동기 모두 복도 끝에 있어요.
+   D2: 응급카트와 산소통 모두 병상 옆에 있어요.
+   TAG:장비 위치 ICON:siren WHY: both는 두 장비가 모두 거기 있다는 걸 한 번에 확인해 주는 말이라 안심을 줘요.
+  ORDER 대화 흐름 compass 지속 감시 4문장 순서 | 감시를 유지하고, 둘 다 관찰하고, 변화가 보이면 알리고, 정리되면 기록하는 순서예요.
+   L0: Keep him on continuous ECG and arterial monitoring. | 지속 심전도와 동맥 모니터링을 유지하세요 | 감시
+   L1: Watch both for any rhythm change or dropping pressure. | 둘 다 리듬 변화나 혈압 하강을 보세요 | 관찰
+   L2: If you see either, tell me right away. | 둘 중 하나라도 보이면 바로 말해 주세요 | 보고
+   L3: Once that's settled, I'll document what you saw. | 정리되면 본 것을 기록할게요 | 기록
+  NU[0] slider words=['w-arterial', 'w-pressure', 'w-drop']
+     {'cue': 'Colleague: "The arterial line just fell to seventy over forty."', 'scale': ['wait for the next reading', 'chart it at the next hour', 'check him and call the doctor'], 'answerAt': 2, 'why': '동맥관 혈압이 갑자기 70/40으로 떨어지면 환자를 직접 확인하고 바로 의사에게 알려요. 다음 측정을 기다리거나 시간마다 기록하는 사이에 재정지로 갈 수 있어요.', 'example': 'Blood pressure dropped a bit, so I bumped the pressor.', 'exKo': '혈압이 조금 떨어져서 승압제를 올렸어요.'}
+  NU[1] context words=['w-monitor']
+     {'word': 'monitor', 'ko': '모니터', 'scenes': [{'who': '의사에게 보고', 'icon': 'stetho', 'en': 'The monitor shows sinus rhythm with no ectopy.', 'ok': True}, {'who': '동료 간호사', 'icon': 'monitor', 'en': 'Keep your eyes on the monitor while I draw labs.', 'ok': True}, {'who': '가족에게', 'icon': 'me', 'en': 'The monitor shows a normal sinus rhythm with no PVCs or ST changes.', 'ok': False, 'fix': "The monitor shows his heartbeat is steady right now, and we're watching it closely."}], 'why': '의료진끼리는 sinus rhythm, PVC, ST changes 같은 파형 이름으로 한 번에 말해요. 가족에게는 용어가 낯서니 지금 심장이 안정적인지만 쉬운 말로 알려 줘요.'}
+=== S6 TTM 냉각 유도·유지 관리
+6.0 EN: We're inducing cooling toward our target now.
+   KO: 지금 목표를 향해 냉각을 유도하고 있어요.
+   CH: We're inducing cooling / toward our target / now / .
+   W: ['w-induce', 'w-target'] g1
+   BL: inducing <- ['charting', 'inducing', 'explaining', 'planning']  DEC: from our target
+   D1: 방금 목표를 향해 냉각을 유도했어요.
+   D2: 지금 팀과 함께 냉각을 유도하고 있어요.
+   TAG:냉각 진행 ICON:monitor WHY: 'We're ~ing'로 지금 진행 중인 일을 말하고 toward로 방향을 알려 줘요.
+6.1 EN: Once there, we hold the temperature tightly stable.
+   KO: 도달하면 체온을 팽팽하게 안정적으로 유지합니다.
+   CH: Once there / , we hold / the temperature tightly stable / .
+   W: ['w-temperature', 'w-tight', 'w-stable'] g2
+   BL: temperature <- ['temperature', 'rhythm', 'pressure', 'glucose']  DEC: Once awake
+   D1: 도달하면 혈당을 팽팽하게 안정적으로 유지합니다.
+   D2: 도달하면 체온을 팽팽하게 안정적으로 지켜봅니다.
+   TAG:유지 계획 ICON:compass WHY: Once there로 시점을 먼저 깔고 tightly로 얼마나 엄격한지 말해요.
+6.2 EN: Avoid overshooting below the target range.
+   KO: 목표 범위 아래로 지나치지 않게 하세요.
+   CH: Avoid overshooting / below / the target range / .
+   W: ['w-overshoot', 'w-target', 'w-range'] g2
+   BL: range <- ['rate', 'speed', 'range', 'time']  DEC: toward
+   D1: 목표 속도 아래로 지나치지 않게 하세요.
+   D2: 목표 시간 안에 지나치지 않게 하세요.
+   TAG:과냉각 주의 ICON:shield WHY: overshoot는 목표를 지나쳐 버리는 것이고, below로 어느 방향인지 알려 줘요.
+6.3 EN: We're about halfway to target, so let's stay patient.
+   KO: 목표까지 절반쯤 왔으니 조급해하지 맙시다.
+   CH: We're about halfway / to target / , so let's stay / patient / .
+   W: ['w-target'] g1
+   BL: patient <- ['patient', 'upbeat', 'seated', 'quiet']  DEC: , so let's hurry
+   D1: 목표까지 거의 다 왔으니 조급해하지 맙시다.
+   D2: 목표까지 절반쯤 왔으니 보호자께 알립시다.
+   TAG:차분한 독려 ICON:coffee WHY: 'let's stay patient'로 팀 모두에게 하는 말이라, 지시가 아니라 함께 참자는 분위기를 만들어요.
+6.4 EN: Once we hit target, I'll switch to maintenance mode.
+   KO: 목표에 도달하면 유지 모드로 바꿀게요.
+   CH: Once we hit target / , I'll switch / to maintenance / mode / .
+   W: ['w-target', 'w-maintenance', 'w-mode'] g2
+   BL: maintenance <- ['manual', 'maintenance', 'automatic', 'quiet']  DEC: Once we start
+   D1: 목표에 도달하면 유지 모드를 기록할게요.
+   D2: 목표에 도달하면 유지 모드를 설명할게요.
+   TAG:모드 전환 ICON:gear WHY: Once ~, I'll ~로 조건과 다음 행동을 짝지어, 도달 직후에 할 일을 미리 알려요.
+6.5 EN: Temperature is steady within range for the last two hours.
+   KO: 지난 두 시간 동안 체온이 범위 안에서 안정적이에요.
+   CH: Temperature is steady / within range / for the last / two hours / .
+   W: ['w-temperature', 'w-steady', 'w-range'] g2
+   BL: two <- ['three', 'six', 'two', 'four']  DEC: for the next
+   D1: 지난 세 시간 동안 체온이 범위 안에서 안정적이에요.
+   D2: 지난 두 시간 동안 맥박이 범위 안에서 안정적이에요.
+   TAG:경과 보고 ICON:chartup WHY: 'for the last ~'는 지금까지의 기간을 말해, 한 시점이 아니라 이어진 안정을 보고해요.
+  ORDER 대화 흐름 compass TTM 냉각·유지 4문장 순서 | 냉각을 시작하고, 목표에 닿으면 유지 모드로 바꾸고, 그 상태를 팽팽하게 지키고, 지나친 냉각은 피해요.
+   L0: We're inducing cooling toward our target. | 목표를 향해 냉각을 유도하고 있어요 | 냉각
+   L1: Once we hit target, I'll switch to maintenance mode. | 목표에 닿으면 유지 모드로 바꿀게요 | 전환
+   L2: From there, we hold the temperature tightly stable. | 그때부터 체온을 팽팽하게 유지해요 | 유지
+   L3: That means no overshooting below the range. | 범위 아래로 지나치지 않는다는 뜻이에요 | 주의
+  NU[0] slider words=['w-overshoot', 'w-target']
+     {'cue': 'Colleague: "He\'s already one degree below the target we set."', 'scale': ['keep cooling a bit more to be safe', 'stop cooling and tell the doctor', 'speed up the cooling to catch up'], 'answerAt': 1, 'why': '목표보다 더 내려가면 안 되는 치료라, 이미 목표 아래면 냉각을 멈추고 의사에게 알려 조절해요. 더 식히거나 빨리 식히는 건 과냉각(overshoot)을 키워요.', 'example': 'Avoid overshooting below the target range.', 'exKo': '목표 범위 아래로 지나치지 않게 하세요.'}
+  NU[1] context words=['w-steady']
+     {'word': 'steady', 'ko': '일정한', 'scenes': [{'who': '의사에게 보고', 'icon': 'stetho', 'en': 'Temperature is steady at target for the last two hours.', 'ok': True}, {'who': '동료 간호사', 'icon': 'monitor', 'en': 'Is his pressure steady while we hold at target?', 'ok': True}, {'who': '가족에게', 'icon': 'me', 'en': 'His thermoregulatory setpoint remains steady within the target band.', 'ok': False, 'fix': 'His temperature is holding steady where we want it, which helps protect his brain.'}], 'why': '의료진끼리는 목표 범위나 setpoint 같은 말로 간단히 보고해요. 가족에게는 체온이 원하는 곳에서 안정적이라는 것과 뇌를 지키는 데 도움이 된다는 점을 쉬운 말로 전해요.'}
+=== S7 shivering 관리
+7.0 EN: Shivering raises metabolism and fights the cooling.
+   KO: 떨림은 대사를 올려서 냉각에 저항해요.
+   CH: Shivering raises metabolism / and fights / the cooling / .
+   W: ['w-shiver', 'w-metabolism', 'w-fight'] g1
+   BL: metabolism <- ['volume', 'metabolism', 'appetite', 'weight']  DEC: and slows
+   D1: 떨림은 심박을 올려서 냉각에 저항해요.
+   D2: 떨림은 대사를 올려서 가온에 저항해요.
+   TAG:떨림 원리 ICON:fire WHY: and로 원인(대사 상승)과 결과(냉각을 거스름)를 이어, 떨림이 왜 문제인지 한 문장에 설명해요.
+7.1 EN: Let's follow the shivering protocol step by step.
+   KO: 떨림 억제 프로토콜을 단계적으로 따릅시다.
+   CH: Let's follow / the shivering protocol / step by step / .
+   W: ['w-shiver', 'w-protocol', 'w-stepbystep'] g2
+   BL: protocol <- ['video', 'diagram', 'protocol', 'schedule']  DEC: in one binder
+   D1: 떨림 억제 프로토콜을 단계적으로 설명합시다.
+   D2: 떨림 억제 프로토콜을 팀과 함께 따릅시다.
+   TAG:프로토콜 ICON:board WHY: step by step은 건너뛰지 않고 차례로 한다는 뜻이라 프로토콜을 따르는 방식을 말해 줘요.
+7.2 EN: Surface counterwarming and sedation can help control it.
+   KO: 표면 대응가온과 진정이 억제에 도움이 돼요.
+   CH: Surface counterwarming / and sedation / can help / control it / .
+   W: ['w-surface', 'w-counterwarming', 'w-sedation', 'w-control'] g2
+   BL: sedation <- ['sedation', 'exercise', 'coffee', 'fasting']  DEC: and exercise
+   D1: 표면 대응가온과 진정이 가려움에 도움이 돼요.
+   D2: 표면 대응가온과 운동이 억제에 도움이 돼요.
+   TAG:억제 방법 ICON:bandage WHY: can help는 확실히 된다고 단정하지 않고 도움이 된다고 말하는 신중한 표현이에요.
+7.3 EN: He's shivering hard enough to spike his temperature.
+   KO: 체온이 오를 만큼 심하게 떨고 있어요.
+   CH: He's shivering hard enough / to spike / his temperature / .
+   W: ['w-shiver', 'w-temperature'] g1
+   BL: temperature <- ['pressure', 'temperature', 'pulse', 'rhythm']  DEC: to lower
+   D1: 맥박이 오를 만큼 심하게 떨고 있어요.
+   D2: 체온이 오를 만큼 심하게 기침하고 있어요.
+   TAG:심한 정도 ICON:fire WHY: 'hard enough to ~'는 정도를 결과로 설명해, 얼마나 심한지를 체온 상승으로 보여 줘요.
+7.4 EN: Let's start with acetaminophen and buspirone per the protocol.
+   KO: 프로토콜대로 아세트아미노펜과 부스피론부터 시작합시다.
+   CH: Let's start / with acetaminophen / and buspirone / per the protocol / .
+   W: ['w-acetaminophen', 'w-buspirone', 'w-protocol'] g2
+   BL: protocol <- ['pharmacy', 'protocol', 'label', 'binder']  DEC: per the pharmacy
+   D1: 프로토콜대로 아세트아미노펜과 부스피론부터 준비합시다.
+   D2: 프로토콜대로 아세트아미노펜과 부스피론부터 확인합시다.
+   TAG:단계적 시작 ICON:pill WHY: per the protocol로 약 순서가 개인 판단이 아니라 병원 규정임을 밝혀요.
+7.5 EN: If shivering continues, we add meperidine next.
+   KO: 떨림이 계속되면 메페리딘을 추가합니다.
+   CH: If shivering continues / , we add / meperidine next / .
+   W: ['w-shiver', 'w-meperidine'] g2
+   BL: shivering <- ['hiccups', 'itching', 'shivering', 'nausea']  DEC: if sleeping
+   D1: 떨림이 계속되면 메페리딘 용량을 확인합니다.
+   D2: 떨림이 계속되면 약사에게 메페리딘을 문의합니다.
+   TAG:다음 단계 ICON:pill WHY: If ~, we ~ 구조로 조건과 다음 처치를 짝지어, 단계가 어떻게 올라가는지 미리 알려요.
+  ORDER 대화 흐름 compass 떨림 관리 4문장 순서 | 떨림이 왜 문제인지 말하고, 프로토콜을 따르고, 첫 단계를 쓰고, 부족하면 다음 약을 더해요.
+   L0: Shivering raises metabolism and fights the cooling. | 떨림은 대사를 올리고 냉각에 저항해요 | 이유
+   L1: So we follow the shivering protocol step by step. | 그래서 프로토콜을 단계적으로 따라요 | 프로토콜
+   L2: Its first steps are surface counterwarming and sedation. | 첫 단계는 표면 대응가온과 진정이에요 | 첫 단계
+   L3: If those aren't enough, we add meperidine next. | 부족하면 메페리딘을 추가해요 | 추가
+  NU[0] slider words=['w-acetaminophen', 'w-buspirone', 'w-meperidine', 'w-protocol']
+     {'cue': 'Nurse: "He\'s still shivering after acetaminophen, buspirone, and counterwarming."', 'scale': ['restart the same two drugs', 'stop the cooling right away', 'add meperidine per protocol'], 'answerAt': 2, 'why': '이 병원 프로토콜처럼 떨림 억제는 단계적으로 해요. 표면 대응가온과 아세트아미노펜·부스피론으로도 떨림이 계속되면 다음 단계로 메페리딘을 추가하라고 의사에게 확인해요. 같은 약을 반복하거나 냉각을 갑자기 끊는 건 단계가 아니에요.', 'example': 'If shivering continues, we add meperidine next.', 'exKo': '떨림이 계속되면 메페리딘을 추가합니다.'}
+  NU[1] context words=['w-shiver']
+     {'word': 'shiver', 'ko': '떨림(오한)', 'scenes': [{'who': '의사에게 보고', 'icon': 'stetho', 'en': "He's shivering and his core temperature is climbing.", 'ok': True}, {'who': '동료 간호사', 'icon': 'monitor', 'en': 'Is he shivering? Check his jaw and chest.', 'ok': True}, {'who': '가족에게', 'icon': 'me', 'en': "He's exhibiting a thermoregulatory shivering response with increased oxygen consumption.", 'ok': False, 'fix': "He's shivering because his body is fighting the cooling, and we're treating it so he stays comfortable."}], 'why': '의료진끼리는 체온과 대사량 같은 말로 짧게 보고해요. 가족에게는 의학 용어보다 몸이 왜 떠는지, 우리가 무엇을 해 주는지를 쉬운 말로 전해요.'}
+=== S8 재관류 PCI 이송·조율
+8.0 EN: Let's confirm the cath lab is ready before we move.
+   KO: 이동 전에 카테터실 준비가 됐는지 확인합시다.
+   CH: Let's confirm / the cath lab / is ready / before we move / .
+   W: ['w-cathlab', 'w-ready'] g1
+   BL: ready <- ['empty', 'busy', 'ready', 'locked']  DEC: before we call
+   D1: 이동 전에 엘리베이터 준비가 됐는지 확인합시다.
+   D2: 이동 전에 카테터실 연락처가 맞는지 확인합시다.
+   TAG:이송 전 확인 ICON:check WHY: before we move로 이동 전에 끝내야 할 확인임을 분명히 해서 환자를 먼저 보내지 않게 해요.
+8.1 EN: Secure all lines and the airway for transport.
+   KO: 이송을 위해 모든 라인과 기도를 고정하세요.
+   CH: Secure all lines / and the airway / for transport / .
+   W: ['w-secure', 'w-lines', 'w-airway', 'w-transport'] g2
+   BL: airway <- ['wristband', 'stretcher', 'pump', 'airway']  DEC: for discharge
+   D1: 이송을 위해 모든 라인과 기도를 점검하세요.
+   D2: 수술을 위해 모든 라인과 기도를 고정하세요.
+   TAG:고정 지시 ICON:lock WHY: for transport로 목적을 붙이면 왜 고정하는지, 이동 중에 빠지지 않게라는 이유가 같이 전해져요.
+8.2 EN: Bring the monitor, meds, and a bag valve for the trip.
+   KO: 이동을 위해 모니터, 약물, 백밸브마스크를 챙기세요.
+   CH: Bring the monitor / , meds / , and a bag valve / for the trip / .
+   W: ['w-monitor', 'w-meds', 'w-bagvalve', 'w-trip'] g2
+   BL: trip <- ['weekend', 'trip', 'meeting', 'shift']  DEC: a suction canister
+   D1: 이동을 위해 모니터, 약물, 백밸브마스크를 확인하세요.
+   D2: 복귀를 위해 모니터, 약물, 백밸브마스크를 챙기세요.
+   TAG:이송 물품 ICON:pager WHY: 물품을 쉼표로 나열하고 마지막에 and를 두면 빠뜨리지 말아야 할 세 가지가 한눈에 들어와요.
+8.3 EN: All his drips are on the pump and labeled clearly.
+   KO: 모든 수액이 펌프에 걸려 있고 표시도 명확해요.
+   CH: All his drips / are on / the pump / and labeled clearly / .
+   W: ['w-drip', 'w-pump', 'w-label'] g2
+   BL: pump <- ['floor', 'wall', 'pump', 'ceiling']  DEC: on the pole
+   D1: 모든 수액이 걸대에 걸려 있고 표시도 명확해요.
+   D2: 모든 수액이 펌프에 걸려 있고 서명도 명확해요.
+   TAG:수액 상태 ICON:check WHY: 'on the pump and labeled'처럼 상태 둘을 and로 이으면 이송 전 점검 결과를 한 번에 보고해요.
+8.4 EN: Cath lab just called back, and they're ready for us now.
+   KO: 카테터실에서 방금 연락 왔는데 지금 준비됐대요.
+   CH: Cath lab just called back / , and they're ready / for us / now / .
+   W: ['w-cathlab', 'w-ready'] g1
+   BL: Cath lab <- ['Radiology', 'Registration', 'Pharmacy', 'Cath lab']  DEC: for them
+   D1: 약국에서 방금 연락 왔는데 지금 준비됐대요.
+   D2: 혈액은행에서 방금 연락 왔는데 지금 준비됐대요.
+   TAG:연락 받음 ICON:pager WHY: just called back의 just는 방금이라는 뜻이라 최신 정보임을 알리고 now로 지금 가능함을 전해요.
+8.5 EN: I'll walk beside the bed and manage the airway during transport.
+   KO: 이송하는 동안 침대 옆에서 걸으며 기도를 관리할게요.
+   CH: I'll walk beside the bed / and manage / the airway / during transport / .
+   W: ['w-airway', 'w-transport'] g2
+   BL: airway <- ['airway', 'pump', 'chart', 'stretcher']  DEC: in front of
+   D1: 이송하는 동안 침대 뒤에서 걸으며 기도를 관리할게요.
+   D2: 복귀하는 동안 침대 옆에서 걸으며 기도를 관리할게요.
+   TAG:이송 역할 ICON:run WHY: during transport로 맡는 기간을 한정하고, 걸으며 관리한다는 말로 기도 곁을 떠나지 않겠다고 알려요.
+  ORDER 대화 흐름 compass PCI 이송 4문장 순서 | 도착 준비를 확인하고, 라인과 기도를 고정하고, 장비를 챙긴 뒤, 이송 중에 기도를 맡아요.
+   L0: Let's confirm the cath lab is ready for us. | 카테터실이 준비됐는지 확인합시다 | 확인
+   L1: Once they're ready, secure all lines and the airway. | 준비되면 모든 라인과 기도를 고정하세요 | 고정
+   L2: With all of that secure, bring the monitor, meds, and a bag valve. | 고정이 끝나면 모니터, 약물, 백밸브마스크를 챙기세요 | 장비
+   L3: During transport, I'll walk beside the bed and manage the airway. | 이송 중에는 침대 옆에서 걸으며 기도를 관리할게요 | 이송
+  NU[0] slider words=['w-drip', 'w-label', 'w-trip']
+     {'cue': 'Cath lab tech: "Before we roll, one of his drips has no label."', 'scale': ['roll now and label it in the lab', 'label it before we roll', 'tell the lab it is probably saline'], 'answerAt': 1, 'why': "라벨 없는 드립은 무슨 약인지 몰라서 이송 중 위험해요. 출발하기 전에 라벨을 붙이고 확인해요. 짐작으로 '식염수일 것'이라고 말하거나 나중에 붙이는 건 안 돼요.", 'example': 'All his drips are on the pump and labeled clearly.', 'exKo': '모든 수액이 펌프에 걸려 있고 표시도 명확해요.'}
+  NU[1] context words=['w-transport']
+     {'word': 'transport', 'ko': '이송', 'scenes': [{'who': '의사에게 보고', 'icon': 'stetho', 'en': 'Airway secured for transport, and the cath lab is ready.', 'ok': True}, {'who': '동료 간호사', 'icon': 'monitor', 'en': "Bring the bag valve, and I'll manage the airway during transport.", 'ok': True}, {'who': '가족에게', 'icon': 'me', 'en': 'We will perform an intrahospital transport with full monitoring to the interventional suite.', 'ok': False, 'fix': "We're taking him to the heart lab now so they can open the blocked artery."}], 'why': '의료진끼리는 transport나 interventional suite 같은 말로 정확하게 주고받아요. 가족에게는 어디로 왜 가는지를 쉬운 말로 알려야 안심해요.'}
+=== S9 ROSC 후 혈역학 목표 유지
+9.0 EN: Let's keep his MAP at or above our target.
+   KO: MAP를 목표치 이상으로 유지합시다.
+   CH: Let's keep / his MAP / at or above / our target / .
+   W: ['w-map', 'w-target'] g1
+   BL: MAP <- ['age', 'weight', 'height', 'MAP']  DEC: on the monitor
+   D1: 산소포화도를 목표치 이상으로 유지합시다.
+   D2: CVP를 목표치 이상으로 유지합시다.
+   TAG:혈압 목표 ICON:monitor WHY: 'at or above'는 목표치를 최저선으로 삼는다는 뜻이라 그 아래로 내려가지 않게 지키라는 말이에요.
+9.1 EN: Titrate vasopressors and fluids to maintain perfusion.
+   KO: 관류 유지를 위해 승압제와 수액을 적정하세요.
+   CH: Titrate vasopressors / and fluids / to maintain perfusion / .
+   W: ['w-titrate', 'w-vasopressor', 'w-fluid', 'w-maintain', 'w-perfusion'] g1
+   BL: perfusion <- ['sedation', 'perfusion', 'comfort', 'visitation']  DEC: to maintain comfort
+   D1: 관류 유지를 위해 승압제와 수액을 챙기세요.
+   D2: 뇌압 유지를 위해 승압제와 수액을 적정하세요.
+   TAG:적정 지시 ICON:pill WHY: to maintain ~으로 목적을 붙이면 약과 수액을 왜 조절하는지가 관류라는 한 가지로 모여요.
+9.2 EN: Good perfusion protects his brain after arrest.
+   KO: 좋은 관류가 심정지 이후 뇌를 보호합니다.
+   CH: Good perfusion protects / his brain / after arrest / .
+   W: ['w-perfusion', 'w-protect', 'w-brain', 'w-arrest'] g2
+   BL: brain <- ['ears', 'bones', 'skin', 'brain']  DEC: his skin
+   D1: 좋은 관류가 수술 이후 뇌를 보호합니다.
+   D2: 좋은 관류가 심정지 이후 뼈를 보호합니다.
+   TAG:이유 설명 ICON:bulb WHY: protects는 해를 막아 준다는 뜻이라 관류가 왜 중요한지를 결과로 설명해요.
+9.3 EN: His MAP dipped below sixty, so I'm titrating up now.
+   KO: MAP가 60 밑으로 떨어져서 지금 올리고 있어요.
+   CH: His MAP dipped / below sixty / , so I'm titrating up / now / .
+   W: ['w-map', 'w-titrate'] g1
+   BL: sixty <- ['sixty', 'seventy', 'ninety', 'fifty']  DEC: over sixty
+   D1: MAP가 50 밑으로 떨어져서 지금 올리고 있어요.
+   D2: 맥박이 60 밑으로 떨어져서 지금 올리고 있어요.
+   TAG:조치 보고 ICON:pill WHY: dipped below ~로 수치가 떨어진 정도를 말하고, so로 지금 하는 조치를 이어 보고해요.
+9.4 EN: We've weaned the vasopressor a bit since his pressure improved.
+   KO: 혈압이 좋아져서 승압제를 조금 줄였어요.
+   CH: We've weaned the vasopressor / a bit / since his pressure / improved / .
+   W: ['w-wean', 'w-vasopressor', 'w-improve'] g2
+   BL: vasopressor <- ['sedative', 'oxygen', 'vasopressor', 'diuretic']  DEC: a lot
+   D1: 혈압이 좋아져서 승압제를 많이 줄였어요.
+   D2: 맥박이 좋아져서 승압제를 조금 줄였어요.
+   TAG:조치 보고 ICON:chartup WHY: since로 줄인 이유(혈압 회복)를 이어, 약을 줄인 까닭이 바로 전해져요.
+9.5 EN: Good perfusion now means fewer complications for him later.
+   KO: 지금 관류가 좋으면 나중에 합병증이 줄어요.
+   CH: Good perfusion now / means fewer complications / for him / later / .
+   W: ['w-perfusion', 'w-complication'] g2
+   BL: complications <- ['errors', 'complications', 'costs', 'complaints']  DEC: for the family
+   D1: 지금 관류가 좋으면 나중에 비용이 줄어요.
+   D2: 지금 관류가 좋으면 나중에 면회가 줄어요.
+   TAG:격려 설명 ICON:star WHY: 'fewer ~ later'로 지금의 수고가 나중의 이익으로 이어진다고 말해 팀을 독려해요.
+  ORDER 대화 흐름 compass 혈압 목표 유지 4문장 순서 | 떨어진 것을 보고하고, 승압제를 올리고, 목표에 돌아오면 유지하고, 그 이유를 말해 팀을 독려해요.
+   L0: His MAP dipped below sixty. | MAP가 60 밑으로 떨어졌어요 | 보고
+   L1: So I'm titrating the vasopressor up now. | 그래서 지금 승압제를 올리고 있어요 | 조치
+   L2: Once it's back at target, we hold there. | 목표로 돌아오면 거기서 유지해요 | 유지
+   L3: That protects his brain after arrest. | 그게 심정지 이후 뇌를 보호해요 | 이유
+  NU[0] slider words=['w-map', 'w-titrate', 'w-vasopressor']
+     {'cue': 'Colleague: "His MAP is fifty-two, well below our target."', 'scale': ['titrate the vasopressor up', 'wean the vasopressor off', 'stop the IV fluids completely'], 'answerAt': 0, 'why': 'ROSC 후에는 저혈압을 피하는 게 중요하고, 많은 병원이 MAP 65 이상을 목표로 해요(병원 프로토콜·처방 범위를 따라요). MAP가 낮으면 승압제를 적정해서 올리고, 승압제를 끄거나 수액을 끊으면 더 떨어져요.', 'example': "His MAP dipped below sixty, so I'm titrating up now.", 'exKo': 'MAP가 60 밑으로 떨어져서 지금 올리고 있어요.'}
+  NU[1] context words=['w-perfusion']
+     {'word': 'perfusion', 'ko': '관류', 'scenes': [{'who': '의사에게 보고', 'icon': 'stetho', 'en': 'Perfusion is holding on a low-dose vasopressor.', 'ok': True}, {'who': '동료 간호사', 'icon': 'monitor', 'en': 'Check his perfusion, like cap refill and urine output.', 'ok': True}, {'who': '가족에게', 'icon': 'me', 'en': 'His cerebral perfusion pressure depends on holding the MAP above sixty-five.', 'ok': False, 'fix': "We're keeping enough blood flowing to his brain and his organs."}], 'why': '의료진끼리는 perfusion과 MAP 같은 말로 순환 상태를 한 번에 말해요. 가족에게는 압력 수치보다 뇌와 장기에 피가 잘 흐르게 하고 있다는 사실만 쉽게 전해요.'}
+=== S10 ROSC 후 환기·산소 목표
+10.0 EN: Aim for normoxia, not maximal oxygen, after ROSC.
+   KO: ROSC 이후엔 최대 산소가 아니라 정상산소를 목표로 하세요.
+   CH: Aim for normoxia / , not maximal oxygen / , after ROSC / .
+   W: ['w-normoxia', 'w-maximal', 'w-oxygen'] g1
+   BL: oxygen <- ['volume', 'rate', 'oxygen', 'fluid']  DEC: after surgery
+   D1: 수술 이후엔 최대 산소가 아니라 정상산소를 목표로 하세요.
+   D2: ROSC 이후엔 최대 수액이 아니라 정상 수액량을 목표로 하세요.
+   TAG:산소 목표 ICON:compass WHY: 'not maximal oxygen'처럼 not으로 피할 것을 같이 말하면 목표가 정상 범위임이 분명해져요.
+10.1 EN: Keep his CO2 in the normal range.
+   KO: CO2를 정상 범위로 유지하세요.
+   CH: Keep his CO2 / in / the normal range / .
+   W: ['w-co2', 'w-normal', 'w-range'] g2
+   BL: CO2 <- ['BUN', 'hemoglobin', 'CO2', 'albumin']  DEC: in the blood
+   D1: 혈당을 정상 범위로 유지하세요.
+   D2: 칼륨을 정상 범위로 유지하세요.
+   TAG:CO2 목표 ICON:monitor WHY: in the normal range는 한 점이 아니라 범위를 말해, 조금 흔들려도 괜찮다는 뜻이에요.
+10.2 EN: Both hyperoxia and hypocapnia can harm the brain.
+   KO: 고산소증과 저탄산증 모두 뇌를 해칠 수 있어요.
+   CH: Both hyperoxia / and hypocapnia / can harm / the brain / .
+   W: ['w-hyperoxia', 'w-hypocapnia', 'w-harm', 'w-brain'] g1
+   BL: brain <- ['bones', 'skin', 'brain', 'ears']  DEC: for months
+   D1: 고산소증과 저탄산증 모두 뼈를 해칠 수 있어요.
+   D2: 고산소증과 저탄산증 모두 피부를 해칠 수 있어요.
+   TAG:위험 설명 ICON:shield WHY: Both A and B can ~로 서로 반대인 두 상태가 같은 결과를 낳는다고 한 번에 전해요.
+10.3 EN: Let's titrate his FiO2 down now that his oxygen looks fine.
+   KO: 산소 수치가 괜찮으니 FiO2를 낮춥시다.
+   CH: Let's titrate his FiO2 down / now that / his oxygen / looks fine / .
+   W: ['w-titrate', 'w-fio2', 'w-oxygen'] g1
+   BL: FiO2 <- ['fluids', 'pacing', 'FiO2', 'dialysis']  DEC: twice
+   D1: 혈당 수치가 괜찮으니 FiO2를 낮춥시다.
+   D2: 소변량이 괜찮으니 FiO2를 낮춥시다.
+   TAG:산소 조절 ICON:gear WHY: now that ~은 새 사실(수치가 괜찮음)을 이유로 삼아 다음 행동을 이끌어 내요.
+10.4 EN: We're adjusting his respiratory rate to keep CO2 normal.
+   KO: CO2를 정상으로 유지하려고 호흡수를 조정하고 있어요.
+   CH: We're adjusting / his respiratory rate / to keep / CO2 normal / .
+   W: ['w-respiratory', 'w-rate', 'w-co2', 'w-normal'] g2
+   BL: respiratory <- ['feeding', 'heart', 'medication', 'respiratory']  DEC: to lower
+   D1: CO2를 정상으로 유지하려고 가습을 조정하고 있어요.
+   D2: 수분을 정상으로 유지하려고 호흡수를 조정하고 있어요.
+   TAG:호흡수 조정 ICON:gear WHY: to keep ~으로 조정의 목적을 붙여, 호흡수를 바꾸는 이유가 CO2임을 알려요.
+10.5 EN: His last blood gas showed both numbers right at goal.
+   KO: 지난 혈액가스에서 두 수치 모두 목표에 딱 맞았어요.
+   CH: His last / blood gas showed / both numbers / right at goal / .
+   W: ['w-bloodgas', 'w-goal'] g1
+   BL: gas <- ['smear', 'culture', 'scan', 'gas']  DEC: just above
+   D1: 지난 소변검사에서 두 수치 모두 목표에 딱 맞았어요.
+   D2: 지난 혈액가스에서 세 수치 모두 목표에 딱 맞았어요.
+   TAG:검사 결과 ICON:lab WHY: right at goal의 right는 정확히라는 강조라 목표 근처가 아니라 딱 맞았다고 전해요.
+  ORDER 대화 흐름 compass ROSC 후 산소·CO2 4문장 순서 | 산소 목표를 말하고, 수치가 좋으면 FiO2를 낮추고, 다른 수치를 맞추고, 혈액가스로 확인해요.
+   L0: Aim for normoxia, not maximal oxygen. | 최대 산소가 아니라 정상산소를 목표로 하세요 | 목표
+   L1: Since his oxygen looks fine, let's titrate the FiO2 down toward that. | 수치가 괜찮으니 그쪽으로 FiO2를 낮춥시다 | 조정
+   L2: For the other number, keep his CO2 in the normal range. | 다른 수치로는 CO2를 정상 범위로 유지하세요 | CO2
+   L3: His blood gas will tell us if both are at goal. | 혈액가스가 둘 다 목표인지 알려 줘요 | 확인
+  NU[0] slider words=['w-fio2', 'w-titrate', 'w-hyperoxia']
+     {'cue': 'Colleague: "SpO2 is a hundred percent on a FiO2 of a hundred percent."', 'scale': ['add more oxygen to be safe', 'keep FiO2 at maximum for now', 'wean FiO2 down in steps'], 'answerAt': 2, 'why': 'ROSC 후에는 산소가 너무 많은 고산소증도 뇌에 해로울 수 있어서, 포화도가 충분하면 FiO2를 단계적으로 내려 목표 범위(AHA는 SpO2 92~98%)에 맞춰요. 더 올리거나 최대로 유지하는 건 반대 방향이에요.', 'example': "Let's titrate his FiO2 down now that his oxygen looks fine.", 'exKo': '산소 수치가 괜찮으니 FiO2를 낮춥시다.'}
+  NU[1] context words=['w-normal']
+     {'word': 'normal', 'ko': '정상의', 'scenes': [{'who': '의사에게 보고', 'icon': 'stetho', 'en': 'Keep his CO2 in the normal range, goal PaCO2 thirty-five to forty-five.', 'ok': True}, {'who': '동료 간호사', 'icon': 'monitor', 'en': 'His last gas was normal, so leave the rate alone.', 'ok': True}, {'who': '가족에게', 'icon': 'me', 'en': 'His PaCO2 and PaO2 are normal on the current ventilator settings.', 'ok': False, 'fix': 'The breathing machine is set so his oxygen and CO2 stay in a healthy range.'}], 'why': '의료진끼리는 PaCO2, PaO2 같은 기호와 숫자 범위로 목표를 말해요. 가족에게는 기호 대신 호흡기가 산소와 이산화탄소를 건강한 범위로 맞추고 있다는 정도로 쉽게 말해요.'}
+=== S11 재가온 단계 관리
+11.0 EN: Rewarm slowly to avoid rebound complications.
+   KO: 반동 합병증을 막기 위해 천천히 재가온하세요.
+   CH: Rewarm slowly / to avoid / rebound complications / .
+   W: ['w-rewarm', 'w-slowly', 'w-rebound', 'w-complication'] g1
+   BL: complications <- ['complaints', 'complications', 'errors', 'delays']  DEC: for safety
+   D1: 반동 출혈을 막기 위해 천천히 재가온하세요.
+   D2: 감염 합병증을 막기 위해 천천히 재가온하세요.
+   TAG:재가온 속도 ICON:fire WHY: to avoid ~로 천천히 하는 이유를 반동 합병증을 막기 위해서라고 같이 전해요.
+11.1 EN: Watch for vasodilation, hypotension, and hyperkalemia shifts.
+   KO: 혈관확장, 저혈압, 고칼륨혈증 변화를 지켜보세요.
+   CH: Watch for vasodilation / , hypotension / , and hyperkalemia shifts / .
+   W: ['w-vasodilation', 'w-hypotension', 'w-hyperkalemia', 'w-shift'] g2
+   BL: hyperkalemia <- ['fever', 'hypoglycemia', 'anemia', 'hyperkalemia']  DEC: and fever
+   D1: 혈관확장, 저혈압, 고혈당 변화를 지켜보세요.
+   D2: 혈관확장, 저혈압, 고칼륨혈증 변화를 알려 주세요.
+   TAG:관찰 항목 ICON:magnify WHY: Watch for 뒤에 변화 셋을 나열해 어떤 신호를 봐야 하는지 한 번에 알려요.
+11.2 EN: Controlled rewarming protects his recovery.
+   KO: 조절된 재가온이 회복을 지켜줍니다.
+   CH: Controlled rewarming / protects his / recovery / .
+   W: ['w-control', 'w-rewarm', 'w-protect', 'w-recovery'] g1
+   BL: recovery <- ['recovery', 'budget', 'privacy', 'schedule']  DEC: his budget
+   D1: 조절된 재가온이 수면을 지켜줍니다.
+   D2: 조절된 재가온이 일정을 지켜줍니다.
+   TAG:재가온 이유 ICON:shield WHY: Controlled가 주어 앞에 붙어 조절된 재가온만 회복을 지킨다는 뜻이라, 속도의 중요성을 짚어요.
+11.3 EN: We're rewarming him about half a degree per hour.
+   KO: 한 시간에 반 도 정도씩 재가온하고 있어요.
+   CH: We're rewarming him / about half / a degree / per hour / .
+   W: ['w-rewarm'] g1
+   BL: rewarming <- ['charting', 'rewarming', 'timing', 'measuring']  DEC: per day
+   D1: 한 시간에 반 도 정도씩 측정하고 있어요.
+   D2: 한 시간에 반 도 정도씩 알리고 있어요.
+   TAG:재가온 속도 ICON:fire WHY: 'about half a degree per hour'처럼 about으로 어림수임을 말하고 per hour로 단위를 붙여요.
+11.4 EN: His pressure is holding, so the rewarming rate looks safe.
+   KO: 혈압이 유지되고 있어서 재가온 속도가 안전해 보여요.
+   CH: His pressure / is holding / , so the rewarming rate / looks safe / .
+   W: ['w-pressure', 'w-rewarm'] g2
+   BL: pressure <- ['urine', 'rhythm', 'color', 'pressure']  DEC: and the monitor
+   D1: 호흡이 유지되고 있어서 재가온 속도가 안전해 보여요.
+   D2: 혈압이 유지되고 있어서 재가온 간격이 안전해 보여요.
+   TAG:속도 판단 ICON:check WHY: so로 근거(혈압 유지)와 판단(속도 안전)을 이어, 왜 그대로 가는지 알려요.
+11.5 EN: Potassium may bounce up as we rewarm, so we're watching closely.
+   KO: 재가온하면서 칼륨이 오를 수 있어서 계속 지켜보고 있어요.
+   CH: Potassium may bounce up / as we rewarm / , so we're watching / closely / .
+   W: ['w-potassium', 'w-rewarm'] g2
+   BL: Potassium <- ['Phosphate', 'Sodium', 'Chloride', 'Potassium']  DEC: so we're resting
+   D1: 재가온하면서 칼륨이 오를 수 있어서 계속 검사하고 있어요.
+   D2: 재가온하면서 혈당이 오를 수 있어서 계속 지켜보고 있어요.
+   TAG:변동 대비 ICON:magnify WHY: may는 일어날 수도 있다는 가능성만 말해, 겁주지 않고 주의를 부탁해요.
+  ORDER 대화 흐름 compass 재가온 관리 4문장 순서 | 천천히 하라는 원칙을 말하고, 속도를 알리고, 지켜볼 변화를 말한 뒤, 변화가 없으면 속도가 안전하다고 판단해요.
+   L0: Rewarm slowly to avoid rebound complications. | 반동 합병증을 막으려면 천천히 재가온하세요 | 원칙
+   L1: That means about half a degree per hour. | 한 시간에 반 도 정도라는 뜻이에요 | 속도
+   L2: As he warms, watch for vasodilation, hypotension, and hyperkalemia. | 가온되는 동안 혈관확장, 저혈압, 고칼륨혈증을 보세요 | 관찰
+   L3: If none of those show up, the rate looks safe. | 그중 하나도 안 나타나면 속도가 안전해 보여요 | 판단
+  NU[0] pair words=['w-rewarm', 'w-slowly', 'w-rebound', 'w-hyperkalemia']
+     {'pairs': [['rewarm', 'slowly'], ['rebound', 'hyperkalemia'], ['watch for', 'low blood pressure']], 'decoys': ['the cooling'], 'why': '재가온은 천천히(slowly) 해야 해요(AHA는 시간당 0.25~0.5도). 재가온하면 세포 안에 들어갔던 칼륨이 다시 나와 rebound hyperkalemia가 올 수 있어요. 혈관확장으로 혈압이 떨어질 수 있어 low blood pressure도 지켜봐요.'}
+  NU[1] context words=['w-rewarm']
+     {'word': 'rewarm', 'ko': '재가온하다', 'scenes': [{'who': '의사에게 보고', 'icon': 'stetho', 'en': "We'll rewarm at a quarter degree per hour per protocol.", 'ok': True}, {'who': '동료 간호사', 'icon': 'monitor', 'en': 'Hold the rewarm until his pressure is back up.', 'ok': True}, {'who': '가족에게', 'icon': 'me', 'en': 'We will initiate controlled rewarm at zero point two five degrees Celsius per hour.', 'ok': False, 'fix': "We're warming him back up slowly and carefully so his body stays safe."}], 'why': '의료진끼리는 시간당 재가온 속도를 숫자로 정확히 말해요. 가족에게는 숫자와 단위를 늘어놓지 말고, 천천히 안전하게 데운다는 것만 쉬운 말로 전해요.'}
+=== S12 발작·경련 감시
+12.0 EN: Post-arrest seizures can be subtle, like eye twitching.
+   KO: 심정지 이후 발작은 눈 씰룩거림처럼 미세할 수 있어요.
+   CH: Post-arrest seizures / can be subtle / , like eye twitching / .
+   W: ['w-seizure', 'w-subtle', 'w-twitch'] g1
+   BL: seizures <- ['seizures', 'rashes', 'headaches', 'vomiting']  DEC: like sleeping
+   D1: 심정지 이후 두통은 눈 씰룩거림처럼 미세할 수 있어요.
+   D2: 심정지 이후 구토는 눈 씰룩거림처럼 미세할 수 있어요.
+   TAG:발작 징후 ICON:magnify WHY: like ~로 구체적인 예를 들어, 미세한 발작이 어떤 모습인지 알려 줘요.
+12.1 EN: Let's consider EEG monitoring for nonconvulsive activity.
+   KO: 비경련성 활동을 위해 뇌파 모니터링을 고려합시다.
+   CH: Let's consider / EEG monitoring / for nonconvulsive activity / .
+   W: ['w-eeg', 'w-monitor', 'w-nonconvulsive', 'w-activity'] g2
+   BL: EEG <- ['ECG', 'CT', 'MRI', 'EEG']  DEC: for convulsions
+   D1: 경련성 활동을 위해 뇌파 모니터링을 고려합시다.
+   D2: 비경련성 활동을 위해 심전도 모니터링을 고려합시다.
+   TAG:뇌파 제안 ICON:monitor WHY: Let's consider는 확정하지 않고 팀과 함께 검토하자는 부드러운 제안이에요.
+12.2 EN: Report any abnormal movements right away.
+   KO: 비정상적인 움직임은 바로 보고하세요.
+   CH: Report any / abnormal movements / right away / .
+   W: ['w-report', 'w-abnormal', 'w-movement'] g2
+   BL: movements <- ['colors', 'movements', 'odors', 'visitors']  DEC: from the bedside
+   D1: 비정상적인 소리는 바로 보고하세요.
+   D2: 비정상적인 냄새는 바로 보고하세요.
+   TAG:보고 지시 ICON:siren WHY: right away는 모아 두지 말고 즉시라는 뜻이라 보고 시점을 분명히 해요.
+12.3 EN: I noticed some eye twitching a minute ago, so I flagged it.
+   KO: 조금 전 눈 씰룩거림을 봐서 표시해 뒀어요.
+   CH: I noticed / some eye twitching / a minute ago / , so I flagged it / .
+   W: ['w-twitch'] g1
+   BL: twitching <- ['swelling', 'redness', 'bleeding', 'twitching']  DEC: so I measured
+   D1: 조금 전 손 씰룩거림을 봐서 표시해 뒀어요.
+   D2: 한 시간 전 눈 씰룩거림을 봐서 표시해 뒀어요.
+   TAG:관찰 보고 ICON:pager WHY: a minute ago로 관찰 시점을 밝히고 so로 이미 한 조치(표시)를 이어 말해요.
+12.4 EN: Neurology wants continuous EEG for the next twenty-four hours.
+   KO: 신경과에서 앞으로 24시간 동안 지속 뇌파를 원해요.
+   CH: Neurology wants / continuous EEG / for the next / twenty-four hours / .
+   W: ['w-eeg', 'w-continuous'] g2
+   BL: Neurology <- ['Neurology', 'Pharmacy', 'Nephrology', 'Cardiology']  DEC: for the past
+   D1: 순환기내과에서 앞으로 24시간 동안 지속 뇌파를 원해요.
+   D2: 신경과에서 앞으로 24시간 동안 지속 심전도를 원해요.
+   TAG:요청 전달 ICON:speech WHY: wants는 부서의 요청을 전하는 말이라, 내 판단이 아니라 신경과의 요구임을 분명히 해요.
+12.5 EN: I'll report any seizure activity to the team right away.
+   KO: 발작 활동이 있으면 바로 팀에 보고할게요.
+   CH: I'll report / any seizure activity / to the team / right away / .
+   W: ['w-report', 'w-seizure', 'w-activity', 'w-team'] g2
+   BL: team <- ['team', 'registrar', 'kitchen', 'laundry']  DEC: to the family
+   D1: 구토가 있으면 바로 팀에 보고할게요.
+   D2: 열이 있으면 바로 팀에 보고할게요.
+   TAG:보고 약속 ICON:speech WHY: I'll + right away로 즉시 보고하겠다고 약속해, 듣는 사람이 바로 알게 될 거라고 안심해요.
+  ORDER 대화 흐름 compass 발작 감시 4문장 순서 | 미세한 발작을 설명하고, 그래서 뇌파를 하고, 발작이 잡히면 바로 보고하고, 그 뒤 신경과가 기록을 검토해요.
+   L0: Post-arrest seizures can be subtle, like eye twitching. | 심정지 이후 발작은 눈 씰룩거림처럼 미세할 수 있어요 | 설명
+   L1: So let's consider continuous EEG monitoring. | 그래서 지속 뇌파 모니터링을 고려합시다 | 제안
+   L2: If it picks up any seizure activity, I'll report it to the team right away. | 발작 활동이 잡히면 바로 팀에 보고할게요 | 보고
+   L3: Neurology reviews everything it recorded after that. | 그 뒤 신경과가 기록된 것을 모두 검토해요 | 검토
+  NU[0] slider words=['w-twitch', 'w-report', 'w-seizure']
+     {'cue': 'Colleague: "His left eyelid keeps twitching, and he\'s sedated."', 'scale': ['report it to the doctor now', 'call it a normal reflex', 'just hold the sedation'], 'answerAt': 0, 'why': '심정지 이후에는 눈꺼풀 씰룩거림처럼 미세한 움직임이 발작일 수 있어요. 정상 반사라고 단정하거나 진정을 임의로 끊지 말고, 본 것을 바로 의사에게 보고해서 뇌파로 확인해요.', 'example': 'I noticed some eye twitching a minute ago, so I flagged it.', 'exKo': '조금 전 눈 씰룩거림을 봐서 표시해 뒀어요.'}
+  NU[1] context words=['w-seizure']
+     {'word': 'seizure', 'ko': '발작', 'scenes': [{'who': '의사에게 보고', 'icon': 'stetho', 'en': "I'm concerned about subtle seizure activity, so can we get continuous EEG?", 'ok': True}, {'who': '동료 간호사', 'icon': 'monitor', 'en': 'Call me if you see any seizure activity.', 'ok': True}, {'who': '가족에게', 'icon': 'me', 'en': 'He may be having nonconvulsive electrographic seizure activity.', 'ok': False, 'fix': "We're watching for tiny seizures that can happen after the heart stops, and a brain wave test will help us see them."}], 'why': '의료진끼리는 nonconvulsive나 electrographic 같은 정확한 용어로 말해요. 가족에게는 그런 말이 겁만 주니, 무엇을 지켜보고 있고 어떤 검사로 확인하는지를 쉬운 말로 알려 줘요.'}
+=== S13 K 전해질 변동 관리
+13.0 EN: Cooling shifts potassium into cells, lowering serum levels.
+   KO: 냉각이 칼륨을 세포 안으로 이동시켜 혈청 수치를 낮춰요.
+   CH: Cooling shifts potassium / into cells / , lowering serum levels / .
+   W: ['w-potassium', 'w-cell', 'w-lower', 'w-serum', 'w-level'] g1
+   BL: potassium <- ['potassium', 'protein', 'calcium', 'lactate']  DEC: , spreading
+   D1: 냉각이 나트륨을 세포 안으로 이동시켜 혈청 수치를 낮춰요.
+   D2: 냉각이 칼륨을 세포 안으로 이동시켜 소변 수치를 낮춰요.
+   TAG:원리 설명 ICON:bulb WHY: 분사구 ', lowering ~'로 결과를 덧붙여, 이동이 수치 저하로 이어진다고 한 문장에 보여 줘요.
+13.1 EN: Rewarming can cause rebound hyperkalemia.
+   KO: 재가온이 반동성 고칼륨혈증을 일으킬 수 있어요.
+   CH: Rewarming can cause / rebound / hyperkalemia / .
+   W: ['w-rewarm', 'w-rebound', 'w-hyperkalemia'] g1
+   BL: rebound <- ['rebound', 'genetic', 'allergic', 'chronic']  DEC: can feel
+   D1: 재가온이 반동성 가려움을 일으킬 수 있어요.
+   D2: 재가온이 반동성 근육통을 일으킬 수 있어요.
+   TAG:재가온 위험 ICON:fire WHY: can cause는 가능성을 말하는 표현이고 rebound는 냉각에서 올라올 때 도로 오르는 현상을 가리켜요.
+13.2 EN: Let's recheck potassium frequently and correct cautiously.
+   KO: 칼륨을 자주 재확인하고 신중하게 교정합시다.
+   CH: Let's recheck potassium / frequently / and correct cautiously / .
+   W: ['w-recheck', 'w-potassium', 'w-correct', 'w-cautiously'] g2
+   BL: correct <- ['chart', 'correct', 'report', 'review']  DEC: privately
+   D1: 칼륨을 자주 재확인하고 신중하게 상의합시다.
+   D2: 마그네슘을 자주 재확인하고 신중하게 교정합시다.
+   TAG:재검과 교정 ICON:lab WHY: 'frequently and cautiously'처럼 부사 둘을 and로 묶어 자주 보되 조심스럽게 고치자는 두 가지를 함께 말해요.
+13.3 EN: His last potassium came back at three point two.
+   KO: 지난 칼륨 수치가 3.2로 나왔어요.
+   CH: His last potassium / came back / at three / point two / .
+   W: ['w-potassium'] g1
+   BL: potassium <- ['sodium', 'magnesium', 'calcium', 'potassium']  DEC: at five
+   D1: 지난 마그네슘 수치가 3.2로 나왔어요.
+   D2: 지난 칼슘 수치가 3.2로 나왔어요.
+   TAG:수치 보고 ICON:lab WHY: 소수는 'three point two'처럼 point로 읽으니, 수치를 말로 보고할 때 그대로 써요.
+13.4 EN: We're correcting it slowly so we don't overshoot the level.
+   KO: 수치를 지나치지 않게 천천히 교정하고 있어요.
+   CH: We're correcting it slowly / so we don't / overshoot / the level / .
+   W: ['w-correct', 'w-overshoot', 'w-level'] g2
+   BL: correcting <- ['repeating', 'correcting', 'explaining', 'documenting']  DEC: so we can
+   D1: 속도를 지나치지 않게 천천히 교정하고 있어요.
+   D2: 수치를 놓치지 않게 천천히 교정하고 있어요.
+   TAG:신중한 교정 ICON:pill WHY: so we don't overshoot로 천천히 하는 이유를 밝혀, 수치를 지나치게 올리지 않겠다고 알려요.
+13.5 EN: Once he's rewarmed, I'll recheck potassium one more time.
+   KO: 재가온이 끝나면 칼륨을 한 번 더 재확인할게요.
+   CH: Once he's rewarmed / , I'll recheck potassium / one more / time / .
+   W: ['w-rewarm', 'w-recheck', 'w-potassium'] g2
+   BL: rewarmed <- ['transferred', 'extubated', 'bathed', 'rewarmed']  DEC: Once he's admitted
+   D1: 재가온이 끝나면 칼륨을 두 번 더 재확인할게요.
+   D2: 재가온이 끝나면 칼륨을 한 번 더 기록할게요.
+   TAG:재검 약속 ICON:calendar WHY: Once ~, I'll ~로 재가온이 끝난 뒤의 행동을 약속해, 언제 다시 보는지 분명히 해요.
+  ORDER 대화 흐름 compass 칼륨 변동 관리 4문장 순서 | 원리를 말하고, 그래서 자주 재확인하고, 낮으면 천천히 교정하고, 교정과 재가온이 끝나면 한 번 더 확인해요.
+   L0: Cooling shifts potassium into cells, lowering serum levels. | 냉각이 칼륨을 세포 안으로 옮겨 수치를 낮춰요 | 원리
+   L1: So let's recheck potassium frequently. | 그래서 칼륨을 자주 재확인합시다 | 재확인
+   L2: If it comes back low, we correct it slowly. | 낮게 나오면 천천히 교정해요 | 교정
+   L3: Once he's rewarmed and it's corrected, I'll recheck once more. | 재가온과 교정이 끝나면 한 번 더 확인할게요 | 마무리
+  NU[0] slider words=['w-potassium', 'w-correct', 'w-cautiously', 'w-recheck']
+     {'cue': 'Lab: "His potassium is three point two while he\'s still cold."', 'scale': ['replace it all at once', 'replace cautiously and recheck often', 'leave it until rewarming ends'], 'answerAt': 1, 'why': '냉각 중에는 칼륨이 세포 안으로 들어가 혈청 수치가 낮게 나와요. 재가온하면 다시 올라 rebound가 올 수 있어서, 한꺼번에 보충하지 않고 신중하게 보충하며 자주 재확인해요(수치와 용량은 처방과 프로토콜을 따라요).', 'example': "Let's recheck potassium frequently and correct cautiously.", 'exKo': '칼륨을 자주 재확인하고 신중하게 교정합시다.'}
+  NU[1] context words=['w-level']
+     {'word': 'level', 'ko': '농도(수준)', 'scenes': [{'who': '의사에게 보고', 'icon': 'stetho', 'en': "His potassium level is three point two, and we're correcting it cautiously.", 'ok': True}, {'who': '동료 간호사', 'icon': 'monitor', 'en': 'Can you recheck the level after the next bag?', 'ok': True}, {'who': '가족에게', 'icon': 'me', 'en': 'His serum level is three point two milliequivalents per liter, below the reference range.', 'ok': False, 'fix': "His potassium is a little low from the cooling, and we're replacing it slowly."}], 'why': '의료진끼리는 수치와 단위를 그대로 말해도 통해요. 가족에게는 단위와 기준 범위가 낯서니, 조금 낮고 천천히 채우고 있다는 사실만 쉽게 전해요.'}
+=== S14 신경학적 예후 검사 준비
+14.0 EN: Prognostication relies on multiple tests over time, not one.
+   KO: 예후 판정은 한 번이 아니라 시간을 두고 여러 검사에 의존해요.
+   CH: Prognostication relies / on multiple tests / over time / , not one / .
+   W: ['w-prognostication', 'w-rely', 'w-multiple', 'w-test'] g2
+   BL: tests <- ['opinions', 'tests', 'visits', 'doctors']  DEC: one doctor
+   D1: 예후 판정은 한 번이 아니라 시간을 두고 여러 의사에 의존해요.
+   D2: 예후 판정은 한 번이 아니라 시간을 두고 여러 병원에 의존해요.
+   TAG:예후 원칙 ICON:compass WHY: 'not one'을 끝에 붙여 '한 번의 검사만으로는 아니다'를 대조로 짚어 줘요.
+14.1 EN: Let's schedule the neuro exam, imaging, and EEG.
+   KO: 신경학적 진찰, 영상검사, 뇌파 일정을 잡읍시다.
+   CH: Let's schedule / the neuro exam / , imaging / , and EEG / .
+   W: ['w-schedule', 'w-neuroexam', 'w-imaging', 'w-eeg'] g1
+   BL: imaging <- ['imaging', 'therapy', 'dialysis', 'feeding']  DEC: dialysis
+   D1: 신경학적 진찰, 영상검사, 뇌파 일정을 공유합시다.
+   D2: 신경학적 진찰, 영상검사, 뇌파 일정을 안내합시다.
+   TAG:일정 제안 ICON:calendar WHY: Let's schedule로 시작해 항목 세 개를 쉼표로 나열하면 함께 잡을 검사를 한 번에 정리해요.
+14.2 EN: We avoid predicting outcome too early.
+   KO: 너무 이르게 결과를 예측하지 않습니다.
+   CH: We avoid predicting / outcome / too early / .
+   W: ['w-avoid', 'w-predict', 'w-outcome', 'w-early'] g2
+   BL: outcome <- ['outcome', 'weather', 'schedule', 'discharge']  DEC: the weather
+   D1: 너무 자주 결과를 예측하지 않습니다.
+   D2: 너무 이르게 퇴원을 예측하지 않습니다.
+   TAG:신중한 태도 ICON:shield WHY: too early는 시기가 이르다는 뜻이라, 예측 자체가 아니라 성급한 예측을 삼간다는 뜻이에요.
+14.3 EN: It's still too soon to know how he'll do neurologically.
+   KO: 신경학적으로 어떻게 될지 알기엔 아직 너무 일러요.
+   CH: It's still / too soon / to know / how he'll do neurologically / .
+   W: ['w-soon', 'w-neurological'] g2
+   BL: neurologically <- ['socially', 'neurologically', 'legally', 'financially']  DEC: too crowded
+   D1: 퇴원 후에 어떻게 될지 알기엔 아직 너무 일러요.
+   D2: 신경학적으로 누가 맡을지 정하기엔 아직 너무 일러요.
+   TAG:시기상조 ICON:faceWorried WHY: still too soon은 지금은 판단할 때가 아니라는 완곡한 말이라, 단정을 피하면서 기다림을 전해요.
+14.4 EN: Imaging is scheduled for tomorrow, and the neuro exam follows after.
+   KO: 영상검사는 내일로 잡혔고, 신경학적 진찰이 그 뒤를 따라요.
+   CH: Imaging is scheduled / for tomorrow / , and the neuro exam / follows after / .
+   W: ['w-imaging', 'w-tomorrow', 'w-neuroexam', 'w-follow'] g1
+   BL: tomorrow <- ['Monday', 'tonight', 'Friday', 'tomorrow']  DEC: for yesterday
+   D1: 영상검사는 모레로 잡혔고, 신경학적 진찰이 그 뒤를 따라요.
+   D2: 영상검사는 내일로 잡혔고, 뇌파 검사가 그 뒤를 따라요.
+   TAG:일정 안내 ICON:calendar WHY: follows after로 두 검사의 순서를 말해, 어느 쪽이 먼저인지 분명히 전해요.
+14.5 EN: We'll gather all the results before we talk with the family.
+   KO: 가족과 이야기하기 전에 모든 결과를 모을게요.
+   CH: We'll gather / all the results / before we talk / with the family / .
+   W: ['w-gather', 'w-result'] g2
+   BL: family <- ['registrar', 'auditor', 'family', 'pharmacist']  DEC: the bills
+   D1: 가족과 이야기하기 전에 모든 결과를 읽을게요.
+   D2: 팀과 이야기하기 전에 모든 결과를 모을게요.
+   TAG:소통 준비 ICON:handshake2 WHY: before we talk로 순서를 밝혀, 가족과 이야기하기 전에 결과를 다 모아 두겠다고 약속해요.
+  ORDER 대화 흐름 compass 예후 평가 준비 4문장 순서 | 원칙을 말하고, 검사 일정을 잡고, 결과를 모은 뒤에야 가족과 이야기해요.
+   L0: Prognostication relies on multiple tests over time. | 예후 판정은 시간을 두고 여러 검사에 의존해요 | 원칙
+   L1: So let's schedule the neuro exam, imaging, and EEG. | 그래서 진찰, 영상, 뇌파 일정을 잡읍시다 | 일정
+   L2: We'll gather all the results once those are done. | 그게 끝나면 모든 결과를 모을게요 | 취합
+   L3: Only then will we talk with the family. | 그러고 나서야 가족과 이야기할 거예요 | 소통
+  NU[0] slider words=['w-early', 'w-predict', 'w-outcome']
+     {'cue': 'Colleague: "His family asks at hour eighteen if he will wake up."', 'scale': ['promise he will fully recover', 'tell them he will not wake', 'say it is too early to know'], 'answerAt': 2, 'why': '심정지 후 신경학적 예후 판정은 보통 정상체온을 회복한 뒤 72시간 이후에 여러 검사를 종합해 해요. 18시간째에는 회복을 약속하거나 못 깨어난다고 단정하지 말고, 아직 알기 이르다고 정직하게 말해요.', 'example': 'We avoid predicting outcome too early.', 'exKo': '너무 이르게 결과를 예측하지 않습니다.'}
+  NU[1] context words=['w-result']
+     {'word': 'result', 'ko': '결과', 'scenes': [{'who': '의사에게 보고', 'icon': 'stetho', 'en': "The result is back, and we'll put it together with the exam and EEG.", 'ok': True}, {'who': '동료 간호사', 'icon': 'monitor', 'en': 'Can you gather the result from radiology?', 'ok': True}, {'who': '가족에게', 'icon': 'me', 'en': 'His MRI result shows restricted diffusion in the bilateral basal ganglia, so prognosis is guarded.', 'ok': False, 'fix': "One scan can't tell us everything, so we'll look at several tests together before we talk about what to expect."}], 'why': '의료진끼리는 영상 소견 용어를 그대로 쓰지만, 가족에게는 한 검사 결과만으로 단정하지 않고 여러 검사를 종합해 설명한다는 점을 쉬운 말로 알려야 해요.'}
+=== S15 재정지 즉각 소생
+15.0 EN: He's in VFib and lost his pulse — start compressions now.
+   KO: 심실세동이고 맥박이 사라졌어요. 지금 바로 압박을 시작하세요.
+   CH: He's in VFib / and lost his pulse / — start compressions / now / .
+   W: ['w-pulse'] g1
+   BL: VFib <- ['VFib', 'PEA', 'VTach', 'asystole']  DEC: and lost his balance
+   D1: 심실빈맥이고 맥박이 사라졌어요. 지금 바로 압박을 시작하세요.
+   D2: 심실세동이고 의식이 사라졌어요. 지금 바로 압박을 시작하세요.
+   TAG:재정지 선언 ICON:siren WHY: 상태를 말한 뒤 대시로 바로 지시를 잇고 now를 끝에 붙여, 긴급할 때 짧게 끊어 말하는 방식이에요.
+15.1 EN: Charge the defibrillator and clear for a shock.
+   KO: 제세동기를 충전하고 쇼크를 위해 물러나세요.
+   CH: Charge the defibrillator / and clear / for a shock / .
+   W: ['w-charge', 'w-defibrillator', 'w-clear', 'w-shock'] g1
+   BL: defibrillator <- ['pacemaker', 'ventilator', 'monitor', 'defibrillator']  DEC: the monitor
+   D1: 제세동기를 충전하고 쇼크를 위해 패드를 붙이세요.
+   D2: 제세동기를 켜고 쇼크를 위해 물러나세요.
+   TAG:제세동 준비 ICON:siren WHY: 동사 둘을 and로 이어 충전과 안전 확보를 순서대로 말해, 쇼크 직전에 필요한 두 동작이 한 번에 전달돼요.
+15.2 EN: Call the code and assign roles quickly.
+   KO: 코드를 부르고 역할을 신속히 배정하세요.
+   CH: Call the code / and assign roles / quickly / .
+   W: ['w-code', 'w-assign', 'w-role', 'w-quickly'] g2
+   BL: roles <- ['shifts', 'beds', 'rooms', 'roles']  DEC: the elevator
+   D1: 코드를 부르고 간호사를 신속히 배정하세요.
+   D2: 코드를 부르고 자리를 신속히 배정하세요.
+   TAG:코드 지시 ICON:pager WHY: quickly를 끝에 두어 둘 다 서둘러 하라는 뜻으로 들려요. 호출과 역할 배정이 한 문장에 묶여 있어요.
+15.3 EN: I'm starting compressions now, so someone call for backup.
+   KO: 지금 압박을 시작할 테니 누가 지원을 요청해 주세요.
+   CH: I'm starting / compressions now / , so someone call / for backup / .
+   W: ['w-backup'] g1
+   BL: backup <- ['a chaplain', 'supplies', 'a porter', 'backup']  DEC: for the next shift
+   D1: 방금 압박을 시작했으니 누가 지원을 요청해 주세요.
+   D2: 지금 압박을 시작할 테니 당신이 지원을 요청해 주세요.
+   TAG:지원 요청 ICON:speaker WHY: so someone call ~은 '누구든' 요청해 달라는 말이라, 압박하는 사람이 손을 뗄 수 없을 때 다른 사람에게 부탁하는 방식이에요.
+15.4 EN: Shock delivered — resume compressions right away.
+   KO: 쇼크가 전달됐어요. 바로 압박을 재개하세요.
+   CH: Shock delivered / — resume compressions / right away / .
+   W: ['w-shock', 'w-deliver', 'w-resume'] g1
+   BL: Shock <- ['Fluid', 'Shock', 'Pacing', 'Oxygen']  DEC: from the pads
+   D1: 백이 연결됐어요. 바로 압박을 재개하세요.
+   D2: 약물이 투여됐어요. 바로 압박을 재개하세요.
+   TAG:쇼크 후 지시 ICON:siren WHY: 대시 앞에 일어난 일, 뒤에 곧바로 할 일을 두고 right away로 지체 없음을 강조해요.
+15.5 EN: I've assigned roles — you're on compressions, I'm on the airway.
+   KO: 역할을 배정했어요. 당신은 압박, 저는 기도를 맡을게요.
+   CH: I've assigned roles / — you're on compressions / , I'm on / the airway / .
+   W: ['w-assign', 'w-role', 'w-airway'] g2
+   BL: airway <- ['chart', 'defibrillator', 'airway', 'drugs']  DEC: you're on the chart
+   D1: 역할을 바꿨어요. 당신은 압박, 저는 기도를 맡을게요.
+   D2: 역할을 배정했어요. 그는 압박, 저는 기도를 맡을게요.
+   TAG:역할 확인 ICON:handshake2 WHY: 'you're on ~, I'm on ~'은 사람마다 맡은 일을 짧게 못 박아, 누가 무엇을 하는지 헷갈리지 않게 해요.
+  ORDER 대화 흐름 siren 재정지 대응 4문장 순서 | 압박을 먼저 시작하고, 압박이 이어지는 동안 코드를 부르고 제세동기를 가져오고, 충전되면 모두 물러난 뒤 쇼크 후 곧바로 압박을 재개해요.
+   L0: He's lost his pulse — start compressions now. | 맥박이 사라졌어요, 지금 압박을 시작하세요 | 압박
+   L1: Now that compressions are going, someone call the code and I'll grab the defibrillator. | 압박이 시작됐으니 코드를 부르고 제가 제세동기를 가져올게요 | 호출
+   L2: Once it's charged, everyone clear for the shock. | 충전되면 모두 쇼크를 위해 물러나세요 | 쇼크
+   L3: Shock delivered — resume compressions right away. | 쇼크 후 바로 압박을 재개하세요 | 재개
+  NU[0] slider words=['w-pulse', 'w-charge', 'w-defibrillator']
+     {'cue': 'Colleague: "He\'s in VFib and has lost his pulse."', 'scale': ['start CPR and charge the defibrillator', 'wait and check again in five minutes', 'call his family before anything else'], 'answerAt': 0, 'why': '심실세동에 맥박이 없으면 바로 가슴압박을 시작하고 제세동기를 충전해 쇼크 준비를 해요. 기다리거나 가족에게 먼저 연락하는 사이에 소생 가능성이 줄어요.', 'example': "He's in VFib and lost his pulse — start compressions now.", 'exKo': '심실세동이고 맥박이 사라졌어요. 지금 바로 압박을 시작하세요.'}
+  NU[1] context words=['w-shock']
+     {'word': 'shock', 'ko': '쇼크(전기충격)', 'scenes': [{'who': '의사에게 보고', 'icon': 'stetho', 'en': 'Rhythm is VFib, so charge and shock now.', 'ok': True}, {'who': '동료 간호사', 'icon': 'monitor', 'en': "Everybody clear, I'm about to shock.", 'ok': True}, {'who': '가족에게', 'icon': 'me', 'en': 'He received an asynchronous biphasic shock at two hundred joules.', 'ok': False, 'fix': 'His heart stopped again, so we gave it an electric shock to bring back a normal rhythm.'}], 'why': '의료진끼리는 파형과 에너지를 숫자로 짧게 말해도 돼요. 가족에게는 joule 같은 단위보다 심장이 다시 멈춰 전기로 되살리려 했다는 사실을 쉬운 말로 알려요.'}
+=== S16 재가온 중 혈압 붕괴 위기
+16.0 EN: Rewarming vasodilation is crashing his pressure.
+   KO: 재가온으로 인한 혈관확장이 혈압을 무너뜨리고 있어요.
+   CH: Rewarming vasodilation / is crashing / his pressure / .
+   W: ['w-rewarm', 'w-vasodilation', 'w-crash', 'w-pressure'] g1
+   BL: vasodilation <- ['dehydration', 'bleeding', 'fever', 'vasodilation']  DEC: his rhythm
+   D1: 재가온으로 인한 혈관확장이 호흡을 무너뜨리고 있어요.
+   D2: 재가온으로 인한 발열이 혈압을 무너뜨리고 있어요.
+   TAG:원인 설명 ICON:chartup WHY: 'Rewarming vasodilation'처럼 명사 두 개를 이어 원인을 짧게 압축하고, is crashing으로 지금 진행 중임을 알려요.
+16.1 EN: Let's bolus fluids and start a vasopressor now.
+   KO: 수액을 빠르게 주입하고 지금 승압제를 시작합시다.
+   CH: Let's bolus fluids / and start / a vasopressor now / .
+   W: ['w-bolus', 'w-fluid', 'w-vasopressor'] g1
+   BL: bolus <- ['hang', 'warm', 'label', 'bolus']  DEC: a blood draw now
+   D1: 수액을 빠르게 주입하고 지금 승압제를 준비합시다.
+   D2: 수액을 빠르게 주입하고 지금 승압제 용량을 계산합시다.
+   TAG:긴급 처치 ICON:pill WHY: 동사 둘을 and로 이어 수액과 승압제를 한꺼번에 하자고 제안하고 now로 시급함을 전해요.
+16.2 EN: Slow the rewarming rate while we stabilize him.
+   KO: 안정화하는 동안 재가온 속도를 늦추세요.
+   CH: Slow the rewarming rate / while we stabilize / him / .
+   W: ['w-slow', 'w-rewarm', 'w-rate', 'w-stabilize'] g2
+   BL: stabilize <- ['weigh', 'transport', 'bathe', 'stabilize']  DEC: while we reposition
+   D1: 이송하는 동안 재가온 속도를 늦추세요.
+   D2: 검사하는 동안 재가온 속도를 늦추세요.
+   TAG:속도 조절 ICON:gear WHY: while we ~로 같은 시간에 두 가지를 한다고 말해, 재가온을 늦추는 이유와 기간을 함께 전해요.
+16.3 EN: His pressure dropped fast the moment we started rewarming.
+   KO: 재가온을 시작하자마자 혈압이 빠르게 떨어졌어요.
+   CH: His pressure dropped fast / the moment / we started / rewarming / .
+   W: ['w-pressure', 'w-rewarm'] g1
+   BL: rewarming <- ['turning', 'feeding', 'cooling', 'rewarming']  DEC: the moment we stopped
+   D1: 냉각을 시작하자마자 혈압이 빠르게 떨어졌어요.
+   D2: 재가온을 시작하자마자 호흡이 빠르게 떨어졌어요.
+   TAG:경과 보고 ICON:chartup WHY: 'the moment ~'는 바로 그 순간이라는 뜻이라 원인과 결과의 시간차가 거의 없음을 말해 줘요.
+16.4 EN: I'm giving a second fluid bolus while we watch his pressure.
+   KO: 혈압을 지켜보면서 두 번째 수액 볼루스를 주고 있어요.
+   CH: I'm giving / a second fluid bolus / while we watch / his pressure / .
+   W: ['w-fluid', 'w-bolus', 'w-pressure'] g1
+   BL: second <- ['fourth', 'final', 'second', 'third']  DEC: a third
+   D1: 소변을 지켜보면서 두 번째 수액 볼루스를 주고 있어요.
+   D2: 혈압을 지켜보면서 두 번째 수액 볼루스를 준비하고 있어요.
+   TAG:처치 보고 ICON:pill WHY: while we watch ~로 처치와 관찰을 동시에 하고 있다고 알려, 지켜보고 있다는 안심을 줘요.
+16.5 EN: Let's slow the rewarming rate until his pressure stabilizes.
+   KO: 혈압이 안정될 때까지 재가온 속도를 늦춥시다.
+   CH: Let's slow / the rewarming rate / until his pressure / stabilizes / .
+   W: ['w-slow', 'w-rewarm', 'w-rate', 'w-pressure', 'w-stabilize'] g2
+   BL: pressure <- ['sleep', 'mood', 'color', 'pressure']  DEC: until his family arrives
+   D1: 의식이 안정될 때까지 재가온 속도를 늦춥시다.
+   D2: 열이 내릴 때까지 재가온 속도를 늦춥시다.
+   TAG:속도 조절 ICON:gear WHY: until로 끝나는 시점을 조건으로 걸어, 언제까지 늦출지를 수치(혈압)로 정해 줘요.
+  ORDER 대화 흐름 compass 재가온 중 혈압 붕괴 4문장 순서 | 상황을 보고하고, 속도를 늦추며 수액을 주입하고, 그 위에 승압제를 시작한 뒤 지켜보며 추가 처치를 해요.
+   L0: His pressure dropped fast the moment we started rewarming. | 재가온을 시작하자마자 혈압이 빠르게 떨어졌어요 | 보고
+   L1: Slow the rewarming rate and bolus fluids now. | 재가온 속도를 늦추고 지금 수액을 주입하세요 | 수액
+   L2: With that going in, start a vasopressor now. | 그게 들어가는 동안 지금 승압제를 시작하세요 | 승압제
+   L3: As that takes effect, I'll watch his pressure and give a second bolus if needed. | 효과가 나는 동안 혈압을 보며 필요하면 두 번째 볼루스를 줄게요 | 추가
+  NU[0] slider words=['w-rewarm', 'w-slow', 'w-pressure']
+     {'cue': 'Monitor: "BP seventy-two over forty, twenty minutes into rewarming."', 'scale': ['warm him faster to fix it', 'hold the fluids and wait', 'slow the rewarming rate'], 'answerAt': 2, 'why': '재가온으로 혈관이 확장되면 혈압이 갑자기 떨어질 수 있어요. 재가온 속도를 늦추고 수액과 승압제로 혈압을 받쳐요. 더 빨리 데우거나 수액 없이 기다리면 더 나빠져요.', 'example': "Let's slow the rewarming rate until his pressure stabilizes.", 'exKo': '혈압이 안정될 때까지 재가온 속도를 늦춥시다.'}
+  NU[1] context words=['w-bolus']
+     {'word': 'bolus', 'ko': '볼루스(급속 주입)', 'scenes': [{'who': '의사에게 보고', 'icon': 'stetho', 'en': "I'm giving a fluid bolus and starting the vasopressor.", 'ok': True}, {'who': '동료 간호사', 'icon': 'monitor', 'en': "I'm hanging the second bolus now.", 'ok': True}, {'who': '가족에게', 'icon': 'me', 'en': "We're administering an isotonic crystalloid bolus for hypotension.", 'ok': False, 'fix': "We're giving him fluid quickly through his IV to bring his blood pressure back up."}], 'why': '의료진끼리는 bolus 한마디로 빠른 정량 주입을 뜻해요. 가족에게는 crystalloid나 hypotension 같은 말 대신 수액을 빠르게 넣어 혈압을 올린다고 쉽게 말해요.'}
+=== S17 냉각 중 부정맥 위기
+17.0 EN: Deep hypothermia is causing bradycardia and now VT.
+   KO: 깊은 저체온증이 서맥을 일으키고 이제 심실빈맥까지 왔어요.
+   CH: Deep hypothermia is causing / bradycardia / and now VT / .
+   W: ['w-hypothermia', 'w-bradycardia', 'w-vt'] g1
+   BL: hypothermia <- ['acidosis', 'sedation', 'anemia', 'hypothermia']  DEC: and now fever
+   D1: 깊은 진정이 서맥을 일으키고 이제 심실빈맥까지 왔어요.
+   D2: 깊은 저체온증이 저혈압을 일으키고 이제 심실빈맥까지 왔어요.
+   TAG:원인 설명 ICON:fire WHY: now를 and 뒤에 두어 서맥에 이어 더 위험한 리듬이 새로 나왔다는 변화를 짚어요.
+17.1 EN: Let's treat the arrhythmia and consider warming him slightly.
+   KO: 부정맥을 처치하고 약간 가온하는 것도 고려합시다.
+   CH: Let's treat / the arrhythmia / and consider / warming him slightly / .
+   W: ['w-treat', 'w-arrhythmia', 'w-warm', 'w-slightly'] g2
+   BL: arrhythmia <- ['arrhythmia', 'shivering', 'seizure', 'infection']  DEC: bathing him slightly
+   D1: 저혈압을 처치하고 약간 가온하는 것도 고려합시다.
+   D2: 부정맥을 처치하고 약간 진정하는 것도 고려합시다.
+   TAG:처치 제안 ICON:pill WHY: consider는 처치 하나는 확정하고 가온은 검토하자는 뜻이라, 두 동사의 무게가 달라요.
+17.2 EN: Cold hearts resist drugs, so temperature matters here.
+   KO: 차가운 심장은 약물에 저항하니 체온이 중요해요.
+   CH: Cold hearts resist drugs / , so temperature matters / here / .
+   W: ['w-resist', 'w-drug', 'w-temperature', 'w-matter'] g2
+   BL: drugs <- ['light', 'drugs', 'touch', 'noise']  DEC: , so noise matters
+   D1: 차가운 심장은 소리에 저항하니 체온이 중요해요.
+   D2: 차가운 심장은 약물에 저항하니 시간이 중요해요.
+   TAG:원리 설명 ICON:bulb WHY: 'so ~ matters here'로 앞의 사실이 결론(체온 관리)으로 이어짐을 말해요.
+17.3 EN: His rhythm just went into VT with a dropping pressure.
+   KO: 리듬이 심실빈맥으로 바뀌면서 혈압도 떨어지고 있어요.
+   CH: His rhythm / just went / into VT / with a dropping pressure / .
+   W: ['w-rhythm', 'w-vt', 'w-drop', 'w-pressure'] g1
+   BL: pressure <- ['pressure', 'oxygen', 'urine', 'temperature']  DEC: with a new rash
+   D1: 리듬이 심실빈맥으로 바뀌면서 열도 오르고 있어요.
+   D2: 리듬이 심실빈맥으로 바뀌면서 체온도 떨어지고 있어요.
+   TAG:상태 변화 ICON:siren WHY: just went into로 방금 일어난 변화를 말하고 with ~로 함께 나타난 소견을 붙여 위급함을 알려요.
+17.4 EN: We're warming him slightly to see if the arrhythmia settles.
+   KO: 부정맥이 가라앉는지 보려고 약간 가온하고 있어요.
+   CH: We're warming him slightly / to see / if the arrhythmia / settles / .
+   W: ['w-warm', 'w-slightly', 'w-arrhythmia', 'w-settle'] g2
+   BL: arrhythmia <- ['seizure', 'shivering', 'arrhythmia', 'pain']  DEC: if the pain settles
+   D1: 부정맥이 가라앉는지 보려고 약간 진정하고 있어요.
+   D2: 발작이 가라앉는지 보려고 약간 가온하고 있어요.
+   TAG:처치 경과 ICON:fire WHY: to see if ~로 지금 하는 일의 목적이 반응을 보려는 것임을 말해 줘요.
+17.5 EN: His rhythm converted back to sinus once we adjusted the target.
+   KO: 목표체온을 조정하자 리듬이 사이너스로 돌아왔어요.
+   CH: His rhythm converted back / to sinus / once we adjusted / the target / .
+   W: ['w-rhythm', 'w-convert', 'w-sinus', 'w-target'] g2
+   BL: target <- ['alarm', 'pump', 'dose', 'target']  DEC: once we moved the bed
+   D1: 알람을 조정하자 리듬이 사이너스로 돌아왔어요.
+   D2: 목표체온을 조정하자 혈압이 정상으로 돌아왔어요.
+   TAG:경과 보고 ICON:chartup WHY: 'once we ~'로 무엇을 한 뒤에 나아졌는지 순서를 같이 알려요.
+  ORDER 대화 흐름 compass 냉각 중 부정맥 4문장 순서 | 변화를 보고하고, 원인을 짚고, 처치와 가온을 하고, 리듬이 돌아오면 그 목표체온을 유지해요.
+   L0: His rhythm just went into VT with a dropping pressure. | 리듬이 심실빈맥으로 바뀌고 혈압도 떨어져요 | 보고
+   L1: The cold is likely driving it. | 추위가 원인일 가능성이 높아요 | 원인
+   L2: So let's treat the arrhythmia and consider warming him slightly. | 그래서 처치하고 약간 가온도 고려합시다 | 처치
+   L3: Once it converts back to sinus, we'll keep the new target. | 사이너스로 돌아오면 새 목표를 유지해요 | 유지
+  NU[0] slider words=['w-bradycardia', 'w-hypothermia', 'w-warm', 'w-slightly']
+     {'cue': 'Colleague: "His heart rate is thirty-eight at thirty-two degrees."', 'scale': ['keep cooling exactly as planned', 'ask the doctor about warming slightly', 'double the sedation for comfort'], 'answerAt': 1, 'why': '깊은 저체온에서는 서맥이 올 수 있어서, 혈압이 떨어지거나 불안정하면 의사와 목표체온을 약간 올려 가온할지 상의해요. 계획대로만 계속하거나 진정만 늘리는 건 원인을 다루지 않아요.', 'example': "Let's treat the arrhythmia and consider warming him slightly.", 'exKo': '부정맥을 처치하고 약간 가온하는 것도 고려합시다.'}
+  NU[1] context words=['w-rhythm']
+     {'word': 'rhythm', 'ko': '리듬(박동)', 'scenes': [{'who': '의사에게 보고', 'icon': 'stetho', 'en': 'Rhythm just changed to VT with a pressure drop.', 'ok': True}, {'who': '동료 간호사', 'icon': 'monitor', 'en': 'Watch his rhythm while I check the pads.', 'ok': True}, {'who': '가족에게', 'icon': 'me', 'en': 'His rhythm has degenerated into monomorphic VT with hemodynamic compromise.', 'ok': False, 'fix': "His heartbeat became fast and irregular, so we're treating it right away."}], 'why': '의료진끼리는 VT나 혈역학 같은 말로 상황을 바로 공유해요. 가족에게는 용어 대신 심장 박동이 빠르고 불규칙해져 지금 처치 중이라는 사실을 쉬운 말로 알려요.'}
+=== S18 신경학적 예후 불량 가족 상담
+18.0 EN: I'm so sorry — his brain injury appears very severe.
+   KO: 정말 죄송합니다. 뇌 손상이 매우 심각해 보여요.
+   CH: I'm so sorry / — his brain injury / appears / very severe / .
+   W: ['w-brain', 'w-injury', 'w-severe'] g1
+   BL: brain <- ['liver', 'lung', 'brain', 'kidney']  DEC: his lung injury
+   D1: 정말 죄송합니다. 뇌 손상이 매우 갑작스러워 보여요.
+   D2: 정말 죄송합니다. 폐 손상이 매우 심각해 보여요.
+   TAG:나쁜 소식 ICON:faceWorried WHY: 'I'm so sorry'를 먼저 말하고 appears를 쓰면 단정하지 않으면서도 심각함을 숨기지 않아요.
+18.1 EN: The tests point to a poor chance of meaningful recovery.
+   KO: 검사 결과는 의미 있는 회복 가능성이 낮음을 가리켜요.
+   CH: The tests / point to / a poor chance / of meaningful recovery / .
+   W: ['w-test', 'w-point', 'w-poor', 'w-chance', 'w-meaningful', 'w-recovery'] g1
+   BL: recovery <- ['discharge', 'dialysis', 'recovery', 'surgery']  DEC: a poor record
+   D1: 영상 결과는 의미 있는 회복 가능성이 낮음을 가리켜요.
+   D2: 검사 결과는 의미 있는 이동 가능성이 낮음을 가리켜요.
+   TAG:예후 전달 ICON:stetho WHY: point to는 검사가 가리키는 방향을 말해 '단정'이 아니라 근거 있는 판단이라는 느낌을 줘요.
+18.2 EN: Let's talk about what he would have wanted for his care.
+   KO: 그분이 자신의 치료에 대해 무엇을 원했을지 이야기해 봅시다.
+   CH: Let's talk about / what he / would have wanted / for his care / .
+   W: ['w-care'] g2
+   BL: care <- ['care', 'travel', 'work', 'hobbies']  DEC: what he would have feared
+   D1: 그분이 자신의 치료에 대해 무엇을 두려워했을지 이야기해 봅시다.
+   D2: 그분이 자신의 치료에 대해 누구에게 말했을지 이야기해 봅시다.
+   TAG:환자 뜻 묻기 ICON:handshake2 WHY: would have wanted는 환자의 이전 바람을 짐작하는 가정법이라, 가족의 바람이 아니라 환자 본인을 중심에 둬요.
+18.3 EN: I know you're asking if he'll wake up.
+   KO: 깨어날 수 있을지 묻고 계신 거 알아요.
+   CH: I know / you're asking / if he'll wake up / .
+   W: ['w-wake'] g1
+   BL: wake up <- ['go home', 'eat again', 'walk again', 'wake up']  DEC: if he'll walk
+   D1: 걸을 수 있을지 묻고 계신 거 알아요.
+   D2: 집에 갈 수 있을지 묻고 계신 거 알아요.
+   TAG:마음 헤아리기 ICON:faceWorried WHY: I know로 시작하면 질문을 대신 말해 주는 것이라, 가족이 묻기 어려운 말을 먼저 꺼내 줘요.
+18.4 EN: It's too early to know, and we won't rush that answer.
+   KO: 아직 알기엔 너무 이르고, 그 답을 서두르지 않을게요.
+   CH: It's too early / to know / , and we won't rush / that answer / .
+   W: ['w-early', 'w-rush', 'w-answer'] g1
+   BL: answer <- ['answer', 'visit', 'test', 'plan']  DEC: , and we won't hide
+   D1: 아직 알기엔 너무 이르고, 그 답을 숨기지 않을게요.
+   D2: 아직 알기엔 너무 이르고, 그 일정을 서두르지 않을게요.
+   TAG:솔직한 답 ICON:shield WHY: 'too early to know'로 모른다고 솔직히 말하고 won't rush로 답을 재촉하지 않겠다고 약속해요.
+18.5 EN: We're not giving up, and we're not promising more than we know.
+   KO: 포기하지도 않고, 아는 것보다 더 많이 약속하지도 않을게요.
+   CH: We're not giving up / , and we're not promising / more than / we know / .
+   W: ['w-promise'] g2
+   BL: giving up <- ['rushing', 'hiding', 'guessing', 'giving up']  DEC: or we're not telling
+   D1: 숨기지도 않고, 아는 것보다 더 많이 약속하지도 않을게요.
+   D2: 포기하지도 않고, 아는 것보다 더 많이 걱정하지도 않을게요.
+   TAG:정직한 약속 ICON:handshake2 WHY: not A, and not B로 두 가지를 대칭으로 부정해, 희망을 접지도 않고 과장하지도 않는다는 균형을 보여요.
+18.6 EN: Can you tell me what matters most to him, so we can honor that.
+   KO: 그분에게 무엇이 가장 중요한지 말씀해 주시면 그걸 존중할게요.
+   CH: Can you tell me / what matters most / to him / , so we can honor that / .
+   W: ['w-matter', 'w-honor'] g2
+   BL: honor <- ['review', 'share', 'honor', 'record']  DEC: so we can record
+   D1: 가족에게 무엇이 가장 중요한지 말씀해 주시면 그걸 존중할게요.
+   D2: 그분에게 무엇이 가장 편한지 말씀해 주시면 그걸 존중할게요.
+   TAG:가치 묻기 ICON:compass WHY: so we can honor that으로 묻는 이유를 밝혀, 캐묻는 게 아니라 뜻을 지키려는 것임을 알려요.
+  ORDER 대화 흐름 compass 예후 불량 가족 상담 4문장 순서 | 사과와 사실을 먼저 전하고, 가족이 품은 질문을 짚고, 서두르지 않겠다고 답한 뒤, 환자가 중시한 것을 물어요.
+   L0: I'm so sorry — his brain injury appears very severe. | 정말 죄송합니다, 뇌 손상이 매우 심각해 보여요 | 사과
+   L1: I know that raises the question of whether he'll wake up. | 그래서 깨어날지 궁금하실 거 알아요 | 공감
+   L2: It's too early to know, and we won't rush that answer. | 아직 알기엔 일러요, 그 답을 서두르지 않을게요 | 솔직
+   L3: Until we know more, can you tell me what matters most to him? | 더 알기 전까지 그분께 가장 중요한 걸 말씀해 주시겠어요? | 질문
+  NU[0] slider words=['w-wake', 'w-promise', 'w-chance']
+     {'cue': 'Daughter: "Just tell me, will he ever wake up?"', 'scale': ["It's too early to say for sure.", 'He will be fine, I promise.', 'There is absolutely no chance.'], 'answerAt': 0, 'why': '예후가 불확실할 때 지킬 수 없는 약속이나 근거 없는 단정은 가족에게 상처가 돼요. 아는 것과 모르는 것을 정직하게 말하고 곁에 있겠다고 알려 줘요.', 'example': "I know you're asking if he'll wake up.", 'exKo': '깨어날 수 있을지 묻고 계신 거 알아요.'}
+  NU[1] swap words=['w-poor', 'w-chance', 'w-meaningful']
+     {'who': '가족에게 · 검사 결과 설명', 'icon': 'me', 'before': ['The tests point to a ', 'zero', ' chance of meaningful recovery.'], 'options': ['poor', 'zero', 'excellent'], 'answer': 'poor', 'notes': {'poor': '검사가 나쁜 쪽을 가리키지만 아직 단정은 아니에요. 정직하면서 희망을 막지 않아요.', 'zero': '전혀 없다는 단정이라 사실보다 무겁고, 아직 판정이 끝나지 않았다면 틀린 말이 돼요.', 'excellent': '검사 결과와 반대로 헛된 희망을 줘요.'}, 'why': "나쁜 소식은 정직하게 전하되, 확정되지 않은 것은 '낮다(poor)'처럼 사실의 정도에 맞게 말해요.", 'ko': '검사 결과는 의미 있는 회복 가능성이 낮다고 가리켜요'}
+=== S19 뇌사 진행 평가 연계
+19.0 EN: His neurologic exam suggests progression to brain death.
+   KO: 신경학적 진찰 결과가 뇌사로의 진행을 시사해요.
+   CH: His neurologic exam / suggests progression / to brain death / .
+   W: ['w-neurologic', 'w-exam', 'w-suggest', 'w-progression', 'w-braindeath'] g1
+   BL: neurologic <- ['renal', 'cardiac', 'neurologic', 'hepatic']  DEC: his renal exam
+   D1: 영상 결과가 뇌사로의 진행을 시사해요.
+   D2: 신경학적 진찰 결과가 뇌졸중으로의 진행을 시사해요.
+   TAG:소견 전달 ICON:stetho WHY: suggests는 확정이 아니라 '시사한다'는 뜻이라, 확인 검사가 남아 있음을 말해요.
+19.1 EN: Let's coordinate formal brain death testing per protocol.
+   KO: 프로토콜대로 공식 뇌사 검사를 조율합시다.
+   CH: Let's coordinate / formal brain death testing / per protocol / .
+   W: ['w-coordinate', 'w-formal', 'w-braindeath', 'w-protocol'] g1
+   BL: protocol <- ['receipt', 'protocol', 'binder', 'memo']  DEC: formal blood testing
+   D1: 프로토콜대로 공식 뇌사 검사를 예약합시다.
+   D2: 프로토콜대로 공식 뇌사 서류를 조율합시다.
+   TAG:공식 검사 ICON:board WHY: per protocol로 공식 검사가 병원 절차대로 진행됨을 알리고 formal로 비공식 진찰과 구별해요.
+19.2 EN: We'll involve the organ procurement organization appropriately.
+   KO: 장기기증기관을 적절한 절차로 참여시킬게요.
+   CH: We'll involve / the organ procurement organization / appropriately / .
+   W: ['w-involve', 'w-organ', 'w-procurement', 'w-organization', 'w-appropriately'] g2
+   BL: organ <- ['organ', 'insurance', 'billing', 'hospice']  DEC: the hospice organization
+   D1: 장기기증기관에 적절한 절차로 문의할게요.
+   D2: 장기기증기관 담당자를 적절한 절차로 안내할게요.
+   TAG:기관 연계 ICON:handshake2 WHY: appropriately는 정해진 절차와 시점을 지킨다는 뜻이라, 가족 접근의 순서를 존중한다는 말이에요.
+19.3 EN: Two physicians will perform the exam independently, per policy.
+   KO: 정책에 따라 두 명의 의사가 독립적으로 진찰합니다.
+   CH: Two physicians will perform / the exam / independently / , per policy / .
+   W: ['w-physician', 'w-exam', 'w-independently', 'w-policy'] g1
+   BL: physicians <- ['physicians', 'pharmacists', 'volunteers', 'lawyers']  DEC: Three nurses will perform
+   D1: 정책에 따라 세 명의 의사가 독립적으로 진찰합니다.
+   D2: 정책에 따라 두 명의 의사가 독립적으로 기록합니다.
+   TAG:독립 판정 ICON:shield WHY: independently는 두 의사가 서로의 결과를 보지 않고 각자 한다는 뜻이고, per policy가 그 근거예요.
+19.4 EN: Once brain death is confirmed, we notify the family gently.
+   KO: 뇌사가 확인되면 가족에게 부드럽게 알립니다.
+   CH: Once brain death is confirmed / , we notify / the family / gently / .
+   W: ['w-braindeath', 'w-confirm', 'w-notify', 'w-gently'] g2
+   BL: family <- ['staff', 'lawyer', 'chaplain', 'family']  DEC: Once brain death is suspected
+   D1: 뇌사가 확인되면 가족에게 조용한 방을 마련합니다.
+   D2: 뇌사가 확인되면 가족을 부드럽게 안내합니다.
+   TAG:가족 고지 ICON:faceWorried WHY: Once ~ is confirmed로 확인이 끝난 뒤에야 알린다는 순서를 말하고 gently로 방식을 정해요.
+19.5 EN: The organ procurement team will approach the family carefully, not us.
+   KO: 장기기증팀이 조심스럽게 가족에게 다가갈 거예요, 저희가 아니라.
+   CH: The organ procurement team / will approach / the family carefully / , not us / .
+   W: ['w-organ', 'w-procurement', 'w-team', 'w-approach', 'w-carefully'] g2
+   BL: organ procurement <- ['patient advocacy', 'hospice', 'social work', 'organ procurement']  DEC: , not you
+   D1: 장기기증팀이 조심스럽게 가족에게 다가갈 거예요, 의사가 아니라.
+   D2: 상담팀이 조심스럽게 가족에게 다가갈 거예요, 저희가 아니라.
+   TAG:역할 구분 ICON:handshake2 WHY: ', not us'를 끝에 붙여 누가 접근하는지 분명히 말하고, 의료진과 요청 담당을 나누는 이유를 짧게 전해요.
+  ORDER 대화 흐름 compass 뇌사 평가 진행 4문장 순서 | 소견을 말하고, 그에 따라 공식 검사를 조율하고, 독립 판정을 알린 뒤, 확인되면 가족에게 부드럽게 알려요.
+   L0: His neurologic exam suggests progression to brain death. | 신경학적 진찰이 뇌사로의 진행을 시사해요 | 소견
+   L1: Given that, let's coordinate formal brain death testing per protocol. | 그러니 프로토콜대로 공식 뇌사 검사를 조율합시다 | 조율
+   L2: Two physicians will perform it independently, per policy. | 두 명의 의사가 독립적으로 진행해요 | 판정
+   L3: Once it's confirmed, we notify the family gently. | 확인되면 가족에게 부드럽게 알려요 | 고지
+  NU[0] slider words=['w-organ', 'w-procurement', 'w-organization']
+     {'cue': 'Colleague: "The family is asking about organ donation before brain death is confirmed."', 'scale': ['say the OPO team will speak with them', 'explain donation yourself in detail', 'promise that he can donate'], 'answerAt': 0, 'why': '장기기증 논의는 치료팀이 아니라 장기기증기관(OPO) 담당자가 가족에게 따로 접근해야 하고, 뇌사 확정 전에 기증을 약속하면 안 돼요. 기증기관 팀이 직접 이야기할 거라고만 알려요.', 'example': 'The organ procurement team will approach the family carefully, not us.', 'exKo': '장기기증팀이 조심스럽게 가족에게 다가갈 거예요, 저희가 아니라.'}
+  NU[1] context words=['w-confirm']
+     {'word': 'confirm', 'ko': '확인하다', 'scenes': [{'who': '의사에게 보고', 'icon': 'stetho', 'en': 'Two physicians must confirm brain death independently.', 'ok': True}, {'who': '동료 간호사', 'icon': 'monitor', 'en': "Let's confirm the testing times before we notify the family.", 'ok': True}, {'who': '가족에게', 'icon': 'me', 'en': 'Brain death determination has been confirmed per the uniform criteria.', 'ok': False, 'fix': "Two doctors have examined him separately and confirmed that his brain has stopped working. I'm so sorry."}], 'why': '의료진끼리는 determination이나 criteria 같은 말로 정확히 보고해요. 가족에게는 법적 용어보다 의사 두 명이 확인했다는 사실을 쉽고 부드럽게, 위로와 함께 전해요.'}
+=== S20 연명과 중단 윤리 갈등
+20.0 EN: I can see this is an incredibly hard decision for the family.
+   KO: 가족분들께 몹시 힘든 결정이라는 걸 알겠어요.
+   CH: I can see / this is / an incredibly hard decision / for the family / .
+   W: ['w-incredibly', 'w-decision'] g1
+   BL: hard <- ['urgent', 'hard', 'private', 'sudden']  DEC: a sudden decision
+   D1: 가족분들께 몹시 갑작스러운 결정이라는 걸 알겠어요.
+   D2: 의료진께 몹시 힘든 결정이라는 걸 알겠어요.
+   TAG:공감 ICON:faceWorried WHY: 'I can see'로 상대의 감정을 알아보고 있음을 먼저 말하고 incredibly로 어려움의 크기를 인정해요.
+20.1 EN: Let's focus on what he would have wanted for himself.
+   KO: 그분 자신이 무엇을 원했을지에 집중합시다.
+   CH: Let's focus on / what he / would have wanted / for himself / .
+   W: ['w-focus'] g1
+   BL: himself <- ['others', 'himself', 'visitors', 'strangers']  DEC: for others
+   D1: 그분 자신이 무엇을 두려워했을지에 집중합시다.
+   D2: 그분 자신이 무엇을 좋아했을지에 집중합시다.
+   TAG:본인 뜻 ICON:compass WHY: 'for himself'로 결정의 기준을 환자 본인에게 둬, 가족이 대신 고르는 부담을 덜어요.
+20.2 EN: We can bring in the ethics team and palliative care to help.
+   KO: 윤리팀과 완화의료팀을 불러 도움을 받을 수 있어요.
+   CH: We can bring in / the ethics team / and palliative care / to help / .
+   W: ['w-ethics', 'w-team', 'w-palliative'] g2
+   BL: ethics <- ['ethics', 'security', 'billing', 'legal']  DEC: the billing team
+   D1: 윤리팀과 사회복지팀을 불러 도움을 받을 수 있어요.
+   D2: 윤리팀과 완화의료팀을 불러 교육을 받을 수 있어요.
+   TAG:지원 안내 ICON:handshake2 WHY: can bring in은 가능한 도움을 알려 주는 말이라, 강요 없이 선택지를 열어 줘요.
+20.3 EN: I hear that you both love him and want what's best.
+   KO: 두 분 다 그분을 사랑하고 최선을 원하신다는 걸 알아요.
+   CH: I hear / that you both love him / and want / what's best / .
+   W: [] g1
+   BL: love <- ['trust', 'admire', 'love', 'miss']  DEC: and trust him
+   D1: 두 분 다 그분을 존경하고 최선을 원하신다는 걸 알아요.
+   D2: 두 분 다 그분을 사랑하고 안전을 원하신다는 걸 알아요.
+   TAG:공감 ICON:handshake2 WHY: 'I hear that ~'은 상대의 마음을 받아 적듯 되짚는 말이라, 의견이 갈려도 사랑이라는 공통점을 먼저 짚어요.
+20.4 EN: This decision belongs to your family, and we'll support whatever you choose.
+   KO: 이 결정은 가족분들의 몫이고, 어떤 선택이든 저희가 지지할게요.
+   CH: This decision belongs / to your family / , and we'll support / whatever you choose / .
+   W: ['w-decision', 'w-belong', 'w-support', 'w-choose'] g1
+   BL: decision <- ['meal', 'decision', 'visit', 'room']  DEC: to the weekend
+   D1: 이 일정은 가족분들의 몫이고, 어떤 선택이든 저희가 지지할게요.
+   D2: 이 결정은 가족분들의 몫이고, 어떤 선택이든 저희가 기억할게요.
+   TAG:결정 존중 ICON:handshake2 WHY: 'belongs to'로 결정권이 가족에게 있음을 분명히 하고 whatever로 어떤 결론이든 곁에 있겠다고 약속해요.
+20.5 EN: Let's bring the whole family together with the ethics team tomorrow.
+   KO: 내일 온 가족과 윤리팀을 함께 모읍시다.
+   CH: Let's bring / the whole family together / with the ethics team / tomorrow / .
+   W: ['w-ethics', 'w-team', 'w-tomorrow'] g2
+   BL: tomorrow <- ['tonight', 'Monday', 'tomorrow', 'Friday']  DEC: with the billing team
+   D1: 오늘 온 가족과 윤리팀을 함께 모읍시다.
+   D2: 내일 온 가족과 완화의료팀을 함께 모읍시다.
+   TAG:회의 제안 ICON:calendar WHY: 'the whole family together'로 모두를 한 자리에 모으자고 제안해, 한 사람에게만 전달되는 오해를 줄여요.
+  ORDER 대화 흐름 compass 연명과 중단 갈등 대화 4문장 순서 | 힘든 마음을 먼저 알아주고, 환자 본인의 뜻에 초점을 맞추고, 도울 팀을 소개한 뒤, 결정은 가족 몫임을 확인해요.
+   L0: I can see this is an incredibly hard decision for the family. | 가족분들께 몹시 힘든 결정이라는 걸 알겠어요 | 공감
+   L1: Let's focus on what he would have wanted for himself. | 그분 자신이 원했을 것에 집중합시다 | 초점
+   L2: To help with that, we can bring in the ethics team and palliative care. | 그걸 돕기 위해 윤리팀과 완화의료팀을 부를 수 있어요 | 지원
+   L3: This decision belongs to your family, and we'll support whatever you choose. | 이 결정은 가족 몫이고 어떤 선택이든 지지할게요 | 존중
+  NU[0] slider words=['w-ethics', 'w-palliative', 'w-decision']
+     {'cue': 'Son: "Dad never wanted this, but my sister says we can\'t give up."', 'scale': ['pick one side to calm them', 'bring in ethics and palliative care', 'ask them to decide quietly later'], 'answerAt': 1, 'why': '가족 의견이 갈리면 간호사는 편을 들지 않고 윤리팀과 완화의료팀 같은 자원을 연결해 대화를 도와요. 한쪽 편을 들거나 조용히 나중에 정하라고 하면 갈등이 커져요.', 'example': 'We can bring in the ethics team and palliative care to help.', 'exKo': '윤리팀과 완화의료팀을 불러 도움을 받을 수 있어요.'}
+  NU[1] context words=['w-decision']
+     {'word': 'decision', 'ko': '결정', 'scenes': [{'who': '의사에게 보고', 'icon': 'stetho', 'en': "The family's decision is to continue current care for now.", 'ok': True}, {'who': '동료 간호사', 'icon': 'monitor', 'en': "This decision is theirs, so let's support them through it.", 'ok': True}, {'who': '가족에게', 'icon': 'me', 'en': 'Surrogate decision-making capacity is established, and substituted judgment applies.', 'ok': False, 'fix': "This is your family's decision, and we'll help you work through it together."}], 'why': '의료진끼리는 대리 결정이나 대리 판단 같은 법·윤리 용어로 말해요. 가족에게는 용어 대신 결정은 가족의 몫이고 함께 돕겠다는 말로 따뜻하게 전해요.'}

@@ -1,0 +1,162 @@
+- situation: "전해질 패널 추세 사정"
+  items:
+    - kind: pair
+      words: [w-follow, w-draw, w-flag]
+      pairs: [["follow", "the trend"], ["draw", "blood again"], ["flag", "the critical value"]]
+      decoys: ["the blanket"]
+      why: "전해질은 한 번의 수치보다 흐름이 중요해서 추세를 따라가요(follow the trend). 교정이 되는지 보려면 시간을 두고 다시 채혈하고(draw blood again), 위험한 값이 나오면 눈에 띄게 표시해 의료진에게 알려요(flag the critical value)."
+    - kind: context
+      words: [w-trend]
+      word: trend
+      ko: 추세
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "His potassium is trending down: 5.8, then 5.4, now 5.1.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Can you trend his sodium with the next two draws?", ok: true}
+        - {who: 가족에게, icon: me, en: "His potassium trend reflects an appropriate downward trajectory in response to therapy.", ok: false, fix: "His potassium numbers have been coming down, so the trend is good."}
+      why: "의료진끼리는 trend, trajectory 같은 말로 수치의 흐름을 짧게 주고받아요. 가족에게는 '하향 궤적'이 낯설고 딱딱해요. 수치가 내려오고 있고 좋은 방향이라고 쉬운 말로 전해요."
+- situation: "정맥 보충 안전 투여"
+  items:
+    - kind: slider
+      words: [w-burn, w-control]
+      cue: "Patient: \"My arm burns a little where the potassium is going in.\""
+      scale: [slow it down and check the site, ignore it and run it faster, take the line out right away]
+      answerAt: 0
+      why: "칼륨은 말초 정맥으로 들어갈 때 따끔거릴 수 있어요. 이럴 때는 속도를 늦추고 주사 부위를 확인해요. 무시하고 빨리 넣는 것은 정맥과 심장에 위험하고, 따끔거림만으로 라인을 무조건 뽑는 것도 답이 아니에요."
+      example: "I'm slowing the infusion and checking your IV site now."
+      exKo: "지금 주입 속도를 늦추고 주사 부위를 확인할게요."
+    - kind: context
+      words: [w-line]
+      word: line
+      ko: 라인
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "Potassium is infusing through the central line.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Can you check the line before I hang the potassium?", ok: true}
+        - {who: 가족에게, icon: me, en: "The potassium is infusing via the PICC line lumen at a controlled milliequivalent-per-hour rate.", ok: false, fix: "The medicine goes in through a special line that protects her vein."}
+      why: "의료진끼리는 line, lumen, mEq/hr 같은 말로 투여 경로와 속도를 짧게 말해요. 가족에게는 단위와 용어가 낯설어서 불안만 커져요. 약이 어떤 길로 안전하게 들어가는지만 쉬운 말로 알려 줘요."
+- situation: "심전도 전해질 변화 인지"
+  items:
+    - kind: pair
+      words: [w-peak, w-widen, w-long]
+      pairs: [["peaked", "T waves"], ["widened", "QRS complex"], ["long", "QT interval"]]
+      decoys: ["the heart rate"]
+      why: "고칼륨에서는 T파가 뾰족해지고(peaked T waves) QRS가 넓어져요(widened QRS). QT가 길어지는 것(long QT)은 저칼륨·저마그네슘·저칼슘에서 볼 수 있어요."
+    - kind: context
+      words: [w-ECG]
+      word: ECG
+      ko: 심전도
+      scenes:
+        - {who: 전공의에게, icon: stetho, en: "ECG shows peaked T waves, and the potassium is 6.9.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Can you grab a repeat ECG while I call the lab?", ok: true}
+        - {who: 가족에게, icon: me, en: "The ECG demonstrates hyperacute T waves with QRS prolongation consistent with hyperkalemia.", ok: false, fix: "His heart tracing is showing a change from the high potassium, and we're treating it right now."}
+      why: "의료진끼리는 ECG 소견을 hyperacute T waves, QRS prolongation처럼 짧고 정확하게 말해요. 가족에게는 이 말이 모두 낯설어 두려움만 줘요. 무엇이 보이고 지금 무엇을 하는지만 쉬운 말로 알려 줘요."
+- situation: "원인 병력·약물 검토"
+  items:
+    - kind: slider
+      words: [w-diuretic, w-change]
+      cue: "Family: \"She only takes a water pill at home. Could that matter?\""
+      scale: [no effect on her levels at all, can change her potassium and sodium, only matters in an overdose]
+      answerAt: 1
+      why: "이뇨제는 흔히 칼륨과 나트륨 수치를 바꿔요(종류에 따라 낮추거나 올릴 수 있어요). 그래서 전해질이 이상할 때 복용 약부터 확인해요. 과량일 때만 문제가 되는 것은 아니에요."
+      example: "Water pills can change your potassium and sodium levels."
+      exKo: "이뇨제는 칼륨과 나트륨 수치를 바꿀 수 있어요."
+    - kind: context
+      words: [w-history]
+      word: history
+      ko: 병력
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "History: heart failure and kidney disease, on a daily diuretic.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Her history of vomiting could explain the low potassium.", ok: true}
+        - {who: 가족에게, icon: me, en: "Her past medical history is significant for CKD stage three with a baseline creatinine of two point one.", ok: false, fix: "We're asking about her health problems and what she takes, so we can find the cause."}
+      why: "의료진끼리는 history를 질환명, 약, 검사 수치로 압축해 빠르게 전해요. 보호자에게는 CKD 3기나 크레아티닌 수치가 무슨 뜻인지 알기 어려워요. 무엇을 알아보고 있고 왜 필요한지를 쉬운 말로 말해요."
+- situation: "교정 중 재검·모니터"
+  items:
+    - kind: slider
+      words: [w-correction, w-fast]
+      cue: "Colleague: \"His sodium rose five points in four hours during correction.\""
+      scale: [slower than we planned, right on our plan, faster than we want]
+      answerAt: 2
+      why: "저나트륨 교정은 24시간에 8~10 이내로 올리는 것이 한도라서, 4시간에 5가 오르면 계획보다 빨라요. 이럴 때는 속도를 늦추고 더 자주 재검해요."
+      example: "That's faster than planned, so we're slowing the correction."
+      exKo: "계획보다 빨라서 교정 속도를 늦추고 있어요."
+    - kind: context
+      words: [w-recheck]
+      word: recheck
+      ko: 재검사하다
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "Plan: recheck the sodium in four hours.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "I'll recheck his sodium after the next bag.", ok: true}
+        - {who: 가족에게, icon: me, en: "We will perform serial rechecks of his chemistry panel to monitor osmolar trajectory.", ok: false, fix: "We'll check his blood again in a few hours to see how the treatment is working."}
+      why: "의료진끼리는 recheck, serial, panel 같은 말로 검사 계획을 짧게 말해요. 가족에게는 '삼투 궤적' 같은 표현이 어렵고 차갑게 들려요. 언제 다시 검사하고 왜 하는지만 쉽게 알려 줘요."
+- situation: "증상 사정"
+  items:
+    - kind: slider
+      words: [w-weakness, w-strength]
+      cue: "Patient: \"I can lift my arms, but only for a little while.\""
+      scale: [a little weak, very weak, cannot move at all]
+      answerAt: 0
+      why: "팔을 들 수는 있지만 오래 못 버티는 정도라면 가벼운 근력 저하예요. 전혀 못 움직이는 마비와는 달라서, 근력을 확인하고 전해질을 점검해요."
+      example: "You have a little weakness, so I'll check your strength."
+      exKo: "힘이 조금 빠진 상태라 근력을 확인해 볼게요."
+    - kind: context
+      words: [w-strength]
+      word: strength
+      ko: 근력
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "Strength is four out of five in both arms.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Her grip strength looks weaker on the left.", ok: true}
+        - {who: 환자에게, icon: me, en: "Your bilateral upper extremity motor strength is four out of five.", ok: false, fix: "Your arms are a little weaker than normal, and we'll keep checking them."}
+      why: "의료진끼리는 strength를 5점 척도로 짧게 말해요. 환자에게는 bilateral, upper extremity, motor 같은 말이 낯설어요. 어느 쪽이 얼마나 약한지만 쉬운 말로 전해요."
+- situation: "고칼륨혈증 단계별 관리"
+  items:
+    - kind: slider
+      words: [w-calcium, w-peak]
+      cue: "Colleague: \"Potassium is 6.8 with peaked T waves. What comes first?\""
+      scale: [give calcium to protect the heart, recheck the lab again in an hour, wait for the dialysis team to arrive]
+      answerAt: 0
+      why: "고칼륨혈증에서 심전도 변화가 있으면 가장 먼저 정맥 칼슘으로 심근을 안정시켜요. 칼슘은 칼륨을 낮추지는 않아서 이어서 인슐린과 포도당으로 칼륨을 세포 안으로 넣고, 투석·이뇨제로 몸 밖으로 빼요."
+      example: "Calcium comes first because it protects the heart."
+      exKo: "칼슘이 먼저예요. 심장을 보호해 주니까요."
+    - kind: context
+      words: [w-calcium]
+      word: calcium
+      ko: 칼슘
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "Calcium gluconate was given for a potassium of 6.8.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Is the calcium running yet?", ok: true}
+        - {who: 가족에게, icon: me, en: "He is receiving intravenous calcium for membrane stabilization of the myocardium.", ok: false, fix: "We're giving him calcium through the IV first to protect his heart."}
+      why: "의료진끼리는 calcium을 membrane stabilization처럼 작용 원리까지 짧게 말해요. 가족에게는 myocardium, membrane 같은 말이 낯설어요. 칼슘을 주는 이유가 심장 보호라는 것만 쉬운 말로 알려 줘요."
+- situation: "저칼륨혈증 보충·부정맥 예방"
+  items:
+    - kind: pair
+      words: [w-central, w-continuous, w-frequent]
+      pairs: [["central", "line"], ["continuous", "telemetry"], ["frequent", "PVCs"]]
+      decoys: ["bedside light"]
+      why: "진한 칼륨은 말초에서 따끔거리거나 정맥을 자극해서 중심 라인(central line)으로 줄 때가 많아요. 보충하는 동안은 지속 텔레메트리(continuous telemetry)로 리듬을 보고, 빈번한 PVC(frequent PVCs)는 저칼륨의 단서가 돼요."
+    - kind: context
+      words: [w-magnesium]
+      word: magnesium
+      ko: 마그네슘
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "Magnesium is 1.4, so we're replacing it with the potassium.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Did you replace the magnesium yet?", ok: true}
+        - {who: 보호자에게, icon: me, en: "Serum magnesium of one point four necessitates repletion per institutional protocol.", ok: false, fix: "Her magnesium is low, so we're giving some through the IV."}
+      why: "의료진끼리는 수치와 repletion 같은 말로 보충 계획을 짧게 전해요. 보호자에게는 serum, necessitate, institutional protocol이 딱딱하게 들려요. 무엇이 낮고 무엇을 주는지만 쉽게 알려 줘요."
+- situation: "저나트륨 교정 속도 관리"
+  items:
+    - kind: slider
+      words: [w-limit, w-rise]
+      cue: "Colleague: \"Sodium 112, chronic, no symptoms. What's our goal for today?\""
+      scale: [raise it to a normal sodium by tonight, raise it by eight to ten at most, raise it by twenty to be on the safe side]
+      answerAt: 1
+      why: "만성 저나트륨은 24시간에 8~10을 넘기지 않게 올려요. 너무 빠르게 올리면 삼투성 탈수초증으로 뇌가 손상될 수 있어서, 오늘 안에 정상까지 올리거나 20씩 올리는 것은 위험해요."
+      example: "We limit the rise to eight to ten in twenty-four hours."
+      exKo: "24시간에 8~10까지만 올리도록 제한해요."
+    - kind: context
+      words: [w-rate]
+      word: rate
+      ko: 속도
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "The rate of rise is under half a point per hour.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Let's slow the rate and recheck at midnight.", ok: true}
+        - {who: 보호자에게, icon: me, en: "The infusion rate is titrated against serial sodium values to avoid crossing the osmotic threshold.", ok: false, fix: "We're keeping the speed gentle so his brain isn't hurt."}
+      why: "의료진끼리는 rate, titrate, threshold로 속도 조절을 짧게 말해요. 보호자에게는 삼투 문턱 같은 말이 낯설고 겁을 줘요. 천천히 하는 이유가 뇌를 지키기 위해서라는 것만 쉽게 전해요."

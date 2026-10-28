@@ -1,0 +1,68 @@
+# 뉘앙스·order 수정. nuance 키 = "상황.nuance번호"
+nuance:
+  "8.1":
+    kind: swap
+    set:
+      before: ["We're checking ", "your acid-base status", " every few hours."]
+      options: [your acid-base status, how acidic or basic your blood is, your ABG]
+      answer: how acidic or basic your blood is
+      notes:
+        how acidic or basic your blood is: 무엇을 보는 검사인지 환자가 이해할 수 있게 풀었어요.
+        your acid-base status: 의료진끼리의 말이라 환자에게는 낯설어요.
+        your ABG: 동맥혈 가스검사의 약어라 환자는 모르고, 이 상황의 일반 혈액 확인과도 딱 맞지 않아요.
+  "2.0":
+    kind: slider
+    set:
+      scale: [a bit worse, clearly worse, much worse]
+      answerAt: 2
+      example: His labs are much worse this morning.
+      exKo: 오늘 아침 검사 수치가 훨씬 나빠졌어요.
+    why_replace: [critically worse, much worse]
+  "1.0":
+    kind: slider
+    set:
+      example: Her weight has gone up steadily since Monday.
+  "3.1":
+    kind: swap
+    set:
+      options: [a continuous renal replacement therapy, "a slow, gentle dialysis machine", a permanent kidney replacement]
+      answer: "a slow, gentle dialysis machine"
+      notes:
+        "a slow, gentle dialysis machine": CRRT의 핵심인 천천히, 부드럽게를 가족이 알아듣는 말로 담았어요.
+        a continuous renal replacement therapy: CRRT를 풀어 쓴 전문 용어라 가족에게는 길고 어려워요.
+        a permanent kidney replacement: 영구적이라는 뜻이라 사실과 달라요. CRRT는 신장이 회복될 때까지 잠시 대신하는 치료예요.
+  "13.0":
+    kind: slider
+    set:
+      example: The level is in range, so the antibiotic should be fully effective.
+      exKo: 농도가 범위 안이라 항생제가 충분히 효과가 있을 거예요.
+      why: 목표 농도 안에 있고 균도 이 항생제에 듣는다면 fully effective예요. CRRT는 항생제를 빼내서 농도가 낮아질 수 있으니 이렇게 확인해야 해요. 열·백혈구 같은 임상 반응도 함께 봐요. partly effective는 농도가 모자랄 때 써요.
+  "20.1":
+    kind: context
+    scene_fix: [2, "I want to be honest with you: he is very sick, and we'll keep you updated every step of the way."]
+order:
+  "5":
+    lines:
+      1: {en: "We dose it carefully so the filter stays open without thinning his blood too much.", ko: "필터가 열려 있게 하되 피가 너무 묽어지지 않게 용량을 조심스럽게 맞춰요", note: 용량}
+    why: 약을 쓰는 이유를 말하고, 용량을 조심스럽게 맞춘다고 걱정을 덜어 준 뒤, 그래도 확인하는 곳을 말하고, 이상이 보이면 알린다고 해요.
+  "4":
+    lines:
+      0: {ko: "이 큰 카테터가 혈액을 기계로 보냈다가 다시 몸으로 돌려보내요"}
+  "1":
+    lines:
+      1: {en: "Even those small amounts add up over a full day.", ko: "그 적은 양도 하루 종일 쌓이면 커져요"}
+    why: 무엇을 적는지 말하고, 작은 양도 쌓인다는 이유를 댄 뒤, 체중이 더하는 정보를 설명하고, 보호하는 장기로 마무리해요.
+  "14":
+    lines:
+      3: {en: "So the dietitian adjusts his protein to make up for what it takes out.", ko: "그래서 영양사가 빠져나간 만큼 단백질을 조정해요", note: 조정}
+    why: 춥게 느끼는 이유를 먼저 말하고, 보온 대책을 알린 뒤, 영양 손실이라는 다른 부작용을 말하고, 영양 조정으로 마무리해요.
+  "17":
+    lines:
+      1: {en: "His ionized calcium is also low.", ko: "그의 이온화 칼슘도 낮아요"}
+  "19":
+    lines:
+      2: {en: "While I hold it, let's check the site for infection signs.", ko: "누르는 동안 감염 징후를 확인합시다"}
+    why: 출혈을 알리고, 압박하며 도움을 부른 뒤, 그동안 감염 징후를 확인하고, 출혈이 멎으면 재시작 전 평가를 해요.
+  "20":
+    lines:
+      1: {en: "When you're ready, the team can share what recovery might realistically look like.", ko: "준비되시면 팀이 회복이 현실적으로 어떤 모습일지 알려드릴 수 있어요"}

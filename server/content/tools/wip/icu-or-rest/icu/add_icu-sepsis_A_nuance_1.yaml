@@ -1,0 +1,193 @@
+"패혈증 조기 인지":
+  - kind: slider
+    words: [w-alert]
+    cue: "Chart: \"Opens his eyes when I say his name, then falls back asleep.\""
+    scale: [alert, drowsy, comatose]
+    answerAt: 1
+    why: "alert는 깨어 있고 또렷한 상태, drowsy는 부르면 깨지만 금방 다시 잠드는 상태, comatose는 깨워도 눈을 뜨지 않는 상태예요. 한국어로는 다 '의식이 처진다'로 뭉뚱그려도 영어 차트에서는 단계가 달라요."
+    example: "He's alert and talking, but he gets drowsy between questions."
+    exKo: "의식은 또렷하고 말도 하지만, 질문 사이사이에 졸려 해요."
+  - kind: context
+    words: [w-confused]
+    word: confused
+    ko: 혼란스러운
+    scenes:
+      - {who: 의사에게 보고, icon: monitor, en: "He's newly confused, breathing at twenty-six, and his pressure is soft.", ok: true}
+      - {who: 환자에게, icon: me, en: "Sir, you're confused and you don't know where you are.", ok: false, fix: "Sir, you're in the hospital, and I'm your nurse. I'm here to help you."}
+      - {who: 차트 기록, icon: board, en: "Pt confused, oriented to person only, restless overnight.", ok: true}
+    why: "의료진끼리는 confused가 정확하고 간결한 사정 용어예요. 하지만 환자 본인에게 \"you're confused\"라고 직접 말하면 겁을 먹거나 방어적이 돼요. 있는 곳과 내가 누구인지를 차분히 알려 주는 게 기본이에요."
+  - kind: swap
+    words: [w-breathingrate]
+    who: "가족에게 · 호흡 설명"
+    icon: me
+    before: ["His ", "respiratory rate", " is faster than normal."]
+    options: [breathing, respiratory rate, RR]
+    answer: breathing
+    notes: {breathing: "가족이 바로 알아듣는 말. 사실을 그대로 전하면서 겁주지 않는다.", respiratory rate: "정확하지만 의료진끼리의 말이라 가족에게는 딱딱하게 들린다.", RR: "차트 약어. 입으로 말하면 가족은 무슨 뜻인지 모른다."}
+    why: "같은 사실도 가족에게는 쉬운 말로, 의료진끼리는 정확한 용어나 약어로 말해요."
+    ko: "그분 호흡이 평소보다 빨라요"
+"젖산·혈액배양 채취":
+  - kind: pair
+    words: [w-draw]
+    pairs: [[draw, blood from two different sites], [clean, the skin with chlorhexidine first], [tell, the patient why before you start]]
+    decoys: [into the hallway]
+    why: "배양용 혈액은 서로 다른 두 부위에서 뽑고(draw), 피부는 클로르헥시딘 등으로 먼저 소독하며(clean), 환자에게는 시작 전에 이유를 설명해요(tell). 소독이 부실하면 피부 균이 섞여 결과가 흐려져요."
+  - kind: context
+    words: [w-antibiotic]
+    word: antibiotics
+    ko: 항생제
+    scenes:
+      - {who: 의사에게 보고, icon: monitor, en: "Cultures are drawn, so we can start the antibiotics now.", ok: true}
+      - {who: 환자에게, icon: me, en: "Pt is being initiated on empiric broad-spectrum antibiotics, pending cultures.", ok: false, fix: "We'll start a strong medicine to fight the infection right after the blood draw."}
+      - {who: 환자에게, icon: me, en: "We take the blood first, then start your antibiotics right away.", ok: true}
+    why: "의료진끼리는 empiric, broad-spectrum 같은 정확한 용어가 좋지만, 환자에게는 차트 문체가 낯설고 겁을 줘요. 순서(채혈 먼저, 바로 이어서 항생제)를 쉬운 말로 말해 주세요."
+  - kind: swap
+    words: [w-culture]
+    who: "환자에게 · 검사 설명"
+    icon: me
+    before: ["We need to send ", "blood cultures", " before the antibiotic."]
+    options: [a few blood samples, blood cultures, BCx]
+    answer: a few blood samples
+    notes: {a few blood samples: "환자가 바로 이해하는 말. 왜 피를 뽑는지 설명을 이어 가기 좋다.", blood cultures: "정확한 용어라 의료진끼리는 좋지만, 처음 듣는 환자에게는 설명 없이 쓰면 낯설다.", BCx: "차트 약어. 말로 하면 환자는 알아듣지 못한다."}
+    why: "환자에게는 '무엇을 하는지'를 쉬운 말로 먼저 하고, 용어는 그다음에 덧붙여요."
+    ko: "항생제 전에 피를 몇 번 뽑아 검사실에 보내야 해요"
+"광범위 항생제 신속 투여":
+  - kind: slider
+    words: [w-likely]
+    cue: "Doctor: \"Fever, high white count, a cough, and a spot on the chest film — pneumonia is the probable source.\""
+    scale: [possibly, likely, certainly]
+    answerAt: 1
+    why: "possibly는 가능성만 열어 둔 말, likely는 가능성이 높지만 확정은 아닌 말, certainly는 확신이에요. 배양 결과가 나오기 전에는 certainly라고 하지 않아요."
+    example: "This is likely a lung infection, but the cultures will tell us for sure."
+    exKo: "폐 감염일 가능성이 높지만, 확실한 건 배양 결과가 알려 줄 거예요."
+  - kind: context
+    words: [w-delay]
+    word: delay
+    ko: 지연시키다
+    scenes:
+      - {who: 차트 기록, icon: board, en: "No delay in antibiotics — cultures drawn, first dose hung.", ok: true}
+      - {who: 보호자에게, icon: me, en: "Every hour of delay in antibiotics raises the risk of dying.", ok: false, fix: "We're doing everything we can to get his antibiotic in without delay."}
+      - {who: 보호자에게, icon: me, en: "We're working hard not to delay his antibiotic.", ok: true}
+    why: "의료진끼리는 시간 지연의 위험을 수치로 말해도 되지만, 불안한 가족에게 위험 통계를 먼저 들이대면 겁만 줘요. 지금 하고 있는 일을 말해 주세요. 그리고 '절대 안 늦는다'고 약속하지는 마세요."
+  - kind: swap
+    words: [w-broad]
+    who: "가족에게 · 항생제 설명"
+    icon: me
+    before: ["We're giving ", "a broad-spectrum antibiotic", " to cover the likely infection."]
+    options: [an antibiotic that covers many germs, a broad-spectrum antibiotic, an empiric antibiotic]
+    answer: an antibiotic that covers many germs
+    notes: {an antibiotic that covers many germs: "여러 종류의 균에 듣는다는 뜻을 쉬운 말로 전한다.", a broad-spectrum antibiotic: "의료진끼리 쓰는 정확한 말. 가족에게는 'spectrum'이 낯설다.", an empiric antibiotic: "'원인균 확인 전에 쓰는'이라는 임상 용어. 가족에게는 추측으로 들려 불안하다."}
+    why: "같은 약이라도 가족에게는 쉬운 말로 풀고, 의료진끼리는 broad-spectrum·empiric 같은 정확한 용어를 써요."
+    ko: "가능성 있는 감염을 덮으려고 여러 균에 듣는 항생제를 쓰고 있어요"
+"초기 수액 소생 협조":
+  - kind: slider
+    words: [w-low]
+    cue: "Doctor: \"His blood pressure is 78 over 40, even after the first liter.\""
+    scale: [mildly low, fairly low, very low]
+    answerAt: 2
+    why: "혈압이 낮다고 해도 정도가 달라요. 78/40은 쇼크로 이어질 수 있는 아주 낮은 수치라 mildly나 fairly로 말하면 심각성이 전해지지 않아요."
+    example: "His blood pressure was very low when he arrived."
+    exKo: "도착했을 때 혈압이 아주 낮았어요."
+  - kind: context
+    words: [w-fluid]
+    word: fluids
+    ko: 수액
+    scenes:
+      - {who: 의사에게 보고, icon: monitor, en: "Fluids are running wide open, and I'll reassess his pressure after the bolus.", ok: true}
+      - {who: 보호자에게, icon: me, en: "Pt is fluid-responsive and volume depleted, so fluids are being bolused.", ok: false, fix: "He's getting extra fluid through his IV because his blood pressure is low."}
+      - {who: 보호자에게, icon: me, en: "We're giving him fluids through his IV to help his blood pressure.", ok: true}
+    why: "의료진끼리는 fluid-responsive, bolus 같은 말이 정확하고 빨라요. 가족에게는 같은 상황을 '혈압이 낮아서 정맥으로 수액을 더 주고 있다'로 풀어 주세요."
+  - kind: swap
+    words: [w-wet]
+    who: "가족에게 · 폐 소리 설명"
+    icon: me
+    before: ["If we hear ", "crackles", " in his lungs, we'll slow the fluids down."]
+    options: [wet sounds, crackles, rales]
+    answer: wet sounds
+    notes: {wet sounds: "가족이 바로 떠올릴 수 있는 말. 왜 수액을 줄이는지 이해가 된다.", crackles: "청진 용어라 간호사끼리는 정확하지만 가족에게는 낯설다.", rales: "미국 의료진이 crackles와 같은 뜻으로 쓰는 말이지만, 가족에게는 더 낯설다."}
+    why: "폐에서 나는 소리도 가족에게는 쉬운 말로, 팀끼리는 청진 용어로 말해요."
+    ko: "폐에서 젖은 소리가 들리면 수액을 줄일게요"
+"감염원 병력·부위 사정":
+  - kind: slider
+    words: [w-pain]
+    cue: "Patient: \"It's a dull ache when I pee, but I can still walk around fine.\""
+    scale: [ache, pain, agony]
+    answerAt: 0
+    why: "한국어로는 다 '아프다'지만 영어는 강도가 달라요. 걸어 다닐 수 있는 둔한 불편은 ache, 일상이 어려운 정도는 pain, 견디기 힘든 극심한 고통은 agony예요."
+    example: "A dull ache when you urinate can be a sign of infection."
+    exKo: "소변볼 때 둔하게 아픈 것도 감염의 신호일 수 있어요."
+  - kind: context
+    words: [w-wound]
+    word: wound
+    ko: 상처
+    scenes:
+      - {who: 차트 기록, icon: board, en: "Red, swollen wound on the left calf with drainage.", ok: true}
+      - {who: 환자에게, icon: me, en: "Is there any dehiscence or purulent drainage at the wound?", ok: false, fix: "Is anything leaking or opening up where you had your stitches?"}
+      - {who: 환자에게, icon: me, en: "I'll check your wounds one by one, and tell me if anything hurts.", ok: true}
+    why: "환자에게 dehiscence나 purulent 같은 말을 쓰면 알아듣지 못해요. 실밥 자리가 새거나 벌어졌는지처럼 눈에 보이는 말로 물어야 정확한 대답을 들어요."
+  - kind: swap
+    words: [w-redness, w-line]
+    who: "환자에게 · 라인 부위 질문"
+    icon: me
+    before: ["Is there any ", "erythema", " around the line?"]
+    options: [redness, erythema, rubor]
+    answer: redness
+    notes: {redness: "환자가 직접 볼 수 있는 말이라 정확한 대답을 얻기 쉽다.", erythema: "의료진끼리의 정확한 용어. 환자는 무슨 뜻인지 되묻는다.", rubor: "염증의 전통적 징후를 가리키는 라틴어 계열 용어라 병상에서 환자에게는 맞지 않는다."}
+    why: "환자에게 묻는 말은 환자가 직접 보고 느낄 수 있는 단어여야 해요."
+    ko: "라인 주변이 빨갛게 보이나요?"
+"활력·관류 재평가":
+  - kind: slider
+    words: [w-warm]
+    cue: "Chart: \"Fingers and toes feel cool and look pale.\""
+    scale: [cold, cool, warm, hot]
+    answerAt: 1
+    why: "손발이 차고 창백하면 말초 관류가 떨어졌다는 신호예요. cold는 얼음장 같은 차가움, cool은 정상보다 서늘한 정도, warm은 따뜻해서 관류가 좋아졌다는 뜻이에요."
+    example: "His hands are cool and pale, so I'm worried about his circulation."
+    exKo: "손이 차고 창백해서 순환이 걱정돼요."
+  - kind: context
+    words: [w-reassess]
+    word: reassess
+    ko: 재평가하다
+    scenes:
+      - {who: 동료에게, icon: monitor, en: "I'll reassess his pressure, lactate, and capillary refill after the bolus.", ok: true}
+      - {who: 환자에게, icon: me, en: "Your clinical trajectory will be reassessed against SOFA parameters every fifteen minutes.", ok: false, fix: "We'll keep checking you every few minutes to see how you're doing."}
+      - {who: 보호자에게, icon: me, en: "We'll keep reassessing him to make sure he's moving in the right direction.", ok: true}
+    why: "팀끼리는 reassess가 짧고 정확한 업무 용어예요. 환자에게는 SOFA 같은 점수 이야기보다 '계속 살펴본다'는 말이 안심이 돼요."
+  - kind: swap
+    words: [w-circulation]
+    who: "가족에게 · 관류 설명"
+    icon: me
+    before: ["His hands and feet are warmer, so his ", "perfusion", " is better."]
+    options: [blood flow, perfusion, microcirculation]
+    answer: blood flow
+    notes: {blood flow: "가족이 바로 이해하는 말. 손발이 따뜻해졌다는 근거와 이어진다.", perfusion: "조직에 피가 가는 정도를 말하는 의료진끼리의 정확한 용어. 가족에게는 낯설다.", microcirculation: "아주 가는 혈관 수준의 순환을 말하는 전문 용어라 병상 설명에는 과하다."}
+    why: "같은 좋아짐도 가족에게는 '혈류가 좋아졌다'처럼 쉬운 말이 닿아요."
+    ko: "손발이 따뜻해졌으니 혈류가 좋아졌어요"
+"패혈성 쇼크 승압 시작":
+  - kind: slider
+    words: [w-dose]
+    cue: "Order: \"Start norepinephrine at the lowest rate, then go up only as his pressure needs.\""
+    scale: [trace dose, low dose, full dose]
+    answerAt: 1
+    why: "승압제는 낮은 용량으로 시작해 목표 혈압(보통 평균동맥압 65 이상)에 맞춰 조금씩 올려요. 처음부터 full dose로 가지 않고, 효과가 없는 trace 수준에 머물지도 않아요."
+    example: "We start at a low dose and go up only as needed."
+    exKo: "낮은 용량으로 시작해서 필요한 만큼만 올려요."
+  - kind: context
+    words: [w-drip]
+    word: drip
+    ko: 점적 주입
+    scenes:
+      - {who: 의사 처방, icon: monitor, en: "Start the norepinephrine drip at a low rate and titrate to a MAP of 65.", ok: true}
+      - {who: 보호자에게, icon: me, en: "We're starting a norepinephrine drip, titrating to a MAP of 65.", ok: false, fix: "This medicine runs through his IV and helps keep his blood pressure up."}
+      - {who: 보호자에게, icon: me, en: "This drip helps keep his blood pressure up while his body recovers.", ok: true}
+    why: "팀끼리는 약 이름, 속도, 목표 혈압(MAP)까지 말하는 게 정확해요. 가족에게는 수치와 약어를 빼고 '이 약이 무엇을 해 주는지'를 말해 주세요."
+  - kind: swap
+    words: [w-bloodpressure]
+    who: "가족에게 · 혈압 설명"
+    icon: me
+    before: ["His ", "MAP", " is low, so we're adding this drip."]
+    options: [blood pressure, MAP, mean arterial pressure]
+    answer: blood pressure
+    notes: {blood pressure: "가족이 아는 말. 왜 약을 추가하는지가 바로 이어진다.", MAP: "평균동맥압 약어. 팀끼리는 쓰지만 가족은 무슨 숫자인지 모른다.", mean arterial pressure: "풀어 쓴 정식 용어지만 가족에게는 여전히 낯설고 길다."}
+    why: "숫자와 약어는 팀끼리의 말이고, 가족에게는 혈압이라는 친숙한 단어가 먼저예요."
+    ko: "혈압이 낮아서 이 약을 추가하고 있어요"

@@ -1,0 +1,245 @@
+# icu-electrolytes 단어·뉘앙스·order 수정
+words:
+  # --- A 단어 (W-1~W-22) ---
+  w-run: {distractorsKo: ["희석하다", "멈추다"]}
+  w-free:
+    ko: "유리(遊離)"
+    cue: "용질이 하나도 녹아 있지 않은 순수한 물을 말할 때 water 앞에 붙는 말"
+    distractorsKo: ["농축된", "묶여 있는"]
+  w-strip: {distractorsKo: ["차트", "동의서"]}
+  w-risk: {distractorsKo: ["이점", "성공률"]}
+  w-danger: {ko: "위급한 정도"}
+  w-bring:
+    en: "bring down"
+    ipa: "/brɪŋ ˈdaʊn/"
+    chips: [[bring], [down]]
+    distractorsEn: ["bring up", "break down"]
+    decoyChips: [brink, dawn]
+    cue: "수치를 원하는 아래쪽으로 끌어내리는 말 — 뒤에 방향을 나타내는 말이 붙는다"
+  w-tingle:
+    ko: "저리다"
+    cue: "바늘로 콕콕 찌르는 것처럼 살갗이 따끔따끔 저리는 느낌이 드는 일"
+  w-seize: {cue: "온몸이 굳거나 떨리면서 의식을 잃는 일 — 지금 진행 중일 때 쓰는 꼴"}
+  w-acid: {cue: "신맛이 나는 성분 — 혈액에 너무 많으면 몸이 산성으로 기운다"}
+  w-QT: {cue: "심실이 수축했다 회복하기까지의 심전도 간격 — 저마그네슘이면 길어진다"}
+  w-telemetry: {chips: [[tele, me, try]]}
+  w-demyelination: {chips: [[de, myelin, ation]]}
+  w-hypertonic: {chips: [[hyper, ton, ic]]}
+  # --- decoyChips ---
+  w-change: {decoyChips: [chain]}
+  w-acute: {decoyChips: [act, cure]}
+  w-sodium: {decoyChips: [soda, dim]}
+  w-diuretic: {decoyChips: [dew, you]}
+  w-dialysis: {decoyChips: [dial, ale]}
+  w-muscle: {decoyChips: [mush, cell]}
+  w-careful: {decoyChips: [cure, fill]}
+  w-often: {decoyChips: ["off", tan]}
+  w-deficit: {decoyChips: [deft, eye]}
+  w-help: {decoyChips: [helm]}
+  w-monitor: {decoyChips: [moon, tour]}
+  w-control: {decoyChips: [cone, roll]}
+  # --- cue가 ko 되풀이였던 단어 (W-19) ---
+  w-number: {cue: "다시 채혈할 때마다 비교하려고 결과지에서 읽는 칼륨·나트륨 값 하나하나"}
+  w-result: {cue: "채혈하고 한참 뒤 검사실에서 돌아오는, 가족이 기다리는 답"}
+  w-flag: {decoyChips: [flat], cue: "위험한 값이나 모니터 화면에 눈에 띄는 표시를 달아 의사가 놓치지 않게 하는 일"}
+  w-slow: {cue: "펌프가 한꺼번에 많이 넣지 않도록 칼륨 같은 약을 시간을 들여 조금씩 넣는 모양"}
+  w-point: {cue: "QT 연장 같은 소견이 저칼륨 쪽 원인을 짚어 줄 때 쓰는 말"}
+  w-send: {cue: "채혈한 검체와 검사 요청서를 검사실에 전달할 때"}
+  w-widen: {cue: "QRS 폭이 처음보다 퍼져 가는 심전도 변화 — 고칼륨에서 볼 수 있다"}
+  w-page: {cue: "당직 전공의의 호출기를 울려서 병실로 오게 할 때"}
+  w-resident: {cue: "밤사이 병동을 맡는, 아직 수련 중인 의사 — 호출하면 달려오는 사람"}
+  w-pressure: {cue: "혈압약이나 혈압 측정에서 쓰는, 피가 혈관 벽을 누르는 세기"}
+  w-stop: {cue: "경련이나 재발이 더 이어지지 않게 끊는 일 — 원인을 알면 할 수 있다"}
+  w-lab: {cue: "아침 채혈 뒤 하루에도 여러 번 확인하는 검사실 수치"}
+  w-direction: {cue: "교정 중 수치가 너무 빠르게 움직이는 쪽 — 위든 아래든 어느 한쪽"}
+  w-squeeze: {cue: "간호사의 두 손을 최대한 힘을 줘서 잡아 보라고 할 때 쓰는 말"}
+  w-push: {cue: "주사기 피스톤을 눌러 약을 몸으로 한 번에 들여보내는 일 — 칼륨에는 절대 쓰지 않는 방법"}
+  w-both: {cue: "칼륨과 마그네슘처럼 짝지어진 두 가지를 모두 가리킬 때"}
+  w-watch: {cue: "보충하는 동안 심전도 리듬이 흔들리지 않는지 눈을 떼지 않고 보는 일"}
+  w-quickly: {cue: "교정을 서두르면 뇌가 다친다고 경고할 때 쓰는, 속도가 빠른 모양"}
+  w-rate: {cue: "펌프 화면에서 시간당 몇 mL로 들어가는지 맞추는 값"}
+  w-raise: {cue: "저마그네슘이 토르사드 같은 위험 수준을 위로 끌어올린다고 말할 때"}
+  w-case: {cue: "혹시 위급해질 때를 미리 대비해 준비해 두는 이유를 밝힐 때 붙는 말"}
+  w-weaken: {cue: "인산이 낮으면 호흡근이 이렇게 된다 — 힘이 빠져 약해지는 쪽으로 만드는 일"}
+  w-try: {cue: "이탈을 한 번 더 해 보려고 다시 도전하는 일"}
+  w-goal: {cue: "영양팀과 하루 칼로리를 어디까지 채울지 정해 둔 값"}
+  w-ensure: {cue: "수액이 빠짐없이 먼저 들어가고 있는지 시작 전에 틀림없이 챙기는 일"}
+  w-early: {cue: "문제가 커지기 전에 제때보다 앞서 팀을 불러들일 때"}
+  w-sine: {cue: "심전도 파형이 부드러운 물결 모양으로 합쳐진, 심정지 직전이라는 신호"}
+  w-wait: {cue: "펌프가 준비될 때까지 손을 놓고 있는 일 — 위기에서는 하면 안 된다"}
+  w-urgent: {cue: "신경 변화가 생겨서 지체 없이 바로 팀을 불러야 할 때의 모양"}
+  w-worse: {cue: "협착음이 점점 커지면서 호흡 상태가 아까보다 나빠진 모양"}
+  w-start: {cue: "영양 공급을 처음 켜는 순간 — 너무 빠르면 인산이 떨어진다"}
+dEn_swap:
+  w-ECG: {EKG: EMG}
+  w-phosphate: {phosphorus: phosphatase}
+  w-stridor: {stripper: stertor}
+  w-important: {impotent: imported}
+  w-imbalance: {imbibe: imprudence, embalm: ambulance}
+  w-trigger: {tigger: tremor}
+  w-tumor: {tumble: rumor}
+  w-fail: {"fall off": flail}
+  w-lung: {lunge: lunch}
+  w-show: {sow: shove}
+  w-plan: {plane: plank}
+dEn_set:
+  w-stat: [still, stably]
+tag_general: [close, soon, through, first, then, again, finally, both, down, case, never]
+word_remove: [w-stretch, w-yesterday]
+# ---------- 뉘앙스 ----------
+# kind당 한 개뿐인 문항을 s(상황 번호)+kind로 찾는다. set=필드 덮어쓰기, scene={인덱스: 필드}, repl=why 안 문자열 치환
+nuance:
+- s: 0
+  kind: pair
+  set:
+    words: [w-safe, w-draw, w-flag]
+    pairs: [[safe, range], [draw, blood again], [flag, the critical value]]
+    decoys: [the lunch tray]
+    why: "전해질은 안전 범위(safe range)를 벗어나면 위험해서 수치를 그 기준으로 봐요. 교정이 되는지 보려고 시간을 두고 다시 채혈하고(draw blood again), 위험한 값이 나오면 눈에 띄게 표시해 의료진에게 알려요(flag the critical value)."
+- s: 1
+  kind: slider
+  set:
+    scale: ["ignore it and run it faster", "slow it down and check the site", "take the line out right away"]
+    answerAt: 1
+- s: 3
+  kind: slider
+  set:
+    scale: ["no effect on her levels at all", "only matters in an overdose", "can change her potassium and sodium"]
+    answerAt: 2
+- s: 4
+  kind: slider
+  set:
+    cue: "Colleague: \"Chronic, no symptoms — his sodium rose five points in four hours.\""
+    why: "증상 없는 만성 저나트륨이라 24시간에 8~10 이내로 올리는 것이 한도인데, 4시간에 5가 오르면 계획보다 빨라요. 경련 같은 중증 증상이 있으면 처음 몇 시간에 4~6을 올리는 것이 목표라 다르게 봐요. 이럴 때는 속도를 늦추고 더 자주 재검해요."
+- s: 5
+  kind: slider
+  set:
+    cue: "Patient: \"My arms feel a bit tired, but I can lift them fine.\""
+- s: 6
+  kind: slider
+  set:
+    scale: ["wait for the dialysis team to arrive", "recheck the lab again in an hour", "give calcium to protect the heart"]
+    answerAt: 2
+- s: 7
+  kind: pair
+  set:
+    words: [w-central, w-low, w-frequent]
+    pairs: [[central, line], [low, potassium], [frequent, PVCs]]
+    decoys: [diet tray]
+    why: "진한 칼륨은 말초에서 따끔거리거나 정맥을 자극해서 중심 라인(central line)으로 줄 때가 많아요. 낮은 칼륨(low potassium)은 위험한 부정맥을 부르고, 빈번한 PVC(frequent PVCs)는 그 단서가 돼요."
+- s: 8
+  kind: slider
+  set:
+    scale: ["raise it by eight to ten at most", "raise it by twenty to be on the safe side", "raise it to a normal sodium by tonight"]
+    answerAt: 0
+- s: 9
+  kind: slider
+  set:
+    scale: ["strict NPO with no fluids at all", "free water by mouth or tube", "a hypertonic saline bolus right now"]
+    answerAt: 1
+- s: 10
+  kind: pair
+  set:
+    words: [w-QT, w-magnesium, w-draw]
+    pairs: [[QT, prolonging drugs], [magnesium, sulfate], [draw up, the dose]]
+    decoys: [blood sugar]
+    why: "QT를 늘리는 약(QT-prolonging drugs)은 저마그네슘일 때 토르사드 위험을 더 키워서 검토해요. 정맥 마그네슘은 황산마그네슘(magnesium sulfate)으로 주고, 주사기에 미리 뽑아 두는 것을 draw up the dose라고 해요."
+- s: 10
+  kind: context
+  set: {ko: 모니터}
+- s: 11
+  kind: slider
+  set:
+    scale: ["within the normal range", "a little low", "dangerously low"]
+    answerAt: 0
+- s: 11
+  kind: context
+  scene:
+    2: {en: "Symptomatology includes perioral paresthesia and carpopedal spasm, so symptom monitoring continues."}
+- s: 12
+  kind: pair
+  set:
+    words: [w-tidal, w-phosphate, w-wean]
+    pairs: [[tidal, volume], [phosphate, replacement], [weaning, trial]]
+    decoys: [water bottle]
+    why: "인산이 낮으면 호흡근이 약해져 일회호흡량(tidal volume)이 작아 보이고, 인공호흡기 이탈 시도(weaning trial)가 잘 안 돼요. 그래서 인산 보충(phosphate replacement)을 경관영양 튜브나 정맥으로 해요."
+- s: 13
+  kind: context
+  scene:
+    2: {en: "He meets ASPEN criteria for high risk of refeeding syndrome."}
+  repl: [["NICE", "ASPEN"]]
+- s: 15
+  kind: slider
+  set:
+    scale: ["send a routine lab and wait for it", "recheck the potassium in an hour or so", "treat now and prepare dialysis"]
+    answerAt: 2
+- s: 16
+  kind: pair
+  set:
+    words: [w-hypertonic, w-convulse, w-seizure]
+    pairs: [[hypertonic, saline], [actively, convulsing], [seizure, protocol]]
+    decoys: [heart rate]
+    why: "저나트륨 때문에 경련이 나면 프로토콜에 따라 고장성 식염수(hypertonic saline)를 줘서 나트륨을 빨리 조금 올려요. 지금 경련이 이어지는 상태는 actively convulsing이라고 말해요. 다만 총 교정 폭은 제한해서 뇌 손상을 막아요."
+- s: 18
+  kind: context
+  scene:
+    2: {en: "The unit is charged and ready to defibrillate per the ACLS algorithm."}
+  repl: [["armed, ready, cardiovert", "charged, ready, defibrillate"], ["cardiovert가", "defibrillate가"]]
+- s: 19
+  kind: slider
+  set:
+    scale: ["watch him for another hour or so", "order a chest x-ray before anything else", "give IV calcium and prepare to intubate"]
+    answerAt: 2
+- s: 20
+  kind: pair
+  set:
+    words: [w-escalate, w-consider, w-critical]
+    pairs: [[escalate, to the intensivist], [consider, dialysis], [critically, "off"]]
+    decoys: [on the menu]
+    why: "여러 이상이 겹치면 혼자 해결하려 하지 않고 중환자전담의에게 에스컬레이션하고(escalate to the intensivist), 신장 지원이 필요한지 투석을 고려해요(consider dialysis). 전해질이 심각하게 벗어난 상태는 critically off라고 말해요."
+# ---------- order ----------
+order:
+- s: 1
+  lines:
+    3: {en: "While the pump runs it, I'll stay close and watch her and the site.", ko: "펌프가 넣는 동안 곁에서 환자분과 주사 부위를 지켜볼게요"}
+- s: 2
+  lines:
+    2: {en: "Since that's possible, I already grabbed a stat potassium.", ko: "그럴 수 있어서 이미 응급 칼륨 검사를 냈습니다"}
+- s: 3
+  lines:
+    2: {en: "Part of that review is asking: does she take any water pills at home?", ko: "그 검토의 하나로, 집에서 이뇨제를 드시는지 여쭤봐요"}
+- s: 4
+  lines:
+    1: {en: "I know it's a lot, but each draw tells us if we're going too fast.", ko: "많게 느껴지겠지만 채혈 한 번 한 번이 너무 빠른지 알려줘요"}
+    2: {en: "If we are, we slow down or adjust the plan.", ko: "그렇다면 속도를 늦추거나 계획을 조정해요"}
+- s: 10
+  lines:
+    3: {en: "With that ready, check if she's on any antiarrhythmics that prolong the QT further."}
+- s: 12
+  lines:
+    2: {en: "To fix that weakness, we're replacing phosphate through the feeding tube and IV both.", ko: "그 약해진 근육을 고치려고 경관영양 튜브와 정맥 둘 다로 인산을 보충하고 있습니다"}
+- s: 13
+  lines:
+    1: {en: "So we advance nutrition slowly and replace electrolytes first.", ko: "그래서 영양은 천천히 늘리고 전해질부터 보충합니다"}
+    2: {en: "That slow start means keeping the calorie goal low for the first couple of days.", ko: "그렇게 천천히 시작하려면 첫 며칠은 칼로리 목표를 낮게 유지해요"}
+- s: 16
+  lines:
+    2: {en: "For him, the protocol means a hundred-mL bolus of three percent saline over ten minutes.", ko: "이 환자에게 그 프로토콜은 3% 식염수 100mL 볼루스를 10분에 걸쳐 주는 거예요"}
+- s: 17
+  why: "상승 폭을 먼저 알리고, 신경 증상을 보고한 뒤, 그런 변화 때문에 바로 전문과를 호출하고, 그들과 연락이 닿으면 나트륨을 다시 내릴 수 있다고 알려요."
+  lines:
+    2: {en: "With those changes, I'm paging neurology and the nephrologist right away.", ko: "그런 변화가 있어서 지금 바로 신경과와 신장내과를 호출하겠습니다"}
+    3: {en: "Once they're on board, we may need to relower the sodium with free water or DDAVP.", ko: "그들과 연락이 닿으면 유리수분이나 DDAVP로 나트륨을 다시 내려야 할 수도 있습니다"}
+- s: 18
+  lines:
+    1: {en: "Give two grams of it over fifteen minutes.", ko: "그걸 15분에 걸쳐 2그램 주세요"}
+    2: {en: "While those two grams go in, let's have the defibrillator ready and call for help.", ko: "그 2그램이 들어가는 동안 제세동기를 준비하고 도움을 요청해요"}
+- s: 19
+  why: "위기 소견을 먼저 알리고, 정맥 칼슘을 바로 주라고 지시한 뒤, 글루콘산칼슘이고 천천히 민다고 방법을 말하고, 미는 동안 기도 카트를 준비하게 해요."
+  lines:
+    2: {en: "That calcium is gluconate, and we push it slowly through a line we've checked.", ko: "그 칼슘은 글루콘산칼슘이고, 확인한 라인으로 천천히 밉니다"}
+    3: {en: "While it's being pushed, have the airway cart ready in case he needs intubation.", ko: "그걸 미는 동안 삽관이 필요할 수 있으니 기도 카트를 준비해 주세요"}
+- s: 20
+  why: "상황을 먼저 알리고, 전체 패널로 위험 수치를 표시한 뒤, 가장 위험한 것부터 치료한다고 정하고, 칼륨부터 치료하면서 동시에 상급자에게 올리고 투석을 고려해요."
+  lines:
+    3: {en: "While we treat it, we need to escalate to the intensivist and consider dialysis.", ko: "그걸 치료하는 동안 중환자전담의에게 에스컬레이션하고 투석을 고려해야 합니다"}

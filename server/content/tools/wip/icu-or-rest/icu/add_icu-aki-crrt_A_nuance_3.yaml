@@ -1,0 +1,110 @@
+15:
+  - kind: slider
+    words: [w-high]
+    cue: "Potassium is very high, with wide QRS complexes and peaked T waves on the monitor."
+    scale: [a bit high, quite high, dangerously high]
+    answerAt: 2
+    why: "칼륨이 매우 높고 모니터에 넓은 QRS와 뾰족한 T파까지 보이면 dangerously high예요. 심장이 멈출 수 있는 상태라 바로 호출하고 응급 대응을 준비해야 해요. a bit high는 심전도 변화가 없는 정도에 써요."
+    example: "His potassium is dangerously high."
+    exKo: "그의 칼륨은 위험할 만큼 높아요."
+  - kind: swap
+    words: [w-act]
+    who: "의사 호출 · 응급 보고"
+    icon: monitor
+    before: ["His potassium is dangerously high with ECG changes, so ", "we should act at some point", "."]
+    options: [we should act at some point, we need to act right now, we can discuss acting later]
+    answer: we need to act right now
+    notes: {we need to act right now: "심전도 변화가 있는 고칼륨은 지체 없이 조치해야 한다는 긴급함을 분명히 전해요.", we should act at some point: "미뤄도 된다는 느낌이라 응급 상황에 맞지 않아요.", we can discuss acting later: "논의를 뒤로 미루겠다는 말이라 지금 필요한 긴급함이 사라져요."}
+    why: "응급 호출에서는 우선순위가 말투에서 드러나야 해요. 심전도 변화가 있는 고칼륨은 '언젠가'가 아니라 '지금 바로'라고 분명히 말하세요."
+    ko: "칼륨이 위험할 만큼 높고 심전도에도 변화가 있어서 지금 바로 조치해야 해요"
+16:
+  - kind: slider
+    words: [w-quickly]
+    cue: "The circuit just clotted, and he's pale with a falling pressure. How fast do you call for help?"
+    scale: [at some point, quickly, right now]
+    answerAt: 2
+    why: "회로가 굳은 직후 창백하고 혈압까지 떨어지면 지체 없이 right now 도움을 요청해요. quickly도 서두른다는 뜻이지만 이 상황에서는 바로 지금이어야 해요. at some point는 한참 미뤄도 된다는 느낌이에요."
+    example: "I need help right now, and we have to restart quickly."
+    exKo: "지금 바로 도움이 필요해요. 빨리 재시작해야 해요."
+  - kind: context
+    words: [w-stat]
+    word: stat
+    ko: 즉시
+    scenes:
+      - {who: 의사 호출, icon: monitor, en: "I need a stat hemoglobin on bed 6; the circuit just clotted.", ok: true}
+      - {who: 검사실 전화, icon: lab, en: "Please run this hemoglobin stat.", ok: true}
+      - {who: 불안한 보호자에게, icon: me, en: "A stat hemoglobin is pending after the circuit loss.", ok: false, fix: "We're rushing a blood test to see how much blood he lost."}
+    why: "stat은 의사와 검사실에서 '지금 바로'라는 병원 용어예요. 가족에게는 stat이나 circuit loss 같은 말이 낯설고 겁을 줄 수 있으니, 무엇을 서둘러 확인하는지 쉬운 말로 알려 주세요."
+17:
+  - kind: slider
+    words: [w-low]
+    cue: "Ionized calcium is far below the lab range, and he says his lips are tingling."
+    scale: [slightly low, clearly low, dangerously low]
+    answerAt: 2
+    why: "이온화 칼슘이 크게 낮고 입술이 저리다는 증상까지 있으면 dangerously low예요. 저칼슘은 저림이나 경련으로 이어질 수 있어 프로토콜대로 바로 보정하고 보고해야 해요."
+    example: "His ionized calcium is dangerously low."
+    exKo: "그의 이온화 칼슘은 위험할 만큼 낮아요."
+  - kind: swap
+    words: [w-accumulation]
+    who: "의사에게 · 보고"
+    icon: monitor
+    before: ["The total-to-ionized ratio is rising, so ", "it's probably nothing", "."]
+    options: [it's probably nothing, I'm concerned about citrate accumulation, this is citrate toxicity]
+    answer: I'm concerned about citrate accumulation
+    notes: {I'm concerned about citrate accumulation: "간호사가 본 근거(비율 상승)를 바탕으로 우려를 말하는 표현이라, 진단을 단정하지 않고 판단을 의사에게 맡겨요.", it's probably nothing: "오르는 비율을 가볍게 넘기는 말이라 보고가 미뤄질 수 있어요.", this is citrate toxicity: "진단을 간호사가 단정하는 표현이라 맞지 않아요. 확인은 의사의 몫이에요."}
+    why: "오르는 수치를 보고할 때는 가볍게 넘기지도, 진단을 단정하지도 마세요. 본 사실과 우려를 말하고 판단은 의사에게 맡기는 것이 안전해요."
+    ko: "총-이온화 칼슘 비율이 오르고 있어서 시트르산 축적이 걱정돼요"
+18:
+  - kind: slider
+    words: [w-breathe]
+    cue: "He's speaking in short phrases, using his neck muscles, and his oxygen saturation is dropping."
+    scale: [short of breath, struggling to breathe, can't breathe at all]
+    answerAt: 1
+    why: "짧게 끊어 말하고 목 근육까지 쓰며 산소포화도가 떨어진다면 struggling to breathe예요. short of breath는 그보다 가벼운 호흡곤란에 쓰고, can't breathe at all은 숨을 전혀 못 쉬는 극단이에요."
+    example: "He's struggling to breathe right now."
+    exKo: "지금 숨쉬기 힘들어하고 있어요."
+  - kind: context
+    words: [w-urgent]
+    word: urgent
+    ko: 긴급한
+    scenes:
+      - {who: 의사 호출, icon: monitor, en: "He needs urgent ultrafiltration; he's in pulmonary edema.", ok: true}
+      - {who: 동료 간호사, icon: board, en: "This is urgent; I need help sitting him up and turning up the oxygen.", ok: true}
+      - {who: 환자에게, icon: me, en: "Urgent decongestion of your pulmonary vasculature is required.", ok: false, fix: "Fluid has built up in your lungs, so we're taking it off right away."}
+    why: "urgent는 의사와 동료에게 급하다는 뜻을 바로 전해요. 숨찬 환자에게는 decongestion·pulmonary vasculature 같은 말이 알아듣기 어려우니, 폐에 물이 찼고 바로 빼고 있다고 쉽게 말하세요."
+19:
+  - kind: slider
+    words: [w-heavy]
+    cue: "The dressing is soaked through in minutes, and blood is pooling under him."
+    scale: [oozing, bleeding steadily, bleeding heavily]
+    answerAt: 2
+    why: "몇 분 만에 드레싱이 젖고 피가 고이면 bleeding heavily예요. oozing은 스며 나오는 정도, bleeding steadily는 꾸준히 나오지만 그만큼 많지 않을 때예요. 대량 출혈은 압박하며 바로 도움을 불러요."
+    example: "The catheter site is bleeding heavily."
+    exKo: "카테터 부위에서 출혈이 심해요."
+  - kind: context
+    words: [w-pressure]
+    word: pressure
+    ko: 압박
+    scenes:
+      - {who: 의사 호출, icon: monitor, en: "I'm holding pressure on the catheter site, and he's still bleeding.", ok: true}
+      - {who: 동료 간호사, icon: board, en: "Hold firm pressure until the bleeding stops.", ok: true}
+      - {who: 의식 있는 환자에게, icon: me, en: "Your hemostasis requires sustained manual pressure.", ok: false, fix: "I'm pressing on the spot to stop the bleeding, and I'm staying right here with you."}
+    why: "pressure를 누른다는 말은 의사와 동료에게는 짧고 분명해요. 의식이 있는 환자에게는 hemostasis·sustained manual pressure 같은 말보다, 지금 무엇을 하고 있고 곁에 있다는 말이 안심이 돼요."
+20:
+  - kind: slider
+    words: [w-understand]
+    cue: "A daughter says through tears that she hasn't slept in three days and can't stand seeing him on the machine."
+    scale: [that sounds a bit tiring, I understand how hard this is, I know exactly how you feel]
+    answerAt: 1
+    why: "I understand how hard this is는 힘든 정도를 인정하면서도 겪어 보지 않은 일을 안다고 하지 않아요. 'a bit tiring'은 아픔을 가볍게 만들고, 'I know exactly how you feel'은 겪어 보지 않은 가족의 마음을 안다고 단정해서 부담스러워요."
+    example: "I understand how hard this is."
+    exKo: "이게 얼마나 힘든지 이해해요."
+  - kind: context
+    words: [w-honest]
+    word: honest
+    ko: 솔직한
+    scenes:
+      - {who: 의사 면담, icon: speech, en: "I'll be honest with you: the next few days will tell us a lot.", ok: true}
+      - {who: 가족에게, icon: me, en: "We'll keep being honest with you as things change.", ok: true}
+      - {who: 불안한 가족에게, icon: me, en: "To be honest, it's not looking good, so I wouldn't get your hopes up.", ok: false, fix: "I want to be honest with you: he is very sick, and we're doing everything we can."}
+    why: "honest는 어려운 소식을 전할 때 신뢰를 주는 말이에요. 하지만 'don't get your hopes up'처럼 차갑게 말하면 솔직함이 아니라 매정함으로 들려요. 사실을 말하되 곁에서 함께하는 태도를 담으세요."
