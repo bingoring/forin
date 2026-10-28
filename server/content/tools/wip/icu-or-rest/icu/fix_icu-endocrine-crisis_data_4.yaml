@@ -1,0 +1,107 @@
+# 뉘앙스 patch (s = 상황, n = nuance 번째, 0부터) + order patch (lines = 1부터, 있는 필드만 덮어씀)
+nuance:
+  - {s: 10, n: 0, why_of: N1, set: {cue: "Glucose went from 310 to 250 in an hour on the insulin drip.", why: "시간당 60 정도 하락은 많은 프로토콜의 목표(시간당 50~75 mg/dL) 안이라 at a safe pace예요. 혈당이 기준치(보통 250)에 이르면 프로토콜대로 포도당을 더해 150~200 정도로 유지하고, 인슐린은 케톤이 없어질 때까지 계속해요."}}
+  - {s: 1, n: 0, why_of: N2, set: {cue: "Glucose read 300, then 240, then 185 on three hourly checks.", scale: [drifting down, falling steadily, dropping suddenly], answerAt: 1, why: "시간당 55~60씩 고르게 내려가면 falling steadily예요. drifting down은 아주 조금씩, dropping suddenly는 한 번에 크게 떨어질 때예요. 시간 순서로 이어 보면 치료 반응이 보여요."}}
+  - {s: 2, n: 0, why_of: N3, set: {cue: "Order: bolus the first liter in the first hour, then slow the rate.", scale: [slowly, moderately, quickly], answerAt: 2}}
+  - {s: 14, n: 0, why_of: N4, set: {cue: "His sodium and sugar are coming down as planned, and his alertness hasn't changed."}}
+  - {s: 7, n: 0, why_of: N5, set: {scale: [drifting down, falling steadily, dropping sharply]}}
+  - {s: 2, n: 1, why_of: N6, set: {word: lost, ko: "잃었다"}}
+  - s: 15
+    n: 1
+    why_of: N7
+    scenes:
+      1: {en: "I'm calling to escalate: he went from talking to barely responding."}
+      2: {en: "We need to escalate his level of care per rapid response criteria."}
+  - s: 11
+    n: 2
+    why_of: N8
+    set:
+      who: "가족에게 · 검사 이유"
+      ko: "이번 일을 일으켰을 수 있는 감염이 있는지 검사하고 있어요"
+      notes: {an infection: "가족이 이해하는 말로 무엇을 찾는지 전해져요.", an infectious etiology: "의료진끼리 쓰는 말이라 가족은 낯설어요.", a bacteremia: "혈류 감염이 확인된 것처럼 들려 아직 모르는 진단을 단정해요."}
+  - s: 14
+    n: 2
+    why_of: N9
+    set:
+      who: "가족에게 · 천천히 하는 이유"
+      options: [swelling in his brain, cerebral edema, intracranial hypertension]
+      answer: swelling in his brain
+      notes: {swelling in his brain: "가족이 이해하는 말로 위험의 이유를 전해요.", cerebral edema: "의료진끼리의 정확한 용어라 가족은 모를 수 있어요.", intracranial hypertension: "어려운 진단명이라 가족이 놀라고 이해하기 어려워요."}
+      why: "이유를 알아야 가족이 천천히 하는 치료를 이해하고 기다릴 수 있어요. 겁주지 말고 쉬운 말로 설명해요."
+  - {s: 2, n: 2, why_of: N10, notes_patch: {a volume expander: "수액을 가리키는 전문 용어라 환자는 무엇을 넣는지 알기 어려워요."}}
+  - {s: 12, n: 2, why_of: N11, notes_patch: {glucocorticoid: "호르몬 계열을 가리키는 전문 용어라 가족은 알아듣기 어려워요."}}
+  - {s: 20, n: 1, why_of: N12, set: {ko: "경과 알림"}}
+
+order:
+  - s: 1
+    why: "무엇을 얼마나 자주 재는지 알리고, 그 수치를 얻는 검사를 안내한 뒤, 최근 결과를 말하고, 그 결과가 뜻하는 바를 해석해요."
+    lines:
+      2: {en: "To get them, I'll do finger sticks and draw labs on schedule.", ko: "그 수치를 얻으려고 일정대로 손끝 혈당과 채혈을 해요", note: 검사, icon: lab}
+      3: {en: "The latest draw shows your ketone number coming down.", ko: "최근 채혈에서 케톤 수치가 내려가고 있어요", note: 결과, icon: chartup}
+      4: {en: "That means your treatment is working.", ko: "치료가 잘 되고 있다는 뜻이에요", note: 해석, icon: chartup}
+  - s: 2
+    lines:
+      4: {en: "Along with those numbers, tell me about any chest tightness or trouble breathing.", ko: "그 수치와 함께, 가슴이 답답하거나 숨쉬기 힘들면 말씀해 주세요", note: 알림}
+  - s: 3
+    why: "라인을 준비하고, 펌프를 맞춘 뒤, 그 설정을 두 사람이 각자 처방과 대조하고, 둘이 맞고 칼륨이 안전할 때 시작해요."
+    lines:
+      2: {en: "Once it's primed, I'll set the pump to the protocol rate.", ko: "프라이밍이 끝나면 펌프를 프로토콜 속도로 맞춰요", note: 설정, icon: monitor}
+      3: {en: "Before I start, let's each check those settings against the order.", ko: "시작 전에 그 설정을 처방과 각자 대조해요", note: "이중 확인", icon: check}
+      4: {en: "Once both checks match and potassium is confirmed safe, I'll start the infusion.", ko: "두 확인이 맞고 칼륨이 안전하면 주입을 시작할게요", note: 시작, icon: lab}
+  - s: 4
+    lines:
+      3: {en: "Since low is the danger, let's pull his chart for the last potassium.", ko: "낮은 게 위험하니까 차트에서 마지막 칼륨을 봐요", note: 확인}
+  - s: 5
+    why: "호전에 공감하고 재측정을 알린 뒤, 확인하려고 의식을 묻고, 맞게 답한 것과 측정 결과를 알리고, 그 호전을 기록·공유한다고 말해요."
+    lines:
+      3: {en: "You knew both, and your blood pressure and heart rate look steadier than before.", ko: "둘 다 맞히셨고, 혈압과 심박수도 전보다 안정적이에요", note: 결과}
+  - s: 8
+    why: "해결을 알리고, 전환의 조건인 식사를 먼저 확인한 뒤, 되면 전환을 계획하고, 그 전환은 겹쳐 주는 방법으로 해요."
+    lines:
+      2: {en: "With the DKA resolved, let me confirm he's eating before we change anything.", ko: "케토산증이 해결됐으니, 바꾸기 전에 식사가 되는지 확인할게요", note: 확인, icon: check}
+      3: {en: "If he is, we can plan the switch to subcutaneous insulin.", ko: "식사가 되면 피하 인슐린 전환을 계획할 수 있어요", note: 계획, icon: gear}
+      4: {en: "For that switch, we overlap the drip with the first long-acting dose before stopping.", ko: "그 전환을 위해 멈추기 전에 첫 지속형 용량과 겹쳐 줘요", note: 겹침, icon: pill}
+  - s: 9
+    lines:
+      3: {en: "Because of that brain risk, we'll watch her mental status closely.", ko: "그 뇌 위험 때문에 의식 상태를 자세히 지켜볼게요", note: 관찰}
+      4: {en: "So far, those checks show her confusion is starting to clear.", ko: "지금까지 그 확인에서 혼란이 나아지기 시작했어요", note: 호전}
+  - s: 10
+    why: "병용 시점을 말하고, 그 목적을 설명한 뒤, 그래도 너무 낮아지기 시작할 때의 조절을 알리고, 인슐린을 멈추지 말라고 당부해요."
+    lines:
+      3: {en: "If it starts getting too low anyway, I'll adjust both drips together.", ko: "그래도 너무 낮아지기 시작하면 두 주입을 같이 조절해요", note: 조절}
+  - s: 11
+    why: "원인을 찾는다고 알리고, 찾는 방법을 말한 뒤, 결과가 나오면 원인에 맞춘 치료를 설명하고, 재발 방지를 말해요."
+    lines:
+      3: {en: "Once those results come back, we'll aim the treatment at the cause.", ko: "결과가 나오면 원인에 맞춰 치료할게요", note: 치료}
+      4: {en: "Treating it that way helps keep this from coming back.", ko: "그렇게 치료하면 다시 생기는 걸 막는 데 도움이 돼요", note: 재발}
+  - s: 12
+    why: "왜 주는지 설명하고, 약의 효과를 알린 뒤, 반응이 보인다고 알리고, 그 반응이 약해질 때의 추가 투여 기준을 말해요."
+    lines:
+      3: {en: "Within the hour, his blood pressure is already responding to it.", ko: "한 시간 안에 혈압이 벌써 약에 반응하고 있어요", note: 반응, icon: chartup}
+      4: {en: "If that response fades, we'll give more as his stress level demands.", ko: "그 반응이 약해지면 필요에 따라 더 드릴게요", note: 추가, icon: monitor}
+  - s: 13
+    lines:
+      4: {en: "To confirm that improvement, we'll monitor her heart rate and temperature closely.", ko: "그 호전을 확인하려고 심박수와 체온을 자세히 지켜볼게요", note: 감시}
+  - s: 15
+    why: "변화를 말하고, 그 변화를 심각하다고 선언하며 팀을 부르고, 기다리는 동안 뇌를 지키는 처치를 한 뒤, 곁에서 그 결과를 의사에게 넘겨요."
+    lines:
+      1: {en: "He was talking a minute ago, and now he's barely responding.", ko: "방금 말씀하셨는데 지금은 거의 반응이 없어요", note: 변화, icon: siren}
+      2: {en: "This sudden change is serious, and I'm calling the team right now.", ko: "이 갑작스러운 변화는 심각해서 지금 바로 팀을 불러요", note: 호출, icon: siren}
+      3: {en: "I'm raising his head and rechecking his neuro status to protect his brain.", ko: "뇌를 지키려고 머리를 올리고 신경 상태를 다시 확인해요", note: 처치, icon: gear}
+      4: {en: "I'm staying at his side and will report those checks to the doctor.", ko: "곁에 있으면서 그 확인 결과를 의사에게 보고할게요", note: 보고, icon: me}
+  - s: 17
+    why: "판단을 말하고, 그 판단 그대로 전문의를 부르게 한 뒤, 도착을 기다리지 않고 스테로이드와 승압제를 시작하고, 둘 다 들어가면 반응을 봐요."
+    lines:
+      1: {en: "His pressure crashed suddenly — this looks like adrenal crisis.", ko: "혈압이 갑자기 떨어져서 부신위기 같아요", note: 판단, icon: chartup}
+      2: {en: "Call the intensivist and tell them exactly that.", ko: "중환자전문의를 불러서 그대로 전해 주세요", note: 호출, icon: siren}
+      3: {en: "Until they're here, let's push the stress-dose steroid and start a pressor.", ko: "오기 전까지 스트레스 용량 스테로이드를 주고 승압제를 시작해요", note: 처치, icon: siren}
+      4: {en: "Once both are going, his pressure should start to respond.", ko: "둘 다 들어가면 혈압이 반응하기 시작할 거예요", note: 반응, icon: chartup}
+  - s: 19
+    why: "증상으로 위중함을 알리고, 그래서 치료가 급하다고 말하고, 호르몬이 필요한 이유를 설명한 뒤, 그래서 지금 하는 치료를 알려요."
+    lines:
+      3: {en: "Her body needs thyroid hormone to wake back up and warm up safely.", ko: "몸이 깨어나고 안전하게 따뜻해지려면 호르몬이 필요해요", note: 이유, icon: pill}
+      4: {en: "So we're giving it now, along with gentle warming and support.", ko: "그래서 지금 드리면서 천천히 따뜻하게 하고 지지해요", note: 치료, icon: pill}
+  - s: 20
+    lines:
+      2: {en: "It's mainly his kidneys and lungs, so we've called in extra specialists.", ko: "주로 콩팥과 폐라서 전문의를 추가로 불렀어요", note: 호출}
+      4: {en: "Even when those updates are hard, I'll give them to you honestly.", ko: "그 소식이 힘들어도 솔직하게 전해 드릴게요", note: 정직}

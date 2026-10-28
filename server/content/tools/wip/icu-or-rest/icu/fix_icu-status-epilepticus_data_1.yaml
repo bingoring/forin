@@ -37,12 +37,12 @@ sentence_rewrites:
       - "다행이에요. 발작하는 동안에는 아마 아무것도 의식하지 못하셨을 거예요."
     blank: {answer: aware, wrong: [proud, ashamed, jealous]}
 chunk_fixes:
-  - {sit: 발작 관찰·시간 기록, en: "I'll write down how long it lasts and how his body moves.", chunks: ["I'll write down", "how long it lasts", "and how his body moves", "."]}
+  - {sit: 발작 관찰·시간 기록, en: "I'll write down how long it lasts and how his body moves.", chunks: ["I'll write down", "how long it lasts", "and", "how his body moves", "."]}
   - {sit: 발작 중 기도·안전 확보, en: "I'll keep the airway open and never force anything between his teeth.", chunks: ["I'll keep", "the airway open", "and never force anything", "between his teeth", "."]}
-  - {sit: 활력·산소 감시, en: "His oxygen saturation is ninety-two percent and holding steady.", chunks: ["His oxygen saturation", "is ninety-two percent", "and holding steady", "."]}
-  - {sit: 항경련제 혈중농도·부작용, en: "No new side effects since we adjusted the dose.", chunks: ["No new side effects", "since we adjusted", "the dose", "."]}
-  - {sit: 비경련성 SE 인지, en: "He looks calm, but that doesn't rule out a hidden seizure.", chunks: ["He looks calm,", "but that doesn't rule out", "a hidden seizure", "."]}
-  - {sit: 발작 중 심한 저산소·서맥 위기, en: "His heart rate is dropping fast while he's still seizing.", chunks: ["His heart rate", "is dropping fast", "while he's still seizing", "."]}
+  - {sit: 활력·산소 감시, en: "His oxygen saturation is ninety-two percent and holding steady.", chunks: ["His oxygen saturation", "is ninety-two percent", "and", "holding steady", "."]}
+  - {sit: 항경련제 혈중농도·부작용, en: "No new side effects since we adjusted the dose.", chunks: ["No new side effects", "since", "we adjusted", "the dose", "."]}
+  - {sit: 비경련성 SE 인지, en: "He looks calm, but that doesn't rule out a hidden seizure.", chunks: ["He looks calm,", "but that", "doesn't rule out", "a hidden seizure", "."]}
+  - {sit: 발작 중 심한 저산소·서맥 위기, en: "His heart rate is dropping fast while he's still seizing.", chunks: ["His heart rate", "is dropping fast", "while", "he's still seizing", "."]}
 kp_ko:
   - sit: 비경련성 SE 인지
     en: "Let's get an urgent EEG to check his brain activity."
@@ -76,7 +76,7 @@ word_set:
     ko: "(물건 없이) 비워 둔"
     cue: 침대 둘레에 부딪힐 만한 물건이 하나도 없이 비워진 상태
     distractorsEn: [close, clever]
-    distractorsKo: [붐비는, 어질러진]
+    distractorsKo: [물건이 가득한, 어질러져 있는]
   w-thank: {cue: 발작을 보자마자 간호사를 불러 준 보호자에게 고마움을 전하는 동사}
   w-trigger: {cue: 발작 같은 일이 방아쇠를 당기듯 터지게 만드는 동사}
   w-target: {cue: 치료가 이르러야 할 수준을 겨냥해 정하는 동사}

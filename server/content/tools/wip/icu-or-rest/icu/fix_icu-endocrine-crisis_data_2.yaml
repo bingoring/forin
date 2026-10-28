@@ -1,0 +1,136 @@
+# 문장 patch — A(문장 en·ko·chunks, KP ko, 태그) + B(why·decoy·blank·icon). 키 = 상황.문장(0부터).
+# old = 고치기 전 en(위치 확인용, 스크립트가 pre-fix와 대조한다). 있는 필드만 덮어쓴다.
+# words_add / words_remove 는 태그만 더하고 뺀다. KP 문장(en·chunks 불변)은 ko·why·태그·v46 필드만.
+sent:
+  # --- A 문장 (KP 아님) ---
+  "18.3":
+    old: "He was drowsy and now he's completely unresponsive, so his sugar must be critically low."
+    en: "He was drowsy and now he's completely unresponsive, so his sugar may be critically low."
+    ko: "졸려하시더니 지금은 아예 반응이 없으셔서, 혈당이 위험할 정도로 낮을 수 있어요."
+    chunks: ["He was drowsy", "and now he's completely unresponsive,", "so his sugar may be", "critically low", "."]
+    why: "'may be'는 확인 전의 추정이라 바로 혈당부터 재서 확인한다는 뜻이에요. 'drowsy'에서 'completely unresponsive'로 의식이 나빠진 경과가 그대로 보여요."
+    blank: {answer: drowsy, options: [drowsy, itchy, cheerful, constipated]}
+  "8.4":
+    old: "Once he's tolerating food, we'll switch him to his home insulin."
+    en: "Once he's tolerating food, I'll ask the team about switching him to his home insulin."
+    ko: "식사를 잘 견디시면, 평소 쓰시던 인슐린으로 바꿀지 팀에 물어볼게요."
+    chunks: ["Once he's tolerating food,", "I'll ask the team", "about switching him", "to his home insulin", "."]
+    words: [w-tolerate, w-ask, w-switch, w-insulin]
+    tag: "전환 문의"
+    icon: speech
+    why: "'ask the team about'은 전환을 정하는 쪽에 먼저 묻겠다는 뜻이라 간호사 몫을 넘지 않아요. 'Once'가 조건(식사를 견딤)을 앞에 세워 시점을 분명히 해요."
+    blank: {answer: switching, options: [switching, walking, carrying, mailing]}
+  "6.3":
+    old: "We're following the sliding scale exactly as ordered."
+    en: "We're following the insulin protocol exactly as ordered."
+    ko: "처방된 대로 인슐린 프로토콜을 정확히 따르고 있어요."
+    chunks: ["We're following", "the insulin protocol", "exactly as ordered", "."]
+    words: [w-follow, w-insulin, w-protocol, w-order]
+    why: "'exactly as ordered'는 처방에서 벗어나지 않는다는 뜻이라 환자·가족이 안심해요. 'the insulin protocol'은 혈당에 맞춰 속도를 조정하는 병원의 주입 절차를 가리켜요."
+    blank: {answer: following, options: [following, rewriting, deleting, hiding]}
+  "9.3":
+    old: "Correcting her sodium too quickly could cause brain swelling, so we go slowly."
+    en: "Correcting her sugar and sodium too quickly could cause brain swelling, so we go slowly."
+    ko: "혈당이랑 나트륨을 너무 빨리 교정하면 뇌부종이 생길 수 있어서, 천천히 하고 있어요."
+    chunks: ["Correcting her sugar and sodium", "too quickly", "could cause brain swelling,", "so we go slowly", "."]
+    words: [w-correct, w-sugar, w-sodium, w-quickly, w-cause, w-brain, w-swell, w-slow]
+  "14.3":
+    old: "If we correct him too fast, the swelling risk goes up."
+    en: "If we correct his numbers too fast, the swelling risk goes up."
+    ko: "수치를 너무 빠르게 교정하면 부종 위험이 올라가요."
+    chunks: ["If we correct his numbers", "too fast,", "the swelling risk", "goes up", "."]
+    words: [w-correct, w-fast, w-swell, w-risk, w-number]
+  "17.3":
+    old: "His pressure crashed suddenly, so this looks like true adrenal crisis."
+    en: "His pressure crashed suddenly, so this looks like a true adrenal crisis."
+    chunks: ["His pressure crashed suddenly,", "so this looks like", "a true adrenal crisis", "."]
+  "17.4":
+    old: "The pressor is titrating up, and his pressure is starting to respond."
+    en: "We're titrating the pressor up, and his pressure is starting to respond."
+    chunks: ["We're titrating the pressor up,", "and his pressure", "is starting", "to respond", "."]
+  # --- A chunks만 (en·ko 그대로, 구 경계) ---
+  "0.3":
+    old: "I'll ask you a few questions to check how alert you are."
+    chunks: ["I'll ask you", "a few questions", "to check", "how alert you are", "."]
+  "3.3":
+    old: "Pump's set to the protocol rate, ready to go."
+    chunks: ["Pump's set", "to the protocol rate,", "ready to go", "."]
+  "4.4":
+    old: "If potassium comes back low, I'll get the replacement ordered right away."
+    chunks: ["If potassium comes back low,", "I'll get the replacement ordered", "right away", "."]
+  "5.4":
+    old: "I'm charting these improvements and letting the team know."
+    chunks: ["I'm charting", "these improvements", "and letting the team know", "."]
+  "13.4":
+    old: "As the hormone takes effect, her energy and temperature should slowly improve."
+    chunks: ["As the hormone takes effect,", "her energy and temperature", "should slowly improve", "."]
+    words_remove: [w-take]
+  "15.4":
+    old: "The doctor is on the way, and I'm staying right at his side."
+    chunks: ["The doctor is on the way,", "and I'm staying", "right at his side", "."]
+    blank: {answer: side, options: [side, desk, locker, car]}
+  "19.3":
+    old: "She won't respond and she feels ice cold, so this is critical."
+    chunks: ["She won't respond", "and she feels ice cold,", "so this is critical", "."]
+  # --- KP 문장: ko만 (en·chunks 불변) ---
+  "0.1":
+    old: "Have you been able to keep any fluids down today?"
+    ko: "오늘 물이나 음료를 토하지 않고 넘기실 수 있었어요?"
+    words_remove: [w-keep]
+  "6.1":
+    old: "Bringing it down too fast can be risky, so we titrate carefully."
+    ko: "너무 빨리 내리면 위험할 수 있어서, 조심스럽게 조금씩 맞추고 있어요."
+    why: "'can be'는 가능성을 말해 겁주지 않으면서 조심할 이유를 줘요. 'titrate'는 반응을 보며 용량을 조절한다는 임상 동사예요."
+  "8.0":
+    old: "The gap has closed, so we can plan the switch to subcutaneous insulin."
+    ko: "음이온차가 정상으로 돌아와서, 이제 피하 인슐린으로 전환할 계획을 세울 수 있어요."
+    why: "'so'로 근거(음이온차가 정상으로 돌아옴)와 결론(전환 계획)을 이었어요. 'plan the switch'는 당장 바꾸는 게 아니라 계획한다는 뜻이에요."
+  "12.2":
+    old: "We'll keep monitoring and give more if his stress level demands it."
+    ko: "계속 지켜보다가 몸이 받는 스트레스가 커지면 더 드릴 거예요."
+  "20.2":
+    old: "We're escalating his care and staying right at his bedside."
+    ko: "치료 단계를 올리면서 침상 곁에 계속 있을게요."
+  "14.1":
+    old: "A slow, steady pace is actually the safest way to help him."
+    ko: "천천히, 꾸준히 가는 것이 사실 가장 안전하게 도와드리는 방법이에요."
+  # --- 태그만 (결정 11) ---
+  "7.3": {old: "Potassium's back to normal, so we're clear to keep the drip going.", words_remove: [w-clear]}
+  "10.1": {old: "This lets us keep clearing the ketones without dropping too low.", words_remove: [w-clear]}
+  "10.4": {old: "We're still clearing the ketones, so don't stop the insulin yet.", words_remove: [w-clear]}
+  "20.1": {old: "I'll give you a clear update as each specialist weighs in.", words_remove: [w-clear]}
+  "13.3": {old: "Her heart rate is very slow, so we're watching her closely on the monitor.", words_remove: [w-monitor]}
+  # --- B: why / icon ---
+  "3.1":
+    old: "Let's double-check the concentration and pump settings together."
+    why: "Let's로 동료에게 확인을 청해요. 인슐린은 고위험 약이라 농도와 펌프 설정을 두 사람이 각자 따로 맞춰 보는 게 원칙이에요."
+  "19.4":
+    old: "Her body needs the thyroid hormone to wake back up and warm up safely."
+    icon: pill
+  # --- B: decoy (처치를 늦추거나 호출 대상·감시를 바꾸는 조각 → 장소·물건 조각) ---
+  "0.4": {old: "I'm seeing early signs of DKA, so I'll report this to the team right away.", decoy: "on the lunch tray"}
+  "3.2": {old: "I'll start the infusion once potassium is confirmed safe.", decoy: "the call light"}
+  "4.2": {old: "If it's low, we'll replace potassium before starting the drip.", decoy: "at the nurses' station"}
+  "7.2": {old: "I'll draw a repeat level after the replacement to confirm.", decoy: "by the elevator"}
+  "7.4": {old: "If it drops again, we'll pause the insulin and recheck.", decoy: "on the clipboard"}
+  "8.1": {old: "We overlap the drip with the first long-acting dose before stopping.", decoy: "on the bulletin board"}
+  "10.2": {old: "I'll recheck the glucose and adjust both drips together.", decoy: "by the sink"}
+  "10.4": {old: "We're still clearing the ketones, so don't stop the insulin yet.", decoy: "for the visitors"}
+  "13.2": {old: "We'll monitor her heart rate and temperature very closely.", decoy: "in the hallway"}
+  "15.3": {old: "He was talking a minute ago and now he's barely responding, so I'm escalating this now.", decoy: "the meal tray"}
+  "16.2": {old: "We're cooling her and watching her heart continuously.", decoy: "at the bus stop"}
+  "0.5": {old: "I'm right here with you, so try to stay calm.", decoy: "on the menu"}
+  "1.4": {old: "Your ketone number is coming down, which means the treatment is working.", decoy: "the IV pole"}
+  "3.1b": {old: "Let's double-check the concentration and pump settings together.", decoy: "at the gift shop"}
+  "5.1": {old: "Can you tell me your name and where you are for me?", decoy: "your lunch tray", blank: {answer: tell, options: [tell, ask, show, send]}}
+  "11.4": {old: "Once we know the cause, we can treat it and lower the risk of this happening again.", decoy: "at the front desk"}
+  "12.1": {old: "This steroid can quickly stabilize his blood pressure.", decoy: "his lunch tray"}
+  # 13.3 은 위 태그 항목과 같은 문장이라 아래에서 decoy만 따로
+  "13.3b": {old: "Her heart rate is very slow, so we're watching her closely on the monitor.", decoy: "on the radio"}
+  # --- B: 빈칸 ---
+  "4.0": {old: "We hold insulin until potassium is safe, so let's confirm the level first.", blank: {answer: first, options: [first, monthly, slowly, quietly]}}
+  "14.0": {old: "Correcting too quickly can cause dangerous brain swelling.", blank: {answer: dangerous, options: [dangerous, famous, minor, fancy]}}
+  "18.4": {old: "His sugar's coming up, so let's stay by him and recheck it shortly.", blank: {answer: shortly, options: [shortly, yearly, rarely, weekly]}}
+  "20.3": {old: "His kidneys and lungs are both under strain, so we've called in extra specialists.", blank: {answer: extra, options: [extra, former, retired, junior]}}
+  "11.0": {old: "We're looking for a trigger like an infection and treating it alongside the DKA.", blank: {answer: trigger, options: [trigger, symptom, reaction, result]}}
+  "2.1": {old: "I'll keep watching your blood pressure and urine as the fluids go in.", blank: {answer: urine, options: [urine, appetite, mood, hearing]}}

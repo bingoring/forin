@@ -1,0 +1,109 @@
+# 단어 patch — A 결정 11(ko·cue·헤드워드·오답·태그), 품사 표 ★, 불쾌한 조각. id는 'w-' 뒤만 적는다.
+# set = 덮어쓸 최종 값. dEn = 오답 영어 교체(옛 → 새), decoy = decoyChips 교체(옛 → 새).
+words:
+  clear:
+    set: {distractorsEn: [clean, clever], decoyChips: [clan]}
+  keep:
+    set:
+      example: "I'll keep watching your blood pressure and urine as the fluids go in."
+      exKo: "수액이 들어가는 동안 혈압이랑 소변량을 계속 지켜볼게요."
+  cause:
+    set:
+      ko: "원인(이 되다)"
+      cue: "어떤 일의 까닭이 되거나 그 일을 일으킬 때"
+      distractorsKo: ["결과(가 되다)", "증상(이 나타나다)"]
+  monitor:
+    set: {distractorsEn: [mentor, muster]}
+  escalate:
+    set:
+      ko: "(상급에) 올리다"
+      cue: "혼자 해결하지 않고 윗선에 알리거나 치료 단계를 한 칸 올릴 때"
+      distractorsKo: ["(뒤로) 미루다", "(혼자) 처리하다"]
+  look:
+    set:
+      en: "look for"
+      ipa: "/lʊk fɔːr/"
+      chips: [[look], [for]]
+      distractorsEn: [look after, look over]
+      decoyChips: [lock, fur]
+  weigh:
+    set:
+      en: "weigh in"
+      ipa: "/weɪ ɪn/"
+      chips: [[weigh], ["in"]]
+      distractorsEn: [weigh on, wait in]
+      decoyChips: [weight]
+  fluid:
+    set: {ko: "수분·수액"}
+  steady:
+    set: {ko: "일정한·꾸준한"}
+  first:
+    set: {ko: "먼저·처음"}
+  take:
+    set:
+      ko: "(시간을) 들이다"
+      cue: "서두르지 않고 시간을 충분히 써서 할 때"
+      distractorsKo: ["(시간을) 줄이다", "(시간을) 재다"]
+  sign:
+    set: {ko: "징후·신호"}
+  bring:
+    set: {distractorsKo: [붙잡다, 흘려보내다], distractorsEn: [bind, brim]}
+  run:
+    set: {distractorsKo: ["새고 있는 중이다", "닫혀 있는 상태"], distractorsEn: [rub, ruin]}
+  update:
+    set: {ko: "경과를 알리다"}
+  pressor:
+    set: {ko: "승압제(줄임말)", distractorsKo: ["이뇨제(줄임말)", "진정제(줄임말)"]}
+  vasopressor:
+    set: {ko: "혈관수축제"}
+  concentrate:
+    set: {ko: "농축된", distractorsKo: [오염된, 수축된]}
+  work:
+    set: {distractorsKo: ["내성이 생기다", "부작용이 나다"]}
+  gap:
+    set: {distractorsKo: ["삼투압 간극", "폐포-동맥 산소차"]}
+  sodium:
+    set: {decoyChips: [sol, sum]}
+  urine:
+    set: {distractorsEn: [urea, urge]}
+  stat:
+    set: {ko: "즉시 시행의", distractorsKo: ["정기 시행의", "보류 지시의"]}
+  sudden:
+    set: {ko: "갑작스러운(갑자기)", distractorsKo: ["서서히 오는(서서히)", "변함없는(그대로)"]}
+# 품사 표 ★ — 오답 영어 교체
+dEn:
+  check: {cheek: chuck}
+  alert: {alarm: inert, alter: alike}
+  fluid: {fluent: flux}
+  safe: {save: same}
+  tell: {tall: yell}
+  work: {word: worry}
+  move: {mode: mold}
+  mean: {meal: lean}
+  pressure: {preserve: posture}
+  trouble: {tremble: rubble}
+  pump: {plump: plume}
+  hold: {hole: hone}
+  pull: {pill: poll, pool: peel}
+  heart: {heard: heat}
+  pace: {pale: pact}
+  stable: {table: able}
+  affect: {effect: infect}
+  effect: {affect: defect}
+  mental: {metal: menial}
+  treat: {trait: cheat}
+  give: {gift: live}
+  temperature: {temporary: temperance}
+  warm: {worm: swarm}
+  fever: {fewer: fervor}
+  adrenal: {adenoid: atrial}
+  blood: {blond: brood}
+# 불쾌·판단 조각 — decoyChips 교체 (dangerous 는 dan 이 정답 조각이라 dim 으로)
+decoy:
+  protocol: {pot: pod}
+  potassium: {pot: pat}
+  dangerous: {dam: dim}
+  number: {bar: bur}
+  recheck: {rye: rue}
+  mean: {moan: mown}
+  hormone: {moan: mode}

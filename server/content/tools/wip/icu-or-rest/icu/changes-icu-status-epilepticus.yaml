@@ -368,3 +368,136 @@ changes:
   fields:
   - words
   why: '쉬운 단어 태그 뺌: w-family'
+- kind: word-add
+  id: w-update
+  why: 20.3을 '아무것도 숨기지 않겠다'에서 계속 알리겠다로 고치며 쓰는 말 — 문장 20.3에 있다
+- kind: word-remove
+  id: w-get
+  why: 너무 쉬운 말이고 ko '받다'가 어느 쓰임에도 맞지 않음 — 태그를 빼고 지움
+- kind: word-remove
+  id: w-hide
+  why: 20.3 문장 고침으로 어느 문장도 태그하지 않게 됨
+- kind: word-remove
+  id: w-whatever
+  why: 20.4 문장 고침으로 어느 문장도 태그하지 않게 됨
+- kind: word
+  id: w-clear
+  fields:
+  - ko
+  why: 형용사로 쓰인 clear라 ko·cue가 동사(치우다)여서 맞지 않고 '치우다'가 오답 clean에도 맞아 정답이 둘이 됨
+- kind: word
+  id: w-during
+  fields:
+  - example
+  why: 문장 5.3을 고쳐 예문도 새 문장으로
+- kind: word
+  id: w-hear
+  fields:
+  - example
+  why: 문장 20.3을 고쳐 예문도 새 문장으로
+- kind: sentence
+  situation: 발작 관찰·시간 기록
+  index: 4
+  fields:
+  - chunks
+  why: 구 경계에서 다시 자름(복합명사·동사구를 끊지 않게)
+- kind: sentence
+  situation: 발작 중 기도·안전 확보
+  index: 4
+  fields:
+  - chunks
+  why: 구 경계에서 다시 자름(복합명사·동사구를 끊지 않게)
+- kind: sentence
+  situation: 활력·산소 감시
+  index: 3
+  fields:
+  - chunks
+  why: 구 경계에서 다시 자름(복합명사·동사구를 끊지 않게)
+- kind: sentence
+  situation: 발작 후 상태 사정
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 간호사가 확인할 수 없는 '통증이 없었다' 단정을 '아마 의식하지 못했을 것'으로
+- kind: sentence
+  situation: 항경련제 혈중농도·부작용
+  index: 4
+  fields:
+  - chunks
+  why: 구 경계에서 다시 자름(복합명사·동사구를 끊지 않게)
+- kind: sentence
+  situation: 비경련성 SE 인지
+  index: 1
+  fields:
+  - ko
+  - words
+  why: 'ko: 검사를 받는 쪽은 환자라 동료에게 하는 말로 어색함 / words: w-get 태그 뺌(은행에서 지움)'
+- kind: sentence
+  situation: 비경련성 SE 인지
+  index: 3
+  fields:
+  - chunks
+  why: 구 경계에서 다시 자름(복합명사·동사구를 끊지 않게)
+- kind: sentence
+  situation: 비경련성 SE 인지
+  index: 4
+  fields:
+  - words
+  why: w-get 태그 뺌 — 너무 쉬운 말이고 ko 받다가 이 쓰임에 맞지 않아 은행에서 지움
+- kind: sentence
+  situation: 발작 중 심한 저산소·서맥 위기
+  index: 0
+  fields:
+  - words
+  why: w-open 태그 뺌 — 여기 Open은 명령형 동사라 ko 열린과 맞지 않음(문장은 그대로)
+- kind: sentence
+  situation: 발작 중 심한 저산소·서맥 위기
+  index: 3
+  fields:
+  - chunks
+  why: 구 경계에서 다시 자름(복합명사·동사구를 끊지 않게)
+- kind: sentence
+  situation: 발작 중 심한 저산소·서맥 위기
+  index: 4
+  fields:
+  - words
+  why: w-get 태그 뺌 — 너무 쉬운 말이고 ko 받다가 이 쓰임에 맞지 않아 은행에서 지움
+- kind: sentence
+  situation: 발작 후 뇌부종·ICP 위기
+  index: 0
+  fields:
+  - words
+  why: w-pressure 태그 뺌 — 여기 pressure는 뇌압이라 ko 혈압과 맞지 않음
+- kind: sentence
+  situation: 발작 후 뇌부종·ICP 위기
+  index: 2
+  fields:
+  - words
+  why: w-get 태그 뺌 — 너무 쉬운 말이고 ko 받다가 이 쓰임에 맞지 않아 은행에서 지움
+- kind: sentence
+  situation: 발작 후 뇌부종·ICP 위기
+  index: 3
+  fields:
+  - words
+  why: w-pressure 태그 뺌 — 여기 pressure는 뇌압이라 ko 혈압과 맞지 않음
+- kind: sentence
+  situation: 지속 SE 예후·목표 소통
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: '''아무것도 숨기지 않겠다''는 지킬 수 없는 절대 약속 — 새 소식을 계속 알리겠다는 지킬 수 있는 약속으로'
+- kind: sentence
+  situation: 지속 SE 예후·목표 소통
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 결정의 기준은 환자의 가치 — 가족이 원하는 것은 무엇이든 지지한다는 약속을 고침

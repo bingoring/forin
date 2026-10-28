@@ -73,10 +73,15 @@ for r in D1['nuance']:
 def find(sit,en): return sent(sit,en)
 for r in D2['dk']:
     x=find(r['sit'],r['en']); x['distractorsKo'][r['k']]=r['v']
+REWR={r['old_en'] for r in D1['sentence_rewrites']}
 for r in D2['blank']:
+    if r['en'] in REWR: continue   # A가 고친 문장은 위에서 새 blank를 씀
     x=find(r['sit'],r['en'])
     if x['blank']['answer']!=r['answer']: x['blank']['answer']=r['answer']
     x['blank']['options']=[{'en':r['answer']}]+[{'en':o} for o in r['wrong']]
+BLANK_OVR={(0,1):['room','temperature','cost'],(3,0):['weight','appetite','bowels'],(16,2):['location','volume','scheduling'],(2,2):['remotely','blindly','nightly'],(4,0):['fasting','routine','monthly'],(3,2):['drainage','feeding','traction'],(9,1):['transfusions','vaccines','antibiotics'],(11,1):['thirst','coughing','sneezing'],(19,1):['count','pay','chart'],(5,0):['thirsty','feverish','itchy'],(8,1):['unrelated','secondary','minor'],(12,0):['itching','sneezing','hospitalization'],(15,1):['dietary','wound','financial']}
+for (i,j),w in BLANK_OVR.items():
+    x=d['situations'][i]['sentences'][j]; a=x['blank']['answer']; x['blank']['options']=[{'en':a}]+[{'en':o} for o in w]
 decoy={('2.1'):'the visitors','6.1':'with the family','6.2':'in the hallway','10.1':'the paperwork','12.2':'in the drawer','17.2':'on the menu'}
 def byidx(i,j): return d['situations'][i]['sentences'][j]
 # 문장 위치는 pre 기준 (en으로 확인)
@@ -93,12 +98,12 @@ def why2(x,new):   # 둘째 문장만 바꿈
     first=x['why'].split('요. ',1)[0]+'요.'; x['why']=first+' '+new
 P(11,3,'His level')['why']="'came back'으로 결과가 막 나왔음을 알리고, 'within … range'로 판단까지 한 번에 전해 듣는 쪽이 다시 묻지 않게 해요."
 P(14,2,'The neuro team')['why']="'with us'를 끝에 붙여, 다른 팀에 넘기는 게 아니라 함께 간다는 인상을 줘요."
-why2(P(15,1,'This requires'),"'requires'로 선택이 아니라 조건임을 분명히 해, 왜 삽관이 먼저인지 받아들이게 해요.")
+P(15,1,'This requires')['why']="'requires'는 꼭 해야 하는 것을 단정하듯 알려 줘요. 선택이 아니라 조건임을 분명히 해서, 왜 기도확보가 먼저인지 듣는 쪽이 받아들이게 해요."
 P(16,2,'The neuro team')['why']="'will guide'로 깊이와 기간은 신경과가 정한다고 말해, 간호사가 답할 수 없는 질문을 정중히 넘겨요."
 why2(P(16,3,'His pressure'),"'stayed stable'을 앞에 두어 듣는 쪽이 결과부터 듣고 안심하게 해요.")
-why2(P(16,4,"We'll add"),"조건을 'if' 절로 뒤에 두어, 지금 당장 추가하는 게 아니라는 점이 먼저 들려요.")
-why2(P(17,3,'His heart'),"'while he's still seizing'을 끝에 붙여, 서맥과 발작이 동시에 진행 중이라 둘 다 지금 대응해야 함을 강조해요.")
-why2(P(19,3,'His pressure'),"'right after we deepened'로 의심되는 처치와 시점을 함께 보고해, 팀이 바로 주입을 다시 보게 해요.")
+P(16,4,"We'll add")['why']="'We'll add a third agent'를 먼저 말해 계획을 알리고, 'if' 절을 뒤에 두어 지금 당장 추가하는 게 아니라 결과에 달렸다는 점이 이어서 들려요."
+P(17,3,'His heart')['why']="'dropping fast'는 빠르게 떨어진다는 위험 신호예요. 'while he's still seizing'을 끝에 붙여, 서맥과 발작이 동시에 진행 중이라 둘 다 지금 대응해야 함을 강조해요."
+P(19,3,'His pressure')['why']="'dropped fast'는 빠른 하강을 알리고, 'right after we deepened'로 의심되는 처치와 시점을 함께 보고해 팀이 바로 주입을 다시 보게 해요."
 # order
 def L(en,icon,ko,note): return {'en':en,'icon':icon,'ko':ko,'note':note}
 def setline(i,k,en,ko,icon=None,note=None):
@@ -162,7 +167,8 @@ for c in new:
         t,i=c['situation'],c['index']
         if '뇌부종' in t and i in (0,3): c['why']='w-pressure 태그 뺌 — 여기 pressure는 뇌압이라 ko 혈압과 맞지 않음'
         elif '저산소' in t and i==0: c['why']='w-open 태그 뺌 — 여기 Open은 명령형 동사라 ko 열린과 맞지 않음(문장은 그대로)'
-        elif i in (1,4) or True and any(True for _ in [0]): pass
+        else: c['why']='w-get 태그 뺌 — 너무 쉬운 말이고 ko 받다가 이 쓰임에 맞지 않아 은행에서 지움'
+    elif c['kind']=='sentence' and c['fields']==['ko','words']: c['why']='ko: 검사를 받는 쪽은 환자라 동료에게 하는 말로 어색함 / words: w-get 태그 뺌(은행에서 지움)'
 chg['changes']=list(chg['changes'])+new
 yaml.safe_dump(chg,open(f'changes-{T}.yaml','w'),allow_unicode=True,sort_keys=False,width=1000)
 print('changes added',len(new))

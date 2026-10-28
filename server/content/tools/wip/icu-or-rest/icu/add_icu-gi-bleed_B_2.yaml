@@ -1,0 +1,58 @@
+situations:
+- title: 대구경 정맥로 확보 협조
+  s:
+  - ["물품 준비", gear, "'I'll grab'은 일상적인 구어체 동사라 급한 와중에도 부담 없이 역할을 알려요. 'two'로 수를 먼저 말해 동료가 준비를 맞춰요.", "for the pharmacy", "대구경 카테터 두 개랑 장갑 가져올게요.", "대구경 카테터 두 개랑 지혈대 가져올게요.", "large-bore", "small-bore", "pediatric", "midline"]
+  - ["역할 분담", handshake2, "'You take… I'll take…'의 대구 구조로 두 사람의 몫이 한눈에 갈려요. 'the left'처럼 앞 명사를 줄여 빠르게 말해요.", "from the cart", "오른팔은 선생님이, 왼팔은 제가 소독할게요.", "오른팔은 선생님이, 왼팔은 제가 묶죠.", "arm", "leg", "foot", "hip"]
+  - ["동시 채혈", lab, "'Let's have…'는 함께 준비하자는 제안형이라 지시처럼 들리지 않아요. 'ready to draw'로 목적까지 한 번에 말해요.", "in the sink", "소변컵도 동시에 받을 수 있게 준비해 두죠.", "수액도 동시에 연결할 수 있게 준비해 두죠.", "draw", "spin", "freeze", "mix"]
+  - ["이유 설명", bulb, "'much faster than'은 비교로 이유를 보여 줘서 왜 두 개를 잡는지 이해시켜요. 'one small one'의 반복되는 one이 짝을 이루게 해요.", "with a pump", "대구경 라인 두 개면 작은 라인 하나보다 수액이 훨씬 깨끗이 들어가요.", "대구경 라인 두 개면 작은 라인 하나보다 수액이 훨씬 안전해요.", "faster", "slower", "cleaner", "quieter"]
+  - ["오류 방지", shield, "'so the lab doesn't…'로 이름표를 붙이는 이유를 같은 문장에 넣어요. 'mix up'은 헷갈려 바뀐다는 뜻의 구동사예요.", "for the pharmacy", "검사실에서 헷갈리지 않게 튜브를 따로 담을게요.", "검사실로 바로 보낼 수 있게 튜브를 봉투에 넣을게요.", "label", "spin", "shake", "chill"]
+  - ["시술 알림", pushpin, "'Tourniquet's on'은 주어를 줄인 짧은 상황 보고예요. 곧 찌른다는 걸 'I'm going in'으로 미리 알려요.", "to the left", "소독했어요, 지금 들어갈게요.", "지혈대 채웠어요, 지금 소독할게요.", "going", "coming", "reaching", "looking"]
+  - ["성공 확인", check, "'Good stick'은 한 번에 성공했다는 현장 표현이에요. 'flash'는 카테터 안으로 피가 비치는 것을 가리켜요.", "in the line", "잘 들어갔어요, 수액이 세게 흘러가네요.", "잘 들어갔어요, 이제 지혈대 풀게요.", "flash", "leak", "clot", "stain"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 정맥로 확보 협조 4문장 순서
+    why: 물품을 챙기고, 지혈대를 맨 채 찌르고, 성공을 확인한 뒤, 그 라인으로 채혈한 튜브에 이름표를 붙여요.
+    lines:
+    - ["I'll grab two large-bore catheters and the fluids.", gear, "대구경 카테터 두 개랑 수액 가져올게요", "준비"]
+    - ["With those in hand, tourniquet's on and I'm going in.", pushpin, "그걸 들고 지혈대 채우고 들어갈게요", "시술"]
+    - ["Good stick, I've got a strong flash of blood.", check, "잘 들어갔어요, 피가 세게 역류하네요", "확인"]
+    - ["It's in, so I'll draw the tubes and label them right here.", lab, "들어갔으니 튜브를 뽑아서 여기서 이름표를 붙일게요", "채혈"]
+- title: 수혈 준비·교차시험
+  s:
+  - ["절차 보고", board, "'is drawn and sent'는 수동태라 누가 했는지보다 끝난 절차 자체를 알려요. 'blood bank'는 혈액을 관리하는 곳을 가리키는 고정 표현이에요.", "to the ward", "혈액형·교차시험 검체는 채혈해서 라벨을 붙였어요.", "혈액형·교차시험 검체는 채혈해서 혈액은행에서 받았어요.", "blood bank", "pharmacy", "radiology", "registration"]
+  - ["장비 준비", gear, "'get … ready'는 미리 갖춰 둔다는 뜻이라 곧 있을 일을 알리는 말이에요. 두 물품을 and로 한 번에 묶어요.", "at the desk", "수혈 튜빙이랑 혈압대를 준비해 둘게요.", "수혈 튜빙이랑 펌프를 준비해 둘게요.", "warmer", "freezer", "shaker", "centrifuge"]
+  - ["동의 확인", check, "'Let's'로 함께 확인하자고 하면 서로 점검한다는 느낌이 들어요. 'now'는 시작 전 마지막 단계라는 신호예요.", "at the desk", "동의서랑 팔찌 가져오고 이제 시작하죠.", "동의서랑 팔찌 확인하고 이제 손 씻죠.", "consent", "diet", "insurance", "visitors"]
+  - ["신원 확인", stetho, "'double-check'는 이미 확인한 것을 한 번 더 본다는 뜻이에요. 이름과 생년월일 두 가지로 확인하는 것이 환자 식별의 기본이에요.", "with a pen", "튜브에 이름이랑 생년월일을 직접 적을게요.", "튜브에 적힌 이름이랑 생년월일을 같이 보여 줄게요.", "date of birth", "date of admission", "date of surgery", "date of discharge"]
+  - ["준비 상황", pager, "'Blood bank says'로 전해 들은 정보라는 출처를 먼저 밝혀요. 'are being prepared'는 진행 중이라는 뜻이에요.", "on the unit", "약국에서 농축적혈구 두 팩을 준비 중이라고 하네요.", "수술실에서 농축적혈구 두 팩을 준비 중이라고 하네요.", "prepared", "returned", "rejected", "relabeled"]
+  - ["서명 요청", pencil, "'We need'는 개인 의견이 아니라 절차상 필요하다는 말투예요. 'before'로 시점의 한계를 분명히 해요.", "from the lab", "검체를 보내기 전에 라벨이 한 장 더 필요해요.", "검체를 보내기 전에 봉투가 한 장 더 필요해요.", "second", "third", "fourth", "fifth"]
+  - ["운반 약속", plane, "'Once it's confirmed'가 조건이고 'as soon as it's ready'가 시점이라 순서가 분명해요. 'bring … up'은 위층 병동으로 가져온다는 뜻이에요.", "from downstairs", "확인되면 준비되는 대로 바로 피를 걸어 둘게요.", "확인되면 준비되는 대로 바로 튜빙을 가져올게요.", "confirmed", "cancelled", "rejected", "expired"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 수혈 준비 4문장 순서
+    why: 검체를 보낸 뒤 장비를 준비하고, 피가 오면 이름과 생년월일을 확인하고, 일치하면 시작해요.
+    lines:
+    - ["Type and cross is drawn and sent to the blood bank.", board, "혈액형·교차시험 검체는 채혈해서 혈액은행으로 보냈어요", "검체"]
+    - ["So I'll get the transfusion tubing and warmer ready for it.", gear, "그래서 수혈 튜빙이랑 워머를 준비해 둘게요", "준비"]
+    - ["When it arrives, I'll double-check his name and date of birth with a second nurse.", stetho, "도착하면 다른 간호사와 함께 이름이랑 생년월일을 다시 확인할게요", "확인"]
+    - ["Once both of us agree, I'll start it and stay with him.", check, "둘 다 일치하면 시작하고 곁에 있을게요", "시작"]
+- title: 혈역학·Hb 추세 감시
+  s:
+  - ["원인 설명", bulb, "'can happen'은 가능성을 열어 두고 환자의 걱정을 인정하는 말이에요. 'when'으로 증상과 원인을 짝지어요.", "after lunch", "네, 침대에서 갑자기 일어나면 그럴 수 있어요.", "네, 채혈하고 나면 그럴 수 있어요.", "drops", "rises", "doubles", "climbs"]
+  - ["감시 설명", monitor, "'I'm watching'은 지금 하고 있는 일이라 환자가 안심해요. 혈압과 검사를 and로 묶어 한꺼번에 본다고 알려요.", "by the bed", "혈압을 재려고 팔에 커프를 감고 있어요.", "혈압이랑 검사 수치 추세를 의사에게 전하고 있어요.", "trends", "tubes", "bills", "orders"]
+  - ["낙상 예방", shield, "'Please stay'로 정중하게 부탁하고 'so'로 이유를 바로 붙여요. 'lightheaded'는 어지럽고 멍한 느낌을 말해요.", "in your bed", "넘어지지 않게 누워 계세요.", "다치지 않게 누워 계세요.", "lightheaded", "thirsty", "hungry", "bored"]
+  - ["수치 안내", chartup, "'came back'은 검사 결과가 나왔다는 관용 표현이에요. 'a little'로 정도를 말해 과장하지 않아요.", "from the lab", "헤모글로빈 수치가 어제 아침보다 조금 낮아졌어요.", "헤모글로빈 수치가 오늘 아침보다 훨씬 낮아졌어요.", "hemoglobin", "potassium", "sodium", "lactate"]
+  - ["보고 약속", pager, "'or'로 두 변화 중 하나만 생겨도 알린다고 말해요. 'right away'가 지체 없이라는 약속이에요.", "after dinner", "심박수가 오르거나 열이 더 오르면 바로 의사한테 연락할게요.", "심박수가 느려지거나 혈압이 더 떨어지면 바로 의사한테 연락할게요.", "doctor", "pharmacist", "dietitian", "therapist"]
+  - ["재검 예고", calendar, "'in a couple of hours'로 대략의 간격을 알려요. 'to see the trend'는 한 번의 수치가 아니라 흐름을 본다는 뜻이에요.", "this evening", "몇 시간 뒤에 또 검사해서 알려 드려요.", "몇 시간 뒤에 보호자께 연락해서 추세를 알릴게요.", "labs", "lungs", "legs", "eyes"]
+  - ["호출 안내", bell, "'if you feel worse'는 환자 기준으로 판단하게 해요. 'before then'은 다음 확인 시점 전을 가리켜요.", "at night", "그 전에 물이 필요하면 콜벨을 눌러 주세요.", "그 전에 화장실이 급하면 콜벨을 눌러 주세요.", "worse", "better", "relaxed", "rested"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 수치 하락 설명 4문장 순서
+    why: 결과를 알리고, 그에 따른 감시를 말하고, 재검 시점을 알린 뒤, 그 사이에도 증상이 있으면 부르게 안내해요.
+    lines:
+    - ["Your hemoglobin came back a little lower than this morning.", chartup, "헤모글로빈 수치가 오늘 아침보다 조금 낮아졌어요", "결과"]
+    - ["Because it dropped, I'm watching your blood pressure and your labs closely.", monitor, "떨어졌으니 혈압이랑 검사를 자세히 지켜보고 있어요", "감시"]
+    - ["After that watch, we'll recheck your labs in a couple of hours.", calendar, "그렇게 지켜본 뒤 몇 시간 뒤에 다시 검사할게요", "재검"]
+    - ["Whatever the next numbers show, use the call light if you feel worse.", bell, "다음 수치가 어떻든 더 안 좋으면 콜벨을 눌러 주세요", "호출"]

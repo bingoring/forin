@@ -1,0 +1,73 @@
+situations:
+- title: 원인별 치료
+  s:
+  - ["치료 시작", pill, "'per protocol'은 정해진 지침을 따른다는 말이라 용량과 속도를 임의로 정하지 않는다는 뜻이에요. NAC는 아세트아미노펜 간손상의 해독제예요.", "at the", "네, 프로토콜에 따라 NAC 주입 후 활력징후를 잽시다.", "네, 프로토콜에 따라 NAC 주입 후 빈 병을 버립시다.", "protocol", "request", "habit", "wish"]
+  - ["용량 확인", check, "'confirm the dosing'은 시작 전후로 용량을 확인한다는 뜻이고 'monitor for reactions'는 약을 주는 동안 지켜본다는 뜻이에요.", "to the", "용량을 확인하고 반응을 기록할게요.", "용량을 확인하고 반응을 설명할게요.", "dosing", "billing", "staffing", "seating"]
+  - ["이른 치료", star, "'Early … gives … the best chance'는 시간이 중요하다는 점을 미리 알려서 지금 치료하는 이유를 이해시켜요.", "a good", "이른 치료가 신장에 가장 좋은 기회를 줘요.", "이른 검사가 간에 가장 좋은 기회를 줘요.", "chance", "rest", "scan", "diet"]
+  - ["원인 확인", lab, "'confirms'는 수치가 추측이 아니라 근거라는 뜻이에요. 'was the cause'로 과거형을 써서 이미 밝혀졌음을 말해요.", "that this", "암모니아 수치가 이게 원인이었다는 걸 확인해 줘요.", "칼륨 수치가 이게 원인이었다는 걸 확인해 줘요.", "acetaminophen", "ibuprofen", "lactate", "sodium"]
+  - ["반응 감시", magnify, "'for any allergic reaction'은 무엇을 찾는지 분명히 말해요. 'closely'는 계속 살핀다는 뜻이에요.", "if any", "알레르기 반응이 있는지 검사를 자세히 기록할게요.", "알레르기 반응이 있는지 검사를 자세히 설명할게요.", "allergic", "emotional", "seasonal", "cosmetic"]
+  - ["빠를수록 좋음", chartup, "'The sooner …, the better …'는 시작이 빠를수록 결과가 좋다는 비례 관계를 한 문장에 담아요.", "as soon", "NAC를 빨리 시작할수록 신장이 더 좋아져요.", "NAC를 빨리 시작할수록 폐가 더 좋아져요.", "liver", "kidneys", "lungs", "heart"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 원인 치료 4문장 순서
+    why: 수치로 원인을 확인하고, 치료를 시작한 뒤 용량과 반응을 살피며, 이른 치료가 간에 가장 큰 기회를 준다고 마무리해요.
+    lines:
+    - ["His acetaminophen level confirms this was the cause.", lab, "아세트아미노펜 수치가 이게 원인이었다는 걸 확인해 줘요", "근거"]
+    - ["So let's start the NAC infusion per protocol.", pill, "그러니 프로토콜에 따라 NAC 주입을 시작합시다", "시작"]
+    - ["I'll confirm the dosing and monitor for reactions as it runs.", check, "주입되는 동안 용량을 확인하고 반응을 모니터링할게요", "감시"]
+    - ["With that care, early treatment gives the liver the best chance.", star, "그렇게 살피며 이른 치료를 하면 간에 가장 좋은 기회를 줘요", "기대"]
+- title: 감염 예방·조기 치료
+  s:
+  - ["감염 예방", shield, "'strict'는 예외 없이 지킨다는 뜻이에요. 손 위생과 라인 관리는 중환자의 감염 예방 기본이에요.", "keep to", "철저한 손 위생과 침실 청소를 유지합시다.", "철저한 장비 청소와 라인 관리를 유지합시다.", "hygiene", "cream", "grip", "size"]
+  - ["패혈증 감시", monitor, "'early'는 증상이 뚜렷해지기 전에 찾겠다는 뜻이에요. 활력징후와 검사를 함께 봐야 조기 패혈증이 보여요.", "in the", "조기 패혈증을 위해 활력징후와 검사를 기록할게요.", "조기 패혈증을 위해 활력징후와 검사를 보고할게요.", "early", "late", "mild", "rare"]
+  - ["항생제 계획", pill, "'if signs appear'로 조건을 정해 두면 징후가 보이는 즉시 시작한다는 계획이 돼요. 'quickly'는 지체하지 않는다는 뜻이에요.", "once the", "징후가 나타나면 항생제 시간을 빠르게 적을게요.", "징후가 나타나면 투여 기록을 빠르게 출력할게요.", "antibiotics", "vitamins", "snacks", "tests"]
+  - ["감염 취약", shield, "'prone to'는 쉽게 걸리는 상태를 뜻해요. 'right now'는 지금 특히 위험하다는 시점을 알려요.", "likely to", "지금 피부와 라인이 건조함에 취약해요.", "지금 피부와 근육이 감염에 취약해요.", "infection", "dryness", "tearing", "itching"]
+  - ["드레싱 관리", bandage, "교체와 확인을 한 문장에 묶으면 새 드레싱을 붙이는 김에 부위를 본다는 흐름이 분명해요. 발적은 감염의 흔한 첫 징후예요.", "and then", "드레싱을 교체하고 부위에 날짜를 적읍시다.", "드레싱을 교체하고 쓴 장갑과 거즈를 버립시다.", "dressing", "gown", "pillow", "sheets"]
+  - ["지체 없는 치료", siren, "'won't wait'는 확인을 더 기다리지 않고 바로 시작한다는 뜻이에요. 간부전 환자의 감염은 빨리 악화돼요.", "so we", "열이 오르면 치료 시작을 가족에게 알릴 거예요.", "열이 오르면 치료 시작을 차트에 기록할 거예요.", "treatment", "rounds", "lunch", "class"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 감염 예방 4문장 순서
+    why: 감염에 취약하다는 이유를 먼저 말하고, 예방을 유지하며 감시한 뒤, 징후가 나오면 항생제를 빠르게 시작한다고 말해요.
+    lines:
+    - ["His skin and lines are prone to infection right now.", shield, "지금 피부와 라인이 감염에 취약해요", "이유"]
+    - ["So let's keep up strict hand hygiene and line care.", shield, "그러니 철저한 손 위생과 라인 관리를 유지합시다", "예방"]
+    - ["I'll watch his vitals and labs for early sepsis.", monitor, "조기 패혈증을 위해 활력징후와 검사를 지켜볼게요", "감시"]
+    - ["If that watch turns up signs, we'll start antibiotics quickly.", pill, "그 감시에서 징후가 나오면 항생제를 빠르게 시작할게요", "치료"]
+- title: 영양·단백 관리
+  s:
+  - ["단백 유지", star, "'usually'는 대부분 그렇다는 뜻이라 환자에 따라 달라질 수 있음을 열어 둬요. 단백질을 줄이면 근육이 더 빠지기 쉬워요.", "so that", "뼈를 지키려고 보통 단백질을 유지해요.", "근육을 지키려고 보통 수분을 유지해요.", "protein", "salt", "sugar", "fluid"]
+  - ["수치 기반 조정", lab, "'carefully'는 서두르지 않고 조금씩 맞춘다는 뜻이에요. 'based on'은 조정의 근거가 수치라는 점을 보여 줘요.", "by the", "암모니아 수치를 근거로 빠르게 조정해요.", "칼륨 수치를 근거로 조심스럽게 조정해요.", "ammonia", "height", "schedule", "insurance"]
+  - ["영양사 소개", handshake2, "'tailor'는 옷을 맞추듯 개인에게 맞춘다는 뜻이에요. 영양사가 환자마다 계획을 따로 짜요.", "to make", "약사가 당신에게 맞는 계획을 짜 줄 거예요.", "영양사가 당신에게 맞는 식당을 찾아 줄 거예요.", "dietitian", "pharmacist", "therapist", "chaplain"]
+  - ["부족의 영향", chartup, "'Too little'로 부족을 먼저 말하면 단백질을 일부러 줄이지 않아도 되는 이유가 분명해져요. 'even more'는 이미 약한 근육이 더 약해진다는 뜻이에요.", "far too", "단백질이 너무 적으면 뼈가 더 약해질 수 있어요.", "단백질이 너무 적으면 근육이 더 아파질 수 있어요.", "weaken", "strengthen", "relax", "grow"]
+  - ["암모니아 확인", lab, "'if the confusion gets worse after meals'는 암모니아를 확인할 상황을 정확히 말해 줘요.", "after the", "식사 후에 혼란이 심해지면 암모니아를 기록할게요.", "식사 후에 혼란이 심해지면 암모니아를 설명할게요.", "meals", "naps", "baths", "visits"]
+  - ["후속 약속", calendar, "'follow up with you'는 한 번으로 끝내지 않고 이어서 챙긴다는 뜻이에요. 'daily'는 빈도를 분명히 해요.", "as a", "영양팀이 매주 당신과 함께 확인할 거예요.", "영양팀이 매일 가족과 함께 확인할 거예요.", "daily", "weekly", "monthly", "yearly"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 영양 계획 4문장 순서
+    why: 단백질을 유지하는 원칙을 말하고, 수치로 조정한다고 알린 뒤, 영양사가 계획을 짜고 매일 이어서 확인한다고 안내해요.
+    lines:
+    - ["We usually keep protein up to protect your muscles.", star, "근육을 지키려고 보통 단백질을 유지해요", "원칙"]
+    - ["We adjust that protein carefully based on your ammonia.", lab, "그 단백질은 암모니아 수치를 근거로 조심스럽게 조정해요", "조정"]
+    - ["A dietitian will tailor a plan around that adjustment.", handshake2, "영양사가 그 조정에 맞춰 계획을 짜 줄 거예요", "계획"]
+    - ["The dietitian will follow up with you daily.", calendar, "영양사가 매일 당신과 함께 확인할 거예요", "후속"]
+- title: 약물 대사·용량 조정
+  s:
+  - ["약물 검토", board, "'which meds need'는 전체 약 중에서 골라낸다는 뜻이에요. 간이 약해지면 약이 오래 남아 용량 조정이 필요해요.", "to see", "어떤 약이 용량 조정이 필요한지 기록합시다.", "어떤 약이 용량 조정이 필요한지 공유합시다.", "adjustment", "labels", "storage", "delivery"]
+  - ["약물 회피", shield, "'hard on the liver'는 간에 부담을 준다는 관용 표현이에요. 'should'로 권고의 강도를 부드럽게 해요.", "keep from", "간에 부담이 되는 약물은 기록해야 해요.", "간에 부담이 되는 약물은 보관해야 해요.", "liver", "budget", "schedule", "staff"]
+  - ["진정제 표시", pager, "'flag'는 눈에 띄게 표시해 팀이 놓치지 않게 한다는 뜻이에요. 진정제는 간성뇌증의 혼란을 더할 수 있어요.", "to mark", "혼란을 악화시킬 수 있는 진정제는 정리해 둘게요.", "혼란을 악화시킬 수 있는 진정제는 기록해 둘게요.", "sedatives", "vitamins", "antacids", "lotions"]
+  - ["약물 청소", pill, "'the way it used to'는 예전과의 비교라서 간 기능이 달라졌다는 점이 전해져요. 'clear'는 몸에서 약을 처리해 없애는 일이에요.", "as it", "신장이 예전처럼 이 약물들을 청소하지 못해요.", "간이 예전처럼 이 음식들을 청소하지 못해요.", "clear", "store", "carry", "taste"]
+  - ["용량 감량", gear, "'lower'는 줄이는 방향을 분명히 하고, 줄인 뒤 반응을 보는 단계까지 한 문장에 담아요.", "to raise", "진정제 용량을 낮추고 반응을 기록합시다.", "진정제 용량을 낮추고 반응을 공유합시다.", "sedative", "vitamin", "iron", "zinc"]
+  - ["간격 조정", calendar, "'space out'은 투여 사이에 시간을 더 둔다는 뜻이에요. 간이 처리하는 속도에 맞추려는 거예요.", "on top", "청소하기 어려운 약은 간격을 두고 보관할게요.", "청소하기 어려운 약은 간격을 두고 기록할게요.", "space", "hand", "sort", "write"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 약물 용량 조정 4문장 순서
+    why: 간이 약을 못 치우는 이유를 말하고, 조정할 약을 검토하며, 진정제 용량을 낮춘 뒤 나머지 약은 간격을 둔다고 이어요.
+    lines:
+    - ["His liver can't clear these medications the way it used to.", pill, "간이 예전처럼 이 약물들을 청소하지 못해요", "이유"]
+    - ["So let's review which meds need dose adjustment.", board, "그러니 어떤 약이 용량 조정이 필요한지 검토합시다", "검토"]
+    - ["Let's lower the sedative dose and check his response.", gear, "진정제 용량을 낮추고 반응을 확인합시다", "감량"]
+    - ["We'll space out the rest of the doses that are hard to clear.", calendar, "청소하기 어려운 나머지 약은 간격을 두고 줄게요", "간격"]
