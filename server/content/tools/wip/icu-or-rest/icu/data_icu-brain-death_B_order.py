@@ -16,11 +16,11 @@ ORD = [
   ("I'll chart each result the moment you call it out.", "pencil", "부르시는 즉시 결과를 적을게요", "기록")]),
 # S2
 ("무호흡 검사 준비 4문장 순서",
- "산소화를 먼저 하고, 그 뒤에 기저 혈액가스를 뽑아 보내고, 그 검체가 나간 뒤에 T-피스로 바꾸며, 이 모두를 마친 다음에 시작해도 된다고 알려요.",
+ "산소화를 먼저 하고, 그 뒤에 기저 혈액가스를 뽑아 보내고, 그 검체가 나가면 준비가 끝났다고 알리고, 그 검사를 시작하려고 T-피스로 바꿔요.",
  [("I'll preoxygenate him to a hundred percent first.", "lab", "먼저 백 퍼센트로 사전 산소화할게요", "산소화"),
   ("After that, I'll draw the baseline blood gas and send it.", "lab", "그 뒤에 기저 혈액가스를 보낼게요", "검체"),
-  ("With that gas sent, I'm switching him to a T-piece with oxygen running.", "gear", "그 검체를 보냈으니 T-피스로 바꿔요", "연결"),
-  ("With all of that done, everything is set for the apnea test to begin.", "check", "이제 검사를 시작할 준비가 됐어요", "완료")]),
+  ("With that gas sent, everything is set for the apnea test to begin.", "check", "그 검체를 보냈으니 준비가 끝났어요", "완료"),
+  ("To start it, I'm switching him to a T-piece with oxygen running.", "gear", "시작하려고 산소를 틀고 T-피스로 바꿔요", "연결")]),
 # S3
 ("상태 설명 지원 4문장 순서",
  "사실을 분명히 알리고, 곧바로 위로를 건넨 뒤, 시간과 질문을 허락하고, 그 질문 중 남은 것은 의사가 설명하도록 이어요.",
@@ -82,7 +82,7 @@ ORD = [
  "먼저 시간을 허락하고, 그 곁에서 느끼는 마음을 인정하고, 하고 싶다면 손을 잡거나 말을 걸어도 된다고 알린 뒤, 마지막으로 그 시간을 위해 자리를 비켜 줍니다.",
  [("Take all the time you need to be with him.", "handshake2", "필요한 만큼 곁에 있어 주세요", "시간"),
   ("Whatever you're feeling as you sit with him is okay.", "faceWorried", "곁에서 느끼는 마음은 다 괜찮아요", "인정"),
-  ("You can hold his hand and talk to him, if that feels right.", "handshake2", "손을 잡거나 말을 걸어도 괜찮아요", "허락"),
+  ("Given that, you can hold his hand and talk to him, if that feels right.", "handshake2", "그러니 손을 잡거나 말을 걸어도 괜찮아요", "허락"),
   ("I'll step outside so you can have this time together.", "home", "이 시간을 위해 제가 자리를 비킬게요", "자리")]),
 # S12
 ("문화적 존중 4문장 순서",
@@ -114,11 +114,11 @@ ORD = [
   ("After all of that, we'll restart the test later once he's stable.", "calendar", "그 뒤 안정되면 검사를 다시 시작해요", "재개")]),
 # S16
 ("순환 붕괴 대응 4문장 순서",
- "혈압이 바닥이라고 알리고, 그 때문에 승압제와 수액을 바로 올리고, 그렇게 올려 둔 채 의사와 코디네이터를 부르고, 그들이 도착할 때에 맞춰 모두 침상에 모이게 해요.",
+ "혈압이 바닥이라고 알리고, 그 일로 의사와 코디네이터를 바로 부르고, 그들이 오기 전에 승압제와 수액을 올리고, 그렇게 올린 뒤 모두 침상에 모이게 해요.",
  [("His pressure is bottoming out despite the current dose.", "chartup", "현재 용량으로도 혈압이 바닥이에요", "보고"),
-  ("Because of that, max the pressors and give volume now.", "pill", "그래서 승압제를 올리고 수액을 줘요", "처치"),
-  ("With the pressors maxed, I'm calling the physician and the coordinator.", "pager", "의사와 코디네이터에게 연락해요", "호출"),
-  ("Please have everyone at the bedside by the time they arrive.", "siren", "그들이 오기 전에 모두 침상 곁에 모여요", "집합")]),
+  ("For that pressure, I'm calling the physician and the coordinator.", "pager", "그 혈압 때문에 의사와 코디네이터를 불러요", "호출"),
+  ("Before they arrive, max the pressors and give volume now.", "pill", "그들이 오기 전에 승압제와 수액을 올려요", "처치"),
+  ("With the pressors maxed, everyone needs to be at the bedside in the next minute.", "siren", "올린 뒤 일 분 안에 모두 침상 곁에 모여요", "집합")]),
 # S17
 ("심한 요붕증 대응 4문장 순서",
  "소변량 급증을 알리고, 그만큼 나가서 나트륨이 올랐다고 잇고, 그걸 막기 위해 약을 주며, 그 뒤 나트륨을 확인해 더 오르면 의사에게 알린다고 맺어요.",
@@ -128,11 +128,11 @@ ORD = [
   ("After that, I'll recheck the sodium and call the physician if it climbs further.", "pager", "그 뒤 확인하고 더 오르면 의사를 부를게요", "호출")]),
 # S18
 ("가족의 결정 존중 4문장 순서",
- "먼저 들었다고 하며 뜻을 존중한다고 말하고, 결정이 전적으로 가족 몫임을 밝히고, 그 결정에 거절할 권리도 있다고 알리고, 무엇을 고르든 곁에서 돕겠다고 맺어요.",
+ "먼저 들었다고 하며 뜻을 존중한다고 말하고, 결정이 전적으로 가족 몫임을 밝히고, 그 결정에 거절할 권리도 있다고 알리고, 거절하든 하지 않든 곁에서 돕겠다고 맺어요.",
  [("I hear you, and your family's wishes will be respected.", "handshake2", "가족분의 뜻은 존중될 거예요", "경청"),
   ("There is no pressure — this is entirely your decision.", "shield", "부담 없어요, 전적으로 여러분의 결정이에요", "결정"),
   ("You have every right to say no to it, and that's completely okay.", "shield", "거절하실 권리도 충분히 있어요", "권리"),
-  ("Whatever you choose, I'm here to support you.", "handshake2", "무엇을 선택하시든 곁에서 도울게요", "지지")]),
+  ("Whether you say no or not, I'm here to support you.", "handshake2", "어느 쪽이든 곁에서 도울게요", "지지")]),
 # S19
 ("판정과 심박 설명 4문장 순서",
  "어려움을 먼저 인정하고, 그 마음을 안고 지금 상태를 말하며, 그것이 혼란스러워 보일 수 있다고 잇고, 팀이 그 모두를 천천히 설명하겠다고 맺어요.",

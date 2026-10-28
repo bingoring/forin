@@ -1,0 +1,66 @@
+# B 검토 — order 카드 (줄 번호는 1부터)
+order:
+  1:
+    lines:
+      2: {en: "One of them, the ammonia level, relates to the confusion we watch for.", ko: "그중 암모니아 수치는 저희가 지켜보는 혼란과 관련이 있어요", note: 의미, icon: lab}
+  2:
+    why: "약이 하는 일을 먼저 알리고, 목표를 정한 뒤, 목표를 위해 횟수를 세고, 그 횟수가 넘치면 용량 조정을 의사에게 알린다고 말해요."
+    lines:
+      1: {ko: "네, 이 약은 장을 통해 독소를 몸 밖으로 내보내도록 도와줘요"}
+      4: {en: "If the count runs high, we'll let the doctor know to adjust the dose.", ko: "횟수가 많으면 용량을 조정하도록 의사에게 알릴게요", note: 보고, icon: pager}
+  3:
+    lines:
+      3: {icon: shield}
+  4:
+    ko: "저혈당 대응 4문장 순서"
+    why: "간이 혈당을 못 지킨다는 이유를 말하고, 낮으면 포도당을 준 뒤 15분에 다시 재며, 그래도 안 오르면 의사에게 알려요."
+    lines:
+      3: {en: "Let's recheck it fifteen minutes after the dextrose.", ko: "포도당을 주고 15분 뒤 다시 재 봅시다", note: 재확인, icon: redo}
+      4: {en: "If it still won't come up after that, I'll flag this for the physician.", ko: "그래도 오르지 않으면 의사에게 알릴게요", note: 보고, icon: pager}
+  5:
+    why: "열이 오른 사실과 그 의미를 말한 뒤, 먼저 의사에게 알리고, 그다음 배양과 진단적 천자를 함께 정해요."
+    lines:
+      1: {ko: "한 시간 전에 체온이 화씨 101.5도(약 38.6도)까지 치솟았어요"}
+      3: {en: "I'll notify the physician about that right now.", ko: "그걸 지금 바로 의사에게 알릴게요", note: 보고, icon: pager}
+      4: {en: "Once they're aware, let's get cultures and consider a diagnostic tap.", ko: "의사가 알고 나면 배양 검사를 하고 진단적 천자를 고려합시다", note: 검사, icon: lab}
+  7:
+    why: "INR이 높다는 말과 함께 혈장이 필요한지 팀에 묻고, 혈소판도 낮다는 말로 수혈 여부를 물은 뒤, 라인을 넣은 후 압박을 유지하고 마지막으로 응고 수치를 다시 확인하며 출혈을 지켜봐요."
+    lines:
+      1: {en: "His INR is high, so I'll ask whether the team wants plasma before the line.", ko: "INR이 높아서 라인 전에 혈장이 필요한지 팀에 물어볼게요", note: 혈장, icon: speech}
+      2: {en: "Platelets are also low, so I'll ask whether to transfuse before the procedure.", ko: "혈소판도 낮아서 시술 전에 수혈할지 물어볼게요", note: 혈소판, icon: speech}
+  8:
+    lines:
+      3: {en: "While we wait for them, keep his head elevated and avoid spikes in pressure.", ko: "그들을 기다리는 동안 머리를 높이고 압력이 치솟는 걸 피하세요", note: 보호, icon: shield}
+  9:
+    lines:
+      3: {en: "I'll notify the physician about that possibility now.", ko: "그 가능성을 지금 의사에게 알릴게요", note: 보고, icon: pager}
+  14:
+    why: "간이 약을 잘 처리하지 못하는 이유를 말하고, 조정할 약을 검토하며, 진정제 용량을 낮춘 뒤 나머지 약은 간격을 둔다고 이어요."
+    lines:
+      1: {ko: "간이 예전처럼 이 약들을 잘 처리하지 못해요"}
+      3: {en: "Starting with the sedative, let's lower that dose per protocol and check his response.", ko: "진정제부터 프로토콜에 따라 용량을 낮추고 반응을 확인합시다", note: 감량, icon: gear}
+      4: {ko: "몸에서 잘 빠져나가지 않는 나머지 약은 간격을 두고 줄게요"}
+  15:
+    why: "동공 변화를 알리고 바로 호출한 뒤, 통화하는 동안 머리를 높이고 프로토콜대로 식염수를 가져오게 하고, 받으면 투여하며 CT를 요청해요."
+    lines:
+      3: {en: "While I'm on the phone, elevate his head and get the hypertonic saline per protocol.", ko: "제가 통화하는 동안 머리를 높이고 프로토콜대로 고장성 식염수를 가져와 주세요", note: 지시, icon: siren}
+      4: {en: "Once you have it, I'll push it and ask for a repeat head CT.", ko: "가져오면 제가 투여하고 머리 CT를 다시 요청할게요", note: 투여, icon: pill}
+  16:
+    lines:
+      2: {en: "So get plasma, platelets, and cryo now.", ko: "그러니 혈장, 혈소판, 동결침전제제를 지금 가져오세요"}
+  17:
+    why: "기도를 못 지키는 상태를 알리고, 장비를 준비한 뒤 산소화와 자세를 잡으며, 마지막으로 삽관하는 사람이 원하면 압박을 돕겠다고 말해요."
+    lines:
+      2: {ko: "삽관 트레이를 가져오고 흡인을 준비할게요"}
+      4: {en: "Once he's positioned, tell me if you want cricoid pressure.", ko: "자세가 잡히면 윤상연골 압박이 필요한지 말씀해 주세요", note: 요청, icon: speech}
+  18:
+    lines:
+      1: {ko: "신장, 폐, 혈압이 한꺼번에 무너지고 있어요"}
+      2: {ko: "치료 지원이 더 필요해서 의사에게 보고하고 있어요"}
+  19:
+    lines:
+      1: {en: "He meets status 1A criteria, so the center wants him transferred now.", ko: "1A 기준에 해당해서 센터가 지금 바로 이송을 원해요"}
+      3: {en: "While we do that, bring blood and emergency meds for the trip.", ko: "그동안 이동에 쓸 혈액과 응급 약을 가져오세요"}
+  20:
+    lines:
+      2: {en: "That news means transplant isn't a safe option for him.", ko: "그 소식은 이식이 그에게 안전한 선택지가 아니라는 뜻이에요"}

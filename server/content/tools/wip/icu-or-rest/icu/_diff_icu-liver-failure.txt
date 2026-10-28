@@ -1,0 +1,601 @@
+['word', 'w-check', 'distractorsEn'] | ['chick', 'cheek'] -> ['chuck', 'choke']
+['word', 'w-tell', 'distractorsEn'] | ['tall', 'sell'] -> ['teach', 'sell']
+['word', 'w-grade', 'distractorsKo'] | ['기록하다', '분류하다'] -> ['기록하다', '보고하다']
+['word', 'w-helpful', 'decoyChips'] | ['hope', 'fool'] -> ['hope', 'fill']
+['word', 'w-test', 'cue'] | 몸의 이상 여부를 알아보려고 하는 검사 한 가지 -> 간이 어떻게 일하는지 알아보려고 피를 뽑아 하는 것 하나하나
+['word', 'w-work', 'distractorsEn'] | ['word', 'walk'] -> ['worry', 'walk']
+['word', 'w-number', 'decoyChips'] | ['numb', 'bar'] -> ['numb', 'bur']
+['word', 'w-blood', 'distractorsEn'] | ['flood', 'blond'] -> ['flood', 'brood']
+['word', 'w-cell', 'distractorsEn'] | ['sell', 'shell'] -> ['gel', 'shell']
+['word', 'w-medicine', 'decoyChips'] | ['mad', 'sign'] -> ['mod', 'sign']
+['word', 'w-medicine', 'exKo'] | 네, 이 약은 장을 통해 독소를 맑게 배출하도록 도와줘요. -> 네, 이 약은 장을 통해 독소를 몸 밖으로 내보내도록 도와줘요.
+['word', 'w-clear', 'example'] | Yes, the medicine helps clear the toxins through your bowels. -> Once we treat the trigger, his mind usually clears again.
+['word', 'w-clear', 'exKo'] | 네, 이 약은 장을 통해 독소를 맑게 배출하도록 도와줘요. -> 유발요인을 치료하면 보통 그의 정신이 다시 맑아져요.
+['word', 'w-toxin', 'exKo'] | 네, 이 약은 장을 통해 독소를 맑게 배출하도록 도와줘요. -> 네, 이 약은 장을 통해 독소를 몸 밖으로 내보내도록 도와줘요.
+['word', 'w-bowel', 'exKo'] | 네, 이 약은 장을 통해 독소를 맑게 배출하도록 도와줘요. -> 네, 이 약은 장을 통해 독소를 몸 밖으로 내보내도록 도와줘요.
+['word', 'w-important', 'exKo'] | 그건 혼란을 맑게 하는 데 중요한 부분이에요. -> 그건 혼란이 걷히게 하는 데 중요한 부분이에요.
+['word', 'w-part', 'exKo'] | 그건 혼란을 맑게 하는 데 중요한 부분이에요. -> 그건 혼란이 걷히게 하는 데 중요한 부분이에요.
+['word', 'w-gut', 'cue'] | 배 속에서 음식을 소화시키는 창자 쪽을 가리키는 말 -> 락툴로오스가 암모니아를 끌어내는 배 속 소화관을 가볍게 부를 때
+['word', 'w-gut', 'distractorsEn'] | ['cut', 'hut'] -> ['gust', 'hut']
+['word', 'w-watery', 'example'] | If the stools get too watery, we can adjust the dose. -> If the stools get too watery, we'll let the doctor know to adjust the dose.
+['word', 'w-watery', 'exKo'] | 변이 너무 묽어지면 용량을 조정할 수 있어요. -> 변이 너무 묽어지면 용량을 조정하도록 의사에게 알릴게요.
+['word', 'w-adjust', 'example'] | If the stools get too watery, we can adjust the dose. -> If the stools get too watery, we'll let the doctor know to adjust the dose.
+['word', 'w-adjust', 'exKo'] | 변이 너무 묽어지면 용량을 조정할 수 있어요. -> 변이 너무 묽어지면 용량을 조정하도록 의사에게 알릴게요.
+['word', 'w-dose', 'example'] | If the stools get too watery, we can adjust the dose. -> If the stools get too watery, we'll let the doctor know to adjust the dose.
+['word', 'w-dose', 'exKo'] | 변이 너무 묽어지면 용량을 조정할 수 있어요. -> 변이 너무 묽어지면 용량을 조정하도록 의사에게 알릴게요.
+['word', 'w-dextrose', 'cue'] | 저혈당일 때 정맥으로 넣는 설탕 성분 수액 -> 저혈당일 때 정맥으로 넣는 당 성분 수액
+['word', 'w-monitor', 'distractorsEn'] | ['mentor', 'minor'] -> ['mentor', 'muster']
+['word', 'w-potassium', 'example'] | Potassium is low too, so I'll add it to the next bag. -> Potassium is low too, so I'll get an order to replace it.
+['word', 'w-potassium', 'exKo'] | 칼륨도 낮아서 다음 수액백에 추가할게요. -> 칼륨도 낮아서 보충 처방을 받을게요.
+['word', 'w-physician', 'cue'] | 처방과 진단을 책임지는 의사를 가리키는 격식 있는 말 -> 처방과 진단을 맡은 사람을 인계에서 격식 있게 부를 때
+['word', 'w-fever', 'distractorsEn'] | ['fewer', 'feeder'] -> ['fiber', 'feeder']
+['word', 'w-mean', 'distractorsEn'] | ['meal', 'mend'] -> ['meet', 'mend']
+['word', 'w-temperature', 'exKo'] | 한 시간 전에 체온이 101.5도까지 치솟았어요. -> 한 시간 전에 체온이 화씨 101.5도(약 38.6도)까지 치솟았어요.
+['word', 'w-spike', 'exKo'] | 한 시간 전에 체온이 101.5도까지 치솟았어요. -> 한 시간 전에 체온이 화씨 101.5도(약 38.6도)까지 치솟았어요.
+['word', 'w-fluid', 'distractorsEn'] | ['fluent', 'flush'] -> ['flood', 'flush']
+['word', 'w-stage', 'distractorsEn'] | ['state', 'stare'] -> ['state', 'stake']
+['word', 'w-procedure', 'distractorsEn'] | ['proceeding', 'produce'] -> ['proceeding', 'prescription']
+['word', 'w-pressure', 'distractorsEn'] | ['pleasure', 'preserve'] -> ['pleasure', 'measure']
+['word', 'w-carefully', 'decoyChips'] | ['car', 'fool'] -> ['car', 'fill']
+['word', 'w-inr', 'example'] | His INR is high, so we'll give plasma before the line. -> His INR is high, so I'll ask whether the team wants plasma before the line.
+['word', 'w-inr', 'exKo'] | INR이 높아서 라인을 넣기 전에 혈장을 줄게요. -> INR이 높아서 라인 전에 혈장이 필요한지 팀에 물어볼게요.
+['word', 'w-plasma', 'example'] | His INR is high, so we'll give plasma before the line. -> His INR is high, so I'll ask whether the team wants plasma before the line.
+['word', 'w-plasma', 'exKo'] | INR이 높아서 라인을 넣기 전에 혈장을 줄게요. -> INR이 높아서 라인 전에 혈장이 필요한지 팀에 물어볼게요.
+['word', 'w-line', 'example'] | His INR is high, so we'll give plasma before the line. -> His INR is high, so I'll ask whether the team wants plasma before the line.
+['word', 'w-line', 'exKo'] | INR이 높아서 라인을 넣기 전에 혈장을 줄게요. -> INR이 높아서 라인 전에 혈장이 필요한지 팀에 물어볼게요.
+['word', 'w-platelet', 'example'] | Platelets are also low, so we'll transfuse before the procedure. -> Platelets are also low, so I'll ask whether to transfuse before the procedure.
+['word', 'w-platelet', 'exKo'] | 혈소판도 낮아서 시술 전에 수혈할게요. -> 혈소판도 낮아서 시술 전에 수혈할지 물어볼게요.
+['word', 'w-transfuse', 'example'] | Platelets are also low, so we'll transfuse before the procedure. -> Platelets are also low, so I'll ask whether to transfuse before the procedure.
+['word', 'w-transfuse', 'exKo'] | 혈소판도 낮아서 시술 전에 수혈할게요. -> 혈소판도 낮아서 시술 전에 수혈할지 물어볼게요.
+['word', 'w-left', 'distractorsEn'] | ['lift', 'lent'] -> ['loft', 'cleft']
+['word', 'w-degree', 'example'] | We'll keep his head at thirty degrees and avoid tight neck lines. -> We'll keep his head at thirty degrees and avoid anything tight around his neck.
+['word', 'w-degree', 'distractorsEn'] | ['decree', 'degrade'] -> ['decree', 'debris']
+['word', 'w-degree', 'exKo'] | 머리를 30도로 유지하고 목이 조이는 라인을 피할게요. -> 머리를 30도로 유지하고 목을 조이는 것은 피할게요.
+['word', 'w-tight', 'example'] | We'll keep his head at thirty degrees and avoid tight neck lines. -> We'll keep his head at thirty degrees and avoid anything tight around his neck.
+['word', 'w-tight', 'exKo'] | 머리를 30도로 유지하고 목이 조이는 라인을 피할게요. -> 머리를 30도로 유지하고 목을 조이는 것은 피할게요.
+['word', 'w-neck', 'example'] | We'll keep his head at thirty degrees and avoid tight neck lines. -> We'll keep his head at thirty degrees and avoid anything tight around his neck.
+['word', 'w-neck', 'exKo'] | 머리를 30도로 유지하고 목이 조이는 라인을 피할게요. -> 머리를 30도로 유지하고 목을 조이는 것은 피할게요.
+['word', 'w-medication', 'decoyChips'] | ['mad', 'notion'] -> ['mod', 'notion']
+['word', 'w-syndrome', 'decoyChips'] | ['sin', 'dome'] -> ['sim', 'dome']
+['word', 'w-interview', 'distractorsEn'] | ['interval', 'intercept'] -> ['interval', 'interface']
+['word', 'w-nac', 'distractorsKo'] | ['ABG (혈액가스 검사)', 'ACE (혈압약)'] -> ['ABG (혈액가스 검사)', 'ASA (아스피린)']
+['word', 'w-nac', 'distractorsEn'] | ['ABG', 'ACE'] -> ['ABG', 'ASA']
+['word', 'w-confirm', 'exKo'] | 용량을 확인하고 반응을 모니터링할게요. -> 용량을 확인하고 이상 반응이 있는지 모니터링할게요.
+['word', 'w-reaction', 'exKo'] | 용량을 확인하고 반응을 모니터링할게요. -> 용량을 확인하고 이상 반응이 있는지 모니터링할게요.
+['word', 'w-early', 'decoyChips'] | ['year', 'lye'] -> ['year', 'lay']
+['word', 'w-early', 'distractorsEn'] | ['yearly', 'nearly'] -> ['yearly', 'earthly']
+['word', 'w-allergic', 'example'] | I'll watch his labs closely for any allergic reaction. -> I'll watch him closely for any allergic reaction.
+['word', 'w-allergic', 'exKo'] | 알레르기 반응이 있는지 검사를 자세히 지켜볼게요. -> 알레르기 반응이 있는지 자세히 지켜볼게요.
+['word', 'w-soon', 'distractorsEn'] | ['since', 'seldom'] -> ['once', 'seldom']
+['word', 'w-vital', 'ipa'] | /ˈvaɪtl/ -> /ˈvaɪtəlz/
+['word', 'w-vital', 'decoyChips'] | ['via', 'tall'] -> ['via', 'tails']
+['word', 'w-vital', 'distractorsEn'] | ['vial', 'virus'] -> ['vials', 'virals']
+['word', 'w-vital', 'chips', 0] | ['vi', 'tal'] -> ['vi', 'tals']
+['word', 'w-vital', 'exKo'] | 조기 패혈증을 위해 활력징후와 검사를 지켜볼게요. -> 패혈증 초기 징후가 있는지 활력징후와 검사 결과를 지켜볼게요.
+['word', 'w-vital', 'en'] | vital -> vitals
+['word', 'w-sepsis', 'exKo'] | 조기 패혈증을 위해 활력징후와 검사를 지켜볼게요. -> 패혈증 초기 징후가 있는지 활력징후와 검사 결과를 지켜볼게요.
+['word', 'w-climb', 'example'] | If his fever climbs, we won't wait to start treatment. -> If his fever climbs, I won't wait — I'll call the team right away.
+['word', 'w-climb', 'exKo'] | 열이 오르면 치료 시작을 기다리지 않을 거예요. -> 열이 오르면 기다리지 않고 바로 팀에 연락할게요.
+['word', 'w-wait', 'example'] | If his fever climbs, we won't wait to start treatment. -> If his fever climbs, I won't wait — I'll call the team right away.
+['word', 'w-wait', 'exKo'] | 열이 오르면 치료 시작을 기다리지 않을 거예요. -> 열이 오르면 기다리지 않고 바로 팀에 연락할게요.
+['word', 'w-tailor', 'distractorsEn'] | ['alter', 'tackle'] -> ['taper', 'tackle']
+['word', 'w-meal', 'example'] | We'll check your ammonia if the confusion gets worse after meals. -> Small, frequent meals and a bedtime snack help protect your muscles.
+['word', 'w-meal', 'exKo'] | 식사 후에 혼란이 심해지면 암모니아를 확인할게요. -> 조금씩 자주 드시고 자기 전에 간식을 드시면 근육을 지키는 데 도움이 돼요.
+['word', 'w-nutrition', 'distractorsEn'] | ['attrition', 'nutrient'] -> ['attrition', 'intuition']
+['word', 'w-med', 'decoyChips'] | ['mad'] -> ['mod']
+['word', 'w-hard', 'distractorsEn'] | ['harsh', 'hasty'] -> ['heard', 'hasty']
+['word', 'w-response', 'example'] | Let's lower the sedative dose and check his response. -> Let's lower the sedative dose per protocol and check his response.
+['word', 'w-response', 'exKo'] | 진정제 용량을 낮추고 반응을 확인합시다. -> 프로토콜에 따라 진정제 용량을 낮추고 반응을 확인합시다.
+['word', 'w-space', 'exKo'] | 청소하기 어려운 약은 간격을 두고 줄게요. -> 몸에서 잘 빠져나가지 않는 약은 간격을 두고 줄게요.
+['word', 'w-still', 'cue'] | 움직임 없이 가만히 있게 할 때 -> 뇌압이 오르지 않게 환자가 몸부림치지 않도록 할 때
+['word', 'w-push', 'example'] | I'm pushing the saline now, and I need a repeat head CT. -> I'm pushing the ordered saline now — can we get a repeat head CT?
+['word', 'w-push', 'exKo'] | 지금 식염수를 투여하고 있고, 머리 CT를 다시 찍어야 해요. -> 처방된 식염수를 지금 투여하고 있어요, 머리 CT를 다시 찍을 수 있을까요?
+['word', 'w-ct', 'example'] | I'm pushing the saline now, and I need a repeat head CT. -> I'm pushing the ordered saline now — can we get a repeat head CT?
+['word', 'w-ct', 'exKo'] | 지금 식염수를 투여하고 있고, 머리 CT를 다시 찍어야 해요. -> 처방된 식염수를 지금 투여하고 있어요, 머리 CT를 다시 찍을 수 있을까요?
+['word', 'w-intubation', 'exKo'] | 삽관 트레이와 흡인 준비를 가져올게요. -> 삽관 트레이를 가져오고 흡인도 준비해 둘게요.
+['word', 'w-tray', 'exKo'] | 삽관 트레이와 흡인 준비를 가져올게요. -> 삽관 트레이를 가져오고 흡인도 준비해 둘게요.
+['word', 'w-suction', 'exKo'] | 삽관 트레이와 흡인 준비를 가져올게요. -> 삽관 트레이를 가져오고 흡인도 준비해 둘게요.
+['word', 'w-ready', 'exKo'] | 삽관 트레이와 흡인 준비를 가져올게요. -> 삽관 트레이를 가져오고 흡인도 준비해 둘게요.
+['word', 'w-position', 'distractorsEn'] | ['portion', 'possess'] -> ['petition', 'possess']
+['word', 'w-cricoid', 'example'] | I'll hold cricoid pressure while you pass the tube. -> If you want cricoid pressure, tell me before you pass the tube.
+['word', 'w-cricoid', 'exKo'] | 당신이 튜브를 넣는 동안 윤상연골 압박을 유지할게요. -> 윤상연골 압박이 필요하면 튜브를 넣기 전에 말씀해 주세요.
+['word', 'w-pass', 'example'] | I'll hold cricoid pressure while you pass the tube. -> If you want cricoid pressure, tell me before you pass the tube.
+['word', 'w-pass', 'exKo'] | 당신이 튜브를 넣는 동안 윤상연골 압박을 유지할게요. -> 윤상연골 압박이 필요하면 튜브를 넣기 전에 말씀해 주세요.
+['word', 'w-tube', 'example'] | I'll hold cricoid pressure while you pass the tube. -> If you want cricoid pressure, tell me before you pass the tube.
+['word', 'w-tube', 'exKo'] | 당신이 튜브를 넣는 동안 윤상연골 압박을 유지할게요. -> 윤상연골 압박이 필요하면 튜브를 넣기 전에 말씀해 주세요.
+['word', 'w-oxygenation', 'decoyChips'] | ['ax', 'gene'] -> ['ex', 'gene']
+['word', 'w-support', 'exKo'] | 더 많은 지지를 위해 의사에게 에스컬레이션하고 있어요. -> 치료 지원이 더 필요해서 의사에게 보고하고 있어요.
+['word', 'w-lung', 'exKo'] | 신장, 폐, 혈압이 한꺼번에 기능을 멈추고 있어요. -> 신장, 폐, 혈압이 한꺼번에 무너지고 있어요.
+['word', 'w-fail', 'exKo'] | 신장, 폐, 혈압이 한꺼번에 기능을 멈추고 있어요. -> 신장, 폐, 혈압이 한꺼번에 무너지고 있어요.
+['word', 'w-trip', 'cue'] | 한 곳에서 다른 곳으로 이동하는 동안 거치는 길 -> 이식센터로 가는 길에 쓸 혈액과 약을 챙길 때
+['word', 'w-accept', 'exKo'] | 받아들이는 팀과 이송 시간을 확인할게요. -> 인수할 팀과 이송 시간을 확인할게요.
+['word', 'w-transport', 'ko'] | 운송 -> 수송
+['word', 'w-transport', 'exKo'] | 받아들이는 팀과 이송 시간을 확인할게요. -> 인수할 팀과 이송 시간을 확인할게요.
+['word', 'w-safe', 'distractorsEn'] | ['save', 'sane'] -> ['sage', 'sane']
+['word', 'w-news', 'cue'] | 새로 전해지는 소식이나 결과를 알려 주는 이야기 -> 이식이 어렵다는 결과를 가족에게 처음 전할 때
+['S', '0.1', 'decoy'] | to the family -> how hungry
+['S', '0.1', 'blank', 'options', 1, 'en'] | hungry -> feverish
+['S', '0.1', 'blank', 'options', 2, 'en'] | thirsty -> bloated
+['S', '0.1', 'blank', 'options', 3, 'en'] | chilly -> nauseous
+['S', '0.2', 'decoy'] | so that he -> more hungry
+['S', '0.2', 'distractorsKo'] | ['더 배고파하거나 초조해하면 저에게 알려 주세요.', '더 졸려하거나 목말라하면 저에게 알려 주세요.'] -> ['더 졸려하거나 초조해하면 의사께 말해 주세요.', '더 졸려하거나 초조해하면 간호사실에 알려 주세요.']
+['S', '0.2', 'blank', 'options', 1, 'en'] | thirsty -> calm
+['S', '0.2', 'blank', 'options', 2, 'en'] | hungry -> rested
+['S', '0.2', 'blank', 'options', 3, 'en'] | chilly -> cheerful
+['S', '0.3', 'decoy'] | than before -> against his lab results
+['S', '0.5', 'decoy'] | that you saw -> when you forget
+['S', '1.1', 'decoy'] | that we check -> the fever
+['S', '1.1', 'distractorsKo'] | ['암모니아 수치는 저희가 지켜보는 어지럼과 관련이 있어요.', '콜레스테롤 수치는 저희가 지켜보는 혼란과 관련이 있어요.'] -> ['암모니아 수치는 저희가 지켜보는 어지럼과 관련이 있어요.', '철분 수치는 저희가 지켜보는 혼란과 관련이 있어요.']
+['S', '1.1', 'icon'] | pill -> lab
+['S', '1.2', 'decoy'] | to see why -> if you're sleeping
+['S', '1.2', 'distractorsKo'] | ['퇴원해도 되는지 보려고 반복해서 검사해요.', '좋아지고 있는지 보려고 반복해서 팔을 소독해요.'] -> ['퇴원해도 되는지 보려고 반복해서 검사해요.', '간이식이 필요한지 보려고 반복해서 검사해요.']
+['S', '1.3', 'decoy'] | that your -> your blood can flow
+['S', '1.3', 'distractorsKo'] | ['응고 수치는 피가 얼마나 빨리 굳는지 알려 줘요.', '소변 수치는 피가 얼마나 잘 굳는지 알려 줘요.'] -> ['응고 수치는 피가 얼마나 잘 도는지 알려 줘요.', '소변 수치는 피가 얼마나 잘 굳는지 알려 줘요.']
+['S', '1.4', 'decoy'] | even if the -> because the kidney cells
+['S', '1.5', 'decoy'] | as for -> these meals
+['N', 1, 'slider', 'cue'] | Ammonia came back 80, then 120, then 190 on three checks. -> Ammonia came back 80, then 95, then 110 on three checks.
+['O', 1, 'lines', 1, 'icon'] | pill -> lab
+['O', 1, 'lines', 1, 'ko'] | 암모니아 수치는 저희가 지켜보는 혼란과 관련이 있어요 -> 그중 암모니아 수치는 저희가 지켜보는 혼란과 관련이 있어요
+['O', 1, 'lines', 1, 'en'] | The ammonia level relates to the confusion we watch for. -> One of them, the ammonia level, relates to the confusion we watch for.
+['S', '2.0', 'distractorsKo'] | ['네, 이 약은 소변을 통해 독소를 맑게 배출하도록 도와줘요.', '네, 이 약은 장을 통해 수분을 맑게 배출하도록 도와줘요.'] -> ['네, 이 약은 소변을 통해 독소를 몸 밖으로 내보내도록 도와줘요.', '네, 이 약은 장을 통해 수분을 몸 밖으로 내보내도록 도와줘요.']
+['S', '2.0', 'ko'] | 네, 이 약은 장을 통해 독소를 맑게 배출하도록 도와줘요. -> 네, 이 약은 장을 통해 독소를 몸 밖으로 내보내도록 도와줘요.
+['S', '2.0', 'words'] | ['w-medicine', 'w-clear', 'w-toxin', 'w-bowel'] -> ['w-medicine', 'w-toxin', 'w-bowel']
+['S', '2.1', 'decoy'] | no more than -> hard stools
+['S', '2.2', 'decoy'] | one piece of -> of clearing the bleeding
+['S', '2.2', 'distractorsKo'] | ['그건 가려움을 줄이는 데 중요한 부분이에요.', '그건 피를 맑게 하는 데 중요한 부분이에요.'] -> ['그건 가려움이 줄어들게 하는 데 중요한 부분이에요.', '그건 열이 내려가게 하는 데 중요한 부분이에요.']
+['S', '2.2', 'ko'] | 그건 혼란을 맑게 하는 데 중요한 부분이에요. -> 그건 혼란이 걷히게 하는 데 중요한 부분이에요.
+['S', '2.2', 'words'] | ['w-important', 'w-part', 'w-clear', 'w-confusion'] -> ['w-important', 'w-part', 'w-confusion']
+['S', '2.3', 'decoy'] | that is pulling -> by pulling sugar
+['S', '2.5', 'decoy'] | even though -> get too cold
+['S', '2.5', 'chunks'] | ['If the stools', 'get too watery', ', we can adjust', 'the dose', '.'] -> ['If the stools', 'get too watery', ", we'll let the doctor know", 'to adjust the dose', '.']
+['S', '2.5', 'distractorsKo'] | ['변이 너무 묽어지면 피부를 보호할 수 있어요.', '변이 너무 묽어지면 시트를 교체할 수 있어요.'] -> ['변이 너무 묽어지면 용량을 조정하도록 보호자에게 알릴게요.', '변이 너무 묽어지면 용량을 조정하도록 영양사에게 알릴게요.']
+['S', '2.5', 'why'] | 'If … too watery'는 조정이 필요한 조건을 분명히 말해 줘요. 'can'은 필요하면 조정할 수 있다는 가능성을 알려 환자를 안심시켜요. -> 'let the doctor know to adjust'는 용량을 정하는 사람이 처방자라는 점을 말해 줘요. 너무 묽은 변은 탈수와 전해질 이상 위험이 있어서 바로 알려요.
+['S', '2.5', 'icon'] | gear -> pager
+['S', '2.5', 'tag'] | 용량 조정 -> 용량 보고
+['S', '2.5', 'ko'] | 변이 너무 묽어지면 용량을 조정할 수 있어요. -> 변이 너무 묽어지면 용량을 조정하도록 의사에게 알릴게요.
+['S', '2.5', 'en'] | If the stools get too watery, we can adjust the dose. -> If the stools get too watery, we'll let the doctor know to adjust the dose.
+['N', 2, 'context', 'scenes', 2, 'fix'] | This dose helps your bowels clear the toxins that cloud your thinking. -> Lactulose is a medicine that helps your bowels get rid of the toxins that cloud your thinking.
+['N', 2, 'context', 'scenes', 2, 'en'] | Your dose is a nonabsorbable disaccharide that acidifies the colon. -> Lactulose is a nonabsorbable disaccharide that acidifies the colon.
+['N', 2, 'context', 'word'] | dose -> lactulose
+['N', 2, 'context', 'ko'] | 용량 -> 락툴로오스
+['N', 2, 'context', 'why'] | 의료진끼리는 nonabsorbable disaccharide 같은 약리 용어가 정확해요. 환자에게는 같은 dose를 이 약이 무슨 일을 하는지 쉬운 말로 풀어 주세요. -> 의료진끼리는 nonabsorbable disaccharide 같은 약리 용어가 정확해요. 환자에게는 같은 lactulose를 무슨 일을 하는 약인지 쉬운 말로 풀어 주세요.
+['N', 2, 'context', 'words'] | ['w-dose'] -> ['w-lactulose']
+['N', 2, 'swap', 'answer'] | a bowel movement -> have a bowel movement
+['N', 2, 'swap', 'options'] | ['a bowel movement', 'a stool', 'a defecation'] -> ['have a bowel movement', 'pass stool', 'defecate']
+['N', 2, 'swap', 'notes', 'a defecation'] | 격식을 갖춘 의학 용어라 환자에게는 어색해요. -> None
+['N', 2, 'swap', 'notes', 'pass stool'] | None -> 차트와 의료진 사이에서 쓰는 말이라 환자 대화에는 딱딱해요.
+['N', 2, 'swap', 'notes', 'defecate'] | None -> 격식을 갖춘 의학 용어라 환자에게는 어색해요.
+['N', 2, 'swap', 'notes', 'have a bowel movement'] | None -> 환자와 가족이 편하게 알아듣는 표준적인 말이에요.
+['N', 2, 'swap', 'notes', 'a stool'] | 차트와 의료진 사이에서 쓰는 말이라 환자 대화에는 약간 딱딱해요. -> None
+['N', 2, 'swap', 'notes', 'a bowel movement'] | 환자와 가족이 편하게 알아듣는 표준적인 말이에요. -> None
+['N', 2, 'swap', 'before'] | ['Please tell us each time you have ', 'a defecation', '.'] -> ['Please tell us each time you ', 'defecate', '.']
+['O', 2, 'why'] | 약이 하는 일을 먼저 알리고, 목표를 정한 뒤, 목표를 위해 횟수를 세고, 그 횟수가 넘치면 용량을 조정한다고 말해요. -> 약이 하는 일을 먼저 알리고, 목표를 정한 뒤, 목표를 위해 횟수를 세고, 그 횟수가 넘치면 용량 조정을 의사에게 알린다고 말해요.
+['O', 2, 'lines', 0, 'ko'] | 네, 이 약은 장을 통해 독소를 맑게 배출하도록 도와줘요 -> 네, 이 약은 장을 통해 독소를 몸 밖으로 내보내도록 도와줘요
+['O', 2, 'lines', 3, 'icon'] | gear -> pager
+['O', 2, 'lines', 3, 'note'] | 조정 -> 보고
+['O', 2, 'lines', 3, 'ko'] | 횟수가 많고 변이 묽어지면 용량을 조정할 수 있어요 -> 횟수가 많으면 용량을 조정하도록 의사에게 알릴게요
+['O', 2, 'lines', 3, 'en'] | If the count runs high and the stools get watery, we can adjust the dose. -> If the count runs high, we'll let the doctor know to adjust the dose.
+['S', '3.0', 'decoy'] | that it has -> Your kidney makes
+['S', '3.1', 'decoy'] | to look at -> for any freckles
+['S', '3.2', 'distractorsKo'] | ['새로운 통증이 있으면 바로 저에게 알려 주세요.', '새로운 가려움이 있으면 바로 저에게 알려 주세요.'] -> ['새로운 출혈이 있으면 바로 담당 의사에게 알려 주세요.', '새로운 출혈이 있으면 바로 거즈로 눌러 주세요.']
+['S', '3.3', 'decoy'] | to notice -> more wrinkles
+['S', '3.4', 'decoy'] | an electric -> an electric razor
+['S', '3.4', 'distractorsKo'] | ['입술에서 피가 나지 않게 부드러운 연고를 써 주세요.', '코에서 피가 나지 않게 부드러운 휴지를 써 주세요.'] -> ['잇몸에서 피가 나지 않게 치실은 잠시 쉬어 주세요.', '피부에서 피가 나지 않게 전기면도기를 써 주세요.']
+['S', '3.4', 'blank', 'options', 2, 'en'] | nose -> cheeks
+['S', '3.4', 'blank', 'options', 3, 'en'] | ears -> nostrils
+['S', '3.4', 'icon'] | lock -> shield
+['S', '3.5', 'decoy'] | for any -> your shoes
+['S', '3.5', 'distractorsKo'] | ['주사 부위에서 더 배어 나오는 게 있는지 알려 드릴게요.', '주사 부위에서 더 배어 나오는 게 있는지 사진 찍을게요.'] -> ['주사 부위에서 더 배어 나오면 바로 눌러 지혈할게요.', '주사 부위에서 배어 나온 거즈는 새것으로 갈게요.']
+['N', 3, 'context', 'scenes', 0, 'en'] | Any new bleed in liver failure is worrying because his INR is already high. -> Any new bleed in liver failure needs a call, even a small one.
+['O', 3, 'lines', 2, 'icon'] | lock -> shield
+['S', '4.0', 'decoy'] | after it was -> Let's warm
+['S', '4.0', 'distractorsKo'] | ['혈당을 재확인하고 나면 손 소독제를 씁시다.', '혈당을 재확인하고 남은 포도당은 냉장고에 넣읍시다.'] -> ['혈당을 재확인하고 다 쓴 검사지는 버립시다.', '혈당을 재확인하고 측정기 날짜는 맞춰 둡시다.']
+['S', '4.1', 'decoy'] | every so -> her visitors
+['S', '4.2', 'decoy'] | for her -> in the fridge
+['S', '4.2', 'blank', 'options', 1, 'en'] | salt -> oxygen
+['S', '4.2', 'blank', 'options', 2, 'en'] | water -> pulse
+['S', '4.3', 'decoy'] | yet again -> to tape it
+['S', '4.3', 'chunks'] | ['Potassium is low too', ", so I'll add it", 'to the next', 'bag', '.'] -> ['Potassium is low too', ", so I'll get", 'an order', 'to replace it', '.']
+['S', '4.3', 'distractorsKo'] | ['칼륨도 낮아서 다음 수액백에 라벨을 붙일게요.', '칼륨도 낮아서 다음 수액백은 선반에 올릴게요.'] -> ['칼륨도 낮아서 보충 처방을 약제부에 보낼게요.', '칼륨도 낮아서 재검 처방을 받을게요.']
+['S', '4.3', 'why'] | 'so'로 이유와 행동을 이으면 왜 수액에 더하는지 한 번에 전달돼요. 'too'는 앞의 혈당처럼 이것도 낮다는 뜻이에요. -> 'so'로 이유와 행동을 이으면 왜 처방을 받는지 한 번에 전달돼요. 정맥 칼륨은 고위험 약이라 처방을 받아서, 미리 섞인 백이나 약제부 조제로 줘요.
+['S', '4.3', 'blank', 'answer'] | bag -> replace
+['S', '4.3', 'blank', 'options', 0, 'en'] | bag -> replace
+['S', '4.3', 'blank', 'options', 1, 'en'] | bed -> remove
+['S', '4.3', 'blank', 'options', 2, 'en'] | shelf -> measure
+['S', '4.3', 'blank', 'options', 3, 'en'] | cart -> store
+['S', '4.3', 'icon'] | pill -> pager
+['S', '4.3', 'tag'] | 칼륨 보충 -> 처방 요청
+['S', '4.3', 'ko'] | 칼륨도 낮아서 다음 수액백에 추가할게요. -> 칼륨도 낮아서 보충 처방을 받을게요.
+['S', '4.3', 'words'] | ['w-potassium', 'w-low', 'w-add', 'w-bag'] -> ['w-potassium', 'w-low']
+['S', '4.3', 'en'] | Potassium is low too, so I'll add it to the next bag. -> Potassium is low too, so I'll get an order to replace it.
+['S', '4.4', 'decoy'] | to watch -> her breathing
+['S', '4.5', 'decoy'] | once the -> for the chaplain
+['S', '4.5', 'distractorsKo'] | ['혈당이 오르지 않으면 의사에게 소변량을 알릴게요.', '혈당이 오르지 않으면 의사에게 체중을 알릴게요.'] -> ['혈당이 오르지 않으면 영양사에게 알릴게요.', '혈당이 오르지 않으면 약사에게 알릴게요.']
+['N', 4, 'slider', 'scale'] | ['a bit low', 'low', 'critically low'] -> ['low-normal', 'low', 'critically low']
+['N', 4, 'slider', 'answerAt'] | 0 -> 1
+['N', 4, 'slider', 'example'] | Her glucose is a bit low. -> Her glucose is low at 66.
+['N', 4, 'slider', 'why'] | 66은 기준선(70) 바로 아래라 a bit low예요. 증상이 없어도 병원 저혈당 프로토콜대로 처치하고 다시 확인해요. 간부전에서는 혈당이 빨리 더 떨어질 수 있어서 자주 재요. -> 66은 70 미만이라 저혈당(ADA 1단계)이고 low예요. 54 미만이면 2단계로 critically low 쪽이에요. 간부전에서는 혈당이 빨리 더 떨어질 수 있어 증상이 없어도 병원 저혈당 프로토콜대로 바로 처치하고 다시 재요.
+['N', 4, 'slider', 'exKo'] | 그녀의 혈당이 조금 낮아요. -> 혈당이 66으로 낮아요.
+['N', 4, 'swap', 'options'] | ['potassium', 'serum K+', 'hypokalemic status'] -> ['potassium', 'serum K+', 'serum potassium concentration']
+['N', 4, 'swap', 'notes', 'serum potassium concentration'] | None -> 정확하지만 긴 검사 용어라 환자에게는 딱딱해요.
+['N', 4, 'swap', 'notes', 'hypokalemic status'] | 어려운 진단 용어라 불안만 키워요. -> None
+['O', 4, 'ko'] | 저혈당·전해질 4문장 순서 -> 저혈당 대응 4문장 순서
+['O', 4, 'why'] | 간이 혈당을 못 지킨다는 이유를 말하고 포도당을 확인해 주며, 칼륨 보충을 이어 말한 뒤 모든 조치에도 혈당이 안 오르면 의사에게 알려요. -> 간이 혈당을 못 지킨다는 이유를 말하고, 낮으면 포도당을 준 뒤 15분에 다시 재며, 그래도 안 오르면 의사에게 알려요.
+['O', 4, 'lines', 2, 'icon'] | pill -> redo
+['O', 4, 'lines', 2, 'note'] | 보충 -> 재확인
+['O', 4, 'lines', 2, 'ko'] | 칼륨도 낮아서 다음 수액백에 추가할게요 -> 포도당을 주고 15분 뒤 다시 재 봅시다
+['O', 4, 'lines', 2, 'en'] | Her potassium is low too, so I'll add it to the next bag. -> Let's recheck it fifteen minutes after the dextrose.
+['O', 4, 'lines', 3, 'ko'] | 두 조치 뒤에도 혈당이 오르지 않으면 의사에게 알릴게요 -> 그래도 오르지 않으면 의사에게 알릴게요
+['O', 4, 'lines', 3, 'en'] | If the sugar still won't come up after both fixes, I'll flag this for the physician. -> If it still won't come up after that, I'll flag this for the physician.
+['S', '5.0', 'decoy'] | that could -> can cause
+['S', '5.1', 'decoy'] | if we are -> a dental tap
+['S', '5.1', 'distractorsKo'] | ['배양 검사를 하고 장갑을 벗고 손을 씻읍시다.', '배양 검사를 하고 검체 라벨을 확인합시다.'] -> ['배양 검사를 하고 천자 동의서를 받아 둡시다.', '배양 검사를 하고 검체 라벨을 확인합시다.']
+['S', '5.2', 'decoy'] | then keep -> the cafeteria
+['S', '5.2', 'distractorsKo'] | ['의사에게 알리고 병실 위치를 확인할게요.', '의사에게 알리고 보호자 연락처를 확인할게요.'] -> ['약사에게 알리고 검사 절차를 시작할게요.', '감염관리실에 알리고 검사 절차를 시작할게요.']
+['S', '5.2', 'blank', 'options', 1, 'en'] | clerk -> pharmacist
+['S', '5.2', 'blank', 'options', 2, 'en'] | janitor -> registrar
+['S', '5.2', 'blank', 'options', 3, 'en'] | driver -> chaplain
+['S', '5.3', 'decoy'] | to be -> to 98.6
+['S', '5.3', 'distractorsKo'] | ['두 시간 전에 체온이 101.5도까지 치솟았어요.', '한 시간 전에 체온이 100.5도까지 치솟았어요.'] -> ['두 시간 전에 체온이 화씨 101.5도(약 38.6도)까지 치솟았어요.', '한 시간 전에 체온이 화씨 100.5도(약 38.1도)까지 치솟았어요.']
+['S', '5.3', 'ko'] | 한 시간 전에 체온이 101.5도까지 치솟았어요. -> 한 시간 전에 체온이 화씨 101.5도(약 38.6도)까지 치솟았어요.
+['S', '5.4', 'decoy'] | at one -> times three
+['S', '5.5', 'decoy'] | if we -> a dental X-ray
+['S', '5.5', 'blank', 'options', 2, 'en'] | thoracentesis -> colonoscopy
+['O', 5, 'why'] | 열이 오른 사실을 먼저 말하고, 그 의미를 설명한 뒤, 확인을 위한 검사를 정하고 모든 내용을 의사에게 알리며 검사를 시작해요. -> 열이 오른 사실과 그 의미를 말한 뒤, 먼저 의사에게 알리고, 그다음 배양과 진단적 천자를 함께 정해요.
+['O', 5, 'lines', 0, 'ko'] | 한 시간 전에 체온이 101.5도까지 치솟았어요 -> 한 시간 전에 체온이 화씨 101.5도(약 38.6도)까지 치솟았어요
+['O', 5, 'lines', 2, 'icon'] | lab -> pager
+['O', 5, 'lines', 2, 'note'] | 검사 -> 보고
+['O', 5, 'lines', 2, 'ko'] | 확인하려면 서로 다른 부위에서 배양 검사를 하고 진단적 천자를 고려합시다 -> 그걸 지금 바로 의사에게 알릴게요
+['O', 5, 'lines', 2, 'en'] | To confirm, let's get cultures from different sites and consider a diagnostic tap. -> I'll notify the physician about that right now.
+['O', 5, 'lines', 3, 'icon'] | pager -> lab
+['O', 5, 'lines', 3, 'note'] | 보고 -> 검사
+['O', 5, 'lines', 3, 'ko'] | 그 모든 걸 의사에게 알리고 검사 절차를 시작할게요 -> 의사가 알고 나면 배양 검사를 하고 진단적 천자를 고려합시다
+['O', 5, 'lines', 3, 'en'] | I'll notify the physician about all of that and start the workup. -> Once they're aware, let's get cultures and consider a diagnostic tap.
+['S', '6.0', 'decoy'] | such as the -> or allergies
+['S', '6.0', 'blank', 'options', 2, 'en'] | explain -> prevent
+['S', '6.1', 'decoy'] | for the cause -> for the doctor
+['S', '6.2', 'decoy'] | to help -> and other tests
+['S', '6.3', 'decoy'] | on the way -> of bleeding
+['S', '6.4', 'decoy'] | might be -> , or a cold drink
+['S', '6.4', 'distractorsKo'] | ['감염, 출혈, 혹은 약 용량을 늘린 것이 이걸 유발할 수 있어요.', '감염, 출혈, 혹은 약속을 놓친 것이 이걸 유발할 수 있어요.'] -> ['감염, 출혈, 혹은 약을 한 번 늘린 것이 이걸 일으킬 수 있어요.', '감염, 출혈, 혹은 약속을 한 번 미룬 것이 이걸 일으킬 수 있어요.']
+['S', '6.4', 'ko'] | 감염, 출혈, 혹은 약 용량을 놓친 것이 이걸 유발할 수 있어요. -> 감염, 출혈, 혹은 약을 한 번 거른 것이 이걸 일으킬 수 있어요.
+['S', '6.5', 'decoy'] | as soon -> , his skin usually clears
+['S', '6.5', 'words'] | ['w-treat', 'w-trigger', 'w-mind', 'w-usually'] -> ['w-treat', 'w-trigger', 'w-mind', 'w-usually', 'w-clear']
+['N', 6, 'context', 'scenes', 0, 'en'] | Look for the trigger: infection, a GI bleed, or electrolytes. -> Look for the precipitant: infection, a GI bleed, or electrolytes.
+['N', 6, 'context', 'scenes', 1, 'en'] | The trigger is likely infection; cultures were sent and antibiotics ordered. -> The precipitant is likely infection; cultures were sent and antibiotics ordered.
+['N', 6, 'context', 'scenes', 2, 'en'] | No precipitating factor or trigger has been identified yet. -> No precipitant has been identified yet.
+['N', 6, 'context', 'word'] | trigger -> precipitant
+['N', 6, 'context', 'why'] | 의료진끼리는 precipitating factor나 trigger가 정확해요. 보호자에게는 같은 trigger를 무엇이 이걸 일으켰는지 찾고 있다는 쉬운 말로 풀어 주세요. -> 의료진끼리는 precipitant가 짧고 정확한 말이에요. 보호자에게는 같은 precipitant를 무엇이 이걸 일으켰는지 찾고 있다는 쉬운 말로 풀어 주세요.
+['S', '7.0', 'decoy'] | so that we -> with fluids
+['S', '7.0', 'distractorsKo'] | ['시술 직전에 마스크를 착용합시다.', '시술 직전에 부위를 소독합시다.'] -> ['시술 직전에 수혈 동의서를 받읍시다.', '시술 직전에 제제를 데워 둡시다.']
+['S', '7.0', 'blank', 'options', 1, 'en'] | shift -> bath
+['S', '7.0', 'blank', 'options', 2, 'en'] | lunch -> rounds
+['S', '7.0', 'blank', 'options', 3, 'en'] | meeting -> nap
+['S', '7.1', 'decoy'] | ready for -> and hold the tray
+['S', '7.1', 'distractorsKo'] | ['혈액을 준비해 두고 손 위생을 조심스럽게 할게요.', '혈액을 준비해 두고 장갑을 조심스럽게 갈아 낄게요.'] -> ['혈액을 준비해 두고 압박 부위를 손끝으로 찾을게요.', '혈액은행에 연락해 두고 압박을 조심스럽게 유지할게요.']
+['S', '7.1', 'why'] | 'I'll have blood available'은 필요할 때 바로 쓰도록 미리 챙겨 둔다는 뜻이에요. 'carefully'는 압박을 조심스럽게도 단단히 유지한다는 뜻이에요. -> 'I'll have blood available'은 필요할 때 바로 쓰도록 미리 챙겨 둔다는 뜻이에요. 'carefully'는 서두르지 않고 빈틈없이 누른다는 뜻이에요. 응고가 약하면 부위가 오래 새서 압박을 끝까지 유지해요.
+['S', '7.2', 'decoy'] | to watch -> the menu
+['S', '7.3', 'decoy'] | after we -> before the huddle
+['S', '7.3', 'chunks'] | ['His INR is high', ", so we'll give", 'plasma', 'before the line', '.'] -> ['His INR is high', ", so I'll ask", 'whether the team wants plasma', 'before the line', '.']
+['S', '7.3', 'distractorsKo'] | ['INR이 높아서 라인을 넣기 전에 가운을 입을게요.', 'INR이 높아서 라인을 넣기 전에 키트를 펼게요.'] -> ['INR이 높아서 라인 전에 혈장이 필요한지 수술팀에 물어볼게요.', 'INR이 높아서 라인 뒤에 혈장이 필요한지 팀에 물어볼게요.']
+['S', '7.3', 'why'] | 'so'로 이유와 행동을 이어서 왜 혈장을 주는지 팀이 한 번에 알아들어요. 'before the line'은 시점을 못 박아요. -> 'ask whether'는 INR 수치만 보고 혈장을 정하지 않고 처방자와 팀이 판단하게 맡겨요. 간 질환에서는 INR이 출혈 위험을 잘 보여 주지 않아서, 혈장은 출혈이 있거나 고위험 시술일 때 처방에 따라 줘요.
+['S', '7.3', 'blank', 'options', 2, 'en'] | water -> albumin
+['S', '7.3', 'blank', 'options', 3, 'en'] | ice -> dextrose
+['S', '7.3', 'icon'] | pill -> speech
+['S', '7.3', 'tag'] | 혈장 투여 -> 혈장 문의
+['S', '7.3', 'ko'] | INR이 높아서 라인을 넣기 전에 혈장을 줄게요. -> INR이 높아서 라인 전에 혈장이 필요한지 팀에 물어볼게요.
+['S', '7.3', 'words'] | ['w-inr', 'w-high', 'w-give', 'w-plasma', 'w-line'] -> ['w-inr', 'w-high', 'w-team', 'w-plasma', 'w-line']
+['S', '7.3', 'en'] | His INR is high, so we'll give plasma before the line. -> His INR is high, so I'll ask whether the team wants plasma before the line.
+['S', '7.4', 'decoy'] | in the -> at the wrist
+['S', '7.4', 'chunks'] | ["We'll hold firm pressure", 'at the site', 'after the line', 'goes in', '.'] -> ["We'll hold", 'firm pressure', 'at the site', 'after the line goes in', '.']
+['S', '7.4', 'distractorsKo'] | ['라인을 넣은 뒤 부위에 날짜 스티커를 붙일게요.', '라인을 넣은 뒤 시술 카트를 벽 쪽으로 밀게요.'] -> ['라인을 넣은 뒤 부위에 지혈 거즈를 댈게요.', '라인을 넣은 뒤 압박을 풀고 부위를 살필게요.']
+['S', '7.5', 'decoy'] | even if -> Sodium is also low
+['S', '7.5', 'chunks'] | ['Platelets are', 'also low', ", so we'll transfuse", 'before the procedure', '.'] -> ['Platelets are also low', ", so I'll ask", 'whether to transfuse', 'before the procedure', '.']
+['S', '7.5', 'distractorsKo'] | ['혈소판도 낮아서 시술 전에 동의서 받을게요.', '혈소판도 낮아서 시술 전에 손 씻을게요.'] -> ['혈소판도 낮아서 시술 전에 동의서 받을게요.', '혈소판도 낮아서 시술 전에 수치를 다시 볼게요.']
+['S', '7.5', 'why'] | 'also'는 INR에 더해 혈소판도 낮다는 뜻이에요. 응고인자와 혈소판이 모두 모자라면 출혈 위험이 더 커요. -> 'also'는 INR에 더해 혈소판도 낮다는 뜻이고, 'ask whether'는 수혈 여부를 처방자와 정한다는 뜻이에요. 응고인자와 혈소판이 모두 모자라면 출혈 위험이 더 커요.
+['S', '7.5', 'icon'] | pill -> speech
+['S', '7.5', 'tag'] | 혈소판 수혈 -> 수혈 문의
+['S', '7.5', 'ko'] | 혈소판도 낮아서 시술 전에 수혈할게요. -> 혈소판도 낮아서 시술 전에 수혈할지 물어볼게요.
+['S', '7.5', 'en'] | Platelets are also low, so we'll transfuse before the procedure. -> Platelets are also low, so I'll ask whether to transfuse before the procedure.
+['N', 7, 'slider', 'why'] | INR 4.8에 정맥주사 자리에서 스며 나오면 very high예요. 출혈 위험이 크니 바로 의사에게 알려요. 혈장 같은 교정은 처방과 시술 계획에 따라 하고, 간부전에서는 INR이 간의 합성 기능을 보여 주는 값이기도 해요. -> INR 4.8에 정맥주사 자리에서 스며 나오면 very high예요. 출혈 위험이 크니 바로 의사에게 알려요. 혈장 같은 교정은 처방과 시술 계획에 따라 하고, 간부전에서는 INR이 간의 합성 기능을 보여 주는 값이기도 해요. 다만 간 질환에서는 INR만으로 출혈 위험을 알 수 없어서, 수치만 보고 혈장을 주지는 않아요.
+['N', 7, 'context', 'scenes', 0, 'en'] | Give plasma if he bleeds or before an invasive procedure. -> Give plasma if he's actively bleeding, not just for the INR.
+['N', 7, 'context', 'scenes', 2, 'en'] | Your plasma, specifically FFP, supplies exogenous coagulation factors. -> This plasma, specifically FFP, supplies exogenous coagulation factors.
+['N', 7, 'swap', 'options'] | ['hold firm pressure', 'apply sustained manual compression', 'tamponade the site'] -> ['hold firm pressure', 'apply sustained manual compression', 'achieve hemostatic tamponade']
+['N', 7, 'swap', 'notes', 'achieve hemostatic tamponade'] | None -> 의료진끼리 쓰는 말이라 환자는 못 알아들어요.
+['N', 7, 'swap', 'notes', 'tamponade the site'] | 의료진끼리 쓰는 말이라 환자는 못 알아들어요. -> None
+['O', 7, 'why'] | INR을 교정하고 혈소판까지 채운 뒤, 라인을 넣은 후 압박을 유지하고, 마지막으로 응고 수치를 다시 확인하며 출혈을 지켜봐요. -> INR이 높다는 말과 함께 혈장이 필요한지 팀에 묻고, 혈소판도 낮다는 말로 수혈 여부를 물은 뒤, 라인을 넣은 후 압박을 유지하고 마지막으로 응고 수치를 다시 확인하며 출혈을 지켜봐요.
+['O', 7, 'lines', 0, 'icon'] | pill -> speech
+['O', 7, 'lines', 0, 'note'] | 교정 -> 혈장
+['O', 7, 'lines', 0, 'ko'] | INR이 높아서 라인을 넣기 전에 혈장을 줄게요 -> INR이 높아서 라인 전에 혈장이 필요한지 팀에 물어볼게요
+['O', 7, 'lines', 0, 'en'] | His INR is high, so we'll give plasma before the line. -> His INR is high, so I'll ask whether the team wants plasma before the line.
+['O', 7, 'lines', 1, 'icon'] | pill -> speech
+['O', 7, 'lines', 1, 'note'] | 수혈 -> 혈소판
+['O', 7, 'lines', 1, 'ko'] | 혈소판도 낮아서 시술 전에 수혈할게요 -> 혈소판도 낮아서 시술 전에 수혈할지 물어볼게요
+['O', 7, 'lines', 1, 'en'] | Platelets are also low, so we'll transfuse before the procedure. -> Platelets are also low, so I'll ask whether to transfuse before the procedure.
+['S', '8.0', 'decoy'] | to watch -> his hairline
+['S', '8.0', 'distractorsKo'] | ['동공 변화는 뇌압이 오르는 첫 신호예요.', '신경학적 검진은 의식과 반사를 함께 봐요.'] -> ['동공은 펜라이트로 양쪽을 비교해 봐요.', '신경학적 검진은 의식과 반사를 함께 봐요.']
+['S', '8.0', 'why'] | 'closely'는 한 번 보고 끝내지 않고 계속 살핀다는 뜻이에요. 신경학적 검진과 동공은 뇌압 변화를 가장 먼저 보여 줘요. -> 'closely'는 한 번 보고 끝내지 않고 계속 살핀다는 뜻이에요. 신경학적 검진의 의식 변화가 먼저 오고, 동공 변화는 더 늦은 신호라 둘을 함께 봐요.
+['S', '8.1', 'decoy'] | be sure -> in noise
+['S', '8.1', 'distractorsKo'] | ['머리를 높이고 시트를 매끈하게 펴세요.', '머리를 높이고 베개 커버를 교체하세요.'] -> ['머리를 높이고 목이 꺾이지 않게 하세요.', '머리를 높이고 침대 각도 표시를 맞추세요.']
+['S', '8.1', 'icon'] | baby -> shield
+['S', '8.2', 'decoy'] | so that -> the chaplain
+['S', '8.2', 'distractorsKo'] | ['정신 상태가 악화되면 팀에 체온을 알릴게요.', '정신 상태가 악화되면 팀에 맥박을 알릴게요.'] -> ['정신 상태가 악화되면 가족에게 알릴게요.', '정신 상태가 악화되면 약국에 알려요.']
+['S', '8.2', 'blank', 'answer'] | alert -> worsens
+['S', '8.2', 'blank', 'options', 0, 'en'] | alert -> worsens
+['S', '8.2', 'blank', 'options', 1, 'en'] | thank -> improves
+['S', '8.2', 'blank', 'options', 2, 'en'] | join -> stabilizes
+['S', '8.2', 'blank', 'options', 3, 'en'] | praise -> normalizes
+['S', '8.3', 'decoy'] | than the -> compared to his ear
+['S', '8.3', 'chunks'] | ['His right pupil', 'looks a little', 'sluggish', 'compared to the left', '.'] -> ['His right pupil', 'looks', 'a little sluggish', 'compared to the left', '.']
+['S', '8.4', 'decoy'] | at the -> around his ankle
+['S', '8.4', 'chunks'] | ["We'll keep", 'his head', 'at thirty degrees', 'and avoid tight neck lines', '.'] -> ["We'll keep", 'his head', 'at thirty degrees', 'and avoid anything tight', 'around his neck', '.']
+['S', '8.4', 'distractorsKo'] | ['머리를 30도로 유지하고 침상 옆 조명을 낮출게요.', '머리를 30도로 유지하고 발치 담요를 정리할게요.'] -> ['머리를 30도로 유지하고 각도 표시를 침대에 붙일게요.', '머리를 30도로 유지하고 무릎 밑 베개를 뺄게요.']
+['S', '8.4', 'why'] | 각도를 숫자로 말하면 팀이 같은 높이로 맞춰요. 'tight neck lines'는 목 정맥 흐름을 막을 수 있어서 피해요. -> 각도를 숫자로 말하면 팀이 같은 높이로 맞춰요. 목을 조이는 것은 머리에서 내려오는 정맥 혈류를 막을 수 있어서 피해요.
+['S', '8.4', 'icon'] | baby -> shield
+['S', '8.4', 'ko'] | 머리를 30도로 유지하고 목이 조이는 라인을 피할게요. -> 머리를 30도로 유지하고 목을 조이는 것은 피할게요.
+['S', '8.4', 'words'] | ['w-keep', 'w-degree', 'w-avoid', 'w-tight', 'w-neck', 'w-line'] -> ['w-keep', 'w-degree', 'w-avoid', 'w-tight', 'w-neck']
+['S', '8.4', 'en'] | We'll keep his head at thirty degrees and avoid tight neck lines. -> We'll keep his head at thirty degrees and avoid anything tight around his neck.
+['S', '8.5', 'decoy'] | as soon -> a family matter
+['S', '8.5', 'distractorsKo'] | ['뇌압이 오르면 동공이 가장 먼저 반응하기 시작해요.', '뇌압이 더 오르면 의식이 빠르게 떨어져요.'] -> ['더 큰 문제가 되기 전에 지금 가족에게 연락할게요.', '뇌압이 더 오르면 의식이 빠르게 떨어져요.']
+['S', '8.5', 'blank', 'options', 1, 'en'] | longer -> smaller
+['S', '8.5', 'blank', 'options', 2, 'en'] | newer -> simpler
+['S', '8.5', 'blank', 'options', 3, 'en'] | older -> milder
+['O', 8, 'lines', 2, 'icon'] | baby -> shield
+['O', 8, 'lines', 2, 'ko'] | 그와 함께 머리를 높이고 압력이 치솟는 걸 피합시다 -> 그들을 기다리는 동안 머리를 높이고 압력이 치솟는 걸 피하세요
+['O', 8, 'lines', 2, 'en'] | Alongside that, let's keep his head elevated and avoid spikes in pressure. -> While we wait for them, keep his head elevated and avoid spikes in pressure.
+['S', '9.0', 'decoy'] | to track -> his hair growth
+['S', '9.1', 'decoy'] | might have -> and new glasses
+['S', '9.2', 'decoy'] | of the -> the cashier
+['S', '9.2', 'distractorsKo'] | ['배출량이 떨어지는 것에 대해 의사에게 혈압을 알릴게요.', '배출량이 떨어지는 것에 대해 의사에게 체중을 알릴게요.'] -> ['배출량이 떨어지는 것에 대해 보호자에게 알릴게요.', '배출량이 떨어지는 것에 대해 약국에 알릴게요.']
+['S', '9.2', 'blank', 'options', 3, 'en'] | daily -> stable
+['S', '9.3', 'decoy'] | even with -> His lungs
+['S', '9.4', 'decoy'] | when other -> if the labs
+['S', '9.5', 'decoy'] | to give -> the walking challenge
+['S', '9.5', 'distractorsKo'] | ['알부민 시험적 투여를 하고 남은 병은 폐기합시다.', '알부민 시험적 투여를 하고 라인 연결부를 닦읍시다.'] -> ['알부민 시험적 투여를 하고 남은 병은 폐기합시다.', '알부민 시험적 투여를 하고 빈 포장은 따로 모읍시다.']
+['N', 9, 'swap', 'why'] | 환자에게는 먼저 쉬운 설명을 하고 필요하면 이름을 덧붙여요. 알부민은 헌혈 혈장에서 만든 제제라서 이 점은 의사가 동의 과정에서 설명해요. -> 환자에게는 먼저 쉬운 설명을 하고 필요하면 이름을 덧붙여요. 알부민은 헌혈 혈장에서 만든 제제라, 종교적 이유로 혈액 제제를 거부하는 환자는 미리 확인해요.
+['O', 9, 'lines', 2, 'ko'] | 그 모든 것에 대해 지금 의사에게 알릴게요 -> 그 가능성을 지금 의사에게 알릴게요
+['O', 9, 'lines', 2, 'en'] | I'll notify the physician about all of that now. -> I'll notify the physician about that possibility now.
+['S', '10.0', 'decoy'] | if he is -> with the family
+['S', '10.0', 'why'] | 'whether he's a candidate'는 아직 결정이 아니라 평가 중이라는 점을 정직하게 말해요. 이식팀이 대상 여부를 판단해요. -> 'whether he's a candidate'는 아직 결정이 아니라 평가 중이라는 점을 정직하게 말해요. 'whether'는 결과를 미리 말하지 않아서 가족이 섣부르게 기대하거나 실망하지 않게 해요.
+['S', '10.1', 'decoy'] | to decide -> helps lower
+['S', '10.1', 'blank', 'options', 2, 'en'] | color -> language
+['S', '10.1', 'blank', 'options', 3, 'en'] | length -> room
+['S', '10.2', 'decoy'] | to meet -> with the billing
+['S', '10.2', 'blank', 'options', 1, 'en'] | pharmacist -> donor
+['S', '10.2', 'blank', 'options', 2, 'en'] | janitor -> budget
+['S', '10.2', 'blank', 'options', 3, 'en'] | driver -> schedule
+['S', '10.3', 'decoy'] | does not -> he'll get a bill
+['S', '10.3', 'blank', 'options', 1, 'en'] | visit -> invoice
+['S', '10.3', 'blank', 'options', 2, 'en'] | bill -> upgrade
+['S', '10.3', 'blank', 'options', 3, 'en'] | rest -> award
+['S', '10.5', 'decoy'] | after the -> your calls
+['N', 10, 'slider', 'example'] | The urgency is emergent. -> His case is emergent.
+['N', 10, 'slider', 'exKo'] | 시급성이 아주 높아요. -> 응급으로 다뤄야 하는 경우예요.
+['S', '11.0', 'decoy'] | at the -> per his wish
+['S', '11.0', 'distractorsKo'] | ['네, 프로토콜에 따라 NAC 주입 후 활력징후를 잽시다.', '네, 프로토콜에 따라 NAC 주입 후 가운을 벗읍시다.'] -> ['네, 프로토콜에 따라 NAC 주입 후 활력징후를 잽시다.', '네, 프로토콜에 따라 체중부터 잽시다.']
+['S', '11.1', 'decoy'] | to the -> the diet
+['S', '11.1', 'distractorsKo'] | ['NAC는 초기에 반응이 잘 생겨요.', '용량은 체중에 맞춰 정확하게 계산해요.'] -> ['NAC는 주입 초기에 이상 반응이 가장 잘 생겨요.', '용량은 체중에 맞춰 정확하게 계산해서 줘요.']
+['S', '11.1', 'blank', 'options', 1, 'en'] | labeling -> billing
+['S', '11.1', 'blank', 'options', 2, 'en'] | expiry -> insurance
+['S', '11.1', 'blank', 'options', 3, 'en'] | storage -> discharge
+['S', '11.1', 'ko'] | 용량을 확인하고 반응을 모니터링할게요. -> 용량을 확인하고 이상 반응이 있는지 모니터링할게요.
+['S', '11.2', 'decoy'] | a good -> the kidneys
+['S', '11.3', 'decoy'] | that this -> His ammonia level
+['S', '11.4', 'decoy'] | if any -> for any new visitors
+['S', '11.4', 'chunks'] | ["I'll watch", 'his labs', 'closely', 'for any allergic reaction', '.'] -> ["I'll watch him", 'closely', 'for any allergic reaction', '.']
+['S', '11.4', 'why'] | 'for any allergic reaction'은 무엇을 찾는지 분명히 말해요. 'closely'는 계속 살핀다는 뜻이에요. -> 'for any allergic reaction'은 무엇을 찾는지 분명히 말해요. NAC 반응은 주입 초반에 두드러기·쌕쌕거림·저혈압으로 나타나서 검사 수치가 아니라 환자를 직접 보며 찾아요.
+['S', '11.4', 'ko'] | 알레르기 반응이 있는지 검사를 자세히 지켜볼게요. -> 알레르기 반응이 있는지 자세히 지켜볼게요.
+['S', '11.4', 'words'] | ['w-watch', 'w-lab', 'w-closely', 'w-allergic', 'w-reaction'] -> ['w-watch', 'w-closely', 'w-allergic', 'w-reaction']
+['S', '11.4', 'en'] | I'll watch his labs closely for any allergic reaction. -> I'll watch him closely for any allergic reaction.
+['S', '11.5', 'decoy'] | as soon -> his kidney does
+['S', '11.5', 'blank', 'options', 1, 'en'] | kidneys -> heart
+['S', '11.5', 'blank', 'options', 2, 'en'] | lungs -> brain
+['S', '11.5', 'blank', 'options', 3, 'en'] | heart -> pancreas
+['S', '12.0', 'decoy'] | keep to -> and room care
+['S', '12.0', 'distractorsKo'] | ['철저한 손 위생과 침실 청소를 유지합시다.', '철저한 장비 청소와 라인 관리를 유지합시다.'] -> ['철저한 손 위생은 라인을 만지기 전에 해요.', '라인 관리에는 매일 드레싱 확인이 들어가요.']
+['S', '12.1', 'decoy'] | in the -> his meals
+['S', '12.1', 'distractorsKo'] | ['활력징후는 패혈증에서 제일 빨리 흔들려요.', '패혈증은 간부전 환자에서 빠르게 나빠져요.'] -> ['활력징후는 패혈증 초기에 제일 빨리 흔들리기 시작해요.', '간부전 환자는 패혈증이 생기면 빠르게 나빠질 수 있어요.']
+['S', '12.1', 'ko'] | 조기 패혈증을 위해 활력징후와 검사를 지켜볼게요. -> 패혈증 초기 징후가 있는지 활력징후와 검사 결과를 지켜볼게요.
+['S', '12.2', 'decoy'] | once the -> We'll start vitamins
+['S', '12.2', 'distractorsKo'] | ['징후가 나타나면 활력징후 기기를 빠르게 가져올게요.', '징후가 나타나면 소독 솜을 빠르게 챙길게요.'] -> ['징후가 나타나면 항생제 알레르기를 빠르게 확인할게요.', '징후가 나타나면 배양을 빠르게 뽑을게요.']
+['S', '12.2', 'blank', 'options', 2, 'en'] | snacks -> antacids
+['S', '12.2', 'blank', 'options', 3, 'en'] | tests -> eyedrops
+['S', '12.3', 'decoy'] | likely to -> and nails
+['S', '12.4', 'decoy'] | and then -> Let's change his gown
+['S', '12.4', 'distractorsKo'] | ['드레싱을 교체하고 부위에 날짜를 적읍시다.', '드레싱을 교체하고 쓰레기통 뚜껑을 닫읍시다.'] -> ['드레싱을 교체하고 부위에 날짜를 적읍시다.', '드레싱을 교체하고 떼어 낸 거즈는 버립시다.']
+['S', '12.5', 'decoy'] | so we -> — I'll call the kitchen
+['S', '12.5', 'chunks'] | ['If his fever', 'climbs', ", we won't wait", 'to start treatment', '.'] -> ['If his fever', 'climbs', ", I won't wait", "— I'll call the team", 'right away', '.']
+['S', '12.5', 'distractorsKo'] | ['열이 오르면 치료 시작을 가족에게 알릴 거예요.', '열이 오르면 시원한 물을 가져다 드릴 거예요.'] -> ['열이 오르면 기다리지 않고 바로 약사에게 연락할게요.', '열이 오르면 기다리지 않고 바로 원무과에 연락할게요.']
+['S', '12.5', 'why'] | 'won't wait'는 확인을 더 기다리지 않고 바로 시작한다는 뜻이에요. 간부전 환자의 감염은 빨리 악화돼요. -> 'I won't wait'는 확인을 더 모으느라 미루지 않겠다는 약속이고, 바로 팀에 알리는 행동으로 이어요. 간부전 환자의 감염은 빨리 악화돼서 알리는 시점이 중요해요.
+['S', '12.5', 'blank', 'answer'] | treatment -> climbs
+['S', '12.5', 'blank', 'options', 0, 'en'] | treatment -> climbs
+['S', '12.5', 'blank', 'options', 1, 'en'] | rounds -> lingers
+['S', '12.5', 'blank', 'options', 2, 'en'] | lunch -> fades
+['S', '12.5', 'blank', 'options', 3, 'en'] | class -> settles
+['S', '12.5', 'tag'] | 지체 없는 치료 -> 즉시 보고
+['S', '12.5', 'ko'] | 열이 오르면 치료 시작을 기다리지 않을 거예요. -> 열이 오르면 기다리지 않고 바로 팀에 연락할게요.
+['S', '12.5', 'words'] | ['w-fever', 'w-climb', 'w-wait', 'w-start', 'w-treatment'] -> ['w-fever', 'w-climb', 'w-wait', 'w-call', 'w-team', 'w-away']
+['S', '12.5', 'en'] | If his fever climbs, we won't wait to start treatment. -> If his fever climbs, I won't wait — I'll call the team right away.
+['S', '13.0', 'decoy'] | so that -> your bones
+['S', '13.1', 'decoy'] | by the -> your weight
+['S', '13.1', 'why'] | 'carefully'는 서두르지 않고 조금씩 맞춘다는 뜻이에요. 'based on'은 조정의 근거가 수치라는 점을 보여 줘요. -> 'carefully'는 서두르지 않고 조금씩 맞춘다는 뜻이에요. 'based on'은 조정의 근거를 밝히는 말이에요.
+['S', '13.2', 'decoy'] | to make -> A pharmacist
+['S', '13.2', 'why'] | 'tailor'는 옷을 맞추듯 개인에게 맞춘다는 뜻이에요. 영양사가 환자마다 계획을 따로 짜요. -> 'tailor'는 옷을 맞추듯 개인에게 맞춘다는 뜻이에요. 영양사가 간 상태와 근육량을 함께 보고 정한다는 점을 한 단어로 전해요.
+['S', '13.3', 'decoy'] | far too -> your bones
+['S', '13.4', 'decoy'] | after the -> and a bedtime story
+['S', '13.4', 'chunks'] | ["We'll check", 'your ammonia', 'if the confusion gets worse', 'after meals', '.'] -> ['Small, frequent meals', 'and a bedtime snack', 'help protect', 'your muscles', '.']
+['S', '13.4', 'distractorsKo'] | ['식사 후에는 장에서 암모니아가 더 만들어져요.', '식사 후 혼란은 단백질과 장 상태가 좌우해요.'] -> ['조금씩 자주 드시고 자기 전에 간식을 드시면 뼈를 지키는 데 도움이 돼요.', '조금씩 자주 드시고 아침에 간식을 드시면 근육을 지키는 데 도움이 돼요.']
+['S', '13.4', 'why'] | 'if the confusion gets worse after meals'는 암모니아를 확인할 상황을 정확히 말해 줘요. -> 'help protect'는 간식이 근육을 지키는 데 도움이 된다고 효과를 부드럽게 말해요. 밤새 오래 굶으면 근육이 줄기 쉬워서 자기 전 간식을 권해요.
+['S', '13.4', 'icon'] | lab -> star
+['S', '13.4', 'tag'] | 암모니아 확인 -> 식사 안내
+['S', '13.4', 'ko'] | 식사 후에 혼란이 심해지면 암모니아를 확인할게요. -> 조금씩 자주 드시고 자기 전에 간식을 드시면 근육을 지키는 데 도움이 돼요.
+['S', '13.4', 'words'] | ['w-check', 'w-ammonia', 'w-confusion', 'w-meal'] -> ['w-meal', 'w-protect', 'w-muscle']
+['S', '13.4', 'en'] | We'll check your ammonia if the confusion gets worse after meals. -> Small, frequent meals and a bedtime snack help protect your muscles.
+['S', '13.5', 'decoy'] | as a -> with your family
+['N', 13, 'slider', 'scale'] | ['plenty', 'a little', 'none'] -> ['none', 'a little', 'plenty']
+['N', 13, 'slider', 'why'] | 두 숟가락 정도면 a little이에요. plenty는 충분히 먹은 경우, none은 전혀 안 먹은 경우예요. 섭취량은 영양팀에 알려 단백질을 어떻게 보충할지 정해요. -> 두 숟가락 정도면 a little이에요. none은 전혀 안 먹은 경우, plenty는 충분히 먹은 경우예요. 섭취량은 영양팀에 알려 단백질을 어떻게 보충할지 정해요.
+['N', 13, 'swap', 'options'] | ['smaller meals more often', 'small frequent meals', 'multiple small feedings'] -> ['smaller meals more often', 'frequent low-volume intake', 'multiple small feedings']
+['N', 13, 'swap', 'notes', 'frequent low-volume intake'] | None -> 영양 기록에서 쓰는 말이라 환자에게는 딱딱해요.
+['N', 13, 'swap', 'notes', 'small frequent meals'] | 무난하지만 약간 딱딱해요. -> None
+['S', '14.0', 'decoy'] | to see -> need cold storage
+['S', '14.0', 'distractorsKo'] | ['어떤 약이 냉장 보관이 필요한지 검토합시다.', '어떤 약이 새 라벨이 필요한지 검토합시다.'] -> ['어떤 약이 용량 조정이 필요한지 출력합시다.', '어떤 약이 용량 조정이 필요한지 간 수치를 봅시다.']
+['S', '14.1', 'decoy'] | keep from -> on the teeth
+['S', '14.1', 'distractorsKo'] | ['간에 부담이 되는 약물은 앞칸에 둬야 해요.', '간에 부담이 되는 약물은 보관해야 해요.'] -> ['간에 부담이 되는 약물은 약사가 봐요.', '간에 부담이 되는 약물은 대체품을 찾아요.']
+['S', '14.2', 'decoy'] | to mark -> any vitamins
+['S', '14.2', 'distractorsKo'] | ['혼란을 악화시킬 수 있는 진정제는 서랍에 보관할게요.', '혼란을 악화시킬 수 있는 진정제는 카트 위에 올릴게요.'] -> ['혼란을 악화시킬 수 있는 진정제는 처방을 볼게요.', '혼란을 악화시킬 수 있는 진정제는 대체 약을 찾을게요.']
+['S', '14.3', 'decoy'] | as it -> these foods
+['S', '14.3', 'distractorsKo'] | ['방광이 예전처럼 이 약물들을 청소하지 못해요.', '간이 예전처럼 이 음식들을 청소하지 못해요.'] -> ['방광이 예전처럼 이 약들을 잘 처리하지 못해요.', '간이 예전처럼 이 음식들을 잘 처리하지 못해요.']
+['S', '14.3', 'ko'] | 간이 예전처럼 이 약물들을 청소하지 못해요. -> 간이 예전처럼 이 약들을 잘 처리하지 못해요.
+['S', '14.4', 'decoy'] | to raise -> his shoes
+['S', '14.4', 'chunks'] | ["Let's lower", 'the sedative dose', 'and check', 'his response', '.'] -> ["Let's lower", 'the sedative dose', 'per protocol', 'and check', 'his response', '.']
+['S', '14.4', 'distractorsKo'] | ['진정제는 간부전에서 오래 남아요.', '진정제는 혼란을 더 심하게 만들어요.'] -> ['프로토콜에 따라 진통제 용량을 낮추고 반응을 확인합시다.', '프로토콜에 따라 진정제 용량을 낮추고 동공을 확인합시다.']
+['S', '14.4', 'why'] | 'lower'는 줄이는 방향을 분명히 하고, 줄인 뒤 반응을 보는 단계까지 한 문장에 담아요. -> 'per protocol'을 붙이면 진정제 감량이 개인 판단이 아니라 정해진 지침 안에서 하는 일이라는 뜻이 돼요. 'lower'는 줄이는 방향을 분명히 하고, 줄인 뒤 반응을 보는 단계까지 한 문장에 담아요.
+['S', '14.4', 'ko'] | 진정제 용량을 낮추고 반응을 확인합시다. -> 프로토콜에 따라 진정제 용량을 낮추고 반응을 확인합시다.
+['S', '14.4', 'words'] | ['w-sedative', 'w-dose', 'w-check', 'w-response'] -> ['w-sedative', 'w-dose', 'w-protocol', 'w-check', 'w-response']
+['S', '14.4', 'en'] | Let's lower the sedative dose and check his response. -> Let's lower the sedative dose per protocol and check his response.
+['S', '14.5', 'decoy'] | on top -> meals
+['S', '14.5', 'distractorsKo'] | ['청소하기 어려운 약은 간격을 두고 보관할게요.', '청소하기 어려운 약은 따로 상자에 담을게요.'] -> ['몸에서 잘 빠져나가지 않는 약은 농도를 재고 줄게요.', '몸에서 잘 빠져나가지 않는 약은 준 다음 졸림을 살필게요.']
+['S', '14.5', 'blank', 'options', 1, 'en'] | chairs -> meals
+['S', '14.5', 'blank', 'options', 2, 'en'] | towels -> visits
+['S', '14.5', 'blank', 'options', 3, 'en'] | notes -> tests
+['S', '14.5', 'ko'] | 청소하기 어려운 약은 간격을 두고 줄게요. -> 몸에서 잘 빠져나가지 않는 약은 간격을 두고 줄게요.
+['N', 14, 'slider', 'scale'] | ['alert', 'drowsy', 'unresponsive'] -> ['unresponsive', 'drowsy', 'alert']
+['N', 14, 'slider', 'answerAt'] | 0 -> 2
+['N', 14, 'slider', 'example'] | His response to my voice is alert. -> He's alert and answering questions.
+['N', 14, 'slider', 'why'] | 이름만 불러도 눈을 뜨고 대답하면 alert로 기록해요. 진정제를 쓴 뒤에는 깨우는 데 필요한 자극이 점점 커지는지(drowsy, unresponsive) 같은 기준으로 보고, 간 기능이 나쁘면 약이 오래 남을 수 있어 변화를 바로 알려요. -> 스스로 눈을 뜨고 있고 바로 대답하면 alert예요. 불러야 깨면 drowsy, 자극해도 반응이 없으면 unresponsive예요. 간 기능이 나쁘면 진정제가 오래 남을 수 있어, 깨우는 데 필요한 자극이 커지면 바로 알려요.
+['N', 14, 'slider', 'exKo'] | 내 목소리에 그가 또렷하게 반응해요. -> 또렷하게 깨어 있고 질문에 대답해요.
+['N', 14, 'slider', 'cue'] | He opens his eyes and answers me when I say his name. -> His eyes are open on their own, and he answers my questions right away.
+['O', 14, 'why'] | 간이 약을 못 치우는 이유를 말하고, 조정할 약을 검토하며, 진정제 용량을 낮춘 뒤 나머지 약은 간격을 둔다고 이어요. -> 간이 약을 잘 처리하지 못하는 이유를 말하고, 조정할 약을 검토하며, 진정제 용량을 낮춘 뒤 나머지 약은 간격을 둔다고 이어요.
+['O', 14, 'lines', 0, 'ko'] | 간이 예전처럼 이 약물들을 청소하지 못해요 -> 간이 예전처럼 이 약들을 잘 처리하지 못해요
+['O', 14, 'lines', 2, 'ko'] | 진정제 용량을 낮추고 반응을 확인합시다 -> 진정제부터 프로토콜에 따라 용량을 낮추고 반응을 확인합시다
+['O', 14, 'lines', 2, 'en'] | Let's lower the sedative dose and check his response. -> Starting with the sedative, let's lower that dose per protocol and check his response.
+['O', 14, 'lines', 3, 'ko'] | 청소하기 어려운 나머지 약은 간격을 두고 줄게요 -> 몸에서 잘 빠져나가지 않는 나머지 약은 간격을 두고 줄게요
+['S', '15.0', 'decoy'] | to his side -> and wash
+['S', '15.0', 'distractorsKo'] | ['고장성 식염수를 주고 조명을 어둡게 하세요.', '고장성 식염수를 주고 머리맡 서랍을 닫으세요.'] -> ['고장성 식염수를 주고 나트륨을 재세요.', '고장성 식염수를 주고 정맥관 위치를 보세요.']
+['S', '15.1', 'decoy'] | to the unit -> for the family
+['S', '15.1', 'distractorsKo'] | ['신경팀과 의사를 맞을 문을 즉시 열어요.', '신경팀과 의사 올 길을 즉시 비우고 있어요.'] -> ['신경팀과 약국에 즉시 연락하고 있어요.', '영상의학과와 의사에게 즉시 연락하고 있어요.']
+['S', '15.2', 'decoy'] | to keep -> his diet
+['S', '15.2', 'distractorsKo'] | ['CO2를 조절하고 그의 시트를 정리합시다.', 'CO2를 조절하고 침상 옆 불빛을 낮춥시다.'] -> ['CO2를 조절하고 호흡기 설정을 봅시다.', 'CO2를 조절하고 동맥혈 가스를 다시 봅시다.']
+['S', '15.3', 'decoy'] | that is -> brighter
+['S', '15.3', 'blank', 'options', 2, 'en'] | experiment -> error
+['S', '15.3', 'blank', 'options', 3, 'en'] | opportunity -> estimate
+['S', '15.4', 'decoy'] | to the CT -> a repeat hearing test
+['S', '15.4', 'chunks'] | ["I'm pushing the saline", 'now', ', and I need', 'a repeat head CT', '.'] -> ["I'm pushing", 'the ordered saline', 'now', '— can we get', 'a repeat head CT', '?']
+['S', '15.4', 'distractorsKo'] | ['지금 식염수를 투여하고 있고, 머리 CT 결과를 다시 봐야 해요.', '지금 식염수를 투여하고 있고, 머리 CT 영상을 보호자께 보여 드려야 해요.'] -> ['처방된 식염수를 지금 투여하고 있어요, 머리 CT로 갈 이송을 불러 줄 수 있을까요?', '처방된 식염수를 지금 투여하고 있어요, 나트륨을 다시 잴 수 있을까요?']
+['S', '15.4', 'why'] | 'now'로 지금 하고 있다고 알리고 'I need'로 다음 요청을 이어요. 상태가 바뀌었으니 영상으로 다시 봐야 해요. -> 'the ordered saline'은 처방된 것만 준다는 점을 밝히고, 'can we get'은 CT를 정하는 대신 팀에 요청하는 말투예요. 상태가 바뀌었으니 영상으로 다시 봐야 해요.
+['S', '15.4', 'tag'] | 투여 중 보고 -> 투여와 요청
+['S', '15.4', 'ko'] | 지금 식염수를 투여하고 있고, 머리 CT를 다시 찍어야 해요. -> 처방된 식염수를 지금 투여하고 있어요, 머리 CT를 다시 찍을 수 있을까요?
+['S', '15.4', 'words'] | ['w-push', 'w-saline', 'w-need', 'w-repeat', 'w-ct'] -> ['w-push', 'w-saline', 'w-repeat', 'w-ct']
+['S', '15.4', 'en'] | I'm pushing the saline now, and I need a repeat head CT. -> I'm pushing the ordered saline now — can we get a repeat head CT?
+['S', '15.5', 'decoy'] | as long -> his lights steady
+['N', 15, 'slider', 'why'] | 동공이 갑자기 커지고 반응이 없어지면 뇌탈출 징후일 수 있어서 기다리지 않고 immediately 연락해요. 의사와 신속대응팀을 바로 호출하고 처방된 치료를 준비해요. -> 동공이 갑자기 커지고 반응이 없어지면 뇌탈출 징후일 수 있어서 기다리지 않고 immediately 연락해요. 중환자실 담당 의사에게 바로 연락하고 처방된 치료를 준비해요.
+['O', 15, 'why'] | 동공 변화를 먼저 알리고, 즉시 식염수와 머리 거상을 지시한 뒤, 투여 사실과 CT 요청을 알리며 의사에게 모든 걸 보고해요. -> 동공 변화를 알리고 바로 호출한 뒤, 통화하는 동안 머리를 높이고 프로토콜대로 식염수를 가져오게 하고, 받으면 투여하며 CT를 요청해요.
+['O', 15, 'lines', 2, 'ko'] | 그들이 오는 동안 고장성 식염수를 주고 머리를 높이세요 -> 제가 통화하는 동안 머리를 높이고 프로토콜대로 고장성 식염수를 가져와 주세요
+['O', 15, 'lines', 2, 'en'] | While they're on the way, give the hypertonic saline and elevate his head. -> While I'm on the phone, elevate his head and get the hypertonic saline per protocol.
+['O', 15, 'lines', 3, 'note'] | 보고 -> 투여
+['O', 15, 'lines', 3, 'ko'] | 지금 투여하고 있고, 머리 CT를 다시 찍어야 해요 -> 가져오면 제가 투여하고 머리 CT를 다시 요청할게요
+['O', 15, 'lines', 3, 'en'] | I'm pushing it now, and I need a repeat head CT. -> Once you have it, I'll push it and ask for a repeat head CT.
+['S', '16.0', 'decoy'] | from the -> , and saline now
+['S', '16.0', 'distractorsKo'] | ['혈장, 혈소판, 보온 담요를 지금 가져오세요.', '혈장, 새 장갑, 동결침전제제를 지금 가져오세요.'] -> ['혈장, 혈소판, 동결침전제제 들어갈 라인을 확보하세요.', '혈장, 혈소판, 동결침전제제는 둘이 맞춰 보세요.']
+['S', '16.0', 'blank', 'options', 2, 'en'] | towels -> albumin
+['S', '16.0', 'blank', 'options', 3, 'en'] | gowns -> dextrose
+['S', '16.1', 'decoy'] | in equal -> and keep him calm
+['S', '16.2', 'decoy'] | as often -> with the menu
+['S', '16.2', 'blank', 'options', 2, 'en'] | thyroid -> ferritin
+['S', '16.2', 'blank', 'options', 3, 'en'] | hormone -> lipase
+['S', '16.3', 'decoy'] | for the -> from the nose
+['S', '16.4', 'decoy'] | once we -> culture
+['S', '16.4', 'chunks'] | ["Let's send", 'another type', 'and cross', 'while we transfuse', '.'] -> ["Let's send", 'another', 'type and cross', 'while we transfuse', '.']
+['S', '16.5', 'decoy'] | for any -> the coffee
+['S', '16.5', 'blank', 'options', 1, 'en'] | arthritis -> fatigue
+['S', '16.5', 'blank', 'options', 2, 'en'] | dementia -> insomnia
+['S', '16.5', 'blank', 'options', 3, 'en'] | allergy -> constipation
+['O', 16, 'lines', 1, 'ko'] | 혈장, 혈소판, 동결침전제제를 지금 가져오세요 -> 그러니 혈장, 혈소판, 동결침전제제를 지금 가져오세요
+['O', 16, 'lines', 1, 'en'] | Get plasma, platelets, and cryo now. -> So get plasma, platelets, and cryo now.
+['S', '17.0', 'decoy'] | with the -> the dressing tray
+['S', '17.0', 'distractorsKo'] | ['삽관 트레이와 흡인 점검표를 가져올게요.', '삽관 트레이와 보온 담요를 가져올게요.'] -> ['삽관 트레이를 가져오고 도움도 불러 둘게요.', '삽관 트레이를 가져오고 산소도 준비해 둘게요.']
+['S', '17.0', 'ko'] | 삽관 트레이와 흡인 준비를 가져올게요. -> 삽관 트레이를 가져오고 흡인도 준비해 둘게요.
+['S', '17.2', 'decoy'] | to be -> Music is
+['S', '17.2', 'blank', 'options', 1, 'en'] | Light -> Heater
+['S', '17.2', 'blank', 'options', 2, 'en'] | Music -> Fan
+['S', '17.2', 'blank', 'options', 3, 'en'] | Fan -> Light
+['S', '17.3', 'decoy'] | and it -> His appetite
+['S', '17.3', 'blank', 'options', 3, 'en'] | rename -> relax
+['S', '17.4', 'decoy'] | next to -> the pediatric airway cart
+['S', '17.4', 'distractorsKo'] | ['혹시 몰라서 어려운 기도 카트 점검표를 침상 옆에 붙입시다.', '혹시 몰라서 어려운 기도 카트 바퀴를 잠급시다.'] -> ['혹시 몰라서 어려운 기도 카트를 열어 내용물을 봅시다.', '혹시 몰라서 어려운 기도 카트 바퀴를 잠급시다.']
+['S', '17.4', 'blank', 'options', 2, 'en'] | spare -> broken
+['S', '17.5', 'decoy'] | when you -> , thank me
+['S', '17.5', 'chunks'] | ["I'll hold", 'cricoid pressure', 'while you pass', 'the tube', '.'] -> ['If you want', 'cricoid pressure', ', tell me', 'before you pass', 'the tube', '.']
+['S', '17.5', 'distractorsKo'] | ['당신이 튜브를 넣는 동안 고정 테이프를 자를게요.', '당신이 튜브를 넣는 동안 흡인 카테터를 잡고 있을게요.'] -> ['윤상연골 압박이 필요하면 튜브를 넣는 동안 말씀해 주세요.', '윤상연골 압박이 필요하면 튜브를 고정하기 전에 말씀해 주세요.']
+['S', '17.5', 'why'] | 'while you pass the tube'로 두 사람이 동시에 일한다는 점을 분명히 해요. 압박은 삽관하는 동안 이어져야 해서 동작이 겹쳐요. -> 'If you want'는 윤상연골 압박을 삽관하는 사람이 요청할 때만 한다는 뜻이에요. 근거가 약해 일상적으로 하지 않는 곳이 많고, 하더라도 병원 지침에 따라 해요.
+['S', '17.5', 'icon'] | handshake2 -> speech
+['S', '17.5', 'tag'] | 윤상연골 압박 -> 압박 요청
+['S', '17.5', 'ko'] | 당신이 튜브를 넣는 동안 윤상연골 압박을 유지할게요. -> 윤상연골 압박이 필요하면 튜브를 넣기 전에 말씀해 주세요.
+['S', '17.5', 'words'] | ['w-hold', 'w-cricoid', 'w-pressure', 'w-pass', 'w-tube'] -> ['w-cricoid', 'w-pressure', 'w-tell', 'w-pass', 'w-tube']
+['S', '17.5', 'en'] | I'll hold cricoid pressure while you pass the tube. -> If you want cricoid pressure, tell me before you pass the tube.
+['O', 17, 'why'] | 기도를 못 지키는 상태를 알리고, 장비를 준비한 뒤 산소화와 자세를 잡으며, 마지막으로 삽관하는 동안 압박을 맡아요. -> 기도를 못 지키는 상태를 알리고, 장비를 준비한 뒤 산소화와 자세를 잡으며, 마지막으로 삽관하는 사람이 원하면 압박을 돕겠다고 말해요.
+['O', 17, 'lines', 1, 'ko'] | 삽관 트레이와 흡인 준비를 가져올게요 -> 삽관 트레이를 가져오고 흡인을 준비할게요
+['O', 17, 'lines', 3, 'icon'] | handshake2 -> speech
+['O', 17, 'lines', 3, 'note'] | 압박 -> 요청
+['O', 17, 'lines', 3, 'ko'] | 그렇게 자세가 잡히면 당신이 튜브를 넣는 동안 윤상연골 압박을 유지할게요 -> 자세가 잡히면 윤상연골 압박이 필요한지 말씀해 주세요
+['O', 17, 'lines', 3, 'en'] | With him positioned like that, I'll hold cricoid pressure while you pass the tube. -> Once he's positioned, tell me if you want cricoid pressure.
+['S', '18.0', 'decoy'] | first of -> his diet
+['S', '18.0', 'distractorsKo'] | ['혈압과 산소화 장비를 곁에 놓읍시다.', '혈압과 산소화 일정에 우선순위를 둡시다.'] -> ['혈압과 산소화 목표를 정합시다.', '혈압과 산소화를 보려고 동맥관을 봅시다.']
+['S', '18.1', 'decoy'] | to ask -> to the family
+['S', '18.1', 'distractorsKo'] | ['의사는 지지가 더 필요한지 판단해서 지시해 줄 거예요.', '더 많은 지지는 투석이나 승압제 같은 치료를 뜻해요.'] -> ['의사는 지원이 더 필요한지 판단해서 지시해 줄 거예요.', '더 많은 지원은 투석이나 승압제 같은 치료를 뜻해요.']
+['S', '18.1', 'ko'] | 더 많은 지지를 위해 의사에게 에스컬레이션하고 있어요. -> 치료 지원이 더 필요해서 의사에게 보고하고 있어요.
+['S', '18.2', 'decoy'] | might be -> and a new bed
+['S', '18.2', 'blank', 'options', 2, 'en'] | transfusion -> rehab
+['S', '18.3', 'decoy'] | one by -> , and skin
+['S', '18.3', 'chunks'] | ['His kidneys', ', lungs', ', and pressure are', 'all failing at once', '.'] -> ['His kidneys', ', lungs', ', and pressure', 'are all failing', 'at once', '.']
+['S', '18.3', 'distractorsKo'] | ['신장, 피부, 혈압이 한꺼번에 기능을 멈추고 있어요.', '신장, 폐, 혈압이 서서히 기능을 멈추고 있어요.'] -> ['신장, 피부, 혈압이 한꺼번에 무너지고 있어요.', '신장, 폐, 혈압이 서서히 무너지고 있어요.']
+['S', '18.3', 'ko'] | 신장, 폐, 혈압이 한꺼번에 기능을 멈추고 있어요. -> 신장, 폐, 혈압이 한꺼번에 무너지고 있어요.
+['S', '18.4', 'decoy'] | as the -> for more chairs
+['S', '18.4', 'distractorsKo'] | ['상황이 급격히 악화돼서 장비를 더 부르고 있어요.', '상황이 천천히 악화돼서 일손을 더 부르고 있어요.'] -> ['상황이 급격히 악화돼서 보호자를 더 부르고 있어요.', '상황이 천천히 악화돼서 일손을 더 부르고 있어요.']
+['S', '18.5', 'decoy'] | any of -> every family
+['N', 18, 'context', 'scenes', 2, 'en'] | He's on maximal multiorgan support with a poor prognosis. -> He's on maximal multiorgan support right now.
+['O', 18, 'lines', 0, 'ko'] | 신장, 폐, 혈압이 한꺼번에 기능을 멈추고 있어요 -> 신장, 폐, 혈압이 한꺼번에 무너지고 있어요
+['O', 18, 'lines', 1, 'ko'] | 더 많은 지지를 위해 의사에게 에스컬레이션하고 있어요 -> 치료 지원이 더 필요해서 의사에게 보고하고 있어요
+['S', '19.0', 'decoy'] | to make -> for immediate discharge
+['S', '19.0', 'distractorsKo'] | ['즉각적인 이송을 위해 그의 서류를 챙깁시다.', '즉각적인 이송을 위해 그의 짐을 챙깁시다.'] -> ['즉각적인 이송을 위해 산소통을 채웁시다.', '즉각적인 이송을 위해 수액을 이송 펌프로 옮깁시다.']
+['S', '19.1', 'decoy'] | with the -> a full refund
+['S', '19.1', 'distractorsKo'] | ['이식센터에 전체 일정을 요청할게요.', '이식센터에 전체 비용을 문의할게요.'] -> ['이송팀에 전체 인계를 할게요.', '다음 근무조에 전체 인계를 할게요.']
+['S', '19.2', 'decoy'] | to take -> and his family
+['S', '19.2', 'distractorsKo'] | ['이동을 위해 혈액과 응급 약 목록을 가져오세요.', '이동을 위해 혈액과 응급 약 서류를 가져오세요.'] -> ['이동을 위해 혈액과 응급 약은 침대 발치에 두세요.', '이동을 위해 혈액은 상자에 담아 오세요.']
+['S', '19.3', 'decoy'] | and then -> status 2A criteria
+['S', '19.3', 'chunks'] | ["He's listed", 'as status 1A', ', so the center wants him', 'now', '.'] -> ['He meets', 'status 1A criteria', ', so the center', 'wants him transferred now', '.']
+['S', '19.3', 'distractorsKo'] | ['상태 2A로 등록돼서 센터가 지금 그를 원해요.', '상태 1A로 등록돼서 센터가 지금 그에게 전화해요.'] -> ['2A 기준에 해당해서 센터가 지금 바로 이송을 원해요.', '1A 기준에 해당해서 센터가 지금 바로 면담을 원해요.']
+['S', '19.3', 'why'] | 'so'로 이유를 이으면 센터가 급하게 원하는 까닭이 분명해져요. 1A는 가장 긴급한 등록 상태예요. -> 'meets … criteria'는 1A가 정해진 기준에 해당한다는 사실을 말하고, 'so'로 센터가 이송을 원하는 이유를 이어요. 1A는 가장 높은 긴급도일 뿐 장기 배정이나 즉시 수용을 뜻하지는 않아요.
+['S', '19.3', 'blank', 'answer'] | status -> transferred
+['S', '19.3', 'blank', 'options', 0, 'en'] | status -> transferred
+['S', '19.3', 'blank', 'options', 1, 'en'] | stage -> discharged
+['S', '19.3', 'blank', 'options', 2, 'en'] | grade -> undressed
+['S', '19.3', 'blank', 'options', 3, 'en'] | class -> vaccinated
+['S', '19.3', 'tag'] | 등록 상태 -> 이송 요청
+['S', '19.3', 'ko'] | 상태 1A로 등록돼서 센터가 지금 그를 원해요. -> 1A 기준에 해당해서 센터가 지금 바로 이송을 원해요.
+['S', '19.3', 'words'] | ['w-list', 'w-status', 'w-center'] -> ['w-center', 'w-transfer']
+['S', '19.3', 'en'] | He's listed as status 1A, so the center wants him now. -> He meets status 1A criteria, so the center wants him transferred now.
+['S', '19.4', 'decoy'] | over the -> the cleaning team
+['S', '19.4', 'chunks'] | ["I'll confirm", 'the accepting team', 'and the transport', 'time', '.'] -> ["I'll", 'confirm', 'the accepting team', 'and the transport time', '.']
+['S', '19.4', 'distractorsKo'] | ['받아들이는 팀은 그의 상태를 미리 알아야 해요.', '이송 시간은 거리와 교통 상황에 따라 달라져요.'] -> ['인수할 팀은 상태를 미리 알아야 해요.', '이송 시간은 교통에 따라 달라져요.']
+['S', '19.4', 'blank', 'options', 2, 'en'] | color -> noise
+['S', '19.4', 'ko'] | 받아들이는 팀과 이송 시간을 확인할게요. -> 인수할 팀과 이송 시간을 확인할게요.
+['S', '19.5', 'decoy'] | for the -> the pump closely
+['N', 19, 'context', 'scenes', 2, 'en'] | We're initiating an interfacility transfer under EMTALA. -> We're initiating an interfacility transfer to a tertiary transplant center.
+['N', 19, 'context', 'why'] | 의료진끼리는 interfacility transfer, EMTALA 같은 용어가 정확해요. 보호자에게는 같은 transfer를 어디로 왜 옮기는지 쉬운 말로 풀어 주세요. -> 의료진끼리는 interfacility transfer 같은 용어가 정확해요. 보호자에게는 같은 transfer를 어디로 왜 옮기는지 쉬운 말로 풀어 주세요.
+['O', 19, 'lines', 0, 'ko'] | 상태 1A로 등록돼서 센터가 지금 그를 원해요 -> 1A 기준에 해당해서 센터가 지금 바로 이송을 원해요
+['O', 19, 'lines', 0, 'en'] | He's listed as status 1A, so the center wants him now. -> He meets status 1A criteria, so the center wants him transferred now.
+['O', 19, 'lines', 2, 'ko'] | 이동을 위해 혈액과 응급 약을 가져오세요 -> 그동안 이동에 쓸 혈액과 응급 약을 가져오세요
+['O', 19, 'lines', 2, 'en'] | For the trip, bring blood and emergency meds. -> While we do that, bring blood and emergency meds for the trip.
+['S', '20.0', 'decoy'] | does not -> a cheap option
+['S', '20.1', 'decoy'] | yet there -> to keep him awake
+['S', '20.1', 'distractorsKo'] | ['하지만 그를 깨어 있게 해 드릴 수 있는 게 아직 많아요.', '하지만 그를 편안하게 해 드릴 수 있는 시간이 아직 많아요.'] -> ['하지만 그를 깨어 있게 해 드릴 수 있는 게 아직 많아요.', '하지만 그를 시원하게 해 드릴 수 있는 게 아직 많아요.']
+['S', '20.2', 'decoy'] | to ask -> most to us
+['S', '20.2', 'blank', 'options', 2, 'en'] | think -> argue
+['S', '20.3', 'decoy'] | that is -> good news
+['S', '20.4', 'decoy'] | to keep -> on his diet
+['S', '20.4', 'distractorsKo'] | ['완화 치료는 편안함과 증상 조절이 목표예요.', '호흡곤란은 약으로 꽤 많이 덜어 드려요.'] -> ['완화 치료는 가족의 마음을 돌보는 일도 포함해요.', '호흡곤란은 약으로 꽤 많이 덜어 드려요.']
+['S', '20.5', 'decoy'] | as long -> as little
+['O', 20, 'lines', 1, 'ko'] | 이식이 그에게 안전한 선택지가 아니라는 뜻이에요 -> 그 소식은 이식이 그에게 안전한 선택지가 아니라는 뜻이에요
+['O', 20, 'lines', 1, 'en'] | It means transplant isn't a safe option for him. -> That news means transplant isn't a safe option for him.
+--- 600 changed fields; removed words {'w-bag', 'w-add'}

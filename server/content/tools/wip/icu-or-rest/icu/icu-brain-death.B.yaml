@@ -1476,7 +1476,7 @@ situations:
     tag: 자세·진정제
     icon: stetho
     why: '''Let me…''는 허락을 구하며 일을 맡는 말이에요. 진정제가 걷혔는지 확인은 반사 검사 전에 꼭 필요한 단계라 같은 문장에 묶어요.'
-    decoy: and raise the bed
+    decoy: on the chart
     distractorsKo:
     - 제가 침대를 닦고 진정제가 다 걷혔는지 확인하겠습니다.
     - 제가 체온을 재고 진정제가 다 걷혔는지 확인하겠습니다.
@@ -1502,10 +1502,10 @@ situations:
     tag: 검사 요청
     icon: speech
     why: '''Tell me which…''로 시작해 의사가 주도하게 두고 간호사는 다음 순서를 따라가요. ''next''가 검사가 이어진다는 흐름을 보여줘요.'
-    decoy: to repeat
+    decoy: to name
     distractorsKo:
     - 다음에 어떤 환자를 검사하고 싶은지 말씀해 주세요.
-    - 다음에 어떤 의사를 만나고 싶은지 말씀해 주세요.
+    - 다음에 어떤 방을 확인하고 싶은지 말씀해 주세요.
     blank:
       answer: reflex
       options:
@@ -1531,7 +1531,7 @@ situations:
     why: '''on my check''로 내가 직접 본 것이라는 출처를 밝혀요. ''fixed and nonreactive''는 동공의 상태를 정확한 임상어로 알려요.'
     decoy: to bright light
     distractorsKo:
-    - 의사 선생님이 확인했을 때 동공은 고정되고 반응이 없습니다.
+    - 동료가 확인했을 때 동공은 고정되고 반응이 없습니다.
     - 어젯밤에 확인했을 때 동공은 고정되고 반응이 없습니다.
     blank:
       answer: check
@@ -1634,8 +1634,8 @@ situations:
     why: '''first''를 끝에 붙여 무호흡 검사 전에 먼저 하는 단계임을 알려요. ''a hundred percent''는 숫자를 영어로 또박또박 말하는 연습이에요.'
     decoy: with the mask
     distractorsKo:
-    - 먼저 침대 높이를 맞춰 자세를 잡겠습니다.
-    - 먼저 모니터 선을 정리하고 시작하겠습니다.
+    - 먼저 베개를 정돈해 자세를 잡겠습니다.
+    - 먼저 모니터 선을 모아 두고 시작하겠습니다.
     blank:
       answer: percent
       options:
@@ -1716,7 +1716,7 @@ situations:
     why: '''I''m switching''은 지금 하는 중이라는 진행형이에요. ''with oxygen running''은 호흡기를 뗀 동안에도 산소가 계속 나간다는 안전 장치를 덧붙여요.'
     decoy: and a flow meter
     distractorsKo:
-    - 침대를 올리고 산소를 틀어 두겠습니다.
+    - 커튼을 닫고 산소를 틀어 두겠습니다.
     - T-피스를 닦고 산소를 틀어 두겠습니다.
     blank:
       answer: oxygen
@@ -1783,7 +1783,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 무호흡 검사 준비 4문장 순서
-    why: 산소화를 먼저 하고, 그 뒤에 기저 혈액가스를 뽑아 보내고, 그 검체가 나간 뒤에 T-피스로 바꾸며, 이 모두를 마친 다음에 시작해도 된다고 알려요.
+    why: 산소화를 먼저 하고, 그 뒤에 기저 혈액가스를 뽑아 보내고, 그 검체가 나가면 준비가 끝났다고 알리고, 그 검사를 시작하려고 T-피스로 바꿔요.
     lines:
     - en: I'll preoxygenate him to a hundred percent first.
       icon: lab
@@ -1793,14 +1793,14 @@ situations:
       icon: lab
       ko: 그 뒤에 기저 혈액가스를 보낼게요
       note: 검체
-    - en: With that gas sent, I'm switching him to a T-piece with oxygen running.
-      icon: gear
-      ko: 그 검체를 보냈으니 T-피스로 바꿔요
-      note: 연결
-    - en: With all of that done, everything is set for the apnea test to begin.
+    - en: With that gas sent, everything is set for the apnea test to begin.
       icon: check
-      ko: 이제 검사를 시작할 준비가 됐어요
+      ko: 그 검체를 보냈으니 준비가 끝났어요
       note: 완료
+    - en: To start it, I'm switching him to a T-piece with oxygen running.
+      icon: gear
+      ko: 시작하려고 산소를 틀고 T-피스로 바꿔요
+      note: 연결
 - title: 가족에게 상태 설명 지원
   sentences:
   - en: He has died. His brain has permanently stopped working.
@@ -2062,7 +2062,7 @@ situations:
     decoy: for the shift change
     distractorsKo:
     - 코디네이터를 위해 방을 준비해 두겠습니다.
-    - 의사를 위해 기록을 준비해 두겠습니다.
+    - 간호팀장을 위해 기록을 준비해 두겠습니다.
     blank:
       answer: ready
       options:
@@ -2373,7 +2373,7 @@ situations:
     decoy: on the screen
     distractorsKo:
     - 산소포화도와 활력징후를 동료와 함께 지켜보고 있습니다.
-    - 산소포화도와 활력징후를 의사와 함께 지켜보고 있습니다.
+    - 산소포화도와 활력징후를 보호자와 함께 지켜보고 있습니다.
     blank:
       answer: saturation
       options:
@@ -2398,7 +2398,7 @@ situations:
     tag: 중단 기준
     icon: siren
     why: '''If he desaturates''로 중단의 기준을 먼저 정해 두면 그 순간 망설이지 않아요. ''we''는 팀 모두의 약속이라는 뜻이에요.'
-    decoy: the cuff
+    decoy: with the nurse
     distractorsKo:
     - 환자가 움직이면 중단하고 인공호흡기를 다시 연결합니다.
     - 의사가 부르면 중단하고 인공호흡기를 다시 연결합니다.
@@ -2406,9 +2406,9 @@ situations:
       answer: desaturates
       options:
       - en: desaturates
-      - en: hiccups
-      - en: yawns
-      - en: sneezes
+      - en: stabilizes
+      - en: normalizes
+      - en: oxygenates
   - en: Rescue equipment is at the bedside and ready.
     ko: 응급 장비는 침상 옆에 준비돼 있습니다.
     chunks:
@@ -2453,8 +2453,8 @@ situations:
     why: '''If his numbers start to fall''은 이미 떨어진 뒤가 아니라 떨어지기 시작할 때를 기준으로 삼아요. ''right away''는 기다리지 않겠다는 뜻이에요.'
     decoy: on speaker
     distractorsKo:
-    - 검사가 끝나기 시작하면 즉시 알리겠습니다.
-    - 보호자가 도착하기 시작하면 즉시 알리겠습니다.
+    - 수치가 떨어지기 시작하면 직접 알리겠습니다.
+    - 수치가 떨어지기 시작하면 문자로 알리겠습니다.
     blank:
       answer: call
       options:
@@ -2563,7 +2563,7 @@ situations:
     decoy: as ordered
     distractorsKo:
     - 승압제를 시작해서 장기 관류를 지키겠습니다.
-    - 승압제를 시작해서 침대 높이를 조절하겠습니다.
+    - 승압제를 시작해서 조명 밝기를 조절하겠습니다.
     blank:
       answer: target
       options:
@@ -2595,9 +2595,9 @@ situations:
       answer: bolus
       options:
       - en: bolus
-      - en: cup
-      - en: glass
-      - en: spoon
+      - en: flush
+      - en: drip
+      - en: push
   - en: We're keeping his perfusion stable for donation.
     ko: 관류를 안정적으로 유지해 기증을 준비하고 있습니다.
     chunks:
@@ -2752,14 +2752,14 @@ situations:
     decoy: through the line
     distractorsKo:
     - 데스모프레신을 주고 소변량을 줄이겠습니다.
-    - 데스모프레신을 주고 침대 높이를 맞추겠습니다.
+    - 데스모프레신을 주고 시트 주름을 맞추겠습니다.
     blank:
-      answer: desmopressin
+      answer: fluid
       options:
-      - en: desmopressin
-      - en: labetalol
-      - en: digoxin
-      - en: heparin
+      - en: fluid
+      - en: blood
+      - en: sweat
+      - en: bile
   - en: I'll recheck his sodium and urine output closely.
     ko: 소변량과 나트륨 수치를 세심하게 다시 확인하겠습니다.
     chunks:
@@ -2810,7 +2810,7 @@ situations:
     decoy: at the bedside
     distractorsKo:
     - 수분량과 전해질을 안정적으로 유지할 수 있습니다.
-    - 수분량과 전해질을 안정적으로 유지해도 됩니다.
+    - 수분량과 체중을 안정적으로 유지해야 합니다.
     blank:
       answer: volume
       options:
@@ -2890,7 +2890,7 @@ situations:
     decoy: by hand
     distractorsKo:
     - 섭취량과 배출량을 매일 기록하겠습니다.
-    - 섭취량과 배출량을 두 시간마다 기록하겠습니다.
+    - 섭취량과 배출량을 하루 두 번 기록하겠습니다.
     blank:
       answer: hourly
       options:
@@ -2943,7 +2943,7 @@ situations:
     decoy: under the sheet
     distractorsKo:
     - 보온 담요를 시작해서 몸이 떨리지 않게 하겠습니다.
-    - 보온 담요를 시작해서 침대 높이를 올리겠습니다.
+    - 보온 담요를 시작해서 방 조명을 낮추겠습니다.
     blank:
       answer: warming
       options:
@@ -2996,7 +2996,7 @@ situations:
     decoy: with the team
     distractorsKo:
     - 체내 균형을 조용히 유지하고 있습니다.
-    - 체내 균형을 천천히 유지하고 있습니다.
+    - 체내 온도를 안정적으로 유지하고 있습니다.
     blank:
       answer: internal
       options:
@@ -3384,7 +3384,7 @@ situations:
     tag: 접촉 허락
     icon: handshake2
     why: '''if that feels right''는 하고 싶을 때만 하면 된다는 단서예요. ''You can''은 허락하는 말이라 강요로 들리지 않아요.'
-    decoy: and read to him
+    decoy: if it's quiet
     distractorsKo:
     - 손을 잡거나 노래를 불러도 괜찮습니다, 그렇게 하고 싶으시다면요.
     - 머리를 쓰다듬거나 말을 걸어도 괜찮습니다, 그렇게 하고 싶으시다면요.
@@ -3412,7 +3412,7 @@ situations:
     tag: 자리 비움
     icon: home
     why: '''so you can have this time together''로 자리를 비키는 이유를 먼저 밝혀야 버려진 느낌이 아니라 배려로 들려요.'
-    decoy: and close the door
+    decoy: so you can rest
     distractorsKo:
     - 편히 쉬실 수 있도록 제가 잠시 자리를 비켜 드리겠습니다.
     - 함께 시간을 보내실 수 있도록 제가 잠시 커튼을 쳐 드리겠습니다.
@@ -3461,9 +3461,9 @@ situations:
       icon: faceWorried
       ko: 곁에서 느끼는 마음은 다 괜찮아요
       note: 인정
-    - en: You can hold his hand and talk to him, if that feels right.
+    - en: Given that, you can hold his hand and talk to him, if that feels right.
       icon: handshake2
-      ko: 손을 잡거나 말을 걸어도 괜찮아요
+      ko: 그러니 손을 잡거나 말을 걸어도 괜찮아요
       note: 허락
     - en: I'll step outside so you can have this time together.
       icon: home
@@ -3523,9 +3523,9 @@ situations:
       answer: elders
       options:
       - en: elders
-      - en: strangers
-      - en: reporters
-      - en: salespeople
+      - en: cousins
+      - en: neighbors
+      - en: coworkers
   - en: I can arrange for the coordinator to speak with all of you together.
     ko: 코디네이터가 여러분 모두와 함께 이야기하도록 제가 조율할 수 있습니다.
     chunks:
@@ -3570,7 +3570,7 @@ situations:
     decoy: to eat
     distractorsKo:
     - 지금 당장 무엇을 서명할 필요는 없습니다.
-    - 지금 당장 아무것도 설명할 필요는 없습니다.
+    - 지금 당장 아무것도 말할 필요는 없습니다.
     blank:
       answer: decide
       options:
@@ -3593,7 +3593,7 @@ situations:
     tag: 전통 존중
     icon: handshake2
     why: '''Whatever your tradition asks for''는 구체적인 내용을 묻지 않고 어떤 전통이든 받아들이겠다는 말이에요. ''do our best''는 약속의 정직한 한계를 보여요.'
-    decoy: to record it
+    decoy: in this unit
     distractorsKo:
     - 어떤 전통을 따르시든 저희가 최선을 다해 설명하겠습니다.
     - 어떤 음식을 드시든 저희가 최선을 다해 존중하겠습니다.
@@ -3723,10 +3723,10 @@ situations:
     tag: 필요 사항
     icon: speech
     why: '''Tell me what you need''는 상대가 필요한 것을 먼저 말하게 해요. ''to keep this moving''은 일이 멈추지 않게 돕겠다는 뜻이에요.'
-    decoy: to keep notes
+    decoy: by tonight
     distractorsKo:
     - 조용히 진행되도록 저희에게 필요한 것을 말씀해 주세요.
-    - 계속 진행되도록 저희에게 필요한 시간을 말씀해 주세요.
+    - 계속 진행되도록 저희에게 필요한 인원을 말씀해 주세요.
     blank:
       answer: moving
       options:
@@ -3786,8 +3786,8 @@ situations:
       options:
       - en: family
       - en: chaplain
-      - en: pharmacist
-      - en: dietitian
+      - en: anesthetist
+      - en: porter
   - en: I'll page you the moment anything changes.
     ko: 무언가 바뀌면 바로 호출하겠습니다.
     chunks:
@@ -3804,7 +3804,7 @@ situations:
     why: '''the moment''는 바뀌는 즉시라는 뜻이에요. ''anything changes''로 기준을 넓게 잡아 작은 변화도 알려요.'
     decoy: you arrive
     distractorsKo:
-    - 무언가 바뀌면 바로 의사를 호출하겠습니다.
+    - 무언가 바뀌면 바로 팀장을 호출하겠습니다.
     - 무언가 도착하면 바로 호출하겠습니다.
     blank:
       answer: page
@@ -3940,7 +3940,7 @@ situations:
     tag: 중단 순서
     icon: board
     why: '''first''와 ''and''로 순서를 한 문장에 담아요. ''we wait''는 기다리는 시간이 절차의 일부라는 뜻이에요.'
-    decoy: and we watch the clock
+    decoy: for the doctor
     distractorsKo:
     - 여기서는 지지 요법을 먼저 중단하고 가족이 도착하기를 기다립니다.
     - 여기서는 지지 요법을 먼저 설명하고 심장이 멈추기를 기다립니다.
@@ -3970,7 +3970,7 @@ situations:
     decoy: by two nurses
     distractorsKo:
     - 이송 시간은 정확히 재고 세심하게 기록합니다.
-    - 대기 시간은 정확히 재고 세심하게 설명합니다.
+    - 대기 시간은 정확히 재고 세심하게 보관합니다.
     blank:
       answer: closely
       options:
@@ -3999,12 +3999,12 @@ situations:
     - 사건의 순서를 약사와 함께 재차 확인하겠습니다.
     - 사건의 날짜를 팀과 함께 재차 확인하겠습니다.
     blank:
-      answer: team
+      answer: order
       options:
-      - en: team
-      - en: pharmacist
-      - en: chaplain
-      - en: interpreter
+      - en: order
+      - en: number
+      - en: count
+      - en: list
   order:
     tag: 대화 흐름
     icon: compass
@@ -4075,14 +4075,14 @@ situations:
     decoy: through two lines
     distractorsKo:
     - 승압제를 시작하고 혈관 내 용량을 늘리겠습니다.
-    - 승압제를 시작하고 침대 시트를 정리하겠습니다.
+    - 승압제를 시작하고 의자 위치를 정리하겠습니다.
     blank:
       answer: bolus
       options:
       - en: bolus
-      - en: bag
-      - en: cup
-      - en: glass
+      - en: flush
+      - en: drip
+      - en: push
   - en: Let's stabilize him before anything else.
     ko: 일단 그를 안정시키는 것이 먼저입니다.
     chunks:
@@ -4099,7 +4099,7 @@ situations:
     decoy: with everyone
     distractorsKo:
     - 일단 그녀를 안정시키는 것이 먼저입니다.
-    - 일단 그를 편안하게 하는 것이 먼저입니다.
+    - 일단 모두를 안정시키는 것이 먼저입니다.
     blank:
       answer: him
       options:
@@ -4233,14 +4233,14 @@ situations:
     decoy: on both pumps
     distractorsKo:
     - 승압제를 최대로 올리고 지금 관류를 지키겠습니다.
-    - 승압제를 최대로 올리고 지금 침대 시트를 정리하겠습니다.
+    - 승압제를 최대로 올리고 지금 베개를 정리하겠습니다.
     blank:
-      answer: pressors
+      answer: volume
       options:
-      - en: pressors
-      - en: pillows
-      - en: pagers
-      - en: gowns
+      - en: volume
+      - en: warmth
+      - en: space
+      - en: water
   - en: I'm calling the physician and the coordinator.
     ko: 의사와 코디네이터에게 연락하겠습니다.
     chunks:
@@ -4256,7 +4256,7 @@ situations:
     tag: 호출
     icon: pager
     why: '''I''m calling''은 지금 하는 중이라는 진행형이에요. 두 사람을 ''and''로 이어 한꺼번에 부른다고 알려요.'
-    decoy: the unit manager
+    decoy: the elevator
     distractorsKo:
     - 의사와 약사에게 연락하겠습니다.
     - 의사와 사회복지사에게 연락하겠습니다.
@@ -4377,23 +4377,23 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 순환 붕괴 대응 4문장 순서
-    why: 혈압이 바닥이라고 알리고, 그 때문에 승압제와 수액을 바로 올리고, 그렇게 올려 둔 채 의사와 코디네이터를 부르고, 그들이 도착할 때에 맞춰 모두 침상에 모이게 해요.
+    why: 혈압이 바닥이라고 알리고, 그 일로 의사와 코디네이터를 바로 부르고, 그들이 오기 전에 승압제와 수액을 올리고, 그렇게 올린 뒤 모두 침상에 모이게 해요.
     lines:
     - en: His pressure is bottoming out despite the current dose.
       icon: chartup
       ko: 현재 용량으로도 혈압이 바닥이에요
       note: 보고
-    - en: Because of that, max the pressors and give volume now.
-      icon: pill
-      ko: 그래서 승압제를 올리고 수액을 줘요
-      note: 처치
-    - en: With the pressors maxed, I'm calling the physician and the coordinator.
+    - en: For that pressure, I'm calling the physician and the coordinator.
       icon: pager
-      ko: 의사와 코디네이터에게 연락해요
+      ko: 그 혈압 때문에 의사와 코디네이터를 불러요
       note: 호출
-    - en: Please have everyone at the bedside by the time they arrive.
+    - en: Before they arrive, max the pressors and give volume now.
+      icon: pill
+      ko: 그들이 오기 전에 승압제와 수액을 올려요
+      note: 처치
+    - en: With the pressors maxed, everyone needs to be at the bedside in the next minute.
       icon: siren
-      ko: 그들이 오기 전에 모두 침상 곁에 모여요
+      ko: 올린 뒤 일 분 안에 모두 침상 곁에 모여요
       note: 집합
 - title: 심한 요붕증 급변 관리
   sentences:
@@ -4414,17 +4414,17 @@ situations:
     tag: 즉시 처치
     icon: pill
     why: 명령형 'Give … and start'는 위급 상황의 짧은 지시예요. 'now'가 지금 하라는 즉시성을 더해요.
-    decoy: and call the lab
+    decoy: from the fridge
     distractorsKo:
     - 지금 데스모프레신을 주고 소변량을 줄이기 시작하겠습니다.
-    - 지금 데스모프레신을 주고 침대 높이를 맞추기 시작하겠습니다.
+    - 지금 데스모프레신을 주고 주머니 위치를 맞추기 시작하겠습니다.
     blank:
       answer: losses
       options:
       - en: losses
-      - en: bills
-      - en: fees
-      - en: costs
+      - en: gains
+      - en: limits
+      - en: sources
   - en: Recheck the sodium immediately and correct carefully.
     ko: 즉시 나트륨을 다시 확인하고 신중하게 교정하겠습니다.
     chunks:
@@ -4444,7 +4444,7 @@ situations:
     why: '''immediately''와 ''carefully''를 짝지어 빨리 확인하되 교정은 천천히 신중하게 한다는 균형을 보여요.'
     decoy: against the last result
     distractorsKo:
-    - 조용히 나트륨을 다시 확인하고 신중하게 교정하겠습니다.
+    - 즉시 나트륨을 다시 확인하고 신중하게 보고하겠습니다.
     - 소리 내어 나트륨을 다시 확인하고 신중하게 교정하겠습니다.
     blank:
       answer: sodium
@@ -4560,8 +4560,8 @@ situations:
       answer: physician
       options:
       - en: physician
-      - en: pharmacist
-      - en: dietitian
+      - en: chaplain
+      - en: receptionist
       - en: registrar
   order:
     tag: 대화 흐름
@@ -4632,7 +4632,7 @@ situations:
     why: '''no pressure''로 먼저 부담을 덜고, ''entirely your decision''으로 결정권이 가족에게 있음을 분명히 해요.'
     decoy: no charge
     distractorsKo:
-    - 부담 갖지 않으셔도 됩니다 — 전적으로 여러분의 시간입니다.
+    - 부담 갖지 않으셔도 됩니다 — 전적으로 여러분의 방입니다.
     - 부담 갖지 않으셔도 됩니다 — 전적으로 여러분의 공간입니다.
     blank:
       answer: decision
@@ -4683,7 +4683,7 @@ situations:
     decoy: to ask why
     distractorsKo:
     - 질문하실 권리가 충분히 있고, 그것도 완전히 괜찮습니다.
-    - 거절하실 시간이 충분히 있고, 그것도 완전히 괜찮습니다.
+    - 거절하실 방법이 충분히 있고, 그것도 완전히 괜찮습니다.
     blank:
       answer: right
       options:
@@ -4709,7 +4709,7 @@ situations:
     decoy: this room
     distractorsKo:
     - 이 방은 오직 가족분들의 몫입니다.
-    - 이 시간은 오직 가족분들의 몫입니다.
+    - 이 복도는 오직 가족분들의 몫입니다.
     blank:
       answer: decision
       options:
@@ -4745,7 +4745,7 @@ situations:
     tag: 대화 흐름
     icon: compass
     ko: 가족의 결정 존중 4문장 순서
-    why: 먼저 들었다고 하며 뜻을 존중한다고 말하고, 결정이 전적으로 가족 몫임을 밝히고, 그 결정에 거절할 권리도 있다고 알리고, 무엇을 고르든 곁에서 돕겠다고 맺어요.
+    why: 먼저 들었다고 하며 뜻을 존중한다고 말하고, 결정이 전적으로 가족 몫임을 밝히고, 그 결정에 거절할 권리도 있다고 알리고, 거절하든 하지 않든 곁에서 돕겠다고 맺어요.
     lines:
     - en: I hear you, and your family's wishes will be respected.
       icon: handshake2
@@ -4759,9 +4759,9 @@ situations:
       icon: shield
       ko: 거절하실 권리도 충분히 있어요
       note: 권리
-    - en: Whatever you choose, I'm here to support you.
+    - en: Whether you say no or not, I'm here to support you.
       icon: handshake2
-      ko: 무엇을 선택하시든 곁에서 도울게요
+      ko: 어느 쪽이든 곁에서 도울게요
       note: 지지
 - title: 판정 시점·연명 갈등
   sentences:
@@ -4785,15 +4785,15 @@ situations:
     why: '''but''으로 겉으로 보이는 것과 실제를 대비해요. 앞에는 기계가 하는 일, 뒤에는 뇌의 상태를 놓아 혼란을 풀어요.'
     decoy: his bed moving,
     distractorsKo:
-    - 기계가 신장을 뛰게 하고 있지만, 뇌는 이미 멈췄습니다.
+    - 기계가 신장을 움직이게 하고 있지만, 뇌는 이미 멈췄습니다.
     - 기계가 침대를 움직이게 하고 있지만, 뇌는 이미 멈췄습니다.
     blank:
       answer: machine
       options:
       - en: machine
-      - en: printer
-      - en: speaker
-      - en: charger
+      - en: monitor
+      - en: clock
+      - en: alarm
   - en: I know this is very hard to reconcile.
     ko: 이 상황이 받아들이기 정말 어렵다는 걸 압니다.
     chunks:
@@ -4871,12 +4871,12 @@ situations:
     - 기계와 약물이 도와주기 때문에 몸은 계속 따뜻할 수 있습니다.
     - 기계와 약물이 도와주기 때문에 피부색은 계속 유지될 수 있습니다.
     blank:
-      answer: machine
+      answer: supporting
       options:
-      - en: machine
-      - en: printer
-      - en: speaker
-      - en: charger
+      - en: supporting
+      - en: stopping
+      - en: hiding
+      - en: costing
   - en: But the tests show his brain has no activity at all.
     ko: 하지만 검사 결과 뇌에는 아무 활동도 없습니다.
     chunks:
@@ -4946,7 +4946,7 @@ situations:
     tag: 차근차근 설명
     icon: speech
     why: '''sit down''은 서서 말하지 않고 앉아서 시간을 들이겠다는 뜻이에요. ''slowly''는 서두르지 않겠다는 약속이에요.'
-    decoy: and take notes
+    decoy: with a nurse
     distractorsKo:
     - 팀이 여러분과 함께 서서 천천히 하나씩 설명하겠습니다.
     - 팀이 여러분과 따로 앉아서 천천히 하나씩 설명하겠습니다.
@@ -5000,7 +5000,7 @@ situations:
     why: '''Let''s optimize''는 함께 최선의 상태로 맞추자는 제안이에요. ''now''가 지금 하자는 뜻을 더해요.'
     decoy: for the kidneys
     distractorsKo:
-    - 지금 침대 높이와 소변 주머니 위치를 맞추겠습니다.
+    - 지금 의자 높이와 소변 주머니 위치를 맞추겠습니다.
     - 지금 모니터 화면과 알람 소리를 정리하겠습니다.
     blank:
       answer: optimize
@@ -5061,9 +5061,9 @@ situations:
       answer: coordinator
       options:
       - en: coordinator
-      - en: dietitian
-      - en: receptionist
-      - en: registrar
+      - en: interpreter
+      - en: nutritionist
+      - en: surgeon
   - en: The kidneys aren't tolerating the current numbers.
     ko: 현재 수치로는 신장이 버티지 못하고 있습니다.
     chunks:
@@ -5139,9 +5139,9 @@ situations:
       answer: time
       options:
       - en: time
-      - en: ink
-      - en: gas
-      - en: paper
+      - en: staff
+      - en: space
+      - en: beds
   order:
     tag: 대화 흐름
     icon: compass

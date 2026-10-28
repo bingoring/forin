@@ -1,0 +1,177 @@
+# A 검토 — 문장 en·ko·chunks·words 와 그에 맞춘 v46 필드(why·decoy·distractorsKo·blank·tag·icon)
+# 키 "상황.문장". d = distractorsKo 둘, blank = [정답, 오답 셋]
+sentences:
+  "1.1":   # B 길이 — 둘 다 정답보다 길어서 X2를 짧게
+    d: ["암모니아 수치는 저희가 지켜보는 어지럼과 관련이 있어요.", "철분 수치는 저희가 지켜보는 혼란과 관련이 있어요."]
+  "2.0":   # K1 (KP — ko만)
+    ko: "네, 이 약은 장을 통해 독소를 몸 밖으로 내보내도록 도와줘요."
+    words: [w-medicine, w-toxin, w-bowel]
+    d: ["네, 이 약은 소변을 통해 독소를 몸 밖으로 내보내도록 도와줘요.", "네, 이 약은 장을 통해 수분을 몸 밖으로 내보내도록 도와줘요."]
+  "2.2":   # K2 (KP — ko만)
+    ko: "그건 혼란이 걷히게 하는 데 중요한 부분이에요."
+    words: [w-important, w-part, w-confusion]
+    d: ["그건 가려움이 줄어들게 하는 데 중요한 부분이에요.", "그건 열이 내려가게 하는 데 중요한 부분이에요."]
+  "2.5":   # S1
+    en: "If the stools get too watery, we'll let the doctor know to adjust the dose."
+    ko: "변이 너무 묽어지면 용량을 조정하도록 의사에게 알릴게요."
+    chunks: ["If the stools", "get too watery", ", we'll let the doctor know", "to adjust the dose", "."]
+    tag: "용량 보고"
+    icon: pager
+    why: "'let the doctor know to adjust'는 용량을 정하는 사람이 처방자라는 점을 말해 줘요. 너무 묽은 변은 탈수와 전해질 이상 위험이 있어서 바로 알려요."
+    decoy: "get too cold"
+    d: ["변이 너무 묽어지면 용량을 조정하도록 보호자에게 알릴게요.", "변이 너무 묽어지면 용량을 조정하도록 영양사에게 알릴게요."]
+  "4.3":   # S2
+    en: "Potassium is low too, so I'll get an order to replace it."
+    ko: "칼륨도 낮아서 보충 처방을 받을게요."
+    chunks: ["Potassium is low too", ", so I'll get", "an order", "to replace it", "."]
+    words: [w-potassium, w-low]
+    tag: "처방 요청"
+    icon: pager
+    why: "'so'로 이유와 행동을 이으면 왜 처방을 받는지 한 번에 전달돼요. 정맥 칼륨은 고위험 약이라 처방을 받아서, 미리 섞인 백이나 약제부 조제로 줘요."
+    decoy: "to tape it"
+    d: ["칼륨도 낮아서 보충 처방을 약제부에 보낼게요.", "칼륨도 낮아서 재검 처방을 받을게요."]
+    blank: [replace, remove, measure, store]
+  "4.0":   # B 값 중 정답 행동을 품은 X2 교체
+    d: ["혈당을 재확인하고 다 쓴 검사지는 버립시다.", "혈당을 재확인하고 측정기 날짜는 맞춰 둡시다."]
+  "9.5":   # B 값 중 정답 후반부를 품은 X2 교체
+    d: ["알부민 시험적 투여를 하고 남은 병은 폐기합시다.", "알부민 시험적 투여를 하고 빈 포장은 따로 모읍시다."]
+  "5.3":   # S14
+    ko: "한 시간 전에 체온이 화씨 101.5도(약 38.6도)까지 치솟았어요."
+    d: ["두 시간 전에 체온이 화씨 101.5도(약 38.6도)까지 치솟았어요.", "한 시간 전에 체온이 화씨 100.5도(약 38.1도)까지 치솟았어요."]
+  "6.4":   # S15
+    ko: "감염, 출혈, 혹은 약을 한 번 거른 것이 이걸 일으킬 수 있어요."
+    d: ["감염, 출혈, 혹은 약을 한 번 늘린 것이 이걸 일으킬 수 있어요.", "감염, 출혈, 혹은 약속을 한 번 미룬 것이 이걸 일으킬 수 있어요."]
+  "6.5":   # W3 — w-clear 태그
+    words: [w-treat, w-trigger, w-mind, w-usually, w-clear]
+  "7.3":   # S3
+    en: "His INR is high, so I'll ask whether the team wants plasma before the line."
+    ko: "INR이 높아서 라인 전에 혈장이 필요한지 팀에 물어볼게요."
+    chunks: ["His INR is high", ", so I'll ask", "whether the team wants plasma", "before the line", "."]
+    words: [w-inr, w-high, w-team, w-plasma, w-line]
+    tag: "혈장 문의"
+    icon: speech
+    why: "'ask whether'는 INR 수치만 보고 혈장을 정하지 않고 처방자와 팀이 판단하게 맡겨요. 간 질환에서는 INR이 출혈 위험을 잘 보여 주지 않아서, 혈장은 출혈이 있거나 고위험 시술일 때 처방에 따라 줘요."
+    decoy: "before the huddle"
+    d: ["INR이 높아서 라인 전에 혈장이 필요한지 수술팀에 물어볼게요.", "INR이 높아서 라인 뒤에 혈장이 필요한지 팀에 물어볼게요."]
+  "7.5":   # S4
+    en: "Platelets are also low, so I'll ask whether to transfuse before the procedure."
+    ko: "혈소판도 낮아서 시술 전에 수혈할지 물어볼게요."
+    chunks: ["Platelets are also low", ", so I'll ask", "whether to transfuse", "before the procedure", "."]
+    tag: "수혈 문의"
+    icon: speech
+    why: "'also'는 INR에 더해 혈소판도 낮다는 뜻이고, 'ask whether'는 수혈 여부를 처방자와 정한다는 뜻이에요. 응고인자와 혈소판이 모두 모자라면 출혈 위험이 더 커요."
+    decoy: "Sodium is also low"
+    d: ["혈소판도 낮아서 시술 전에 동의서 받을게요.", "혈소판도 낮아서 시술 전에 수치를 다시 볼게요."]
+  "8.4":   # S5
+    en: "We'll keep his head at thirty degrees and avoid anything tight around his neck."
+    ko: "머리를 30도로 유지하고 목을 조이는 것은 피할게요."
+    chunks: ["We'll keep", "his head", "at thirty degrees", "and avoid anything tight", "around his neck", "."]
+    words: [w-keep, w-degree, w-avoid, w-tight, w-neck]
+    tag: "자세 유지"
+    icon: shield
+    why: "각도를 숫자로 말하면 팀이 같은 높이로 맞춰요. 목을 조이는 것은 머리에서 내려오는 정맥 혈류를 막을 수 있어서 피해요."
+    decoy: "around his ankle"
+    d: ["머리를 30도로 유지하고 각도 표시를 침대에 붙일게요.", "머리를 30도로 유지하고 무릎 밑 베개를 뺄게요."]
+  "11.1":   # K6 (KP — ko만)
+    ko: "용량을 확인하고 이상 반응이 있는지 모니터링할게요."
+    d: ["NAC는 주입 초기에 이상 반응이 가장 잘 생겨요.", "용량은 체중에 맞춰 정확하게 계산해서 줘요."]
+  "11.4":   # S6
+    en: "I'll watch him closely for any allergic reaction."
+    ko: "알레르기 반응이 있는지 자세히 지켜볼게요."
+    chunks: ["I'll watch him", "closely", "for any allergic reaction", "."]
+    words: [w-watch, w-closely, w-allergic, w-reaction]
+    why: "'for any allergic reaction'은 무엇을 찾는지 분명히 말해요. NAC 반응은 주입 초반에 두드러기·쌕쌕거림·저혈압으로 나타나서 검사 수치가 아니라 환자를 직접 보며 찾아요."
+    decoy: "for any new visitors"
+    d: ["알레르기 반응은 주입 초기에 가장 잘 생겨요.", "알레르기 반응은 발진이나 두드러기로 나타나요."]
+  "12.1":   # K3 (KP — ko만)
+    ko: "패혈증 초기 징후가 있는지 활력징후와 검사 결과를 지켜볼게요."
+    d: ["활력징후는 패혈증 초기에 제일 빨리 흔들리기 시작해요.", "간부전 환자는 패혈증이 생기면 빠르게 나빠질 수 있어요."]
+  "12.5":   # S7
+    en: "If his fever climbs, I won't wait — I'll call the team right away."
+    ko: "열이 오르면 기다리지 않고 바로 팀에 연락할게요."
+    chunks: ["If his fever", "climbs", ", I won't wait", "— I'll call the team", "right away", "."]
+    words: [w-fever, w-climb, w-wait, w-call, w-team, w-away]
+    tag: "즉시 보고"
+    icon: siren
+    why: "'I won't wait'는 확인을 더 모으느라 미루지 않겠다는 약속이고, 바로 팀에 알리는 행동으로 이어요. 간부전 환자의 감염은 빨리 악화돼서 알리는 시점이 중요해요."
+    decoy: "— I'll call the kitchen"
+    d: ["열이 오르면 기다리지 않고 바로 약사에게 연락할게요.", "열이 오르면 기다리지 않고 바로 원무과에 연락할게요."]
+    blank: [climbs, lingers, fades, settles]
+  "13.4":   # S8
+    en: "Small, frequent meals and a bedtime snack help protect your muscles."
+    ko: "조금씩 자주 드시고 자기 전에 간식을 드시면 근육을 지키는 데 도움이 돼요."
+    chunks: ["Small, frequent meals", "and a bedtime snack", "help protect", "your muscles", "."]
+    words: [w-meal, w-protect, w-muscle]
+    tag: "식사 안내"
+    icon: star
+    why: "'help protect'는 간식이 근육을 지키는 데 도움이 된다고 효과를 부드럽게 말해요. 밤새 오래 굶으면 근육이 줄기 쉬워서 자기 전 간식을 권해요."
+    decoy: "and a bedtime story"
+    d: ["조금씩 자주 드시고 자기 전에 간식을 드시면 뼈를 지키는 데 도움이 돼요.", "조금씩 자주 드시고 아침에 간식을 드시면 근육을 지키는 데 도움이 돼요."]
+  "14.3":   # S16
+    ko: "간이 예전처럼 이 약들을 잘 처리하지 못해요."
+    tag: "약물 처리"
+    d: ["방광이 예전처럼 이 약들을 잘 처리하지 못해요.", "간이 예전처럼 이 음식들을 잘 처리하지 못해요."]
+  "14.4":   # S9
+    en: "Let's lower the sedative dose per protocol and check his response."
+    ko: "프로토콜에 따라 진정제 용량을 낮추고 반응을 확인합시다."
+    chunks: ["Let's lower", "the sedative dose", "per protocol", "and check", "his response", "."]
+    words: [w-sedative, w-dose, w-protocol, w-check, w-response]
+    why: "'per protocol'을 붙이면 진정제 감량이 개인 판단이 아니라 정해진 지침 안에서 하는 일이라는 뜻이 돼요. 'lower'는 줄이는 방향을 분명히 하고, 줄인 뒤 반응을 보는 단계까지 한 문장에 담아요."
+    decoy: "his shoes"
+    d: ["프로토콜에 따라 진통제 용량을 낮추고 반응을 확인합시다.", "프로토콜에 따라 진정제 용량을 낮추고 동공을 확인합시다."]
+  "14.5":   # S17
+    ko: "몸에서 잘 빠져나가지 않는 약은 간격을 두고 줄게요."
+    d: ["몸에서 잘 빠져나가지 않는 약은 농도를 재고 줄게요.", "몸에서 잘 빠져나가지 않는 약은 준 다음 졸림을 살필게요."]
+  "15.4":   # S10
+    en: "I'm pushing the ordered saline now — can we get a repeat head CT?"
+    ko: "처방된 식염수를 지금 투여하고 있어요, 머리 CT를 다시 찍을 수 있을까요?"
+    chunks: ["I'm pushing", "the ordered saline", "now", "— can we get", "a repeat head CT", "?"]
+    words: [w-push, w-saline, w-repeat, w-ct]
+    tag: "투여와 요청"
+    icon: pill
+    why: "'the ordered saline'은 처방된 것만 준다는 점을 밝히고, 'can we get'은 CT를 정하는 대신 팀에 요청하는 말투예요. 상태가 바뀌었으니 영상으로 다시 봐야 해요."
+    decoy: "a repeat hearing test"
+    d: ["처방된 식염수를 지금 투여하고 있어요, 머리 CT로 갈 이송을 불러 줄 수 있을까요?", "처방된 식염수를 지금 투여하고 있어요, 나트륨을 다시 잴 수 있을까요?"]
+  "17.0":   # K4 (KP — ko만)
+    ko: "삽관 트레이를 가져오고 흡인도 준비해 둘게요."
+    d: ["삽관 트레이를 가져오고 도움도 불러 둘게요.", "삽관 트레이를 가져오고 산소도 준비해 둘게요."]
+  "17.5":   # S11
+    en: "If you want cricoid pressure, tell me before you pass the tube."
+    ko: "윤상연골 압박이 필요하면 튜브를 넣기 전에 말씀해 주세요."
+    chunks: ["If you want", "cricoid pressure", ", tell me", "before you pass", "the tube", "."]
+    words: [w-cricoid, w-pressure, w-tell, w-pass, w-tube]
+    tag: "압박 요청"
+    icon: speech
+    why: "'If you want'는 윤상연골 압박을 삽관하는 사람이 요청할 때만 한다는 뜻이에요. 근거가 약해 일상적으로 하지 않는 곳이 많고, 하더라도 병원 지침에 따라 해요."
+    decoy: ", thank me"
+    d: ["윤상연골 압박이 필요하면 튜브를 넣는 동안 말씀해 주세요.", "윤상연골 압박이 필요하면 튜브를 고정하기 전에 말씀해 주세요."]
+  "18.1":   # K5 (KP — ko만)
+    ko: "치료 지원이 더 필요해서 의사에게 보고하고 있어요."
+    d: ["의사는 지원이 더 필요한지 판단해서 지시해 줄 거예요.", "더 많은 지원은 투석이나 승압제 같은 치료를 뜻해요."]
+  "18.3":   # S18
+    ko: "신장, 폐, 혈압이 한꺼번에 무너지고 있어요."
+    chunks: ["His kidneys", ", lungs", ", and pressure", "are all failing", "at once", "."]
+    decoy: ", and skin"
+    d: ["신장, 피부, 혈압이 한꺼번에 무너지고 있어요.", "신장, 폐, 혈압이 서서히 무너지고 있어요."]
+  "19.3":   # S12
+    en: "He meets status 1A criteria, so the center wants him transferred now."
+    ko: "1A 기준에 해당해서 센터가 지금 바로 이송을 원해요."
+    chunks: ["He meets", "status 1A criteria", ", so the center", "wants him transferred now", "."]
+    words: [w-center, w-transfer]
+    tag: "이송 요청"
+    icon: pushpin
+    why: "'meets … criteria'는 1A가 정해진 기준에 해당한다는 사실을 말하고, 'so'로 센터가 이송을 원하는 이유를 이어요. 1A는 가장 높은 긴급도일 뿐 장기 배정이나 즉시 수용을 뜻하지는 않아요."
+    decoy: "status 2A criteria"
+    d: ["2A 기준에 해당해서 센터가 지금 바로 이송을 원해요.", "1A 기준에 해당해서 센터가 지금 바로 면담을 원해요."]
+    blank: [transferred, discharged, undressed, vaccinated]
+  "19.4":   # S19
+    ko: "인수할 팀과 이송 시간을 확인할게요."
+    chunks: ["I'll", "confirm", "the accepting team", "and the transport time", "."]
+    d: ["인수할 팀은 상태를 미리 알아야 해요.", "이송 시간은 교통에 따라 달라져요."]
+  "7.4":   # S20 chunks
+    chunks: ["We'll hold", "firm pressure", "at the site", "after the line goes in", "."]
+  "8.3":   # S21 chunks
+    chunks: ["His right pupil", "looks", "a little sluggish", "compared to the left", "."]
+  "16.4":   # S22 chunks
+    chunks: ["Let's send", "another", "type and cross", "while we transfuse", "."]
+    decoy: "culture"
