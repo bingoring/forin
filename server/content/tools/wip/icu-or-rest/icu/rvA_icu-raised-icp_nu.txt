@@ -1,0 +1,207 @@
+## S0 신경학적 사정
+  SLIDER words=['w-alert'] cue=Chart: "He opens his eyes only when I call his name loudly." scale=['alert', 'to voice', 'to pain', 'none'] at=1
+    why=신경 ICU에서는 의식 수준을 흔히 AVPU로 적어요. alert는 스스로 깨어 있는 상태, to voice는 부르면 눈을 뜨는 상태, to pain은 통증 자극에만 반응하는 상태, 마지막은 반응이 없는 상태예요. 소리쳐 불러야 눈을 뜬다면 to voice예요.
+    ex=He's alert at baseline, but now he only opens his eyes to voice. / 원래는 또렷했는데 지금은 부를 때만 눈을 떠요.
+  CONTEXT word=reactive ko=반응하는 words=['w-reactive']
+    [True] 의사에게 보고: Left pupil is no longer reactive to light, and he's more drowsy.    
+    [False] 가족에게: Pupils reactive bilaterally, PERRL, GCS 14, no acute change.    fix=His eyes still react to light, which is a good sign, and we're checking them often.
+    [True] 차트 기록: Pupils equal, round, and reactive to light at 0800.    
+    why=의료진끼리는 PERRL, GCS 같은 약어가 빠르고 정확해요. 하지만 가족에게는 무슨 뜻인지 알 수 없고 오히려 불안하게 들려요. 같은 사실을 눈이 빛에 반응한다는 쉬운 말로 풀어 주세요.
+  SWAP words=['w-change'] who=가족에게 · 변화 안내 ko=그분에게 눈에 띄는 변화가 있으면 바로 알려 드릴게요 answer=difference you can see
+    -> We'll tell you right away if there is any difference you can see in him.   [가족도 바로 알아볼 수 있는 쉬운 말이라 무엇을 알려 주겠다는 건지 분명하다.]
+    -> We'll tell you right away if there is any neuro change in him.   [의료진끼리 쓰는 말이라 가족은 무엇이 바뀌는지 감이 오지 않는다.]
+    -> We'll tell you right away if there is any GCS drop in him.   [점수 용어라 가족에게는 낯설고 놀라게 할 수 있다.]
+    why=가족에게는 눈에 보이는 변화를 쉬운 말로 설명하고, 점수나 약어는 의료진끼리 쓰는 말로 남겨 두세요.
+## S1 두부 거상·중립 체위
+  PAIR words=['w-keep', 'w-avoid', 'w-check'] pairs=[['keep', 'his head up and midline'], ['avoid', 'sharp turns of his neck'], ['check', 'his alignment after each turn']] decoys=['a dinner tray']
+    why=미국 신경 ICU에서는 침상 머리를 약 30도 올리고 머리와 목을 중립(정중선)에 두어 정맥 배액을 돕는 것이 기본이에요. 목을 꺾거나 돌리면 배액이 방해될 수 있어 피하고, 체위를 바꿀 때마다 정렬을 확인해요.
+    keep :: his head up and midline | sharp turns of his neck | his alignment after each turn | a dinner tray
+    avoid :: his head up and midline | sharp turns of his neck | his alignment after each turn | a dinner tray
+    check :: his head up and midline | sharp turns of his neck | his alignment after each turn | a dinner tray
+  SWAP words=['w-midline'] who=가족에게 · 자세 설명 ko=뇌에서 피가 잘 빠지도록 머리를 곧게 두고 있어요 answer=straight
+    -> We keep his head straight so blood can leave his brain.   [가족이 바로 그림을 떠올릴 수 있는 쉬운 말이다.]
+    -> We keep his head midline so blood can leave his brain.   [의료진끼리 쓰는 말이라 가족에게는 어디가 중심인지 모호하다.]
+    -> We keep his head in neutral alignment so blood can leave his brain.   [정확하지만 길고 딱딱해서 가족에게는 어렵게 들린다.]
+    why=가족에게는 고개를 곧게 둔다는 쉬운 말로, 의료진끼리는 midline과 neutral alignment 같은 용어로 말해요.
+## S2 EVD 시스템·영점 이해
+  SLIDER words=['w-precisely'] cue=After every position change, the zero point has to be set at the exact reference spot again. scale=['loosely', 'roughly', 'precisely'] at=2
+    why=EVD는 영점(기준점) 높이에 따라 배액되는 양과 측정값이 달라져요. 그래서 대충(loosely, roughly) 맞추지 않고 정확하게(precisely) 맞춰요. 기준점은 병원 프로토콜에 따라 정해져 있고 보통 귀 부근이에요.
+    ex=I level the drain precisely at the reference point every time. / 배액관을 매번 기준점에 정확히 맞춰요.
+  SWAP words=['w-drain'] who=가족에게 · EVD 설명 ko=이 작은 관이 뇌 주변의 여분의 체액을 빼내 줘요 answer=small tube
+    -> This small tube lets extra fluid drain out of his brain area.   [가족이 눈으로 보이는 것을 그대로 부르는 쉬운 말이다.]
+    -> This EVD lets extra fluid drain out of his brain area.   [약어라 가족은 무슨 장치인지 알 수 없다.]
+    -> This ventriculostomy catheter lets extra fluid drain out of his brain area.   [정확한 의학 용어지만 가족에게는 너무 길고 어렵다.]
+    why=처음 듣는 가족에게는 작은 관이 여분의 체액을 빼 준다고 쉬운 말로 먼저 알려 주세요.
+## S3 ICP·CPP 모니터 판독
+  PAIR words=['w-icp', 'w-cpp', 'w-target'] pairs=[['ICP', 'the pressure inside his head'], ['CPP', 'the pressure pushing blood into his brain'], ['target', 'a range the doctor sets']] decoys=['the weight on his chart']
+    why=ICP는 두개내압, CPP는 뇌관류압이에요. CPP는 평균동맥압(MAP)에서 ICP를 뺀 값이라 ICP가 오르거나 혈압이 떨어지면 낮아져요. 목표 범위는 환자와 지침에 따라 의사가 정해요.
+    ICP :: the pressure inside his head | the pressure pushing blood into his brain | a range the doctor sets | the weight on his chart
+    CPP :: the pressure inside his head | the pressure pushing blood into his brain | a range the doctor sets | the weight on his chart
+    target :: the pressure inside his head | the pressure pushing blood into his brain | a range the doctor sets | the weight on his chart
+  SWAP words=['w-icp'] who=가족에게 · 모니터 설명 ko=화면의 그 숫자는 환자분의 머릿속 압력이에요 answer=pressure inside his head
+    -> That number on the screen is his pressure inside his head.   [화면 숫자가 무엇인지 바로 알려 주는 쉬운 말이다.]
+    -> That number on the screen is his ICP.   [약어라 가족은 알아듣지 못한다.]
+    -> That number on the screen is his intracranial pressure.   [정확하지만 가족에게는 어려운 용어다.]
+    why=화면의 숫자를 가리키며 머릿속 압력이라고 쉬운 말로 알려 주면 가족도 무엇을 지켜보는지 이해해요.
+## S4 진정·통증 관리 협조
+  SLIDER words=['w-spike'] cue=ICP jumps from 12 to 28 for twenty seconds during suctioning, then comes back down. scale=['drift', 'spike', 'plateau'] at=1
+    why=drift는 서서히 변하는 것, spike는 짧게 갑자기 솟았다가 내려오는 것, plateau는 높은 상태가 한동안 이어지는 것이에요. 흡인이나 체위 변경 때 잠깐 치솟는 건 spike라고 해요.
+    ex=His ICP spiked during suctioning and came back down. / 흡인할 때 ICP가 급상승했다가 다시 내려왔어요.
+  CONTEXT word=spike ko=급상승 words=['w-spike']
+    [True] 의사에게 보고: ICP spiked to 28 with suctioning and came back in a minute.    
+    [False] 가족에게: His pressure spiked to 28 and he's in serious trouble.    fix=His pressure went up for a short time when we turned him, and we're helping it settle.
+    [True] 차트 기록: ICP spike x2 with turns, resolved after sedation bolus.    
+    why=의료진끼리는 spike가 짧은 급상승을 뜻하는 흔한 말이에요. 하지만 가족에게 serious trouble처럼 단정하면 필요 이상으로 겁을 줘요. 무슨 일이 있었고 지금 무엇을 하는지 차분히 말해 주세요.
+## S5 자극 최소화
+  PAIR words=['w-dim', 'w-cluster', 'w-speak'] pairs=[['dim', 'the lights in the room'], ['cluster', 'his care into one visit'], ['speak', 'softly at the bedside']] decoys=['his dinner tray']
+    why=자극을 줄이는 기본은 불빛은 낮추고(dim), 처치는 한꺼번에 묶고(cluster), 소곤소곤 말하는(speak softly) 것이에요. 자극이 잦으면 ICP가 오를 수 있어서 쉬는 시간을 지켜 줘요.
+    dim :: the lights in the room | his care into one visit | softly at the bedside | his dinner tray
+    cluster :: the lights in the room | his care into one visit | softly at the bedside | his dinner tray
+    speak :: the lights in the room | his care into one visit | softly at the bedside | his dinner tray
+  CONTEXT word=quiet ko=조용한 words=['w-quiet']
+    [True] 간호사끼리: Quiet room, lights dim, care clustered every two hours.    
+    [False] 방문한 가족에게: Be quiet! He needs complete rest.    fix=Could we keep the room quiet by speaking softly so he can rest?
+    [True] 새 간호사에게 인계: Keep it quiet in there — his ICP rises with noise.    
+    why=의료진끼리는 짧고 직설적으로 말해도 돼요. 하지만 가족에게 명령조로 말하면 쫓아내는 것처럼 들려요. 왜 조용해야 하는지와 함께 부탁하는 말투로 해 주세요.
+## S6 ICP 상승 단계별 중재
+  PAIR words=['w-position', 'w-sedation', 'w-mannitol'] pairs=[['position', 'his head up and neck neutral'], ['sedation', "deepened if he's agitated"], ['mannitol', 'ordered if ICP stays high']] decoys=['a quiet hallway cart']
+    why=ICP가 오르면 보통 가벼운 것부터 단계적으로 해요. 먼저 체위와 목 중립을 점검하고, 진정·진통을 조절한 뒤, 그래도 높으면 처방에 따라 만니톨 같은 삼투요법을 써요.
+    position :: his head up and neck neutral | deepened if he's agitated | ordered if ICP stays high | a quiet hallway cart
+    sedation :: his head up and neck neutral | deepened if he's agitated | ordered if ICP stays high | a quiet hallway cart
+    mannitol :: his head up and neck neutral | deepened if he's agitated | ordered if ICP stays high | a quiet hallway cart
+  SWAP words=['w-mannitol'] who=가족에게 · 치료 설명 ko=계속 높으면 부기를 가라앉히는 약을 드릴 거예요 answer=a medicine to ease the swelling
+    -> If it stays high, we'll give a medicine to ease the swelling.   [가족이 약의 목적을 바로 이해하는 쉬운 말이다.]
+    -> If it stays high, we'll give mannitol.   [약 이름만으로는 가족이 무엇을 하는 약인지 알 수 없다.]
+    -> If it stays high, we'll give an osmotic bolus.   [의료진끼리 쓰는 용어라 가족에게는 어렵다.]
+    why=가족에게는 약 이름보다 무엇을 위한 약인지를 쉬운 말로 먼저 알려 주세요.
+## S7 삼투요법 투여
+  PAIR words=['w-confirm', 'w-trend', 'w-hang'] pairs=[['confirm', 'the dose is weight-based'], ['trend', 'sodium and osmolality over hours'], ['hang', 'the ordered bag after checks']] decoys=['the visitor list']
+    why=삼투요법은 처방대로 투여하고, 달기 전에 체중 기반 용량인지 확인해요(confirm). 나트륨·삼투압은 한 번의 값보다 시간에 따른 추이(trend)를 보며, 확인이 끝난 약을 걸어요(hang).
+    confirm :: the dose is weight-based | sodium and osmolality over hours | the ordered bag after checks | the visitor list
+    trend :: the dose is weight-based | sodium and osmolality over hours | the ordered bag after checks | the visitor list
+    hang :: the dose is weight-based | sodium and osmolality over hours | the ordered bag after checks | the visitor list
+  SWAP words=['w-sodium'] who=가족에게 · 검사 설명 ko=네 시간 뒤에 혈액 속 염분 수치를 다시 확인할게요 answer=blood salt level
+    -> We'll check his blood salt level again in four hours.   [가족이 바로 알아듣는 쉬운 말이다.]
+    -> We'll check his sodium again in four hours.   [정확한 용어지만 가족에게는 무엇인지 설명이 필요하다.]
+    -> We'll check his Na again in four hours.   [화학 기호 약어라 가족은 알아듣지 못한다.]
+    why=가족에게는 무엇을 재는지 쉬운 말로 먼저 말하고, 용어는 그다음에 덧붙여요.
+## S8 EVD 배액량·파형 관리
+  SLIDER words=['w-dampen'] cue=The waveform is still there, but it's small and weak compared with this morning. scale=['strong', 'dampened', 'flat'] at=1
+    why=strong은 뚜렷한 파형, dampened는 파형이 있지만 약해진 상태, flat은 거의 파형이 없는 상태예요. 약해진 파형은 막힘이나 위치 문제의 신호일 수 있어서 수평, 튜빙, 파동을 확인하고 신경외과에 알려요.
+    ex=The waveform looks dampened, so I'm checking the tubing. / 파형이 약해져 보여서 튜빙을 확인하고 있어요.
+  SWAP words=['w-waveform'] who=가족에게 · 모니터 설명 ko=화면에서 움직이는 선이 배액관이 잘 작동하는지 알려 줘요 answer=moving line
+    -> The moving line on the screen tells us if the drain is working.   [가족이 화면에서 바로 찾을 수 있는 쉬운 말이다.]
+    -> The waveform on the screen tells us if the drain is working.   [의료진 용어라 가족에게는 낯설다.]
+    -> The ICP trace on the screen tells us if the drain is working.   [약어가 섞여 가족은 알아듣기 어렵다.]
+    why=가족에게는 화면의 움직이는 선이라고 가리키며 쉬운 말로 설명해요.
+## S9 CPP 목표 승압·수액 유지
+  SLIDER words=['w-adequate'] cue=Volume status: he's filled to the target, not dry and not overloaded. scale=['inadequate', 'adequate', 'excessive'] at=1
+    why=inadequate는 모자란 상태, adequate는 필요한 만큼 충분한 상태, excessive는 지나친 상태예요. CPP를 유지하려면 수액을 부족하지도 넘치지도 않게 맞추는 것이 목표예요.
+    ex=His fluid status is adequate, so we won't add more. / 수액 상태가 충분해서 더 추가하지 않을 거예요.
+  SWAP words=['w-pressor'] who=가족에게 · 약 설명 ko=혈압을 지지하려고 혈압을 올려 주는 약을 쓰고 있어요 answer=medicine that raises his blood pressure
+    -> We're giving a medicine that raises his blood pressure to support his blood pressure.   [약이 하는 일을 그대로 설명해 가족이 이해하기 쉽다.]
+    -> We're giving a pressor to support his blood pressure.   [줄임말이라 가족은 알아듣지 못한다.]
+    -> We're giving a vasopressor to support his blood pressure.   [정확한 약 분류지만 가족에게는 어렵다.]
+    why=약의 종류보다 무슨 일을 하는 약인지를 쉬운 말로 먼저 말해 주세요.
+## S10 과호흡 일시 사용 이해
+  SLIDER words=['w-brief'] cue=Hyperventilation is used only for a few minutes as a bridge until other treatments work. scale=['brief', 'ongoing', 'lifelong'] at=0
+    why=과호흡은 CO2를 낮춰 뇌혈관을 좁혀 뇌압을 잠시 낮추지만, 너무 오래 하면 뇌 혈류가 줄어요. 그래서 짧게(brief) 쓰고 지속적인 요법(ongoing)으로 쓰지 않아요.
+    ex=We use hyperventilation for a brief time only. / 과호흡은 짧은 시간에만 써요.
+  SWAP words=['w-hyperventilation'] who=가족에게 · 호흡 설명 ko=몇 분 동안 숨을 더 빠르게 쉬게 하고 있어요 answer=faster breathing
+    -> We're using faster breathing for a few minutes.   [가족이 장면을 바로 그릴 수 있는 쉬운 말이다.]
+    -> We're using hyperventilation for a few minutes.   [의료 용어라 가족에게는 어렵다.]
+    -> We're using a CO2 wash-out for a few minutes.   [원리를 말하지만 가족에게는 낯선 표현이다.]
+    why=가족에게는 무엇을 하는지(더 빠르게 숨 쉬게 함)를 쉬운 말로, 의료진끼리는 용어로 말해요.
+## S11 발작 예방·감시
+  SLIDER words=['w-subtle'] cue=One eyelid and the corner of his mouth twitch a little, easy to miss. scale=['subtle', 'obvious', 'severe'] at=0
+    why=subtle은 눈에 잘 띄지 않는 미묘한 움직임, obvious는 누구나 알아볼 만한 것, severe는 심한 것이에요. 미묘한 발작은 눈꺼풀 씰룩거림이나 눈 편위로만 나타날 수 있어 EEG로도 확인해요.
+    ex=The signs are subtle, so we watch his face closely. / 징후가 미묘해서 얼굴을 자세히 지켜봐요.
+  SWAP words=['w-eeg'] who=가족에게 · 검사 설명 ko=발작을 잡아내려고 뇌파 모니터를 붙여 두었어요 answer=brain-wave monitor
+    -> He has a brain-wave monitor in place to catch seizures.   [무엇을 하는 장치인지 바로 알 수 있는 쉬운 말이다.]
+    -> He has a continuous EEG in place to catch seizures.   [정확한 용어지만 가족에게는 설명이 필요하다.]
+    -> He has a cEEG in place to catch seizures.   [약어라 가족은 알아듣지 못한다.]
+    why=가족에게는 뇌파를 보는 장치라고 쉬운 말로 먼저 알려 주세요.
+## S12 나트륨 목표 관리
+  SLIDER words=['w-slowly'] cue=To avoid rebound swelling, the sodium is allowed to come down gradually. scale=['slowly', 'quickly', 'instantly'] at=0
+    why=고장성 요법 뒤 나트륨을 급하게 내리면 반동 부종이 생길 수 있어서 천천히 바로잡아요. slowly가 맞고 quickly나 instantly는 반대예요.
+    ex=We correct his sodium slowly to protect his brain. / 뇌를 지키려고 나트륨을 천천히 바로잡아요.
+  CONTEXT word=swing ko=급변 words=['w-swing']
+    [True] 의사에게 보고: No big swings in sodium overnight, still in the target range.    
+    [False] 가족에게: We want no wild swings in his serum sodium.    fix=We want his salt level to change slowly, not jump up and down.
+    [True] 차트 기록: Na 150 to 149, no large swings this shift.    
+    why=의료진끼리는 swing과 serum sodium이 간결하고 정확한 표현이에요. 가족에게는 같은 말이 어렵게 들려요. 무엇이 어떻게 바뀌는지 쉬운 말로 풀어 주세요.
+## S13 이송·검사 중 ICP 관리
+  PAIR words=['w-clamp', 'w-sedate', 'w-keep'] pairs=[['clamp', 'the EVD only as protocol says'], ['sedate', 'him a little deeper before CT'], ['keep', 'the bolus ready for his return']] decoys=['the elevator buttons']
+    why=이송 중에는 진정과 머리 높이를 유지하고, EVD는 병원 프로토콜대로 잠그거나 관리해요. CT 전에는 움직임과 ICP 상승을 막으려고 진정을 조금 더 깊게 하고, 돌아오면 바로 쓸 수 있게 삼투 약을 준비해 둬요.
+    clamp :: the EVD only as protocol says | him a little deeper before CT | the bolus ready for his return | the elevator buttons
+    sedate :: the EVD only as protocol says | him a little deeper before CT | the bolus ready for his return | the elevator buttons
+    keep :: the EVD only as protocol says | him a little deeper before CT | the bolus ready for his return | the elevator buttons
+  SWAP words=['w-transport'] who=가족에게 · 이동 안내 ko=CT 촬영하러 가는 동안 편안하게 해 드릴게요 answer=the trip to the scanner
+    -> We'll keep him comfortable during the trip to the scanner to CT.   [가족이 상황을 바로 그릴 수 있는 쉬운 말이다.]
+    -> We'll keep him comfortable during transport to CT.   [병원 용어라 가족에게는 딱딱하다.]
+    -> We'll keep him comfortable during patient transfer to CT.   [침대 간 옮김처럼 들려 뜻이 달라진다.]
+    why=가족에게는 어디로 가는지 쉬운 말로 설명해야 걱정이 줄어요.
+## S14 진정 중단과 신경검사 균형
+  SLIDER words=['w-briefly'] cue=Sedation is turned down for a short window just to examine him. scale=['forever', 'always', 'briefly'] at=2
+    why=신경 검사를 위해 진정을 잠깐만 줄이는 것이므로 briefly(잠깐)가 맞아요. 이때 ICP를 자세히 보고 오르면 다시 진정시켜요.
+    ex=We'll briefly lighten his sedation to examine him. / 검사를 위해 진정을 잠깐 얕게 할게요.
+  CONTEXT word=sedative ko=진정제 words=['w-sedative']
+    [True] 의사에게 보고: Sedative held for the neuro exam, ICP stable at twelve.    
+    [False] 가족에게: The sedative is being held per order for a neuro wake-up.    fix=We're lightening his sleep medicine for a short time so we can check how he's doing.
+    [True] 차트 기록: Sedative held at 0730, resumed at 0800 after exam.    
+    why=의료진끼리는 sedative held, neuro wake-up이 간결하고 정확해요. 가족에게는 무슨 뜻인지 알기 어려워요. 왜 잠깐 줄이는지를 쉬운 말로 설명해 주세요.
+## S15 뇌탈출 임박 위기
+  SLIDER words=['w-immediately'] cue=Blown pupil: call neurosurgery this very moment, not after the next set of vitals. scale=['shortly', 'quickly', 'immediately'] at=2
+    why=뇌탈출이 의심되면 한 시간도 기다릴 수 없어요. immediately는 지체 없이 바로, quickly는 서두르지만 약간의 여유가 있고, shortly는 곧이에요. 동공이 산대되면 즉시 보고해요.
+    ex=Tell the doctor immediately if a pupil changes. / 동공이 달라지면 즉시 의사에게 말하세요.
+  SWAP words=['w-herniation'] who=가족에게 · 응급 설명 ko=압력 때문에 뇌가 위험하게 밀릴 수 있어서 지금 조치하고 있어요 answer=dangerous shift of the brain
+    -> The pressure may be causing a dangerous shift of the brain, and we're acting now.   [무슨 일이 생기는지 쉬운 말로 알려 주면서 지금 조치하고 있다는 점도 전한다.]
+    -> The pressure may be causing a herniation, and we're acting now.   [의료 용어라 가족은 이해하기 어렵다.]
+    -> The pressure may be causing a uncal herniation, and we're acting now.   [더 세부적인 용어라 가족에게는 오히려 혼란스럽다.]
+    why=가족에게는 용어보다 무슨 일이 생기고 있고 지금 무엇을 하는지를 쉬운 말로 알려 주세요.
+## S16 EVD 막힘·과배액 위기
+  SLIDER words=['w-usually'] cue=No fluctuation and a rising ICP most of the time mean a blockage, but not every time. scale=['rarely', 'always', 'usually'] at=2
+    why=파동이 없고 ICP가 오르면 보통은 막힘을 뜻하지만 항상은 아니에요. usually는 대부분, always는 예외 없이, rarely는 드물게예요. 그래서 확정하기 전에 재위치와 재평가를 하고 신경외과에 알려요.
+    ex=No fluctuation usually means the drain is blocked. / 파동이 없으면 보통 배액관이 막혔다는 뜻이에요.
+  CONTEXT word=blocked ko=막히다 words=['w-block']
+    [True] 의사에게 보고: EVD appears blocked: no fluctuation and ICP is climbing.    
+    [False] 가족에게: The EVD is blocked, so the ventriculostomy has failed and may need revision.    fix=The small tube is blocked for now, and the surgeon is coming to look at it.
+    [True] 차트 기록: EVD blocked at 0215, neurosurgery notified.    
+    why=의료진끼리는 EVD, ventriculostomy 같은 용어와 간결한 보고가 정확해요. 가족에게 실패나 수정 같은 말을 쓰면 불필요하게 겁을 줘요. 지금 막혀 있고 의사가 보러 온다는 사실만 쉬운 말로 전하세요.
+## S17 ICP 급상승 불응 위기
+  SLIDER words=['w-possibility'] cue=We haven't decided on surgery, but it is on the table as an option. scale=['possibility', 'certainty', 'impossibility'] at=0
+    why=아직 결정은 아니지만 선택지로 올라와 있으므로 possibility(가능성)가 맞아요. certainty는 확정, impossibility는 불가능이라 맞지 않아요. 가족에게는 결정이 아니라 가능성이라고 정직하게 알려요.
+    ex=Surgery is a real possibility if medicine isn't enough. / 약으로 충분하지 않으면 수술이 실제 가능성이에요.
+  SWAP words=['w-decompressive'] who=가족에게 · 수술 가능성 설명 ko=약으로 충분하지 않으면 압력을 덜어 주는 수술이 필요할 수 있어요 answer=an operation to relieve the pressure
+    -> We may need an operation to relieve the pressure if medicines aren't enough.   [수술이 무엇을 위한 것인지 쉬운 말로 설명한다.]
+    -> We may need decompressive surgery if medicines aren't enough.   [의료 용어라 가족은 의미를 알기 어렵다.]
+    -> We may need a craniectomy if medicines aren't enough.   [더 세부적인 수술 이름이라 가족에게는 어렵다.]
+    why=가족에게는 수술 이름보다 목적을 쉬운 말로 먼저 알려 주세요.
+## S18 급성 뇌출혈 확대 악화
+  SLIDER words=['w-rapid'] cue=Over twenty minutes his GCS fell from 14 to 9. scale=['rapid', 'steady', 'slow'] at=0
+    why=스무 분 만에 크게 떨어졌다면 rapid(급격한)예요. steady는 일정하게, slow는 천천히를 뜻해요. 급격한 악화는 출혈이 커질 수 있다는 신호라 즉시 보고해요.
+    ex=He had a rapid decline in the last hour. / 지난 한 시간 동안 급격히 악화됐어요.
+  SWAP words=['w-anticoagulation'] who=가족에게 · 치료 설명 ko=지금 혈액을 묽게 하는 약의 작용을 되돌리고 있어요 answer=blood thinner
+    -> We're reversing his blood thinner right now.   [가족이 흔히 아는 말이라 바로 이해한다.]
+    -> We're reversing his anticoagulation right now.   [의료 용어라 가족에게는 어렵다.]
+    -> We're reversing his heparin effect right now.   [특정 약 이름이라 맞는 약인지 확신할 수 없고 가족에게는 낯설다.]
+    why=가족에게는 익숙한 말인 혈액을 묽게 하는 약(blood thinner)으로 설명해 주세요.
+## S19 요붕증·SIADH 급변 관리
+  PAIR words=['w-di', 'w-siadh'] pairs=[['DI', 'large dilute urine with rising sodium'], ['SIADH', 'low sodium with concentrated urine']] decoys=['a normal sodium level']
+    why=요붕증(DI)은 항이뇨호르몬이 부족해 묽은 소변이 많이 나오고 나트륨이 오르며, SIADH는 항이뇨호르몬이 과해 소변이 농축되고 나트륨이 떨어져요. 그래서 DI는 손실을 보충하고 SIADH는 수분을 제한해요.
+    DI :: large dilute urine with rising sodium | low sodium with concentrated urine | a normal sodium level
+    SIADH :: large dilute urine with rising sodium | low sodium with concentrated urine | a normal sodium level
+  SWAP words=['w-siadh'] who=가족에게 · 상태 설명 ko=수분을 너무 많이 붙잡아 두는 호르몬 문제가 있을 수 있어요 answer=a hormone problem
+    -> He may have a hormone problem, which keeps too much water in his body.   [가족이 이해하기 쉬운 말로 원인을 알려 준다.]
+    -> He may have SIADH, which keeps too much water in his body.   [약어라 가족은 알아듣지 못한다.]
+    -> He may have ADH excess, which keeps too much water in his body.   [원인은 맞지만 약어가 섞여 가족에게는 어렵다.]
+    why=가족에게는 약어 대신 무엇이 문제인지 쉬운 말로 알려 주세요.
+## S20 뇌사 진행 인지·검사 연계
+  SLIDER words=['w-final'] cue=Not yet confirmed; two separate exams are still pending. scale=['final', 'tentative', 'certain'] at=1
+    why=검사가 끝나기 전에는 결과가 아직 확정이 아니라는 뜻으로 tentative(잠정적)가 맞아요. final은 최종, certain은 확실함이에요. 가족에게는 아직 최종이 아니라고 정직하게 알려요.
+    ex=This isn't a final diagnosis yet, so we're waiting. / 아직 최종 진단이 아니라서 기다리고 있어요.
+  CONTEXT word=concerning ko=우려되는 words=['w-concerning']
+    [True] 의사에게 보고: The exam is concerning: no motor response and sluggish pupils.    
+    [False] 가족에게: Your husband's exam is concerning, so there's nothing more we can do.    fix=The exam is concerning, and we're doing more testing before we can say more.
+    [True] 차트 기록: Exam concerning for worsening neuro status, team notified.    
+    why=의료진끼리는 concerning이 상태가 안 좋다는 간결한 보고예요. 하지만 가족에게 더 해 줄 게 없다고 단정하면 근거 없는 절망을 줘요. 지금 무엇을 하고 있는지와 아직 모른다는 점을 정직하게 말해야 해요.

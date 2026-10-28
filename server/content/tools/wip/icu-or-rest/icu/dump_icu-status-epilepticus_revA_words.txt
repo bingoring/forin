@@ -1,0 +1,1125 @@
+w-seizure | seizure | 발작 | tag=발작 양상 | cue=뇌의 전기 신호가 갑자기 폭주해 몸이 뻣뻣해지거나 떨리는 일
+   dEn=['stroke', 'syncope'] dKo=['실신', '마비'] chips=[['seiz', 'ure']] decoy=['seize', 'sure']
+   ex=After a seizure it's normal to be drowsy and confused for a while. / 발작 후에는 잠시 졸리고 혼란스러운 게 정상이에요.
+   USE[발작 관찰·시간 기록#0] I'm timing the seizure right now and watching exactly what's happening.
+   USE[발작 관찰·시간 기록#3] I need to know exactly when this seizure started.
+   USE[활력·산소 감시#1] Seizures raise oxygen demand, so we support his breathing.
+w-watch | watch | 지켜보다 | tag=일반 동사 | cue=곁에 서서 변화가 없는지 눈을 떼지 않고 보는 동사
+   dEn=['match', 'wash'] dKo=['기다리다', '재우다'] chips=[['watch']] decoy=['wash']
+   ex=I'll watch closely for any sign of another seizure. / 또 다른 발작의 징후가 있는지 자세히 지켜볼게요.
+   USE[발작 관찰·시간 기록#0] I'm timing the seizure right now and watching exactly what's happening.
+   USE[벤조디아제핀 초기 투여 보조#2] I'll watch his breathing closely after we give it.
+   USE[활력·산소 감시#0] I'm applying oxygen and watching his saturation closely.
+w-exactly | exactly | 정확히 | tag=일반 표현 | cue=분 단위까지 어긋남 없이 딱 맞게 알아야 할 때 쓰는 부사
+   dEn=['extremely', 'entirely'] dKo=['대략', '거의'] chips=[['ex', 'act', 'ly']] decoy=['ox', 'fact']
+   ex=I need to know exactly when this seizure started. / 이 발작이 정확히 언제 시작됐는지 알아야 해요.
+   USE[발작 관찰·시간 기록#0] I'm timing the seizure right now and watching exactly what's happening.
+   USE[발작 관찰·시간 기록#3] I need to know exactly when this seizure started.
+w-happen | happen | 일어나다 | tag=일반 동사 | cue=지금 눈앞에서 어떤 일이 벌어지고 있을 때 그 사건이 생긴다고 말하는 동사
+   dEn=['harden', 'hasten'] dKo=['멈추다', '끝나다'] chips=[['hap', 'pen']] decoy=['hop', 'pin']
+   ex=I'm timing the seizure right now and watching exactly what's happening. / 지금 발작 시간을 재면서 무슨 일이 일어나는지 정확히 지켜보고 있어요.
+   USE[발작 관찰·시간 기록#0] I'm timing the seizure right now and watching exactly what's happening.
+w-duration | duration | 지속시간 | tag=발작 양상 | cue=발작이 시작해서 끝날 때까지 이어진 시간의 길이
+   dEn=['direction', 'donation'] dKo=['빈도', '강도'] chips=[['du', 'ra', 'tion']] decoy=['dew', 'nation']
+   ex=The duration and type help the team treat him correctly. / 지속시간과 양상을 알아야 팀이 정확히 치료할 수 있어요.
+   USE[발작 관찰·시간 기록#1] The duration and type help the team treat him correctly.
+   USE[초불응성 SE 관리#2] The neuro team will guide the depth and duration.
+w-type | type | 양상 | tag=발작 양상 | cue=발작이 전신 경련인지 한쪽만 떠는지 같은 종류의 구분
+   dEn=['tape', 'tide'] dKo=['횟수', '순서'] chips=[['type']] decoy=['tape']
+   ex=The duration and type help the team treat him correctly. / 지속시간과 양상을 알아야 팀이 정확히 치료할 수 있어요.
+   USE[발작 관찰·시간 기록#1] The duration and type help the team treat him correctly.
+w-help | help | 돕다 | tag=소통·팀 | cue=팀이 판단하기 쉽도록 보태 주는 일을 말하는 동사
+   dEn=['hold', 'hurt'] dKo=['막다', '맡기다'] chips=[['help']] decoy=['held']
+   ex=The duration and type help the team treat him correctly. / 지속시간과 양상을 알아야 팀이 정확히 치료할 수 있어요.
+   USE[발작 관찰·시간 기록#1] The duration and type help the team treat him correctly.
+   USE[발작 중 심한 저산소·서맥 위기#1] Call for help and prepare for intubation.
+w-team | team | 팀 | tag=소통·팀 | cue=한 환자를 함께 맡아 치료하는 의료진의 한 무리
+   dEn=['term', 'theme'] dKo=['가족', '병동'] chips=[['team']] decoy=['tea']
+   ex=The duration and type help the team treat him correctly. / 지속시간과 양상을 알아야 팀이 정확히 치료할 수 있어요.
+   USE[발작 관찰·시간 기록#1] The duration and type help the team treat him correctly.
+   USE[지속 EEG 모니터 연계#2] The neuro team reads it to guide his treatment.
+   USE[기도확보 준비·삽관 판단#1] Let's have intubation equipment and the team ready.
+w-treat | treat | 치료하다 | tag=일반 동사 | cue=병의 원인이나 증상에 약과 처치로 대응하는 동사
+   dEn=['trade', 'tread'] dKo=['진단하다', '예방하다'] chips=[['treat']] decoy=['tread']
+   ex=His glucose came back low, so we're treating it now. / 혈당 결과가 낮게 나와서 지금 치료하고 있어요.
+   USE[발작 관찰·시간 기록#1] The duration and type help the team treat him correctly.
+   USE[혈당·전해질 확인#3] His glucose came back low, so we're treating it now.
+   USE[유발원인 검사·교정#2] I'll send cultures and labs and treat what we find.
+w-correctly *CHG* | correctly | 올바르게 | tag=일반 표현 | cue=틀리지 않고 알맞은 방식으로 한다는 뜻의 부사
+   dEn=['directly', 'currently'] dKo=['서둘러', '조용히'] chips=[['cor', 'rect', 'ly']] decoy=['core', 'wrecked']
+   ex=The duration and type help the team treat him correctly. / 지속시간과 양상을 알아야 팀이 정확히 치료할 수 있어요.
+   USE[발작 관찰·시간 기록#1] The duration and type help the team treat him correctly.
+w-thank | thank | 감사하다 | tag=소통·팀 | cue=전화를 걸어 준 보호자에게 고마운 마음을 전하는 동사
+   dEn=['think', 'thick'] dKo=['사과하다', '부탁하다'] chips=[['thank']] decoy=['think']
+   ex=Thank you for calling us; I'm noting when it started. / 알려주셔서 감사해요. 언제 시작됐는지 기록하고 있어요.
+   USE[발작 관찰·시간 기록#2] Thank you for calling us; I'm noting when it started.
+w-call *CHG* | call | 부르다 | tag=소통·팀 | cue=곁에 없는 사람이나 팀을 오도록 부르거나 연락하는 동사
+   dEn=['fall', 'pull'] dKo=['기다리다', '배웅하다'] chips=[['call']] decoy=['coll']
+   ex=Thank you for calling us; I'm noting when it started. / 알려주셔서 감사해요. 언제 시작됐는지 기록하고 있어요.
+   USE[발작 관찰·시간 기록#2] Thank you for calling us; I'm noting when it started.
+   USE[기도확보 준비·삽관 판단#4] We're calling anesthesia now to decide on intubation.
+   USE[발작 중 심한 저산소·서맥 위기#1] Call for help and prepare for intubation.
+w-note | note | 기록하다 | tag=일반 동사 | cue=시각이나 변화를 차트에 남겨 두는 동사
+   dEn=['vote', 'quote'] dKo=['지우다', '외우다'] chips=[['note']] decoy=['nope']
+   ex=Thank you for calling us; I'm noting when it started. / 알려주셔서 감사해요. 언제 시작됐는지 기록하고 있어요.
+   USE[발작 관찰·시간 기록#2] Thank you for calling us; I'm noting when it started.
+w-start | start | 시작하다 | tag=일반 동사 | cue=어떤 일이 처음 시작되는 순간을 가리키는 동사
+   dEn=['stare', 'starve'] dKo=['끝나다', '쉬다'] chips=[['start']] decoy=['stark']
+   ex=I need to know exactly when this seizure started. / 이 발작이 정확히 언제 시작됐는지 알아야 해요.
+   USE[발작 관찰·시간 기록#2] Thank you for calling us; I'm noting when it started.
+   USE[발작 관찰·시간 기록#3] I need to know exactly when this seizure started.
+   USE[불응성 SE 마취약 주입 위기#0] Yes, we're starting a continuous midazolam or propofol infusion.
+w-write | write | 적다 | tag=일반 동사 | cue=종이나 차트에 글자로 옮겨 남기는 동사
+   dEn=['wrap', 'wait'] dKo=['읽다', '말하다'] chips=[['write']] decoy=['wrote']
+   ex=I'll write down how long it lasts and how his body moves. / 얼마나 오래 지속되는지, 몸이 어떻게 움직이는지 적어둘게요.
+   USE[발작 관찰·시간 기록#4] I'll write down how long it lasts and how his body moves.
+w-last | last | 지속되다 | tag=발작 양상 | cue=한 번 시작한 일이 얼마 동안 끊기지 않고 이어지는 것을 말하는 동사
+   dEn=['lift', 'lose'] dKo=['멈추다', '반복되다'] chips=[['last']] decoy=['lost']
+   ex=I'll write down how long it lasts and how his body moves. / 얼마나 오래 지속되는지, 몸이 어떻게 움직이는지 적어둘게요.
+   USE[발작 관찰·시간 기록#4] I'll write down how long it lasts and how his body moves.
+w-move | move | 움직이다 | tag=사정·징후 | cue=팔다리나 몸이 제자리에서 흔들리거나 자리를 바꾸는 동사
+   dEn=['mute', 'mix'] dKo=['누르다', '붙잡다'] chips=[['move']] decoy=['mode']
+   ex=I'll write down how long it lasts and how his body moves. / 얼마나 오래 지속되는지, 몸이 어떻게 움직이는지 적어둘게요.
+   USE[발작 관찰·시간 기록#4] I'll write down how long it lasts and how his body moves.
+   USE[반복 발작 약물 단계화#3] If he seizes again, we move to the next step right away.
+w-turn | turn | 돌리다 | tag=기도·안전 | cue=누워 있는 환자의 방향을 한쪽으로 돌려 눕히는 동사
+   dEn=['burn', 'tune'] dKo=['들다', '굽히다'] chips=[['turn']] decoy=['torn']
+   ex=I'm turning him on his side and protecting his head. / 옆으로 돌려서 머리를 보호하고 있어요.
+   USE[발작 중 기도·안전 확보#0] I'm turning him on his side and protecting his head.
+w-side | side | 옆 | tag=기도·안전 | cue=정면이나 등이 아닌, 몸의 왼쪽이나 오른쪽 면
+   dEn=['sigh', 'site'] dKo=['위', '앞'] chips=[['side']] decoy=['sire']
+   ex=I'm turning him on his side and protecting his head. / 옆으로 돌려서 머리를 보호하고 있어요.
+   USE[발작 중 기도·안전 확보#0] I'm turning him on his side and protecting his head.
+w-protect | protect | 보호하다 | tag=기도·안전 | cue=다치거나 해를 입지 않게 막아 주는 동사
+   dEn=['project', 'prospect'] dKo=['치료하다', '관찰하다'] chips=[['pro', 'tect']] decoy=['pre', 'text']
+   ex=I'm protecting his head with a pillow so he doesn't hit anything hard. / 단단한 것에 부딪히지 않도록 베개로 머리를 보호하고 있어요.
+   USE[발작 중 기도·안전 확보#0] I'm turning him on his side and protecting his head.
+   USE[발작 중 기도·안전 확보#3] I'm protecting his head with a pillow so he doesn't hit anything hard.
+   USE[기도확보 준비·삽관 판단#0] His declining consciousness may mean he can't protect his airway.
+w-keep | keep | 유지하다 | tag=일반 동사 | cue=치우거나 놓치지 않고 어떤 상태가 계속되게 두는 동사
+   dEn=['kick', 'kneel'] dKo=['바꾸다', '치우다'] chips=[['keep']] decoy=['peek']
+   ex=We keep the area clear and never put anything in his mouth. / 주변을 치우고, 입 안에는 절대 아무것도 넣지 않아요.
+   USE[발작 중 기도·안전 확보#1] We keep the area clear and never put anything in his mouth.
+   USE[발작 중 기도·안전 확보#4] I'll keep the airway open and never force anything between his teeth.
+   USE[활력·산소 감시#2] Let's keep suction and airway equipment ready.
+w-area | area | 구역 | tag=기도·안전 | cue=침대 둘레처럼 어떤 일이 벌어지는 바닥이나 공간의 범위
+   dEn=['aria', 'arena'] dKo=['높이', '깊이'] chips=[['ar', 'ea']] decoy=['air', 'era']
+   ex=We keep the area clear and never put anything in his mouth. / 주변을 치우고, 입 안에는 절대 아무것도 넣지 않아요.
+   USE[발작 중 기도·안전 확보#1] We keep the area clear and never put anything in his mouth.
+w-clear | clear | 치우다 | tag=기도·안전 | cue=다칠 만한 물건이 없도록 주변에서 모두 치워 비우는 동사
+   dEn=['clean', 'clamp'] dKo=['채우다', '어지르다'] chips=[['clear']] decoy=['clean']
+   ex=We keep the area clear and never put anything in his mouth. / 주변을 치우고, 입 안에는 절대 아무것도 넣지 않아요.
+   USE[발작 중 기도·안전 확보#1] We keep the area clear and never put anything in his mouth.
+w-never | never | 절대 ~ 않다 | tag=일반 표현 | cue=어떤 경우에도 하지 말라고 강하게 막을 때 쓰는 부사
+   dEn=['ever', 'nearly'] dKo=['가끔', '이미'] chips=[['nev', 'er']] decoy=['new', 'err']
+   ex=We keep the area clear and never put anything in his mouth. / 주변을 치우고, 입 안에는 절대 아무것도 넣지 않아요.
+   USE[발작 중 기도·안전 확보#1] We keep the area clear and never put anything in his mouth.
+   USE[발작 중 기도·안전 확보#4] I'll keep the airway open and never force anything between his teeth.
+w-put | put | 넣다 | tag=일반 동사 | cue=물건을 어떤 곳 안이나 위에 갖다 놓는 동사
+   dEn=['pull', 'pour'] dKo=['꺼내다', '빼내다'] chips=[['put']] decoy=['pat']
+   ex=We keep the area clear and never put anything in his mouth. / 주변을 치우고, 입 안에는 절대 아무것도 넣지 않아요.
+   USE[발작 중 기도·안전 확보#1] We keep the area clear and never put anything in his mouth.
+   USE[지속 EEG 모니터 연계#3] We put EEG leads on his scalp to watch his brain waves.
+w-anything | anything | 아무것도 | tag=일반 표현 | cue=부정문에서 '무엇 하나라도'를 뜻하는 대명사
+   dEn=['anyone', 'anywhere'] dKo=['누구든', '어디든'] chips=[['any', 'thing']] decoy=['an', 'think']
+   ex=We keep the area clear and never put anything in his mouth. / 주변을 치우고, 입 안에는 절대 아무것도 넣지 않아요.
+   USE[발작 중 기도·안전 확보#1] We keep the area clear and never put anything in his mouth.
+   USE[발작 중 기도·안전 확보#3] I'm protecting his head with a pillow so he doesn't hit anything hard.
+   USE[발작 중 기도·안전 확보#4] I'll keep the airway open and never force anything between his teeth.
+w-make | make | ~하게 하다 | tag=일반 동사 | cue='___ sure'처럼 어떤 일이 확실히 되도록 챙긴다는 뜻으로 쓰는 동사
+   dEn=['take', 'wake'] dKo=['그만두다', '미루다'] chips=[['make']] decoy=['mike']
+   ex=I'm making sure his airway stays open. / 기도가 계속 열려 있도록 확인하고 있어요.
+   USE[발작 중 기도·안전 확보#2] I'm making sure his airway stays open.
+w-airway | airway | 기도 | tag=기도·안전 | cue=코와 입에서 폐까지 공기가 지나가는 길
+   dEn=['runway', 'hallway'] dKo=['식도', '혈관'] chips=[['air', 'way']] decoy=['hair', 'wave']
+   ex=I'm making sure his airway stays open. / 기도가 계속 열려 있도록 확인하고 있어요.
+   USE[발작 중 기도·안전 확보#2] I'm making sure his airway stays open.
+   USE[발작 중 기도·안전 확보#4] I'll keep the airway open and never force anything between his teeth.
+   USE[활력·산소 감시#2] Let's keep suction and airway equipment ready.
+w-stay *CHG* | stay | 그대로 있다 | tag=일반 동사 | cue=움직이지 않고 지금의 상태 그대로 머무는 동사
+   dEn=['stir', 'sway'] dKo=['벗어나다', '사라지다'] chips=[['stay']] decoy=['stray']
+   ex=I'm making sure his airway stays open. / 기도가 계속 열려 있도록 확인하고 있어요.
+   USE[발작 중 기도·안전 확보#2] I'm making sure his airway stays open.
+   USE[초불응성 SE 관리#3] His pressure stayed stable even after we deepened the sedation.
+w-open | open | 열린 | tag=기도·안전 | cue=막히지 않고 공기가 지나갈 수 있게 통해 있는 상태
+   dEn=['oval', 'odd'] dKo=['막힌', '좁은'] chips=[['o', 'pen']] decoy=['a', 'pan']
+   ex=I'm making sure his airway stays open. / 기도가 계속 열려 있도록 확인하고 있어요.
+   USE[발작 중 기도·안전 확보#2] I'm making sure his airway stays open.
+   USE[발작 중 기도·안전 확보#4] I'll keep the airway open and never force anything between his teeth.
+   USE[발작 중 심한 저산소·서맥 위기#0] Open the airway and bag him with high-flow oxygen now.
+w-pillow | pillow | 베개 | tag=기도·안전 | cue=침대에서 머리 아래에 받치는 푹신한 물건
+   dEn=['pillar', 'pellet'] dKo=['이불', '매트'] chips=[['pil', 'low']] decoy=['pal', 'lo']
+   ex=I'm protecting his head with a pillow so he doesn't hit anything hard. / 단단한 것에 부딪히지 않도록 베개로 머리를 보호하고 있어요.
+   USE[발작 중 기도·안전 확보#3] I'm protecting his head with a pillow so he doesn't hit anything hard.
+w-hit | hit | 부딪히다 | tag=기도·안전 | cue=몸이 단단한 곳에 세게 닿아 충돌하는 동사
+   dEn=['hurt', 'hide'] dKo=['미끄러지다', '구르다'] chips=[['hit']] decoy=['hot']
+   ex=I'm protecting his head with a pillow so he doesn't hit anything hard. / 단단한 것에 부딪히지 않도록 베개로 머리를 보호하고 있어요.
+   USE[발작 중 기도·안전 확보#3] I'm protecting his head with a pillow so he doesn't hit anything hard.
+w-hard | hard | 단단한 | tag=기도·안전 | cue=만지면 푹신하지 않고 딱딱한 성질
+   dEn=['harsh', 'heavy'] dKo=['미끄러운', '차가운'] chips=[['hard']] decoy=['hand']
+   ex=I'm protecting his head with a pillow so he doesn't hit anything hard. / 단단한 것에 부딪히지 않도록 베개로 머리를 보호하고 있어요.
+   USE[발작 중 기도·안전 확보#3] I'm protecting his head with a pillow so he doesn't hit anything hard.
+w-force | force | 억지로 넣다 | tag=기도·안전 | cue=내키지 않는데도 힘으로 밀어 넣는 동사
+   dEn=['forge', 'forget'] dKo=['빼내다', '붙이다'] chips=[['force']] decoy=['fork']
+   ex=I'll keep the airway open and never force anything between his teeth. / 기도를 열어두고, 이 사이에 절대 억지로 아무것도 넣지 않을게요.
+   USE[발작 중 기도·안전 확보#4] I'll keep the airway open and never force anything between his teeth.
+w-benzodiazepine | benzodiazepine | 벤조디아제핀 | tag=약물·투여 | cue=발작을 멈추려고 가장 먼저 쓰는 진정 계열 약
+   dEn=['barbiturate', 'antihistamine'] dKo=['바르비투르산염', '항히스타민제'] chips=[['benzo', 'dia', 'ze', 'pine']] decoy=['bento', 'zip']
+   ex=Yes, this benzodiazepine is our first-line medication to stop it. / 네, 이 벤조디아제핀이 발작을 멈추는 1차 약물이에요.
+   USE[벤조디아제핀 초기 투여 보조#0] Yes, this benzodiazepine is our first-line medication to stop it.
+w-first-line | first-line | 1차의 | tag=약물·투여 | cue=여러 약 가운데 가장 먼저 선택하는 순서
+   dEn=['first-hand', 'first-rate'] dKo=['보조의', '예비의'] chips=[['first-', 'line']] decoy=['fist-', 'lane']
+   ex=Yes, this benzodiazepine is our first-line medication to stop it. / 네, 이 벤조디아제핀이 발작을 멈추는 1차 약물이에요.
+   USE[벤조디아제핀 초기 투여 보조#0] Yes, this benzodiazepine is our first-line medication to stop it.
+w-medication *CHG* | medication | 처방약 | tag=약물·투여 | cue=환자에게 치료를 위해 주려고 준비한 약
+   dEn=['meditation', 'mediation'] dKo=['처방전', '약국'] chips=[['med', 'i', 'ca', 'tion']] decoy=['mid', 'nation']
+   ex=Yes, this benzodiazepine is our first-line medication to stop it. / 네, 이 벤조디아제핀이 발작을 멈추는 1차 약물이에요.
+   USE[벤조디아제핀 초기 투여 보조#0] Yes, this benzodiazepine is our first-line medication to stop it.
+   USE[반복 발작 약물 단계화#2] Let's have the next medication ready to give without delay.
+w-stop | stop | 멈추다 | tag=일반 동사 | cue=계속되던 발작이 더 이어지지 않게 끝내는 동사
+   dEn=['step', 'shop'] dKo=['시작하다', '늘리다'] chips=[['stop']] decoy=['stoop']
+   ex=Yes, this benzodiazepine is our first-line medication to stop it. / 네, 이 벤조디아제핀이 발작을 멈추는 1차 약물이에요.
+   USE[벤조디아제핀 초기 투여 보조#0] Yes, this benzodiazepine is our first-line medication to stop it.
+   USE[혈당·전해질 확인#4] We're correcting his sodium level to stop further seizures.
+   USE[유발원인 검사·교정#1] Correcting the trigger is key to stopping the seizures.
+w-confirm | confirm | 확인하다 | tag=일반 동사 | cue=시작하기 전에 맞는지 다시 한번 살펴서 분명히 하는 동사
+   dEn=['conform', 'confine'] dKo=['취소하다', '추측하다'] chips=[['con', 'firm']] decoy=['can', 'farm']
+   ex=Let's confirm the dose and give it now. / 용량을 확인하고 지금 투여하죠.
+   USE[벤조디아제핀 초기 투여 보조#1] Let's confirm the dose and give it now.
+   USE[벤조디아제핀 초기 투여 보조#3] Confirming weight and dose before we push it.
+   USE[2차 항경련제 로딩#1] Let's confirm the weight-based dose and infusion rate.
+w-dose | dose | 용량 | tag=약물·투여 | cue=한 번에 주는 약의 정해진 양
+   dEn=['dome', 'nose'] dKo=['농도', '종류'] chips=[['dose']] decoy=['done']
+   ex=Let's confirm the dose and give it now. / 용량을 확인하고 지금 투여하죠.
+   USE[벤조디아제핀 초기 투여 보조#1] Let's confirm the dose and give it now.
+   USE[벤조디아제핀 초기 투여 보조#3] Confirming weight and dose before we push it.
+   USE[2차 항경련제 로딩#1] Let's confirm the weight-based dose and infusion rate.
+w-give | give | 주다 | tag=약물·투여 | cue=약을 환자에게 넘겨 몸에 들어가게 하는 동사
+   dEn=['live', 'dive'] dKo=['거두다', '빼앗다'] chips=[['give']] decoy=['gift']
+   ex=Let's confirm the dose and give it now. / 용량을 확인하고 지금 투여하죠.
+   USE[벤조디아제핀 초기 투여 보조#1] Let's confirm the dose and give it now.
+   USE[벤조디아제핀 초기 투여 보조#2] I'll watch his breathing closely after we give it.
+   USE[2차 항경련제 로딩#4] I'm watching for sedation or low pressure as we give the load.
+w-breathe | breathe | 숨쉬다 | tag=활력·산소 | cue=폐로 공기를 들이마시고 내쉬는 동사
+   dEn=['breed', 'bleed'] dKo=['기침하다', '삼키다'] chips=[['breathe']] decoy=['breath']
+   ex=I'll watch his breathing closely after we give it. / 투여 후에 호흡을 자세히 지켜볼게요.
+   USE[벤조디아제핀 초기 투여 보조#2] I'll watch his breathing closely after we give it.
+   USE[활력·산소 감시#1] Seizures raise oxygen demand, so we support his breathing.
+w-closely | closely | 자세히 | tag=일반 표현 | cue=작은 변화도 놓치지 않으려고 바짝 붙어서 살피는 방식을 말하는 부사
+   dEn=['clearly', 'loosely'] dKo=['대충', '가끔'] chips=[['close', 'ly']] decoy=['clothes', 'lie']
+   ex=I'll watch his breathing closely after we give it. / 투여 후에 호흡을 자세히 지켜볼게요.
+   USE[벤조디아제핀 초기 투여 보조#2] I'll watch his breathing closely after we give it.
+   USE[활력·산소 감시#0] I'm applying oxygen and watching his saturation closely.
+   USE[발작 후 상태 사정#2] I'll watch closely for any sign of another seizure.
+w-after | after | ~한 후에 | tag=일반 표현 | cue=약을 준 일이 끝난 다음 시점을 가리키는 전치사
+   dEn=['about', 'above'] dKo=['~하기 전에', '~하는 동안'] chips=[['af', 'ter']] decoy=['of', 'tar']
+   ex=I'll watch his breathing closely after we give it. / 투여 후에 호흡을 자세히 지켜볼게요.
+   USE[벤조디아제핀 초기 투여 보조#2] I'll watch his breathing closely after we give it.
+   USE[반복 발작 약물 단계화#1] After benzos and the second agent, we consider infusions.
+   USE[항경련 마취 중 혈역학 붕괴#3] His pressure dropped fast right after we deepened the infusion.
+w-weight | weight | 체중 | tag=약물·투여 | cue=용량을 계산하려고 저울로 재는 환자 몸의 무거운 정도
+   dEn=['height', 'width'] dKo=['키', '나이'] chips=[['weight']] decoy=['eight']
+   ex=Confirming weight and dose before we push it. / 주입하기 전에 체중과 용량을 확인 중이에요.
+   USE[벤조디아제핀 초기 투여 보조#3] Confirming weight and dose before we push it.
+w-before | before | ~하기 전에 | tag=일반 표현 | cue=약을 밀어 넣는 일이 시작되기 앞선 시점을 가리키는 전치사
+   dEn=['beyond', 'behind'] dKo=['~한 후에', '~하는 동안'] chips=[['be', 'fore']] decoy=['bee', 'for']
+   ex=Confirming weight and dose before we push it. / 주입하기 전에 체중과 용량을 확인 중이에요.
+   USE[벤조디아제핀 초기 투여 보조#3] Confirming weight and dose before we push it.
+   USE[불응성 SE 마취약 주입 위기#3] We've secured his airway before starting this infusion.
+w-push *CHG* | push | (약을) 밀어 넣다 | tag=약물·투여 | cue=주사기 안의 약을 정맥으로 천천히 눌러 들여보내는 동사
+   dEn=['pull', 'pause'] dKo=['(약을) 희석하다', '(약을) 뽑아내다'] chips=[['push']] decoy=['bush']
+   ex=Confirming weight and dose before we push it. / 주입하기 전에 체중과 용량을 확인 중이에요.
+   USE[벤조디아제핀 초기 투여 보조#3] Confirming weight and dose before we push it.
+w-vital *CHG* | vitals | 활력징후 | tag=활력·산소 | cue=혈압·맥박·체온·호흡처럼 생명 기능을 잴 때 늘 함께 보는 수치 묶음
+   dEn=['vitamins', 'visuals'] dKo=['체중', '섭취량'] chips=[['vi', 'tals']] decoy=['via', 'tails']
+   ex=Vitals are stable; no respiratory depression so far. / 활력징후는 안정적이고, 아직 호흡억제는 없어요.
+   USE[벤조디아제핀 초기 투여 보조#4] Vitals are stable; no respiratory depression so far.
+w-stable | stable | 안정된 | tag=사정·징후 | cue=수치가 들쭉날쭉하지 않고 고르게 유지되는 상태
+   dEn=['stale', 'stiff'] dKo=['위독한', '불규칙한'] chips=[['sta', 'ble']] decoy=['stay', 'bull']
+   ex=Vitals are stable; no respiratory depression so far. / 활력징후는 안정적이고, 아직 호흡억제는 없어요.
+   USE[벤조디아제핀 초기 투여 보조#4] Vitals are stable; no respiratory depression so far.
+   USE[초불응성 SE 관리#3] His pressure stayed stable even after we deepened the sedation.
+w-respiratory | respiratory | 호흡의 | tag=활력·산소 | cue=숨쉬기와 폐 기능에 관한 것임을 나타내는 형용사
+   dEn=['circulatory', 'inflammatory'] dKo=['순환의', '소화의'] chips=[['res', 'pi', 'ra', 'tory']] decoy=['rest', 'pie']
+   ex=Vitals are stable; no respiratory depression so far. / 활력징후는 안정적이고, 아직 호흡억제는 없어요.
+   USE[벤조디아제핀 초기 투여 보조#4] Vitals are stable; no respiratory depression so far.
+w-depression *CHG* | depression | 저하 | tag=활력·산소 | cue=진정 약 때문에 호흡 같은 몸 기능이 평소보다 눌려 약해진 상태
+   dEn=['expression', 'impression'] dKo=['상승', '회복'] chips=[['de', 'pres', 'sion']] decoy=['dip', 'ration']
+   ex=Vitals are stable; no respiratory depression so far. / 활력징후는 안정적이고, 아직 호흡억제는 없어요.
+   USE[벤조디아제핀 초기 투여 보조#4] Vitals are stable; no respiratory depression so far.
+w-far | far | 지금까지(so far) | tag=일반 표현 | cue='so ___'처럼 지금 이 순간까지의 범위를 말할 때 쓰는 부사
+   dEn=['fast', 'forth'] dKo=['지금부터(from now)', '다음번에(next time)'] chips=[['far']] decoy=['fat']
+   ex=Vitals are stable; no respiratory depression so far. / 활력징후는 안정적이고, 아직 호흡억제는 없어요.
+   USE[벤조디아제핀 초기 투여 보조#4] Vitals are stable; no respiratory depression so far.
+w-apply | apply | 적용하다 | tag=활력·산소 | cue=환자에게 산소 마스크를 씌워 쓰기 시작하게 하는 동사
+   dEn=['reply', 'supply'] dKo=['제거하다', '줄이다'] chips=[['ap', 'ply']] decoy=['up', 'play']
+   ex=I'm applying oxygen and watching his saturation closely. / 산소를 적용하고 포화도를 자세히 지켜보고 있어요.
+   USE[활력·산소 감시#0] I'm applying oxygen and watching his saturation closely.
+w-oxygen | oxygen | 산소 | tag=활력·산소 | cue=숨을 쉴 때 폐로 들어가 혈액을 거쳐 조직으로 가는 기체
+   dEn=['nitrogen', 'hydrogen'] dKo=['이산화탄소', '질소'] chips=[['ox', 'y', 'gen']] decoy=['ax', 'yen']
+   ex=I'm applying oxygen and watching his saturation closely. / 산소를 적용하고 포화도를 자세히 지켜보고 있어요.
+   USE[활력·산소 감시#0] I'm applying oxygen and watching his saturation closely.
+   USE[활력·산소 감시#1] Seizures raise oxygen demand, so we support his breathing.
+   USE[활력·산소 감시#3] His oxygen saturation is ninety-two percent and holding steady.
+w-saturation | saturation | 포화도 | tag=활력·산소 | cue=혈액 속 산소가 헤모글로빈에 얼마나 실려 있는지 재는 수치
+   dEn=['situation', 'salutation'] dKo=['혈압', '맥박수'] chips=[['sat', 'u', 'ra', 'tion']] decoy=['sit', 'nation']
+   ex=I'm applying oxygen and watching his saturation closely. / 산소를 적용하고 포화도를 자세히 지켜보고 있어요.
+   USE[활력·산소 감시#0] I'm applying oxygen and watching his saturation closely.
+   USE[활력·산소 감시#3] His oxygen saturation is ninety-two percent and holding steady.
+w-raise | raise | 높이다 | tag=일반 동사 | cue=수치나 요구를 평소보다 위로 끌어 올리는 동사
+   dEn=['rinse', 'praise'] dKo=['낮추다', '없애다'] chips=[['raise']] decoy=['rise']
+   ex=Seizures raise oxygen demand, so we support his breathing. / 발작은 산소 요구량을 높이니까 호흡을 지지해줘요.
+   USE[활력·산소 감시#1] Seizures raise oxygen demand, so we support his breathing.
+   USE[발작 후 뇌부종·ICP 위기#0] Prolonged seizures can cause brain swelling and raised pressure.
+w-demand | demand | 요구량 | tag=활력·산소 | cue=몸이 필요로 해서 공급이 따라와야 하는 양의 요구
+   dEn=['command', 'remand'] dKo=['공급량', '배출량'] chips=[['de', 'mand']] decoy=['den', 'man']
+   ex=Seizures raise oxygen demand, so we support his breathing. / 발작은 산소 요구량을 높이니까 호흡을 지지해줘요.
+   USE[활력·산소 감시#1] Seizures raise oxygen demand, so we support his breathing.
+w-support | support | 지지하다 | tag=일반 동사 | cue=스스로 하기 힘든 일을 옆에서 받쳐 도와주는 동사
+   dEn=['suppose', 'suppress'] dKo=['방해하다', '중단하다'] chips=[['sup', 'port']] decoy=['sap', 'post']
+   ex=Seizures raise oxygen demand, so we support his breathing. / 발작은 산소 요구량을 높이니까 호흡을 지지해줘요.
+   USE[활력·산소 감시#1] Seizures raise oxygen demand, so we support his breathing.
+   USE[초불응성 SE 관리#1] Let's keep his pressure supported as we deepen the infusion.
+   USE[항경련 마취 중 혈역학 붕괴#0] Start a pressor and give fluid to support his pressure.
+w-suction | suction | 흡인(석션) | tag=기도·안전 | cue=입안이나 기도에 고인 분비물을 기계로 빨아내는 것
+   dEn=['section', 'sanction'] dKo=['가습(가습기)', '환기(통풍)'] chips=[['suc', 'tion']] decoy=['sec', 'shun']
+   ex=Let's keep suction and airway equipment ready. / 석션과 기도 장비를 준비해 둡시다.
+   USE[활력·산소 감시#2] Let's keep suction and airway equipment ready.
+   USE[활력·산소 감시#4] I'm keeping the suction ready in case he needs it.
+   USE[발작 관련 손상·흡인 관리#0] Let's suction gently and check his airway and mouth.
+w-equipment | equipment | 장비 | tag=기도·안전 | cue=침대 옆에 갖춰 둬야 하는 기구와 기계를 통틀어 부르는 말
+   dEn=['equation', 'enrollment'] dKo=['보호자', '약물'] chips=[['e', 'quip', 'ment']] decoy=['a', 'quit']
+   ex=Let's keep suction and airway equipment ready. / 석션과 기도 장비를 준비해 둡시다.
+   USE[활력·산소 감시#2] Let's keep suction and airway equipment ready.
+   USE[기도확보 준비·삽관 판단#1] Let's have intubation equipment and the team ready.
+w-ready | ready | 준비된 | tag=일반 표현 | cue=바로 쓸 수 있도록 미리 챙겨 두어 갖춰진 상태
+   dEn=['steady', 'rusty'] dKo=['미완성의', '고장 난'] chips=[['read', 'y']] decoy=['road', 'ie']
+   ex=Let's keep suction and airway equipment ready. / 석션과 기도 장비를 준비해 둡시다.
+   USE[활력·산소 감시#2] Let's keep suction and airway equipment ready.
+   USE[활력·산소 감시#4] I'm keeping the suction ready in case he needs it.
+   USE[반복 발작 약물 단계화#2] Let's have the next medication ready to give without delay.
+w-hold | hold | 유지되다 | tag=활력·산소 | cue=수치가 올라가거나 내려가지 않고 그 자리에 머문다고 말하는 동사
+   dEn=['fold', 'hoard'] dKo=['떨어지다', '오르내리다'] chips=[['hold']] decoy=['hole']
+   ex=His oxygen saturation is ninety-two percent and holding steady. / 산소포화도는 92퍼센트이고 안정적으로 유지되고 있어요.
+   USE[활력·산소 감시#3] His oxygen saturation is ninety-two percent and holding steady.
+w-steady *CHG* | steady | 일정한 | tag=사정·징후 | cue=수치가 흔들리지 않고 한결같이 이어지는 모양
+   dEn=['study', 'sturdy'] dKo=['갑작스러운', '불안한'] chips=[['stead', 'y']] decoy=['steed', 'ie']
+   ex=His oxygen saturation is ninety-two percent and holding steady. / 산소포화도는 92퍼센트이고 안정적으로 유지되고 있어요.
+   USE[활력·산소 감시#3] His oxygen saturation is ninety-two percent and holding steady.
+w-case | case | 경우 | tag=일반 표현 | cue='in ___ he needs it'처럼 혹시 모를 일에 대비한다고 말할 때 쓰는 말
+   dEn=['cause', 'cave'] dKo=['이유', '순서'] chips=[['case']] decoy=['cash']
+   ex=I'm keeping the suction ready in case he needs it. / 혹시 필요할 경우를 대비해 석션을 준비해 두고 있어요.
+   USE[활력·산소 감시#4] I'm keeping the suction ready in case he needs it.
+w-check *CHG* | check | 점검하다 | tag=일반 동사 | cue=이상이 없는지 하나하나 살펴 보는 동사
+   dEn=['chuck', 'chase'] dKo=['고정하다', '교체하다'] chips=[['check']] decoy=['chick']
+   ex=Let's check a stat glucose and electrolytes right away. / 지금 바로 혈당과 전해질을 긴급으로 확인하죠.
+   USE[혈당·전해질 확인#0] Let's check a stat glucose and electrolytes right away.
+   USE[발작 후 상태 사정#1] I'm checking his responsiveness as he recovers.
+   USE[항경련제 혈중농도·부작용#0] Let's check his drug levels to confirm they're therapeutic.
+w-stat *CHG* | stat | 당장 | tag=검사·원인 | cue=다른 일보다 먼저, 기다리지 말고 바로 해 달라는 검사 지시에 붙이는 말
+   dEn=['stack', 'stair'] dKo=['천천히', '나중에'] chips=[['stat']] decoy=['start']
+   ex=Let's check a stat glucose and electrolytes right away. / 지금 바로 혈당과 전해질을 긴급으로 확인하죠.
+   USE[혈당·전해질 확인#0] Let's check a stat glucose and electrolytes right away.
+w-glucose | glucose | 혈당 | tag=검사·원인 | cue=혈액 속에 녹아 있어 뇌의 에너지원이 되는 당
+   dEn=['glycogen', 'lactose'] dKo=['나트륨', '칼슘'] chips=[['glu', 'cose']] decoy=['glue', 'close']
+   ex=Let's check a stat glucose and electrolytes right away. / 지금 바로 혈당과 전해질을 긴급으로 확인하죠.
+   USE[혈당·전해질 확인#0] Let's check a stat glucose and electrolytes right away.
+   USE[혈당·전해질 확인#3] His glucose came back low, so we're treating it now.
+w-electrolyte | electrolyte | 전해질 | tag=검사·원인 | cue=나트륨·칼륨처럼 혈액에 녹아 몸의 신호와 수분 균형을 맞추는 성분
+   dEn=['electrode', 'electricity'] dKo=['단백질', '혈소판'] chips=[['e', 'lec', 'tro', 'lyte']] decoy=['a', 'lit']
+   ex=Let's check a stat glucose and electrolytes right away. / 지금 바로 혈당과 전해질을 긴급으로 확인하죠.
+   USE[혈당·전해질 확인#0] Let's check a stat glucose and electrolytes right away.
+w-low | low | 낮은 | tag=사정·징후 | cue=정상 범위보다 아래로 내려가 있는 상태
+   dEn=['loud', 'lone'] dKo=['높은', '넓은'] chips=[['low']] decoy=['row']
+   ex=A low sugar or sodium can trigger seizures. / 낮은 혈당이나 나트륨이 발작을 유발할 수 있어요.
+   USE[혈당·전해질 확인#1] A low sugar or sodium can trigger seizures.
+   USE[혈당·전해질 확인#3] His glucose came back low, so we're treating it now.
+   USE[2차 항경련제 로딩#4] I'm watching for sedation or low pressure as we give the load.
+w-sugar *CHG* | sugar | 당 수치 | tag=검사·원인 | cue=피검사 결과에서 말하는 혈액 속 단맛 성분의 양
+   dEn=['suit', 'sulfur'] dKo=['소금기', '단백질'] chips=[['sug', 'ar']] decoy=['sag', 'or']
+   ex=A low sugar or sodium can trigger seizures. / 낮은 혈당이나 나트륨이 발작을 유발할 수 있어요.
+   USE[혈당·전해질 확인#1] A low sugar or sodium can trigger seizures.
+w-sodium | sodium | 나트륨 | tag=검사·원인 | cue=혈액 검사에서 수분과 신경 신호에 관여하는 흔한 전해질
+   dEn=['potassium', 'calcium'] dKo=['칼륨', '마그네슘'] chips=[['so', 'di', 'um']] decoy=['sew', 'dime']
+   ex=A low sugar or sodium can trigger seizures. / 낮은 혈당이나 나트륨이 발작을 유발할 수 있어요.
+   USE[혈당·전해질 확인#1] A low sugar or sodium can trigger seizures.
+   USE[혈당·전해질 확인#4] We're correcting his sodium level to stop further seizures.
+w-trigger | trigger | 유발하다 | tag=검사·원인 | cue=발작처럼 어떤 일이 터지게 만드는 방아쇠 같은 계기
+   dEn=['trick', 'tiger'] dKo=['억제하다', '완화하다'] chips=[['trig', 'ger']] decoy=['tri', 'gear']
+   ex=A low sugar or sodium can trigger seizures. / 낮은 혈당이나 나트륨이 발작을 유발할 수 있어요.
+   USE[혈당·전해질 확인#1] A low sugar or sodium can trigger seizures.
+w-find | find | 찾다 | tag=일반 동사 | cue=검사나 살핌으로 숨어 있던 것을 알아내는 동사
+   dEn=['fine', 'fund'] dKo=['숨기다', '지우다'] chips=[['find']] decoy=['fine']
+   ex=If we find a cause, we correct it immediately. / 원인을 찾으면 바로 교정할게요.
+   USE[혈당·전해질 확인#2] If we find a cause, we correct it immediately.
+   USE[유발원인 검사·교정#2] I'll send cultures and labs and treat what we find.
+   USE[원인별 치료 연계#1] The treatment depends on what we find on imaging.
+w-cause | cause | 원인 | tag=검사·원인 | cue=증상을 일으킨 밑바탕의 이유
+   dEn=['pause', 'clause'] dKo=['결과', '증상'] chips=[['cause']] decoy=['pause']
+   ex=If we find a cause, we correct it immediately. / 원인을 찾으면 바로 교정할게요.
+   USE[혈당·전해질 확인#2] If we find a cause, we correct it immediately.
+   USE[유발원인 검사·교정#0] We're testing for infection and metabolic causes together.
+   USE[유발원인 검사·교정#4] Once we correct the cause, the seizures usually stop.
+w-correct | correct | 교정하다 | tag=검사·원인 | cue=낮거나 어긋난 수치를 바로잡아 정상 쪽으로 돌려놓는 동사
+   dEn=['collect', 'connect'] dKo=['악화시키다', '기록하다'] chips=[['cor', 'rect']] decoy=['core', 'wreck']
+   ex=If we find a cause, we correct it immediately. / 원인을 찾으면 바로 교정할게요.
+   USE[혈당·전해질 확인#2] If we find a cause, we correct it immediately.
+   USE[혈당·전해질 확인#4] We're correcting his sodium level to stop further seizures.
+   USE[유발원인 검사·교정#1] Correcting the trigger is key to stopping the seizures.
+w-immediately | immediately | 즉시 | tag=일반 표현 | cue=한순간도 지체하지 않고 곧바로 한다는 뜻의 부사
+   dEn=['immensely', 'imminently'] dKo=['서서히', '다음에'] chips=[['im', 'medi', 'ate', 'ly']] decoy=['him', 'dye']
+   ex=If we find a cause, we correct it immediately. / 원인을 찾으면 바로 교정할게요.
+   USE[혈당·전해질 확인#2] If we find a cause, we correct it immediately.
+w-back *CHG* | come back | (결과가) 나오다 | tag=검사·원인 | cue=보낸 검사의 결과가 검사실에서 도착해 확인할 수 있게 되었다고 말하는 구동사
+   dEn=['go back', 'take back'] dKo=['(결과를) 보내다', '(결과가) 사라지다'] chips=[['come'], ['back']] decoy=['comb', 'bark']
+   ex=His glucose came back low, so we're treating it now. / 혈당 결과가 낮게 나와서 지금 치료하고 있어요.
+   USE[혈당·전해질 확인#3] His glucose came back low, so we're treating it now.
+   USE[항경련제 혈중농도·부작용#3] His level came back within the therapeutic range.
+w-level | level | 수치 | tag=검사·원인 | cue=혈액에서 재서 숫자로 나오는 약이나 성분의 농도
+   dEn=['lever', 'label'] dKo=['종류', '방향'] chips=[['lev', 'el']] decoy=['leg', 'ale']
+   ex=We're correcting his sodium level to stop further seizures. / 추가 발작을 막기 위해 나트륨 수치를 교정하고 있어요.
+   USE[혈당·전해질 확인#4] We're correcting his sodium level to stop further seizures.
+   USE[항경련제 혈중농도·부작용#0] Let's check his drug levels to confirm they're therapeutic.
+   USE[항경련제 혈중농도·부작용#2] We'll adjust the dose based on levels and his response.
+w-further *CHG* | further | 그 이상의 | tag=일반 표현 | cue=이미 있는 것보다 더 이어지거나 더해지는 것을 뜻하는 형용사
+   dEn=['former', 'fewer'] dKo=['이전의', '처음의'] chips=[['fur', 'ther']] decoy=['fir', 'other']
+   ex=We're correcting his sodium level to stop further seizures. / 추가 발작을 막기 위해 나트륨 수치를 교정하고 있어요.
+   USE[혈당·전해질 확인#4] We're correcting his sodium level to stop further seizures.
+   USE[기도확보 준비·삽관 판단#2] If he deteriorates further, we'll secure the airway.
+w-normal | normal | 정상적인 | tag=사정·징후 | cue=병이 아니라 흔히 있는 일로 볼 수 있는 보통 상태
+   dEn=['formal', 'nominal'] dKo=['위험한', '드문'] chips=[['nor', 'mal']] decoy=['north', 'male']
+   ex=After a seizure it's normal to be drowsy and confused for a while. / 발작 후에는 잠시 졸리고 혼란스러운 게 정상이에요.
+   USE[발작 후 상태 사정#0] After a seizure it's normal to be drowsy and confused for a while.
+   USE[발작 후 상태 사정#3] This is normal, and he wasn't in pain during the seizure.
+w-drowsy | drowsy | 졸린 | tag=사정·징후 | cue=깨어 있기는 하지만 눈꺼풀이 무겁고 졸음이 몰려오는 상태
+   dEn=['dizzy', 'dusty'] dKo=['어지러운', '메스꺼운'] chips=[['drow', 'sy']] decoy=['drew', 'see']
+   ex=After a seizure it's normal to be drowsy and confused for a while. / 발작 후에는 잠시 졸리고 혼란스러운 게 정상이에요.
+   USE[발작 후 상태 사정#0] After a seizure it's normal to be drowsy and confused for a while.
+w-confused | confused | 혼란스러운 | tag=사정·징후 | cue=지금 어디인지, 무슨 일인지 헷갈려 머리가 정리되지 않는 상태
+   dEn=['confined', 'confirmed'] dKo=['흥분한', '무기력한'] chips=[['con', 'fused']] decoy=['can', 'fuse']
+   ex=After a seizure it's normal to be drowsy and confused for a while. / 발작 후에는 잠시 졸리고 혼란스러운 게 정상이에요.
+   USE[발작 후 상태 사정#0] After a seizure it's normal to be drowsy and confused for a while.
+w-while | while | 잠시(동안) | tag=일반 표현 | cue='for a ___'처럼 길지 않은 일정한 시간의 길이를 말하는 말
+   dEn=['whale', 'white'] dKo=['하루(종일)', '평생(동안)'] chips=[['while']] decoy=['whale']
+   ex=After a seizure it's normal to be drowsy and confused for a while. / 발작 후에는 잠시 졸리고 혼란스러운 게 정상이에요.
+   USE[발작 후 상태 사정#0] After a seizure it's normal to be drowsy and confused for a while.
+w-responsiveness | responsiveness | 반응성 | tag=사정·징후 | cue=부르거나 건드렸을 때 환자가 얼마나 알아차리고 반응하는지의 정도
+   dEn=['responsibility', 'restlessness'] dKo=['활동량', '식욕'] chips=[['re', 'spon', 'sive', 'ness']] decoy=['ra', 'spin']
+   ex=I'm checking his responsiveness as he recovers. / 회복하는 동안 반응성을 확인하고 있어요.
+   USE[발작 후 상태 사정#1] I'm checking his responsiveness as he recovers.
+w-recover | recover | 회복하다 | tag=일반 동사 | cue=충격이나 병에서 점점 본래 상태를 되찾는 동사
+   dEn=['discover', 'uncover'] dKo=['악화되다', '재발하다'] chips=[['re', 'cov', 'er']] decoy=['ray', 'cave']
+   ex=I'm checking his responsiveness as he recovers. / 회복하는 동안 반응성을 확인하고 있어요.
+   USE[발작 후 상태 사정#1] I'm checking his responsiveness as he recovers.
+w-sign | sign | 징후 | tag=사정·징후 | cue=환자를 살펴서 눈에 띄는 병의 단서
+   dEn=['sight', 'sigh'] dKo=['서명', '처방'] chips=[['sign']] decoy=['sing']
+   ex=I'll watch closely for any sign of another seizure. / 또 다른 발작의 징후가 있는지 자세히 지켜볼게요.
+   USE[발작 후 상태 사정#2] I'll watch closely for any sign of another seizure.
+   USE[발작 관련 손상·흡인 관리#1] I'm watching for signs of aspiration like low oxygen or fever.
+w-another | another | 또 다른 | tag=일반 표현 | cue=이미 있었던 것에 하나 더 이어지는 것을 가리키는 말
+   dEn=['other', 'either'] dKo=['처음의', '마지막의'] chips=[['an', 'oth', 'er']] decoy=['on', 'moth']
+   ex=I'll watch closely for any sign of another seizure. / 또 다른 발작의 징후가 있는지 자세히 지켜볼게요.
+   USE[발작 후 상태 사정#2] I'll watch closely for any sign of another seizure.
+   USE[발작 후 상태 사정#4] You didn't do anything wrong; watching for another seizure is my job now.
+   USE[초불응성 SE 관리#0] We add another agent and target burst suppression on EEG.
+w-during | during | ~하는 동안 | tag=일반 표현 | cue=무엇이 이어지는 그 시간 안에서를 뜻하는 전치사
+   dEn=['toward', 'except'] dKo=['~한 뒤에', '~하기 전에'] chips=[['dur', 'ing']] decoy=['dire', 'in']
+   ex=This is normal, and he wasn't in pain during the seizure. / 정상적인 거예요, 발작 중에 통증을 느끼지는 않았어요.
+   USE[발작 후 상태 사정#3] This is normal, and he wasn't in pain during the seizure.
+   USE[2차 항경련제 로딩#2] I'll monitor his rhythm and pressure during the load.
+w-wrong | wrong | 잘못된 | tag=일반 표현 | cue=옳지 않고 틀린 것을 가리키는 형용사
+   dEn=['strict', 'strong'] dKo=['정확한', '알맞은'] chips=[['wrong']] decoy=['wring']
+   ex=You didn't do anything wrong; watching for another seizure is my job now. / 잘못하신 거 하나도 없어요. 다음 발작을 지켜보는 건 이제 제 역할이에요.
+   USE[발작 후 상태 사정#4] You didn't do anything wrong; watching for another seizure is my job now.
+w-job | job | 역할 | tag=소통·팀 | cue=팀 안에서 내가 맡아야 하는 몫의 일
+   dEn=['jam', 'jaw'] dKo=['월급', '휴가'] chips=[['job']] decoy=['jog']
+   ex=You didn't do anything wrong; watching for another seizure is my job now. / 잘못하신 거 하나도 없어요. 다음 발작을 지켜보는 건 이제 제 역할이에요.
+   USE[발작 후 상태 사정#4] You didn't do anything wrong; watching for another seizure is my job now.
+w-load | load | 로딩하다 | tag=약물·투여 | cue=항경련제를 평소보다 많은 첫 용량으로 한꺼번에 채워 주는 일
+   dEn=['lead', 'loan'] dKo=['희석하다', '중단하다'] chips=[['load']] decoy=['road']
+   ex=Yes, we're loading a second anti-seizure drug like levetiracetam. / 네, 레비티라세탐 같은 2차 항경련제를 로딩하고 있어요.
+   USE[2차 항경련제 로딩#0] Yes, we're loading a second anti-seizure drug like levetiracetam.
+   USE[2차 항경련제 로딩#2] I'll monitor his rhythm and pressure during the load.
+   USE[2차 항경련제 로딩#3] That's twenty minutes since the first dose — we're loading the second drug now.
+w-second | second | 2차의 | tag=약물·투여 | cue=첫 약이 듣지 않을 때 이어서 쓰는, 순서상 두 번째에 해당하는
+   dEn=['secure', 'secret'] dKo=['1차의', '마지막의'] chips=[['sec', 'ond']] decoy=['sick', 'pond']
+   ex=Yes, we're loading a second anti-seizure drug like levetiracetam. / 네, 레비티라세탐 같은 2차 항경련제를 로딩하고 있어요.
+   USE[2차 항경련제 로딩#0] Yes, we're loading a second anti-seizure drug like levetiracetam.
+   USE[2차 항경련제 로딩#3] That's twenty minutes since the first dose — we're loading the second drug now.
+   USE[반복 발작 약물 단계화#1] After benzos and the second agent, we consider infusions.
+w-anti-seizure | anti-seizure | 항경련의 | tag=약물·투여 | cue=발작이 일어나지 않게 막거나 멈추려고 쓰는 계열의 약에 붙이는 말
+   dEn=['anti-nausea', 'anti-fever'] dKo=['항구토의', '해열의'] chips=[['anti-', 'seiz', 'ure']] decoy=['ante-', 'sure']
+   ex=Yes, we're loading a second anti-seizure drug like levetiracetam. / 네, 레비티라세탐 같은 2차 항경련제를 로딩하고 있어요.
+   USE[2차 항경련제 로딩#0] Yes, we're loading a second anti-seizure drug like levetiracetam.
+w-drug | drug | 약물 | tag=약물·투여 | cue=병을 치료하거나 증상을 다스리려고 쓰는 약의 종류
+   dEn=['drag', 'drum'] dKo=['약국', '주사기'] chips=[['drug']] decoy=['drag']
+   ex=Yes, we're loading a second anti-seizure drug like levetiracetam. / 네, 레비티라세탐 같은 2차 항경련제를 로딩하고 있어요.
+   USE[2차 항경련제 로딩#0] Yes, we're loading a second anti-seizure drug like levetiracetam.
+   USE[2차 항경련제 로딩#3] That's twenty minutes since the first dose — we're loading the second drug now.
+   USE[항경련제 혈중농도·부작용#0] Let's check his drug levels to confirm they're therapeutic.
+w-levetiracetam | levetiracetam | 레비티라세탐 | tag=약물·투여 | cue=벤조디아제핀 다음에 흔히 쓰는 정맥 주사용 항경련제의 성분 이름
+   dEn=['lacosamide', 'brivaracetam'] dKo=['미다졸람', '프로포폴'] chips=[['lev', 'etir', 'ace', 'tam']] decoy=['liv', 'tram']
+   ex=Yes, we're loading a second anti-seizure drug like levetiracetam. / 네, 레비티라세탐 같은 2차 항경련제를 로딩하고 있어요.
+   USE[2차 항경련제 로딩#0] Yes, we're loading a second anti-seizure drug like levetiracetam.
+w-weight-based | weight-based | 체중에 따른 | tag=약물·투여 | cue=환자의 몸무게 킬로그램에 맞춰 양을 정한다는 뜻의 형용사
+   dEn=['age-based', 'dose-based'] dKo=['나이에 따른', '증상에 따른'] chips=[['weight-', 'based']] decoy=['wait-', 'baste']
+   ex=Let's confirm the weight-based dose and infusion rate. / 체중에 따른 용량과 주입 속도를 확인하죠.
+   USE[2차 항경련제 로딩#1] Let's confirm the weight-based dose and infusion rate.
+w-infusion | infusion | 주입 | tag=약물·투여 | cue=약을 정해진 속도로 시간을 두고 계속 정맥으로 들여보내는 방식
+   dEn=['infection', 'inclusion'] dKo=['희석', '경구 투약'] chips=[['in', 'fu', 'sion']] decoy=['on', 'fuse']
+   ex=Let's confirm the weight-based dose and infusion rate. / 체중에 따른 용량과 주입 속도를 확인하죠.
+   USE[2차 항경련제 로딩#1] Let's confirm the weight-based dose and infusion rate.
+   USE[반복 발작 약물 단계화#1] After benzos and the second agent, we consider infusions.
+   USE[반복 발작 약물 단계화#4] We're already on the second agent, so the next infusion is ready.
+w-rate | rate | 속도 | tag=약물·투여 | cue=수액이나 약이 한 시간에 몇 mL씩 들어가는지 말할 때의 빠르기
+   dEn=['race', 'ratio'] dKo=['총량', '농도'] chips=[['rate']] decoy=['rat']
+   ex=Let's confirm the weight-based dose and infusion rate. / 체중에 따른 용량과 주입 속도를 확인하죠.
+   USE[2차 항경련제 로딩#1] Let's confirm the weight-based dose and infusion rate.
+   USE[발작 중 심한 저산소·서맥 위기#2] Watch the heart rate and be ready to escalate resuscitation.
+   USE[발작 중 심한 저산소·서맥 위기#3] His heart rate is dropping fast while he's still seizing.
+w-monitor | monitor | 감시하다 | tag=활력·산소 | cue=모니터 화면의 숫자와 파형을 계속 보며 변화를 잡아내는 동사
+   dEn=['mentor', 'mount'] dKo=['측정하다', '소독하다'] chips=[['mon', 'i', 'tor']] decoy=['man', 'tore']
+   ex=I'll monitor his rhythm and pressure during the load. / 로딩하는 동안 심장리듬과 혈압을 감시할게요.
+   USE[2차 항경련제 로딩#2] I'll monitor his rhythm and pressure during the load.
+   USE[지속 EEG 모니터 연계#4] Even if his body looks still, the monitor tells us if his brain is still seizing.
+   USE[불응성 SE 마취약 주입 위기#1] This requires the airway secured and close hemodynamic monitoring.
+w-rhythm | rhythm | 심장리듬 | tag=활력·산소 | cue=심장이 뛰는 박자의 규칙적인 흐름을 모니터로 보는 것
+   dEn=['rhyme', 'thyme'] dKo=['혈액량', '체온'] chips=[['rhy', 'thm']] decoy=['rye', 'them']
+   ex=I'll monitor his rhythm and pressure during the load. / 로딩하는 동안 심장리듬과 혈압을 감시할게요.
+   USE[2차 항경련제 로딩#2] I'll monitor his rhythm and pressure during the load.
+   USE[항경련제 혈중농도·부작용#1] I'm watching for sedation, low pressure, and rhythm changes.
+w-pressure | pressure | 혈압 | tag=활력·산소 | cue=혈관 안의 피가 혈관 벽을 미는 힘을 재어 숫자로 나타낸 것
+   dEn=['pleasure', 'pasture'] dKo=['맥박', '체온'] chips=[['pres', 'sure']] decoy=['press', 'shore']
+   ex=I'll monitor his rhythm and pressure during the load. / 로딩하는 동안 심장리듬과 혈압을 감시할게요.
+   USE[2차 항경련제 로딩#2] I'll monitor his rhythm and pressure during the load.
+   USE[2차 항경련제 로딩#4] I'm watching for sedation or low pressure as we give the load.
+   USE[항경련제 혈중농도·부작용#1] I'm watching for sedation, low pressure, and rhythm changes.
+w-since | since | ~한 후로 | tag=일반 표현 | cue=그때부터 지금까지 시간이 얼마나 흘렀는지 셀 때 쓰는 접속사
+   dEn=['sense', 'science'] dKo=['~할 때까지', '~하는 동안'] chips=[['since']] decoy=['sins']
+   ex=That's twenty minutes since the first dose — we're loading the second drug now. / 첫 투여 후 20분이 지났어요 — 이제 2차 약물을 로딩하고 있어요.
+   USE[2차 항경련제 로딩#3] That's twenty minutes since the first dose — we're loading the second drug now.
+   USE[항경련제 혈중농도·부작용#4] No new side effects since we adjusted the dose.
+w-first | first | 첫 | tag=일반 표현 | cue=여러 번의 투여 가운데 가장 처음 나가는 순서
+   dEn=['fist', 'fierce'] dKo=['마지막', '다음'] chips=[['first']] decoy=['fist']
+   ex=That's twenty minutes since the first dose — we're loading the second drug now. / 첫 투여 후 20분이 지났어요 — 이제 2차 약물을 로딩하고 있어요.
+   USE[2차 항경련제 로딩#3] That's twenty minutes since the first dose — we're loading the second drug now.
+w-sedation | sedation | 진정 | tag=약물·투여 | cue=약으로 환자를 편안히 졸리게 하거나 가라앉힌 상태
+   dEn=['salvation', 'separation'] dKo=['각성', '마취'] chips=[['se', 'da', 'tion']] decoy=['sea', 'dash']
+   ex=I'm watching for sedation or low pressure as we give the load. / 로딩하는 동안 진정이나 저혈압이 있는지 지켜보고 있어요.
+   USE[2차 항경련제 로딩#4] I'm watching for sedation or low pressure as we give the load.
+   USE[항경련제 혈중농도·부작용#1] I'm watching for sedation, low pressure, and rhythm changes.
+   USE[초불응성 SE 관리#3] His pressure stayed stable even after we deepened the sedation.
+w-continue | continue | 계속되다 | tag=일반 동사 | cue=중간에 끊기지 않고 앞으로 이어져 가는 동사
+   dEn=['contain', 'content'] dKo=['끝나다', '중단하다'] chips=[['con', 'tin', 'ue']] decoy=['can', 'tan']
+   ex=Seizures can continue in the brain even without shaking. / 발작은 몸이 떨지 않아도 뇌 안에서 계속될 수 있어요.
+   USE[지속 EEG 모니터 연계#0] Seizures can continue in the brain even without shaking.
+w-brain | brain | 뇌 | tag=뇌파·신경 | cue=머리뼈 안에서 생각과 움직임을 총괄하는 기관
+   dEn=['brass', 'drain'] dKo=['척수', '심장'] chips=[['brain']] decoy=['train']
+   ex=Seizures can continue in the brain even without shaking. / 발작은 몸이 떨지 않아도 뇌 안에서 계속될 수 있어요.
+   USE[지속 EEG 모니터 연계#0] Seizures can continue in the brain even without shaking.
+   USE[지속 EEG 모니터 연계#3] We put EEG leads on his scalp to watch his brain waves.
+   USE[지속 EEG 모니터 연계#4] Even if his body looks still, the monitor tells us if his brain is still seizing.
+w-even | even | ~조차 | tag=일반 표현 | cue='그럴 때에도'처럼 뜻밖의 경우까지 포함해서 말할 때 쓰는 부사
+   dEn=['ever', 'over'] dKo=['오직', '아마도'] chips=[['e', 'ven']] decoy=['a', 'vent']
+   ex=Seizures can continue in the brain even without shaking. / 발작은 몸이 떨지 않아도 뇌 안에서 계속될 수 있어요.
+   USE[지속 EEG 모니터 연계#0] Seizures can continue in the brain even without shaking.
+   USE[지속 EEG 모니터 연계#4] Even if his body looks still, the monitor tells us if his brain is still seizing.
+   USE[초불응성 SE 관리#3] His pressure stayed stable even after we deepened the sedation.
+w-without | without | ~없이 | tag=일반 표현 | cue=무엇이 곁에 없는 채로를 뜻하는 전치사
+   dEn=['within', 'beyond'] dKo=['~와 함께', '~만큼'] chips=[['with', 'out']] decoy=['wish', 'oat']
+   ex=Seizures can continue in the brain even without shaking. / 발작은 몸이 떨지 않아도 뇌 안에서 계속될 수 있어요.
+   USE[지속 EEG 모니터 연계#0] Seizures can continue in the brain even without shaking.
+   USE[반복 발작 약물 단계화#2] Let's have the next medication ready to give without delay.
+w-shake | shake | 떨다 | tag=발작 양상 | cue=몸이 잘게 떨리거나 흔들리는 동사
+   dEn=['shape', 'shave'] dKo=['가라앉다', '굳어지다'] chips=[['shake']] decoy=['shade']
+   ex=Seizures can continue in the brain even without shaking. / 발작은 몸이 떨지 않아도 뇌 안에서 계속될 수 있어요.
+   USE[지속 EEG 모니터 연계#0] Seizures can continue in the brain even without shaking.
+w-continuous *CHG* | continuous | 끊김 없는 | tag=뇌파·신경 | cue=중간에 쉬는 틈 없이 줄곧 이어지는 모양
+   dEn=['conscious', 'contagious'] dKo=['간헐적인', '일시적인'] chips=[['con', 'tin', 'u', 'ous']] decoy=['can', 'tan']
+   ex=Continuous EEG lets us catch those hidden seizures. / 지속 뇌파검사(EEG)로 그런 숨은 발작을 잡아낼 수 있어요.
+   USE[지속 EEG 모니터 연계#1] Continuous EEG lets us catch those hidden seizures.
+   USE[불응성 SE 마취약 주입 위기#0] Yes, we're starting a continuous midazolam or propofol infusion.
+w-eeg | EEG | 뇌파검사 | tag=뇌파·신경 | cue=머리 피부에 붙인 전극으로 뇌의 전기 활동을 파형으로 기록하는 검사
+   dEn=['EKG', 'ECG'] dKo=['심전도', '흉부 촬영'] chips=[['EEG']] decoy=['EGG']
+   ex=Continuous EEG lets us catch those hidden seizures. / 지속 뇌파검사(EEG)로 그런 숨은 발작을 잡아낼 수 있어요.
+   USE[지속 EEG 모니터 연계#1] Continuous EEG lets us catch those hidden seizures.
+   USE[지속 EEG 모니터 연계#3] We put EEG leads on his scalp to watch his brain waves.
+   USE[비경련성 SE 인지#1] Let's get an urgent EEG to check his brain activity.
+w-catch | catch | 잡아내다 | tag=일반 동사 | cue=놓칠 뻔한 것을 알아채 붙잡는 동사
+   dEn=['match', 'patch'] dKo=['놓치다', '버리다'] chips=[['catch']] decoy=['watch']
+   ex=Continuous EEG lets us catch those hidden seizures. / 지속 뇌파검사(EEG)로 그런 숨은 발작을 잡아낼 수 있어요.
+   USE[지속 EEG 모니터 연계#1] Continuous EEG lets us catch those hidden seizures.
+w-hidden | hidden | 숨은 | tag=뇌파·신경 | cue=겉으로 드러나지 않아 눈에 안 띄는 상태
+   dEn=['sudden', 'hollow'] dKo=['뚜렷한', '공개된'] chips=[['hid', 'den']] decoy=['hit', 'dent']
+   ex=Continuous EEG lets us catch those hidden seizures. / 지속 뇌파검사(EEG)로 그런 숨은 발작을 잡아낼 수 있어요.
+   USE[지속 EEG 모니터 연계#1] Continuous EEG lets us catch those hidden seizures.
+   USE[비경련성 SE 인지#3] He looks calm, but that doesn't rule out a hidden seizure.
+w-neuro | neuro | 신경과의 | tag=뇌파·신경 | cue=뇌와 신경을 다루는 진료 분야를 줄여서 부르는 말
+   dEn=['cardio', 'nephro'] dKo=['심장의', '폐의'] chips=[['neu', 'ro']] decoy=['new', 'row']
+   ex=The neuro team reads it to guide his treatment. / 신경과 팀이 그것을 읽고 치료 방향을 정해요.
+   USE[지속 EEG 모니터 연계#2] The neuro team reads it to guide his treatment.
+   USE[비경련성 SE 인지#2] I'll flag this to the neuro team right away.
+   USE[원인별 치료 연계#2] The neuro team will guide the next steps with us.
+w-read | read | 읽다 | tag=뇌파·신경 | cue=파형이나 기록을 눈으로 보고 의미를 해석하는 동사
+   dEn=['lead', 'reach'] dKo=['쓰다', '지우다'] chips=[['read']] decoy=['road']
+   ex=The neuro team reads it to guide his treatment. / 신경과 팀이 그것을 읽고 치료 방향을 정해요.
+   USE[지속 EEG 모니터 연계#2] The neuro team reads it to guide his treatment.
+w-guide | guide | 방향을 정하다 | tag=소통·팀 | cue=무엇을 어떻게 해야 할지 방향을 잡아 이끄는 동사
+   dEn=['guess', 'guard'] dKo=['길을 막다', '뒤를 따르다'] chips=[['guide']] decoy=['guild']
+   ex=The neuro team reads it to guide his treatment. / 신경과 팀이 그것을 읽고 치료 방향을 정해요.
+   USE[지속 EEG 모니터 연계#2] The neuro team reads it to guide his treatment.
+   USE[원인별 치료 연계#2] The neuro team will guide the next steps with us.
+   USE[초불응성 SE 관리#2] The neuro team will guide the depth and duration.
+w-treatment | treatment | 치료 | tag=약물·투여 | cue=병을 낫게 하려고 하는 처치와 약의 전체
+   dEn=['payment', 'movement'] dKo=['예방', '진단'] chips=[['treat', 'ment']] decoy=['tread', 'men']
+   ex=The neuro team reads it to guide his treatment. / 신경과 팀이 그것을 읽고 치료 방향을 정해요.
+   USE[지속 EEG 모니터 연계#2] The neuro team reads it to guide his treatment.
+   USE[원인별 치료 연계#1] The treatment depends on what we find on imaging.
+   USE[원인별 치료 연계#4] Once we know the cause, we'll explain the treatment plan together.
+w-lead | lead | (전극) 선 | tag=뇌파·신경 | cue=뇌파 검사에서 머리에 붙이는 전극에 달린 가는 선
+   dEn=['lid', 'lens'] dKo=['버튼', '화면'] chips=[['lead']] decoy=['load']
+   ex=We put EEG leads on his scalp to watch his brain waves. / 뇌파를 지켜보려고 두피에 EEG 선을 붙이는 거예요.
+   USE[지속 EEG 모니터 연계#3] We put EEG leads on his scalp to watch his brain waves.
+w-scalp | scalp | 두피 | tag=뇌파·신경 | cue=머리뼈 위를 덮고 머리카락이 자라는 피부
+   dEn=['scale', 'scalpel'] dKo=['이마', '목덜미'] chips=[['scalp']] decoy=['scale']
+   ex=We put EEG leads on his scalp to watch his brain waves. / 뇌파를 지켜보려고 두피에 EEG 선을 붙이는 거예요.
+   USE[지속 EEG 모니터 연계#3] We put EEG leads on his scalp to watch his brain waves.
+w-wave | wave | 파동 | tag=뇌파·신경 | cue=뇌의 전기 활동이 모니터에 그려 내는 오르내리는 물결 모양
+   dEn=['wage', 'wafer'] dKo=['점', '직선'] chips=[['wave']] decoy=['save']
+   ex=We put EEG leads on his scalp to watch his brain waves. / 뇌파를 지켜보려고 두피에 EEG 선을 붙이는 거예요.
+   USE[지속 EEG 모니터 연계#3] We put EEG leads on his scalp to watch his brain waves.
+w-still *CHG* | still | 아직도 | tag=일반 표현 | cue=발작이 끝난 줄 알았는데 지금도 이어지고 있음을 말하는 부사
+   dEn=['stall', 'steal'] dKo=['이미', '벌써'] chips=[['still']] decoy=['stilt']
+   ex=Even if his body looks still, the monitor tells us if his brain is still seizing. / 몸이 가만히 있어 보여도, 모니터가 뇌에서 아직 발작 중인지 알려줘요.
+   USE[지속 EEG 모니터 연계#4] Even if his body looks still, the monitor tells us if his brain is still seizing.
+   USE[발작 중 심한 저산소·서맥 위기#3] His heart rate is dropping fast while he's still seizing.
+w-tell | tell | 알려주다 | tag=소통·팀 | cue=모니터 화면이 보이는 사실을 말없이 알려 주는 동사
+   dEn=['sell', 'tilt'] dKo=['숨기다', '묻다'] chips=[['tell']] decoy=['tall']
+   ex=Even if his body looks still, the monitor tells us if his brain is still seizing. / 몸이 가만히 있어 보여도, 모니터가 뇌에서 아직 발작 중인지 알려줘요.
+   USE[지속 EEG 모니터 연계#4] Even if his body looks still, the monitor tells us if his brain is still seizing.
+w-seize | seize | 발작하다 | tag=발작 양상 | cue=한 사람의 몸이 갑자기 경련을 일으키는 동사
+   dEn=['seep', 'size'] dKo=['기절하다', '토하다'] chips=[['seize']] decoy=['sieze']
+   ex=Even if his body looks still, the monitor tells us if his brain is still seizing. / 몸이 가만히 있어 보여도, 모니터가 뇌에서 아직 발작 중인지 알려줘요.
+   USE[지속 EEG 모니터 연계#4] Even if his body looks still, the monitor tells us if his brain is still seizing.
+   USE[반복 발작 약물 단계화#3] If he seizes again, we move to the next step right away.
+   USE[발작 중 심한 저산소·서맥 위기#3] His heart rate is dropping fast while he's still seizing.
+w-test | test | 검사하다 | tag=검사·원인 | cue=원인을 찾으려고 피나 소변 같은 것으로 확인해 보는 동사
+   dEn=['text', 'tent'] dKo=['고치다', '씻다'] chips=[['test']] decoy=['tent']
+   ex=We're testing for infection and metabolic causes together. / 감염과 대사 원인을 함께 검사하고 있어요.
+   USE[유발원인 검사·교정#0] We're testing for infection and metabolic causes together.
+w-infection | infection | 감염 | tag=검사·원인 | cue=세균이나 바이러스가 몸에 들어와 번져 생기는 병
+   dEn=['infusion', 'inflection'] dKo=['출혈', '골절'] chips=[['in', 'fec', 'tion']] decoy=['on', 'fact']
+   ex=We're testing for infection and metabolic causes together. / 감염과 대사 원인을 함께 검사하고 있어요.
+   USE[유발원인 검사·교정#0] We're testing for infection and metabolic causes together.
+   USE[유발원인 검사·교정#3] A fever or an infection can also set off seizures.
+w-metabolic | metabolic | 대사의 | tag=검사·원인 | cue=몸이 영양분과 전해질을 처리하는 대사 과정에 관한
+   dEn=['metallic', 'magnetic'] dKo=['호흡의', '순환의'] chips=[['met', 'a', 'bol', 'ic']] decoy=['mat', 'ball']
+   ex=We're testing for infection and metabolic causes together. / 감염과 대사 원인을 함께 검사하고 있어요.
+   USE[유발원인 검사·교정#0] We're testing for infection and metabolic causes together.
+w-together | together | 함께 | tag=일반 표현 | cue=따로가 아니라 한꺼번에 같이 해 나가는 방식
+   dEn=['tougher', 'altogether'] dKo=['혼자서', '차례로'] chips=[['to', 'geth', 'er']] decoy=['too', 'gather']
+   ex=We're testing for infection and metabolic causes together. / 감염과 대사 원인을 함께 검사하고 있어요.
+   USE[유발원인 검사·교정#0] We're testing for infection and metabolic causes together.
+   USE[원인별 치료 연계#4] Once we know the cause, we'll explain the treatment plan together.
+w-key | key | 핵심적인 | tag=일반 표현 | cue=여러 요소 가운데 문제를 푸는 데 가장 결정적인
+   dEn=['keen', 'kind'] dKo=['부수적인', '임시적인'] chips=[['key']] decoy=['tea']
+   ex=Correcting the trigger is key to stopping the seizures. / 유발 요인을 교정하는 게 발작을 멈추는 핵심이에요.
+   USE[유발원인 검사·교정#1] Correcting the trigger is key to stopping the seizures.
+w-send | send | 보내다 | tag=검사·원인 | cue=채취한 시료를 검사실로 보내는 동사
+   dEn=['sand', 'spend'] dKo=['받다', '버리다'] chips=[['send']] decoy=['sand']
+   ex=I'll send cultures and labs and treat what we find. / 배양검사와 검사를 보내고, 나온 결과를 치료할게요.
+   USE[유발원인 검사·교정#2] I'll send cultures and labs and treat what we find.
+w-culture | culture | 배양검사 | tag=검사·원인 | cue=피나 소변을 배양해서 어떤 균이 자라는지 알아보는 검사
+   dEn=['couture', 'vulture'] dKo=['영상', '심전도'] chips=[['cul', 'ture']] decoy=['cull', 'tour']
+   ex=I'll send cultures and labs and treat what we find. / 배양검사와 검사를 보내고, 나온 결과를 치료할게요.
+   USE[유발원인 검사·교정#2] I'll send cultures and labs and treat what we find.
+w-lab *CHG* | lab | 랩 검사 | tag=검사·원인 | cue=혈액이나 소변을 보내 숫자로 결과를 받아 보는 일
+   dEn=['lap', 'lad'] dKo=['엑스선 촬영', '초음파'] chips=[['lab']] decoy=['lap']
+   ex=I'll send cultures and labs and treat what we find. / 배양검사와 검사를 보내고, 나온 결과를 치료할게요.
+   USE[유발원인 검사·교정#2] I'll send cultures and labs and treat what we find.
+w-fever | fever | 열 | tag=사정·징후 | cue=체온이 정상보다 올라가 있는 상태
+   dEn=['fiber', 'fewer'] dKo=['저체온', '오한'] chips=[['fe', 'ver']] decoy=['far', 'very']
+   ex=A fever or an infection can also set off seizures. / 열이나 감염도 발작을 유발할 수 있어요.
+   USE[유발원인 검사·교정#3] A fever or an infection can also set off seizures.
+   USE[발작 관련 손상·흡인 관리#1] I'm watching for signs of aspiration like low oxygen or fever.
+w-set-off *CHG* | set off | 일으키다 | tag=검사·원인 | cue=어떤 일이 터져 나오도록 계기를 만들어 주는 구동사
+   dEn=['set up', 'set down'] dKo=['막다', '가라앉히다'] chips=[['set'], ['off']] decoy=['sit']
+   ex=A fever or an infection can also set off seizures. / 열이나 감염도 발작을 유발할 수 있어요.
+   USE[유발원인 검사·교정#3] A fever or an infection can also set off seizures.
+w-once | once | 일단 ~하면 | tag=일반 표현 | cue='일단 ~하고 나면'처럼 어떤 일이 끝나는 시점을 조건으로 걸 때 쓰는 접속사
+   dEn=['until', 'unless'] dKo=['~하는 동안', '~하지 않으면'] chips=[['once']] decoy=['ounce']
+   ex=Once we correct the cause, the seizures usually stop. / 원인을 교정하고 나면 발작은 보통 멈춰요.
+   USE[유발원인 검사·교정#4] Once we correct the cause, the seizures usually stop.
+w-usually | usually | 보통 | tag=일반 표현 | cue=대부분의 경우에 그렇다고 말할 때 쓰는 부사
+   dEn=['usefully', 'actually'] dKo=['가끔', '절대'] chips=[['u', 'su', 'al', 'ly']] decoy=['you', 'sue']
+   ex=Once we correct the cause, the seizures usually stop. / 원인을 교정하고 나면 발작은 보통 멈춰요.
+   USE[유발원인 검사·교정#4] Once we correct the cause, the seizures usually stop.
+w-follow | follow | 따르다 | tag=일반 동사 | cue=정해진 순서나 방식대로 뒤를 따라가는 동사
+   dEn=['swallow', 'borrow'] dKo=['앞서다', '건너뛰다'] chips=[['fol', 'low']] decoy=['fall', 'lo']
+   ex=We follow a stepwise ladder when seizures keep recurring. / 발작이 계속 반복되면 단계별 사다리를 따라가요.
+   USE[반복 발작 약물 단계화#0] We follow a stepwise ladder when seizures keep recurring.
+w-stepwise | stepwise | 단계별의 | tag=약물·투여 | cue=한 번에 몰아서가 아니라 계단 오르듯 한 단계씩 올라가는 방식의
+   dEn=['likewise', 'clockwise'] dKo=['한꺼번에 하는', '무작위의'] chips=[['step', 'wise']] decoy=['stop', 'wide']
+   ex=We follow a stepwise ladder when seizures keep recurring. / 발작이 계속 반복되면 단계별 사다리를 따라가요.
+   USE[반복 발작 약물 단계화#0] We follow a stepwise ladder when seizures keep recurring.
+w-ladder | ladder | 사다리(단계) | tag=약물·투여 | cue=발작이 안 멈출 때 약을 단계별로 올려 가는 순서를 사다리에 빗댄 말
+   dEn=['latter', 'letter'] dKo=['처방전(서식)', '경과표(도표)'] chips=[['lad', 'der']] decoy=['lid', 'dare']
+   ex=We follow a stepwise ladder when seizures keep recurring. / 발작이 계속 반복되면 단계별 사다리를 따라가요.
+   USE[반복 발작 약물 단계화#0] We follow a stepwise ladder when seizures keep recurring.
+w-recur | recur | 반복되다 | tag=발작 양상 | cue=한 번 멈췄던 증상이 다시 나타나 되풀이되는 동사
+   dEn=['recall', 'refer'] dKo=['가라앉다', '사라지다'] chips=[['re', 'cur']] decoy=['ray', 'car']
+   ex=We follow a stepwise ladder when seizures keep recurring. / 발작이 계속 반복되면 단계별 사다리를 따라가요.
+   USE[반복 발작 약물 단계화#0] We follow a stepwise ladder when seizures keep recurring.
+w-benzo | benzo | 벤조(약어) | tag=약물·투여 | cue=발작 약 중 벤조디아제핀 계열을 현장에서 줄여 부르는 말
+   dEn=['bento', 'banjo'] dKo=['바르비(약어)', '항히(약어)'] chips=[['ben', 'zo']] decoy=['bin', 'zoo']
+   ex=After benzos and the second agent, we consider infusions. / 벤조와 2차 약제 다음에는 지속주입을 고려해요.
+   USE[반복 발작 약물 단계화#1] After benzos and the second agent, we consider infusions.
+w-agent | agent | 약제 | tag=약물·투여 | cue=특정한 효과를 내려고 쓰는 약 한 종류를 일컫는 말
+   dEn=['urgent', 'agenda'] dKo=['보호자', '간호사'] chips=[['a', 'gent']] decoy=['ant', 'gem']
+   ex=After benzos and the second agent, we consider infusions. / 벤조와 2차 약제 다음에는 지속주입을 고려해요.
+   USE[반복 발작 약물 단계화#1] After benzos and the second agent, we consider infusions.
+   USE[반복 발작 약물 단계화#4] We're already on the second agent, so the next infusion is ready.
+   USE[초불응성 SE 관리#0] We add another agent and target burst suppression on EEG.
+w-consider | consider | 고려하다 | tag=일반 동사 | cue=바로 정하기 전에 쓸지 말지 따져 보며 염두에 두는 동사
+   dEn=['consist', 'console'] dKo=['거절하다', '잊어버리다'] chips=[['con', 'sid', 'er']] decoy=['can', 'side']
+   ex=After benzos and the second agent, we consider infusions. / 벤조와 2차 약제 다음에는 지속주입을 고려해요.
+   USE[반복 발작 약물 단계화#1] After benzos and the second agent, we consider infusions.
+   USE[발작 후 뇌부종·ICP 위기#2] Let's get imaging and consider osmotic therapy.
+w-next | next | 다음의 | tag=일반 표현 | cue=지금 것 바로 뒤에 이어서 오는
+   dEn=['text', 'nest'] dKo=['이전의', '마지막의'] chips=[['next']] decoy=['nest']
+   ex=Let's have the next medication ready to give without delay. / 다음 약물을 지체 없이 줄 수 있게 준비해두죠.
+   USE[반복 발작 약물 단계화#2] Let's have the next medication ready to give without delay.
+   USE[반복 발작 약물 단계화#3] If he seizes again, we move to the next step right away.
+   USE[반복 발작 약물 단계화#4] We're already on the second agent, so the next infusion is ready.
+w-delay | delay | 지연 | tag=일반 표현 | cue=해야 할 일을 미룬 채 시간이 늦춰지는 것
+   dEn=['decay', 'relay'] dKo=['지시', '중단'] chips=[['de', 'lay']] decoy=['den', 'lie']
+   ex=Let's have the next medication ready to give without delay. / 다음 약물을 지체 없이 줄 수 있게 준비해두죠.
+   USE[반복 발작 약물 단계화#2] Let's have the next medication ready to give without delay.
+w-step | step | 단계 | tag=약물·투여 | cue=약을 올려 가는 순서에서 한 칸에 해당하는 자리
+   dEn=['stem', 'stop'] dKo=['약', '용량'] chips=[['step']] decoy=['stem']
+   ex=If he seizes again, we move to the next step right away. / 또 발작하면 바로 다음 단계로 넘어가요.
+   USE[반복 발작 약물 단계화#3] If he seizes again, we move to the next step right away.
+   USE[원인별 치료 연계#2] The neuro team will guide the next steps with us.
+w-already | already | 이미 | tag=일반 표현 | cue=기다렸던 일이 생각보다 먼저 이미 끝나 있음을 말하는 부사
+   dEn=['almost', 'always'] dKo=['아직', '곧'] chips=[['al', 'read', 'y']] decoy=['all', 'reed']
+   ex=We're already on the second agent, so the next infusion is ready. / 이미 2차 약제까지 왔으니 다음 지속주입도 준비돼 있어요.
+   USE[반복 발작 약물 단계화#4] We're already on the second agent, so the next infusion is ready.
+w-decline *CHG* | decline | 감퇴하다 | tag=사정·징후 | cue=환자의 의식 수준이 조금씩 내려가고 있는 모양을 말하는 동사
+   dEn=['decide', 'deceive'] dKo=['호전되다', '안정되다'] chips=[['de', 'cline']] decoy=['den', 'climb']
+   ex=His declining consciousness may mean he can't protect his airway. / 의식이 떨어지고 있다는 건 기도를 스스로 보호하지 못한다는 뜻일 수 있어요.
+   USE[기도확보 준비·삽관 판단#0] His declining consciousness may mean he can't protect his airway.
+w-consciousness | consciousness | 의식 | tag=사정·징후 | cue=깨어 있어서 주변을 알아차리고 반응하는 상태
+   dEn=['conscience', 'conciseness'] dKo=['체온', '맥박'] chips=[['con', 'scious', 'ness']] decoy=['can', 'shush']
+   ex=His declining consciousness may mean he can't protect his airway. / 의식이 떨어지고 있다는 건 기도를 스스로 보호하지 못한다는 뜻일 수 있어요.
+   USE[기도확보 준비·삽관 판단#0] His declining consciousness may mean he can't protect his airway.
+w-mean | mean | 의미하다 | tag=소통·팀 | cue='그게 곧 ~라는 뜻이다'라고 설명할 때 쓰는 동사
+   dEn=['mind', 'mend'] dKo=['숨기다', '반대하다'] chips=[['mean']] decoy=['meat']
+   ex=His declining consciousness may mean he can't protect his airway. / 의식이 떨어지고 있다는 건 기도를 스스로 보호하지 못한다는 뜻일 수 있어요.
+   USE[기도확보 준비·삽관 판단#0] His declining consciousness may mean he can't protect his airway.
+   USE[비경련성 SE 인지#0] Persistent unresponsiveness can mean ongoing nonconvulsive seizures.
+w-intubation | intubation | 삽관 | tag=기도·안전 | cue=숨길을 확보하려고 기도에 관을 넣는 처치
+   dEn=['intuition', 'inhibition'] dKo=['기관절개', '흡인'] chips=[['in', 'tu', 'ba', 'tion']] decoy=['on', 'tub']
+   ex=Let's have intubation equipment and the team ready. / 삽관 장비와 팀을 준비해두죠.
+   USE[기도확보 준비·삽관 판단#1] Let's have intubation equipment and the team ready.
+   USE[기도확보 준비·삽관 판단#4] We're calling anesthesia now to decide on intubation.
+   USE[발작 중 심한 저산소·서맥 위기#1] Call for help and prepare for intubation.
+w-deteriorate | deteriorate | 악화되다 | tag=사정·징후 | cue=나아지지 않고 오히려 상태가 점점 안 좋아지는 동사
+   dEn=['deliberate', 'decorate'] dKo=['호전되다', '안정되다'] chips=[['de', 'teri', 'or', 'ate']] decoy=['den', 'tear']
+   ex=If he deteriorates further, we'll secure the airway. / 더 악화되면 기도를 확보할게요.
+   USE[기도확보 준비·삽관 판단#2] If he deteriorates further, we'll secure the airway.
+w-secure | secure | 확보하다 | tag=기도·안전 | cue=기도를 확실히 열려 있게 단단히 지켜 두는 동사
+   dEn=['second', 'secret'] dKo=['개방하다', '제거하다'] chips=[['se', 'cure']] decoy=['sea', 'cue']
+   ex=If he deteriorates further, we'll secure the airway. / 더 악화되면 기도를 확보할게요.
+   USE[기도확보 준비·삽관 판단#2] If he deteriorates further, we'll secure the airway.
+   USE[불응성 SE 마취약 주입 위기#1] This requires the airway secured and close hemodynamic monitoring.
+   USE[불응성 SE 마취약 주입 위기#3] We've secured his airway before starting this infusion.
+w-cough | cough | 기침하다 | tag=기도·안전 | cue=기도에 들어온 것을 내보내려고 갑자기 숨을 힘차게 터뜨리는 동사
+   dEn=['laugh', 'scoff'] dKo=['재채기하다', '하품하다'] chips=[['cough']] decoy=['tough']
+   ex=He's no longer protecting his own airway when he coughs. / 기침할 때 더 이상 스스로 기도를 보호하지 못하고 있어요.
+   USE[기도확보 준비·삽관 판단#3] He's no longer protecting his own airway when he coughs.
+w-anesthesia | anesthesia | 마취 | tag=기도·안전 | cue=삽관 같은 처치 때 환자를 잠들게 하는 일을 맡는 진료과나 그 약의 효과
+   dEn=['analgesia', 'hypothermia'] dKo=['소생', '수혈'] chips=[['an', 'es', 'the', 'sia']] decoy=['on', 'east']
+   ex=We're calling anesthesia now to decide on intubation. / 삽관 여부를 결정하려고 지금 마취과를 부르고 있어요.
+   USE[기도확보 준비·삽관 판단#4] We're calling anesthesia now to decide on intubation.
+w-decide | decide | 결정하다 | tag=일반 동사 | cue=여러 선택지 중 하나를 골라 마음을 정하는 동사
+   dEn=['decline', 'divide'] dKo=['미루다', '취소하다'] chips=[['de', 'cide']] decoy=['den', 'side']
+   ex=We're calling anesthesia now to decide on intubation. / 삽관 여부를 결정하려고 지금 마취과를 부르고 있어요.
+   USE[기도확보 준비·삽관 판단#4] We're calling anesthesia now to decide on intubation.
+w-therapeutic | therapeutic | 치료적인 | tag=약물·투여 | cue=약의 농도가 병을 다스리기에 알맞은 범위에 있음을 가리키는 형용사
+   dEn=['theoretical', 'pharmaceutical'] dKo=['독성의', '예방의'] chips=[['ther', 'a', 'peu', 'tic']] decoy=['the', 'pew']
+   ex=Let's check his drug levels to confirm they're therapeutic. / 약물 혈중농도를 확인해서 치료 범위인지 봐요.
+   USE[항경련제 혈중농도·부작용#0] Let's check his drug levels to confirm they're therapeutic.
+   USE[항경련제 혈중농도·부작용#3] His level came back within the therapeutic range.
+w-change | change | 변화 | tag=사정·징후 | cue=전과 달라진 모양이나 상태
+   dEn=['chance', 'charge'] dKo=['유지', '반복'] chips=[['change']] decoy=['chance']
+   ex=I'm watching for sedation, low pressure, and rhythm changes. / 진정, 저혈압, 리듬 변화를 지켜보고 있어요.
+   USE[항경련제 혈중농도·부작용#1] I'm watching for sedation, low pressure, and rhythm changes.
+w-adjust | adjust | 조정하다 | tag=약물·투여 | cue=수치에 맞게 용량을 조금 올리거나 내려 알맞게 고치는 동사
+   dEn=['adopt', 'adapt'] dKo=['중단하다', '섞다'] chips=[['ad', 'just']] decoy=['add', 'jest']
+   ex=We'll adjust the dose based on levels and his response. / 수치와 반응에 따라 용량을 조정할게요.
+   USE[항경련제 혈중농도·부작용#2] We'll adjust the dose based on levels and his response.
+   USE[항경련제 혈중농도·부작용#4] No new side effects since we adjusted the dose.
+w-based | based | ~에 따른 | tag=일반 표현 | cue=무엇을 기준이나 근거로 삼았는지를 나타내는 형용사
+   dEn=['biased', 'baked'] dKo=['~와 별개의', '~보다 앞선'] chips=[['based']] decoy=['bused']
+   ex=We'll adjust the dose based on levels and his response. / 수치와 반응에 따라 용량을 조정할게요.
+   USE[항경련제 혈중농도·부작용#2] We'll adjust the dose based on levels and his response.
+w-response | response | 반응 | tag=사정·징후 | cue=약이나 처치를 받은 뒤 환자 몸이 보인 반응
+   dEn=['respect', 'resource'] dKo=['거부', '부작용'] chips=[['re', 'sponse']] decoy=['ray', 'spoon']
+   ex=We'll adjust the dose based on levels and his response. / 수치와 반응에 따라 용량을 조정할게요.
+   USE[항경련제 혈중농도·부작용#2] We'll adjust the dose based on levels and his response.
+w-range | range | 범위 | tag=검사·원인 | cue=정상이라고 보는 최솟값부터 최댓값까지의 구간
+   dEn=['rage', 'rank'] dKo=['평균', '오차'] chips=[['range']] decoy=['rage']
+   ex=His level came back within the therapeutic range. / 수치가 치료 범위 안으로 나왔어요.
+   USE[항경련제 혈중농도·부작용#3] His level came back within the therapeutic range.
+w-effect *CHG* | side effect | 부작용 | tag=약물·투여 | cue=약을 쓴 뒤 원하지 않게 따라 나타나는 몸의 다른 반응
+   dEn=['side rail', 'side door'] dKo=['효능', '내성'] chips=[['side'], ['ef', 'fect']] decoy=['sigh', 'af']
+   ex=No new side effects since we adjusted the dose. / 용량을 조정한 뒤로 새로운 부작용은 없어요.
+   USE[항경련제 혈중농도·부작용#4] No new side effects since we adjusted the dose.
+w-persistent *CHG* | persistent | 없어지지 않는 | tag=사정·징후 | cue=좀처럼 가라앉지 않고 오래 이어지는 모양
+   dEn=['consistent', 'persuasive'] dKo=['갑작스러운', '일시적인'] chips=[['per', 'sist', 'ent']] decoy=['pear', 'sit']
+   ex=Persistent unresponsiveness can mean ongoing nonconvulsive seizures. / 지속되는 무반응은 비경련성 발작이 계속되고 있다는 뜻일 수 있어요.
+   USE[비경련성 SE 인지#0] Persistent unresponsiveness can mean ongoing nonconvulsive seizures.
+w-unresponsiveness | unresponsiveness | 무반응 | tag=사정·징후 | cue=부르거나 자극을 줘도 아무 반응이 없는 상태
+   dEn=['responsiveness', 'unavailability'] dKo=['각성', '흥분'] chips=[['un', 'respon', 'sive', 'ness']] decoy=['on', 'ray']
+   ex=Persistent unresponsiveness can mean ongoing nonconvulsive seizures. / 지속되는 무반응은 비경련성 발작이 계속되고 있다는 뜻일 수 있어요.
+   USE[비경련성 SE 인지#0] Persistent unresponsiveness can mean ongoing nonconvulsive seizures.
+w-ongoing | ongoing | 진행 중인 | tag=사정·징후 | cue=지금도 멈추지 않고 계속 진행되고 있는
+   dEn=['outgoing', 'undergoing'] dKo=['끝난', '예정된'] chips=[['on', 'go', 'ing']] decoy=['own', 'gone']
+   ex=Persistent unresponsiveness can mean ongoing nonconvulsive seizures. / 지속되는 무반응은 비경련성 발작이 계속되고 있다는 뜻일 수 있어요.
+   USE[비경련성 SE 인지#0] Persistent unresponsiveness can mean ongoing nonconvulsive seizures.
+w-nonconvulsive | nonconvulsive | 비경련성의 | tag=발작 양상 | cue=몸이 떨거나 뻣뻣해지는 큰 움직임이 눈에 보이지 않는 발작을 뜻하는 말
+   dEn=['convulsive', 'nonviolent'] dKo=['경련성의', '비특이적인'] chips=[['non', 'con', 'vul', 'sive']] decoy=['none', 'vault']
+   ex=Persistent unresponsiveness can mean ongoing nonconvulsive seizures. / 지속되는 무반응은 비경련성 발작이 계속되고 있다는 뜻일 수 있어요.
+   USE[비경련성 SE 인지#0] Persistent unresponsiveness can mean ongoing nonconvulsive seizures.
+w-get | get | 받다 | tag=일반 동사 | cue=검사나 장비를 받아서 가지게 되는 동사
+   dEn=['gut', 'let'] dKo=['내주다', '버리다'] chips=[['get']] decoy=['gate']
+   ex=Let's get an urgent EEG to check his brain activity. / 뇌 활동을 확인하러 응급 EEG를 받죠.
+   USE[비경련성 SE 인지#1] Let's get an urgent EEG to check his brain activity.
+   USE[비경련성 SE 인지#4] I'm getting the EEG ordered right now.
+   USE[발작 중 심한 저산소·서맥 위기#4] I've got the bag ready — call the code now.
+w-urgent | urgent | 응급의 | tag=일반 표현 | cue=지체할 수 없을 만큼 급해서 바로 해야 하는
+   dEn=['ardent', 'agent'] dKo=['선택적인', '정기적인'] chips=[['ur', 'gent']] decoy=['or', 'gem']
+   ex=Let's get an urgent EEG to check his brain activity. / 뇌 활동을 확인하러 응급 EEG를 받죠.
+   USE[비경련성 SE 인지#1] Let's get an urgent EEG to check his brain activity.
+w-activity | activity | 활동 | tag=뇌파·신경 | cue=뇌가 신호를 내며 움직이는 일의 정도나 양상
+   dEn=['activation', 'actuality'] dKo=['휴식', '구조'] chips=[['ac', 'tiv', 'i', 'ty']] decoy=['add', 'tub']
+   ex=Let's get an urgent EEG to check his brain activity. / 뇌 활동을 확인하러 응급 EEG를 받죠.
+   USE[비경련성 SE 인지#1] Let's get an urgent EEG to check his brain activity.
+w-flag | flag | 알리다 | tag=소통·팀 | cue=문제가 있다고 바로 알려서 눈에 띄게 하는 동사
+   dEn=['flare', 'flat'] dKo=['숨기다', '무시하다'] chips=[['flag']] decoy=['flap']
+   ex=I'll flag this to the neuro team right away. / 바로 신경과 팀에 알릴게요.
+   USE[비경련성 SE 인지#2] I'll flag this to the neuro team right away.
+w-calm | calm | 차분한 | tag=사정·징후 | cue=소란스럽지 않고 가라앉아 평온해 보이는 상태
+   dEn=['clam', 'palm'] dKo=['불안한', '격앙된'] chips=[['calm']] decoy=['clam']
+   ex=He looks calm, but that doesn't rule out a hidden seizure. / 차분해 보이지만 그렇다고 숨은 발작이 없다는 건 아니에요.
+   USE[비경련성 SE 인지#3] He looks calm, but that doesn't rule out a hidden seizure.
+w-rule-out | rule out | 배제하다 | tag=검사·원인 | cue=그 가능성이 없다고 확실히 가려내어 지우는 구동사
+   dEn=['rule in', 'rule over'] dKo=['확정하다', '의심하다'] chips=[['rule'], ['out']] decoy=['rude']
+   ex=He looks calm, but that doesn't rule out a hidden seizure. / 차분해 보이지만 그렇다고 숨은 발작이 없다는 건 아니에요.
+   USE[비경련성 SE 인지#3] He looks calm, but that doesn't rule out a hidden seizure.
+w-order | order | 처방하다 | tag=소통·팀 | cue=의사가 검사나 약을 하라고 공식적으로 지시를 내리는 동사
+   dEn=['border', 'offer'] dKo=['취소하다', '보관하다'] chips=[['or', 'der']] decoy=['oar', 'dare']
+   ex=I'm getting the EEG ordered right now. / 지금 바로 EEG를 처방받고 있어요.
+   USE[비경련성 SE 인지#4] I'm getting the EEG ordered right now.
+w-gently | gently | 살살, 부드럽게 | tag=기도·안전 | cue=세게 하지 않고 조심스럽고 부드럽게 한다는 뜻의 부사
+   dEn=['roughly', 'quickly'] dKo=['거칠게, 세게', '서둘러, 급히'] chips=[['gen', 'tly']] decoy=['gem', 'lie']
+   ex=Let's suction gently and check his airway and mouth. / 살살 석션하고 기도와 입 안을 확인하죠.
+   USE[발작 관련 손상·흡인 관리#0] Let's suction gently and check his airway and mouth.
+w-aspiration | aspiration | 흡인 | tag=기도·안전 | cue=토사물이나 침이 숨길로 잘못 들어가 폐 쪽으로 넘어가는 일
+   dEn=['inspiration', 'perspiration'] dKo=['출혈', '폐색'] chips=[['as', 'pi', 'ra', 'tion']] decoy=['is', 'pie']
+   ex=I'm watching for signs of aspiration like low oxygen or fever. / 저산소나 발열 같은 흡인 징후를 지켜보고 있어요.
+   USE[발작 관련 손상·흡인 관리#1] I'm watching for signs of aspiration like low oxygen or fever.
+w-assess | assess | 평가하다 | tag=사정·징후 | cue=환자 상태가 어떤지 살펴서 판단하는 동사
+   dEn=['assist', 'access'] dKo=['처방하다', '수술하다'] chips=[['as', 'sess']] decoy=['is', 'guess']
+   ex=We'll assess for any injuries from the seizure. / 발작으로 인한 손상이 있는지 평가할게요.
+   USE[발작 관련 손상·흡인 관리#2] We'll assess for any injuries from the seizure.
+w-injury | injury | 손상 | tag=기도·안전 | cue=넘어지거나 부딪혀서 몸이 다친 부위
+   dEn=['inquiry', 'industry'] dKo=['감염', '알레르기'] chips=[['in', 'ju', 'ry']] decoy=['on', 'jam']
+   ex=We'll assess for any injuries from the seizure. / 발작으로 인한 손상이 있는지 평가할게요.
+   USE[발작 관련 손상·흡인 관리#2] We'll assess for any injuries from the seizure.
+w-bite | bite | 물다 | tag=기도·안전 | cue=이빨로 힘껏 깨물어 자국을 남기는 동사
+   dEn=['bait', 'bike'] dKo=['핥다', '삼키다'] chips=[['bite']] decoy=['kite']
+   ex=Let's check his tongue for any bite marks. / 혀에 물린 자국이 있는지 확인하죠.
+   USE[발작 관련 손상·흡인 관리#3] Let's check his tongue for any bite marks.
+w-mark | mark | 자국 | tag=사정·징후 | cue=피부에 눌리거나 물려서 남은 흔적
+   dEn=['mask', 'mock'] dKo=['주름', '사마귀'] chips=[['mark']] decoy=['mask']
+   ex=Let's check his tongue for any bite marks. / 혀에 물린 자국이 있는지 확인하죠.
+   USE[발작 관련 손상·흡인 관리#3] Let's check his tongue for any bite marks.
+w-temperature | temperature | 체온 | tag=활력·산소 | cue=체온계로 재어 몸이 얼마나 뜨거운지 나타낸 값
+   dEn=['temporary', 'temperament'] dKo=['맥박', '혈당'] chips=[['tem', 'per', 'a', 'ture']] decoy=['ten', 'pear']
+   ex=His temperature and oxygen level look fine right now. / 지금은 체온과 산소 수치 모두 괜찮아 보여요.
+   USE[발작 관련 손상·흡인 관리#4] His temperature and oxygen level look fine right now.
+w-identify | identify | 파악하다 | tag=검사·원인 | cue=무엇이 문제의 원인인지 가려서 알아내는 동사
+   dEn=['identity', 'indicate'] dKo=['숨기다', '무시하다'] chips=[['i', 'den', 'ti', 'fy']] decoy=['a', 'dent']
+   ex=We're identifying the cause, whether it's a stroke or a mass. / 원인을 파악하고 있어요, 뇌졸중이든 종양이든요.
+   USE[원인별 치료 연계#0] We're identifying the cause, whether it's a stroke or a mass.
+w-stroke | stroke | 뇌졸중 | tag=검사·원인 | cue=뇌혈관이 막히거나 터져서 뇌 조직이 손상되는 병
+   dEn=['stoke', 'struck'] dKo=['간질', '치매'] chips=[['stroke']] decoy=['strike']
+   ex=We're identifying the cause, whether it's a stroke or a mass. / 원인을 파악하고 있어요, 뇌졸중이든 종양이든요.
+   USE[원인별 치료 연계#0] We're identifying the cause, whether it's a stroke or a mass.
+   USE[원인별 치료 연계#3] The imaging will show whether this came from a stroke, a tumor, or something else.
+w-mass *CHG* | mass | 종괴 | tag=검사·원인 | cue=영상 검사에서 몸속에 덩어리처럼 보이는 이상 부위
+   dEn=['mask', 'mess'] dKo=['출혈', '고름'] chips=[['mass']] decoy=['mask']
+   ex=We're identifying the cause, whether it's a stroke or a mass. / 원인을 파악하고 있어요, 뇌졸중이든 종양이든요.
+   USE[원인별 치료 연계#0] We're identifying the cause, whether it's a stroke or a mass.
+w-depend | depend | 달려 있다 | tag=일반 동사 | cue=결과에 따라 달라진다고 말할 때 쓰는 동사
+   dEn=['defend', 'descend'] dKo=['거절하다', '의심하다'] chips=[['de', 'pend']] decoy=['den', 'penn']
+   ex=The treatment depends on what we find on imaging. / 영상 검사에서 무엇이 나오느냐에 따라 치료가 달라져요.
+   USE[원인별 치료 연계#1] The treatment depends on what we find on imaging.
+w-imaging | imaging | 영상 검사 | tag=검사·원인 | cue=CT나 MRI처럼 몸속을 사진으로 보는 검사
+   dEn=['imagine', 'imaginary'] dKo=['채혈', '소변검사'] chips=[['im', 'ag', 'ing']] decoy=['ham', 'aim']
+   ex=The treatment depends on what we find on imaging. / 영상 검사에서 무엇이 나오느냐에 따라 치료가 달라져요.
+   USE[원인별 치료 연계#1] The treatment depends on what we find on imaging.
+   USE[원인별 치료 연계#3] The imaging will show whether this came from a stroke, a tumor, or something else.
+   USE[발작 후 뇌부종·ICP 위기#2] Let's get imaging and consider osmotic therapy.
+w-show | show | 보여주다 | tag=일반 동사 | cue=숨겨져 있던 것이 보이게 드러내는 동사
+   dEn=['shop', 'shoe'] dKo=['숨기다', '지우다'] chips=[['show']] decoy=['shot']
+   ex=The imaging will show whether this came from a stroke, a tumor, or something else. / 영상 검사가 뇌졸중인지 종양인지 다른 무엇인지 보여줄 거예요.
+   USE[원인별 치료 연계#3] The imaging will show whether this came from a stroke, a tumor, or something else.
+   USE[불응성 SE 마취약 주입 위기#4] I'm titrating the dose until the EEG shows seizure control.
+w-tumor | tumor | 종양 | tag=검사·원인 | cue=세포가 비정상적으로 불어나 생긴 혹
+   dEn=['tutor', 'humor'] dKo=['부종', '농양'] chips=[['tu', 'mor']] decoy=['too', 'more']
+   ex=The imaging will show whether this came from a stroke, a tumor, or something else. / 영상 검사가 뇌졸중인지 종양인지 다른 무엇인지 보여줄 거예요.
+   USE[원인별 치료 연계#3] The imaging will show whether this came from a stroke, a tumor, or something else.
+w-else | else | 그 밖의 | tag=일반 표현 | cue='something ___'처럼 지금까지 말한 것 외에 다른 것을 더할 때 쓰는 말
+   dEn=['also', 'even'] dKo=['똑같은', '모든'] chips=[['else']] decoy=['elk']
+   ex=The imaging will show whether this came from a stroke, a tumor, or something else. / 영상 검사가 뇌졸중인지 종양인지 다른 무엇인지 보여줄 거예요.
+   USE[원인별 치료 연계#3] The imaging will show whether this came from a stroke, a tumor, or something else.
+w-explain | explain | 설명하다 | tag=소통·팀 | cue=가족이 이해하도록 상황과 계획을 풀어서 말해 주는 동사
+   dEn=['explore', 'explode'] dKo=['숨기다', '미루다'] chips=[['ex', 'plain']] decoy=['ox', 'plane']
+   ex=The team will explain what recovery might look like. / 팀이 회복이 어떤 모습일지 설명해드릴 거예요.
+   USE[원인별 치료 연계#4] Once we know the cause, we'll explain the treatment plan together.
+   USE[지속 SE 예후·목표 소통#1] The team will explain what recovery might look like.
+w-plan | plan | 계획 | tag=소통·팀 | cue=치료를 어떤 순서로 해 나갈지 미리 정해 둔 것
+   dEn=['plant', 'plank'] dKo=['결과', '기록'] chips=[['plan']] decoy=['plane']
+   ex=Once we know the cause, we'll explain the treatment plan together. / 원인을 알게 되면 치료 계획을 함께 설명해드릴게요.
+   USE[원인별 치료 연계#4] Once we know the cause, we'll explain the treatment plan together.
+w-midazolam | midazolam | 미다졸람 | tag=약물·투여 | cue=정맥으로 지속 주입해 발작을 누르기도 하는 벤조디아제핀 계열 진정제
+   dEn=['lorazepam', 'diazepam'] dKo=['리도카인', '헤파린'] chips=[['mid', 'az', 'o', 'lam']] decoy=['mad', 'lamb']
+   ex=Yes, we're starting a continuous midazolam or propofol infusion. / 네, 미다졸람이나 프로포폴 지속주입을 시작하고 있어요.
+   USE[불응성 SE 마취약 주입 위기#0] Yes, we're starting a continuous midazolam or propofol infusion.
+w-propofol | propofol | 프로포폴 | tag=약물·투여 | cue=빠르게 잠들게 하고 깨어나는 것도 빨라 지속 주입하는 흰 우유빛 정맥 마취제
+   dEn=['ketamine', 'etomidate'] dKo=['미다졸람', '덱스메데토미딘'] chips=[['pro', 'po', 'fol']] decoy=['pre', 'pull']
+   ex=Yes, we're starting a continuous midazolam or propofol infusion. / 네, 미다졸람이나 프로포폴 지속주입을 시작하고 있어요.
+   USE[불응성 SE 마취약 주입 위기#0] Yes, we're starting a continuous midazolam or propofol infusion.
+w-require | require | 필요로 하다 | tag=일반 동사 | cue=어떤 일을 하려면 꼭 갖춰야 한다고 말할 때 쓰는 동사
+   dEn=['acquire', 'inquire'] dKo=['허락하다', '피하다'] chips=[['re', 'quire']] decoy=['ray', 'choir']
+   ex=This requires the airway secured and close hemodynamic monitoring. / 이건 기도확보와 밀착 혈역학 감시가 필요해요.
+   USE[불응성 SE 마취약 주입 위기#1] This requires the airway secured and close hemodynamic monitoring.
+w-close | close | 밀착된 | tag=일반 표현 | cue=떨어뜨려 놓지 않고 바로 곁에 두고 살피는 모양
+   dEn=['clear', 'loose'] dKo=['먼', '느슨한'] chips=[['close']] decoy=['clone']
+   ex=This requires the airway secured and close hemodynamic monitoring. / 이건 기도확보와 밀착 혈역학 감시가 필요해요.
+   USE[불응성 SE 마취약 주입 위기#1] This requires the airway secured and close hemodynamic monitoring.
+w-hemodynamic | hemodynamic | 혈역학의 | tag=활력·산소 | cue=혈압·맥박처럼 혈액이 몸을 도는 흐름과 힘에 관한 형용사
+   dEn=['hemostatic', 'homeostatic'] dKo=['호흡의', '신경의'] chips=[['hemo', 'dy', 'nam', 'ic']] decoy=['hay', 'moo']
+   ex=This requires the airway secured and close hemodynamic monitoring. / 이건 기도확보와 밀착 혈역학 감시가 필요해요.
+   USE[불응성 SE 마취약 주입 위기#1] This requires the airway secured and close hemodynamic monitoring.
+   USE[항경련 마취 중 혈역학 붕괴#1] We balance seizure control against his hemodynamics.
+w-titrate | titrate | 적정하다 | tag=약물·투여 | cue=반응을 보면서 약의 속도를 조금씩 올리거나 내려 맞추는 동사
+   dEn=['tolerate', 'terminate'] dKo=['희석하다', '배출하다'] chips=[['ti', 'trate']] decoy=['tie', 'treat']
+   ex=I'll titrate to seizure control on EEG. / EEG상 발작 조절이 될 때까지 적정할게요.
+   USE[불응성 SE 마취약 주입 위기#2] I'll titrate to seizure control on EEG.
+   USE[불응성 SE 마취약 주입 위기#4] I'm titrating the dose until the EEG shows seizure control.
+w-control | control | 조절 | tag=발작 양상 | cue=발작이 더 일어나지 않게 다스려 잡힌 정도
+   dEn=['contrast', 'console'] dKo=['악화', '재발'] chips=[['con', 'trol']] decoy=['can', 'troll']
+   ex=I'll titrate to seizure control on EEG. / EEG상 발작 조절이 될 때까지 적정할게요.
+   USE[불응성 SE 마취약 주입 위기#2] I'll titrate to seizure control on EEG.
+   USE[불응성 SE 마취약 주입 위기#4] I'm titrating the dose until the EEG shows seizure control.
+   USE[항경련 마취 중 혈역학 붕괴#1] We balance seizure control against his hemodynamics.
+w-add | add | 추가하다 | tag=일반 동사 | cue=이미 쓰고 있는 것에 하나를 더 보태는 동사
+   dEn=['aid', 'ask'] dKo=['빼다', '줄이다'] chips=[['add']] decoy=['aid']
+   ex=We add another agent and target burst suppression on EEG. / 약제를 하나 더 추가하고 EEG상 burst suppression을 목표로 해요.
+   USE[초불응성 SE 관리#0] We add another agent and target burst suppression on EEG.
+   USE[초불응성 SE 관리#4] We'll add a third agent if burst suppression isn't reached.
+w-target | target | 목표로 하다 | tag=약물·투여 | cue=치료로 이르려고 겨냥해 정해 둔 지점
+   dEn=['market', 'tarnish'] dKo=['피하다', '의심하다'] chips=[['tar', 'get']] decoy=['tire', 'got']
+   ex=We add another agent and target burst suppression on EEG. / 약제를 하나 더 추가하고 EEG상 burst suppression을 목표로 해요.
+   USE[초불응성 SE 관리#0] We add another agent and target burst suppression on EEG.
+w-burst | burst | 버스트 | tag=뇌파·신경 | cue=뇌파에서 잠잠한 구간 사이사이에 갑자기 나타나는 짧은 활동 덩어리
+   dEn=['bust', 'bark'] dKo=['평평한 선', '느린 파'] chips=[['burst']] decoy=['bust']
+   ex=We add another agent and target burst suppression on EEG. / 약제를 하나 더 추가하고 EEG상 burst suppression을 목표로 해요.
+   USE[초불응성 SE 관리#0] We add another agent and target burst suppression on EEG.
+   USE[초불응성 SE 관리#4] We'll add a third agent if burst suppression isn't reached.
+w-suppression | suppression | 억제 | tag=뇌파·신경 | cue=약으로 뇌의 전기 활동이 눌려 거의 잠잠해진 상태
+   dEn=['suspicion', 'expression'] dKo=['폭발', '항진'] chips=[['sup', 'pres', 'sion']] decoy=['sap', 'ration']
+   ex=We add another agent and target burst suppression on EEG. / 약제를 하나 더 추가하고 EEG상 burst suppression을 목표로 해요.
+   USE[초불응성 SE 관리#0] We add another agent and target burst suppression on EEG.
+   USE[초불응성 SE 관리#4] We'll add a third agent if burst suppression isn't reached.
+w-deepen | deepen | 깊게 하다 | tag=약물·투여 | cue=진정이나 마취를 더 깊은 수준으로 끌어내리는 동사
+   dEn=['deafen', 'widen'] dKo=['얕게 하다', '멈추다'] chips=[['deep', 'en']] decoy=['dip', 'end']
+   ex=Let's keep his pressure supported as we deepen the infusion. / 주입을 깊게 하는 동안 혈압을 지지해 둡시다.
+   USE[초불응성 SE 관리#1] Let's keep his pressure supported as we deepen the infusion.
+   USE[초불응성 SE 관리#3] His pressure stayed stable even after we deepened the sedation.
+   USE[항경련 마취 중 혈역학 붕괴#3] His pressure dropped fast right after we deepened the infusion.
+w-depth | depth | 깊이 | tag=약물·투여 | cue=표면에서 아래로 얼마나 내려가는지, 진정이 얼마나 센지의 정도
+   dEn=['width', 'length'] dKo=['넓이', '속도'] chips=[['depth']] decoy=['depot']
+   ex=The neuro team will guide the depth and duration. / 신경과 팀이 깊이와 지속시간을 이끌어줄 거예요.
+   USE[초불응성 SE 관리#2] The neuro team will guide the depth and duration.
+w-third | third | 세 번째의 | tag=약물·투여 | cue=첫째·둘째에 이어 세 번째에 오는
+   dEn=['thirst', 'throat'] dKo=['두 번째의', '마지막의'] chips=[['third']] decoy=['thirty']
+   ex=We'll add a third agent if burst suppression isn't reached. / burst suppression에 도달하지 못하면 3번째 약제를 추가할게요.
+   USE[초불응성 SE 관리#4] We'll add a third agent if burst suppression isn't reached.
+w-reach | reach | 도달하다 | tag=일반 동사 | cue=목표한 곳이나 수준에 닿는 동사
+   dEn=['teach', 'reap'] dKo=['벗어나다', '시작하다'] chips=[['reach']] decoy=['beach']
+   ex=We'll add a third agent if burst suppression isn't reached. / burst suppression에 도달하지 못하면 3번째 약제를 추가할게요.
+   USE[초불응성 SE 관리#4] We'll add a third agent if burst suppression isn't reached.
+w-bag | bag | 백으로 환기하다 | tag=기도·안전 | cue=손으로 짜서 환자의 폐에 공기를 불어넣을 때 쓰는 말랑한 주머니를 쓰는 동사
+   dEn=['beg', 'bug'] dKo=['흡인하다', '소독하다'] chips=[['bag']] decoy=['bug']
+   ex=Open the airway and bag him with high-flow oxygen now. / 기도를 열고 고유량 산소로 지금 백을 짜세요.
+   USE[발작 중 심한 저산소·서맥 위기#0] Open the airway and bag him with high-flow oxygen now.
+   USE[발작 중 심한 저산소·서맥 위기#4] I've got the bag ready — call the code now.
+w-high-flow | high-flow | 고유량의 | tag=활력·산소 | cue=많은 양이 빠르게 흘러 들어간다고 말할 때 쓰는 형용사
+   dEn=['low-flow', 'high-risk'] dKo=['저유량의', '고농도의'] chips=[['high-', 'flow']] decoy=['hi-', 'flaw']
+   ex=Open the airway and bag him with high-flow oxygen now. / 기도를 열고 고유량 산소로 지금 백을 짜세요.
+   USE[발작 중 심한 저산소·서맥 위기#0] Open the airway and bag him with high-flow oxygen now.
+w-prepare | prepare | 준비하다 | tag=일반 동사 | cue=미리 필요한 것을 갖춰 놓고 대비하는 동사
+   dEn=['repair', 'prefer'] dKo=['취소하다', '회수하다'] chips=[['pre', 'pare']] decoy=['pray', 'pair']
+   ex=Call for help and prepare for intubation. / 도움을 요청하고 삽관을 준비하세요.
+   USE[발작 중 심한 저산소·서맥 위기#1] Call for help and prepare for intubation.
+w-heart | heart | 심장 | tag=활력·산소 | cue=온몸으로 피를 밀어 내는 가슴 속 근육 기관
+   dEn=['hearth', 'heard'] dKo=['폐', '간'] chips=[['heart']] decoy=['hear']
+   ex=Watch the heart rate and be ready to escalate resuscitation. / 심박수를 지켜보고 소생술을 확대할 준비를 하세요.
+   USE[발작 중 심한 저산소·서맥 위기#2] Watch the heart rate and be ready to escalate resuscitation.
+   USE[발작 중 심한 저산소·서맥 위기#3] His heart rate is dropping fast while he's still seizing.
+w-escalate | escalate | 확대하다 | tag=소통·팀 | cue=대응의 수준을 한 단계 더 높여 키우는 동사
+   dEn=['elevate', 'calculate'] dKo=['축소하다', '종료하다'] chips=[['es', 'ca', 'late']] decoy=['is', 'cat']
+   ex=Watch the heart rate and be ready to escalate resuscitation. / 심박수를 지켜보고 소생술을 확대할 준비를 하세요.
+   USE[발작 중 심한 저산소·서맥 위기#2] Watch the heart rate and be ready to escalate resuscitation.
+w-resuscitation | resuscitation | 소생술 | tag=기도·안전 | cue=멈춘 호흡이나 심장을 되살리려고 하는 응급 처치
+   dEn=['restoration', 'resignation'] dKo=['격리', '수혈'] chips=[['re', 'sus', 'cita', 'tion']] decoy=['ray', 'sun']
+   ex=Watch the heart rate and be ready to escalate resuscitation. / 심박수를 지켜보고 소생술을 확대할 준비를 하세요.
+   USE[발작 중 심한 저산소·서맥 위기#2] Watch the heart rate and be ready to escalate resuscitation.
+w-drop | drop | 떨어지다 | tag=사정·징후 | cue=수치가 눈에 띄게 아래로 내려가는 동사
+   dEn=['drip', 'prop'] dKo=['치솟다', '머무르다'] chips=[['drop']] decoy=['drip']
+   ex=His heart rate is dropping fast while he's still seizing. / 발작이 계속되는 동안 심박수가 빠르게 떨어지고 있어요.
+   USE[발작 중 심한 저산소·서맥 위기#3] His heart rate is dropping fast while he's still seizing.
+   USE[항경련 마취 중 혈역학 붕괴#3] His pressure dropped fast right after we deepened the infusion.
+w-fast | fast | 빠르게 | tag=일반 표현 | cue=시간이 오래 걸리지 않고 빠른 속도로
+   dEn=['vast', 'faint'] dKo=['천천히', '조용히'] chips=[['fast']] decoy=['fist']
+   ex=His heart rate is dropping fast while he's still seizing. / 발작이 계속되는 동안 심박수가 빠르게 떨어지고 있어요.
+   USE[발작 중 심한 저산소·서맥 위기#3] His heart rate is dropping fast while he's still seizing.
+   USE[항경련 마취 중 혈역학 붕괴#3] His pressure dropped fast right after we deepened the infusion.
+w-code | code | 코드(응급 소생) | tag=소통·팀 | cue=병원 안에서 심정지 같은 위급 상황을 알리고 팀을 부르는 방송 신호
+   dEn=['cone', 'cove'] dKo=['회진(아침 방문)', '교대(근무 인계)'] chips=[['code']] decoy=['cone']
+   ex=I've got the bag ready — call the code now. / 백은 준비됐어요 — 지금 코드를 부르세요.
+   USE[발작 중 심한 저산소·서맥 위기#4] I've got the bag ready — call the code now.
+w-prolonged | prolonged | 장시간의 | tag=발작 양상 | cue=평소보다 훨씬 오래 길게 이어진
+   dEn=['prolapsed', 'protected'] dKo=['짧은', '잦은'] chips=[['pro', 'longed']] decoy=['pre', 'lunged']
+   ex=Prolonged seizures can cause brain swelling and raised pressure. / 장시간 발작은 뇌부종과 압력 상승을 일으킬 수 있어요.
+   USE[발작 후 뇌부종·ICP 위기#0] Prolonged seizures can cause brain swelling and raised pressure.
+   USE[지속 SE 예후·목표 소통#0] The prolonged seizures are serious, and I'll be honest with you.
+w-swelling | swelling | 부종 | tag=사정·징후 | cue=조직에 액체가 차서 평소보다 부풀어 오른 상태
+   dEn=['spelling', 'smelling'] dKo=['수축', '출혈'] chips=[['swell', 'ing']] decoy=['well', 'ink']
+   ex=Prolonged seizures can cause brain swelling and raised pressure. / 장시간 발작은 뇌부종과 압력 상승을 일으킬 수 있어요.
+   USE[발작 후 뇌부종·ICP 위기#0] Prolonged seizures can cause brain swelling and raised pressure.
+w-elevate | elevate | 올리다 | tag=기도·안전 | cue=침대 머리 쪽을 위로 올려 높이는 동사
+   dEn=['evaluate', 'elaborate'] dKo=['낮추다', '눕히다'] chips=[['el', 'e', 'vate']] decoy=['all', 'vet']
+   ex=I'm elevating his head and rechecking his neuro exam. / 머리를 올리고 신경학적 검진을 다시 확인하고 있어요.
+   USE[발작 후 뇌부종·ICP 위기#1] I'm elevating his head and rechecking his neuro exam.
+w-recheck | recheck | 다시 확인하다 | tag=일반 동사 | cue=이미 본 것을 일정 시간 뒤에 다시 한번 살펴 확인하는 동사
+   dEn=['reject', 'recycle'] dKo=['생략하다', '기록하다'] chips=[['re', 'check']] decoy=['ray', 'chick']
+   ex=I'm elevating his head and rechecking his neuro exam. / 머리를 올리고 신경학적 검진을 다시 확인하고 있어요.
+   USE[발작 후 뇌부종·ICP 위기#1] I'm elevating his head and rechecking his neuro exam.
+w-exam | exam | 검진 | tag=사정·징후 | cue=의사나 간호사가 몸과 신경 상태를 직접 살펴보는 진찰
+   dEn=['exit', 'exact'] dKo=['처방', '퇴원'] chips=[['ex', 'am']] decoy=['ox', 'ham']
+   ex=I'm elevating his head and rechecking his neuro exam. / 머리를 올리고 신경학적 검진을 다시 확인하고 있어요.
+   USE[발작 후 뇌부종·ICP 위기#1] I'm elevating his head and rechecking his neuro exam.
+w-osmotic | osmotic | 삼투의 | tag=약물·투여 | cue=농도 차로 물을 끌어당겨 뇌의 부기를 빼는 치료에 붙는 형용사
+   dEn=['hypnotic', 'robotic'] dKo=['산성의', '독성의'] chips=[['os', 'mot', 'ic']] decoy=['as', 'moat']
+   ex=Let's get imaging and consider osmotic therapy. / 영상 검사를 받고 삼투 치료를 고려하죠.
+   USE[발작 후 뇌부종·ICP 위기#2] Let's get imaging and consider osmotic therapy.
+w-therapy *CHG* | therapy | 요법 | tag=약물·투여 | cue=병을 다스리기 위한 치료의 한 방식
+   dEn=['theory', 'thorax'] dKo=['진단', '예후'] chips=[['ther', 'a', 'py']] decoy=['the', 'pie']
+   ex=Let's get imaging and consider osmotic therapy. / 영상 검사를 받고 삼투 치료를 고려하죠.
+   USE[발작 후 뇌부종·ICP 위기#2] Let's get imaging and consider osmotic therapy.
+w-pupil | pupil | 동공 | tag=사정·징후 | cue=눈 한가운데 빛에 따라 커졌다 작아지는 검은 구멍
+   dEn=['puzzle', 'pulse'] dKo=['각막', '눈꺼풀'] chips=[['pu', 'pil']] decoy=['pie', 'pill']
+   ex=His pupils look uneven, which can point to rising pressure in his brain. / 동공이 불균등해 보이는데, 뇌압 상승을 가리킬 수 있어요.
+   USE[발작 후 뇌부종·ICP 위기#3] His pupils look uneven, which can point to rising pressure in his brain.
+w-uneven | uneven | 불균등한 | tag=사정·징후 | cue=양쪽이 똑같지 않고 서로 다른 모양
+   dEn=['even', 'unseen'] dKo=['대칭인', '정상인'] chips=[['un', 'e', 'ven']] decoy=['on', 'vent']
+   ex=His pupils look uneven, which can point to rising pressure in his brain. / 동공이 불균등해 보이는데, 뇌압 상승을 가리킬 수 있어요.
+   USE[발작 후 뇌부종·ICP 위기#3] His pupils look uneven, which can point to rising pressure in his brain.
+w-point | point | 가리키다 | tag=일반 동사 | cue=증상 같은 것이 어떤 원인 쪽을 가리켜 시사한다고 할 때의 동사
+   dEn=['paint', 'print'] dKo=['숨기다', '부정하다'] chips=[['point']] decoy=['paint']
+   ex=His pupils look uneven, which can point to rising pressure in his brain. / 동공이 불균등해 보이는데, 뇌압 상승을 가리킬 수 있어요.
+   USE[발작 후 뇌부종·ICP 위기#3] His pupils look uneven, which can point to rising pressure in his brain.
+w-rise | rise | 상승하다 | tag=사정·징후 | cue=수치가 점점 위로 올라가는 동사
+   dEn=['risk', 'rinse'] dKo=['내려앉다', '머무르다'] chips=[['rise']] decoy=['raise']
+   ex=His pupils look uneven, which can point to rising pressure in his brain. / 동공이 불균등해 보이는데, 뇌압 상승을 가리킬 수 있어요.
+   USE[발작 후 뇌부종·ICP 위기#3] His pupils look uneven, which can point to rising pressure in his brain.
+w-report | report | 보고하다 | tag=소통·팀 | cue=본 것을 담당 팀에게 정식으로 알리는 동사
+   dEn=['repeat', 'resort'] dKo=['숨기다', '기록하다'] chips=[['re', 'port']] decoy=['ray', 'post']
+   ex=I'm reporting this to the neuro team right away. / 바로 신경과 팀에 보고하고 있어요.
+   USE[발작 후 뇌부종·ICP 위기#4] I'm reporting this to the neuro team right away.
+w-pressor | pressor | 승압제 | tag=약물·투여 | cue=떨어진 혈압을 올리려고 정맥으로 쓰는 약
+   dEn=['pressure', 'processor'] dKo=['이뇨제', '진정제'] chips=[['pres', 'sor']] decoy=['press', 'sir']
+   ex=Start a pressor and give fluid to support his pressure. / 승압제를 시작하고 수액을 줘서 혈압을 지지하세요.
+   USE[항경련 마취 중 혈역학 붕괴#0] Start a pressor and give fluid to support his pressure.
+w-fluid | fluid | 수액 | tag=약물·투여 | cue=혈관이나 몸 안에 들어가는 물 같은 액체
+   dEn=['flu', 'fluent'] dKo=['혈액', '가스'] chips=[['flu', 'id']] decoy=['flew', 'kid']
+   ex=Start a pressor and give fluid to support his pressure. / 승압제를 시작하고 수액을 줘서 혈압을 지지하세요.
+   USE[항경련 마취 중 혈역학 붕괴#0] Start a pressor and give fluid to support his pressure.
+   USE[항경련 마취 중 혈역학 붕괴#4] We're giving fluid now to support him while we keep treating the seizure.
+w-balance | balance | 균형을 맞추다 | tag=약물·투여 | cue=한쪽으로 쏠리지 않게 두 가지를 견주어 맞추는 동사
+   dEn=['balloon', 'ballot'] dKo=['기울이다', '더하다'] chips=[['bal', 'ance']] decoy=['ball', 'ants']
+   ex=We balance seizure control against his hemodynamics. / 발작 조절과 혈역학 사이에서 균형을 맞춰요.
+   USE[항경련 마취 중 혈역학 붕괴#1] We balance seizure control against his hemodynamics.
+w-against | against | ~에 맞서 | tag=일반 표현 | cue=서로 반대편에 놓고 견줄 때 쓰는 전치사
+   dEn=['among', 'around'] dKo=['~와 함께', '~의 옆에'] chips=[['a', 'gainst']] decoy=['an', 'gains']
+   ex=We balance seizure control against his hemodynamics. / 발작 조절과 혈역학 사이에서 균형을 맞춰요.
+   USE[항경련 마취 중 혈역학 붕괴#1] We balance seizure control against his hemodynamics.
+w-reassess | reassess | 다시 평가하다 | tag=사정·징후 | cue=처음 평가한 뒤 시간이 지나 다시 판단하는 동사
+   dEn=['reassure', 'reassign'] dKo=['생략하다', '기록하다'] chips=[['re', 'as', 'sess']] decoy=['ray', 'is']
+   ex=Let's reassess the infusion rate with the team. / 팀과 함께 주입 속도를 다시 평가하죠.
+   USE[항경련 마취 중 혈역학 붕괴#2] Let's reassess the infusion rate with the team.
+w-serious | serious | 심각한 | tag=사정·징후 | cue=가볍지 않고 위험할 수 있을 만큼 무거운
+   dEn=['series', 'various'] dKo=['가벼운', '일시적인'] chips=[['se', 'ri', 'ous']] decoy=['sea', 'rye']
+   ex=The prolonged seizures are serious, and I'll be honest with you. / 장시간 지속된 발작은 심각한 상황이에요, 솔직히 말씀드릴게요.
+   USE[지속 SE 예후·목표 소통#0] The prolonged seizures are serious, and I'll be honest with you.
+w-honest | honest | 솔직한 | tag=소통·팀 | cue=듣기 불편한 것도 숨김없이 있는 그대로 말하는 모양
+   dEn=['honor', 'modest'] dKo=['정중한', '조심스러운'] chips=[['hon', 'est']] decoy=['hen', 'nest']
+   ex=The prolonged seizures are serious, and I'll be honest with you. / 장시간 지속된 발작은 심각한 상황이에요, 솔직히 말씀드릴게요.
+   USE[지속 SE 예후·목표 소통#0] The prolonged seizures are serious, and I'll be honest with you.
+w-recovery | recovery | 회복 | tag=사정·징후 | cue=병이나 충격에서 다시 나아져 가는 과정
+   dEn=['discovery', 'delivery'] dKo=['퇴원', '재발'] chips=[['re', 'cov', 'ery']] decoy=['ray', 'cave']
+   ex=The team will explain what recovery might look like. / 팀이 회복이 어떤 모습일지 설명해드릴 거예요.
+   USE[지속 SE 예후·목표 소통#1] The team will explain what recovery might look like.
+w-might | might | ~일 수도 있다 | tag=일반 표현 | cue=확실하지는 않지만 그럴 가능성이 있다고 말할 때 쓰는 조동사
+   dEn=['mind', 'must'] dKo=['반드시 ~한다', '~해야 한다'] chips=[['might']] decoy=['night']
+   ex=The team will explain what recovery might look like. / 팀이 회복이 어떤 모습일지 설명해드릴 거예요.
+   USE[지속 SE 예후·목표 소통#1] The team will explain what recovery might look like.
+w-look | look | ~처럼 보이다 | tag=일반 동사 | cue=겉모습이나 인상이 어떻게 보이는지 말할 때 쓰는 동사
+   dEn=['lock', 'luck'] dKo=['들리다', '느껴지다'] chips=[['look']] decoy=['lock']
+   ex=The team will explain what recovery might look like. / 팀이 회복이 어떤 모습일지 설명해드릴 거예요.
+   USE[지속 SE 예후·목표 소통#1] The team will explain what recovery might look like.
+w-talk | talk | 이야기하다 | tag=소통·팀 | cue=서로 마음에 담은 것을 말로 주고받는 동사
+   dEn=['tall', 'walk'] dKo=['듣다', '조용히 하다'] chips=[['talk']] decoy=['tack']
+   ex=Let's talk about his wishes and what matters most to him. / 환자분이 원하시는 것과 가장 중요하게 여기시는 것에 대해 이야기 나눠요.
+   USE[지속 SE 예후·목표 소통#2] Let's talk about his wishes and what matters most to him.
+w-wish | wish | 바람 | tag=소통·팀 | cue=환자가 마음속으로 바라는 것
+   dEn=['fish', 'wash'] dKo=['두려움', '증상'] chips=[['wish']] decoy=['fish']
+   ex=Let's talk about his wishes and what matters most to him. / 환자분이 원하시는 것과 가장 중요하게 여기시는 것에 대해 이야기 나눠요.
+   USE[지속 SE 예후·목표 소통#2] Let's talk about his wishes and what matters most to him.
+w-matter | matter | 중요하다 | tag=소통·팀 | cue=당사자에게 중요하고 의미가 크다는 뜻의 동사
+   dEn=['master', 'mutter'] dKo=['사라지다', '무시하다'] chips=[['mat', 'ter']] decoy=['met', 'tar']
+   ex=Let's talk about his wishes and what matters most to him. / 환자분이 원하시는 것과 가장 중요하게 여기시는 것에 대해 이야기 나눠요.
+   USE[지속 SE 예후·목표 소통#2] Let's talk about his wishes and what matters most to him.
+   USE[지속 SE 예후·목표 소통#4] We'll support whatever matters most to your family.
+w-most | most | 가장 | tag=일반 표현 | cue=여럿 가운데 정도가 제일 큰 것을 가리키는 부사
+   dEn=['mist', 'must'] dKo=['가장 덜', '거의 안'] chips=[['most']] decoy=['moat']
+   ex=Let's talk about his wishes and what matters most to him. / 환자분이 원하시는 것과 가장 중요하게 여기시는 것에 대해 이야기 나눠요.
+   USE[지속 SE 예후·목표 소통#2] Let's talk about his wishes and what matters most to him.
+   USE[지속 SE 예후·목표 소통#4] We'll support whatever matters most to your family.
+w-hear | hear | 듣다 | tag=일반 동사 | cue=귀로 말소리나 소식을 받아들이는 동사
+   dEn=['heal', 'hair'] dKo=['말하다', '읽다'] chips=[['hear']] decoy=['heat']
+   ex=I know this is hard to hear, and I won't hide anything from you. / 듣기 힘드시다는 거 알아요, 아무것도 숨기지 않을게요.
+   USE[지속 SE 예후·목표 소통#3] I know this is hard to hear, and I won't hide anything from you.
+w-hide | hide | 숨기다 | tag=소통·팀 | cue=남이 알지 못하게 감추는 동사
+   dEn=['hike', 'hire'] dKo=['밝히다', '묻다'] chips=[['hide']] decoy=['ride']
+   ex=I know this is hard to hear, and I won't hide anything from you. / 듣기 힘드시다는 거 알아요, 아무것도 숨기지 않을게요.
+   USE[지속 SE 예후·목표 소통#3] I know this is hard to hear, and I won't hide anything from you.
+w-whatever | whatever | 무엇이든 | tag=일반 표현 | cue=어떤 것이든 가리지 않고 모두를 뜻하는 대명사
+   dEn=['wherever', 'whenever'] dKo=['누구든', '언제든'] chips=[['what', 'ev', 'er']] decoy=['wheat', 'over']
+   ex=We'll support whatever matters most to your family. / 가족분께 가장 중요한 게 무엇이든 저희가 지지할게요.
+   USE[지속 SE 예후·목표 소통#4] We'll support whatever matters most to your family.

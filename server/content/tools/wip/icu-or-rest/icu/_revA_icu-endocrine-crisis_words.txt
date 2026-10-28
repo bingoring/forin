@@ -1,0 +1,995 @@
+w-check | check | 확인하다 | tag=사정 | cue=혈압·호흡·의식 같은 항목을 하나씩 짚어 가며 살필 때
+   dEn=['cheek', 'chain'] dKo=['처방하다', '교체하다'] chips=[['check']] decoy=['chick']
+   ex=I'm going to check your hydration, your breathing, and how alert you feel. / 수분 상태랑 호흡, 의식이 얼마나 또렷한지 확인해 볼게요.
+   USE[DKA 초기 사정#0] I'm going to check your hydration, your breathing, and how alert you feel.
+   USE[DKA 초기 사정#3] I'll ask you a few questions to check how alert you are.
+   USE[혈당·케톤·ABG 모니터#0] We check your sugar, your ketones, and your blood acid every hour to keep you safe.
+w-hydration | hydration | 수분 상태 | tag=사정 | cue=입술 마름·피부 탄력·소변량으로 몸에 물이 충분한지 가늠하는 항목
+   dEn=['hydrogen', 'hibernation'] dKo=['영양 상태', '통증 정도'] chips=[['hy', 'dra', 'tion']] decoy=['dry', 'ton']
+   ex=I'm going to check your hydration, your breathing, and how alert you feel. / 수분 상태랑 호흡, 의식이 얼마나 또렷한지 확인해 볼게요.
+   USE[DKA 초기 사정#0] I'm going to check your hydration, your breathing, and how alert you feel.
+w-breathing | breathing | 호흡 | tag=사정 | cue=숨을 들이쉬고 내쉬는 속도와 노력을 관찰하는 항목
+   dEn=['bleeding', 'breeding'] dKo=['맥박', '체온'] chips=[['breath', 'ing']] decoy=['breed']
+   ex=I'm going to check your hydration, your breathing, and how alert you feel. / 수분 상태랑 호흡, 의식이 얼마나 또렷한지 확인해 볼게요.
+   USE[DKA 초기 사정#0] I'm going to check your hydration, your breathing, and how alert you feel.
+   USE[DKA 초기 사정#2] Your fast breathing can be your body reacting to acid, so I'm watching it closely.
+   USE[수액 소생 시작#2] Tell me if you feel any tightness in your chest or trouble breathing.
+w-alert | alert | 의식이 또렷한 | tag=상태 | cue=부르면 바로 눈을 맞추고 질문에 대답하는 상태
+   dEn=['alarm', 'alter'] dKo=['졸음이 오는', '혼란스러운'] chips=[['a', 'lert']] decoy=['lent']
+   ex=I'm going to check your hydration, your breathing, and how alert you feel. / 수분 상태랑 호흡, 의식이 얼마나 또렷한지 확인해 볼게요.
+   USE[DKA 초기 사정#0] I'm going to check your hydration, your breathing, and how alert you feel.
+   USE[DKA 초기 사정#3] I'll ask you a few questions to check how alert you are.
+w-feel | feel | 느끼다 | tag=소통 | cue=몸으로 느껴지는 증상을 환자가 스스로 말할 때
+   dEn=['fell', 'fill'] dKo=['만지다', '흔들다'] chips=[['feel']] decoy=['fee']
+   ex=I'm going to check your hydration, your breathing, and how alert you feel. / 수분 상태랑 호흡, 의식이 얼마나 또렷한지 확인해 볼게요.
+   USE[DKA 초기 사정#0] I'm going to check your hydration, your breathing, and how alert you feel.
+   USE[수액 소생 시작#2] Tell me if you feel any tightness in your chest or trouble breathing.
+   USE[활력·의식 재평가#0] I'm glad you feel clearer, and I'll recheck your vitals to confirm.
+w-keep | keep | 유지하다 | tag=동작 | cue=상태나 동작을 끊지 않고 그대로 이어 가게 할 때
+   dEn=['peek', 'seek'] dKo=['그치다', '바꾸다'] chips=[['keep']] decoy=['peep']
+   ex=Have you been able to keep any fluids down today? / 오늘 물이나 음료를 좀 삼킬 수 있었어요?
+   USE[DKA 초기 사정#1] Have you been able to keep any fluids down today?
+   USE[혈당·케톤·ABG 모니터#0] We check your sugar, your ketones, and your blood acid every hour to keep you safe.
+   USE[수액 소생 시작#1] I'll keep watching your blood pressure and urine as the fluids go in.
+w-fluid | fluid | 수액 | tag=수액 | cue=정맥으로 들어가거나 몸속에 있는 물기, 모자라면 보충하는 것
+   dEn=['fluent', 'flush'] dKo=['혈전', '산소'] chips=[['flu', 'id']] decoy=['flow']
+   ex=Have you been able to keep any fluids down today? / 오늘 물이나 음료를 좀 삼킬 수 있었어요?
+   USE[DKA 초기 사정#1] Have you been able to keep any fluids down today?
+   USE[수액 소생 시작#0] You lost a lot of fluid, so we're replacing it quickly at first.
+   USE[수액 소생 시작#1] I'll keep watching your blood pressure and urine as the fluids go in.
+w-fast | fast | 빠른 | tag=상태 | cue=속도가 평소보다 높아 단위 시간에 많이 일어나는
+   dEn=['fat', 'last'] dKo=['느슨한', '약한'] chips=[['fast']] decoy=['fist']
+   ex=Your fast breathing can be your body reacting to acid, so I'm watching it closely. / 숨이 빠른 건 몸이 산에 반응하는 걸 수도 있어서, 제가 잘 지켜보고 있어요.
+   USE[DKA 초기 사정#2] Your fast breathing can be your body reacting to acid, so I'm watching it closely.
+   USE[DKA 인슐린 주입 적정#1] Bringing it down too fast can be risky, so we titrate carefully.
+   USE[HHS 고삼투 관리#1] Going too fast could affect her brain, so we take our time.
+w-react *CHG* | react | 반응을 보이다 | tag=상태 | cue=어떤 자극이나 원인에 몸이 변화를 나타낼 때
+   dEn=['reach', 'reject'] dKo=['거절하다', '모으다'] chips=[['re', 'act']] decoy=['rat']
+   ex=Your fast breathing can be your body reacting to acid, so I'm watching it closely. / 숨이 빠른 건 몸이 산에 반응하는 걸 수도 있어서, 제가 잘 지켜보고 있어요.
+   USE[DKA 초기 사정#2] Your fast breathing can be your body reacting to acid, so I'm watching it closely.
+w-acid | acid | 산 | tag=수치 | cue=혈액에 너무 많아지면 호흡을 빠르게 만드는 신 성분
+   dEn=['acne', 'aid'] dKo=['염기', '염분'] chips=[['ac', 'id']] decoy=['ad', 'it']
+   ex=Your fast breathing can be your body reacting to acid, so I'm watching it closely. / 숨이 빠른 건 몸이 산에 반응하는 걸 수도 있어서, 제가 잘 지켜보고 있어요.
+   USE[DKA 초기 사정#2] Your fast breathing can be your body reacting to acid, so I'm watching it closely.
+   USE[혈당·케톤·ABG 모니터#0] We check your sugar, your ketones, and your blood acid every hour to keep you safe.
+   USE[anion gap 종결 판단#3] His acid levels are back to normal, so the DKA has resolved.
+w-watch | watch | 지켜보다 | tag=사정 | cue=자리를 뜨지 않고 변화가 있는지 눈여겨볼 때
+   dEn=['match', 'wash'] dKo=['붙잡다', '닦아내다'] chips=[['watch']] decoy=['wa']
+   ex=Your fast breathing can be your body reacting to acid, so I'm watching it closely. / 숨이 빠른 건 몸이 산에 반응하는 걸 수도 있어서, 제가 잘 지켜보고 있어요.
+   USE[DKA 초기 사정#2] Your fast breathing can be your body reacting to acid, so I'm watching it closely.
+   USE[수액 소생 시작#1] I'll keep watching your blood pressure and urine as the fluids go in.
+   USE[HHS 고삼투 관리#2] We'll watch her mental status closely as she improves.
+w-closely | closely | 자세히 | tag=동작 | cue=눈을 떼지 않고 세세한 부분까지 살펴볼 때
+   dEn=['clearly', 'loosely'] dKo=['가끔', '곧바로'] chips=[['close', 'ly']] decoy=['lose', 'ley']
+   ex=Your fast breathing can be your body reacting to acid, so I'm watching it closely. / 숨이 빠른 건 몸이 산에 반응하는 걸 수도 있어서, 제가 잘 지켜보고 있어요.
+   USE[DKA 초기 사정#2] Your fast breathing can be your body reacting to acid, so I'm watching it closely.
+   USE[K 보정·인슐린 균형#0] Let's replace potassium and keep monitoring it closely with the insulin running.
+   USE[HHS 고삼투 관리#2] We'll watch her mental status closely as she improves.
+w-ask | ask | 물어보다 | tag=소통 | cue=모르는 점을 상대에게 말로 건넬 때
+   dEn=['task', 'mask'] dKo=['대답하다', '숨기다'] chips=[['ask']] decoy=['as']
+   ex=I'll ask you a few questions to check how alert you are. / 의식이 얼마나 또렷한지 확인하려고 몇 가지 여쭤볼게요.
+   USE[DKA 초기 사정#3] I'll ask you a few questions to check how alert you are.
+w-question | question | 질문 | tag=소통 | cue=답을 듣고 싶어서 상대에게 건네는 문장
+   dEn=['quest', 'quotient'] dKo=['응답', '진단'] chips=[['ques', 'tion']] decoy=['quiz', 'shun']
+   ex=I'll ask you a few questions to check how alert you are. / 의식이 얼마나 또렷한지 확인하려고 몇 가지 여쭤볼게요.
+   USE[DKA 초기 사정#3] I'll ask you a few questions to check how alert you are.
+w-sign | sign | 징후 | tag=상태 | cue=병이 시작됐다는 걸 눈에 띄게 알려 주는 단서
+   dEn=['sigh', 'silk'] dKo=['원인', '처방'] chips=[['sign']] decoy=['sing']
+   ex=I'm seeing early signs of DKA, so I'll report this to the team right away. / 당뇨병성 케토산증 초기 소견이 보여서, 바로 팀에 보고할게요.
+   USE[DKA 초기 사정#4] I'm seeing early signs of DKA, so I'll report this to the team right away.
+   USE[활력·의식 재평가#2] Your numbers are heading the right direction, which is a good sign.
+w-report | report | 보고하다 | tag=소통 | cue=달라진 상태를 담당자에게 공식적으로 전할 때
+   dEn=['repeat', 'resort'] dKo=['숨기다', '취소하다'] chips=[['re', 'port']] decoy=['sport']
+   ex=I'm seeing early signs of DKA, so I'll report this to the team right away. / 당뇨병성 케토산증 초기 소견이 보여서, 바로 팀에 보고할게요.
+   USE[DKA 초기 사정#4] I'm seeing early signs of DKA, so I'll report this to the team right away.
+w-team | team | 팀 | tag=소통 | cue=한 환자를 함께 돌보는 의료진 모임
+   dEn=['tear', 'steam'] dKo=['약사', '가족'] chips=[['team']] decoy=['tame']
+   ex=I'm seeing early signs of DKA, so I'll report this to the team right away. / 당뇨병성 케토산증 초기 소견이 보여서, 바로 팀에 보고할게요.
+   USE[DKA 초기 사정#4] I'm seeing early signs of DKA, so I'll report this to the team right away.
+   USE[활력·의식 재평가#4] I'm charting these improvements and letting the team know.
+   USE[DKA 뇌부종 급변 위기#0] This sudden change is serious and I'm calling the team right now.
+w-stay | stay | 머무르다 | tag=동작 | cue=자리를 뜨지 않고 같은 곳이나 같은 상태에 있을 때
+   dEn=['sway', 'stray'] dKo=['떠나다', '돌아오다'] chips=[['stay']] decoy=['spy']
+   ex=I'm right here with you, so try to stay calm. / 제가 바로 옆에 있으니까 최대한 편하게 있으세요.
+   USE[DKA 초기 사정#5] I'm right here with you, so try to stay calm.
+   USE[DKA 뇌부종 급변 위기#4] The doctor is on the way, and I'm staying right at his side.
+   USE[심한 저혈당 의식소실 위기#2] Recheck the sugar in a few minutes and stay ready to repeat.
+w-calm | calm | 차분한 | tag=상태 | cue=흥분하거나 불안하지 않고 가라앉은 상태
+   dEn=['clean', 'crude'] dKo=['불안한', '흥분한'] chips=[['calm']] decoy=['clam']
+   ex=I'm right here with you, so try to stay calm. / 제가 바로 옆에 있으니까 최대한 편하게 있으세요.
+   USE[DKA 초기 사정#5] I'm right here with you, so try to stay calm.
+w-sugar *CHG* | sugar | 당 수치 | tag=수치 | cue=손끝 검사로 바로 확인하는, 혈액 속 단맛 성분의 양
+   dEn=['sulfur', 'supper'] dKo=['염분 수치', '칼륨 수치'] chips=[['su', 'gar']] decoy=['sun', 'gap']
+   ex=We check your sugar, your ketones, and your blood acid every hour to keep you safe. / 안전하게 지켜드리려고 혈당이랑 케톤, 혈액 산도를 매시간 확인하고 있어요.
+   USE[혈당·케톤·ABG 모니터#0] We check your sugar, your ketones, and your blood acid every hour to keep you safe.
+   USE[DKA 인슐린 주입 적정#0] We adjust the insulin so your sugar comes down at a safe pace.
+   USE[DKA 인슐린 주입 적정#4] Your sugar's dropping steadily, which is exactly what we want.
+w-ketone | ketone | 케톤 | tag=수치 | cue=인슐린이 모자라 지방을 태울 때 몸이 만드는 산성 물질
+   dEn=['ketamine', 'keratin'] dKo=['젖산', '요산'] chips=[['ke', 'tone']] decoy=['key', 'tune']
+   ex=We check your sugar, your ketones, and your blood acid every hour to keep you safe. / 안전하게 지켜드리려고 혈당이랑 케톤, 혈액 산도를 매시간 확인하고 있어요.
+   USE[혈당·케톤·ABG 모니터#0] We check your sugar, your ketones, and your blood acid every hour to keep you safe.
+   USE[혈당·케톤·ABG 모니터#4] Your ketone number is coming down, which means the treatment is working.
+   USE[저혈당 예방·포도당 병용#1] This lets us keep clearing the ketones without dropping too low.
+w-blood | blood | 혈액 | tag=검사 | cue=혈관을 돌며 산소를 나르고 채혈로 얻는 붉은 체액
+   dEn=['flood', 'blond'] dKo=['소변', '침'] chips=[['blood']] decoy=['bloom']
+   ex=We check your sugar, your ketones, and your blood acid every hour to keep you safe. / 안전하게 지켜드리려고 혈당이랑 케톤, 혈액 산도를 매시간 확인하고 있어요.
+   USE[혈당·케톤·ABG 모니터#0] We check your sugar, your ketones, and your blood acid every hour to keep you safe.
+   USE[수액 소생 시작#1] I'll keep watching your blood pressure and urine as the fluids go in.
+   USE[활력·의식 재평가#3] Your blood pressure and heart rate look steadier than before.
+w-safe | safe | 안전한 | tag=상태 | cue=다칠 위험 없이 진행해도 되는
+   dEn=['save', 'sane'] dKo=['위험한', '불안한'] chips=[['safe']] decoy=['sale']
+   ex=We check your sugar, your ketones, and your blood acid every hour to keep you safe. / 안전하게 지켜드리려고 혈당이랑 케톤, 혈액 산도를 매시간 확인하고 있어요.
+   USE[혈당·케톤·ABG 모니터#0] We check your sugar, your ketones, and your blood acid every hour to keep you safe.
+   USE[인슐린 주입 준비#2] I'll start the infusion once potassium is confirmed safe.
+   USE[인슐린 전 K 확인#0] We hold insulin until potassium is safe, so let's confirm the level first.
+w-number | number | 수치 | tag=수치 | cue=검사 결과로 나오는 숫자 하나하나
+   dEn=['member', 'lumber'] dKo=['단위', '기록'] chips=[['num', 'ber']] decoy=['numb', 'bar']
+   ex=These numbers tell us how your treatment is working. / 이 수치들이 치료가 잘 되고 있는지를 말해줘요.
+   USE[혈당·케톤·ABG 모니터#1] These numbers tell us how your treatment is working.
+   USE[혈당·케톤·ABG 모니터#4] Your ketone number is coming down, which means the treatment is working.
+   USE[활력·의식 재평가#2] Your numbers are heading the right direction, which is a good sign.
+w-tell | tell | 말하다 | tag=소통 | cue=알아야 할 내용을 상대에게 직접 전할 때
+   dEn=['sell', 'tall'] dKo=['듣다', '적다'] chips=[['tell']] decoy=['tall']
+   ex=These numbers tell us how your treatment is working. / 이 수치들이 치료가 잘 되고 있는지를 말해줘요.
+   USE[혈당·케톤·ABG 모니터#1] These numbers tell us how your treatment is working.
+   USE[수액 소생 시작#2] Tell me if you feel any tightness in your chest or trouble breathing.
+   USE[활력·의식 재평가#1] Can you tell me your name and where you are for me?
+w-treatment | treatment | 치료 | tag=약물 | cue=병을 낫게 하려고 처방에 따라 시행하는 일련의 처치
+   dEn=['payment', 'movement'] dKo=['검사', '진단'] chips=[['treat', 'ment']] decoy=['tree', 'men']
+   ex=These numbers tell us how your treatment is working. / 이 수치들이 치료가 잘 되고 있는지를 말해줘요.
+   USE[혈당·케톤·ABG 모니터#1] These numbers tell us how your treatment is working.
+   USE[혈당·케톤·ABG 모니터#4] Your ketone number is coming down, which means the treatment is working.
+   USE[유발원인 동반 치료#2] We've started cultures and will adjust treatment based on the results.
+w-work *CHG* | work | 효과가 있다 | tag=약물 | cue=약이나 처치가 의도한 결과를 내고 있을 때
+   dEn=['walk', 'word'] dKo=['주사를 놓다', '값을 매기다'] chips=[['work']] decoy=['word']
+   ex=These numbers tell us how your treatment is working. / 이 수치들이 치료가 잘 되고 있는지를 말해줘요.
+   USE[혈당·케톤·ABG 모니터#1] These numbers tell us how your treatment is working.
+   USE[혈당·케톤·ABG 모니터#4] Your ketone number is coming down, which means the treatment is working.
+w-level | level | 수준 | tag=수치 | cue=혈액 검사로 잰 어떤 물질의 양이 어느 정도인지
+   dEn=['lever', 'label'] dKo=['깊이', '무게'] chips=[['lev', 'el']] decoy=['live', 'eel']
+   ex=I'll let you know as soon as your levels start moving the right way. / 수치가 좋은 방향으로 움직이기 시작하면 바로 알려드릴게요.
+   USE[혈당·케톤·ABG 모니터#2] I'll let you know as soon as your levels start moving the right way.
+   USE[수액 소생 시작#3] We're starting normal saline now to bring your fluid level back up.
+   USE[인슐린 전 K 확인#0] We hold insulin until potassium is safe, so let's confirm the level first.
+w-start | start | 시작하다 | tag=동작 | cue=새로 진행을 열어 첫 단계에 들어갈 때
+   dEn=['stare', 'stand'] dKo=['준비하다', '끝내다'] chips=[['start']] decoy=['stare']
+   ex=I'll let you know as soon as your levels start moving the right way. / 수치가 좋은 방향으로 움직이기 시작하면 바로 알려드릴게요.
+   USE[혈당·케톤·ABG 모니터#2] I'll let you know as soon as your levels start moving the right way.
+   USE[수액 소생 시작#3] We're starting normal saline now to bring your fluid level back up.
+   USE[인슐린 주입 준비#2] I'll start the infusion once potassium is confirmed safe.
+w-move | move | 움직이다 | tag=동작 | cue=제자리에서 벗어나 위치나 값이 바뀌어 갈 때
+   dEn=['mode', 'mow'] dKo=['멈추다', '숨다'] chips=[['move']] decoy=['mode']
+   ex=I'll let you know as soon as your levels start moving the right way. / 수치가 좋은 방향으로 움직이기 시작하면 바로 알려드릴게요.
+   USE[혈당·케톤·ABG 모니터#2] I'll let you know as soon as your levels start moving the right way.
+w-way *CHG* | way | 길·방법 | tag=소통 | cue=목적지에 이르는 통로나 일을 해내는 수단
+   dEn=['wax', 'wage'] dKo=['이유', '시기'] chips=[['way']] decoy=['wax']
+   ex=I'll let you know as soon as your levels start moving the right way. / 수치가 좋은 방향으로 움직이기 시작하면 바로 알려드릴게요.
+   USE[혈당·케톤·ABG 모니터#2] I'll let you know as soon as your levels start moving the right way.
+   USE[교정속도 뇌부종 위험 인지#1] A slow, steady pace is actually the safest way to help him.
+   USE[DKA 뇌부종 급변 위기#4] The doctor is on the way, and I'm staying right at his side.
+w-draw | draw | 채혈하다 | tag=검사 | cue=혈관에서 검사용 피를 뽑아 낼 때
+   dEn=['drag', 'drip'] dKo=['주사하다', '수혈하다'] chips=[['draw']] decoy=['raw']
+   ex=I'll check your finger stick and draw your labs on schedule. / 정해진 시간에 손끝 혈당이랑 검사 채혈을 할게요.
+   USE[혈당·케톤·ABG 모니터#3] I'll check your finger stick and draw your labs on schedule.
+   USE[K 보정·인슐린 균형#2] I'll draw a repeat level after the replacement to confirm.
+w-lab | labs | 검사 | tag=검사 | cue=혈액을 보내 결과를 받아 보는 검사들
+   dEn=['laps', 'lamps'] dKo=['약물', '처방'] chips=[['labs']] decoy=['lads']
+   ex=I'll check your finger stick and draw your labs on schedule. / 정해진 시간에 손끝 혈당이랑 검사 채혈을 할게요.
+   USE[혈당·케톤·ABG 모니터#3] I'll check your finger stick and draw your labs on schedule.
+   USE[anion gap 종결 판단#2] Let me confirm he's eating and the labs are stable first.
+w-schedule | schedule | 일정 | tag=소통 | cue=언제 어떤 검사를 할지 미리 정해 둔 시간표
+   dEn=['scheme', 'scholar'] dKo=['한도', '비용'] chips=[['sched', 'ule']] decoy=['skid', 'rule']
+   ex=I'll check your finger stick and draw your labs on schedule. / 정해진 시간에 손끝 혈당이랑 검사 채혈을 할게요.
+   USE[혈당·케톤·ABG 모니터#3] I'll check your finger stick and draw your labs on schedule.
+w-mean | mean | 뜻하다 | tag=소통 | cue=이 결과가 무엇을 가리키는지 해석해 줄 때
+   dEn=['meal', 'mend'] dKo=['놓치다', '감추다'] chips=[['mean']] decoy=['moan']
+   ex=Your ketone number is coming down, which means the treatment is working. / 케톤 수치가 내려가고 있는데, 이건 치료가 잘 듣고 있다는 뜻이에요.
+   USE[혈당·케톤·ABG 모니터#4] Your ketone number is coming down, which means the treatment is working.
+w-lose | lose | 잃다 | tag=상태 | cue=가지고 있던 양이나 능력이 몸에서 빠져나가 없어질 때
+   dEn=['lend', 'lease'] dKo=['얻다', '쓰다'] chips=[['lose']] decoy=['loose']
+   ex=You lost a lot of fluid, so we're replacing it quickly at first. / 체액을 많이 잃으셔서, 처음에는 빠르게 보충해 드리고 있어요.
+   USE[수액 소생 시작#0] You lost a lot of fluid, so we're replacing it quickly at first.
+w-replace | replace | 대체하다·보충하다 | tag=수액 | cue=빠져나간 만큼 같은 것을 다시 채워 넣을 때
+   dEn=['replay', 'reduce'] dKo=['줄이다·덜어내다', '멈추다·미루다'] chips=[['re', 'place']] decoy=['play']
+   ex=You lost a lot of fluid, so we're replacing it quickly at first. / 체액을 많이 잃으셔서, 처음에는 빠르게 보충해 드리고 있어요.
+   USE[수액 소생 시작#0] You lost a lot of fluid, so we're replacing it quickly at first.
+   USE[인슐린 전 K 확인#2] If it's low, we'll replace potassium before starting the drip.
+   USE[K 보정·인슐린 균형#0] Let's replace potassium and keep monitoring it closely with the insulin running.
+w-quickly | quickly | 빠르게 | tag=동작 | cue=시간을 끌지 않고 짧은 사이에 해낼 때
+   dEn=['quietly', 'thickly'] dKo=['천천히', '조용히'] chips=[['quick', 'ly']] decoy=['quit', 'lie']
+   ex=You lost a lot of fluid, so we're replacing it quickly at first. / 체액을 많이 잃으셔서, 처음에는 빠르게 보충해 드리고 있어요.
+   USE[수액 소생 시작#0] You lost a lot of fluid, so we're replacing it quickly at first.
+   USE[HHS 고삼투 관리#3] Correcting her sodium too quickly could cause brain swelling, so we go slowly.
+   USE[부신위기 스테로이드 투여#1] This steroid can quickly stabilize his blood pressure.
+w-first | first | 먼저 | tag=동작 | cue=순서에서 가장 앞에 오게 할 때
+   dEn=['firmly', 'finally'] dKo=['마지막으로', '나중에'] chips=[['first']] decoy=['fist']
+   ex=You lost a lot of fluid, so we're replacing it quickly at first. / 체액을 많이 잃으셔서, 처음에는 빠르게 보충해 드리고 있어요.
+   USE[수액 소생 시작#0] You lost a lot of fluid, so we're replacing it quickly at first.
+   USE[인슐린 전 K 확인#0] We hold insulin until potassium is safe, so let's confirm the level first.
+   USE[anion gap 종결 판단#1] We overlap the drip with the first long-acting dose before stopping.
+w-pressure *CHG* | pressure | 혈압 | tag=수치 | cue=심장이 피를 밀어낼 때 혈관 벽에 걸리는 힘, 숫자 두 개로 적는다
+   dEn=['pleasure', 'preserve'] dKo=['맥박', '체온'] chips=[['pres', 'sure']] decoy=['press', 'sore']
+   ex=I'll keep watching your blood pressure and urine as the fluids go in. / 수액이 들어가는 동안 혈압이랑 소변량을 계속 지켜볼게요.
+   USE[수액 소생 시작#1] I'll keep watching your blood pressure and urine as the fluids go in.
+   USE[활력·의식 재평가#3] Your blood pressure and heart rate look steadier than before.
+   USE[부신위기 스테로이드 투여#1] This steroid can quickly stabilize his blood pressure.
+w-urine | urine | 소변 | tag=수치 | cue=콩팥이 만들어 방광에 모였다 나가는 노란 액체
+   dEn=['urn', 'urge'] dKo=['땀', '침'] chips=[['u', 'rine']] decoy=['use', 'pine']
+   ex=I'll keep watching your blood pressure and urine as the fluids go in. / 수액이 들어가는 동안 혈압이랑 소변량을 계속 지켜볼게요.
+   USE[수액 소생 시작#1] I'll keep watching your blood pressure and urine as the fluids go in.
+   USE[유발원인 동반 치료#3] We're checking his blood and urine to find where the infection started.
+w-tightness | tightness | 답답함 | tag=증상 | cue=가슴이 조이듯 눌리는 느낌
+   dEn=['lightness', 'thickness'] dKo=['메스꺼움', '어지러움'] chips=[['tight', 'ness']] decoy=['light', 'less']
+   ex=Tell me if you feel any tightness in your chest or trouble breathing. / 가슴이 답답하거나 숨쉬기 힘들면 바로 말씀해 주세요.
+   USE[수액 소생 시작#2] Tell me if you feel any tightness in your chest or trouble breathing.
+w-chest | chest | 가슴 | tag=장기 | cue=갈비뼈가 감싸는 몸통 윗부분, 심장과 폐가 들어 있는 곳
+   dEn=['chess', 'cheek'] dKo=['배', '허리'] chips=[['chest']] decoy=['chat']
+   ex=Tell me if you feel any tightness in your chest or trouble breathing. / 가슴이 답답하거나 숨쉬기 힘들면 바로 말씀해 주세요.
+   USE[수액 소생 시작#2] Tell me if you feel any tightness in your chest or trouble breathing.
+w-trouble | trouble | 어려움 | tag=증상 | cue=숨쉬기나 일 처리가 순조롭지 않을 때
+   dEn=['double', 'tremble'] dKo=['편안함', '습관'] chips=[['trou', 'ble']] decoy=['tray', 'blue']
+   ex=Tell me if you feel any tightness in your chest or trouble breathing. / 가슴이 답답하거나 숨쉬기 힘들면 바로 말씀해 주세요.
+   USE[수액 소생 시작#2] Tell me if you feel any tightness in your chest or trouble breathing.
+w-saline | saline | 생리식염수 | tag=수액 | cue=소금이 0.9% 녹아 있는, 가장 흔히 쓰는 수액
+   dEn=['salmon', 'saliva'] dKo=['증류수', '소독약'] chips=[['sa', 'line']] decoy=['sale', 'lime']
+   ex=We're starting normal saline now to bring your fluid level back up. / 체액 수준을 다시 올리려고 지금 생리식염수를 시작할게요.
+   USE[수액 소생 시작#3] We're starting normal saline now to bring your fluid level back up.
+w-bring *CHG* | bring | 이끌다 | tag=동작 | cue=수액을 넣어 부족한 체액이 목표 수준에 닿게 할 때
+   dEn=['bind', 'brew'] dKo=['붙잡다', '가라앉히다'] chips=[['bring']] decoy=['brink']
+   ex=We're starting normal saline now to bring your fluid level back up. / 체액 수준을 다시 올리려고 지금 생리식염수를 시작할게요.
+   USE[수액 소생 시작#3] We're starting normal saline now to bring your fluid level back up.
+   USE[DKA 인슐린 주입 적정#1] Bringing it down too fast can be risky, so we titrate carefully.
+   USE[갑상선폭풍 위기#1] We're giving several medicines together to bring it under control.
+w-lung *CHG* | lung | 폐 | tag=장기 | cue=공기가 드나들며 산소를 혈액에 넘기는 한 쌍의 장기
+   dEn=['lunch', 'lounge'] dKo=['간', '위'] chips=[['lung']] decoy=['lunge']
+   ex=I'll check your lungs so we catch any fluid overload early. / 수액 과부하가 있는지 일찍 알아채려고 폐 소리를 확인할게요.
+   USE[수액 소생 시작#4] I'll check your lungs so we catch any fluid overload early.
+   USE[내분비 위기 다장기 악화#3] His kidneys and lungs are both under strain, so we've called in extra specialists.
+w-catch | catch | 알아채다 | tag=사정 | cue=문제가 커지기 전에 일찍 눈치챌 때
+   dEn=['match', 'cache'] dKo=['넘겨주다', '따라가다'] chips=[['catch']] decoy=['patch']
+   ex=I'll check your lungs so we catch any fluid overload early. / 수액 과부하가 있는지 일찍 알아채려고 폐 소리를 확인할게요.
+   USE[수액 소생 시작#4] I'll check your lungs so we catch any fluid overload early.
+w-overload | overload | 과부하 | tag=상태 | cue=몸이 감당할 수 있는 양을 넘겨 수액이 쌓인 상태
+   dEn=['overlap', 'overdose'] dKo=['탈수', '저체온'] chips=[['over', 'load']] decoy=['road', 'oven']
+   ex=I'll check your lungs so we catch any fluid overload early. / 수액 과부하가 있는지 일찍 알아채려고 폐 소리를 확인할게요.
+   USE[수액 소생 시작#4] I'll check your lungs so we catch any fluid overload early.
+w-early | early | 일찍 | tag=상태 | cue=상태가 심해지기 전, 아직 초기일 때
+   dEn=['nearly', 'yearly'] dKo=['나중에', '가끔'] chips=[['ear', 'ly']] decoy=['bear', 'lie']
+   ex=I'll check your lungs so we catch any fluid overload early. / 수액 과부하가 있는지 일찍 알아채려고 폐 소리를 확인할게요.
+   USE[수액 소생 시작#4] I'll check your lungs so we catch any fluid overload early.
+w-prime *CHG* | prime | 프라이밍하다 | tag=동작 | cue=주입 전에 관 안의 공기를 수액으로 채워 둘 때
+   dEn=['prune', 'prompt'] dKo=['소독하다', '연결하다'] chips=[['prime']] decoy=['prom']
+   ex=I'm priming a dedicated line for the insulin drip per protocol. / 프로토콜대로 인슐린 주입 전용 라인을 프라이밍하고 있어요.
+   USE[인슐린 주입 준비#0] I'm priming a dedicated line for the insulin drip per protocol.
+w-line | line | 라인 | tag=장비 | cue=약을 넣으려고 혈관에 이어 둔 관
+   dEn=['lime', 'lane'] dKo=['바늘', '주머니'] chips=[['line']] decoy=['lane']
+   ex=I'm priming a dedicated line for the insulin drip per protocol. / 프로토콜대로 인슐린 주입 전용 라인을 프라이밍하고 있어요.
+   USE[인슐린 주입 준비#0] I'm priming a dedicated line for the insulin drip per protocol.
+w-insulin | insulin | 인슐린 | tag=약물 | cue=혈당을 낮추고 포도당이 세포로 들어가게 돕는 호르몬 약
+   dEn=['heparin', 'morphine'] dKo=['헤파린', '모르핀'] chips=[['in', 'su', 'lin']] decoy=['sun', 'lip']
+   ex=I'm priming a dedicated line for the insulin drip per protocol. / 프로토콜대로 인슐린 주입 전용 라인을 프라이밍하고 있어요.
+   USE[인슐린 주입 준비#0] I'm priming a dedicated line for the insulin drip per protocol.
+   USE[인슐린 전 K 확인#0] We hold insulin until potassium is safe, so let's confirm the level first.
+   USE[인슐린 전 K 확인#1] Insulin drives potassium into cells, so a low value could be dangerous.
+w-drip *CHG* | drip | 점적 | tag=장비 | cue=수액이나 약을 한 방울씩 일정하게 들어가게 하는 주입 방식
+   dEn=['drain', 'grip'] dKo=['배액', '흡인'] chips=[['drip']] decoy=['drop']
+   ex=I'm priming a dedicated line for the insulin drip per protocol. / 프로토콜대로 인슐린 주입 전용 라인을 프라이밍하고 있어요.
+   USE[인슐린 주입 준비#0] I'm priming a dedicated line for the insulin drip per protocol.
+   USE[인슐린 전 K 확인#2] If it's low, we'll replace potassium before starting the drip.
+   USE[K 보정·인슐린 균형#3] Potassium's back to normal, so we're clear to keep the drip going.
+w-protocol | protocol | 프로토콜 | tag=소통 | cue=병원이 정해 놓은 단계별 치료 지침
+   dEn=['protein', 'protest'] dKo=['처방전', '보험증'] chips=[['pro', 'to', 'col']] decoy=['pot', 'call']
+   ex=I'm priming a dedicated line for the insulin drip per protocol. / 프로토콜대로 인슐린 주입 전용 라인을 프라이밍하고 있어요.
+   USE[인슐린 주입 준비#0] I'm priming a dedicated line for the insulin drip per protocol.
+   USE[인슐린 주입 준비#3] Pump's set to the protocol rate, ready to go.
+   USE[DKA 인슐린 주입 적정#2] I'll recheck your glucose and set the new rate per protocol.
+w-concentration | concentration | 농도 | tag=수치 | cue=일정한 양 안에 녹아 있는 약이나 물질의 진한 정도
+   dEn=['congestion', 'conversation'] dKo=['용량', '부피'] chips=[['con', 'cen', 'tra', 'tion']] decoy=['can', 'tent']
+   ex=Let's double-check the concentration and pump settings together. / 농도랑 펌프 설정을 같이 다시 확인해요.
+   USE[인슐린 주입 준비#1] Let's double-check the concentration and pump settings together.
+   USE[인슐린 주입 준비#4] Can you confirm the concentration matches the order before we start?
+w-pump | pump | 펌프 | tag=장비 | cue=정해진 속도로 약을 밀어 넣는 전자 장치
+   dEn=['plump', 'bump'] dKo=['밸브', '필터'] chips=[['pump']] decoy=['jump']
+   ex=Let's double-check the concentration and pump settings together. / 농도랑 펌프 설정을 같이 다시 확인해요.
+   USE[인슐린 주입 준비#1] Let's double-check the concentration and pump settings together.
+   USE[인슐린 주입 준비#3] Pump's set to the protocol rate, ready to go.
+w-setting *CHG* | setting | 설정 | tag=장비 | cue=기계가 어떤 속도로 돌지 숫자로 맞춰 둔 값
+   dEn=['sitting', 'string'] dKo=['경보', '연결'] chips=[['set', 'ting']] decoy=['sit', 'tin']
+   ex=Let's double-check the concentration and pump settings together. / 농도랑 펌프 설정을 같이 다시 확인해요.
+   USE[인슐린 주입 준비#1] Let's double-check the concentration and pump settings together.
+w-together | together | 함께 | tag=소통 | cue=혼자가 아니라 둘 이상이 한 번에 같이 할 때
+   dEn=['altogether', 'however'] dKo=['따로', '가끔'] chips=[['to', 'geth', 'er']] decoy=['too', 'get']
+   ex=Let's double-check the concentration and pump settings together. / 농도랑 펌프 설정을 같이 다시 확인해요.
+   USE[인슐린 주입 준비#1] Let's double-check the concentration and pump settings together.
+   USE[저혈당 예방·포도당 병용#2] I'll recheck the glucose and adjust both drips together.
+   USE[갑상선폭풍 위기#1] We're giving several medicines together to bring it under control.
+w-infusion | infusion | 주입 | tag=장비 | cue=정맥으로 정해진 시간 동안 약이나 수액을 천천히 넣는 것
+   dEn=['infection', 'confusion'] dKo=['감염', '혼란'] chips=[['in', 'fu', 'sion']] decoy=['fun', 'son']
+   ex=I'll start the infusion once potassium is confirmed safe. / 칼륨이 안전하다고 확인되면 주입을 시작할게요.
+   USE[인슐린 주입 준비#2] I'll start the infusion once potassium is confirmed safe.
+w-potassium | potassium | 칼륨 | tag=검사 | cue=인슐린을 주입하기 전에 꼭 확인하는 전해질
+   dEn=['magnesium', 'phosphate'] dKo=['마그네슘', '나트륨'] chips=[['po', 'tas', 'si', 'um']] decoy=['pot', 'sum']
+   ex=I'll start the infusion once potassium is confirmed safe. / 칼륨이 안전하다고 확인되면 주입을 시작할게요.
+   USE[인슐린 주입 준비#2] I'll start the infusion once potassium is confirmed safe.
+   USE[인슐린 전 K 확인#0] We hold insulin until potassium is safe, so let's confirm the level first.
+   USE[인슐린 전 K 확인#1] Insulin drives potassium into cells, so a low value could be dangerous.
+w-confirm *CHG* | confirm | 맞는지 확인하다 | tag=소통 | cue=처방과 수치가 일치하는지 다시 짚어 볼 때
+   dEn=['conform', 'confine'] dKo=['틀렸다고 알리다', '기록을 지우다'] chips=[['con', 'firm']] decoy=['fire', 'farm']
+   ex=I'll start the infusion once potassium is confirmed safe. / 칼륨이 안전하다고 확인되면 주입을 시작할게요.
+   USE[인슐린 주입 준비#2] I'll start the infusion once potassium is confirmed safe.
+   USE[인슐린 주입 준비#4] Can you confirm the concentration matches the order before we start?
+   USE[인슐린 전 K 확인#0] We hold insulin until potassium is safe, so let's confirm the level first.
+w-set | set | 맞추다 | tag=동작 | cue=속도나 값을 원하는 숫자에 놓을 때
+   dEn=['seat', 'sell'] dKo=['풀어주다', '꺼내다'] chips=[['set']] decoy=['sit']
+   ex=Pump's set to the protocol rate, ready to go. / 펌프는 프로토콜 속도로 맞춰졌고, 시작할 준비 됐어요.
+   USE[인슐린 주입 준비#3] Pump's set to the protocol rate, ready to go.
+   USE[DKA 인슐린 주입 적정#2] I'll recheck your glucose and set the new rate per protocol.
+w-rate | rate | 속도 | tag=수치 | cue=단위 시간당 얼마만큼인지를 나타내는 값
+   dEn=['gate', 'race'] dKo=['무게', '길이'] chips=[['rate']] decoy=['rat']
+   ex=Pump's set to the protocol rate, ready to go. / 펌프는 프로토콜 속도로 맞춰졌고, 시작할 준비 됐어요.
+   USE[인슐린 주입 준비#3] Pump's set to the protocol rate, ready to go.
+   USE[활력·의식 재평가#3] Your blood pressure and heart rate look steadier than before.
+   USE[DKA 인슐린 주입 적정#2] I'll recheck your glucose and set the new rate per protocol.
+w-ready | ready | 준비된 | tag=상태 | cue=바로 시작할 수 있게 갖춰진
+   dEn=['heavy', 'steady'] dKo=['느슨한', '지친'] chips=[['read', 'y']] decoy=['lead', 'ray']
+   ex=Pump's set to the protocol rate, ready to go. / 펌프는 프로토콜 속도로 맞춰졌고, 시작할 준비 됐어요.
+   USE[인슐린 주입 준비#3] Pump's set to the protocol rate, ready to go.
+   USE[심한 저혈당 의식소실 위기#2] Recheck the sugar in a few minutes and stay ready to repeat.
+w-order | order | 처방 | tag=소통 | cue=의사가 전자 차트에 남겨 간호사가 따르는 지시
+   dEn=['odor', 'border'] dKo=['보고', '기록'] chips=[['or', 'der']] decoy=['for', 'dear']
+   ex=Can you confirm the concentration matches the order before we start? / 시작하기 전에 농도가 처방이랑 맞는지 확인해 줄 수 있어요?
+   USE[인슐린 주입 준비#4] Can you confirm the concentration matches the order before we start?
+   USE[DKA 인슐린 주입 적정#3] We're following the sliding scale exactly as ordered.
+w-hold | hold | 보류하다 | tag=약물 | cue=정해진 조건이 맞을 때까지 약을 주지 않고 둘 때
+   dEn=['fold', 'hole'] dKo=['주입하다', '늘리다'] chips=[['hold']] decoy=['hood']
+   ex=We hold insulin until potassium is safe, so let's confirm the level first. / 칼륨이 안전할 때까지 인슐린을 보류하니까, 먼저 수치부터 확인해요.
+   USE[인슐린 전 K 확인#0] We hold insulin until potassium is safe, so let's confirm the level first.
+w-cell *CHG* | cell | 세포 | tag=장기 | cue=몸을 이루는 가장 작은 살아 있는 단위, 포도당이 들어가 쓰이는 곳
+   dEn=['shell', 'seal'] dKo=['조직', '혈관'] chips=[['cell']] decoy=['sell']
+   ex=Insulin drives potassium into cells, so a low value could be dangerous. / 인슐린이 칼륨을 세포 안으로 밀어 넣어서, 수치가 낮으면 위험할 수 있어요.
+   USE[인슐린 전 K 확인#1] Insulin drives potassium into cells, so a low value could be dangerous.
+w-low | low | 낮은 | tag=수치 | cue=기준보다 아래에 있는 수치
+   dEn=['lean', 'loud'] dKo=['넓은', '두꺼운'] chips=[['low']] decoy=['law']
+   ex=Insulin drives potassium into cells, so a low value could be dangerous. / 인슐린이 칼륨을 세포 안으로 밀어 넣어서, 수치가 낮으면 위험할 수 있어요.
+   USE[인슐린 전 K 확인#1] Insulin drives potassium into cells, so a low value could be dangerous.
+   USE[인슐린 전 K 확인#2] If it's low, we'll replace potassium before starting the drip.
+   USE[인슐린 전 K 확인#4] If potassium comes back low, I'll get the replacement ordered right away.
+w-value *CHG* | value | 측정값 | tag=수치 | cue=검사에서 나온 하나의 숫자 결과
+   dEn=['valve', 'volume'] dKo=['단위', '기준'] chips=[['val', 'ue']] decoy=['vale', 'due']
+   ex=Insulin drives potassium into cells, so a low value could be dangerous. / 인슐린이 칼륨을 세포 안으로 밀어 넣어서, 수치가 낮으면 위험할 수 있어요.
+   USE[인슐린 전 K 확인#1] Insulin drives potassium into cells, so a low value could be dangerous.
+w-dangerous | dangerous | 위험한 | tag=상태 | cue=다치거나 생명에 해가 갈 수 있는
+   dEn=['generous', 'dubious'] dKo=['비좁은', '의심스러운'] chips=[['dan', 'ger', 'ous']] decoy=['dam', 'gear']
+   ex=Insulin drives potassium into cells, so a low value could be dangerous. / 인슐린이 칼륨을 세포 안으로 밀어 넣어서, 수치가 낮으면 위험할 수 있어요.
+   USE[인슐린 전 K 확인#1] Insulin drives potassium into cells, so a low value could be dangerous.
+   USE[교정속도 뇌부종 위험 인지#0] Correcting too quickly can cause dangerous brain swelling.
+   USE[갑상선폭풍 위기#0] Her thyroid is dangerously overactive, causing this fever and racing heart.
+w-pull | pull | 꺼내다 | tag=동작 | cue=서랍이나 시스템에서 기록을 불러내 앞에 펼칠 때
+   dEn=['pill', 'pool'] dKo=['치워두다', '덮어두다'] chips=[['pull']] decoy=['pole']
+   ex=Let's pull his chart and check the last potassium result. / 차트를 열어서 마지막 칼륨 결과를 확인해요.
+   USE[인슐린 전 K 확인#3] Let's pull his chart and check the last potassium result.
+w-chart | chart | 차트 | tag=소통 | cue=환자의 수치와 처치를 날짜순으로 기록해 두는 곳
+   dEn=['charm', 'chat'] dKo=['처방', '지도'] chips=[['chart']] decoy=['charm']
+   ex=Let's pull his chart and check the last potassium result. / 차트를 열어서 마지막 칼륨 결과를 확인해요.
+   USE[인슐린 전 K 확인#3] Let's pull his chart and check the last potassium result.
+   USE[활력·의식 재평가#4] I'm charting these improvements and letting the team know.
+w-result | result | 결과 | tag=검사 | cue=검사를 마치고 나온 값이나 소견
+   dEn=['resume', 'reset'] dKo=['원인', '계획'] chips=[['re', 'sult']] decoy=['salt', 'rest']
+   ex=Let's pull his chart and check the last potassium result. / 차트를 열어서 마지막 칼륨 결과를 확인해요.
+   USE[인슐린 전 K 확인#3] Let's pull his chart and check the last potassium result.
+   USE[유발원인 동반 치료#2] We've started cultures and will adjust treatment based on the results.
+w-replacement | replacement | 보충 | tag=수액 | cue=빠진 양만큼 다시 채워 넣는 것
+   dEn=['placement', 'repayment'] dKo=['제거', '중단'] chips=[['re', 'place', 'ment']] decoy=['plane', 'mint']
+   ex=If potassium comes back low, I'll get the replacement ordered right away. / 칼륨 결과가 낮게 나오면 바로 보충 처방을 받을게요.
+   USE[인슐린 전 K 확인#4] If potassium comes back low, I'll get the replacement ordered right away.
+   USE[K 보정·인슐린 균형#2] I'll draw a repeat level after the replacement to confirm.
+w-clear | clear | 맑은 | tag=상태 | cue=흐리지 않고 또렷하게 깨어 있는 정신
+   dEn=['clean', 'clerk'] dKo=['축축한', '어두운'] chips=[['clear']] decoy=['clap']
+   ex=I'm glad you feel clearer, and I'll recheck your vitals to confirm. / 정신이 맑아지셨다니 다행이에요, 확인 차 활력징후를 다시 재볼게요.
+   USE[활력·의식 재평가#0] I'm glad you feel clearer, and I'll recheck your vitals to confirm.
+   USE[K 보정·인슐린 균형#3] Potassium's back to normal, so we're clear to keep the drip going.
+   USE[HHS 고삼투 관리#4] Her confusion is starting to clear, which tells us she's responding well.
+w-recheck | recheck | 다시 확인하다 | tag=검사 | cue=한 번 잰 값을 시간이 지나 다시 재서 비교할 때
+   dEn=['recall', 'recount'] dKo=['처음 측정하다', '결과를 지우다'] chips=[['re', 'check']] decoy=['cheek', 'rye']
+   ex=I'm glad you feel clearer, and I'll recheck your vitals to confirm. / 정신이 맑아지셨다니 다행이에요, 확인 차 활력징후를 다시 재볼게요.
+   USE[활력·의식 재평가#0] I'm glad you feel clearer, and I'll recheck your vitals to confirm.
+   USE[DKA 인슐린 주입 적정#2] I'll recheck your glucose and set the new rate per protocol.
+   USE[K 보정·인슐린 균형#4] If it drops again, we'll pause the insulin and recheck.
+w-vital | vitals | 활력징후 | tag=사정 | cue=맥박·혈압·호흡·체온·산소포화도를 묶어 부르는 말
+   dEn=['vitamins', 'visuals'] dKo=['영양소', '증상'] chips=[['vi', 'tals']] decoy=['vim', 'tail']
+   ex=I'm glad you feel clearer, and I'll recheck your vitals to confirm. / 정신이 맑아지셨다니 다행이에요, 확인 차 활력징후를 다시 재볼게요.
+   USE[활력·의식 재평가#0] I'm glad you feel clearer, and I'll recheck your vitals to confirm.
+w-direction | direction | 방향 | tag=상태 | cue=수치나 상태가 어느 쪽으로 향하는지
+   dEn=['detection', 'election'] dKo=['거리', '높이'] chips=[['di', 'rec', 'tion']] decoy=['dim', 'ten']
+   ex=Your numbers are heading the right direction, which is a good sign. / 수치들이 좋은 방향으로 가고 있는데, 이건 좋은 신호예요.
+   USE[활력·의식 재평가#2] Your numbers are heading the right direction, which is a good sign.
+w-heart | heart | 심장 | tag=장기 | cue=온몸으로 피를 밀어 보내는 근육 장기
+   dEn=['heard', 'hearth'] dKo=['간', '위'] chips=[['heart']] decoy=['hurt']
+   ex=Your blood pressure and heart rate look steadier than before. / 혈압이랑 심박수가 전보다 더 안정적으로 보여요.
+   USE[활력·의식 재평가#3] Your blood pressure and heart rate look steadier than before.
+   USE[갑상선기능저하 점액수종 관리#0] Her thyroid is very low, which slows her heart and drops her temperature.
+   USE[갑상선기능저하 점액수종 관리#2] We'll monitor her heart rate and temperature very closely.
+w-steady *CHG* | steady | 꾸준한 | tag=상태 | cue=오르내림 없이 일정하게 이어지는
+   dEn=['sturdy', 'shady'] dKo=['들쭉날쭉한', '갑작스러운'] chips=[['stead', 'y']] decoy=['steam', 'ly']
+   ex=Your blood pressure and heart rate look steadier than before. / 혈압이랑 심박수가 전보다 더 안정적으로 보여요.
+   USE[활력·의식 재평가#3] Your blood pressure and heart rate look steadier than before.
+   USE[DKA 인슐린 주입 적정#4] Your sugar's dropping steadily, which is exactly what we want.
+   USE[교정속도 뇌부종 위험 인지#1] A slow, steady pace is actually the safest way to help him.
+w-improvement | improvement | 호전 | tag=상태 | cue=전에 비해 더 나아졌다고 볼 수 있는 변화
+   dEn=['movement', 'involvement'] dKo=['악화', '정체'] chips=[['im', 'prove', 'ment']] decoy=['ink', 'mint']
+   ex=I'm charting these improvements and letting the team know. / 이렇게 나아진 부분을 기록하고 팀에도 알릴게요.
+   USE[활력·의식 재평가#4] I'm charting these improvements and letting the team know.
+w-adjust | adjust | 조절하다 | tag=동작 | cue=속도나 용량을 상황에 맞게 조금씩 바꿀 때
+   dEn=['adopt', 'adapt'] dKo=['고정하다', '삭제하다'] chips=[['ad', 'just']] decoy=['add', 'must']
+   ex=We adjust the insulin so your sugar comes down at a safe pace. / 혈당이 안전한 속도로 내려가도록 인슐린을 조절해요.
+   USE[DKA 인슐린 주입 적정#0] We adjust the insulin so your sugar comes down at a safe pace.
+   USE[저혈당 예방·포도당 병용#2] I'll recheck the glucose and adjust both drips together.
+   USE[유발원인 동반 치료#2] We've started cultures and will adjust treatment based on the results.
+w-pace *CHG* | pace | 진행 속도 | tag=수치 | cue=일이 진행되거나 수치가 변하는 빠르기
+   dEn=['pale', 'pack'] dKo=['간격', '횟수'] chips=[['pace']] decoy=['pale']
+   ex=We adjust the insulin so your sugar comes down at a safe pace. / 혈당이 안전한 속도로 내려가도록 인슐린을 조절해요.
+   USE[DKA 인슐린 주입 적정#0] We adjust the insulin so your sugar comes down at a safe pace.
+   USE[교정속도 뇌부종 위험 인지#1] A slow, steady pace is actually the safest way to help him.
+   USE[교정속도 뇌부종 위험 인지#4] I know it feels slow, but this pace protects his brain.
+w-risky *CHG* | risky | 위험이 따르는 | tag=상태 | cue=잘못되면 해가 될 가능성이 큰
+   dEn=['rusty', 'rocky'] dKo=['비용이 드는', '시간이 걸리는'] chips=[['ris', 'ky']] decoy=['rim', 'sky']
+   ex=Bringing it down too fast can be risky, so we titrate carefully. / 너무 빨리 내리면 위험할 수 있어서, 조심스럽게 적정하고 있어요.
+   USE[DKA 인슐린 주입 적정#1] Bringing it down too fast can be risky, so we titrate carefully.
+w-titrate | titrate | 적정하다 | tag=약물 | cue=반응을 보며 용량을 조금씩 올리거나 내려 맞출 때
+   dEn=['tolerate', 'irrigate'] dKo=['견디다', '세척하다'] chips=[['ti', 'trate']] decoy=['tie', 'tray']
+   ex=Bringing it down too fast can be risky, so we titrate carefully. / 너무 빨리 내리면 위험할 수 있어서, 조심스럽게 적정하고 있어요.
+   USE[DKA 인슐린 주입 적정#1] Bringing it down too fast can be risky, so we titrate carefully.
+   USE[부신위기 순환붕괴#1] I'm giving a fluid bolus while we titrate the vasopressor.
+   USE[부신위기 순환붕괴#4] The pressor is titrating up, and his pressure is starting to respond.
+w-carefully | carefully | 조심스럽게 | tag=동작 | cue=실수하지 않도록 주의를 기울여서
+   dEn=['cheerfully', 'carelessly'] dKo=['급하게', '즐겁게'] chips=[['care', 'ful', 'ly']] decoy=['cure', 'fall']
+   ex=Bringing it down too fast can be risky, so we titrate carefully. / 너무 빨리 내리면 위험할 수 있어서, 조심스럽게 적정하고 있어요.
+   USE[DKA 인슐린 주입 적정#1] Bringing it down too fast can be risky, so we titrate carefully.
+   USE[교정속도 뇌부종 위험 인지#2] We're watching his neuro status while we correct carefully.
+w-glucose | glucose | 혈당 | tag=수치 | cue=혈액 속에 녹아 있는, 몸의 주된 에너지원인 당
+   dEn=['glucagon', 'gluten'] dKo=['젖산', '요소'] chips=[['glu', 'cose']] decoy=['glue', 'cone']
+   ex=I'll recheck your glucose and set the new rate per protocol. / 혈당을 다시 확인하고 프로토콜대로 새 속도를 맞출게요.
+   USE[DKA 인슐린 주입 적정#2] I'll recheck your glucose and set the new rate per protocol.
+   USE[저혈당 예방·포도당 병용#2] I'll recheck the glucose and adjust both drips together.
+   USE[심한 저혈당 의식소실 위기#0] Check a stat glucose and push D50 now — he's unresponsive.
+w-follow *CHG* | follow | 따르다 | tag=동작 | cue=정해진 방식이나 지시대로 그대로 해 나갈 때
+   dEn=['allow', 'swallow'] dKo=['허락하다', '삼키다'] chips=[['fol', 'low']] decoy=['fall', 'flow']
+   ex=We're following the sliding scale exactly as ordered. / 처방된 대로 슬라이딩 스케일을 정확히 따르고 있어요.
+   USE[DKA 인슐린 주입 적정#3] We're following the sliding scale exactly as ordered.
+w-scale | scale | 척도 | tag=수치 | cue=수치를 단계로 나눠 눈금처럼 읽는 표
+   dEn=['scarf', 'skate'] dKo=['처방', '구역'] chips=[['scale']] decoy=['scare']
+   ex=We're following the sliding scale exactly as ordered. / 처방된 대로 슬라이딩 스케일을 정확히 따르고 있어요.
+   USE[DKA 인슐린 주입 적정#3] We're following the sliding scale exactly as ordered.
+w-drop | drop | 떨어지다 | tag=수치 | cue=수치가 위에서 아래로 내려갈 때
+   dEn=['crop', 'drag'] dKo=['오르다', '흔들리다'] chips=[['drop']] decoy=['drip']
+   ex=Your sugar's dropping steadily, which is exactly what we want. / 혈당이 꾸준히 내려가고 있는데, 이게 바로 저희가 원하는 거예요.
+   USE[DKA 인슐린 주입 적정#4] Your sugar's dropping steadily, which is exactly what we want.
+   USE[K 보정·인슐린 균형#4] If it drops again, we'll pause the insulin and recheck.
+   USE[저혈당 예방·포도당 병용#1] This lets us keep clearing the ketones without dropping too low.
+w-monitor *CHG* | monitor | 모니터링하다 | tag=사정 | cue=화면이나 기기로 수치를 이어서 살펴볼 때
+   dEn=['mentor', 'motor'] dKo=['지시하다', '제거하다'] chips=[['mon', 'i', 'tor']] decoy=['man', 'tour']
+   ex=Let's replace potassium and keep monitoring it closely with the insulin running. / 칼륨을 보충하면서 인슐린이 들어가는 동안 계속 자세히 모니터링해요.
+   USE[K 보정·인슐린 균형#0] Let's replace potassium and keep monitoring it closely with the insulin running.
+   USE[부신위기 스테로이드 투여#2] We'll keep monitoring and give more if his stress level demands it.
+   USE[갑상선기능저하 점액수종 관리#2] We'll monitor her heart rate and temperature very closely.
+w-run *CHG* | run | 들어가다(주입) | tag=장비 | cue=기계가 켜져서 약이 일정하게 몸으로 들어가고 있는 상태
+   dEn=['rub', 'rug'] dKo=['걸려 있는 중이다', '닫혀 있는 상태'] chips=[['run']] decoy=['rub']
+   ex=Let's replace potassium and keep monitoring it closely with the insulin running. / 칼륨을 보충하면서 인슐린이 들어가는 동안 계속 자세히 모니터링해요.
+   USE[K 보정·인슐린 균형#0] Let's replace potassium and keep monitoring it closely with the insulin running.
+w-need | need | 필요하다 | tag=소통 | cue=없으면 안 되어서 꼭 있어야 할 때
+   dEn=['seed', 'heed'] dKo=['받아들이다', '남기다'] chips=[['need']] decoy=['seed']
+   ex=We may need to slow the insulin if potassium keeps falling. / 칼륨이 계속 떨어지면 인슐린을 늦춰야 할 수도 있어요.
+   USE[K 보정·인슐린 균형#1] We may need to slow the insulin if potassium keeps falling.
+   USE[점액수종 혼수 위기#4] Her body needs the thyroid hormone to wake back up and warm up safely.
+w-slow | slow | 느린 | tag=상태 | cue=속도가 낮아 시간이 더 걸리는
+   dEn=['slim', 'slick'] dKo=['날랜', '얇은'] chips=[['slow']] decoy=['slot']
+   ex=We may need to slow the insulin if potassium keeps falling. / 칼륨이 계속 떨어지면 인슐린을 늦춰야 할 수도 있어요.
+   USE[K 보정·인슐린 균형#1] We may need to slow the insulin if potassium keeps falling.
+   USE[HHS 고삼투 관리#0] Her sugar and blood are very concentrated, so we're correcting it slowly and safely.
+   USE[HHS 고삼투 관리#3] Correcting her sodium too quickly could cause brain swelling, so we go slowly.
+w-fall *CHG* | fall | 하락하다 | tag=수치 | cue=수치가 점점 아래쪽으로 움직여 갈 때
+   dEn=['fail', 'fill'] dKo=['상승하다', '유지하다'] chips=[['fall']] decoy=['fell']
+   ex=We may need to slow the insulin if potassium keeps falling. / 칼륨이 계속 떨어지면 인슐린을 늦춰야 할 수도 있어요.
+   USE[K 보정·인슐린 균형#1] We may need to slow the insulin if potassium keeps falling.
+w-repeat | repeat | 반복하다 | tag=동작 | cue=한 번 한 일을 똑같이 다시 할 때
+   dEn=['repair', 'retreat'] dKo=['수리하다', '후퇴하다'] chips=[['re', 'peat']] decoy=['rap', 'pea']
+   ex=I'll draw a repeat level after the replacement to confirm. / 보충한 뒤에 확인차 칼륨 수치를 다시 채혈할게요.
+   USE[K 보정·인슐린 균형#2] I'll draw a repeat level after the replacement to confirm.
+   USE[심한 저혈당 의식소실 위기#2] Recheck the sugar in a few minutes and stay ready to repeat.
+w-normal | normal | 정상 | tag=상태 | cue=기준 범위 안에 들어와 이상이 없는 상태
+   dEn=['formal', 'nominal'] dKo=['비상', '최대'] chips=[['nor', 'mal']] decoy=['nod', 'mall']
+   ex=Potassium's back to normal, so we're clear to keep the drip going. / 칼륨이 정상으로 돌아와서, 주입을 계속 진행해도 괜찮아요.
+   USE[K 보정·인슐린 균형#3] Potassium's back to normal, so we're clear to keep the drip going.
+   USE[anion gap 종결 판단#3] His acid levels are back to normal, so the DKA has resolved.
+w-pause | pause | 잠시 멈추다 | tag=동작 | cue=끊지는 않고 잠깐 쉬었다가 이어갈 때
+   dEn=['pose', 'pulse'] dKo=['처음 시작하다', '서둘러 하다'] chips=[['pause']] decoy=['cause']
+   ex=If it drops again, we'll pause the insulin and recheck. / 다시 떨어지면 인슐린을 잠시 멈추고 다시 확인할 거예요.
+   USE[K 보정·인슐린 균형#4] If it drops again, we'll pause the insulin and recheck.
+w-gap *CHG* | gap | 간극(음이온차) | tag=수치 | cue=혈액 속 양전하와 음전하의 차이로 계산하는 수치
+   dEn=['cap', 'gasp'] dKo=['동맥혈 차이', '혈압 차이 수치'] chips=[['gap']] decoy=['gas']
+   ex=The gap has closed, so we can plan the switch to subcutaneous insulin. / 간극이 닫혀서, 이제 피하 인슐린으로 전환할 계획을 세울 수 있어요.
+   USE[anion gap 종결 판단#0] The gap has closed, so we can plan the switch to subcutaneous insulin.
+w-close *CHG* | close | 닫히다 | tag=상태 | cue=벌어져 있던 간격이 사라져 붙을 때
+   dEn=['clip', 'clamp'] dKo=['벌어지다', '열리다'] chips=[['close']] decoy=['chose']
+   ex=The gap has closed, so we can plan the switch to subcutaneous insulin. / 간극이 닫혀서, 이제 피하 인슐린으로 전환할 계획을 세울 수 있어요.
+   USE[anion gap 종결 판단#0] The gap has closed, so we can plan the switch to subcutaneous insulin.
+w-plan | plan | 계획하다 | tag=소통 | cue=앞으로 어떻게 할지 미리 정해 둘 때
+   dEn=['plant', 'plead'] dKo=['취소하다', '마무리하다'] chips=[['plan']] decoy=['plane']
+   ex=The gap has closed, so we can plan the switch to subcutaneous insulin. / 간극이 닫혀서, 이제 피하 인슐린으로 전환할 계획을 세울 수 있어요.
+   USE[anion gap 종결 판단#0] The gap has closed, so we can plan the switch to subcutaneous insulin.
+w-switch | switch | 전환하다 | tag=동작 | cue=하나에서 다른 쪽으로 바꿔 넘어갈 때
+   dEn=['swatch', 'stitch'] dKo=['고정하다', '연결하다'] chips=[['switch']] decoy=['twitch']
+   ex=The gap has closed, so we can plan the switch to subcutaneous insulin. / 간극이 닫혀서, 이제 피하 인슐린으로 전환할 계획을 세울 수 있어요.
+   USE[anion gap 종결 판단#0] The gap has closed, so we can plan the switch to subcutaneous insulin.
+   USE[anion gap 종결 판단#4] Once he's tolerating food, we'll switch him to his home insulin.
+w-subcutaneous | subcutaneous | 피하의 | tag=약물 | cue=피부 바로 아래 지방층에 놓는 주사 경로
+   dEn=['subclavian', 'intravenous'] dKo=['정맥 내의', '근육 내의'] chips=[['sub', 'cu', 'ta', 'neous']] decoy=['sun', 'cut']
+   ex=The gap has closed, so we can plan the switch to subcutaneous insulin. / 간극이 닫혀서, 이제 피하 인슐린으로 전환할 계획을 세울 수 있어요.
+   USE[anion gap 종결 판단#0] The gap has closed, so we can plan the switch to subcutaneous insulin.
+w-overlap | overlap | 겹치다 | tag=동작 | cue=두 가지를 한동안 동시에 같이 진행해 걸치게 할 때
+   dEn=['overlay', 'overturn'] dKo=['분리하다', '건너뛰다'] chips=[['over', 'lap']] decoy=['oven', 'lip']
+   ex=We overlap the drip with the first long-acting dose before stopping. / 중단하기 전에 첫 지속형 용량이랑 주입을 겹쳐서 줘요.
+   USE[anion gap 종결 판단#1] We overlap the drip with the first long-acting dose before stopping.
+w-dose | dose | 용량 | tag=약물 | cue=한 번에 몸에 들어가는 약의 양
+   dEn=['dove', 'doze'] dKo=['농도', '속도'] chips=[['dose']] decoy=['dove']
+   ex=We overlap the drip with the first long-acting dose before stopping. / 중단하기 전에 첫 지속형 용량이랑 주입을 겹쳐서 줘요.
+   USE[anion gap 종결 판단#1] We overlap the drip with the first long-acting dose before stopping.
+   USE[부신위기 스테로이드 투여#3] We're giving him a stress dose of steroid right away to support his body.
+w-stop *CHG* | stop | 멈추다 | tag=동작 | cue=진행하던 동작이나 약 주입을 그칠 때
+   dEn=['step', 'shop'] dKo=['시작하다', '늘리다'] chips=[['stop']] decoy=['step']
+   ex=We overlap the drip with the first long-acting dose before stopping. / 중단하기 전에 첫 지속형 용량이랑 주입을 겹쳐서 줘요.
+   USE[anion gap 종결 판단#1] We overlap the drip with the first long-acting dose before stopping.
+   USE[저혈당 예방·포도당 병용#4] We're still clearing the ketones, so don't stop the insulin yet.
+w-stable | stable | 안정적인 | tag=상태 | cue=변화 없이 균형을 유지해 믿고 맡길 만한 상태
+   dEn=['table', 'staple'] dKo=['불안한', '위독한'] chips=[['sta', 'ble']] decoy=['star', 'bale']
+   ex=Let me confirm he's eating and the labs are stable first. / 먼저 식사가 되는지랑 검사 수치가 안정적인지부터 확인할게요.
+   USE[anion gap 종결 판단#2] Let me confirm he's eating and the labs are stable first.
+w-resolve *CHG* | resolve | 해결되다 | tag=상태 | cue=문제가 풀려 더는 남지 않고 사라질 때
+   dEn=['resume', 'reserve'] dKo=['악화되다', '반복되다'] chips=[['re', 'solve']] decoy=['rest', 'sold']
+   ex=His acid levels are back to normal, so the DKA has resolved. / 산 수치가 정상으로 돌아와서, 케토산증이 해결됐어요.
+   USE[anion gap 종결 판단#3] His acid levels are back to normal, so the DKA has resolved.
+w-tolerate *CHG* | tolerate | 견디다 | tag=상태 | cue=먹거나 치료를 받을 때 탈이 없이 받아들일 때
+   dEn=['titrate', 'terminate'] dKo=['적정하다', '끝내다'] chips=[['tol', 'er', 'ate']] decoy=['toll', 'ear']
+   ex=Once he's tolerating food, we'll switch him to his home insulin. / 식사를 잘 견디시면, 평소 쓰시던 인슐린으로 바꿔 드릴게요.
+   USE[anion gap 종결 판단#4] Once he's tolerating food, we'll switch him to his home insulin.
+w-concentrate | concentrated | 농축되다 | tag=상태 | cue=물에 녹은 양이 많아 진하게 된
+   dEn=['contaminated', 'constricted'] dKo=['오염되다', '수축되다'] chips=[['con', 'cen', 'trat', 'ed']] decoy=['can', 'tent']
+   ex=Her sugar and blood are very concentrated, so we're correcting it slowly and safely. / 혈당이랑 혈액이 아주 농축돼 있어서, 천천히 안전하게 교정하고 있어요.
+   USE[HHS 고삼투 관리#0] Her sugar and blood are very concentrated, so we're correcting it slowly and safely.
+w-correct *CHG* | correct | 교정하다 | tag=동작 | cue=어긋난 수치를 정상 쪽으로 되돌려 놓을 때
+   dEn=['collect', 'connect'] dKo=['수집하다', '연결하다'] chips=[['cor', 'rect']] decoy=['core', 'rest']
+   ex=Her sugar and blood are very concentrated, so we're correcting it slowly and safely. / 혈당이랑 혈액이 아주 농축돼 있어서, 천천히 안전하게 교정하고 있어요.
+   USE[HHS 고삼투 관리#0] Her sugar and blood are very concentrated, so we're correcting it slowly and safely.
+   USE[HHS 고삼투 관리#3] Correcting her sodium too quickly could cause brain swelling, so we go slowly.
+   USE[교정속도 뇌부종 위험 인지#0] Correcting too quickly can cause dangerous brain swelling.
+w-affect | affect | 영향을 주다 | tag=상태 | cue=어떤 일이 다른 것에 변화를 일으킬 때
+   dEn=['effect', 'afford'] dKo=['영향을 막다', '이유를 대다'] chips=[['af', 'fect']] decoy=['aft', 'fact']
+   ex=Going too fast could affect her brain, so we take our time. / 너무 빠르게 하면 뇌에 영향을 줄 수 있어서, 시간을 두고 하고 있어요.
+   USE[HHS 고삼투 관리#1] Going too fast could affect her brain, so we take our time.
+w-brain | brain | 뇌 | tag=장기 | cue=머리뼈 안에서 생각과 의식을 맡은 장기
+   dEn=['train', 'grain'] dKo=['척수', '심장'] chips=[['brain']] decoy=['brawn']
+   ex=Going too fast could affect her brain, so we take our time. / 너무 빠르게 하면 뇌에 영향을 줄 수 있어서, 시간을 두고 하고 있어요.
+   USE[HHS 고삼투 관리#1] Going too fast could affect her brain, so we take our time.
+   USE[HHS 고삼투 관리#3] Correcting her sodium too quickly could cause brain swelling, so we go slowly.
+   USE[교정속도 뇌부종 위험 인지#0] Correcting too quickly can cause dangerous brain swelling.
+w-take | take | 걸리다 | tag=동작 | cue=일이 끝나기까지 시간이 들거나 약 효과가 나타나기까지 필요할 때
+   dEn=['taste', 'tame'] dKo=['끝나다', '줄어들다'] chips=[['take']] decoy=['tale']
+   ex=Going too fast could affect her brain, so we take our time. / 너무 빠르게 하면 뇌에 영향을 줄 수 있어서, 시간을 두고 하고 있어요.
+   USE[HHS 고삼투 관리#1] Going too fast could affect her brain, so we take our time.
+   USE[갑상선기능저하 점액수종 관리#4] As the hormone takes effect, her energy and temperature should slowly improve.
+w-mental | mental | 정신의 | tag=상태 | cue=생각·기억·의식 같은 마음의 작용에 관한
+   dEn=['metal', 'dental'] dKo=['치아의', '금속의'] chips=[['men', 'tal']] decoy=['met', 'tall']
+   ex=We'll watch her mental status closely as she improves. / 나아지는 동안 의식 상태를 자세히 지켜볼게요.
+   USE[HHS 고삼투 관리#2] We'll watch her mental status closely as she improves.
+w-status | status | 상태 | tag=상태 | cue=지금 얼마나 깨어 있고 반응하는지 같은 현재의 모습
+   dEn=['statue', 'stature'] dKo=['순서', '기간'] chips=[['sta', 'tus']] decoy=['star', 'bus']
+   ex=We'll watch her mental status closely as she improves. / 나아지는 동안 의식 상태를 자세히 지켜볼게요.
+   USE[HHS 고삼투 관리#2] We'll watch her mental status closely as she improves.
+   USE[교정속도 뇌부종 위험 인지#2] We're watching his neuro status while we correct carefully.
+   USE[DKA 뇌부종 급변 위기#1] I'm raising the head of the bed and rechecking his neuro status.
+w-improve *CHG* | improve | 나아지다 | tag=상태 | cue=전보다 좋은 쪽으로 바뀌어 갈 때
+   dEn=['approve', 'impose'] dKo=['나빠지다', '굳어지다'] chips=[['im', 'prove']] decoy=['ink', 'move']
+   ex=We'll watch her mental status closely as she improves. / 나아지는 동안 의식 상태를 자세히 지켜볼게요.
+   USE[HHS 고삼투 관리#2] We'll watch her mental status closely as she improves.
+   USE[갑상선기능저하 점액수종 관리#4] As the hormone takes effect, her energy and temperature should slowly improve.
+w-sodium | sodium | 나트륨 | tag=검사 | cue=몸의 수분 균형과 뇌세포에 영향을 주는 전해질
+   dEn=['calcium', 'selenium'] dKo=['칼슘', '마그네슘'] chips=[['so', 'di', 'um']] decoy=['sod', 'sum']
+   ex=Correcting her sodium too quickly could cause brain swelling, so we go slowly. / 나트륨을 너무 빨리 교정하면 뇌부종이 생길 수 있어서, 천천히 하고 있어요.
+   USE[HHS 고삼투 관리#3] Correcting her sodium too quickly could cause brain swelling, so we go slowly.
+w-cause | cause | 원인 | tag=소통 | cue=어떤 일이 생기게 만든 근본 까닭
+   dEn=['clause', 'course'] dKo=['결과', '증상'] chips=[['cause']] decoy=['pause']
+   ex=Correcting her sodium too quickly could cause brain swelling, so we go slowly. / 나트륨을 너무 빨리 교정하면 뇌부종이 생길 수 있어서, 천천히 하고 있어요.
+   USE[HHS 고삼투 관리#3] Correcting her sodium too quickly could cause brain swelling, so we go slowly.
+   USE[유발원인 동반 치료#1] Fixing the cause helps prevent this from coming back.
+   USE[유발원인 동반 치료#4] Once we know the cause, we can treat it and lower the risk of this happening again.
+w-swell | swelling | 부어오름 | tag=증상 | cue=물이 차거나 염증이 생겨 부피가 커진 상태
+   dEn=['spelling', 'shelling'] dKo=['붉어짐', '가려움'] chips=[['swell', 'ing']] decoy=['shell', 'sing']
+   ex=Correcting her sodium too quickly could cause brain swelling, so we go slowly. / 나트륨을 너무 빨리 교정하면 뇌부종이 생길 수 있어서, 천천히 하고 있어요.
+   USE[HHS 고삼투 관리#3] Correcting her sodium too quickly could cause brain swelling, so we go slowly.
+   USE[교정속도 뇌부종 위험 인지#0] Correcting too quickly can cause dangerous brain swelling.
+   USE[교정속도 뇌부종 위험 인지#3] If we correct him too fast, the swelling risk goes up.
+w-confusion | confusion | 혼란 | tag=증상 | cue=시간·장소·사람을 헷갈려 하며 갈피를 못 잡는 상태
+   dEn=['confession', 'conclusion'] dKo=['졸림', '무기력'] chips=[['con', 'fu', 'sion']] decoy=['cone', 'fun']
+   ex=Her confusion is starting to clear, which tells us she's responding well. / 혼란스러워하시던 게 나아지기 시작했는데, 이건 잘 반응하고 있다는 뜻이에요.
+   USE[HHS 고삼투 관리#4] Her confusion is starting to clear, which tells us she's responding well.
+w-respond *CHG* | respond | 반응하다 | tag=상태 | cue=치료나 자극을 주었을 때 환자가 좋은 변화를 보일 때
+   dEn=['respect', 'resend'] dKo=['거부하다', '피하다'] chips=[['re', 'spond']] decoy=['ran', 'sponge']
+   ex=Her confusion is starting to clear, which tells us she's responding well. / 혼란스러워하시던 게 나아지기 시작했는데, 이건 잘 반응하고 있다는 뜻이에요.
+   USE[HHS 고삼투 관리#4] Her confusion is starting to clear, which tells us she's responding well.
+   USE[부신위기 스테로이드 투여#4] His blood pressure is already responding well to the medicine.
+   USE[DKA 뇌부종 급변 위기#3] He was talking a minute ago and now he's barely responding, so I'm escalating this now.
+w-reach *CHG* | reach | 도달하다 | tag=수치 | cue=목표했던 지점이나 수치에 이르게 될 때
+   dEn=['reap', 'teach'] dKo=['출발하다', '벗어나다'] chips=[['reach']] decoy=['peach']
+   ex=Once his sugar reaches the threshold, we add dextrose while continuing insulin. / 혈당이 기준치에 도달하면, 인슐린은 유지하면서 포도당을 추가해요.
+   USE[저혈당 예방·포도당 병용#0] Once his sugar reaches the threshold, we add dextrose while continuing insulin.
+w-threshold | threshold | 기준치 | tag=수치 | cue=이 값을 넘거나 밑돌면 다음 조치를 하는 경계 수치
+   dEn=['thread', 'threat'] dKo=['평균치', '최댓값'] chips=[['thresh', 'old']] decoy=['fresh', 'bold']
+   ex=Once his sugar reaches the threshold, we add dextrose while continuing insulin. / 혈당이 기준치에 도달하면, 인슐린은 유지하면서 포도당을 추가해요.
+   USE[저혈당 예방·포도당 병용#0] Once his sugar reaches the threshold, we add dextrose while continuing insulin.
+w-add | add | 추가하다 | tag=동작 | cue=이미 있는 것에 하나를 더 보탤 때
+   dEn=['aid', 'ask'] dKo=['빼다', '나누다'] chips=[['add']] decoy=['odd']
+   ex=Once his sugar reaches the threshold, we add dextrose while continuing insulin. / 혈당이 기준치에 도달하면, 인슐린은 유지하면서 포도당을 추가해요.
+   USE[저혈당 예방·포도당 병용#0] Once his sugar reaches the threshold, we add dextrose while continuing insulin.
+w-dextrose | dextrose | 포도당 | tag=약물 | cue=혈당이 떨어질 때 주는 당 수액이나 주사액
+   dEn=['lactose', 'fructose'] dKo=['유당', '과당'] chips=[['dex', 'trose']] decoy=['deck', 'rose']
+   ex=Once his sugar reaches the threshold, we add dextrose while continuing insulin. / 혈당이 기준치에 도달하면, 인슐린은 유지하면서 포도당을 추가해요.
+   USE[저혈당 예방·포도당 병용#0] Once his sugar reaches the threshold, we add dextrose while continuing insulin.
+   USE[심한 저혈당 의식소실 위기#1] I'm protecting his airway while the dextrose goes in.
+w-continue *CHG* | continue | 계속하다 | tag=동작 | cue=중간에 끊지 않고 이어서 할 때
+   dEn=['contain', 'contact'] dKo=['포기하다', '연기하다'] chips=[['con', 'tin', 'ue']] decoy=['cone', 'tune']
+   ex=Once his sugar reaches the threshold, we add dextrose while continuing insulin. / 혈당이 기준치에 도달하면, 인슐린은 유지하면서 포도당을 추가해요.
+   USE[저혈당 예방·포도당 병용#0] Once his sugar reaches the threshold, we add dextrose while continuing insulin.
+w-look *CHG* | look | 찾다 | tag=사정 | cue=무엇이 있는지 두리번거리며 알아내려 할 때
+   dEn=['lock', 'loop'] dKo=['잠그다', '숨기다'] chips=[['look']] decoy=['loop']
+   ex=We're looking for a trigger like an infection and treating it alongside the DKA. / 감염 같은 유발 원인을 찾고 있고, 케토산증과 함께 그것도 치료하고 있어요.
+   USE[유발원인 동반 치료#0] We're looking for a trigger like an infection and treating it alongside the DKA.
+w-trigger | trigger | 유발 요인 | tag=소통 | cue=질환이 갑자기 터져 나오게 만든 계기
+   dEn=['trainer', 'tracker'] dKo=['후유증', '예방책'] chips=[['trig', 'ger']] decoy=['trip', 'gear']
+   ex=We're looking for a trigger like an infection and treating it alongside the DKA. / 감염 같은 유발 원인을 찾고 있고, 케토산증과 함께 그것도 치료하고 있어요.
+   USE[유발원인 동반 치료#0] We're looking for a trigger like an infection and treating it alongside the DKA.
+w-infection | infection | 감염 | tag=증상 | cue=세균이나 바이러스가 몸에 들어와 퍼지며 일으키는 병
+   dEn=['infusion', 'inflection'] dKo=['염증', '출혈'] chips=[['in', 'fec', 'tion']] decoy=['inn', 'fact']
+   ex=We're looking for a trigger like an infection and treating it alongside the DKA. / 감염 같은 유발 원인을 찾고 있고, 케토산증과 함께 그것도 치료하고 있어요.
+   USE[유발원인 동반 치료#0] We're looking for a trigger like an infection and treating it alongside the DKA.
+   USE[유발원인 동반 치료#3] We're checking his blood and urine to find where the infection started.
+w-treat *CHG* | treat | 치료하다 | tag=약물 | cue=병을 낫게 하려고 약이나 처치를 할 때
+   dEn=['tread', 'trait'] dKo=['진단하다', '관찰하다'] chips=[['treat']] decoy=['trait']
+   ex=We're looking for a trigger like an infection and treating it alongside the DKA. / 감염 같은 유발 원인을 찾고 있고, 케토산증과 함께 그것도 치료하고 있어요.
+   USE[유발원인 동반 치료#0] We're looking for a trigger like an infection and treating it alongside the DKA.
+   USE[유발원인 동반 치료#4] Once we know the cause, we can treat it and lower the risk of this happening again.
+   USE[점액수종 혼수 위기#0] Her thyroid failure has become critical, and we're treating it urgently.
+w-alongside *CHG* | alongside | 병행하여 | tag=소통 | cue=한 가지를 하면서 다른 것도 같은 시간에 곁들여 할 때
+   dEn=['beside', 'outside'] dKo=['나중에', '대신에'] chips=[['a', 'long', 'side']] decoy=['lone', 'site']
+   ex=We're looking for a trigger like an infection and treating it alongside the DKA. / 감염 같은 유발 원인을 찾고 있고, 케토산증과 함께 그것도 치료하고 있어요.
+   USE[유발원인 동반 치료#0] We're looking for a trigger like an infection and treating it alongside the DKA.
+w-fix *CHG* | fix | 해결하다 | tag=동작 | cue=고장 나거나 어긋난 것을 바로잡아 문제가 없게 할 때
+   dEn=['fit', 'fax'] dKo=['미루다', '숨기다'] chips=[['fix']] decoy=['fax']
+   ex=Fixing the cause helps prevent this from coming back. / 원인을 해결하면 이게 다시 생기는 걸 막는 데 도움이 돼요.
+   USE[유발원인 동반 치료#1] Fixing the cause helps prevent this from coming back.
+w-help *CHG* | help | 돕다 | tag=소통 | cue=다른 이가 해내도록 힘을 보탤 때
+   dEn=['heal', 'hurt'] dKo=['말리다', '맡다'] chips=[['help']] decoy=['held']
+   ex=Fixing the cause helps prevent this from coming back. / 원인을 해결하면 이게 다시 생기는 걸 막는 데 도움이 돼요.
+   USE[유발원인 동반 치료#1] Fixing the cause helps prevent this from coming back.
+   USE[교정속도 뇌부종 위험 인지#1] A slow, steady pace is actually the safest way to help him.
+w-prevent | prevent | 막다 | tag=동작 | cue=나쁜 일이 생기기 전에 미리 일어나지 못하게 할 때
+   dEn=['present', 'prevail'] dKo=['놓치다', '부추기다'] chips=[['pre', 'vent']] decoy=['pen', 'went']
+   ex=Fixing the cause helps prevent this from coming back. / 원인을 해결하면 이게 다시 생기는 걸 막는 데 도움이 돼요.
+   USE[유발원인 동반 치료#1] Fixing the cause helps prevent this from coming back.
+w-culture *CHG* | culture | 배양검사 | tag=검사 | cue=혈액·소변 등을 키워 균이 자라는지 보는 검사
+   dEn=['vulture', 'capture'] dKo=['영상 검사', '심전도 검사'] chips=[['cul', 'ture']] decoy=['cut', 'tour']
+   ex=We've started cultures and will adjust treatment based on the results. / 배양 검사를 시작했고, 결과에 따라 치료를 조절할 거예요.
+   USE[유발원인 동반 치료#2] We've started cultures and will adjust treatment based on the results.
+w-base *CHG* | based on | 근거하다 | tag=소통 | cue=어떤 자료나 결과를 바탕으로 삼아 정할 때
+   dEn=['based at', 'passed on'] dKo=['위치하다', '넘겨주다'] chips=[['based'], ['on']] decoy=['base', 'no']
+   ex=We've started cultures and will adjust treatment based on the results. / 배양 검사를 시작했고, 결과에 따라 치료를 조절할 거예요.
+   USE[유발원인 동반 치료#2] We've started cultures and will adjust treatment based on the results.
+w-find | find | 찾아내다 | tag=사정 | cue=숨어 있던 것을 조사해 알아낼 때
+   dEn=['bind', 'mind'] dKo=['잃어버리다', '감추다'] chips=[['find']] decoy=['fine']
+   ex=We're checking his blood and urine to find where the infection started. / 감염이 어디서 시작됐는지 찾으려고 혈액이랑 소변을 확인하고 있어요.
+   USE[유발원인 동반 치료#3] We're checking his blood and urine to find where the infection started.
+w-lower | lower | 낮추다 | tag=수치 | cue=수치나 위험을 지금보다 아래로 내릴 때
+   dEn=['lend', 'lure'] dKo=['높이다', '늘이다'] chips=[['low', 'er']] decoy=['law', 'err']
+   ex=Once we know the cause, we can treat it and lower the risk of this happening again. / 원인을 알면 치료도 하고 다시 생길 위험도 낮출 수 있어요.
+   USE[유발원인 동반 치료#4] Once we know the cause, we can treat it and lower the risk of this happening again.
+w-risk | risk | 위험 | tag=상태 | cue=나쁜 결과가 일어날 가능성
+   dEn=['rink', 'rise'] dKo=['이득', '기회'] chips=[['risk']] decoy=['rink']
+   ex=Once we know the cause, we can treat it and lower the risk of this happening again. / 원인을 알면 치료도 하고 다시 생길 위험도 낮출 수 있어요.
+   USE[유발원인 동반 치료#4] Once we know the cause, we can treat it and lower the risk of this happening again.
+   USE[교정속도 뇌부종 위험 인지#3] If we correct him too fast, the swelling risk goes up.
+w-make | make | 만들다 | tag=동작 | cue=없던 것을 몸이 스스로 생겨나게 할 때
+   dEn=['mark', 'mask'] dKo=['부수다', '지우다'] chips=[['make']] decoy=['male']
+   ex=His body can't make enough stress hormone, so we're giving it now. / 몸이 스트레스 호르몬을 충분히 만들지 못해서, 지금 대신 주고 있어요.
+   USE[부신위기 스테로이드 투여#0] His body can't make enough stress hormone, so we're giving it now.
+w-stress | stress | 스트레스 | tag=상태 | cue=몸이 심한 병이나 수술로 큰 부담을 받는 상황
+   dEn=['stretch', 'strike'] dKo=['휴식', '안정'] chips=[['stress']] decoy=['dress']
+   ex=His body can't make enough stress hormone, so we're giving it now. / 몸이 스트레스 호르몬을 충분히 만들지 못해서, 지금 대신 주고 있어요.
+   USE[부신위기 스테로이드 투여#0] His body can't make enough stress hormone, so we're giving it now.
+   USE[부신위기 스테로이드 투여#2] We'll keep monitoring and give more if his stress level demands it.
+   USE[부신위기 스테로이드 투여#3] We're giving him a stress dose of steroid right away to support his body.
+w-hormone | hormone | 호르몬 | tag=장기 | cue=몸속 분비선이 혈액으로 내보내 기관을 조절하는 물질
+   dEn=['harmony', 'hardness'] dKo=['비타민', '효소'] chips=[['hor', 'mone']] decoy=['horn', 'moan']
+   ex=His body can't make enough stress hormone, so we're giving it now. / 몸이 스트레스 호르몬을 충분히 만들지 못해서, 지금 대신 주고 있어요.
+   USE[부신위기 스테로이드 투여#0] His body can't make enough stress hormone, so we're giving it now.
+   USE[갑상선기능저하 점액수종 관리#1] We're warming her gently and giving thyroid hormone.
+   USE[갑상선기능저하 점액수종 관리#4] As the hormone takes effect, her energy and temperature should slowly improve.
+w-give *CHG* | give | 주다 | tag=약물 | cue=약이나 수액을 환자에게 건넬 때
+   dEn=['dive', 'gift'] dKo=['받다', '빼앗다'] chips=[['give']] decoy=['dive']
+   ex=His body can't make enough stress hormone, so we're giving it now. / 몸이 스트레스 호르몬을 충분히 만들지 못해서, 지금 대신 주고 있어요.
+   USE[부신위기 스테로이드 투여#0] His body can't make enough stress hormone, so we're giving it now.
+   USE[부신위기 스테로이드 투여#2] We'll keep monitoring and give more if his stress level demands it.
+   USE[부신위기 스테로이드 투여#3] We're giving him a stress dose of steroid right away to support his body.
+w-steroid | steroid | 스테로이드 | tag=약물 | cue=염증을 가라앉히고 부신 호르몬 대신 쓰는 약
+   dEn=['antibiotic', 'analgesic'] dKo=['항생제', '진통제'] chips=[['ster', 'oid']] decoy=['star', 'void']
+   ex=This steroid can quickly stabilize his blood pressure. / 이 스테로이드가 혈압을 빠르게 안정시켜 줄 수 있어요.
+   USE[부신위기 스테로이드 투여#1] This steroid can quickly stabilize his blood pressure.
+   USE[부신위기 스테로이드 투여#3] We're giving him a stress dose of steroid right away to support his body.
+   USE[부신위기 순환붕괴#0] Let's push the stress-dose steroid and start a pressor together now.
+w-stabilize | stabilize | 안정시키다 | tag=동작 | cue=흔들리던 수치를 일정하게 붙잡아 놓을 때
+   dEn=['sterilize', 'stimulate'] dKo=['멸균하다', '자극하다'] chips=[['sta', 'bi', 'lize']] decoy=['star', 'lie']
+   ex=This steroid can quickly stabilize his blood pressure. / 이 스테로이드가 혈압을 빠르게 안정시켜 줄 수 있어요.
+   USE[부신위기 스테로이드 투여#1] This steroid can quickly stabilize his blood pressure.
+w-demand *CHG* | demand | 요구하다 | tag=소통 | cue=상황이나 규정이 더 많은 것을 내놓으라고 할 때
+   dEn=['deny', 'divide'] dKo=['거절하다', '나누다'] chips=[['de', 'mand']] decoy=['den', 'mad']
+   ex=We'll keep monitoring and give more if his stress level demands it. / 계속 지켜보다가 스트레스 수준이 필요로 하면 더 드릴 거예요.
+   USE[부신위기 스테로이드 투여#2] We'll keep monitoring and give more if his stress level demands it.
+w-support | support | 지지하다 | tag=동작 | cue=무너지지 않게 곁에서 받쳐 주거나 기능을 도울 때
+   dEn=['suppress', 'suppose'] dKo=['억제하다', '가정하다'] chips=[['sup', 'port']] decoy=['sun', 'post']
+   ex=We're giving him a stress dose of steroid right away to support his body. / 몸을 지지하려고 스트레스 용량 스테로이드를 지금 바로 드리고 있어요.
+   USE[부신위기 스테로이드 투여#3] We're giving him a stress dose of steroid right away to support his body.
+   USE[점액수종 혼수 위기#1] We're giving thyroid hormone and warming and supporting her body.
+w-medicine | medicine | 약 | tag=약물 | cue=병을 낫게 하려고 먹거나 맞는 물질을 두루 부르는 말
+   dEn=['medal', 'median'] dKo=['붕대', '주사기'] chips=[['med', 'i', 'cine']] decoy=['mad', 'cane']
+   ex=His blood pressure is already responding well to the medicine. / 혈압이 벌써 약에 잘 반응하고 있어요.
+   USE[부신위기 스테로이드 투여#4] His blood pressure is already responding well to the medicine.
+   USE[갑상선폭풍 위기#1] We're giving several medicines together to bring it under control.
+   USE[갑상선폭풍 위기#4] We're starting the antithyroid medicine and beta-blocker right away.
+w-thyroid | thyroid | 갑상선 | tag=장기 | cue=목 앞쪽 나비 모양 분비샘, 몸의 대사 속도를 조절
+   dEn=['thorax', 'tonsil'] dKo=['부신', '췌장'] chips=[['thy', 'roid']] decoy=['the', 'void']
+   ex=Her thyroid is very low, which slows her heart and drops her temperature. / 갑상선 기능이 아주 낮아서, 심장이 느려지고 체온이 떨어지고 있어요.
+   USE[갑상선기능저하 점액수종 관리#0] Her thyroid is very low, which slows her heart and drops her temperature.
+   USE[갑상선기능저하 점액수종 관리#1] We're warming her gently and giving thyroid hormone.
+   USE[갑상선폭풍 위기#0] Her thyroid is dangerously overactive, causing this fever and racing heart.
+w-temperature | temperature | 체온 | tag=수치 | cue=열이 나거나 식은 정도를 재는 숫자
+   dEn=['temperament', 'temporary'] dKo=['맥박', '혈압'] chips=[['tem', 'per', 'a', 'ture']] decoy=['ten', 'pear']
+   ex=Her thyroid is very low, which slows her heart and drops her temperature. / 갑상선 기능이 아주 낮아서, 심장이 느려지고 체온이 떨어지고 있어요.
+   USE[갑상선기능저하 점액수종 관리#0] Her thyroid is very low, which slows her heart and drops her temperature.
+   USE[갑상선기능저하 점액수종 관리#2] We'll monitor her heart rate and temperature very closely.
+   USE[갑상선기능저하 점액수종 관리#4] As the hormone takes effect, her energy and temperature should slowly improve.
+w-warm *CHG* | warm | 따뜻하게 하다 | tag=동작 | cue=찬 몸에 열을 보태 체온을 올려 줄 때
+   dEn=['warn', 'worm'] dKo=['차갑게 하다', '닦아 주다'] chips=[['warm']] decoy=['worm']
+   ex=We're warming her gently and giving thyroid hormone. / 천천히 따뜻하게 해드리면서 갑상선 호르몬을 드리고 있어요.
+   USE[갑상선기능저하 점액수종 관리#1] We're warming her gently and giving thyroid hormone.
+   USE[점액수종 혼수 위기#1] We're giving thyroid hormone and warming and supporting her body.
+   USE[점액수종 혼수 위기#4] Her body needs the thyroid hormone to wake back up and warm up safely.
+w-gently | gently | 부드럽게 | tag=동작 | cue=힘을 세게 주지 않고 조심스럽고 다정하게
+   dEn=['generally', 'genuinely'] dKo=['일반적으로', '진심으로'] chips=[['gent', 'ly']] decoy=['gene', 'lie']
+   ex=We're warming her gently and giving thyroid hormone. / 천천히 따뜻하게 해드리면서 갑상선 호르몬을 드리고 있어요.
+   USE[갑상선기능저하 점액수종 관리#1] We're warming her gently and giving thyroid hormone.
+w-effect | effect | 효과 | tag=약물 | cue=약을 쓴 뒤 몸에 나타나는 변화
+   dEn=['affect', 'effort'] dKo=['원인', '노력'] chips=[['ef', 'fect']] decoy=['elf', 'fact']
+   ex=As the hormone takes effect, her energy and temperature should slowly improve. / 호르몬이 효과를 내면서 기운이랑 체온이 서서히 좋아질 거예요.
+   USE[갑상선기능저하 점액수종 관리#4] As the hormone takes effect, her energy and temperature should slowly improve.
+w-energy | energy | 기운 | tag=증상 | cue=움직일 힘이 있는 정도, 환자가 얼마나 활기찬지
+   dEn=['enemy', 'entry'] dKo=['식욕', '통증'] chips=[['en', 'er', 'gy']] decoy=['end', 'gym']
+   ex=As the hormone takes effect, her energy and temperature should slowly improve. / 호르몬이 효과를 내면서 기운이랑 체온이 서서히 좋아질 거예요.
+   USE[갑상선기능저하 점액수종 관리#4] As the hormone takes effect, her energy and temperature should slowly improve.
+w-neuro | neuro | 신경학적 | tag=사정 | cue=의식·동공·움직임처럼 신경 기능을 따지는
+   dEn=['neutral', 'nervous'] dKo=['호흡기의', '순환기의'] chips=[['neu', 'ro']] decoy=['new', 'row']
+   ex=We're watching his neuro status while we correct carefully. / 조심스럽게 교정하면서 신경학적 상태를 지켜보고 있어요.
+   USE[교정속도 뇌부종 위험 인지#2] We're watching his neuro status while we correct carefully.
+   USE[DKA 뇌부종 급변 위기#1] I'm raising the head of the bed and rechecking his neuro status.
+w-protect | protect | 지키다 | tag=동작 | cue=해로운 것에서 막아 안전하게 둘 때
+   dEn=['protest', 'project'] dKo=['노출시키다', '소모하다'] chips=[['pro', 'tect']] decoy=['prom', 'text']
+   ex=I know it feels slow, but this pace protects his brain. / 느리게 느껴지실 수 있지만, 이 속도가 뇌를 지켜드리는 거예요.
+   USE[교정속도 뇌부종 위험 인지#4] I know it feels slow, but this pace protects his brain.
+   USE[DKA 뇌부종 급변 위기#2] We're acting immediately to protect his brain.
+   USE[심한 저혈당 의식소실 위기#1] I'm protecting his airway while the dextrose goes in.
+w-sudden | sudden | 갑작스러운 | tag=상태 | cue=예고 없이 한순간에 일어나는
+   dEn=['hidden', 'sullen'] dKo=['서서히 오는', '변함없는'] chips=[['sud', 'den']] decoy=['sun', 'hen']
+   ex=This sudden change is serious and I'm calling the team right now. / 이렇게 갑작스러운 변화는 심각해서, 지금 바로 팀을 부르고 있어요.
+   USE[DKA 뇌부종 급변 위기#0] This sudden change is serious and I'm calling the team right now.
+   USE[부신위기 순환붕괴#3] His pressure crashed suddenly, so this looks like true adrenal crisis.
+w-change | change | 변화 | tag=상태 | cue=전과 달라진 점
+   dEn=['chance', 'charge'] dKo=['원인', '위험'] chips=[['change']] decoy=['chance']
+   ex=This sudden change is serious and I'm calling the team right now. / 이렇게 갑작스러운 변화는 심각해서, 지금 바로 팀을 부르고 있어요.
+   USE[DKA 뇌부종 급변 위기#0] This sudden change is serious and I'm calling the team right now.
+w-serious | serious | 심각한 | tag=상태 | cue=가볍게 넘기기 어려울 만큼 문제가 큰
+   dEn=['various', 'curious'] dKo=['호기심 많은', '다양한'] chips=[['se', 'ri', 'ous']] decoy=['sea', 'rib']
+   ex=This sudden change is serious and I'm calling the team right now. / 이렇게 갑작스러운 변화는 심각해서, 지금 바로 팀을 부르고 있어요.
+   USE[DKA 뇌부종 급변 위기#0] This sudden change is serious and I'm calling the team right now.
+w-call *CHG* | call | 부르다 | tag=소통 | cue=도움이 필요해 누군가에게 와 달라고 알릴 때
+   dEn=['fall', 'pull'] dKo=['쫓아가다', '밀어내다'] chips=[['call']] decoy=['cell']
+   ex=This sudden change is serious and I'm calling the team right now. / 이렇게 갑작스러운 변화는 심각해서, 지금 바로 팀을 부르고 있어요.
+   USE[DKA 뇌부종 급변 위기#0] This sudden change is serious and I'm calling the team right now.
+   USE[부신위기 순환붕괴#2] Call the intensivist — this is a true adrenal crisis.
+   USE[내분비 위기 다장기 악화#3] His kidneys and lungs are both under strain, so we've called in extra specialists.
+w-raise *CHG* | raise | 올리다 | tag=동작 | cue=위치나 수치를 지금보다 위로 끌어 올릴 때
+   dEn=['rinse', 'praise'] dKo=['내리다', '비우다'] chips=[['raise']] decoy=['rise']
+   ex=I'm raising the head of the bed and rechecking his neuro status. / 침대 머리를 올리고 신경학적 상태를 다시 확인하고 있어요.
+   USE[DKA 뇌부종 급변 위기#1] I'm raising the head of the bed and rechecking his neuro status.
+w-act *CHG* | act | 조치하다 | tag=동작 | cue=상황에 맞게 곧바로 필요한 행동에 옮길 때
+   dEn=['aim', 'add'] dKo=['미루다', '물러나다'] chips=[['act']] decoy=['ant']
+   ex=We're acting immediately to protect his brain. / 뇌를 지키려고 바로 조치하고 있어요.
+   USE[DKA 뇌부종 급변 위기#2] We're acting immediately to protect his brain.
+w-immediately | immediately | 즉시 | tag=동작 | cue=조금도 지체하지 않고 곧바로
+   dEn=['immensely', 'imminently'] dKo=['엄청나게', '곧 닥쳐서'] chips=[['im', 'medi', 'ate', 'ly']] decoy=['ink', 'lie']
+   ex=We're acting immediately to protect his brain. / 뇌를 지키려고 바로 조치하고 있어요.
+   USE[DKA 뇌부종 급변 위기#2] We're acting immediately to protect his brain.
+w-escalate *CHG* | escalate | 상급 보고하다 | tag=소통 | cue=혼자 해결하지 않고 더 높은 책임자에게 올려 알릴 때
+   dEn=['escape', 'evaluate'] dKo=['탈출하다', '평가하다'] chips=[['es', 'ca', 'late']] decoy=['eat', 'cat']
+   ex=He was talking a minute ago and now he's barely responding, so I'm escalating this now. / 방금 전까지 말씀하셨는데 지금은 거의 반응이 없으셔서, 바로 상급 보고를 하고 있어요.
+   USE[DKA 뇌부종 급변 위기#3] He was talking a minute ago and now he's barely responding, so I'm escalating this now.
+   USE[내분비 위기 다장기 악화#2] We're escalating his care and staying right at his bedside.
+w-side | side | 곁 | tag=동작 | cue=침상이나 몸에서 바로 옆 자리
+   dEn=['site', 'size'] dKo=['위쪽', '아래'] chips=[['side']] decoy=['wide']
+   ex=The doctor is on the way, and I'm staying right at his side. / 의사 선생님이 오고 계시고, 저는 바로 옆에 있을게요.
+   USE[DKA 뇌부종 급변 위기#4] The doctor is on the way, and I'm staying right at his side.
+w-overactive | overactive | 과활성의 | tag=상태 | cue=정상 속도보다 훨씬 활발하게 돌아가는
+   dEn=['inactive', 'overweight'] dKo=['비활성의', '과체중의'] chips=[['over', 'ac', 'tive']] decoy=['oven', 'act']
+   ex=Her thyroid is dangerously overactive, causing this fever and racing heart. / 갑상선이 위험할 만큼 너무 활발해져서 열이 나고 심장이 빠르게 뛰고 있어요.
+   USE[갑상선폭풍 위기#0] Her thyroid is dangerously overactive, causing this fever and racing heart.
+w-fever | fever | 열 | tag=증상 | cue=체온이 기준선 이상으로 올라 오한과 함께 몸이 뜨거워지는 증상
+   dEn=['fewer', 'feeder'] dKo=['기침', '두통'] chips=[['fe', 'ver']] decoy=['few', 'very']
+   ex=Her thyroid is dangerously overactive, causing this fever and racing heart. / 갑상선이 위험할 만큼 너무 활발해져서 열이 나고 심장이 빠르게 뛰고 있어요.
+   USE[갑상선폭풍 위기#0] Her thyroid is dangerously overactive, causing this fever and racing heart.
+   USE[갑상선폭풍 위기#3] Her heart rate is racing and her fever keeps climbing, so this is a crisis.
+w-race *CHG* | race | 빠르게 뛰다 | tag=상태 | cue=심장이 평소보다 훨씬 빨리 뛰며 달리듯 할 때
+   dEn=['ride', 'rise'] dKo=['느리게 뛰다', '멈춰 서다'] chips=[['race']] decoy=['rice']
+   ex=Her thyroid is dangerously overactive, causing this fever and racing heart. / 갑상선이 위험할 만큼 너무 활발해져서 열이 나고 심장이 빠르게 뛰고 있어요.
+   USE[갑상선폭풍 위기#0] Her thyroid is dangerously overactive, causing this fever and racing heart.
+   USE[갑상선폭풍 위기#3] Her heart rate is racing and her fever keeps climbing, so this is a crisis.
+w-several | several | 여러 | tag=수치 | cue=한두 개보다는 많지만 아주 많지는 않은 수
+   dEn=['severe', 'serial'] dKo=['심한', '연속의'] chips=[['sev', 'er', 'al']] decoy=['set', 'era']
+   ex=We're giving several medicines together to bring it under control. / 조절하려고 여러 약을 같이 드리고 있어요.
+   USE[갑상선폭풍 위기#1] We're giving several medicines together to bring it under control.
+   USE[내분비 위기 다장기 악화#0] Several of his organs are under stress, and the whole team is involved.
+w-control | control | 조절 | tag=소통 | cue=상태가 멋대로 흐르지 않도록 다스려 안정시키는 일
+   dEn=['console', 'contrast'] dKo=['대조', '위로'] chips=[['con', 'trol']] decoy=['cone', 'toll']
+   ex=We're giving several medicines together to bring it under control. / 조절하려고 여러 약을 같이 드리고 있어요.
+   USE[갑상선폭풍 위기#1] We're giving several medicines together to bring it under control.
+w-cool *CHG* | cool | 식히다 | tag=동작 | cue=열이 오른 몸을 찬 담요나 수액으로 내려 줄 때
+   dEn=['coil', 'cook'] dKo=['데우다', '끓이다'] chips=[['cool']] decoy=['coal']
+   ex=We're cooling her and watching her heart continuously. / 체온을 낮춰드리면서 심장을 계속 지켜보고 있어요.
+   USE[갑상선폭풍 위기#2] We're cooling her and watching her heart continuously.
+w-continuously | continuously | 계속해서 | tag=동작 | cue=중간에 끊김 없이 쭉 이어서
+   dEn=['consciously', 'conveniently'] dKo=['의식적으로', '편리하게'] chips=[['con', 'tin', 'uous', 'ly']] decoy=['cone', 'tune']
+   ex=We're cooling her and watching her heart continuously. / 체온을 낮춰드리면서 심장을 계속 지켜보고 있어요.
+   USE[갑상선폭풍 위기#2] We're cooling her and watching her heart continuously.
+w-climb *CHG* | climb | 오르다 | tag=수치 | cue=수치나 열이 계속 위로 올라갈 때
+   dEn=['clamp', 'clip'] dKo=['내려가다', '흔들리다'] chips=[['climb']] decoy=['limb']
+   ex=Her heart rate is racing and her fever keeps climbing, so this is a crisis. / 심박수가 빠르게 뛰고 열도 계속 오르고 있어서, 이건 위기 상황이에요.
+   USE[갑상선폭풍 위기#3] Her heart rate is racing and her fever keeps climbing, so this is a crisis.
+w-crisis | crisis | 위기 | tag=위기 | cue=당장 손쓰지 않으면 생명이 위험해지는 갑작스러운 고비
+   dEn=['critic', 'cruise'] dKo=['회복', '휴식'] chips=[['cri', 'sis']] decoy=['cry', 'six']
+   ex=Her heart rate is racing and her fever keeps climbing, so this is a crisis. / 심박수가 빠르게 뛰고 열도 계속 오르고 있어서, 이건 위기 상황이에요.
+   USE[갑상선폭풍 위기#3] Her heart rate is racing and her fever keeps climbing, so this is a crisis.
+   USE[부신위기 순환붕괴#2] Call the intensivist — this is a true adrenal crisis.
+   USE[부신위기 순환붕괴#3] His pressure crashed suddenly, so this looks like true adrenal crisis.
+w-push | push | 빠르게 주다 | tag=약물 | cue=주사기로 약을 한 번에 밀어 넣어 짧은 시간에 줄 때
+   dEn=['rush', 'pour'] dKo=['꺼내 두다', '닦아 내다'] chips=[['push']] decoy=['bush']
+   ex=Let's push the stress-dose steroid and start a pressor together now. / 스트레스 용량 스테로이드를 주고 승압제도 같이 시작해요.
+   USE[부신위기 순환붕괴#0] Let's push the stress-dose steroid and start a pressor together now.
+   USE[심한 저혈당 의식소실 위기#0] Check a stat glucose and push D50 now — he's unresponsive.
+w-pressor *CHG* | pressor | 승압제(약칭) | tag=약물 | cue=혈압을 끌어 올리려고 혈관을 조이는 약의 줄임말
+   dEn=['processor', 'professor'] dKo=['이뇨제(약칭)', '진정제(약칭)'] chips=[['pres', 'sor']] decoy=['press', 'soar']
+   ex=Let's push the stress-dose steroid and start a pressor together now. / 스트레스 용량 스테로이드를 주고 승압제도 같이 시작해요.
+   USE[부신위기 순환붕괴#0] Let's push the stress-dose steroid and start a pressor together now.
+   USE[부신위기 순환붕괴#4] The pressor is titrating up, and his pressure is starting to respond.
+w-bolus | bolus | 볼루스 | tag=약물 | cue=정해진 양의 약이나 수액을 짧은 시간에 한꺼번에 주는 방식
+   dEn=['bonus', 'focus'] dKo=['점적', '패치'] chips=[['bo', 'lus']] decoy=['bow', 'plus']
+   ex=I'm giving a fluid bolus while we titrate the vasopressor. / 승압제를 적정하는 동안 수액을 볼루스로 주고 있어요.
+   USE[부신위기 순환붕괴#1] I'm giving a fluid bolus while we titrate the vasopressor.
+w-vasopressor *CHG* | vasopressor | 혈관수축 승압제 | tag=약물 | cue=혈관을 조여 혈압을 올리는 약물 계열의 정식 이름
+   dEn=['vasodilator', 'anticoagulant'] dKo=['혈관확장제', '항응고제'] chips=[['vas', 'o', 'pres', 'sor']] decoy=['van', 'press']
+   ex=I'm giving a fluid bolus while we titrate the vasopressor. / 승압제를 적정하는 동안 수액을 볼루스로 주고 있어요.
+   USE[부신위기 순환붕괴#1] I'm giving a fluid bolus while we titrate the vasopressor.
+w-intensivist | intensivist | 중환자전문의 | tag=소통 | cue=중환자실에서 가장 아픈 환자를 맡아 총괄하는 전문 의사
+   dEn=['internist', 'interpreter'] dKo=['내과 전문의', '통역사'] chips=[['in', 'ten', 'siv', 'ist']] decoy=['ink', 'sit']
+   ex=Call the intensivist — this is a true adrenal crisis. / 중환자전문의를 불러 주세요, 진짜 부신위기예요.
+   USE[부신위기 순환붕괴#2] Call the intensivist — this is a true adrenal crisis.
+w-true | true | 진짜의 | tag=상태 | cue=겉보기나 가짜가 아니라 사실 그대로인
+   dEn=['pure', 'tight'] dKo=['가짜의', '가벼운'] chips=[['true']] decoy=['tree']
+   ex=Call the intensivist — this is a true adrenal crisis. / 중환자전문의를 불러 주세요, 진짜 부신위기예요.
+   USE[부신위기 순환붕괴#2] Call the intensivist — this is a true adrenal crisis.
+   USE[부신위기 순환붕괴#3] His pressure crashed suddenly, so this looks like true adrenal crisis.
+w-adrenal | adrenal | 부신의 | tag=장기 | cue=콩팥 위에 얹혀 스트레스 호르몬을 만드는 분비샘에 관한
+   dEn=['arterial', 'adenoid'] dKo=['동맥의', '편도의'] chips=[['a', 'dre', 'nal']] decoy=['arm', 'nail']
+   ex=Call the intensivist — this is a true adrenal crisis. / 중환자전문의를 불러 주세요, 진짜 부신위기예요.
+   USE[부신위기 순환붕괴#2] Call the intensivist — this is a true adrenal crisis.
+   USE[부신위기 순환붕괴#3] His pressure crashed suddenly, so this looks like true adrenal crisis.
+w-crash *CHG* | crash | 급락하다 | tag=위기 | cue=수치가 갑자기 뚝 떨어지며 상태가 무너질 때
+   dEn=['crush', 'crack'] dKo=['급등하다', '천천히 낫다'] chips=[['crash']] decoy=['crush']
+   ex=His pressure crashed suddenly, so this looks like true adrenal crisis. / 혈압이 갑자기 떨어져서, 진짜 부신위기처럼 보여요.
+   USE[부신위기 순환붕괴#3] His pressure crashed suddenly, so this looks like true adrenal crisis.
+w-stat *CHG* | stat | 당장 시행 | tag=소통 | cue=처방에 '지금 바로' 하라는 표시로 붙이는 말
+   dEn=['slat', 'spat'] dKo=['정기 시행', '보류 지시'] chips=[['stat']] decoy=['star']
+   ex=Check a stat glucose and push D50 now — he's unresponsive. / 지금 즉시 혈당 확인하고 D50 주세요, 반응이 없어요.
+   USE[심한 저혈당 의식소실 위기#0] Check a stat glucose and push D50 now — he's unresponsive.
+w-unresponsive | unresponsive | 반응이 없는 | tag=상태 | cue=불러도 만져도 눈이나 몸이 반응하지 않는
+   dEn=['unresolved', 'unreliable'] dKo=['해결되지 않은', '믿을 수 없는'] chips=[['un', 're', 'spon', 'sive']] decoy=['use', 'ran']
+   ex=Check a stat glucose and push D50 now — he's unresponsive. / 지금 즉시 혈당 확인하고 D50 주세요, 반응이 없어요.
+   USE[심한 저혈당 의식소실 위기#0] Check a stat glucose and push D50 now — he's unresponsive.
+   USE[심한 저혈당 의식소실 위기#3] He was drowsy and now he's completely unresponsive, so his sugar must be critically low.
+w-airway | airway | 기도 | tag=장기 | cue=입과 코에서 폐까지 공기가 지나가는 길
+   dEn=['highway', 'hallway'] dKo=['식도', '혈관'] chips=[['air', 'way']] decoy=['hair', 'wait']
+   ex=I'm protecting his airway while the dextrose goes in. / 포도당이 들어가는 동안 기도를 보호하고 있어요.
+   USE[심한 저혈당 의식소실 위기#1] I'm protecting his airway while the dextrose goes in.
+w-drowsy | drowsy | 졸린 | tag=상태 | cue=눈이 감기고 깨어 있으려 해도 잠이 오는 상태
+   dEn=['dreamy', 'dizzy'] dKo=['어지러운', '멍한'] chips=[['drow', 'sy']] decoy=['draw', 'spy']
+   ex=He was drowsy and now he's completely unresponsive, so his sugar must be critically low. / 졸려하시더니 지금은 아예 반응이 없으셔서, 혈당이 위험할 정도로 낮은 것 같아요.
+   USE[심한 저혈당 의식소실 위기#3] He was drowsy and now he's completely unresponsive, so his sugar must be critically low.
+w-critically | critically | 위험할 정도로 | tag=상태 | cue=생명이 걸릴 만큼 위태로운 수준으로
+   dEn=['crucially', 'cleverly'] dKo=['영리하게', '결정적으로'] chips=[['crit', 'i', 'cal', 'ly']] decoy=['cry', 'ill']
+   ex=He was drowsy and now he's completely unresponsive, so his sugar must be critically low. / 졸려하시더니 지금은 아예 반응이 없으셔서, 혈당이 위험할 정도로 낮은 것 같아요.
+   USE[심한 저혈당 의식소실 위기#3] He was drowsy and now he's completely unresponsive, so his sugar must be critically low.
+w-shortly | shortly | 곧 | tag=동작 | cue=머지않아 잠시 뒤에
+   dEn=['sharply', 'shyly'] dKo=['날카롭게', '수줍게'] chips=[['short', 'ly']] decoy=['shirt', 'lie']
+   ex=His sugar's coming up, so let's stay by him and recheck it shortly. / 혈당이 올라오고 있으니까, 옆에서 지켜보다가 곧 다시 확인해요.
+   USE[심한 저혈당 의식소실 위기#4] His sugar's coming up, so let's stay by him and recheck it shortly.
+w-failure | failure | 부전 | tag=상태 | cue=장기가 해야 할 일을 더는 감당하지 못하는 상태
+   dEn=['feature', 'fixture'] dKo=['성공', '예방'] chips=[['fail', 'ure']] decoy=['fall', 'sure']
+   ex=Her thyroid failure has become critical, and we're treating it urgently. / 갑상선 기능부전이 위중해져서, 응급으로 치료하고 있어요.
+   USE[점액수종 혼수 위기#0] Her thyroid failure has become critical, and we're treating it urgently.
+w-become | become | 되다 | tag=상태 | cue=시간이 지나 어떤 상태로 바뀌어 갈 때
+   dEn=['begin', 'belong'] dKo=['속하다', '남다'] chips=[['be', 'come']] decoy=['bee', 'cone']
+   ex=Her thyroid failure has become critical, and we're treating it urgently. / 갑상선 기능부전이 위중해져서, 응급으로 치료하고 있어요.
+   USE[점액수종 혼수 위기#0] Her thyroid failure has become critical, and we're treating it urgently.
+w-critical | critical | 위중한 | tag=상태 | cue=생명이 위태로워 당장 집중 치료가 필요한
+   dEn=['typical', 'cynical'] dKo=['전형적인', '냉소적인'] chips=[['crit', 'i', 'cal']] decoy=['cry', 'can']
+   ex=Her thyroid failure has become critical, and we're treating it urgently. / 갑상선 기능부전이 위중해져서, 응급으로 치료하고 있어요.
+   USE[점액수종 혼수 위기#0] Her thyroid failure has become critical, and we're treating it urgently.
+   USE[점액수종 혼수 위기#3] She won't respond and she feels ice cold, so this is critical.
+w-urgently | urgently | 응급으로 | tag=동작 | cue=미룰 수 없이 급하게 서둘러서
+   dEn=['gradually', 'cautiously'] dKo=['점차', '조심스레'] chips=[['ur', 'gent', 'ly']] decoy=['our', 'gene']
+   ex=Her thyroid failure has become critical, and we're treating it urgently. / 갑상선 기능부전이 위중해져서, 응급으로 치료하고 있어요.
+   USE[점액수종 혼수 위기#0] Her thyroid failure has become critical, and we're treating it urgently.
+w-wake | wake | 깨어나다 | tag=상태 | cue=잠이나 의식 저하 상태에서 다시 눈을 뜨고 정신이 들 때
+   dEn=['wade', 'wane'] dKo=['잠들다', '쓰러지다'] chips=[['wake']] decoy=['wave']
+   ex=Her body needs the thyroid hormone to wake back up and warm up safely. / 몸이 다시 깨어나고 안전하게 따뜻해지려면 갑상선 호르몬이 필요해요.
+   USE[점액수종 혼수 위기#4] Her body needs the thyroid hormone to wake back up and warm up safely.
+w-organ *CHG* | organ | 장기 | tag=장기 | cue=심장·간·콩팥처럼 몸속에서 한 가지 기능을 맡는 기관
+   dEn=['origin', 'orphan'] dKo=['뼈', '근육'] chips=[['or', 'gan']] decoy=['oar', 'gain']
+   ex=Several of his organs are under stress, and the whole team is involved. / 여러 장기가 스트레스를 받고 있어서, 전체 팀이 함께하고 있어요.
+   USE[내분비 위기 다장기 악화#0] Several of his organs are under stress, and the whole team is involved.
+w-involve *CHG* | involve | 관여하다 | tag=소통 | cue=일에 직접 끼어들어 맡은 몫을 하게 될 때
+   dEn=['invest', 'invite'] dKo=['초대하다', '투자하다'] chips=[['in', 'volve']] decoy=['ink', 'solve']
+   ex=Several of his organs are under stress, and the whole team is involved. / 여러 장기가 스트레스를 받고 있어서, 전체 팀이 함께하고 있어요.
+   USE[내분비 위기 다장기 악화#0] Several of his organs are under stress, and the whole team is involved.
+w-update | update | 알려주다 | tag=소통 | cue=새로 달라진 사항을 최신으로 다시 전해 줄 때
+   dEn=['upload', 'uphold'] dKo=['숨겨 두다', '물러서다'] chips=[['up', 'date']] decoy=['cup', 'data']
+   ex=I'll give you a clear update as each specialist weighs in. / 각 전문의 의견이 나올 때마다 명확하게 알려드릴게요.
+   USE[내분비 위기 다장기 악화#1] I'll give you a clear update as each specialist weighs in.
+   USE[내분비 위기 다장기 악화#4] I'll keep you updated honestly, even when the news is hard.
+w-specialist | specialist | 전문의 | tag=소통 | cue=한 분야만 깊이 맡는 의사, 필요할 때 협진을 부르는
+   dEn=['therapist', 'pharmacist'] dKo=['약사', '치료사'] chips=[['spe', 'cial', 'ist']] decoy=['spa', 'list']
+   ex=I'll give you a clear update as each specialist weighs in. / 각 전문의 의견이 나올 때마다 명확하게 알려드릴게요.
+   USE[내분비 위기 다장기 악화#1] I'll give you a clear update as each specialist weighs in.
+   USE[내분비 위기 다장기 악화#3] His kidneys and lungs are both under strain, so we've called in extra specialists.
+w-weigh *CHG* | weigh | 의견을 내다 | tag=소통 | cue=각자 가진 판단을 말에 얹어 논의에 참여할 때
+   dEn=['wear', 'weave'] dKo=['입을 다물다', '자리를 뜨다'] chips=[['weigh']] decoy=['weight']
+   ex=I'll give you a clear update as each specialist weighs in. / 각 전문의 의견이 나올 때마다 명확하게 알려드릴게요.
+   USE[내분비 위기 다장기 악화#1] I'll give you a clear update as each specialist weighs in.
+w-care *CHG* | care | 돌봄 | tag=소통 | cue=아픈 사람이 낫도록 보살피는 전체 과정
+   dEn=['core', 'scare'] dKo=['예산', '청결'] chips=[['care']] decoy=['cure']
+   ex=We're escalating his care and staying right at his bedside. / 치료를 상급으로 올리면서 침상 곁에 계속 있을게요.
+   USE[내분비 위기 다장기 악화#2] We're escalating his care and staying right at his bedside.
+w-bedside | bedside | 침상 곁 | tag=사정 | cue=환자가 누워 있는 침대 바로 옆 자리
+   dEn=['bedroom', 'roadside'] dKo=['침실', '병동'] chips=[['bed', 'side']] decoy=['bad', 'site']
+   ex=We're escalating his care and staying right at his bedside. / 치료를 상급으로 올리면서 침상 곁에 계속 있을게요.
+   USE[내분비 위기 다장기 악화#2] We're escalating his care and staying right at his bedside.
+w-kidney *CHG* | kidney | 콩팥 | tag=장기 | cue=혈액을 걸러 소변을 만드는 콩 모양 장기
+   dEn=['kitchen', 'kingdom'] dKo=['방광', '췌장'] chips=[['kid', 'ney']] decoy=['kin', 'key']
+   ex=His kidneys and lungs are both under strain, so we've called in extra specialists. / 콩팥이랑 폐가 둘 다 무리가 가고 있어서, 전문의를 추가로 불렀어요.
+   USE[내분비 위기 다장기 악화#3] His kidneys and lungs are both under strain, so we've called in extra specialists.
+w-strain | strain | 무리 | tag=상태 | cue=장기나 근육이 감당하기 벅찰 만큼 부담을 받는 상태
+   dEn=['sprain', 'stain'] dKo=['염좌', '얼룩'] chips=[['strain']] decoy=['stain']
+   ex=His kidneys and lungs are both under strain, so we've called in extra specialists. / 콩팥이랑 폐가 둘 다 무리가 가고 있어서, 전문의를 추가로 불렀어요.
+   USE[내분비 위기 다장기 악화#3] His kidneys and lungs are both under strain, so we've called in extra specialists.
+w-honestly | honestly | 솔직하게 | tag=소통 | cue=숨기지 않고 있는 그대로 말할 때
+   dEn=['honorably', 'hungrily'] dKo=['명예롭게', '배고프게'] chips=[['hon', 'est', 'ly']] decoy=['hot', 'best']
+   ex=I'll keep you updated honestly, even when the news is hard. / 힘든 소식이더라도 솔직하게 계속 알려드릴게요.
+   USE[내분비 위기 다장기 악화#4] I'll keep you updated honestly, even when the news is hard.
+w-news | news | 소식 | tag=소통 | cue=새로 알려진 이야기나 결과, 좋든 나쁘든 전해야 하는 것
+   dEn=['notes', 'noise'] dKo=['소음', '메모'] chips=[['news']] decoy=['new']
+   ex=I'll keep you updated honestly, even when the news is hard. / 힘든 소식이더라도 솔직하게 계속 알려드릴게요.
+   USE[내분비 위기 다장기 악화#4] I'll keep you updated honestly, even when the news is hard.
