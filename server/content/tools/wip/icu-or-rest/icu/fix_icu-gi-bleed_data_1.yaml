@@ -48,7 +48,7 @@ rewrites:
      tag: 처치 설명, icon: bulb,
      why: "'so'로 혈압 저하와 수액 처치를 원인과 결과로 잇고, 'the ordered fluids'로 처방된 수액이라고 밝혀요. 'until the blood arrives'는 혈액이 올 때까지 이어 간다는 기한이에요.",
      decoy: ", so we're pushed",
-     dko: ["혈압이 조금씩 떨어져서, 혈액이 올 때까지 처방된 수액을 밀어 넣고 있어요.", "혈압이 빠르게 떨어져서, 검사 결과가 올 때까지 처방된 수액을 밀어 넣고 있어요."],
+     dko: ["혈압이 조금씩 떨어져서, 혈액이 올 때까지 처방된 수액을 밀어 넣고 있어요.", "혈압이 빠르게 떨어져서, 혈액은행이 연락할 때까지 처방된 수액을 밀어 넣고 있어요."],
      blank: {answer: pressure, wrong: [temperature, weight, vision]}}
   - {i: 10, j: 6, old: "We'll hold the scope",
      en: "GI will decide on the scope timing once they see his new numbers.",
@@ -129,18 +129,18 @@ ko_only:
   - {i: 2, j: 2, old: "Let's confirm consent", ko: "지금 동의서랑 팔찌를 확인하죠.",
      dko: ["지금 처방이랑 팔찌를 확인하죠.", "지금 동의서랑 침대 난간을 확인하죠."]}
   - {i: 8, j: 1, old: "Let's reassess if he shows", ko: "출혈이 계속되는 징후가 보이면 다시 평가하죠.",
-     dko: ["출혈이 계속되는 징후가 보이면 한 시간쯤 뒤에 다시 평가하죠.", "장갑을 끼고 와서 출혈 징후를 다시 평가하죠."]}
+     dko: ["출혈이 계속되는 징후가 보이면 내일 다시 평가하죠.", "장갑을 끼고 와서 출혈 징후를 다시 평가하죠."]}
   - {i: 9, j: 2, old: "Let's keep him NPO", ko: "주입하는 동안 금식을 유지하죠.",
      dko: ["주입하는 동안 금식 팻말을 걸어 두죠.", "주입을 시작하려고 튜브를 씻죠."]}
 chunk_fixes:
-  - {i: 0, j: 3, chunks: ["I'm also checking", "your stool", "for any black or bloody color", "."]}
+  - {i: 0, j: 3, chunks: ["I'm also checking", "your stool", "for any black", "or bloody color", "."]}
   - {i: 4, j: 5, chunks: ["If the drainage turns", "bright red again", ", I'll let the team know", "right away", "."]}
-  - {i: 9, j: 3, chunks: ["The pump is set", "to the exact rate", "the doctor ordered", "."]}
+  - {i: 9, j: 3, chunks: ["The pump", "is set to", "the exact rate", "the doctor ordered", "."]}
   - {i: 9, j: 6, chunks: ["I'll flag", "the physician", "if his pressure", "trends down again", "."]}
   - {i: 12, j: 3, chunks: ["It could be", "from hemorrhoids,", "diverticulosis,", "or something higher up", "."]}
   - {i: 12, j: 4, chunks: ["A colonoscopy", "will let the doctor", "look directly at", "the bowel", "."]}
-  - {i: 14, j: 5, chunks: ["IR needs", "his weight, allergies,", "and the last hemoglobin value", "."]}
-  - {i: 15, j: 5, chunks: ["We give plasma,", "platelets, and red cells", "in equal amounts", "."]}
+  - {i: 14, j: 5, chunks: ["IR needs", "his weight,", "allergies,", "and the last hemoglobin value", "."]}
+  - {i: 15, j: 5, chunks: ["We give", "plasma, platelets,", "and red cells", "in equal amounts", "."]}
   - {i: 18, j: 4, chunks: ["We need", "emergency release blood", "while type and cross", "finishes", "."]}
   - {i: 19, j: 4, chunks: ["A cold, acidotic patient", "clots even worse", ", so we fix", "that too", "."]}
   - {i: 19, j: 5, chunks: ["We're giving", "products", "in a one-to-one-to-one ratio", "."]}

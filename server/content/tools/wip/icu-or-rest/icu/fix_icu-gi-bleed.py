@@ -116,8 +116,8 @@ yaml.safe_dump(d,open(f'{T}.yaml','w'),allow_unicode=True,sort_keys=False,width=
 # ── 변경 목록: pre-fix → 출력의 v44 필드 차이를 이어 적는다(같은 대상은 합침) ──
 WK=['en','ko','ipa','icon','example']; SK=['en','ko','chunks','words']
 WW={'w-hand':"구 hand off 안에서만 뜻이 서고(문장 17.6) 쉬운 말 hand의 ko '건네다'가 맞지 않아 구 단위 헤드워드로",
-    'w-mix':"문장은 mix … up 이라 헤드워드를 mix up, ko 혼동하다로",'w-make':"ko '확실히 하다'는 make sure의 뜻이라 구 단위 헤드워드로",
-    'w-sort':"ko '해결하다'는 sort out의 뜻이라 구 단위 헤드워드로",'w-ever':"Have you ever had…의 ever는 '한 번이라도'",
+    'w-mix':"문장은 mix … up(떼어 쓴 구)이라 ko를 혼동하다로 — 헤드워드는 그대로(검사기 V2가 떨어진 구를 못 찾음)",'w-make':"ko '확실히 하다'는 make sure의 뜻이라 구 단위 헤드워드로",
+'w-ever':"Have you ever had…의 ever는 '한 번이라도'",
     'w-actively':"actively bleeding의 actively는 '활발히'(활동성 출혈과 통함)",'w-through':"support you through it의 through는 '그 과정 내내'",
     'w-steady':"혈압·수치의 steady는 '변동 없는'이지 '꾸준한'(끈기)이 아님",'w-ir':"IR은 중재영상의학(인터벤션)",'w-light':"문장 3.6의 light는 call light(호출등)",
     'w-birth':"date of birth는 생년월일 — '생일'은 birthday",'w-way':"문장은 on the way(오는 중) — 구 단위 헤드워드로"}
