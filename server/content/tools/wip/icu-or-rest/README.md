@@ -109,3 +109,15 @@ keyPhrase 아니던 2건 바로 고침(mech-ventilation 2.4 drain·8.3 doesn't a
   keyPhrase 결정(사용자 '추천대로'): 바꿈 13(ICU 신속대응팀·코드팀 → 의사 호출, 흉관 훑기, 모자, 인슐린 as ordered 2, 진단 단정 looks like 2, 항히스타민 보고, 쉼표, MRI 압박 즉시, 출혈에 혈액 먼저), 유지 13, chunks 약 40문장. transport S19 tagline도 압박 즉시로 맞춤. 작업 `../kp-2026-10-29b/`.
   남은 경고: W13 의도된 오답(nutrition lay/lie 1, transport poll/pole 등 9). `pipeline/TASK.md`에 호출 대상 바꾸기는 모두 실패로 판정 통일.
   남은 ICU: mobility-prevention · core-handoff/language/family/safety-icu (5).
+
+- **묶음 8 (ICU 2주제, 2026-10-29 — 사용자 지시로 이 두 주제까지 하고 멈춤)**: mobility-prevention·core-handoff-icu, 처음부터. 저작 → 검토 → 수정까지 끝남(둘 다 검사 통과·keyPhrase 63/63). **keyPhrase 결정과 정본 합치기는 다음 세션.**
+  | 주제 | 검토 A(안전) | 검토 B(안전·정답 둘) | changes(수정 후) |
+  |---|---|---|---|
+  | icu-mobility-prevention | 24(6) — 알람 '응급 아님' 단정·밀폐 드레싱 누락 | 147(56·18) — 중단 기준 뒤집기·낙상 위기 | 93 |
+  | core-handoff-icu | 35(1) — swab 1회 격리 해제 | 132(80·18) — MAP 기준·역할·호출 동사 | 132 |
+  **다음 세션에 사용자에게 물을 keyPhrase 후보(검토 A 권고):**
+  - mobility-prevention: 바꿈 — 18.2 "I'm giving high-flow oxygen and calling the rapid response." → "…calling the provider to the bedside."(w-rapid·w-response 삭제) / 유지 — 20.3 comfort and dignity, 8.2 dressing, 16.2 increase her oxygen, 10.1·10.2 prophylaxis(why 보강은 수정 때 함)
+  - core-handoff-icu: 바꿈 — 13.3 "Repeat her chest X-ray was ordered for placement." → "A repeat chest X-ray was ordered for placement."(또는 "…to rule out a pneumothorax"; 13.3 why·order 13의 placement·site도 함께), 20.3 "If two go off at once…" → "If two of them crash at once…" / 약하게 바꿈 — 14.0 "…start pressors and call me." → "…start pressors per the order and call me.", 10.2 "two-hourly neuro check" → "neuro checks every two hours"(w-hourly는 이미 삭제됨) / 유지 — 15.3 push fluids, 1.0 norepinephrine at eight, 20.0 closest eye
+  - 두 주제 모두 keyPhrase chunks 구 경계 다시 자르기(fix-*-A.md 목록).
+  결정 뒤 순서: `../kp-<날짜>/`에 Opus KP 교체 → 정본 keyPhrases 줄 교체 → merge_dept_lessons → changes/icu/changes-<주제>.yaml 복사 → gencontent → verify(--changes) → go test·contentIcons → PR(#31 위에 쌓음).
+  그 뒤 남은 ICU 3: core-language-icu·core-family-icu·core-safety-icu. 그다음 OR 33.
