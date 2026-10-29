@@ -408,3 +408,224 @@ changes:
   fields:
   - words
   why: 쉬운 말 태그를 뺌; run의 ko는 '작동하다' — runs dry·run the meds·run out은 다른 뜻이라 태그를 뺌 — 문장은 그대로
+- kind: word
+  id: w-hold
+  fields:
+  - ko
+  why: ko가 w-stop·w-keep과 겹침 — 보류하다 한 뜻으로
+- kind: word
+  id: w-call
+  fields:
+  - example
+  why: 수정 목록 반영 — 바뀐 문장에 예문을 맞춤
+- kind: word
+  id: w-help
+  fields:
+  - example
+  why: 수정 목록 반영 — 바뀐 문장에 예문을 맞춤
+- kind: word
+  id: w-respond
+  fields:
+  - example
+  why: 수정 목록 반영 — 바뀐 문장에 예문을 맞춤
+- kind: word
+  id: w-stimulation
+  fields:
+  - example
+  why: 수정 목록 반영 — 바뀐 문장에 예문을 맞춤
+- kind: word
+  id: w-sbar
+  fields:
+  - ko
+  why: ko가 정답을 담음 — 영어 고르기에서 답이 보임
+- kind: word
+  id: w-mri
+  fields:
+  - ko
+  why: ko가 정답 영어(MRI) 그대로라 영어 고르기에서 답이 보임
+- kind: word
+  id: w-give
+  fields:
+  - example
+  why: 수정 목록 반영 — 바뀐 문장에 예문을 맞춤
+- kind: word
+  id: w-breath
+  fields:
+  - example
+  why: 수정 목록 반영 — 바뀐 문장에 예문을 맞춤
+- kind: word
+  id: w-reintubate
+  fields:
+  - example
+  why: 수정 목록 반영 — 바뀐 문장에 예문을 맞춤
+- kind: word
+  id: w-back
+  fields:
+  - example
+  why: 수정 목록 반영 — 바뀐 문장에 예문을 맞춤
+- kind: word
+  id: w-evacuate
+  fields:
+  - ko
+  why: ko 반출하다는 물건에 쓰는 말 — 사람을 옮기는 문장
+- kind: sentence
+  situation: 원내 이송 전 안정성 평가
+  index: 6
+  fields:
+  - ko
+  why: w-unit ko 중환자실에 맞춰 병동을 중환자실로
+- kind: sentence
+  situation: 시술 진정 중 활력·기도 감시
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 호흡이 느려지는 장면인데 도움 요청 기준이 자극에 반응 없음이라 늦음 — 호흡이 나아지지 않으면으로
+- kind: sentence
+  situation: 인공호흡 환자 이송 관리
+  index: 4
+  fields:
+  - words
+  why: hold가 보류가 아닌 유지 뜻이라 w-hold 태그를 뺌
+- kind: sentence
+  situation: 이송 중 악화 대비 계획
+  index: 3
+  fields:
+  - ko
+  why: w-unit ko 중환자실에 맞춰
+- kind: sentence
+  situation: 이송 중 악화 대비 계획
+  index: 4
+  fields:
+  - chunks
+  why: chunks를 구 경계에 맞게 다시 자름
+- kind: sentence
+  situation: 베드사이드 시술 보조
+  index: 2
+  fields:
+  - words
+  why: supply가 물품 뜻이라 w-supply(공급량) 태그를 뺌
+- kind: sentence
+  situation: 베드사이드 시술 보조
+  index: 5
+  fields:
+  - chunks
+  why: chunks를 구 경계에 맞게 다시 자름
+- kind: sentence
+  situation: 병원간 이송 인계·문서
+  index: 3
+  fields:
+  - chunks
+  why: chunks를 구 경계에 맞게 다시 자름
+- kind: sentence
+  situation: 병원간 이송 인계·문서
+  index: 4
+  fields:
+  - chunks
+  why: chunks를 구 경계에 맞게 다시 자름
+- kind: sentence
+  situation: 검사실 안전
+  index: 6
+  fields:
+  - ko
+  why: cleared ko가 통과·허가 뜻을 못 살림
+- kind: sentence
+  situation: 이송 위험-이익 판단 소통
+  index: 3
+  fields:
+  - chunks
+  why: chunks를 구 경계에 맞게 다시 자름
+- kind: sentence
+  situation: 이송 위험-이익 판단 소통
+  index: 4
+  fields:
+  - chunks
+  why: chunks를 구 경계에 맞게 다시 자름
+- kind: sentence
+  situation: 이송 중 심정지 대응
+  index: 6
+  fields:
+  - chunks
+  why: chunks를 구 경계에 맞게 다시 자름
+- kind: sentence
+  situation: 이송 중 발관·라인 이탈 위기
+  index: 1
+  fields:
+  - ko
+  why: w-unit ko 중환자실에 맞춰(ko만)
+- kind: sentence
+  situation: 이송 중 발관·라인 이탈 위기
+  index: 2
+  fields:
+  - words
+  why: hold가 보류가 아닌 유지 뜻이라 w-hold 태그를 뺌
+- kind: sentence
+  situation: 이송 중 발관·라인 이탈 위기
+  index: 3
+  fields:
+  - words
+  why: hold가 보류가 아닌 유지 뜻이라 w-hold 태그를 뺌
+- kind: sentence
+  situation: 이송 중 발관·라인 이탈 위기
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  why: AHA 2020 구조 호흡(맥박 있음)은 6초마다 1회
+- kind: sentence
+  situation: 이송 중 발관·라인 이탈 위기
+  index: 5
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 재삽관은 기도 팀이 하는 일 — 간호사 약속이 아니라 팀 주어로
+- kind: sentence
+  situation: 시술 중 대량출혈 급변
+  index: 3
+  fields:
+  - words
+  why: hold가 보류가 아닌 유지 뜻이라 w-hold 태그를 뺌
+- kind: sentence
+  situation: 시술 중 대량출혈 급변
+  index: 6
+  fields:
+  - chunks
+  why: chunks를 구 경계에 맞게 다시 자름
+- kind: sentence
+  situation: MRI 중 응급상황 대응
+  index: 1
+  fields:
+  - ko
+  why: 사람에게 반출은 물건 말 — 대피로
+- kind: sentence
+  situation: MRI 중 응급상황 대응
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: MRI 안전 규칙은 screening(선별)이라 scanned가 틀림 — screened로
+- kind: sentence
+  situation: MRI 중 응급상황 대응
+  index: 4
+  fields:
+  - chunks
+  why: chunks를 구 경계에 맞게 다시 자름
+- kind: sentence
+  situation: 이송 중 산소·전원 소진 위기
+  index: 1
+  fields:
+  - words
+  why: bag이 동사(백으로 환기)라 w-bag 태그를 뺌
+- kind: sentence
+  situation: 이송 중 산소·전원 소진 위기
+  index: 6
+  fields:
+  - chunks
+  why: chunks를 구 경계에 맞게 다시 자름

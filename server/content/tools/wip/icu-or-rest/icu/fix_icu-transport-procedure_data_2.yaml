@@ -1,0 +1,99 @@
+# A 문장 수정(S1~S6)·chunks(K1~K10)·16.4·6.0 why — B 필드는 새 문장에 맞춰 다시 씀
+sentences:
+  "19.3":   # S1 MRI 중 응급상황 대응 3 (screened)
+    en: Everyone not screened stays outside the room.
+    ko: MRI 안전 선별을 받지 않은 사람은 방 밖에 있어야 해요.
+    chunks: [Everyone, not screened, stays, outside the room, .]
+    words: [w-screen, w-stay]
+    tag: 출입 제한
+    icon: shield
+    why: screened는 금속·이식물 선별을 마쳤다는 뜻이에요. not screened로 선별을 안 받은 사람은 자석 방에 들이지 않는다는 규칙을 말해요.
+    decoy: at the desk
+    distractorsKo:
+      - MRI 안전 선별을 받지 않은 사람은 입구에서 먼저 선별해요.
+      - MRI 안전 선별을 받지 않은 사람은 금속이 있을지 몰라요.
+    blank: {answer: outside, options: [outside, beside, behind, under]}
+  "4.4":    # S2 시술 진정 중 호흡 악화 시 도움 요청
+    en: I'll call for help if her breathing doesn't improve with stimulation.
+    ko: 자극해도 호흡이 나아지지 않으면 도움을 부를게요.
+    chunks: [I'll call for help, if her breathing, doesn't improve, with stimulation, .]
+    words: [w-call, w-help, w-improve, w-stimulation]
+    tag: 호출 기준
+    icon: siren
+    why: if her breathing doesn't improve with stimulation으로 도움을 부르는 기준을 정해 둬요. 자극을 줘도 숨이 나아지지 않으면 늦기 전에 부르는 순서가 말에 들어 있어요.
+    decoy: with the alarm
+    distractorsKo:
+      - 자극해도 호흡이 나아지지 않으면 역전제 쓸지를 정해요.
+      - 자극해도 호흡이 나아지지 않으면 너무 깊은 거예요.
+    blank: {answer: breathing, options: [breathing, vision, hearing, appetite]}
+  "16.5":   # S3 재삽관은 기도 팀이
+    en: The airway team will meet us back in the unit to re-intubate.
+    ko: 기도 팀이 중환자실에서 우리를 맞아 재삽관할 거예요.
+    chunks: [The airway team, will meet us, back in the unit, to re-intubate, .]
+    words: [w-airway, w-team, w-back, w-unit, w-reintubate]
+    tag: 재삽관 계획
+    icon: stetho
+    why: will meet us back in the unit으로 재삽관은 기도 팀이 중환자실에서 이어받는다는 계획을 말해요. 재삽관은 간호사가 약속하는 일이 아니라 팀이 맡는 일이에요.
+    decoy: for his family
+    distractorsKo:
+      - 기도 팀이 중환자실에서 우리를 맞아 기도를 재평가할 거예요.
+      - 중환자실에는 재삽관 장비가 다 갖춰져 있어요.
+    blank: {answer: unit, options: [unit, lobby, hallway, elevator]}
+  "13.6":   # S5 cleared ko
+    ko: 몸에 지닌 것은 모두 스캐너에 들여도 된다고 확인을 마쳤어요.
+    distractorsKo:
+      - 몸에 지닌 것은 모두 스캐너에 들여도 되면 스캔해요.
+      - 몸에 붙은 작은 금속도 하나하나 꼼꼼히 봐야 해요.
+    why: has been cleared는 확인을 마치고 스캐너에 들여도 된다고 통과시켰다는 현재완료 수동태예요. Everything on him으로 몸에 붙은 것 전부를 한꺼번에 말해요.
+  "19.1":   # S6 반출 → 대피
+    ko: 코드 카트는 MRI실에 들어갈 수 없어요 — 안전 구역으로 대피시켜요.
+    distractorsKo:
+      - 금속 물품은 MRI실에 들어갈 수 없어요 — 안전 구역으로 대피시켜요.
+      - 코드 카트는 MRI실에 들어갈 수 없어요 — 자석에 끌려가요.
+  "0.6":    # S4 병동 → 중환자실
+    ko: 뭔가 바뀌면 우리는 중환자실에 머물러요.
+  "10.3":
+    ko: 중환자실을 나서기 전에 역할을 합의해요.
+  "16.1":
+    ko: 기도 키트를 불러 주고 중환자실로 돌아가게 해 주세요.
+  "16.4":   # AHA 2020: 6초마다
+    en: I'm giving breaths every six seconds.
+    ko: 6초마다 숨을 불어넣고 있어요.
+    chunks: [I'm giving, breaths, every six seconds, .]
+    why: every six seconds는 일정한 간격으로 반복한다는 뜻이에요. 맥박이 있는 성인의 구조 호흡은 6초에 한 번이고, breaths 앞에 giving을 쓰면 환자에게 불어넣어 준다는 동작이 분명해져요.
+  "6.0":    # KP — why만
+    why: matched A to B는 A를 B와 똑같이 맞췄다는 뜻이에요. 이송 호흡기 설정은 보통 호흡치료사와 함께 맞추고, 병상 기계와 다르면 환기가 달라져서 현재 설정을 그대로 옮겨요.
+chunks:
+  "12.4": [Right now, he's on, two liters of oxygen, and stable, .]
+  "12.3": [He came in, with chest pain, and, a rising troponin, .]
+  "18.6": [Surgery, is on their way down, right now, .]
+  "14.3": [Right now, she's on the edge, of needing, more support, .]
+  "14.4": [If she gets worse, mid-scan, ", we may not catch it", in time, .]
+  "15.6": [Rhythm check, — everyone clear, .]
+  "20.6": [We made it back, before anything, ran out, .]
+  "19.4": [The safe zone, is, just past, those double doors, .]
+  "10.4": [If, the elevator stalls, ", we hit", the emergency call button, .]
+  "11.5": [Let me know, if you need, more, local anesthetic, .]
+decoys:
+  "12.4": and sleepy
+  "12.3": a daily test
+  "18.6": Pharmacy
+  "14.3": a bath
+  "15.6": Rhythm strip
+  "19.4": those glass doors
+  "11.5": topical gel
+example_override:
+  w-respond: ["At moderate sedation she responds to voice and keeps her airway.", "중등도 진정에서는 목소리에 반응하고 스스로 기도를 유지해요."]
+order_ko_replace:
+  - ["병동을 나서기 전에 역할을 합의해요", "중환자실을 나서기 전에 역할을 합의해요"]
+  - ["그중 뭐라도 바뀌면 우리는 병동에 머물러요", "그중 뭐라도 바뀌면 우리는 중환자실에 머물러요"]
+order_lines:
+  - [16, 4, "Once we're back, the airway team will re-intubate him.", "돌아가면 기도 팀이 재삽관할 거예요"]
+order_why:
+  16: 발관을 알리며 바로 백을 짜고, 짜는 동안 기도 키트를 부르며 돌아가고, 가는 길에 가슴이 오르는지 보게 한 뒤, 도착하면 기도 팀이 재삽관해요.
+dk_override:   # "상황.문장": [X1, X2] (None=그대로) — V20 길이 맞춤
+  "15.6": [null, "리듬 확인 뒤 — 압박을 이어요."]
+  "20.6": [null, "다 떨어지기 전에 엘리베이터 탔어요."]
+order_note:   # [상황, 줄(1~4), icon, note] — 줄 순서가 바뀐 카드의 역할 표지를 맞춤
+  - [16, 2, bell, 호출]
+  - [16, 3, magnify, 관찰]
