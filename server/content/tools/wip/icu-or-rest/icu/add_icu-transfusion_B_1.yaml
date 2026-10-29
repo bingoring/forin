@@ -1,0 +1,20 @@
+situations:
+- title: "수혈 전 확인·동의"
+  s:
+  - ["두 사람 확인", "shield", "독립 이중 확인은 두 사람이 침상에서 직접 해야 해요. 'Two of us'로 시작하면 혼자 하지 않는다는 점이 먼저 전해져요.", "at the front desk", "세 사람이 침상에서 환자 ID와 제제를 확인할 거예요.", "네 사람이 침상에서 환자 ID와 제제를 확인할 거예요.", "bedside", "pharmacy", "blood bank", "lobby"]
+  - ["환자 식별", "speech", "이름과 생년월일은 환자 식별에 쓰는 두 가지 식별자예요. 소리 내어 읽으면 눈으로만 볼 때 놓치는 불일치를 잡아내요.", "and her diagnosis", "보호자 이름과 생년월일을 소리 내어 함께 읽어요.", "이름과 진단명을 소리 내어 함께 읽어요.", "date of birth", "room number", "blood type", "diagnosis"]
+  - ["백 대조", "check", "한 사람이 말하고 다른 사람이 백 라벨을 보며 확인해야 서로 독립된 확인이 돼요. 'against'는 말한 값을 실물과 맞대 본다는 뜻이에요.", "it against the tubing", "제가 혈액형을 말하면 모니터에 대조해서 확인해 주세요.", "제가 혈액형을 말하면 펌프에 대조해서 확인해 주세요.", "blood type", "heart rate", "temperature", "blood pressure"]
+  - ["불일치 중단", "bell", "하나라도 어긋나면 진행하지 않는 것이 수혈 확인의 원칙이에요. 'right here'는 그 자리에서 바로 멈춘다는 느낌을 줘요.", "over there", "하나라도 늦어지면 바로 여기서 멈춰요.", "하나라도 어긋나면 바로 저기서 멈춰요.", "match", "leak", "expire", "clot"]
+  - ["일치 보고", "check", "항목을 하나씩 짚어 말하면 확인이 빠짐없이 끝났다는 점이 상대에게 분명히 전해져요.", ", and donor age", "혈액형과 제제 색깔, 유효기간이 모두 일치해요.", "혈액형과 제제 번호, 채혈 날짜가 모두 일치해요.", "expiration", "temperature", "destination", "description"]
+  - ["동의서 확인", "pencil", "응급이 아니라면 서명된 동의서가 차트에 있어야 수혈을 시작할 수 있어요. 서명과 보관 위치를 함께 말해 확인 범위를 분명히 해요.", "the fridge", "동의서는 서명되어 서랍에 있어요.", "동의서는 복사되어 차트에 있어요.", "signed", "pending", "withdrawn", "expired"]
+  - ["동의 재확인", "speech", "서명이 있어도 환자는 언제든 마음을 바꿀 수 있어요. 'before we hang'은 걸기 전에 본인 뜻을 한 번 더 듣겠다는 시점을 밝혀요.", "with the lab", "이 제제를 걸기 전에 동료에게 동의를 다시 확인할게요.", "이 제제를 걸기 전에 약사에게 동의를 다시 확인할게요.", "consent", "payment", "insurance", "visitation"]
+  order:
+    tag: "대화 흐름"
+    icon: "compass"
+    ko: "수혈 전 확인 4문장 순서"
+    why: "두 사람이 하겠다고 알린 뒤 이름과 생년월일을 함께 읽고, 일치를 보고한 다음 걸기 전에 동의를 다시 확인해요."
+    lines:
+    - ["Two of us will verify the patient ID and unit at the bedside.", "shield", "두 사람이 침상에서 환자 ID와 제제를 확인할 거예요", "안내"]
+    - ["So let's read her name and date of birth out loud together.", "speech", "그러니 이름과 생년월일을 소리 내어 함께 읽어요", "식별"]
+    - ["With those read, blood type, unit number, and expiration all match.", "check", "그걸 읽고 나니 혈액형과 제제 번호, 유효기간이 모두 일치해요", "일치"]
+    - ["With all of that matching, I'll confirm consent with him before we hang this unit.", "pencil", "그게 다 맞으니 이 제제를 걸기 전에 환자에게 동의를 다시 확인할게요", "동의"]
