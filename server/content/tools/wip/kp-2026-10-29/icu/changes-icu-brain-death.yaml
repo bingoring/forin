@@ -455,3 +455,127 @@ changes:
   fields:
   - ko
   why: ko '에스컬레이션할 수 있도록'은 외래어 — '상급 대응으로 올릴 수 있도록'
+- kind: sentence
+  situation: 뇌사 후 순환 붕괴 위기
+  index: 0
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): 처방 최대치를 넘겨 올리라는 말로 읽힘(안전, slider 16 why와 모순) → to the ordered max … as ordered; +w-titrate(은행에 있음). w-max는 문장에 남아 동사→명사(최대치)로 태그 유지. order 16 줄 3·why도 맞춤'
+- kind: word
+  id: w-max
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-max
+  fields:
+  - ko
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): 문장이 Max the pressors(동사) → the ordered max(명사) — ko 최대로 올리다 → 최대치, cue·오답도 명사로'
+- kind: sentence
+  situation: 무호흡 검사 중 급변 위기
+  index: 1
+  fields:
+  - en
+  - ko
+  - chunks
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): 간호사가 명령형으로 투여를 정함 → Should we …? 질문(태그 단어 그대로). order 15 줄 3·why도 질문으로'
+- kind: sentence
+  situation: 심한 요붕증 급변 관리
+  index: 0
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): 명령형 투여 지시 → Can we get desmopressin ordered …? 처방 요청; −w-give(문장에 give가 없어짐, 7.1·8.0 등에서 계속 씀). w-order는 은행 뜻이 순서라 태그하지 않음'
+- kind: sentence
+  situation: 요붕증 관리
+  index: 0
+  fields:
+  - en
+  - ko
+  - chunks
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): 처방 근거가 없음 → the desmopressin as ordered(태그 단어 그대로). order 8 줄 3·why도 맞춤'
+- kind: word
+  id: w-desmopressin
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-match
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-loss
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): 예문을 바꾼 문장으로'
+- kind: sentence
+  situation: 뇌사 후 혈역학 유지
+  index: 1
+  fields:
+  - en
+  - ko
+  - chunks
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): 단독 투여처럼 읽힘 → the ordered fluid bolus(태그 단어 그대로). order 7 줄 2도 맞춤'
+- kind: word
+  id: w-give
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-bolus
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-reassess
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): 예문을 바꾼 문장으로'
+- kind: sentence
+  situation: 무호흡 검사 준비
+  index: 2
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Everything is / set / for the apnea test / to begin) → Everything / is set / for the apnea test / to begin — 문장은 그대로; decoy를 새 조각 자리에 맞춤(to finish)'
+- kind: sentence
+  situation: 무호흡 검사 중 안전 감시
+  index: 2
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Rescue equipment / is at / the bedside and ready) → Rescue equipment / is at the bedside / and ready — 문장은 그대로; decoy를 새 조각 자리에 맞춤(and labeled)'
+- kind: sentence
+  situation: 동의·문화적 고려
+  index: 2
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): keyPhrase chunks가 구 경계를 끊음(I can arrange / for the coordinator / to speak with all / of you together) → I can arrange / for the coordinator / to speak / with all of you / together — 문장은 그대로'
+- kind: sentence
+  situation: 무호흡 검사 중 급변 위기
+  index: 2
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Let''s stabilize him / before anything / else) → Let''s / stabilize him / before anything else — 문장은 그대로; decoy를 새 조각 자리에 맞춤(reposition him)'
+- kind: sentence
+  situation: 가족 갈등·기증 거부 상황
+  index: 0
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): keyPhrase chunks가 구 경계를 끊음(I hear you, / and your family''s / wishes / will be respected) → I hear you, / and your family''s wishes / will be / respected — 문장은 그대로; decoy를 새 조각 자리에 맞춤(inspected)'
+- kind: sentence
+  situation: 가족에게 상태 설명 지원
+  index: 3
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): keyPhrase chunks가 구 경계를 끊음(I''ll make sure / the doctor explains / anything that''s still / unclear) → I''ll make sure / the doctor explains / anything / that''s still unclear — 문장은 그대로'
+- kind: sentence
+  situation: 가족 사별 지원·소통
+  index: 0
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Take all / the time you need / to be / with him) → Take / all the time you need / to be / with him — 문장은 그대로'

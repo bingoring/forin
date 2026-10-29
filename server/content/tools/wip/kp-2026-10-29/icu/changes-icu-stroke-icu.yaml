@@ -616,3 +616,99 @@ changes:
   - chunks
   - words
   why: 간호사가 치료 목표 전환을 먼저 제안함(업무 범위) — 환자의 뜻이면 의료팀이 할 수 있다고
+- kind: sentence
+  situation: 두부 거상·체위
+  index: 1
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): 머리 거상이 뇌혈류를 돕는다는 근거가 약함(HeadPoST, 재관류 후 허혈성 환자) → 의료진이 지시한 안전 자세; −w-help −w-blood −w-flow −w-brain(4.0·11.2 등에서 계속 씀) +w-team +w-keep +w-safe(은행에 있음). 같은 상황 4.5 why("앞 문장의 이점")와 N4 context 장면 2의 뇌관류 목적도 흡인 예방으로 맞춤'
+- kind: word
+  id: w-position
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-blood
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): 옛 예문 문장을 바꿔 그 단어가 없어짐 — 같은 상황의 다른 문장으로 옮김'
+- kind: word
+  id: w-flow
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): 옛 예문 문장을 바꿔 그 단어가 없어짐 — 같은 상황의 다른 문장으로 옮김'
+- kind: sentence
+  situation: tPA 후 대량 뇌출혈 위기
+  index: 0
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): 역전 시작은 처방인데 간호사 명령형으로 지시 → get the reversal orders now; −w-start −w-immediately(9.5·17.0 등에서 계속 씀). w-get은 은행 뜻이 데려가다(이송)라 태그하지 않음. order 16 줄 2·why와 N16 swap(같은 틀)도 새 문장 틀로'
+- kind: word
+  id: w-stop
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-tpa
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-immediately
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): 옛 예문 문장을 바꿔 그 단어가 없어짐 — 같은 상황의 다른 문장으로 옮김'
+- kind: sentence
+  situation: 삼킴 전 금식·흡인 예방
+  index: 0
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): keyPhrase chunks가 구 경계를 끊음(We need to check / that you can swallow / safely before / you drink) → We need to check / that you can swallow / safely / before you drink — 문장은 그대로; decoy를 새 조각 자리에 맞춤(before you sleep)'
+- kind: sentence
+  situation: 의식 변화 관찰
+  index: 1
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Small changes matter / , so please keep / letting me / know) → Small changes / matter / , so please / keep letting me know — 문장은 그대로; decoy를 새 조각 자리에 맞춤(keep letting him know)'
+- kind: sentence
+  situation: 의식 변화 관찰
+  index: 2
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): keyPhrase chunks가 구 경계를 끊음(I''m going to wake him / and see / how he / responds) → I''m going to / wake him / and see / how he responds — 문장은 그대로; decoy를 새 조각 자리에 맞춤(how he sleeps)'
+- kind: sentence
+  situation: 혈전제거 후 재관류 관리
+  index: 0
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): keyPhrase chunks가 구 경계를 끊음(The procedure went well / , but we still need / to watch / you closely) → The procedure went well / , but we still need / to watch you / closely — 문장은 그대로'
+- kind: sentence
+  situation: 조기 재활·합병증 예방
+  index: 1
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): keyPhrase chunks가 구 경계를 끊음(We''ll go slowly / and I''ll support you / the whole / time) → We''ll go / slowly / and I''ll support you / the whole time — 문장은 그대로'
+- kind: sentence
+  situation: 대혈관 급성 악화
+  index: 2
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): keyPhrase chunks가 구 경계를 끊음(I''ll call / report / to the neuro-interventional team) → I''ll / call report / to the neuro-interventional team — 문장은 그대로'
+- kind: sentence
+  situation: 광범위 뇌손상 목표·예후 소통
+  index: 0
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): keyPhrase chunks가 구 경계를 끊음(I wish I had better news / , and I''ll be / honest / with you) → I wish / I had better news / , and I''ll be honest / with you — 문장은 그대로; decoy를 새 조각 자리에 맞춤(, and I''ll be brief)'
+- kind: sentence
+  situation: 광범위 뇌손상 목표·예후 소통
+  index: 2
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Let''s talk together / about what / he would have / wanted) → Let''s talk / together / about what / he would have wanted — 문장은 그대로; decoy를 새 조각 자리에 맞춤(you would have wanted)'
