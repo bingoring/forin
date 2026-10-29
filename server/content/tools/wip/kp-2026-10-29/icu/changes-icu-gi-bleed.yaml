@@ -887,3 +887,160 @@ changes:
   fields:
   - chunks
   why: 구 경계에서 다시 자름(복합명사·구를 끊지 않게)
+- kind: sentence
+  situation: 정맥류 출혈 초기 관리
+  index: 0
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): let''s start … now → I''ll start … as ordered(간호사가 약 시작을 정하는 어조); +w-order'
+- kind: word
+  id: w-start
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-octreotide
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-drip
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): 예문을 바꾼 문장으로'
+- kind: sentence
+  situation: 대량출혈 쇼크 대량수혈
+  index: 0
+  fields:
+  - en
+  - ko
+  - chunks
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): 명령형 발동 지시 → 발동됐음을 확인하고 쿨러를 맡음(장면 첫마디가 동료의 발동, 발동은 의사·지정자) — words 그대로'
+- kind: word
+  id: w-activate
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-mtp
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-cooler
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word-remove
+  id: w-open
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): 18.0 문장을 바꿔 어느 문장도 태그하지 않게 됨'
+- kind: word-remove
+  id: w-wide
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): 18.0 문장을 바꿔 어느 문장도 태그하지 않게 됨'
+- kind: sentence
+  situation: 재출혈 급변 소생
+  index: 0
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): Open the fluids wide → run the ordered fluids(처방 없이 정질액 최대 개방); −w-open −w-wide(word-remove)'
+- kind: sentence
+  situation: balloon tamponade 보조
+  index: 5
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): 두 풍선을 다 부풀린 뒤 고정 → 위 풍선 부분 팽창 뒤 엑스레이로 위치 확인하고 고정(검토 A·B: 위치 확인 단계 빠짐, 식도 풍선은 출혈이 계속될 때만); +w-confirm'
+- kind: word
+  id: w-inflate
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-tape
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-place
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): 예문을 바꾼 문장으로'
+- kind: sentence
+  situation: GI 출혈 징후 사정
+  index: 4
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Tell me right away / if you feel dizzy / or want to / vomit again) → Tell me right away / if you feel dizzy / or want to vomit / again — 문장은 그대로'
+- kind: sentence
+  situation: 혈역학·Hb 추세 감시
+  index: 0
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Yes / , that can happen / when the blood / count drops) → Yes / , that can happen / when the blood count / drops — 문장은 그대로'
+- kind: sentence
+  situation: 혈역학·Hb 추세 감시
+  index: 1
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): keyPhrase chunks가 구 경계를 끊음(I''m watching / your blood pressure / and your lab / trends) → I''m watching / your blood pressure / and / your lab trends — 문장은 그대로'
+- kind: sentence
+  situation: 내시경 준비·조율
+  index: 1
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): keyPhrase chunks가 구 경계를 끊음(I''ll get consent / and the pre-procedure / checklist done) → I''ll get consent / and the pre-procedure checklist / done — 문장은 그대로'
+- kind: sentence
+  situation: 제한적 수혈 목표 판단
+  index: 0
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): keyPhrase chunks가 구 경계를 끊음(For a stable bleed / , we usually hold / to the restrictive / target) → For a stable bleed / , we / usually hold to / the restrictive target — 문장은 그대로'
+- kind: sentence
+  situation: 제한적 수혈 목표 판단
+  index: 1
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Let''s reassess / if he shows / signs of ongoing / bleeding) → Let''s reassess / if he shows / signs / of ongoing bleeding — 문장은 그대로'
+- kind: sentence
+  situation: PPI 주입 관리
+  index: 0
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): keyPhrase chunks가 구 경계를 끊음(The PPI infusion / is started / at the ordered / rate) → The PPI infusion / is started / at / the ordered rate — 문장은 그대로'
+- kind: sentence
+  situation: 하부출혈 감별·검사
+  index: 1
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): keyPhrase chunks가 구 경계를 끊음(We''ll do tests / to find exactly / where it''s coming / from) → We''ll do / tests / to find / exactly where it''s coming from — 문장은 그대로'
+- kind: sentence
+  situation: 하부출혈 감별·검사
+  index: 2
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): keyPhrase chunks가 구 경계를 끊음(I''m watching / your vitals / while we sort / this out) → I''m watching / your vitals / while / we sort this out — 문장은 그대로'
+- kind: sentence
+  situation: 재출혈 감시·재평가
+  index: 0
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): keyPhrase chunks가 구 경계를 끊음(We watch his vitals / , labs, and any new / bleeding / closely) → We watch / his vitals, labs, / and any new bleeding / closely — 문장은 그대로'
+- kind: sentence
+  situation: 재출혈 감시·재평가
+  index: 1
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Please tell me / if he vomits blood / or feels / faint) → Please / tell me / if he vomits blood / or feels faint — 문장은 그대로'

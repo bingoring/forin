@@ -769,3 +769,94 @@ changes:
 - kind: word-remove
   id: w-bag
   why: 4.3 문장을 처방 요청으로 고치면서 쓰이지 않게 됐다(S2)
+- kind: word-remove
+  id: w-correct
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): 7.0 문장을 바꿔 어느 문장도 태그하지 않게 됨'
+- kind: sentence
+  situation: 응고장애·출혈 위험 관리
+  index: 0
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): Let''s correct with products → If products are ordered, we''ll give them(INR만 보고 시술 전 교정은 AGA 2021·AASLD 권고와 반대, 간호사가 교정을 정하는 말); −w-correct(word-remove) +w-give'
+- kind: word
+  id: w-product
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-procedure
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): 예문을 바꾼 문장으로'
+- kind: sentence
+  situation: 영양·단백 관리
+  index: 1
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): based on your ammonia → based on your needs(단백질은 암모니아로 조정하지 않음 — ESPEN·AASLD); −w-ammonia 태그(1.1·2.3에서 계속 씀)'
+- kind: word
+  id: w-base
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): 예문을 바꾼 문장으로'
+- kind: sentence
+  situation: 급성 간부전 뇌부종 뇌탈출 위기
+  index: 0
+  fields:
+  - en
+  - ko
+  - chunks
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): as ordered 덧붙임(처방 단서 없이 동료에게 고장성 식염수 지시) — words 그대로'
+- kind: word
+  id: w-hypertonic
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-saline
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-elevate
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): 예문을 바꾼 문장으로'
+- kind: sentence
+  situation: 출혈 경향 감시
+  index: 2
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Please tell me / about any new / bleeding / right away) → Please / tell me / about any new bleeding / right away — 문장은 그대로'
+- kind: sentence
+  situation: 이식 평가 연계
+  index: 2
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): keyPhrase chunks가 구 경계를 끊음(I''ll help connect you / with the transplant / coordinator) → I''ll help / connect you / with the transplant coordinator — 문장은 그대로'
+- kind: sentence
+  situation: 감염 예방·조기 치료
+  index: 0
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): keyPhrase chunks가 구 경계를 끊음(Let''s keep up / strict hand / hygiene / and line care) → Let''s / keep up / strict hand hygiene / and line care — 문장은 그대로'
+- kind: sentence
+  situation: 응급 이식 조율 위기
+  index: 1
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): keyPhrase chunks가 구 경계를 끊음(I''ll give / a full handoff / to the transplant / center) → I''ll give / a full handoff / to / the transplant center — 문장은 그대로'
+- kind: sentence
+  situation: 락툴로오스 투여·배변 관리
+  index: 1
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정): keyPhrase chunks가 구 경계를 끊음(We aim / for a few / soft stools / a day) → We aim for / a few / soft stools / a day — 문장은 그대로'
