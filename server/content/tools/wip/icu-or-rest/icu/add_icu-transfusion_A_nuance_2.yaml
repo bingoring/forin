@@ -1,0 +1,114 @@
+- situation: "급성 용혈반응 초기 대응"
+  items:
+    - kind: slider
+      words: [w-stop, w-disconnect]
+      cue: "Patient: \"My back hurts badly and I feel like something is wrong.\""
+      scale: ["slow the rate and watch how he does", "pause and ask him a few more questions", "stop the blood and call the provider"]
+      answerAt: 2
+      why: "수혈 중 갑작스러운 허리 통증과 불안감은 급성 용혈반응의 신호일 수 있어서, 수혈을 바로 멈추고 새 튜빙으로 생리식염수 라인을 유지하며 의료진에게 알려요. 속도를 줄이거나 질문하며 기다리는 동안에도 혈액이 계속 들어가요."
+      example: "I'm stopping the transfusion and disconnecting the tubing."
+      exKo: "수혈을 멈추고 튜빙을 분리할게요."
+    - kind: context
+      words: [w-reaction]
+      word: reaction
+      ko: 반응
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "This looks like an acute hemolytic reaction.", ok: true}
+        - {who: 혈액은행, icon: lab, en: "I need to report a suspected transfusion reaction.", ok: true}
+        - {who: 환자에게, icon: me, en: "You're having an acute hemolytic transfusion reaction with intravascular hemolysis.", ok: false, fix: "You may be having a reaction to the blood, so I've stopped it and I'm getting help."}
+      why: "의료진끼리는 반응의 종류까지 정확히 말해야 해요. 환자에게 진단명과 용어를 단정해 읽어 주면 겁이 나고 알아듣기도 어려워요. 무슨 일이 의심되는지와 지금 하는 일을 쉬운 말로 알려 줘요."
+- situation: "TACO와 TRALI 감별"
+  items:
+    - kind: slider
+      words: [w-sit, w-upright, w-stop, w-transfusion]
+      cue: "Colleague: \"She's short of breath with crackles and a high pressure an hour into the unit.\""
+      scale: ["watch her closely for a few more minutes", "slow the unit down and sit her up a bit", "stop the unit, sit her up, and give oxygen"]
+      answerAt: 2
+      why: "수혈 중 호흡곤란, 고혈압, 수포음은 TACO를 의심하게 하는 모습이에요. 수혈을 멈추고 환자를 앉히고 산소를 줘요. 이뇨제 같은 치료는 의료진 처방대로예요. 속도만 줄이거나 지켜보는 동안에도 혈액이 계속 들어가요."
+      example: "I'll sit him upright and apply extra oxygen."
+      exKo: "환자를 똑바로 앉히고 산소를 더 적용할게요."
+    - kind: context
+      words: [w-oxygen]
+      word: oxygen
+      ko: 산소
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "She's on high-flow oxygen and still desaturating.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Can you grab the oxygen and help me sit him upright?", ok: true}
+        - {who: 환자에게, icon: me, en: "I'm administering supplemental oxygen via non-rebreather at a high FiO2, titrated to SpO2.", ok: false, fix: "I'm giving you more oxygen to help you breathe easier."}
+      why: "의료진끼리는 장치와 FiO2 같은 수치를 그대로 말해도 돼요. 환자에게는 non-rebreather·titrated 같은 말이 낯설어요. 무엇을 하는지와 왜 하는지만 쉬운 말로 알려 줘요."
+- situation: "대량수혈 비율 관리"
+  items:
+    - kind: slider
+      words: [w-warm, w-product]
+      cue: "Colleague: \"The blood from the cooler is ice cold and we're pushing it fast.\""
+      scale: ["keep going and warm him later", "add a warm blanket and keep going", "run it through a blood warmer"]
+      answerAt: 2
+      why: "대량수혈은 차가운 혈액을 빠르고 많이 주기 때문에 저체온이 생기기 쉬워요. 병원이 승인한 혈액 가온기를 거쳐 데워서 주고, 담요만으로는 부족해요. 임의의 방법으로 데우지 않아요."
+      example: "I'll track each unit and warm the products."
+      exKo: "제제마다 추적하고 성분을 데울게요."
+    - kind: context
+      words: [w-ratio]
+      word: ratio
+      ko: 비율
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "I'm giving plasma, platelets, and red cells at a one-to-one-to-one ratio.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Keep the ratio steady — don't let the red cells get ahead.", ok: true}
+        - {who: 가족에게, icon: me, en: "We're transfusing at a one-to-one-to-one ratio to prevent dilutional coagulopathy.", ok: false, fix: "We're giving him the different parts of blood in balance, so his blood keeps clotting and carrying oxygen."}
+      why: "의료진끼리는 1:1:1 같은 비율을 그대로 말해야 정확해요. 가족에게는 비율과 dilutional coagulopathy 같은 말이 어려워요. 왜 그렇게 주는지만 쉬운 말로 설명해요."
+- situation: "응고검사 해석·성분 선택"
+  items:
+    - kind: slider
+      words: [w-recheck, w-provider]
+      cue: "Colleague: \"The repeat INR is still high after the plasma.\""
+      scale: ["write it down and wait", "report it to the provider", "start more plasma yourself"]
+      answerAt: 1
+      why: "혈장을 준 뒤에도 INR이 높으면 의료진에게 결과를 바로 알려 다음 처방을 받아요. 기록만 하고 기다리면 출혈 위험이 그대로이고, 성분을 더 주는 일은 간호사가 정하지 않고 처방으로 해요."
+      example: "If the numbers don't improve, I'll call the provider back."
+      exKo: "수치가 호전되지 않으면 의료진에게 다시 연락할게요."
+    - kind: context
+      words: [w-product]
+      word: product
+      ko: 혈액 제제
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "Which products should we give him first?", ok: true}
+        - {who: 혈액은행, icon: lab, en: "Can you send up two more products?", ok: true}
+        - {who: 가족에게, icon: me, en: "We're giving him blood products, specifically FFP and cryo, for his coagulopathy.", ok: false, fix: "We're giving him the parts of blood that help it clot, because his blood isn't clotting well."}
+      why: "의료진과 혈액은행 사이에서는 product와 FFP·cryo 같은 이름이 정확하고 빨라요. 가족에게는 약어와 coagulopathy가 어려워요. 무엇을 왜 주는지 쉬운 말로 풀어 줘요."
+- situation: "저칼슘·시트르산 독성 감시"
+  items:
+    - kind: slider
+      words: [w-tingling, w-ionized]
+      cue: "Patient, after many units: \"My lips and fingers feel tingly.\""
+      scale: ["watch him and recheck much later today", "check ionized calcium and tell the provider", "give a big dose of calcium on your own right now"]
+      answerAt: 1
+      why: "여러 단위를 준 뒤의 입술·손가락 저림은 시트르산 때문에 칼슘이 떨어진 신호일 수 있어요. 이온화 칼슘을 확인하고 의료진에게 알려요. 지켜보기만 하면 늦고, 칼슘은 처방이나 프로토콜대로 줘요."
+      example: "Tell me if your lips or fingers start tingling."
+      exKo: "입술이나 손가락이 저리기 시작하면 말해 주세요."
+    - kind: context
+      words: [w-drop]
+      word: drop
+      ko: 떨어지다
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "His calcium could drop fast after this many units.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Call me if his pressure starts to drop.", ok: true}
+        - {who: 가족에게, icon: me, en: "His ionized calcium may drop precipitously due to citrate chelation.", ok: false, fix: "His calcium can fall quickly from all this blood, so we're checking it often."}
+      why: "의료진끼리는 ionized calcium과 citrate 같은 말로 정확하게 말해요. 가족에게는 precipitously·chelation이 어렵고 겁을 줘요. 왜 자주 확인하는지 쉬운 말로 알려 줘요."
+- situation: "항응고 역전 관리"
+  items:
+    - kind: slider
+      words: [w-anticoagulant, w-reversal]
+      cue: "Colleague: \"He's bleeding, and he can't remember which blood thinner he takes.\""
+      scale: ["keep watching him and wait for labs", "check which one and tell the provider", "give every reversal agent we have on the shelf"]
+      answerAt: 1
+      why: "항응고제 종류에 따라 역전제가 달라요. 와파린은 PCC와 비타민 K, DOAC는 특정 역전제를 써요. 복용 약부터 확인해 의료진에게 알려요. 출혈 중에 지켜보기만 해서도 안 되고, 모든 역전제를 한꺼번에 주지도 않아요. 투여는 처방대로예요."
+      example: "Let's confirm which anticoagulant he's actually on."
+      exKo: "실제로 어떤 항응고제를 쓰고 있는지 확인해요."
+    - kind: context
+      words: [w-reverse]
+      word: reverse
+      ko: 역전하다
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "He's bleeding on warfarin, so we need to reverse him.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Can you grab the PCC? We're about to reverse him.", ok: true}
+        - {who: 가족에게, icon: me, en: "We are going to reverse his anticoagulation with a prothrombin complex concentrate.", ok: false, fix: "We're giving him medicine to undo his blood thinner so the bleeding can slow down."}
+      why: "의료진끼리는 reverse와 약 이름을 그대로 말해야 정확해요. 가족에게는 anticoagulation·prothrombin complex concentrate가 어려워요. 약이 무엇을 하려는 것인지 쉬운 말로 풀어 줘요."

@@ -1,0 +1,143 @@
+- situation: "원내 이송 전 안정성 평가"
+  items:
+    - kind: slider
+      words: [w-stable]
+      cue: "Resident: 'His MAP is 62 on the same pressor dose, sat is 94, and his heart rate keeps creeping up.'"
+      scale: [stable, borderline, unstable]
+      answerAt: 1
+      why: "수치가 아직 목표 안이어도 계속 흔들리고 있다면 stable이라고 단정하지 않고 borderline이라고 말해요. 이송을 갈지는 간호사 혼자 정하지 않고 담당 의사와 함께 판단해요."
+      example: "He looks borderline, so I'd like the attending to weigh in before we go."
+      exKo: "경계선 같아 보여서, 가기 전에 담당의가 같이 봐 주면 좋겠어요."
+    - kind: context
+      words: [w-stable]
+      word: stable
+      ko: 안정된
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "He's stable for transport, with a MAP of 74 on the same pressor dose.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Is he stable enough to go to CT right now?", ok: true}
+        - {who: 보호자에게, icon: me, en: "His hemodynamics are stable per our transport criteria.", ok: false, fix: "He's steady right now, so it's safe to take him for the scan."}
+      why: "의료진끼리는 stable, MAP처럼 짧은 말로 충분해요. 보호자에게 hemodynamics, transport criteria는 어렵고 차갑게 들려요. 지금은 괜찮고 검사를 갈 수 있다고 쉬운 말로 전해요."
+    - kind: swap
+      words: [w-deteriorate]
+      who: "보호자에게 · 이송 중 계획 설명"
+      icon: me
+      before: ["If he ", "deteriorates", " on the way, we will stop and get help."]
+      options: [gets worse, deteriorates, crashes]
+      answer: gets worse
+      notes: {gets worse: "보호자에게 쉬운 말. 겁주지 않으면서 사실을 말한다.", deteriorates: "의료진끼리 쓰는 임상어. 가족에게는 딱딱하고 차갑게 들린다.", crashes: "현장 은어인 데다 가족에게는 너무 무섭게 들린다."}
+      why: "같은 뜻이라도 의료진끼리는 deteriorate, 가족에게는 get worse처럼 쉬운 말이 좋아요."
+      ko: 가는 중에 나빠지면 멈추고 도움을 요청할 거예요
+- situation: "이송 장비·산소·약물 준비"
+  items:
+    - kind: slider
+      words: [w-supply]
+      cue: "Gauge check: the cylinder covers the whole trip, but with no extra margin."
+      scale: [more than enough, just enough, not enough]
+      answerAt: 1
+      why: "여유 없이 딱 맞는 양이 just enough예요. 이송은 대기나 지연으로 길어질 수 있어서 전체 이동 시간에 예비분을 더해 챙겨요. 얼마나 더할지는 병원 기준을 따라요."
+      example: "It's just enough, so let's swap in a fuller cylinder."
+      exKo: "딱 맞는 양이라서, 더 찬 실린더로 바꿔요."
+    - kind: context
+      words: [w-oxygen]
+      word: oxygen
+      ko: 산소
+      scenes:
+        - {who: 동료 간호사, icon: monitor, en: "Can you double-check the oxygen before we leave?", ok: true}
+        - {who: 의사에게 보고, icon: stetho, en: "He's on 4 liters, and I've calculated the oxygen for the trip plus reserve.", ok: true}
+        - {who: 보호자에게, icon: me, en: "The portable oxygen has a calculated reserve of 1,200 PSI for the full trip.", ok: false, fix: "He'll have plenty of oxygen with him the whole way, plus some extra."}
+      why: "의료진끼리는 리터와 예비분처럼 숫자를 넣어 말해도 통해요. 가족에게 PSI, calculated reserve 같은 말은 어렵게 들려요. 충분히 챙겼다고 쉬운 말로 알려요."
+- situation: "이송 중 모니터·라인 관리"
+  items:
+    - kind: slider
+      words: [w-steady]
+      cue: "Pulse ox reading: 97, 97, 96, 97 — hardly moving."
+      scale: [steady, shaky, plunging]
+      answerAt: 0
+      why: "숫자가 거의 움직이지 않으면 steady예요. 오르내림이 크면 shaky, 급하게 내려가면 plunging이에요. 이송 중에는 steady여도 모니터를 계속 지켜봐요."
+      example: "The reading looks steady so far, but I'm still watching it."
+      exKo: "지금까지 수치는 일정하지만, 계속 지켜보고 있어요."
+    - kind: context
+      words: [w-line]
+      word: line
+      ko: 라인
+      scenes:
+        - {who: 동료 간호사, icon: monitor, en: "Watch the line on that side when we turn the corner.", ok: true}
+        - {who: 의사 콜, icon: stetho, en: "Both lines are secure, and the pump is running.", ok: true}
+        - {who: 환자에게, icon: me, en: "Your central line is at risk of dislodgement from traction during transport.", ok: false, fix: "We're holding your IV tubing steady so it doesn't pull on the way."}
+      why: "의료진끼리는 line, secure처럼 짧게 말해도 통해요. 환자에게 central line, dislodgement, traction 같은 말은 겁을 줘요. 줄이 당기지 않게 잡고 있다고 쉬운 말로 알려요."
+- situation: "시술 진정 전 사정·동의"
+  items:
+    - kind: slider
+      words: [w-ready, w-begin]
+      cue: "Everything on the pre-sedation checklist is done — consent, fasting, airway, suction."
+      scale: [not ready, almost ready, ready to begin]
+      answerAt: 2
+      why: "체크리스트가 전부 끝났다면 ready to begin이에요. 하나라도 빠지면 almost ready라고 말하고 마저 확인해요. 시술 직전에는 타임아웃도 하고 시작해요."
+      example: "We're ready to begin once the time-out is done."
+      exKo: "타임아웃만 끝나면 시작할 준비가 됐어요."
+    - kind: context
+      words: [w-consent]
+      word: consent
+      ko: 동의
+      scenes:
+        - {who: 시술 의사에게, icon: stetho, en: "Her consent is signed and in the chart.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Did you see if her consent is in the chart yet?", ok: true}
+        - {who: 환자에게, icon: me, en: "Informed consent for procedural sedation must be executed before we initiate the protocol.", ok: false, fix: "The doctor will explain what we're doing, and you can sign if you agree."}
+      why: "의료진끼리는 consent가 차트에 있는지 짧게 확인하면 돼요. 환자에게 executed, initiate the protocol은 법률 서류처럼 들려요. 시술 의사가 설명하고 환자가 동의하면 서명한다고 쉬운 말로 알려요."
+- situation: "시술 진정 중 활력·기도 감시"
+  items:
+    - kind: slider
+      words: [w-drop]
+      cue: "Monitor: sat 98, then 96, then 93 over one minute in a sedated patient."
+      scale: [slipping, dropping, plummeting]
+      answerAt: 1
+      why: "몇 포인트씩 계속 내려가면 dropping이에요. 진정 중에는 호흡이 억제될 수 있어서, 숫자가 내려가는 동안 깨우는 자극과 기도 지지를 하고 필요하면 바로 도움을 불러요."
+      example: "Her sats are dropping, so I'll stimulate her and call for help."
+      exKo: "산소포화도가 떨어지고 있어서 자극을 주고 도움을 부를게요."
+    - kind: context
+      words: [w-capnography]
+      word: capnography
+      ko: 카프노그래피
+      scenes:
+        - {who: 시술 의사에게, icon: stetho, en: "Capnography still shows a good waveform at 36.", ok: true}
+        - {who: 동료 간호사, icon: monitor, en: "Can you watch the capnography while I get the suction?", ok: true}
+        - {who: 환자에게, icon: me, en: "Capnography detects hypoventilation through end-tidal CO2 waveform attenuation.", ok: false, fix: "This little sensor checks every breath you take, so we know right away if you need help."}
+      why: "의료진끼리는 capnography, waveform 같은 말로 바로 통해요. 환자에게 hypoventilation, attenuation은 어렵고 불안하게 들려요. 숨을 계속 확인한다고 쉬운 말로 알려요."
+- situation: "시술 후 회복 관찰"
+  items:
+    - kind: slider
+      words: [w-arousable]
+      cue: "She's eyes open, answering clearly, and asking what time it is."
+      scale: [awake, arousable, hard to rouse]
+      answerAt: 0
+      why: "눈을 뜨고 분명하게 대답하면 awake예요. 이름을 불러야 깨고 금방 다시 졸면 arousable이에요. 회복 기준을 채울 때까지 기도와 호흡을 계속 지켜봐요."
+      example: "She's arousable, but I'll keep watching her breathing."
+      exKo: "부르면 깨지만, 호흡은 계속 지켜볼게요."
+    - kind: context
+      words: [w-recovery]
+      word: recovery
+      ko: 회복
+      scenes:
+        - {who: 동료에게 인계, icon: monitor, en: "She's in recovery, and her vitals are stable on room air.", ok: true}
+        - {who: 의사에게 보고, icon: stetho, en: "She meets the recovery criteria for reduced monitoring.", ok: true}
+        - {who: 환자에게, icon: me, en: "Your recovery parameters are within the post-sedation discharge criteria.", ok: false, fix: "You're waking up well, and your breathing and heart rate look good."}
+      why: "의료진끼리는 recovery, criteria처럼 짧게 말해도 통해요. 환자에게 recovery parameters, discharge criteria는 서류 용어처럼 차갑게 들려요. 잘 깨고 있고 호흡과 맥박이 괜찮다고 쉬운 말로 알려요."
+- situation: "인공호흡 환자 이송 관리"
+  items:
+    - kind: slider
+      words: [w-slip]
+      cue: "The ETT mark was at 23 at the lip. Now it reads 24."
+      scale: [no change, slight slip, tube pulled out]
+      answerAt: 1
+      why: "표시선이 한 눈금이라도 움직이면 slip이에요. 그냥 두지 않고 깊이를 다시 확인해서 RT와 의사에게 알려요. 튜브가 완전히 빠진 pulled out과는 달라요."
+      example: "The mark slipped a little, so let's recheck the depth before we go."
+      exKo: "표시선이 조금 밀렸으니, 가기 전에 깊이를 다시 확인해요."
+    - kind: context
+      words: [w-ventilator]
+      word: ventilator
+      ko: 인공호흡기
+      scenes:
+        - {who: 호흡치료사에게, icon: monitor, en: "Is the ventilator battery full for the trip?", ok: true}
+        - {who: 의사에게 보고, icon: stetho, en: "He's on the transport ventilator with the same settings and his sat is 96.", ok: true}
+        - {who: 보호자에게, icon: me, en: "He'll remain ventilator-dependent during transport with mechanical tidal volume delivery.", ok: false, fix: "A breathing machine will keep helping him breathe the whole way, and staff stay with him."}
+      why: "의료진끼리는 ventilator, settings처럼 짧게 말하면 돼요. 가족에게 ventilator-dependent, tidal volume은 어렵고 차갑게 들려요. 호흡기가 계속 숨쉬기를 돕고 의료진이 곁에 있다고 쉬운 말로 알려요."

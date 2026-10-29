@@ -1,0 +1,96 @@
+situations:
+- title: 시술 후 회복 관찰
+  s:
+  - ["각성 상태", faceWorried, "arousable은 깨우면 깰 수 있다는 뜻이고, protecting her own airway는 기도를 스스로 지킨다는 뜻이에요. 두 가지를 and로 이으면 회복 판단의 핵심이 한 문장에 들어가요.", "and sitting", "이제 각성 가능하고 스스로 의자에 앉아 있어요.", "이제 각성 가능하고 스스로 복도를 걸어 다니고 있어요.", "arousable", "agitated", "combative", "restless"]
+  - ["활력 회복", chartup, "back to baseline은 정상이 아니라 그 환자 원래 수치로 돌아왔다는 뜻이에요. and stable을 덧붙여 한 번 올랐다가 다시 흔들리지 않는다고 알려요.", "to admission", "활력징후는 입원 시 수치로 돌아왔고 안정적이에요.", "활력징후는 기저 수치로 돌아왔고 기록됐어요.", "baseline", "peak", "admission", "discharge"]
+  - ["회복 기준", check, "meets the criteria는 점수나 항목을 기준에 맞춰 봤다는 뜻이에요. for reduced monitoring으로 기준을 채운 결과로 무엇이 바뀌는지 말해요.", "for visiting hours", "회복 기준을 충족해서 면회를 허용할 수 있어요.", "회복 기준을 충족해서 식사를 시작할 수 있어요.", "reduced", "hourly", "constant", "extra"]
+  - ["이름 반응", speech, "when I call her name처럼 when절로 자극과 반응을 짝지으면 어떤 자극에 반응하는지 구체적이에요. 눈을 뜨는지는 각성 정도를 가늠하는 가장 쉬운 방법이에요.", "her mouth", "이름을 부르면 고개를 돌리고 있어요.", "어깨를 두드리면 눈을 뜨고 있어요.", "eyes", "mouth", "hands", "fist"]
+  - ["산소 상태", lab, "on room air는 산소 장치 없이 실내 공기만 마신다는 뜻이에요. 산소 없이도 수치가 좋은지 보는 게 감시를 줄이기 전 확인이에요.", "on a cannula", "산소 마스크로도 산소 수치가 좋아 보여요.", "실내 공기만으로도 호흡수가 좋아 보여요.", "room", "nasal", "wall", "bottled"]
+  - ["재확인", stetho, "one more time은 이미 본 걸 한 번 더 본다는 뜻이에요. before I step out으로 내가 자리를 비우기 전에 끝낸다는 시점을 말해요.", "until I", "나가기 전에 한 번 더 체위를 바꿔 줄게요.", "나가기 전에 한 번 더 난간을 확인할게요.", "recheck", "rotate", "relabel", "reweigh"]
+  - ["감시 복귀", monitor, "go back to는 예전 상태로 돌아간다는 뜻이에요. regular는 특별 관찰이 아니라 정해진 보통 간격이라는 뜻이에요.", "to a private", "이제 정규 식사 일정으로 돌아갈 수 있어요.", "이제 정규 면회 일정으로 돌아갈 수 있어요.", "monitoring", "feeding", "visiting", "therapy"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 시술 후 회복 관찰 4문장 순서
+    why: 이름에 반응하는 걸 먼저 보고, 그 반응을 근거로 기도를 지킨다고 판단하고, 활력이 돌아온 걸 확인한 뒤, 기준이 충족되면 감시를 줄여요.
+    lines:
+    - ["She's opening her eyes when I call her name.", speech, "이름을 부르면 눈을 뜨고 있어요", "반응"]
+    - ["With that response, she's arousable and protecting her own airway now.", faceWorried, "그 반응으로 이제 각성 가능하고 스스로 기도를 보호해요", "각성"]
+    - ["With her airway protected, vitals are back to baseline and stable.", chartup, "기도가 보호되고 활력징후도 기저 수치로 안정돼요", "활력"]
+    - ["With all of that, she meets the recovery criteria for reduced monitoring.", check, "그 모든 걸로 감시를 줄일 회복 기준을 충족해요", "기준"]
+- title: 인공호흡 환자 이송 관리
+  s:
+  - ["설정 맞춤", gear, "matched A to B는 A를 B와 똑같이 맞췄다는 뜻이에요. 이송용 호흡기가 병상 기계와 다르면 환기가 달라져서 현재 설정을 그대로 옮겨요.", "default ones", "이송용 인공호흡기 설정을 이전 설정에 맞췄어요.", "이송용 인공호흡기 설정을 어제 설정에 맞췄어요.", "matched", "changed", "lowered", "stored"]
+  - ["튜브 확인", stetho, "are confirmed는 확인이 끝났다는 수동태 보고예요. 호기말 CO2는 튜브가 기도 안에 있다는 증거이고, 깊이는 한쪽 폐로 들어가지 않았는지 보여 줘요.", "and the cuff size", "호기말 이산화탄소와 기관튜브 크기를 확인했어요.", "호기말 이산화탄소와 기관튜브 제조일을 확인했어요.", "depth", "brand", "color", "price"]
+  - ["백업 준비", lock, "ready as backup은 호흡기가 고장 났을 때 대신 쓸 준비가 됐다는 뜻이에요. 기계가 멈추면 손으로 짜야 해서 항상 곁에 둬요.", "ready for rounds", "백업으로 후두경과 블레이드를 준비해 뒀어요.", "백업으로 산소통과 연결관을 준비해 뒀어요.", "ready", "broken", "stored", "missing"]
+  - ["작동 보고", monitor, "running smoothly는 경보나 흔들림 없이 돌아간다는 뜻이에요. 호흡기 상태를 짧게 알려야 이동 중 다들 안심하고 환자에게 집중해요.", "on a timer", "이송용 인공호흡기가 조용하게 작동하고 있어요.", "이송용 모니터가 순조롭게 작동하고 있어요.", "smoothly", "slowly", "loudly", "hot"]
+  - ["수치 유지", chartup, "held steady는 흔들리지 않고 그대로였다는 뜻이에요. during the switch는 기계를 바꾸는 가장 위험한 순간을 가리켜요.", "during the nap", "전환하는 동안 맥박이 안정적으로 유지됐어요.", "전환하는 동안 산소포화도가 안정적으로 회복됐어요.", "steady", "low", "high", "poor"]
+  - ["튜브 표시", pencil, "so we'd notice처럼 so 뒤에 목적을 붙이면 왜 표시했는지가 바로 전달돼요. 입술 선에 표시하면 튜브가 밀려 들어가거나 나온 걸 눈으로 알아볼 수 있어요.", "so we'd swap", "꺾임을 알아차릴 수 있게 입술 선에 튜브를 표시했어요.", "누출을 알아차릴 수 있게 입술 선에 튜브를 표시했어요.", "slip", "leak", "clot", "rash"]
+  - ["이송 준비", plane, "all set은 준비가 모두 끝났다는 관용구예요. now를 붙여 지금 바로 움직일 수 있다고 팀에 알려요.", "to wake him", "이제 그를 씻길 준비가 다 됐어요.", "이제 그를 눕힐 준비가 다 됐어요.", "move", "wake", "wash", "feed"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 인공호흡 환자 이송 준비 4문장 순서
+    why: 호흡기 설정을 먼저 맞추고, 그 상태에서 튜브 위치를 확인하고, 확인한 튜브에 표시를 한 뒤, 모두 갖춰졌다고 알려요.
+    lines:
+    - ["I've matched the transport vent settings to his current ones.", gear, "이송용 인공호흡기 설정을 현재 설정에 맞췄어요", "설정"]
+    - ["With that matched, end-tidal CO2 and the ETT depth are confirmed.", stetho, "그게 맞춰졌으니 호기말 CO2와 튜브 깊이를 확인했어요", "확인"]
+    - ["With it confirmed, I marked the tube at the lip line.", pencil, "확인했으니 입술 선에 튜브를 표시했어요", "표시"]
+    - ["With the tube marked, we're all set to move him now.", plane, "튜브를 표시했으니 이제 옮길 준비가 다 됐어요", "출발"]
+- title: 이송 중 승압·주입 유지
+  s:
+  - ["펌프 전원", gear, "on battery는 벽 전원이 아니라 배터리로 돈다는 뜻이에요. without interruption으로 중간에 끊기지 않고 이어진다고 약물이 끊기지 않는다는 점을 알려요.", "and charging", "펌프는 벽 전원으로 중단 없이 작동하고 있어요.", "펌프는 배터리로 소리 없이 작동하고 있어요.", "interruption", "instruction", "correction", "infection"]
+  - ["승압제 적정", chartup, "titrate는 반응을 보며 조금씩 조정한다는 뜻이에요. to keep 뒤에 목표를 붙이면 왜 조정하는지가 바로 들려요.", "to check", "장기 관류를 유지하도록 승압제를 적정할게요.", "소변량을 유지하도록 승압제를 적정할게요.", "pressor", "diuretic", "antibiotic", "insulin"]
+  - ["예비 주사기", pill, "in case 뒤에 이유 절을 붙이면 왜 미리 준비했는지가 드러나요. runs dry는 액이 떨어져서 라인이 비는 걸 말해요.", "frozen", "라인이 막히는 경우를 대비해 예비 주사기를 뽑아 뒀어요.", "펌프가 꺼지는 경우를 대비해 예비 주사기를 뽑아 뒀어요.", "syringes", "vials", "pumps", "tubes"]
+  - ["배터리 표시", monitor, "still shows는 지금도 표시가 그렇다는 뜻이에요. plenty of life는 남은 배터리가 넉넉하다는 뜻이라 이동 시간 안에 방전되지 않을 거라는 확인이에요.", "plenty of dust", "배터리 표시기는 아직 초록색이에요.", "충전기 표시기는 아직 수명이 넉넉해요.", "life", "noise", "dust", "heat"]
+  - ["MAP 하락", faceWorried, "dipped는 잠깐 내려갔다는 뜻이에요. when we moved the bed로 원인이 된 동작을 같이 말해 줘야 다음 사람이 이동 때 주의해요.", "the cart", "침대를 옮길 때 심박수가 잠깐 떨어졌어요.", "침대를 세울 때 MAP이 잠깐 떨어졌어요.", "dipped", "climbed", "spiked", "soared"]
+  - ["속도 조정", gear, "bumped up은 아주 조금 올렸다는 구어예요. slightly를 붙이면 조금만 조정했다는 게 분명해서 지나친 조정이 아니라는 걸 알려요.", "and it beeped", "속도를 살짝 올렸더니 알람이 멎었어요.", "속도를 살짝 올렸더니 소변이 나왔어요.", "slightly", "twice", "greatly", "suddenly"]
+  - ["여분 펌프", board, "than we need는 필요한 수보다 많다는 비교예요. just in case로 쓸 일이 없어도 이동 중에 고장 나면 바로 바꾸려고 챙겼다고 말해요.", ", just in time", "혹시 몰라서 필요한 것보다 펌프 세 개를 더 갖고 있어요.", "혹시 몰라서 필요한 것보다 배터리 두 개를 더 갖고 있어요.", "pumps", "monitors", "cables", "poles"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 이송 중 승압제 유지 4문장 순서
+    why: 펌프가 배터리로 이어지는지 먼저 말하고, 그 상태에서 승압제를 적정하다가, 침대를 옮길 때 MAP이 떨어진 걸 보고, 속도를 올려 회복시켜요.
+    lines:
+    - ["The pumps are on battery and running without interruption.", gear, "펌프는 배터리로 중단 없이 작동하고 있어요", "펌프"]
+    - ["Because the pumps hold, I'll titrate the pressor to keep his MAP at goal.", chartup, "펌프가 버티니 MAP을 목표치로 유지하도록 승압제를 적정할게요", "적정"]
+    - ["While titrating, I saw his MAP dip for a second when we moved the bed.", faceWorried, "적정하는 중에 침대를 옮길 때 MAP이 잠깐 떨어지는 걸 봤어요", "하락"]
+    - ["After that dip, I bumped the rate up slightly and it recovered.", gear, "그 하락 뒤에 속도를 살짝 올렸더니 회복됐어요", "조정"]
+- title: 시술 진정 깊이 적정
+  s:
+  - ["진정 단계", faceWorried, "At moderate sedation으로 단계를 먼저 못 박으면 뒤의 반응이 그 단계의 기준이라는 게 분명해요. responds to voice는 중등도의 기준이고, 통증 자극이 필요하면 더 깊은 단계예요.", "to music", "중등도 진정에서는 통증에 반응하고 스스로 기도를 유지해요.", "중등도 진정에서는 목소리에 반응하고 스스로 체위를 유지해요.", "moderate", "deep", "minimal", "general"]
+  - ["천천히 적정", gear, "titrate slowly는 속도를 낮춰서 효과를 보며 조금씩 맞춘다는 뜻이에요. and reassess를 붙여 조정과 평가가 한 쌍이라는 걸 보여요.", "and rewrite", "천천히 적정하면서 통증을 다시 평가할게요.", "천천히 적정하면서 활력을 다시 평가할게요.", "depth", "pain", "skin", "color"]
+  - ["과진정 대응", siren, "If로 조건을 먼저 말하고 쉼표 뒤에 할 일을 두 가지 이어요. 기도를 지지하는 게 먼저이고, 약물을 보류하는 건 더 깊어지지 않게 하는 거예요.", "and hold the door", "호흡이 느려지면 기도를 지지하고 약물을 보류할게요.", "맥박이 느려지면 기도를 지지하고 약물을 보류할게요.", "deep", "light", "fast", "hard"]
+  - ["현재 깊이", faceWorried, "somewhere between은 정확한 한 점이 아니라 두 단계 사이라는 뜻이에요. Right now로 지금의 판단이고 곧 바뀔 수 있다는 걸 알려요.", "between pain and fear", "지금은 최소와 중등도 진정 사이 어디쯤이에요.", "지금은 중등도와 전신마취 사이 어디쯤이에요.", "between", "above", "beyond", "behind"]
+  - ["소량 투여", pill, "a small dose는 양을 조금만 줬다는 뜻이에요. and I'm watching으로 준 다음 반응을 지켜보는 게 한 쌍이라는 걸 보여요.", "a warm blanket", "소량을 투여했고 호흡을 지켜보고 있어요.", "소량을 투여했고 표정을 지켜보고 있어요.", "small", "large", "double", "full"]
+  - ["각성 반응", speech, "still은 아직도 그렇다는 뜻이라 진정이 너무 깊어지지 않았다는 안심이에요. when I say her name으로 어떤 자극에 반응하는지 구체적이에요.", "her fingers", "이름을 부르면 아직 고개를 돌려요.", "손을 잡으면 아직 눈을 떠요.", "name", "birthday", "number", "address"]
+  - ["유지 결정", check, "Let's hold here는 함께 여기서 멈추자는 부드러운 제안이에요. looks about right는 완벽하다는 확신이 아니라 대체로 맞는다는 판단이에요.", "— this pillow", "여기서 유지해요 — 이 속도가 적당해 보여요.", "여기서 유지해요 — 이 높이가 적당해 보여요.", "here", "there", "upstairs", "outside"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 진정 깊이 적정 4문장 순서
+    why: 소량을 주고 반응을 보고, 그 반응으로 다시 평가하며, 깊이가 어디쯤인지 말한 뒤, 적당하면 유지하자고 해요.
+    lines:
+    - ["I gave a small dose and I'm watching her response.", pill, "소량을 투여했고 반응을 지켜보고 있어요", "투여"]
+    - ["Based on it, I'll titrate slowly and reassess her depth.", gear, "그걸 바탕으로 천천히 적정하며 깊이를 다시 평가할게요", "적정"]
+    - ["With that reassessed, she's somewhere between moderate and deep.", faceWorried, "다시 평가해 보니 중등도와 깊은 진정 사이 어디쯤이에요", "평가"]
+    - ["Given that, let's hold here — this depth looks about right.", check, "그러니 여기서 유지해요 — 이 깊이가 적당해 보여요", "유지"]
+- title: 진정 역전제 준비
+  s:
+  - ["날록손 준비", pill, "is drawn up은 주사기에 약을 뽑아 둔 상태를 말하는 수동태예요. for opioid reversal로 어떤 약이 어떤 목적인지 짝을 지어 말해요.", "for oral", "오피오이드 역전을 위해 날록손을 침상 곁에 놔 뒀어요.", "오피오이드 역전을 위해 날록손을 카트에 실어 뒀어요.", "Naloxone", "Heparin", "Digoxin", "Vancomycin"]
+  - ["플루마제닐", pill, "ready for처럼 for 뒤에 대비할 상황을 붙이면 약이 왜 곁에 있는지 알려요. oversedation은 진정이 너무 깊어진 상태예요.", "for antibiotic", "벤조디아제핀 과다진정에 대비해 플루마제닐도 냉장 보관돼 있어요.", "벤조디아제핀 과다진정에 대비해 플루마제닐도 처방됐어요.", "benzodiazepine", "anticoagulant", "antibiotic", "diuretic"]
+  - ["역전제 적정", gear, "titrate to effect는 정해진 양이 아니라 효과가 나올 때까지 조금씩 준다는 뜻이에요. watch for를 붙여 약이 끝난 뒤 다시 졸릴 수 있는 걸 지켜본다고 알려요.", "and sign", "효과가 날 때까지 역전제를 적정하고 통증을 지켜볼게요.", "효과가 날 때까지 역전제를 적정하고 구토를 지켜볼게요.", "resedation", "seizure", "itching", "dryness"]
+  - ["라벨과 위치", lock, "within reach는 손을 뻗으면 닿는다는 뜻이에요. labeled and within reach는 헷갈리지 않게 하고 바로 쓰게 하는 두 조건이에요.", "and in a drawer", "두 용량 모두 라벨이 붙어 있고 날짜도 적혀 있어요.", "두 용량 모두 서명이 돼 있고 손 닿는 곳에 있어요.", "labeled", "warmed", "frozen", "signed"]
+  - ["농도 확인", magnify, "double-check는 이미 한 확인을 한 번 더 한다는 뜻이에요. before drawing it up은 뽑기 전에 틀린 걸 잡는다는 시점이에요.", "the paperwork", "뽑기 전에 유효기간을 다시 확인했어요.", "뽑기 전에 라벨을 다시 확인했어요.", "concentration", "temperature", "thickness", "fragrance"]
+  - ["재진정 대비", siren, "again은 앞서 한 번 있었다는 뜻이라 다시 일어날 걸 대비한다는 느낌이에요. right away로 지체 없이 쓸 수 있다고 알려요.", ", we're done", "다시 구토하면 바로 준비돼 있어요.", "다시 경련하면 바로 준비돼 있어요.", "ready", "worried", "sorry", "tired"]
+  - ["천천히 투여", pill, "slowly는 천천히 준다는 뜻이고, watch her response closely는 준 다음 반응을 가까이서 본다는 뜻이에요. 역전제는 빨리 주면 갑자기 깨서 통증이 몰릴 수 있어요.", "and mark", "천천히 주고 호흡을 자세히 지켜볼게요.", "천천히 주고 피부색을 자세히 지켜볼게요.", "response", "skin", "pain", "color"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 역전제 준비 4문장 순서
+    why: 농도를 확인한 뒤 뽑고, 뽑은 약을 라벨 붙여 곁에 두고, 필요할 때 천천히 주면서 반응을 지켜봐요.
+    lines:
+    - ["I double-checked the concentration before drawing it up.", magnify, "뽑기 전에 농도를 다시 확인했어요", "확인"]
+    - ["With that confirmed, naloxone is drawn up for opioid reversal.", pill, "그게 확인됐으니 오피오이드 역전용 날록손을 뽑아 뒀어요", "준비"]
+    - ["With it drawn up, both doses are labeled and within reach.", lock, "뽑아 뒀으니 두 용량 모두 라벨이 붙어 손 닿는 곳에 있어요", "배치"]
+    - ["With both within reach, I'll give it slowly and watch her response closely.", gear, "둘 다 손 닿으니 천천히 주고 반응을 자세히 볼게요", "투여"]

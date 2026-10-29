@@ -1,0 +1,58 @@
+situations:
+- title: 이송 중 모니터·라인 관리
+  s:
+  - ["지속 감시", monitor, "continuously는 가끔이 아니라 쉬지 않고라는 뜻이에요. during transport로 감시가 이송이 끝날 때까지 이어진다고 범위를 말해요.", "for the doctor", "이송하는 동안 산소 튜빙을 계속 지켜보고 있어요.", "이송하는 동안 폴대를 계속 지켜보고 있어요.", "monitor", "wheels", "door", "hallway"]
+  - ["라인 보고", shield, "secured는 누군가 고정해서 안전해졌다는 수동태예요. and free of tension으로 당김까지 없다고 덧붙이면 빠질 위험이 낮다는 보고가 돼요.", "and kinked", "모든 라인이 고정됐고 꼬임도 없어요.", "모든 라인이 고정됐고 누출도 없어요.", "tension", "bubbles", "dust", "fluid"]
+  - ["튜빙 위치", gear, "clear of는 닿지 않고 떨어져 있다는 뜻이에요. 산소 튜빙이 바퀴에 말리면 공급이 끊겨서 위치를 구체적으로 말해요.", "of the sheet", "산소 튜빙이 난간에서 벗어나 있어요.", "산소 튜빙이 폴대에서 벗어나 있어요.", "wheels", "walls", "floors", "doors"]
+  - ["수치 보고", chartup, "looks steady는 눈으로 본 수치가 일정하다는 뜻이에요. so far를 붙여 지금까지는 그렇다고 한정해서 과장하지 않아요.", "since lunch", "지금까지 체온 수치는 안정적이에요.", "지금까지 혈당 수치는 안정적이에요.", "steady", "low", "erratic", "high"]
+  - ["폴대 위치", board, "close to는 가까이 붙여 둔다는 뜻이에요. 폴대가 멀리 떨어지면 라인이 당겨져서 침대와 함께 움직이게 둬요.", "the monitor cable", "수액 폴대는 침대 발치 가까이 둘게요.", "산소통은 침대 난간 가까이 둘게요.", "pole", "tank", "stool", "cart"]
+  - ["꼬임 요청", speech, "Let me know는 알려 달라는 부탁을 부드럽게 하는 말이에요. 같이 가는 사람 눈이 나보다 먼저 꼬임을 볼 수 있어서 요청해요.", "any dust", "튜빙에 물방울이 보이면 알려 주세요.", "튜빙에 얼룩이 보이면 알려 주세요.", "kinks", "stains", "splashes", "labels"]
+  - ["진행 보고", plane, "We're halfway는 남은 거리를 함께 가늠하게 해 주는 말이에요. now를 붙여 지금 이 순간의 위치라고 알려요.", "to the lobby", "지금 영상의학과까지 거의 다 왔어요.", "지금 약국까지 절반쯤 왔어요.", "radiology", "pharmacy", "dialysis", "endoscopy"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 이송 중 모니터 관리 4문장 순서
+    why: 출발 전에 라인부터 고정하고, 이동 중에 모니터를 계속 보면서, 수치를 보고하고, 마지막에 도착까지 남은 거리를 알려요.
+    lines:
+    - ["All lines are secured and free of tension.", shield, "모든 라인이 고정됐고 당김도 없어요", "라인"]
+    - ["With the lines set, I'm watching the monitor continuously.", monitor, "라인이 정리됐으니 모니터를 계속 지켜보고 있어요", "감시"]
+    - ["On that screen, the pulse ox reading looks steady so far.", chartup, "그 화면에서 지금까지 산소포화도 수치는 안정적이에요", "수치"]
+    - ["Since it's steady, we're halfway to radiology now.", plane, "안정적이니 지금 영상의학과까지 절반쯤 왔어요", "진행"]
+- title: 시술 진정 전 사정·동의
+  s:
+  - ["사정 기록", pencil, "I've documented처럼 현재완료는 이미 끝낸 기록 업무를 보고해요. ASA 등급과 마지막 경구 섭취는 진정 전에 꼭 남기는 두 가지예요.", "her home address", "ASA 등급과 알레르기 목록을 기록했어요.", "체중과 마지막 경구 섭취를 기록했어요.", "oral", "nasal", "rectal", "topical"]
+  - ["동의 확인", board, "complete는 일부가 아니라 끝까지 마쳤다는 뜻이에요. 기도 사정과 동의를 and로 묶으면 시술 전 필수 두 가지를 한 번에 보고해요.", "and labs", "기도 사정과 설명이 끝났어요.", "피부 사정과 동의가 끝났어요.", "consent", "billing", "parking", "insurance"]
+  - ["장비 위치", lock, "at the bedside는 손이 바로 닿는 곳이라는 뜻이에요. 역전제와 흡인은 급할 때 찾으러 갈 시간이 없어서 침상 곁에 둬요.", "and a pulse ox", "역전제와 청진기가 침상 곁에 있어요.", "역전제와 혈압계가 침상 곁에 있어요.", "bedside", "pharmacy", "entrance", "desk"]
+  - ["금식 확인", faceWorried, "hasn't eaten anything처럼 현재완료 부정은 지금까지 먹은 게 없다는 뜻이에요. since last night으로 금식이 시작된 시점을 말해요.", "until noon", "오늘 아침 이후로 아무것도 안 먹었어요.", "어젯밤 이후로 아무것도 안 마셨어요.", "eaten", "vomited", "tasted", "drunk"]
+  - ["기도 사정", stetho, "before we started로 시술 시작 전에 이미 봤다는 순서를 알려요. Mallampati는 입을 벌렸을 때 목젖이 보이는 정도로 기도가 어려운지 가늠하는 점수예요.", "her dental chart", "시작하기 전에 체온과 체중을 확인했어요.", "시작하기 전에 혈압과 맥박수를 확인했어요.", "Mallampati", "Apgar", "Glasgow", "Braden"]
+  - ["동의서", pencil, "is signed는 수동태로 누가 했는지보다 서명된 상태를 알려요. in the chart까지 말해야 필요할 때 누구나 찾을 수 있어요.", "on the desk", "동의서는 복사됐고 차트에 있어요.", "동의서는 서명됐고 서랍에 있어요.", "signed", "copied", "printed", "faxed"]
+  - ["시작 준비", check, "as soon as you are는 상대 준비가 끝나는 즉시라는 뜻이에요. 문장 끝의 you are는 앞에 나온 ready를 줄여 쓴 거예요.", "to leave", "당신만 도착하면 바로 시작할 수 있어요.", "당신만 준비되면 바로 마칠 수 있어요.", "begin", "finish", "pause", "leave"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 시술 진정 전 사정 4문장 순서
+    why: 기록부터 하고, 그 기록을 바탕으로 사정과 동의를 마치고, 장비를 곁에 둔 뒤, 준비되면 시작한다고 알려요.
+    lines:
+    - ["I've documented her ASA class and last oral intake.", pencil, "ASA 등급과 마지막 경구 섭취를 기록했어요", "기록"]
+    - ["Based on that, the airway assessment and consent are complete.", board, "그걸 바탕으로 기도 사정과 동의가 끝났어요", "사정"]
+    - ["Once those are done, reversal agents and suction are at the bedside.", lock, "그게 끝나면 역전제와 흡인 장비가 침상 곁에 있어요", "장비"]
+    - ["With everything in place, we're ready to begin as soon as you are.", check, "다 갖춰졌으니 당신만 준비되면 바로 시작할 수 있어요", "시작"]
+- title: 시술 진정 중 활력·기도 감시
+  s:
+  - ["지속 감시", monitor, "continuously는 쉬지 않고 계속이라는 뜻이에요. 카프노그래피는 숨을 내쉬는 CO2를 직접 보여서 산소포화도보다 호흡 변화를 먼저 알려 줘요.", "pulse and blood pressure", "카프노그래피와 혈압을 계속 감시하고 있어요.", "심전도와 산소포화도를 계속 감시하고 있어요.", "capnography", "telemetry", "spirometry", "radiography"]
+  - ["호흡 저하", faceWorried, "대시 뒤에 이유가 아니라 곧 할 행동을 붙였어요. stimulate는 이름을 부르거나 어깨를 두드려 깨우는 자극이고, support the airway는 기도가 막히지 않게 받쳐 주는 거예요.", "and label", "진정제 효과가 커지고 있어요 — 자극하고 기도를 지지할게요.", "이산화탄소가 오르고 있어요 — 자극하고 기도를 지지할게요.", "slowing", "rising", "fluctuating", "steady"]
+  - ["장비 대기", lock, "are ready는 지금 바로 쓸 수 있다는 뜻이에요. 흡인과 역전제는 호흡이 나빠질 때 곧바로 필요해서 미리 준비해 둬요.", "and the gauze", "흡인 장비와 심전도 전극이 준비돼 있어요.", "흡인 장비와 거즈가 준비돼 있어요.", "reversal", "contrast", "antibiotic", "diuretic"]
+  - ["수치 하락", chartup, "sats는 oxygen saturation을 줄인 현장 말이에요. just를 붙이면 방금 일어난 변화라는 느낌이 나서 지금 확인이 필요하다고 알려요.", "to the floor", "혈압이 방금 몇 포인트 떨어졌어요.", "혈당 수치가 방금 몇 포인트 떨어졌어요.", "dropped", "climbed", "jumped", "doubled"]
+  - ["호출 기준", siren, "if she doesn't respond to stimulation으로 도움을 부르는 기준을 정해 둬요. 먼저 자극하고, 그래도 반응이 없으면 부르는 순서가 말에 들어 있어요.", "to the alarm", "체위를 바꿔도 반응하지 않으면 도움을 부를게요.", "알람이 계속 울리면 도움을 부를게요.", "stimulation", "medication", "oxygen", "position"]
+  - ["파형 관찰", magnify, "looks flat은 눈으로 본 파형이 평평하다는 뜻이에요. for a second를 붙여 잠깐이었다고 알려서 계속되는지 지켜보게 해요.", "in the hallway", "카프노그래피 파형이 잠깐 흔들려 보여요.", "카프노그래피 파형이 잠깐 높아 보여요.", "flat", "tall", "jagged", "sharp"]
+  - ["호흡 회복", check, "on her own은 도움 없이 혼자라는 뜻이에요. again now로 한동안 안 되다가 지금 다시 된다고 말해 줘요.", "with a cough", "이제 다시 천천히 숨쉬고 있어요.", "이제 다시 편하게 숨쉬고 있어요.", "breathing", "coughing", "talking", "sleeping"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 진정 중 호흡 저하 4문장 순서
+    why: 모니터를 계속 보다가 수치가 떨어진 걸 말하고, 그 하락에 맞춰 자극하고 기도를 지지한 뒤, 반응이 없으면 도움을 부르겠다고 알려요.
+    lines:
+    - ["I'm monitoring capnography and oxygen saturation continuously.", monitor, "카프노그래피와 산소포화도를 계속 감시하고 있어요", "감시"]
+    - ["On those, her sats just dropped a few points.", chartup, "거기서 산소포화도가 방금 몇 포인트 떨어졌어요", "하락"]
+    - ["At that drop, I'll stimulate and support the airway.", faceWorried, "그 하락에 맞춰 자극하고 기도를 지지할게요", "처치"]
+    - ["If she doesn't respond to that, I'll call for help.", siren, "그래도 반응이 없으면 도움을 부를게요", "호출"]
