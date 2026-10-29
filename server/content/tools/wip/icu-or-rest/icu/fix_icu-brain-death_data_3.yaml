@@ -1,0 +1,113 @@
+# 뉘앙스·order 수정 — A 검토 C절과 B 검토 D절
+nuance:
+- s: 1
+  kind: context
+  scene: {2: {fix: "He didn't react when we touched his eye or pressed on his nail. The doctor will explain what that means."}}
+- s: 2
+  kind: context
+  scene: {2: {fix: "His breathing numbers look normal before the test, so the doctor can start the test."}}
+- {s: 4, kind: context, delete: true}
+- s: 8
+  kind: slider
+  set: {cue: "He put out almost a liter of urine in the last hour, and it looks like clear water."}
+- s: 11
+  kind: slider
+  set: {cue: "\"It would help me so much to stay a little longer,\" the son says."}
+- s: 14
+  kind: slider
+  set: {cue: "During the waiting period, one nurse watches the monitor the whole time and writes down each change."}
+- s: 14
+  kind: context
+  scene: {2: {fix: "When his heart stops, the doctor will wait a few minutes and then tell you that he has died."}}
+  set: {why: "의료진끼리는 circulatory death, asystole 같은 용어가 정확하고 빨라요. 가족에게는 같은 death를 심장이 멈추면 몇 분 지켜본 뒤 의사가 사망을 알려 준다고 쉬운 말로 풀어 주세요."}
+- s: 16
+  kind: context
+  set: {ko: "상급 대응을 요청하다"}
+- s: 17
+  kind: slider
+  set: {cue: "Sodium went 146, 149, 152, then 155 over the last four checks.", why: "확인할 때마다 서너 점씩 꾸준히 오르면 climb이에요. creep은 거의 눈에 안 띄게 오를 때, jump는 한 번에 크게 오를 때예요. 교정 속도와 약 용량은 처방자가 정해요."}
+- s: 17
+  kind: context
+  set:
+    words: [w-correct]
+    word: correct
+    ko: "교정하다"
+    scenes:
+    - {who: "의사가 간호사에게", icon: stetho, en: "Recheck the sodium and correct it slowly, as ordered.", ok: true}
+    - {who: "동료 간호사에게", icon: handshake2, en: "We'll correct his sodium slowly, per the order.", ok: true}
+    - {who: "가족에게", icon: me, en: "We're correcting his hypernatremia with free water.", ok: false, fix: "We're slowly bringing the salt level in his blood back to normal."}
+    why: "의료진끼리는 correct가 수치를 바로잡는다는 정확한 말이지만, 가족에게 '교정'과 hypernatremia는 낯설어요. 혈액 속 염분 수치를 천천히 되돌린다고 풀어 주세요."
+- s: 17
+  kind: swap
+  set:
+    options: ["has doubled", "has gone through the roof", "has gone nuts"]
+    notes: {"has doubled": "얼마나 늘었는지 분명해서 의사가 바로 판단할 수 있어요.", "has gone through the roof": "비유라서 정확한 양이 전달되지 않아요.", "has gone nuts": "속어라 보고에 맞지 않아요."}
+- s: 18
+  kind: slider
+  set:
+    example: "You have every right to say no to donation, and that's completely okay."
+    exKo: "기증을 거절하실 권리가 충분히 있고, 그것도 완전히 괜찮아요."
+- s: 19
+  kind: slider
+  set: {scale: [slowly, at a normal pace, quickly]}
+# order: 상황 번호 → why, 줄 번호(0부터) → 바꿀 필드
+order:
+- s: 1
+  lines:
+    2: {en: "Tell me which reflex is next, and I'll hand you what you need.", ko: "다음 반사를 말씀하시면 필요한 걸 건넬게요"}
+    3: {en: "I'll chart that result the moment you call it out.", ko: "부르시는 즉시 그 결과를 적을게요"}
+- s: 2
+  why: "산소화를 먼저 하고, 그 뒤에 기저 혈액가스를 보내고, 그 결과가 범위 안이어야 준비가 끝나며, 그때 T-피스로 바꿔 검사를 시작해요."
+  lines:
+    2: {en: "Once that gas is back in range, everything is set for the apnea test.", ko: "그 결과가 범위 안이면 준비가 끝나요"}
+- s: 3
+  lines:
+    1: {en: "I'm so sorry to have to confirm that for you."}
+- s: 4
+  why: "통보가 이루어졌다는 사실이 먼저이고, 그 시각을 차트에 남긴 뒤, 그 시각을 바탕으로 코디네이터가 연락하면 알리겠다고 하고, 마지막에 그 연락에 맞춰 서류를 갖춰요."
+  lines:
+    2: {en: "With that time charted, I'll tell you when their coordinator calls back.", ko: "그 시각을 적어 뒀으니 코디네이터가 연락하면 알려 드릴게요"}
+- s: 6
+  why: "먼저 계속 지켜본다고 말하고, 수치가 떨어지기 시작하면 바로 소리 내어 알린다고 하며, 중단 기준에 닿으면 중단하고 다시 연결한다고 이어서, 그래서 인공호흡기가 곁에 준비돼 있다고 맺어요."
+  lines:
+    1: {en: "If his numbers start to fall, I'll call them out right away.", ko: "떨어지기 시작하면 바로 소리 내어 알릴게요", icon: speech}
+    2: {en: "If they reach the abort criteria, we abort and reconnect the vent.", ko: "중단 기준에 닿으면 중단하고 인공호흡기를 연결해요"}
+    3: {en: "That's why the vent stays at the bedside for that reconnect.", ko: "그래서 그 재연결을 위해 인공호흡기가 곁에 있어요"}
+- s: 7
+  lines:
+    0: {icon: monitor}
+    3: {en: "Let me know if that result says we need to start a pressor.", ko: "그 결과로 승압제가 필요하면 알려 주세요"}
+- s: 9
+  lines:
+    0: {icon: monitor, ko: "한 시간 전 체온이 화씨 96도 아래로 떨어졌어요"}
+- s: 10
+  lines:
+    2: {en: "Along with those settings, I'll suction gently and reposition him.", ko: "그 설정과 함께 부드럽게 흡인하고 체위를 바꿔요"}
+- s: 11
+  lines:
+    1: {en: "Whatever you feel during that time is okay.", ko: "그 시간에 드는 마음은 다 괜찮아요"}
+    2: {en: "If those feelings lead you to, you can hold his hand and talk to him.", ko: "그 마음이 이끌면 손을 잡고 말을 걸어도 돼요"}
+- s: 13
+  why: "남은 검사를 먼저 정리하고, 그 검사를 처방이 나는 대로 채취해 두겠다고 하고, 그 계획에 맞춰 침상 시점을 조율하고, 그 시점에서 바뀌면 바로 호출한다고 맺어요."
+  lines:
+    1: {en: "For those, I'll have the next set drawn as soon as they're ordered.", ko: "그 검사는 처방이 나는 대로 바로 채취해 둘게요"}
+- s: 15
+  lines:
+    0: {icon: siren}
+- s: 16
+  why: "혈압이 바닥이라고 알리고, 그 일로 의사와 코디네이터를 바로 부르고, 그들이 오기 전에 처방 범위에서 승압제를 올리고 처방된 수액을 주고, 그렇게 올린 뒤 모두 침상에 모이게 해요."
+  lines:
+    0: {icon: siren}
+    2: {en: "Before they arrive, I'll titrate the pressors up and give the ordered volume.", ko: "그들이 오기 전에 승압제를 올리고 처방된 수액을 줘요"}
+    3: {en: "With the pressors up, everyone needs to be at the bedside in the next minute.", ko: "올린 뒤 일 분 안에 모두 침상 곁에 모여요"}
+- s: 17
+  lines:
+    2: {en: "To stop that, I'll give the ordered desmopressin and match the losses.", ko: "그걸 막으려고 처방된 약을 주고 손실을 맞춰요"}
+- s: 18
+  lines:
+    1: {en: "That means there is no pressure — this is entirely your decision."}
+    2: {en: "That includes every right to say no to donation, and that's completely okay.", ko: "기증을 거절하실 권리도 거기 들어 있어요"}
+- s: 20
+  why: "신장이 버티지 못한다고 알리고, 그 신장을 돕기 위해 관류와 소변량을 맞추고, 그 일환으로 규정대로 조정하며, 그 뒤 십오 분 뒤에 혈압을 다시 확인해요."
+  lines:
+    3: {ko: "그다음 십오 분 뒤에 혈압을 다시 볼게요"}

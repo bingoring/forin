@@ -1,0 +1,792 @@
+
+######## S0 영양 요구·경로 사정
+[0.0] ans=nutrition
+   *He hasn't eaten by mouth, but he's still getting the [nutrition] he needs.
+    He hasn't eaten by mouth, but he's still getting the [medication] he needs.
+    He hasn't eaten by mouth, but he's still getting the [oxygen] he needs.
+    He hasn't eaten by mouth, but he's still getting the [therapy] he needs.
+[0.1] ans=usually
+   *We [usually] feed through the gut with a small tube first.
+    We [rarely] feed through the gut with a small tube first.
+    We [always] feed through the gut with a small tube first.
+    We [never] feed through the gut with a small tube first.
+[0.2] ans=safest
+   *It's the [safest] way to give him nutrition right now.
+    It's the [quickest] way to give him nutrition right now.
+    It's the [cheapest] way to give him nutrition right now.
+    It's the [hardest] way to give him nutrition right now.
+[0.3] ans=exactly
+   *The team calculates [exactly] what he needs.
+    The team calculates [roughly] what he needs.
+    The team calculates [loosely] what he needs.
+    The team calculates [vaguely] what he needs.
+[0.4] ans=meal
+   *The tube does the same job as a [meal] would.
+    The tube does the same job as a [snack] would.
+    The tube does the same job as a [drink] would.
+    The tube does the same job as a [dessert] would.
+[0.5] ans=slowly
+   *We start [slowly] so his body can adjust safely.
+    We start [quickly] so his body can adjust safely.
+    We start [early] so his body can adjust safely.
+    We start [late] so his body can adjust safely.
+[0.6] ans=first
+   *Once his gut is working well, we'll try the [first] spoonful by mouth.
+    Once his gut is working well, we'll try the [last] spoonful by mouth.
+    Once his gut is working well, we'll try the [second] spoonful by mouth.
+    Once his gut is working well, we'll try the [third] spoonful by mouth.
+[0.7] ans=safe
+   *I know you want to give him water, but it isn't [safe] yet.
+    I know you want to give him water, but it isn't [ready] yet.
+    I know you want to give him water, but it isn't [clean] yet.
+    I know you want to give him water, but it isn't [cold] yet.
+[0.8] ans=lips
+   *I can moisten his [lips] and mouth for him instead.
+    I can moisten his [hair] and mouth for him instead.
+    I can moisten his [nails] and mouth for him instead.
+    I can moisten his [ears] and mouth for him instead.
+[0.9] ans=how
+   *I'll s[how] you how to do it so you can help too.
+    I'll s[when] you how to do it so you can help too.
+    I'll s[where] you how to do it so you can help too.
+    I'll s[why] you how to do it so you can help too.
+
+######## S1 장관영양 시작·내성 관찰
+[1.0] ans=residuals
+   *I'll start at the ordered rate and check [residuals].
+    I'll start at the ordered rate and check [weights].
+    I'll start at the ordered rate and check [allergies].
+    I'll start at the ordered rate and check [labels].
+[1.1] ans=distension
+   *Let's watch for [distension] or discomfort.
+    Let's watch for [dizziness] or discomfort.
+    Let's watch for [drowsiness] or discomfort.
+    Let's watch for [dryness] or discomfort.
+[1.2] ans=head
+   *I'll keep the [head] of the bed elevated.
+    I'll keep the [side] of the bed elevated.
+    I'll keep the [edge] of the bed elevated.
+    I'll keep the [corner] of the bed elevated.
+[1.3] ans=protocol
+   *I'll check residuals every four hours per [protocol].
+    I'll check residuals every four hours per [request].
+    I'll check residuals every four hours per [habit].
+    I'll check residuals every four hours per [preference].
+[1.4] ans=distended
+   *If her belly looks [distended], I'll hold the feed and reassess.
+    If her belly looks [flushed], I'll hold the feed and reassess.
+    If her belly looks [pale], I'll hold the feed and reassess.
+    If her belly looks [sweaty], I'll hold the feed and reassess.
+[1.5] ans=aspiration
+   *Keeping the head of the bed up lowers his [aspiration] risk.
+    Keeping the head of the bed up lowers his [infection] risk.
+    Keeping the head of the bed up lowers his [bleeding] risk.
+    Keeping the head of the bed up lowers his [allergy] risk.
+[1.6] ans=uncomfortable
+   *Call me if you see any distension or she seems [uncomfortable].
+    Call me if you see any distension or she seems [cheerful].
+    Call me if you see any distension or she seems [hungry].
+    Call me if you see any distension or she seems [indifferent].
+
+######## S2 영양관 위치 확인
+[2.0] ans=placement
+   *Let's verify [placement] before anything goes through the tube.
+    Let's verify [allergies] before anything goes through the tube.
+    Let's verify [diagnosis] before anything goes through the tube.
+    Let's verify [insurance] before anything goes through the tube.
+[2.1] ans=x-ray
+   *I'll hold feeds until the [x-ray] is confirmed.
+    I'll hold feeds until the [chart] is confirmed.
+    I'll hold feeds until the [receipt] is confirmed.
+    I'll hold feeds until the [bag] is confirmed.
+[2.2] ans=position
+   *Documenting the tube [position] now.
+    Documenting the tube [color] now.
+    Documenting the tube [size] now.
+    Documenting the tube [brand] now.
+[2.3] ans=sting
+   *I told him it might [sting] going in, and it's easier if he swallows.
+    I told him it might [itch] going in, and it's easier if he swallows.
+    I told him it might [tickle] going in, and it's easier if he swallows.
+    I told him it might [ache] going in, and it's easier if he swallows.
+[2.4] ans=tears
+   *A few [tears] came, but he tolerated it well.
+    A few [laughs] came, but he tolerated it well.
+    A few [hiccups] came, but he tolerated it well.
+    A few [sneezes] came, but he tolerated it well.
+[2.5] ans=placement
+   *We won't start feeding until we confirm [placement] on x-ray.
+    We won't start feeding until we confirm [lunch] on x-ray.
+    We won't start feeding until we confirm [orders] on x-ray.
+    We won't start feeding until we confirm [insurance] on x-ray.
+[2.6] ans=rule
+   *That's our [rule], so nothing goes down the tube until it's confirmed.
+    That's our [habit], so nothing goes down the tube until it's confirmed.
+    That's our [wish], so nothing goes down the tube until it's confirmed.
+    That's our [trick], so nothing goes down the tube until it's confirmed.
+
+######## S3 흡인 예방 체위
+[3.0] ans=upright
+   *Keeping you [upright] helps the feed stay down safely.
+    Keeping you [quiet] helps the feed stay down safely.
+    Keeping you [awake] helps the feed stay down safely.
+    Keeping you [calm] helps the feed stay down safely.
+[3.1] ans=lungs
+   *It lowers the risk of food going into your [lungs].
+    It lowers the risk of food going into your [heart].
+    It lowers the risk of food going into your [ribs].
+    It lowers the risk of food going into your [hands].
+[3.2] ans=comfortable
+   *I'll help you get [comfortable] in this position.
+    I'll help you get [sleepy] in this position.
+    I'll help you get [organized] in this position.
+    I'll help you get [busy] in this position.
+[3.3] ans=airway
+   *If we lay you flat, food could slide back into your [airway].
+    If we lay you flat, food could slide back into your [bed].
+    If we lay you flat, food could slide back into your [chair].
+    If we lay you flat, food could slide back into your [sleeve].
+[3.4] ans=raise
+   *Let's [raise] the head of your bed before we start feeding.
+    Let's [clean] the head of your bed before we start feeding.
+    Let's [cover] the head of your bed before we start feeding.
+    Let's [polish] the head of your bed before we start feeding.
+[3.5] ans=sit
+   *I know it's not the most comfortable way to [sit], but it keeps you safe.
+    I know it's not the most comfortable way to [stand], but it keeps you safe.
+    I know it's not the most comfortable way to [sleep], but it keeps you safe.
+    I know it's not the most comfortable way to [read], but it keeps you safe.
+[3.6] ans=sliding
+   *Let me know if you feel like you're [sliding] down.
+    Let me know if you feel like you're [shaking] down.
+    Let me know if you feel like you're [burning] down.
+    Let me know if you feel like you're [spinning] down.
+
+######## S4 배변·복부 팽만 관찰
+[4.0] ans=bowel
+   *Let me check your belly and listen for [bowel] sounds.
+    Let me check your belly and listen for [heart] sounds.
+    Let me check your belly and listen for [lung] sounds.
+    Let me check your belly and listen for [breath] sounds.
+[4.1] ans=painful
+   *Tell me if it becomes [painful] or harder.
+    Tell me if it becomes [itchy] or harder.
+    Tell me if it becomes [noisy] or harder.
+    Tell me if it becomes [sleepy] or harder.
+[4.2] ans=stomach
+   *We'll adjust the feeding if your [stomach] is too full.
+    We'll adjust the feeding if your [back] is too full.
+    We'll adjust the feeding if your [arm] is too full.
+    We'll adjust the feeding if your [throat] is too full.
+[4.3] ans=tight
+   *Your belly does feel a bit [tight] and bloated today.
+    Your belly does feel a bit [loose] and bloated today.
+    Your belly does feel a bit [soft] and bloated today.
+    Your belly does feel a bit [empty] and bloated today.
+[4.4] ans=common
+   *That's [common] with tube feeding, and we can slow it down.
+    That's [rare] with tube feeding, and we can slow it down.
+    That's [strange] with tube feeding, and we can slow it down.
+    That's [new] with tube feeding, and we can slow it down.
+[4.5] ans=yesterday
+   *Have you had any bowel movement since [yesterday]?
+    Have you had any bowel movement since [Monday]?
+    Have you had any bowel movement since [breakfast]?
+    Have you had any bowel movement since [midnight]?
+[4.6] ans=worse
+   *Let me know right away if the pain gets [worse].
+    Let me know right away if the pain gets [better].
+    Let me know right away if the pain gets [louder].
+    Let me know right away if the pain gets [calmer].
+
+######## S5 혈당·전해질 연계 감시
+[5.0] ans=glucose
+   *Let's check her [glucose] on the ordered schedule.
+    Let's check her [appetite] on the ordered schedule.
+    Let's check her [posture] on the ordered schedule.
+    Let's check her [balance] on the ordered schedule.
+[5.1] ans=electrolytes
+   *I'll watch the [electrolytes] as the feeds increase.
+    I'll watch the [lungs] as the feeds increase.
+    I'll watch the [pressures] as the feeds increase.
+    I'll watch the [moods] as the feeds increase.
+[5.2] ans=adjust
+   *We'll [adjust] insulin coverage as needed.
+    We'll [explain] insulin coverage as needed.
+    We'll [label] insulin coverage as needed.
+    We'll [count] insulin coverage as needed.
+[5.3] ans=increased
+   *Her glucose was a little high after we [increased] the rate.
+    Her glucose was a little high after we [reduced] the rate.
+    Her glucose was a little high after we [cleaned] the rate.
+    Her glucose was a little high after we [labeled] the rate.
+[5.4] ans=starts
+   *Phosphate and potassium can drop once feeding [starts].
+    Phosphate and potassium can drop once feeding [ends].
+    Phosphate and potassium can drop once feeding [stops].
+    Phosphate and potassium can drop once feeding [pauses].
+[5.5] ans=labs
+   *I'll recheck her [labs] in a few hours.
+    I'll recheck her [chart] in a few hours.
+    I'll recheck her [tray] in a few hours.
+    I'll recheck her [gown] in a few hours.
+[5.6] ans=glucose
+   *Call me if her [glucose] goes above the target range.
+    Call me if her [weight] goes above the target range.
+    Call me if her [mood] goes above the target range.
+    Call me if her [thirst] goes above the target range.
+
+######## S6 장관영양 불내성 관리
+[6.0] ans=reduce
+   *Let's [reduce] the rate and reassess her tolerance.
+    Let's [record] the rate and reassess her tolerance.
+    Let's [rename] the rate and reassess her tolerance.
+    Let's [copy] the rate and reassess her tolerance.
+[6.1] ans=prokinetic
+   *A [prokinetic] may help her gut move the feed along.
+    A [painkiller] may help her gut move the feed along.
+    A [vitamin] may help her gut move the feed along.
+    A [sedative] may help her gut move the feed along.
+[6.2] ans=elevated
+   *I'll keep her head [elevated] and watch for distension.
+    I'll keep her head [covered] and watch for distension.
+    I'll keep her head [warm] and watch for distension.
+    I'll keep her head [dry] and watch for distension.
+[6.3] ans=high
+   *Her residuals were [high] again this morning.
+    Her residuals were [low] again this morning.
+    Her residuals were [normal] again this morning.
+    Her residuals were [clear] again this morning.
+[6.4] ans=recheck
+   *Let's hold the feed for now and [recheck] in an hour.
+    Let's hold the feed for now and [repeat] in an hour.
+    Let's hold the feed for now and [record] in an hour.
+    Let's hold the feed for now and [reread] in an hour.
+[6.5] ans=improve
+   *If it doesn't [improve], we may need to try post-pyloric feeding.
+    If it doesn't [worsen], we may need to try post-pyloric feeding.
+    If it doesn't [travel], we may need to try post-pyloric feeding.
+    If it doesn't [evolve], we may need to try post-pyloric feeding.
+[6.6] ans=volume
+   *I'll document the residual [volume] and let the team know.
+    I'll document the residual [name] and let the team know.
+    I'll document the residual [price] and let the team know.
+    I'll document the residual [brand] and let the team know.
+
+######## S7 재영양증후군 예방
+[7.0] ans=advance
+   *Let's start low and [advance] the feeds slowly.
+    Let's start low and [flush] the feeds slowly.
+    Let's start low and [reorder] the feeds slowly.
+    Let's start low and [rewrite] the feeds slowly.
+[7.1] ans=closely
+   *I'll monitor phosphate, potassium, and magnesium [closely].
+    I'll monitor phosphate, potassium, and magnesium [rarely].
+    I'll monitor phosphate, potassium, and magnesium [loosely].
+    I'll monitor phosphate, potassium, and magnesium [briefly].
+[7.2] ans=replace
+   *We'll [replace] electrolytes before they drop too far.
+    We'll [remove] electrolytes before they drop too far.
+    We'll [count] electrolytes before they drop too far.
+    We'll [store] electrolytes before they drop too far.
+[7.3] ans=weeks
+   *He hasn't eaten well in [weeks], so we need to go slowly.
+    He hasn't eaten well in [hours], so we need to go slowly.
+    He hasn't eaten well in [seconds], so we need to go slowly.
+    He hasn't eaten well in [minutes], so we need to go slowly.
+[7.4] ans=dangerous
+   *Feeding him too fast right now could be [dangerous].
+    Feeding him too fast right now could be [tiring].
+    Feeding him too fast right now could be [noisy].
+    Feeding him too fast right now could be [messy].
+[7.5] ans=electrolytes
+   *We'll check his [electrolytes] before we start and every few hours after.
+    We'll check his [weights] before we start and every few hours after.
+    We'll check his [pupils] before we start and every few hours after.
+    We'll check his [dressings] before we start and every few hours after.
+[7.6] ans=rhythm
+   *I'm watching his heart [rhythm] closely for refeeding syndrome.
+    I'm watching his heart [hearing] closely for refeeding syndrome.
+    I'm watching his heart [vision] closely for refeeding syndrome.
+    I'm watching his heart [hunger] closely for refeeding syndrome.
+
+######## S8 TPN 적응·관리
+[8.0] ans=confirm
+   *Let's [confirm] the central line and start the TPN safely.
+    Let's [count] the central line and start the TPN safely.
+    Let's [photograph] the central line and start the TPN safely.
+    Let's [relabel] the central line and start the TPN safely.
+[8.1] ans=glucose
+   *I'll monitor his [glucose] and electrolytes closely.
+    I'll monitor his [hearing] and electrolytes closely.
+    I'll monitor his [vision] and electrolytes closely.
+    I'll monitor his [hair] and electrolytes closely.
+[8.2] ans=infection
+   *We keep strict line care to prevent [infection].
+    We keep strict line care to prevent [bleeding].
+    We keep strict line care to prevent [noise].
+    We keep strict line care to prevent [hunger].
+[8.3] ans=vein
+   *His gut isn't tolerating feeds, so TPN gives him nutrition through the [vein].
+    His gut isn't tolerating feeds, so TPN gives him nutrition through the [mouth].
+    His gut isn't tolerating feeds, so TPN gives him nutrition through the [nose].
+    His gut isn't tolerating feeds, so TPN gives him nutrition through the [wrist].
+[8.4] ans=dressing
+   *We change the [dressing] on schedule to lower infection risk.
+    We change the [sticker] on schedule to lower infection risk.
+    We change the [bracelet] on schedule to lower infection risk.
+    We change the [curtain] on schedule to lower infection risk.
+[8.5] ans=glucose
+   *I'll check his [glucose] every six hours while he's on TPN.
+    I'll check his [thirst] every six hours while he's on TPN.
+    I'll check his [fatigue] every six hours while he's on TPN.
+    I'll check his [dizziness] every six hours while he's on TPN.
+[8.6] ans=recovers
+   *Let's transition him back to tube feeds once his gut [recovers].
+    Let's transition him back to tube feeds once his gut [worsens].
+    Let's transition him back to tube feeds once his gut [sleeps].
+    Let's transition him back to tube feeds once his gut [wakes].
+
+######## S9 복강내압 측정
+[9.0] ans=bladder
+   *I'll set up and measure the [bladder] pressure now.
+    I'll set up and measure the [blood] pressure now.
+    I'll set up and measure the [eye] pressure now.
+    I'll set up and measure the [ear] pressure now.
+[9.1] ans=rising
+   *Let's trend it and watch for a [rising] number.
+    Let's trend it and watch for a [falling] number.
+    Let's trend it and watch for a [fixed] number.
+    Let's trend it and watch for a [hidden] number.
+[9.2] ans=value
+   *I'll report the [value] to the physician right away.
+    I'll report the [price] to the physician right away.
+    I'll report the [rumor] to the physician right away.
+    I'll report the [nickname] to the physician right away.
+[9.3] ans=twenty-two
+   *His bladder pressure is [twenty-two] right now.
+    His bladder pressure is [twelve] right now.
+    His bladder pressure is [thirty-two] right now.
+    His bladder pressure is [twenty] right now.
+[9.4] ans=reading
+   *Let's compare it to his [reading] from this morning.
+    Let's compare it to his [weight] from this morning.
+    Let's compare it to his [height] from this morning.
+    Let's compare it to his [address] from this morning.
+[9.5] ans=flag
+   *I'll [flag] it if the number keeps climbing.
+    I'll [copy] it if the number keeps climbing.
+    I'll [praise] it if the number keeps climbing.
+    I'll [borrow] it if the number keeps climbing.
+[9.6] ans=measurement
+   *Chart the pressure and the time for every [measurement].
+    Chart the pressure and the time for every [visitor].
+    Chart the pressure and the time for every [shower].
+    Chart the pressure and the time for every [delivery].
+
+######## S10 복부구획증후군 조기 인지
+[10.0] ans=low
+   *Rising bladder pressure with [low] urine worries me.
+    Rising bladder pressure with [high] urine worries me.
+    Rising bladder pressure with [clear] urine worries me.
+    Rising bladder pressure with [dark] urine worries me.
+[10.1] ans=organ
+   *Let's track his [organ] function and pressures closely.
+    Let's track his [bone] function and pressures closely.
+    Let's track his [hair] function and pressures closely.
+    Let's track his [nail] function and pressures closely.
+[10.2] ans=trend
+   *I'll alert the physician about the [trend].
+    I'll alert the physician about the [schedule].
+    I'll alert the physician about the [order].
+    I'll alert the physician about the [diet].
+[10.3] ans=output
+   *His urine [output] has dropped over the last two hours.
+    His urine [smell] has dropped over the last two hours.
+    His urine [sound] has dropped over the last two hours.
+    His urine [texture] has dropped over the last two hours.
+[10.4] ans=organs
+   *Early recognition of compartment syndrome can save his [organs].
+    Early recognition of compartment syndrome can save his [time].
+    Early recognition of compartment syndrome can save his [money].
+    Early recognition of compartment syndrome can save his [bed].
+[10.5] ans=worried
+   *I'm [worried] this could be early compartment syndrome.
+    I'm [excited] this could be early compartment syndrome.
+    I'm [relaxed] this could be early compartment syndrome.
+    I'm [proud] this could be early compartment syndrome.
+[10.6] ans=pressure
+   *Let's recheck his [pressure] and urine output in one hour.
+    Let's recheck his [pulse] and urine output in one hour.
+    Let's recheck his [temperature] and urine output in one hour.
+    Let's recheck his [height] and urine output in one hour.
+
+######## S11 영양 목표 열량·단백 조정
+[11.0] ans=calorie
+   *Let's recalculate his [calorie] and protein needs.
+    Let's recalculate his [sodium] and protein needs.
+    Let's recalculate his [vitamin] and protein needs.
+    Let's recalculate his [iron] and protein needs.
+[11.1] ans=goals
+   *The dietitian can help fine-tune the [goals].
+    The dietitian can help fine-tune the [menu].
+    The dietitian can help fine-tune the [bill].
+    The dietitian can help fine-tune the [shower].
+[11.2] ans=formula
+   *We'll adjust the [formula] to match his condition.
+    We'll adjust the [blanket] to match his condition.
+    We'll adjust the [bracelet] to match his condition.
+    We'll adjust the [pillow] to match his condition.
+[11.3] ans=active
+   *His calorie goal went up now that he's more [active].
+    His calorie goal went up now that he's more [tired].
+    His calorie goal went up now that he's more [sleepy].
+    His calorie goal went up now that he's more [quiet].
+[11.4] ans=Protein
+   *[Protein] needs are higher during critical illness.
+    [Sugar] needs are higher during critical illness.
+    [Salt] needs are higher during critical illness.
+    [Water] needs are higher during critical illness.
+[11.5] ans=review
+   *I'll ask the dietitian to [review] his labs today.
+    I'll ask the dietitian to [copy] his labs today.
+    I'll ask the dietitian to [clean] his labs today.
+    I'll ask the dietitian to [borrow] his labs today.
+[11.6] ans=restriction
+   *Let's match the formula to his fluid [restriction] too.
+    Let's match the formula to his fluid [preference] too.
+    Let's match the formula to his fluid [schedule] too.
+    Let's match the formula to his fluid [budget] too.
+
+######## S12 위잔여량·촉진제 사용
+[12.0] ans=reassess
+   *Let's start the prokinetic and [reassess] residuals.
+    Let's start the prokinetic and [reorder] residuals.
+    Let's start the prokinetic and [rename] residuals.
+    Let's start the prokinetic and [restock] residuals.
+[12.1] ans=monitor
+   *I'll keep the head of the bed up and [monitor].
+    I'll keep the head of the bed up and [relax].
+    I'll keep the head of the bed up and [whistle].
+    I'll keep the head of the bed up and [nap].
+[12.2] ans=better
+   *We'll watch to see if the gut starts moving [better].
+    We'll watch to see if the gut starts moving [worse].
+    We'll watch to see if the gut starts moving [slower].
+    We'll watch to see if the gut starts moving [louder].
+[12.3] ans=down
+   *Her residuals are [down] from this morning.
+    Her residuals are [up] from this morning.
+    Her residuals are [level] from this morning.
+    Her residuals are [steady] from this morning.
+[12.4] ans=spoonful
+   *She even tried her first [spoonful] of pudding this morning.
+    She even tried her first [bowl] of pudding this morning.
+    She even tried her first [plate] of pudding this morning.
+    She even tried her first [bucket] of pudding this morning.
+[12.5] ans=sign
+   *I told her family, and that's a great [sign].
+    I told her family, and that's a great [plan].
+    I told her family, and that's a great [mess].
+    I told her family, and that's a great [joke].
+[12.6] ans=rate
+   *Let's keep watching before we increase her [rate] further.
+    Let's keep watching before we increase her [room] further.
+    Let's keep watching before we increase her [bed] further.
+    Let's keep watching before we increase her [name] further.
+
+######## S13 유문후 급식 전환
+[13.0] ans=lower
+   *A post-pyloric tube can [lower] his aspiration risk.
+    A post-pyloric tube can [record] his aspiration risk.
+    A post-pyloric tube can [estimate] his aspiration risk.
+    A post-pyloric tube can [predict] his aspiration risk.
+[13.1] ans=placement
+   *Let's confirm [placement] before we resume feeds.
+    Let's confirm [mood] before we resume feeds.
+    Let's confirm [height] before we resume feeds.
+    Let's confirm [taste] before we resume feeds.
+[13.2] ans=elevated
+   *I'll keep him [elevated] and suction ready.
+    I'll keep him [covered] and suction ready.
+    I'll keep him [calm] and suction ready.
+    I'll keep him [still] and suction ready.
+[13.3] ans=aspirating
+   *He keeps [aspirating] on his current feeds.
+    He keeps [sleeping] on his current feeds.
+    He keeps [smiling] on his current feeds.
+    He keeps [waving] on his current feeds.
+[13.4] ans=radiology
+   *Interventional [radiology] will place the tube at the bedside.
+    Interventional [pediatrics] will place the tube at the bedside.
+    Interventional [dermatology] will place the tube at the bedside.
+    Interventional [cardiology] will place the tube at the bedside.
+[13.5] ans=past
+   *We'll get an x-ray to confirm it's [past] the pylorus.
+    We'll get an x-ray to confirm it's [before] the pylorus.
+    We'll get an x-ray to confirm it's [under] the pylorus.
+    We'll get an x-ray to confirm it's [behind] the pylorus.
+[13.6] ans=vomits
+   *Keep suction at the bedside in case he [vomits].
+    Keep suction at the bedside in case he [smiles].
+    Keep suction at the bedside in case he [laughs].
+    Keep suction at the bedside in case he [yawns].
+
+######## S14 장허혈 감별 징후
+[14.0] ans=lactate
+   *Rising [lactate] with a tense belly makes me hold feeds.
+    Rising [calcium] with a tense belly makes me hold feeds.
+    Rising [platelet] with a tense belly makes me hold feeds.
+    Rising [bilirubin] with a tense belly makes me hold feeds.
+[14.1] ans=consider
+   *Let's notify the physician and [consider] imaging.
+    Let's notify the physician and [enjoy] imaging.
+    Let's notify the physician and [borrow] imaging.
+    Let's notify the physician and [fear] imaging.
+[14.2] ans=ischemia
+   *We won't feed until [ischemia] is ruled out.
+    We won't feed until [fracture] is ruled out.
+    We won't feed until [rash] is ruled out.
+    We won't feed until [cough] is ruled out.
+[14.3] ans=tense
+   *Her belly is [tense] and she winced when I pressed.
+    Her belly is [soft] and she winced when I pressed.
+    Her belly is [flat] and she winced when I pressed.
+    Her belly is [warm] and she winced when I pressed.
+[14.4] ans=flow
+   *A rising lactate can point to poor blood [flow] to the gut.
+    A rising lactate can point to poor blood [smell] to the gut.
+    A rising lactate can point to poor blood [sound] to the gut.
+    A rising lactate can point to poor blood [texture] to the gut.
+[14.5] ans=scan
+   *I'm holding all feeds until we get a CT [scan].
+    I'm holding all feeds until we get a CT [meeting].
+    I'm holding all feeds until we get a CT [snack].
+    I'm holding all feeds until we get a CT [ride].
+[14.6] ans=labs
+   *Call me the moment his [labs] or exam change.
+    Call me the moment his [visitors] or exam change.
+    Call me the moment his [meals] or exam change.
+    Call me the moment his [shifts] or exam change.
+
+######## S15 복부구획증후군 급변 위기
+[15.0] ans=critically
+   *His pressure is [critically] high with failing kidneys.
+    His pressure is [slightly] high with failing kidneys.
+    His pressure is [barely] high with failing kidneys.
+    His pressure is [mildly] high with failing kidneys.
+[15.1] ans=surgery
+   *I'm calling [surgery] for urgent decompression.
+    I'm calling [radiology] for urgent decompression.
+    I'm calling [pharmacy] for urgent decompression.
+    I'm calling [dietary] for urgent decompression.
+[15.2] ans=optimize
+   *Let's [optimize] his sedation and volume meanwhile.
+    Let's [decorate] his sedation and volume meanwhile.
+    Let's [admire] his sedation and volume meanwhile.
+    Let's [praise] his sedation and volume meanwhile.
+[15.3] ans=over
+   *His bladder pressure is [over] twenty-five now.
+    His bladder pressure is [under] twenty-five now.
+    His bladder pressure is [near] twenty-five now.
+    His bladder pressure is [below] twenty-five now.
+[15.4] ans=urine
+   *He's making almost no [urine] this hour.
+    He's making almost no [sweat] this hour.
+    He's making almost no [saliva] this hour.
+    He's making almost no [tears] this hour.
+[15.5] ans=evaluate
+   *Surgery is on the way to [evaluate] him.
+    Surgery is on the way to [entertain] him.
+    Surgery is on the way to [welcome] him.
+    Surgery is on the way to [photograph] him.
+[15.6] ans=wait
+   *I'll give more fluid while we [wait] for the surgeon.
+    I'll give more fluid while we [search] for the surgeon.
+    I'll give more fluid while we [hope] for the surgeon.
+    I'll give more fluid while we [argue] for the surgeon.
+
+######## S16 장허혈·괴사 응급
+[16.0] ans=resuscitation
+   *Hold all feeds and start [resuscitation] now.
+    Hold all feeds and start [registration] now.
+    Hold all feeds and start [relaxation] now.
+    Hold all feeds and start [renovation] now.
+[16.1] ans=emergent
+   *I'm calling surgery for an [emergent] evaluation.
+    I'm calling surgery for an [routine] evaluation.
+    I'm calling surgery for an [optional] evaluation.
+    I'm calling surgery for an [casual] evaluation.
+[16.2] ans=antibiotics
+   *Let's support her pressure and get broad [antibiotics].
+    Let's support her pressure and get broad [vitamins].
+    Let's support her pressure and get broad [bandages].
+    Let's support her pressure and get broad [supplements].
+[16.3] ans=rigid
+   *Her belly is [rigid] and she's crashing.
+    Her belly is [loose] and she's crashing.
+    Her belly is [limp] and she's crashing.
+    Her belly is [pale] and she's crashing.
+[16.4] ans=dead
+   *This looks like [dead] bowel, and we need surgery now.
+    This looks like [sore] bowel, and we need surgery now.
+    This looks like [tired] bowel, and we need surgery now.
+    This looks like [dry] bowel, and we need surgery now.
+[16.5] ans=fluids
+   *I'm giving [fluids] and calling the physician right away.
+    I'm giving [snacks] and calling the physician right away.
+    I'm giving [visitors] and calling the physician right away.
+    I'm giving [gifts] and calling the physician right away.
+[16.6] ans=rapid
+   *Get the [rapid] response team here now.
+    Get the [slow] response team here now.
+    Get the [casual] response team here now.
+    Get the [weekly] response team here now.
+
+######## S17 대량 흡인 사건 위기
+[17.0] ans=suction
+   *Turn her and [suction] the airway right away.
+    Turn her and [rinse] the airway right away.
+    Turn her and [wipe] the airway right away.
+    Turn her and [brush] the airway right away.
+[17.1] ans=oxygen
+   *Stop the feed and raise the [oxygen] now.
+    Stop the feed and raise the [temperature] now.
+    Stop the feed and raise the [light] now.
+    Stop the feed and raise the [music] now.
+[17.2] ans=calling
+   *I'm [calling] respiratory and the physician.
+    I'm [texting] respiratory and the physician.
+    I'm [thanking] respiratory and the physician.
+    I'm [waving] respiratory and the physician.
+[17.3] ans=vomited
+   *She just [vomited] and aspirated her feeds.
+    She just [sneezed] and aspirated her feeds.
+    She just [yawned] and aspirated her feeds.
+    She just [giggled] and aspirated her feeds.
+[17.4] ans=sats
+   *Her [sats] are dropping fast.
+    Her [labs] are dropping fast.
+    Her [tubes] are dropping fast.
+    Her [lines] are dropping fast.
+[17.5] ans=mouth
+   *Let's get her sitting up and suction her [mouth] first.
+    Let's get her sitting up and suction her [hand] first.
+    Let's get her sitting up and suction her [foot] first.
+    Let's get her sitting up and suction her [elbow] first.
+[17.6] ans=lungs
+   *I'll listen to her [lungs] once she's stable.
+    I'll listen to her [heart] once she's stable.
+    I'll listen to her [knees] once she's stable.
+    I'll listen to her [ears] once she's stable.
+
+######## S18 TPN 관련 대사 위기
+[18.0] ans=glucose
+   *Let's adjust the insulin and recheck the [glucose].
+    Let's adjust the insulin and recheck the [pressure].
+    Let's adjust the insulin and recheck the [hunger].
+    Let's adjust the insulin and recheck the [calendar].
+[18.1] ans=closely
+   *I'll correct the electrolytes and monitor [closely].
+    I'll correct the electrolytes and monitor [quietly].
+    I'll correct the electrolytes and monitor [lazily].
+    I'll correct the electrolytes and monitor [casually].
+[18.2] ans=rate
+   *We may need to hold or change the TPN [rate].
+    We may need to hold or change the TPN [name].
+    We may need to hold or change the TPN [size].
+    We may need to hold or change the TPN [brand].
+[18.3] ans=four hundred
+   *His glucose is over [four hundred] right now.
+    His glucose is over [forty] right now.
+    His glucose is over [fourteen] right now.
+    His glucose is over [fourteen hundred] right now.
+[18.4] ans=both
+   *His potassium and phosphate are [both] off today.
+    His potassium and phosphate are [either] off today.
+    His potassium and phosphate are [neither] off today.
+    His potassium and phosphate are [only] off today.
+[18.5] ans=sliding
+   *I'll give insulin per the [sliding] scale.
+    I'll give insulin per the [standing] scale.
+    I'll give insulin per the [resting] scale.
+    I'll give insulin per the [hiding] scale.
+[18.6] ans=labs
+   *Let's recheck his [labs] in two hours and call the physician.
+    Let's recheck his [snacks] in two hours and call the physician.
+    Let's recheck his [rooms] in two hours and call the physician.
+    Let's recheck his [shifts] in two hours and call the physician.
+
+######## S19 심한 재영양증후군 위기
+[19.0] ans=urgently
+   *Replace the phosphate and potassium [urgently].
+    Replace the phosphate and potassium [rarely].
+    Replace the phosphate and potassium [optionally].
+    Replace the phosphate and potassium [secretly].
+[19.1] ans=feeding
+   *Let's cut back the [feeding] rate right now.
+    Let's cut back the [visiting] rate right now.
+    Let's cut back the [cleaning] rate right now.
+    Let's cut back the [shopping] rate right now.
+[19.2] ans=cardiac
+   *I'll monitor his [cardiac] rhythm closely.
+    I'll monitor his [dietary] rhythm closely.
+    I'll monitor his [visual] rhythm closely.
+    I'll monitor his [dental] rhythm closely.
+[19.3] ans=bottomed
+   *His phosphate and potassium just [bottomed] out.
+    His phosphate and potassium just [topped] out.
+    His phosphate and potassium just [peaked] out.
+    His phosphate and potassium just [leveled] out.
+[19.4] ans=severe
+   *This is [severe] refeeding syndrome.
+    This is [mild] refeeding syndrome.
+    This is [rare] refeeding syndrome.
+    This is [minor] refeeding syndrome.
+[19.5] ans=restart
+   *Let's replace electrolytes before we [restart] the feed.
+    Let's replace electrolytes before we [repeat] the feed.
+    Let's replace electrolytes before we [rename] the feed.
+    Let's replace electrolytes before we [reroute] the feed.
+[19.6] ans=changes
+   *I'll watch his heart monitor for any new [changes].
+    I'll watch his heart monitor for any new [visitors].
+    I'll watch his heart monitor for any new [snacks].
+    I'll watch his heart monitor for any new [calls].
+
+######## S20 장기 영양불량 예후 소통
+[20.0] ans=Despite
+   *[Despite] full nutrition, his body isn't keeping up.
+    [Because of] full nutrition, his body isn't keeping up.
+    [Thanks to] full nutrition, his body isn't keeping up.
+    [With] full nutrition, his body isn't keeping up.
+[20.1] ans=advanced
+   *This tells us his illness is very [advanced].
+    This tells us his illness is very [early].
+    This tells us his illness is very [mild].
+    This tells us his illness is very [minor].
+[20.2] ans=comfort
+   *Let's talk about what would give him the most [comfort].
+    Let's talk about what would give him the most [noise].
+    Let's talk about what would give him the most [trouble].
+    Let's talk about what would give him the most [distance].
+[20.3] ans=wasting
+   *No matter what we feed him, his body keeps [wasting] away.
+    No matter what we feed him, his body keeps [swelling] away.
+    No matter what we feed him, his body keeps [shaking] away.
+    No matter what we feed him, his body keeps [itching] away.
+[20.4] ans=reverse
+   *We can keep offering nutrition, but it won't [reverse] his illness.
+    We can keep offering nutrition, but it won't [shorten] his illness.
+    We can keep offering nutrition, but it won't [describe] his illness.
+    We can keep offering nutrition, but it won't [extend] his illness.
+[20.5] ans=hard
+   *I know this is [hard] to hear about someone you love.
+    I know this is [easy] to hear about someone you love.
+    I know this is [fun] to hear about someone you love.
+    I know this is [funny] to hear about someone you love.
+[20.6] ans=together
+   *Let's think [together] about what comfort would mean for him now.
+    Let's think [alone] about what comfort would mean for him now.
+    Let's think [loudly] about what comfort would mean for him now.
+    Let's think [lazily] about what comfort would mean for him now.
