@@ -41,15 +41,15 @@
 ### A. 문장 (keyPhrase 아님, 또는 keyPhrase의 ko만)
 
 1. **[안전] PA 카테터 파형·관리 10.4** — 업무 범위 밖(위 1).
-   - en: `I'll call the physician to pull the catheter back, then recheck the trace.`
-   - ko: `의사에게 카테터를 당겨 달라고 연락하고, 파형을 다시 확인할게요.`
-   - chunks: `I'll call the physician / to pull the catheter back, / then recheck / the trace / .`
-   - words: `[w-call, w-physician, w-pull, w-catheter, w-recheck, w-trace]`. `w-inch`는 이 문장에만 쓰여서 은행에서 지움(word-remove). 상황 10 단어 17 → 18. v46 필드 전부 새로. distractorsKo는 부를 사람·확인할 대상이 아닌 쪽(예: "연락하고"→"문자로 알리고")으로, 당기는 동작 자체를 간호사가 하는 말로 바꾸지 말 것.
+   - en: `I'll ask the physician to pull the catheter back, then recheck the trace.`(`call … to pull`은 "내가 당기려고 부른다"로도 읽혀서 `ask`로 — 당기는 사람이 의사임이 분명해짐)
+   - ko: `의사에게 카테터를 당겨 달라고 요청하고, 파형을 다시 확인할게요.`
+   - chunks: `I'll ask the physician / to pull the catheter back, / then recheck / the trace / .`(13낱말 4조각)
+   - words: `[w-ask, w-physician, w-pull, w-catheter, w-recheck, w-trace]`. `w-inch`는 이 문장에만 쓰여서 은행에서 지움(word-remove). 상황 10 단어 17 → 18. v46 필드 전부 새로. distractorsKo는 부를 사람·확인할 대상이 아닌 쪽(예: "연락하고"→"문자로 알리고")으로, 당기는 동작 자체를 간호사가 하는 말로 바꾸지 말 것.
    - 딸린 것: `w-pull`·`w-recheck` example·exKo(지금 이 문장). order 10에 같은 줄이 있으면 B와 맞출 것.
 2. **[안전] 동맥관 파형 이상 문제해결 7.3** — 감쇠 방향이 틀림(위 2).
    - en: `A damped trace can make his systolic read falsely low.`
    - ko: `감쇠된 파형은 수축기 혈압을 실제보다 낮게 보이게 할 수 있어요.`
-   - chunks: `A damped trace / can make / his systolic / read falsely low / .`
+   - chunks: `A damped trace / can make / his systolic / read falsely low / .`(10낱말 4조각)
    - words: `[w-damped, w-trace, w-low]`. `w-hide`는 이 문장에만 쓰여서 지움, `w-pressure` 태그 뺌(다른 문장에 남음). 상황 7 단어 18 → 16. v46 필드 전부 새로.
    - 딸린 것: `w-damped`·`w-hide`·`w-low` example(`w-low` example을 새 문장으로).
 3. **중심라인 삽입 중 기흉·혈흉 위기 15.4** ko — 번역 오류. `where you want it`은 "키트를 어디에 둘지"인데 ko는 "어디로 넣을지"입니다.
@@ -58,7 +58,7 @@
    - 0.0 ko → `동의서 확인했고, 멸균 영역도 준비했어요.`
    - 5.4 ko → `필요한 건 다 멸균 영역에 늘어놓았어요.`
    - distractorsKo 둘씩을 새 틀로.
-5. **동맥관 삽입 보조·영점 1.0(KP, ko만)** — `w-phlebaxis` ko를 고치면(B절 1) 문장 ko도 `트랜스듀서를 정맥정역학축에 맞춰 수평 잡고 영점 조정할게요.`로. distractorsKo 둘 새로.
+5. **동맥관 삽입 보조·영점 1.0(KP, ko만)** — `w-phlebaxis` ko를 고치면(B절 1) 문장 ko의 `정맥정수압축`도 B1에서 정한 용어로(예: `트랜스듀서를 영점 기준점에 맞춰 수평 잡고 영점 조정할게요.`). distractorsKo 둘 새로.
 6. **중심라인 삽입 중 기흉·혈흉 위기 15.1(KP, ko만)** — `흉관을 부를게요`가 어색함(흉관은 부르는 대상이 아님).
    - ko → `지금 바로 바늘 감압과 흉관 삽입을 요청할게요.` distractorsKo 둘 새로.
 7. **라인 관련 대량출혈·혈종 위기 20.2(KP, ko만)** — `수혈도 오는 중이어야 해요`가 어색함.
@@ -67,9 +67,9 @@
    - ko → `지금 바로 좌측 측와위 트렌델렌버그 체위로 눕혀 주세요.` distractorsKo 둘 새로.
 9. **중심라인 삽입 중 합병증 감시 6.3** ko — `call it out`은 "바로 말하다"인데 `소리쳐`가 지나치게 셉니다. ko → `뭐든 바뀌는 순간 바로 말씀드릴게요.` distractorsKo 둘 새로. (선택)
 10. **chunks 0.4** `, but he can / still breathe fine` — 조동사와 본동사를 끊었고 쉼표로 조각이 시작함. → `I told him / the drape will cover / his face, / but he can still breathe fine / .`
-11. **chunks 3.3** `I'll walk you / through each chamber / before we adjust / anything` — 구동사 `walk through`와 `adjust anything`을 끊음. → `I'll walk you through / each chamber / before we adjust anything / .`
+11. **chunks 3.3** `I'll walk you / through each chamber / before we adjust / anything` — 구동사 `walk through`와 `adjust anything`을 끊음. → `I'll walk you through / each chamber / before / we adjust anything / .`(9낱말이라 4조각 규칙 때문에 `before`가 한 낱말 조각)
 12. **chunks 8.4** `isn't from him / breathing` — 동명사구 `him breathing`을 끊음. → `This much bubbling / isn't from / him breathing / — it's a leak / .`
-13. **chunks 16.3** `and set it / back up` — 구동사 `set it back up`을 끊음. → `Someone grab / a fresh pressure bag / and set it back up / .`
+13. **chunks 16.3** `and set it / back up` — 구동사 `set it back up`을 끊음. → `Someone grab / a fresh pressure bag / and / set it back up / .`(11낱말 4조각 규칙 때문에 `and`가 한 낱말 조각)
 
 판정만(고치지 않음):
 - 16.4 `…but I want two large-bore IVs.` — 유지. 굵은 말초 정맥로를 잡는 것은 ICU 간호사 업무 범위이고, 수혈·수액은 처방이 정합니다. why가 "처방대로"를 말하면 충분합니다.
@@ -78,7 +78,7 @@
 
 ### B. 단어
 
-1. `w-phlebaxis` — ko `정맥정수압축`은 쓰이는 번역으로 보기 어렵습니다. → `정맥정역학축`(국내 중환자 간호 자료에서 쓰는 번역으로 보임, 확신 중간 — 사용자가 다른 용어를 정해 두었으면 그것으로). distractorsKo `겨드랑이선`은 정답의 한 부분(중액와선)과 겹칩니다 → `쇄골중앙선`. cue `가슴 위 기준 지점` → `가슴 옆, 네 번째 갈비뼈 사이 높이의 기준 지점 — 영점 맞출 때 센서를 대는 곳`.
+1. `w-phlebaxis` — ko `정맥정수압축`은 쓰이는 번역으로 확인되지 않습니다. 제안 `정맥정역학축`도 **한국어 출처로 확인하지 못했습니다**(웹 검색 결과는 전부 영어 자료) — 둘 다 확인되지 않은 번역이라 사용자가 정할 일입니다. 확인 전이라면 뜻으로 쓴 `영점 기준점`이 안전합니다(cue에 위치를 적으므로). distractorsKo `겨드랑이선`은 정답의 한 부분(중액와선)과 겹칩니다 → `쇄골중앙선`. cue `가슴 위 기준 지점` → `가슴 옆, 네 번째 갈비뼈 사이 높이의 기준 지점 — 영점 맞출 때 센서를 대는 곳`.
 2. `w-gauze` decoyChips `[gaze, gaze]` 중복 → `[gaze, cause]`.
 3. 거슬리는 조각(술·성적·장례):
    - `w-start` decoy `tart` → `[star, stare]`; `w-restart` decoy `tart` → `[star, rest]`
@@ -89,7 +89,9 @@
    - `w-mean` decoy `moan` → `[men, bean]`
    - `w-dicrotic` decoy `rotic`(erotic처럼 들림) → `[dia, crow]`
    - `w-leak` distractorsEn `lick` → `[leaf, lease]`
-   - (선택) `w-fresh` decoy `flesh`, `w-culture` decoy `cult`, `w-grab` decoy `crab`, `w-ease` `tease` — 크게 문제는 아니지만 바꾸면 더 깔끔합니다.
+   - `w-shift` decoy `shaft`(성적 은어) → `[shirt, swift]`
+   - `w-overdamped` decoy `dump` → `[under, dam]`; `w-damped` decoy `dump` → `[dam, lamp]`(배변 은어)
+   - (선택) `w-fresh` decoy `flesh`, `w-culture` decoy `cult`, `w-grab` decoy `crab`, `w-ease` `tease`, `w-gasp` decoy `gas`, `w-rigor` decoy `rag` — 크게 문제는 아니지만 바꾸면 더 깔끔합니다. `w-cross`의 `gross`(오답·decoy)는 일상어라 둡니다.
 4. 정답으로도 맞는 distractorsEn:
    - `w-embolism` `embolus` — `an air embolus`도 맞는 말 → `[emphysema, empyema]`
    - `w-rewedge` `re-inflate` — `Do not re-inflate the balloon`도 맞고 뜻도 같음 → `[re-weigh, re-wind]`
@@ -163,7 +165,7 @@
 
 1. **slider 0** — cue에 모자를 넣어 why와 맞춤: `…the cap, mask, gown, gloves and drape are all on.` example·exKo는 시작 전에 타임아웃을 하도록: `Everything is ready — let's do the time-out.` / `다 준비됐어요, 타임아웃부터 할게요.`
 2. **slider 16** — scale `[a trace of blood, a little blood, significant blood loss]`, answerAt 2.
-3. **slider 7** — `damped`와 `overdamped`는 임상에서 거의 같은 뜻으로 써서 가운데와 끝 칸이 둘 다 맞게 읽힙니다. scale `[crisp trace, slightly damped, overdamped]`, answerAt 2(cue 그대로).
+3. **slider 7** — `damped`와 `overdamped`는 임상에서 거의 같은 뜻으로 써서 가운데와 끝 칸이 둘 다 맞게 읽힙니다. cue가 방형파 검사(`no bounce`)이니 그 검사가 가르치는 축으로: scale `[underdamped, optimally damped, overdamped]`, answerAt 2(cue 그대로). slider 1(`crisp waveform…`)과도 겹치지 않습니다. why는 "진동이 여러 번이면 underdamped(수축기가 높게), 한두 번이면 적정, 진동 없이 가라앉으면 overdamped"로.
 4. **slider 18** `[sighed, gasped, choked]` — 세기 축이 아니라 서로 다른 동작입니다(why도 "달라요"라고 함). scale `[took a deep breath, gasped, gasping for air]`, answerAt 1(cue "sudden, sharp breath in" 그대로)로 하면 한 축이 됩니다.
 5. (선택) **slider 19** `a few streaks`와 `blood-tinged sputum`은 세기가 비슷합니다 → `[a few streaks, clots in the sputum, frank hemoptysis]`. **slider 6** cue `Extra beats keep firing every time the wire moves`는 하나씩 튀는 것으로도 읽힘 → `Three or four extra beats in a row every time the wire moves.`
 6. **context 0(`sterile`)** — 환자(ok)와 가족(✕)으로 듣는 사람 갈래가 같고, 어색한 말이 `sterile`이 아니라 `bundle protocol`입니다. `word: field`, `ko: 멸균 영역`, `words: [w-field]`로 바꾸고 장면을 셋 다 새로:
@@ -173,7 +175,7 @@
    - why: 의료진에게 field는 손대면 안 되는 구역을 가리키는 정확한 말이지만, 가족에게는 무엇을 피하라는 건지 보이지 않아 눈에 보이는 것(파란 천)으로 말해요.
 7. 어색한 말이 `word`가 아닌 context — 일반인도 아는 말(`pressure`·`drip`·`pulse`·`wound`·`dressing`·`position`·`blood loss`·`leak`)을 `word`로 골랐고, ok:false 장면이 어색한 것은 같은 문장 속 다른 전문어 때문입니다. 아래처럼 `word`를 장면의 그 전문어로 바꾸고, 세 장면 `en` 모두에 넣으세요(`ko`·`words`도 함께).
    - context 7 `pressure` → `word: damped`, `ko: 감쇠된`, `words: [w-damped]`. 의사(ok) `The trace looks damped, so the pressure may be off.` 동료(ok) `It's damped again — can you check the pressure bag?` 환자(✕) `Your trace is damped right now.` fix 지금 것 그대로.
-   - context 13 `drip` → `word: compatible`, `ko: 배합 가능한`, `words: [w-compatible]`. 장면 en의 `incompatible`이 이미 `compatible`을 담으니 장면 그대로 두어도 됨.
+   - context 13 `drip` → `word: co-infuse`, `ko: 같이 주입하다`, `words: [w-coinfuse]`. 의사(ok) `Pharmacy says we can't co-infuse these two drips.` 동료(ok) `Can we co-infuse these in the same lumen?` 환자(✕) `We can't co-infuse these two drips, so I'm separating the lumens.` fix 그대로. why 새로.
    - context 14 `pulse` → `word: distal`, `ko: 원위의`, `words: [w-distal]`. 동료(ok) `Can you check the distal pulse while I hold pressure?` 나머지 둘은 이미 `distal`이 있음.
    - context 17 `wound` → `word: occlusive`, `ko: 밀폐성의`, `words: [w-occlusive]`. 동료(ok) `Hand me the occlusive dressing and the tape.` 환자(✕) `I've put an occlusive dressing over your chest tube site.` fix 그대로.
    - context 4 `dressing` → `word: intact`, `ko: 온전한`, `words: [w-intact]`. 동료(ok) `Is his dressing still intact? The edges looked loose.` 환자(✕) `Your transparent semipermeable dressing is intact.` fix 그대로.
@@ -196,6 +198,8 @@
 | 12.1 급식 재개 | I'll verify placement with x-ray before restarting feeds. | 재개는 처방·지침을 따름 | — | **유지**. 사실과 맞고 안전한 순서 |
 | 19.1 출혈 쪽 아래 | Position her bleeding-side down and call thoracic surgery stat. | 간호사가 혼자 정하는 일인지 | — | **유지**. PA 파열 때 출혈 쪽을 아래로 두어 건강한 폐를 지키는 것은 권장되는 응급 조치이고, 명령형이라 팀 리더의 말로 읽힘 |
 
+대안 en의 chunks(바꾸기로 하면): 20.1 `His pressure / is dropping / — I need the physician / at the bedside now / .` · 18.2 `This looks like / an air embolism / — I need the physician / here now / .` · 9.2 `I'll check / the tubing / for clots and kinks / and reassess / .` · 0.1은 지금 조각 틀 그대로 `— cap, / mask, / gown, / gloves, / drape`.
+
 keyPhrase chunks(보고만): 9.2 `gently and reassess`(위 표), 14.0 `for at least / five minutes`(`at least five minutes`를 끊음), 17.1 `as I seal / it`(동사와 대명사 목적어), 18.0 `in left lateral Trendelenburg / position now`(명사구), 19.0 `about pulmonary artery / rupture`(명사구).
 
 ## F. 결정 11
@@ -210,4 +214,4 @@ keyPhrase chunks(보고만): 9.2 `gently and reassess`(위 표), 14.0 `for at le
 
 ## 종합
 
-고칠 것 **약 70건**(문장 13 · 단어 오답·조각·ko 약 55 · cue 17 · 뉘앙스 13 · 결정 11 7; B절 품사 표의 ★ 26 포함). 그중 **안전 2건**(10.4 PA 카테터 당기기, 7.3 감쇠 방향). 그 밖에 slider 0(why·cue 모순)·slider 16(순서)·context 8개(`word` 고르기)가 설계상 큰 문제입니다. 위 목록을 반영하고 E절 keyPhrase 3개(20.1·18.2·9.2)를 사용자가 정하면 내보내도 됩니다.
+꼭 고칠 것 **97건**(겹치는 것은 한 번만 셈): 문장 12(A1~A13 중 A9 선택) · 단어 B1~B6 22(조각 12·정답 되는 오답 4·distractorsKo 4·phlebaxis 1·중복 1) · 품사 표 ★ 22(B3~B5와 겹치는 4 빼고) · cue 16 · 뉘앙스 13 · 결정 11 8(+ phlebaxis는 B1). 선택: A9, `w-red`, slider 19·6, 가벼운 조각 7, 품사 표 ★ 없는 18줄. 그중 **안전 2건**(10.4 PA 카테터 당기기, 7.3 감쇠 방향). 그 밖에 slider 0(why·cue 모순)·slider 16(순서)·context 8개(`word` 고르기)가 설계상 큰 문제입니다. 위 목록을 반영하고 E절 keyPhrase 3개(20.1·18.2·9.2)를 사용자가 정하면 내보내도 됩니다.
