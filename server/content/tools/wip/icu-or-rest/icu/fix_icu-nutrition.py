@@ -9,7 +9,7 @@ dump = lambda o, p: open(p, 'w', encoding='utf-8').write(yaml.safe_dump(o, allow
 d = ld(f'{T}.pre-fix.yaml')
 base = ld(f'base-{T}.yaml')
 old_ch = ld(f'changes-{T}.pre-fix.yaml')['changes']
-D1, D2, D3, D4 = [ld(f'fix_{T}_data_{i}.yaml') for i in (1, 2, 3, 4)]
+D1, D2, D3, D4, D5 = [ld(f'fix_{T}_data_{i}.yaml') for i in (1, 2, 3, 4, 5)]
 sits = d['situations']
 S = lambda k: sits[int(k.split('.')[0])]['sentences'][int(k.split('.')[1])]
 old_en = {k: S(k)['en'] for k in D1}
@@ -92,6 +92,8 @@ for l in D4['lines']:
         if f in l: o[f] = l[f]
 for si, why in D4['why'].items(): sits[si]['order']['why'] = why
 
+for k, (idx, txt) in D5.items():
+    x = S(k.rstrip('b')); x['distractorsKo'][idx] = txt
 # 오답 ko 끝 문장부호를 정답 ko와 같게(vals는 마침표가 없다 — 마침표 유무가 답을 드러냄)
 for s in sits:
     for x in s['sentences']:
@@ -109,12 +111,17 @@ newwhy = {}
 for k, v in D1.items():
     si, j = map(int, k.split('.')); newwhy[('sentence', (sits[si]['title'], j))] = v['why']
 for i, why in D2['remove_why'].items(): newwhy[('word-remove', i)] = why
+for sit_i, j in ((13, 5), (14, 5)): newwhy[('sentence', (sits[sit_i]['title'], j))] = 'w-get 삭제로 태그를 뺌 — 문장은 그대로'
+for k in D1:
+    si, j = map(int, k.split('.'))
+    if 'words' in D1[k] and D1[k]['fields_changed'] and 'w-get' in [w for w in base['situations'][si]['sentences'][j]['words']]: newwhy[('sentence', (sits[si]['title'], j))] += ' (w-get 태그도 뺌)'
 for i, e in D2['edits'].items():
     if 'changes' in e: newwhy[('word', i)] = e['changes']['why']
 EXW = {'example': '예문을 바뀐 문장에 맞춤(또는 그 말이 태그된 다른 문장으로 옮김)'}
 out = []
 def add(kind, key, entry, fields_why):
-    why = newwhy.get((kind, key)) or oldwhy.get((kind, key)) or fields_why
+    a, b = newwhy.get((kind, key)), oldwhy.get((kind, key))
+    why = f'{a} / 이전: {b}' if a and b else (a or b or fields_why)
     entry['why'] = why; out.append(entry)
 for i, w in cw.items():
     if i not in bw: add('word-add', i, {'kind': 'word-add', 'id': i}, '새 단어'); continue
