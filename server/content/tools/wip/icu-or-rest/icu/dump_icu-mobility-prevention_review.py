@@ -23,3 +23,9 @@ if mode=='sent':
             o=bss[i] if i<len(bss) else {}
             diff=[f for f in ['en','ko','chunks','words'] if o.get(f)!=x.get(f)]
             print(f"{i} {k} {x['en']} | {x['ko']} | {' / '.join(x['chunks'])} | {x['words']} {'DIFF:'+str(diff)+' was '+str(o.get('words')) if diff else ''}")
+if mode=='nu':
+    for si,s in enumerate(d['situations']):
+        print(f"\n## [{si}] {s['title']}")
+        for n in s['nuance']:
+            n=dict(n); k=n.pop('kind')
+            print(f"-- {k}: "+json.dumps(n,ensure_ascii=False))
