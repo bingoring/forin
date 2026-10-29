@@ -23,17 +23,21 @@ KO = {  # id -> (새 ko, 이유)
  "w-tense": ("단단히 긴장된", "ko '팽팽한'이 w-tight와 같아 정답이 둘이 된다 — 가름"),
  "w-rigid": ("경직된", "ko '단단한'이 w-hard와 같아 정답이 둘이 된다 — 가름 (rigid belly는 널빤지처럼 굳은 배)"),
  "w-listen": ("귀 기울이다", "ko '듣다'가 w-hear와 같아 정답이 둘이 된다 — listen for/to는 '귀 기울여 듣다(청진)'"),
- "w-suction": ("석션하다", "ko '흡인하다'가 w-aspirate와 거의 같아 정답이 둘이 된다 — 가름"),
  "w-aspirate": ("흡인되다", "'흡인하다(음식이)'는 w-suction과 겹친다 — 문장은 환자가 흡인되는 뜻(keeps aspirating)"),
  "w-bowel": ("창자", "ko '배변'은 bowel sounds·dead bowel 문장과 안 맞고 w-movement와도 겹친다 — 가름"),
  "w-tolerance": ("견디는 정도", "'내성'은 약물 내성으로 읽히기 쉽다 — feeding tolerance는 급식을 견디는 정도"),
  "w-slow": ("늦추다", "태그된 문장은 동사(we can slow it down)라 형용사 '느린'을 동사로"),
  "w-support": ("보조하다", "'혈압을 지지하다'는 어색하다 — support her pressure는 혈압을 보조(유지)하다"),
  "w-get": ("마련하다", "ko '~하게 되다'는 get an x-ray·get antibiotics 같은 문장에 안 맞는다 — '마련하다'로, 'get comfortable/get her sitting up' 문장은 태그를 뺌"),
+ "w-target": ("목표치", "태그된 문장은 target range(명사) — '목표로 하다'는 w-goal '목표'와 겹친다"),
+ "w-movement": ("배변", "태그된 문장은 bowel movement 하나뿐이라 '움직임'은 오해를 부른다"),
+ "w-surgery": ("수술(팀)", "문장 4개 중 3개가 '수술팀을 부르다'(calling surgery) 뜻이라 '수술'만으로는 맞지 않는다"),
+ "w-suction": ("석션", "문장 2개는 동사, 2개는 명사(suction ready) — ko를 둘 다 되는 '석션'으로. w-aspirate와 겹치지 않게 가름"),
+ "w-anything": ("무엇이든", "문장 ko가 '무엇이든 넣기 전에' — '아무것도'는 부정문 뜻이라 긍정 문장(before anything goes through)에 맞지 않는다"),
  "w-change": ("바꾸다", "change the dressing·hold or change the rate는 '교체/변경' — 명사 문장(any new changes)은 태그를 뺌"),
  "w-respiratory": ("호흡치료팀", "'calling respiratory'는 호흡치료팀을 부른다는 뜻이라 '호흡기'보다 맞는다"),
 }
-DETAG_COMMON = ["w-body","w-hour","w-now","w-today","w-morning","w-know","w-go","w-see","w-family","w-time","w-bad","w-good"]
+DETAG_COMMON = ["w-head","w-body","w-hour","w-now","w-today","w-morning","w-know","w-go","w-see","w-family","w-time","w-bad","w-good"]
 DETAG_JUDGE = ["w-eat","w-small","w-same","w-job","w-here","w-love","w-think","w-together","w-much","w-too"]
 DETAG = set(DETAG_COMMON + DETAG_JUDGE)
 assert len(DETAG_JUDGE) <= 10
@@ -41,14 +45,19 @@ SENT_UNTAG = {
  "w-position": [(2,2)],
  "w-get": [(3,2),(17,5)],
  "w-rule": [(14,2)],
- "w-keep": [],
+ "w-keep": [(13,3),(20,4),(20,3),(9,5),(12,6),(20,0),(3,5)],
  "w-down": [(12,3)],
  "w-hard": [(20,5)],
  "w-full": [(20,0)],
  "w-pressure": [(16,2)],
  "w-change": [(19,6)],
 }
+EXAMPLE = {  # id -> 새 예문(문장 en 그대로) — 옛 예문 문장에서 태그를 뺐다
+ "w-position": "I'll help you get comfortable in this position.",
+ "w-get": "We'll get an x-ray to confirm it's past the pylorus.",
+}
 SENT_WHY = {
+ "w-keep": "keep의 ko는 '유지하다' — keeps aspirating·keep watching·keeping up처럼 keep+-ing는 '계속하다'라 태그를 뺌",
  "w-position": "position의 ko는 '자세' — tube position은 관의 위치라 태그를 뺌",
  "w-get": "get의 ko는 '마련하다' — get comfortable·get her sitting up은 '~하게 되다/하게 하다'라 태그를 뺌",
  "w-rule": "rule의 ko는 '규칙' — rule out은 '배제하다'라 태그를 뺌",
@@ -59,6 +68,7 @@ SENT_WHY = {
  "w-change": "change의 ko는 동사 '바꾸다' — any new changes는 명사라 태그를 뺌",
 }
 ids0 = {w["id"] for w in base["words"]}
+assert set(EXAMPLE) <= ids0
 assert set(KO) <= ids0 and DETAG <= ids0 and set(SENT_UNTAG) <= ids0, (set(KO)-ids0, DETAG-ids0, set(SENT_UNTAG)-ids0)
 
 out = copy.deepcopy(base)
@@ -85,6 +95,14 @@ assert {w["id"] for w in words} == used, sorted({w["id"] for w in words} ^ used)
 for w in words:
     if w["id"] in KO:
         w["ko"] = KO[w["id"]][0]
+for w in words:
+    if w["id"] in EXAMPLE: w["example"] = EXAMPLE[w["id"]]
+tagged_in = defaultdict(set)
+for s_ in out["situations"]:
+    for x in s_["sentences"]:
+        for wid in x["words"]: tagged_in[wid].add(x["en"])
+for w in words:
+    if w["example"] not in tagged_in[w["id"]]: print("EXAMPLE not tagged:", w["id"], w["example"])
 out["words"] = words
 if "--ids" in sys.argv:
     g = defaultdict(list)
@@ -96,6 +114,9 @@ if "--ids" in sys.argv:
 
 sent_by_en = {x["en"]: x["ko"] for s in base["situations"] for x in s["sentences"]}
 
+BAD = set("""ass arse anal anus butt cum cunt cock dick fag fuck homo jizz naff nig piss porn rape shit slut sux tit tits twat wank whore
+bra bonzo dork dwarf flog grope hearse hell lust oriental slay sow stab strangle tomb tramp underwear witch nasty
+beer wine rum gin booze pub bar shot shots liquor drunk vodka whisky whiskey ale brew keg cider sake toast cork tipsy sober wake coffin grave burial funeral urn casket dead die died kill sex sexy nude naked breast boob""".split())
 def n(s): return len(re.sub(r"\s", "", s))
 def okLen(a, b): return abs(n(a) - n(b)) <= 3 or max(n(a), n(b)) <= 1.25 * min(n(a), n(b))
 def parse_chips(s): return [x.split("|") for x in s.split()]
@@ -122,8 +143,12 @@ for w in words:
     e = data.get(w["id"])
     if not e: continue
     ex = w["example"]; assert ex in sent_by_en, ex
+    for k in ("distractorsEn","dEn"): pass
     w["exKo"] = sent_by_en[ex]
     w["cue"] = e["cue"]; w["tag"] = e["tag"]; tagc[e["tag"]] = tagc.get(e["tag"], 0) + 1
+    for k in ("dEn","dKo","decoy"):
+        for x in e[k]:
+            if not isinstance(x, str): print("NOT STR", w["id"], k, x)
     w["distractorsEn"] = [str(x) for x in e["dEn"]]; w["distractorsKo"] = [str(x) for x in e["dKo"]]
     w["chips"] = parse_chips(e["chips"]); w["decoyChips"] = [str(x) for x in e["decoy"]]
     joined = " ".join("".join(c) for c in w["chips"])
@@ -145,6 +170,8 @@ for w in words:
     if spell_alt(frags, w["decoyChips"], w["en"].replace(" ", "")) > 1: lint.append(f"{w['id']}: decoy respells the answer")
     ko_cue = re.sub(r"[\s·]", "", w["ko"])
     if len(ko_cue) >= 3 and ko_cue in re.sub(r"\s", "", w["cue"]): lint.append(f"{w['id']}: cue repeats ko")
+    for t in [*w["distractorsEn"], *w["decoyChips"]]:
+        if t.lower() in BAD: lint.append(f"{w['id']}: offensive/alcohol {t!r}")
     if w["tag"] and len(w["tag"]) > 10: lint.append(f"{w['id']}: tag long")
 if missing and "--partial" not in sys.argv and "--words-only" not in sys.argv: print("단어 데이터 빠짐:", len(missing), missing)
 for l in lint: print("LINT", l)
@@ -182,7 +209,10 @@ with open(f"{D}/{T}.A.yaml", "w", encoding="utf-8") as f:
 changes = []
 for wid, (ko, why) in KO.items():
     if wid in {w["id"] for w in words}:
-        changes.append({"kind": "word", "id": wid, "fields": ["ko"], "why": why})
+        fl = ["ko"] + (["example"] if wid in EXAMPLE else [])
+        changes.append({"kind": "word", "id": wid, "fields": fl, "why": why + (" — 옛 예문 문장에서 태그를 뺐으므로 예문을 태그된 문장으로 바꿈" if wid in EXAMPLE else "")})
+for wid in EXAMPLE:
+    assert wid in KO
 for wid in sorted(DETAG):
     changes.append({"kind": "word-remove", "id": wid, "why": ("너무 쉬움(공통 쉬운 단어 목록) — 어느 문장도 태그하지 않게 됐다" if wid in DETAG_COMMON else "간호사가 이미 아는 쉬운 말이라 가르칠 값이 없다 — 어느 문장도 태그하지 않게 됐다")})
 changes += sent_changes

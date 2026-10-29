@@ -1,0 +1,108 @@
+word_add:
+  - id: w-last-known-well
+    en: "last known well"
+    ipa: "/læst noʊn wɛl/"
+    ko: "마지막 정상 확인 시각"
+    icon: calendar
+    example: "I'll give her last known well time and her NIHSS score."
+    exKo: "마지막으로 멀쩡했던 시각과 NIHSS 점수를 알려드릴게요."
+    cue: "증상이 없던 것이 마지막으로 확인된 때 — 재관류 치료 판단의 기준"
+    tag: 신경
+    distractorsEn: ["last known dose", "first known well"]
+    distractorsKo: ["마지막 투약 시각", "첫 증상 발생 시각"]
+    chips: [[last], [known], [well]]
+    decoyChips: [lost, know]
+    tag_in: {s: 17, i: 5}
+nuance:
+- s: 0
+  kind: slider
+  set:
+    why: "들어 올릴 수는 있어도 손으로 미는 힘을 못 이기면 힘이 줄어든 상태예요. NIHSS 운동 항목은 팔을 10초 들고 버티는지를 보고, 저항은 근력 검사로 따로 봐요. 본 대로 기록하고, 전보다 약해졌으면 바로 팀에 알려요."
+- s: 0
+  kind: context
+  scene: {0: {who: "의사 라운드", icon: monitor, en: "Can she point to objects on command yet?"}}
+- s: 2
+  kind: context
+  scene: {0: {who: "야간 인계", icon: board, en: "Still NPO — we're waiting on the swallow screen before anything by mouth."}}
+- s: 3
+  kind: slider
+  set:
+    scale: ["a mild headache", "a bad headache", "the worst headache"]
+    answerAt: 2
+    why: "tPA 뒤 갑자기 '생애 최악'의 두통이면 출혈 징후일 수 있어 바로 의사에게 알리고, 영상 등은 지시대로 준비해요."
+- s: 3
+  kind: context
+  set: {ko: "출혈"}
+- s: 6
+  kind: slider
+  set: {scale: ["gradual", "over hours", "sudden"]}
+- s: 7
+  kind: slider
+  set: {scale: ["slight", "marked", "profound"]}
+- s: 8
+  kind: slider
+  set:
+    scale: ["slight drop", "moderate drop", "sharp drop"]
+    answerAt: 2
+    cue: "After the last rate change, his pressure fell from 175 to 120 in five minutes."
+    why: "짧은 시간에 크게 떨어지면 sharp drop이에요. 뇌관류가 줄 수 있어서 주입은 프로토콜대로 조절하고 바로 의사에게 알려요."
+- s: 9
+  kind: context
+  scene: {0: {who: "의사 라운드", icon: monitor, en: "Let's confirm the feeding tube position before we start feeds."}}
+- s: 11
+  kind: slider
+  set: {cue: "With each check, his pressure creeps up a little but is still within the ordered range."}
+- s: 11
+  kind: context
+  scene: {0: {who: "야간 인계", icon: board, en: "Please watch his puncture site and distal pulses with every neuro check."}}
+- s: 13
+  kind: context
+  set: {ko: "받쳐 주다"}
+  scene:
+    0: {who: "동료에게", icon: monitor, en: "Can you support her other side while we sit her up?"}
+    2: {en: "Mobilization will proceed with supported transfers per the PT protocol."}
+- s: 16
+  kind: slider
+  set:
+    scale: [brisk, sluggish, blown]
+    exKo: "오른쪽 동공이 확 커지고 반응이 없어요."
+- s: 20
+  kind: context
+  scene: {0: {who: "의사 라운드", icon: monitor, en: "Let's be honest with the family about the prognosis at today's meeting."}}
+  set: {why: "의료진끼리는 예후를 가족에게 솔직히 말하자고 짧게 정리해요. 가족에게는 같은 honest를 GCS와 영상 소견 같은 숫자와 용어로 말하면 상황이 와닿지 않으니, 관찰한 것과 심각함을 쉬운 말로 솔직하게 알려 주세요."}
+- s: 20
+  kind: swap
+  set:
+    before: ["If that's what he would want, the team can focus on ", "terminal symptom management", " instead of more machines."]
+    ko: "그분이 원하셨던 것이라면, 의료팀은 기계를 더 다는 대신 그분의 편안함에 집중할 수 있어요"
+order:
+- s: 3
+  why: "확인 주기와 대상을 먼저 알리고, 그 사이에 이상이 있으면 호출하라고 안내한 뒤, 그 호출의 기준을 알려 주고, 이 모두에 더해 출혈을 지켜본다고 맺어요."
+  lines:
+    2: {en: "If you feel groggier than you do now, that's when to press it.", icon: bell, ko: "지금보다 더 몽롱해지면 그때 누르시면 돼요", note: 기준}
+- s: 4
+  why: "머리를 세우는 첫 이점을 말하고, 일부 환자에게는 이점이 하나 더 있다고 잇고, 그 이점들 때문에 각도를 정해 둔다고 이유를 묶고, 그 자세가 불편하면 알려 달라고 요청해요."
+  lines:
+    1: {en: "For some patients, raising it also lowers the pressure inside the head.", ko: "어떤 환자에게는 머리를 올리면 머릿속 압력을 낮추는 데도 도움이 돼요"}
+    2: {en: "Because of those benefits, we keep the head of the bed raised about thirty degrees.", ko: "그 이점들 때문에 침대 머리 쪽을 약 삼십 도 세워 둬요"}
+- s: 10
+  why: "와파린 복용을 알리며 INR을 스탯으로 보내고 역전제를 준비한다고 말하고, 그 결과를 얻으려고 응고 검사를 채혈하게 한 뒤, 그동안 역전제를 꺼내 오고, 투여 후 재확인을 약속해요."
+  lines:
+    0: {en: "He's on warfarin, so let's send his INR stat while we get the reversal ready.", ko: "와파린을 복용 중이니 역전제를 준비하는 동안 INR을 스탯으로 보내죠", note: 동시}
+    1: {en: "To get that result, draw a coag panel right now.", ko: "그 결과를 보려면 지금 바로 응고 검사를 채혈해 주세요", note: 검사}
+- s: 11
+  why: "시술 결과와 주의를 먼저 알리고, 그 이유로 재폐색 가능성을 설명한 뒤, 혈압 유지가 도움이 된다고 잇고, 그에 더해 밤새 자주 확인한다고 맺어요."
+  lines:
+    3: {en: "Along with that, I'll check your strength and speech often tonight.", ko: "그와 함께 오늘 밤 힘과 말을 자주 확인할게요"}
+- s: 15
+  lines:
+    3: {en: "While they decide, I'll stay close to him and update you as soon as we know more.", ko: "그분들이 결정하는 동안 제가 그분 곁에 있고 새로 알게 되는 대로 알려드릴게요"}
+- s: 16
+  why: "동공 변화를 보고하게 하고, 그에 따라 tPA 중단과 역전을 지시한 뒤, 역전이 진행되는 동안 혈압을 조절하게 하고, 두 조치가 진행 중일 때 신경외과 연락과 CT 이동을 진행해요."
+  lines:
+    2: {en: "While reversal runs, let's control his blood pressure right now.", ko: "역전이 진행되는 동안 지금 바로 혈압을 조절하죠"}
+    3: {en: "With reversal and pressure underway, I'm calling neurosurgery and getting him to CT stat.", ko: "역전과 혈압 조절이 진행 중이니 신경외과에 연락하고 즉시 CT로 데려갈게요"}
+- s: 20
+  why: "공감과 정직의 약속으로 시작해 심각한 상태를 알리고, 그분의 뜻이라면 의료팀이 편안함에 집중할 수 있다고 조건을 달아 말하고, 이 모두를 생각할 시간을 보장하며 맺어요."
+  lines:
+    2: {en: "If that's what he would want, the team can focus on his comfort.", ko: "그분이 원하셨던 것이라면 의료팀은 편안함에 집중할 수 있어요"}

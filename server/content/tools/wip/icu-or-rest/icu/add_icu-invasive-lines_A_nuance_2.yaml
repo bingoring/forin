@@ -1,0 +1,134 @@
+- title: 중심라인 삽입 중 합병증 감시
+  nuance:
+    - kind: slider
+      words: [w-pvc, w-wire]
+      cue: "Colleague: \"Extra beats keep firing every time the wire moves.\""
+      scale: [a stray PVC, runs of PVCs, sustained VT]
+      answerAt: 1
+      why: "와이어가 심장 안에 닿으면 조기 박동이 생길 수 있어요. 연달아 나오면 runs of PVCs라고 바로 시술자에게 알려 와이어 위치를 보게 하고, 리듬을 계속 지켜봐요."
+      example: "I'm seeing runs of PVCs, so I'm telling you now."
+      exKo: "심실조기수축이 연달아 보여서 지금 말씀드려요."
+    - kind: context
+      words: [w-sat]
+      word: sats
+      ko: 산소포화도
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "His sats are dropping and breath sounds are down on the right.", ok: true}
+        - {who: 동료 간호사, icon: handshake2, en: "Can you watch his sats while I listen to his chest?", ok: true}
+        - {who: 환자에게, icon: me, en: "Your sats just dropped, so we're checking your lung.", ok: false, fix: "Your oxygen level on the monitor dipped a little, so we're checking your lungs."}
+      why: "의료진끼리는 sats가 산소포화도를 가리키는 흔한 줄임말이에요. 환자에게는 줄임말이 낯설고 불안하니 산소 수치라고 풀어 말해요."
+- title: 동맥관 파형 이상 문제해결
+  nuance:
+    - kind: slider
+      words: [w-overdamped, w-damped, w-squarewave, w-trace]
+      cue: "Colleague: \"The trace is flat, the notch is gone, and the square-wave test shows no bounce.\""
+      scale: [mildly damped, damped, overdamped]
+      answerAt: 2
+      why: "방형파 검사에서 진동 없이 바로 가라앉으면 overdamped예요. 이때는 수축기가 낮게, 이완기가 높게 보여 실제 혈압을 가릴 수 있어서, 공기·꺾임·혈전·연결부를 확인해요."
+      example: "The trace is overdamped, so the numbers may be off."
+      exKo: "파형이 과도하게 감쇠돼서 수치가 틀릴 수 있어요."
+    - kind: context
+      words: [w-pressure]
+      word: pressure
+      ko: 압력
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "The pressure reads low, but the trace is overdamped.", ok: true}
+        - {who: 동료 간호사, icon: handshake2, en: "Can you check the pressure bag while I re-flush?", ok: true}
+        - {who: 환자에게, icon: me, en: "Your pressure reading is unreliable because the trace is damped.", ok: false, fix: "The number from the line in your arm isn't accurate right now, so we're fixing the line."}
+      why: "의료진끼리는 pressure와 trace를 그대로 말해도 통해요. 환자에게 trace is damped라고 하면 무슨 뜻인지 모르니, 라인 수치가 지금 정확하지 않아 손보는 중이라고 말해요."
+- title: 흉관 배액량·기포 감시
+  nuance:
+    - kind: slider
+      words: [w-bubble, w-leak, w-continuous]
+      cue: "Colleague: \"The water seal bubbles with every breath, all the time.\""
+      scale: [bubbles on a cough, occasional bubbling, continuous bubbling]
+      answerAt: 2
+      why: "수봉에서 계속 기포가 나면 공기가 새는 것일 수 있어요. 연결부를 먼저 점검하고, 환자 쪽 누출이 의심되면 의사에게 알려요."
+      example: "Continuous bubbling means I'll check every connection."
+      exKo: "계속 기포가 나서 연결부를 전부 확인할게요."
+    - kind: context
+      words: [w-leak]
+      word: leak
+      ko: 새는 곳
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "There's a continuous air leak in the water seal chamber.", ok: true}
+        - {who: 동료 간호사, icon: handshake2, en: "Can you hold the tubing while I check the connections for a leak?", ok: true}
+        - {who: 환자에게, icon: me, en: "You have a continuous air leak with a possible fistula.", ok: false, fix: "There's a spot where air is escaping, so I'm checking the connections and I'll tell the doctor."}
+      why: "의료진끼리는 air leak이 짧고 정확해요. 환자에게 fistula 같은 가능성까지 던지면 확인되지 않은 말이 겁만 줘요. 지금 하는 점검과 의사에게 알릴 것을 말해요."
+- title: 흉관 파동·개통 확인
+  nuance:
+    - kind: slider
+      words: [w-tidal, w-swing]
+      cue: "Colleague: \"The fluid moves up and down a little with each breath.\""
+      scale: [no movement, gentle tidaling, wild swinging]
+      answerAt: 1
+      why: "호흡에 맞춰 작게 오르내리는 tidaling은 흉관이 열려 있다는 신호예요. 갑자기 멈추면 꺾임·막힘이거나 폐가 펴진 것일 수 있어서 확인하고 의사에게 알려요."
+      example: "I see gentle tidaling, so the tube is patent."
+      exKo: "물결이 부드럽게 보여서 관이 개통돼 있어요."
+    - kind: context
+      words: [w-tidal]
+      word: tidaling
+      ko: 물결치며 오르내림
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "There's no tidaling in the water seal since this morning.", ok: true}
+        - {who: 동료 간호사, icon: handshake2, en: "Is he still tidaling? Watch the water seal for me.", ok: true}
+        - {who: 환자에게, icon: me, en: "Your chest tube isn't tidaling anymore.", ok: false, fix: "The fluid in the box isn't moving with your breathing like before, so I'm going to check the tube."}
+      why: "의료진끼리는 tidaling만으로 뜻이 통해요. 환자에게는 낯설고 불안하니, 무엇이 달라졌고 지금 무엇을 확인하는지를 쉽게 말해요."
+    - kind: swap
+      words: [w-respiration, w-tidal]
+      who: "환자에게 · 흉관 설명"
+      icon: me
+      before: ["The fluid in the box moves a little as you ", "respire", " — that tells us the tube is open."]
+      options: [breathe, respire, ventilate]
+      answer: breathe
+      notes: {breathe: "환자가 쓰는 쉬운 말.", respire: "의학 문어체라 대화에서는 어색하다.", ventilate: "인공호흡을 연상시켜 환자를 놀라게 한다."}
+      why: "환자에게는 breathe처럼 일상어로, 차트에는 respiration으로 써요."
+      ko: 숨 쉴 때 상자 속 물이 조금씩 움직이는 건 관이 열려 있다는 뜻이에요
+- title: PA 카테터 파형·관리
+  nuance:
+    - kind: slider
+      words: [w-balloon, w-inflated, w-reading]
+      cue: "Colleague: \"How long does the balloon stay inflated for a wedge reading?\""
+      scale: [briefly, for a while, indefinitely]
+      answerAt: 0
+      why: "풍선은 쐐기압을 잴 때만 잠깐 부풀리고 바로 빼요. 부풀린 채 두면 폐동맥이 막혀 폐가 다칠 수 있어서, 측정 사이에는 항상 빼 둬요."
+      example: "I only inflate it briefly for the reading."
+      exKo: "측정할 때만 잠깐 부풀려요."
+    - kind: context
+      words: [w-wedge]
+      word: wedge
+      ko: 쐐기압
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "The wedge reading looks consistent with the last one.", ok: true}
+        - {who: 동료 간호사, icon: handshake2, en: "Deflate the balloon right after you get the wedge.", ok: true}
+        - {who: 가족에게, icon: home, en: "We just got a wedge, so we know his pulmonary pressures.", ok: false, fix: "We just measured the pressure in the small blood vessels of his lungs."}
+      why: "의료진끼리는 wedge가 쐐기압을 뜻하는 말로 통해요. 가족에게는 wedge와 pulmonary pressures가 낯설어서, 폐 혈관 압력을 쟀다고 풀어 줘요."
+- title: 라인 감염 조기 인지
+  nuance:
+    - kind: slider
+      words: [w-blame, w-line]
+      cue: "Doctor: \"Do we know it's the line?\" You: \"Not yet — but I can't say it isn't.\""
+      scale: ["it isn't the line", "it could be the line", "it is the line"]
+      answerAt: 1
+      why: "열이 나도 배양 결과가 나오기 전에는 라인 탓이라고 단정하지 않아요. 가능성은 열어 두고, 의사에게 알리고 지침대로 배양을 진행해요."
+      example: "It could be the line, so I'm letting you know."
+      exKo: "라인일 수 있어서 알려 드려요."
+    - kind: context
+      words: [w-culture]
+      word: culture
+      ko: 배양검사
+      scenes:
+        - {who: 의사에게 보고, icon: stetho, en: "I'll draw paired cultures before the first dose of antibiotics.", ok: true}
+        - {who: 동료 간호사, icon: handshake2, en: "Can you grab the culture bottles? I'm drawing from the line.", ok: true}
+        - {who: 환자에게, icon: me, en: "We're drawing paired blood cultures to look for bacteremia.", ok: false, fix: "We're taking blood samples to see whether any germs are growing."}
+      why: "의료진끼리는 paired cultures가 정확하고 짧아요. 환자에게 bacteremia 같은 말은 겁을 주니, 피를 뽑아 균이 자라는지 본다고 말해요."
+    - kind: swap
+      words: [w-rigor, w-red, w-site]
+      who: "가족에게 · 상태 설명"
+      icon: home
+      before: ["He's ", "rigoring", " and the site looks red."]
+      options: [shaking with chills, rigoring, in rigor]
+      answer: shaking with chills
+      notes: {shaking with chills: "가족이 바로 이해하는 쉬운 말.", rigoring: "의료진끼리 쓰는 말이라 가족에게는 낯설다.", in rigor: "의학 용어라 가족에게 딱딱하고 낯설다."}
+      why: "같은 증상도 가족에게는 보이는 모습 그대로, 의료진끼리는 rigor라고 말해요."
+      ko: 오한으로 떨고 있고 부위도 붉어 보여요

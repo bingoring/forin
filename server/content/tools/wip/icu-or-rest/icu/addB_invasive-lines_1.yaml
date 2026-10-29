@@ -3,7 +3,7 @@ situations:
 - title: 중심정맥관 삽입 보조·준비
   s:
   - ["준비 보고", board, "현재완료 I've …로 이미 끝낸 일을 보고해요. 동의서와 멸균 시야 두 가지를 and로 묶어 한 번에 전해요.", "the supply cart", "동의서 확인했고, 물품 카트도 옮겨뒀어요.", "동의서 확인했고, 초음파 기기도 준비했어요.", "consent", "insurance", "wristband", "address"]
-  - ["차단 준비", shield, "품목을 대시 뒤에 나열하면 무엇이 갖춰졌는지 한눈에 확인돼요. Full은 일부가 아니라 전부라는 뜻이에요.", "towel", "최대 멸균 차단 다 준비됐어요, 가운, 장갑, 마스크, 수건까지요.", "최대 멸균 차단 다 준비됐어요, 모자, 장갑, 마스크, 방포까지요.", "drape", "thermometer", "stethoscope", "tourniquet"]
+  - ["차단 준비", shield, "품목을 대시 뒤에 나열하면 무엇이 갖춰졌는지 한눈에 확인돼요. Full은 일부가 아니라 전부라는 뜻이에요.", "towel", "최대 멸균 차단 다 준비됐어요, 가운, 장갑, 마스크, 수건까지요.", "최대 멸균 차단 다 준비됐어요, 모자, 장갑, 마스크, 방포까지요.", "drape", "towel", "brush", "tray"]
   - ["타임아웃", pushpin, "Let's는 시술자와 내가 함께 한다는 느낌을 줘서 멈춤 확인이 지시가 아니라 합의로 들려요. before you start가 시점을 못 박아요.", "the sign-in", "시작하기 전에 손 위생부터 할게요.", "시작하기 전에 물품 점검부터 할게요.", "start", "scrub", "leave", "drape"]
   - ["준비 확인", lab, "coags는 응고 수치를 줄인 현장 약어예요. 검사 확인과 장비 준비를 한 문장에 묶어 시술자가 바로 시작할 수 있다고 알려요.", "and the guidewire", "응고 수치 확인했고, 의자도 가져다 뒀어요.", "응고 수치 확인했고, 소독액도 준비해뒀어요.", "ultrasound", "x-ray", "bronchoscope", "stretcher"]
   - ["환자 안심", faceWorried, "but으로 불안 요인(얼굴을 덮음)에 곧바로 안심(숨쉬기 문제없음)을 붙이면 환자가 놀라지 않아요.", "his hands", "방포가 가슴을 덮을 거라고 말씀드렸어요, 그래도 숨쉬는 덴 문제없다고요.", "아내분께 방포가 얼굴을 덮을 거라고 말씀드렸어요, 그래도 숨쉬는 덴 문제없다고요.", "breathe", "swallow", "see", "bend"]
@@ -23,7 +23,7 @@ situations:
   - ["파형 확인", monitor, "looks + 형용사는 눈으로 본 상태를 말해요. 중복파(dicrotic notch)를 짚어 파형이 제대로 나오는지 구체적으로 보고해요.", "mean pressure", "동맥 파형이 규칙적이고 중복파도 잘 보여요.", "동맥 파형이 또렷하고 수축기 정점도 잘 보여요.", "arterial", "venous", "pulmonary", "cardiac"]
   - ["수치 비교", chartup, "두 측정값을 and로 나란히 놓고 correlate라고 하면 \"똑같다\"가 아니라 \"임상적으로 맞는다\"는 뜻이 돼요. 영점과 수평을 맞춘 뒤에 하는 확인이에요.", "and the monitor", "커프 압력이랑 맥박 수치가 범위 안에서 잘 맞아요.", "커프 크기랑 동맥관 수치가 범위 안에서 잘 맞아요.", "correlate", "differ", "expire", "rotate"]
   - ["라인 세척", gear, "to clear로 목적을 문장 안에 붙이면 왜 지금 flush하는지 바로 이해돼요. clear A of B는 A에서 B를 없앤다는 틀이에요.", "the room of visitors", "튜빙 안 혈액 없애려고 라인을 세척하고 있어요.", "수액 주머니 안 공기 없애려고 라인을 세척하고 있어요.", "air", "blood", "dust", "saline"]
-  - ["기록", pencil, "document와 note를 나눠 쓰면 \"공식 기록\"과 \"덧붙여 적어 두기\"가 구분돼요. 영점과 높이를 남겨야 다음 근무자가 같은 기준으로 봐요.", "the alarm limits", "경보 한계 기록하고 트랜스듀서 높이도 적어둘게요.", "영점 조정 기록하고 압력백 수치도 적어둘게요.", "height", "color", "brand", "weight"]
+  - ["기록", pencil, "document와 note를 나눠 쓰면 \"공식 기록\"과 \"덧붙여 적어 두기\"가 구분돼요. 영점과 높이를 남겨야 다음 근무자가 같은 기준으로 봐요.", "the alarm limits", "경보 한계 기록하고 트랜스듀서 높이도 적어둘게요.", "영점 조정 기록하고 압력백 수치도 적어둘게요.", "height", "shape", "brand", "weight"]
   order:
     tag: 대화 흐름
     icon: compass
@@ -37,7 +37,7 @@ situations:
 - title: 라인 라벨·개통 관리
   s:
   - ["표지 부착", pushpin, "Every를 쓰면 하나도 빠짐없이라는 뜻이라 안전 점검 문장에 잘 맞아요. 약물과 날짜를 함께 써야 누가 봐도 무엇이 들어가는지 알아요.", "and the weight", "관강마다 약물이랑 담당자 이름으로 표지를 붙였어요.", "관강마다 약물이랑 날짜로 서명을 남겼어요.", "date", "weight", "address", "height"]
-  - ["개통 확인", check, "each가 포트 하나하나 따로 했다는 걸 보여 줘요. blood return을 봐야 라인이 혈관 안에 제대로 있다고 믿을 수 있어요.", "a clean cap", "포트마다 닦았고 혈액 역류도 잘 되는 거 확인했어요.", "포트마다 세척했고 수액 속도도 잘 나오는 거 확인했어요.", "return", "label", "smell", "color"]
+  - ["개통 확인", check, "each가 포트 하나하나 따로 했다는 걸 보여 줘요. blood return을 봐야 라인이 혈관 안에 제대로 있다고 믿을 수 있어요.", "a clean cap", "포트마다 닦았고 혈액 역류도 잘 되는 거 확인했어요.", "포트마다 세척했고 수액 속도도 잘 나오는 거 확인했어요.", "flushed", "rinsed", "tagged", "sealed"]
   - ["관강 배정", lock, "reserved for는 다른 약이 못 들어오게 자리를 비워 둔다는 뜻이라 \"전용\"을 그대로 담아요. 승압제는 끊기면 안 돼서 한 관강을 따로 잡아 둬요.", "for transfusions", "원위 관강은 수액 전용으로 두었어요.", "원위 관강은 채혈 전용으로 두었어요.", "reserved", "removed", "numbered", "cleaned"]
   - ["재표지", pencil, "대시 뒤에 이유를 바로 붙이면 왜 다시 하는지 군말 없이 전달돼요. smudged는 잉크가 번져 읽기 어려운 상태예요.", "is yellow", "이건 다시 표지를 붙일게요, 예전 표지가 찢어졌어요.", "이건 다시 표지를 붙일게요, 예전 표지가 떨어졌어요.", "tag", "cap", "bag", "pole"]
   - ["원칙 안내", shield, "should ever는 \"어떤 경우에도\"를 강하게 말하는 규정 투 표현이에요. even for a minute이 \"잠깐은 괜찮다\"는 변명을 미리 막아요.", "even on weekends", "표지 없이는 라인을 단 하루도 두면 안 돼요.", "표지 없이는 주사기를 단 일 분도 두면 안 돼요.", "minute", "week", "month", "shift"]
@@ -53,11 +53,11 @@ situations:
     - ["If a tag smudges later, I'll relabel that lumen right away.", pencil, "나중에 표지가 번지면 그 관강은 바로 다시 붙일게요", "재표지"]
 - title: 흉관 배액 시스템 이해
   s:
-  - ["수봉 관찰", monitor, "shows 뒤에 보이는 모양을 그대로 붙이는 관찰 문장이에요. tidaling은 숨 쉴 때 수봉 속 물높이가 오르내리는 움직임이에요.", "steady dripping", "수봉 챔버가 호흡에 맞춰 크게 물결치듯 움직여요.", "수봉 챔버가 기침에 맞춰 부드럽게 물결치듯 움직여요.", "gentle", "large", "sudden", "constant"]
+  - ["수봉 관찰", monitor, "shows 뒤에 보이는 모양을 그대로 붙이는 관찰 문장이에요. tidaling은 숨 쉴 때 수봉 속 물높이가 오르내리는 움직임이에요.", "steady dripping", "수봉 챔버가 호흡에 맞춰 크게 물결치듯 움직여요.", "수봉 챔버가 재채기에 맞춰 부드럽게 물결치듯 움직여요.", "gentle", "large", "sudden", "constant"]
   - ["흡인 설정", gear, "the ordered level은 내 판단이 아니라 처방된 수치라는 뜻이에요. 흡인 챔버의 기포는 흡인이 걸리고 있다는 정상 신호예요.", "and the canister", "흡인은 지시된 수치로 맞췄고 배액통도 새로 갈았어요.", "흡인은 지시된 수치로 맞췄고 호스 연결도 정리했어요.", "bubbling", "leaking", "filling", "draining"]
   - ["배액량 표시", pencil, "수동태 is marked and timed는 누가 했는지보다 해 둔 상태를 알려요. 표시와 시각이 있어야 다음 확인 때 시간당 양을 비교할 수 있어요.", "color is noted", "수집 챔버 배출량을 표시하고 서명도 남겼어요.", "수집 챔버 배출량을 표시하고 색깔도 적었어요.", "collection", "suction", "water seal", "control"]
   - ["설명 예고", speech, "walk someone through는 순서대로 따라가며 설명한다는 관용구예요. before we adjust anything으로 먼저 이해하고 나서 조작한다는 순서를 지켜요.", "the bed", "뭘 조정하기 전에 가족분께 챔버마다 하나씩 설명해 드릴게요.", "뭘 조정하기 전에 챔버마다 하나씩 종이에 적어 드릴게요.", "adjust", "empty", "replace", "move"]
-  - ["튜빙 점검", magnify, "no … that could로 문제가 될 만한 것이 없다고 구체적으로 말해요. dependent loop는 몸보다 아래로 처져 액체가 고이는 고리예요.", "dust", "튜빙에 액체를 가둘 만한 꼬인 곳은 없어요.", "튜빙에 공기를 가둘 만한 처진 고리는 없어요.", "trap", "spill", "drain", "leak"]
+  - ["튜빙 점검", magnify, "no … that could로 문제가 될 만한 것이 없다고 구체적으로 말해요. dependent loop는 몸보다 아래로 처져 액체가 고이는 고리예요.", "dust", "튜빙에 액체를 가둘 만한 꼬인 곳은 없어요.", "튜빙에 공기를 가둘 만한 처진 고리는 없어요.", "trap", "pour", "drain", "leak"]
   order:
     tag: 대화 흐름
     icon: compass

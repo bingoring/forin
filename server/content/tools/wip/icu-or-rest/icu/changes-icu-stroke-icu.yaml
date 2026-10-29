@@ -33,7 +33,8 @@ changes:
   id: w-clear
   fields:
   - ko
-  why: 문장 "words aren't clear"에 맞추고 맑아지다(동사)는 형용사 쓰임과 맞지 않는다
+  - example
+  why: 문장 "words aren't clear"에 맞추고 맑아지다(동사)는 형용사 쓰임과 맞지 않는다 / 예문 2.4(clears you, 동사)는 이 뜻으로 태그하지 않음 — 5.3 문장으로
 - kind: word-remove
   id: w-bad
   why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(공통 쉬운 단어 목록)
@@ -44,7 +45,8 @@ changes:
   id: w-call
   fields:
   - ko
-  why: 문장이 연락하다 쓰임이 대부분이라 맞춘다
+  - example
+  why: 문장이 연락하다 쓰임이 대부분이라 맞춘다 / 예문 3.5(call button)는 이 뜻으로 태그하지 않음 — 6.1 문장으로
 - kind: word-remove
   id: w-head
   why: 너무 쉬움 — 간호사가 이미 아는 말이라 STEP 1에서 뺀다(공통 쉬운 단어 목록)
@@ -101,7 +103,7 @@ changes:
   id: w-notify
   fields:
   - ko
-  why: 같은 ko(알리다)인 update와 가른다
+  why: 같은 ko(알리다)인 update와 가른다 / w-call(연락하다)과 거의 같아 듣고 뜻 고르기에서 겹침 — '통보하다'
 - kind: word
   id: w-move
   fields:
@@ -159,8 +161,11 @@ changes:
   situation: NIHSS 신경 사정
   index: 5
   fields:
+  - en
+  - ko
+  - chunks
   - words
-  why: 쉬운 단어 태그 빼기
+  why: 쉬운 단어 태그 빼기 / 서야 할 쪽이 반대(오른팔 위약 환자의 보이는 쪽은 왼쪽) — 사실 오류
 - kind: sentence
   situation: 혈압 목표 관리
   index: 2
@@ -189,8 +194,11 @@ changes:
   situation: 재관류 후 감시
   index: 3
   fields:
+  - en
+  - ko
+  - chunks
   - words
-  why: 쉬운 단어 태그 빼기
+  why: 쉬운 단어 태그 빼기 / tPA 직후 사정 간격을 '한 시간마다'로 약속하면 초기 15분 간격을 잘못 가르침 — 'often'
 - kind: sentence
   situation: 재관류 후 감시
   index: 5
@@ -219,8 +227,11 @@ changes:
   situation: 두부 거상·체위
   index: 5
   fields:
+  - en
+  - ko
+  - chunks
   - words
-  why: 쉬운 단어 태그 빼기
+  why: 쉬운 단어 태그 빼기 / 모든 뇌졸중 환자의 뇌압이 낮아진다고 단정함 — 'For some patients'
 - kind: sentence
   situation: 의식 변화 관찰
   index: 1
@@ -279,8 +290,11 @@ changes:
   situation: 삼킴장애 관리·영양 경로
   index: 4
   fields:
+  - en
+  - ko
+  - chunks
   - words
-  why: 쉬운 단어 태그 빼기
+  why: 쉬운 단어 태그 빼기 / 재검 시점을 간호사가 약속함(업무 범위) — 치료사가 정한다고
 - kind: sentence
   situation: 출혈성 뇌졸중 응고 역전
   index: 5
@@ -297,8 +311,11 @@ changes:
   situation: 혈전제거 후 재관류 관리
   index: 3
   fields:
+  - en
+  - ko
+  - chunks
   - words
-  why: 쉬운 단어 태그 빼기
+  why: 쉬운 단어 태그 빼기 / 혈전제거 후 사정 간격 '한 시간마다' 약속 — 'often'
 - kind: sentence
   situation: 발작 동반 관리
   index: 1
@@ -339,8 +356,9 @@ changes:
   situation: 조기 재활·합병증 예방
   index: 5
   fields:
+  - chunks
   - words
-  why: 쉬운 단어 태그 빼기
+  why: 쉬운 단어 태그 빼기 / 구 경계에서 끊긴 chunks를 구 단위로 바로잡음 — 문장은 그대로
 - kind: sentence
   situation: 이송·영상 조율
   index: 5
@@ -357,8 +375,11 @@ changes:
   situation: 악성 대뇌부종 뇌탈출 위기
   index: 5
   fields:
+  - en
+  - ko
+  - chunks
   - words
-  why: keep you updated(계속 알리다)라 유지하다(헤드워드 keep)와 맞지 않는다
+  why: keep you updated(계속 알리다)라 유지하다(헤드워드 keep)와 맞지 않는다 / 뇌탈출 위기에서 '몇 분마다' 알려 준다는 지킬 수 없는 약속, 간호사는 환자 곁 — 'as soon as we know more'
 - kind: sentence
   situation: 대혈관 급성 악화
   index: 0
@@ -382,7 +403,7 @@ changes:
   index: 5
   fields:
   - words
-  why: last(마지막)와 well(멀쩡한)이 헤드워드 뜻과 맞지 않는다
+  why: last(마지막)와 well(멀쩡한)이 헤드워드 뜻과 맞지 않는다 / last known well을 단어 w-last-known-well로 태그
 - kind: sentence
   situation: 급성 의식저하 기도 위기
   index: 0
@@ -405,14 +426,16 @@ changes:
   situation: 심각 흡인성폐렴 급변
   index: 2
   fields:
+  - ko
   - words
-  why: keep -ing(계속)와 명사 support(보조 치료)가 헤드워드 뜻과 맞지 않는다
+  why: keep -ing(계속)와 명사 support(보조 치료)가 헤드워드 뜻과 맞지 않는다 / 여기 support는 호흡 보조(삽관·기계환기) — ko만
 - kind: sentence
   situation: 심각 흡인성폐렴 급변
   index: 3
   fields:
+  - chunks
   - words
-  why: 동사 dropped라 명사 헤드워드 drop(하락)과 맞지 않는다
+  why: 동사 dropped라 명사 헤드워드 drop(하락)과 맞지 않는다 / 구 경계에서 끊긴 chunks를 구 단위로 바로잡음 — 문장은 그대로
 - kind: sentence
   situation: 심각 흡인성폐렴 급변
   index: 4
@@ -437,3 +460,159 @@ changes:
   fields:
   - words
   why: 쉬운 단어 태그 빼기
+- kind: word
+  id: w-side
+  fields:
+  - example
+  why: 이 단어를 예문으로 쓰던 문장을 바꾼 검토 반영에 맞춰 예문·exKo를 바꿈
+- kind: word
+  id: w-stand
+  fields:
+  - example
+  why: 이 단어를 예문으로 쓰던 문장을 바꾼 검토 반영에 맞춰 예문·exKo를 바꿈
+- kind: word
+  id: w-bring
+  fields:
+  - example
+  why: 예문이던 1.2(bring the pressure down)는 이 뜻으로 태그하지 않음 — 14.1 문장으로
+- kind: word
+  id: w-swab
+  fields:
+  - ko
+  why: 문장 2.5는 스펀지를 적셔 닦음(구강 스펀지 스왑) — ko '면봉으로 닦다'를 '닦아 내다'로
+- kind: word
+  id: w-wake
+  fields:
+  - example
+  why: 이 단어를 예문으로 쓰던 문장을 바꾼 검토 반영에 맞춰 예문·exKo를 바꿈
+- kind: word
+  id: w-speech
+  fields:
+  - example
+  why: 이 단어를 예문으로 쓰던 문장을 바꾼 검토 반영에 맞춰 예문·exKo를 바꿈
+- kind: word
+  id: w-grogginess
+  fields:
+  - example
+  why: 이 단어를 예문으로 쓰던 문장을 바꾼 검토 반영에 맞춰 예문·exKo를 바꿈
+- kind: word
+  id: w-normal
+  fields:
+  - example
+  why: 이 단어를 예문으로 쓰던 문장을 바꾼 검토 반영에 맞춰 예문·exKo를 바꿈
+- kind: word
+  id: w-lower
+  fields:
+  - example
+  why: 이 단어를 예문으로 쓰던 문장을 바꾼 검토 반영에 맞춰 예문·exKo를 바꿈
+- kind: word
+  id: w-under
+  fields:
+  - example
+  why: 이 단어를 예문으로 쓰던 문장을 바꾼 검토 반영에 맞춰 예문·exKo를 바꿈
+- kind: word
+  id: w-warfarin
+  fields:
+  - example
+  why: 이 단어를 예문으로 쓰던 문장을 바꾼 검토 반영에 맞춰 예문·exKo를 바꿈
+- kind: word
+  id: w-tonight
+  fields:
+  - example
+  why: 이 단어를 예문으로 쓰던 문장을 바꾼 검토 반영에 맞춰 예문·exKo를 바꿈
+- kind: word
+  id: w-respiratory
+  fields:
+  - ko
+  why: 문장 19.1 'call respiratory'는 호흡치료팀(RT) — ko '호흡의'를 '호흡치료팀'으로
+- kind: word
+  id: w-focus
+  fields:
+  - example
+  why: 이 단어를 예문으로 쓰던 문장을 바꾼 검토 반영에 맞춰 예문·exKo를 바꿈
+- kind: word
+  id: w-comfort
+  fields:
+  - example
+  why: 이 단어를 예문으로 쓰던 문장을 바꾼 검토 반영에 맞춰 예문·exKo를 바꿈
+- kind: word
+  id: w-instead
+  fields:
+  - example
+  why: 이 단어를 예문으로 쓰던 문장을 바꾼 검토 반영에 맞춰 예문·exKo를 바꿈
+- kind: word
+  id: w-machine
+  fields:
+  - example
+  why: 이 단어를 예문으로 쓰던 문장을 바꾼 검토 반영에 맞춰 예문·exKo를 바꿈
+- kind: word-add
+  id: w-last-known-well
+  why: 17.5에 이미 있는 말 — last/well 태그를 뺀 뒤 가르치지 않게 된 뇌졸중 인계 핵심 용어(검토 A 39번)
+- kind: word-remove
+  id: w-first
+  why: 10.3을 'first' 없는 문장으로 바꿔(INR을 기다리며 역전 지연 — 안전) 어느 문장도 태그하지 않게 됨
+- kind: word-remove
+  id: w-push
+  why: 16.4를 'Give the ordered…'로 바꿔(정맥 점적을 push로 가르침 — 사실 오류) 어느 문장도 태그하지 않게 됨
+- kind: sentence
+  situation: 재관류 후 감시
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: tPA 뒤 새 졸림을 '정상'이라 단정하면 출혈 신호를 놓침(안전) — 새 졸림은 정상이 아니니 바로 말하라고. w-little 태그를 뺌
+- kind: sentence
+  situation: 혈압 변동 정밀 조절
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  why: 혈압 목표 숫자를 간호사가 정한 값처럼 말함 — 처방 목표로. chunks도 구 단위로
+- kind: sentence
+  situation: 출혈성 뇌졸중 응고 역전
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 와파린 복용 출혈 환자에게 INR을 기다리라는 'first'는 역전을 늦춤(안전) — INR은 스탯으로 보내며 역전제를 동시에 준비. w-first 태그를 뺌
+- kind: sentence
+  situation: 혈전제거 후 재관류 관리
+  index: 4
+  fields:
+  - chunks
+  why: 구 경계에서 끊긴 chunks를 구 단위로 바로잡음 — 문장은 그대로
+- kind: sentence
+  situation: tPA 후 대량 뇌출혈 위기
+  index: 3
+  fields:
+  - ko
+  why: '''blew''는 동공이 크게 열리고 반응이 없어진 것 — ko를 맞춤'
+- kind: sentence
+  situation: tPA 후 대량 뇌출혈 위기
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: tPA 후 출혈 역전제는 push가 아니라 점적이고 처방 표시도 없음 — 'Give the ordered…'. w-push 태그를 뺌
+- kind: sentence
+  situation: 대혈관 급성 악화
+  index: 4
+  fields:
+  - chunks
+  why: 구 경계에서 끊긴 chunks를 구 단위로 바로잡음 — 문장은 그대로
+- kind: sentence
+  situation: 광범위 뇌손상 목표·예후 소통
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 간호사가 치료 목표 전환을 먼저 제안함(업무 범위) — 환자의 뜻이면 의료팀이 할 수 있다고

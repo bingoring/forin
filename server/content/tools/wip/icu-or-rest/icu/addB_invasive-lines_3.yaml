@@ -1,0 +1,86 @@
+situations:
+- title: PA 카테터 파형·관리
+  s:
+  - ["파형 설명", monitor, "This is …, and here …로 가리키며 설명하는 틀이라 화면을 보면서 말하기 좋아요. PA 파형이 쐐기 파형으로 바뀌는 지점을 짚어야 측정 순서가 이해돼요.", "the ECG tracing,", "이게 우심실 파형이고, 여기서 폐동맥압으로 이행해요.", "이게 폐동맥 파형이고, 여기서 풍선을 불기 시작해요.", "PA", "RA", "ICP", "EEG"]
+  - ["풍선 정리", gear, "immediately after는 바로 뒤라는 시점을 못 박아요. 풍선을 부푼 채 두면 폐동맥 흐름을 막아 조직이 손상될 수 있어서 읽자마자 빼요.", "the cuff", "혈압 측정하고 바로 커프 바람을 뺄게요.", "심박출량 측정하고 바로 풍선 바람을 뺄게요.", "balloon", "cuff", "tank", "bulb"]
+  - ["위치 추정", magnify, "looks like it may have는 확신이 없을 때 가능성을 두 겹으로 낮춰 말하는 방식이에요. 단정하지 않으면서도 위치 이동을 바로 알릴 수 있어요.", "The catheter cap", "카테터 고정 부위가 헐거워진 것 같아 보여요.", "카테터 끝이 구부러진 것 같아 보여요.", "distally", "proximally", "laterally", "medially"]
+  - ["안전 습관", shield, "never로 예외 없는 습관을 말하면 원칙이 분명하게 전달돼요. 풍선을 부푼 채 두면 폐동맥 흐름이 막혀 조직이 손상될 수 있어요.", "the stopcock open", "측정 사이사이에 알람을 꺼 둔 채로 절대 두지 않아요.", "측정 사이사이에 라인을 열어 둔 채로 절대 두지 않아요.", "readings", "rounds", "shifts", "visits"]
+  - ["위치 조정", gear, "pull back an inch처럼 거리를 숫자로 말하면 얼마나 움직이는지 모호하지 않아요. 조정한 뒤 recheck the trace까지 한 문장에 넣어 확인 단계를 빠뜨리지 않아요.", "and recheck the cuff", "카테터를 한 인치 뒤로 빼고 드레싱을 다시 확인할게요.", "카테터를 한 인치 뒤로 빼고 호흡 양상을 다시 확인할게요.", "trace", "dressing", "chart", "alarm"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: PA 카테터 측정과 관리 4문장 순서
+    why: 파형을 보며 쐐기압으로 넘어가는 것을 설명하고, 측정 직후 풍선을 빼고, 위치 이동이 의심되면 알린 뒤 뒤로 빼며 파형을 다시 확인해요.
+    lines:
+    - ["This is the PA waveform, and here it transitions to wedge.", monitor, "이게 폐동맥 파형이고 여기서 쐐기압으로 이행해요", "파형"]
+    - ["As soon as I have that, I'll deflate the balloon immediately after the wedge reading.", gear, "그걸 얻는 즉시 쐐기압 측정 직후 풍선을 뺄게요", "풍선"]
+    - ["Even after it's deflated, the catheter tip looks like it may have migrated distally.", magnify, "빼도 카테터 끝이 원위로 이동한 것 같아 보여요", "의심"]
+    - ["To fix that, I'll pull the catheter back an inch and recheck the trace.", gear, "그걸 고치려고 한 인치 뒤로 빼고 파형을 다시 확인할게요", "조정"]
+- title: 라인 감염 조기 인지
+  s:
+  - ["감염 우려", siren, "with the line in place로 조건을 붙이면 열만이 아니라 라인이 있다는 점이 감염 의심의 이유가 돼요. raises concern for는 확정하지 않고 걱정을 올린다는 완곡한 표현이에요.", "New dizziness", "라인이 있는 상태에서 새로 두통이 나면 중심라인 감염이 우려돼요.", "라인이 있는 상태에서 새로 열이 나면 소변줄 감염이 우려돼요.", "CLABSI", "CAUTI", "VAP", "DVT"]
+  - ["배양 채혈", lab, "paired는 두 곳에서 같은 때 뽑은 한 쌍이라는 뜻이에요. 말초와 라인 양쪽에서 뽑아 비교하면 라인이 감염원인지 가늠할 수 있어요.", "and from the wound", "말초랑 라인 양쪽에서 짝지어 혈액배양을 검사실에 보낼게요.", "양팔 말초에서 짝지어 혈액배양을 채혈할게요.", "peripheral", "arterial", "femoral", "scalp"]
+  - ["징후 보고", siren, "now를 넣으면 방금 전과 달라졌다는 변화가 들려요. rigoring은 오한으로 몸을 떠는 모습을 한 단어로 보고하는 현장 표현이에요.", "looks tidy", "부위가 부었고 환자가 오한으로 떨고 있어요.", "부위가 붉어졌고 환자가 통증으로 찡그리고 있어요.", "red", "pale", "dry", "flat"]
+  - ["완곡 보고", speech, "not … yet, but … either로 아직 결론이 아니라는 점과 가능성이 남아 있다는 점을 함께 말해요. 감염 의심을 확정하지도 무시하지도 않는 균형이에요.", "the lab yet,", "아직 소변줄 탓이라고 단정하는 건 아니지만, 배제할 수도 없어요.", "아직 약 탓이라고 단정하는 건 아니지만, 배제할 수도 없어요.", "blaming", "removing", "changing", "flushing"]
+  - ["의사 보고", pager, "flag는 눈에 띄게 알린다는 뜻이라 지나치기 쉬운 징후를 짚어 보고할 때 써요. before we start로 순서를 말해 항생제 전에 보고가 먼저라는 흐름을 지켜요.", "the feeding", "항생제 시작하기 전에 약사에게 이걸 알릴게요.", "항생제 시작하기 전에 가족에게 이걸 알릴게요.", "physician", "pharmacist", "dietitian", "chaplain"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 라인 감염 조기 인지 4문장 순서
+    why: 눈에 띄는 변화를 먼저 보고하고, 라인이 있는 점과 묶어 의심을 말한 뒤, 배양을 뽑고, 항생제 전에 의사에게 알려요.
+    lines:
+    - ["The site now looks red and the patient's rigoring.", siren, "부위가 붉어졌고 환자가 오한으로 떨고 있어요", "관찰"]
+    - ["With the line in place, that raises concern for CLABSI.", siren, "라인이 있으니 그게 중심라인 감염을 우려하게 해요", "의심"]
+    - ["So I'll draw paired blood cultures — peripheral and from the line.", lab, "그래서 말초랑 라인 양쪽에서 짝지어 배양을 채혈할게요", "채혈"]
+    - ["Once they're drawn, I'll flag this to the physician before we start antibiotics.", pager, "채혈하면 항생제 시작 전에 의사에게 알릴게요", "보고"]
+- title: 영양관·위관 위치 재확인
+  s:
+  - ["길이 확인", magnify, "external length는 코나 입 밖으로 나온 관의 길이예요. 처음 삽입 때 기록해 둔 표시와 같은지 보면 관이 밀려 나오거나 들어가지 않았다는 걸 알 수 있어요.", "the packaging label", "관 외부 색깔이 기록된 표시랑 일치해요.", "외부 길이가 지난 근무조 표시랑 일치해요.", "length", "color", "label", "width"]
+  - ["위치 확인", lab, "before restarting feeds로 확인이 먼저라는 순서를 분명히 해요. 위관 위치를 확인하지 않고 급식을 시작하면 폐로 들어갈 위험이 있어요.", "with the pharmacist", "투약 재개하기 전에 엑스레이로 위치를 확인할게요.", "급식 재개하기 전에 엑스레이실에서 위치를 확인할게요.", "before", "after", "while", "without"]
+  - ["흡인물 소견", lab, "are consistent with는 그럴 가능성이 높다는 뜻이지 확정이 아니라서 의학 보고에 자주 써요. pH와 색깔 두 가지가 함께 맞아야 위 내 위치를 더 믿을 수 있어요.", "and smell", "흡인물의 산도랑 양이 위 내 위치와 일치해요.", "흡인물의 산도랑 색깔이 지난번 기록과 일치해요.", "gastric", "intestinal", "esophageal", "pleural"]
+  - ["위치 유지", check, "since로 기준 시점부터 지금까지 이어진 상태를 말하는 현재완료예요. 삽입 뒤 이동이 없었다는 확인은 위치가 처음 확인한 그대로라는 근거가 돼요.", "last week", "어제 삽입한 뒤로 관이 막히지 않았어요.", "그제 삽입한 뒤로 관이 이동하지 않았어요.", "migrated", "clogged", "leaked", "kinked"]
+  - ["급식 보류", lock, "until은 어떤 일이 확인될 때까지 이어지는 행동을 말해요. 위치를 확인하기 전에는 급식을 멈춰 두는 것이 흡인 예방의 기본이에요.", "is clearly marked", "끝이 위 안에 있는 거 확인할 때까지 약은 보류할게요.", "끝이 위 안에 있는 거 확인할 때까지 흡인은 보류할게요.", "hold", "mix", "warm", "order"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 위관 위치 재확인 4문장 순서
+    why: 외부 길이로 먼저 살피고, 흡인물 소견을 더해 보고, 그래도 급식은 보류하며, 엑스레이로 확인되면 재개해요.
+    lines:
+    - ["The external length matches the documented mark.", magnify, "외부 길이가 기록된 표시랑 일치해요", "길이"]
+    - ["On top of that mark, aspirate pH and color are consistent with gastric placement.", lab, "그 표시에 더해 흡인물 산도와 색깔도 위 내 위치와 맞아요", "소견"]
+    - ["Even so, I'll hold feeds until we confirm the tip is in the stomach.", lock, "그래도 끝이 위 안인지 확인할 때까지 급식은 보류할게요", "보류"]
+    - ["Once x-ray confirms it, I'll restart feeds.", lab, "엑스레이로 확인되면 급식을 재개할게요", "재개"]
+- title: 라인 다중접근 관리
+  s:
+  - ["배합 분리", pill, "so로 이유 뒤에 할 행동을 바로 붙여요. compatible하지 않은 약을 한 관강으로 같이 넣으면 관 안에서 침전될 수 있어서 관강을 나눠요.", "the pumps", "이 두 방울주입은 속도가 달라서 관강을 나눌게요.", "이 두 방울주입은 색이 같아서 관강을 나눌게요.", "separate", "label", "flush", "count"]
+  - ["전용 배정", lock, "dedicate A for B는 A를 B 한 가지에만 쓰게 따로 떼어 둔다는 뜻이에요. 승압제는 중단되거나 다른 약과 섞이면 위험해서 전용 관강을 써요.", "a monitor", "승압제 주입 전용으로 펌프 하나를 배정할게요.", "승압제 주입 전용으로 간호사 한 명을 배정할게요.", "lumen", "pump", "tray", "nurse"]
+  - ["적합성 확인", board, "Let me …는 곧 할 일을 상대에게 알리며 하는 부드러운 표현이에요. 같이 넣기 전에 표를 확인해야 침전이나 약효 변화를 막을 수 있어요.", "the allergy list", "따로 주입하기 전에 배합 적합성 표부터 확인해볼게요.", "같이 주입하기 전에 유통기한부터 확인해볼게요.", "compatibility", "expiration", "availability", "medication"]
+  - ["필요성 설명", speech, "why he needs …처럼 이유를 간접의문문으로 말해 설명한 내용을 요약해요. instead of just …는 더 간단한 대안과 비교해 필요성을 보여 줘요.", "a feeding tube", "왜 그냥 정맥주사가 아니라 동맥관이 필요한지 설명했어요.", "왜 그냥 경구약이 아니라 중심라인이 필요한지 설명했어요.", "explained", "asked", "wrote", "wondered"]
+  - ["약물 배치", board, "map out은 한눈에 보이게 짜 둔다는 뜻이에요. which … in which …로 짝을 말하면 어떤 약이 어느 관강인지 정확히 전달돼요.", "which room", "어떤 약물이 어느 펌프로 가는지 정리해뒀어요.", "어떤 간호사가 어느 관강을 맡는지 정리해뒀어요.", "drug", "pump", "tube", "bolus"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 라인 다중접근 관리 4문장 순서
+    why: 필요성을 설명해 이해를 얻은 뒤, 배합표를 확인하고, 안 맞는 약을 나누고, 승압제 관강을 따로 정해요.
+    lines:
+    - ["I explained why he needs a central line instead of just an IV.", speech, "왜 중심라인이 필요한지 설명했어요", "설명"]
+    - ["Now that he understands, let me check the compatibility chart before we co-infuse.", board, "이해하셨으니 같이 주입하기 전에 배합표를 확인해볼게요", "확인"]
+    - ["The chart says these two drips aren't compatible, so I'll separate the lumens.", pill, "표에 이 두 약은 안 맞는다고 나와서 관강을 나눌게요", "분리"]
+    - ["Once they're separated, I'll dedicate a lumen for the vasopressor infusion.", lock, "나눈 뒤 승압제 주입 전용 관강을 정할게요", "배정"]
+- title: 장치 제거 후 지혈·관찰
+  s:
+  - ["지혈 압박", bandage, "for at least는 최소 시간을 말해요. 정해진 시간보다 일찍 떼면 다시 출혈할 수 있어서 적어도라는 말로 기준을 지켜요.", "ten minutes", "적어도 오 분은 편안히 눕혀 드릴게요.", "적어도 오 분은 곁에서 손을 잡아 드릴게요.", "pressure", "traction", "suction", "tension"]
+  - ["부위 확인", bandage, "with로 상태에 부가 정보를 붙여 한 문장으로 보고해요. 밀폐 드레싱이 제자리에 있어야 공기가 들어가거나 피가 새는 걸 막아요.", "with a fresh sheet", "부위는 건조하고 거즈도 잘 붙어 있어요.", "부위는 건조하고 밀폐 드레싱도 새것이에요.", "dry", "warm", "wet", "tight"]
+  - ["합병증 관찰", stetho, "watch for는 생길 수 있는 문제를 계속 살핀다는 뜻이에요. 혈종이 생기면 혈류가 막힐 수 있어서 distal pulse를 같이 확인해요.", "for itching", "혈종 생기는지 지켜보고 원위 피부색도 확인할게요.", "감염 생기는지 지켜보고 원위 맥박도 확인할게요.", "distal", "proximal", "medial", "lateral"]
+  - ["가족 소식", handshake2, "one less는 하나 줄었다는 가벼운 말이라 가족에게 부담 없이 긍정적인 변화를 전해요. good news for …로 듣는 사람을 분명히 하면 따뜻하게 들려요.", "for the visitors", "튜브가 하나 줄었네요, 가족분들껜 좋은 소식이에요.", "라인이 하나 줄었네요, 간호팀껜 좋은 소식이에요.", "less", "new", "extra", "long"]
+  - ["재확인 예고", bell, "in fifteen minutes처럼 구체적 시간을 말하면 환자가 언제 또 오는지 알아 안심해요. to be sure는 의심해서가 아니라 확실히 하려는 목적이에요.", "for the record", "안심시켜 드리려고 십오 분 뒤에 부위를 다시 확인할게요.", "출혈 막으려고 십오 분 뒤에 부위를 다시 확인할게요.", "recheck", "rewrap", "rebandage", "reclean"]
+  order:
+    tag: 대화 흐름
+    icon: compass
+    ko: 장치 제거 후 지혈과 관찰 4문장 순서
+    why: 먼저 단단히 눌러 지혈하고, 덮은 뒤 부위를 확인하고, 합병증을 살피고, 마지막에 다시 확인할 시간을 알려요.
+    lines:
+    - ["I'll hold firm pressure for at least five minutes.", bandage, "적어도 오 분은 단단히 압박할게요", "지혈"]
+    - ["After that, the site is dry with an occlusive dressing in place.", bandage, "그 뒤 부위는 건조하고 밀폐 드레싱도 잘 붙어 있어요", "드레싱"]
+    - ["With the dressing on, I'll watch for hematoma and check the pulse distal to it.", stetho, "드레싱을 붙인 뒤 혈종과 원위 맥박을 살필게요", "관찰"]
+    - ["If all of that looks good, I'll recheck the site in fifteen minutes.", bell, "다 괜찮아 보이면 십오 분 뒤에 다시 확인할게요", "재확인"]
