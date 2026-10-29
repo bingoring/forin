@@ -6,6 +6,9 @@
 **Decisions (audit):** [DECISIONS.md](DECISIONS.md)
 **Last updated:** 2026-10-28
 
+> ⏸ **ICU 묶음 8 — 2주제 수정까지 끝, 여기서 멈춤(2026-10-29, 사용자 지시 "이번 묶음까지만").** mobility-prevention·core-handoff-icu: 저작 A‖B → Opus 검토 A‖B → Sonnet 수정 완료(검사 통과·keyPhrase 63/63), 브랜치 `content/icu-batch8`(#31 위).
+> **다음 세션 할 일:** ① keyPhrase 결정 질문(후보·권고는 `server/content/tools/wip/icu-or-rest/README.md` 묶음 8 절) → Opus KP 교체 → 정본 합침 → PR. ② 남은 ICU 3(core-language·family·safety-icu) → OR 33. ③ PR #29→#30→#31 머지(사용자 지시 대기), 운영 배포는 묶음 4~8 한 번에(사용자 지시 대기).
+
 > 🔨 **ICU 한 번에 저작 묶음 7 — 4주제 합침(2026-10-29).** invasive-lines·nutrition·transfusion·transport-procedure: 저작 A‖B → Opus 검토 A‖B → Sonnet 수정 → keyPhrase 63/63 →
 > keyPhrase 결정(사용자 '추천대로': 바꿈 13 — ICU 신속대응팀·코드팀 호출 → 의사 호출, MRI 압박 즉시 등, 유지 13) → 정본 합침, ICU 위반 0(새 경고는 W13 의도된 오답 10).
 > **운영 배포는 묶어서(묶음 4~7 미배포).** PR #29→#30→#31 순서로 쌓임. 남은 ICU 5(mobility-prevention·core 4) · OR 33.
