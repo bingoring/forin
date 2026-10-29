@@ -1,0 +1,163 @@
+- title: OR에서 ICU 수술후 인계
+  nuance:
+    - kind: slider
+      words: [w-estimate, w-loss]
+      cue: "Anesthesia: \"EBL was minimal, just a few gauze pads.\""
+      scale: [minimal, moderate, massive]
+      answerAt: 0
+      why: "estimated blood loss(EBL)는 수술 중 잃은 피를 눈대중과 계산으로 어림한 값이에요. 숫자가 있으면 숫자로, 없으면 minimal·moderate·massive처럼 정도로 말해요. 수술 직후 환자는 출혈 징후를 계속 지켜봐요."
+      example: "Estimated blood loss was minimal."
+      exKo: "추정 출혈량은 아주 적었어요."
+    - kind: pair
+      words: [w-propofol, w-norepinephrine, w-anesthesiologist]
+      pairs: [[propofol, keeps him sedated], [norepinephrine, holds his pressure up], [the anesthesiologist, gives the OR handoff]]
+      decoys: [removes the Foley]
+      why: "propofol은 재우는 진정제, norepinephrine은 혈압을 받쳐 주는 승압제예요. 수술실에서 온 환자는 마취과 의사가 수술 중 경과를 인계해 줘요."
+    - kind: context
+      words: [w-line]
+      word: line
+      ko: 라인
+      scenes:
+        - {who: 마취과 의사에게, icon: stetho, en: "Let me read back every line and drip to confirm.", ok: true}
+        - {who: 동료 간호사, icon: handshake2, en: "His art line and central line are both in, and the transducer is zeroed.", ok: true}
+        - {who: 가족에게, icon: home, en: "He has a left radial art line and a right IJ central line, both flushed and zeroed.", ok: false, fix: "He has two thin tubes, one in his wrist and one in his neck, to give medicine and watch his blood pressure."}
+      why: "의료진끼리는 art line·central line처럼 위치와 종류를 짧게 말해요. 가족에게 radial·IJ·zeroed까지 말하면 알아듣기 어려워서, 손목과 목에 있는 가는 관이라고 쉽게 풀어 줘요."
+- title: cath lab에서 ICU 인계
+  nuance:
+    - kind: slider
+      words: [w-hematoma, w-site]
+      cue: "A soft, walnut-sized lump at the groin, the same size as the line you marked an hour ago."
+      scale: [clean and dry, small hematoma, expanding hematoma]
+      answerAt: 1
+      why: "표시한 경계 안에 머문 부드러운 작은 혈종은 small hematoma로 보고하고 경계를 표시해 계속 지켜봐요. 커지거나 단단해지면 expanding hematoma라서 바로 압박하고 의사에게 알려요."
+      example: "There's a small hematoma, and I've marked its edge."
+      exKo: "작은 혈종이 있고, 경계를 표시해 뒀어요."
+    - kind: pair
+      words: [w-heparin, w-sheath, w-hematoma]
+      pairs: [[heparin, monitored with the ACT], [the sheath, pulled when ordered], [a hematoma, swelling under the skin]]
+      decoys: [checked with a swab]
+      why: "heparin은 ACT로 응고 정도를 확인하며 조절해요. 시스는 처방과 병원 지침에 따라 제거하고, hematoma는 피부 밑에 피가 고여 부은 것이에요."
+    - kind: context
+      words: [w-site]
+      word: site
+      ko: 부위
+      scenes:
+        - {who: 동료 간호사, icon: handshake2, en: "The access site looks clean and dry.", ok: true}
+        - {who: 의사에게 보고, icon: stetho, en: "No hematoma at the access site, and distal pulses are intact.", ok: true}
+        - {who: 환자에게, icon: me, en: "Your access site is intact, with no hematoma and strong distal pulses.", ok: false, fix: "The spot where we went in looks good, with no swelling or bleeding."}
+      why: "동료와 의사에게는 access site·distal pulses가 정확한 말이에요. 환자에게 hematoma·distal pulses를 그대로 말하면 무슨 뜻인지 몰라서, 들어간 자리에 붓기나 피가 없다고 쉽게 말해요."
+- title: ICU에서 병동 전동 인계
+  nuance:
+    - kind: slider
+      words: [w-nasal, w-cannula, w-wean]
+      cue: "Colleague: \"She's on two liters through the little prongs in her nose.\""
+      scale: [room air, nasal cannula, high-flow]
+      answerAt: 1
+      why: "코에 거는 가는 관으로 보통 분당 6리터 이하를 주는 것은 nasal cannula예요. high-flow는 데우고 습기를 준 산소를 훨씬 많이 주는 장치라 한 단계 위예요. 병동으로 가기 전에는 어디까지 이탈(wean)했는지 말해요."
+      example: "She's weaned to a nasal cannula."
+      exKo: "비강 캐뉼라로 이탈했어요."
+    - kind: context
+      words: [w-wean]
+      word: wean
+      ko: 이탈시키다
+      scenes:
+        - {who: 병동 간호사, icon: handshake2, en: "She's weaned down to a nasal cannula.", ok: true}
+        - {who: 의사에게 보고, icon: stetho, en: "We weaned her off pressors yesterday, and she's still stable.", ok: true}
+        - {who: 환자에게, icon: me, en: "We weaned your vasopressors and your ventilator support overnight.", ok: false, fix: "We've been slowly taking away the machines and medicines that helped your breathing and blood pressure."}
+      why: "의료진끼리는 wean이 도움을 서서히 줄인다는 정확한 말이에요. 환자에게 vasopressors·ventilator support를 섞어 말하면 알아듣기 어려워서, 호흡과 혈압을 돕던 기계와 약을 천천히 줄였다고 쉽게 말해요."
+- title: night shift 인계 우선순위
+  nuance:
+    - kind: slider
+      words: [w-pressure, w-drop, w-page]
+      cue: "His pressure is falling, and he's more drowsy than an hour ago."
+      scale: [chart it, page the resident, call a code]
+      answerAt: 1
+      why: "혈압이 떨어지고 의식이 처지면 기록만 하고 기다리지 말고 담당 의사(레지던트)에게 바로 호출해요. 코드 호출은 심정지나 호흡정지처럼 소생이 필요할 때예요."
+      example: "His pressure is dropping, so I'm paging the resident."
+      exKo: "혈압이 떨어져서 레지던트를 호출하고 있어요."
+    - kind: pair
+      words: [w-titrate, w-page, w-focus]
+      pairs: [[titrate, the pressor to the goal], [page, the resident early], [focus, on the sickest bed]]
+      decoys: [the Foley bag]
+      why: "titrate는 효과를 보며 승압제를 목표에 맞게 조절하는 일, page는 담당 의사를 호출하는 일, focus는 가장 위중한 병상에 힘을 모으는 일이에요."
+    - kind: context
+      words: [w-closely]
+      word: closely
+      ko: 자세히
+      scenes:
+        - {who: 동료 간호사, icon: handshake2, en: "Watch bed five closely tonight.", ok: true}
+        - {who: 레지던트에게, icon: stetho, en: "I'm watching him closely, and I'll page you if his pressure drops.", ok: true}
+        - {who: 환자에게, icon: me, en: "We'll be monitoring you closely overnight with hourly neuro checks and a MAP goal of sixty-five.", ok: false, fix: "We'll be checking on you very often through the night."}
+      why: "의료진끼리는 closely 뒤에 수치와 목표를 붙여 구체적으로 말해요. 환자에게 neuro checks·MAP goal까지 말하면 알아듣기 어렵고 걱정만 커져서, 밤새 자주 살펴보겠다고 쉽게 말해요."
+- title: 다학제 라운드 발표
+  nuance:
+    - kind: slider
+      words: [w-sedate, w-sedation]
+      cue: "She wakes to her name, makes eye contact, and follows commands."
+      scale: [awake, lightly sedated, deeply sedated]
+      answerAt: 1
+      why: "이름을 부르면 깨서 눈을 맞추고 지시를 따르는 것은 가볍게 진정된 상태(RASS -1 안팎)예요. 깊게 진정되면 자극에도 거의 반응이 없어요. 회진에서는 진정 깊이를 목표와 함께 말해요."
+      example: "She's lightly sedated and follows commands."
+      exKo: "가볍게 진정되어 있고 지시를 따라요."
+    - kind: pair
+      words: [w-extubation, w-diuresis, w-tube, w-feed]
+      pairs: [[extubation, removing the breathing tube], [diuresis, making more urine], [tube feeds, nutrition through a tube]]
+      decoys: [raising the bed]
+      why: "extubation은 호흡관을 빼는 일, diuresis는 소변을 많이 내보내 쌓인 수분을 빼는 일, tube feeds는 튜브로 영양을 넣는 일이에요. 회진 발표에서는 계통별로 이 말들을 짧게 써요."
+    - kind: context
+      words: [w-tolerate]
+      word: tolerate
+      ko: 견디다
+      scenes:
+        - {who: 회진 발표, icon: board, en: "Respiratory: tolerating weaning well.", ok: true}
+        - {who: 인계받는 간호사, icon: handshake2, en: "GI: tolerating tube feeds, and the rate was advanced.", ok: true}
+        - {who: 가족에게, icon: home, en: "He's tolerating the spontaneous breathing trial on minimal pressure support.", ok: false, fix: "He's handling the breathing practice well, with only a little help from the machine."}
+      why: "의료진끼리는 tolerating 뒤에 계통과 치료를 짧게 붙여 말해요. 가족에게 spontaneous breathing trial·pressure support까지 말하면 낯설어서, 숨쉬기 연습을 잘 해내고 있다고 쉽게 풀어 줘요."
+- title: 응급실에서 ICU 입실 인계
+  nuance:
+    - kind: slider
+      words: [w-lactate, w-trend]
+      cue: "Lactate was four point two, and now it's three point zero after fluids."
+      scale: [still high, improving, normalized]
+      answerAt: 1
+      why: "젖산이 줄고 있지만 아직 정상(대략 2 미만)이 아니면 improving이에요. 정상 범위에 들어와야 normalized라고 해요. 그래서 인계에서는 수치와 방향을 같이 말해요."
+      example: "His lactate is improving, but still high."
+      exKo: "젖산이 좋아지고 있지만 아직 높아요."
+    - kind: pair
+      words: [w-lactate, w-antibiotic, w-fluid]
+      pairs: [[lactate, a sign of poor perfusion], [antibiotic, covers the infection], [fluid, the bolus he received]]
+      decoys: [turned off at noon]
+      why: "lactate는 조직에 피가 잘 돌지 않을 때 오르는 수치, antibiotic은 감염을 잡는 약, fluid는 이미 들어간 수액 양을 말해요. 응급실 인계에서는 이 셋을 시각과 함께 확인해요."
+    - kind: context
+      words: [w-lactate]
+      word: lactate
+      ko: 젖산
+      scenes:
+        - {who: 동료 간호사, icon: handshake2, en: "His lactate is trending down after the fluids.", ok: true}
+        - {who: 의사에게 보고, icon: stetho, en: "Repeat lactate is due at eight, and the first was four point two.", ok: true}
+        - {who: 가족에게, icon: home, en: "His lactate is trending down, which suggests improving tissue perfusion.", ok: false, fix: "A blood test that shows how well his body is getting oxygen is getting better."}
+      why: "의료진끼리는 lactate 수치와 추세만으로 충분해요. 가족에게 tissue perfusion까지 말하면 알아듣기 어려워서, 몸이 산소를 얼마나 받는지 보여 주는 피검사가 나아지고 있다고 풀어 줘요."
+- title: 검사·시술 후 인계
+  nuance:
+    - kind: slider
+      words: [w-bleed, w-bronchoscopy]
+      cue: "A few streaks of blood in her suction after the biopsy."
+      scale: [blood-tinged, active bleeding, hemorrhage]
+      answerAt: 0
+      why: "기관지경검사(특히 생검) 뒤 가래에 약간 섞이는 피는 흔해요. 양이 늘거나 멈추지 않으면 active bleeding이라 바로 보고해야 해요. 인계에서는 양과 변화를 같이 말해요."
+      example: "Her secretions are blood-tinged after the biopsy."
+      exKo: "생검 뒤라서 분비물에 피가 약간 섞여 있어요."
+    - kind: pair
+      words: [w-bronchoscopy, w-xray, w-sample]
+      pairs: [[bronchoscopy, a camera in the airway], [the X-ray, checks tube placement], [the sample, goes to the lab]]
+      decoys: [measures the sugar]
+      why: "bronchoscopy는 기도에 카메라를 넣어 보는 검사, X-ray는 관의 위치를 확인할 때 쓰고, sample은 검사실로 보내요. 시술 후 인계에서는 무엇을 했고 무엇을 보냈는지 함께 말해요."
+    - kind: context
+      words: [w-procedure]
+      word: procedure
+      ko: 시술
+      scenes:
+        - {who: 동료 간호사, icon: handshake2, en: "Watch her oxygen closely after the procedure.", ok: true}
+        - {who: 의사에게 보고, icon: stetho, en: "She had no complications during the procedure, and the samples were sent.", ok: true}
+        - {who: 환자에게, icon: me, en: "The procedure involved bronchoscopic lavage with transbronchial sampling.", ok: false, fix: "The camera test went fine, and we took a few small samples."}
+      why: "의료진끼리는 procedure와 합병증 여부를 짧게 말해요. 환자에게 bronchoscopic lavage·transbronchial sampling은 알아듣기 어려워서, 카메라 검사가 잘 끝났고 작은 검체를 떼었다고 쉽게 말해요."

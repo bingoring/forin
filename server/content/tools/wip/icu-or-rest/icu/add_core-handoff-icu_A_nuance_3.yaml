@@ -1,0 +1,142 @@
+- title: 불안정 환자 인계 강조점
+  nuance:
+    - kind: slider
+      words: [w-vt, w-rhythm, w-irritable]
+      cue: "Monitor: five wide beats in a row, back to sinus, three times this hour."
+      scale: [occasional PVCs, short runs of VT, sustained VT]
+      answerAt: 1
+      why: "3박 이상 이어지지만 30초 안에 끝나면 짧은 VT(non-sustained VT)이고, 흔히 runs of VT라고 불러요. 30초를 넘기거나 혈압이 떨어지면 sustained VT라서 바로 호출해요."
+      example: "He has short runs of VT, so watch his rhythm."
+      exKo: "짧은 심실빈맥이 있으니 리듬을 지켜봐 주세요."
+    - kind: pair
+      words: [w-escalate, w-vt, w-map]
+      pairs: [[escalate, early to the resident], [VT, a fast ventricular rhythm], [MAP, the pressure goal]]
+      decoys: [on the lab report]
+      why: "escalate는 문제가 커지기 전에 더 높은 단계의 사람에게 알리는 일, VT는 심실에서 시작되는 빠른 위험 리듬, MAP은 승압제 목표가 되는 평균 동맥압이에요."
+    - kind: context
+      words: [w-escalate]
+      word: escalate
+      ko: 상급 보고하다
+      scenes:
+        - {who: 동료 간호사, icon: handshake2, en: "Don't wait; escalate early on this one.", ok: true}
+        - {who: 책임간호사, icon: board, en: "I'm going to escalate this to the resident now.", ok: true}
+        - {who: 가족에게, icon: home, en: "I'm escalating his case to the attending because his MAP stays under sixty-five.", ok: false, fix: "I've asked the doctor to come and look at him right away."}
+      why: "동료와 책임간호사 사이에서는 escalate가 위로 올려 보고한다는 정확한 말이에요. 가족에게 attending·MAP까지 섞으면 상황이 얼마나 나쁜지 가늠이 안 되어 겁이 나서, 의사를 바로 불렀다고 쉽게 말해요."
+- title: 급변 중 긴급 인계
+  nuance:
+    - kind: slider
+      words: [w-crash, w-pressure, w-shock]
+      cue: "MAP thirty-eight and falling, mottled skin, and no response to the pressor increase."
+      scale: [dipping, dropping, crashing]
+      answerAt: 2
+      why: "몇 분 안에 크게 떨어지고 약을 올려도 반응이 없으면 crashing이에요. dipping과 dropping은 같은 방향이지만 급한 정도가 달라요. 정도를 정확히 말해야 도움이 제때 와요."
+      example: "His pressure is crashing, so I need help now."
+      exKo: "혈압이 급격히 떨어지고 있어서 지금 도움이 필요해요."
+    - kind: pair
+      words: [w-push, w-page, w-secure]
+      pairs: [[push, a bolus], [page, the on-call team], [secure, the airway]]
+      decoys: [a cold coffee]
+      why: "push는 처방이나 프로토콜에 따라 수액이나 약을 빠르게 넣는 일, page는 호출기로 당직 팀을 부르는 일, secure는 기도를 안정되게 확보하는 일이에요."
+    - kind: context
+      words: [w-crash]
+      word: crash
+      ko: 급격히 나빠지다
+      scenes:
+        - {who: 동료 간호사, icon: handshake2, en: "His pressure is crashing, and I need hands now.", ok: true}
+        - {who: 의사에게 전화, icon: stetho, en: "He's crashing: MAP forty on max norepi.", ok: true}
+        - {who: 가족에게, icon: home, en: "He's crashing right now, and we're doing everything we can.", ok: false, fix: "His blood pressure has dropped suddenly, and we're giving him medicine to bring it back up."}
+      why: "의료진끼리는 crashing이 상황이 급하다는 신호로 통해요. 가족에게는 crashing이 곧 돌아가실 것처럼 들려 겁을 주니, 혈압이 갑자기 떨어졌고 올리는 약을 쓰고 있다고 사실 그대로 차분히 말해요."
+- title: 코드 상황 인계·역할
+  nuance:
+    - kind: pair
+      words: [w-epi, w-switch, w-pea]
+      pairs: [[epi, given every three to five minutes], [switch, compressors every two minutes], [PEA, a rhythm without a pulse]]
+      decoys: [once an hour]
+      why: "AHA 지침에서 에피네프린은 3~5분마다 쓰고, 압박자는 2분마다 교대해 피로를 줄여요. PEA는 리듬은 있는데 맥박이 만져지지 않는 정지 리듬이에요."
+    - kind: context
+      words: [w-compression]
+      word: compression
+      ko: 흉부압박
+      scenes:
+        - {who: 동료 간호사, icon: handshake2, en: "You take compressions, and we switch at two minutes.", ok: true}
+        - {who: 팀 리더, icon: stetho, en: "Compressions are ongoing, and the last rhythm was PEA.", ok: true}
+        - {who: 가족에게, icon: home, en: "We're performing chest compressions at one hundred to one hundred twenty a minute with full recoil.", ok: false, fix: "We're pushing hard on his chest to keep his blood moving, and someone will stay with you."}
+      why: "코드 중 의료진끼리는 compressions와 교대 시각을 짧게 외쳐요. 가족에게 분당 횟수나 full recoil까지 말하면 알아듣기 어려워서, 가슴을 세게 눌러 피를 돌리고 있고 곁에 사람이 있겠다고 쉽게 말해요."
+- title: 병원간 전원 인계
+  nuance:
+    - kind: slider
+      words: [w-stable, w-transport]
+      cue: "Receiving nurse: \"Can he travel?\" You: MAP forty-five on max pressors, and the doses keep climbing."
+      scale: [unstable, borderline, stable]
+      answerAt: 0
+      why: "최대 용량 승압제로도 혈압이 못 오르는 환자는 stable이 아니에요. 이송이 꼭 필요하더라도 stable이라고 하지 않고 있는 그대로 말해야 받는 쪽이 필요한 지원을 준비해요."
+      example: "He's unstable for transport, so we need critical care support."
+      exKo: "이송에 불안정해서 중환자 이송 지원이 필요해요."
+    - kind: context
+      words: [w-drip]
+      word: drip
+      ko: 지속 정맥주사
+      scenes:
+        - {who: 수용 병원 간호사, icon: handshake2, en: "He's stable on these drips at these rates.", ok: true}
+        - {who: 의사에게 보고, icon: stetho, en: "He's on a norepi drip at eight and a propofol drip at thirty.", ok: true}
+        - {who: 가족에게, icon: home, en: "He's on a norepinephrine drip titrated to a MAP of sixty-five.", ok: false, fix: "He has two medicines running through his IV to support his blood pressure and keep him comfortable."}
+      why: "의료진끼리는 drip 이름과 속도만 말하면 충분해요. 가족에게 titrated·MAP 목표까지 말하면 알아듣기 어려워서, 혈압을 받쳐 주고 편안하게 하는 약이 정맥으로 들어가고 있다고 쉽게 풀어 줘요."
+- title: 정보 누락·오류 정정 인계
+  nuance:
+    - kind: slider
+      words: [w-error, w-dose]
+      cue: "You said \"five\" in the handoff, but it was \"fifty,\" and she hasn't hung the bag yet."
+      scale: [typo, near miss, medication error]
+      answerAt: 1
+      why: "환자에게 닿기 전에 잡은 실수는 near miss예요. 이미 투여됐다면 medication error라서 환자 평가와 의사 보고가 필요하고, 병원 보고 체계에 맞춰 기록해요."
+      example: "I caught the wrong dose, so this was a near miss."
+      exKo: "틀린 용량을 미리 잡아서 near miss였어요."
+    - kind: swap
+      words: [w-correction, w-handoff, w-potassium]
+      who: "인수받은 동료에게 · 인계 정정"
+      icon: handshake2
+      before: ["", "Oops, my bad", ": his potassium is actually 6.2."]
+      options: ["Oops, my bad", "I need to correct my handoff", "Small change"]
+      answer: "I need to correct my handoff"
+      notes: {"Oops, my bad": "가볍게 사과하는 말투라 중요한 정정이라는 신호가 약해요. 칼륨 6.2는 높은 값이라 바로 확인해야 해요.", "I need to correct my handoff": "정정이라는 말을 분명히 하고 바로 바뀐 수치를 이어 말해요. 받는 사람이 앞서 들은 숫자를 고치도록 신호를 줘요.", "Small change": "'작은 변화'로 들려 위험한 정정을 축소해요. 수치가 크게 달라졌는데 사소하게 들리면 놓치기 쉬워요."}
+      ko: 제 인계를 정정해야 해요. 칼륨 수치는 실제로 6.2예요
+      why: "정정은 correct라고 분명히 말하고, 어떤 수치가 어떻게 바뀌었는지 바로 이어서 말해요. 말투를 가볍게 하면 받는 사람이 중요한 정정이라는 것을 놓쳐요."
+- title: 임종·목표변경 인계
+  nuance:
+    - kind: slider
+      words: [w-comfort]
+      cue: "He's picking at the sheets and shifting around, but his face looks relaxed."
+      scale: [comfortable, restless, in distress]
+      answerAt: 1
+      why: "얼굴은 편안한데 몸을 뒤척이면 restless예요. 찡그리고 신음하는 등 고통이 분명하면 in distress라서, 처방된 증상 조절 약을 지침대로 쓰고 의사에게 알려요. 임종 인계에서는 편안함의 정도를 구체적으로 말해요."
+      example: "He's restless, but he doesn't look in pain."
+      exKo: "뒤척이지만 아파 보이지는 않아요."
+    - kind: swap
+      words: [w-dnr, w-code, w-comfort]
+      who: "가족에게 · 코드 상태 설명"
+      icon: home
+      before: ["We've changed his code status to ", "DNR", "."]
+      options: ["DNR", "do not resuscitate, so we won't do CPR if his heart stops", "no treatment at all"]
+      answer: "do not resuscitate, so we won't do CPR if his heart stops"
+      notes: {"DNR": "의료진끼리는 충분하지만 가족은 약어 뜻을 모를 수 있어요. 무엇을 하지 않는지 말해 줘야 해요.", "do not resuscitate, so we won't do CPR if his heart stops": "약어를 풀고 무엇을 하지 않는지(심정지 때 소생술)를 분명히 말해요.", "no treatment at all": "틀려요. DNR은 모든 치료를 멈춘다는 뜻이 아니에요. 심정지 때 소생술만 하지 않고, 편안하게 하는 치료는 계속해요."}
+      ko: 코드 상태를 소생술 거부로 바꿨고, 심장이 멎어도 심폐소생술은 하지 않아요
+      why: "가족에게는 DNR이 어떤 뜻인지 풀어 말해야 해요. 심정지 때 소생술을 하지 않을 뿐, 편안하게 하는 치료는 계속된다는 점도 함께 알려 주면 오해를 막아요."
+- title: 다수 중환자 동시 인계 우선화
+  nuance:
+    - kind: slider
+      words: [w-routine, w-stable]
+      cue: "Bed eight: vitals unchanged all night, labs at six, no new orders."
+      scale: [routine, needs a close eye, critical]
+      answerAt: 0
+      why: "변화가 없고 정해진 확인만 필요한 환자는 routine이에요. 인계에서 환자마다 위험도를 이렇게 구분해야 한정된 시간과 사람을 위중한 병상에 먼저 쓸 수 있어요."
+      example: "Bed eight is routine, just checks and labs."
+      exKo: "8번 병상은 정규 확인과 검사만 필요해요."
+    - kind: context
+      words: [w-stable]
+      word: stable
+      ko: 안정적인
+      scenes:
+        - {who: 동료 간호사, icon: handshake2, en: "Bed five is stable, but labs are due at midnight.", ok: true}
+        - {who: 의사에게 보고, icon: stetho, en: "He's stable, with a MAP of seventy on low-dose norepi.", ok: true}
+        - {who: 가족에게, icon: home, en: "He's hemodynamically stable with a MAP of seventy and no new pressor requirement.", ok: false, fix: "His blood pressure and breathing are holding steady right now."}
+      why: "의료진끼리는 stable 뒤에 수치와 약 용량을 붙여 말해요. 가족에게 hemodynamically·pressor requirement까지 말하면 알아듣기 어려워서, 혈압과 호흡이 지금은 일정하다고 쉽게 말해요."
