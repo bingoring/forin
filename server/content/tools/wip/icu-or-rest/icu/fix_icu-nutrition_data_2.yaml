@@ -1,0 +1,71 @@
+# 단어 수정. edits: id -> 바꿀 필드. changes: v44 필드 목록과 이유(changes-icu-nutrition.yaml용)
+remove: [w-get, w-work, w-rapid, w-response]
+remove_why:
+  w-get: "ko '마련하다'가 남은 문장(get an x-ray·get a CT scan·get broad antibiotics·Get … here)에 하나도 맞지 않는다 — 쉬운 말이라 태그를 빼고 지움"
+  w-work: "문장 0.6이 삼킴 검사 기준으로 바뀌어 어느 문장도 태그하지 않게 됐다"
+  w-rapid: "문장 16.6이 중환자 전담의 호출로 바뀌어 어느 문장도 태그하지 않게 됐다"
+  w-response: "문장 16.6이 중환자 전담의 호출로 바뀌어 어느 문장도 태그하지 않게 됐다"
+edits:
+  w-resuscitation:
+    ko: 소생 처치
+    cue: 쇼크로 무너지는 환자에게 수액과 약으로 순환을 되살리는 응급 처치
+    changes: {fields: [ko], why: "소생술은 CPR로 읽힌다 — 이 문장의 resuscitation은 쇼크에 대한 수액·혈압 소생 처치"}
+  w-residual:
+    cue: 관으로 빨아내 보면 위 속에 아직 남아 있는 영양액의 양
+  w-lay:
+    distractorsKo: [앉히다, 세우다]
+  w-bottom:
+    en: bottom out
+    ipa: /ˌbɑːtəm ˈaʊt/
+    chips: [[bot, tom], [out]]
+    distractorsEn: [bottom up, bottle up]
+    changes: {fields: [en, ipa], why: "문장은 bottomed out(구동사) — 헤드워드를 bottom out으로"}
+  w-waste:
+    en: waste away
+    ipa: /weɪst əˈweɪ/
+    chips: [[waste], [a, way]]
+    distractorsEn: [waste time, wander away]
+    changes: {fields: [en, ipa], why: "문장은 wasting away(구동사) — 헤드워드를 waste away로"}
+  w-well:
+    distractorsEn: [ill, wildly]
+  w-every:
+    distractorsEn: [any, several]
+  w-hold:
+    distractorsEn: [fold, howl]
+  w-down:
+    distractorsEn: [out, over]
+  w-flat:
+    distractorsEn: [flush, slack]
+  w-slide:
+    distractorsEn: [slice, stride]
+  w-sit:
+    distractorsEn: [sip, set]
+  w-full:
+    distractorsEn: [foul, dull]
+  w-slow:
+    distractorsEn: [blow, stow]
+  w-monitor:
+    distractorsEn: [mentor, motivate]
+  w-measure:
+    distractorsEn: [treasure, reassure]
+  w-refeeding:
+    distractorsEn: [refilling, rebleeding]
+  w-check:
+    distractorsEn: [chuck, cheat]
+    decoyChips: [chock]
+  w-safe:
+    distractorsEn: [same, sane]
+  w-worry:
+    distractorsEn: [hurry, carry]
+    decoyChips: [were, wry]
+  w-rhythm:
+    decoyChips: [ray, them]
+  w-calorie:
+    decoyChips: [call, ray]
+  w-syndrome:
+    decoyChips: [sun, home]
+  w-dietitian:
+    decoyChips: [dia, tin]
+  w-target:
+    decoyChips: [tan, gate]
+tolerance_revert: true
