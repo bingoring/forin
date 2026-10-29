@@ -15,7 +15,7 @@
 - 뜻이 문장마다 갈리거나 낱말 뜻이 틀려서 지운 것: give(투여/주다)·get·back·full·once·far(so far)·rather(rather than)·down(down time/trending down).
 - 헤드워드 뜻과 안 맞는 문장에서만 태그를 뺌: lab(cath lab)·pressure(pressure support)·correct(동사 correct)·off(go off).
 - 새 단어 1개: go through(상황 0이 쉬운 말 삭제 후 서로 다른 단어 7개 → V3 8개 맞추려고). 문장 "Let's go through his SBAR from the top."에 태그.
-- ko 정리 11개: check(점검하다, confirm과 구별)·call(부르다·알리다, page와 구별)·update(경과 설명)·sick(위중한)·band(팔찌)·change(바꾸다·바뀌다)·catch(알아듣다·짚어내다)·record(기록지, document와 구별)·repeat(반복하다)·advance(단계적으로 올리다)·support(보조·지지).
+- ko 정리 10개: check(점검하다, confirm과 구별)·call(부르다·알리다, page와 구별)·update(경과 설명)·sick(위중한)·band(팔찌)·change(바꾸다·바뀌다)·record(기록지, document와 구별)·repeat(반복하다)·advance(단계적으로 올리다)·support(보조·지지).
 - sepsis·situation 등 SBAR 구성 단어는 쉬워 보이지만 인계 틀 자체라서 유지.
 
 ## 뉘앙스 판단 거리
@@ -23,3 +23,5 @@
 - 상황 19 swap(DNR): 가족에게 약어를 풀어 말하라는 쪽. 틀린 보기 "no treatment at all"은 DNR이 치료 중단이 아니라는 점을 notes에 적음.
 - 상황 18 swap: 정정은 correct를 분명히 말하고 수치를 바로 이어 말한다는 쪽. 칼륨 6.2는 높은 값이라는 사실만 적음.
 - 상황 8 slider why의 "바로 압박"은 접근부위 출혈·혈종 확대 때 수기 압박이 표준 간호 처치라는 전제.
+- context 단어는 '그 말 자체가 듣는 사람에게 어색한' 것만 골랐음(SBAR·titrate·NG·respiratory·anaphylaxis·ROSC·line·site·wean·pressor·lactate·bronchoscopy·escalate·crash·PEA). 쉬운 말이 단어인 상황(5·17·18·19·20)은 context 대신 swap으로 씀.
+- 상황 19 swap은 DNR을 말한 뒤 뜻을 쉬운 말로 이어 주는 쪽(틀린 보기는 '모든 치료 중단'·'모든 것을 시도').
