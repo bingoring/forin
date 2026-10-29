@@ -729,3 +729,161 @@ changes:
   - chunks
   - words
   why: 간호사 단독 약속처럼 들리지 않게 팀과 함께로(A S9)
+- kind: word-remove
+  id: w-wide
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): 16.3 문장을 바꿔 어느 문장도 태그하지 않게 됨'
+- kind: word-add
+  id: w-bolus
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): 16.3 새 문장(fluid bolus)의 가르칠 말 — v44+v45 필드 전부'
+- kind: sentence
+  situation: 급성 용혈 아나필락시스 위기
+  index: 3
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): 수액 최대 개방·코드팀 호출 → 수액 볼루스·ICU 담당의 호출(맥박 있는 환자에게 심정지 호출 ✕, 수액 최대는 처방 전제 없음); +w-bolus −w-wide(word-remove) −w-code −w-team 태그(둘 다 다른 문장에 남음)'
+- kind: word
+  id: w-fluid
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-code
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): 옛 예문 문장을 바꿔 그 단어가 없어짐 — 같은 상황의 다른 문장으로 옮김'
+- kind: sentence
+  situation: TRALI 급성 호흡부전 위기
+  index: 1
+  fields:
+  - en
+  - ko
+  - chunks
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): this is TRALI → this looks like TRALI(간호사의 진단 단정, TRALI는 배제 진단) — words 그대로'
+- kind: sentence
+  situation: DIC 출혈·혈전 동반 위기
+  index: 1
+  fields:
+  - en
+  - ko
+  - chunks
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): this is DIC → this looks like DIC(진단 단정) + chunks 구 경계(every puncture / site 끊김) — words 그대로'
+- kind: word
+  id: w-puncture
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): 예문을 바꾼 문장으로'
+- kind: sentence
+  situation: 알레르기·발열 반응 관리
+  index: 1
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): pause and give an antihistamine → pause it and ask the provider about an antihistamine(보고 단계 없이 간호사 판단 투약으로 들림); +w-ask +w-provider'
+- kind: word
+  id: w-mild
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-pause
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-antihistamine
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): 예문을 바꾼 문장으로'
+- kind: sentence
+  situation: 혈액 성분 종류 이해
+  index: 1
+  fields:
+  - en
+  - chunks
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): 쉼표로 두 절을 이은 문법 오류 → and로 이음 — ko·words 그대로'
+- kind: word
+  id: w-ffp
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-replace
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-clotting
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-factor
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-platelet
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-treat
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-thrombocytopenia
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): 예문을 바꾼 문장으로'
+- kind: sentence
+  situation: 수혈 전 확인·동의
+  index: 5
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): keyPhrase chunks가 구 경계를 끊음(Consent is signed / and in / the chart) → Consent / is signed / and in the chart — 문장은 그대로'
+- kind: sentence
+  situation: 수혈 시작·초기 감시
+  index: 0
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): keyPhrase chunks가 구 경계를 끊음(I''ll run it / slow / for the first / fifteen minutes) → I''ll run it / slow / for / the first fifteen minutes — 문장은 그대로'
+- kind: sentence
+  situation: 수혈 반응 징후 인지
+  index: 0
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): keyPhrase chunks가 구 경계를 끊음(Fever, rash, or dyspnea / can signal / a transfusion / reaction) → Fever, rash, / or dyspnea / can signal / a transfusion reaction — 문장은 그대로'
+- kind: sentence
+  situation: TACO와 TRALI 감별
+  index: 2
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): keyPhrase chunks가 구 경계를 끊음(TRALI is / non-cardiogenic / with normal / filling pressures) → TRALI is / non-cardiogenic / with normal filling pressures — 문장은 그대로'
+- kind: sentence
+  situation: 대량수혈 비율 관리
+  index: 4
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): keyPhrase chunks가 구 경계를 끊음(Next cooler / is on / the way / from the blood bank) → Next cooler / is / on the way / from the blood bank — 문장은 그대로'
+- kind: sentence
+  situation: 항응고 역전 관리
+  index: 2
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): keyPhrase chunks가 구 경계를 끊음(For his DOAC / , we may need / the specific reversal / agent) → For his DOAC / , we / may need / the specific reversal agent — 문장은 그대로'
+- kind: sentence
+  situation: 혈소판 수혈 적응 판단
+  index: 3
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): keyPhrase chunks가 구 경계를 끊음(Before a procedure / , we aim / for a higher / count) → Before a procedure / , we / aim for / a higher count — 문장은 그대로'

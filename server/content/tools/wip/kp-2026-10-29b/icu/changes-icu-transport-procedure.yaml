@@ -629,3 +629,168 @@ changes:
   fields:
   - chunks
   why: chunks를 구 경계에 맞게 다시 자름
+- kind: word-remove
+  id: w-moment
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): 19.2 문장을 바꿔 어느 문장도 태그하지 않게 됨'
+- kind: sentence
+  situation: MRI 중 응급상황 대응
+  index: 2
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): 자석 구역을 벗어나는 순간 압박 → 지금 압박을 시작해 옮기는 동안 계속(ACR MR 안전 — 압박을 미루지 않음); −w-moment(word-remove) −w-clear −w-magnet 태그(둘 다 다른 문장에 남음)'
+- kind: word-remove
+  id: w-open
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): 18.0 문장을 바꿔 어느 문장도 태그하지 않게 됨'
+- kind: word-remove
+  id: w-fluid
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): 18.0 문장을 바꿔 어느 문장도 태그하지 않게 됨'
+- kind: word-remove
+  id: w-wide
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): 18.0 문장을 바꿔 어느 문장도 태그하지 않게 됨'
+- kind: sentence
+  situation: 시술 중 대량출혈 급변
+  index: 0
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): open fluids wide → get blood hanging(대량 출혈은 혈액 우선, 수액 최대 개방은 처방 전제 없음); −w-open −w-fluid −w-wide(word-remove) +w-blood'
+- kind: word
+  id: w-bleed
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-brisk
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): 예문을 바꾼 문장으로'
+- kind: word
+  id: w-apply
+  fields:
+  - example
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): 예문을 바꾼 문장으로'
+- kind: sentence
+  situation: 원내 이송 전 안정성 평가
+  index: 0
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): keyPhrase chunks가 구 경계를 끊음(His vitals are / stable enough / for transport / right now) → His vitals / are stable enough / for transport / right now — 문장은 그대로'
+- kind: sentence
+  situation: 이송 장비·산소·약물 준비
+  index: 2
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): keyPhrase chunks가 구 경계를 끊음(Emergency meds / and a bag-valve mask / are in / the bag) → Emergency meds / and a bag-valve mask / are / in the bag — 문장은 그대로'
+- kind: sentence
+  situation: 이송 중 모니터·라인 관리
+  index: 2
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): keyPhrase chunks가 구 경계를 끊음(The oxygen tubing / is clear / of the wheels) → The oxygen tubing / is / clear of the wheels — 문장은 그대로'
+- kind: sentence
+  situation: 인공호흡 환자 이송 관리
+  index: 0
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): keyPhrase chunks가 구 경계를 끊음(I''ve matched / the transport vent settings / to his / current ones) → I''ve matched / the transport vent settings / to / his current ones — 문장은 그대로'
+- kind: sentence
+  situation: 진정 역전제 준비
+  index: 0
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): keyPhrase chunks가 구 경계를 끊음(Naloxone is drawn up / for opioid / reversal) → Naloxone / is drawn up / for opioid reversal — 문장은 그대로'
+- kind: sentence
+  situation: 진정 역전제 준비
+  index: 1
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): keyPhrase chunks가 구 경계를 끊음(Flumazenil is ready / for benzodiazepine / oversedation) → Flumazenil / is ready / for benzodiazepine oversedation — 문장은 그대로'
+- kind: sentence
+  situation: 이송 중 악화 대비 계획
+  index: 1
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): keyPhrase chunks가 구 경계를 끊음(I know / where the nearest / code cart and phone / are on the route) → I know / where / the nearest code cart and phone / are on the route — 문장은 그대로'
+- kind: sentence
+  situation: 병원간 이송 인계·문서
+  index: 0
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): keyPhrase chunks가 구 경계를 끊음(I''ll give / an SBAR handoff / to the transport / team) → I''ll give / an SBAR handoff / to / the transport team — 문장은 그대로'
+- kind: sentence
+  situation: 이송 위험-이익 판단 소통
+  index: 0
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): keyPhrase chunks가 구 경계를 끊음(The scan could / change management / , but she''s / borderline stable) → The scan could / change management / , but / she''s borderline stable — 문장은 그대로'
+- kind: sentence
+  situation: 이송 중 심정지 대응
+  index: 0
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): keyPhrase chunks가 구 경계를 끊음(Stop the bed / — no pulse / , starting / compressions now) → Stop the bed / — no pulse / , starting compressions / now — 문장은 그대로'
+- kind: sentence
+  situation: 이송 중 심정지 대응
+  index: 1
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): keyPhrase chunks가 구 경계를 끊음(Call a code / and get / the nearest / crash cart) → Call / a code / and get / the nearest crash cart — 문장은 그대로'
+- kind: sentence
+  situation: 이송 중 심정지 대응
+  index: 2
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): keyPhrase chunks가 구 경계를 끊음(I''m bagging him / while you push / the code / meds) → I''m bagging him / while / you push / the code meds — 문장은 그대로'
+- kind: sentence
+  situation: 이송 중 발관·라인 이탈 위기
+  index: 2
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): keyPhrase chunks가 구 경계를 끊음(Hold pressure / on the dislodged / line) → Hold pressure / on / the dislodged line — 문장은 그대로'
+- kind: sentence
+  situation: 시술 진정 중 호흡정지 위기
+  index: 0
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): keyPhrase chunks가 구 경계를 끊음(She''s apneic / — I''m bagging her / with a good / seal) → She''s apneic / — I''m bagging her / with / a good seal — 문장은 그대로'
+- kind: sentence
+  situation: 시술 진정 중 호흡정지 위기
+  index: 2
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): keyPhrase chunks가 구 경계를 끊음(Prepare to intubate / if she doesn''t / recover) → Prepare / to intubate / if she doesn''t recover — 문장은 그대로'
+- kind: sentence
+  situation: 시술 중 대량출혈 급변
+  index: 2
+  fields:
+  - chunks
+  - decoy
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): keyPhrase chunks가 구 경계를 끊음(We''re converting this / to an emergency / procedure) → We''re converting / this / to an emergency procedure — 문장은 그대로'
+- kind: sentence
+  situation: 이송 중 산소·전원 소진 위기
+  index: 0
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): keyPhrase chunks가 구 경계를 끊음(The tank is / almost empty / — switch to / the backup cylinder / now) → The tank / is almost empty / — switch to / the backup cylinder / now — 문장은 그대로'
+- kind: sentence
+  situation: 이송 중 산소·전원 소진 위기
+  index: 2
+  fields:
+  - chunks
+  why: 'keyPhrase 교체(2026-10-29 사용자 결정 묶음 7): keyPhrase chunks가 구 경계를 끊음(Find the nearest / wall oxygen / and power source) → Find / the nearest wall oxygen / and power source — 문장은 그대로'
