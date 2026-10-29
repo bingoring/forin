@@ -1,0 +1,572 @@
+CHG w-verify | verify | 검증하다 | tag=확인·동의 | cue=두 사람이 환자 ID와 혈액 번호가 서로 맞는지 소리 내어 대조해 보는 일
+   dEn=['clarify', 'testify'] dKo=['폐기하다', '보류하다'] chips=ver+i+fy decoy=['very', 'fly'] n=1
+CHG w-unit | unit | 혈액 유닛 | tag=혈액 제제 | cue=혈액은행이 번호를 붙여 한 봉지씩 내보내는 혈액 한 개
+   dEn=['union', 'bundle'] dKo=['혈액 검체', '혈액 라벨'] chips=unit decoy=['unite'] n=18
+w-bedside | bedside | 침상 곁 | tag=확인·동의 | cue=환자가 누워 있는 침대 바로 옆 자리
+   dEn=['bedsore', 'bedpan'] dKo=['간호사실', '병동 복도'] chips=bed+side decoy=['bad', 'sight'] n=3
+w-read | read | 읽다 | tag=확인·동의 | cue=라벨이나 손목밴드의 글자를 소리 내어 따라 말하는 일
+   dEn=['lead', 'reach'] dKo=['쓰다', '지우다'] chips=read decoy=['road'] n=1
+w-birth | birth | 출생 | tag=확인·동의 | cue=생년월일에서 날짜로 적히는 바로 그 일
+   dEn=['berth', 'bath'] dKo=['사망', '입원'] chips=birth decoy=['girth'] n=1
+w-say | say | 말하다 | tag=일반 표현 | cue=눈으로 보지 않고 입으로 소리 내어 전하다
+   dEn=['stay', 'pay'] dKo=['듣다', '적다'] chips=say decoy=['sway'] n=2
+w-bloodtype | blood type | 혈액형 | tag=확인·동의 | cue=A, B, AB, O 중 어디에 속하는지 알려 주는 혈액의 분류
+   dEn=['blood test', 'blood bank'] dKo=['혈압 수치', '혈색소 수치'] chips=blood/type decoy=['flood', 'tight'] n=2
+CHG w-check | check | 점검하다 | tag=확인·동의 | cue=맞는지 하나하나 살펴 이상이 없는지 보는 일
+   dEn=['chuck', 'chop'] dKo=['포장하다', '교체하다'] chips=check decoy=['chick'] n=5
+w-bag | bag | 혈액 백 | tag=혈액 제제 | cue=혈액이 담겨 있고 라벨이 붙은 비닐 용기
+   dEn=['bug', 'badge'] dKo=['혈액 병', '수액 줄'] chips=bag decoy=['bog'] n=1
+w-match | match | 일치하다 | tag=확인·동의 | cue=두 곳에 적힌 내용이 어긋남 없이 똑같은 것
+   dEn=['watch', 'mash'] dKo=['어긋나다', '교체되다'] chips=match decoy=['patch'] n=3
+w-stop | stop | 멈추다 | tag=처치·약물 | cue=하던 일을 그 자리에서 끊고 더 진행하지 않다
+   dEn=['step', 'stoop'] dKo=['서두르다', '건너뛰다'] chips=stop decoy=['shop'] n=10
+w-expiration | expiration | 유효기간 | tag=혈액 제제 | cue=라벨에 적힌, 이 날이 지나면 쓰면 안 되는 마지막 날
+   dEn=['expansion', 'exploration'] dKo=['보관 온도', '제조 번호'] chips=ex+pi+ra+tion decoy=['ax', 'pie'] n=1
+w-consent | consent | 동의 | tag=확인·동의 | cue=치료를 받겠다고 환자가 직접 서명으로 밝히는 것
+   dEn=['content', 'contest'] dKo=['거부', '취소'] chips=con+sent decoy=['can', 'scent'] n=2
+w-sign | sign | 서명하다 | tag=확인·동의 | cue=문서 끝에 자기 이름을 직접 손으로 적다
+   dEn=['sing', 'sigh'] dKo=['지우다', '복사하다'] chips=sign decoy=['sine'] n=1
+w-chart | chart | 차트 | tag=확인·동의 | cue=환자의 기록이 모여 있는 서류나 전산 기록
+   dEn=['charm', 'charter'] dKo=['처방전', '보험증'] chips=chart decoy=['chat'] n=2
+w-confirm | confirm | 확인하다 | tag=확인·동의 | cue=이미 알고 있는 것을 상대에게 다시 물어 틀림없음을 굳히다
+   dEn=['conform', 'confine'] dKo=['취소하다', '의심하다'] chips=con+firm decoy=['can', 'farm'] n=2
+w-hang | hang | 수혈을 걸다 | tag=수혈 진행 | cue=혈액 백을 수액대 고리에 걸어 연결하다
+   dEn=['hunt', 'hand'] dKo=['수혈을 끝내다', '혈액을 섞다'] chips=hang decoy=['hung'] n=4
+CHG w-run | run | 돌리다 | tag=수혈 진행 | cue=수액이나 혈액이 펌프에서 정해진 속도로 가게 하다
+   dEn=['rub', 'ruin'] dKo=['멈추다', '비우다'] chips=run decoy=['rung'] n=2
+w-slow | slow | 느린 | tag=수혈 진행 | cue=빠르지 않고 천천히 진행되는
+   dEn=['slim', 'slick'] dKo=['강한', '급한'] chips=slow decoy=['slew'] n=1
+w-fifteen | fifteen | 십오 | tag=수혈 진행 | cue=수혈 시작 직후 곁에서 지켜보는 시간의 숫자
+   dEn=['fifty', 'sixteen'] dKo=['오십', '십삼'] chips=fif+teen decoy=['fit', 'ten'] n=3
+w-start | start | 시작하다 | tag=수혈 진행 | cue=아직 시작하지 않았던 일을 시작점에서 출발시키다
+   dEn=['stare', 'stir'] dKo=['마치다', '중단하다'] chips=start decoy=['star'] n=3
+w-transfusion | transfusion | 수혈 | tag=수혈 진행 | cue=다른 사람의 혈액을 정맥으로 넣어 주는 치료
+   dEn=['transition', 'transplant'] dKo=['채혈', '투석'] chips=trans+fu+sion decoy=['train', 'fuse'] n=10
+w-baseline | baseline | 기저의 | tag=활력·감시 | cue=치료 시작 전에 미리 재 둔, 비교 기준이 되는 상태
+   dEn=['deadline', 'headline'] dKo=['응급의', '임시의'] chips=base+line decoy=['bass', 'lime'] n=1
+w-vital | vital | 활력징후 | tag=활력·감시 | cue=체온·맥박·호흡·혈압처럼 생명 상태를 알려 주는 측정값 묶음
+   dEn=['vision', 'virus'] dKo=['생활습관', '면역수치'] chips=vi+tal decoy=['vie', 'tail'] n=5
+w-record | record | 기록하다 | tag=확인·동의 | cue=나중에 볼 수 있게 수치를 차트에 남기다
+   dEn=['recall', 'reward'] dKo=['지우다', '수정하다'] chips=re+cord decoy=['rec', 'cold'] n=2
+w-stay | stay | 머무르다 | tag=활력·감시 | cue=자리를 떠나지 않고 그 곁에 계속 있다
+   dEn=['stray', 'sway'] dKo=['떠나다', '돌아가다'] chips=stay decoy=['stray'] n=1
+w-reassess | reassess | 재사정하다 | tag=활력·감시 | cue=처음 평가한 뒤 다시 한 번 상태를 살펴 비교하는 일
+   dEn=['reassure', 'reassign'] dKo=['처음 사정하다', '퇴원시키다'] chips=re+as+sess decoy=['red', 'sass'] n=1
+w-shortly | shortly | 곧 | tag=일반 표현 | cue=오래 걸리지 않고 얼마 안 있어
+   dEn=['sharply', 'surely'] dKo=['천천히', '이따금'] chips=short+ly decoy=['shirt', 'lie'] n=1
+w-feel | feel | 느끼다 | tag=반응·증상 | cue=몸이나 기분에서 어떤 느낌이 들다
+   dEn=['fill', 'feed'] dKo=['보이다', '들리다'] chips=feel decoy=['fuel'] n=2
+w-off | off | 이상한 | tag=반응·증상 | cue=평소와 달리 어딘가 이상하고 어색하게 느껴지는
+   dEn=['oily', 'oval'] dKo=['정상인', '편안한'] chips=off decoy=['of'] n=1
+CHG w-tell | tell | 알려 주다 | tag=일반 표현 | cue=알아야 할 사람에게 내용을 전달해서 알게 하다
+   dEn=['sell', 'yell'] dKo=['숨기다', '받아 적다'] chips=tell decoy=['toll'] n=4
+w-away | away | 즉시 | tag=일반 표현 | cue='바로' 와 함께 쓰여 지체 없이 곧장이라는 뜻을 만드는 말
+   dEn=['aside', 'awhile'] dKo=['나중에', '가끔'] chips=a+way decoy=['any', 'wave'] n=5
+w-watch | watch | 지켜보다 | tag=활력·감시 | cue=눈을 떼지 않고 변화가 있는지 계속 보다
+   dEn=['match', 'wash'] dKo=['무시하다', '기록하다'] chips=watch decoy=['watt'] n=6
+w-heartrate | heart rate | 심박수 | tag=활력·감시 | cue=1분 동안 심장이 뛰는 횟수
+   dEn=['heart rhythm', 'heart sound'] dKo=['호흡수', '혈압'] chips=heart/rate decoy=['hurt', 'gate'] n=1
+w-bloodpressure | blood pressure | 혈압 | tag=활력·감시 | cue=혈관 벽에 닿는 혈액의 힘으로, 두 개의 숫자로 말한다
+   dEn=['blood volume', 'blood vessel'] dKo=['맥박수', '산소포화도'] chips=blood/pres+sure decoy=['flood', 'press'] n=1
+w-closely | closely | 세심하게 | tag=활력·감시 | cue=한눈팔지 않고 아주 자세히 살피는 모양
+   dEn=['clearly', 'coldly'] dKo=['대충', '가끔'] chips=close+ly decoy=['cloth', 'lie'] n=4
+w-back | back | 다시 | tag=일반 표현 | cue=가 있다가 다시 같은 자리로 되돌아오는 방향
+   dEn=['badly', 'barely'] dKo=['위로', '앞으로'] chips=back decoy=['buck'] n=3
+w-tolerate | tolerate | 견디다 | tag=반응·증상 | cue=불편한 증상 없이 치료를 별 탈 없이 받아들이다
+   dEn=['translate', 'titrate'] dKo=['거부하다', '악화되다'] chips=tol+er+ate decoy=['toll', 'ear'] n=1
+w-fever | fever | 발열 | tag=반응·증상 | cue=체온이 정상보다 올라간 상태
+   dEn=['feather', 'fiber'] dKo=['저체온', '오한'] chips=fe+ver decoy=['few', 'very'] n=1
+w-rash | rash | 발진 | tag=반응·증상 | cue=피부 위에 번지는 붉은 얼룩이나 돋은 자국
+   dEn=['rush', 'rack'] dKo=['멍', '상처'] chips=rash decoy=['ash'] n=2
+w-dyspnea | dyspnea | 호흡곤란 | tag=반응·증상 | cue=숨이 차서 숨쉬기가 힘들다고 느끼는 증상을 가리키는 의학 용어
+   dEn=['dysphagia', 'dyspepsia'] dKo=['가슴통증', '기침'] chips=dys+pnea decoy=['dis', 'knee'] n=1
+w-signal | signal | 신호하다 | tag=반응·증상 | cue=무슨 일이 있다고 미리 알려 주는 낌새나 표시
+   dEn=['spike', 'settle'] dKo=['가라앉다', '방해하다'] chips=sig+nal decoy=['sing', 'nail'] n=1
+w-reaction | reaction | 반응 | tag=반응·증상 | cue=수혈 중이나 직후 몸이 혈액에 보이는 이상한 변화
+   dEn=['reduction', 'rejection'] dKo=['완치', '감염'] chips=re+ac+tion decoy=['red', 'act'] n=5
+w-chilled | chilled | 오한이 나는 | tag=반응·증상 | cue=춥지 않은데도 온몸이 으슬으슬 떨리는 느낌이 드는
+   dEn=['thrilled', 'chipped'] dKo=['땀이 나는', '어지러운'] chips=chill+ed decoy=['child', 'end'] n=1
+w-itchy | itchy | 가려운 | tag=반응·증상 | cue=긁고 싶어지게 피부가 근질근질한
+   dEn=['icy', 'inky'] dKo=['따가운', '얼얼한'] chips=itch+y decoy=['ditch', 'ye'] n=1
+w-achy | achy | 쑤시는 | tag=반응·증상 | cue=삐걱거리듯 뼈마디와 근육이 은근히 쑤시고 아픈
+   dEn=['airy', 'ashy'] dKo=['붓는', '마비된'] chips=ach+y decoy=['each', 'yes'] n=1
+w-temperature | temperature | 체온 | tag=활력·감시 | cue=체온계로 재는, 몸이 얼마나 뜨겁거나 찬지의 수치
+   dEn=['temperament', 'temperance'] dKo=['맥박수', '호흡수'] chips=tem+per+a+ture decoy=['ten', 'pure'] n=2
+w-spike | spike | 급등하다 | tag=반응·증상 | cue=그래프에서 뾰족하게 갑자기 확 치솟다
+   dEn=['spill', 'spoil'] dKo=['서서히 오르다', '뚝 떨어지다'] chips=spike decoy=['spice'] n=1
+w-chest | chest | 가슴 | tag=반응·증상 | cue=목 아래 갈비뼈로 둘러싸인 몸통 앞쪽 윗부분
+   dEn=['cheek', 'cheese'] dKo=['등', '배'] chips=chest decoy=['cheat'] n=2
+w-line | line | 라인 | tag=처치·약물 | cue=혈관에 꽂아 수액이나 혈액이 들어가는 길이 되는 관
+   dEn=['lime', 'link'] dKo=['주사기', '수액대'] chips=line decoy=['lane'] n=3
+w-open | open | 열어 두다 | tag=처치·약물 | cue=막히지 않고 약이나 수액이 통하도록 열려 있는 상태로 두다
+   dEn=['offer', 'order'] dKo=['잠그다', '빼다'] chips=open decoy=['oven'] n=2
+w-saline | saline | 생리식염수 | tag=처치·약물 | cue=소금물로 만든 맑은 수액으로, 라인을 씻거나 열어 둘 때 쓰는 것
+   dEn=['salmon', 'saliva'] dKo=['포도당액', '증류수'] chips=sa+line decoy=['sad', 'lime'] n=2
+CHG w-notify | notify | 통보하다 | tag=소통·돌봄 | cue=필요한 사람에게 상황을 공식적으로 전하다
+   dEn=['modify', 'notice'] dKo=['승인하다', '의뢰하다'] chips=no+ti+fy decoy=['not', 'fly'] n=2
+w-provider | provider | 의료진 | tag=소통·돌봄 | cue=처방을 내릴 수 있는 의사나 전문간호사 같은 사람
+   dEn=['providence', 'province'] dKo=['보호자', '약사'] chips=pro+vid+er decoy=['pry', 'void'] n=5
+w-ask | ask | 묻다 | tag=소통·돌봄 | cue=궁금하거나 필요한 것을 말로 요청하다
+   dEn=['aim', 'act'] dKo=['대답하다', '거절하다'] chips=ask decoy=['ark'] n=2
+w-question | question | 질문 | tag=소통·돌봄 | cue=답을 구하려고 던지는 말
+   dEn=['quotation', 'quest'] dKo=['대답', '설명'] chips=ques+tion decoy=['quest', 'shun'] n=1
+CHG w-after | after | 그 뒤에 | tag=일반 표현 | cue=어떤 일이 끝난 시점 이후
+   dEn=['afar', 'ever'] dKo=['그 전에', '동시에'] chips=af+ter decoy=['ant', 'tar'] n=1
+CHG w-document | document | 문서화하다 | tag=확인·동의 | cue=일어난 일을 나중에 증거로 쓸 수 있게 글로 남기다
+   dEn=['dominate', 'decorate'] dKo=['구두로 전하다', '삭제하다'] chips=doc+u+ment decoy=['dock', 'you'] n=2
+w-packed | packed | 농축된 | tag=혈액 제제 | cue=혈액 성분 중 액체를 걸러 내 적혈구를 진하게 모은
+   dEn=['parked', 'picked'] dKo=['희석된', '냉동된'] chips=pack+ed decoy=['peck', 'end'] n=1
+w-redcell | red cells | 적혈구 | tag=혈액 제제 | cue=몸 구석구석에 산소를 실어 나르는 붉은 혈액 성분
+   dEn=['white cells', 'red cross'] dKo=['백혈구', '혈소판'] chips=red/cells decoy=['rid', 'sells'] n=3
+w-oxygen | oxygen | 산소 | tag=활력·감시 | cue=숨 쉴 때 폐로 들이마셔 혈액이 몸에 나르는 기체
+   dEn=['oxide', 'organ'] dKo=['질소', '수소'] chips=ox+y+gen decoy=['ax', 'jen'] n=5
+w-capacity | capacity | 능력 | tag=혈액 제제 | cue=어떤 것이 담거나 해낼 수 있는 최대의 양이나 힘
+   dEn=['capital', 'opacity'] dKo=['속도', '농도'] chips=ca+pac+i+ty decoy=['cap', 'pack'] n=1
+w-ffp | FFP | 신선동결혈장 | tag=혈액 제제 | cue=얼린 혈장 한 봉지를 이르는 약어로, 응고인자가 들어 있다
+   dEn=['PRBC', 'FDA'] dKo=['농축혈소판', '동결침전'] chips=FFP decoy=['FFA'] n=1
+CHG w-replace | replace | 보충하다 | tag=처치·약물 | cue=부족해진 것을 새로 채워서 모자람이 없게 하다
+   dEn=['replay', 'retrace'] dKo=['제거하다', '줄이다'] chips=re+place decoy=['red', 'plane'] n=3
+w-clotting | clotting | 응고의 | tag=검사·수치 | cue=혈액이 엉겨 굳어서 출혈이 멈추게 되는 과정
+   dEn=['clogging', 'cutting'] dKo=['흐름의', '혼합의'] chips=clot+ting decoy=['cloth', 'tin'] n=2
+w-factor | factor | 인자 | tag=검사·수치 | cue=혈액이 굳도록 돕는 여러 단백질 중 하나
+   dEn=['favor', 'fraction'] dKo=['성분', '수치'] chips=fac+tor decoy=['fan', 'tour'] n=2
+w-platelet | platelet | 혈소판 | tag=혈액 제제 | cue=피가 났을 때 상처를 막아 주는 작은 혈액 세포 조각
+   dEn=['plateau', 'palette'] dKo=['백혈구', '적혈구'] chips=plate+let decoy=['plane', 'lit'] n=5
+w-treat | treat | 치료하다 | tag=처치·약물 | cue=병이나 문제가 나아지도록 처치를 해 주다
+   dEn=['tweet', 'tread'] dKo=['진단하다', '예방하다'] chips=treat decoy=['trait'] n=3
+w-thrombocytopenia | thrombocytopenia | 혈소판감소증 | tag=검사·수치 | cue=혈액 속 혈소판 수가 정상보다 모자란 병적 상태
+   dEn=['thrombocytosis', 'thrombophlebitis'] dKo=['백혈구감소증', '적혈구증가증'] chips=thrombo+cyto+penia decoy=['phobia', 'cytes'] n=1
+w-cryoprecipitate | cryoprecipitate | 동결침전제 | tag=혈액 제제 | cue=혈장을 얼렸다 녹여 얻은 진한 성분으로, 섬유소원이 많다
+   dEn=['cryopreservation', 'cryoglobulin'] dKo=['농축적혈구', '신선혈장'] chips=cryo+pre+cipi+tate decoy=['crow', 'sip'] n=2
+w-low | low | 낮은 | tag=검사·수치 | cue=정상 범위의 아래쪽에 있는
+   dEn=['loud', 'lean'] dKo=['넓은', '빠른'] chips=low decoy=['lot'] n=7
+w-fibrinogen | fibrinogen | 섬유소원 | tag=검사·수치 | cue=혈액이 굳을 때 실처럼 엮여 그물을 만드는 혈장 단백질
+   dEn=['fibroblast', 'fibrinolysis'] dKo=['글로불린', '헤모글로빈'] chips=fi+brin+o+gen decoy=['fib', 'gin'] n=4
+w-count | count | 수치 | tag=검사·수치 | cue=혈액검사에서 세포가 몇 개인지 센 숫자
+   dEn=['mount', 'amount'] dKo=['농도', '부피'] chips=count decoy=['court'] n=4
+w-bleed | bleed | 출혈하다 | tag=반응·증상 | cue=상처나 혈관에서 피가 흘러나오다
+   dEn=['blend', 'breed'] dKo=['멍들다', '붓다'] chips=bleed decoy=['blood'] n=10
+w-plasma | plasma | 혈장 | tag=혈액 제제 | cue=혈액에서 세포를 빼고 남은 연노랑 액체 성분
+   dEn=['plaque', 'plaster'] dKo=['혈청', '림프액'] chips=plas+ma decoy=['plus', 'mat'] n=5
+w-liver | liver | 간 | tag=일반 표현 | cue=응고인자를 만들어 내는, 오른쪽 윗배의 큰 장기
+   dEn=['lever', 'river'] dKo=['콩팥', '쓸개'] chips=liv+er decoy=['live', 'her'] n=1
+w-disease | disease | 질환 | tag=일반 표현 | cue=몸의 일부가 병들어 제 기능을 못 하는 상태
+   dEn=['disuse', 'decease'] dKo=['상처', '증상'] chips=dis+ease decoy=['dish', 'easy'] n=1
+w-hemoglobin | hemoglobin | 헤모글로빈 | tag=검사·수치 | cue=적혈구 속에서 산소를 붙잡는 붉은 단백질을 재는 수치
+   dEn=['hematocrit', 'hemophilia'] dKo=['혈소판', '알부민'] chips=he+mo+glo+bin decoy=['hem', 'globe'] n=1
+w-explain | explain | 설명하다 | tag=소통·돌봄 | cue=이유나 방법을 상대가 이해하도록 풀어 말하다
+   dEn=['explore', 'expand'] dKo=['확인하다', '반복하다'] chips=ex+plain decoy=['ax', 'plane'] n=1
+w-choose | choose | 선택하다 | tag=소통·돌봄 | cue=여럿 중에서 하나를 골라 정하다
+   dEn=['choke', 'chew'] dKo=['거절하다', '미루다'] chips=choose decoy=['chose'] n=1
+w-component | component | 성분 | tag=혈액 제제 | cue=혈액을 갈라 얻은 적혈구·혈장·혈소판 같은 각 부분
+   dEn=['compound', 'complaint'] dKo=['용량', '경로'] chips=com+po+nent decoy=['come', 'pot'] n=1
+CHG w-lab | lab | 검사 | tag=검사·수치 | cue=혈액을 뽑아 분석한 결과가 숫자로 나오는 검사
+   dEn=['lap', 'lad'] dKo=['처방', '촬영'] chips=lab decoy=['lap'] n=3
+w-must | must | 해야 한다 | tag=일반 표현 | cue=규칙상 반드시 해야 한다는 뜻을 만드는 말
+   dEn=['might', 'shall'] dKo=['해도 된다', '할 수 없다'] chips=must decoy=['mast'] n=1
+w-thirty | thirty | 삼십 | tag=수혈 진행 | cue=냉장고를 나온 혈액을 시작해야 하는 시간 규칙에 나오는 숫자
+   dEn=['thirteen', 'forty'] dKo=['십삼', '오십'] chips=thir+ty decoy=['third', 'tea'] n=2
+w-leave | leave | 떠나다 | tag=일반 표현 | cue=있던 곳에서 나와 다른 곳으로 가다
+   dEn=['lease', 'leap'] dKo=['도착하다', '머무르다'] chips=leave decoy=['leaf'] n=1
+w-fridge | fridge | 냉장고 | tag=혈액 제제 | cue=혈액을 정해진 온도로 차게 보관하는 전용 보관함
+   dEn=['bridge', 'fringe'] dKo=['냉동고', '가열기'] chips=fridge decoy=['bridge'] n=2
+w-infuse | infuse | 주입하다 | tag=수혈 진행 | cue=정맥으로 혈액이나 약을 일정 시간에 걸쳐 흘려 넣다
+   dEn=['confuse', 'infest'] dKo=['추출하다', '배출하다'] chips=in+fuse decoy=['inn', 'fuss'] n=1
+w-long | long | 오래 | tag=일반 표현 | cue=냉장고 밖에서 시간이 얼마나 흘렀는지 물을 때 쓰는 말
+   dEn=['along', 'lately'] dKo=['빨리', '가끔'] chips=long decoy=['lung'] n=1
+w-almost | almost | 거의 | tag=일반 표현 | cue=아직은 아니지만 거의 그 지점에 가까운
+   dEn=['also', 'always'] dKo=['전혀', '가끔'] chips=al+most decoy=['all', 'mist'] n=1
+w-already | already | 이미 | tag=일반 표현 | cue=예상보다 일찍, 벌써 일어나 버린 일에 쓰는 말
+   dEn=['always', 'alike'] dKo=['아직', '절대'] chips=al+ready decoy=['all', 'reedy'] n=1
+w-send | send | 보내다 | tag=일반 표현 | cue=물건을 다른 곳이나 다른 사람에게 가게 하다
+   dEn=['spend', 'bend'] dKo=['받다', '가져오다'] chips=send decoy=['sent'] n=3
+w-bloodbank | blood bank | 혈액은행 | tag=혈액 제제 | cue=혈액을 검사하고 보관하다가 병동에 내주는 부서
+   dEn=['blood count', 'blood draw'] dKo=['혈액검사', '수혈기록'] chips=blood/bank decoy=['flood', 'bunk'] n=5
+w-risk | risk | 위험 | tag=일반 표현 | cue=나쁜 일이 생길 수 있는 가능성
+   dEn=['rise', 'rift'] dKo=['이익', '비용'] chips=risk decoy=['disk'] n=1
+w-expire | expire | 만료되다 | tag=혈액 제제 | cue=정해진 사용 기한이 다 되어 더는 쓸 수 없게 되다
+   dEn=['expose', 'explore'] dKo=['갱신되다', '연장되다'] chips=ex+pire decoy=['ax', 'pie'] n=1
+w-monitor | monitor | 모니터 | tag=활력·감시 | cue=침상 옆 화면에 심박과 혈압 곡선을 띄우는 기기
+   dEn=['mentor', 'motor'] dKo=['체온계', '주사기'] chips=mon+i+tor decoy=['man', 'tour'] n=2
+CHG w-log | log | 기입하다 | tag=확인·동의 | cue=시간순으로 한 줄씩 적어 넣다
+   dEn=['lag', 'lug'] dKo=['삭제하다', '인쇄하다'] chips=log decoy=['lag'] n=2
+w-schedule | schedule | 일정 | tag=수혈 진행 | cue=언제 무엇을 할지 시간대별로 정해 둔 표
+   dEn=['scheme', 'scholar'] dKo=['장소', '결과'] chips=sched+ule decoy=['shed', 'rule'] n=1
+w-stable | stable | 안정적인 | tag=활력·감시 | cue=수치가 오르내리지 않고 한결같은
+   dEn=['stale', 'stiff'] dKo=['불규칙한', '위독한'] chips=sta+ble decoy=['star', 'bell'] n=1
+w-tachycardia | tachycardia | 빈맥 | tag=반응·증상 | cue=심장이 정상보다 빨리 뛰는 상태를 이르는 의학 용어
+   dEn=['bradycardia', 'tachypnea'] dKo=['서맥', '부정맥'] chips=tachy+car+dia decoy=['tack', 'card'] n=1
+w-alarm | alarm | 알람 | tag=활력·감시 | cue=수치가 한계를 벗어나면 모니터에서 울리는 경고 소리
+   dEn=['album', 'charm'] dKo=['스위치', '배터리'] chips=a+larm decoy=['an', 'lamp'] n=1
+w-set | set | 설정하다 | tag=활력·감시 | cue=기기의 기준값을 원하는 값에 맞춰 두다
+   dEn=['get', 'let'] dKo=['해제하다', '삭제하다'] chips=set decoy=['sat'] n=1
+w-saturation | saturation | 산소포화도 | tag=활력·감시 | cue=혈액 속 헤모글로빈이 산소를 얼마나 싣고 있는지를 퍼센트로 말한 것
+   dEn=['separation', 'sanitation'] dKo=['혈색소수치', '혈당수치'] chips=sat+u+ra+tion decoy=['sit', 'rain'] n=1
+w-steady | steady | 일정한 | tag=활력·감시 | cue=오르내림 없이 같은 자리를 지키는
+   dEn=['sturdy', 'shady'] dKo=['흔들리는', '급격한'] chips=stead+y decoy=['steed', 'yes'] n=2
+w-flag | flag | 표시하다 | tag=활력·감시 | cue=눈에 띄게 깃발을 꽂듯 표시해서 다른 사람이 알아보게 하다
+   dEn=['flap', 'flip'] dKo=['삭제하다', '숨기다'] chips=flag decoy=['flat'] n=1
+w-trend | trend | 추세를 보이다 | tag=활력·감시 | cue=수치가 시간이 지나며 어느 쪽으로 움직이는 흐름
+   dEn=['tend', 'trade'] dKo=['사라지다', '반복하다'] chips=trend decoy=['tread'] n=1
+w-wrong | wrong | 잘못된 | tag=일반 표현 | cue=맞지 않고 틀린
+   dEn=['strong', 'young'] dKo=['낡은', '약한'] chips=wrong decoy=['wrung'] n=1
+w-way | way | 방향 | tag=일반 표현 | cue=어느 쪽으로 가는지를 말할 때 쓰는 말
+   dEn=['wage', 'wave'] dKo=['거리', '속도'] chips=way decoy=['why'] n=1
+w-reading | reading | 측정값 | tag=활력·감시 | cue=기기가 한 번 잰 뒤 화면에 보여 주는 숫자
+   dEn=['heading', 'meaning'] dKo=['단위', '방법'] chips=read+ing decoy=['road', 'ink'] n=1
+w-normal | normal | 정상의 | tag=검사·수치 | cue=건강한 사람에게서 볼 수 있는 보통의 범위에 드는
+   dEn=['formal', 'minimal'] dKo=['긴급한', '임의의'] chips=nor+mal decoy=['north', 'mall'] n=4
+w-range | range | 범위 | tag=검사·수치 | cue=가장 낮은 값부터 가장 높은 값까지의 폭
+   dEn=['rank', 'ranch'] dKo=['단위', '기준'] chips=range decoy=['orange'] n=1
+w-pain | pain | 통증 | tag=반응·증상 | cue=몸의 어딘가가 아프다고 느끼는 감각
+   dEn=['paint', 'plain'] dKo=['마비', '경련'] chips=pain decoy=['pan'] n=1
+w-chill | chill | 오한 | tag=반응·증상 | cue=열이 오르기 전후에 온몸이 부르르 떨리는 느낌
+   dEn=['chin', 'chip'] dKo=['발열', '발진'] chips=chill decoy=['chilly'] n=1
+w-urine | urine | 소변 | tag=반응·증상 | cue=콩팥이 만들어 방광에 모였다가 배출되는 액체
+   dEn=['urn', 'ulcer'] dKo=['대변', '땀'] chips=u+rine decoy=['you', 'rice'] n=2
+CHG w-dark | dark | 짙은 | tag=반응·증상 | cue=색이 연하지 않고 진해서 어둡게 보이는
+   dEn=['dry', 'deep'] dKo=['투명한', '맑은'] chips=dark decoy=['dart'] n=1
+w-disconnect | disconnect | 분리하다 | tag=처치·약물 | cue=서로 이어진 두 부분을 떼어 놓다
+   dEn=['discount', 'disclose'] dKo=['고정하다', '교체하다'] chips=dis+con+nect decoy=['dish', 'can'] n=1
+w-tubing | tubing | 튜빙 | tag=처치·약물 | cue=백에서 환자 라인까지 혈액이 지나가게 이어 주는 긴 관
+   dEn=['tuning', 'turning'] dKo=['주사바늘', '수액걸이'] chips=tub+ing decoy=['tab', 'ink'] n=1
+w-acute | acute | 급성의 | tag=반응·증상 | cue=갑자기 시작해서 빠르게 진행되는 경과의
+   dEn=['actual', 'abrupt'] dKo=['선천성의', '재발성의'] chips=a+cute decoy=['an', 'cut'] n=2
+w-hemolytic | hemolytic | 용혈성의 | tag=반응·증상 | cue=적혈구가 터져 부서지는 성질을 가진
+   dEn=['hepatic', 'hemostatic'] dKo=['저혈압성의', '패혈성의'] chips=hemo+lytic decoy=['heme', 'lyric'] n=1
+w-sample | sample | 검체 | tag=검사·수치 | cue=분석을 위해 소량 떼어 낸 혈액이나 체액
+   dEn=['staple', 'symbol'] dKo=['처방', '용액'] chips=sam+ple decoy=['same', 'pile'] n=1
+w-workup | workup | 정밀검사 | tag=검사·수치 | cue=원인을 찾으려고 여러 검사를 묶어서 하는 일
+   dEn=['workout', 'workshop'] dKo=['예방접종', '치료계획'] chips=work+up decoy=['walk', 'cup'] n=2
+CHG w-desaturate | desaturate | 산소포화도가 떨어지다 | tag=반응·증상 | cue=혈액 속 산소 수치가 떨어져 모니터 숫자가 내려가다
+   dEn=['saturate', 'deactivate'] dKo=['혈압이 떨어지다', '맥박이 느려지다'] chips=de+sat+u+rate decoy=['dee', 'sit'] n=1
+w-taco | TACO | 수혈관련순환과부하 | tag=반응·증상 | cue=수혈 속도나 양이 몸이 감당할 수준을 넘어 폐에 물이 차는 합병증의 약어
+   dEn=['TRALI', 'TIPS'] dKo=['수혈관련급성폐손상', '수혈관련패혈증'] chips=TACO decoy=['TACT'] n=2
+w-volume | volume | 용적 | tag=반응·증상 | cue=혈관이나 몸속에 들어 있는 액체의 양
+   dEn=['valve', 'voltage'] dKo=['밀도', '압력'] chips=vol+ume decoy=['vote', 'mute'] n=1
+w-overload | overload | 과부하 | tag=반응·증상 | cue=몸이 감당할 수 있는 한도를 넘어서 쌓인 상태
+   dEn=['overdose', 'overlap'] dKo=['저하', '감소'] chips=over+load decoy=['oven', 'road'] n=3
+w-hypertension | hypertension | 고혈압 | tag=반응·증상 | cue=혈압이 정상보다 높게 유지되는 상태
+   dEn=['hypotension', 'hypertrophy'] dKo=['저혈압', '부정맥'] chips=hyper+ten+sion decoy=['hype', 'tin'] n=1
+w-trali | TRALI | 수혈관련급성폐손상 | tag=반응·증상 | cue=혈장 성분이 폐 혈관을 상하게 해 갑자기 폐에 물이 차는 합병증의 약어
+   dEn=['TACO', 'TIPS'] dKo=['수혈관련순환과부하', '수혈관련발열반응'] chips=TRALI decoy=['TRAIL'] n=2
+w-cardiogenic | cardiogenic | 심인성의 | tag=반응·증상 | cue=원인이 심장의 펌프 기능 문제에서 비롯된
+   dEn=['carcinogenic', 'cardiovascular'] dKo=['신인성의', '간인성의'] chips=car+dio+gen+ic decoy=['cart', 'die'] n=1
+w-pressure | pressure | 압력 | tag=검사·수치 | cue=혈관 안이나 어떤 부위를 밀어내는 힘의 크기
+   dEn=['pleasure', 'presence'] dKo=['부피', '농도'] chips=pres+sure decoy=['press', 'sue'] n=2
+w-crackle | crackle | 수포음 | tag=반응·증상 | cue=청진기로 들었을 때 머리카락을 비비는 듯 자글자글한 폐 소리
+   dEn=['cackle', 'crinkle'] dKo=['천명음', '협착음'] chips=crack+le decoy=['crick', 'ail'] n=1
+w-jugular | jugular | 경정맥의 | tag=반응·증상 | cue=목 옆을 따라 지나며 심장으로 피를 돌려보내는 큰 혈관에 관한
+   dEn=['regular', 'angular'] dKo=['대퇴의', '쇄골하의'] chips=jug+u+lar decoy=['jog', 'lair'] n=1
+w-vein | vein | 정맥 | tag=반응·증상 | cue=피를 심장으로 되돌려 보내는 혈관
+   dEn=['vine', 'veil'] dKo=['동맥', '림프관'] chips=vein decoy=['vain'] n=1
+w-support | support | 지지하다 | tag=처치·약물 | cue=스스로 하기 힘든 기능을 옆에서 받쳐 주다
+   dEn=['suppose', 'supply'] dKo=['억제하다', '교체하다'] chips=sup+port decoy=['sip', 'sort'] n=1
+w-oxygenation | oxygenation | 산소화 | tag=활력·감시 | cue=폐를 거쳐 혈액이 산소를 얼마나 받아들이는지의 정도
+   dEn=['oxidation', 'organization'] dKo=['환기', '관류'] chips=oxy+gen+ation decoy=['axe', 'gem'] n=1
+w-sit | sit | 앉히다 | tag=처치·약물 | cue=누워 있는 사람의 윗몸을 일으켜 엉덩이를 붙이게 하다
+   dEn=['sip', 'slip'] dKo=['눕히다', '재우다'] chips=sit decoy=['sat'] n=1
+w-upright | upright | 똑바로 세운 | tag=처치·약물 | cue=비스듬하지 않고 위로 곧게 선 자세의
+   dEn=['outright', 'upbeat'] dKo=['눕혀 둔', '엎드린'] chips=up+right decoy=['cup', 'write'] n=1
+w-apply | apply | 적용하다 | tag=처치·약물 | cue=산소 같은 처치를 환자에게 실제로 대어 쓰다
+   dEn=['supply', 'reply'] dKo=['제거하다', '취소하다'] chips=ap+ply decoy=['ape', 'pie'] n=2
+w-xray | X-ray | 엑스레이 | tag=검사·수치 | cue=보이지 않는 가슴 속 폐와 심장을 한 장의 흑백 사진으로 찍는 검사
+   dEn=['MRI', 'EKG'] dKo=['초음파', '심전도'] chips=X-+ray decoy=['Z-', 'rye'] n=1
+w-apart | apart | 구별하여 | tag=일반 표현 | cue=하나로 합쳐 있지 않고 서로 따로 떨어진 상태로 가려내어
+   dEn=['abroad', 'aloud'] dKo=['함께', '먼저'] chips=a+part decoy=['an', 'park'] n=1
+w-massive | massive | 대량의 | tag=위기 대응 | cue=양이나 규모가 엄청나게 큰
+   dEn=['passive', 'mature'] dKo=['소량의', '반복된'] chips=mas+sive decoy=['mass', 'sieve'] n=2
+w-protocol | protocol | 프로토콜 | tag=위기 대응 | cue=병원이 위기 상황마다 미리 정해 둔 단계별 지침
+   dEn=['prototype', 'protein'] dKo=['진단명', '처방전'] chips=pro+to+col decoy=['pray', 'toe'] n=3
+w-ratio | ratio | 비율 | tag=혈액 제제 | cue=두 가지 이상을 몇 대 몇으로 섞을지 정한 비
+   dEn=['radio', 'ration'] dKo=['순서', '속도'] chips=ra+tio decoy=['rat', 'tie'] n=2
+w-track | track | 추적하다 | tag=위기 대응 | cue=어디까지 갔는지 놓치지 않게 하나하나 뒤따라 확인해 가다
+   dEn=['tackle', 'trade'] dKo=['삭제하다', '교체하다'] chips=track decoy=['trick'] n=2
+w-warm | warm | 데우다 | tag=처치·약물 | cue=찬 것을 따뜻한 온도로 올리다
+   dEn=['warn', 'swarm'] dKo=['식히다', '얼리다'] chips=warm decoy=['worm'] n=1
+CHG w-product | product | 혈액 제제 | tag=혈액 제제 | cue=혈액은행이 환자에게 쓰도록 만들어 내보내는 혈장·혈소판·적혈구 같은 것
+   dEn=['project', 'profit'] dKo=['혈액 검사', '혈액 기록'] chips=prod+uct decoy=['prom', 'duct'] n=5
+w-cooler | cooler | 냉장 운반함 | tag=혈액 제제 | cue=얼음이나 냉매를 넣어 혈액을 차게 담아 나르는 상자
+   dEn=['cooker', 'collar'] dKo=['가열 장치', '이송 침대'] chips=cool+er decoy=['cold', 'err'] n=3
+w-number | number | 번호 | tag=혈액 제제 | cue=백마다 찍혀 있어 하나씩 구별하게 해 주는 숫자 표시
+   dEn=['member', 'numeral'] dKo=['이름', '날짜'] chips=num+ber decoy=['nut', 'bear'] n=1
+w-call | call | 부르다 | tag=소통·돌봄 | cue=큰 소리나 전화로 누군가 와 달라고 부르다
+   dEn=['fall', 'pull'] dKo=['돌려보내다', '기다리다'] chips=call decoy=['calm'] n=3
+w-inr | INR | 국제표준화비율 | tag=검사·수치 | cue=와파린 같은 약이 피를 얼마나 묽게 했는지 보여 주는 응고 시간 수치의 약어
+   dEn=['PTT', 'CBC'] dKo=['적혈구용적률', '혈소판평균용적'] chips=INR decoy=['IRN'] n=4
+w-elevated | elevated | 상승한 | tag=검사·수치 | cue=정상 범위보다 위로 올라가 있는
+   dEn=['exhausted', 'elated'] dKo=['억제된', '안정된'] chips=el+e+vat+ed decoy=['elf', 'vet'] n=1
+w-pcc | PCC | 프로트롬빈복합체농축제 | tag=처치·약물 | cue=와파린의 효과를 빠르게 되돌리려고 쓰는, 응고인자를 농축한 약의 약어
+   dEn=['FFP', 'PRBC'] dKo=['농축적혈구현탁액', '신선동결혈장농축액'] chips=PCC decoy=['PCT'] n=2
+w-recheck | recheck | 재확인하다 | tag=검사·수치 | cue=한 번 본 수치를 얼마 뒤에 다시 한 번 본다
+   dEn=['reject', 'redeem'] dKo=['재처방하다', '재입원하다'] chips=re+check decoy=['red', 'chick'] n=3
+w-coag | coags | 응고검사 | tag=검사·수치 | cue=혈액이 얼마나 잘 굳는지 알아보는 혈액검사 묶음의 줄임말
+   dEn=['cogs', 'coats'] dKo=['혈당검사', '소변검사'] chips=coag+s decoy=['coat', 'ex'] n=1
+w-correction | correction | 교정 | tag=처치·약물 | cue=틀어진 수치를 약이나 성분으로 정상 쪽에 되돌려 놓는 일
+   dEn=['collection', 'connection'] dKo=['보관', '교환'] chips=cor+rec+tion decoy=['core', 'rack'] n=1
+w-draw | draw | 채취하다 | tag=검사·수치 | cue=주사기로 혈관에서 피를 뽑아 내다
+   dEn=['drag', 'draft'] dKo=['주입하다', '폐기하다'] chips=draw decoy=['drew'] n=2
+w-repeat | repeat | 반복 | tag=검사·수치 | cue=이미 한 검사를 다음에 똑같이 한 번 더 하는
+   dEn=['repeal', 'receipt'] dKo=['중단', '교대'] chips=re+peat decoy=['red', 'pet'] n=1
+w-panel | panel | 검사패널 | tag=검사·수치 | cue=관련 있는 검사 항목 여러 개를 한 번에 묶은 세트
+   dEn=['channel', 'funnel'] dKo=['수술계획', '투약기록'] chips=pan+el decoy=['pen', 'elf'] n=1
+w-first | first | 먼저 | tag=일반 표현 | cue=여럿 중에서 순서상 맨 앞에
+   dEn=['forth', 'fairly'] dKo=['나중에', '대신'] chips=first decoy=['fir'] n=1
+w-improve | improve | 호전되다 | tag=반응·증상 | cue=수치나 상태가 이전보다 좋아지다
+   dEn=['approve', 'impose'] dKo=['악화되다', '재발하다'] chips=im+prove decoy=['in', 'proof'] n=2
+w-calcium | calcium | 칼슘 | tag=검사·수치 | cue=뼈를 이루고 근육과 심장이 수축하는 데 필요한 미네랄
+   dEn=['calorie', 'cadmium'] dKo=['마그네슘', '칼륨'] chips=cal+ci+um decoy=['call', 'sigh'] n=9
+w-drop | drop | 떨어지다 | tag=반응·증상 | cue=수치가 높은 자리에서 아래로 내려가다
+   dEn=['drip', 'drift'] dKo=['오르다', '멈추다'] chips=drop decoy=['crop'] n=2
+w-fast | fast | 빠르게 | tag=일반 표현 | cue=시간이 오래 걸리지 않고 속도가 높게
+   dEn=['late', 'fully'] dKo=['천천히', '느릿느릿'] chips=fast decoy=['fist'] n=1
+w-citrate | citrate | 시트르산염 | tag=검사·수치 | cue=혈액이 응고되지 않게 백에 들어 있는 항응고 성분
+   dEn=['nitrate', 'acetate'] dKo=['인산염', '염화칼륨'] chips=cit+rate decoy=['sit', 'rat'] n=1
+w-bind | bind | 결합하다 | tag=반응·증상 | cue=화학적으로 달라붙어 하나로 엮이다
+   dEn=['bond', 'wind'] dKo=['분해하다', '배출하다'] chips=bind decoy=['bin'] n=1
+w-ionized | ionized | 이온화된 | tag=검사·수치 | cue=몸속에서 실제로 작용하는 전하를 띤 형태로 존재하는
+   dEn=['organized', 'idolized'] dKo=['중성화된', '희석된'] chips=ion+ized decoy=['iron', 'sized'] n=3
+w-perioral | perioral | 입 주위의 | tag=반응·증상 | cue=입술과 입 둘레를 이르는 말
+   dEn=['periodic', 'peripheral'] dKo=['눈 주위의', '귀 뒤의'] chips=peri+oral decoy=['peer', 'moral'] n=1
+w-tingling | tingling | 저림 | tag=반응·증상 | cue=바늘로 콕콕 찌르듯 피부가 따끔따끔하고 찌릿한 느낌
+   dEn=['ringing', 'swelling'] dKo=['부종', '경련'] chips=ting+ling decoy=['tin', 'ring'] n=2
+w-prolonged | prolonged | 연장된 | tag=검사·수치 | cue=정상보다 오래 이어져 길어진
+   dEn=['profound', 'protected'] dKo=['단축된', '정지된'] chips=pro+longed decoy=['pre', 'longer'] n=1
+w-qt | QT | QT 간격 | tag=검사·수치 | cue=심전도에서 심실이 수축하고 회복하는 데 걸리는 시간 구간의 약어
+   dEn=['QRS', 'PR'] dKo=['PR간격', 'ST분절'] chips=QT decoy=['QS'] n=2
+CHG w-further | further | 더 이상 | tag=일반 표현 | cue=지금보다 한 걸음 더 나아간 정도로
+   dEn=['forever', 'fairly'] dKo=['방금', '여전히'] chips=fur+ther decoy=['fir', 'there'] n=1
+w-warfarin | warfarin | 와파린 | tag=처치·약물 | cue=피를 묽게 하려고 오래 먹는 알약 형태의 항응고제
+   dEn=['heparin', 'aspirin'] dKo=['헤파린', '아스피린'] chips=war+fa+rin decoy=['wear', 'far'] n=1
+w-reverse | reverse | 역전하다 | tag=처치·약물 | cue=이미 나타난 효과를 거꾸로 돌려 없애다
+   dEn=['revise', 'reserve'] dKo=['유지하다', '악화시키다'] chips=re+verse decoy=['red', 'verb'] n=1
+w-iv | IV | 정맥주사 | tag=처치·약물 | cue=바늘이나 관을 통해 약을 정맥으로 직접 넣는 방식의 약어
+   dEn=['IM', 'IO'] dKo=['근육주사', '피하주사'] chips=IV decoy=['IX'] n=1
+w-vitamin | vitamin | 비타민 | tag=처치·약물 | cue=몸이 아주 적은 양만 필요로 하는 영양소 중 하나
+   dEn=['vaccine', 'mineral'] dKo=['미네랄', '단백질'] chips=vit+a+min decoy=['vet', 'mint'] n=1
+w-doac | DOAC | 직접경구항응고제 | tag=처치·약물 | cue=주사가 아니라 먹는 새로운 종류의 항응고제를 묶어 이르는 약어
+   dEn=['DVT', 'DAPT'] dKo=['저분자량헤파린', '혈소판응집억제제'] chips=DOAC decoy=['DOAK'] n=1
+w-specific | specific | 특정한 | tag=일반 표현 | cue=아무 약이나가 아니라 딱 그 약에만 해당하는
+   dEn=['scientific', 'spacious'] dKo=['임의의', '다양한'] chips=spe+cif+ic decoy=['spa', 'sift'] n=1
+w-reversal | reversal | 역전 | tag=처치·약물 | cue=약 효과를 반대로 되돌리는 일
+   dEn=['removal', 'rehearsal'] dKo=['중단', '보충'] chips=re+ver+sal decoy=['red', 'verse'] n=2
+CHG w-agent | agent | 약제 | tag=처치·약물 | cue=어떤 작용을 일으키려고 쓰는 약물 한 종류
+   dEn=['agenda', 'agency'] dKo=['약국', '처방'] chips=a+gent decoy=['an', 'gene'] n=1
+w-anticoagulant | anticoagulant | 항응고제 | tag=처치·약물 | cue=혈액이 굳는 속도를 늦추는 약
+   dEn=['antibiotic', 'anticonvulsant'] dKo=['항생제', '진통제'] chips=anti+coag+u+lant decoy=['ant', 'cog'] n=1
+w-correct | correct | 교정되다 | tag=검사·수치 | cue=벗어난 수치가 정상 범위로 돌아오다
+   dEn=['collect', 'connect'] dKo=['오염되다', '재발되다'] chips=cor+rect decoy=['core', 'rack'] n=1
+CHG w-update | update | 경과를 알리다 | tag=소통·돌봄 | cue=그동안 달라진 상황을 다시 정리해서 전해 주다
+   dEn=['upgrade', 'uphold'] dKo=['진단을 내리다', '처방을 바꾸다'] chips=up+date decoy=['cup', 'data'] n=1
+w-prophylactic | prophylactic | 예방적인 | tag=처치·약물 | cue=아직 문제가 없지만 생기지 않도록 미리 막으려고 하는
+   dEn=['therapeutic', 'pharmacologic'] dKo=['치료적인', '진단적인'] chips=pro+phy+lac+tic decoy=['pry', 'fly'] n=1
+w-threshold | threshold | 역치 | tag=검사·수치 | cue=이 선을 넘으면 조치를 하겠다고 정해 둔 기준값
+   dEn=['thickness', 'tolerance'] dKo=['용량', '단위'] chips=thresh+old decoy=['fresh', 'bold'] n=3
+w-hold | hold | 보류하다 | tag=처치·약물 | cue=당장 하지 않고 진행을 잠시 미뤄 두다
+   dEn=['fold', 'hoard'] dKo=['서두르다', '투여하다'] chips=hold decoy=['held'] n=1
+w-later | later | 나중에 | tag=일반 표현 | cue=지금이 아니라 시간이 좀 지난 뒤에
+   dEn=['rather', 'hardly'] dKo=['방금', '항상'] chips=la+ter decoy=['lap', 'tar'] n=1
+w-procedure | procedure | 시술 | tag=처치·약물 | cue=침습적인 처치나 시술을 하는 일
+   dEn=['process', 'progress'] dKo=['간호', '진찰'] chips=pro+ce+dure decoy=['pry', 'see'] n=1
+w-aim | aim | 목표로 하다 | tag=일반 표현 | cue=이루려는 수치나 결과를 정해 놓고 거기에 맞추려 하다
+   dEn=['aid', 'arm'] dKo=['포기하다', '예상하다'] chips=aim decoy=['him'] n=1
+w-higher | higher | 더 높은 | tag=검사·수치 | cue=지금보다 위쪽 값인
+   dEn=['tighter', 'hungrier'] dKo=['더 넓은', '더 빠른'] chips=high+er decoy=['hug', 'her'] n=1
+w-active | active | 활동성의 | tag=반응·증상 | cue=지금 이 순간에도 진행 중이어서 멈추지 않는
+   dEn=['adaptive', 'attentive'] dKo=['만성의', '잠복성의'] chips=ac+tive decoy=['ace', 'tie'] n=1
+w-entirely | entirely | 완전히 | tag=일반 표현 | cue=일부가 아니라 모두, 남김없이
+   dEn=['exactly', 'extremely'] dKo=['잠시', '대략'] chips=en+tire+ly decoy=['end', 'tier'] n=1
+w-transfuse | transfuse | 수혈하다 | tag=수혈 진행 | cue=혈액을 환자의 정맥에 흘려 넣어 주다
+   dEn=['transform', 'transfer'] dKo=['채혈하다', '이식하다'] chips=trans+fuse decoy=['train', 'fuss'] n=2
+w-hives | hives | 두드러기 | tag=반응·증상 | cue=알레르기 반응으로 피부에 붉게 부풀어 오르며 가려운 자국이 올라오는 것
+   dEn=['hikes', 'hinges'] dKo=['습진', '사마귀'] chips=hives decoy=['hive'] n=2
+w-mild | mild | 경미한 | tag=반응·증상 | cue=심하지 않고 가벼운 정도의
+   dEn=['wild', 'mixed'] dKo=['중등도의', '심각한'] chips=mild decoy=['mile'] n=1
+w-pause | pause | 일시 중단하다 | tag=처치·약물 | cue=아주 그만두지는 않고 잠깐 멈춰 두다
+   dEn=['pass', 'pose'] dKo=['속도 올리다', '약 바꾸다'] chips=pause decoy=['pulse'] n=1
+w-antihistamine | antihistamine | 항히스타민제 | tag=처치·약물 | cue=알레르기 때문에 생긴 가려움과 두드러기를 가라앉히는 약
+   dEn=['antiemetic', 'antipsychotic'] dKo=['제산제', '항구토제'] chips=anti+hist+a+mine decoy=['ant', 'mint'] n=2
+w-develop | develop | 발생하다 | tag=반응·증상 | cue=없던 증상이 새로 생겨나다
+   dEn=['envelop', 'devote'] dKo=['사라지다', '치유되다'] chips=de+vel+op decoy=['dee', 'veil'] n=1
+CHG w-wheeze | wheeze | 쌕쌕거림 | tag=반응·증상 | cue=좁아진 기관지로 숨을 내쉴 때 나는 쌕쌕 휘파람 같은 소리
+   dEn=['breeze', 'sneeze'] dKo=['기침', '딸꾹질'] chips=wheeze decoy=['cheese'] n=1
+w-escalate | escalate | 상급 보고하다 | tag=소통·돌봄 | cue=내가 처리하기 힘든 상황을 더 높은 권한의 사람에게 올려 알리다
+   dEn=['escape', 'evaluate'] dKo=['하급 지시하다', '절차 생략하다'] chips=es+ca+late decoy=['eel', 'cat'] n=1
+w-redness | redness | 발적 | tag=반응·증상 | cue=피부색이 주변보다 붉게 변한 정도
+   dEn=['rudeness', 'readiness'] dKo=['부종', '멍'] chips=red+ness decoy=['rid', 'mess'] n=1
+w-alone | alone | 단독으로 | tag=일반 표현 | cue=다른 증상 없이 그것 하나만 있다는 뜻의 말
+   dEn=['again', 'anyway'] dKo=['함께', '반복해서'] chips=a+lone decoy=['an', 'loan'] n=1
+w-premedicate | premedicate | 전처치하다 | tag=처치·약물 | cue=반응이 생기기 전에 미리 약을 먼저 주다
+   dEn=['preoxygenate', 'prepackage'] dKo=['후처치하다', '사정하다'] chips=pre+med+i+cate decoy=['pry', 'mad'] n=2
+w-ahead | ahead | 미리 | tag=일반 표현 | cue=정해진 시각보다 앞서서 미리
+   dEn=['aboard', 'adrift'] dKo=['방금', '나중에'] chips=a+head decoy=['an', 'heed'] n=1
+w-history | history | 과거력 | tag=소통·돌봄 | cue=환자가 전에 앓았거나 겪은 일을 모아 놓은 기록
+   dEn=['story', 'victory'] dKo=['가족력', '진료비'] chips=his+to+ry decoy=['him', 'toe'] n=1
+w-understand | understand | 이해하다 | tag=소통·돌봄 | cue=상대가 하는 말이 무슨 뜻인지 알아듣다
+   dEn=['undertake', 'understate'] dKo=['반박하다', '잊어버리다'] chips=under+stand decoy=['wonder', 'stood'] n=1
+w-option | option | 선택지 | tag=소통·돌봄 | cue=여러 가지 중에서 고를 수 있는 한 가지 방법
+   dEn=['action', 'motion'] dKo=['처방', '지시'] chips=op+tion decoy=['or', 'shun'] n=2
+w-alright | alright | 괜찮은 | tag=소통·돌봄 | cue=문제없이 괜찮다고 상대를 안심시킬 때 쓰는 말
+   dEn=['alert', 'airtight'] dKo=['아픈', '불안한'] chips=al+right decoy=['all', 'write'] n=1
+w-blood | blood | 혈액 | tag=혈액 제제 | cue=심장이 혈관으로 돌려 보내는 붉은 체액
+   dEn=['flood', 'bloom'] dKo=['림프', '소변'] chips=blood decoy=['bold'] n=4
+w-respect | respect | 존중하다 | tag=소통·돌봄 | cue=상대의 뜻을 소중하게 여기고 따르다
+   dEn=['suspect', 'resist'] dKo=['무시하다', '반박하다'] chips=re+spect decoy=['red', 'speck'] n=1
+w-decision | decision | 결정 | tag=소통·돌봄 | cue=여러 가능성 중에서 하나를 정한 결과
+   dEn=['division', 'decimal'] dKo=['처방', '질문'] chips=de+ci+sion decoy=['dee', 'sigh'] n=1
+CHG w-wish | wish | 희망 | tag=소통·돌봄 | cue=마음속으로 바라는 것
+   dEn=['fish', 'wisdom'] dKo=['공포', '의무'] chips=wish decoy=['wash'] n=3
+CHG w-belief | belief | 신념 | tag=소통·돌봄 | cue=종교나 가치관처럼 옳다고 굳게 믿는 생각
+   dEn=['relief', 'benefit'] dKo=['증거', '습관'] chips=be+lief decoy=['bee', 'leaf'] n=1
+w-allow | allow | 허용하다 | tag=소통·돌봄 | cue=해도 좋다고 막지 않고 허락하다
+   dEn=['follow', 'swallow'] dKo=['요구하다', '강요하다'] chips=al+low decoy=['all', 'law'] n=1
+w-team | team | 팀 | tag=소통·돌봄 | cue=한 가지 일을 함께 맡아 하는 사람들의 무리
+   dEn=['steam', 'term'] dKo=['환자', '병실'] chips=team decoy=['tram'] n=7
+w-conservation | conservation | 보존 | tag=소통·돌봄 | cue=써서 없어지지 않게 아껴서 지켜 두는 일
+   dEn=['conversation', 'consideration'] dKo=['소비', '폐기'] chips=con+ser+va+tion decoy=['can', 'serve'] n=1
+w-maximize | maximize | 최대화하다 | tag=소통·돌봄 | cue=가능한 한 가장 크게 만들다
+   dEn=['memorize', 'mobilize'] dKo=['규격화하다', '일반화하다'] chips=max+i+mize decoy=['mix', 'my'] n=1
+w-iron | iron | 철분 | tag=처치·약물 | cue=적혈구를 만들 때 쓰이는 몸에 꼭 필요한 금속 영양소
+   dEn=['icon', 'ivory'] dKo=['아연', '구리'] chips=iron decoy=['irony'] n=1
+w-minimize | minimize | 최소화하다 | tag=소통·돌봄 | cue=가능한 한 가장 작게 줄이다
+   dEn=['maximize', 'mimic'] dKo=['확대하다', '증가시키다'] chips=min+i+mize decoy=['mine', 'my'] n=1
+w-salvage | salvage | 회수 | tag=처치·약물 | cue=수술 중 흘러나온 피를 다시 모아 되돌려 주려고 구해 내는 일
+   dEn=['package', 'passage'] dKo=['폐기', '저장'] chips=sal+vage decoy=['sail', 'vague'] n=1
+w-small | small | 작은 | tag=일반 표현 | cue=크기나 양이 크지 않은
+   dEn=['smart', 'shallow'] dKo=['큰', '넓은'] chips=small decoy=['smell'] n=1
+CHG w-tube | tube | 튜브 | tag=검사·수치 | cue=피를 담아 검사실로 보내는 가늘고 긴 용기
+   dEn=['tune', 'tone'] dKo=['주사기', '마스크'] chips=tube decoy=['tuba'] n=1
+CHG w-activate | activate | 발동하다 | tag=위기 대응 | cue=가만히 있던 비상 절차를 실제로 가동시키다
+   dEn=['cultivate', 'motivate'] dKo=['해제하다', '대기하다'] chips=ac+ti+vate decoy=['ace', 'tie'] n=1
+CHG w-role | role | 역할 | tag=위기 대응 | cue=한 팀 안에서 사람마다 맡는 일
+   dEn=['rule', 'rose'] dKo=['비용', '순서'] chips=role decoy=['rope'] n=2
+CHG w-assign | assign | 배정하다 | tag=위기 대응 | cue=누가 어느 일을 할지 정해서 맡기다
+   dEn=['assist', 'resign'] dKo=['취소하다', '교대하다'] chips=as+sign decoy=['ask', 'sine'] n=2
+w-push | push | 밀어 넣다 | tag=처치·약물 | cue=주사기나 손으로 눌러서 약이나 혈액을 안으로 밀어 보내다
+   dEn=['pull', 'pour'] dKo=['당겨 빼다', '천천히 걸다'] chips=push decoy=['posh'] n=5
+w-rapid | rapid | 신속한 | tag=위기 대응 | cue=속도가 아주 빠른
+   dEn=['rigid', 'risky'] dKo=['지속적인', '일시적인'] chips=rap+id decoy=['rep', 'it'] n=1
+w-infuser | infuser | 급속주입기 | tag=위기 대응 | cue=혈액이나 수액을 빠르게 짜서 밀어 넣는 기계
+   dEn=['inhaler', 'injector'] dKo=['흡입기', '제세동기'] chips=in+fus+er decoy=['inn', 'fuss'] n=1
+w-take | take | 맡다 | tag=일반 표현 | cue=자기 몫으로 받아서 맡다
+   dEn=['make', 'shake'] dKo=['넘기다', '거절하다'] chips=take decoy=['tack'] n=1
+w-move | move | 움직이다 | tag=일반 표현 | cue=서 있던 자리에서 몸을 옮겨 가다
+   dEn=['prove', 'love'] dKo=['멈추다', '기다리다'] chips=move decoy=['mode'] n=1
+w-keep | keep | 계속하다 | tag=일반 표현 | cue=끊지 않고 같은 상태로 이어 가다
+   dEn=['seek', 'sleep'] dKo=['멈추다', '바꾸다'] chips=keep decoy=['kelp'] n=5
+CHG w-give | give | 주다 | tag=처치·약물 | cue=환자에게 약이나 혈액을 건네 투여하다
+   dEn=['dive', 'drive'] dKo=['받다', '빼앗다'] chips=give decoy=['gave'] n=1
+CHG w-total | total | 총계 | tag=위기 대응 | cue=하나하나를 모두 더한 합계의 수
+   dEn=['toll', 'topic'] dKo=['평균', '차이'] chips=to+tal decoy=['toe', 'tall'] n=1
+w-hypotensive | hypotensive | 저혈압의 | tag=반응·증상 | cue=혈압이 위험할 만큼 낮아진 상태에 있는
+   dEn=['hypertensive', 'hypothermic'] dKo=['고혈압의', '저산소의'] chips=hypo+tens+ive decoy=['hype', 'ten'] n=1
+w-stridor | stridor | 협착음 | tag=반응·증상 | cue=좁아진 윗기도를 숨이 지나갈 때 숨을 들이쉬며 나는 거친 쇳소리
+   dEn=['stricture', 'tremor'] dKo=['수포음', '천명음'] chips=stri+dor decoy=['stir', 'door'] n=1
+w-anaphylaxis | anaphylaxis | 아나필락시스 | tag=반응·증상 | cue=알레르기가 온몸으로 번져 혈압과 호흡을 위협하는 응급 상태
+   dEn=['prophylaxis', 'anesthesia'] dKo=['심인성쇼크', '폐색전증'] chips=ana+phy+lax+is decoy=['and', 'fly'] n=1
+CHG w-epi | epi | 에피(약칭) | tag=처치·약물 | cue=아나필락시스 때 근육에 놓는 응급약의 줄임말
+   dEn=['EEG', 'EMS'] dKo=['도파(약칭)', '바소(약칭)'] chips=epi decoy=['epic'] n=1
+w-im | IM | 근육주사의 | tag=처치·약물 | cue=엉덩이나 허벅지의 큰 근육에 바늘을 찔러 넣는 투여 방식의 약어
+   dEn=['IO', 'ID'] dKo=['정맥주사의', '피하주사의'] chips=IM decoy=['IN'] n=1
+w-epinephrine | epinephrine | 에피네프린 | tag=처치·약물 | cue=아나필락시스에서 일차로 쓰는, 혈압을 올리고 기도를 여는 약
+   dEn=['ephedrine', 'atropine'] dKo=['아트로핀', '에페드린'] chips=ep+i+neph+rine decoy=['eel', 'knee'] n=1
+CHG w-fluid | fluid | 수액 | tag=처치·약물 | cue=정맥으로 넣어 몸속 물의 양을 채워 주는 투명한 액체
+   dEn=['fuel', 'flush'] dKo=['소변', '약물'] chips=flu+id decoy=['flew', 'kid'] n=2
+w-wide | wide | 최대로 | tag=위기 대응 | cue=더는 열 수 없을 만큼 끝까지 크게 열어서
+   dEn=['nearly', 'wildly'] dKo=['조금', '천천히'] chips=wide decoy=['wade'] n=1
+w-code | code | 코드 (응급 소집) | tag=위기 대응 | cue=심장이 멈추었을 때 의료진 전체를 불러 모으는 병원 안 응급 신호
+   dEn=['cord', 'mode'] dKo=['의무기록 코드', '병동 회의 소집'] chips=code decoy=['cone'] n=4
+w-airway | airway | 기도 | tag=위기 대응 | cue=코와 입에서 폐까지 공기가 지나가는 길
+   dEn=['hallway', 'runway'] dKo=['식도', '폐'] chips=air+way decoy=['hair', 'wave'] n=1
+w-compromised | compromised | 손상된 | tag=위기 대응 | cue=제 기능을 하지 못할 만큼 위태롭게 약해진
+   dEn=['composed', 'complicated'] dKo=['보호된', '안정된'] chips=com+pro+mised decoy=['come', 'pry'] n=1
+w-prepare | prepare | 준비하다 | tag=위기 대응 | cue=곧 쓸 수 있도록 미리 채비를 갖추다
+   dEn=['repair', 'prevent'] dKo=['취소하다', '연기하다'] chips=pre+pare decoy=['pry', 'pair'] n=1
+w-intubate | intubate | 삽관하다 | tag=위기 대응 | cue=숨길을 확보하려고 기관 속으로 관을 밀어 넣다
+   dEn=['extubate', 'incubate'] dKo=['발관하다', '절개하다'] chips=in+tu+bate decoy=['inn', 'tub'] n=1
+w-second | second | 두 번째의 | tag=처치·약물 | cue=첫 번째 다음에 오는 차례의
+   dEn=['secure', 'sudden'] dKo=['첫 번째의', '세 번째의'] chips=sec+ond decoy=['sick', 'and'] n=1
+w-dose | dose | 용량 | tag=처치·약물 | cue=약을 한 번에 몸에 넣는 정해진 양
+   dEn=['drip', 'drug'] dKo=['경로', '농도'] chips=dose decoy=['dole'] n=1
+w-crash | crash | 응급 | tag=위기 대응 | cue=응급 상황에 쓸 약과 기구를 한꺼번에 싣고 다니는 카트의 앞에 붙는 말
+   dEn=['clash', 'brush'] dKo=['대기', '일반'] chips=crash decoy=['crush'] n=1
+w-cart | cart | 카트 | tag=위기 대응 | cue=바퀴가 달려 물품을 싣고 끌고 다니는 수레
+   dEn=['card', 'cast'] dKo=['침대', '의자'] chips=cart decoy=['curt'] n=1
+CHG w-ooze | ooze | 스며 나오다 | tag=반응·증상 | cue=상처나 주사 자리에서 피가 빠르지 않게 천천히 배어 나오다
+   dEn=['bruise', 'cruise'] dKo=['멍들다', '부풀다'] chips=ooze decoy=['once'] n=2
+w-site | site | 부위 | tag=반응·증상 | cue=주사나 시술을 하는 몸의 특정한 자리
+   dEn=['sight', 'side'] dKo=['가격', '각도'] chips=site decoy=['sit'] n=3
+w-dic | DIC | 파종성혈관내응고 | tag=반응·증상 | cue=온몸의 혈액이 이곳저곳에서 굳으면서 동시에 출혈도 일어나는 위중한 응고 이상의 약어
+   dEn=['DKA', 'DNR'] dKo=['급성호흡곤란증후군', '당뇨병성케톤산증'] chips=DIC decoy=['DOC'] n=2
+w-puncture | puncture | 천자 | tag=처치·약물 | cue=바늘로 피부를 찔러 낸 작은 구멍
+   dEn=['fracture', 'picture'] dKo=['절개', '봉합'] chips=punc+ture decoy=['punch', 'tour'] n=1
+w-underlying | underlying | 근본적인 | tag=일반 표현 | cue=겉으로 드러난 증상 밑에 깔려 있는 진짜
+   dEn=['unwilling', 'underweight'] dKo=['표면적인', '일시적인'] chips=under+ly+ing decoy=['wonder', 'lie'] n=2
+w-cause | cause | 원인 | tag=일반 표현 | cue=어떤 일이 생기게 한 까닭
+   dEn=['cost', 'clause'] dKo=['결과', '증상'] chips=cause decoy=['pause'] n=1
+w-key | key | 핵심 | tag=일반 표현 | cue=문제를 푸는 데 가장 중요한 부분
+   dEn=['kit', 'tip'] dKo=['단서', '예외'] chips=key decoy=['keg'] n=1
+w-trigger | trigger | 유발 요인 | tag=반응·증상 | cue=몸에서 나쁜 반응이 터져 나오게 만든 계기
+   dEn=['trailer', 'tracker'] dKo=['억제요인', '예방요인'] chips=trig+ger decoy=['trip', 'gear'] n=1
+w-coordinate | coordinate | 조율하다 | tag=소통·돌봄 | cue=여러 사람의 일이 서로 어긋나지 않게 맞추다
+   dEn=['concentrate', 'correlate'] dKo=['독단하다', '방치하다'] chips=co+or+di+nate decoy=['cod', 'tie'] n=1
+w-sepsis | sepsis | 패혈증 | tag=반응·증상 | cue=감염에 대한 몸의 반응이 걷잡을 수 없이 커져 장기를 위협하는 상태
+   dEn=['seizure', 'stenosis'] dKo=['심근경색', '폐렴'] chips=sep+sis decoy=['set', 'sip'] n=1
+w-respiratory | respiratory | 호흡의 | tag=반응·증상 | cue=숨쉬기와 폐 기능에 관한
+   dEn=['circulatory', 'regulatory'] dKo=['순환의', '소화의'] chips=res+pi+ra+tory decoy=['red', 'pie'] n=1
+w-failure | failure | 부전 | tag=반응·증상 | cue=장기가 제 일을 해내지 못하게 된 상태
+   dEn=['fatigue', 'feature'] dKo=['과다', '결핍'] chips=fail+ure decoy=['fall', 'sure'] n=1
+w-lung | lung | 폐 | tag=반응·증상 | cue=숨을 쉴 때 공기가 들어와 산소가 혈액으로 넘어가는 가슴 속 장기
+   dEn=['limb', 'lump'] dKo=['간', '신장'] chips=lung decoy=['lunge'] n=1
+w-protective | protective | 보호적인 | tag=처치·약물 | cue=해로운 것에서 지켜 주려는 성질의
+   dEn=['productive', 'protracted'] dKo=['과감한', '수동적인'] chips=pro+tec+tive decoy=['pry', 'tick'] n=1
+w-ventilation | ventilation | 환기 | tag=처치·약물 | cue=폐로 공기를 넣고 빼내어 숨 쉬게 하는 일
+   dEn=['variation', 'validation'] dKo=['관류', '산소화'] chips=ven+ti+la+tion decoy=['vent', 'tie'] n=1
+w-high | high | 높은 | tag=검사·수치 | cue=기준보다 위쪽에 있는, 농도나 수치가 센
+   dEn=['hot', 'thin'] dKo=['넓은', '깊은'] chips=high decoy=['sigh'] n=1
+w-report | report | 보고하다 | tag=소통·돌봄 | cue=일어난 일을 해당 부서에 정식으로 알리다
+   dEn=['import', 'export'] dKo=['취소하다', '숨기다'] chips=re+port decoy=['red', 'sport'] n=1
+w-help | help | 돕다 | tag=소통·돌봄 | cue=상대가 하는 일을 거들어 주다
+   dEn=['hope', 'heal'] dKo=['막다', '맡기다'] chips=help decoy=['held'] n=1
+w-adjust | adjust | 조정하다 | tag=처치·약물 | cue=기계의 수치를 상태에 맞게 조금 바꾸다
+   dEn=['adapt', 'adopt'] dKo=['고정하다', '폐기하다'] chips=ad+just decoy=['add', 'jest'] n=1
+w-ventilator | ventilator | 인공호흡기 | tag=처치·약물 | cue=스스로 숨 쉬기 어려운 환자에게 기계로 공기를 불어 넣는 장치
+   dEn=['generator', 'calculator'] dKo=['제세동기', '흡인기'] chips=ven+ti+la+tor decoy=['vent', 'tie'] n=1
+CHG w-setting | setting | 설정 | tag=처치·약물 | cue=기계에서 미리 맞춰 둔 값
+   dEn=['meeting', 'ceiling'] dKo=['해제', '삭제'] chips=set+ting decoy=['sat', 'tin'] n=1
+w-close | close | 가까운 | tag=일반 표현 | cue=멀지 않고 바로 옆에 있는
+   dEn=['loose', 'clear'] dKo=['먼', '깊은'] chips=close decoy=['clone'] n=1
+CHG w-level | level | 수준 | tag=검사·수치 | cue=혈액검사나 기계가 보여 주는 정도의 크기
+   dEn=['limit', 'label'] dKo=['위치', '방향'] chips=lev+el decoy=['let', 'eel'] n=1
+w-tonight | tonight | 오늘 밤 | tag=일반 표현 | cue=해가 지고 곧 이어질 오늘의 어두운 시간
+   dEn=['tomorrow', 'overnight'] dKo=['내일 아침', '어제 밤'] chips=to+night decoy=['toe', 'knight'] n=1
+CHG w-stretch | stretch | 늘어나다 | tag=반응·증상 | cue=고무줄처럼 길게 쭉 당겨져 길어지다
+   dEn=['scratch', 'sketch'] dKo=['굳어지다', '꺾이다'] chips=stretch decoy=['stretcher'] n=1
+w-arrest | arrest | 심정지 | tag=위기 대응 | cue=심장이 멈춰 피가 돌지 않게 된 응급 상황
+   dEn=['asthma', 'anemia'] dKo=['호흡곤란', '저혈압'] chips=ar+rest decoy=['art', 'rust'] n=1
+w-critically | critically | 위중하게 | tag=일반 표현 | cue=목숨이 위태로울 만큼 심각하게
+   dEn=['crucially', 'clinically'] dKo=['경미하게', '안정되게'] chips=crit+i+cal+ly decoy=['crib', 'tie'] n=1
+CHG w-compression | compression | 흉부압박 | tag=위기 대응 | cue=심정지 때 가슴뼈를 두 손으로 세게 눌러 피를 돌리는 처치
+   dEn=['completion', 'composition'] dKo=['제세동', '기관삽관'] chips=com+pres+sion decoy=['come', 'fresh'] n=1
+w-round | round | 라운드 | tag=위기 대응 | cue=같은 일을 반복할 때 한 바퀴 돌아 끝나는 한 번의 차례
+   dEn=['rotation', 'routine'] dKo=['순서', '부위'] chips=round decoy=['rough'] n=1
+w-despite | despite | ~에도 불구하고 | tag=일반 표현 | cue=이런 조건이 있는데도 그것과 상관없이라는 뜻을 만드는 말
+   dEn=['besides', 'beneath'] dKo=['~ 때문에 서둘러', '~ 덕분에 훨씬'] chips=de+spite decoy=['dee', 'spice'] n=1
+w-everything | everything | 모든 것 | tag=일반 표현 | cue=하나도 빠뜨리지 않고 전부를 가리키는 말
+   dEn=['something', 'everyone'] dKo=['아무것도', '무엇인가'] chips=every+thing decoy=['ever', 'think'] n=1
+w-need | need | 필요하다 | tag=일반 표현 | cue=없으면 안 되어서 꼭 갖춰야 하다
+   dEn=['feed', 'meet'] dKo=['충분하다', '가능하다'] chips=need decoy=['knee'] n=2
+w-talk | talk | 이야기하다 | tag=소통·돌봄 | cue=서로 마주 보고 말을 주고받다
+   dEn=['walk', 'stalk'] dKo=['침묵하다', '경청하다'] chips=talk decoy=['tall'] n=2
+w-realistic | realistic | 현실적인 | tag=소통·돌봄 | cue=희망사항이 아니라 실제로 일어날 법한 사실에 가까운
+   dEn=['optimistic', 'reliable'] dKo=['낙관적인', '이상적인'] chips=real+is+tic decoy=['reel', 'his'] n=1
+w-honest | honest | 솔직한 | tag=소통·돌봄 | cue=꾸미거나 숨기지 않고 사실대로 말하는
+   dEn=['modest', 'hopeful'] dKo=['정중한', '신중한'] chips=hon+est decoy=['home', 'rest'] n=1
+w-want | want | 원하다 | tag=소통·돌봄 | cue=마음속으로 바라서 갖거나 하고 싶어 하다
+   dEn=['wait', 'wonder'] dKo=['거절하다', '후회하다'] chips=want decoy=['went'] n=1
+CHG w-matter | matter | 중요하다 | tag=소통·돌봄 | cue=다른 것보다 의미가 커서 마음에 깊이 새겨지다
+   dEn=['master', 'mutter'] dKo=['무관하다', '알려지다'] chips=mat+ter decoy=['map', 'tar'] n=1
+w-most | most | 가장 | tag=일반 표현 | cue=여럿 중에서 정도가 제일 큰
+   dEn=['mainly', 'merely'] dKo=['조금', '결코'] chips=most decoy=['post'] n=1
+w-care | care | 돌봄 | tag=소통·돌봄 | cue=아픈 사람을 살피고 돌보는 일
+   dEn=['cure', 'core'] dKo=['진단', '처방'] chips=care decoy=['scare'] n=1
