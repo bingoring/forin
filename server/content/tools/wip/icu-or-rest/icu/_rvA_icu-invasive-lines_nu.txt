@@ -1,0 +1,443 @@
+=== 0 중심정맥관 삽입 보조·준비
+ [slider] answerAt: 2
+cue: 'Doctor: "Are we good to start?" You: the gown, gloves, mask and drape are all on the field.'
+exKo: 다 준비됐으니 시작하셔도 돼요.
+example: Everything is ready, so we can start.
+scale: [barely set up, partly ready, fully ready]
+why: 삽입 전에는 모자·마스크·멸균 가운·장갑·큰 방포가 전부 갖춰져야 해요(최대 멸균 차단 보호구). 하나라도 빠졌으면 fully ready가 아니라 partly ready라고 말하고 채운 뒤 시작해요.
+words: [w-ready, w-barrier, w-gown]
+
+ [context] ko: 무균의
+scenes:
+- {en: I've set up the sterile field and the drape is on., icon: stetho, ok: true, who: 의사에게 보고}
+- {en: Please keep your hands at your sides so everything near the site stays sterile., icon: me, ok: true, who: 환자에게}
+- {en: He's draped and the field is sterile per the bundle protocol., fix: We've covered him with a clean sheet so no germs can reach the line., icon: home, ok: false, who: 가족에게}
+why: 의료진끼리는 sterile field처럼 짧은 임상어가 정확해요. 가족에게는 bundle protocol 같은 말이 낯설고 딱딱하게 들려서, 왜 덮었는지를 쉬운 말로 풀어 줘요.
+word: sterile
+words: [w-sterile]
+
+=== 1 동맥관 삽입 보조·영점
+ [slider] answerAt: 1
+cue: 'Colleague: "I can still see the notch, but it''s getting soft."'
+exKo: 파형이 조금 눌려 있어서 라인을 확인해 볼게요.
+example: The waveform is a little damped, so I'll check the line.
+scale: [crisp waveform, slightly damped, flat waveform]
+why: 감쇠가 시작되면 dicrotic notch가 먼저 무뎌져요. 파형이 눌리면 실제 혈압이 다르게 보일 수 있으니 공기·꺾임·연결부를 확인하고 세척한 뒤 영점도 다시 봐요.
+words: [w-notch, w-waveform, w-sharp]
+
+ [context] ko: 영점을 맞추다
+scenes:
+- {en: 'Can you zero the transducer now that he''s in bed?', icon: handshake2, ok: true, who: 동료 간호사}
+- {en: 'I zeroed it at the phlebostatic axis, and the numbers look right.', icon: stetho, ok: true, who: 의사에게 보고}
+- {en: 'I need to zero the transducer to atmosphere at your phlebostatic axis, so lie still.', fix: 'I''m going to calibrate the sensor on your line, so please lie still for a moment.', icon: me, ok: false, who: 환자에게}
+why: 동료와 의사에게는 zero가 정확하고 짧아요. 환자에게 atmosphere·phlebostatic axis까지 말하면 알아듣지 못하고 긴장하니, 센서를 맞춘다고만 쉽게 말해요.
+word: zero
+words: [w-zero]
+
+=== 2 라인 라벨·개통 관리
+ [slider] answerAt: 2
+cue: 'Colleague: "I can''t make out a single word on this tag."'
+exKo: 표지가 안 읽혀서 지금 다시 붙일게요.
+example: The tag is unreadable, so I'll relabel it now.
+scale: [a little worn, smudged, unreadable]
+why: 한 글자도 안 읽히는 표지는 표지가 없는 것과 같아요. 라인은 약물·날짜가 읽히는 표지를 단 채로 두고, 읽히지 않으면 바로 다시 붙여요.
+words: [w-smudged, w-tag, w-unlabeled]
+
+ [context] ko: 관강
+scenes:
+- {en: The distal lumen is reserved for vasopressors., icon: stetho, ok: true, who: 의사에게 보고}
+- {en: 'Can you label each lumen before I hang this?', icon: handshake2, ok: true, who: 동료 간호사}
+- {en: 'Each lumen runs a different drug, and the distal one is reserved for vasopressors.', fix: 'The line has a few small channels, and one is kept just for his blood pressure medicine.', icon: home, ok: false, who: 가족에게}
+why: 의료진 사이에서는 lumen·distal·vasopressor가 정확한 말이에요. 가족에게는 모두 낯선 단어라서, 통로와 혈압약처럼 일상어로 풀어요.
+word: lumen
+words: [w-lumen]
+
+   SWAPREAD: This line has a spare channel kept for blood pressure medicine.
+   SWAPREAD: This line has a spare channel kept for vasopressors.
+   SWAPREAD: This line has a spare channel kept for pressors.
+ [swap] answer: blood pressure medicine
+before: ['This line has a spare channel kept for ', vasopressors, .]
+icon: me
+ko: 이 라인에는 혈압약 전용 통로가 따로 있어요
+notes: {blood pressure medicine: 환자가 바로 알아듣는 쉬운 말., pressors: 의료진 사이의 줄임말이라 환자에게는 더 낯설다., vasopressors: 의료진끼리 쓰는 말이라 환자에게는 낯설다.}
+options: [blood pressure medicine, vasopressors, pressors]
+who: 환자에게 · 라인 설명
+why: 같은 약도 환자에게는 쓰임새로 설명하고, 의료진끼리는 약물군 이름으로 말해요.
+words: [w-vasopressor, w-lumen]
+
+=== 3 흉관 배액 시스템 이해
+ [slider] answerAt: 1
+cue: 'Colleague: "The suction chamber is bubbling, but only softly."'
+exKo: 흡인 챔버가 지시된 수치에서 잔잔하게 기포가 올라와요.
+example: The suction chamber is gently bubbling at the ordered level.
+scale: [no bubbling, gentle bubbling, vigorous bubbling]
+why: 흡인 챔버(물 흡인 방식)에서는 부드러운 기포가 정상이에요. 세차게 끓으면 물이 빨리 증발해 흡인 압력이 달라질 수 있어서, 지시된 수치에서 기포가 잔잔한지 확인해요.
+words: [w-bubble, w-suction]
+
+ [context] ko: 챔버
+scenes:
+- {en: The collection chamber output is marked and timed every shift., icon: stetho, ok: true, who: 의사에게 보고}
+- {en: 'Can you check the water seal chamber when you pass by?', icon: handshake2, ok: true, who: 동료 간호사}
+- {en: The water seal chamber shows tidaling and the suction chamber is bubbling., fix: 'This box has a few sections, and the one with water lets us see your breathing move the fluid.', icon: me, ok: false, who: 환자에게}
+why: 의료진끼리는 chamber 이름(collection·water seal·suction)으로 짧게 말해요. 환자에게 여러 챔버 이름을 늘어놓으면 겁만 나서, 상자와 물 칸처럼 눈에 보이는 말로 설명해요.
+word: chamber
+words: [w-chamber]
+
+=== 4 드레싱·삽입부 사정
+ [slider] answerAt: 0
+cue: 'Colleague: "The skin around the site is a little pink, no drainage."'
+exKo: 부위가 약간 붉어서 계속 지켜볼게요.
+example: There's mild redness at the site, so I'll keep watching.
+scale: [mild redness, spreading redness, red and draining]
+why: 살짝 분홍빛이고 진물이 없으면 차트에 기록하고 계속 지켜봐요. 번지는 발적·열감·삼출물·열이 보이면 감염 신호일 수 있어서 의사에게 알려요.
+words: [w-redness, w-site, w-warmth]
+
+ [context] ko: 드레싱
+scenes:
+- {en: 'The dressing is intact, dated, and dry.', icon: stetho, ok: true, who: 의사에게 보고}
+- {en: 'Can you help me change the dressing? The edges are lifting.', icon: handshake2, ok: true, who: 동료 간호사}
+- {en: 'The transparent semipermeable dressing is intact, dated, and dry.', fix: The clear cover over your line looks good and dry., icon: me, ok: false, who: 환자에게}
+why: 의료진끼리는 intact, dated, dry처럼 점검 항목을 짧게 말해요. 환자에게 semipermeable 같은 재질 이름을 쓰면 낯설어서, 덮개가 잘 붙어 있고 말랐다고만 전해요.
+word: dressing
+words: [w-dressing]
+
+   SWAPREAD: The spot where the line goes in looks clean, with no swelling.
+   SWAPREAD: The insertion site looks clean, with no swelling.
+   SWAPREAD: The access point looks clean, with no swelling.
+ [swap] answer: spot where the line goes in
+before: ['The ', insertion site, ' looks clean, with no swelling.']
+icon: me
+ko: 라인이 들어간 자리가 깨끗하고 붓지도 않았어요
+notes: {access point: 의료진 쪽 표현이라 환자에게는 낯설다., insertion site: 의료진 사이의 정확한 말이라 환자에게는 딱딱하다., spot where the line goes in: 환자가 바로 이해하는 풀어 쓴 말.}
+options: [spot where the line goes in, insertion site, access point]
+who: 환자에게 · 삽입부 설명
+why: 같은 부위도 의료진끼리는 insertion site, 환자에게는 라인이 들어간 자리라고 풀어서 말해요.
+words: [w-insertion, w-site, w-clean]
+
+=== 5 장치 제거 보조 준비
+ [slider] answerAt: 1
+cue: 'Colleague: "After it''s out, how hard should I press on the site?"'
+exKo: 출혈이 멎을 때까지 단단히 압박할게요.
+example: I'll hold firm pressure until the bleeding stops.
+scale: [a light touch, firm pressure, crushing force]
+why: 라인을 뺀 뒤에는 출혈이 멎을 때까지 단단하게 압박해요(firm pressure). 스치듯 대면 지혈이 안 되고, 으스러뜨리듯 누르면 환자가 아프고 조직이 다쳐요.
+words: [w-firm, w-pressure]
+
+ [context] ko: 앙와위의
+scenes:
+- {en: He's supine with gauze and an occlusive dressing ready., icon: stetho, ok: true, who: 의사에게 보고}
+- {en: 'Can you help me get him supine before the removal?', icon: handshake2, ok: true, who: 동료 간호사}
+- {en: Please stay supine and keep your head still., fix: Please lie flat on your back and keep your head still., icon: me, ok: false, who: 환자에게}
+why: supine은 의료진끼리 체위를 말할 때 정확하고 짧아요. 환자에게는 알아듣기 어려우니, 등을 대고 편평하게 누우라고 쉬운 말로 요청해요.
+word: supine
+words: [w-supine]
+
+=== 6 중심라인 삽입 중 합병증 감시
+ [slider] answerAt: 1
+cue: 'Colleague: "Extra beats keep firing every time the wire moves."'
+exKo: 심실조기수축이 연달아 보여서 지금 말씀드려요.
+example: I'm seeing runs of PVCs, so I'm telling you now.
+scale: [a stray PVC, runs of PVCs, sustained VT]
+why: 와이어가 심장 안에 닿으면 조기 박동이 생길 수 있어요. 연달아 나오면 runs of PVCs라고 바로 시술자에게 알려 와이어 위치를 보게 하고, 리듬을 계속 지켜봐요.
+words: [w-pvc, w-wire]
+
+ [context] ko: 산소포화도
+scenes:
+- {en: His sats are dropping and breath sounds are down on the right., icon: stetho, ok: true, who: 의사에게 보고}
+- {en: 'Can you watch his sats while I listen to his chest?', icon: handshake2, ok: true, who: 동료 간호사}
+- {en: 'Your sats just dropped, so we''re checking your lung.', fix: 'Your oxygen level on the monitor dipped a little, so we''re checking your lungs.', icon: me, ok: false, who: 환자에게}
+why: 의료진끼리는 sats가 산소포화도를 가리키는 흔한 줄임말이에요. 환자에게는 줄임말이 낯설고 불안하니 산소 수치라고 풀어 말해요.
+word: sats
+words: [w-sat]
+
+=== 7 동맥관 파형 이상 문제해결
+ [slider] answerAt: 2
+cue: 'Colleague: "The trace is flat, the notch is gone, and the square-wave test shows no bounce."'
+exKo: 파형이 과도하게 감쇠돼서 수치가 틀릴 수 있어요.
+example: The trace is overdamped, so the numbers may be off.
+scale: [mildly damped, damped, overdamped]
+why: 방형파 검사에서 진동 없이 바로 가라앉으면 overdamped예요. 이때는 수축기가 낮게, 이완기가 높게 보여 실제 혈압을 가릴 수 있어서, 공기·꺾임·혈전·연결부를 확인해요.
+words: [w-overdamped, w-damped, w-squarewave, w-trace]
+
+ [context] ko: 압력
+scenes:
+- {en: 'The pressure reads low, but the trace is overdamped.', icon: stetho, ok: true, who: 의사에게 보고}
+- {en: 'Can you check the pressure bag while I re-flush?', icon: handshake2, ok: true, who: 동료 간호사}
+- {en: Your pressure reading is unreliable because the trace is damped., fix: 'The number from the line in your arm isn''t accurate right now, so we''re fixing the line.', icon: me, ok: false, who: 환자에게}
+why: 의료진끼리는 pressure와 trace를 그대로 말해도 통해요. 환자에게 trace is damped라고 하면 무슨 뜻인지 모르니, 라인 수치가 지금 정확하지 않아 손보는 중이라고 말해요.
+word: pressure
+words: [w-pressure]
+
+=== 8 흉관 배액량·기포 감시
+ [slider] answerAt: 2
+cue: 'Colleague: "The water seal bubbles with every breath, all the time."'
+exKo: 계속 기포가 나서 연결부를 전부 확인할게요.
+example: Continuous bubbling means I'll check every connection.
+scale: [bubbles on a cough, occasional bubbling, continuous bubbling]
+why: 수봉에서 계속 기포가 나면 공기가 새는 것일 수 있어요. 연결부를 먼저 점검하고, 환자 쪽 누출이 의심되면 의사에게 알려요.
+words: [w-bubble, w-leak, w-continuous]
+
+ [context] ko: 새는 곳
+scenes:
+- {en: There's a continuous air leak in the water seal chamber., icon: stetho, ok: true, who: 의사에게 보고}
+- {en: 'Can you hold the tubing while I check the connections for a leak?', icon: handshake2, ok: true, who: 동료 간호사}
+- {en: You have a continuous air leak with a possible fistula., fix: 'There''s a spot where air is escaping, so I''m checking the connections and I''ll tell the doctor.', icon: me, ok: false, who: 환자에게}
+why: 의료진끼리는 air leak이 짧고 정확해요. 환자에게 fistula 같은 가능성까지 던지면 확인되지 않은 말이 겁만 줘요. 지금 하는 점검과 의사에게 알릴 것을 말해요.
+word: leak
+words: [w-leak]
+
+=== 9 흉관 파동·개통 확인
+ [slider] answerAt: 1
+cue: 'Colleague: "The fluid moves up and down a little with each breath."'
+exKo: 물결이 부드럽게 보여서 관이 개통돼 있어요.
+example: I see gentle tidaling, so the tube is patent.
+scale: [no movement, gentle tidaling, wild swinging]
+why: 호흡에 맞춰 작게 오르내리는 tidaling은 흉관이 열려 있다는 신호예요. 갑자기 멈추면 꺾임·막힘이거나 폐가 펴진 것일 수 있어서 확인하고 의사에게 알려요.
+words: [w-tidal, w-swing]
+
+ [context] ko: 물결치며 오르내림
+scenes:
+- {en: There's no tidaling in the water seal since this morning., icon: stetho, ok: true, who: 의사에게 보고}
+- {en: 'Is he still tidaling? Watch the water seal for me.', icon: handshake2, ok: true, who: 동료 간호사}
+- {en: Your chest tube isn't tidaling anymore., fix: 'The fluid in the box isn''t moving with your breathing like before, so I''m going to check the tube.', icon: me, ok: false, who: 환자에게}
+why: 의료진끼리는 tidaling만으로 뜻이 통해요. 환자에게는 낯설고 불안하니, 무엇이 달라졌고 지금 무엇을 확인하는지를 쉽게 말해요.
+word: tidaling
+words: [w-tidal]
+
+   SWAPREAD: The fluid in the box moves a little as you breathe — that tells us the tube is open.
+   SWAPREAD: The fluid in the box moves a little as you respire — that tells us the tube is open.
+   SWAPREAD: The fluid in the box moves a little as you ventilate — that tells us the tube is open.
+ [swap] answer: breathe
+before: ['The fluid in the box moves a little as you ', respire, ' — that tells us the tube is open.']
+icon: me
+ko: 숨 쉴 때 상자 속 물이 조금씩 움직이는 건 관이 열려 있다는 뜻이에요
+notes: {breathe: 환자가 쓰는 쉬운 말., respire: 의학 문어체라 대화에서는 어색하다., ventilate: 인공호흡을 연상시켜 환자를 놀라게 한다.}
+options: [breathe, respire, ventilate]
+who: 환자에게 · 흉관 설명
+why: 환자에게는 breathe처럼 일상어로, 차트에는 respiration으로 써요.
+words: [w-respiration, w-tidal]
+
+=== 10 PA 카테터 파형·관리
+ [slider] answerAt: 0
+cue: 'Colleague: "How long does the balloon stay inflated for a wedge reading?"'
+exKo: 측정할 때만 잠깐 부풀려요.
+example: I only inflate it briefly for the reading.
+scale: [briefly, for a while, indefinitely]
+why: 풍선은 쐐기압을 잴 때만 잠깐 부풀리고 바로 빼요. 부풀린 채 두면 폐동맥이 막혀 폐가 다칠 수 있어서, 측정 사이에는 항상 빼 둬요.
+words: [w-balloon, w-inflated, w-reading]
+
+ [context] ko: 쐐기압
+scenes:
+- {en: The wedge reading looks consistent with the last one., icon: stetho, ok: true, who: 의사에게 보고}
+- {en: Deflate the balloon right after you get the wedge., icon: handshake2, ok: true, who: 동료 간호사}
+- {en: 'We just got a wedge, so we know his pulmonary pressures.', fix: We just measured the pressure in the small blood vessels of his lungs., icon: home, ok: false, who: 가족에게}
+why: 의료진끼리는 wedge가 쐐기압을 뜻하는 말로 통해요. 가족에게는 wedge와 pulmonary pressures가 낯설어서, 폐 혈관 압력을 쟀다고 풀어 줘요.
+word: wedge
+words: [w-wedge]
+
+=== 11 라인 감염 조기 인지
+ [slider] answerAt: 1
+cue: 'Doctor: "Do we know it''s the line?" You: "Not yet — but I can''t say it isn''t."'
+exKo: 라인일 수 있어서 알려 드려요.
+example: It could be the line, so I'm letting you know.
+scale: [it isn't the line, it could be the line, it is the line]
+why: 열이 나도 배양 결과가 나오기 전에는 라인 탓이라고 단정하지 않아요. 가능성은 열어 두고, 의사에게 알리고 지침대로 배양을 진행해요.
+words: [w-blame, w-line]
+
+ [context] ko: 배양검사
+scenes:
+- {en: I'll draw paired cultures before the first dose of antibiotics., icon: stetho, ok: true, who: 의사에게 보고}
+- {en: 'Can you grab the culture bottles? I''m drawing from the line.', icon: handshake2, ok: true, who: 동료 간호사}
+- {en: We're drawing paired blood cultures to look for bacteremia., fix: We're taking blood samples to see whether any germs are growing., icon: me, ok: false, who: 환자에게}
+why: 의료진끼리는 paired cultures가 정확하고 짧아요. 환자에게 bacteremia 같은 말은 겁을 주니, 피를 뽑아 균이 자라는지 본다고 말해요.
+word: culture
+words: [w-culture]
+
+   SWAPREAD: He's shaking with chills and the site looks red.
+   SWAPREAD: He's rigoring and the site looks red.
+   SWAPREAD: He's in rigor and the site looks red.
+ [swap] answer: shaking with chills
+before: ['He''s ', rigoring, ' and the site looks red.']
+icon: home
+ko: 오한으로 떨고 있고 부위도 붉어 보여요
+notes: {in rigor: 의학 용어라 가족에게 딱딱하고 낯설다., rigoring: 의료진끼리 쓰는 말이라 가족에게는 낯설다., shaking with chills: 가족이 바로 이해하는 쉬운 말.}
+options: [shaking with chills, rigoring, in rigor]
+who: 가족에게 · 상태 설명
+why: 같은 증상도 가족에게는 보이는 모습 그대로, 의료진끼리는 rigor라고 말해요.
+words: [w-rigor, w-red, w-site]
+
+=== 12 영양관·위관 위치 재확인
+ [slider] answerAt: 2
+cue: 'Colleague: "Which check is the most reliable before we restart feeds?"'
+exKo: 먼저 엑스레이로 위치를 확인할게요.
+example: I'll verify placement with an x-ray first.
+scale: [the mark matches, the aspirate pH fits, an x-ray confirms]
+why: 외부 길이 표시와 흡인물 산도는 참고일 뿐이고, 엑스레이로 관 끝 위치를 확인하는 게 가장 믿을 만해요. 확인 전에는 병원 지침과 처방대로 급식을 보류해요.
+words: [w-xray, w-ph, w-length]
+
+ [context] ko: 위치
+scenes:
+- {en: I'll verify placement with x-ray before restarting feeds., icon: stetho, ok: true, who: 의사에게 보고}
+- {en: 'Can you double-check the tube placement against the mark?', icon: handshake2, ok: true, who: 동료 간호사}
+- {en: We need an x-ray to verify the gastric placement of your tube., fix: We'll take a picture to make sure the end of the tube is in your stomach., icon: me, ok: false, who: 환자에게}
+why: 의료진끼리는 placement와 verify가 정확하고 짧아요. 환자에게는 gastric placement가 낯설어서, 사진으로 관 끝이 위 안에 있는지 본다고 말해요.
+word: placement
+words: [w-placement]
+
+=== 13 라인 다중접근 관리
+ [slider] answerAt: 1
+cue: 'Pharmacy: "Those two drips aren''t compatible."'
+exKo: 배합이 안 돼서 관강을 따로 쓸게요.
+example: They aren't compatible, so I'll use separate lumens.
+scale: [same lumen is fine, use separate lumens, stop both drips]
+why: 배합이 안 되는 약은 같은 관강으로 같이 넣지 않고 관강을 나눠요. 약을 멈추는 건 처방 사항이라, 확실하지 않으면 약사나 의사에게 확인해요.
+words: [w-compatible, w-separate, w-lumen]
+
+ [context] ko: 방울주입
+scenes:
+- {en: 'The two drips are incompatible, so I''ll split the lumens.', icon: stetho, ok: true, who: 의사에게 보고}
+- {en: 'Can you hang the new drip in the proximal lumen?', icon: handshake2, ok: true, who: 동료 간호사}
+- {en: 'These two drips are incompatible, so I''m separating the lumens.', fix: 'Two of your medicines can''t mix in the same tube, so I''m giving them through separate tubes.', icon: me, ok: false, who: 환자에게}
+why: 의료진끼리는 drip과 lumen으로 짧게 말해요. 환자에게 incompatible과 lumen은 낯서니, 두 약이 한 관에서 섞이면 안 돼서 따로 준다고 말해요.
+word: drip
+words: [w-drip]
+
+=== 14 장치 제거 후 지혈·관찰
+ [slider] answerAt: 1
+cue: 'Colleague: "The spot under the dressing is getting bigger and tight."'
+exKo: 혈종이 커져서 의사에게 연락할게요.
+example: The hematoma is growing, so I'm calling the physician.
+scale: [a little bruising, a growing hematoma, a severe bleed]
+why: 커지는 혈종은 출혈이 계속된다는 신호일 수 있어요. 압박을 유지하고 크기를 표시해 의사에게 알려요.
+words: [w-hematoma, w-watch]
+
+ [context] ko: 맥박
+scenes:
+- {en: The distal pulse is present and the site is dry., icon: stetho, ok: true, who: 의사에게 보고}
+- {en: 'Can you check his pulse below the site while I hold pressure?', icon: handshake2, ok: true, who: 동료 간호사}
+- {en: 'Distal pulse intact, and I''m monitoring for hematoma.', fix: I'm feeling the pulse below the spot to make sure blood is flowing well., icon: me, ok: false, who: 환자에게}
+why: 의료진끼리는 distal pulse와 hematoma 같은 짧은 말이 정확해요. 환자에게는 차트 같은 말투가 낯서니, 무엇을 만져 보고 왜 확인하는지 쉽게 말해요.
+word: pulse
+words: [w-pulse]
+
+=== 15 중심라인 삽입 중 기흉·혈흉 위기
+ [slider] answerAt: 2
+cue: 'Colleague: "No breath sounds on one side, BP dropping, and the trachea is shifting."'
+exKo: 긴장성 기흉으로 보여서 지금 바로 부를게요.
+example: This looks like a tension pneumothorax, so I'm calling now.
+scale: [a small pneumothorax, a pneumothorax with distress, a tension pneumothorax]
+why: 한쪽 호흡음 소실, 저혈압, 기관 편위가 함께 보이면 긴장성 기흉을 의심해요. 바로 의사에게 알리고 감압 물품을 준비해 곁에서 도와요.
+words: [w-tension, w-pneumothorax, w-trachea]
+
+ [context] ko: 즉시
+scenes:
+- {en: 'Can someone get the ultrasound stat?', icon: handshake2, ok: true, who: 동료 간호사}
+- {en: Absent breath sounds and hypotension — I need a portable film stat., icon: stetho, ok: true, who: 의사에게 보고}
+- {en: We need a stat film of your chest right now., fix: We're taking a picture of your chest right away to see what's going on., icon: me, ok: false, who: 환자에게}
+why: stat은 의료진끼리 지금 바로라는 뜻으로 쓰는 말이에요. 환자에게는 낯설고 다급하게 들리니, 곧바로 사진을 찍는다고 침착하게 말해요.
+word: stat
+words: [w-stat]
+
+=== 16 동맥관 우발적 분리 실혈 위기
+ [slider] answerAt: 1
+cue: 'Doctor: "How much did she lose?" You: the sheet and floor are soaked, but her pressure is holding for now.'
+exKo: 실혈량이 상당해서 압박하고 있어요.
+example: Her blood loss is significant, so I'm holding pressure.
+scale: [a little blood, significant blood loss, a trace of blood]
+why: 침대와 바닥이 젖을 만큼이면 significant예요. 압박과 클램프를 유지하면서 혈압을 계속 보고, 실혈량을 의사에게 구체적으로 전해요.
+words: [w-loss, w-significant, w-blood]
+
+ [context] ko: 실혈
+scenes:
+- {en: 'Estimated blood loss is significant, and I''m holding direct pressure.', icon: stetho, ok: true, who: 의사에게 보고}
+- {en: 'Can you write down the blood loss while I hold pressure?', icon: handshake2, ok: true, who: 동료 간호사}
+- {en: Her estimated blood loss is significant and she's hypotensive., fix: 'She lost a good amount of blood, and we''re watching her blood pressure closely.', icon: home, ok: false, who: 가족에게}
+why: 의료진끼리는 estimated blood loss와 hypotensive가 정확하고 짧아요. 가족에게는 차트 같은 말투가 차갑게 들려서, 피를 꽤 잃었고 혈압을 보고 있다고 풀어 줘요.
+word: blood loss
+words: [w-loss, w-blood]
+
+=== 17 흉관 우발적 제거 개방기흉 위기
+ [slider] answerAt: 1
+cue: 'Colleague: "The tube is out and the hole is sucking air — how do I tape the dressing?"'
+exKo: 드레싱을 세 면에 붙였어요.
+example: I taped the dressing on three sides.
+scale: [loosely over it, taped on three sides, sealed on all four sides]
+why: 빠진 자리는 밀폐 드레싱을 세 면만 붙여요. 한 면을 열어 두면 공기가 빠져나가 긴장성 기흉이 되는 걸 막아요. 곧바로 의사를 부르고 호흡 상태를 지켜봐요.
+words: [w-tape, w-occlusive, w-side]
+
+ [context] ko: 상처
+scenes:
+- {en: 'The wound is covered with an occlusive dressing, taped on three sides.', icon: stetho, ok: true, who: 의사에게 보고}
+- {en: 'Can you hold the gauze on the wound while I grab the tape?', icon: handshake2, ok: true, who: 동료 간호사}
+- {en: There's an open wound at the chest tube site with a risk of tension pneumothorax., fix: 'The tube came out, so I''ve covered the spot to keep air from getting in, and I''m right here with you.', icon: me, ok: false, who: 환자에게}
+why: 의료진끼리는 wound와 tension pneumothorax가 위험을 정확히 알려 줘요. 환자에게는 위험 이름을 늘어놓지 말고 지금 한 조치와 곁에 있음을 말해요.
+word: wound
+words: [w-wound]
+
+=== 18 라인 개방 공기색전 위기
+ [slider] answerAt: 1
+cue: 'Colleague: "He took a sudden, sharp breath in the moment the cap came loose."'
+exKo: 캡이 풀리는 순간 헉하고 숨을 들이쉬었어요.
+example: He gasped when the cap came loose.
+scale: [sighed, gasped, choked]
+why: gasp는 놀라거나 숨이 막혀 갑자기 숨을 들이켜는 거예요. sigh는 한숨, choke는 숨이 막혀 켁켁거리는 것이라 달라요. 캡이 풀린 뒤 gasp가 보이면 라인을 잠그고 바로 알려요.
+words: [w-gasp, w-cap, w-loose]
+
+ [context] ko: 체위
+scenes:
+- {en: I've put him in left lateral Trendelenburg position and clamped the line., icon: stetho, ok: true, who: 의사에게 보고}
+- {en: 'Can you help me get him in position? Left side down, head down.', icon: handshake2, ok: true, who: 동료 간호사}
+- {en: We've put him in the left lateral Trendelenburg position., fix: 'We''ve turned him onto his left side with his head low, and we''re staying right with him.', icon: home, ok: false, who: 가족에게}
+why: 의료진끼리는 체위 이름이 정확하고 짧아요. 가족에게 left lateral Trendelenburg는 낯서니, 왼쪽으로 눕히고 머리를 낮췄다고 모습 그대로 말해요.
+word: position
+words: [w-position]
+
+   SWAPREAD: We've put him in the left side, head-down position and we're staying with him.
+   SWAPREAD: We've put him in the left lateral Trendelenburg position and we're staying with him.
+   SWAPREAD: We've put him in the LLD Trendelenburg and we're staying with him.
+ [swap] answer: left side, head-down position
+before: ['We''ve put him in the ', left lateral Trendelenburg position, ' and we''re staying with him.']
+icon: home
+ko: 왼쪽으로 눕히고 머리를 낮췄고, 곁에 있을게요
+notes: {LLD Trendelenburg: 줄임말이라 가족은 알아듣지 못한다., left lateral Trendelenburg position: 의료진끼리의 정식 이름이라 가족에게는 낯설다., 'left side, head-down position': 가족이 모습 그대로 알아듣는 말.}
+options: ['left side, head-down position', left lateral Trendelenburg position, LLD Trendelenburg]
+who: 가족에게 · 체위 설명
+why: 같은 체위도 가족에게는 어떻게 눕혔는지로, 의료진끼리는 정식 이름으로 말해요.
+words: [w-lateral, w-trendelenburg, w-position]
+
+=== 19 PA 카테터 폐동맥 파열 위기
+ [slider] answerAt: 2
+cue: 'Colleague: "She''s coughing up bright red blood right after the wedge."'
+exKo: 뚜렷한 객혈이라 도움을 요청하고 있어요.
+example: She has frank hemoptysis, so I'm calling for help.
+scale: [a few streaks, blood-tinged sputum, frank hemoptysis]
+why: 쐐기압 측정 직후 선홍색 피를 상당량 기침으로 뱉으면 frank hemoptysis예요. 폐동맥 파열이 걱정되는 위급 신호라 곁을 지키고 기도를 살피며 바로 의사에게 알려요.
+words: [w-hemoptysis]
+
+ [context] ko: 객혈
+scenes:
+- {en: She has hemoptysis after the wedge reading., icon: stetho, ok: true, who: 의사에게 보고}
+- {en: 'Any more hemoptysis? Get the suction ready, please.', icon: handshake2, ok: true, who: 동료 간호사}
+- {en: She's having hemoptysis from a possible pulmonary artery rupture., fix: 'She''s coughing up blood, and we''re getting the right team here fast.', icon: home, ok: false, who: 가족에게}
+why: 의료진끼리는 hemoptysis가 짧고 정확해요. 가족에게는 낯선 말에 파열 같은 추측까지 붙으면 겁만 줘요. 보이는 증상과 지금 하는 조치를 쉬운 말로 전해요.
+word: hemoptysis
+words: [w-hemoptysis]
+
+=== 20 라인 관련 대량출혈·혈종 위기
+ [slider] answerAt: 2
+cue: 'Colleague: "I''m alone, pressing on it, and it won''t stop. How soon do I need more hands?"'
+exKo: 지금 바로 도움이 필요해요, 와 주세요.
+example: I need help right now, so please come.
+scale: [when convenient, soon, right now]
+why: 압박을 풀 수 없는 대량 출혈에서는 혼자 버티지 않고 바로 도움을 요청해요. 병원 지침에 따라 의사와 지원 인력을 즉시 부르고, 도착할 때까지 압박을 유지해요.
+words: [w-help, w-arrive, w-pressure]
+
+ [context] ko: 혈종
+scenes:
+- {en: The hematoma is still growing despite direct pressure., icon: stetho, ok: true, who: 의사에게 보고}
+- {en: 'Can you hold pressure while I check the hematoma and call for help?', icon: handshake2, ok: true, who: 동료 간호사}
+- {en: You have an expanding hematoma at your puncture site., fix: 'There''s bleeding under your skin at that spot, so I''m pressing on it and getting help.', icon: me, ok: false, who: 환자에게}
+why: 의료진끼리는 hematoma가 정확하고 짧아요. 환자에게 expanding hematoma와 puncture site는 낯설고 겁나니, 피부 밑 출혈이라 누르고 도움을 부른다고 쉽게 말해요.
+word: hematoma
+words: [w-hematoma]
+
