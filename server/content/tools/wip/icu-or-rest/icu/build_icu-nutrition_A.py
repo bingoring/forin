@@ -117,6 +117,7 @@ sent_by_en = {x["en"]: x["ko"] for s in base["situations"] for x in s["sentences
 BAD = set("""ass arse anal anus butt cum cunt cock dick fag fuck homo jizz naff nig piss porn rape shit slut sux tit tits twat wank whore
 bra bonzo dork dwarf flog grope hearse hell lust oriental slay sow stab strangle tomb tramp underwear witch nasty
 beer wine rum gin booze pub bar shot shots liquor drunk vodka whisky whiskey ale brew keg cider sake toast cork tipsy sober wake coffin grave burial funeral urn casket dead die died kill sex sexy nude naked breast boob""".split())
+TAGMAP = {"일반 동사":"일반 어휘","일반 형용사":"일반 어휘","일반 명사":"일반 어휘","영양 처방":"영양·급식","경로·급식":"영양·급식"}
 def n(s): return len(re.sub(r"\s", "", s))
 def okLen(a, b): return abs(n(a) - n(b)) <= 3 or max(n(a), n(b)) <= 1.25 * min(n(a), n(b))
 def parse_chips(s): return [x.split("|") for x in s.split()]
@@ -145,6 +146,7 @@ for w in words:
     ex = w["example"]; assert ex in sent_by_en, ex
     for k in ("distractorsEn","dEn"): pass
     w["exKo"] = sent_by_en[ex]
+    e["tag"] = TAGMAP.get(e["tag"], e["tag"])
     w["cue"] = e["cue"]; w["tag"] = e["tag"]; tagc[e["tag"]] = tagc.get(e["tag"], 0) + 1
     for k in ("dEn","dKo","decoy"):
         for x in e[k]:
