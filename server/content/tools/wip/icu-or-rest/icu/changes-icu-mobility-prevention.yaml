@@ -354,13 +354,15 @@ changes:
   index: 3
   fields:
   - words
-  why: 너무 쉬운 말 태그를 뺌 — 문장은 그대로
+  - ko
+  why: 너무 쉬운 말 태그를 뺌 — 문장은 그대로 / tolerance를 '내성'(약물 내성으로 읽힘)이 아니라 활동을 견디는 정도로
 - kind: sentence
   situation: 점진적 좌위·의자 이동
   index: 1
   fields:
   - words
-  why: 너무 쉬운 말 태그를 뺌 — 문장은 그대로
+  - ko
+  why: 너무 쉬운 말 태그를 뺌 — 문장은 그대로 / tolerance를 '내성'이 아니라 '잘 견디는지'로
 - kind: sentence
   situation: 조기 이동 중 급성 악화
   index: 2
@@ -420,4 +422,112 @@ changes:
   index: 4
   fields:
   - words
-  why: 너무 쉬운 말 태그를 뺌 — 문장은 그대로
+  - en
+  - ko
+  - chunks
+  why: 너무 쉬운 말 태그를 뺌 — 문장은 그대로 / 'I know this is realistic, but'은 영어가 틀려 'I know this is hard to hear, but'으로 고침(A 검토)
+- kind: sentence
+  situation: 인공호흡 환자 조기 이동
+  index: 6
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: I told him … 문장이 알람을 '응급 아님'으로 단정해 잘못된 안심이라 알람이 울리면 바로 확인하겠다는 말로 바꿈(A 검토)
+- kind: sentence
+  situation: 급성 폐색전 발생 위기
+  index: 5
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: ICU 안에서는 신속대응팀이 아니라 상주 담당의를 침상으로 부름(A 검토 사실 오류)
+- kind: word-remove
+  id: w-emergency
+  why: 6.6 문장을 바꿔 어느 문장도 태그하지 않게 됨(상황 6은 단어가 충분)
+- kind: sentence
+  situation: 체위변경·압력 재분산
+  index: 5
+  fields:
+  - chunks
+  why: 구 경계에서 끊도록 다시 자름(관사·of·부사 앞에서 끊긴 조각)
+- kind: sentence
+  situation: 피부·압박점 사정
+  index: 0
+  fields:
+  - chunks
+  why: 구 경계에서 끊도록 다시 자름(관사·of·부사 앞에서 끊긴 조각)
+- kind: sentence
+  situation: 피부·압박점 사정
+  index: 4
+  fields:
+  - chunks
+  - words
+  why: 구 경계에서 끊도록 다시 자름(관사·of·부사 앞에서 끊긴 조각) / w-call은 여기서 '판정하다'라 헤드워드 ko(부르다)와 안 맞아 태그를 뺌
+- kind: sentence
+  situation: 낙상 위험 관리
+  index: 0
+  fields:
+  - chunks
+  why: 구 경계에서 끊도록 다시 자름(관사·of·부사 앞에서 끊긴 조각)
+- kind: sentence
+  situation: 욕창 단계별 관리
+  index: 0
+  fields:
+  - chunks
+  why: 구 경계에서 끊도록 다시 자름(관사·of·부사 앞에서 끊긴 조각)
+- kind: sentence
+  situation: 의료기기 관련 욕창 예방
+  index: 0
+  fields:
+  - chunks
+  why: 구 경계에서 끊도록 다시 자름(관사·of·부사 앞에서 끊긴 조각)
+- kind: sentence
+  situation: VTE 예방 금기·조정
+  index: 0
+  fields:
+  - chunks
+  why: 구 경계에서 끊도록 다시 자름(관사·of·부사 앞에서 끊긴 조각)
+- kind: sentence
+  situation: VTE 예방 금기·조정
+  index: 4
+  fields:
+  - chunks
+  why: 구 경계에서 끊도록 다시 자름(관사·of·부사 앞에서 끊긴 조각)
+- kind: sentence
+  situation: 재활팀 협업 계획
+  index: 0
+  fields:
+  - chunks
+  why: 구 경계에서 끊도록 다시 자름(관사·of·부사 앞에서 끊긴 조각)
+- kind: sentence
+  situation: 재활팀 협업 계획
+  index: 5
+  fields:
+  - chunks
+  why: 구 경계에서 끊도록 다시 자름(관사·of·부사 앞에서 끊긴 조각)
+- kind: sentence
+  situation: ICU 획득 쇠약 예방
+  index: 4
+  fields:
+  - chunks
+  why: 구 경계에서 끊도록 다시 자름(관사·of·부사 앞에서 끊긴 조각)
+- kind: sentence
+  situation: 점진적 좌위·의자 이동
+  index: 5
+  fields:
+  - chunks
+  why: 구 경계에서 끊도록 다시 자름(관사·of·부사 앞에서 끊긴 조각)
+- kind: sentence
+  situation: 이동 중 낙상·손상 위기
+  index: 0
+  fields:
+  - chunks
+  why: 구 경계에서 끊도록 다시 자름(관사·of·부사 앞에서 끊긴 조각)
+- kind: word
+  id: w-call
+  fields:
+  - example
+  why: 4.4의 'call this a stage-one injury'는 판정하다라 헤드워드 ko(부르다)와 안 맞아 15.4 문장으로 예문을 바꿈

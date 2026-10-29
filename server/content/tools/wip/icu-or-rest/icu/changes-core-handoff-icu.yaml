@@ -4,8 +4,9 @@ changes:
   situation: SBAR 구조 인계 기초
   index: 0
   fields:
+  - ko
   - words
-  why: '태그 뺌: day'
+  why: '태그 뺌: day / ko ''그는'' 번역투 제거(검토 S5)'
 - kind: sentence
   situation: SBAR 구조 인계 기초
   index: 2
@@ -46,14 +47,16 @@ changes:
   situation: 라인·장치 목록 인계
   index: 4
   fields:
+  - chunks
   - words
-  why: '태그 뺌: know'
+  why: '태그 뺌: know / stops working을 끊지 않게 (검토 S6)'
 - kind: sentence
   situation: 간호 문제·계획 인계
   index: 1
   fields:
+  - chunks
   - words
-  why: '태그 뺌: tonight'
+  why: '태그 뺌: tonight / weaning trial을 끊지 않게 (검토 S6)'
 - kind: sentence
   situation: 간호 문제·계획 인계
   index: 3
@@ -112,8 +115,9 @@ changes:
   situation: ROSC 후 환자 인계
   index: 4
   fields:
+  - chunks
   - words
-  why: '태그 뺌: minute, hour'
+  why: '태그 뺌: minute, hour / for the first hour를 끊지 않게 (검토 S6)'
 - kind: sentence
   situation: OR에서 ICU 수술후 인계
   index: 2
@@ -238,8 +242,9 @@ changes:
   situation: 검사·시술 후 인계
   index: 1
   fields:
+  - chunks
   - words
-  why: '태그 뺌: back'
+  why: '태그 뺌: back / since she got back을 끊지 않게 (검토 S6)'
 - kind: sentence
   situation: 검사·시술 후 인계
   index: 4
@@ -268,8 +273,11 @@ changes:
   situation: 불안정 환자 인계 강조점
   index: 4
   fields:
+  - en
+  - ko
+  - chunks
   - words
-  why: '태그 뺌: wait, full'
+  why: '태그 뺌: wait, full / 쓰지 않는 ''a full run of VT'' → ''sustained VT'' (검토 S3)'
 - kind: sentence
   situation: 급변 중 긴급 인계
   index: 1
@@ -280,8 +288,10 @@ changes:
   situation: 급변 중 긴급 인계
   index: 2
   fields:
+  - ko
+  - chunks
   - words
-  why: '태그 뺌: need, hand'
+  why: '태그 뺌: need, hand / a second pair of hands는 한 사람 더 — ko ''손이 두 사람 더'' 오역 정정, 관용구를 한 덩어리로 (검토 S2)'
 - kind: sentence
   situation: 급변 중 긴급 인계
   index: 3
@@ -376,8 +386,9 @@ changes:
   situation: 다수 중환자 동시 인계 우선화
   index: 2
   fields:
+  - chunks
   - words
-  why: '태그 뺌: need, morning'
+  why: '태그 뺌: need, morning / and his morning labs를 끊지 않게 (검토 S6)'
 - kind: sentence
   situation: 다수 중환자 동시 인계 우선화
   index: 3
@@ -581,3 +592,61 @@ changes:
 - kind: word-remove
   id: w-help
   why: 너무 쉬움(목록 밖 판단)
+- kind: word
+  id: w-vital
+  fields:
+  - en
+  - ipa
+  why: 헤드워드가 형용사 vital인데 ko '활력징후'·문장은 vitals — 복수 명사로 (id 유지)
+- kind: word
+  id: w-orient
+  fields:
+  - en
+  - ko
+  - ipa
+  why: 문장은 oriented — 임상에서 형용사로 굳은 분사형을 헤드워드로, ko도 '지남력이 있는' (id 유지)
+- kind: word-remove
+  id: w-negative
+  why: 4.4 문장을 '감염관리팀이 검체 결과를 보고 판단할 때까지'로 고쳐 어느 문장도 태그하지 않게 됨
+- kind: word-remove
+  id: w-hourly
+  why: ko '매시간의'가 문장 10.2(두 시간마다)와 어긋남 — 10.2 태그를 빼고 삭제
+- kind: sentence
+  situation: SBAR 구조 인계 기초
+  index: 3
+  fields:
+  - chunks
+  why: 구 경계(walk you through · the background first)를 끊지 않게 (검토 S6)
+- kind: sentence
+  situation: 활력·주입약 인계
+  index: 2
+  fields:
+  - chunks
+  why: 구 경계(pressor and sedation dose) (검토 S6)
+- kind: sentence
+  situation: 알레르기·주의사항 전달
+  index: 4
+  fields:
+  - en
+  - ko
+  - chunks
+  - words
+  why: MRSA 격리 해제를 swab 음성 하나로 단정하지 않고 감염관리팀 판단으로 (검토 S1, 안전)
+- kind: sentence
+  situation: OR에서 ICU 수술후 인계
+  index: 1
+  fields:
+  - chunks
+  why: small propofol drip 구를 끊지 않게 (검토 S6)
+- kind: sentence
+  situation: night shift 인계 우선순위
+  index: 2
+  fields:
+  - words
+  why: '태그 뺌: hourly (ko ''매시간의''가 두 시간마다와 어긋남 — 검토 D3)'
+- kind: sentence
+  situation: 검사·시술 후 인계
+  index: 3
+  fields:
+  - ko
+  why: 구어 '오더났습니다' → '처방되었습니다' (검토 S4)

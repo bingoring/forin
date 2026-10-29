@@ -1,0 +1,52 @@
+# 단어 수정 (A: D1·D2·D4, W1~W8) — id: 바꿀 필드
+words:
+  w-stable: {distractorsEn: [unstable, stale]}
+  w-clean: {distractorsEn: [clear, lean]}
+  w-bed: {distractorsEn: [bud, bid]}
+  w-other: {distractorsEn: [either, outer]}
+  w-drain: {distractorsEn: [strain, drown]}
+  w-change: {distractorsEn: [charge, chafe]}
+  w-fall: {distractorsEn: [hall, fire]}
+  w-arrest: {distractorsEn: [access, unrest]}
+  w-step: {distractorsEn: [stem, strip]}
+  w-lead: {distractorsEn: [load, leak]}
+  w-pressure: {distractorsEn: [pleasure, posture]}
+  w-feed: {distractorsEn: [seed, fee], tag: 상태}
+  w-diet: {tag: 상태}
+  w-order: {distractorsEn: [ordain, orbit]}
+  w-kilo: {distractorsEn: [kilt, kiln]}
+  w-grab: {distractorsEn: [grade, drag]}
+  w-imaging: {distractorsEn: [paging, staging], distractorsKo: [호출, 병기 판정]}
+  w-epi: {distractorsEn: [ASA, epo]}
+  w-confirm: {cue: 들은 값이 맞는지 되짚어 틀림없게 해 두는 일}
+  w-allergic: {decoyChips: [ail, logic]}
+  w-allergy: {decoyChips: [ail, gym]}
+  w-oxygen: {decoyChips: [ax, gem]}
+  w-output: {decoyChips: [in, pit]}
+  w-xray: {decoyChips: [ex, rey]}
+  w-unit: {decoyChips: [you, knit]}
+  w-recommendation: {chips: [[re, commend, ation]]}
+  w-crash: {chips: [[crash]]}
+  w-trend: {chips: [[trend]]}
+  w-push: {cue: 처방대로 주사기나 백을 눌러 약이나 수액을 빠르게 넣는 일}
+  w-placement: {exKo: 위치 확인을 위해 엑스레이가 처방됐어요.}
+  w-check: {ko: 점검(하다)}
+  w-vital:
+    en: vitals
+    ipa: /ˈvaɪtəlz/
+    chips: [[vi, tals]]
+    distractorsEn: [visuals, vitamins]
+  w-orient:
+    en: oriented
+    ko: 지남력이 있는
+    ipa: /ˈɔːrientɪd/
+    cue: 자기 이름·장소·날짜를 알아 현실을 아는 상태
+    chips: [[ori, ent, ed]]
+    distractorsEn: [disoriented, obtunded]
+    distractorsKo: [지남력을 잃은, 반응이 둔한]
+remove: [w-negative, w-hourly]
+changes:
+  - {kind: word, id: w-vital, fields: [en, ipa], why: "헤드워드가 형용사 vital인데 ko '활력징후'·문장은 vitals — 복수 명사로 (id 유지)"}
+  - {kind: word, id: w-orient, fields: [en, ko, ipa], why: "문장은 oriented — 임상에서 형용사로 굳은 분사형을 헤드워드로, ko도 '지남력이 있는' (id 유지)"}
+  - {kind: word-remove, id: w-negative, why: "4.4 문장을 '감염관리팀이 검체 결과를 보고 판단할 때까지'로 고쳐 어느 문장도 태그하지 않게 됨"}
+  - {kind: word-remove, id: w-hourly, why: "ko '매시간의'가 문장 10.2(두 시간마다)와 어긋남 — 10.2 태그를 빼고 삭제"}
