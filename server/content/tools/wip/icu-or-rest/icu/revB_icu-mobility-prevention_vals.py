@@ -8,7 +8,7 @@ DK = {
  "2.1": ["체위를 바꿔야 압박점에 몰린 압력이 풀려요", "압력을 분산시키지 않으면 몇 시간 만에 욕창이 생겨요"],
  "2.2": ["발뒤꿈치는 살이 얇아 침대에 닿으면 금방 상해요", None],
  "2.3": [None, "다음 체위변경은 두 시간 뒤예요 — 알려 드릴게요"],
- "3.4": ["불안하면 멈춰도 된다고 하면 더 협조해요", "불안하면 손을 들자고 미리 정했어요"],
+ "3.4": ["불안하면 멈춰도 된다고 하면 더 협조해요", "불안한데 참으면 쓰러지기 쉬워요"],
  "3.5": ["심박수나 산소가 떨어지면 이동을 못 견딘다는 뜻이에요", "심박수와 산소가 이동 중 제일 먼저 변해요"],
  "4.0": [None, "모든 압박점을 매일 봐야 초기 변화를 놓치지 않아요"],
  "4.1": ["천골, 발뒤꿈치, 팔꿈치는 뼈가 튀어나와 발적이 잘 생겨요", "천골, 발뒤꿈치, 팔꿈치의 발적은 눌러서 확인해요"],
@@ -45,7 +45,7 @@ DK = {
  "16.3": ["전체 활력징후로 다른 변화도 잡아요", None],
  "16.4": ["산소포화도가 떨어질 땐 더 걷는 게 무리예요", "산소포화도가 떨어지는 순간 세션을 멈추려고 손을 들었어요"],
  "17.0": ["쓰러지고 있으니 바닥으로 눕히려고 다리를 벌려 서요", "쓰러지는 사람을 억지로 세우다 둘 다 다쳐요"],
- "17.1": ["부드럽게 눕히려고 보행벨트를 꽉 잡으세요", "낙상에선 머리 손상이 제일 위험해요"],
+ "17.1": ["쓰러질 땐 머리가 먼저 바닥에 닿기 쉬워요", "낙상에선 머리 손상이 제일 위험해요"],
  "17.2": ["모르고 움직이면 척추를 더 다쳐요", "낙상 직후에는 뼈가 부러져도 겉은 멀쩡해요"],
  "17.3": ["도움을 요청하고 머리부터 살피려고 옆에 무릎을 꿇어요", "낙상 뒤엔 머리부터 발끝까지 봐야 손상이 보여요"],
  "17.4": ["옮기기 전 머리는 머리카락 속까지 헤쳐서 살펴요", "머리 손상은 낙상 몇 시간 뒤에야 의식 저하로 나타나요"],
@@ -101,13 +101,13 @@ BL = {
  "20.5": (None, ["goal", "rule", "diet", "dose"]),
 }
 DC = {
- "2.0": "you're awake", "2.3": "— I'll set a timer", "4.0": "every IV site", "4.3": "and check",
+ "2.0": "you're stable", "2.3": "— I'll set a timer", "4.0": "every IV site", "4.3": "and check",
  "6.3": "if his temp", "7.0": "her Braden score", "7.1": "a walker", "7.2": "the tray",
  "7.5": "to walk her", "8.2": "the tape", "9.0": "under his IV", "9.1": "on the cart",
- "9.2": "and secure", "10.0": "He's got a fall risk", "10.3": "when his cough", "10.5": "Once his fever improves",
+ "9.2": "and label", "10.0": "He's got a fall risk", "10.3": "when his cough", "10.5": "Once his fever improves",
  "11.2": "Let's set daily limits", "12.0": ", so let's treat", "12.1": "Early bathing helps", "12.2": "her eating",
  "13.2": "awake", "13.3": "turn", "13.5": "visits", "14.2": "on his labs", "14.5": "Better sleep helps",
- "18.2": "and charting", "18.3": "We need labs", "19.1": "the flush", "19.3": "review orders",
+ "18.2": "the rapid test", "18.3": "We need labs", "19.1": "the flush", "19.3": "review orders",
  "19.5": "the tape", "20.2": "only about",
 }
 ICON = {"2.0": "redo", "12.2": "pill"}
@@ -119,6 +119,8 @@ WHY = {
  "8.5": "'every time'으로 반복 기록을 약속해요. 단계가 나빠지면 치료가 바뀌고, 낫는 욕창은 단계를 거꾸로 낮추지 않아요.",
 }
 ORD = [
+ (0, 4, "While I check that, both devices are on and cycling.", "그걸 확인하는 동안 기기 두 개는 켜져서 제대로 작동해요", None),
+ (18, 4, "While they're on the way, we need imaging and the provider at the bedside.", "그 팀이 오는 동안 영상검사와 주치의가 침상에 필요해요", None),
  (1, 3, "Within that, low mobility and moisture are her biggest factors.", "그중에서도 낮은 이동 능력과 습기가 가장 큰 요인이에요", None),
  (2, 3, "With that done, I'll float your heels on pillows.", "그다음 베개로 발뒤꿈치를 띄워 드릴게요", None),
  (3, 4, "Once you're sitting, tell me if you feel unsafe and we'll stop.", "앉으시면, 불안할 때 말씀하세요 — 바로 멈출게요", None),
